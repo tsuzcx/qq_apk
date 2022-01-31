@@ -1,19 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.test.MapTestHelper;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class aatw
-  implements View.OnClickListener
+  implements INetInfoHandler
 {
-  public aatw(ARMapActivity paramARMapActivity) {}
+  public aatw(ArkAppCenter paramArkAppCenter) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArmapTestMapTestHelper == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArmapTestMapTestHelper = new MapTestHelper(this.a, this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView, new aatx(this));
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapTestMapTestHelper.a();
+    ArkAppCenter.a(this.a, 1, 0);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    ArkAppCenter.a(this.a, 1, 2);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    ArkAppCenter.a(this.a, 0, 1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    ArkAppCenter.a(this.a, 0, 2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ArkAppCenter.a(this.a, 2, 1);
+  }
+  
+  public void onNetWifi2None()
+  {
+    ArkAppCenter.a(this.a, 2, 0);
   }
 }
 

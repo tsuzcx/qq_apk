@@ -1,13 +1,13 @@
 import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
-public class koz
+class koz
   implements Runnable
 {
-  public koz(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  koz(koy paramkoy) {}
   
   public void run()
   {
-    EqqAccountDetailActivity.a(this.a, false);
+    this.a.a.f();
   }
 }
 

@@ -1,26 +1,23 @@
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsSpinner.SavedState;
 
-class amaf
-  extends Thread
+public final class amaf
+  implements Parcelable.Creator
 {
-  amaf(amae paramamae) {}
-  
-  public void run()
+  public AbsSpinner.SavedState a(Parcel paramParcel)
   {
-    while (!this.a.a.a.isEmpty())
-    {
-      QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper localQQIndividualityRemoteProxyCallWrapper = (QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper)this.a.a.a.poll();
-      if (localQQIndividualityRemoteProxyCallWrapper != null) {
-        this.a.a.a(localQQIndividualityRemoteProxyCallWrapper);
-      }
-    }
+    return new AbsSpinner.SavedState(paramParcel, null);
+  }
+  
+  public AbsSpinner.SavedState[] a(int paramInt)
+  {
+    return new AbsSpinner.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amaf
  * JD-Core Version:    0.7.0.1
  */

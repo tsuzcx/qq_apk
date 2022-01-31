@@ -1,42 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatShare;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ShareHotChatGrayTips;
+import java.lang.ref.WeakReference;
 
-class abvj
-  extends WtloginObserver
+public class abvj
+  extends ClickableSpan
 {
-  abvj(abue paramabue, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
+  private HotChatShare jdField_a_of_type_ComTencentMobileqqAppHotChatShare;
+  private ShareHotChatGrayTips jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference b;
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public abvj(QQAppInterface paramQQAppInterface, Context paramContext, ShareHotChatGrayTips paramShareHotChatGrayTips, String paramString)
   {
-    boolean bool2 = true;
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips = paramShareHotChatGrayTips;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppHotChatShare = new HotChatShare((BaseActivity)paramContext, paramQQAppInterface, null);
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (((Context)this.b.get() != null) && (this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips != null))
     {
-      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
-      if (paramDevlockInfo.AllowSet != 1) {
-        break label85;
-      }
-      bool1 = true;
-      paramWUserSigInfo.putBoolean("hasSecurityPhoneNumber", bool1);
-      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
-      if (paramDevlockInfo.DevSetup != 1) {
-        break label91;
-      }
+      paramView = ((HotChatManager)paramView.getManager(59)).a(this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips.mTroopUin);
+      this.jdField_a_of_type_ComTencentMobileqqAppHotChatShare.a(paramView);
     }
-    label85:
-    label91:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramWUserSigInfo.putBoolean("devlockIsOpen", bool1);
-      this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-      return;
-      bool1 = false;
-      break;
-    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

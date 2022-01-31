@@ -1,74 +1,67 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.AbstractSet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
-public final class amis
-  implements EmoticonCallback
+public class amis
+  extends AbstractSet
 {
-  public amis(EditText paramEditText) {}
+  public amis(SoftHashMap paramSoftHashMap) {}
   
-  public void a(EmoticonInfo paramEmoticonInfo)
+  public void clear()
   {
-    if ((paramEmoticonInfo == null) || (this.a == null)) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramEmoticonInfo instanceof SystemEmoticonInfo));
-      i = this.a.getSelectionStart();
-      j = this.a.getSelectionEnd();
-    } while ((i < 0) || (j < 0) || (j < i) || (this.a == null) || (this.a.getEditableText() == null));
-    this.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.c(((SystemEmoticonInfo)paramEmoticonInfo).a));
+    this.a.clear();
   }
   
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
+  public boolean contains(Object paramObject)
   {
-    return true;
+    return this.a.containsKey(paramObject);
   }
   
-  public void b()
+  public Iterator iterator()
   {
-    if (this.a == null) {}
-    for (;;)
+    return new amir(this.a);
+  }
+  
+  public boolean remove(Object paramObject)
+  {
+    if (this.a.containsKey(paramObject))
     {
-      return;
-      if (this.a.getSelectionStart() != 0) {
-        try
-        {
-          Editable localEditable = this.a.getText();
-          int i = this.a.getSelectionStart();
-          int j = android.text.TextUtils.getOffsetBefore(this.a.getText(), i);
-          if (i != j)
-          {
-            localEditable.delete(Math.min(i, j), Math.max(i, j));
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
+      this.a.remove(paramObject);
+      return true;
     }
+    return false;
   }
   
-  public void b(EmoticonInfo paramEmoticonInfo) {}
+  public int size()
+  {
+    return this.a.size();
+  }
   
-  public void c() {}
+  public Object[] toArray()
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray();
+  }
   
-  public void setting() {}
+  public Object[] toArray(Object[] paramArrayOfObject)
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray(paramArrayOfObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amis
  * JD-Core Version:    0.7.0.1
  */

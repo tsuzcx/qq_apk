@@ -32,19 +32,19 @@ public class BeautyProviderView
   
   private void a(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130843063);
+    paramTextView.setBackgroundResource(2130843162);
     paramTextView.setTextColor(Color.parseColor("#12B7F5"));
   }
   
   private void b(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130843062);
+    paramTextView.setBackgroundResource(2130843161);
     paramTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
   
   protected int a()
   {
-    return 2130970536;
+    return 2130970580;
   }
   
   public void a(Bundle paramBundle)
@@ -53,10 +53,10 @@ public class BeautyProviderView
     super.a(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView);
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2130970536, this, false));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2130970580, this, false));
     }
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371056));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371220));
     int i = 0;
     while (i < this.jdField_a_of_type_Int)
     {
@@ -68,7 +68,7 @@ public class BeautyProviderView
       paramBundle.setOnClickListener(this);
       paramBundle.setTag(Integer.valueOf(i));
       localObject = new TextView(getContext());
-      ((TextView)localObject).setBackgroundResource(2130843062);
+      ((TextView)localObject).setBackgroundResource(2130843161);
       ((TextView)localObject).setText(i + "");
       ((TextView)localObject).setTextSize(18.0F);
       ((TextView)localObject).setGravity(17);
@@ -81,9 +81,9 @@ public class BeautyProviderView
     setBeautyLevel(this.b);
   }
   
-  public void af_()
+  public void ai_()
   {
-    super.af_();
+    super.ai_();
     CaptureVideoFilterManager.a().b(getContext());
   }
   

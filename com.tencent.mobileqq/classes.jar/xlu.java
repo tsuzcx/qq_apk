@@ -1,18 +1,21 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.recent.data.RecentItemKandianMergeData;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class xlu
-  extends OrientationEventListener
+  implements Runnable
 {
-  public xlu(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public xlu(RecentItemKandianMergeData paramRecentItemKandianMergeData, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, long paramLong) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void run()
   {
-    this.a.k = paramInt;
+    RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.as, 7220, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "time", Long.valueOf(this.jdField_a_of_type_Long));
+    localRecentUserProxy.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemKandianMergeData.a);
   }
 }
 

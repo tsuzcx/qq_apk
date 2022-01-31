@@ -1,25 +1,27 @@
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class mxo
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public mxo(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public mxo(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    TranslateAnimation localTranslateAnimation = PublicAccountImageCollectionMainActivity.b(this.a);
-    if (localTranslateAnimation != null)
-    {
-      this.a.a.setVisibility(0);
-      this.a.a.findViewById(2131365627).setVisibility(0);
-      this.a.a.findViewById(2131365561).setVisibility(0);
-      this.a.a.findViewById(2131365562).setVisibility(0);
-      this.a.a.bringToFront();
-      this.a.a.startAnimation(localTranslateAnimation);
+    int i = PublicAccountImageCollectionCommentActivity.a(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.a(this.a).getHeight();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ImageCollectionCommentActivity", 2, "heightDiff:" + i);
     }
+    if (i > 150) {
+      PublicAccountImageCollectionCommentActivity.a(this.a, true);
+    }
+    while (!PublicAccountImageCollectionCommentActivity.a(this.a)) {
+      return;
+    }
+    PublicAccountImageCollectionCommentActivity.a(this.a, false);
+    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
   }
 }
 

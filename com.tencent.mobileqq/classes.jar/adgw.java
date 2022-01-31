@@ -1,29 +1,20 @@
-import android.widget.ImageView;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class adgw
-  implements ValueAnimator.AnimatorUpdateListener
+public final class adgw
+  implements Runnable
 {
-  public adgw(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder) {}
+  public adgw(String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    if (this.a.a.getVisibility() == 0) {
-      this.a.a.setAlpha(f);
-    }
-    HotVideoMongoliaRelativeLayout localHotVideoMongoliaRelativeLayout = this.a.a();
-    if (localHotVideoMongoliaRelativeLayout != null) {
-      localHotVideoMongoliaRelativeLayout.a(paramValueAnimator);
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 0, this.a, 0).b(FMToastUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgw
  * JD-Core Version:    0.7.0.1
  */

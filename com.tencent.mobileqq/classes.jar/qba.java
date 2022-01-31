@@ -1,19 +1,63 @@
-import com.tencent.device.qfind.QFindBLEScanMgr;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
+import com.tencent.device.msg.activities.DeviceTipActivity;
 
-class qba
-  implements Runnable
+public class qba
+  implements View.OnTouchListener
 {
-  qba(qaz paramqaz) {}
+  public qba(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a.b)
+    switch (paramMotionEvent.getAction())
     {
-      QFindBLEScanMgr.a(this.a.a, System.currentTimeMillis());
-      QFindBLEScanMgr.a(this.a.a, true);
-      return;
     }
-    QFindBLEScanMgr.a(this.a.a);
+    for (;;)
+    {
+      return true;
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      DeviceTipActivity.b(this.a);
+      continue;
+      int i = (int)paramMotionEvent.getRawX() - this.a.jdField_b_of_type_Int;
+      if (i > 2)
+      {
+        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+      }
+      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.left += i;
+      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.right = (i + paramView.right);
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right >= this.a.d)
+      {
+        this.a.jdField_a_of_type_AndroidGraphicsRect.right = this.a.d;
+        this.a.jdField_a_of_type_AndroidGraphicsRect.left = (this.a.jdField_a_of_type_AndroidGraphicsRect.right - this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      }
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.left <= this.a.e)
+      {
+        this.a.jdField_a_of_type_AndroidGraphicsRect.left = this.a.e;
+        this.a.jdField_a_of_type_AndroidGraphicsRect.right = (this.a.jdField_a_of_type_AndroidGraphicsRect.left + this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_a_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+      this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left - this.a.e, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      continue;
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right == this.a.d)
+      {
+        this.a.b();
+      }
+      else if (this.a.jdField_a_of_type_AndroidGraphicsRect.right < this.a.d)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_b_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_b_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_c_of_type_AndroidGraphicsRect.left, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+    }
   }
 }
 

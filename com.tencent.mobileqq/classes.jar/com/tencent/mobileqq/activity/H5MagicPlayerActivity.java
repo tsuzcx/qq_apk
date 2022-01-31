@@ -46,11 +46,11 @@ import java.net.URLDecoder;
 import java.util.Timer;
 import org.json.JSONException;
 import org.json.JSONObject;
-import srx;
-import sry;
-import srz;
-import ssa;
-import ssb;
+import suw;
+import sux;
+import suy;
+import suz;
+import sva;
 
 public class H5MagicPlayerActivity
   extends BaseActivity
@@ -60,7 +60,7 @@ public class H5MagicPlayerActivity
   public SoundPool a;
   Vibrator jdField_a_of_type_AndroidOsVibrator;
   SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  ShakeListener jdField_a_of_type_ComTencentMobileqqAppShakeListener = new ssb(this);
+  ShakeListener jdField_a_of_type_ComTencentMobileqqAppShakeListener = new sva(this);
   public Emoticon a;
   WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   WebViewClient jdField_a_of_type_ComTencentSmttSdkWebViewClient;
@@ -150,15 +150,15 @@ public class H5MagicPlayerActivity
   private void a()
   {
     this.jdField_a_of_type_ComTencentSmttSdkWebView = new WebView(this);
-    FrameLayout localFrameLayout = (FrameLayout)super.findViewById(2131362822);
+    FrameLayout localFrameLayout = (FrameLayout)super.findViewById(2131362840);
     localFrameLayout.addView(this.jdField_a_of_type_ComTencentSmttSdkWebView, 0, new FrameLayout.LayoutParams(-1, -1));
     Button localButton = new Button(this);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(DisplayUtil.a(this, 24.0F), DisplayUtil.a(this, 24.0F));
     localLayoutParams.setMargins(0, DisplayUtil.a(this, 9.0F), DisplayUtil.a(this, 10.0F), 0);
     localLayoutParams.gravity = 53;
     localButton.setLayoutParams(localLayoutParams);
-    localButton.setBackgroundDrawable(getResources().getDrawable(2130843874));
-    localButton.setOnClickListener(new srx(this));
+    localButton.setBackgroundDrawable(getResources().getDrawable(2130843998));
+    localButton.setOnClickListener(new suw(this));
     localFrameLayout.addView(localButton);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setBackgroundColor(0);
     if (this.jdField_a_of_type_ComTencentSmttSdkWebView.getBackground() != null) {
@@ -194,10 +194,10 @@ public class H5MagicPlayerActivity
     return;
     if (Build.VERSION.SDK_INT >= 8)
     {
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new srz(this, paramString));
+      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new suy(this, paramString));
       return;
     }
-    ThreadManager.getTimer().schedule(new ssa(this, paramString), 200L);
+    ThreadManager.getTimer().schedule(new suz(this, paramString), 200L);
   }
   
   private void a(String paramString1, String paramString2)
@@ -252,7 +252,7 @@ public class H5MagicPlayerActivity
     ((WebSettings)localObject).setJavaScriptEnabled(true);
     ((WebSettings)localObject).setAllowContentAccess(true);
     ((WebSettings)localObject).setRenderPriority(WebSettings.RenderPriority.HIGH);
-    this.jdField_a_of_type_ComTencentSmttSdkWebViewClient = new sry(this);
+    this.jdField_a_of_type_ComTencentSmttSdkWebViewClient = new sux(this);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(this.jdField_a_of_type_ComTencentSmttSdkWebViewClient);
     localObject = Build.MANUFACTURER + "_" + Build.MODEL;
     if ((Build.VERSION.SDK_INT > 10) && (!"Meizu_M040".equals(localObject))) {
@@ -479,7 +479,7 @@ public class H5MagicPlayerActivity
       localStringBuilder.append("&self_uin=" + this.d);
       localStringBuilder.append("&auto_play=0");
       localStringBuilder.append("&platform=android");
-      localStringBuilder.append("&version=7.6.0");
+      localStringBuilder.append("&version=7.6.3");
       localStringBuilder.append("&start_time=" + System.currentTimeMillis());
       localStringBuilder.append("&width=" + this.jdField_b_of_type_Float);
       localStringBuilder.append("&height=" + this.jdField_c_of_type_Float);
@@ -621,7 +621,7 @@ public class H5MagicPlayerActivity
   {
     this.mActNeedImmersive = false;
     super.onCreate(paramBundle);
-    super.setContentView(2130970909);
+    super.setContentView(2130970957);
     a();
     b();
     if (!WebIPCOperator.a().a()) {
@@ -653,7 +653,7 @@ public class H5MagicPlayerActivity
     localStringBuilder.append("&self_uin=" + this.d);
     localStringBuilder.append("&auto_play=" + paramBundle);
     localStringBuilder.append("&platform=android");
-    localStringBuilder.append("&version=7.6.0");
+    localStringBuilder.append("&version=7.6.3");
     localStringBuilder.append("&start_time=" + l);
     localStringBuilder.append("&width=" + this.jdField_b_of_type_Float);
     localStringBuilder.append("&height=" + this.jdField_c_of_type_Float);

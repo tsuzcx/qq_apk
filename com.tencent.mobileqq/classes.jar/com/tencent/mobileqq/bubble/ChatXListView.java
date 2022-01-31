@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.bubble;
 
-import abew;
+import ablx;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -38,7 +38,7 @@ public class ChatXListView
   private void a(Context paramContext)
   {
     if ((b == jdField_a_of_type_Int) && ((paramContext instanceof Activity))) {
-      ThreadManager.post(new abew(this, paramContext), 5, null, true);
+      ThreadManager.post(new ablx(this, paramContext), 5, null, true);
     }
   }
   

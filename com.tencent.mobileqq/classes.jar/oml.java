@@ -1,39 +1,51 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureFragment;
 
-class oml
-  extends Handler
+public class oml
+  implements View.OnKeyListener
 {
-  oml(omk paramomk) {}
+  private oml(StoryEffectsCameraCaptureFragment paramStoryEffectsCameraCaptureFragment) {}
   
-  oml(omk paramomk, Handler paramHandler)
+  public void a()
   {
-    super(paramHandler.getLooper());
+    SLog.d("story.publish.CaptureFragment", "onBackPressed");
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (localFragmentActivity != null)
+    {
+      this.a.getActivity().finish();
+      localFragmentActivity.overridePendingTransition(2131034165, 2131034328);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramMessage.what)
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
     {
     default: 
-      throw new RuntimeException("Unknown message " + paramMessage);
-    case 1: 
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+      bool1 = false;
     }
     do
     {
-      return;
-      this.a.a();
-      return;
-    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
-      return;
-    }
-    this.a.b = true;
+      return bool1;
+      bool1 = bool2;
+      switch (paramKeyEvent.getAction())
+      {
+      case 0: 
+      default: 
+        break;
+      case 1: 
+        bool1 = bool2;
+      }
+    } while (paramKeyEvent.isCanceled());
+    a();
+    return true;
   }
 }
 

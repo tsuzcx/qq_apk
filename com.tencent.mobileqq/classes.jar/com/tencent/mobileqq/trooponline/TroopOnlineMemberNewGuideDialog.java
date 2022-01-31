@@ -23,12 +23,12 @@ public class TroopOnlineMemberNewGuideDialog
   
   public TroopOnlineMemberNewGuideDialog(Context paramContext, Bitmap paramBitmap, View paramView)
   {
-    super(paramContext, 2131624574);
-    setContentView(2130971637);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375165));
-    this.b = ((ImageView)findViewById(2131375166));
-    this.c = ((ImageView)findViewById(2131375167));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375168));
+    super(paramContext, 2131624575);
+    setContentView(2130971685);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375351));
+    this.b = ((ImageView)findViewById(2131375352));
+    this.c = ((ImageView)findViewById(2131375353));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375354));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
@@ -43,10 +43,10 @@ public class TroopOnlineMemberNewGuideDialog
     {
       return;
       this.jdField_a_of_type_AndroidWidgetButton.setText("知道了");
-      this.b.setImageResource(2130846189);
+      this.b.setImageResource(2130846317);
       ((LinearLayout.LayoutParams)this.b.getLayoutParams()).leftMargin = (-DisplayUtil.a(getContext(), 120.0F));
       ((LinearLayout.LayoutParams)this.b.getLayoutParams()).topMargin = (-DisplayUtil.a(getContext(), 40.0F));
-      this.c.setImageResource(2130846192);
+      this.c.setImageResource(2130846320);
       ((LinearLayout.LayoutParams)this.c.getLayoutParams()).topMargin = (-DisplayUtil.a(getContext(), 15.0F));
       paramView = BitmapUtil.a(this.jdField_a_of_type_AndroidViewView);
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
@@ -59,7 +59,7 @@ public class TroopOnlineMemberNewGuideDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberNewGuideDialog
  * JD-Core Version:    0.7.0.1
  */

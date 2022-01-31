@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.test;
 
-import abat;
+import abhu;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -73,28 +73,28 @@ public class MapTestHelper
     {
       int i = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().widthPixels;
       this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970215, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970231, null);
       this.jdField_a_of_type_AndroidAppDialog.setTitle("测试设置项：");
       this.jdField_a_of_type_AndroidAppDialog.setContentView(this.jdField_a_of_type_AndroidViewView, new ViewGroup.LayoutParams((int)(i * 0.8D), -2));
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369664));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369741));
       this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-      this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369665));
+      this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369742));
       this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-      this.jdField_c_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369670));
+      this.jdField_c_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369747));
       this.jdField_c_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-      this.d = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369667));
+      this.d = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369744));
       this.d.setOnCheckedChangeListener(this);
-      this.e = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369671));
+      this.e = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369748));
       this.e.setOnCheckedChangeListener(this);
-      this.f = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369666));
+      this.f = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131369743));
       this.f.setOnCheckedChangeListener(this);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131369672));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131369749));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131369668));
+      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131369745));
       this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-      this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131369669));
+      this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131369746));
       this.jdField_c_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131369663));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131369740));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(this);
     }
@@ -274,7 +274,7 @@ public class MapTestHelper
         MapLog.d("TestConfig", paramDialogInterface.toString(), new Object[0]);
       }
       ARGLSurfaceView.FPS_LIMIT_SWITCH = jdField_a_of_type_ComTencentMobileqqArmapTestMapTestHelper$TestConfig.jdField_c_of_type_Boolean;
-      this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abat(this));
+      this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abhu(this));
       return;
     }
     catch (Exception paramDialogInterface)

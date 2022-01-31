@@ -166,7 +166,7 @@ public class DanceGameVideoManager
   {
     if (paramQQAppInterface.c())
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131428986, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplicationImpl.getContext(), 2131428992, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
       return;
     }
     AIOEffectsCameraCaptureFragment.Session localSession = null;

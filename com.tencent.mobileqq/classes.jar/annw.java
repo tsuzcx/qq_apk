@@ -1,26 +1,32 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.view.View;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
 
 public class annw
-  extends Property
+  implements Runnable
 {
-  public annw(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public annw(DynamicTextItem paramDynamicTextItem, boolean paramBoolean, View paramView, Runnable paramRunnable) {}
   
-  public Integer a(GroundDrawable paramGroundDrawable)
+  public void run()
   {
-    if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.d(paramGroundDrawable));
+    DynamicTextItem.Pair localPair;
+    if (((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue() != this.jdField_a_of_type_Boolean)
+    {
+      localPair = DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
+      if (((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue()) {
+        break label93;
+      }
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.d(paramGroundDrawable, paramInteger.intValue());
+    label93:
+    for (boolean bool = true;; bool = false)
+    {
+      localPair.b = Boolean.valueOf(bool);
+      this.jdField_a_of_type_AndroidViewView.invalidate();
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
+      }
+      DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem, false);
+      return;
     }
   }
 }

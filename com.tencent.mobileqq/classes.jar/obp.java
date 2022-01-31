@@ -1,35 +1,50 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
-import com.tencent.mobileqq.activity.richmedia.QzoneSyncQQStoryTool;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import java.util.ArrayList;
 
 public class obp
-  implements View.OnClickListener
+  extends ChildViewClickListener
 {
-  public obp(EditPicQzonePublishActivity paramEditPicQzonePublishActivity, long paramLong) {}
+  public obp(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    boolean bool = true;
-    if (EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity))
+    boolean bool;
+    switch (paramView.getId())
     {
-      EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity).setSelected(false);
-      paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity;
-      if (EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity)) {
-        break label73;
+    default: 
+      if (NewMyStorySegment.a(this.a).a().size() <= 0) {
+        break label149;
       }
-    }
-    for (;;)
-    {
-      EditPicQzonePublishActivity.b(paramView, bool);
-      QzoneSyncQQStoryTool.a(this.jdField_a_of_type_Long, EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity));
-      return;
-      EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity).setSelected(true);
+      paramView = this.a;
+      if (!NewMyStorySegment.a(this.a))
+      {
+        bool = true;
+        NewMyStorySegment.a(paramView, bool);
+        NewMyStorySegment.a(this.a);
+        if (!NewMyStorySegment.a(this.a)) {
+          break label143;
+        }
+      }
       break;
-      label73:
-      bool = false;
     }
+    label143:
+    for (paramView = "1";; paramView = "2")
+    {
+      StoryReportor.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
+      StoryReportor.a("home_page", "exp_share_day", 0, 0, new String[0]);
+      return;
+      NewMyStorySegment.a(this.a, NewMyStorySegment.a(this.a), paramView);
+      return;
+      bool = false;
+      break;
+    }
+    label149:
+    NewMyStorySegment.a(this.a, NewMyStorySegment.a(this.a), paramView);
   }
 }
 

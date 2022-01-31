@@ -3,7 +3,7 @@ package com.tencent.mobileqq.widget;
 public abstract interface NoConfusion {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.NoConfusion
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,86 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Environment;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.LocalTbsViewManagerCallback;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.TbsReaderView;
-import com.tencent.smtt.sdk.TbsReaderView.ReaderCallback;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
 public class acrv
-  implements TbsReaderView.ReaderCallback
+  implements Runnable
 {
-  public acrv(LocalTbsViewManager paramLocalTbsViewManager, Activity paramActivity, LocalTbsViewManager.LocalTbsViewManagerCallback paramLocalTbsViewManagerCallback, String paramString) {}
+  public acrv(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView) {}
   
-  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
+  public void run()
   {
-    int i = 10386;
-    switch (paramInteger.intValue())
+    HashMap localHashMap1 = new HashMap();
+    Object localObject = FMSettings.a().a();
+    if ((QfileLocalFileMediaTabView.a(this.a) & 0x1) > 0)
     {
-    case 19: 
-    default: 
-    case 12: 
-    case 5000: 
-    case 5012: 
-    case 5045: 
-      for (;;)
+      FileCategoryUtil.a(true, FMSettings.a().b(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap1, null);
+      if (localObject != null) {
+        FileCategoryUtil.a(true, (String)localObject, ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap1, null);
+      }
+      FileCategoryUtil.a(localHashMap1);
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(this.a.a);
+    HashMap localHashMap2 = new HashMap();
+    if ((QfileLocalFileMediaTabView.a(this.a) & 0x2) > 0)
+    {
+      FileCategoryUtil.a(true, FMSettings.a().b(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap2, null);
+      if (localObject != null) {
+        FileCategoryUtil.a(true, (String)localObject, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap2, null);
+      }
+      FileCategoryUtil.a(localHashMap2);
+    }
+    localObject = localHashMap2.keySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.addAll((Collection)localHashMap2.get((String)((Iterator)localObject).next()));
+    }
+    localObject = localHashMap1.keySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.addAll((Collection)localHashMap1.get((String)((Iterator)localObject).next()));
+    }
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    Iterator localIterator = localArrayList.iterator();
+    FileInfo localFileInfo;
+    while (localIterator.hasNext())
+    {
+      localFileInfo = (FileInfo)localIterator.next();
+      if (localFileInfo == null)
       {
-        this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new acrz(this, paramInteger));
-        return;
-        if (paramObject1 != null)
+        localIterator.remove();
+      }
+      else
+      {
+        localObject = localFileInfo.a();
+        if ((localObject != null) && (((String)localObject).length() != 0))
         {
-          i = ((Bundle)paramObject1).getInt("function_id");
-          paramObject1 = TbsReaderView.getResString(this.jdField_a_of_type_AndroidAppActivity, i);
-          paramObject2 = TbsReaderView.getResDrawable(this.jdField_a_of_type_AndroidAppActivity, i + 1);
-          Drawable localDrawable = TbsReaderView.getResDrawable(this.jdField_a_of_type_AndroidAppActivity, i + 2);
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback.a(paramObject1, paramObject2, localDrawable, new acrw(this, i));
-          continue;
-          if ((paramObject2 instanceof Bundle)) {}
-          for (paramObject1 = (Bundle)paramObject2;; paramObject1 = new Bundle())
-          {
-            paramObject1.putBoolean("is_bar_animating", false);
-            break;
+          if ((((String)localObject).equalsIgnoreCase("camera") != true) && (((String)localObject).equalsIgnoreCase("Video") != true)) {
+            break label405;
           }
-          if (((Integer)paramObject1).intValue() == 0)
-          {
-            paramObject1 = new Bundle();
-            paramObject1.putString("filePath", this.jdField_a_of_type_JavaLangString);
-            paramObject1.putString("tempPath", Environment.getExternalStorageDirectory() + "/TbsReaderTemp");
-            LocalTbsViewManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager).openFile(paramObject1);
-            continue;
-            QLog.e("TestTbs", 1, "WEBVIEW_GET_TITLE_HEIGHT");
-            if ((paramObject2 != null) && ((paramObject2 instanceof Bundle))) {
-              ((Bundle)paramObject2).putInt("TitleHeight", (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131558448));
-            }
-          }
+          localObject = "Camera";
         }
       }
     }
-    paramInteger = this.jdField_a_of_type_AndroidAppActivity.getString(2131435089);
-    if ((paramObject1 != null) && ((paramObject1 instanceof Bundle)))
-    {
-      paramObject2 = (Bundle)paramObject1;
-      paramInteger = paramObject2.getString("tip");
-      paramObject1 = paramObject2.getString("statistics");
-      i = paramObject2.getInt("channel_id", 10386);
-    }
+    label405:
     for (;;)
     {
-      paramObject2 = "http://mdc.html5.qq.com/d/directdown.jsp?channel_id=" + i;
-      DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 233, this.jdField_a_of_type_AndroidAppActivity.getString(2131434979), paramInteger, new acrx(this, paramObject1, paramObject2), new acry(this)).show();
+      if (!localLinkedHashMap.containsKey(localObject)) {
+        localLinkedHashMap.put(localObject, new ArrayList());
+      }
+      if (((List)localLinkedHashMap.get(localObject)).contains(localFileInfo)) {
+        break;
+      }
+      ((List)localLinkedHashMap.get(localObject)).add(localFileInfo);
+      break;
+      QfileLocalFileMediaTabView.a(this.a, new acrw(this, localArrayList, localHashMap2, localHashMap1, localLinkedHashMap));
       return;
-      paramObject1 = "";
     }
   }
 }

@@ -1,9 +1,26 @@
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
 
-public final class amrz
-  implements IHttpCommunicatorFlowCount
+class amrz
+  implements Runnable
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  amrz(amry paramamry, float paramFloat) {}
+  
+  public void run()
+  {
+    if ((int)(this.jdField_a_of_type_Float * 100.0F) > 0)
+    {
+      this.jdField_a_of_type_Amry.a.a.removeMessages(1009);
+      this.jdField_a_of_type_Amry.a.a.obtainMessage(1004, 100, 0).sendToTarget();
+      this.jdField_a_of_type_Amry.a.a(false, true);
+    }
+    while (!this.jdField_a_of_type_Amry.a.e) {
+      return;
+    }
+    this.jdField_a_of_type_Amry.a.a.removeMessages(1009);
+    this.jdField_a_of_type_Amry.a.a(true, true);
+  }
 }
 
 

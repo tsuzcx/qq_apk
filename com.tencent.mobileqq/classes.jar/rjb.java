@@ -1,24 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class rjb
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public rjb(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rjb(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433555), "qqsetting_auto_receive_pic_key", paramBoolean);
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    switch (paramView.getId())
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+    default: 
       return;
     }
+    AddFriendVerifyActivity.c(this.a);
   }
 }
 

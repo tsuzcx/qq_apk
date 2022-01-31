@@ -1,71 +1,56 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.EmoticonObserver;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class smd
-  implements ActionSheet.OnButtonClickListener
+  extends EmoticonObserver
 {
-  public smd(FriendProfileCardActivity paramFriendProfileCardActivity, ActionSheet paramActionSheet) {}
+  public smd(EmosmActivity paramEmosmActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
+    if (paramInt == 1) {
+      if (paramBoolean)
+      {
+        paramObject = (EmoticonResp)paramObject;
+        this.a.a(paramObject.delEpId);
+        this.a.b();
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e();
+      }
     }
-    for (;;)
+    label108:
+    do
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      do
+      {
+        return;
+        this.a.a();
+        break;
+        if (paramInt != 2) {
+          break label108;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("EmosmActivity", 2, "emoticon fetch:" + paramBoolean);
+        }
+      } while (!paramBoolean);
+      this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
       return;
-      ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin(), "inside.myCardButton", 1, 3, 1, "", true);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "card_mall", "0X8004DBF", 0, 0, "", "", "", "");
-      continue;
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, PhotoListActivity.class);
-      paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getClass().getName());
-      paramView.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-      paramView.putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", false);
-      paramView.putExtra("PhotoConst.IS_SINGLE_MODE", true);
-      paramView.putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
-      paramView.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
-      paramView.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-      paramInt = ProfileCardUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-      int i = ProfileCardUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity);
-      paramView.putExtra("PhotoConst.CLIP_WIDTH", paramInt);
-      paramView.putExtra("PhotoConst.CLIP_HEIGHT", i);
-      paramView.putExtra("PhotoConst.32_Bit_Config", true);
-      paramView.putExtra("PhotoConst.TARGET_WIDTH", paramInt);
-      paramView.putExtra("PhotoConst.TARGET_HEIGHT", i);
-      paramView.putExtra("PhotoConst.TARGET_PATH", ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app));
-      paramView.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
-      paramView.putExtra("action_cover_pick_gallery", true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(paramView);
-      AlbumUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, false, true);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A87", "0X8006A87", 0, 0, "", "", "", "");
-      continue;
-      paramView = new Bundle();
-      paramView.putInt("key_personal_album_enter_model", 2);
-      paramView.putInt("_input_max", 1);
-      paramView.putBoolean("key_multiple_model_need_download_img", true);
-      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
-      localUserInfo.a = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getCurrentAccountUin();
-      paramView.putString("keyAction", "actionSelectPicture");
-      paramView.putBoolean("key_need_change_to_jpg", true);
-      QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, localUserInfo, paramView, 1020);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A88", "0X8006A88", 0, 0, "", "", "", "");
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1021);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8006A89", "0X8006A89", 0, 0, "", "", "", "");
+    } while (paramInt != 17);
+    if (paramBoolean)
+    {
+      paramObject = ((EmoticonResp)paramObject).ids.iterator();
+      while (paramObject.hasNext())
+      {
+        Integer localInteger = (Integer)paramObject.next();
+        this.a.a(localInteger.intValue());
+      }
     }
+    this.a.a();
+    this.a.b();
   }
 }
 

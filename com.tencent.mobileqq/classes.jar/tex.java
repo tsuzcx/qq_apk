@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.contacts.base.CardConfigManager;
 
 public class tex
+  implements Runnable
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  public tex(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public tex(PublicAccountInfo paramPublicAccountInfo)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
+    CardConfigManager localCardConfigManager = new CardConfigManager(this.a.app);
+    PermisionPrivacyActivity.a(this.a, localCardConfigManager.a());
+    this.a.runOnUiThread(new tey(this));
   }
 }
 

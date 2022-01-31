@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import IMMsgBodyPack.MsgType0x210;
+import com.tencent.av.service.QavWrapper;
+import com.tencent.av.service.QavWrapper.OnReadyListener;
+import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
 
-public final class ztp
-  implements DialogInterface.OnClickListener
+public class ztp
+  implements QavWrapper.OnReadyListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ztp(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210) {}
+  
+  public void a(QavWrapper paramQavWrapper)
   {
-    paramDialogInterface.dismiss();
+    paramQavWrapper.b(this.jdField_a_of_type_IMMsgBodyPackMsgType0x210.vProtobuf);
+    paramQavWrapper.a();
   }
 }
 

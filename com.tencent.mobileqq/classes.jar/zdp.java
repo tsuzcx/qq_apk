@@ -1,25 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.theme.diy.ThemeBackground;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class zdp
-  extends SendMessageHandler.SendMessageRunnable
+  implements Runnable
 {
-  public zdp(MessageHandler paramMessageHandler, msg_svc.PbSendMsgReq paramPbSendMsgReq, int paramInt, long paramLong) {}
+  public zdp(FrameHelperActivity paramFrameHelperActivity, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.PbReceiptRead", null);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.extraData.putLong("msgSeq", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putInt("msgtype", 2);
-    localToServiceMsg.extraData.putString("uin", Long.toString(this.jdField_a_of_type_Long));
-    localToServiceMsg.extraData.putLong("timeOut", this.c);
-    localToServiceMsg.extraData.putInt("retryIndex", this.b);
-    localToServiceMsg.setTimeout(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
+    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.removeMessages(15);
+    ThemeBackground localThemeBackground = ThemeBackground.getThemeBgObj(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext(), 1, "setting");
+    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.sendMessage(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.obtainMessage(15, localThemeBackground));
   }
 }
 

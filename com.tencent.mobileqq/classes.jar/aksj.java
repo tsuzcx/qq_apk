@@ -1,66 +1,33 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import oicq.wlogin_sdk.tools.util;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 
-class aksj
-  implements Runnable
+public class aksj
+  extends Handler
 {
-  aksj(aksi paramaksi, byte[] paramArrayOfByte, String paramString) {}
-  
-  public void run()
+  public aksj(WerewolvesPluginManager paramWerewolvesPluginManager, Looper paramLooper)
   {
-    this.jdField_a_of_type_Aksi.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
-    if (this.jdField_a_of_type_Aksi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a != null) {
-      for (;;)
-      {
-        try
-        {
-          if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0)) {
-            localStringBuilder = new StringBuilder();
-          }
-        }
-        catch (Exception localException2)
-        {
-          StringBuilder localStringBuilder;
-          String str;
-          Object localObject;
-          localException2.printStackTrace();
-          continue;
-          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_Aksi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAuthorized(this.jdField_a_of_type_Aksi.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aksi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a, "2");
-          continue;
-        }
-        try
-        {
-          str = util.buf_to_string(this.jdField_a_of_type_ArrayOfByte);
-          this.jdField_a_of_type_Aksi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + str);
-          this.jdField_a_of_type_Aksi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d = this.jdField_a_of_type_Aksi.jdField_a_of_type_Long;
-          if (this.jdField_a_of_type_Aksi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
-          {
-            ((TMAssistantCallYYB_V1)this.jdField_a_of_type_Aksi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAuthorized(this.jdField_a_of_type_Aksi.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aksi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a, "2");
-            this.jdField_a_of_type_Aksi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = null;
-            if (this.jdField_a_of_type_Aksi.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-              this.jdField_a_of_type_Aksi.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-            }
-            return;
-          }
-        }
-        catch (Exception localException1)
-        {
-          localException1.printStackTrace();
-          localObject = null;
-        }
-      }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.arg1;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    LogUtility.e("MyAppApi", "startToAuthorizedDirect->onGetA1 mLastAuthorizeParam = null, needCarryQQIdentity = true");
+    ((WerewolvesHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(107)).a(3, true, Integer.valueOf(i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksj
  * JD-Core Version:    0.7.0.1
  */

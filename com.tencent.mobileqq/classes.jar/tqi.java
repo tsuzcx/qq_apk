@@ -1,19 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import android.os.Handler;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
 public class tqi
-  implements DialogInterface.OnKeyListener
+  implements Runnable
 {
-  public tqi(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public tqi(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    if (RegisterSendUpSms.a(this.a) == 1)
+    {
+      RegisterSendUpSms.a(this.a).setText("重新发送");
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      RegisterSendUpSms.a(this.a).setClickable(true);
+      RegisterSendUpSms.a(this.a, 0);
+      RegisterSendUpSms.b(this.a, 10);
+      return;
     }
-    return false;
+    RegisterSendUpSms.b(this.a);
+    RegisterSendUpSms.a(this.a).setText("正在验证(" + RegisterSendUpSms.a(this.a) + "s)");
+    this.a.a.postDelayed(this, 1000L);
   }
 }
 

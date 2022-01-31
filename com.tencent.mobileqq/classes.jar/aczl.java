@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetApkNameCallback;
 
 public class aczl
-  implements Runnable
+  implements UniformDownloadUtil.GetApkNameCallback
 {
-  public aczl(SendBottomBar paramSendBottomBar) {}
+  public aczl(UniformDownloadMgr paramUniformDownloadMgr, String paramString) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    new aczm(this).execute(new Object[0]);
+    new Handler(Looper.getMainLooper()).post(new aczm(this, paramString));
   }
 }
 

@@ -38,7 +38,7 @@ public class FriendListOpenFrame$FriendListAdapter
   
   public int a()
   {
-    return 2130969057;
+    return 2130969056;
   }
   
   public int a(String paramString)
@@ -196,13 +196,13 @@ public class FriendListOpenFrame$FriendListAdapter
     Bitmap localBitmap;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971512, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971560, paramViewGroup, false);
       paramViewGroup = new FriendListOpenFrame.ViewHolder();
-      paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363915));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131363914));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363916));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362701));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131362736));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363938));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131363937));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363939));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131362754));
       paramView.setTag(paramViewGroup);
       if (i >= 0) {
         break label417;
@@ -227,7 +227,7 @@ public class FriendListOpenFrame$FriendListAdapter
       if (localBitmap != null) {
         break label391;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839128);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839132);
       ImageLoader.a().a(localFriend.d, this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame);
     }
     for (;;)

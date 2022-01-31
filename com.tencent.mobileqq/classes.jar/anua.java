@@ -1,18 +1,16 @@
-import android.os.Message;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoLabel;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class anua
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public anua(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public anua(EditVideoLabel paramEditVideoLabel) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    this.a.a.a(0);
   }
 }
 

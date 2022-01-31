@@ -1,14 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class mnu
   implements Runnable
 {
-  public mnu(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  public mnu(FastWebArticleInfo paramFastWebArticleInfo, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
-    QQToast.a(FastWebVideoFeedsPlayManager.a(this.a), 1, "无网络连接,请检测网络配置!", 0).a();
+    ReadInJoyLogicEngine.a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, 2, new mnv(this));
   }
 }
 

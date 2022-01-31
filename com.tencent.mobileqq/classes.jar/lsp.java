@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
+import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
+import java.util.ArrayList;
 
-public class lsp
-  implements UserOperationModule.Ox978RespCallBack
+class lsp
+  implements KandianPopupWindow.OnUninterestConfirmListener
 {
-  public lsp(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
+  lsp(lso paramlso) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
   {
-    if ((paramBoolean) && (paramInt == 1)) {
-      ThreadManager.post(new lsq(this), 5, null, true);
-    }
+    ReadInJoyHeaderPresenter.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel, paramInt, paramArrayList, paramObject);
   }
 }
 

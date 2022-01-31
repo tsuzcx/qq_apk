@@ -1,137 +1,107 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
+import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 
 public class lpu
   implements Runnable
 {
-  public lpu(ArticleInfoModule paramArticleInfoModule, boolean paramBoolean, List paramList1, List paramList2, int paramInt) {}
+  public lpu(ArticleInfoModule paramArticleInfoModule, List paramList, ConcurrentHashMap paramConcurrentHashMap) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    ArrayList localArrayList2 = new ArrayList();
+    ArrayList localArrayList1 = new ArrayList();
+    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject;
+    long l;
+    int i;
+    label161:
+    ConcurrentHashMap localConcurrentHashMap;
+    Iterator localIterator2;
+    for (;;)
     {
-      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() != 1) || (this.b == null) || (this.b.isEmpty())) {
-        if (QLog.isColorLevel()) {
-          QLog.e("ArticleInfoModule", 2, "###onGetVideoRealtimeReplaceList: reqArticleList  szie != 1 or articleInfoList is empty.");
+      if (localIterator1.hasNext())
+      {
+        localObject = (oidb_cmd0x8c8.FeedsInfo)localIterator1.next();
+        if ((((oidb_cmd0x8c8.FeedsInfo)localObject).feeds_type.has()) && (((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.has()) && (((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.uint64_feeds_id.has()))
+        {
+          l = ((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.uint64_feeds_id.get();
+          i = ((oidb_cmd0x8c8.FeedsInfo)localObject).feeds_type.get();
+          localObject = l + "" + i;
+          localObject = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+          if (localObject != null)
+          {
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a((Entity)localObject);
+            localConcurrentHashMap = (ConcurrentHashMap)ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule).get(Integer.valueOf(0));
+            if (localConcurrentHashMap != null)
+            {
+              localIterator2 = localConcurrentHashMap.values().iterator();
+              do
+              {
+                if (!localIterator2.hasNext()) {
+                  break;
+                }
+                localObject = (ArticleInfo)localIterator2.next();
+              } while ((((ArticleInfo)localObject).mFeedId != l) || (((ArticleInfo)localObject).mFeedType != i));
+            }
+          }
         }
       }
-      long l2;
-      StringBuilder localStringBuilder;
-      Object localObject2;
-      long l1;
-      Object localObject3;
+    }
+    for (;;)
+    {
+      if (localObject != null)
+      {
+        localConcurrentHashMap.remove(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
+        ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, Integer.valueOf(0), (ArticleInfo)localObject);
+        localArrayList2.add(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
+      }
+      localConcurrentHashMap = (ConcurrentHashMap)ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule).get(Integer.valueOf(70));
+      if (localConcurrentHashMap == null) {
+        break;
+      }
+      localIterator2 = localConcurrentHashMap.values().iterator();
       do
       {
-        do
-        {
-          return;
-          l2 = ((Long)this.jdField_a_of_type_JavaUtilList.get(0)).longValue();
-          localStringBuilder = new StringBuilder("\n");
-          localObject1 = this.b.iterator();
-          i = 0;
-          if (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (ArticleInfo)((Iterator)localObject1).next();
-            localStringBuilder.append("实时替换 article【" + i + "】 id : " + ((ArticleInfo)localObject2).mArticleID + " seq : " + ((ArticleInfo)localObject2).mRecommendSeq + " title : " + ReadInJoyUtils.c(((ArticleInfo)localObject2).mTitle) + " , groupID : " + ((ArticleInfo)localObject2).mGroupId + " algorithmID : " + ((ArticleInfo)localObject2).mAlgorithmID + " strategyId : " + ((ArticleInfo)localObject2).mStrategyId);
-            if (QLog.isColorLevel()) {
-              if (((ArticleInfo)localObject2).mSocialFeedInfo != null)
-              {
-                localStringBuilder.append(" " + ((ArticleInfo)localObject2).mSocialFeedInfo);
-                localStringBuilder.append("\n");
-              }
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              localStringBuilder.append("\n");
-              continue;
-              localStringBuilder.append("\n");
-            }
-          }
-          QLog.i("ArticleInfoModule", 1, "###onGetVideoRealtimeReplaceList success=" + this.jdField_a_of_type_Boolean + " channelId=" + this.jdField_a_of_type_Int + ", reqArticleID: " + l2 + localStringBuilder.toString());
-          localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(Integer.valueOf(this.jdField_a_of_type_Int));
-          localObject2 = ((List)localObject1).iterator();
-          l1 = -1L;
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (Long)((Iterator)localObject2).next();
-            ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)localObject3);
-            if (l2 == localArticleInfo.mArticleID)
-            {
-              l1 = ((Long)localObject3).longValue();
-              QLog.i("ArticleInfoModule", 1, "###onGetVideoRealtimeReplaceList find the original article seq：" + localObject3 + ", reqArticleID: " + l2 + ", title : " + ReadInJoyUtils.c(localArticleInfo.mTitle));
-            }
-          }
-        } while (l1 == -1L);
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder.setLength(0);
-          localStringBuilder.append("current seq list >>").append("\n");
-          i = 0;
-          while (i < ((List)localObject1).size())
-          {
-            localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)((List)localObject1).get(i));
-            localStringBuilder.append("article [" + i + "] seq : " + ((List)localObject1).get(i) + ", id : " + ((ArticleInfo)localObject2).mArticleID + " title : " + ReadInJoyUtils.c(((ArticleInfo)localObject2).mTitle));
-            localStringBuilder.append("\n");
-            i += 1;
-          }
-          QLog.d("ArticleInfoModule", 2, localStringBuilder.toString());
+        if (!localIterator2.hasNext()) {
+          break;
         }
-        localObject2 = (ConcurrentHashMap)ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule).get(Integer.valueOf(this.jdField_a_of_type_Int));
-      } while (localObject2 == null);
-      int k = ((List)localObject1).size();
-      int j = this.b.size();
-      int i = 0;
-      boolean bool;
-      while (i < k)
+        localObject = (ArticleInfo)localIterator2.next();
+      } while ((((ArticleInfo)localObject).mFeedId != l) || (((ArticleInfo)localObject).mFeedType != i));
+      for (;;)
       {
-        long l3 = ((Long)((List)localObject1).get(i)).longValue();
-        if (((0xFFFFFF00 & l1) == (0xFFFFFF00 & l3)) && (l3 >= l1))
-        {
-          localObject3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l3));
-          ((ArticleInfo)localObject3).mRecommendSeq = (j + l3);
-          ((ConcurrentHashMap)localObject2).remove(Long.valueOf(l3));
-          bool = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(Long.valueOf(((ArticleInfo)localObject3).mArticleID));
-          ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, Integer.valueOf(this.jdField_a_of_type_Int), (ArticleInfo)localObject3, true, bool);
+        if (localObject == null) {
+          break label499;
         }
-        i += 1;
+        localConcurrentHashMap.remove(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
+        ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, Integer.valueOf(70), (ArticleInfo)localObject);
+        localArrayList1.add(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
+        break;
+        QLog.d("ArticleInfoModule", 1, "remove artileinfo cache is null while feedid = " + l + "feedtype" + i);
+        break label161;
+        localObject = new ArrayList(localArrayList2);
+        localArrayList1 = new ArrayList(localArrayList1);
+        ThreadManager.getUIHandler().post(new lpv(this, (List)localObject, localArrayList1));
+        return;
+        localObject = null;
       }
-      i = j - 1;
-      while (i >= 0)
-      {
-        localObject1 = (ArticleInfo)this.b.get(i);
-        ((ArticleInfo)localObject1).mRecommendSeq = (j + l1 - 1L - i);
-        bool = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(Long.valueOf(((ArticleInfo)localObject1).mArticleID));
-        ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, Integer.valueOf(this.jdField_a_of_type_Int), (ArticleInfo)localObject1, true, bool);
-        i -= 1;
-      }
-      Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(Integer.valueOf(this.jdField_a_of_type_Int));
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder.setLength(0);
-        localStringBuilder.append("new seq list >>").append("\n");
-        i = 0;
-        while (i < ((List)localObject1).size())
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(Integer.valueOf(this.jdField_a_of_type_Int), (Long)((List)localObject1).get(i));
-          localStringBuilder.append("article [" + i + "] seq : " + ((List)localObject1).get(i) + ", id : " + ((ArticleInfo)localObject2).mArticleID + " title : " + ReadInJoyUtils.c(((ArticleInfo)localObject2).mTitle));
-          localStringBuilder.append("\n");
-          i += 1;
-        }
-        QLog.d("ArticleInfoModule", 2, localStringBuilder.toString());
-      }
-      ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, l2, (List)localObject1, this.b);
-      return;
+      label499:
+      break;
+      localObject = null;
     }
-    QLog.e("ArticleInfoModule", 1, "###onGetVideoRealtimeReplaceList failure");
   }
 }
 

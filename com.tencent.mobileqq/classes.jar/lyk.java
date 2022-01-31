@@ -1,55 +1,99 @@
-import android.os.Message;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.FileUploadController.FileUploadListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.ImageUploadController;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
+import org.json.JSONObject;
 
 public class lyk
-  extends TransProcessorHandler
+  extends ReadInJoyObserver
 {
-  public lyk(ImageUploadController paramImageUploadController) {}
+  public lyk(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void b(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != 10)) {}
-    while (localFileMsg.f.equals(ImageUploadController.a(this.a))) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    case 1002: 
-    case 1004: 
-    default: 
-      return;
-    case 1001: 
-      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener != null) {
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener.a();
-      }
-      ImageUploadController.a(this.a, System.currentTimeMillis());
-      return;
-    case 1003: 
-      ImageUploadController.b(this.a, System.currentTimeMillis());
-      PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 0, String.valueOf(ImageUploadController.a(this.a)), String.valueOf(ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.a(this.a) - ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.c(this.a) - ImageUploadController.d(this.a)));
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send finished!");
-      }
-      ImageUploadController.a(this.a, localFileMsg.f);
-      ImageUploadController.b(this.a, localFileMsg.i);
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler mImageMd5=" + ImageUploadController.a(this.a) + ", mImageUrl=" + ImageUploadController.b(this.a));
-      }
-      ImageUploadController.a(this.a, 0, ImageUploadController.b(this.a), ImageUploadController.a(this.a), null);
-      return;
-    }
-    ImageUploadController.b(this.a, System.currentTimeMillis());
-    PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 1, String.valueOf(ImageUploadController.a(this.a)), String.valueOf(ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.a(this.a) - ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.c(this.a) - ImageUploadController.d(this.a)));
     if (QLog.isColorLevel()) {
-      QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send error:" + localFileMsg.g);
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "onDeliverUpMasterResult retCode=" + paramInt1 + ", feedsId=" + paramLong + ", rowkey=" + paramString1 + ", status=" + paramInt2 + ", comment=" + paramString2);
     }
-    ImageUploadController.a(this.a, 1004, null, null, null);
+    ReadInJoyDeliverVideoActivity.b(this.a, true);
+    ReadInJoyDeliverVideoActivity.a(this.a, paramInt1);
+    ReadInJoyDeliverVideoActivity.b(this.a, paramInt1);
+    if (paramInt1 == 0)
+    {
+      ReadInJoyDeliverVideoActivity.a(this.a, 100.0F);
+      if (ReadInJoyDeliverVideoActivity.a(this.a))
+      {
+        ThreadManager.post(new lyl(this), 5, null, false);
+        ReadInJoyDeliverVideoActivity.a(this.a);
+        ReadInJoyDeliverVideoActivity.a(this.a, -1);
+        ReadInJoyDeliverVideoActivity.c(this.a, true);
+      }
+      for (;;)
+      {
+        try
+        {
+          localJSONObject = new JSONObject();
+          if (!TextUtils.isEmpty(paramString2)) {
+            continue;
+          }
+          paramString2 = "";
+          localJSONObject.put("type", 4);
+          localJSONObject.put("comment", new String(Base64Util.encode(paramString2.getBytes(), 0)));
+          localJSONObject.put("feedsId", String.valueOf(paramLong));
+          localJSONObject.put("status", paramInt2);
+          localJSONObject.put("ugcVideoCoverUrl", ReadInJoyDeliverVideoActivity.a(this.a));
+          localJSONObject.put("ugcVideoDuration", ReadInJoyDeliverVideoActivity.a(this.a));
+          localJSONObject.put("ugcVideoRowkey", paramString1);
+          localJSONObject.put("ugcVideoWidth", ReadInJoyDeliverVideoActivity.a(this.a));
+          localJSONObject.put("ugcVideoHeight", ReadInJoyDeliverVideoActivity.b(this.a));
+          if (ReadInJoyDeliverVideoActivity.c(this.a) != 12) {
+            continue;
+          }
+          localJSONObject.put("feedsType", 4);
+          paramString1 = localJSONObject.toString();
+          this.a.getIntent().putExtra("arg_result_json", paramString1);
+          if (QLog.isColorLevel()) {
+            QLog.d("ReadInJoyDeliverVideoActivity", 2, "onDeliverUpMasterResult resultJson=" + paramString1);
+          }
+        }
+        catch (Exception paramString1)
+        {
+          JSONObject localJSONObject;
+          continue;
+        }
+        if (!ReadInJoyDeliverVideoActivity.a(this.a)) {
+          this.a.finish();
+        }
+        ReadInJoyDeliverVideoActivity.c(this.a, 0);
+        ReadInJoyLogicEngine.a().b(true);
+        ReadInJoyHelper.z(this.a.app, 1);
+        ReadInJoyDeliverVideoActivity.a(this.a).a(ReadInJoyDeliverVideoActivity.b(this.a));
+        return;
+        ReadInJoyDeliverVideoActivity.b(this.a);
+        ReadInJoyDeliverVideoActivity.a(this.a, 2, this.a.getString(2131438883));
+        break;
+        localJSONObject.put("type", 5);
+        continue;
+        if (ReadInJoyDeliverVideoActivity.c(this.a) == 13) {
+          localJSONObject.put("feedsType", 5);
+        }
+      }
+    }
+    if (paramInt1 == 33)
+    {
+      ReadInJoyDeliverVideoActivity.b(this.a);
+      ReadInJoyDeliverVideoActivity.b(this.a, 1, this.a.getString(2131438869));
+      ReadInJoyDeliverVideoActivity.c(this.a, 1006);
+      return;
+    }
+    ReadInJoyDeliverVideoActivity.b(this.a);
+    ReadInJoyDeliverVideoActivity.c(this.a, 1, this.a.getString(2131438884));
+    ReadInJoyDeliverVideoActivity.c(this.a, 1006);
   }
 }
 

@@ -1,16 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import com.tencent.mobileqq.utils.ChnToSpell.CharSpelling;
+import java.util.Comparator;
 
 public class wob
-  implements View.OnClickListener
+  implements Comparator
 {
-  public wob(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
+  public wob(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(View paramView)
+  public int a(woe paramwoe1, woe paramwoe2)
   {
-    this.a.a.setText("");
+    paramwoe1 = paramwoe1.a.name;
+    paramwoe2 = paramwoe2.a.name;
+    if ((paramwoe1 == null) && (paramwoe2 == null)) {}
+    int j;
+    int k;
+    do
+    {
+      return 0;
+      if ((paramwoe1 == null) && (paramwoe2 != null)) {
+        return -1;
+      }
+      if ((paramwoe1 != null) && (paramwoe2 == null)) {
+        return 1;
+      }
+      j = paramwoe1.length();
+      k = paramwoe2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
+      {
+        char c1 = paramwoe1.charAt(i);
+        char c2 = paramwoe2.charAt(i);
+        if (c1 != c2)
+        {
+          paramwoe1 = ChnToSpell.a(c1, i);
+          paramwoe2 = ChnToSpell.a(c2, i);
+          if (paramwoe1.jdField_a_of_type_Int == paramwoe2.jdField_a_of_type_Int) {
+            return paramwoe1.jdField_a_of_type_JavaLangString.compareTo(paramwoe2.jdField_a_of_type_JavaLangString);
+          }
+          return paramwoe1.jdField_a_of_type_Int - paramwoe2.jdField_a_of_type_Int;
+        }
+        i += 1;
+      }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 

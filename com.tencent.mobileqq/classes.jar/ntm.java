@@ -1,34 +1,66 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
 
 public class ntm
+  implements QQStoryMainController.QQStoryMainView
 {
-  public int a;
-  public CommentEntry a;
-  private int b = -1;
+  public ntm(QQStoryMainActivity paramQQStoryMainActivity) {}
   
-  public ntm(DetailCommentHelper paramDetailCommentHelper)
+  public View a()
   {
-    this.jdField_a_of_type_Int = -1;
+    return QQStoryMainActivity.a(this.a);
   }
   
-  private void a()
+  public ImageView a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = null;
-    this.jdField_a_of_type_Int = -1;
-    this.b = -1;
+    return this.a.rightViewImg;
   }
   
-  public void a(CommentEntry paramCommentEntry, int paramInt)
+  public TextView a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
-    this.b = paramCommentEntry.commentId;
-    this.jdField_a_of_type_Int = paramInt;
+    return this.a.rightViewText;
   }
   
-  public boolean a(CommentEntry paramCommentEntry)
+  public void a()
   {
-    return paramCommentEntry.commentId != this.b;
+    this.a.onBackEvent();
+  }
+  
+  public void a(String paramString)
+  {
+    QQStoryMainActivity.a(this.a, paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.startTitleProgress();
+      return;
+    }
+    this.a.stopTitleProgress();
+  }
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      QQStoryMainActivity.a(this.a, "日迹", "轻触回顶部");
+      return;
+    }
+    a("日迹");
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    QQStoryMainActivity.a(this.a);
   }
 }
 

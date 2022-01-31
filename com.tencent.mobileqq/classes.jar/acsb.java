@@ -1,45 +1,48 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TroopFileVideoOnlinePlayManager.TroopFileWhiteListCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
+import android.content.Context;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public final class acsb
-  extends ProtoUtils.TroopProtocolObserver
+public class acsb
+  implements Runnable
 {
-  public acsb(TroopFileVideoOnlinePlayManager.TroopFileWhiteListCallback paramTroopFileWhiteListCallback) {}
+  public acsb(QfileLocalFilePicTabView paramQfileLocalFilePicTabView, Context paramContext) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if (paramInt == 0) {
-      paramBundle = new oidb_0x6e7.RspBody();
+    HashMap localHashMap = (HashMap)FileCategoryUtil.a(this.jdField_a_of_type_AndroidContentContext);
+    if (localHashMap == null) {
+      localHashMap = new HashMap();
     }
-    do
+    for (;;)
     {
-      try
+      FileCategoryUtil.a(true, FMSettings.a().b(), ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
+      Object localObject1 = FMSettings.a().a();
+      if (localObject1 != null) {
+        FileCategoryUtil.a(true, (String)localObject1, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
+      }
+      FileCategoryUtil.a(localHashMap);
+      if (localHashMap != null)
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
-        }
-        if (this.a != null) {
-          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
+        localObject1 = localHashMap.keySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (String)((Iterator)localObject1).next();
+          if ("QQfile_recv".equalsIgnoreCase((String)localObject2) != true)
+          {
+            localObject2 = (List)localHashMap.get(localObject2);
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.a.addAll((Collection)localObject2);
+          }
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
-      }
-    } while (this.a == null);
-    this.a.a(0, -1);
+      return;
+    }
   }
 }
 

@@ -1,13 +1,23 @@
+import android.content.Context;
 import android.view.View;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.data.MessageForTroopFile;
 
-class vjt
+public class vjt
   implements Runnable
 {
-  vjt(vjs paramvjs, View paramView) {}
+  public vjt(TroopFileItemBuilder paramTroopFileItemBuilder, Context paramContext, View paramView, MessageForTroopFile paramMessageForTroopFile) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    if (!(this.jdField_a_of_type_AndroidContentContext instanceof MultiForwardActivity)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, bool);
+      return;
+    }
   }
 }
 

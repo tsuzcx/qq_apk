@@ -1,18 +1,20 @@
-import com.tencent.component.media.image.ImageManager;
+import com.tencent.common.galleryactivity.GalleryManager;
 
 public class pfd
   implements Runnable
 {
-  public pfd(ImageManager paramImageManager) {}
+  public pfd(GalleryManager paramGalleryManager) {}
   
   public void run()
   {
-    ImageManager.a(this.a, ImageManager.b());
+    this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = true;
+    GalleryManager.a(this.a, this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene);
+    GalleryManager.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pfd
  * JD-Core Version:    0.7.0.1
  */

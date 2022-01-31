@@ -56,10 +56,10 @@ import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
-import xrf;
-import xrg;
-import xrh;
-import xri;
+import xul;
+import xum;
+import xun;
+import xuo;
 
 @TargetApi(11)
 public class P2VEditMusicDialog
@@ -75,7 +75,7 @@ public class P2VEditMusicDialog
   public ProgressBar a;
   public TextView a;
   public DownloaderImp a;
-  private DataProvider.DataUpdateListener jdField_a_of_type_ComTencentBizQqstoryModelDataProvider$DataUpdateListener = new xri(this);
+  private DataProvider.DataUpdateListener jdField_a_of_type_ComTencentBizQqstoryModelDataProvider$DataUpdateListener = new xuo(this);
   public MusicGridAdapter a;
   public MusicHorizontalSeekView a;
   public QQStoryMusicInfo a;
@@ -104,8 +104,8 @@ public class P2VEditMusicDialog
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_Long = 1000L;
-    this.jdField_a_of_type_AndroidOsHandler = new xrf(this);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new xrh(this);
+    this.jdField_a_of_type_AndroidOsHandler = new xul(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new xun(this);
     super.requestWindowFeature(1);
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_b_of_type_Boolean = paramBoolean;
@@ -195,33 +195,33 @@ public class P2VEditMusicDialog
   
   public void a(Context paramContext)
   {
-    Object localObject = LayoutInflater.from(paramContext).inflate(2130970737, null);
+    Object localObject = LayoutInflater.from(paramContext).inflate(2130970785, null);
     super.setContentView((View)localObject);
     if (this.jdField_a_of_type_Int < 5000)
     {
       this.jdField_a_of_type_Long = (this.jdField_a_of_type_Int / 6);
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)((View)localObject).findViewById(2131368980));
-      this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131368984);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView = ((MusicHorizontalSeekView)((View)localObject).findViewById(2131368985));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)((View)localObject).findViewById(2131369046));
+      this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131369050);
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView = ((MusicHorizontalSeekView)((View)localObject).findViewById(2131369051));
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setOnSeekListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371745));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368986));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368987));
-      this.e = ((TextView)super.findViewById(2131371748));
-      this.f = ((TextView)super.findViewById(2131371749));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371915));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369052));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369053));
+      this.e = ((TextView)super.findViewById(2131371918));
+      this.f = ((TextView)super.findViewById(2131371919));
       this.e.setOnClickListener(this);
       this.f.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371744));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371914));
       this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131368981);
-      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)((View)localObject).findViewById(2131371747));
+      this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131369047);
+      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)((View)localObject).findViewById(2131371917));
       this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(-1);
       this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
       if (Build.VERSION.SDK_INT >= 9) {
         this.jdField_a_of_type_AndroidWidgetGridView.setOverScrollMode(2);
       }
       this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this);
-      this.jdField_c_of_type_AndroidViewView = ((View)localObject).findViewById(2131371743);
+      this.jdField_c_of_type_AndroidViewView = ((View)localObject).findViewById(2131371913);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicGridAdapter = new MusicGridAdapter(paramContext, this.jdField_a_of_type_AndroidWidgetGridView, true, true);
       this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicGridAdapter);
@@ -368,7 +368,7 @@ public class P2VEditMusicDialog
     if (!NetworkUtil.g(BaseApplication.getContext()))
     {
       f();
-      QQToast.a(BaseApplication.getContext(), 2131430016, 0).a();
+      QQToast.a(BaseApplication.getContext(), 2131430033, 0).a();
       return;
     }
     this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
@@ -378,7 +378,7 @@ public class P2VEditMusicDialog
       com.tencent.mobileqq.utils.FileUtils.d(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloaderImp.a());
       this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloaderImp.a();
     }
-    ThreadManager.post(new xrg(this, paramString, (String)localObject2), 5, null, true);
+    ThreadManager.post(new xum(this, paramString, (String)localObject2), 5, null, true);
   }
   
   public void a(String paramString, int paramInt)
@@ -561,12 +561,12 @@ public class P2VEditMusicDialog
     {
     default: 
       return;
-    case 2131371748: 
+    case 2131371918: 
       g();
       LpReportInfo_pf00064.allReport(680, 3, 5);
       dismiss();
       return;
-    case 2131371749: 
+    case 2131371919: 
       LpReportInfo_pf00064.allReport(680, 3, 6);
       h();
       return;
@@ -618,7 +618,7 @@ public class P2VEditMusicDialog
     if (!NetworkUtil.g(BaseApplication.getContext()))
     {
       f();
-      QQToast.a(BaseApplication.getContext(), 2131430016, 0).a();
+      QQToast.a(BaseApplication.getContext(), 2131430033, 0).a();
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog$IP2VMusicEditListener.h();

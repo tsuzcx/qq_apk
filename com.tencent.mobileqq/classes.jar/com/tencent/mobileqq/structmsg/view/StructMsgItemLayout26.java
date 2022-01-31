@@ -52,7 +52,7 @@ public class StructMsgItemLayout26
   {
     BubbleViewLayout localBubbleViewLayout = new BubbleViewLayout(paramContext);
     localBubbleViewLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    localBubbleViewLayout.setId(2131365643);
+    localBubbleViewLayout.setId(2131365670);
     localBubbleViewLayout.setRadius(10.0F);
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
@@ -92,7 +92,7 @@ public class StructMsgItemLayout26
         localObject1 = ((AbsStructMsgElement)localObject2).a(paramContext, null, paramBundle);
         i = AIOUtils.a(200.0F, localResources);
         if (!(localObject2 instanceof StructMsgItemCover)) {
-          break label724;
+          break label762;
         }
         localObject2 = (StructMsgItemCover)localObject2;
         if (((StructMsgItemCover)localObject2).f > 0)
@@ -100,14 +100,14 @@ public class StructMsgItemLayout26
           i = ((StructMsgItemCover)localObject2).f;
           label182:
           if ((j & 0x2) == 0) {
-            break label721;
+            break label759;
           }
           localObject2 = new RelativeLayout(paramContext);
           localObject3 = new RelativeLayout.LayoutParams(-1, i);
           ((RelativeLayout.LayoutParams)localObject3).addRule(14);
           ((RelativeLayout)localObject2).addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
           localObject1 = new ImageView(paramContext);
-          ((ImageView)localObject1).setImageResource(2130839712);
+          ((ImageView)localObject1).setImageResource(2130839718);
           localObject3 = new RelativeLayout.LayoutParams(-2, -2);
           ((RelativeLayout.LayoutParams)localObject3).addRule(13);
           ((RelativeLayout)localObject2).addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
@@ -116,9 +116,9 @@ public class StructMsgItemLayout26
       }
     }
     label294:
-    label584:
-    label594:
-    label724:
+    label622:
+    label632:
+    label762:
     for (;;)
     {
       localLinearLayout2.addView((View)localObject1, new LinearLayout.LayoutParams(-1, i));
@@ -144,7 +144,7 @@ public class StructMsgItemLayout26
               break label294;
             }
             if (!"taglist".equals(localObject3)) {
-              break label718;
+              break label756;
             }
             localLinearLayout1 = (LinearLayout)((AbsStructMsgElement)localObject2).a(paramContext, null, paramBundle);
             localObject2 = new LinearLayout.LayoutParams(-1, -2);
@@ -153,10 +153,15 @@ public class StructMsgItemLayout26
             break label294;
             localObject2 = localRelativeLayout;
             break;
+            if (localLinearLayout2 == null)
+            {
+              QLog.i("StructMsg", 1, "getView, mElements.size=" + this.jdField_a_of_type_JavaUtilArrayList.size());
+              return null;
+            }
             boolean bool = paramBundle.getBoolean("isSend", true);
-            ((BubbleViewLayout)((View)localObject2).findViewById(2131365643)).a = bool;
+            ((BubbleViewLayout)((View)localObject2).findViewById(2131365670)).a = bool;
             if (!bool) {
-              break label645;
+              break label683;
             }
             if (localLinearLayout1 != null) {
               localLinearLayout1.setPadding(AIOUtils.a(12.0F, localResources), 0, AIOUtils.a(22.0F, localResources), 0);
@@ -178,12 +183,12 @@ public class StructMsgItemLayout26
         {
           paramContext = "2";
           if ((j & 0x2) == 0) {
-            break label705;
+            break label743;
           }
           i = 1;
           paramBundle = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.uin;
           if (i == 0) {
-            break label711;
+            break label749;
           }
         }
         for (paramView = "2";; paramView = "1")
@@ -199,9 +204,9 @@ public class StructMsgItemLayout26
           paramView.setPadding(AIOUtils.a(22.0F, localResources), 0, AIOUtils.a(12.0F, localResources), 0);
           break;
           paramContext = "1";
-          break label584;
+          break label622;
           i = 0;
-          break label594;
+          break label632;
         }
       }
     }
@@ -214,7 +219,7 @@ public class StructMsgItemLayout26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout26
  * JD-Core Version:    0.7.0.1
  */

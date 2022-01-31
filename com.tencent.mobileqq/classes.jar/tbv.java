@@ -1,44 +1,27 @@
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class tbv
-  implements URLDrawable.URLDrawableListener
+  extends FriendListObserver
 {
-  public tbv(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public tbv(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    if (this.a.isFinishing()) {
+      return;
     }
-    if (PermisionPrivacyActivity.c(this.a) != null) {
-      PermisionPrivacyActivity.c(this.a).postInvalidate();
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      QQToast.a(this.a, this.a.getString(2131434517), 0).b(this.a.getTitleBarHeight());
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (PermisionPrivacyActivity.c(this.a) != null) {
-      PermisionPrivacyActivity.c(this.a).postInvalidate();
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, UIUtils.a(this.a.app.getApp(), 47.0F), UIUtils.a(this.a.app.getApp(), 14.0F));
-    }
-    if (PermisionPrivacyActivity.c(this.a) != null) {
-      PermisionPrivacyActivity.c(this.a).postInvalidate();
+    for (;;)
+    {
+      MoveToGroupActivity.b(this.a);
+      this.a.removeObserver(MoveToGroupActivity.a(this.a));
+      return;
+      QQToast.a(this.a, 2, this.a.getString(2131434515), 0).b(this.a.getTitleBarHeight());
     }
   }
 }

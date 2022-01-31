@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.bubble;
 
-import abfc;
+import abmd;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
@@ -20,31 +20,31 @@ public class ReversedNinePatchDrawable
   private static final ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter = new ColorMatrixColorFilter(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -26.0F, 0.0F, 1.0F, 0.0F, 0.0F, -26.0F, 0.0F, 0.0F, 1.0F, 0.0F, -26.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F });
   private static int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
   private int jdField_a_of_type_Int = 160;
-  private abfc jdField_a_of_type_Abfc;
+  private abmd jdField_a_of_type_Abmd;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
   private int c;
   
-  public ReversedNinePatchDrawable(Resources paramResources, abfc paramabfc)
+  public ReversedNinePatchDrawable(Resources paramResources, abmd paramabmd)
   {
-    this.jdField_a_of_type_Abfc = paramabfc;
+    this.jdField_a_of_type_Abmd = paramabmd;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     if (paramResources != null) {
       this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
     }
-    int i = paramabfc.a.getDensity();
+    int i = paramabmd.a.getDensity();
     int j = this.jdField_a_of_type_Int;
     if (i == j)
     {
-      this.jdField_b_of_type_Int = paramabfc.a.getWidth();
-      this.c = paramabfc.a.getHeight();
+      this.jdField_b_of_type_Int = paramabmd.a.getWidth();
+      this.c = paramabmd.a.getHeight();
       return;
     }
-    this.jdField_b_of_type_Int = ImageUtil.a(paramabfc.a.getWidth(), i, j);
-    this.c = ImageUtil.a(paramabfc.a.getHeight(), i, j);
+    this.jdField_b_of_type_Int = ImageUtil.a(paramabmd.a.getWidth(), i, j);
+    this.c = ImageUtil.a(paramabmd.a.getHeight(), i, j);
   }
   
   public void draw(Canvas paramCanvas)
@@ -54,13 +54,13 @@ public class ReversedNinePatchDrawable
     if (this.jdField_b_of_type_Boolean) {
       paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
     }
-    this.jdField_a_of_type_Abfc.a.draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_Abmd.a.draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.restoreToCount(i);
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    return this.jdField_a_of_type_Abfc;
+    return this.jdField_a_of_type_Abmd;
   }
   
   public int getIntrinsicHeight()
@@ -75,7 +75,7 @@ public class ReversedNinePatchDrawable
   
   public int getOpacity()
   {
-    if ((this.jdField_a_of_type_Abfc.a.hasAlpha()) || ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() < 255))) {
+    if ((this.jdField_a_of_type_Abmd.a.hasAlpha()) || ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() < 255))) {
       return -3;
     }
     return -1;

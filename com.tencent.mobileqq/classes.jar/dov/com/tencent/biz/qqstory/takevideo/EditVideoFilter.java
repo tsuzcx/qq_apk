@@ -1,6 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import andg;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Message;
@@ -15,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
+import antl;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.model.AddressDataProvider;
 import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
@@ -146,10 +146,10 @@ public class EditVideoFilter
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager = ((UnHandleTouchEventViewPager)a(2131364389));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager = ((UnHandleTouchEventViewPager)a(2131364413));
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter = new EditVideoFilter.FilterPagerAdapter(a());
     this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setAdapter(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setOnPageChangeListener(new andg(this, null));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setOnPageChangeListener(new antl(this, null));
     SLog.b("Q.qqstory.publish.edit.EditVideoFilter", "init filter view pager : " + this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager);
     c();
     j();
@@ -297,9 +297,9 @@ public class EditVideoFilter
     }
   }
   
-  public void aC_()
+  public void aE_()
   {
-    super.aC_();
+    super.aE_();
   }
   
   public void a_(int paramInt, Object paramObject)
@@ -468,12 +468,12 @@ public class EditVideoFilter
         SLog.d("Q.qqstory.publish.edit.EditVideoFilter", "it's fast black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
         break;
       }
-      localArrayList.add(new VideoEffectsFilterData("快动作", 1, 2130843360, 2));
-      localArrayList.add(new VideoEffectsFilterData("稍快动作", 9, 2130843360, 8));
+      localArrayList.add(new VideoEffectsFilterData("快动作", 1, 2130843478, 2));
+      localArrayList.add(new VideoEffectsFilterData("稍快动作", 9, 2130843478, 8));
       break;
       label492:
-      localArrayList.add(new VideoEffectsFilterData("慢动作", 2, 2130843361, 3));
-      localArrayList.add(new VideoEffectsFilterData("极慢动作", 10, 2130843361, 9));
+      localArrayList.add(new VideoEffectsFilterData("慢动作", 2, 2130843479, 3));
+      localArrayList.add(new VideoEffectsFilterData("极慢动作", 10, 2130843479, 9));
       break label201;
       if ((((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a instanceof EditTakeVideoSource)) && ("GIONEE".equalsIgnoreCase(Build.MANUFACTURER)) && ("GN9011".equalsIgnoreCase(Build.MODEL))) || (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a instanceof EditTakeVideoSource)) && ("ZTE".equalsIgnoreCase(Build.MANUFACTURER)) && ("ZTE A2017".equalsIgnoreCase(Build.MODEL))) || (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a instanceof EditTakeVideoSource)) && ("Xiaomi".equalsIgnoreCase(Build.MANUFACTURER)) && ("HM NOTE 1W".equalsIgnoreCase(Build.MODEL))) || (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a instanceof EditTakeVideoSource)) && ("OnePlus".equalsIgnoreCase(Build.MANUFACTURER)) && ("ONEPLUS A3000".equalsIgnoreCase(Build.MODEL))) || (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a instanceof EditTakeVideoSource)) && ("vivo Y67".equalsIgnoreCase(Build.MODEL))) || (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a instanceof EditTakeVideoSource)) && ("OPPO R7sm".equalsIgnoreCase(Build.MODEL))) || (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a instanceof EditTakeVideoSource)) && ("OPPO R7".equalsIgnoreCase(Build.MODEL))) || (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a instanceof EditTakeVideoSource)) && ("GN5001S".equalsIgnoreCase(Build.MODEL)))) {
         break label277;
@@ -484,7 +484,7 @@ public class EditVideoFilter
         SLog.d("Q.qqstory.publish.edit.EditVideoFilter", "it's revert black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
         break label277;
       }
-      VideoEffectsFilterData localVideoEffectsFilterData = new VideoEffectsFilterData("倒带", 3, 2130843359, 1);
+      VideoEffectsFilterData localVideoEffectsFilterData = new VideoEffectsFilterData("倒带", 3, 2130843477, 1);
       if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.h()) {}
       for (String str = "正在处理中...";; str = null)
       {

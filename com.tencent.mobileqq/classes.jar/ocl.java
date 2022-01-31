@@ -1,41 +1,66 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage.FacePackagePageEventListener;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class ocl
-  implements FaceListPage.FacePackagePageEventListener
+  extends TransProcessorHandler
 {
-  public ocl(EditVideoDoodle paramEditVideoDoodle) {}
+  public ocl(CommonPicUploadFragment paramCommonPicUploadFragment) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
-    EditVideoDoodle.a(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
-    EditVideoPartManager localEditVideoPartManager = this.a.a;
-    if (this.a.a.a()) {}
-    for (String str = "2";; str = "1")
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != CommonPicUploadFragment.a(this.a, CommonPicUploadFragment.a(this.a)))) {}
+    do
     {
-      localEditVideoPartManager.a("download_face", 0, 0, new String[] { str, paramString });
-      VideoEditReport.b("0X80075DD");
-      if (!((DoodleEmojiManager)SuperManager.a(8)).a(paramString, true)) {
-        SLog.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
+      do
+      {
+        return;
+      } while (localFileMsg.f.equals(CommonPicUploadFragment.b(this.a)));
+      switch (paramMessage.what)
+      {
+      case 1004: 
+      default: 
+        return;
+      case 1003: 
+        if (QLog.isColorLevel()) {
+          QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send finished!" + CommonPicUploadFragment.a(this.a));
+        }
+        break;
       }
+    } while (CommonPicUploadFragment.a(this.a));
+    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
+    try
+    {
+      paramMessage.mergeFrom(localFileMsg.a, 0, localFileMsg.a.length);
+      CommonPicUploadFragment.a(this.a, true);
+      CommonPicUploadFragment.b(this.a, localFileMsg.f);
+      CommonPicUploadFragment.c(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
+      CommonPicUploadFragment.d(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
+      if (QLog.isColorLevel()) {
+        QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler mUuid=" + CommonPicUploadFragment.c(this.a) + ", mPicMd5=" + CommonPicUploadFragment.b(this.a) + ", mPicUrl=" + CommonPicUploadFragment.d(this.a));
+      }
+      CommonPicUploadFragment.a(this.a).sendEmptyMessage(1005);
       return;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        localInvalidProtocolBufferMicroException.printStackTrace();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send error:" + localFileMsg.g);
+    }
+    CommonPicUploadFragment.a(this.a).sendEmptyMessage(1003);
   }
 }
 

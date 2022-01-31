@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ahwz;
+import ailc;
 import android.content.Context;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -171,7 +171,7 @@ public class FrameSprite
   
   public void a(Context paramContext, SpriteGLView paramSpriteGLView)
   {
-    ThreadManager.post(new ahwz(this, paramContext, paramSpriteGLView), 8, null, true);
+    ThreadManager.post(new ailc(this, paramContext, paramSpriteGLView), 8, null, true);
   }
   
   public void a(boolean paramBoolean)
@@ -258,7 +258,7 @@ public class FrameSprite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite
  * JD-Core Version:    0.7.0.1
  */

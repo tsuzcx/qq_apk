@@ -1,8 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anaz;
-import anba;
-import anbb;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.os.Message;
@@ -10,6 +7,9 @@ import android.support.annotation.NonNull;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
+import anre;
+import anrf;
+import anrg;
 import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
 import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.OnPlayRecycleListener;
 import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
@@ -116,12 +116,12 @@ public class EditLocalVideoPlayer
     }
     this.jdField_a_of_type_Int = ((EditLocalVideoSource)localObject).jdField_a_of_type_Int;
     this.jdField_b_of_type_Int = ((EditLocalVideoSource)localObject).jdField_b_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView = ((TrimTextureVideoView)a(2131364383));
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView = ((TrimTextureVideoView)a(2131364407));
     this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364428));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364452));
     this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
     this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a(((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation, ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth, ((EditLocalVideoSource)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364325));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364349));
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     if (QQStoryFlowCallback.a != null)
     {
@@ -141,7 +141,7 @@ public class EditLocalVideoPlayer
     localObject = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a("extra_upload_temp_directory");
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator = new MediaCodecThumbnailGenerator();
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator.a(null);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator.a(this.jdField_a_of_type_JavaLangString, (String)localObject, this.jdField_b_of_type_Boolean, 480, k, 10000, n, false, new anaz(this), new anba(this));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator.a(this.jdField_a_of_type_JavaLangString, (String)localObject, this.jdField_b_of_type_Boolean, 480, k, 10000, n, false, new anre(this), new anrf(this));
     StoryReportor.a("video_edit", "edit_local", 0, 0, new String[0]);
     a(EditVideoPlayerExport.class, this);
   }
@@ -231,15 +231,20 @@ public class EditLocalVideoPlayer
     return false;
   }
   
-  public void aC_()
+  public void aB_()
   {
-    super.aC_();
+    super.aB_();
+  }
+  
+  public void aE_()
+  {
+    super.aE_();
     b(false);
   }
   
-  public void aD_()
+  public void aF_()
   {
-    super.aD_();
+    super.aF_();
     if (this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView == null) {
       return;
     }
@@ -270,21 +275,16 @@ public class EditLocalVideoPlayer
   public void a_(IMediaPlayer paramIMediaPlayer)
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new anbb(this), 300L);
+      this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new anrg(this), 300L);
     }
     SLog.a("Q.qqstory.record.EditLocalVideoPlayer", "onPrepared %s", this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
     this.jdField_a_of_type_Boolean = true;
     b(true);
   }
   
-  public void as_() {}
+  public void au_() {}
   
-  public void at_() {}
-  
-  public void az_()
-  {
-    super.az_();
-  }
+  public void av_() {}
   
   public void b(int paramInt) {}
   
@@ -326,7 +326,7 @@ public class EditLocalVideoPlayer
       if (QLog.isColorLevel()) {
         QLog.d("zivonchen", 2, "onPlayRecycle()");
       }
-      localEditMusicExport.aq_();
+      localEditMusicExport.as_();
     }
   }
   

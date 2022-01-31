@@ -1,17 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.emoticonview.RecommendEmotionAdapter;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.PromotionEmoticonPkg;
-import java.io.File;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
+import java.util.List;
 
-public class abzq
+class abzq
+  implements Runnable
 {
-  public int a;
-  public View a;
-  public ClubContentJsonTask.PromotionEmoticonPkg a;
-  public File a;
-  public boolean a;
+  abzq(abzp paramabzp, List paramList) {}
   
-  public abzq(RecommendEmotionAdapter paramRecommendEmotionAdapter) {}
+  public void run()
+  {
+    this.jdField_a_of_type_Abzp.a.a(this.jdField_a_of_type_JavaUtilList);
+  }
 }
 
 

@@ -33,7 +33,7 @@ public class QavPanelSlideTouchListener
     this.jdField_b_of_type_AndroidWidgetImageView = paramImageView2;
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = paramShimmerTextView;
     this.jdField_c_of_type_AndroidWidgetImageView = paramImageView3;
-    this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131559889);
+    this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131559907);
     this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   

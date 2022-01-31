@@ -1,24 +1,17 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
 
 public class lsm
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public lsm(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
+  public lsm(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, String paramString1, String paramString2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      OnTopicRecommendHeaderFollowClickListener.a(this.a).dismiss();
-      return;
-      OnTopicRecommendHeaderFollowClickListener.a(this.a, false);
-    }
+    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
+    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), this.b);
   }
 }
 

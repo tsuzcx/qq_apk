@@ -1,17 +1,9 @@
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class jmp
+class jmp
   implements Runnable
 {
-  public jmp(RedPacketShareFragment paramRedPacketShareFragment) {}
+  jmp(jmn paramjmn, int paramInt) {}
   
-  public void run()
-  {
-    String str = RedPacketShareFragment.a(this.a);
-    ThreadManager.getUIHandler().post(new jmq(this, str));
-  }
+  public void run() {}
 }
 
 

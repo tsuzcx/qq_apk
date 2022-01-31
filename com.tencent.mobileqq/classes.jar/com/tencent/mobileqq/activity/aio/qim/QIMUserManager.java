@@ -47,11 +47,11 @@ import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.List;
-import vmz;
-import vna;
-import vnb;
-import vnd;
-import vnf;
+import vqb;
+import vqc;
+import vqd;
+import vqf;
+import vqh;
 
 public class QIMUserManager
 {
@@ -164,12 +164,12 @@ public class QIMUserManager
   
   public static void a(LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton)
   {
-    ThreadManager.post(new vnb(paramLinearLayout, paramXEditTextEx, paramPanelIconLinearLayout, paramPatchedButton), 8, null, true);
+    ThreadManager.post(new vqd(paramLinearLayout, paramXEditTextEx, paramPanelIconLinearLayout, paramPatchedButton), 8, null, true);
   }
   
   public static void a(TextView paramTextView)
   {
-    ThreadManager.post(new vnd(paramTextView), 8, null, true);
+    ThreadManager.post(new vqf(paramTextView), 8, null, true);
   }
   
   public static void a(SessionInfo paramSessionInfo, Context paramContext, TextView paramTextView1, TextView paramTextView2, TextView paramTextView3, ImageView paramImageView, TextView paramTextView4, LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton, ViewGroup paramViewGroup)
@@ -177,9 +177,9 @@ public class QIMUserManager
     if ((paramSessionInfo.jdField_a_of_type_Boolean) && (paramSessionInfo.d)) {
       if (paramSessionInfo.jdField_c_of_type_Boolean)
       {
-        paramTextView1.setTextColor(paramContext.getResources().getColor(2131494205));
-        paramTextView2.setTextColor(paramContext.getResources().getColor(2131494205));
-        paramTextView3.setTextColor(paramContext.getResources().getColor(2131494205));
+        paramTextView1.setTextColor(paramContext.getResources().getColor(2131494212));
+        paramTextView2.setTextColor(paramContext.getResources().getColor(2131494212));
+        paramTextView3.setTextColor(paramContext.getResources().getColor(2131494212));
         if (paramSessionInfo.jdField_c_of_type_Boolean) {
           break label110;
         }
@@ -196,31 +196,31 @@ public class QIMUserManager
       paramTextView2.setTextColor(-1);
       break;
       label110:
-      paramLinearLayout.setBackgroundResource(2130845507);
-      paramPanelIconLinearLayout.setBackgroundResource(2130845549);
-      paramPatchedButton.setBackgroundResource(2130837749);
-      paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494201));
+      paramLinearLayout.setBackgroundResource(2130845635);
+      paramPanelIconLinearLayout.setBackgroundResource(2130845677);
+      paramPatchedButton.setBackgroundResource(2130837752);
+      paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494208));
       if (paramXEditTextEx == null) {
         continue;
       }
-      paramXEditTextEx.setBackgroundResource(2130845508);
-      paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494275));
+      paramXEditTextEx.setBackgroundResource(2130845636);
+      paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494282));
       return;
-      paramLinearLayout.setBackgroundResource(2130845507);
-      paramTextView1.setTextColor(paramContext.getResources().getColor(2131494205));
-      paramTextView2.setTextColor(paramContext.getResources().getColor(2131494205));
+      paramLinearLayout.setBackgroundResource(2130845635);
+      paramTextView1.setTextColor(paramContext.getResources().getColor(2131494212));
+      paramTextView2.setTextColor(paramContext.getResources().getColor(2131494212));
       try
       {
-        paramTextView3.setBackgroundResource(2130846136);
-        paramTextView3.setTextColor(paramContext.getResources().getColor(2131494205));
-        paramPanelIconLinearLayout.setBackgroundResource(2130845549);
-        paramPatchedButton.setBackgroundResource(2130837749);
-        paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494201));
+        paramTextView3.setBackgroundResource(2130846264);
+        paramTextView3.setTextColor(paramContext.getResources().getColor(2131494212));
+        paramPanelIconLinearLayout.setBackgroundResource(2130845677);
+        paramPatchedButton.setBackgroundResource(2130837752);
+        paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494208));
         if (paramXEditTextEx == null) {
           continue;
         }
-        paramXEditTextEx.setBackgroundResource(2130845508);
-        paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494275));
+        paramXEditTextEx.setBackgroundResource(2130845636);
+        paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494282));
         return;
       }
       catch (NullPointerException paramSessionInfo)
@@ -486,7 +486,7 @@ public class QIMUserManager
     b();
     if (paramBoolean)
     {
-      ThreadManager.post(new vmz(this, paramString1, paramString2, paramQQAppInterface, paramBoolean), 8, null, true);
+      ThreadManager.post(new vqb(this, paramString1, paramString2, paramQQAppInterface, paramBoolean), 8, null, true);
       return;
     }
     if (a(paramString2))
@@ -495,7 +495,7 @@ public class QIMUserManager
       this.jdField_a_of_type_Int = 2;
       return;
     }
-    ThreadManager.post(new vna(this, paramString1, paramString2, paramBoolean), 8, null, true);
+    ThreadManager.post(new vqc(this, paramString1, paramString2, paramBoolean), 8, null, true);
   }
   
   public void a(ArrayList paramArrayList1, ArrayList paramArrayList2)
@@ -509,7 +509,7 @@ public class QIMUserManager
         localArrayList.add(((int[])paramArrayList2.get(i)).clone());
         i += 1;
       }
-      ThreadManager.postImmediately(new vnf(this, paramArrayList1, localArrayList), null, true);
+      ThreadManager.postImmediately(new vqh(this, paramArrayList1, localArrayList), null, true);
     }
   }
   

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr;
 
-import afno;
+import agau;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -464,7 +464,7 @@ public class OCRHandler
         localObject5 = ((ByteArrayOutputStream)localObject1).toByteArray();
         localObject1 = new HttpNetReq();
         ((HttpNetReq)localObject1).jdField_a_of_type_ArrayOfByte = ((byte[])localObject5);
-        ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new afno(this, paramIntent, (byte[])localObject2, (String)localObject3);
+        ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new agau(this, paramIntent, (byte[])localObject2, (String)localObject3);
         ((HttpNetReq)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject4);
         ((HttpNetReq)localObject1).jdField_a_of_type_Int = 1;
         ((HttpNetReq)localObject1).f = 57;

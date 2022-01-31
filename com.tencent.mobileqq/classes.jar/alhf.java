@@ -1,37 +1,36 @@
+import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo;
+import com.tencent.tmdownloader.ITMAssistantDownloadLogListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
-final class alhf
-  extends alhj
+public class alhf
+  implements ITMAssistantDownloadLogListener
 {
-  alhf(alhe paramalhe)
-  {
-    super(null);
-  }
+  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
   
-  public boolean a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle)
+  public alhf(DownloadManager paramDownloadManager) {}
+  
+  public void onLog(ArrayList paramArrayList)
   {
-    if (this.a.size() >= this.a.maxSize())
-    {
-      alhe.a(this.a, false);
+    if (paramArrayList == null) {
       if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+        QLog.i(DownloadManager.a, 2, "logList is null");
       }
-      return false;
-    }
-    if (paramResultBundle.a > new Date().getTime())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
-      }
-      this.a.put(paramString, paramResultBundle);
     }
     for (;;)
     {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
+      return;
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        TMAssistantDownloadLogInfo localTMAssistantDownloadLogInfo = (TMAssistantDownloadLogInfo)paramArrayList.next();
+        if (QLog.isColorLevel()) {
+          QLog.i(DownloadManager.a, 2, "logTime:" + this.jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(localTMAssistantDownloadLogInfo.logTime)) + ",logTag:" + localTMAssistantDownloadLogInfo.logTag + ",logMsg:" + localTMAssistantDownloadLogInfo.logMsg);
+        }
       }
     }
   }

@@ -1,20 +1,15 @@
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
-public final class nnf
-  implements Runnable
+public class nnf
+  implements TabBarView.OnTabChangeListener
 {
-  public nnf(TVKPreloader.PreloadItem paramPreloadItem) {}
+  public nnf(MyVideoVisibilityDialog paramMyVideoVisibilityDialog) {}
   
-  public void run()
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    Iterator localIterator = TVKPreloader.a().iterator();
-    while (localIterator.hasNext()) {
-      ((TVKPreloader.PreloadListener)localIterator.next()).a(this.a);
-    }
+    this.a.a.setCurrentItem(paramInt2);
   }
 }
 

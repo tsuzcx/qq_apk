@@ -1,6 +1,6 @@
 package cooperation.groupvideo;
 
-import alvh;
+import amll;
 import android.os.RemoteException;
 import com.tencent.av.gvideo.IGVServiceForQQ;
 import com.tencent.common.app.AppInterface;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GroupVideoWrapper
 {
-  alvh jdField_a_of_type_Alvh = new alvh(this);
+  amll jdField_a_of_type_Amll = new amll(this);
   public IGVServiceForQQ a;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   public GroupVideoWrapper.OnGVideoReadyListener a;
@@ -43,7 +43,7 @@ public class GroupVideoWrapper
   
   public void a()
   {
-    GroupVideoHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Alvh);
+    GroupVideoHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Amll);
     this.jdField_a_of_type_ComTencentAvGvideoIGVServiceForQQ = null;
     this.jdField_a_of_type_CooperationGroupvideoGroupVideoWrapper$OnGVideoReadyListener = null;
   }
@@ -52,7 +52,7 @@ public class GroupVideoWrapper
   {
     this.jdField_a_of_type_CooperationGroupvideoGroupVideoWrapper$OnGVideoReadyListener = paramOnGVideoReadyListener;
     if (this.jdField_a_of_type_ComTencentAvGvideoIGVServiceForQQ == null) {
-      GroupVideoHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, GVideoProxyService.class, this.jdField_a_of_type_Alvh, "com.gvideo.com.tencent.av.service.GVServiceForQQ");
+      GroupVideoHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, GVideoProxyService.class, this.jdField_a_of_type_Amll, "com.gvideo.com.tencent.av.service.GVServiceForQQ");
     }
   }
   

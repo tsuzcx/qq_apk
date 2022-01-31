@@ -1,16 +1,46 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.av.ui.QAVPtvTemplateAdapter;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectOperateManager;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.utils.UITools;
+import com.tencent.qphone.base.util.QLog;
 
 public class jzm
-  implements View.OnLayoutChangeListener
+  extends AnimatorListenerAdapter
 {
-  public jzm(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter) {}
+  public jzm(QavPanel paramQavPanel, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt4 - paramInt2 != paramInt8 - paramInt6) {
-      this.a.notifyDataSetChanged();
+    super.onAnimationEnd(paramAnimator);
+    if (this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_d_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_d_of_type_AndroidWidgetImageView.setVisibility(4);
+    }
+    QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel);
+    if ((this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+      float f = UITools.a(this.jdField_a_of_type_ComTencentAvUiQavPanel.getContext(), -10.0F);
+      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView, "translationY", new float[] { 0.0F, f });
+      paramAnimator.setDuration(500L);
+      paramAnimator.start();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("QavPanel", 2, "showEffectOperateAnimation onAnimationEnd");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_d_of_type_Boolean = true;
+    paramAnimator = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
+    if (paramAnimator != null) {
+      paramAnimator.c(true);
     }
   }
 }

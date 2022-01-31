@@ -1,18 +1,26 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer.TimeoutObserver;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.qphone.base.util.QLog;
 
 public class accr
-  implements View.OnClickListener
+  implements EmojiIPCAlarmer.TimeoutObserver
 {
-  public accr(FilePreviewActivity paramFilePreviewActivity) {}
+  public accr(WebIPCOperator paramWebIPCOperator) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.setResult(0, new Intent());
-    this.a.finish();
-    this.a.overridePendingTransition(2131034121, 2131034122);
+    acct localacct = this.a.a(paramInt);
+    if (localacct != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "on req timeout seq: " + paramInt);
+      }
+      Bundle localBundle = new Bundle();
+      this.a.a(localBundle, 1001);
+      localacct.a.putBundle("response", localBundle);
+      this.a.a(new accs(this, localacct));
+    }
   }
 }
 

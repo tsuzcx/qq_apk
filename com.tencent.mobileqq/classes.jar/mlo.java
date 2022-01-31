@@ -1,27 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DropDownAppInPushNotification;
 
 public class mlo
-  implements Runnable
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
+  public mlo(DropDownAppInPushNotification paramDropDownAppInPushNotification) {}
   
-  public mlo(ItemShowDispatcher paramItemShowDispatcher, AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView = paramAbsListView;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void run()
-  {
-    QLog.d(ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher), 2, "  1秒到了 ");
-    ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher, this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
-    if (ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher)) {
-      ThreadManager.getUIHandler().postDelayed(this, 1000L);
+    AppInPushNotification.a(8);
+    this.a.a(true, false);
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushNotification$OnClickListener != null) {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new mlp(this), 200L);
     }
   }
 }

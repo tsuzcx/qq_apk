@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import ajmx;
+import akbc;
 import android.util.Pair;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class SortUtils
       arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
       i += 1;
     }
-    Arrays.sort(arrayOfObject, new ajmx());
+    Arrays.sort(arrayOfObject, new akbc());
     paramArrayList.clear();
     i = 0;
     while (i < arrayOfObject.length)

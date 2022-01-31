@@ -34,8 +34,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ojk;
-import ojl;
+import oku;
+import okv;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -337,7 +337,7 @@ public class BlessVoiceChangeManager
           if (((JSONObject)localObject4).has("QQVersion"))
           {
             j = k;
-            if (IndividuationConfigInfo.a(((JSONObject)localObject4).getString("QQVersion"), "7.6.0"))
+            if (IndividuationConfigInfo.a(((JSONObject)localObject4).getString("QQVersion"), "7.6.3"))
             {
               k = 0;
               j = k;
@@ -518,7 +518,7 @@ public class BlessVoiceChangeManager
       d();
       return;
     }
-    new ojk(this, this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloaderImp, l).executeOnExecutor(Bosses.get().getExecutor(16), new FileDownloadTask.Input[] { new FileDownloadTask.Input(str1, str2, null) });
+    new oku(this, this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloaderImp, l).executeOnExecutor(Bosses.get().getExecutor(16), new FileDownloadTask.Input[] { new FileDownloadTask.Input(str1, str2, null) });
   }
   
   protected void a(QQStoryMusicInfo paramQQStoryMusicInfo)
@@ -535,7 +535,7 @@ public class BlessVoiceChangeManager
         FileUtils.a(new File((String)localObject1), localFile);
       }
       localObject2 = new VoiceChangeBasicParams((String)localObject2, i, 64000, 2, paramQQStoryMusicInfo.c);
-      VoiceChangeManager.a(BaseApplicationImpl.getContext(), (VoiceChangeBasicParams)localObject2, jdField_c_of_type_JavaLangString, new ojl(paramQQStoryMusicInfo, (String)localObject1), new VoiceChangeModeParams(false, false, false, true, true, null));
+      VoiceChangeManager.a(BaseApplicationImpl.getContext(), (VoiceChangeBasicParams)localObject2, jdField_c_of_type_JavaLangString, new okv(paramQQStoryMusicInfo, (String)localObject1), new VoiceChangeModeParams(false, false, false, true, true, null));
       localObject1 = new Properties();
       ((Properties)localObject1).setProperty("bless_param_voice_id", "" + paramQQStoryMusicInfo.c);
       BlessMtaReport.a("bless_event_voice_click", (Properties)localObject1);

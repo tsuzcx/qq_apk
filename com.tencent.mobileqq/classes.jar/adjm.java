@@ -1,34 +1,29 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
-import com.tencent.mobileqq.intervideo.huayang.Monitor;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import java.util.ArrayList;
 
-public class adjm
-  implements GroupVideoManager.CheckListener
+class adjm
+  implements FMDialogUtil.FMDialogInterface
 {
-  public adjm(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  adjm(adjk paramadjk) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      GroupVideoLoadingFragment.a(this.a, false);
-      return;
-    }
-    if (!NetworkUtil.a(GroupVideoLoadingFragment.a(this.a))) {
-      GroupVideoLoadingFragment.a(this.a, true);
-    }
-    for (;;)
-    {
-      Monitor.b("2880338");
-      return;
-      GroupVideoLoadingFragment.a(this.a, false);
-    }
+    ArrayList localArrayList = FMDataCache.b();
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    SendBottomBar.a(this.a.a).setResult(-1, localIntent);
+    SendBottomBar.a(this.a.a).finish();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adjm
  * JD-Core Version:    0.7.0.1
  */

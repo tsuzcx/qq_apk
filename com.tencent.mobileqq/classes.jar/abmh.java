@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.MatcherCallback;
+import java.util.ArrayList;
 
 public class abmh
   implements Runnable
 {
-  public abmh(ContactSyncManager paramContactSyncManager) {}
+  public abmh(WordMatchManager paramWordMatchManager, WordMatchManager.MatcherCallback paramMatcherCallback) {}
   
   public void run()
   {
-    try
-    {
-      this.a.a();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ContactSync.Manager", 2, "onQQContactRefreshed | syncAllContacts exception", localThrowable);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a.remove(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$MatcherCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abmh
  * JD-Core Version:    0.7.0.1
  */

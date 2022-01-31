@@ -1,21 +1,42 @@
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter.onMonitorUserOperationListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class zyn
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public zyn(ObjectSurfaceView paramObjectSurfaceView, String paramString1, String paramString2) {}
+  public zyn(ARVideoRecordViewProxy paramARVideoRecordViewProxy) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).size() > 0)
+    switch (paramMotionEvent.getAction())
     {
-      ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).add(this.jdField_a_of_type_JavaLangString);
-      ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.b);
-      return;
     }
-    QLog.d("ObjectSurfaceView", 1, "the dataList is null, cancel the jump action.");
+    do
+    {
+      do
+      {
+        return true;
+        ARVideoRecordViewProxy.a(this.a).setAlpha(0.5F);
+        return true;
+        ARVideoRecordViewProxy.a(this.a).setAlpha(1.0F);
+        if (!ARVideoRecordViewProxy.a(this.a))
+        {
+          ARRecordUtils.a(true);
+          ARVideoRecordViewProxy.a(this.a, true);
+          ARVideoRecordViewProxy.a(this.a).setVisibility(8);
+          ARVideoRecordViewProxy.a(this.a).clearAnimation();
+        }
+      } while (ARVideoRecordViewProxy.a(this.a) == null);
+      ARVideoRecordViewProxy.a(this.a).h();
+    } while (!QLog.isColorLevel());
+    QLog.i("ARVideoRecordViewProxy", 2, "onMonitorUserOperation");
+    return true;
   }
 }
 

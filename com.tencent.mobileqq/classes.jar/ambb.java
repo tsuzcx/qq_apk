@@ -1,23 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.CrashGuard;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.widget.DynamicGridView;
 
 public class ambb
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public ambb(CrashGuard paramCrashGuard, long paramLong) {}
+  public ambb(DynamicGridView paramDynamicGridView) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_CooperationQzoneCrashGuard.isTimeOvered.set(true);
-    QLog.i("QZLog", 1, "clear crash count with no crash");
-    LocalMultiProcConfig.putInt4Uin("key_crash_count", 0, this.jdField_a_of_type_Long);
+    DynamicGridView.b(this.a, false);
+    DynamicGridView.a(this.a);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    DynamicGridView.b(this.a, true);
+    DynamicGridView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,19 @@
-import android.os.AsyncTask;
-import com.tencent.biz.pubaccount.AccountDetailActivity.FriendAvatarWeakReference;
-import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class kto
-  extends AsyncTask
+  implements View.OnClickListener
 {
-  public kto(AccountDetailActivity.FriendAvatarWeakReference paramFriendAvatarWeakReference, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo) {}
+  public kto(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$FriendAvatarWeakReference.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$FriendAvatarWeakReference.a.a(-1);
+    PublicAccountAdvertisementActivity.g(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

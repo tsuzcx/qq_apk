@@ -1,38 +1,27 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class yze
-  implements INetInfoHandler
+  implements Runnable
 {
-  public yze(DataLineHandler paramDataLineHandler) {}
+  public yze(ApolloPanel paramApolloPanel) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  public void run()
   {
-    this.a.c();
-  }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.c();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.d();
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.d();
+    try
+    {
+      this.a.e();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloPanel", 1, "[reportTabExposure] failed, excetion2=", localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yze
  * JD-Core Version:    0.7.0.1
  */

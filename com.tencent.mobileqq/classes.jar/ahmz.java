@@ -1,20 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceScoreFilter;
+import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 
 public class ahmz
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public ahmz(DanceScoreFilter paramDanceScoreFilter) {}
+  public ahmz(SplitEffectsCameraCaptureView paramSplitEffectsCameraCaptureView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    DanceScoreFilter.a(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer = new RenderBuffer(this.a.f, this.a.g, 33984);
+    this.a.k = this.a.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
+    if ((this.a.h) && (this.a.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(this.a.f, this.a.g, this.a.getWidth(), this.a.getHeight());
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

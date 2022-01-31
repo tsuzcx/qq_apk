@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.confess;
 
-import abkq;
-import abkr;
-import abks;
-import abkt;
+import abrr;
+import abrs;
+import abrt;
+import abru;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.MessageHandlerUtils;
@@ -25,14 +25,14 @@ public class ConfessManager
   implements Manager
 {
   public static final Object b;
-  public abkt a;
+  public abru a;
   public QQAppInterface a;
   final ConfessCache jdField_a_of_type_ComTencentMobileqqConfessConfessCache;
   public ConfessConfig a;
   public final FrdConfessInfo a;
   final Object jdField_a_of_type_JavaLangObject = new Object();
   final ArrayList jdField_a_of_type_JavaUtilArrayList;
-  abkt b;
+  abru b;
   
   static
   {
@@ -41,16 +41,16 @@ public class ConfessManager
   
   public ConfessManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Abkt = null;
-    this.jdField_b_of_type_Abkt = null;
+    this.jdField_a_of_type_Abru = null;
+    this.jdField_b_of_type_Abru = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqConfessFrdConfessInfo = new FrdConfessInfo(paramQQAppInterface.getAccount());
     this.jdField_a_of_type_ComTencentMobileqqConfessConfessCache = new ConfessCache();
-    ThreadManager.post(new abkq(this), 5, null, true);
+    ThreadManager.post(new abrr(this), 5, null, true);
   }
   
-  private abkt a(String paramString1, String paramString2, int paramInt)
+  private abru a(String paramString1, String paramString2, int paramInt)
   {
     for (;;)
     {
@@ -59,24 +59,24 @@ public class ConfessManager
         Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         if (((Iterator)localObject).hasNext())
         {
-          localabkt = (abkt)((Iterator)localObject).next();
-          if ((localabkt == null) || (localabkt.jdField_a_of_type_Int != paramInt) || (!TextUtils.equals(localabkt.jdField_b_of_type_JavaLangString, paramString1)) || (!TextUtils.equals(localabkt.jdField_c_of_type_JavaLangString, paramString2))) {
+          localabru = (abru)((Iterator)localObject).next();
+          if ((localabru == null) || (localabru.jdField_a_of_type_Int != paramInt) || (!TextUtils.equals(localabru.jdField_b_of_type_JavaLangString, paramString1)) || (!TextUtils.equals(localabru.jdField_c_of_type_JavaLangString, paramString2))) {
             continue;
           }
-          localObject = localabkt;
-          if (localabkt == null)
+          localObject = localabru;
+          if (localabru == null)
           {
-            localObject = new abkt();
-            ((abkt)localObject).jdField_b_of_type_JavaLangString = paramString1;
-            ((abkt)localObject).jdField_c_of_type_JavaLangString = paramString2;
-            ((abkt)localObject).jdField_a_of_type_Int = paramInt;
-            ((abkt)localObject).jdField_d_of_type_Int = 0;
+            localObject = new abru();
+            ((abru)localObject).jdField_b_of_type_JavaLangString = paramString1;
+            ((abru)localObject).jdField_c_of_type_JavaLangString = paramString2;
+            ((abru)localObject).jdField_a_of_type_Int = paramInt;
+            ((abru)localObject).jdField_d_of_type_Int = 0;
             this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
           }
           return localObject;
         }
       }
-      abkt localabkt = null;
+      abru localabru = null;
     }
   }
   
@@ -121,9 +121,9 @@ public class ConfessManager
     }
   }
   
-  public abkt a()
+  public abru a()
   {
-    return this.jdField_a_of_type_Abkt;
+    return this.jdField_a_of_type_Abru;
   }
   
   public ConfessCache a()
@@ -178,20 +178,20 @@ public class ConfessManager
   public void a(String paramString)
   {
     Integer localInteger = null;
-    abkt localabkt = this.jdField_a_of_type_Abkt;
-    this.jdField_a_of_type_Abkt = null;
-    if (localabkt != null)
+    abru localabru = this.jdField_a_of_type_Abru;
+    this.jdField_a_of_type_Abru = null;
+    if (localabru != null)
     {
-      this.jdField_b_of_type_Abkt = localabkt;
-      if (localabkt.jdField_d_of_type_Int == 1) {
-        ThreadManager.postImmediately(new abks(this, paramString, localabkt), null, false);
+      this.jdField_b_of_type_Abru = localabru;
+      if (localabru.jdField_d_of_type_Int == 1) {
+        ThreadManager.postImmediately(new abrt(this, paramString, localabru), null, false);
       }
     }
     Locale localLocale;
     if (QLog.isDevelopLevel())
     {
       localLocale = Locale.getDefault();
-      if (localabkt != null) {
+      if (localabru != null) {
         break label89;
       }
     }
@@ -200,19 +200,19 @@ public class ConfessManager
       QLog.i("ConfessManager", 4, String.format(localLocale, "leaveFrdRecConfessChat frdUin: %s, flag: %s", new Object[] { paramString, localInteger }));
       return;
       label89:
-      localInteger = Integer.valueOf(localabkt.jdField_d_of_type_Int);
+      localInteger = Integer.valueOf(localabru.jdField_d_of_type_Int);
     }
   }
   
-  public void a(String paramString, abkt paramabkt)
+  public void a(String paramString, abru paramabru)
   {
-    if ((paramabkt == null) || (TextUtils.isEmpty(paramString))) {}
+    if ((paramabru == null) || (TextUtils.isEmpty(paramString))) {}
     do
     {
       return;
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        if (paramabkt.jdField_d_of_type_Int == 1)
+        if (paramabru.jdField_d_of_type_Int == 1)
         {
           paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, 0, new int[] { -2065 });
           if ((paramString != null) && (paramString.size() > 0))
@@ -225,7 +225,7 @@ public class ConfessManager
               {
                 MessageForConfessNews localMessageForConfessNews = (MessageForConfessNews)localMessageRecord;
                 localMessageForConfessNews.parse();
-                if ((localMessageForConfessNews.nTopicId == paramabkt.jdField_a_of_type_Int) && (TextUtils.equals(paramabkt.jdField_c_of_type_JavaLangString, localMessageForConfessNews.strConfessorUin)) && (TextUtils.equals(paramabkt.jdField_b_of_type_JavaLangString, localMessageForConfessNews.strRecUin)))
+                if ((localMessageForConfessNews.nTopicId == paramabru.jdField_a_of_type_Int) && (TextUtils.equals(paramabru.jdField_c_of_type_JavaLangString, localMessageForConfessNews.strConfessorUin)) && (TextUtils.equals(paramabru.jdField_b_of_type_JavaLangString, localMessageForConfessNews.strRecUin)))
                 {
                   this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
                   this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
@@ -236,25 +236,25 @@ public class ConfessManager
         }
       }
     } while (!QLog.isDevelopLevel());
-    QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "removeFrdConfessNews frdUin: %s confessorUin: %s topicId: %s", new Object[] { paramabkt.jdField_b_of_type_JavaLangString, paramabkt.jdField_c_of_type_JavaLangString, Integer.valueOf(paramabkt.jdField_a_of_type_Int) }));
+    QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "removeFrdConfessNews frdUin: %s confessorUin: %s topicId: %s", new Object[] { paramabru.jdField_b_of_type_JavaLangString, paramabru.jdField_c_of_type_JavaLangString, Integer.valueOf(paramabru.jdField_a_of_type_Int) }));
   }
   
-  public void a(String paramString, abkt paramabkt, long paramLong1, long paramLong2)
+  public void a(String paramString, abru paramabru, long paramLong1, long paramLong2)
   {
-    if ((paramabkt == null) || (TextUtils.isEmpty(paramString))) {}
+    if ((paramabru == null) || (TextUtils.isEmpty(paramString))) {}
     for (;;)
     {
       return;
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        if (paramabkt.jdField_d_of_type_Int == 0) {
-          paramabkt.jdField_d_of_type_Int = a(paramString, paramabkt.jdField_b_of_type_JavaLangString, paramabkt.jdField_c_of_type_JavaLangString, paramabkt.jdField_a_of_type_Int);
+        if (paramabru.jdField_d_of_type_Int == 0) {
+          paramabru.jdField_d_of_type_Int = a(paramString, paramabru.jdField_b_of_type_JavaLangString, paramabru.jdField_c_of_type_JavaLangString, paramabru.jdField_a_of_type_Int);
         }
-        int i = paramabkt.jdField_d_of_type_Int;
+        int i = paramabru.jdField_d_of_type_Int;
         if (i == 1) {}
         try
         {
-          String str = paramabkt.a();
+          String str = paramabru.a();
           if (!TextUtils.isEmpty(str))
           {
             MessageRecord localMessageRecord = MessageRecordFactory.a(-2065);
@@ -267,7 +267,7 @@ public class ConfessManager
           if (!QLog.isDevelopLevel()) {
             continue;
           }
-          QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "addFrdConfessNews frdUin: %s recUin: %s, confessorUin: %s topicId: %s", new Object[] { paramString, paramabkt.jdField_b_of_type_JavaLangString, paramabkt.jdField_c_of_type_JavaLangString, Integer.valueOf(paramabkt.jdField_a_of_type_Int) }));
+          QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "addFrdConfessNews frdUin: %s recUin: %s, confessorUin: %s topicId: %s", new Object[] { paramString, paramabru.jdField_b_of_type_JavaLangString, paramabru.jdField_c_of_type_JavaLangString, Integer.valueOf(paramabru.jdField_a_of_type_Int) }));
           return;
         }
         catch (Exception localException)
@@ -292,17 +292,17 @@ public class ConfessManager
   public boolean a(String paramString)
   {
     boolean bool = true;
-    abkt localabkt = this.jdField_a_of_type_Abkt;
-    if ((TextUtils.isEmpty(paramString)) || (localabkt == null) || (!TextUtils.equals(localabkt.jdField_b_of_type_JavaLangString, paramString))) {
+    abru localabru = this.jdField_a_of_type_Abru;
+    if ((TextUtils.isEmpty(paramString)) || (localabru == null) || (!TextUtils.equals(localabru.jdField_b_of_type_JavaLangString, paramString))) {
       bool = false;
     }
     do
     {
       return bool;
-      if (localabkt.jdField_d_of_type_Int == 0) {
-        localabkt.jdField_d_of_type_Int = a(paramString, localabkt.jdField_b_of_type_JavaLangString, localabkt.jdField_c_of_type_JavaLangString, localabkt.jdField_a_of_type_Int);
+      if (localabru.jdField_d_of_type_Int == 0) {
+        localabru.jdField_d_of_type_Int = a(paramString, localabru.jdField_b_of_type_JavaLangString, localabru.jdField_c_of_type_JavaLangString, localabru.jdField_a_of_type_Int);
       }
-    } while (localabkt.jdField_d_of_type_Int == 1);
+    } while (localabru.jdField_d_of_type_Int == 1);
     return false;
   }
   
@@ -332,9 +332,9 @@ public class ConfessManager
     paramIntent.jdField_d_of_type_JavaLangString = str3;
     paramIntent.jdField_b_of_type_Int = k;
     paramIntent.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_Abkt = paramIntent;
+    this.jdField_a_of_type_Abru = paramIntent;
     if (paramIntent.jdField_d_of_type_Int != 2) {
-      ThreadManager.postImmediately(new abkr(this, paramString), null, false);
+      ThreadManager.postImmediately(new abrs(this, paramString), null, false);
     }
     if (QLog.isDevelopLevel()) {
       QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "enterFrdRecConfessChat recUin: %s, confessorUin: %s, topicId: %s, flag: %s", new Object[] { str1, str2, Integer.valueOf(i), Integer.valueOf(paramIntent.jdField_d_of_type_Int) }));
@@ -355,7 +355,7 @@ public class ConfessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessManager
  * JD-Core Version:    0.7.0.1
  */

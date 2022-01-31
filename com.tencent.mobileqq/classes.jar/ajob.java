@@ -1,21 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.mobileqq.troop.utils.TroopAppMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class ajob
+public class ajob
   implements Runnable
 {
-  public ajob(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean) {}
+  public ajob(TroopAppMgr paramTroopAppMgr, EntityManager paramEntityManager, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
-    StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, 0L, 0L, new HashMap(), "");
+    if (QLog.isColorLevel())
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "before updateEntity(" + this.jdField_a_of_type_Int + ")", (List)localObject);
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)((Iterator)localObject).next();
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, localTroopAIOAppInfo);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "after updateEntity(" + this.jdField_a_of_type_Int + ")", (List)localObject);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajob
  * JD-Core Version:    0.7.0.1
  */

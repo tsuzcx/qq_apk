@@ -1,22 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
-public class tfa
-  extends Handler
+class tfa
+  implements Runnable
 {
-  public tfa(QQBroadcastActivity paramQQBroadcastActivity) {}
+  tfa(tez paramtez, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a.a == null);
-    this.a.a.changeCursor(this.a.a());
+    PermisionPrivacyActivity.a(this.jdField_a_of_type_Tez.a).setRightText(this.jdField_a_of_type_JavaLangString);
+    PermisionPrivacyActivity.a(this.jdField_a_of_type_Tez.a).setContentDescription("不常联系好友 " + this.jdField_a_of_type_JavaLangString);
   }
 }
 

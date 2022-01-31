@@ -1,20 +1,25 @@
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.wadl.ipc.WadlParams;
 
-class angj
-  implements Runnable
+public final class angj
+  implements Parcelable.Creator
 {
-  angj(angh paramangh) {}
-  
-  public void run()
+  public WadlParams a(Parcel paramParcel)
   {
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.b = null;
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = true;
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Angg.a, this.a.jdField_a_of_type_Angg.a.a);
+    WadlParams localWadlParams = new WadlParams("");
+    localWadlParams.a(paramParcel);
+    return localWadlParams;
+  }
+  
+  public WadlParams[] a(int paramInt)
+  {
+    return new WadlParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angj
  * JD-Core Version:    0.7.0.1
  */

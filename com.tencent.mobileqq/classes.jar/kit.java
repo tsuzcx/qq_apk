@@ -1,20 +1,20 @@
-import android.view.View;
-import com.tencent.av.widget.stageview.StageEffectView;
-import java.util.Comparator;
+import com.tencent.biz.AuthorizeConfig;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class kit
-  implements Comparator
+  implements Runnable
 {
-  public kit(StageEffectView paramStageEffectView) {}
+  public kit(AuthorizeConfig paramAuthorizeConfig) {}
   
-  public int a(Integer paramInteger1, Integer paramInteger2)
+  public void run()
   {
-    paramInteger1 = (kjb)this.a.getChildAt(paramInteger1.intValue()).getTag();
-    paramInteger2 = (kjb)this.a.getChildAt(paramInteger2.intValue()).getTag();
-    if (paramInteger1.c < paramInteger2.c) {
-      return 1;
+    this.a.h();
+    if (this.a.h == null) {
+      this.a.f();
     }
-    return -1;
+    if (AuthorizeConfig.a.compareAndSet(false, true)) {
+      this.a.c();
+    }
   }
 }
 

@@ -100,7 +100,7 @@ public class GLSurfaceUtil
     }
     try
     {
-      localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130842499);
+      localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130842591);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

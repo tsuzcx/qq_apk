@@ -8,10 +8,10 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.async.JobContext;
 import com.tribe.async.async.JobSegment;
 import com.tribe.async.parallel.ParallelStream;
-import nsu;
-import nsw;
-import nsy;
-import nta;
+import nuh;
+import nuj;
+import num;
+import nuo;
 
 public class DetailFeedAllInfoPullSegment
   extends JobSegment
@@ -22,7 +22,7 @@ public class DetailFeedAllInfoPullSegment
   
   private void a(String paramString)
   {
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new nta(this), paramString);
+    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new nuo(this), paramString);
     FeedCommentSync localFeedCommentSync1;
     FeedCommentSync localFeedCommentSync2;
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a())
@@ -30,9 +30,9 @@ public class DetailFeedAllInfoPullSegment
       localFeedCommentSync1 = new FeedCommentSync(paramString, 2, "", 0);
       localFeedCommentSync2 = new FeedCommentSync(paramString, 2, "", 1);
     }
-    for (this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new nsy(this, 0), paramString).map(new nsy(this, 1), paramString).map(new nsw(this), localFeedCommentSync1).map(new nsw(this), localFeedCommentSync2);; this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new nsy(this, -1), paramString).map(new nsw(this), localFeedCommentSync1))
+    for (this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new num(this, 0), paramString).map(new num(this, 1), paramString).map(new nuj(this), localFeedCommentSync1).map(new nuj(this), localFeedCommentSync2);; this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new num(this, -1), paramString).map(new nuj(this), localFeedCommentSync1))
     {
-      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new nsu(this));
+      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new nuh(this));
       return;
       localFeedCommentSync1 = new FeedCommentSync(paramString, 2, "");
     }

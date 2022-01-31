@@ -1,14 +1,17 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.activity.Conversation;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import java.util.ArrayList;
 
-public class sdm
+class sdm
   implements Runnable
 {
-  public sdm(Conversation paramConversation) {}
+  sdm(sdk paramsdk) {}
   
   public void run()
   {
-    PublicAccountManager.a().a(this.a.a);
+    ArrayList localArrayList = TroopInfoActivity.a(this.a.a, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    this.a.a.jdField_a_of_type_AndroidOsHandler.post(new sdn(this, localArrayList));
   }
 }
 

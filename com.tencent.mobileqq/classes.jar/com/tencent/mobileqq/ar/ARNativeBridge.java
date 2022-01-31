@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -38,8 +39,15 @@ public class ARNativeBridge
   private static boolean initSoEnvirontMent()
   {
     boolean bool2 = true;
+    if (ARWorldCupGameLogicManager.a().a())
+    {
+      System.loadLibrary("armapengine");
+      globalInitialized = true;
+      loadSoSuccess = true;
+      return true;
+    }
     long l = System.currentTimeMillis();
-    boolean bool3 = ArNativeSoLoader.a("ArMapEngine738", needCheckMd5);
+    boolean bool3 = ArNativeSoLoader.a("ArMapEngine7651", needCheckMd5);
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -62,7 +70,7 @@ public class ARNativeBridge
     {
       try
       {
-        int i = ArNativeSoLoader.a("ArMapEngine738");
+        int i = ArNativeSoLoader.a("ArMapEngine7651");
         if (i != 0) {
           continue;
         }
@@ -272,9 +280,21 @@ public class ARNativeBridge
   
   public native void native_CreateEngineBusiness(long paramLong, String paramString1, Context paramContext, AssetManager paramAssetManager, String paramString2, int paramInt1, int paramInt2, int paramInt3);
   
+  public native void native_changeBigScreenTextureID(int paramInt);
+  
+  public native void native_cleanWorldCupSparks();
+  
   public native void native_destroyCertainEngine(long paramLong);
   
+  public native void native_enterTransferDoor(int paramInt);
+  
   public native void native_exit();
+  
+  public native int native_getNativeGameStatus();
+  
+  public native void native_hiddenBigScreen();
+  
+  public native void native_insertWorldCupSpark(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3);
   
   public native void native_onDrawFrame(long paramLong, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
   
@@ -310,7 +330,33 @@ public class ARNativeBridge
   
   public native void native_setARCardVideoYUVTexture(int paramInt);
   
+  public native void native_setARWorldCupCallBack(ARNativeBridge.ARWorldCupCallback paramARWorldCupCallback);
+  
+  public native void native_setARWorldCupQuaternion(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  
+  public native void native_setBigScreenImageTexture(int paramInt);
+  
+  public native void native_setBigScreenInfo(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5);
+  
   public native void native_setBinHaiState(Activity paramActivity, ARNativeBridge paramARNativeBridge, int paramInt1, int paramInt2, String paramString);
+  
+  public native void native_setFullScreenMatrix(int paramInt, float[] paramArrayOfFloat);
+  
+  public native void native_setGuideFullScreenVideo(int paramInt1, int paramInt2, int paramInt3);
+  
+  public native void native_setRecogRes(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public native void native_startTranversalAnimation();
+  
+  public native void native_switchGameStatusWithNoParams(int paramInt);
+  
+  public native void native_switchGameStatusWithVideoId(int paramInt1, int paramInt2);
+  
+  public native void native_updateBallTanslateFromVideoTime(int paramInt);
+  
+  public native void native_updateBallTanslateFromXYZ(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public native void native_zoomOutWorldCupSparks();
   
   public void nativeonSurfaceChanged(long paramLong, int paramInt1, int paramInt2)
   {

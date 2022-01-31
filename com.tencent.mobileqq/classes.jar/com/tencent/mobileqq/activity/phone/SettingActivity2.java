@@ -23,9 +23,9 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import wse;
-import wsi;
-import wsj;
+import wvj;
+import wvn;
+import wvo;
 
 public class SettingActivity2
   extends DialogBaseActivity
@@ -51,9 +51,9 @@ public class SettingActivity2
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     localActionSheet.setCanceledOnTouchOutside(true);
     localActionSheet.a("停用", 3);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new wse(this, localActionSheet));
-    localActionSheet.c(2131432998);
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new wvj(this, localActionSheet));
+    localActionSheet.c(2131433015);
     localActionSheet.show();
   }
   
@@ -88,11 +88,11 @@ public class SettingActivity2
       }
     }
     Object localObject = "启用手机通讯录匹配。如果你的通讯录中有朋友开通此功能，系统会通知你。可在QQ直接给朋友发消息、图片等。";
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365482));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365504));
     this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365483));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365505));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131365484));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131365506));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (this.jdField_a_of_type_Int == 7)
     {
@@ -101,12 +101,12 @@ public class SettingActivity2
     }
     for (;;)
     {
-      localObject = (ImageView)findViewById(2131363456);
+      localObject = (ImageView)findViewById(2131363474);
       ((ImageView)localObject).setVisibility(0);
       if (AppSetting.b) {
-        ((ImageView)localObject).setContentDescription(getString(2131436838));
+        ((ImageView)localObject).setContentDescription(getString(2131436855));
       }
-      ((ImageView)localObject).setBackgroundResource(2130839143);
+      ((ImageView)localObject).setBackgroundResource(2130839147);
       ((ImageView)localObject).setOnClickListener(this);
       return true;
       label320:
@@ -121,7 +121,7 @@ public class SettingActivity2
   {
     if (!NetworkUtil.d(this))
     {
-      b(2131434596);
+      b(2131434613);
       return;
     }
     if (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.f())
@@ -132,12 +132,12 @@ public class SettingActivity2
     int i = getResources().getDimensionPixelSize(2131558448);
     if (this.c == null)
     {
-      this.c = new wsi(this);
+      this.c = new wvn(this);
       this.app.registObserver(this.c);
     }
-    this.app.a(new wsj(this));
+    this.app.a(new wvo(this));
     QQToast.a(BaseApplicationImpl.sApplication, "特征码匹配中。", 0).b(i);
-    a(2131434436, 1000L, true);
+    a(2131434453, 1000L, true);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -157,7 +157,7 @@ public class SettingActivity2
     {
       return true;
       this.jdField_b_of_type_Int = paramBundle.getIntExtra("kSrouce", -1);
-      super.setContentView(2130969173);
+      super.setContentView(2130969172);
     } while (a());
     super.finish();
     return true;
@@ -186,13 +186,13 @@ public class SettingActivity2
     {
     default: 
       throw new RuntimeException("unknown id: " + i);
-    case 2131363456: 
+    case 2131363474: 
       a();
       return;
-    case 2131365485: 
+    case 2131365507: 
       if (!NetworkUtil.d(this))
       {
-        b(2131434596);
+        b(2131434613);
         return;
       }
       paramView = new Intent(this, BindNumberActivity.class);
@@ -201,7 +201,7 @@ public class SettingActivity2
       paramView.putExtra("cmd_param_is_from_change_bind", true);
       startActivity(paramView);
       return;
-    case 2131365483: 
+    case 2131365505: 
       ReportController.b(this.app, "CliOper", "", "", "0X8005B89", "0X8005B89", 0, 0, "", "", "", "");
       b();
       return;

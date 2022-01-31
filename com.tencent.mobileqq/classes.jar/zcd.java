@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.HotChatShare;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.litetransfersdk.FTNInfo;
+import com.tencent.litetransfersdk.NFCInfo;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.DataLineHandler;
 
 public class zcd
   implements Runnable
 {
-  public zcd(HotChatShare paramHotChatShare, QQAppInterface paramQQAppInterface) {}
+  public zcd(DataLineHandler paramDataLineHandler, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).e();
-    }
+    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_ComTencentLitetransfersdkSession, this.jdField_a_of_type_ComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ComTencentLitetransfersdkFTNInfo, false);
   }
 }
 

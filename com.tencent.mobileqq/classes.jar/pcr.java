@@ -1,24 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.ShareResultDialog;
+import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
 public class pcr
-  implements View.OnClickListener
+  implements QzoneZipCacheHelperCallBack
 {
-  public pcr(ShareResultDialog paramShareResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public pcr(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, String paramString1, String paramString2, String paramString3) {}
   
-  public void onClick(View paramView)
+  public void onResult(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog, -2);
-    }
-    this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
+    QzoneWebViewOfflinePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzoneWebViewOfflinePlugin, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
   }
+  
+  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pcr
  * JD-Core Version:    0.7.0.1
  */

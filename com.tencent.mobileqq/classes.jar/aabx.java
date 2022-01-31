@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.ar.arengine.ARCamera;
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.ARRenderModel.SensorTrackManager;
+import com.tencent.mobileqq.ar.ARRenderModel.SensorTrackManager.ARSensorTrackCallback;
+import com.tencent.mobileqq.armap.sensor.SimpleSensorChangeListener;
 
 public class aabx
-  implements Runnable
+  extends SimpleSensorChangeListener
 {
-  public aabx(AREngine paramAREngine) {}
+  public aabx(SensorTrackManager paramSensorTrackManager) {}
   
-  public void run()
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    if (this.a.a != null) {
-      this.a.a.c();
+    if (SensorTrackManager.a(this.a) != null) {
+      SensorTrackManager.a(this.a).a(paramArrayOfFloat);
+    }
+  }
+  
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    if (SensorTrackManager.a(this.a) != null) {
+      SensorTrackManager.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
     }
   }
 }

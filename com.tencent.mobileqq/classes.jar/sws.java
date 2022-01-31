@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
 public class sws
-  implements Runnable
+  implements ViewSwitcher.ViewFactory
 {
-  public sws(LoginActivity paramLoginActivity, String paramString) {}
+  public sws(Leba paramLeba) {}
   
-  public void run()
+  public View makeView()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity", 2, "-->login success(finish after ls), go to AgentActivity, account:" + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.finish();
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

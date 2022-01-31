@@ -28,8 +28,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import mvp;
-import mvq;
+import mww;
+import mwx;
 
 public class SwipeBackLayout
   extends FrameLayout
@@ -38,7 +38,7 @@ public class SwipeBackLayout
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Context jdField_a_of_type_AndroidContentContext;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  final Handler jdField_a_of_type_AndroidOsHandler = new mvp(this);
+  final Handler jdField_a_of_type_AndroidOsHandler = new mww(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
@@ -76,7 +76,7 @@ public class SwipeBackLayout
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840662);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840684);
     this.jdField_f_of_type_Int = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
   }
   
@@ -334,7 +334,7 @@ public class SwipeBackLayout
             }
             else
             {
-              postDelayed(new mvq(this), 100L);
+              postDelayed(new mwx(this), 100L);
               this.jdField_b_of_type_Boolean = false;
             }
           }

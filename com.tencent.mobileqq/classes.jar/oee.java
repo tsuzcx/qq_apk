@@ -1,15 +1,24 @@
-import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
 import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
 
 public class oee
   implements Runnable
 {
-  public oee(EditVideoPlayer paramEditVideoPlayer) {}
+  public oee(EditVideoDoodle paramEditVideoDoodle) {}
   
   public void run()
   {
-    this.a.a.a(Message.obtain(null, 8));
+    if (this.a.jdField_a_of_type_Int == 2) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.g();
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = 1;
+      return;
+      if (this.a.jdField_a_of_type_Int == 3) {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.s();
+      }
+    }
   }
 }
 

@@ -1,43 +1,34 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-public class osc
-  implements Runnable
+public final class osc
+  extends AnimatorListenerAdapter
 {
-  public osc(QRDisplayActivity paramQRDisplayActivity) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public void run()
+  public osc(View paramView, int paramInt)
   {
-    int i = this.a.jdField_c_of_type_AndroidViewView.getHeight();
-    int j = this.a.b.getHeight();
-    View localView;
-    LinearLayout.LayoutParams localLayoutParams;
-    if (j < i)
-    {
-      localView = this.a.findViewById(2131367475);
-      localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      if (this.a.jdField_c_of_type_Int != 2) {
-        break label79;
-      }
-      localLayoutParams.topMargin = 0;
-      localLayoutParams.bottomMargin = 0;
-    }
-    for (;;)
-    {
-      localView.setLayoutParams(localLayoutParams);
-      return;
-      label79:
-      if (this.a.jdField_c_of_type_Int == 5)
-      {
-        int k = localLayoutParams.topMargin;
-        localLayoutParams.topMargin = ((i - j) / 2 + k);
-      }
-      else
-      {
-        localLayoutParams.topMargin = 50;
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramView.getLayerType();
+  }
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setLayerType(this.jdField_a_of_type_Int, null);
   }
 }
 

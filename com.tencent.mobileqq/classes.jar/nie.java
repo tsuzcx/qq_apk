@@ -1,14 +1,27 @@
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase.FeedInfoUpdateReceiver;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class nie
-  implements Runnable
+  implements BusinessObserver
 {
-  public nie(FeedsPlayModeBase.FeedInfoUpdateReceiver paramFeedInfoUpdateReceiver, FeedsPlayModeBase paramFeedsPlayModeBase) {}
+  public nie(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.v();
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      this.a.a(paramBundle);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.qqstory.search", 2, QLog.getStackTraceString(paramBundle));
+    }
   }
 }
 

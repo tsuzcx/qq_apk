@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import adku;
-import adkv;
+import adut;
+import aduu;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -141,7 +141,7 @@ public class NowDataReporter
     {
       b("now_retry").c();
       a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "now_retry", false, 0, 0, this.h, this.i, this.j, this.k, "", false);
-      new Handler().postDelayed(new adkv(this, l1), 60000L);
+      new Handler().postDelayed(new aduu(this, l1), 60000L);
       return;
     }
     catch (Exception localException)
@@ -328,6 +328,23 @@ public class NowDataReporter
     }
   }
   
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NowDataReporter", 2, "reportAutoEnterAnswer souece = " + paramString1 + ", opname = " + paramString2);
+    }
+    try
+    {
+      i(paramString1).b(paramString2).c(paramString3).c();
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("NowDataReporter", 2, "reportEnterPluginActivity Exception");
+    }
+  }
+  
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     try
@@ -465,7 +482,7 @@ public class NowDataReporter
     {
       localNowDataReporter.e(str1).c();
       a(jdField_a_of_type_Long, paramString1, paramString2, paramString3, "now_entry", false, 0, 0, this.h, this.i, this.j, this.k, "", false);
-      new Handler().postDelayed(new adku(this, l1), 60000L);
+      new Handler().postDelayed(new adut(this, l1), 60000L);
       return;
       label209:
       str1 = "0";
@@ -504,6 +521,23 @@ public class NowDataReporter
       a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "show_loading", false, this.jdField_d_of_type_Int, this.jdField_b_of_type_Int, this.h, this.i, this.j, this.k, "", false);
       return;
       str = "0";
+    }
+  }
+  
+  public void b(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NowDataReporter", 2, "reportAutoEnterAnswer souece = " + paramString1 + ", opname = " + paramString2);
+    }
+    try
+    {
+      i(paramString1).b(paramString2).c(paramString3).c();
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("NowDataReporter", 2, "reportEnterPluginActivity Exception");
     }
   }
   
@@ -585,7 +619,7 @@ public class NowDataReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowDataReporter
  * JD-Core Version:    0.7.0.1
  */

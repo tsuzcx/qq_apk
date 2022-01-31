@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import android.app.Dialog;
 
 class vhm
   implements Runnable
 {
-  vhm(vhl paramvhl) {}
+  vhm(vhl paramvhl, Dialog paramDialog) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder.a != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder.a.ac)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.m();
+    if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

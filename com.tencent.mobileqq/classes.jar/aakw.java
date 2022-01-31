@@ -1,25 +1,18 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.ark.ArkAiBubbleView;
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArModelResource;
 
-public class aakw
-  implements Runnable
+public final class aakw
+  implements Parcelable.Creator
 {
-  public aakw(ArkAiBubbleView paramArkAiBubbleView) {}
-  
-  public void run()
+  public ArModelResource a(Parcel paramParcel)
   {
-    ViewParent localViewParent = this.a.jdField_a_of_type_AndroidViewView.getParent();
-    if ((localViewParent instanceof ViewGroup)) {
-      ((ViewGroup)localViewParent).removeView(this.a.jdField_a_of_type_AndroidViewView);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar = null;
-    }
+    return new ArModelResource(paramParcel);
+  }
+  
+  public ArModelResource[] a(int paramInt)
+  {
+    return new ArModelResource[paramInt];
   }
 }
 

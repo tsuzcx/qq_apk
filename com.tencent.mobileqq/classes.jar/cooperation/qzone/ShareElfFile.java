@@ -82,16 +82,16 @@ public class ShareElfFile
       }
       catch (IOException paramFile)
       {
-        Object localObject1 = paramFile.getMessage();
-        if (localObject1 == null) {
+        Object localObject = paramFile.getMessage();
+        if (localObject == null) {
           continue;
         }
-        if (!((String)localObject1).startsWith("bad elf magic")) {
+        if (!((String)localObject).startsWith("bad elf magic")) {
           continue;
         }
         i = -1;
-        localObject1 = new Pair(Integer.valueOf(i), paramFile);
-        paramFile = (File)localObject1;
+        localObject = new Pair(Integer.valueOf(i), paramFile);
+        paramFile = (File)localObject;
         if (0 == 0) {
           continue;
         }
@@ -102,39 +102,39 @@ public class ShareElfFile
         catch (IOException paramFile)
         {
           QZLog.e("ShareElfFile", "", paramFile);
-          return localObject1;
+          return localObject;
         }
-        if (!((String)localObject1).startsWith("bad elf class")) {
+        if (!((String)localObject).startsWith("bad elf class")) {
           continue;
         }
         i = -2;
         continue;
-        if (!((String)localObject1).startsWith("bad elf data encoding")) {
+        if (!((String)localObject).startsWith("bad elf data encoding")) {
           continue;
         }
         i = -3;
         continue;
-        if (!((String)localObject1).startsWith("failed to read rest part of ehdr")) {
+        if (!((String)localObject).startsWith("failed to read rest part of ehdr")) {
           continue;
         }
         i = -4;
         continue;
-        if (!((String)localObject1).startsWith("bad elf version")) {
+        if (!((String)localObject).startsWith("bad elf version")) {
           continue;
         }
         i = -5;
         continue;
-        if (!((String)localObject1).startsWith("Unexpected elf class")) {
+        if (!((String)localObject).startsWith("Unexpected elf class")) {
           continue;
         }
         i = -6;
         continue;
-        if (!((String)localObject1).startsWith("failed to read phdr")) {
+        if (!((String)localObject).startsWith("failed to read phdr")) {
           continue;
         }
         i = -7;
         continue;
-        boolean bool = ((String)localObject1).startsWith("failed to read shdr");
+        boolean bool = ((String)localObject).startsWith("failed to read shdr");
         if (!bool) {
           continue;
         }
@@ -164,13 +164,13 @@ public class ShareElfFile
     {
       throw new NullPointerException();
       label232:
-      throw localObject2;
+      throw paramFile;
     }
-    catch (IOException paramFile)
+    catch (IOException localIOException)
     {
       for (;;)
       {
-        QZLog.e("ShareElfFile", "", paramFile);
+        QZLog.e("ShareElfFile", "", localIOException);
       }
     }
   }

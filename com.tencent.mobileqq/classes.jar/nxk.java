@@ -1,40 +1,51 @@
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.QQStoryManager;
 import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class nxk
   extends QQStoryObserver
 {
-  public nxk(HomeFeedPresenter paramHomeFeedPresenter) {}
+  public nxk(QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter) {}
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
-    {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
-      this.a.a(paramStoryPushMsg.d);
-    }
-    do
-    {
+    paramInt = 1;
+    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
       return;
-      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
+    }
+    if (paramBoolean1)
+    {
+      paramString = this.a.a;
+      if (paramBoolean2)
       {
-        SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
-        this.a.b(paramStoryPushMsg.d);
-        return;
+        paramString.isSubscribe = paramInt;
+        paramString = (QQStoryManager)PlayModeUtils.a().getManager(180);
+        if (!paramBoolean2) {
+          break label125;
+        }
+        if (!paramString.i()) {
+          paramString.b();
+        }
+        QQToast.a(PlayModeUtils.a(), 2, "已关注", 0).a();
       }
-      if (paramStoryPushMsg.a == 17)
+      for (;;)
       {
-        SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
-        ((CommentManager)SuperManager.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
+        QQStoryMemoriesPresenter.a(this.a).d();
+        QQStoryMemoriesPresenter.a(this.a).b();
         return;
+        paramInt = 0;
+        break;
+        label125:
+        QQToast.a(PlayModeUtils.a(), 2, "已取消关注", 0).a();
       }
-    } while (paramStoryPushMsg.a != 16);
-    SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
-    this.a.b(paramStoryPushMsg.d);
+    }
+    QQToast.a(PlayModeUtils.a(), 1, "操作失败，请稍后重试", 0).a();
   }
 }
 

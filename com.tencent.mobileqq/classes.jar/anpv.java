@@ -1,30 +1,29 @@
-import android.content.Intent;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.richmedia.CompoundProcessor;
-import dov.com.tencent.mobileqq.richmedia.RichmediaClient;
-import dov.com.tencent.mobileqq.richmedia.VideoCompoundController;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.view.ProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class anpv
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public anpv(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public anpv(QIMProviderContainerView paramQIMProviderContainerView, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = RichmediaClient.a().a().a(this.a.a);
-    if (localObject != null) {
-      ((CompoundProcessor)localObject).a(103);
-    }
-    for (;;)
+    if (QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView) != null)
     {
-      localObject = this.a.getIntent();
-      ((Intent)localObject).putExtra("flow_back", 0);
-      this.a.setResult(1001, (Intent)localObject);
-      this.a.finish();
-      return;
-      this.a.a();
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).setAlpha(1.0F);
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).setVisibility(8);
+    }
+    if ((!this.jdField_a_of_type_Boolean) && (QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView) != null)) {
+      QIMProviderContainerView.a(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView).a(false, 150);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

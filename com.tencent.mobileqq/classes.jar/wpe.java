@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class wpe
-  extends FriendListObserver
+  implements Runnable
 {
-  public wpe(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public wpe(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new wpf(this));
-    }
+    EmoticonGroupStoreFragment.c(this.a, EmoticonGroupStoreFragment.c(this.a));
   }
 }
 

@@ -63,6 +63,7 @@ public class QmcfDevicesStrategy
       if ((bool1) || (bool2))
       {
         jdField_a_of_type_Int = 4;
+        QLog.d("QmcfDevicesStrategy", 1, "mali type");
         return jdField_a_of_type_Int;
       }
     }
@@ -88,13 +89,13 @@ public class QmcfDevicesStrategy
           Object localObject2 = arrayOfString[i];
           j += 1;
           if ((c.contains((CharSequence)localObject2)) || (!((JSONObject)localObject1).has((String)localObject2))) {
-            break label318;
+            break label326;
           }
           localObject2 = ((JSONObject)localObject1).getJSONObject((String)localObject2);
           jdField_b_of_type_Int = j;
           a((JSONObject)localObject2);
           if (jdField_a_of_type_Int == 0) {
-            break label318;
+            break label326;
           }
           i = jdField_a_of_type_Int;
           return i;
@@ -105,7 +106,7 @@ public class QmcfDevicesStrategy
         localException.printStackTrace();
       }
       return jdField_a_of_type_Int;
-      label318:
+      label326:
       i += 1;
     }
   }

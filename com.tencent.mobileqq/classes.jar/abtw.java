@@ -1,39 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Comic;
+import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import java.util.ArrayList;
+import java.util.List;
 
-public class abtw
-  extends TeamWorkFileImportObserver
+public final class abtw
+  implements Parcelable.Creator
 {
-  public abtw(MessengerService paramMessengerService) {}
-  
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public IPSiteModel.Comic a(Parcel paramParcel)
   {
-    if (this.a.a != null)
-    {
-      paramTeamWorkFileImportInfo = new Bundle();
-      paramTeamWorkFileImportInfo.putString("url", null);
-      this.a.a.putBundle("response", paramTeamWorkFileImportInfo);
-      this.a.a(this.a.a);
-      this.a.a = null;
+    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
+    localComic.comicType = paramParcel.readInt();
+    localComic.cover = paramParcel.readString();
+    localComic.desc = paramParcel.readString();
+    localComic.id = paramParcel.readString();
+    localComic.jumpUrl = paramParcel.readString();
+    localComic.name = paramParcel.readString();
+    localComic.recommDesc = paramParcel.readString();
+    localComic.typeName = paramParcel.readString();
+    if (localComic.comicRiches == null) {
+      localComic.comicRiches = new ArrayList();
     }
+    localComic.comicRiches.clear();
+    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
+    return localComic;
   }
   
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public IPSiteModel.Comic[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
-    }
-    if (this.a.a != null)
-    {
-      paramTeamWorkFileImportInfo = new Bundle();
-      paramTeamWorkFileImportInfo.putString("url", paramString);
-      this.a.a.putBundle("response", paramTeamWorkFileImportInfo);
-      this.a.a(this.a.a);
-      this.a.a = null;
-    }
+    return new IPSiteModel.Comic[paramInt];
   }
 }
 

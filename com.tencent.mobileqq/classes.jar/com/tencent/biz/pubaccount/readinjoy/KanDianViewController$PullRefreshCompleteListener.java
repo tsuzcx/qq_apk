@@ -6,8 +6,8 @@ import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoyAnimBaseMa
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import lbe;
-import lbf;
+import lap;
+import laq;
 
 public class KanDianViewController$PullRefreshCompleteListener
   implements ReadInJoyAnimBaseManager.PullRefreshComplete
@@ -26,14 +26,14 @@ public class KanDianViewController$PullRefreshCompleteListener
         if ((localReadInJoyRefreshManager.a() != 1) || (!localReadInJoyRefreshManager.a())) {
           break label87;
         }
-        ThreadManager.post(new lbe(this), 8, null, true);
+        ThreadManager.post(new lap(this), 8, null, true);
       }
     }
     label87:
     while (((ReadInJoySkinManager)localAppInterface.getManager(260)).a() != 1) {
       return;
     }
-    ThreadManager.post(new lbf(this), 8, null, true);
+    ThreadManager.post(new laq(this), 8, null, true);
   }
 }
 

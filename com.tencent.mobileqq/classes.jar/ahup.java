@@ -1,56 +1,44 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout12;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.model.NetSearchTemplateMovieItem;
+import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 
 public class ahup
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public ahup(StructMsgItemLayout12 paramStructMsgItemLayout12, View paramView) {}
+  public ahup(SearchTemplatePresenter paramSearchTemplatePresenter, NetSearchTemplateMovieItem paramNetSearchTemplateMovieItem) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateMovieItem.e))
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (!this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = true;
-        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131362147);
-        paramMotionEvent = localObjectAnimator;
-        if (localObjectAnimator == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("StructMsgItemLayout12", 2, "animator is null");
-          }
-          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
-          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
-          paramMotionEvent.setDuration(100L);
-          paramView.setTag(2131362147, paramMotionEvent);
-        }
-        paramMotionEvent.start();
+      localObject = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateMovieItem.e);
+      if (localObject == null) {
+        break label47;
       }
-      return true;
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.a.onClick(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = false;
-      paramView = (ObjectAnimator)paramView.getTag(2131362147);
-      if (paramView != null) {
-        paramView.reverse();
-      }
+      ((JumpAction)localObject).b();
     }
+    label47:
+    while ((!this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateMovieItem.e.startsWith("http://")) && (!this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateMovieItem.e.startsWith("https://"))) {
+      return;
+    }
+    paramView = paramView.getContext();
+    Object localObject = new Intent(paramView, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateMovieItem.e);
+    paramView.startActivity((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahup
  * JD-Core Version:    0.7.0.1
  */

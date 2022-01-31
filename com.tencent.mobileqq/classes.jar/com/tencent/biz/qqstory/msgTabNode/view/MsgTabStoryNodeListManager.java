@@ -41,6 +41,7 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.config.WorldCupStaticInstance;
 import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionMenuItem;
@@ -52,13 +53,13 @@ import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.Builder;
 import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.DrawableBuilder;
 import java.util.HashMap;
 import java.util.List;
-import ndr;
-import nds;
-import ndt;
-import ndv;
-import ndw;
-import ndx;
-import ndy;
+import nfb;
+import nfc;
+import nfd;
+import nff;
+import nfg;
+import nfh;
+import nfi;
 
 public class MsgTabStoryNodeListManager
   implements ViewTreeObserver.OnGlobalLayoutListener, BaseAdapter.OnItemClickListener, BaseAdapter.OnItemLongClickListener, ActionSheet.OnButtonClickListener
@@ -123,18 +124,18 @@ public class MsgTabStoryNodeListManager
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewShotView = new ShotView(paramContext);
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewShotView);
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new ndr(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new nfb(this);
     this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(this);
     this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(this);
     this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter);
     this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate = new MsgTabStoryNodeDelegate(this, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.setOnScrollListener(new nds(this));
-    this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new ndt(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.setOnScrollListener(new nfc(this));
+    this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new nfd(this);
   }
   
   private boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewShotView != null) && (this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (!this.jdField_e_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && (d());
+    return (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewShotView != null) && (this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (!this.jdField_e_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && (d()) && (!WorldCupStaticInstance.a().jdField_c_of_type_Boolean);
   }
   
   private boolean c()
@@ -179,7 +180,7 @@ public class MsgTabStoryNodeListManager
         localBuilder.c(50);
         this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow = new CalloutPopupWindow.DrawableBuilder(localBuilder).b(Color.argb(255, 0, 0, 0)).a(5).a().a();
         this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.a(82);
-        this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.a(new ndy(this));
+        this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.a(new nfi(this));
       }
     } while ((this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow == null) || (this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.isShowing()));
     this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewShotView);
@@ -338,7 +339,7 @@ public class MsgTabStoryNodeListManager
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetListView.post(new ndv(this, paramInt));
+      this.jdField_a_of_type_ComTencentWidgetListView.post(new nff(this, paramInt));
       if ((this.jdField_b_of_type_Boolean) && (a()))
       {
         this.jdField_b_of_type_Boolean = false;
@@ -385,7 +386,7 @@ public class MsgTabStoryNodeListManager
     case 7: 
     case 8: 
     case 9: 
-      label370:
+      label371:
       do
       {
         return;
@@ -423,8 +424,8 @@ public class MsgTabStoryNodeListManager
         }
         if ((localObject2 != null) && (!UIUtils.b()))
         {
-          paramView = (ImageView)paramView.findViewById(2131371737);
-          StoryPlayVideoActivity.a((Activity)localContext, paramView, ((MsgTabNodeInfo)localObject2).jdField_a_of_type_JavaLangString, "");
+          paramView = (ImageView)paramView.findViewById(2131371907);
+          StoryPlayVideoActivity.a((Activity)localContext, paramView, ((MsgTabNodeInfo)localObject2).jdField_a_of_type_JavaLangString, "", false);
         }
       } while (localObject2 == null);
       paramView = "";
@@ -435,43 +436,43 @@ public class MsgTabStoryNodeListManager
         }
       }
       else {
-        label400:
+        label401:
         if (((MsgTabNodeInfo)localObject2).jdField_b_of_type_Int != 0) {
-          break label785;
+          break label786;
         }
       }
       break;
     }
-    label785:
+    label786:
     for (Object localObject1 = "2";; localObject1 = "1")
     {
       StoryReportor.a("msg_tab", "clk_story", 0, 0, new String[] { ((MsgTabNodeInfo)localObject2).jdField_a_of_type_Int + "", localObject1, paramView, ((MsgTabNodeInfo)localObject2).jdField_a_of_type_JavaLangString });
       return;
       if ((!(localContext instanceof Activity)) || (localObject2 == null) || (TextUtils.isEmpty(((MsgTabNodeInfo)localObject2).jdField_e_of_type_JavaLangString))) {
-        break label370;
+        break label371;
       }
       localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a();
       if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-        break label370;
+        break label371;
       }
       localObject1 = (Activity)localContext;
-      paramView = (ImageView)paramView.findViewById(2131371737);
+      paramView = (ImageView)paramView.findViewById(2131371907);
       StoryPlayVideoActivity.a((Activity)localObject1, ((MsgTabNodeInfo)localObject2).jdField_e_of_type_JavaLangString, -1, paramView);
-      break label370;
+      break label371;
       StoryReportor.a("home_page-exp-d4", "5");
       localContext.startActivity(StoryTransitionActivity.a(localContext));
-      break label370;
+      break label371;
       paramView = new Intent(localContext, StoryMessageListActivity.class);
       paramView.putExtra("qqstory_message_list_source", 2);
       paramView.putExtra("qqstory_jump_source", "1");
       localContext.startActivity(paramView);
-      break label370;
+      break label371;
       if (localObject2 == null) {
         break;
       }
       localObject1 = ((MsgTabNodeInfo)localObject2).jdField_d_of_type_JavaLangString;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label370;
+        break label371;
       }
       paramView = (View)localObject1;
       if (((String)localObject1).toLowerCase().startsWith("www.")) {
@@ -485,14 +486,14 @@ public class MsgTabStoryNodeListManager
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a((MsgTabNodeInfo)localObject2);
       }
       RecommendActivityViewHolder.b((MsgTabNodeInfo)localObject2);
-      break label370;
+      break label371;
       if (!QLog.isDevelopLevel()) {
-        break label370;
+        break label371;
       }
       QLog.e(h, 2, "发现一个野生的类型: " + ((MsgTabNodeInfo)localObject2).jdField_a_of_type_Int);
-      break label370;
+      break label371;
       paramView = "1";
-      break label400;
+      break label401;
     }
   }
   
@@ -619,9 +620,9 @@ public class MsgTabStoryNodeListManager
       break label96;
       paramView = jdField_d_of_type_JavaLangString;
       continue;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131432998);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(this);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new ndw(this, localMsgTabNodeInfo));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new nfg(this, localMsgTabNodeInfo));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       if (localMsgTabNodeInfo == null) {
         break;
@@ -647,7 +648,7 @@ public class MsgTabStoryNodeListManager
     if ((!this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a()) && (this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount(1) == 0) && (this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition() < this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount()))
     {
       this.jdField_a_of_type_ComTencentWidgetListView.setSelection(this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount());
-      this.jdField_a_of_type_ComTencentWidgetListView.post(new ndx(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.post(new nfh(this));
       this.jdField_b_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_not", false, false);
     }

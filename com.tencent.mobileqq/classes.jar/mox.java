@@ -1,16 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import com.tencent.biz.pubaccount.util.GifPlayTimeHttpDownloader.OnPlayFinish;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
 
 public class mox
-  implements GifPlayTimeHttpDownloader.OnPlayFinish
+  implements View.OnClickListener
 {
-  public mox(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController, ChannelCoverInfo paramChannelCoverInfo) {}
+  public mox(FastWebVideoFeedsPlayActivity paramFastWebVideoFeedsPlayActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController).setImageDrawable(ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo, false));
+    if (paramView.getId() == 2131367141)
+    {
+      paramView = FastWebVideoVolumeControl.a();
+      if (FastWebVideoVolumeControl.a().b()) {
+        break label33;
+      }
+    }
+    label33:
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.a(bool, "user_click", 2);
+      return;
+    }
   }
 }
 

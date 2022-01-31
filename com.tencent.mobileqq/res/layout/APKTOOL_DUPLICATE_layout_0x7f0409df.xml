@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d007f" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d007f"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2cf9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2cfa" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021dee" />
-</FrameLayout>
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c6e" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e4e" android:indeterminateBehavior="repeat" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0400" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b144b" style="@style/action_sheet_secondary_title_style" />
+</LinearLayout>

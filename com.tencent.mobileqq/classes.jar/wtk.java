@@ -1,41 +1,26 @@
-import android.media.MediaMetadataRetriever;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaDatabaseHelper;
-import com.tencent.mobileqq.activity.photo.MediaScanner;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaScannerListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class wtk
-  implements Runnable
+  extends ContactBindObserver
 {
-  public wtk(MediaScanner paramMediaScanner, WeakReference paramWeakReference1, WeakReference paramWeakReference2, int paramInt) {}
+  public wtk(BindNumberActivity paramBindNumberActivity) {}
   
-  public void run()
+  protected void b(boolean paramBoolean)
   {
-    try
-    {
-      LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      MediaScanner.OnMediaScannerListener localOnMediaScannerListener = (MediaScanner.OnMediaScannerListener)this.b.get();
-      if (localLocalMediaInfo != null)
-      {
-        if (localOnMediaScannerListener == null) {
-          return;
-        }
-        MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-        localMediaMetadataRetriever.setDataSource(localLocalMediaInfo.path);
-        localLocalMediaInfo.mDuration = Long.parseLong(localMediaMetadataRetriever.extractMetadata(9));
-        localOnMediaScannerListener.a(this.jdField_a_of_type_Int, localLocalMediaInfo);
-        MediaScanner.a(MediaScanner.a(BaseApplicationImpl.getContext())).a(localLocalMediaInfo.path, localLocalMediaInfo.mDuration);
-        return;
-      }
+    super.b(paramBoolean);
+    if (paramBoolean) {
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MediaScanner", 2, "queryMediaInfoDuration() error=" + localException.getMessage());
-      }
+      this.a.app.unRegistObserver(BindNumberActivity.a(this.a));
+      BindNumberActivity.a(this.a, null);
+      return;
+      this.a.b();
+      this.a.b(2131434455);
     }
   }
 }

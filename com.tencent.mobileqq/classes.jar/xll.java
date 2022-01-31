@@ -1,50 +1,37 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
+import com.tencent.biz.pubaccount.Advertisement.util.PublicAccountAdUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class xll
-  implements View.OnTouchListener
+public final class xll
+  implements Runnable
 {
-  public xll(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xll(QQAppInterface paramQQAppInterface, String paramString, int paramInt, AdvertisementItem paramAdvertisementItem) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (!this.a.m) {}
-    while (((!this.a.g) && (!this.a.d)) || (paramView.getId() != 2131368941)) {
-      return false;
+    QQMessageFacade.Message localMessage = null;
+    QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localQQMessageFacade != null) {
+      localMessage = localQQMessageFacade.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     }
-    switch (paramMotionEvent.getAction())
+    if (localMessage != null)
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
+      if ("false".equals(localMessage.getExtInfoFromExtStr("recent_list_advertisement_message_first_click")))
+      {
+        localMessage.saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "true");
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessage.frienduin, localMessage.msgtype, localMessage.uniseq, "extStr", localMessage.extStr);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a != null) {
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.c, "", PublicAccountAdUtil.a(), "");
+        }
       }
-      if (!this.a.b.isLongClickable()) {
-        this.a.a.e();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a != null) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.c, "", "", "");
       }
-      this.a.b.setText(null);
-      return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
-    }
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    if (this.a.b != null) {
-      this.a.b.setText(2131438144);
-    }
-    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
-    FlowCameraActivity2.a(this.a);
-    return false;
   }
 }
 

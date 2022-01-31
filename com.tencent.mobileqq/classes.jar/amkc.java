@@ -1,31 +1,29 @@
-import android.os.Process;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.BaseHandler;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.util.SparseArray;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.mobileqq.redtouch.RedTouchUI;
+import cooperation.comic.jsp.QQComicDownloadCountObserver;
+import cooperation.comic.ui.QQComicTabBarView;
+import cooperation.comic.utils.SimpleBiMap;
 
-public final class amkc
-  implements Runnable
+public class amkc
+  implements QQComicDownloadCountObserver
 {
-  public void run()
+  public amkc(QQComicTabBarView paramQQComicTabBarView) {}
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    try
+    if ((paramBoolean) && (this.a.a() != 1)) {
+      this.a.a(1);
+    }
+    RedTouchUI localRedTouchUI;
+    RedAppInfo localRedAppInfo;
+    do
     {
-      long l = Thread.currentThread().getId();
-      int j = Process.getThreadPriority(Process.myTid());
-      BaseHandler.InitalPriority.set(Integer.valueOf(j));
-      BaseHandler.isRegulated.set(Boolean.valueOf(true));
-      if (BaseHandler.access$400(BaseHandler.access$300(Thread.currentThread().getName()))) {}
-      for (int i = BaseHandler.regulalteCount.incrementAndGet();; i = BaseHandler.regulalteCount.get())
-      {
-        QLog.i("BaseHandler", 1, "regultorPriority ThreadName:" + Thread.currentThread().getName() + "(" + Long.valueOf(l) + ") currentPriority: " + j + ",changed:" + Process.getThreadPriority(Process.myTid()) + " regulated:" + i);
-        return;
-      }
       return;
-    }
-    catch (Exception localException)
-    {
-      QLog.w("BaseHandler", 1, "", localException);
-    }
+      localRedTouchUI = (RedTouchUI)this.a.a.get("1113.100801");
+      localRedAppInfo = (RedAppInfo)this.a.b.get(1);
+    } while ((localRedTouchUI == null) || (!localRedTouchUI.a()) || (localRedAppInfo == null) || (localRedTouchUI.a != localRedAppInfo));
+    this.a.b(1);
   }
 }
 

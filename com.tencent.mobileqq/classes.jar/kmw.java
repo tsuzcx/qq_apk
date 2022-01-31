@@ -1,11 +1,13 @@
-import java.nio.charset.Charset;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
-public final class kmw
-  extends ThreadLocal
+class kmw
+  implements Runnable
 {
-  protected Charset a()
+  kmw(kmv paramkmv, String paramString1, String paramString2) {}
+  
+  public void run()
   {
-    return Charset.forName("UTF-8");
+    this.jdField_a_of_type_Kmv.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.b });
   }
 }
 

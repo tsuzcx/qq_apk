@@ -2,9 +2,9 @@ package com.tencent.mobileqq.service.message;
 
 import IMMsgBodyPack.SlaveMasterMsg;
 import OnlinePushPack.MsgInfo;
-import ahjm;
-import ahjn;
-import ahjo;
+import ahxo;
+import ahxp;
+import ahxq;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +29,7 @@ import com.tencent.av.utils.CharacterUtil;
 import com.tencent.av.utils.TroopMemberUtil;
 import com.tencent.av.utils.VideoMsgTools;
 import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
+import com.tencent.biz.qqstory.base.QQStoryFeedManager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
@@ -2055,15 +2056,15 @@ public class MessageProtoCodec
         i = ((SubMsgType0x6f.VipInfoNotify)localObject4).uint32_vip_identify.get();
       }
       if (!((SubMsgType0x6f.VipInfoNotify)localObject4).uint32_vip_level.has()) {
-        break label6326;
+        break label6376;
       }
       j = ((SubMsgType0x6f.VipInfoNotify)localObject4).uint32_vip_level.get();
       label1999:
       if (!QLog.isColorLevel()) {
-        break label6332;
+        break label6382;
       }
       QLog.d("Q.msg.MessageHandler", 2, "UIN " + (String)localObject2 + " vip info changed.");
-      break label6332;
+      break label6382;
     }
     for (;;)
     {
@@ -2549,10 +2550,13 @@ public class MessageProtoCodec
           return;
         }
       }
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.msg.MessageHandler", 2, "decodeC2CMsgPkg_MsgType0x210 invoked. info: AIO Feed offline messageRecord: 0xf4");
       }
-      QLog.i("Q.msg.MessageHandler", 2, "decodeC2CMsgPkg_MsgType0x210 invoked. info: AIO Feed offline messageRecord: 0xf4");
+      paramLong = paramMsg.msg_head.from_uin.get();
+      paramMsg = ((msg_comm.MsgType0x210)localObject3).msg_content.get().toByteArray();
+      paramMessageHandler = (QQStoryFeedManager)paramMessageHandler.b.getManager(252);
+      paramMessageHandler.a(paramMessageHandler.a(paramMsg, String.valueOf(paramLong)));
       return;
       if (QLog.isColorLevel()) {
         QLog.i("Q.msg.MessageHandler", 2, "decodeC2CMsgPkg_MsgType0x210 invoked. info: 0xfb");
@@ -2580,10 +2584,10 @@ public class MessageProtoCodec
         return;
       }
       return;
-      label6326:
+      label6376:
       j = 0;
       break label1999;
-      label6332:
+      label6382:
       if (i == 0) {
         if (j == 0) {
           break label1794;
@@ -2964,7 +2968,7 @@ public class MessageProtoCodec
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
           n = 1;
-          ReportController.b(paramMessageHandler.b, "CliOper", "", "", "0X80060E4", "0X80060E4", n, 0, "", "", "", "7.6.0");
+          ReportController.b(paramMessageHandler.b, "CliOper", "", "", "0X80060E4", "0X80060E4", n, 0, "", "", "", "7.6.3");
           localObject6 = localPtt.bytes_file_uuid.get().toStringUtf8();
           localObject4 = localPtt.bytes_file_name.get().toStringUtf8();
           if (((String)localObject4).contains("_")) {
@@ -3081,7 +3085,7 @@ public class MessageProtoCodec
       {
         localObject1 = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
         paramMsg = null;
-        localObject2 = BaseApplication.getContext().getString(2131436282);
+        localObject2 = BaseApplication.getContext().getString(2131436299);
         Iterator localIterator = ((List)localObject1).iterator();
         paramBoolean = false;
         localObject3 = null;
@@ -3320,7 +3324,7 @@ public class MessageProtoCodec
       if ((localObject == null) || (((List)localObject).size() <= 0)) {
         break label48;
       }
-      paramMessageHandler = BaseApplication.getContext().getString(2131435118);
+      paramMessageHandler = BaseApplication.getContext().getString(2131435135);
       paramMsg = ((List)localObject).iterator();
       if (!paramMsg.hasNext()) {
         break label48;
@@ -3641,7 +3645,7 @@ public class MessageProtoCodec
     //   40: istore 6
     //   42: aload 12
     //   44: getfield 786	msf/msgcomm/msg_comm$MsgHead:c2c_tmp_msg_head	Lmsf/msgcomm/msg_comm$C2CTmpMsgHead;
-    //   47: invokevirtual 3204	msf/msgcomm/msg_comm$C2CTmpMsgHead:has	()Z
+    //   47: invokevirtual 3212	msf/msgcomm/msg_comm$C2CTmpMsgHead:has	()Z
     //   50: ifeq +37 -> 87
     //   53: aload_2
     //   54: getfield 25	msf/msgcomm/msg_comm$Msg:msg_body	Ltencent/im/msg/im_msg_body$MsgBody;
@@ -3674,24 +3678,24 @@ public class MessageProtoCodec
     //   122: invokevirtual 87	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   125: istore 7
     //   127: aload 4
-    //   129: getfield 3253	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:d	Z
+    //   129: getfield 3261	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:d	Z
     //   132: ifne +128 -> 260
     //   135: aload_3
     //   136: getfield 803	com/tencent/mobileqq/service/message/TempSessionInfo:jdField_a_of_type_Int	I
     //   139: sipush 1006
     //   142: if_icmpne +118 -> 260
     //   145: aload 12
-    //   147: getfield 3256	msf/msgcomm/msg_comm$C2CTmpMsgHead:from_phone	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   147: getfield 3264	msf/msgcomm/msg_comm$C2CTmpMsgHead:from_phone	Lcom/tencent/mobileqq/pb/PBStringField;
     //   150: invokevirtual 389	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   153: astore 13
     //   155: aload 12
-    //   157: getfield 3256	msf/msgcomm/msg_comm$C2CTmpMsgHead:from_phone	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   157: getfield 3264	msf/msgcomm/msg_comm$C2CTmpMsgHead:from_phone	Lcom/tencent/mobileqq/pb/PBStringField;
     //   160: invokevirtual 1794	com/tencent/mobileqq/pb/PBStringField:has	()Z
     //   163: ifeq +19 -> 182
     //   166: aload 13
     //   168: ifnull +14 -> 182
     //   171: aload 13
-    //   173: ldc_w 3258
+    //   173: ldc_w 3266
     //   176: invokevirtual 731	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   179: ifeq +43 -> 222
     //   182: invokestatic 92	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -3701,10 +3705,10 @@ public class MessageProtoCodec
     //   191: new 96	java/lang/StringBuilder
     //   194: dup
     //   195: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   198: ldc_w 3260
+    //   198: ldc_w 3268
     //   201: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: aload 12
-    //   206: getfield 3256	msf/msgcomm/msg_comm$C2CTmpMsgHead:from_phone	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   206: getfield 3264	msf/msgcomm/msg_comm$C2CTmpMsgHead:from_phone	Lcom/tencent/mobileqq/pb/PBStringField;
     //   209: invokevirtual 389	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   212: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   215: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -3713,27 +3717,27 @@ public class MessageProtoCodec
     //   222: aload_0
     //   223: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   226: aload 12
-    //   228: getfield 3256	msf/msgcomm/msg_comm$C2CTmpMsgHead:from_phone	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   228: getfield 3264	msf/msgcomm/msg_comm$C2CTmpMsgHead:from_phone	Lcom/tencent/mobileqq/pb/PBStringField;
     //   231: invokevirtual 389	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   234: new 96	java/lang/StringBuilder
     //   237: dup
     //   238: invokespecial 97	java/lang/StringBuilder:<init>	()V
     //   241: aload 4
-    //   243: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   243: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   246: invokevirtual 396	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   249: ldc 119
     //   251: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   254: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   257: invokestatic 3267	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;)V
+    //   257: invokestatic 3275	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;)V
     //   260: aload 4
-    //   262: getfield 3253	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:d	Z
+    //   262: getfield 3261	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:d	Z
     //   265: ifne +1579 -> 1844
     //   268: aload 12
-    //   270: getfield 3206	msf/msgcomm/msg_comm$C2CTmpMsgHead:sig	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   270: getfield 3214	msf/msgcomm/msg_comm$C2CTmpMsgHead:sig	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   273: invokevirtual 316	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   276: ifeq +1568 -> 1844
     //   279: aload 12
-    //   281: getfield 3206	msf/msgcomm/msg_comm$C2CTmpMsgHead:sig	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   281: getfield 3214	msf/msgcomm/msg_comm$C2CTmpMsgHead:sig	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   284: invokevirtual 372	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   287: invokevirtual 376	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   290: astore 13
@@ -3746,12 +3750,12 @@ public class MessageProtoCodec
     //   305: new 96	java/lang/StringBuilder
     //   308: dup
     //   309: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   312: ldc_w 3269
+    //   312: ldc_w 3277
     //   315: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   318: aload 13
     //   320: invokestatic 689	com/tencent/mobileqq/utils/HexUtil:a	([B)Ljava/lang/String;
     //   323: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   326: ldc_w 3271
+    //   326: ldc_w 3279
     //   329: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   332: aload 13
     //   334: arraylength
@@ -3769,23 +3773,23 @@ public class MessageProtoCodec
     //   515: iload 7
     //   517: istore 5
     //   519: aload_2
-    //   520: getfield 3069	msf/msgcomm/msg_comm$Msg:content_head	Lmsf/msgcomm/msg_comm$ContentHead;
-    //   523: invokevirtual 3070	msf/msgcomm/msg_comm$ContentHead:has	()Z
+    //   520: getfield 3077	msf/msgcomm/msg_comm$Msg:content_head	Lmsf/msgcomm/msg_comm$ContentHead;
+    //   523: invokevirtual 3078	msf/msgcomm/msg_comm$ContentHead:has	()Z
     //   526: ifeq +49 -> 575
     //   529: iload 7
     //   531: istore 5
     //   533: aload_2
-    //   534: getfield 3069	msf/msgcomm/msg_comm$Msg:content_head	Lmsf/msgcomm/msg_comm$ContentHead;
-    //   537: invokevirtual 3073	msf/msgcomm/msg_comm$ContentHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   534: getfield 3077	msf/msgcomm/msg_comm$Msg:content_head	Lmsf/msgcomm/msg_comm$ContentHead;
+    //   537: invokevirtual 3081	msf/msgcomm/msg_comm$ContentHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
     //   540: checkcast 910	msf/msgcomm/msg_comm$ContentHead
-    //   543: getfield 3076	msf/msgcomm/msg_comm$ContentHead:auto_reply	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   543: getfield 3084	msf/msgcomm/msg_comm$ContentHead:auto_reply	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   546: invokevirtual 84	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   549: ifeq +26 -> 575
     //   552: aload_2
-    //   553: getfield 3069	msf/msgcomm/msg_comm$Msg:content_head	Lmsf/msgcomm/msg_comm$ContentHead;
-    //   556: invokevirtual 3073	msf/msgcomm/msg_comm$ContentHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   553: getfield 3077	msf/msgcomm/msg_comm$Msg:content_head	Lmsf/msgcomm/msg_comm$ContentHead;
+    //   556: invokevirtual 3081	msf/msgcomm/msg_comm$ContentHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
     //   559: checkcast 910	msf/msgcomm/msg_comm$ContentHead
-    //   562: getfield 3076	msf/msgcomm/msg_comm$ContentHead:auto_reply	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   562: getfield 3084	msf/msgcomm/msg_comm$ContentHead:auto_reply	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   565: invokevirtual 87	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   568: iconst_1
     //   569: if_icmpne +653 -> 1222
@@ -3817,20 +3821,20 @@ public class MessageProtoCodec
     //   633: invokeinterface 1291 2 0
     //   638: checkcast 69	tencent/im/msg/im_msg_body$Elem
     //   641: getfield 294	tencent/im/msg/im_msg_body$Elem:text	Ltencent/im/msg/im_msg_body$Text;
-    //   644: invokevirtual 2923	tencent/im/msg/im_msg_body$Text:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   644: invokevirtual 2931	tencent/im/msg/im_msg_body$Text:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
     //   647: checkcast 274	tencent/im/msg/im_msg_body$Text
     //   650: astore_0
     //   651: aload 4
-    //   653: getfield 3272	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:jdField_b_of_type_Boolean	Z
+    //   653: getfield 3280	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:jdField_b_of_type_Boolean	Z
     //   656: ifne -569 -> 87
     //   659: new 96	java/lang/StringBuilder
     //   662: dup
     //   663: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   666: invokestatic 2872	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   669: ldc_w 3082
-    //   672: invokevirtual 2875	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   666: invokestatic 2880	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   669: ldc_w 3090
+    //   672: invokevirtual 2883	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
     //   675: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   678: ldc_w 3084
+    //   678: ldc_w 3092
     //   681: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   684: aload_0
     //   685: getfield 279	tencent/im/msg/im_msg_body$Text:str	Lcom/tencent/mobileqq/pb/PBBytesField;
@@ -3875,15 +3879,15 @@ public class MessageProtoCodec
     //   757: iconst_0
     //   758: aload 12
     //   760: arraylength
-    //   761: invokestatic 2733	com/tencent/mobileqq/utils/httputils/PkgTools:a	([BI[BII)V
+    //   761: invokestatic 2741	com/tencent/mobileqq/utils/httputils/PkgTools:a	([BI[BII)V
     //   764: aload_0
     //   765: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   768: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   771: aload 4
-    //   773: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   773: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   776: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   779: aload 13
-    //   781: invokevirtual 3273	com/tencent/mobileqq/service/message/MessageCache:a	(Ljava/lang/String;[B)V
+    //   781: invokevirtual 3281	com/tencent/mobileqq/service/message/MessageCache:a	(Ljava/lang/String;[B)V
     //   784: goto -272 -> 512
     //   787: aload 12
     //   789: arraylength
@@ -3907,24 +3911,24 @@ public class MessageProtoCodec
     //   815: iconst_0
     //   816: aload 12
     //   818: arraylength
-    //   819: invokestatic 2733	com/tencent/mobileqq/utils/httputils/PkgTools:a	([BI[BII)V
+    //   819: invokestatic 2741	com/tencent/mobileqq/utils/httputils/PkgTools:a	([BI[BII)V
     //   822: aload_0
     //   823: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   826: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   829: aload 4
-    //   831: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   831: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   834: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   837: aload 13
-    //   839: invokevirtual 3275	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/lang/String;[B)V
+    //   839: invokevirtual 3283	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/lang/String;[B)V
     //   842: goto -330 -> 512
     //   845: aload_0
     //   846: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   849: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   852: aload 4
-    //   854: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   854: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   857: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   860: aload 12
-    //   862: invokevirtual 3277	com/tencent/mobileqq/service/message/MessageCache:c	(Ljava/lang/String;[B)V
+    //   862: invokevirtual 3285	com/tencent/mobileqq/service/message/MessageCache:c	(Ljava/lang/String;[B)V
     //   865: goto -353 -> 512
     //   868: aload 12
     //   870: arraylength
@@ -3948,15 +3952,15 @@ public class MessageProtoCodec
     //   896: iconst_0
     //   897: aload 12
     //   899: arraylength
-    //   900: invokestatic 2733	com/tencent/mobileqq/utils/httputils/PkgTools:a	([BI[BII)V
+    //   900: invokestatic 2741	com/tencent/mobileqq/utils/httputils/PkgTools:a	([BI[BII)V
     //   903: aload_0
     //   904: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   907: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   910: aload 4
-    //   912: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   912: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   915: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   918: aload 13
-    //   920: invokevirtual 3279	com/tencent/mobileqq/service/message/MessageCache:e	(Ljava/lang/String;[B)V
+    //   920: invokevirtual 3287	com/tencent/mobileqq/service/message/MessageCache:e	(Ljava/lang/String;[B)V
     //   923: goto -411 -> 512
     //   926: aload 12
     //   928: arraylength
@@ -3980,108 +3984,108 @@ public class MessageProtoCodec
     //   954: iconst_0
     //   955: aload 12
     //   957: arraylength
-    //   958: invokestatic 2733	com/tencent/mobileqq/utils/httputils/PkgTools:a	([BI[BII)V
+    //   958: invokestatic 2741	com/tencent/mobileqq/utils/httputils/PkgTools:a	([BI[BII)V
     //   961: aload_0
     //   962: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   965: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   968: aload 4
-    //   970: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   970: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   973: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   976: aload 13
-    //   978: invokevirtual 3282	com/tencent/mobileqq/service/message/MessageCache:f	(Ljava/lang/String;[B)V
+    //   978: invokevirtual 3290	com/tencent/mobileqq/service/message/MessageCache:f	(Ljava/lang/String;[B)V
     //   981: goto -469 -> 512
     //   984: aload_0
     //   985: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   988: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   991: aload 4
-    //   993: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   993: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   996: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   999: aload 12
-    //   1001: invokevirtual 3285	com/tencent/mobileqq/service/message/MessageCache:g	(Ljava/lang/String;[B)V
+    //   1001: invokevirtual 3293	com/tencent/mobileqq/service/message/MessageCache:g	(Ljava/lang/String;[B)V
     //   1004: goto -492 -> 512
     //   1007: aload_0
     //   1008: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1011: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1014: aload 4
-    //   1016: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   1016: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   1019: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1022: aload 12
-    //   1024: invokevirtual 3288	com/tencent/mobileqq/service/message/MessageCache:h	(Ljava/lang/String;[B)V
+    //   1024: invokevirtual 3296	com/tencent/mobileqq/service/message/MessageCache:h	(Ljava/lang/String;[B)V
     //   1027: goto -515 -> 512
     //   1030: aload_0
     //   1031: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1034: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1037: aload 4
-    //   1039: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   1039: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   1042: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1045: aload 12
-    //   1047: invokevirtual 3290	com/tencent/mobileqq/service/message/MessageCache:i	(Ljava/lang/String;[B)V
+    //   1047: invokevirtual 3298	com/tencent/mobileqq/service/message/MessageCache:i	(Ljava/lang/String;[B)V
     //   1050: goto -538 -> 512
     //   1053: aload_0
     //   1054: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1057: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1060: aload 4
-    //   1062: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   1062: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   1065: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1068: aload 12
-    //   1070: invokevirtual 3293	com/tencent/mobileqq/service/message/MessageCache:j	(Ljava/lang/String;[B)V
+    //   1070: invokevirtual 3301	com/tencent/mobileqq/service/message/MessageCache:j	(Ljava/lang/String;[B)V
     //   1073: goto -561 -> 512
     //   1076: aload_0
     //   1077: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1080: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1083: aload 4
-    //   1085: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   1085: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   1088: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1091: aload 12
-    //   1093: invokevirtual 3296	com/tencent/mobileqq/service/message/MessageCache:n	(Ljava/lang/String;[B)V
+    //   1093: invokevirtual 3304	com/tencent/mobileqq/service/message/MessageCache:n	(Ljava/lang/String;[B)V
     //   1096: goto -584 -> 512
     //   1099: aload_0
     //   1100: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1103: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1106: aload 4
-    //   1108: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   1108: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   1111: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1114: aload 12
-    //   1116: invokevirtual 3299	com/tencent/mobileqq/service/message/MessageCache:p	(Ljava/lang/String;[B)V
+    //   1116: invokevirtual 3307	com/tencent/mobileqq/service/message/MessageCache:p	(Ljava/lang/String;[B)V
     //   1119: goto -607 -> 512
     //   1122: aload_0
     //   1123: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1126: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1129: aload 4
-    //   1131: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   1131: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   1134: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1137: aload 12
-    //   1139: invokevirtual 3302	com/tencent/mobileqq/service/message/MessageCache:m	(Ljava/lang/String;[B)V
+    //   1139: invokevirtual 3310	com/tencent/mobileqq/service/message/MessageCache:m	(Ljava/lang/String;[B)V
     //   1142: goto -630 -> 512
     //   1145: aload_0
     //   1146: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1149: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1152: aload 4
-    //   1154: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   1154: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   1157: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1160: aload 12
-    //   1162: invokevirtual 3305	com/tencent/mobileqq/service/message/MessageCache:k	(Ljava/lang/String;[B)V
+    //   1162: invokevirtual 3313	com/tencent/mobileqq/service/message/MessageCache:k	(Ljava/lang/String;[B)V
     //   1165: goto -653 -> 512
     //   1168: aload_0
     //   1169: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1172: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1175: aload 4
-    //   1177: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   1177: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   1180: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1183: aload 12
-    //   1185: invokevirtual 3307	com/tencent/mobileqq/service/message/MessageCache:l	(Ljava/lang/String;[B)V
+    //   1185: invokevirtual 3315	com/tencent/mobileqq/service/message/MessageCache:l	(Ljava/lang/String;[B)V
     //   1188: goto -676 -> 512
     //   1191: aload_0
     //   1192: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1195: invokevirtual 866	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1198: aload 4
-    //   1200: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   1200: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   1203: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1206: aload 4
-    //   1208: getfield 3308	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:jdField_a_of_type_Long	J
+    //   1208: getfield 3316	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:jdField_a_of_type_Long	J
     //   1211: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1214: aload 12
-    //   1216: invokevirtual 3311	com/tencent/mobileqq/service/message/MessageCache:a	(Ljava/lang/String;Ljava/lang/String;[B)V
+    //   1216: invokevirtual 3319	com/tencent/mobileqq/service/message/MessageCache:a	(Ljava/lang/String;Ljava/lang/String;[B)V
     //   1219: goto -707 -> 512
     //   1222: iconst_0
     //   1223: istore 5
@@ -4112,32 +4116,32 @@ public class MessageProtoCodec
     //   1288: invokevirtual 372	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   1291: invokevirtual 376	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   1294: astore_3
-    //   1295: new 3313	tencent/im/msg/im_msg_body$TmpPtt
+    //   1295: new 3321	tencent/im/msg/im_msg_body$TmpPtt
     //   1298: dup
-    //   1299: invokespecial 3314	tencent/im/msg/im_msg_body$TmpPtt:<init>	()V
+    //   1299: invokespecial 3322	tencent/im/msg/im_msg_body$TmpPtt:<init>	()V
     //   1302: astore 4
     //   1304: aload 4
     //   1306: aload_3
-    //   1307: invokevirtual 3315	tencent/im/msg/im_msg_body$TmpPtt:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   1310: checkcast 3313	tencent/im/msg/im_msg_body$TmpPtt
+    //   1307: invokevirtual 3323	tencent/im/msg/im_msg_body$TmpPtt:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   1310: checkcast 3321	tencent/im/msg/im_msg_body$TmpPtt
     //   1313: astore_3
     //   1314: aload_3
     //   1315: ifnull -1228 -> 87
     //   1318: aload_3
-    //   1319: getfield 3316	tencent/im/msg/im_msg_body$TmpPtt:uint32_file_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1319: getfield 3324	tencent/im/msg/im_msg_body$TmpPtt:uint32_file_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1322: invokevirtual 84	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   1325: ifeq -1238 -> 87
     //   1328: aload_3
-    //   1329: getfield 3316	tencent/im/msg/im_msg_body$TmpPtt:uint32_file_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1329: getfield 3324	tencent/im/msg/im_msg_body$TmpPtt:uint32_file_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1332: invokevirtual 87	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   1335: iconst_4
     //   1336: if_icmpne -1249 -> 87
     //   1339: aload_3
-    //   1340: getfield 3317	tencent/im/msg/im_msg_body$TmpPtt:bytes_file_uuid	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1340: getfield 3325	tencent/im/msg/im_msg_body$TmpPtt:bytes_file_uuid	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   1343: invokevirtual 316	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   1346: ifeq -1259 -> 87
     //   1349: aload_3
-    //   1350: getfield 3317	tencent/im/msg/im_msg_body$TmpPtt:bytes_file_uuid	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1350: getfield 3325	tencent/im/msg/im_msg_body$TmpPtt:bytes_file_uuid	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   1353: invokevirtual 372	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   1356: invokevirtual 492	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   1359: astore 12
@@ -4148,68 +4152,68 @@ public class MessageProtoCodec
     //   1370: new 96	java/lang/StringBuilder
     //   1373: dup
     //   1374: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   1377: ldc_w 3319
+    //   1377: ldc_w 3327
     //   1380: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1383: aload 12
     //   1385: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1388: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1391: invokestatic 114	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1394: new 2661	localpb/richMsg/RichMsg$PttRec
+    //   1394: new 2669	localpb/richMsg/RichMsg$PttRec
     //   1397: dup
-    //   1398: invokespecial 2662	localpb/richMsg/RichMsg$PttRec:<init>	()V
+    //   1398: invokespecial 2670	localpb/richMsg/RichMsg$PttRec:<init>	()V
     //   1401: astore 4
     //   1403: aload 4
-    //   1405: getfield 2663	localpb/richMsg/RichMsg$PttRec:localPath	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1405: getfield 2671	localpb/richMsg/RichMsg$PttRec:localPath	Lcom/tencent/mobileqq/pb/PBStringField;
     //   1408: aload_3
-    //   1409: getfield 3317	tencent/im/msg/im_msg_body$TmpPtt:bytes_file_uuid	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1409: getfield 3325	tencent/im/msg/im_msg_body$TmpPtt:bytes_file_uuid	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   1412: invokevirtual 372	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   1415: invokevirtual 492	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   1418: invokevirtual 626	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   1421: aload 4
-    //   1423: getfield 2664	localpb/richMsg/RichMsg$PttRec:size	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1423: getfield 2672	localpb/richMsg/RichMsg$PttRec:size	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   1426: aload_3
-    //   1427: getfield 3320	tencent/im/msg/im_msg_body$TmpPtt:uint32_file_size	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1427: getfield 3328	tencent/im/msg/im_msg_body$TmpPtt:uint32_file_size	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1430: invokevirtual 87	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   1433: i2l
     //   1434: invokevirtual 880	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   1437: aload 4
-    //   1439: getfield 2665	localpb/richMsg/RichMsg$PttRec:type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1439: getfield 2673	localpb/richMsg/RichMsg$PttRec:type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1442: iconst_2
     //   1443: invokevirtual 184	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   1446: aload 4
-    //   1448: getfield 2666	localpb/richMsg/RichMsg$PttRec:uuid	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1448: getfield 2674	localpb/richMsg/RichMsg$PttRec:uuid	Lcom/tencent/mobileqq/pb/PBStringField;
     //   1451: aload 12
     //   1453: invokevirtual 626	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   1456: aload 4
-    //   1458: getfield 2667	localpb/richMsg/RichMsg$PttRec:isRead	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   1458: getfield 2675	localpb/richMsg/RichMsg$PttRec:isRead	Lcom/tencent/mobileqq/pb/PBBoolField;
     //   1461: iconst_0
     //   1462: invokevirtual 1051	com/tencent/mobileqq/pb/PBBoolField:set	(Z)V
     //   1465: aload 4
-    //   1467: getfield 2668	localpb/richMsg/RichMsg$PttRec:serverStorageSource	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1470: ldc_w 2773
+    //   1467: getfield 2676	localpb/richMsg/RichMsg$PttRec:serverStorageSource	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1470: ldc_w 2781
     //   1473: invokevirtual 626	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   1476: aload 4
-    //   1478: getfield 2669	localpb/richMsg/RichMsg$PttRec:isReport	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   1478: getfield 2677	localpb/richMsg/RichMsg$PttRec:isReport	Lcom/tencent/mobileqq/pb/PBInt32Field;
     //   1481: iconst_0
-    //   1482: invokevirtual 2622	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
+    //   1482: invokevirtual 2630	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
     //   1485: aload 4
-    //   1487: getfield 2670	localpb/richMsg/RichMsg$PttRec:version	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   1487: getfield 2678	localpb/richMsg/RichMsg$PttRec:version	Lcom/tencent/mobileqq/pb/PBInt32Field;
     //   1490: iconst_5
-    //   1491: invokevirtual 2622	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
+    //   1491: invokevirtual 2630	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
     //   1494: aload 4
-    //   1496: getfield 2776	localpb/richMsg/RichMsg$PttRec:pttFlag	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   1496: getfield 2784	localpb/richMsg/RichMsg$PttRec:pttFlag	Lcom/tencent/mobileqq/pb/PBInt32Field;
     //   1499: iconst_0
-    //   1500: invokevirtual 2622	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
+    //   1500: invokevirtual 2630	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
     //   1503: iconst_0
     //   1504: istore 6
     //   1506: iload 6
     //   1508: istore 5
     //   1510: aload_3
-    //   1511: getfield 3323	tencent/im/msg/im_msg_body$TmpPtt:uint32_user_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1511: getfield 3331	tencent/im/msg/im_msg_body$TmpPtt:uint32_user_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1514: invokevirtual 84	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   1517: ifeq +32 -> 1549
     //   1520: aload_3
-    //   1521: getfield 3323	tencent/im/msg/im_msg_body$TmpPtt:uint32_user_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1521: getfield 3331	tencent/im/msg/im_msg_body$TmpPtt:uint32_user_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1524: invokevirtual 87	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   1527: istore 7
     //   1529: iload 7
@@ -4227,29 +4231,29 @@ public class MessageProtoCodec
     //   1552: iload 7
     //   1554: istore 6
     //   1556: aload_3
-    //   1557: getfield 3324	tencent/im/msg/im_msg_body$TmpPtt:bytes_pb_reserve	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1557: getfield 3332	tencent/im/msg/im_msg_body$TmpPtt:bytes_pb_reserve	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   1560: invokevirtual 316	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   1563: ifeq +38 -> 1601
-    //   1566: new 2743	tencent/im/cs/ptt_reserve/ptt_reserve$ReserveStruct
+    //   1566: new 2751	tencent/im/cs/ptt_reserve/ptt_reserve$ReserveStruct
     //   1569: dup
-    //   1570: invokespecial 2744	tencent/im/cs/ptt_reserve/ptt_reserve$ReserveStruct:<init>	()V
+    //   1570: invokespecial 2752	tencent/im/cs/ptt_reserve/ptt_reserve$ReserveStruct:<init>	()V
     //   1573: astore 12
     //   1575: aload 12
     //   1577: aload_3
-    //   1578: getfield 3324	tencent/im/msg/im_msg_body$TmpPtt:bytes_pb_reserve	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1578: getfield 3332	tencent/im/msg/im_msg_body$TmpPtt:bytes_pb_reserve	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   1581: invokevirtual 372	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   1584: invokevirtual 376	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   1587: invokevirtual 2745	tencent/im/cs/ptt_reserve/ptt_reserve$ReserveStruct:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   1587: invokevirtual 2753	tencent/im/cs/ptt_reserve/ptt_reserve$ReserveStruct:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   1590: pop
     //   1591: aload 12
-    //   1593: getfield 2748	tencent/im/cs/ptt_reserve/ptt_reserve$ReserveStruct:uint32_change_voice	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1593: getfield 2756	tencent/im/cs/ptt_reserve/ptt_reserve$ReserveStruct:uint32_change_voice	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1596: invokevirtual 87	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   1599: istore 6
     //   1601: aload 4
-    //   1603: getfield 2800	localpb/richMsg/RichMsg$PttRec:longPttVipFlag	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   1603: getfield 2808	localpb/richMsg/RichMsg$PttRec:longPttVipFlag	Lcom/tencent/mobileqq/pb/PBInt32Field;
     //   1606: iload 5
-    //   1608: invokevirtual 2622	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
-    //   1611: invokestatic 2675	java/lang/System:currentTimeMillis	()J
+    //   1608: invokevirtual 2630	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
+    //   1611: invokestatic 2683	java/lang/System:currentTimeMillis	()J
     //   1614: ldc2_w 1207
     //   1617: ldiv
     //   1618: lstore 8
@@ -4260,21 +4264,21 @@ public class MessageProtoCodec
     //   1630: i2l
     //   1631: lstore 10
     //   1633: aload 4
-    //   1635: getfield 2678	localpb/richMsg/RichMsg$PttRec:msgRecTime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1635: getfield 2686	localpb/richMsg/RichMsg$PttRec:msgRecTime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   1638: lload 8
     //   1640: invokevirtual 880	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   1643: aload 4
-    //   1645: getfield 2681	localpb/richMsg/RichMsg$PttRec:msgTime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1645: getfield 2689	localpb/richMsg/RichMsg$PttRec:msgTime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   1648: lload 10
     //   1650: invokevirtual 880	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   1653: aload 4
-    //   1655: getfield 2785	localpb/richMsg/RichMsg$PttRec:voiceChangeFlag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1655: getfield 2793	localpb/richMsg/RichMsg$PttRec:voiceChangeFlag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1658: iload 6
     //   1660: invokevirtual 184	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   1663: aload 4
-    //   1665: getfield 3327	localpb/richMsg/RichMsg$PttRec:busiType	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1665: getfield 3335	localpb/richMsg/RichMsg$PttRec:busiType	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1668: aload_3
-    //   1669: getfield 3330	tencent/im/msg/im_msg_body$TmpPtt:uint32_busi_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1669: getfield 3338	tencent/im/msg/im_msg_body$TmpPtt:uint32_busi_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1672: invokevirtual 87	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   1675: invokevirtual 184	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   1678: sipush -2002
@@ -4285,39 +4289,39 @@ public class MessageProtoCodec
     //   1691: putfield 613	com/tencent/mobileqq/data/MessageRecord:msgtype	I
     //   1694: aload 12
     //   1696: aload 4
-    //   1698: invokevirtual 2685	localpb/richMsg/RichMsg$PttRec:toByteArray	()[B
+    //   1698: invokevirtual 2693	localpb/richMsg/RichMsg$PttRec:toByteArray	()[B
     //   1701: putfield 661	com/tencent/mobileqq/data/MessageRecord:msgData	[B
     //   1704: aload 12
-    //   1706: checkcast 2683	com/tencent/mobileqq/data/MessageForPtt
-    //   1709: invokevirtual 2687	com/tencent/mobileqq/data/MessageForPtt:parse	()V
+    //   1706: checkcast 2691	com/tencent/mobileqq/data/MessageForPtt
+    //   1709: invokevirtual 2695	com/tencent/mobileqq/data/MessageForPtt:parse	()V
     //   1712: aload_3
-    //   1713: getfield 3333	tencent/im/msg/im_msg_body$TmpPtt:uint64_msg_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1713: getfield 3341	tencent/im/msg/im_msg_body$TmpPtt:uint64_msg_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   1716: invokevirtual 1801	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
     //   1719: ifeq +48 -> 1767
     //   1722: aload_3
-    //   1723: getfield 3333	tencent/im/msg/im_msg_body$TmpPtt:uint64_msg_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1723: getfield 3341	tencent/im/msg/im_msg_body$TmpPtt:uint64_msg_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   1726: invokevirtual 366	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   1729: lconst_0
     //   1730: lcmp
     //   1731: ifeq +36 -> 1767
     //   1734: aload 12
-    //   1736: ldc_w 3335
+    //   1736: ldc_w 3343
     //   1739: new 96	java/lang/StringBuilder
     //   1742: dup
     //   1743: invokespecial 97	java/lang/StringBuilder:<init>	()V
     //   1746: aload_3
-    //   1747: getfield 3333	tencent/im/msg/im_msg_body$TmpPtt:uint64_msg_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1747: getfield 3341	tencent/im/msg/im_msg_body$TmpPtt:uint64_msg_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   1750: invokevirtual 366	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   1753: invokevirtual 396	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1756: ldc 119
     //   1758: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1761: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1764: invokevirtual 3181	com/tencent/mobileqq/data/MessageRecord:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1764: invokevirtual 3189	com/tencent/mobileqq/data/MessageRecord:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
     //   1767: aload_2
     //   1768: aload 12
     //   1770: aload_0
     //   1771: getfield 336	com/tencent/mobileqq/app/MessageHandler:b	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1774: invokestatic 3338	com/tencent/mobileqq/confess/ConfessMsgUtil:a	(Lmsf/msgcomm/msg_comm$Msg;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   1774: invokestatic 3346	com/tencent/mobileqq/confess/ConfessMsgUtil:a	(Lmsf/msgcomm/msg_comm$Msg;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   1777: aload_1
     //   1778: aload 12
     //   1780: invokeinterface 649 2 0
@@ -4331,11 +4335,11 @@ public class MessageProtoCodec
     //   1794: goto -480 -> 1314
     //   1797: new 698	com/tencent/mobileqq/troop/data/MessageInfo
     //   1800: dup
-    //   1801: invokespecial 3339	com/tencent/mobileqq/troop/data/MessageInfo:<init>	()V
+    //   1801: invokespecial 3347	com/tencent/mobileqq/troop/data/MessageInfo:<init>	()V
     //   1804: astore 12
     //   1806: aload 12
     //   1808: aload 4
-    //   1810: getfield 3262	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
+    //   1810: getfield 3270	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:e	J
     //   1813: invokestatic 555	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   1816: putfield 702	com/tencent/mobileqq/troop/data/MessageInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1819: aload_0
@@ -4343,10 +4347,10 @@ public class MessageProtoCodec
     //   1821: aload_2
     //   1822: iconst_1
     //   1823: aload 4
-    //   1825: getfield 3272	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:jdField_b_of_type_Boolean	Z
+    //   1825: getfield 3280	com/tencent/mobileqq/service/message/DecodeProtoPkgContext:jdField_b_of_type_Boolean	Z
     //   1828: aload 12
     //   1830: aload_3
-    //   1831: invokestatic 3342	com/tencent/mobileqq/service/message/MessageProtoCodec:a	(Lcom/tencent/mobileqq/app/MessageHandler;Ljava/util/List;Lmsf/msgcomm/msg_comm$Msg;ZZLcom/tencent/mobileqq/troop/data/MessageInfo;Lcom/tencent/mobileqq/service/message/TempSessionInfo;)V
+    //   1831: invokestatic 3350	com/tencent/mobileqq/service/message/MessageProtoCodec:a	(Lcom/tencent/mobileqq/app/MessageHandler;Ljava/util/List;Lmsf/msgcomm/msg_comm$Msg;ZZLcom/tencent/mobileqq/troop/data/MessageInfo;Lcom/tencent/mobileqq/service/message/TempSessionInfo;)V
     //   1834: return
     //   1835: astore 12
     //   1837: iload 7
@@ -5015,7 +5019,7 @@ public class MessageProtoCodec
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new ahjm(paramMessageHandler, paramMsg));
+      new Handler(localLooper).post(new ahxo(paramMessageHandler, paramMsg));
       return;
     }
     ((DataLineHandler)paramMessageHandler.b.a(8)).a(paramMsg);
@@ -5191,7 +5195,7 @@ public class MessageProtoCodec
               break label765;
             }
             localObject2 = (SubAccountMessage)((SubAccountMessage)localObject1).deepCopyByReflect();
-            ((SubAccountMessage)localObject2).msg = "对方".concat(BaseApplicationImpl.getApplication().getString(2131438085));
+            ((SubAccountMessage)localObject2).msg = "对方".concat(BaseApplicationImpl.getApplication().getString(2131438102));
             ((SubAccountMessage)localObject2).unreadNum = Math.max(0, ((SubAccountMessage)localObject1).unreadNum - 1);
             ((SubAccountMessage)localObject2).time = paramReqBody.jdField_c_of_type_Long;
             ((SubAccountMessage)localObject2).needNotify = paramQQAppInterface.isBackground_Pause;
@@ -5297,7 +5301,7 @@ public class MessageProtoCodec
       if (!paramBoolean) {
         l1 = 10000L;
       }
-      ThreadManager.getUIHandler().postDelayed(new ahjn(paramQQAppInterface, localMsgBody, paramBoolean), l1);
+      ThreadManager.getUIHandler().postDelayed(new ahxp(paramQQAppInterface, localMsgBody, paramBoolean), l1);
       long l2;
       if (localMsgBody.deal_info.has())
       {
@@ -6009,9 +6013,9 @@ public class MessageProtoCodec
           break;
           paramChatMessage = paramChatMessage.getSummery();
           if ((paramChatMessage == null) || (paramChatMessage.length() == 0)) {
-            localObject1 = BaseApplication.getContext().getString(2131436148);
+            localObject1 = BaseApplication.getContext().getString(2131436165);
           } else {
-            localObject1 = String.format(BaseApplication.getContext().getString(2131436149), new Object[] { paramChatMessage });
+            localObject1 = String.format(BaseApplication.getContext().getString(2131436166), new Object[] { paramChatMessage });
           }
         }
         return null;
@@ -6179,7 +6183,7 @@ public class MessageProtoCodec
                 localObject1 = CharacterUtil.a(l4);
                 try
                 {
-                  new QavWrapper(BaseApplicationImpl.getContext()).a(new ahjo(paramMsg, l3 - l1, (String)localObject1, paramDecodeProtoPkgContext, paramMessageHandler, l4, l2, l1, bool));
+                  new QavWrapper(BaseApplicationImpl.getContext()).a(new ahxq(paramMsg, l3 - l1, (String)localObject1, paramDecodeProtoPkgContext, paramMessageHandler, l4, l2, l1, bool));
                   return;
                 }
                 catch (Exception paramMessageHandler) {}
@@ -6411,9 +6415,9 @@ public class MessageProtoCodec
         break;
         localObject1 = ((MessageForArkApp)localObject1).getSummery();
         if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
-          localObject1 = BaseApplication.getContext().getString(2131436148);
+          localObject1 = BaseApplication.getContext().getString(2131436165);
         } else {
-          localObject1 = String.format(BaseApplication.getContext().getString(2131436149), new Object[] { localObject1 });
+          localObject1 = String.format(BaseApplication.getContext().getString(2131436166), new Object[] { localObject1 });
         }
       }
     }

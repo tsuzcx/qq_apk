@@ -4,7 +4,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
-import kkx;
+import kki;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
 import tencent.im.troop_search_popclassifc.popclassifc.BannerCard;
@@ -28,7 +28,7 @@ public class AddContactTroopManage
   
   private void a(troopviewInfo.RspBody paramRspBody)
   {
-    ThreadManager.post(new kkx(this, paramRspBody), 8, null, false);
+    ThreadManager.post(new kki(this, paramRspBody), 8, null, false);
   }
   
   private boolean a(troopviewInfo.RspBody paramRspBody)

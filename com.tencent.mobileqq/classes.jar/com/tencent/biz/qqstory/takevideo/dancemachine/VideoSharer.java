@@ -31,8 +31,8 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.util.WeakReference;
-import ogq;
-import ogu;
+import oia;
+import oie;
 
 public class VideoSharer
   implements AdapterView.OnItemClickListener
@@ -73,28 +73,28 @@ public class VideoSharer
     if ((TextUtils.isEmpty(this.i)) || (TextUtils.isEmpty(this.h)) || (TextUtils.isEmpty(this.j))) {
       return;
     }
-    ThreadManager.executeOnSubThread(new ogq(this, paramInt));
+    ThreadManager.executeOnSubThread(new oia(this, paramInt));
   }
   
   private List[] a(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131432987);
-    localActionSheetItem.jdField_b_of_type_Int = 2130839189;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131433004);
+    localActionSheetItem.jdField_b_of_type_Int = 2130839193;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.jdField_c_of_type_Int = 2;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430109);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430126);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838340;
     localActionSheetItem.jdField_c_of_type_Int = 9;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430110);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838330;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430127);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838334;
     localActionSheetItem.jdField_c_of_type_Int = 10;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
@@ -244,7 +244,7 @@ public class VideoSharer
   
   public void a(int paramInt1, int paramInt2)
   {
-    new ogu(this.jdField_a_of_type_AndroidAppActivity, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramInt1, this.jdField_a_of_type_MqqUtilWeakReference, paramInt2).execute(new Void[0]);
+    new oie(this.jdField_a_of_type_AndroidAppActivity, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramInt1, this.jdField_a_of_type_MqqUtilWeakReference, paramInt2).execute(new Void[0]);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -312,7 +312,7 @@ public class VideoSharer
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewShareActionSheet = new ShareActionSheet(this.jdField_a_of_type_AndroidAppActivity);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(a(this.jdField_a_of_type_AndroidAppActivity));
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131433083));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131433100));
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAppInterface);
     paramActivity = this.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra(EditVideoParams.class.getName());
     if (paramActivity != null)

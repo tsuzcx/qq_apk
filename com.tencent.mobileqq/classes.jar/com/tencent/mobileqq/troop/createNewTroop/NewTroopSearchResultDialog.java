@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import aino;
-import ainp;
+import ajbs;
+import ajbt;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -50,14 +50,14 @@ public class NewTroopSearchResultDialog
   {
     if (paramView.getTag() != null)
     {
-      paramView = (ainp)paramView.getTag();
+      paramView = (ajbt)paramView.getTag();
       this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a(paramView.a);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "create_page", "clk_fuyong", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a().d, "" + this.jdField_a_of_type_Int, "", "");
     }
     do
     {
       return;
-      if (2131368288 == paramView.getId())
+      if (2131368355 == paramView.getId())
       {
         if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1500L)
         {
@@ -67,17 +67,17 @@ public class NewTroopSearchResultDialog
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "create_page", "clk_fuyong_new", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a().d, "" + this.jdField_a_of_type_Int, "", "");
         return;
       }
-    } while (2131363954 != paramView.getId());
+    } while (2131363978 != paramView.getId());
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a();
     dismiss();
   }
   
   public void show()
   {
-    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2130969866, null);
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2130969880, null);
     a(localLinearLayout);
     Object localObject = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localLinearLayout.findViewById(2131363901));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localLinearLayout.findViewById(2131363924));
     localObject = (TroopCreateLogic)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(31);
     if ((((TroopCreateLogic)localObject).a == null) || (((TroopCreateLogic)localObject).a.size() == 0))
     {
@@ -86,19 +86,19 @@ public class NewTroopSearchResultDialog
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return;
     }
-    localObject = new aino(this, ((TroopCreateLogic)localObject).a);
+    localObject = new ajbs(this, ((TroopCreateLogic)localObject).a);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter((ListAdapter)localObject);
     this.jdField_a_of_type_ComTencentWidgetXListView.setMaxHeight(AIOUtils.a(200.0F, getContext().getResources()));
-    this.jdField_a_of_type_AndroidViewView = localLinearLayout.findViewById(2131368288);
+    this.jdField_a_of_type_AndroidViewView = localLinearLayout.findViewById(2131368355);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     localObject = String.format("和他们已有%d个群聊，可直接进入聊天。", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a.size()) });
-    ((TextView)localLinearLayout.findViewById(2131368287)).setText((CharSequence)localObject);
+    ((TextView)localLinearLayout.findViewById(2131368354)).setText((CharSequence)localObject);
     localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a();
     this.jdField_a_of_type_Int = (((TroopCreateLogic.TroopCreateInfo)localObject).a.size() - 1);
     String str = String.format("已选择%d人", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368290)).setText(str);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368289)).setText(((TroopCreateLogic.TroopCreateInfo)localObject).c);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localLinearLayout.findViewById(2131363954));
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368357)).setText(str);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368356)).setText(((TroopCreateLogic.TroopCreateInfo)localObject).c);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localLinearLayout.findViewById(2131363978));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     super.show();
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "create_page", "exp_fuyong", 0, 0, "" + ((TroopCreateLogic.TroopCreateInfo)localObject).d, "" + this.jdField_a_of_type_Int, "", "");
@@ -106,7 +106,7 @@ public class NewTroopSearchResultDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.NewTroopSearchResultDialog
  * JD-Core Version:    0.7.0.1
  */

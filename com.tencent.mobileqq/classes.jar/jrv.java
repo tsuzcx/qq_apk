@@ -1,28 +1,82 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.ui.ConferenceFlyTicketActivity;
+import com.tencent.av.utils.download.BaseDownloadAsyncTask;
+import com.tencent.av.utils.download.DownloadParams;
+import com.tencent.av.utils.download.DownloadResult;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class jrv
-  implements DialogInterface.OnClickListener
+public class jrv
+  extends BaseDownloadAsyncTask
 {
-  jrv(jru paramjru) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public jrv(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setPackage(CallbackWaitingActivityExt.a(this.a.a.a).getApp().getPackageName());
-    paramDialogInterface.setAction("tencent.av.v2q.CancelCallBack");
-    paramDialogInterface.putExtra("fromPhone", this.a.a.a.c);
-    paramDialogInterface.putExtra("toPhone", this.a.a.a.jdField_b_of_type_JavaLangString);
-    paramDialogInterface.putExtra("fromUin", this.a.a.a.e);
-    paramDialogInterface.putExtra("uinType", this.a.a.a.jdField_b_of_type_Int);
-    paramDialogInterface.putExtra("toUin", this.a.a.a.e);
-    paramDialogInterface.putExtra("callBackId", this.a.a.a.a);
-    CallbackWaitingActivityExt.a(this.a.a.a).getApp().sendBroadcast(paramDialogInterface);
+    SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+  }
+  
+  public void a(DownloadParams paramDownloadParams)
+  {
+    AudioHelper.b("上传SelfNickName_rsp");
+    String str = "";
+    if (paramDownloadParams.a.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramDownloadParams = new String(paramDownloadParams.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
+        if (paramDownloadParams != null)
+        {
+          try
+          {
+            JSONObject localJSONObject = new JSONObject(paramDownloadParams);
+            i = localJSONObject.getInt("retcode");
+            if (QLog.isColorLevel()) {
+              QLog.d(this.a.a, 2, "OnReportHrSelfNickNameTask.onPostDownloadComplete : retcode = " + i);
+            }
+            paramDownloadParams = str;
+            if (localJSONObject.has("result"))
+            {
+              localJSONObject = localJSONObject.getJSONObject("result");
+              paramDownloadParams = str;
+              if (localJSONObject.has("result_code")) {
+                paramDownloadParams = localJSONObject.getString("result_code");
+              }
+            }
+          }
+          catch (JSONException paramDownloadParams)
+          {
+            if (!QLog.isColorLevel()) {
+              break label248;
+            }
+            QLog.i(this.a.a, 2, "onPostDownloadComplete : result_code = " + "" + ",retcode = " + -2);
+            paramDownloadParams = "";
+            i = -2;
+            continue;
+            this.a.a(1, 0);
+            this.a.finish();
+            return;
+          }
+          if ((i == 0) && (paramDownloadParams.equals("0")))
+          {
+            this.a.b();
+            return;
+          }
+        }
+      }
+      catch (Exception paramDownloadParams)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(this.a.a, 2, "onPostDownloadComplete :" + paramDownloadParams.toString());
+        }
+        paramDownloadParams = null;
+        continue;
+      }
+      label248:
+      paramDownloadParams = "";
+      int i = 1;
+    }
   }
 }
 

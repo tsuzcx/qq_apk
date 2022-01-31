@@ -1,32 +1,25 @@
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import com.tencent.widget.ExpandableListView.OnGroupExpandListener;
 
 public class acpg
-  implements Runnable
+  implements ExpandableListView.OnGroupExpandListener
 {
-  public acpg(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public acpg(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    try
+    if ((paramInt == this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
     {
-      if (UniformDownloadMgr.a(this.a) == null)
-      {
-        UniformDownloadMgr.a(this.a, new acph(this));
-        IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.qfile_unifromdownload");
-        BaseApplicationImpl.getApplication().registerReceiver(UniformDownloadMgr.a(this.a), localIntentFilter);
-        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr Register UNIDOWNLOAD_BORDCAST");
-        return;
+      if (!this.a.a()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
       }
-      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onAppInit, but mRecv is already setted");
+    }
+    else {
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
   }
 }
 

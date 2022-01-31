@@ -1,17 +1,46 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
 
-public class mxk
-  implements Runnable
+class mxk
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public mxk(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  private mxk(mxc parammxc) {}
   
-  public void run()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (PublicAccountImageCollectionMainActivity.a(this.a) != null)
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a).a(PublicAccountImageCollectionMainActivity.a(this.a));
-      PublicAccountImageCollectionMainActivity.a(this.a).notifyDataSetChanged();
+    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
+    mxc.b(this.a);
+    return false;
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return super.onDoubleTapEvent(paramMotionEvent);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    super.onShowPress(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((!(mxc.a(this.a).getTag() instanceof mxi)) || (((mxc.a(this.a).getTag() instanceof mxi)) && (!mxc.a(this.a).a(mxc.a(this.a)).booleanValue()))) {
+      mxc.c(this.a);
     }
+    return false;
   }
 }
 

@@ -1,27 +1,50 @@
-import com.tencent.mobileqq.activity.aio.PokePanel.PokeData;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
 
-public class uuz
-  implements Runnable
+class uuz
+  implements View.OnClickListener
 {
-  public uuz(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
+  uuz(uuy paramuuy, int paramInt, ArkViewImplement.ArkViewInterface paramArkViewInterface) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = PokeItemHelper.a(this.a.b, GivingHeartItemBuilder.a(this.a));
-    if (((ArrayList)localObject).size() > 0)
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        PokePanel.PokeData localPokeData = (PokePanel.PokeData)((Iterator)localObject).next();
-        GivingHeartItemBuilder.a(this.a).put(Integer.valueOf(localPokeData.b), Integer.valueOf(localPokeData.c));
+    int i = paramView.getId();
+    if (this.jdField_a_of_type_Int == 2) {
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(5);
       }
     }
+    do
+    {
+      do
+      {
+        return;
+        if (i == 1)
+        {
+          this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(4);
+          return;
+        }
+      } while (i != 2);
+      this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+      return;
+      if (this.jdField_a_of_type_Int != 1) {
+        break;
+      }
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(1);
+        return;
+      }
+      if (i == 1)
+      {
+        this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(2);
+        return;
+      }
+    } while (i != 2);
+    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
+    return;
+    this.jdField_a_of_type_ComTencentArkArkViewImplement$ArkViewInterface.doInputCommand(3);
   }
 }
 

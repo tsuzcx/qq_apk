@@ -1,51 +1,52 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
+import SummaryCard.RespSearch;
+import SummaryCard.SearchInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class rhx
-  implements ArkAppView.Callback
+  implements ContactSearchFacade.ISearchListener
 {
-  public rhx(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public rhx(AddFriendActivity paramAddFriendActivity) {}
   
-  public void a()
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
-    }
-    Object localObject;
-    boolean bool;
-    if (ArkFullScreenAppActivity.a(this.a) != null)
-    {
-      localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
-      if (localObject != null)
-      {
-        if ((!((ArkAppContainer)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
-          break label135;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
-        }
-        localObject = this.a.rightViewImg;
-        if (!bool) {
-          break label140;
-        }
+    AddFriendActivity.a(this.a);
+    if ((!paramBoolean) || (paramInt2 != 0) || (paramInt1 != 87) || (!(paramObject instanceof RespSearch))) {
+      if (!TextUtils.isEmpty(paramString)) {
+        this.a.a(paramString);
       }
     }
-    for (;;)
+    do
     {
-      ((ImageView)localObject).setVisibility(i);
       return;
-      label135:
-      bool = false;
-      break;
-      label140:
-      i = 4;
+      this.a.a(2131434449);
+      return;
+      try
+      {
+        paramString = (RespSearch)paramObject;
+        if ((paramString.vRecords != null) && (!paramString.vRecords.isEmpty())) {
+          break;
+        }
+        this.a.a(2131434751);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        this.a.a(2131434449);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AddFriendActivity", 2, "onSearchResult | searchType = " + paramInt1 + " | isSuccess = " + paramBoolean + " | rsCode = " + paramInt2 + " | data = " + paramObject, paramString);
+    return;
+    if (paramString.vRecords.size() == 1)
+    {
+      AddFriendActivity.a(this.a, (SearchInfo)paramString.vRecords.get(0), this.a.app.getCurrentAccountUin(), paramString.vSecureSig, false, 0);
+      return;
     }
+    this.a.a(paramString);
   }
 }
 

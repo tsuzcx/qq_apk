@@ -1,7 +1,7 @@
 package cooperation.qzone.util;
 
-import amkj;
-import amkk;
+import anao;
+import anap;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
@@ -196,7 +196,7 @@ public class GifAntishakeModule
     int i = 1;
     while (i < paramArrayList.size())
     {
-      jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new amkk(this, paramArrayList, i, localCountDownLatch, localBitmap, arrayOfBoolean));
+      jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new anap(this, paramArrayList, i, localCountDownLatch, localBitmap, arrayOfBoolean));
       i += 1;
     }
     try
@@ -261,7 +261,7 @@ public class GifAntishakeModule
       i = 1;
       while (i < j)
       {
-        jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new amkj(this, i, k, m, paramArrayList, localBitmap1, n, i1, arrayOfString, (CountDownLatch)localObject));
+        jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new anao(this, i, k, m, paramArrayList, localBitmap1, n, i1, arrayOfString, (CountDownLatch)localObject));
         i += 1;
       }
     }

@@ -1,26 +1,16 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import java.util.List;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
 
 public class mah
   implements Runnable
 {
-  public mah(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public mah(TopicShareHelper paramTopicShareHelper, String paramString) {}
   
   public void run()
   {
-    VideoInfo localVideoInfo = (VideoInfo)VideoFeedsAdapter.a(this.a).get(0);
-    if (VideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
-    {
-      View localView = VideoFeedsAdapter.a(this.a).getChildAt(VideoFeedsAdapter.a(this.a).getHeaderViewsCount());
-      if ((localView != null) && ((localView.getTag() instanceof VideoFeedsAdapter.VideoItemHolder))) {
-        ((VideoFeedsAdapter.VideoItemHolder)localView.getTag()).n.setText(localVideoInfo.k);
-      }
-    }
+    PublicAccountReportUtils.a(null, "", "0X80088B4", "0X80088B4", 0, 0, "", this.jdField_a_of_type_JavaLangString, "", VideoReporter.a(TopicShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoTopicShareHelper).mChannelID, null), false);
   }
 }
 

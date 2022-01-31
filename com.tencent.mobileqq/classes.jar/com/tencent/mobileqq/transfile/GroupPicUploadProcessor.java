@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.transfile;
 
-import aibw;
-import aibx;
-import aica;
-import aicb;
-import aicc;
+import aipz;
+import aiqa;
+import aiqd;
+import aiqe;
+import aiqf;
 import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
 import android.os.Looper;
@@ -93,7 +93,7 @@ public class GroupPicUploadProcessor
   implements INetEventHandler, VoiceChangeParams.IOnCompressFinish
 {
   long jdField_a_of_type_Long;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aicc(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aiqf(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   TransFileController jdField_a_of_type_ComTencentMobileqqTransfileTransFileController;
   String jdField_a_of_type_JavaLangString;
@@ -408,7 +408,7 @@ public class GroupPicUploadProcessor
             {
               a(9072, (String)localObject, c((String)localObject), null);
               d();
-              new Handler(Looper.getMainLooper()).post(new aibw(this));
+              new Handler(Looper.getMainLooper()).post(new aipz(this));
               return -1;
             }
             this.jdField_e_of_type_JavaLangString = ((String)localObject);
@@ -1288,7 +1288,7 @@ public class GroupPicUploadProcessor
         {
           d("<BDH_LOG> onBusiProtoResp() select BDH channel");
           this.v = 1;
-          al_();
+          an_();
           continue;
         }
         d("<BDH_LOG> onBusiProtoResp() select HTTP channel");
@@ -1639,7 +1639,7 @@ public class GroupPicUploadProcessor
     }
   }
   
-  public void al_()
+  public void an_()
   {
     if (this.jdField_d_of_type_Long == -1L) {
       this.jdField_d_of_type_Long = SystemClock.uptimeMillis();
@@ -1654,9 +1654,9 @@ public class GroupPicUploadProcessor
       return;
       this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
       Object localObject = HexUtil.a(this.jdField_l_of_type_JavaLangString);
-      aibx localaibx = new aibx(this);
-      this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 2, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_i_of_type_JavaLangString, (int)this.jdField_r_of_type_Long, (byte[])localObject, this.jdField_a_of_type_ArrayOfByte, localaibx);
-      localObject = new aica(this);
+      aiqa localaiqa = new aiqa(this);
+      this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 2, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_i_of_type_JavaLangString, (int)this.jdField_r_of_type_Long, (byte[])localObject, this.jdField_a_of_type_ArrayOfByte, localaiqa);
+      localObject = new aiqd(this);
       this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.cbForReport = ((ITransCallbackForReport)localObject);
       i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().submitTransactionTask(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction);
       if (QLog.isColorLevel()) {
@@ -1667,9 +1667,9 @@ public class GroupPicUploadProcessor
     d();
   }
   
-  public void an_()
+  public void ap_()
   {
-    super.an_();
+    super.ap_();
     if ((!this.h) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_l_of_type_Boolean))
     {
       if (VoiceChangeManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_i_of_type_JavaLangString, this)) {
@@ -1719,7 +1719,7 @@ public class GroupPicUploadProcessor
     this.jdField_j_of_type_JavaLangString = "";
     this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
     w();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new aicb(this));
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new aiqe(this));
     return 0;
   }
   
@@ -2194,7 +2194,7 @@ public class GroupPicUploadProcessor
     if (this.jdField_d_of_type_Long == -1L) {
       this.jdField_d_of_type_Long = SystemClock.uptimeMillis();
     }
-    super.al_();
+    super.an_();
   }
   
   public void s()
@@ -2534,15 +2534,15 @@ public class GroupPicUploadProcessor
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().resumeTransactionTask(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction);
         return;
       }
-      an_();
+      ap_();
       return;
     }
-    an_();
+    ap_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPicUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

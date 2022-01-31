@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.MapParcelable;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.widget.immersive.SoftInputResizeLayout;
 
-public final class amen
-  implements Parcelable.Creator
+public class amen
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public MapParcelable a(Parcel paramParcel)
-  {
-    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
-  }
+  public amen(SoftInputResizeLayout paramSoftInputResizeLayout) {}
   
-  public MapParcelable[] a(int paramInt)
+  public void onGlobalLayout()
   {
-    return null;
+    SoftInputResizeLayout.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amen
  * JD-Core Version:    0.7.0.1
  */

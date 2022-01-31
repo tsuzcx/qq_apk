@@ -126,7 +126,7 @@ public class SelfViewHolder
       a(paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.size(), paramMsgTabNodeInfo.jdField_b_of_type_Int);
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843449);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843570);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       }
     }
@@ -144,7 +144,7 @@ public class SelfViewHolder
     } while (paramInt != c);
     this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
     this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderColors(new int[] { -65536 });
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843454);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843575);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }

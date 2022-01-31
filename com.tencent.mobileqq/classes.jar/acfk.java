@@ -1,25 +1,27 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonTabAdapter;
+import com.tencent.mobileqq.emoticonview.EmoticonTabAdapter.EmoticonTabItem;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class acfk
-  implements View.OnLongClickListener
+  implements Runnable
 {
-  public acfk(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public acfk(EmoticonTabAdapter paramEmoticonTabAdapter, EmoticonTabAdapter.EmoticonTabItem paramEmoticonTabItem) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.w("EmoticonTabAdapter", 2, "package lossY");
     }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131362722, paramView.getContext().getString(2131434024));
-    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new acfl(this, paramView), new acfm(this, paramView));
-    return true;
+    EmoticonManager localEmoticonManager = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonTabAdapter.a.getManager(13);
+    EmoticonPackage localEmoticonPackage = localEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonTabAdapter$EmoticonTabItem.a);
+    if (localEmoticonPackage != null)
+    {
+      localEmoticonPackage.status = 0;
+      localEmoticonManager.a(localEmoticonPackage);
+    }
   }
 }
 

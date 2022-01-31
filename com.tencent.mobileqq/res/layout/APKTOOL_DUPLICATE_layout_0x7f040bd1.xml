@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.TroopMemberListSlideItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33e6" android:layout_width="fill_parent" android:layout_height="46.0dip"
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02042d" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_margin="0.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040bd2" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c001e" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33e7" android:background="#ffff3b2f" android:layout_width="90.0dip" android:layout_height="fill_parent" android:layout_marginBottom="1.0px" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b168e" />
-</com.tencent.mobileqq.widget.TroopMemberListSlideItem>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a344d" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a344e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a344d" android:layout_centerHorizontal="true" />
+</RelativeLayout>

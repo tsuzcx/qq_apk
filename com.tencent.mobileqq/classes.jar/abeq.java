@@ -1,56 +1,41 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleNewAIOAnim;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
+import com.tencent.mobileqq.armap.Sound;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class abeq
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public abeq(BubbleNewAIOAnim paramBubbleNewAIOAnim) {}
+  public abeq(Sound paramSound) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.a.a("animator set end!");
-    if (this.a.c != null)
+    try
     {
-      BubbleNewAIOAnim.a(this.a).removeView(this.a.c);
-      this.a.c = null;
-      if (this.a.d == null) {
-        break label186;
-      }
-      BubbleNewAIOAnim.b(this.a).removeView(this.a.d);
-      this.a.d = null;
-    }
-    for (;;)
-    {
-      if (this.a.e != null)
+      Sound.a(this.a).stop();
+      Iterator localIterator = Sound.a(this.a).entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        this.a.e.setVisibility(0);
-        paramAnimator = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(45);
-        paramAnimator.a = -1L;
-        paramAnimator.b();
+        aber localaber = (aber)((Map.Entry)localIterator.next()).getValue();
+        if (localaber != null) {
+          Sound.a(this.a).stop(localaber.a);
+        }
       }
-      if (this.a.jdField_b_of_type_AndroidViewView != null) {
-        this.a.jdField_b_of_type_AndroidViewView.invalidate();
-      }
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.a(true);
-      return;
-      this.a.a("something wrong, bubble view is null!");
-      break;
-      label186:
-      this.a.a("something wrong, pendview is null!");
+      Sound.a(this.a).release();
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a("animator set start!");
-    this.a.a(false);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("Sound", 2, "release exception", localException);
+      }
+      return;
+    }
+    Sound.a(this.a).clear();
   }
 }
 

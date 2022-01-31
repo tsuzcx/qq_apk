@@ -45,7 +45,7 @@ import mqq.app.MSFServlet;
 import mqq.app.NewIntent;
 import mqq.app.Packet;
 import mqq.observer.BusinessObserver;
-import wxk;
+import xap;
 
 public class QWalletCommonServlet
   extends MSFServlet
@@ -261,7 +261,7 @@ public class QWalletCommonServlet
       } while ((i == 1) && (!(paramIntent instanceof NewIntent)));
       paramIntent = ((NewIntent)paramIntent).getObserver();
     } while (paramIntent == null);
-    ThreadManager.post(new wxk(this, paramIntent, paramInt, paramBoolean, paramBundle), 5, null, true);
+    ThreadManager.post(new xap(this, paramIntent, paramInt, paramBoolean, paramBundle), 5, null, true);
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)

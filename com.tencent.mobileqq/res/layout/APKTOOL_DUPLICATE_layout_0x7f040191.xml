@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020573" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0133" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0131"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020577" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0133" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0131"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:layout_width="53.0dip" android:layout_height="fill_parent">
         <com.tencent.image.URLImageView android:id="@id/tabView" android:background="@null" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0134" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0134" android:scaleType="centerCrop" android:adjustViewBounds="false" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07fa" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220e3" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0811" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022163" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
     </RelativeLayout>
-    <View android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0476" android:layout_width="1.0dip" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0132" />
+    <View android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0488" android:layout_width="1.0dip" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0132" />
 </LinearLayout>

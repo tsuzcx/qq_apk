@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import wal;
+import wdq;
 
 public class VipFunCallTipsBar
   implements TipsBarTask
@@ -37,13 +37,13 @@ public class VipFunCallTipsBar
   public View a(Object... paramVarArgs)
   {
     paramVarArgs = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968734, null);
-    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131363463);
-    TextView localTextView = (TextView)paramVarArgs.findViewById(2131363464);
-    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131363465);
-    localTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433585));
-    localImageView1.setImageResource(2130842169);
-    paramVarArgs.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433585));
-    paramVarArgs.setOnClickListener(new wal(this));
+    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131363481);
+    TextView localTextView = (TextView)paramVarArgs.findViewById(2131363482);
+    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131363483);
+    localTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433602));
+    localImageView1.setImageResource(2130842206);
+    paramVarArgs.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433602));
+    paramVarArgs.setOnClickListener(new wdq(this));
     localImageView2.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     return paramVarArgs;
   }

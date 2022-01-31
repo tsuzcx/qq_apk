@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:minHeight="60.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1399" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403b3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a139a" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403b6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a139b" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403b8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1398" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c025f" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04eb" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a139c" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403b9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</merge>
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13aa" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="12.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206bf" android:indeterminateBehavior="repeat" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a13ab" android:layout_centerVertical="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057d" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13ab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b19d1" android:layout_centerInParent="true" />
+</RelativeLayout>

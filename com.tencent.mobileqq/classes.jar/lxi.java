@@ -1,20 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 public class lxi
-  implements Runnable
+  extends CommonSkinRes
 {
-  public lxi(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
+  public lxi(ReadInJoySkinManager paramReadInJoySkinManager, AppInterface paramAppInterface) {}
   
-  public void run()
+  public Drawable a()
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
-    localEditor.putString("kandian_push_0x210_msg_for_follow", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a());
-    localEditor.putLong("kandian_push_0x210_c5_msg_time", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.d);
-    ReadInJoyHelper.a(localEditor, true);
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_video_selected");
   }
 }
 

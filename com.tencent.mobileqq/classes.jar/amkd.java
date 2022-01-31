@@ -1,38 +1,18 @@
-import android.os.Looper;
-import android.os.Process;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.BaseHandler;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.comic.ui.QQComicTabBarView;
+import mqq.os.MqqHandler;
 
-public final class amkd
+public class amkd
   implements Runnable
 {
+  public amkd(QQComicTabBarView paramQQComicTabBarView) {}
+  
   public void run()
   {
-    try
-    {
-      int i = ((Integer)BaseHandler.InitalPriority.get()).intValue();
-      int j = Process.getThreadPriority(Process.myTid());
-      long l = Thread.currentThread().getId();
-      BaseHandler.isRegulated.set(Boolean.valueOf(false));
-      BaseHandler.InitalPriority.remove();
-      BaseHandler.access$400(i);
-      if (BaseHandler.access$400(i)) {}
-      for (i = BaseHandler.regulalteCount.decrementAndGet();; i = BaseHandler.regulalteCount.get())
-      {
-        Looper localLooper = Looper.myLooper();
-        if (localLooper != null) {
-          localLooper.setMessageLogging(null);
-        }
-        QLog.i("BaseHandler", 1, "resetPriority ThreadName:" + Thread.currentThread().getName() + "(" + l + ") currentPriority: " + j + ",changed:" + Process.getThreadPriority(Process.myTid()) + " regulated:" + i);
-        return;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.w("BaseHandler", 1, "", localException);
-    }
+    Drawable localDrawable = this.a.getResources().getDrawable(2130846384);
+    ThreadManager.getUIHandler().post(new amke(this, localDrawable));
   }
 }
 

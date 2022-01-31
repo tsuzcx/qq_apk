@@ -1,20 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.EditPicSave;
 
 public class odp
-  extends Handler
+  implements Runnable
 {
-  public odp(EditVideoMusic paramEditVideoMusic) {}
+  public odp(EditPicSave paramEditPicSave) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (this.a.jdField_a_of_type_Boolean) {
       return;
     }
-    this.a.b();
+    EditPicSave localEditPicSave = this.a;
+    localEditPicSave.jdField_a_of_type_Int += this.a.b;
+    if (this.a.jdField_a_of_type_Int > 99)
+    {
+      this.a.jdField_a_of_type_Int = 99;
+      this.a.a(this.a.jdField_a_of_type_Int);
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_Int);
+    this.a.e();
   }
 }
 

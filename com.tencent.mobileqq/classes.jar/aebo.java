@@ -1,22 +1,24 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.leba.view.LebaTopBarView;
 
 public class aebo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public View a;
-  public ImageButton a;
-  public ImageView a;
-  public TextView a;
+  public aebo(LebaTopBarView paramLebaTopBarView, View paramView) {}
   
-  private aebo(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.height = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebo
  * JD-Core Version:    0.7.0.1
  */

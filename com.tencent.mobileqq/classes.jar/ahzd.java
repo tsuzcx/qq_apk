@@ -1,69 +1,85 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ahzd
-  implements Runnable
+  implements INetEngine.INetEngineListener
 {
-  public ahzd(ConfigSetting paramConfigSetting) {}
+  public ahzd(PtvTemplateManager paramPtvTemplateManager, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, PtvTemplateManager.IPtvTemplateDownloadListener paramIPtvTemplateDownloadListener) {}
   
-  public void run()
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    Object localObject1 = this.a.a.getApp().getSharedPreferences(this.a.a.getCurrentAccountUin() + "_m_str_teamwork_tips_sp", 0);
-    ConfigSetting.a(this.a, ((SharedPreferences)localObject1).getInt("file_str_key_max_count", 0));
-    Object localObject2 = ConfigSetting.a(this.a, ((SharedPreferences)localObject1).getString("file_str_key_file_type", ""));
-    ConfigSetting.a(this.a, "");
-    int j = localObject2.length;
-    int i = 0;
-    while (i < j)
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener != null)
     {
-      String str1 = localObject2[i];
-      String str2 = ((SharedPreferences)localObject1).getString("fileType_" + str1, "");
-      ConfigSetting.a(this.a, ConfigSetting.a(this.a) + str2 + "|");
-      ahzf localahzf = new ahzf(this.a, null);
-      localahzf.jdField_b_of_type_ArrayOfJavaLangString = ConfigSetting.a(this.a, str2);
-      localahzf.jdField_a_of_type_ArrayOfJavaLangString = ConfigSetting.a(this.a, ((SharedPreferences)localObject1).getString("key_str_key_words" + str1, ""));
-      localahzf.jdField_a_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("key_str_key_tips" + str1, "");
-      localahzf.jdField_b_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("key_str_key_link" + str1, "");
-      ConfigSetting.a(this.a).put(str1, localahzf);
-      i += 1;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.totalLen = paramLong2;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
     }
-    if (ConfigSetting.a(this.a).length() > 0) {
-      ConfigSetting.a(this.a, ConfigSetting.a(this.a).substring(0, ConfigSetting.a(this.a).length() - 1));
+  }
+  
+  public void a(NetResp paramNetResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.c);
     }
-    ConfigSetting.e(this.a, ((SharedPreferences)localObject1).getInt("file_str_key_words_case", 0));
-    ConfigSetting.b(this.a, ((SharedPreferences)localObject1).getInt("file_str_key_insert_dur", 0));
-    ConfigSetting.c(this.a, ((SharedPreferences)localObject1).getInt("sim_str_key_dur_time", 0));
-    ConfigSetting.d(this.a, ((SharedPreferences)localObject1).getInt("sim_str_key_max_query", 0));
-    ConfigSetting.a(this.a, ((SharedPreferences)localObject1).getFloat("sim_str_key_percentage", 0.0F));
-    ConfigSetting.b(this.a, ((SharedPreferences)localObject1).getString("sim_str_key_tips", ""));
-    ConfigSetting.c(this.a, ((SharedPreferences)localObject1).getString("sim_str_key_link", ""));
-    ConfigSetting.f(this.a, ((SharedPreferences)localObject1).getInt("file_str_key_max_count_local", 0));
-    localObject2 = ((SharedPreferences)localObject1).getString("text_str_templates", "");
-    ConfigSetting.a(this.a, ((SharedPreferences)localObject1).getBoolean("text_bool_switch", false));
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.businessID == 1)
+    {
+      paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.e.iterator();
+      while (paramNetResp.hasNext())
+      {
+        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramNetResp.next();
+        if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+          localPtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
+        }
+      }
+    }
+    paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramNetResp.hasNext())
+    {
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramNetResp.next();
+      if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+        localPtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
+      }
+    }
+    paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.b.iterator();
+    while (paramNetResp.hasNext())
+    {
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramNetResp.next();
+      if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+        localPtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
     try
     {
-      localObject1 = new JSONObject((String)localObject2);
-      ConfigSetting.a(this.a, (JSONObject)localObject1, null);
+      ZipUtils.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
+      }
       return;
     }
-    catch (JSONException localJSONException)
+    catch (IOException paramNetResp)
     {
-      QLog.e("ConfigSetting", 2, localJSONException.toString());
-      localJSONException.printStackTrace();
+      for (;;)
+      {
+        paramNetResp.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzd
  * JD-Core Version:    0.7.0.1
  */

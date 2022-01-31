@@ -1,23 +1,22 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.ViewHolder;
-import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager.PageItemScrollListener;
 
 public class mgt
-  implements KandianPopupWindow.OnUninterestConfirmListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public mgt(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, int paramInt, ReadInJoyBaseAdapter.ViewHolder paramViewHolder, BaseArticleInfo paramBaseArticleInfo) {}
+  public mgt(ReadInJoyAtlasViewPager paramReadInJoyAtlasViewPager) {}
   
-  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.k();
-      ((Animation)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.getTag(2131362291)).setAnimationListener(new mgu(this, paramArrayList, paramObject));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.startAnimation((Animation)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.getTag(2131362291));
+    this.a.getChildAt(this.a.getCurrentItem()).setScrollY(((Float)paramValueAnimator.getAnimatedValue()).intValue());
+    if (ReadInJoyAtlasViewPager.a(this.a) != null) {
+      ReadInJoyAtlasViewPager.a(this.a).a(0.0F, this.a.getChildAt(this.a.getCurrentItem()).getScrollY(), null);
+    }
+    if ((paramValueAnimator.getAnimatedFraction() == 1.0F) && (ReadInJoyAtlasViewPager.a(this.a) != null)) {
+      ReadInJoyAtlasViewPager.a(this.a).a();
     }
   }
 }

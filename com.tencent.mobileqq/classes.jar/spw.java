@@ -1,27 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class spw
-  implements ActionSheet.OnButtonClickListener
+public final class spw
+  implements DialogInterface.OnClickListener
 {
-  public spw(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a("0X80081E5", 2);
-      continue;
-      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a("0X80081E5", 3);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

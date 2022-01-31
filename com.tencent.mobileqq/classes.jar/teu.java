@@ -1,16 +1,30 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.qcall.LightalkSwitchManager;
+import com.tencent.mobileqq.qcall.LightalkSwitchObserver;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 
 public class teu
-  implements View.OnClickListener
+  extends LightalkSwitchObserver
 {
-  public teu(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public teu(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean)
   {
-    this.a.a.cancel();
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    if (!paramBoolean) {
+      PermisionPrivacyActivity.a(this.a, 2131436066);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.i.a(), PermisionPrivacyActivity.a(this.a).b());
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.i.a(), paramBoolean2);
+    }
   }
 }
 

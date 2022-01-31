@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0407" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true"
+<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1aed" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ad1" android:visibility="visible" android:clickable="true" android:layout_width="61.0dip" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020581" android:scaleType="center" android:layout_centerVertical="true" android:contentDescription="@null" />
-    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03a3" android:visibility="gone" android:clickable="true" android:layout_width="64.0dip" android:layout_height="34.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
-        <Button android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ad2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e7d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1a28" android:layout_centerInParent="true" />
-    </com.tencent.mobileqq.widget.ShaderAnimLayout>
+    <com.tencent.widget.Gallery android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1aee" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

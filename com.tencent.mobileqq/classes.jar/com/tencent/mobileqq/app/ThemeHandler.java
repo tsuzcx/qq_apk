@@ -57,7 +57,7 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import zke;
+import znk;
 
 public class ThemeHandler
   extends BusinessHandler
@@ -230,7 +230,7 @@ public class ThemeHandler
           bool = SkinEngine.getInstances().setSkinRootPath(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), null);
           QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth Error, set default theme");
           if (bool == true) {
-            ThreadManager.getUIHandler().post(new zke(this));
+            ThreadManager.getUIHandler().post(new znk(this));
           }
           paramFromServiceMsg = ThemeUtil.getThemeInfo(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), (String)localObject1);
           if (paramFromServiceMsg != null)
@@ -637,7 +637,7 @@ public class ThemeHandler
       localObject2 = SkinEngine.getInstances().getSkinRootPath();
       localObject4 = ThemeUtil.getCurrentThemeInfo();
       if (QLog.isColorLevel()) {
-        QLog.d("Theme.ThemeHandler", 2, "sendThemeAuth init: themeId:" + paramString1 + ", version=" + paramString2 + ", skThemeId:" + ((Bundle)localObject4).getString("themeId") + ", skVersion:" + ((Bundle)localObject4).getString("version") + ", qqVersion:" + "7.6.0");
+        QLog.d("Theme.ThemeHandler", 2, "sendThemeAuth init: themeId:" + paramString1 + ", version=" + paramString2 + ", skThemeId:" + ((Bundle)localObject4).getString("themeId") + ", skVersion:" + ((Bundle)localObject4).getString("version") + ", qqVersion:" + "7.6.3");
       }
       str = paramString2;
       if (android.text.TextUtils.isEmpty(paramString2))
@@ -723,8 +723,8 @@ public class ThemeHandler
       localObject6 = new ThemeAuth.ReqBody();
       ((ThemeAuth.ReqBody)localObject6).uint32_sub_cmd.set(1);
       ((ThemeAuth.ReqBody)localObject6).int32_plat_id.set(109);
-      ((ThemeAuth.ReqBody)localObject6).str_qq_version.set("7.6.0.3525");
-      ((ThemeAuth.ReqBody)localObject6).uint32_qq_version.set(Integer.parseInt("3525"));
+      ((ThemeAuth.ReqBody)localObject6).str_qq_version.set("7.6.3.3560");
+      ((ThemeAuth.ReqBody)localObject6).uint32_qq_version.set(Integer.parseInt("3560"));
       ((ThemeAuth.ReqBody)localObject6).msg_subcmd0x1_req_auth.set((MessageMicro)localObject5);
       ((ThemeAuth.ReqBody)localObject6).setHasFlag(true);
       localObject5 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "AuthSvr.ThemeAuth");
@@ -1035,8 +1035,8 @@ public class ThemeHandler
         paramString1 = new ThemeAuth.ReqBody();
         paramString1.uint32_sub_cmd.set(2);
         paramString1.int32_plat_id.set(109);
-        paramString1.str_qq_version.set("7.6.0.3525");
-        paramString1.uint32_qq_version.set(Integer.parseInt("3525"));
+        paramString1.str_qq_version.set("7.6.3.3560");
+        paramString1.uint32_qq_version.set(Integer.parseInt("3560"));
         paramString1.msg_subcmd0x2_req_check.set(paramString2);
         paramString1.setHasFlag(true);
         paramString2 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "AuthSvr.ThemeAuth");

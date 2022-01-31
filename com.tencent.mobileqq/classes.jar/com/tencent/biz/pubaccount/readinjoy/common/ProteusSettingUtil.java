@@ -30,22 +30,22 @@ public class ProteusSettingUtil
     StringCommon.a("cmd_article_wrapper_click", 1008);
     StringCommon.a("setArticleModel:", 1009);
     StringCommon.a("cmd_jump_wrapper_click", 1010);
-    ImageCommon.a("mengceng.png", 2130839750);
-    ImageCommon.a("pa_video_play.png", 2130840883);
-    ImageCommon.a("qq_readinjoy_gallery_count", 2130843044);
-    ImageCommon.a("public_account_video_profile", 2130839765);
-    ImageCommon.a("public_account_small_video_mengceng", 2130839733);
-    ImageCommon.a("like_normal", 2130843272);
-    ImageCommon.a("like_active", 2130843269);
-    ImageCommon.a("comment", 2130843267);
-    ImageCommon.a("comment_active", 2130843268);
-    ImageCommon.a("biu_icon", 2130840683);
-    ImageCommon.a("biu_icon_active", 2130840684);
-    ImageCommon.a("green_v.png", 2130840754);
-    ImageCommon.a("feeds_dislike", 2130840810);
-    ImageCommon.a("topic_pre_image", 2130840771);
-    ImageCommon.a("topic_arrow_image", 2130840800);
-    ImageCommon.a("small_video_play_icon", 2130840843);
+    ImageCommon.a("mengceng.png", 2130839756);
+    ImageCommon.a("pa_video_play.png", 2130840920);
+    ImageCommon.a("qq_readinjoy_gallery_count", 2130843143);
+    ImageCommon.a("public_account_video_profile", 2130839771);
+    ImageCommon.a("public_account_small_video_mengceng", 2130839739);
+    ImageCommon.a("like_normal", 2130843372);
+    ImageCommon.a("like_active", 2130843369);
+    ImageCommon.a("comment", 2130843367);
+    ImageCommon.a("comment_active", 2130843368);
+    ImageCommon.a("biu_icon", 2130840706);
+    ImageCommon.a("biu_icon_active", 2130840707);
+    ImageCommon.a("green_v.png", 2130840777);
+    ImageCommon.a("feeds_dislike", 2130840839);
+    ImageCommon.a("topic_pre_image", 2130840795);
+    ImageCommon.a("topic_arrow_image", 2130840829);
+    ImageCommon.a("small_video_play_icon", 2130840876);
   }
   
   public static boolean a()

@@ -1,30 +1,48 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout.WheelPickListener;
-import com.tencent.widget.VerticalGallery;
-import com.tencent.widget.VerticalGallery.OnEndMovementListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ajgk
-  implements VerticalGallery.OnEndMovementListener
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
+  private WeakReference a;
   
-  public ajgk(WheelPickerLayout paramWheelPickerLayout, int paramInt)
+  public ajgk(BeginnerGuideFragment paramBeginnerGuideFragment, Looper paramLooper)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramLooper);
+    this.a = new WeakReference(paramBeginnerGuideFragment);
   }
   
-  public void a(VerticalGallery paramVerticalGallery)
+  public void handleMessage(Message paramMessage)
   {
-    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
-      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
-    }
+    super.handleMessage(paramMessage);
+    BeginnerGuideFragment localBeginnerGuideFragment = (BeginnerGuideFragment)this.a.get();
+    if (localBeginnerGuideFragment == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 1110: 
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideFragment", 2, "parse config from network success");
+        }
+        break;
+      }
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String)));
+    BeginnerGuideFragment.a(localBeginnerGuideFragment, (String)paramMessage.obj, paramMessage.arg1);
+    return;
+    BeginnerGuideFragment.a(localBeginnerGuideFragment, paramMessage.what);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgk
  * JD-Core Version:    0.7.0.1
  */

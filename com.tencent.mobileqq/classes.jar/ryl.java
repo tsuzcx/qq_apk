@@ -1,25 +1,15 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class ryl
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  private final WeakReference a;
+  public ryl(ChatHistory paramChatHistory) {}
   
-  public ryl(ChatHistoryForC2C paramChatHistoryForC2C)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramChatHistoryForC2C);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    paramDialogInterface = (ChatHistoryForC2C)this.a.get();
-    if ((paramDialogInterface != null) && (paramDialogInterface.a != null)) {
-      paramDialogInterface.a.dismiss();
-    }
+    this.a.a(12, true);
   }
 }
 

@@ -1,30 +1,13 @@
-import com.tencent.mobileqq.ar.FaceUIController;
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
 class zzo
-  implements ARTipsManager.BaikeClickListener
+  implements Runnable
 {
-  zzo(zzn paramzzn) {}
+  zzo(zzl paramzzl) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onContentClick subFaceData.wikiurl = " + this.a.b.c);
-    }
-    ScanningSurfaceView.b(this.a.a, this.a.b.c);
-    ReportController.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onFeedbackClick subFaceData.wikiurl = " + this.a.b.c);
-    }
-    this.a.a.a.a();
+    ARWorldCupGameLogicManager.a().a(false);
   }
 }
 

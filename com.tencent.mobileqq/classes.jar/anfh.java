@@ -1,21 +1,36 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager.TroopPluginCallback;
 
 class anfh
-  implements Runnable
+  extends Handler
 {
-  anfh(anfg paramanfg) {}
-  
-  public void run()
+  anfh(anfg paramanfg, Looper paramLooper)
   {
-    this.a.a.c();
-    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).a();
-    this.a.a.finish();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(0);
+      return;
+    } while (this.a.a == null);
+    this.a.a.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfh
  * JD-Core Version:    0.7.0.1
  */

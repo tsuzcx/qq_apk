@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 class aiew
   implements Runnable
 {
-  aiew(aiev paramaiev) {}
+  aiew(aiev paramaiev, String paramString) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.getActivity(), 2, "已保存到本地相册", 0).a();
+    QQToast.a(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString + "泄漏，正在生成dump文件", 2000).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aiew
  * JD-Core Version:    0.7.0.1
  */

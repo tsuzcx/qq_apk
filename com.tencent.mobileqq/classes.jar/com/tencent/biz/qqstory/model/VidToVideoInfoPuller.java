@@ -18,11 +18,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nca;
-import ncb;
-import ncd;
-import nce;
-import ncf;
+import ndl;
+import ndm;
+import ndo;
+import ndp;
+import ndq;
 
 public class VidToVideoInfoPuller
   implements IVidToVideoInfoPuller, IEventReceiver
@@ -69,7 +69,7 @@ public class VidToVideoInfoPuller
   {
     BatchHandlerListPuller localBatchHandlerListPuller = BatchHandlerListPuller.a(paramList);
     localBatchHandlerListPuller.a("Q.qqstory.net:VidToVideoInfoPuller");
-    localBatchHandlerListPuller.a(new ncf(this, paramList));
+    localBatchHandlerListPuller.a(new ndq(this, paramList));
     return localBatchHandlerListPuller;
   }
   
@@ -243,7 +243,7 @@ public class VidToVideoInfoPuller
   protected void d()
   {
     AssertUtils.a(this.jdField_a_of_type_JavaLangString);
-    Bosses.get().postJob(new nca(this));
+    Bosses.get().postJob(new ndl(this));
   }
   
   protected void e()
@@ -251,7 +251,7 @@ public class VidToVideoInfoPuller
     if (!this.jdField_a_of_type_Boolean)
     {
       SLog.d("Q.qqstory.net:VidToVideoInfoPuller", "requestMyVidList() load from local storage");
-      Bosses.get().postJob(new ncb(this));
+      Bosses.get().postJob(new ndm(this));
       return;
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver == null)
@@ -268,12 +268,12 @@ public class VidToVideoInfoPuller
   
   protected void f()
   {
-    Bosses.get().postJob(new ncd(this));
+    Bosses.get().postJob(new ndo(this));
   }
   
   protected void g()
   {
-    Bosses.get().postJob(new nce(this));
+    Bosses.get().postJob(new ndp(this));
   }
   
   public boolean isValidate()

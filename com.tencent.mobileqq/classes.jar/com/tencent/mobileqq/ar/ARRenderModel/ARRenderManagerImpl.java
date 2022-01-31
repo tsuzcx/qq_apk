@@ -9,6 +9,7 @@ import android.os.SystemClock;
 import android.util.Log;
 import com.tencent.mobileqq.ar.ARDeviceController;
 import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
+import com.tencent.mobileqq.ar.ARRecord.worldcup.ARWorldCupRecordController;
 import com.tencent.mobileqq.ar.FramePerformanceMonitor;
 import com.tencent.mobileqq.ar.ReportUtil;
 import com.tencent.mobileqq.ar.ScanEntranceReport;
@@ -25,9 +26,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import zvq;
-import zvr;
-import zvs;
+import zyy;
+import zyz;
+import zza;
 
 public class ARRenderManagerImpl
   implements ARRenderManager, ARRenderMangerInnerCallback
@@ -39,6 +40,7 @@ public class ARRenderManagerImpl
   private Context jdField_a_of_type_AndroidContentContext;
   GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
   private VideoRecordController jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController;
+  private ARWorldCupRecordController jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController;
   public volatile ARBaseRender a;
   ARRenderManagerCallBack jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerCallBack;
   public ARRenerArumentManager a;
@@ -52,7 +54,8 @@ public class ARRenderManagerImpl
   private long jdField_b_of_type_Long;
   private Map jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
   private boolean jdField_b_of_type_Boolean;
-  int c = 0;
+  int jdField_c_of_type_Int = 0;
+  private volatile boolean jdField_c_of_type_Boolean;
   int d = 0;
   
   static
@@ -96,9 +99,9 @@ public class ARRenderManagerImpl
     if (QLog.isDebugVersion())
     {
       this.d += 1;
-      this.c = ((int)(l2 - l1 + this.c));
+      this.jdField_c_of_type_Int = ((int)(l2 - l1 + this.jdField_c_of_type_Int));
       if (this.d % 100 == 0) {
-        Log.i("wing", "scan line anime cameraRenderer cost---- " + this.c * 1.0F / Math.max(1, this.d));
+        Log.i("wing", "scan line anime cameraRenderer cost---- " + this.jdField_c_of_type_Int * 1.0F / Math.max(1, this.d));
       }
     }
     paramGL10 = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
@@ -148,6 +151,7 @@ public class ARRenderManagerImpl
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelCameraRendererable.g();
     this.jdField_b_of_type_JavaUtilMap.clear();
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a();
+    this.jdField_c_of_type_Boolean = false;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -201,6 +205,11 @@ public class ARRenderManagerImpl
   public void a(VideoRecordController paramVideoRecordController)
   {
     this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = paramVideoRecordController;
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.c();
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController = null;
+    }
   }
   
   public void a(ARBaseRender paramARBaseRender, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject)
@@ -256,26 +265,53 @@ public class ARRenderManagerImpl
   public boolean a(ARRenderResourceInfo paramARRenderResourceInfo)
   {
     QLog.i("AREngine_ARRenderManagerImpl", 1, "startModelRender. resourceInfo.key = " + paramARRenderResourceInfo.jdField_a_of_type_JavaLangString + ", resourceInfo.arType = " + paramARRenderResourceInfo.jdField_a_of_type_Int + ", resourceInfo.trackMode = " + paramARRenderResourceInfo.jdField_b_of_type_Int);
-    ARBaseRender localARBaseRender2 = a(paramARRenderResourceInfo.jdField_a_of_type_JavaLangString);
-    ARBaseRender localARBaseRender1 = localARBaseRender2;
-    if (localARBaseRender2 == null)
+    if (!this.jdField_c_of_type_Boolean)
     {
-      localARBaseRender1 = ARRenderableConstructorFactoty.a(this, paramARRenderResourceInfo, this.jdField_a_of_type_AndroidOpenglGLSurfaceView);
-      this.jdField_a_of_type_JavaUtilMap.put(paramARRenderResourceInfo.jdField_a_of_type_JavaLangString, localARBaseRender1);
-      QLog.d("AREngine_ARRenderManagerImpl", 1, "crate new render here " + localARBaseRender1);
+      QLog.i("AREngine_ARRenderManagerImpl", 1, "startModelRender. fail because of render not ready");
+      return false;
     }
-    if (localARBaseRender1 == null)
+    Object localObject2 = a(paramARRenderResourceInfo.jdField_a_of_type_JavaLangString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = ARRenderableConstructorFactoty.a(this, paramARRenderResourceInfo, this.jdField_a_of_type_AndroidOpenglGLSurfaceView);
+      this.jdField_a_of_type_JavaUtilMap.put(paramARRenderResourceInfo.jdField_a_of_type_JavaLangString, localObject1);
+      QLog.d("AREngine_ARRenderManagerImpl", 1, "crate new render here " + localObject1);
+    }
+    if (localObject1 == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("HSRender", 1, "onARStateChanged, renderable == null");
       }
       paramARRenderResourceInfo = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
       this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = null;
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new zvq(this, paramARRenderResourceInfo));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new zyy(this, paramARRenderResourceInfo));
       return false;
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new zvr(this, localARBaseRender1, paramARRenderResourceInfo));
-    return true;
+    if ((localObject1 instanceof ARWorldCupGlobalSceneRenderable))
+    {
+      localObject2 = (ARWorldCupGlobalSceneRenderable)localObject1;
+      if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController == null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController = new ARWorldCupRecordController(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController != null)
+      {
+        ((ARWorldCupGlobalSceneRenderable)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController);
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.a();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new zyz(this, (ARBaseRender)localObject1, paramARRenderResourceInfo));
+      return true;
+      if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender instanceof ARWorldCupGlobalSceneRenderable))
+      {
+        ((ARWorldCupGlobalSceneRenderable)this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender).a(null);
+        if (this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController != null) {
+          this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.b();
+        }
+      }
+    }
   }
   
   public boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2)
@@ -320,7 +356,10 @@ public class ARRenderManagerImpl
   public void d()
   {
     QLog.i("AREngine_ARRenderManagerImpl", 1, "stopModelRender.");
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new zvs(this));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new zza(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.a())) {
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.b();
+    }
   }
   
   public void e()
@@ -337,9 +376,13 @@ public class ARRenderManagerImpl
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.b())) {}
-    for (int i = 1; i != 0; i = 0)
+    int i;
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.b()))
     {
+      i = 1;
+      if (i == 0) {
+        break label311;
+      }
       if (!this.jdField_a_of_type_Boolean)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer == null) {
@@ -348,22 +391,50 @@ public class ARRenderManagerImpl
         if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender == null) {
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = new TextureRender();
         }
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, jdField_a_of_type_Int, jdField_b_of_type_Int);
+        int k = jdField_a_of_type_Int;
+        int m = jdField_b_of_type_Int;
+        int j = m;
+        i = k;
+        if (this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController != null)
+        {
+          j = m;
+          i = k;
+          if (this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.a())
+          {
+            i = 540;
+            j = 960;
+          }
+        }
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, i, j);
         this.jdField_a_of_type_Boolean = true;
       }
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
       a(paramGL10);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(3553, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), null, null, SystemClock.elapsedRealtimeNanos());
+      if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController == null) || (!this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.a())) {
+        break label286;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.a(3553, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), null, null, SystemClock.elapsedRealtimeNanos());
+    }
+    for (;;)
+    {
       GLES20.glBindFramebuffer(36160, 0);
       GLES20.glViewport(0, 0, jdField_a_of_type_Int, jdField_b_of_type_Int);
+      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+      GLES20.glDisable(2929);
+      GLES20.glDisable(3042);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(3553, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), null, null);
       if (this.jdField_a_of_type_Long == 0L) {
         this.jdField_a_of_type_Long = System.currentTimeMillis();
       }
       this.jdField_b_of_type_Long += 1L;
       return;
+      i = 0;
+      break;
+      label286:
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(3553, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), null, null, SystemClock.elapsedRealtimeNanos());
     }
+    label311:
     if (this.jdField_a_of_type_Boolean)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer != null)
@@ -426,6 +497,7 @@ public class ARRenderManagerImpl
     if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerCallBack != null) {
       this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerCallBack.a();
     }
+    this.jdField_c_of_type_Boolean = true;
     GLES20.glEnable(2884);
   }
   

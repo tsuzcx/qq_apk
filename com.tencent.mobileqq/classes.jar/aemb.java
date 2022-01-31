@@ -1,32 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.LoadCommentsCallback;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.view.CommentsView;
-import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
 public class aemb
-  implements CommentsDataSource.LoadCommentsCallback
+  implements TroopMemberApiClient.Callback
 {
-  public aemb(CommentsPresenterImpl paramCommentsPresenterImpl) {}
+  public aemb(NearbyJsInterface paramNearbyJsInterface, TroopMemberApiClient paramTroopMemberApiClient, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a()
+  public void a(Bundle paramBundle)
   {
-    if (CommentsPresenterImpl.a(this.a) != null)
-    {
-      CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430820));
-      CommentsPresenterImpl.a(this.a).b();
-      CommentsPresenterImpl.a(this.a).c();
-    }
-  }
-  
-  public void a(Comments paramComments)
-  {
-    if (CommentsPresenterImpl.a(this.a) != null)
-    {
-      CommentsPresenterImpl.a(this.a);
-      CommentsPresenterImpl.a(this.a).a(paramComments);
-      CommentsPresenterImpl.a(this.a).b();
-    }
+    paramBundle = paramBundle.getString("nearbyVideoConfig");
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(new aemc(this, paramBundle));
   }
 }
 

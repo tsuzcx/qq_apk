@@ -1,23 +1,14 @@
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
 public class ohh
-  implements LbsManager.LbsUpdateListener
+  implements Runnable
 {
-  public ohh(DoodleEmojiManager paramDoodleEmojiManager, DoodleEmojiManager.POIPostersRequestCallback paramPOIPostersRequestCallback) {}
+  public ohh(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
   
-  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
+  public void run()
   {
-    SLog.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramBasicLocation != null))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager.a(paramBasicLocation.b, paramBasicLocation.a, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback);
-      return;
-    }
-    SLog.e("DoodleEmojiManager", "onLbsUpdate failed.");
+    HWEditLocalVideoPlayer.a(this.a, this.a.a.getActivity(), "正在加载");
   }
 }
 

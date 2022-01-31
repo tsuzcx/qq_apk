@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.armap.POIInfo;
+import com.tencent.mobileqq.armap.ARMapActivity;
 import com.tencent.mobileqq.armap.map.ARMapEngine;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class abaj
   implements Runnable
 {
-  public abaj(ARMapPOIStarDialog paramARMapPOIStarDialog, ItemInfo paramItemInfo) {}
+  public abaj(ARMapActivity paramARMapActivity) {}
   
   public void run()
   {
-    ARMapEngine.removePOITask(this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMapActivity", 2, "doOnActivityResult nativeRequestPOIList");
+    }
+    ARMapEngine.nativeRequestPOIList();
   }
 }
 

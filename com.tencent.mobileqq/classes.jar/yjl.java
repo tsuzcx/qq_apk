@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 
-public class yjl
-  implements Runnable
+class yjl
+  extends AVVideoCtrl.LocalVideoPreviewCallback
 {
-  public yjl(ApolloSurfaceView paramApolloSurfaceView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  yjl(yjk paramyjk) {}
   
-  public void run()
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
   {
-    try
+    Object localObject = CmGameUtil.a(AVCameraCaptureModel.a(this.a.a));
+    if (localObject == null) {}
+    do
     {
-      ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloSurfaceView", 1, "send touch event err e=" + localThrowable.toString());
-    }
+      localObject = ((CmGameLauncher)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new yjm(this, (ApolloSurfaceView)localObject, paramVideoFrame));
   }
 }
 

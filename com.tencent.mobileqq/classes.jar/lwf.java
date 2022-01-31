@@ -1,48 +1,21 @@
-import android.graphics.Color;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackJumpInfo;
 
-class lwf
-  implements Runnable
+public class lwf
+  implements View.OnClickListener
 {
-  lwf(lwe paramlwe) {}
+  public lwf(ComponentJump paramComponentJump, oidb_cmd0x68b.PackJumpInfo paramPackJumpInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.jdField_a_of_type_Boolean)
-    {
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843269);
-      if (this.a.a.jdField_a_of_type_Int > 0)
-      {
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.a(this.a.a.jdField_a_of_type_Int));
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#07D0B0"));
-        if (QLog.isColorLevel()) {
-          QLog.d("ComponentSocialOperation", 2, "revert upvote to true, set num:" + this.a.a.a(this.a.a.jdField_a_of_type_Int));
-        }
-      }
-    }
-    label314:
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.a.a.jdField_b_of_type_AndroidViewAnimationScaleAnimation);
-      return;
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843272);
-      this.a.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
-      if (this.a.a.jdField_a_of_type_Int > 0) {
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.a(this.a.a.jdField_a_of_type_Int));
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label314;
-        }
-        QLog.d("ComponentSocialOperation", 2, "revert upvote to false, set num:" + this.a.a.a(this.a.a.jdField_a_of_type_Int));
-        break;
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131428481);
-      }
-    }
+    paramView = this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_url.get();
+    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), paramView);
+    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_wording.get());
   }
 }
 

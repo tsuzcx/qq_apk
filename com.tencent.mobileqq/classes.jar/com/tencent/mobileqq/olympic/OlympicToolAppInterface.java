@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic;
 
-import afrb;
+import ageh;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
@@ -34,7 +34,7 @@ public class OlympicToolAppInterface
   extends AppInterface
   implements IToolProcEventListener
 {
-  afrb jdField_a_of_type_Afrb = null;
+  ageh jdField_a_of_type_Ageh = null;
   public OlympicToolService a;
   private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
   public HashMap a;
@@ -208,8 +208,8 @@ public class OlympicToolAppInterface
   
   public void start(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Afrb = new afrb(this, null);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Afrb);
+    this.jdField_a_of_type_Ageh = new ageh(this, null);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Ageh);
     super.start(paramBoolean);
   }
 }

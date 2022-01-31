@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class yvb
   implements Runnable
 {
-  public yvb(ApolloPanel paramApolloPanel, String paramString, int paramInt) {}
+  public yvb(ApolloMsgPlayController paramApolloMsgPlayController, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a != null)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a, 2, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Int);
+    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localObject != null)
+    {
+      localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(19);
+      if (localObject != null) {
+        ((QQMessageFacade)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extStr);
+      }
     }
   }
 }

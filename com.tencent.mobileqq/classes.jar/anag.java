@@ -1,24 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-import dov.com.qq.im.cropvideo.RenderFilter;
-
-public class anag
-  extends GestureDetector.SimpleOnGestureListener
+public final class anag
+  extends ThreadLocal
 {
-  public anag(CropVideoActivity paramCropVideoActivity) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  protected Boolean a()
   {
-    paramMotionEvent.getX();
-    paramMotionEvent.getY();
-    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
-    return true;
+    return Boolean.valueOf(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ybg
-  implements Runnable
+class ybg
+  implements DialogInterface.OnClickListener
 {
-  public ybg(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  ybg(ybe paramybe) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.a.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramDialogInterface.dismiss();
   }
 }
 

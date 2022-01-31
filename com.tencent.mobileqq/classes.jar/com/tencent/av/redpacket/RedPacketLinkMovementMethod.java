@@ -14,13 +14,20 @@ public class RedPacketLinkMovementMethod
   extends LinkMovementMethod
 {
   private static RedPacketLinkMovementMethod a;
+  public int a;
+  public int b = -7447805;
+  
+  public RedPacketLinkMovementMethod()
+  {
+    this.jdField_a_of_type_Int = -10864125;
+  }
   
   public static MovementMethod a()
   {
-    if (a == null) {
-      a = new RedPacketLinkMovementMethod();
+    if (jdField_a_of_type_ComTencentAvRedpacketRedPacketLinkMovementMethod == null) {
+      jdField_a_of_type_ComTencentAvRedpacketRedPacketLinkMovementMethod = new RedPacketLinkMovementMethod();
     }
-    return a;
+    return jdField_a_of_type_ComTencentAvRedpacketRedPacketLinkMovementMethod;
   }
   
   public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
@@ -42,14 +49,14 @@ public class RedPacketLinkMovementMethod
         if (i == 1)
         {
           localObject[0].onClick(paramTextView);
-          paramSpannable.setSpan(new ForegroundColorSpan(-7447805), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+          paramSpannable.setSpan(new ForegroundColorSpan(this.b), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
         }
         for (;;)
         {
           return true;
           if (i == 0)
           {
-            paramSpannable.setSpan(new ForegroundColorSpan(-10864125), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+            paramSpannable.setSpan(new ForegroundColorSpan(this.jdField_a_of_type_Int), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
             Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
           }
         }

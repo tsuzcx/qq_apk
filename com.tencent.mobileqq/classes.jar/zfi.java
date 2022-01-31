@@ -1,30 +1,71 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.HotChatShare;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class zfi
-  implements Comparator
+  extends FriendListObserver
 {
-  public zfi(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zfi(HotChatShare paramHotChatShare) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "onGetFriendDateNick.isSuccess=" + paramBoolean + ",uin=" + paramString1 + ",nick=" + paramString2);
     }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
+    if ((TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin)) || (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {}
+    for (;;)
+    {
+      return;
+      if (paramBoolean) {
+        this.a.jdField_a_of_type_JavaLangString = paramString2;
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+      {
+        if (this.a.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Int = 1;
+        }
+        while (this.a.jdField_a_of_type_Int == 3)
+        {
+          this.a.c();
+          HotChatShare.a(this.a);
+          return;
+          if (this.a.jdField_a_of_type_Int == 2) {
+            this.a.jdField_a_of_type_Int = 3;
+          }
+        }
+      }
     }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+  }
+  
+  protected void onStrangerHeadReady(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "onStrangerHeadReady.isSuccess=" + paramBoolean + ",id=" + paramString1 + ",idType=" + paramInt + ",downloadUrl=" + paramString2);
     }
-    return i;
+    if ((paramInt != 200) || (TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin))) {}
+    for (;;)
+    {
+      return;
+      this.a.b = paramString2;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+      {
+        if (this.a.jdField_a_of_type_Int == 0) {
+          this.a.jdField_a_of_type_Int = 2;
+        }
+        while (this.a.jdField_a_of_type_Int == 3)
+        {
+          this.a.c();
+          HotChatShare.a(this.a);
+          return;
+          if (this.a.jdField_a_of_type_Int == 1) {
+            this.a.jdField_a_of_type_Int = 3;
+          }
+        }
+      }
+    }
   }
 }
 

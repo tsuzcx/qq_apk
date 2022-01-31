@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.battery.BatteryStats;
+import com.tencent.mobileqq.app.BabyQHandler;
 
 public class yzy
-  extends zbk
 {
-  private String a;
+  public int a;
+  public String a;
+  public String b;
   
-  protected void a(String paramString)
+  public yzy(BabyQHandler paramBabyQHandler, int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    MemoryManager.a().a(0, 0, this.c, this.d, 0L, 0L, 3);
-    QQAppInterface.a().d();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    CoreService.startCoreService(zbi.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.c();
-  }
-  
-  protected void d(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

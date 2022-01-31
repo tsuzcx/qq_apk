@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.secspy.SecSpyFileManager;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
 
 public class ahwy
-  implements Action.OnActionEndListener
+  implements Runnable
 {
-  public ahwy(SceneBuilder paramSceneBuilder) {}
+  public ahwy(SecSpyFileManager paramSecSpyFileManager) {}
   
-  public void a()
+  public void run()
   {
-    SceneBuilder.a(this.a).a();
+    UnifiedDebugManager.a(this.a.a.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwy
  * JD-Core Version:    0.7.0.1
  */

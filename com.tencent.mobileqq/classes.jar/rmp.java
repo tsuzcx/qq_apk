@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 
-public class rmp
+class rmp
   implements Runnable
 {
-  public rmp(BaseChatPie paramBaseChatPie, AIOAnimationControlManager paramAIOAnimationControlManager, boolean paramBoolean) {}
+  rmp(rmo paramrmo, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_Boolean);
+    if (!this.jdField_a_of_type_Rmo.a.isFinishing()) {
+      this.jdField_a_of_type_Rmo.a.leftView.setText(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

@@ -1,9 +1,12 @@
 package com.tencent.biz.qqstory.playmode.child;
 
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper;
+import com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper.GenShareThumbEvent;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 import com.tencent.mobileqq.widget.QQToast;
@@ -17,19 +20,22 @@ public class NewFriendsPlayMode$GenShareThumbReceiver
     super(paramNewFriendsPlayMode);
   }
   
-  public void a(@NonNull NewFriendsPlayMode paramNewFriendsPlayMode, @NonNull NewFriendsPlayMode.GenShareThumbEvent paramGenShareThumbEvent)
+  public void a(@NonNull NewFriendsPlayMode paramNewFriendsPlayMode, @NonNull SendVideoToFriendHelper.GenShareThumbEvent paramGenShareThumbEvent)
   {
+    if (!TextUtils.equals(paramGenShareThumbEvent.b, String.valueOf(paramNewFriendsPlayMode.hashCode()))) {
+      return;
+    }
     paramNewFriendsPlayMode.s();
     paramNewFriendsPlayMode.r();
     if (paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
       SLog.a("Q.qqstory.player.NewFriendsPlayMode", "generate thumbnail success. shareThumbPath = %s.", paramGenShareThumbEvent.jdField_a_of_type_JavaLangString);
-      if (paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 0)
+      if (paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
       {
-        NewFriendsPlayMode.a(paramNewFriendsPlayMode).a(paramGenShareThumbEvent.jdField_a_of_type_JavaLangString);
-        NewFriendsPlayMode.a(paramNewFriendsPlayMode).a(paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        SendVideoToFriendHelper.a().a(paramNewFriendsPlayMode.a.a, paramGenShareThumbEvent.jdField_a_of_type_JavaLangString);
+        return;
       }
-      paramNewFriendsPlayMode.a(paramNewFriendsPlayMode.a.getContext(), paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramGenShareThumbEvent.jdField_a_of_type_JavaLangString);
+      SendVideoToFriendHelper.a().a(paramNewFriendsPlayMode.a.a, paramGenShareThumbEvent.jdField_a_of_type_JavaLangString, paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramNewFriendsPlayMode.hashCode());
       return;
     }
     SLog.e("Q.qqstory.player.NewFriendsPlayMode", "send video to friend failed because generate thumbnail failed.");
@@ -38,7 +44,7 @@ public class NewFriendsPlayMode$GenShareThumbReceiver
   
   public Class acceptEventClass()
   {
-    return NewFriendsPlayMode.GenShareThumbEvent.class;
+    return SendVideoToFriendHelper.GenShareThumbEvent.class;
   }
 }
 

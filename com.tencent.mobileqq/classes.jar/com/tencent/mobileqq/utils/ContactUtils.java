@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import ajns;
+import akbz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -379,7 +379,7 @@ public class ContactUtils
     }
     else
     {
-      paramDiscussionInfo = paramContext.getResources().getString(2131433983);
+      paramDiscussionInfo = paramContext.getResources().getString(2131434000);
     }
     return paramDiscussionInfo;
   }
@@ -845,13 +845,13 @@ public class ContactUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ContactUtils.OnGetTroopMemberNameCallback paramOnGetTroopMemberNameCallback)
   {
-    ThreadManager.post(new ajns(paramQQAppInterface, paramString1, paramString2, paramOnGetTroopMemberNameCallback), 5, null, false);
+    ThreadManager.post(new akbz(paramQQAppInterface, paramString1, paramString2, paramOnGetTroopMemberNameCallback), 5, null, false);
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
   {
     if (d == null) {
-      d = paramQQAppInterface.getApp().getString(2131433287);
+      d = paramQQAppInterface.getApp().getString(2131433304);
     }
     return (((0x40 & paramLong) >>> 6 == 1L) && ((0x20000000 & paramLong) >>> 29 == 1L)) || (paramString == null) || (paramString.matches(d)) || (paramString.length() == 0);
   }

@@ -1,6 +1,6 @@
 package cooperation.pluginbridge;
 
-import alwo;
+import amms;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -173,7 +173,7 @@ public class BridgeHelper
   static void a(Context paramContext)
   {
     if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      jdField_a_of_type_AndroidContentBroadcastReceiver = new alwo(null);
+      jdField_a_of_type_AndroidContentBroadcastReceiver = new amms(null);
     }
     IntentFilter localIntentFilter = new IntentFilter("bridge.onresume.broadcast");
     localIntentFilter.addAction("bridge.plugin.onresume.broadcast");

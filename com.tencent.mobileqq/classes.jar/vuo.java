@@ -1,33 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
+import com.tencent.qphone.base.util.QLog;
 
 public class vuo
-  implements View.OnClickListener
+  extends TroopObserver
 {
-  public vuo(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vuo(HotChatPie paramHotChatPie) {}
   
-  public void onClick(View paramView)
+  protected void c(boolean paramBoolean, String paramString)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
-    if (this.a.b != null) {
-      this.a.b.setVisibility(0);
+    if ((this.a.s != 2) && (paramBoolean) && (this.a.b != null) && (this.a.a != null) && (this.a.a.troopUin.equals(paramString)) && (this.a.a.hasPostRedPoint())) {
+      this.a.b.a(true);
     }
-    if (this.a.j != null) {
-      this.a.j.setVisibility(0);
-    }
-    if (this.a.k != null) {
-      this.a.k.setVisibility(0);
-    }
-    this.a.ap();
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.b(this.a.a()) != 0) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
     }
   }
 }

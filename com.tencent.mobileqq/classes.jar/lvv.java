@@ -1,39 +1,36 @@
+import android.graphics.Color;
 import android.text.TextPaint;
 import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class lvv
-  implements UserOperationModule.Ox978RespCallBack
+  extends PublicAccountObserver
 {
-  public lvv(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
+  public lvv(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    QLog.d("ComponentHeaderUgc", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = paramInt;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText("已关注");
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = 2;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      ReadInJoyLogicEngine.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a, paramInt);
-      ReadInJoyLogicEngineEventDispatcher.a().b();
-      return;
+    ComponentHeaderRecommend.a(this.a).setText("已关注");
+    ComponentHeaderRecommend.a(this.a).setTextColor(Color.parseColor("#BBBBBB"));
+    ComponentHeaderRecommend.a(this.a).setEnabled(false);
+    ComponentHeaderRecommend.a(this.a).getPaint().setFakeBoldText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderRecommend", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText("关注");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(true);
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), "关注失败", 0).a();
+    if ((this.a.a.a != null) && (this.a.a.a.a() != null))
+    {
+      paramString = this.a.a.a.a();
+      String str = ReadInJoyUtils.a(paramString.mAlgorithmID, ReadInJoyUtils.a(paramString), this.a.a.a.e(), 0, 0, NetworkUtil.h(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, paramString.innerUniqueID, null, paramString);
+      PublicAccountReportUtils.a(null, ComponentHeaderRecommend.a(this.a) + "", "0X80080EC", "0X80080EC", 0, 0, String.valueOf(paramString.mFeedId), String.valueOf(paramString.mArticleID), Integer.toString(paramString.mStrategyId), str, false);
+    }
   }
 }
 

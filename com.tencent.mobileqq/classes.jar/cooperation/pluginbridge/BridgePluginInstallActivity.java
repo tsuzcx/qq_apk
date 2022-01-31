@@ -50,7 +50,7 @@ public class BridgePluginInstallActivity
     this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(26));
     setContentView(2130968727);
     setTitle(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("distPluginName"));
-    setContentBackgroundResource(2130838210);
+    setContentBackgroundResource(2130838214);
     ThreadManager.post(this, 8, null, false);
     return true;
   }
@@ -95,7 +95,7 @@ public class BridgePluginInstallActivity
       finish();
       return false;
     }
-    QQToast.a(getApplicationContext(), 2131438277, 0);
+    QQToast.a(getApplicationContext(), 2131438295, 0);
     ReportController.b(this.app, "P_CliOper", "BridgePlatform", "", "start_bridge_plugin", "BridgePlugin.apk", 0, -1, "", "", "", "");
     finish();
     return false;

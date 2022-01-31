@@ -60,7 +60,7 @@ public class ComponentDivider
   
   public void a(Context paramContext)
   {
-    setBackgroundColor(getContext().getResources().getColor(2131493471));
+    setBackgroundColor(getContext().getResources().getColor(2131493477));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)

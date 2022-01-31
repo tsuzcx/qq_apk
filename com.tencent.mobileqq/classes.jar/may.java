@@ -1,12 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
-public final class may
-  implements DialogInterface.OnClickListener
+public class may
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public may(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mShareActionSheet cancle button OnClick");
+    }
+    if (VideoFeedsAdapter.a(this.a).isShowing()) {
+      VideoFeedsAdapter.a(this.a).dismiss();
+    }
+    if (VideoFeedsAdapter.a(this.a) != null) {
+      VideoFeedsAdapter.a(this.a).d();
+    }
   }
 }
 

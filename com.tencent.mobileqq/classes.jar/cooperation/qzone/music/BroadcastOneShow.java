@@ -1,6 +1,6 @@
 package cooperation.qzone.music;
 
-import amfb;
+import amvg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class BroadcastOneShow
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amfb();
+  public static final Parcelable.Creator CREATOR = new amvg();
   public String bcShowId = "";
   public String bcShowName = "";
   public long endTime;

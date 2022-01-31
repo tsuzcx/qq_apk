@@ -1,22 +1,56 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.Map;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.animation.AnimationSet;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class rty
-  implements DialogInterface.OnClickListener
+public class rty
+  implements Runnable
 {
-  public rty(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, String paramString4, ChatActivityUtils.StartVideoListener paramStartVideoListener, String paramString5, Map paramMap, boolean paramBoolean2) {}
+  public rty(BaseChatPie paramBaseChatPie, Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Boolean, this.d, false, false, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.e, this.jdField_a_of_type_JavaUtilMap, false, this.jdField_b_of_type_Boolean, false);
-    paramDialogInterface.dismiss();
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005016", "0X8005016", 0, 0, "", "", "", "");
+    BaseChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, new View(this.jdField_a_of_type_AndroidAppActivity));
+    BaseChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).setOnTouchListener(new rtz(this));
+    this.jdField_a_of_type_AndroidAppActivity.addContentView(BaseChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie), new ViewGroup.LayoutParams(-1, -1));
+    View localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0);
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    long l = 0L;
+    long[] arrayOfLong = new long[6];
+    long[] tmp99_97 = arrayOfLong;
+    tmp99_97[0] = 200L;
+    long[] tmp105_99 = tmp99_97;
+    tmp105_99[1] = 300L;
+    long[] tmp111_105 = tmp105_99;
+    tmp111_105[2] = 200L;
+    long[] tmp117_111 = tmp111_105;
+    tmp117_111[3] = 300L;
+    long[] tmp123_117 = tmp117_111;
+    tmp123_117[4] = 200L;
+    long[] tmp129_123 = tmp123_117;
+    tmp129_123[5] = 300L;
+    tmp129_123;
+    int i = 0;
+    while (i < arrayOfLong.length)
+    {
+      if (i % 2 != 0)
+      {
+        TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 10.0F, 0.0F, 10.0F);
+        localTranslateAnimation.setDuration(arrayOfLong[i]);
+        localTranslateAnimation.setStartOffset(l);
+        localTranslateAnimation.setInterpolator(new CycleInterpolator((float)localTranslateAnimation.getDuration() / 60.0F));
+        localAnimationSet.addAnimation(localTranslateAnimation);
+      }
+      l += arrayOfLong[i];
+      i += 1;
+    }
+    localAnimationSet.setAnimationListener(new rua(this));
+    localView.startAnimation(localAnimationSet);
   }
 }
 

@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.core.FileUploader;
 
 public class acvs
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acvs(ZipFilePresenter paramZipFilePresenter) {}
+  public acvs(FileUploader paramFileUploader) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
+    FileUploader.a(this.a, 0L);
+    this.a.a(0L);
   }
 }
 

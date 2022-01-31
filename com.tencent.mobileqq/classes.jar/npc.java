@@ -1,44 +1,22 @@
-import android.util.Log;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
-import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
 
 public class npc
-  implements Runnable
+  implements IMediaPlayer.OnCompletionListener
 {
-  public npc(MediaPlayer paramMediaPlayer) {}
+  public npc(TextureVideoView paramTextureVideoView) {}
   
-  public void run()
+  public void a(IMediaPlayer paramIMediaPlayer)
   {
-    try
-    {
-      this.a.a();
-      if (this.a.h == 4) {
-        this.a.a.sendEmptyMessage(1);
-      }
-      return;
+    this.a.jdField_a_of_type_Int = 5;
+    this.a.b = 5;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
     }
-    catch (IOException localIOException)
-    {
-      Log.e("Story-MediaPlayer", "prepareAsync() failed: cannot decode stream(s)", localIOException);
-      this.a.a.sendMessage(this.a.a.obtainMessage(100, 1, -1004));
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      Log.e("Story-MediaPlayer", "prepareAsync() failed: something is in a wrong state", localIllegalStateException);
-      this.a.a.sendMessage(this.a.a.obtainMessage(100, 1, 0));
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      Log.e("Story-MediaPlayer", "prepareAsync() failed: surface might be gone", localIllegalArgumentException);
-      this.a.a.sendMessage(this.a.a.obtainMessage(100, 1, 0));
-      return;
-    }
-    finally
-    {
-      MediaPlayer.a(this.a).countDown();
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer);
     }
   }
 }

@@ -1,83 +1,43 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import java.io.UnsupportedEncodingException;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rfu
-  implements TextWatcher
+  extends ClickableSpan
 {
-  public rfu(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public void afterTextChanged(Editable paramEditable)
+  public rfu(AboutActivity paramAboutActivity, String paramString, int paramInt)
   {
-    if (AddFriendVerifyActivity.a(this.a) != 4)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (this.jdField_a_of_type_Int)
     {
-      int i = paramEditable.length();
-      if (i > 30)
-      {
-        paramEditable = paramEditable.toString();
-        if (i > 30)
-        {
-          i = paramEditable.length();
-          if ((i >= 2) && (Character.isHighSurrogate(paramEditable.charAt(i - 2)))) {}
-          for (paramEditable = paramEditable.substring(0, i - 2);; paramEditable = paramEditable.substring(0, i - 1))
-          {
-            i = paramEditable.length();
-            break;
-          }
-        }
-        this.a.a.setText(paramEditable);
-        this.a.a.setSelection(paramEditable.length());
-      }
+    }
+    for (;;)
+    {
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, QQBrowserActivity.class);
+      paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getCurrentAccountUin());
+      this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
+      return;
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005746", "0X8005746", 0, 0, "", "", "", "");
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (AddFriendVerifyActivity.a(this.a) != 4) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramInt3 = paramCharSequence.toString().getBytes("utf-8").length;
-        paramInt1 = 90 - paramInt3;
-        paramCharSequence = paramCharSequence.toString();
-        paramInt2 = paramInt1;
-        if (paramInt3 > 90)
-        {
-          paramInt2 = paramInt3;
-          if (paramInt2 > 90)
-          {
-            paramInt1 = paramCharSequence.length();
-            if ((paramInt1 >= 2) && (Character.isHighSurrogate(paramCharSequence.charAt(paramInt1 - 2)))) {}
-            for (paramCharSequence = paramCharSequence.substring(0, paramInt1 - 2);; paramCharSequence = paramCharSequence.substring(0, paramInt1 - 1))
-            {
-              paramInt2 = paramCharSequence.getBytes("utf-8").length;
-              paramInt1 = 90 - paramInt2;
-              break;
-            }
-          }
-          AddFriendVerifyActivity.a(this.a).setText(paramCharSequence);
-          AddFriendVerifyActivity.a(this.a).setSelection(paramCharSequence.length());
-          paramInt2 = paramInt1;
-        }
-        if (AddFriendVerifyActivity.c(this.a).getVisibility() == 0)
-        {
-          paramCharSequence = paramInt2 + "";
-          AddFriendVerifyActivity.c(this.a).setText(paramCharSequence);
-          return;
-        }
-      }
-      catch (UnsupportedEncodingException paramCharSequence)
-      {
-        paramCharSequence.printStackTrace();
-      }
-    }
+    paramTextPaint.setColor(-16754769);
+    paramTextPaint.setUnderlineText(true);
   }
 }
 

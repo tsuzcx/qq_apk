@@ -1,36 +1,41 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
 
-class acsu
-  implements FMDialogUtil.FMDialogInterface
+public class acsu
+  implements View.OnClickListener
 {
-  acsu(acst paramacst) {}
+  public acsu(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    int i = this.a.a.g();
-    if (this.a.a.f() == 6000) {
-      if (i == 0) {
-        DatalineFileModel.a(this.a.a);
-      }
-    }
-    for (;;)
+    if (paramView == null)
     {
-      if (this.a.a.a != null) {
-        this.a.a.a.d();
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
       }
       return;
-      DatalineFileModel.c(this.a.a);
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
+    }
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
+    if (localFileManagerEntity != null)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(null);
+      }
+      this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
+      if (QfileBaseRecentFileTabView.m(this.a).a().b(this.a.jdField_a_of_type_Long)) {
+        this.a.a(localFileManagerEntity);
       }
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(Integer.valueOf(-1));
+    paramView.setVisibility(4);
+    this.a.e();
   }
-  
-  public void b() {}
 }
 
 

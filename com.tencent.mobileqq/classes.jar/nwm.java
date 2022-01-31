@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
 
 public class nwm
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public nwm(StoryMessageListActivity paramStoryMessageListActivity) {}
+  public nwm(StoryMemoriesFragment paramStoryMemoriesFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.d();
-    paramDialogInterface.dismiss();
-    StoryReportor.a(this.a.a(), "clk_sure", 0, 0, new String[] { "2", "", "", "" });
+    StoryMemoriesFragment.a(this.a).b();
   }
 }
 

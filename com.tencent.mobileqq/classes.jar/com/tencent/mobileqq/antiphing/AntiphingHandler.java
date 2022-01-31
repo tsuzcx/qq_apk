@@ -39,9 +39,9 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import yfw;
-import yfx;
-import yfy;
+import yjd;
+import yje;
+import yjf;
 
 public class AntiphingHandler
   extends WebViewPlugin
@@ -114,11 +114,11 @@ public class AntiphingHandler
     }
     this.jdField_a_of_type_Boolean = true;
     if ((this.jdField_a_of_type_AndroidWidgetFrameLayout == null) && (this.mRuntime != null) && (this.mRuntime.a() != null)) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.mRuntime.a().findViewById(2131366722));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.mRuntime.a().findViewById(2131366765));
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast != null) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast.a(2131436516, 3000, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast.a(2131436533, 3000, this.jdField_a_of_type_AndroidWidgetFrameLayout);
       this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast.a(paramString);
       return true;
     }
@@ -193,7 +193,7 @@ public class AntiphingHandler
     }
   }
   
-  private boolean a(String paramString, yfy paramyfy)
+  private boolean a(String paramString, yjf paramyjf)
   {
     if (paramString == null) {
       return false;
@@ -246,13 +246,13 @@ public class AntiphingHandler
         } while (localObject == null);
         if (((String)localObject).equalsIgnoreCase(str))
         {
-          paramyfy.jdField_a_of_type_JavaLangString = ((String)localObject);
-          paramyfy.jdField_a_of_type_Int = 1;
+          paramyjf.jdField_a_of_type_JavaLangString = ((String)localObject);
+          paramyjf.jdField_a_of_type_Int = 1;
           return true;
         }
       } while ((i != 1) || (!str.contains((CharSequence)localObject)));
-      paramyfy.jdField_a_of_type_JavaLangString = ((String)localObject);
-      paramyfy.jdField_a_of_type_Int = 2;
+      paramyjf.jdField_a_of_type_JavaLangString = ((String)localObject);
+      paramyjf.jdField_a_of_type_Int = 2;
       return true;
     }
   }
@@ -342,11 +342,11 @@ public class AntiphingHandler
       }
     }
     label121:
-    for (Object localObject2 = null;; localObject2 = new yfx(this))
+    for (Object localObject2 = null;; localObject2 = new yje(this))
     {
       DialogUtil.a(localActivity, 230, paramString1, paramString2, paramString3, paramString4, (DialogInterface.OnClickListener)localObject1, (DialogInterface.OnClickListener)localObject2).show();
       return;
-      localObject1 = new yfw(this);
+      localObject1 = new yjd(this);
       break;
     }
   }
@@ -405,15 +405,15 @@ public class AntiphingHandler
         a(this.jdField_a_of_type_JavaLangString, 2, "Already Shown Tips!!");
       }
     }
-    yfy localyfy;
+    yjf localyjf;
     do
     {
       return false;
       if (QLog.isColorLevel()) {
         a(this.jdField_a_of_type_JavaLangString, 2, "Js is call back!");
       }
-      localyfy = new yfy(this);
-      if (a(paramString1, localyfy)) {
+      localyjf = new yjf(this);
+      if (a(paramString1, localyjf)) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -421,12 +421,12 @@ public class AntiphingHandler
     return false;
     try
     {
-      long l = Long.parseLong(localyfy.jdField_a_of_type_JavaLangString);
+      long l = Long.parseLong(localyjf.jdField_a_of_type_JavaLangString);
       int i = (int)Float.parseFloat(paramString3);
       int j = (int)Float.parseFloat(paramString4);
       int k = (int)Float.parseFloat(paramString5);
       float f = Float.parseFloat(paramString6);
-      a(i, j, k, (int)f, paramString2, Long.valueOf(l), localyfy.jdField_a_of_type_Int);
+      a(i, j, k, (int)f, paramString2, Long.valueOf(l), localyjf.jdField_a_of_type_Int);
       return true;
     }
     catch (Exception paramString1) {}
@@ -509,10 +509,10 @@ public class AntiphingHandler
         return;
       } while ((!paramBoolean) || (this.mRuntime.a() == null));
       localContext = this.mRuntime.a().getApplicationContext();
-      str = localContext.getString(2131436532);
-      localObject1 = localContext.getString(2131436528);
-      localObject3 = localContext.getString(2131436529);
-      localObject2 = localContext.getString(2131436531);
+      str = localContext.getString(2131436549);
+      localObject1 = localContext.getString(2131436545);
+      localObject3 = localContext.getString(2131436546);
+      localObject2 = localContext.getString(2131436548);
     } while ((!paramBoolean) || (paramBundle == null));
     antiphishingAlertQuery.ResponsePack localResponsePack = new antiphishingAlertQuery.ResponsePack();
     for (;;)
@@ -657,7 +657,7 @@ public class AntiphingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.AntiphingHandler
  * JD-Core Version:    0.7.0.1
  */

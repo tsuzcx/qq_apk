@@ -1,31 +1,62 @@
 import android.view.View;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import cooperation.qqfav.widget.FavoriteActionSheet;
+import cooperation.qqfav.widget.FavoriteActionSheet.Actions;
+import java.util.List;
 
 public class ampm
   implements ActionSheet.OnButtonClickListener
 {
-  public ampm(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, ActionSheet paramActionSheet) {}
+  public ampm(FavoriteActionSheet paramFavoriteActionSheet) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions == null)) {
+      return;
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
     {
+      paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
+      if (paramInt == 16) {
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.e();
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      TroopHWJsPlugin localTroopHWJsPlugin = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin;
-      if (this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.mRuntime == null) {}
-      for (paramView = null;; paramView = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.mRuntime.a())
+      if (paramInt == 32)
       {
-        localTroopHWJsPlugin.c = TroopHWJsPlugin.a(paramView, 2);
-        break;
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a();
       }
-      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
+      else if (paramInt == 1)
+      {
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.c();
+        FavoriteActionSheet.a(this.a);
+      }
+      else if (paramInt == 2)
+      {
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.f();
+      }
+      else if (paramInt == 4)
+      {
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.g();
+      }
+      else if (paramInt == 8)
+      {
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.d();
+      }
+      else if (paramInt == 64)
+      {
+        this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.b();
+        continue;
+        paramInt -= this.a.jdField_a_of_type_JavaUtilList.size();
+        if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
+          this.a.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a((String)this.a.b.get(paramInt));
+        }
+      }
     }
   }
 }

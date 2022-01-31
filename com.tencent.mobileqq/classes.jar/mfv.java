@@ -1,46 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AbsListView;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.Calendar;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
 
 public class mfv
-  implements Runnable
+  extends Handler
 {
-  public mfv(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, AbsListView paramAbsListView) {}
+  public mfv(VideoUIManager paramVideoUIManager) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    int i;
-    int j;
-    long l1;
-    long l2;
-    if ((ReadInJoyBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter) == 0) && (ReadInJoyHelper.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a) > 0) && (this.jdField_a_of_type_ComTencentWidgetAbsListView.getLastVisiblePosition() >= ReadInJoyHelper.h(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a)) && (ReadInJoyHelper.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a) > 0))
+    switch (paramMessage.what)
     {
-      ReadInJoyBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter, this.jdField_a_of_type_ComTencentWidgetAbsListView.getLastVisiblePosition());
-      i = ReadInJoyHelper.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a);
-      j = ReadInJoyHelper.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a);
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.set(10, 0);
-      localCalendar.set(12, 0);
-      localCalendar.set(13, 0);
-      localCalendar.set(14, 0);
-      l1 = localCalendar.getTimeInMillis();
-      l2 = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a);
-      if (l1 <= l2) {
-        break label197;
-      }
-      ReadInJoyHelper.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a, 1);
-      ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a, l1);
-      ((KandianMergeManager)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a.getManager(161)).n();
-    }
-    label197:
-    while ((l1 != l2) || (j >= i)) {
+    default: 
+      return;
+    case 100: 
+      VideoUIManager.a(this.a);
+      return;
+    case 101: 
+      this.a.f();
+      return;
+    case 102: 
+      VideoUIManager.b(this.a);
+      sendEmptyMessageDelayed(102, 1000L);
       return;
     }
-    ReadInJoyHelper.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a, j + 1);
-    ((KandianMergeManager)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a.getManager(161)).n();
+    VideoUIManager.a(this.a, 3);
   }
 }
 

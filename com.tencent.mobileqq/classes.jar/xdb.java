@@ -1,28 +1,36 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
 
 public class xdb
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public xdb(QWalletIPCModule paramQWalletIPCModule, Bundle paramBundle, AppRuntime paramAppRuntime, String paramString) {}
+  public xdb(CommonHbFragment paramCommonHbFragment, View paramView, ImageView paramImageView, URLDrawable paramURLDrawable) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("config_str");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("id");
-    xdc localxdc = new xdc(this, (ResultReceiver)this.jdField_a_of_type_AndroidOsBundle.getParcelable("receiver"));
-    PreloadManager localPreloadManager = (PreloadManager)((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getManager(150);
-    if ("downloadModule".equals(this.jdField_a_of_type_JavaLangString)) {
-      localPreloadManager.b(str2, str1, localxdc);
-    }
-    while (!"downloadRes".equals(this.jdField_a_of_type_JavaLangString)) {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    localPreloadManager.a(str2, str1, localxdc);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int k = this.jdField_a_of_type_AndroidViewView.getHeight();
+    int j = (int)(k * 3.076923076923077D + 0.5D);
+    int i = j;
+    if (j > CommonHbFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment)) {
+      i = CommonHbFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment);
+    }
+    if ((i > 0) && (k > 0))
+    {
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, k);
+      localLayoutParams.gravity = 5;
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.postInvalidate();
   }
 }
 

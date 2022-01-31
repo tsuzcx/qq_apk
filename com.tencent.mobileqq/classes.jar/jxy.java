@@ -1,24 +1,24 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.VideoController.GAudioFriends;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import java.util.Comparator;
 
 public class jxy
-  implements Runnable
+  implements Comparator
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public jxy(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public jxy(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong, int paramInt1, boolean paramBoolean, int paramInt2)
+  public int a(VideoController.GAudioFriends paramGAudioFriends1, VideoController.GAudioFriends paramGAudioFriends2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-  }
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.b);
+    if ((paramGAudioFriends2.b) && (paramGAudioFriends1.b)) {
+      return paramGAudioFriends2.e - paramGAudioFriends1.e;
+    }
+    if ((!paramGAudioFriends2.b) && (!paramGAudioFriends1.b)) {
+      return paramGAudioFriends2.e - paramGAudioFriends1.e;
+    }
+    if ((paramGAudioFriends2.b) && (!paramGAudioFriends1.b)) {
+      return 1;
+    }
+    return -1;
   }
 }
 

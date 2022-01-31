@@ -1,30 +1,26 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aain
   implements Runnable
 {
-  public aain(ArkAppModuleReg.ModuleQQ paramModuleQQ, int paramInt, ArrayList paramArrayList) {}
+  public aain(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    Intent localIntent = new Intent(localBaseActivity, TroopAvatarWallPreviewActivity.class);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("index", this.jdField_a_of_type_Int);
-    localBundle.putStringArrayList("seqNum", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putBoolean("needBottomBar", false);
-    localBundle.putBoolean("IS_EDIT", false);
-    localBundle.putBoolean("is_use_path", true);
-    localBundle.putBoolean("is_show_action", true);
-    localBundle.putBoolean("is_not_show_index", false);
-    localBundle.putBoolean("is_index_show_bottom", true);
-    localIntent.putExtras(localBundle);
-    localBaseActivity.startActivity(localIntent);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
+    if (this.jdField_a_of_type_Boolean) {
+      localHashMap.put("result", "0");
+    }
+    for (;;)
+    {
+      StatisticCollector.a(BaseApplication.getContext()).a("", "ARCloudControlinit", true, 0L, 0L, localHashMap, "");
+      return;
+      localHashMap.put("result", "1");
+    }
   }
 }
 

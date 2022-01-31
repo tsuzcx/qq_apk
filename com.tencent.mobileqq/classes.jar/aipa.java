@@ -1,29 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.troop.data.TroopAndDiscMsgProxy;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 
 public class aipa
-  implements Runnable
+  extends MessageObserver
 {
-  public aipa(TroopAndDiscMsgProxy paramTroopAndDiscMsgProxy, boolean paramBoolean) {}
+  public aipa(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
   {
-    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
-    String str = TroopAndDiscMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAndDiscMsgProxy).getCurrentAccountUin();
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
     {
-      localStatisticCollector.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
+      this.a.e();
       return;
     }
+    if (paramStatictisInfo != null) {
+      this.a.u = paramStatictisInfo.d;
+    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipa
  * JD-Core Version:    0.7.0.1
  */

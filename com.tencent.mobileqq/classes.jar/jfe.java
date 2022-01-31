@@ -1,23 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.GBatteryMonitor;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.report.VideoNodeManager;
-import com.tencent.av.business.manager.report.VideoNodeReporter;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class jfe
-  extends BroadcastReceiver
+public final class jfe
+  implements Runnable
 {
-  public jfe(GBatteryMonitor paramGBatteryMonitor) {}
+  public jfe(String paramString1, String paramString2, String paramString3) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    int i = paramIntent.getIntExtra("level", 0);
-    if ((GBatteryMonitor.a(this.a) != null) && (GBatteryMonitor.a(this.a).a != null))
+    FileUtils.a(this.a + File.separator, this.b, this.c);
+    if (QLog.isColorLevel())
     {
-      ((VideoNodeReporter)GBatteryMonitor.a(this.a).a(4)).a(i);
-      VideoNodeManager.a(18, i);
+      QLog.i("EffectConfigBase", 2, "save Config to path :" + this.a);
+      QLog.i("EffectConfigBase", 2, "save Config to finish :" + this.c);
     }
   }
 }

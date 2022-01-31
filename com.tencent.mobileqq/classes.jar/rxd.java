@@ -1,18 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class rxd
-  implements ActionSheet.OnButtonClickListener
+public final class rxd
+  implements DialogInterface.OnClickListener
 {
-  public rxd(ChatHistoryFileActivity paramChatHistoryFileActivity, ActionSheet paramActionSheet) {}
+  public rxd(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener, Bundle paramBundle) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c)) || (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

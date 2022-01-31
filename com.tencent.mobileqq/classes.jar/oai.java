@@ -1,34 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.square.SquarePresenter;
-import com.tencent.biz.qqstory.storyHome.square.SquarePresenter.ISquareView;
-import com.tencent.biz.qqstory.storyHome.square.model.SquareFeedData;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class oai
-  implements Runnable
+  extends SimpleJob
 {
-  public oai(SquarePresenter paramSquarePresenter, SquareFeedData paramSquareFeedData) {}
+  public oai(FeedSegment paramFeedSegment, String paramString) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter) == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.a.isSuccess())
-    {
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.jdField_c_of_type_Boolean) {
-        break label81;
-      }
-      SquarePresenter.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.jdField_c_of_type_JavaUtilList);
-      SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.b);
-    }
-    for (;;)
-    {
-      SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData);
-      return;
-      label81:
-      SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter).addAll(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.b);
-    }
+    FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment).a(this.jdField_a_of_type_JavaLangString);
+    return null;
   }
 }
 

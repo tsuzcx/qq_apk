@@ -1,20 +1,32 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.util.InputMethodUtil;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.ArrayList;
 
-public final class ogj
-  implements Animation.AnimationListener
+public class ogj
+  implements AbsListView.OnScrollListener
 {
-  public ogj(View paramView) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ogj(EditVideoPoiSearch paramEditVideoPoiSearch) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.setAnimation(null);
+    if (paramInt == 1) {
+      InputMethodUtil.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a().a());
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a.size())) {
+      return;
+    }
+    EditVideoPoiSearch.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+  }
 }
 
 

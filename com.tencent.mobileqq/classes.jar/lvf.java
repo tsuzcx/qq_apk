@@ -1,44 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.utils.Base64Util;
 
 public class lvf
   implements View.OnClickListener
 {
-  public lvf(ComponentHeaderNewSocial paramComponentHeaderNewSocial, ArticleInfo paramArticleInfo) {}
+  public lvf(ComponentComment paramComponentComment, long paramLong, ArticleInfo paramArticleInfo) {}
   
   public void onClick(View paramView)
   {
-    paramView = "";
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("folder_status", ReadInJoyUtils.d);
-      ((JSONObject)localObject).put("feeds_source", String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a));
-      ((JSONObject)localObject).put("tab_source", ReadInJoyUtils.d());
-      ((JSONObject)localObject).put("kandian_mode", ReadInJoyUtils.e());
-      ((JSONObject)localObject).put("rowkey", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-      localObject = ((JSONObject)localObject).toString();
-      paramView = (View)localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    PublicAccountReportUtils.a(null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, "0X8007B63", "0X8007B63", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), "", paramView, false);
-    paramView = ReadInJoyConstants.e + String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId);
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.getContext(), paramView);
+    paramView = ReadInJoyConstants.f + Base64Util.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), paramView);
+    ReadInJoyFooterPresenter.a(1, ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }
 }
 

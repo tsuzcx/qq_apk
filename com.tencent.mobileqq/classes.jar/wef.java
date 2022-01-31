@@ -1,26 +1,44 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
 
 public class wef
-  implements Runnable
+  implements INetEngine.INetEngineListener
 {
-  public wef(AddContactsView paramAddContactsView, String paramString, SharedPreferences paramSharedPreferences) {}
+  private Handler a;
   
-  public void run()
+  public wef(Handler paramHandler)
   {
-    List localList = AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView);
-    String str = AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView, localList);
-    if (!this.jdField_a_of_type_JavaLangString.equals(str))
-    {
-      AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView, localList);
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView), StringUtil.a(AddContactsView.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView), ",")).commit();
-      ThreadManager.getUIHandler().post(new weg(this, str));
+    this.a = paramHandler;
+  }
+  
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  
+  public void a(NetResp paramNetResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "FontDownloadListener onResp: " + paramNetResp);
     }
+    if (paramNetResp.jdField_a_of_type_Int == 3) {
+      return;
+    }
+    if (paramNetResp.jdField_a_of_type_Int == 0)
+    {
+      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(ZhituManager.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c)))
+      {
+        this.a.sendEmptyMessage(100);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, "font download but md5 is not matched");
+      }
+      this.a.sendEmptyMessage(101);
+      return;
+    }
+    this.a.sendEmptyMessage(101);
   }
 }
 

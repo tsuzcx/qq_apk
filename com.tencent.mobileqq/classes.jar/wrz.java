@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 
 public class wrz
-  implements Runnable
+  extends GameCenterObserver
 {
-  public wrz(PhoneMatchActivity paramPhoneMatchActivity) {}
+  public wrz(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = this.a.a.c();
-    if ((i == 2) || (i == 3))
-    {
-      this.a.a.h();
-      return;
-    }
-    this.a.a.g();
+    AvatarPendantActivity.a(this.a);
   }
 }
 

@@ -22,10 +22,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import mtt;
-import mtu;
-import mtv;
-import mtw;
+import mva;
+import mvb;
+import mvc;
+import mvd;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,7 +42,7 @@ public class PublicAccountH5AbilityForPtt
   public Activity a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
-  private VoicePlayer.VoicePlayerListener jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer$VoicePlayerListener = new mtt(this);
+  private VoicePlayer.VoicePlayerListener jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer$VoicePlayerListener = new mva(this);
   public VoicePlayer a;
   public WebViewPlugin.PluginRuntime a;
   private File jdField_a_of_type_JavaIoFile;
@@ -100,8 +100,8 @@ public class PublicAccountH5AbilityForPtt
   
   private void j()
   {
-    SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_AndroidAppActivity.getString(2131433372));
-    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, "权限提示", localSpannableString, 0, 2131435179, null, null, new mtw(this)).show();
+    SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_AndroidAppActivity.getString(2131433389));
+    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, "权限提示", localSpannableString, 0, 2131435196, null, null, new mvd(this)).show();
   }
   
   public int a()
@@ -422,7 +422,7 @@ public class PublicAccountH5AbilityForPtt
   
   public void d(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mtv(this));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mvc(this));
   }
   
   public void e()
@@ -487,7 +487,7 @@ public class PublicAccountH5AbilityForPtt
   
   public void i()
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mtu(this));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mvb(this));
   }
 }
 

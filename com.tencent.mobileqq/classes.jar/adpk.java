@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
-import com.tencent.mobileqq.lyric.util.Singleton;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.hotchat.PttShowRoomMng;
+import com.tencent.mobileqq.hotchat.PttShowRoomMng.Guest;
 
-public final class adpk
-  extends Singleton
+public class adpk
+  extends LruCache
 {
-  protected TimerTaskManager a(Void paramVoid)
+  public adpk(PttShowRoomMng paramPttShowRoomMng, int paramInt)
   {
-    return new TimerTaskManager();
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, PttShowRoomMng.Guest paramGuest)
+  {
+    return 1;
   }
 }
 

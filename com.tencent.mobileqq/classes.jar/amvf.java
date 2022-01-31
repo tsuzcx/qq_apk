@@ -1,18 +1,23 @@
-import dov.com.qq.im.capture.data.CaptureComboManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastMusicInfo;
 
-public class amvf
-  implements Runnable
+public final class amvf
+  implements Parcelable.Creator
 {
-  public amvf(CaptureComboManager paramCaptureComboManager) {}
-  
-  public void run()
+  public BroadcastMusicInfo a(Parcel paramParcel)
   {
-    this.a.c();
+    return new BroadcastMusicInfo(paramParcel);
+  }
+  
+  public BroadcastMusicInfo[] a(int paramInt)
+  {
+    return new BroadcastMusicInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,27 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.widgets.InputDialog;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class snn
   implements DialogInterface.OnClickListener
 {
-  public snn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public snn(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.L();
+    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
+    if (!TextUtils.isEmpty(paramDialogInterface))
+    {
+      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
+      Intent localIntent = new Intent();
+      localIntent.putExtras(this.a.getIntent().getExtras());
+      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+    }
   }
 }
 

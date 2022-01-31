@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 import com.tencent.biz.now.NowLiveManager;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
 import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
 import com.tencent.mobileqq.adapter.LebaListMgrAdapter.LebaItemFilter;
 import com.tencent.mobileqq.adapter.LebaListMgrAdapter.ViewHolder;
@@ -13,6 +12,7 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.LebaViewItem;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.leba.header.LebaGridShowManager;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
@@ -44,17 +44,17 @@ public class LebaEnabledPluginsActivity
     this.jdField_a_of_type_Char = this.app.a().a().charAt(2);
     if (this.jdField_a_of_type_ComTencentWidgetXListView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)View.inflate(this, 2130970354, null));
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)View.inflate(this, 2130970386, null));
       this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter == null) {
-      this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter = new LebaListMgrAdapter(this.app, this, LebaShowListManager.a().a(), this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter = new LebaListMgrAdapter(this.app, this, LebaGridShowManager.a().c(this.app), this, null);
     }
     super.setContentView(this.jdField_a_of_type_ComTencentWidgetXListView);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter);
-    setTitle(2131433912);
+    setTitle(2131433929);
     return true;
   }
   
@@ -67,7 +67,7 @@ public class LebaEnabledPluginsActivity
     default: 
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter.a(LebaShowListManager.a().a());
+    this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter.a(LebaGridShowManager.a().c(this.app));
     setResult(-1);
   }
 }

@@ -1,157 +1,111 @@
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.MainProcessInterface;
+import com.tencent.mobileqq.magicface.magicfaceaction.Action;
+import com.tencent.mobileqq.magicface.magicfaceaction.MagicfaceActionDecoder;
+import com.tencent.mobileqq.magicface.model.MagicfaceResLoader;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class aeea
-  implements MainProcessInterface
+  implements Runnable
 {
-  private IBinder a;
+  public aeea(MagicfaceActionManager paramMagicfaceActionManager, int paramInt1, int paramInt2) {}
   
-  public aeea(IBinder paramIBinder)
+  public void run()
   {
-    this.a = paramIBinder;
-  }
-  
-  public Message a(Message paramMessage)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    try
     {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-        if (paramMessage != null)
-        {
-          localParcel1.writeInt(1);
-          paramMessage.writeToParcel(localParcel1, 0);
-          this.a.transact(2, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
-            return paramMessage;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramMessage = null;
+      bool1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c;
+      if (bool1) {
+        return;
       }
-      finally
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(this.jdField_a_of_type_Int);
+      localObject1 = null;
+      if (this.b != 0) {
+        break label277;
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.a("send.xml");
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfaceActionManager", 2, "func doAction. step 1");
+      }
+      if (localObject1 == null) {
+        break label248;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder.a((String)localObject1);
+      if (this.b == 1) {
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.e();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData);
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder.a((String)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.d();
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_JavaUtilList.iterator();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        localParcel2.recycle();
-        localParcel1.recycle();
+        boolean bool1;
+        Object localObject1;
+        Action localAction;
+        boolean bool2;
+        label248:
+        if (QLog.isColorLevel()) {
+          QLog.d("MagicfaceActionManager", 2, "doaction=Exception=" + localException.toString());
+        }
+        label277:
+        label301:
+        return;
+        label383:
+        if (bool1)
+        {
+          bool1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b;
+          if (!bool1) {}
+        }
       }
     }
-  }
-  
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    finally
     {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-        if (paramBasicTypeDataParcel != null)
-        {
-          localParcel1.writeInt(1);
-          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
-          this.a.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
-            return paramBasicTypeDataParcel;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramBasicTypeDataParcel = null;
+      if (!QLog.isColorLevel()) {
+        break label417;
       }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
+      QLog.d("MagicfaceActionManager", 2, "func doAction, 【magic end】");
+      label417:
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData);
+    }
+    if (((Iterator)localObject1).hasNext())
+    {
+      localAction = (Action)((Iterator)localObject1).next();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction = localAction;
+      localAction.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager;
+      localAction.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
+      bool1 = localAction.a();
+      bool2 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b;
+      if (!bool2) {
+        break label301;
       }
     }
-  }
-  
-  /* Error */
-  public void a(com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface paramNearbyProcessInterface)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: ifnull +42 -> 57
-    //   18: aload_1
-    //   19: invokeinterface 77 1 0
-    //   24: astore_1
-    //   25: aload_2
-    //   26: aload_1
-    //   27: invokevirtual 80	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
-    //   30: aload_0
-    //   31: getfield 15	aeea:a	Landroid/os/IBinder;
-    //   34: iconst_3
-    //   35: aload_2
-    //   36: aload_3
-    //   37: iconst_0
-    //   38: invokeinterface 45 5 0
-    //   43: pop
-    //   44: aload_3
-    //   45: invokevirtual 48	android/os/Parcel:readException	()V
-    //   48: aload_3
-    //   49: invokevirtual 65	android/os/Parcel:recycle	()V
-    //   52: aload_2
-    //   53: invokevirtual 65	android/os/Parcel:recycle	()V
-    //   56: return
-    //   57: aconst_null
-    //   58: astore_1
-    //   59: goto -34 -> 25
-    //   62: astore_1
-    //   63: aload_3
-    //   64: invokevirtual 65	android/os/Parcel:recycle	()V
-    //   67: aload_2
-    //   68: invokevirtual 65	android/os/Parcel:recycle	()V
-    //   71: aload_1
-    //   72: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	73	0	this	aeea
-    //   0	73	1	paramNearbyProcessInterface	com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface
-    //   3	65	2	localParcel1	Parcel
-    //   7	57	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	14	62	finally
-    //   18	25	62	finally
-    //   25	48	62	finally
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfaceActionManager", 2, "func doAction, 【magic end】");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData);
+      return;
+      if (this.b != 1) {
+        break;
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.a("receive.xml");
+      break;
+      if (!localAction.d) {
+        break label383;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeea
  * JD-Core Version:    0.7.0.1
  */

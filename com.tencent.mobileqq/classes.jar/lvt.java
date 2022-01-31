@@ -1,18 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class lvt
-  implements UserOperationModule.Ox978RespCallBack
+  extends ClickableSpan
 {
-  public lvt(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  public lvt(ComponentHeaderPublish paramComponentHeaderPublish) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramInt == 1)) {
-      ReadInJoyLogicEngine.a().a((int)ComponentHeaderTopicRecommend.a(this.a).businessId, 0);
-    }
+    ReadInJoyUtils.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.a.getResources()));
   }
 }
 

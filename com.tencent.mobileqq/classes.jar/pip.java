@@ -1,19 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.component.network.module.common.NetworkStatus;
-import com.tencent.component.network.utils.thread.PriorityThreadPool;
+import android.graphics.Rect;
 
-public class pip
-  extends BroadcastReceiver
+public final class pip
+  extends ThreadLocal
 {
-  public pip(NetworkStatus paramNetworkStatus) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected Rect a()
   {
-    if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction())) {
-      PriorityThreadPool.getDefault().submit(new piq(this));
-    }
+    return new Rect();
   }
 }
 

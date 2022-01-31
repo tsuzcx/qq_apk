@@ -1,23 +1,15 @@
-import android.view.View;
-import android.widget.TextView;
 import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
 
 public class lfa
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public lfa(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public lfa(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    ReadInJoySettingActivity.c(this.a).d(paramInt);
-    ((TextView)this.a.findViewById(2131367248)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
-    ReadInJoyUtils.a(Integer.toString(paramInt));
-    PublicAccountReportUtils.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
-    ReadInJoySettingActivity.c(this.a).cancel();
+    PublicAccountReportUtils.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.b(this.a), null), false);
   }
 }
 

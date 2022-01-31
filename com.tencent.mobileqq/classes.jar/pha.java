@@ -1,22 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.component.media.image.view.ExtendImageView;
+import com.tencent.component.media.image.ImageDefaultConfig;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.image.PoolParams;
+import com.tencent.component.media.image.PoolParams.BucketParams;
 
 public class pha
-  implements Animation.AnimationListener
+  implements PoolParams
 {
-  public pha(ExtendImageView paramExtendImageView, Runnable paramRunnable) {}
+  public pha(ImageManager paramImageManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public PoolParams.BucketParams getBucketParams(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    return ImageDefaultConfig.getArtBitmapBucketParams(ImageManager.a(this.a), paramInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int getBucketPoolSize()
+  {
+    return ImageDefaultConfig.getArtBitmapPoolSize(ImageManager.a(this.a));
+  }
 }
 
 

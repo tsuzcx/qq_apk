@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.ActionSheet;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
+import com.tencent.widget.XEditTextEx;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class vkg
-  implements Runnable
+class vkg
+  implements TextWatcher
 {
-  public vkg(AIOGalleryScene paramAIOGalleryScene, File paramFile, ActionSheet paramActionSheet) {}
+  vkg(vkf paramvkf) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h.equals(this.jdField_a_of_type_JavaIoFile.getPath())) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(this.jdField_a_of_type_JavaIoFile).booleanValue()) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-      ThreadManager.getUIHandler().post(new vkh(this));
-    }
+    this.a.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
+    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this);
+    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131362149, null);
   }
 }
 

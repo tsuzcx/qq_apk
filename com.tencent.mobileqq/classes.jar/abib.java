@@ -1,24 +1,22 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManager.CameraAFCallback;
-import com.tencent.mobileqq.camera.CameraManager.CameraProxy;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class abib
-  implements Camera.AutoFocusCallback
+  implements Runnable
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final CameraManager.CameraAFCallback jdField_a_of_type_ComTencentMobileqqCameraCameraManager$CameraAFCallback;
-  private final CameraManager.CameraProxy jdField_a_of_type_ComTencentMobileqqCameraCameraManager$CameraProxy;
+  public abib(ARMapLoadingActivity paramARMapLoadingActivity, boolean paramBoolean) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new abic(this, paramBoolean));
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.a(BaseApplication.getContext()).a("", "REPORT_TAG_START_THREAD_TIMEOUT", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abib
  * JD-Core Version:    0.7.0.1
  */

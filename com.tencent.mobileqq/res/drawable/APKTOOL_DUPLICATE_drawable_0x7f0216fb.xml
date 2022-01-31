@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#fff7f7f7" android:endColor="#ff000000" android:angle="0.0" />
+    <item android:state_selected="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216f4" />
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216f4" />
+    <item android:state_focused="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216f4" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216f5" />
 </selector>

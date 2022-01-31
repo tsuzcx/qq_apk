@@ -1,97 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class rvl
-  implements TextWatcher
+public final class rvl
+  implements Runnable
 {
-  public rvl(ChatHistory paramChatHistory) {}
+  public rvl(String paramString, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    if ((paramCharSequence != null) && (paramCharSequence.length() != 0)) {}
-    for (;;)
+    try
     {
-      try
-      {
-        paramInt1 = Integer.valueOf(paramCharSequence.toString()).intValue();
-        if ((paramCharSequence.length() <= 1) || (paramCharSequence.charAt(0) != '0')) {
-          break label421;
-        }
-        paramCharSequence = String.valueOf(paramInt1);
-        paramInt2 = 1;
-        if ((paramInt1 < 1) || (paramInt1 > this.a.c)) {
-          paramCharSequence = paramCharSequence.subSequence(0, paramCharSequence.length() - 1).toString();
-        }
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          paramInt1 = Integer.valueOf(paramCharSequence.toString()).intValue();
-          paramInt2 = 1;
-          continue;
-          localException1 = localException1;
-          paramInt1 = this.a.c;
-        }
-        catch (Exception paramCharSequence)
-        {
-          paramInt1 = this.a.c;
-          paramCharSequence = String.valueOf(paramInt1);
-          continue;
-        }
-      }
-      if (paramInt2 != 0) {}
-      try
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(Math.max(0, paramCharSequence.length() - 1));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.toString());
-        paramCharSequence = this.a;
-        if (paramInt1 < this.a.c)
-        {
-          paramCharSequence.d = paramInt1;
-          if (this.a.d < this.a.c) {
-            break label369;
-          }
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845337);
-          if (this.a.d > 1) {
-            break label395;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839264);
-          this.a.e = ((this.a.d - 1) * 8);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          QLog.e("ChatHistory", 1, "current s:" + paramCharSequence);
-          continue;
-          paramInt1 = this.a.c;
-          continue;
-          label369:
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838344);
-          continue;
-          label395:
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838343);
-        }
-      }
-      label421:
-      paramInt2 = 0;
+      String str = this.jdField_a_of_type_JavaLangString;
+      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      StatisticConstants.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
+      return;
     }
+    catch (Exception localException) {}
   }
 }
 

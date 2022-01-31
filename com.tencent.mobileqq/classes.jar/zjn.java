@@ -1,49 +1,36 @@
-import com.tencent.mobileqq.addon.DiyPendantEntity;
-import com.tencent.mobileqq.addon.DiyPendantFetcher;
-import com.tencent.mobileqq.addon.DiyPendantSticker;
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.PrinterHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
-class zjn
-  implements BusinessObserver
+public class zjn
+  extends TimerTask
 {
-  zjn(zjm paramzjm, DiyPendantFetcher paramDiyPendantFetcher) {}
+  public zjn(PrinterHandler paramPrinterHandler, DataLineHandler paramDataLineHandler, Timer paramTimer) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a.size() > 0)
     {
-      if ((paramObject instanceof List))
+      if (QLog.isDevelopLevel()) {
+        QLog.d("dataline.Printer", 4, " pc下线了");
+      }
+      while (this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a.size() > 0)
       {
-        paramObject = (List)paramObject;
-        if (paramObject.size() > 0)
+        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a.keySet().iterator();
+        if (localIterator.hasNext())
         {
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
-          {
-            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
-            while (localIterator.hasNext())
-            {
-              Object localObject = (DiyPendantSticker)localIterator.next();
-              localObject = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a((DiyPendantSticker)localObject);
-              this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b.add(localObject);
-            }
-          }
+          long l = ((Long)localIterator.next()).longValue();
+          this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(0, l, true);
+          this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a(Long.valueOf(l), false);
         }
       }
-      return;
     }
-    catch (Exception paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SVIPHandler", 2, paramObject.getMessage());
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b();
+    this.jdField_a_of_type_JavaUtilTimer.cancel();
   }
 }
 

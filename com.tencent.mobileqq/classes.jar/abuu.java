@@ -1,39 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForQQWalletTips;
+import java.lang.ref.SoftReference;
 
-class abuu
-  implements Runnable
+public class abuu
+  extends ClickableSpan
 {
-  abuu(abue paramabue, String paramString, Bundle paramBundle, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
+  public abuu(MessageForQQWalletTips paramMessageForQQWalletTips, String paramString, SoftReference paramSoftReference, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    do
     {
-      Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString).getJSONArray("gameList");
-      ArrayList localArrayList = new ArrayList();
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-      {
-        int i = 0;
-        while (i < ((JSONArray)localObject).length())
-        {
-          localArrayList.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
-          i += 1;
-        }
-        localObject = new abuv(this);
-        ApolloGameManager localApolloGameManager = (ApolloGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(210);
-        localApolloGameManager.a = new WeakReference(localObject);
-        localApolloGameManager.a("android.web", "apollo_aio_game.add_games_to_user_gamepanel", localArrayList);
-      }
       return;
-    }
-    catch (Exception localException) {}
+      paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    } while (paramView == null);
+    Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramView.startActivity(localIntent);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

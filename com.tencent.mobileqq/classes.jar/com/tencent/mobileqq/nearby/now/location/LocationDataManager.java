@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.location;
 
-import aefg;
+import aesm;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.now.model.LocationInfo;
@@ -234,7 +234,7 @@ public class LocationDataManager
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager.a(paramLocationReq, new aefg(this, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager.a(paramLocationReq, new aesm(this, paramString));
   }
   
   private void a(LbsShare.LocationResp paramLocationResp, String paramString)

@@ -1,24 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAiAppPanel.ArkInputPanelTabAdapter;
+import com.tencent.mobileqq.ark.ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
 
 public class aaru
-  implements CompoundButton.OnCheckedChangeListener
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public aaru(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
+  public aaru(ArkAiAppPanel.ArkInputPanelTabAdapter paramArkInputPanelTabAdapter, ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder paramViewHolder) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    paramCompoundButton = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
-    String str1 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      ArkAppModuleReg.ModuleQQ.a(paramCompoundButton, str1, str2, i);
-      return;
+    if (paramBitmap != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$ArkInputPanelTabAdapter$ViewHolder.a.setImageBitmap(paramBitmap);
     }
   }
 }

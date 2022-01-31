@@ -1,12 +1,21 @@
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.job.AddInteractViewJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
 
 public class nhe
-  extends FriendListObserver
+  extends AddInteractViewJob
 {
-  public nhe(VideoPlayModeBase paramVideoPlayModeBase) {}
+  public nhe(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareWeChatData paramShareWeChatData)
+  {
+    super(paramStoryVideoItem);
+  }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean) {}
+  public boolean b()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.e = ((String)a("result"));
+    return true;
+  }
 }
 
 

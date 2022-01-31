@@ -4,7 +4,7 @@ import android.content.Context;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.BubbleImageView;
-import uun;
+import uxp;
 
 public class FlashPicItemBuilder$FlashPicAIOThumbView
   extends BubbleImageView
@@ -24,7 +24,7 @@ public class FlashPicItemBuilder$FlashPicAIOThumbView
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     super.onLoadSuccessed(paramURLDrawable);
-    ThreadManager.postImmediately(new uun(this), null, true);
+    ThreadManager.postImmediately(new uxp(this), null, true);
   }
 }
 

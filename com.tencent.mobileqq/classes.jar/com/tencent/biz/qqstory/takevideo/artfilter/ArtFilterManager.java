@@ -19,8 +19,8 @@ import java.util.List;
 import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
 import mqq.manager.Manager;
-import ogn;
-import ogp;
+import ohx;
+import ohz;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -52,10 +52,10 @@ public class ArtFilterManager
     //   3: aload_0
     //   4: invokespecial 49	java/lang/Object:<init>	()V
     //   7: aload_0
-    //   8: new 51	ogo
+    //   8: new 51	ohy
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 54	ogo:<init>	(Lcom/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager;)V
+    //   13: invokespecial 54	ohy:<init>	(Lcom/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager;)V
     //   16: putfield 56	com/tencent/biz/qqstory/takevideo/artfilter/ArtFilterManager:jdField_a_of_type_ComTencentMobileqqVipDownloadListener	Lcom/tencent/mobileqq/vip/DownloadListener;
     //   19: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   22: ifeq +11 -> 33
@@ -283,7 +283,7 @@ public class ArtFilterManager
   private void a(String paramString1, String paramString2, String paramString3)
   {
     File localFile = new File(paramString2);
-    paramString3 = new ogn(this, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString2, paramString1, paramString2, localFile, paramString3);
+    paramString3 = new ohx(this, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString2, paramString1, paramString2, localFile, paramString3);
     boolean bool = ((PreDownloadController)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(192)).a(10015, "prd", paramString1, 0, paramString1, paramString2, 2, 0, true, paramString3);
     if (QLog.isColorLevel()) {
       QLog.d("ArtFilterManager", 2, "PreDownloadController ret:" + bool);
@@ -604,7 +604,7 @@ public class ArtFilterManager
     if (QLog.isColorLevel()) {
       QLog.d("ArtFilterManager", 2, "[updateFilterResource] isDelete=" + paramBoolean);
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.post(new ogp(this, this.jdField_a_of_type_JavaUtilList, paramBoolean, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterLoading));
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.post(new ohz(this, this.jdField_a_of_type_JavaUtilList, paramBoolean, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterLoading));
   }
   
   /* Error */

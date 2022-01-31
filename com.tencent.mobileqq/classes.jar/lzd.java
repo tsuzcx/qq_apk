@@ -1,26 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.database.DataSetObserver;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
 
 public class lzd
-  implements URLDrawable.URLDrawableListener
+  extends DataSetObserver
 {
-  public lzd(TopicShareHelper paramTopicShareHelper) {}
+  public lzd(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onChanged()
   {
-    if ((TopicShareHelper.a(this.a) != null) && (TopicShareHelper.a(this.a).getStatus() == 1) && ((TopicShareHelper.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
     {
-      paramURLDrawable = (RegionDrawable)TopicShareHelper.a(this.a).getCurrDrawable();
-      TopicShareHelper.a(this.a, paramURLDrawable.getBitmap());
+      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
+      return;
     }
+    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
   }
 }
 

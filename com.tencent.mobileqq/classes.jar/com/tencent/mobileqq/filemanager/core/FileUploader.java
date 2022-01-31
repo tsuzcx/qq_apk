@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aclu;
-import aclv;
-import aclw;
-import acmt;
-import acmu;
+import acvr;
+import acvs;
+import acvt;
+import acwq;
+import acwr;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.discoperation.FileHttpUtils;
@@ -19,13 +19,13 @@ import java.io.InputStream;
 import java.util.List;
 
 public class FileUploader
-  implements acmt
+  implements acwq
 {
   private int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
-  private acmu jdField_a_of_type_Acmu;
+  private acwr jdField_a_of_type_Acwr;
   private FileUploader.IFileUploaderSink jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFileUploaderSink;
-  private FileUploader.IFlowControl jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFlowControl = new aclw(this);
+  private FileUploader.IFlowControl jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFlowControl = new acvt(this);
   private final HttpUrlProcessor jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor;
   private InputStream jdField_a_of_type_JavaIoInputStream;
   private final String jdField_a_of_type_JavaLangString;
@@ -47,9 +47,9 @@ public class FileUploader
     this.jdField_b_of_type_Long = new File(paramString1).length();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor = new HttpUrlProcessor(paramQQAppInterface, paramString2);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
-    this.jdField_a_of_type_Acmu = Md5HttpUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_Acmu != null) {
-      this.jdField_a_of_type_Acmu.a(this);
+    this.jdField_a_of_type_Acwr = Md5HttpUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Acwr != null) {
+      this.jdField_a_of_type_Acwr.a(this);
     }
   }
   
@@ -60,9 +60,9 @@ public class FileUploader
     this.jdField_b_of_type_Long = new File(paramString1).length();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor = new HttpUrlProcessor(paramQQAppInterface, paramString4);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
-    this.jdField_a_of_type_Acmu = FtnUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2, paramString2, paramString3, this.jdField_b_of_type_Long);
-    if (this.jdField_a_of_type_Acmu != null) {
-      this.jdField_a_of_type_Acmu.a(this);
+    this.jdField_a_of_type_Acwr = FtnUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2, paramString2, paramString3, this.jdField_b_of_type_Long);
+    if (this.jdField_a_of_type_Acwr != null) {
+      this.jdField_a_of_type_Acwr.a(this);
     }
   }
   
@@ -73,9 +73,9 @@ public class FileUploader
     this.jdField_b_of_type_Long = new File(paramString1).length();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor = new HttpUrlProcessor(paramQQAppInterface, paramList, paramString4);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
-    this.jdField_a_of_type_Acmu = FtnUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2, paramString2, paramString3, this.jdField_b_of_type_Long);
-    if (this.jdField_a_of_type_Acmu != null) {
-      this.jdField_a_of_type_Acmu.a(this);
+    this.jdField_a_of_type_Acwr = FtnUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2, paramString2, paramString3, this.jdField_b_of_type_Long);
+    if (this.jdField_a_of_type_Acwr != null) {
+      this.jdField_a_of_type_Acwr.a(this);
     }
   }
   
@@ -86,9 +86,9 @@ public class FileUploader
     this.jdField_b_of_type_Long = new File(paramString1).length();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor = new HttpUrlProcessor(paramQQAppInterface, paramList, paramString2);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
-    this.jdField_a_of_type_Acmu = Md5HttpUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_Acmu != null) {
-      this.jdField_a_of_type_Acmu.a(this);
+    this.jdField_a_of_type_Acwr = Md5HttpUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Acwr != null) {
+      this.jdField_a_of_type_Acwr.a(this);
     }
   }
   
@@ -470,8 +470,8 @@ public class FileUploader
   
   private void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFlowControl = new aclw(this);
-    new Handler().postDelayed(new aclv(this), paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFlowControl = new acvt(this);
+    new Handler().postDelayed(new acvs(this), paramInt);
   }
   
   private void b(long paramLong, String paramString)
@@ -489,7 +489,7 @@ public class FileUploader
     }
     this.jdField_c_of_type_Long = paramLong;
     this.jdField_d_of_type_Long = paramLong;
-    new Handler().postDelayed(new aclu(this), 6000L);
+    new Handler().postDelayed(new acvr(this), 6000L);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFileUploaderSink.a(false, paramLong, str, paramString);
   }
   
@@ -515,7 +515,7 @@ public class FileUploader
       this.jdField_a_of_type_JavaIoInputStream.close();
       this.jdField_a_of_type_JavaIoInputStream = null;
       label12:
-      this.jdField_a_of_type_Acmu.a();
+      this.jdField_a_of_type_Acwr.a();
       return;
     }
     catch (Exception localException)
@@ -640,7 +640,7 @@ public class FileUploader
       QLog.e("FtnHttpUploader<FileAssistant>", 1, "getSendStreamSlice return null");
       return false;
     }
-    return this.jdField_a_of_type_Acmu.a(this.jdField_b_of_type_JavaLangString, paramLong, arrayOfByte);
+    return this.jdField_a_of_type_Acwr.a(this.jdField_b_of_type_JavaLangString, paramLong, arrayOfByte);
   }
   
   public int b()

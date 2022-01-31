@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1daf" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:change_voice_volume="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="16.0sp" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1db0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="按住说话" android:layout_centerHorizontal="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1922" />
-    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1212" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_centerHorizontal="true">
-        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1213" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" />
-        <TextView android:textSize="16.0sp" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1214" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="准备中" />
-    </LinearLayout>
-    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0523" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="4.0dip" android:layout_centerHorizontal="true">
-        <com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1209" android:layout_width="wrap_content" android:layout_height="wrap_content" change_voice_volume:mOrentation="1" change_voice_volume:mSquareCount="10" change_voice_volume:mColor="@color/aio_audio_change_voice_volume_view_color" change_voice_volume:mSquareWidth="2.0dip" />
-        <TextView android:textSize="16.0sp" android:textColor="#ff808080" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a120a" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0:40" />
-        <com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a120b" android:layout_width="wrap_content" android:layout_height="wrap_content" change_voice_volume:mOrentation="0" change_voice_volume:mSquareCount="10" change_voice_volume:mColor="@color/aio_audio_change_voice_volume_view_color" change_voice_volume:mSquareWidth="2.0dip" />
-    </LinearLayout>
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1db1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="38.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021217" android:scaleType="center" android:layout_centerHorizontal="true" android:contentDescription="~" />
-</com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel>
+<FrameLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043e" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1208" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04e9" android:visibility="gone" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginTop="-25.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+</FrameLayout>

@@ -1,23 +1,27 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.widget.Gallery;
 
-public class sse
-  implements View.OnClickListener
+class sse
+  implements Runnable
 {
-  public sse(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  sse(ssd paramssd) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
-    paramView = HongbaoShowerActivity.a(this.a);
-    if (!bool) {}
-    for (bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      return;
+    if (this.a.a.jdField_a_of_type_Int != this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b()) {
+      this.a.a.jdField_a_of_type_Int = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b();
     }
+    View localView;
+    do
+    {
+      return;
+      localView = this.a.a.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
+    } while (localView == null);
+    this.a.a.jdField_a_of_type_AndroidViewView = localView;
+    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
+    this.a.a.a(this.a.a.jdField_a_of_type_ComTencentWidgetGallery, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
   }
 }
 

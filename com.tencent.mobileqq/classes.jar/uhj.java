@@ -1,60 +1,20 @@
-import android.content.Context;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout.OnChatMessageCheckedChangeListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public final class uhj
-  implements CompoundButton.OnCheckedChangeListener
+public class uhj
+  implements DialogInterface.OnClickListener
 {
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public uhj(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = (ChatMessage)paramCompoundButton.getTag();
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      if (paramBoolean != MultiMsgManager.a().a((ChatMessage)localObject))
-      {
-        if (!paramBoolean) {
-          MultiMsgManager.a().a((ChatMessage)localObject, paramBoolean);
-        }
-        while (BaseChatItemLayout.a != null)
-        {
-          BaseChatItemLayout.a.a((ChatMessage)localObject, paramBoolean);
-          return;
-          if (MultiMsgManager.a().b())
-          {
-            localObject = paramCompoundButton.getContext().getString(2131433401, new Object[] { Integer.valueOf(MultiMsgManager.a().a()) });
-            QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-            paramCompoundButton.setChecked(false);
-            return;
-          }
-          if ((((localObject instanceof MessageForPic)) || ((localObject instanceof MessageForMixedMsg)) || (((ChatMessage)localObject).msgtype == -1036)) && (MultiMsgManager.a().c()))
-          {
-            localObject = paramCompoundButton.getContext().getString(2131433402, new Object[] { Integer.valueOf(MultiMsgManager.a().b()) });
-            QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-            paramCompoundButton.setChecked(false);
-            return;
-          }
-          if (((localObject instanceof MessageForShortVideo)) && (MultiMsgManager.a().d()))
-          {
-            localObject = paramCompoundButton.getContext().getString(2131433403, new Object[] { Integer.valueOf(MultiMsgManager.a().c()) });
-            QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-            paramCompoundButton.setChecked(false);
-            return;
-          }
-          MultiMsgManager.a().a((ChatMessage)localObject, paramBoolean);
-        }
-      }
-    }
+    this.a.l();
+    this.a.a(ProfileCardTemplate.g, this.a.a, false);
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.a(), "2", "1");
   }
 }
 

@@ -1,33 +1,73 @@
-import android.content.Intent;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.app.GAudioUIObserver;
 import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import com.tencent.av.utils.MultiVideoMembersClickListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class jyb
-  implements MultiVideoMembersClickListener
+  extends GAudioUIObserver
 {
-  public jyb(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public jyb(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  private void b()
+  protected void a(long paramLong1, long paramLong2)
   {
-    Intent localIntent = new Intent(this.a.getApplicationContext(), MultiVideoMembersListviewAvtivity.class);
-    localIntent.putExtra("uinType", this.a.b);
-    localIntent.putExtra("RelationUin", String.valueOf(this.a.jdField_a_of_type_Long));
-    localIntent.putExtra("needDataSimple", 1);
-    this.a.startActivity(localIntent);
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Jyc != null)) {
+      this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
+    }
   }
   
-  public void a() {}
+  protected void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Jyc != null)) {
+      this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
+    }
+  }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      if (this.a.jdField_a_of_type_Jyc != null) {
+        this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
+      }
+      this.a.c();
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      if (this.a.jdField_a_of_type_Jyc != null) {
+        this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
+      }
+      this.a.c();
+    }
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Jyc != null)) {
+      this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Jyc != null)) {
+      this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
+    }
+  }
+  
+  protected void f(long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "MultiVideoMembersClickListener , Uin = " + paramLong + " , videoScr = " + paramInt1 + " , isNeedRequest " + paramBoolean + " , positon = " + paramInt2);
+      QLog.d("MultiVideoMembersListviewAvtivity", 2, "onCloseMemberListActivity --> RelationId = " + paramLong + "mRelationUin = " + this.a.jdField_a_of_type_Long);
     }
-    if ((paramInt2 == 17) && (paramBoolean)) {
-      b();
+    if (paramLong == this.a.jdField_a_of_type_Long) {
+      MultiVideoMembersListviewAvtivity.b(this.a);
     }
+    super.f(paramLong);
   }
 }
 

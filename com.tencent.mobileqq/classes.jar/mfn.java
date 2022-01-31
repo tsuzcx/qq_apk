@@ -1,37 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class mfn
-  implements HttpWebCgiAsyncTask.Callback
+  implements DialogInterface.OnDismissListener
 {
-  public mfn(ReadInJoyAllInOneBar paramReadInJoyAllInOneBar) {}
+  public mfn(VideoShareHelper paramVideoShareHelper) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramInt != 1000) || (paramJSONObject != null)) {}
-    for (;;)
-    {
-      try
-      {
-        if (paramJSONObject.optInt("ret") == 0) {
-          break label61;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e(ReadInJoyAllInOneBar.a, 1, "requestCode == REQUEST_CODE_COMMENT. parse result failed. result=" + paramJSONObject);
-        return;
-      }
-      ReadInJoyAllInOneBar.a(this.a, bool);
-      return;
-      label61:
-      boolean bool = true;
-      continue;
-      bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
     }
+    if (VideoShareHelper.a(this.a) != null) {
+      VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), false, false);
+    }
+    VideoShareHelper.a(this.a, true);
+    VideoShareHelper.b(this.a, false);
   }
 }
 

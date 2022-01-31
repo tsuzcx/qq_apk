@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
 public class adjv
-  implements Runnable
+  implements ArkAppView.Callback
 {
-  public adjv(GroupVideoManager paramGroupVideoManager, boolean paramBoolean) {}
+  public adjv(FlashChatPanel paramFlashChatPanel) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager.a(this.jdField_a_of_type_Boolean);
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjv
  * JD-Core Version:    0.7.0.1
  */

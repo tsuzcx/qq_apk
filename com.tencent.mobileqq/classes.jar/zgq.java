@@ -1,19 +1,51 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.ProcessExitReceiver;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
+import com.tencent.open.agent.report.ReportCenter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
 public class zgq
-  implements Runnable
+  extends AccountObserver
 {
-  public zgq(ProcessExitReceiver paramProcessExitReceiver) {}
+  public zgq(MessageHandler paramMessageHandler, String paramString) {}
   
-  public void run()
+  public void onChangeToken(boolean paramBoolean, HashMap paramHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProcessExitReceiver", 2, "Kill process " + MobileQQ.getMobileQQ().getProcessName());
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap == null) || (paramHashMap.SigList == null)) {
+        return;
+      }
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
+      {
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().b(localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(this.jdField_a_of_type_JavaLangString, localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(1, true, localOpenID);
+        }
+        i += 1;
+      }
     }
-    Process.killProcess(Process.myPid());
+    if (paramBoolean) {}
+    for (paramHashMap = "0";; paramHashMap = "1")
+    {
+      ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.getAccount(), "", this.jdField_a_of_type_JavaLangString, "41", "19", paramHashMap, "", "", "4", false);
+      return;
+    }
   }
 }
 

@@ -10,7 +10,7 @@ public final class droplist_operate_code
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_DROPLIST.droplist_operate_code
  * JD-Core Version:    0.7.0.1
  */

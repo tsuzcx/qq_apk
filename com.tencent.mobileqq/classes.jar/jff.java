@@ -1,23 +1,45 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.GCameraAvailabilityMonitor;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import java.lang.ref.WeakReference;
 
 public class jff
-  extends BroadcastReceiver
+  extends Handler
 {
-  public jff(GCameraAvailabilityMonitor paramGCameraAvailabilityMonitor) {}
+  WeakReference a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public jff(EffectConfigBase paramEffectConfigBase)
   {
-    if ((this.a.a() != null) && (paramIntent != null))
+    this.a = new WeakReference(paramEffectConfigBase);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    EffectConfigBase localEffectConfigBase;
+    if (this.a.get() != null) {
+      localEffectConfigBase = (EffectConfigBase)this.a.get();
+    }
+    switch (paramMessage.what)
     {
-      this.a.a(paramIntent.getStringExtra("camera_id"), paramIntent.getIntExtra("availability", 1));
-      if (QLog.isColorLevel()) {
-        QLog.d("GCameraAvailabilityMonitor", 2, "update camera availability status cameraId:" + paramIntent.getStringExtra("camera_id") + ", value:" + paramIntent.getIntExtra("availability", 1));
+    default: 
+      localEffectConfigBase.a(paramMessage);
+      return;
+    case 0: 
+      EffectConfigBase.a(localEffectConfigBase, (EffectConfigBase.ItemBase)paramMessage.obj);
+      return;
+    case 1: 
+      EffectConfigBase.ItemBase localItemBase = (EffectConfigBase.ItemBase)paramMessage.obj;
+      if (paramMessage.arg1 == 1) {}
+      for (;;)
+      {
+        EffectConfigBase.a(localEffectConfigBase, localItemBase, bool);
+        return;
+        bool = false;
       }
     }
+    EffectConfigBase.a(localEffectConfigBase, (EffectConfigBase.ItemBase)paramMessage.obj, paramMessage.arg1);
   }
 }
 

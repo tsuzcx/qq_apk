@@ -1,24 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.automator.step.GetTbsSwitchInfo;
+import com.tencent.smtt.sdk.QbSdk;
 
 public class zrb
-  implements BaseMessageProcessor.RequestBuilder
+  implements Runnable
 {
-  public zrb(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
+  public zrb(GetTbsSwitchInfo paramGetTbsSwitchInfo) {}
   
-  public ToServiceMsg a()
+  public void run()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageSystemMessageProcessor.a.a("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
-    localToServiceMsg.extraData.putLong("type", 1L);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
+    QbSdk.isX5DisabledSync(BaseApplicationImpl.getContext());
   }
 }
 

@@ -14,7 +14,7 @@ public final class REPLYCODE
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     SummaryCard.REPLYCODE
  * JD-Core Version:    0.7.0.1
  */

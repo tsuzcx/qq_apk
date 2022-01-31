@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class adsb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public adsb(TroopAssistantManager paramTroopAssistantManager, EntityManager paramEntityManager, TroopAssistantData paramTroopAssistantData) {}
+  public adsb(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
+    PresenceInterfaceImpl.jdField_a_of_type_Boolean = false;
+    PresenceInterfaceImpl.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
+    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsb
  * JD-Core Version:    0.7.0.1
  */

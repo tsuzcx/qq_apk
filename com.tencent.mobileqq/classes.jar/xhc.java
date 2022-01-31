@@ -1,15 +1,20 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import mqq.observer.BusinessObserver;
 
 public class xhc
-  implements Runnable
+  implements BusinessObserver
 {
-  public xhc(RecentAdapter paramRecentAdapter, int paramInt, String paramString1, String paramString2, String paramString3) {}
+  public xhc(RedPacketManager paramRedPacketManager) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(ServiceAccountFolderManager.a().a()));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 

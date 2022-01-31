@@ -1,21 +1,22 @@
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.ApolloTicker;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 import com.tencent.qphone.base.util.QLog;
-import java.net.HttpURLConnection;
 
-class yrn
+public class yrn
   implements Runnable
 {
-  yrn(yrm paramyrm, HttpURLConnection paramHttpURLConnection) {}
+  public yrn(CmGameLauncher paramCmGameLauncher) {}
   
   public void run()
   {
-    try
+    if ((CmGameLauncher.a(this.a) != null) && (CmGameLauncher.a(this.a).getRender() != null) && (CmGameLauncher.a(this.a).getRender().mApolloTicker != null))
     {
-      this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("apollo_client_ApolloUrlInterceptor", 2, "disconnect error:" + localThrowable.getMessage());
+      ApolloRender.tickerPause(CmGameLauncher.a(this.a).getRender().mApolloTicker.ticker);
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameLauncher", 2, "mPauseTickerTask");
+      }
     }
   }
 }

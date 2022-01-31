@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
-public class abog
-  implements Runnable
+public final class abog
+  implements Parcelable.Creator
 {
-  public abog(RecommendCommonMessage paramRecommendCommonMessage, WeakReference paramWeakReference) {}
-  
-  public void run()
+  public BusinessCard a(Parcel paramParcel)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface != null) {
-      localQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.extStr);
-    }
+    return new BusinessCard(paramParcel);
+  }
+  
+  public BusinessCard[] a(int paramInt)
+  {
+    return new BusinessCard[paramInt];
   }
 }
 

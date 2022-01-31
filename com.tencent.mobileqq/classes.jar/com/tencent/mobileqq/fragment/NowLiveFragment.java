@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.fragment;
 
-import addv;
-import addw;
-import adea;
-import adeb;
-import adec;
-import aded;
-import adee;
+import adnu;
+import adnv;
+import adnz;
+import adoa;
+import adob;
+import adoc;
+import adod;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -50,7 +50,7 @@ public class NowLiveFragment
   extends NearbyBaseFragment
   implements View.OnClickListener
 {
-  private static final Runnable jdField_a_of_type_JavaLangRunnable = new adee();
+  private static final Runnable jdField_a_of_type_JavaLangRunnable = new adod();
   public static String b;
   private static boolean g;
   public RefreshView a;
@@ -60,7 +60,7 @@ public class NowLiveFragment
   PopupMenuDialog jdField_a_of_type_ComTencentWidgetPopupMenuDialog;
   public String a;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  int[] jdField_a_of_type_ArrayOfInt = { 2130839477, 2130839478, 2130839476 };
+  int[] jdField_a_of_type_ArrayOfInt = { 2130839482, 2130839483, 2130839481 };
   String[] jdField_a_of_type_ArrayOfJavaLangString = { "发起直播", "个人中心", "帮助" };
   public View b;
   public String c = "https://now.qq.com/qq/nearby/live.html?_wv=16777219&_bid=2452&from=50036";
@@ -155,17 +155,17 @@ public class NowLiveFragment
       e();
       return;
     }
-    paramSosoLbsInfo = new addv(this);
+    paramSosoLbsInfo = new adnu(this);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramSosoLbsInfo, 2000L);
     paramSosoLbsInfo = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(2);
     String str = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
-    addw localaddw = new addw(this);
-    paramSosoLbsInfo.GetPskey(str, 16L, new String[] { "now.qq.com" }, localaddw);
+    adnv localadnv = new adnv(this);
+    paramSosoLbsInfo.GetPskey(str, 16L, new String[] { "now.qq.com" }, localadnv);
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.a();
     if (localCustomWebView != null)
     {
@@ -198,7 +198,7 @@ public class NowLiveFragment
       localArrayList.add(localMenuItem);
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, localArrayList, new aded(this));
+    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, localArrayList, new adoc(this));
   }
   
   public void e()
@@ -243,7 +243,7 @@ public class NowLiveFragment
     if (QLog.isColorLevel()) {
       QLog.d("NowLiveFragment", 2, "startLocation start" + System.currentTimeMillis());
     }
-    SosoInterface.a(new adea(this, 0, true, false, 300000L, true, false, "NearbyNowliveTab"));
+    SosoInterface.a(new adnz(this, 0, true, false, 300000L, true, false, "NearbyNowliveTab"));
     return true;
   }
   
@@ -264,7 +264,7 @@ public class NowLiveFragment
     } while (this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog == null);
     if (!this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.isShowing())
     {
-      this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.showAtLocation(this.jdField_a_of_type_AndroidViewView, 53, this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDimensionPixelSize(2131558951), this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDimensionPixelSize(2131558451) + this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDimensionPixelSize(2131559257));
+      this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.showAtLocation(this.jdField_a_of_type_AndroidViewView, 53, this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDimensionPixelSize(2131558953), this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDimensionPixelSize(2131558451) + this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDimensionPixelSize(2131559259));
       return;
     }
     this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.dismiss();
@@ -302,9 +302,9 @@ public class NowLiveFragment
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969112, null);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365208);
-      this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365207));
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969111, null);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365230);
+      this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365229));
     }
     paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).getString("nearByTabUrl", "");
     if (QLog.isColorLevel()) {
@@ -317,10 +317,10 @@ public class NowLiveFragment
       this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).getString("menuCell_personalCenter", "");
       this.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).getString("menuCell_help", "");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(getString(2131435058)).a(false);
-    this.jdField_a_of_type_ComTencentBizUiRefreshView.setOnRefreshListener(new adeb(this));
+    this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(getString(2131435075)).a(false);
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.setOnRefreshListener(new adoa(this));
     if ((this.jdField_e_of_type_Boolean) && (!this.f)) {
-      SosoInterface.a(new adec(this, 0, true, false, 30000L, true, false, "NearbyNowliveTab"));
+      SosoInterface.a(new adob(this, 0, true, false, 30000L, true, false, "NearbyNowliveTab"));
     }
     d();
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.d == 0L))
@@ -372,7 +372,7 @@ public class NowLiveFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment
  * JD-Core Version:    0.7.0.1
  */

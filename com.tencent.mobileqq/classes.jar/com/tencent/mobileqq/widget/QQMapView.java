@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akhv;
-import akhw;
+import akwe;
+import akwf;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
@@ -25,7 +25,7 @@ public class QQMapView
   public Handler a;
   public GeoPoint a;
   public QQMapView.QQMapViewObserver a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new akhw(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new akwf(this);
   public Thread a;
   boolean jdField_a_of_type_Boolean = false;
   public boolean b = false;
@@ -37,7 +37,7 @@ public class QQMapView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler = new akhv(this);
+    this.jdField_a_of_type_AndroidOsHandler = new akwe(this);
     this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_JavaLangRunnable, "qqmapview_calculate_position", 8);
     this.jdField_a_of_type_JavaLangThread.setPriority(10);
     this.jdField_a_of_type_JavaLangThread.start();
@@ -128,7 +128,7 @@ public class QQMapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQMapView
  * JD-Core Version:    0.7.0.1
  */

@@ -54,8 +54,8 @@ import com.tencent.widget.ActionSheetHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import usu;
-import usv;
+import uvw;
+import uvx;
 
 public class DevicePicItemBuilder
   extends BaseBubbleBuilder
@@ -99,7 +99,7 @@ public class DevicePicItemBuilder
     {
       paramViewHolder = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
       paramView = new AsyncImageView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setId(2131366616);
+      paramView.setId(2131366640);
       if (!jdField_a_of_type_Boolean) {
         paramView.setAdjustViewBounds(true);
       }
@@ -122,10 +122,10 @@ public class DevicePicItemBuilder
       }
       paramView.setBackgroundDrawable(new AIOSendMask(2130706432, this.b * 12.0F));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(6, 2131366616);
-      localLayoutParams.addRule(8, 2131366616);
-      localLayoutParams.addRule(5, 2131366616);
-      localLayoutParams.addRule(7, 2131366616);
+      localLayoutParams.addRule(6, 2131366640);
+      localLayoutParams.addRule(8, 2131366640);
+      localLayoutParams.addRule(5, 2131366640);
+      localLayoutParams.addRule(7, 2131366640);
       paramViewHolder.addView(paramView, localLayoutParams);
       paramView.setVisibility(8);
       localHolder.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView = paramView;
@@ -183,7 +183,7 @@ public class DevicePicItemBuilder
     if ((paramChatMessage != null) && ((paramChatMessage instanceof MessageForDeviceFile)))
     {
       paramContext = (MessageForDeviceFile)paramChatMessage;
-      if (paramInt != 2131375336) {
+      if (paramInt != 2131375567) {
         break label36;
       }
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
@@ -192,12 +192,12 @@ public class DevicePicItemBuilder
     do
     {
       return;
-      if (paramInt == 2131375346)
+      if (paramInt == 2131375577)
       {
         super.c(paramChatMessage);
         return;
       }
-    } while (paramInt != 2131363499);
+    } while (paramInt != 2131363517);
     paramChatMessage = new Bundle();
     paramChatMessage.putInt("forward_type", 1);
     paramChatMessage.putInt("forward_source_uin_type", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
@@ -221,17 +221,17 @@ public class DevicePicItemBuilder
     if (paramView.isSendFromLocal())
     {
       localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-      localActionSheet.a(2131433618, 5);
-      localActionSheet.c(2131432998);
-      localActionSheet.a(new usu(this, paramView, localActionSheet));
+      localActionSheet.a(2131433635, 5);
+      localActionSheet.c(2131433015);
+      localActionSheet.a(new uvw(this, paramView, localActionSheet));
       localActionSheet.show();
       return;
     }
     ActionSheet localActionSheet = ActionSheet.a(this.jdField_a_of_type_AndroidContentContext);
     localActionSheet.a(2131427799);
     localActionSheet.b(2131427800);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new usv(this, paramView, localActionSheet));
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new uvx(this, paramView, localActionSheet));
     localActionSheet.show();
   }
   
@@ -343,7 +343,7 @@ public class DevicePicItemBuilder
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     if (!TextUtils.isEmpty(((MessageForDeviceFile)((DevicePicItemBuilder.Holder)AIOUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage).filePath)) {
-      localQQCustomMenu.a(2131363499, this.jdField_a_of_type_AndroidContentContext.getString(2131435066), 2130838309);
+      localQQCustomMenu.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
     }
     super.b(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext);
     return localQQCustomMenu.a();

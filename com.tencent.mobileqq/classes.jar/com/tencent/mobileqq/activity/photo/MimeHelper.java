@@ -30,6 +30,11 @@ public class MimeHelper
     return null;
     return arrayOfString;
   }
+  
+  public static boolean b(String paramString)
+  {
+    return "video/mp4".equals(paramString);
+  }
 }
 
 

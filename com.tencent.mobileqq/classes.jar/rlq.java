@@ -1,27 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.now.enter.NowEnterManager;
 
 public class rlq
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rlq(AutoRemarkActivity paramAutoRemarkActivity) {}
+  public rlq(AssistantSettingActivity paramAssistantSettingActivity, NowEnterManager paramNowEnterManager) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
-    try
-    {
-      this.a.a.dismiss();
-      label46:
-      this.a.a = null;
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      break label46;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a(paramBoolean);
   }
 }
 

@@ -12,7 +12,7 @@ public class BannerIconCollection
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130837945, 2130837940, 2130837942, 2130837946, 2130838074, 2130839440, 2130837947, 2130837939, 2130837944, 2130837941, 2130837938 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130837948, 2130837943, 2130837945, 2130837949, 2130838077, 2130839445, 2130837950, 2130837942, 2130837947, 2130837944, 2130837941 };
     jdField_a_of_type_JavaUtilMap = new HashMap();
     jdField_a_of_type_JavaUtilMap.put("m.ke.qq.com", Integer.valueOf(7));
     jdField_a_of_type_JavaUtilMap.put("ke.qq.com", Integer.valueOf(7));

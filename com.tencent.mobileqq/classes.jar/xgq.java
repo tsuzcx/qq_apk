@@ -1,22 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.os.MqqHandler;
+import Wallet.RedInfoSyncRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class xgq
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  private final int jdField_a_of_type_Int;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public xgq(QWalletRedManager paramQWalletRedManager) {}
   
-  public xgq(int paramInt, MqqHandler paramMqqHandler)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
+    }
+    StringBuilder localStringBuilder;
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
+        if (paramBundle == null) {
+          break label97;
+        }
+      }
+    }
+    label97:
+    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
+    {
+      QLog.d("QWalletRedManager", 2, paramBundle);
+      return;
+    }
   }
 }
 

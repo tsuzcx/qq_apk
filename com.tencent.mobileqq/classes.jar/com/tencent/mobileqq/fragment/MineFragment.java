@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.fragment;
 
-import adcw;
-import adcx;
+import admv;
+import admw;
 import com.tencent.biz.ProtoUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.NearbyHandler;
@@ -23,12 +23,12 @@ public class MineFragment
     {
       oidb_0x91f.ReqBody localReqBody = new oidb_0x91f.ReqBody();
       localReqBody.uint32_state.set(0);
-      ProtoUtils.a(paramNearbyAppInterface, new adcw(paramNearbyAppInterface), localReqBody.toByteArray(), "OidbSvc.0x91f", 2335, 5, null, 0L);
+      ProtoUtils.a(paramNearbyAppInterface, new admv(paramNearbyAppInterface), localReqBody.toByteArray(), "OidbSvc.0x91f", 2335, 5, null, 0L);
     }
     NearbySPUtil.a(paramNearbyAppInterface.getAccount(), false);
     NearbySPUtil.a(paramNearbyAppInterface.getAccount(), "nearby_people_disclaimer_ok_5.8.0", Boolean.valueOf(false));
     paramNearbyAppInterface.c = false;
-    ThreadManager.post(new adcx(paramNearbyAppInterface), 10, null, true);
+    ThreadManager.post(new admw(paramNearbyAppInterface), 10, null, true);
   }
   
   public static void b(NearbyAppInterface paramNearbyAppInterface)
@@ -44,7 +44,7 @@ public class MineFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MineFragment
  * JD-Core Version:    0.7.0.1
  */

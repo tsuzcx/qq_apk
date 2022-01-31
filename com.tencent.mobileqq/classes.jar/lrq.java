@@ -1,14 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
 public class lrq
-  extends PublicAccountObserver
+  implements Runnable
 {
-  public lrq(SubscriptionInfoModule paramSubscriptionInfoModule) {}
+  public lrq(ReadInJoyUserInfoRepository paramReadInJoyUserInfoRepository, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
-  public void b(boolean paramBoolean, String paramString)
+  public void run()
   {
-    this.a.f();
+    if (ReadInJoyUserInfoRepository.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository) != null) {
+      ReadInJoyUserInfoRepository.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo);
+    }
   }
 }
 

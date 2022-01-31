@@ -12,6 +12,7 @@ public class MsgTabVideoData
   public boolean a;
   public String b;
   public boolean b;
+  public String c;
   
   public JSONObject a()
   {
@@ -21,6 +22,7 @@ public class MsgTabVideoData
       localJSONObject.put("feedId", this.jdField_a_of_type_JavaLangString);
       localJSONObject.put("didRead", this.jdField_a_of_type_Boolean);
       localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("videoIndex", this.c);
       localJSONObject.put("isLocal", this.jdField_b_of_type_Boolean);
       return localJSONObject;
     }
@@ -38,6 +40,7 @@ public class MsgTabVideoData
       this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("didRead");
       this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("feedId");
       this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("vid");
+      this.c = paramJSONObject.optString("videoIndex");
       this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("isLocal");
       return;
     }
@@ -49,7 +52,7 @@ public class MsgTabVideoData
   
   public String toString()
   {
-    return "MsgTabVideoData{didRead=" + this.jdField_a_of_type_Boolean + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isLocal=" + this.jdField_b_of_type_Boolean + ", storyVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + '}';
+    return "MsgTabVideoData{didRead=" + this.jdField_a_of_type_Boolean + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoIndex='" + this.c + '\'' + ", storyVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", isLocal=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

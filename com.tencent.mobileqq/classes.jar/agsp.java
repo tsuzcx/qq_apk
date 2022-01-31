@@ -1,102 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.LogTag;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
-import tencent.im.msg.im_msg_body.RichText;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.annotation.TargetApi;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.view.VipProfileWZRYView;
 
 public class agsp
-  implements UpCallBack
+  implements Runnable
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  public agsp(VipProfileWZRYView paramVipProfileWZRYView) {}
   
-  public agsp(VideoSendTaskManager paramVideoSendTaskManager, QQAppInterface paramQQAppInterface, String paramString)
+  @TargetApi(11)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PreUploadVideo", 2, "[attachRichText2Msg]id=" + this.jdField_a_of_type_JavaLangString);
-    }
-    MessageRecord localMessageRecord = ((TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).get(this.jdField_a_of_type_JavaLangString)).a;
-    if ((localMessageRecord instanceof MessageForShortVideo)) {
-      ((MessageForShortVideo)localMessageRecord).richText = paramRichText;
-    }
-    return localMessageRecord;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult)
-  {
-    Object localObject = (TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).get(this.jdField_a_of_type_JavaLangString);
-    if ((((TransferRequest)localObject).a instanceof MessageForShortVideo))
-    {
-      localObject = (MessageForShortVideo)((TransferRequest)localObject).a;
-      if (!TextUtils.isEmpty(paramSendResult.d)) {
-        break label93;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("PreUploadVideo", 2, "[updateMsg]id=" + this.jdField_a_of_type_JavaLangString + ", md5=" + paramSendResult.d);
-      }
-    }
-    return;
-    label93:
-    LogTag.a();
-    for (;;)
-    {
-      try
-      {
-        ((MessageForShortVideo)localObject).videoFileSize = ((int)paramSendResult.a);
-        ((MessageForShortVideo)localObject).videoFileStatus = 1003;
-        ((MessageForShortVideo)localObject).uuid = paramSendResult.jdField_c_of_type_JavaLangString;
-        ((MessageForShortVideo)localObject).md5 = paramSendResult.d;
-        ((MessageForShortVideo)localObject).thumbFileSize = ((int)paramSendResult.jdField_c_of_type_Long);
-        ((MessageForShortVideo)localObject).serial();
-        LogTag.a("PreUploadVideo", "[updateMsg]");
-        paramSendResult = ShortVideoUtils.a((MessageForShortVideo)localObject, "mp4");
-        if (!TextUtils.isEmpty(((MessageForShortVideo)localObject).videoFileName))
-        {
-          if ((!((MessageForShortVideo)localObject).videoFileName.equals(paramSendResult)) && (FileUtils.c(((MessageForShortVideo)localObject).videoFileName, paramSendResult))) {
-            ((MessageForShortVideo)localObject).videoFileName = paramSendResult;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageForShortVideo)localObject).frienduin, ((MessageForShortVideo)localObject).istroop, ((MessageForShortVideo)localObject).uniseq, ((MessageForShortVideo)localObject).msgData);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localObject);
-          VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).post(new agsr(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager, this.jdField_a_of_type_JavaLangString));
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("PreUploadVideo", 2, "[updateMsg]id=" + this.jdField_a_of_type_JavaLangString + ", mr=" + ((MessageForShortVideo)localObject).toString());
-          return;
-        }
-      }
-      finally {}
-      if (QLog.isColorLevel()) {
-        QLog.i("PreUploadVideo", 2, "[updateMsg] mr.videoFileName is empty");
-      }
-    }
-  }
-  
-  public void b(UpCallBack.SendResult paramSendResult)
-  {
-    VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).post(new agsq(this, paramSendResult));
+    this.a.a.setVisibility(0);
+    AnimatorSet localAnimatorSet1 = new AnimatorSet();
+    localAnimatorSet1.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a.a, "scaleX", new float[] { 3.5F, 0.9F }), ObjectAnimator.ofFloat(this.a.a, "scaleY", new float[] { 3.5F, 0.9F }) });
+    localAnimatorSet1.setDuration(150L);
+    AnimatorSet localAnimatorSet2 = new AnimatorSet();
+    localAnimatorSet2.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a.a, "scaleX", new float[] { 0.9F, 1.1F }), ObjectAnimator.ofFloat(this.a.a, "scaleY", new float[] { 0.9F, 1.1F }) });
+    localAnimatorSet2.setDuration(100L);
+    Object localObject = new AnimatorSet();
+    ((AnimatorSet)localObject).playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a.a, "scaleX", new float[] { 1.1F, 1.0F }), ObjectAnimator.ofFloat(this.a.a, "scaleY", new float[] { 1.1F, 1.0F }) });
+    ((AnimatorSet)localObject).setDuration(50L);
+    AnimatorSet localAnimatorSet3 = new AnimatorSet();
+    localAnimatorSet3.playSequentially(new Animator[] { localAnimatorSet1, localAnimatorSet2, localObject });
+    localAnimatorSet3.start();
+    this.a.c.setVisibility(0);
+    localAnimatorSet1 = new AnimatorSet();
+    localAnimatorSet1.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a.c, "scaleX", new float[] { 2.0F, 3.0F }), ObjectAnimator.ofFloat(this.a.c, "scaleY", new float[] { 2.0F, 3.0F }), ObjectAnimator.ofFloat(this.a.c, "alpha", new float[] { 0.0F, 1.0F }) });
+    localAnimatorSet1.setDuration(50L);
+    localAnimatorSet2 = new AnimatorSet();
+    localAnimatorSet2.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.a.c, "scaleX", new float[] { 3.0F, 0.5F }), ObjectAnimator.ofFloat(this.a.c, "scaleY", new float[] { 3.0F, 0.5F }) });
+    localAnimatorSet2.setDuration(100L);
+    localObject = ObjectAnimator.ofFloat(this.a.c, "alpha", new float[] { 1.0F, 0.0F });
+    ((Animator)localObject).setDuration(100L);
+    localAnimatorSet3 = new AnimatorSet();
+    localAnimatorSet3.playSequentially(new Animator[] { localAnimatorSet1, localAnimatorSet2, localObject });
+    localAnimatorSet3.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agsp
  * JD-Core Version:    0.7.0.1
  */

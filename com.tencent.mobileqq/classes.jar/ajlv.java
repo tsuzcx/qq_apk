@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.util.FaceManager;
+import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
 
 public class ajlv
-  extends TroopObserver
+  implements Runnable
 {
-  private ajlv(FaceManager paramFaceManager) {}
+  public ajlv(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void run()
   {
-    this.a.c(103, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlv
  * JD-Core Version:    0.7.0.1
  */

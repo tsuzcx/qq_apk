@@ -1,29 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
 
 public class aejx
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public aejx(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aejx(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
-    }
-    for (;;)
-    {
-      return false;
-      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlayStateChanged(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejx
  * JD-Core Version:    0.7.0.1
  */

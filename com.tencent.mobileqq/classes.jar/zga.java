@@ -1,34 +1,62 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadScheduler;
+import mqq.app.AppRuntime;
 
-class zga
-  implements Comparator
+public class zga
+  extends zeq
 {
-  zga(zfy paramzfy) {}
-  
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  protected void a()
   {
-    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
-    int i = j;
-    if (j == 0)
-    {
-      Object localObject2 = paramPhoneContact1.pinyinFirst;
-      String str = paramPhoneContact2.pinyinFirst;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      j = ((String)localObject1).compareTo((String)localObject2);
-      i = j;
-      if (j == 0) {
-        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-      }
+    super.a();
+    if (this.c >= zeo.a().a(this.a.jdField_a_of_type_Array2dOfLong, this.a.jdField_a_of_type_Int, this.a.b, MemoryManager.a(Process.myPid())) / 12000L) {
+      this.a.a(7, null);
     }
-    return i;
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (this.d != 1L);
+        MemoryManager.a().a("LITE_GUARD");
+        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      } while (localObject == null);
+      localObject = (PreDownloadScheduler)((QQAppInterface)localObject).getManager(232);
+    } while (localObject == null);
+    ((PreDownloadScheduler)localObject).a(true);
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
+    }
+  }
+  
+  protected void b()
+  {
+    if (this.c > 2L) {
+      this.c -= 2L;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    CoreService.startCoreService(zeo.a().a);
+    this.a.b();
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(3, 0L, 0L);
   }
 }
 

@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.GuideHelper;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 
-public class anid
-  implements View.OnClickListener
+public final class anid
+  implements IHttpCommunicatorFlowCount
 {
-  public anid(GuideHelper paramGuideHelper, ViewGroup paramViewGroup) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiGuideHelper.a(this.jdField_a_of_type_AndroidViewViewGroup);
-  }
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anid
  * JD-Core Version:    0.7.0.1
  */

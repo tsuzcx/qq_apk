@@ -60,7 +60,7 @@ public class SkinPullRefreshHeader
     }
   }
   
-  public void W_()
+  public void Y_()
   {
     if (this.jdField_a_of_type_AndroidWidgetProgressBar != null)
     {
@@ -108,9 +108,9 @@ public class SkinPullRefreshHeader
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363039));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363031));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374909));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363057));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363049));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375095));
     c(0L);
   }
   

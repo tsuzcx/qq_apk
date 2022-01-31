@@ -1,26 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumObserver;
 
-class shd
-  implements DialogInterface.OnClickListener
+public class shd
+  extends TroopQZoneUploadAlbumObserver
 {
-  shd(shb paramshb, String paramString) {}
+  public shd(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    DiscussionInfoCardActivity.a(this.jdField_a_of_type_Shb.a).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Shb.a.app.a().a();
-    paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaLangString, 3000));
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_Shb.a.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_Shb.a.finish();
+    if (!(paramObject instanceof String)) {
+      return;
+    }
+    paramObject = (String)paramObject;
+    this.a.a(8, paramObject, -2147483648);
   }
 }
 

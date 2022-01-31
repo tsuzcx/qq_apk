@@ -1,26 +1,15 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
 
-public class uoj
+class uoj
   implements Runnable
 {
-  public uoj(DoodleMsgLayout paramDoodleMsgLayout) {}
+  uoj(uoh paramuoh) {}
   
   public void run()
   {
-    Drawable localDrawable1 = DoodleResHelper.a().a(1, DoodleMsgLayout.a(this.a), true);
-    if (localDrawable1 != null) {
-      ((URLDrawable)localDrawable1).setIndividualPause(true);
-    }
-    Drawable localDrawable2 = DoodleResHelper.a().a(2, DoodleMsgLayout.a(this.a), false);
-    if (localDrawable2 != null) {
-      ((URLDrawable)localDrawable2).startDownload();
-    }
-    new Handler(Looper.getMainLooper()).post(new uok(this, localDrawable1, localDrawable2));
+    this.a.a.a(true, this.a.a.b.b);
+    this.a.a.d();
   }
 }
 

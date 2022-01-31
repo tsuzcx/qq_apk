@@ -34,7 +34,7 @@ public class HomeworkTroopTipsBar
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130969903, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130969917, null);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     }
     return this.jdField_a_of_type_AndroidViewView;

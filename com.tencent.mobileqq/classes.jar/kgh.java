@@ -1,15 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.utils.AvCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
 public class kgh
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public kgh(AvCustomDialog paramAvCustomDialog) {}
+  public kgh(PopupDialog paramPopupDialog) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.dismiss();
+    if (PopupDialog.a.a != null) {
+      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
+    }
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
   }
 }
 

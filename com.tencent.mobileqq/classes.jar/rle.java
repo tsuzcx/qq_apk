@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.qcall.PstnManager;
 
 public class rle
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rle(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  public rle(AssistantSettingActivity paramAssistantSettingActivity, PstnManager paramPstnManager) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
-    {
-      if ((AuthDevRenameActivity.a(this.a) == null) && (!this.a.isFinishing())) {
-        AuthDevRenameActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((AuthDevRenameActivity.a(this.a) != null) && (!AuthDevRenameActivity.a(this.a).isShowing()))
-      {
-        AuthDevRenameActivity.a(this.a).a(this.a.getString(2131436601));
-        AuthDevRenameActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.b(paramBoolean);
   }
 }
 

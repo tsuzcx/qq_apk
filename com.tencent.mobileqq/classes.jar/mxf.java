@@ -1,15 +1,14 @@
-import android.widget.TextView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class mxf
-  implements Runnable
+  implements View.OnClickListener
 {
-  mxf(mwx parammwx, boolean paramBoolean, int paramInt) {}
+  mxf(mxc parammxc) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Mwx.a.a.setText("" + PublicAccountImageCollectionMainActivity.c(this.jdField_a_of_type_Mwx.a));
-    PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Mwx.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    this.a.a(paramView);
   }
 }
 

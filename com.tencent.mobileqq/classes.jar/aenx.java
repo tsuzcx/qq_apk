@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView.IAddTopicClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView.LoadingCallback;
 
 class aenx
-  implements View.OnClickListener
+  implements WereWolvesLoadingView.LoadingCallback
 {
   aenx(aenw paramaenw) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (paramView == null) {}
-    while (StartLiveTopicLabelListView.a(this.a.a) == null) {
-      return;
-    }
-    StartLiveTopicLabelListView.a(this.a.a).a();
+    this.a.a.a.setVisibility(8);
+    this.a.a.a(true);
   }
 }
 

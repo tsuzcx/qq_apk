@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import ahrs;
+import aifv;
 import com.tencent.TMG.utils.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +22,7 @@ public class FDStatsTree
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_ComTencentMobileqqStatisticsFDStatsTree$TreeNode.a("", this.jdField_a_of_type_JavaUtilList);
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, new ahrs(this));
+    Collections.sort(this.jdField_a_of_type_JavaUtilList, new aifv(this));
     Object localObject = new ArrayList(10);
     int i = 0;
     while ((i < 10) && (i < this.jdField_a_of_type_JavaUtilList.size()))
@@ -65,7 +65,7 @@ public class FDStatsTree
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDStatsTree
  * JD-Core Version:    0.7.0.1
  */

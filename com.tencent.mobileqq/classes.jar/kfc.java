@@ -1,21 +1,23 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.av.ui.ControlUIObserver;
+import com.tencent.av.ui.ControlUIObserver.CPreEventInfo;
+import com.tencent.av.ui.redbag.GuideTip2;
+import com.tencent.qphone.base.util.QLog;
 
 public class kfc
-  implements MenuItem.OnMenuItemClickListener
+  extends ControlUIObserver
 {
-  public kfc(AVRedBagMgr.TestFlag paramTestFlag) {}
+  public kfc(GuideTip2 paramGuideTip2) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  protected void b(ControlUIObserver.CPreEventInfo paramCPreEventInfo)
   {
-    AVRedBagMgr.TestFlag localTestFlag = this.a;
-    localTestFlag.a += 1;
-    if (this.a.a > 3) {
-      this.a.a = 0;
+    if (paramCPreEventInfo.b) {
+      return;
     }
-    paramMenuItem.setTitle("禁用C2C发包索引:" + this.a.a);
-    return true;
+    paramCPreEventInfo.b = this.a.a(false, 2);
+    if (paramCPreEventInfo.b) {
+      paramCPreEventInfo.a = "AVRegbagResultUI";
+    }
+    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + paramCPreEventInfo.b + "]");
   }
 }
 

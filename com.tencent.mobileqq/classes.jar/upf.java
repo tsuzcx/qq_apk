@@ -1,8 +1,20 @@
-public abstract interface upf
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView;
+import com.tencent.qphone.base.util.QLog;
+
+public class upf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public upf(GoldMsgQueueView paramGoldMsgQueueView) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("GoldMsgQueueView", 2, "tryDoInsert onAnimationUpdate");
+    }
+  }
 }
 
 

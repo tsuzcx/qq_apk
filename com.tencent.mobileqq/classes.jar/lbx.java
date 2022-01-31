@@ -1,27 +1,13 @@
-import android.os.Bundle;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class lbx
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
-  public lbx(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public lbx(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    if (!WebIPCOperator.a().a())
-    {
-      WebIPCOperator.a().a().doBindService(BaseApplicationImpl.getApplication());
-      WebIPCOperator.a().a(new lby(this));
-      return false;
-    }
-    Bundle localBundle = DataFactory.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
-    WebIPCOperator.a().a(localBundle);
-    return false;
+    ReadInJoyBaseDeliverActivity.a(this.a);
   }
 }
 

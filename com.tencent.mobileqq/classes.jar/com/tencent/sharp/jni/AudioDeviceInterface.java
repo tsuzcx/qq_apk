@@ -1,6 +1,6 @@
 package com.tencent.sharp.jni;
 
-import aliy;
+import alyo;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -2664,7 +2664,7 @@ public class AudioDeviceInterface
     this.switchState = 0;
     this._streamType = TraeAudioManager.b(this._audioStreamTypePolicy);
     if (this._as == null) {
-      this._as = new TraeAudioSession(this._context, new aliy(this));
+      this._as = new TraeAudioSession(this._context, new alyo(this));
     }
     this._preDone = false;
     if (this._as != null) {
@@ -2738,7 +2738,7 @@ public class AudioDeviceInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.sharp.jni.AudioDeviceInterface
  * JD-Core Version:    0.7.0.1
  */

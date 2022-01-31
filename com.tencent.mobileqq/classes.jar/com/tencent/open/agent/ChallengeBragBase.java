@@ -45,7 +45,7 @@ public abstract class ChallengeBragBase
   
   protected void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(2131428649), true);
+    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(2131428655), true);
     this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
     Bundle localBundle = new Bundle();
     localBundle.putString("appid", this.jdField_c_of_type_JavaLangString);
@@ -166,7 +166,7 @@ public abstract class ChallengeBragBase
       paramView.putString("sendmsg", this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
       paramView.putString("imgurl", this.j);
       paramView.putString("receiver", this.h);
-      i1 = 2131428641;
+      i1 = 2131428647;
       if ("action_brag".equals(this.p)) {
         paramView.putString("typeid", "52");
       }
@@ -189,7 +189,7 @@ public abstract class ChallengeBragBase
         if ("action_challenge".equals(this.p))
         {
           paramView.putString("typeid", "53");
-          i1 = 2131428640;
+          i1 = 2131428646;
         }
       }
     }

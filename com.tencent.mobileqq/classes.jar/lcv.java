@@ -1,22 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyBaseViewController;
+import java.lang.ref.WeakReference;
 
 public class lcv
-  implements TextWatcher
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public lcv(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  private WeakReference a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public lcv(ReadInJoyBaseViewController paramReadInJoyBaseViewController)
   {
-    this.a.a(paramEditable);
+    this.a = new WeakReference(paramReadInJoyBaseViewController);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.a.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ReadInJoyBaseViewController)this.a.get()).a(true);
+    }
+    return false;
   }
 }
 

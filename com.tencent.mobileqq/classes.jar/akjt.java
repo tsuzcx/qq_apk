@@ -1,32 +1,50 @@
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mqq.MqqImageLoader;
-import com.tencent.plato.sdk.IImageLoader.Listener;
+import android.net.Uri;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class akjt
-  implements URLDrawable.URLDrawableListener
+  extends DownloadListener
 {
-  public akjt(MqqImageLoader paramMqqImageLoader, IImageLoader.Listener paramListener) {}
+  public akjt(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if (this.jdField_a_of_type_ComTencentPlatoSdkIImageLoader$Listener != null)
+    super.onDone(paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("PathTraceManager", 1, "voice down");
+    }
+    paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
+    try
     {
-      paramURLDrawable = paramURLDrawable.getCurrDrawable();
-      this.jdField_a_of_type_ComTencentPlatoSdkIImageLoader$Listener.onLoad((BitmapDrawable)paramURLDrawable);
+      ZipUtils.a(paramDownloadTask, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
+      i = 1;
+    }
+    catch (IOException paramDownloadTask)
+    {
+      for (;;)
+      {
+        QLog.i("PathTraceManager", 1, "unzip fail");
+        int i = 0;
+      }
+    }
+    if (i != 0)
+    {
+      QLog.d("PathTraceManager", 1, "unzip success");
+      if (this.b != null) {
+        AudioUtil.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjt
  * JD-Core Version:    0.7.0.1
  */

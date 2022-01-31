@@ -1,15 +1,32 @@
-import com.tencent.open.wadl.WLog;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.SignatureObserver;
+import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
 
 public class amqf
-  implements Runnable
+  extends SignatureObserver
 {
-  public amqf(WadlProxyServiceManager paramWadlProxyServiceManager) {}
+  public amqf(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    WLog.b("WadlProxyServiceManager", "##@failed to lauch servie: reset mServiceConnecting status.");
-    this.a.a = false;
+    if (paramBoolean)
+    {
+      paramObject = (Bundle)paramObject;
+      paramObject.putInt("which_method", 0);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
+    }
+  }
+  
+  protected void c(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      paramObject = (Bundle)paramObject;
+      paramObject.putInt("which_method", 1);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
+    }
   }
 }
 

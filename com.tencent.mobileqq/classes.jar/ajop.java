@@ -1,42 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Hashtable;
+import android.os.Bundle;
+import com.tencent.biz.troop.file.TroopFileProtocol.GetFileListObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import java.util.List;
 
 public class ajop
-  extends FriendListObserver
+  extends TroopFileProtocol.GetFileListObserver
 {
-  private final JumpAction b;
+  public ajop(TroopFileManager paramTroopFileManager) {}
   
-  public ajop(JumpAction paramJumpAction1, JumpAction paramJumpAction2)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List paramList, Bundle paramBundle)
   {
-    this.b = paramJumpAction2;
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((!paramBoolean) || (JumpAction.a(this.a) == null) || (!JumpAction.a(this.a).containsKey(paramString))) {}
-    do
-    {
-      return;
-      JumpAction.a(this.a).remove(paramString);
-      if (JumpAction.a(this.a).size() == 0) {
-        JumpAction.a(this.a).removeObserver(JumpAction.a(this.a));
-      }
-      Object localObject = Uri.parse(JumpAction.a(this.a) + "&uin=" + paramString);
-      localObject = new Intent(this.b.h, (Uri)localObject);
-      this.a.a.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-    } while (!QLog.isColorLevel());
-    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + this.b.h);
+    ThreadManager.post(new ajoq(this, paramBundle, paramInt2, paramByteStringMicro, paramBoolean1, paramList, paramBoolean2, paramInt3, paramInt1), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajop
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,26 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.config.struct.NearbyBannerManager;
+import java.io.File;
+import java.util.Comparator;
 
 public class abtf
-  extends DataSetObserver
+  implements Comparator
 {
-  public abtf(DragSortListView paramDragSortListView) {}
+  public abtf(NearbyBannerManager paramNearbyBannerManager) {}
   
-  private void a()
+  public int a(File paramFile1, File paramFile2)
   {
-    if (this.a.g == 4) {
-      this.a.a();
+    if (paramFile2.lastModified() > paramFile1.lastModified()) {
+      return 1;
     }
-  }
-  
-  public void onChanged()
-  {
-    a();
-  }
-  
-  public void onInvalidated()
-  {
-    a();
+    if (paramFile2.lastModified() < paramFile1.lastModified()) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abtf
  * JD-Core Version:    0.7.0.1
  */

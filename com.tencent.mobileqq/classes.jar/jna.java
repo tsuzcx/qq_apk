@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
+import com.tencent.av.service.QavWrapper;
+import com.tencent.av.service.QavWrapper.OnReadyListener;
 
-public final class jna
-  implements Parcelable.Creator
+class jna
+  implements QavWrapper.OnReadyListener
 {
-  public AVRedPacketConfig.ExpressionInfo a(Parcel paramParcel)
-  {
-    return new AVRedPacketConfig.ExpressionInfo(paramParcel);
-  }
+  jna(jmz paramjmz, String paramString) {}
   
-  public AVRedPacketConfig.ExpressionInfo[] a(int paramInt)
+  public void a(QavWrapper paramQavWrapper)
   {
-    return new AVRedPacketConfig.ExpressionInfo[paramInt];
+    paramQavWrapper.a(this.jdField_a_of_type_JavaLangString);
+    paramQavWrapper.a();
   }
 }
 

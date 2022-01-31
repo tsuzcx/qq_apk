@@ -3,13 +3,13 @@ package com.tencent.av.app;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import com.tencent.qphone.base.util.QLog;
-import jfe;
+import jep;
 import mqq.app.MobileQQ;
 
 public class GBatteryMonitor
 {
   private static String jdField_a_of_type_JavaLangString = "GBatteryMonitor";
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jfe(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jep(this);
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private boolean jdField_a_of_type_Boolean;
   

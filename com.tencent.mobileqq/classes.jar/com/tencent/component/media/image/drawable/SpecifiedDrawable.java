@@ -3,13 +3,13 @@ package com.tencent.component.media.image.drawable;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import com.tencent.component.media.annotation.Public;
-import pgl;
+import pif;
 
 @Public
 public class SpecifiedDrawable
   extends DrawableContainer
 {
-  private pgl a;
+  private pif a;
   
   @Public
   public SpecifiedDrawable(Drawable paramDrawable)
@@ -20,15 +20,15 @@ public class SpecifiedDrawable
   @Public
   public SpecifiedDrawable(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    this.a = new pgl(paramDrawable, this);
+    this.a = new pif(paramDrawable, this);
     this.a.b = paramInt1;
     this.a.c = paramInt2;
     setConstantState(this.a);
   }
   
-  private SpecifiedDrawable(pgl parampgl, Resources paramResources)
+  private SpecifiedDrawable(pif parampif, Resources paramResources)
   {
-    this.a = new pgl(parampgl, this, paramResources);
+    this.a = new pif(parampif, this, paramResources);
     setConstantState(this.a);
   }
   

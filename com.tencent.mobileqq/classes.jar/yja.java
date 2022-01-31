@@ -1,43 +1,39 @@
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.ITriggerRenderCallback;
-import com.tencent.util.WeakReferenceHandler;
-import java.lang.ref.WeakReference;
+import android.graphics.Typeface;
+import com.etrump.mixlayout.FontInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.addon.DiyPendantFetcher;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.util.LRULinkedHashMap;
+import mqq.app.AppRuntime;
 
 public class yja
   implements Runnable
 {
-  private WeakReference a;
-  
-  public yja(ApolloRenderDriver paramApolloRenderDriver)
-  {
-    this.a = new WeakReference(paramApolloRenderDriver);
-  }
+  public yja(DiyPendantFetcher paramDiyPendantFetcher, int paramInt, String paramString) {}
   
   public void run()
   {
-    ApolloRenderDriver localApolloRenderDriver;
-    if ((this.a != null) && (this.a.get() != null))
-    {
-      localApolloRenderDriver = (ApolloRenderDriver)this.a.get();
-      if ((localApolloRenderDriver != null) && (localApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null) && (localApolloRenderDriver.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null))
+    if (AvatarPendantUtil.a(String.valueOf(this.jdField_a_of_type_Int))) {
+      if (this.jdField_a_of_type_Int != 1)
       {
-        localApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
-        if (((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int <= 0) {
-          break label101;
-        }
+        ((FontInfo)this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b.get(Integer.valueOf(this.jdField_a_of_type_Int))).a = Typeface.createFromFile(this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.d();
       }
     }
-    label101:
-    for (int i = 1000 / ((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int;; i = 50)
+    AppRuntime localAppRuntime;
+    do
     {
-      localApolloRenderDriver.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this, i);
       return;
-    }
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localAppRuntime instanceof QQAppInterface));
+    ((VasQuickUpdateManager)((QQAppInterface)localAppRuntime).getManager(183)).a(4L, "faceAddon.stickerFont.android." + this.jdField_a_of_type_Int, "DiyPendantFetcher");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     yja
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,26 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import java.util.LinkedHashMap;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-class acig
-  implements Runnable
+public class acig
+  extends RecyclerView.ItemDecoration
 {
-  acig(acif paramacif, LinkedHashMap paramLinkedHashMap, int paramInt1, int paramInt2) {}
+  private final int jdField_a_of_type_Int = AIOUtils.a(3.0F, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.getResources());
   
-  public void run()
+  private acig(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    this.jdField_a_of_type_Acif.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.jdField_a_of_type_Acif.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
-    this.jdField_a_of_type_Acif.a.i();
-    if ((this.jdField_a_of_type_Int == -1) || (this.b == -1))
-    {
-      this.jdField_a_of_type_Acif.a.setSelect(0);
-      return;
-    }
-    if ((this.jdField_a_of_type_Acif.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.g()) || (this.jdField_a_of_type_Acif.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.h()))
-    {
-      this.jdField_a_of_type_Acif.a.setPos(this.jdField_a_of_type_Int, this.b);
-      return;
-    }
-    this.jdField_a_of_type_Acif.a.setSelect(0);
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acig
  * JD-Core Version:    0.7.0.1
  */

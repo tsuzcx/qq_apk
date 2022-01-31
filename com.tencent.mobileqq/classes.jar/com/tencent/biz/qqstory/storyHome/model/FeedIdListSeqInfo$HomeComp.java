@@ -7,13 +7,13 @@ public class FeedIdListSeqInfo$HomeComp
 {
   public int a(FeedIdListSeqInfo paramFeedIdListSeqInfo1, FeedIdListSeqInfo paramFeedIdListSeqInfo2)
   {
-    if (paramFeedIdListSeqInfo1.jdField_a_of_type_Long == paramFeedIdListSeqInfo2.jdField_a_of_type_Long) {
-      if (!paramFeedIdListSeqInfo1.jdField_a_of_type_Boolean) {}
+    if (paramFeedIdListSeqInfo1.a == paramFeedIdListSeqInfo2.a) {
+      if (!paramFeedIdListSeqInfo1.b) {}
     }
-    while (paramFeedIdListSeqInfo1.jdField_a_of_type_Long > paramFeedIdListSeqInfo2.jdField_a_of_type_Long)
+    while (paramFeedIdListSeqInfo1.a > paramFeedIdListSeqInfo2.a)
     {
       return -1;
-      if (paramFeedIdListSeqInfo2.jdField_a_of_type_Boolean) {
+      if (paramFeedIdListSeqInfo2.b) {
         return 1;
       }
       return 0;

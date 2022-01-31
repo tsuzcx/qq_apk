@@ -1,64 +1,115 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.DeleteCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
 
-public final class lis
-  implements Runnable
+public class lis
+  implements ArticleCommentModule.DeleteCommentObserver
 {
-  public lis(ChannelCoverInfo paramChannelCoverInfo, int paramInt, String paramString) {}
+  public lis(ArticleCommentModule paramArticleCommentModule, String paramString1, String paramString2, ArticleCommentModule.DeleteCommentObserver paramDeleteCommentObserver) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString1, String paramString2)
   {
-    int i = 1;
-    str = "";
+    int j = 0;
+    int i = j;
+    if (paramInt == 2) {
+      i = j;
+    }
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.commentType != 1) {
+        break label216;
+      }
+      paramInt = 0;
+    }
+    catch (Exception localException)
+    {
+      Object localObject1;
+      Object localObject2;
+      label115:
+      CommentInfo localCommentInfo;
+      while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver != null)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(paramArticleInfo, paramString1, paramString2, -1, "parser local data error");
+        return;
+        i = 0;
+        while (i == 0)
+        {
+          paramInt += 1;
+          break;
+          i = 0;
+          break label115;
+        }
+      }
+    }
+    if (paramInt < ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).size())
+    {
+      localObject1 = (CommentInfo)ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).get(paramInt);
+      if ((TextUtils.isEmpty(((CommentInfo)localObject1).commentId)) || (!((CommentInfo)localObject1).commentId.equalsIgnoreCase(paramString1))) {
+        break label350;
+      }
+      localObject2 = ((CommentInfo)ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).get(paramInt)).mCommentItemLists;
+      if (localObject2 != null) {
+        break label357;
+      }
+      break label350;
+      if (i >= ((List)localObject2).size()) {
+        break label344;
+      }
+      localCommentInfo = (CommentInfo)((List)localObject2).get(i);
+      if ((TextUtils.isEmpty(localCommentInfo.commentId)) || (!localCommentInfo.commentId.equalsIgnoreCase(paramString2))) {
+        break label372;
+      }
+      ((CommentInfo)localObject1).toLogString("delete sub comment:");
+      ((List)localObject2).remove(i);
+      i = 1;
+      break label363;
+    }
+    label388:
     for (;;)
     {
-      try
+      label188:
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver != null)
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("folder_status", ReadInJoyUtils.d);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
-          ((JSONObject)localObject).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
-        }
-        ((JSONObject)localObject).put("current_channel_id", 0);
-        if (NetworkState.isWifiConn()) {
-          i = 2;
-        }
-        ((JSONObject)localObject).put("network_type", i);
-        if (this.jdField_a_of_type_Int != ChannelCoverView.jdField_a_of_type_Int) {
-          continue;
-        }
-        ((JSONObject)localObject).put("channel_type", "2");
-        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mColumnType != 0)) {
-          continue;
-        }
-        ((JSONObject)localObject).put("content_type", 1);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(paramArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.commentType, paramString1, paramString2);
+        return;
       }
-      catch (Exception localException)
+      for (;;)
       {
-        Object localObject = str;
-        if (!QLog.isColorLevel()) {
-          continue;
+        label216:
+        if (i >= ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).size()) {
+          break label388;
         }
-        QLog.d("ChannelCoverView", 2, "ERROR Exception=" + localException.getMessage());
-        localObject = str;
-        continue;
-        ((JSONObject)localObject).put("content_type", 2);
-        continue;
+        localObject2 = (CommentInfo)ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).get(i);
+        localObject1 = this.jdField_a_of_type_JavaLangString;
+        if (paramInt == 2) {
+          localObject1 = this.b;
+        }
+        if ((!TextUtils.isEmpty(((CommentInfo)localObject2).commentId)) && (((CommentInfo)localObject2).commentId.equalsIgnoreCase((String)localObject1)))
+        {
+          ((CommentInfo)localObject2).toLogString("delete comment:");
+          ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).remove(i);
+          break label188;
+          label344:
+          label350:
+          label357:
+          label363:
+          return;
+          label372:
+          i += 1;
+          break;
+        }
+        i += 1;
       }
-      localObject = ((JSONObject)localObject).toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("ChannelCoverView", 2, "reportRecommendEvent T =" + this.jdField_a_of_type_JavaLangString + "; reportString = " + (String)localObject);
-      }
-      PublicAccountReportUtils.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", (String)localObject, false);
-      return;
-      if (this.jdField_a_of_type_Int == ChannelCoverView.b) {
-        ((JSONObject)localObject).put("channel_type", "1");
-      }
+    }
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(paramArticleInfo, paramString1, paramString2, paramInt, paramString3);
     }
   }
 }

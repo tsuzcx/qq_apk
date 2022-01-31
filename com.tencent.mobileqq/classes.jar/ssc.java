@@ -1,19 +1,17 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class ssc
-  implements View.OnTouchListener
+  implements AdapterView.OnItemLongClickListener
 {
-  public ssc(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public ssc(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    return false;
+    FriendProfileImageActivity.a(this.a);
+    return true;
   }
 }
 

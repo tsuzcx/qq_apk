@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.RedPackRainCloudView;
+import android.text.TextUtils;
 
 class aasp
-  implements Runnable
 {
-  aasp(aasn paramaasn) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void run()
+  public void a()
   {
-    if ((!this.a.a.isFinishing()) && (this.a.a.a.getVisibility() == 0))
-    {
-      this.a.a.a.setVisibility(8);
-      ARMapActivity.d(this.a.a, false);
-      ARMapActivity.c(this.a.a);
-    }
+    this.e = null;
+    this.f = null;
+    this.g = null;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int >= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d));
+  }
+  
+  public boolean b()
+  {
+    return (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g));
   }
 }
 

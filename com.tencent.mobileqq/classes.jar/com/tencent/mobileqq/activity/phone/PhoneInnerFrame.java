@@ -12,7 +12,7 @@ import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import wrw;
+import wvb;
 
 public class PhoneInnerFrame
   extends InnerFrame
@@ -171,7 +171,7 @@ public class PhoneInnerFrame
     g();
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wrw(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wvb(this);
       b().a().registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
   }

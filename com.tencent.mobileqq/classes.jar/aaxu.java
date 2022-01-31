@@ -1,18 +1,45 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig.ResInfo;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.ark.ArkRecommendController.AttachAppHolder;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public final class aaxu
-  implements Parcelable.Creator
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public ARMapConfig.ResInfo a(Parcel paramParcel)
+  private ArkRecommendController.AttachAppHolder a;
+  
+  public aaxu(ArkRecommendController.AttachAppHolder paramAttachAppHolder)
   {
-    return new ARMapConfig.ResInfo(paramParcel);
+    this.a = paramAttachAppHolder;
   }
   
-  public ARMapConfig.ResInfo[] a(int paramInt)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    return new ARMapConfig.ResInfo[paramInt];
+    if (!paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
+      ArkAppCenter.a(paramString);
+    }
+    do
+    {
+      return;
+      switch (this.a.jdField_a_of_type_Int)
+      {
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ArkRecommendController", 2, String.format(Locale.CHINA, "invalid load state: %d", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+    return;
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130838201));
+    ArkAppCenter.a(paramString);
+    this.a.jdField_a_of_type_Int = 0;
+    this.a.jdField_a_of_type_JavaLangString = null;
+    return;
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new BitmapDrawable(paramBitmap));
+    this.a.jdField_a_of_type_Int = 2;
+    this.a.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

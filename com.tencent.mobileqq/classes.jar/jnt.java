@@ -1,35 +1,15 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.telephony.PhoneStateListener;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
 
 public class jnt
-  implements ServiceConnection
+  extends PhoneStateListener
 {
-  public jnt(QQServiceForAV paramQQServiceForAV) {}
+  public jnt(BaseSmallScreenService paramBaseSmallScreenService) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceConnected name=" + paramComponentName + ", service=" + paramIBinder);
-    QQServiceForAV.a(this.a, true);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceDisconnected name=" + paramComponentName);
-    QQServiceForAV.a(this.a, false);
-    try
-    {
-      BaseApplicationImpl.getContext().unbindService(this);
-      return;
-    }
-    catch (Throwable paramComponentName)
-    {
-      QLog.e("QQServiceForAV", 1, "onServiceDisconnected unbindService exception:" + paramComponentName, paramComponentName);
-    }
+    super.onCallStateChanged(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
 }
 

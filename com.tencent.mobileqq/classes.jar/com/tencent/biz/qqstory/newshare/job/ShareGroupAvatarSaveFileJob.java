@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import nes;
+import nge;
 
 public class ShareGroupAvatarSaveFileJob
   extends ShareGroupAvatarJob
@@ -53,7 +53,7 @@ public class ShareGroupAvatarSaveFileJob
   
   protected void a(RestrictedBitmap paramRestrictedBitmap)
   {
-    ThreadManager.post(new nes(this, paramRestrictedBitmap), 8, null, true);
+    ThreadManager.post(new nge(this, paramRestrictedBitmap), 8, null, true);
   }
   
   protected void a(Error paramError)

@@ -24,7 +24,7 @@ import java.util.Observable;
 import java.util.Set;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import zsc;
+import zvi;
 
 public class FTSDBManager
   extends Observable
@@ -401,7 +401,7 @@ public class FTSDBManager
     if (a()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyFtsFTSSyncHandler.post(new zsc(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyFtsFTSSyncHandler.post(new zvi(this));
   }
   
   public void a(int paramInt)

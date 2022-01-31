@@ -1,15 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public class soq
-  implements View.OnClickListener
+class soq
+  implements DialogInterface.OnClickListener
 {
-  public soq(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  soq(sop paramsop) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FriendProfileImageActivity.a(this.a);
+    if (NetworkUtil.g(this.a.jdField_a_of_type_Sol.a))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.c(this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_Sol.a.H();
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.j();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.a.jdField_a_of_type_Sol.a.a.a.jdField_a_of_type_JavaLangString, "");
+    this.a.jdField_a_of_type_Sol.a.a("请确认网络状态后重试", 0);
+    this.a.jdField_a_of_type_Sol.a.G();
   }
 }
 

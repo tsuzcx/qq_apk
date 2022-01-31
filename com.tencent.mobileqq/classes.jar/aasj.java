@@ -1,14 +1,11 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-
 class aasj
-  implements Runnable
+  implements aasr
 {
-  aasj(aasi paramaasi) {}
+  aasj(aasc paramaasc, aasr paramaasr) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.a.a.a.setVisibility(8);
+    this.jdField_a_of_type_Aasr.a(paramBoolean);
   }
 }
 

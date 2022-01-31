@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleParam;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
+import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
+import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.Ruler;
+import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.SpannableValue;
 
-public final class upa
-  implements MyParcelable.Creator
+public class upa
+  implements NumAnim.Ruler
 {
-  public DoodleParam a(MyParcel paramMyParcel)
+  public upa(GoldMsgNumAnim paramGoldMsgNumAnim) {}
+  
+  public NumAnim.SpannableValue getNumber(double paramDouble)
   {
-    return new DoodleParam(paramMyParcel);
+    String str = NumAnim.formatNumber(paramDouble, true);
+    return new NumAnim.SpannableValue(str, 0, str.length());
   }
 }
 

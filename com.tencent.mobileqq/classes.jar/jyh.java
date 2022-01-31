@@ -1,44 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.av.utils.PSTNNotification;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class jyh
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
+  public jyh(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public jyh(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (this.jdField_a_of_type_Int)
+    this.a.c.setText(this.a.getResources().getString(2131429562));
+    this.a.jdField_a_of_type_ComTencentAvUtilsPSTNNotification.a(1);
+    this.a.a(this.a.b, false, 2130840125);
+    this.a.b.setClickable(true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString, 2, "DialogInterfaceOnClickListener-->Wrong type.mode=" + this.jdField_a_of_type_Int);
-      }
-      paramDialogInterface.dismiss();
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(new Intent("com.gvideo.com.tencent.av.EXIT_GROUP_VIDEO"));
-      paramDialogInterface.dismiss();
-      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.l()) {
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.h(true);
-      }
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a().F, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a().f, 81);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f);
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b = 2;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
     }
-    paramDialogInterface.dismiss();
   }
 }
 

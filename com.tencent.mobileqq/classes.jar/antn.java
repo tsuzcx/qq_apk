@@ -1,22 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
+import com.tencent.biz.qqstory.network.request.GetLocationRequest;
+import com.tencent.biz.qqstory.network.response.GetLocationResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
 
 public class antn
-  implements DialogInterface.OnClickListener
+  implements CmdTaskManger.CommandCallback
 {
-  public antn(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public antn(EditVideoFilterNeo paramEditVideoFilterNeo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@NonNull GetLocationRequest paramGetLocationRequest, @Nullable GetLocationResponse paramGetLocationResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    SLog.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramGetLocationResponse != null))
     {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(this.a.c);
+      SLog.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramGetLocationResponse.toString());
+      paramGetLocationRequest = new AddressDataProvider.AddressInfo(paramGetLocationResponse.a, paramGetLocationResponse.c, paramGetLocationResponse.d, paramGetLocationResponse.e, paramGetLocationResponse.f, paramGetLocationRequest.d, paramGetLocationRequest.e);
+      this.a.a(0, paramGetLocationRequest);
+      return;
     }
-    dov.com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = true;
+    SLog.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
   }
 }
 

@@ -1,15 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.widget.ActionSheet;
 
 public class ssq
-  implements View.OnClickListener
+  implements IphonePickerView.IphonePickListener
 {
-  public ssq(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public ssq(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onConfirmBtClicked()
   {
-    this.a.a();
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+  }
+  
+  public void onItemSelected(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {}
+    for (paramInt1 = 0;; paramInt1 = 1)
+    {
+      this.a.c = true;
+      this.a.a(paramInt1, true);
+      return;
+    }
   }
 }
 

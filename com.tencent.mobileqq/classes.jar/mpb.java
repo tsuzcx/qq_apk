@@ -1,39 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.util.WeakReference;
+import android.app.Dialog;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class mpb
-  implements GifDrawable.OnGIFPlayOnceListener
+  implements Runnable
 {
-  AbstractGifImage a;
+  public mpb(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
   
-  public mpb(AbstractGifImage paramAbstractGifImage)
+  public void run()
   {
-    this.a = paramAbstractGifImage;
-  }
-  
-  public void onPlayOnce()
-  {
-    Object localObject = (List)ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.a().get(this.a);
-    if (localObject != null)
+    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).isShowing()))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if (localWeakReference.get() != null) {
-          ((ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener)localWeakReference.get()).a();
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "showMobileNetHint() mNetworkDialog.isShowing()=true, RETURN");
       }
+      return;
     }
-    this.a.setGIFPlayOnceListener(null);
-    ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.b().remove(this.a);
-    ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.a().remove(this.a);
+    FastWebVideoFeedsPlayManager.a(this.a, ReadInJoyUtils.a(FastWebVideoFeedsPlayManager.a(this.a), new mpc(this), new mpd(this)));
   }
 }
 

@@ -26,10 +26,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
-import lqj;
-import lqk;
-import lql;
-import lqm;
+import lqn;
+import lqo;
+import lqp;
+import lqq;
 import mqq.app.MobileQQ;
 import tencent.im.oidb.cmd0x69f.oidb_cmd0x69f.ChannelInfo;
 import tencent.im.oidb.cmd0x69f.oidb_cmd0x69f.ReqBody;
@@ -164,7 +164,7 @@ public class ChannelCoverInfoModule
     }
     paramChannelCoverInfo = paramChannelCoverInfo.clone();
     a(paramChannelCoverInfo, paramInt);
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqk(this, paramChannelCoverInfo));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqo(this, paramChannelCoverInfo));
     return true;
   }
   
@@ -177,7 +177,7 @@ public class ChannelCoverInfoModule
         QLog.d("ChannelCoverInfoModule", 2, "removeChannelCoverInfoFromDBAndCache channelID=" + paramInt2 + " ;channelCoverId = " + paramInt1);
       }
       b(localChannelCoverInfo, paramInt2);
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqj(this, localChannelCoverInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqn(this, localChannelCoverInfo));
     }
   }
   
@@ -465,11 +465,11 @@ public class ChannelCoverInfoModule
         return;
         if (m == 3)
         {
-          ReadInJoyLogicEngineEventDispatcher.a().d(false, null);
+          ReadInJoyLogicEngineEventDispatcher.a().e(false, null);
           return;
         }
       } while (m != 4);
-      ReadInJoyLogicEngineEventDispatcher.a().e(false, null);
+      ReadInJoyLogicEngineEventDispatcher.a().f(false, null);
       return;
     }
   }
@@ -507,7 +507,7 @@ public class ChannelCoverInfoModule
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lql(this, paramInt));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqp(this, paramInt));
   }
   
   public void c(List paramList, int paramInt)
@@ -536,7 +536,7 @@ public class ChannelCoverInfoModule
   public void d(List paramList, int paramInt)
   {
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new lqm(this, paramInt, paramList));
+      this.jdField_a_of_type_AndroidOsHandler.post(new lqq(this, paramInt, paramList));
     }
   }
 }

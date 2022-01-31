@@ -1,6 +1,6 @@
 package com.tencent.qidian.controller;
 
-import akxv;
+import alnl;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -132,7 +132,7 @@ public class QidianHandler
       localCRMMsgHead.uint64_ext_uin.setHasFlag(true);
     }
     localCRMMsgHead.uint32_terminal_type.set(2);
-    localCRMMsgHead.uint32_terminal_version.set(QidianUtils.a("7.6.0"));
+    localCRMMsgHead.uint32_terminal_version.set(QidianUtils.a("7.6.3"));
     return localCRMMsgHead;
   }
   
@@ -309,7 +309,7 @@ public class QidianHandler
           paramObject.put("ret_msg", paramFromServiceMsg);
           if (i == 0)
           {
-            ThreadManager.executeOnSubThread(new akxv(this, paramToServiceMsg, paramObject));
+            ThreadManager.executeOnSubThread(new alnl(this, paramToServiceMsg, paramObject));
             return;
           }
           a(1005, false, paramObject);
@@ -471,7 +471,7 @@ public class QidianHandler
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint64_qq_uin.set(paramLong1);
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint64_kfext_uin.set(paramLong2);
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_mobile_client.set(1);
-    ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_ver_no.set(CrmUtils.a("7.6.0"));
+    ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_ver_no.set(CrmUtils.a("7.6.3"));
     localReqBody.msg_get_customer_transfer_info_req.set((MessageMicro)localObject);
     localReqBody.msg_get_customer_transfer_info_req.setHasFlag(true);
     localObject = new HashMap(1);
@@ -1044,7 +1044,7 @@ public class QidianHandler
         if ((paramString4 != null) && (paramString4.length() != 0)) {
           break label348;
         }
-        new QQToastNotifier(this.b.getApp()).a(2131435778, this.b.getApp().getResources().getDimensionPixelSize(2131558448), 0, 1);
+        new QQToastNotifier(this.b.getApp()).a(2131435795, this.b.getApp().getResources().getDimensionPixelSize(2131558448), 0, 1);
         paramString4 = "";
       }
     }

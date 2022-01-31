@@ -1,31 +1,16 @@
-class onb
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
+
+public class onb
+  implements Runnable
 {
-  final String jdField_a_of_type_JavaLangString;
-  final boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public onb(TroopStoryMainActivity paramTroopStoryMainActivity) {}
   
-  onb(boolean paramBoolean, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  static onb a()
-  {
-    return new onb(false, "");
-  }
-  
-  static onb a(Process paramProcess)
-  {
-    if (a(Integer.valueOf(paramProcess.exitValue()))) {}
-    for (String str = ono.a(paramProcess.getInputStream());; str = ono.a(paramProcess.getErrorStream())) {
-      return new onb(a(Integer.valueOf(paramProcess.exitValue())), str);
+    if ((this.a.a != null) && (!this.a.isFinishing())) {
+      this.a.a.b();
     }
-  }
-  
-  static boolean a(Integer paramInteger)
-  {
-    return (paramInteger != null) && (paramInteger.intValue() == 0);
   }
 }
 

@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.CheckOfflineCallback;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.util.ScreenShotUtil.ScreenshotCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class akbb
+public final class akbb
   implements Runnable
 {
-  public akbb(SwiftBrowserOfflineHandler paramSwiftBrowserOfflineHandler) {}
+  public akbb(ScreenShotUtil.ScreenshotCallback paramScreenshotCallback, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if ((QLog.isColorLevel()) && (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != 0)) {
-      QLog.i("SwiftBrowserOfflineHandler", 2, "now post offline callback, bid is " + this.a.jdField_a_of_type_JavaLangString + ", mode: " + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+    if (QLog.isColorLevel()) {
+      QLog.i("ScreenShotUtil", 2, "ScreenShot Finish Callback");
     }
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((SwiftBrowserOfflineHandler.CheckOfflineCallback)localIterator.next()).a(this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-    }
-    this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_ComTencentMobileqqUtilScreenShotUtil$ScreenshotCallback.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbb
  * JD-Core Version:    0.7.0.1
  */

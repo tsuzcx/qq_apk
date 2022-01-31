@@ -1,42 +1,19 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
+import java.util.concurrent.ThreadFactory;
 
-public class akgj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class akgj
+  implements ThreadFactory
 {
-  public akgj(InputMethodRelativeLayout paramInputMethodRelativeLayout) {}
-  
-  public void onGlobalLayout()
+  public Thread newThread(Runnable paramRunnable)
   {
-    int i;
-    if (this.a.a != null)
-    {
-      i = InputMethodRelativeLayout.a(this.a);
-      if (i != InputMethodRelativeLayout.b(this.a))
-      {
-        int j = this.a.getRootView().getHeight();
-        if (j - i <= j / 4) {
-          break label102;
-        }
-        InputMethodRelativeLayout.a(this.a, true);
-      }
-    }
-    for (;;)
-    {
-      this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
-      this.a.requestLayout();
-      InputMethodRelativeLayout.a(this.a, i);
-      return;
-      label102:
-      InputMethodRelativeLayout.a(this.a, false);
-    }
+    akgi.a();
+    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + akgi.b());
+    paramRunnable.setDaemon(true);
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akgj
  * JD-Core Version:    0.7.0.1
  */

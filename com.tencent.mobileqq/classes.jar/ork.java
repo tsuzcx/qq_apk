@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.Utils;
+import friendlist.GetOnlineInfoResp;
+import mqq.os.MqqHandler;
 
 public class ork
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  public ork(QRDisplayActivity paramQRDisplayActivity) {}
+  public ork(StoryQIMBadgeView paramStoryQIMBadgeView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    this.a.finish();
+    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
+    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
+    while ((!paramBoolean) || (!Utils.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new orl(this, paramGetOnlineInfoResp, paramString));
   }
 }
 

@@ -1,21 +1,31 @@
-import android.text.Editable;
-import com.tencent.open.agent.SendStoryActivity;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 
 public class akmx
-  implements Comparator
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public akmx(SendStoryActivity paramSendStoryActivity, Editable paramEditable) {}
+  public akmx(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI, View paramView, int paramInt) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2);
+    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.s) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.d = paramInteger.intValue();
+    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.d != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.s = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmx
  * JD-Core Version:    0.7.0.1
  */

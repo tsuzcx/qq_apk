@@ -1,20 +1,17 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-class yei
-  implements Runnable
+public class yei
+  implements DialogInterface.OnClickListener
 {
-  yei(yeh paramyeh, Bitmap paramBitmap) {}
+  public yei(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_Yeh.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yei
  * JD-Core Version:    0.7.0.1
  */

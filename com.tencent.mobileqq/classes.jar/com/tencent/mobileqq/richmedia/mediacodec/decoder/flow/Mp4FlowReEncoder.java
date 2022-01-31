@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import ahab;
-import ahah;
-import ahai;
+import ahod;
+import ahoj;
+import ahok;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,7 +39,7 @@ public class Mp4FlowReEncoder
   private GPUBaseFilter jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;
   private GpuImageFilterGroup jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup;
   private RenderBuffer jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new ahah(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new ahoj(this);
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private boolean jdField_a_of_type_Boolean;
   private int b;
@@ -53,20 +53,20 @@ public class Mp4FlowReEncoder
     for (;;)
     {
       return;
-      QLog.d("FlowEdit_Mp4FlowReEncoder", 1, "handleFrameListAvailable : size " + paramList.size() + ", range [" + ((ahab)paramList.get(0)).a() + " - " + ((ahab)paramList.get(paramList.size() - 1)).a() + "]");
+      QLog.d("FlowEdit_Mp4FlowReEncoder", 1, "handleFrameListAvailable : size " + paramList.size() + ", range [" + ((ahod)paramList.get(0)).a() + " - " + ((ahod)paramList.get(paramList.size() - 1)).a() + "]");
       Collections.sort(paramList, this.jdField_a_of_type_JavaUtilComparator);
       if (this.jdField_a_of_type_Long == 9223372036854775807L)
       {
-        this.jdField_a_of_type_Long = ((ahab)paramList.get(0)).a();
+        this.jdField_a_of_type_Long = ((ahod)paramList.get(0)).a();
         QLog.d("FlowEdit_Mp4FlowReEncoder", 2, "handleFrameAvailable. firstFrameTimeStamp = " + this.jdField_a_of_type_Long);
       }
       int i = 0;
       while (i < paramList.size())
       {
-        ahab localahab = (ahab)paramList.get(i);
+        ahod localahod = (ahod)paramList.get(i);
         RenderBuffer localRenderBuffer = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
         this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
-        int k = localahab.a();
+        int k = localahod.a();
         int j = k;
         if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup != null)
         {
@@ -88,11 +88,11 @@ public class Mp4FlowReEncoder
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderMp4ReEncoder$EncodeFilterRender.a();
         }
         localRenderBuffer.c();
-        long l = (localahab.a() - this.jdField_a_of_type_Long) * 1000L;
+        long l = (localahod.a() - this.jdField_a_of_type_Long) * 1000L;
         QLog.i("FlowEdit_Mp4FlowReEncoder", 2, "handleFrameAvailable. textureId = " + j + ", timeStampOfFrameNano = " + l);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowHWVideoFlowRecorder.b(3553, j, localahab.a, null, l);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowHWVideoFlowRecorder.b(3553, j, localahod.a, null, l);
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-        localahab.b();
+        localahod.b();
         i += 1;
       }
     }
@@ -120,9 +120,9 @@ public class Mp4FlowReEncoder
       QLog.e("FlowEdit_Mp4FlowReEncoder", 1, "onFrameReached : frameList is null or size is 0!");
       return 0;
     }
-    QLog.i("FlowEdit_Mp4FlowReEncoder", 1, "onFrameReached : size " + paramList.size() + ", range [" + ((ahab)paramList.get(0)).a() + " - " + ((ahab)paramList.get(paramList.size() - 1)).a() + "]");
+    QLog.i("FlowEdit_Mp4FlowReEncoder", 1, "onFrameReached : size " + paramList.size() + ", range [" + ((ahod)paramList.get(0)).a() + " - " + ((ahod)paramList.get(paramList.size() - 1)).a() + "]");
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(paramList.size());
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowHWVideoFlowRecorder.a(new ahai(this, paramList));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowHWVideoFlowRecorder.a(new ahok(this, paramList));
     return paramList.size();
   }
   
@@ -215,7 +215,7 @@ public class Mp4FlowReEncoder
     }
     c();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.d();
-    ahab.a();
+    ahod.a();
   }
   
   public void a_(int paramInt, Throwable paramThrowable)

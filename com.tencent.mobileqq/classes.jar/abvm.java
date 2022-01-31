@@ -1,19 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
 
 public class abvm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abvm(WebIPCOperator paramWebIPCOperator, Bundle paramBundle) {}
+  public abvm(DBFixConfigActivity paramDBFixConfigActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator.e(this.jdField_a_of_type_AndroidOsBundle);
+    ThreadManager.post(this.a.a, 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,58 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class ler
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ler(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  public ler(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ReadInJoySelfActivity.a(this.a);
-    ReadInJoyWebDataManager localReadInJoyWebDataManager;
-    String str;
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null)
+    ReadInJoySettingActivity.c(this.a, paramBoolean);
+    int i;
+    label92:
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      localReadInJoyWebDataManager = ReadInJoyWebDataManager.a();
-      str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b() > 0) {
-        break label54;
+      i = 1;
+      ReadInJoyHelper.a("local_kd_tab_switch", Integer.valueOf(i));
+      ReadInJoyHelper.a(this.a.a, "local_kd_tab_switch", Boolean.valueOf(paramBoolean));
+      ReadInJoyHelper.a(this.a.a, "local_kd_tab_has_set", Boolean.valueOf(true));
+      if (!paramBoolean) {
+        break label147;
+      }
+      QQToast.a(this.a.getBaseContext(), 2, 2131439096, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131433554);
+      localQQAppInterface = this.a.a;
+      if (!paramBoolean) {
+        break label182;
+      }
+      paramCompoundButton = "0X8008236";
+      label108:
+      if (!paramBoolean) {
+        break label188;
       }
     }
-    label54:
-    for (int i = 0;; i = 1)
+    label147:
+    label182:
+    label188:
+    for (String str = "0X8008236";; str = "0X8008235")
     {
-      localReadInJoyWebDataManager.a(str, i);
+      PublicAccountReportUtils.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
       return;
+      i = 0;
+      break;
+      QQToast.a(this.a.getBaseContext(), 2, 2131439097, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131433553);
+      break label92;
+      paramCompoundButton = "0X8008235";
+      break label108;
     }
   }
 }

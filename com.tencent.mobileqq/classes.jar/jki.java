@@ -1,26 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.opengl.effects.GLContextThread;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class jki
-  extends Handler
+class jki
+  implements DialogInterface.OnClickListener
 {
-  WeakReference a;
+  jki(jkh paramjkh) {}
   
-  public jki(Looper paramLooper, GLContextThread paramGLContextThread)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramGLContextThread);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    GLContextThread localGLContextThread = (GLContextThread)this.a.get();
-    if (localGLContextThread != null) {
-      localGLContextThread.a(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.d("RandomController", 2, " [random room owner] kick member fail because of network bad");
     }
+    this.a.a.c = false;
   }
 }
 

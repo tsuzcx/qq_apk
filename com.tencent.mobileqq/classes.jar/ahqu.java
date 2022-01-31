@@ -1,19 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.search.FunctionModuleConfigManager;
+import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-class ahqu
-  implements Runnable
+public class ahqu
+  implements Comparator
 {
-  ahqu(ahqt paramahqt, String paramString) {}
+  public ahqu(FunctionModuleConfigManager paramFunctionModuleConfigManager) {}
   
-  public void run()
+  public int a(GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem1, GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem2)
   {
-    QQToast.a(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString + "泄漏，正在生成dump文件", 2000).a();
+    paramGroupBaseNetSearchModelItem1 = paramGroupBaseNetSearchModelItem1.c;
+    paramGroupBaseNetSearchModelItem2 = paramGroupBaseNetSearchModelItem2.c;
+    return ChnToSpell.a(paramGroupBaseNetSearchModelItem1, 2).compareTo(ChnToSpell.a(paramGroupBaseNetSearchModelItem2, 2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahqu
  * JD-Core Version:    0.7.0.1
  */

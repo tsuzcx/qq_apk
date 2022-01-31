@@ -1,33 +1,24 @@
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.now.send.uploader.WordsCheck.OnResultListener;
+import com.tencent.mobileqq.app.SVIPObserver;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeif
-  implements WordsCheck.OnResultListener
+  extends SVIPObserver
 {
-  public aeif(ImageFeedsUploader paramImageFeedsUploader) {}
+  public aeif(EmoticonManager paramEmoticonManager) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (paramInt == 0)
-    {
-      this.a.a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
     }
-    b(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    VideoFeedsUploader.UploadResult localUploadResult = new VideoFeedsUploader.UploadResult();
-    localUploadResult.i = "文字包含敏感词！";
-    localUploadResult.a = paramInt;
-    ImageFeedsUploader.a(this.a, localUploadResult);
+    super.a();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeif
  * JD-Core Version:    0.7.0.1
  */

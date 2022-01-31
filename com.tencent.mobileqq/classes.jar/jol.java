@@ -1,30 +1,19 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.smallscreen.PstnSmallScreenService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.PstnObserver;
+import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
 import com.tencent.qphone.base.util.QLog;
 
 public class jol
-  extends PstnObserver
+  implements Runnable
 {
-  public jol(PstnSmallScreenService paramPstnSmallScreenService) {}
+  public String a;
   
-  public void a(String paramString, int paramInt)
+  public jol(SmallScreenMultiVideoControlUI paramSmallScreenMultiVideoControlUI) {}
+  
+  public void run()
   {
-    super.a(paramString, paramInt);
     if (QLog.isColorLevel()) {
-      QLog.d("PstnSmallScreenService", 2, " callId = " + paramString + "time = " + paramInt);
+      QLog.d("SmallScreenMultiVideoControlUI", 2, "StartRecvAllVideoRunnable-->FunctionName=" + this.jdField_a_of_type_JavaLangString);
     }
-    this.a.a().removeCallbacks(this.a.c);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429559);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b = 2;
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().g = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenMultiVideoControlUI.b();
   }
 }
 

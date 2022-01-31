@@ -32,7 +32,7 @@ public final class CouponProto$Business
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.protofile.coupon.CouponProto.Business
  * JD-Core Version:    0.7.0.1
  */

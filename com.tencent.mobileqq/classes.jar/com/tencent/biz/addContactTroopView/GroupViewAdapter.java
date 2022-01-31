@@ -258,7 +258,7 @@ public class GroupViewAdapter
   
   public static View b(Context paramContext, ViewGroup paramViewGroup, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    paramContext = NearbyTroops.a(paramContext, paramViewGroup, paramInt2, 2130970556);
+    paramContext = NearbyTroops.a(paramContext, paramViewGroup, paramInt2, 2130970600);
     paramViewGroup = (NearbyTroops.CustomViewHolder)paramContext.getTag();
     paramViewGroup.a.setMaxLabelCount(paramInt1);
     paramViewGroup.a.setmIsNeedPriority(paramBoolean);

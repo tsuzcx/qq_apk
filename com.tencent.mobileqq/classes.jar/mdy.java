@@ -1,35 +1,21 @@
 import android.os.Handler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import java.lang.ref.WeakReference;
 
 public class mdy
-  implements TVK_SDKMgr.InstallListener
+  implements Runnable
 {
-  private Handler a;
+  public mdy(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
   
-  public mdy(Handler paramHandler)
+  public void run()
   {
-    this.a = paramHandler;
-  }
-  
-  public void onInstallProgress(float paramFloat)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(2);
+    if (VideoFeedsPlayManager.a(this.a) == null) {
+      return;
     }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(1);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(0);
-    }
+    VideoFeedsPlayManager.a(this.a).removeMessages(-2);
+    new WeakReference(VideoFeedsPlayManager.a(this.a));
+    new WeakReference(VideoFeedsPlayManager.a(this.a));
+    VideoFeedsPlayManager.a(this.a).sendEmptyMessage(-2);
   }
 }
 

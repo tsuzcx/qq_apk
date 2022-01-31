@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.data.TroopInfo;
 
 public class zob
   implements Runnable
 {
-  public zob(QQComicStep paramQQComicStep) {}
+  public zob(TroopHandler paramTroopHandler, String paramString, long paramLong, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
-    ThreadManager.executeOnNetWorkThread(new zoc(this));
+    TroopHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
   }
 }
 

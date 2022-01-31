@@ -1,62 +1,34 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.VoicePlayer;
-import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import java.lang.ref.WeakReference;
 
 public class mtt
-  implements VoicePlayer.VoicePlayerListener
+  implements Animation.AnimationListener
 {
-  public mtt(PublicAccountH5AbilityForPtt paramPublicAccountH5AbilityForPtt) {}
+  public mtt(SubscriptRecommendController paramSubscriptRecommendController) {}
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramString = new JSONObject();
-    if (paramInt1 == 8) {}
-    for (;;)
-    {
-      try
-      {
-        paramString.put("retCode", -1);
-        paramString.put("msg", "fail");
-        paramString.put("localId", this.a.d());
-        if (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin$PluginRuntime.a() != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin$PluginRuntime.a().a(PublicAccountH5AbilityPlugin.h, new String[] { paramString.toString() });
-        }
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2F", "0X8005D2F", 0, 0, "1", "", "", "");
-        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.f();
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
-        return;
-      }
-      catch (JSONException localJSONException1)
-      {
-        localJSONException1.printStackTrace();
-        continue;
-      }
-      if (paramInt1 == 4) {
-        try
-        {
-          paramString.put("retCode", 0);
-          paramString.put("msg", "录音(" + this.a.d() + ")播放结束");
-          paramString.put("localId", this.a.d());
-        }
-        catch (JSONException localJSONException2)
-        {
-          localJSONException2.printStackTrace();
-        }
-      }
-    }
+    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(String paramString, int paramInt1, int paramInt2) {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if ((this.a.b > 0) && (this.a.c > 0)) {
+      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131368316)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
+    }
+  }
 }
 
 

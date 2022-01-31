@@ -1,30 +1,19 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class sbx
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public sbx(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sbx(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      if (!this.a.a.isShowing()) {
-        this.a.a.show();
-      }
+    this.a.finish();
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
+      ChatSettingActivity.a(this.a).dismiss();
     }
-    do
-    {
-      return;
-      this.a.a = DialogUtil.a(this.a, 230);
-      this.a.a.setMessage(this.a.getActivity().getResources().getString(2131433668));
-      sby localsby = new sby(this);
-      this.a.a.setPositiveButton(2131432400, localsby);
-    } while (this.a.a.isShowing());
-    this.a.a.show();
   }
 }
 

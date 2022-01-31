@@ -316,7 +316,7 @@ public abstract class BasePatchConfig
       QLog.d("PatchLogTag", 1, "BasePatchConfig isValidConfig process not match");
       return false;
     }
-    if (!"345599".equals(this.jdField_b_of_type_JavaLangString))
+    if (!"349884".equals(this.jdField_b_of_type_JavaLangString))
     {
       QLog.d("PatchLogTag", 1, "BasePatchConfig isValidConfig revision not match");
       return false;

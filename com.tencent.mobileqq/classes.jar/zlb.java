@@ -1,23 +1,35 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class zlb
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public zlb(TroopHandler paramTroopHandler, MessageForReplyText paramMessageForReplyText, int paramInt) {}
+  public zlb(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq);
-    if (localChatMessage != null) {
-      ThreadManager.getUIHandler().post(new zlc(this, localChatMessage));
+    if (this.a.l) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
+      }
     }
+    String str;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramIntent == null);
+      str = paramIntent.getAction();
+      if ("com.tencent.qqhead.getheadreq".equals(str)) {
+        ThreadManager.post(new zlc(this, paramContext, paramIntent), 8, null, true);
+      }
+    } while (!"com.tencent.qqhead.refreshheadreq".equals(str));
+    ThreadManager.post(new zld(this, paramContext, paramIntent), 8, null, true);
   }
 }
 

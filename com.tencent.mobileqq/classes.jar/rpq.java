@@ -1,20 +1,16 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.ImageSentListener;
 
 public class rpq
-  implements DialogInterface.OnClickListener
+  implements PhotoListPanel.ImageSentListener
 {
   public rpq(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    Intent localIntent = new Intent(this.a.a, FavEmosmManageActivity.class);
-    this.a.a.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    if (this.a.G) {
+      this.a.aP();
+    }
   }
 }
 

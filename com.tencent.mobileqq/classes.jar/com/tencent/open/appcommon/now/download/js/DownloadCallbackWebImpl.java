@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.now.download.js;
 
-import akpd;
+import alet;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -167,7 +167,7 @@ public class DownloadCallbackWebImpl
             {
               localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
               LogUtility.a("DownloadCallbackWebImpl", " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new akpd(this, localWebView, (String)localObject));
+              this.jdField_a_of_type_AndroidOsHandler.post(new alet(this, localWebView, (String)localObject));
             }
             else
             {

@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 class rgn
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  rgn(rgm paramrgm) {}
+  rgn(rgm paramrgm, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (paramInt == 1)
-    {
-      this.a.a.a.cancel();
-      this.a.a.finish();
-    }
+    this.jdField_a_of_type_Rgm.a.a(this.jdField_a_of_type_Long);
+    AccountManageActivity.a(this.jdField_a_of_type_Rgm.a, true);
   }
 }
 

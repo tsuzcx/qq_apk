@@ -1,54 +1,52 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.widget.NumberCheckBox;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
-import java.util.ArrayList;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.PhoneUnityManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public class wvl
-  implements AdapterView.OnItemSelectedListener
+class wvl
+  implements DialogInterface.OnClickListener
 {
-  public wvl(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  wvl(wvj paramwvj) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.r = paramInt;
-    if (this.a.c.contains(Integer.valueOf(this.a.r)))
-    {
-      int i = this.a.c.indexOf(Integer.valueOf(this.a.r));
-      if (i != -1) {
-        PhotoPreviewActivity.a(this.a, i + 1);
-      }
+    if (this.a.a.jdField_b_of_type_Int == 2) {
+      ReportController.b(this.a.a.app, "CliOper", "", "", "0X8005B8A", "0X8005B8A", 1, 0, "", "", "", "");
     }
     for (;;)
     {
-      this.a.e();
-      if (!this.a.i) {
+      paramDialogInterface.dismiss();
+      if (NetworkUtil.d(this.a.a)) {
         break;
       }
-      this.a.d.setText("文件预览");
+      this.a.a.b(2131434613);
       return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
-      continue;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
+      if (this.a.a.jdField_b_of_type_Int == 6) {
+        ReportController.b(this.a.a.app, "CliOper", "", "", "0X8005B8A", "0X8005B8A", 2, 0, "", "", "", "");
+      } else if (this.a.a.jdField_b_of_type_Int == 7) {
+        ReportController.b(this.a.a.app, "CliOper", "", "", "0X8005B8A", "0X8005B8A", 3, 0, "", "", "", "");
+      }
     }
-    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-      this.a.d.setText(paramInt + 1 + " / " + this.a.jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    for (;;)
+    paramDialogInterface = this.a.a.a.a();
+    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
     {
-      paramAdapterView = (String)paramAdapterView.getItemAtPosition(paramInt);
-      if ((PhotoPreviewActivity.a(this.a, paramAdapterView) != 1) || (this.a.e)) {
-        break;
-      }
-      this.a.d();
+      this.a.a.setResult(0);
+      this.a.a.finish();
       return;
-      this.a.d.setText(this.a.getResources().getString(2131434539));
     }
+    if (this.a.a.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
+    {
+      this.a.a.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wvm(this);
+      this.a.a.app.registObserver(this.a.a.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+    }
+    PhoneUnityManager localPhoneUnityManager = (PhoneUnityManager)this.a.a.app.getManager(101);
+    this.a.a.a.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
+    this.a.a.a(2131434453, 0L, true);
   }
 }
 

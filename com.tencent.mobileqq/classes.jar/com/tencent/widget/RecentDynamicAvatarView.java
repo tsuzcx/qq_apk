@@ -61,7 +61,7 @@ public class RecentDynamicAvatarView
     Object localObject = "";
     if (paramLong == 1L)
     {
-      i = 2130845952;
+      i = 2130846080;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
       if (i >= 0) {
         break label58;
@@ -75,7 +75,7 @@ public class RecentDynamicAvatarView
       if (paramLong != 2L) {
         break;
       }
-      i = 2130845954;
+      i = 2130846082;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
       break;
       if (BaseApplicationImpl.sImageCache != null) {
@@ -173,7 +173,7 @@ public class RecentDynamicAvatarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.RecentDynamicAvatarView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,36 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
+import cooperation.qzone.LbsDataV2;
+import cooperation.qzone.util.QZLog;
 
 public final class ahyb
-  implements DialogInterface.OnClickListener
+  extends SosoInterface.OnLocationListener
 {
-  public ahyb(QQAppInterface paramQQAppInterface, Context paramContext, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahyb(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    try
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "onConsecutiveFailure failCode:" + paramInt1 + ",failCount:" + paramInt2);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_convert_teamwork_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getString("tim_convert_teamwork_download_url", "https://eim.connect.qq.com/guide/install.html?install=1");
-      FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext, paramDialogInterface);
+      QZoneNotifyServlet.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
+      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "onLocationFinish succeed! gps=" + QZoneNotifyServlet.b());
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
-    }
+    QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "onLocationFinish failed: error in force gps info update..");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahyb
  * JD-Core Version:    0.7.0.1
  */

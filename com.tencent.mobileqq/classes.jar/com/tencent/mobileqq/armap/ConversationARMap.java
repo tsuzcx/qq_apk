@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.armap;
 
-import aavj;
-import aavk;
-import aavl;
+import abck;
+import abcl;
+import abcm;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -55,8 +55,8 @@ public class ConversationARMap
   {
     super(paramConversation, paramViewGroup);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener = new aavk(this);
-    this.jdField_a_of_type_JavaLangRunnable = new aavl(this);
+    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener = new abcl(this);
+    this.jdField_a_of_type_JavaLangRunnable = new abcm(this);
     this.jdField_i_of_type_Int = -1;
   }
   
@@ -174,7 +174,7 @@ public class ConversationARMap
   private void s()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.a(new aavj(this));
+      this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.a(new abck(this));
     }
   }
   
@@ -185,8 +185,8 @@ public class ConversationARMap
     int i1;
     if (this.jdField_a_of_type_Int == -1)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363941));
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView = ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363948));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363964));
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView = ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363972));
       this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase = this;
       i2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().getDisplayMetrics().heightPixels;
       i3 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().getDisplayMetrics().widthPixels;
@@ -206,16 +206,16 @@ public class ConversationARMap
       this.h = i1;
       this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_e_of_type_Int = (i1 * 57 / 100);
       this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_e_of_type_Boolean = false;
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b();
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
       if ((localObject == null) || (((View)localObject).getBottom() - ((View)localObject).getTop() == 0))
       {
         this.jdField_f_of_type_Int = AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
         this.jdField_b_of_type_Int = AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-        this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559570) - this.jdField_f_of_type_Int) / 2);
+        this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559584) - this.jdField_f_of_type_Int) / 2);
         this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_f_of_type_Int = this.jdField_c_of_type_Int;
         this.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.getHeight();
         this.jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.getWidth();
-        this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView = ((BreathEffectView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363955));
+        this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView = ((BreathEffectView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363979));
         SplashBitmapUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView = new ARMapSplashView(this.jdField_a_of_type_AndroidAppActivity);
         this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.setSplashMode(1);

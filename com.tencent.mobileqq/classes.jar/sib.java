@@ -1,16 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class sib
-  implements View.OnClickListener
+  implements Runnable
 {
-  public sib(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public sib(Conversation paramConversation, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    long l = ServiceAccountFolderManager.a().a();
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
   }
 }
 

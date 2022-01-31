@@ -35,21 +35,24 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.IEventReceiver;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import nwe;
-import nwf;
+import nxr;
+import nxs;
 
 public class MemoriesVideoListSegment
   extends SegmentView
-  implements MemoriesVideoCollectionPresenter.VideoCollectionPresenterEventListener, MemoriesInnerListView.OnInnerListRefreshListener, MemoriesInnerListAdapter.MemoriesInnerListEventListener
+  implements MemoriesVideoCollectionPresenter.VideoCollectionPresenterEventListener, MemoriesInnerListView.OnInnerListRefreshListener, MemoriesInnerListAdapter.MemoriesInnerListEventListener, IEventReceiver
 {
   public static final String KEY = "MemoriesVideoListSegment";
   public int a;
   private MemoriesVideoCollectionPresenter jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean b;
+  private boolean c = true;
   
   public MemoriesVideoListSegment(Context paramContext, int paramInt, String paramString)
   {
@@ -112,16 +115,16 @@ public class MemoriesVideoListSegment
   {
     paramInt = a(paramInt);
     if (paramInt == 0) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970728, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970776, paramViewGroup, false));
     }
     if (paramInt == 1) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970718, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970766, paramViewGroup, false));
     }
     if (paramInt == 2) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970726, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970774, paramViewGroup, false));
     }
     if (paramInt == 3) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970723, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970771, paramViewGroup, false));
     }
     throw new IllegalStateException("create view error because unknown view type:" + paramInt);
   }
@@ -146,7 +149,7 @@ public class MemoriesVideoListSegment
   
   public void a(String paramString1, int paramInt, View paramView, String paramString2)
   {
-    Bosses.get().postJob(new nwf(this, paramString1, paramInt, paramView, paramString2));
+    Bosses.get().postJob(new nxs(this, paramString1, paramInt, paramView, paramString2));
   }
   
   public void a(String paramString, List paramList)
@@ -200,9 +203,9 @@ public class MemoriesVideoListSegment
   public View b(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
     paramViewGroup = (VideoCollectionItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131369050);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131369051);
-    View localView = paramBaseViewHolder.a(2131371692);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131369116);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131369117);
+    View localView = paramBaseViewHolder.a(2131371862);
     if (ThemeUtil.isInNightMode(PlayModeUtils.a()))
     {
       localTextView2.setTextColor(Color.parseColor("#44608a"));
@@ -222,7 +225,7 @@ public class MemoriesVideoListSegment
     {
       localView.setVisibility(paramInt);
       return paramBaseViewHolder.a();
-      localTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438693, new Object[] { Integer.valueOf(paramViewGroup.collectionCount) }));
+      localTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438711, new Object[] { Integer.valueOf(paramViewGroup.collectionCount) }));
       break;
     }
   }
@@ -235,18 +238,18 @@ public class MemoriesVideoListSegment
   
   public View c(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    Object localObject3 = (RelativeLayout)paramBaseViewHolder.a(2131366837);
-    Object localObject4 = (TextView)paramBaseViewHolder.a(2131371694);
-    Object localObject5 = (TextView)paramBaseViewHolder.a(2131371695);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371698);
-    paramViewGroup = (MemoriesInnerListView)paramBaseViewHolder.a(2131371701);
-    Object localObject1 = paramBaseViewHolder.a(2131371693);
-    Object localObject2 = (ImageView)paramBaseViewHolder.a(2131371696);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371700);
+    Object localObject3 = (RelativeLayout)paramBaseViewHolder.a(2131366704);
+    Object localObject4 = (TextView)paramBaseViewHolder.a(2131371864);
+    Object localObject5 = (TextView)paramBaseViewHolder.a(2131371865);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371868);
+    paramViewGroup = (MemoriesInnerListView)paramBaseViewHolder.a(2131371871);
+    Object localObject1 = paramBaseViewHolder.a(2131371863);
+    Object localObject2 = (ImageView)paramBaseViewHolder.a(2131371866);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371870);
     if (ThemeUtil.isInNightMode(PlayModeUtils.a()))
     {
       ((View)localObject1).setBackgroundColor(Color.parseColor("#0c284e"));
-      ((ImageView)localObject2).setBackgroundResource(2130843437);
+      ((ImageView)localObject2).setBackgroundResource(2130843557);
       localTextView1.setTextColor(Color.parseColor("#44608a"));
       ((TextView)localObject4).setTextColor(Color.parseColor("#6991b8"));
       ((TextView)localObject5).setTextColor(Color.parseColor("#6991b8"));
@@ -268,7 +271,7 @@ public class MemoriesVideoListSegment
       localObject4 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject3).getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject4).setMargins(0, 0, 0, 0);
       ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-      localTextView1.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438691, new Object[] { Integer.valueOf(((VideoCollectionItem)localObject2).collectionCount) }));
+      localTextView1.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438709, new Object[] { Integer.valueOf(((VideoCollectionItem)localObject2).collectionCount) }));
       if (!TextUtils.isEmpty(((VideoCollectionItem)localObject2).address)) {
         break label588;
       }
@@ -336,6 +339,7 @@ public class MemoriesVideoListSegment
   {
     super.d();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.b();
+    this.c = false;
   }
   
   protected int d_()
@@ -343,17 +347,9 @@ public class MemoriesVideoListSegment
     return 4;
   }
   
-  public void e_(boolean paramBoolean)
-  {
-    super.e_(paramBoolean);
-    if (this.jdField_a_of_type_Boolean) {
-      f();
-    }
-  }
-  
   public void f()
   {
-    a().setOnLoadMoreListener(a(), new nwe(this));
+    a().setOnLoadMoreListener(a(), new nxr(this));
     SegmentList localSegmentList = a();
     String str = a();
     if (!a()) {}
@@ -362,6 +358,25 @@ public class MemoriesVideoListSegment
       localSegmentList.setLoadMoreComplete(str, true, bool);
       return;
     }
+  }
+  
+  public void f_(boolean paramBoolean)
+  {
+    super.f_(paramBoolean);
+    if (this.jdField_a_of_type_Boolean) {
+      f();
+    }
+  }
+  
+  protected void g()
+  {
+    super.g();
+    this.b = false;
+  }
+  
+  public boolean isValidate()
+  {
+    return this.c;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.now.enter;
 
-import afnb;
-import afnc;
+import agah;
+import agai;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
@@ -353,7 +353,7 @@ public class NowEnterManager
           localEditor.putLong("activeEndTime" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), l2 / 1000L);
           localEditor.commit();
           if (bool) {
-            ThreadManager.post(new afnb(this, paramConfig, str1), 5, null, false);
+            ThreadManager.post(new agah(this, paramConfig, str1), 5, null, false);
           }
           localEditor.commit();
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("now_enter_config_version" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), i).commit();
@@ -400,7 +400,7 @@ public class NowEnterManager
         if (this.jdField_a_of_type_JavaUtilSet.contains(paramNetResp)) {
           this.jdField_a_of_type_JavaUtilSet.remove(paramNetResp);
         }
-        ThreadManager.getUIHandler().post(new afnc(this, bool, localHttpNetReq));
+        ThreadManager.getUIHandler().post(new agai(this, bool, localHttpNetReq));
         if (!bool)
         {
           paramNetResp = new File(localHttpNetReq.c);
@@ -519,7 +519,7 @@ public class NowEnterManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.now.enter.NowEnterManager
  * JD-Core Version:    0.7.0.1
  */

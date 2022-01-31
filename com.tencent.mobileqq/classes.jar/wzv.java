@@ -1,36 +1,23 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagInfo;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import java.util.Iterator;
 import java.util.List;
 
 public class wzv
-  extends PagerAdapter
+  implements Runnable
 {
-  public wzv(CommonHbFragment paramCommonHbFragment) {}
+  public wzv(PasswdRedBagManager paramPasswdRedBagManager) {}
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject)
+  public void run()
   {
-    ((ViewPager)paramView).removeView((View)CommonHbFragment.b(this.a).get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    if (CommonHbFragment.b(this.a) != null) {
-      return CommonHbFragment.b(this.a).size();
+    Iterator localIterator = PasswdRedBagManager.a(this.a).a().iterator();
+    while (localIterator.hasNext())
+    {
+      PasswdRedBagInfo localPasswdRedBagInfo = (PasswdRedBagInfo)localIterator.next();
+      PasswdRedBagManager.a(this.a, localPasswdRedBagInfo);
+      this.a.a(false, localPasswdRedBagInfo.a, localPasswdRedBagInfo.b);
     }
-    return 0;
-  }
-  
-  public Object instantiateItem(View paramView, int paramInt)
-  {
-    ((ViewPager)paramView).addView((View)CommonHbFragment.b(this.a).get(paramInt), 0);
-    return CommonHbFragment.b(this.a).get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
   }
 }
 

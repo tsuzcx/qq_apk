@@ -1,16 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class abbp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements NonMainAppHeadLoader.FaceObserver
 {
-  public abbp(ARMapSplashEntryView paramARMapSplashEntryView) {}
+  public abbp(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    ARMapSplashEntryView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    ARMapSplashEntryView.a(this.a);
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramBitmap != null) && (paramString1.equals(this.a.h)) && (this.a.j))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapActivity", 2, "onFaceUpdate uin:" + paramString1 + " path=" + paramString2);
+      }
+      this.a.j = false;
+      ThreadManager.post(new abbq(this, paramBitmap), 5, null, false);
+    }
   }
 }
 

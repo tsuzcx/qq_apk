@@ -1,30 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.UploadListener;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
 
-public class aevs
-  implements View.OnClickListener
+class aevs
+  implements Runnable
 {
-  public aevs(NearbyProfileFragment paramNearbyProfileFragment, String paramString, int paramInt) {}
+  aevs(aevr paramaevr, PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(paramView);
-    ReportTask localReportTask = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.app).a("dc00899").b("grp_lbs").c("face_score_vip").d("expert_click");
-    String str1 = "" + (NearbyProfileFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment).gender + 1);
-    String str2 = "" + this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.e == 3) {}
-    for (paramView = "2";; paramView = "1")
+    NearbyMomentManager localNearbyMomentManager = (NearbyMomentManager)this.jdField_a_of_type_Aevr.a.a.getManager(262);
+    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_Int == 0)) {
+      localNearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.e);
+    }
+    for (;;)
     {
-      localReportTask.a(new String[] { "", str1, str2, paramView }).a();
+      if (ImageFeedsUploader.a(this.jdField_a_of_type_Aevr.a) != null) {
+        ImageFeedsUploader.a(this.jdField_a_of_type_Aevr.a).a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult);
+      }
       return;
+      localNearbyMomentManager.d(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_JavaLangString);
     }
   }
 }

@@ -1,29 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateAdapter;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
 public class lhu
-  implements ActionSheet.OnButtonClickListener
+  implements PtvTemplateManager.IPtvTemplateDownloadListener
 {
-  public lhu(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity, ActionSheet paramActionSheet) {}
+  public lhu(ReadInJoyCameraTemplateAdapter paramReadInJoyCameraTemplateAdapter) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      PublicAccountReportUtils.a(null, "", "0X80081D2", "0X80081D2", 0, 0, "", "", "", VideoReporter.a(ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity)), false);
-      ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity, 8);
-      ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity);
-      ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity);
-    }
+    ReadInJoyCameraTemplateAdapter.a(this.a).post(new lhw(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    ReadInJoyCameraTemplateAdapter.a(this.a).post(new lhv(this, paramPtvTemplateInfo, paramBoolean));
   }
 }
 

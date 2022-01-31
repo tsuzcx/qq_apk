@@ -1,20 +1,30 @@
-public class kdt
+import com.tencent.av.ui.redbag.AVRedBag;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.qphone.base.util.QLog;
+
+class kdt
+  implements Runnable
 {
-  public String a;
-  public byte[] a;
+  kdt(kds paramkds) {}
   
-  public kdt(String paramString, byte[] paramArrayOfByte)
+  public void run()
   {
-    byte[] arrayOfByte = paramArrayOfByte;
-    if (paramArrayOfByte == null) {
-      arrayOfByte = new byte[0];
+    AVRedBagMgr localAVRedBagMgr = this.a.a.a();
+    if (localAVRedBagMgr == null) {
+      if (QLog.isDevelopLevel()) {
+        QLog.w(this.a.a.i, 1, "onAVActivityResume, AVRedBagMgr为空");
+      }
     }
-    this.jdField_a_of_type_ArrayOfByte = arrayOfByte;
-    paramArrayOfByte = paramString;
-    if (paramString == null) {
-      paramArrayOfByte = "";
-    }
-    this.jdField_a_of_type_JavaLangString = paramArrayOfByte;
+    do
+    {
+      return;
+      if (localAVRedBagMgr.a()) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.w("AVRedBag", 1, "onAVActivityResume, 不是GameMode");
+    return;
+    localAVRedBagMgr.c("onAVActivityResume");
   }
 }
 

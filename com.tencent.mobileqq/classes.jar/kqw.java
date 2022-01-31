@@ -1,32 +1,17 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicListModel;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
 
-public final class kqw
-  implements BusinessObserver
+public class kqw
+  implements View.OnClickListener
 {
-  public kqw(QQAppInterface paramQQAppInterface, boolean paramBoolean, PublicAccountObserver paramPublicAccountObserver) {}
+  public kqw(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramInt = AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.a(paramBoolean, paramInt);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
-      }
-      return;
-    }
+    int i = this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, i);
   }
 }
 

@@ -1,18 +1,35 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
+import android.os.Build;
+import android.view.LayoutInflater;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelAdapter;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ptt.preop.PttPreSendManager;
+import com.tencent.qphone.base.util.QLog;
 
-class upj
+public class upj
   implements Runnable
 {
-  upj(upi paramupi, int paramInt, Bitmap paramBitmap) {}
+  public upj(AudioPanelAdapter paramAudioPanelAdapter) {}
   
   public void run()
   {
-    if (upi.a(this.jdField_a_of_type_Upi) != null)
+    if (this.a.b == null) {}
+    try
     {
-      upr localupr = (upr)upi.a(this.jdField_a_of_type_Upi).get();
-      if (localupr != null) {
-        localupr.a(upi.a(this.jdField_a_of_type_Upi), this.jdField_a_of_type_Int, upi.b(this.jdField_a_of_type_Upi), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      ListenChangeVoicePanel localListenChangeVoicePanel = (ListenChangeVoicePanel)LayoutInflater.from(AudioPanelAdapter.a(this.a).getApp()).inflate(2130970182, null);
+      if (this.a.b == null) {
+        this.a.b = localListenChangeVoicePanel;
+      }
+      PttPreSendManager.a(AudioPanelAdapter.a(this.a));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOAudioPanel", 2, "inflate ListenPanel on subthread get exception " + localException + " model=" + Build.MANUFACTURER + Build.MODEL);
+        }
       }
     }
   }

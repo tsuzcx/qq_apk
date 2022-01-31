@@ -1,47 +1,62 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
-import com.tencent.mobileqq.widget.ConfigClearableEditText.OnTextClearedListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
 
-public class akeu
-  implements View.OnTouchListener
+class akeu
+  implements Runnable
 {
-  public akeu(ConfigClearableEditText paramConfigClearableEditText) {}
+  akeu(aket paramaket) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
+    int k = this.a.a.a(this.a.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+    int m = this.a.a.a(this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    int n = this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    Object localObject = this.a.a.getWindow().getAttributes();
+    int i;
+    int j;
+    StringBuilder localStringBuilder;
+    if (k - n > 0)
+    {
+      i = this.a.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.getHeight() / 2;
+      ((WindowManager.LayoutParams)localObject).y = (-i);
+      this.a.a.getWindow().setAttributes((WindowManager.LayoutParams)localObject);
+      if (QLog.isColorLevel())
+      {
+        localObject = (Context)this.a.a.jdField_a_of_type_JavaLangRefSoftReference.get();
+        j = 0;
+        if (localObject != null) {
+          j = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
+        }
+        localStringBuilder = new StringBuilder(128);
+        if (localObject != null) {
+          break label259;
+        }
+        localStringBuilder.append("|context is null");
+      }
+    }
     for (;;)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText$OnTextClearedListener == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText$OnTextClearedListener.a();
-          return false;
-          i = 0;
-        }
-      }
+      localStringBuilder.append("|screenHeight=").append(j).append("|emoSpaceY=").append(k).append("|dialogY=").append(m).append("|dialogHeight=").append(n).append("|moveY=").append(i);
+      QLog.d("QQCustomDialogWtihEmoticonInput.meassure", 2, localStringBuilder.toString());
+      return;
+      i = m + n - k;
+      break;
+      label259:
+      localStringBuilder.append("|context is not null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akeu
  * JD-Core Version:    0.7.0.1
  */

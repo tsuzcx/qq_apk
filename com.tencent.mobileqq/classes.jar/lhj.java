@@ -1,4 +1,6 @@
 import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class lhj
   implements Runnable
@@ -7,8 +9,8 @@ public class lhj
   
   public void run()
   {
-    ReadInJoyCameraCaptureActivity.b(this.a, ReadInJoyCameraCaptureActivity.c(this.a));
-    ReadInJoyCameraCaptureActivity.a(this.a);
+    FileUtils.a(ReadInJoyCameraCaptureActivity.a(this.a).c());
+    FileUtils.a(ReadInJoyCameraCaptureActivity.a(this.a).d());
   }
 }
 

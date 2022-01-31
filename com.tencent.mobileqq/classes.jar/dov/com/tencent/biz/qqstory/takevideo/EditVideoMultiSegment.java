@@ -4,8 +4,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import andx;
-import andy;
+import anuc;
+import anud;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.qphone.base.util.QLog;
@@ -78,7 +78,7 @@ public class EditVideoMultiSegment
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new andy(this), 3000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new anud(this), 3000L);
       bool2 = false;
       l2 = 0L;
       l1 = l2;
@@ -208,7 +208,7 @@ public class EditVideoMultiSegment
       b(paramLong, paramBoolean);
       return;
     }
-    ThreadManager.getUIHandler().post(new andx(this, paramLong, paramBoolean));
+    ThreadManager.getUIHandler().post(new anuc(this, paramLong, paramBoolean));
   }
   
   public void a(List paramList)
@@ -236,7 +236,7 @@ public class EditVideoMultiSegment
     return true;
   }
   
-  public void ay_()
+  public void aA_()
   {
     Object localObject = (EditVideoPlayerExport)a(EditVideoPlayerExport.class);
     if (localObject != null) {
@@ -256,7 +256,7 @@ public class EditVideoMultiSegment
     }
     localObject = (EditMusicExport)a(EditMusicExport.class);
     if (localObject != null) {
-      ((EditMusicExport)localObject).ar_();
+      ((EditMusicExport)localObject).at_();
     }
   }
   

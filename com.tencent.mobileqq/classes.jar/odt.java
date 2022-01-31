@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-public class odt
-  implements DialogInterface.OnClickListener
+public final class odt
+  implements Parcelable.Creator
 {
-  public odt(EditVideoPartManager paramEditVideoPartManager) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    this.a.c();
+    return new EditTakePhotoSource(paramParcel);
+  }
+  
+  public EditTakePhotoSource[] a(int paramInt)
+  {
+    return new EditTakePhotoSource[paramInt];
   }
 }
 

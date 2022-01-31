@@ -1,22 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.Leba;
 
-public class sww
-  implements Animation.AnimationListener
+class sww
+  implements Runnable
 {
-  public sww(LoginInfoActivity paramLoginInfoActivity) {}
+  sww(swv paramswv, View paramView, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    LoginInfoActivity.b(this.a).setVisibility(4);
-    LoginInfoActivity.b(this.a).clearAnimation();
+    this.jdField_a_of_type_Swv.a.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, null);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

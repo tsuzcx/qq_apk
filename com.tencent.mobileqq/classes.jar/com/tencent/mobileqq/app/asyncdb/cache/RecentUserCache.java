@@ -32,11 +32,11 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import zmk;
-import zml;
-import zmm;
-import zmn;
-import zmo;
+import zpq;
+import zpr;
+import zps;
+import zpt;
+import zpu;
 
 public class RecentUserCache
   extends FullCache
@@ -49,8 +49,8 @@ public class RecentUserCache
   {
     super(paramQQAppInterface, paramDBDelayManager, RecentUser.class);
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(64);
-    this.jdField_a_of_type_JavaUtilComparator = new zmo(true);
-    this.jdField_b_of_type_JavaUtilComparator = new zmo(false);
+    this.jdField_a_of_type_JavaUtilComparator = new zpu(true);
+    this.jdField_b_of_type_JavaUtilComparator = new zpu(false);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new RecentUserCache.CacheMap(this, null);
     d();
   }
@@ -127,7 +127,7 @@ public class RecentUserCache
     {
       paramList.remove(localObject2);
       long l = localObject2.getId();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zmk(this, l));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zpq(this, l));
     }
   }
   
@@ -146,7 +146,7 @@ public class RecentUserCache
       do
       {
         return;
-        ThreadManager.getSubThreadHandler().post(new zml(this, localSharedPreferences));
+        ThreadManager.getSubThreadHandler().post(new zpr(this, localSharedPreferences));
       } while (!localSharedPreferences.getBoolean("check_newfriend_when_upgrade_V2", true));
       if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
         break;
@@ -154,7 +154,7 @@ public class RecentUserCache
     } while (!QLog.isColorLevel());
     QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | descRecentList == null");
     return;
-    ThreadManager.getSubThreadHandler().post(new zmm(this, localSharedPreferences));
+    ThreadManager.getSubThreadHandler().post(new zps(this, localSharedPreferences));
   }
   
   private void f()
@@ -171,7 +171,7 @@ public class RecentUserCache
     }
     return;
     label71:
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zmn(this, localSharedPreferences));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zpt(this, localSharedPreferences));
   }
   
   private void g()
@@ -209,21 +209,28 @@ public class RecentUserCache
   
   public RecentUser a(String paramString, int paramInt)
   {
-    if ((paramInt >= 0) && (paramString != null) && (paramString.length() <= 2)) {}
-    RecentUser localRecentUser = (RecentUser)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(a(paramString, paramInt));
-    if (localRecentUser == null)
+    if ((paramInt < 0) || (paramString == null) || (paramString.length() <= 2))
     {
-      localRecentUser = new RecentUser();
-      localRecentUser.uin = paramString;
-      localRecentUser.type = paramInt;
-      localRecentUser.displayName = localRecentUser.uin;
-      localRecentUser.parse();
-      a(localRecentUser);
-      paramString = localRecentUser;
+      if (paramInt != 1006) {
+        QLog.w("Q.db.Cache.RecentUserCache", 1, "findRecentUserByUin, uin is invalid, uin[" + paramString + "], type[" + paramInt + "]");
+      }
+      paramString = null;
     }
+    RecentUser localRecentUser;
     do
     {
       return paramString;
+      localRecentUser = (RecentUser)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(a(paramString, paramInt));
+      if (localRecentUser == null)
+      {
+        localRecentUser = new RecentUser();
+        localRecentUser.uin = paramString;
+        localRecentUser.type = paramInt;
+        localRecentUser.displayName = localRecentUser.uin;
+        localRecentUser.parse();
+        a(localRecentUser);
+        return localRecentUser;
+      }
       paramString = localRecentUser;
     } while (localRecentUser.msg != null);
     if (localRecentUser.mIsParsed)

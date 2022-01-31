@@ -1,46 +1,57 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.util.AndroidRuntimeException;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart.LocalButtonListenerInterceptor;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryPublishLauncher;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.RecentEmotion;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aeib
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aeib(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  public aeib(EmoticonManager paramEmoticonManager, RecentEmotion paramRecentEmotion) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    SLog.d("story.publish.StoryLocalPublishPart", "onClick %s", new Object[] { paramView });
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return;
-      new NowVideoReporter().h("video_shoot").i("clk_upload").d(SmallVideoCameraCaptureFragment.a).a(1).b(this.a.a().app);
-    } while ((StoryLocalPublishPart.a(this.a) != null) && (!StoryLocalPublishPart.a(this.a).a()));
-    paramView = StoryPublishLauncher.a();
-    Bundle localBundle = this.a.a();
-    localBundle.putBoolean("enable_multi_fragment", false);
-    localBundle.putInt("local_video_from_type", 1001);
-    if (paramView.a())
-    {
-      paramView.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoCameraCaptureFragment, localBundle, this.a.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion == null) {
       return;
     }
-    throw new AndroidRuntimeException("StoryPublishLauncher is not support");
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManager", 2, "addRecentEmotionToCache key = " + this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion.keyword;
+    if (TextUtils.isEmpty(str))
+    {
+      QLog.e("EmoticonManager", 1, "addRecentEmotionToCache keyword empty");
+      return;
+    }
+    RecentEmotion localRecentEmotion = this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion;
+    CopyOnWriteArrayList localCopyOnWriteArrayList = EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, str);
+    if (localCopyOnWriteArrayList != null)
+    {
+      int i = localCopyOnWriteArrayList.indexOf(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+      if (i > -1)
+      {
+        localRecentEmotion = (RecentEmotion)localCopyOnWriteArrayList.get(i);
+        localRecentEmotion.replace(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.d.remove(localRecentEmotion);
+      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.d.add(0, localRecentEmotion);
+      return;
+      localCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+      continue;
+      localCopyOnWriteArrayList = new CopyOnWriteArrayList();
+      localCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.e.put(str, localCopyOnWriteArrayList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeib
  * JD-Core Version:    0.7.0.1
  */

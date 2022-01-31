@@ -1,130 +1,60 @@
-import android.annotation.TargetApi;
-import android.media.AudioManager;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.DeviceConfigManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadQueryListener;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class alji
-  extends aljm
+  implements DownloadQueryListener
 {
-  public alji(TraeAudioManager paramTraeAudioManager)
+  public alji(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    super(paramTraeAudioManager);
+    LogUtility.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction ERROR");
   }
   
-  public String a()
+  public void b_(List paramList)
   {
-    return "DEVICE_BLUETOOTHHEADSET";
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "bluetoothHeadsetSwitchThread start connect,sBluetoothDelayTime: " + TraeAudioManager.a());
-      }
-      Thread.sleep(TraeAudioManager.a());
-    }
-    catch (InterruptedException localInterruptedException2)
-    {
-      label39:
-      StringBuilder localStringBuilder;
-      int i;
-      label264:
-      break label39;
-    }
-    c();
-    localStringBuilder = new StringBuilder(1024);
-    if (QLog.isColorLevel()) {
-      localStringBuilder.append("bluetoothHeadsetSwitchThread ");
-    }
-    i = 0;
+    LogUtility.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
     for (;;)
     {
-      int j;
-      if (this.jdField_a_of_type_Boolean == true)
+      if (i < j)
       {
-        j = i + 1;
-        if (i < 10) {
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder.append("i:");
-            localStringBuilder.append(j);
-            localStringBuilder.append(" sco:");
-            if (!this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothScoOn()) {
-              break label264;
-            }
-          }
-        }
-      }
-      for (String str = "Y";; str = "N")
-      {
-        localStringBuilder.append(str);
-        localStringBuilder.append(" :");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a());
-        localStringBuilder.append("\n");
-        if (!this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothScoOn()) {
-          break;
-        }
-        e();
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, localStringBuilder.toString());
-        }
-        if (!this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothScoOn())
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("TRAE", 2, "bluetoothHeadsetSwitchThread sco fail,remove btheadset");
-          }
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a(a(), false);
-          a(10);
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.c();
+          localJSONObject.put("appid", localDownloadInfo.b);
+          localJSONObject.put("pro", localDownloadInfo.g);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.c);
+          localJSONArray.put(localJSONObject);
+          i += 1;
         }
-        return;
-      }
-      try
-      {
-        Thread.sleep(1000L);
-        i = j;
-      }
-      catch (InterruptedException localInterruptedException1)
-      {
-        i = j;
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
       }
     }
-  }
-  
-  @TargetApi(8)
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager == null) {
-      return;
-    }
-    d();
-  }
-  
-  @TargetApi(8)
-  void c()
-  {
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(true);
-    if (Build.VERSION.SDK_INT > 8) {
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.startBluetoothSco();
-    }
-  }
-  
-  @TargetApi(8)
-  void d()
-  {
-    if (Build.VERSION.SDK_INT > 8) {
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.stopBluetoothSco();
-    }
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(false);
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    LogUtility.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alji
  * JD-Core Version:    0.7.0.1
  */

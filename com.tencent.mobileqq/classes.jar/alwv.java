@@ -1,23 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.SendMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
+import java.util.Date;
 
-public final class alwv
-  implements Parcelable.Creator
+final class alwv
+  extends alwz
 {
-  public SendMsg a(Parcel paramParcel)
+  alwv(alwu paramalwu)
   {
-    return new SendMsg(paramParcel);
+    super(null);
   }
   
-  public SendMsg[] a(int paramInt)
+  public boolean a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle)
   {
-    return new SendMsg[paramInt];
+    if (this.a.size() >= this.a.maxSize())
+    {
+      alwu.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+      }
+      return false;
+    }
+    if (paramResultBundle.a > new Date().getTime())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
+      }
+      this.a.put(paramString, paramResultBundle);
+    }
+    for (;;)
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alwv
  * JD-Core Version:    0.7.0.1
  */

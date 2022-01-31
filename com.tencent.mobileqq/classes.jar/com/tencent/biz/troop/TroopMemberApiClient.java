@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import oua;
-import oub;
+import ovu;
+import ovv;
 
 public class TroopMemberApiClient
 {
@@ -51,12 +51,12 @@ public class TroopMemberApiClient
   
   private TroopMemberApiClient()
   {
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(new oub(this));
+    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(new ovv(this));
     this.jdField_b_of_type_AndroidOsMessenger = null;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_AndroidContentServiceConnection = new oua(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new ovu(this);
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
@@ -182,6 +182,17 @@ public class TroopMemberApiClient
     {
       paramBundle.printStackTrace();
     }
+  }
+  
+  public void a(int paramInt, Bundle paramBundle, TroopMemberApiClient.Callback paramCallback)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putString("processName", a());
+    a(paramInt, localBundle);
   }
   
   public void a(int paramInt, Bundle paramBundle, BusinessObserver paramBusinessObserver)

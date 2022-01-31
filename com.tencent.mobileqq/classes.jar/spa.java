@@ -1,19 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-class spa
+public class spa
   implements Runnable
 {
-  spa(soz paramsoz, ExtensionInfo paramExtensionInfo) {}
+  public spa(FriendProfileCardActivity paramFriendProfileCardActivity, PersonalityLabelHandler paramPersonalityLabelHandler) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Soz.a.b.setVisibility(0);
-    ((AvatarPendantManager)this.jdField_a_of_type_Soz.a.app.getManager(45)).a(this.jdField_a_of_type_Soz.a.a).a(this.jdField_a_of_type_Soz.a.b, 1, PendantInfo.d, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.uin, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {
+      return;
+    }
+    PersonalityLabelHandler localPersonalityLabelHandler = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelHandler;
+    PersonalityLabelHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a);
   }
 }
 

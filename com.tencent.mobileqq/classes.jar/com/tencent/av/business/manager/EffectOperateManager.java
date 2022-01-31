@@ -35,9 +35,9 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
-import jfw;
-import jfx;
-import jfy;
+import jfh;
+import jfi;
+import jfj;
 import org.json.JSONObject;
 
 public class EffectOperateManager
@@ -448,11 +448,11 @@ public class EffectOperateManager
       }
       this.jdField_d_of_type_Boolean = true;
       return;
-      localObject1 = new jfx(this);
+      localObject1 = new jfi(this);
       continue;
-      localObject1 = new jfw(this);
+      localObject1 = new jfh(this);
       continue;
-      localObject1 = new jfy(this);
+      localObject1 = new jfj(this);
     }
   }
   

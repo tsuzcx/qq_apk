@@ -1,11 +1,13 @@
-import android.graphics.Rect;
+import com.tencent.component.media.image.ImageManager;
 
-public final class pgv
-  extends ThreadLocal
+public class pgv
+  implements Runnable
 {
-  protected Rect a()
+  public pgv(ImageManager paramImageManager) {}
+  
+  public void run()
   {
-    return new Rect();
+    ImageManager.post(new pgw(this), false);
   }
 }
 

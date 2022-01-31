@@ -11,7 +11,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import opi;
+import orc;
 
 public class QQStoryLoadingView
   extends TextView
@@ -22,7 +22,7 @@ public class QQStoryLoadingView
   public QQStoryLoadingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new opi(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new orc(this, Looper.getMainLooper());
     super.setGravity(17);
     if (super.getVisibility() == 0) {
       setVisibility(0);
@@ -34,14 +34,14 @@ public class QQStoryLoadingView
     int i = 0;
     while (i < 29)
     {
-      paramContext.getResources().getDrawable(2130843397 + i);
+      paramContext.getResources().getDrawable(2130843517 + i);
       i += 1;
     }
   }
   
   public void a()
   {
-    super.setCompoundDrawablesWithIntrinsicBounds(null, super.getResources().getDrawable(2130843397), null, null);
+    super.setCompoundDrawablesWithIntrinsicBounds(null, super.getResources().getDrawable(2130843517), null, null);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable != null)
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
@@ -67,7 +67,7 @@ public class QQStoryLoadingView
       int i = 0;
       while (i < 29)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.addFrame(super.getResources().getDrawable(2130843397 + i), 50);
+        this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.addFrame(super.getResources().getDrawable(2130843517 + i), 50);
         i += 1;
       }
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setOneShot(false);

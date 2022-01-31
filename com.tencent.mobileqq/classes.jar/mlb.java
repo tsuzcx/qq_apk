@@ -1,15 +1,17 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-public class mlb
-  implements Runnable
+class mlb
+  extends AnimateUtils.AnimationAdapter
 {
-  public mlb(FastWebActivity paramFastWebActivity) {}
+  mlb(mla parammla) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (FastWebActivity.a(this.a) != null) {
-      FastWebActivity.a(this.a).setVisibility(0);
+    ReadinjoyTabFrame.a(this.a.a, true);
+    if (ReadinjoyTabFrame.a(this.a.a) != null) {
+      ReadinjoyTabFrame.a(this.a.a, ReadinjoyTabFrame.a(this.a.a), ReadinjoyTabFrame.a(this.a.a));
     }
   }
 }

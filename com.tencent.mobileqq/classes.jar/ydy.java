@@ -1,64 +1,27 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class ydy
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ydy(DiscussionListAdapter2 paramDiscussionListAdapter2) {}
+  public ydy(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((SlideDetectListView)DiscussionListAdapter2.a(this.a)).a();
-    Object localObject = (View)paramView.getParent();
-    if ((localObject instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)localObject).d();
-    }
-    paramView = paramView.getTag();
-    if (!(paramView instanceof DiscussionInfo)) {
-      return;
-    }
-    localObject = (DiscussionInfo)paramView;
-    if (NetworkUtil.a(DiscussionListAdapter2.a(this.a)) == 0)
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
-      paramView = (BaseActivity)DiscussionListAdapter2.a(this.a);
-      QQToast.a(paramView, 2131429828, 0).b(paramView.getTitleBarHeight());
-      return;
-    }
-    if ((!((DiscussionInfo)localObject).hasCollect) && (((DiscussionManager)this.a.a.getManager(52)).a() >= 80))
-    {
-      paramView = (BaseActivity)DiscussionListAdapter2.a(this.a);
-      QQToast.a(paramView, DiscussionListAdapter2.a(this.a).getString(2131429829, new Object[] { String.valueOf(80) }), 0).b(paramView.getTitleBarHeight());
-      return;
-    }
-    DiscussionHandler localDiscussionHandler = (DiscussionHandler)this.a.a.a(6);
-    if (((DiscussionInfo)localObject).hasCollect) {}
-    for (paramView = "0X8006898";; paramView = "0X8006897")
-    {
-      ReportController.b(this.a.a, "CliOper", "", "", paramView, paramView, 0, 0, "", "", "", "");
-      if (!((DiscussionInfo)localObject).hasCollect) {
-        break;
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
       }
-      localDiscussionHandler.e(Long.valueOf(((DiscussionInfo)localObject).uin).longValue());
-      return;
+      this.a.a(this.a.c);
     }
-    localDiscussionHandler.d(Long.valueOf(((DiscussionInfo)localObject).uin).longValue());
+    com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ydy
  * JD-Core Version:    0.7.0.1
  */

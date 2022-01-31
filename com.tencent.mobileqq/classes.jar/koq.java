@@ -1,33 +1,15 @@
-import android.view.View;
-import com.tencent.biz.now.NowVideoController;
-import com.tencent.mobileqq.widget.PAVideoView;
-import com.tencent.widget.AbsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
 public class koq
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public koq(NowVideoController paramNowVideoController, int paramInt1, int paramInt2) {}
+  public koq(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController) == null) {}
-    for (;;)
-    {
-      return;
-      int i = this.jdField_a_of_type_Int;
-      while (i <= this.b)
-      {
-        Object localObject = NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController).getChildAt(i - this.jdField_a_of_type_Int);
-        if (localObject != null)
-        {
-          localObject = (PAVideoView)((View)localObject).findViewById(2131362177);
-          if ((localObject != null) && (((PAVideoView)localObject).j == 4)) {
-            ((PAVideoView)localObject).c();
-          }
-        }
-        i += 1;
-      }
-    }
+    this.a.d = false;
   }
 }
 

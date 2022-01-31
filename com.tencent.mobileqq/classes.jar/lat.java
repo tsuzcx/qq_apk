@@ -1,18 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
-public final class lat
-  implements Parcelable.Creator
+public class lat
+  implements Runnable
 {
-  public RecentShopParcel a(Parcel paramParcel)
-  {
-    return new RecentShopParcel(paramParcel);
-  }
+  public lat(ReadInJoyNaviController paramReadInJoyNaviController) {}
   
-  public RecentShopParcel[] a(int paramInt)
+  public void run()
   {
-    return new RecentShopParcel[paramInt];
+    Object localObject = ReadInJoyNaviController.a(this.a).a();
+    ReadInJoyNaviController.a(this.a, 1000L);
+    if ((localObject != null) && (ReadInJoyNaviController.a(this.a)))
+    {
+      ReadInJoyNaviController.a(this.a, false);
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -((View)localObject).getHeight(), this.a.e);
+      localTranslateAnimation.setDuration(300L);
+      localTranslateAnimation.setAnimationListener(new lau(this, (View)localObject));
+      ((View)localObject).startAnimation(localTranslateAnimation);
+      if (ReadInJoyNaviController.a(this.a) != null)
+      {
+        localObject = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
+        ((Animation)localObject).setDuration(200L);
+        ((Animation)localObject).setFillEnabled(true);
+        ((Animation)localObject).setFillAfter(true);
+        ReadInJoyNaviController.a(this.a).startAnimation((Animation)localObject);
+      }
+      ReadInJoyNaviController.a(0, ReadInJoyNaviController.a(0, null));
+    }
   }
 }
 

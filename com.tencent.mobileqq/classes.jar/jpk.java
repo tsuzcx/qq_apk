@@ -1,29 +1,15 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.smallscreen.SmallScreenVideoController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.AVActivity;
 
-class jpk
-  implements Runnable
+public class jpk
+  implements DialogInterface.OnDismissListener
 {
-  jpk(jpj paramjpj, long paramLong1, long paramLong2) {}
+  public jpk(AVActivity paramAVActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Jpj.a.jdField_a_of_type_ComTencentAvVideoController == null)
-    {
-      AVLog.e("SmallScreenVideoController", "mVideoController is null");
-      return;
-    }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_Jpj.a.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (localSessionInfo != null)
-    {
-      QLog.d("SmallScreenVideoController", 1, "AsyncReadDoubleGlassConfig Timer lCurrent=" + this.jdField_a_of_type_Long + ", lLastTick=" + this.b + ", mCurrentVideoGlassWaitTime=" + localSessionInfo.Q + ", mCurrentDefaultTimeOutRule=" + localSessionInfo.R + ", mCurrentVideoGlassSwitch=" + this.jdField_a_of_type_Jpj.a.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Jpj.a.b(localSessionInfo.R);
-      return;
-    }
-    AVLog.e("SmallScreenVideoController", "AsyncReadDoubleGlassConfig Timer lCurrent=" + this.jdField_a_of_type_Long + ", lLastTick=" + this.b + ", sessionInfo is null, mCurrentVideoGlassSwitch=" + this.jdField_a_of_type_Jpj.a.jdField_a_of_type_Int);
+    this.a.l();
   }
 }
 

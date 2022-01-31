@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
-import cooperation.qlink.QQProxyForQlink;
+import android.util.Pair;
 
-public class alxf
-  implements DialogInterface.OnClickListener
+public final class alxf
+  implements alxi
 {
-  public alxf(QQProxyForQlink paramQQProxyForQlink, QrHandleResultCallBack paramQrHandleResultCallBack) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Pair a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.a();
-    paramDialogInterface.dismiss();
+    paramString = paramString.split(":", 2);
+    if ((paramString == null) || (paramString.length < 2)) {
+      return null;
+    }
+    return new Pair(paramString[0].trim(), paramString[1].trim());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxf
  * JD-Core Version:    0.7.0.1
  */

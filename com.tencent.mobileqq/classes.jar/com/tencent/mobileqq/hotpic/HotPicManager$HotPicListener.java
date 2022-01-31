@@ -6,7 +6,7 @@ public abstract interface HotPicManager$HotPicListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicManager.HotPicListener
  * JD-Core Version:    0.7.0.1
  */

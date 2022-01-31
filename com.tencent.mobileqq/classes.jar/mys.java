@@ -1,18 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class mys
-  extends SimpleJob
+  implements Runnable
 {
-  public mys(PlayingListPreloader paramPlayingListPreloader, boolean paramBoolean) {}
+  public mys(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.b(this.jdField_a_of_type_Boolean);
-    return null;
+    this.a.a.setVisibility(8);
+    this.a.a.findViewById(2131365654).setVisibility(8);
+    this.a.a.findViewById(2131365588).setVisibility(8);
+    this.a.a.findViewById(2131365589).setVisibility(8);
   }
 }
 

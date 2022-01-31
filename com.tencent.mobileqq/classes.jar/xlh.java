@@ -1,28 +1,13 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.mobileqq.app.MessageHandler;
 
-public class xlh
+public final class xlh
   implements Runnable
 {
-  public xlh(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xlh(MessageHandler paramMessageHandler, String paramString, int paramInt) {}
   
   public void run()
   {
-    if ((this.a.b != null) && (!this.a.b.isEnabled()))
-    {
-      this.a.b.setEnabled(true);
-      this.a.b.setText(2131438144);
-      this.a.b.setTextColor(-15550475);
-    }
-    int i = 0;
-    if (this.a.a != null) {
-      i = this.a.a.c();
-    }
-    if ((!this.a.i.isEnabled()) && (i > 0)) {
-      this.a.i.setEnabled(true);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
   }
 }
 

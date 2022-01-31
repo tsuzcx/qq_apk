@@ -1,15 +1,13 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.ui.VoiceChangeData.GetDrawableCallack;
+import com.tencent.av.ui.VideoInviteActivity;
 
 public class kba
-  implements VoiceChangeData.GetDrawableCallack
+  implements Runnable
 {
-  public kba(VideoControlUI paramVideoControlUI, boolean paramBoolean) {}
+  public kba(VideoInviteActivity paramVideoInviteActivity) {}
   
-  public void a(Drawable paramDrawable)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.l(this.jdField_a_of_type_Boolean);
+    this.a.g();
   }
 }
 

@@ -1,33 +1,47 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.comic.VipComicJumpActivity;
-import cooperation.comic.VipComicReportUtils;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.DownloadCallback;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
 public class xft
-  implements View.OnClickListener
+  extends DownloadListener
 {
-  public xft(BannerManager paramBannerManager, String paramString) {}
+  public xft(PreloadManager paramPreloadManager, PreloadManager.DownloadCallback paramDownloadCallback) {}
   
-  public void onClick(View paramView)
+  public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("from", "20");
-      label17:
-      Intent localIntent = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), VipComicJumpActivity.class);
-      localIntent.putExtra("options", paramView.toString());
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(localIntent);
-      VipComicReportUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getAppInterface(), "100007", "2", "40040", this.jdField_a_of_type_JavaLangString, new String[0]);
-      return;
+    int i = -5;
+    super.onDoneFile(paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "downloadRes|done" + paramDownloadTask.jdField_a_of_type_JavaLangString + "|" + paramDownloadTask.jdField_a_of_type_Int);
     }
-    catch (Exception localException)
+    Object localObject = paramDownloadTask.a();
+    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
+    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
+    if (paramDownloadTask.jdField_a_of_type_Int == 0)
     {
-      break label17;
+      i = 0;
+      if (localObject != null) {
+        break label146;
+      }
+    }
+    label146:
+    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$DownloadCallback.onDownloadResFinished(localPreloadModule.mid, i, ((File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
+      return;
+      if (paramDownloadTask.jdField_a_of_type_Int == -5) {
+        break;
+      }
+      i = -6;
+      break;
     }
   }
 }

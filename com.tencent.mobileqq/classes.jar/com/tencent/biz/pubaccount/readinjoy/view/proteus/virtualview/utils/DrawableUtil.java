@@ -6,8 +6,8 @@ import android.content.res.Resources.NotFoundException;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.ImageCommon;
+import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
@@ -25,7 +25,7 @@ public class DrawableUtil
       paramContext = URLDrawable.URLDrawableOptions.obtain();
       paramContext.mLoadingDrawable = paramDrawable1;
       paramContext.mFailedDrawable = paramDrawable2;
-      return URLDrawable.getDrawable(ReadInJoyUtils.a(paramString), paramContext);
+      return URLDrawable.getDrawable(PubAccountHttpDownloader.a(paramString, 3), paramContext);
     }
     Integer localInteger = ImageCommon.a(paramString);
     String str = OfflineUtils.a(paramString);

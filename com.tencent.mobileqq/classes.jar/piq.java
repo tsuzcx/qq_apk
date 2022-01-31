@@ -1,16 +1,18 @@
-import com.tencent.component.network.module.common.NetworkStatus;
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import com.tencent.component.media.image.view.ExtendImageView;
 
-class piq
-  implements ThreadPool.Job
+public class piq
+  implements Runnable
 {
-  piq(pip parampip) {}
+  public piq(ExtendImageView paramExtendImageView, Bitmap paramBitmap, Animation paramAnimation) {}
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public void run()
   {
-    NetworkStatus.a(this.a.a);
-    return null;
+    ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (this.jdField_a_of_type_AndroidViewAnimationAnimation != null) {
+      ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_AndroidViewAnimationAnimation, null);
+    }
   }
 }
 

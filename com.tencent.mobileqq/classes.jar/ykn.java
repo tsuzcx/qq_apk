@@ -1,34 +1,203 @@
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import org.json.JSONObject;
 
 public class ykn
-  extends FriendListObserver
+  implements Runnable
 {
-  public ykn(HotChatCenterFragment paramHotChatCenterFragment) {}
+  public ykn(ApolloManager paramApolloManager) {}
   
-  void a(String paramString)
+  public void run()
   {
-    if (!paramString.equals(HotChatCenterFragment.a(this.a).getAccount())) {}
-  }
-  
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    while ((HotChatCenterFragment.a(this.a).getCurrentAccountUin() == null) || (!HotChatCenterFragment.a(this.a).getCurrentAccountUin().equals(paramString))) {
+    Object localObject9 = null;
+    Object localObject7 = null;
+    Object localObject13 = null;
+    if (this.a.jdField_a_of_type_OrgJsonJSONObject == null) {}
+    label464:
+    for (;;)
+    {
       return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
+      Object localObject6;
+      for (Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();; localObject6 = null) {
+        for (;;)
+        {
+          if (localObject1 == null) {
+            break label464;
+          }
+          localObject1 = new File(ApolloConstant.a);
+          ((File)localObject1).mkdirs();
+          File localFile = new File((File)localObject1, "apollo_res_version_info.json");
+          if (localFile.exists()) {
+            localFile.delete();
+          }
+          localObject1 = localObject7;
+          try
+          {
+            for (;;)
+            {
+              JSONObject localJSONObject = this.a.jdField_a_of_type_OrgJsonJSONObject;
+              localObject1 = localObject7;
+              try
+              {
+                String str = this.a.jdField_a_of_type_OrgJsonJSONObject.toString();
+                localObject1 = localObject7;
+                boolean bool = TextUtils.isEmpty(str);
+                if (bool)
+                {
+                  if (0 == 0) {
+                    break;
+                  }
+                  try
+                  {
+                    throw new NullPointerException();
+                  }
+                  catch (IOException localIOException1) {}
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.d("ApolloManager", 2, localIOException1.getMessage());
+                  return;
+                }
+              }
+              finally
+              {
+                localObject2 = localObject7;
+              }
+            }
+          }
+          catch (FileNotFoundException localFileNotFoundException1)
+          {
+            for (;;)
+            {
+              localObject7 = null;
+              Object localObject2 = localObject7;
+              try
+              {
+                if (QLog.isColorLevel())
+                {
+                  localObject2 = localObject7;
+                  QLog.d("ApolloManager", 2, localFileNotFoundException1.getMessage());
+                }
+                if (localObject7 == null) {
+                  break;
+                }
+                try
+                {
+                  ((FileOutputStream)localObject7).flush();
+                  ((FileOutputStream)localObject7).close();
+                  return;
+                }
+                catch (IOException localIOException2) {}
+                if (!QLog.isColorLevel()) {
+                  break;
+                }
+                QLog.d("ApolloManager", 2, localIOException2.getMessage());
+                return;
+              }
+              finally
+              {
+                for (;;)
+                {
+                  Object localObject3;
+                  Object localObject4;
+                  Object localObject10;
+                  Object localObject5;
+                  Object localObject8 = localObject6;
+                  localObject6 = localObject12;
+                }
+              }
+            }
+            localObject3 = localObject7;
+            localObject7 = new FileOutputStream(localFile);
+            localObject3 = localObject7;
+          }
+          catch (OutOfMemoryError localOutOfMemoryError1)
+          {
+            localOutOfMemoryError1 = localOutOfMemoryError1;
+            localObject7 = localObject13;
+            localObject4 = localObject7;
+            if (QLog.isColorLevel())
+            {
+              localObject4 = localObject7;
+              QLog.d("ApolloManager", 2, localOutOfMemoryError1.getMessage());
+            }
+            if (localObject7 == null) {
+              break;
+            }
+            try
+            {
+              ((FileOutputStream)localObject7).flush();
+              ((FileOutputStream)localObject7).close();
+              return;
+            }
+            catch (IOException localIOException4) {}
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ApolloManager", 2, localIOException4.getMessage());
+            return;
+          }
+          catch (Exception localException1)
+          {
+            localObject7 = localOutOfMemoryError1;
+            localObject10 = localException1;
+            localObject5 = localObject7;
+            if (QLog.isColorLevel())
+            {
+              localObject5 = localObject7;
+              QLog.d("ApolloManager", 2, localObject10.getMessage());
+            }
+            if (localObject7 == null) {
+              break;
+            }
+            try
+            {
+              ((FileOutputStream)localObject7).flush();
+              ((FileOutputStream)localObject7).close();
+              return;
+            }
+            catch (IOException localIOException5) {}
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ApolloManager", 2, localIOException5.getMessage());
+            return;
+          }
+          finally
+          {
+            for (;;)
+            {
+              localObject7 = localIOException5;
+              localObject6 = localObject11;
+              if (localObject7 != null) {}
+              try
+              {
+                ((FileOutputStream)localObject7).flush();
+                ((FileOutputStream)localObject7).close();
+                throw localObject6;
+              }
+              catch (IOException localIOException6)
+              {
+                for (;;)
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("ApolloManager", 2, localIOException6.getMessage());
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    ThreadManager.post(new yko(this, paramString), 8, null, true);
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString) {}
-  
-  protected void onUpdateRecentList()
-  {
-    this.a.c();
   }
 }
 

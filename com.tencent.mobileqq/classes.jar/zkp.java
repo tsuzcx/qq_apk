@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.app.ThreadOptimizer;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ThreadFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioUtil;
 
-public final class zkp
-  implements ThreadFactory
+public class zkp
+  implements Runnable
 {
-  public Thread newThread(Runnable paramRunnable)
+  public zkp(QQAppInterface paramQQAppInterface) {}
+  
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThreadManager", 2, "new NetExcutor5Thread");
-    }
-    paramRunnable = new Thread(paramRunnable, "NetExcutor5Thread");
-    if (ThreadOptimizer.a().c()) {
-      paramRunnable.setPriority(1);
-    }
-    return paramRunnable;
+    AudioUtil.a(2131230757, false);
   }
 }
 

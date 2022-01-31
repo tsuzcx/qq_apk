@@ -9,8 +9,8 @@ import android.view.animation.LinearInterpolator;
 import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper;
 import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
-import ogx;
-import ogy;
+import oih;
+import oii;
 
 public class FaceLayer$FaceItem
   extends GestureHelper.ZoomItem
@@ -45,7 +45,7 @@ public class FaceLayer$FaceItem
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     paramCanvas.restore();
     if (this.jdField_d_of_type_Boolean) {
-      DisplayUtil.a(paramCanvas, this.b.a, this, 0, 2130841968, 2130841975);
+      DisplayUtil.a(paramCanvas, this.b.a, this, 0, 2130842005, 2130842012);
     }
   }
   
@@ -72,8 +72,8 @@ public class FaceLayer$FaceItem
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ogx(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new ogy(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new oih(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new oii(this));
     }
     if (!this.c) {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();

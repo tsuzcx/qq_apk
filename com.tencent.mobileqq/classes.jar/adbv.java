@@ -1,25 +1,12 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adbv
-  extends Handler
+class adbv
+  implements DialogInterface.OnClickListener
 {
-  public adbv(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  adbv(adbs paramadbs) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, "网络异常", 0).a();
-    }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

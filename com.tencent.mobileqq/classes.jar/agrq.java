@@ -1,50 +1,74 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.redtouch.RedTouchTextView;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
-import java.io.File;
+import android.graphics.PointF;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
+import java.util.List;
 
 public class agrq
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public agrq(RedTouchTextView paramRedTouchTextView, String paramString, int paramInt) {}
+  public agrq(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = new File(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.getContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
-    Bitmap localBitmap;
-    if (((File)localObject).exists())
+    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView;
+    paramAnimation.l -= 1;
+    paramAnimation = (RatioLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if (paramAnimation != null)
     {
-      localBitmap = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a((File)localObject);
-      localObject = localBitmap;
-      if (this.jdField_a_of_type_Int == 1) {
-        localObject = ImageUtil.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
+      if (this.jdField_a_of_type_AndroidViewView.getAnimation() != null) {
+        this.jdField_a_of_type_AndroidViewView.clearAnimation();
       }
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.b = new BitmapDrawable((Bitmap)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a();
+      if ((paramAnimation.a != this.jdField_a_of_type_AndroidGraphicsPointF.x) || (paramAnimation.b != this.jdField_a_of_type_AndroidGraphicsPointF.y))
+      {
+        paramAnimation.a = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+        paramAnimation.b = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+        this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+        if ((this.jdField_a_of_type_AndroidViewView instanceof VipTagView)) {
+          ((VipTagView)this.jdField_a_of_type_AndroidViewView).setShakingState(true);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.d = false;
+      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.l == 0) {
+        if (!this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b())
+        {
+          paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.getLabelList();
+          if (paramAnimation != null)
+          {
+            if ((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ArrayOfAndroidViewView[(ProfileTagView.a().length - 1)] == null) || (paramAnimation.size() != 0)) {
+              break label244;
+            }
+            this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b.setVisibility(0);
+          }
+        }
+      }
     }
-    while (RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView)) {
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.g)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.h(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.g = false;
+      }
       return;
+      label244:
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b.setVisibility(4);
     }
-    RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView, true);
-    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, (File)localObject))
-    {
-      localBitmap = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a((File)localObject);
-      localObject = localBitmap;
-      if (this.jdField_a_of_type_Int == 1) {
-        localObject = ImageUtil.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.b = new BitmapDrawable((Bitmap)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a();
-    }
-    RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView, false);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agrq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import com.tencent.mobileqq.nearby.now.utils.CommentsUtil;
+import com.tencent.mobileqq.nearby.now.utils.IOUtils;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class aewb
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aewb(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public aewb(VideoFeedsManager paramVideoFeedsManager, VideoFeedsUploader.UploadInfo paramUploadInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    String str = CommentsUtil.a(IOUtils.a(new File(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.d)));
+    ThreadManager.getUIHandler().post(new aewc(this, str));
   }
 }
 

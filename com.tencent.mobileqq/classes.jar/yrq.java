@@ -1,58 +1,58 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler;
-import com.tencent.mobileqq.apollo.store.webview.ApolloWebStatistics;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.lang.ref.WeakReference;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
+import oicq.wlogin_sdk.tools.util;
 import org.json.JSONObject;
 
 public class yrq
+  extends WtloginObserver
 {
-  public String a;
-  public WeakReference a;
-  private WeakReference b;
+  public int a;
+  public int b;
   
-  public yrq(ApolloWebDataHandler paramApolloWebDataHandler, String paramString, WebViewPlugin paramWebViewPlugin)
-  {
-    this.b = new WeakReference(paramApolloWebDataHandler);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebViewPlugin);
-  }
+  public yrq(CmGameMainManager paramCmGameMainManager) {}
   
-  public void a(yrr paramyrr, ApolloWebStatistics paramApolloWebStatistics)
+  public void OnGetOpenKeyWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, ErrMsg paramErrMsg)
   {
-    ApolloWebDataHandler localApolloWebDataHandler = (ApolloWebDataHandler)this.b.get();
-    WebViewPlugin localWebViewPlugin;
-    if ((localApolloWebDataHandler != null) && (paramyrr != null))
+    if (paramInt2 == 0)
     {
-      localWebViewPlugin = (WebViewPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-      {
-        if (paramApolloWebStatistics != null) {
-          paramApolloWebStatistics.d = System.currentTimeMillis();
-        }
-        if (yrr.a(paramyrr) == null) {
-          break label175;
-        }
-        localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { yrr.a(paramyrr).toString() });
+      paramString = util.buf_to_string(paramArrayOfByte2);
+      if (QLog.isColorLevel()) {
+        QLog.i("cmgame_process.CmGameMainManager", 2, "OnGetOpenKeyWithoutPasswd token:" + paramString);
+      }
+      paramArrayOfByte1 = this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameMainManager.a();
+      if (paramArrayOfByte1 != null) {
+        break label57;
       }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, plugin.callJs.mResultJson:" + yrr.a(paramyrr));
-      }
-      if (ApolloWebDataHandler.a(localApolloWebDataHandler) != null)
+      return;
+      try
       {
-        ApolloWebDataHandler.a(localApolloWebDataHandler).remove(yrr.a(paramyrr));
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, remove sso from mPreloadSSODatas:" + yrr.a(paramyrr));
+        label57:
+        paramArrayOfByte2 = new JSONObject();
+        paramArrayOfByte2.put("appId", paramLong2);
+        paramArrayOfByte2.put("gameId", this.jdField_a_of_type_Int);
+        paramArrayOfByte2.put("openKey", paramString);
+        CmGameCmdChannel.a(paramArrayOfByte1).a(0, "cs.on_get_open_key.local", paramArrayOfByte2.toString(), this.b);
+        paramArrayOfByte1 = ((ApolloDaoManager)paramArrayOfByte1.getManager(154)).a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameMainManager.a.game.gameId);
+        if (paramArrayOfByte1 != null)
+        {
+          paramArrayOfByte1.openKey = paramString;
+          return;
         }
       }
-      return;
-      label175:
-      localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+      catch (Exception paramString)
+      {
+        QLog.e("cmgame_process.CmGameMainManager", 1, "OpenKeyObserver error:", paramString);
+      }
     }
   }
 }

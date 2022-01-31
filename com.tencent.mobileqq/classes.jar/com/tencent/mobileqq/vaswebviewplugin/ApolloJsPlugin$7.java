@@ -23,7 +23,7 @@ class ApolloJsPlugin$7
   public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameStartChecker.ICmGameConfirmListener paramICmGameConfirmListener, long paramLong)
   {
     String str = String.format("当前需要更新%.1fM，马上开始?", new Object[] { Float.valueOf((float)paramLong * 1.0F / 1024.0F / 1024.0F) });
-    DialogUtil.b(this.val$activity, 0, null, str, 2131432999, 2131432998, new ApolloJsPlugin.7.1(this), new ApolloJsPlugin.7.2(this, paramICmGameConfirmListener, paramStartCheckParam)).show();
+    DialogUtil.b(this.val$activity, 0, null, str, 2131433016, 2131433015, new ApolloJsPlugin.7.1(this), new ApolloJsPlugin.7.2(this, paramICmGameConfirmListener, paramStartCheckParam)).show();
     VipUtils.a(null, "cmshow", "Apollo", "download_confirm_toast", 0, 3, new String[] { String.valueOf(paramStartCheckParam.game.gameId) });
   }
   
@@ -73,7 +73,7 @@ class ApolloJsPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

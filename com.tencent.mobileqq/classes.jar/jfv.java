@@ -1,32 +1,17 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
+import java.lang.ref.WeakReference;
 
 public class jfv
   implements Runnable
 {
-  final HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  
-  public jfv(EffectConfigBase paramEffectConfigBase, HttpNetReq paramHttpNetReq)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
-  }
+  public jfv(MagicfaceBaseDecoder paramMagicfaceBaseDecoder, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null)) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.a.getNetEngine(0).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      localException.printStackTrace();
+    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a.get();
+    if (localMagicPlayListener != null) {
+      localMagicPlayListener.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
   }
 }

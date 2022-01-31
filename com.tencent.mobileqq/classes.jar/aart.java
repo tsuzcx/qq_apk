@@ -1,19 +1,37 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.ark.ArkAiAppPanel;
+import com.tencent.mobileqq.ark.ArkAiInfo;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
 
 public class aart
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public aart(ArkAppListActivity paramArkAppListActivity, String paramString) {}
+  public aart(ArkAiAppPanel paramArkAiAppPanel) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
-    paramView.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(paramView);
+    paramAdapterView = ArkAiAppPanel.a(this.a).getSelectedView();
+    if (paramAdapterView != null) {
+      paramAdapterView.setSelected(false);
+    }
+    ArkAiAppPanel.a(this.a).setSelection(paramInt);
+    paramAdapterView = ArkAiAppPanel.a(this.a).getSelectedView();
+    if (paramAdapterView != null) {
+      paramAdapterView.setSelected(true);
+    }
+    ArkAiAppPanel.a(this.a, paramInt);
+    ArkAiAppPanel.a(this.a, true);
+    if ((ArkAiAppPanel.a(this.a) != null) && (ArkAiAppPanel.a(this.a).size() > 0) && (ArkAiAppPanel.a(this.a).size() > ArkAiAppPanel.a(this.a)))
+    {
+      paramAdapterView = (ArkAiInfo)ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a));
+      if (paramAdapterView != null) {
+        ArkAppDataReport.b(null, paramAdapterView.a);
+      }
+    }
   }
 }
 

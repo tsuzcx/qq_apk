@@ -1,15 +1,18 @@
-import com.tencent.av.utils.GVideoGrayConfig;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
+import com.tencent.mobileqq.activity.ChatActivityFacade.SendMsgParams;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public final class rur
-  implements QQProgressDialog.Callback
+  implements Runnable
 {
-  public rur(GVideoGrayConfig.GVideoGrayConfigListener paramGVideoGrayConfigListener) {}
+  public rur(ChatActivityFacade.SendMsgParams paramSendMsgParams, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
-  public void a()
+  public void run()
   {
-    GVideoGrayConfig.a().a(this.a);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityFacade$SendMsgParams.a) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().f(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    }
   }
 }
 

@@ -1,28 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class xnw
-  implements ValueAnimator.AnimatorUpdateListener
+class xnw
+  implements Runnable
 {
-  public xnw(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt1, int paramInt2) {}
+  xnw(xnu paramxnu) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramValueAnimator.width = ((int)(this.jdField_a_of_type_Int * f));
-    paramValueAnimator.height = ((int)(this.jdField_a_of_type_Int * f));
-    paramValueAnimator.addRule(13);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
-    paramValueAnimator.width = ((int)(this.b * f));
-    paramValueAnimator.height = ((int)(f * this.b));
-    paramValueAnimator.addRule(13);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramValueAnimator);
+    QQToast.a(this.a.a.a, "音乐下载失败，请稍后重试", 1).a();
+    EditLocalVideoActivity.a(this.a.a.a).setVisibility(8);
   }
 }
 

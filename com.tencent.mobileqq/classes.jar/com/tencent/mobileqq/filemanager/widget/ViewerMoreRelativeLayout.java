@@ -27,9 +27,9 @@ public class ViewerMoreRelativeLayout
   public ViewerMoreRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970012, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368665));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364280));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970026, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368732));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364304));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   

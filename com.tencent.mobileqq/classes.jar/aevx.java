@@ -1,4 +1,5 @@
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
 
 class aevx
   implements Runnable
@@ -7,7 +8,9 @@ class aevx
   
   public void run()
   {
-    ConnectNearbyProcService.a(4144);
+    if ((this.a.a.a != null) && (this.a.a.a.a() != null)) {
+      this.a.a.a.a(0, null, 0, 0);
+    }
   }
 }
 

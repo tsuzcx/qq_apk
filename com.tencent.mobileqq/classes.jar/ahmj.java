@@ -1,52 +1,26 @@
-import android.graphics.RectF;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.DancePosture;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.Posture;
-import java.util.ArrayList;
+import com.tencent.mobileqq.richmedia.capture.view.GuideVideoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class ahmj
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public ahmj(GLLittleBoyManager paramGLLittleBoyManager) {}
+  public ahmj(GuideVideoView paramGuideVideoView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    int i = 0;
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "onVideoPrepared");
+    }
+    this.a.a = true;
+    if (this.a.b)
     {
-      if (i < GLLittleBoyManager.a(this.a).size())
-      {
-        GLLittleBoy localGLLittleBoy = (GLLittleBoy)GLLittleBoyManager.a(this.a).get(i);
-        if (localGLLittleBoy.a() == paramAnimation)
-        {
-          localGLLittleBoy.a(ResourceManager.a().a(localGLLittleBoy.a().a).b, true, true);
-          paramAnimation = localGLLittleBoy.c();
-          if (GLLittleBoyManager.a(this.a) == 0.0F) {
-            GLLittleBoyManager.a(this.a, paramAnimation.width() / 2.2F);
-          }
-          float f1 = paramAnimation.centerX();
-          float f2 = paramAnimation.centerY();
-          GLLittleBoyManager.a(this.a).set(f1 - GLLittleBoyManager.a(this.a), f2 - GLLittleBoyManager.a(this.a), f1 + GLLittleBoyManager.a(this.a), f2 + GLLittleBoyManager.a(this.a));
-          localGLLittleBoy.c(GLLittleBoyManager.a(this.a));
-          localGLLittleBoy.e();
-          localGLLittleBoy.a(this.a.b());
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "has triggered start, now start");
       }
-      else
-      {
-        return;
-      }
-      i += 1;
+      GuideVideoView.a(this.a).start();
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

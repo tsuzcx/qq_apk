@@ -1,75 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
-import mqq.os.MqqHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
 
 public class aenp
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aenp(ImageDisplayView paramImageDisplayView, String paramString, int paramInt1, int paramInt2) {}
+  public aenp(GameRoomFloatView paramGameRoomFloatView, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Object localObject1 = null;
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.b)
     {
-      localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString);
-      localObject1 = localBitmap;
-      int i = new ExifInterface(this.jdField_a_of_type_JavaLangString).getAttributeInt("Orientation", 0);
-      localObject1 = localBitmap;
-      localObject2 = new Matrix();
-      switch (i)
-      {
-      }
-    }
-    catch (Exception localException)
-    {
-      Bitmap localBitmap;
-      Object localObject2;
-      while (localObject1 != null)
-      {
-        ThreadManager.getUIHandler().post(new aens(this, localObject1));
-        return;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(180.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(180.0F);
-        localObject1 = localException;
-        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(90.0F);
-        localObject1 = localException;
-        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(90.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(270.0F);
-        localObject1 = localException;
-        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(270.0F);
-      }
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    localObject1 = localBitmap;
-    ThreadManager.getUIHandler().post(new aenq(this, localBitmap));
-    return;
-    localObject1 = localBitmap;
-    ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-    localObject1 = localBitmap;
-    localObject2 = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), (Matrix)localObject2, true);
-    localObject1 = localBitmap;
-    ThreadManager.getUIHandler().post(new aenr(this, (Bitmap)localObject2));
-    return;
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

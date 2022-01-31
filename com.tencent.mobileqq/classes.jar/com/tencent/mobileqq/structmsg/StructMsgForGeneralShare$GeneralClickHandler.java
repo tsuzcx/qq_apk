@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
-import ahty;
-import ahtz;
+import aiib;
+import aiic;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -97,7 +97,7 @@ public class StructMsgForGeneralShare$GeneralClickHandler
   
   private void a(Bundle paramBundle)
   {
-    ThreadManager.post(new ahty(this, paramBundle), 5, null, false);
+    ThreadManager.post(new aiib(this, paramBundle), 5, null, false);
   }
   
   private boolean c(String paramString)
@@ -256,7 +256,7 @@ public class StructMsgForGeneralShare$GeneralClickHandler
     {
       localObject1 = paramString + "&msgSeq=" + this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uniseq + "&resId=" + this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mResid + "&uin=" + this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin + "&sessionType=" + this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uinType;
       if (StructMsgForGeneralShare.receiptServer == null) {
-        StructMsgForGeneralShare.receiptServer = new ahtz(this, "receipt_msg");
+        StructMsgForGeneralShare.receiptServer = new aiic(this, "receipt_msg");
       }
       QIPCServerHelper.getInstance().register(StructMsgForGeneralShare.receiptServer);
     }
@@ -602,7 +602,7 @@ public class StructMsgForGeneralShare$GeneralClickHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler
  * JD-Core Version:    0.7.0.1
  */

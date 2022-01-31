@@ -1,77 +1,51 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.portal.HongBaoPendantHolder;
-import com.tencent.widget.HongBaoListView;
-import com.tencent.widget.HongBaoListViewListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.qidian.QidianManager;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class almh
-  implements Handler.Callback
+  implements ActionSheet.OnButtonClickListener
 {
-  public almh(HongBaoListView paramHongBaoListView) {}
+  public almh(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-            this.a.setIsShowingPreguide(true);
-            this.a.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(this.a.f / 5, 300L);
-            this.a.springBackTo(-this.a.f);
-            if (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener != null) {
-              this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.b(false);
-            }
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
-            this.a.invalidate();
-            return false;
-            this.a.a(300L);
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
-          } while (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener == null);
-          this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.a(false);
-          return false;
-          this.a.setIsShowingPreguide(true);
-          i = this.a.f / 2;
-          this.a.setSpringbackOffset(-this.a.f);
-          if (paramMessage.arg1 != 0) {
-            i = paramMessage.arg1;
-          }
-          this.a.springBackTo(-i);
-          this.a.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(this.a.f / 5, 300L);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 2000L);
-        } while (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener == null);
-        this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.b(false);
-        return false;
-        this.a.a(300L);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
-      } while (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener == null);
-      this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.a(false);
-      return false;
-      this.a.setIsShowingPreguide(false);
-      this.a.setSpringbackOffset(0);
-      return false;
-      if (!this.a.isStackFromBottom()) {
-        this.a.setStackFromBottom(true);
+    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
+      if (paramInt == 0) {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
       }
-      this.a.setStackFromBottom(false);
-    } while (this.a.k);
-    int i = (int)this.a.getResources().getDimension(2131559574);
-    this.a.springBackTo(-i);
-    return false;
+    }
+    for (;;)
+    {
+      QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
+      return;
+      if (paramInt == 1)
+      {
+        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianQidianManager.d(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
+        } else {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      else if (paramInt == 2)
+      {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
+        continue;
+        if (paramInt == 0) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+        } else if (paramInt == 1) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     almh
  * JD-Core Version:    0.7.0.1
  */

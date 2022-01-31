@@ -1,54 +1,19 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.model.TroopBatchAddFrdsSearchModelMember;
-import com.tencent.mobileqq.search.searchengine.TroopBatchAddFrdsSearchEngine;
-import java.util.Comparator;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
 
 public class ahio
-  implements Comparator
+  implements Runnable
 {
-  public ahio(TroopBatchAddFrdsSearchEngine paramTroopBatchAddFrdsSearchEngine) {}
+  public ahio(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite) {}
   
-  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
+  public void run()
   {
-    int i = -1;
-    paramIContactSearchModel1 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel1;
-    paramIContactSearchModel2 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel2;
-    FriendsManager localFriendsManager = (FriendsManager)this.a.a.getManager(50);
-    boolean bool1 = localFriendsManager.b((String)paramIContactSearchModel1.a());
-    boolean bool2 = localFriendsManager.b((String)paramIContactSearchModel2.a());
-    if ((!bool1) && (!bool2))
-    {
-      bool1 = localFriendsManager.c((String)paramIContactSearchModel1.a());
-      bool2 = localFriendsManager.c((String)paramIContactSearchModel2.a());
-      if ((!bool1) && (!bool2)) {
-        return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
-      }
-      if (bool1 != bool2)
-      {
-        if (bool2) {
-          return -1;
-        }
-        return 1;
-      }
-      return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
-    }
-    if (bool1 != bool2)
-    {
-      if (bool2) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-    }
-    return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
+    GestureMgr.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahio
  * JD-Core Version:    0.7.0.1
  */

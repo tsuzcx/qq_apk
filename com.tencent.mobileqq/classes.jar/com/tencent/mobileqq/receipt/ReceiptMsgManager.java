@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.receipt;
 
-import agre;
-import agrf;
-import agrg;
+import ahfg;
+import ahfh;
+import ahfi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
@@ -75,7 +75,7 @@ public class ReceiptMsgManager
     int m = AIOUtils.a(240.0F, paramResources);
     int n = AIOUtils.a(108.0F, paramResources);
     Bitmap localBitmap1 = c(paramResources, paramInt);
-    Bitmap localBitmap2 = BitmapFactory.decodeResource(paramResources, 2130837729);
+    Bitmap localBitmap2 = BitmapFactory.decodeResource(paramResources, 2130837732);
     Canvas localCanvas = new Canvas();
     Bitmap localBitmap3 = Bitmap.createBitmap(m, n, Bitmap.Config.ARGB_8888);
     localBitmap3.setDensity(paramResources.getDisplayMetrics().densityDpi);
@@ -103,7 +103,7 @@ public class ReceiptMsgManager
   
   private AbsShareMsg a(int paramInt)
   {
-    AbsShareMsg localAbsShareMsg = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(107).a(BaseApplicationImpl.getContext().getString(2131438948)).a(3).a("viewReceiptMessage", "", null, null, null).a();
+    AbsShareMsg localAbsShareMsg = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(107).a(BaseApplicationImpl.getContext().getString(2131438976)).a(3).a("viewReceiptMessage", "", null, null, null).a();
     StructMsgItemLayout29 localStructMsgItemLayout29 = new StructMsgItemLayout29();
     StructMsgItemType localStructMsgItemType = new StructMsgItemType();
     localStructMsgItemType.e = paramInt;
@@ -180,7 +180,7 @@ public class ReceiptMsgManager
   
   private void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArrayList paramArrayList, @Nonnull Bundle paramBundle)
   {
-    ThreadManager.post(new agrf(this, paramArrayList, paramBundle, paramQQAppInterface, paramSessionInfo), 8, null, false);
+    ThreadManager.post(new ahfh(this, paramArrayList, paramBundle, paramQQAppInterface, paramSessionInfo), 8, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
@@ -222,7 +222,7 @@ public class ReceiptMsgManager
     int k = AIOUtils.a(245.0F, paramResources);
     int m = AIOUtils.a(108.0F, paramResources);
     Bitmap localBitmap1 = c(paramResources, paramInt);
-    Bitmap localBitmap2 = BitmapFactory.decodeResource(paramResources, 2130837728);
+    Bitmap localBitmap2 = BitmapFactory.decodeResource(paramResources, 2130837731);
     Canvas localCanvas = new Canvas();
     Bitmap localBitmap3 = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
     localBitmap3.setDensity(paramResources.getDisplayMetrics().densityDpi);
@@ -263,11 +263,11 @@ public class ReceiptMsgManager
     switch (paramInt)
     {
     default: 
-      return BitmapFactory.decodeResource(paramResources, 2130837732);
+      return BitmapFactory.decodeResource(paramResources, 2130837735);
     case 2: 
-      return BitmapFactory.decodeResource(paramResources, 2130837730);
+      return BitmapFactory.decodeResource(paramResources, 2130837733);
     }
-    return BitmapFactory.decodeResource(paramResources, 2130837731);
+    return BitmapFactory.decodeResource(paramResources, 2130837734);
   }
   
   private static void c(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
@@ -279,7 +279,7 @@ public class ReceiptMsgManager
   
   private void d(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
   {
-    Object localObject = String.format(BaseApplicationImpl.getContext().getString(2131438978), new Object[] { paramString });
+    Object localObject = String.format(BaseApplicationImpl.getContext().getString(2131439006), new Object[] { paramString });
     paramString = new MessageForUniteGrayTip();
     localObject = new UniteGrayTipParam(paramMessageRecord.frienduin, paramMessageRecord.senderuin, (String)localObject, paramMessageRecord.istroop, -5022, 3211265, paramMessageRecord.time);
     ((UniteGrayTipParam)localObject).f = false;
@@ -343,7 +343,7 @@ public class ReceiptMsgManager
     if (!QLog.isColorLevel()) {}
     for (;;)
     {
-      ThreadManager.post(new agre(this, paramInt2, paramInt3, paramRecorderParam, paramString, paramInt1, paramBoolean, paramQQAppInterface, paramSessionInfo), 8, null, false);
+      ThreadManager.post(new ahfg(this, paramInt2, paramInt3, paramRecorderParam, paramString, paramInt1, paramBoolean, paramQQAppInterface, paramSessionInfo), 8, null, false);
       return;
       QLog.d("ReceiptMsgManager", 2, "sendPttMsg: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.toString());
     }
@@ -394,7 +394,7 @@ public class ReceiptMsgManager
         QLog.d("ReceiptMsgManager", 2, "addGrayTipIfNeeded hasShowed: " + bool + " with key: " + str);
       }
     } while (bool);
-    ThreadManager.postImmediately(new agrg(this, paramQQAppInterface, paramMessageRecord), null, false);
+    ThreadManager.postImmediately(new ahfi(this, paramQQAppInterface, paramMessageRecord), null, false);
     this.jdField_a_of_type_JavaUtilMap.put(paramQQAppInterface.getCurrentAccountUin() + str, Boolean.valueOf(true));
     localSharedPreferences.edit().putBoolean(str, true).apply();
   }
@@ -406,7 +406,7 @@ public class ReceiptMsgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMsgManager
  * JD-Core Version:    0.7.0.1
  */

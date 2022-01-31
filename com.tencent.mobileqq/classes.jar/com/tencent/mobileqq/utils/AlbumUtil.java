@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import ajmz;
+import akbe;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -1862,7 +1862,7 @@ public class AlbumUtil
   
   private static void a(LocalMediaInfo paramLocalMediaInfo)
   {
-    XMPCoreUtil.a().a(new ajmz(paramLocalMediaInfo));
+    XMPCoreUtil.a().a(new akbe(paramLocalMediaInfo));
   }
   
   public static void a(LocalMediaInfo paramLocalMediaInfo, String paramString)

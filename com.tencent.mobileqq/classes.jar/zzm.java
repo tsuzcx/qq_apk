@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.ar.FaceUIController;
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
+import com.tencent.mobileqq.arcard.ARcardSound;
 
-public class zzm
-  implements ARTipsManager.BaikeClickListener
+class zzm
+  implements Runnable
 {
-  public zzm(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
+  zzm(zzl paramzzl) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
+    if (ARWorldCupGlobalSceneRenderable.a(this.a.a) != null) {
+      ARWorldCupGlobalSceneRenderable.a(this.a.a).a(ARWorldCupGlobalSceneRenderable.a(this.a.a).a() + "/res/worldcup/football.mp3", false);
     }
-    ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
-    ReportController.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a.a();
   }
 }
 

@@ -1,19 +1,12 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
 
-public final class ahho
-  implements ThreadFactory
+public class ahho
 {
-  private final AtomicInteger a = new AtomicInteger(1);
-  
-  public Thread newThread(Runnable paramRunnable)
-  {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
-  }
+  private static final CaptureVideoFilterManager a = new CaptureVideoFilterManager(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahho
  * JD-Core Version:    0.7.0.1
  */

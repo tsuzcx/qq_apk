@@ -1,25 +1,15 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
+import com.tencent.mobileqq.armap.sensor.SimpleSensorChangeListener;
 
-public final class aaau
-  implements FileFilter
+public class aaau
+  extends SimpleSensorChangeListener
 {
-  public boolean accept(File paramFile)
+  public aaau(GreetingCardRender paramGreetingCardRender) {}
+  
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
-    {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if (!Character.isDigit(paramFile.charAt(i))) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
-    }
-    return false;
+    GreetingCardRender.a(this.a).a(new aaav(this, paramArrayOfFloat));
   }
 }
 

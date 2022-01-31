@@ -142,14 +142,14 @@ class ThemeDIYActivity$4
           break label1639;
         }
         JSONObject localJSONObject1 = ((JSONObject)localObject5).getJSONArray("operateAndroid").getJSONObject(0);
-        if ((!IndividuationConfigInfo.a(localJSONObject1.optString("minVersion"), "7.6.0")) || (IndividuationConfigInfo.a(localJSONObject1.optString("maxVersion"), "7.6.0")))
+        if ((!IndividuationConfigInfo.a(localJSONObject1.optString("minVersion"), "7.6.3")) || (IndividuationConfigInfo.a(localJSONObject1.optString("maxVersion"), "7.6.3")))
         {
           localObject3 = localObject2;
           m = i;
           if (!QLog.isColorLevel()) {
             break label1639;
           }
-          QLog.d("ThemeDIYActivity", 2, "loadResJson style subVersion: 7.6.0, minVersion:" + localJSONObject1.optString("minVersion") + ", maxVersion:" + localJSONObject1.optString("maxVersion") + ", id:" + str2 + ", timeStamp:" + l);
+          QLog.d("ThemeDIYActivity", 2, "loadResJson style subVersion: 7.6.3, minVersion:" + localJSONObject1.optString("minVersion") + ", maxVersion:" + localJSONObject1.optString("maxVersion") + ", id:" + str2 + ", timeStamp:" + l);
           localObject3 = localObject2;
           m = i;
           break label1639;
@@ -302,7 +302,7 @@ class ThemeDIYActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity.4
  * JD-Core Version:    0.7.0.1
  */

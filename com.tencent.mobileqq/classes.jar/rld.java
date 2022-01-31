@@ -1,10 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.qcall.PstnManager;
 
 public class rld
-  extends Handler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rld(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  public rld(AssistantSettingActivity paramAssistantSettingActivity, PstnManager paramPstnManager) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a(paramBoolean);
+  }
 }
 
 

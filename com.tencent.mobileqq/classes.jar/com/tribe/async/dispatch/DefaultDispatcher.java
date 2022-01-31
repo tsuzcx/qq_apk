@@ -90,9 +90,6 @@ public class DefaultDispatcher
         this.mSubscribersByKey.put(localSubscriberKey, localObject);
       }
       ((CopyOnWriteArraySet)localObject).add(paramWrapper);
-      SLog.d("async.dispatch.DefaultDispatcher", "dispatch  add %s", new Object[] { paramWrapper });
-      SLog.d("async.dispatch.DefaultDispatcher", "after add set %s", new Object[] { Integer.valueOf(System.identityHashCode(localObject)) });
-      SLog.d("async.dispatch.DefaultDispatcher", "all in key:%s, %s", new Object[] { localSubscriberKey, localObject });
     }
     insertToGroupMap(paramObject, localSubscriber);
   }

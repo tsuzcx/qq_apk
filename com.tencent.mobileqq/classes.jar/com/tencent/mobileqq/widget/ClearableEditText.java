@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import aker;
-import akes;
-import aket;
+import aksy;
+import aksz;
+import akta;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -25,7 +25,7 @@ public class ClearableEditText
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  aket jdField_a_of_type_Aket;
+  akta jdField_a_of_type_Akta;
   public Drawable a;
   public ClearableEditText.OnTextClearedListener a;
   public boolean a;
@@ -50,8 +50,8 @@ public class ClearableEditText
     try
     {
       a(paramContext, paramAttributeSet);
-      this.jdField_a_of_type_Aket = new aket(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Aket);
+      this.jdField_a_of_type_Akta = new akta(this, this);
+      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Akta);
       ViewCompat.setImportantForAccessibility(this, 1);
       return;
     }
@@ -75,7 +75,7 @@ public class ClearableEditText
       this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(2, -1);
       paramContext.recycle();
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838699);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838703);
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
@@ -87,8 +87,8 @@ public class ClearableEditText
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         setClearButtonVisible(false);
       }
-      setOnTouchListener(new aker(this));
-      addTextChangedListener(new akes(this));
+      setOnTouchListener(new aksy(this));
+      addTextChangedListener(new aksz(this));
       return;
     }
     finally
@@ -139,7 +139,7 @@ public class ClearableEditText
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
     if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getX() > getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth())) {
-      return this.jdField_a_of_type_Aket.dispatchHoverEvent(paramMotionEvent);
+      return this.jdField_a_of_type_Akta.dispatchHoverEvent(paramMotionEvent);
     }
     return super.dispatchHoverEvent(paramMotionEvent);
   }

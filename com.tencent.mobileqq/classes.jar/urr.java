@@ -1,38 +1,34 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import java.util.TimerTask;
 
 public class urr
-  extends SosoInterface.OnLocationListener
+  extends TimerTask
 {
-  public urr(ArkAppLocationManager paramArkAppLocationManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public urr(DoodleMsgView paramDoodleMsgView, long paramLong1, long paramLong2) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (paramInt2 < 3) {
-      return;
+    if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.a(new urs(this));
     }
-    b(paramInt1, null);
-  }
-  
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    b(paramInt, paramSosoLbsInfo);
-  }
-  
-  protected void b(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
-    for (boolean bool = true;; bool = false)
+    do
     {
-      ArkAppCenter.a().post(new urs(this, bool, paramSosoLbsInfo));
       return;
-    }
+      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) < 0L) {
+        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView, this.jdField_a_of_type_Long);
+      }
+      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) < this.jdField_a_of_type_Long) {
+        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView, DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) + this.b);
+      }
+      DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView).a(DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView), true);
+      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) >= this.jdField_a_of_type_Long)
+      {
+        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView);
+        return;
+      }
+    } while (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView));
+    DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView).a(this.jdField_a_of_type_Long, true);
   }
 }
 

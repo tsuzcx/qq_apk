@@ -15,7 +15,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
-import wju;
+import wmz;
 
 public abstract class ContactsBaseFragment
   extends Fragment
@@ -140,7 +140,7 @@ public abstract class ContactsBaseFragment
     this.jdField_a_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
-      paramLayoutInflater.setAccessibilityDelegate(new wju(this));
+      paramLayoutInflater.setAccessibilityDelegate(new wmz(this));
     }
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
     {

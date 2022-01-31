@@ -8,13 +8,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import ngh;
+import nht;
 
 public class StoryShareEncryptHelper
 {
   public static void a(Context paramContext, String paramString, StoryShareEncryptHelper.DecryptCallback paramDecryptCallback, QQProgressDialog paramQQProgressDialog)
   {
-    ThreadManager.getUIHandler().post(new ngh(paramString, paramQQProgressDialog, paramContext, paramDecryptCallback));
+    ThreadManager.getUIHandler().post(new nht(paramString, paramQQProgressDialog, paramContext, paramDecryptCallback));
   }
   
   public static void a(String paramString, HashMap paramHashMap)

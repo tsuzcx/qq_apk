@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.armap.config.ARMapConfigManager;
 
 public class abfh
-  implements Runnable
+  extends SosoInterface.OnLocationListener
 {
-  public abfh(WordMatchManager paramWordMatchManager, boolean paramBoolean) {}
-  
-  public void run()
+  public abfh(ARMapConfigManager paramARMapConfigManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a();
-    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a.runOnUiThread(new abfi(this));
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
+      ARMapConfigManager.a(this.a, paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abfh
  * JD-Core Version:    0.7.0.1
  */

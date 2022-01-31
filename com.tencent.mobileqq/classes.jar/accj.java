@@ -1,31 +1,48 @@
-import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
-public class accj
+class accj
   implements Runnable
 {
-  public accj(FilePreviewActivity paramFilePreviewActivity) {}
+  accj(acbg paramacbg, QQAppInterface paramQQAppInterface, ArrayList paramArrayList, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
-    if (!this.a.d) {
-      return;
+    Bundle localBundle = new Bundle();
+    HashMap localHashMap = new HashMap();
+    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50);
+    if (localFriendsManager != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Friends localFriends = localFriendsManager.c(str);
+        if (localFriends != null)
+        {
+          if (!TextUtils.isEmpty(localFriends.remark)) {
+            localHashMap.put(str, localFriends.remark);
+          } else if (!TextUtils.isEmpty(localFriends.name)) {
+            localHashMap.put(str, localFriends.name);
+          } else {
+            localHashMap.put(str, "");
+          }
+        }
+        else {
+          localHashMap.put(str, "");
+        }
+      }
     }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0 - this.a.jdField_a_of_type_AndroidViewViewGroup.getHeight(), 0.0F);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.a.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = true;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.b;
-    localFilePreviewAnim.b = 250;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
-    this.a.d = false;
+    localBundle.putSerializable("friendsMap", localHashMap);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

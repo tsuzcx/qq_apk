@@ -49,12 +49,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import klu;
-import klv;
-import klw;
-import klx;
-import kly;
-import klz;
+import klf;
+import klg;
+import klh;
+import kli;
+import klj;
+import klk;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
@@ -86,7 +86,7 @@ public class HtmlOffline
     jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader = new OfflineDownloader();
     jdField_a_of_type_ComTencentBizCommonOfflineUtilILog = new MyLog();
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = new klw();
+    jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = new klh();
   }
   
   public static int a(Context paramContext, String paramString)
@@ -458,7 +458,7 @@ public class HtmlOffline
     long l1 = System.currentTimeMillis();
     HashMap localHashMap = new HashMap();
     localHashMap.put("Accept-Encoding", "gzip");
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new klz(paramContext, paramString2, paramString1, str, l1, paramAsyncBack, localHashMap));
+    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new klk(paramContext, paramString2, paramString1, str, l1, paramAsyncBack, localHashMap));
   }
   
   public static void a(ILog paramILog)
@@ -564,7 +564,7 @@ public class HtmlOffline
     if (paramAsyncBack == null) {
       return;
     }
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.a(new klv(paramString, paramAppRuntime, paramAsyncBack));
+    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.a(new klg(paramString, paramAppRuntime, paramAsyncBack));
   }
   
   public static void a(String paramString, AppRuntime paramAppRuntime, AsyncBack paramAsyncBack, boolean paramBoolean)
@@ -684,7 +684,7 @@ public class HtmlOffline
               i = localJSONObject.optInt("version", 0);
             }
             localHashMap.put(paramString, i + "");
-            jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.a(new klx(paramInt, paramString, paramAppRuntime, localHashMap, paramAsyncBack, paramBoolean2));
+            jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.a(new kli(paramInt, paramString, paramAppRuntime, localHashMap, paramAsyncBack, paramBoolean2));
           }
         }
       }
@@ -732,9 +732,9 @@ public class HtmlOffline
     localReqBody.uint32_cmd.set(3);
     localReqBody.uint32_platform.set(3);
     if ((paramHashMap != null) && (paramHashMap.size() > 0)) {
-      QLog.d("HtmlCheckUpdate", 1, String.format("check update, QQ Version: %s", new Object[] { "7.6.0.3525" }));
+      QLog.d("HtmlCheckUpdate", 1, String.format("check update, QQ Version: %s", new Object[] { "7.6.3.3560" }));
     }
-    localReqBody.str_qver.set(ByteStringMicro.copyFrom("7.6.0.3525".getBytes()));
+    localReqBody.str_qver.set(ByteStringMicro.copyFrom("7.6.3.3560".getBytes()));
     localReqBody.str_osrelease.set(ByteStringMicro.copyFrom(Build.VERSION.RELEASE.getBytes()));
     i = NetworkUtil.a(paramAppRuntime.getApplication());
     localReqBody.int32_network.set(i);
@@ -795,7 +795,7 @@ public class HtmlOffline
     try
     {
       localNewIntent.putExtra("data", localReqBody.toByteArray());
-      localNewIntent.setObserver(new kly(localNewIntent, paramAsyncBack, paramBoolean1, paramBoolean3, paramAppRuntime, paramBoolean2));
+      localNewIntent.setObserver(new klj(localNewIntent, paramAsyncBack, paramBoolean1, paramBoolean3, paramAppRuntime, paramBoolean2));
       paramAppRuntime.startServlet(localNewIntent);
       return;
     }
@@ -848,7 +848,7 @@ public class HtmlOffline
       }
       return false;
     }
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.b(new klu(paramContext, paramString, paramAsyncCallBack));
+    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.b(new klf(paramContext, paramString, paramAsyncCallBack));
     return true;
   }
   

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.msgforward;
 
-import advq;
-import advr;
-import advs;
-import advt;
-import advu;
-import advv;
-import advw;
-import advx;
-import advy;
+import aeiw;
+import aeix;
+import aeiy;
+import aeiz;
+import aeja;
+import aejb;
+import aejc;
+import aejd;
+import aeje;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ClipData;
@@ -231,7 +231,7 @@ public class AIOShareActionSheet
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131433083));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131433100));
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(a(this.jdField_a_of_type_AndroidContentContext));
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this);
     }
@@ -1180,14 +1180,14 @@ public class AIOShareActionSheet
     for (int k = 1;; k = 0)
     {
       Object localObject = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = paramContext.getString(2131430109);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_Int = 2130838336;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = paramContext.getString(2131430126);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_Int = 2130838340;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject).c = 9;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
       localArrayList.add(localObject);
       localObject = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = paramContext.getString(2131430117);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_Int = 2130838503;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = paramContext.getString(2131430134);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_Int = 2130838507;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject).c = 25;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
       localArrayList.add(localObject);
@@ -1195,8 +1195,8 @@ public class AIOShareActionSheet
       if (j != 0)
       {
         localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-        localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430118);
-        localActionSheetItem.jdField_b_of_type_Int = 2130838537;
+        localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430135);
+        localActionSheetItem.jdField_b_of_type_Int = 2130838541;
         localActionSheetItem.jdField_a_of_type_Boolean = true;
         localActionSheetItem.c = 26;
         localActionSheetItem.jdField_b_of_type_JavaLangString = "";
@@ -1205,16 +1205,16 @@ public class AIOShareActionSheet
       if (k != 0)
       {
         localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-        localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430119);
-        localActionSheetItem.jdField_b_of_type_Int = 2130838652;
+        localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430136);
+        localActionSheetItem.jdField_b_of_type_Int = 2130838656;
         localActionSheetItem.jdField_a_of_type_Boolean = true;
         localActionSheetItem.c = 27;
         localActionSheetItem.jdField_b_of_type_JavaLangString = "";
         ((ArrayList)localObject).add(localActionSheetItem);
       }
       ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-      localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430120);
-      localActionSheetItem.jdField_b_of_type_Int = 2130838328;
+      localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430137);
+      localActionSheetItem.jdField_b_of_type_Int = 2130838332;
       localActionSheetItem.jdField_a_of_type_Boolean = true;
       localActionSheetItem.c = 28;
       localActionSheetItem.jdField_b_of_type_JavaLangString = "";
@@ -1332,7 +1332,7 @@ public class AIOShareActionSheet
             localObject1 = localChatMessage.msg;
             break;
             ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("simple text", localStringBuilder.toString()));
-            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433760, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433777, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
             return;
           }
           localObject1 = null;
@@ -1392,13 +1392,13 @@ public class AIOShareActionSheet
   {
     if (!NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131432992, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433009, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
       return false;
     }
     Object localObject1 = MultiMsgManager.a().a();
     if (((List)localObject1).size() == 0)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433406, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433423, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
       return false;
     }
     ArrayList localArrayList1 = new ArrayList();
@@ -1523,7 +1523,7 @@ public class AIOShareActionSheet
     localList.removeAll(localArrayList);
     if (localList.isEmpty())
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433749, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433766, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
       return false;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(localList, 3);
@@ -1558,7 +1558,7 @@ public class AIOShareActionSheet
     localList.removeAll(localArrayList);
     if (localList.isEmpty())
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433759, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433776, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
       return false;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(localList, 4);
@@ -1587,18 +1587,18 @@ public class AIOShareActionSheet
               ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", e, e, 0, 0, "", "", "", "");
               paramInt = -1;
               if (!WXShareHelper.a().a()) {
-                paramInt = 2131438919;
+                paramInt = 2131438947;
               }
               while (paramInt != -1)
               {
                 QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_AndroidContentContext.getString(paramInt), 0).a();
                 return;
                 if (!WXShareHelper.a().b()) {
-                  paramInt = 2131435303;
+                  paramInt = 2131435320;
                 }
               }
               if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
-                this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new advq(this);
+                this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new aeiw(this);
               }
               WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
               this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c(true);
@@ -1607,7 +1607,7 @@ public class AIOShareActionSheet
               ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", f, f, 0, 0, "", "", "", "");
               if (!d())
               {
-                DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131433747)).setPositiveButton(17039370, new advs(this)).setNegativeButton(17039360, new advr(this)).show();
+                DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131433764)).setPositiveButton(17039370, new aeiy(this)).setNegativeButton(17039360, new aeix(this)).show();
                 return;
               }
               break;
@@ -1617,7 +1617,7 @@ public class AIOShareActionSheet
           return;
           if (!b())
           {
-            DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131433756)).setPositiveButton(17039370, new advu(this)).setNegativeButton(17039360, new advt(this)).show();
+            DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131433773)).setPositiveButton(17039370, new aeja(this)).setNegativeButton(17039360, new aeiz(this)).show();
             return;
           }
           ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
@@ -1627,7 +1627,7 @@ public class AIOShareActionSheet
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", g, g, 0, 0, "", "", "", "");
         if (!a())
         {
-          DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131433757)).setPositiveButton(17039370, new advw(this)).setNegativeButton(17039360, new advv(this)).show();
+          DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131433774)).setPositiveButton(17039370, new aejc(this)).setNegativeButton(17039360, new aejb(this)).show();
           return;
         }
       } while (!WeiyunAIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_MqqOsMqqHandler));
@@ -1636,7 +1636,7 @@ public class AIOShareActionSheet
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", h, h, 0, 0, "", "", "", "");
       if (!f())
       {
-        DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131433758)).setPositiveButton(17039370, new advy(this)).setNegativeButton(17039360, new advx(this)).show();
+        DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131433775)).setPositiveButton(17039370, new aeje(this)).setNegativeButton(17039360, new aejd(this)).show();
         return;
       }
     } while ((MultiMsgManager.a().a().isEmpty()) || (!g()));
@@ -1645,7 +1645,7 @@ public class AIOShareActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.AIOShareActionSheet
  * JD-Core Version:    0.7.0.1
  */

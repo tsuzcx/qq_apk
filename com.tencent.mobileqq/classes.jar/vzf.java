@@ -1,23 +1,14 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-public final class vzf
+public class vzf
   implements Runnable
 {
-  public vzf(TextView paramTextView) {}
+  public vzf(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845753);
-    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845755);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
-    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);
-    ThreadManager.getUIHandler().post(new vzg(this, localStateListDrawable));
+    ServiceAccountFolderManager.a().b(this.a.a);
   }
 }
 

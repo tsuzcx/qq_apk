@@ -1,57 +1,64 @@
-import SummaryCard.RespSearch;
-import SummaryCard.SearchInfo;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule.LoginInfo;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserLoginLogic;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
 
 public class rfa
-  implements ContactSearchFacade.ISearchListener
+  implements BusinessObserver
 {
-  public rfa(AddFriendActivity paramAddFriendActivity) {}
+  public rfa(UserLoginLogic paramUserLoginLogic, String paramString) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    AddFriendActivity.a(this.a);
-    if ((!paramBoolean) || (paramInt2 != 0) || (paramInt1 != 87) || (!(paramObject instanceof RespSearch))) {
-      if (!TextUtils.isEmpty(paramString)) {
-        this.a.a(paramString);
-      }
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (QLog.isColorLevel()) {
+      QLog.d(UserLoginLogic.jdField_a_of_type_JavaLangString, 2, "-->doAuthorize-onReceive, ssoAccount: " + (String)localObject + " | uin: " + this.jdField_a_of_type_JavaLangString);
     }
-    do
+    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
+      return;
+    }
+    paramInt = paramBundle.getInt("code");
+    if (paramBoolean)
     {
-      return;
-      this.a.a(2131434432);
-      return;
+      localObject = new SdkAuthorize.AuthorizeResponse();
       try
       {
-        paramString = (RespSearch)paramObject;
-        if ((paramString.vRecords != null) && (!paramString.vRecords.isEmpty())) {
-          break;
+        paramBundle = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
+        paramInt = paramBundle.ret.get();
+        localObject = paramBundle.msg.get();
+        if (paramInt != 0)
+        {
+          DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, (String)localObject);
+          return;
         }
-        this.a.a(2131434734);
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d(UserLoginLogic.jdField_a_of_type_JavaLangString, 2, "parse do auth result error: \n" + paramBundle.getMessage());
+        }
+        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -2, "parse do auth result error");
         return;
       }
-      catch (Exception paramString)
-      {
-        this.a.a(2131434432);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AddFriendActivity", 2, "onSearchResult | searchType = " + paramInt1 + " | isSuccess = " + paramBoolean + " | rsCode = " + paramInt2 + " | data = " + paramObject, paramString);
-    return;
-    if (paramString.vRecords.size() == 1)
-    {
-      AddFriendActivity.a(this.a, (SearchInfo)paramString.vRecords.get(0), this.a.app.getCurrentAccountUin(), paramString.vSecureSig, false, 0);
+      localObject = new UserInfoModule.LoginInfo();
+      ((UserInfoModule.LoginInfo)localObject).jdField_a_of_type_JavaLangString = paramBundle.openid.get().toUpperCase();
+      ((UserInfoModule.LoginInfo)localObject).b = paramBundle.access_token.get().toUpperCase();
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.a((UserInfoModule.LoginInfo)localObject);
+      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, ((UserInfoModule.LoginInfo)localObject).a());
       return;
     }
-    this.a.a(paramString);
+    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "do auth error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rfa
  * JD-Core Version:    0.7.0.1
  */

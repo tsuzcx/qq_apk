@@ -1,15 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar.TabHolder;
 
 public class mgm
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public mgm(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mgm(BaseTabbar.TabHolder paramTabHolder, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    VideoVolumeControl.a().c(false);
+    BaseTabbar.TabHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar$TabHolder, this.jdField_a_of_type_Boolean);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    BaseTabbar.TabHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar$TabHolder, this.jdField_a_of_type_Boolean);
+    BaseTabbar.TabHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar$TabHolder);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar$TabHolder.b.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

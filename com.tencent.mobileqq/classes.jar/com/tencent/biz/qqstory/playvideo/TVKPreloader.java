@@ -34,13 +34,13 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.CopyOnWriteArraySet;
 import javax.annotation.concurrent.GuardedBy;
-import nmw;
-import nmy;
-import nnb;
-import nnc;
-import nnd;
-import nne;
-import nnf;
+import noj;
+import nol;
+import noo;
+import nop;
+import noq;
+import nor;
+import nos;
 
 public class TVKPreloader
 {
@@ -50,7 +50,7 @@ public class TVKPreloader
   private static Handler jdField_a_of_type_AndroidOsHandler;
   @GuardedBy("sPendingPreloadQueue")
   private static TVKPreloader.PreloadItem jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem;
-  private static TVK_ICacheMgr.IPreloadCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback = new nmy();
+  private static TVK_ICacheMgr.IPreloadCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback = new nol();
   private static TVK_ICacheMgr.IPreloadCompleteCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback;
   @GuardedBy("sPendingPreloadQueue")
   private static final Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
@@ -61,7 +61,7 @@ public class TVKPreloader
     jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
     jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-    jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback = new nmw();
+    jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback = new noj();
   }
   
   public static int a(TVKPreloader.PreloadItem paramPreloadItem)
@@ -138,7 +138,7 @@ public class TVKPreloader
       if (((Iterator)localObject1).hasNext())
       {
         TVKPreloader.PreloadItem localPreloadItem = (TVKPreloader.PreloadItem)((Iterator)localObject1).next();
-        jdField_a_of_type_AndroidOsHandler.post(new nnb(localPreloadItem));
+        jdField_a_of_type_AndroidOsHandler.post(new noo(localPreloadItem));
       }
     }
   }
@@ -172,7 +172,7 @@ public class TVKPreloader
       if (localTVK_ICacheMgr == null)
       {
         SLog.e("Q.qqstory.player.TVKPreloader", "preloadVideo failed, cacheMgr is null, %s", new Object[] { paramPreloadItem });
-        jdField_a_of_type_AndroidOsHandler.post(new nnd(paramPreloadItem));
+        jdField_a_of_type_AndroidOsHandler.post(new noq(paramPreloadItem));
         b(true);
         return;
       }
@@ -180,7 +180,7 @@ public class TVKPreloader
     case 1: 
     case 2: 
       SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo success, has already been cached/downloaded, state=%d, item=%s", Integer.valueOf(i), paramPreloadItem);
-      jdField_a_of_type_AndroidOsHandler.post(new nnc(paramPreloadItem));
+      jdField_a_of_type_AndroidOsHandler.post(new nop(paramPreloadItem));
       b(true);
       return;
     }
@@ -200,7 +200,7 @@ public class TVKPreloader
         b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramPreloadItem);
         return;
       }
-      Bosses.get().postJob(new nne(localVideoServerInfoManager, arrayOfString, i, paramPreloadItem, localTVK_ICacheMgr, localTVK_PlayerVideoInfo));
+      Bosses.get().postJob(new nor(localVideoServerInfoManager, arrayOfString, i, paramPreloadItem, localTVK_ICacheMgr, localTVK_PlayerVideoInfo));
       return;
     }
     SLog.d("Q.qqstory.player.TVKPreloader", "preloadVideo 2 TVK start pre-load video, preload duration : %d, item : %s", new Object[] { Integer.valueOf(i), paramPreloadItem });
@@ -214,7 +214,7 @@ public class TVKPreloader
     paramTVK_ICacheMgr.setPreloadCallback(jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback);
     jdField_a_of_type_Long = SystemClock.uptimeMillis();
     paramTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, paramTVK_PlayerVideoInfo);
-    jdField_a_of_type_AndroidOsHandler.post(new nnf(paramPreloadItem));
+    jdField_a_of_type_AndroidOsHandler.post(new nos(paramPreloadItem));
   }
   
   /* Error */

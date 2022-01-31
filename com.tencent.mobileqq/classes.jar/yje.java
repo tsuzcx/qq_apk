@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.apollo.ApolloResponseManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.antiphing.AntiphingHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class yje
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public yje(ApolloResponseManager paramApolloResponseManager) {}
+  public yje(AntiphingHandler paramAntiphingHandler) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
+    if (QLog.isDevelopLevel()) {
+      QLog.d(AntiphingHandler.a(this.a), 4, "right button is clicked! ");
+    }
+    AntiphingHandler.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     yje
  * JD-Core Version:    0.7.0.1
  */

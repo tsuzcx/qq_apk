@@ -1,33 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudLBSLocationCheckCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl.ARCloudControlCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
-import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aaak
-  implements ARCloudFileUpload.ARCloudLBSLocationCheckCallback
+  implements Runnable
 {
-  public aaak(ARCloudControl paramARCloudControl) {}
+  public aaak(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, int[] paramArrayOfInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong) {}
   
-  public void a(ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult)
+  public void run()
   {
-    ARCloudControl.f(this.a, false);
-    if (ARCloudControl.a(this.a)) {
-      return;
-    }
-    if (ARCloudControl.a(this.a) != null) {
-      ARCloudControl.a(this.a).removeMessages(2);
-    }
-    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramARCloudLBSLocationCheckResult.jdField_a_of_type_Int + ", imageId = " + paramARCloudLBSLocationCheckResult.jdField_a_of_type_JavaLangString);
-    if (ARCloudControl.a(this.a) != null)
+    ARWorldCupGlobalSceneRenderable.b(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable);
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.b != 1) {}
+    do
     {
-      ARCloudRecogResult.a(this.a.a.recognitions, ARCloudControl.a(this.a), paramARCloudLBSLocationCheckResult);
-      ARCloudControl.a(this.a).a(0, ARCloudControl.a(this.a));
-    }
-    ARCloudControl.a(this.a, null);
+      return;
+      ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).native_onTouchMove(this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, this.b, this.jdField_a_of_type_Long, ARWorldCupGlobalSceneRenderable.c(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable));
+    } while (!QLog.isColorLevel());
+    QLog.d("ARWorldCupGlobalSceneRenderable", 2, "ACTION_MOVE native_onTouchMove");
   }
 }
 

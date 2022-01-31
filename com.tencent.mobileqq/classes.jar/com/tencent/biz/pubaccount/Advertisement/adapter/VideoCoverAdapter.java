@@ -24,8 +24,8 @@ import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import kuf;
-import kug;
+import ktq;
+import ktr;
 
 public class VideoCoverAdapter
   extends PagerAdapter
@@ -39,7 +39,7 @@ public class VideoCoverAdapter
   private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
   private TVK_IMediaPlayer.OnCompletionListener jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer$OnCompletionListener;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private kug jdField_a_of_type_Kug;
+  private ktr jdField_a_of_type_Ktr;
   private boolean jdField_a_of_type_Boolean;
   
   public VideoCoverAdapter(Context paramContext, AdvertisementSplitedProgressBar paramAdvertisementSplitedProgressBar, AdvertisementItem paramAdvertisementItem, TVK_IMediaPlayer.OnCompletionListener paramOnCompletionListener)
@@ -51,8 +51,8 @@ public class VideoCoverAdapter
     for (this.jdField_a_of_type_JavaUtilArrayList = paramAdvertisementItem.jdField_a_of_type_JavaUtilArrayList;; this.jdField_a_of_type_JavaUtilArrayList = new ArrayList())
     {
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem = paramAdvertisementItem;
-      this.jdField_a_of_type_Kug = new kug(this, null);
-      AppNetConnInfo.registerConnectionChangeReceiver(paramContext, this.jdField_a_of_type_Kug);
+      this.jdField_a_of_type_Ktr = new ktr(this, null);
+      AppNetConnInfo.registerConnectionChangeReceiver(paramContext, this.jdField_a_of_type_Ktr);
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
       return;
@@ -163,7 +163,7 @@ public class VideoCoverAdapter
   {
     if (paramBoolean) {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new kuf(this), 500L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ktq(this), 500L);
       }
     }
     VideoCoverView localVideoCoverView;
@@ -191,7 +191,7 @@ public class VideoCoverAdapter
     this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar = null;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_AndroidOsHandler = null;
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Kug);
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Ktr);
     if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null)
     {
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();

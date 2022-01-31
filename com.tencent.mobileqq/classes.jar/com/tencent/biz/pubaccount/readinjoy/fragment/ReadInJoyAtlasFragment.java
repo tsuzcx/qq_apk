@@ -70,6 +70,9 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import lmz;
+import lna;
+import lnb;
 import lnc;
 import lnd;
 import lne;
@@ -80,9 +83,6 @@ import lni;
 import lnj;
 import lnk;
 import lnl;
-import lnm;
-import lnn;
-import lno;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -101,22 +101,22 @@ public class ReadInJoyAtlasFragment
   private long jdField_a_of_type_Long;
   protected final AnimatorSet a;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new lnm(this);
+  ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new lnj(this);
   public View a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   public TextView a;
-  ValueAnimator.AnimatorUpdateListener jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator$AnimatorUpdateListener = new lnl(this);
-  ReadInJoyAtlasViewPagerAdapter.OnChildGalleryEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter$OnChildGalleryEventListener = new lno(this);
+  ValueAnimator.AnimatorUpdateListener jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator$AnimatorUpdateListener = new lni(this);
+  ReadInJoyAtlasViewPagerAdapter.OnChildGalleryEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter$OnChildGalleryEventListener = new lnl(this);
   public ReadInJoyAtlasViewPagerAdapter a;
-  private ReadInJoyAtlasFragment.ReportEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment$ReportEventListener = new lng(this);
+  private ReadInJoyAtlasFragment.ReportEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment$ReportEventListener = new lnd(this);
   public ReadInJoyAtlasManager.AtlasCallback a;
-  ReadInJoyAllInOneBar.OnAllInOnEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar$OnAllInOnEventListener = new lnc(this);
+  ReadInJoyAllInOneBar.OnAllInOnEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar$OnAllInOnEventListener = new lmz(this);
   public ReadInJoyAllInOneBar a;
-  ReadInJoyAtlasViewPager.PageItemScrollListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager$PageItemScrollListener = new lnd(this);
+  ReadInJoyAtlasViewPager.PageItemScrollListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager$PageItemScrollListener = new lna(this);
   public ReadInJoyAtlasViewPager a;
-  ReadInJoySwipeView.OnSlidingFinishListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySwipeView$OnSlidingFinishListener = new lnn(this);
+  ReadInJoySwipeView.OnSlidingFinishListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySwipeView$OnSlidingFinishListener = new lnk(this);
   ReadInJoySwipeView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySwipeView;
-  private VariableSizeTextView.OnSizeChangedListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener = new lnf(this);
+  private VariableSizeTextView.OnSizeChangedListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener = new lnc(this);
   public VariableSizeTextView a;
   public URLImageView a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -135,12 +135,13 @@ public class ReadInJoyAtlasFragment
   protected View c;
   private String jdField_c_of_type_JavaLangString = "";
   private List jdField_c_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_c_of_type_Boolean = true;
+  private boolean jdField_c_of_type_Boolean;
   private int jdField_d_of_type_Int;
   private long jdField_d_of_type_Long;
   protected View d;
   private String jdField_d_of_type_JavaLangString;
   private List jdField_d_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_d_of_type_Boolean = true;
   private int jdField_e_of_type_Int = 99;
   protected View e;
   private String jdField_e_of_type_JavaLangString;
@@ -159,7 +160,7 @@ public class ReadInJoyAtlasFragment
   
   public ReadInJoyAtlasFragment()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback = new lnh(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback = new lne(this);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   }
   
@@ -211,7 +212,7 @@ public class ReadInJoyAtlasFragment
   private String a(List paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
-      return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131438672);
+      return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131438690);
     }
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -276,10 +277,10 @@ public class ReadInJoyAtlasFragment
   private void a(String paramString)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, null);
-    localActionSheet.a(2131435854, 1);
-    localActionSheet.a(2131435860, 1);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new lne(this, localActionSheet, paramString));
+    localActionSheet.a(2131435871, 1);
+    localActionSheet.a(2131435877, 1);
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new lnb(this, localActionSheet, paramString));
     localActionSheet.show();
   }
   
@@ -418,7 +419,7 @@ public class ReadInJoyAtlasFragment
     {
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.2F, 1.0F });
       View localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getChildAt(0);
-      localValueAnimator.addUpdateListener(new lni(this, localView));
+      localValueAnimator.addUpdateListener(new lnf(this, localView));
       localValueAnimator.setDuration(300L);
       localValueAnimator.setTarget(localView);
       localValueAnimator.start();
@@ -427,6 +428,9 @@ public class ReadInJoyAtlasFragment
   
   public boolean d()
   {
+    if (this.jdField_c_of_type_Boolean) {
+      return true;
+    }
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getCurrentItem() == 0))
     {
       Bundle localBundle = new Bundle();
@@ -459,7 +463,7 @@ public class ReadInJoyAtlasFragment
     ((ObjectAnimator)localObject2).setDuration(400L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.play((Animator)localObject1).with((Animator)localObject2);
-    ((ObjectAnimator)localObject1).addUpdateListener(new lnk(this));
+    ((ObjectAnimator)localObject1).addListener(new lnh(this));
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.setTarget(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySwipeView);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
@@ -522,9 +526,9 @@ public class ReadInJoyAtlasFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131366877: 
-    case 2131363985: 
-    case 2131363986: 
+    case 2131366919: 
+    case 2131364009: 
+    case 2131364010: 
       do
       {
         do
@@ -537,20 +541,20 @@ public class ReadInJoyAtlasFragment
           ReadInJoyAtlasManager.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback);
           return;
         }
-        ThreadManager.getUIHandler().postDelayed(new lnj(this), 400L);
+        ThreadManager.getUIHandler().postDelayed(new lng(this), 400L);
         return;
       } while (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString));
       localObject = new Intent(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", ReadInJoyConstants.i + Base64Util.encodeToString(this.jdField_c_of_type_JavaLangString.getBytes(), 2));
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity((Intent)localObject);
       i = 0;
-      if (paramView.getId() == 2131363986) {
+      if (paramView.getId() == 2131364010) {
         i = 1;
       }
       paramView = GalleryReportedUtils.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_d_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaLangString, i);
       PublicAccountReportUtils.a(null, "", "0X8008E31", "0X8008E31", 0, 0, "", this.jdField_a_of_type_Long + "", this.jdField_c_of_type_Long + "", paramView, false);
       return;
-    case 2131363983: 
+    case 2131364007: 
       paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.a();
       if (paramView != null)
       {
@@ -560,7 +564,7 @@ public class ReadInJoyAtlasFragment
         ((Bundle)localObject).putSerializable("lastShowImageModel", paramView);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment$ReportEventListener.a(-2, (Bundle)localObject);
       }
-    case 2131363989: 
+    case 2131364013: 
       e();
       return;
     }
@@ -577,7 +581,7 @@ public class ReadInJoyAtlasFragment
   {
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
     jdField_a_of_type_JavaUtilList.add(new WeakReference(this));
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969545, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969552, paramViewGroup, false);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
@@ -593,24 +597,24 @@ public class ReadInJoyAtlasFragment
       this.jdField_c_of_type_Long = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getLongExtra("BUNDLE_KEY_STRATEGY_ID", 0L);
       this.jdField_g_of_type_Int = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("BUNDLE_KEY_HAS_READED", 0);
       this.jdField_d_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySwipeView = ((ReadInJoySwipeView)paramLayoutInflater.findViewById(2131362693));
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131366881);
-      this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131366882);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySwipeView = ((ReadInJoySwipeView)paramLayoutInflater.findViewById(2131362711));
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131366923);
+      this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131366924);
       b(0);
       this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131361845));
-      this.jdField_f_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131366877);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131366878));
+      this.jdField_f_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131366919);
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131366920));
       this.jdField_f_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131363983);
-      this.jdField_d_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131363989);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131363986));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131363985));
+      this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131364007);
+      this.jdField_d_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131364013);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364010));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131364009));
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(ImageUtil.b());
-      this.jdField_e_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131363988);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar = ((ReadInJoyAllInOneBar)paramLayoutInflater.findViewById(2131366879));
+      this.jdField_e_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131364012);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar = ((ReadInJoyAllInOneBar)paramLayoutInflater.findViewById(2131366921));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar.setVisibility(4);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar.setOnAllInOneEventListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar$OnAllInOnEventListener);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView = ((VariableSizeTextView)paramLayoutInflater.findViewById(2131366880));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView = ((VariableSizeTextView)paramLayoutInflater.findViewById(2131366922));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setVisibility(4);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setOnSizeChangedListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
@@ -618,7 +622,7 @@ public class ReadInJoyAtlasFragment
       this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_e_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager = ((ReadInJoyAtlasViewPager)paramLayoutInflater.findViewById(2131363096));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager = ((ReadInJoyAtlasViewPager)paramLayoutInflater.findViewById(2131363114));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.setmDirectionMask(11);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.setOffscreenPageLimit(2);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.setOnPageChangeListener(this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener);

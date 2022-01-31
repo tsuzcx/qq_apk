@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import aezj;
-import aezk;
+import afmp;
+import afmq;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -29,19 +29,19 @@ public class NearbyCustomDialog
   
   public NearbyCustomDialog(Context paramContext)
   {
-    super(paramContext, 2131624515);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aezj(this);
+    super(paramContext, 2131624516);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new afmp(this);
     a();
   }
   
   private void a()
   {
     setContentView(2130968849);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364033));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363360));
-    this.b = ((TextView)findViewById(2131364034));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364035));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363154));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364057));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363378));
+    this.b = ((TextView)findViewById(2131364058));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364059));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363172));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("关闭");
   }
@@ -84,12 +84,12 @@ public class NearbyCustomDialog
     for (int i = paramButtonInfo.jdField_a_of_type_Int;; i = -1)
     {
       localButton.setTextColor(i);
-      localButton.setOnClickListener(new aezk(this, paramButtonInfo));
+      localButton.setOnClickListener(new afmq(this, paramButtonInfo));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localButton, localLayoutParams);
       return this;
       localObject = "";
       break;
-      localObject = getContext().getResources().getDrawable(2130838487);
+      localObject = getContext().getResources().getDrawable(2130838491);
       break label76;
     }
   }

@@ -1,53 +1,35 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcess;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface.Stub;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class aerk
-  implements View.OnClickListener
+  extends NearbyProcessInterface.Stub
 {
-  public aerk(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel, String paramString) {}
+  public aerk(NearbyProcess paramNearbyProcess) {}
   
-  public void onClick(View paramView)
+  public Message a(Message paramMessage)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString + "&type" + NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel).gender);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.e != 2) {
-      if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel).gender == 0)
-      {
-        paramView = "他";
-        ((Intent)localObject).putExtra("title", paramView + "的更新");
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.startActivity((Intent)localObject);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app;
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.e != 2) {
-          break label254;
-        }
-      }
+    if (paramMessage == null) {
+      return null;
     }
-    label254:
-    for (paramView = "1";; paramView = "2")
+    return this.a.b(paramMessage);
+  }
+  
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  {
+    if (paramBasicTypeDataParcel == null) {}
+    Object[] arrayOfObject;
+    do
     {
-      ReportController.b((QQAppInterface)localObject, "dc00899", "grp_lbs", "", "data_card", "clk_pub", 0, 0, paramView, "", "", "");
-      return;
-      paramView = "她";
-      break;
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app == null)
-      {
-        QLog.w("NearbyProfileDisplayTribePanel", 2, "mActivity.app == null is true!");
-        return;
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
       }
-      ((NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app.getManager(105)).d.put(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app.getCurrentAccountUin(), Integer.valueOf(1));
-      paramView = "我";
-      break;
-    }
+      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    } while (arrayOfObject == null);
+    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
   }
 }
 

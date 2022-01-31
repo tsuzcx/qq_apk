@@ -1,17 +1,36 @@
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
-import cooperation.comic.VipComicNavConfigHelper;
-import cooperation.comic.VipComicSoHelper;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
+import com.tencent.qphone.base.util.QLog;
 
-class zoc
-  implements Runnable
+public class zoc
+  extends ProtoUtils.TroopProtocolObserver
 {
-  zoc(zob paramzob) {}
+  public zoc(TroopHandler paramTroopHandler) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    VipComicNavConfigHelper.a(QQComicStep.b(this.a.a).b);
-    VipComicSoHelper.a(QQComicStep.c(this.a.a).b);
+    if (paramInt == 0)
+    {
+      paramBundle = new oidb_0x496.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        TroopHandler.a(this.a, paramBundle);
+        TroopHandler.b(this.a, paramBundle);
+        TroopHandler.c(this.a, paramBundle);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
+        return;
+      }
+    }
+    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
   }
 }
 

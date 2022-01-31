@@ -1,15 +1,18 @@
-import cooperation.groupvideo.GroupVideoWrapper;
-import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo.Medal;
 
-class jnr
-  implements GroupVideoWrapper.OnGVideoReadyListener
+public final class jnr
+  implements Parcelable.Creator
 {
-  jnr(jnq paramjnq) {}
-  
-  public void a(GroupVideoWrapper paramGroupVideoWrapper)
+  public RecvGVideoLevelInfo.Medal a(Parcel paramParcel)
   {
-    paramGroupVideoWrapper.b();
-    paramGroupVideoWrapper.a();
+    return new RecvGVideoLevelInfo.Medal(paramParcel);
+  }
+  
+  public RecvGVideoLevelInfo.Medal[] a(int paramInt)
+  {
+    return new RecvGVideoLevelInfo.Medal[paramInt];
   }
 }
 

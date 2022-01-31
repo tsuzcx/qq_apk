@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.nearby.profilecard.moment.CommentsAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.CommentsAdapter.CommentsItemClickListener;
+import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
+import com.tencent.mobileqq.nearby.now.send.uploader.WordsCheck.OnResultListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aewr
-  implements View.OnClickListener
+public final class aewr
+  implements CsTask.OnCsError
 {
-  public aewr(CommentsAdapter paramCommentsAdapter, ViewGroup paramViewGroup) {}
+  public aewr(WordsCheck.OnResultListener paramOnResultListener) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if (CommentsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter) != null) {
-      CommentsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter).a(this.jdField_a_of_type_AndroidViewViewGroup);
+    QLog.e("WordsCheck", 1, "onError, code=" + paramInt);
+    if (this.a != null) {
+      this.a.a(0);
     }
   }
 }

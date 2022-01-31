@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public final class uin
-  implements Parcelable.Creator
+public class uin
 {
-  public ForwardUtils.SectionBase a(Parcel paramParcel)
-  {
-    return new ForwardUtils.SectionBase(paramParcel);
-  }
-  
-  public ForwardUtils.SectionBase[] a(int paramInt)
-  {
-    return new ForwardUtils.SectionBase[paramInt];
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

@@ -1,25 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
 
 public class txg
-  implements View.OnClickListener
+  implements Runnable
 {
-  public txg(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public txg(TroopGagActivity paramTroopGagActivity, TroopGagMgr paramTroopGagMgr) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.c = false;
-    this.a.t = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.b.setVisibility(0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity.a, true);
   }
 }
 

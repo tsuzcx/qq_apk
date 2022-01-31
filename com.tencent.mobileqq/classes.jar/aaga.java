@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipReqInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.ar.arengine.AREngine;
 
 public class aaga
+  implements Runnable
 {
-  public ARRelationShipFileUpload.ARRelationShipFileUploadCallBack a;
-  public ARRelationShipFileUpload.ARRelationShipReqInfo a;
-  public Transaction a;
+  public aaga(AREngine paramAREngine) {}
   
-  public aaga()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-    this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipFileUploadCallBack = null;
+    AREngine.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaga
  * JD-Core Version:    0.7.0.1
  */

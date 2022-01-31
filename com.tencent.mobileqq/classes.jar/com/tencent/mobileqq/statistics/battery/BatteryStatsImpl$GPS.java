@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics.battery;
 
-import ahsm;
+import aigp;
 import android.app.PendingIntent;
 import android.location.Criteria;
 import android.location.LocationListener;
@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class BatteryStatsImpl$GPS
-  extends ahsm
+  extends aigp
   implements HookMethodCallback
 {
   private int jdField_a_of_type_Int = 3;

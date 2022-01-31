@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
-class acip
-  implements Runnable
+public class acip
+  implements View.OnTouchListener
 {
-  acip(acil paramacil) {}
+  public acip(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.e();
+    int i = paramMotionEvent.getAction();
+    if (i == 0) {
+      ExtendFriendProfileEditFragment.a(this.a).setVisibility(0);
+    }
+    while ((i != 1) && (i != 3)) {
+      return false;
+    }
+    ExtendFriendProfileEditFragment.a(this.a).setVisibility(8);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acip
  * JD-Core Version:    0.7.0.1
  */

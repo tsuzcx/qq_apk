@@ -15,6 +15,9 @@ public final class oidb_cmd0x68b$ReqGetFollowTabPara
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_device_id = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_last_feed_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_red_dot_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_refresh_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_set_top_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBRepeatField rpt_curr_article_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBRepeatMessageField rpt_expose_topic_list = PBField.initRepeatMessage(oidb_cmd0x68b.ExposeTopic.class);
@@ -29,7 +32,10 @@ public final class oidb_cmd0x68b$ReqGetFollowTabPara
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 88, 96, 104, 114, 122, 128, 138, 146, 152 }, new String[] { "uint64_channel_id", "uint64_begin_recommend_seq", "uint64_end_recommend_seq", "rpt_curr_article_list", "bytes_set_top_cookie", "bytes_device_id", "uint32_update_times", "rpt_inner_msg_list", "rpt_expose_topic_list", "uint32_enter_topic_reddot_time" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), null, null, Integer.valueOf(0) }, ReqGetFollowTabPara.class);
+    ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 88, 96, 104, 114, 122, 128, 138, 146, 152, 162, 170, 178 }, new String[] { "uint64_channel_id", "uint64_begin_recommend_seq", "uint64_end_recommend_seq", "rpt_curr_article_list", "bytes_set_top_cookie", "bytes_device_id", "uint32_update_times", "rpt_inner_msg_list", "rpt_expose_topic_list", "uint32_enter_topic_reddot_time", "bytes_refresh_cookie", "bytes_last_feed_cookie", "bytes_red_dot_cookie" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), null, null, Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, localByteStringMicro5 }, ReqGetFollowTabPara.class);
   }
 }
 

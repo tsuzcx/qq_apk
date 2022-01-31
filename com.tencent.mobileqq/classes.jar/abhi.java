@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardUinInfo;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
 
-public final class abhi
-  implements Parcelable.Creator
+class abhi
+  implements Runnable
 {
-  public CardUinInfo a(Parcel paramParcel)
-  {
-    return new CardUinInfo(paramParcel);
-  }
+  abhi(abhg paramabhg) {}
   
-  public CardUinInfo[] a(int paramInt)
+  public void run()
   {
-    return new CardUinInfo[paramInt];
+    if (!this.a.a.jdField_b_of_type_Boolean) {
+      this.a.a.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    }
   }
 }
 

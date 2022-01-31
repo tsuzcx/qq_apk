@@ -1,35 +1,20 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter;
-import com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter.ViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class ajip
-  implements TroopManager.ITroopMemberInfoCallBack
+  implements DialogInterface.OnClickListener
 {
-  public TroopOnlineMemberListAdapter.ViewHolder a;
+  public ajip(ReciteFragment paramReciteFragment) {}
   
-  private ajip(TroopOnlineMemberListAdapter paramTroopOnlineMemberListAdapter) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
-    {
-      paramTroopMemberInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter.a.getManager(51)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin);
-      this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
-      if (AppSetting.b) {
-        TroopOnlineMemberListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter, this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder);
-      }
-    }
+    ReciteFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajip
  * JD-Core Version:    0.7.0.1
  */

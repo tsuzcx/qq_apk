@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import myw;
+import nah;
 
 @TargetApi(14)
 public class PreloadDownloaderManager
@@ -128,7 +128,7 @@ public class PreloadDownloaderManager
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new myw(this);
+    this.jdField_a_of_type_JavaLangRunnable = new nah(this);
     ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
   }
   

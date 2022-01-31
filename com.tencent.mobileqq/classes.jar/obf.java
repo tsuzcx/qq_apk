@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserSelfInfoStep;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.utils.UncheckedCallable;
 
-public final class obf
-  implements Parcelable.Creator
+public class obf
+  implements UncheckedCallable
 {
-  public EditLocalGifSource a(Parcel paramParcel)
-  {
-    return new EditLocalGifSource(paramParcel);
-  }
+  public obf(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public EditLocalGifSource[] a(int paramInt)
+  public GetUserSelfInfoStep a()
   {
-    return new EditLocalGifSource[paramInt];
+    return new GetUserSelfInfoStep(null);
   }
 }
 

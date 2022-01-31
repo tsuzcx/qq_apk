@@ -1,19 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.QzoneSyncQQStoryTool;
 
-class xoe
-  implements DialogInterface.OnClickListener
+public class xoe
+  implements View.OnClickListener
 {
-  xoe(xod paramxod) {}
+  public xoe(EditLocalVideoActivity paramEditLocalVideoActivity, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.a.a.getIntent();
-    paramDialogInterface.putExtra("flow_back", 0);
-    this.a.a.setResult(1001, paramDialogInterface);
-    this.a.a.finish();
+    boolean bool = true;
+    if (EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity))
+    {
+      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setSelected(false);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity;
+      if (EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity)) {
+        break label73;
+      }
+    }
+    for (;;)
+    {
+      EditLocalVideoActivity.b(paramView, bool);
+      QzoneSyncQQStoryTool.a(this.jdField_a_of_type_Long, EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity));
+      return;
+      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setSelected(true);
+      break;
+      label73:
+      bool = false;
+    }
   }
 }
 

@@ -2,14 +2,14 @@ package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import anlx;
-import anlz;
-import anma;
-import anme;
-import anmf;
-import anmg;
-import anmh;
-import anmi;
+import aocc;
+import aoce;
+import aocf;
+import aocj;
+import aock;
+import aocl;
+import aocm;
+import aocn;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -18,11 +18,11 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public class VideoFrameLoader
-  implements anma
+  implements aocf
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private anlz jdField_a_of_type_Anlz;
+  private aoce jdField_a_of_type_Aoce;
   private String jdField_a_of_type_JavaLangString;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -40,7 +40,7 @@ public class VideoFrameLoader
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    ThreadManager.getUIHandler().post(new anme(this));
+    ThreadManager.getUIHandler().post(new aocj(this));
   }
   
   public void a(int paramInt)
@@ -48,7 +48,7 @@ public class VideoFrameLoader
     if (QLog.isColorLevel()) {
       QLog.d("VideoFrameLoader", 2, "onDecodeError , code:" + paramInt);
     }
-    ThreadManager.getUIHandler().post(new anmh(this));
+    ThreadManager.getUIHandler().post(new aocm(this));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -62,8 +62,8 @@ public class VideoFrameLoader
     this.c = paramInt1;
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_b_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Anlz = new anlx(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this);
-    ThreadManager.post(this.jdField_a_of_type_Anlz, 10, null, true);
+    this.jdField_a_of_type_Aoce = new aocc(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this);
+    ThreadManager.post(this.jdField_a_of_type_Aoce, 10, null, true);
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -82,7 +82,7 @@ public class VideoFrameLoader
     {
       QLog.d("VideoFrameLoader", 2, bool);
       if ((paramInt >= 0) && (paramInt < this.c)) {
-        ThreadManager.getUIHandler().post(new anmf(this, paramInt, paramBitmap));
+        ThreadManager.getUIHandler().post(new aock(this, paramInt, paramBitmap));
       }
       return;
     }
@@ -93,7 +93,7 @@ public class VideoFrameLoader
     if (QLog.isColorLevel()) {
       QLog.d("VideoFrameLoader", 2, "onDecodeKeyFrameList");
     }
-    ThreadManager.getUIHandler().post(new anmi(this, paramList));
+    ThreadManager.getUIHandler().post(new aocn(this, paramList));
   }
   
   public void a(boolean paramBoolean)
@@ -101,7 +101,7 @@ public class VideoFrameLoader
     if (QLog.isColorLevel()) {
       QLog.d("VideoFrameLoader", 2, "onDecodeEnd, finish:" + paramBoolean);
     }
-    ThreadManager.getUIHandler().post(new anmg(this));
+    ThreadManager.getUIHandler().post(new aocl(this));
   }
   
   public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt, VideoFrameLoader.VideoFrameLoaderListener paramVideoFrameLoaderListener)
@@ -126,10 +126,10 @@ public class VideoFrameLoader
     if (QLog.isColorLevel()) {
       QLog.d("VideoFrameLoader", 2, "stop， mListItems: :" + this.jdField_a_of_type_JavaUtilList.size() + " useRetriever:" + this.jdField_a_of_type_Boolean);
     }
-    if (this.jdField_a_of_type_Anlz != null)
+    if (this.jdField_a_of_type_Aoce != null)
     {
-      this.jdField_a_of_type_Anlz.a();
-      this.jdField_a_of_type_Anlz = null;
+      this.jdField_a_of_type_Aoce.a();
+      this.jdField_a_of_type_Aoce = null;
     }
   }
   

@@ -1,12 +1,13 @@
-class vdp
-  implements Runnable
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+
+public class vdp
+  implements DialogInterface.OnClickListener
 {
-  vdp(vdo paramvdo) {}
+  public vdp(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public void run()
-  {
-    this.a.a.d = false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

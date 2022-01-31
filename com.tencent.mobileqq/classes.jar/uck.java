@@ -1,18 +1,35 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class uck
-  extends ContactBindObserver
+  extends Handler
 {
-  public uck(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public uck(TroopRequestActivity paramTroopRequestActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
+    default: 
+      return;
+    case 0: 
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131434462), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131434464), 0).b(this.a.getTitleBarHeight());
+      return;
     }
+    paramMessage = (String)paramMessage.obj;
+    this.a.p.setText(paramMessage + "");
+    this.a.p.setContentDescription(paramMessage + "");
+    this.a.p.setVisibility(0);
   }
 }
 

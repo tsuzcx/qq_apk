@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.util;
 
 import QQService.EVIPSPEC;
-import ajmd;
-import ajme;
-import ajmf;
-import ajmi;
-import ajmj;
-import ajmm;
-import ajmp;
-import ajmq;
+import akai;
+import akaj;
+import akak;
+import akan;
+import akao;
+import akar;
+import akau;
+import akav;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -311,7 +311,7 @@ public class ProfileCardUtil
     if ((paramIntent == null) || (TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
       return paramIntent;
     }
-    String str = String.format("http://ti.qq.com/qcard/index.html?qq=%s&appid=%s&version=%s&_wv=1027", new Object[] { paramString, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.0" });
+    String str = String.format("http://ti.qq.com/qcard/index.html?qq=%s&appid=%s&version=%s&_wv=1027", new Object[] { paramString, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.3" });
     paramString = str;
     if (b()) {
       paramString = str + "&intl=1";
@@ -1270,7 +1270,7 @@ public class ProfileCardUtil
   public static String a(Context paramContext)
   {
     paramContext = paramContext.getDir(".profilecard", 0);
-    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_label_config.json" + "7.6.0";
+    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_label_config.json" + "7.6.3";
   }
   
   public static String a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3)
@@ -1278,7 +1278,7 @@ public class ProfileCardUtil
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt1 == 0)
     {
-      localStringBuilder.append(paramContext.getString(2131433924));
+      localStringBuilder.append(paramContext.getString(2131433941));
       localStringBuilder.append("  ");
     }
     for (;;)
@@ -1286,7 +1286,7 @@ public class ProfileCardUtil
       if (paramInt2 != 0)
       {
         localStringBuilder.append(paramInt2);
-        localStringBuilder.append(paramContext.getString(2131433926));
+        localStringBuilder.append(paramContext.getString(2131433943));
         localStringBuilder.append("  ");
       }
       paramContext = NearbyProfileUtil.c(paramInt3);
@@ -1326,7 +1326,7 @@ public class ProfileCardUtil
       return localStringBuilder.toString();
       if (paramInt1 == 1)
       {
-        localStringBuilder.append(paramContext.getString(2131433925));
+        localStringBuilder.append(paramContext.getString(2131433942));
         localStringBuilder.append("  ");
       }
     }
@@ -1337,7 +1337,7 @@ public class ProfileCardUtil
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt1 == 0)
     {
-      localStringBuilder.append(paramContext.getString(2131433924));
+      localStringBuilder.append(paramContext.getString(2131433941));
       localStringBuilder.append("  ");
     }
     for (;;)
@@ -1345,7 +1345,7 @@ public class ProfileCardUtil
       if (paramInt2 != 0)
       {
         localStringBuilder.append(paramInt2);
-        localStringBuilder.append(paramContext.getString(2131433926));
+        localStringBuilder.append(paramContext.getString(2131433943));
         localStringBuilder.append("  ");
       }
       String str = "";
@@ -1379,7 +1379,7 @@ public class ProfileCardUtil
       return localStringBuilder.toString();
       if (paramInt1 == 1)
       {
-        localStringBuilder.append(paramContext.getString(2131433925));
+        localStringBuilder.append(paramContext.getString(2131433942));
         localStringBuilder.append("  ");
       }
     }
@@ -1400,7 +1400,7 @@ public class ProfileCardUtil
       {
         localObject = paramProfileCardInfo;
         if (!b()) {
-          localObject = i + paramContext.getString(2131433926);
+          localObject = i + paramContext.getString(2131433943);
         }
       }
       paramProfileCardInfo = "";
@@ -1534,7 +1534,7 @@ public class ProfileCardUtil
     String str = paramAllInOne.jdField_a_of_type_JavaLangString;
     QidianManager localQidianManager = (QidianManager)paramQQAppInterface.getManager(164);
     if (localQidianManager.a(str)) {
-      paramQQAppInterface = String.format("https://datacard.qidian.qq.com/static/1_%s_more.htm?appid=%s&version=%s&_wv=1027", new Object[] { str, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.0" });
+      paramQQAppInterface = String.format("https://datacard.qidian.qq.com/static/1_%s_more.htm?appid=%s&version=%s&_wv=1027", new Object[] { str, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.3" });
     }
     for (;;)
     {
@@ -1549,7 +1549,7 @@ public class ProfileCardUtil
       }
       else
       {
-        paramActivity = String.format("http://ti.qq.com/qcard/index.html?qq=%s&appid=%s&version=%s&_wv=1027", new Object[] { str, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.0" });
+        paramActivity = String.format("http://ti.qq.com/qcard/index.html?qq=%s&appid=%s&version=%s&_wv=1027", new Object[] { str, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.3" });
         paramQQAppInterface = paramActivity;
         if (b()) {
           paramQQAppInterface = paramActivity + "&intl=1";
@@ -1704,7 +1704,6 @@ public class ProfileCardUtil
   
   public static String a(String paramString1, String paramString2, int paramInt1, int paramInt2, List paramList)
   {
-    int k = 0;
     Object localObject1 = new ArrayList();
     paramList = paramList.iterator();
     Object localObject2;
@@ -1752,45 +1751,34 @@ public class ProfileCardUtil
       paramList = (MessageRecord)localIterator.next();
       if (paramList != null)
       {
-        label304:
+        label301:
         int i;
-        label405:
-        int j;
         if ((paramList.istroop == 1000) || (paramList.istroop == 1004)) {
           if (paramList.isSend())
           {
             localObject1 = paramList.selfuin;
             if (((paramInt1 == 1101) || (paramInt1 == 10026) || (paramInt1 == 10027) || (paramInt1 == 11011)) && (((!TextUtils.isEmpty(paramString2)) && (!TextUtils.equals((CharSequence)localObject1, paramString1))) || ((paramInt1 == 10000) && (!TextUtils.equals((CharSequence)localObject1, paramString1))))) {
-              break label723;
+              break label697;
             }
             if (!(paramList instanceof MessageForPic)) {
-              break label738;
+              break label699;
             }
             paramList = (MessageForPic)paramList;
             paramList.parse();
-            if (TextUtils.isEmpty(paramList.rawMsgUrl)) {
-              break label725;
-            }
-            paramList = paramList.rawMsgUrl;
-            i = 1;
+            paramList = paramList.uuid;
             localObject2 = "2";
-            j = 0;
-            label413:
+            i = 0;
+            label396:
             localObject3 = paramList;
-            if (j == 0)
-            {
-              localObject3 = paramList;
-              if (i != 0) {}
-            }
+            if (i != 0) {}
           }
         }
         for (;;)
         {
           for (;;)
           {
-            label723:
-            label725:
-            label738:
+            label697:
+            label699:
             try
             {
               localObject3 = paramList.replace("\"", "\\\"");
@@ -1824,26 +1812,22 @@ public class ProfileCardUtil
             }
             catch (Throwable localThrowable2)
             {
-              label821:
+              label776:
               List localList;
-              break label821;
+              break label776;
             }
           }
           localObject1 = paramList.frienduin;
-          break label304;
+          break label301;
           localObject1 = paramList.senderuin;
-          break label304;
+          break label301;
           break;
-          paramList = paramList.uuid;
-          i = 0;
-          break label405;
           if (((paramList instanceof MessageForText)) || ((paramList instanceof MessageForLongMsg)))
           {
             paramList = paramList.msg;
             localObject2 = "1";
-            j = 0;
             i = 0;
-            break label413;
+            break label396;
           }
           if (!(paramList instanceof MessageForStructing)) {
             break;
@@ -1853,10 +1837,9 @@ public class ProfileCardUtil
             break;
           }
           paramList = paramList.getXml();
+          i = 1;
           localObject2 = "3";
-          j = 1;
-          i = 0;
-          break label413;
+          break label396;
           localThrowable1.printStackTrace();
           localList = paramList;
         }
@@ -1864,7 +1847,6 @@ public class ProfileCardUtil
     }
     paramString1 = new StringBuilder();
     paramString1.append("chatmsg:");
-    paramInt1 = k;
     if (((List)localObject4).size() > paramInt2) {
       paramInt1 = ((List)localObject4).size() - paramInt2;
     }
@@ -1872,6 +1854,8 @@ public class ProfileCardUtil
     {
       paramString1.append((String)((List)localObject4).get(paramInt1));
       paramInt1 += 1;
+      continue;
+      paramInt1 = 0;
     }
     return URLEncoder.encode(paramString1.toString(), "UTF-8");
   }
@@ -1958,13 +1942,13 @@ public class ProfileCardUtil
     //   6: ifeq +13 -> 19
     //   9: ldc_w 337
     //   12: iconst_2
-    //   13: ldc_w 1183
+    //   13: ldc_w 1180
     //   16: invokestatic 264	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   19: aload_0
     //   20: invokevirtual 968	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   23: astore_0
     //   24: aload_0
-    //   25: invokestatic 1185	com/tencent/mobileqq/util/ProfileCardUtil:b	(Landroid/content/Context;)Ljava/lang/String;
+    //   25: invokestatic 1182	com/tencent/mobileqq/util/ProfileCardUtil:b	(Landroid/content/Context;)Ljava/lang/String;
     //   28: astore 8
     //   30: new 369	java/io/File
     //   33: dup
@@ -1976,14 +1960,14 @@ public class ProfileCardUtil
     //   46: istore 5
     //   48: iload 5
     //   50: ifne +8 -> 58
-    //   53: ldc_w 1187
+    //   53: ldc_w 1184
     //   56: astore 8
     //   58: getstatic 26	com/tencent/mobileqq/util/ProfileCardUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   61: aload 8
     //   63: invokestatic 1058	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   66: ifeq +20 -> 86
     //   69: getstatic 22	com/tencent/mobileqq/util/ProfileCardUtil:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   72: invokevirtual 1188	java/util/ArrayList:isEmpty	()Z
+    //   72: invokevirtual 1185	java/util/ArrayList:isEmpty	()Z
     //   75: ifne +11 -> 86
     //   78: iload_1
     //   79: ifne +7 -> 86
@@ -1993,7 +1977,7 @@ public class ProfileCardUtil
     //   89: ifeq +13 -> 102
     //   92: ldc_w 337
     //   95: iconst_2
-    //   96: ldc_w 1190
+    //   96: ldc_w 1187
     //   99: invokestatic 264	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   102: new 17	java/util/ArrayList
     //   105: dup
@@ -2006,9 +1990,9 @@ public class ProfileCardUtil
     //   120: aload 7
     //   122: invokespecial 387	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   125: astore_0
-    //   126: new 1192	java/io/ByteArrayOutputStream
+    //   126: new 1189	java/io/ByteArrayOutputStream
     //   129: dup
-    //   130: invokespecial 1193	java/io/ByteArrayOutputStream:<init>	()V
+    //   130: invokespecial 1190	java/io/ByteArrayOutputStream:<init>	()V
     //   133: astore 7
     //   135: sipush 4096
     //   138: newarray byte
@@ -2017,7 +2001,7 @@ public class ProfileCardUtil
     //   143: aload 6
     //   145: iconst_0
     //   146: sipush 4096
-    //   149: invokevirtual 1199	java/io/InputStream:read	([BII)I
+    //   149: invokevirtual 1196	java/io/InputStream:read	([BII)I
     //   152: istore_2
     //   153: iload_2
     //   154: iconst_m1
@@ -2026,7 +2010,7 @@ public class ProfileCardUtil
     //   160: aload 6
     //   162: iconst_0
     //   163: iload_2
-    //   164: invokevirtual 1203	java/io/ByteArrayOutputStream:write	([BII)V
+    //   164: invokevirtual 1200	java/io/ByteArrayOutputStream:write	([BII)V
     //   167: goto -25 -> 142
     //   170: astore 9
     //   172: aload 7
@@ -2034,15 +2018,15 @@ public class ProfileCardUtil
     //   176: aload 9
     //   178: astore 7
     //   180: aload 7
-    //   182: invokevirtual 1139	java/lang/Throwable:printStackTrace	()V
+    //   182: invokevirtual 1136	java/lang/Throwable:printStackTrace	()V
     //   185: aload_0
     //   186: ifnull +7 -> 193
     //   189: aload_0
-    //   190: invokevirtual 1204	java/io/InputStream:close	()V
+    //   190: invokevirtual 1201	java/io/InputStream:close	()V
     //   193: aload 6
     //   195: ifnull +8 -> 203
     //   198: aload 6
-    //   200: invokevirtual 1205	java/io/ByteArrayOutputStream:close	()V
+    //   200: invokevirtual 1202	java/io/ByteArrayOutputStream:close	()V
     //   203: aload 8
     //   205: putstatic 26	com/tencent/mobileqq/util/ProfileCardUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   208: aload 10
@@ -2050,17 +2034,17 @@ public class ProfileCardUtil
     //   213: aload 10
     //   215: areturn
     //   216: aload_0
-    //   217: invokevirtual 1209	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   220: ldc_w 1211
-    //   223: invokevirtual 1217	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   217: invokevirtual 1206	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   220: ldc_w 1208
+    //   223: invokevirtual 1214	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   226: astore_0
     //   227: goto -101 -> 126
     //   230: new 28	java/lang/String
     //   233: dup
     //   234: aload 7
-    //   236: invokevirtual 1221	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   239: ldc_w 1223
-    //   242: invokespecial 1226	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   236: invokevirtual 1218	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   239: ldc_w 1220
+    //   242: invokespecial 1223	java/lang/String:<init>	([BLjava/lang/String;)V
     //   245: astore 6
     //   247: aload 6
     //   249: invokevirtual 273	java/lang/String:length	()I
@@ -2071,15 +2055,15 @@ public class ProfileCardUtil
     //   261: invokespecial 752	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   264: astore 6
     //   266: aload 6
-    //   268: ldc_w 1228
-    //   271: invokevirtual 1231	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   268: ldc_w 1225
+    //   271: invokevirtual 1228	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   274: ifeq +574 -> 848
     //   277: aload 6
-    //   279: ldc_w 1228
-    //   282: invokevirtual 1235	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   279: ldc_w 1225
+    //   282: invokevirtual 1232	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   285: astore 6
     //   287: aload 6
-    //   289: invokevirtual 1238	org/json/JSONArray:length	()I
+    //   289: invokevirtual 1235	org/json/JSONArray:length	()I
     //   292: istore_3
     //   293: iconst_0
     //   294: istore_2
@@ -2088,7 +2072,7 @@ public class ProfileCardUtil
     //   297: if_icmpge +489 -> 786
     //   300: aload 6
     //   302: iload_2
-    //   303: invokevirtual 1242	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   303: invokevirtual 1239	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   306: astore 9
     //   308: new 651	com/tencent/mobileqq/profile/ProfileCardTemplate
     //   311: dup
@@ -2096,173 +2080,173 @@ public class ProfileCardUtil
     //   315: astore 11
     //   317: aload 11
     //   319: aload 9
-    //   321: ldc_w 1244
-    //   324: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   321: ldc_w 1241
+    //   324: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   327: i2l
     //   328: putfield 665	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_l_of_type_Long	J
     //   331: aload 11
     //   333: aload 9
-    //   335: ldc_w 1248
-    //   338: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   335: ldc_w 1245
+    //   338: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   341: putfield 668	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   344: aload 11
     //   346: aload 9
-    //   348: ldc_w 1253
-    //   351: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   348: ldc_w 1250
+    //   351: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   354: putfield 670	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   357: aload 11
     //   359: aload 9
-    //   361: ldc_w 1255
-    //   364: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   361: ldc_w 1252
+    //   364: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   367: putfield 671	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   370: aload 11
     //   372: aload 9
-    //   374: ldc_w 1257
-    //   377: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   374: ldc_w 1254
+    //   377: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   380: putfield 672	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_a_of_type_Int	I
     //   383: aload 11
     //   385: aload 9
-    //   387: ldc_w 1259
-    //   390: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   387: ldc_w 1256
+    //   390: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   393: putfield 674	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_b_of_type_Int	I
     //   396: aload 11
     //   398: aload 9
-    //   400: ldc_w 1261
-    //   403: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   400: ldc_w 1258
+    //   403: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   406: putfield 676	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_c_of_type_Int	I
     //   409: aload 11
     //   411: aload 9
-    //   413: ldc_w 1263
-    //   416: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   413: ldc_w 1260
+    //   416: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   419: putfield 677	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   422: aload 11
     //   424: aload 9
-    //   426: ldc_w 1265
-    //   429: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   426: ldc_w 1262
+    //   429: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   432: putfield 680	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_e_of_type_JavaLangString	Ljava/lang/String;
     //   435: aload 11
     //   437: aload 9
-    //   439: ldc_w 1267
-    //   442: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   439: ldc_w 1264
+    //   442: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   445: putfield 683	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_f_of_type_JavaLangString	Ljava/lang/String;
     //   448: aload 11
     //   450: aload 9
-    //   452: ldc_w 1269
-    //   455: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   452: ldc_w 1266
+    //   455: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   458: putfield 686	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_g_of_type_JavaLangString	Ljava/lang/String;
     //   461: aload 11
     //   463: aload 9
-    //   465: ldc_w 1271
-    //   468: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   465: ldc_w 1268
+    //   468: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   471: putfield 689	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_h_of_type_JavaLangString	Ljava/lang/String;
     //   474: aload 11
     //   476: aload 9
-    //   478: ldc_w 1273
-    //   481: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   478: ldc_w 1270
+    //   481: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   484: putfield 691	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_i_of_type_JavaLangString	Ljava/lang/String;
     //   487: aload 11
     //   489: aload 9
-    //   491: ldc_w 1275
-    //   494: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   491: ldc_w 1272
+    //   494: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   497: putfield 694	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_j_of_type_JavaLangString	Ljava/lang/String;
     //   500: aload 11
     //   502: aload 9
-    //   504: ldc_w 1277
-    //   507: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   504: ldc_w 1274
+    //   507: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   510: putfield 697	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_k_of_type_JavaLangString	Ljava/lang/String;
     //   513: aload 11
     //   515: aload 9
-    //   517: ldc_w 1279
-    //   520: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   517: ldc_w 1276
+    //   520: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   523: putfield 699	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_d_of_type_Int	I
     //   526: aload 11
     //   528: aload 9
-    //   530: ldc_w 1281
-    //   533: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   530: ldc_w 1278
+    //   533: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   536: putfield 702	com/tencent/mobileqq/profile/ProfileCardTemplate:p	Ljava/lang/String;
     //   539: aload 11
     //   541: aload 9
-    //   543: ldc_w 1283
-    //   546: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   543: ldc_w 1280
+    //   546: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   549: putfield 705	com/tencent/mobileqq/profile/ProfileCardTemplate:q	Ljava/lang/String;
     //   552: aload 11
     //   554: aload 9
-    //   556: ldc_w 1285
-    //   559: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   556: ldc_w 1282
+    //   559: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   562: putfield 708	com/tencent/mobileqq/profile/ProfileCardTemplate:r	Ljava/lang/String;
     //   565: aload 11
     //   567: aload 9
-    //   569: ldc_w 1287
-    //   572: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   569: ldc_w 1284
+    //   572: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   575: putfield 711	com/tencent/mobileqq/profile/ProfileCardTemplate:s	Ljava/lang/String;
     //   578: aload 11
     //   580: aload 9
-    //   582: ldc_w 1289
-    //   585: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   582: ldc_w 1286
+    //   585: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   588: putfield 713	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_l_of_type_JavaLangString	Ljava/lang/String;
     //   591: aload 11
     //   593: aload 9
-    //   595: ldc_w 1291
-    //   598: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   595: ldc_w 1288
+    //   598: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   601: putfield 716	com/tencent/mobileqq/profile/ProfileCardTemplate:n	Ljava/lang/String;
     //   604: aload 11
     //   606: aload 9
-    //   608: ldc_w 1293
-    //   611: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   608: ldc_w 1290
+    //   611: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   614: putfield 719	com/tencent/mobileqq/profile/ProfileCardTemplate:m	Ljava/lang/String;
     //   617: aload 11
     //   619: aload 9
-    //   621: ldc_w 1295
-    //   624: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   621: ldc_w 1292
+    //   624: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   627: putfield 722	com/tencent/mobileqq/profile/ProfileCardTemplate:o	Ljava/lang/String;
     //   630: aload 11
     //   632: aload 9
-    //   634: ldc_w 1297
-    //   637: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   634: ldc_w 1294
+    //   637: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   640: putfield 724	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_h_of_type_Int	I
     //   643: aload 11
     //   645: aload 9
-    //   647: ldc_w 1299
-    //   650: invokevirtual 1251	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   647: ldc_w 1296
+    //   650: invokevirtual 1248	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   653: putfield 727	com/tencent/mobileqq/profile/ProfileCardTemplate:t	Ljava/lang/String;
     //   656: aload 11
     //   658: aload 9
-    //   660: ldc_w 1301
-    //   663: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   660: ldc_w 1298
+    //   663: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   666: putfield 729	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_i_of_type_Int	I
     //   669: aload 11
     //   671: aload 9
-    //   673: ldc_w 1303
-    //   676: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   673: ldc_w 1300
+    //   676: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   679: putfield 731	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_j_of_type_Int	I
     //   682: aload 11
     //   684: aload 9
-    //   686: ldc_w 1305
-    //   689: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   686: ldc_w 1302
+    //   689: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   692: putfield 733	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_k_of_type_Int	I
     //   695: aload 11
     //   697: aload 9
-    //   699: ldc_w 1307
-    //   702: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   699: ldc_w 1304
+    //   702: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   705: putfield 735	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_e_of_type_Int	I
     //   708: aload 11
     //   710: aload 9
-    //   712: ldc_w 1309
-    //   715: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   712: ldc_w 1306
+    //   715: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   718: putfield 737	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_f_of_type_Int	I
     //   721: aload 11
     //   723: aload 9
-    //   725: ldc_w 1311
-    //   728: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   725: ldc_w 1308
+    //   728: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   731: putfield 739	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_g_of_type_Int	I
     //   734: aload 9
-    //   736: ldc_w 1313
-    //   739: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   736: ldc_w 1310
+    //   739: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   742: istore 4
     //   744: aload 11
     //   746: aload 9
-    //   748: ldc_w 1315
-    //   751: invokevirtual 1247	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   748: ldc_w 1312
+    //   751: invokevirtual 1244	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   754: putfield 741	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_l_of_type_Int	I
     //   757: iload 4
     //   759: iconst_1
@@ -2274,7 +2258,7 @@ public class ProfileCardUtil
     //   768: putfield 743	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_a_of_type_Boolean	Z
     //   771: aload 10
     //   773: aload 11
-    //   775: invokevirtual 1316	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   775: invokevirtual 1313	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   778: pop
     //   779: iload_2
     //   780: iconst_1
@@ -2286,45 +2270,45 @@ public class ProfileCardUtil
     //   790: invokespecial 667	com/tencent/mobileqq/profile/ProfileCardTemplate:<init>	()V
     //   793: astore 6
     //   795: aload 6
-    //   797: ldc2_w 1317
+    //   797: ldc2_w 1314
     //   800: putfield 665	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_l_of_type_Long	J
     //   803: aload 6
     //   805: iconst_1
     //   806: putfield 743	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_a_of_type_Boolean	Z
     //   809: aload 10
     //   811: aload 6
-    //   813: invokevirtual 1316	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   813: invokevirtual 1313	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   816: pop
     //   817: new 651	com/tencent/mobileqq/profile/ProfileCardTemplate
     //   820: dup
     //   821: invokespecial 667	com/tencent/mobileqq/profile/ProfileCardTemplate:<init>	()V
     //   824: astore 6
     //   826: aload 6
-    //   828: ldc2_w 1319
+    //   828: ldc2_w 1316
     //   831: putfield 665	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_l_of_type_Long	J
     //   834: aload 6
     //   836: iconst_1
     //   837: putfield 743	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_a_of_type_Boolean	Z
     //   840: aload 10
     //   842: aload 6
-    //   844: invokevirtual 1316	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   844: invokevirtual 1313	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   847: pop
     //   848: aload_0
     //   849: ifnull +7 -> 856
     //   852: aload_0
-    //   853: invokevirtual 1204	java/io/InputStream:close	()V
+    //   853: invokevirtual 1201	java/io/InputStream:close	()V
     //   856: aload 7
     //   858: ifnull -655 -> 203
     //   861: aload 7
-    //   863: invokevirtual 1205	java/io/ByteArrayOutputStream:close	()V
+    //   863: invokevirtual 1202	java/io/ByteArrayOutputStream:close	()V
     //   866: goto -663 -> 203
     //   869: astore_0
     //   870: aload_0
-    //   871: invokevirtual 1321	java/io/IOException:printStackTrace	()V
+    //   871: invokevirtual 1318	java/io/IOException:printStackTrace	()V
     //   874: goto -671 -> 203
     //   877: astore_0
     //   878: aload_0
-    //   879: invokevirtual 1321	java/io/IOException:printStackTrace	()V
+    //   879: invokevirtual 1318	java/io/IOException:printStackTrace	()V
     //   882: goto -679 -> 203
     //   885: astore 6
     //   887: aconst_null
@@ -2334,16 +2318,16 @@ public class ProfileCardUtil
     //   892: aload_0
     //   893: ifnull +7 -> 900
     //   896: aload_0
-    //   897: invokevirtual 1204	java/io/InputStream:close	()V
+    //   897: invokevirtual 1201	java/io/InputStream:close	()V
     //   900: aload 7
     //   902: ifnull +8 -> 910
     //   905: aload 7
-    //   907: invokevirtual 1205	java/io/ByteArrayOutputStream:close	()V
+    //   907: invokevirtual 1202	java/io/ByteArrayOutputStream:close	()V
     //   910: aload 6
     //   912: athrow
     //   913: astore_0
     //   914: aload_0
-    //   915: invokevirtual 1321	java/io/IOException:printStackTrace	()V
+    //   915: invokevirtual 1318	java/io/IOException:printStackTrace	()V
     //   918: goto -8 -> 910
     //   921: astore 6
     //   923: aconst_null
@@ -2565,10 +2549,10 @@ public class ProfileCardUtil
   {
     Object localObject1 = null;
     int j = 0;
-    TextView localTextView = (TextView)paramView.findViewById(2131364095);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131363425);
+    TextView localTextView = (TextView)paramView.findViewById(2131364119);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131363443);
     if (paramRichStatus != null) {
-      localObject1 = paramRichStatus.toSpannableString(null, -8947849, paramResources.getColor(2131492970));
+      localObject1 = paramRichStatus.toSpannableString(null, -8947849, paramResources.getColor(2131492971));
     }
     Object localObject2 = localObject1;
     if (localObject1 == null) {
@@ -2604,7 +2588,7 @@ public class ProfileCardUtil
       label220:
       if (paramBoolean)
       {
-        i = 2130838596;
+        i = 2130838600;
         label230:
         paramResources = paramResources.getDrawable(i);
         if (localImageView.getDrawable() != paramResources)
@@ -2647,7 +2631,7 @@ public class ProfileCardUtil
       {
         j += 1;
         break label354;
-        localObject1 = BitmapManager.a(paramResources, 2130845328);
+        localObject1 = BitmapManager.a(paramResources, 2130845456);
         break;
         if (((SpannableString)localObject2).length() == 0)
         {
@@ -2659,7 +2643,7 @@ public class ProfileCardUtil
         label452:
         paramBoolean = paramStatusManager.a();
         break label220;
-        i = 2130838480;
+        i = 2130838484;
         break label230;
         label469:
         i = 0;
@@ -2714,7 +2698,7 @@ public class ProfileCardUtil
       localQQProgressDialog.show();
       if (paramLong <= 0L)
       {
-        ((NearbyFaceScoreManager)paramBaseActivity.getAppInterface().getManager(203)).a(Long.parseLong(paramString1), new ajmi(paramBaseActivity, paramString1, paramString2, paramInt, localQQProgressDialog));
+        ((NearbyFaceScoreManager)paramBaseActivity.getAppInterface().getManager(203)).a(Long.parseLong(paramString1), new akan(paramBaseActivity, paramString1, paramString2, paramInt, localQQProgressDialog));
         return;
       }
     }
@@ -2774,7 +2758,7 @@ public class ProfileCardUtil
     try
     {
       paramString3.show();
-      ThreadManager.post(new ajmf(paramInt, paramString1, paramString2, paramString4, paramBaseActivity, paramString3), 5, null, false);
+      ThreadManager.post(new akak(paramInt, paramString1, paramString2, paramString4, paramBaseActivity, paramString3), 5, null, false);
       return;
     }
     catch (Exception localException)
@@ -2799,7 +2783,7 @@ public class ProfileCardUtil
     try
     {
       paramString5.show();
-      ThreadManager.post(new ajmm(paramInt, paramString2, paramString1, paramString3, paramString4, paramString6, paramBaseActivity, paramString5), 5, null, false);
+      ThreadManager.post(new akar(paramInt, paramString2, paramString1, paramString3, paramString4, paramString6, paramBaseActivity, paramString5), 5, null, false);
       return;
     }
     catch (Exception localException)
@@ -2813,7 +2797,7 @@ public class ProfileCardUtil
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.post(new ajmq(paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new akav(paramQQAppInterface), 5, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
@@ -2828,7 +2812,7 @@ public class ProfileCardUtil
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, String paramString1, long paramLong3, String paramString2, int paramInt, String paramString3, String paramString4, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    paramQQAppInterface.a(new ajmp(paramInt, paramString3, paramString4, paramFloat1, paramFloat2, paramFloat3, paramQQAppInterface, paramLong1, paramLong2, paramString1, paramLong3, paramString2));
+    paramQQAppInterface.a(new akau(paramInt, paramString3, paramString4, paramFloat1, paramFloat2, paramFloat3, paramQQAppInterface, paramLong1, paramLong2, paramString1, paramLong3, paramString2));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, View paramView, String paramString, int paramInt1, int paramInt2)
@@ -3027,7 +3011,7 @@ public class ProfileCardUtil
     {
       paramArrayOfByte = HexUtil.a(paramArrayOfByte);
       String str = HexUtil.a(paramArrayOfByte);
-      ThreadManager.post(new ajmd(str, b(paramArrayOfByte)), 8, null, false);
+      ThreadManager.post(new akai(str, b(paramArrayOfByte)), 8, null, false);
       b(str);
       return;
     }
@@ -3238,7 +3222,7 @@ public class ProfileCardUtil
   public static String b(Context paramContext)
   {
     paramContext = paramContext.getDir(".profilecard", 0);
-    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_template.json" + "7.6.0";
+    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_template.json" + "7.6.3";
   }
   
   public static String b(Context paramContext, ProfileCardInfo paramProfileCardInfo)
@@ -3254,7 +3238,7 @@ public class ProfileCardUtil
       if (i != 0) {
         break label150;
       }
-      str = paramContext.getString(2131433924);
+      str = paramContext.getString(2131433941);
     }
     for (;;)
     {
@@ -3279,7 +3263,7 @@ public class ProfileCardUtil
       break;
       label150:
       if (i == 1) {
-        str = paramContext.getString(2131433925);
+        str = paramContext.getString(2131433942);
       }
     }
   }
@@ -3322,7 +3306,7 @@ public class ProfileCardUtil
   
   private static void b(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, int paramInt, QQProgressDialog paramQQProgressDialog)
   {
-    ThreadManager.post(new ajmj(paramInt, paramString1, paramBaseActivity, paramString2, paramString3, paramQQProgressDialog), 5, null, false);
+    ThreadManager.post(new akao(paramInt, paramString1, paramBaseActivity, paramString2, paramString3, paramQQProgressDialog), 5, null, false);
   }
   
   public static void b(String paramString)
@@ -3453,7 +3437,7 @@ public class ProfileCardUtil
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.getFileThreadHandler().post(new ajme(paramString));
+    ThreadManager.getFileThreadHandler().post(new akaj(paramString));
   }
   
   public static boolean c(ArrayList paramArrayList)
@@ -3480,7 +3464,7 @@ public class ProfileCardUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardUtil
  * JD-Core Version:    0.7.0.1
  */

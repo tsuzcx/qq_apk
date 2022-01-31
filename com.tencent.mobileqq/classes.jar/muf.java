@@ -1,80 +1,53 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import java.io.IOException;
+import java.util.Map;
 
 public class muf
   implements Runnable
 {
-  public muf(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, String paramString, Bundle paramBundle, QQProgressDialog paramQQProgressDialog) {}
+  public muf(GalleryShareHelper paramGalleryShareHelper, String paramString, Map paramMap, int paramInt) {}
   
   public void run()
   {
-    Object localObject = ImageUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+    label149:
+    try
     {
-      i = 1;
-      if (i != 0)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.post(new mug(this));
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label179;
-        }
+      localObject = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      if (localObject == null) {
+        break label120;
       }
+      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
+      if (localObject == null) {
+        break label120;
+      }
+      int i = ((Bitmap)localObject).getWidth();
+      int j = ((Bitmap)localObject).getHeight();
+      if (i * j <= 8000) {
+        break label149;
+      }
+      double d = Math.sqrt(8000.0D / (i * j));
+      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
+      ((Bitmap)localObject).recycle();
+      localObject = localBitmap;
     }
-    for (;;)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      Bitmap localBitmap;
-      try
-      {
-        localBitmap = BitmapFactory.decodeFile((String)localObject);
-        if (WXShareHelper.a().a()) {
-          break label153;
-        }
-        i = 2131435302;
-        if (i == -1) {
-          break label168;
-        }
-        QRUtils.a(0, i);
-        localObject = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.mRuntime.a(), PublicAccountBrowser.class);
-        ((Intent)localObject).putExtra("url", "http://weixin.qq.com/download");
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.mRuntime.a().startActivity((Intent)localObject);
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        localOutOfMemoryError.printStackTrace();
-        return;
-      }
-      i = 0;
-      break;
-      label153:
-      if (!WXShareHelper.a().b())
-      {
-        i = 2131435303;
-        continue;
-        label168:
-        WXShareHelper.a().a(localOutOfMemoryError, localBitmap, 1, true);
-        return;
-        label179:
-        QRUtils.a(1, 2131438454);
-      }
-      else
-      {
-        i = -1;
-      }
+      Object localObject;
+      break label120;
     }
+    catch (IOException localIOException)
+    {
+      label120:
+      for (;;) {}
+    }
+    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
+    GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).runOnUiThread(new mug(this));
   }
 }
 

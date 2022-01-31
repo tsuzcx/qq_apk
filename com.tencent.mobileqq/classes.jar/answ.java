@@ -1,15 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class answ
-  implements DialogInterface.OnClickListener
+public class answ
+  implements DialogInterface.OnDismissListener
 {
-  answ(ansv paramansv) {}
+  public answ(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.s();
+    paramDialogInterface = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b();
+    }
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(true, 0.0F, 0.0F, 0.0F, 0.0F);
   }
 }
 

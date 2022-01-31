@@ -1,34 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView.IFace2faceContext;
 
-class acll
-  implements Runnable
+public class acll
+  implements Animation.AnimationListener
 {
-  acll(aclh paramaclh, String paramString) {}
+  public acll(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      if (this.jdField_a_of_type_Aclh.a.jdField_a_of_type_JavaIoOutputStream == null) {
-        this.jdField_a_of_type_Aclh.a.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.jdField_a_of_type_Aclh.a.d, true);
-      }
-      this.jdField_a_of_type_Aclh.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aclh.a.c, 2002);
-      this.jdField_a_of_type_Aclh.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-      this.jdField_a_of_type_Aclh.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_Aclh.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.jdField_a_of_type_Aclh.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      this.jdField_a_of_type_Aclh.a.h = this.jdField_a_of_type_JavaLangString;
-      FileManagerRSWorker.a(this.jdField_a_of_type_Aclh.a, this.jdField_a_of_type_Aclh.a.jdField_a_of_type_Long, this.jdField_a_of_type_Aclh.a.h);
-      return;
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      localFileNotFoundException.printStackTrace();
-    }
+    this.a.a.b();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

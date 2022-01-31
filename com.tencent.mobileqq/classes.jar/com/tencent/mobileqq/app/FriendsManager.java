@@ -58,10 +58,10 @@ import mqq.app.MobileQQ;
 import mqq.manager.Manager;
 import mqq.observer.AccountObserver;
 import tencent.im.oidb.cmd0x7c4.cmd0x7c4.RecommendReason;
-import zaw;
-import zay;
-import zaz;
-import zba;
+import zec;
+import zee;
+import zef;
+import zeg;
 
 public class FriendsManager
   implements Manager
@@ -75,7 +75,7 @@ public class FriendsManager
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(6);
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new zaw(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new zec(this);
   public volatile boolean a;
   public int b;
   private MQLruCache jdField_b_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(500);
@@ -520,7 +520,7 @@ public class FriendsManager
       return null;
     }
     if (!this.jdField_g_of_type_Boolean) {
-      ThreadManager.postImmediately(new zba(this), null, false);
+      ThreadManager.postImmediately(new zeg(this), null, false);
     }
     return (DateNickNameInfo)this.jdField_b_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
   }
@@ -762,7 +762,7 @@ public class FriendsManager
   public ArrayList a()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      ThreadManager.postImmediately(new zay(this), null, false);
+      ThreadManager.postImmediately(new zee(this), null, false);
     }
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
@@ -2940,7 +2940,7 @@ public class FriendsManager
   {
     List localList = a();
     if (localList != null) {
-      Collections.sort(localList, new zaz(this));
+      Collections.sort(localList, new zef(this));
     }
     return localList;
   }

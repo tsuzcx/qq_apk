@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.widget;
 
-import aeod;
+import afbj;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -86,10 +86,10 @@ public class AdapterWrapper
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     if (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt) != null) {
-      return new aeod((View)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt));
+      return new afbj((View)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt));
     }
     if (this.b.get(paramInt) != null) {
-      return new aeod((View)this.b.get(paramInt));
+      return new afbj((View)this.b.get(paramInt));
     }
     return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }

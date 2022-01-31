@@ -12,6 +12,7 @@ public final class oidb_0x6cf$RspBody
   extends MessageMicro
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_inner_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public oidb_0x6cf.ArticleSummary req_article_summary = new oidb_0x6cf.ArticleSummary();
   public final PBRepeatMessageField rpt_article_list = PBField.initRepeatMessage(oidb_0x6cf.ArticleSummary.class);
@@ -20,8 +21,9 @@ public final class oidb_0x6cf$RspBody
   
   static
   {
-    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40 }, new String[] { "uint64_uin", "rpt_article_list", "bytes_inner_id", "req_article_summary", "uint64_pos_ad_time" }, new Object[] { Long.valueOf(0L), null, localByteStringMicro, null, Long.valueOf(0L) }, RspBody.class);
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50 }, new String[] { "uint64_uin", "rpt_article_list", "bytes_inner_id", "req_article_summary", "uint64_pos_ad_time", "bytes_cookie" }, new Object[] { Long.valueOf(0L), null, localByteStringMicro1, null, Long.valueOf(0L), localByteStringMicro2 }, RspBody.class);
   }
 }
 

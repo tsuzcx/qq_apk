@@ -1,40 +1,84 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.Holder;
-import com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.AddressCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.LocationCallback;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
-public class uuu
-  implements vif
+class uuu
+  implements Runnable
 {
-  public uuu(GivingHeartItemBuilder paramGivingHeartItemBuilder, GivingHeartItemBuilder.Holder paramHolder, MessageForPoke paramMessageForPoke) {}
+  uuu(uut paramuut, boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 2");
+    double d1;
+    if (this.jdField_a_of_type_Boolean) {
+      d1 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.c;
     }
-    PokeItemAnimationManager.a().a(20);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.b == GivingHeartItemBuilder.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.a instanceof ChatHistoryForC2C))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.c.setVisibility(0);
-    }
+    double d2;
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      AIOUtils.a -= 1;
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.c.setVisibility(8);
+      if (this.jdField_a_of_type_Boolean) {
+        d2 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.d;
+      }
+      synchronized (ArkAppLocationManager.a(this.jdField_a_of_type_Uut.a))
+      {
+        Object localObject2 = new ArrayList(ArkAppLocationManager.a(this.jdField_a_of_type_Uut.a));
+        if (((ArrayList)localObject2).size() == 0) {
+          SosoInterface.b(ArkAppLocationManager.a(this.jdField_a_of_type_Uut.a));
+        }
+        ??? = ((ArrayList)localObject2).iterator();
+        for (;;)
+        {
+          if (((Iterator)???).hasNext())
+          {
+            localObject2 = (ArkAppLocationManager.LocationCallback)((Iterator)???).next();
+            ((ArkAppLocationManager.LocationCallback)localObject2).a(this.jdField_a_of_type_Boolean, d1, d2);
+            if (!this.jdField_a_of_type_Boolean)
+            {
+              ((ArkAppLocationManager.LocationCallback)localObject2).a();
+              continue;
+              d1 = 0.0D;
+              break;
+              d2 = 0.0D;
+            }
+          }
+        }
+      }
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (ArkAppLocationManager.a(this.jdField_a_of_type_Uut.a))
+      {
+        ArkAppLocationManager.a(this.jdField_a_of_type_Uut.a).clear();
+      }
+    }
+    synchronized (ArkAppLocationManager.b(this.jdField_a_of_type_Uut.a))
+    {
+      Object localObject4 = new ArrayList(ArkAppLocationManager.b(this.jdField_a_of_type_Uut.a));
+      ArkAppLocationManager.b(this.jdField_a_of_type_Uut.a).removeAll((Collection)localObject4);
+      ??? = ((ArrayList)localObject4).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject4 = (ArkAppLocationManager.LocationCallback)((Iterator)???).next();
+        ((ArkAppLocationManager.LocationCallback)localObject4).a(this.jdField_a_of_type_Boolean, d1, d2);
+        ((ArkAppLocationManager.LocationCallback)localObject4).a();
+        continue;
+        localObject5 = finally;
+        throw localObject5;
+      }
+    }
+    synchronized (ArkAppLocationManager.c(this.jdField_a_of_type_Uut.a))
+    {
+      ArrayList localArrayList = new ArrayList(ArkAppLocationManager.c(this.jdField_a_of_type_Uut.a));
+      ArkAppLocationManager.c(this.jdField_a_of_type_Uut.a).removeAll(localArrayList);
+      ??? = localArrayList.iterator();
+      if (((Iterator)???).hasNext()) {
+        ((ArkAppLocationManager.AddressCallback)((Iterator)???).next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
+      }
     }
   }
 }

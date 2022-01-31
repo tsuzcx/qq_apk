@@ -1,16 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 import com.tencent.av.VideoController;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.core.VcSystemInfo;
 
 public class jea
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public jea(VideoController paramVideoController) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public jea(VideoController paramVideoController, String paramString)
   {
-    ReportController.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().n < 0)
+    {
+      VcSystemInfo.a();
+      long l = VcSystemInfo.c();
+      int i = VcSystemInfo.f();
+      int j = Build.VERSION.SDK_INT;
+      if ((i < 4) || (l / 1000L < 800L) || (j < 9)) {
+        this.jdField_a_of_type_ComTencentAvVideoController.a().n = 0;
+      }
+    }
+    if ((this.jdField_a_of_type_ComTencentAvVideoController.a() != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a().c == 1L) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvVideoController.a().m))) {
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(30), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvVideoController.a().m });
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvVideoController.e();
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Jea = null;
+      return;
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(30), this.jdField_a_of_type_JavaLangString });
+    }
   }
 }
 

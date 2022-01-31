@@ -1,28 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagStatus;
+import java.util.ArrayList;
 
-public class zop
-  extends TroopObserver
+class zop
+  implements Runnable
 {
-  private zop(UpdateTroop paramUpdateTroop) {}
+  zop(zoo paramzoo, ArrayList paramArrayList) {}
   
-  protected void a(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
-    }
-    if (!paramBoolean)
-    {
-      this.a.a(6);
-      return;
-    }
-    UpdateTroop.a(this.a).a.edit().putBoolean("isTrooplistok", true).commit();
-    UpdateTroop.b(this.a).a(3, true, Integer.valueOf(2));
-    this.a.a(7);
+    ((BizTroopHandler)this.jdField_a_of_type_Zoo.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.a(22)).d(new TroopGagMgr.GagStatus(this.jdField_a_of_type_Zoo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList));
   }
 }
 

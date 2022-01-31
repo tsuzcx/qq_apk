@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.ILabelTextHandle;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
 
 class airk
-  implements SceneBuilder.ILabelTextHandle
+  implements Runnable
 {
-  airk(aird paramaird, QQAppInterface paramQQAppInterface) {}
+  airk(airj paramairj, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
-  public String a(Sprite paramSprite, String paramString)
+  public void run()
   {
-    return paramString.replace("$NICK$", ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aird.a.a, this.jdField_a_of_type_Aird.a.b, 1, 0));
+    this.jdField_a_of_type_Airj.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
 
-class agvr
-  implements View.OnTouchListener
+public class agvr
+  implements Runnable
 {
-  agvr(agvq paramagvq) {}
+  public agvr(QzoneAlbumRedTouchManager paramQzoneAlbumRedTouchManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_AndroidWidgetImageView == null) {}
-    do
+    SharedPreferences.Editor localEditor = QzoneAlbumRedTouchManager.a(this.a).edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
+    if (Build.VERSION.SDK_INT < 9)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-        this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.categoryID, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.itemID);
-        CaptureReportUtil.k();
-        return false;
-      }
-    } while (paramMotionEvent.getAction() != 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_AndroidWidgetImageView.setAlpha(100);
-    return false;
+      localEditor.commit();
+      return;
+    }
+    localEditor.apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agvr
  * JD-Core Version:    0.7.0.1
  */

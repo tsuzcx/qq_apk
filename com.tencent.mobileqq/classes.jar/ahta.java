@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.statistics.storage.StorageItem;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ahta
-  implements Comparator
+  implements View.OnTouchListener
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public ahta(FunctionSearchFragment paramFunctionSearchFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramObject1 = (StorageItem)paramObject1;
-    paramObject2 = (StorageItem)paramObject2;
-    if (paramObject1.b > paramObject2.b) {
-      return -1;
-    }
-    if (paramObject1.b < paramObject2.b) {
-      return 1;
-    }
-    return 0;
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahta
  * JD-Core Version:    0.7.0.1
  */

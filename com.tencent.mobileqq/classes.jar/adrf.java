@@ -1,24 +1,38 @@
-import android.widget.Button;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
-import com.tencent.mobileqq.utils.DisplayUtils;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.ArrayMap;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.hotpic.HotVideoBlurTaskManager;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader;
 
 public class adrf
   implements Runnable
 {
-  public adrf(MagicfaceViewController paramMagicfaceViewController) {}
+  public adrf(HotVideoBlurTaskManager paramHotVideoBlurTaskManager) {}
   
   public void run()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.c.getLayoutParams();
-    localLayoutParams.rightMargin = ((int)DisplayUtils.a(this.a.a.a(), 10.0F));
-    this.a.c.setLayoutParams(localLayoutParams);
+    HotVideoData localHotVideoData = (HotVideoData)this.a.jdField_a_of_type_AndroidSupportV4UtilArrayMap.keyAt(0);
+    HotPicPageView.MyVideoViewHolder localMyVideoViewHolder = (HotPicPageView.MyVideoViewHolder)this.a.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localHotVideoData);
+    if (localMyVideoViewHolder.a(localHotVideoData))
+    {
+      Drawable localDrawable = HotVideoPreviewDownloader.a(this.a.jdField_a_of_type_AndroidContentContext, localHotVideoData);
+      if ((localDrawable != null) && (localMyVideoViewHolder.a(localHotVideoData))) {
+        localMyVideoViewHolder.b(localDrawable);
+      }
+      this.a.a(localHotVideoData);
+    }
+    for (;;)
+    {
+      this.a.a();
+      return;
+      this.a.a(localHotVideoData);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrf
  * JD-Core Version:    0.7.0.1
  */

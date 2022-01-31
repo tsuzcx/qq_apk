@@ -77,8 +77,8 @@ public class RecentTroopAssistantItem
         this.jdField_c_of_type_Int = ((ConversationFacade)localObject1).a(localMessage.frienduin, localMessage.istroop);
         if ((TroopNotificationHelper.a(str)) || (TroopNotificationHelper.c(str)))
         {
-          this.jdField_d_of_type_JavaLangCharSequence = BaseApplicationImpl.getContext().getString(2131433490);
-          this.e = paramContext.getResources().getColor(2131494281);
+          this.jdField_d_of_type_JavaLangCharSequence = BaseApplicationImpl.getContext().getString(2131433507);
+          this.e = paramContext.getResources().getColor(2131494288);
         }
         j = this.f;
         localObject1 = (TroopManager)paramQQAppInterface.getManager(51);
@@ -146,8 +146,8 @@ public class RecentTroopAssistantItem
         }
         if ((this.jdField_b_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)))
         {
-          this.jdField_d_of_type_JavaLangCharSequence = paramQQAppInterface.getApp().getString(2131430810);
-          this.e = paramQQAppInterface.getApp().getResources().getColor(2131494281);
+          this.jdField_d_of_type_JavaLangCharSequence = paramQQAppInterface.getApp().getString(2131430827);
+          this.e = paramQQAppInterface.getApp().getResources().getColor(2131494288);
         }
         if ((this.jdField_b_of_type_Boolean) && (!bool))
         {
@@ -155,7 +155,7 @@ public class RecentTroopAssistantItem
           ReportController.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject1, "" + TroopUtils.a(paramQQAppInterface, (String)localObject1), "", "");
         }
         if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) && (localMessage != null) && (localMsgSummary != null) && (AnonymousChatHelper.a(localMessage))) {
-          this.jdField_c_of_type_JavaLangCharSequence = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131430270), -1);
+          this.jdField_c_of_type_JavaLangCharSequence = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131430287), -1);
         }
         if (localTroopInfo != null)
         {

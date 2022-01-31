@@ -1,25 +1,47 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.tips.HomeworkTroopSurveyBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class vzr
-  implements TroopManager.ITroopMemberInfoCallBack
+  extends FriendListObserver
 {
-  public vzr(HomeworkTroopSurveyBar paramHomeworkTroopSurveyBar, TroopManager paramTroopManager, TipsManager paramTipsManager) {}
+  public vzr(TroopChatPie paramTroopChatPie) {}
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map paramMap)
   {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
+    int i;
+    if (QLog.isColorLevel())
     {
-      new Handler(localLooper).post(new vzs(this, paramTroopMemberInfo));
+      StringBuilder localStringBuilder = new StringBuilder().append("onSetGenralSettingsTroopFilter: isSuc = ").append(paramBoolean).append(", size = ");
+      if (paramMap == null)
+      {
+        i = 0;
+        QLog.d("Q.aio.TroopChatPie", 2, i);
+      }
+    }
+    else
+    {
+      if ((paramMap != null) && (paramMap.size() != 0)) {
+        break label74;
+      }
+    }
+    label74:
+    while (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())
+    {
+      return;
+      i = paramMap.size();
+      break;
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131434513), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, paramTroopMemberInfo);
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131434514), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
   }
 }
 

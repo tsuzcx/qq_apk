@@ -1,26 +1,99 @@
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.PointF;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xlm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xlm(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
+  private int jdField_a_of_type_Int;
+  private List jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public xlm(DragFrameLayout paramDragFrameLayout, List paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
-    if (((!QLog.isColorLevel()) || (!FileUtils.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (FlowCameraConstant.a == 1))
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public Bitmap a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_Int >= 0)
     {
-      FlowCameraMqqAction.b("", "0X8005F5B", "0");
-      return;
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_Int >= DragFrameLayout.a().length) {}
     }
-    FlowCameraMqqAction.b("", "0X8005F5B", "1");
+    try
+    {
+      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
+      return localObject1;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      do
+      {
+        localObject1 = localObject2;
+      } while (!QLog.isColorLevel());
+      QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localOutOfMemoryError, localOutOfMemoryError);
+    }
+    return null;
+  }
+  
+  public PointF a()
+  {
+    PointF localPointF = new PointF();
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
+      Rect localRect = new Rect();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.getGlobalVisibleRect(localRect);
+      int i = localRect.left;
+      int j = localRect.top;
+      localView.getGlobalVisibleRect(localRect);
+      localRect.left -= i;
+      localRect.top -= j;
+      localRect.right -= i;
+      localRect.bottom -= j;
+      localPointF.set(localRect.centerX(), localRect.centerY());
+    }
+    return localPointF;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    {
+      if (this == DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout)) {
+        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, null);
+      }
+      DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("Drag", 2, "DONE!");
+      }
+      DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.invalidate();
+      return;
+      View localView = (View)this.jdField_a_of_type_JavaUtilList.get(0);
+      if (this.jdField_a_of_type_Int == DragFrameLayout.a().length)
+      {
+        this.jdField_a_of_type_JavaUtilList.remove(0);
+        this.jdField_a_of_type_Int = -1;
+      }
+      else
+      {
+        localView.setVisibility(4);
+        this.jdField_a_of_type_Int += 1;
+      }
+    }
   }
 }
 

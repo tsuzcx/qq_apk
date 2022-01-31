@@ -1,6 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import ancc;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import ansh;
 import com.tencent.biz.qqstory.app.QQStoryConstant;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
@@ -66,10 +66,10 @@ public class EditVideoActivity
   
   private void a()
   {
-    View localView1 = findViewById(2131363390);
+    View localView1 = findViewById(2131363408);
     if ((localView1 != null) && ((localView1 instanceof ViewGroup)))
     {
-      View localView2 = findViewById(2131362498);
+      View localView2 = findViewById(2131362505);
       if (localView2 != null) {
         ((ViewGroup)localView1).removeView(localView2);
       }
@@ -346,11 +346,11 @@ public class EditVideoActivity
           }
           StoryTransitionActivity.a(this, 3600000L);
           c();
-          paramBundle = findViewById(2131363390);
+          paramBundle = findViewById(2131363408);
           if ((paramBundle == null) || (!this.jdField_a_of_type_Boolean)) {
             continue;
           }
-          paramBundle.post(new ancc(this));
+          paramBundle.post(new ansh(this));
           return true;
           localThrowable = localThrowable;
           QLog.w("Q.qqstory.publish.edit.EditVideoActivity", 1, "VideoSourceHelper error:", localThrowable);

@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Comparator;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendServlet;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.util.QLog;
 
 public class zpn
-  implements Comparator
+  implements Runnable
 {
-  public zpn(C2CMessageProcessor paramC2CMessageProcessor) {}
+  public zpn(ActivateFriendsManager paramActivateFriendsManager) {}
   
-  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  public void run()
   {
-    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+    long l = ActivateFriendsManager.a(this.a).getLong("key_last_birth_msg_stamp", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.Manager", 2, "local birth timestamp = " + l);
+    }
+    if (MessageCache.a() - l > 259200L)
+    {
+      ActivateFriendsManager.a(this.a).removeCallbacks(ActivateFriendsManager.a(this.a));
+      this.a.a = ActivateFriendsManager.b(this.a);
+      ActivateFriendServlet.a(ActivateFriendsManager.a(this.a), false, true, false, true);
+    }
   }
 }
 

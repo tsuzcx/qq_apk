@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManagerImpl;
 
 public class zyy
   implements Runnable
 {
-  public zyy(ScanEntranceReport paramScanEntranceReport, long paramLong1, int paramInt, String paramString, long paramLong2) {}
+  public zyy(ARRenderManagerImpl paramARRenderManagerImpl, ARBaseRender paramARBaseRender) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("last_total_time", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("session_ids", this.jdField_a_of_type_JavaLangString);
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_first_ar_recog", true, this.b, 0L, localHashMap, "");
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
+    }
   }
 }
 

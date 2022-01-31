@@ -1,14 +1,30 @@
-import com.tencent.mobileqq.activity.SecurityPickproofActivity;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class tog
   implements Runnable
 {
-  public tog(SecurityPickproofActivity paramSecurityPickproofActivity) {}
+  public tog(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
   public void run()
   {
-    HttpDownloadUtil.a(this.a.a, this.a);
+    try
+    {
+      if ((RecentLoginDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
+        RecentLoginDevActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
+      }
+      if ((RecentLoginDevActivity.a(this.a) != null) && (!RecentLoginDevActivity.a(this.a).isShowing())) {
+        RecentLoginDevActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

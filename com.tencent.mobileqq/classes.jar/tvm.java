@@ -1,73 +1,58 @@
 import android.os.Handler;
-import com.tencent.biz.helper.TroopInfoActivityHelper.IGetSameCityCheckTypeInfo;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import tencent.im.oidb.cmd0x79a.oidb_0x79a.RspBody;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import android.os.Message;
+import com.etrump.mixlayout.FontManager;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class tvm
-  implements TroopInfoActivityHelper.IGetSameCityCheckTypeInfo
+  extends DownloadListener
 {
-  public tvm(TroopInfoActivity paramTroopInfoActivity) {}
-  
-  public void a()
+  public tvm(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
   {
-    this.a.stopTitleProgress();
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L) {
-      TroopInfoActivity.h(this.a);
-    }
+    super(paramString1, paramString2);
   }
   
-  public void a(oidb_0x79a.RspBody paramRspBody)
+  public void onCancel(DownloadTask paramDownloadTask)
   {
-    oidb_0x88d.GroupInfo localGroupInfo = paramRspBody.info;
-    this.a.stopTitleProgress();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus = paramRspBody.uint32_tribe_status.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.modifyCount = paramRspBody.uint32_modify_countdown.get();
-    int j = 0;
-    int i;
-    if (4 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
-    {
-      i = j;
-      if (3 != this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + paramDownloadTask);
     }
-    else
-    {
-      i = j;
-      if (localGroupInfo != null) {
-        if (4 != localGroupInfo.uint32_group_type_flag.get())
-        {
-          i = j;
-          if (3 != localGroupInfo.uint32_group_type_flag.get()) {}
-        }
-        else
-        {
-          this.a.a(localGroupInfo);
-          i = 1;
-        }
-      }
+    super.onCancel(paramDownloadTask);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    super.onDone(paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + paramDownloadTask);
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 2) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeStatus == 3))
+    if (paramDownloadTask.b()) {}
+    do
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramRspBody.uint64_tribe_id.get();
-      this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramRspBody.str_tribe_name.get();
-      if (i == 0) {
-        this.a.a(localGroupInfo);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
       return;
+      if (paramDownloadTask.a() == -1)
+      {
+        paramDownloadTask = new Message();
+        paramDownloadTask.what = 17;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramDownloadTask);
+        return;
+      }
+      paramDownloadTask = this.a.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.a.d);
+    } while (paramDownloadTask == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = paramDownloadTask;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + paramDownloadTask);
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwAppPrivilegeFlag & 0x4000) != 0L)
-    {
-      TroopInfoActivity.h(this.a);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
+    return super.onStart(paramDownloadTask);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.Doraemon;
 
+import android.os.Bundle;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,6 +13,23 @@ public class APIParam
 {
   public static final String KEY_CALLBACK = "callback";
   public static final String KEY_CODE = "code";
+  
+  public APIParam() {}
+  
+  public APIParam(Bundle paramBundle)
+  {
+    fromBundle(paramBundle);
+  }
+  
+  public void fromBundle(Bundle paramBundle)
+  {
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      put(str, (Serializable)paramBundle.get(str));
+    }
+  }
   
   public String toJSONString()
   {
@@ -46,7 +64,7 @@ public class APIParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.APIParam
  * JD-Core Version:    0.7.0.1
  */

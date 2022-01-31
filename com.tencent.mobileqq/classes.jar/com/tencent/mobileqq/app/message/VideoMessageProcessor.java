@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody;
 import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
-import zqm;
+import zts;
 
 public class VideoMessageProcessor
   extends BaseMessageProcessor
@@ -71,14 +71,14 @@ public class VideoMessageProcessor
     a(paramArrayOfByte);
   }
   
-  public zqm a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public zts a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     switch (paramInt)
     {
     }
     for (;;)
     {
-      return new zqm(null, true);
+      return new zts(null, true);
       if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
       {
         a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime);

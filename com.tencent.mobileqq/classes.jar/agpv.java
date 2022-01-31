@@ -1,56 +1,30 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.mobileqq.widget.PhotoProgressDrawable;
-import com.tencent.qphone.base.util.QLog;
+import QQService.CARDSETTYPE;
+import SummaryCardTaf.SSummaryCardSetReq;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
 
 public class agpv
-  implements URLDrawableDownListener
+  implements Runnable
 {
-  public agpv(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public agpv(VipProfileCardBaseActivity paramVipProfileCardBaseActivity, long paramLong1, long paramLong2, String paramString, int paramInt) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
-    }
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
-    }
-    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
-    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
-    ReceiptMessageDetailFragment.b(this.a);
+    Object localObject = new SSummaryCardSetReq(2, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity.app.getCurrentAccountUin()), 0L, "7.6.3", 109L, this.jdField_a_of_type_Long, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null, null);
+    UniPacket localUniPacket = new UniPacket(true);
+    localUniPacket.setEncodeName("utf-8");
+    localUniPacket.setFuncName("set");
+    localUniPacket.setServantName("MCardSvc");
+    localUniPacket.put("req", localObject);
+    localObject = localUniPacket.encode();
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity.a.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity.app.getCurrentAccountUin(), CARDSETTYPE.TYPE_SET_TEMPLATE.value(), (byte)0, null, null, null, null, (byte[])localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agpv
  * JD-Core Version:    0.7.0.1
  */

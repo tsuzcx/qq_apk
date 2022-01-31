@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.graphics.Rect;
+import android.view.TouchDelegate;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
 
-class anso
+public class anso
   implements Runnable
 {
-  anso(ansm paramansm) {}
+  public anso(EditVideoButton paramEditVideoButton) {}
   
   public void run()
   {
-    this.a.a.setResult(0);
-    this.a.a.finish();
+    Object localObject = new Rect();
+    EditVideoButton.a(this.a).setEnabled(true);
+    EditVideoButton.a(this.a).getHitRect((Rect)localObject);
+    if (this.a.a != null)
+    {
+      ((Rect)localObject).top -= UIUtils.a(this.a.a(), 8.0F);
+      ((Rect)localObject).bottom += UIUtils.a(this.a.a(), 8.0F);
+    }
+    localObject = new TouchDelegate((Rect)localObject, EditVideoButton.a(this.a));
+    ((View)EditVideoButton.a(this.a).getParent()).setTouchDelegate((TouchDelegate)localObject);
   }
 }
 

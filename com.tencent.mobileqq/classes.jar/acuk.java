@@ -1,19 +1,11 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.IGetTotalTime;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
-
 public class acuk
-  implements FileViewMusicService.IGetTotalTime
 {
-  public acuk(MusicFilePresenter paramMusicFilePresenter) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.a(paramInt);
-  }
+  public long a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acuk
  * JD-Core Version:    0.7.0.1
  */

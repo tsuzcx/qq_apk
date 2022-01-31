@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 class tda
-  extends ContactBindObserver
+  implements DialogInterface.OnDismissListener
 {
   tda(tcz paramtcz) {}
   
-  protected void b(boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.b(paramBoolean);
-    PhoneUnityChangeActivity.a(this.a.a.a);
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
-    {
-      this.a.a.a.setResult(4001);
-      this.a.a.a.finish();
-    }
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tda
  * JD-Core Version:    0.7.0.1
  */

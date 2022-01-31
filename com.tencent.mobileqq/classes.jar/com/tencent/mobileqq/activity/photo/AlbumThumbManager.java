@@ -11,14 +11,14 @@ import common.qzone.component.cache.common.BlobCache.LookupRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import wsu;
+import wvz;
 
 public class AlbumThumbManager
 {
   private static final BytesBufferPool jdField_a_of_type_ComTencentComponentNetworkUtilsBytesBufferPool = new BytesBufferPool(4, 204800);
   private static AlbumThumbManager jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumThumbManager;
   private static ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private static wsu jdField_a_of_type_Wsu;
+  private static wvz jdField_a_of_type_Wvz;
   Context jdField_a_of_type_AndroidContentContext;
   BlobCache jdField_a_of_type_CommonQzoneComponentCacheCommonBlobCache;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
@@ -486,7 +486,7 @@ public class AlbumThumbManager
     try
     {
       jdField_a_of_type_ComTencentComponentNetworkUtilsBytesBufferPool.a();
-      jdField_a_of_type_Wsu = null;
+      jdField_a_of_type_Wvz = null;
       jdField_a_of_type_JavaNioByteBuffer = null;
       return;
     }

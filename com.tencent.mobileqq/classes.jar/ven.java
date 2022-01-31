@@ -1,87 +1,26 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.ShareInfoHolder;
+import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForReplyText;
 
 public class ven
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ven(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  public ven(ReplyTextItemBuilder paramReplyTextItemBuilder, MessageForReplyText paramMessageForReplyText) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject2;
-    switch (paramView.getId())
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mGroupPostElemInfo != null)
     {
-    case 2131368521: 
-    default: 
-    case 2131368519: 
-    case 2131368520: 
-    case 2131368522: 
-    case 2131368523: 
-      do
-      {
-        TroopTopicMgr localTroopTopicMgr;
-        do
-        {
-          TroopTopicDetailInfo localTroopTopicDetailInfo;
-          do
-          {
-            return;
-            localObject1 = (StructingMsgItemBuilder.ShareInfoHolder)paramView.getTag();
-            localObject2 = ((StructingMsgItemBuilder.ShareInfoHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-            localTroopTopicMgr = (TroopTopicMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(97);
-            localTroopTopicDetailInfo = localTroopTopicMgr.a((ChatMessage)localObject2);
-            paramView.setOnClickListener(null);
-            ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_like", 0, 0, "" + ((ChatMessage)localObject2).frienduin, "", "", "");
-          } while ((localTroopTopicDetailInfo == null) || (localTroopTopicDetailInfo.mIsZan));
-          localTroopTopicDetailInfo.mLikeNum += 1;
-          localTroopTopicDetailInfo.mIsZan = true;
-          ((StructingMsgItemBuilder.ShareInfoHolder)localObject1).b.setText(localTroopTopicDetailInfo.mLikeNum + "");
-          ((StructingMsgItemBuilder.ShareInfoHolder)localObject1).b.setVisibility(0);
-          paramView = paramView.getContext().getResources().getDrawable(2130841453);
-          paramView.setBounds(0, 0, paramView.getIntrinsicWidth(), paramView.getIntrinsicHeight());
-          ((StructingMsgItemBuilder.ShareInfoHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramView, null, null, null);
-        } while (AnonymousChatHelper.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-        localTroopTopicMgr.a((ChatMessage)localObject2, 1, new veo(this));
-        return;
-        localObject1 = ((StructingMsgItemBuilder.ShareInfoHolder)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-        paramView = ((FragmentActivity)paramView.getContext()).getChatFragment();
-      } while (paramView == null);
-      paramView.a().b((ChatMessage)localObject1, 1);
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_reply", 0, 0, "" + ((ChatMessage)localObject1).frienduin, "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.uniseq);
+      ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.msg);
       return;
     }
-    paramView = (TroopTopicDetailInfo)paramView.getTag();
-    Object localObject1 = paramView.mViewCommentUrl;
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("hide_more_button", true);
-      ((Intent)localObject2).putExtra("hide_operation_bar", true);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2131034134, 0);
-    }
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_view", 0, 0, "" + paramView.troopUin, "", "", "");
+    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.uniseq);
   }
 }
 

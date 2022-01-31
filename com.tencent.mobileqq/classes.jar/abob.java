@@ -1,37 +1,29 @@
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import android.widget.Button;
+import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
+import com.tencent.mobileqq.businessCard.helpers.CameraHelper.CameraHelperCallback;
+import java.io.File;
 
-class abob
-  extends SQLiteCursor
+public class abob
+  implements CameraHelper.CameraHelperCallback
 {
-  abob(aboa paramaboa, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
-  {
-    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
-  }
+  public abob(FlowCameraPhotoActivity paramFlowCameraPhotoActivity) {}
   
-  public byte[] getBlob(int paramInt)
+  public void a(String paramString)
   {
-    return SecurityUtile.a(super.getBlob(paramInt));
-  }
-  
-  public String getString(int paramInt)
-  {
-    String str1 = super.getString(paramInt);
-    try
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    if (this.a.jdField_a_of_type_JavaLangString != null)
     {
-      String str2 = SecurityUtile.b(str1);
-      return str2;
+      paramString = new File(this.a.jdField_a_of_type_JavaLangString);
+      this.a.d = false;
+      this.a.a(paramString, true);
+      return;
     }
-    catch (Exception localException) {}
-    return str1;
+    this.a.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abob
  * JD-Core Version:    0.7.0.1
  */

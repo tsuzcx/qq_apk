@@ -1113,8 +1113,8 @@ public class FileUtil
     //   33: ifeq +14 -> 47
     //   36: aload_0
     //   37: invokevirtual 223	java/io/File:isFile	()Z
-    //   40: istore 6
-    //   42: iload 6
+    //   40: istore 4
+    //   42: iload 4
     //   44: ifne +29 -> 73
     //   47: iconst_0
     //   48: ifeq +11 -> 59
@@ -1139,8 +1139,8 @@ public class FileUtil
     //   85: aload_0
     //   86: aload_1
     //   87: invokeinterface 587 3 0
-    //   92: istore 6
-    //   94: iload 6
+    //   92: istore 4
+    //   94: iload 4
     //   96: ifeq +29 -> 125
     //   99: iconst_0
     //   100: ifeq +11 -> 111
@@ -1171,8 +1171,8 @@ public class FileUtil
     //   149: ifne +40 -> 189
     //   152: aload_2
     //   153: invokevirtual 299	java/io/File:mkdirs	()Z
-    //   156: istore 6
-    //   158: iload 6
+    //   156: istore 4
+    //   158: iload 4
     //   160: ifne +29 -> 189
     //   163: iconst_0
     //   164: ifeq +11 -> 175
@@ -1202,13 +1202,13 @@ public class FileUtil
     //   212: astore_0
     //   213: aload_2
     //   214: invokevirtual 592	java/nio/channels/FileChannel:size	()J
-    //   217: lstore 4
+    //   217: lstore 5
     //   219: aload_0
     //   220: aload_2
     //   221: lconst_0
-    //   222: lload 4
+    //   222: lload 5
     //   224: invokevirtual 596	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
-    //   227: lload 4
+    //   227: lload 5
     //   229: lcmp
     //   230: ifeq +49 -> 279
     //   233: aload_1
@@ -1264,8 +1264,8 @@ public class FileUtil
     //   0	311	1	paramFile2	File
     //   0	311	2	paramFileFilter	FileFilter
     //   0	311	3	paramFileComparator	FileComparator
-    //   217	11	4	l	long
-    //   40	119	6	bool	boolean
+    //   40	119	4	bool	boolean
+    //   217	11	5	l	long
     //   1	258	7	localObject	Object
     // Exception table:
     //   from	to	target	type

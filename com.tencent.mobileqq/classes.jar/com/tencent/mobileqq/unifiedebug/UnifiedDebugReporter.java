@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.unifiedebug;
 
-import ajke;
+import ajyi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogReq;
@@ -17,7 +17,7 @@ public class UnifiedDebugReporter
   
   public UnifiedDebugReporter(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new ajke(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new ajyi(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
@@ -62,7 +62,7 @@ public class UnifiedDebugReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedDebugReporter
  * JD-Core Version:    0.7.0.1
  */

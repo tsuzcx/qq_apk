@@ -1,41 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicManager;
+import com.tencent.mobileqq.app.BrowserAppInterface;
 
 public class lbg
-  extends Handler
+  implements Runnable
 {
-  private WeakReference a;
+  public lbg(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public lbg(KanDianViewController paramKanDianViewController)
+  public void run()
   {
-    this.a = new WeakReference(paramKanDianViewController);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    KanDianViewController localKanDianViewController = (KanDianViewController)this.a.get();
-    if (localKanDianViewController == null) {}
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1: 
-          KanDianViewController.a(localKanDianViewController);
-          return;
-        }
-      } while (KanDianViewController.a(localKanDianViewController) == null);
-      KanDianViewController.a(localKanDianViewController).a(KanDianViewController.a(localKanDianViewController));
-      return;
-    } while (KanDianViewController.a(localKanDianViewController) == null);
-    KanDianViewController.a(localKanDianViewController).b();
+    if (this.a.a != null) {
+      this.a.a.a().b();
+    }
   }
 }
 

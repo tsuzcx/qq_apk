@@ -40,11 +40,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kwl;
-import kwm;
-import kwn;
-import kwo;
-import kwp;
+import kvw;
+import kvx;
+import kvy;
+import kvz;
+import kwa;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -131,7 +131,7 @@ public class CustomWebView
     return this.e;
   }
   
-  private boolean a(kwp paramkwp)
+  private boolean a(kwa paramkwa)
   {
     if (!this.e) {}
     Object localObject;
@@ -140,10 +140,10 @@ public class CustomWebView
       do
       {
         return false;
-        localObject = SwiftWebViewUtils.a(paramkwp.jdField_a_of_type_JavaLangString);
+        localObject = SwiftWebViewUtils.a(paramkwa.jdField_a_of_type_JavaLangString);
       } while ((!"http".equals(localObject)) && (!"https".equals(localObject)));
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback = new kwl(this, paramkwp);
-      localObject = SwiftBrowserCookieMonster.a(paramkwp.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback = new kvw(this, paramkwa);
+      localObject = SwiftBrowserCookieMonster.a(paramkwa.jdField_a_of_type_JavaLangString);
     } while (localObject == null);
     this.e = false;
     Intent localIntent = a();
@@ -152,8 +152,8 @@ public class CustomWebView
       ((SwiftBrowserCookieMonster)localObject).f();
       return false;
     }
-    this.jdField_a_of_type_JavaLangString = paramkwp.jdField_a_of_type_JavaLangString;
-    ((SwiftBrowserCookieMonster)localObject).a(paramkwp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback, null, localIntent);
+    this.jdField_a_of_type_JavaLangString = paramkwa.jdField_a_of_type_JavaLangString;
+    ((SwiftBrowserCookieMonster)localObject).a(paramkwa.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback, null, localIntent);
     return true;
   }
   
@@ -322,10 +322,10 @@ public class CustomWebView
         if (!a()) {
           break;
         }
-        localObject = new kwp(this);
-        ((kwp)localObject).jdField_a_of_type_Int = 2;
-        ((kwp)localObject).jdField_a_of_type_JavaLangString = paramString;
-      } while (a((kwp)localObject));
+        localObject = new kwa(this);
+        ((kwa)localObject).jdField_a_of_type_Int = 2;
+        ((kwa)localObject).jdField_a_of_type_JavaLangString = paramString;
+      } while (a((kwa)localObject));
       if (!this.d) {
         break;
       }
@@ -604,7 +604,7 @@ public class CustomWebView
         return;
       }
     }
-    post(new kwo(this, paramString));
+    post(new kvz(this, paramString));
   }
   
   public void destroy()
@@ -620,7 +620,7 @@ public class CustomWebView
       this.jdField_a_of_type_JavaLangString = "";
     }
     if (!this.jdField_c_of_type_Boolean) {
-      postDelayed(new kwm(this), 1000L);
+      postDelayed(new kvx(this), 1000L);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo != null)
     {
@@ -641,12 +641,12 @@ public class CustomWebView
         if (!a()) {
           break;
         }
-        localObject = new kwp(this);
-        ((kwp)localObject).jdField_a_of_type_Int = 3;
-        ((kwp)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((kwp)localObject).jdField_c_of_type_JavaLangString = paramString2;
-        ((kwp)localObject).d = paramString3;
-      } while (a((kwp)localObject));
+        localObject = new kwa(this);
+        ((kwa)localObject).jdField_a_of_type_Int = 3;
+        ((kwa)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((kwa)localObject).jdField_c_of_type_JavaLangString = paramString2;
+        ((kwa)localObject).d = paramString3;
+      } while (a((kwa)localObject));
       if (!this.d) {
         break;
       }
@@ -675,14 +675,14 @@ public class CustomWebView
         if (!a()) {
           break;
         }
-        localObject = new kwp(this);
-        ((kwp)localObject).jdField_a_of_type_Int = 4;
-        ((kwp)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((kwp)localObject).jdField_b_of_type_JavaLangString = paramString2;
-        ((kwp)localObject).jdField_c_of_type_JavaLangString = paramString3;
-        ((kwp)localObject).d = paramString4;
-        ((kwp)localObject).e = paramString5;
-      } while (a((kwp)localObject));
+        localObject = new kwa(this);
+        ((kwa)localObject).jdField_a_of_type_Int = 4;
+        ((kwa)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((kwa)localObject).jdField_b_of_type_JavaLangString = paramString2;
+        ((kwa)localObject).jdField_c_of_type_JavaLangString = paramString3;
+        ((kwa)localObject).d = paramString4;
+        ((kwa)localObject).e = paramString5;
+      } while (a((kwa)localObject));
       if (!this.d) {
         break;
       }
@@ -718,7 +718,7 @@ public class CustomWebView
     HashMap localHashMap;
     do
     {
-      kwp localkwp;
+      kwa localkwa;
       do
       {
         return;
@@ -727,10 +727,10 @@ public class CustomWebView
         if (!a()) {
           break;
         }
-        localkwp = new kwp(this);
-        localkwp.jdField_a_of_type_Int = 1;
-        localkwp.jdField_a_of_type_JavaLangString = paramString;
-      } while (a(localkwp));
+        localkwa = new kwa(this);
+        localkwa.jdField_a_of_type_Int = 1;
+        localkwa.jdField_a_of_type_JavaLangString = paramString;
+      } while (a(localkwa));
       if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.a().isMatchCurrentUrl(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.a().onClientReady()))
       {
         this.d = true;
@@ -783,7 +783,7 @@ public class CustomWebView
     super.onDetachedFromWindow();
     this.jdField_c_of_type_Boolean = false;
     if (this.jdField_b_of_type_Boolean) {
-      postDelayed(new kwn(this), 1000L);
+      postDelayed(new kvy(this), 1000L);
     }
   }
   

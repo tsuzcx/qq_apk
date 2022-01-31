@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import java.lang.ref.WeakReference;
 
 class aass
-  implements DialogInterface.OnDismissListener
 {
-  aass(aasr paramaasr) {}
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private aass()
   {
-    ARMapActivity.a(this.a.a, null);
+    this.a = false;
   }
 }
 

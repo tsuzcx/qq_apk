@@ -20,9 +20,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.List;
-import ugr;
-import ugs;
-import ugt;
+import ujr;
+import ujs;
+import ujt;
 
 public class AudioPlayer
   implements IPttPlayerListener, Runnable
@@ -36,7 +36,7 @@ public class AudioPlayer
   private Application jdField_a_of_type_AndroidAppApplication;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ugr(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new ujr(this);
   private AudioPlayer.AudioPlayerListener jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener;
   private IPttPlayer jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer;
   private volatile AudioHelper.AudioPlayerParameter jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter;
@@ -118,7 +118,7 @@ public class AudioPlayer
       QLog.d("AudioPlayer", 2, "tryStartBlueToothSco " + paramString);
     }
     f();
-    paramString = new ugt(this, paramString, paramInt);
+    paramString = new ujt(this, paramString, paramInt);
     this.jdField_a_of_type_AndroidAppApplication.registerReceiver(paramString, new IntentFilter("android.media.ACTION_SCO_AUDIO_STATE_UPDATED"));
     this.jdField_a_of_type_AndroidContentBroadcastReceiver = paramString;
     this.jdField_a_of_type_AndroidMediaAudioManager.startBluetoothSco();
@@ -528,7 +528,7 @@ public class AudioPlayer
       b(paramString, paramInt);
       return;
     }
-    paramString = new ugs(this, paramString, paramInt, localBluetoothAdapter);
+    paramString = new ujs(this, paramString, paramInt, localBluetoothAdapter);
     localBluetoothAdapter.getProfileProxy(BaseApplication.getContext(), paramString, 1);
   }
   

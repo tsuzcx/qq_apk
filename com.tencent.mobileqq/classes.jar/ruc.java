@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class ruc
-  implements DialogInterface.OnClickListener
+public class ruc
+  implements Runnable
 {
-  public ruc(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public ruc(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a != null) {
-      this.a.a();
-    }
+    this.a.an();
   }
 }
 

@@ -1,21 +1,16 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.qphone.base.util.QLog;
 
 public class jwd
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public jwd(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, VideoController paramVideoController, String paramString, boolean paramBoolean) {}
+  public jwd(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(242);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_JavaLangString, 23);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_JavaLangString, 1);
+    QLog.w(this.a.c, 1, "showConfirmBoxToHangup, no, mRelationId[" + this.a.b + "]");
   }
 }
 

@@ -1,13 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkAppShareMultiItemBuilder;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.activity.aio.doodle.control.GifTemplatePicker.GifTemplatePickerListener;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
 
 public class urv
-  implements DialogInterface.OnClickListener
+  implements GifTemplatePicker.GifTemplatePickerListener
 {
-  public urv(ArkAppShareMultiItemBuilder paramArkAppShareMultiItemBuilder) {}
+  public urv(DoodlePanel paramDoodlePanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt)
+  {
+    if (DoodlePanel.a(this.a) != null)
+    {
+      if (DoodlePanel.a(this.a) != null) {
+        DoodlePanel.a(this.a).setTemplateID(paramInt);
+      }
+      DoodlePanel.a(this.a);
+      SharePreferenceUtils.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
+    }
+  }
 }
 
 

@@ -1,44 +1,29 @@
-import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-public class adpc
-  extends NearbyCardObserver
+public final class adpc
+  implements HiBoomFont.HiBoomFontDownloader
 {
-  public adpc(LoginWelcomeManager paramLoginWelcomeManager) {}
-  
-  protected void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2)
+  public String a()
   {
-    if ((paramBoolean1) && (paramNearbyPeopleCard != null))
-    {
-      byte[] arrayOfByte = paramNearbyPeopleCard.vTempChatSig;
-      String str = paramNearbyPeopleCard.nickname;
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "onNearbyCardDownload " + paramNearbyPeopleCard.uin + " " + str);
-      }
-      Bundle localBundle = LoginWelcomeManager.a(this.a).getBundle("request");
-      localBundle.putString("uin", paramNearbyPeopleCard.uin);
-      localBundle.putByteArray("sig", arrayOfByte);
-      localBundle.putString("nick", str);
-      localBundle.putString("tinyId", String.valueOf(paramNearbyPeopleCard.tinyId));
-    }
-    for (;;)
-    {
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(this);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "onNearbyCardDownload err" + paramBoolean1 + " " + paramNearbyPeopleCard);
-      }
+    return AppConstants.aJ + ".hiboom_font/";
+  }
+  
+  public void a(int paramInt)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((VasQuickUpdateManager)localAppRuntime.getManager(183)).a(5L, "font.hifont.android." + paramInt, "HiBoomDownloader");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpc
  * JD-Core Version:    0.7.0.1
  */

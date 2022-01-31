@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.qphone.base.util.QLog;
 
 public class zzd
   implements Runnable
 {
-  public zzd(ScanEntranceReport paramScanEntranceReport, int paramInt, long paramLong) {}
+  public zzd(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, int paramInt, float paramFloat1, float paramFloat2, long paramLong) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    ARWorldCupGlobalSceneRenderable.b(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable);
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.b != 1) {}
+    do
+    {
+      return;
+      ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).native_onTouchEnd(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b, 1, this.jdField_a_of_type_Long, ARWorldCupGlobalSceneRenderable.c(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable));
+    } while (!QLog.isColorLevel());
+    QLog.d("ARWorldCupGlobalSceneRenderable", 2, "ACTION_UP native_onTouchEnd");
   }
 }
 

@@ -1,28 +1,34 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import com.tencent.open.agent.AuthorityActivity;
-import cooperation.qqfav.util.HandlerPlus;
+import android.os.SystemClock;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-class akkt
-  implements Runnable
+public class akkt
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  akkt(akko paramakko, String paramString) {}
+  public akkt(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void run()
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_JavaLangString);
-    if (localBitmap != null)
+    if (QLog.isColorLevel())
     {
-      Message localMessage = new Message();
-      localMessage.obj = localBitmap;
-      localMessage.what = 9;
-      this.jdField_a_of_type_Akko.a.a.sendMessage(localMessage);
+      paramTVK_IMediaPlayer = new StringBuilder();
+      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
+      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
+      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
+      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
+      QLog.d("VipVideoPlayActivity", 2, paramTVK_IMediaPlayer.toString());
     }
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = VipVideoPlayActivity.b(this.a);
+    this.a.a("play_error", paramInt1, paramInt2, l1 - l2, paramString);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akkt
  * JD-Core Version:    0.7.0.1
  */

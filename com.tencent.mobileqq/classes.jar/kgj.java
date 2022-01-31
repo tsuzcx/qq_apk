@@ -1,18 +1,17 @@
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.GVideoGrayConfig;
+import com.tencent.av.utils.PopupDialog;
 
-public final class kgj
-  implements DialogInterface.OnClickListener
+public class kgj
 {
-  public kgj(Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    GVideoGrayConfig.a(this.a);
-    paramDialogInterface.dismiss();
-  }
+  public static PopupDialog a;
+  public int a;
+  public DialogInterface.OnClickListener a;
+  public String a;
+  public boolean a = false;
+  public int b;
+  public DialogInterface.OnClickListener b;
+  public String b;
+  public int c;
 }
 
 

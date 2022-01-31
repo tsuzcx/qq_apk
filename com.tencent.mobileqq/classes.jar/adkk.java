@@ -1,105 +1,63 @@
-import android.content.Context;
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.hydevteam.common.progress.ProgressFuture;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginNewDownloader;
-import com.tencent.mobileqq.intervideo.huayang.Monitor;
-import com.tencent.mobileqq.intervideo.huayang.MonitorConfig;
-import java.util.Map;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.open.agent.report.ReportCenter;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavHelper;
+import cooperation.qqfav.QfavReport;
 
 public class adkk
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public adkk(HuayangPluginNewDownloader paramHuayangPluginNewDownloader) {}
+  public adkk(ForwardBaseOption paramForwardBaseOption) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 5: 
-    case 6: 
-    case 4: 
-      label445:
+    case -2: 
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              int i;
-              do
-              {
-                do
-                {
-                  return false;
-                } while (HuayangPluginNewDownloader.a(this.a) == null);
-                HuayangPluginNewDownloader.a(this.a).a(0, new Object[] { paramMessage.obj });
-                return false;
-                i = paramMessage.arg1;
-              } while ((i <= HuayangPluginNewDownloader.a(this.a)) || (HuayangPluginNewDownloader.a(this.a) == null));
-              HuayangPluginNewDownloader.a(this.a).a(1, new Object[] { Integer.valueOf(paramMessage.arg1), Long.valueOf(HuayangPluginNewDownloader.a(this.a)) });
-              HuayangPluginNewDownloader.a(this.a, i);
-              return false;
-              if (HuayangPluginNewDownloader.a(this.a) != null) {
-                HuayangPluginNewDownloader.a(this.a).a(2, new Object[] { paramMessage.obj });
-              }
-            } while (MonitorConfig.a.get(HuayangPluginNewDownloader.a(this.a)) == null);
-            Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginNewDownloader.a(this.a))).b));
-            return false;
-            if (HuayangPluginNewDownloader.a(this.a) != null) {
-              HuayangPluginNewDownloader.a(this.a).a(3, new Object[] { paramMessage.obj });
-            }
-          } while (MonitorConfig.a.get(HuayangPluginNewDownloader.a(this.a)) == null);
-          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginNewDownloader.a(this.a))).c));
-          return false;
-          InstalledPlugin localInstalledPlugin;
-          adkm localadkm;
-          if (HuayangPluginNewDownloader.a(this.a) != null)
-          {
-            localInstalledPlugin = (InstalledPlugin)paramMessage.obj;
-            localadkm = HuayangPluginNewDownloader.a(this.a);
-            if (paramMessage.arg1 != 1) {
-              break label445;
-            }
-          }
-          for (boolean bool = true;; bool = false)
-          {
-            localadkm.a(4, new Object[] { localInstalledPlugin, Boolean.valueOf(bool) });
-            HuayangPluginNewDownloader.a(this.a, "HuayangPluginNewDownloader", "下载页面停留时长：" + (System.currentTimeMillis() - HuayangPluginNewDownloader.b(this.a)));
-            HuayangPluginNewDownloader.a(this.a, false);
-            return false;
-          }
-        } while (HuayangPluginNewDownloader.a(this.a) == null);
-        HuayangPluginNewDownloader.a(this.a).a(5, new Object[] { paramMessage.obj });
-        return false;
-      } while (!(paramMessage.obj instanceof ProgressFuture));
-      double d = ((ProgressFuture)paramMessage.obj).getProgress();
-      HuayangPluginNewDownloader.a(this.a, "HuayangPluginNewDownloader", "收到读取进度的MSG, progress = " + d);
-      HuayangPluginNewDownloader.a(this.a).sendMessage(Message.obtain(HuayangPluginNewDownloader.a(this.a), 1, (int)(d * 100.0D), 0));
-      HuayangPluginNewDownloader.a(this.a).sendMessageDelayed(Message.obtain(HuayangPluginNewDownloader.a(this.a), 4, paramMessage.obj), 300L);
-      return false;
+        return;
+        if (this.a.c) {
+          ReportCenter.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
+        }
+        this.a.a(true);
+        this.a.jdField_a_of_type_AndroidAppActivity.setResult(1);
+        this.a.jdField_a_of_type_AndroidAppActivity.finish();
+      } while (!QLog.isColorLevel());
+      QLog.i("ForwardOption.ForwardBaseOption", 2, "-->showQfavResultDialog--onClick--back call");
+      return;
     }
-    paramMessage = new Intent(HuayangPluginNewDownloader.a(this.a), HuayangLoadbackgroudActivity.class);
-    paramMessage.putExtra("isPreload", true);
-    paramMessage.setFlags(268435456);
-    HuayangPluginNewDownloader.a(this.a).startActivity(paramMessage);
-    return false;
+    if (this.a.c) {
+      ReportCenter.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ForwardOption.ForwardBaseOption", 2, "-->showQfavResultDialog--onClick--send call");
+    }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "shareToQQ" })));
+    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
+    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("is_share_flag", true);
+    if (this.a.jdField_a_of_type_Long > 0L) {
+      localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
+    }
+    QfavHelper.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
+    QfavReport.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 5, 0);
+    this.a.jdField_a_of_type_AndroidAppActivity.setResult(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkk
  * JD-Core Version:    0.7.0.1
  */

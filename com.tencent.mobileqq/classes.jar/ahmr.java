@@ -1,37 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class ahmr
-  implements Animation.AnimationListener
+public final class ahmr
+  extends BroadcastReceiver
 {
-  public ahmr(DanceReadyFilter paramDanceReadyFilter) {}
+  private ahmr(PtvTemplateProviderView paramPtvTemplateProviderView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (DanceReadyFilter.a(this.a) > 0)
+    if ("action_brocassreceiver_for_ptv".equals(paramIntent.getAction()))
     {
-      DanceReadyFilter.e(this.a).a((String)DanceReadyFilter.a(this.a).a.a.get(DanceReadyFilter.a(this.a) - 1));
-      if (DanceReadyFilter.c(this.a) != null)
-      {
-        DanceReadyFilter.c(this.a).setStartOffset(300L);
-        DanceReadyFilter.e(this.a).e();
-        DanceReadyFilter.e(this.a).a(DanceReadyFilter.c(this.a));
+      CapturePtvTemplateManager.a().b(false);
+      PtvTemplateProviderView.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PtvTemplateProviderView", 2, "PtvTemplateProviderView PtvBroadcastReceiver size=" + this.a.a.size());
       }
-      return;
     }
-    DanceReadyFilter.e(this.a).h_(false);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    DanceReadyFilter.c(this.a);
   }
 }
 

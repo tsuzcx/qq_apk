@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webprocess;
 
-import ajxi;
-import ajxj;
-import ajxk;
+import aklp;
+import aklq;
+import aklr;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -122,7 +122,7 @@ public class WebAccelerateHelper
   public void checkCookie(String paramString)
   {
     if ((isCheckCookie()) && (!TextUtils.isEmpty(paramString))) {
-      ThreadManager.post(new ajxk(this, paramString), 5, null, true);
+      ThreadManager.post(new aklr(this, paramString), 5, null, true);
     }
   }
   
@@ -322,7 +322,7 @@ public class WebAccelerateHelper
         paramString.printStackTrace();
         return;
       }
-      ThreadManager.post(new ajxi(this, bool1, paramString, bool2), 5, null, true);
+      ThreadManager.post(new aklp(this, bool1, paramString, bool2), 5, null, true);
       return;
       label94:
       bool1 = "1".equals(((Uri)localObject).getQueryParameter("x5PreConnect"));
@@ -360,14 +360,14 @@ public class WebAccelerateHelper
   public Integer[] queryWebViewFeatureParams()
   {
     if (sWebViewFeatureParams == null) {
-      ThreadManager.post(new ajxj(this), 5, null, true);
+      ThreadManager.post(new aklq(this), 5, null, true);
     }
     return sWebViewFeatureParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper
  * JD-Core Version:    0.7.0.1
  */

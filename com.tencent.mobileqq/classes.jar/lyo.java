@@ -1,25 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoUploadController;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-public class lyo
+class lyo
   implements Runnable
 {
-  public lyo(VideoUploadController paramVideoUploadController) {}
+  lyo(lym paramlym) {}
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(VideoUploadController.a(this.a))) && (!TextUtils.isEmpty(VideoUploadController.b(this.a))) && (!VideoUploadController.a(this.a).equals(VideoUploadController.b(this.a))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoUploadController", 2, "clearTempFile(video), origin:" + VideoUploadController.a(this.a) + ", compress:" + VideoUploadController.b(this.a));
-      }
-      File localFile = new File(VideoUploadController.b(this.a));
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-    }
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "initCompositionManager: error, show toast");
+    QQToast.a(this.a.a, 2131438918, 0).a();
   }
 }
 

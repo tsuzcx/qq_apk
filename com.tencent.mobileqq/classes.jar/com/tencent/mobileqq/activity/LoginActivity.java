@@ -51,9 +51,9 @@ import cooperation.qwallet.plugin.PatternLockUtils;
 import mqq.app.AppRuntime;
 import mqq.app.Constants.LogoutReason;
 import mqq.os.MqqHandler;
-import swq;
-import swr;
-import sws;
+import szp;
+import szq;
+import szr;
 
 public class LoginActivity
   extends FragmentActivity
@@ -78,7 +78,7 @@ public class LoginActivity
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    ThreadManager.postImmediately(new swq(paramQQAppInterface, paramString), null, false);
+    ThreadManager.postImmediately(new szp(paramQQAppInterface, paramString), null, false);
     try
     {
       StatisticCollector.a(BaseApplicationImpl.sApplication).a(paramString);
@@ -179,7 +179,7 @@ public class LoginActivity
     if ((this.c) || (this.b) || (this.e))
     {
       bool = true;
-      paramInt = 2131493045;
+      paramInt = 2131493046;
     }
     try
     {
@@ -188,7 +188,7 @@ public class LoginActivity
     }
     catch (Throwable localThrowable)
     {
-      getWindow().setBackgroundDrawableResource(2131493045);
+      getWindow().setBackgroundDrawableResource(2131493046);
     }
     return bool;
   }
@@ -272,7 +272,7 @@ public class LoginActivity
       String str = this.app.getAccount();
       localIntent.putExtra("login_success_uin", str);
       sendBroadcast(localIntent);
-      ThreadManager.getUIHandler().postDelayed(new sws(this, str), 1000L);
+      ThreadManager.getUIHandler().postDelayed(new szr(this, str), 1000L);
       bool = true;
     }
     return bool;
@@ -424,7 +424,7 @@ public class LoginActivity
   {
     Object localObject = getSupportFragmentManager();
     FragmentTransaction localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
-    localObject = ((FragmentManager)localObject).findFragmentById(2131374751);
+    localObject = ((FragmentManager)localObject).findFragmentById(2131374937);
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment != null) || (localObject != null))
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment == null) && (localObject != null) && ((localObject instanceof GuideBaseFragment))) {
@@ -433,7 +433,7 @@ public class LoginActivity
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment.a(null);
       }
-      localFragmentTransaction.replace(2131374751, paramGuideBaseFragment);
+      localFragmentTransaction.replace(2131374937, paramGuideBaseFragment);
       if (VersionUtils.e()) {
         localFragmentTransaction.commitAllowingStateLoss();
       }
@@ -445,7 +445,7 @@ public class LoginActivity
       return;
       localFragmentTransaction.commit();
       continue;
-      localFragmentTransaction.add(2131374751, paramGuideBaseFragment);
+      localFragmentTransaction.add(2131374937, paramGuideBaseFragment);
       if (VersionUtils.e()) {
         localFragmentTransaction.commitAllowingStateLoss();
       } else {
@@ -472,7 +472,7 @@ public class LoginActivity
     e();
     if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842605);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842704);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
   }
@@ -494,7 +494,7 @@ public class LoginActivity
     this.c = getIntent().getBooleanExtra("IS_ADD_ACCOUNT", false);
     this.e = getIntent().getBooleanExtra("from_register_choose", false);
     this.d = getIntent().getBooleanExtra("login_from_account_change", false);
-    a(2130842605);
+    a(2130842704);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       SoftInputResizeLayout.a(this);
     }
@@ -509,13 +509,13 @@ public class LoginActivity
         QLog.d("LoginActivity", 2, "LoginActivity app is " + this.app);
       }
       this.jdField_a_of_type_Boolean = true;
-      super.setContentView(2130971451);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374749));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131374751));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374750));
+      super.setContentView(2130971499);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374935));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131374937));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374936));
       if (paramBundle != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131374751));
+        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131374937));
         if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment != null) {
           this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment.a(this);
         }
@@ -676,7 +676,7 @@ public class LoginActivity
           }
           if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
           {
-            this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842605);
+            this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842704);
             this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
           }
           if (QLog.isColorLevel())
@@ -716,7 +716,7 @@ public class LoginActivity
       if (PhoneNumLoginImpl.a().a()) {
         return;
       }
-      ThreadManager.postImmediately(new swr(this), null, false);
+      ThreadManager.postImmediately(new szq(this), null, false);
       a(this.app.getAccount());
       if (!isFinishing()) {}
       try

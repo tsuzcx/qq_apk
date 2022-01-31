@@ -52,10 +52,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
-import tfh;
-import tfi;
-import tfj;
-import tfk;
+import tih;
+import tii;
+import tij;
+import tik;
 
 public class QQBrowserActivity
   extends FragmentActivity
@@ -334,8 +334,8 @@ public class QQBrowserActivity
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 1) && (this.jdField_a_of_type_AndroidViewView == null))
     {
-      this.jdField_a_of_type_AndroidViewView = WebviewFragmentTabBarBuilder.a(this, super.getIntent(), this.jdField_a_of_type_JavaUtilArrayList, new tfk(this));
-      this.jdField_a_of_type_AndroidViewView.setId(2131364569);
+      this.jdField_a_of_type_AndroidViewView = WebviewFragmentTabBarBuilder.a(this, super.getIntent(), this.jdField_a_of_type_JavaUtilArrayList, new tik(this));
+      this.jdField_a_of_type_AndroidViewView.setId(2131364593);
       Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout.getParent();
       if (!(localObject instanceof FrameLayout)) {
         break label154;
@@ -665,12 +665,12 @@ public class QQBrowserActivity
     SwiftWebAccelerator.b();
     if (!WebAccelerateHelper.isWebViewCache)
     {
-      ThreadManager.postImmediately(new tfh(this), null, false);
+      ThreadManager.postImmediately(new tih(this), null, false);
       if (InnerDns.b() == null) {
-        ThreadManager.postImmediately(new tfi(this), null, false);
+        ThreadManager.postImmediately(new tii(this), null, false);
       }
       if (!WebViewTitleStyleHelper.a().a) {
-        ThreadManager.postImmediately(new tfj(this), null, false);
+        ThreadManager.postImmediately(new tij(this), null, false);
       }
     }
     super.onCreate(paramBundle);

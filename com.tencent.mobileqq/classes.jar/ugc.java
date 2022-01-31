@@ -1,24 +1,19 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.GridCallBack;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ugc
-  implements ActivateFriendGrid.GridCallBack
+  implements DialogInterface.OnClickListener
 {
-  public ugc(PositionActivatePage paramPositionActivatePage) {}
+  public ugc(UpgradeActivity paramUpgradeActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt > 0) {
-      this.a.a.setEnabled(true);
-    }
-    while (paramInt > 1)
-    {
-      this.a.a.setText(2131437224);
-      return;
-      this.a.a.setEnabled(false);
-    }
-    this.a.a.setText(2131437225);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "0");
+    this.a.a();
   }
 }
 

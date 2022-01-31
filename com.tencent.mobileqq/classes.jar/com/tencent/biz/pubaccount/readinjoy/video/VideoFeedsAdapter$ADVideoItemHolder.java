@@ -14,6 +14,7 @@ public class VideoFeedsAdapter$ADVideoItemHolder
   TextView jdField_a_of_type_AndroidWidgetTextView;
   TextView b;
   TextView c;
+  public TextView d;
 }
 
 

@@ -1,21 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import java.util.List;
 
-public class lpb
-  implements Comparator
+class lpb
+  implements Runnable
 {
-  public lpb(ArticleInfoModule paramArticleInfoModule) {}
+  lpb(lpa paramlpa, List paramList) {}
   
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  public void run()
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
-    }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
+    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_Lpa.a, this.jdField_a_of_type_JavaUtilList, true);
   }
 }
 

@@ -34,22 +34,22 @@ public class ReadInJoyDisLikeDialogView
   public ReadInJoyDisLikeDialogView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131366861, 2131366862, 2131366864, 2131366865, 2131366867, 2131366868, 2131366870, 2131366871 };
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131366860, 2131366863, 2131366866, 2131366869 };
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131366903, 2131366904, 2131366906, 2131366907, 2131366909, 2131366910, 2131366912, 2131366913 };
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131366902, 2131366905, 2131366908, 2131366911 };
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
     int j = 0;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969542, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366858));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131492968));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366857));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969549, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366900));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131492969));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366899));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366859));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131428468));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366873));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366901));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131428474));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366915));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_a_of_type_ArrayOfAndroidWidgetButton = new Button[this.jdField_a_of_type_ArrayOfInt.length];

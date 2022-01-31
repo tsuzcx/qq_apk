@@ -1,40 +1,23 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcess;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface.Stub;
+import android.media.SoundPool;
+import com.tencent.mobileqq.magicface.service.SoundPoolUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
 
 public class aeee
-  extends NearbyProcessInterface.Stub
+  extends TimerTask
 {
-  public aeee(NearbyProcess paramNearbyProcess) {}
+  public aeee(SoundPoolUtil paramSoundPoolUtil, int paramInt, String paramString) {}
   
-  public Message a(Message paramMessage)
+  public void run()
   {
-    if (paramMessage == null) {
-      return null;
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a != null) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
     }
-    return this.a.b(paramMessage);
-  }
-  
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
-  {
-    if (paramBasicTypeDataParcel == null) {}
-    Object[] arrayOfObject;
-    do
-    {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
-      }
-      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
-    } while (arrayOfObject == null);
-    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeee
  * JD-Core Version:    0.7.0.1
  */

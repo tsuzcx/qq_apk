@@ -1,40 +1,32 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.SystemClock;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.authorize.FlatBuffersConfig;
-import com.tencent.biz.authorize.JsonConfig;
-import com.tencent.biz.flatbuffers.FlatBuffersParser;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.TabView;
+import com.tencent.qphone.base.util.QLog;
 
 public class kjd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public kjd(AuthorizeConfig paramAuthorizeConfig) {}
+  public kjd(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l = SystemClock.currentThreadTimeMillis();
-    if (l > AuthorizeConfig.jdField_a_of_type_Long + 10000L)
+    if ((paramView instanceof PoiMapActivity.TabView))
     {
-      this.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("domainCmdRight", 4);
-      AuthorizeConfig.jdField_a_of_type_Long = l;
+      this.a.a(((PoiMapActivity.TabView)paramView).a);
+      this.a.i();
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
+      }
+      if (PoiMapActivity.a(this.a)) {
+        this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
+      }
     }
-    FlatBuffersParser.b();
-    l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("lastUpdate", 0L);
-    if (l != AuthorizeConfig.jdField_b_of_type_Long)
+    else
     {
-      AuthorizeConfig.jdField_b_of_type_Long = l;
-      this.a.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.b();
-      this.a.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a();
-      this.a.i = null;
-      this.a.jdField_b_of_type_OrgJsonJSONObject = null;
-      this.a.jdField_c_of_type_OrgJsonJSONObject = null;
-      this.a.jdField_a_of_type_OrgJsonJSONObject = null;
-      this.a.jdField_c_of_type_OrgJsonJSONArray = null;
-      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.a.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      return;
     }
+    this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
   }
 }
 

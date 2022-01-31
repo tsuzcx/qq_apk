@@ -1,33 +1,52 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.SwitchFragmentTitleBarUI;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajyw
-  implements RadioGroup.OnCheckedChangeListener
+public final class ajyw
+  implements DownloadParams.DecodeHandler
 {
-  public ajyw(SwitchFragmentTitleBarUI paramSwitchFragmentTitleBarUI) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    paramInt = this.a.a(paramRadioGroup);
-    if (((QQBrowserActivity)this.a.a.a).b != paramInt)
-    {
-      paramRadioGroup = QQBrowserActivity.a(paramInt, (QQBrowserActivity)this.a.a.a);
-      ((QQBrowserActivity)this.a.a.a).b = paramInt;
-      if ((paramRadioGroup.a != null) && (paramRadioGroup.a.a != null)) {
-        paramRadioGroup.a.a.setSelectedTab(paramInt);
-      }
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
+    do
+    {
+      do
+      {
+        Object localObject;
+        do
+        {
+          do
+          {
+            return paramDownloadParams;
+            localObject = paramDownloadParams.tag;
+            paramDownloadParams = paramBitmap;
+          } while (!(localObject instanceof int[]));
+          paramDownloadParams = paramBitmap;
+        } while (((int[])localObject).length != 3);
+        paramDownloadParams = (int[])localObject;
+        if (paramDownloadParams[0] == 0) {
+          paramDownloadParams[0] = paramBitmap.getWidth();
+        }
+        if (paramDownloadParams[1] == 0) {
+          paramDownloadParams[1] = paramBitmap.getHeight();
+        }
+        paramBitmap = ImageUtil.c(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+        paramDownloadParams = paramBitmap;
+      } while (paramBitmap != null);
+      paramDownloadParams = paramBitmap;
+    } while (!QLog.isDevelopLevel());
+    QLog.w(URLDrawableDecodeHandler.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyw
  * JD-Core Version:    0.7.0.1
  */

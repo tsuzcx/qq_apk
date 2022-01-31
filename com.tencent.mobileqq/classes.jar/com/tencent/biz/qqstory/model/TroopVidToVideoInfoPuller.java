@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nbw;
-import nbx;
+import ndh;
+import ndi;
 
 public class TroopVidToVideoInfoPuller
   implements IEventReceiver
@@ -49,7 +49,7 @@ public class TroopVidToVideoInfoPuller
   {
     BatchHandlerListPuller localBatchHandlerListPuller = BatchHandlerListPuller.a(paramList);
     localBatchHandlerListPuller.a("Q.qqstory.net:TroopVidToVideoInfoPuller");
-    localBatchHandlerListPuller.a(new nbx(this, paramList));
+    localBatchHandlerListPuller.a(new ndi(this, paramList));
     return localBatchHandlerListPuller;
   }
   
@@ -190,7 +190,7 @@ public class TroopVidToVideoInfoPuller
   
   protected void d()
   {
-    Bosses.get().postJob(new nbw(this));
+    Bosses.get().postJob(new ndh(this));
   }
   
   public boolean isValidate()

@@ -60,12 +60,12 @@ public class InteractPasterEditDialog
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout = ((FitSystemWindowsRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364355));
+    this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout = ((FitSystemWindowsRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364379));
     this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout.setFitsSystemWindows(true);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371994));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131371664).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131371993));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371992));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372167));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131371834).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131372166));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372165));
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractInteractPasterItem = InteractPasterItem.a(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractInteractPasterItem.a(getContext(), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractInteractPasterItem$InteractPasterInfo, this.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_AndroidWidgetTextView, this);
     View localView = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractInteractPasterItem.a();
@@ -104,7 +104,7 @@ public class InteractPasterEditDialog
   
   public void setContentView(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970855, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970903, null);
     b();
     c();
     super.setContentView(this.jdField_a_of_type_AndroidViewView);

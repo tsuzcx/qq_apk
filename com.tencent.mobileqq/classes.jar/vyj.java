@@ -1,36 +1,17 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class vyj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vyj(TroopChatPie paramTroopChatPie, boolean paramBoolean) {}
+  public vyj(PublicAccountChatPie paramPublicAccountChatPie, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Thread.sleep(700L);
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.aa) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar.a())))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.aa = true;
-        TroopChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie).post(new vyk(this));
-      }
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, QLog.getStackTraceString(localInterruptedException));
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
   }
 }
 

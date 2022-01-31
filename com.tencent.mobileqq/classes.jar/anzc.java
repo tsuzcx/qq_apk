@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
 
-public final class anzc
-  implements Runnable
+public class anzc
+  implements DoodleOpController.DoodleOpListener
 {
-  public anzc(String paramString) {}
+  public anzc(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    QQToast.a(VideoEnvironment.a(), "" + this.a, 1).a();
+    if (this.a.a != null) {
+      this.a.a.n();
+    }
   }
 }
 

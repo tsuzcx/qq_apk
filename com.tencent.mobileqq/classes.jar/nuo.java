@@ -1,34 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader.GetDiscoverCardsEvent;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
+import com.tencent.biz.qqstory.channel.CmdTaskManger;
+import com.tencent.biz.qqstory.network.request.GetFeedFeatureRequest;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
+import java.util.ArrayList;
 
 public class nuo
-  extends UIBaseEventReceiver
+  extends ParallelJobSegment
 {
-  public nuo(DiscoverPresenter paramDiscoverPresenter)
-  {
-    super(paramDiscoverPresenter);
-  }
+  public nuo(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
   
-  public void a(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    if ((paramGetDiscoverCardsEvent.jdField_a_of_type_Int == DiscoverPresenter.a(paramDiscoverPresenter)) && (paramGetDiscoverCardsEvent.jdField_a_of_type_Long == DiscoverPresenter.a(paramDiscoverPresenter))) {
-      DiscoverPresenter.a(paramDiscoverPresenter).a(DiscoverPresenter.a(paramDiscoverPresenter, paramGetDiscoverCardsEvent.jdField_a_of_type_JavaUtilList, paramGetDiscoverCardsEvent.c), paramGetDiscoverCardsEvent);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return DiscoverPagerLoader.GetDiscoverCardsEvent.class;
-  }
-  
-  public void b(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent)
-  {
-    if ((paramGetDiscoverCardsEvent.jdField_a_of_type_Int == DiscoverPresenter.a(paramDiscoverPresenter)) && (paramGetDiscoverCardsEvent.jdField_a_of_type_Long == DiscoverPresenter.a(paramDiscoverPresenter))) {
-      DiscoverPresenter.a(paramDiscoverPresenter).a(null, paramGetDiscoverCardsEvent);
-    }
+    GetFeedFeatureRequest localGetFeedFeatureRequest = new GetFeedFeatureRequest();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString);
+    localGetFeedFeatureRequest.a = localArrayList;
+    CmdTaskManger.a().a(localGetFeedFeatureRequest, new nup(this, paramJobContext, paramString));
   }
 }
 

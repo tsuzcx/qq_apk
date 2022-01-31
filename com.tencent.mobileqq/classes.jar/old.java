@@ -1,23 +1,50 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.MusicConfigInfo;
+import com.tencent.biz.qqstory.network.request.GetMusicConfigRequest;
+import com.tencent.biz.qqstory.network.response.GetMusicConfigResponse;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
 
-class old
-  implements ValueAnimator.AnimatorUpdateListener
+public class old
+  implements CmdTaskManger.CommandCallback
 {
-  old(olc paramolc, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  long jdField_a_of_type_Long = System.currentTimeMillis();
+  Context jdField_a_of_type_AndroidContentContext;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public old(@NonNull Context paramContext)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)StoryMultiFragmentPart.a(this.jdField_a_of_type_Olc.a).getLayoutParams();
-    paramValueAnimator.width = ((int)((this.jdField_a_of_type_Int - this.b) * f1 + this.b));
-    paramValueAnimator.height = ((int)((this.c - this.d) * f1 + this.d));
-    paramValueAnimator.leftMargin = ((int)((this.e + 0) * f1 + 0.0F));
-    paramValueAnimator.bottomMargin = ((int)(f1 * (this.f + 0) + 0.0F));
-    StoryMultiFragmentPart.a(this.jdField_a_of_type_Olc.a).setLayoutParams(paramValueAnimator);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+  }
+  
+  public void a(@NonNull GetMusicConfigRequest paramGetMusicConfigRequest, @Nullable GetMusicConfigResponse paramGetMusicConfigResponse, @NonNull ErrorMessage paramErrorMessage)
+  {
+    StoryReportor.a("edit_video", "music_list_time", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "", "", "" });
+    if ((paramErrorMessage.isFail()) || (paramGetMusicConfigResponse == null))
+    {
+      StoryReportor.a("edit_video", "music_list_failed", 0, 0, new String[] { "", "", "", "" });
+      return;
+    }
+    paramGetMusicConfigRequest = paramGetMusicConfigResponse.a;
+    int j = paramGetMusicConfigRequest.music_config.size();
+    paramGetMusicConfigResponse = new ArrayList(j);
+    if (j > 0)
+    {
+      int i = 0;
+      while (i < j)
+      {
+        paramGetMusicConfigResponse.add(new QQStoryMusicInfo((qqstory_struct.MusicConfigInfo)paramGetMusicConfigRequest.music_config.get(i)));
+        i += 1;
+      }
+    }
+    StoryReportor.a("edit_video", "music_list_count", 0, 0, new String[] { String.valueOf(j), "", "", "" });
+    QQStoryMusicInfo.a(this.jdField_a_of_type_AndroidContentContext, paramGetMusicConfigResponse);
   }
 }
 

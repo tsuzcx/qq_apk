@@ -1,47 +1,23 @@
-import com.tencent.component.network.utils.thread.internel.ArrayDeque;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import com.tencent.component.network.module.cache.CacheManager;
+import com.tencent.component.network.module.cache.file.FileStorageHandler.Collector;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
-public class pkc
-  implements Iterator
+public final class pkc
+  implements FileStorageHandler.Collector
 {
-  private int jdField_a_of_type_Int = ArrayDeque.access$200(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque);
-  private int b = ArrayDeque.access$300(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque);
-  private int c = -1;
-  
-  private pkc(ArrayDeque paramArrayDeque) {}
-  
-  public boolean hasNext()
+  public Collection a()
   {
-    return this.jdField_a_of_type_Int != this.b;
-  }
-  
-  public Object next()
-  {
-    if (this.jdField_a_of_type_Int == this.b) {
-      throw new NoSuchElementException();
-    }
-    Object localObject = ArrayDeque.access$400(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque)[this.jdField_a_of_type_Int];
-    if ((ArrayDeque.access$300(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque) != this.b) || (localObject == null)) {
-      throw new ConcurrentModificationException();
-    }
-    this.c = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int + 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque).length - 1);
-    return localObject;
-  }
-  
-  public void remove()
-  {
-    if (this.c < 0) {
-      throw new IllegalStateException();
-    }
-    if (ArrayDeque.access$500(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque, this.c))
+    synchronized ()
     {
-      this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int - 1 & ArrayDeque.access$400(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque).length - 1);
-      this.b = ArrayDeque.access$300(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque);
+      if (CacheManager.a().size() <= 0)
+      {
+        localObject1 = null;
+        return localObject1;
+      }
+      Object localObject1 = new ArrayList(CacheManager.a().values());
     }
-    this.c = -1;
   }
 }
 

@@ -51,8 +51,8 @@ public class QfilePinnedHeaderExpandableListView
   
   private void a(Context paramContext)
   {
-    setSelector(2131492923);
-    setGroupIndicator(paramContext.getResources().getDrawable(2130838656));
+    setSelector(2131492924);
+    setGroupIndicator(paramContext.getResources().getDrawable(2130838660));
   }
   
   public ImageHolder a(int paramInt1, int paramInt2)

@@ -295,8 +295,8 @@ public class MessageForLongMsg
       if (!(localObject5 instanceof MessageForPic)) {
         break label1028;
       }
-      localStringBuilder1.append(BaseApplicationImpl.getContext().getString(2131433004));
-      localStringBuilder2.append(BaseApplicationImpl.getContext().getString(2131433004));
+      localStringBuilder1.append(BaseApplicationImpl.getContext().getString(2131433021));
+      localStringBuilder2.append(BaseApplicationImpl.getContext().getString(2131433021));
       break label1028;
     }
     for (;;)

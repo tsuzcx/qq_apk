@@ -1,29 +1,22 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.widget.ActionSheet;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import com.tencent.qphone.base.util.QLog;
 
 public class aetz
-  implements IphonePickerView.IphonePickListener
+  extends ProtoUtils.TroopGiftProtocolObserver
 {
-  public aetz(NearbyProfileEditPanel paramNearbyProfileEditPanel, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
+  public aetz(NowShortVideoProtoManager paramNowShortVideoProtoManager, String paramString, NowShortVideoProtoManager.Callback paramCallback) {}
   
-  public void onConfirmBtClicked()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
-    {
-      NearbyProfileEditPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (paramInt != 0) {
+      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=   " + paramInt + ",data=" + paramArrayOfByte + ",mQueryString=" + this.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public void onItemSelected(int paramInt1, int paramInt2)
-  {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setTag(Byte.valueOf((byte)(paramInt1 + 1)));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setText(NearbyProfileEditPanel.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel).getText(0, paramInt1));
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 

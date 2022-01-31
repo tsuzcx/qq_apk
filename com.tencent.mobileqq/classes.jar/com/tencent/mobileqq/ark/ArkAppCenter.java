@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.ark;
 
-import aamp;
-import aamq;
-import aamr;
-import aamu;
-import aamv;
-import aamw;
-import aamx;
-import aamy;
-import aamz;
-import aana;
-import aanb;
-import aanc;
+import aatq;
+import aatr;
+import aats;
+import aatv;
+import aatw;
+import aatx;
+import aaty;
+import aatz;
+import aaua;
+import aaub;
+import aauc;
+import aaud;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -52,14 +52,14 @@ public class ArkAppCenter
   private static boolean f;
   private static boolean g;
   private final int jdField_a_of_type_Int = 0;
-  private aanc jdField_a_of_type_Aanc = new aanc(null);
+  private aaud jdField_a_of_type_Aaud = new aaud(null);
   private ArkActionAppMgr jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr;
   private ArkAiAppCenter jdField_a_of_type_ComTencentMobileqqArkArkAiAppCenter;
   private ArkAppCGI jdField_a_of_type_ComTencentMobileqqArkArkAppCGI;
   private ArkAppEntityManagerFactory jdField_a_of_type_ComTencentMobileqqArkArkAppEntityManagerFactory;
   private ArkAppSSO jdField_a_of_type_ComTencentMobileqqArkArkAppSSO;
   private ArkLocalAppMgr jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new aamv(this);
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new aatw(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private final int jdField_b_of_type_Int = 1;
   private final int c;
@@ -86,7 +86,7 @@ public class ArkAppCenter
     this.jdField_a_of_type_ComTencentMobileqqArkArkAppEntityManagerFactory = new ArkAppEntityManagerFactory(paramQQAppInterface.getCurrentAccountUin());
     AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     IntentFilter localIntentFilter = new IntentFilter("android.intent.action.PROXY_CHANGE");
-    paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Aanc, localIntentFilter);
+    paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Aaud, localIntentFilter);
     this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppCenter = new ArkAiAppCenter(this);
   }
   
@@ -115,7 +115,7 @@ public class ArkAppCenter
     if (!jdField_b_of_type_Boolean) {
       return null;
     }
-    a().send(new aamp(paramString));
+    a().send(new aatq(paramString));
     return (ArkAppCenter.ApplicationInformation)jdField_a_of_type_JavaUtilMap.get(paramString);
   }
   
@@ -173,11 +173,11 @@ public class ArkAppCenter
     if (paramString == null) {
       return;
     }
-    aanb localaanb;
+    aauc localaauc;
     synchronized (jdField_b_of_type_JavaUtilMap)
     {
-      localaanb = (aanb)jdField_b_of_type_JavaUtilMap.get(paramString);
-      if (localaanb == null)
+      localaauc = (aauc)jdField_b_of_type_JavaUtilMap.get(paramString);
+      if (localaauc == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ArkApp", 1, String.format("releaseAppIcon.notfound!! path: %s", new Object[] { paramString }));
@@ -185,8 +185,8 @@ public class ArkAppCenter
         return;
       }
     }
-    int i = localaanb.jdField_a_of_type_Int - 1;
-    localaanb.jdField_a_of_type_Int = i;
+    int i = localaauc.jdField_a_of_type_Int - 1;
+    localaauc.jdField_a_of_type_Int = i;
     if (i != 0) {
       return;
     }
@@ -194,7 +194,7 @@ public class ArkAppCenter
       QLog.d("ArkApp", 1, String.format("releaseAppIcon.release!! path: %s", new Object[] { paramString }));
     }
     jdField_b_of_type_JavaUtilMap.remove(paramString);
-    a().post(new aamu(localaanb));
+    a().post(new aatv(localaauc));
   }
   
   public static void a(String paramString, ArkAppCenter.OnGetAppIcon paramOnGetAppIcon)
@@ -204,17 +204,17 @@ public class ArkAppCenter
     }
     synchronized (jdField_b_of_type_JavaUtilMap)
     {
-      aanb localaanb = (aanb)jdField_b_of_type_JavaUtilMap.get(paramString);
-      if (localaanb != null) {
-        localaanb.jdField_a_of_type_Int += 1;
+      aauc localaauc = (aauc)jdField_b_of_type_JavaUtilMap.get(paramString);
+      if (localaauc != null) {
+        localaauc.jdField_a_of_type_Int += 1;
       }
-      if (localaanb != null)
+      if (localaauc != null)
       {
-        paramOnGetAppIcon.a(paramString, localaanb.jdField_a_of_type_AndroidGraphicsBitmap);
+        paramOnGetAppIcon.a(paramString, localaauc.jdField_a_of_type_AndroidGraphicsBitmap);
         return;
       }
     }
-    a().post(new aamr(paramString, paramOnGetAppIcon));
+    a().post(new aats(paramString, paramOnGetAppIcon));
   }
   
   public static void a(String paramString1, String paramString2)
@@ -232,9 +232,9 @@ public class ArkAppCenter
     {
       if (!jdField_a_of_type_Boolean)
       {
-        localArkEnvironmentManager.setThreadCreator(new aamx());
-        localArkEnvironmentManager.setLogCallback(new aamy());
-        localArkEnvironmentManager.setLibraryLoader(new aamz());
+        localArkEnvironmentManager.setThreadCreator(new aaty());
+        localArkEnvironmentManager.setLogCallback(new aatz());
+        localArkEnvironmentManager.setLibraryLoader(new aaua());
         localArkEnvironmentManager.setDebugFlag(false);
         localArkEnvironmentManager.setProfilingLogFlag(false);
         jdField_a_of_type_Boolean = true;
@@ -243,7 +243,7 @@ public class ArkAppCenter
         localArkEnvironmentManager.loadLibrary();
       }
       if ((paramBoolean) && (jdField_b_of_type_Boolean)) {
-        ThreadManager.post(new aana(), 5, null, true);
+        ThreadManager.post(new aaub(), 5, null, true);
       }
       return;
     }
@@ -342,7 +342,7 @@ public class ArkAppCenter
   
   public static void c()
   {
-    File[] arrayOfFile = new File(c()).listFiles(new aamw());
+    File[] arrayOfFile = new File(c()).listFiles(new aatx());
     if (arrayOfFile != null)
     {
       int j = arrayOfFile.length;
@@ -409,7 +409,7 @@ public class ArkAppCenter
     if ((jdField_b_of_type_Boolean) || (!jdField_c_of_type_Boolean)) {
       return;
     }
-    ArkDispatchTask.getInstance().send(new aamq());
+    ArkDispatchTask.getInstance().send(new aatr());
   }
   
   public static String f()
@@ -488,7 +488,7 @@ public class ArkAppCenter
     if (localQQAppInterface != null)
     {
       AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-      localQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_Aanc);
+      localQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_Aaud);
     }
   }
 }

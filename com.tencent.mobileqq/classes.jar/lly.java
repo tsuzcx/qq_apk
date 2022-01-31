@@ -1,20 +1,18 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class lly
-  extends FriendListObserver
+  implements Runnable
 {
-  public lly(KandianMergeManager paramKandianMergeManager) {}
+  public lly(KandianMergeManager paramKandianMergeManager, int paramInt) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.a(this.a), paramString)) && (!TextUtils.equals(paramString, AppConstants.as))) {
-      KandianMergeManager.a(this.a).a(1).a(4, true, new Object[] { AppConstants.as });
-    }
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), 1).edit();
+    localEditor.putInt("subscribe_push_msg_status", this.jdField_a_of_type_Int);
+    ReadInJoyHelper.a(localEditor, true);
   }
 }
 

@@ -1,17 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.qq.im.setting.ICameraEntrance;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
 public class anii
-  implements ValueAnimator.AnimatorUpdateListener
+  extends BroadcastReceiver
 {
-  public anii(DoodleEditView paramDoodleEditView, GestureHelper.ZoomItem paramZoomItem) {}
+  public anii(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem.n = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.invalidate();
+    paramContext = this.a.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a();
+    if ((paramContext == null) || (paramContext.isFinishing()) || (QIMCameraCaptureUnit.a(this.a))) {}
+    while (!"tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VERSION_CODES", 2, "receive ACTION_START_VIDEO_CHAT.");
+    }
+    this.a.h();
+    this.a.jdField_a_of_type_DovComQqImSettingICameraEntrance.a(2);
   }
 }
 

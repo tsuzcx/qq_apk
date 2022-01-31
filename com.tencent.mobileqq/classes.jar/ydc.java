@@ -1,24 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class ydc
-  implements IIconListener
+  implements DialogInterface.OnClickListener
 {
-  private ydc(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public ydc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBitmap != null) && (paramInt2 == 200))
-    {
-      if (this.b.d != 0) {
-        this.b.b = true;
-      }
-    }
-    else {
-      return;
-    }
-    this.b.a.notifyDataSetChanged();
+    ShortVideoPlayActivity.b(this.a);
   }
 }
 

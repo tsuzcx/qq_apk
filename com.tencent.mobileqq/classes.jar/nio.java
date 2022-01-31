@@ -1,14 +1,16 @@
-import com.tencent.biz.qqstory.playmode.child.MyVideoFromMessageNotifyPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.model.IVidToVideoInfoPuller.OnFinishCallBack;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public class nio
-  implements Runnable
+class nio
+  implements IVidToVideoInfoPuller.OnFinishCallBack
 {
-  public nio(MyVideoFromMessageNotifyPlayMode paramMyVideoFromMessageNotifyPlayMode) {}
+  nio(nin paramnin) {}
   
-  public void run()
+  public void a(List paramList, boolean paramBoolean)
   {
-    this.a.a.setCurrentItem(0, false);
+    ThreadManager.getUIHandler().post(new nip(this));
   }
 }
 

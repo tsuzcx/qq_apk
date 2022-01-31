@@ -1,32 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import com.tencent.mobileqq.shortvideo.util.TextureDataPipe.OnFrameAvailableListener;
 
 public class xxb
-  implements View.OnTouchListener
+  implements TextureDataPipe.OnFrameAvailableListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
+  public xxb(CameraFilterGLView paramCameraFilterGLView) {}
   
-  public xxb(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
-    {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
-    }
-    for (;;)
-    {
-      return false;
-      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.clearFocus();
-      }
-    }
+    CameraFilterGLView.b(this.a);
   }
 }
 

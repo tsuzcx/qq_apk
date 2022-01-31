@@ -31,7 +31,7 @@ public final class SdkAuthorize$AuthorizeResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse
  * JD-Core Version:    0.7.0.1
  */

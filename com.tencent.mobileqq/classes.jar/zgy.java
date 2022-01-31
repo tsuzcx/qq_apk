@@ -1,32 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.troop.data.TroopMessageManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class zgy
   implements Runnable
 {
-  private final WeakReference a;
-  private final WeakReference b;
-  
-  public zgy(QQAppInterface paramQQAppInterface, PublicAccountDataManager paramPublicAccountDataManager)
-  {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramPublicAccountDataManager);
-  }
+  public zgy(MessageHandler paramMessageHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)this.b.get();
-    if ((localQQAppInterface != null) && (localPublicAccountDataManager != null))
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler.trooptroop_pull_msg", 2, "onReceive,cost:" + (System.currentTimeMillis() - TroopMessageManager.b));
+    }
+    try
     {
-      TroopBarAssistantManager.a().a(localQQAppInterface, localPublicAccountDataManager.a());
-      ServiceAccountFolderManager.a().c(localQQAppInterface);
-      TroopBarAssistantManager.a().g(localQQAppInterface);
-      ReadInJoyLogicEngine.a().e();
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject, false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgResp_PB exception ! ", localException);
+      }
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
     }
   }
 }

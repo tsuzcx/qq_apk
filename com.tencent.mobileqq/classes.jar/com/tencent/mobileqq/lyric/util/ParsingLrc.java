@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.lyric.util;
 
-import adpm;
+import aecs;
 import android.util.Log;
 import com.tencent.mobileqq.lyric.data.Sentence;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class ParsingLrc
 {
-  private static final adpm jdField_a_of_type_Adpm = new adpm(null);
+  private static final aecs jdField_a_of_type_Aecs = new aecs(null);
   private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(?<=\\[).*?(?=\\])");
   private int jdField_a_of_type_Int;
   private final String jdField_a_of_type_JavaLangString;
@@ -239,7 +239,7 @@ public class ParsingLrc
     //   87: areturn
     //   88: aload_0
     //   89: getfield 39	com/tencent/mobileqq/lyric/util/ParsingLrc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   92: getstatic 30	com/tencent/mobileqq/lyric/util/ParsingLrc:jdField_a_of_type_Adpm	Ladpm;
+    //   92: getstatic 30	com/tencent/mobileqq/lyric/util/ParsingLrc:jdField_a_of_type_Aecs	Laecs;
     //   95: invokestatic 197	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   98: iconst_0
     //   99: istore_2

@@ -1,15 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.profile.ProfileCardWebviewPlugin;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OcrCamera;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class agbk
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public agbk(ProfileCardWebviewPlugin paramProfileCardWebviewPlugin) {}
+  public agbk(OcrCamera paramOcrCamera) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    ProfileCardWebviewPlugin.a(this.a, paramInt);
+    QQToast.a(BaseApplicationImpl.getContext(), "开始选图", 0).a();
   }
 }
 

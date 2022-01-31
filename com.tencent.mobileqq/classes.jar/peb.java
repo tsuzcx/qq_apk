@@ -1,27 +1,20 @@
-import com.tencent.component.media.gif.NewGifDecoder;
-import com.tencent.component.media.gif.NewGifDrawable;
-import com.tencent.component.media.utils.ImageManagerLog;
+import com.tencent.biz.widgets.ScannerView;
 
-class peb
-  extends pej
+public class peb
+  implements Runnable
 {
-  peb(pea parampea, NewGifDrawable paramNewGifDrawable)
-  {
-    super(paramNewGifDrawable);
-  }
+  public peb(ScannerView paramScannerView) {}
   
-  public void doWork()
+  public void run()
   {
-    ImageManagerLog.e("NewGifDrawable", "reset");
-    if (this.a.a.a.reset()) {
-      this.a.a.start();
-    }
-    NewGifDrawable.a(this.a.a, false);
+    ScannerView.a(this.a, false);
+    ScannerView.a(this.a, ScannerView.a(this.a));
+    this.a.a(ScannerView.c(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     peb
  * JD-Core Version:    0.7.0.1
  */

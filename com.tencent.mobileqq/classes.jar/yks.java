@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class yks
-  extends MessageObserver
+  implements Observer
 {
-  public yks(HotChatCenterFragment paramHotChatCenterFragment) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public yks(QQAppInterface paramQQAppInterface)
   {
-    this.a.c();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  protected void b() {}
+  public void update(Observable paramObservable, Object paramObject) {}
 }
 
 

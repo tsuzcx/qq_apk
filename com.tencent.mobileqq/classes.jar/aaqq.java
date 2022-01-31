@@ -1,40 +1,24 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendController.AttachAppHolder;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import com.tencent.mobileqq.statistics.ArkAppReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.AppSchemeHandler;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaqq
-  implements DialogInterface.OnClickListener
+  extends ArkAppCGI.ArkAppCGICallback
 {
-  public aaqq(ArkRecommendController paramArkRecommendController, QQCustomDialog paramQQCustomDialog, boolean paramBoolean1, ArkAiAppPanel paramArkAiAppPanel, List paramList, int paramInt1, boolean paramBoolean2, Context paramContext1, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, RecommendCommonMessage paramRecommendCommonMessage, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, ArkRecommendController.AttachAppHolder paramAttachAppHolder, boolean paramBoolean3, int paramInt2, Context paramContext2) {}
+  public aaqq(ArkAppSchemeCenter.AppSchemeHandler paramAppSchemeHandler, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    if (!paramBoolean)
     {
-      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController$AttachAppHolder, this.c, this.jdField_b_of_type_Int);
-      ArkAppReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "__global__", "ArkAlertDialogConfirm", 0L, 0L, 0L, 0L, 0L, "", "");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      ArkRecommendController.a(this.jdField_b_of_type_AndroidContentContext, "open", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      ArkAppCenter.b("ArkDialog", String.format("PositiveButton click failed, err=%s", new Object[] { paramDialogInterface.getMessage() }));
-    }
+    ArkAppSchemeCenter.AppSchemeHandler.a((ArkAppSchemeCenter.AppSchemeHandler)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, paramString1);
+    BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
   }
 }
 

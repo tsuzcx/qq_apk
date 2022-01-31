@@ -1,18 +1,36 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.base.QQStoryHandler;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class rlu
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rlu(BaseChatPie paramBaseChatPie) {}
+  public rlu(AssistantSettingActivity paramAssistantSettingActivity, MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "mRunOnShow 800 hasDestory=" + this.a.I);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a(paramBoolean);
+    paramCompoundButton = (QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app.a(98);
+    int i;
+    if (paramBoolean)
+    {
+      i = 2;
+      paramCompoundButton.b(i);
+      if (!paramBoolean) {
+        break label70;
+      }
     }
-    if (!this.a.I) {
-      this.a.j(3);
+    label70:
+    for (paramCompoundButton = "1";; paramCompoundButton = "2")
+    {
+      StoryReportor.a("msg_tab", "turn_story", 0, 0, new String[] { "2", paramCompoundButton });
+      return;
+      i = 1;
+      break;
     }
   }
 }

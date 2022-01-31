@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="112.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.bubble.ChatXListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ea4" android:id="@id/listViewHistory" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:cacheColorHint="@null" android:divider="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:dividerHeight="0.0dip" />
-</FrameLayout>
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0276" android:layout_width="fill_parent" android:layout_height="112.0dip" />
+    <TextView android:textSize="12.0dip" android:textColor="#ffbbbbbb" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a195b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="96.0dip" android:layout_centerHorizontal="true" />
+</RelativeLayout>

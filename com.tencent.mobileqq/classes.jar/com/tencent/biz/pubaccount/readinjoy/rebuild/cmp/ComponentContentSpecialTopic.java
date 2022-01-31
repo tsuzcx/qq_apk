@@ -47,7 +47,7 @@ public class ComponentContentSpecialTopic
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969565, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969572, this, true);
   }
   
   public void a() {}
@@ -61,7 +61,7 @@ public class ComponentContentSpecialTopic
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131366929));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131366971));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
@@ -78,7 +78,7 @@ public class ComponentContentSpecialTopic
       b();
       paramObject = paramObject.a();
       if (paramObject != null) {
-        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, ReadInJoyUtils.b(paramObject.mFirstPagePicUrl), getContext());
+        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, ReadInJoyUtils.a(paramObject.mFirstPagePicUrl), getContext());
       }
     }
   }

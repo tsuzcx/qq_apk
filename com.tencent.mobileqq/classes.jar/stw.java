@@ -1,19 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
-public class stw
-  implements AdapterView.OnItemClickListener
+class stw
+  implements Runnable
 {
-  public stw(Leba paramLeba) {}
+  stw(stu paramstu) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    if (this.a.c()) {
-      ThreadManager.post(new stx(this, paramView, paramInt), 8, null, true);
-    }
+    this.a.a.a.a();
   }
 }
 

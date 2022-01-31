@@ -1,54 +1,40 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.CompressVideoSegment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ajkk
-  implements DownloadParams.DecodeHandler
+public class ajkk
+  implements Runnable
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ajkk(VideoInfo.CompressVideoSegment paramCompressVideoSegment, VideoInfo paramVideoInfo, XMediaEditor paramXMediaEditor) {}
+  
+  public void run()
   {
-    Object localObject;
-    if (paramBitmap == null)
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.e = 10;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.g = -2147483647;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.c);
+    if ((localObject instanceof VideoItem.VideoViewHolder))
     {
-      localObject = null;
-      return localObject;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length > 0)) {}
-    for (int i = ((int[])(int[])paramDownloadParams)[0];; i = 0)
-    {
-      int j;
-      int k;
-      boolean bool;
-      if (i != 0)
+      localObject = (VideoItem.VideoViewHolder)localObject;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject).a.getTag()))
       {
-        paramDownloadParams = new Matrix();
-        paramDownloadParams.postRotate(i);
-        j = paramBitmap.getWidth();
-        k = paramBitmap.getHeight();
-        if (i % 90 != 0) {
-          bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideo before notify. vh hash=", Integer.valueOf(localObject.hashCode()) });
         }
-      }
-      label84:
-      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, k, paramDownloadParams, bool);; paramDownloadParams = paramBitmap)
-      {
-        localObject = paramDownloadParams;
-        if (paramDownloadParams == paramBitmap) {
-          break;
-        }
-        paramBitmap.recycle();
-        return paramDownloadParams;
-        bool = false;
-        break label84;
+        ((VideoItem)((XMediaEditorAdapter)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo, 0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkk
  * JD-Core Version:    0.7.0.1
  */

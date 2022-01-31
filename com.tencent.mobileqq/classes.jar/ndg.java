@@ -1,26 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.Queue;
+import com.tencent.biz.qqstory.model.TroopNickNameManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class ndg
-  extends SimpleJob
+  implements Runnable
 {
-  public ndg(MsgTabStoryVideoPreloader paramMsgTabStoryVideoPreloader, List paramList) {}
+  public ndg(TroopNickNameManager paramTroopNickNameManager) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    paramJobContext = MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader, this.jdField_a_of_type_JavaUtilList);
-    if ((!paramJobContext.isEmpty()) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a()))
+    long l = System.currentTimeMillis();
+    Iterator localIterator = this.a.a.entrySet().iterator();
+    int i = 0;
+    if (localIterator.hasNext())
     {
-      MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader);
-      MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader, paramJobContext);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.b();
+      if (l - ((Long)((Map.Entry)localIterator.next()).getValue()).longValue() < 30000L) {
+        break label115;
+      }
+      localIterator.remove();
+      i += 1;
     }
-    return null;
+    label115:
+    for (;;)
+    {
+      break;
+      if ((i > 0) && (QLog.isColorLevel())) {
+        QLog.d("TroopNickNameManager", 2, "timeout count=" + i);
+      }
+      return;
+    }
   }
 }
 

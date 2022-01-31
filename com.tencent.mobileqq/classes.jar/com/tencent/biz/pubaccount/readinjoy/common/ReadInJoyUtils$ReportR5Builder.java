@@ -1,6 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.readinjoy.ReadInJoyHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,6 +18,7 @@ public class ReadInJoyUtils$ReportR5Builder
   boolean d = false;
   boolean e = false;
   boolean f = false;
+  boolean g = false;
   
   public ReportR5Builder a()
   {
@@ -37,6 +40,7 @@ public class ReadInJoyUtils$ReportR5Builder
   
   public String a()
   {
+    int i = 1;
     try
     {
       Object localObject = new JSONObject();
@@ -70,14 +74,25 @@ public class ReadInJoyUtils$ReportR5Builder
       if (this.jdField_c_of_type_Int != -1) {
         ((JSONObject)localObject).put("skin_type", this.jdField_c_of_type_Int);
       }
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      if (this.g) {
+        if (ReadInJoyHelper.K(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
+          break label222;
+        }
+      }
+      for (;;)
+      {
+        ((JSONObject)localObject).put("reddot_style", i);
+        localObject = ((JSONObject)localObject).toString();
+        return localObject;
+        label222:
+        i = 0;
+      }
+      return "";
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
     }
-    return "";
   }
   
   public ReportR5Builder b()
@@ -94,7 +109,7 @@ public class ReadInJoyUtils$ReportR5Builder
   
   public ReportR5Builder c()
   {
-    this.jdField_c_of_type_Boolean = true;
+    this.g = true;
     return this;
   }
   
@@ -106,17 +121,23 @@ public class ReadInJoyUtils$ReportR5Builder
   
   public ReportR5Builder d()
   {
-    this.d = true;
+    this.jdField_c_of_type_Boolean = true;
     return this;
   }
   
   public ReportR5Builder e()
   {
-    this.e = true;
+    this.d = true;
     return this;
   }
   
   public ReportR5Builder f()
+  {
+    this.e = true;
+    return this;
+  }
+  
+  public ReportR5Builder g()
   {
     this.f = true;
     return this;

@@ -29,7 +29,7 @@ import java.util.List;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
-import whd;
+import wki;
 
 public class NotificationAdapter
   extends XBaseAdapter
@@ -37,7 +37,7 @@ public class NotificationAdapter
   public int a;
   private Context jdField_a_of_type_AndroidContentContext;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new whd(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wki(this);
   private BaseSystemMsgInterface jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseSystemMsgInterface;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public SlideDetectListView a;
@@ -117,25 +117,25 @@ public class NotificationAdapter
     MessageRecord localMessageRecord;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969463, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969464, paramViewGroup, false);
       paramViewGroup = new NotificationAdapter.ViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366569));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366570));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366572));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366573));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366574));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366575));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366576));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131366571));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131366577));
-      ((Button)paramView.findViewById(2131366578)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366593));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366594));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366596));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366597));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366598));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366599));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366600));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131366595));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131366601));
+      ((Button)paramView.findViewById(2131366602)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramView.setTag(paramViewGroup);
       paramViewGroup.jdField_b_of_type_Int = paramInt;
       if (paramInt >= this.jdField_a_of_type_Int) {
         break label226;
       }
-      paramView.setBackgroundResource(2130838585);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838585);
+      paramView.setBackgroundResource(2130838589);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838589);
       localMessageRecord = (MessageRecord)getItem(paramInt);
       if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForSystemMsg))) {
         break label246;
@@ -147,8 +147,8 @@ public class NotificationAdapter
       paramViewGroup = (NotificationAdapter.ViewHolder)paramView.getTag();
       break;
       label226:
-      paramView.setBackgroundResource(2130838581);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838581);
+      paramView.setBackgroundResource(2130838585);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838585);
       break label190;
       label246:
       paramViewGroup.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = ((MessageForSystemMsg)localMessageRecord).getSystemMsg();

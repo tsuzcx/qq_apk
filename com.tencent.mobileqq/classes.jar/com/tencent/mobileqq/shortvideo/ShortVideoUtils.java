@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahma;
+import aiac;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -74,7 +74,7 @@ public class ShortVideoUtils
     jdField_a_of_type_Int = 2;
     jdField_b_of_type_Int = 1;
     jdField_a_of_type_ArrayOfInt = new int[] { 1, 97, 125 };
-    ThreadManager.getSubThreadHandler().post(new ahma());
+    ThreadManager.getSubThreadHandler().post(new aiac());
   }
   
   public static int a()

@@ -1,16 +1,14 @@
-import com.tencent.qqprotect.qsec.QSecPushServiceMgr;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class alij
   implements Runnable
 {
-  public alij(QSecPushServiceMgr paramQSecPushServiceMgr, byte[] paramArrayOfByte) {}
+  public alij(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
   
   public void run()
   {
-    alil localalil = QSecPushServiceMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecPushServiceMgr, this.jdField_a_of_type_ArrayOfByte);
-    if (localalil != null) {
-      QSecPushServiceMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecPushServiceMgr, localalil);
-    }
+    StaticAnalyz.a("202", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
   }
 }
 

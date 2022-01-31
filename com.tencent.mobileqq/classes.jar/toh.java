@@ -1,22 +1,30 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SecurityPickproofActivity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class toh
   implements Runnable
 {
-  public toh(SecurityPickproofActivity paramSecurityPickproofActivity) {}
+  public toh(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
   public void run()
   {
-    SecurityPickproofActivity.a(this.a, false);
-    FMToastUtil.a(2131434596);
-    SecurityPickproofActivity.a(this.a).setText(SecurityPickproofActivity.a(this.a));
-    SecurityPickproofActivity.b(this.a).setVisibility(0);
-    SecurityPickproofActivity.a(this.a).setVisibility(0);
-    SecurityPickproofActivity.a(this.a).setVisibility(8);
+    try
+    {
+      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
+      {
+        RecentLoginDevActivity.a(this.a).dismiss();
+        RecentLoginDevActivity.a(this.a).cancel();
+      }
+      RecentLoginDevActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

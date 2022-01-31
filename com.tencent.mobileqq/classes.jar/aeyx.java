@@ -1,96 +1,17 @@
-import android.database.DataSetObserver;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.smooth.ItemManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
 
-class aeyx
-  extends BaseAdapter
+public class aeyx
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  final BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  final ItemManager jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager;
+  public aeyx(VideoViewTVKImpl paramVideoViewTVKImpl) {}
   
-  aeyx(ItemManager paramItemManager, BaseAdapter paramBaseAdapter)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager = paramItemManager;
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
-  }
-  
-  public boolean areAllItemsEnabled()
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.areAllItemsEnabled();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
-  }
-  
-  public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getDropDownView(paramInt, paramView, paramViewGroup);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItem(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemId(paramInt);
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemViewType(paramInt);
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(paramInt, paramView, paramViewGroup);
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager.a(paramViewGroup, paramView, paramInt);
-    return paramView;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getViewTypeCount();
-  }
-  
-  public boolean hasStableIds()
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.hasStableIds();
-  }
-  
-  public boolean isEmpty()
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.isEmpty();
-  }
-  
-  public boolean isEnabled(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.isEnabled(paramInt);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
-  }
-  
-  public void notifyDataSetInvalidated()
-  {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetInvalidated();
-  }
-  
-  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(paramDataSetObserver);
-  }
-  
-  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.unregisterDataSetObserver(paramDataSetObserver);
+    ThreadManager.getUIHandler().post(new aeyy(this));
   }
 }
 

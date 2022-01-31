@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
 class kth
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
   kth(ktg paramktg) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.k();
-    if (!this.a.a.n) {
-      this.a.a.a(this.a.a.d, this.a.a.b, this.a.a.a.name, ChatActivity.class, true);
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountAdvertisementActivity", 2, "action dismiss");
     }
   }
 }

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.aidl;
 
+import aaes;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
-import zzy;
 
 public abstract class IArGlobalConfigManager$Stub
   extends Binder
@@ -24,7 +24,7 @@ public abstract class IArGlobalConfigManager$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IArGlobalConfigManager))) {
       return (IArGlobalConfigManager)localIInterface;
     }
-    return new zzy(paramIBinder);
+    return new aaes(paramIBinder);
   }
   
   public IBinder asBinder()

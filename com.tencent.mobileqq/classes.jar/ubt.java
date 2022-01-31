@@ -1,101 +1,55 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class ubt
-  extends TroopObserver
+class ubt
+  implements Runnable
 {
-  public ubt(TroopTransferActivity paramTroopTransferActivity) {}
+  ubt(ubp paramubp, List paramList) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3)
+  public void run()
   {
-    if ((!Utils.a(String.valueOf(paramLong), this.a.jdField_a_of_type_JavaLangString)) || (!Utils.a(paramString1, this.a.app.getCurrentAccountUin()))) {
+    Object localObject1 = (TroopManager)this.jdField_a_of_type_Ubp.a.app.getManager(51);
+    TroopInfo localTroopInfo = ((TroopManager)localObject1).a(this.jdField_a_of_type_Ubp.a.b);
+    if (localTroopInfo == null) {
       return;
     }
-    this.a.jdField_a_of_type_Boolean = false;
-    if (paramBoolean)
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
-      }
-      paramString1 = (TroopManager)this.a.app.getManager(51);
-      paramString3 = paramString1.a(paramLong + "");
-      if (paramString3 != null)
+      if (i == 1)
       {
-        paramString3.dwAdditionalFlag = 0L;
-        paramString1.b(paramString3);
-      }
-      paramString1 = new Intent();
-      paramString1.putExtra("isNeedFinish", true);
-      paramString1.putExtra("fin_tip_msg", this.a.getString(2131435203));
-      paramString1.putExtra("uin", paramString2);
-      this.a.setResult(-1, paramString1);
-      this.a.finish();
-      return;
-    }
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
-      paramString1 = this.a.getString(2131435204);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.a);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, paramString1, 1500);
-      return;
-      if ((paramInt == 3) || (paramInt == 4) || (paramInt == 7) || (paramInt == 16) || (paramInt == 19))
-      {
-        paramString1 = this.a.getString(2131435206);
-      }
-      else if ((paramInt == 5) || (paramInt == 17) || (paramInt == 18))
-      {
-        paramString1 = this.a.getString(2131435205);
-      }
-      else
-      {
-        if (paramInt == 12)
-        {
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
-          }
-          paramString1 = DialogUtil.a(this.a, 230);
-          paramString1.setTitle(this.a.getString(2131430364));
-          paramString1.setMessage(this.a.getString(2131430367));
-          paramString1.setNegativeButton(this.a.getString(2131430363), new ubu(this, paramString1));
-          paramString1.setPositiveButton(this.a.getString(2131435252), new ubv(this, paramString1));
-          paramString1.show();
-          return;
+        Object localObject2 = (oidb_0x899.memberlist)this.jdField_a_of_type_JavaUtilList.get(0);
+        if ((localObject2 == null) || (!((oidb_0x899.memberlist)localObject2).uint64_member_uin.has())) {
+          break;
         }
-        paramString1 = this.a.getString(2131435205);
+        localObject2 = String.valueOf(((oidb_0x899.memberlist)localObject2).uint64_member_uin.get());
+        if ((localObject2 != null) && (!"".equals(((String)localObject2).trim()))) {
+          localTroopInfo.troopowneruin = ((String)localObject2).trim();
+        }
       }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
-  }
-  
-  protected void c(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
-  }
-  
-  protected void d(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
+      ((TroopManager)localObject1).b(localTroopInfo);
+      localObject1 = (TroopHandler)this.jdField_a_of_type_Ubp.a.app.a(20);
+      if (localObject1 == null) {
+        break;
+      }
+      try
+      {
+        ((TroopHandler)localObject1).a(Long.parseLong(this.jdField_a_of_type_Ubp.a.b), 0L, 2, 0, 0);
+        return;
+      }
+      catch (Exception localException) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("TroopMemberListActivityget_troop_member", 2, localException.toString());
+      return;
     }
   }
 }

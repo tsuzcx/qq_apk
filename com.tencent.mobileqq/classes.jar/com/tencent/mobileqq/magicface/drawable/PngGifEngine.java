@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.magicface.drawable;
 
-import adqk;
-import adql;
+import aedq;
+import aedr;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
@@ -12,9 +12,9 @@ public class PngGifEngine
   implements IMessageHandler
 {
   int jdField_a_of_type_Int = -1;
-  public adql a;
+  public aedr a;
   public Handler a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new adqk(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new aedq(this);
   boolean jdField_a_of_type_Boolean = false;
   
   public PngGifEngine()
@@ -191,26 +191,26 @@ public class PngGifEngine
     if (this.jdField_a_of_type_Boolean) {
       return "";
     }
-    if (this.jdField_a_of_type_Adql.jdField_a_of_type_ArrayOfJavaLangString == null)
+    if (this.jdField_a_of_type_Aedr.jdField_a_of_type_ArrayOfJavaLangString == null)
     {
       this.jdField_a_of_type_Boolean = true;
-      return this.jdField_a_of_type_Adql.jdField_a_of_type_JavaLangString;
+      return this.jdField_a_of_type_Aedr.jdField_a_of_type_JavaLangString;
     }
     int i = this.jdField_a_of_type_Int + 1;
-    if (i >= this.jdField_a_of_type_Adql.jdField_a_of_type_ArrayOfJavaLangString.length)
+    if (i >= this.jdField_a_of_type_Aedr.jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      adql localadql = this.jdField_a_of_type_Adql;
-      localadql.jdField_a_of_type_Int -= 1;
-      if (this.jdField_a_of_type_Adql.jdField_a_of_type_Int <= 0)
+      aedr localaedr = this.jdField_a_of_type_Aedr;
+      localaedr.jdField_a_of_type_Int -= 1;
+      if (this.jdField_a_of_type_Aedr.jdField_a_of_type_Int <= 0)
       {
         this.jdField_a_of_type_Boolean = true;
-        return this.jdField_a_of_type_Adql.jdField_a_of_type_JavaLangString;
+        return this.jdField_a_of_type_Aedr.jdField_a_of_type_JavaLangString;
       }
       this.jdField_a_of_type_Int = -1;
       i = this.jdField_a_of_type_Int;
-      return this.jdField_a_of_type_Adql.jdField_a_of_type_ArrayOfJavaLangString[(i + 1)];
+      return this.jdField_a_of_type_Aedr.jdField_a_of_type_ArrayOfJavaLangString[(i + 1)];
     }
-    return this.jdField_a_of_type_Adql.jdField_a_of_type_ArrayOfJavaLangString[i];
+    return this.jdField_a_of_type_Aedr.jdField_a_of_type_ArrayOfJavaLangString[i];
   }
   
   public void a()
@@ -218,7 +218,7 @@ public class PngGifEngine
     if (QLog.isColorLevel()) {
       QLog.d("PngGifEngine", 2, "func start.");
     }
-    if (this.jdField_a_of_type_Adql == null) {
+    if (this.jdField_a_of_type_Aedr == null) {
       throw new IllegalArgumentException("【PngGifEngine】 task is null.");
     }
     if (!a()) {
@@ -226,9 +226,9 @@ public class PngGifEngine
     }
   }
   
-  public void a(adql paramadql)
+  public void a(aedr paramaedr)
   {
-    this.jdField_a_of_type_Adql = paramadql;
+    this.jdField_a_of_type_Aedr = paramaedr;
   }
   
   public void a(Message paramMessage)
@@ -238,8 +238,8 @@ public class PngGifEngine
     default: 
       return;
     }
-    if (this.jdField_a_of_type_Adql.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawableIRedrawNotify != null) {
-      this.jdField_a_of_type_Adql.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawableIRedrawNotify.a((Bitmap)paramMessage.obj);
+    if (this.jdField_a_of_type_Aedr.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawableIRedrawNotify != null) {
+      this.jdField_a_of_type_Aedr.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawableIRedrawNotify.a((Bitmap)paramMessage.obj);
     }
     this.jdField_a_of_type_Int += 1;
     ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
@@ -247,8 +247,8 @@ public class PngGifEngine
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Adql != null) {
-      this.jdField_a_of_type_Adql.jdField_a_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_Aedr != null) {
+      this.jdField_a_of_type_Aedr.jdField_a_of_type_JavaLangString = paramString;
     }
   }
   
@@ -259,7 +259,7 @@ public class PngGifEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngGifEngine
  * JD-Core Version:    0.7.0.1
  */

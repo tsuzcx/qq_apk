@@ -20,7 +20,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.HashMap;
 import mqq.app.NewIntent;
-import vzo;
+import wct;
 
 public class FriendHotTipsBar
   implements TipsBarTask
@@ -414,8 +414,8 @@ public class FriendHotTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970176, null);
-    paramVarArgs.findViewById(2131369417).setOnClickListener(new vzo(this));
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970190, null);
+    paramVarArgs.findViewById(2131369483).setOnClickListener(new wct(this));
     return paramVarArgs;
   }
   

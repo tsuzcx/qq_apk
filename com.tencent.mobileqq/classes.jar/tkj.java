@@ -1,15 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class tkj
-  extends GameCenterObserver
+  implements DialogInterface.OnClickListener
 {
-  public tkj(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public tkj(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQSettingSettingActivity.a(this.a);
+    ThreadManager.executeOnNetWorkThread(new tkk(this));
   }
 }
 

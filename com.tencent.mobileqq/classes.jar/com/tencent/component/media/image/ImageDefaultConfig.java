@@ -9,7 +9,7 @@ import com.tencent.component.media.ImageManagerEnv;
 
 public class ImageDefaultConfig
 {
-  public static final int[][] BYTE_ARRAY = { { 6, 25000 }, { 6, 200000 } };
+  public static final int[][] BYTE_ARRAY;
   public static final int[][] BYTE_ARRAY_LOCAL;
   private static int jdField_a_of_type_Int;
   private static String jdField_a_of_type_JavaLangString;
@@ -23,10 +23,9 @@ public class ImageDefaultConfig
   
   static
   {
-    int[] arrayOfInt1 = { 6, 200000 };
-    int[] arrayOfInt2 = { 6, 1000000 };
-    int[] arrayOfInt3 = { 8, 6000000 };
-    BYTE_ARRAY_LOCAL = new int[][] { { 6, 25000 }, arrayOfInt1, arrayOfInt2, arrayOfInt3 };
+    int[] arrayOfInt = { 6, 200000 };
+    BYTE_ARRAY = new int[][] { { 6, 25000 }, arrayOfInt };
+    BYTE_ARRAY_LOCAL = new int[][] { { 6, 25000 }, { 6, 200000 }, { 6, 1000000 }, { 8, 6000000 } };
     jdField_a_of_type_Int = -1;
     jdField_a_of_type_Boolean = false;
     jdField_a_of_type_ArrayOfInt = new int[] { 2, 1, 1 };

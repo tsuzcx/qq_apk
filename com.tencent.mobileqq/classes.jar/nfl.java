@@ -1,13 +1,23 @@
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.CacheContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class nfl
-  implements Runnable
+  extends SimpleJob
 {
-  public nfl(ShareModeBase paramShareModeBase) {}
+  public nfl(DateCollectionListPageLoader paramDateCollectionListPageLoader) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    ShareModeBase.a(this.a, ShareModeBase.a(this.a));
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext == null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext = new DateCollectionListPageLoader.CacheContext(this.a, this.a.d);
+    }
+    this.a.jdField_a_of_type_JavaLangString = "";
+    DateCollectionListPageLoader.a(this.a);
+    return null;
   }
 }
 

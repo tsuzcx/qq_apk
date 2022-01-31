@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
 
-public class xkx
-  implements ActionSheet.OnDismissListener
+class xkx
+  implements Runnable
 {
-  public xkx(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  xkx(xku paramxku) {}
   
-  public void onDismiss() {}
+  public void run()
+  {
+    this.a.a.f();
+  }
 }
 
 

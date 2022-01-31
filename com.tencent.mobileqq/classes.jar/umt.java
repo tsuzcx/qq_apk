@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.activity.aio.PokePanelAdapter;
 
-public class umt
+class umt
   implements Runnable
 {
-  public umt(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
+  umt(umr paramumr, String paramString1, String paramString2, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.a(false);
+    PokePanel.a(this.jdField_a_of_type_Umr.a).a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b).intValue(), false, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -11,10 +11,10 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import java.util.ArrayList;
 import java.util.List;
-import zsd;
-import zse;
-import zsf;
-import zsg;
+import zvj;
+import zvk;
+import zvl;
+import zvm;
 
 public class MpfileTaskProxy
   extends BaseProxy
@@ -48,7 +48,7 @@ public class MpfileTaskProxy
       a(paramMpfileTaskRecord, null);
       return 0L;
     }
-    new Handler(localLooper).post(new zsg(this, paramMpfileTaskRecord, localWaitEvent));
+    new Handler(localLooper).post(new zvm(this, paramMpfileTaskRecord, localWaitEvent));
     localWaitEvent.a(-1L);
     return 0L;
   }
@@ -83,7 +83,7 @@ public class MpfileTaskProxy
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, MpfileTaskRecord.tableName(), paramEntity, 0, paramProxyListener);
       return;
     }
-    new Handler(localLooper).post(new zsd(this, paramEntity, paramProxyListener, localWaitEvent));
+    new Handler(localLooper).post(new zvj(this, paramEntity, paramProxyListener, localWaitEvent));
     localWaitEvent.a(-1L);
   }
   
@@ -95,7 +95,7 @@ public class MpfileTaskProxy
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramContentValues, paramString2, paramArrayOfString, 1, paramProxyListener);
       return;
     }
-    new Handler(localLooper).post(new zse(this, paramString1, paramContentValues, paramString2, paramArrayOfString, paramProxyListener));
+    new Handler(localLooper).post(new zvk(this, paramString1, paramContentValues, paramString2, paramArrayOfString, paramProxyListener));
   }
   
   public void a(String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener)
@@ -106,7 +106,7 @@ public class MpfileTaskProxy
       this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, paramString1, paramString2, paramArrayOfString, 2, paramProxyListener);
       return;
     }
-    new Handler(localLooper).post(new zsf(this, paramString1, paramString2, paramArrayOfString, paramProxyListener));
+    new Handler(localLooper).post(new zvl(this, paramString1, paramString2, paramArrayOfString, paramProxyListener));
   }
   
   protected void b() {}

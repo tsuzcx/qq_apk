@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.widget.XListView;
 
 class tvz
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  tvz(tvx paramtvx) {}
+  tvz(tvy paramtvy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.finish();
+    if ((this.a.a.a.getAdapter() instanceof BaseAdapter)) {
+      ((BaseAdapter)this.a.a.a.getAdapter()).notifyDataSetChanged();
+    }
   }
 }
 

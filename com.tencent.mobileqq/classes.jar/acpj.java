@@ -1,15 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import android.view.View;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-public class acpj
-  implements Runnable
+class acpj
+  implements BubblePopupWindow.OnDismissListener
 {
-  public acpj(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
+  acpj(acph paramacph, View paramView) {}
   
-  public void run()
+  public void a()
   {
-    UniformDownloadMgr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

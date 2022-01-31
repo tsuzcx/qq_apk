@@ -1,19 +1,27 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.PresenceInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class adrj
-  implements Runnable
+public class adrj
+  implements View.OnClickListener
 {
-  adrj(adrg paramadrg, String paramString) {}
+  public adrj(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Adrg.a.b.setText(this.jdField_a_of_type_JavaLangString);
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.a(3, paramView);
+    QLog.d("HotVideoRelativeLayout", 2, "click mute view");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrj
  * JD-Core Version:    0.7.0.1
  */

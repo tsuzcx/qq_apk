@@ -1,71 +1,53 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.DeleteCommentCallback;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSourceImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentResp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.utils.SharedPreferencesHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.Set;
 
 public class aeff
-  extends ProtoUtils.TroopGiftProtocolObserver
+  implements Runnable
 {
-  public aeff(CommentsDataSourceImpl paramCommentsDataSourceImpl, CommentsDataSource.DeleteCommentCallback paramDeleteCommentCallback, Comments.Comment paramComment) {}
+  public aeff(TroopAssistantManager paramTroopAssistantManager, QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    localObject3 = null;
+    localObject4 = this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaLangObject;
+    localObject1 = localObject3;
+    try
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
+      if (this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaUtilSet != null)
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new NowNearbyVideoCommentProto.DelCommentResp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.i("CommentsDataSource", 1, "ret:" + paramArrayOfByte.result.get());
-          }
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$DeleteCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
-          paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (paramArrayOfByte == null) {
-            return;
-          }
-          ((NearbyMomentManager)paramArrayOfByte.getManager(262)).g(CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).a);
-          return;
+        localObject1 = localObject3;
+        if (this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaUtilSet.size() > 0) {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaUtilSet.toArray();
         }
-        QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$DeleteCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("CommentsDataSource", 1, "merge delete resp data error");
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$DeleteCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
-        return;
       }
     }
-    else
+    catch (IllegalArgumentException localIllegalArgumentException)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$DeleteCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+      for (;;)
+      {
+        localObject1 = localObject3;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("troopassist_guide", 2, localIllegalArgumentException.getMessage());
+          localObject1 = localObject3;
+        }
+      }
+    }
+    finally {}
+    if (localObject1 != null) {
+      SharedPreferencesHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "troop_assis_new_unread_list", (Object[])localObject1).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeff
  * JD-Core Version:    0.7.0.1
  */

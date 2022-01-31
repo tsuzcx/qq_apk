@@ -1,19 +1,20 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuTextBuilder;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public class lcp
-  extends Editable.Factory
+  implements Runnable
 {
-  public lcp(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public lcp(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void run()
   {
-    if ((paramCharSequence instanceof BiuTextBuilder)) {
-      return (Editable)paramCharSequence;
+    QQMessageFacade localQQMessageFacade = this.a.app.a();
+    if (localQQMessageFacade != null)
+    {
+      int i = localQQMessageFacade.b();
+      this.a.a(i);
     }
-    return new BiuTextBuilder(paramCharSequence, 3, 20);
   }
 }
 

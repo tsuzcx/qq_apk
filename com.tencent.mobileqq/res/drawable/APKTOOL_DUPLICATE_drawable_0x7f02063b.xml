@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020636" />
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020635" />
-</selector>
+<bitmap android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020636" android:tileMode="repeat"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

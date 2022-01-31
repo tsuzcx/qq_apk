@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 class lfy
   implements Runnable
 {
-  lfy(lfx paramlfx) {}
+  lfy(lfx paramlfx, ArkAppInfo.AppDesc paramAppDesc) {}
   
   public void run()
   {
-    ReadinjoySubscriptManagerActivity.a(this.a.a);
+    ReadInJoyHelper.c(ReadInJoyUtils.a(), this.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDesc.a);
+    ReadInJoyHelper.d(ReadInJoyUtils.a(), this.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDesc.b);
   }
 }
 

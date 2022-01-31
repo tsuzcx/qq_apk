@@ -1,17 +1,13 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbItemClickListener;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
 
-class wzi
-  extends TroopUnAccalimedRedPacketList.HbItemClickListener
+public class wzi
+  implements Runnable
 {
-  wzi(wzh paramwzh) {}
+  public wzi(GoldMsgSettingActivity paramGoldMsgSettingActivity, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if ((paramInt == 1) && (TroopUnAccalimedRedPacketList.a() != null)) {
-      TroopUnAccalimedRedPacketList.a().dismiss();
-    }
+    GoldMsgSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

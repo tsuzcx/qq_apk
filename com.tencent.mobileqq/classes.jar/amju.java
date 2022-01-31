@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.WXShareFromQZHelper;
+import cooperation.comic.jsp.QQComicJsPlugin;
+import org.json.JSONObject;
 
 public class amju
   implements Runnable
 {
-  public amju(WXShareFromQZHelper paramWXShareFromQZHelper) {}
+  public amju(QQComicJsPlugin paramQQComicJsPlugin, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), 2131432709, 0).a();
+    this.jdField_a_of_type_CooperationComicJspQQComicJsPlugin.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.b);
   }
 }
 

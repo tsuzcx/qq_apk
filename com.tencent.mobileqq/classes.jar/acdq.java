@@ -1,31 +1,65 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter.LocalFileItemHolder;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.VasEmojiManager;
+import com.tencent.mobileqq.vas.VasReportUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-class acdq
-  implements View.OnClickListener
+public class acdq
+  extends DownloadListener
 {
-  acdq(acdp paramacdp, View paramView) {}
+  public acdq(VasEmojiManager paramVasEmojiManager) {}
   
-  public void onClick(View paramView)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    paramView = (LocalFileAdapter.LocalFileItemHolder)this.jdField_a_of_type_AndroidViewView.getTag();
-    this.jdField_a_of_type_Acdp.a.d = paramView.a;
-    paramView = (FileInfo)this.jdField_a_of_type_Acdp.a.b.get(this.jdField_a_of_type_Acdp.a.d);
-    if ((!FileUtil.a(paramView.c())) || (FileUtil.c(paramView.c())))
+    super.onDone(paramDownloadTask);
+    EmojiManager localEmojiManager = this.a.a();
+    Bundle localBundle = paramDownloadTask.a();
+    if (paramDownloadTask.a() != 3) {}
+    for (boolean bool = true;; bool = false)
     {
-      FileManagerUtil.d(paramView.c());
-      this.jdField_a_of_type_Acdp.a.b.remove(this.jdField_a_of_type_Acdp.a.d);
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Acdp.a);
+      long l1 = System.currentTimeMillis();
+      long l2 = localBundle.getLong("vas_download_start");
+      localEmojiManager.a(localBundle, paramDownloadTask, bool, paramDownloadTask.a, paramDownloadTask.d, l1 - l2, 0);
       return;
     }
-    FMToastUtil.a(2131428144);
+  }
+  
+  public void onDoneFile(DownloadTask paramDownloadTask)
+  {
+    Object localObject = paramDownloadTask.a();
+    int i = ((Bundle)localObject).getInt(paramDownloadTask.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + paramDownloadTask);
+    }
+    if (paramDownloadTask.a != 0)
+    {
+      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + paramDownloadTask.a);
+      if (EmojiManager.a(i)) {
+        EmojiManager.a.a((EmoticonPackage)localObject, i, -1, paramDownloadTask.a);
+      }
+      VasReportUtils.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", paramDownloadTask.a + "", "", "", "");
+    }
+    for (;;)
+    {
+      return;
+      EmojiManager localEmojiManager = this.a.a();
+      if (EmojiManager.a(i)) {
+        EmojiManager.a.a((EmoticonPackage)localObject, i, 0, 0);
+      }
+      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
+      {
+        localEmojiManager.b(paramDownloadTask);
+        return;
+        if (i == 7) {
+          localEmojiManager.a(paramDownloadTask);
+        }
+      }
+    }
   }
 }
 

@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class yau
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yau(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public yau(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "mStartHidingRunnable run");
-    }
-    this.a.f();
+    paramDialogInterface.dismiss();
   }
 }
 

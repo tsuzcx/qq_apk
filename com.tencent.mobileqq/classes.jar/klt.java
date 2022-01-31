@@ -1,22 +1,30 @@
-import android.os.Handler;
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.util.IOfflineDownloader;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.CommUtils;
+import com.tencent.biz.common.util.CommUtils.IHttpGetString;
 
-public class klt
-  implements Runnable
+public final class klt
+  extends AsyncTask
 {
-  public klt(BidDownloader paramBidDownloader) {}
+  String jdField_a_of_type_JavaLangString = "";
   
-  public void run()
+  public klt(CommUtils.IHttpGetString paramIHttpGetString, String paramString) {}
+  
+  protected Void a(Void... paramVarArgs)
   {
-    int i = BidDownloader.jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.a.c);
-    if (QLog.isColorLevel()) {
-      QLog.i(BidDownloader.d, 2, "state = " + i);
+    this.jdField_a_of_type_JavaLangString = CommUtils.a(this.b);
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    super.onPostExecute(paramVoid);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_ComTencentBizCommonUtilCommUtils$IHttpGetString.a();
+      return;
     }
-    if (i != 2) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    }
+    this.jdField_a_of_type_ComTencentBizCommonUtilCommUtils$IHttpGetString.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

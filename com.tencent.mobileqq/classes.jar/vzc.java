@@ -1,31 +1,14 @@
-import com.tencent.mobileqq.activity.aio.tim.TIMUserManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class vzc
-  implements Runnable
+  implements AsyncBack
 {
-  public vzc(TIMUserManager paramTIMUserManager, String paramString1, String paramString2, boolean paramBoolean) {}
+  public vzc(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
-  {
-    if (TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, this.b))
-      {
-        TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager);
-        TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 2);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadTimTheme TimIconsState " + TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager));
-      }
-      return;
-      TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 4);
-      continue;
-      TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 3);
-    }
-  }
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt) {}
 }
 
 

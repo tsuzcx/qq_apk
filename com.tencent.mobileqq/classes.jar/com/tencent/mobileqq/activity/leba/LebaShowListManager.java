@@ -45,7 +45,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
-import wmm;
+import wpr;
 
 public class LebaShowListManager
 {
@@ -442,7 +442,7 @@ public class LebaShowListManager
               localLebaViewItem.jdField_a_of_type_Long = paramLong2;
               i = 1;
               if ((paramQQAppInterface != null) && (i == 1)) {
-                ThreadManager.post(new wmm(this, (RedTouchManager)paramQQAppInterface.getManager(35), paramLong1, paramBoolean, paramLong3, paramLong2), 5, null, true);
+                ThreadManager.post(new wpr(this, (RedTouchManager)paramQQAppInterface.getManager(35), paramLong1, paramBoolean, paramLong3, paramLong2), 5, null, true);
               }
               if (QLog.isDevelopLevel()) {
                 QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, ret = " + i);

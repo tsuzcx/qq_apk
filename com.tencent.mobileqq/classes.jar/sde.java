@@ -1,19 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
 public class sde
-  implements DialogInterface.OnDismissListener
+  implements BubblePopupWindow.OnDismissListener
 {
-  public sde(Conversation paramConversation) {}
+  public sde(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
-    this.a.a(1134057, 50L, true);
-  }
+  public void a() {}
 }
 
 

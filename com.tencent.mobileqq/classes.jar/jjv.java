@@ -1,24 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.opengl.filter.qqavimage.specialeffects.QQAVImageGaussianSelecterBlurFilter;
 
 public class jjv
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public jjv(GuildMultiActivity paramGuildMultiActivity) {}
+  public jjv(QQAVImageGaussianSelecterBlurFilter paramQQAVImageGaussianSelecterBlurFilter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(GuildMultiActivity.a, 2, "showEnterRoomFailDialog: exitMultiRoom");
-    }
-    this.a.d();
-  }
+  public void run() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     jjv
  * JD-Core Version:    0.7.0.1
  */

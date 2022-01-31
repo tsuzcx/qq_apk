@@ -1,27 +1,20 @@
-import com.tencent.mqp.app.sec.d;
+import com.tencent.mobileqq.pluginsdk.PluginInterface;
+import com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper.OnPluginInterfaceLoadedListener;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
 
-public final class akjr
-  implements Runnable
+public class akjr
+  implements PluginInterfaceHelper.OnPluginInterfaceLoadedListener
 {
-  public akjr(int paramInt, Object[] paramArrayOfObject, byte[] paramArrayOfByte) {}
+  public akjr(PathTraceManager paramPathTraceManager) {}
   
-  public void run()
+  public void onPluginInterfaceLoaded(PluginInterface paramPluginInterface)
   {
-    if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_ArrayOfJavaLangObject != null) && (this.jdField_a_of_type_ArrayOfByte != null)) {}
-    try
-    {
-      d.e(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_ArrayOfByte);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    PathTraceManager.a(this.a, paramPluginInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjr
  * JD-Core Version:    0.7.0.1
  */

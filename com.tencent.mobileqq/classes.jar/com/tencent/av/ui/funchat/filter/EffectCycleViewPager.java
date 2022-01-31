@@ -8,16 +8,16 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
-import kdi;
-import kdj;
+import kct;
+import kcu;
 
 @TargetApi(9)
 public class EffectCycleViewPager
   extends ViewPager
 {
   public SparseArray a;
-  private kdi a;
-  public kdj a;
+  private kct a;
+  public kcu a;
   
   public EffectCycleViewPager(Context paramContext)
   {
@@ -38,15 +38,15 @@ public class EffectCycleViewPager
   
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
-    this.jdField_a_of_type_Kdj = new kdj(this, paramPagerAdapter);
-    super.setAdapter(this.jdField_a_of_type_Kdj);
+    this.jdField_a_of_type_Kcu = new kcu(this, paramPagerAdapter);
+    super.setAdapter(this.jdField_a_of_type_Kcu);
     setCurrentItem(1);
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_Kdi = new kdi(this, paramOnPageChangeListener, getCurrentItem());
-    super.setOnPageChangeListener(this.jdField_a_of_type_Kdi);
+    this.jdField_a_of_type_Kct = new kct(this, paramOnPageChangeListener, getCurrentItem());
+    super.setOnPageChangeListener(this.jdField_a_of_type_Kct);
   }
 }
 

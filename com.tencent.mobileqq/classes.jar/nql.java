@@ -1,26 +1,30 @@
-import com.tencent.biz.qqstory.model.QQStoryActivityManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.nio.ByteBuffer;
 
 public class nql
-  implements Runnable
 {
-  public nql(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public void run()
+  public nql()
   {
-    QQStoryActivityManager localQQStoryActivityManager = (QQStoryActivityManager)SuperManager.a(18);
-    ArrayList localArrayList = localQQStoryActivityManager.a(this.a);
-    int i = localArrayList.size();
-    if (i >= 4)
-    {
-      localQQStoryActivityManager.a(((Integer)localArrayList.get(0)).intValue() + 1, ((Integer)localArrayList.get(i - 1)).intValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "QQStoryShareGroupProfileActivity activity stack full, size = " + i + ", start clear!");
-      }
-    }
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaNioByteBuffer = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+  }
+  
+  public String toString()
+  {
+    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
   }
 }
 

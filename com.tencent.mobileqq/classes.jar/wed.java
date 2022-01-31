@@ -1,30 +1,14 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.widget.FormMutiItem;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-class wed
-  implements Runnable
+public class wed
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  wed(wec paramwec) {}
+  public wed(ZhituManager paramZhituManager) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    String str2 = this.a.jdField_a_of_type_JavaLangStringBuilder.toString();
-    String str1 = str2;
-    if (str2.endsWith("、")) {
-      str1 = str2.substring(0, str2.length() - 1);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a != null)
-    {
-      if (!str1.equals("条件："))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a.setSecondLineVisible(true);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a.setSecondLineText(str1);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a.setSecondLineVisible(false);
+    if (paramInt == 4097) {}
   }
 }
 

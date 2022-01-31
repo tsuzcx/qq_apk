@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ahxm;
-import ahxo;
-import ahxp;
-import ahxq;
-import ahxs;
-import ahxt;
+import ailp;
+import ailr;
+import ails;
+import ailt;
+import ailv;
+import ailw;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
@@ -90,10 +90,10 @@ public class VideoSprite
       this.jdField_d_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, this.jdField_g_of_type_Float, 0.0F, 0.0F, 1.0F, this.jdField_g_of_type_Float, 1.0F, 0.0F, 1.0F };
       this.jdField_e_of_type_ArrayOfFloat = new float[] { this.jdField_g_of_type_Float, 1.0F, 0.0F, 1.0F, this.jdField_g_of_type_Float, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
       this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new ahxm(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new ahxo(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new ailp(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new ailr(this));
       paramSpriteGLView.a(this);
-      paramSpriteGLView.b(new ahxp(this));
+      paramSpriteGLView.b(new ails(this));
       return;
     }
   }
@@ -273,7 +273,7 @@ public class VideoSprite
     if (QLog.isColorLevel()) {
       QLog.d("VideoSprite", 2, "playVideo with seek: " + paramString);
     }
-    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new ahxq(this, paramString, paramInt));
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new ailt(this, paramString, paramInt));
   }
   
   public void a(boolean paramBoolean)
@@ -315,7 +315,7 @@ public class VideoSprite
             this.jdField_h_of_type_Boolean = false;
             this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener = null;
             this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite$OnOnPlayedListener = null;
-            this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new ahxt(this));
+            this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new ailw(this));
             this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(this);
             this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
             return;
@@ -619,7 +619,7 @@ public class VideoSprite
     if (QLog.isColorLevel()) {
       QLog.d("VideoSprite", 2, "playVideo");
     }
-    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new ahxs(this));
+    this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new ailv(this));
   }
   
   public void i()
@@ -711,7 +711,7 @@ public class VideoSprite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite
  * JD-Core Version:    0.7.0.1
  */

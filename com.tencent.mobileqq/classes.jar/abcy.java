@@ -1,47 +1,74 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class abcy
-  implements Runnable
+  extends Handler
 {
-  public abcy(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity, RMVideoStateMgr paramRMVideoStateMgr) {}
-  
-  public void run()
+  public abcy(NonMainAppHeadLoader paramNonMainAppHeadLoader, Looper paramLooper)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DynamicAvatarRecordActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1000) {
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
+        paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        this.a.a(paramMessage);
       }
-      RecordManager.a().a().recordSubmit();
-      return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    Object localObject;
+    String str;
+    do
     {
+      this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
       for (;;)
       {
-        localUnsatisfiedLinkError.printStackTrace();
-        synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
+        return;
+        if (paramMessage.what == 1002) {
+          try
+          {
+            localObject = (Bundle)paramMessage.obj;
+            paramMessage = (Bitmap)((Bundle)localObject).getParcelable("bmp");
+            str = ((Bundle)localObject).getString("uin");
+            localObject = ((Bundle)localObject).getString("path");
+            if (paramMessage != null) {
+              this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramMessage);
+            }
+            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+            while (localIterator.hasNext())
+            {
+              NonMainAppHeadLoader.FaceObserver localFaceObserver = (NonMainAppHeadLoader.FaceObserver)localIterator.next();
+              if (localFaceObserver != null) {
+                localFaceObserver.onFaceUpdate(str, (String)localObject, paramMessage);
+              }
+            }
+            if (!QLog.isColorLevel()) {}
           }
-          QLog.d("DynamicAvatarRecordActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
+          catch (Exception paramMessage) {}
         }
       }
-    }
+      QLog.e("NonMainAppHeadLoader", 2, "refreshImg, exception:" + paramMessage.toString());
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("NonMainAppHeadLoader", 2, "refreshImg, uin:" + str + ", path=" + (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abcy
  * JD-Core Version:    0.7.0.1
  */

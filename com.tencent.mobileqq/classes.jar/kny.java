@@ -1,23 +1,82 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import android.os.Bundle;
+import com.tencent.biz.now.NowLiveManager;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class kny
-  implements View.OnTouchListener
+  implements HttpWebCgiAsyncTask.Callback
 {
-  int jdField_a_of_type_Int = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new knz(this);
+  public kny(NowLiveManager paramNowLiveManager) {}
   
-  public kny(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
+    NowLiveManager.a(this.a);
+    String str = "";
+    long l = 0L;
+    Object localObject1 = "";
+    if (paramBundle != null)
+    {
+      l = paramBundle.getLong("time", 0L);
+      str = paramBundle.getString("room_id");
+      localObject1 = paramBundle.getString("friendUin");
     }
-    return false;
+    localObject1 = this.a.a((String)localObject1, l);
+    if (paramJSONObject == null)
+    {
+      NowLiveManager.b(this.a);
+      this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), localObject1, paramBundle });
+      return;
+    }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), null, paramBundle });
+          return;
+          Object localObject2 = paramJSONObject.optJSONObject("result");
+          if ((localObject2 != null) && (((JSONObject)localObject2).optInt("retcode") == 0))
+          {
+            paramJSONObject = new ArrayList();
+            localObject2 = ((JSONObject)localObject2).optJSONArray("videoURLList");
+            if (localObject2 != null)
+            {
+              int i = 0;
+              for (;;)
+              {
+                if (i < ((JSONArray)localObject2).length()) {
+                  try
+                  {
+                    paramJSONObject.add(((JSONArray)localObject2).getString(i));
+                    i += 1;
+                  }
+                  catch (JSONException localJSONException)
+                  {
+                    for (;;)
+                    {
+                      localJSONException.printStackTrace();
+                    }
+                  }
+                }
+              }
+              ((knz)localObject1).jdField_a_of_type_JavaUtilList = paramJSONObject;
+              ((knz)localObject1).b = str;
+            }
+            this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
+          }
+        }
+      } while (paramJSONObject.optInt("retcode") != 0);
+      paramJSONObject = paramJSONObject.optJSONObject("result");
+    } while (paramJSONObject == null);
+    ((knz)localObject1).jdField_a_of_type_Int = paramJSONObject.optInt("state");
+    this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
   }
 }
 

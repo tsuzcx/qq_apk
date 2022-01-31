@@ -1,7 +1,7 @@
 package cooperation.dingdong.data;
 
-import alvb;
-import alvc;
+import amlf;
+import amlg;
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
@@ -48,7 +48,7 @@ public class ScheduleTipsDialog
   protected PowerManager.WakeLock a;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ScheduleReminderMgr.onScheduleTipsListener jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr$onScheduleTipsListener = new alvb(this);
+  private ScheduleReminderMgr.onScheduleTipsListener jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr$onScheduleTipsListener = new amlf(this);
   private String jdField_a_of_type_JavaLangString;
   private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private boolean jdField_a_of_type_Boolean;
@@ -62,11 +62,11 @@ public class ScheduleTipsDialog
   private void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131361926));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363534));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363537));
-    this.d = ((TextView)findViewById(2131364013));
-    this.e = ((TextView)findViewById(2131364014));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364300);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363552));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363555));
+    this.d = ((TextView)findViewById(2131364037));
+    this.e = ((TextView)findViewById(2131364038));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364324);
     this.d.setOnClickListener(this);
     this.e.setOnClickListener(this);
   }
@@ -337,7 +337,7 @@ public class ScheduleTipsDialog
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
     paramBundle.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new alvc(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new amlg(this);
     super.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     this.jdField_a_of_type_AndroidOsPowerManager$WakeLock = ((PowerManager)getSystemService("power")).newWakeLock(268435462, "ScheduleTipsDialog");
     this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.acquire(5000L);
@@ -370,7 +370,7 @@ public class ScheduleTipsDialog
       {
       default: 
         return;
-      case 2131364013: 
+      case 2131364037: 
         if ((localScheduleSummaryData != null) && (localScheduleSummaryData.type == 1)) {
           TroopReportor.a("Grp_edu", "Grp_notice", "NoticeBox_Sure", 0, 0, new String[] { String.valueOf(localScheduleSummaryData.sourceId) });
         }

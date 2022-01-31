@@ -1,18 +1,14 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Friends;
 
 public class ybl
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ybl(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public int a;
+  public Friends a;
   
-  public void onGlobalLayout()
+  public ybl(Friends paramFriends, int paramInt)
   {
-    ThreadManager.post(this.a, 8, null, false);
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

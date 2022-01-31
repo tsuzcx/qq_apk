@@ -1,29 +1,23 @@
-import com.tencent.mobileqq.app.FavEmoRoamingHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import java.util.List;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 
 public class absr
-  implements Runnable
+  implements ConfigSimplifier.ConfigDownloadCallback
 {
-  public absr(FavroamingManager paramFavroamingManager, FavEmoRoamingHandler paramFavEmoRoamingHandler) {}
+  public absr(ConfigServlet paramConfigServlet, QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    List localList = ((FavroamingDBManager)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.a.getManager(148)).a("needDel");
-    if (localList.size() > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingHandler.a(localList, true);
-    }
-    while (localList.size() != 0) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.a();
+    VideoFilterTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramString, this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     absr
  * JD-Core Version:    0.7.0.1
  */

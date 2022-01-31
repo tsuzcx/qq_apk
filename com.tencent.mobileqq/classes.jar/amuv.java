@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PublishEventTag;
 
-class amuv
-  implements Runnable
+public final class amuv
+  implements Parcelable.Creator
 {
-  amuv(amut paramamut) {}
-  
-  public void run()
+  public PublishEventTag a(Parcel paramParcel)
   {
-    QQToast.a(this.a.a.a, "网络出问题了，一会儿再试试。", 0).a();
+    return new PublishEventTag(paramParcel);
+  }
+  
+  public PublishEventTag[] a(int paramInt)
+  {
+    return new PublishEventTag[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuv
  * JD-Core Version:    0.7.0.1
  */

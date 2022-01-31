@@ -1,78 +1,46 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.handler.AVC2CDataHandler.C2CDataHandler;
-import com.tencent.av.redpacket.AVRedPacketHandler;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import com.tencent.av.opengl.texture.YUVTexture;
 import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.ui.redbag.RedBagUtil;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.C2CGameInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.redpacket.ui.RedPacketGameView;
+import com.tencent.av.ui.GLVideoView;
+import com.tencent.av.ui.VideoLayerUI;
 
-public class jlq
-  implements AVC2CDataHandler.C2CDataHandler
+class jlq
+  implements Runnable
 {
-  public jlq(AVRedPacketHandler paramAVRedPacketHandler) {}
+  jlq(jlp paramjlp, VideoLayerUI paramVideoLayerUI, Bitmap paramBitmap) {}
   
-  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public void run()
   {
-    bool2 = false;
-    String str = RedBagUtil.a();
-    if ((paramArrayOfByte == null) || (TextUtils.isEmpty(str)) || (paramInt1 != 9))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome error return, msgType=" + paramInt1);
-      }
-      return false;
-    }
-    localAVRedPacketManager = (AVRedPacketManager)this.a.a.a(6);
-    localC2CGameInfo = new AVRedPacketGameSyncInfo.C2CGameInfo();
     try
     {
-      localC2CGameInfo.mergeFrom(paramArrayOfByte);
-      bool1 = true;
+      Bitmap localBitmap1 = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[0].a();
+      int i = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[0].a().j();
+      localBitmap1 = RedPacketGameView.a(this.jdField_a_of_type_Jlp.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView, localBitmap1, i * 90);
+      i = localBitmap1.getHeight();
+      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * i / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      Bitmap localBitmap2 = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap2);
+      Rect localRect1 = new Rect(0, 0, localBitmap1.getWidth(), localBitmap1.getHeight());
+      int k = localBitmap1.getWidth() * i / localBitmap1.getHeight();
+      int m = i * -200 / 1334;
+      Rect localRect2 = new Rect((j - k) / 2, m, (k + j) / 2, i + m);
+      localCanvas.save();
+      localCanvas.scale(-1.0F, 1.0F, j / 2, 0.0F);
+      localCanvas.drawBitmap(localBitmap1, localRect1, localRect2, null);
+      localCanvas.restore();
+      localRect1.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      localRect2.set(0, 0, j, i);
+      localCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localRect1, localRect2, null);
+      this.jdField_a_of_type_Jlp.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.setDrawingCacheEnabled(false);
+      localBitmap1.recycle();
+      this.jdField_a_of_type_Jlp.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(localBitmap2);
+      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        boolean bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AVRedPacketHandler", 2, "onC2CDataCome,", paramArrayOfByte);
-          bool1 = bool2;
-          continue;
-          if ((paramInt2 == 2) || (paramInt2 == 3)) {
-            localAVRedPacketManager.b(paramInt2);
-          } else if (paramInt2 == 4) {
-            localAVRedPacketManager.c(localC2CGameInfo.exceptionType.get());
-          }
-        }
-      }
-    }
-    if (paramInt2 == 1)
-    {
-      paramArrayOfByte = new Bundle();
-      paramArrayOfByte.putString("key", localC2CGameInfo.key.get());
-      paramArrayOfByte.putInt("gameState", localC2CGameInfo.state.get());
-      paramArrayOfByte.putString("peerUin", str);
-      paramArrayOfByte.putInt("fromWho", localC2CGameInfo.fromWho.get());
-      paramArrayOfByte.putString("money", localC2CGameInfo.money.get());
-      paramArrayOfByte.putInt("resultCode", localC2CGameInfo.resultCode.get());
-      paramArrayOfByte.putString("resultState", localC2CGameInfo.resultState.get());
-      paramArrayOfByte.putInt("musicId", localC2CGameInfo.musicId.get());
-      paramArrayOfByte.putInt("hitScore", localC2CGameInfo.scores.get());
-      paramArrayOfByte.putInt("enterType", localC2CGameInfo.enterType.get());
-      paramArrayOfByte.putInt("maxScore", localC2CGameInfo.maxScore.get());
-      paramArrayOfByte.putInt("totalEmojiNum", localC2CGameInfo.totalEmojiNum.get());
-      localAVRedPacketManager.a(bool1, paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome, isSucc: " + bool1 + ", subType=" + paramInt2);
-      }
-      return true;
-    }
+    catch (Throwable localThrowable) {}
   }
 }
 

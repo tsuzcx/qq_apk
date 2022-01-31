@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import adlc;
-import adld;
-import adle;
-import adlf;
+import advb;
+import advc;
+import advd;
+import adve;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -60,7 +60,7 @@ public class NowPlugin
   public NowDataReporter a;
   public NowFromData a;
   protected HostInterface a;
-  private XEventListener jdField_a_of_type_ComTencentTxproxyXEventListener = new adle(this);
+  private XEventListener jdField_a_of_type_ComTencentTxproxyXEventListener = new advd(this);
   XPlugin jdField_a_of_type_ComTencentTxproxyXPlugin;
   public List a;
   boolean jdField_a_of_type_Boolean;
@@ -71,7 +71,7 @@ public class NowPlugin
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentTxproxyHostInterface = new adlc(this);
+    this.jdField_a_of_type_ComTencentTxproxyHostInterface = new advb(this);
     this.jdField_a_of_type_ComTencentTxproxyXPlugin = XPlugin.getPlugin("Live");
     this.jdField_a_of_type_ComTencentTxproxyXPlugin.setHostInterface(this.jdField_a_of_type_ComTencentTxproxyHostInterface);
   }
@@ -80,7 +80,7 @@ public class NowPlugin
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentTxproxyHostInterface = new adlc(this);
+    this.jdField_a_of_type_ComTencentTxproxyHostInterface = new advb(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter = new NowDataReporter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentTxproxyXPlugin = XPlugin.getPlugin("Live");
@@ -459,7 +459,7 @@ public class NowPlugin
     QLog.e("XProxy|NowProxy", 4, "handleDownloadTaskByNowEngine----url = " + paramString1 + ", path = " + paramString2);
     this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineNowDownloadManager = new NowDownloadManager();
     this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineNowDownloadManager.a(BaseApplicationImpl.getContext());
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineNowDownloadManager.a(paramString1, new adlf(this, paramHostEventListener, paramString1));
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineNowDownloadManager.a(paramString1, new adve(this, paramHostEventListener, paramString1));
     this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineNowDownloadManager.a(NowDownloadTaskInfo.a(paramString1, "com.tencent.now", paramString2));
   }
   
@@ -795,7 +795,7 @@ public class NowPlugin
         return false;
       }
       if (a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowFromData.jdField_a_of_type_JavaLangString, paramBundle)) {
-        this.jdField_a_of_type_ComTencentBizNowCgiHelper.a(paramLong, new adld(this, paramLong, paramListNameData, paramNowFromData, paramInt, paramBundle), this.jdField_a_of_type_ComTencentTxproxyHostInterface);
+        this.jdField_a_of_type_ComTencentBizNowCgiHelper.a(paramLong, new advc(this, paramLong, paramListNameData, paramNowFromData, paramInt, paramBundle), this.jdField_a_of_type_ComTencentTxproxyHostInterface);
       } else {
         a(paramListNameData, paramLong, paramNowFromData, paramInt, paramBundle);
       }
@@ -845,7 +845,7 @@ public class NowPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowPlugin
  * JD-Core Version:    0.7.0.1
  */

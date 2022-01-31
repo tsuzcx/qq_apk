@@ -1,62 +1,43 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.doodle.DoodleUtils;
-import com.tencent.av.ui.GAudioMemberListCtrl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.WeakReference;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.opengl.texture.YUVTexture.GLRenderListener;
+import com.tencent.av.ui.GLVideoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class jut
-  implements View.OnClickListener
+  implements YUVTexture.GLRenderListener
 {
-  public jut(GAudioMemberListCtrl paramGAudioMemberListCtrl) {}
+  public jut(GLVideoView paramGLVideoView, VideoAppInterface paramVideoAppInterface) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    boolean bool = false;
-    paramView = (juu)paramView.getTag();
-    if (paramView.c) {
-      if (this.a.jdField_a_of_type_Int == 1) {
-        ReportController.b(null, "CliOper", "", "", "0X8005C2A", "0X8005C2A", 0, 0, "", "", "", "");
-      }
+    GLVideoView.a(this.jdField_a_of_type_ComTencentAvUiGLVideoView);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(GLVideoView.a(this.jdField_a_of_type_ComTencentAvUiGLVideoView), 2, "onRenderInfoNotify width: " + paramInt1 + ", height: " + paramInt2 + ", angle: " + paramInt3);
     }
-    VideoController localVideoController;
-    long l;
-    do
+    GLVideoView.d(this.jdField_a_of_type_ComTencentAvUiGLVideoView);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      if ((paramView.c) && (paramView.d))
-      {
-        QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131429596, 1).a();
-        if (this.a.jdField_a_of_type_Int == 1) {}
-        for (paramView = "0x8007CB5";; paramView = "0x8007CB6")
-        {
-          DoodleUtils.a(paramView);
-          return;
-          if (this.a.jdField_a_of_type_Int != 2) {
-            break;
-          }
-          ReportController.b(null, "CliOper", "", "", "0X8005C25", "0X8005C25", 0, 0, "", "", "", "");
-          break;
-          if (this.a.jdField_a_of_type_Int == 1)
-          {
-            ReportController.b(null, "CliOper", "", "", "0X8005C29", "0X8005C29", 0, 0, "", "", "", "");
-            break;
-          }
-          if (this.a.jdField_a_of_type_Int != 2) {
-            break;
-          }
-          ReportController.b(null, "CliOper", "", "", "0X8005C24", "0X8005C24", 0, 0, "", "", "", "");
-          break;
-        }
-      }
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvVideoController;
-      l = paramView.a;
-      if (!paramView.c) {
-        bool = true;
-      }
-    } while (!localVideoController.a(l, bool));
+      String str = this.jdField_a_of_type_ComTencentAvUiGLVideoView.a();
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), str, paramArrayOfByte });
+    }
+  }
+  
+  public void b()
+  {
+    GLVideoView.b(this.jdField_a_of_type_ComTencentAvUiGLVideoView);
+  }
+  
+  public void c()
+  {
+    GLVideoView.c(this.jdField_a_of_type_ComTencentAvUiGLVideoView);
   }
 }
 

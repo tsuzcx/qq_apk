@@ -1,6 +1,7 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class rpr
   implements DialogInterface.OnClickListener
@@ -9,7 +10,7 @@ public class rpr
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.b.dismiss();
   }
 }
 

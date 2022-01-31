@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.activity.fileviewer.base;
 
-import acgz;
-import acha;
+import acqw;
+import acqx;
 import android.app.Activity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -27,12 +27,12 @@ public class FileViewerFacade
       if (QLog.isColorLevel()) {
         QLog.i("<FileAssistant>FileViewerFacade", 2, "file maybe renmaed,realName[" + str2 + "]");
       }
-      FMDialogUtil.a(paramActivity, paramActivity.getString(2131428164), 2131428166, new acgz(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramIFileBrowser));
+      FMDialogUtil.a(paramActivity, paramActivity.getString(2131428164), 2131428166, new acqw(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramIFileBrowser));
       return;
     }
     if ((paramFileManagerEntity.nFileType == 5) && ((paramFileManagerEntity.isZipInnerFile) || (paramFileManagerEntity.nOpType == 190)))
     {
-      FMDialogUtil.a(paramActivity, paramActivity.getString(2131428164), 2131428167, new acha(paramActivity, paramFileManagerEntity));
+      FMDialogUtil.a(paramActivity, paramActivity.getString(2131428164), 2131428167, new acqx(paramActivity, paramFileManagerEntity));
       return;
     }
     FileManagerUtil.c(paramActivity, paramFileManagerEntity.getFilePath());

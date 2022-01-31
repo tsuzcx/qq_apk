@@ -20,9 +20,9 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.RecentDynamicAvatarView;
 import com.tencent.widget.SingleLineTextView;
-import xhv;
-import xhw;
-import xhx;
+import xlc;
+import xld;
+import xle;
 
 public class RecentPublicAccountAdItemBuilder
   extends RecentEfficientItemBuilder
@@ -31,48 +31,48 @@ public class RecentPublicAccountAdItemBuilder
   {
     Animation localAnimation = AnimationUtils.loadAnimation(paramContext, 2131034220);
     paramContext = AnimationUtils.loadAnimation(paramContext, 2131034219);
-    localAnimation.setAnimationListener(new xhv(paramView, paramContext));
-    paramContext.setAnimationListener(new xhw(paramView, localAnimation));
+    localAnimation.setAnimationListener(new xlc(paramView, paramContext));
+    paramContext.setAnimationListener(new xld(paramView, localAnimation));
     paramView.startAnimation(localAnimation);
   }
   
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
   {
-    xhx localxhx;
-    if ((paramView == null) || (!(paramView.getTag() instanceof xhx)))
+    xle localxle;
+    if ((paramView == null) || (!(paramView.getTag() instanceof xle)))
     {
-      localxhx = new xhx(null);
-      View localView = a(paramContext, 2130971440, localxhx);
-      localxhx.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131362701));
-      localxhx.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131363189));
-      localxhx.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131363360));
-      localxhx.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131365632));
-      localxhx.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setGravity(16);
-      localxhx.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131374721));
-      localxhx.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131374722));
+      localxle = new xle(null);
+      View localView = a(paramContext, 2130971488, localxle);
+      localxle.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131362719));
+      localxle.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131363207));
+      localxle.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131363378));
+      localxle.b = ((SingleLineTextView)localView.findViewById(2131365659));
+      localxle.b.setGravity(16);
+      localxle.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131374902));
+      localxle.c = ((ImageView)localView.findViewById(2131374903));
       Object localObject = paramContext.getResources();
       float f = DeviceInfoUtil.a();
-      paramView = ((Resources)localObject).getColorStateList(2131494260);
-      ColorStateList localColorStateList = ((Resources)localObject).getColorStateList(2131494212);
-      localObject = ((Resources)localObject).getColorStateList(2131494261);
-      localxhx.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(localColorStateList);
+      paramView = ((Resources)localObject).getColorStateList(2131494267);
+      ColorStateList localColorStateList = ((Resources)localObject).getColorStateList(2131494219);
+      localObject = ((Resources)localObject).getColorStateList(2131494268);
+      localxle.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(localColorStateList);
       if (ThemeUtil.isNowThemeIsDefault(null, false, null))
       {
-        localxhx.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject, 0);
-        localxhx.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
-        localxhx.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
-        localxhx.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
-        localxhx.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
-        localxhx.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
-        localxhx.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
-        localxhx.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramView);
-        localxhx.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(f * 2.0F), 1);
-        localxhx.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(14.0F, 1);
-        localView.setTag(localxhx);
+        localxle.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject, 0);
+        localxle.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
+        localxle.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
+        localxle.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
+        localxle.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
+        localxle.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
+        localxle.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+        localxle.b.setTextColor(paramView);
+        localxle.b.setExtendTextPadding((int)(f * 2.0F), 1);
+        localxle.b.setExtendTextSize(14.0F, 1);
+        localView.setTag(localxle);
         paramView = localView;
         if (this.a != null)
         {
-          localxhx.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
+          localxle.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
           paramView = localView;
         }
       }
@@ -80,7 +80,7 @@ public class RecentPublicAccountAdItemBuilder
     for (;;)
     {
       return super.a(paramInt, paramObject, paramRecentFaceDecoder, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramOnDragModeChangedListener);
-      localxhx.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
+      localxle.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
       break;
     }
   }
@@ -94,10 +94,10 @@ public class RecentPublicAccountAdItemBuilder
       }
       return;
     }
-    if ((paramView.getTag() instanceof xhx)) {}
-    for (xhx localxhx = (xhx)paramView.getTag();; localxhx = null)
+    if ((paramView.getTag() instanceof xle)) {}
+    for (xle localxle = (xle)paramView.getTag();; localxle = null)
     {
-      if (localxhx == null)
+      if (localxle == null)
       {
         if (!QLog.isColorLevel()) {
           break;
@@ -106,10 +106,10 @@ public class RecentPublicAccountAdItemBuilder
         return;
       }
       super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
-      paramView = (RelativeLayout.LayoutParams)localxhx.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      paramView.height = localxhx.jdField_b_of_type_ComTencentWidgetSingleLineTextView.getMeasuredHeight();
-      localxhx.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      a(paramContext, localxhx.jdField_b_of_type_AndroidWidgetImageView);
+      paramView = (RelativeLayout.LayoutParams)localxle.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      paramView.height = localxle.b.getMeasuredHeight();
+      localxle.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      a(paramContext, localxle.c);
       return;
     }
   }

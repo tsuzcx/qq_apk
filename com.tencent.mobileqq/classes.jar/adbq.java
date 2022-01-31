@@ -1,26 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.open.agent.report.ReportDef.RepUtil;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileError;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-class adbq
-  implements Runnable
+public final class adbq
+  implements View.OnClickListener
 {
-  adbq(adbp paramadbp) {}
+  public adbq(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a(1004, ForwardAbility.ForwardAbilityType.b.intValue());
-    Bundle localBundle = new Bundle();
-    localBundle.putString("report_type", "102");
-    localBundle.putString("act_type", "84");
-    localBundle.putString("intext_1", "" + ReportDef.RepUtil.a(this.a.a.b));
-    localBundle.putString("intext_2", "" + ReportDef.RepUtil.a(this.a.a.jdField_a_of_type_AndroidOsBundle.getInt("uintype"), this.a.a.jdField_a_of_type_AndroidOsBundle.getString("uin")));
-    localBundle.putString("intext_3", "0");
-    localBundle.putString("intext_4", "5");
-    ReportCenter.a().a(localBundle, "", this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+    try
+    {
+      paramView = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      if (paramView.jdField_e_of_type_JavaLangString == null) {
+        return;
+      }
+      if (NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity()) == 0)
+      {
+        TroopFileError.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity().getString(2131429788));
+        return;
+      }
+      TroopFileError.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity().getString(2131428195), 0);
+      TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(paramView.jdField_e_of_type_JavaLangString, paramView.g, paramView.b, paramView.jdField_e_of_type_Int);
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

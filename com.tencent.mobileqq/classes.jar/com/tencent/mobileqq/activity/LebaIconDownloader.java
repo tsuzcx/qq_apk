@@ -11,7 +11,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
-import svm;
+import syl;
 
 public class LebaIconDownloader
 {
@@ -185,7 +185,7 @@ public class LebaIconDownloader
     while ((paramString == null) || ("".equals(paramString)) || (paramQQAppInterface == null)) {
       return;
     }
-    ThreadManager.post(new svm(paramContext, paramString, paramQQAppInterface, paramHttpDownloadListener), 5, null, true);
+    ThreadManager.post(new syl(paramContext, paramString, paramQQAppInterface, paramHttpDownloadListener), 5, null, true);
   }
   
   public static void a(String paramString, Drawable paramDrawable)

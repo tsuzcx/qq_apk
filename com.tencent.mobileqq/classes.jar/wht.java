@@ -1,30 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.StackBlur;
+import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.Iterator;
+import java.util.List;
 
-public class wht
+class wht
   implements Runnable
 {
-  public wht(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
+  wht(whs paramwhs) {}
   
   public void run()
   {
-    Bitmap localBitmap = this.a.a(this.a.app.a(this.a.a, (byte)1, true));
-    if (localBitmap != null) {}
-    try
-    {
-      StackBlur.a(localBitmap, 10);
-      this.a.runOnUiThread(new whu(this, localBitmap));
+    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
+    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class);
+    if (localList == null) {
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        localOutOfMemoryError.printStackTrace();
-      }
+    Object localObject = localList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localEntityManager.b((ReadInJoySearchHistoryEntity)((Iterator)localObject).next());
     }
+    localList.clear();
+    localObject = this.a.a.a.obtainMessage(1);
+    ((Message)localObject).obj = localList;
+    this.a.a.a.sendMessage((Message)localObject);
+    localEntityManager.a();
   }
 }
 

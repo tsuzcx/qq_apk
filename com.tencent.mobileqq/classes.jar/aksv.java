@@ -1,24 +1,30 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.BackListener;
-import com.tencent.open.downloadnew.MyAppApi.ClickListenerProxy;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
 public class aksv
-  implements Runnable
+  extends Handler
 {
-  public aksv(MyAppApi paramMyAppApi, Activity paramActivity, int paramInt1, int paramInt2, String paramString, DialogInterface.OnClickListener paramOnClickListener, MyAppApi.ClickListenerProxy paramClickListenerProxy, MyAppApi.BackListener paramBackListener, int paramInt3, boolean paramBoolean, Bundle paramBundle) {}
+  public aksv(CircleProgressBar paramCircleProgressBar) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$ClickListenerProxy, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$BackListener, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.o));
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = this.a;
+      paramMessage.i += 3;
+      this.a.postInvalidate();
+    } while (!this.a.a);
+    sendEmptyMessageDelayed(10000, 50L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksv
  * JD-Core Version:    0.7.0.1
  */

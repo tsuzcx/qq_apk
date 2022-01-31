@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.widget.ActionSheet.WatchDismissActions;
+import android.widget.Button;
+import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
 
 public class aisr
-  implements ActionSheet.WatchDismissActions
+  implements Runnable
 {
-  public aisr(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public aisr(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
   
-  public void a()
+  public void run()
   {
-    PublishHomeWorkFragment.a(this.a).a();
-    PublishHomeWorkFragment.d(this.a);
+    this.a.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisr
  * JD-Core Version:    0.7.0.1
  */

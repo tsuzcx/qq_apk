@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.av.service.QavWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallCardHandler.OnGetQCallCardListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public final class jmz
-  implements Parcelable.Creator
+public class jmz
+  implements QCallCardHandler.OnGetQCallCardListener
 {
-  public AVRedPacketConfig a(Parcel paramParcel)
-  {
-    return new AVRedPacketConfig(paramParcel);
-  }
+  public jmz(QQServiceForAV paramQQServiceForAV) {}
   
-  public AVRedPacketConfig[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new AVRedPacketConfig[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onGetQCallNickName");
+    }
+    new QavWrapper(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new jna(this, paramString));
   }
 }
 

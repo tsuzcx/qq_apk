@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 class mjh
-  implements View.OnClickListener
+  implements SceneBuilder.OnBuiltListener
 {
-  mjh(mjg parammjg, FrameLayout paramFrameLayout) {}
+  mjh(mjg parammjg) {}
   
-  public void onClick(View paramView)
+  public void a(Layer paramLayer)
   {
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(ReadinjoyTabFrame.a(this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame));
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, null);
-    if (260 == this.jdField_a_of_type_Mjg.jdField_a_of_type_Int) {
-      SharedPreUtils.u(this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getCurrentAccountUin(), null);
-    }
+    this.a.a.a.post(new mji(this, paramLayer));
   }
 }
 

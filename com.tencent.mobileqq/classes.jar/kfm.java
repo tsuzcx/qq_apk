@@ -1,16 +1,16 @@
-import com.tencent.av.ui.redbag.GetRedBag;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.redbag.ResultUI;
 
 public class kfm
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public kfm(GetRedBag paramGetRedBag, int paramInt) {}
+  public kfm(ResultUI paramResultUI) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag.a = null;
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag.i, 1, "getRedBag还没回包，超时结束, resultCode[" + this.jdField_a_of_type_Int + "]");
-    GetRedBag.a(this.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag, this.jdField_a_of_type_Int, null);
+    return true;
   }
 }
 

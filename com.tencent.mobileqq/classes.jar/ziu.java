@@ -1,14 +1,34 @@
-import com.tencent.mobileqq.app.RecommendTroopManagerImp;
-import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.RspBody;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class ziu
-  implements Runnable
+  implements Comparator
 {
-  public ziu(RecommendTroopManagerImp paramRecommendTroopManagerImp, long paramLong, oidb_0x9fb.RspBody paramRspBody) {}
+  public ziu(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void run()
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    RecommendTroopManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppRecommendTroopManagerImp, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x9fbOidb_0x9fb$RspBody);
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
+    }
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
+    }
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    if (j == 0) {
+      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    }
+    j = i;
+    if (i == 0) {
+      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    }
+    return j;
   }
 }
 

@@ -1,19 +1,38 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQQData;
+import com.tencent.biz.qqstory.network.handler.GetUserIconHandler;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class nfp
-  extends EncryptUrlJob
+  implements Runnable
 {
-  public nfp(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareQQData paramShareQQData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public nfp(GetUserIconHandler paramGetUserIconHandler) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.h = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    for (;;)
+    {
+      try
+      {
+        Thread.sleep(1000L);
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+        continue;
+      }
+      synchronized (GetUserIconHandler.a())
+      {
+        if (!GetUserIconHandler.a().isEmpty())
+        {
+          ArrayList localArrayList2 = new ArrayList(GetUserIconHandler.a());
+          GetUserIconHandler.a().clear();
+          GetUserIconHandler.a().clear();
+          this.a.a(localArrayList2);
+        }
+        this.a.a = false;
+        return;
+      }
+    }
   }
 }
 

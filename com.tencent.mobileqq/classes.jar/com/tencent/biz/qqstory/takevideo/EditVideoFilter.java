@@ -37,9 +37,9 @@ import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Constants;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 import java.util.List;
-import ocs;
-import oct;
-import ocu;
+import oek;
+import oel;
+import oem;
 
 public class EditVideoFilter
   extends EditVideoPart
@@ -142,19 +142,19 @@ public class EditVideoFilter
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager = ((UnHandleTouchEventViewPager)a(2131364389));
-    this.jdField_a_of_type_AndroidViewView = a(2131371906);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new ocs(this));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 10)
+    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager = ((UnHandleTouchEventViewPager)a(2131364413));
+    this.jdField_a_of_type_AndroidViewView = a(2131372076);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new oek(this));
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 12))
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getLayoutParams();
       localLayoutParams.height = ((int)(DeviceInfoUtil.l() * this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b() / this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a()));
       this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setLayoutParams(localLayoutParams);
     }
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter = new EditVideoFilter.FilterPagerAdapter(a());
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(new oct(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(new oel(this));
     this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setOnPageChangeListener(new ocu(this, null));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setOnPageChangeListener(new oem(this, null));
     SLog.b("Q.qqstory.publish.edit.EditVideoFilter", "init filter view pager : " + this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager);
     e();
     h();
@@ -444,13 +444,14 @@ public class EditVideoFilter
         }
         label201:
         if ((!(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) || (Constants.a)) {
-          break label470;
+          break label509;
         }
         SLog.d("Q.qqstory.publish.edit.EditVideoFilter", "it's revert black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
       }
     }
     else
     {
+      label247:
       localArrayList.add(new TimeFilterData(0, "时间", 7, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a));
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoFilterPOIFilterData != null) {
         localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoFilterPOIFilterData);
@@ -459,10 +460,11 @@ public class EditVideoFilter
       this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setCurrentItem(localArrayList.size() * 50, false);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       if (!localArrayList.isEmpty()) {
-        break label528;
+        break label606;
       }
     }
-    label528:
+    label444:
+    label606:
     for (int i = 0;; i = ((FilterData)localArrayList.get(0)).jdField_a_of_type_Int)
     {
       this.jdField_a_of_type_Int = i;
@@ -473,13 +475,22 @@ public class EditVideoFilter
         SLog.d("Q.qqstory.publish.edit.EditVideoFilter", "it's fast black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
         break;
       }
-      localArrayList.add(new VideoEffectsFilterData("快速", 1, 2130843360, 2));
+      localArrayList.add(new VideoEffectsFilterData("快速", 1, 2130843478, 2));
       break;
-      label444:
-      localArrayList.add(new VideoEffectsFilterData("慢速", 2, 2130843361, 3));
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 10) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.i()))
+      {
+        SLog.d("Q.qqstory.publish.edit.EditVideoFilter", "it's tribe slow black model, disable slow!");
+        break label201;
+      }
+      localArrayList.add(new VideoEffectsFilterData("慢速", 2, 2130843479, 3));
       break label201;
-      label470:
-      VideoEffectsFilterData localVideoEffectsFilterData = new VideoEffectsFilterData("倒带", 3, 2130843359, 1);
+      label509:
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 10) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.h()))
+      {
+        SLog.d("Q.qqstory.publish.edit.EditVideoFilter", "it's tribe revert black model, disable revert!");
+        break label247;
+      }
+      VideoEffectsFilterData localVideoEffectsFilterData = new VideoEffectsFilterData("倒带", 3, 2130843477, 1);
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.g()) {}
       for (String str = "正在处理中...";; str = null)
       {

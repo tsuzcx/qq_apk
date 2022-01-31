@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.common.recyclerview.BaseAdapter.OnItemLongClickListener;
-import com.tencent.biz.qqstory.common.recyclerview.BaseViewHolder;
-import com.tencent.biz.qqstory.common.recyclerview.HeaderAndFooterAdapter;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTaskManager;
 
 public class nbd
-  implements View.OnLongClickListener
+  implements Runnable
 {
-  public nbd(HeaderAndFooterAdapter paramHeaderAndFooterAdapter, BaseViewHolder paramBaseViewHolder) {}
+  public nbd(BasePublishTaskManager paramBasePublishTaskManager) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewHeaderAndFooterAdapter.a.b(this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.itemView, this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.getPosition());
-    return true;
+    this.a.e();
   }
 }
 

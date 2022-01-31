@@ -31,7 +31,7 @@ public class SinglePart
   
   public View a(int paramInt, ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970748, null);
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970796, null);
   }
   
   public void a(int paramInt)
@@ -41,10 +41,10 @@ public class SinglePart
   
   public void a(int paramInt, View paramView)
   {
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131364365);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131368563);
-    TextView localTextView = (TextView)paramView.findViewById(2131364366);
-    paramView = paramView.findViewById(2131364368);
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131364389);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131368630);
+    TextView localTextView = (TextView)paramView.findViewById(2131364390);
+    paramView = paramView.findViewById(2131364392);
     localTextView.setText(this.jdField_a_of_type_JavaLangString);
     switch (this.jdField_a_of_type_Int)
     {
@@ -69,11 +69,11 @@ public class SinglePart
       paramView.setBackgroundColor(paramInt);
       paramView.setVisibility(0);
       return;
-      localImageView2.setImageResource(2130843511);
+      localImageView2.setImageResource(2130843632);
       break;
-      localImageView2.setImageResource(2130843508);
+      localImageView2.setImageResource(2130843629);
       break;
-      localImageView2.setImageResource(2130843510);
+      localImageView2.setImageResource(2130843631);
       break;
       localImageView1.setVisibility(4);
     }

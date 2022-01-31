@@ -1,20 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationItem;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
+import java.util.List;
+import java.util.Map;
 
 public class wbr
-  implements MediaPlayer.OnErrorListener
+  implements Runnable
 {
-  public wbr(BlessActivity paramBlessActivity) {}
+  public wbr(StickerBubbleAnimationView paramStickerBubbleAnimationView, StickerBubbleAnimationItem paramStickerBubbleAnimationItem) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
+    List localList = (List)StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).get(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem.a());
+    if ((localList == null) || (!localList.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem)))
+    {
+      localList = (List)StickerBubbleAnimationView.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).get(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem.a());
+      if (localList != null) {
+        localList.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem);
+      }
     }
-    BlessActivity.a(this.a, true);
-    return true;
   }
 }
 

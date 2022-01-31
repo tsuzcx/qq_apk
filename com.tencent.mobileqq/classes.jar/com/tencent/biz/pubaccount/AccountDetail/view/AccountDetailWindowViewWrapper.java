@@ -73,9 +73,9 @@ public class AccountDetailWindowViewWrapper
     int i = AIOUtils.a(140.0F, (Resources)localObject);
     int j = AIOUtils.a(10.0F, (Resources)localObject);
     if (Build.VERSION.SDK_INT >= 9) {
-      ((HorizontalScrollView)paramLinearLayout.findViewById(2131362717)).setOverScrollMode(2);
+      ((HorizontalScrollView)paramLinearLayout.findViewById(2131362735)).setOverScrollMode(2);
     }
-    localObject = (GridView)paramLinearLayout.findViewById(2131362719);
+    localObject = (GridView)paramLinearLayout.findViewById(2131362737);
     ((GridView)localObject).setClickable(true);
     ((GridView)localObject).setColumnWidth(i);
     ((GridView)localObject).setStretchMode(0);

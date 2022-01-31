@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
 public class aaus
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aaus(ARMapActivity paramARMapActivity) {}
+  public aaus(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.a.b();
+  }
 }
 
 

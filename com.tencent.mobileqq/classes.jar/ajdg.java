@@ -1,38 +1,23 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mapsdk.raster.model.GeoPoint;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView.AutoLocationCallback;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.tencentmap.mapsdk.map.MapController;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-public class ajdg
-  extends Handler
+public final class ajdg
+  implements Parcelable.Creator
 {
-  public ajdg(AutoLocationMapView paramAutoLocationMapView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public TroopBarPOI a(Parcel paramParcel)
   {
-    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
-    this.a.clearAllOverlays();
-    if (paramMessage.arg1 == 0)
-    {
-      Object localObject = this.a.getController();
-      ((MapController)localObject).setCenter(localGeoPoint);
-      ((MapController)localObject).setZoom(this.a.getMaxZoomLevel());
-      localObject = new ajdh(BitmapManager.a(this.a.getContext().getResources(), 2130840534), localGeoPoint);
-      this.a.addOverlay((Overlay)localObject);
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramMessage.arg1, localGeoPoint);
-    }
+    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
+  
+  public TroopBarPOI[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdg
  * JD-Core Version:    0.7.0.1
  */

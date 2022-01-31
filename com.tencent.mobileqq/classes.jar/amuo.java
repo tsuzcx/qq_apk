@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import dov.com.qq.im.capture.QIMCaptureController;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.GpsInfo4LocalImage;
 
-public class amuo
-  implements Runnable
+public final class amuo
+  implements Parcelable.Creator
 {
-  public amuo(QIMCaptureController paramQIMCaptureController) {}
-  
-  public void run()
+  public GpsInfo4LocalImage a(Parcel paramParcel)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a;
-    if (localQQAppInterface != null) {
-      ConfigServlet.h(localQQAppInterface, localQQAppInterface.c());
-    }
+    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
+  }
+  
+  public GpsInfo4LocalImage[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuo
  * JD-Core Version:    0.7.0.1
  */

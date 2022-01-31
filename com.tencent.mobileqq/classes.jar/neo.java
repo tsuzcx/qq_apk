@@ -1,62 +1,71 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem.PollLayout;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader.Listener;
-import com.tencent.biz.qqstory.utils.BitmapUtils;
-import com.tencent.biz.qqstory.widget.PollContainerLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
-import java.net.URI;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class neo
-  implements UrlBitmapDownloader.Listener
+  extends QQStoryObserver
 {
-  public neo(AddPollViewJob paramAddPollViewJob, StoryVideoItem.PollLayout paramPollLayout) {}
+  public neo(MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void a(byte paramByte)
   {
-    paramString = BaseApplicationImpl.getContext();
-    Object localObject = new PollContainerLayout(paramString);
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout, -1, null);
-    FrameLayout localFrameLayout = new FrameLayout(paramString);
-    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
-    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
-    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem$PollLayout, -1, null);
-    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
-    localFrameLayout.draw(localCanvas);
-    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
-    if (BitmapUtils.a((Bitmap)localObject, paramString)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobAddPollViewJob.a("result", new File(paramString).toURI().toString());
+    boolean bool = true;
+    this.a.a = paramByte;
+    MsgTabStoryNodeConfigManager.c(this.a, true);
+    MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager;
+    if (paramByte != -1)
+    {
+      if (paramByte == 0) {
+        MsgTabStoryNodeConfigManager.b(this.a);
+      }
+      localMsgTabStoryNodeConfigManager = this.a;
+      if (paramByte != 2) {
+        break label88;
+      }
     }
     for (;;)
     {
-      ((Bitmap)localObject).recycle();
-      AddPollViewJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobAddPollViewJob, true);
+      localMsgTabStoryNodeConfigManager.a(bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
+      }
       return;
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobAddPollViewJob.a("result", this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobAddPollViewJob.a.mVideoThumbnailUrl);
+      label88:
+      bool = false;
     }
   }
   
-  public void a(String paramString, Throwable paramThrowable)
+  public void b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobAddPollViewJob.a("result", this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobAddPollViewJob.a.mVideoThumbnailUrl);
-    AddPollViewJob.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobAddPollViewJob, true);
+    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
+    this.a.b = ((Boolean)localStoryConfigManager.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
+    }
+    MsgTabStoryNodeConfigManager.a(this.a);
+    MsgTabStoryNodeConfigManager.a(this.a, true);
+    MsgTabStoryNodeConfigManager.a(this.a, true);
+    MsgTabStoryNodeConfigManager.b(this.a);
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    if (!MsgTabStoryNodeConfigManager.a(this.a))
+    {
+      if (paramBoolean)
+      {
+        this.a.c = this.a.a();
+        MsgTabStoryNodeConfigManager.a(this.a);
+        MsgTabStoryNodeConfigManager.a(this.a, true);
+      }
+      MsgTabStoryNodeConfigManager.b(this.a, true);
+      MsgTabStoryNodeConfigManager.b(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
+    }
   }
 }
 

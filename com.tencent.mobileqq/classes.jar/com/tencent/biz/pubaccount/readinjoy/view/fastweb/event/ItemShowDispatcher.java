@@ -9,8 +9,8 @@ import com.tencent.widget.AbsListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mln;
-import mlo;
+import mmy;
+import mmz;
 import mqq.os.MqqHandler;
 
 public class ItemShowDispatcher
@@ -18,9 +18,9 @@ public class ItemShowDispatcher
   private long jdField_a_of_type_Long;
   private SparseArray jdField_a_of_type_AndroidUtilSparseArray;
   private Pair jdField_a_of_type_ComTencentUtilPair;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new mln(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new mmy(this);
   private String jdField_a_of_type_JavaLangString = ItemShowDispatcher.class.getSimpleName();
-  private mlo jdField_a_of_type_Mlo;
+  private mmz jdField_a_of_type_Mmz;
   private int[] jdField_a_of_type_ArrayOfInt;
   private SparseArray jdField_b_of_type_AndroidUtilSparseArray;
   private Pair jdField_b_of_type_ComTencentUtilPair;
@@ -256,8 +256,8 @@ public class ItemShowDispatcher
     if (this.jdField_a_of_type_JavaLangRunnable != null) {
       ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
-    if (this.jdField_a_of_type_Mlo != null) {
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Mlo);
+    if (this.jdField_a_of_type_Mmz != null) {
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Mmz);
     }
   }
   
@@ -274,23 +274,23 @@ public class ItemShowDispatcher
     if (!a()) {
       return;
     }
-    if (this.jdField_a_of_type_Mlo == null) {
-      this.jdField_a_of_type_Mlo = new mlo(this, paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Mmz == null) {
+      this.jdField_a_of_type_Mmz = new mmz(this, paramAbsListView, paramInt);
     }
     switch (paramInt)
     {
     default: 
       ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Mlo);
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Mmz);
       return;
     case 0: 
       b(paramAbsListView, paramInt);
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Mlo);
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Mmz);
       ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
       return;
     }
     b(paramAbsListView, paramInt);
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_Mlo, 1000L);
+    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_Mmz, 1000L);
   }
   
   public void a(int[] paramArrayOfInt)

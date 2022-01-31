@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dating;
 
 import SummaryCard.TPraiseInfo;
-import abqr;
+import abxs;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -169,7 +169,7 @@ public class NewVoteAnimHelper
               break label727;
             }
             localLayoutParams.topMargin = 0;
-            m = 2130845924;
+            m = 2130846052;
           }
         }
       }
@@ -196,7 +196,7 @@ public class NewVoteAnimHelper
         int j;
         if (this.jdField_c_of_type_Int == 0)
         {
-          j = 2130845931;
+          j = 2130846059;
           ((ViewGroup.MarginLayoutParams)localObject).topMargin = 0;
           label418:
           ((ViewGroup.MarginLayoutParams)localObject).width = -2;
@@ -221,7 +221,7 @@ public class NewVoteAnimHelper
           break;
           if (this.jdField_c_of_type_Int == 1)
           {
-            j = 2130845927;
+            j = 2130846055;
             ((ViewGroup.MarginLayoutParams)localObject).topMargin = 0;
             ((ViewGroup.MarginLayoutParams)localObject).rightMargin = 0;
             break label418;
@@ -232,15 +232,15 @@ public class NewVoteAnimHelper
               ((RelativeLayout.LayoutParams)localObject).addRule(15);
             }
             ((ViewGroup.MarginLayoutParams)localObject).leftMargin = DisplayUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 4.0F);
-            j = 2130845931;
+            j = 2130846059;
             break label418;
           }
           if (this.jdField_c_of_type_Int == 3)
           {
-            j = 2130845931;
+            j = 2130846059;
             break label418;
           }
-          j = 2130845927;
+          j = 2130846055;
           break label418;
           label638:
           this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.jdField_a_of_type_AndroidWidgetTextView.setText("+" + this.e);
@@ -259,7 +259,7 @@ public class NewVoteAnimHelper
         this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.b.setLayoutParams(localLayoutParams);
         return;
         label727:
-        m = 2130845924;
+        m = 2130846052;
       }
       localLayoutParams = null;
     }
@@ -441,7 +441,7 @@ public class NewVoteAnimHelper
           }
         }
       }
-      if (paramTextView.a(paramView2, new abqr(this, paramInt1))) {
+      if (paramTextView.a(paramView2, new abxs(this, paramInt1))) {
         this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramView1, 1000L);
       }
       for (;;)
@@ -632,7 +632,7 @@ public class NewVoteAnimHelper
           }
           f2 = arrayOfInt[0];
           if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder == null) {
-            this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder = new FloatViewBuilder(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2130843035);
+            this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder = new FloatViewBuilder(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2130843134);
           }
           if ((this.jdField_a_of_type_JavaUtilList == null) || (j - 1 >= this.jdField_a_of_type_JavaUtilList.size())) {
             break label1105;
@@ -697,7 +697,7 @@ public class NewVoteAnimHelper
           if ((paramMessage != null) && (paramMessage.iIsPayed > 0)) {
             try
             {
-              paramMessage = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources(), 2130840609);
+              paramMessage = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources(), 2130840631);
             }
             catch (OutOfMemoryError paramMessage)
             {

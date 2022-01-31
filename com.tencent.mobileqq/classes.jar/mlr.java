@@ -1,42 +1,16 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentHeaderData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.SimpleViewCreator;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
 
-public class mlr
-  extends BaseItemViewHolder
+class mlr
+  implements Runnable
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private View b;
+  mlr(mlq parammlq) {}
   
-  public mlr(SimpleViewCreator paramSimpleViewCreator, View paramView, BaseData paramBaseData)
+  public void run()
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361926));
-    this.b = paramView.findViewById(2131363937);
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    paramBaseData1 = "";
-    if (paramBaseData2.d == 7)
-    {
-      paramBaseData1 = ((RecommendTitleData)paramBaseData2).a;
-      this.b.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
-      return;
-      if (paramBaseData2.d == 13)
-      {
-        paramBaseData1 = ((CommentHeaderData)paramBaseData2).a;
-        this.b.setVisibility(8);
-      }
-    }
+    Kandian210Msg0xeeInfo localKandian210Msg0xeeInfo = KandianAppInPush.a(this.a.a);
+    KandianAppInPush.b(this.a.a, null);
+    this.a.a.a(localKandian210Msg0xeeInfo);
   }
 }
 

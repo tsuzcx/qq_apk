@@ -1,19 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.DeviceSingleStructBuilder;
+import com.tencent.mobileqq.activity.aio.doodle.PlayLastLogic;
 
 public class usy
-  extends AbstractChatItemBuilder.ViewHolder
+  implements Runnable
 {
-  public ImageView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public usy(PlayLastLogic paramPlayLastLogic) {}
   
-  public usy(DeviceSingleStructBuilder paramDeviceSingleStructBuilder) {}
+  public void run()
+  {
+    if (this.a.a == 0) {
+      PlayLastLogic.a(this.a, true);
+    }
+  }
 }
 
 

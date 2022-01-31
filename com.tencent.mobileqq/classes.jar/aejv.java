@@ -1,34 +1,20 @@
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
+import com.tencent.mobileqq.music.SongInfo;
 
 public class aejv
-  implements AdapterView.OnItemLongClickListener
+  implements Runnable
 {
-  public aejv(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aejv(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, SongInfo paramSongInfo) {}
   
-  public boolean onItemLongClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt);
-    if (paramAdapterView == null) {
-      return true;
-    }
-    paramLong = Long.parseLong(this.a.a.getCurrentAccountUin());
-    if (paramAdapterView.c == paramLong)
-    {
-      ShortVideoCommentsView.b(this.a, paramAdapterView);
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejv
  * JD-Core Version:    0.7.0.1
  */

@@ -72,8 +72,8 @@ public class VoteView
     Object localObject1 = getResources();
     this.jdField_a_of_type_Double = ((Resources)localObject1).getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(getContext());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setId(2131364845);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130843036);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setId(2131364867);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130843135);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding((int)(this.jdField_a_of_type_Double * 8.0D), (int)(this.jdField_a_of_type_Double * 3.0D), (int)(this.jdField_a_of_type_Double * 8.0D), (int)(this.jdField_a_of_type_Double * 3.0D));
     Object localObject2 = new RelativeLayout.LayoutParams(-2, (int)(this.jdField_a_of_type_Double * 24.0D));
     ((RelativeLayout.LayoutParams)localObject2).addRule(9);
@@ -82,7 +82,7 @@ public class VoteView
     addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject2);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setId(2131362393);
-    localObject2 = ((Resources)localObject1).getDrawable(2130845686);
+    localObject2 = ((Resources)localObject1).getDrawable(2130845814);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
     int i;
     if (localObject2 == null)
@@ -101,24 +101,24 @@ public class VoteView
       ((RelativeLayout.LayoutParams)localObject2).rightMargin = ((int)(this.jdField_a_of_type_Double * 3.0D));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject2);
       this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = new SingleLineTextView(getContext());
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setId(2131368266);
+      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setId(2131368333);
       this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(-1);
       this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextSize(13.0F);
       localObject2 = new RelativeLayout.LayoutParams(-2, (int)(this.jdField_a_of_type_Double * 24.0D));
       ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131362393);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentWidgetSingleLineTextView, (ViewGroup.LayoutParams)localObject2);
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(getContext());
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131365196);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130845931);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131365218);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130846059);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setMinimumHeight((int)(this.jdField_a_of_type_Double * 6.0D));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setMinimumWidth((int)(this.jdField_a_of_type_Double * 6.0D));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setContentDescription(((Resources)localObject1).getString(2131427420));
       localObject1 = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject1).addRule(10);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(7, 2131364845);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(7, 2131364867);
       addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, (ViewGroup.LayoutParams)localObject1);
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131365197);
+      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131365219);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 11.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, -2, -2);
@@ -175,7 +175,7 @@ public class VoteView
         localLayoutParams.height = ((int)(this.jdField_a_of_type_Double * 6.0D + 0.5D));
         localLayoutParams.rightMargin = ((int)(3.0D % this.jdField_a_of_type_Double + 0.5D));
       }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130845924);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130846052);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(localLayoutParams);
     }
     Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout;
@@ -200,7 +200,7 @@ public class VoteView
       localObject3 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
       if (paramBoolean)
       {
-        j = 2130845924;
+        j = 2130846052;
         if (localLayoutParams != null) {
           localLayoutParams.topMargin = 0;
         }
@@ -239,7 +239,7 @@ public class VoteView
       this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localObject1);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
       return;
-      j = 2130845927;
+      j = 2130846055;
       if (localLayoutParams != null) {
         localLayoutParams.topMargin = ((int)(15.0D * this.jdField_a_of_type_Double + 0.5D));
       }
@@ -294,7 +294,7 @@ public class VoteView
       if ((this.c) || (!this.jdField_b_of_type_Boolean)) {
         break label360;
       }
-      localObject = super.getResources().getDrawable(2130845688);
+      localObject = super.getResources().getDrawable(2130845816);
       label65:
       if (!this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_Boolean) {
         break label374;
@@ -325,7 +325,7 @@ public class VoteView
         paramNewVoteAnimHelper = new int[2];
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLocationInWindow(paramNewVoteAnimHelper);
         if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder == null) {
-          this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder = new FloatViewBuilder(getContext(), 2130843035);
+          this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder = new FloatViewBuilder(getContext(), 2130843134);
         }
         f1 = (float)(paramNewVoteAnimHelper[0] + (this.jdField_a_of_type_AndroidWidgetImageView.getWidth() + this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingLeft()) * 0.5D);
         f2 = paramNewVoteAnimHelper[1];
@@ -347,7 +347,7 @@ public class VoteView
       this.jdField_b_of_type_Int = paramInt2;
       break label39;
       label360:
-      localObject = super.getResources().getDrawable(2130845686);
+      localObject = super.getResources().getDrawable(2130845814);
       break label65;
       label374:
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
@@ -389,7 +389,7 @@ public class VoteView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.VoteView
  * JD-Core Version:    0.7.0.1
  */

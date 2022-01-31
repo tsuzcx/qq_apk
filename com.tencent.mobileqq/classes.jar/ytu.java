@@ -1,17 +1,33 @@
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
-import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnAudioDownloadListener;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-public class ytu
-  implements Runnable
+public final class ytu
+  extends DownloadListener
 {
-  public ytu(ApolloDrawerInfoViewListener paramApolloDrawerInfoViewListener) {}
+  public ytu(int paramInt, ApolloResDownloader.OnAudioDownloadListener paramOnAudioDownloadListener) {}
   
-  public void run()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if (ApolloDrawerInfoViewListener.a(this.a).get() != null) {
-      ((SpriteDrawerInfoManager)ApolloDrawerInfoViewListener.a(this.a).get()).a(ApolloDrawerInfoViewListener.a(this.a));
+    super.onDone(paramDownloadTask);
+    if (3 == paramDownloadTask.a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio ok id" + this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnAudioDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnAudioDownloadListener.a(true, this.jdField_a_of_type_Int);
+      }
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio error id->" + this.jdField_a_of_type_Int + " task.getStatus()->" + paramDownloadTask.a());
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnAudioDownloadListener == null);
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnAudioDownloadListener.a(false, this.jdField_a_of_type_Int);
   }
 }
 

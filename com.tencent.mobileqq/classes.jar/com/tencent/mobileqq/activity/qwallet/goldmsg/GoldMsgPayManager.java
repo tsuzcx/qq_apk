@@ -56,11 +56,11 @@ import tencent.im.msg.im_msg_body.RichText;
 import tencent.im.msg.im_msg_body.SmallEmoji;
 import tencent.im.msg.im_msg_body.Text;
 import tencent.im.msg.im_msg_body.VideoFile;
-import xbs;
-import xbt;
-import xbu;
-import xbv;
-import xbw;
+import xex;
+import xey;
+import xez;
+import xfa;
+import xfb;
 
 public class GoldMsgPayManager
 {
@@ -520,7 +520,7 @@ public class GoldMsgPayManager
           VACDReportUtil.a(l, str1, "loadPluginStart", paramMessageRecord.toString(), 0, null);
           QWalletPayBridge.getWalletDataByService(BaseApplicationImpl.sApplication, localQQAppInterface, localBundle);
           this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
-          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new xbv(this), 60000L);
+          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new xfa(this), 60000L);
           return;
           localObject4 = paramMessageRecord.getExtInfoFromExtStr("goldmsg_pic_md5");
           j = i;
@@ -571,10 +571,10 @@ public class GoldMsgPayManager
         paramMessageObserver = (GoldMsgPayManager.PayItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
         paramMessageObserver.b = true;
         if (paramMessageRecord != null) {
-          ThreadManager.getUIHandler().postDelayed(new xbs(this, paramMessageRecord), MessageHandler.d);
+          ThreadManager.getUIHandler().postDelayed(new xex(this, paramMessageRecord), MessageHandler.d);
         }
         if (paramMessageObserver != null) {
-          ThreadManager.post(new xbt(this, paramMessageObserver), 10, null, false);
+          ThreadManager.post(new xey(this, paramMessageObserver), 10, null, false);
         }
         return;
       }
@@ -845,7 +845,7 @@ public class GoldMsgPayManager
           if (bool1)
           {
             this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
-            this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new xbu(this), 60000L);
+            this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new xez(this), 60000L);
             bool2 = bool1;
           }
         }
@@ -857,7 +857,7 @@ public class GoldMsgPayManager
   
   public void b(String paramString)
   {
-    ThreadManager.getUIHandler().post(new xbw(this, paramString));
+    ThreadManager.getUIHandler().post(new xfb(this, paramString));
   }
 }
 

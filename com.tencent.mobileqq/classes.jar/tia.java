@@ -1,26 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import mqq.app.MobileQQ;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
 public class tia
-  implements Runnable
+  extends Handler
 {
-  public tia(QQSettingMe paramQQSettingMe) {}
+  public tia(QQBroadcastActivity paramQQBroadcastActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a != null)
+    switch (paramMessage.what)
     {
-      String str = this.a.a.getCurrentAccountUin();
-      if (!TextUtils.isEmpty(str)) {
-        WebProcessManager.a(str, "key_individuation_click_time");
-      }
-      this.a.a.getApplication().getSharedPreferences("emoticon_panel_" + this.a.a.getCurrentAccountUin(), 0).edit().putLong("sp_key_market_open_time", System.currentTimeMillis()).commit();
     }
+    do
+    {
+      return;
+    } while (this.a.a == null);
+    this.a.a.changeCursor(this.a.a());
   }
 }
 

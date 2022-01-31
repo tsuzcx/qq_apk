@@ -448,7 +448,7 @@ public class DeviceHeadMgr
       }
       try
       {
-        ??? = BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), 2130838726);
+        ??? = BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), 2130838730);
         return ???;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -494,7 +494,7 @@ public class DeviceHeadMgr
           if (localBitmap1 != null) {
             return ???;
           }
-          return BitmapManager.a(BaseApplication.getContext().getResources(), 2130838726);
+          return BitmapManager.a(BaseApplication.getContext().getResources(), 2130838730);
           new Thread(new DeviceHeadMgr.2(this, (String)???, str, paramInt)).start();
           break;
           localBitmap1 = ImageUtil.c(localBitmap1, 50, 50);
@@ -508,7 +508,7 @@ public class DeviceHeadMgr
   {
     if (AppConstants.x.equals(paramString))
     {
-      paramString = BitmapManager.a(BaseApplication.getContext().getResources(), 2130838728);
+      paramString = BitmapManager.a(BaseApplication.getContext().getResources(), 2130838732);
       return new BitmapDrawable(BaseApplication.getContext().getResources(), paramString);
     }
     long l = Long.parseLong(paramString);
@@ -519,7 +519,7 @@ public class DeviceHeadMgr
       localBitmap = getDeviceHeadByPID(localDeviceInfo.productId);
       if (isLostQfindDevice(paramString))
       {
-        paramString = BaseApplication.getContext().getResources().getDrawable(2130838725);
+        paramString = BaseApplication.getContext().getResources().getDrawable(2130838729);
         if ((paramString instanceof SkinnableBitmapDrawable)) {
           ((SkinnableBitmapDrawable)paramString).setGravity(119);
         }
@@ -544,7 +544,7 @@ public class DeviceHeadMgr
   public Bitmap getDeviceWithLogoByPid(int paramInt)
   {
     if (paramInt == 9971) {
-      ??? = BitmapManager.a(BaseApplication.getContext().getResources(), 2130838729);
+      ??? = BitmapManager.a(BaseApplication.getContext().getResources(), 2130838733);
     }
     for (;;)
     {
@@ -566,7 +566,7 @@ public class DeviceHeadMgr
         if (localBitmap != null) {
           continue;
         }
-        return BitmapManager.a(BaseApplication.getContext().getResources(), 2130838726);
+        return BitmapManager.a(BaseApplication.getContext().getResources(), 2130838730);
       }
     }
   }

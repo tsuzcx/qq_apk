@@ -21,7 +21,7 @@ import com.tencent.mobileqq.widget.datepicker.DatePickerView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.List;
-import wdg;
+import wgl;
 
 public class ChatHistoryByDateFragment
   extends IphoneTitleBarFragment
@@ -106,7 +106,7 @@ public class ChatHistoryByDateFragment
   
   protected int a()
   {
-    return 2130969854;
+    return 2130969868;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -115,7 +115,7 @@ public class ChatHistoryByDateFragment
       QLog.i(jdField_c_of_type_JavaLangString, 2, "queryMessageInMonth:" + paramInt1 + "-" + paramInt2);
     }
     a(paramInt1, paramInt2, Boolean.valueOf(true));
-    ThreadManager.post(new wdg(this, paramInt1, paramInt2), 8, null, false);
+    ThreadManager.post(new wgl(this, paramInt1, paramInt2), 8, null, false);
   }
   
   protected void a(Bundle paramBundle)
@@ -168,7 +168,7 @@ public class ChatHistoryByDateFragment
     for (this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(System.currentTimeMillis());; this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(((MessageRecord)localObject).time * 1000L))
     {
       QLog.i(jdField_c_of_type_JavaLangString, 1, "firstMessage : " + this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay + " lastMssage : " + this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView = ((DatePickerView)this.e.findViewById(2131368251));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView = ((DatePickerView)this.e.findViewById(2131368318));
       this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController = new ChatHistoryByDateFragment.ChatHistoryDatePickerController(this, this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
       this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView.setController(this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerController);
       a(this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.year, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month);

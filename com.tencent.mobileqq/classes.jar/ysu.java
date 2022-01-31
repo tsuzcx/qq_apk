@@ -1,47 +1,78 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyGameDressReady;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.mobileqq.apollo.process.sso.CmGameObserver;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 import org.json.JSONObject;
 
-public final class ysu
-  implements ApolloGameBasicEventUtil.NotifyGameDressReady
+public class ysu
+  extends CmGameObserver
 {
-  public ysu(int paramInt) {}
+  public ysu(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
+      QLog.d("cmgame_process.CmGameObserver", 2, "[onGetGameKey]");
     }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return;
-    }
-    try
+    if (paramBoolean)
     {
-      paramQQAppInterface = ApolloGameBasicEventUtil.a(paramInt2, paramArrayOfInt);
-      if (paramQQAppInterface == null)
+      if (paramObject != null) {}
+      try
       {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
+        if (((paramObject instanceof Bundle)) && (Long.valueOf(((Bundle)paramObject).getLong("retCode")).longValue() == ApolloConstant.b))
+        {
+          ApolloGameStateMachine.a().a(5, "fail in get key in activity");
+          this.a.a();
+        }
+        return;
+      }
+      catch (Throwable paramObject)
+      {
+        QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[] { "[onGetGameKey]" });
         return;
       }
     }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
-      return;
+    this.a.a();
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameObserver", 2, new Object[] { "[onGetGameOnlineCount] result=", Boolean.valueOf(paramBoolean), ", data=", paramObject });
     }
-    if (this.a == 1000) {
-      paramQQAppInterface.put("uin", paramString1);
+    if ((paramBoolean) && (paramObject != null)) {
+      try
+      {
+        if ((paramObject instanceof JSONObject))
+        {
+          long l = ((JSONObject)paramObject).optLong("num");
+          if (l > 0L)
+          {
+            if (ApolloGameActivity.a(this.a) != null)
+            {
+              paramObject = String.valueOf(l) + "人在玩";
+              if (l > 9999L) {
+                paramObject = String.valueOf(l / 10000L) + "万人在玩";
+              }
+              ApolloGameActivity.a(this.a).setVisibility(0);
+              ApolloGameActivity.a(this.a).setText(paramObject);
+            }
+          }
+          else if (ApolloGameActivity.a(this.a) != null)
+          {
+            ApolloGameActivity.a(this.a).setVisibility(4);
+            return;
+          }
+        }
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("cmgame_process.CmGameObserver", 1, "[onGetGameOnlineCount] parse data failed, exception=", paramObject);
+      }
     }
-    paramQQAppInterface.put("openId", paramString2);
-    paramString1 = new Bundle();
-    paramString1.putString("resData", paramQQAppInterface.toString());
-    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
-    CmGameServerQIPCModule.a().callbackResult(paramInt1, paramQQAppInterface);
   }
 }
 

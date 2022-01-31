@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
-import ahua;
-import ahub;
+import aiid;
+import aiie;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -51,9 +51,9 @@ public class StructMsgForHypertext
   public int mHypertextContentLayout = 0;
   public String mSourceIcon;
   public String mSourceName;
-  protected View.OnClickListener mSourceOnClickListener = new ahub(this);
+  protected View.OnClickListener mSourceOnClickListener = new aiie(this);
   public String mSourceUrl;
-  private URLDrawableDownListener.Adapter mUrlAdapter = new ahua(this);
+  private URLDrawableDownListener.Adapter mUrlAdapter = new aiid(this);
   
   StructMsgForHypertext() {}
   
@@ -164,8 +164,8 @@ public class StructMsgForHypertext
       paramView.setText(getSpannableString(false));
       paramView.setMaxLines(10);
       paramView.setTextSize(0, ChatTextSizeSettingActivity.a(paramContext));
-      paramView.setTextColor(paramContext.getResources().getColor(2131492930));
-      paramView.setLinkTextColor(paramContext.getResources().getColor(2131493011));
+      paramView.setTextColor(paramContext.getResources().getColor(2131492931));
+      paramView.setLinkTextColor(paramContext.getResources().getColor(2131493012));
       paramView.setLinksClickable(false);
       paramView.setMovementMethod(LinkMovementMethod.getInstance());
       localLinearLayout.addView(paramView);
@@ -198,7 +198,7 @@ public class StructMsgForHypertext
       paramView.setTextColor(-1);
       paramView.setTextSize(2, 12.0F);
       paramView.setPadding(AIOUtils.a(5.0F, localResources), 0, AIOUtils.a(5.0F, localResources), 0);
-      paramView.setBackgroundResource(2130840623);
+      paramView.setBackgroundResource(2130840645);
     }
     TextView localTextView;
     for (;;)
@@ -228,7 +228,7 @@ public class StructMsgForHypertext
       if ((!TextUtils.isEmpty(this.mSourceIcon)) && (i != 0))
       {
         str = this.mSourceIcon;
-        localObject = localResources.getDrawable(2130845966);
+        localObject = localResources.getDrawable(2130846094);
         ((Drawable)localObject).setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
         localColorDrawable = new ColorDrawable(15790320);
         localColorDrawable.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
@@ -298,8 +298,8 @@ public class StructMsgForHypertext
     paramBundle.setPadding((int)localResources.getDimension(2131558648), (int)localResources.getDimension(2131558650), (int)localResources.getDimension(2131558649), (int)localResources.getDimension(2131558651));
     paramBundle.setText(getSpannableString(true));
     paramBundle.setTextSize(0, ChatTextSizeSettingActivity.a(paramContext));
-    paramBundle.setTextColor(paramContext.getResources().getColor(2131492930));
-    paramBundle.setLinkTextColor(paramContext.getResources().getColor(2131493011));
+    paramBundle.setTextColor(paramContext.getResources().getColor(2131492931));
+    paramBundle.setLinkTextColor(paramContext.getResources().getColor(2131493012));
     paramBundle.setLinksClickable(false);
     paramBundle.setMovementMethod(LinkMovementMethod.getInstance());
     paramBundle.setOnTouchListener(paramOnLongClickAndTouchListener);
@@ -707,7 +707,7 @@ public class StructMsgForHypertext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForHypertext
  * JD-Core Version:    0.7.0.1
  */

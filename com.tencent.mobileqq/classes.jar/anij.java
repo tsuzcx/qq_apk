@@ -1,25 +1,43 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import android.app.Activity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.qq.im.setting.ICameraEntrance;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
 public class anij
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public anij(DoodleEditView paramDoodleEditView, GestureHelper.ZoomItem paramZoomItem) {}
+  public anij(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    SLog.b("DoodleEditView", "onAnimationEnd");
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem.n = 1.0F;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    SLog.b("DoodleEditView", "onAnimationStart");
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
+          Activity localActivity = this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a();
+          if ((localActivity != null) && (!localActivity.isFinishing())) {
+            this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_DovComQqImSettingICameraEntrance.a(2);
+          }
+        } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_Boolean);
+        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.x();
+        return;
+        QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
+        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.e();
+      } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.w();
+      return;
+      QQToast.a(BaseApplicationImpl.getContext(), "拍照出现异常，请重试", 0).a();
+    } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.w();
   }
 }
 

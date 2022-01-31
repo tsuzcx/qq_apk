@@ -1,33 +1,21 @@
-import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
+import com.tencent.biz.qqstory.msgTabNode.network.QQStoryGuideRequest;
+import com.tencent.biz.qqstory.msgTabNode.network.QQStoryGuideRequest.QQStoryGuideResponse;
+import com.tencent.qphone.base.util.QLog;
 
 public class nej
-  implements Runnable
+  implements CmdTaskManger.CommandCallback
 {
-  public nej(ReportEvilToXinanHandler paramReportEvilToXinanHandler, String paramString) {}
+  public nej(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
   
-  public void run()
+  public void a(@NonNull QQStoryGuideRequest paramQQStoryGuideRequest, @Nullable QQStoryGuideRequest.QQStoryGuideResponse paramQQStoryGuideResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    try
-    {
-      i = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("rtn_code");
-      if (i == 0)
-      {
-        QQToast.a(BaseApplication.getContext(), "举报成功，客服人员将尽快处理", 0).a();
-        return;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        int i = -1;
-      }
-      QQToast.a(BaseApplication.getContext(), "举报失败，请稍后重试", 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.nodeList", 2, "requestQQStoryGuide onCmdRespond = " + paramQQStoryGuideResponse + " ,errorMsg = " + paramErrorMessage);
     }
   }
 }

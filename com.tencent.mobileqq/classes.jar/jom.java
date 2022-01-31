@@ -1,24 +1,18 @@
-import android.widget.TextView;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.smallscreen.PstnSmallScreenService;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
 
 public class jom
-  implements Runnable
+  extends OrientationEventListener
 {
-  public jom(PstnSmallScreenService paramPstnSmallScreenService) {}
-  
-  public void run()
+  public jom(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429559);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b = 2;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
-    }
+    super(paramContext, paramInt);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    this.a.a();
   }
 }
 

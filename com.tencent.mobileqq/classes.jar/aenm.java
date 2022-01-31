@@ -1,10 +1,10 @@
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.widget.TextView;
 
-public class aenm
+class aenm
 {
-  public int a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  private aenm(PlayOperationViewModel paramPlayOperationViewModel) {}
+  aenm(aenl paramaenl) {}
 }
 
 

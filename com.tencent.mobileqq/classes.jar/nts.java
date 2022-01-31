@@ -1,14 +1,16 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo.TakeVideoButtonMainPart.OnTakeVideoButtonClickListener;
 
 public class nts
-  implements Runnable
+  implements TakeVideoButtonMainPart.OnTakeVideoButtonClickListener
 {
-  public nts(StoryDetailFragment paramStoryDetailFragment) {}
+  public nts(QQStoryMainController paramQQStoryMainController) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.a(true);
+    StoryReportor.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
+    this.a.a(false, true, 1, null);
   }
 }
 

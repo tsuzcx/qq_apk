@@ -32,7 +32,7 @@ public final class interact_value$OneInteract
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\acom2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     nearby_interact_state.interact_value.OneInteract
  * JD-Core Version:    0.7.0.1
  */

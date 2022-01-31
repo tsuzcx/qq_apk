@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.HotChatManager;
 
 public class zff
   implements Runnable
 {
-  public zff(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean, int paramInt) {}
+  public zff(HotChatManager paramHotChatManager) {}
   
   public void run()
   {
-    synchronized (PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp))
-    {
-      Iterator localIterator = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).iterator();
-      if (localIterator.hasNext()) {
-        ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
-      }
-    }
+    HotChatManager.a(this.a);
   }
 }
 

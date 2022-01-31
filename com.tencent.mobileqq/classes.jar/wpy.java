@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.mobileqq.activity.main.LebaTabRedTouch.RefreshCallback;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 
 public class wpy
-  implements DialogInterface.OnDismissListener
+  implements LebaTabRedTouch.RefreshCallback
 {
-  public wpy(BaseActivityView paramBaseActivityView) {}
+  public wpy(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    this.a.a = null;
+    boolean bool = true;
+    Object localObject = this.a.a.obtainMessage(1);
+    ((Message)localObject).obj = paramRedTypeInfo;
+    this.a.a.sendMessage((Message)localObject);
+    localObject = ReadinjoySPEventReport.a();
+    if (paramRedTypeInfo != null) {}
+    for (;;)
+    {
+      ((ReadinjoySPEventReport)localObject).a(bool);
+      return;
+      bool = false;
+    }
   }
 }
 

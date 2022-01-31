@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.TextView;
 
-public class vqg
-  implements View.OnClickListener
+class vqg
+  implements Runnable
 {
-  public vqg(FriendChatPie paramFriendChatPie) {}
+  vqg(vqf paramvqf, StateListDrawable paramStateListDrawable) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendChatPie", 2, "mQimStatusOnClickListener.onClick: invoked. info: v = " + paramView);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80087E6");
-    QIMUserManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Vqf.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
   }
 }
 

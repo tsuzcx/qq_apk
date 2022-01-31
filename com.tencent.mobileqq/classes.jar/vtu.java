@@ -1,18 +1,14 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 
-class vtu
+public class vtu
   implements Runnable
 {
-  vtu(vtt paramvtt) {}
+  public vtu(GameRoomChatPie paramGameRoomChatPie) {}
   
   public void run()
   {
-    if (this.a.a.o != null) {
-      this.a.a.o.clearAnimation();
-    }
-    PublicAccountChatPie.b(this.a.a).removeView(this.a.a.o);
+    this.a.a.a();
   }
 }
 

@@ -1,59 +1,49 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.mobileqq.statistics.QZoneReport;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
 public class aifw
-  extends Handler
+  extends QZoneObserver
 {
-  public aifw(AudioRecordFragment paramAudioRecordFragment) {}
-  
-  public void handleMessage(Message paramMessage)
+  protected void d(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.a.getActivity() == null) || (this.a.isDetached())) {
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof mobile_get_qzone_public_msg_rsp)))
+    {
+      int i = QZoneReport.a().decrementAndGet();
+      QZoneReport.a(0);
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      localAppRuntime.getPreferences().edit().putInt(localAppRuntime.getAccount() + "_" + "qzone_xp_req_left", i).apply();
+      QZoneReport.b(((mobile_get_qzone_public_msg_rsp)paramBundle).next_req_tmstamp);
       if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "handleMessage,fragment is in a invalid state, return");
+        QLog.i("QZoneReport", 2, "next req time: " + QZoneReport.b() + ", left: " + i);
+      }
+      ReportController.b(null, "CliOper", "", "", "0X800915D", "0X800915D", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      QZoneReport.a().set(false);
+      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(QZoneReport.a());
+      return;
+      QZoneReport.c();
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneReport", 2, "qzone report failed");
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AIOAudioPanel", 2, "RECORD_TO_START =============");
-      return;
-      paramMessage = paramMessage.obj.toString();
-      File localFile = new File(paramMessage);
-      if (localFile.exists()) {}
-      for (long l = localFile.length();; l = 0L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
-        paramMessage = new Intent();
-        paramMessage.putExtra("audio_info", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
-        this.a.getActivity().setResult(-1, paramMessage);
-        this.a.getActivity().finish();
-        return;
-      }
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals("publish")) || (this.a.b == null));
-    TroopBarUtils.a("pub_page", "preview_record", this.a.b, this.a.c, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifw
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import kio;
+import khz;
 import mqq.app.BaseActivity;
 
 public class ShareActionSheetBuilder
@@ -21,12 +21,12 @@ public class ShareActionSheetBuilder
   public ActionSheet a(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
-    GridView localGridView = (GridView)View.inflate(this.a, 2130971644, null);
+    GridView localGridView = (GridView)View.inflate(this.a, 2130971692, null);
     localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837534));
-    localGridView.setAdapter(new kio(this, null));
+    localGridView.setAdapter(new khz(this, null));
     localGridView.setOnItemClickListener(paramOnItemClickListener);
     localActionSheet.a(localGridView);
-    localActionSheet.c(2131432998);
+    localActionSheet.c(2131433015);
     return localActionSheet;
   }
 }

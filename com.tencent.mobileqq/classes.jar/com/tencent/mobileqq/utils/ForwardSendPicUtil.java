@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import ajoa;
+import akch;
 import android.content.Context;
 import com.tencent.mobileqq.activity.photo.ImageInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,7 +28,7 @@ public class ForwardSendPicUtil
       paramString2 = PicBusiManager.a(2, 1009);
       paramString2.a(paramString4.a());
       PicBusiManager.a(paramString2, paramQQAppInterface);
-      ThreadManager.post(new ajoa(paramString1, paramInt, paramQQAppInterface), 5, null, false);
+      ThreadManager.post(new akch(paramString1, paramInt, paramQQAppInterface), 5, null, false);
     }
     return 0L;
   }

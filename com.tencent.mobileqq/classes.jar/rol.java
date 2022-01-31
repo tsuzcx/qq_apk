@@ -1,49 +1,71 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.StrangerHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import mqq.manager.VerifyDevLockManager.NotifyType;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class rol
-  implements ActionSheet.OnButtonClickListener
+public class rol
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  rol(rok paramrok, ActionSheet paramActionSheet) {}
+  private WeakReference a;
   
-  public void OnClick(View paramView, int paramInt)
+  public rol(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
   {
-    switch (paramInt)
+    this.a = new WeakReference(paramVerifyDevLockObserver);
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+    this.a = null;
+  }
+  
+  public int getSeq()
+  {
+    if (this.a != null)
     {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
-    do
-    {
-      for (;;)
-      {
-        return;
-        ReportController.b(this.jdField_a_of_type_Rok.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_Rok.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
-        paramView = (StrangerHandler)this.jdField_a_of_type_Rok.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(26);
-        ArrayList localArrayList = new ArrayList();
-        try
-        {
-          localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_Rok.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
-          paramView.a(localArrayList);
-          if (this.jdField_a_of_type_Rok.a.c == null) {
-            this.jdField_a_of_type_Rok.a.c = new QQProgressDialog(this.jdField_a_of_type_Rok.a.jdField_a_of_type_AndroidContentContext, 0);
-          }
-          this.jdField_a_of_type_Rok.a.c.show();
-        }
-        catch (NumberFormatException paramView) {}
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        return localVerifyDevLockObserver.getSeq();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.aio.BaseChatPie", 2, "delete Stranger parseLong() error", paramView);
+    }
+    return super.getSeq();
+  }
+  
+  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
+      }
+    }
+  }
+  
+  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
+      }
+    }
+  }
+  
+  public void setSeq(int paramInt)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null)
+      {
+        localVerifyDevLockObserver.setSeq(paramInt);
+        return;
+      }
+    }
+    super.setSeq(paramInt);
   }
 }
 

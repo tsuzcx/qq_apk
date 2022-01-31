@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
 
-public final class ujg
-  implements ActionSheet.OnDismissListener
+public class ujg
+  extends ActivateFriendsObserver
 {
-  public ujg(QQAppInterface paramQQAppInterface, int[] paramArrayOfInt) {}
+  public ujg(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public void onDismiss()
+  public void a(int paramInt)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_ArrayOfInt[3] == 3) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B05", "0X8005B05", 0, 0, "", "", "", "");
+    this.a.d();
+    SendBirthdayWishesActivity.a(this.a, paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    }
+    if (paramInt != 2)
+    {
+      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
+      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
     }
   }
 }

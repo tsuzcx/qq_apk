@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ocr;
 
-import afor;
-import afot;
-import afou;
+import agbx;
+import agbz;
+import agca;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -85,7 +85,7 @@ public class SearchQuestionCameraFragment
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), getResources().getDimensionPixelSize(2131558448));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new afou(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new agca(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
@@ -101,19 +101,19 @@ public class SearchQuestionCameraFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = ((CameraCaptureView)paramView.findViewById(2131366903));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = ((CameraCaptureView)paramView.findViewById(2131366945));
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCaptureParam(a());
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setDarkModeEnable(false);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setOnTouchListener(this);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCaptureListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)paramView.findViewById(2131370767));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492968), 100, getResources().getColor(2131493307));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)paramView.findViewById(2131370907));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492969), 100, getResources().getColor(2131493308));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(4.5F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView = ((CameraFocusView)paramView.findViewById(2131366904));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363969));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView = ((CameraFocusView)paramView.findViewById(2131366946));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363993));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    ((TextView)paramView.findViewById(2131362857)).setShadowLayer(AIOUtils.a(4.5F, getResources()), 0.0F, 0.0F, 872415232);
+    ((TextView)paramView.findViewById(2131362875)).setShadowLayer(AIOUtils.a(4.5F, getResources()), 0.0F, 0.0F, 872415232);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture = new CameraZoomGesture(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraFocusGesture = new CameraFocusGesture(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView);
     GLGestureProxy.a().a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture);
@@ -145,12 +145,12 @@ public class SearchQuestionCameraFragment
   }
   
   @TargetApi(12)
-  private void g()
+  private void h()
   {
     this.jdField_a_of_type_JavaLangString = getArguments().getString("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME");
   }
   
-  private void h()
+  private void i()
   {
     if (getActivity() == null) {
       return;
@@ -162,16 +162,18 @@ public class SearchQuestionCameraFragment
     getActivity().finish();
   }
   
-  public void L_()
+  public void A_()
   {
     if ((this.jdField_a_of_type_Long != -1L) && (QLog.isColorLevel())) {
       QLog.d("SearchQuestionFragment", 2, "(NEW)LaunchActivity to FirstFrameShown cost : " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + "ms");
     }
   }
   
+  public void B_() {}
+  
   protected int a()
   {
-    return 2130970463;
+    return 2130970504;
   }
   
   protected CameraCaptureView.CaptureParam a()
@@ -193,7 +195,7 @@ public class SearchQuestionCameraFragment
   public void a(int paramInt)
   {
     QLog.e("SearchQuestionFragment", 2, "onCaptureError. errorCode = " + paramInt);
-    ThreadManager.getUIHandler().post(new afot(this, paramInt));
+    ThreadManager.getUIHandler().post(new agbz(this, paramInt));
   }
   
   public void a(Activity paramActivity)
@@ -235,7 +237,7 @@ public class SearchQuestionCameraFragment
       if (QLog.isColorLevel()) {
         QLog.d("SearchQuestionFragment", 2, "launchPeak, file is not exist");
       }
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439020, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439048, 0).a();
       return;
     }
     b(paramString);
@@ -245,7 +247,7 @@ public class SearchQuestionCameraFragment
   public void a(boolean paramBoolean, String paramString)
   {
     if (!paramBoolean) {
-      ThreadManager.getUIHandler().post(new afor(this, paramString));
+      ThreadManager.getUIHandler().post(new agbx(this, paramString));
     }
     com.tencent.mobileqq.richmedia.capture.util.ReportUtil.b = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a();
   }
@@ -255,9 +257,7 @@ public class SearchQuestionCameraFragment
     return true;
   }
   
-  public void ag_() {}
-  
-  public void ah_() {}
+  public void aj_() {}
   
   public boolean b()
   {
@@ -269,27 +269,27 @@ public class SearchQuestionCameraFragment
     return false;
   }
   
-  public void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
-  }
-  
   public boolean d()
   {
-    h();
+    i();
     return true;
   }
   
   public void e()
   {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
+  }
+  
+  public void f()
+  {
     if (QLog.isColorLevel()) {
       QLog.i("SearchQuestionFragment", 2, "capturePhoto!");
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.i();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.j();
   }
   
-  public void f() {}
+  public void g() {}
   
   public void g_(boolean paramBoolean) {}
   
@@ -315,7 +315,7 @@ public class SearchQuestionCameraFragment
     do
     {
       return;
-      e();
+      f();
       return;
     } while (getActivity() == null);
     getActivity().doOnBackPressed();
@@ -331,7 +331,7 @@ public class SearchQuestionCameraFragment
   {
     paramLayoutInflater = paramLayoutInflater.inflate(a(), paramViewGroup, false);
     a(paramLayoutInflater);
-    g();
+    h();
     return paramLayoutInflater;
   }
   
@@ -356,7 +356,7 @@ public class SearchQuestionCameraFragment
   {
     super.onResume();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.onResume();
-    d();
+    e();
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)

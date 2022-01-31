@@ -1,15 +1,20 @@
-import com.tencent.av.videoeffect.FilterProcess;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.widget.stageview.StageMemberView;
 
-public class kik
+class kik
+  implements Animation.AnimationListener
 {
-  public int a;
-  int b;
+  kik(kij paramkij) {}
   
-  public kik(FilterProcess paramFilterProcess, int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a.a.a.b(true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

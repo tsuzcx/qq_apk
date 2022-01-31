@@ -1,19 +1,24 @@
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class nbm
-  implements Runnable
+  extends SimpleJob
 {
-  public nbm(StoryManager paramStoryManager, String paramString) {}
+  public nbm(QQStoryCmdHandler paramQQStoryCmdHandler) {}
   
-  public void run()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString);
-    if (localStoryVideoItem != null)
-    {
-      localStoryVideoItem.mHadRead = 1;
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString, localStoryVideoItem);
+    paramJobContext = ((StoryConfigManager)SuperManager.a(10)).a();
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.a.a(paramJobContext);
     }
+    return null;
   }
 }
 

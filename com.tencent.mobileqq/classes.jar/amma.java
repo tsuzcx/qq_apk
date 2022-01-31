@@ -1,27 +1,15 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin.SimpleAACRecorder;
+import android.content.Context;
+import com.tencent.mobileqq.pluginsdk.PluginProxyService;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class amma
-  implements MediaRecorder.OnInfoListener
+public final class amma
+  implements Runnable
 {
-  public amma(QzoneAudioRecordPlugin.SimpleAACRecorder paramSimpleAACRecorder) {}
+  public amma(Context paramContext, IPluginManager.PluginParams paramPluginParams) {}
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void run()
   {
-    switch (paramInt1)
-    {
-    default: 
-      QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|what=" + paramInt1 + ",extra=" + paramInt2);
-      return;
-    case 801: 
-      QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|max file size reached.extra=" + paramInt2);
-      this.a.a();
-      return;
-    }
-    QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|max duration reached.extra=" + paramInt2);
-    this.a.a();
+    PluginProxyService.openService(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.e, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a);
   }
 }
 

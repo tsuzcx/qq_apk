@@ -1,19 +1,18 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout.CaptureButtonListenerInterceptor;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aeug
-  implements Runnable
+public class aeug
+  implements CameraCaptureButtonLayout.CaptureButtonListenerInterceptor
 {
-  aeug(aeuf paramaeuf) {}
+  public aeug(SmallVideoCameraCaptureFragment paramSmallVideoCameraCaptureFragment) {}
   
-  public void run()
+  public boolean a()
   {
-    if (NearbyProfileEditPanel.a(this.a.a) != null)
-    {
-      NearbyProfileEditPanel.a(this.a.a).setVisibility(0);
-      NearbyProfileEditPanel.a(this.a.a);
-      NearbyProfileEditPanel.a(this.a.a, null);
+    if (!SmallVideoCameraCaptureFragment.a(this.a)) {
+      QQToast.a(this.a.getActivity(), 1, SmallVideoCameraCaptureFragment.a(this.a), 0).a();
     }
+    return SmallVideoCameraCaptureFragment.a(this.a);
   }
 }
 

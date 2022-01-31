@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-public class vxc
-  implements DialogInterface.OnClickListener
+class vxc
+  implements PublicAccountManager.InitDoneObserver
 {
-  public vxc(TroopChatPie paramTroopChatPie) {}
+  vxc(vxb paramvxb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.A();
+    PublicAccountChatPie.b(this.a.a, false);
+    this.a.a.a.sendEmptyMessage(1);
   }
 }
 

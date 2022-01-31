@@ -243,24 +243,24 @@ public class VideoPlayerPagerAdapter
       VideoPlayerPagerAdapter.VideoViewHolder localVideoViewHolder;
       if (localView == null)
       {
-        localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970831, paramViewGroup, false);
+        localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970879, paramViewGroup, false);
         localVideoViewHolder = new VideoPlayerPagerAdapter.VideoViewHolder(this);
         localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget = PollWidgetUtils.a(localView.getContext(), 1, 1, null);
         localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInteractPasterWidget = new RateWidget(localView.getContext());
-        localVideoViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131371939));
-        localVideoViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368995));
-        localVideoViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362707));
-        localVideoViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371943));
-        localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = ((QQStoryLoadingView)localView.findViewById(2131363616));
-        localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)localView.findViewById(2131362985));
-        localVideoViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131371948));
-        localVideoViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131371942));
+        localVideoViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131372112));
+        localVideoViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369061));
+        localVideoViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362725));
+        localVideoViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372116));
+        localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = ((QQStoryLoadingView)localView.findViewById(2131363634));
+        localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)localView.findViewById(2131363003));
+        localVideoViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131372121));
+        localVideoViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131372115));
         localVideoViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-        localVideoViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131371945));
-        localVideoViewHolder.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131371946));
-        localVideoViewHolder.d = ((LinearLayout)localView.findViewById(2131371944));
-        localVideoViewHolder.e = ((LinearLayout)localView.findViewById(2131371947));
-        localVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131371938));
+        localVideoViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131372118));
+        localVideoViewHolder.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131372119));
+        localVideoViewHolder.d = ((LinearLayout)localView.findViewById(2131372117));
+        localVideoViewHolder.e = ((LinearLayout)localView.findViewById(2131372120));
+        localVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131372111));
         if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase != null)
         {
           QQStoryContext.a();

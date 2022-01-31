@@ -1,39 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.atvideo.model.AtVideoTextWatcher;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 
 public class nti
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  public nti(DetailCommentHelper paramDetailCommentHelper) {}
+  public nti(QQStoryBaseActivity paramQQStoryBaseActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (this.a.c != null)
     {
-      if (DetailCommentHelper.a(this.a)) {
-        break label105;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(this.a), DetailCommentHelper.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a).jdField_a_of_type_JavaUtilList);
-      DetailCommentHelper.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label100;
-      }
+      this.a.c.clearAnimation();
+      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
     }
-    label100:
-    for (boolean bool = true;; bool = false)
-    {
-      DetailCommentHelper.a(paramView, bool);
-      return false;
-    }
-    label105:
-    this.a.b();
-    return false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

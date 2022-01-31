@@ -18,8 +18,8 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForVideoVip;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import vip;
-import viq;
+import vlr;
+import vls;
 
 public class VideoVipItemBuilder
   extends AbstractChatItemBuilder
@@ -29,13 +29,13 @@ public class VideoVipItemBuilder
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  private View a(View paramView, viq paramviq)
+  private View a(View paramView, vls paramvls)
   {
     View localView = paramView;
     if (paramView == null)
     {
       localView = LayoutInflater.from(this.a).inflate(2130968768, null);
-      paramviq.b = ((TextView)localView.findViewById(2131363659));
+      paramvls.b = ((TextView)localView.findViewById(2131363682));
     }
     return localView;
   }
@@ -43,16 +43,16 @@ public class VideoVipItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramLinearLayout = (MessageForVideoVip)paramMessageRecord;
-    paramViewHolder = (viq)paramViewHolder;
+    paramViewHolder = (vls)paramViewHolder;
     paramView = a(paramView, paramViewHolder);
     paramViewHolder.b.setText(paramLinearLayout.wording);
-    paramView.setOnClickListener(new vip(this, paramLinearLayout, paramMessageRecord));
+    paramView.setOnClickListener(new vlr(this, paramLinearLayout, paramMessageRecord));
     return paramView;
   }
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new viq(this);
+    return new vls(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

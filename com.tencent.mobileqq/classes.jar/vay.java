@@ -1,49 +1,19 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.aio.item.QQWalletTransMsgItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.QQWalletTransMsgItemBuilder.QWalletTransMsgHolder;
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgObserver;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public class vay
-  extends NotifyMsgObserver
+  implements DialogInterface.OnClickListener
 {
-  public vay(QQWalletTransMsgItemBuilder paramQQWalletTransMsgItemBuilder) {}
+  public vay(MarketFaceItemBuilder paramMarketFaceItemBuilder, MarketFaceItemBuilder.Holder paramHolder) {}
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQWalletTransMsgItemBuilder.jdField_a_of_type_JavaLangString, 2, "onNotifyMsg btype:" + paramInt + " bid:" + paramString);
-    }
-    if ((paramInt == 1) && (!TextUtils.isEmpty(paramString)) && (paramBundle != null))
-    {
-      SparseArray localSparseArray = (SparseArray)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localSparseArray != null)
-      {
-        paramInt = 0;
-        while (paramInt < localSparseArray.size())
-        {
-          Object localObject = (WeakReference)localSparseArray.valueAt(paramInt);
-          paramBundle = null;
-          if (localObject != null) {
-            paramBundle = (QQWalletTransMsgItemBuilder.QWalletTransMsgHolder)((WeakReference)localObject).get();
-          }
-          if ((paramBundle != null) && ((paramBundle.a instanceof MessageForQQWalletMsg)))
-          {
-            localObject = (MessageForQQWalletMsg)paramBundle.a;
-            if ((localObject != null) && (((MessageForQQWalletMsg)localObject).messageType == 16) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId != null) && (paramString.equals(((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId))) {
-              this.a.a(paramBundle, (MessageForQQWalletMsg)localObject, ((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.elem);
-            }
-          }
-          paramInt += 1;
-        }
-      }
-    }
+    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
   }
 }
 

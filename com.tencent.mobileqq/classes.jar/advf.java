@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
-import java.io.File;
-import mqq.app.MobileQQ;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.intervideo.now.NowWebViewPlugin;
 
 public class advf
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  public advf(EmoticonManager paramEmoticonManager, int paramInt, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend) {}
+  public advf(NowWebViewPlugin paramNowWebViewPlugin) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    FileUtils.a(new File(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.getApplication().getFilesDir(), "recommemd_emotion_file__" + this.jdField_a_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.c()).getAbsolutePath(), this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.toByteArray(), false);
+    int i = paramBundle.getInt("msg");
+    if (i == 91)
+    {
+      NowWebViewPlugin.a(this.a, paramBundle.getInt("state"));
+      NowWebViewPlugin.a(this.a, NowWebViewPlugin.a(this.a), NowWebViewPlugin.b(this.a));
+    }
+    while (i != 92) {
+      return;
+    }
+    i = paramBundle.getInt("errCode");
+    paramBundle = paramBundle.getString("desc");
+    NowWebViewPlugin.a(this.a, i, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advf
  * JD-Core Version:    0.7.0.1
  */

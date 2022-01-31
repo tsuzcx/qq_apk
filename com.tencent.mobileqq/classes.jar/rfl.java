@@ -1,43 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.Doraemon.APICallback;
 
-public class rfl
-  extends OpenIdObserver
+public final class rfl
+  implements Runnable
 {
-  public rfl(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public rfl(APICallback paramAPICallback, int paramInt) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void run()
   {
-    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      do
-      {
-        return;
-        AddFriendLogicActivity.a(this.a).hide();
-        if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        }
-        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("qqBaseActivity", 2, "openIdObserver success");
-        }
-      } while (paramOpenID.openID.equals(AddFriendLogicActivity.jdField_a_of_type_JavaLangString));
-      this.a.a();
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("qqBaseActivity", 2, "openIdObserver fail");
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rfl
  * JD-Core Version:    0.7.0.1
  */

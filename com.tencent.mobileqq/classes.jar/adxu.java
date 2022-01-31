@@ -1,64 +1,34 @@
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicpendant.MusicPendantListener;
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class adxu
-  implements QQPlayerService.QQPlayerCallback
+  extends BroadcastReceiver
 {
-  public adxu(MusicPendantManager paramMusicPendantManager) {}
+  public adxu(UiApiPlugin paramUiApiPlugin) {}
   
-  public String getToken()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return MusicPendantManager.a();
-  }
-  
-  public void onPlaySongChanged(SongInfo paramSongInfo)
-  {
-    try
+    if (("com.tencent.msg.newmessage".equals(paramIntent.getAction())) && (UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
     {
-      Iterator localIterator = MusicPendantManager.a().iterator();
+      Iterator localIterator = UiApiPlugin.a.iterator();
       while (localIterator.hasNext())
       {
-        MusicPendantListener localMusicPendantListener = (MusicPendantListener)((WeakReference)localIterator.next()).get();
-        if (localMusicPendantListener != null) {
-          localMusicPendantListener.a(paramSongInfo);
+        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
+        if (localUiApiPlugin != null) {
+          localUiApiPlugin.a(paramContext, paramIntent);
         }
       }
-      return;
-    }
-    catch (Exception paramSongInfo)
-    {
-      paramSongInfo.printStackTrace();
-    }
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    try
-    {
-      Iterator localIterator = MusicPendantManager.a().iterator();
-      while (localIterator.hasNext())
-      {
-        MusicPendantListener localMusicPendantListener = (MusicPendantListener)((WeakReference)localIterator.next()).get();
-        if (localMusicPendantListener != null) {
-          localMusicPendantListener.a(paramInt);
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxu
  * JD-Core Version:    0.7.0.1
  */

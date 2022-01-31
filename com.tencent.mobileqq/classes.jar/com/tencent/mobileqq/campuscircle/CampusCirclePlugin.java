@@ -88,7 +88,7 @@ public class CampusCirclePlugin
             continue;
             if ("arrow_down".equals(paramJsBridgeListener))
             {
-              paramJsBridgeListener = paramString3.getDrawable(2130842292);
+              paramJsBridgeListener = paramString3.getDrawable(2130842339);
             }
             else if ("none".equals(paramJsBridgeListener))
             {
@@ -114,7 +114,7 @@ public class CampusCirclePlugin
       }
       if ("arrow_up".equals(paramJsBridgeListener))
       {
-        paramJsBridgeListener = paramString3.getDrawable(2130842293);
+        paramJsBridgeListener = paramString3.getDrawable(2130842340);
         if (j <= 3) {
           break label278;
         }
@@ -349,7 +349,7 @@ public class CampusCirclePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCirclePlugin
  * JD-Core Version:    0.7.0.1
  */

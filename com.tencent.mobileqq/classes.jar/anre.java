@@ -1,16 +1,28 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
+import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
+import java.util.List;
 
-class anre
-  implements Runnable
+public class anre
+  implements Callbacks.Callback
 {
-  anre(anqz paramanqz) {}
+  public anre(EditLocalVideoPlayer paramEditLocalVideoPlayer) {}
   
-  public void run()
+  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.u();
+    if (paramBoolean.booleanValue())
+    {
+      SLog.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramThumbnailResult.b.size(), paramThumbnailResult.jdField_a_of_type_JavaUtilList.size())));
+      this.a.a.setEnabled(true);
+    }
+    for (;;)
+    {
+      return null;
+      SLog.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramThumbnailResult.jdField_a_of_type_Int);
+      QQToast.a(this.a.a(), 1, "生成缩略图出错, 错误码:" + paramThumbnailResult.jdField_a_of_type_Int, 1);
     }
   }
 }

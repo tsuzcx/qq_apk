@@ -1,55 +1,46 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.open.base.BspatchUtil;
-import java.io.File;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderUtils;
+import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
+import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout.CaptureButtonListener;
+import com.tencent.qphone.base.util.QLog;
 
-class aalk
-  implements aalp
+public class aalk
+  implements ARCardCamereButtonLayout.CaptureButtonListener
 {
-  aalk(aalb paramaalb, aalo paramaalo1, aalo paramaalo2, String paramString, aalq paramaalq) {}
+  public aalk(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void a()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aalo.b }));
+    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonPhoto");
+  }
+  
+  public void b()
+  {
+    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonVideoStart");
+    if (!VideoEncoderUtils.a()) {
+      ARRecordUtils.a("该机型不支持录制，无法参与活动", true);
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_Aalq.a(false);
       return;
-      if (!aalb.b(paramArrayOfByte, this.jdField_a_of_type_Aalo.f))
+      if (!ARRecordUtils.a(104857600L))
       {
-        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, md5 mismatch, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aalo.b, this.jdField_a_of_type_Aalo.f }));
+        ARRecordUtils.a("无法录制", "sdcard剩余空间不足");
+        return;
       }
-      else
-      {
-        String str1 = aalb.a(this.b.jdField_a_of_type_JavaLangString);
-        if (!new File(str1).isFile())
-        {
-          ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, src path not exist, name=%s, path=s", new Object[] { this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString, str1 }));
-        }
-        else
-        {
-          String str2 = String.format("%s/diff-%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aalo.d });
-          if (!aalb.a(paramArrayOfByte, str2))
-          {
-            ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, write diff to file fail, name=%s, path=%s", new Object[] { this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString, str2 }));
-          }
-          else
-          {
-            if (BspatchUtil.a(str1, str2, String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString }))) {
-              break;
-            }
-            ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, patch fail, name=%s, diff-md5=%s", new Object[] { this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aalo.f }));
-          }
-        }
-      }
-    }
-    this.jdField_a_of_type_Aalq.a(true);
+    } while (this.a.b());
+    ARRecordUtils.a("录制间隔太短，请稍候重试", true);
+  }
+  
+  public void c()
+  {
+    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonVideoStop");
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalk
  * JD-Core Version:    0.7.0.1
  */

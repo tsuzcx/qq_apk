@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.magicface.view;
 
-import adra;
+import aeeg;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 public class MagicfaceContainerView
   extends RelativeLayout
 {
-  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new adra(this);
+  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new aeeg(this);
   GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   public MagicfaceContainerView.MagicfaceGestureListener a;
   boolean jdField_a_of_type_Boolean = false;
@@ -57,7 +57,7 @@ public class MagicfaceContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceContainerView
  * JD-Core Version:    0.7.0.1
  */

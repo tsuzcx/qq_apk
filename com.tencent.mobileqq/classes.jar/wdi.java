@@ -1,15 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import java.util.List;
 
 public class wdi
-  implements BubblePopupWindow.OnDismissListener
+  implements Runnable
 {
-  public wdi(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
+  public wdi(TipsManager paramTipsManager) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if (TipsManager.a(this.a) != null) {
+      TipsManager.a(this.a).a();
+    }
+    TipsManager.a(this.a, null);
+    if (this.a.a != null) {
+      this.a.a.clear();
+    }
   }
 }
 

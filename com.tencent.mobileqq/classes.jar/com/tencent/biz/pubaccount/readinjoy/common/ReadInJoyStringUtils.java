@@ -6,14 +6,14 @@ public class ReadInJoyStringUtils
   
   static
   {
-    String[] arrayOfString1 = { "&auml;", "ä" };
-    String[] arrayOfString2 = { "&Eacute;", "É" };
-    String[] arrayOfString3 = { "&ecirc;", "ê" };
-    String[] arrayOfString4 = { "&Ouml;", "Ö" };
-    String[] arrayOfString5 = { "&ucirc;", "û" };
-    String[] arrayOfString6 = { "&Uuml;", "Ü" };
-    String[] arrayOfString7 = { "&nbsp;", " " };
-    a = new String[][] { { "&lt;", "<" }, { "&gt;", ">" }, { "&amp;", "&" }, { "&quot;", "\"" }, { "&agrave;", "à" }, { "&Agrave;", "À" }, { "&acirc;", "â" }, arrayOfString1, { "&Auml;", "Ä" }, { "&Acirc;", "Â" }, { "&aring;", "å" }, { "&Aring;", "Å" }, { "&aelig;", "æ" }, { "&AElig;", "Æ" }, { "&ccedil;", "ç" }, { "&Ccedil;", "Ç" }, { "&eacute;", "é" }, arrayOfString2, { "&egrave;", "è" }, { "&Egrave;", "È" }, arrayOfString3, { "&Ecirc;", "Ê" }, { "&euml;", "ë" }, { "&Euml;", "Ë" }, { "&iuml;", "ï" }, { "&Iuml;", "Ï" }, { "&ocirc;", "ô" }, { "&Ocirc;", "Ô" }, { "&ouml;", "ö" }, arrayOfString4, { "&oslash;", "ø" }, { "&Oslash;", "Ø" }, { "&szlig;", "ß" }, { "&ugrave;", "ù" }, { "&Ugrave;", "Ù" }, arrayOfString5, { "&Ucirc;", "Û" }, { "&uuml;", "ü" }, arrayOfString6, arrayOfString7, { "&copy;", "©" }, { "&reg;", "®" }, { "&euro;", "₠" } };
+    String[] arrayOfString1 = { "&amp;", "&" };
+    String[] arrayOfString2 = { "&agrave;", "à" };
+    String[] arrayOfString3 = { "&acirc;", "â" };
+    String[] arrayOfString4 = { "&AElig;", "Æ" };
+    String[] arrayOfString5 = { "&ccedil;", "ç" };
+    String[] arrayOfString6 = { "&ecirc;", "ê" };
+    String[] arrayOfString7 = { "&Uuml;", "Ü" };
+    a = new String[][] { { "&lt;", "<" }, { "&gt;", ">" }, arrayOfString1, { "&quot;", "\"" }, arrayOfString2, { "&Agrave;", "À" }, arrayOfString3, { "&auml;", "ä" }, { "&Auml;", "Ä" }, { "&Acirc;", "Â" }, { "&aring;", "å" }, { "&Aring;", "Å" }, { "&aelig;", "æ" }, arrayOfString4, arrayOfString5, { "&Ccedil;", "Ç" }, { "&eacute;", "é" }, { "&Eacute;", "É" }, { "&egrave;", "è" }, { "&Egrave;", "È" }, arrayOfString6, { "&Ecirc;", "Ê" }, { "&euml;", "ë" }, { "&Euml;", "Ë" }, { "&iuml;", "ï" }, { "&Iuml;", "Ï" }, { "&ocirc;", "ô" }, { "&Ocirc;", "Ô" }, { "&ouml;", "ö" }, { "&Ouml;", "Ö" }, { "&oslash;", "ø" }, { "&Oslash;", "Ø" }, { "&szlig;", "ß" }, { "&ugrave;", "ù" }, { "&Ugrave;", "Ù" }, { "&ucirc;", "û" }, { "&Ucirc;", "Û" }, { "&uuml;", "ü" }, arrayOfString7, { "&nbsp;", " " }, { "&copy;", "©" }, { "&reg;", "®" }, { "&euro;", "₠" } };
   }
   
   public static String a(String paramString, int paramInt)

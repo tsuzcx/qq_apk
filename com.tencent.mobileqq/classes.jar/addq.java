@@ -1,41 +1,37 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.troop.file.TroopFileProtocol.GetOneFileInfoObserver;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnZipEventListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
 public class addq
-  implements UniformDownloader.IUniformDownloaderListener
+  extends TroopFileProtocol.GetOneFileInfoObserver
 {
-  public addq(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public addq(TroopFileModel paramTroopFileModel) {}
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    QLog.i("NearbyHybridFragment", 2, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
-    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
-    paramBundle.edit().putInt("state", 1);
-    paramBundle.edit().putString("filePath", paramString);
+    if (paramFileInfo != null)
+    {
+      String str = ContactUtils.g(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin), paramFileInfo.uint64_uploader_uin.get() + "");
+      paramFileInfo = new Date(paramFileInfo.uint32_upload_time.get() * 1000L);
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
+      paramFileInfo = " 于" + localSimpleDateFormat.format(paramFileInfo) + "上传";
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.b(str, paramFileInfo);
+      }
+    }
   }
-  
-  public void b(int paramInt, Bundle paramBundle)
-  {
-    QLog.i("NearbyHybridFragment", 2, "onDownloadProgress() called with: progress = [" + paramInt + "], extData = [" + paramBundle + "]");
-  }
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     addq
  * JD-Core Version:    0.7.0.1
  */

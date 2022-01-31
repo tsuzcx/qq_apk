@@ -1,22 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-class aisk
-  implements CompoundButton.OnCheckedChangeListener
+public class aisk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aisk(aisj paramaisj, aisn paramaisn) {}
+  public aisk(TribePostTitlePrefixPanelController paramTribePostTitlePrefixPanelController) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.jdField_a_of_type_Aisn.a).troopuin.equals(aisj.a(this.jdField_a_of_type_Aisj)))) {
-      this.jdField_a_of_type_Aisn.b = Boolean.valueOf(paramBoolean);
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), i, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisk
  * JD-Core Version:    0.7.0.1
  */

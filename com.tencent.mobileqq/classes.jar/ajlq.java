@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.util.FaceDrawableImpl;
-import com.tencent.mobileqq.util.FaceDrawableImpl.NewTroopFaceObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
 
-public class ajlq
-  implements FaceDrawableImpl.NewTroopFaceObserver
+class ajlq
+  implements Runnable
 {
-  private ajlq(FaceDrawableImpl paramFaceDrawableImpl) {}
+  ajlq(ajlo paramajlo) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void run()
   {
-    if (paramBoolean2) {
-      this.a.a(paramBoolean1, 101, paramString, this.a.a);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 101);
-      }
-      return;
-      this.a.a(paramBoolean1, 101, paramString, null);
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.getAdapter().notifyItemChanged(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlq
  * JD-Core Version:    0.7.0.1
  */

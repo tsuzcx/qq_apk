@@ -7,7 +7,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import angt;
+import anwy;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -308,7 +308,7 @@ public class DynamicFaceLayer
           paramJSONArray.jdField_a_of_type_JavaUtilList.add(localFaceItem);
         }
       }
-      ThreadManager.post(new angt(this, paramArrayList), 8, null, false);
+      ThreadManager.post(new anwy(this, paramArrayList), 8, null, false);
       return;
       label500:
       paramJSONArray = null;

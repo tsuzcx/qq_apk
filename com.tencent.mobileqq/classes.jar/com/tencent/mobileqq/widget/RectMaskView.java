@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akih;
+import akwq;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -74,7 +74,7 @@ public class RectMaskView
       super.postInvalidateDelayed(paramLong, paramInt1, paramInt2, paramInt3, paramInt4);
       return;
     }
-    postDelayed(new akih(this, paramInt1, paramInt2, paramInt3, paramInt4), paramLong);
+    postDelayed(new akwq(this, paramInt1, paramInt2, paramInt3, paramInt4), paramLong);
   }
   
   public void setRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -91,7 +91,7 @@ public class RectMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RectMaskView
  * JD-Core Version:    0.7.0.1
  */

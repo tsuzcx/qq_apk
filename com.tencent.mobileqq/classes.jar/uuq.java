@@ -1,24 +1,21 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
 
 public class uuq
-  extends LruCache
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public uuq(GivingHeartItemBuilder paramGivingHeartItemBuilder, int paramInt)
-  {
-    super(paramInt);
-  }
+  public uuq(ArkAppItemBubbleBuilder.Holder paramHolder1, ArkAppItemBubbleBuilder.Holder paramHolder2) {}
   
-  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
+    if ((paramInt == 0) && (paramAppPathInfo.a != null))
     {
-      paramMessageForPoke1.setPlayed(this.a.b);
-      paramMessageForPoke1.mFrameState.a = false;
-      paramMessageForPoke1.mFrameState.c = true;
-      paramMessageForPoke1.mUnlimitedState.a = false;
-      paramMessageForPoke1.mUnlimitedState.b = true;
+      ArkAppCenter.a(paramAppPathInfo.a, new uur(this));
+      paramString = ArkAppCenter.b(paramAppPathInfo.a);
+      ArkAppCenter.a().postToMainThread(new uus(this, paramString));
     }
   }
 }

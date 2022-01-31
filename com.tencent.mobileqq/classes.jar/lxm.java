@@ -1,21 +1,26 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.skin.SkinGifImageDownloader;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 public class lxm
-  implements Runnable
+  extends NativeGifImage
 {
-  public lxm(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public lxm(SkinGifImageDownloader paramSkinGifImageDownloader, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
-    localEditor.remove("kandian_push_ox210_msg");
-    localEditor.remove("kandian_push_ox210_c5_msg_count");
-    localEditor.remove("kandian_push_0x210_c5_msg_time");
-    ReadInJoyHelper.a(localEditor, true);
+    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
+  }
+  
+  protected void executeNewTask()
+  {
+    if (this.mCurrentLoop == 1) {
+      return;
+    }
+    super.executeNewTask();
+  }
+  
+  public void reset()
+  {
+    super.reset();
   }
 }
 

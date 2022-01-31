@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class skx
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public skx(ForwardRecentActivity paramForwardRecentActivity) {}
+  public skx(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      ForwardRecentActivity.b(this.a);
-    }
+    this.a.a.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     skx
  * JD-Core Version:    0.7.0.1
  */

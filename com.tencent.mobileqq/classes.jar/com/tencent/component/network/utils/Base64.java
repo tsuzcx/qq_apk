@@ -1,8 +1,8 @@
 package com.tencent.component.network.utils;
 
 import java.io.UnsupportedEncodingException;
-import pjb;
-import pjc;
+import pkv;
+import pkw;
 
 public class Base64
 {
@@ -41,15 +41,15 @@ public class Base64
   
   public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    pjb localpjb = new pjb(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localpjb.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
+    pkv localpkv = new pkv(paramInt3, new byte[paramInt2 * 3 / 4]);
+    if (!localpkv.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
       throw new IllegalArgumentException("bad base-64");
     }
-    if (localpjb.jdField_a_of_type_Int == localpjb.jdField_a_of_type_ArrayOfByte.length) {
-      return localpjb.jdField_a_of_type_ArrayOfByte;
+    if (localpkv.jdField_a_of_type_Int == localpkv.jdField_a_of_type_ArrayOfByte.length) {
+      return localpkv.jdField_a_of_type_ArrayOfByte;
     }
-    paramArrayOfByte = new byte[localpjb.jdField_a_of_type_Int];
-    System.arraycopy(localpjb.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localpjb.jdField_a_of_type_Int);
+    paramArrayOfByte = new byte[localpkv.jdField_a_of_type_Int];
+    System.arraycopy(localpkv.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localpkv.jdField_a_of_type_Int);
     return paramArrayOfByte;
   }
   
@@ -60,23 +60,23 @@ public class Base64
   
   public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    pjc localpjc = new pjc(paramInt3, null);
+    pkw localpkw = new pkw(paramInt3, null);
     int i = paramInt2 / 3 * 4;
     int j;
-    if (localpjc.jdField_a_of_type_Boolean)
+    if (localpkw.jdField_a_of_type_Boolean)
     {
       paramInt3 = i;
       if (paramInt2 % 3 > 0) {
         paramInt3 = i + 4;
       }
       i = paramInt3;
-      if (localpjc.b)
+      if (localpkw.b)
       {
         i = paramInt3;
         if (paramInt2 > 0)
         {
           j = (paramInt2 - 1) / 57;
-          if (!localpjc.c) {
+          if (!localpkw.c) {
             break label186;
           }
         }
@@ -86,9 +86,9 @@ public class Base64
     for (i = 2;; i = 1)
     {
       i = paramInt3 + i * (j + 1);
-      localpjc.jdField_a_of_type_ArrayOfByte = new byte[i];
-      localpjc.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((jdField_a_of_type_Boolean) || (localpjc.jdField_a_of_type_Int == i)) {
+      localpkw.jdField_a_of_type_ArrayOfByte = new byte[i];
+      localpkw.a(paramArrayOfByte, paramInt1, paramInt2, true);
+      if ((jdField_a_of_type_Boolean) || (localpkw.jdField_a_of_type_Int == i)) {
         break label192;
       }
       throw new AssertionError();
@@ -108,7 +108,7 @@ public class Base64
       }
     }
     label192:
-    return localpjc.jdField_a_of_type_ArrayOfByte;
+    return localpkw.jdField_a_of_type_ArrayOfByte;
   }
 }
 

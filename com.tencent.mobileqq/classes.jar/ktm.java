@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class ktm
-  implements DialogInterface.OnDismissListener
+  implements Animation.AnimationListener
 {
-  public ktm(AccountDetailActivity paramAccountDetailActivity) {}
+  public ktm(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.q = false;
+    this.a.setResult(-1);
+    PublicAccountAdvertisementActivity.f(this.a);
+    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

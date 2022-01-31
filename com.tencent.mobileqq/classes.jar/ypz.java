@@ -1,25 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.process.CmGameClientQIPCModule;
 
-class ypz
-  implements View.OnClickListener
+public class ypz
 {
-  ypz(ypy paramypy) {}
-  
-  public void onClick(View paramView)
-  {
-    ApolloGameActivity.c(this.a.jdField_a_of_type_Ypw.a).setVisibility(4);
-    ApolloGameActivity.a(this.a.jdField_a_of_type_Ypw.a).setVisibility(4);
-    ApolloGameActivity.a(this.a.jdField_a_of_type_Ypw.a).setVisibility(0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$ICmGameConfirmListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$ICmGameConfirmListener.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    }
-  }
+  private static CmGameClientQIPCModule a = new CmGameClientQIPCModule("cm_game_client_module");
 }
 
 

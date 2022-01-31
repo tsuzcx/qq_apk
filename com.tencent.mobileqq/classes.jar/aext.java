@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.now.utils.CommentsUtil;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aext
-  implements Runnable
+  implements TextWatcher
 {
-  public aext(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
+  public aext(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    Iterator localIterator = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager).iterator();
-    while (localIterator.hasNext()) {
-      ((NearbyMomentManager.MomentDataChangeObserver)localIterator.next()).c(this.jdField_a_of_type_JavaLangString);
+    if (ShortVideoCommentsView.a(this.a) == null) {}
+    while (CommentsUtil.a(paramEditable.toString()) <= 140) {
+      return;
     }
+    int j = Selection.getSelectionEnd(paramEditable);
+    paramEditable = CommentsUtil.a(paramEditable.toString(), 0, 140).toString();
+    ShortVideoCommentsView.a(this.a).setText(paramEditable);
+    paramEditable = ShortVideoCommentsView.a(this.a).getText();
+    int i = j;
+    if (j > paramEditable.length()) {
+      i = paramEditable.length();
+    }
+    Selection.setSelection(paramEditable, i);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

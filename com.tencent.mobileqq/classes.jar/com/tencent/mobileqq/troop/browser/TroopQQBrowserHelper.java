@@ -12,7 +12,7 @@ public class TroopQQBrowserHelper
 {
   public static void a(Context paramContext)
   {
-    String str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "7.6.0", Integer.valueOf(0) });
+    String str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "7.6.3", Integer.valueOf(0) });
     Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
     localIntent.putExtra("url", str);
     localIntent.putExtra("isShowAd", false);
@@ -28,7 +28,7 @@ public class TroopQQBrowserHelper
   public static void a(Context paramContext, int paramInt)
   {
     if ((paramInt == 1) || (paramInt == 2)) {}
-    for (String str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "7.6.0", Integer.valueOf(1) });; str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "7.6.0", Integer.valueOf(0) }))
+    for (String str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "7.6.3", Integer.valueOf(1) });; str = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "7.6.3", Integer.valueOf(0) }))
     {
       Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
       localIntent.putExtra("url", str);
@@ -59,7 +59,7 @@ public class TroopQQBrowserHelper
   
   public static void a(Context paramContext, String paramString)
   {
-    Object localObject = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "7.6.0", Integer.valueOf(0) });
+    Object localObject = String.format("http://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "7.6.3", Integer.valueOf(0) });
     paramString = (String)localObject + String.format("&initgrouptype=%s", new Object[] { paramString });
     localObject = new Intent(paramContext, QQBrowserActivity.class);
     ((Intent)localObject).putExtra("url", paramString);
@@ -90,7 +90,7 @@ public class TroopQQBrowserHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.browser.TroopQQBrowserHelper
  * JD-Core Version:    0.7.0.1
  */

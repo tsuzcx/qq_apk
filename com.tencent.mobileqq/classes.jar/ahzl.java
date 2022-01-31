@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.text.AppleEmojiManager;
-import java.io.File;
+import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
+import com.tencent.mobileqq.shortvideo.ShortVideoReq;
 
-public final class ahzl
+public class ahzl
   implements Runnable
 {
-  public ahzl(File paramFile1, File paramFile2, File paramFile3) {}
+  public ahzl(ShortVideoPreDownloader paramShortVideoPreDownloader, ShortVideoReq paramShortVideoReq) {}
   
   public void run()
   {
-    if (this.a.exists()) {
-      this.a.delete();
-    }
-    if (this.b.exists()) {
-      this.b.delete();
-    }
-    AppleEmojiManager.a(this.c);
+    ShortVideoPreDownloader.a("consumeShortVideo", "start pre download short video type=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.b + " uniseq=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_Long + ", uuid=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloader.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzl
  * JD-Core Version:    0.7.0.1
  */

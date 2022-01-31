@@ -1,17 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import android.os.Message;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class anwg
+class anwg
   implements Runnable
 {
-  public anwg(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  anwg(anwf paramanwf) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onCaptureVideoFilterRefresh");
+    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      HWEditLocalVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditLocalVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
     }
-    this.a.b();
+    for (;;)
+    {
+      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
+      HWEditLocalVideoPlayer.a(this.a.a, this.a.a.jdField_a_of_type_Int);
+      HWEditLocalVideoPlayer.a(this.a.a).set(true);
+      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true);
+      return;
+      SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
+    }
   }
 }
 

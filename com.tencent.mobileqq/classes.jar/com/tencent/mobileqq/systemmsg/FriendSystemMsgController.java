@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.systemmsg;
 
-import ahxu;
+import ailx;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -109,7 +109,7 @@ public class FriendSystemMsgController
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface.a(new ahxu(this, paramQQAppInterface, paramBoolean));
+    paramQQAppInterface.a(new ailx(this, paramQQAppInterface, paramBoolean));
   }
   
   public boolean a(QQAppInterface paramQQAppInterface)
@@ -149,7 +149,7 @@ public class FriendSystemMsgController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.FriendSystemMsgController
  * JD-Core Version:    0.7.0.1
  */

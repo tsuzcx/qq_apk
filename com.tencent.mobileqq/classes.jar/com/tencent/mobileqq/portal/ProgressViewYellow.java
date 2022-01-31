@@ -57,9 +57,9 @@ public class ProgressViewYellow
   private void a()
   {
     int i = 0;
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131559575));
-    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131559576));
-    this.c = ((int)getResources().getDimension(2131559577));
+    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131559589));
+    this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131559590));
+    this.c = ((int)getResources().getDimension(2131559591));
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int }, null, null));
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setColor(Color.parseColor("#FC9100"));
@@ -157,7 +157,7 @@ public class ProgressViewYellow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ProgressViewYellow
  * JD-Core Version:    0.7.0.1
  */

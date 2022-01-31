@@ -1,67 +1,52 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.utils.GVideoGrayConfig;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.av.utils.GVideoGrayConfig.Record;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.C2CCallToGroupCall;
+import com.tencent.mobileqq.app.DiscussionHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Map;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class ruo
-  implements GVideoGrayConfig.GVideoGrayConfigListener
+public class ruo
+  extends Thread
 {
-  public ruo(QQProgressDialog paramQQProgressDialog, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, Map paramMap) {}
+  public ruo(C2CCallToGroupCall paramC2CCallToGroupCall) {}
   
-  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
+  public void run()
   {
-    try
+    ArrayList localArrayList = new ArrayList();
+    localObject3 = ContactUtils.j(this.a.a, this.a.a.getCurrentAccountUin());
+    Object localObject1 = localObject3;
+    for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      }
-      label17:
-      if (paramInt2 == 1000)
+      try
       {
-        switch (paramInt1)
+        if (((String)localObject3).getBytes("utf-8").length > 48)
         {
-        default: 
-          return;
-        case 0: 
-          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, true, null, this.jdField_a_of_type_JavaUtilMap);
-          return;
-        case 1: 
-          Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          localIntent.putExtra("url", paramRecord.jdField_a_of_type_JavaLangString);
-          if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-            localIntent.addFlags(268435456);
+          int j = ((String)localObject3).length();
+          i = 1;
+          localObject1 = localObject3;
+          if (i <= j)
+          {
+            if (((String)localObject3).substring(0, i).getBytes("utf-8").length <= 48) {
+              continue;
+            }
+            localObject1 = ((String)localObject3).substring(0, i - 1);
           }
-          this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-          return;
-        case 2: 
-          paramRecord = (String)this.jdField_a_of_type_JavaUtilMap.get("from");
-          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, true, this.jdField_a_of_type_JavaUtilMap);
-          return;
-        case 3: 
-          GVideoGrayConfig.a(this.jdField_a_of_type_AndroidContentContext, paramRecord.b, paramRecord.c, new rup(this));
-          return;
         }
-        GVideoGrayConfig.a(this.jdField_a_of_type_AndroidContentContext, paramRecord.b, paramRecord.c, new ruq(this));
-        return;
       }
-      if (paramInt2 == 1002) {}
-      for (paramRecord = "操作超时，请重试";; paramRecord = "操作失败，请重试")
+      catch (Exception localException)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramRecord, 0).a();
-        return;
+        int i;
+        localException.printStackTrace();
+        Object localObject2 = localObject3;
+        continue;
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      break label17;
+      localObject3 = (DiscussionHandler)this.a.a.a(6);
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CCallToGroupCall", 2, "create discussion: " + (String)localObject1 + " member count: " + localArrayList.size());
+      }
+      ((DiscussionHandler)localObject3).a((String)localObject1, localArrayList, 1003);
+      return;
+      i += 1;
     }
   }
 }

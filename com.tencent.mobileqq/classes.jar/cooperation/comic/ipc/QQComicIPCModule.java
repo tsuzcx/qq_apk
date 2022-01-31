@@ -1,6 +1,6 @@
 package cooperation.comic.ipc;
 
-import alto;
+import amjs;
 import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -27,7 +27,7 @@ public class QQComicIPCModule
   extends QIPCModule
 {
   private static QQComicIPCModule jdField_a_of_type_CooperationComicIpcQQComicIPCModule;
-  alto jdField_a_of_type_Alto;
+  amjs jdField_a_of_type_Amjs;
   
   public QQComicIPCModule(String paramString)
   {
@@ -142,10 +142,10 @@ public class QQComicIPCModule
             paramString = (VasQuickUpdateManager)((QQAppInterface)localObject).getManager(183);
             if ((paramInt > 0) && (paramString != null))
             {
-              if (this.jdField_a_of_type_Alto == null) {
-                this.jdField_a_of_type_Alto = new alto(this, paramInt);
+              if (this.jdField_a_of_type_Amjs == null) {
+                this.jdField_a_of_type_Amjs = new amjs(this, paramInt);
               }
-              paramString.a(this.jdField_a_of_type_Alto);
+              paramString.a(this.jdField_a_of_type_Amjs);
             }
             paramString = VasQuickUpdateManager.a((AppRuntime)localObject, "vipComic_config_v2.json", true, null);
             if (paramString == null) {

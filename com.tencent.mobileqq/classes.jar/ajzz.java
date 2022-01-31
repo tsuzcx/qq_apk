@@ -1,35 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.util.FaceManager;
 
-public final class ajzz
-  implements WtTicketPromise
+public class ajzz
+  extends FriendListObserver
 {
-  public void Done(Ticket paramTicket)
+  private ajzz(FaceManager paramFaceManager) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService : Done");
-    }
+    this.a.a(4, paramBoolean, new Object[] { paramString });
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
-    }
+    this.a.a(39, paramBoolean, new Object[] { paramString });
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
-    }
+    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
+  }
+  
+  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    this.a.a(30, paramBoolean, new Object[] { paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzz
  * JD-Core Version:    0.7.0.1
  */

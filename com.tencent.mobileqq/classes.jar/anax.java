@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import cooperation.qzone.util.QZoneDistributedAppCtrl;
+import cooperation.qzone.util.QZoneDistributedAppCtrl.Control;
 
-public final class anax
-  implements Parcelable.Creator
+public class anax
+  implements Runnable
 {
-  public EditLocalGifSource a(Parcel paramParcel)
-  {
-    return new EditLocalGifSource(paramParcel);
-  }
+  public anax(QZoneDistributedAppCtrl paramQZoneDistributedAppCtrl, QZoneDistributedAppCtrl.Control paramControl) {}
   
-  public EditLocalGifSource[] a(int paramInt)
+  public void run()
   {
-    return new EditLocalGifSource[paramInt];
+    QZoneDistributedAppCtrl.a(this.jdField_a_of_type_CooperationQzoneUtilQZoneDistributedAppCtrl, this.jdField_a_of_type_CooperationQzoneUtilQZoneDistributedAppCtrl$Control);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anax
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,27 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import java.lang.ref.WeakReference;
 
 public class smk
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
-  public smk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public smk(EmosmActivity paramEmosmActivity) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    this.a.a.post(new sml(this));
+    if (this.a.jdField_a_of_type_Boolean) {}
+    while (!EmosmUtils.a(this.a)) {
+      return;
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 2);
+    ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "ForwardEmojiHome", 0, 0, "", "", "", "");
   }
 }
 

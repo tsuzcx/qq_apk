@@ -1,40 +1,28 @@
-import android.os.Handler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.GAudioExitMonitor;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class jel
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public jel(VideoController paramVideoController) {}
+  public jel(GAudioExitMonitor paramGAudioExitMonitor) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a() == null) {}
-    do
+    if ((paramIntent != null) && ("com.tencent.av.EXIT_VIDEO_PROCESS".equals(paramIntent.getAction())))
     {
-      int i;
-      do
+      paramContext = GAudioExitMonitor.a(this.a).a();
+      if (paramContext != null)
       {
-        do
-        {
-          return;
-        } while ((!this.a.a().n()) || (!this.a.a().af));
-        if (QLog.isColorLevel()) {
-          QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "MultiCheckCallNotAcceptRunnable");
-        }
-        i = this.a.c().size();
-      } while (i <= 0);
-      this.a.a().L = true;
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(701), Integer.valueOf(i) });
-    } while ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null));
-    if (this.a.jdField_a_of_type_Jem == null) {
-      this.a.jdField_a_of_type_Jem = new jem(this.a);
+        paramContext.a(false, 0, new int[] { paramContext.a().D });
+        paramContext.b(202);
+        paramContext.d(1011);
+      }
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.jdField_a_of_type_Jem);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_a_of_type_Jem, this.a.i * 1000);
   }
 }
 

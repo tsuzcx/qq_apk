@@ -80,10 +80,10 @@ public class RecentMsgBoxItem
         if (!DatingUtil.a(paramQQAppInterface, ((QQMessageFacade.Message)localObject1).senderuin, ((QQMessageFacade.Message)localObject1).istroop)) {
           break label484;
         }
-        this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131437880);
-        this.e = paramContext.getResources().getColor(2131494281);
+        this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131437897);
+        this.e = paramContext.getResources().getColor(2131494288);
         if (localObject2 != null) {
-          ((MsgSummary)localObject3).b = ((ConversationFacade)localObject2).a(a(), 1001, paramContext.getResources().getString(2131437881), 0);
+          ((MsgSummary)localObject3).b = ((ConversationFacade)localObject2).a(a(), 1001, paramContext.getResources().getString(2131437898), 0);
         }
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg_boxitem", 2, "boxUin" + a() + ",boxType" + a() + ",HasUnreadRedPacketMsg");
@@ -128,8 +128,8 @@ public class RecentMsgBoxItem
       if (DatingUtil.b(paramQQAppInterface, ((QQMessageFacade.Message)localObject1).senderuin, ((QQMessageFacade.Message)localObject1).istroop))
       {
         this.jdField_c_of_type_Boolean = true;
-        this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131438784);
-        this.e = paramContext.getResources().getColor(2131494281);
+        this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131438802);
+        this.e = paramContext.getResources().getColor(2131494288);
         if (!QLog.isColorLevel()) {
           break label231;
         }

@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper.SendingFileInfo;
 
-class trr
+public class trr
   implements Runnable
 {
-  trr(trq paramtrq) {}
+  public trr(SendMultiPictureHelper paramSendMultiPictureHelper, SendMultiPictureHelper.SendingFileInfo paramSendingFileInfo, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    String str = SubLoginActivity.a(this.a.a).getText().toString();
-    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      SubLoginActivity.a(this.a.a).setText("");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_Long = SendMultiPictureHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper, this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

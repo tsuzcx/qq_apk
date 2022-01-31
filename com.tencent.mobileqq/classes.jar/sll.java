@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.activity.EditActivity;
 
-class sll
+public class sll
   implements Runnable
 {
-  sll(slk paramslk) {}
+  public sll(EditActivity paramEditActivity) {}
   
   public void run()
   {
-    this.a.a.a(this.a.a.a.a, true);
+    this.a.a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.activity;
 
-import ahdu;
+import ahrw;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -74,7 +74,7 @@ public class ContactSearchComponentActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131371102).setOnTouchListener(new ahdu(this));
+    findViewById(2131371266).setOnTouchListener(new ahrw(this));
     return true;
   }
   

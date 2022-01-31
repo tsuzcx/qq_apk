@@ -1,20 +1,24 @@
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qidian.data.QidianProfileUiInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class akwh
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  public akwh(QidianManager paramQidianManager, QidianExternalInfo paramQidianExternalInfo, QidianProfileUiInfo paramQidianProfileUiInfo) {}
+  public akwh(QQProgressDialog paramQQProgressDialog, boolean paramBoolean) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    QidianManager.a(this.jdField_a_of_type_ComTencentQidianQidianManager, this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo, this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo);
+    if ((paramInt == 84) || (paramInt == 4)) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akwh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,27 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.PostCommentCallback;
-import com.tencent.biz.qqstory.comment.FeedCommentLego;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep;
+import java.io.File;
 
 public class naj
-  extends FeedCommentEventHandler.PostCommentCallback
+  implements Comparable
 {
-  public naj(FeedCommentLego paramFeedCommentLego) {}
+  public final long a;
+  public final File a;
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public naj(CapacityCleanStep paramCapacityCleanStep, File paramFile)
   {
-    this.a.e();
-    if (paramBoolean) {
-      this.a.a(true, paramCommentEntry);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Long = paramFile.lastModified();
+  }
+  
+  public int a(naj paramnaj)
+  {
+    if (this.jdField_a_of_type_Long < paramnaj.jdField_a_of_type_Long) {
+      return -1;
     }
+    if (this.jdField_a_of_type_Long == paramnaj.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return 1;
   }
 }
 

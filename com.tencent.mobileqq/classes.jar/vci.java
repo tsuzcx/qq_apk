@@ -1,13 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.PATextItemBuilder;
 
 public class vci
-  implements DialogInterface.OnClickListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public vci(ShakeItemBuilder paramShakeItemBuilder) {}
+  public Object a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public vci(PATextItemBuilder paramPATextItemBuilder) {}
 }
 
 

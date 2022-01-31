@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import java.util.Comparator;
 
 public class acst
-  implements IDownloadController
+  implements Comparator
 {
-  public acst(DatalineFileModel paramDatalineFileModel) {}
+  public acst(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a()
+  public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
   {
-    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new acsu(this));
-  }
-  
-  public void b()
-  {
-    DatalineFileModel.b(this.a);
+    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
   }
 }
 

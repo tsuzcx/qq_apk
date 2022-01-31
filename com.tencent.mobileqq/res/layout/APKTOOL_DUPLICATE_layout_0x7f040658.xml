@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e65" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e66" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040659" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mobileqq.armap.wealthgod.ARMapSplashView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e67" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e68" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e69" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02127a" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06f9" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06fa" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06fb" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06fc" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0489" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e36" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="23.0dip" android:text="取消" android:layout_alignParentTop="true" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a142b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200d1" android:focusable="true" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="7.5dip" android:layout_alignParentRight="true" android:contentDescription="相机选取器，按钮，在前置相机和后置相机之间切换" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d0c" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e37" android:layout_width="240.0dip" android:layout_height="410.0dip" android:layout_marginTop="10.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="8.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e38" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="截图测试按钮" android:layout_alignParentBottom="true" />
+        <com.tencent.mobileqq.arcard.ARCardCamereButtonLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05d0" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1e37" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.OfflineUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo.ChannelInfo;
 
 public final class mps
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public void run()
+  public FastWebVideoInfo.ChannelInfo a(Parcel paramParcel)
   {
-    if (!OfflineUtils.a())
-    {
-      QLog.d("OfflineUtils", 2, "fail to read from offline dir, fall back to assets styles");
-      if (!OfflineUtils.a(BaseApplicationImpl.getContext())) {
-        QLog.d("OfflineUtils", 2, "fail to load from asset folder, fall back to native styles");
-      }
-    }
+    return new FastWebVideoInfo.ChannelInfo(paramParcel);
+  }
+  
+  public FastWebVideoInfo.ChannelInfo[] a(int paramInt)
+  {
+    return new FastWebVideoInfo.ChannelInfo[paramInt];
   }
 }
 

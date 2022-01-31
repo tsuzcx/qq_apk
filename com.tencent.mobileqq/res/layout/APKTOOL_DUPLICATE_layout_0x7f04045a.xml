@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:gravity="center" android:padding="8.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:minHeight="60.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a162e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:layout_alignParentLeft="true" />
-    <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a162f" android:background="#80000000" android:layout_width="30.0dip" android:layout_height="18.0dip" android:text="图标" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a162e" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a162e" />
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13aa" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="12.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206bf" android:indeterminateBehavior="repeat" android:layout_centerVertical="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057d" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13ab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b19d1" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a13aa" android:layout_centerVertical="true" />
 </RelativeLayout>

@@ -13,7 +13,7 @@ import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
 import org.json.JSONObject;
-import pbp;
+import pdj;
 
 public class ShareApiPlugin
   extends VasWebviewJsPlugin
@@ -108,7 +108,7 @@ public class ShareApiPlugin
           paramString1.putExtra("extra_cmd", "SQQzoneSvc.getUrlInfo");
           paramString1.putExtra("extra_current_uin", this.mRuntime.a().getAccount());
           paramString1.putExtra("extra_url", paramString2.a());
-          paramString1.setObserver(new pbp(this, paramJsBridgeListener));
+          paramString1.setObserver(new pdj(this, paramJsBridgeListener));
           this.mRuntime.a().startServlet(paramString1);
         }
       }

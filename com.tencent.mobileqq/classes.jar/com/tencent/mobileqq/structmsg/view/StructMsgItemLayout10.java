@@ -27,7 +27,7 @@ public class StructMsgItemLayout10
       if (paramViewHolder.a != null)
       {
         paramBundle = new RelativeLayout.LayoutParams(-1, -1);
-        paramViewHolder.a.setId(2131366581);
+        paramViewHolder.a.setId(2131366605);
         paramBundle.addRule(9, -1);
         ((RelativeLayout)paramView).addView(paramViewHolder.a);
       }
@@ -178,7 +178,7 @@ public class StructMsgItemLayout10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,165 @@
-import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
-import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.AssetManager;
+import android.os.AsyncTask;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public final class ahpt
-  implements INetEngine.INetEngineListener
+public class ahpt
+  extends AsyncTask
 {
-  public ahpt(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString) {}
+  public ahpt(StatusManager paramStatusManager) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  private void a(long paramLong)
   {
+    long l = StatusManager.a(this.a).getLong("k_icon", 0L);
     if (QLog.isColorLevel()) {
-      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onUpdateProgeress: totalLen=" + paramLong2 + " curOffset=" + paramLong1);
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask clearIcons " + l + ", " + paramLong + ", " + 104L);
+    }
+    Object localObject;
+    if (l < paramLong)
+    {
+      localObject = null;
+      if (paramLong <= 104L) {
+        break label180;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        InputStream localInputStream = StatusManager.a(this.a).getApp().getAssets().open("rich_status.xml");
+        localObject = localInputStream;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
+      }
+      localObject = (SparseArray)StatusManager.a(this.a, localObject)[0];
+      if (StatusManager.a(this.a, (SparseArray)localObject, StatusManager.a(this.a))) {
+        StatusManager.a(this.a).edit().putLong("k_icon", paramLong).commit();
+      }
+      return;
+      try
+      {
+        label180:
+        FileInputStream localFileInputStream = new FileInputStream(new File(StatusManager.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        localObject = localFileInputStream;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        localFileNotFoundException.printStackTrace();
+      }
     }
   }
   
-  public void a(NetResp paramNetResp)
+  protected Integer a(Void... paramVarArgs)
   {
-    if (paramNetResp.jdField_a_of_type_Int == 0)
-    {
-      paramNetResp = paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
-      if (new File(paramNetResp.c).exists())
-      {
-        str = RecentDanceConfigMgr.a(paramNetResp.c);
-        if ((str == null) || ("".equals(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5)))
-        {
-          FileUtils.d(paramNetResp.c);
-          FileUtils.d(this.jdField_a_of_type_JavaLangString);
-          if (QLog.isColorLevel()) {
-            QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: item.icon_md5" + this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5 + " md5=" + str);
-          }
-        }
-      }
-      while (!QLog.isColorLevel())
-      {
-        String str;
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: check success");
-        }
-        FileUtils.c(paramNetResp.c, this.jdField_a_of_type_JavaLangString);
-        RecentDanceConfigMgr.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp[not exists]: mOutPath" + paramNetResp.c);
-      return;
-    }
+    long l = StatusManager.a(this.a).getLong("k_version", 0L);
     if (QLog.isColorLevel()) {
-      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: resp.mResult=" + paramNetResp.jdField_a_of_type_Int);
+      QLog.d("Q.richstatus.xml", 2, "updateActions_Local with file " + l + ", " + 104L);
     }
-    FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+    if (l > 104L) {}
+    ArrayList localArrayList;
+    label221:
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = new FileInputStream(new File(StatusManager.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        if (paramVarArgs != null) {
+          break label221;
+        }
+        Object localObject;
+        paramVarArgs = null;
+      }
+      catch (FileNotFoundException paramVarArgs)
+      {
+        try
+        {
+          localObject = StatusManager.a(this.a).getApp().getAssets().open("rich_status.xml");
+          paramVarArgs = (Void[])localObject;
+          l = 104L;
+          localObject = StatusManager.a(this.a, paramVarArgs);
+          paramVarArgs = (SparseArray)localObject[0];
+          localArrayList = (ArrayList)localObject[1];
+          if ((paramVarArgs != null) && (paramVarArgs.size() != 0) && (localArrayList != null) && (localArrayList.size() != 0)) {
+            break;
+          }
+          publishProgress(new Integer[] { Integer.valueOf(-1) });
+          a(l);
+          return Integer.valueOf(100);
+        }
+        catch (IOException localIOException)
+        {
+          localIOException.printStackTrace();
+        }
+        paramVarArgs = paramVarArgs;
+        paramVarArgs.printStackTrace();
+      }
+    }
+    for (;;)
+    {
+      synchronized (StatusManager.a(this.a))
+      {
+        if ((!isCancelled()) && (StatusManager.a(this.a).size() == 0))
+        {
+          StatusManager.a(this.a, paramVarArgs);
+          StatusManager.a(this.a).clear();
+          StatusManager.a(this.a).addAll(localArrayList);
+          publishProgress(new Integer[] { Integer.valueOf(102) });
+        }
+      }
+      cancel(true);
+    }
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onPostExecute " + paramInteger);
+    }
+    StatusManager.a(this.a, null);
+    if (101 == StatusManager.a(this.a, false)) {
+      StatusManager.a(this.a);
+    }
+    this.a.a(false);
+  }
+  
+  protected void a(Integer... paramVarArgs)
+  {
+    int i = paramVarArgs[0].intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onProgressUpdate " + i);
+    }
+    if (StatusManager.a(this.a) != null)
+    {
+      paramVarArgs = StatusManager.a(this.a).iterator();
+      while (paramVarArgs.hasNext()) {
+        ((IActionListener)paramVarArgs.next()).a(i, 300);
+      }
+    }
+  }
+  
+  protected void onCancelled()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onCancelled");
+    }
+    StatusManager.a(this.a, null);
   }
 }
 

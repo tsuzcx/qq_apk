@@ -18,8 +18,8 @@ public class UpdatePluginVersion
     Context localContext = BaseApplicationImpl.sApplication.getApplicationContext();
     SharedPreferences localSharedPreferences = localContext.getSharedPreferences("update_plugin_version", 0);
     Object localObject = localSharedPreferences.getString("cur_version", "");
-    QLog.d("UpdatePluginVersion", 1, (String)localObject + ", " + "345599");
-    if (!"345599".equals(localObject))
+    QLog.d("UpdatePluginVersion", 1, (String)localObject + ", " + "349884");
+    if (!"349884".equals(localObject))
     {
       localObject = PluginUtils.getPluginInstallDir(localContext);
       File localFile1 = localContext.getDir("plugin_info", 0);
@@ -50,7 +50,7 @@ public class UpdatePluginVersion
         }
         i += 1;
       }
-      localSharedPreferences.edit().putString("cur_version", "345599").commit();
+      localSharedPreferences.edit().putString("cur_version", "349884").commit();
       localContext.getSharedPreferences("proc_reporter", 0).edit().clear().commit();
     }
     return true;

@@ -1,18 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class vha
-  implements View.OnTouchListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vha(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  public vha(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
-    return false;
+    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

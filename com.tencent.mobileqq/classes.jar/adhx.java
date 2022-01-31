@@ -1,22 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
-public class adhx
-  implements DialogInterface.OnClickListener
+public final class adhx
+  extends ClickableSpan
 {
-  public adhx(PresenceInterfaceImpl paramPresenceInterfaceImpl, QQAppInterface paramQQAppInterface) {}
+  public adhx(FileManagerUtil.TipsClickedInterface paramTipsClickedInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a.post(new adhy(this));
+    if (this.a != null) {
+      this.a.a(paramView);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhx
  * JD-Core Version:    0.7.0.1
  */

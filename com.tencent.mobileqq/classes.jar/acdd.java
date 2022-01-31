@@ -1,37 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.widget.FileWebView.TitilebarEventInterface;
+import com.tencent.mobileqq.app.FavEmoRoamingObserver;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import java.util.List;
 
 public class acdd
-  implements FileWebView.TitilebarEventInterface
+  extends FavEmoRoamingObserver
 {
-  public acdd(FilePreviewActivity paramFilePreviewActivity) {}
+  public acdd(EmojiManager paramEmojiManager, Object paramObject) {}
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b()
+  protected void a(List arg1)
   {
-    if ((this.a.jdField_a_of_type_Boolean) || (this.a.f)) {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaLangObject.notify();
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.l = "3";
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.e = System.currentTimeMillis();
-    }
-    this.a.runOnUiThread(new acde(this));
   }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 

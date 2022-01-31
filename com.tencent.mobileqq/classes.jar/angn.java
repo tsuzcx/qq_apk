@@ -1,30 +1,29 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import dov.com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import android.os.Bundle;
+import com.tencent.open.wadl.WLog;
+import cooperation.wadl.ipc.WadlProxyServiceManager;
+import mqq.observer.BusinessObserver;
 
 public class angn
-  implements Runnable
+  implements BusinessObserver
 {
-  public angn(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
+  public angn(WadlProxyServiceManager paramWadlProxyServiceManager, String paramString) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QQStoryTakeVideoCloseAnimationActivity localQQStoryTakeVideoCloseAnimationActivity = this.a;
-    Intent localIntent = new Intent(localQQStoryTakeVideoCloseAnimationActivity, SplashActivity.class);
-    localIntent.putExtra("fragment_id", 1);
-    localIntent.putExtra("main_tab_id", 6);
-    localIntent.putExtra("open_now_tab_fragment", true);
-    localIntent.putExtra("extra_from_share", true);
-    localIntent.putExtra("new_video_extra_info", "need_publish_animation");
-    localIntent.setFlags(335544320);
-    localQQStoryTakeVideoCloseAnimationActivity.startActivity(localIntent);
-    localQQStoryTakeVideoCloseAnimationActivity.overridePendingTransition(2131034125, 2131034126);
+    paramInt = paramBundle.getInt("extra_result_code");
+    String str = paramBundle.getString("extra_result_err_msg");
+    paramBundle = paramBundle.getString("extra_cmd");
+    if (!paramBoolean)
+    {
+      WLog.a("WadlProxyServiceManager", "onReportDownloadEvent fail operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle + ",errCode=" + paramInt + ",errMsg=" + str);
+      return;
+    }
+    WLog.b("WadlProxyServiceManager", "onReportDownloadEvent success operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angn
  * JD-Core Version:    0.7.0.1
  */

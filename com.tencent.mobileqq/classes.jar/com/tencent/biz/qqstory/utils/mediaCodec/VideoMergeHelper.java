@@ -10,31 +10,35 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import onq;
+import opk;
 
 @TargetApi(18)
 public class VideoMergeHelper
 {
   private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
   private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
   private String jdField_a_of_type_JavaLangString;
-  private onq jdField_a_of_type_Onq = new onq(null);
+  private opk jdField_a_of_type_Opk = new opk(null);
   private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
   private MediaExtractor jdField_b_of_type_AndroidMediaMediaExtractor;
   private String jdField_b_of_type_JavaLangString;
   
-  public VideoMergeHelper(String paramString1, String paramString2)
+  public VideoMergeHelper(String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
   
   private int a()
   {
     int i = 0;
-    this.jdField_a_of_type_Onq.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Onq.jdField_a_of_type_JavaNioByteBuffer, 0) <= 0)
+    this.jdField_a_of_type_Opk.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    if (this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Opk.jdField_a_of_type_JavaNioByteBuffer, 0) <= 0)
     {
       c();
       i = -5;
@@ -42,8 +46,8 @@ public class VideoMergeHelper
     do
     {
       return i;
-      this.jdField_a_of_type_Onq.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    } while (this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Onq.jdField_a_of_type_JavaNioByteBuffer, 0) > 0);
+      this.jdField_a_of_type_Opk.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    } while (this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Opk.jdField_a_of_type_JavaNioByteBuffer, 0) > 0);
     c();
     return -6;
   }
@@ -72,7 +76,26 @@ public class VideoMergeHelper
   
   public static final int a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    paramString2 = new VideoMergeHelper(paramString1, paramString2);
+    paramString2 = new VideoMergeHelper(paramString1, paramString2, 0L, 0L);
+    int i = paramString2.a(paramString3, paramInt);
+    if ((i == -2) || (i == -4) || (i == -6)) {
+      if (new File(paramString1).renameTo(new File(paramString3))) {
+        paramInt = 0;
+      }
+    }
+    do
+    {
+      return paramInt;
+      return -10;
+      paramInt = i;
+    } while (i != 0);
+    paramString2.a();
+    return i;
+  }
+  
+  public static final int a(String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2)
+  {
+    paramString2 = new VideoMergeHelper(paramString1, paramString2, paramLong1, paramLong2);
     int i = paramString2.a(paramString3, paramInt);
     if ((i == -2) || (i == -4) || (i == -6)) {
       if (new File(paramString1).renameTo(new File(paramString3))) {
@@ -125,18 +148,18 @@ public class VideoMergeHelper
   
   private boolean a()
   {
-    this.jdField_a_of_type_Onq.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    this.jdField_a_of_type_Opk.jdField_a_of_type_JavaNioByteBuffer.position(0);
     if (this.jdField_a_of_type_AndroidMediaMediaExtractor == null) {}
     int i;
     do
     {
       return true;
-      i = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Onq.jdField_a_of_type_JavaNioByteBuffer, 0);
+      i = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Opk.jdField_a_of_type_JavaNioByteBuffer, 0);
     } while (i <= 0);
-    this.jdField_a_of_type_Onq.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
-    this.jdField_a_of_type_Onq.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
-    this.jdField_a_of_type_Onq.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
-    this.jdField_a_of_type_Onq.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleFlags();
+    this.jdField_a_of_type_Opk.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
+    this.jdField_a_of_type_Opk.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
+    this.jdField_a_of_type_Opk.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
+    this.jdField_a_of_type_Opk.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleFlags();
     this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
     return false;
   }
@@ -193,7 +216,7 @@ public class VideoMergeHelper
         bool1 = bool2;
         if (!bool2)
         {
-          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Onq.jdField_a_of_type_Int, this.jdField_a_of_type_Onq.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Onq.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Opk.jdField_a_of_type_Int, this.jdField_a_of_type_Opk.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Opk.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
           bool1 = bool2;
         }
       }
@@ -205,7 +228,7 @@ public class VideoMergeHelper
         i = bool3;
         if (!bool3)
         {
-          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Onq.jdField_b_of_type_Int, this.jdField_a_of_type_Onq.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Onq.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Opk.jdField_b_of_type_Int, this.jdField_a_of_type_Opk.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Opk.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
           bool2 = bool1;
           i = bool3;
         }
@@ -215,18 +238,21 @@ public class VideoMergeHelper
   
   private boolean b()
   {
-    this.jdField_a_of_type_Onq.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_b_of_type_AndroidMediaMediaExtractor == null) {}
-    int i;
-    do
-    {
+    this.jdField_a_of_type_Opk.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    if (this.jdField_b_of_type_AndroidMediaMediaExtractor == null) {
       return true;
-      i = this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Onq.jdField_a_of_type_JavaNioByteBuffer, 0);
-    } while (i <= 0);
-    this.jdField_a_of_type_Onq.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleTime();
-    this.jdField_a_of_type_Onq.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
-    this.jdField_a_of_type_Onq.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
-    this.jdField_a_of_type_Onq.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleFlags();
+    }
+    long l = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleTime();
+    int i = this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Opk.jdField_a_of_type_JavaNioByteBuffer, 0);
+    if ((i <= 0) || ((this.jdField_b_of_type_Long != 0L) && (l > this.jdField_b_of_type_Long * 1000L)))
+    {
+      QLog.d("HwVideoMerge", 2, "getAudioInputBuffer audio end. sampleTime:" + l);
+      return true;
+    }
+    this.jdField_a_of_type_Opk.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = l;
+    this.jdField_a_of_type_Opk.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
+    this.jdField_a_of_type_Opk.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
+    this.jdField_a_of_type_Opk.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleFlags();
     this.jdField_b_of_type_AndroidMediaMediaExtractor.advance();
     return false;
   }
@@ -263,11 +289,14 @@ public class VideoMergeHelper
       if ((this.jdField_b_of_type_AndroidMediaMediaExtractor == null) || (j < 0)) {
         return -2;
       }
+      if (this.jdField_a_of_type_Long > 0L) {
+        this.jdField_b_of_type_AndroidMediaMediaExtractor.seekTo(this.jdField_b_of_type_Long * 1000L, 0);
+      }
       localMediaFormat1 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
       localMediaFormat2 = this.jdField_b_of_type_AndroidMediaMediaExtractor.getTrackFormat(j);
       this.jdField_a_of_type_Int = localMediaFormat1.getInteger("width");
       this.jdField_b_of_type_Int = localMediaFormat1.getInteger("height");
-      this.jdField_a_of_type_Onq.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Opk.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       j = a();
       i = j;
     } while (j != 0);
@@ -286,8 +315,8 @@ public class VideoMergeHelper
       this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramString, 0);
       paramInt = b(this.jdField_a_of_type_JavaLangString, paramInt);
       this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramInt);
-      this.jdField_a_of_type_Onq.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat1);
-      this.jdField_a_of_type_Onq.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat2);
+      this.jdField_a_of_type_Opk.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat1);
+      this.jdField_a_of_type_Opk.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat2);
       return j;
     }
     catch (IOException paramString)

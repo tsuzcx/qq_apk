@@ -1,38 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.lebasearch.SearchProtocol;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.now.NowLiveManager;
+import com.tencent.biz.now.NowVideoView;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public final class kod
-  extends SosoInterface.OnLocationListener
+public class kod
+  extends Handler
 {
-  public kod(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, SharedPreferences paramSharedPreferences)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public kod(NowVideoView paramNowVideoView) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void handleMessage(Message paramMessage)
   {
-    SharedPreferences.Editor localEditor = this.a.edit();
-    if (paramInt == 0)
+    switch (paramMessage.what)
     {
-      SearchProtocol.a = (float)paramSosoLbsInfo.a.a;
-      SearchProtocol.b = (float)paramSosoLbsInfo.a.b;
-      localEditor.putFloat("search_lbs_latitude", SearchProtocol.a);
-      localEditor.putFloat("search_lbs_logitude", SearchProtocol.b);
     }
-    if ((paramInt == 0) || (paramInt == 1)) {
-      localEditor.remove("search_lbs_delay");
-    }
-    for (;;)
+    do
     {
-      localEditor.putLong("search_lbs_timestamp", System.currentTimeMillis());
-      localEditor.commit();
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null));
+      this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
       return;
-      localEditor.putInt("search_lbs_delay", 48);
-    }
+    } while ((this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.a.jdField_a_of_type_Boolean) || (this.a.d != 2));
+    this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
   }
 }
 

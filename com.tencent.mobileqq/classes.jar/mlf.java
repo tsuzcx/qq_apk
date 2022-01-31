@@ -1,28 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
 
-class mlf
+public class mlf
   implements Runnable
 {
-  mlf(mle parammle, boolean paramBoolean, FastWebArticleInfo paramFastWebArticleInfo) {}
+  public mlf(AppInPushNotification paramAppInPushNotification) {}
   
   public void run()
   {
-    try
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        FastWebActivity.a(this.jdField_a_of_type_Mle.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
-        FastWebActivity.a(this.jdField_a_of_type_Mle.a);
-        return;
-      }
-      FastWebActivity.b(this.jdField_a_of_type_Mle.a);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    AppInPushNotification.a(6);
+    this.a.a(true, true);
   }
 }
 

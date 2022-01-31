@@ -9,8 +9,8 @@ import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.widget.TextView;
-import anqc;
-import anqe;
+import aogh;
+import aogj;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForBlessPTV;
@@ -164,7 +164,7 @@ public class FlowSendTask
       if (!VideoEnvironment.d()) {
         break label812;
       }
-      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new anqc(this));
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new aogh(this));
     }
     for (;;)
     {
@@ -334,10 +334,10 @@ public class FlowSendTask
     //   112: lstore_3
     //   113: aload_0
     //   114: getfield 103	dov/com/tencent/mobileqq/activity/richmedia/FlowSendTask:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   117: new 418	anqd
+    //   117: new 418	aogi
     //   120: dup
     //   121: aload_0
-    //   122: invokespecial 419	anqd:<init>	(Ldov/com/tencent/mobileqq/activity/richmedia/FlowSendTask;)V
+    //   122: invokespecial 419	aogi:<init>	(Ldov/com/tencent/mobileqq/activity/richmedia/FlowSendTask;)V
     //   125: invokevirtual 422	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
     //   128: lload 7
     //   130: lstore_3
@@ -946,11 +946,11 @@ public class FlowSendTask
         }
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624515);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
       }
       return;
     }
@@ -1071,7 +1071,7 @@ public class FlowSendTask
       }
       if ((!this.jdField_d_of_type_Boolean) && ((this.jdField_a_of_type_AndroidAppActivity instanceof FlowCameraActivity2)) && (!bool))
       {
-        ThreadManager.getSubThreadHandler().postDelayed(new anqe(this), 1000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new aogj(this), 1000L);
         return;
       }
       this.jdField_a_of_type_AndroidAppActivity = null;

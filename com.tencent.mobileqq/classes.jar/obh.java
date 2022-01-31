@@ -1,29 +1,16 @@
-import android.widget.TextView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
-import com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryDesFromVidListStep.ReceiveDataListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
 
-public class obh
-  implements Callbacks.Callback
+class obh
+  implements GetMyStoryDesFromVidListStep.ReceiveDataListener
 {
-  public obh(EditLocalVideoPlayer paramEditLocalVideoPlayer) {}
+  obh(obg paramobg) {}
   
-  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult)
+  public void a(MyStorys paramMyStorys)
   {
-    if (paramBoolean.booleanValue())
-    {
-      SLog.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramThumbnailResult.b.size(), paramThumbnailResult.jdField_a_of_type_JavaUtilList.size())));
-      this.a.a.setEnabled(true);
-    }
-    for (;;)
-    {
-      return null;
-      SLog.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramThumbnailResult.jdField_a_of_type_Int);
-      QQToast.a(this.a.a(), 1, "生成缩略图出错, 错误码:" + paramThumbnailResult.jdField_a_of_type_Int, 1);
-    }
+    NewMyStorySegment.a(this.a.a).sendMessage(NewMyStorySegment.a(this.a.a).obtainMessage(0, paramMyStorys));
   }
 }
 

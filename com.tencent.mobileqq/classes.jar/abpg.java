@@ -1,42 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.util.HashMap;
+import java.util.Locale;
 
-public class abpg
+public final class abpg
   implements Runnable
 {
-  public abpg(DBFixManager paramDBFixManager) {}
+  public abpg(int paramInt, String paramString1, String paramString2, long paramLong) {}
   
   public void run()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (((SharedPreferences)localObject).getBoolean(str + DBFixManager.d, false))
+    for (;;)
     {
-      this.a.a();
-      if ((((SharedPreferences)localObject).getInt(str + DBFixManager.e, 0) < DBFixManager.jdField_a_of_type_Int) && (DBFixManager.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abph(this));
+      try
+      {
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
+        StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplicationImpl.getContext());
+        String str1 = this.jdField_a_of_type_JavaLangString;
+        String str2 = this.b;
+        if (this.jdField_a_of_type_Int != 0) {
+          continue;
+        }
+        bool = true;
+        localStatisticCollector.a(str1, str2, bool, this.jdField_a_of_type_Long, 0L, localHashMap, "");
       }
-    }
-    else
-    {
+      catch (Exception localException)
+      {
+        boolean bool;
+        localException.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("CampusCircleHelper", 2, String.format(Locale.getDefault(), "reportPerformance account: %s tag: %s resultCode: %d cost: %d", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long) }));
+      }
       return;
+      bool = false;
     }
-    QLog.d(DBFixManager.a(), 1, "DBFixDialogUI 1, max count, delete db");
-    this.a.b(false);
-    this.a.b();
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.d);
-    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.e);
-    ((SharedPreferences.Editor)localObject).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,22 @@
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
-class agsq
-  implements Runnable
+public class agsq
+  implements ValueAnimation.AnimationUpdateListener
 {
-  agsq(agsp paramagsp, UpCallBack.SendResult paramSendResult) {}
+  public agsq(VipTagView paramVipTagView) {}
   
-  public void run()
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    if ((TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_Agsp.a).get(agsp.a(this.jdField_a_of_type_Agsp)) != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqPicUpCallBack$SendResult.a != 0) {
-        break label85;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("PreUploadVideo", 2, "[onSend]ResultOk id=" + agsp.a(this.jdField_a_of_type_Agsp));
-      }
-      this.jdField_a_of_type_Agsp.a(this.jdField_a_of_type_ComTencentMobileqqPicUpCallBack$SendResult);
-    }
-    label85:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("PreUploadVideo", 2, "[onSend]ResultFail id=" + agsp.a(this.jdField_a_of_type_Agsp));
+    VipTagView.a(this.a, paramFloat1.floatValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agsq
  * JD-Core Version:    0.7.0.1
  */

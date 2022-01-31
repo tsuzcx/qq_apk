@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import ntf;
+import nut;
 
 public class DetailLikeListLoader
 {
@@ -36,7 +36,7 @@ public class DetailLikeListLoader
     if (this.jdField_a_of_type_Int != -1) {
       localGetLikeListRequest.c = this.jdField_a_of_type_Int;
     }
-    CmdTaskManger.a().a(localGetLikeListRequest, new ntf(this, paramBoolean));
+    CmdTaskManger.a().a(localGetLikeListRequest, new nut(this, paramBoolean));
   }
 }
 

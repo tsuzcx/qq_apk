@@ -31,7 +31,7 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import jvq;
+import jvb;
 
 public class InviteStartAudioDialog
   extends Dialog
@@ -48,7 +48,7 @@ public class InviteStartAudioDialog
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private List jdField_a_of_type_JavaUtilList;
-  private jvq jdField_a_of_type_Jvq;
+  private jvb jdField_a_of_type_Jvb;
   private int jdField_b_of_type_Int;
   private ArrayList jdField_b_of_type_JavaUtilArrayList;
   
@@ -77,11 +77,11 @@ public class InviteStartAudioDialog
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366083));
-    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView = ((GridViewForScrollView)findViewById(2131366082));
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)findViewById(2131362557));
-    this.jdField_a_of_type_Jvq = new jvq(this, null);
-    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView.setAdapter(this.jdField_a_of_type_Jvq);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366110));
+    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView = ((GridViewForScrollView)findViewById(2131366109));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)findViewById(2131362574));
+    this.jdField_a_of_type_Jvb = new jvb(this, null);
+    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView.setAdapter(this.jdField_a_of_type_Jvb);
     this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView.setOnItemClickListener(this);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
   }
@@ -112,7 +112,7 @@ public class InviteStartAudioDialog
   
   private void a(InviteStartAudioDialog.ViewHolder paramViewHolder)
   {
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839128);
+    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839132);
     paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     paramViewHolder.b.setText("");
     paramViewHolder.b.setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131492879));
@@ -210,10 +210,10 @@ public class InviteStartAudioDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130969310);
+    setContentView(2130969311);
     a();
-    this.jdField_a_of_type_Jvq.a(this.jdField_a_of_type_JavaUtilList);
-    a(this.jdField_a_of_type_Jvq.getCount());
+    this.jdField_a_of_type_Jvb.a(this.jdField_a_of_type_JavaUtilList);
+    a(this.jdField_a_of_type_Jvb.getCount());
   }
   
   public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)

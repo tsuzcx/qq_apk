@@ -1,38 +1,43 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.av.ui.VideoInviteLock;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoLayerUIBase;
 
 public class kci
   implements Runnable
 {
-  public kci(VideoInviteLock paramVideoInviteLock) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int = 1;
+  private final int c = 9;
+  
+  private kci(VideoLayerUIBase paramVideoLayerUIBase, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    this.jdField_a_of_type_Float = ((paramInt4 - paramInt2) / 10.0F);
+    this.jdField_b_of_type_Float = ((paramInt5 - paramInt3) / 10.0F);
+    this.jdField_b_of_type_Int = paramInt1;
+  }
   
   public void run()
   {
-    if ((this.a.a == null) || (this.a.c == null)) {}
-    do
+    if (this.jdField_a_of_type_Int == 9) {
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUIBase.c(this.jdField_b_of_type_Int);
+    }
+    for (;;)
     {
-      do
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUIBase.a != null)
       {
-        return;
-        this.a.a.setVisibility(8);
-        this.a.c.setVisibility(8);
-        if ((NetworkUtil.h(VideoInviteLock.a(this.a))) || (NetworkUtil.f(VideoInviteLock.b(this.a)))) {
+        if (this.jdField_a_of_type_Int > 9) {
           break;
         }
-        if (NetworkUtil.b(VideoInviteLock.c(this.a)))
-        {
-          this.a.c.setVisibility(0);
-          this.a.c.setText(2131429061);
-        }
-      } while (!NetworkUtil.c(VideoInviteLock.d(this.a)));
-      this.a.c.setVisibility(0);
-      this.a.c.setText(2131429060);
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUIBase.a.a().postDelayed(this, 10L);
+      }
       return;
-    } while (!this.a.b);
-    this.a.c.setVisibility(0);
-    this.a.c.setText(2131428690);
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUIBase.b((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    }
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUIBase.i();
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUIBase.a.a(new Object[] { Integer.valueOf(121) });
   }
 }
 

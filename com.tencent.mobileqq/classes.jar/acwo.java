@@ -1,43 +1,14 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
 
-class acwo
-  implements FMSettingInterface.MoveFileCallback
+public class acwo
+  implements Runnable
 {
-  acwo(acwn paramacwn) {}
+  public acwo(FileVideoManager.VideoControl paramVideoControl) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new acwr(this));
-    FMSettings.a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings);
-    FileManagerReporter.a("0X8005BE2");
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b = false;
-      return;
-    }
+    FileVideoManager.VideoControl.d(this.a);
   }
-  
-  public void a(int paramInt)
-  {
-    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new acwq(this));
-    FMSettings.a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings);
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b = false;
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new acwp(this, paramLong1, paramLong2));
-  }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

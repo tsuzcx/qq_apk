@@ -1,18 +1,31 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.campuscircle.CampusCircleObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
 public class soi
-  implements ImageAssetDelegate
+  extends CampusCircleObserver
 {
-  public soi(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
+  public soi(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void a(boolean paramBoolean, Bundle paramBundle, Card paramCard)
   {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+    if ((paramBoolean) && (paramCard != null) && (paramCard.uin != null) && (paramCard.uin.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
+    {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
+      this.a.runOnUiThread(new soj(this));
+    }
+  }
+  
+  public void a(boolean paramBoolean, Card paramCard)
+  {
+    if ((paramBoolean) && (paramCard != null) && (paramCard.uin != null) && (paramCard.uin.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
+    {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
+      this.a.runOnUiThread(new sok(this));
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ocr;
 
-import afnq;
-import afnr;
+import agaw;
+import agax;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.SystemClock;
@@ -24,7 +24,7 @@ public class OCRManager
   implements Manager
 {
   public QQAppInterface a;
-  OCRObserver jdField_a_of_type_ComTencentMobileqqOcrOCRObserver = new afnr(this);
+  OCRObserver jdField_a_of_type_ComTencentMobileqqOcrOCRObserver = new agax(this);
   public OcrConfig a;
   EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   private Object jdField_a_of_type_JavaLangObject = new Object();
@@ -34,7 +34,7 @@ public class OCRManager
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRObserver);
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    ThreadManager.post(new afnq(this), 5, null, false);
+    ThreadManager.post(new agaw(this), 5, null, false);
   }
   
   public static String a(QQAppInterface paramQQAppInterface)
@@ -306,11 +306,11 @@ public class OCRManager
     //   71: invokestatic 294	com/tencent/mobileqq/ocr/OCRManager:a	(Ljava/lang/String;Lcom/tencent/mobileqq/ocr/data/OcrConfig;)V
     //   74: aload_3
     //   75: monitorexit
-    //   76: new 337	afns
+    //   76: new 337	agay
     //   79: dup
     //   80: aload_0
     //   81: iload_1
-    //   82: invokespecial 340	afns:<init>	(Lcom/tencent/mobileqq/ocr/OCRManager;Z)V
+    //   82: invokespecial 340	agay:<init>	(Lcom/tencent/mobileqq/ocr/OCRManager;Z)V
     //   85: bipush 8
     //   87: aconst_null
     //   88: iconst_0

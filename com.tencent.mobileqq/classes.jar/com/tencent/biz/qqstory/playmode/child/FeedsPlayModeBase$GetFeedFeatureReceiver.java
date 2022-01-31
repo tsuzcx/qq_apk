@@ -6,7 +6,7 @@ import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.network.handler.GetFeedFeatureHandler.GetFeedFeatureEvent;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.List;
-import nif;
+import njr;
 
 public final class FeedsPlayModeBase$GetFeedFeatureReceiver
   extends QQUIEventReceiver
@@ -19,7 +19,7 @@ public final class FeedsPlayModeBase$GetFeedFeatureReceiver
   public void a(@NonNull FeedsPlayModeBase paramFeedsPlayModeBase, @NonNull GetFeedFeatureHandler.GetFeedFeatureEvent paramGetFeedFeatureEvent)
   {
     if ((paramGetFeedFeatureEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetFeedFeatureEvent.jdField_a_of_type_JavaUtilList != null) && (!paramGetFeedFeatureEvent.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      paramFeedsPlayModeBase.a.post(new nif(this, paramFeedsPlayModeBase));
+      paramFeedsPlayModeBase.a.post(new njr(this, paramFeedsPlayModeBase));
     }
   }
   

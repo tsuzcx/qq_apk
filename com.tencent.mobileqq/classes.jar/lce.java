@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.model.QueryCallback;
 
-public class lce
-  implements View.OnClickListener
+public final class lce
+  implements QueryCallback
 {
-  public lce(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
+  public lce(EditText paramEditText) {}
   
-  public void onClick(View paramView)
+  public void a(char[] paramArrayOfChar)
   {
-    this.a.onBackEvent();
+    int i = this.a.getSelectionStart();
+    int j = this.a.getSelectionEnd();
+    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
+    this.a.requestFocus();
   }
 }
 

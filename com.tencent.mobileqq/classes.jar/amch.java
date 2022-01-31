@@ -1,34 +1,16 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader.P2VEffectDownloadListener;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import cooperation.qzone.QZoneVideoDownloadActivity;
-
 class amch
-  implements P2VEffectLoader.P2VEffectDownloadListener
+  implements Runnable
 {
-  amch(amcg paramamcg) {}
+  amch(amcf paramamcf, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    VideoEnvironment.a("QZoneVideoDownloadActivity", "P2VEffectLoader - downLoadP2VJarModule - loadState:" + paramBoolean, null);
-    if (paramBoolean)
-    {
-      P2VEffectLoader.a(this.a.a.getApplicationContext());
-      Intent localIntent = this.a.a.getIntent();
-      localIntent.setClass(this.a.a.getApplicationContext(), QzDynamicVideoPreviewActivity.class);
-      this.a.a.startActivity(localIntent);
-      this.a.a.overridePendingTransition(2131034134, 2131034135);
-      this.a.a.finish();
-      return;
-    }
-    VideoEnvironment.a("QZoneVideoDownloadActivity", "P2VEffectLoader - downLoadP2VJarModule - loadFailed", null);
+    this.jdField_a_of_type_Amcf.b(this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amch
  * JD-Core Version:    0.7.0.1
  */

@@ -1,114 +1,55 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.BaseItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.BaseVideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView.ListViewEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.FileUploadController.FileUploadListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.ImageUploadController;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Set;
 
 public class lzk
-  extends Handler
+  extends TransProcessorHandler
 {
-  public lzk(VideoFeedsAdapter paramVideoFeedsAdapter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public lzk(ImageUploadController paramImageUploadController) {}
   
   public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != 10)) {}
+    while (localFileMsg.f.equals(ImageUploadController.a(this.a))) {
+      return;
     }
     switch (paramMessage.what)
     {
+    case 1002: 
+    case 1004: 
     default: 
-      super.handleMessage(paramMessage);
-    }
-    for (;;)
-    {
       return;
-      VideoFeedsAdapter.a(this.a).sendEmptyMessageDelayed(0, 3000L);
-      if (VideoFeedsAdapter.a(this.a) != null)
-      {
-        if (VideoFeedsAdapter.a(this.a).a() > VideoFeedsAdapter.a(this.a).b()) {}
-        for (long l = VideoFeedsAdapter.a(this.a).a();; l = VideoFeedsAdapter.a(this.a).b())
-        {
-          l = 3000L - (System.currentTimeMillis() - l);
-          if (l <= 0L) {
-            break;
-          }
-          VideoFeedsAdapter.a(this.a).removeMessages(0);
-          VideoFeedsAdapter.a(this.a).sendEmptyMessageDelayed(0, l);
-          return;
-        }
-        VideoFeedsAdapter.a(this.a);
-        return;
-        VideoFeedsAdapter.a(this.a).a(VideoFeedsAdapter.a(this.a).a, false);
-        if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).size() > 1))
-        {
-          VideoFeedsAdapter.a(this.a).a(VideoFeedsAdapter.a(this.a).b, VideoFeedsAdapter.a(this.a));
-          return;
-          if (VideoFeedsAdapter.b(this.a))
-          {
-            VideoFeedsAdapter.a(this.a).sendEmptyMessage(3);
-            VideoFeedsAdapter.a(this.a).sendEmptyMessageDelayed(2, 50L);
-          }
-          VideoFeedsAdapter.a(this.a).a();
-          return;
-          VideoFeedsAdapter.a(this.a).d();
-          return;
-          if ((VideoFeedsAdapter.a(this.a) instanceof VideoFeedsAdapter.VideoItemHolder))
-          {
-            paramMessage = (VideoFeedsAdapter.VideoItemHolder)VideoFeedsAdapter.a(this.a);
-            if ((paramMessage.a != null) && (paramMessage.a.a != null) && (paramMessage.a.a.jdField_a_of_type_Boolean) && (paramMessage.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo != null))
-            {
-              Object localObject = paramMessage.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.h;
-              if (!VideoFeedsAdapter.a(this.a).contains(localObject))
-              {
-                VideoFeedsAdapter.a(this.a).add(localObject);
-                VideoReporter.a(VideoFeedsAdapter.a(this.a), 1, paramMessage.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, null);
-                return;
-                paramMessage = (String)paramMessage.obj;
-                if (!TextUtils.isEmpty(paramMessage))
-                {
-                  int j = VideoFeedsAdapter.a(this.a).getChildCount();
-                  int i = 0;
-                  while (i < j)
-                  {
-                    localObject = VideoFeedsAdapter.a(this.a).getChildAt(i).getTag();
-                    if ((localObject instanceof VideoFeedsAdapter.BaseItemHolder))
-                    {
-                      int k = ((VideoFeedsAdapter.BaseItemHolder)localObject).b;
-                      VideoInfo localVideoInfo = (VideoInfo)this.a.getItem(k);
-                      if ((localVideoInfo != null) && (paramMessage.equals(localVideoInfo.jdField_a_of_type_JavaLangString)))
-                      {
-                        VideoFeedsAdapter.a(this.a).c();
-                        this.a.a.a(localObject);
-                        return;
-                      }
-                    }
-                    i += 1;
-                  }
-                }
-              }
-            }
-          }
-        }
+    case 1001: 
+      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener != null) {
+        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener.a();
       }
+      ImageUploadController.a(this.a, System.currentTimeMillis());
+      return;
+    case 1003: 
+      ImageUploadController.b(this.a, System.currentTimeMillis());
+      PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 0, String.valueOf(ImageUploadController.a(this.a)), String.valueOf(ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.a(this.a) - ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.c(this.a) - ImageUploadController.d(this.a)));
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send finished!");
+      }
+      ImageUploadController.a(this.a, localFileMsg.f);
+      ImageUploadController.b(this.a, localFileMsg.i);
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler mImageMd5=" + ImageUploadController.a(this.a) + ", mImageUrl=" + ImageUploadController.b(this.a));
+      }
+      ImageUploadController.a(this.a, 0, ImageUploadController.b(this.a), ImageUploadController.a(this.a), null);
+      return;
     }
+    ImageUploadController.b(this.a, System.currentTimeMillis());
+    PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 1, String.valueOf(ImageUploadController.a(this.a)), String.valueOf(ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.a(this.a) - ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.c(this.a) - ImageUploadController.d(this.a)));
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send error:" + localFileMsg.g);
+    }
+    ImageUploadController.a(this.a, 1004, null, null, null);
   }
 }
 

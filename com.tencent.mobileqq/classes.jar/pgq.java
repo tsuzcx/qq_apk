@@ -1,13 +1,18 @@
-import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
+import com.tencent.component.media.image.ImageManager;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class pgq
+class pgq
   implements Runnable
 {
-  public pgq(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl, String paramString, String[] paramArrayOfString) {}
+  pgq(pgp parampgp) {}
   
   public void run()
   {
-    AsyncImageable.AsyncImageableImpl.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageableImpl, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString);
+    ImageManager.b(false);
+    ImageManager.a(this.a.a, 0L);
+    ImageManager.a(this.a.a).clear();
+    ImageManager.a().clear();
+    ImageManager.b().clear();
   }
 }
 

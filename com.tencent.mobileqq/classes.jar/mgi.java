@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
 
 class mgi
   implements Runnable
 {
-  mgi(mga parammga) {}
+  mgi(mgh parammgh) {}
   
   public void run()
   {
-    this.a.a.notifyDataSetChanged();
+    VideoVolumeControl.d(this.a.a, false);
   }
 }
 

@@ -1,16 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
 
 public class kun
   implements Runnable
 {
-  public kun(VideoCoverFragment paramVideoCoverFragment) {}
+  public kun(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
   
   public void run()
   {
-    VideoCoverFragment.a(this.a).setVisibility(4);
-    VideoCoverFragment.a(this.a).setVisibility(4);
+    this.a.a(1);
   }
 }
 

@@ -1,68 +1,40 @@
-import android.view.View;
-import android.view.animation.AnimationUtils;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AnimationPath;
-import com.tencent.mobileqq.activity.aio.anim.AnimationPath.Values;
-import com.tencent.mobileqq.activity.aio.anim.PathAnimation;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class ukt
-  implements Runnable
+class ukt
+  implements PreloadManager.OnGetPathListener
 {
-  private ukt(PathAnimation paramPathAnimation) {}
+  ukt(uks paramuks) {}
   
-  public void run()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    long l3 = AnimationUtils.currentAnimationTimeMillis();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-    long l2 = -1L;
-    if (localIterator.hasNext())
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
     {
-      AnimationPath.Values localValues = (AnimationPath.Values)localIterator.next();
-      long l1;
-      if (l3 < localValues.jdField_a_of_type_Long)
-      {
-        l1 = localValues.jdField_a_of_type_Long - l3;
-        label63:
-        if (l1 < 0L) {
-          break label195;
-        }
-        if (l2 >= 0L) {
-          break label186;
-        }
-        label75:
-        this.a.a(localValues.jdField_a_of_type_AndroidViewView, localValues);
+      Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramPathResult, ImageUtil.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D)));
+      if (localBitmap != null) {
+        this.a.a.icon = localBitmap;
       }
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
+      }
+    }
+    catch (Throwable paramPathResult)
+    {
       for (;;)
       {
-        l2 = l1;
-        break;
-        if (!localValues.b)
-        {
-          l1 = localValues.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAnimationPath.a(localValues, localValues.jdField_a_of_type_AndroidViewView.getWidth(), localValues.jdField_a_of_type_AndroidViewView.getHeight(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getWidth(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getHeight());
-          localValues.b = true;
-          break label63;
-        }
-        l1 = localValues.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAnimationPath.a(l3 - localValues.jdField_a_of_type_Long, localValues);
-        break label63;
-        label186:
-        l1 = Math.min(l2, l1);
-        break label75;
-        label195:
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeViewInLayout(localValues.jdField_a_of_type_AndroidViewView);
-        localIterator.remove();
-        l1 = l2;
+        paramPathResult.printStackTrace();
       }
     }
-    if (l2 >= 0L)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this, l2);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
-      return;
-    }
-    this.a.d();
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 

@@ -1,19 +1,19 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQVideoMaterial;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.os.Handler;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anke
   implements Runnable
 {
-  public anke(PersonalityOperator paramPersonalityOperator, QQVideoMaterial paramQQVideoMaterial) {}
+  private anke(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
   public void run()
   {
-    long l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getId());
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.b, 1.0D);
-    long l2 = System.currentTimeMillis();
-    SLog.b("PersonalityOperator", "setVideoFilter " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getId() + " t:" + (l2 - l1));
+    QIMEffectCameraCaptureUnit.b(this.a);
+    if (QIMEffectCameraCaptureUnit.a(this.a) >= 3) {
+      QIMEffectCameraCaptureUnit.a(this.a, 0);
+    }
+    QIMEffectCameraCaptureUnit.a(this.a, QIMEffectCameraCaptureUnit.a(this.a));
+    this.a.a.postDelayed(QIMEffectCameraCaptureUnit.a(this.a), 500L);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import aark;
+import aayl;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
@@ -24,7 +24,7 @@ public class ArkViewAdjustFromKeyboard
   {
     this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
     if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new aark(this));
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new aayl(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = paramArkAppView;
     this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams = ((ViewGroup.MarginLayoutParams)paramArkAppView.getLayoutParams());

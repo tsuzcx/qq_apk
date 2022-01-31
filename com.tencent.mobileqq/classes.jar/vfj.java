@@ -1,54 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
 public class vfj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public vfj(TextItemBuilder paramTextItemBuilder) {}
+  public vfj(ShakeItemBuilder paramShakeItemBuilder, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = AIOUtils.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localObject = (MessageForText)localObject;
-        } while (TextItemBuilder.a(this.a));
-        if (((MessageForText)localObject).msgtype == -1003)
-        {
-          AIOUtils.m = true;
-          localObject = PkgTools.a(((MessageForText)localObject).action);
-          localObject = JumpParser.a(this.a.a, paramView.getContext(), (String)localObject);
-          if (localObject != null) {
-            ((JumpAction)localObject).b();
-          }
-        }
-      } while (!(paramView instanceof ETTextView));
-      paramView = (ETTextView)paramView;
-      if (paramView.c())
-      {
-        paramView.a(true);
-        return;
-      }
-    } while (!paramView.b());
-    paramView.b(true);
+    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
   }
 }
 

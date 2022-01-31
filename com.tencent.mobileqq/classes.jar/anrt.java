@@ -1,24 +1,22 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
-import java.util.concurrent.ConcurrentHashMap;
+import android.widget.TextView;
+import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
 
 public class anrt
-  implements Comparable
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public int b;
+  public anrt(EditProviderPart paramEditProviderPart, boolean paramBoolean) {}
   
-  public anrt(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
-    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(anrt paramanrt)
-  {
-    return -(int)(this.jdField_a_of_type_Long - paramanrt.jdField_a_of_type_Long);
+    if (EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart) == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).setVisibility(0);
+      return;
+    }
+    EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).setVisibility(8);
   }
 }
 

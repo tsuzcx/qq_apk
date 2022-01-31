@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
 
 public class uob
   implements Runnable
 {
-  public uob(DoodleDrawer paramDoodleDrawer, String paramString, long paramLong, List paramList) {}
+  public uob(XBubbleAnimation paramXBubbleAnimation) {}
   
   public void run()
   {
-    DoodleDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilList);
+    this.a.d();
   }
 }
 

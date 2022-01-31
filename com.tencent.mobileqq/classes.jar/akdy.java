@@ -1,22 +1,35 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController.OnBindCallback;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class akdy
-  implements GameRoomAVController.OnBindCallback
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public akdy(WerewolvesHostInterface paramWerewolvesHostInterface, boolean paramBoolean) {}
+  public akdy(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void bc()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.mGameRoomAVController.a(this.jdField_a_of_type_Boolean);
+    QQCustomDialog localQQCustomDialog;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    {
+      paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+      localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+      if (!paramBoolean) {
+        break label34;
+      }
+    }
+    label34:
+    for (int i = 1;; i = 0)
+    {
+      paramCompoundButton.onClick(localQQCustomDialog, i);
+      return;
+    }
   }
-  
-  public void bd() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akdy
  * JD-Core Version:    0.7.0.1
  */

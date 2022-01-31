@@ -1,41 +1,55 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
-class osa
-  implements Runnable
+public class osa
+  extends ValueAnimator
 {
-  osa(orz paramorz) {}
+  private ValueAnimator.AnimatorUpdateListener a;
   
-  public void run()
+  private osa(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    if (this.a.a.jdField_c_of_type_Int == 1) {
-      this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.a.app.a(this.a.a.jdField_c_of_type_JavaLangString, false);
+    setObjectValues(new Object[] { new osd(paramFloat1, paramFloat2, paramFloat3), new osd(paramFloat4, paramFloat5, paramFloat6) });
+    setEvaluator(new ose(null));
+    this.a = new osb(this, a(paramView));
+    addUpdateListener(this.a);
+  }
+  
+  private CircularRevealCompatLayout a(View paramView)
+  {
+    if ((paramView instanceof CircularRevealCompatLayout)) {
+      return (CircularRevealCompatLayout)paramView;
     }
-    for (;;)
-    {
-      if (this.a.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a();
-      }
-      return;
-      if (this.a.a.jdField_c_of_type_Int == 2)
-      {
-        this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.a.app.a(this.a.a.jdField_c_of_type_JavaLangString, (byte)3, false, false);
-        if (this.a.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-          this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
-        }
-      }
-      else
-      {
-        Drawable localDrawable = this.a.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.a.a.jdField_c_of_type_JavaLangString, true);
-        if ((localDrawable instanceof BitmapDrawable)) {
-          this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localDrawable).getBitmap();
-        }
-      }
+    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
+    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
+      return (CircularRevealCompatLayout)localViewGroup;
     }
+    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    int i = localViewGroup.indexOfChild(paramView);
+    localViewGroup.removeView(paramView);
+    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
+    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
+    return localCircularRevealCompatLayout;
+  }
+  
+  public static osa a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  {
+    return new osa(paramView, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
+  }
+  
+  public static osa a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    return new osa(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
+  }
+  
+  public void removeAllUpdateListeners()
+  {
+    super.removeAllUpdateListeners();
+    addUpdateListener(this.a);
   }
 }
 

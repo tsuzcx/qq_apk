@@ -1,8 +1,8 @@
 package cooperation.qzone.remote;
 
-import amid;
-import amie;
-import amif;
+import amyi;
+import amyj;
+import amyk;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.DeadObjectException;
@@ -21,7 +21,7 @@ public class RemoteServiceProxy
 {
   private static final String tag = "RemoteServiceProxy";
   private Class clazz;
-  protected ServiceConnection conn = new amid(this);
+  protected ServiceConnection conn = new amyi(this);
   protected volatile long lastStartSerivceTime = -1L;
   private IActionListener mActionListener;
   private String mUin;
@@ -56,9 +56,9 @@ public class RemoteServiceProxy
   
   public void onBaseServiceConnected()
   {
-    amie localamie = new amie(this);
-    localamie.setName("handleWaitSendProxyMsgThread");
-    localamie.start();
+    amyj localamyj = new amyj(this);
+    localamyj.setName("handleWaitSendProxyMsgThread");
+    localamyj.start();
   }
   
   public void sendFailedRespToApp(SendMsg paramSendMsg, RecvMsg paramRecvMsg)
@@ -118,7 +118,7 @@ public class RemoteServiceProxy
   {
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      ThreadManager.post(new amif(this, paramSendMsg), 10, null, false);
+      ThreadManager.post(new amyk(this, paramSendMsg), 10, null, false);
       return;
     }
     this.serviceHandler.sendMsg(paramSendMsg);

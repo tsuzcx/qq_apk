@@ -203,24 +203,24 @@ import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rrr;
-import rrt;
-import rru;
-import rrx;
-import rrz;
-import rsa;
-import rsc;
-import rse;
-import rsf;
-import rsg;
-import rsh;
-import rsi;
-import rsj;
-import rsk;
-import rsl;
-import rsm;
-import rsn;
-import rso;
+import rup;
+import rur;
+import rus;
+import ruv;
+import rux;
+import ruy;
+import rva;
+import rvc;
+import rvd;
+import rve;
+import rvf;
+import rvg;
+import rvh;
+import rvi;
+import rvj;
+import rvk;
+import rvl;
+import rvm;
 
 public class ChatActivityFacade
 {
@@ -229,13 +229,13 @@ public class ChatActivityFacade
   public static QQToast a;
   public static ActionSheet a;
   public static List a;
-  private static rso a;
+  private static rvm a;
   public static ActionSheet b;
   
   static
   {
     jdField_a_of_type_Long = -1L;
-    jdField_a_of_type_Rso = new rso();
+    jdField_a_of_type_Rvm = new rvm();
   }
   
   private static long a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, int paramInt, ArrayList paramArrayList)
@@ -754,12 +754,12 @@ public class ChatActivityFacade
     //   1095: aload_0
     //   1096: invokestatic 479	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1099: goto -467 -> 632
-    //   1102: new 481	rrs
+    //   1102: new 481	ruq
     //   1105: dup
     //   1106: iload 4
     //   1108: aload_0
     //   1109: aload_2
-    //   1110: invokespecial 484	rrs:<init>	(ZLcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/ChatMessage;)V
+    //   1110: invokespecial 484	ruq:<init>	(ZLcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/ChatMessage;)V
     //   1113: bipush 10
     //   1115: aconst_null
     //   1116: iconst_0
@@ -1140,8 +1140,8 @@ public class ChatActivityFacade
       if (paramMessageRecord.length() > 30) {
         paramString = paramMessageRecord.substring(0, 30);
       }
-      paramMessageRecord = paramContext.getString(2131433632);
-      paramContext = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(35).a(paramString).a(3).a("viewMultiMsg", "", null, null, null).a(paramMessageRecord, null).b(paramContext.getResources().getString(2131433750)).a();
+      paramMessageRecord = paramContext.getString(2131433649);
+      paramContext = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(35).a(paramString).a(3).a("viewMultiMsg", "", null, null, null).a(paramMessageRecord, null).b(paramContext.getResources().getString(2131433767)).a();
       paramMessageRecord = new StructMsgItemLayout1(localArrayList);
       paramMessageRecord.a(new StructMsgItemHr());
       paramMessageRecord.a(new StructMsgItemSummary("点击查看完整消息"));
@@ -1312,8 +1312,8 @@ public class ChatActivityFacade
       }
     }
     label901:
-    paramString = paramContext.getString(2131433632);
-    paramContext = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(35).a("[转发多条消息]").a(3).a("viewMultiMsg", "", null, null, null).a(paramString, null).b(paramContext.getResources().getString(2131433750)).a();
+    paramString = paramContext.getString(2131433649);
+    paramContext = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(35).a("[转发多条消息]").a(3).a("viewMultiMsg", "", null, null, null).a(paramString, null).b(paramContext.getResources().getString(2131433767)).a();
     paramString = new StructMsgItemLayout1(localArrayList1);
     paramString.a(new StructMsgItemHr());
     paramString.a(new StructMsgItemSummary(String.format("查看%s条转发消息", new Object[] { Integer.valueOf(paramList.size()) })));
@@ -1664,9 +1664,9 @@ public class ChatActivityFacade
   {
     paramString4 = SubString.a(paramString4, 45, "UTF-8", "...");
     paramString5 = SubString.a(paramString5, 90, "UTF-8", "...");
-    if (!paramContext.getResources().getString(2131430542).equals(paramString4))
+    if (!paramContext.getResources().getString(2131430559).equals(paramString4))
     {
-      paramString3 = paramContext.getResources().getString(2131435554) + " " + paramString4;
+      paramString3 = paramContext.getResources().getString(2131435571) + " " + paramString4;
       paramString6 = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.PoiMapActivity&type=sharedmap&lat=" + paramString1 + "&lon=" + paramString2 + "&title=" + paramString4 + "&loc=" + paramString5 + "&dpid=" + paramString6;
       paramString3 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(32).a(paramString3).b("").a("plugin", "", paramString6, "", "").a();
       paramString6 = StructMsgElementFactory.a(2);
@@ -1702,7 +1702,7 @@ public class ChatActivityFacade
         long l;
         int i;
         return;
-        paramString3 = paramContext.getResources().getString(2131435554);
+        paramString3 = paramContext.getResources().getString(2131435571);
         break;
       }
       if (a(paramSessionInfo, paramString5, paramBundle))
@@ -1717,7 +1717,7 @@ public class ChatActivityFacade
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    paramQQAppInterface = new rru(paramContext, paramChatMessage, paramQQAppInterface);
+    paramQQAppInterface = new rus(paramContext, paramChatMessage, paramQQAppInterface);
     paramChatMessage = (InputMethodManager)paramContext.getSystemService("input_method");
     boolean bool = paramChatMessage.isActive();
     if (((paramContext instanceof Activity)) && (bool)) {
@@ -1737,7 +1737,7 @@ public class ChatActivityFacade
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, List paramList)
   {
-    paramQQAppInterface = new rrx(paramContext, paramList, paramQQAppInterface);
+    paramQQAppInterface = new ruv(paramContext, paramList, paramQQAppInterface);
     paramList = (InputMethodManager)paramContext.getSystemService("input_method");
     boolean bool = paramList.isActive();
     if (((paramContext instanceof Activity)) && (bool)) {
@@ -1984,7 +1984,7 @@ public class ChatActivityFacade
     {
       if (jdField_a_of_type_ComTencentMobileqqWidgetQQToast == null)
       {
-        jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(paramContext, 2131438430, 0);
+        jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(paramContext, 2131438448, 0);
         PokeItemAnimationManager.a().a(3);
         PokeItemAnimationManager.a().a(6);
         PokeItemAnimationManager.a().a(12);
@@ -2332,7 +2332,7 @@ public class ChatActivityFacade
     }
     if (((paramEmoticon.jobType == 0) || (paramEmoticon.jobType == 2) || (paramEmoticon.jobType == 4)) && (!paramEmoticon.hasEncryptKey()))
     {
-      Toast.makeText(paramContext, paramContext.getString(2131436067), 0).show();
+      Toast.makeText(paramContext, paramContext.getString(2131436084), 0).show();
       a(paramQQAppInterface, paramEmoticon);
       VasReportUtils.a("emotionType", "emotionActionSend", "2", paramEmoticon.epId, paramEmoticon.eId, NetworkUtil.b(paramContext) + "", "", "", "", "");
       paramContext = new StringBuilder().append("sendEmosmMsg emoticon Encrypt Key is null.name:");
@@ -2362,7 +2362,7 @@ public class ChatActivityFacade
         break label176;
       }
     }
-    ThreadManager.post(new rsa(paramQQAppInterface, paramEmoticon, paramContext, paramSessionInfo), 5, null, false);
+    ThreadManager.post(new ruy(paramQQAppInterface, paramEmoticon, paramContext, paramSessionInfo), 5, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, long paramLong)
@@ -2412,7 +2412,7 @@ public class ChatActivityFacade
     }
     if (((paramEmoticon.jobType == 0) || (paramEmoticon.jobType == 2) || (paramEmoticon.jobType == 4)) && (!paramEmoticon.hasEncryptKey()))
     {
-      Toast.makeText(paramContext, paramContext.getString(2131436067), 0).show();
+      Toast.makeText(paramContext, paramContext.getString(2131436084), 0).show();
       a(paramQQAppInterface, paramEmoticon);
       VasReportUtils.a("emotionType", "emotionActionSend", "2", paramEmoticon.epId, paramEmoticon.eId, NetworkUtil.b(paramContext) + "", "", "", "", "");
       paramContext = new StringBuilder().append("sendEmosmMsg emoticon Encrypt Key is null.name:");
@@ -2442,7 +2442,7 @@ public class ChatActivityFacade
         break label176;
       }
     }
-    ThreadManager.post(new rsc(paramQQAppInterface, paramEmoticon, paramContext, paramSessionInfo, paramStickerInfo), 5, null, false);
+    ThreadManager.post(new rva(paramQQAppInterface, paramEmoticon, paramContext, paramSessionInfo, paramStickerInfo), 5, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString)
@@ -2465,7 +2465,7 @@ public class ChatActivityFacade
     ImageUtil.a(-1L, paramSessionInfo.jdField_a_of_type_Int, true, "image_send_prepare", "ChatActivity.sendIMEEXpression");
     if (!FileUtils.b(paramString))
     {
-      ChatActivityUtils.a(paramContext, 2131434514, 0);
+      ChatActivityUtils.a(paramContext, 2131434531, 0);
       ImageUtil.a(-1L, paramSessionInfo.jdField_a_of_type_Int, true, "image_send_prepared_failed", "ChatActivity.sendIMEEXpression");
       return;
     }
@@ -2481,23 +2481,23 @@ public class ChatActivityFacade
     PicReq localPicReq = PicBusiManager.a(2, paramInt);
     localPicReq.a(paramContext.a());
     PicBusiManager.a(localPicReq, paramQQAppInterface);
-    ThreadManager.post(new rsm(paramString, paramSessionInfo, paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new rvk(paramString, paramSessionInfo, paramQQAppInterface), 5, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt, long paramLong)
   {
     if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      ChatActivityUtils.a(paramContext, 2131432992, 0);
+      ChatActivityUtils.a(paramContext, 2131433009, 0);
       return;
     }
     paramSessionInfo = paramQQAppInterface.a().a(paramString, paramInt, paramLong);
     if (paramSessionInfo == null)
     {
-      ChatActivityUtils.a(paramContext, 2131434447, 0);
+      ChatActivityUtils.a(paramContext, 2131434464, 0);
       return;
     }
-    ThreadManager.post(new rsf(paramSessionInfo, paramQQAppInterface, paramString, paramInt, paramLong), 10, null, true);
+    ThreadManager.post(new rvd(paramSessionInfo, paramQQAppInterface, paramString, paramInt, paramLong), 10, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString, long paramLong)
@@ -2505,10 +2505,10 @@ public class ChatActivityFacade
     if ((paramSessionInfo.jdField_a_of_type_Int == 1) && (((TroopGagMgr)paramQQAppInterface.getManager(47)).a(paramSessionInfo.jdField_a_of_type_JavaLangString, true).jdField_a_of_type_Boolean) && ((paramContext instanceof BaseActivity)))
     {
       paramContext = (BaseActivity)paramContext;
-      QQToast.a(paramQQAppInterface.getApp(), 2131430256, 0).b(paramContext.getTitleBarHeight());
+      QQToast.a(paramQQAppInterface.getApp(), 2131430273, 0).b(paramContext.getTitleBarHeight());
       return;
     }
-    ThreadManager.post(new rse(paramQQAppInterface, paramSessionInfo, paramLong), 10, null, true);
+    ThreadManager.post(new rvc(paramQQAppInterface, paramSessionInfo, paramLong), 10, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, String paramString4)
@@ -2557,7 +2557,7 @@ public class ChatActivityFacade
     ImageUtil.a(-1L, paramSessionInfo.jdField_a_of_type_Int, true, "image_send_prepare", "ChatActivity.sendCustomEmotion");
     if (!FileUtils.b(paramString1))
     {
-      ChatActivityUtils.a(paramContext, 2131434514, 0);
+      ChatActivityUtils.a(paramContext, 2131434531, 0);
       if (paramBoolean1) {
         VasReportUtils.a("emotionType", "emotionActionSend", "6", "", "", "", "", "", "", "");
       }
@@ -2598,7 +2598,7 @@ public class ChatActivityFacade
       if (!paramBoolean1) {
         break;
       }
-      ThreadManager.post(new rsn(paramString1, paramSessionInfo, paramQQAppInterface), 5, null, false);
+      ThreadManager.post(new rvl(paramString1, paramSessionInfo, paramQQAppInterface), 5, null, false);
       return;
       i = 0;
       break label254;
@@ -2775,7 +2775,7 @@ public class ChatActivityFacade
     if (paramSessionInfo.jdField_a_of_type_Int != 0) {
       return;
     }
-    ThreadManager.post(new rsg(paramQQAppInterface, paramSessionInfo), 5, null, true);
+    ThreadManager.post(new rve(paramQQAppInterface, paramSessionInfo), 5, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForPic paramMessageForPic)
@@ -3085,7 +3085,7 @@ public class ChatActivityFacade
       return;
     }
     EmojiManager localEmojiManager = (EmojiManager)paramQQAppInterface.getManager(42);
-    ThreadManager.post(new rrz(paramEmoticon, (EmoticonManager)paramQQAppInterface.getManager(13), localEmojiManager), 5, null, true);
+    ThreadManager.post(new rux(paramEmoticon, (EmoticonManager)paramQQAppInterface.getManager(13), localEmojiManager), 5, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, MessageForPtt paramMessageForPtt, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2)
@@ -3095,7 +3095,7 @@ public class ChatActivityFacade
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, MessageForPtt paramMessageForPtt, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, DownCallBack paramDownCallBack)
   {
-    paramString = new rrr(paramMessageForPtt, paramQQAppInterface, paramString, paramBoolean2, paramDownCallBack, paramInt1, paramInt2);
+    paramString = new rup(paramMessageForPtt, paramQQAppInterface, paramString, paramBoolean2, paramDownCallBack, paramInt1, paramInt2);
     if (paramBoolean1)
     {
       paramString.run();
@@ -3145,7 +3145,7 @@ public class ChatActivityFacade
     while (MsgProxyUtils.a(paramInt) == 1032) {
       return;
     }
-    paramQQCustomMenu.a(2131375336, paramContext.getString(2131433621), 2130838305);
+    paramQQCustomMenu.a(2131375567, paramContext.getString(2131433638), 2130838309);
   }
   
   public static void a(List paramList)
@@ -3328,7 +3328,7 @@ public class ChatActivityFacade
       ((MessageHandler)paramQQAppInterface.a(0)).a(MessageHandler.c(paramMessageForArkApp.istroop), false, new Object[] { localObject, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
       return true;
     }
-    paramBoolean = ((LongTextMsgManager)paramQQAppInterface.getManager(165)).a(paramQQAppInterface, (byte[])localObject, paramQQAppInterface.getCurrentAccountUin(), paramMessageForArkApp.frienduin, paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq, 1035, new rsk(paramMessageForArkApp, paramQQAppInterface));
+    paramBoolean = ((LongTextMsgManager)paramQQAppInterface.getManager(165)).a(paramQQAppInterface, (byte[])localObject, paramQQAppInterface.getCurrentAccountUin(), paramMessageForArkApp.frienduin, paramMessageForArkApp.frienduin, paramMessageForArkApp.istroop, paramMessageForArkApp.uniseq, 1035, new rvi(paramMessageForArkApp, paramQQAppInterface));
     if (paramBoolean) {
       if (QLog.isColorLevel()) {
         QLog.d("ChatActivityFacade", 2, "sendLongTextMsg successful, uploadLongTextMsgPkg start!");
@@ -3374,7 +3374,7 @@ public class ChatActivityFacade
       ((MessageHandler)paramQQAppInterface.a(0)).a(MessageHandler.c(paramMessageForArkBabyqReply.istroop), false, new Object[] { str, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
       return true;
     }
-    ((LongTextMsgManager)paramQQAppInterface.getManager(165)).a(paramQQAppInterface, arrayOfByte, str, paramMessageForArkBabyqReply.frienduin, paramMessageForArkBabyqReply.frienduin, paramMessageForArkBabyqReply.istroop, paramMessageForArkBabyqReply.uniseq, 1035, new rsl(paramMessageForArkBabyqReply, paramQQAppInterface));
+    ((LongTextMsgManager)paramQQAppInterface.getManager(165)).a(paramQQAppInterface, arrayOfByte, str, paramMessageForArkBabyqReply.frienduin, paramMessageForArkBabyqReply.frienduin, paramMessageForArkBabyqReply.istroop, paramMessageForArkBabyqReply.uniseq, 1035, new rvj(paramMessageForArkBabyqReply, paramQQAppInterface));
     return true;
   }
   
@@ -3399,7 +3399,7 @@ public class ChatActivityFacade
     {
       return paramQQAppInterface;
       paramContext = a(paramQQAppInterface, paramSessionInfo, paramString, paramArrayList, paramSendMsgParams);
-      ThreadManager.post(new rrt(paramSendMsgParams, paramQQAppInterface, paramSessionInfo), 8, null, true);
+      ThreadManager.post(new rur(paramSendMsgParams, paramQQAppInterface, paramSessionInfo), 8, null, true);
       paramQQAppInterface = paramContext;
     } while (!QLog.isColorLevel());
     QLog.d("SendMsgBtn", 2, " sendMessage end currenttime:" + System.currentTimeMillis());
@@ -3762,13 +3762,13 @@ public class ChatActivityFacade
   {
     if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      ChatActivityUtils.a(paramContext, 2131432992, 0);
+      ChatActivityUtils.a(paramContext, 2131433009, 0);
       return;
     }
     MessageRecord localMessageRecord = paramQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramLong);
     if (localMessageRecord == null)
     {
-      ChatActivityUtils.a(paramContext, 2131434447, 0);
+      ChatActivityUtils.a(paramContext, 2131434464, 0);
       return;
     }
     paramQQAppInterface.a().b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramLong);
@@ -3786,7 +3786,7 @@ public class ChatActivityFacade
     if (paramSessionInfo.jdField_a_of_type_Int != 0) {
       return;
     }
-    ThreadManager.post(new rsh(paramQQAppInterface, paramSessionInfo), 5, null, true);
+    ThreadManager.post(new rvf(paramQQAppInterface, paramSessionInfo), 5, null, true);
   }
   
   private static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AIONewestFeedRsp paramAIONewestFeedRsp)
@@ -3849,7 +3849,7 @@ public class ChatActivityFacade
       QLog.i("ChatActivityFacade.QZoneFeeds", 1, "latestSignTime:" + l2 + ",feedInfo.uTime:" + paramAIONewestFeedRsp.uTime + ",interval time < " + l1 + ",don't show qzone feed message");
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new rsj(paramQQAppInterface, paramSessionInfo, paramAIONewestFeedRsp, (String)localObject));
+    ThreadManager.getSubThreadHandler().post(new rvh(paramQQAppInterface, paramSessionInfo, paramAIONewestFeedRsp, (String)localObject));
   }
   
   public static void b(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
@@ -4050,14 +4050,14 @@ public class ChatActivityFacade
     if (paramSessionInfo.jdField_a_of_type_Int != 0) {
       return;
     }
-    ThreadManager.post(new rsi(paramQQAppInterface, paramSessionInfo), 5, null, true);
+    ThreadManager.post(new rvg(paramQQAppInterface, paramSessionInfo), 5, null, true);
   }
   
   public static void e(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     MessageRecord localMessageRecord = MessageRecordFactory.a(-4005);
     long l = MessageCache.a();
-    localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getContext().getString(2131433706), l, -4005, paramSessionInfo.jdField_a_of_type_Int, l);
+    localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getContext().getString(2131433723), l, -4005, paramSessionInfo.jdField_a_of_type_Int, l);
     localMessageRecord.isread = true;
     if (!MessageHandlerUtils.a(paramQQAppInterface, localMessageRecord, false)) {
       paramQQAppInterface.a().a(localMessageRecord, localMessageRecord.selfuin);

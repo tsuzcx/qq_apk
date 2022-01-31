@@ -58,7 +58,7 @@ public class ScaleProcessor
     Object localObject1 = Bitmap.Config.ARGB_8888;
     Object localObject2 = paramBitmapReference.getConfig();
     if (localObject2 != null) {
-      switch (pgo.a[localObject2.ordinal()])
+      switch (pii.a[localObject2.ordinal()])
       {
       default: 
         localObject1 = Bitmap.Config.ARGB_8888;

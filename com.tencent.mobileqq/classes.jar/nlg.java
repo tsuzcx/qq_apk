@@ -1,30 +1,27 @@
-import com.tencent.biz.qqstory.playmode.util.MultiGroupVideoDataProvider;
-import com.tencent.biz.qqstory.playmode.util.MultiGroupVideoDataProvider.DataObserver;
-import com.tencent.biz.qqstory.playmode.util.VideoData;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class nlg
-  implements Runnable
+  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public nlg(MultiGroupVideoDataProvider paramMultiGroupVideoDataProvider, VideoData paramVideoData) {}
+  public nlg(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode, BatchGetVideoInfo paramBatchGetVideoInfo, Bundle paramBundle) {}
   
-  public void run()
+  public void a()
   {
-    int i = 0;
-    try
-    {
-      while (i < this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMultiGroupVideoDataProvider.c.size())
-      {
-        ((MultiGroupVideoDataProvider.DataObserver)this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMultiGroupVideoDataProvider.c.get(i)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilVideoData);
-        i += 1;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    ThreadManager.getUIHandler().post(new nlj(this));
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildShareGroupHotSortPlayMode.a.post(new nlh(this, paramArrayList));
   }
 }
 

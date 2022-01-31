@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util.storage;
 
-import ahpz;
+import aieb;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -20,7 +20,7 @@ public class StorageManager
   static StorageManager jdField_a_of_type_ComTencentMobileqqShortvideoUtilStorageStorageManager;
   static final Object jdField_a_of_type_JavaLangObject = new Object();
   public static long b;
-  final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahpz(this);
+  final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aieb(this);
   public StorageManager.OnSdCardChangedListener a;
   public String a;
   HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();

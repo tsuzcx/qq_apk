@@ -1,30 +1,30 @@
-import com.tencent.open.appcommon.CallBackEvent;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.WebViewDownloadListener;
-import com.tencent.smtt.sdk.WebView;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
+@TargetApi(16)
 public class aktl
-  implements Runnable
+  implements BubblePopupWindow.OnDismissListener
 {
-  public aktl(WebViewDownloadListener paramWebViewDownloadListener, WebView paramWebView, String paramString) {}
+  aktl(ContextMenuTextView paramContextMenuTextView) {}
   
-  public void run()
+  public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (CallBackEvent.a().a())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      return;
+    if (Build.VERSION.SDK_INT < 16) {
+      ContextMenuTextView.a(this.a, null);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      LogUtility.a(WebViewDownloadListener.jdField_a_of_type_JavaLangString, "doJsCallBack >>> ", localException);
+      this.a.a = null;
+      return;
+      ContextMenuTextView.b(this.a, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aktl
  * JD-Core Version:    0.7.0.1
  */

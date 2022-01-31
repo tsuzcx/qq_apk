@@ -1,19 +1,67 @@
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.Comparator;
 
 public final class ytt
-  implements Comparator
+  extends DownloadListener
 {
-  public int a(File paramFile1, File paramFile2)
+  public ytt(File paramFile) {}
+  
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if ((paramFile1.exists()) && (paramFile2.exists()))
+    super.onDone(paramDownloadTask);
+    if ((3 == paramDownloadTask.a()) && (this.a.exists())) {}
+    try
     {
-      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
-        return 1;
-      }
-      return -1;
+      ZipUtils.a(this.a, this.a.getParent() + File.separator);
+      label166:
+      return;
     }
-    return 0;
+    catch (Exception paramDownloadTask)
+    {
+      paramDownloadTask = paramDownloadTask;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + paramDownloadTask.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception paramDownloadTask)
+      {
+        return;
+      }
+    }
+    catch (OutOfMemoryError paramDownloadTask)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + paramDownloadTask.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception paramDownloadTask)
+      {
+        return;
+      }
+    }
+    finally
+    {
+      try
+      {
+        this.a.delete();
+        throw paramDownloadTask;
+      }
+      catch (Exception localException)
+      {
+        break label166;
+      }
+    }
   }
 }
 

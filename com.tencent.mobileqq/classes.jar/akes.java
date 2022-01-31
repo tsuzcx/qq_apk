@@ -1,34 +1,14 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import com.tencent.util.InputMethodUtil;
 
 public class akes
-  implements TextWatcher
+  implements Runnable
 {
-  public akes(ClearableEditText paramClearableEditText) {}
+  public akes(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    paramCharSequence = this.a.getText().toString();
-    if (this.a.isFocused())
-    {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
-      }
-    }
-    else {
-      return;
-    }
-    if ((ClearableEditText.a(this.a)) || (ClearableEditText.b(this.a)))
-    {
-      this.a.setClearButtonVisible(true);
-      return;
-    }
-    this.a.setClearButtonVisible(false);
+    InputMethodUtil.a(this.a.a);
   }
 }
 

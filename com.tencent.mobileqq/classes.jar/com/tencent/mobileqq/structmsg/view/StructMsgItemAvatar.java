@@ -66,7 +66,7 @@ public class StructMsgItemAvatar
         if (paramInt != 2) {
           break label594;
         }
-        paramBundle.setImageResource(2130845957);
+        paramBundle.setImageResource(2130846085);
       }
     }
     for (;;)
@@ -141,11 +141,11 @@ public class StructMsgItemAvatar
       break;
       label594:
       if (paramInt == 1) {
-        paramBundle.setImageResource(2130845959);
+        paramBundle.setImageResource(2130846087);
       } else if (paramInt == 3) {
-        paramBundle.setImageResource(2130845958);
+        paramBundle.setImageResource(2130846086);
       } else if (paramInt == 4) {
-        paramBundle.setImageResource(2130845956);
+        paramBundle.setImageResource(2130846084);
       }
     }
   }
@@ -232,7 +232,7 @@ public class StructMsgItemAvatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemAvatar
  * JD-Core Version:    0.7.0.1
  */

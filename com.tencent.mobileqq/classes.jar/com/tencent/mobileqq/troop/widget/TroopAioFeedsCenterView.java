@@ -37,7 +37,7 @@ public class TroopAioFeedsCenterView
   public TroopAioFeedsCenterView(Context paramContext)
   {
     super(paramContext);
-    inflate(paramContext, 2130970336, this);
+    inflate(paramContext, 2130970365, this);
   }
   
   public TroopAioFeedsCenterView(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean, TroopFeedsCenterLogic paramTroopFeedsCenterLogic)
@@ -69,10 +69,10 @@ public class TroopAioFeedsCenterView
   
   private void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    inflate(paramContext, 2130969841, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367365));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368221));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362710));
+    inflate(paramContext, 2130969855, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367433));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368288));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362728));
     if (NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("加载中，请稍候...");
@@ -247,7 +247,7 @@ public class TroopAioFeedsCenterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView
  * JD-Core Version:    0.7.0.1
  */

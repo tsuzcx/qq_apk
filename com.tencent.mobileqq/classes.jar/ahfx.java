@@ -1,65 +1,39 @@
-import com.tencent.mobileqq.app.GlobalSearchObserver;
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.redtouch.RedTouchWebviewHandler;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONObject;
 
-public class ahfx
-  extends GlobalSearchObserver
+class ahfx
+  implements Runnable
 {
-  public ahfx(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
+  ahfx(ahfw paramahfw, String paramString1, JSONObject paramJSONObject, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString2, String paramString3) {}
   
-  public void a(boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public void run()
   {
-    super.a(paramBoolean, paramArrayList1, paramArrayList2);
-    paramArrayList2 = (String)paramArrayList2.get(0);
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    if ((paramBoolean) && (paramArrayList1 != null) && (paramArrayList1.size() >= 1))
-    {
-      paramArrayList1 = ((ArrayList)paramArrayList1.get(0)).iterator();
-      while (paramArrayList1.hasNext())
-      {
-        Object localObject = (String)paramArrayList1.next();
-        if (((String)localObject).charAt(0) < '')
-        {
-          localObject = SQLiteFTSUtils.b((String)localObject);
-          if ((localObject != null) && (localObject.length > 0))
-          {
-            int j = localObject.length;
-            int i = 0;
-            while (i < j)
-            {
-              localStringBuilder.append(localObject[i]).append(" ");
-              i += 1;
-            }
-          }
-        }
-        else
-        {
-          localStringBuilder.append((String)localObject).append(" ");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
-      }
+    this.jdField_a_of_type_Ahfw.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+    Object localObject = "";
+    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null) {
+      localObject = RedTouchWebviewHandler.access$100(this.jdField_a_of_type_Ahfw.a, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.buffer.get());
     }
-    FTSMessageSearchEngine.a(this.a).put(paramArrayList2, localStringBuilder);
-    paramArrayList1 = FTSMessageSearchEngine.b(this.a).get(paramArrayList2);
-    if (paramArrayList1 != null) {
-      try
-      {
-        paramArrayList1.notify();
-        return;
-      }
-      finally {}
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("ret", String.valueOf(this.jdField_a_of_type_Int));
+    localBundle.putString("buffer", (String)localObject);
+    localBundle.putString("red", String.valueOf(this.jdField_b_of_type_Int));
+    localBundle.putStringArrayList("missions", this.jdField_a_of_type_JavaUtilArrayList);
+    localBundle.putString("path", this.jdField_b_of_type_JavaLangString);
+    localBundle.putString("serial", this.c);
+    localBundle.putString("callback", this.jdField_a_of_type_JavaLangString);
+    localObject = DataFactory.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahfw.a.mOnRemoteResp.key, localBundle);
+    this.jdField_a_of_type_Ahfw.a.sendRemoteReq((Bundle)localObject, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahfx
  * JD-Core Version:    0.7.0.1
  */

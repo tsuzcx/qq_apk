@@ -1,28 +1,15 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
 
 public class och
-  implements EditVideoPoiPickerCallback
+  extends DataSetObserver
 {
-  public och(EditVideoDoodle paramEditVideoDoodle) {}
+  public och(TagFlowLayout paramTagFlowLayout) {}
   
-  public void a()
+  public void onChanged()
   {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
-  }
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    if (paramTroopBarPOI != null)
-    {
-      this.a.a.setLocation(paramTroopBarPOI.a());
-      return;
-    }
-    this.a.a.setLocation("None for test!!");
+    super.onChanged();
+    TagFlowLayout.a(this.a);
   }
 }
 

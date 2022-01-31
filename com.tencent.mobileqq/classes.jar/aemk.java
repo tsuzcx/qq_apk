@@ -1,18 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.now.NowSmallVideoObserver;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
 
 public class aemk
-  extends NowSmallVideoObserver
+  implements DialogInterface.OnClickListener
 {
-  public aemk(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aemk(NearbyLikeLimitManager paramNearbyLikeLimitManager) {}
   
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(PlayOperationViewModel.b(this.a) + ""))) {
-      this.a.h(paramBoolean);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

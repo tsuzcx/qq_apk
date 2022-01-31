@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
 
-public class aaun
+class aaun
   implements Runnable
 {
-  public aaun(ARMapActivity paramARMapActivity, int paramInt) {}
+  aaun(aaul paramaaul, String paramString) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.isResume()) {
-      return;
-    }
-    SosoInterface.b(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a);
-    SosoInterface.jdField_a_of_type_Int = this.jdField_a_of_type_Int * 1000;
-    SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a);
+    this.jdField_a_of_type_Aaul.a.a.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

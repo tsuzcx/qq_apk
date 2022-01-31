@@ -1,44 +1,37 @@
-import android.view.View;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.QQBroadcastReceiver;
 
 public class aggp
-  implements ActionSheet.OnButtonClickListener
+  extends QQBroadcastReceiver
 {
-  public aggp(QCallDetailActivity paramQCallDetailActivity, VideoActionSheet paramVideoActionSheet) {}
+  public aggp(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (paramInt)
+    if (paramIntent == null) {}
+    do
     {
-    default: 
       return;
-    case 0: 
-      QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-      return;
-    }
-    if ((QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 1) || (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 2))
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.a, 2);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8006406", "0X8006406", 5, 0, "", "", "", "");
-      return;
-    }
-    if (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 5)
-    {
-      PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 1, 5);
-      return;
-    }
-    QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
+      paramAppRuntime = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
+      }
+      if ("com.tencent.mobileqq__alive".equals(paramAppRuntime))
+      {
+        ScanTorchActivity.a(this.a);
+        return;
+      }
+    } while (!"tencent.ar.worldcup.finishScanTorch".equals(paramAppRuntime));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggp
  * JD-Core Version:    0.7.0.1
  */

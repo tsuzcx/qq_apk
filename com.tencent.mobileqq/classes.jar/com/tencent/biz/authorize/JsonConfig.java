@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import klp;
+import kla;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +27,7 @@ public class JsonConfig
   {
     super(paramSharedPreferences, paramAbstractConfig);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(50);
-    this.jdField_a_of_type_AndroidOsHandler = new klp(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new kla(this, Looper.getMainLooper());
   }
   
   private void c()

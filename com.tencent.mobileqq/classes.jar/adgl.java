@@ -1,23 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
-public class adgl
-  implements DialogInterface.OnClickListener
+class adgl
+  implements FMSettingInterface.MoveFileCallback
 {
-  public adgl(HotPicPageView paramHotPicPageView, HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder) {}
+  adgl(adgk paramadgk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(-11);
-    QLog.d("HotPicManagerHotPicPageView", 2, "User disallowed downd");
+    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adgo(this));
+    FMSettings.a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings);
+    FileManagerReporter.a("0X8005BE2");
+    synchronized (BaseApplicationImpl.getContext())
+    {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b = false;
+      return;
+    }
   }
+  
+  public void a(int paramInt)
+  {
+    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adgn(this));
+    FMSettings.a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings);
+    synchronized (BaseApplicationImpl.getContext())
+    {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b = false;
+      return;
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adgm(this, paramLong1, paramLong2));
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgl
  * JD-Core Version:    0.7.0.1
  */

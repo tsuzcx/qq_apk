@@ -1,36 +1,22 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoStatusListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
-public class mnn
-  extends FastWebVideoFeedsPlayManager.VideoStatusListener
+class mnn
+  implements Runnable
 {
-  public mnn(FastWebVideoFeedsPlayActivity paramFastWebVideoFeedsPlayActivity) {}
+  mnn(mnm parammnm) {}
   
-  public void a(FastWebVideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayActivity", 2, "video play completion!, move to next position");
+    PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)BaseApplicationImpl.getApplication().getRuntime().getManager(55);
+    mnm.a(this.a, localPublicAccountDataManager.a(Long.valueOf(mnm.a(this.a))));
+    if ((!mnm.a(this.a)) && (mnm.b(this.a))) {
+      mnm.b(this.a, true);
     }
-    boolean bool = FastWebVideoFeedsPlayActivity.a(this.a);
-    if (FastWebVideoFeedsPlayActivity.a(this.a)) {
-      FastWebVideoFeedsPlayActivity.a(this.a).post(new mno(this));
-    }
-    if (FastWebVideoFeedsPlayActivity.b(this.a))
-    {
-      if (!bool) {
-        FastWebVideoFeedsPlayActivity.a(this.a);
-      }
-      FastWebVideoFeedsPlayActivity.a(this.a).a(5);
-    }
-    while (this.a.a() == FastWebVideoFeedsPlayActivity.a(this.a).size() - 1) {
-      return;
-    }
-    FastWebVideoFeedsPlayActivity.a(this.a).postDelayed(new mnp(this), 600L);
+    ThreadManager.getUIHandler().post(new mno(this));
   }
 }
 

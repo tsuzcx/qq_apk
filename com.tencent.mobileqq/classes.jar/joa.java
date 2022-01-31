@@ -1,43 +1,18 @@
-import android.os.Bundle;
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.av.service.IQQServiceCallback;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.smallscreen.SmallScreenDialogActivity;
+import com.tencent.av.smallscreen.SmallScreenUtils;
 
-class joa
-  extends ProtoUtils.TroopProtocolObserver
+public class joa
+  extends BroadcastReceiver
 {
-  joa(jnz paramjnz, String paramString, int paramInt) {}
+  public joa(SmallScreenDialogActivity paramSmallScreenDialogActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_Jnz.a.a)
-    {
-      int j = this.jdField_a_of_type_Jnz.a.a.beginBroadcast();
-      int i = 0;
-      for (;;)
-      {
-        if (i < j) {
-          try
-          {
-            ((IQQServiceCallback)this.jdField_a_of_type_Jnz.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
-            i += 1;
-          }
-          catch (RemoteException paramArrayOfByte)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
-            }
-          }
-        }
-      }
-      this.jdField_a_of_type_Jnz.a.a.finishBroadcast();
-      return;
+    if ((paramIntent.getAction().equals("tencent.video.v2q.SmallScreenState")) && (SmallScreenUtils.c(paramContext))) {
+      this.a.finish();
     }
   }
 }

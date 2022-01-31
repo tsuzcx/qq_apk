@@ -1,20 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
 
 public class wkn
   implements Runnable
 {
-  public wkn(PhoneContactFragment paramPhoneContactFragment) {}
+  public wkn(NotificationView paramNotificationView) {}
   
   public void run()
   {
-    if (PhoneContactFragment.a(this.a) == null) {
-      PhoneContactFragment.a(this.a, (PhoneContactManagerImp)this.a.a.getManager(10));
+    if (this.a.a != null) {
+      this.a.a.a().a().c();
     }
-    boolean bool = PhoneContactFragment.a(this.a).f();
-    PhoneContactFragment.a(this.a).post(new wko(this, bool));
   }
 }
 

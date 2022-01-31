@@ -4,8 +4,8 @@ import EncounterSvc.RespEncounterInfo;
 import EncounterSvc.RishState;
 import QQService.VipBaseInfo;
 import QQService.VipOpenInfo;
-import afmq;
-import afmr;
+import afzw;
+import afzx;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -65,9 +65,9 @@ public class ChatPushCarrierHelper
   public ChatPushCarrierHelper(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970441, null);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370708));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370707));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970482, null);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370848));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370847));
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this.jdField_a_of_type_AndroidContentContext, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app);
@@ -76,7 +76,7 @@ public class ChatPushCarrierHelper
     paramContext = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.getApplication().getSharedPreferences("sp_nearbyrecommender", 0);
     if (paramContext != null)
     {
-      paramContext = paramContext.getString("key_nearbyrecommender_title", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131437397));
+      paramContext = paramContext.getString("key_nearbyrecommender_title", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131437414));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext);
     }
   }
@@ -84,7 +84,7 @@ public class ChatPushCarrierHelper
   public static void a(VipBaseInfo paramVipBaseInfo, ImageView paramImageView, SingleLineTextView paramSingleLineTextView)
   {
     paramImageView.setVisibility(8);
-    paramSingleLineTextView.setTextColor(paramSingleLineTextView.getResources().getColorStateList(2131494250));
+    paramSingleLineTextView.setTextColor(paramSingleLineTextView.getResources().getColorStateList(2131494257));
     if ((paramVipBaseInfo != null) && (paramVipBaseInfo.mOpenInfo != null))
     {
       VipOpenInfo localVipOpenInfo = (VipOpenInfo)paramVipBaseInfo.mOpenInfo.get(Integer.valueOf(3));
@@ -92,8 +92,8 @@ public class ChatPushCarrierHelper
         break label83;
       }
       paramImageView.setVisibility(0);
-      paramImageView.setImageResource(2130845982);
-      paramSingleLineTextView.setTextColor(paramSingleLineTextView.getResources().getColorStateList(2131494295));
+      paramImageView.setImageResource(2130846110);
+      paramSingleLineTextView.setTextColor(paramSingleLineTextView.getResources().getColorStateList(2131494302));
     }
     label83:
     do
@@ -102,8 +102,8 @@ public class ChatPushCarrierHelper
       paramVipBaseInfo = (VipOpenInfo)paramVipBaseInfo.mOpenInfo.get(Integer.valueOf(1));
     } while ((paramVipBaseInfo == null) || (!paramVipBaseInfo.bOpen));
     paramImageView.setVisibility(0);
-    paramImageView.setImageResource(2130846210);
-    paramSingleLineTextView.setTextColor(paramSingleLineTextView.getResources().getColorStateList(2131494295));
+    paramImageView.setImageResource(2130846338);
+    paramSingleLineTextView.setTextColor(paramSingleLineTextView.getResources().getColorStateList(2131494302));
   }
   
   private void a(SingleLineTextView paramSingleLineTextView, int paramInt)
@@ -153,7 +153,7 @@ public class ChatPushCarrierHelper
   
   public View a(RespEncounterInfo paramRespEncounterInfo)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969109, null);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969108, null);
     if ((localView != null) && (paramRespEncounterInfo != null))
     {
       localView.setTag(paramRespEncounterInfo);
@@ -185,7 +185,7 @@ public class ChatPushCarrierHelper
           if ((localBoolean == null) || (!localBoolean.booleanValue()))
           {
             this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramRespEncounterInfo.tiny_id), Boolean.valueOf(true));
-            ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.a(new afmq(this, str, paramRespEncounterInfo));
+            ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.a(new afzw(this, str, paramRespEncounterInfo));
           }
         }
         paramRespEncounterInfo = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(32, str, 202);
@@ -218,7 +218,7 @@ public class ChatPushCarrierHelper
         if ((localBoolean == null) || (!localBoolean.booleanValue()))
         {
           this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(paramRespEncounterInfo.lEctID), Boolean.valueOf(true));
-          ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.a(new afmr(this, str, paramRespEncounterInfo));
+          ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app.a(new afzx(this, str, paramRespEncounterInfo));
         }
       }
       paramRespEncounterInfo = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(32, str, 200);
@@ -237,22 +237,22 @@ public class ChatPushCarrierHelper
   
   public void a(View paramView, RespEncounterInfo paramRespEncounterInfo)
   {
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131362701);
-    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131363873);
-    Object localObject3 = (ImageView)paramView.findViewById(2131365180);
-    ImageView localImageView5 = (ImageView)paramView.findViewById(2131365175);
-    Object localObject1 = (TextView)paramView.findViewById(2131365176);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131364842);
-    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131364847);
-    Object localObject2 = (SingleLineTextView)paramView.findViewById(2131365193);
-    View localView2 = paramView.findViewById(2131365196);
-    TextView localTextView = (TextView)paramView.findViewById(2131365197);
-    ImageView localImageView3 = (ImageView)paramView.findViewById(2131365190);
-    ImageView localImageView4 = (ImageView)paramView.findViewById(2131370392);
-    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131365182);
-    View localView1 = paramView.findViewById(2131365181);
-    paramView = (SingleLineTextView)paramView.findViewById(2131365184);
-    this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494250);
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131362719);
+    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131363896);
+    Object localObject3 = (ImageView)paramView.findViewById(2131365202);
+    ImageView localImageView5 = (ImageView)paramView.findViewById(2131365197);
+    Object localObject1 = (TextView)paramView.findViewById(2131365198);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131364864);
+    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131364869);
+    Object localObject2 = (SingleLineTextView)paramView.findViewById(2131365215);
+    View localView2 = paramView.findViewById(2131365218);
+    TextView localTextView = (TextView)paramView.findViewById(2131365219);
+    ImageView localImageView3 = (ImageView)paramView.findViewById(2131365212);
+    ImageView localImageView4 = (ImageView)paramView.findViewById(2131370533);
+    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131365204);
+    View localView1 = paramView.findViewById(2131365203);
+    paramView = (SingleLineTextView)paramView.findViewById(2131365206);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494257);
     label222:
     int i;
     if (!TextUtils.isEmpty(paramRespEncounterInfo.strNick))
@@ -271,8 +271,8 @@ public class ChatPushCarrierHelper
       if (paramRespEncounterInfo.cSex != 1) {
         break label776;
       }
-      localImageView5.setBackgroundResource(2130843038);
-      localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842744);
+      localImageView5.setBackgroundResource(2130843137);
+      localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842843);
       ((TextView)localObject1).setBackgroundDrawable(TroopUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), -17883, (Drawable)localObject3));
       ((TextView)localObject1).setText("女神");
       label308:
@@ -336,7 +336,7 @@ public class ChatPushCarrierHelper
           switch (paramRespEncounterInfo.charm_level)
           {
           default: 
-            localImageView4.setImageResource(2130842659);
+            localImageView4.setImageResource(2130842758);
             label672:
             if (AppSetting.b) {
               localImageView4.setContentDescription("拥有魅力勋章");
@@ -374,8 +374,8 @@ public class ChatPushCarrierHelper
         ((ImageView)localObject3).setVisibility(8);
         break label222;
         label776:
-        localImageView5.setBackgroundResource(2130843038);
-        localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842744);
+        localImageView5.setBackgroundResource(2130843137);
+        localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842843);
         ((TextView)localObject1).setBackgroundDrawable(TroopUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), -17883, (Drawable)localObject3));
         ((TextView)localObject1).setText("男神");
         break label308;
@@ -400,11 +400,11 @@ public class ChatPushCarrierHelper
         label941:
         paramView.setVisibility(8);
         break label612;
-        localImageView4.setImageResource(2130842661);
+        localImageView4.setImageResource(2130842760);
         break label672;
-        localImageView4.setImageResource(2130842662);
+        localImageView4.setImageResource(2130842761);
         break label672;
-        localImageView4.setImageResource(2130842663);
+        localImageView4.setImageResource(2130842762);
         break label672;
         label983:
         if (localImageView4.getVisibility() == 4) {
@@ -451,7 +451,7 @@ public class ChatPushCarrierHelper
       {
         localIntent.putExtra("uintype", 0);
         localIntent.putExtra("rich_accost_sig", ((RespEncounterInfo)localObject).sig);
-        paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131437735);
+        paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131437752);
         if (!"0".equals(String.valueOf(((RespEncounterInfo)localObject).cSex))) {
           break label279;
         }

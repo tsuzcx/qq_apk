@@ -47,7 +47,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mvm;
+import mwt;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
@@ -133,7 +133,7 @@ public class ReadinJoyActionUtil
     if (ReadInJoyBaseAdapter.a(paramArticleInfo))
     {
       localObject1 = localObject2;
-      if (!ReadInJoyBaseAdapter.c(paramArticleInfo)) {
+      if (!ReadInJoyBaseAdapter.d(paramArticleInfo)) {
         localObject1 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.a.get(0)).b;
       }
     }
@@ -198,7 +198,7 @@ public class ReadinJoyActionUtil
           paramReadInJoyBaseAdapter = paramArticleInfo.a((String)localObject1);
           if ((paramReadInJoyBaseAdapter != null) && (paramReadInJoyBaseAdapter.size() > 0))
           {
-            ThreadManager.post(new mvm(paramArticleInfo, (PreloadManager.ImgStruct)paramReadInJoyBaseAdapter.get(0)), 5, null, false);
+            ThreadManager.post(new mwt(paramArticleInfo, (PreloadManager.ImgStruct)paramReadInJoyBaseAdapter.get(0)), 5, null, false);
             if (paramReadInJoyBaseAdapter.size() <= 1) {
               break label727;
             }
@@ -307,9 +307,17 @@ public class ReadinJoyActionUtil
     if ((paramArticleInfo instanceof AdvertisementInfo))
     {
       if (paramArticleInfo.mChannelID == 56L) {
-        NativeAdUtils.a(null, paramContext, NativeAdUtils.jdField_a_of_type_Int, NativeAdUtils.j, (AdvertisementInfo)paramArticleInfo, null, 0);
+        NativeAdUtils.a(null, paramContext, NativeAdUtils.jdField_a_of_type_Int, NativeAdUtils.l, (AdvertisementInfo)paramArticleInfo, null, 0L);
       }
-      ReadInJoyLogicEngine.a().a(2, (AdvertisementInfo)paramArticleInfo);
+    }
+    else {
+      return;
+    }
+    if (ReadInJoyUtils.a(paramArticleInfo)) {}
+    for (paramInt = NativeAdUtils.o;; paramInt = NativeAdUtils.k)
+    {
+      NativeAdUtils.a(null, paramContext, NativeAdUtils.jdField_a_of_type_Int, paramInt, (AdvertisementInfo)paramArticleInfo, null, 0L);
+      return;
     }
   }
   
@@ -431,9 +439,17 @@ public class ReadinJoyActionUtil
     if ((paramArticleInfo instanceof AdvertisementInfo))
     {
       if (paramArticleInfo.mChannelID == 56L) {
-        NativeAdUtils.a(null, paramActivity, NativeAdUtils.jdField_a_of_type_Int, NativeAdUtils.j, (AdvertisementInfo)paramArticleInfo, null, 0);
+        NativeAdUtils.a(null, paramActivity, NativeAdUtils.jdField_a_of_type_Int, NativeAdUtils.l, (AdvertisementInfo)paramArticleInfo, null, 0L);
       }
-      ReadInJoyLogicEngine.a().a(7, (AdvertisementInfo)paramArticleInfo);
+    }
+    else {
+      return;
+    }
+    if (ReadInJoyUtils.a(paramArticleInfo)) {}
+    for (paramInt = NativeAdUtils.o;; paramInt = NativeAdUtils.k)
+    {
+      NativeAdUtils.a(null, paramActivity, NativeAdUtils.jdField_a_of_type_Int, paramInt, (AdvertisementInfo)paramArticleInfo, null, 0L);
+      return;
     }
   }
 }

@@ -1,24 +1,17 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
 
 class lbm
-  implements Animation.AnimationListener
+  extends AnimatorListenerAdapter
 {
   lbm(lbl paramlbl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ReadInJoyNaviController.a(this.a.a, true);
-    ReadInJoyNaviController.a(this.a.a).setAlpha(0.0F);
-    ReadInJoyNaviController.a(this.a.a).removeView(ReadInJoyNaviController.a(this.a.a));
+    this.a.a.a.setVisibility(8);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

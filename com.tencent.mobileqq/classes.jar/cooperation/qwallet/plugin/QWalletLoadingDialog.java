@@ -63,12 +63,12 @@ public class QWalletLoadingDialog
     super.requestWindowFeature(1);
     this.mContext = paramContext;
     Object localObject = getWindow();
-    paramContext = LayoutInflater.from(paramContext).inflate(2130970991, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130971039, null);
     setContentView(paramContext);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       ((Window)localObject).addFlags(67108864);
-      new SystemBarCompact(this, true, this.mContext.getResources().getColor(2131494247)).init();
+      new SystemBarCompact(this, true, this.mContext.getResources().getColor(2131494254)).init();
       paramContext.setFitsSystemWindows(true);
       paramContext.setPadding(0, ImmersiveUtils.a(this.mContext), 0, 0);
     }
@@ -77,25 +77,25 @@ public class QWalletLoadingDialog
     localLayoutParams.height = -1;
     ((Window)localObject).setAttributes(localLayoutParams);
     setCanceledOnTouchOutside(false);
-    localObject = (TextView)paramContext.findViewById(2131363227);
+    localObject = (TextView)paramContext.findViewById(2131363245);
     if (localObject != null)
     {
       ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(2131433681);
+      ((TextView)localObject).setText(2131433698);
     }
-    this.mCenterView = ((TextView)paramContext.findViewById(2131363363));
+    this.mCenterView = ((TextView)paramContext.findViewById(2131363381));
     if (this.mCenterView != null)
     {
       this.mCenterView.setVisibility(0);
-      this.mCenterView.setText(2131432119);
+      this.mCenterView.setText(2131432136);
     }
-    paramContext = (TextView)paramContext.findViewById(2131364614);
+    paramContext = (TextView)paramContext.findViewById(2131364638);
     if (paramContext != null)
     {
       paramContext.setVisibility(0);
-      paramContext.setText(2131432136);
+      paramContext.setText(2131432153);
     }
-    paramContext = (ImageView)super.findViewById(2131368042);
+    paramContext = (ImageView)super.findViewById(2131368109);
     localObject = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
     ((TranslateAnimation)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
     ((TranslateAnimation)localObject).setDuration(800L);
@@ -107,7 +107,7 @@ public class QWalletLoadingDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    this.mAnimatedDrawale = ((Animatable)this.mContext.getResources().getDrawable(2130838596));
+    this.mAnimatedDrawale = ((Animatable)this.mContext.getResources().getDrawable(2130838600));
     if ((this.mAnimatedDrawale != null) && (this.mCenterView != null))
     {
       this.mCenterView.setCompoundDrawablePadding(10);

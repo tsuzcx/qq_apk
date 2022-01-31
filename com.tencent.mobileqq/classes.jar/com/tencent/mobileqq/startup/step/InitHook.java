@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahqo;
+import aieq;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -222,7 +222,7 @@ public class InitHook
     {
       b();
       return true;
-      DeviceProfileManager.a(new ahqo(null));
+      DeviceProfileManager.a(new aieq(null));
       continue;
       c();
     }
@@ -230,7 +230,7 @@ public class InitHook
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitHook
  * JD-Core Version:    0.7.0.1
  */

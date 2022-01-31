@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.imaxad;
 
-import adiv;
-import adiw;
+import adsu;
+import adsv;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,7 +73,7 @@ public class ImaxAdRecentUserManager
     localIntent.putExtra("is_first_open_imax_ad", RecentUtil.c);
     RecentUtil.c = false;
     paramContext.startActivity(localIntent);
-    ThreadManager.post(new adiw(this, paramQQAppInterface, paramString, paramInt, paramAdvertisementItem), 5, null, false);
+    ThreadManager.post(new adsv(this, paramQQAppInterface, paramString, paramInt, paramAdvertisementItem), 5, null, false);
     AdvertisementRecentUserManager.a().a(paramQQAppInterface, 2, paramAdvertisementItem);
   }
   
@@ -224,7 +224,7 @@ public class ImaxAdRecentUserManager
     if (QLog.isColorLevel()) {
       QLog.d("ImaxAdvertisement", 2, "dodelete ExpireItem uin:" + paramRecentUser.uin);
     }
-    ThreadManager.executeOnFileThread(new adiv(this, paramBoolean, paramQQAppInterface, paramAdvertisementItem, paramRecentUser));
+    ThreadManager.executeOnFileThread(new adsu(this, paramBoolean, paramQQAppInterface, paramAdvertisementItem, paramRecentUser));
     a(paramRecentUser.uin);
   }
   
@@ -324,7 +324,7 @@ public class ImaxAdRecentUserManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdRecentUserManager
  * JD-Core Version:    0.7.0.1
  */

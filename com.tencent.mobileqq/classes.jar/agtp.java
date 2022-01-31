@@ -1,36 +1,38 @@
-import com.tencent.av.AVLog;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.ptt.player.AmrPlayer;
+import com.tencent.mobileqq.ptt.player.IPttPlayerListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
 public class agtp
-  implements INetEngine.INetEngineListener
+  extends Thread
 {
-  public agtp(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
+  private agtp(AmrPlayer paramAmrPlayer) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void run()
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    if (paramNetResp.jdField_a_of_type_Int != 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("AmrPlayer", 2, "playAmr " + AmrPlayer.a(this.a));
+    }
+    try
     {
-      AVLog.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramNetResp.b + ", errorMsg: " + paramNetResp.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.c);
+      AmrPlayer.a(this.a).b();
+      AmrPlayer.a(this.a).start();
+      if (AmrPlayer.a(this.a, AmrPlayer.a(this.a) - 1000) > 0) {
+        AmrPlayer.a(this.a).seekTo(AmrPlayer.a(this.a));
+      }
       return;
     }
-    if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.a(this.a) != null)) {
-      CaptureVideoFilterManager.a(this.a).a(true);
+    catch (Exception localException)
+    {
+      while (AmrPlayer.a(this.a) == null) {}
+      AmrPlayer.a(this.a).sendEmptyMessage(1);
     }
-    AVLog.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agtp
  * JD-Core Version:    0.7.0.1
  */

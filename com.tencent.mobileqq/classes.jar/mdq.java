@@ -1,28 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.OnPlayStateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.AdapterEventListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
 public class mdq
-  implements Runnable
+  implements VideoFeedsAdapter.AdapterEventListener
 {
-  public mdq(VideoPlayManager paramVideoPlayManager, VideoPlayManager.VideoPlayParam paramVideoPlayParam, VideoPlayerWrapper paramVideoPlayerWrapper, int paramInt1, int paramInt2, Object paramObject) {}
+  public mdq(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void run()
+  public void a()
   {
-    if (VideoPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager) != null)
-    {
-      Iterator localIterator = VideoPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager).iterator();
-      while (localIterator.hasNext())
-      {
-        VideoPlayManager.OnPlayStateListener localOnPlayStateListener = (VideoPlayManager.OnPlayStateListener)localIterator.next();
-        if (localOnPlayStateListener != null) {
-          localOnPlayStateListener.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
-        }
-      }
-    }
+    VideoFeedsPlayActivity.c(this.a);
   }
 }
 

@@ -1,20 +1,17 @@
-import com.dataline.mpfile.MpfileTaskRecord;
-import com.dataline.util.WaitEvent;
-import com.tencent.mobileqq.app.proxy.MpfileTaskProxy;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.app.message.BaseMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import java.util.Map;
 
-public class zsd
+class zsd
   implements Runnable
 {
-  public zsd(MpfileTaskProxy paramMpfileTaskProxy, Entity paramEntity, ProxyListener paramProxyListener, WaitEvent paramWaitEvent) {}
+  zsd(zsc paramzsc) {}
   
   public void run()
   {
-    MpfileTaskRecord localMpfileTaskRecord = ((MpfileTaskRecord)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).clone();
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyMpfileTaskProxy.a.a(String.valueOf(0), 0, MpfileTaskRecord.tableName(), localMpfileTaskRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
-    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+    if (this.a.a.a.b.containsKey(this.a.b)) {
+      this.a.a.a.b.remove(this.a.b);
+    }
   }
 }
 

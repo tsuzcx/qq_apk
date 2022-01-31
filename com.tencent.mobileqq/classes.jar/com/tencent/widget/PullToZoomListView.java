@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import alnp;
-import alnq;
+import amdf;
+import amdg;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -21,7 +21,7 @@ public class PullToZoomListView
   private static final Interpolator a;
   protected float a;
   protected int a;
-  protected alnq a;
+  protected amdg a;
   public View a;
   public FrameLayout a;
   public boolean a;
@@ -34,7 +34,7 @@ public class PullToZoomListView
   
   static
   {
-    jdField_a_of_type_AndroidViewAnimationInterpolator = new alnp();
+    jdField_a_of_type_AndroidViewAnimationInterpolator = new amdf();
   }
   
   public PullToZoomListView(Context paramContext)
@@ -78,7 +78,7 @@ public class PullToZoomListView
     if ((this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() >= this.jdField_b_of_type_Int) && (QLog.isColorLevel())) {
       QLog.d("PullToZoomListView", 2, "endScraling");
     }
-    this.jdField_a_of_type_Alnq.a(200L);
+    this.jdField_a_of_type_Amdg.a(200L);
   }
   
   private void a(Context paramContext)
@@ -86,7 +86,7 @@ public class PullToZoomListView
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
     this.d = localDisplayMetrics.heightPixels;
-    this.jdField_a_of_type_Alnq = new alnq(this);
+    this.jdField_a_of_type_Amdg = new amdg(this);
   }
   
   private void a(View paramView)
@@ -134,8 +134,8 @@ public class PullToZoomListView
     for (;;)
     {
       return super.dispatchTouchEvent(paramMotionEvent);
-      if (!this.jdField_a_of_type_Alnq.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Alnq.a();
+      if (!this.jdField_a_of_type_Amdg.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Amdg.a();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getY();
       this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
@@ -231,7 +231,7 @@ public class PullToZoomListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.PullToZoomListView
  * JD-Core Version:    0.7.0.1
  */

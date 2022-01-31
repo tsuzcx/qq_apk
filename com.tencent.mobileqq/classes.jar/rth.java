@@ -1,31 +1,64 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.EmoticonObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.NearbyRelevantHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.Map;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
-public final class rth
-  implements DialogInterface.OnClickListener
+public class rth
+  extends EmoticonObserver
 {
-  public rth(QQAppInterface paramQQAppInterface, boolean paramBoolean1, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean2, boolean paramBoolean3, ChatActivityUtils.StartVideoListener paramStartVideoListener, String paramString5, Map paramMap, boolean paramBoolean4, boolean paramBoolean5) {}
+  public rth(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    NearbyRelevantHandler localNearbyRelevantHandler = (NearbyRelevantHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(66);
-    if (localNearbyRelevantHandler != null) {
-      localNearbyRelevantHandler.a((byte)0);
+    switch (paramInt)
+    {
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true);
-    if (this.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    do
+    {
+      do
+      {
+        return;
+      } while ((BaseChatPie.a(this.a) == null) || (paramObject == null) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx == null));
+      localObject = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+      paramObject = (EmoticonResp)paramObject;
+      BaseChatPie.a(this.a).a(paramBoolean, paramInt, paramObject, (String)localObject);
+      return;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      }
+    } while (paramObject == null);
+    Object localObject = (EmoticonResp)paramObject;
+    int i;
+    if (paramBoolean)
+    {
+      i = ((EmoticonResp)localObject).delEpId;
+      if ((((EmoticonResp)localObject).keySeq == null) || (((EmoticonResp)localObject).keySeq.equals(""))) {
+        paramObject = "你暂时没有此表情的权限。";
+      }
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilMap, this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean, false);
-    paramDialogInterface.dismiss();
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(((EmoticonResp)localObject).emoticonId)) {
+        break label229;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("Q.aio.BaseChatPie", 2, "auth type emoticon id is null");
+      return;
+      paramObject = ((EmoticonResp)localObject).keySeq;
+      continue;
+      i = -404;
+      paramObject = "服务器忙，请稍后再试";
+    }
+    label229:
+    ((EmoticonManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(String.valueOf(((EmoticonResp)localObject).epId), ((EmoticonResp)localObject).emoticonId, new rti(this, paramInt, i, paramObject));
   }
 }
 

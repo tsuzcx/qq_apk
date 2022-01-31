@@ -1,13 +1,27 @@
-import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import dov.com.qq.im.capture.paster.PasterDataManager;
 
-class anmx
-  implements Runnable
+public class anmx
+  extends LbsManager.OnLocationListener
 {
-  anmx(anmv paramanmv) {}
-  
-  public void run()
+  public anmx(PasterDataManager paramPasterDataManager, String paramString)
   {
-    PoiListLayout.a(this.a.a, 1);
+    super(paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    super.a(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      SLog.b("PasterDataManager", "onLocationUpdate() latitude=" + paramSosoLbsInfo.a.a + " longitude=" + paramSosoLbsInfo.a.b);
+      this.a.e();
+      return;
+    }
+    SLog.b("PasterDataManager", "onLocationUpdate() error");
   }
 }
 

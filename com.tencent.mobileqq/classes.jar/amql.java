@@ -1,14 +1,39 @@
-import android.os.Bundle;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
+import cooperation.qqpim.QQPimBridgeActivity;
+import cooperation.qqpim.QQPimDefineList;
+import cooperation.qqpim.QQPimPluginLoadRunnable.IPluginLoadListener;
 
-class amql
-  implements Runnable
+public class amql
+  implements QQPimPluginLoadRunnable.IPluginLoadListener
 {
-  amql(amqk paramamqk, Bundle paramBundle) {}
+  public amql(QQPimBridgeActivity paramQQPimBridgeActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_Amqk.a.a(this.jdField_a_of_type_AndroidOsBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i(QQPimDefineList.a, 2, "QQPimBridgeActivity.hasInstalled()");
+    }
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(QQPimDefineList.a, 2, "QQPimBridgeActivity.downloadError()");
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    localMessage.arg1 = paramInt;
+    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
   }
 }
 

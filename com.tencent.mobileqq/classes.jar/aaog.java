@@ -1,18 +1,23 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
 
-public final class aaog
-  implements Runnable
+class aaog
+  implements ArkAppEventObserverManager.PositionCallback
 {
-  public aaog(String paramString) {}
+  aaog(aanw paramaanw, long paramLong) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("ArkAppLastUsedTime", 0).edit();
-    localEditor.putLong(this.a, System.currentTimeMillis());
-    localEditor.commit();
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aanw.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    ArkAppDeviceModule.a(this.jdField_a_of_type_Aanw.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

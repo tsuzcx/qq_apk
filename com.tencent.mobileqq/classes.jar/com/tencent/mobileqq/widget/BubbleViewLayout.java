@@ -69,7 +69,9 @@ public class BubbleViewLayout
     if (!this.jdField_b_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramFloat1, paramFloat2);
-      if (this.c) {
+      if (this.c)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPath.reset();
         this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
       }
       return;
@@ -83,7 +85,7 @@ public class BubbleViewLayout
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
       paramFloat2 = a(5.0F, localResources);
       if (!this.jdField_a_of_type_Boolean) {
-        break label260;
+        break label267;
       }
       this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
       f1 = a(14.0F, localResources);
@@ -104,7 +106,7 @@ public class BubbleViewLayout
       return;
       this.jdField_a_of_type_AndroidGraphicsRectF.set(f1, 0.0F, paramFloat1, paramFloat2);
       break;
-      label260:
+      label267:
       this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CCW);
       paramFloat1 = a(14.0F, localResources);
       f1 = a(8.0F, localResources);
@@ -166,7 +168,7 @@ public class BubbleViewLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BubbleViewLayout
  * JD-Core Version:    0.7.0.1
  */

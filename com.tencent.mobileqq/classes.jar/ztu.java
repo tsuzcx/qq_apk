@@ -1,35 +1,35 @@
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.PokeBigResHandler;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.app.message.ConversationFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.managers.DraftTextManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MsgAutoMonitorUtil;
+import com.tencent.widget.TraceUtils;
 
 public class ztu
   implements Runnable
 {
-  public ztu(PokeBigResHandler paramPokeBigResHandler) {}
+  public ztu(QQMessageFacade paramQQMessageFacade) {}
   
   public void run()
   {
-    PokeBigResHandler.a(true);
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.a.b.getApp());
-    String str = this.a.b.getAccount();
-    PokeBigResHandler.a(localSharedPreferences.getString(str + "_" + "aio_poke_res_url", ""));
-    PokeBigResHandler.b(localSharedPreferences.getString(str + "_" + "aio_poke_res_md5", ""));
-    if (TextUtils.isEmpty(PokeBigResHandler.a()))
-    {
-      PokeBigResHandler.a(false);
-      return;
+    TraceUtils.a("initMsgCache");
+    long l1 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.QQMessageFacade", 2, "before refreshCache");
     }
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = PokeBigResHandler.a(this.a);
-    localHttpNetReq.jdField_a_of_type_JavaLangString = PokeBigResHandler.a();
-    localHttpNetReq.jdField_a_of_type_Int = 0;
-    localHttpNetReq.c = (PokeBigResHandler.b() + "poke.zip");
-    ((OldHttpEngine)this.a.a.getNetEngine(0)).a(localHttpNetReq);
+    QQMessageFacade.a(this.a, DraftTextManager.a(QQMessageFacade.a(this.a)));
+    this.a.a().a();
+    this.a.d();
+    QQMessageFacade.a(this.a);
+    this.a.notifyObservers(new RecentUser());
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.msg.QQMessageFacade", 2, "after refreshCache");
+      long l2 = System.currentTimeMillis();
+      MsgAutoMonitorUtil.a().a("MSG_InitCostTime", l2 - l1 + "");
+    }
+    TraceUtils.a();
   }
 }
 

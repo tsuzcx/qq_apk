@@ -37,22 +37,22 @@ public class QIMAIOEffectCameraCaptureUnit
     this.jdField_a_of_type_Int = 1;
   }
   
-  public void L_()
+  public void A_()
   {
-    super.L_();
+    super.A_();
     CaptureFreqMonitor.jdField_a_of_type_DovComQqImCaptureUtilCaptureFreqMonitorItem.a(3, System.currentTimeMillis());
     CaptureFreqMonitor.a();
   }
   
   protected int a()
   {
-    return 2130970076;
+    return 2130970090;
   }
   
   public View a()
   {
     View localView = super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363969));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363993));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     return localView;
   }
@@ -62,6 +62,12 @@ public class QIMAIOEffectCameraCaptureUnit
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.jdField_a_of_type_AndroidWidgetTextView);
     return localArrayList;
+  }
+  
+  public void a()
+  {
+    super.a();
+    CaptureFreqMonitor.jdField_a_of_type_DovComQqImCaptureUtilCaptureFreqMonitorItem.a(2, System.currentTimeMillis());
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -116,12 +122,6 @@ public class QIMAIOEffectCameraCaptureUnit
     JumpUtil.a(this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a(), paramVideoCaptureResult, paramLocalMediaInfo, this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
   }
   
-  public void d()
-  {
-    super.d();
-    CaptureFreqMonitor.jdField_a_of_type_DovComQqImCaptureUtilCaptureFreqMonitorItem.a(2, System.currentTimeMillis());
-  }
-  
   protected void e()
   {
     super.e();
@@ -130,9 +130,9 @@ public class QIMAIOEffectCameraCaptureUnit
     }
   }
   
-  protected void g()
+  protected void f()
   {
-    super.g();
+    super.f();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }

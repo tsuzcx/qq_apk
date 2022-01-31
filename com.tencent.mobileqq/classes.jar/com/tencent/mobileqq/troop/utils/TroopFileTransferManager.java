@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajan;
-import ajap;
-import ajaq;
-import ajas;
-import ajat;
-import ajav;
-import ajay;
-import ajaz;
-import ajbb;
-import ajbd;
-import ajbe;
-import ajbf;
+import ajor;
+import ajot;
+import ajou;
+import ajow;
+import ajox;
+import ajoz;
+import ajpc;
+import ajpd;
+import ajpf;
+import ajph;
+import ajpi;
+import ajpj;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
@@ -65,19 +65,19 @@ public class TroopFileTransferManager
 {
   public static Map a;
   public long a;
-  private TroopFileProtocol.GetOneFileInfoObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$GetOneFileInfoObserver = new ajbd(this);
-  private TroopFileProtocol.ReqCopyToObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqCopyToObserver = new ajap(this);
-  private TroopFileProtocol.ReqDownloadFileObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqDownloadFileObserver = new ajbf(this);
-  private TroopFileProtocol.ReqFeedsObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqFeedsObserver = new ajbb(this);
-  private TroopFileProtocol.ReqResendFileObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqResendFileObserver = new ajay(this);
-  private TroopFileProtocol.ReqUploadFileObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqUploadFileObserver = new ajaz(this);
+  private TroopFileProtocol.GetOneFileInfoObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$GetOneFileInfoObserver = new ajph(this);
+  private TroopFileProtocol.ReqCopyToObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqCopyToObserver = new ajot(this);
+  private TroopFileProtocol.ReqDownloadFileObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqDownloadFileObserver = new ajpj(this);
+  private TroopFileProtocol.ReqFeedsObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqFeedsObserver = new ajpf(this);
+  private TroopFileProtocol.ReqResendFileObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqResendFileObserver = new ajpc(this);
+  private TroopFileProtocol.ReqUploadFileObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqUploadFileObserver = new ajpd(this);
   public QQAppInterface a;
   private TroopFileManager jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager;
   private ProxyIpManager jdField_a_of_type_MqqManagerProxyIpManager;
   public boolean a;
   public TroopFileTransferManager.TaskPool[] a;
   public long b;
-  private TroopFileProtocol.ReqCopyToObserver jdField_b_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqCopyToObserver = new ajaq(this);
+  private TroopFileProtocol.ReqCopyToObserver jdField_b_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqCopyToObserver = new ajou(this);
   public Map b;
   public long c;
   public Map c;
@@ -113,7 +113,7 @@ public class TroopFileTransferManager
       if (jdField_a_of_type_JavaUtilMap == null)
       {
         jdField_a_of_type_JavaUtilMap = new HashMap();
-        ThreadManager.post(new ajan(), 2, null, true);
+        ThreadManager.post(new ajor(), 2, null, true);
       }
       TroopFileUploadingManager.a(paramQQAppInterface);
       TroopFileTransferManager localTroopFileTransferManager2 = (TroopFileTransferManager)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
@@ -126,7 +126,7 @@ public class TroopFileTransferManager
       else
       {
         localTroopFileTransferManager1 = new TroopFileTransferManager(paramQQAppInterface, paramLong);
-        ThreadManager.post(new ajav(localTroopFileTransferManager1), 8, null, true);
+        ThreadManager.post(new ajoz(localTroopFileTransferManager1), 8, null, true);
         jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localTroopFileTransferManager1);
       }
       return localTroopFileTransferManager1;
@@ -1069,11 +1069,11 @@ public class TroopFileTransferManager
     //   21: astore_1
     //   22: aload_0
     //   23: monitorexit
-    //   24: new 694	ajaw
+    //   24: new 694	ajpa
     //   27: dup
     //   28: aload_0
     //   29: aload_1
-    //   30: invokespecial 695	ajaw:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)V
+    //   30: invokespecial 695	ajpa:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)V
     //   33: iconst_5
     //   34: aconst_null
     //   35: iconst_0
@@ -1268,7 +1268,7 @@ public class TroopFileTransferManager
       continue;
       i = 701;
       continue;
-      new Handler(Looper.getMainLooper()).postDelayed(new ajas(this, paramString1), 1000L);
+      new Handler(Looper.getMainLooper()).postDelayed(new ajow(this, paramString1), 1000L);
       return true;
       if ((!TextUtils.isEmpty(paramString1.LocalFile)) && (new File(paramString1.LocalFile).exists()))
       {
@@ -1638,7 +1638,7 @@ public class TroopFileTransferManager
         paramUUID = finally;
         throw paramUUID;
       }
-      ThreadManager.post(new ajbe(this, paramUUID, localTroopFileInfo, paramInt, i), 5, null, true);
+      ThreadManager.post(new ajpi(this, paramUUID, localTroopFileInfo, paramInt, i), 5, null, true);
       return true;
     }
     finally {}
@@ -1986,7 +1986,7 @@ public class TroopFileTransferManager
         continue;
         if (Looper.myLooper() == Looper.getMainLooper())
         {
-          ThreadManager.post(new ajat(this), 8, null, true);
+          ThreadManager.post(new ajox(this), 8, null, true);
           break label11;
         }
         if (!c()) {
@@ -2138,10 +2138,10 @@ public class TroopFileTransferManager
     //   17: putfield 995	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
     //   20: iload_1
     //   21: ifeq +17 -> 38
-    //   24: new 997	ajau
+    //   24: new 997	ajoy
     //   27: dup
     //   28: aload_0
-    //   29: invokespecial 998	ajau:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
+    //   29: invokespecial 998	ajoy:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
     //   32: iconst_5
     //   33: aconst_null
     //   34: iconst_1
@@ -2398,7 +2398,7 @@ public class TroopFileTransferManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager
  * JD-Core Version:    0.7.0.1
  */

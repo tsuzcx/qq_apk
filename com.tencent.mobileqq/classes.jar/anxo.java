@@ -1,20 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
 
-public final class anxo
-  implements Callbacks.Callback
+public class anxo
+  implements LbsManager.LbsUpdateListener
 {
-  public anxo(Object paramObject) {}
+  public anxo(DoodleEmojiManager paramDoodleEmojiManager) {}
   
-  public Void a(Boolean arg1, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult)
+  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    QLog.e(MediaUtil.a(), 2, "MediaCodecThumbnailGenerator finished().");
-    synchronized (this.a)
+    SLog.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramBasicLocation != null) && (this.a.a != null)) {
+      this.a.a(paramBasicLocation.b, paramBasicLocation.a, this.a.a);
+    }
+    for (;;)
     {
-      this.a.notifyAll();
-      return null;
+      paramBasicLocation = (LbsManager)SuperManager.a(9);
+      if (paramBasicLocation != null) {
+        paramBasicLocation.b(this);
+      }
+      this.a.a = null;
+      return;
+      SLog.e("DoodleEmojiManager", "onLbsUpdate failed.");
     }
   }
 }

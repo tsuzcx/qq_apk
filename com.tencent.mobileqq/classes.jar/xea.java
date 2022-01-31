@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.1;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
 
-public class xea
+class xea
   implements Runnable
 {
-  public xea(RedPacketProxy.1 param1, RedPacketInfoBase paramRedPacketInfoBase) {}
+  xea(xdz paramxdz, Object paramObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketProxy$1.a.onGetSkin(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase);
+    if (ThemeHbFragment.a(this.jdField_a_of_type_Xdz.a) != null) {
+      ThemeHbFragment.a(this.jdField_a_of_type_Xdz.a).setImageBitmap(ThemeHbFragment.a(this.jdField_a_of_type_Xdz.a, (Bitmap)this.jdField_a_of_type_JavaLangObject));
+    }
   }
 }
 

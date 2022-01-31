@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.DownloadInfo;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
+import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aahv
-  implements Runnable
+public class aahv
+  extends HttpEngineTask
 {
-  aahv(aaht paramaaht) {}
-  
-  public void run()
+  public aahv(ARPreSoResourceDownload paramARPreSoResourceDownload, QQAppInterface paramQQAppInterface, String paramString, HttpEngineTask.IHttpEngineTask paramIHttpEngineTask, HttpNetReq paramHttpNetReq, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback)
   {
-    if (ArkAppEventObserverManager.a(this.a.a) != null) {
-      ArkAppEventObserverManager.a(this.a.a).a(false, 0.0D, 0.0D);
+    super(paramQQAppInterface, paramString, paramIHttpEngineTask, paramHttpNetReq);
+  }
+  
+  protected void a()
+  {
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask  realStart");
+    synchronized (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload))
+    {
+      ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = (ARPreSoResourceDownload.ARResourceDownloadCallback)ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload).get(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$DownloadInfo.b);
+      if (localARResourceDownloadCallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback.a();
+      }
+      super.a();
+      return;
     }
-    SosoInterface.b(ArkAppEventObserverManager.a(this.a.a));
-    ArkAppEventObserverManager.a(this.a.a, null);
   }
 }
 

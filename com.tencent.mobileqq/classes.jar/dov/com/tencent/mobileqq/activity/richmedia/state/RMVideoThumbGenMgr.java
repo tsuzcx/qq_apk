@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import anrq;
+import aohv;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -110,8 +110,8 @@ public class RMVideoThumbGenMgr
     }
     localThumbGenItem.jdField_b_of_type_Int = paramInt1;
     this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem = localThumbGenItem;
-    localThumbGenItem.jdField_a_of_type_Anrq.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem = localThumbGenItem;
-    localThumbGenItem.jdField_a_of_type_Anrq.execute(new Void[0]);
+    localThumbGenItem.jdField_a_of_type_Aohv.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem = localThumbGenItem;
+    localThumbGenItem.jdField_a_of_type_Aohv.execute(new Void[0]);
   }
 }
 

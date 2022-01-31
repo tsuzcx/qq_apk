@@ -1,52 +1,53 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class xlk
-  implements View.OnTouchListener
+public final class xlk
+  implements Runnable
 {
-  public xlk(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xlk(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    int i = paramMotionEvent.getAction();
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    if (i == 0) {
-      this.a.b.setText(null);
-    }
-    do
+    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008);
+    String str1 = "0";
+    if (localMessage != null)
     {
-      return false;
-      if (i == 2)
+      localObject = localMessage.getExtInfoFromExtStr("gdt_msgClick");
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    try
+    {
+      localObject = new JSONObject((String)localObject);
+      if (((JSONObject)localObject).has("ad_id")) {
+        str1 = ((JSONObject)localObject).getString("ad_id");
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        if (f < this.a.a * -1)
-        {
-          this.a.a(false, false);
-          return true;
+        String str3;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.recent", 2, "from_enterchat");
         }
-        this.a.a(true, false);
-        return true;
+        String str2 = "0";
+        continue;
+        localObject = "0X8005C39";
       }
-      if (i == 3)
-      {
-        this.a.a(false, true);
-        return false;
-      }
-    } while (i != 1);
-    if (f < this.a.a * -1)
-    {
-      this.a.l = false;
-      this.a.a(false, true);
     }
-    for (;;)
+    str3 = localMessage.getExtInfoFromExtStr("pa_msgId");
+    if (this.jdField_a_of_type_Int == 1)
     {
-      this.a.b.setText(2131438145);
-      return false;
-      this.a.l = true;
-      this.a.a(true, true);
+      localObject = "0X8005C36";
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "" + localMessage.frienduin, (String)localObject, (String)localObject, 0, 1, 0, str3, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
+      return;
     }
   }
 }

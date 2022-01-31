@@ -1,9 +1,17 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.PEPanelHelper;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
 
-public final class vab
-  implements Runnable
+public class vab
+  implements View.OnTouchListener
 {
-  public void run() {}
+  public vab(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
 }
 
 

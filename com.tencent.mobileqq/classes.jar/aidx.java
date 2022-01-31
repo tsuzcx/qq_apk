@@ -1,60 +1,51 @@
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
-import com.tencent.mobileqq.mqsafeedit.MD5;
-import com.tencent.mobileqq.transfile.VasExtensionDownloader;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
+import com.tencent.mobileqq.shortvideo.util.ShortVideoJsApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aidx
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public aidx(VasExtensionDownloader paramVasExtensionDownloader, FavoriteEmoticonInfo paramFavoriteEmoticonInfo) {}
+  public aidx(ShortVideoJsApiPlugin paramShortVideoJsApiPlugin) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof AppInterface)) {}
-    CustomEmotionData localCustomEmotionData;
-    do
+    paramContext = paramIntent.getStringExtra("callback");
+    String str1 = paramIntent.getStringExtra("uuid");
+    String str2 = paramIntent.getStringExtra("md5");
+    String str3 = paramIntent.getStringExtra("imgurl");
+    String str4 = paramIntent.getStringExtra("mediaType");
+    boolean bool = CaptureUtil.g();
+    paramIntent = new JSONObject();
+    try
     {
-      return;
-      localObject = (FavroamingDBManager)((AppInterface)localObject).getManager(148);
-      localCustomEmotionData = ((FavroamingDBManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.e);
-    } while ((localCustomEmotionData == null) || (!new File(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d).exists()));
-    if ("needDownload".equals(localCustomEmotionData.RomaingType)) {
-      localCustomEmotionData.RomaingType = "isUpdate";
-    }
-    for (;;)
-    {
+      paramIntent.put("uuid", str1);
+      paramIntent.put("md5", str2);
+      paramIntent.put("imgurl", str3);
+      paramIntent.put("mediaType", str4);
+      paramIntent.put("hasGesture", bool);
       if (QLog.isColorLevel()) {
-        QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData romaing type  isUpdate, path: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d);
+        QLog.i("ShortVideoJsApiPlugin", 2, "call webView, uuid" + str1 + ", md5:" + str2 + ", imgurl:" + str3 + ", mediaType:" + str4 + ", hasGesture:" + bool);
       }
-      if ((TextUtils.isEmpty(localCustomEmotionData.md5)) && (!TextUtils.isEmpty(localCustomEmotionData.emoPath)))
-      {
-        localCustomEmotionData.md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(localCustomEmotionData.emoPath));
-        if (QLog.isColorLevel()) {
-          QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData md5 , path: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d);
-        }
-      }
-      if ("needDel".equals(localCustomEmotionData.RomaingType)) {
-        break;
-      }
-      ((FavroamingDBManager)localObject).b(localCustomEmotionData);
+      this.a.callJs(paramContext, new String[] { paramIntent.toString() });
       return;
-      if ("overflow".equals(localCustomEmotionData.RomaingType)) {
-        localCustomEmotionData.RomaingType = "overflow_downloaded";
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aidx
  * JD-Core Version:    0.7.0.1
  */

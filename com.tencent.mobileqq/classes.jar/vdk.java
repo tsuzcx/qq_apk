@@ -1,23 +1,31 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder;
 
-public class vdk
-  implements ProgressPieDrawable.OnProgressListener
+class vdk
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public vdk(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  vdk(vdj paramvdj) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ShortVideoRealItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    if (QQStoryCommentItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder)) {
+      return false;
     }
-    ShortVideoRealItemBuilder.a(this.a).postDelayed(new vdl(this, paramProgressPieDrawable), 100L);
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_AndroidContentContext);
+    return true;
   }
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
+    }
+  }
 }
 
 

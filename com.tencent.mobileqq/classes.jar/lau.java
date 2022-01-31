@@ -1,18 +1,26 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
-import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-public class lau
-  implements View.OnClickListener
+class lau
+  extends AnimateUtils.AnimationAdapter
 {
-  public lau(ShopFolderAdapter paramShopFolderAdapter, String paramString) {}
+  lau(lat paramlat, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.b(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    }
+    paramAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_Lat.a.e, 0.0F);
+    paramAnimation.setDuration(30L);
+    paramAnimation.setAnimationListener(new lav(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    ReadInJoyNaviController.a(this.jdField_a_of_type_Lat.a).setAlpha(1.0F);
   }
 }
 

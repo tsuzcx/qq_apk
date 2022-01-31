@@ -1,18 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import dov.com.qq.im.capture.poi.FacePoiManager;
+import dov.com.qq.im.capture.poi.FacePoiManager.FacePoiListener;
 
-public final class anne
-  implements Parcelable.Creator
+public class anne
+  extends LbsManager.OnLocationListener
 {
-  public PublishParam a(Parcel paramParcel)
+  public anne(FacePoiManager paramFacePoiManager, String paramString, boolean paramBoolean)
   {
-    return new PublishParam(paramParcel);
+    super(paramString);
   }
   
-  public PublishParam[] a(int paramInt)
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return new PublishParam[paramInt];
+    super.a(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager.jdField_a_of_type_Double = paramSosoLbsInfo.a.jdField_a_of_type_Double;
+      this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager.b = paramSosoLbsInfo.a.b;
+      SLog.b("FacePoiManager", "onLocationUpdate() latitude=" + this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager.jdField_a_of_type_Double + " longitude=" + this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager.b);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager.a();
+      }
+      return;
+    }
+    this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager.jdField_a_of_type_Double = 0.0D;
+    this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager.b = 0.0D;
+    SLog.b("FacePoiManager", "onLocationUpdate() error");
+    this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager$FacePoiListener.a(false, false, null, null);
   }
 }
 

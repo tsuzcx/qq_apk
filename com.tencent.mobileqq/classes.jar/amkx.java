@@ -1,40 +1,27 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.XMPCoreUtil;
-import cooperation.qzone.util.XMPCoreUtil.XMPCoreJarLoadListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.dingdong.DingdongPluginRemoteCmdHandler;
 
 public class amkx
-  implements ModuleDownloadListener
+  extends RemoteCommand
 {
-  public amkx(XMPCoreUtil paramXMPCoreUtil, XMPCoreUtil.XMPCoreJarLoadListener paramXMPCoreJarLoadListener) {}
-  
-  public void onDownloadCanceled(String paramString)
+  public amkx(DingdongPluginRemoteCmdHandler paramDingdongPluginRemoteCmdHandler, String paramString)
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
+    super(paramString);
   }
   
-  public void onDownloadFailed(String paramString)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
-    XMPCoreUtil.a(this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil, false);
-    this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil$XMPCoreJarLoadListener.a(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("xmpcore.jar")) {
-      return;
+    if ((paramBundle.getBoolean("_async_call_", true)) && (Thread.currentThread() != Looper.getMainLooper().getThread()))
+    {
+      new Handler(Looper.getMainLooper()).post(new amky(this, paramBundle, paramOnInvokeFinishLinstener));
+      paramBundle.putInt("_result_code_", 0);
+      return paramBundle;
     }
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", XMPCoreUtil.a(), " onDownloadSucceed = ", XMPCoreUtil.b() });
-    LocalMultiProcConfig.putString("xmp_core_file_md5", XMPCoreUtil.b());
-    XMPCoreUtil.a(this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil);
-    this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil$XMPCoreJarLoadListener.a(XMPCoreUtil.a(this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil));
+    return this.a.a(paramBundle, paramOnInvokeFinishLinstener);
   }
 }
 

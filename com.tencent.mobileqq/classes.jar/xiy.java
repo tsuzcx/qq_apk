@@ -1,67 +1,34 @@
 import android.content.Intent;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import cooperation.comic.VipComicJumpActivity;
+import cooperation.comic.VipComicReportUtils;
+import org.json.JSONObject;
 
 public class xiy
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public xiy(LoginView paramLoginView) {}
+  public xiy(BannerManager paramBannerManager, String paramString) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    LoginView.a(this.a, null);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getBooleanExtra("from_register_choose", false))
+    paramView = new JSONObject();
+    try
     {
-      paramEditable = paramEditable.toString();
-      if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 6)) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      }
-    }
-    else
-    {
+      paramView.put("from", "20");
+      label17:
+      Intent localIntent = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), VipComicJumpActivity.class);
+      localIntent.putExtra("options", paramView.toString());
+      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(localIntent);
+      VipComicReportUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getAppInterface(), "100007", "2", "40040", this.jdField_a_of_type_JavaLangString, new String[0]);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    LoginView.a(this.a, paramCharSequence.toString());
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    catch (Exception localException)
     {
-      paramCharSequence = paramCharSequence.toString();
-      if ((paramCharSequence != null) && (LoginView.a(this.a) != null) && (LoginView.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
-        BaseApplicationImpl.sApplication.refreAccountList();
-      }
-      LoginView.a(this.a, null);
-      if ((LoginView.a(this.a) == null) || (LoginView.a(this.a).length() == 0)) {}
-      do
-      {
-        return;
-        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != LoginView.a(this.a).length() + 1))
-        {
-          BaseApplicationImpl.sApplication.refreAccountList();
-          return;
-        }
-        if ((!paramCharSequence.substring(0, LoginView.a(this.a).length()).equals(LoginView.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText == null)) {
-          break;
-        }
-        paramCharSequence = paramCharSequence.substring(LoginView.a(this.a).length());
-      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText(paramCharSequence);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(1);
+      break label17;
     }
-    LoginView.a(this.a, null);
   }
 }
 

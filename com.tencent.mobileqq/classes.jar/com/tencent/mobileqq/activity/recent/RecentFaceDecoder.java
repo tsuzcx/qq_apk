@@ -97,7 +97,7 @@ public class RecentFaceDecoder
   public static Pair a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
     int k = -2147483648;
-    int m = 2130839203;
+    int m = 2130839207;
     int n = 1;
     int i = m;
     int j = k;
@@ -119,12 +119,12 @@ public class RecentFaceDecoder
         if (!String.valueOf(AppConstants.H).equals(paramString)) {
           if (String.valueOf(AppConstants.v).equals(paramString))
           {
-            i = 2130839206;
+            i = 2130839210;
             j = k;
           }
           else if (AppConstants.D.equals(paramString))
           {
-            i = 2130839279;
+            i = 2130839283;
             j = k;
           }
           else if (AppConstants.ar.equals(paramString))
@@ -139,17 +139,17 @@ public class RecentFaceDecoder
             continue;
             if (String.valueOf(AppConstants.G).equals(paramString))
             {
-              i = 2130839197;
+              i = 2130839201;
               j = k;
             }
             else if (AppConstants.ag.equals(paramString))
             {
-              i = 2130842720;
+              i = 2130842819;
               j = k;
             }
             else if (AppConstants.ah.equals(paramString))
             {
-              i = 2130842719;
+              i = 2130842818;
               j = k;
             }
             else
@@ -158,10 +158,10 @@ public class RecentFaceDecoder
               i = -2147483648;
               continue;
               j = 102;
-              i = 2130841551;
+              i = 2130841588;
               continue;
               j = 107;
-              i = 2130841549;
+              i = 2130841586;
               continue;
               i = -2147483648;
               j = 104;
@@ -186,7 +186,7 @@ public class RecentFaceDecoder
                 {
                   if (paramInt != 0)
                   {
-                    i = 2130838079;
+                    i = 2130838082;
                     j = k;
                     break;
                     paramInt = 0;
@@ -207,21 +207,21 @@ public class RecentFaceDecoder
                 j = 113;
                 i = -2147483648;
                 continue;
-                i = 2130839196;
+                i = 2130839200;
                 j = k;
                 continue;
-                i = 2130842116;
+                i = 2130842153;
                 j = k;
                 continue;
-                i = 2130839204;
+                i = 2130839208;
                 j = k;
                 continue;
-                i = 2130840590;
+                i = 2130840596;
                 j = k;
                 continue;
                 if (AppConstants.w.equals(paramString))
                 {
-                  i = 2130839202;
+                  i = 2130839206;
                   j = k;
                 }
                 else
@@ -229,10 +229,10 @@ public class RecentFaceDecoder
                   j = 103;
                   i = -2147483648;
                   continue;
-                  i = 2130839199;
+                  i = 2130839203;
                   j = k;
                   continue;
-                  i = 2130838726;
+                  i = 2130838730;
                   j = 104;
                   continue;
                   j = 108;
@@ -245,7 +245,7 @@ public class RecentFaceDecoder
                   i = -2147483648;
                   continue;
                   j = 106;
-                  i = 2130843784;
+                  i = 2130843908;
                   continue;
                   if (TextUtils.isEmpty(PublicAccountConfigUtil.g)) {}
                   for (i = ServiceAccountFolderManager.a();; i = 2147483647)
@@ -253,13 +253,13 @@ public class RecentFaceDecoder
                     j = 112;
                     break;
                   }
-                  i = 2130839200;
+                  i = 2130839204;
                   j = k;
                   continue;
-                  i = 2130838762;
+                  i = 2130838766;
                   j = k;
                   continue;
-                  i = 2130839189;
+                  i = 2130839193;
                   j = k;
                   continue;
                   i = ((ChangeMachineManager)paramQQAppInterface.getManager(182)).a();
@@ -267,23 +267,23 @@ public class RecentFaceDecoder
                   continue;
                   if (TextUtils.equals(paramString, AppConstants.aE))
                   {
-                    i = 2130842340;
+                    i = 2130842387;
                     j = k;
                   }
                   else if (TextUtils.equals(paramString, AppConstants.aF))
                   {
-                    i = 2130842341;
+                    i = 2130842388;
                     j = k;
                   }
                   else
                   {
-                    i = 2130842340;
+                    i = 2130842387;
                     j = k;
                     continue;
                     i = -2147483648;
                     j = 1;
                     continue;
-                    i = 2130846070;
+                    i = 2130846198;
                     j = k;
                   }
                 }
@@ -394,13 +394,13 @@ public class RecentFaceDecoder
             }
             else if (j == 1034)
             {
-              j = 2130842338;
+              j = 2130842385;
               i = j;
               if ((paramRecentBaseData instanceof RecentItemConfessMsg))
               {
                 i = j;
                 if (((RecentItemConfessMsg)paramRecentBaseData).a.confessorSex == 1) {
-                  i = 2130842339;
+                  i = 2130842386;
                 }
               }
               paramRecentBaseData = BaseApplication.getContext().getResources().getDrawable(i);
@@ -535,7 +535,7 @@ public class RecentFaceDecoder
         label560:
         if (paramInt == 103)
         {
-          paramString = BaseApplication.getContext().getResources().getDrawable(2130839192);
+          paramString = BaseApplication.getContext().getResources().getDrawable(2130839196);
           if ((paramString instanceof SkinnableBitmapDrawable)) {
             ((SkinnableBitmapDrawable)paramString).setGravity(81);
           }

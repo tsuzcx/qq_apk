@@ -1,31 +1,48 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.ClickHelper;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Timer;
 
 public class mpo
   implements Runnable
 {
-  protected View a;
-  protected ViewBase a;
-  
-  public mpo(ClickHelper paramClickHelper) {}
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(ViewBase paramViewBase)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = paramViewBase;
-  }
+  public mpo(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
   
   public void run()
   {
-    if ((!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.a) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.c, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.d, true)) && (this.jdField_a_of_type_AndroidViewView != null))
+    if (FastWebVideoFeedsPlayManager.a(this.a) == null) {
+      return;
+    }
+    if (FastWebVideoFeedsPlayManager.a(this.a) != null) {
+      FastWebVideoFeedsPlayManager.a(this.a).cancel();
+    }
+    WeakReference localWeakReference1 = new WeakReference(FastWebVideoFeedsPlayManager.a(this.a));
+    WeakReference localWeakReference2 = new WeakReference(FastWebVideoFeedsPlayManager.a(this.a));
+    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
+    int i;
+    if (l >= 30000L) {
+      i = 100;
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.b = true;
-      this.jdField_a_of_type_AndroidViewView.performHapticFeedback(0);
+      try
+      {
+        FastWebVideoFeedsPlayManager.a(this.a, new Timer());
+        FastWebVideoFeedsPlayManager.a(this.a).schedule(new mpp(this, localWeakReference1, localWeakReference2), 0L, i);
+        return;
+      }
+      catch (Exception localException) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "innerStartShowProgress() mProgressTimer.schedule ERROR = " + localException.getMessage());
+      return;
+      if ((l >= 10000L) && (l <= 30000L)) {
+        i = 40;
+      } else {
+        i = 20;
+      }
     }
   }
 }

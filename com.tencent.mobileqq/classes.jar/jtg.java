@@ -1,72 +1,64 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectOperateManager;
-import com.tencent.av.business.manager.filter.EffectFilterTools.DataReport;
-import com.tencent.av.business.manager.magicface.MagicDataReport;
-import com.tencent.av.business.manager.pendant.EffectPendantTools.DataReport;
-import com.tencent.av.business.manager.zimu.EffectZimuManager.DataReport;
-import com.tencent.av.ui.BeautyToolbar.DataReport;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
-import com.tencent.av.ui.VoiceChangeDataReport;
-import com.tencent.av.utils.DataReport;
-import com.tencent.av.utils.TraeHelper;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class jtg
-  implements QavInOutAnimation.QavOutAnimationListener
+  implements Runnable
 {
-  public jtg(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, String paramString) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  long b;
   
-  public void a()
+  public jtg(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, int paramInt, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.l = true;
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.ah();
-    EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
-    if (localEffectOperateManager != null) {
-      localEffectOperateManager.a(false);
-    }
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.aj();
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
   }
   
-  public void b()
+  void a(int paramInt, long paramLong1, long paramLong2)
   {
-    TraeHelper.a().a("DoubleVideoCtrlUI.onOutAnimationEnd");
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().b = false;
-    if ((!this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().Q) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().f())) {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.ad();
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(true, 1, paramLong1);
     }
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().z != -1) {}
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().o = true;
-      DataReport.d(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController);
-      if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b) {
-        DataReport.s(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController);
-      }
-      if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().f()) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().d == 2) && (!this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().f)) {
-        DataReport.e();
-      }
-      AVLog.c(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_c_of_type_JavaLangString, "DataReport onClose: ");
-      EffectPendantTools.DataReport.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      EffectZimuManager.DataReport.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      EffectFilterTools.DataReport.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      BeautyToolbar.DataReport.b(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-      VoiceChangeDataReport.b(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a());
-      String str = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaLangString) + "";
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 0);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(237);
-      MagicDataReport.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, str);
-      MagicDataReport.a(2, str);
-      MagicDataReport.a(2);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().z);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.l = false;
+      do
+      {
+        return;
+        if (paramInt == 2)
+        {
+          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(false, 1, paramLong1);
+          return;
+        }
+        if (paramInt == 3)
+        {
+          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(true, 2, paramLong1);
+          return;
+        }
+        if (paramInt == 4)
+        {
+          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(false, 2, paramLong1);
+          return;
+        }
+        if (paramInt == 5)
+        {
+          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
+          DoubleVideoMeetingCtrlUI.e(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI);
+          return;
+        }
+        if (paramInt != 6) {
+          break;
+        }
+      } while (paramLong1 == this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.b);
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.c(true);
       return;
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().z = 0;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.c, 2, "ERROR-->The RefreshType is Error. Type = " + paramInt);
+  }
+  
+  public void run()
+  {
+    a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b);
   }
 }
 

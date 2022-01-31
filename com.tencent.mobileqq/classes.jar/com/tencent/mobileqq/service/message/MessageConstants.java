@@ -15,6 +15,11 @@ public class MessageConstants
   public static String k = "at_info";
   public static String l = "is_troop";
   public static String m = "love_language_flag";
+  public static String n = "pic_sync_story";
+  public static String o = "video_sync_story";
+  public static String p = "is_sync_qzone";
+  public static String q = "batch_id_qzone";
+  public static String r = "album_id_qzone";
 }
 
 

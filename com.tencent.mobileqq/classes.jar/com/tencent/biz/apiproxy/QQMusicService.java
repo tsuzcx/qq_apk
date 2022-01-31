@@ -10,7 +10,7 @@ import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import klm;
+import kkx;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +21,7 @@ public class QQMusicService
   public static String b = "msg_back";
   public long a;
   TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-  QQPlayerService.QQPlayerCallback jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback = new klm(this);
+  QQPlayerService.QQPlayerCallback jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback = new kkx(this);
   private final String c = "QQMusicService";
   
   static

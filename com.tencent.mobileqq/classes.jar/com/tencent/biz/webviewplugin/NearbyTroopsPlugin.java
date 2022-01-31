@@ -10,7 +10,7 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import ozq;
+import pbk;
 
 public class NearbyTroopsPlugin
   extends WebViewPlugin
@@ -120,7 +120,7 @@ public class NearbyTroopsPlugin
         this.a.a(localActivity);
         if (this.a.a(localMessageForDeliverGiftTips))
         {
-          this.a.a = new ozq(this, (String)localObject);
+          this.a.a = new pbk(this, (String)localObject);
           callJs((String)localObject, new String[] { "{\"result\":0,\"id\":" + i + "}" });
           return;
         }

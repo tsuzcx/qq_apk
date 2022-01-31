@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class yoz
   implements Runnable
 {
-  public yoz(SpriteUIHandler paramSpriteUIHandler, long paramLong, int paramInt) {}
+  public yoz(CmGameStartChecker paramCmGameStartChecker, CmGameStartChecker.StartCheckParam paramStartCheckParam, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game == null) {
+      return;
+    }
+    String str = ApolloConstant.n + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId + ".patch";
+    FileUtils.a(this.jdField_a_of_type_ArrayOfByte, str);
+    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker.c(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
   }
 }
 

@@ -1,20 +1,32 @@
-import android.util.LruCache;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
-import friendlist.GetOnlineInfoResp;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.OnFetchUserInfoCallback;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class opr
-  implements Runnable
+public class opr
+  implements PlayModeUtils.OnFetchUserInfoCallback
 {
-  opr(opq paramopq, GetOnlineInfoResp paramGetOnlineInfoResp, String paramString) {}
+  public opr(StoryVideoPlayer paramStoryVideoPlayer, String paramString1, String paramString2, Bundle paramBundle) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, QQUserUIItem paramQQUserUIItem, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_FriendlistGetOnlineInfoResp.eIconType == 11) {}
-    for (boolean bool = true;; bool = false)
+    SLog.d("Q.qqstory.player.YPlayModeUtils", "StoryPlayVideoActivity.fetchUserInfo, success==%s, unionId==%s, uin==%s, userUIItem==%s", new Object[] { Boolean.valueOf(paramBoolean1), this.jdField_a_of_type_JavaLangString, this.b, paramQQUserUIItem });
+    if (!paramBoolean1) {
+      QLog.e("Q.qqstory.player.StoryVideoPlayer", 2, "读取用户信息失败了, 赶紧查一下");
+    }
+    for (;;)
     {
-      StoryQIMBadgeView.a().put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool));
-      this.jdField_a_of_type_Opq.a.a(bool);
+      ThreadManager.getUIHandler().post(new ops(this));
       return;
+      if (paramQQUserUIItem != null)
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.d = paramQQUserUIItem.qq;
+        this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.b = paramQQUserUIItem.uid;
+      }
     }
   }
 }

@@ -1,27 +1,32 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
 
 public class abcs
-  implements ActionSheet.OnButtonClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abcs(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  public abcs(ConversationPullDownActiveBase paramConversationPullDownActiveBase, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramInt)
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
     {
-    default: 
       return;
-    }
-    this.a.a.a("DynamicAvatarRecordActivity");
-    this.a.finish();
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.g * (1.0F - f));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.k);
+    this.b.setAlpha(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abcs
  * JD-Core Version:    0.7.0.1
  */

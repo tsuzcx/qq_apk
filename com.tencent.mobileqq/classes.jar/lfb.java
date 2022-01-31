@@ -1,15 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
 
 public class lfb
-  implements ActionSheet.OnDismissListener
+  extends VideoShareListener
 {
-  public lfb(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public lfb(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  public void onDismiss()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    ReadInJoySettingActivity.c(this.a).cancel();
+    if (!paramBoolean1) {
+      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    }
+    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
+      return;
+    }
+    ReadInJoyVideoSubChannelActivity.a(this.a).b();
+    ReadInJoyVideoSubChannelActivity.a(this.a, false);
   }
 }
 

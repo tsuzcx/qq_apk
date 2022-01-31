@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.widget.HorizontalListView;
 
-public class vpp
+class vpp
   implements Runnable
 {
-  public vpp(FriendChatPie paramFriendChatPie) {}
+  vpp(vpo paramvpo) {}
   
   public void run()
   {
-    this.a.a.a().b("babyq_set_avator");
+    this.a.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.a.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
   }
 }
 

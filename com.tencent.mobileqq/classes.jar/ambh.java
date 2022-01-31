@@ -1,29 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.WifiInfo;
+import com.tencent.widget.DynamicGridView;
 
-public final class ambh
-  implements Parcelable.Creator
+public class ambh
+  implements ambi
 {
-  public LbsDataV2.WifiInfo a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private int b;
+  
+  public ambh(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
   {
-    LbsDataV2.WifiInfo localWifiInfo = new LbsDataV2.WifiInfo();
-    if (paramParcel != null)
-    {
-      localWifiInfo.mac = paramParcel.readString();
-      localWifiInfo.rssi = paramParcel.readInt();
-    }
-    return localWifiInfo;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public LbsDataV2.WifiInfo[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    return null;
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
+    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambh
  * JD-Core Version:    0.7.0.1
  */

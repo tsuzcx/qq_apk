@@ -1,31 +1,29 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.LBSObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.NearbyObserver;
 import com.tencent.qphone.base.util.QLog;
 
 public class tcd
-  extends LBSObserver
+  extends NearbyObserver
 {
-  public tcd(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public tcd(NearbyActivity paramNearbyActivity) {}
   
-  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
+      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
     }
-    if ((paramBoolean1) && (paramInt == 64)) {
-      this.a.a(paramBoolean2);
+    if ("OidbSvc.0xafc_1".equals(paramString))
+    {
+      if (paramBoolean) {
+        this.a.n = paramLong;
+      }
+      if (!this.a.c)
+      {
+        this.a.b.removeMessages(this.a.d);
+        this.a.b.sendEmptyMessageDelayed(this.a.d, this.a.n);
+      }
     }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
-    }
-    if (!paramBoolean1) {
-      this.a.a(2131436049, 1);
-    }
-    this.a.a(paramBoolean2);
   }
 }
 

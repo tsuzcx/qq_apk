@@ -1,25 +1,20 @@
-import android.view.KeyEvent;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 
-public class wzr
-  implements TextView.OnEditorActionListener
+class wzr
+  implements Runnable
 {
-  public wzr(CommonHbFragment paramCommonHbFragment) {}
+  wzr(wzq paramwzq, int paramInt) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      if (CommonHbFragment.a(this.a).isEnabled()) {
-        CommonHbFragment.a(this.a).performClick();
-      }
-      InputMethodUtil.b(CommonHbFragment.a(this.a));
+    if (this.jdField_a_of_type_Int == 1) {
+      PasswdRedBagManager.a(this.jdField_a_of_type_Wzq.a).a(this.jdField_a_of_type_Wzq.a.b);
     }
-    return false;
+    while (this.jdField_a_of_type_Int != 0) {
+      return;
+    }
+    PasswdRedBagManager.a(this.jdField_a_of_type_Wzq.a).a(this.jdField_a_of_type_Wzq.a.a);
   }
 }
 

@@ -1,18 +1,11 @@
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PAMultiItemBuilder;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public class uzc
-  extends AbstractChatItemBuilder.ViewHolder
+class uzc
+  implements ActionSheet.OnDismissListener
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  uzc(uzb paramuzb) {}
   
-  public uzc(PAMultiItemBuilder paramPAMultiItemBuilder) {}
+  public void onDismiss() {}
 }
 
 

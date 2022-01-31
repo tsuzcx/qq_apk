@@ -1,81 +1,27 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.AVLog;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.camera.CameraObserver;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.av.smallscreen.SmallScreenUtils;
-import com.tencent.av.smallscreen.SmallScreenVideoController;
-import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.business.manager.magicface.MagicDataReport;
+import com.tencent.av.ui.AVActivity;
 
 public class jpl
-  extends CameraObserver
+  implements View.OnClickListener
 {
-  public jpl(SmallScreenVideoController paramSmallScreenVideoController) {}
+  public jpl(AVActivity paramAVActivity, String paramString) {}
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenVideoController", 2, "onBeforeOpenCamera");
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.n();
+    AVActivity.a(this.jdField_a_of_type_ComTencentAvUiAVActivity, 2, false);
+    MagicDataReport.d(this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a().c) + "");
+    AVLog.c(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, "showDoubleScreenTips click: " + this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(Integer.valueOf(6100), this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
     }
   }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().i == 1011) || (this.a.jdField_a_of_type_ComTencentAvVideoController.f)))
-    {
-      this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(false, false);
-      this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.b();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenVideoController", 2, "onAfterOpenCamera success: " + paramBoolean + ", preSessionType: " + paramInt);
-    }
-    if (paramBoolean)
-    {
-      if ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (SmallScreenUtils.b()) && ((paramInt == 1) || (paramInt == 3)) && (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI != null))
-      {
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(true, false);
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.f(this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a());
-      }
-      return;
-    }
-    String str;
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
-    {
-      str = "";
-      if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().j()) {
-        break label229;
-      }
-      str = "0X8004894";
-    }
-    for (;;)
-    {
-      ReportController.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
-      if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-        break;
-      }
-      QLog.w("SmallScreenVideoController", 1, "onAfterOpenCamera fail, DEVICE_PERMISSION_TYPE_CAMERA_OPEN_FAIL");
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(38), Integer.valueOf(2) });
-      return;
-      label229:
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().f == 1) {
-        str = "0X8004888";
-      } else if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().f == 2) {
-        str = "0X800488E";
-      }
-    }
-  }
-  
-  protected void b() {}
-  
-  protected void b(boolean paramBoolean) {}
-  
-  protected void c() {}
 }
 
 

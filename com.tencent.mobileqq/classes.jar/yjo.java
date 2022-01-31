@@ -1,42 +1,34 @@
 import android.text.TextUtils;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.OnApolloViewListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameOpenIdFinder;
 
-public class yjo
+class yjo
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  
-  public yjo(ApolloSurfaceView paramApolloSurfaceView) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = ApolloSurfaceView.access$601(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView);
-  }
+  yjo(yjn paramyjn, AVVideoCtrl.VideoFrame paramVideoFrame, ApolloSurfaceView paramApolloSurfaceView) {}
   
   public void run()
   {
-    if (ApolloSurfaceView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView) == null) {}
-    OnApolloViewListener localOnApolloViewListener;
-    do
+    CmGameOpenIdFinder localCmGameOpenIdFinder = CmGameUtil.a(AVCameraCaptureModel.a(this.jdField_a_of_type_Yjn.a.a));
+    if (localCmGameOpenIdFinder == null) {
+      return;
+    }
+    String str2 = localCmGameOpenIdFinder.b(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier);
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
     {
-      do
-      {
-        do
-        {
-          return;
-          localOnApolloViewListener = (OnApolloViewListener)ApolloSurfaceView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView).get();
-        } while (localOnApolloViewListener == null);
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloSurfaceView", 2, "CheckForLongPress onLongClick");
-        }
-      } while (this.jdField_a_of_type_Int != ApolloSurfaceView.access$201(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView));
-      ApolloSurfaceView.access$302(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, true);
-      ApolloSurfaceView.access$401(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, 2);
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mApolloId)) || (ApolloSurfaceView.access$500(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView) < 0) || (localOnApolloViewListener == null));
-    localOnApolloViewListener.onNotifyLongTouch(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mApolloId);
+      str2 = localCmGameOpenIdFinder.a(Long.parseLong(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier));
+      str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier;
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().nativeRemotePreviewCallback(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.data, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.width, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.height, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.rotate, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.videoFormat, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.srcType, str1);
   }
 }
 

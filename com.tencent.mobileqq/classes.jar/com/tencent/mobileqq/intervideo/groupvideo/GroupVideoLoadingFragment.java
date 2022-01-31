@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import adjm;
-import adjn;
-import adjp;
+import adtl;
+import adtm;
+import adto;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -25,10 +25,10 @@ public class GroupVideoLoadingFragment
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new adjp(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new adto(this, Looper.getMainLooper());
   private GVideoLoadingUI jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI;
   private GroupVideoManager jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager;
-  private PluginLoadListener jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPluginLoadListener = new adjn(this);
+  private PluginLoadListener jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPluginLoadListener = new adtm(this);
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
   
@@ -60,7 +60,7 @@ public class GroupVideoLoadingFragment
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.a("正在检查环境", "群视频体验群，可尝鲜更酷炫的多人互动");
-    GroupVideoManager.a("group_video", new adjm(this));
+    GroupVideoManager.a("group_video", new adtl(this));
   }
   
   public void a(Activity paramActivity)
@@ -81,7 +81,7 @@ public class GroupVideoLoadingFragment
   public boolean d()
   {
     Monitor.b("2856633");
-    StoryReportor.a("group_video", "exitLoadPage", this.jdField_b_of_type_Int, (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), new String[] { "", "", "", "7.6.0" });
+    StoryReportor.a("group_video", "exitLoadPage", this.jdField_b_of_type_Int, (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), new String[] { "", "", "", "7.6.3" });
     return super.d();
   }
   
@@ -94,7 +94,7 @@ public class GroupVideoLoadingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969025, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969024, null);
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI = new GVideoLoadingUI();
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.a(getActivity(), paramLayoutInflater);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
@@ -114,7 +114,7 @@ public class GroupVideoLoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,29 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySubscriptionListViewGroup;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
+import com.tencent.widget.AdapterView.AdapterDataSetObserver;
 
 public class mid
-  implements ActionSheet.OnButtonClickListener
+  extends AdapterView.AdapterDataSetObserver
 {
-  public mid(ReadInJoySubscriptionListViewGroup paramReadInJoySubscriptionListViewGroup, String paramString, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public mid(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySubscriptionListViewGroup.a());
-    }
+    super(paramReadInJoyFlowLayout);
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    ReadInJoyFlowLayout.a(this.a);
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    ReadInJoyFlowLayout.a(this.a);
   }
 }
 

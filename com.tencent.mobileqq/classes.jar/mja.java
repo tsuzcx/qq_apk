@@ -1,20 +1,30 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import java.lang.ref.WeakReference;
 
 public class mja
-  implements Runnable
+  extends Handler
 {
-  public mja(ReadinjoyTabFrame paramReadinjoyTabFrame, long paramLong) {}
+  private WeakReference a;
   
-  public void run()
+  public mja(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
   {
-    PublicAccountReportUtils.a((QQAppInterface)ReadInJoyUtils.a(), "CliOper", "", "", "0X80066F7", "0X80066F7", 1, 1, Long.toString(this.jdField_a_of_type_Long / 1000L), "", "", ReadInJoyUtils.d(), false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.4tab", 2, "report ReadinjoyTabFrame use time: " + Long.toString(this.jdField_a_of_type_Long / 1000L));
+    this.a = new WeakReference(paramReadInJoyNavigationGridview);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
+    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
+      return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
   }
 }
 

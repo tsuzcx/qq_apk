@@ -1,10 +1,4 @@
-public class ahpq
-{
-  public int a = -1;
-  public boolean a;
-  public int b;
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahpq

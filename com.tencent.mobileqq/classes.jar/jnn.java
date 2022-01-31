@@ -1,16 +1,16 @@
-import android.graphics.Bitmap;
-import com.tencent.av.service.QavWrapper;
-import com.tencent.av.service.QavWrapper.OnReadyListener;
+import android.os.Bundle;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.av.ui.redbag.RedBagUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class jnn
-  implements QavWrapper.OnReadyListener
+  implements Runnable
 {
-  jnn(jnm paramjnm, String paramString, Bitmap paramBitmap) {}
+  jnn(jnk paramjnk, Bundle paramBundle) {}
   
-  public void a(QavWrapper paramQavWrapper)
+  public void run()
   {
-    paramQavWrapper.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    paramQavWrapper.a();
+    RedBagUtil.a((QQAppInterface)this.jdField_a_of_type_Jnk.a.a(), this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

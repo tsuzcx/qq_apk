@@ -1,36 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.recent.DrawerFrame.IDrawerCallbacks;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
+import com.tencent.mobileqq.portal.ConversationHongBao;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class sik
-  implements View.OnClickListener
+  implements DrawerFrame.IDrawerCallbacks
 {
-  public sik(EditActivity paramEditActivity) {}
+  public sik(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    paramView = this.a;
-    if (!EditActivity.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.d();
+    }
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.e();
+    }
+  }
+  
+  @TargetApi(11)
+  public void a(int paramInt, float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("drawerScale", 2, "scale:" + paramFloat);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.l();
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      EditActivity.a(paramView, bool);
-      if (!EditActivity.a(this.a)) {
-        break;
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        ConversationPullDownActiveBase localConversationPullDownActiveBase = (ConversationPullDownActiveBase)localIterator.next();
+        if (localConversationPullDownActiveBase != null) {
+          localConversationPullDownActiveBase.m();
+        }
       }
-      this.a.d();
-      EditActivity.a(this.a).setImageResource(2130837624);
-      if (EditActivity.a(this.a) != null) {
-        EditActivity.a(this.a).setVisibility(0);
-      }
-      return;
     }
-    if (EditActivity.a(this.a) != null) {
-      EditActivity.a(this.a).setVisibility(4);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.N();
     }
-    EditActivity.a(this.a).setImageResource(2130844421);
-    this.a.a();
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.f();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Conversation.d(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.m();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.M();
+    }
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.g();
+    }
   }
 }
 

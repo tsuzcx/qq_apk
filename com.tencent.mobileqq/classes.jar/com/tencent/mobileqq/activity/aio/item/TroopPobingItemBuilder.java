@@ -32,7 +32,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
-import vhk;
+import vkm;
 
 public class TroopPobingItemBuilder
   extends BaseBubbleBuilder
@@ -41,7 +41,7 @@ public class TroopPobingItemBuilder
   public static ArrayList a;
   private static int b;
   public static ArrayList b;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new vhk(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new vkm(this);
   private TroopPobingItemBuilder.ConfigableWordingSetter jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopPobingItemBuilder$ConfigableWordingSetter = new TroopPobingItemBuilder.ConfigableWordingSetter(this);
   
   static
@@ -196,12 +196,12 @@ public class TroopPobingItemBuilder
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968769, paramBaseChatItemLayout, false);
-      localTroopPobingViewHolder.a = ((TextView)paramViewHolder.findViewById(2131363618));
-      localTroopPobingViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363664));
-      localTroopPobingViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363665));
-      localTroopPobingViewHolder.jdField_b_of_type_AndroidViewView = paramViewHolder.findViewById(2131363661);
-      localTroopPobingViewHolder.jdField_c_of_type_AndroidViewView = paramViewHolder.findViewById(2131363663);
-      paramView = paramViewHolder.findViewById(2131363660);
+      localTroopPobingViewHolder.a = ((TextView)paramViewHolder.findViewById(2131363636));
+      localTroopPobingViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363687));
+      localTroopPobingViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363688));
+      localTroopPobingViewHolder.jdField_b_of_type_AndroidViewView = paramViewHolder.findViewById(2131363684);
+      localTroopPobingViewHolder.jdField_c_of_type_AndroidViewView = paramViewHolder.findViewById(2131363686);
+      paramView = paramViewHolder.findViewById(2131363683);
       paramBaseChatItemLayout = paramView.getLayoutParams();
       paramBaseChatItemLayout.width = (BaseChatItemLayout.d - AIOUtils.a(24.0F, localContext.getResources()));
       paramView.setLayoutParams(paramBaseChatItemLayout);
@@ -254,7 +254,7 @@ public class TroopPobingItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131375336: 
+    case 2131375567: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
@@ -266,10 +266,10 @@ public class TroopPobingItemBuilder
     super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramViewHolder, paramInt1, paramInt2);
     if (paramChatMessage.isSend())
     {
-      paramViewHolder.a.setBackgroundResource(2130845661);
+      paramViewHolder.a.setBackgroundResource(2130845789);
       return;
     }
-    paramViewHolder.a.setBackgroundResource(2130845497);
+    paramViewHolder.a.setBackgroundResource(2130845625);
   }
   
   public QQCustomMenuItem[] a(View paramView)

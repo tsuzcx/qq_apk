@@ -1,17 +1,20 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import mqq.util.WeakReference;
 
 class urq
   implements Runnable
 {
-  urq(uro paramuro, String paramString) {}
+  urq(uro paramuro, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Uro.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Uro.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_Uro.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    if (DoodleMsgView.a(this.jdField_a_of_type_Uro.a) != null)
+    {
+      urt localurt = (urt)DoodleMsgView.a(this.jdField_a_of_type_Uro.a).get();
+      if (localurt != null) {
+        localurt.a(this.jdField_a_of_type_Int);
+      }
+    }
   }
 }
 

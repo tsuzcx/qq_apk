@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
-import uho;
+import uko;
 
 public class ChatItemAnimLayout
   extends RelativeLayout
@@ -28,21 +28,21 @@ public class ChatItemAnimLayout
   {
     super(paramContext);
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidOsHandler = new uho(this);
+    this.jdField_a_of_type_AndroidOsHandler = new uko(this);
   }
   
   public ChatItemAnimLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidOsHandler = new uho(this);
+    this.jdField_a_of_type_AndroidOsHandler = new uko(this);
   }
   
   public ChatItemAnimLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidOsHandler = new uho(this);
+    this.jdField_a_of_type_AndroidOsHandler = new uko(this);
   }
   
   private boolean a(ChatMessage paramChatMessage)

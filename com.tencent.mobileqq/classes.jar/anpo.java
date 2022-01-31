@@ -1,45 +1,34 @@
 import android.animation.Animator;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.Button;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowPlusPanel;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class anpo
-  extends anpd
+  extends AnimatorListenerAdapter
 {
-  public anpo(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public anpo(QIMCircleProgress paramQIMCircleProgress) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
+    }
+  }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
+    this.a.b = false;
     if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationEnd <<===");
-    }
-    this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.x();
-    this.a.m();
-    if (!this.a.g) {
-      this.a.e(false);
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
     }
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
+    this.a.b = true;
     if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationStart ===>>");
-    }
-    this.a.e.setVisibility(0);
-    this.a.f.setBackgroundColor(this.a.getResources().getColor(2131493274));
-    this.a.d = true;
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel != null) {
-      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel.b();
-    }
-    if (this.a.g)
-    {
-      this.a.b.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.a.b.setLongClickable(false);
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
     }
   }
 }

@@ -34,7 +34,7 @@ public class DatingCommentTextView$ViewProfileCardSpan
   public void updateDrawState(TextPaint paramTextPaint)
   {
     paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131494298));
+    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131494305));
   }
 }
 

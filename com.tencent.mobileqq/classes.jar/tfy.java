@@ -1,33 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class tfy
-  implements Animation.AnimationListener
+class tfy
+  implements DialogInterface.OnClickListener
 {
-  public tfy(QQLSActivity paramQQLSActivity) {}
+  tfy(tfx paramtfx) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.removeMessages(99);
-    if (VersionUtils.g())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "do SmoothFinish");
-      }
-      QQLSActivity.g(this.a);
-      this.a.finish();
-      return;
-    }
-    this.a.a.postAtFrontOfQueue(new tfz(this));
+    paramDialogInterface.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

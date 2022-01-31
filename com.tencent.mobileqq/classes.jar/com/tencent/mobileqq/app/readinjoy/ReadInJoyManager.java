@@ -36,7 +36,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import zst;
+import zvz;
 
 public class ReadInJoyManager
   extends Observable
@@ -571,7 +571,7 @@ public class ReadInJoyManager
           break;
         }
         localReadInJoyNotifyRedTouchInfo.jdField_a_of_type_Int = 3;
-        localReadInJoyNotifyRedTouchInfo.jdField_c_of_type_Int = 2130842440;
+        localReadInJoyNotifyRedTouchInfo.jdField_c_of_type_Int = 2130842532;
         localReadInJoyNotifyRedTouchInfo.jdField_d_of_type_Int = 4;
         break;
         i += 2;
@@ -662,7 +662,7 @@ public class ReadInJoyManager
     if ((paramList == null) || (paramList.isEmpty())) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new zst(this, paramList));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new zvz(this, paramList));
   }
   
   public void onDestroy()

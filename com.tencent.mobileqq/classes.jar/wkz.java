@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
 
-public class wkz
+class wkz
+  implements Runnable
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  wkz(wky paramwky, Bitmap paramBitmap) {}
   
-  public wkz(PublicAccountInfo paramPublicAccountInfo)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
+    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Wky.a.a.findViewById(2131362840).setBackgroundDrawable(localBitmapDrawable);
   }
 }
 

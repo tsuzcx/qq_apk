@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webprocess;
 
-import ajxr;
+import akly;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -265,7 +265,7 @@ public class WebProcessReceiver
           if (paramIntent.size() <= 0) {
             break;
           }
-          ThreadManager.post(new ajxr(this, paramIntent), 5, null, true);
+          ThreadManager.post(new akly(this, paramIntent), 5, null, true);
           return;
         }
         QLog.e("WebProcessReceiver", 1, "Receive action delete sonic template data error");
@@ -299,7 +299,7 @@ public class WebProcessReceiver
       if ((!"com.tencent.mobileqq.webprocess.cmgame_shortcut".equals(str)) || (paramContext == null)) {
         break;
       }
-      QQToast.a(paramContext, paramContext.getResources().getString(2131438188), 0).a();
+      QQToast.a(paramContext, paramContext.getResources().getString(2131438206), 0).a();
       return;
       label830:
       i = 0;
@@ -308,7 +308,7 @@ public class WebProcessReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessReceiver
  * JD-Core Version:    0.7.0.1
  */

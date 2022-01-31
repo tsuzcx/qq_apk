@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
-import amcx;
-import amcy;
+import amtb;
+import amtc;
 import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.DownloadRequest;
@@ -12,7 +12,7 @@ import java.util.Vector;
 public class QzonePreDownloadManager
 {
   private static QzonePreDownloadManager jdField_a_of_type_CooperationQzoneQzonePreDownloadManager;
-  private amcy jdField_a_of_type_Amcy;
+  private amtc jdField_a_of_type_Amtc;
   private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
   private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader;
   private Vector jdField_a_of_type_JavaUtilVector = new Vector();
@@ -102,7 +102,7 @@ public class QzonePreDownloadManager
     finally {}
   }
   
-  private boolean a(amcy paramamcy)
+  private boolean a(amtc paramamtc)
   {
     boolean bool = true;
     for (;;)
@@ -111,28 +111,28 @@ public class QzonePreDownloadManager
       {
         if (this.jdField_a_of_type_Boolean)
         {
-          if (paramamcy.jdField_a_of_type_Boolean)
+          if (paramamtc.jdField_a_of_type_Boolean)
           {
-            this.jdField_a_of_type_JavaUtilVector.add(0, paramamcy);
+            this.jdField_a_of_type_JavaUtilVector.add(0, paramamtc);
             return bool;
           }
-          this.jdField_a_of_type_JavaUtilVector.add(paramamcy);
+          this.jdField_a_of_type_JavaUtilVector.add(paramamtc);
           continue;
         }
-        if (paramamcy.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest == null) {
+        if (paramamtc.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest == null) {
           break label86;
         }
       }
       finally {}
-      if (a().download(paramamcy.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest, paramamcy.jdField_b_of_type_Boolean))
+      if (a().download(paramamtc.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest, paramamtc.jdField_b_of_type_Boolean))
       {
-        this.jdField_a_of_type_Amcy = paramamcy;
+        this.jdField_a_of_type_Amtc = paramamtc;
         this.jdField_a_of_type_Boolean = true;
         continue;
         label86:
-        if (a().download(paramamcy.jdField_b_of_type_JavaLangString, paramamcy.jdField_a_of_type_JavaLangString, paramamcy.jdField_b_of_type_Boolean, paramamcy.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener))
+        if (a().download(paramamtc.jdField_b_of_type_JavaLangString, paramamtc.jdField_a_of_type_JavaLangString, paramamtc.jdField_b_of_type_Boolean, paramamtc.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener))
         {
-          this.jdField_a_of_type_Amcy = paramamcy;
+          this.jdField_a_of_type_Amtc = paramamtc;
           this.jdField_a_of_type_Boolean = true;
         }
         else
@@ -152,7 +152,7 @@ public class QzonePreDownloadManager
     a().cancel(paramString, paramDownloadListener);
     if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
     {
-      paramString = (amcy)this.jdField_a_of_type_JavaUtilVector.get(0);
+      paramString = (amtc)this.jdField_a_of_type_JavaUtilVector.get(0);
       this.jdField_a_of_type_JavaUtilVector.remove(0);
       this.jdField_a_of_type_Boolean = false;
       a(paramString);
@@ -176,19 +176,19 @@ public class QzonePreDownloadManager
   
   public final boolean a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, DownloadRequest paramDownloadRequest, Downloader.DownloadListener paramDownloadListener)
   {
-    amcy localamcy = new amcy(this);
-    localamcy.jdField_a_of_type_JavaLangString = paramString2;
-    localamcy.jdField_b_of_type_JavaLangString = paramString1;
-    localamcy.jdField_b_of_type_Boolean = paramBoolean1;
-    localamcy.jdField_a_of_type_Boolean = paramBoolean2;
-    localamcy.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = paramDownloadListener;
-    localamcy.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new amcx(this, localamcy);
+    amtc localamtc = new amtc(this);
+    localamtc.jdField_a_of_type_JavaLangString = paramString2;
+    localamtc.jdField_b_of_type_JavaLangString = paramString1;
+    localamtc.jdField_b_of_type_Boolean = paramBoolean1;
+    localamtc.jdField_a_of_type_Boolean = paramBoolean2;
+    localamtc.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = paramDownloadListener;
+    localamtc.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new amtb(this, localamtc);
     if (paramDownloadRequest != null)
     {
-      paramDownloadRequest.setListener(localamcy.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);
-      localamcy.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest = paramDownloadRequest;
+      paramDownloadRequest.setListener(localamtc.jdField_b_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);
+      localamtc.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloadRequest = paramDownloadRequest;
     }
-    return a(localamcy);
+    return a(localamtc);
   }
   
   public final boolean a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, Downloader.DownloadListener paramDownloadListener)
@@ -201,7 +201,7 @@ public class QzonePreDownloadManager
     a().abort(paramString, paramDownloadListener);
     if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
     {
-      paramString = (amcy)this.jdField_a_of_type_JavaUtilVector.get(0);
+      paramString = (amtc)this.jdField_a_of_type_JavaUtilVector.get(0);
       this.jdField_a_of_type_JavaUtilVector.remove(0);
       this.jdField_a_of_type_Boolean = false;
       a(paramString);

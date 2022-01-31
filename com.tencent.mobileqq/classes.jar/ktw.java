@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
 
 class ktw
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
   ktw(ktv paramktv) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountAdvertisementActivity", 2, "action dismiss");
-    }
+    VideoCoverFragment.a(this.a.a).setCurrentItem(0, true);
   }
 }
 

@@ -1,40 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class aclt
-  implements FMSettingInterface.MoveFileCallback
+  implements View.OnClickListener
 {
-  public aclt(FileManagerRSWorker paramFileManagerRSWorker) {}
+  public aclt(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a(2005);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 12, null, paramInt, null);
-    FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.jdField_i_of_type_JavaLangString, this.a.jdField_g_of_type_Long, FileManagerRSWorker.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.jdField_i_of_type_Long, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, FileManagerRSWorker.a(this.a), "", FileManagerRSWorker.a(this.a), "sdcard full", null);
-    FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.j, this.a.jdField_g_of_type_Long, FileManagerRSWorker.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.jdField_i_of_type_Long, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, FileManagerRSWorker.a(this.a), "", FileManagerRSWorker.b(this.a), "sdcard full", null);
-  }
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.a.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
-      this.a.jdField_d_of_type_JavaLangString = paramString2;
-    }
-    while (!this.a.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
+    if (this.a.f())
+    {
+      FMDataCache.b();
+      this.a.e(false);
+      if (this.a.c())
+      {
+        this.a.setResult(5);
+        this.a.finish();
+        return;
+      }
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightViewText.setText(2131428089);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(8);
+      this.a.setTitle(this.a.b);
+      this.a.b();
+      this.a.a();
+      if (this.a.jdField_a_of_type_Int == 1) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      }
+      this.a.b(false);
       return;
     }
-    this.a.jdField_b_of_type_JavaLangString = paramString2;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString2);
+    if (BaseFileAssistantActivity.a(this.a) != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("BaseFileAssistantActivity<FileAssistant>", 2, "onRightEditClick");
+      }
+      BaseFileAssistantActivity.a(this.a).g();
+    }
+    FMDataCache.b();
+    this.a.e(true);
+    this.a.rightViewText.setVisibility(0);
+    this.a.rightViewText.setText(2131428127);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(0);
+    this.a.b();
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.b(true);
   }
 }
 

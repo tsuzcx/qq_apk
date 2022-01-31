@@ -1,35 +1,58 @@
-import android.view.MotionEvent;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView.ExpandableListAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
+import java.util.List;
 
 public class alni
-  implements View.OnTouchListener
+  extends Handler
 {
-  public alni(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
+  public alni(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramMotionEvent.getAction() == 1)
+    switch (paramMessage.what)
     {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      try
       {
-        int i = ExpandableListView.c(l);
-        if ((this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener == null) || (!this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener.a(this.a, paramView, i, this.a.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$ExpandableListAdapter.getGroupId(i)))) {
-          this.a.b(i);
+        BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.getResources(), this.a.jdField_a_of_type_AndroidGraphicsBitmap);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localBitmapDrawable);
+      }
+      catch (Exception localException) {}
+      continue;
+      Object localObject = (QidianProfileCardActivity.QidianSimpleProfileItem)paramMessage.getData().getParcelable("data");
+      localObject = this.a.a((QidianProfileCardActivity.QidianSimpleProfileItem)localObject);
+      if (localObject != null)
+      {
+        this.a.b.addView((View)localObject);
+        continue;
+        localObject = paramMessage.getData().getParcelableArrayList("data");
+        localObject = this.a.a((List)localObject);
+        if (localObject != null)
+        {
+          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+          localLayoutParams.leftMargin = this.a.d;
+          ((View)localObject).setPadding(0, this.a.e, this.a.d, this.a.e);
+          this.a.b.addView((View)localObject, localLayoutParams);
         }
       }
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alni
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.VideoInviteFloatBarUICtr;
+import com.tencent.av.ui.GLVideoView;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class kbz
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public kbz(VideoInviteFloatBarUICtr paramVideoInviteFloatBarUICtr) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public kbz(VideoLayerUI paramVideoLayerUI, long paramLong, GLVideoView paramGLVideoView, float paramFloat) {}
+  
+  public void run()
   {
-    if (paramIntent != null)
+    long l = this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_Long = (1L + l);
+    if (l < this.b)
     {
-      paramContext = paramIntent.getAction();
-      if (!paramContext.equals("tencent.video.invite.accept")) {
-        break label26;
-      }
-      this.a.f();
-    }
-    label26:
-    do
-    {
+      this.jdField_a_of_type_ComTencentAvUiGLVideoView.a(this.jdField_a_of_type_Float, VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI), VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI));
+      this.jdField_a_of_type_ComTencentAvUiGLVideoView.a(this, 10L);
       return;
-      if (paramContext.equals("tencent.video.invite.refuse"))
-      {
-        this.a.g();
-        return;
-      }
-      if (paramContext.equals("tencent.video.invite.gaaccept"))
-      {
-        this.a.i();
-        return;
-      }
-    } while (!paramContext.equals("tencent.video.invite.gaignore"));
-    this.a.h();
+    }
+    this.jdField_a_of_type_ComTencentAvUiGLVideoView.a(0, 0, true);
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, -1);
+    VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, -1);
   }
 }
 

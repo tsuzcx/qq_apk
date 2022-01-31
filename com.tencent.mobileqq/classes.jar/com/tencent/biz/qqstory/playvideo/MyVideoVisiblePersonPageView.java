@@ -27,12 +27,12 @@ import com.tencent.widget.XListView;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import nlw;
-import nlx;
-import nly;
-import nlz;
-import nma;
-import nmb;
+import nni;
+import nnj;
+import nnk;
+import nnl;
+import nnm;
+import nnn;
 
 public class MyVideoVisiblePersonPageView
   extends RelativeLayout
@@ -44,7 +44,7 @@ public class MyVideoVisiblePersonPageView
   public GestureDetector a;
   View jdField_a_of_type_AndroidViewView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nlz(this);
+  QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nnl(this);
   QQStoryWatcherListAdapter jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter;
   protected ChildViewClickListener a;
   FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
@@ -60,9 +60,9 @@ public class MyVideoVisiblePersonPageView
   {
     super(paramContext);
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new nma(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new nmb(this));
-    LayoutInflater.from(paramContext).inflate(2130970851, this, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new nnm(this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new nnn(this));
+    LayoutInflater.from(paramContext).inflate(2130970899, this, true);
     this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)PlayModeUtils.a().getManager(50));
     this.jdField_a_of_type_AndroidAppDialog = paramDialog;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
@@ -106,23 +106,23 @@ public class MyVideoVisiblePersonPageView
   
   void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131364021));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371986);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371732));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368808));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131364045));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372159);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371902));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368875));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.c = ((TextView)findViewById(2131368953));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131371985);
+    this.c = ((TextView)findViewById(2131369019));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131372158);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter = new QQStoryWatcherListAdapter(this.jdField_a_of_type_AndroidContentContext, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter.a(2130970850);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter.a(2130970898);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new nlw(this));
-    nlx localnlx = new nlx(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(localnlx);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(localnlx);
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(localnlx);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new nni(this));
+    nnj localnnj = new nnj(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(localnnj);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(localnnj);
+    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(localnnj);
   }
   
   public void a(List paramList)
@@ -145,7 +145,7 @@ public class MyVideoVisiblePersonPageView
           localQQUserUIItem.mCompareSpell = localFriends.mCompareSpell;
         }
       }
-      Collections.sort(paramList, new nly(this));
+      Collections.sort(paramList, new nnk(this));
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter.a(paramList);
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter.notifyDataSetChanged();
     }
@@ -192,7 +192,7 @@ public class MyVideoVisiblePersonPageView
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130843678), null, null);
+    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130843801), null, null);
     this.c.setText("仅自己可见");
   }
   
@@ -203,8 +203,8 @@ public class MyVideoVisiblePersonPageView
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130843675), null, null);
-    this.c.setText(StoryApi.a(2131432072));
+    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130843798), null, null);
+    this.c.setText(StoryApi.a(2131432089));
   }
   
   void h()
@@ -214,7 +214,7 @@ public class MyVideoVisiblePersonPageView
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130843681), null, null);
+    this.c.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130843804), null, null);
     this.c.setText("任何人可见");
   }
   

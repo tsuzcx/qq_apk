@@ -56,7 +56,7 @@ public final class cluster_identify_face_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_PHOTO.cluster_identify_face_req
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.theme.NightModeLogic;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
+import java.util.List;
 
-public class ahzw
-  implements DialogInterface.OnDismissListener
+public final class ahzw
+  implements Runnable
 {
-  public ahzw(NightModeLogic paramNightModeLogic) {}
+  public ahzw(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putInt("start_status", 2);
-    this.a.a(0, paramDialogInterface);
-    this.a.jdField_a_of_type_AndroidAppDialog = null;
-    try
-    {
-      paramDialogInterface = new HashMap();
-      paramDialogInterface.put("param_FailCode", "2");
-      StatisticCollector.a(this.a.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext()).a(((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime).getAccount(), "VipNightThemeDialogClick", false, 1L, 0L, paramDialogInterface, "", false);
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_portrait_filter_");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzw
  * JD-Core Version:    0.7.0.1
  */

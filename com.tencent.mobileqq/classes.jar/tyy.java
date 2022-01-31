@@ -1,16 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 
-public class tyy
-  implements View.OnTouchListener
+class tyy
+  implements DialogInterface.OnClickListener
 {
-  public tyy(TroopMemberListActivity paramTroopMemberListActivity) {}
+  tyy(tyx paramtyx) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    this.a.a.finish();
   }
 }
 

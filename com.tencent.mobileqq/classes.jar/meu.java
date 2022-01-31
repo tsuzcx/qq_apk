@@ -1,19 +1,39 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyVideoReportData;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
 
-public class meu
+class meu
   implements Runnable
 {
-  public meu(VideoUIManager paramVideoUIManager) {}
+  meu(meq parammeq, int paramInt1, int paramInt2, String paramString, VideoPlayerWrapper paramVideoPlayerWrapper) {}
   
   public void run()
   {
-    if ((VideoUIManager.a(this.a) != null) && (VideoUIManager.a(this.a).a != null)) {
-      PublicAccountReportUtils.a(null, "", "0X8008ACF", "0X8008ACF", 0, 0, "", "", "", VideoReporter.a(VideoUIManager.a(this.a).a.mVideoVid, VideoUIManager.a(this.a).a.innerUniqueID, (int)VideoUIManager.a(this.a).a.mChannelID, null), false);
+    if (VideoPlayManager.a(this.jdField_a_of_type_Meq.a) != null)
+    {
+      int i = this.jdField_a_of_type_Int;
+      int j = this.b;
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a, VideoPlayManager.a(this.jdField_a_of_type_Meq.a), VideoPlayManager.a(this.jdField_a_of_type_Meq.a), 6, new int[] { i, j });
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.b = (this.jdField_a_of_type_Int + ":" + this.b);
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.jdField_a_of_type_Long = 0L;
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.jdField_a_of_type_Boolean = false;
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.m = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.c();
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.d = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a();
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.e = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.b();
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.jdField_c_of_type_Boolean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.jdField_b_of_type_Boolean;
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.p = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.jdField_b_of_type_Long;
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.o = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.jdField_a_of_type_Long;
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.q = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.e();
+      VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.r = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.f();
+      ReadInJoyUtils.a(VideoPlayManager.a(this.jdField_a_of_type_Meq.a).getApplicationContext(), ReadInJoyUtils.a(), false, VideoPlayManager.a(this.jdField_a_of_type_Meq.a).a.a());
     }
+    VideoPlayManager.a(this.jdField_a_of_type_Meq.a, null);
+    VideoPlayManager.a(this.jdField_a_of_type_Meq.a, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.h();
   }
 }
 

@@ -1,35 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.contacts.BuddyListItem;
-import com.tencent.widget.SimpleTextView;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
-import com.tencent.widget.SwipTextViewMenuBuilder;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.XListView;
 
 public class yfo
-  extends SwipTextViewMenuBuilder
+  extends Handler
 {
-  public yfo(BuddyListItem paramBuddyListItem, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  public yfo(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  public void handleMessage(Message paramMessage)
   {
-    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
-    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
-      paramSwipRightMenuItem.setTag(-10, paramObject);
+    switch (paramMessage.what)
+    {
     }
-    return paramSwipRightMenuItem;
-  }
-  
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
-  {
-    this.a.a(paramInt, paramArrayOfSwipRightMenuItem);
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      QQToast.a(BaseApplication.getContext(), 1, 2131434811, 0).b(this.a.getTitleBarHeight());
+      return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131436896);
+    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yfo
  * JD-Core Version:    0.7.0.1
  */

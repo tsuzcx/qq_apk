@@ -1,17 +1,22 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aakg
+class aakg
+  implements Runnable
 {
-  public long a;
-  public String a;
-  public final ArrayList a;
-  public long b = 0L;
-  public String b;
+  aakg(aakf paramaakf, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public aakg()
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = 0L;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((aakq)localIterator.next()).a(true);
+    }
+    localIterator = this.b.iterator();
+    for (boolean bool = true; localIterator.hasNext(); bool = false) {
+      ((aakq)localIterator.next()).a(false);
+    }
+    this.jdField_a_of_type_Aakf.a.a(bool, this.jdField_a_of_type_Aakf.b);
   }
 }
 

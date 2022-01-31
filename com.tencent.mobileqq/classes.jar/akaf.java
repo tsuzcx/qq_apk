@@ -1,22 +1,62 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import mqq.app.TicketManagerListener;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.CustomLruCache;
+import com.tencent.mobileqq.util.ImageCache;
 
 public class akaf
-  implements TicketManagerListener
+  extends CustomLruCache
 {
-  public void onTicketRefreshed()
+  public akaf(ImageCache paramImageCache, int paramInt)
   {
-    QLog.i("SwiftBrowserCookieMonster", 1, "TicketManager invoke onTicketRefreshed");
-    SwiftBrowserCookieMonster.d();
-    SwiftBrowserCookieMonster.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new Intent());
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, Drawable paramDrawable)
+  {
+    int i = 0;
+    int j = 0;
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramString != null) {
+        j = paramString.getRowBytes() * paramString.getHeight();
+      }
+    }
+    int m;
+    int k;
+    do
+    {
+      do
+      {
+        return j;
+      } while (!(paramDrawable instanceof AnimationDrawable));
+      paramString = (AnimationDrawable)paramDrawable;
+      m = paramString.getNumberOfFrames();
+      k = 0;
+      j = i;
+    } while (k >= m);
+    paramDrawable = paramString.getFrame(k);
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        j = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * j + i;
+      }
+    }
+    for (;;)
+    {
+      k += 1;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akaf
  * JD-Core Version:    0.7.0.1
  */

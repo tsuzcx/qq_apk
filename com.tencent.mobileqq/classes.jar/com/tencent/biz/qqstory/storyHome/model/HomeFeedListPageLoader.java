@@ -5,7 +5,6 @@ import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tribe.async.async.JobSegment;
 import java.util.List;
-import nxf;
 
 public class HomeFeedListPageLoader
   extends FeedListPageLoaderBase
@@ -38,7 +37,7 @@ public class HomeFeedListPageLoader
   
   protected JobSegment a(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
   {
-    return new nxf(paramFeedIdListCache, this.a);
+    return new HomeFeedListPageLoader.FeedIdPullSegment(paramFeedIdListCache, this.a);
   }
   
   protected void a(List paramList, boolean paramBoolean)

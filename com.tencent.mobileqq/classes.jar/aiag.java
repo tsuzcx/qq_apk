@@ -1,19 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment.ShortVideoDownload;
 
-public class aiag
+public final class aiag
   implements Runnable
 {
-  public aiag(ThemeSwitchManager paramThemeSwitchManager, Bundle paramBundle) {}
+  public aiag(VideoEnvironment.ShortVideoDownload paramShortVideoDownload, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqThemeThemeSwitchManager.a(this.jdField_a_of_type_AndroidOsBundle);
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload.a(this.jdField_a_of_type_Boolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiag
  * JD-Core Version:    0.7.0.1
  */

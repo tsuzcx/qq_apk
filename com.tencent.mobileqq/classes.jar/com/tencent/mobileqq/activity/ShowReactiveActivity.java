@@ -30,14 +30,14 @@ import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 import com.tencent.widget.AlphaDrawable;
-import tpo;
+import tso;
 
 public class ShowReactiveActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new tpo(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new tso(this);
   FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
   FormMutiItem jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem;
   FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
@@ -70,23 +70,23 @@ public class ShowReactiveActivity
   
   public void a()
   {
-    setLeftViewName(2131432397);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)a(2131371230));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131371268));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)a(2131371269));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)a(2131371270));
-    this.c = ((FormMutiItem)a(2131371271));
-    this.d = ((FormMutiItem)a(2131371272));
-    this.e = ((FormMutiItem)a(2131371275));
-    this.f = ((FormMutiItem)a(2131371276));
-    this.g = ((FormMutiItem)a(2131371277));
-    this.h = ((FormMutiItem)a(2131371278));
-    this.j = ((FormMutiItem)a(2131371273));
-    this.k = ((FormMutiItem)a(2131371274));
-    this.i = ((FormMutiItem)a(2131371279));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371267));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371265));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131371266));
+    setLeftViewName(2131432414);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)a(2131371393));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131371431));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)a(2131371432));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)a(2131371433));
+    this.c = ((FormMutiItem)a(2131371434));
+    this.d = ((FormMutiItem)a(2131371435));
+    this.e = ((FormMutiItem)a(2131371438));
+    this.f = ((FormMutiItem)a(2131371439));
+    this.g = ((FormMutiItem)a(2131371440));
+    this.h = ((FormMutiItem)a(2131371441));
+    this.j = ((FormMutiItem)a(2131371436));
+    this.k = ((FormMutiItem)a(2131371437));
+    this.i = ((FormMutiItem)a(2131371442));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371430));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371428));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131371429));
     Object localObject2 = (FriendsManager)this.app.getManager(50);
     boolean bool2 = ((FriendsManager)localObject2).d();
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
@@ -114,44 +114,44 @@ public class ShowReactiveActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130845799));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130845927));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(HotReactiveHelper.a(this, 1));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setSecondLineText(HotReactiveHelper.a(this, 7));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130845785));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130845913));
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(HotReactiveHelper.a(this, 2));
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setSecondLineText(HotReactiveHelper.a(this, 8));
-      this.c.setLeftIcon(getResources().getDrawable(2130845802));
+      this.c.setLeftIcon(getResources().getDrawable(2130845930));
       this.c.setFirstLineText(HotReactiveHelper.a(this, 3));
       this.c.setSecondLineText(HotReactiveHelper.a(this, 9));
-      this.d.setLeftIcon(getResources().getDrawable(2130845788));
+      this.d.setLeftIcon(getResources().getDrawable(2130845916));
       this.d.setFirstLineText(HotReactiveHelper.a(this, 4));
       this.d.setSecondLineText(HotReactiveHelper.a(this, 10));
-      this.e.setLeftIcon(getResources().getDrawable(2130845801));
+      this.e.setLeftIcon(getResources().getDrawable(2130845929));
       this.e.setFirstLineText(HotReactiveHelper.a(this, 5));
       this.e.setSecondLineText(HotReactiveHelper.a(this, 11));
-      this.f.setLeftIcon(getResources().getDrawable(2130845787));
+      this.f.setLeftIcon(getResources().getDrawable(2130845915));
       this.f.setFirstLineText(HotReactiveHelper.a(this, 6));
       this.f.setSecondLineText(HotReactiveHelper.a(this, 12));
-      this.g.setLeftIcon(getResources().getDrawable(2130845794));
+      this.g.setLeftIcon(getResources().getDrawable(2130845922));
       this.g.setFirstLineText(HotReactiveHelper.a(this, 59));
       this.g.setSecondLineText(HotReactiveHelper.a(this, 61));
-      this.h.setLeftIcon(getResources().getDrawable(2130845793));
+      this.h.setLeftIcon(getResources().getDrawable(2130845921));
       this.h.setFirstLineText(HotReactiveHelper.a(this, 60));
       this.h.setSecondLineText(HotReactiveHelper.a(this, 62));
-      this.j.setLeftIcon(getResources().getDrawable(2130845795));
+      this.j.setLeftIcon(getResources().getDrawable(2130845923));
       this.j.setFirstLineText(HotReactiveHelper.a(this, 36));
       this.j.setSecondLineText(HotReactiveHelper.a(this, 34));
-      this.k.setLeftIcon(getResources().getDrawable(2130845797));
+      this.k.setLeftIcon(getResources().getDrawable(2130845925));
       this.k.setFirstLineText(HotReactiveHelper.a(this, 37));
       this.k.setSecondLineText(HotReactiveHelper.a(this, 35));
-      localObject1 = new AlphaDrawable(this, 2130845799, 2130845800);
+      localObject1 = new AlphaDrawable(this, 2130845927, 2130845928);
       this.i.setLeftIcon((Drawable)localObject1);
       HotReactiveHelper.a((AlphaDrawable)localObject1);
       this.i.setFirstLineText(HotReactiveHelper.a(this, 30));
       this.i.setSecondLineText(HotReactiveHelper.a(this, 31));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(HotReactiveHelper.a(this, 29));
       if (AppSetting.b) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131438550));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131438568));
       }
       return;
       bool1 = false;
@@ -169,12 +169,12 @@ public class ShowReactiveActivity
       else if (m == 2)
       {
         this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
-        a(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, str, (String)localObject2, ((ExtensionInfo)localObject1).chatDays, 2130845799);
+        a(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, str, (String)localObject2, ((ExtensionInfo)localObject1).chatDays, 2130845927);
       }
       else if (m == 1)
       {
         this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
-        a(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, str, (String)localObject2, ((ExtensionInfo)localObject1).chatDays, 2130845799);
+        a(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, str, (String)localObject2, ((ExtensionInfo)localObject1).chatDays, 2130845927);
       }
     }
   }
@@ -185,15 +185,15 @@ public class ShowReactiveActivity
     paramFormSimpleItem.setLeftIcon(getResources().getDrawable(paramInt2));
     paramInt1 = paramString1.lastIndexOf("" + paramInt1);
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(getResources().getColor(2131493061), getResources().getColor(2131493062)), paramInt1, paramInt1 + 1, 33);
+    paramString1.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(getResources().getColor(2131493062), getResources().getColor(2131493063)), paramInt1, paramInt1 + 1, 33);
     paramFormSimpleItem.setLeftText(paramString1);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970573);
-    setTitle(2131435449);
+    super.setContentView(2130970617);
+    setTitle(2131435466);
     this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)this.app.getManager(50));
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("friendUin");
     a();
@@ -212,16 +212,16 @@ public class ShowReactiveActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    String str = getString(2131436844);
+    String str = getString(2131436861);
     SpecialCareInfo localSpecialCareInfo = ((FriendsManager)this.app.getManager(50)).a(this.jdField_a_of_type_JavaLangString);
     if ((localSpecialCareInfo == null) || (localSpecialCareInfo.globalSwitch == 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131436019));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131436036));
     }
-    for (str = str + getString(2131436019);; str = str + getString(2131436020))
+    for (str = str + getString(2131436036);; str = str + getString(2131436037))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(str);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131436020));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131436037));
     }
   }
   
@@ -231,7 +231,7 @@ public class ShowReactiveActivity
     boolean bool2 = false;
     if (!NetworkUtil.d(getActivity()))
     {
-      QQToast.a(getApplicationContext(), 2131436049, 1).a();
+      QQToast.a(getApplicationContext(), 2131436066, 1).a();
       bool1 = bool2;
       if (!paramBoolean) {
         bool1 = true;

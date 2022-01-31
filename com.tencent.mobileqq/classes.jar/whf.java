@@ -1,26 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class whf
-  implements View.OnClickListener
+  implements ConditionSearchManager.IConfigListener
 {
-  public whf(NotificationView paramNotificationView) {}
+  public whf(AddContactsView paramAddContactsView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    paramView = (NotificationAdapter.ViewHolder)paramView.getTag();
-    if (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    }
+    if ((paramInt == 2) && (paramBoolean))
     {
-      this.a.a(paramView);
-      if (paramView.jdField_a_of_type_Int == 82) {
-        ReportController.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
-      }
+      this.a.b = true;
+      this.a.e();
     }
   }
 }

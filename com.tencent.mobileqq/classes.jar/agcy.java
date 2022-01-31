@@ -1,84 +1,58 @@
-import android.os.Handler.Callback;
 import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudFileUploadCallback;
+import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
+import com.tencent.mobileqq.ar.arengine.SearchQuestionResult;
+import com.tencent.mobileqq.ocr.question.SearchQuestionFragment;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.util.WeakReferenceHandler;
+import java.io.File;
 
 public class agcy
-  implements Handler.Callback
+  implements ARCloudFileUpload.ARCloudFileUploadCallback
 {
-  public agcy(ProfileHeaderView paramProfileHeaderView) {}
+  public agcy(SearchQuestionFragment paramSearchQuestionFragment, ARCloudReqInfo paramARCloudReqInfo) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt, String paramString, ARCloudRecogResult paramARCloudRecogResult)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(ProfileHeaderView.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "mUICallback [%d]", new Object[] { Integer.valueOf(paramMessage.what) }));
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchQuestionFragment", 2, "retCode:" + paramInt + "sessionId:" + paramString + ",recogResult:" + paramARCloudRecogResult);
     }
-    if (ProfileHeaderView.d == paramMessage.what)
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.c)) && (this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.c.equals(paramString)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.a.c);
+      if ((paramInt != 0) || (paramARCloudRecogResult == null)) {
+        break label205;
       }
-      if ((this.a.b.get()) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
-        this.a.k(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-      }
-    }
-    Object localObject;
-    do
-    {
-      do
+      paramString = paramARCloudRecogResult.a;
+      if (paramString != null)
       {
-        do
-        {
-          return true;
-          if (ProfileHeaderView.f == paramMessage.what)
-          {
-            this.a.a(false);
-            return true;
-          }
-          if (ProfileHeaderView.g != paramMessage.what) {
-            break;
-          }
-          localObject = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
-        } while (!(localObject instanceof ImageView));
-        localObject = (ImageView)localObject;
-        paramMessage = (ExtensionInfo)paramMessage.obj;
-        if ((paramMessage != null) && (paramMessage.isPendantValid()))
-        {
-          this.a.jdField_a_of_type_Long = paramMessage.pendantId;
-          AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(45);
-          ((ImageView)localObject).setVisibility(0);
-          if (AvatarPendantUtil.a(this.a.jdField_a_of_type_Long))
-          {
-            localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
-            return true;
-          }
-          localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
-          return true;
+        paramString = paramString.c;
+        paramARCloudRecogResult = new Message();
+        paramARCloudRecogResult.obj = paramString;
+        paramARCloudRecogResult.what = 5;
+        this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(paramARCloudRecogResult);
+      }
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.jdField_a_of_type_JavaLangString))) {}
+      try
+      {
+        if (new File(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.jdField_a_of_type_JavaLangString).getParent().equals(SearchQuestionFragment.jdField_a_of_type_JavaLangString)) {
+          FileUtils.d(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.jdField_a_of_type_JavaLangString);
         }
-        ((ImageView)localObject).setVisibility(4);
-        this.a.jdField_a_of_type_Long = 0L;
-        return true;
-        if (paramMessage.what == 1004)
-        {
-          this.a.d(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-          return true;
-        }
-      } while (paramMessage.what != 1005);
-      localObject = (TextView)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_medal_num");
-    } while (localObject == null);
-    ((TextView)localObject).setText((String)paramMessage.obj);
-    return true;
+        return;
+      }
+      catch (Exception paramString)
+      {
+        label205:
+        paramString.printStackTrace();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
+    }
   }
 }
 

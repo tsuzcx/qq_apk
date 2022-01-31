@@ -1,6 +1,6 @@
 package cooperation.qlink;
 
-import alww;
+import amna;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -25,7 +25,7 @@ public abstract class IQlinkService$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQlinkService))) {
       return (IQlinkService)localIInterface;
     }
-    return new alww(paramIBinder);
+    return new amna(paramIBinder);
   }
   
   public IBinder asBinder()

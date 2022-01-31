@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-public class adio
-  implements TVK_IMediaPlayer.OnVideoPreparingListener
+class adio
+  implements Runnable
 {
-  public adio(VideoBaseItem paramVideoBaseItem) {}
+  adio(adil paramadil, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
   
-  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
-    }
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adil.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adil.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adio
  * JD-Core Version:    0.7.0.1
  */

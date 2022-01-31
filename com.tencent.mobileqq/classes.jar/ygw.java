@@ -1,46 +1,32 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.aio.HotReactiveHelper;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.HashSet;
 
-public final class ygw
+public class ygw
   implements Runnable
 {
-  public ygw(AppInterface paramAppInterface) {}
+  public ygw(BuddyListAdapter paramBuddyListAdapter) {}
   
   public void run()
   {
-    if (this.a != null)
+    if ((FriendsManager)BuddyListAdapter.a(this.a).getManager(50) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, "[checkJsonParse]");
-      }
-      Object localObject = (ApolloDaoManager)this.a.getManager(154);
-      ApolloManager localApolloManager = (ApolloManager)this.a.getManager(152);
-      List localList = ((ApolloDaoManager)localObject).a();
-      boolean bool = this.a.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean("7.6.0" + this.a.getCurrentAccountUin(), false);
-      if ((localList == null) || (localList.size() == 0) || (!bool))
+      HashSet localHashSet = HotReactiveHelper.a();
+      if ((localHashSet != null) && (localHashSet.size() > 0))
       {
-        localApolloManager.b();
-        QLog.d("ApolloManager", 1, "[checkJsonParse] parse action json");
-      }
-      localObject = ((ApolloDaoManager)localObject).f();
-      if (((localObject == null) || (((List)localObject).size() == 0)) && (new File(ApolloUtil.b).exists()))
-      {
-        localApolloManager.c();
-        QLog.d("ApolloManager", 1, "[checkJsonParse] parse game json");
+        ArrayList localArrayList = new ArrayList(localHashSet);
+        BuddyListAdapter.a(this.a).b(localArrayList);
+        localHashSet.clear();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ygw
  * JD-Core Version:    0.7.0.1
  */

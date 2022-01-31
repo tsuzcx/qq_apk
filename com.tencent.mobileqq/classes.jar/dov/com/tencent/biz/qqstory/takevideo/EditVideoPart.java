@@ -129,26 +129,26 @@ public abstract class EditVideoPart
     return false;
   }
   
-  public void aC_()
+  public void aB_()
   {
     c();
   }
   
-  public void aD_()
+  public void aE_()
+  {
+    c();
+  }
+  
+  public void aF_()
   {
     c();
   }
   
   public void a_(int paramInt, Object paramObject) {}
   
-  public void au_() {}
+  public void aw_() {}
   
-  public void av_()
-  {
-    c();
-  }
-  
-  public void az_()
+  public void ax_()
   {
     c();
   }

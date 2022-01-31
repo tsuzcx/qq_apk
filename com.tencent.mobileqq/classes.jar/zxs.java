@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRecognition;
 
-class zxs
-  implements Runnable
+public final class zxs
+  implements Parcelable.Creator
 {
-  zxs(zxq paramzxq) {}
-  
-  public void run()
+  public ARRecognition a(Parcel paramParcel)
   {
-    ArConfigService.d(this.a.a);
+    return new ARRecognition(paramParcel);
+  }
+  
+  public ARRecognition[] a(int paramInt)
+  {
+    return new ARRecognition[paramInt];
   }
 }
 

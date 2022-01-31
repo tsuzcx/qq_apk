@@ -1,19 +1,41 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
-import cooperation.qzone.webviewplugin.QZoneGiftFullScreenJsPlugin;
+import android.os.Handler;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
 
 public class amli
-  implements QzoneGiftFullScreenViewController.GiftFullScreenPlayListener
+  extends OnPluginInstallListener.Stub
 {
-  public amli(QZoneGiftFullScreenJsPlugin paramQZoneGiftFullScreenJsPlugin, String paramString) {}
+  public amli(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity) {}
   
-  public void a()
+  public void onInstallBegin(String paramString)
   {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneGiftFullScreenJsPlugin.a != null)
-    {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
-      this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneGiftFullScreenJsPlugin.a.callJs(str);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallBegin...");
     }
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallDownloadProgress...");
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallError...");
+    }
+    this.a.b.sendEmptyMessageDelayed(3, 200L);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallFinish...");
+    }
+    this.a.b.sendEmptyMessageDelayed(1, 1000L);
   }
 }
 

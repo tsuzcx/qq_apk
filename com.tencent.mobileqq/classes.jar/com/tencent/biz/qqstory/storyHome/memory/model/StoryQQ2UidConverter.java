@@ -12,8 +12,8 @@ import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfo
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import nvz;
-import nwb;
+import nxm;
+import nxo;
 
 public class StoryQQ2UidConverter
   implements GetUserInfoHandler.OnGetUserInfoCallback
@@ -27,7 +27,7 @@ public class StoryQQ2UidConverter
   
   public void a(long paramLong)
   {
-    ThreadManager.post(new nvz(this, paramLong), 5, null, false);
+    ThreadManager.post(new nxm(this, paramLong), 5, null, false);
   }
   
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
@@ -40,7 +40,7 @@ public class StoryQQ2UidConverter
     }
     for (paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;; paramUpdateUserInfoEvent = null)
     {
-      ThreadManager.getUIHandler().post(new nwb(this, paramUpdateUserInfoEvent));
+      ThreadManager.getUIHandler().post(new nxo(this, paramUpdateUserInfoEvent));
       return;
     }
   }

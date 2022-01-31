@@ -1,13 +1,13 @@
 package dov.com.qq.im.capture.view;
 
-import amzt;
-import amzu;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import anpy;
+import anpz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
@@ -37,7 +37,7 @@ public class QIMPtvTemplateProviderView
   public QIMPtvTemplateProviderView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver = new amzt(this);
+    this.jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver = new anpy(this);
   }
   
   private ArrayList a()
@@ -66,7 +66,7 @@ public class QIMPtvTemplateProviderView
   
   protected int a()
   {
-    return 2130970128;
+    return 2130970142;
   }
   
   protected Bundle a()
@@ -149,7 +149,7 @@ public class QIMPtvTemplateProviderView
           QLog.d("PtvTemplateProviderView", 2, "itemInfo= " + paramString + ",index=" + i + ",pos=" + paramInt);
         }
         if (paramString != null) {
-          postDelayed(new amzu(this, paramString), 200L);
+          postDelayed(new anpz(this, paramString), 200L);
         }
         return;
         i += 1;
@@ -166,10 +166,10 @@ public class QIMPtvTemplateProviderView
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970128, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970142, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131364474));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131364498));
     this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter = new QIMPtvTemplateViewPagerAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener, this.f);
     this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager = ((QIMPtvTemplateManager)QIMManager.a(3));
     this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter.a(new ArrayList());

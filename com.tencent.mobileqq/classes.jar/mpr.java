@@ -1,13 +1,18 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.OfflineUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
 
 public final class mpr
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public void run()
+  public FastWebVideoInfo a(Parcel paramParcel)
   {
-    HtmlOffline.b(OfflineUtils.a(), BaseApplicationImpl.getApplication().getRuntime(), true, OfflineUtils.a());
+    return new FastWebVideoInfo(paramParcel);
+  }
+  
+  public FastWebVideoInfo[] a(int paramInt)
+  {
+    return new FastWebVideoInfo[paramInt];
   }
 }
 

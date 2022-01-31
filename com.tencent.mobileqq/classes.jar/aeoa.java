@@ -1,20 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.nearby.now.view.widget.StoryNewGuideDialog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class aeoa
-  implements Animation.AnimationListener
+  implements WerewolvesHandler.Callback
 {
-  public aeoa(StoryNewGuideDialog paramStoryNewGuideDialog) {}
+  public aeoa(GameRoomInviteActivity paramGameRoomInviteActivity, String paramString1, String paramString2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    this.a.dismiss();
+    GameRoomInviteActivity localGameRoomInviteActivity;
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    {
+      localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
+        break label94;
+      }
+    }
+    label94:
+    for (boolean bool = true;; bool = false)
+    {
+      localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), this.jdField_a_of_type_JavaLangString, this.b);
+      return;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

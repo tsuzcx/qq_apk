@@ -1,25 +1,39 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.HiBoomItemBuilder;
-import com.tencent.mobileqq.hiboom.HiBoomTextView.OnDoubleClick;
+import android.graphics.BitmapFactory.Options;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class uxg
-  implements HiBoomTextView.OnDoubleClick
+  implements Runnable
 {
-  public uxg(HiBoomItemBuilder paramHiBoomItemBuilder) {}
+  public uxg(FileVideoItemBuilder paramFileVideoItemBuilder, FileManagerEntity paramFileManagerEntity, String paramString) {}
   
-  public void a(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = this.jdField_a_of_type_JavaLangString;
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight > 0) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth > 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileVideoItemBuilder<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]download video thumb success， but entity has size(wh)[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "]");
+      }
     }
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    if (HiBoomItemBuilder.a(this.a)) {
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b.post(new uxh(this));
       return;
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      FilePicURLDrawlableHelper.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath, localOptions);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth = localOptions.outWidth;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight = localOptions.outHeight;
+      if (QLog.isColorLevel()) {
+        QLog.i("FileVideoItemBuilder<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]entity no size, get and use thumb size(wh)[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "]");
+      }
     }
-    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
   }
 }
 

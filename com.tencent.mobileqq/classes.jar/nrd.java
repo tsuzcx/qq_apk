@@ -1,38 +1,29 @@
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedIdVidListEvent;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedVidListObserver;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class nrd
-  extends ShareGroupManager.GetFeedVidListObserver
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public nrd(ShareGroupManager paramShareGroupManager, int paramInt1, String paramString, int paramInt2) {}
+  public nrd(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate, boolean paramBoolean) {}
   
-  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Int == paramVideoCollectionItem.videoVidList.size())
+    if (paramInt != 0)
     {
-      boolean bool = true;
-      paramBoolean = bool;
-      if (QLog.isColorLevel())
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
       {
-        QLog.e("Q.qqstory.discover.ShareGroupManager", 2, "currentVidListSize == videoCollectionItem.videoVidList.size():" + paramVideoCollectionItem.toString());
-        paramBoolean = bool;
+        paramArrayOfByte.a(3, bool);
+        this.a.a(0, this.a.a.getString(2131435374));
+        return;
       }
     }
-    if (paramBoolean)
-    {
-      ShareGroupManager.GetFeedIdVidListEvent localGetFeedIdVidListEvent = new ShareGroupManager.GetFeedIdVidListEvent();
-      localGetFeedIdVidListEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localGetFeedIdVidListEvent.jdField_a_of_type_JavaUtilArrayList = paramVideoCollectionItem.videoVidList;
-      Dispatchers.get().dispatch(localGetFeedIdVidListEvent);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupManager.a(this.jdField_a_of_type_JavaLangString, this.b);
+    ((QQStoryManager)this.a.a.app.getManager(180)).b(this.b);
   }
 }
 

@@ -56,9 +56,9 @@ public class ArkAppItemBuilder
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968741, null);
-      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramViewHolder.findViewById(2131363294));
+      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramViewHolder.findViewById(2131363312));
       localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setTag(localHolder);
-      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramViewHolder.findViewById(2131363295));
+      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramViewHolder.findViewById(2131363313));
     }
     if (ArkTipsManager.a().a(paramMessageRecord.uniseq)) {
       localMessageForArkApp.arkContainer = ArkTipsManager.a().a();
@@ -98,7 +98,7 @@ public class ArkAppItemBuilder
     switch (paramInt)
     {
     default: 
-    case 2131363499: 
+    case 2131363517: 
       do
       {
         return;
@@ -155,9 +155,9 @@ public class ArkAppItemBuilder
     for (;;)
     {
       if (i != 0) {
-        localQQCustomMenu.a(2131363499, this.jdField_a_of_type_AndroidContentContext.getString(2131435066), 2130838309);
+        localQQCustomMenu.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
       }
-      localQQCustomMenu.a(2131375336, this.jdField_a_of_type_AndroidContentContext.getString(2131433621), 2130838305);
+      localQQCustomMenu.a(2131375567, this.jdField_a_of_type_AndroidContentContext.getString(2131433638), 2130838309);
       return localQQCustomMenu.a();
       i = 1;
       continue;

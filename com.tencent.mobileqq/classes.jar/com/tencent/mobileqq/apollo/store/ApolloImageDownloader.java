@@ -233,7 +233,7 @@ public class ApolloImageDownloader
           if (paramFile != null) {
             if (localApolloDrawableExtraInfo.jdField_a_of_type_Boolean)
             {
-              i = 2130845657;
+              i = 2130845785;
               paramDownloadParams = ImageUtil.a(paramFile, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, true);
               paramFile = paramDownloadParams;
               if (!QLog.isColorLevel()) {
@@ -252,7 +252,7 @@ public class ApolloImageDownloader
             System.gc();
             paramFile = localThrowable;
             continue;
-            int i = 2130845493;
+            int i = 2130845621;
           }
           paramDownloadParams = paramFile;
         }

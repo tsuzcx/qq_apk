@@ -42,17 +42,17 @@ public class SquareCornerTextImageView
   {
     ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, SquareCornerTextImageView.PicInfo.a(paramPicInfo), getContext());
     float f = 1.0F * SquareCornerTextImageView.PicInfo.a(paramPicInfo) / SquareCornerTextImageView.PicInfo.b(paramPicInfo);
-    if ((f < 0.455D) || (f > 2.2D))
+    if ((SquareCornerTextImageView.PicInfo.a(paramPicInfo)) && ((f < 0.455D) || (f > 2.2D)))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131428494));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131428500));
     }
     for (;;)
     {
-      if (SquareCornerTextImageView.PicInfo.a(paramPicInfo))
+      if (SquareCornerTextImageView.PicInfo.b(paramPicInfo))
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131428496));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131428502));
       }
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);

@@ -95,7 +95,7 @@ public class ApolloCardLayout
     {
       paramApolloBoxDataItem = new RelativeLayout.LayoutParams(-2, AIOUtils.a(48.0F, getResources()));
       this.jdField_d_of_type_AndroidWidgetTextView = new TextView(getContext());
-      paramApolloBoxDataItem.addRule(3, 2131362438);
+      paramApolloBoxDataItem.addRule(3, 2131362441);
       this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
       paramApolloBoxDataItem.topMargin = AIOUtils.a(9.0F, getResources());
       this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
@@ -130,7 +130,7 @@ public class ApolloCardLayout
         paramApolloBoxDataItem.addRule(10);
         paramApolloBoxDataItem.topMargin = ((int)(paramInt3 * 0.703F));
         this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
-        this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362438);
+        this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362441);
         this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
         this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
         this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
@@ -156,7 +156,7 @@ public class ApolloCardLayout
       if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloBoxData$ApolloBoxDataItem.jdField_g_of_type_Int != 1) {
         break label1948;
       }
-      paramApolloBoxDataItem = getContext().getResources().getDrawable(2130838022);
+      paramApolloBoxDataItem = getContext().getResources().getDrawable(2130838025);
       k = paramApolloBoxDataItem.getIntrinsicWidth();
       j = paramApolloBoxDataItem.getIntrinsicHeight();
       if (this.jdField_c_of_type_Int != 2) {
@@ -220,7 +220,7 @@ public class ApolloCardLayout
         paramApolloBoxDataItem.addRule(9);
         paramApolloBoxDataItem.width = paramInt1;
         paramApolloBoxDataItem.height = paramInt1;
-        this.jdField_d_of_type_ComTencentImageURLImageView.setBackgroundResource(2130838045);
+        this.jdField_d_of_type_ComTencentImageURLImageView.setBackgroundResource(2130838048);
         this.jdField_d_of_type_ComTencentImageURLImageView.setImageDrawable(null);
         this.jdField_d_of_type_ComTencentImageURLImageView.setPadding(1, 1, 1, 1);
       }

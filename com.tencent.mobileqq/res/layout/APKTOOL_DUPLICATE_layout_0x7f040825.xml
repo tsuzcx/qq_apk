@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2613" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b7" />
+    <RelativeLayout android:id="@id/head" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b3" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a33" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02c0" />
+        <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02bc">
+            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e02c6" />"
+<TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2638" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02be" />"
 </LinearLayout>
+    </RelativeLayout>
+    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057f" android:id="@id/info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0154" android:layout_marginBottom="20.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" android:layout_below="@id/head" android:layout_alignParentLeft="true" />
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_below="@id/info" />
+</RelativeLayout>

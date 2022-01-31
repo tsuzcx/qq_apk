@@ -1,57 +1,42 @@
+import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureHelper;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraProgressView;
+import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
 import com.tencent.qphone.base.util.QLog;
 
 public class lhl
-  implements INetInfoHandler
+  implements Runnable
 {
   public lhl(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void onNetMobile2None()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetMobile2None()");
+    try
+    {
+      ReadInJoyCameraCaptureActivity.a(this.a, ReadInJoyCameraCaptureActivity.a(this.a).a());
+      ReadInJoyCameraCaptureActivity.b(this.a, ReadInJoyCameraCaptureActivity.a(this.a).h());
+      if (ReadInJoyCameraCaptureActivity.a(this.a) == ReadInJoyCameraCaptureActivity.b(this.a))
+      {
+        if ((!ReadInJoyCameraCaptureActivity.a(this.a)) && (!ReadInJoyCameraCaptureActivity.b(this.a)))
+        {
+          ReadInJoyCameraCaptureActivity.a(this.a).l();
+          this.a.b();
+        }
+        ReadInJoyCameraCaptureActivity.a(this.a, true);
+        ReadInJoyCameraCaptureActivity.a(this.a).removeCallbacks(this);
+      }
+      ReadInJoyCameraCaptureActivity.a(this.a).setProgress(ReadInJoyCameraCaptureActivity.a(this.a), ReadInJoyCameraCaptureActivity.b(this.a));
+      ReadInJoyCameraCaptureHelper.a(ReadInJoyCameraCaptureActivity.b(this.a), ReadInJoyCameraCaptureActivity.a(this.a));
+      if ((!ReadInJoyCameraCaptureActivity.b(this.a)) && (ReadInJoyCameraCaptureActivity.a(this.a) == 1)) {
+        ReadInJoyCameraCaptureActivity.a(this.a).postDelayed(this, 100L);
+      }
+      return;
     }
-    if (ReadInJoyCameraCaptureActivity.a(this.a) == 6) {
-      ReadInJoyCameraCaptureActivity.d(this.a);
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetWifi2None()");
-    }
-    if (ReadInJoyCameraCaptureActivity.a(this.a) == 6) {
-      ReadInJoyCameraCaptureActivity.d(this.a);
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "progress Exception e=" + localException.getMessage());
     }
   }
 }

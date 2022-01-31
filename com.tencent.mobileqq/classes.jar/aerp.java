@@ -1,23 +1,36 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.StrangerInfo;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class aerp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aerp(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public aerp(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
-    paramView.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
-    this.a.a.startActivity(paramView);
-    ReportController.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
+    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()))) {
+      return;
+    }
+    Object localObject = (ArrayList)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getEntityManagerFactory().createEntityManager().a(StrangerInfo.class);
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      this.a.jdField_a_of_type_JavaUtilList.clear();
+      this.a.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+    }
+    localObject = NearbySPUtil.a("nearby_visitor_file", this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getAccount(), 0);
+    this.a.b = ((SharedPreferences)localObject).getLong("sp_nearby_total_visitor", 0L);
+    this.a.c = ((SharedPreferences)localObject).getLong("sp_nearby_new_visitor", 0L);
+    this.a.d = ((SharedPreferences)localObject).getLong("sp_nearby_his_visitor", 0L);
+    this.a.runOnUiThread(new aerq(this));
   }
 }
 

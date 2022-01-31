@@ -1,19 +1,16 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.av.ui.BeautyToolbar;
-import com.tencent.av.widget.BidirectionSeekBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
 
-public class jri
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class jri
+  implements DialogInterface.OnClickListener
 {
-  public jri(BeautyToolbar paramBeautyToolbar) {}
+  jri(jre paramjre) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
-    {
-      this.a.mIs1stShow = false;
-      this.a.updateTip(this.a.mSeek.getProgress());
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 

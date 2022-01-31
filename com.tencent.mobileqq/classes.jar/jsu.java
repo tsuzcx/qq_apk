@@ -1,20 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class jsu
-  implements QavInOutAnimation.QavOutAnimationListener
+  implements View.OnClickListener
 {
   public jsu(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.l = true;
-    this.a.ah();
-  }
-  
-  public void b()
-  {
-    this.a.l = false;
+    QLog.d(this.a.c, 1, "quit double screen from reset clicker");
+    if ((this.a.a != null) && (this.a.a.get() != null) && ((this.a.a.get() instanceof AVActivity))) {
+      ((AVActivity)this.a.a.get()).BtnOnClick(paramView);
+    }
   }
 }
 

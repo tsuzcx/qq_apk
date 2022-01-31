@@ -1,32 +1,31 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.pendant.AVEffectPendantReport;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.report.VideoNodeReporter;
+import com.tencent.mobileqq.statistics.DcReportUtil;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
+import java.util.List;
 
-public final class jgn
+public class jgn
   implements Runnable
 {
+  public jgn(VideoNodeReporter paramVideoNodeReporter, long paramLong) {}
+  
   public void run()
   {
-    if ((AVEffectPendantReport.a() == null) || (AVEffectPendantReport.a().isEmpty()))
-    {
-      AVEffectPendantReport.e();
-      return;
+    Object localObject = VideoNodeReporter.a(this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter, this.jdField_a_of_type_Long);
+    QLog.d("VideoNodeReporter", 1, "reportToServer ,roomId = " + this.jdField_a_of_type_Long + ", detail = " + (String)localObject);
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_Long != 0L)) {
+      DcReportUtil.a(null, "dc02402", (String)localObject);
     }
-    AVEffectPendantReport.a(0);
-    AVEffectPendantReport.b(0);
-    Iterator localIterator = AVEffectPendantReport.a().iterator();
-    while (localIterator.hasNext())
+    VideoNodeReporter.a(this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter, this.jdField_a_of_type_Long);
+    localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      PendantItem localPendantItem = (PendantItem)localIterator.next();
-      AVEffectPendantReport.a();
-      if (AVEffectPendantReport.a(localPendantItem)) {
-        AVEffectPendantReport.b();
+      jgo localjgo = (jgo)((Iterator)localObject).next();
+      if (this.jdField_a_of_type_Long == localjgo.jdField_a_of_type_Long) {
+        ((Iterator)localObject).remove();
       }
     }
-    AVLog.c("AVEffectPendantReport", "refleshAndSetDownloadInfo()  mTotalCount = " + AVEffectPendantReport.c() + "  mDownloadCount = " + AVEffectPendantReport.d());
-    AVEffectPendantReport.a();
   }
 }
 

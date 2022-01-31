@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajeq;
-import ajer;
+import ajsu;
+import ajsv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -61,9 +61,9 @@ public class PublishItemContainer
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844380);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844504);
     this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
-    this.jdField_a_of_type_JavaLangCharSequence = BaseApplication.getContext().getResources().getText(2131432657);
+    this.jdField_a_of_type_JavaLangCharSequence = BaseApplication.getContext().getResources().getText(2131432674);
     this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     addView(this.jdField_b_of_type_AndroidWidgetLinearLayout);
     paramAttributeSet = new FrameLayout.LayoutParams(-1, -2);
@@ -77,7 +77,7 @@ public class PublishItemContainer
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(16);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramContext);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130969475, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130969476, null);
     a(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
@@ -104,9 +104,9 @@ public class PublishItemContainer
   
   protected void a(View paramView)
   {
-    Object localObject = paramView.findViewById(2131366621);
-    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131366619);
-    localURLImageView.setImageResource(2130844818);
+    Object localObject = paramView.findViewById(2131366645);
+    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131366643);
+    localURLImageView.setImageResource(2130844943);
     ((View)localObject).setVisibility(8);
     localURLImageView.setAdjustViewBounds(false);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localURLImageView.getLayoutParams();
@@ -132,8 +132,8 @@ public class PublishItemContainer
     Object localObject2;
     if ((paramView != null) && (!TextUtils.isEmpty(paramString)))
     {
-      localView = paramView.findViewById(2131366621);
-      localURLImageView = (URLImageView)paramView.findViewById(2131366619);
+      localView = paramView.findViewById(2131366645);
+      localURLImageView = (URLImageView)paramView.findViewById(2131366643);
       localURLImageView.setAdjustViewBounds(false);
       localObject1 = (RelativeLayout.LayoutParams)localURLImageView.getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject1).width = ((int)DisplayUtils.a(getContext(), 50.0F));
@@ -236,7 +236,7 @@ public class PublishItemContainer
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!TextUtils.isEmpty(paramString)))
     {
       this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      View localView = LayoutInflater.from(getContext()).inflate(2130969475, null);
+      View localView = LayoutInflater.from(getContext()).inflate(2130969476, null);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       a(localView, paramString);
       this.g = 1;
@@ -244,7 +244,7 @@ public class PublishItemContainer
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       }
       setVisibility(0);
-      postDelayed(new ajeq(this), 200L);
+      postDelayed(new ajsu(this), 200L);
       return true;
     }
     return false;
@@ -289,7 +289,7 @@ public class PublishItemContainer
           i = 0;
           while (i < k - j)
           {
-            localObject = paramArrayList.inflate(2130969475, null);
+            localObject = paramArrayList.inflate(2130969476, null);
             this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
             i += 1;
           }
@@ -299,7 +299,7 @@ public class PublishItemContainer
       {
         this.g = 1;
         setVisibility(0);
-        postDelayed(new ajer(this), 200L);
+        postDelayed(new ajsv(this), 200L);
       }
       return true;
     }
@@ -317,7 +317,7 @@ public class PublishItemContainer
     {
       return;
       localAudioInfo = (AudioInfo)this.jdField_a_of_type_ComTencentMobileqqTroopDataMediaInfo;
-      localAudioInfo.mAudioIcon.setImageResource(2130845636);
+      localAudioInfo.mAudioIcon.setImageResource(2130845764);
       localObject = new Intent("key_audio_playing_action");
       ((Intent)localObject).putExtra("audio_local_path", localAudioInfo.path);
       BaseApplication.getContext().sendBroadcast((Intent)localObject);
@@ -352,7 +352,7 @@ public class PublishItemContainer
     if ((localAudioInfo.mAudioIcon.getDrawable() instanceof AnimationDrawable)) {
       ((AnimationDrawable)localAudioInfo.mAudioIcon.getDrawable()).stop();
     }
-    localAudioInfo.mAudioIcon.setImageResource(2130845636);
+    localAudioInfo.mAudioIcon.setImageResource(2130845764);
   }
   
   public void onClick(View paramView)
@@ -394,7 +394,7 @@ public class PublishItemContainer
         paramView.putExtra("ALBUM_ID", "$RecentAlbumId");
         paramView.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
         paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", this.jdField_a_of_type_AndroidAppActivity.getClass().getName());
-        paramView.putExtra("back_btn_text", this.jdField_a_of_type_AndroidAppActivity.getString(2131430479));
+        paramView.putExtra("back_btn_text", this.jdField_a_of_type_AndroidAppActivity.getString(2131430496));
         paramView.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_JavaUtilArrayList);
         paramView.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
         paramView.putExtra("PhotoConst.MAXUM_SELECTED_NUM", this.jdField_a_of_type_JavaUtilArrayList.size());
@@ -434,8 +434,8 @@ public class PublishItemContainer
     if (this.g == 2)
     {
       View localView2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0);
-      View localView1 = localView2.findViewById(2131366608);
-      localView2 = localView2.findViewById(2131366610);
+      View localView1 = localView2.findViewById(2131366632);
+      localView2 = localView2.findViewById(2131366634);
       if ((localView1 != null) && (localView2 != null))
       {
         localView1.setEnabled(paramBoolean);
@@ -452,7 +452,7 @@ public class PublishItemContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.PublishItemContainer
  * JD-Core Version:    0.7.0.1
  */

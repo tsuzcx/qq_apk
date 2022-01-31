@@ -1,49 +1,29 @@
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.StackBlur;
 
 public class wky
-  extends PublicAccountObserver
+  implements Runnable
 {
-  public wky(PublicAccountFragment paramPublicAccountFragment) {}
+  public wky(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
-    }
-    if (paramBoolean)
+    Bitmap localBitmap = this.a.a(this.a.app.a(this.a.a, (byte)1, true));
+    if (localBitmap != null) {}
+    try
     {
-      if (PublicAccountFragment.a(this.a))
+      StackBlur.a(localBitmap, 10);
+      this.a.runOnUiThread(new wkz(this, localBitmap));
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
       {
-        if (this.a.a != null) {
-          this.a.a.a(4, true, null);
-        }
-        PublicAccountFragment.a(this.a, false);
+        localOutOfMemoryError.printStackTrace();
       }
-      this.a.i();
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
     }
   }
 }

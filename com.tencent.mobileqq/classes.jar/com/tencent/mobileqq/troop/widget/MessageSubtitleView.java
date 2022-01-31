@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajel;
-import ajem;
-import ajen;
+import ajsp;
+import ajsq;
+import ajsr;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
@@ -31,7 +31,7 @@ public class MessageSubtitleView
   protected static int d = 3;
   int jdField_a_of_type_Int = 0;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new ajel(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new ajsp(this);
   protected ArrayList a;
   public Queue a;
   private final Runnable b;
@@ -46,7 +46,7 @@ public class MessageSubtitleView
     super(paramContext);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_b_of_type_JavaLangRunnable = new ajem(this);
+    this.jdField_b_of_type_JavaLangRunnable = new ajsq(this);
     a(paramContext);
   }
   
@@ -55,7 +55,7 @@ public class MessageSubtitleView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_b_of_type_JavaLangRunnable = new ajem(this);
+    this.jdField_b_of_type_JavaLangRunnable = new ajsq(this);
     a(paramContext);
   }
   
@@ -96,7 +96,7 @@ public class MessageSubtitleView
           break label135;
         }
         ((Animator)localObject).setInterpolator(new AccelerateInterpolator(0.2F));
-        ((Animator)localObject).addListener(new ajen(this, bool, paramInt2));
+        ((Animator)localObject).addListener(new ajsr(this, bool, paramInt2));
         ((Animator)localObject).start();
         return;
         bool = false;
@@ -233,7 +233,7 @@ public class MessageSubtitleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.MessageSubtitleView
  * JD-Core Version:    0.7.0.1
  */

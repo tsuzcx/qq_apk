@@ -1,26 +1,84 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage.Model;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView.PicInfo;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class lvk
-  extends ClickableSpan
+  extends BaseAdapter
 {
-  public lvk(ComponentHeaderPublish paramComponentHeaderPublish) {}
+  String jdField_a_of_type_JavaLangString;
+  List jdField_a_of_type_JavaUtilList;
+  String jdField_b_of_type_JavaLangString;
+  List jdField_b_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public lvk()
   {
-    ReadInJoyUtils.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public lvk(ComponentContentGridImage.Model paramModel)
   {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.a.getResources()));
+    a(paramModel);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(ComponentContentGridImage.Model paramModel)
+  {
+    this.jdField_b_of_type_JavaUtilList = paramModel.a();
+    this.jdField_a_of_type_JavaUtilList = paramModel.b();
+    this.jdField_a_of_type_JavaLangString = paramModel.a();
+    this.jdField_b_of_type_JavaLangString = paramModel.b();
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_b_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_b_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramViewGroup.getContext();
+    if (paramView == null)
+    {
+      paramView = new SquareCornerTextImageView(paramViewGroup);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    }
+    for (;;)
+    {
+      ((SquareCornerTextImageView)paramView).a((SquareCornerTextImageView.PicInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt));
+      return paramView;
+    }
   }
 }
 

@@ -1,14 +1,64 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
+import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseViewHolder;
+import java.util.ArrayList;
 
-class utk
-  implements Runnable
+public class utk
+  extends BaseAdapter
 {
-  utk(utj paramutj) {}
+  private utk(RDBaseListLayout paramRDBaseListLayout) {}
   
-  public void run()
+  public void a() {}
+  
+  public void b() {}
+  
+  public int getCount()
   {
-    ChatActivityUtils.a(this.a.a.a, 2131433713, 1);
+    return RDBaseListLayout.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return RDBaseListLayout.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = RDBaseListLayout.a(this.a).get(paramInt);
+    if (paramView == null) {
+      paramView = this.a.a(paramInt, paramViewGroup);
+    }
+    for (;;)
+    {
+      if (paramView == null) {
+        paramViewGroup = null;
+      }
+      View localView;
+      do
+      {
+        return paramViewGroup;
+        paramView = (utl)paramView.getTag();
+        if (paramView == null) {
+          break label102;
+        }
+        paramView = paramView.a;
+        break;
+        this.a.a(paramInt, paramViewGroup, paramView);
+        localView = ((RDBaseViewHolder)paramView).a();
+        paramViewGroup = localView;
+      } while (localView == null);
+      localView.setTag(new utl(this.a, paramInt, paramView));
+      return localView;
+      label102:
+      paramView = null;
+    }
   }
 }
 

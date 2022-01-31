@@ -29,8 +29,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lva;
-import lvb;
+import lvj;
+import lvk;
 
 public class ComponentContentGridImage
   extends GridView
@@ -39,7 +39,7 @@ public class ComponentContentGridImage
   private CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
   private ComponentContentGridImage.OnNoItemClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGridImage$OnNoItemClickListener;
   private Object jdField_a_of_type_JavaLangObject;
-  private lvb jdField_a_of_type_Lvb;
+  private lvk jdField_a_of_type_Lvk;
   private boolean jdField_a_of_type_Boolean;
   
   public ComponentContentGridImage(Context paramContext)
@@ -245,8 +245,8 @@ public class ComponentContentGridImage
   
   private void a(int paramInt, List paramList)
   {
-    String str1 = this.jdField_a_of_type_Lvb.a();
-    String str2 = this.jdField_a_of_type_Lvb.b();
+    String str1 = this.jdField_a_of_type_Lvk.a();
+    String str2 = this.jdField_a_of_type_Lvk.b();
     if ((this.jdField_a_of_type_JavaLangObject instanceof IReadInJoyModel)) {}
     for (ArticleInfo localArticleInfo = ((IReadInJoyModel)this.jdField_a_of_type_JavaLangObject).a();; localArticleInfo = null)
     {
@@ -263,7 +263,7 @@ public class ComponentContentGridImage
   
   public void a()
   {
-    setOnItemClickListener(new lva(this));
+    setOnItemClickListener(new lvj(this));
   }
   
   public void a(Context paramContext)
@@ -284,10 +284,10 @@ public class ComponentContentGridImage
     if (!(paramObject instanceof ComponentContentGridImage.Model)) {
       throw new IllegalArgumentException("unsupported model type.");
     }
-    if (this.jdField_a_of_type_Lvb == null)
+    if (this.jdField_a_of_type_Lvk == null)
     {
-      this.jdField_a_of_type_Lvb = new lvb((ComponentContentGridImage.Model)paramObject);
-      setAdapter(this.jdField_a_of_type_Lvb);
+      this.jdField_a_of_type_Lvk = new lvk((ComponentContentGridImage.Model)paramObject);
+      setAdapter(this.jdField_a_of_type_Lvk);
     }
     for (;;)
     {
@@ -296,8 +296,8 @@ public class ComponentContentGridImage
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a((IReadInJoyModel)this.jdField_a_of_type_JavaLangObject);
       }
       return;
-      this.jdField_a_of_type_Lvb.a((ComponentContentGridImage.Model)paramObject);
-      this.jdField_a_of_type_Lvb.notifyDataSetChanged();
+      this.jdField_a_of_type_Lvk.a((ComponentContentGridImage.Model)paramObject);
+      this.jdField_a_of_type_Lvk.notifyDataSetChanged();
     }
   }
   

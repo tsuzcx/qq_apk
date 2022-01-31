@@ -83,7 +83,7 @@ public class ComponentHeaderSpecialTopic
           localException.printStackTrace();
           localObject = null;
         }
-        Object localObject = ReadInJoyUtils.b((String)localObject);
+        Object localObject = ReadInJoyUtils.a((String)localObject);
         paramArticleInfo.mHeaderIconUrl = ((URL)localObject);
         return localObject;
       }
@@ -137,7 +137,7 @@ public class ComponentHeaderSpecialTopic
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969575, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969582, this, true);
   }
   
   public void a()
@@ -151,8 +151,8 @@ public class ComponentHeaderSpecialTopic
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131366816));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366822));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131366859));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366865));
   }
   
   public void a(IReadInJoyModel paramIReadInJoyModel)

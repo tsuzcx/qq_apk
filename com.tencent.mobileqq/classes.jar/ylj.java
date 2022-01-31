@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel.IRequestHandler;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
 
-public class ylj
-  implements Comparator
+public final class ylj
+  extends ApolloHttpCallBack
 {
-  public ylj(ApolloCmdChannel paramApolloCmdChannel) {}
+  public ylj(View paramView, long paramLong) {}
   
-  public int a(ApolloCmdChannel.IRequestHandler paramIRequestHandler1, ApolloCmdChannel.IRequestHandler paramIRequestHandler2)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    return paramIRequestHandler1.a() - paramIRequestHandler2.a();
+    if ((this.jdField_a_of_type_AndroidViewView instanceof ApolloSurfaceView)) {
+      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new ylk(this, paramArrayOfByte, paramInt));
+    }
   }
 }
 

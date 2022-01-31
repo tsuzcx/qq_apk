@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.apollo.data.ApolloDress;
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyGameDressReady;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ysw
-  implements ApolloResDownloader.OnApolloDownLoadListener
+public class ysw
+  implements Runnable
 {
-  public ysw(ApolloGameBasicEventUtil.NotifyGameDressReady paramNotifyGameDressReady, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ApolloDress paramApolloDress, int[] paramArrayOfInt) {}
+  public ysw(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameBasicEventUtil$NotifyGameDressReady != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameBasicEventUtil$NotifyGameDressReady.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqApolloDataApolloDress.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
+    try
+    {
+      this.a.b();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.ApolloGameActivity", 1, localThrowable, new Object[0]);
     }
   }
 }

@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.model.QueryTask.Query;
 
 public class aceu
-  implements ActionSheet.OnDismissListener
+  implements QueryTask.Query
 {
-  public aceu(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public aceu(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
   
-  public void onDismiss()
+  public Integer a(String paramString)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a);
+    int i = this.jdField_a_of_type_Int;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, paramString);
+    }
+    return Integer.valueOf(i);
   }
 }
 

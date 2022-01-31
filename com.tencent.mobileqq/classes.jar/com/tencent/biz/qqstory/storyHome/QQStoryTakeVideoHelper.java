@@ -31,10 +31,10 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.ThreadOffFunction;
 import com.tribe.async.reactive.Stream;
 import java.io.File;
-import nrr;
-import nsk;
-import nsl;
-import nsm;
+import nte;
+import ntx;
+import nty;
+import ntz;
 
 @TargetApi(14)
 public class QQStoryTakeVideoHelper
@@ -78,7 +78,7 @@ public class QQStoryTakeVideoHelper
       }
       if (StoryDepends.a())
       {
-        StoryTransitionActivity.a(this.jdField_a_of_type_AndroidAppActivity, nrr.class.getName(), null);
+        StoryTransitionActivity.a(this.jdField_a_of_type_AndroidAppActivity, nte.class.getName(), null);
         this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
       }
     }
@@ -255,7 +255,7 @@ public class QQStoryTakeVideoHelper
   
   public void a()
   {
-    QQStoryNetReqUtils.a(new nsm(this, (StoryConfigManager)SuperManager.a(10)));
+    QQStoryNetReqUtils.a(new ntz(this, (StoryConfigManager)SuperManager.a(10)));
   }
   
   public void a(Intent paramIntent, @NonNull ImageView paramImageView)
@@ -299,7 +299,7 @@ public class QQStoryTakeVideoHelper
       if (!a())
       {
         SLog.d("QQStoryTakeVideoHelper", "manifest file doesn't exist. generate again before publishing.");
-        a(new nsk(this, localPublishParam, str, i));
+        a(new ntx(this, localPublishParam, str, i));
         return;
       }
       SLog.c("QQStoryTakeVideoHelper", "manifest file already exists. start publishing.");
@@ -318,7 +318,7 @@ public class QQStoryTakeVideoHelper
   public void a(QQStoryTakeVideoHelper.GenerateManifestCallback paramGenerateManifestCallback)
   {
     this.jdField_a_of_type_Int = 1;
-    Stream.of(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr).map(new ThreadOffFunction(2)).map(new GenerateVideoManifestSegment()).subscribe(new nsl(this, paramGenerateManifestCallback));
+    Stream.of(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr).map(new ThreadOffFunction(2)).map(new GenerateVideoManifestSegment()).subscribe(new nty(this, paramGenerateManifestCallback));
   }
   
   public void a(boolean paramBoolean)

@@ -1,39 +1,20 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import java.util.ArrayList;
 
 public class sdu
   implements Runnable
 {
-  public sdu(Conversation paramConversation) {}
+  public sdu(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void run()
   {
-    boolean bool;
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.a.i)
-    {
-      Conversation.a(this.a, 800L);
-      bool = NetworkUtil.d(BaseApplication.getContext());
-      if (this.a.a != null)
-      {
-        localPullRefreshHeader = this.a.a;
-        if (!bool) {
-          break label78;
-        }
-      }
-    }
-    label78:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      if (Conversation.a(this.a) != null) {
-        Conversation.a(this.a).a(bool);
-      }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
       return;
     }
+    ArrayList localArrayList = TroopInfoActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new sdv(this, localArrayList));
   }
 }
 

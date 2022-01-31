@@ -1,23 +1,31 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aehn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aehn(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  public aehn(ChatBackgroundManager paramChatBackgroundManager, String paramString, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).hideSoftInputFromWindow(SmallVideoSendFragment.a(this.a).getWindowToken(), 0);
+    ChatBackgroundManager.c = this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.c(null);
+    Message localMessage = ChatBackgroundManager.a.obtainMessage();
+    localMessage.what = 1;
+    localMessage.obj = new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface };
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ThemeDownloadTrace", 2, "bgin to report chat bg info");
+      QLog.d("ThemeDownloadTrace", 2, "initCurrChatBgNameForReport is:" + ChatBackgroundManager.c);
+    }
+    ChatBackgroundManager.a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehn
  * JD-Core Version:    0.7.0.1
  */

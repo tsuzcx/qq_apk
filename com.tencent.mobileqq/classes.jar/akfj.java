@@ -1,25 +1,24 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
 
-public final class akfj
-  implements AnyScaleTypeImageView.DisplayRuleDef
+public class akfj
+  implements View.OnClickListener
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public akfj(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
   {
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, 1);
     }
-    paramInt2 = paramDrawable.getIntrinsicWidth();
-    float f = paramInt1 / paramInt2;
-    localMatrix.setScale(f, f);
-    return localMatrix;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akfj
  * JD-Core Version:    0.7.0.1
  */

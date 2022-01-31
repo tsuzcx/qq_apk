@@ -1,33 +1,13 @@
-import com.tencent.mobileqq.apollo.ai.ApolloAIActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import java.io.File;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class ylc
+public final class ylc
   implements Runnable
 {
-  public ylc(ApolloAIActivity paramApolloAIActivity) {}
-  
   public void run()
   {
-    try
-    {
-      File[] arrayOfFile = new File(ApolloConstant.m).listFiles();
-      if (arrayOfFile != null)
-      {
-        int j = arrayOfFile.length;
-        int i = 0;
-        while (i < j)
-        {
-          File localFile = arrayOfFile[i];
-          if (localFile.exists()) {
-            localFile.delete();
-          }
-          i += 1;
-        }
-      }
-      return;
-    }
-    catch (Exception localException) {}
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).toggleSoftInput(1, 1);
   }
 }
 

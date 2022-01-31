@@ -272,25 +272,25 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.oidb.searcher.oidb_c2c_searcher.Iterator;
 import tencent.im.oidb.searcher.oidb_c2c_searcher.MsgKey;
 import tencent.im.oidb.searcher.oidb_c2c_searcher.ReqBody;
-import zdf;
-import zdg;
-import zdh;
-import zdi;
-import zdj;
-import zdk;
-import zdl;
-import zdm;
-import zdn;
-import zdo;
-import zdp;
-import zdq;
-import zdr;
-import zds;
-import zdt;
-import zdu;
-import zdv;
-import zdw;
-import zdx;
+import zgl;
+import zgm;
+import zgn;
+import zgo;
+import zgp;
+import zgq;
+import zgr;
+import zgs;
+import zgt;
+import zgu;
+import zgv;
+import zgw;
+import zgx;
+import zgy;
+import zgz;
+import zha;
+import zhb;
+import zhc;
+import zhd;
 
 public class MessageHandler
   extends BusinessHandler
@@ -307,7 +307,7 @@ public class MessageHandler
   public static int h;
   public long a;
   private volatile Pair jdField_a_of_type_AndroidUtilPair;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zdl(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zgr(this);
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   public MessageCache a;
   Object jdField_a_of_type_JavaLangObject = new Object();
@@ -320,10 +320,10 @@ public class MessageHandler
   private Map jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  zdx jdField_a_of_type_Zdx;
+  zhd jdField_a_of_type_Zhd;
   private final int[] jdField_a_of_type_ArrayOfInt = new int[0];
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private zdv[] jdField_a_of_type_ArrayOfZdv;
+  private zhb[] jdField_a_of_type_ArrayOfZhb;
   public int b;
   private long jdField_b_of_type_Long;
   private Object jdField_b_of_type_JavaLangObject = new Object();
@@ -608,22 +608,22 @@ public class MessageHandler
     return localPbSendMsgReq;
   }
   
-  private zdx a()
+  private zhd a()
   {
-    if (this.jdField_a_of_type_Zdx == null) {}
+    if (this.jdField_a_of_type_Zhd == null) {}
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_Zdx == null) {
-        this.jdField_a_of_type_Zdx = new zdx(this, ThreadManager.getSubThreadLooper());
+      if (this.jdField_a_of_type_Zhd == null) {
+        this.jdField_a_of_type_Zhd = new zhd(this, ThreadManager.getSubThreadLooper());
       }
-      return this.jdField_a_of_type_Zdx;
+      return this.jdField_a_of_type_Zhd;
     }
   }
   
   private void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg arg3, Object paramObject)
   {
     m();
-    paramToServiceMsg = new zdw(paramInt, paramToServiceMsg, ???, paramObject);
+    paramToServiceMsg = new zhc(paramInt, paramToServiceMsg, ???, paramObject);
     if (paramInt == 1) {
       synchronized (this.jdField_d_of_type_JavaUtilArrayList)
       {
@@ -643,7 +643,7 @@ public class MessageHandler
   private void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg arg3, Object paramObject, boolean paramBoolean)
   {
     m();
-    paramToServiceMsg = new zdw(paramInt, paramToServiceMsg, ???, paramObject, paramBoolean);
+    paramToServiceMsg = new zhc(paramInt, paramToServiceMsg, ???, paramObject, paramBoolean);
     if (paramInt == 1) {
       synchronized (this.jdField_d_of_type_JavaUtilArrayList)
       {
@@ -2633,7 +2633,7 @@ public class MessageHandler
         if (!localIterator.hasNext()) {
           break label116;
         }
-        if (!((zdw)localIterator.next()).jdField_a_of_type_Boolean) {
+        if (!((zhc)localIterator.next()).jdField_a_of_type_Boolean) {
           continue;
         }
         bool = true;
@@ -3014,14 +3014,14 @@ public class MessageHandler
     {
       synchronized (this.jdField_c_of_type_JavaLangObject)
       {
-        if ((this.jdField_a_of_type_ArrayOfZdv != null) && (this.jdField_a_of_type_ArrayOfZdv.length > 1)) {
+        if ((this.jdField_a_of_type_ArrayOfZhb != null) && (this.jdField_a_of_type_ArrayOfZhb.length > 1)) {
           break label77;
         }
         return true;
-        if (i1 >= this.jdField_a_of_type_ArrayOfZdv.length) {
+        if (i1 >= this.jdField_a_of_type_ArrayOfZhb.length) {
           break label73;
         }
-        if ((this.jdField_a_of_type_ArrayOfZdv[i1] != null) && (this.jdField_a_of_type_ArrayOfZdv[i1].b())) {
+        if ((this.jdField_a_of_type_ArrayOfZhb[i1] != null) && (this.jdField_a_of_type_ArrayOfZhb[i1].b())) {
           return false;
         }
       }
@@ -4569,9 +4569,9 @@ public class MessageHandler
     ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "My_eq", "PC_Online_exp", 0, 0, "", "", "", "");
     this.jdField_j_of_type_Boolean = true;
     Object localObject1 = BaseApplication.getContext();
-    Object localObject2 = ((Context)localObject1).getString(2131436657);
-    String str = ((Context)localObject1).getString(2131436657);
-    Bitmap localBitmap = BitmapManager.a(((Context)localObject1).getResources(), 2130841551);
+    Object localObject2 = ((Context)localObject1).getString(2131436674);
+    String str = ((Context)localObject1).getString(2131436674);
+    Bitmap localBitmap = BitmapManager.a(((Context)localObject1).getResources(), 2130841588);
     QNotificationManager localQNotificationManager = new QNotificationManager((Context)localObject1);
     localObject2 = new NotificationCompat.Builder((Context)localObject1).setContentTitle(str).setContentText("").setAutoCancel(true).setSmallIcon(BaseApplication.appnewmsgicon).setTicker((CharSequence)localObject2).setWhen(System.currentTimeMillis());
     if (localBitmap != null) {
@@ -4580,7 +4580,7 @@ public class MessageHandler
     for (;;)
     {
       if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject2).setSmallIcon(2130841551);
+        ((NotificationCompat.Builder)localObject2).setSmallIcon(2130841588);
       }
       ((NotificationCompat.Builder)localObject2).setContentIntent(PendingIntent.getBroadcast((Context)localObject1, 0, new Intent("com.tencent.mobileqq.PCONLINE_CLICK_NOTIFICATION"), 0));
       localObject1 = ((NotificationCompat.Builder)localObject2).build();
@@ -4590,10 +4590,10 @@ public class MessageHandler
       localQNotificationManager.cancel("Q.msg.MessageHandler_PcOnlineNotifition", jdField_g_of_type_Int);
       BadgeUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0, (Notification)localObject1);
       localQNotificationManager.notify("Q.msg.MessageHandler_PcOnlineNotifition", jdField_g_of_type_Int, (Notification)localObject1);
-      this.jdField_b_of_type_JavaLangRunnable = new zdt(this, localQNotificationManager);
+      this.jdField_b_of_type_JavaLangRunnable = new zgz(this, localQNotificationManager);
       ThreadManager.post(this.jdField_b_of_type_JavaLangRunnable, 5, null, false);
       return;
-      ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapManager.a(((Context)localObject1).getResources(), 2130841551));
+      ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapManager.a(((Context)localObject1).getResources(), 2130841588));
     }
   }
   
@@ -4686,9 +4686,9 @@ public class MessageHandler
     ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "My_eq", "PC_Online_exp", 0, 0, "", "", "", "");
     this.jdField_k_of_type_Boolean = true;
     Object localObject1 = BaseApplication.getContext();
-    Object localObject2 = ((Context)localObject1).getString(2131436658);
-    String str = ((Context)localObject1).getString(2131436658);
-    Bitmap localBitmap = BitmapManager.a(((Context)localObject1).getResources(), 2130841549);
+    Object localObject2 = ((Context)localObject1).getString(2131436675);
+    String str = ((Context)localObject1).getString(2131436675);
+    Bitmap localBitmap = BitmapManager.a(((Context)localObject1).getResources(), 2130841586);
     QNotificationManager localQNotificationManager = new QNotificationManager((Context)localObject1);
     localObject2 = new NotificationCompat.Builder((Context)localObject1).setContentTitle(str).setContentText("").setAutoCancel(true).setSmallIcon(BaseApplication.appnewmsgicon).setTicker((CharSequence)localObject2).setWhen(System.currentTimeMillis());
     if (localBitmap != null) {
@@ -4697,7 +4697,7 @@ public class MessageHandler
     for (;;)
     {
       if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject2).setSmallIcon(2130841549);
+        ((NotificationCompat.Builder)localObject2).setSmallIcon(2130841586);
       }
       ((NotificationCompat.Builder)localObject2).setContentIntent(PendingIntent.getBroadcast((Context)localObject1, 0, new Intent("com.tencent.mobileqq.PCONLINE_CLICK_NOTIFICATION"), 0));
       localObject1 = ((NotificationCompat.Builder)localObject2).build();
@@ -4706,10 +4706,10 @@ public class MessageHandler
       }
       localQNotificationManager.cancel("Q.msg.MessageHandler_IpadOnlineNotifition", jdField_h_of_type_Int);
       localQNotificationManager.notify("Q.msg.MessageHandler_IpadOnlineNotifition", jdField_h_of_type_Int, (Notification)localObject1);
-      this.jdField_a_of_type_JavaLangRunnable = new zdg(this, localQNotificationManager);
+      this.jdField_a_of_type_JavaLangRunnable = new zgm(this, localQNotificationManager);
       ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, false);
       return;
-      ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapManager.a(((Context)localObject1).getResources(), 2130841549));
+      ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapManager.a(((Context)localObject1).getResources(), 2130841586));
     }
   }
   
@@ -5174,7 +5174,7 @@ public class MessageHandler
               return;
               RegisterProxy.jdField_d_of_type_Int |= 0x1;
               i1 = new Random().nextInt(3000);
-              ThreadManager.getSubThreadHandler().postDelayed(new zdj(this), i1);
+              ThreadManager.getSubThreadHandler().postDelayed(new zgp(this), i1);
               return;
               jdField_b_of_type_Boolean = false;
               BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putBoolean("new_regprxy_switch", false).commit();
@@ -5797,7 +5797,7 @@ public class MessageHandler
     paramInt1 = 0;
     while (paramInt1 < 3)
     {
-      localSendMessageHandler.a(new zdf(this, localPbSendMsgReq, i1, paramLong2));
+      localSendMessageHandler.a(new zgl(this, localPbSendMsgReq, i1, paramLong2));
       paramInt1 += 1;
     }
     paramInt1 = 0;
@@ -6199,7 +6199,7 @@ public class MessageHandler
     }
     ((DiscMessageProcessor)a("disc_processor")).a();
     this.jdField_a_of_type_JavaUtilMap.clear();
-    ThreadManager.post(new zdh(this), 8, null, false);
+    ThreadManager.post(new zgn(this), 8, null, false);
   }
   
   public void a(byte paramByte, byte[] paramArrayOfByte, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, int paramInt2, Object paramObject)
@@ -6763,13 +6763,13 @@ public class MessageHandler
           {
             return;
             a(paramMessageRecord, localPbSendMsgReq, 480000L, 0, paramBusinessObserver, paramBoolean);
-            localSendMessageHandler.postDelayed(new zdq(this, paramMessageRecord), jdField_d_of_type_Int);
+            localSendMessageHandler.postDelayed(new zgw(this, paramMessageRecord), jdField_d_of_type_Int);
             if (i1 != 0)
             {
               i1 = 0;
               while (i1 < 8)
               {
-                localSendMessageHandler.a(new zdr(this, paramMessageRecord, localPbSendMsgReq, paramBusinessObserver, paramBoolean));
+                localSendMessageHandler.a(new zgx(this, paramMessageRecord, localPbSendMsgReq, paramBusinessObserver, paramBoolean));
                 i1 += 1;
               }
               i1 = 1;
@@ -7431,7 +7431,7 @@ public class MessageHandler
                   else if ("MessageSvc.PbGetGroupMsg".equalsIgnoreCase(str))
                   {
                     if (paramToServiceMsg.extraData.getBoolean("key_from_parallel_pull", false)) {
-                      ThreadManager.post(new zds(this, paramToServiceMsg, paramFromServiceMsg, paramObject), 8, null, false);
+                      ThreadManager.post(new zgy(this, paramToServiceMsg, paramFromServiceMsg, paramObject), 8, null, false);
                     } else {
                       try
                       {
@@ -7749,7 +7749,7 @@ public class MessageHandler
       if (paramInt >= 9) {
         break;
       }
-      localSendMessageHandler.a(new zdo(this, paramString, l2, l1));
+      localSendMessageHandler.a(new zgu(this, paramString, l2, l1));
       paramInt += 1;
     }
     label121:
@@ -7981,7 +7981,7 @@ public class MessageHandler
   {
     SendMessageHandler localSendMessageHandler = new SendMessageHandler();
     for (long l1 = 0L; l1 < 3L; l1 += 1L) {
-      localSendMessageHandler.postDelayed(new zdi(this, l1, paramString1, paramString2, paramByte, paramString3, paramLong1, paramLong2), 30000L * l1);
+      localSendMessageHandler.postDelayed(new zgo(this, l1, paramString1, paramString2, paramByte, paramString3, paramLong1, paramLong2), 30000L * l1);
     }
     a(paramLong1, localSendMessageHandler);
   }
@@ -8010,7 +8010,7 @@ public class MessageHandler
       localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString1, 0);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        paramString3 = new UniteGrayTipParam(paramString1, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433022), 0, -5040, 655362, paramLong2);
+        paramString3 = new UniteGrayTipParam(paramString1, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433039), 0, -5040, 655362, paramLong2);
         localObject1 = new MessageForUniteGrayTip();
         ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramString3);
         UniteGrayTipUtil.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject1);
@@ -8043,7 +8043,7 @@ public class MessageHandler
       if (paramInt2 != 0)
       {
         paramString3 = (MessageForGrayTips)MessageRecordFactory.a(-1013);
-        paramString3.init(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433020), paramLong2, -1013, 3, paramLong2);
+        paramString3.init(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433037), paramLong2, -1013, 3, paramLong2);
         localObject1 = new Bundle();
         ((Bundle)localObject1).putInt("key_action", 14);
         paramString3.addHightlightItem(18, 22, (Bundle)localObject1);
@@ -8072,7 +8072,7 @@ public class MessageHandler
       return;
       MessageForText localMessageForText = (MessageForText)MessageRecordFactory.a(-1000);
       localMessageForText.frienduin = paramString1;
-      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433021);
+      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433038);
       label763:
       String str;
       if (paramLong3 == this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin())
@@ -8228,9 +8228,9 @@ public class MessageHandler
       i1 = 0;
       while (i1 < paramArrayList1.size())
       {
-        arrayOfLong[i1] = ((zdu)paramArrayList1.get(i1)).jdField_a_of_type_Long;
-        localObject[i1] = ((zdu)paramArrayList1.get(i1)).jdField_a_of_type_Int;
-        arrayOfShort[i1] = ((zdu)paramArrayList1.get(i1)).jdField_a_of_type_Short;
+        arrayOfLong[i1] = ((zha)paramArrayList1.get(i1)).jdField_a_of_type_Long;
+        localObject[i1] = ((zha)paramArrayList1.get(i1)).jdField_a_of_type_Int;
+        arrayOfShort[i1] = ((zha)paramArrayList1.get(i1)).jdField_a_of_type_Short;
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.MessageHandler", 2, "--->>delC2CMessage i: " + i1 + " fromUin:" + arrayOfLong[i1] + " msgTime: " + localObject[i1] + " msgSeq:" + arrayOfShort[i1]);
         }
@@ -8859,7 +8859,7 @@ public class MessageHandler
     paramInt1 = 0;
     while (paramInt1 < 3)
     {
-      localSendMessageHandler.a(new zdp(this, localPbSendMsgReq, i1, paramLong2));
+      localSendMessageHandler.a(new zgv(this, localPbSendMsgReq, i1, paramLong2));
       paramInt1 += 1;
     }
     paramInt1 = 0;
@@ -9497,7 +9497,7 @@ public class MessageHandler
     localRequestCustomSig.reserved = new byte[0];
     localHashMap.put("RequestCustomSig", localRequestCustomSig);
     localHashMap.put("OpenAppid", paramString);
-    localAccountManager.changeToken(localHashMap, new zdk(this, paramString));
+    localAccountManager.changeToken(localHashMap, new zgq(this, paramString));
   }
   
   public void d(boolean paramBoolean)
@@ -9526,7 +9526,7 @@ public class MessageHandler
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      ThreadManager.post(new zdm(this, paramBoolean), 10, null, false);
+      ThreadManager.post(new zgs(this, paramBoolean), 10, null, false);
       return;
     }
     ConfessMsgUtil.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, false);
@@ -9564,7 +9564,7 @@ public class MessageHandler
       if (i1 >= 9) {
         break;
       }
-      localSendMessageHandler.a(new zdn(this, localPbMsgReadedReportReq, l2, l1));
+      localSendMessageHandler.a(new zgt(this, localPbMsgReadedReportReq, l2, l1));
       i1 += 1;
     }
     label104:
@@ -10081,27 +10081,27 @@ public class MessageHandler
     {
       synchronized (this.jdField_c_of_type_JavaLangObject)
       {
-        if (this.jdField_a_of_type_ArrayOfZdv != null) {
+        if (this.jdField_a_of_type_ArrayOfZhb != null) {
           break label193;
         }
         this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(20);
         this.jdField_d_of_type_JavaUtilArrayList = new ArrayList(10);
-        this.jdField_a_of_type_ArrayOfZdv = new zdv[6];
+        this.jdField_a_of_type_ArrayOfZhb = new zhb[6];
         break label193;
-        if (i1 < this.jdField_a_of_type_ArrayOfZdv.length)
+        if (i1 < this.jdField_a_of_type_ArrayOfZhb.length)
         {
-          if ((this.jdField_a_of_type_ArrayOfZdv[i1] != null) && (!this.jdField_a_of_type_ArrayOfZdv[i1].a())) {
+          if ((this.jdField_a_of_type_ArrayOfZhb[i1] != null) && (!this.jdField_a_of_type_ArrayOfZhb[i1].a())) {
             break label198;
           }
           if (i1 == 0)
           {
-            this.jdField_a_of_type_ArrayOfZdv[i1] = new zdv(this, this.jdField_d_of_type_JavaUtilArrayList);
-            this.jdField_a_of_type_ArrayOfZdv[i1].setName("MessageHandleThread" + (i1 + 1));
-            this.jdField_a_of_type_ArrayOfZdv[i1].setPriority(5);
-            this.jdField_a_of_type_ArrayOfZdv[i1].start();
+            this.jdField_a_of_type_ArrayOfZhb[i1] = new zhb(this, this.jdField_d_of_type_JavaUtilArrayList);
+            this.jdField_a_of_type_ArrayOfZhb[i1].setName("MessageHandleThread" + (i1 + 1));
+            this.jdField_a_of_type_ArrayOfZhb[i1].setPriority(5);
+            this.jdField_a_of_type_ArrayOfZhb[i1].start();
             break label198;
           }
-          this.jdField_a_of_type_ArrayOfZdv[i1] = new zdv(this, this.jdField_c_of_type_JavaUtilArrayList);
+          this.jdField_a_of_type_ArrayOfZhb[i1] = new zhb(this, this.jdField_c_of_type_JavaUtilArrayList);
         }
       }
       return;
@@ -10117,12 +10117,12 @@ public class MessageHandler
   {
     synchronized (this.jdField_c_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_ArrayOfZdv != null)
+      if (this.jdField_a_of_type_ArrayOfZhb != null)
       {
         int i1 = 0;
-        while (i1 < this.jdField_a_of_type_ArrayOfZdv.length)
+        while (i1 < this.jdField_a_of_type_ArrayOfZhb.length)
         {
-          this.jdField_a_of_type_ArrayOfZdv[i1].a();
+          this.jdField_a_of_type_ArrayOfZhb[i1].a();
           i1 += 1;
         }
       }
@@ -10131,7 +10131,7 @@ public class MessageHandler
         this.jdField_c_of_type_JavaUtilArrayList.notifyAll();
         this.jdField_d_of_type_JavaUtilArrayList = null;
         this.jdField_c_of_type_JavaUtilArrayList = null;
-        this.jdField_a_of_type_ArrayOfZdv = null;
+        this.jdField_a_of_type_ArrayOfZhb = null;
         return;
       }
     }

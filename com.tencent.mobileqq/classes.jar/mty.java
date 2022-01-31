@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.widget.ActionSheet;
+import java.util.Comparator;
 
-public class mty
-  implements View.OnClickListener
+public final class mty
+  implements Comparator
 {
-  public mty(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, String paramString) {}
-  
-  public void onClick(View paramView)
+  public int a(muc parammuc1, muc parammuc2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.j();
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.m = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.dismiss();
+    int j = parammuc1.a - parammuc2.a;
+    int i = j;
+    if (j == 0) {
+      i = parammuc1.b - parammuc2.b;
+    }
+    return i;
   }
 }
 

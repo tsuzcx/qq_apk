@@ -25,8 +25,8 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import lnp;
-import lnq;
+import lnm;
+import lnn;
 
 public class ReadInJoyBBCircleFragment
   extends IphoneTitleBarFragment
@@ -41,7 +41,7 @@ public class ReadInJoyBBCircleFragment
     {
       this.b.setText("返回");
       this.b.setTextColor(-14408926);
-      this.b.setBackgroundResource(2130845305);
+      this.b.setBackgroundResource(2130845433);
     }
     Object localObject;
     if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (ReadInJoyUtils.g()))
@@ -50,13 +50,13 @@ public class ReadInJoyBBCircleFragment
       ((RelativeLayout.LayoutParams)localObject).width = AIOUtils.a(24.0F, getResources());
       ((RelativeLayout.LayoutParams)localObject).height = AIOUtils.a(24.0F, getResources());
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840741);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840764);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new lnp(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new lnm(this));
     }
     if (this.d != null)
     {
-      this.d.setOnClickListener(new lnq(this));
+      this.d.setOnClickListener(new lnn(this));
       this.d.setTextColor(-16777216);
     }
     if (c() != null)
@@ -106,14 +106,14 @@ public class ReadInJoyBBCircleFragment
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController = new ReadInJoyChannelViewController((Activity)this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a(70);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.b(0);
-      ViewGroup localViewGroup = (ViewGroup)this.e.findViewById(2131367167);
+      ViewGroup localViewGroup = (ViewGroup)this.e.findViewById(2131367215);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a(localViewGroup);
     }
   }
   
   protected int a()
   {
-    return 2130969616;
+    return 2130969624;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)

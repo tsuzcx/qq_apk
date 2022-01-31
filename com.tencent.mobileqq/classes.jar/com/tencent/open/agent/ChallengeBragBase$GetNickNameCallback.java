@@ -118,7 +118,7 @@ public class ChallengeBragBase$GetNickNameCallback
       paramJSONObject = StringAddition.a(StringAddition.a(paramJSONObject.getJSONObject(0).getString("nick")), 12, true, true);
       if ("action_brag".equals(this.a.p))
       {
-        this.a.a.setText(this.a.getString(2131428645, new Object[] { paramJSONObject }));
+        this.a.a.setText(this.a.getString(2131428651, new Object[] { paramJSONObject }));
         return;
       }
     }
@@ -128,7 +128,7 @@ public class ChallengeBragBase$GetNickNameCallback
       return;
     }
     if ("action_challenge".equals(this.a.p)) {
-      this.a.a.setText(this.a.getString(2131428644, new Object[] { paramJSONObject }));
+      this.a.a.setText(this.a.getString(2131428650, new Object[] { paramJSONObject }));
     }
   }
 }

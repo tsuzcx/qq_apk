@@ -1,29 +1,89 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.UniteSearchHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class zpg
-  extends SendMessageHandler.SendMessageRunnable
+  implements Runnable
 {
-  public zpg(BaseMessageProcessor paramBaseMessageProcessor, BaseMessageProcessor.RequestBuilder paramRequestBuilder, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2) {}
+  public zpg(UniteSearchHandler paramUniteSearchHandler, String paramString, Object paramObject) {}
   
   public void run()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageProcessor$RequestBuilder.a();
-    if (localToServiceMsg == null) {
-      return;
+    Object localObject3 = null;
+    Object localObject1 = null;
+    for (;;)
+    {
+      try
+      {
+        localFileOutputStream = BaseApplication.getContext().openFileOutput(this.jdField_a_of_type_JavaLangString, 0);
+        localObject1 = localFileOutputStream;
+        localObject3 = localFileOutputStream;
+        localFileOutputStream.write((byte[])this.jdField_a_of_type_JavaLangObject);
+        localObject1 = localFileOutputStream;
+        localObject3 = localFileOutputStream;
+        localFileOutputStream.flush();
+      }
+      catch (IOException localIOException4)
+      {
+        FileOutputStream localFileOutputStream;
+        localObject3 = localIOException1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localObject3 = localIOException1;
+        QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException4));
+        if (localIOException1 == null) {
+          continue;
+        }
+        try
+        {
+          localIOException1.close();
+          return;
+        }
+        catch (IOException localIOException2) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException2));
+        return;
+      }
+      finally
+      {
+        if (localObject3 == null) {
+          break label126;
+        }
+      }
+      try
+      {
+        localFileOutputStream.close();
+        return;
+      }
+      catch (IOException localIOException1)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException1));
+          return;
+        }
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "prepareRetryRunnable cmd=" + localToServiceMsg.getServiceCmd() + ",reqSeq=" + this.jdField_a_of_type_Long + " timeout: " + this.c + " retryIndex:" + this.jdField_b_of_type_Int);
+    try
+    {
+      localObject3.close();
+      label126:
+      throw localObject2;
     }
-    localToServiceMsg.extraData.putLong("timeOut", this.c);
-    localToServiceMsg.extraData.putLong("startTime", this.jdField_b_of_type_Long);
-    localToServiceMsg.extraData.putInt("retryIndex", this.jdField_b_of_type_Int);
-    localToServiceMsg.setTimeout(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageProcessor.a(localToServiceMsg, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
+    catch (IOException localIOException3)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException3));
+        }
+      }
+    }
   }
 }
 

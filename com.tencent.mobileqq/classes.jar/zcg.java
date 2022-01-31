@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.app.HotChatShare;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.DataLineHandler;
 
 public class zcg
   implements Runnable
 {
-  public zcg(HotChatShare paramHotChatShare) {}
+  public zcg(DataLineHandler paramDataLineHandler, long paramLong, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if ((this.a.a == null) || (!this.a.a.isShowing())) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatShare", 2, "30s has gone, goto share....");
-    }
-    this.a.c();
-    HotChatShare.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.OnSessionComplete(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 

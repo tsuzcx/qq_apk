@@ -1,39 +1,18 @@
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
 
-public class ajcd
+class ajcd
   implements Runnable
 {
-  public ajcd(TroopRobotManager paramTroopRobotManager) {}
+  ajcd(ajcc paramajcc) {}
   
   public void run()
   {
-    oidb_0x496.Robot localRobot = new oidb_0x496.Robot();
-    byte[] arrayOfByte = this.a.a();
-    if (arrayOfByte != null) {}
-    try
-    {
-      localRobot.mergeFrom(arrayOfByte);
-      this.a.a(localRobot);
-      TroopRobotManager.a(this.a);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, "file data error");
-        }
-      }
-    }
+    TroopAioKeywordTipBar.a(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajcd
  * JD-Core Version:    0.7.0.1
  */

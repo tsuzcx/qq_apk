@@ -1,31 +1,44 @@
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.ar.FramePerformanceMonitor;
+import com.tencent.mobileqq.ar.FramePerformanceMonitor.FrameRefreshListener;
+import com.tencent.mobileqq.ar.GapDataCollector.RefreshData;
+import com.tencent.qphone.base.util.QLog;
 
-class xqb
-  implements Runnable
+public class xqb
+  implements FramePerformanceMonitor.FrameRefreshListener
 {
-  xqb(xpz paramxpz, int paramInt) {}
+  public xqb(NewFlowCameraActivity paramNewFlowCameraActivity, SharedPreferences paramSharedPreferences) {}
   
-  public void run()
+  public void a(GapDataCollector.RefreshData paramRefreshData)
   {
-    if (QzDynamicVideoPreviewActivity.d(this.jdField_a_of_type_Xpz.a)) {
-      QzDynamicVideoPreviewActivity.b(this.jdField_a_of_type_Xpz.a);
+    long l = paramRefreshData.jdField_a_of_type_ArrayOfLong[((int)(paramRefreshData.jdField_a_of_type_ArrayOfLong.length * NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)))];
+    if (QLog.isColorLevel()) {
+      QLog.d("DynamicAdjustment", 2, "onDataRefresh: datatype=" + NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) + " monitedValue=" + l);
     }
-    switch (this.jdField_a_of_type_Int)
+    if (paramRefreshData.jdField_a_of_type_Int >= 100)
     {
-    default: 
-      if (this.jdField_a_of_type_Int != -1)
+      if (l > NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))
       {
-        QQToast.a(this.jdField_a_of_type_Xpz.a, "合成错误(" + this.jdField_a_of_type_Int + ")，请稍后重试", 0).a();
-        return;
+        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, true, paramRefreshData);
+        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
       }
-      break;
-    case 4: 
-    case 5: 
-      QQToast.a(this.jdField_a_of_type_Xpz.a, "存在不支持格式的素材，合成错误(" + this.jdField_a_of_type_Int + ")", 0).a();
+    }
+    else {
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Xpz.a, "合成错误，请稍后重试", 0).a();
+    if (l < NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))
+    {
+      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false, paramRefreshData);
+      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DynamicAdjustment", 2, "Finished. Frame count = " + paramRefreshData.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("SVDNAdjustment_quality_down_mark", 1).putInt("SVDNAdjustment_quality_up_mark", 1).commit();
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
   }
 }
 

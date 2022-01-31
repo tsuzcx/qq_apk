@@ -1,17 +1,18 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
 
-class anrd
-  implements Runnable
+public final class anrd
+  implements Parcelable.Creator
 {
-  anrd(anqz paramanqz) {}
-  
-  public void run()
+  public EditLocalPhotoSource a(Parcel paramParcel)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.r();
-    }
+    return new EditLocalPhotoSource(paramParcel);
+  }
+  
+  public EditLocalPhotoSource[] a(int paramInt)
+  {
+    return new EditLocalPhotoSource[paramInt];
   }
 }
 

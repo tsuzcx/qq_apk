@@ -1,21 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class xcf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xcf(PreloadComDownloader paramPreloadComDownloader, String paramString1, String paramString2, DownloadListener paramDownloadListener, Bundle paramBundle) {}
+  public xcf(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_JavaLangString, new File(this.b));
-    localDownloadTask.f = "QwalletPreload";
-    if (PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader) != null) {
-      PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader).a(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_AndroidOsBundle);
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    QWalletTools.a(TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a().getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
+    if (TroopUnAccalimedRedPacketList.a() != null) {
+      TroopUnAccalimedRedPacketList.a().dismiss();
     }
   }
 }

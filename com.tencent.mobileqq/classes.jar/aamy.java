@@ -1,34 +1,23 @@
-import com.tencent.ark.ArkEnvironmentManager.Log;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.arcard.ARCardPageProcess;
+import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
 
-public final class aamy
-  implements ArkEnvironmentManager.Log
+public class aamy
+  implements Runnable
 {
-  public void d(String paramString1, String paramString2)
+  public aamy(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+    if (ARGreetingCardListManager.e(this.a) > 0) {
+      ARGreetingCardListManager.a(this.a).b();
     }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
+    ARGreetingCardListManager.a(this.a).setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamy
  * JD-Core Version:    0.7.0.1
  */

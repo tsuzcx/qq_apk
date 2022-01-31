@@ -47,7 +47,7 @@ public class TopGestureLayout$StickerDismissGestureDetector
       {
         i = EmojiStickerManager.g;
         this.c = i;
-        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131363489);
+        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131363507);
         if ((paramMotionEvent instanceof ChatXListView)) {
           this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)paramMotionEvent);
         }
@@ -204,7 +204,7 @@ public class TopGestureLayout$StickerDismissGestureDetector
       if (paramMotionEvent.getAction() != 1) {
         break label637;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131363489);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131363507);
       if ((localObject1 instanceof ChatXListView)) {
         this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)localObject1);
       }

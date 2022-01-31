@@ -1,25 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class srj
-  extends BroadcastReceiver
+class srj
+  implements Runnable
 {
-  public srj(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  srj(sri paramsri) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
-      }
-      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-        this.a.finish();
-      }
-    }
+    this.a.a.a.a.removeAnimatorListener(this.a);
+    this.a.a.a.a.removeUpdateListener(this.a);
   }
 }
 

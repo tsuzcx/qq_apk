@@ -1,24 +1,15 @@
-import android.text.TextUtils;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import com.tencent.component.media.image.UICallbackTask;
 
 public class phs
-  extends phr
+  implements Runnable
 {
-  private phs()
-  {
-    super(null);
-  }
+  public phs(UICallbackTask paramUICallbackTask, ImageKey paramImageKey, float paramFloat) {}
   
-  public String b(String paramString)
+  public void run()
   {
-    paramString = super.b(paramString);
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      return paramString;
-      i = paramString.indexOf('#');
-    } while (i <= 0);
-    return paramString.substring(0, i);
+    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener.onImageProgress(UICallbackTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey), this.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
   }
 }
 

@@ -1,22 +1,17 @@
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.GetRedBag;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
 
 public class keq
-  implements kfn
+  implements MenuItem.OnMenuItemClickListener
 {
-  public keq(AVRedBagMgr paramAVRedBagMgr) {}
+  public keq(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void a(GetRedBag paramGetRedBag)
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (paramGetRedBag == this.a.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag)
-    {
-      this.a.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag = null;
-      this.a.jdField_a_of_type_Kfn = null;
-      this.a.a("onGetRedBagResult", AVRedBagMgr.d(this.a), paramGetRedBag.a);
-      return;
-    }
-    QLog.w("AVRedBag", 1, "onGetRedBagResult,  GetRedBag不一致，callback[" + paramGetRedBag + "], src[" + this.a.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag + "]");
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.c(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr);
+    return true;
   }
 }
 

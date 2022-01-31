@@ -1,36 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import android.content.Context;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
 
-class ampc
-  extends Handler
+public final class ampc
+  extends Thread
 {
-  ampc(ampb paramampb, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ampc(Context paramContext, OnPluginInstallListener paramOnPluginInstallListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(0);
-      return;
-    } while (this.a.a == null);
-    this.a.a.a(2);
+    PluginManagerHelper.getPluginInterface(this.jdField_a_of_type_AndroidContentContext, new ampd(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.dancemachine.filter;
 
-import ahmo;
+import aiaq;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -188,7 +188,7 @@ public class DancePlayFilter
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.a("", ((ResourceManager.GamingResource)localObject).j, ((ResourceManager.GamingResource)localObject).k, ((ResourceManager.GamingResource)localObject).l);
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.b(((ResourceManager.GamingResource)localObject).e, ((ResourceManager.GamingResource)localObject).f, ((ResourceManager.GamingResource)localObject).g, ((ResourceManager.GamingResource)localObject).h);
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.c(((ResourceManager.GamingResource)localObject).jdField_a_of_type_JavaLangString, ((ResourceManager.GamingResource)localObject).jdField_b_of_type_JavaLangString, ((ResourceManager.GamingResource)localObject).c, ((ResourceManager.GamingResource)localObject).d);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.a(new ahmo(this));
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLRecognizeRegionView.a(new aiaq(this));
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard = new GLScoreBoard(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
     localObject = ResourceManager.a().jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$GameNumberResource;
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.a(((ResourceManager.GameNumberResource)localObject).jdField_a_of_type_JavaUtilList);

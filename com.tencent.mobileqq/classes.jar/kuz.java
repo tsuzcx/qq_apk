@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class kuz
   implements Runnable
 {
-  public kuz(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kuz(VideoCoverView paramVideoCoverView) {}
   
   public void run()
   {
-    this.a.a(1);
+    this.a.g();
   }
 }
 

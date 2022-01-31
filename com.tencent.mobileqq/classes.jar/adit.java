@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.imaxad.ImaxAdNetPresenter;
+import android.view.View;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class adit
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public adit(ImaxAdNetPresenter paramImaxAdNetPresenter, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public adit(QfileEditBottomBar paramQfileEditBottomBar, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgtype, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extStr);
+    ThreadManager.executeOnFileThread(new adiu(this));
+    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adit
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.rookery.asyncHttpClient.AsyncHttpResponseHandler;
+import android.support.v4.util.LruCache;
+import com.rookery.translate.model.TransMemCache;
 
 public class jcn
-  extends Handler
+  extends LruCache
 {
-  public jcn(AsyncHttpResponseHandler paramAsyncHttpResponseHandler) {}
-  
-  public void handleMessage(Message paramMessage)
+  public jcn(TransMemCache paramTransMemCache, int paramInt)
   {
-    this.a.a(paramMessage);
+    super(paramInt);
+  }
+  
+  protected int a(String paramString1, String paramString2)
+  {
+    return paramString2.length() + 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     jcn
  * JD-Core Version:    0.7.0.1
  */

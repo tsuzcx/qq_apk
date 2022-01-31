@@ -1,75 +1,28 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.vipav.VipFullScreenVideoView;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
 
-public class ajwz
-  extends Handler
+class ajwz
+  implements DialogInterface.OnClickListener
 {
-  public ajwz(VipFunCallPreviewActivity paramVipFunCallPreviewActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ajwz(ajwy paramajwy) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    BitmapDrawable localBitmapDrawable;
-    do
-    {
-      RelativeLayout localRelativeLayout;
-      do
-      {
-        do
-        {
-          return;
-          if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-          {
-            if (this.a.jdField_a_of_type_Boolean)
-            {
-              if ((this.a.g instanceof Button)) {
-                ((Button)this.a.g).setText("已设置");
-              }
-              this.a.g.setEnabled(false);
-              return;
-            }
-            this.a.g.setEnabled(true);
-            return;
-          }
-          if (this.a.jdField_a_of_type_Boolean)
-          {
-            this.a.g.setVisibility(0);
-            this.a.g.setEnabled(true);
-            if ((this.a.g instanceof Button)) {
-              ((Button)this.a.g).setText("已设置");
-            }
-            this.a.g.setEnabled(false);
-            this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-            this.a.f.setVisibility(8);
-            return;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          return;
-        } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof BitmapDrawable)));
-        localRelativeLayout = (RelativeLayout)this.a.findViewById(2131375245);
-        localBitmapDrawable = (BitmapDrawable)paramMessage.obj;
-      } while ((localBitmapDrawable == null) || (localRelativeLayout == null));
-      localRelativeLayout.setBackgroundDrawable(localBitmapDrawable);
-    } while (paramMessage.arg1 != 1);
-    this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.setBackgroundDrawable(localBitmapDrawable);
+    paramDialogInterface = String.format("http://qun.qq.com/qunpay/gifts/buy.html?_bid=2204&_wvSb=1&from=7&troopUin=%s", new Object[] { this.a.a.b });
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("selfSet_leftViewText", "返回");
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("url", this.a.a.a(paramDialogInterface));
+    this.a.a.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwz
  * JD-Core Version:    0.7.0.1
  */

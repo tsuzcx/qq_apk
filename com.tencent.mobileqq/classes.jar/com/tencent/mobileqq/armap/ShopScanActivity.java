@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.armap;
 
-import aawf;
-import aawg;
-import aawh;
-import aawi;
-import aawj;
-import aawk;
-import aawl;
-import aawm;
-import aawn;
-import aawo;
-import aawp;
-import aawq;
-import aawr;
-import aawt;
-import aawu;
-import aawv;
-import aaww;
-import aawx;
-import aaxa;
-import aaxb;
-import aaxc;
-import aaxh;
-import aaxi;
-import aaxj;
-import aaxk;
+import abdg;
+import abdh;
+import abdi;
+import abdj;
+import abdk;
+import abdl;
+import abdm;
+import abdn;
+import abdo;
+import abdp;
+import abdq;
+import abdr;
+import abds;
+import abdu;
+import abdv;
+import abdw;
+import abdx;
+import abdy;
+import abeb;
+import abec;
+import abed;
+import abei;
+import abej;
+import abek;
+import abel;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -110,13 +110,13 @@ public class ShopScanActivity
   private ArConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
   private ArEffectConfig jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
   private AROnlineVideoLogListener jdField_a_of_type_ComTencentMobileqqArOnline_videoAROnlineVideoLogListener;
-  ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new aawx(this);
+  ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new abdy(this);
   public ScanSuccessView a;
   public ShopScanDragView a;
   private ScreenshotObserver jdField_a_of_type_ComTencentMobileqqOlympicActivityScreenshotObserver;
   public QQProgressDialog a;
   public String a;
-  private QQBroadcastReceiver jdField_a_of_type_MqqAppQQBroadcastReceiver = new aaww(this);
+  private QQBroadcastReceiver jdField_a_of_type_MqqAppQQBroadcastReceiver = new abdx(this);
   public boolean a;
   int jdField_b_of_type_Int;
   View jdField_b_of_type_AndroidViewView;
@@ -183,7 +183,7 @@ public class ShopScanActivity
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("handleNoFeatureTrackOpenPOICompleted success: ").append(paramBoolean).append("  noTrackMode?");
-      if ((paramArCloudConfigInfo == null) || (paramArCloudConfigInfo.c())) {
+      if ((paramArCloudConfigInfo == null) || (paramArCloudConfigInfo.d())) {
         break label117;
       }
     }
@@ -191,7 +191,7 @@ public class ShopScanActivity
     for (boolean bool = true;; bool = false)
     {
       QLog.e("ShopScanActivity", 2, bool);
-      if ((!paramBoolean) && (paramArCloudConfigInfo != null) && (!paramArCloudConfigInfo.c()) && (this.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null))
+      if ((!paramBoolean) && (paramArCloudConfigInfo != null) && (!paramArCloudConfigInfo.d()) && (this.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null))
       {
         if ((paramArCloudConfigInfo.jdField_a_of_type_Int != 1) || (paramArCloudConfigInfo.jdField_e_of_type_Int != 0)) {
           break;
@@ -381,12 +381,12 @@ public class ShopScanActivity
   {
     if (this.jdField_a_of_type_AndroidAppProgressDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624515);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCanceledOnTouchOutside(false);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
     }
-    ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381)).setText(paramString);
+    ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399)).setText(paramString);
     if (!isFinishing()) {
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
     }
@@ -467,7 +467,7 @@ public class ShopScanActivity
       this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
       this.jdField_a_of_type_ComTencentMobileqqArARArguments = new ARArguments(false);
       this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager = new RemoteArConfigManager();
-      this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.a(this, false, new aawf(this));
+      this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.a(this, false, new abdg(this));
       return;
       if (QLog.isColorLevel()) {
         QLog.e("ShopScanActivity", 2, "initData intent == null");
@@ -928,7 +928,7 @@ public class ShopScanActivity
     }
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentMobileqqArARScanFragment = ARScanFragment.a(this.jdField_a_of_type_ComTencentMobileqqArARArguments, this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo);
-    localFragmentTransaction.add(2131369448, this.jdField_a_of_type_ComTencentMobileqqArARScanFragment);
+    localFragmentTransaction.add(2131369525, this.jdField_a_of_type_ComTencentMobileqqArARScanFragment);
     localFragmentTransaction.commitAllowingStateLoss();
     this.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a(this, this);
     if (this.jdField_h_of_type_Long < 0L) {
@@ -951,14 +951,14 @@ public class ShopScanActivity
       QLog.d("ShopScanActivity", 2, "onGetArConfig sdkInstalled: " + bool);
     }
     if (!bool) {
-      TVK_SDKMgr.installPlugin(this, new aawq(this));
+      TVK_SDKMgr.installPlugin(this, new abdr(this));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.a())
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new aaxa(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new abeb(this));
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new aaxb(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new abec(this));
   }
   
   private void i()
@@ -1042,29 +1042,10 @@ public class ShopScanActivity
       QLog.d("ShopScanActivity", 2, new Object[] { "onARSurfaceChanged, mLastArAnimState=", Integer.valueOf(this.jdField_a_of_type_Int) });
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(304);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aawu(this), 3000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new abdv(this), 3000L);
     if (this.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) {
       this.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a(0.0F);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShopScanActivity", 2, "onInitComplete retCode" + paramInt);
-    }
-    if (paramInt != 0)
-    {
-      if (paramInt != 8) {
-        break label49;
-      }
-      c(8);
-    }
-    label49:
-    while (paramInt != 3) {
-      return;
-    }
-    c(3);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -1073,7 +1054,7 @@ public class ShopScanActivity
       QLog.d("ShopScanActivity", 2, new Object[] { "onArReady, mLastArAnimState=", Integer.valueOf(this.jdField_a_of_type_Int), ", state=", Integer.valueOf(paramInt1) });
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(304);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aawv(this), 3000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new abdw(this), 3000L);
     switch (paramInt1)
     {
     default: 
@@ -1110,14 +1091,14 @@ public class ShopScanActivity
         this.jdField_a_of_type_Boolean = true;
         this.jdField_a_of_type_ComTencentMobileqqArARTarget = paramARTarget;
         this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-        this.jdField_a_of_type_AndroidOsHandler.post(new aawk(this));
+        this.jdField_a_of_type_AndroidOsHandler.post(new abdl(this));
       } while ((paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) || (!paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.b));
-      this.jdField_a_of_type_AndroidOsHandler.post(new aawl(this, paramARTarget));
+      this.jdField_a_of_type_AndroidOsHandler.post(new abdm(this, paramARTarget));
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(312, 10000L);
       return;
     case 1: 
       this.jdField_a_of_type_ComTencentMobileqqArARTarget = paramARTarget;
-      if (!paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.c()) {
+      if (!paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d()) {
         this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface.reportClickEvent("CliOper", "", "", "0X8008144", "0X8008144", 0, 0, "1", this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface.getCurrentAccountUin(), paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_b_of_type_JavaLangString, "2");
       }
       if ((paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_d_of_type_Int != 0) && (paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_d_of_type_Int != 5))
@@ -1143,7 +1124,7 @@ public class ShopScanActivity
         {
           if (!NetworkUtil.d(this))
           {
-            this.jdField_a_of_type_AndroidOsHandler.post(new aawm(this));
+            this.jdField_a_of_type_AndroidOsHandler.post(new abdn(this));
             a(paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, false);
             break;
           }
@@ -1163,16 +1144,16 @@ public class ShopScanActivity
       if ((paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_Int == 0) || ((paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_Int == 1) && (paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_e_of_type_Int == 1))) {}
       for (boolean bool = true;; bool = false)
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new aawn(this, paramARTarget, paramInt2, bool));
+        this.jdField_a_of_type_AndroidOsHandler.post(new abdo(this, paramARTarget, paramInt2, bool));
         break;
       }
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentMobileqqArARTarget = null;
-      this.jdField_a_of_type_AndroidOsHandler.post(new aawo(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new abdp(this));
       break;
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentMobileqqArARTarget = null;
-      this.jdField_a_of_type_AndroidOsHandler.post(new aawp(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new abdq(this));
       break;
     }
   }
@@ -1180,7 +1161,7 @@ public class ShopScanActivity
   public void a(int paramInt, String paramString)
   {
     this.jdField_g_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.post(new aaxh(this, paramString));
+    this.jdField_a_of_type_AndroidOsHandler.post(new abei(this, paramString));
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(312, 10000L);
   }
   
@@ -1198,17 +1179,17 @@ public class ShopScanActivity
     for (;;)
     {
       return;
-      if (!paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.e())
+      if (!paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.f())
       {
         if ((paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_Int == 1) && (paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_e_of_type_Int == 0))
         {
-          this.jdField_a_of_type_AndroidOsHandler.post(new aaxj(this));
+          this.jdField_a_of_type_AndroidOsHandler.post(new abek(this));
           if (!this.r) {
             break label344;
           }
           if (!NetworkUtil.d(this))
           {
-            this.jdField_a_of_type_AndroidOsHandler.post(new aaxk(this));
+            this.jdField_a_of_type_AndroidOsHandler.post(new abel(this));
             a(paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, false);
             return;
           }
@@ -1226,7 +1207,7 @@ public class ShopScanActivity
           if ((paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) || (!paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.b) || (!paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString))) {
             break label354;
           }
-          this.jdField_a_of_type_AndroidOsHandler.post(new aawg(this, paramARTarget));
+          this.jdField_a_of_type_AndroidOsHandler.post(new abdh(this, paramARTarget));
           if (!this.jdField_g_of_type_Boolean)
           {
             this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(306);
@@ -1251,22 +1232,22 @@ public class ShopScanActivity
     }
     if (!paramBoolean)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqArARScanFragment == null) || ((!this.r) && (paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.c())) || (this.s == true)) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqArARScanFragment == null) || ((!this.r) && (paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d())) || (this.s == true)) {
         return;
       }
       if (this.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) {
         this.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a(true);
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new aawh(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new abdi(this));
       return;
     }
     if ((paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_a_of_type_Int == 1) && (paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_e_of_type_Int == 0)) {}
     for (int i1 = 1;; i1 = 0)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) && ((i1 == 0) || (paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.c())))
+      if ((this.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) && ((i1 == 0) || (paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d())))
       {
         this.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a(false);
-        this.jdField_a_of_type_AndroidOsHandler.post(new aawi(this));
+        this.jdField_a_of_type_AndroidOsHandler.post(new abdj(this));
       }
       if (this.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) {
         this.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a(false);
@@ -1282,7 +1263,7 @@ public class ShopScanActivity
       if (NetworkUtil.d(this)) {
         break label302;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new aawj(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new abdk(this));
       a(paramARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, false);
       return;
     }
@@ -1319,7 +1300,7 @@ public class ShopScanActivity
   
   public void a(ArVideoResourceInfo paramArVideoResourceInfo, ARRenderMangerInnerCallback paramARRenderMangerInnerCallback)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new aawr(this, paramARRenderMangerInnerCallback, paramArVideoResourceInfo));
+    this.jdField_a_of_type_AndroidOsHandler.post(new abds(this, paramARRenderMangerInnerCallback, paramArVideoResourceInfo));
   }
   
   public void a(boolean paramBoolean) {}
@@ -1337,17 +1318,50 @@ public class ShopScanActivity
     }
   }
   
-  public void b(int paramInt) {}
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ShopScanActivity", 2, "onInitComplete retCode" + paramInt);
+    }
+    if (paramInt != 0)
+    {
+      if (paramInt != 8) {
+        break label49;
+      }
+      d(8);
+    }
+    label49:
+    while (paramInt != 3) {
+      return;
+    }
+    d(3);
+  }
+  
+  public void b(int paramInt1, int paramInt2) {}
   
   public void b(boolean paramBoolean) {}
   
-  public void c(int paramInt)
+  public void c(int paramInt) {}
+  
+  public void d()
+  {
+    QLog.d("ShopScanActivity", 1, "scanTorch notifyRenderReady isNotifyRecivied " + this.jdField_i_of_type_Boolean);
+    if (this.jdField_i_of_type_Boolean)
+    {
+      ARTransparentWebviewPlugin.b();
+      if (Build.VERSION.SDK_INT >= 16) {
+        this.jdField_b_of_type_ComTencentBizUiTouchWebView.setVisibility(0);
+      }
+    }
+  }
+  
+  public void d(int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ShopScanActivity", 2, new Object[] { "onARStartComplete, mLastArAnimState=", Integer.valueOf(this.jdField_a_of_type_Int), ", retCode=", Integer.valueOf(paramInt) });
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(304);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aawt(this), 3000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new abdu(this), 3000L);
     switch (paramInt)
     {
     case 4: 
@@ -1394,18 +1408,6 @@ public class ShopScanActivity
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(310);
   }
   
-  public void d()
-  {
-    QLog.d("ShopScanActivity", 1, "scanTorch notifyRenderReady isNotifyRecivied " + this.jdField_i_of_type_Boolean);
-    if (this.jdField_i_of_type_Boolean)
-    {
-      ARTransparentWebviewPlugin.b();
-      if (Build.VERSION.SDK_INT >= 16) {
-        this.jdField_b_of_type_ComTencentBizUiTouchWebView.setVisibility(0);
-      }
-    }
-  }
-  
   public void doOnBackPressed()
   {
     if (QLog.isColorLevel()) {
@@ -1423,7 +1425,7 @@ public class ShopScanActivity
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
     getWindow().addFlags(128);
-    setContentView(2130970576);
+    setContentView(2130970620);
     super.hideTitleBar();
     this.jdField_c_of_type_Int = getWindowManager().getDefaultDisplay().getWidth();
     this.jdField_b_of_type_Int = getWindowManager().getDefaultDisplay().getHeight();
@@ -1640,7 +1642,7 @@ public class ShopScanActivity
           try
           {
             paramMessage = new CameraDialog(this);
-            paramMessage.a(new aaxi(this, paramMessage));
+            paramMessage.a(new abej(this, paramMessage));
             paramMessage.show();
             return true;
           }
@@ -1698,11 +1700,11 @@ public class ShopScanActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131369427: 
-    case 2131371294: 
-    case 2131371292: 
-    case 2131363256: 
-    case 2131363257: 
+    case 2131369493: 
+    case 2131371457: 
+    case 2131371455: 
+    case 2131363274: 
+    case 2131363275: 
       do
       {
         do
@@ -1775,7 +1777,7 @@ public class ShopScanActivity
       }
       for (;;)
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqArARTarget != null) && (!this.jdField_a_of_type_ComTencentMobileqqArARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.c())) {
+        if ((this.jdField_a_of_type_ComTencentMobileqqArARTarget != null) && (!this.jdField_a_of_type_ComTencentMobileqqArARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d())) {
           this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface.reportClickEvent("CliOper", "", "", "0X8008145", "0X8008145", 0, 0, "1", this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqArARTarget.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_b_of_type_JavaLangString, "2");
         }
         k();
@@ -1794,28 +1796,28 @@ public class ShopScanActivity
         i();
         d();
       }
-    case 2131371291: 
+    case 2131371454: 
       if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface.getApp()))
       {
-        QQToast.a(this, 0, 2131435586, 0).a();
+        QQToast.a(this, 0, 2131435603, 0).a();
         return;
       }
       this.jdField_j_of_type_Boolean = true;
       if (!TVK_SDKMgr.isInstalled(this))
       {
         this.jdField_l_of_type_Boolean = false;
-        TVK_SDKMgr.installPlugin(this, new aaxc(this));
+        TVK_SDKMgr.installPlugin(this, new abed(this));
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.c();
       this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
-    case 2131371290: 
+    case 2131371453: 
       label467:
       if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface.getApp()))
       {
-        QQToast.a(this, 0, 2131435586, 0).a();
+        QQToast.a(this, 0, 2131435603, 0).a();
         return;
       }
       label528:

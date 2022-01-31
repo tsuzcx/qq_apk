@@ -6,20 +6,20 @@ import java.nio.ByteOrder;
 import java.nio.CharBuffer;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CoderResult;
-import kmv;
-import kmw;
+import kmg;
+import kmh;
 
 public class Table
 {
   public static final ThreadLocal a;
-  private static final ThreadLocal b = new kmv();
+  private static final ThreadLocal b = new kmg();
   private static final ThreadLocal c = new ThreadLocal();
   protected ByteBuffer a;
   protected int c;
   
   static
   {
-    jdField_a_of_type_JavaLangThreadLocal = new kmw();
+    jdField_a_of_type_JavaLangThreadLocal = new kmh();
   }
   
   protected int a(int paramInt)

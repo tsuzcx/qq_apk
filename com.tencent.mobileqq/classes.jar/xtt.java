@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
 
-public class xtt
-  implements Comparable
+class xtt
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public int b;
+  xtt(xts paramxts) {}
   
-  public xtt(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(xtt paramxtt)
-  {
-    return -(int)(this.jdField_a_of_type_Long - paramxtt.jdField_a_of_type_Long);
+    QzDynamicVideoPreviewActivity.a(this.a.a).setVisibility(0);
   }
 }
 

@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-class ansp
-  implements Runnable
+public class ansp
+  implements View.OnClickListener
 {
-  ansp(ansm paramansm) {}
+  public ansp(EditVideoButton paramEditVideoButton, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.setResult(0);
-    this.a.a.finish();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.a.a(this.jdField_a_of_type_Int);
   }
 }
 

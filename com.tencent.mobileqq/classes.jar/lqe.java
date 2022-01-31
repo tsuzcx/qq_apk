@@ -5,11 +5,16 @@ import java.util.List;
 public class lqe
   implements Runnable
 {
-  public lqe(ArticleInfoModule paramArticleInfoModule, int paramInt, List paramList) {}
+  public lqe(ArticleInfoModule paramArticleInfoModule, boolean paramBoolean, int paramInt, List paramList) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    List localList = ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_JavaUtilList);
+    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int, localList);
   }
 }
 

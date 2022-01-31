@@ -1,36 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.search.model.PublicAccountSearchResultModel;
+import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
+import java.util.Comparator;
 
-public class ahwn
-  implements Runnable
+public final class ahwn
+  implements Comparator
 {
-  public ahwn(SubAccountControll paramSubAccountControll) {}
-  
-  public void run()
+  public int a(PublicAccountSearchResultModel paramPublicAccountSearchResultModel1, PublicAccountSearchResultModel paramPublicAccountSearchResultModel2)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("launchTimedMsgTask() run. startAllSubMessageAccountMsg(false) app.isRunning=");
-      if (this.a.a != null) {
-        break label82;
-      }
+    int j = Long.signum(paramPublicAccountSearchResultModel2.b() - paramPublicAccountSearchResultModel1.b());
+    int i = j;
+    if (j == 0) {
+      i = PublicAccountSearchEngine.a(paramPublicAccountSearchResultModel1, paramPublicAccountSearchResultModel2);
     }
-    label82:
-    for (Object localObject = "null";; localObject = Boolean.valueOf(this.a.a.isRunning()))
-    {
-      QLog.d("SUB_ACCOUNT", 2, localObject);
-      if ((this.a.a != null) && (this.a.a.isRunning())) {
-        this.a.a.f(false);
-      }
-      return;
-    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahwn
  * JD-Core Version:    0.7.0.1
  */

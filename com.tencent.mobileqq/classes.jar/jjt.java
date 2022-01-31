@@ -1,13 +1,26 @@
-import com.tencent.av.guild.GuildMultiActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.opengl.effects.GLContextThread;
+import java.lang.ref.WeakReference;
 
-class jjt
-  implements Runnable
+public class jjt
+  extends Handler
 {
-  jjt(jjq paramjjq) {}
+  WeakReference a;
   
-  public void run()
+  public jjt(Looper paramLooper, GLContextThread paramGLContextThread)
   {
-    GuildMultiActivity.a(this.a.a, true);
+    super(paramLooper);
+    this.a = new WeakReference(paramGLContextThread);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    GLContextThread localGLContextThread = (GLContextThread)this.a.get();
+    if (localGLContextThread != null) {
+      localGLContextThread.a(paramMessage);
+    }
   }
 }
 

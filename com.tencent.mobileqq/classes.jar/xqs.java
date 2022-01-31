@@ -1,15 +1,30 @@
-import android.app.Activity;
-import android.view.View;
-import cooperation.qzone.widget.QzoneGuideBubbleHelper;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class xqs
-  implements Runnable
+public class xqs
+  implements TroopMemberApiClient.Callback
 {
-  public xqs(Activity paramActivity, View paramView) {}
+  public xqs(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString1, String paramString2) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    QzoneGuideBubbleHelper.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, "同步到日迹，与更多好友分享", 1, 14.0F, 5.0D, 10.0D, 5000L, -15550475, false, true, 0, null, 0);
+    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getIntent();
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")) && (paramBundle.getInt("head_id") >= 0) && (!TextUtils.isEmpty(paramBundle.getString("video_id"))))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
+      localIntent.putExtras(paramBundle);
+      localIntent.putExtra("video_path", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("photo_path", this.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.finish();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 1, "上传失败", 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e());
   }
 }
 

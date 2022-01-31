@@ -1,13 +1,18 @@
-import com.tencent.av.ui.VideoInviteFloatBar;
+import com.tencent.av.opengl.ui.animation.GLAnimation.AnimationListenerGL;
+import com.tencent.av.ui.GLVideoView;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class kby
-  implements Runnable
+  implements GLAnimation.AnimationListenerGL
 {
-  public kby(VideoInviteFloatBar paramVideoInviteFloatBar) {}
+  public kby(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a();
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].h(this.b);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].a(Boolean.valueOf(true));
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
   }
 }
 

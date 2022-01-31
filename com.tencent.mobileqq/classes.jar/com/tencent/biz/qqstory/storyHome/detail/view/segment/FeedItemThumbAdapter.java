@@ -42,7 +42,7 @@ import com.tencent.widget.TraceUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nue;
+import nvs;
 
 @TargetApi(11)
 public class FeedItemThumbAdapter
@@ -54,6 +54,7 @@ public class FeedItemThumbAdapter
   public final Context a;
   public VideoListFeedItem a;
   public AutoPlayManager a;
+  public QQStoryAutoPlayView.StoryCoverClickListener a;
   public BaseViewHolder a;
   public List a;
   public boolean a;
@@ -88,92 +89,6 @@ public class FeedItemThumbAdapter
     return 1;
   }
   
-  private View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
-  {
-    paramBaseViewHolder.b = paramInt;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
-    {
-      SLog.e("Q.qqstory.detail.FeedItemThumbAdapter", "bind view failed because of invalidate data.");
-      return paramBaseViewHolder.a();
-    }
-    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    QQStoryAutoPlayView localQQStoryAutoPlayView = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131371586);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371587);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371588);
-    if ((this.c != 0) && (this.c != localQQStoryAutoPlayView.getLayoutParams().width) && (this.d != 0) && (this.d != localQQStoryAutoPlayView.getLayoutParams().height))
-    {
-      localQQStoryAutoPlayView.getLayoutParams().width = this.c;
-      localQQStoryAutoPlayView.getLayoutParams().height = this.d;
-      paramBaseViewHolder.a().getLayoutParams().width = this.c;
-    }
-    if (this.e > 0) {
-      localQQStoryAutoPlayView.a().setCorner(this.e);
-    }
-    localQQStoryAutoPlayView.setItemData(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, localStoryVideoItem, paramInt);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager != null) {
-      localQQStoryAutoPlayView.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager);
-    }
-    localQQStoryAutoPlayView.setStoryCoverClickListener(this);
-    FeedSegment.a(localStoryVideoItem, localQQStoryAutoPlayView, "QQStory_feed_min", this.c, this.d);
-    if (localStoryVideoItem.mHadRead == 1)
-    {
-      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494270));
-      if (!localStoryVideoItem.isUploadFail()) {
-        break label372;
-      }
-      localTextView1.setText("上传失败");
-      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494270));
-      localTextView2.setVisibility(8);
-    }
-    for (;;)
-    {
-      if ((StoryDepends.a()) && (this.jdField_a_of_type_Boolean) && (paramInt == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner().isMe()))
-      {
-        this.jdField_a_of_type_Boolean = false;
-        a(paramViewGroup, localQQStoryAutoPlayView);
-      }
-      return paramBaseViewHolder.a();
-      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494207));
-      break;
-      label372:
-      String str;
-      if (localStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L)
-      {
-        str = UIUtils.a(localStoryVideoItem.mCreateTime, localStoryVideoItem.mTimeZoneOffsetMillis);
-        label399:
-        localTextView1.setText(str);
-        if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner() instanceof ShareGroupItem)) {
-          break label471;
-        }
-        localTextView2.setVisibility(0);
-        localTextView2.setText(localStoryVideoItem.mOwnerName);
-      }
-      for (;;)
-      {
-        if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner() instanceof TagUserItem)) {
-          break label504;
-        }
-        localTextView1.setVisibility(8);
-        break;
-        str = UIUtils.b(localStoryVideoItem.mCreateTime);
-        break label399;
-        label471:
-        if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner() instanceof TagUserItem)) {
-          localTextView2.setVisibility(8);
-        } else {
-          localTextView2.setVisibility(8);
-        }
-      }
-      label504:
-      localTextView1.setVisibility(0);
-    }
-  }
-  
-  private BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970688, paramViewGroup, false));
-  }
-  
   private void a(ViewGroup paramViewGroup, View paramView)
   {
     SLog.d("Q.qqstory.detail.FeedItemThumbAdapter", "publishAnimationForQIM");
@@ -192,8 +107,106 @@ public class FeedItemThumbAdapter
       return;
       localStoryHomeHorizontalListView.scrollTo(300, 0);
       localAnimatorSet.play(localObjectAnimator).with(paramView);
-      localObjectAnimator.addUpdateListener(new nue(this, localStoryHomeHorizontalListView));
+      localObjectAnimator.addUpdateListener(new nvs(this, localStoryHomeHorizontalListView));
     }
+  }
+  
+  public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
+  {
+    paramBaseViewHolder.b = paramInt;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
+    {
+      SLog.e("Q.qqstory.detail.FeedItemThumbAdapter", "bind view failed because of invalidate data.");
+      return paramBaseViewHolder.a();
+    }
+    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    QQStoryAutoPlayView localQQStoryAutoPlayView = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131371751);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371752);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371753);
+    if ((this.c != 0) && (this.c != localQQStoryAutoPlayView.getLayoutParams().width) && (this.d != 0) && (this.d != localQQStoryAutoPlayView.getLayoutParams().height))
+    {
+      localQQStoryAutoPlayView.getLayoutParams().width = this.c;
+      localQQStoryAutoPlayView.getLayoutParams().height = this.d;
+      paramBaseViewHolder.a().getLayoutParams().width = this.c;
+    }
+    if (this.e > 0) {
+      localQQStoryAutoPlayView.a().setCorner(this.e);
+    }
+    localQQStoryAutoPlayView.setItemData(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, localStoryVideoItem, paramInt);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager != null) {
+      localQQStoryAutoPlayView.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager);
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener != null) {
+      localQQStoryAutoPlayView.setStoryCoverClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener);
+    }
+    FeedSegment.a(localStoryVideoItem, localQQStoryAutoPlayView, "QQStory_feed_min", this.c, this.d);
+    if (localStoryVideoItem.mHadRead == 1)
+    {
+      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494277));
+      if (!localStoryVideoItem.isUploadFail()) {
+        break label526;
+      }
+      localTextView1.setText("上传失败");
+      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494277));
+      localTextView2.setVisibility(8);
+    }
+    for (;;)
+    {
+      if ((StoryDepends.a()) && (this.jdField_a_of_type_Boolean) && (paramInt == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner().isMe()))
+      {
+        this.jdField_a_of_type_Boolean = false;
+        a(paramViewGroup, localQQStoryAutoPlayView);
+      }
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.type == 3) && ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner() instanceof QQUserUIItem)))
+      {
+        paramViewGroup = (QQUserUIItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner();
+        if ((paramViewGroup.isVip) && (!paramViewGroup.isSubscribe())) {
+          StoryReportor.c("video_exp", "exp_IDrecommend", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.type == 6) {
+        StoryReportor.c("video_exp", "exp_topicrecommend", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
+      }
+      return paramBaseViewHolder.a();
+      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494214));
+      break;
+      label526:
+      String str;
+      if (localStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L)
+      {
+        str = UIUtils.a(localStoryVideoItem.mCreateTime, localStoryVideoItem.mTimeZoneOffsetMillis);
+        label553:
+        localTextView1.setText(str);
+        if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner() instanceof ShareGroupItem)) {
+          break label625;
+        }
+        localTextView2.setVisibility(0);
+        localTextView2.setText(localStoryVideoItem.mOwnerName);
+      }
+      for (;;)
+      {
+        if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner() instanceof TagUserItem)) {
+          break label658;
+        }
+        localTextView1.setVisibility(8);
+        break;
+        str = UIUtils.b(localStoryVideoItem.mCreateTime);
+        break label553;
+        label625:
+        if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.getOwner() instanceof TagUserItem)) {
+          localTextView2.setVisibility(8);
+        } else {
+          localTextView2.setVisibility(8);
+        }
+      }
+      label658:
+      localTextView1.setVisibility(0);
+    }
+  }
+  
+  public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970734, paramViewGroup, false));
   }
   
   public void a(int paramInt)
@@ -265,6 +278,11 @@ public class FeedItemThumbAdapter
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager = paramAutoPlayManager;
   }
   
+  public void a(QQStoryAutoPlayView.StoryCoverClickListener paramStoryCoverClickListener)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener = paramStoryCoverClickListener;
+  }
+  
   public void a(List paramList, VideoListFeedItem paramVideoListFeedItem)
   {
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -272,6 +290,8 @@ public class FeedItemThumbAdapter
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = paramVideoListFeedItem;
     notifyDataSetChanged();
   }
+  
+  public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}
   
   public int getCount()
   {

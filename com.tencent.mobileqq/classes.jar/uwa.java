@@ -1,11 +1,19 @@
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.DeviceSingleStructBuilder;
 
-class uwa
-  implements ActionSheet.OnDismissListener
+public class uwa
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  uwa(uvz paramuvz) {}
+  public ImageView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public void onDismiss() {}
+  public uwa(DeviceSingleStructBuilder paramDeviceSingleStructBuilder) {}
 }
 
 

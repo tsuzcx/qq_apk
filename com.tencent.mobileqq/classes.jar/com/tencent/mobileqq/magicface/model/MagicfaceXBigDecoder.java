@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.magicface.model;
 
-import adqr;
-import adqs;
+import aedx;
+import aedy;
 import com.tencent.mobileqq.magicface.DecoderUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -19,8 +19,8 @@ public class MagicfaceXBigDecoder
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_b_of_type_JavaLangObject = new Object();
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = new adqr(this);
-    this.jdField_b_of_type_JavaLangRunnable = new adqs(this);
+    this.jdField_a_of_type_JavaLangRunnable = new aedx(this);
+    this.jdField_b_of_type_JavaLangRunnable = new aedy(this);
     if (QLog.isColorLevel()) {
       QLog.i("MagicfaceXBigDecoder", 2, "==MagicfaceXBigDecoder init=");
     }
@@ -94,7 +94,7 @@ public class MagicfaceXBigDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder
  * JD-Core Version:    0.7.0.1
  */

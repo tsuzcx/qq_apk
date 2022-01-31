@@ -1,19 +1,38 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
+import com.tencent.mobileqq.armap.ipc.IPCConstants;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
+import eipc.EIPCResult;
 
 public class abfz
-  implements View.OnClickListener
+  implements EIPCOnGetConnectionListener
 {
-  public abfz(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abfz(ArMapIPCProxy paramArMapIPCProxy) {}
   
-  public void onClick(View paramView)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()))
+    paramEIPCConnection = paramEIPCConnection.procName;
+    if (paramEIPCConnection.equals(IPCConstants.a))
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      this.a.a = true;
+      this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArMapIPCProxy", 2, "onConnectBind " + paramEIPCConnection);
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    paramEIPCConnection = paramEIPCConnection.procName;
+    if (paramEIPCConnection.equals(IPCConstants.a))
+    {
+      this.a.a = false;
+      this.a.a(IPCConstants.c, EIPCResult.createResult(-102, null));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArMapIPCProxy", 2, "onConnectUnbind " + paramEIPCConnection);
     }
   }
 }

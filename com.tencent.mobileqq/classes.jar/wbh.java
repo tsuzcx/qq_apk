@@ -1,19 +1,21 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
 
 public class wbh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
 {
-  public wbh(BlessActivity paramBlessActivity, RelativeLayout paramRelativeLayout) {}
+  public wbh(TroopChatPie paramTroopChatPie) {}
   
-  public void onGlobalLayout()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight());
-    BlessActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth());
-    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity);
+    if (!HWTroopUtils.a(paramInt)) {
+      this.a.bq();
+    }
+    if (this.a.a != null) {
+      this.a.a.c(HWTroopUtils.b(paramInt));
+    }
   }
 }
 

@@ -1,77 +1,82 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.QQOperateTips;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.ConversationFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.config.operation.QQOperateManager;
+import com.tencent.mobileqq.config.operation.QQOperationRequestInfo;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
 
-class wdd
+public class wdd
   implements Runnable
 {
-  wdd(wdc paramwdc, List paramList) {}
+  public wdd(QQOperateTips paramQQOperateTips) {}
   
   public void run()
   {
-    int j = 1;
-    int i = 0;
-    if (this.jdField_a_of_type_Wdc.jdField_a_of_type_Int != this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_Int)
+    Object localObject1 = QQOperateTips.a(this.a).a().a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int);
+    int j = ((List)localObject1).size();
+    Object localObject2;
+    int i;
+    if ((localObject1 != null) && (j > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("chatHistory.troop.msgList", 2, "loadingContext changed, ignored result local=" + this.jdField_a_of_type_Wdc.jdField_a_of_type_Int + ", global=" + this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_Int);
-      }
-      return;
-    }
-    ChatHistoryBubbleListAdapter localChatHistoryBubbleListAdapter = this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter;
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    boolean bool;
-    label115:
-    int i1;
-    label237:
-    int m;
-    if (this.jdField_a_of_type_JavaUtilList.size() < 20)
-    {
-      bool = true;
-      i1 = localChatHistoryBubbleListAdapter.a(localList, bool);
-      if (this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() > 0)
+      localObject2 = (ChatMessage)((List)localObject1).get(j - 1);
+      if (localObject2 != null)
       {
-        this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(0)).shmsgseq;
-        this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.b = ((MessageRecord)this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1)).shmsgseq;
+        if (QQOperateTips.a(this.a).jdField_a_of_type_Int != 0) {
+          break label333;
+        }
+        QQOperateTips.a(this.a, ((ChatMessage)localObject2).time);
+        QQOperateTips.b(this.a, ((ChatMessage)localObject2).uniseq);
       }
-      if ((i1 == 0) || (this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() <= 0)) {
-        break label458;
+      if (QQOperateTips.a(this.a).a().a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int) <= 0) {
+        break label365;
       }
-      if (j == 0) {
-        break label463;
-      }
-      m = this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition();
-      int n = this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0).getTop();
-      k = m;
-      i = n;
-      if (this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getScrollY() < 0) {
-        i = n - this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getScrollY();
+      i = 1;
+      label145:
+      if (i != 0) {
+        i = j;
       }
     }
-    label458:
-    label463:
-    for (int k = m;; k = 0)
+    for (;;)
     {
-      this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.hideOverScrollHeaderView();
-      this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a(this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a, this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.b);
-      this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.notifyDataSetChanged();
-      if (j == 0) {
-        break;
+      if (i > 0)
+      {
+        localObject2 = (ChatMessage)((List)localObject1).get(i - 1);
+        if ((localObject2 == null) || (!((ChatMessage)localObject2).isread)) {}
       }
-      this.jdField_a_of_type_Wdc.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setSelectionFromTop(k + i1, i);
-      if (!QLog.isColorLevel()) {
+      else
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QQOperateVoIP", 4, " from aio open .. unreadMsg index = " + QQOperateTips.a(this.a));
+        }
+        localObject2 = QQOperateManager.a(QQOperateTips.a(this.a));
+        if (localObject2 != null)
+        {
+          localObject1 = ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, QQOperateTips.a(this.a), (List)localObject1, true, QQOperateTips.a(this.a));
+          if (((QQOperationRequestInfo)localObject1).jdField_a_of_type_Boolean)
+          {
+            localObject1 = ((QQOperationRequestInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
+            ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, (ArrayList)localObject1, QQOperateTips.a(this.a));
+          }
+        }
+        QQOperateTips.a(this.a, -1);
+        return;
+        label333:
+        if (QQOperateTips.a(this.a).jdField_a_of_type_Int != 3000) {
+          break;
+        }
+        QQOperateTips.a(this.a, ((ChatMessage)localObject2).shmsgseq);
         break;
+        label365:
+        i = 0;
+        break label145;
       }
-      QLog.d("chatHistory.troop.msgList", 2, "update position pos=" + k + ", offset=" + i1 + ", top=" + i);
-      return;
-      bool = false;
-      break label115;
-      j = 0;
-      break label237;
+      QQOperateTips.a(this.a, i - 1);
+      i -= 1;
     }
   }
 }

@@ -1,21 +1,8 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aepq
-  implements Runnable
+public abstract interface aepq
 {
-  public aepq(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, String paramString) {}
-  
-  public void run()
-  {
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null)
-    {
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.i("Q.nearby_people_card.", 1, "mDynamicAvatarDownloadManager is NULL!!!");
-  }
+  public abstract void a(List paramList, boolean paramBoolean);
 }
 
 

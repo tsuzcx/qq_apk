@@ -563,7 +563,7 @@ public class ChatFontJsPlugin
       if (this.isUseFont) {
         break;
       }
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(this.mRuntime.a(), 230).setTitle(this.mRuntime.a().getString(2131433248)).setMessage(this.mRuntime.a().getString(2131433600)).setPositiveButton(this.mRuntime.a().getString(2131433601), new ChatFontJsPlugin.3(this, localJSONObject, paramString)).setNegativeButton(this.mRuntime.a().getString(2131433602), new ChatFontJsPlugin.2(this, localJSONObject, paramString));
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(this.mRuntime.a(), 230).setTitle(this.mRuntime.a().getString(2131433265)).setMessage(this.mRuntime.a().getString(2131433617)).setPositiveButton(this.mRuntime.a().getString(2131433618), new ChatFontJsPlugin.3(this, localJSONObject, paramString)).setNegativeButton(this.mRuntime.a().getString(2131433619), new ChatFontJsPlugin.2(this, localJSONObject, paramString));
       localQQCustomDialog.show();
       localQQCustomDialog.setOnCancelListener(new ChatFontJsPlugin.4(this, localJSONObject, paramString));
       return;
@@ -965,7 +965,7 @@ public class ChatFontJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatFontJsPlugin
  * JD-Core Version:    0.7.0.1
  */

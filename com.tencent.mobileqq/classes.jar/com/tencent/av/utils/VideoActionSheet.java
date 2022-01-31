@@ -18,7 +18,7 @@ public class VideoActionSheet
   public static VideoActionSheet a(Context paramContext)
   {
     paramContext = new VideoActionSheet(paramContext, false, false);
-    paramContext.getWindow().setWindowAnimations(2131624570);
+    paramContext.getWindow().setWindowAnimations(2131624571);
     return paramContext;
   }
   

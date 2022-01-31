@@ -1,38 +1,24 @@
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class uie
-  implements PreloadManager.OnGetPathListener
+public class uie
+  implements Runnable
 {
-  uie(uid paramuid) {}
+  public uie(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void run()
   {
-    paramPathResult = paramPathResult.filePath;
-    if (paramInt == 0) {}
-    try
+    RedTouchItem localRedTouchItem = this.a.a.a(100601);
+    if ((localRedTouchItem != null) && (localRedTouchItem.unReadFlag) && (localRedTouchItem.passThroughLevel > 0))
     {
-      paramPathResult = SafeBitmapFactory.decodeFile(paramPathResult, ImageUtil.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 300.0F + 0.5D)));
-      if (paramPathResult != null) {
-        this.a.a.background = paramPathResult;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy info.background=" + this.a.a.background);
-      }
+      localRedTouchItem.passThroughLevel = 0;
+      this.a.a.d();
+      ReportController.b(this.a.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "1", "", "", "");
+      return;
     }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
-    CustomizeStrategyFactory.a().a(this.a.a);
+    ReportController.b(this.a.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "2", "", "", "");
   }
 }
 

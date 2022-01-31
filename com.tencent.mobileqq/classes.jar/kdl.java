@@ -1,55 +1,38 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.av.AVLog;
+import android.text.TextUtils;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.filter.EffectFilterTools;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager.OnEffectFilterChangeListener;
-import com.tencent.mobileqq.statistics.MultiVideoRichActionReportCollection;
+import com.tencent.av.business.manager.zimu.ARZimuUtil;
+import com.tencent.av.business.manager.zimu.EffectZimuManager.DataReport;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
+import com.tencent.av.ui.QavListItemBase.ItemInfo;
+import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
 
 public class kdl
-  implements EffectFilterTextPager.OnEffectFilterChangeListener
+  implements QAVPtvTemplateAdapter.IEffectCallback
 {
-  EffectFilterTextPager.OnEffectFilterChangeListener jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$OnEffectFilterChangeListener;
+  public kdl(ZimuToolbar paramZimuToolbar) {}
   
-  public kdl(EffectFilterPanel paramEffectFilterPanel, EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
+  public void a()
   {
-    a(paramOnEffectFilterChangeListener);
+    EffectSettingUi.a(ZimuToolbar.access$300(this.a));
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(QavListItemBase.ItemInfo paramItemInfo)
   {
-    AVLog.c("EffectFilterPanel", "OnItemSelected ddd:" + paramInt + "|" + paramString + "|" + EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).getVisibility() + "|" + this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$OnEffectFilterChangeListener);
-    if (EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).getVisibility() == 0)
+    ZimuToolbar.access$000(this.a, paramItemInfo.a);
+    if ((!TextUtils.isEmpty(paramItemInfo.a)) && (!"0".equalsIgnoreCase(paramItemInfo.a)))
     {
-      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).removeCallbacks(EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel));
-      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).clearAnimation();
-      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).setVisibility(8);
-    }
-    paramString = (FilterItem)EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramString);
-    EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramString);
-    if (paramString != null)
-    {
-      if (!paramString.isUsable()) {
-        EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramString);
-      }
-      MultiVideoRichActionReportCollection.c(paramString.getId());
-      if ((paramString.getId() != null) && (paramString.getId().compareToIgnoreCase("MANHUA") == 0)) {
-        EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a().f(51, paramString.getId());
+      EffectZimuManager.DataReport.a("0X80085CD", paramItemInfo.a);
+      if (ARZimuUtil.a(paramItemInfo.a))
+      {
+        paramItemInfo = ZimuToolbar.access$100(this.a).a().a().c;
+        String str = ZimuToolbar.access$200(this.a).getCurrentAccountUin();
+        EffectZimuManager.DataReport.a("0X8009191", str, paramItemInfo);
+        EffectZimuManager.DataReport.a("0X8009192", str, paramItemInfo);
       }
     }
-    else
-    {
-      return;
-    }
-    EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a().f(0, paramString.getId());
-  }
-  
-  public void a(EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
-  {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$OnEffectFilterChangeListener = paramOnEffectFilterChangeListener;
   }
 }
 

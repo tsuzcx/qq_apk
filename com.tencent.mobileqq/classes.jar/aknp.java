@@ -1,35 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appcircle.widget.AppNewsTitleBar;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
 
-public class aknp
-  implements View.OnClickListener
+class aknp
+  implements Runnable
 {
-  public aknp(AppNewsTitleBar paramAppNewsTitleBar) {}
+  aknp(akno paramakno) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
+    SwiftBrowserTBSHandler localSwiftBrowserTBSHandler = (SwiftBrowserTBSHandler)this.a.a.a.a(16);
+    if (localSwiftBrowserTBSHandler != null) {
+      localSwiftBrowserTBSHandler.a();
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (AppNewsTitleBar.a(this.a) == null);
-      AppNewsTitleBar.a(this.a).finish();
-      return;
-    } while ((AppNewsTitleBar.a(this.a) != 0) || (AppNewsTitleBar.a(this.a) == null));
-    AppNewsTitleBar.a(this.a).b(new SendMsg("onShareClick"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aknp
  * JD-Core Version:    0.7.0.1
  */

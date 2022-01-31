@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class vvw
-  implements View.OnClickListener
+class vvw
+  implements Runnable
 {
-  public vvw(PublicAccountChatPie paramPublicAccountChatPie) {}
+  vvw(vvv paramvvv, MultiForwardChatPie paramMultiForwardChatPie, CharSequence paramCharSequence) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "mQidianClickListener ... mQidianKefu = " + this.a.ak);
-    }
-    this.a.v(2131430012);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.j, this.a.k, this.a.l, new vvx(this));
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(8);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.d.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.g);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.b, this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.y();
   }
 }
 

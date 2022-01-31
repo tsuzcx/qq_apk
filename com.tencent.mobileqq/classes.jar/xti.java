@@ -1,32 +1,34 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BaseAnimDrawer;
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.main.P2VEffectConvertor;
+import java.util.ArrayList;
 
 public class xti
   implements Runnable
 {
-  public xti(SubtitleLayout paramSubtitleLayout) {}
+  public xti(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (SubtitleLayout.a(this.a))
+    QQStoryMusicInfo localQQStoryMusicInfo;
+    if (!QzDynamicVideoPreviewActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity))
     {
-      if (SubtitleLayout.a(this.a) != null)
-      {
-        long l = System.currentTimeMillis();
-        String str1 = "录制时说话可以添加字幕。";
-        String str2 = "Record and speak with subtitles added.";
-        if (!AudioTranslator.a(false))
-        {
-          str1 = "网络状态差无法识别你的语音";
-          str2 = "Unable to Recognize Your Speaking due to Poor Internet Connection";
-        }
-        if (SubtitleLayout.a(this.a).a(false) <= 4) {
-          SubtitleLayout.a(this.a).a(l, 1000L + l, str1, str2, true);
-        }
+      QzDynamicVideoPreviewActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity, true);
+      localQQStoryMusicInfo = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity.a(QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity));
+      if (localQQStoryMusicInfo != null) {
+        break label82;
       }
-      SubtitleLayout.a(this.a, 1000);
-      SubtitleLayout.b(this.a);
+      QzDynamicVideoPreviewActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity, false);
+    }
+    for (;;)
+    {
+      QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).setMediaItems(this.jdField_a_of_type_JavaUtilArrayList);
+      QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).resetVideoIndex();
+      QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).prepare();
+      return;
+      label82:
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity.a(localQQStoryMusicInfo);
+      QzDynamicVideoPreviewActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity, true);
     }
   }
 }

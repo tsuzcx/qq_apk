@@ -1,34 +1,20 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment.ListAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class wla
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wla(PublicAccountFragment.ListAdapter paramListAdapter) {}
+  public wla(ShowExternalTroopListActivity paramShowExternalTroopListActivity, TextView paramTextView1, TextView paramTextView2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    }
-    String str;
-    do
-    {
-      return;
-      str = (String)paramView.getTag(-1);
-      paramView = (String)paramView.getTag(-2);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramView))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str + ", name = " + paramView);
-    return;
-    CrmUtils.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, str, "IvrEnterpriseDetailEngineFalse");
+    String str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.a);
+    Card localCard = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.runOnUiThread(new wlb(this, str, localCard));
   }
 }
 

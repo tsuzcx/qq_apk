@@ -1,18 +1,47 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.util.MqqWeakReferenceHandler;
+import mqq.observer.BusinessObserver;
+import tencent.im.nearbygroup.ext.NearbyGroupExt.RspBody;
 
-public class wku
-  implements ThreadExcutor.IThreadListener
+class wku
+  implements BusinessObserver
 {
-  public wku(PublicAccountFragment paramPublicAccountFragment) {}
+  wku(wkt paramwkt) {}
   
-  public void a() {}
-  
-  public void b()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ThreadManager.getUIHandler().post(new wkv(this));
+    Object localObject;
+    if (paramBoolean)
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localObject = new NearbyGroupExt.RspBody();
+      }
+    }
+    try
+    {
+      ((NearbyGroupExt.RspBody)localObject).mergeFrom(paramBundle);
+      paramBundle = "";
+      paramInt = 0;
+      if (((NearbyGroupExt.RspBody)localObject).str_wording.has()) {
+        paramBundle = ((NearbyGroupExt.RspBody)localObject).str_wording.get();
+      }
+      if (((NearbyGroupExt.RspBody)localObject).uint32_total_num.has()) {
+        paramInt = ((NearbyGroupExt.RspBody)localObject).uint32_total_num.get();
+      }
+      localObject = this.a.a.a.a().obtainMessage();
+      ((Message)localObject).what = 106;
+      ((Message)localObject).obj = paramBundle;
+      ((Message)localObject).arg1 = paramInt;
+      this.a.a.a.a().sendMessage((Message)localObject);
+      return;
+    }
+    catch (Exception paramBundle) {}
   }
 }
 

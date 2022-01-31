@@ -1,34 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.SecurityProtectActivity;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 
 public class tri
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public tri(SubAccountUgActivity paramSubAccountUgActivity, ActionSheet paramActionSheet) {}
+  public tri(SecurityProtectActivity paramSecurityProtectActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b());
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131436378);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
-      paramView = (SubAccountProtocManager)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(27);
-      if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
-      }
-    }
+    HttpDownloadUtil.a(this.a.a, this.a);
   }
 }
 

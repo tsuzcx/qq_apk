@@ -1,21 +1,33 @@
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.open.base.ToastUtil;
+import dov.com.qq.im.capture.music.MusicDownloadListener;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
 public class anmi
-  implements Runnable
+  extends MusicDownloadListener
 {
-  public anmi(VideoFrameLoader paramVideoFrameLoader, List paramList) {}
+  public anmi(HummingActivity paramHummingActivity) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
   {
-    VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = null;
-    if (VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader) != null) {
-      localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).get();
-    }
-    if (localVideoFrameLoaderListener != null) {
-      localVideoFrameLoaderListener.a(this.jdField_a_of_type_JavaUtilList);
+    ToastUtil.a().a("正在下载: " + HummingActivity.a(this.a), 0);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if ((paramBoolean) && (paramString != null) && (HummingActivity.a(this.a).a().equals(paramString)))
+    {
+      paramString = new Intent();
+      paramString.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
+      this.a.setResult(-1, paramString);
+      this.a.finish();
     }
   }
 }

@@ -1,22 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.game.ApolloJSContext;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebView;
 
 public class yps
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public yps(ApolloGameActivity paramApolloGameActivity) {}
+  public yps(ApolloJSContext paramApolloJSContext, String paramString, ValueCallback paramValueCallback) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    ApolloGameActivity.a(this.a).setVisibility(4);
-    ApolloGameActivity.a(this.a);
+    if (ApolloJSContext.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext) != null) {
+      ApolloJSContext.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext).evaluateJavascript(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSmttSdkValueCallback);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

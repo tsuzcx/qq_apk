@@ -20,7 +20,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.drawable.EmptyDrawable;
 import com.tencent.mobileqq.widget.PAVideoView;
-import nxv;
+import nzg;
 
 public class AutoPlayImageView
   extends ImageView
@@ -134,7 +134,7 @@ public class AutoPlayImageView
     paramString2.mExtraInfo = paramString1;
     paramString2.mLoadingDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
     paramString1 = URLDrawable.getDrawable(PAVideoView.a(paramLong), paramString2);
-    paramString1.setURLDrawableListener(new nxv(this));
+    paramString1.setURLDrawableListener(new nzg(this));
     setImageDrawable(paramString1);
   }
   

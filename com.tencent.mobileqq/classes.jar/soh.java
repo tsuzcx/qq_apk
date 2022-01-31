@@ -1,28 +1,28 @@
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.vas.VasMonitorHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.util.WeakReferenceHandler;
 
 public class soh
-  implements OnCompositionLoadedListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public soh(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
+  public soh(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorScreenManager", 2, "onCompositionLoaded: composition= " + paramLottieComposition);
-    }
-    if (paramLottieComposition == null)
+    if ((VipProfileCardDiyActivity.a(paramLong, paramString1, this.a.a.a.diyTextFontId)) && (paramInt1 == 0))
     {
-      VasMonitorHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "individual_v2_colorscreen_parse_fail", "0", "", Integer.toString(this.a.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
-      return;
+      paramString1 = this.a.b.obtainMessage();
+      paramString1.what = 5;
+      paramString1.obj = this.a.a.a;
+      paramString1.arg1 = 0;
+      paramString1.arg2 = 17;
+      this.a.b.sendMessage(paramString1);
+      paramVasQuickUpdateManager.b(this);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition = paramLottieComposition;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.postDelayed(this.a, 500L);
   }
 }
 

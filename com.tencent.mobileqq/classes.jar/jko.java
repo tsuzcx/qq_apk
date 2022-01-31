@@ -1,16 +1,28 @@
-import com.tencent.av.opengl.ui.GLView;
-import com.tencent.av.opengl.ui.GLView.OnZOrderChangedListener;
-import com.tencent.av.opengl.ui.GLViewGroup;
-import java.util.Collections;
+import android.text.TextUtils;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.av.random.RandomWebProtocol.OnRequestListener;
+import java.util.Iterator;
+import java.util.List;
 
 public class jko
-  implements GLView.OnZOrderChangedListener
+  extends Thread
 {
-  public jko(GLViewGroup paramGLViewGroup) {}
+  public jko(RandomWebProtocol paramRandomWebProtocol, String paramString1, String paramString2) {}
   
-  public void a(GLView paramGLView, int paramInt1, int paramInt2)
+  public void run()
   {
-    Collections.sort(GLViewGroup.a(this.a), GLViewGroup.a(this.a));
+    jkx localjkx = new jkx(this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "null"))) {
+      localjkx.a = this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol.a(this.b, this.jdField_a_of_type_JavaLangString);
+    }
+    if (localjkx.a != null) {}
+    for (int i = 0;; i = -1)
+    {
+      Iterator localIterator = this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol.a.iterator();
+      while (localIterator.hasNext()) {
+        ((RandomWebProtocol.OnRequestListener)localIterator.next()).a(i, localjkx);
+      }
+    }
   }
 }
 

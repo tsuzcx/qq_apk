@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import ahzc;
-import ahzd;
-import ahze;
-import ahzf;
+import ainf;
+import aing;
+import ainh;
+import aini;
 import android.content.SharedPreferences.Editor;
 import android.util.SparseArray;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -50,7 +50,7 @@ public class ConfigSetting
   
   private void a()
   {
-    ThreadManager.executeOnSubThread(new ahzd(this));
+    ThreadManager.executeOnSubThread(new aing(this));
   }
   
   private void a(JSONObject paramJSONObject, SharedPreferences.Editor paramEditor)
@@ -61,7 +61,7 @@ public class ConfigSetting
     {
       Object localObject1 = localJSONArray.getJSONObject(i);
       int k = ((JSONObject)localObject1).optInt("template_type", -1);
-      Object localObject2 = new ahzf(this, null);
+      Object localObject2 = new aini(this, null);
       this.f = paramJSONObject.optInt("containKeyword");
       if (paramEditor != null) {
         paramEditor.putInt("text_str_key_words_case", this.f);
@@ -70,8 +70,8 @@ public class ConfigSetting
       int j;
       if (this.f == 1)
       {
-        ((ahzf)localObject2).jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips1");
-        ((ahzf)localObject2).jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link1");
+        ((aini)localObject2).jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips1");
+        ((aini)localObject2).jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link1");
         j = k;
         if (k == -1) {
           j = i;
@@ -86,8 +86,8 @@ public class ConfigSetting
       {
         i += 1;
         break;
-        ((ahzf)localObject2).jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips0");
-        ((ahzf)localObject2).jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link0");
+        ((aini)localObject2).jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips0");
+        ((aini)localObject2).jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link0");
         break label105;
         label175:
         k = 0;
@@ -175,14 +175,14 @@ public class ConfigSetting
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (ahzf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      String[] arrayOfString = ((ahzf)localObject).jdField_b_of_type_ArrayOfJavaLangString;
+      localObject = (aini)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      String[] arrayOfString = ((aini)localObject).jdField_b_of_type_ArrayOfJavaLangString;
       int j = arrayOfString.length;
       int i = 0;
       while (i < j)
       {
         if (arrayOfString[i].equalsIgnoreCase(paramBaseTimAIOTipsProcessor)) {
-          return ((ahzf)localObject).jdField_a_of_type_JavaLangString;
+          return ((aini)localObject).jdField_a_of_type_JavaLangString;
         }
         i += 1;
       }
@@ -195,7 +195,7 @@ public class ConfigSetting
         {
           localObject = (ConfigSetting.TeamworkKeyWords)localIterator.next();
           if ((paramBaseTimAIOTipsProcessor.contains(((ConfigSetting.TeamworkKeyWords)localObject).jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(((ConfigSetting.TeamworkKeyWords)localObject).jdField_b_of_type_Int) != null)) {
-            return ((ahzf)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(((ConfigSetting.TeamworkKeyWords)localObject).jdField_b_of_type_Int)).jdField_a_of_type_JavaLangString;
+            return ((aini)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(((ConfigSetting.TeamworkKeyWords)localObject).jdField_b_of_type_Int)).jdField_a_of_type_JavaLangString;
           }
         }
       }
@@ -205,7 +205,7 @@ public class ConfigSetting
   
   public void a(ConfigurationService.Config paramConfig)
   {
-    ThreadManager.executeOnSubThread(new ahzc(this, paramConfig));
+    ThreadManager.executeOnSubThread(new ainf(this, paramConfig));
   }
   
   public void a(ChatMessage paramChatMessage)
@@ -214,7 +214,7 @@ public class ConfigSetting
       this.jdField_a_of_type_Long = System.currentTimeMillis();
     }
     this.jdField_a_of_type_Int += 1;
-    ThreadManager.executeOnSubThread(new ahze(this));
+    ThreadManager.executeOnSubThread(new ainh(this));
   }
   
   public boolean a()
@@ -234,14 +234,14 @@ public class ConfigSetting
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (ahzf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      String[] arrayOfString = ((ahzf)localObject).jdField_b_of_type_ArrayOfJavaLangString;
+      localObject = (aini)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      String[] arrayOfString = ((aini)localObject).jdField_b_of_type_ArrayOfJavaLangString;
       int j = arrayOfString.length;
       i = 0;
       while (i < j)
       {
         if (arrayOfString[i].equalsIgnoreCase(paramBaseTimAIOTipsProcessor)) {
-          return ((ahzf)localObject).jdField_a_of_type_ArrayOfJavaLangString;
+          return ((aini)localObject).jdField_a_of_type_ArrayOfJavaLangString;
         }
         i += 1;
       }
@@ -278,14 +278,14 @@ public class ConfigSetting
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (ahzf)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      String[] arrayOfString = ((ahzf)localObject).jdField_b_of_type_ArrayOfJavaLangString;
+      localObject = (aini)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      String[] arrayOfString = ((aini)localObject).jdField_b_of_type_ArrayOfJavaLangString;
       int j = arrayOfString.length;
       int i = 0;
       while (i < j)
       {
         if (arrayOfString[i].equalsIgnoreCase(paramBaseTimAIOTipsProcessor)) {
-          return ((ahzf)localObject).jdField_b_of_type_JavaLangString;
+          return ((aini)localObject).jdField_b_of_type_JavaLangString;
         }
         i += 1;
       }
@@ -298,7 +298,7 @@ public class ConfigSetting
         {
           localObject = (ConfigSetting.TeamworkKeyWords)localIterator.next();
           if ((paramBaseTimAIOTipsProcessor.contains(((ConfigSetting.TeamworkKeyWords)localObject).jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(((ConfigSetting.TeamworkKeyWords)localObject).jdField_b_of_type_Int) != null)) {
-            return ((ahzf)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(((ConfigSetting.TeamworkKeyWords)localObject).jdField_b_of_type_Int)).jdField_b_of_type_JavaLangString;
+            return ((aini)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(((ConfigSetting.TeamworkKeyWords)localObject).jdField_b_of_type_Int)).jdField_b_of_type_JavaLangString;
           }
         }
       }
@@ -328,7 +328,7 @@ public class ConfigSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSetting
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,17 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryFeatureDataStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.utils.UncheckedCallable;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.CompletedListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.Response;
 
 public class nzm
-  implements UncheckedCallable
+  implements Runnable
 {
-  public nzm(NewMyStorySegment paramNewMyStorySegment) {}
+  public nzm(GetUserGuideInfoStep paramGetUserGuideInfoStep, GetUserGuideInfoStep.Response paramResponse) {}
   
-  public GetMyStoryFeatureDataStep a()
+  public void run()
   {
-    return new GetMyStoryFeatureDataStep();
+    if (GetUserGuideInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep) != null) {
+      GetUserGuideInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep$Response);
+    }
   }
 }
 

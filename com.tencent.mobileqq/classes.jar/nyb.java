@@ -1,17 +1,17 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.CompletedListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.Response;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class nyb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public nyb(GetUserGuideInfoStep paramGetUserGuideInfoStep, GetUserGuideInfoStep.Response paramResponse) {}
+  public nyb(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (GetUserGuideInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep) != null) {
-      GetUserGuideInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep$Response);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
+    StoryReportor.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
   }
 }
 

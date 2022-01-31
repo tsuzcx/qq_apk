@@ -1,34 +1,37 @@
-import android.annotation.TargetApi;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
-import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class aakh
-  implements ArkViewImplement.LoadCallback
+  extends BroadcastReceiver
 {
-  public aakh(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt) {}
+  public aakh(WorldCupMgr paramWorldCupMgr) {}
   
-  @TargetApi(14)
-  public void onLoadFinish(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(0);
-      ArkAdapterItemForTextMsg.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2)) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
     }
+    switch (paramIntent.getIntExtra("event", 0))
+    {
+    default: 
+      return;
+    case 1: 
+      int i = paramIntent.getIntExtra("download_Index", 0);
+      int j = paramIntent.getIntExtra("download_Progress", 0);
+      if (AudioHelper.e()) {
+        QLog.w("WorldCupMgr", 1, "receive notify, index[" + i + "], progress[" + j + "]");
+      }
+      this.a.a(i, j);
+      return;
+    }
+    paramContext = paramIntent.getStringExtra("config_Content");
+    this.a.c(paramContext);
+    this.a.a();
   }
 }
 

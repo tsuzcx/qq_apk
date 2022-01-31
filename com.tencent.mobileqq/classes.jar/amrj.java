@@ -1,12 +1,27 @@
-import com.tencent.weiyun.utils.Singleton;
-import cooperation.weiyun.channel.WySender;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
 public final class amrj
-  extends Singleton
+  implements Parcelable.Creator
 {
-  protected WySender a(Void paramVoid)
+  public LbsDataV2.GpsInfo a(Parcel paramParcel)
   {
-    return new WySender(null);
+    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
+    if (paramParcel != null)
+    {
+      localGpsInfo.lat = paramParcel.readInt();
+      localGpsInfo.lon = paramParcel.readInt();
+      localGpsInfo.alt = paramParcel.readInt();
+      localGpsInfo.gpsType = paramParcel.readInt();
+      localGpsInfo.accuracy = paramParcel.readInt();
+    }
+    return localGpsInfo;
+  }
+  
+  public LbsDataV2.GpsInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

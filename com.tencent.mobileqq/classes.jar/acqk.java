@@ -1,45 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
-import java.io.File;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
-public class acqk
-  implements WyDownloader.IDownloadListener
+class acqk
+  implements Runnable
 {
-  public acqk(WeiYunLogicCenter paramWeiYunLogicCenter, String paramString, int paramInt, Object paramObject) {}
+  acqk(acqj paramacqj, HashMap paramHashMap) {}
   
-  public void a(String paramString, long paramLong, float paramFloat) {}
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  public void run()
   {
-    int i;
-    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists()))
+    QfileLocalFileDelMediaTabView.a(this.jdField_a_of_type_Acqj.a).clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      i = 1;
-      if (i == 0) {
-        break label128;
+      String str = (String)localIterator.next();
+      List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+      if (localList.size() != 0) {
+        QfileLocalFileDelMediaTabView.b(this.jdField_a_of_type_Acqj.a).put(str, localList);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramString2 + "]");
-      }
-      WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter).a().a(true, 39, new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramString2, this.jdField_a_of_type_JavaLangObject });
     }
-    label128:
-    while (!QLog.isColorLevel())
-    {
-      return;
-      i = 0;
-      break;
-    }
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramInt + "], errmsg[" + paramString3 + "]");
+    this.jdField_a_of_type_Acqj.a.i();
+    this.jdField_a_of_type_Acqj.a.setSelect(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acqk
  * JD-Core Version:    0.7.0.1
  */

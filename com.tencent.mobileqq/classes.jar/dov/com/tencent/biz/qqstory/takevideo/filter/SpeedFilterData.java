@@ -3,7 +3,7 @@ package dov.com.tencent.biz.qqstory.takevideo.filter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
-import anln;
+import aobs;
 import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class SpeedFilterData
@@ -42,13 +42,13 @@ public class SpeedFilterData
   @NonNull
   public FilterData.FilterPageItem a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return new anln(this, paramContext, paramViewGroup);
+    return new aobs(this, paramContext, paramViewGroup);
   }
   
   @NonNull
   public Class a()
   {
-    return anln.class;
+    return aobs.class;
   }
   
   public boolean a()

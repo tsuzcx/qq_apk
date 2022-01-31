@@ -1,31 +1,17 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.BubbleAppInPushNotification;
 
 public class mlj
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public mlj(FastWebActivity paramFastWebActivity) {}
+  public mlj(BubbleAppInPushNotification paramBubbleAppInPushNotification) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    Context localContext;
-    if (!FastWebActivity.b(this.a))
-    {
-      localContext = this.a.getApplicationContext();
-      if (!FastWebActivity.a(this.a)) {
-        break label55;
-      }
-    }
-    label55:
-    for (paramDialogInterface = "0X8008994";; paramDialogInterface = "0X800898D")
-    {
-      FastWebShareUtils.a(localContext, paramDialogInterface, 11, FastWebActivity.a(this.a));
-      FastWebActivity.b(this.a, false);
-      return;
-    }
+    AppInPushNotification.a(1);
+    this.a.a(true, false);
   }
 }
 

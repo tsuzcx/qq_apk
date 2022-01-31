@@ -1,18 +1,12 @@
-import com.tencent.biz.common.offline.AsyncBack;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 
-public class kmg
+public final class kmg
+  extends ThreadLocal
 {
-  public AsyncBack a;
-  public String a;
-  public String b;
-  public String c;
-  
-  public kmg(String paramString1, String paramString2, String paramString3, AsyncBack paramAsyncBack)
+  protected CharsetDecoder a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = paramAsyncBack;
+    return Charset.forName("UTF-8").newDecoder();
   }
 }
 

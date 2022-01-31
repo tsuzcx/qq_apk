@@ -1,26 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
 
 public class ajwk
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ajwk(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  public ajwk(TroopInteractGiftAnimationController paramTroopInteractGiftAnimationController, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.getRequestedOrientation() == 0)
-    {
-      this.a.setRequestedOrientation(1);
-      return;
-    }
-    this.a.setResult(0);
-    this.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwk
  * JD-Core Version:    0.7.0.1
  */

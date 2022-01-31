@@ -1,19 +1,20 @@
-import com.tencent.av.gaudio.VideoViewInfo;
-import com.tencent.av.ui.AVActivity;
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.av.ui.BaseToolbar;
 
 public class jql
-  implements Comparator
+  extends AnimatorListenerAdapter
 {
-  public jql(AVActivity paramAVActivity) {}
+  public jql(BaseToolbar paramBaseToolbar) {}
   
-  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramVideoViewInfo1.a) {}
-    while (paramVideoViewInfo2.a) {
-      return 1;
-    }
-    return 0;
+    super.onAnimationEnd(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 

@@ -1,15 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
 public class wol
-  implements View.OnClickListener
+  extends View.AccessibilityDelegate
 {
-  public wol(MessageSearchDialog paramMessageSearchDialog) {}
+  public wol(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public void onClick(View paramView)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    this.a.dismiss();
+    if (paramInt != 4096) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 

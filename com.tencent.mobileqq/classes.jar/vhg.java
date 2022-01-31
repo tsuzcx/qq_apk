@@ -1,33 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopGift;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.DownloadGftData;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.BezierEvaluator;
 
-class vhg
-  implements Runnable
+public class vhg
 {
-  vhg(vhf paramvhf, AIOAnimationControlManager.DownloadGftData paramDownloadGftData) {}
+  public float a;
+  public int a;
+  public ValueAnimator a;
+  public SixCombolEffectView.BezierEvaluator a;
+  public boolean a;
+  public float b;
+  public int b;
+  public ValueAnimator b;
+  public boolean b;
+  public int c;
+  public ValueAnimator c;
+  public int d;
+  public ValueAnimator d;
+  public int e;
+  public int f;
+  public int g;
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager$DownloadGftData.a)
-    {
-      this.jdField_a_of_type_Vhf.a.isLoading = false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, "GONE uniseq = " + this.jdField_a_of_type_Vhf.a.uniseq);
-      }
-      ((AIOAnimationControlManager)vhf.a(this.jdField_a_of_type_Vhf).getManager(222)).b(this.jdField_a_of_type_Vhf);
-      this.jdField_a_of_type_Vhf.c.setVisibility(8);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "VISIBLE uniseq = " + this.jdField_a_of_type_Vhf.a.uniseq);
-    }
-    this.jdField_a_of_type_Vhf.a.isLoading = true;
-    this.jdField_a_of_type_Vhf.c.setVisibility(0);
-  }
+  public vhg(SixCombolEffectView paramSixCombolEffectView) {}
 }
 
 

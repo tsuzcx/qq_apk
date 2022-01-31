@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
 
 public class zqv
-  implements Comparator
+  extends FriendListObserver
 {
-  public zqv(SystemMessageProcessor paramSystemMessageProcessor) {}
+  private zqv(GetGeneralSettings paramGetGeneralSettings) {}
   
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      GetGeneralSettings.a(this.a).a = 3;
+      this.a.a(7);
+      return;
     }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
-      return -1;
-    }
-    return 0;
+    this.a.a(6);
   }
 }
 

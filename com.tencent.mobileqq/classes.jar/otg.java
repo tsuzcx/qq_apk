@@ -1,50 +1,59 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class otg
-  implements TVK_SDKMgr.OnLogListener
+  implements AdapterView.OnItemClickListener
 {
-  public otg(TribeVideoPlugin paramTribeVideoPlugin) {}
+  public otg(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public int d(String paramString1, String paramString2)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    QRDisplayActivity.a(this.a).b();
+    int i;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131435319;
+      }
     }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    for (;;)
+    {
+      if (i != -1)
+      {
+        QQToast.a(this.a, this.a.getString(i), 0).b(this.a.getTitleBarHeight());
+        if (this.a.jdField_c_of_type_Int == 2) {
+          if (paramLong != 2L) {
+            break label165;
+          }
+        }
+        label165:
+        for (paramAdapterView = "qr_wechat";; paramAdapterView = "qr_circle")
+        {
+          TroopReportor.a("Grp_share", "grpData_admin", paramAdapterView, 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
+          this.a.h = -1;
+          return;
+          if (WXShareHelper.a().b()) {
+            break label230;
+          }
+          i = 2131435320;
+          break;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QRDisplayActivity", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+      }
+      this.a.h = ((int)paramLong);
+      QRDisplayActivity.a(this.a);
+      return;
+      label230:
+      i = -1;
     }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
   }
 }
 

@@ -46,6 +46,7 @@ final class PreDownloadConstants$1
     put(Integer.valueOf(10037), "web离线(ET活动zero.js)");
     put(Integer.valueOf(10038), "Apollo");
     put(Integer.valueOf(10072), "Apollo_jsc");
+    put(Integer.valueOf(10074), "Apollo_jsc");
     put(Integer.valueOf(10040), "声波二维码");
     put(Integer.valueOf(10041), "GIF");
     put(Integer.valueOf(10042), "Hot Friend");
@@ -78,12 +79,14 @@ final class PreDownloadConstants$1
     put(Integer.valueOf(10068), "涂鸦消息");
     put(Integer.valueOf(10069), "钱包资源");
     put(Integer.valueOf(10070), "音视频红包");
+    put(Integer.valueOf(10074), "AR2018世界杯");
     put(Integer.valueOf(10071), "QQ看点web渲染");
+    put(Integer.valueOf(10073), "扩列");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.1
  * JD-Core Version:    0.7.0.1
  */

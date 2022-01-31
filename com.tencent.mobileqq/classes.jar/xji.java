@@ -1,20 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.recent.Banner;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.struct.PushBanner;
+import com.tencent.mobileqq.widget.ADView;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class xji
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public xji(LoginView paramLoginView) {}
+  public xji(BannerManager paramBannerManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = (UpgradeDetailWrapper)this.a.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
-    UpgradeDetailActivity.a(this.a.a, paramDialogInterface, true, false, false);
+    BannerManager.a(this.a).getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + BannerManager.a(this.a).app.getAccount(), false).commit();
+    paramView = BannerManager.a(this.a)[17];
+    ADView localADView;
+    if ((paramView != null) && (paramView.a != null))
+    {
+      localADView = (ADView)paramView.a.findViewById(2131365693);
+      if (localADView == null) {
+        break label258;
+      }
+    }
+    label258:
+    for (paramView = localADView.a(0);; paramView = null)
+    {
+      if (paramView != null)
+      {
+        int j = paramView.getChildCount();
+        LinkedList localLinkedList = new LinkedList();
+        int i = 0;
+        while (i < j)
+        {
+          View localView = paramView.getChildAt(i);
+          if (localView != null) {
+            localLinkedList.add((PushBanner)localView.getTag());
+          }
+          i += 1;
+        }
+        ThreadManager.getFileThreadHandler().post(new xjj(this, j, localLinkedList));
+        if (localADView != null) {
+          localADView.h();
+        }
+      }
+      this.a.a(17, 0);
+      this.a.a(-1, null);
+      this.a.e = false;
+      ReportController.b(BannerManager.a(this.a).app, "dc00898", "", "", "0X80087C3", "0X80087C3", 0, 0, "", "", "", "");
+      return;
+    }
   }
 }
 

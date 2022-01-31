@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyProfileCardMomentAdapter;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.ListView;
+import com.tencent.av.utils.UITools;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 import java.util.List;
 
-class aexg
-  implements NearbyMomentManager.GetLocalUnPiblishListCallback
+public class aexg
+  implements Runnable
 {
-  aexg(aexd paramaexd) {}
+  public aexg(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(List paramList)
+  public void run()
   {
-    NearbyMomentFragment.b(this.a.a).clear();
-    NearbyMomentFragment.b(this.a.a).addAll(paramList);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(NearbyMomentFragment.b(this.a.a));
-    localArrayList.addAll(NearbyMomentFragment.a(this.a.a));
-    NearbyMomentFragment.a(this.a.a).a(localArrayList);
-    localArrayList = new ArrayList();
-    localArrayList.addAll(paramList);
-    this.a.a.b();
-    NearbyMomentFragment.a(this.a.a, localArrayList);
+    int i = UITools.b(this.a.getContext());
+    if (ShortVideoCommentsView.a() * this.a.a.a.size() + ShortVideoCommentsView.b(this.a).getMeasuredHeight() >= i)
+    {
+      ShortVideoCommentsView.a(this.a).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.a).getMeasuredHeight());
+      return;
+    }
+    ShortVideoCommentsView.a(this.a).setSelection(this.a.a.a.size() + 1);
   }
 }
 

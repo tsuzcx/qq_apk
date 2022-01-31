@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class rwt
-  implements View.OnClickListener
+public final class rwt
+  implements DialogInterface.OnClickListener
 {
-  public rwt(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString) {}
-  
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app.a(this.jdField_a_of_type_JavaLangString, false);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import ajtl;
+import akhs;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -68,7 +68,7 @@ public final class IndividuationUrlHelper
   static
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.0.3525").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]");
+    ((StringBuilder)localObject).append("uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.3.3560").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]");
     C = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("http://zb.vip.qq.com/sonic/theme");
     ((StringBuilder)localObject).append("?").append(C).append("&_wv=16782337").append("&asyncMode=3");
@@ -145,10 +145,10 @@ public final class IndividuationUrlHelper
     E = ((StringBuilder)localObject).toString();
     B = "http://zb.vip.qq.com/card/setting?_wv=16778243";
     localObject = new StringBuilder("http://imgcache.qq.com/club/themes/mobile/my_dress/index.html");
-    ((StringBuilder)localObject).append("?uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.0.3525").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]").append("&_bid=182").append("&_wv=3");
+    ((StringBuilder)localObject).append("?uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.3.3560").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]").append("&_bid=182").append("&_wv=3");
     F = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("http://imgcache.qq.com/club/themes/mobile/search/html/index.html");
-    ((StringBuilder)localObject).append("?uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.0.3525").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]").append("&adtag=mvip.gxh.android.search").append("&_bid=2229").append("&_wv=1027");
+    ((StringBuilder)localObject).append("?uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.3.3560").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]").append("&adtag=mvip.gxh.android.search").append("&_bid=2229").append("&_wv=1027");
     G = ((StringBuilder)localObject).toString();
     jdField_a_of_type_JavaUtilMap = new HashMap();
     jdField_b_of_type_JavaUtilMap = new HashMap();
@@ -296,7 +296,7 @@ public final class IndividuationUrlHelper
           if (Looper.myLooper() != Looper.getMainLooper()) {
             break label278;
           }
-          ThreadManager.post(new ajtl(), 5, null, true);
+          ThreadManager.post(new akhs(), 5, null, true);
         }
       }
       for (;;)
@@ -560,7 +560,7 @@ public final class IndividuationUrlHelper
             if (!TextUtils.isEmpty(str3))
             {
               i1 = i3;
-              if (!a(str3, "7.6.0")) {
+              if (!a(str3, "7.6.3")) {
                 i1 = 0;
               }
             }
@@ -576,7 +576,7 @@ public final class IndividuationUrlHelper
               if (!TextUtils.isEmpty(str3))
               {
                 i3 = i1;
-                if (!a("7.6.0", str3)) {
+                if (!a("7.6.3", str3)) {
                   i3 = 0;
                 }
               }
@@ -749,7 +749,7 @@ public final class IndividuationUrlHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividuationUrlHelper
  * JD-Core Version:    0.7.0.1
  */

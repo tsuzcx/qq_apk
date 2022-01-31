@@ -3,7 +3,7 @@ package dov.com.tencent.mobileqq.shortvideo.mediadevice;
 import android.content.Context;
 import android.media.AudioRecord;
 import android.os.SystemClock;
-import anzu;
+import aopz;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.maxvideo.common.ControlFlagEnum;
 import com.tencent.maxvideo.mediadevice.AVCodec;
@@ -140,7 +140,7 @@ public class AudioCapture
     this.jdField_g_of_type_Boolean = false;
     this.jdField_h_of_type_Boolean = false;
     this.jdField_i_of_type_Boolean = RMVideoStateMgr.a().b(6);
-    new anzu(this).start();
+    new aopz(this).start();
     return true;
   }
   

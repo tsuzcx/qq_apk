@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.paster;
 
-import amwy;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import annd;
 import com.tencent.av.AVNetEngine;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -69,7 +69,7 @@ public class QIMInformationPasterManager$InformationPasterResDownloader
       ((ArrayList)localObject).add(new WeakReference(paramIInformationPasterResDownloaderCallback));
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject);
       paramIInformationPasterResDownloaderCallback = new HttpNetReq();
-      paramIInformationPasterResDownloaderCallback.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new amwy(this);
+      paramIInformationPasterResDownloaderCallback.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new annd(this);
       paramIInformationPasterResDownloaderCallback.jdField_a_of_type_JavaLangString = str;
       paramIInformationPasterResDownloaderCallback.jdField_a_of_type_Int = 0;
       paramIInformationPasterResDownloaderCallback.jdField_c_of_type_JavaLangString = QIMInformationPasterManager.a(paramItem);

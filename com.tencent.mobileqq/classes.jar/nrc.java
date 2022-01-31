@@ -1,28 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.ChangeVideoSortEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.YearCollectionViewHolder;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class nrc
-  implements View.OnClickListener
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public nrc(ShareGroupsListAdapter.YearCollectionViewHolder paramYearCollectionViewHolder) {}
+  public nrc(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramView = new ShareGroupsListAdapter.ChangeVideoSortEvent();
-    if (this.a.a.a) {
-      this.a.a.a = false;
-    }
-    for (paramView.a = 0;; paramView.a = 1)
+    if (paramInt != 0)
     {
-      Dispatchers.get().dispatch(paramView);
-      return;
-      this.a.a.a = true;
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(2, bool);
+        this.a.a(0, this.a.a.getString(2131435374));
+        return;
+      }
     }
+    ((QQStoryManager)this.a.a.app.getManager(180)).a(this.b);
   }
 }
 

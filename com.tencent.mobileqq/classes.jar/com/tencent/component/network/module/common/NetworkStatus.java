@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.IntentFilter;
 import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.component.network.utils.NetworkUtils.DNS;
-import pip;
+import pkj;
 
 public class NetworkStatus
 {
@@ -40,9 +40,9 @@ public class NetworkStatus
   private void a()
   {
     b();
-    pip localpip = new pip(this);
+    pkj localpkj = new pkj(this);
     IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(localpip, localIntentFilter);
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(localpkj, localIntentFilter);
   }
   
   private void b()

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import absn;
-import absp;
-import absq;
+import abzp;
+import abzr;
+import abzs;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
@@ -146,7 +146,7 @@ public class FavroamingDBManager
     if ((paramList == null) || (paramList.size() < 1)) {
       return;
     }
-    a(new absp(this, paramList, paramInt), 8);
+    a(new abzr(this, paramList, paramInt), 8);
   }
   
   private void b(CustomEmotionData paramCustomEmotionData, int paramInt)
@@ -659,7 +659,7 @@ public class FavroamingDBManager
     if (paramCustomEmotionData == null) {
       return;
     }
-    a(new absq(this, paramInt, paramCustomEmotionData), 8);
+    a(new abzs(this, paramInt, paramCustomEmotionData), 8);
   }
   
   public void a(FavroamingDBManager.FavEmotionDataInPanelCallback paramFavEmotionDataInPanelCallback)
@@ -667,7 +667,7 @@ public class FavroamingDBManager
     if (paramFavEmotionDataInPanelCallback == null) {
       return;
     }
-    ThreadManager.post(new absn(this, paramFavEmotionDataInPanelCallback), 5, null, true);
+    ThreadManager.post(new abzp(this, paramFavEmotionDataInPanelCallback), 5, null, true);
   }
   
   public void a(String paramString)

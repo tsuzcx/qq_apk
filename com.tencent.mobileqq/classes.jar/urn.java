@@ -1,20 +1,16 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
 
-class urn
-  implements Runnable
+public class urn
 {
-  urn(urm paramurm, String paramString) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c;
   
-  public void run()
+  public urn(DoodleMsgLayout paramDoodleMsgLayout)
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      this.jdField_a_of_type_Urm.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_Urm.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_Urm.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

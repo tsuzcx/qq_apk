@@ -1,40 +1,28 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.arcard.ARBlessWordFragment;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
 
 public class aaeb
-  implements View.OnFocusChangeListener
+  implements View.OnTouchListener
 {
-  public aaeb(ARBlessWordFragment paramARBlessWordFragment) {}
+  public aaeb(ScanningSurfaceView paramScanningSurfaceView) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a = paramBoolean;
-    TextView localTextView = ARBlessWordFragment.a(this.a);
-    if (paramBoolean)
+    switch (paramMotionEvent.getAction())
     {
-      paramView = "请输入20个字以内的祝福";
-      localTextView.setText(paramView);
-      paramView = ARBlessWordFragment.a(this.a);
-      if (!paramBoolean) {
-        break label57;
-      }
     }
-    label57:
-    for (int i = 8;; i = 0)
+    for (;;)
     {
-      paramView.setVisibility(i);
-      return;
-      paramView = "点击重新编辑";
-      break;
+      return true;
+      ScanningSurfaceView.a(this.a, paramMotionEvent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaeb
  * JD-Core Version:    0.7.0.1
  */

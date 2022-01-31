@@ -1,8 +1,6 @@
-import android.view.View;
-
-public class acfe
+public abstract interface acfe
 {
-  public View[] a = new View[12];
+  public abstract void a();
 }
 
 

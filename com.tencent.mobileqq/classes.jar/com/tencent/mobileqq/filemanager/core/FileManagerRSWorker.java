@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aclh;
-import aclo;
-import aclp;
-import aclq;
-import aclr;
-import acls;
-import aclt;
+import acve;
+import acvl;
+import acvm;
+import acvn;
+import acvo;
+import acvp;
+import acvq;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -67,7 +67,7 @@ public class FileManagerRSWorker
   public int a;
   public long a;
   public QQAppInterface a;
-  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new aclh(this);
+  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new acve(this);
   private HttpUrlProcessor jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor;
   public WeiyunTask a;
   public FileManagerEntity a;
@@ -259,7 +259,7 @@ public class FileManagerRSWorker
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false);
     paramChangeNewPath = new ArrayList();
     paramChangeNewPath.add(this.jdField_d_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a(paramLong, paramChangeNewPath, SplashActivity.sTopActivity, new aclt(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a(paramLong, paramChangeNewPath, SplashActivity.sTopActivity, new acvq(this));
   }
   
   private void a(long paramLong, String paramString)
@@ -520,7 +520,7 @@ public class FileManagerRSWorker
     if (QLog.isColorLevel()) {
       QLog.i("FileManagerRSWorker<FileAssistant>", 1, "start Rsworker OfflineFileHitReq:" + MessageCache.a());
     }
-    FileManagerUtil.FileExecutor.a().execute(new acls(this));
+    FileManagerUtil.FileExecutor.a().execute(new acvp(this));
   }
   
   public int a()
@@ -1037,11 +1037,11 @@ public class FileManagerRSWorker
     //   866: new 936	android/os/Handler
     //   869: dup
     //   870: invokespecial 937	android/os/Handler:<init>	()V
-    //   873: new 939	aclm
+    //   873: new 939	acvj
     //   876: dup
     //   877: aload_0
     //   878: lload 5
-    //   880: invokespecial 942	aclm:<init>	(Lcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker;J)V
+    //   880: invokespecial 942	acvj:<init>	(Lcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker;J)V
     //   883: ldc2_w 943
     //   886: invokevirtual 948	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   889: pop
@@ -1470,10 +1470,10 @@ public class FileManagerRSWorker
     //   1830: aload_0
     //   1831: aload_0
     //   1832: getfield 58	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_d_of_type_Long	J
-    //   1835: new 1014	acln
+    //   1835: new 1014	acvk
     //   1838: dup
     //   1839: aload_0
-    //   1840: invokespecial 1015	acln:<init>	(Lcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker;)V
+    //   1840: invokespecial 1015	acvk:<init>	(Lcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker;)V
     //   1843: invokespecial 462	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:a	(JLcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker$ChangeNewPath;)V
     //   1846: aload_0
     //   1847: getfield 159	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -2553,7 +2553,7 @@ public class FileManagerRSWorker
               if (n == 9056) {
                 i1 = 0;
               }
-              new Handler().postDelayed(new aclo(this), i1);
+              new Handler().postDelayed(new acvl(this), i1);
               QLog.w("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.jdField_c_of_type_Long + "] after [" + i1 + "] time retry!");
               if (9048 != n) {
                 break label1388;
@@ -2858,7 +2858,7 @@ public class FileManagerRSWorker
     try
     {
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangRunnable = new aclp(this);
+      this.jdField_a_of_type_JavaLangRunnable = new acvm(this);
       if (QLog.isColorLevel()) {
         QLog.i("FileManagerRSWorker<FileAssistant>", 1, "Run RSWorker" + MessageCache.a());
       }
@@ -2897,7 +2897,7 @@ public class FileManagerRSWorker
     }
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
     this.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(localFileManagerEntity, null, new aclq(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(localFileManagerEntity, null, new acvn(this));
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask == null)
     {
       QLog.e("FileManagerRSWorker<FileAssistant>", 1, "create download task is fail! nSessionId[" + this.jdField_c_of_type_Long + "]fileid[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId + "] filename[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName + "] filesize[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize + "] modifytime[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime + "]");
@@ -2925,7 +2925,7 @@ public class FileManagerRSWorker
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
       this.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), null, new aclr(this));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), null, new acvo(this));
     } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask != null);
     QLog.e("FileManagerRSWorker<FileAssistant>", 1, "create upload task is fail! nSessionId[" + this.jdField_c_of_type_Long + "] filePath[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath() + "]");
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Int, 38, null, 11, null);

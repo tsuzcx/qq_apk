@@ -1,22 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.transfile.VideoCoverDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import java.net.URL;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
 public class aidy
-  implements BitmapDecoder
+  implements FileFilter
 {
-  public aidy(VideoCoverDownloader paramVideoCoverDownloader) {}
-  
-  public Bitmap a(URL paramURL)
+  public boolean accept(File paramFile)
   {
-    return ShortVideoUtils.a(null, paramURL.getPath());
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aidy
  * JD-Core Version:    0.7.0.1
  */

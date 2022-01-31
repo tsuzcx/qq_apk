@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo.widget;
 
-import ahqc;
-import ahqd;
-import ahqe;
+import aiee;
+import aief;
+import aieg;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -126,7 +126,7 @@ public class ImageViewVideoPlayer
       this.jdField_a_of_type_AndroidGraphicsBitmap = a();
       c();
       e();
-      getHandler().postAtFrontOfQueue(new ahqe(this));
+      getHandler().postAtFrontOfQueue(new aieg(this));
     }
   }
   
@@ -346,7 +346,7 @@ public class ImageViewVideoPlayer
     }
     Handler localHandler = super.getHandler();
     if (localHandler != null) {
-      localHandler.postAtFrontOfQueue(new ahqc(this));
+      localHandler.postAtFrontOfQueue(new aiee(this));
     }
     this.jdField_a_of_type_Int = 4;
   }
@@ -413,7 +413,7 @@ public class ImageViewVideoPlayer
       return;
     }
     this.jdField_c_of_type_Int = 0;
-    getHandler().postAtFrontOfQueue(new ahqd(this, paramInt));
+    getHandler().postAtFrontOfQueue(new aief(this, paramInt));
   }
   
   public void oneFrameDrawed()

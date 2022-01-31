@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import adka;
+import adtz;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -38,7 +38,7 @@ public class IVPluginLoader
   
   private IVPluginLoader(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adka(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adtz(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
     this.jdField_a_of_type_JavaLangString = paramString;
   }
@@ -57,7 +57,7 @@ public class IVPluginLoader
   
   private void a(int paramInt)
   {
-    StoryReportor.a("group_video", "loadPuginState", paramInt, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), new String[] { "", "", "", "7.6.0" });
+    StoryReportor.a("group_video", "loadPuginState", paramInt, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), new String[] { "", "", "", "7.6.3" });
     switch (paramInt)
     {
     case 4: 
@@ -134,7 +134,7 @@ public class IVPluginLoader
         {
           Monitor.b("2856625");
           this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          StoryReportor.a("group_video", "startLoad", 0, 0, new String[] { "", "", "", "7.6.0" });
+          StoryReportor.a("group_video", "startLoad", 0, 0, new String[] { "", "", "", "7.6.3" });
         }
       }
     }
@@ -142,7 +142,7 @@ public class IVPluginLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader
  * JD-Core Version:    0.7.0.1
  */

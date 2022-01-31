@@ -1,25 +1,32 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
-import java.util.List;
+import com.tencent.mobileqq.floatscr.ColorScreenConfig;
+import com.tencent.mobileqq.floatscr.ColorScreenManager;
+import com.tencent.mobileqq.vas.VasManager.CompleteListener;
+import com.tencent.qphone.base.util.QLog;
 
-class adjz
+public class adjz
   implements Runnable
 {
-  adjz(adjy paramadjy, List paramList) {}
+  public adjz(ColorScreenManager paramColorScreenManager, int paramInt, VasManager.CompleteListener paramCompleteListener) {}
   
   public void run()
   {
-    GroupVideoManager.CheckListener localCheckListener = this.jdField_a_of_type_Adjy.a;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {}
-    for (boolean bool = true;; bool = false)
+    String str = "colorScreen.android." + this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.b(str, this.jdField_a_of_type_ComTencentMobileqqVasVasManager$CompleteListener, null);
+    ColorScreenConfig localColorScreenConfig = this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(this.jdField_a_of_type_Int);
+    if (localColorScreenConfig == null)
     {
-      localCheckListener.a(bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorScreenManager", 1, "getLocalConfig return null, go to download");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(this.jdField_a_of_type_Int);
       return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(str, localColorScreenConfig);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjz
  * JD-Core Version:    0.7.0.1
  */

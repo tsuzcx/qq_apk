@@ -1,22 +1,17 @@
-import Wallet.PfaFriendRsp;
-import com.tencent.mobileqq.activity.qwallet.TopayManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class wyl
-  implements Runnable
+public class wyl
+  implements View.OnClickListener
 {
-  wyl(wyk paramwyk, PfaFriendRsp paramPfaFriendRsp) {}
+  public wyl(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_WalletPfaFriendRsp != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      TopayManager.a(bool, this.jdField_a_of_type_WalletPfaFriendRsp, true);
-      if (this.jdField_a_of_type_Wyk.jdField_a_of_type_Boolean) {
-        TopayManager.a(this.jdField_a_of_type_Wyk.jdField_a_of_type_Int, this.jdField_a_of_type_Wyk.b);
-      }
-      return;
-    }
+    this.a.h();
+    LpReportInfo_pf00064.allReport(603, 3);
   }
 }
 

@@ -1,24 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class akgr
-  implements View.OnClickListener
+public final class akgr
+  implements Handler.Callback
 {
-  public akgr(MusicPendantView paramMusicPendantView) {}
-  
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramView == null) {
-      return;
+    QQAppInterface localQQAppInterface;
+    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
+    {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
+      switch (paramMessage.what)
+      {
+      }
     }
-    ThreadManager.post(new akgs(this), 8, null, true);
+    for (;;)
+    {
+      return true;
+      QQToast.a(localQQAppInterface.getApplication(), "个性化缓存清除完毕", 0).a();
+      continue;
+      QQToast.a(localQQAppInterface.getApplication(), "个性化素材检查流程异常，请检查是否扫描正确二维码", 0).a();
+      continue;
+      QQToast.a(localQQAppInterface.getApplication(), "配置文件下载失败", 0).a();
+      continue;
+      QQToast.a(localQQAppInterface.getApplication(), "个性化缓存清除开始", 0).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akgr
  * JD-Core Version:    0.7.0.1
  */

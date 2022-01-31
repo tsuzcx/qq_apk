@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.data;
 
-import amvg;
 import android.app.Activity;
 import android.os.Bundle;
+import anll;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraAbility;
@@ -277,7 +277,7 @@ public class CaptureSet
       a(3);
       return 2;
     }
-    ThreadManager.getSubThreadHandler().post(new amvg(this));
+    ThreadManager.getSubThreadHandler().post(new anll(this));
     return 1;
   }
   

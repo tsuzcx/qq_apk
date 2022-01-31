@@ -1,43 +1,23 @@
-import android.graphics.Rect;
-import android.os.CountDownTimer;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
-import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.util.AccessibilityUtil;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class orx
-  extends TouchDelegate
+public class orx
+  implements Animator.AnimatorListener
 {
-  orx(orw paramorw, Rect paramRect, View paramView)
+  public orx(RotateCircleImageView paramRotateCircleImageView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramRect, paramView);
+    RotateCircleImageView.b(this.a).start();
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (QRDisplayActivity.a(this.a.a) != null)
-      {
-        QRDisplayActivity.a(this.a.a, false);
-        QRDisplayActivity.a(this.a.a).start();
-        continue;
-        if (QRDisplayActivity.a(this.a.a) != null) {
-          QRDisplayActivity.a(this.a.a).cancel();
-        }
-        if (!QRDisplayActivity.a(this.a.a))
-        {
-          AccessibilityUtil.c(this.a.a.d);
-          this.a.a.onClick(this.a.a.d);
-        }
-      }
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,45 +1,34 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.LogTag;
-import dov.com.tencent.mobileqq.richmedia.RichmediaService;
-import dov.com.tencent.mobileqq.richmedia.VideoSendTaskManager;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer.MultiOperateException;
+import dov.com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer.RecordVideoBlockInfo;
+import java.util.List;
 
 public class anuw
   implements Runnable
 {
-  String jdField_a_of_type_JavaLangString;
-  
-  public anuw(VideoSendTaskManager paramVideoSendTaskManager, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public anuw(EditVideoPlayer paramEditVideoPlayer) {}
   
   public void run()
   {
-    Object localObject = (TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaVideoSendTaskManager).get(this.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
+    this.a.jdField_a_of_type_JavaUtilList = ((MultiBlockVideoPlayer)this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).a(true, 10000L, 6, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditRecordVideoSource.a(), this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditRecordVideoSource.b(), this.a.jdField_a_of_type_Float);
+    SLog.a("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess getMultiVideoInfo find %d blocks", Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()));
+    if (this.a.jdField_a_of_type_JavaUtilList.size() > 0) {}
+    try
     {
-      LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]TransferRequest is removed");
+      ((MultiBlockVideoPlayer)this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((MultiBlockVideoPlayer.RecordVideoBlockInfo)this.a.jdField_a_of_type_JavaUtilList.get(0));
+      EditVideoPlayer.a(this.a);
       return;
     }
-    localObject = (MessageForShortVideo)((TransferRequest)localObject).a;
-    if ((TextUtils.isEmpty(((MessageForShortVideo)localObject).md5)) || (TextUtils.isEmpty(((MessageForShortVideo)localObject).mLocalMd5)))
+    catch (MultiBlockVideoPlayer.MultiOperateException localMultiOperateException)
     {
-      LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]Remove failed:md5=" + ((MessageForShortVideo)localObject).md5 + ",localMd5=" + ((MessageForShortVideo)localObject).mLocalMd5);
-      return;
+      for (;;)
+      {
+        SLog.c("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess setCurrentVideoFragment failed", localMultiOperateException);
+      }
     }
-    VideoSendTaskManager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaVideoSendTaskManager).remove(this.jdField_a_of_type_JavaLangString);
-    localObject = RichmediaService.a();
-    if (localObject != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("vidoe_record_uniseq", this.jdField_a_of_type_JavaLangString);
-      ((RichmediaService)localObject).a(1002, -1, localBundle);
-    }
-    LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]Remove success");
   }
 }
 

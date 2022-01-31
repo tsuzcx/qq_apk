@@ -1,14 +1,32 @@
-import com.tencent.mobileqq.ar.FaceScanDownloadManager.DownloadCallback;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter;
+import com.tencent.qphone.base.util.QLog;
 
-public final class zyf
+public class zyf
   implements Runnable
 {
-  public zyf(FaceScanDownloadManager.DownloadCallback paramDownloadCallback, int paramInt, boolean paramBoolean) {}
+  public zyf(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArFaceScanDownloadManager$DownloadCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArFaceScanDownloadManager$DownloadCallback.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("showVideoRecordButton inner run +");
+      if (ARVideoRecordUIControllerImpl.a(this.a) == null) {
+        break label81;
+      }
+    }
+    label81:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("ARVideoRecordUIControllerImpl", 2, bool);
+      if (ARVideoRecordUIControllerImpl.a(this.a) != null)
+      {
+        ARVideoRecordUIControllerImpl.a(this.a).a();
+        ARVideoRecordUIControllerImpl.a(this.a).a(0);
+      }
+      return;
     }
   }
 }

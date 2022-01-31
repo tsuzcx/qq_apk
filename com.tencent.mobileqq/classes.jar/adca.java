@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.open.agent.report.ReportCenter;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.IGetTotalTime;
 
-public class adca
-  implements DialogInterface.OnClickListener
+class adca
+  implements MediaPlayer.OnPreparedListener
 {
-  public adca(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  adca(adbz paramadbz, MediaPlayer paramMediaPlayer) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (this.a.c) {
-      ReportCenter.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
-    }
-    ForwardSdkBaseOption.a(this.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.b);
+    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+    this.jdField_a_of_type_Adbz.a.a(i);
   }
 }
 

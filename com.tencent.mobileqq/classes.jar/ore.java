@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.RateWidget;
 
-class ore
-  implements View.OnClickListener
+public class ore
+  implements Runnable
 {
-  ore(orc paramorc) {}
+  public ore(RateWidget paramRateWidget) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (TextView)this.a.a.findViewById(2131363039);
-    if ((paramView.getText() instanceof String)) {
-      this.a.a((String)paramView.getText());
+    RateWidget localRateWidget = this.a;
+    if (!RateWidget.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      RateWidget.a(localRateWidget, bool);
+      this.a.c(RateWidget.a(this.a));
+      return;
     }
   }
 }

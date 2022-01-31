@@ -32,7 +32,7 @@ import com.tencent.smtt.sdk.WebView;
 import cooperation.qzone.QZoneHelper;
 import mqq.os.MqqHandler;
 import protocol.KQQConfig.UpgradeInfo;
-import udn;
+import ugn;
 
 public class UpgradeTipsDialog
   extends Dialog
@@ -52,7 +52,7 @@ public class UpgradeTipsDialog
   
   public UpgradeTipsDialog(Activity paramActivity, QQAppInterface paramQQAppInterface, UpgradeDetailWrapper paramUpgradeDetailWrapper, UpgradeTipsDialog.OnPreparedListener paramOnPreparedListener)
   {
-    super(paramActivity, 2131624515);
+    super(paramActivity, 2131624516);
     this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper = paramUpgradeDetailWrapper;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
@@ -61,7 +61,7 @@ public class UpgradeTipsDialog
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = ((WebView)paramView.findViewById(2131371444));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = ((WebView)paramView.findViewById(2131371607));
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setVerticalFadingEdgeEnabled(false);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setFadingEdgeLength(0);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setHorizontalFadingEdgeEnabled(false);
@@ -69,23 +69,23 @@ public class UpgradeTipsDialog
     if (Build.VERSION.SDK_INT >= 11) {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("searchBoxJavaBridge_");
     }
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(new udn(this));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(new ugn(this));
     WebSettings localWebSettings = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
     localWebSettings.setUserAgentString(localWebSettings.getUserAgentString() + " " + QZoneHelper.a());
     localWebSettings.setJavaScriptEnabled(true);
     localWebSettings.setCacheMode(2);
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge = new JsBridge();
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge.a(new UpgradeTipsDialog.JsCover(this), "qqupgrade");
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131371440));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131371603));
     boolean bool = ConfigHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
     this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
     this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131371443));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131371606));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131371442));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131371605));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (UpgradeController.a().a() == 4) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131433780);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131433797);
     }
   }
   
@@ -93,7 +93,7 @@ public class UpgradeTipsDialog
   {
     requestWindowFeature(1);
     this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeTipsDialog$OnPreparedListener = paramOnPreparedListener;
-    paramOnPreparedListener = getLayoutInflater().inflate(2130970631, null);
+    paramOnPreparedListener = getLayoutInflater().inflate(2130970675, null);
     a(paramOnPreparedListener);
     paramOnPreparedListener.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     super.setContentView(paramOnPreparedListener);

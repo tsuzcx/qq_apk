@@ -1,29 +1,31 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public class mzi
-  implements Runnable
+public final class mzi
+  implements WXShareHelper.WXShareListener
 {
-  public mzi(VideoCompositeHelper paramVideoCompositeHelper, PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack) {}
+  public mzi(String paramString) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    try
-    {
-      try
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack);
-        return;
-      }
-      finally {}
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
       return;
     }
-    catch (Exception localException)
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      SLog.c(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "do composite exception", localException);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(942012, localException.getMessage(), "");
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435303);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      QRUtils.a(2, 2131435302);
     }
   }
 }

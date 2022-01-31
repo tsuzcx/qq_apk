@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
-class wnb
-  implements DialogInterface.OnDismissListener
+public class wnb
+  implements Runnable
 {
-  wnb(wmy paramwmy) {}
+  public wnb(DeviceFragment paramDeviceFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void run()
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("SmartDevice_clickOnDeviceList");
+    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+  }
 }
 
 

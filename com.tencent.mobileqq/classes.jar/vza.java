@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleReceiverAnimationRunnable;
+import com.tencent.biz.pubaccount.assistant.PubAccountTipsManager;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class vza
   implements Runnable
 {
-  public vza(StickerBubbleReceiverAnimationRunnable paramStickerBubbleReceiverAnimationRunnable) {}
+  public vza(PublicAccountChatPie paramPublicAccountChatPie, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    if (StickerBubbleReceiverAnimationRunnable.a(this.a))
+    if (this.jdField_a_of_type_Boolean)
     {
-      StickerBubbleAnimationHelper.a(this.a, StickerBubbleReceiverAnimationRunnable.a(this.a));
-      StickerBubbleReceiverAnimationRunnable.a(this.a, false);
-      StickerBubbleReceiverAnimationRunnable.b(this.a, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.a();
   }
 }
 

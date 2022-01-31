@@ -1,17 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.armap.ARMapOpenRedPackDialog;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import java.io.File;
+import java.io.FileFilter;
 
-public class aauy
-  implements Animation.AnimationListener
+public final class aauy
+  implements FileFilter
 {
-  public aauy(ARMapOpenRedPackDialog paramARMapOpenRedPackDialog) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean accept(File paramFile)
+  {
+    if (!paramFile.isDirectory()) {}
+    while (!ArkLocalAppMgr.a(paramFile.getName())) {
+      return false;
+    }
+    return true;
+  }
 }
 
 

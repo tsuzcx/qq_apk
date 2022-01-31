@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class actm
-  extends MessageObserver
+  implements Runnable
 {
-  public actm(MPcFileModel paramMPcFileModel) {}
+  public actm(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView, String paramString, FileManagerEntity paramFileManagerEntity) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (paramInt1 == 0)
-    {
-      if (MPcFileModel.b(this.a)) {
-        FMToastUtil.a(2131427615);
-      }
-      MPcFileModel.a(this.a, false);
-      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.a.put(this.jdField_a_of_type_JavaLangString, new ArrayList());
     }
+    List localList = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.a.get(this.jdField_a_of_type_JavaLangString);
+    if (localList.contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
+      return;
+    }
+    localList.add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.i();
   }
 }
 

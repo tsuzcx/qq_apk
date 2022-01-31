@@ -23,8 +23,8 @@ import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.weiyun.utils.PreferenceUtils;
 import java.util.ArrayList;
 import java.util.List;
-import wsl;
-import wsm;
+import wvq;
+import wvr;
 
 public class AlbumListActivity
   extends PeakActivity
@@ -52,9 +52,10 @@ public class AlbumListActivity
   boolean jdField_f_of_type_Boolean = true;
   boolean g;
   public boolean h = false;
-  boolean i = false;
-  private boolean j;
+  public boolean i = false;
+  boolean j = false;
   private boolean k;
+  private boolean l;
   
   public AlbumListActivity()
   {
@@ -85,23 +86,24 @@ public class AlbumListActivity
         throw new RuntimeException("must set MY_UIN");
       }
     }
+    this.i = localIntent.getBooleanExtra("PhotoConst.IS_FROM_QQSTORY_SLIDESHOW", false);
     this.h = localIntent.getBooleanExtra("key_is_for_health", false);
-    this.k = localIntent.getBooleanExtra("PhotoConst.IS_FROM_WEIYUN", false);
+    this.l = localIntent.getBooleanExtra("PhotoConst.IS_FROM_WEIYUN", false);
     String str;
-    if (this.k)
+    if (this.l)
     {
       str = PreferenceUtils.a(getApplicationContext(), this.jdField_a_of_type_JavaLangString, "pref_select_album");
       if (!TextUtils.isEmpty(str)) {
-        break label294;
+        break label305;
       }
     }
-    label294:
+    label305:
     for (this.jdField_a_of_type_JavaUtilList = new ArrayList();; this.jdField_a_of_type_JavaUtilList = PreferenceUtils.a(str))
     {
       this.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", false);
       this.jdField_d_of_type_Boolean = localIntent.getBooleanExtra("PhotoConst.DISABLE_UPLOAD_TO_TROOP_ALBUM", false);
-      this.i = localIntent.getBooleanExtra("PhotoConst.IS_FROM_QZONE_AND_NEED_FILTER_RECENT_IMAGES", false);
-      if (this.i)
+      this.j = localIntent.getBooleanExtra("PhotoConst.IS_FROM_QZONE_AND_NEED_FILTER_RECENT_IMAGES", false);
+      if (this.j)
       {
         this.jdField_c_of_type_Int = localIntent.getIntExtra("PhotoConst.RECENT_IMAGES_MAX_COUNT", 100);
         this.jdField_d_of_type_Int = localIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_SIZE", 0);
@@ -115,7 +117,7 @@ public class AlbumListActivity
   @TargetApi(14)
   private void b()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362822);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362840);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       localRelativeLayout.setFitsSystemWindows(true);
@@ -124,27 +126,27 @@ public class AlbumListActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter = new AlbumListAdapter(this, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter, this.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.a(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.a(this.jdField_a_of_type_Long);
-    if (this.i) {
+    if (this.j) {
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131369423));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131369489));
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new wsm(this, null));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new wvr(this, null));
     if (Build.VERSION.SDK_INT > 8) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363227));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363410));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363363));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131432403);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363428));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363381));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131432420);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    if (this.k) {
+    if (this.l) {
       this.jdField_b_of_type_AndroidWidgetTextView.setText("确定");
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new wsl(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new wvq(this));
       return;
       this.jdField_b_of_type_AndroidWidgetTextView.setText("取消");
     }
@@ -227,7 +229,7 @@ public class AlbumListActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130970178);
+    super.setContentView(2130970192);
     this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131558591);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
     a();
@@ -237,7 +239,7 @@ public class AlbumListActivity
   protected void onDestroy()
   {
     AlbumThumbManager.a(this).a();
-    if (!this.j) {
+    if (!this.k) {
       AlbumUtil.c();
     }
     super.onDestroy();

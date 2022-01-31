@@ -18,15 +18,15 @@ import com.tencent.mobileqq.widget.RedDotTextView;
 import com.tencent.mobileqq.widget.TabBarView;
 import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import wdv;
-import wdy;
-import wdz;
+import wha;
+import whd;
+import whe;
 
 public class AddContactsActivity
   extends BaseActivity
   implements View.OnClickListener
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new wdz(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new whe(this);
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   public LinearLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -35,26 +35,26 @@ public class AddContactsActivity
   private ContactBaseView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView;
   private PublicView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView;
   private TroopView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView;
-  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new wdy(this);
+  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new whd(this);
   private TabBarView jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   public boolean a;
   
   public AddContactsActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext = new wdv(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext = new wha(this);
   }
   
   @TargetApi(14)
   private void a()
   {
-    ((TextView)findViewById(2131363363)).setText(2131434461);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362822));
+    ((TextView)findViewById(2131363381)).setText(2131434478);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362840));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setFitsSystemWindows(true);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, ImmersiveUtils.a(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363227));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
     String str2 = getIntent().getStringExtra("leftViewText");
     String str1 = str2;
     if (str2 == null) {
@@ -62,15 +62,15 @@ public class AddContactsActivity
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131369331));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131369397));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, getString(2131434344));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription("已选定" + getString(2131434344));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, getString(2131434345));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(getString(2131434345));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(2, getString(2131434346));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(2).setContentDescription(getString(2131434346));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369332));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, getString(2131434361));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription("已选定" + getString(2131434361));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, getString(2131434362));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(getString(2131434362));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(2, getString(2131434363));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(2).setContentDescription(getString(2131434363));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369398));
   }
   
   public static void a(Activity paramActivity, int paramInt)
@@ -162,7 +162,7 @@ public class AddContactsActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970154);
+    super.setContentView(2130970168);
     getWindow().setBackgroundDrawable(null);
     a();
     b();

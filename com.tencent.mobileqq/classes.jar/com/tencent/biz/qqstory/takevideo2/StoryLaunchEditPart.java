@@ -124,7 +124,7 @@ public class StoryLaunchEditPart
   public void a(View paramView, Bundle paramBundle)
   {
     super.a(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager = ((CaptureVideoFilterViewPager)paramView.findViewById(2131368928));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager = ((CaptureVideoFilterViewPager)paramView.findViewById(2131368994));
   }
   
   public void a(CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult)

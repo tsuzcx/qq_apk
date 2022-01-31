@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
-class moq
+public class moq
   implements Runnable
 {
-  moq(mop parammop) {}
+  public moq(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, int paramInt) {}
   
   public void run()
   {
-    FastWebVideoVolumeControl.c(this.a.a, false);
+    FastWebVideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.smoothScrollBy(this.jdField_a_of_type_Int, 0);
   }
 }
 

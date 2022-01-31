@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class aexe
+public class aexe
   implements Runnable
 {
-  aexe(aexd paramaexd) {}
+  public aexe(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
   public void run()
   {
-    NearbyMomentFragment.a(this.a.a, null);
+    ShortVideoCommentsView.a(this.a, ShortVideoCommentsView.a(this.a));
   }
 }
 

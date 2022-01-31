@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.search.HotWordSearchEntryModel;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.util.UiThreadUtil;
 
 public class ahre
-  implements Comparator
+  implements Runnable
 {
-  public ahre(MigrateSubscribeDB paramMigrateSubscribeDB) {}
+  public ahre(HotWordSearchEntryModel paramHotWordSearchEntryModel, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void run()
   {
-    long l = paramFile2.lastModified() - paramFile1.lastModified();
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
+    UiThreadUtil.a(new ahrf(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahre
  * JD-Core Version:    0.7.0.1
  */

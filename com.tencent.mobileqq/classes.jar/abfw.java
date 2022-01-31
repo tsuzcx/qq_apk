@@ -1,20 +1,51 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.armap.ARMapManager;
+import com.tencent.mobileqq.armap.ArMapInterface;
+import com.tencent.mobileqq.armap.config.ARMapConfig;
+import com.tencent.mobileqq.armap.ipc.IPCConstants;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
-public class abfw
-  implements View.OnClickListener
+public final class abfw
+  extends QIPCModule
 {
-  public abfw(BusinessCardEditActivity paramBusinessCardEditActivity) {}
-  
-  public void onClick(View paramView)
+  public abfw(String paramString)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()))
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    Bundle localBundle = null;
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (!ArMapInterface.class.isInstance(localAppRuntime))
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      if (QLog.isColorLevel()) {
+        QLog.e("ArMapIPC", 2, "[onCall] get app failed.");
+      }
+      callbackResult(paramInt, EIPCResult.createResult(-102, null));
+      paramString = localBundle;
     }
+    do
+    {
+      return paramString;
+      localBundle = new Bundle();
+      localBundle.putString("action", paramString);
+      if (IPCConstants.e.equals(paramString))
+      {
+        paramString = (ARMapConfig)paramBundle.getParcelable("armap_config");
+        if (paramString != null) {
+          ((ARMapManager)((ArMapInterface)localAppRuntime).getManager(209)).a(paramString);
+        }
+      }
+      paramBundle = EIPCResult.createResult(0, localBundle);
+      paramString = paramBundle;
+    } while (paramInt < 0);
+    callbackResult(paramInt, paramBundle);
+    return paramBundle;
   }
 }
 

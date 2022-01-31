@@ -46,7 +46,7 @@ public class ServiceAccountFolderFeed
   {
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = BaseApplicationImpl.getApplication().getResources().getColor(2131494281);
+    this.jdField_d_of_type_Int = BaseApplicationImpl.getApplication().getResources().getColor(2131494288);
     this.jdField_b_of_type_Long = 0L;
   }
   
@@ -120,7 +120,7 @@ public class ServiceAccountFolderFeed
       if (localPublicAccountInfo.certifiedGrade <= 0L) {
         break label69;
       }
-      paramServiceAccountFolderFeed.jdField_c_of_type_Int = 2130839745;
+      paramServiceAccountFolderFeed.jdField_c_of_type_Int = 2130839751;
     }
     label69:
     label75:
@@ -141,7 +141,7 @@ public class ServiceAccountFolderFeed
       if (paramQQAppInterface.certifiedGrade <= 0) {
         break;
       }
-      paramServiceAccountFolderFeed.jdField_c_of_type_Int = 2130839745;
+      paramServiceAccountFolderFeed.jdField_c_of_type_Int = 2130839751;
       return;
     }
     paramServiceAccountFolderFeed.jdField_c_of_type_Int = 0;

@@ -1,88 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter.RecentItemHolder;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.ArrayList;
+import java.util.List;
 
 public class acje
-  implements View.OnClickListener
 {
-  public acje(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  private List jdField_a_of_type_JavaUtilList = new ArrayList(20);
   
-  public void onClick(View paramView)
+  private acje(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  
+  public void a()
   {
-    paramView = (QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      FileManagerUtil.c(localFileManagerEntity);
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+      b();
     }
-    switch (paramView.jdField_a_of_type_Int)
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
+      b();
+    }
+  }
+  
+  void b()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
+      if (i != 0) {
+        localStringBuffer.append("|");
+      }
+      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
+      i += 1;
     }
-    for (;;)
-    {
-      this.a.i();
-      return;
-      this.a.a.a().ac();
-      if (!NetworkUtil.d(BaseApplication.getContext()))
-      {
-        FMToastUtil.a(2131428327);
-        return;
-      }
-      if (localFileManagerEntity.status == 16)
-      {
-        FMToastUtil.a(2131428188);
-        return;
-      }
-      FileModel.a(localFileManagerEntity).a(false, this.a.getContext(), new acjf(this, localFileManagerEntity));
-      continue;
-      this.a.a.a().ab();
-      this.a.c(localFileManagerEntity);
-      continue;
-      this.a.a.a().ad();
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        QfileBaseRecentFileTabView.v(this.a).a().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((DataLineHandler)QfileBaseRecentFileTabView.w(this.a).a(8)).a(0, localFileManagerEntity.uniseq, false);
-      }
-      else
-      {
-        QfileBaseRecentFileTabView.x(this.a).a().a(localFileManagerEntity.nSessionId);
-        continue;
-        this.a.a.a().ae();
-        if (!NetworkUtil.d(BaseApplication.getContext()))
-        {
-          FMToastUtil.a(2131428327);
-          return;
-        }
-        if (localFileManagerEntity.status == 16)
-        {
-          FMToastUtil.a(2131428188);
-          return;
-        }
-        boolean bool = localFileManagerEntity.isSend();
-        FileModel.a(localFileManagerEntity).a(bool, this.a.a, new acjg(this, localFileManagerEntity));
-      }
+    if (ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment) != null) {
+      ReportController.b(ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment), "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
     }
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acje
  * JD-Core Version:    0.7.0.1
  */

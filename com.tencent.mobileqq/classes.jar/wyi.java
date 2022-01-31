@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.view.SurfaceView;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer.OnPlayStateListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class wyi
-  implements DialogInterface.OnClickListener
+  implements IMediaPlayer.OnPlayStateListener
 {
-  public wyi(SendHbActivity paramSendHbActivity) {}
+  public wyi(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.a.finish();
+    if (paramInt == 1) {
+      this.a.a.setVisibility(0);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
+      }
+      return;
+      this.a.a.setVisibility(8);
+    }
   }
 }
 

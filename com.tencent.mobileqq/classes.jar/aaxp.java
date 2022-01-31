@@ -1,41 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.SoundPool;
-import com.tencent.mobileqq.armap.Sound;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
 
 public class aaxp
   implements Runnable
 {
-  public aaxp(Sound paramSound) {}
+  public aaxp(ArkRecommendController paramArkRecommendController, RecommendCommonMessage paramRecommendCommonMessage) {}
   
   public void run()
   {
-    try
+    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) != null)
     {
-      Sound.a(this.a).stop();
-      Iterator localIterator = Sound.a(this.a).entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        aaxq localaaxq = (aaxq)((Map.Entry)localIterator.next()).getValue();
-        if (localaaxq != null) {
-          Sound.a(this.a).stop(localaaxq.a);
-        }
-      }
-      Sound.a(this.a).release();
+      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, 0);
+      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, 1);
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.e("Sound", 2, "release exception", localException);
-      }
-      return;
-    }
-    Sound.a(this.a).clear();
   }
 }
 

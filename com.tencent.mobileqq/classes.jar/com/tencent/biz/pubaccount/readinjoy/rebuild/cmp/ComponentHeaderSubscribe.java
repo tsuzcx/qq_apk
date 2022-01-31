@@ -18,7 +18,7 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.FixSizeImageView;
-import lvn;
+import lvw;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.SubscribeInfo;
@@ -105,7 +105,7 @@ public class ComponentHeaderSubscribe
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyUtils.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().mSubscribeName));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyUtils.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().mSubscribeName));
   }
   
   private void f()
@@ -133,15 +133,15 @@ public class ComponentHeaderSubscribe
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969588, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969595, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131366817));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366822));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367012);
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131366860));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366865));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367056);
   }
   
   public void a(IReadInJoyModel paramIReadInJoyModel)
@@ -186,7 +186,7 @@ public class ComponentHeaderSubscribe
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(new lvn(this));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(new lvw(this));
       return;
       label52:
       this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageBitmap(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a(l));

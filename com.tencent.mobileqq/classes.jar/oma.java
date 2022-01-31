@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
 
 class oma
-  implements View.OnClickListener
+  implements Runnable
 {
-  oma(olz paramolz, int paramInt) {}
+  oma(olz paramolz) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_Olz.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      this.jdField_a_of_type_Olz.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Olz.jdField_b_of_type_ComTencentImageURLImageView);
-    }
+    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
   }
 }
 

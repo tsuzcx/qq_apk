@@ -1,28 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.mobileqq.filemanager.app.UniformDownload;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.GradientDrawable;
+import android.widget.LinearLayout;
+import com.tencent.biz.troopgift.GridListAdapter;
+import com.tencent.biz.troopgift.GridListAdapter.Holder;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class oyu
-  implements DownloadListener
+  implements Runnable
 {
-  public oyu(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView) {}
+  public oyu(GridListAdapter paramGridListAdapter, GridListAdapter.Holder paramHolder) {}
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "start UniformDownloadActivity");
+    int i = DisplayUtil.a(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a, 5.0F);
+    new Paint().setTextSize(DisplayUtil.a(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a, 11.0F));
+    int j = this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.getWidth();
+    int k = this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.getHeight();
+    if ((j == 0) || (k == 0)) {
+      return;
     }
-    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    UniformDownload.a(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, paramString1, localBundle);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadii(new float[] { i, i, i, i, i, i, i, i });
+    localGradientDrawable.setColor(Color.argb(35, 0, 0, 0));
+    this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.setBackgroundDrawable(localGradientDrawable);
   }
 }
 

@@ -1,43 +1,60 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import mqq.app.MobileQQ;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class stb
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public stb(JumpActivity paramJumpActivity, Intent paramIntent, Bundle paramBundle) {}
+  public stb(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str = this.jdField_a_of_type_AndroidContentIntent.getType();
-    Uri localUri = this.jdField_a_of_type_AndroidContentIntent.getData();
-    StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.app.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.app.getCurrentAccountUin(), "dl_open_via_qq");
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, ForwardRecentActivity.class);
-    if ((str != null) && (str.startsWith("image"))) {}
-    for (int i = 1;; i = 0)
+    paramContext = paramIntent.getAction();
+    String str1 = paramIntent.getStringExtra("event");
+    if ((TroopInfo.isHomeworkTroop(this.a.app, this.a.a)) && ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) && ("onHomeworkTroopIdentityChanged".equals(str1)))
     {
-      this.jdField_a_of_type_AndroidOsBundle.putParcelable("android.intent.extra.STREAM", localUri);
-      localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      localIntent.putExtra("isFromShare", true);
-      localIntent.putExtra("forward_type", i);
-      localIntent.putExtra("forward_from_jump", true);
-      localIntent.setData(localUri);
-      localIntent.putExtra("sendMultiple", false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.startActivity(localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.finish();
+      paramContext = paramIntent.getStringExtra("data");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label67;
+      }
+    }
+    for (;;)
+    {
       return;
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean("not_forward", true);
+      try
+      {
+        label67:
+        paramContext = new JSONObject(paramContext);
+        paramIntent = paramContext.optString("groupCode");
+        if (TextUtils.equals(this.a.a, paramIntent))
+        {
+          paramContext.optString("content");
+          paramIntent = paramContext.optString("source");
+          int i = paramContext.optInt("rankId", 333);
+          str1 = paramContext.optString("nickName");
+          String str2 = paramContext.optString("uin");
+          String str3 = paramContext.optString("course");
+          paramContext = paramContext.optString("name");
+          if ("qqProfile".equals(paramIntent))
+          {
+            ThreadManager.post(new stc(this, str2, str1, i, str3, paramContext), 8, null, false);
+            return;
+          }
+        }
+      }
+      catch (JSONException paramContext) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     stb
  * JD-Core Version:    0.7.0.1
  */

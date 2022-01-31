@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager.QIMUserIcon;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.io.File;
+import java.util.Locale;
+import mqq.os.MqqHandler;
 
 class vng
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  vng(vnf paramvnf) {}
+  vng(vnf paramvnf, File paramFile) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext())
-    {
-      QIMUserManager.QIMUserIcon localQIMUserIcon = (QIMUserManager.QIMUserIcon)localIterator.next();
-      if (localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView != null) {
-        localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setImageDrawable(localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      }
-      localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = null;
-      localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    }
-    this.a.a.clear();
+    paramDialogInterface = this.jdField_a_of_type_JavaIoFile.getParentFile().getName().toLowerCase(Locale.US) + ".mp4";
+    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Vnf.a.a, paramDialogInterface, true));
   }
 }
 

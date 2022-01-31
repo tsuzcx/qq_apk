@@ -1,24 +1,21 @@
-import com.tencent.biz.pubaccount.VideoPlayRecommendHandler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 
-public class mby
+public final class mby
   implements Runnable
 {
-  public mby(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
-  
   public void run()
   {
-    if (VideoFeedsPlayActivity.a(this.a) != null)
+    try
     {
-      long l2 = VideoFeedsPlayActivity.a(this.a);
-      long l1 = l2;
-      if (l2 == 0L) {
-        l1 = Long.parseLong(VideoFeedsPlayActivity.a(this.a).getCurrentAccountUin());
+      if (VideoFeedsHelper.a != null)
+      {
+        VideoFeedsHelper.a.dismiss();
+        VideoFeedsHelper.a = null;
       }
-      VideoFeedsPlayActivity.a(this.a).a(l1, VideoFeedsPlayActivity.a(this.a).a(), VideoFeedsPlayActivity.a(this.a), VideoFeedsPlayActivity.a(this.a), VideoFeedsPlayActivity.a(this.a).b(), VideoFeedsPlayActivity.b(this.a), VideoFeedsPlayActivity.i(this.a));
+      return;
     }
+    catch (Exception localException) {}
   }
 }
 

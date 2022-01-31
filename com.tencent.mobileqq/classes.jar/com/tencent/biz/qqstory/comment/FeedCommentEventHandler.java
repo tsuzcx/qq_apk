@@ -158,7 +158,7 @@ public class FeedCommentEventHandler
       ActionSheet localActionSheet = ActionSheet.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_AndroidAppActivity);
       localActionSheet.c("重发");
       localActionSheet.a("删除", 3);
-      localActionSheet.c(2131432998);
+      localActionSheet.c(2131433015);
       localActionSheet.a(new FeedCommentEventHandler.OnActionSheetButtonClickListener(this, localActionSheet, paramView, i));
       localActionSheet.show();
       return;

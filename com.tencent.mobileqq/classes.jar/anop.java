@@ -1,47 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.network.request.GetTagListRequest;
-import com.tencent.biz.qqstory.network.response.GetTagListResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import dov.com.tencent.biz.qqstory.takevideo.tag.IEditVideoTagView;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Color;
+import android.view.View;
 
-public class anop
-  extends CmdTaskManger.UIThreadCallback
+public final class anop
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anop(EditVideoTagPresenter paramEditVideoTagPresenter) {}
+  final int jdField_a_of_type_Int = Color.red(this.d);
+  final int b = Color.green(this.d);
+  final int c = Color.blue(this.d);
   
-  public void a(@NonNull GetTagListRequest paramGetTagListRequest, @Nullable GetTagListResponse paramGetTagListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public anop(int paramInt, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    SLog.b("EditVideoTagPresenter", "refresh onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetTagListResponse != null))
-    {
-      SLog.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramGetTagListResponse.toString());
-      paramGetTagListRequest = paramGetTagListResponse.jdField_a_of_type_JavaUtilList;
-      if (paramGetTagListRequest.contains(EditVideoTagPresenter.a(this.a)))
-      {
-        int i = paramGetTagListRequest.indexOf(EditVideoTagPresenter.a(this.a));
-        EditVideoTagPresenter.a(this.a, (TagItem)paramGetTagListRequest.get(i));
-        EditVideoTagPresenter.a(this.a).clear();
-        EditVideoTagPresenter.a(this.a).addAll(paramGetTagListRequest);
-        EditVideoTagPresenter.a(this.a, paramGetTagListResponse.jdField_a_of_type_JavaLangString);
-        EditVideoTagPresenter.a(this.a, paramGetTagListResponse.b);
-        ThreadManager.executeOnSubThread(new anoq(this));
-      }
-    }
-    for (;;)
-    {
-      EditVideoTagPresenter.a(this.a).a(paramErrorMessage.errorCode, EditVideoTagPresenter.a(this.a), this.a.a());
-      return;
-      EditVideoTagPresenter.a(this.a, null);
-      break;
-      SLog.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
   }
 }
 

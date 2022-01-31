@@ -1,21 +1,20 @@
-import com.tencent.biz.pubaccount.SuperWebView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class kzw
   implements Runnable
 {
-  public kzw(SuperWebView paramSuperWebView) {}
+  public kzw(EcShopAssistantManager paramEcShopAssistantManager, String paramString) {}
   
   public void run()
   {
-    Iterator localIterator = SuperWebView.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      SuperWebView.a(this.a, str);
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager.a.getEntityManagerFactory().createEntityManager();
+    if (EcShopAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager, localEntityManager, this.jdField_a_of_type_JavaLangString)) {
+      EcShopAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager, this.jdField_a_of_type_JavaLangString);
     }
-    SuperWebView.a(this.a).clear();
+    localEntityManager.a();
   }
 }
 

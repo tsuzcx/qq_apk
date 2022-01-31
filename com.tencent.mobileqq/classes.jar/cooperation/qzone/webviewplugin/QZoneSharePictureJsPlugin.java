@@ -1,14 +1,14 @@
 package cooperation.qzone.webviewplugin;
 
-import amln;
-import amlo;
-import amlp;
-import amlq;
-import amlr;
-import amls;
-import amlt;
-import amlu;
-import amlv;
+import anbs;
+import anbt;
+import anbu;
+import anbv;
+import anbw;
+import anbx;
+import anby;
+import anbz;
+import anca;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -55,7 +55,7 @@ import org.json.JSONObject;
 public class QZoneSharePictureJsPlugin
   extends QzoneInternalWebViewPlugin
 {
-  WXShareFromQZHelper.WXShareListener jdField_a_of_type_CooperationQzoneShareWXShareFromQZHelper$WXShareListener = new amlt(this);
+  WXShareFromQZHelper.WXShareListener jdField_a_of_type_CooperationQzoneShareWXShareFromQZHelper$WXShareListener = new anby(this);
   private String jdField_a_of_type_JavaLangString;
   
   private String a(String paramString)
@@ -417,7 +417,7 @@ public class QZoneSharePictureJsPlugin
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    new BaseHandler(Looper.getMainLooper()).post(new amlv(this, paramInt, paramString));
+    new BaseHandler(Looper.getMainLooper()).post(new anca(this, paramInt, paramString));
   }
   
   private void a(String paramString1, int paramInt, String paramString2)
@@ -529,7 +529,7 @@ public class QZoneSharePictureJsPlugin
   
   private void a(String... paramVarArgs)
   {
-    AlbumLibDownloaderUtil.a().a(new amlu(this, paramVarArgs));
+    AlbumLibDownloaderUtil.a().a(new anbz(this, paramVarArgs));
   }
   
   public static boolean a(String paramString)
@@ -894,7 +894,7 @@ public class QZoneSharePictureJsPlugin
           }
           else if (paramPluginRuntime.a() != null)
           {
-            paramPluginRuntime.a().post(new amlr(this, paramPluginRuntime));
+            paramPluginRuntime.a().post(new anbw(this, paramPluginRuntime));
             continue;
             if (WXShareFromQZHelper.a().a())
             {
@@ -903,7 +903,7 @@ public class QZoneSharePictureJsPlugin
             }
             else if (paramPluginRuntime.a() != null)
             {
-              paramPluginRuntime.a().post(new amls(this, paramPluginRuntime));
+              paramPluginRuntime.a().post(new anbx(this, paramPluginRuntime));
             }
           }
         }
@@ -1350,7 +1350,7 @@ public class QZoneSharePictureJsPlugin
     }
     if ("generateGif".equalsIgnoreCase(paramString3))
     {
-      ThreadManager.executeOnFileThread(new amln(this, paramVarArgs));
+      ThreadManager.executeOnFileThread(new anbs(this, paramVarArgs));
       return true;
     }
     if ("createTempFile".equalsIgnoreCase(paramString3))
@@ -1360,7 +1360,7 @@ public class QZoneSharePictureJsPlugin
         QLog.e("QZoneSharePictureJsPlugin", 1, "args invalid");
         return true;
       }
-      ThreadManager.executeOnFileThread(new amlo(this, paramVarArgs));
+      ThreadManager.executeOnFileThread(new anbt(this, paramVarArgs));
       return true;
     }
     if ("appendTempFile".equalsIgnoreCase(paramString3))
@@ -1370,7 +1370,7 @@ public class QZoneSharePictureJsPlugin
         QLog.e("QZoneSharePictureJsPlugin", 1, "args invalid");
         return true;
       }
-      ThreadManager.executeOnFileThread(new amlp(this, paramVarArgs));
+      ThreadManager.executeOnFileThread(new anbu(this, paramVarArgs));
       return true;
     }
     if ("deleteTempFile".equalsIgnoreCase(paramString3))
@@ -1380,7 +1380,7 @@ public class QZoneSharePictureJsPlugin
         QLog.e("QZoneSharePictureJsPlugin", 1, "args invalid");
         return true;
       }
-      ThreadManager.executeOnFileThread(new amlq(this, paramVarArgs));
+      ThreadManager.executeOnFileThread(new anbv(this, paramVarArgs));
       return true;
     }
     return false;

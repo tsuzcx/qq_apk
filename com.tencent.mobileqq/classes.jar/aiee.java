@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
+import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
 
 public class aiee
   implements Runnable
 {
-  public aiee(AbsPreDownloadTask paramAbsPreDownloadTask) {}
+  public aiee(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
   
   public void run()
   {
-    this.a.a();
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    this.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiee
  * JD-Core Version:    0.7.0.1
  */

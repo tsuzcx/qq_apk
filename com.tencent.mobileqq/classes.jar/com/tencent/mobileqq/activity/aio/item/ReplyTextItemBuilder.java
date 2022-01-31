@@ -90,16 +90,16 @@ import java.util.List;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vbb;
-import vbf;
-import vbg;
-import vbi;
-import vbk;
-import vbl;
-import vbm;
-import vbn;
-import vbp;
-import vbq;
+import ved;
+import veh;
+import vei;
+import vek;
+import vem;
+import ven;
+import veo;
+import vep;
+import ver;
+import ves;
 
 public class ReplyTextItemBuilder
   extends TextItemBuilder
@@ -108,7 +108,7 @@ public class ReplyTextItemBuilder
   public static float b;
   protected View.OnClickListener a;
   private ListView a;
-  protected vbq a;
+  protected ves a;
   protected int b;
   protected int c = 80;
   private View.OnClickListener d;
@@ -122,10 +122,10 @@ public class ReplyTextItemBuilder
   public ReplyTextItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_Vbq = new vbq(null);
+    this.jdField_a_of_type_Ves = new ves(null);
     this.jdField_b_of_type_Int = 165;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vbb(this);
-    this.jdField_d_of_type_AndroidViewView$OnClickListener = new vbk(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ved(this);
+    this.jdField_d_of_type_AndroidViewView$OnClickListener = new vem(this);
     this.jdField_b_of_type_Int = AIOUtils.a(82.0F, paramContext.getResources());
     this.c = AIOUtils.a(41.0F, paramContext.getResources());
     if (paramAIOAnimationConatiner != null) {
@@ -133,26 +133,26 @@ public class ReplyTextItemBuilder
     }
   }
   
-  private View a(View paramView, Context paramContext, vbp paramvbp, MessageForReplyText paramMessageForReplyText, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  private View a(View paramView, Context paramContext, ver paramver, MessageForReplyText paramMessageForReplyText, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramvbp.jdField_e_of_type_Int = 0;
-    paramView = this.jdField_a_of_type_Vbq.a(0);
+    paramver.jdField_e_of_type_Int = 0;
+    paramView = this.jdField_a_of_type_Ves.a(0);
     if (paramView == null)
     {
       paramView = new LinearLayout(paramContext);
       paramView.setOrientation(1);
       Object localObject = a(paramContext);
-      paramvbp.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject);
-      paramvbp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject).findViewById(2131368469));
-      paramvbp.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject).findViewById(2131362736));
-      paramvbp.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject).findViewById(2131366618));
-      paramvbp.jdField_b_of_type_AndroidViewView = ((ViewGroup)localObject).findViewById(2131365532);
+      paramver.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject);
+      paramver.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject).findViewById(2131368536));
+      paramver.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject).findViewById(2131362754));
+      paramver.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject).findViewById(2131366642));
+      paramver.jdField_b_of_type_AndroidViewView = ((ViewGroup)localObject).findViewById(2131365554);
       ((ViewGroup)localObject).setId(2131361860);
-      paramView.addView(paramvbp.jdField_a_of_type_AndroidViewViewGroup);
+      paramView.addView(paramver.jdField_a_of_type_AndroidViewViewGroup);
       paramView.setPadding(0, 0, 0, 0);
       localObject = new ETTextView(paramContext);
-      ((ETTextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131494220));
-      ((ETTextView)localObject).setLinkTextColor(paramContext.getResources().getColorStateList(2131494217));
+      ((ETTextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131494227));
+      ((ETTextView)localObject).setLinkTextColor(paramContext.getResources().getColorStateList(2131494224));
       ((ETTextView)localObject).setEditableFactory(QQTextBuilder.a);
       ((ETTextView)localObject).setSpannableFactory(QQText.a);
       ((ETTextView)localObject).setMaxWidth(BaseChatItemLayout.jdField_d_of_type_Int);
@@ -165,29 +165,29 @@ public class ReplyTextItemBuilder
         i = BaseChatItemLayout.n;
       }
       ((ETTextView)localObject).setPadding(j, BaseChatItemLayout.l, i, BaseChatItemLayout.m);
-      ((ETTextView)localObject).setId(2131363557);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView = ((TextView)localObject);
+      ((ETTextView)localObject).setId(2131363575);
+      paramver.jdField_e_of_type_AndroidWidgetTextView = ((TextView)localObject);
       localObject = new LinearLayout.LayoutParams(-1, -2);
       ((LinearLayout.LayoutParams)localObject).topMargin = AIOUtils.a(5.0F, paramContext.getResources());
-      paramView.addView(paramvbp.jdField_e_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+      paramView.addView(paramver.jdField_e_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
     }
     for (;;)
     {
-      paramvbp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368469));
-      paramvbp.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362736));
-      paramvbp.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131366618));
-      paramvbp.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365532);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView = ((ETTextView)paramView.findViewById(2131363557));
-      paramvbp.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131361860));
+      paramver.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368536));
+      paramver.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362754));
+      paramver.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131366642));
+      paramver.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365554);
+      paramver.jdField_e_of_type_AndroidWidgetTextView = ((ETTextView)paramView.findViewById(2131363575));
+      paramver.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131361860));
       if (!TextUtils.isEmpty(paramMessageForReplyText.getExtInfoFromExtStr("sens_msg_ctrl_info")))
       {
-        paramContext = ((ETTextView)paramvbp.jdField_e_of_type_AndroidWidgetTextView).a();
+        paramContext = ((ETTextView)paramver.jdField_e_of_type_AndroidWidgetTextView).a();
         if (paramContext != null) {
           paramContext.a = (paramMessageForReplyText.uniseq + 1L);
         }
       }
-      ((ETTextView)paramvbp.jdField_e_of_type_AndroidWidgetTextView).setFont(0, paramMessageForReplyText.uniseq);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int);
+      ((ETTextView)paramver.jdField_e_of_type_AndroidWidgetTextView).setFont(0, paramMessageForReplyText.uniseq);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int);
       if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramMessageForReplyText.senderuin)) && (paramMessageForReplyText.mSourceMsgInfo.mLocalAtInfoDone == 0))
       {
         paramMessageForReplyText.mSourceMsgInfo.mLocalAtInfoDone = 1;
@@ -201,21 +201,21 @@ public class ReplyTextItemBuilder
           }
         }
       }
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setText(paramMessageForReplyText.sb);
-      super.a(paramvbp.jdField_e_of_type_AndroidWidgetTextView, paramMessageForReplyText);
-      a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramvbp.jdField_a_of_type_AndroidViewViewGroup, paramMessageForReplyText.mSourceMsgInfo, paramMessageForReplyText.frienduin, paramMessageForReplyText.istroop, paramMessageForReplyText.uniseq);
-      paramvbp.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setText(paramMessageForReplyText.sb);
+      super.a(paramver.jdField_e_of_type_AndroidWidgetTextView, paramMessageForReplyText);
+      a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramver.jdField_a_of_type_AndroidViewViewGroup, paramMessageForReplyText.mSourceMsgInfo, paramMessageForReplyText.frienduin, paramMessageForReplyText.istroop, paramMessageForReplyText.uniseq);
+      paramver.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramView.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramView.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_a_of_type_AndroidViewViewGroup.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      if ((paramvbp.jdField_e_of_type_AndroidWidgetTextView instanceof AnimationTextView)) {
-        ((AnimationTextView)paramvbp.jdField_e_of_type_AndroidWidgetTextView).jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
+      paramver.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_a_of_type_AndroidViewViewGroup.setOnLongClickListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setOnTouchListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setOnLongClickListener(paramOnLongClickAndTouchListener);
+      if ((paramver.jdField_e_of_type_AndroidWidgetTextView instanceof AnimationTextView)) {
+        ((AnimationTextView)paramver.jdField_e_of_type_AndroidWidgetTextView).jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
       }
-      if ((paramvbp.jdField_a_of_type_ComEtrumpMixlayoutETTextView instanceof AnimationTextView)) {
-        paramvbp.jdField_a_of_type_ComEtrumpMixlayoutETTextView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
+      if ((paramver.jdField_a_of_type_ComEtrumpMixlayoutETTextView instanceof AnimationTextView)) {
+        paramver.jdField_a_of_type_ComEtrumpMixlayoutETTextView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
       }
       return paramView;
     }
@@ -223,36 +223,36 @@ public class ReplyTextItemBuilder
   
   public static final RelativeLayout a(Context paramContext)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(paramContext).inflate(2130969934, null);
-    Object localObject = (TextView)localRelativeLayout.findViewById(2131368469);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(paramContext).inflate(2130969948, null);
+    Object localObject = (TextView)localRelativeLayout.findViewById(2131368536);
     ((TextView)localObject).setTextSize(1, 40.0F);
-    ((TextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131494220));
+    ((TextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131494227));
     ImmersiveUtils.a((View)localObject, 0.5F);
     ((TextView)localObject).setPadding(BaseChatItemLayout.n, BaseChatItemLayout.l, 0, 0);
-    localObject = (TextView)localRelativeLayout.findViewById(2131362736);
-    ((TextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131494220));
+    localObject = (TextView)localRelativeLayout.findViewById(2131362754);
+    ((TextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131494227));
     ImmersiveUtils.a((View)localObject, 0.5F);
     ((TextView)localObject).setTextSize(1, 14.0F);
     ((TextView)localObject).setEditableFactory(QQTextBuilder.a);
     ((TextView)localObject).setSpannableFactory(QQText.a);
     ((TextView)localObject).setMaxWidth(BaseChatItemLayout.jdField_d_of_type_Int);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(((TextView)localObject).getLayoutParams());
-    localLayoutParams.addRule(1, 2131368469);
+    localLayoutParams.addRule(1, 2131368536);
     localLayoutParams.leftMargin = AIOUtils.a(5.0F, paramContext.getResources());
     localLayoutParams.topMargin = AIOUtils.a(10.0F, paramContext.getResources());
     ((TextView)localObject).setLayoutParams(localLayoutParams);
     ((TextView)localObject).setPadding(0, BaseChatItemLayout.l, BaseChatItemLayout.o, 0);
-    localObject = (ETTextView)localRelativeLayout.findViewById(2131366618);
-    ((ETTextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131494220));
-    ((ETTextView)localObject).setLinkTextColor(paramContext.getResources().getColorStateList(2131494217));
+    localObject = (ETTextView)localRelativeLayout.findViewById(2131366642);
+    ((ETTextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131494227));
+    ((ETTextView)localObject).setLinkTextColor(paramContext.getResources().getColorStateList(2131494224));
     ((ETTextView)localObject).setTextSize(1, 14.0F);
     ((ETTextView)localObject).setEditableFactory(QQTextBuilder.a);
     ((ETTextView)localObject).setSpannableFactory(QQText.a);
     ((ETTextView)localObject).setMaxWidth(BaseChatItemLayout.jdField_d_of_type_Int);
     ((ETTextView)localObject).setLineSpacing(AIOUtils.a(2.0F, paramContext.getResources()), 1.0F);
     ((ETTextView)localObject).setPadding(0, 0, BaseChatItemLayout.o, BaseChatItemLayout.m);
-    localObject = localRelativeLayout.findViewById(2131365532);
-    ((View)localObject).setBackgroundColor(paramContext.getResources().getColorStateList(2131494220).getDefaultColor());
+    localObject = localRelativeLayout.findViewById(2131365554);
+    ((View)localObject).setBackgroundColor(paramContext.getResources().getColorStateList(2131494227).getDefaultColor());
     ImmersiveUtils.a((View)localObject, 0.5F);
     return localRelativeLayout;
   }
@@ -299,7 +299,7 @@ public class ReplyTextItemBuilder
   public static final void a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, String paramString, int paramInt, long paramLong)
   {
     String str2 = TimeFormatterUtils.a(paramContext, 3, paramSourceMsgInfo.mSourceMsgTime * 1000L).toString();
-    TextView localTextView = (TextView)paramViewGroup.findViewById(2131362736);
+    TextView localTextView = (TextView)paramViewGroup.findViewById(2131362754);
     String str1;
     if (!TextUtils.isEmpty(paramSourceMsgInfo.mAnonymousNickName)) {
       str1 = paramSourceMsgInfo.mAnonymousNickName;
@@ -310,7 +310,7 @@ public class ReplyTextItemBuilder
       if (!TextUtils.isEmpty(str1)) {
         localTextView.setText(str1 + " " + str2);
       }
-      paramViewGroup = (ETTextView)paramViewGroup.findViewById(2131366618);
+      paramViewGroup = (ETTextView)paramViewGroup.findViewById(2131366642);
       paramQQAppInterface = paramContext;
       if (paramContext == null) {
         paramQQAppInterface = "";
@@ -331,7 +331,7 @@ public class ReplyTextItemBuilder
       }
       else
       {
-        ThreadManager.post(new vbn(paramQQAppInterface, paramInt, paramString, paramSourceMsgInfo, localTextView, str2), 8, null, true);
+        ThreadManager.post(new vep(paramQQAppInterface, paramInt, paramString, paramSourceMsgInfo, localTextView, str2), 8, null, true);
         str1 = "";
       }
     }
@@ -376,49 +376,49 @@ public class ReplyTextItemBuilder
     catch (OutOfMemoryError paramURLDrawable) {}
   }
   
-  private View b(View paramView, Context paramContext, vbp paramvbp, MessageForReplyText paramMessageForReplyText, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  private View b(View paramView, Context paramContext, ver paramver, MessageForReplyText paramMessageForReplyText, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramvbp.jdField_e_of_type_Int = 1;
-    paramView = this.jdField_a_of_type_Vbq.a(paramMessageForReplyText.mSourceMsgInfo.mType);
+    paramver.jdField_e_of_type_Int = 1;
+    paramView = this.jdField_a_of_type_Ves.a(paramMessageForReplyText.mSourceMsgInfo.mType);
     paramContext = paramView;
     if (paramView == null) {
-      paramContext = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969936, null);
+      paramContext = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969950, null);
     }
-    paramvbp.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)paramContext);
+    paramver.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)paramContext);
     int i = BaseChatItemLayout.n;
     int j = BaseChatItemLayout.o;
     if (paramMessageForReplyText.isSend())
     {
       i = BaseChatItemLayout.o;
       j = BaseChatItemLayout.n;
-      paramvbp.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramContext.findViewById(2131365542));
-      paramvbp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131364453));
-      paramvbp.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363507));
-      paramvbp.d = ((TextView)paramContext.findViewById(2131363039));
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366842));
-      paramvbp.jdField_c_of_type_AndroidWidgetTextView.setMaxWidth(AIOUtils.a(148.0F, paramContext.getResources()));
-      paramvbp.d.setMaxWidth(AIOUtils.a(148.0F, paramContext.getResources()));
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setEditableFactory(QQTextBuilder.a);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setSpannableFactory(QQText.a);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setMaxWidth(BaseChatItemLayout.jdField_d_of_type_Int);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
-      paramvbp.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_a_of_type_AndroidWidgetImageView.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
-      paramvbp.jdField_c_of_type_AndroidWidgetTextView.setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_c_of_type_AndroidWidgetTextView.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
-      paramvbp.d.setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramvbp.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramvbp.d.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
-      paramvbp.jdField_c_of_type_AndroidViewViewGroup.setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_c_of_type_AndroidViewViewGroup.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_c_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
-      paramvbp.jdField_e_of_type_AndroidWidgetTextView.setPadding(i, 0, j, BaseChatItemLayout.m);
-      paramvbp.jdField_b_of_type_AndroidViewViewGroup.setPadding(i, BaseChatItemLayout.l, j, BaseChatItemLayout.m);
+      paramver.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramContext.findViewById(2131365569));
+      paramver.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131364477));
+      paramver.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363525));
+      paramver.d = ((TextView)paramContext.findViewById(2131363057));
+      paramver.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366884));
+      paramver.jdField_c_of_type_AndroidWidgetTextView.setMaxWidth(AIOUtils.a(148.0F, paramContext.getResources()));
+      paramver.d.setMaxWidth(AIOUtils.a(148.0F, paramContext.getResources()));
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setEditableFactory(QQTextBuilder.a);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setSpannableFactory(QQText.a);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setMaxWidth(BaseChatItemLayout.jdField_d_of_type_Int);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
+      paramver.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_a_of_type_AndroidWidgetImageView.setOnLongClickListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
+      paramver.jdField_c_of_type_AndroidWidgetTextView.setOnTouchListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_c_of_type_AndroidWidgetTextView.setOnLongClickListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
+      paramver.d.setOnTouchListener(paramOnLongClickAndTouchListener);
+      paramver.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
+      paramver.d.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setOnTouchListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setOnLongClickListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
+      paramver.jdField_c_of_type_AndroidViewViewGroup.setOnTouchListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_c_of_type_AndroidViewViewGroup.setOnLongClickListener(paramOnLongClickAndTouchListener);
+      paramver.jdField_c_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
+      paramver.jdField_e_of_type_AndroidWidgetTextView.setPadding(i, 0, j, BaseChatItemLayout.m);
+      paramver.jdField_b_of_type_AndroidViewViewGroup.setPadding(i, BaseChatItemLayout.l, j, BaseChatItemLayout.m);
     }
     for (;;)
     {
@@ -429,11 +429,11 @@ public class ReplyTextItemBuilder
         paramView = ((JSONObject)localObject2).optString("title");
         paramOnLongClickAndTouchListener = ((JSONObject)localObject2).optString("summary");
         localObject2 = ((JSONObject)localObject2).optString("jump");
-        paramvbp.jdField_c_of_type_AndroidViewViewGroup.setTag(localObject2);
-        paramvbp.jdField_e_of_type_AndroidWidgetTextView.setTag(localObject2);
-        paramvbp.d.setTag(localObject2);
-        paramvbp.jdField_c_of_type_AndroidWidgetTextView.setTag(localObject2);
-        paramvbp.jdField_a_of_type_AndroidWidgetImageView.setTag(localObject2);
+        paramver.jdField_c_of_type_AndroidViewViewGroup.setTag(localObject2);
+        paramver.jdField_e_of_type_AndroidWidgetTextView.setTag(localObject2);
+        paramver.d.setTag(localObject2);
+        paramver.jdField_c_of_type_AndroidWidgetTextView.setTag(localObject2);
+        paramver.jdField_a_of_type_AndroidWidgetImageView.setTag(localObject2);
         if (HttpUtil.a((String)localObject1))
         {
           i = AIOUtils.a(52.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
@@ -447,29 +447,29 @@ public class ReplyTextItemBuilder
           ((URLDrawable.URLDrawableOptions)localObject2).mGifRoundCorner = 0.0F;
           ((URLDrawable.URLDrawableOptions)localObject2).mExtraInfo = paramMessageForReplyText;
           localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-          paramvbp.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+          paramver.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
         }
-        if ((paramvbp.jdField_e_of_type_AndroidWidgetTextView instanceof AnimationTextView)) {
-          ((AnimationTextView)paramvbp.jdField_e_of_type_AndroidWidgetTextView).jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
+        if ((paramver.jdField_e_of_type_AndroidWidgetTextView instanceof AnimationTextView)) {
+          ((AnimationTextView)paramver.jdField_e_of_type_AndroidWidgetTextView).jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
         }
         localObject1 = new Rect();
         j = AIOUtils.a(148.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         if (TextUtils.isEmpty(paramView)) {
           break label1212;
         }
-        paramvbp.jdField_c_of_type_AndroidWidgetTextView.getPaint().getTextBounds(paramView, 0, paramView.length(), (Rect)localObject1);
+        paramver.jdField_c_of_type_AndroidWidgetTextView.getPaint().getTextBounds(paramView, 0, paramView.length(), (Rect)localObject1);
         if (((Rect)localObject1).width() > j)
         {
-          paramvbp.jdField_c_of_type_AndroidWidgetTextView.setLines(2);
+          paramver.jdField_c_of_type_AndroidWidgetTextView.setLines(2);
           i = 2;
           if (!TextUtils.isEmpty(paramOnLongClickAndTouchListener))
           {
-            paramvbp.d.getPaint().getTextBounds(paramOnLongClickAndTouchListener, 0, paramOnLongClickAndTouchListener.length(), (Rect)localObject1);
+            paramver.d.getPaint().getTextBounds(paramOnLongClickAndTouchListener, 0, paramOnLongClickAndTouchListener.length(), (Rect)localObject1);
             if (((Rect)localObject1).width() <= j) {
               break label1040;
             }
             if (i == 2) {
-              paramvbp.d.setLines(1);
+              paramver.d.setLines(1);
             }
           }
           else
@@ -477,11 +477,11 @@ public class ReplyTextItemBuilder
             if (!TextUtils.isEmpty(paramView)) {
               break label1051;
             }
-            paramvbp.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+            paramver.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
             if (!TextUtils.isEmpty(paramOnLongClickAndTouchListener)) {
               break label1070;
             }
-            paramvbp.d.setVisibility(8);
+            paramver.d.setVisibility(8);
             if (TextUtils.isEmpty(paramMessageForReplyText.mSourceMsgInfo.mAnonymousNickName)) {
               break label1090;
             }
@@ -499,17 +499,17 @@ public class ReplyTextItemBuilder
                 }
               }
             }
-            paramvbp.jdField_e_of_type_AndroidWidgetTextView.setText(new QQText("回复" + paramView + ":" + paramMessageForReplyText.msg, 13));
+            paramver.jdField_e_of_type_AndroidWidgetTextView.setText(new QQText("回复" + paramView + ":" + paramMessageForReplyText.msg, 13));
             return paramContext;
           }
         }
         else
         {
-          paramvbp.jdField_c_of_type_AndroidWidgetTextView.setLines(1);
+          paramver.jdField_c_of_type_AndroidWidgetTextView.setLines(1);
           i = 1;
           continue;
         }
-        paramvbp.d.setLines(2);
+        paramver.d.setLines(2);
         continue;
         QLog.e("ChatItemBuilder", 2, paramView.getMessage());
       }
@@ -521,15 +521,15 @@ public class ReplyTextItemBuilder
       }
       return paramContext;
       label1040:
-      paramvbp.d.setLines(1);
+      paramver.d.setLines(1);
       continue;
       label1051:
-      paramvbp.jdField_c_of_type_AndroidWidgetTextView.setText(paramView);
-      paramvbp.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramver.jdField_c_of_type_AndroidWidgetTextView.setText(paramView);
+      paramver.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
       continue;
       label1070:
-      paramvbp.d.setText(paramOnLongClickAndTouchListener);
-      paramvbp.d.setVisibility(0);
+      paramver.d.setText(paramOnLongClickAndTouchListener);
+      paramver.d.setVisibility(0);
       continue;
       label1090:
       if (paramMessageForReplyText.mSourceMsgInfo.mSourceMsgSenderUin == 50000000L)
@@ -558,14 +558,14 @@ public class ReplyTextItemBuilder
     }
   }
   
-  private View c(View paramView, Context paramContext, vbp paramvbp, MessageForReplyText paramMessageForReplyText, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  private View c(View paramView, Context paramContext, ver paramver, MessageForReplyText paramMessageForReplyText, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramvbp.jdField_e_of_type_Int = 2;
-    paramContext = this.jdField_a_of_type_Vbq.a(2);
+    paramver.jdField_e_of_type_Int = 2;
+    paramContext = this.jdField_a_of_type_Ves.a(2);
     if (paramContext == null)
     {
-      paramContext = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969935, null);
-      paramView = (BubbleImageView)paramContext.findViewById(2131368471);
+      paramContext = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969949, null);
+      paramView = (BubbleImageView)paramContext.findViewById(2131368538);
       paramView.setAdjustViewBounds(false);
       paramView.setRadius(15.0F);
       paramView.d(false);
@@ -573,8 +573,8 @@ public class ReplyTextItemBuilder
       paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramView.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramView.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = paramView;
-      paramView = (BubbleImageView)paramContext.findViewById(2131368472);
+      paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = paramView;
+      paramView = (BubbleImageView)paramContext.findViewById(2131368539);
       paramView.setAdjustViewBounds(false);
       paramView.setRadius(15.0F);
       paramView.d(false);
@@ -582,19 +582,19 @@ public class ReplyTextItemBuilder
       paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramView.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramView.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      paramvbp.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView = paramView;
+      paramver.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView = paramView;
       paramContext.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramContext.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramContext.setOnLongClickListener(paramOnLongClickAndTouchListener);
     }
     for (;;)
     {
-      paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramContext.findViewById(2131368471));
-      paramvbp.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramContext.findViewById(2131368472));
-      paramvbp.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131368470));
-      paramvbp.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.setTag(paramMessageForReplyText);
-      paramvbp.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2 = new MessageForReplyText.LightReplyMsgRich2(paramMessageForReplyText.mSourceMsgInfo.mRichMsg2);
-      int i = paramvbp.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2.msgType;
+      paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramContext.findViewById(2131368538));
+      paramver.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramContext.findViewById(2131368539));
+      paramver.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131368537));
+      paramver.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.setTag(paramMessageForReplyText);
+      paramver.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2 = new MessageForReplyText.LightReplyMsgRich2(paramMessageForReplyText.mSourceMsgInfo.mRichMsg2);
+      int i = paramver.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2.msgType;
       paramOnLongClickAndTouchListener = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForReplyText.frienduin, paramMessageForReplyText.istroop, paramMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq);
       if ((i == 0) && ((paramOnLongClickAndTouchListener instanceof MessageForPic))) {
         paramView = paramOnLongClickAndTouchListener;
@@ -604,7 +604,7 @@ public class ReplyTextItemBuilder
         if (QLog.isColorLevel()) {
           QLog.e("ChatItemBuilder", 2, "picMsg == null, sourcemsgseq:" + paramMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq);
         }
-        a(paramvbp, paramMessageForReplyText, paramvbp.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2.subMsgId);
+        a(paramver, paramMessageForReplyText, paramver.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2.subMsgId);
         return paramContext;
         if ((i == 1) && ((paramOnLongClickAndTouchListener instanceof MessageForMixedMsg)))
         {
@@ -619,7 +619,7 @@ public class ReplyTextItemBuilder
           for (;;)
           {
             break;
-            paramOnLongClickAndTouchListener = (MessageRecord)((MessageForMixedMsg)paramOnLongClickAndTouchListener).msgElemList.get(paramvbp.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2.subMsgId);
+            paramOnLongClickAndTouchListener = (MessageRecord)((MessageForMixedMsg)paramOnLongClickAndTouchListener).msgElemList.get(paramver.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2.subMsgId);
             paramView = paramOnLongClickAndTouchListener;
             if (!(paramOnLongClickAndTouchListener instanceof MessageForPic)) {
               label457:
@@ -637,7 +637,7 @@ public class ReplyTextItemBuilder
           paramView = null;
         }
       }
-      a(paramvbp, paramMessageForReplyText, paramView);
+      a(paramver, paramMessageForReplyText, paramView);
       return paramContext;
     }
   }
@@ -662,24 +662,24 @@ public class ReplyTextItemBuilder
     paramBaseChatItemLayout = (MessageForReplyText)paramChatMessage;
     if (paramView != null)
     {
-      localvbp = (vbp)paramView.getTag();
-      this.jdField_a_of_type_Vbq.a(localvbp.jdField_e_of_type_Int, paramView);
+      localver = (ver)paramView.getTag();
+      this.jdField_a_of_type_Ves.a(localver.jdField_e_of_type_Int, paramView);
     }
-    vbp localvbp = (vbp)paramViewHolder;
+    ver localver = (ver)paramViewHolder;
     if (paramBaseChatItemLayout.mSourceMsgInfo == null)
     {
       if (QLog.isColorLevel()) {
         QLog.w("ChatItemBuilder", 2, "text.mSourceMsgInfo为null, text:" + paramBaseChatItemLayout.toString());
       }
-      paramViewHolder = this.jdField_a_of_type_Vbq.a(0);
+      paramViewHolder = this.jdField_a_of_type_Ves.a(0);
       if (paramViewHolder != null) {
         break label561;
       }
       paramViewHolder = new LinearLayout(localContext);
       paramViewHolder.setOrientation(1);
       paramView = new ETTextView(localContext);
-      paramView.setTextColor(localContext.getResources().getColorStateList(2131494220));
-      paramView.setLinkTextColor(localContext.getResources().getColorStateList(2131494217));
+      paramView.setTextColor(localContext.getResources().getColorStateList(2131494227));
+      paramView.setLinkTextColor(localContext.getResources().getColorStateList(2131494224));
       paramView.setEditableFactory(QQTextBuilder.a);
       paramView.setSpannableFactory(QQText.a);
       paramView.setMaxWidth(BaseChatItemLayout.jdField_d_of_type_Int);
@@ -692,34 +692,34 @@ public class ReplyTextItemBuilder
         i = BaseChatItemLayout.n;
       }
       paramView.setPadding(j, BaseChatItemLayout.l, i, BaseChatItemLayout.m);
-      paramView.setId(2131363557);
-      localvbp.jdField_e_of_type_AndroidWidgetTextView = paramView;
+      paramView.setId(2131363575);
+      localver.jdField_e_of_type_AndroidWidgetTextView = paramView;
       paramView = new LinearLayout.LayoutParams(-1, -2);
       paramView.topMargin = AIOUtils.a(5.0F, localContext.getResources());
-      paramViewHolder.addView(localvbp.jdField_e_of_type_AndroidWidgetTextView, paramView);
+      paramViewHolder.addView(localver.jdField_e_of_type_AndroidWidgetTextView, paramView);
     }
     label561:
     for (;;)
     {
-      ((ETTextView)localvbp.jdField_e_of_type_AndroidWidgetTextView).setFont(0, paramChatMessage.uniseq);
-      localvbp.jdField_e_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int);
-      localvbp.jdField_e_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.sb);
-      super.a(localvbp.jdField_e_of_type_AndroidWidgetTextView, paramChatMessage);
+      ((ETTextView)localver.jdField_e_of_type_AndroidWidgetTextView).setFont(0, paramChatMessage.uniseq);
+      localver.jdField_e_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int);
+      localver.jdField_e_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.sb);
+      super.a(localver.jdField_e_of_type_AndroidWidgetTextView, paramChatMessage);
       paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      localvbp.jdField_e_of_type_AndroidWidgetTextView.setOnTouchListener(paramOnLongClickAndTouchListener);
-      localvbp.jdField_e_of_type_AndroidWidgetTextView.setOnLongClickListener(paramOnLongClickAndTouchListener);
+      localver.jdField_e_of_type_AndroidWidgetTextView.setOnTouchListener(paramOnLongClickAndTouchListener);
+      localver.jdField_e_of_type_AndroidWidgetTextView.setOnLongClickListener(paramOnLongClickAndTouchListener);
       paramChatMessage = paramViewHolder;
-      if ((localvbp.jdField_e_of_type_AndroidWidgetTextView instanceof AnimationTextView))
+      if ((localver.jdField_e_of_type_AndroidWidgetTextView instanceof AnimationTextView))
       {
-        ((AnimationTextView)localvbp.jdField_e_of_type_AndroidWidgetTextView).jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
+        ((AnimationTextView)localver.jdField_e_of_type_AndroidWidgetTextView).jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
         paramChatMessage = paramViewHolder;
       }
       for (;;)
       {
         if (paramChatMessage != null)
         {
-          paramChatMessage.setTag(localvbp);
+          paramChatMessage.setTag(localver);
           if ((paramBaseChatItemLayout.mSourceMsgInfo == null) || (paramBaseChatItemLayout.mSourceMsgInfo.mType != 1)) {
             break;
           }
@@ -729,21 +729,21 @@ public class ReplyTextItemBuilder
         switch (paramBaseChatItemLayout.mSourceMsgInfo.mType)
         {
         default: 
-          paramChatMessage = a(paramView, localContext, localvbp, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
+          paramChatMessage = a(paramView, localContext, localver, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
           break;
         case 1: 
           if (!TextUtils.isEmpty(paramBaseChatItemLayout.mSourceMsgInfo.mRichMsg))
           {
-            paramChatMessage = b(paramView, localContext, localvbp, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
+            paramChatMessage = b(paramView, localContext, localver, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
           }
           else
           {
             paramBaseChatItemLayout.mSourceMsgInfo.mType = 0;
-            paramChatMessage = a(paramView, localContext, localvbp, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
+            paramChatMessage = a(paramView, localContext, localver, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
           }
           break;
         case 2: 
-          paramChatMessage = c(paramView, localContext, localvbp, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
+          paramChatMessage = c(paramView, localContext, localver, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
         }
       }
       paramChatMessage.setPadding(0, 0, 0, 0);
@@ -753,12 +753,12 @@ public class ReplyTextItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new vbp(this);
+    return new ver(this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Vbq.a();
+    this.jdField_a_of_type_Ves.a();
     super.a();
   }
   
@@ -812,15 +812,15 @@ public class ReplyTextItemBuilder
     {
       return;
       paramView = (MessageForReplyText)AIOUtils.a(paramView);
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433618);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433619);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new vbl(this, paramView), new vbm(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new ven(this, paramView), new veo(this)).show();
   }
   
   protected void a(View paramView, ChatMessage paramChatMessage)
   {
-    paramView = (vbp)paramView.getTag();
+    paramView = (ver)paramView.getTag();
     MessageForReplyText localMessageForReplyText = (MessageForReplyText)paramChatMessage;
     if (localMessageForReplyText.mSourceMsgInfo == null) {}
     label169:
@@ -862,7 +862,7 @@ public class ReplyTextItemBuilder
   
   protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
   {
-    vbp localvbp = (vbp)paramViewHolder;
+    ver localver = (ver)paramViewHolder;
     paramViewHolder = (MessageForReplyText)paramChatMessage;
     if (paramViewHolder.mSourceMsgInfo == null) {
       return;
@@ -876,12 +876,12 @@ public class ReplyTextItemBuilder
       paramView = paramView.getResources();
       if (paramChatMessage.isSend())
       {
-        paramViewHolder = paramView.getColorStateList(2131494223);
-        localvbp.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
-        localvbp.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
-        localvbp.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
-        localvbp.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramViewHolder);
-        localvbp.jdField_b_of_type_AndroidViewView.setBackgroundColor(paramViewHolder.getDefaultColor());
+        paramViewHolder = paramView.getColorStateList(2131494230);
+        localver.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
+        localver.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
+        localver.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
+        localver.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramViewHolder);
+        localver.jdField_b_of_type_AndroidViewView.setBackgroundColor(paramViewHolder.getDefaultColor());
         if (!paramChatMessage.isSend()) {
           break label527;
         }
@@ -889,53 +889,53 @@ public class ReplyTextItemBuilder
       break;
     }
     label527:
-    for (paramViewHolder = paramView.getColorStateList(2131494222);; paramViewHolder = paramView.getColorStateList(2131494221))
+    for (paramViewHolder = paramView.getColorStateList(2131494229);; paramViewHolder = paramView.getColorStateList(2131494228))
     {
-      localvbp.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
-      localvbp.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
-      ImmersiveUtils.a(localvbp.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
-      ImmersiveUtils.a(localvbp.jdField_b_of_type_AndroidWidgetTextView, 0.5F);
-      ImmersiveUtils.a(localvbp.jdField_b_of_type_AndroidViewView, 0.5F);
+      localver.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
+      localver.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
+      ImmersiveUtils.a(localver.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
+      ImmersiveUtils.a(localver.jdField_b_of_type_AndroidWidgetTextView, 0.5F);
+      ImmersiveUtils.a(localver.jdField_b_of_type_AndroidViewView, 0.5F);
       return;
       if ((paramBubbleInfo.jdField_a_of_type_Int == 0) || (!paramBubbleInfo.a()))
       {
         paramView = paramView.getResources();
         if (paramChatMessage.isSend())
         {
-          paramViewHolder = paramView.getColorStateList(2131494223);
-          localvbp.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
+          paramViewHolder = paramView.getColorStateList(2131494230);
+          localver.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
           if (!paramChatMessage.isSend()) {
             break label312;
           }
         }
         label312:
-        for (paramViewHolder = paramView.getColorStateList(2131494222);; paramViewHolder = paramView.getColorStateList(2131494221))
+        for (paramViewHolder = paramView.getColorStateList(2131494229);; paramViewHolder = paramView.getColorStateList(2131494228))
         {
-          localvbp.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
-          ImmersiveUtils.a(localvbp.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
-          ImmersiveUtils.a(localvbp.jdField_b_of_type_AndroidWidgetTextView, 0.5F);
-          ImmersiveUtils.a(localvbp.jdField_b_of_type_AndroidViewView, 0.5F);
+          localver.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
+          ImmersiveUtils.a(localver.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
+          ImmersiveUtils.a(localver.jdField_b_of_type_AndroidWidgetTextView, 0.5F);
+          ImmersiveUtils.a(localver.jdField_b_of_type_AndroidViewView, 0.5F);
           return;
-          paramViewHolder = paramView.getColorStateList(2131494220);
+          paramViewHolder = paramView.getColorStateList(2131494227);
           break;
         }
       }
       if (paramBubbleInfo.jdField_b_of_type_Int == 0)
       {
-        localvbp.jdField_e_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+        localver.jdField_e_of_type_AndroidWidgetTextView.setTextColor(-16777216);
         if (paramBubbleInfo.c != 0) {
           break label501;
         }
-        paramViewHolder = paramView.getResources().getColorStateList(2131494221);
-        localvbp.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
+        paramViewHolder = paramView.getResources().getColorStateList(2131494228);
+        localver.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
       }
       for (;;)
       {
         label370:
-        if ((!paramBubbleInfo.jdField_b_of_type_Boolean) || (((ChatBackgroundManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(62)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localvbp.jdField_e_of_type_AndroidWidgetTextView.getCurrentTextColor(), 10000.0D * localvbp.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Double) != 1)) {
+        if ((!paramBubbleInfo.jdField_b_of_type_Boolean) || (((ChatBackgroundManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(62)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localver.jdField_e_of_type_AndroidWidgetTextView.getCurrentTextColor(), 10000.0D * localver.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.jdField_a_of_type_Double) != 1)) {
           break label672;
         }
-        paramViewHolder = (ETTextView)localvbp.jdField_e_of_type_AndroidWidgetTextView;
+        paramViewHolder = (ETTextView)localver.jdField_e_of_type_AndroidWidgetTextView;
         float f2 = paramViewHolder.getTextSize() * 3.0F / 16.0F;
         float f1 = f2;
         if (f2 > 25.0F) {
@@ -944,47 +944,47 @@ public class ReplyTextItemBuilder
         paramViewHolder.setTextColor(-1);
         paramViewHolder.setShadowLayer(f1, 0.0F, 0.0F, paramBubbleInfo.jdField_d_of_type_Int);
         return;
-        localvbp.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+        localver.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
         break;
         label501:
-        localvbp.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramBubbleInfo.c);
+        localver.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramBubbleInfo.c);
       }
-      paramViewHolder = paramView.getColorStateList(2131494220);
+      paramViewHolder = paramView.getColorStateList(2131494227);
       break;
     }
     label538:
     if (paramBubbleInfo.jdField_b_of_type_Int == 0)
     {
-      localvbp.jdField_e_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      localvbp.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      localvbp.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-      localvbp.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(-16777216);
-      localvbp.jdField_b_of_type_AndroidViewView.setBackgroundColor(-16777216);
+      localver.jdField_e_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      localver.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      localver.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      localver.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(-16777216);
+      localver.jdField_b_of_type_AndroidViewView.setBackgroundColor(-16777216);
       label601:
       if (paramBubbleInfo.c != 0) {
         break label742;
       }
-      paramViewHolder = paramView.getResources().getColorStateList(2131494221);
-      localvbp.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
-      localvbp.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
+      paramViewHolder = paramView.getResources().getColorStateList(2131494228);
+      localver.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
+      localver.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
     }
     for (;;)
     {
-      ImmersiveUtils.a(localvbp.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
-      ImmersiveUtils.a(localvbp.jdField_b_of_type_AndroidWidgetTextView, 0.5F);
-      ImmersiveUtils.a(localvbp.jdField_b_of_type_AndroidViewView, 0.5F);
+      ImmersiveUtils.a(localver.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
+      ImmersiveUtils.a(localver.jdField_b_of_type_AndroidWidgetTextView, 0.5F);
+      ImmersiveUtils.a(localver.jdField_b_of_type_AndroidViewView, 0.5F);
       break label370;
       label672:
       break;
-      localvbp.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
-      localvbp.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
-      localvbp.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
-      localvbp.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
-      localvbp.jdField_b_of_type_AndroidViewView.setBackgroundColor(paramBubbleInfo.jdField_b_of_type_Int);
+      localver.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+      localver.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+      localver.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+      localver.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(paramBubbleInfo.jdField_b_of_type_Int);
+      localver.jdField_b_of_type_AndroidViewView.setBackgroundColor(paramBubbleInfo.jdField_b_of_type_Int);
       break label601;
       label742:
-      localvbp.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramBubbleInfo.c);
-      localvbp.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramBubbleInfo.c);
+      localver.jdField_e_of_type_AndroidWidgetTextView.setLinkTextColor(paramBubbleInfo.c);
+      localver.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramBubbleInfo.c);
     }
   }
   
@@ -1030,12 +1030,12 @@ public class ReplyTextItemBuilder
     PicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView, paramMessageForReplyText, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, bool);
   }
   
-  protected void a(vbp paramvbp, MessageForReplyText paramMessageForReplyText, int paramInt)
+  protected void a(ver paramver, MessageForReplyText paramMessageForReplyText, int paramInt)
   {
-    ThreadManager.post(new vbi(this, paramMessageForReplyText, paramInt, paramvbp), 8, null, true);
+    ThreadManager.post(new vek(this, paramMessageForReplyText, paramInt, paramver), 8, null, true);
   }
   
-  public void a(vbp paramvbp, MessageForReplyText paramMessageForReplyText, URLDrawable paramURLDrawable)
+  public void a(ver paramver, MessageForReplyText paramMessageForReplyText, URLDrawable paramURLDrawable)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ChatItemBuilder", 2, "startAnimate replymessage:" + paramMessageForReplyText.toString());
@@ -1044,17 +1044,17 @@ public class ReplyTextItemBuilder
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_b_of_type_Int * 7.0F / 3.0F), (int)(this.jdField_b_of_type_Int * 4.0F / 3.0F));
     localLayoutParams.addRule(12);
     int[] arrayOfInt = new int[2];
-    paramvbp.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.getLocationOnScreen(arrayOfInt);
+    paramver.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.getLocationOnScreen(arrayOfInt);
     localLayoutParams.leftMargin = (arrayOfInt[0] - this.jdField_b_of_type_Int * 2 / 3 - AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     localImageExplodeLayout.setLayoutParams(localLayoutParams);
-    paramvbp.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.addView(localImageExplodeLayout);
+    paramver.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.addView(localImageExplodeLayout);
     localImageExplodeLayout.setDrawble(paramURLDrawable, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
     paramMessageForReplyText.setAnimationPlayed(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public void a(vbp paramvbp, MessageForReplyText paramMessageForReplyText, MessageRecord paramMessageRecord)
+  public void a(ver paramver, MessageForReplyText paramMessageForReplyText, MessageRecord paramMessageRecord)
   {
-    MessageForReplyText localMessageForReplyText = (MessageForReplyText)paramvbp.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag();
+    MessageForReplyText localMessageForReplyText = (MessageForReplyText)paramver.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag();
     if ((localMessageForReplyText == null) || (localMessageForReplyText.shmsgseq != paramMessageForReplyText.shmsgseq)) {}
     label79:
     label355:
@@ -1065,13 +1065,13 @@ public class ReplyTextItemBuilder
       if (paramMessageRecord == null)
       {
         paramMessageForReplyText = TroopFileItemBuilder.a(2, 200, 200);
-        paramMessageRecord = (LinearLayout.LayoutParams)paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
+        paramMessageRecord = (LinearLayout.LayoutParams)paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
         paramMessageRecord.width = 200;
         paramMessageRecord.height = 200;
-        paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForReplyText);
-        paramMessageForReplyText = (RelativeLayout.LayoutParams)paramvbp.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
-        paramMessageRecord = (LinearLayout.LayoutParams)paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
-        localObject1 = (RelativeLayout.LayoutParams)paramvbp.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+        paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForReplyText);
+        paramMessageForReplyText = (RelativeLayout.LayoutParams)paramver.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
+        paramMessageRecord = (LinearLayout.LayoutParams)paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
+        localObject1 = (RelativeLayout.LayoutParams)paramver.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
         if (!a(localMessageForReplyText)) {
           break label841;
         }
@@ -1080,13 +1080,13 @@ public class ReplyTextItemBuilder
       }
       for (;;)
       {
-        if (paramvbp.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2 != null) {
+        if (paramver.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2 != null) {
           break label902;
         }
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.d("ChatItemBuilder", 2, "renderingPicCommentUI, mLightReplyMsgRich2 = " + paramvbp.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2);
+        QLog.d("ChatItemBuilder", 2, "renderingPicCommentUI, mLightReplyMsgRich2 = " + paramver.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2);
         return;
         int j;
         int i;
@@ -1100,14 +1100,14 @@ public class ReplyTextItemBuilder
           tmp203_199[1] = 0;
           tmp203_199;
           PicItemBuilder.a(paramMessageForReplyText);
-          localObject1 = PicItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, paramMessageForReplyText, paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, paramMessageRecord);
-          paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setTag(2131361894, paramMessageForReplyText);
+          localObject1 = PicItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, paramMessageForReplyText, paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, paramMessageRecord);
+          paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setTag(2131361894, paramMessageForReplyText);
           Object localObject2;
           int k;
           int m;
           if ((paramMessageRecord[0] > 0) && (paramMessageRecord[1] > 0))
           {
-            localObject2 = (LinearLayout.LayoutParams)paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
+            localObject2 = (LinearLayout.LayoutParams)paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
             boolean bool = PeakUtils.a(paramMessageForReplyText.imageType);
             j = URLDrawableHelper.a(bool);
             i = URLDrawableHelper.b(bool);
@@ -1132,7 +1132,7 @@ public class ReplyTextItemBuilder
           }
           else
           {
-            paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(((URLDrawable)localObject1).mutate());
+            paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(((URLDrawable)localObject1).mutate());
             localObject2 = ((URLDrawable)localObject1).getURL().getProtocol();
             URL localURL = URLDrawableHelper.a(paramMessageForReplyText, 65537);
             AbsDownloader.d(localURL.toString());
@@ -1172,11 +1172,11 @@ public class ReplyTextItemBuilder
             if (paramMessageForReplyText.jdField_b_of_type_Boolean)
             {
               paramMessageForReplyText = TroopFileItemBuilder.a(2, 200, 200);
-              paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForReplyText);
+              paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForReplyText);
               break label79;
             }
             paramMessageRecord = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(localMessageForReplyText.frienduin));
-            paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(TroopFileItemBuilder.a(1, 200, 200));
+            paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(TroopFileItemBuilder.a(1, 200, 200));
             if (paramMessageForReplyText.a != null)
             {
               paramMessageRecord.a(paramMessageForReplyText.a, 383);
@@ -1191,17 +1191,17 @@ public class ReplyTextItemBuilder
           }
           i = paramMessageForReplyText.getIntrinsicHeight() * 75 / 100;
           j = paramMessageForReplyText.getIntrinsicWidth() * 75 / 100;
-          paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForReplyText.mutate());
+          paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForReplyText.mutate());
           if ((i <= 0) || (j <= 0)) {
             break label79;
           }
-          paramMessageForReplyText = (LinearLayout.LayoutParams)paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
+          paramMessageForReplyText = (LinearLayout.LayoutParams)paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
           paramMessageForReplyText.width = j;
           paramMessageForReplyText.height = i;
           break label79;
         }
         paramMessageForReplyText = TroopFileItemBuilder.a(2, 200, 200);
-        paramvbp.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForReplyText);
+        paramver.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForReplyText);
         break label79;
         if (paramMessageRecord.width < this.jdField_b_of_type_Int / 2)
         {
@@ -1214,14 +1214,14 @@ public class ReplyTextItemBuilder
           paramMessageForReplyText.leftMargin = (paramMessageRecord.width - this.jdField_b_of_type_Int / 2);
         }
       }
-      paramMessageForReplyText = (LightReplyEmojs)LightReplyMenuManager.a().a.get(paramvbp.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2.emotionId);
+      paramMessageForReplyText = (LightReplyEmojs)LightReplyMenuManager.a().a.get(paramver.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$LightReplyMsgRich2.emotionId);
       if ((paramMessageForReplyText == null) || (TextUtils.isEmpty(paramMessageForReplyText.bigUrl))) {
         break label1070;
       }
       PicItemBuilder.e();
       paramMessageForReplyText = URLDrawableHelper.a(paramMessageForReplyText.bigUrl, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, jdField_a_of_type_AndroidGraphicsDrawableDrawable, jdField_a_of_type_AndroidGraphicsDrawableDrawable, true, 0.0F);
       if (paramMessageForReplyText != null) {
-        paramvbp.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForReplyText.mutate());
+        paramver.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForReplyText.mutate());
       }
       if (paramMessageForReplyText.getStatus() != 1) {
         break;
@@ -1231,12 +1231,12 @@ public class ReplyTextItemBuilder
     label306:
     label569:
     label841:
-    ThreadManager.getUIHandler().post(new vbf(this, paramvbp, localMessageForReplyText, paramMessageForReplyText));
+    ThreadManager.getUIHandler().post(new veh(this, paramver, localMessageForReplyText, paramMessageForReplyText));
     label554:
     label562:
     return;
     label902:
-    paramMessageForReplyText.setDownloadListener(new vbg(this, localMessageForReplyText, paramvbp, paramMessageForReplyText));
+    paramMessageForReplyText.setDownloadListener(new vei(this, localMessageForReplyText, paramver, paramMessageForReplyText));
     if (paramMessageForReplyText.getStatus() == 2)
     {
       paramMessageForReplyText.restartDownload();
@@ -1245,7 +1245,7 @@ public class ReplyTextItemBuilder
     paramMessageForReplyText.startDownload();
     return;
     label1070:
-    paramvbp.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageResource(2130841404);
+    paramver.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageResource(2130841441);
   }
   
   public boolean a(long paramLong)

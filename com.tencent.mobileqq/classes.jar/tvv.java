@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
 public class tvv
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public tvv(TroopInfoActivity paramTroopInfoActivity) {}
+  public tvv(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    TroopInfoActivity.b(this.a);
-    switch (TroopInfoActivity.a(this.a))
-    {
-    default: 
-      return;
+    if ((this.a.a != null) && (this.a.a.equals("conversation"))) {
+      this.a.a();
     }
-    this.a.overridePendingTransition(0, 2131034122);
   }
 }
 

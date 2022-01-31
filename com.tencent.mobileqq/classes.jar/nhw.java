@@ -1,29 +1,25 @@
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.child.DiscoverPlayMode;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import android.content.Context;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import com.tencent.biz.qqstory.notification.StoryMsgNotification;
+import com.tencent.mobileqq.msf.sdk.QNotificationManager;
 
 public class nhw
-  extends IPlayVideoStatusChangeListener
+  implements Runnable
 {
-  public nhw(DiscoverPlayMode paramDiscoverPlayMode) {}
+  public nhw(StoryMsgNotification paramStoryMsgNotification, Context paramContext) {}
   
-  public void c(int paramInt)
+  public void run()
   {
-    if (paramInt < this.a.a.a.size() - 1) {
-      StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
+    StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    QNotificationManager localQNotificationManager = new QNotificationManager(this.jdField_a_of_type_AndroidContentContext);
+    int j = StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.size();
+    int i = 0;
+    while (i < j)
+    {
+      localQNotificationManager.cancel("StoryMsgNotification", StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.get(StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.keyAt(i)));
+      i += 1;
     }
-  }
-  
-  public void d(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
-  }
-  
-  public void e(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
   }
 }
 

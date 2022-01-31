@@ -121,7 +121,6 @@ public class QQStoryFlowCallback
     for (;;)
     {
       long l;
-      int i;
       boolean bool2;
       try
       {
@@ -130,28 +129,35 @@ public class QQStoryFlowCallback
         localBundle.putInt("entrance_type", paramInt3);
         localBundle.putString("story_default_label", paramActivity.getIntent().getStringExtra("story_default_label"));
         l = paramActivity.getIntent().getLongExtra("troop_uin", 0L);
-        i = 4374893;
+        int j = 4374893;
         if (paramLocalMediaInfo.mMimeType.contains("video"))
         {
           paramLocalMediaInfo = new EditLocalVideoSource(paramString1, paramLocalMediaInfo, paramInt1, paramInt2);
-          int j = paramInt2 - paramInt1;
-          paramInt1 = 1;
-          if (j / 10000.0F > 1.0F)
+          int k = 1;
+          int i = k;
+          if (paramInt6 != 10)
           {
-            paramInt2 = j / 10000;
-            paramInt1 = paramInt2;
-            if (j % 10000 >= 1000) {
-              paramInt1 = paramInt2 + 1;
+            i = k;
+            if (paramInt6 != 12)
+            {
+              paramInt2 -= paramInt1;
+              i = k;
+              if (paramInt2 / 10000.0F > 1.0F)
+              {
+                paramInt1 = paramInt2 / 10000;
+                i = paramInt1;
+                if (paramInt2 % 10000 >= 1000) {
+                  i = paramInt1 + 1;
+                }
+              }
             }
           }
-          localBundle.putInt("expect_fragment_count", paramInt1);
-          paramInt2 = i;
-          paramString1 = paramLocalMediaInfo;
-          if (paramInt1 <= 1)
+          localBundle.putInt("expect_fragment_count", i);
+          paramInt2 = j;
+          if (i <= 1)
           {
             paramInt2 = 4342125;
-            paramString1 = paramLocalMediaInfo;
-            break label605;
+            break label692;
             paramInt2 = paramInt1;
             if (paramInt6 == 10)
             {
@@ -159,13 +165,27 @@ public class QQStoryFlowCallback
               bool2 = paramActivity.getIntent().getBooleanExtra("needVideoWording", false);
               paramInt3 = paramInt1;
               if (bool1) {
-                break label705;
+                break label808;
               }
               paramInt3 = paramInt1 & 0xFFFFFFFE;
-              break label705;
+              break label808;
             }
-            label213:
-            paramString1 = new EditVideoParams(paramInt6, paramInt2, paramString1, localBundle);
+            label237:
+            paramInt1 = paramInt2;
+            if (paramInt6 == 12)
+            {
+              paramInt1 = paramInt2 & 0xFFBFFFFF & 0xFFFFBFFF & 0xFFFDFFFF;
+              bool1 = paramActivity.getIntent().getBooleanExtra("needVideoDoodle", false);
+              bool2 = paramActivity.getIntent().getBooleanExtra("needVideoWording", false);
+              paramInt2 = paramInt1;
+              if (bool1) {
+                break label827;
+              }
+              paramInt2 = paramInt1 & 0xFFFFFFFE;
+              break label827;
+            }
+            label301:
+            paramString1 = new EditVideoParams(paramInt6, paramInt1, paramString1, localBundle);
             if (l != 0L) {
               paramString1.a.putLong("troop_uin", l);
             }
@@ -183,7 +203,7 @@ public class QQStoryFlowCallback
             paramLocalMediaInfo.putExtra("op_type", "video_edit");
             paramLocalMediaInfo.putExtra("stop_record_time", System.currentTimeMillis());
             if (paramInt6 != 10) {
-              break label724;
+              break label844;
             }
             paramBoolean = paramActivity.getIntent().getBooleanExtra("needTheme", false);
             boolean bool1 = paramActivity.getIntent().getBooleanExtra("needVideoDoodle", false);
@@ -197,15 +217,15 @@ public class QQStoryFlowCallback
             paramLocalMediaInfo.putExtra("from", paramString1);
             paramLocalMediaInfo.putExtra("theme_id", paramInt1);
             paramLocalMediaInfo.putExtra("theme_name", paramString2);
-            break label724;
-            label546:
+            break label844;
+            label634:
             paramActivity.startActivityForResult(paramLocalMediaInfo, paramInt1);
           }
         }
         else
         {
           paramString1 = new EditLocalPhotoSource(paramString1, paramLocalMediaInfo);
-          paramInt2 = i;
+          paramInt1 = j;
         }
       }
       catch (Exception paramActivity)
@@ -213,46 +233,60 @@ public class QQStoryFlowCallback
         SLog.e("Q.qqstory.publish.QQStoryFlowCallback", "startEditVideoActivity exception:" + paramActivity);
         return;
       }
-      label605:
+      label692:
+      label827:
+      label844:
       do
       {
         paramInt1 = 10002;
-        break label546;
+        break label634;
+        paramInt1 = paramInt2;
+        paramString1 = paramLocalMediaInfo;
+        if (paramInt6 == 12)
+        {
+          paramInt1 = paramInt2 & 0xFFFF7FFF;
+          paramString1 = paramLocalMediaInfo;
+        }
         if ((paramInt3 != 16) && (paramInt3 != 5))
         {
-          paramInt1 = paramInt2;
+          paramInt2 = paramInt1;
           if (paramInt3 != 102) {}
         }
         else
         {
-          paramInt1 = paramInt2 & 0xFFFFBFFF;
+          paramInt2 = paramInt1 & 0xFFFFBFFF;
+        }
+        paramInt1 = paramInt2;
+        if (l != 0L) {
+          paramInt1 = paramInt2 & 0xFFFFBFFF & 0xFFFDFFFF & 0xFFBFFFFF;
         }
         paramInt2 = paramInt1;
-        if (l != 0L) {
-          paramInt2 = paramInt1 & 0xFFFFBFFF & 0xFFFDFFFF & 0xFFBFFFFF;
-        }
-        i = paramInt2;
         if (paramInt3 == 102) {
-          i = paramInt2 | 0x200000;
+          paramInt2 = paramInt1 | 0x200000;
         }
         if (paramInt4 != 1)
         {
-          paramInt1 = i;
+          paramInt1 = paramInt2;
           if (paramInt6 != 10) {
             break;
           }
         }
-        paramInt1 = i & 0xFFFDFFFF;
+        paramInt1 = paramInt2 & 0xFFFDFFFF;
         break;
         paramInt2 = paramInt3;
         if (bool2) {
-          break label213;
+          break label237;
         }
         paramInt2 = paramInt3 & 0xFFFFFFFB;
-        break label213;
+        break label237;
+        paramInt1 = paramInt2;
+        if (bool2) {
+          break label301;
+        }
+        paramInt1 = paramInt2 & 0xFFFFFFFB;
+        break label301;
       } while (paramInt6 != 10);
-      label705:
-      label724:
+      label808:
       paramInt1 = 10012;
     }
   }
@@ -287,7 +321,7 @@ public class QQStoryFlowCallback
         }
         paramBundle.putInt("expect_fragment_count", paramInt1);
         if (paramInt1 > 1) {
-          break label350;
+          break label348;
         }
         paramInt2 = 4342125;
       }
@@ -324,7 +358,7 @@ public class QQStoryFlowCallback
         paramString = new EditLocalPhotoSource(paramString, paramLocalMediaInfo);
         paramInt2 = 4374893;
         continue;
-        label350:
+        label348:
         paramInt2 = 4374893;
       }
     }
@@ -334,407 +368,429 @@ public class QQStoryFlowCallback
   public static boolean a(Activity paramActivity, Intent paramIntent)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: iconst_1
-    //   2: invokestatic 219	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:a	(Landroid/app/Activity;I)Ljava/lang/String;
-    //   5: pop
-    //   6: aload_1
-    //   7: ldc_w 348
-    //   10: lconst_0
-    //   11: invokevirtual 178	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-    //   14: lstore 7
-    //   16: aload_1
-    //   17: ldc_w 350
-    //   20: invokevirtual 354	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   23: checkcast 77	com/tencent/mobileqq/activity/photo/LocalMediaInfo
-    //   26: astore 15
-    //   28: aload_1
-    //   29: ldc 170
-    //   31: bipush 99
-    //   33: invokevirtual 311	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   36: istore 4
-    //   38: aload 15
-    //   40: ifnonnull +14 -> 54
-    //   43: new 356	java/lang/IllegalArgumentException
-    //   46: dup
-    //   47: ldc_w 358
-    //   50: invokespecial 361	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
-    //   53: athrow
-    //   54: aload 15
-    //   56: getfield 364	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   59: astore 16
+    //   0: aload_1
+    //   1: ldc 160
+    //   3: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   6: astore 17
+    //   8: ldc_w 349
+    //   11: aload 17
+    //   13: invokevirtual 353	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   16: ifeq +61 -> 77
+    //   19: getstatic 356	com/tencent/mobileqq/tribe/TribeFlowComponentInterface:jdField_a_of_type_Int	I
+    //   22: istore_2
+    //   23: aload_0
+    //   24: iconst_1
+    //   25: invokestatic 219	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:a	(Landroid/app/Activity;I)Ljava/lang/String;
+    //   28: pop
+    //   29: aload_1
+    //   30: ldc_w 358
+    //   33: lconst_0
+    //   34: invokevirtual 178	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   37: lstore 7
+    //   39: aload_1
+    //   40: ldc_w 360
+    //   43: invokevirtual 364	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   46: checkcast 77	com/tencent/mobileqq/activity/photo/LocalMediaInfo
+    //   49: astore 15
+    //   51: aload_1
+    //   52: ldc 170
+    //   54: bipush 99
+    //   56: invokevirtual 313	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   59: istore 4
     //   61: aload 15
-    //   63: getfield 108	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mMimeType	Ljava/lang/String;
-    //   66: ldc 230
-    //   68: invokevirtual 236	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   71: ifeq +369 -> 440
-    //   74: aload_0
-    //   75: invokevirtual 368	android/app/Activity:getContentResolver	()Landroid/content/ContentResolver;
-    //   78: astore 14
-    //   80: aload 14
-    //   82: getstatic 374	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   85: aconst_null
-    //   86: ldc_w 376
-    //   89: iconst_1
-    //   90: anewarray 232	java/lang/String
-    //   93: dup
-    //   94: iconst_0
-    //   95: aload 15
-    //   97: getfield 379	com/tencent/mobileqq/activity/photo/LocalMediaInfo:_id	J
-    //   100: invokestatic 383	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   103: aastore
-    //   104: aconst_null
-    //   105: invokevirtual 389	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   108: astore 11
-    //   110: aload 11
-    //   112: ifnull +656 -> 768
-    //   115: aload 11
-    //   117: astore 12
-    //   119: aload 11
-    //   121: invokeinterface 395 1 0
-    //   126: ifeq +636 -> 762
-    //   129: aload 11
-    //   131: astore 12
-    //   133: aload 14
-    //   135: aload 15
-    //   137: getfield 379	com/tencent/mobileqq/activity/photo/LocalMediaInfo:_id	J
-    //   140: iconst_1
-    //   141: aconst_null
-    //   142: invokestatic 401	android/provider/MediaStore$Video$Thumbnails:getThumbnail	(Landroid/content/ContentResolver;JILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   145: astore 13
-    //   147: aload 13
-    //   149: astore 10
-    //   151: aload 13
-    //   153: ifnonnull +21 -> 174
-    //   156: aload 11
-    //   158: astore 12
-    //   160: aload 14
-    //   162: aload 15
-    //   164: getfield 379	com/tencent/mobileqq/activity/photo/LocalMediaInfo:_id	J
-    //   167: iconst_3
-    //   168: aconst_null
-    //   169: invokestatic 401	android/provider/MediaStore$Video$Thumbnails:getThumbnail	(Landroid/content/ContentResolver;JILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   172: astore 10
-    //   174: aload 11
-    //   176: astore 12
-    //   178: aload 10
-    //   180: astore 13
-    //   182: aload 11
-    //   184: invokeinterface 404 1 0
-    //   189: istore 9
-    //   191: iload 9
-    //   193: ifne -19 -> 174
-    //   196: aload 10
-    //   198: astore 12
-    //   200: aload 11
-    //   202: ifnull +14 -> 216
-    //   205: aload 11
-    //   207: invokeinterface 407 1 0
-    //   212: aload 10
-    //   214: astore 12
-    //   216: aload 12
-    //   218: ifnull +206 -> 424
-    //   221: aload_1
-    //   222: ldc 160
-    //   224: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   227: astore 10
-    //   229: aload 12
-    //   231: invokevirtual 413	android/graphics/Bitmap:getWidth	()I
-    //   234: aload 12
-    //   236: invokevirtual 416	android/graphics/Bitmap:getHeight	()I
-    //   239: if_icmple +177 -> 416
-    //   242: ldc_w 418
-    //   245: aload 10
-    //   247: invokevirtual 422	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   250: ifne +166 -> 416
-    //   253: aload 12
-    //   255: ldc_w 423
-    //   258: invokestatic 428	com/tencent/biz/qqstory/utils/UIUtils:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
-    //   261: putstatic 430	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   264: aload 12
-    //   266: invokevirtual 433	android/graphics/Bitmap:recycle	()V
-    //   269: lload 7
-    //   271: ldc2_w 434
-    //   274: lcmp
-    //   275: ifge +464 -> 739
-    //   278: aload_1
-    //   279: ldc_w 437
-    //   282: invokevirtual 441	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
-    //   285: astore 10
-    //   287: aload 10
-    //   289: ifnull +324 -> 613
-    //   292: ldc_w 273
-    //   295: ldc_w 443
-    //   298: invokestatic 280	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   301: ldc_w 273
-    //   304: aload 10
-    //   306: invokestatic 448	com/tencent/biz/qqstory/takevideo2/StoryPublishParams:a	(Ljava/lang/String;Landroid/os/Bundle;)V
-    //   309: aload 15
-    //   311: getfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
-    //   314: ldc2_w 449
-    //   317: lcmp
-    //   318: ifgt +288 -> 606
-    //   321: iconst_0
-    //   322: istore_2
-    //   323: aload_0
-    //   324: aload 16
-    //   326: aload 15
-    //   328: iconst_0
-    //   329: iload_2
-    //   330: aload 10
-    //   332: invokestatic 451	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:a	(Landroid/app/Activity;Ljava/lang/String;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;IILandroid/os/Bundle;)V
-    //   335: iconst_1
-    //   336: ireturn
-    //   337: astore 14
-    //   339: aconst_null
-    //   340: astore 10
-    //   342: aconst_null
-    //   343: astore 11
-    //   345: aload 11
-    //   347: astore 12
-    //   349: ldc_w 273
-    //   352: ldc_w 453
-    //   355: iconst_2
-    //   356: anewarray 4	java/lang/Object
-    //   359: dup
-    //   360: iconst_0
+    //   63: ifnonnull +21 -> 84
+    //   66: new 366	java/lang/IllegalArgumentException
+    //   69: dup
+    //   70: ldc_w 368
+    //   73: invokespecial 371	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   76: athrow
+    //   77: sipush 10000
+    //   80: istore_2
+    //   81: goto -58 -> 23
+    //   84: aload 15
+    //   86: getfield 374	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   89: astore 16
+    //   91: aload 15
+    //   93: getfield 108	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mMimeType	Ljava/lang/String;
+    //   96: ldc 230
+    //   98: invokevirtual 236	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   101: ifeq +374 -> 475
+    //   104: aload_0
+    //   105: invokevirtual 378	android/app/Activity:getContentResolver	()Landroid/content/ContentResolver;
+    //   108: astore 14
+    //   110: aload 14
+    //   112: getstatic 384	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   115: aconst_null
+    //   116: ldc_w 386
+    //   119: iconst_1
+    //   120: anewarray 232	java/lang/String
+    //   123: dup
+    //   124: iconst_0
+    //   125: aload 15
+    //   127: getfield 389	com/tencent/mobileqq/activity/photo/LocalMediaInfo:_id	J
+    //   130: invokestatic 393	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   133: aastore
+    //   134: aconst_null
+    //   135: invokevirtual 399	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   138: astore 11
+    //   140: aload 11
+    //   142: ifnull +660 -> 802
+    //   145: aload 11
+    //   147: astore 12
+    //   149: aload 11
+    //   151: invokeinterface 405 1 0
+    //   156: ifeq +640 -> 796
+    //   159: aload 11
+    //   161: astore 12
+    //   163: aload 14
+    //   165: aload 15
+    //   167: getfield 389	com/tencent/mobileqq/activity/photo/LocalMediaInfo:_id	J
+    //   170: iconst_1
+    //   171: aconst_null
+    //   172: invokestatic 411	android/provider/MediaStore$Video$Thumbnails:getThumbnail	(Landroid/content/ContentResolver;JILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   175: astore 13
+    //   177: aload 13
+    //   179: astore 10
+    //   181: aload 13
+    //   183: ifnonnull +21 -> 204
+    //   186: aload 11
+    //   188: astore 12
+    //   190: aload 14
+    //   192: aload 15
+    //   194: getfield 389	com/tencent/mobileqq/activity/photo/LocalMediaInfo:_id	J
+    //   197: iconst_3
+    //   198: aconst_null
+    //   199: invokestatic 411	android/provider/MediaStore$Video$Thumbnails:getThumbnail	(Landroid/content/ContentResolver;JILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   202: astore 10
+    //   204: aload 11
+    //   206: astore 12
+    //   208: aload 10
+    //   210: astore 13
+    //   212: aload 11
+    //   214: invokeinterface 414 1 0
+    //   219: istore 9
+    //   221: iload 9
+    //   223: ifne -19 -> 204
+    //   226: aload 10
+    //   228: astore 12
+    //   230: aload 11
+    //   232: ifnull +14 -> 246
+    //   235: aload 11
+    //   237: invokeinterface 417 1 0
+    //   242: aload 10
+    //   244: astore 12
+    //   246: aload 12
+    //   248: ifnull +211 -> 459
+    //   251: aload 12
+    //   253: invokevirtual 423	android/graphics/Bitmap:getWidth	()I
+    //   256: aload 12
+    //   258: invokevirtual 426	android/graphics/Bitmap:getHeight	()I
+    //   261: if_icmple +190 -> 451
+    //   264: ldc_w 349
+    //   267: aload 17
+    //   269: invokevirtual 353	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   272: ifne +179 -> 451
+    //   275: ldc_w 428
+    //   278: aload 17
+    //   280: invokevirtual 353	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   283: ifne +168 -> 451
+    //   286: aload 12
+    //   288: ldc_w 429
+    //   291: invokestatic 434	com/tencent/biz/qqstory/utils/UIUtils:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
+    //   294: putstatic 436	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   297: aload 12
+    //   299: invokevirtual 439	android/graphics/Bitmap:recycle	()V
+    //   302: lload 7
+    //   304: iload_2
+    //   305: sipush 500
+    //   308: iadd
+    //   309: i2l
+    //   310: lcmp
+    //   311: ifge +459 -> 770
+    //   314: aload_1
+    //   315: ldc_w 441
+    //   318: invokevirtual 445	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   321: astore 10
+    //   323: aload 10
+    //   325: ifnull +309 -> 634
+    //   328: ldc_w 275
+    //   331: ldc_w 447
+    //   334: invokestatic 282	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   337: ldc_w 275
+    //   340: aload 10
+    //   342: invokestatic 452	com/tencent/biz/qqstory/takevideo2/StoryPublishParams:a	(Ljava/lang/String;Landroid/os/Bundle;)V
+    //   345: aload 15
+    //   347: getfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
+    //   350: iload_2
+    //   351: i2l
+    //   352: lcmp
+    //   353: ifgt +278 -> 631
+    //   356: iconst_0
+    //   357: istore_2
+    //   358: aload_0
+    //   359: aload 16
     //   361: aload 15
-    //   363: getfield 364	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   366: aastore
-    //   367: dup
-    //   368: iconst_1
-    //   369: aload 14
-    //   371: aastore
-    //   372: invokestatic 456	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   375: aload 10
-    //   377: astore 12
-    //   379: aload 11
-    //   381: ifnull -165 -> 216
-    //   384: aload 11
-    //   386: invokeinterface 407 1 0
-    //   391: aload 10
-    //   393: astore 12
-    //   395: goto -179 -> 216
-    //   398: astore_0
-    //   399: aconst_null
-    //   400: astore 12
-    //   402: aload 12
-    //   404: ifnull +10 -> 414
-    //   407: aload 12
-    //   409: invokeinterface 407 1 0
-    //   414: aload_0
-    //   415: athrow
-    //   416: aload 12
-    //   418: putstatic 430	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   421: goto -152 -> 269
-    //   424: invokestatic 461	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	()Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;
-    //   427: getfield 464	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoSwitchCameraPicMgr;
-    //   430: iconst_0
-    //   431: invokevirtual 469	com/tencent/mobileqq/activity/richmedia/state/RMVideoSwitchCameraPicMgr:a	(Z)Landroid/graphics/Bitmap;
-    //   434: putstatic 430	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   437: goto -168 -> 269
-    //   440: aload_1
-    //   441: ldc_w 437
-    //   444: invokevirtual 441	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
-    //   447: astore 10
-    //   449: aload 10
-    //   451: ifnull +55 -> 506
-    //   454: ldc_w 273
-    //   457: ldc_w 443
-    //   460: invokestatic 280	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   463: ldc_w 273
-    //   466: aload 10
-    //   468: invokestatic 448	com/tencent/biz/qqstory/takevideo2/StoryPublishParams:a	(Ljava/lang/String;Landroid/os/Bundle;)V
-    //   471: aload 15
-    //   473: getfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
-    //   476: ldc2_w 449
-    //   479: lcmp
-    //   480: ifgt +19 -> 499
-    //   483: iconst_0
-    //   484: istore_2
-    //   485: aload_0
-    //   486: aload 16
-    //   488: aload 15
-    //   490: iconst_0
-    //   491: iload_2
-    //   492: aload 10
-    //   494: invokestatic 451	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:a	(Landroid/app/Activity;Ljava/lang/String;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;IILandroid/os/Bundle;)V
-    //   497: iconst_1
-    //   498: ireturn
-    //   499: sipush 10000
-    //   502: istore_2
-    //   503: goto -18 -> 485
-    //   506: aload_1
-    //   507: ldc 137
-    //   509: iconst_0
-    //   510: invokevirtual 311	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   513: istore_3
-    //   514: aload_1
-    //   515: ldc 139
-    //   517: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   520: astore 10
-    //   522: aload_1
-    //   523: ldc 141
-    //   525: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   528: astore 11
-    //   530: aload_1
-    //   531: ldc 145
-    //   533: ldc2_w 470
-    //   536: invokevirtual 178	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-    //   539: lstore 7
-    //   541: aload_1
-    //   542: ldc 150
-    //   544: iconst_0
-    //   545: invokevirtual 251	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   548: istore 9
-    //   550: aload_1
-    //   551: ldc 143
-    //   553: iconst_0
-    //   554: invokevirtual 311	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   557: istore 5
-    //   559: aload 15
-    //   561: getfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
-    //   564: ldc2_w 449
-    //   567: lcmp
-    //   568: ifgt +31 -> 599
-    //   571: iconst_0
-    //   572: istore_2
-    //   573: aload_0
-    //   574: aload 16
-    //   576: aload 15
-    //   578: iconst_0
-    //   579: iload_2
-    //   580: iload 4
-    //   582: iload_3
-    //   583: aload 10
-    //   585: aload 11
-    //   587: lload 7
-    //   589: iload 9
-    //   591: iload 5
-    //   593: invokestatic 473	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:a	(Landroid/app/Activity;Ljava/lang/String;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;IIIILjava/lang/String;Ljava/lang/String;JZI)V
-    //   596: goto -99 -> 497
-    //   599: sipush 10000
-    //   602: istore_2
-    //   603: goto -30 -> 573
-    //   606: sipush 10000
-    //   609: istore_2
-    //   610: goto -287 -> 323
-    //   613: aload_1
-    //   614: ldc 137
-    //   616: iconst_0
-    //   617: invokevirtual 311	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   620: istore 5
-    //   622: aload_1
-    //   623: ldc 139
-    //   625: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   628: astore 10
-    //   630: aload_1
-    //   631: ldc 141
-    //   633: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   636: astore 11
-    //   638: aload_1
-    //   639: ldc 145
-    //   641: ldc2_w 470
-    //   644: invokevirtual 178	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-    //   647: lstore 7
-    //   649: aload_1
-    //   650: ldc 150
-    //   652: iconst_0
-    //   653: invokevirtual 251	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   656: istore 9
-    //   658: aload_1
-    //   659: ldc 143
-    //   661: iconst_0
-    //   662: invokevirtual 311	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   665: istore 6
-    //   667: ldc_w 418
+    //   363: iconst_0
+    //   364: iload_2
+    //   365: aload 10
+    //   367: invokestatic 453	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:a	(Landroid/app/Activity;Ljava/lang/String;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;IILandroid/os/Bundle;)V
+    //   370: iconst_1
+    //   371: ireturn
+    //   372: astore 14
+    //   374: aconst_null
+    //   375: astore 10
+    //   377: aconst_null
+    //   378: astore 11
+    //   380: aload 11
+    //   382: astore 12
+    //   384: ldc_w 275
+    //   387: ldc_w 455
+    //   390: iconst_2
+    //   391: anewarray 4	java/lang/Object
+    //   394: dup
+    //   395: iconst_0
+    //   396: aload 15
+    //   398: getfield 374	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   401: aastore
+    //   402: dup
+    //   403: iconst_1
+    //   404: aload 14
+    //   406: aastore
+    //   407: invokestatic 458	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   410: aload 10
+    //   412: astore 12
+    //   414: aload 11
+    //   416: ifnull -170 -> 246
+    //   419: aload 11
+    //   421: invokeinterface 417 1 0
+    //   426: aload 10
+    //   428: astore 12
+    //   430: goto -184 -> 246
+    //   433: astore_0
+    //   434: aconst_null
+    //   435: astore 12
+    //   437: aload 12
+    //   439: ifnull +10 -> 449
+    //   442: aload 12
+    //   444: invokeinterface 417 1 0
+    //   449: aload_0
+    //   450: athrow
+    //   451: aload 12
+    //   453: putstatic 436	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   456: goto -154 -> 302
+    //   459: invokestatic 463	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	()Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;
+    //   462: getfield 466	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoSwitchCameraPicMgr;
+    //   465: iconst_0
+    //   466: invokevirtual 471	com/tencent/mobileqq/activity/richmedia/state/RMVideoSwitchCameraPicMgr:a	(Z)Landroid/graphics/Bitmap;
+    //   469: putstatic 436	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   472: goto -170 -> 302
+    //   475: aload_1
+    //   476: ldc_w 441
+    //   479: invokevirtual 445	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   482: astore 10
+    //   484: aload 10
+    //   486: ifnull +50 -> 536
+    //   489: ldc_w 275
+    //   492: ldc_w 447
+    //   495: invokestatic 282	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   498: ldc_w 275
+    //   501: aload 10
+    //   503: invokestatic 452	com/tencent/biz/qqstory/takevideo2/StoryPublishParams:a	(Ljava/lang/String;Landroid/os/Bundle;)V
+    //   506: aload 15
+    //   508: getfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
+    //   511: iload_2
+    //   512: i2l
+    //   513: lcmp
+    //   514: ifgt +19 -> 533
+    //   517: iconst_0
+    //   518: istore_2
+    //   519: aload_0
+    //   520: aload 16
+    //   522: aload 15
+    //   524: iconst_0
+    //   525: iload_2
+    //   526: aload 10
+    //   528: invokestatic 453	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:a	(Landroid/app/Activity;Ljava/lang/String;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;IILandroid/os/Bundle;)V
+    //   531: iconst_1
+    //   532: ireturn
+    //   533: goto -14 -> 519
+    //   536: aload_1
+    //   537: ldc 137
+    //   539: iconst_0
+    //   540: invokevirtual 313	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   543: istore_3
+    //   544: aload_1
+    //   545: ldc 139
+    //   547: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   550: astore 10
+    //   552: aload_1
+    //   553: ldc 141
+    //   555: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   558: astore 11
+    //   560: aload_1
+    //   561: ldc 145
+    //   563: ldc2_w 472
+    //   566: invokevirtual 178	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   569: lstore 7
+    //   571: aload_1
+    //   572: ldc 150
+    //   574: iconst_0
+    //   575: invokevirtual 251	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   578: istore 9
+    //   580: aload_1
+    //   581: ldc 143
+    //   583: iconst_0
+    //   584: invokevirtual 313	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   587: istore 5
+    //   589: aload 15
+    //   591: getfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
+    //   594: iload_2
+    //   595: i2l
+    //   596: lcmp
+    //   597: ifgt +31 -> 628
+    //   600: iconst_0
+    //   601: istore_2
+    //   602: aload_0
+    //   603: aload 16
+    //   605: aload 15
+    //   607: iconst_0
+    //   608: iload_2
+    //   609: iload 4
+    //   611: iload_3
+    //   612: aload 10
+    //   614: aload 11
+    //   616: lload 7
+    //   618: iload 9
+    //   620: iload 5
+    //   622: invokestatic 475	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:a	(Landroid/app/Activity;Ljava/lang/String;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;IIIILjava/lang/String;Ljava/lang/String;JZI)V
+    //   625: goto -94 -> 531
+    //   628: goto -26 -> 602
+    //   631: goto -273 -> 358
+    //   634: aload_1
+    //   635: ldc 137
+    //   637: iconst_0
+    //   638: invokevirtual 313	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   641: istore 5
+    //   643: aload_1
+    //   644: ldc 139
+    //   646: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   649: astore 10
+    //   651: aload_1
+    //   652: ldc 141
+    //   654: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   657: astore 11
+    //   659: aload_1
+    //   660: ldc 145
+    //   662: ldc2_w 472
+    //   665: invokevirtual 178	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   668: lstore 7
     //   670: aload_1
-    //   671: ldc 160
-    //   673: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   676: invokevirtual 422	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   679: ifeq +48 -> 727
-    //   682: bipush 10
-    //   684: istore_2
-    //   685: aload 15
-    //   687: getfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
-    //   690: ldc2_w 449
-    //   693: lcmp
-    //   694: ifgt +38 -> 732
-    //   697: iconst_0
-    //   698: istore_3
-    //   699: aload_0
-    //   700: aload 16
-    //   702: aload 15
-    //   704: iconst_0
-    //   705: iload_3
-    //   706: iload 4
-    //   708: iload 5
-    //   710: aload 10
-    //   712: aload 11
-    //   714: lload 7
-    //   716: iload 9
-    //   718: iload 6
-    //   720: iload_2
-    //   721: invokestatic 212	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:a	(Landroid/app/Activity;Ljava/lang/String;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;IIIILjava/lang/String;Ljava/lang/String;JZII)V
-    //   724: goto -389 -> 335
-    //   727: iconst_1
-    //   728: istore_2
-    //   729: goto -44 -> 685
-    //   732: sipush 10000
-    //   735: istore_3
-    //   736: goto -37 -> 699
+    //   671: ldc 150
+    //   673: iconst_0
+    //   674: invokevirtual 251	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   677: istore 9
+    //   679: aload_1
+    //   680: ldc 143
+    //   682: iconst_0
+    //   683: invokevirtual 313	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   686: istore 6
+    //   688: aload_1
+    //   689: ldc 160
+    //   691: invokevirtual 61	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   694: astore_1
+    //   695: ldc_w 349
+    //   698: aload_1
+    //   699: invokevirtual 353	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   702: ifeq +60 -> 762
+    //   705: bipush 10
+    //   707: istore_3
+    //   708: aload_1
+    //   709: ldc_w 428
+    //   712: invokevirtual 353	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   715: ifeq +78 -> 793
+    //   718: bipush 12
+    //   720: istore_3
+    //   721: aload 15
+    //   723: getfield 102	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
+    //   726: iload_2
+    //   727: i2l
+    //   728: lcmp
+    //   729: ifgt +38 -> 767
+    //   732: iconst_0
+    //   733: istore_2
+    //   734: aload_0
+    //   735: aload 16
+    //   737: aload 15
     //   739: iconst_0
-    //   740: ireturn
-    //   741: astore_0
-    //   742: goto -340 -> 402
-    //   745: astore 14
-    //   747: aconst_null
-    //   748: astore 10
-    //   750: goto -405 -> 345
-    //   753: astore 14
-    //   755: aload 13
-    //   757: astore 10
-    //   759: goto -414 -> 345
-    //   762: aconst_null
-    //   763: astore 10
-    //   765: goto -591 -> 174
-    //   768: aconst_null
-    //   769: astore 10
-    //   771: goto -575 -> 196
+    //   740: iload_2
+    //   741: iload 4
+    //   743: iload 5
+    //   745: aload 10
+    //   747: aload 11
+    //   749: lload 7
+    //   751: iload 9
+    //   753: iload 6
+    //   755: iload_3
+    //   756: invokestatic 212	com/tencent/mobileqq/activity/richmedia/QQStoryFlowCallback:a	(Landroid/app/Activity;Ljava/lang/String;Lcom/tencent/mobileqq/activity/photo/LocalMediaInfo;IIIILjava/lang/String;Ljava/lang/String;JZII)V
+    //   759: goto -389 -> 370
+    //   762: iconst_1
+    //   763: istore_3
+    //   764: goto -56 -> 708
+    //   767: goto -33 -> 734
+    //   770: iconst_0
+    //   771: ireturn
+    //   772: astore_0
+    //   773: goto -336 -> 437
+    //   776: astore 14
+    //   778: aconst_null
+    //   779: astore 10
+    //   781: goto -401 -> 380
+    //   784: astore 14
+    //   786: aload 13
+    //   788: astore 10
+    //   790: goto -410 -> 380
+    //   793: goto -72 -> 721
+    //   796: aconst_null
+    //   797: astore 10
+    //   799: goto -595 -> 204
+    //   802: aconst_null
+    //   803: astore 10
+    //   805: goto -579 -> 226
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	774	0	paramActivity	Activity
-    //   0	774	1	paramIntent	Intent
-    //   322	407	2	i	int
-    //   513	223	3	j	int
-    //   36	671	4	k	int
-    //   557	152	5	m	int
-    //   665	54	6	n	int
-    //   14	701	7	l	long
-    //   189	528	9	bool	boolean
-    //   149	621	10	localObject1	Object
-    //   108	605	11	localObject2	Object
-    //   117	300	12	localObject3	Object
-    //   145	611	13	localObject4	Object
-    //   78	83	14	localContentResolver	android.content.ContentResolver
-    //   337	33	14	localException1	Exception
-    //   745	1	14	localException2	Exception
-    //   753	1	14	localException3	Exception
-    //   26	677	15	localLocalMediaInfo	LocalMediaInfo
-    //   59	642	16	str	String
+    //   0	808	0	paramActivity	Activity
+    //   0	808	1	paramIntent	Intent
+    //   22	719	2	i	int
+    //   543	221	3	j	int
+    //   59	683	4	k	int
+    //   587	157	5	m	int
+    //   686	68	6	n	int
+    //   37	713	7	l	long
+    //   219	533	9	bool	boolean
+    //   179	625	10	localObject1	Object
+    //   138	610	11	localObject2	Object
+    //   147	305	12	localObject3	Object
+    //   175	612	13	localObject4	Object
+    //   108	83	14	localContentResolver	android.content.ContentResolver
+    //   372	33	14	localException1	Exception
+    //   776	1	14	localException2	Exception
+    //   784	1	14	localException3	Exception
+    //   49	689	15	localLocalMediaInfo	LocalMediaInfo
+    //   89	647	16	str1	String
+    //   6	273	17	str2	String
     // Exception table:
     //   from	to	target	type
-    //   80	110	337	java/lang/Exception
-    //   80	110	398	finally
-    //   119	129	741	finally
-    //   133	147	741	finally
-    //   160	174	741	finally
-    //   182	191	741	finally
-    //   349	375	741	finally
-    //   119	129	745	java/lang/Exception
-    //   133	147	745	java/lang/Exception
-    //   160	174	753	java/lang/Exception
-    //   182	191	753	java/lang/Exception
+    //   110	140	372	java/lang/Exception
+    //   110	140	433	finally
+    //   149	159	772	finally
+    //   163	177	772	finally
+    //   190	204	772	finally
+    //   212	221	772	finally
+    //   384	410	772	finally
+    //   149	159	776	java/lang/Exception
+    //   163	177	776	java/lang/Exception
+    //   190	204	784	java/lang/Exception
+    //   212	221	784	java/lang/Exception
   }
   
   public static void b(Activity paramActivity)
@@ -828,7 +884,7 @@ public class QQStoryFlowCallback
   
   public void a(Activity paramActivity, Intent paramIntent) {}
   
-  public void b(String paramString) {}
+  public void c_(String paramString) {}
 }
 
 

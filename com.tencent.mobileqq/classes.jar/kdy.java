@@ -1,66 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.ui.funchat.record.QavVideoAudioRecorder;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.SendRedBag;
 
 public class kdy
-  extends Handler
+  implements kfp
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public kdy(AVRedBagMgr paramAVRedBagMgr) {}
   
-  public kdy(QavVideoAudioRecorder paramQavVideoAudioRecorder1, Looper paramLooper, QavVideoAudioRecorder paramQavVideoAudioRecorder2)
+  public void a(SendRedBag paramSendRedBag)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQavVideoAudioRecorder2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    QavVideoAudioRecorder localQavVideoAudioRecorder = (QavVideoAudioRecorder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQavVideoAudioRecorder == null)
+    AVRedBagMgr localAVRedBagMgr = this.a;
+    if (paramSendRedBag.b == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("QavVideoAudioRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
-      }
+      localAVRedBagMgr.a(bool, paramSendRedBag.g, paramSendRedBag.c);
+      this.a.a = null;
+      AVRedBagMgr.b(this.a).a(new Object[] { Integer.valueOf(8003), Integer.valueOf(7) });
       return;
     }
-    switch (i)
-    {
-    default: 
-      throw new RuntimeException("Unhandled msg what=" + i);
-    case 0: 
-      if (paramMessage.obj != null)
-      {
-        QavVideoAudioRecorder.a(localQavVideoAudioRecorder, (EncodeConfig)paramMessage.obj);
-        return;
-      }
-      throw new RuntimeException("MSG_START_RECORDING bundle == null");
-    case 1: 
-      QavVideoAudioRecorder.a(localQavVideoAudioRecorder);
-      return;
-    case 2: 
-      if (paramMessage.obj != null)
-      {
-        paramMessage = (Object[])paramMessage.obj;
-        if ((paramMessage == null) || (paramMessage.length != 5)) {
-          throw new IllegalArgumentException("args == null || args.length != 5");
-        }
-        QavVideoAudioRecorder.a(localQavVideoAudioRecorder, ((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
-        return;
-      }
-      throw new RuntimeException("MSG_VIDEO_FRAME_AVAILABLE bundle == null");
-    }
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (Object[])paramMessage.obj;
-      localQavVideoAudioRecorder.b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
-      return;
-    }
-    throw new RuntimeException("MSG_AUDIO_FRAME_AVAILABLE bundle == null");
   }
 }
 

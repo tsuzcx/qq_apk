@@ -1,21 +1,50 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.GetAppPathByActionResult;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import java.util.ArrayList;
 
-public final class aavg
-  implements Runnable
+public class aavg
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public aavg(String[] paramArrayOfString) {}
+  public aavg(ArkLocalAppMgr paramArkLocalAppMgr, String paramString, int paramInt, aawa paramaawa) {}
   
-  public void run()
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if (this.a == null) {}
-    for (int i = 0;; i = this.a.length)
+    paramObject = null;
+    if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.jdField_a_of_type_JavaLangString == null))
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("preloadFileCount", String.valueOf(i));
-      StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, localHashMap, "", false);
+      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppViewByIntent, getAppPathByName fail, ret=%d", new Object[] { Integer.valueOf(paramInt) }));
+      paramString = null;
+      paramAppPathInfo = null;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aawa.d = paramString;
+      this.jdField_a_of_type_Aawa.e = paramAppPathInfo;
+      this.jdField_a_of_type_Aawa.c = paramObject;
+      ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aawa);
       return;
+      ArrayList localArrayList = new ArrayList();
+      ArkLocalAppMgr.a(paramAppPathInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localArrayList);
+      ArkAppCenter.b("ArkBubbleState", String.format("getAppViewByIntent, getAppPathByName success, ret=%d", new Object[] { Integer.valueOf(2) }));
+      if ((localArrayList.isEmpty()) && (this.jdField_a_of_type_Int == 4))
+      {
+        ArkLocalAppMgr.a(paramAppPathInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1, localArrayList);
+        ArkAppCenter.b("ArkBubbleState", String.format("getAppViewByIntent, getAppPathByName success, ret=%d", new Object[] { Integer.valueOf(1) }));
+      }
+      if (!localArrayList.isEmpty())
+      {
+        paramString = paramAppPathInfo.jdField_a_of_type_JavaLangString;
+        paramAppPathInfo = ((ArkLocalAppMgr.GetAppPathByActionResult)localArrayList.get(0)).d;
+        paramObject = ((ArkLocalAppMgr.GetAppPathByActionResult)localArrayList.get(0)).e;
+      }
+      else
+      {
+        paramString = null;
+        paramAppPathInfo = null;
+      }
     }
   }
 }

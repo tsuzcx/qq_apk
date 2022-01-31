@@ -1,25 +1,17 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 
 public class kvs
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public kvs(VideoCoverView paramVideoCoverView, Context paramContext) {}
+  public kvs(CustomWebChromeClient paramCustomWebChromeClient, JsPromptResult paramJsPromptResult, EditText paramEditText) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      TVK_SDKMgr.installPlugin(this.jdField_a_of_type_AndroidContentContext, new kvt(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("VideoCoverView", 2, "installSDK t==" + localThrowable.toString());
-    }
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsPromptResult.confirm(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
   }
 }
 

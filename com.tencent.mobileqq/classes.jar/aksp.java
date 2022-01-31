@@ -1,41 +1,28 @@
-import android.app.Activity;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.InstallParams;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.widget.AntiphingToast;
 
 public class aksp
-  implements Runnable
+  extends Handler
 {
-  public aksp(MyAppApi paramMyAppApi, boolean paramBoolean, Activity paramActivity, String paramString) {}
-  
-  public void run()
+  public aksp(AntiphingToast paramAntiphingToast, Looper paramLooper)
   {
-    LogUtility.c("MyAppApi", "---isAutoInstall:" + ControlPolicyUtil.c() + " url:" + ControlPolicyUtil.a() + " interval:" + ControlPolicyUtil.a());
-    boolean bool = ControlPolicyUtil.b();
-    if ((!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b()) && (bool))
-    {
-      LogUtility.c("MyAppApi", "---startDownloadYYB---");
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = new MyAppApi.InstallParams(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.b = false;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidOsBundle = null;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Int = -1;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
-      }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      this.a.a(0.0F, 0 - AntiphingToast.a(this.a).getHeight(), true);
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 1);
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.ark.ark.Application;
+import com.tencent.mobileqq.ark.ArkAiAppCenter;
 
 public class aarm
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public aarm(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public aarm(ArkAiAppCenter paramArkAiAppCenter, String[] paramArrayOfString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      this.a.c();
-      ArkIDESettingFragment.a("");
-      ArkAppCenter.b("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
-      return;
-    }
-    this.a.d();
-    ArkIDESettingFragment.a("close");
-    ArkAppCenter.b("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
+    ark.Application.SetUrlCheckingList(this.jdField_a_of_type_ArrayOfJavaLangString, 0);
   }
 }
 

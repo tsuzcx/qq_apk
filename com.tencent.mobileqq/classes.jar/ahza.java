@@ -1,49 +1,83 @@
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
+import android.text.TextUtils;
+import com.tencent.av.utils.UITools;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import java.util.TimerTask;
 
 public class ahza
-  extends TimerTask
+  implements Runnable
 {
-  public ahza(AIOMessageSpreadManager paramAIOMessageSpreadManager) {}
+  public ahza(PtvTemplateManager paramPtvTemplateManager, File paramFile, Runnable paramRunnable) {}
   
   public void run()
   {
-    synchronized (this.a)
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, String.format("双人挂件加载 start, rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
+    }
+    Object localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_JavaIoFile);
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+    for (;;)
     {
-      long l1 = System.currentTimeMillis();
-      long l2 = l1 - this.a.a;
-      if (l2 >= 950L)
+      return;
+      ??? = PtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager, (String)localObject1);
+      if ((??? == null) || (((List)???).isEmpty())) {
+        continue;
+      }
+      localObject1 = new ArrayList();
+      int i = UITools.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("PtvTemplateManager", 2, "cur version:" + i);
+      }
+      ??? = ((List)???).iterator();
+      while (((Iterator)???).hasNext())
       {
+        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)???).next();
         if (QLog.isColorLevel()) {
-          QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.a.a + "],now[" + l1 + "], dur[" + l2 + "],timeOut start check!");
+          QLog.d("PtvTemplateManager", 2, String.format("the pandent[%s], platform[%s]", new Object[] { localPtvTemplateInfo.id, Integer.valueOf(localPtvTemplateInfo.platform) }));
         }
-        i = AIOMessageSpreadManager.a(this.a).size() - 1;
-        while (i >= 0)
+        if ((localPtvTemplateInfo.platform == 0) || (i >= localPtvTemplateInfo.platform))
         {
-          localMessageRecord = (MessageRecord)AIOMessageSpreadManager.a(this.a).get(i);
-          this.a.a((ChatMessage)localMessageRecord);
-          i -= 1;
+          localPtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
+          ((List)localObject1).add(localPtvTemplateInfo);
         }
-        this.a.a = 0L;
-        AIOMessageSpreadManager.a(this.a).clear();
+        else if (QLog.isDevelopLevel())
+        {
+          QLog.d("PtvTemplateManager", 4, String.format("双人挂件加载, platform不符合, %s", new Object[] { localPtvTemplateInfo }));
+        }
       }
-      while (!QLog.isColorLevel())
+      boolean bool;
+      if (QLog.isDevelopLevel())
       {
-        int i;
-        MessageRecord localMessageRecord;
-        return;
+        i = ((List)localObject1).size();
+        if (this.jdField_a_of_type_JavaLangRunnable == null) {
+          break label373;
+        }
+        bool = true;
+        QLog.d("PtvTemplateManager", 2, String.format("双人挂件加载 size[%s], onInitFinishSink[%s], mVersion[%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.f }));
       }
-      QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.a.a + "],now[" + l1 + "], dur[" + l2 + "]");
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.c)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.c.clear();
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.c.addAll((Collection)localObject1);
+        if (this.jdField_a_of_type_JavaLangRunnable == null) {
+          continue;
+        }
+        this.jdField_a_of_type_JavaLangRunnable.run();
+        return;
+        label373:
+        bool = false;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahza
  * JD-Core Version:    0.7.0.1
  */

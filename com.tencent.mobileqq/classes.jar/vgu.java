@@ -1,22 +1,16 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopFileVideoItemBuilder;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class vgu
-  extends BaseBubbleBuilder.ViewHolder
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public RelativeLayout a;
-  public TextView a;
-  public BubbleImageView a;
-  public MessageProgressView a;
-  public RelativeLayout b;
-  public int e;
-  public int f;
+  public vgu(SixCombolEffectView paramSixCombolEffectView, vhg paramvhg) {}
   
-  public vgu(TroopFileVideoItemBuilder paramTroopFileVideoItemBuilder) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.jdField_a_of_type_Vhg.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+  }
 }
 
 

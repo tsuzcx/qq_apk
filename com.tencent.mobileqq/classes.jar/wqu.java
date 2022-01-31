@@ -1,26 +1,13 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
-import cooperation.qqpim.QQPimTipsInfo;
-import cooperation.qqpim.QQPimTipsInfoHelper;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-public class wqu
-  implements QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack
+class wqu
+  implements Runnable
 {
-  public wqu(ContactListView paramContactListView) {}
+  wqu(wqs paramwqs, int paramInt, Object paramObject) {}
   
-  public void a(QQPimTipsInfo paramQQPimTipsInfo)
+  public void run()
   {
-    if (paramQQPimTipsInfo == null) {
-      return;
-    }
-    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
-    QQPimTipsInfoHelper.b(this.a.getContext(), paramQQPimTipsInfo);
-    Message localMessage = new Message();
-    localMessage.what = 6;
-    localMessage.obj = paramQQPimTipsInfo;
-    this.a.a.sendMessage(localMessage);
+    this.jdField_a_of_type_Wqs.a.a(39, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

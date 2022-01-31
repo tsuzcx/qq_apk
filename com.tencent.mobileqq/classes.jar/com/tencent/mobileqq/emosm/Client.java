@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emosm;
 
-import abrw;
-import abrx;
+import abyy;
+import abyz;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -19,9 +19,9 @@ public class Client
   implements IPCConstants
 {
   public static final String tag = "Q.emoji.web.Client";
-  private ServiceConnection mConnection = new abrw(this);
+  private ServiceConnection mConnection = new abyy(this);
   public boolean mIsBound;
-  public final Messenger mMessenger = new Messenger(new abrx(this, Looper.getMainLooper()));
+  public final Messenger mMessenger = new Messenger(new abyz(this, Looper.getMainLooper()));
   public Messenger mService = null;
   
   public void doBindService(Context paramContext)

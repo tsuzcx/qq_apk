@@ -38,7 +38,7 @@ public class ApolloMainInfo
       if (paramString != null)
       {
         jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130837572);
-        jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130841313);
+        jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130841350);
       }
       return;
     }

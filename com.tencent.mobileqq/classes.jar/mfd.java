@@ -1,13 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import android.os.Handler;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-class mfd
-  implements Runnable
+public class mfd
+  implements TVK_SDKMgr.InstallListener
 {
-  mfd(mfc parammfc) {}
+  private Handler a;
   
-  public void run()
+  public mfd(Handler paramHandler)
   {
-    VideoVolumeControl.d(this.a.a, false);
+    this.a = paramHandler;
+  }
+  
+  public void onInstallProgress(float paramFloat)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(1);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(0);
+    }
   }
 }
 

@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.armap.test.ARWebTestActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abaq
   implements Runnable
 {
-  public abaq(ARWebTestActivity paramARWebTestActivity, String paramString) {}
+  public abaq(ARMapActivity paramARMapActivity) {}
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ARWebTestActivity", 4, "call from onPageFinished delay");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArmapTestARWebTestActivity.a(this.jdField_a_of_type_JavaLangString);
+    ARMapActivity.j(this.a);
   }
 }
 

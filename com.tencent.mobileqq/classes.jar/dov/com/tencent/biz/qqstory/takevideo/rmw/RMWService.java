@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.Messenger;
 import android.support.annotation.Nullable;
-import annf;
-import anng;
+import aodk;
+import aodl;
 
 public class RMWService
   extends Service
 {
   private static RMWService jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwRMWService;
-  private Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new annf(this));
+  private Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new aodk(this));
   
   @Nullable
   public IBinder onBind(Intent paramIntent)
@@ -26,7 +26,7 @@ public class RMWService
     super.onCreate();
     RMWLog.b("RMWService", "ON-CREATE : " + System.identityHashCode(this));
     jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwRMWService = this;
-    new anng(this).start();
+    new aodl(this).start();
   }
   
   public void onDestroy()

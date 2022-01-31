@@ -1,32 +1,47 @@
-import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.utils.TroopNameHelper;
+import java.util.HashMap;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class zlk
-  implements Runnable
+  extends DefaultHandler
 {
-  public zlk(TroopManager paramTroopManager, TroopMemberInfo paramTroopMemberInfo, Handler paramHandler, String paramString1, String paramString2, boolean paramBoolean) {}
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void run()
+  public zlk(QQAppInterface paramQQAppInterface) {}
+  
+  public HashMap a()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.getEntityManagerFactory().createEntityManager();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      localEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramArrayOfChar);
     }
-    for (;;)
-    {
-      localEntityManager.a();
-      this.jdField_a_of_type_AndroidOsHandler.post(new zll(this));
-      if (this.jdField_a_of_type_Boolean) {
-        TroopNameHelper.a(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-      localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
-    }
+  }
+  
+  public void endDocument()
+  {
+    super.endDocument();
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaLangString = null;
+  }
+  
+  public void startDocument()
+  {
+    super.startDocument();
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString2;
   }
 }
 

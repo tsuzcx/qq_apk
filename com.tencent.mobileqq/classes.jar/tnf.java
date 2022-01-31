@@ -1,31 +1,24 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import mqq.os.MqqHandler;
 
-public class tnf
+class tnf
   implements Runnable
 {
-  public tnf(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  tnf(tne paramtne) {}
   
   public void run()
   {
-    try
-    {
-      if ((RegisterQQNumberActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        RegisterQQNumberActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        RegisterQQNumberActivity.a(this.a).c(2131435053);
-      }
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (!RegisterQQNumberActivity.a(this.a).isShowing())) {
-        RegisterQQNumberActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    this.a.a.app.a().e(true);
+    this.a.a.app.a().h();
+    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    MqqHandler localMqqHandler = this.a.a.app.getHandler(Conversation.class);
+    if (localMqqHandler != null) {
+      localMqqHandler.sendEmptyMessage(1009);
     }
   }
 }

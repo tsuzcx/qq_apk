@@ -1,20 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.text.Editable;
+import android.widget.EditText;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class amzc
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public amzc(MusicProviderView paramMusicProviderView) {}
+  public amzc(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    Editable localEditable;
+    if (this.a.a != null)
+    {
+      localEditable = this.a.a.getText();
+      if (localEditable == null) {
+        break label71;
+      }
+    }
+    label71:
+    for (int i = localEditable.length();; i = 0)
+    {
+      this.a.a.setSelection(i);
+      if ((!this.a.isFinishing()) && (!this.a.d)) {
+        this.a.h();
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzc
  * JD-Core Version:    0.7.0.1
  */

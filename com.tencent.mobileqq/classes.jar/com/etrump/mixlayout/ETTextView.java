@@ -140,7 +140,7 @@ public class ETTextView
       return;
     }
     if (bool) {}
-    for (paramInt1 = 2130845657;; paramInt1 = 2130845493)
+    for (paramInt1 = 2130845785;; paramInt1 = 2130845621)
     {
       localBubbleInfo.a(this, localResources.getDrawable(paramInt1));
       return;

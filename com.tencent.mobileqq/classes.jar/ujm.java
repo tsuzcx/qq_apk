@@ -1,10 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 public final class ujm
-  implements DialogInterface.OnClickListener
+  extends ThreadLocal
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected char[] a()
+  {
+    return new char[1024];
+  }
 }
 
 

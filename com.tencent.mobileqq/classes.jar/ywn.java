@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 
-public class ywn
+class ywn
   implements Runnable
 {
-  public ywn(QQFrameZipDecoder paramQQFrameZipDecoder, DownloadTask paramDownloadTask) {}
+  ywn(ywm paramywm, Bundle paramBundle) {}
   
   public void run()
   {
-    DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, null);
+    ApolloGameUtil.a(this.jdField_a_of_type_Ywm.a, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

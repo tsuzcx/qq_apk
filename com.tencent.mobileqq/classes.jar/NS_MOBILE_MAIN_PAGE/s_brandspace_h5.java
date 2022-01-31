@@ -40,7 +40,7 @@ public final class s_brandspace_h5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_brandspace_h5
  * JD-Core Version:    0.7.0.1
  */

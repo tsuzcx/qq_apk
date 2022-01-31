@@ -31,7 +31,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
 import java.util.ArrayList;
 import java.util.List;
-import yus;
+import yxy;
 
 public class ApolloMainViewBinder
   extends ApolloViewBinder
@@ -156,9 +156,9 @@ public class ApolloMainViewBinder
     if (paramView == null) {
       return;
     }
-    URLImageView localURLImageView1 = (URLImageView)paramView.findViewById(2131363167);
-    URLImageView localURLImageView2 = (URLImageView)paramView.findViewById(2131363169);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363168));
+    URLImageView localURLImageView1 = (URLImageView)paramView.findViewById(2131363185);
+    URLImageView localURLImageView2 = (URLImageView)paramView.findViewById(2131363187);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363186));
     localURLImageView1.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
     if (this.jdField_a_of_type_Boolean) {
@@ -225,7 +225,7 @@ public class ApolloMainViewBinder
     do
     {
       return;
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363149));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363167));
       if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
         break;
       }
@@ -234,9 +234,9 @@ public class ApolloMainViewBinder
     return;
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363150));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363147));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363148));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363168));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363165));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363166));
   }
   
   public void b(View paramView, int paramInt)
@@ -282,7 +282,7 @@ public class ApolloMainViewBinder
             {
               localObject1 = new RedTouch(this.jdField_b_of_type_AndroidContentContext, localViewHolder.jdField_a_of_type_AndroidWidgetImageView).a(5).a();
               ((RedTouch)localObject1).a(((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(35)).a("103100.103200"));
-              localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838140);
+              localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838143);
               localViewHolder.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = ((RedTouch)localObject1);
               localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localApolloActionData.actionName);
               localViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo = ((ApolloInfo)this.jdField_a_of_type_JavaUtilList.get(i1));
@@ -320,7 +320,7 @@ public class ApolloMainViewBinder
               f = 2.0F;
               label489:
               ((RelativeLayout.LayoutParams)localObject1).topMargin = AIOUtils.a(f, this.jdField_b_of_type_AndroidContentContext.getResources());
-              localViewHolder.e.setBackgroundResource(2130838007);
+              localViewHolder.e.setBackgroundResource(2130838010);
               if (localViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo.d != 1) {
                 break label1175;
               }
@@ -364,20 +364,20 @@ public class ApolloMainViewBinder
                 localViewHolder.jdField_a_of_type_AndroidViewView = null;
               }
               Object localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-              ((RelativeLayout.LayoutParams)localObject2).addRule(5, 2131363214);
-              ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131363214);
-              ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131363214);
-              ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131363214);
+              ((RelativeLayout.LayoutParams)localObject2).addRule(5, 2131363232);
+              ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131363232);
+              ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131363232);
+              ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131363232);
               RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_b_of_type_AndroidContentContext);
               localRelativeLayout.setId(2131362379);
               localRelativeLayout.setBackgroundDrawable(null);
               ((RelativeLayout)localObject1).addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject2);
               localViewHolder.jdField_a_of_type_AndroidViewView = localRelativeLayout;
               localObject2 = new ImageView(this.jdField_b_of_type_AndroidContentContext);
-              ((ImageView)localObject2).setImageResource(2130838136);
+              ((ImageView)localObject2).setImageResource(2130838139);
               ((ImageView)localObject2).setVisibility(8);
               localRelativeLayout.addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
-              ((ImageView)localObject2).postDelayed(new yus(this, (ImageView)localObject2, localRelativeLayout, (RelativeLayout)localObject1, localViewHolder), 200L);
+              ((ImageView)localObject2).postDelayed(new yxy(this, (ImageView)localObject2, localRelativeLayout, (RelativeLayout)localObject1, localViewHolder), 200L);
               this.f = -1;
               label1029:
               localView.setContentDescription(localApolloActionData.actionName);
@@ -426,7 +426,7 @@ public class ApolloMainViewBinder
             {
               ((TextView)localObject1).setTextSize(f);
               localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
-              localViewHolder.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838008);
+              localViewHolder.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838011);
               break;
               localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setTextSize(10.0F);
               if (h == 0) {
@@ -491,7 +491,7 @@ public class ApolloMainViewBinder
         }
       } while (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsOpenCallback == null);
       paramView.setClickable(false);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)paramView.getParent()).findViewById(2131363170));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)paramView.getParent()).findViewById(2131363188));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqApolloUtilsOpenCallback.a();
       return;

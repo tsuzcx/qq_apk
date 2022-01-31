@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akiy;
-import akiz;
+import akxh;
+import akxi;
 import android.os.Handler;
 
 public class WebViewProgressBarController
@@ -10,7 +10,7 @@ public class WebViewProgressBarController
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new akiz(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new akxi(this);
   protected WebViewProgressBar a;
   public boolean a;
   private byte jdField_b_of_type_Byte = 6;
@@ -52,10 +52,10 @@ public class WebViewProgressBarController
   
   public void a()
   {
-    int j = akiy.a(0).b();
+    int j = akxh.a(0).b();
     int i = j;
     if (j <= 0) {
-      i = akiy.a(0).a();
+      i = akxh.a(0).a();
     }
     this.c = (20.0F / i);
     this.jdField_b_of_type_Float = 0.0F;
@@ -122,11 +122,11 @@ public class WebViewProgressBarController
   
   public void b()
   {
-    akiy.a(0).a();
-    int j = akiy.a(1).b();
+    akxh.a(0).a();
+    int j = akxh.a(1).b();
     int i = j;
     if (j <= 0) {
-      i = akiy.a(1).a();
+      i = akxh.a(1).a();
     }
     this.c = (60.0F / i);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -137,7 +137,7 @@ public class WebViewProgressBarController
   
   public void c()
   {
-    akiy.a(1).a();
+    akxh.a(1).a();
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_b_of_type_Byte = 5;
     this.c = 0.1333333F;
@@ -268,7 +268,7 @@ public class WebViewProgressBarController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WebViewProgressBarController
  * JD-Core Version:    0.7.0.1
  */

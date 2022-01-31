@@ -1,28 +1,18 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class tro
-  implements View.OnFocusChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public tro(SubLoginActivity paramSubLoginActivity) {}
+  public tro(SendMultiPictureHelper paramSendMultiPictureHelper) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (true == paramBoolean)
-    {
-      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
-        SubLoginActivity.a(this.a).setVisibility(0);
-      }
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
-    }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
-      return;
-    }
-    SubLoginActivity.a(this.a).setVisibility(8);
+    this.a.a.show();
+    this.a.b = false;
+    SendMultiPictureHelper.c(this.a);
   }
 }
 

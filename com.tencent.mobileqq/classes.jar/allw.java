@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListView.SavedState;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qidian.QidianManager;
+import com.tencent.qidian.data.BmqqAccountType;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class allw
-  implements Parcelable.Creator
+public class allw
+  implements Runnable
 {
-  public ExpandableListView.SavedState a(Parcel paramParcel)
-  {
-    return new ExpandableListView.SavedState(paramParcel, null);
-  }
+  public allw(QidianManager paramQidianManager, String paramString) {}
   
-  public ExpandableListView.SavedState[] a(int paramInt)
+  public void run()
   {
-    return new ExpandableListView.SavedState[paramInt];
+    this.jdField_a_of_type_ComTencentQidianQidianManager.b(this.jdField_a_of_type_ComTencentQidianQidianManager.a.getApp().getBaseContext(), new BmqqAccountType(this.jdField_a_of_type_JavaLangString, 6));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     allw
  * JD-Core Version:    0.7.0.1
  */

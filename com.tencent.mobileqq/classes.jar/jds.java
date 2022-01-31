@@ -1,12 +1,20 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.core.VcControllerImpl;
 
 public class jds
-  implements AudioManager.OnAudioFocusChangeListener
+  implements Runnable
 {
   public jds(VideoController paramVideoController) {}
   
-  public void onAudioFocusChange(int paramInt) {}
+  public void run()
+  {
+    if ((this.a.a().a) && (this.a.a().i) && (this.a.a().d == 2))
+    {
+      this.a.a().f = false;
+      this.a.a.pauseVideo(this.a.a().c);
+    }
+  }
 }
 
 

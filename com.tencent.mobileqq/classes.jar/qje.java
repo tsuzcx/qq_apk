@@ -1,50 +1,40 @@
-import android.app.Activity;
-import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
-import com.tencent.gdtad.jsbridge.GdtJsCallHandler;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.util.GdtDeviceUtil;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.gamecenter.appointment.GameCenterBroadcastReceiver;
+import com.tencent.gamecenter.appointment.GameCenterCheck;
+import com.tencent.open.wadl.WLog;
+import com.tencent.qphone.base.util.QLog;
 
-public class qje
-  implements GdtJsCallHandler
+public final class qje
+  extends BroadcastReceiver
 {
-  public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramGdtAdWebPlugin == null) || (paramGdtAdWebPlugin.mRuntime == null) || (paramGdtAdWebPlugin.mRuntime.a() == null))
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      GdtLog.d("GdtMacJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    Activity localActivity = paramGdtAdWebPlugin.mRuntime.a();
-    paramVarArgs = new JSONObject();
-    try
-    {
-      paramVarArgs.put("macAddress", GdtDeviceUtil.b(localActivity));
-      try
+      do
       {
-        paramGdtAdWebPlugin.callJs(paramString, new String[] { paramVarArgs.toString() });
-        return true;
-      }
-      catch (Throwable paramGdtAdWebPlugin)
-      {
-        GdtLog.d("GdtMacJsCallHandler", "handleJsCallRequest error", paramGdtAdWebPlugin);
-        return true;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        GdtLog.d("GdtMacJsCallHandler", "handleJsCallRequest error", localJSONException);
-      }
-    }
+        return;
+        if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+        {
+          if (QLog.isColorLevel()) {
+            WLog.b("GameCenterBroadcastReceiver", "mScreenOff = true");
+          }
+          GameCenterCheck.b();
+          return;
+        }
+      } while (!"android.intent.action.BATTERY_CHANGED".equals(paramContext));
+      GameCenterBroadcastReceiver.a = paramIntent.getIntExtra("level", 0) * 100 / paramIntent.getIntExtra("scale", 100);
+    } while (!QLog.isColorLevel());
+    WLog.b("GameCenterBroadcastReceiver", "battery cap= " + GameCenterBroadcastReceiver.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     qje
  * JD-Core Version:    0.7.0.1
  */

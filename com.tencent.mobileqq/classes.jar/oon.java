@@ -1,20 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.view.StoryNewGuideDialog;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.QuestionElement;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper;
 
 public class oon
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public oon(StoryNewGuideDialog paramStoryNewGuideDialog) {}
+  public oon(PollWidgetUtils.WidgetWrapper paramWidgetWrapper) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.dismiss();
+    PollWidgetUtils.WidgetWrapper localWidgetWrapper = this.a;
+    if (!PollWidgetUtils.WidgetWrapper.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PollWidgetUtils.WidgetWrapper.a(localWidgetWrapper, bool);
+      this.a.a.a(PollWidgetUtils.WidgetWrapper.a(this.a));
+      return;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

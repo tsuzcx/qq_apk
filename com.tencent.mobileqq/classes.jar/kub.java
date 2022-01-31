@@ -1,22 +1,61 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementCoverPreloadManager;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class kub
-  implements Animation.AnimationListener
+  implements URLDrawable.DownloadListener
 {
-  public kub(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public kub(AdvertisementCoverPreloadManager paramAdvertisementCoverPreloadManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onFileDownloadFailed(int paramInt)
   {
-    this.a.setResult(-1);
-    PublicAccountAdvertisementActivity.f(this.a);
-    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
+    synchronized ()
+    {
+      String str = (String)AdvertisementCoverPreloadManager.a(this.a).get(0);
+      AdvertisementCoverPreloadManager.a(this.a).remove(0);
+      if (AdvertisementCoverPreloadManager.b(this.a) != null)
+      {
+        if (!AdvertisementCoverPreloadManager.b(this.a).contains(str)) {
+          break label119;
+        }
+        AdvertisementCoverPreloadManager.b(this.a).remove(str);
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(delete) url:" + str);
+        }
+      }
+      label119:
+      do
+      {
+        AdvertisementCoverPreloadManager.a(this.a, null);
+        AdvertisementCoverPreloadManager.a(this.a);
+        return;
+        AdvertisementCoverPreloadManager.a(this.a).add(str);
+        AdvertisementCoverPreloadManager.b(this.a).add(str);
+      } while (!QLog.isColorLevel());
+      QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(retry) url:" + str);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onFileDownloadStarted() {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    synchronized ()
+    {
+      String str = (String)AdvertisementCoverPreloadManager.a(this.a).get(0);
+      AdvertisementCoverPreloadManager.a(this.a).remove(0);
+      if ((AdvertisementCoverPreloadManager.b(this.a) != null) && (AdvertisementCoverPreloadManager.b(this.a).contains(str))) {
+        AdvertisementCoverPreloadManager.b(this.a).remove(str);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadSucceed url:" + str);
+      }
+      AdvertisementCoverPreloadManager.a(this.a, null);
+      AdvertisementCoverPreloadManager.a(this.a);
+      return;
+    }
+  }
 }
 
 

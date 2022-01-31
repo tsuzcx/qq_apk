@@ -1,35 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.QzoneSyncQQStoryTool;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class xpf
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public xpf(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  public xpf(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = true;
-    if (NewFlowEditVideoActivity.d(this.a))
+    switch (paramInt)
     {
-      NewFlowEditVideoActivity.c(this.a).setSelected(false);
-      paramView = this.a;
-      if (NewFlowEditVideoActivity.d(this.a)) {
-        break label76;
-      }
-    }
-    for (;;)
-    {
-      NewFlowEditVideoActivity.c(paramView, bool);
-      QzoneSyncQQStoryTool.a(NewFlowEditVideoActivity.a(this.a), NewFlowEditVideoActivity.d(this.a));
+    default: 
       return;
-      NewFlowEditVideoActivity.c(this.a).setSelected(true);
-      break;
-      label76:
-      bool = false;
     }
+    if (this.a.a.b.get() == 4) {
+      this.a.a(false);
+    }
+    this.a.a.a("FlowCameraActivity");
+    this.a.d();
+    FlowCameraMqqAction.b("", "0X800656F", "0");
   }
 }
 

@@ -1,16 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
 public class wyb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wyb(RedPacketRecordFragment paramRedPacketRecordFragment) {}
+  public wyb(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!this.a.e()) {
-      this.a.getActivity().runOnUiThread(new wyc(this));
-    }
+    this.a.a.toggle();
   }
 }
 

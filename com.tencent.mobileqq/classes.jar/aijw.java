@@ -1,23 +1,28 @@
-import android.view.animation.DecelerateInterpolator;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
 
-public class aijw
-  implements Runnable
+class aijw
+  implements DialogInterface.OnClickListener
 {
-  public aijw(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  aijw(aijv paramaijv, Context paramContext, View paramView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a, "scrollY", new int[] { this.jdField_a_of_type_Int }).setDuration(this.b);
-    localObjectAnimator.setInterpolator(new DecelerateInterpolator());
-    localObjectAnimator.addListener(new aijx(this));
-    localObjectAnimator.start();
+    StructMsgItemVideo.a(this.jdField_a_of_type_Aijv.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
+      ReportController.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijw
  * JD-Core Version:    0.7.0.1
  */

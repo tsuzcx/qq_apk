@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import almf;
-import almg;
+import ambv;
+import ambw;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -17,7 +17,7 @@ public class GestureSelectGridView
   Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   public AbsListView.OnScrollListener a;
   public GestureSelectGridView.OnSelectListener a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new almf(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new ambv(this);
   public AtomicBoolean a;
   public boolean a;
   float b;
@@ -44,7 +44,7 @@ public class GestureSelectGridView
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Int = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 15);
-    super.setOnScrollListener(new almg(this));
+    super.setOnScrollListener(new ambw(this));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -256,7 +256,7 @@ public class GestureSelectGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.GestureSelectGridView
  * JD-Core Version:    0.7.0.1
  */

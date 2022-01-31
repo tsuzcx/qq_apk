@@ -1,21 +1,17 @@
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementStatistics;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qphone.base.util.QLog;
 
 public class kvx
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements Runnable
 {
-  public kvx(VideoCoverView paramVideoCoverView) {}
+  public kvx(CustomWebView paramCustomWebView) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void run()
   {
-    this.a.jdField_a_of_type_Int = 7;
-    AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
-    this.a.g();
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomWebView", 2, "webview real destroy now");
+    }
+    this.a.b();
   }
 }
 

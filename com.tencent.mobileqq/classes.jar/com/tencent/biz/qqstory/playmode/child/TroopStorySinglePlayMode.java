@@ -11,7 +11,7 @@ import com.tencent.biz.qqstory.troop.model.TroopStorySingleVideoSynchronizer;
 import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
 import java.util.ArrayList;
-import nkn;
+import nlx;
 
 public class TroopStorySinglePlayMode
   extends TroopStoryPlayModeBase
@@ -53,7 +53,7 @@ public class TroopStorySinglePlayMode
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.clear();
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.addAll(paramPlayerVideoListEvent.a);
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-      this.jdField_a_of_type_AndroidOsHandler.post(new nkn(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new nlx(this));
     }
   }
 }

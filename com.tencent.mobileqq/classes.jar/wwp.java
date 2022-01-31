@@ -1,14 +1,42 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import android.media.MediaMetadataRetriever;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaDatabaseHelper;
+import com.tencent.mobileqq.activity.photo.MediaScanner;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaScannerListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class wwp
   implements Runnable
 {
-  public wwp(PasswdRedBagManager paramPasswdRedBagManager) {}
+  public wwp(MediaScanner paramMediaScanner, WeakReference paramWeakReference1, WeakReference paramWeakReference2, int paramInt) {}
   
   public void run()
   {
-    PasswdRedBagManager.a(this.a).b();
+    try
+    {
+      LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      MediaScanner.OnMediaScannerListener localOnMediaScannerListener = (MediaScanner.OnMediaScannerListener)this.b.get();
+      if (localLocalMediaInfo != null)
+      {
+        if (localOnMediaScannerListener == null) {
+          return;
+        }
+        MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+        localMediaMetadataRetriever.setDataSource(localLocalMediaInfo.path);
+        localLocalMediaInfo.mDuration = Long.parseLong(localMediaMetadataRetriever.extractMetadata(9));
+        localOnMediaScannerListener.a(this.jdField_a_of_type_Int, localLocalMediaInfo);
+        MediaScanner.a(MediaScanner.a(BaseApplicationImpl.getContext())).a(localLocalMediaInfo.path, localLocalMediaInfo.mDuration);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaScanner", 2, "queryMediaInfoDuration() error=" + localException.getMessage());
+      }
+    }
   }
 }
 

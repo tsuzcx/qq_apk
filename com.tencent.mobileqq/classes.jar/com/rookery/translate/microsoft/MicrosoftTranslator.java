@@ -14,11 +14,11 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import jcx;
-import jcy;
-import jcz;
-import jda;
-import jdb;
+import jci;
+import jcj;
+import jck;
+import jcl;
+import jcm;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
 
@@ -28,7 +28,7 @@ public class MicrosoftTranslator
   private static MicrosoftTranslator jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator;
   public DocumentBuilder a;
   DocumentBuilderFactory jdField_a_of_type_JavaxXmlParsersDocumentBuilderFactory = DocumentBuilderFactory.newInstance();
-  private jdb jdField_a_of_type_Jdb = new jdb(this, null);
+  private jcm jdField_a_of_type_Jcm = new jcm(this, null);
   
   private MicrosoftTranslator()
   {
@@ -64,7 +64,7 @@ public class MicrosoftTranslator
     paramLong.put("grant_type", "client_credentials");
     try
     {
-      jcx.a(paramContext, null, paramLong, new jda(this, paramJsonHttpResponseHandler));
+      jci.a(paramContext, null, paramLong, new jcl(this, paramJsonHttpResponseHandler));
       return;
     }
     catch (UnsupportedEncodingException paramContext)
@@ -83,8 +83,8 @@ public class MicrosoftTranslator
       paramString = new BasicHeader("Authorization", "Bearer " + paramString);
       try
       {
-        localObject = new jcz(this, paramList, paramTranslateWithTimeCallback, paramLong);
-        jcx.a(paramContext, new Header[] { paramString }, paramList, paramLanguage, (AsyncHttpResponseHandler)localObject);
+        localObject = new jck(this, paramList, paramTranslateWithTimeCallback, paramLong);
+        jci.a(paramContext, new Header[] { paramString }, paramList, paramLanguage, (AsyncHttpResponseHandler)localObject);
         return;
       }
       catch (UnsupportedEncodingException paramContext)
@@ -112,17 +112,17 @@ public class MicrosoftTranslator
   
   public void a(Context paramContext, List paramList, Language paramLanguage, Long paramLong, String paramString1, String paramString2, TranslateWithTimeCallback paramTranslateWithTimeCallback)
   {
-    if (System.currentTimeMillis() < this.jdField_a_of_type_Jdb.jdField_a_of_type_Long)
+    if (System.currentTimeMillis() < this.jdField_a_of_type_Jcm.jdField_a_of_type_Long)
     {
-      a(paramContext, paramList, paramLanguage, this.jdField_a_of_type_Jdb.jdField_a_of_type_JavaLangString, paramLong, paramTranslateWithTimeCallback);
+      a(paramContext, paramList, paramLanguage, this.jdField_a_of_type_Jcm.jdField_a_of_type_JavaLangString, paramLong, paramTranslateWithTimeCallback);
       return;
     }
-    a(paramContext, paramString1, paramString2, paramLong, new jcy(this, paramLong, paramContext, paramList, paramLanguage, paramTranslateWithTimeCallback));
+    a(paramContext, paramString1, paramString2, paramLong, new jcj(this, paramLong, paramContext, paramList, paramLanguage, paramTranslateWithTimeCallback));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.rookery.translate.microsoft.MicrosoftTranslator
  * JD-Core Version:    0.7.0.1
  */

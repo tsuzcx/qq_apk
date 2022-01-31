@@ -1,20 +1,37 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class acuj
   implements Runnable
 {
-  public acuj(MusicFilePresenter paramMusicFilePresenter, String paramString, int paramInt) {}
+  public acuj(FileTransferHandler paramFileTransferHandler, long paramLong, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterMusicFilePresenter.a.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterMusicFilePresenter.a.c(this.jdField_a_of_type_Int);
+    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "] Handle upload failed notify. retCode =" + this.jdField_a_of_type_Int + "(1:cancel upload) reason=" + this.jdField_a_of_type_JavaLangString);
+    if (1 == this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
+      return;
+    }
+    if (2 == this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
+      return;
+    }
+    if (3 == this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().c(this.b, this.jdField_a_of_type_Long);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.b, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acuj
  * JD-Core Version:    0.7.0.1
  */

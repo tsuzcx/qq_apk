@@ -1,41 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderInterface;
+import java.io.File;
 
 public class xfk
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xfk(BannerManager paramBannerManager) {}
+  public xfk(PreloadComDownloader paramPreloadComDownloader, String paramString1, String paramString2, DownloadListener paramDownloadListener, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    case 2131365401: 
-    case 2131365402: 
-    default: 
-    case 2131365399: 
-      do
-      {
-        return;
-        paramView = new Intent(BannerManager.a(this.a), LoginManagerActivity.class);
-        paramView.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
-        paramView.putExtra("appType", this.a.jdField_b_of_type_Int);
-        paramView.putExtra("subappid", this.a.a);
-        paramView.putExtra("clientType", this.a.jdField_b_of_type_Long);
-        BannerManager.a(this.a).startActivity(paramView);
-      } while (this.a.jdField_b_of_type_Long != 77313L);
-      ReportController.b(BannerManager.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
-      return;
+    DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_JavaLangString, new File(this.b));
+    localDownloadTask.f = "QwalletPreload";
+    if (PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader) != null) {
+      PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader).a(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_AndroidOsBundle);
     }
-    if (this.a.jdField_b_of_type_Long == 77313L) {
-      this.a.jdField_b_of_type_Boolean = true;
-    }
-    this.a.b();
   }
 }
 

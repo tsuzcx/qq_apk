@@ -1,30 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFragment;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
 
 public class andl
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public andl(EditVideoFragment paramEditVideoFragment, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
+  public andl(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
-    int j = this.b;
-    int k = (int)(f * (this.c - this.d));
-    int m = this.d;
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.leftMargin = (i + j);
-    paramValueAnimator.bottomMargin = (m + k);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    RemoteHandleManager.a().a().n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andl
  * JD-Core Version:    0.7.0.1
  */

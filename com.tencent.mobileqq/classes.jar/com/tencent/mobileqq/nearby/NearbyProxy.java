@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby;
 
-import adzh;
-import adzi;
-import adzj;
-import adzn;
-import adzo;
-import adzp;
-import adzq;
-import adzr;
+import aemn;
+import aemo;
+import aemp;
+import aemt;
+import aemu;
+import aemv;
+import aemw;
+import aemx;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -62,7 +62,7 @@ public class NearbyProxy
   int jdField_a_of_type_Int = 0;
   ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener;
   ConditionSearchManager jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new adzj(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aemp(this);
   public QQAppInterface a;
   public ShieldListObserver a;
   NearbyConfigUtil jdField_a_of_type_ComTencentMobileqqNearbyNearbyConfigUtil;
@@ -80,7 +80,7 @@ public class NearbyProxy
   public NearbyProxy(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new adzi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new aemo(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getUIHandler();
     this.jdField_b_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
@@ -91,7 +91,7 @@ public class NearbyProxy
     if (paramQQAppInterface == null) {
       return;
     }
-    ThreadManager.post(new adzh(paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new aemn(paramQQAppInterface), 5, null, false);
   }
   
   public static void a(String paramString)
@@ -219,7 +219,7 @@ public class NearbyProxy
       if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(new adzn(this));
+        this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(new aemt(this));
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(i, paramMessage, 200);
       if (localObject == null) {
@@ -292,7 +292,7 @@ public class NearbyProxy
     }
     localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = BaseApplication.getContext().getResources().getString(2131437694);
+      localObject = BaseApplication.getContext().getResources().getString(2131437711);
     }
     return localObject;
   }
@@ -308,7 +308,7 @@ public class NearbyProxy
     {
       localObject = str;
       if (str == null) {
-        localObject = BaseApplication.getContext().getResources().getString(2131437645);
+        localObject = BaseApplication.getContext().getResources().getString(2131437662);
       }
       return ((String)localObject).replace("%", paramString);
       DatingUtil.b("getFirstAIOTips", new Object[] { "datingConfig is null" });
@@ -332,9 +332,9 @@ public class NearbyProxy
       }
       return;
       NearbyProcessMonitor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 3);
-      adzq localadzq = new adzq(this, paramInt);
-      localadzq.a = true;
-      a(localadzq);
+      aemw localaemw = new aemw(this, paramInt);
+      localaemw.a = true;
+      a(localaemw);
     }
   }
   
@@ -372,7 +372,7 @@ public class NearbyProxy
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         localObject = (NearbyProxyObserver)this.jdField_a_of_type_JavaUtilList.get(i);
-        this.jdField_a_of_type_MqqOsMqqHandler.post(new adzo(this, (NearbyProxyObserver)localObject, paramInt, paramVarArgs));
+        this.jdField_a_of_type_MqqOsMqqHandler.post(new aemu(this, (NearbyProxyObserver)localObject, paramInt, paramVarArgs));
         i += 1;
       }
       if (paramInt == 4124)
@@ -395,7 +395,7 @@ public class NearbyProxy
       while (i < this.jdField_b_of_type_JavaUtilList.size())
       {
         localObject = (NearbyProxyObserver)this.jdField_b_of_type_JavaUtilList.get(i);
-        this.jdField_b_of_type_MqqOsMqqHandler.post(new adzp(this, (NearbyProxyObserver)localObject, paramInt, paramVarArgs));
+        this.jdField_b_of_type_MqqOsMqqHandler.post(new aemv(this, (NearbyProxyObserver)localObject, paramInt, paramVarArgs));
         i += 1;
       }
       if (paramInt == 4124)
@@ -554,9 +554,9 @@ public class NearbyProxy
         return;
         label97:
         NearbyProcessMonitor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 4);
-        adzr localadzr = new adzr(this, paramAppointmentNotify);
-        localadzr.a = true;
-        a(localadzr);
+        aemx localaemx = new aemx(this, paramAppointmentNotify);
+        localaemx.a = true;
+        a(localaemx);
       }
       break;
     }
@@ -668,10 +668,10 @@ public class NearbyProxy
     //   309: invokevirtual 682	com/tencent/mobileqq/nearby/NearbyProxy:a	(Z[Ljava/lang/Object;)V
     //   312: aconst_null
     //   313: areturn
-    //   314: new 684	adzg
+    //   314: new 684	aemm
     //   317: dup
     //   318: aload_0
-    //   319: invokespecial 685	adzg:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;)V
+    //   319: invokespecial 685	aemm:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;)V
     //   322: aconst_null
     //   323: iconst_1
     //   324: invokestatic 689	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
@@ -1137,10 +1137,10 @@ public class NearbyProxy
     //   1128: checkcast 777	com/tencent/mobileqq/app/ConditionSearchManager
     //   1131: putfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
     //   1134: aload_0
-    //   1135: new 779	adzk
+    //   1135: new 779	aemq
     //   1138: dup
     //   1139: aload_0
-    //   1140: invokespecial 780	adzk:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;)V
+    //   1140: invokespecial 780	aemq:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;)V
     //   1143: putfield 782	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener	Lcom/tencent/mobileqq/app/ConditionSearchManager$IConfigListener;
     //   1146: aload_0
     //   1147: getfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
@@ -1416,11 +1416,11 @@ public class NearbyProxy
     //   1653: dup
     //   1654: invokestatic 877	android/os/Looper:getMainLooper	()Landroid/os/Looper;
     //   1657: invokespecial 880	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   1660: new 882	adzl
+    //   1660: new 882	aemr
     //   1663: dup
     //   1664: aload_0
     //   1665: aload_1
-    //   1666: invokespecial 885	adzl:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;Landroid/content/Context;)V
+    //   1666: invokespecial 885	aemr:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;Landroid/content/Context;)V
     //   1669: invokevirtual 886	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   1672: pop
     //   1673: aconst_null
@@ -1435,11 +1435,11 @@ public class NearbyProxy
     //   1694: dup
     //   1695: invokestatic 877	android/os/Looper:getMainLooper	()Landroid/os/Looper;
     //   1698: invokespecial 880	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   1701: new 890	adzm
+    //   1701: new 890	aems
     //   1704: dup
     //   1705: aload_0
     //   1706: aload_1
-    //   1707: invokespecial 891	adzm:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;Landroid/content/Context;)V
+    //   1707: invokespecial 891	aems:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;Landroid/content/Context;)V
     //   1710: invokevirtual 886	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   1713: pop
     //   1714: aconst_null

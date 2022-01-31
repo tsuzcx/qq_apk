@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.test.MapTestHelper.ToolEnableChangedListener;
+import java.io.File;
+import java.io.FileFilter;
 
-class aatx
-  implements MapTestHelper.ToolEnableChangedListener
+public final class aatx
+  implements FileFilter
 {
-  aatx(aatw paramaatw) {}
-  
-  public void a(boolean paramBoolean)
+  public boolean accept(File paramFile)
   {
-    this.a.a.b(paramBoolean);
+    return paramFile.getName().startsWith("hc_");
   }
 }
 

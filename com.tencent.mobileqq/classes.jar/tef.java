@@ -1,108 +1,72 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanel.LabelStatusManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.MobileQQ;
 
 public class tef
-  extends BaseAdapter
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new teg(this);
-  List jdField_a_of_type_JavaUtilList;
+  public tef(NotifyPushSettingActivity paramNotifyPushSettingActivity, CardHandler paramCardHandler) {}
   
-  public tef(ProfileLabelEditorActivity paramProfileLabelEditorActivity, List paramList)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  private void a(ProfileLabelInfo paramProfileLabelInfo)
-  {
-    Object localObject = null;
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a().keySet().iterator();
-    if (localIterator.hasNext())
-    {
-      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
-      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
-        break label114;
-      }
-      localObject = localProfileLabelInfo;
+    if (AppSetting.b) {
+      NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).setContentDescription("PC离线时自动启动QQ手机版");
     }
-    label114:
-    for (;;)
+    QQAppInterface localQQAppInterface;
+    int i;
+    if (!NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity))
     {
-      break;
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject));
-        return;
+      if (paramBoolean) {
+        ReportController.b(null, "CliOper", "", "", "0X8004972", "0X8004972", 0, 1, "", "", "", "");
       }
-      a(paramProfileLabelInfo.labelId);
+    }
+    else
+    {
+      if ((!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) || (!NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity))) {
+        break label182;
+      }
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app;
+      if (!paramBoolean) {
+        break label171;
+      }
+      i = 1;
+      label94:
+      if (!paramBoolean) {
+        break label176;
+      }
+    }
+    label171:
+    label176:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "PC_active", 0, i, paramCompoundButton, "", "", "");
+      if (!NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)) {
+        this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b(paramBoolean);
+      }
       return;
+      ReportController.b(null, "CliOper", "", "", "0X8004972", "0X8004972", 0, 0, "", "", "", "");
+      break;
+      i = 0;
+      break label94;
     }
-  }
-  
-  private void a(Long paramLong)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
-    }
-    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
-    if (paramLong != null) {
-      paramLong.toggleStatus();
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    label182:
+    NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
+    paramCompoundButton = NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
+    if (!NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2130971584, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
-      paramViewGroup = new tee();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375032));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      int i = paramInt % ProfileActivity.a.length;
-      paramView.setBackgroundResource(ProfileActivity.a[i][0]);
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      i = ProfileActivity.a[i][1];
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      return paramView;
-      paramViewGroup = (tee)paramView.getTag();
+      paramCompoundButton.setChecked(paramBoolean);
+      NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131437530), 0).b(5);
+      return;
     }
   }
 }

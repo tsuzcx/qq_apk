@@ -1,17 +1,21 @@
-import com.tencent.av.ui.EffectSettingBtn;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.EffectSettingUi;
 
 public class jtz
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public jtz(EffectSettingBtn paramEffectSettingBtn) {}
+  public jtz(EffectSettingUi paramEffectSettingUi) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    EffectSettingBtn.b(this.a);
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,166 +1,132 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.drawer.CardDrawerStatus;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
+import com.tencent.mobileqq.data.MessageForQQWalletTips;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.lang.ref.SoftReference;
 import org.json.JSONObject;
 
-class abut
-  implements Runnable
+public class abut
+  extends ClickableSpan
 {
-  abut(abue paramabue, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public abut(MessageForQQWalletTips paramMessageForQQWalletTips, SoftReference paramSoftReference1, SoftReference paramSoftReference2, String paramString, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    Object localObject1;
-    Object localObject2;
-    label278:
+    int j = 0;
+    Context localContext = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if ((localQQAppInterface == null) || (localContext == null)) {
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.frienduin;
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    switch (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.istroop)
     {
-      do
-      {
-        for (;;)
-        {
-          try
-          {
-            localObject1 = new JSONObject(this.jdField_a_of_type_JavaLangString);
-            JSONObject localJSONObject = new JSONObject();
-            localObject2 = ((JSONObject)localObject1).optString("optType");
-            if (!"flower".equals(localObject2)) {
-              break label278;
-            }
-            localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-            if (localObject1 != null)
-            {
-              localObject1 = ((JSONObject)localObject1).optString("toUin");
-              localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-              Calendar localCalendar = Calendar.getInstance();
-              ((SharedPreferences)localObject2).edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "apollo_today_has_vote" + (String)localObject1 + localCalendar.get(1) + localCalendar.get(2) + localCalendar.get(5), true).commit();
-              localJSONObject.put("result", 0);
-              localObject1 = new Bundle();
-              ((Bundle)localObject1).putString("writeRet", localJSONObject.toString());
-              this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
-              this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-              return;
-            }
-            localJSONObject.put("result", 1);
-            localJSONObject.put("msg", "数据缺失");
-            continue;
-            QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
-          }
-          catch (JSONException localJSONException)
-          {
-            if (!QLog.isColorLevel()) {
-              break label781;
-            }
-          }
-          return;
-          if ("gameIntro".equals(localObject2))
-          {
-            localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-            if (localObject1 != null)
-            {
-              i = ((JSONObject)localObject1).optInt("gameId");
-              BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0).edit().putBoolean("apollo_game_first_clk_" + i, false).commit();
-              localJSONException.put("result", 0);
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.emoji.web.MessengerService", 2, "gameIntro from web write, gameId:" + i);
-              }
-            }
-          }
-          else if ("lifeChange".equals(localObject2))
-          {
-            localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-            if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-            {
-              i = ((JSONObject)localObject1).optInt("gameId");
-              int j = ((JSONObject)localObject1).optInt("life");
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.emoji.web.MessengerService", 2, new Object[] { "lifeChange, gameId", Integer.valueOf(i), ", game coin count=" + j });
-              }
-              ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j);
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-              if (localObject1 != null) {
-                ((MqqHandler)localObject1).obtainMessage(76).sendToTarget();
-              }
-              localJSONException.put("result", 0);
-            }
-            else
-            {
-              localJSONException.put("result", 1);
-              localJSONException.put("msg", "数据缺失");
-            }
-          }
-          else
-          {
-            if (!"danUpgrade".equals(localObject2)) {
-              break;
-            }
-            ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "refreshAction");
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.emoji.web.MessengerService", 2, "ipc call danUpgrade,maybe have new slave action");
-            }
-            localJSONException.put("result", 0);
-          }
-        }
-        if (!"drawerAudio".equals(localObject2)) {
-          break;
-        }
-        localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-      } while (localObject1 == null);
-      if (((JSONObject)localObject1).has("audio"))
-      {
-        i = ((JSONObject)localObject1).optInt("audio");
-        break label782;
-      }
+    default: 
+      paramView = "";
+      i = 0;
+      j = -1;
     }
     for (;;)
     {
-      CardDrawerStatus.a(bool);
-      break;
-      QLog.e("ApolloJsApi", 1, "drawerVoice has no val");
-      i = 0;
-      break label782;
-      if (!"lastShopScheme".equals(localObject2)) {
-        break;
+      if ((i != 0) && (localQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.reciverUin))) {
+        localObject = localQQAppInterface.getCurrentAccountUin();
       }
-      localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.emoji.web.MessengerService", 2, new Object[] { "lastShopScheme, data=", localObject1 });
-      }
-      if (localObject1 == null) {
-        break;
-      }
-      localObject1 = ((JSONObject)localObject1).optString("lastShopScheme");
-      ((ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152)).c((String)localObject1);
-      break;
-      label781:
-      label782:
-      do
+      for (;;)
       {
-        bool = true;
-        break;
+        JSONObject localJSONObject2 = new JSONObject();
+        JSONObject localJSONObject1 = new JSONObject();
+        try
+        {
+          localJSONObject2.put("listid", this.jdField_a_of_type_JavaLangString);
+          localJSONObject2.put("name", paramView);
+          localJSONObject2.put("grouptype", j + "");
+          localJSONObject2.put("groupid", localObject);
+          if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey != null) {
+            localJSONObject2.put("authkey", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.authKey);
+          }
+          localJSONObject1.put("userId", localQQAppInterface.getCurrentAccountUin());
+          localJSONObject1.put("viewTag", "redgiftDetail");
+          localJSONObject1.put("app_info", "appid#1344242394|bargainor_id#1000030201|channel#graytips");
+          localJSONObject1.put("come_from", 2);
+          localJSONObject1.put("extra_data", localJSONObject2);
+        }
+        catch (Exception paramView)
+        {
+          label317:
+          break label317;
+        }
+        paramView = new Bundle();
+        paramView.putString("json", localJSONObject1.toString());
+        paramView.putString("callbackSn", "0");
+        localObject = new Intent(localContext, PayBridgeActivity.class);
+        ((Intent)localObject).putExtras(paramView);
+        ((Intent)localObject).putExtra("pay_requestcode", 5);
+        localContext.startActivity((Intent)localObject);
         return;
-        if (i == 0) {
+        paramView = localQQAppInterface.getCurrentNickname();
+        i = 1;
+        break;
+        paramView = (HotChatManager)localQQAppInterface.getManager(59);
+        if ((paramView != null) && (paramView.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.frienduin)))
+        {
+          paramView = ContactUtils.q(localQQAppInterface, localQQAppInterface.getCurrentNickname());
+          if (!TextUtils.isEmpty(paramView)) {
+            break label562;
+          }
+          paramView = localQQAppInterface.getCurrentNickname();
+          i = 0;
+          j = 5;
           break;
         }
-      } while (i != 1);
-      bool = true;
+        paramView = localQQAppInterface.getCurrentNickname();
+        j = 1;
+        i = 0;
+        break;
+        paramView = ContactUtils.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.memberUin);
+        i = 0;
+        j = 2;
+        break;
+        j = 3;
+        paramView = localQQAppInterface.getCurrentNickname();
+        i = 1;
+        break;
+        j = 4;
+        paramView = localQQAppInterface.getCurrentNickname();
+        i = 1;
+        break;
+        j = 6;
+        paramView = ContactUtils.q(localQQAppInterface, localQQAppInterface.getCurrentNickname());
+        if (!TextUtils.isEmpty(paramView)) {
+          break label557;
+        }
+        paramView = localQQAppInterface.getCurrentNickname();
+        i = 1;
+        break;
+      }
+      label557:
+      i = 1;
+      continue;
+      label562:
+      i = 0;
+      j = 5;
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

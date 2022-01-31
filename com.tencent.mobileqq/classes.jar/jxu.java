@@ -1,47 +1,37 @@
 import android.os.Handler;
 import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
 public class jxu
   implements Runnable
 {
-  public jxu(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public jxu(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
   public void run()
   {
-    this.a.b = "QQ电话";
-    if (this.a.jdField_d_of_type_Int == 2) {
-      if ("CREATE_FROM_CALL".equals(this.a.jdField_a_of_type_ComTencentAvVideoController.a().t))
-      {
-        this.a.b = "多人电话";
-        this.a.b = this.a.a(this.a.b, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.jdField_d_of_type_Int, String.valueOf(this.a.jdField_a_of_type_Long)), this.a.jdField_d_of_type_AndroidWidgetTextView);
-      }
+    Object localObject = "QQ电话";
+    if (this.a.jdField_c_of_type_Int == 2) {
+      localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(3000, String.valueOf(this.a.jdField_a_of_type_Long), null);
     }
     for (;;)
     {
-      this.a.jdField_d_of_type_AndroidWidgetTextView.setText(this.a.b);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.b);
-      MultiVideoCtrlLayerUIBase localMultiVideoCtrlLayerUIBase = this.a;
-      localMultiVideoCtrlLayerUIBase.g += 1;
-      if (this.a.f != null)
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      localObject = this.a;
+      ((MultiVideoEnterPageActivity)localObject).g += 1;
+      if (this.a.jdField_c_of_type_JavaLangRunnable != null)
       {
         if (this.a.g >= 3) {
-          break label287;
+          break;
         }
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.f, 1000L);
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
       }
       return;
-      this.a.b = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.c, String.valueOf(this.a.jdField_a_of_type_Long), null);
-      break;
-      if (this.a.jdField_d_of_type_Int == 1) {
-        this.a.b = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.c, String.valueOf(this.a.jdField_a_of_type_Long), null);
+      if (this.a.jdField_c_of_type_Int == 1) {
+        localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(1, String.valueOf(this.a.jdField_a_of_type_Long), null);
       }
     }
-    label287:
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.f);
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.jdField_c_of_type_JavaLangRunnable);
   }
 }
 

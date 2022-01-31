@@ -1,37 +1,27 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.model.QueryTask.Query;
 
 public class vbk
-  implements View.OnClickListener
+  implements QueryTask.Query
 {
-  public vbk(ReplyTextItemBuilder paramReplyTextItemBuilder) {}
+  public vbk(MarketFaceItemBuilder paramMarketFaceItemBuilder, MarketFaceItemBuilder.Holder paramHolder) {}
   
-  public void onClick(View paramView)
+  public Void a(MarkFaceMessage paramMarkFaceMessage)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    paramMarkFaceMessage = ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getManager(13)).a(paramMarkFaceMessage);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo = paramMarkFaceMessage;
+    if ((paramMarkFaceMessage != null) && (paramMarkFaceMessage.a != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getManager(13)).a(paramMarkFaceMessage.a.epId);
     }
-    paramView = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(paramView))
-    {
-      Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("url", paramView);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2131034134, 0);
-    }
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_msg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    MagicfaceViewController.a();
+    return null;
   }
 }
 

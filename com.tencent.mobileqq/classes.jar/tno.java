@@ -1,55 +1,18 @@
-import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 
 public class tno
-  implements Runnable
+  extends CardObserver
 {
-  public tno(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity, Bundle paramBundle) {}
+  public tno(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {}
-    do
-    {
-      boolean bool1;
-      boolean bool2;
-      String str1;
-      String str2;
-      do
-      {
-        return;
-        bool1 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("visibility", false);
-        localObject = this.jdField_a_of_type_AndroidOsBundle.getString("enableVersion");
-        bool2 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("checked", false);
-        str1 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockText");
-        str2 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpText");
-        RegisterVerifyCodeActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity, this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpURL"));
-      } while ((!bool1) || (TextUtils.isEmpty(str1)) || (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity, "7.6.0", (String)localObject) < 0));
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterVerifyCodeActivity", 2, "update ui.");
-      }
-      if ((bool2) && (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) != null)) {
-        RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setChecked(bool2);
-      }
-      Object localObject = SpannableString.valueOf(str1);
-      if (!TextUtils.isEmpty(str2))
-      {
-        tnp localtnp = new tnp(this, str1);
-        int i = str1.indexOf(str2);
-        ((SpannableString)localObject).setSpan(localtnp, i, str2.length() + i, 33);
-      }
-      RegisterVerifyCodeActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setText((CharSequence)localObject);
-      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setContentDescription((CharSequence)localObject);
-      RegisterVerifyCodeActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setMovementMethod(LinkMovementMethod.getInstance());
-    } while (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) == null);
-    RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setVisibility(0);
+    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
+      QQSettingSettingActivity.a(this.a, (Card)paramObject);
+    }
   }
 }
 

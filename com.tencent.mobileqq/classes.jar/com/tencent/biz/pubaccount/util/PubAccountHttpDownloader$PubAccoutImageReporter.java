@@ -116,7 +116,7 @@ public class PubAccountHttpDownloader$PubAccoutImageReporter
       {
         return;
         if ((paramDownloadParams.mExtraInfo == null) || (!(paramDownloadParams.mExtraInfo instanceof MessageRecord))) {
-          break label887;
+          break label898;
         }
         paramDownloadParams = (MessageRecord)paramDownloadParams.mExtraInfo;
         localObject1 = paramDownloadParams.frienduin;
@@ -126,7 +126,7 @@ public class PubAccountHttpDownloader$PubAccoutImageReporter
           break;
         }
         if ((!(paramDownloadParams instanceof MessageForPubAccount)) || (((MessageForPubAccount)paramDownloadParams).mPAMessage == null)) {
-          break label882;
+          break label893;
         }
         paramDownloadParams = "" + ((MessageForPubAccount)paramDownloadParams).mPAMessage.mMsgId;
         break;
@@ -169,7 +169,7 @@ public class PubAccountHttpDownloader$PubAccoutImageReporter
         this.jdField_a_of_type_JavaUtilHashMap.put("OriginURL", this.jdField_b_of_type_JavaLangString);
         localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
         if (!this.jdField_a_of_type_Boolean) {
-          break label846;
+          break label850;
         }
         paramDownloadParams = String.valueOf(1);
         label514:
@@ -205,7 +205,7 @@ public class PubAccountHttpDownloader$PubAccoutImageReporter
         break;
         paramDownloadParams = "";
         break label459;
-        label846:
+        label850:
         paramDownloadParams = String.valueOf(0);
         break label514;
         paramDownloadParams = "actSubscriptionAIO";
@@ -215,11 +215,13 @@ public class PubAccountHttpDownloader$PubAccoutImageReporter
         paramDownloadParams = "actSubscriptionFolder";
         continue;
         paramDownloadParams = "actKandianImage";
+        continue;
+        paramDownloadParams = "actNativeWebImage";
       }
-      label882:
+      label893:
       paramDownloadParams = null;
       continue;
-      label887:
+      label898:
       paramDownloadParams = null;
       localObject1 = null;
     }

@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import cooperation.weiyun.utils.PreferenceUtils;
-import java.util.List;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
 
 public class wsl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wsl(AlbumListActivity paramAlbumListActivity) {}
+  public wsl(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (AlbumListActivity.a(this.a)) {
-      PreferenceUtils.a(this.a.getApplicationContext(), this.a.a, "pref_select_album", PreferenceUtils.a(AlbumListActivity.a(this.a).iterator()));
-    }
-    this.a.onBackPressed();
+    RedTouchManager localRedTouchManager = (RedTouchManager)this.a.app.getManager(35);
+    this.a.a = localRedTouchManager.a("100100.100125.100127");
+    this.a.runOnUiThread(new wsm(this));
   }
 }
 

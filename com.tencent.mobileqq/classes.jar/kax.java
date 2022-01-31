@@ -1,26 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class kax
-  implements Animation.AnimationListener
+class kax
+  implements Runnable
 {
-  public kax(VideoControlUI paramVideoControlUI) {}
+  kax(kaw paramkaw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.clearAnimation();
-    this.a.c.clearAnimation();
-    this.a.b.clearAnimation();
-    this.a.e.clearAnimation();
-    this.a.l(true);
+    this.a.a.c();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

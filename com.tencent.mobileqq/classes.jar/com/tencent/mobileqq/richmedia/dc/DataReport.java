@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import agzx;
+import ahnz;
 import android.os.Handler;
 import android.os.HandlerThread;
 
@@ -20,12 +20,12 @@ public class DataReport
     return jdField_a_of_type_ComTencentMobileqqRichmediaDcDataReport;
   }
   
-  public void a(agzx paramagzx)
+  public void a(ahnz paramahnz)
   {
-    if (paramagzx == null) {
+    if (paramahnz == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramagzx);
+    this.jdField_a_of_type_AndroidOsHandler.post(paramahnz);
   }
 }
 

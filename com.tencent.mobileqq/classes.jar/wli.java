@@ -1,16 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 
 public class wli
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public wli(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  public wli(TroopActivity paramTroopActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    SimpleSlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 

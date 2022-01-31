@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import android.graphics.PointF;
 
-public class akgo
+public final class akgo
+  implements akgp
 {
-  private Stack jdField_a_of_type_JavaUtilStack = new Stack();
-  
-  public akgo(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
-  
-  public AnimationTextView a()
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
-    }
-    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(AnimationTextView paramAnimationTextView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
+    float f1 = paramPointF1.x;
+    float f2 = paramPointF1.y;
+    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akgo
  * JD-Core Version:    0.7.0.1
  */

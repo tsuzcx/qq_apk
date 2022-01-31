@@ -1,22 +1,23 @@
-import android.content.Context;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.util.IOfflineDownloader;
-import java.util.HashMap;
+import org.apache.http.conn.ssl.AbstractVerifier;
 
 public final class klz
-  implements Runnable
+  extends AbstractVerifier
 {
-  public klz(Context paramContext, String paramString1, String paramString2, String paramString3, long paramLong, AsyncBack paramAsyncBack, HashMap paramHashMap) {}
+  public klz(String paramString) {}
   
-  public void run()
+  public final String toString()
   {
-    HtmlOffline.a.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.c, new kma(this), this.jdField_a_of_type_JavaUtilHashMap);
+    return "CUSTOM_COMPATIBLE";
+  }
+  
+  public final void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    verify(this.a, paramArrayOfString1, paramArrayOfString2, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     klz
  * JD-Core Version:    0.7.0.1
  */

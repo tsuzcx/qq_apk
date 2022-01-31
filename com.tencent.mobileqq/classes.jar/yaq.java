@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class yaq
-  implements Runnable
+  extends FriendListObserver
 {
-  public yaq(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public yaq(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
-  {
-    this.a.p();
-  }
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
 }
 
 

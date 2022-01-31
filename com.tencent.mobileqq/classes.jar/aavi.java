@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.armap.CameraSurfaceView;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
+import com.tencent.util.WeakReferenceHandler;
 
 public class aavi
-  implements Runnable
+  implements aawd
 {
-  public aavi(CameraSurfaceView paramCameraSurfaceView) {}
+  public aavi(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
-  public void run()
+  public void a(ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, Object paramObject)
   {
-    this.a.d();
+    paramObject = (aavx)paramObject;
+    paramObject.a.post(new aavj(this, paramUpdateAppByNameTask, paramObject));
   }
 }
 

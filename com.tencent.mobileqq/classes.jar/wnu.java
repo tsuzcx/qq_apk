@@ -1,11 +1,33 @@
-class wnu
-  implements Runnable
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.qphone.base.util.QLog;
+
+public class wnu
+  extends ContactBindObserver
 {
-  wnu(wnt paramwnt, int paramInt) {}
+  private wnu(PhoneContactFragment paramPhoneContactFragment) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Wnt.a.a(this.jdField_a_of_type_Int);
+    this.a.c();
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.PhoneContactFragment", 2, "onQueryBindState " + paramBoolean1 + " " + paramBoolean2);
+    }
+    if (PhoneContactFragment.b(this.a))
+    {
+      if (this.a.a != null) {
+        this.a.a.a(4, paramBoolean1, null);
+      }
+      if (paramBoolean1) {
+        this.a.c();
+      }
+      PhoneContactFragment.a(this.a, false);
+    }
   }
 }
 

@@ -57,9 +57,9 @@ import com.tencent.widget.ActionSheetHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import usr;
-import uss;
-import ust;
+import uvt;
+import uvu;
+import uvv;
 
 public class DeviceFileItemBuilder
   extends BaseBubbleBuilder
@@ -74,7 +74,7 @@ public class DeviceFileItemBuilder
   
   @SuppressLint({"ResourceAsColor"})
   @TargetApi(11)
-  private RelativeLayout a(ust paramust)
+  private RelativeLayout a(uvv paramuvv)
   {
     int i = AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int j = AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
@@ -83,9 +83,9 @@ public class DeviceFileItemBuilder
     localRelativeLayout.setId(2131361877);
     Object localObject2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
     ((RelativeLayout)localObject2).setId(2131361958);
-    ((RelativeLayout)localObject2).setBackgroundResource(2130841563);
+    ((RelativeLayout)localObject2).setBackgroundResource(2130841600);
     ((RelativeLayout)localObject2).setPadding(AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), i, i, AIOUtils.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    paramust.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject2);
+    paramuvv.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject2);
     Object localObject1 = new RelativeLayout.LayoutParams(-1, -2);
     ((RelativeLayout.LayoutParams)localObject1).addRule(10, 2131361877);
     localRelativeLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
@@ -101,7 +101,7 @@ public class DeviceFileItemBuilder
     localLayoutParams.addRule(9, 2131361959);
     localLayoutParams.addRule(15, 2131361959);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
-    paramust.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)localObject2);
+    paramuvv.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)localObject2);
     localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     ((ImageView)localObject2).setId(2131361886);
     ((ImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -110,21 +110,21 @@ public class DeviceFileItemBuilder
     localLayoutParams.addRule(15, 2131361959);
     localLayoutParams.setMargins(i, 0, 0, 0);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
-    paramust.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject2);
+    paramuvv.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject2);
     localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
     ((TextView)localObject2).setId(2131361962);
     ((TextView)localObject2).setGravity(16);
     ((TextView)localObject2).setIncludeFontPadding(false);
     ((TextView)localObject2).setMaxLines(2);
     ((TextView)localObject2).setTextSize(1, 14.0F);
-    ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494220));
+    ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494227));
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(1, 2131361960);
     localLayoutParams.addRule(11, 2131361959);
     localLayoutParams.addRule(10, 2131361959);
     localLayoutParams.setMargins(i, 0, 0, 0);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
-    paramust.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
+    paramuvv.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
     localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
     ((TextView)localObject2).setId(2131361963);
     ((TextView)localObject2).setSingleLine();
@@ -138,7 +138,7 @@ public class DeviceFileItemBuilder
     localLayoutParams.addRule(5, 2131361962);
     localLayoutParams.addRule(6, 2131361964);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
-    paramust.b = ((TextView)localObject2);
+    paramuvv.b = ((TextView)localObject2);
     localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
     ((TextView)localObject2).setId(2131361964);
     ((TextView)localObject2).setGravity(5);
@@ -150,28 +150,28 @@ public class DeviceFileItemBuilder
     localLayoutParams.addRule(1, 2131361963);
     localLayoutParams.leftMargin = i;
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
-    paramust.c = ((TextView)localObject2);
+    paramuvv.c = ((TextView)localObject2);
     return localRelativeLayout;
   }
   
-  private void a(BaseChatItemLayout paramBaseChatItemLayout, MessageForDeviceFile paramMessageForDeviceFile, ust paramust)
+  private void a(BaseChatItemLayout paramBaseChatItemLayout, MessageForDeviceFile paramMessageForDeviceFile, uvv paramuvv)
   {
-    paramust.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.d(paramMessageForDeviceFile.srcFileName));
-    paramust.b.setText(FileUtil.a(paramMessageForDeviceFile.fileSize));
-    FileManagerUtil.a(paramust.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, paramMessageForDeviceFile.filePath, FileManagerUtil.a(paramMessageForDeviceFile.filePath));
-    paramust.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    paramuvv.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.d(paramMessageForDeviceFile.srcFileName));
+    paramuvv.b.setText(FileUtil.a(paramMessageForDeviceFile.fileSize));
+    FileManagerUtil.a(paramuvv.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, paramMessageForDeviceFile.filePath, FileManagerUtil.a(paramMessageForDeviceFile.filePath));
+    paramuvv.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     if ((paramMessageForDeviceFile.strServiceName != null) && (paramMessageForDeviceFile.strServiceName.compareTo(DeviceMsgHandle.c) == 0)) {
       this.c = true;
     }
-    b(paramust, paramMessageForDeviceFile);
-    a(paramust, paramMessageForDeviceFile);
+    b(paramuvv, paramMessageForDeviceFile);
+    a(paramuvv, paramMessageForDeviceFile);
     paramBaseChatItemLayout.setFailedIconVisable(a(paramMessageForDeviceFile), this);
   }
   
-  private void a(ust paramust, MessageForDeviceFile paramMessageForDeviceFile)
+  private void a(uvv paramuvv, MessageForDeviceFile paramMessageForDeviceFile)
   {
     if (paramMessageForDeviceFile == null) {
-      paramust.c.setVisibility(8);
+      paramuvv.c.setVisibility(8);
     }
     label193:
     do
@@ -212,7 +212,7 @@ public class DeviceFileItemBuilder
                                       {
                                         return;
                                         if ((this.c) && (paramMessageForDeviceFile.issend == 0)) {
-                                          paramust.c.setMaxLines(3);
+                                          paramuvv.c.setMaxLines(3);
                                         }
                                         for (;;)
                                         {
@@ -226,137 +226,137 @@ public class DeviceFileItemBuilder
                                             if (!paramMessageForDeviceFile.isSend()) {
                                               break label193;
                                             }
-                                            paramust.c.setVisibility(8);
+                                            paramuvv.c.setVisibility(8);
                                             return;
-                                            paramust.c.setMaxLines(2);
+                                            paramuvv.c.setMaxLines(2);
                                           }
                                         }
-                                        paramust.c.setVisibility(0);
-                                        paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131428254));
+                                        paramuvv.c.setVisibility(0);
+                                        paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131428254));
                                         return;
                                         if (this.c)
                                         {
-                                          paramust.c.setVisibility(0);
+                                          paramuvv.c.setVisibility(0);
                                           if (paramMessageForDeviceFile.isSend())
                                           {
-                                            paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131434549));
+                                            paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131434566));
                                             return;
                                           }
-                                          paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437815));
+                                          paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437832));
                                           return;
                                         }
-                                        paramust.c.setVisibility(4);
+                                        paramuvv.c.setVisibility(4);
                                         return;
                                         if (paramMessageForDeviceFile.isSend())
                                         {
-                                          paramust.c.setVisibility(4);
+                                          paramuvv.c.setVisibility(4);
                                           return;
                                         }
-                                        paramust.c.setVisibility(0);
-                                        paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131427589));
+                                        paramuvv.c.setVisibility(0);
+                                        paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131427589));
                                         return;
-                                        paramust.c.setVisibility(0);
+                                        paramuvv.c.setVisibility(0);
                                         if (paramMessageForDeviceFile.isSend())
                                         {
-                                          paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131428257));
+                                          paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131428257));
                                           return;
                                         }
                                         if (this.c)
                                         {
-                                          paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437818));
+                                          paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437835));
                                           return;
                                         }
-                                        paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131428258));
+                                        paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131428258));
                                         return;
-                                        paramust.c.setVisibility(0);
+                                        paramuvv.c.setVisibility(0);
                                         if (paramMessageForDeviceFile.isSend())
                                         {
                                           if (this.c)
                                           {
-                                            paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437816));
+                                            paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437833));
                                             return;
                                           }
-                                          paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131428253));
+                                          paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131428253));
                                           return;
                                         }
                                         if (this.c)
                                         {
-                                          paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437819));
+                                          paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437836));
                                           return;
                                         }
-                                        paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131428251));
+                                        paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131428251));
                                         return;
-                                        paramust.c.setVisibility(0);
+                                        paramuvv.c.setVisibility(0);
                                       } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                                      paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437823));
+                                      paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437840));
                                       return;
-                                      paramust.c.setVisibility(0);
+                                      paramuvv.c.setVisibility(0);
                                     } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                                    paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437824));
+                                    paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437841));
                                     return;
-                                    paramust.c.setVisibility(0);
+                                    paramuvv.c.setVisibility(0);
                                   } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                                  paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437826));
+                                  paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437843));
                                   return;
-                                  paramust.c.setVisibility(0);
+                                  paramuvv.c.setVisibility(0);
                                 } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                                paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437821));
+                                paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437838));
                                 return;
-                                paramust.c.setVisibility(0);
+                                paramuvv.c.setVisibility(0);
                               } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                              paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误01）");
+                              paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误01）");
                               return;
-                              paramust.c.setVisibility(0);
+                              paramuvv.c.setVisibility(0);
                             } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                            paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误02）");
+                            paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误02）");
                             return;
-                            paramust.c.setVisibility(0);
+                            paramuvv.c.setVisibility(0);
                           } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                          paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误03）");
+                          paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误03）");
                           return;
-                          paramust.c.setVisibility(0);
+                          paramuvv.c.setVisibility(0);
                         } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                        paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误04）");
+                        paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误04）");
                         return;
-                        paramust.c.setVisibility(0);
+                        paramuvv.c.setVisibility(0);
                       } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                      paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误05）");
+                      paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误05）");
                       return;
-                      paramust.c.setVisibility(0);
+                      paramuvv.c.setVisibility(0);
                     } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                    paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误06）");
+                    paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误06）");
                     return;
-                    paramust.c.setVisibility(0);
+                    paramuvv.c.setVisibility(0);
                   } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                  paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误07）");
+                  paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误07）");
                   return;
-                  paramust.c.setVisibility(0);
+                  paramuvv.c.setVisibility(0);
                 } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-                paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误08）");
+                paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误08）");
                 return;
-                paramust.c.setVisibility(0);
+                paramuvv.c.setVisibility(0);
               } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-              paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误09）");
+              paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误09）");
               return;
-              paramust.c.setVisibility(0);
+              paramuvv.c.setVisibility(0);
             } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-            paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误10）");
+            paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误10）");
             return;
-            paramust.c.setVisibility(0);
+            paramuvv.c.setVisibility(0);
           } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-          paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + "（错误11）");
+          paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + "（错误11）");
           return;
-          paramust.c.setVisibility(0);
+          paramuvv.c.setVisibility(0);
         } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-        paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437820) + this.jdField_a_of_type_AndroidContentContext.getString(2131437821));
+        paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437837) + this.jdField_a_of_type_AndroidContentContext.getString(2131437838));
         return;
-        paramust.c.setVisibility(0);
+        paramuvv.c.setVisibility(0);
       } while ((paramMessageForDeviceFile.isSend()) || (!this.c));
-      paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437822));
+      paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437839));
       return;
-      paramust.c.setVisibility(0);
+      paramuvv.c.setVisibility(0);
     } while (!this.c);
-    paramust.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437817));
+    paramuvv.c.setText("" + this.jdField_a_of_type_AndroidContentContext.getString(2131437834));
   }
   
   private boolean a(MessageForDeviceFile paramMessageForDeviceFile)
@@ -373,7 +373,7 @@ public class DeviceFileItemBuilder
     return true;
   }
   
-  private void b(ust paramust, MessageForDeviceFile paramMessageForDeviceFile)
+  private void b(uvv paramuvv, MessageForDeviceFile paramMessageForDeviceFile)
   {
     if (paramMessageForDeviceFile != null) {}
     int i;
@@ -383,26 +383,26 @@ public class DeviceFileItemBuilder
       i = 0;
       if (i != 0)
       {
-        if (paramust.jdField_a_of_type_AndroidWidgetProgressBar == null)
+        if (paramuvv.jdField_a_of_type_AndroidWidgetProgressBar == null)
         {
           localProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext, null, 16842872);
           localProgressBar.setId(2131361965);
           localProgressBar.setMax(100);
           localProgressBar.setMinimumHeight(AIOUtils.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-          localProgressBar.setProgressDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837584));
+          localProgressBar.setProgressDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837587));
           localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
           localLayoutParams.addRule(3, 2131361959);
           localLayoutParams.addRule(12, 2131361958);
           localLayoutParams.setMargins(0, AIOUtils.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0);
-          paramust.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localProgressBar, localLayoutParams);
-          paramust.jdField_a_of_type_AndroidWidgetProgressBar = localProgressBar;
+          paramuvv.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localProgressBar, localLayoutParams);
+          paramuvv.jdField_a_of_type_AndroidWidgetProgressBar = localProgressBar;
         }
-        paramust.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)(paramMessageForDeviceFile.progress * 100.0F));
-        paramust.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        paramuvv.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)(paramMessageForDeviceFile.progress * 100.0F));
+        paramuvv.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       }
       break;
     }
-    while (paramust.jdField_a_of_type_AndroidWidgetProgressBar == null)
+    while (paramuvv.jdField_a_of_type_AndroidWidgetProgressBar == null)
     {
       ProgressBar localProgressBar;
       RelativeLayout.LayoutParams localLayoutParams;
@@ -410,7 +410,7 @@ public class DeviceFileItemBuilder
       i = 1;
       break;
     }
-    paramust.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    paramuvv.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
   }
   
   private void c(MessageForDeviceFile paramMessageForDeviceFile) {}
@@ -469,24 +469,24 @@ public class DeviceFileItemBuilder
   public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramChatMessage = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
-    ((ust)paramChatMessage.getTag()).jdField_a_of_type_AndroidViewView.getLayoutParams().width = BaseChatItemLayout.d;
+    ((uvv)paramChatMessage.getTag()).jdField_a_of_type_AndroidViewView.getLayoutParams().width = BaseChatItemLayout.d;
     return paramChatMessage;
   }
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    ust localust = (ust)paramViewHolder;
+    uvv localuvv = (uvv)paramViewHolder;
     MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)paramChatMessage;
     paramChatMessage = paramView;
     if (paramView == null) {
-      paramChatMessage = a((ust)paramViewHolder);
+      paramChatMessage = a((uvv)paramViewHolder);
     }
     c(localMessageForDeviceFile);
-    a(paramBaseChatItemLayout, localMessageForDeviceFile, localust);
+    a(paramBaseChatItemLayout, localMessageForDeviceFile, localuvv);
     paramChatMessage.setOnLongClickListener(paramOnLongClickAndTouchListener);
     paramChatMessage.setOnTouchListener(paramOnLongClickAndTouchListener);
     paramChatMessage.setOnClickListener(this);
-    localust.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    localuvv.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a().a(paramChatMessage, this);
     return paramChatMessage;
   }
@@ -498,7 +498,7 @@ public class DeviceFileItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new ust(this);
+    return new uvv(this);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -511,7 +511,7 @@ public class DeviceFileItemBuilder
     if ((paramChatMessage != null) && ((paramChatMessage instanceof MessageForDeviceFile)))
     {
       paramContext = (MessageForDeviceFile)paramChatMessage;
-      if (paramInt != 2131375336) {
+      if (paramInt != 2131375567) {
         break label36;
       }
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
@@ -520,12 +520,12 @@ public class DeviceFileItemBuilder
     do
     {
       return;
-      if (paramInt == 2131375346)
+      if (paramInt == 2131375577)
       {
         super.c(paramChatMessage);
         return;
       }
-    } while (paramInt != 2131363499);
+    } while (paramInt != 2131363517);
     paramChatMessage = new Bundle();
     paramChatMessage.putInt("forward_type", 0);
     paramChatMessage.putInt("forward_source_uin_type", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
@@ -546,13 +546,13 @@ public class DeviceFileItemBuilder
     do
     {
       return;
-      paramView = (MessageForDeviceFile)((ust)AIOUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      paramView = (MessageForDeviceFile)((uvv)AIOUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
       if (paramView.isSendFromLocal())
       {
         localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-        localActionSheet.a(2131433618, 5);
-        localActionSheet.c(2131432998);
-        localActionSheet.a(new usr(this, paramView, localActionSheet));
+        localActionSheet.a(2131433635, 5);
+        localActionSheet.c(2131433015);
+        localActionSheet.a(new uvt(this, paramView, localActionSheet));
         localActionSheet.show();
         return;
       }
@@ -560,14 +560,14 @@ public class DeviceFileItemBuilder
     ActionSheet localActionSheet = ActionSheet.a(this.jdField_a_of_type_AndroidContentContext);
     localActionSheet.a(2131427799);
     localActionSheet.b(2131427800);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new uss(this, paramView, localActionSheet));
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new uvu(this, paramView, localActionSheet));
     localActionSheet.show();
   }
   
   public void a(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = (ust)AIOUtils.a(paramView);
+    paramView = (uvv)AIOUtils.a(paramView);
     if (paramView == null) {}
     do
     {
@@ -590,7 +590,7 @@ public class DeviceFileItemBuilder
   
   public void a(View paramView, MessageForDeviceFile paramMessageForDeviceFile)
   {
-    paramView = (ust)AIOUtils.a(paramView);
+    paramView = (uvv)AIOUtils.a(paramView);
     if (paramView == null) {
       if (QLog.isColorLevel()) {
         QLog.d("ChatItemBuilder", 2, "error get holder in updateview");
@@ -611,7 +611,7 @@ public class DeviceFileItemBuilder
   
   public void a(View paramView, boolean paramBoolean)
   {
-    paramView = (ust)AIOUtils.a(paramView);
+    paramView = (uvv)AIOUtils.a(paramView);
     if (paramView == null) {}
     Drawable localDrawable;
     do
@@ -645,8 +645,8 @@ public class DeviceFileItemBuilder
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (!TextUtils.isEmpty(((MessageForDeviceFile)((ust)AIOUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage).filePath)) {
-      localQQCustomMenu.a(2131363499, this.jdField_a_of_type_AndroidContentContext.getString(2131435066), 2130838309);
+    if (!TextUtils.isEmpty(((MessageForDeviceFile)((uvv)AIOUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage).filePath)) {
+      localQQCustomMenu.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
     }
     super.b(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext);
     return localQQCustomMenu.a();

@@ -1,54 +1,22 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.Matrix;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.mobileqq.app.qim.QIMUndecideNotifyDialog;
+import java.util.ArrayList;
 
-public class zvx
-  implements Runnable
+class zvx
+  implements View.OnClickListener
 {
-  public zvx(GreetingCardRender paramGreetingCardRender) {}
+  zvx(zvw paramzvw, ArrayList paramArrayList, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (GreetingCardRender.a(this.a) != null)
-      {
-        GreetingCardRender.a(this.a).updateTexImage();
-        GreetingCardRender.a(this.a).getTransformMatrix(GreetingCardRender.a(this.a));
-        GreetingCardRender.a(this.a);
-        if (GreetingCardRender.a(this.a) == null) {
-          GreetingCardRender.a(this.a, new RenderBuffer(540, 960, 33984));
-        }
-        if (GreetingCardRender.a(this.a) == null) {
-          GreetingCardRender.a(this.a, new TextureRender());
-        }
-        GreetingCardRender.a(this.a).b();
-        Matrix.setIdentityM(GreetingCardRender.b(this.a), 0);
-        Matrix.rotateM(GreetingCardRender.b(this.a), 0, 180.0F, 1.0F, 0.0F, 0.0F);
-        GreetingCardRender.a(this.a).a(36197, GreetingCardRender.a(this.a), GreetingCardRender.a(this.a), GreetingCardRender.b(this.a));
-        GreetingCardRender.a(this.a).c();
-        if ((!GreetingCardRender.a(this.a)) && (GreetingCardRender.a(this.a) != null) && (GreetingCardRender.b(this.a) > 2L))
-        {
-          GreetingCardRender.a(this.a, GreetingCardRender.a(this.a).a());
-          GreetingCardRender.a(this.a, true);
-          GreetingCardRender.b(this.a, true);
-          QLog.d("GreetingCardRender", 2, "drawFrame hard decode frame update");
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("GreetingCardRender", 1, "mUpdateHardTextureRunnable fail.", localException);
-    }
+    StoryPlayVideoActivity.a(this.jdField_a_of_type_Zvw.a.a, paramView, this.jdField_a_of_type_JavaUtilArrayList, null, this.jdField_a_of_type_Int, 120, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zvx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,41 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.AndroidRuntimeException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
+import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
+import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart.LocalButtonListenerInterceptor;
+import com.tencent.mobileqq.nearby.now.send.capturepart.StoryPublishLauncher;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
 
 public class aevh
-  implements IphonePickerView.IphonePickListener
+  implements View.OnClickListener
 {
-  public aevh(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
+  public aevh(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
-  public void onConfirmBtClicked()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
-    {
-      NearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.c, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
-  }
-  
-  public void onItemSelected(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
+    SLog.d("story.publish.StoryLocalPublishPart", "onClick %s", new Object[] { paramView });
+    switch (paramView.getId())
     {
     }
-    for (;;)
+    do
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
-      {
-        if ((paramInt1 == 0) || (paramInt1 == 1)) {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
-      }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.e = paramInt2;
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.f = paramInt2;
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.g = paramInt2;
+      new NowVideoReporter().h("video_shoot").i("clk_upload").d(SmallVideoCameraCaptureFragment.a).a(1).b(this.a.a().app);
+    } while ((StoryLocalPublishPart.a(this.a) != null) && (!StoryLocalPublishPart.a(this.a).a()));
+    paramView = StoryPublishLauncher.a();
+    Bundle localBundle = this.a.a();
+    localBundle.putBoolean("enable_multi_fragment", false);
+    localBundle.putInt("local_video_from_type", 1001);
+    if (paramView.a())
+    {
+      paramView.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoCameraCaptureFragment, localBundle, this.a.jdField_a_of_type_Int);
+      return;
     }
+    throw new AndroidRuntimeException("StoryPublishLauncher is not support");
   }
 }
 

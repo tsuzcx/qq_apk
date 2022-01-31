@@ -1,29 +1,16 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.apollo.view.FrameGifView;
+import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
 
 public class tme
-  implements View.OnFocusChangeListener
+  implements Runnable
 {
-  public tme(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
+  public tme(QQSettingMe paramQQSettingMe) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
-        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
-      }
-    }
-    else {
-      return;
-    }
-    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
+    QQSettingMe.a(this.a).setGifData(100, null, ApolloConstant.ad, QQFrameZipDecoder.a(ApolloConstant.ad), true);
   }
 }
 

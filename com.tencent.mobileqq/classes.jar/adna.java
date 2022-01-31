@@ -1,112 +1,57 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.jsp.TroopApiPlugin;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.smtt.sdk.CookieSyncManager;
+import java.util.Map;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adna
-  extends TroopObserver
+  implements WtTicketPromise
 {
-  public adna(TroopApiPlugin paramTroopApiPlugin) {}
+  public adna(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void Done(Ticket paramTicket)
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      TroopApiPlugin.a(this.a, 2131434449);
-    }
-    this.a.jdField_a_of_type_Int = -1;
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      switch (paramInt2)
-      {
-      default: 
-        TroopApiPlugin.a(this.a, 2131434449);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = -1;
-      return;
-      if ((this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 5))
-      {
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
-      }
-      else
-      {
-        TroopApiPlugin.a(this.a, 2131434448, 2);
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0,\"message\":\"ok\"}" });
-        continue;
-        TroopApiPlugin.a(this.a, 2131434414);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if (this.a.b == 0) {
-      return;
-    }
-    if (paramBoolean)
+    if (paramTicket != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret success.");
+        QLog.i("NearbyHybridFragment", 2, "preGetKeyInPreloadService : Done");
       }
-      paramLong = paramTroopInfo.troopPrivilegeFlag;
-      if ((0x80 & paramLong) != 0L)
-      {
-        paramInt1 = 1;
-        if ((paramLong & 0x200) == 0L) {
-          break label110;
-        }
-        paramInt2 = 1;
-        label61:
-        paramString = TroopApiPlugin.a(this.a);
-        if ((paramInt1 == 0) || (paramInt2 == 0) || (paramString == null)) {
-          break label116;
-        }
-        TroopNotificationUtils.a(paramString, paramTroopInfo.troopuin);
-      }
+      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
+      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
+      CookieSyncManager.getInstance().sync();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
+      com.tencent.mobileqq.fragment.NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
     }
-    for (;;)
-    {
-      this.a.b = 0;
-      return;
-      paramInt1 = 0;
-      break;
-      label110:
-      paramInt2 = 0;
-      break label61;
-      label116:
-      if (paramTroopInfo.cGroupOption == 1)
-      {
-        this.a.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
-        TroopApiPlugin.a(this.a, paramTroopInfo);
-      }
-      else
-      {
-        TroopApiPlugin.b(this.a, paramTroopInfo);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret failed.");
-        }
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
-        TroopApiPlugin.a(this.a, 2131434438);
-      }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new adnb(this));
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyHybridFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
     }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new adnc(this));
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyHybridFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new adnd(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adna
  * JD-Core Version:    0.7.0.1
  */

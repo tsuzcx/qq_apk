@@ -7,7 +7,7 @@ import com.tencent.mobileqq.utils.QAVGroupConfig.GroupInviteFlag;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import jsm;
+import jrx;
 
 public class ControlUIObserver
   implements Observer
@@ -312,7 +312,7 @@ public class ControlUIObserver
       if (this.a == null) {
         this.a = new Handler(paramObservable);
       }
-      this.a.post(new jsm(this, paramObject));
+      this.a.post(new jrx(this, paramObject));
       return;
     }
     d(paramObject);

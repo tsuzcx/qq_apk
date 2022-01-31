@@ -1,20 +1,18 @@
-import android.opengl.GLES20;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.servlet.CliNotifyPush;
 
 public class ahxt
   implements Runnable
 {
-  public ahxt(VideoSprite paramVideoSprite) {}
+  public ahxt(CliNotifyPush paramCliNotifyPush) {}
   
   public void run()
   {
-    GLES20.glDeleteTextures(this.a.a.length, this.a.a, 0);
-    GLES20.glFlush();
+    CliNotifyPush.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxt
  * JD-Core Version:    0.7.0.1
  */

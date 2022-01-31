@@ -1,16 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.SysCallTransparentActivity;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
 
-class kau
-  implements DialogInterface.OnClickListener
+public class kau
+  implements Runnable
 {
-  kau(kar paramkar) {}
+  public kau(VideoControlUI paramVideoControlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
+    this.a.a.a(new Object[] { Integer.valueOf(102) });
+    if (!this.a.n) {
+      return;
+    }
+    if (this.a.v > 5) {
+      this.a.v = 5;
+    }
+    if (this.a.v < 0) {
+      this.a.v = 0;
+    }
+    VideoControlUI localVideoControlUI;
+    if (this.a.i) {
+      localVideoControlUI = this.a;
+    }
+    for (localVideoControlUI.v += 1;; localVideoControlUI.v -= 1)
+    {
+      this.a.a.a().postDelayed(this, VideoControlUI.a(this.a));
+      return;
+      localVideoControlUI = this.a;
+    }
   }
 }
 

@@ -1,19 +1,17 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.capture.QIMCaptureController;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class amty
-  implements Runnable
+public final class amty
+  implements FilenameFilter
 {
-  public amty(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    this.a.a.a();
+    return !paramString.endsWith("OldVersion.version");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amty
  * JD-Core Version:    0.7.0.1
  */

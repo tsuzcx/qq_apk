@@ -1,15 +1,11 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import java.util.Comparator;
 
-public class mqm
-  implements Runnable
+public final class mqm
+  implements Comparator
 {
-  public mqm(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed) {}
-  
-  public void run()
+  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    ServiceAccountFolderManager.a().a(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed, true);
+    return paramArrayOfByte1.length - paramArrayOfByte2.length;
   }
 }
 

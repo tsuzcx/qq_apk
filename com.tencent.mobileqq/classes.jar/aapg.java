@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
 
 public class aapg
-  implements Runnable
+  implements SensorEventListener
 {
-  public aapg(ArkMediaPlayer paramArkMediaPlayer) {}
+  public aapg(ArkAppEventObserverManager paramArkAppEventObserverManager) {}
   
-  public void run()
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    ArkMediaPlayer.a(this.a, false);
-    if (this.a.Pause()) {
-      ArkMediaPlayer.a(this.a, ArkMediaPlayer.d(this.a));
+    if (paramSensorEvent.sensor.getType() == 1) {
+      ArkAppEventObserverManager.a(this.a, paramSensorEvent);
     }
+    while (paramSensorEvent.sensor.getType() != 3) {
+      return;
+    }
+    ArkAppEventObserverManager.b(this.a, paramSensorEvent);
   }
 }
 

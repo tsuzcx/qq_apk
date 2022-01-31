@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.fragment;
 
-import agwi;
+import ahkk;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -53,7 +53,7 @@ import java.util.ArrayList;
 public class WebEffectsCameraCaptureFragment
   extends AIOEffectsCameraCaptureFragment
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new agwi(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahkk(this);
   private View jdField_a_of_type_AndroidViewView;
   private String jdField_a_of_type_JavaLangString;
   private int c;
@@ -128,6 +128,11 @@ public class WebEffectsCameraCaptureFragment
     localIntent.putExtra("arg_video_width", paramLocalMediaInfo.mediaWidth);
     localIntent.putExtra("arg_video_height", paramLocalMediaInfo.mediaHeight);
     startActivityForResult(localIntent, 101);
+  }
+  
+  public int a()
+  {
+    return 10007;
   }
   
   protected CameraCaptureView.CaptureParam a()
@@ -206,11 +211,6 @@ public class WebEffectsCameraCaptureFragment
     }
   }
   
-  public int b()
-  {
-    return 10007;
-  }
-  
   protected void b(SessionInfo paramSessionInfo, PublishParam paramPublishParam, FlowComponentInterface paramFlowComponentInterface, String paramString1, int paramInt, ArrayList paramArrayList, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
   {
     MediaCodecSendTask.VideoSendPublicParam localVideoSendPublicParam = new MediaCodecSendTask.VideoSendPublicParam();
@@ -261,9 +261,9 @@ public class WebEffectsCameraCaptureFragment
     }
   }
   
-  protected void d()
+  protected void e()
   {
-    super.d();
+    super.e();
     Object localObject;
     boolean bool;
     if (this.jdField_l_of_type_Boolean)
@@ -366,7 +366,7 @@ public class WebEffectsCameraCaptureFragment
           break label800;
         }
         localObject1 = (FlowComponentInterface)localObject1;
-        ((FlowComponentInterface)localObject1).b((String)localObject2);
+        ((FlowComponentInterface)localObject1).c_((String)localObject2);
         a(null, localPublishParam, (FlowComponentInterface)localObject1, paramIntent.getStringExtra("key_content"), 1, null, paramIntent.getBooleanExtra("forward_to_qzone_to_enable_edit", false), null, false);
         return;
       }

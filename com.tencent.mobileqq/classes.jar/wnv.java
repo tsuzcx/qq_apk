@@ -1,34 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.CallTabUnreadListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class wnv
-  implements CallTabUnreadListener
+  implements Handler.Callback
 {
-  public wnv(MainAssistObserver paramMainAssistObserver) {}
+  public wnv(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SplashActivity", 4, "msg fresh callback...");
+    switch (paramMessage.what)
+    {
     }
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
+    for (;;)
+    {
+      return true;
+      this.a.i();
     }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    int i = QCallFacade.a(localQQAppInterface);
-    this.a.a(36, 16, Integer.valueOf(i));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    localQQAppInterface.getApp().sendBroadcast(localIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver通话tab, callUnReadCount[%s]", new Object[] { Integer.valueOf(i) }));
-    }
-    localQQAppInterface.C();
   }
 }
 

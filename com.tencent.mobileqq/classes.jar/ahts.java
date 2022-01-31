@@ -1,50 +1,36 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.ftsentity.BaseMvpFTSEntityAdapter;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
+import com.tencent.mobileqq.search.presenter.FTSMessageSearchResultPresenter;
+import com.tencent.mobileqq.search.presenter.IPresenter;
+import com.tencent.mobileqq.search.view.FTSMessageSearchResultView;
+import com.tencent.mobileqq.search.view.IView;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.widget.ListView;
+import java.util.List;
 
-class ahts
-  implements Runnable
+public class ahts
+  extends BaseMvpFTSEntityAdapter
 {
-  ahts(ahtq paramahtq, StructingMsgItemBuilder.StructingMsgViewHolder paramStructingMsgViewHolder, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public ahts(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, FaceDecoder paramFaceDecoder, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
   {
-    int i = 1;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PortalManager", 4, "qiang hong bao lala ......struct msg getView report.........");
-    }
-    String str2 = "";
-    String str1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
-      {
-        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
-      }
-    }
-    for (;;)
-    {
-      PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(78);
-      if (localPortalManager != null) {}
-      for (int j = localPortalManager.a();; j = -1)
-      {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004FFA", "0X8004FFA", 0, 0, "" + j, "" + i, "" + str1, str2);
-        return;
-        i = 2;
-        break;
-      }
-      str1 = "";
-      i = 0;
-    }
+    super(paramListView, paramFaceDecoder, paramList, paramString, paramFTSEntitySearchDetailActivity);
+  }
+  
+  protected IPresenter a(int paramInt)
+  {
+    return new FTSMessageSearchResultPresenter(FTSEntitySearchDetailFragment.a(this.a));
+  }
+  
+  protected IView a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new FTSMessageSearchResultView(paramViewGroup, 2130971538);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahts
  * JD-Core Version:    0.7.0.1
  */

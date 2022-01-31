@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
 
 public class yqs
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public yqs(ApolloStoreActivity paramApolloStoreActivity) {}
+  public yqs(CmGameAvHandler paramCmGameAvHandler) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    AVEngineWalper.a().a("0");
   }
 }
 

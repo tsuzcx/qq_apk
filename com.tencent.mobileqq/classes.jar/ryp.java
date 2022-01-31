@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import mqq.os.MqqHandler;
 
-public class ryp
-  implements DialogInterface.OnClickListener
+class ryp
+  implements Runnable
 {
-  public ryp(ChatHistoryImageView paramChatHistoryImageView) {}
+  ryp(ryo paramryo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.j();
+    int i = this.a.a.app.a().a(this.a.a.b, this.a.a.jdField_a_of_type_Int);
+    Message localMessage = this.a.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(13);
+    localMessage.arg1 = i;
+    this.a.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
   }
 }
 

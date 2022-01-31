@@ -1,59 +1,54 @@
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.view.View;
-import com.tencent.mobileqq.activity.MainFragment;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.app.LebaHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
-import java.util.HashMap;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class syg
   implements Runnable
 {
-  public syg(MainFragment paramMainFragment) {}
+  public syg(Leba paramLeba) {}
   
   public void run()
   {
-    if (this.a.getActivity() == null) {
-      return;
-    }
-    MainFragment.a(this.a, PreferenceManager.getDefaultSharedPreferences(MainFragment.a(this.a).getApp()));
-    if (MainFragment.a(this.a).getBoolean("theme_voice_setting_" + MainFragment.a(this.a).getCurrentAccountUin(), true))
+    Object localObject = LebaShowListManager.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new syh(this, (List)localObject));
+    if (Leba.a(this.a))
     {
-      Object localObject = ThemeUtil.getUserCurrentThemeId(MainFragment.a(this.a));
-      localObject = ThemeUtil.getThemeInfo(this.a.getActivity(), (String)localObject);
-      if ((localObject == null) || (!((ThemeUtil.ThemeInfo)localObject).status.equals("5")) || (!((ThemeUtil.ThemeInfo)localObject).isVoiceTheme)) {}
-    }
-    for (boolean bool = false;; bool = true)
-    {
-      if (MainFragment.a(this.a) != null)
+      Leba.a(this.a, false);
+      long l1 = SystemClock.uptimeMillis();
+      long l2 = Leba.a(this.a);
+      StatisticCollector.a(BaseApplication.getContext()).a(QQUtils.a(), "actLebaShowTime", true, l1 - l2, 0L, null, null);
+      localObject = LebaShowListManager.a().b();
+      if (localObject != null)
       {
-        if (MainFragment.a(this.a).get("消息") != null) {
-          ((View)MainFragment.a(this.a).get("消息")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.a).get("联系人") != null) {
-          ((View)MainFragment.a(this.a).get("联系人")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.a).get("动态") != null) {
-          ((View)MainFragment.a(this.a).get("动态")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.a).get("电话") != null) {
-          ((View)MainFragment.a(this.a).get("电话")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.a).get("NOW") != null) {
-          ((View)MainFragment.a(this.a).get("NOW")).setSoundEffectsEnabled(bool);
-        }
-        if (MainFragment.a(this.a).get("看点") != null) {
-          ((View)MainFragment.a(this.a).get("看点")).setSoundEffectsEnabled(bool);
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          LebaViewItem localLebaViewItem = (LebaViewItem)((Iterator)localObject).next();
+          if (localLebaViewItem != null) {
+            ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005416", "0X8005416", 0, 0, localLebaViewItem.a.uiResId + "", "", "", "");
+          }
         }
       }
-      if (MultiMsgManager.a().a()) {
-        break;
-      }
-      MultiMsgManager.a().a(MainFragment.a(this.a));
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.e();
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
+    QLog.e("Q.lebatab.leba", 2, "refreshLebaConfig. mLebaHelper is null(when checkCampusEntry)");
   }
 }
 

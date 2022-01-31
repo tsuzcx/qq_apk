@@ -1,17 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-public class tuu
-  implements View.OnClickListener
+class tuu
+  implements Runnable
 {
-  public tuu(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
+  tuu(tus paramtus) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    String str = SubLoginActivity.a(this.a.a).getText().toString();
+    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
+      SubLoginActivity.a(this.a.a).setText("");
     }
   }
 }

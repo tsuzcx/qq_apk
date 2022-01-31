@@ -1,11 +1,15 @@
-import android.view.SurfaceHolder;
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import com.tencent.TMG.utils.QLog;
 
-public class yjp
+class yjp
+  extends AVVideoCtrl.EnableCameraCompleteCallback
 {
-  public int a;
-  public SurfaceHolder a;
-  public int b;
-  public int c;
+  yjp(yjk paramyjk) {}
+  
+  protected void onComplete(boolean paramBoolean, int paramInt)
+  {
+    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
+  }
 }
 
 

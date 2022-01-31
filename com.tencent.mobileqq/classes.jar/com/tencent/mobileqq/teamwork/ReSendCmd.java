@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork;
 
-import ahya;
+import aimd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.List;
 public class ReSendCmd
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahya();
+  public static final Parcelable.Creator CREATOR = new aimd();
   int jdField_a_of_type_Int;
   String jdField_a_of_type_JavaLangString = "";
   List jdField_a_of_type_JavaUtilList;
@@ -66,7 +66,7 @@ public class ReSendCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.ReSendCmd
  * JD-Core Version:    0.7.0.1
  */

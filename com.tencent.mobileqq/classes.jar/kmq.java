@@ -1,15 +1,17 @@
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EqqDetail;
+import android.media.SoundPool;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
-public final class kmq
+public class kmq
   implements Runnable
 {
-  public kmq(QQAppInterface paramQQAppInterface, EqqDetail paramEqqDetail) {}
+  public kmq(SensorAPIJavaScript paramSensorAPIJavaScript, int paramInt, String paramString) {}
   
   public void run()
   {
-    CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a != null) && (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

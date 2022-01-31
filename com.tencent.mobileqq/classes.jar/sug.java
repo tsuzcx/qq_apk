@@ -1,32 +1,25 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZoneLogTags;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class sug
-  extends QZoneObserver
+  implements DialogInterface.OnDismissListener
 {
-  public sug(Leba paramLeba) {}
+  public sug(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(QZoneLogTags.LOG_TAG_UNDEALCOUNT + "Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (QLog.isColorLevel())
+    if (!GesturePWDUnlockActivity.a(this.a))
     {
-      if ((paramLong >>> 17 & 1L) != 0L) {
-        QLog.d(QZoneLogTags.LOG_TAG_UNDEALCOUNT + QZoneLogTags.LOG_TAG_ZEBRAALBUM, 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
-      }
-      QLog.d(QZoneLogTags.LOG_TAG_UNDEALCOUNT, 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
+      GesturePWDUnlockActivity.a(this.a, true);
+      return;
     }
-    if (paramBoolean1)
-    {
-      Leba.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
-    }
+    this.a.e();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    StatisticCollector.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

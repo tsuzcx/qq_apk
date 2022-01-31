@@ -9,8 +9,15 @@ public class PoseDataConvert
   
   static
   {
-    int[] arrayOfInt = { 20, 23 };
-    a = new int[][] { { 14, 15 }, { 16, 17 }, { 2, 5 }, { 3, 6 }, { 4, 7 }, { 8, 11 }, { 9, 12 }, { 10, 13 }, { 32, 33 }, { 34, 35 }, arrayOfInt, { 21, 24 }, { 22, 25 }, { 26, 29 }, { 27, 30 }, { 28, 31 } };
+    int[] arrayOfInt1 = { 14, 15 };
+    int[] arrayOfInt2 = { 16, 17 };
+    int[] arrayOfInt3 = { 2, 5 };
+    int[] arrayOfInt4 = { 3, 6 };
+    int[] arrayOfInt5 = { 4, 7 };
+    int[] arrayOfInt6 = { 34, 35 };
+    int[] arrayOfInt7 = { 27, 30 };
+    int[] arrayOfInt8 = { 28, 31 };
+    a = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 8, 11 }, { 9, 12 }, { 10, 13 }, { 32, 33 }, arrayOfInt6, { 20, 23 }, { 21, 24 }, { 22, 25 }, { 26, 29 }, arrayOfInt7, arrayOfInt8 };
   }
   
   public static void a(List paramList)

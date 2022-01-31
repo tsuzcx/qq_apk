@@ -25,12 +25,12 @@ import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ytn;
+import ywt;
 
 public class ApolloSoLoader
 {
   public static long a;
-  private static Runnable jdField_a_of_type_JavaLangRunnable = new ytn();
+  private static Runnable jdField_a_of_type_JavaLangRunnable = new ywt();
   public static StringBuilder a;
   public static CopyOnWriteArrayList a;
   private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
@@ -159,13 +159,14 @@ public class ApolloSoLoader
       try
       {
         QLog.i("ApolloSoLoader", 1, "[loadSo], from:" + paramString + ",sLoadEngineLibDone:" + jdField_a_of_type_Boolean + ",sIsTaskRunning:" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-        boolean bool = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+        boolean bool = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true);
         if (bool) {
           return;
         }
         if (jdField_a_of_type_Boolean)
         {
           a(0);
+          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
           continue;
         }
         ThreadManager.remove(jdField_a_of_type_JavaLangRunnable);
@@ -245,7 +246,7 @@ public class ApolloSoLoader
     //   3: aload_0
     //   4: ifnull +14 -> 18
     //   7: getstatic 63	com/tencent/mobileqq/apollo/utils/ApolloSoLoader:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   10: invokevirtual 222	java/util/concurrent/CopyOnWriteArrayList:size	()I
+    //   10: invokevirtual 228	java/util/concurrent/CopyOnWriteArrayList:size	()I
     //   13: istore_1
     //   14: iload_1
     //   15: ifne +7 -> 22
@@ -270,9 +271,9 @@ public class ApolloSoLoader
     //   57: if_acmpne -28 -> 29
     //   60: getstatic 63	com/tencent/mobileqq/apollo/utils/ApolloSoLoader:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   63: aload_3
-    //   64: invokevirtual 224	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
+    //   64: invokevirtual 230	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
     //   67: pop
-    //   68: invokestatic 227	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   68: invokestatic 233	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   71: ifeq -53 -> 18
     //   74: ldc 88
     //   76: iconst_2
@@ -280,13 +281,13 @@ public class ApolloSoLoader
     //   78: anewarray 4	java/lang/Object
     //   81: dup
     //   82: iconst_0
-    //   83: ldc 229
+    //   83: ldc 235
     //   85: aastore
     //   86: dup
     //   87: iconst_1
     //   88: aload_0
     //   89: aastore
-    //   90: invokestatic 232	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   90: invokestatic 238	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   93: goto -75 -> 18
     //   96: astore_0
     //   97: ldc 2
@@ -449,7 +450,7 @@ public class ApolloSoLoader
     try
     {
       SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
-      if (localSharedPreferences.getBoolean("is_handle_reinstall_7.6.0", false)) {
+      if (localSharedPreferences.getBoolean("is_handle_reinstall_7.6.3", false)) {
         return false;
       }
       String str = localSharedPreferences.getString("res_name", "nothing");
@@ -459,7 +460,7 @@ public class ApolloSoLoader
         if (i()) {}
         for (;;)
         {
-          localSharedPreferences.edit().putBoolean("is_handle_reinstall_7.6.0", true).commit();
+          localSharedPreferences.edit().putBoolean("is_handle_reinstall_7.6.3", true).commit();
           return true;
           a();
         }

@@ -14,7 +14,7 @@ public class TroopHomeworkSpecialMsg
 {
   public TroopHomeworkSpecialMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131430603);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131430620);
   }
   
   public void a(byte[] paramArrayOfByte)

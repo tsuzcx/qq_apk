@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import jnf;
+import jmq;
 
 public abstract class IAVRedPacketCallback$Stub
   extends Binder
@@ -25,7 +25,7 @@ public abstract class IAVRedPacketCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IAVRedPacketCallback))) {
       return (IAVRedPacketCallback)localIInterface;
     }
-    return new jnf(paramIBinder);
+    return new jmq(paramIBinder);
   }
   
   public IBinder asBinder()

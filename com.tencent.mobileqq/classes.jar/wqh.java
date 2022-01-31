@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
 
-class wqh
-  implements DialogInterface.OnClickListener
+public class wqh
+  extends GetRedPointExObserver
 {
-  wqh(wqg paramwqg) {}
+  public wqh(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "new user guild confirm unbind");
+    this.a.g();
+    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
+      this.a.a.app.a().e();
     }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.a.a.jdField_a_of_type_JavaLangString, this.a.a.b, 0, BindNumberActivity.a(this.a.a), BindNumberActivity.c(this.a.a));
-    this.a.a.a(2131434436, 1000L, true);
   }
 }
 

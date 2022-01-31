@@ -1,19 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.os.Handler;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.ViewHolder;
+import com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo;
+import java.util.List;
 
-class aelw
+public class aelw
   implements Runnable
 {
-  aelw(aelu paramaelu) {}
+  public aelw(NearbyFragmentEnterAdapter paramNearbyFragmentEnterAdapter) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.c)))
+    if (this.a.jdField_a_of_type_JavaUtilList != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.c, 0L, 0L, null, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.jdField_a_of_type_Int = 1;
+      NearbyFragmentEnterAdapter.ViewHolder localViewHolder = this.a.a();
+      if (localViewHolder != null)
+      {
+        Object localObject = this.a;
+        ((NearbyFragmentEnterAdapter)localObject).b += 1;
+        if (this.a.b >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+          this.a.b = 0;
+        }
+        localObject = (ilive_feeds_near_anchor.NearAnchorInfo)this.a.jdField_a_of_type_JavaUtilList.get(this.a.b);
+        this.a.a(localViewHolder, (ilive_feeds_near_anchor.NearAnchorInfo)localObject);
+      }
     }
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1500L);
   }
 }
 

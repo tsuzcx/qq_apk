@@ -1,15 +1,74 @@
-import android.content.Context;
-import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.NewFriendManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.newfriend.FriendSystemMessage;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class zhw
-  implements Runnable
+public class zhw
+  extends FriendListObserver
 {
-  zhw(zhv paramzhv, Context paramContext, Intent paramIntent) {}
+  public zhw(NewFriendManager paramNewFriendManager) {}
   
-  public void run()
+  protected void onAddFriend(String paramString)
   {
-    QQAppInterface.a(this.jdField_a_of_type_Zhv.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent);
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      localObject = this.a.b();
+    } while (((ArrayList)localObject).isEmpty());
+    Object localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      NewFriendMessage localNewFriendMessage = (NewFriendMessage)((Iterator)localObject).next();
+      if ((localNewFriendMessage instanceof FriendSystemMessage))
+      {
+        int i = ((FriendSystemMessage)localNewFriendMessage).a.structMsg.msg.sub_type.get();
+        String str = ((FriendSystemMessage)localNewFriendMessage).a.senderuin;
+        if ((i == 13) && (paramString.equals(str)))
+        {
+          ((Iterator)localObject).remove();
+          NewFriendManager.a(this.a).a().b(AppConstants.K, 0, ((FriendSystemMessage)localNewFriendMessage).a.uniseq, false);
+        }
+      }
+    }
+    NewFriendManager.a(this.a).sendEmptyMessage(2);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
+      NewFriendManager.a(this.a).sendEmptyMessage(2);
+    }
+  }
+  
+  protected void onGetPushRecommend(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
+      NewFriendManager.a(this.a).sendEmptyMessage(2);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    NewFriendManager.a(this.a).runOnUiThread(new zhx(this, paramBoolean));
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
+      NewFriendManager.a(this.a).sendEmptyMessage(2);
+    }
   }
 }
 

@@ -1,47 +1,57 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
-import mqq.os.MqqHandler;
+import java.lang.ref.WeakReference;
 
-class zku
-  implements RejectedExecutionHandler
+public class zku
+  extends Handler
 {
-  private long jdField_a_of_type_Long = -1L;
-  
-  public zku(zkt paramzkt) {}
-  
-  public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
+  public zku(QQAppInterface paramQQAppInterface, Looper paramLooper)
   {
-    long l = SystemClock.uptimeMillis();
-    if (l - this.jdField_a_of_type_Long > 5000L)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Long = l;
-      if ((paramThreadPoolExecutor instanceof zkt))
-      {
-        String str1 = ((zkt)paramThreadPoolExecutor).a();
-        String str2 = str1 + "_RejectedExecution";
-        com.tencent.mobileqq.app.ThreadExcutor.a = true;
-        StringBuilder localStringBuilder = zkt.a(this.jdField_a_of_type_Zkt, str2);
-        localStringBuilder.append("\n" + str2 + paramThreadPoolExecutor.toString());
-        QLog.e("ThreadManager", 1, str2 + localStringBuilder.toString());
-        if (ThreadManager.OPEN_RDM_REPORT) {
-          QQCatchedExceptionReporter.reportQQCatchedException(new Exception(str2), str2, localStringBuilder.toString());
-        }
-        paramThreadPoolExecutor = new HashMap();
-        paramThreadPoolExecutor.put("executor", str1);
-        StatisticCollector.a(BaseApplicationImpl.getApplication()).a("", "sp_reject_exception_report", true, 0L, 0L, paramThreadPoolExecutor, "", false);
+    }
+    do
+    {
+      return;
+      paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
+      if (paramMessage != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QQAppInterface", 2, "getOnlineFriend app is null");
+    return;
+    long l1 = QQAppInterface.e;
+    long l3 = SystemClock.uptimeMillis();
+    long l2 = Math.abs(l3 - this.a.c);
+    if ((!"0".equals(paramMessage.getCurrentAccountUin())) && (l2 >= QQAppInterface.e))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAppInterface", 2, "getOnlineFriend");
+      }
+      this.a.c = l3;
+      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.a(1);
+      if (localFriendListHandler != null) {
+        localFriendListHandler.d(paramMessage.getCurrentAccountUin(), (byte)0);
       }
     }
-    zkt.a(zkt.a());
-    if (zkt.b() != null) {
-      zkt.b().post(paramRunnable);
+    if (l2 < QQAppInterface.e) {
+      l1 = QQAppInterface.e - l2;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface", 2, "getOnlineFriend send next msg " + l1);
+    }
+    paramMessage = this.a.a.obtainMessage(0, new WeakReference(paramMessage));
+    this.a.a.sendMessageDelayed(paramMessage, l1);
   }
 }
 

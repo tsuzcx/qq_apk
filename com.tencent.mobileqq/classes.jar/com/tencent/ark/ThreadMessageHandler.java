@@ -42,11 +42,13 @@ public class ThreadMessageHandler
   
   private boolean postDelegate(long paramLong)
   {
+    Log.d("ark.ThreadMessageHandler", "call postDelegate");
     return sendMessage(obtainAsyncMessage(1, paramLong));
   }
   
   private boolean postDelegateDelayed(long paramLong1, long paramLong2)
   {
+    Log.d("ark.ThreadMessageHandler", "call postDelegateDelayed");
     return sendMessageDelayed(obtainAsyncMessage(1, paramLong1), paramLong2);
   }
   
@@ -54,6 +56,7 @@ public class ThreadMessageHandler
   {
     synchronized (this.mSignalObject)
     {
+      Log.d("ark.ThreadMessageHandler", "call sendDelegate");
       if (!sendMessage(obtainAsyncMessage(2, paramLong))) {
         return false;
       }
@@ -67,6 +70,7 @@ public class ThreadMessageHandler
     do
     {
       return;
+      Log.d("ark.ThreadMessageHandler", "call handleMessage");
       nativeDelegateCallback(???.arg2 << 32 | ???.arg1);
     } while (???.what != 2);
     synchronized (this.mSignalObject)

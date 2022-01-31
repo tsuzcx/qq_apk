@@ -1,25 +1,25 @@
-import VACDReport.ReportRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportMgr;
-import mqq.observer.BusinessObserver;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog.OnPriceSelectedListener;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper.GoldMsgChatState;
+import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class xeg
-  implements BusinessObserver
+  implements PriceSettingDialog.OnPriceSelectedListener
 {
-  public xeg(VACDReportMgr paramVACDReportMgr) {}
+  public xeg(GoldMsgAioState paramGoldMsgAioState, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(long paramLong)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    GoldMsgChatHelper.GoldMsgChatState localGoldMsgChatState = GoldMsgChatHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (localGoldMsgChatState != null) {
+      localGoldMsgChatState.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramLong, 0);
     }
-    if (paramBundle.containsKey("rsp")) {}
-    for (paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;; paramBundle = null)
-    {
-      VACDReportMgr.a(this.a, paramBundle);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgAioState.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgAioState.a.setText(NumAnim.formatNumber(paramLong / 100.0D, false) + "元");
     }
   }
 }

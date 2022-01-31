@@ -1,18 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class yaw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public yaw(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public yaw(SelectMemberActivity paramSelectMemberActivity, boolean paramBoolean, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
-    this.a.startActivity(paramView);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "multiMode_exp";; str = "singleMode_exp")
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app, "dc00899", "Grp_addFrd", "", "frd_select", str, 0, 0, this.jdField_a_of_type_JavaLangString, "0", "", "");
+      return;
+    }
   }
 }
 

@@ -1,35 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 
-class mwa
-  implements PublicAccountImageDownListener
+public final class mwa
+  implements Runnable
 {
-  mwa(mvv parammvv, boolean paramBoolean, long paramLong, ImageProgressCircle paramImageProgressCircle) {}
+  public mwa(Uri paramUri, int paramInt, String paramString) {}
   
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
+    try
+    {
+      PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006510", "0X8006510", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, "", false);
+      return;
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(true, this.jdField_a_of_type_Long);
-    }
-    mvv.a(this.jdField_a_of_type_Mvv, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-  }
-  
-  public void a(URL paramURL, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(false, this.jdField_a_of_type_Long);
-    }
-    mvv.a(this.jdField_a_of_type_Mvv, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    catch (Exception localException) {}
   }
 }
 

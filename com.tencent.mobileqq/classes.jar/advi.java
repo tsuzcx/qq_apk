@@ -1,21 +1,21 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.intervideo.od.LoadingUI;
 
 public class advi
-  implements QueryTask.Query
+  implements View.OnClickListener
 {
-  public advi(EmoticonManager paramEmoticonManager) {}
+  public advi(LoadingUI paramLoadingUI) {}
   
-  public EmoticonPackage a(Pair paramPair)
+  public void onClick(View paramView)
   {
-    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    LoadingUI.a(this.a).onBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advi
  * JD-Core Version:    0.7.0.1
  */

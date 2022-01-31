@@ -1,31 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager.IBannerInteract;
-import com.tencent.mobileqq.activity.recent.BannerManager.MessageToShowBanner;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-public class xgr
-  implements View.OnClickListener
+public final class xgr
+  implements Parcelable.Creator
 {
-  private BannerManager.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  
-  public xgr(BannerManager.MessageToShowBanner paramMessageToShowBanner, MqqHandler paramMqqHandler)
+  public RedPacketInfoBase a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner = paramMessageToShowBanner;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    return new RedPacketInfoBase(paramParcel);
   }
   
-  public void onClick(View paramView)
+  public RedPacketInfoBase[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_JavaLangString + " on close");
-    }
-    paramView = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
-    paramView.obj = this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$IBannerInteract.b();
+    return new RedPacketInfoBase[paramInt];
   }
 }
 

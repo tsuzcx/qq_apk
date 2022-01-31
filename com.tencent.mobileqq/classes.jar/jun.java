@@ -1,28 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingBtn;
-import com.tencent.av.ui.EffectSettingUi;
-import java.lang.ref.WeakReference;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
-public class jun
-  implements Animation.AnimationListener
+class jun
+  implements Runnable
 {
-  public jun(EffectSettingUi paramEffectSettingUi) {}
+  jun(jul paramjul) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.setVisibility(0);
-    if (this.a.jdField_a_of_type_ComTencentAvUiEffectSettingBtn != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.b();
-    }
-    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    ((AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).m();
+    this.a.a.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

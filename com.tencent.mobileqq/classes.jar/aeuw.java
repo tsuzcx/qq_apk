@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
+import com.tencent.mobileqq.nearby.now.utils.CommentsUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aeuw
-  implements DialogInterface.OnClickListener
+public class aeuw
+  implements InputFilter
 {
-  aeuw(aeuv paramaeuv, QQCustomDialog paramQQCustomDialog) {}
+  public aeuw(SmallVideoSendFragment paramSmallVideoSendFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Aeuv.a.f();
+    Object localObject = paramCharSequence;
+    if (CommentsUtil.a(paramSpanned.toString()) + CommentsUtil.a(paramCharSequence.toString()) > 140)
+    {
+      QQToast.a(this.a.a(), 0, "最多输入140个字", 0).a();
+      localObject = "";
+    }
+    return localObject;
   }
 }
 

@@ -1,25 +1,17 @@
-import android.text.TextUtils;
-import com.squareup.okhttp.Response;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.DownloadResult.Content;
-import com.tencent.component.network.downloader.handler.ContentHandler;
-import com.tencent.component.network.utils.StringUtil;
-import org.apache.http.HttpResponse;
+import com.tencent.component.media.image.PoolParams;
+import com.tencent.component.media.image.PoolParams.BucketParams;
 
 public class phl
-  implements ContentHandler
+  implements PoolParams
 {
-  public phl(DownloaderFactory paramDownloaderFactory) {}
-  
-  public boolean a(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse, Response paramResponse)
+  public PoolParams.BucketParams getBucketParams(int paramInt)
   {
-    paramDownloadResult = paramDownloadResult.getContent().type;
-    if (TextUtils.isEmpty(paramDownloadResult)) {}
-    while (!StringUtil.a(paramDownloadResult, "image")) {
-      return false;
-    }
-    return true;
+    return new PoolParams.BucketParams(1, 1);
+  }
+  
+  public int getBucketPoolSize()
+  {
+    return 1;
   }
 }
 

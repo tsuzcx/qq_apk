@@ -1,25 +1,18 @@
-import android.view.View;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.PoiTab;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.addContactTroopView.AddContactTroopManage;
+import tencent.im.troop_view.troopviewInfo.RspBody;
 
 public class kki
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public kki(PoiMapActivity.PoiTab paramPoiTab, PoiMapActivity paramPoiMapActivity) {}
+  public kki(AddContactTroopManage paramAddContactTroopManage, troopviewInfo.RspBody paramRspBody) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.a(paramInt, true);
-    int i = this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
-    paramInt = 0;
-    while (paramInt < i)
+    synchronized (this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopManage)
     {
-      if (this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.e != paramInt) {
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
-      }
-      paramInt += 1;
+      this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopManage.jdField_a_of_type_TencentImTroop_viewTroopviewInfo$RspBody = this.jdField_a_of_type_TencentImTroop_viewTroopviewInfo$RspBody;
+      AddContactTroopManage.a(this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopManage, this.jdField_a_of_type_TencentImTroop_viewTroopviewInfo$RspBody);
+      return;
     }
   }
 }

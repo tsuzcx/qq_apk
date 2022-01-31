@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.portal;
 
-import afxp;
-import afyi;
+import aglr;
+import agmk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -104,11 +104,11 @@ public class HongBaoPendantHolder
     super.a(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_a_of_type_ComTencentMobileqqPortalBaseAnimHolder = new BaseAnimHolder();
-    paramInt2 = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131559569);
-    this.c = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131559568));
+    paramInt2 = (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131559583);
+    this.c = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131559582));
     paramInt3 = this.h / 2;
     paramInt4 = paramInt2 / 2;
-    this.jdField_a_of_type_ComTencentMobileqqPortalBaseAnimHolder.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842532);
+    this.jdField_a_of_type_ComTencentMobileqqPortalBaseAnimHolder.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842624);
     this.jdField_a_of_type_ComTencentMobileqqPortalBaseAnimHolder.a(paramInt3 + paramInt1 - paramInt4, 0, paramInt2, this.c, paramView);
   }
   
@@ -563,7 +563,7 @@ public class HongBaoPendantHolder
     this.m = this.g;
     this.l = this.jdField_a_of_type_Int;
     this.e = 3;
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new afxp();
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new aglr();
     a(1500L);
   }
   
@@ -601,7 +601,7 @@ public class HongBaoPendantHolder
   
   public void d()
   {
-    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(1.0F), Float.valueOf(1.1F), new afyi(this));
+    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(1.0F), Float.valueOf(1.1F), new agmk(this));
     localValueAnimation.setDuration(500L);
     localValueAnimation.setRepeatCount(-1);
     localValueAnimation.setRepeatMode(2);
@@ -620,7 +620,7 @@ public class HongBaoPendantHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.portal.HongBaoPendantHolder
  * JD-Core Version:    0.7.0.1
  */

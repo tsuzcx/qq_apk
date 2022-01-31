@@ -1,28 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.ComplexPart;
-import com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Group;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionPart.PartCallback;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleBtnOperationHelper;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-public class oju
-  implements View.OnClickListener
+class oju
+  implements Animation.AnimationListener
 {
-  public oju(ComplexPart paramComplexPart, ComplexPart.Group paramGroup) {}
+  oju(ojt paramojt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a()) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.b();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart.a != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart.a.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart);
-      }
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.c();
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper != null) {
+      this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper.a(null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

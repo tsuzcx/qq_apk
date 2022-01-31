@@ -1,25 +1,63 @@
-import android.graphics.drawable.Drawable;
-import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.dingdong.DingdongPluginHelper;
+import cooperation.dingdong.DingdongPluginRemoteCmdHandler;
+import java.util.ArrayList;
 
-public final class amlb
-  implements InvocationHandler
+public class amlb
+  extends DiscussionObserver
 {
-  public amlb(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
+  public amlb(DingdongPluginRemoteCmdHandler paramDingdongPluginRemoteCmdHandler) {}
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
   {
-    if (paramMethod.getName().equals("onFailed")) {
-      if (this.a != null) {
-        this.a.onFailed();
+    Object localObject;
+    if (DingdongPluginRemoteCmdHandler.a(this.a))
+    {
+      DingdongPluginRemoteCmdHandler.a(this.a, false);
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (!TextUtils.isEmpty(DingdongPluginRemoteCmdHandler.a(this.a))) {
+        DingdongPluginRemoteCmdHandler.a(this.a, (QQAppInterface)localObject, DingdongPluginRemoteCmdHandler.a(this.a), paramLong);
+      }
+      if (localObject != null) {
+        ((QQAppInterface)localObject).removeObserver(DingdongPluginRemoteCmdHandler.a(this.a));
+      }
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("reqCode", 5);
+      ((Intent)localObject).putExtra("isSuccess", paramBoolean);
+      ((Intent)localObject).putExtra("roomId", paramLong);
+      ((Intent)localObject).putExtra("discussName", paramString);
+      ((Intent)localObject).putExtra("discuss_create_reason", DingdongPluginRemoteCmdHandler.a(this.a));
+      ((Intent)localObject).putExtra("createdFlag", 1);
+      if (DingdongPluginRemoteCmdHandler.b(this.a) == 1) {
+        DingdongPluginHelper.a(10, (Intent)localObject);
       }
     }
-    for (;;)
+    else
     {
-      return null;
-      if ((paramMethod.getName().equals("onLoaded")) && (this.a != null)) {
-        this.a.onLoaded((Drawable)paramArrayOfObject[0]);
+      return;
+    }
+    DingdongPluginHelper.a(2, (Intent)localObject);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  {
+    if (DingdongPluginRemoteCmdHandler.a(this.a))
+    {
+      DingdongPluginRemoteCmdHandler.a(this.a, false);
+      paramArrayList = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (paramArrayList != null) {
+        paramArrayList.removeObserver(DingdongPluginRemoteCmdHandler.a(this.a));
+      }
+      paramArrayList = new Intent();
+      paramArrayList.putExtra("reqCode", 7);
+      paramArrayList.putExtra("isSuccess", paramBoolean);
+      paramArrayList.putExtra("roomId", paramLong);
+      if (DingdongPluginRemoteCmdHandler.b(this.a) == 1) {
+        DingdongPluginHelper.a(11, paramArrayList);
       }
     }
   }

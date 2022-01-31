@@ -1,51 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.QavInOutAnimation;
-import com.tencent.av.ui.QavInOutAnimation.QavInAnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
 
 public class jzt
-  implements Animation.AnimationListener
+  implements View.OnTouchListener
 {
-  public jzt(QavInOutAnimation paramQavInOutAnimation) {}
+  public jzt(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationEnd");
-    }
-    try
+    switch (paramMotionEvent.getAction())
     {
-      if (this.a.a != null) {
-        this.a.a.b();
-      }
-      return;
     }
-    catch (Exception paramAnimation)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationEnd Exception :" + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationStart");
-    }
-    try
-    {
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationStart Exception :" + paramAnimation);
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

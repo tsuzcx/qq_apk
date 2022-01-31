@@ -1,31 +1,64 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.annotation.TargetApi;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.Window;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
 public class adbe
-  implements Handler.Callback
+  implements IFileViewListener
 {
-  public adbe(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public adbe(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  @TargetApi(14)
+  public void a()
   {
-    switch (paramMessage.what)
+    if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-    default: 
-      return false;
-    case 0: 
-      ForwardSdkBaseOption.a(this.a);
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131365517);
+      localRelativeLayout.setFitsSystemWindows(true);
+      localRelativeLayout.setPadding(0, ImmersiveUtils.a(this.a), 0, 0);
     }
-    for (;;)
+  }
+  
+  public void a(int paramInt)
+  {
+    FileBrowserActivity.a(this.a);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    FileBrowserActivity.a(this.a, paramBoolean);
+    View localView = this.a.findViewById(2131368856);
+    if (!FileBrowserActivity.b(this.a))
     {
-      return true;
-      ForwardSdkBaseOption.b(this.a);
-      continue;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (this.a.jdField_a_of_type_Adbt != null)) {
-        this.a.jdField_a_of_type_Adbt.a();
+      localView.setVisibility(0);
+      if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
+      {
+        int i = this.a.getResources().getColor(2131494254);
+        this.a.mSystemBarComp.setStatusColor(i);
+        this.a.mSystemBarComp.setStatusBarColor(i);
+        if (ThemeUtil.isDefaultOrDIYTheme(false)) {
+          this.a.mSystemBarComp.setStatusBarDrawable(this.a.getResources().getDrawable(2130843344));
+        }
+      }
+      this.a.getWindow().setFlags(0, 1024);
+      return;
+    }
+    localView.setVisibility(8);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
+    {
+      this.a.mSystemBarComp.setStatusColor(0);
+      this.a.mSystemBarComp.setStatusBarColor(0);
+      if (ThemeUtil.isDefaultOrDIYTheme(false)) {
+        this.a.mSystemBarComp.setStatusBarDrawable(null);
       }
     }
+    this.a.getWindow().setFlags(1024, 1024);
   }
 }
 

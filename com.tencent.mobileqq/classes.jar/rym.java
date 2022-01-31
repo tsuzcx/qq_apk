@@ -1,57 +1,33 @@
-import android.os.SystemClock;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class rym
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rym(ChatHistoryImageView paramChatHistoryImageView, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
+  public rym(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject;
-    long l;
-    if (QLog.isColorLevel())
+    if (NetworkUtil.d(BaseApplication.getContext()))
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("[onImageListLoad]: ");
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData == null)
-      {
-        localObject = "null";
-        QLog.d("ChatHistoryImageView", 2, localObject);
-      }
-    }
-    else
-    {
-      l = SystemClock.uptimeMillis();
-      if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a();
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a() != 0) {
-        break label209;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.b.setVisibility(0);
-    }
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a(false)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.notifyDataSetChanged();
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatHistoryImageView", 2, "[onImageListLoad] cost: " + (SystemClock.uptimeMillis() - l));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
+      if (this.a.jdField_a_of_type_Int == 0) {
+        this.a.l();
       }
       return;
-      localObject = Integer.valueOf(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData.length);
-      break;
-      label209:
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.b.setVisibility(4);
     }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
+    this.a.c.setText(this.a.getString(2131433009));
   }
 }
 

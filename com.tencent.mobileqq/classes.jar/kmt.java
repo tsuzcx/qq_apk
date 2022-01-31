@@ -1,39 +1,25 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.game.SensorAPIJavaScript;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class kmt
-  implements ActionSheet.OnButtonClickListener
+public class kmt
+  implements AsyncBack
 {
-  public kmt(ActionSheet paramActionSheet, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  public kmt(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
-      try
-      {
-        CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("CrmUtils", 2, "Start ivr audio error", paramView);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
   }
 }
 

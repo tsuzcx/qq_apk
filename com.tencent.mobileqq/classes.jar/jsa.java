@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.ui.QavPanel;
 
 public class jsa
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public jsa(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jsa(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.a.app, this.a, 2, 12);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 5, 0, "", "", "", "");
+    if (this.a.a != null)
+    {
+      this.a.b = true;
+      this.a.a.g();
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

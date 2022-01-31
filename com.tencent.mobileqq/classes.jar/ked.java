@@ -1,14 +1,17 @@
-import com.tencent.av.ui.funchat.zimu.ZimuViewPacMan;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
 
 public class ked
+  implements Runnable
 {
-  public int a;
-  public int b;
+  public ked(AVRedBagMgr paramAVRedBagMgr) {}
   
-  public ked(ZimuViewPacMan paramZimuViewPacMan, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    AVActivity localAVActivity = this.a.a();
+    if (localAVActivity != null) {
+      localAVActivity.f(this.a.a);
+    }
   }
 }
 

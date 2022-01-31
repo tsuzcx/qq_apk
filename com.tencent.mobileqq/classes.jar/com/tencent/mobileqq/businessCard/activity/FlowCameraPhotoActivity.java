@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import abgz;
-import abha;
-import abhb;
-import abhc;
+import aboa;
+import abob;
+import aboc;
+import abod;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -57,7 +57,7 @@ public class FlowCameraPhotoActivity
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   public BusinessCardManager a;
   public CardOCRInfo a;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new abhc(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new abod(this);
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   RectMaskView jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView;
   public String a;
@@ -91,15 +91,15 @@ public class FlowCameraPhotoActivity
     if (QLog.isColorLevel()) {
       QLog.d("BusinessCard_FlowCameraPhotoActivity", 2, "doShowGuide");
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131369739);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131369816);
     if ((this.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager != null) && (this.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a(2)))
     {
-      HighLightMaskView localHighLightMaskView = (HighLightMaskView)findViewById(2131369740);
+      HighLightMaskView localHighLightMaskView = (HighLightMaskView)findViewById(2131369817);
       Rect localRect = new Rect();
       this.jdField_a_of_type_AndroidWidgetButton.getGlobalVisibleRect(localRect);
       localHighLightMaskView.setCircleSrc(localRect.left + this.jdField_a_of_type_AndroidWidgetButton.getWidth() / 2.0F, localRect.top + this.jdField_a_of_type_AndroidWidgetButton.getHeight() / 2.0F, 38.0F * DeviceInfoUtil.a());
       localRelativeLayout.setVisibility(0);
-      localRelativeLayout.setOnClickListener(new abgz(this));
+      localRelativeLayout.setOnClickListener(new aboa(this));
       return;
     }
     localRelativeLayout.setVisibility(8);
@@ -107,12 +107,12 @@ public class FlowCameraPhotoActivity
   
   void a()
   {
-    super.setContentView(2130970232);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131363402));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131368934);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131368941));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131368556));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131369738));
+    super.setContentView(2130970248);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131363420));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131369000);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131369007));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131368623));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131369815));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -144,14 +144,14 @@ public class FlowCameraPhotoActivity
     }
     this.jdField_c_of_type_AndroidWidgetButton.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    if (findViewById(2131369735) == null) {
-      ((ViewStub)findViewById(2131369734)).setVisibility(0);
+    if (findViewById(2131369812) == null) {
+      ((ViewStub)findViewById(2131369811)).setVisibility(0);
     }
     if (this.jdField_b_of_type_AndroidViewView == null) {
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131369735);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131369812);
     }
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370061));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370172));
     }
     try
     {
@@ -162,8 +162,8 @@ public class FlowCameraPhotoActivity
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView != null) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView.setVisibility(8);
       }
-      paramFile = (Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131370062);
-      Button localButton = (Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131370063);
+      paramFile = (Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131370173);
+      Button localButton = (Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131370174);
       paramFile.setVisibility(8);
       localButton.setVisibility(8);
       if ((paramFile.getParent() instanceof RelativeLayout)) {
@@ -188,8 +188,8 @@ public class FlowCameraPhotoActivity
   
   void b()
   {
-    this.jdField_c_of_type_AndroidWidgetButton.setText(2131436078);
-    this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131436078));
+    this.jdField_c_of_type_AndroidWidgetButton.setText(2131436095);
+    this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131436095));
     if (this.jdField_a_of_type_JavaLangString != null) {
       a(new File(this.jdField_a_of_type_JavaLangString), false);
     }
@@ -197,8 +197,8 @@ public class FlowCameraPhotoActivity
   
   protected void c()
   {
-    this.jdField_c_of_type_AndroidWidgetButton.setText(2131436079);
-    this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131436079));
+    this.jdField_c_of_type_AndroidWidgetButton.setText(2131436096);
+    this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131436096));
     OCRSurfaceView localOCRSurfaceView = new OCRSurfaceView(this);
     localOCRSurfaceView.setZOrderOnTop(false);
     Object localObject = localOCRSurfaceView.getHolder();
@@ -212,7 +212,7 @@ public class FlowCameraPhotoActivity
     int i = (((DisplayMetrics)localObject).widthPixels - 20) * 600 / 1000;
     this.jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView.setRect(10, (((DisplayMetrics)localObject).heightPixels - i) / 2, ((DisplayMetrics)localObject).widthPixels - 10, (((DisplayMetrics)localObject).heightPixels + i) / 2);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(10, (((DisplayMetrics)localObject).heightPixels - i) / 2, ((DisplayMetrics)localObject).widthPixels - 10, (i + ((DisplayMetrics)localObject).heightPixels) / 2);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView.setText(getString(2131437055), 17);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView.setText(getString(2131437072), 17);
     CameraHelper.a().a(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localOCRSurfaceView, 0, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView);
@@ -322,7 +322,7 @@ public class FlowCameraPhotoActivity
       }
       d();
       this.jdField_a_of_type_AndroidOsHandler = new Handler();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new abhb(this), 15000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aboc(this), 15000L);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo = null;
       this.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.c(this.jdField_a_of_type_JavaLangString);
@@ -352,7 +352,7 @@ public class FlowCameraPhotoActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131368941: 
+    case 2131369007: 
       do
       {
         return;
@@ -364,9 +364,9 @@ public class FlowCameraPhotoActivity
       }
       this.jdField_a_of_type_JavaLangString = BusinessCardUtils.a(this.app);
       paramView = new File(this.jdField_a_of_type_JavaLangString);
-      CameraHelper.a().a(paramView, new abha(this), this.jdField_a_of_type_AndroidGraphicsRect);
+      CameraHelper.a().a(paramView, new abob(this), this.jdField_a_of_type_AndroidGraphicsRect);
       return;
-    case 2131368556: 
+    case 2131368623: 
       setResult(0);
       if (!isFinishing()) {
         finish();
@@ -404,7 +404,7 @@ public class FlowCameraPhotoActivity
     {
       if (!isFinishing())
       {
-        QQToast.a(this, getString(2131433715), 1).a();
+        QQToast.a(this, getString(2131433732), 1).a();
         if (this.jdField_a_of_type_Int == 0) {
           finish();
         }

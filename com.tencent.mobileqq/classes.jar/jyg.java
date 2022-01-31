@@ -1,16 +1,32 @@
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils.OnDownloadAsyncTaskListener;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class jyg
-  implements ChatActivityUtils.OnDownloadAsyncTaskListener
+  implements Handler.Callback
 {
-  public jyg(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public jyg(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.h = paramInt1;
-    this.a.i = paramInt2;
-    this.a.c(10);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (!PSTNC2CActivity.a(this.a))
+      {
+        this.a.a.a().f = true;
+        paramMessage = this.a.a.getApp();
+        Intent localIntent = new Intent(paramMessage, PSTNC2CActivity.class);
+        localIntent.setFlags(268566528);
+        paramMessage.startActivity(localIntent);
+      }
+    }
   }
 }
 

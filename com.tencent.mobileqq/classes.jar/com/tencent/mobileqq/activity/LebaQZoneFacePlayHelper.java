@@ -10,28 +10,33 @@ import android.widget.ImageSwitcher;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZoneExceptionReport;
-import cooperation.qzone.util.QZoneLogTags;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import svy;
-import svz;
+import syx;
+import syy;
 
 public class LebaQZoneFacePlayHelper
   implements Handler.Callback
 {
-  private static final String jdField_a_of_type_JavaLangString = QZoneLogTags.LOG_TAG_UNDEALCOUNT + "Q.lebatab." + "leba";
   private int jdField_a_of_type_Int;
   private ImageSwitcher jdField_a_of_type_AndroidWidgetImageSwitcher;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private svz jdField_a_of_type_Svz;
+  private syy jdField_a_of_type_Syy;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
-  private svz jdField_b_of_type_Svz;
-  private svz c;
+  private syy jdField_b_of_type_Syy;
+  private syy c;
   
-  LebaQZoneFacePlayHelper(ImageSwitcher paramImageSwitcher, MqqHandler paramMqqHandler, QQAppInterface paramQQAppInterface)
+  public LebaQZoneFacePlayHelper(ImageSwitcher paramImageSwitcher, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageSwitcher = paramImageSwitcher;
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public LebaQZoneFacePlayHelper(ImageSwitcher paramImageSwitcher, MqqHandler paramMqqHandler, QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_AndroidWidgetImageSwitcher = paramImageSwitcher;
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), this);
@@ -55,23 +60,23 @@ public class LebaQZoneFacePlayHelper
     return "播放完毕状态";
   }
   
-  private svz a(String paramString)
+  private syy a(String paramString)
   {
     if (this.c != null)
     {
       if (!this.c.a(paramString)) {
-        break label55;
+        break label54;
       }
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "命中预加载faceDrawable  uin:" + paramString);
+        QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "命中预加载faceDrawable  uin:" + paramString);
       }
     }
     for (;;)
     {
       return this.c;
-      label55:
+      label54:
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "没有命中预加载，回收预加载:" + paramString);
+        QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "没有命中预加载，回收预加载:" + paramString);
       }
       this.c.a();
       this.c = null;
@@ -82,7 +87,7 @@ public class LebaQZoneFacePlayHelper
   {
     if (this.jdField_a_of_type_AndroidWidgetImageSwitcher == null) {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "mQzoneFeedSubIcon=null");
+        QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "mQzoneFeedSubIcon=null");
       }
     }
     do
@@ -92,7 +97,7 @@ public class LebaQZoneFacePlayHelper
         break;
       }
     } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "activeFeedsUin没有uin数据");
+    QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "activeFeedsUin没有uin数据");
     return false;
     return true;
   }
@@ -107,21 +112,21 @@ public class LebaQZoneFacePlayHelper
     if ((paramArrayList1 == null) && (paramArrayList2 == null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, " equal arrayList1==null&&arrayList2==null");
+        QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, " equal arrayList1==null&&arrayList2==null");
       }
       return true;
     }
     if ((paramArrayList1 == null) || (paramArrayList2 == null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "not equal  arrayList1==null||arrayList2==null");
+        QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "not equal  arrayList1==null||arrayList2==null");
       }
       return false;
     }
     if (paramArrayList1.size() != paramArrayList2.size())
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "not equal arrayList1.size()!=arrayList2.size()");
+        QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "not equal arrayList1.size()!=arrayList2.size()");
       }
       return false;
     }
@@ -135,7 +140,7 @@ public class LebaQZoneFacePlayHelper
         if (!str1.equals(str2))
         {
           if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, String.format("not equal index: %d,uin1:%s,uin2:%s", new Object[] { Integer.valueOf(i), str1, str2 }));
+            QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, String.format("not equal index: %d,uin1:%s,uin2:%s", new Object[] { Integer.valueOf(i), str1, str2 }));
           }
           return false;
         }
@@ -145,7 +150,7 @@ public class LebaQZoneFacePlayHelper
     }
     catch (Throwable paramArrayList1)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramArrayList1, new Object[0]);
+      QLog.e("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 1, paramArrayList1, new Object[0]);
       return false;
     }
   }
@@ -165,11 +170,11 @@ public class LebaQZoneFacePlayHelper
   
   private void f()
   {
-    if ((this.jdField_a_of_type_Svz != null) && (!this.jdField_a_of_type_Svz.a())) {
-      this.jdField_a_of_type_Svz.a();
+    if ((this.jdField_a_of_type_Syy != null) && (!this.jdField_a_of_type_Syy.a())) {
+      this.jdField_a_of_type_Syy.a();
     }
-    if ((this.jdField_b_of_type_Svz != null) && (!this.jdField_b_of_type_Svz.a())) {
-      this.jdField_b_of_type_Svz.a();
+    if ((this.jdField_b_of_type_Syy != null) && (!this.jdField_b_of_type_Syy.a())) {
+      this.jdField_b_of_type_Syy.a();
     }
     if ((this.c != null) && (!this.c.a())) {
       this.c.a();
@@ -203,6 +208,11 @@ public class LebaQZoneFacePlayHelper
     this.jdField_a_of_type_Boolean = false;
   }
   
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
   void a()
   {
     for (;;)
@@ -210,32 +220,32 @@ public class LebaQZoneFacePlayHelper
       try
       {
         if (!a()) {
-          break label321;
+          break label317;
         }
         if (b())
         {
           if (!QLog.isColorLevel()) {
             return;
           }
-          QLog.i(jdField_a_of_type_JavaLangString, 2, "已经播放完毕，不再轮播头像");
+          QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "已经播放完毕，不再轮播头像");
           return;
         }
         if (!a(2)) {
-          break label285;
+          break label282;
         }
         if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 1) && (this.jdField_a_of_type_Int > 0))
         {
           d();
           if (QLog.isColorLevel()) {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("play index :%d, uin:%s,total size=:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
+            QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, String.format("play index :%d, uin:%s,total size=:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
           }
-          this.jdField_a_of_type_Svz = this.jdField_b_of_type_Svz;
+          this.jdField_a_of_type_Syy = this.jdField_b_of_type_Syy;
           String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-          this.jdField_b_of_type_Svz = a(str);
-          if (this.jdField_b_of_type_Svz == null) {
-            this.jdField_b_of_type_Svz = svz.a(str, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          this.jdField_b_of_type_Syy = a(str);
+          if (this.jdField_b_of_type_Syy == null) {
+            this.jdField_b_of_type_Syy = syy.a(str, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
           }
-          this.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable(this.jdField_b_of_type_Svz.a);
+          this.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable(this.jdField_b_of_type_Syy.a);
           if (this.jdField_a_of_type_Int == 0) {
             this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1688002, 1000L);
           }
@@ -243,13 +253,13 @@ public class LebaQZoneFacePlayHelper
           if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
             break;
           }
-          this.c = svz.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          this.c = syy.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "播放头像过程中出现错误，请关注异常信息", localThrowable);
+        QLog.e("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 1, "播放头像过程中出现错误，请关注异常信息", localThrowable);
         QZoneExceptionReport.a(localThrowable, "播放头像过程中出现错误，请关注异常信息");
         return;
       }
@@ -257,14 +267,14 @@ public class LebaQZoneFacePlayHelper
     }
     this.c = null;
     return;
-    label285:
+    label282:
     if (QLog.isColorLevel())
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "播放状态不对，不进行播放 playState:" + this.jdField_b_of_type_Int);
+      QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "播放状态不对，不进行播放 playState:" + this.jdField_b_of_type_Int);
       return;
-      label321:
+      label317:
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "非法状态，不进行播放下一张头像");
+        QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "非法状态，不进行播放下一张头像");
       }
     }
   }
@@ -281,7 +291,7 @@ public class LebaQZoneFacePlayHelper
   public void a(ArrayList paramArrayList)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("start play qzone face pre list:%s, current list:%s, currentPlayState:%s, currentIndex:%d", new Object[] { String.valueOf(this.jdField_a_of_type_JavaUtilArrayList), String.valueOf(paramArrayList), a(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, String.format("start play qzone face pre list:%s, current list:%s, currentPlayState:%s, currentIndex:%d", new Object[] { String.valueOf(this.jdField_a_of_type_JavaUtilArrayList), String.valueOf(paramArrayList), a(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int) }));
     }
     if ((b(2)) || (!a(this.jdField_a_of_type_JavaUtilArrayList, paramArrayList)))
     {
@@ -294,7 +304,7 @@ public class LebaQZoneFacePlayHelper
         {
           this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramArrayList.size());
           this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-          this.c = svz.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          this.c = syy.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
           if (this.jdField_a_of_type_AndroidWidgetImageSwitcher.getVisibility() != 0) {
             this.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
           }
@@ -310,19 +320,19 @@ public class LebaQZoneFacePlayHelper
         this.jdField_a_of_type_JavaUtilArrayList.clear();
       }
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "start play qzone face 更新数据为 null，隐藏头像");
+        QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "start play qzone face 更新数据为 null，隐藏头像");
       }
       e();
       this.jdField_b_of_type_Int = 0;
       return;
     }
-    QLog.i(jdField_a_of_type_JavaLangString, 2, "数据没有发生变化，保持原有的播放状态:" + this.jdField_a_of_type_JavaUtilArrayList);
+    QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "数据没有发生变化，保持原有的播放状态:" + this.jdField_a_of_type_JavaUtilArrayList);
   }
   
-  void b()
+  public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "pausePlayFace pre playState=" + a(this.jdField_b_of_type_Int));
+      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "pausePlayFace pre playState=" + a(this.jdField_b_of_type_Int));
     }
     if ((a(2)) && (b(4)))
     {
@@ -331,15 +341,15 @@ public class LebaQZoneFacePlayHelper
     }
   }
   
-  void b(QQAppInterface paramQQAppInterface)
+  public void b(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  void c()
+  public void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "resumePlayFace pre playState=" + a(this.jdField_b_of_type_Int));
+      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "resumePlayFace pre playState=" + a(this.jdField_b_of_type_Int));
     }
     if (!b(4))
     {
@@ -365,7 +375,7 @@ public class LebaQZoneFacePlayHelper
     }
     this.jdField_a_of_type_AndroidWidgetImageSwitcher.setAnimateFirstView(false);
     Animation localAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidWidgetImageSwitcher.getContext(), 2131034166);
-    localAnimation.setAnimationListener(new svy(this));
+    localAnimation.setAnimationListener(new syx(this));
     this.jdField_a_of_type_AndroidWidgetImageSwitcher.setInAnimation(localAnimation);
     this.jdField_a_of_type_AndroidWidgetImageSwitcher.setOutAnimation(this.jdField_a_of_type_AndroidWidgetImageSwitcher.getContext(), 2131034168);
     this.jdField_a_of_type_Boolean = true;

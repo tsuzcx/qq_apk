@@ -1,44 +1,48 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class acjz
-  extends BroadcastReceiver
+  implements OnCompositionLoadedListener
 {
-  private acjz(FileManagerEngine paramFileManagerEngine) {}
+  public acjz(ExtendFriendVoiceView paramExtendFriendVoiceView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    QLog.i("FileManagerEngine<FileAssistant>", 1, "!!!extCard changed[" + paramIntent.getAction() + "]!!!");
-    paramContext = paramIntent.getAction();
-    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
-      FMSettings.a().a("externalSdCard");
-    }
-    try
+    int m = AIOUtils.a(19.0F, this.a.getResources());
+    int k = AIOUtils.a(19.0F, this.a.getResources());
+    int j = k;
+    int i = m;
+    if (ExtendFriendVoiceView.a(this.a) == 2)
     {
-      this.a.a.a().a(true);
-      label96:
-      if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_MOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_SCANNER_STARTED"))) {
-        FMSettings.a().a();
-      }
-      this.a.a.a().a(true, 3, null);
+      i = (int)(m * 0.8F);
+      j = (int)(k * 0.8F);
+    }
+    if (paramLottieComposition == null)
+    {
+      QLog.e("ExtendFriendVoiceView", 1, "onCompositionLoaded lottieComposition is null");
       return;
     }
-    catch (Exception paramIntent)
-    {
-      break label96;
-    }
+    Object localObject = paramLottieComposition.getBounds();
+    float f1 = i / ((Rect)localObject).width();
+    float f2 = j / ((Rect)localObject).height();
+    localObject = new LottieDrawable();
+    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+    ((LottieDrawable)localObject).setScale(f1, f2);
+    ((LottieDrawable)localObject).loop(true);
+    ExtendFriendVoiceView.a(this.a, (LottieDrawable)localObject);
+    ThreadManager.getUIHandler().post(new acka(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acjz
  * JD-Core Version:    0.7.0.1
  */

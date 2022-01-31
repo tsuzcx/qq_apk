@@ -1,77 +1,61 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.cropvideo.CropVideoActivity.HWCompressProcessor;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.GifAntishakeModule;
+import cooperation.qzone.vision.PhotoUtil;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 
 public class anao
+  implements Runnable
 {
-  public static void a(@NonNull String paramString1, @NonNull String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2, @NonNull VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
-  {
-    AssertUtils.a(paramString1);
-    AssertUtils.a(paramString2);
-    AssertUtils.a(paramVideoCompositeCallBack);
-    ThreadManager.newFreeThread(new anap(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramLong1, paramLong2, paramVideoCompositeCallBack), "VideoCrop", 5).start();
-  }
+  public anao(GifAntishakeModule paramGifAntishakeModule, int paramInt1, int paramInt2, int paramInt3, ArrayList paramArrayList, Bitmap paramBitmap, int paramInt4, int paramInt5, String[] paramArrayOfString, CountDownLatch paramCountDownLatch) {}
   
-  private static int b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2)
+  public void run()
   {
-    SLog.b("CropVideoActivity", "startCropVideo cropX: " + paramInt1 + ", cropY: " + paramInt2 + ", cropWidth: " + paramInt3 + ", cropHeight: " + paramInt4 + ", targetWidth: " + paramInt5 + ", targetHeight: " + paramInt6 + ", startTime: " + paramLong1 + ", endTime: " + paramLong2);
-    int i = paramInt5;
-    if (paramInt5 == -1) {
-      i = paramInt3;
-    }
-    paramInt5 = paramInt6;
-    if (paramInt6 == -1) {
-      paramInt5 = paramInt4;
-    }
-    if (paramLong1 < 0L)
+    try
     {
-      SLog.e("CropVideoActivity", "startCropVideo illegal start time!");
-      return -1;
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", startAntishake at " + System.currentTimeMillis());
+      }
+      Bitmap localBitmap1 = Bitmap.createBitmap(this.b, this.c, Bitmap.Config.RGB_565);
+      Bitmap localBitmap2 = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+      PhotoUtil.getAntiShakeBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localBitmap2, localBitmap1);
+      localBitmap2 = Bitmap.createBitmap(localBitmap1, this.d, this.e, localBitmap1.getWidth() - this.d * 2, localBitmap1.getHeight() - this.e * 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", endAntishake and startSave at " + System.currentTimeMillis());
+      }
+      String str = PhotoUtils.a(GifAntishakeModule.a(this.jdField_a_of_type_CooperationQzoneUtilGifAntishakeModule), ".IMG" + this.jdField_a_of_type_Int, ".jpg");
+      ImageUtil.a(localBitmap2, new File(str));
+      if (!localBitmap1.isRecycled()) {
+        localBitmap1.recycle();
+      }
+      if (!localBitmap2.isRecycled()) {
+        localBitmap2.recycle();
+      }
+      this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] = str;
+      GifAntishakeModule.b();
+      GifAntishakeModule.a(this.jdField_a_of_type_CooperationQzoneUtilGifAntishakeModule, GifAntishakeModule.c());
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", endSave at " + System.currentTimeMillis());
+      }
     }
-    if ((paramLong1 >= paramLong2) && (paramLong2 >= 0L))
+    catch (Throwable localThrowable)
     {
-      SLog.e("CropVideoActivity", "startCropVideo illegal time!");
-      return -2;
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
-    paramInt6 = paramInt1;
-    if (paramInt1 % 2 != 0) {
-      paramInt6 = (paramInt1 + 1) / 2 * 2;
-    }
-    paramInt1 = paramInt2;
-    if (paramInt2 % 2 != 0) {
-      paramInt1 = (paramInt2 + 1) / 2 * 2;
-    }
-    paramInt2 = paramInt3;
-    if (paramInt3 % 16 != 0) {
-      paramInt2 = paramInt3 / 16 * 16;
-    }
-    paramInt3 = paramInt4;
-    if (paramInt4 % 16 != 0) {
-      paramInt3 = paramInt4 / 16 * 16;
-    }
-    if (i % 16 != 0) {
-      paramInt4 = i / 16;
-    }
-    if (paramInt5 % 16 != 0) {
-      paramInt4 = paramInt5 / 16;
-    }
-    paramString1 = new File(paramString1);
-    paramString2 = new CropVideoActivity.HWCompressProcessor(paramString2, 2048000, paramLong1, paramLong2, false, true);
-    paramString2.a(paramInt6, paramInt1, paramInt2, paramInt3);
-    if ((new VideoConverter().a(paramString1, paramString2, true)) && (paramString2.a == null)) {
-      return 0;
-    }
-    return -3;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anao
  * JD-Core Version:    0.7.0.1
  */

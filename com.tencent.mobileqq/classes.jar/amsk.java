@@ -1,22 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
+import cooperation.qzone.QZoneVideoDownloadActivity;
 
 public class amsk
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public amsk(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public amsk(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.g();
-    this.a.e();
+    P2VEffectLoader.a().a(new amsl(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsk
  * JD-Core Version:    0.7.0.1
  */

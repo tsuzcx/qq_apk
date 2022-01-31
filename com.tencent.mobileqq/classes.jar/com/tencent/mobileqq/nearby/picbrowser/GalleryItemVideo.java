@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import aeoe;
-import aeof;
+import afbk;
+import afbl;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -196,7 +196,7 @@ public class GalleryItemVideo
         label460:
         paramHandler = URLDrawableHelper.a;
         break label186;
-        localURLImageView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837615));
+        localURLImageView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837618));
         this.d = 2;
         paramOnLoadListener.a(paramInt, false);
         break label396;
@@ -314,15 +314,15 @@ public class GalleryItemVideo
         if (DynamicAvatarDownloadManager.b(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.d))
         {
           localObject = URLDrawable.getDrawable(DynamicAvatarDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo.d), a(paramString.getDrawable()));
-          this.jdField_a_of_type_AndroidOsHandler.post(new aeoe(this, paramString, (URLDrawable)localObject));
+          this.jdField_a_of_type_AndroidOsHandler.post(new afbk(this, paramString, (URLDrawable)localObject));
           i = 1;
         }
       }
       if (i != 0) {
         break;
       }
-      localObject = BaseApplicationImpl.getApplication().getResources().getDrawable(2130837615);
-      this.jdField_a_of_type_AndroidOsHandler.post(new aeof(this, paramString, (Drawable)localObject));
+      localObject = BaseApplicationImpl.getApplication().getResources().getDrawable(2130837618);
+      this.jdField_a_of_type_AndroidOsHandler.post(new afbl(this, paramString, (Drawable)localObject));
       return;
     }
   }

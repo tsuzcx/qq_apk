@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class lcj
   implements Runnable
 {
-  public lcj(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public lcj(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
   public void run()
   {
-    this.a.g();
+    ReadInJoyGlobalReporter.a().a(true);
+    ReadInJoyGlobalReporter.a().a(this.a.app, NetConnInfoCenter.getServerTimeMillis(), -1, -1);
   }
 }
 

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
 
 public class ajsq
   implements Runnable
 {
-  public ajsq(HttpCommunicator paramHttpCommunicator, HttpMsg paramHttpMsg, ajst paramajst) {}
+  public ajsq(MessageSubtitleView paramMessageSubtitleView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_Ajst);
+    MessageSubtitleView.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsq
  * JD-Core Version:    0.7.0.1
  */

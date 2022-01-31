@@ -1,14 +1,15 @@
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable;
 import com.tencent.mobileqq.widget.QQToast;
 
-class aabm
+public class aabm
   implements Runnable
 {
-  aabm(aabl paramaabl) {}
+  public aabm(MultiFragmentAnimRenderable paramMultiFragmentAnimRenderable) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "下载资源失败,请重试！", 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "目前多段动画只支持普通视频、透明视频、边下边播！", 1).a();
   }
 }
 

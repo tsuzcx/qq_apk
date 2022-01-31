@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLViewContext;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.StartResource;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
 
-class aiau
-  implements Runnable
+public class aiau
+  implements Animation.AnimationListener
 {
-  aiau(aias paramaias, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public aiau(DanceReadyFilter paramDanceReadyFilter) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Aias.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    this.a.a.a().a(DanceReadyFilter.a(this.a).a.b);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiau
  * JD-Core Version:    0.7.0.1
  */

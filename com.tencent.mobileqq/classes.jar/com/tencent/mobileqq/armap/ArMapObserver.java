@@ -48,6 +48,8 @@ public class ArMapObserver
   
   public void onReport(boolean paramBoolean1, boolean paramBoolean2) {}
   
+  public void onSetWorldCupInfo(boolean paramBoolean, String paramString, int paramInt) {}
+  
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     int i = -1;
@@ -63,11 +65,11 @@ public class ArMapObserver
     switch (paramInt)
     {
     }
-    label275:
-    label291:
-    label307:
-    label372:
-    label378:
+    label279:
+    label295:
+    label311:
+    label376:
+    label382:
     do
     {
       do
@@ -76,227 +78,233 @@ public class ArMapObserver
         {
           do
           {
-            return;
-            onGetPOIList(paramBoolean, paramObject);
-            return;
-            onGetC2CPOIList(paramBoolean, paramObject);
-            return;
-          } while (!(paramObject instanceof Object[]));
-          onGrabAreaGetCoin(paramBoolean, ((Integer)((Object[])(Object[])paramObject)[0]).intValue());
-          return;
-          onGrabArea(paramBoolean);
-          return;
-          if ((paramObject instanceof Object[]))
-          {
-            arrayOfObject = (Object[])paramObject;
-            if (arrayOfObject[0] != null)
+            do
             {
-              paramObject = (String)arrayOfObject[0];
-              if (arrayOfObject[1] != null) {
-                localObject1 = (ItemInfo)arrayOfObject[1];
-              }
-              if (arrayOfObject[2] == null) {
-                break label372;
-              }
-              bool1 = ((Boolean)arrayOfObject[2]).booleanValue();
-              if (arrayOfObject[3] == null) {
-                break label378;
-              }
-              str = (String)arrayOfObject[3];
-              if (arrayOfObject[4] == null) {
-                break label385;
-              }
-              localObject2 = (String)arrayOfObject[4];
-              if (arrayOfObject[5] == null) {
-                break label392;
-              }
-            }
-            for (bool2 = ((Boolean)arrayOfObject[5]).booleanValue();; bool2 = false)
+              return;
+              onGetPOIList(paramBoolean, paramObject);
+              return;
+              onGetC2CPOIList(paramBoolean, paramObject);
+              return;
+            } while (!(paramObject instanceof Object[]));
+            onGrabAreaGetCoin(paramBoolean, ((Integer)((Object[])(Object[])paramObject)[0]).intValue());
+            return;
+            onGrabArea(paramBoolean);
+            return;
+            if ((paramObject instanceof Object[]))
             {
-              try
+              arrayOfObject = (Object[])paramObject;
+              if (arrayOfObject[0] != null)
               {
-                paramInt = Integer.parseInt(paramObject);
-                k = Integer.parseInt(str);
-                j = Integer.parseInt((String)localObject2);
-                i = k;
-              }
-              catch (NumberFormatException paramObject)
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("ArMapObserver", 2, "onUpdate NumberFormatException", paramObject);
-                  }
-                  paramObject.printStackTrace();
-                  int j = -1;
-                  int k = -1;
-                  paramInt = i;
-                  i = k;
+                paramObject = (String)arrayOfObject[0];
+                if (arrayOfObject[1] != null) {
+                  localObject1 = (ItemInfo)arrayOfObject[1];
+                }
+                if (arrayOfObject[2] == null) {
+                  break label376;
+                }
+                bool1 = ((Boolean)arrayOfObject[2]).booleanValue();
+                if (arrayOfObject[3] == null) {
+                  break label382;
+                }
+                str = (String)arrayOfObject[3];
+                if (arrayOfObject[4] == null) {
+                  break label389;
+                }
+                localObject2 = (String)arrayOfObject[4];
+                if (arrayOfObject[5] == null) {
+                  break label396;
                 }
               }
-              onOpenPOI(paramBoolean, paramInt, (ItemInfo)localObject1, bool1, i, j, bool2);
-              return;
-              paramObject = "-1";
-              break;
-              bool1 = false;
-              break label275;
-              str = "-1";
-              break label291;
-              localObject2 = "-1";
-              break label307;
+              for (bool2 = ((Boolean)arrayOfObject[5]).booleanValue();; bool2 = false)
+              {
+                try
+                {
+                  paramInt = Integer.parseInt(paramObject);
+                  k = Integer.parseInt(str);
+                  j = Integer.parseInt((String)localObject2);
+                  i = k;
+                }
+                catch (NumberFormatException paramObject)
+                {
+                  for (;;)
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.d("ArMapObserver", 2, "onUpdate NumberFormatException", paramObject);
+                    }
+                    paramObject.printStackTrace();
+                    int j = -1;
+                    int k = -1;
+                    paramInt = i;
+                    i = k;
+                  }
+                }
+                onOpenPOI(paramBoolean, paramInt, (ItemInfo)localObject1, bool1, i, j, bool2);
+                return;
+                paramObject = "-1";
+                break;
+                bool1 = false;
+                break label279;
+                str = "-1";
+                break label295;
+                localObject2 = "-1";
+                break label311;
+              }
             }
-          }
-          onOpenPOI(false, -1, null, false, 0, 0, false);
-          return;
-          if ((paramObject instanceof Object[]))
-          {
-            localObject2 = (Object[])paramObject;
-            if (localObject2[0] != null)
+            onOpenPOI(false, -1, null, false, 0, 0, false);
+            return;
+            if ((paramObject instanceof Object[]))
             {
-              paramObject = (POIInfo)localObject2[0];
-              localObject1 = str;
-              if (localObject2[1] != null) {
-                localObject1 = (List)localObject2[1];
+              localObject2 = (Object[])paramObject;
+              if (localObject2[0] != null)
+              {
+                paramObject = (POIInfo)localObject2[0];
+                localObject1 = str;
+                if (localObject2[1] != null) {
+                  localObject1 = (List)localObject2[1];
+                }
+                if (localObject2[2] == null) {
+                  break label576;
+                }
+                paramInt = ((Integer)localObject2[2]).intValue();
+                if (localObject2[3] == null) {
+                  break label581;
+                }
+                i = ((Integer)localObject2[3]).intValue();
+                if (localObject2[4] == null) {
+                  break label587;
+                }
               }
-              if (localObject2[2] == null) {
-                break label572;
-              }
-              paramInt = ((Integer)localObject2[2]).intValue();
-              if (localObject2[3] == null) {
-                break label577;
-              }
-              i = ((Integer)localObject2[3]).intValue();
-              if (localObject2[4] == null) {
-                break label583;
+              for (long l = ((Long)localObject2[4]).longValue();; l = -1L)
+              {
+                onQueryPOI(paramBoolean, paramObject, (List)localObject1, paramInt, i, l);
+                return;
+                paramObject = null;
+                break;
+                paramInt = -1;
+                break label519;
+                i = -1;
+                break label538;
               }
             }
-            for (long l = ((Long)localObject2[4]).longValue();; l = -1L)
+            onQueryPOI(false, null, null, -1, -1, -1L);
+            return;
+            if (paramBoolean)
             {
-              onQueryPOI(paramBoolean, paramObject, (List)localObject1, paramInt, i, l);
+              onQueryItem(true, (List)paramObject);
               return;
-              paramObject = null;
-              break;
-              paramInt = -1;
-              break label515;
-              i = -1;
-              break label534;
             }
-          }
-          onQueryPOI(false, null, null, -1, -1, -1L);
-          return;
-          if (paramBoolean)
-          {
-            onQueryItem(true, (List)paramObject);
+            onQueryItem(false, null);
             return;
-          }
-          onQueryItem(false, null);
-          return;
-          if ((paramObject instanceof Object[]))
-          {
-            localObject1 = (Object[])paramObject;
-            paramObject = localObject2;
-            if (localObject1[0] != null) {
-              paramObject = (List)localObject1[0];
+            if ((paramObject instanceof Object[]))
+            {
+              localObject1 = (Object[])paramObject;
+              paramObject = localObject2;
+              if (localObject1[0] != null) {
+                paramObject = (List)localObject1[0];
+              }
+              if (localObject1[1] != null) {
+                bool1 = ((Boolean)localObject1[1]).booleanValue();
+              }
+              if (localObject1[2] != null) {
+                i = ((Integer)localObject1[2]).intValue();
+              }
+              onPageItem(paramBoolean, paramObject, bool1, i);
+              return;
             }
-            if (localObject1[1] != null) {
-              bool1 = ((Boolean)localObject1[1]).booleanValue();
+            onPageItem(false, null, false, -1);
+            return;
+            if ((paramObject instanceof Object[]))
+            {
+              localObject1 = (Object[])paramObject;
+              paramObject = arrayOfObject;
+              if (localObject1[0] != null) {
+                paramObject = (List)localObject1[0];
+              }
+              bool1 = bool2;
+              if (localObject1[1] != null) {
+                bool1 = ((Boolean)localObject1[1]).booleanValue();
+              }
+              if (localObject1[2] != null) {
+                i = ((Integer)localObject1[2]).intValue();
+              }
+              onPageHistory(paramBoolean, paramObject, bool1, i);
+              return;
             }
-            if (localObject1[2] != null) {
-              i = ((Integer)localObject1[2]).intValue();
+            onPageHistory(false, null, false, -1);
+            return;
+            if (paramBoolean)
+            {
+              onDeductItem(true, ((Integer)paramObject).intValue());
+              return;
             }
-            onPageItem(paramBoolean, paramObject, bool1, i);
+            onDeductItem(false, 0);
             return;
-          }
-          onPageItem(false, null, false, -1);
-          return;
-          if ((paramObject instanceof Object[]))
-          {
-            localObject1 = (Object[])paramObject;
-            paramObject = arrayOfObject;
-            if (localObject1[0] != null) {
-              paramObject = (List)localObject1[0];
+            if (paramBoolean)
+            {
+              onQueryTask(true, (List)paramObject);
+              return;
             }
-            bool1 = bool2;
-            if (localObject1[1] != null) {
-              bool1 = ((Boolean)localObject1[1]).booleanValue();
+            onQueryTask(false, null);
+            return;
+            if ((paramObject instanceof Object[]))
+            {
+              onReport(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
+              return;
             }
-            if (localObject1[2] != null) {
-              i = ((Integer)localObject1[2]).intValue();
+            onReport(paramBoolean, false);
+            return;
+            if ((paramObject instanceof Object[]))
+            {
+              paramObject = (Object[])paramObject;
+              onIncCoins(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Long)paramObject[4]).longValue());
+              return;
             }
-            onPageHistory(paramBoolean, paramObject, bool1, i);
+            onIncCoins(false, 0, 0, 0, 0, 0L);
             return;
-          }
-          onPageHistory(false, null, false, -1);
+            if ((paramObject instanceof Object[]))
+            {
+              paramObject = (Object[])paramObject;
+              onApplyCoin(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), (byte[])paramObject[3]);
+              return;
+            }
+            onApplyCoin(paramBoolean, 0L, 0L, -1, null);
+            return;
+            if ((paramObject instanceof Object[]))
+            {
+              paramObject = (Object[])paramObject;
+              onGetLevelInfo(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
+              return;
+            }
+            onGetLevelInfo(false, 0, 0, 0);
+            return;
+          } while (!(paramObject instanceof Object[]));
+          paramObject = (Object[])paramObject;
+          onGetArMapAnimationInfo(paramBoolean, (String)paramObject[0], (String)paramObject[1], ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue());
           return;
-          if (paramBoolean)
+          if ((paramObject instanceof ARMapConfig))
           {
-            onDeductItem(true, ((Integer)paramObject).intValue());
+            onGetARMapConfig((ARMapConfig)paramObject);
             return;
           }
-          onDeductItem(false, 0);
+          onGetARMapConfig(null);
           return;
-          if (paramBoolean)
-          {
-            onQueryTask(true, (List)paramObject);
-            return;
-          }
-          onQueryTask(false, null);
-          return;
-          if ((paramObject instanceof Object[]))
-          {
-            onReport(paramBoolean, ((Boolean)((Object[])(Object[])paramObject)[0]).booleanValue());
-            return;
-          }
-          onReport(paramBoolean, false);
-          return;
-          if ((paramObject instanceof Object[]))
-          {
-            paramObject = (Object[])paramObject;
-            onIncCoins(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Long)paramObject[4]).longValue());
-            return;
-          }
-          onIncCoins(false, 0, 0, 0, 0, 0L);
-          return;
-          if ((paramObject instanceof Object[]))
-          {
-            paramObject = (Object[])paramObject;
-            onApplyCoin(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), (byte[])paramObject[3]);
-            return;
-          }
-          onApplyCoin(paramBoolean, 0L, 0L, -1, null);
-          return;
-          if ((paramObject instanceof Object[]))
-          {
-            paramObject = (Object[])paramObject;
-            onGetLevelInfo(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
-            return;
-          }
-          onGetLevelInfo(false, 0, 0, 0);
-          return;
-        } while (!(paramObject instanceof Object[]));
-        paramObject = (Object[])paramObject;
-        onGetArMapAnimationInfo(paramBoolean, (String)paramObject[0], (String)paramObject[1], ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue());
+        } while (!(paramObject instanceof ArMapHandler.RespWealthGodInfo));
+        onGetWealthGodInfo(paramBoolean, (ArMapHandler.RespWealthGodInfo)paramObject);
         return;
-        if ((paramObject instanceof ARMapConfig))
-        {
-          onGetARMapConfig((ARMapConfig)paramObject);
-          return;
-        }
-        onGetARMapConfig(null);
-        return;
-      } while (!(paramObject instanceof ArMapHandler.RespWealthGodInfo));
-      onGetWealthGodInfo(paramBoolean, (ArMapHandler.RespWealthGodInfo)paramObject);
+      } while (!(paramObject instanceof Object[]));
+      paramObject = (Object[])paramObject;
+      onGetARRedDotInfo(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Long)paramObject[1]).longValue());
       return;
     } while (!(paramObject instanceof Object[]));
-    label385:
-    label392:
-    label534:
-    label572:
-    label577:
-    label583:
+    label389:
+    label396:
+    label538:
+    label576:
+    label581:
+    label587:
     paramObject = (Object[])paramObject;
-    label515:
-    onGetARRedDotInfo(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Long)paramObject[1]).longValue());
+    label519:
+    onSetWorldCupInfo(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
   }
 }
 

@@ -36,7 +36,7 @@ public class StructMsgItemLayout25
     paramResources = new FrameLayout(paramContext);
     paramResources.setId(2131362336);
     paramView = new ImageView(paramContext);
-    paramView.setImageResource(2130845969);
+    paramView.setImageResource(2130846097);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 80;
     paramResources.addView(paramView, localLayoutParams);
@@ -65,7 +65,7 @@ public class StructMsgItemLayout25
     paramRelativeLayout.addView(paramTextView2, paramResources);
     paramResources = new ImageView(paramContext);
     paramResources.setId(2131362335);
-    paramResources.setImageResource(2130845971);
+    paramResources.setImageResource(2130846099);
     paramView = new RelativeLayout.LayoutParams(-2, -2);
     paramView.addRule(14);
     paramView.addRule(3, 2131362334);
@@ -73,12 +73,12 @@ public class StructMsgItemLayout25
     paramResources = new RelativeLayout(paramContext);
     paramView = new ImageView(paramContext);
     paramView.setId(2131362333);
-    paramView.setImageResource(2130845972);
+    paramView.setImageResource(2130846100);
     paramLinearLayout = new RelativeLayout.LayoutParams(-2, -2);
     paramLinearLayout.addRule(13);
     paramResources.addView(paramView, paramLinearLayout);
     paramContext = new ImageView(paramContext);
-    paramContext.setImageResource(2130845968);
+    paramContext.setImageResource(2130846096);
     paramView = new RelativeLayout.LayoutParams(-2, -2);
     paramView.addRule(15);
     paramView.addRule(0, 2131362333);
@@ -216,12 +216,12 @@ public class StructMsgItemLayout25
             localObject7 = localObject1;
             continue;
             label531:
-            paramView = new StructMsgItemMore(paramContext.getString(2131438707)).a(paramContext, null, null);
+            paramView = new StructMsgItemMore(paramContext.getString(2131438725)).a(paramContext, null, null);
             paramBundle = new LinearLayout.LayoutParams(-1, -2);
             j = AIOUtils.a(15.0F, localResources);
             paramView.setLayoutParams(paramBundle);
             paramView.setPadding(j, j, j, j);
-            paramBundle = (TextView)paramView.findViewById(2131374986);
+            paramBundle = (TextView)paramView.findViewById(2131375172);
             paramBundle.setSingleLine();
             paramBundle.setEllipsize(TextUtils.TruncateAt.END);
             paramBundle.setTextSize(1, 18.0F);
@@ -248,14 +248,14 @@ public class StructMsgItemLayout25
             localObject1.setLayoutParams(paramBundle);
             paramView.addView(localObject1);
             paramBundle = new ImageView(paramContext);
-            paramBundle.setImageResource(2130845963);
+            paramBundle.setImageResource(2130846091);
             localObject4 = new RelativeLayout.LayoutParams(-2, -2);
             ((RelativeLayout.LayoutParams)localObject4).addRule(0, localObject1.getId());
             ((RelativeLayout.LayoutParams)localObject4).addRule(15);
             ((RelativeLayout.LayoutParams)localObject4).rightMargin = AIOUtils.a(7.0F, localResources);
             paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject4);
             paramContext = new ImageView(paramContext);
-            paramContext.setImageResource(2130845964);
+            paramContext.setImageResource(2130846092);
             paramBundle = new RelativeLayout.LayoutParams(-2, -2);
             paramBundle.addRule(1, localObject1.getId());
             paramBundle.addRule(15);
@@ -303,7 +303,7 @@ public class StructMsgItemLayout25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout25
  * JD-Core Version:    0.7.0.1
  */

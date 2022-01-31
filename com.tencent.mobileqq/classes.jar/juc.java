@@ -1,18 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.EffectToolbar;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class juc
-  extends BroadcastReceiver
+  implements Observer
 {
-  public juc(EffectSettingUi paramEffectSettingUi) {}
+  private WeakReference a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public juc(EffectToolbar paramEffectToolbar)
   {
-    if (paramIntent.getAction().equals("com.tencent.redpoint.broadcast.push.av")) {
-      EffectSettingUi.a(this.a);
+    this.a = new WeakReference(paramEffectToolbar);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
+    if (localEffectToolbar == null) {
+      return;
     }
+    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
   }
 }
 

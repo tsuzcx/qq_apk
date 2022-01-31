@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCompleteListener;
 
-public final class ahje
-  implements Parcelable.Creator
+public class ahje
+  implements GuideVideoView.OnCompleteListener
 {
-  public FriendSingleInfo a(Parcel paramParcel)
-  {
-    return new FriendSingleInfo(paramParcel);
-  }
+  public ahje(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public FriendSingleInfo[] a(int paramInt)
+  public void a()
   {
-    return new FriendSingleInfo[paramInt];
+    EffectsCameraCaptureFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahje
  * JD-Core Version:    0.7.0.1
  */

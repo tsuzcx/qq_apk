@@ -1,23 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.av.ui.ControlUIObserver;
+import com.tencent.av.ui.ControlUIObserver.CPreEventInfo;
+import com.tencent.av.ui.redbag.ResultData;
+import com.tencent.av.ui.redbag.ResultUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class kfi
-  implements MenuItem.OnMenuItemClickListener
+  extends ControlUIObserver
 {
-  public kfi(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
+  public kfi(ResultUI paramResultUI) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  protected void b(ControlUIObserver.CPreEventInfo paramCPreEventInfo)
   {
-    paramMenuItem = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin() + "qav_SP", 0).edit();
-    paramMenuItem.putBoolean("qav_UserGuide2_for_av_redbag", true);
-    paramMenuItem.putBoolean("qav_userguide_for_recever", true);
-    paramMenuItem.commit();
-    return true;
+    if (paramCPreEventInfo.jdField_b_of_type_Boolean) {
+      return;
+    }
+    paramCPreEventInfo.jdField_b_of_type_Boolean = this.a.a("onAVActivityPreBackPressed");
+    if (paramCPreEventInfo.jdField_b_of_type_Boolean) {
+      paramCPreEventInfo.a = "AVRegbagResultUI";
+    }
+    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + paramCPreEventInfo.jdField_b_of_type_Boolean + "]");
+  }
+  
+  protected void f(String paramString)
+  {
+    if (this.a.a() != null)
+    {
+      QLog.w(this.a.i, 1, "onActivityOnResume, peerUin[" + paramString + "], mStarter[" + this.a.a.jdField_b_of_type_Boolean + "], mPlayUin[" + this.a.a.jdField_b_of_type_JavaLangString + "], mStartUin[" + this.a.a.a + "]");
+      if (((this.a.a.jdField_b_of_type_Boolean) && (TextUtils.equals(this.a.a.jdField_b_of_type_JavaLangString, paramString))) || ((!this.a.a.jdField_b_of_type_Boolean) && (TextUtils.equals(this.a.a.a, paramString)))) {
+        this.a.c();
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.a();
   }
 }
 

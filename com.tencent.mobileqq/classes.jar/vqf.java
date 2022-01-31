@@ -1,34 +1,23 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.theme.SkinEngine;
+import mqq.os.MqqHandler;
 
-public class vqf
+public final class vqf
   implements Runnable
 {
-  public vqf(FriendChatPie paramFriendChatPie) {}
+  public vqf(TextView paramTextView) {}
   
   public void run()
   {
-    AVNotifyCenter localAVNotifyCenter = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
-    for (;;)
-    {
-      return;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null)) {
-        try
-        {
-          long l = Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-          if (localAVNotifyCenter.a(l))
-          {
-            this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, localAVNotifyCenter.a(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue()));
-            localAVNotifyCenter.a(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue(), false, -1);
-            return;
-          }
-        }
-        catch (NumberFormatException localNumberFormatException) {}
-      }
-    }
+    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845881);
+    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845883);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
+    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);
+    ThreadManager.getUIHandler().post(new vqg(this, localStateListDrawable));
   }
 }
 

@@ -5,12 +5,12 @@ import android.text.TextUtils;
 import com.dataline.util.DatalineMathUtil;
 import com.tencent.biz.pubaccount.Advertisement.util.PublicAccountAdUtil;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -35,12 +35,15 @@ import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.AdVideoPos;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ArticleSummary;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ChannelInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.DisLikeInfo;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.FeedsIdInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.FeedsInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PhoneInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PosAdInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqAdvertisePara;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.RspBody;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.UGCFeedsInfo;
+import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.UGCVideoInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.VideoFloatInfo;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
@@ -119,8 +122,8 @@ public class VideoPlayRecommendHandler
       if (paramVideoInfo.jdField_g_of_type_Int != 2) {
         break;
       }
-    } while ((!TextUtils.isEmpty(paramVideoInfo.jdField_m_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo.f)));
-    while ((paramVideoInfo.jdField_g_of_type_Int != 1) || (TextUtils.isEmpty(paramVideoInfo.jdField_m_of_type_JavaLangString)) || (TextUtils.isEmpty(paramVideoInfo.k)) || (TextUtils.isEmpty(paramVideoInfo.jdField_c_of_type_JavaLangString)) || (TextUtils.isEmpty(paramVideoInfo.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramVideoInfo.f))) {
+    } while ((!TextUtils.isEmpty(paramVideoInfo.m)) && (!TextUtils.isEmpty(paramVideoInfo.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo.jdField_f_of_type_JavaLangString)));
+    while ((paramVideoInfo.jdField_g_of_type_Int != 1) || (TextUtils.isEmpty(paramVideoInfo.m)) || (TextUtils.isEmpty(paramVideoInfo.k)) || (TextUtils.isEmpty(paramVideoInfo.jdField_c_of_type_JavaLangString)) || (TextUtils.isEmpty(paramVideoInfo.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramVideoInfo.jdField_f_of_type_JavaLangString))) {
       return false;
     }
     return true;
@@ -128,36 +131,41 @@ public class VideoPlayRecommendHandler
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool2;
+    boolean bool4;
     Bundle localBundle;
     label126:
     Object localObject1;
     Object localObject2;
-    label303:
+    label344:
     oidb_0x6cf.ArticleSummary localArticleSummary;
     Object localObject4;
     int j;
     int i;
-    label480:
+    label521:
     Object localObject5;
-    label597:
+    label638:
     boolean bool1;
-    label1031:
-    label1340:
+    label1096:
+    label1238:
     long l;
-    label1446:
+    label1205:
     Object localObject6;
+    label1547:
+    label2135:
+    label2164:
+    label2552:
+    ArrayList localArrayList;
     if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
-      bool2 = true;
+      bool4 = true;
       localBundle = new Bundle();
       paramFromServiceMsg = null;
       if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "handleGetRecommendList onReceive :" + bool2);
+        QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "handleGetRecommendList onReceive :" + bool4);
       }
-      if (bool2)
+      if (bool4)
       {
-        break label1945;
+        break label2552;
         try
         {
           paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -174,20 +182,23 @@ public class VideoPlayRecommendHandler
             if (((oidb_0x6cf.RspBody)localObject1).uint64_pos_ad_time.has()) {
               this.jdField_a_of_type_Long = ((oidb_0x6cf.RspBody)localObject1).uint64_pos_ad_time.get();
             }
+            if ((((oidb_0x6cf.RspBody)localObject1).bytes_cookie.has()) && (((oidb_0x6cf.RspBody)localObject1).bytes_cookie.get() != null)) {
+              localBundle.putString("VALUE_COOKIE", ((oidb_0x6cf.RspBody)localObject1).bytes_cookie.get().toStringUtf8());
+            }
             if (this.jdField_a_of_type_JavaTextSimpleDateFormat == null) {
               this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             }
             if ((!((oidb_0x6cf.RspBody)localObject1).rpt_article_list.has()) || (((oidb_0x6cf.RspBody)localObject1).rpt_article_list.get() == null)) {
-              break label2391;
+              break label2998;
             }
             paramObject = ((oidb_0x6cf.RspBody)localObject1).rpt_article_list.get();
             paramToServiceMsg = paramFromServiceMsg;
             if (paramObject == null) {
-              break label2124;
+              break label2731;
             }
             paramToServiceMsg = paramFromServiceMsg;
             if (paramObject.isEmpty()) {
-              break label2124;
+              break label2731;
             }
             paramFromServiceMsg = new ArrayList(paramObject.size());
             if (QLog.isColorLevel()) {
@@ -195,7 +206,7 @@ public class VideoPlayRecommendHandler
             }
             localObject2 = paramObject.iterator();
             if (!((Iterator)localObject2).hasNext()) {
-              break label3263;
+              break label4456;
             }
             localArticleSummary = (oidb_0x6cf.ArticleSummary)((Iterator)localObject2).next();
             paramObject = null;
@@ -207,29 +218,29 @@ public class VideoPlayRecommendHandler
               ((VideoInfo)localObject4).jdField_d_of_type_JavaLangString = localArticleSummary.bytes_article_summary.get().toStringUtf8();
             }
             if ((!localArticleSummary.rpt_dislike_list.has()) || (localArticleSummary.rpt_dislike_list.get() == null)) {
-              break label597;
+              break label638;
             }
             paramToServiceMsg = localArticleSummary.rpt_dislike_list.get();
             if ((paramToServiceMsg == null) || (paramToServiceMsg.size() <= 0)) {
-              break label597;
+              break label638;
             }
             j = paramToServiceMsg.size();
             ((VideoInfo)localObject4).jdField_b_of_type_JavaUtilArrayList = new ArrayList();
             i = 0;
             if (i >= j) {
-              break label597;
+              break label638;
             }
             localObject5 = new DislikeInfo();
             ((DislikeInfo)localObject5).a((oidb_0x6cf.DisLikeInfo)paramToServiceMsg.get(i));
             if (TextUtils.isEmpty(((DislikeInfo)localObject5).jdField_a_of_type_JavaLangString)) {
-              break label3177;
+              break label4352;
             }
           }
           else
           {
             localBundle.putBoolean("VALUE_USER_IN_BLACK", false);
             break label126;
-            super.a(1, bool2, localBundle);
+            super.a(1, bool4, localBundle);
           }
         }
         catch (Exception paramToServiceMsg)
@@ -242,23 +253,23 @@ public class VideoPlayRecommendHandler
         {
           return;
           ((VideoInfo)localObject4).jdField_b_of_type_JavaUtilArrayList.add(localObject5);
-          break label3177;
+          break label4352;
           if ((localArticleSummary.uint64_time.has()) && (localArticleSummary.uint64_time.get() != 0L))
           {
             ((VideoInfo)localObject4).jdField_e_of_type_JavaLangString = this.jdField_a_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(localArticleSummary.uint64_time.get() * 1000L));
             ((VideoInfo)localObject4).jdField_a_of_type_Long = localArticleSummary.uint64_time.get();
           }
           if ((localArticleSummary.bytes_subscribe_id.has()) && (localArticleSummary.bytes_subscribe_id.get() != null)) {
-            ((VideoInfo)localObject4).j = localArticleSummary.bytes_subscribe_id.get().toStringUtf8();
+            ((VideoInfo)localObject4).jdField_j_of_type_JavaLangString = localArticleSummary.bytes_subscribe_id.get().toStringUtf8();
           }
           if ((localArticleSummary.bytes_subscribe_name.has()) && (localArticleSummary.bytes_subscribe_name.get() != null)) {
             ((VideoInfo)localObject4).k = localArticleSummary.bytes_subscribe_name.get().toStringUtf8();
           }
           if ((localArticleSummary.bytes_article_content_url.has()) && (localArticleSummary.bytes_article_content_url.get() != null)) {
-            ((VideoInfo)localObject4).f = localArticleSummary.bytes_article_content_url.get().toStringUtf8();
+            ((VideoInfo)localObject4).jdField_f_of_type_JavaLangString = localArticleSummary.bytes_article_content_url.get().toStringUtf8();
           }
           if (localArticleSummary.uint32_strategy_id.has()) {
-            ((VideoInfo)localObject4).i = localArticleSummary.uint32_strategy_id.get();
+            ((VideoInfo)localObject4).jdField_j_of_type_Int = localArticleSummary.uint32_strategy_id.get();
           }
           if (localArticleSummary.uint64_algorithm_id.has()) {
             ((VideoInfo)localObject4).jdField_d_of_type_Long = localArticleSummary.uint64_algorithm_id.get();
@@ -275,21 +286,46 @@ public class VideoPlayRecommendHandler
           }
           if (localArticleSummary.uint32_like_count.has())
           {
-            ((VideoInfo)localObject4).jdField_m_of_type_Int = localArticleSummary.uint32_like_count.get();
+            ((VideoInfo)localObject4).n = localArticleSummary.uint32_like_count.get();
             if (QLog.isColorLevel()) {
-              QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, uint32_like_count :" + ((VideoInfo)localObject4).jdField_m_of_type_Int);
+              QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, uint32_like_count :" + ((VideoInfo)localObject4).n);
             }
           }
           if (localArticleSummary.uint32_ads_guide_time.has()) {
             ((VideoInfo)localObject4).jdField_h_of_type_Int = localArticleSummary.uint32_ads_guide_time.get();
           }
+          if (localArticleSummary.uint32_ads_jump_type.has()) {
+            ((VideoInfo)localObject4).i = localArticleSummary.uint32_ads_jump_type.get();
+          }
           if (localArticleSummary.uint32_video_source_type.has())
           {
             if (localArticleSummary.uint32_video_source_type.get() != 1) {
-              break label3198;
+              break label4373;
             }
             bool1 = true;
-            ((VideoInfo)localObject4).jdField_d_of_type_Boolean = bool1;
+            ((VideoInfo)localObject4).jdField_f_of_type_Boolean = bool1;
+          }
+          if ((localArticleSummary.bytes_video_subscript_txt.has()) && (localArticleSummary.bytes_video_subscript_txt.get() != null)) {
+            ((VideoInfo)localObject4).o = localArticleSummary.bytes_video_subscript_txt.get().toStringUtf8();
+          }
+          if ((localArticleSummary.bytes_video_subscript_color.has()) && (localArticleSummary.bytes_video_subscript_color.get() != null)) {
+            ((VideoInfo)localObject4).p = localArticleSummary.bytes_video_subscript_color.get().toStringUtf8();
+          }
+          if (localArticleSummary.uint32_account_grade.has())
+          {
+            if (localArticleSummary.uint32_account_grade.get() != 1) {
+              break label4379;
+            }
+            bool1 = true;
+            ((VideoInfo)localObject4).jdField_a_of_type_Boolean = bool1;
+          }
+          if (localArticleSummary.uint32_myself_like_status.has())
+          {
+            if (localArticleSummary.uint32_myself_like_status.get() != 1) {
+              break label4385;
+            }
+            bool1 = true;
+            ((VideoInfo)localObject4).jdField_h_of_type_Boolean = bool1;
           }
           if (localArticleSummary.json_video_list.has())
           {
@@ -316,7 +352,9 @@ public class VideoPlayRecommendHandler
           {
             try
             {
-              label1528:
+              label1792:
+              label2053:
+              label2193:
               do
               {
                 ((VideoInfo)localObject4).jdField_d_of_type_Int = Integer.parseInt(paramToServiceMsg.optString("duration"));
@@ -331,12 +369,12 @@ public class VideoPlayRecommendHandler
                 if (((VideoInfo)localObject4).jdField_a_of_type_Int != 1)
                 {
                   ((VideoInfo)localObject4).l = paramToServiceMsg.optString("thirdAction");
-                  ((VideoInfo)localObject4).jdField_m_of_type_JavaLangString = paramToServiceMsg.optString("thirdIcon");
+                  ((VideoInfo)localObject4).m = paramToServiceMsg.optString("thirdIcon");
                   if (!TextUtils.isEmpty(paramToServiceMsg.optString("thirdName"))) {
                     ((VideoInfo)localObject4).k = paramToServiceMsg.optString("thirdName");
                   }
                   if (!TextUtils.isEmpty(paramToServiceMsg.optString("third_uin"))) {
-                    ((VideoInfo)localObject4).j = paramToServiceMsg.optString("third_uin");
+                    ((VideoInfo)localObject4).jdField_j_of_type_JavaLangString = paramToServiceMsg.optString("third_uin");
                   }
                 }
                 paramToServiceMsg = paramToServiceMsg.optJSONArray("video_info");
@@ -347,25 +385,73 @@ public class VideoPlayRecommendHandler
                   {
                     paramObject = paramToServiceMsg.optJSONObject(i);
                     if (paramObject == null) {
-                      break label3204;
+                      break label4391;
                     }
                     j = paramObject.optInt("network_type");
                     l = paramObject.optLong("file_size");
                     if (j != 2) {
-                      break label3204;
+                      break label4391;
                     }
                     ((VideoInfo)localObject4).jdField_b_of_type_Long = l;
                   }
+                }
+                if ((localArticleSummary.uint32_is_ugc.has()) && (localArticleSummary.uint32_is_ugc.get() == 1))
+                {
+                  ((VideoInfo)localObject4).jdField_b_of_type_Boolean = true;
+                  if ((localArticleSummary.msg_ugc_feeds_info.has()) && (localArticleSummary.msg_ugc_feeds_info.get() != null))
+                  {
+                    paramToServiceMsg = (oidb_0x6cf.UGCFeedsInfo)localArticleSummary.msg_ugc_feeds_info.get();
+                    if (paramToServiceMsg.has())
+                    {
+                      if ((paramToServiceMsg.ugc_feeds_info.has()) && (paramToServiceMsg.ugc_feeds_info.get() != null))
+                      {
+                        if (((oidb_0x6cf.FeedsIdInfo)paramToServiceMsg.ugc_feeds_info.get()).uint64_feeds_id.has()) {
+                          ((VideoInfo)localObject4).jdField_c_of_type_Long = ((oidb_0x6cf.FeedsIdInfo)paramToServiceMsg.ugc_feeds_info.get()).uint64_feeds_id.get();
+                        }
+                        if (((oidb_0x6cf.FeedsIdInfo)paramToServiceMsg.ugc_feeds_info.get()).uint32_feeds_type.has()) {
+                          ((VideoInfo)localObject4).jdField_f_of_type_Int = ((oidb_0x6cf.FeedsIdInfo)paramToServiceMsg.ugc_feeds_info.get()).uint32_feeds_type.get();
+                        }
+                      }
+                      if (paramToServiceMsg.uint32_follow_status.has())
+                      {
+                        if (paramToServiceMsg.uint32_follow_status.get() != 2) {
+                          break label4400;
+                        }
+                        bool1 = true;
+                        ((VideoInfo)localObject4).jdField_g_of_type_Boolean = bool1;
+                      }
+                      if (paramToServiceMsg.uint64_cuin.has()) {
+                        ((VideoInfo)localObject4).jdField_j_of_type_JavaLangString = String.valueOf(paramToServiceMsg.uint64_cuin.get());
+                      }
+                      if ((paramToServiceMsg.msg_ugc_video_info_list.has()) && (paramToServiceMsg.msg_ugc_video_info_list.get() != null))
+                      {
+                        paramToServiceMsg = (oidb_0x6cf.UGCVideoInfo)paramToServiceMsg.msg_ugc_video_info_list.get();
+                        if ((paramToServiceMsg.has()) && (paramToServiceMsg.get() != null))
+                        {
+                          if ((((oidb_0x6cf.UGCVideoInfo)paramToServiceMsg.get()).bytes_title.has()) && (((oidb_0x6cf.UGCVideoInfo)paramToServiceMsg.get()).bytes_title.get() != null)) {
+                            ((VideoInfo)localObject4).jdField_c_of_type_JavaLangString = ((oidb_0x6cf.UGCVideoInfo)paramToServiceMsg.get()).bytes_title.get().toStringUtf8();
+                          }
+                          if (((oidb_0x6cf.UGCVideoInfo)paramToServiceMsg.get()).uint32_busi_type.has()) {
+                            ((VideoInfo)localObject4).jdField_a_of_type_Int = ((oidb_0x6cf.UGCVideoInfo)paramToServiceMsg.get()).uint32_busi_type.get();
+                          }
+                          if (((oidb_0x6cf.UGCVideoInfo)paramToServiceMsg.get()).bytes_share_url.has()) {
+                            ((VideoInfo)localObject4).jdField_f_of_type_JavaLangString = ((oidb_0x6cf.UGCVideoInfo)paramToServiceMsg.get()).bytes_share_url.get().toStringUtf8();
+                          }
+                        }
+                      }
+                    }
+                  }
+                  VideoFeedsHelper.a((VideoInfo)localObject4);
                 }
                 if ((!localArticleSummary.rpt_label_list.has()) || (localArticleSummary.rpt_label_list.get() == null)) {
                   break;
                 }
                 paramObject = localArticleSummary.rpt_label_list.get();
                 if (paramObject.size() <= 0) {
-                  break label3192;
+                  break label4367;
                 }
                 ((VideoInfo)localObject4).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-                break label3192;
+                break label4367;
                 while (i < paramObject.size())
                 {
                   localObject5 = (oidb_0x6cf.ChannelInfo)paramObject.get(i);
@@ -373,19 +459,19 @@ public class VideoPlayRecommendHandler
                   ((VideoInfo.ChannelInfo)localObject6).jdField_a_of_type_Int = ((oidb_0x6cf.ChannelInfo)localObject5).uint32_channel_id.get();
                   ((VideoInfo.ChannelInfo)localObject6).jdField_b_of_type_Int = ((oidb_0x6cf.ChannelInfo)localObject5).uint32_channel_type.get();
                   if (((oidb_0x6cf.ChannelInfo)localObject5).bytes_channel_name.get() == null) {
-                    break label3213;
+                    break label4406;
                   }
                   paramToServiceMsg = ((oidb_0x6cf.ChannelInfo)localObject5).bytes_channel_name.get().toStringUtf8();
                   ((VideoInfo.ChannelInfo)localObject6).jdField_a_of_type_JavaLangString = paramToServiceMsg;
                   if (((oidb_0x6cf.ChannelInfo)localObject5).bytes_channel_display_name.get() == null) {
-                    break label3218;
+                    break label4411;
                   }
                   paramToServiceMsg = ((oidb_0x6cf.ChannelInfo)localObject5).bytes_channel_display_name.get().toStringUtf8();
                   ((VideoInfo.ChannelInfo)localObject6).jdField_b_of_type_JavaLangString = paramToServiceMsg;
                   if (((oidb_0x6cf.ChannelInfo)localObject5).bytes_channel_url.get() == null) {
-                    break label3223;
+                    break label4416;
                   }
-                  paramToServiceMsg = ((oidb_0x6cf.ChannelInfo)localObject5).bytes_channel_url.get().toString();
+                  paramToServiceMsg = ((oidb_0x6cf.ChannelInfo)localObject5).bytes_channel_url.get().toStringUtf8();
                   ((VideoInfo.ChannelInfo)localObject6).jdField_c_of_type_JavaLangString = paramToServiceMsg;
                   ((VideoInfo.ChannelInfo)localObject6).jdField_c_of_type_Int = ((oidb_0x6cf.ChannelInfo)localObject5).uint32_is_topic.get();
                   ((VideoInfo)localObject4).jdField_a_of_type_JavaUtilArrayList.add(localObject6);
@@ -394,8 +480,6 @@ public class VideoPlayRecommendHandler
                 paramToServiceMsg = paramToServiceMsg;
                 paramToServiceMsg = paramObject;
               } while (!QLog.isColorLevel());
-              label1557:
-              label1586:
               QLog.e("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, jsonVideoList 解析出错");
               paramToServiceMsg = paramObject;
             }
@@ -406,7 +490,7 @@ public class VideoPlayRecommendHandler
                 paramObject.printStackTrace();
               }
               if (!localArticleSummary.msg_feeds_info.has()) {
-                break label1987;
+                break label2594;
               }
             }
           }
@@ -419,10 +503,10 @@ public class VideoPlayRecommendHandler
             if (QLog.isColorLevel()) {
               QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList recv adInfo=" + ((VideoInfo)localObject4).jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.toString());
             }
-            ((VideoInfo)localObject4).jdField_a_of_type_Boolean = true;
+            ((VideoInfo)localObject4).jdField_c_of_type_Boolean = true;
             i = ((VideoInfo)localObject4).jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.jdField_g_of_type_Int;
             if (i != 65) {
-              break label3228;
+              break label4421;
             }
             ((VideoInfo)localObject4).jdField_g_of_type_Int = 2;
             if (!a((VideoInfo)localObject4))
@@ -432,7 +516,7 @@ public class VideoPlayRecommendHandler
               }
               QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList isInvalidImageAd traceID=" + ((VideoInfo)localObject4).jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.jdField_h_of_type_JavaLangString);
               break;
-              label1888:
+              label2495:
               ((VideoInfo)localObject4).jdField_g_of_type_Int = 1;
               if (!a((VideoInfo)localObject4))
               {
@@ -441,7 +525,6 @@ public class VideoPlayRecommendHandler
                 }
                 QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList isInvalidVideoAd traceID=" + ((VideoInfo)localObject4).jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.jdField_h_of_type_JavaLangString);
                 break;
-                label1945:
                 if (!QLog.isColorLevel()) {
                   break;
                 }
@@ -450,7 +533,7 @@ public class VideoPlayRecommendHandler
               }
             }
           }
-          label1987:
+          label2594:
           if ((localArticleSummary.bytes_recommend_barrage_text_list.has()) && (localArticleSummary.bytes_recommend_barrage_text_list.get() != null))
           {
             paramToServiceMsg = localArticleSummary.bytes_recommend_barrage_text_list.get();
@@ -464,12 +547,12 @@ public class VideoPlayRecommendHandler
               ((VideoInfo)localObject4).jdField_c_of_type_JavaUtilArrayList.add(paramObject.toStringUtf8());
             }
           }
-          if ((((VideoInfo)localObject4).jdField_a_of_type_Boolean) && (((VideoInfo)localObject4).jdField_g_of_type_Int == 2)) {
+          if ((((VideoInfo)localObject4).jdField_c_of_type_Boolean) && (((VideoInfo)localObject4).jdField_g_of_type_Int == 2)) {
             break;
           }
           paramFromServiceMsg.add(localObject4);
           break;
-          label2124:
+          label2731:
           if (((paramToServiceMsg == null) || (paramToServiceMsg.isEmpty())) && (QLog.isColorLevel())) {
             QLog.e("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, 返回的rpt_article_list 中合法数据为空");
           }
@@ -481,18 +564,18 @@ public class VideoPlayRecommendHandler
             }
             localArticleSummary = (oidb_0x6cf.ArticleSummary)((oidb_0x6cf.RspBody)localObject1).req_article_summary.get();
             if ((!localArticleSummary.bytes_article_title.has()) || (localArticleSummary.bytes_article_title.get() == null)) {
-              break label3172;
+              break label4347;
             }
             paramToServiceMsg = localArticleSummary.bytes_article_title.get().toStringUtf8();
-            label2243:
+            label2850:
             if ((!localArticleSummary.bytes_inner_id.has()) || (localArticleSummary.bytes_inner_id.get() == null)) {
-              break label3167;
+              break label4342;
             }
             paramFromServiceMsg = localArticleSummary.bytes_inner_id.get().toStringUtf8();
-            label2277:
+            label2884:
             localObject5 = new ArrayList();
             if ((!localArticleSummary.bytes_recommend_barrage_text_list.has()) || (localArticleSummary.bytes_recommend_barrage_text_list.get() == null)) {
-              break label2409;
+              break label3016;
             }
             paramObject = localArticleSummary.bytes_recommend_barrage_text_list.get();
             if (QLog.isColorLevel()) {
@@ -502,13 +585,13 @@ public class VideoPlayRecommendHandler
             while (paramObject.hasNext()) {
               ((ArrayList)localObject5).add(((ByteStringMicro)paramObject.next()).toStringUtf8());
             }
-            label2391:
+            label2998:
             if (QLog.isColorLevel()) {
               QLog.e("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, 返回的rpt_article_list null");
             }
           }
         }
-        label2409:
+        label3016:
         localObject6 = new ArrayList();
         if ((localArticleSummary.rpt_dislike_list.has()) && (localArticleSummary.rpt_dislike_list.get() != null))
         {
@@ -517,191 +600,342 @@ public class VideoPlayRecommendHandler
           {
             j = paramObject.size();
             i = 0;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i < j)
-      {
-        localObject1 = new DislikeInfo();
-        ((DislikeInfo)localObject1).a((oidb_0x6cf.DisLikeInfo)paramObject.get(i));
-        if (!TextUtils.isEmpty(((DislikeInfo)localObject1).jdField_a_of_type_JavaLangString)) {
-          ((ArrayList)localObject6).add(localObject1);
-        }
-      }
-      else
-      {
-        if ((localArticleSummary.bytes_ads_jump_url.has()) && (localArticleSummary.bytes_ads_jump_url.get() != null)) {}
-        for (paramObject = localArticleSummary.bytes_ads_jump_url.get().toStringUtf8();; paramObject = null)
-        {
-          if ((localArticleSummary.bytes_ads_guide_txt.has()) && (localArticleSummary.bytes_ads_guide_txt.get() != null)) {}
-          for (localObject1 = localArticleSummary.bytes_ads_guide_txt.get().toStringUtf8();; localObject1 = null)
-          {
-            if (localArticleSummary.uint32_ads_jump_type.has()) {}
-            for (i = localArticleSummary.uint32_ads_jump_type.get();; i = 0)
+            label3080:
+            if (i < j)
             {
-              if (localArticleSummary.uint32_ads_guide_time.has()) {}
-              for (j = localArticleSummary.uint32_ads_guide_time.get();; j = 0)
-              {
-                if (localArticleSummary.uint32_video_source_type.has())
-                {
-                  if (localArticleSummary.uint32_video_source_type.get() != 1) {
-                    break label3280;
-                  }
-                  bool1 = true;
-                  break label3277;
-                }
-                for (;;)
-                {
-                  if ((TextUtils.isEmpty(paramToServiceMsg)) && (QLog.isColorLevel())) {
-                    QLog.e("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "req_article_summary getRecommendList 获取原文章标题, NULL ERROR");
-                  }
-                  if (localArticleSummary.json_video_list.has())
-                  {
-                    localObject2 = localArticleSummary.json_video_list.get();
-                    if (localObject2 != null) {
-                      localObject4 = null;
-                    }
-                  }
-                  for (;;)
-                  {
-                    try
-                    {
-                      localObject2 = new JSONObject(localArticleSummary.json_video_list.get().toStringUtf8()).getJSONArray("videos").optJSONObject(0);
-                      if (localObject2 == null) {
-                        break label3132;
-                      }
-                      localObject2 = ((JSONObject)localObject2).optJSONArray("video_info");
-                      if (localObject2 == null) {
-                        break label3132;
-                      }
-                      k = 0;
-                      if (k >= ((JSONArray)localObject2).length()) {
-                        break label3132;
-                      }
-                      localObject4 = ((JSONArray)localObject2).optJSONObject(k);
-                      if (localObject4 != null)
-                      {
-                        m = ((JSONObject)localObject4).optInt("network_type");
-                        l = ((JSONObject)localObject4).optLong("file_size");
-                        if (m == 2)
-                        {
-                          k = 0;
-                          if (localArticleSummary.uint32_video_comment_count.has())
-                          {
-                            m = localArticleSummary.uint32_video_comment_count.get();
-                            k = m;
-                            if (QLog.isColorLevel())
-                            {
-                              QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, req_article_summary uint32_video_comment_count :" + m);
-                              k = m;
-                            }
-                          }
-                          if (!localArticleSummary.uint32_like_count.has()) {
-                            break label3126;
-                          }
-                          int n = localArticleSummary.uint32_like_count.get();
-                          m = n;
-                          if (QLog.isColorLevel())
-                          {
-                            QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, req_article_summary uint32_like_count :" + n);
-                            m = n;
-                          }
-                          localBundle.putParcelableArrayList("VIDEO_DISLIKEINFO_LIST", (ArrayList)localObject6);
-                          localBundle.putString("VALUE_REQUEST_VIDEO_INFO", paramToServiceMsg);
-                          localBundle.putString("VALUE_REQUEST_VIDEO_ARTICLE_ID", paramFromServiceMsg);
-                          localBundle.putLong("VALUE_REQUEST_VIDEO_XG_FILE_SIZE", l);
-                          localBundle.putStringArrayList("VALUE_RECOMMAND_BARRAGE", (ArrayList)localObject5);
-                          localBundle.putInt("VALUE_COMMENT_COUNT", k);
-                          localBundle.putInt("VALUE_DIANZAN_COUNT", m);
-                          localBundle.putString("VALUE_ADS_JUMP_URL", paramObject);
-                          localBundle.putString("VALUE_ADS_GUIDE_TEXT", (String)localObject1);
-                          localBundle.putInt("VALUE_ADS_JUMP_TYPE", i);
-                          localBundle.putInt("VALUE_ADS_GUIDE_TIME", j);
-                          localBundle.putBoolean("VALUE_IS_WEISHI", bool1);
-                        }
-                      }
-                    }
-                    catch (JSONException localJSONException)
-                    {
-                      int k;
-                      Object localObject3 = localObject4;
-                      if (!QLog.isColorLevel()) {
-                        continue;
-                      }
-                      QLog.e("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "req_article_summary getRecommendList, jsonVideoList 解析出错");
-                      localObject3 = localObject4;
-                      continue;
-                      k += 1;
-                      continue;
-                    }
-                    if (!QLog.isColorLevel()) {
-                      break;
-                    }
-                    QLog.e("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, 返回的rpt_article_list null 或者直接出错了");
-                    break;
-                    label3126:
-                    int m = 0;
-                    continue;
-                    label3132:
-                    l = 0L;
-                  }
-                  bool1 = false;
-                }
+              localObject1 = new DislikeInfo();
+              ((DislikeInfo)localObject1).a((oidb_0x6cf.DisLikeInfo)paramObject.get(i));
+              if (TextUtils.isEmpty(((DislikeInfo)localObject1).jdField_a_of_type_JavaLangString)) {
+                break label4461;
               }
+              ((ArrayList)localObject6).add(localObject1);
+              break label4461;
             }
           }
         }
-        label3167:
-        paramFromServiceMsg = null;
-        break label2277;
-        label3172:
-        paramToServiceMsg = null;
-        break label2243;
-        label3177:
-        i += 1;
-        break label480;
-        bool2 = false;
-        break;
-        label3192:
-        i = 0;
-        break label1446;
-        label3198:
-        bool1 = false;
-        break label1031;
-        label3204:
-        i += 1;
-        break label1340;
-        label3213:
-        paramToServiceMsg = null;
-        break label1528;
-        label3218:
-        paramToServiceMsg = null;
-        break label1557;
-        label3223:
-        paramToServiceMsg = null;
-        break label1586;
-        label3228:
-        if ((i == 185) || (i == 350) || (i == 450)) {
-          break label1888;
+        localArrayList = new ArrayList();
+        if ((localArticleSummary.rpt_label_list.has()) && (localArticleSummary.rpt_label_list.get() != null))
+        {
+          localObject1 = localArticleSummary.rpt_label_list.get();
+          if ((localObject1 != null) && (((List)localObject1).size() > 0))
+          {
+            j = ((List)localObject1).size();
+            i = 0;
+            while (i < j)
+            {
+              localObject2 = (oidb_0x6cf.ChannelInfo)((List)localObject1).get(i);
+              localObject4 = new VideoInfo.ChannelInfo();
+              ((VideoInfo.ChannelInfo)localObject4).jdField_a_of_type_Int = ((oidb_0x6cf.ChannelInfo)localObject2).uint32_channel_id.get();
+              ((VideoInfo.ChannelInfo)localObject4).jdField_b_of_type_Int = ((oidb_0x6cf.ChannelInfo)localObject2).uint32_channel_type.get();
+              if (((oidb_0x6cf.ChannelInfo)localObject2).bytes_channel_name.get() == null) {
+                break label4470;
+              }
+              paramObject = ((oidb_0x6cf.ChannelInfo)localObject2).bytes_channel_name.get().toStringUtf8();
+              label3284:
+              ((VideoInfo.ChannelInfo)localObject4).jdField_a_of_type_JavaLangString = paramObject;
+              if (((oidb_0x6cf.ChannelInfo)localObject2).bytes_channel_display_name.get() == null) {
+                break label4475;
+              }
+              paramObject = ((oidb_0x6cf.ChannelInfo)localObject2).bytes_channel_display_name.get().toStringUtf8();
+              label3313:
+              ((VideoInfo.ChannelInfo)localObject4).jdField_b_of_type_JavaLangString = paramObject;
+              if (((oidb_0x6cf.ChannelInfo)localObject2).bytes_channel_url.get() == null) {
+                break label4480;
+              }
+              paramObject = ((oidb_0x6cf.ChannelInfo)localObject2).bytes_channel_url.get().toStringUtf8();
+              label3342:
+              ((VideoInfo.ChannelInfo)localObject4).jdField_c_of_type_JavaLangString = paramObject;
+              ((VideoInfo.ChannelInfo)localObject4).jdField_c_of_type_Int = ((oidb_0x6cf.ChannelInfo)localObject2).uint32_is_topic.get();
+              localArrayList.add(localObject4);
+              i += 1;
+            }
+          }
         }
-        if (i != 1122) {
-          break label303;
+        if ((!localArticleSummary.bytes_ads_jump_url.has()) || (localArticleSummary.bytes_ads_jump_url.get() == null)) {
+          break label4337;
         }
-        break label1888;
-        label3263:
-        paramToServiceMsg = paramFromServiceMsg;
-        break label2124;
+        paramObject = localArticleSummary.bytes_ads_jump_url.get().toStringUtf8();
+        label3412:
+        if ((!localArticleSummary.bytes_ads_guide_txt.has()) || (localArticleSummary.bytes_ads_guide_txt.get() == null)) {
+          break label4331;
+        }
+        localObject1 = localArticleSummary.bytes_ads_guide_txt.get().toStringUtf8();
+        label3447:
+        if (!localArticleSummary.uint32_ads_jump_type.has()) {
+          break label4325;
+        }
+        i = localArticleSummary.uint32_ads_jump_type.get();
+        label3468:
+        if (!localArticleSummary.uint32_ads_guide_time.has()) {
+          break label4319;
+        }
+        j = localArticleSummary.uint32_ads_guide_time.get();
+        label3489:
+        if (!localArticleSummary.uint32_video_source_type.has()) {
+          break label4313;
+        }
+        if (localArticleSummary.uint32_video_source_type.get() != 1) {
+          break label4505;
+        }
+        bool1 = true;
+        break label4485;
+        label3518:
+        if (!localArticleSummary.uint32_myself_like_status.has()) {
+          break label4307;
+        }
+        if (localArticleSummary.uint32_myself_like_status.get() != 1) {
+          break label4511;
+        }
+        bool1 = true;
+        break label4492;
       }
+    }
+    boolean bool2;
+    for (;;)
+    {
+      if ((localArticleSummary.uint32_is_ugc.has()) && (localArticleSummary.uint32_is_ugc.get() == 1)) {
+        if ((localArticleSummary.msg_ugc_feeds_info.has()) && (localArticleSummary.msg_ugc_feeds_info.get() != null))
+        {
+          localObject2 = (oidb_0x6cf.UGCFeedsInfo)localArticleSummary.msg_ugc_feeds_info.get();
+          if (((oidb_0x6cf.UGCFeedsInfo)localObject2).uint32_follow_status.has())
+          {
+            if (((oidb_0x6cf.UGCFeedsInfo)localObject2).uint32_follow_status.get() != 2) {
+              break label4517;
+            }
+            bool1 = true;
+            break label4499;
+          }
+        }
+      }
+      for (;;)
+      {
+        if ((TextUtils.isEmpty(paramToServiceMsg)) && (QLog.isColorLevel())) {
+          QLog.e("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "req_article_summary getRecommendList 获取原文章标题, NULL ERROR");
+        }
+        if (localArticleSummary.json_video_list.has())
+        {
+          localObject2 = localArticleSummary.json_video_list.get();
+          if (localObject2 != null) {
+            localObject4 = null;
+          }
+        }
+        for (;;)
+        {
+          try
+          {
+            localObject2 = new JSONObject(localArticleSummary.json_video_list.get().toStringUtf8()).getJSONArray("videos").optJSONObject(0);
+            if (localObject2 == null) {
+              break label4283;
+            }
+            localObject2 = ((JSONObject)localObject2).optJSONArray("video_info");
+            if (localObject2 == null) {
+              break label4283;
+            }
+            k = 0;
+            if (k >= ((JSONArray)localObject2).length()) {
+              break label4283;
+            }
+            localObject4 = ((JSONArray)localObject2).optJSONObject(k);
+            if (localObject4 != null)
+            {
+              int m = ((JSONObject)localObject4).optInt("network_type");
+              l = ((JSONObject)localObject4).optLong("file_size");
+              if (m == 2)
+              {
+                k = 0;
+                if (localArticleSummary.uint32_video_comment_count.has())
+                {
+                  m = localArticleSummary.uint32_video_comment_count.get();
+                  k = m;
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, req_article_summary uint32_video_comment_count :" + m);
+                    k = m;
+                  }
+                }
+                m = 0;
+                if (localArticleSummary.uint32_like_count.has())
+                {
+                  int n = localArticleSummary.uint32_like_count.get();
+                  m = n;
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, req_article_summary uint32_like_count :" + n);
+                    m = n;
+                  }
+                }
+                if ((!localArticleSummary.bytes_video_subscript_txt.has()) || (localArticleSummary.bytes_video_subscript_txt.get() == null)) {
+                  break label4277;
+                }
+                localObject2 = localArticleSummary.bytes_video_subscript_txt.get().toStringUtf8();
+                if ((!localArticleSummary.bytes_video_subscript_color.has()) || (localArticleSummary.bytes_video_subscript_color.get() == null)) {
+                  break label4271;
+                }
+                localObject4 = localArticleSummary.bytes_video_subscript_color.get().toStringUtf8();
+                if (!localArticleSummary.uint32_account_grade.has()) {
+                  break label4265;
+                }
+                if (localArticleSummary.uint32_account_grade.get() != 1) {
+                  continue;
+                }
+                bool3 = true;
+                localBundle.putParcelableArrayList("VIDEO_DISLIKEINFO_LIST", (ArrayList)localObject6);
+                localBundle.putString("VALUE_REQUEST_VIDEO_INFO", paramToServiceMsg);
+                localBundle.putString("VALUE_REQUEST_VIDEO_ARTICLE_ID", paramFromServiceMsg);
+                localBundle.putLong("VALUE_REQUEST_VIDEO_XG_FILE_SIZE", l);
+                localBundle.putStringArrayList("VALUE_RECOMMAND_BARRAGE", (ArrayList)localObject5);
+                localBundle.putInt("VALUE_COMMENT_COUNT", k);
+                localBundle.putInt("VALUE_DIANZAN_COUNT", m);
+                localBundle.putString("VALUE_ADS_JUMP_URL", paramObject);
+                localBundle.putString("VALUE_ADS_GUIDE_TEXT", (String)localObject1);
+                localBundle.putInt("VALUE_ADS_JUMP_TYPE", i);
+                localBundle.putInt("VALUE_ADS_GUIDE_TIME", j);
+                localBundle.putBoolean("VALUE_IS_WEISHI", bool5);
+                localBundle.putString("VALUE_SUBS_TEXT", (String)localObject2);
+                localBundle.putString("VALUE_SUBS_COLOR", (String)localObject4);
+                localBundle.putBoolean("VALUE_IS_VERIFIED", bool3);
+                localBundle.putBoolean("VALUE_IS_LIKE", bool6);
+                localBundle.putBoolean("VALUE_IS_UGC_FOLLOW", bool1);
+                localBundle.putBoolean("VALUE_IS_UGC", bool2);
+                localBundle.putParcelableArrayList("VALUE_TIPIC_INFO_LIST", localArrayList);
+              }
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            int k;
+            localObject3 = localObject4;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "req_article_summary getRecommendList, jsonVideoList 解析出错");
+            localObject3 = localObject4;
+            continue;
+            k += 1;
+            continue;
+            bool3 = false;
+            continue;
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.e("Q.pubaccount.video.VideoPlayRecommendHandler", 2, "getRecommendList, 返回的rpt_article_list null 或者直接出错了");
+          break;
+          label4265:
+          boolean bool3 = false;
+          continue;
+          label4271:
+          localObject4 = null;
+          continue;
+          label4277:
+          Object localObject3 = null;
+          continue;
+          label4283:
+          l = 0L;
+        }
+        bool1 = false;
+        bool2 = true;
+        continue;
+        bool1 = false;
+        bool2 = false;
+      }
+      label4307:
+      boolean bool6 = false;
+      continue;
+      label4313:
+      boolean bool5 = false;
+      break label3518;
+      label4319:
+      j = 0;
+      break label3489;
+      label4325:
+      i = 0;
+      break label3468;
+      label4331:
+      localObject1 = null;
+      break label3447;
+      label4337:
+      paramObject = null;
+      break label3412;
+      label4342:
+      paramFromServiceMsg = null;
+      break label2884;
+      label4347:
+      paramToServiceMsg = null;
+      break label2850;
+      label4352:
       i += 1;
+      break label521;
+      bool4 = false;
+      break;
+      label4367:
+      i = 0;
+      break label2053;
+      label4373:
+      bool1 = false;
+      break label1096;
+      label4379:
+      bool1 = false;
+      break label1205;
+      label4385:
+      bool1 = false;
+      break label1238;
+      label4391:
+      i += 1;
+      break label1547;
+      label4400:
+      bool1 = false;
+      break label1792;
+      label4406:
+      paramToServiceMsg = null;
+      break label2135;
+      label4411:
+      paramToServiceMsg = null;
+      break label2164;
+      label4416:
+      paramToServiceMsg = null;
+      break label2193;
+      label4421:
+      if ((i == 185) || (i == 350) || (i == 450)) {
+        break label2495;
+      }
+      if (i != 1122) {
+        break label344;
+      }
+      break label2495;
+      label4456:
+      paramToServiceMsg = paramFromServiceMsg;
+      break label2731;
+      label4461:
+      i += 1;
+      break label3080;
+      label4470:
+      paramObject = null;
+      break label3284;
+      label4475:
+      paramObject = null;
+      break label3313;
+      label4480:
+      paramObject = null;
+      break label3342;
+      label4485:
+      bool5 = bool1;
+      break label3518;
+      label4492:
+      bool6 = bool1;
     }
     for (;;)
     {
-      label3277:
+      label4499:
+      bool2 = true;
       break;
-      label3280:
+      label4505:
+      bool1 = false;
+      break label4485;
+      label4511:
+      bool1 = false;
+      break label4492;
+      label4517:
       bool1 = false;
     }
   }
@@ -711,70 +945,101 @@ public class VideoPlayRecommendHandler
     return VideoPlayRecommendObserver.class;
   }
   
-  public void a(long paramLong1, String paramString1, int paramInt, ArrayList paramArrayList, String paramString2, long paramLong2, boolean paramBoolean)
+  public void a(long paramLong1, VideoInfo paramVideoInfo, int paramInt, ArrayList paramArrayList, String paramString1, long paramLong2, boolean paramBoolean, String paramString2, String paramString3)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 4, "getRecommendList()  articleId = " + paramString1 + ", secondVideoArticleID = " + paramString2 + ", type = " + paramInt + ",polymericTopicId = " + paramLong2);
-    }
-    Object localObject = paramString1;
-    if (paramString1 == null) {
-      localObject = "";
-    }
-    paramString1 = new oidb_0x6cf.ReqBody();
-    localObject = ByteStringMicro.copyFromUtf8((String)localObject);
-    paramString1.bytes_inner_id.set((ByteStringMicro)localObject);
-    paramString1.uint64_uin.set(paramLong1);
-    paramString1.uint32_req_source.set(paramInt);
-    if (!TextUtils.isEmpty(paramString2))
+    if (paramVideoInfo == null)
     {
-      paramString2 = ByteStringMicro.copyFromUtf8(paramString2);
-      paramString1.rpt_bytes_redo_inner_id.add(paramString2);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 4, "getRecommendList()  videoInfo == null, RETURN");
+      }
+      return;
+    }
+    if (paramVideoInfo.jdField_g_of_type_JavaLangString == null) {
+      paramVideoInfo.jdField_g_of_type_JavaLangString = "";
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 4, "getRecommendList()  articleId = " + paramVideoInfo.jdField_g_of_type_JavaLangString + ", secondVideoArticleID = " + paramString1 + ", type = " + paramInt + ",polymericTopicId = " + paramLong2);
+    }
+    oidb_0x6cf.ReqBody localReqBody = new oidb_0x6cf.ReqBody();
+    Object localObject = ByteStringMicro.copyFromUtf8(paramVideoInfo.jdField_g_of_type_JavaLangString);
+    localReqBody.bytes_inner_id.set((ByteStringMicro)localObject);
+    localReqBody.uint64_uin.set(paramLong1);
+    localReqBody.uint32_req_source.set(paramInt);
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      paramString1 = ByteStringMicro.copyFromUtf8(paramString1);
+      localReqBody.rpt_bytes_redo_inner_id.add(paramString1);
     }
     if (paramLong2 != -1L) {
-      paramString1.uint32_req_topic_id.set((int)paramLong2);
+      localReqBody.uint32_req_topic_id.set((int)paramLong2);
     }
-    localObject = new oidb_0x6cf.ReqAdvertisePara();
-    ((oidb_0x6cf.ReqAdvertisePara)localObject).msg_phone_info.set(a());
-    ((oidb_0x6cf.ReqAdvertisePara)localObject).uint64_last_time.set(this.jdField_a_of_type_Long);
-    paramString2 = new oidb_0x6cf.VideoFloatInfo();
-    paramString2.uint32_ad_support.set(1);
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = ByteStringMicro.copyFromUtf8(paramString2);
+      localReqBody.bytes_req_web.set(paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = ByteStringMicro.copyFromUtf8(paramString3);
+      localReqBody.bytes_cookie.set(paramString1);
+    }
+    paramString2 = new oidb_0x6cf.ReqAdvertisePara();
+    paramString2.msg_phone_info.set(a());
+    paramString2.uint64_last_time.set(this.jdField_a_of_type_Long);
+    paramString1 = new oidb_0x6cf.VideoFloatInfo();
+    paramString1.uint32_ad_support.set(1);
     if ((paramArrayList == null) || (paramArrayList.size() <= 0))
     {
-      paramString2.uint32_info_num.set(0);
-      ((oidb_0x6cf.ReqAdvertisePara)localObject).msg_video_float_info.set(paramString2);
-      paramString1.req_advertise_para.set((MessageMicro)localObject);
-      paramString1.uint32_req_dislike_type.set(1);
-      paramArrayList = paramString1.uint32_req_vertical_video;
+      paramString1.uint32_info_num.set(0);
+      paramString2.msg_video_float_info.set(paramString1);
+      localReqBody.req_advertise_para.set(paramString2);
+      localReqBody.uint32_req_dislike_type.set(1);
+      paramArrayList = localReqBody.uint32_req_vertical_video;
       if (!paramBoolean) {
-        break label630;
+        break label786;
+      }
+      paramInt = 1;
+      label360:
+      paramArrayList.set(paramInt);
+      paramArrayList = localReqBody.uint32_is_ugc;
+      if (!paramVideoInfo.jdField_b_of_type_Boolean) {
+        break label792;
       }
     }
-    label630:
+    label786:
+    label792:
     for (paramInt = 1;; paramInt = 0)
     {
       paramArrayList.set(paramInt);
-      if (!QLog.isColorLevel()) {
-        break label647;
-      }
-      paramArrayList = new StringBuilder("getRecommendList AdvertiseParam:\n");
-      paramArrayList.append("last_time=").append(this.jdField_a_of_type_Long).append(", info_num=").append(paramString2.uint32_info_num.get());
-      if ((!paramString2.rpt_msg_ad_video_pos.has()) || (paramString2.rpt_msg_ad_video_pos.get() == null)) {
-        break label636;
-      }
-      paramArrayList.append(", adList=\n");
-      paramString2 = paramString2.rpt_msg_ad_video_pos.get().iterator();
-      while (paramString2.hasNext())
+      if (paramVideoInfo.jdField_b_of_type_Boolean)
       {
-        localObject = (oidb_0x6cf.AdVideoPos)paramString2.next();
-        paramArrayList.append("[pos=").append(((oidb_0x6cf.AdVideoPos)localObject).int32_kd_pos.get()).append(", aid=").append(((oidb_0x6cf.AdVideoPos)localObject).uint64_aid.get()).append(", traceID=").append(((oidb_0x6cf.AdVideoPos)localObject).bytes_trace_id.get().toStringUtf8()).append("]\n");
+        paramArrayList = new oidb_0x6cf.FeedsIdInfo();
+        paramArrayList.uint64_feeds_id.set(paramVideoInfo.jdField_c_of_type_Long);
+        paramArrayList.uint32_feeds_type.set(paramVideoInfo.jdField_f_of_type_Int);
+        localReqBody.ugc_feeds_info.set(paramArrayList);
       }
-      ArrayList localArrayList = new ArrayList();
+      if (!QLog.isColorLevel()) {
+        break label808;
+      }
+      paramVideoInfo = new StringBuilder("getRecommendList AdvertiseParam:\n");
+      paramVideoInfo.append("last_time=").append(this.jdField_a_of_type_Long).append(", info_num=").append(paramString1.uint32_info_num.get());
+      if ((!paramString1.rpt_msg_ad_video_pos.has()) || (paramString1.rpt_msg_ad_video_pos.get() == null)) {
+        break label798;
+      }
+      paramVideoInfo.append(", adList=\n");
+      paramArrayList = paramString1.rpt_msg_ad_video_pos.get().iterator();
+      while (paramArrayList.hasNext())
+      {
+        paramString1 = (oidb_0x6cf.AdVideoPos)paramArrayList.next();
+        paramVideoInfo.append("[pos=").append(paramString1.int32_kd_pos.get()).append(", aid=").append(paramString1.uint64_aid.get()).append(", traceID=").append(paramString1.bytes_trace_id.get().toStringUtf8()).append("]\n");
+      }
+      paramString3 = new ArrayList();
       int i = 0;
       paramInt = 0;
       if (paramInt < paramArrayList.size())
       {
-        VideoInfo localVideoInfo = (VideoInfo)paramArrayList.get(paramInt);
-        if (!localVideoInfo.jdField_a_of_type_Boolean) {
+        localObject = (VideoInfo)paramArrayList.get(paramInt);
+        if (!((VideoInfo)localObject).jdField_c_of_type_Boolean) {
           i += 1;
         }
         for (;;)
@@ -782,26 +1047,28 @@ public class VideoPlayRecommendHandler
           paramInt += 1;
           break;
           oidb_0x6cf.AdVideoPos localAdVideoPos = new oidb_0x6cf.AdVideoPos();
-          if (localVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo != null)
+          if (((VideoInfo)localObject).jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo != null)
           {
-            localAdVideoPos.bytes_trace_id.set(ByteStringMicro.copyFromUtf8(localVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.jdField_h_of_type_JavaLangString));
-            localAdVideoPos.uint64_aid.set(localVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.e);
+            localAdVideoPos.bytes_trace_id.set(ByteStringMicro.copyFromUtf8(((VideoInfo)localObject).jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.jdField_h_of_type_JavaLangString));
+            localAdVideoPos.uint64_aid.set(((VideoInfo)localObject).jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.e);
           }
           localAdVideoPos.int32_kd_pos.set(paramInt);
-          localArrayList.add(localAdVideoPos);
+          paramString3.add(localAdVideoPos);
         }
       }
-      paramString2.uint32_info_num.set(i);
-      if (localArrayList.size() <= 0) {
+      paramString1.uint32_info_num.set(i);
+      if (paramString3.size() <= 0) {
         break;
       }
-      paramString2.rpt_msg_ad_video_pos.set(localArrayList);
+      paramString1.rpt_msg_ad_video_pos.set(paramString3);
       break;
+      paramInt = 0;
+      break label360;
     }
-    label636:
-    QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, paramArrayList.toString());
-    label647:
-    super.b(super.a("OidbSvc.0x6cf", 1743, 0, paramString1.toByteArray()));
+    label798:
+    QLog.d("Q.pubaccount.video.VideoPlayRecommendHandler", 2, paramVideoInfo.toString());
+    label808:
+    super.b(super.a("OidbSvc.0x6cf", 1743, 0, localReqBody.toByteArray()));
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

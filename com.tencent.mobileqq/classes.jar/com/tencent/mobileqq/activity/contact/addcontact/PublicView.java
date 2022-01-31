@@ -28,11 +28,11 @@ import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import mqq.app.AppActivity;
-import wfd;
-import wfe;
-import wff;
-import wfg;
-import wfh;
+import wii;
+import wij;
+import wik;
+import wil;
+import wim;
 
 public class PublicView
   extends ContactBaseView
@@ -41,12 +41,12 @@ public class PublicView
   private long jdField_a_of_type_Long;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new wfe(this);
+  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new wij(this);
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private wff jdField_a_of_type_Wff;
-  private wfg jdField_a_of_type_Wfg = new wfg(this);
+  private wik jdField_a_of_type_Wik;
+  private wil jdField_a_of_type_Wil = new wil(this);
   private boolean jdField_a_of_type_Boolean;
   
   public PublicView(ContactBaseView.IAddContactContext paramIAddContactContext)
@@ -93,10 +93,10 @@ public class PublicView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Wff == null) {
-        this.jdField_a_of_type_Wff = new wff(this, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView);
+      if (this.jdField_a_of_type_Wik == null) {
+        this.jdField_a_of_type_Wik = new wik(this, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView);
       }
-      this.jdField_a_of_type_Wff.notifyDataSetChanged();
+      this.jdField_a_of_type_Wik.notifyDataSetChanged();
       return;
       long l1 = System.currentTimeMillis();
       long l2 = this.jdField_a_of_type_Long;
@@ -114,27 +114,27 @@ public class PublicView
       l();
       return true;
     }
-    a(1, 2131434794);
+    a(1, 2131434811);
     return false;
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363031));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366381));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838210);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363049));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366408));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838214);
     LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity);
-    View localView = localLayoutInflater.inflate(2130970158, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366382));
+    View localView = localLayoutInflater.inflate(2130970172, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366409));
     this.jdField_a_of_type_AndroidWidgetTextView.setPadding(getResources().getDimensionPixelSize(2131558912), 0, 0, 0);
-    Drawable localDrawable = getResources().getDrawable(2130845864);
+    Drawable localDrawable = getResources().getDrawable(2130845992);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
     this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setCursorVisible(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(localView, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)localLayoutInflater.inflate(2130969238, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)localLayoutInflater.inflate(2130969239, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this);
   }
@@ -154,9 +154,9 @@ public class PublicView
     if (QLog.isColorLevel()) {
       QLog.d("PublicView", 2, "getCurrentLocation(): BEGIN");
     }
-    SosoInterface.a(new wfd(this, 1, true, true, 0L, false, false, "PublicView"));
+    SosoInterface.a(new wii(this, 1, true, true, 0L, false, false, "PublicView"));
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Wfg.sendEmptyMessageDelayed(4, 3000L);
+    this.jdField_a_of_type_Wil.sendEmptyMessageDelayed(4, 3000L);
     if (QLog.isColorLevel()) {
       QLog.d("PublicView", 2, "getCurrentLocation(): END");
     }
@@ -176,7 +176,7 @@ public class PublicView
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131559038);
+    return getResources().getDimensionPixelSize(2131559040);
   }
   
   protected void a()
@@ -185,7 +185,7 @@ public class PublicView
       this.jdField_a_of_type_Long = System.currentTimeMillis();
     }
     super.a();
-    a(2130970157);
+    a(2130970171);
     e();
     ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver);
     a(true);
@@ -201,7 +201,7 @@ public class PublicView
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
     if (!a()) {
-      this.jdField_a_of_type_Wfg.sendEmptyMessageDelayed(2, 1000L);
+      this.jdField_a_of_type_Wil.sendEmptyMessageDelayed(2, 1000L);
     }
     return true;
   }
@@ -221,8 +221,8 @@ public class PublicView
   protected void d()
   {
     ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver);
-    if (this.jdField_a_of_type_Wff != null) {
-      this.jdField_a_of_type_Wff.V_();
+    if (this.jdField_a_of_type_Wik != null) {
+      this.jdField_a_of_type_Wik.X_();
     }
     super.d();
   }
@@ -233,12 +233,12 @@ public class PublicView
     {
     default: 
       return;
-    case 2131366382: 
+    case 2131366409: 
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a();
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 3, 0, "", "", "", "");
       return;
     }
-    paramView = (wfh)paramView.getTag();
+    paramView = (wim)paramView.getTag();
     a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramView.a.mSource, paramView.a.mEqqNameAccount, String.valueOf(paramView.a.mPublicuin), paramView.a.accountflag, paramView.a.mPublicname, 3);
   }
 }

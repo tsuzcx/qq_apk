@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.ar.ArResourceDownload;
-import com.tencent.mobileqq.ar.ArResourceManager;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
 
 public class zyd
   implements Runnable
 {
-  public zyd(ArResourceManager paramArResourceManager, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
+  public zyd(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArArResourceManager.a.a(this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo, this.jdField_a_of_type_Boolean, this.b);
+    this.a.clearAnimation();
   }
 }
 

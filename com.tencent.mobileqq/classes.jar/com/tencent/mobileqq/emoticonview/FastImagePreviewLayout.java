@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abyw;
-import abyx;
+import acfy;
+import acfz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -49,7 +49,7 @@ public class FastImagePreviewLayout
     }
     removeAllViews();
     Object localObject = inflate(this.jdField_a_of_type_AndroidContentContext, 2130968637, null);
-    ((ImageView)((View)localObject).findViewById(2131362968)).setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    ((ImageView)((View)localObject).findViewById(2131362986)).setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
     addView((View)localObject);
     setVisibility(0);
     localObject = new AlphaAnimation(0.0F, 1.0F);
@@ -72,7 +72,7 @@ public class FastImagePreviewLayout
       localAlphaAnimation.setDuration(500L);
       localAlphaAnimation.setFillAfter(true);
       startAnimation(localAlphaAnimation);
-      localAlphaAnimation.setAnimationListener(new abyw(this));
+      localAlphaAnimation.setAnimationListener(new acfy(this));
       return;
     }
     removeAllViews();
@@ -80,7 +80,7 @@ public class FastImagePreviewLayout
   
   public void b()
   {
-    ThreadManager.getSubThreadHandler().post(new abyx(this));
+    ThreadManager.getSubThreadHandler().post(new acfz(this));
   }
   
   public void setHandler(MqqHandler paramMqqHandler)

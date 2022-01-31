@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.app.asyncdb.cache.RoamDateCache;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.RouterHandler;
+import java.util.HashMap;
 
 public class zmp
-  implements Comparator
+  implements Runnable
 {
-  public zmp(RoamDateCache paramRoamDateCache) {}
+  public zmp(RouterHandler paramRouterHandler, long paramLong, int paramInt) {}
   
-  public int a(Map.Entry paramEntry1, Map.Entry paramEntry2)
+  public void run()
   {
-    paramEntry1 = ((java.lang.String)paramEntry1.getKey()).split("&")[1];
-    int i = Integer.parseInt(paramEntry1.split("-")[0]);
-    int j = Integer.parseInt(paramEntry1.split("-")[1]);
-    paramEntry1 = ((java.lang.String)paramEntry2.getKey()).split("&")[1];
-    int k = Integer.parseInt(paramEntry1.split("-")[0]);
-    int m = Integer.parseInt(paramEntry1.split("-")[1]);
-    if (i > k) {
-      return 1;
+    Session localSession = (Session)this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.e.get(Long.valueOf(this.jdField_a_of_type_Long));
+    if ((this.jdField_a_of_type_Int == 2) && (localSession != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.e.remove(Long.valueOf(this.jdField_a_of_type_Long));
     }
-    if (i == k) {
-      return j - m;
-    }
-    return -1;
+    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.a(2, localSession, 0.0D, this.jdField_a_of_type_Int);
   }
 }
 

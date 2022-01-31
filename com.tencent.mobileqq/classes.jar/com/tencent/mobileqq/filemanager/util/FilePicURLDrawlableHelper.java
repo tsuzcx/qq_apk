@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import acyc;
+import adhz;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
@@ -936,7 +936,7 @@ public class FilePicURLDrawlableHelper
         localObject2 = localObject1;
         if (b(paramFileManagerEntity))
         {
-          ThreadManager.post(new acyc(paramFileManagerEntity), 8, null, false);
+          ThreadManager.post(new adhz(paramFileManagerEntity), 8, null, false);
           localObject2 = localObject1;
         }
       }

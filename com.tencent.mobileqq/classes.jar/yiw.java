@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
+import android.widget.ImageView;
+import com.tencent.mobileqq.adapter.contacts.BuddyListItem.ViewTag;
+import com.tencent.widget.SingleLineTextView;
 
 public class yiw
-  implements Runnable
+  extends BuddyListItem.ViewTag
 {
-  public yiw(ApolloRenderDriver paramApolloRenderDriver) {}
+  public StringBuilder a;
+  public ImageView b;
+  public SingleLineTextView c;
   
-  public void run()
+  public yiw()
   {
-    this.a.a.a(ApolloActionHelper.a());
+    this.a = 11;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yiw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.CompletedHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class nzs
-  implements SimpleStepExector.CompletedHandler
+  implements View.OnClickListener
 {
-  public nzs(NewMyStorySegment paramNewMyStorySegment) {}
+  public nzs(StoryListPresenter paramStoryListPresenter, GuideInfoDialog paramGuideInfoDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    SLog.d("NewMyStorySegment", "finish get all data from server steps");
-    new Handler(Looper.getMainLooper()).post(new nzt(this));
+    StoryReportor.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog.dismiss();
   }
 }
 

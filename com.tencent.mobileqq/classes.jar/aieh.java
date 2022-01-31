@@ -1,23 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
 
 public class aieh
-  implements ValueAnimator.AnimatorUpdateListener
+  extends aiej
 {
-  public aieh(TribePostTitlePrefixPanelController paramTribePostTitlePrefixPanelController) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aieh(TCProgressBar paramTCProgressBar)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), i, 0, 0);
+    super(paramTCProgressBar);
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.a.b.left = this.f;
+    this.a.b.right = (this.f + this.g);
+    this.a.a.setColor(this.a.m);
+    paramCanvas.drawRect(this.a.b, this.a.a);
+    super.a(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aieh
  * JD-Core Version:    0.7.0.1
  */

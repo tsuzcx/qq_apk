@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.support.report;
 
 import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import oaq;
+import oci;
 
 public class MonitorReport
 {
@@ -10,7 +10,7 @@ public class MonitorReport
     MonitorValueRequest localMonitorValueRequest = new MonitorValueRequest();
     localMonitorValueRequest.a(paramInt, 1);
     localMonitorValueRequest.a = paramString;
-    CmdTaskManger.a().a(localMonitorValueRequest, new oaq());
+    CmdTaskManger.a().a(localMonitorValueRequest, new oci());
   }
 }
 

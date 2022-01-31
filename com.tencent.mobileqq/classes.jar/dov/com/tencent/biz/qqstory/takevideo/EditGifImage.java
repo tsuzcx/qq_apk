@@ -1,7 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anau;
-import anav;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -21,6 +19,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
+import anqz;
+import anra;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.VideoEditReport;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -135,7 +135,7 @@ public class EditGifImage
         localURLDrawableOptions.mPlayGifImage = true;
         localEditLocalGifSource.jdField_a_of_type_JavaLangString = null;
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new anau(this));
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new anqz(this));
     }
   }
   
@@ -154,7 +154,7 @@ public class EditGifImage
         localURLDrawableOptions.mPlayGifImage = true;
         localEditLocalGifSource.jdField_a_of_type_JavaLangString = null;
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new anav(this));
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new anra(this));
     }
   }
   
@@ -192,7 +192,7 @@ public class EditGifImage
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)a(2131364385));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)a(2131364409));
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnTouchListener(this);
     this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     ThreadManager.post(this, 8, null, false);
@@ -209,6 +209,14 @@ public class EditGifImage
     }
   }
   
+  public void aB_()
+  {
+    super.aB_();
+    if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
+      this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
+    }
+  }
+  
   public void a_(int paramInt, Object paramObject)
   {
     if (paramInt == 11)
@@ -219,19 +227,11 @@ public class EditGifImage
     this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
   }
   
-  public void av_()
+  public void ax_()
   {
-    super.av_();
+    super.ax_();
     if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
       this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
-    }
-  }
-  
-  public void az_()
-  {
-    super.az_();
-    if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
-      this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
     }
   }
   
@@ -273,7 +273,7 @@ public class EditGifImage
             return false;
             if (paramMessage.what == 998)
             {
-              QQToast.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getString(2131438704), 0).a();
+              QQToast.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getString(2131438722), 0).a();
               this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(0, null, 2131034158, 0);
               return false;
             }

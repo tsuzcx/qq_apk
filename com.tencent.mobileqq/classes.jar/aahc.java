@@ -1,30 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.qphone.base.util.QLog;
 
-class aahc
-  implements DialogInterface.OnClickListener
+public class aahc
+  implements Runnable
 {
-  aahc(aagy paramaagy, QQCustomDialog paramQQCustomDialog) {}
+  public aahc(AREngine paramAREngine) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ArkAppCenter.a().post(new aahd(this));
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label38:
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aagy.a, "ark_authority_api_location", this.jdField_a_of_type_Aagy.c, 1);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label38;
-    }
+    QLog.i("AREngine_AREngine", 1, "uninit run. mIsInited = " + AREngine.e(this.a));
+    AREngine.b(this.a);
+    AREngine.b(this.a, 0);
+    AREngine.b(this.a, false);
+    QLog.i("AREngine_AREngine", 1, "uninit end. mIsInited = " + AREngine.e(this.a));
   }
 }
 

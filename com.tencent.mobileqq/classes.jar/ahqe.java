@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import java.util.Comparator;
 
 public class ahqe
-  implements Runnable
+  implements Comparator
 {
-  public ahqe(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
+  public ahqe(ScribbleResMgr paramScribbleResMgr) {}
   
-  public void run()
+  public int a(ScribbleResMgr.ResInfo paramResInfo1, ScribbleResMgr.ResInfo paramResInfo2)
   {
-    if (this.a.a != null) {
-      this.a.a.G_();
+    if ((paramResInfo1 != null) && (paramResInfo2 != null)) {
+      return paramResInfo1.orderIndex - paramResInfo2.orderIndex;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqe
  * JD-Core Version:    0.7.0.1
  */

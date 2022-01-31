@@ -1,19 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import java.lang.ref.WeakReference;
 
 public class acwd
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  public acwd(VideoFileViewer paramVideoFileViewer, List paramList) {}
+  public acwd(FileVideoManager.VideoControl paramVideoControl) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer, this.jdField_a_of_type_JavaUtilList, paramInt, paramView);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a.dismiss();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+    }
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      paramDialogInterface = (FileVideoManager.FileVideoManagerCallback)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramDialogInterface != null) {
+        paramDialogInterface.ae_();
+      }
     }
   }
 }

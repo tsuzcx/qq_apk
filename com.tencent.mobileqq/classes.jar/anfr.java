@@ -1,35 +1,37 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer.Mp4VideoFragmentInfo;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
-class anfr
-  implements Runnable
+public class anfr
+  implements ActionSheet.OnButtonClickListener
 {
-  anfr(anfq paramanfq) {}
+  public anfr(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
+    switch (paramInt)
     {
-      HWEditImportVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditImportVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
-      HWEditImportVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
     }
     for (;;)
     {
-      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
-      HWEditImportVideoPlayer.a(this.a.a).set(true);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
       return;
-      SLog.e("Q.qqstory.record.HWEditImportVideoPlayer", "mFragmentInfos is empty");
+      TroopHWJsPlugin localTroopHWJsPlugin = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin;
+      if (this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.mRuntime == null) {}
+      for (paramView = null;; paramView = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.mRuntime.a())
+      {
+        localTroopHWJsPlugin.c = TroopHWJsPlugin.a(paramView, 2);
+        break;
+      }
+      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfr
  * JD-Core Version:    0.7.0.1
  */

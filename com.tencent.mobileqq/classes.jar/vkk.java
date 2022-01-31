@@ -1,18 +1,11 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class vkk
-  implements EIPCResultCallback
+public class vkk
+  extends vkh
 {
-  vkk(vki paramvki) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public vkk(QQAppInterface paramQQAppInterface)
   {
-    if (-102 == paramEIPCResult.code) {
-      AIOGalleryScene.M(this.a.a).finish();
-    }
+    super(paramQQAppInterface);
   }
 }
 

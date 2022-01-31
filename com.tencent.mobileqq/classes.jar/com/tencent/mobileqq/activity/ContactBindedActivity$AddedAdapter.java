@@ -27,7 +27,7 @@ public class ContactBindedActivity$AddedAdapter
   
   public ContactBindedActivity$AddedAdapter(ContactBindedActivity paramContactBindedActivity, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130842321);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130842368);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -68,10 +68,10 @@ public class ContactBindedActivity$AddedAdapter
     PhoneContact localPhoneContact = a(paramInt);
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity.getLayoutInflater().inflate(2130969034, null);
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity.getLayoutInflater().inflate(2130969033, null);
     }
     paramViewGroup.setTag(localPhoneContact);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362721);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362739);
     paramView = localBitmap;
     if (paramInt == getCount() - 1)
     {
@@ -113,7 +113,7 @@ public class ContactBindedActivity$AddedAdapter
         View localView = ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactBindedActivity).getChildAt(paramInt1);
         Object localObject = localView.getTag();
         if ((localObject != null) && ((localObject instanceof PhoneContact)) && (paramString.equals(((PhoneContact)localObject).unifiedCode))) {
-          ((ImageView)localView.findViewById(2131362721)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+          ((ImageView)localView.findViewById(2131362739)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
         }
         paramInt1 += 1;
       }

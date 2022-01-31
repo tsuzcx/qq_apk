@@ -1,26 +1,39 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class vrq
-  implements Runnable
+  extends PublicAccountObserver
 {
-  public vrq(HotChatPie paramHotChatPie) {}
+  public vrq(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void run()
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    TroopHandler localTroopHandler = (TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if (localTroopHandler != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_red_point", 2, "send_oidb_0x8c9_2");
-      }
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(1105933138L));
-      localTroopHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localArrayList, true);
+    if (paramInt == 0) {
+      this.a.c(this.a.a.getIntent());
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c(this.a.a.getIntent());
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c(this.a.a.getIntent());
+    }
+  }
+  
+  public void v_()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
     }
   }
 }

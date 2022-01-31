@@ -35,14 +35,14 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zsw;
-import zsx;
-import zsy;
-import ztb;
-import ztc;
-import ztd;
-import zte;
-import ztf;
+import zwc;
+import zwd;
+import zwe;
+import zwh;
+import zwi;
+import zwj;
+import zwk;
+import zwl;
 
 public class SosoInterface
 {
@@ -73,7 +73,7 @@ public class SosoInterface
     jdField_a_of_type_Int = 2000;
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new zsw());
+    jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new zwc());
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
     jdField_a_of_type_ArrayOfLong = new long[] { 0L, 0L, 0L, 0L, 0L };
     jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sosoCache", 4);
@@ -84,12 +84,12 @@ public class SosoInterface
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-    zsx localzsx = new zsx();
+    zwd localzwd = new zwd();
     try
     {
-      BaseApplicationImpl.getContext().registerReceiver(localzsx, localIntentFilter);
-      jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new zsy();
-      jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new ztb(0, false, false, 0L, false, false, "reqRawData");
+      BaseApplicationImpl.getContext().registerReceiver(localzwd, localIntentFilter);
+      jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new zwe();
+      jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new zwh(0, false, false, 0L, false, false, "reqRawData");
       jdField_b_of_type_Boolean = true;
       return;
     }
@@ -205,7 +205,7 @@ public class SosoInterface
   
   public static void a()
   {
-    ThreadManager.getSubThreadHandler().post(new ztf());
+    ThreadManager.getSubThreadHandler().post(new zwl());
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       jdField_a_of_type_JavaUtilArrayList.clear();
@@ -649,7 +649,7 @@ public class SosoInterface
       {
         paramOnLocationListener.a(0, localSosoLbsInfo);
         break label707;
-        ThreadManager.getSubThreadHandler().post(new ztd(paramOnLocationListener));
+        ThreadManager.getSubThreadHandler().post(new zwj(paramOnLocationListener));
         break;
         i = 1;
         break label434;
@@ -740,7 +740,7 @@ public class SosoInterface
           QLog.d("SOSO.LBS", 2, "saveGeogInfo cost: " + (SystemClock.elapsedRealtime() - jdField_c_of_type_Long));
         }
       }
-      LbsInfoReportManager.a(jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.jdField_a_of_type_Double, jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.jdField_b_of_type_Double, jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.jdField_e_of_type_Double, jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.jdField_a_of_type_Float, paramString);
+      LbsInfoReportManager.a(jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation, paramString);
       return;
       jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.jdField_a_of_type_JavaUtilList = paramTencentLocation.getPoiList();
       jdField_a_of_type_ArrayOfLong[4] = SystemClock.elapsedRealtime();
@@ -785,7 +785,7 @@ public class SosoInterface
       }
       if (jdField_a_of_type_JavaUtilArrayList.size() == 0)
       {
-        ThreadManager.getSubThreadHandler().post(new zte());
+        ThreadManager.getSubThreadHandler().post(new zwk());
         if (QLog.isColorLevel()) {
           QLog.d("SOSO.LBS", 2, "removeOnLocationListener() listener is empty. remveUpdate and stop LBS");
         }
@@ -799,7 +799,7 @@ public class SosoInterface
     if (paramOnLocationListener == null) {
       return;
     }
-    ThreadManager.getUIHandler().post(new ztc(paramOnLocationListener, paramInt, paramSosoLbsInfo));
+    ThreadManager.getUIHandler().post(new zwi(paramOnLocationListener, paramInt, paramSosoLbsInfo));
   }
   
   private static void b(String paramString, byte[] paramArrayOfByte)

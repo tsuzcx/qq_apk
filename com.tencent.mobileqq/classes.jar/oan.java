@@ -1,30 +1,16 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
 public class oan
+  implements Runnable
 {
-  public TextView a;
+  public oan(FeedSegment paramFeedSegment, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public oan(View paramView)
+  public void run()
   {
-    this.a = ((TextView)paramView.findViewById(2131367202));
-  }
-  
-  public void a(TagItem.TagInfoBase paramTagInfoBase, TagAdapter.OnItemClickListener paramOnItemClickListener)
-  {
-    if (TextUtils.isEmpty(paramTagInfoBase.a))
-    {
-      this.a.setVisibility(8);
-      return;
+    if (FeedSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.c(1, 0);
     }
-    this.a.setVisibility(0);
-    this.a.setText(TagAdapter.a(paramTagInfoBase));
-    TagAdapter.a(this.a);
-    this.a.setOnClickListener(new oao(this, paramOnItemClickListener, paramTagInfoBase));
   }
 }
 

@@ -29,7 +29,7 @@ import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import ldq;
+import ldb;
 
 public class ReadInJoyNewBaseActivity
   extends FragmentActivity
@@ -53,7 +53,7 @@ public class ReadInJoyNewBaseActivity
   public ReadInJoyNewBaseActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ldq(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ldb(this);
   }
   
   @TargetApi(11)
@@ -68,15 +68,15 @@ public class ReadInJoyNewBaseActivity
   
   private View c()
   {
-    this.c = ((TextView)findViewById(2131363363));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367206));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367207));
+    this.c = ((TextView)findViewById(2131363381));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367254));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367255));
     return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
   
   protected View a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363227));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     a(this.jdField_a_of_type_AndroidWidgetTextView);
     if (AppSetting.b) {
@@ -88,7 +88,7 @@ public class ReadInJoyNewBaseActivity
   public void a()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidViewView = ((ViewStub)findViewById(2131367208)).inflate();
+    this.jdField_b_of_type_AndroidViewView = ((ViewStub)findViewById(2131367256)).inflate();
     if (this.jdField_b_of_type_AndroidViewView != null) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }
@@ -105,10 +105,10 @@ public class ReadInJoyNewBaseActivity
   
   protected void a(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130845746));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130845874));
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131367043));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131367091));
       a(this.jdField_a_of_type_AndroidViewViewGroup);
       c();
       a();
@@ -130,7 +130,7 @@ public class ReadInJoyNewBaseActivity
   
   protected View b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363456));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363474));
     a(this.jdField_a_of_type_AndroidWidgetImageView);
     return this.d;
   }
@@ -168,8 +168,8 @@ public class ReadInJoyNewBaseActivity
         {
           this.c.setTextColor(-14408926);
           this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-14408926);
-          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130845305);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845303);
+          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130845433);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845431);
           this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
           return;
           this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -211,8 +211,8 @@ public class ReadInJoyNewBaseActivity
     {
       this.c.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130845306);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845304);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130845434);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845432);
       this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-14408926);
       return;
       label427:
@@ -244,7 +244,7 @@ public class ReadInJoyNewBaseActivity
           {
             paramIntent = (Intent)localObject;
             if (((String)localObject).contains("消息")) {
-              paramIntent = getString(2131433681);
+              paramIntent = getString(2131433698);
             }
           }
         }
@@ -256,7 +256,7 @@ public class ReadInJoyNewBaseActivity
       }
       else
       {
-        localObject = getString(2131433681);
+        localObject = getString(2131433698);
       }
       localTextView.setText((CharSequence)localObject);
       localTextView.setVisibility(0);
@@ -264,8 +264,8 @@ public class ReadInJoyNewBaseActivity
       {
         localObject = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
         paramIntent = (Intent)localObject;
-        if (!((String)localObject).contains(getString(2131433681))) {
-          paramIntent = getString(2131433681) + (String)localObject;
+        if (!((String)localObject).contains(getString(2131433698))) {
+          paramIntent = getString(2131433698) + (String)localObject;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramIntent);
       }
@@ -331,7 +331,7 @@ public class ReadInJoyNewBaseActivity
       a(getIntent());
       return;
       Object localObject = LayoutInflater.from(this);
-      View localView = ((LayoutInflater)localObject).inflate(2130969632, null);
+      View localView = ((LayoutInflater)localObject).inflate(2130969640, null);
       try
       {
         if (ImmersiveUtils.isSupporImmersive() == 1)
@@ -339,7 +339,7 @@ public class ReadInJoyNewBaseActivity
           localView.setFitsSystemWindows(true);
           localView.setPadding(0, ImmersiveUtils.a(this), 0, 0);
         }
-        this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131363995));
+        this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131364019));
         localObject = ((LayoutInflater)localObject).inflate(paramInt, this.jdField_b_of_type_AndroidViewViewGroup, false);
         ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
         this.jdField_b_of_type_AndroidViewViewGroup.addView((View)localObject, localLayoutParams);

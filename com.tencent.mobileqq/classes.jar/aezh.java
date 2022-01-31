@@ -1,27 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.LoadCommentsCallback;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.view.CommentsView;
+import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
 
 public class aezh
-  extends Handler
+  implements CommentsDataSource.LoadCommentsCallback
 {
-  public aezh(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
+  public aezh(CommentsPresenterImpl paramCommentsPresenterImpl) {}
+  
+  public void a()
   {
-    super(paramLooper);
+    if (CommentsPresenterImpl.a(this.a) != null)
+    {
+      CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430837));
+      CommentsPresenterImpl.a(this.a).b();
+      CommentsPresenterImpl.a(this.a).c();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(Comments paramComments)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a() > 1)
+    if (CommentsPresenterImpl.a(this.a) != null)
     {
-      paramMessage = this.a;
-      paramMessage.f += 1;
-      this.a.f %= this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.f, true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.e);
+      CommentsPresenterImpl.a(this.a);
+      CommentsPresenterImpl.a(this.a).a(paramComments);
+      CommentsPresenterImpl.a(this.a).b();
     }
   }
 }

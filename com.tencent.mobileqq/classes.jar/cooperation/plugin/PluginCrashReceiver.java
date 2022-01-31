@@ -1,7 +1,7 @@
 package cooperation.plugin;
 
-import alvy;
-import alvz;
+import ammc;
+import ammd;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +29,7 @@ public class PluginCrashReceiver
             if ((!"com.tencent.mobileqq.ACTION_PLUGIN_CRASH".equals(localObject)) || ("com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED".equals(localObject))) {
               try
               {
-                new alvz(paramIntent).execute(new String[] { "" });
+                new ammd(paramIntent).execute(new String[] { "" });
                 return;
               }
               catch (Throwable paramContext)
@@ -40,7 +40,7 @@ public class PluginCrashReceiver
             if ("com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG".equals(localObject)) {
               try
               {
-                new alvy(paramContext).execute(new String[] { "" });
+                new ammc(paramContext).execute(new String[] { "" });
                 return;
               }
               catch (Throwable paramContext)

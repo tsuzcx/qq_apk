@@ -1,22 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.view.StoryNewGuideDialog;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.OnSelectedChangedListener;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetElement;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper;
 
 public class oom
-  implements View.OnTouchListener
+  implements PollWidgetUtils.OnSelectedChangedListener
 {
-  public oom(StoryNewGuideDialog paramStoryNewGuideDialog) {}
+  public oom(PollWidgetUtils.WidgetWrapper paramWidgetWrapper) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(PollWidgetUtils.WidgetElement paramWidgetElement, boolean paramBoolean)
   {
-    switch (paramMotionEvent.getAction())
+    int i = 0;
+    if (paramBoolean)
     {
+      PollWidgetUtils.WidgetElement[] arrayOfWidgetElement = this.a.a();
+      j = arrayOfWidgetElement.length;
+      i = 0;
+      while (i < j)
+      {
+        PollWidgetUtils.WidgetElement localWidgetElement = arrayOfWidgetElement[i];
+        if (localWidgetElement != paramWidgetElement) {
+          localWidgetElement.b(false);
+        }
+        i += 1;
+      }
     }
+    paramWidgetElement = this.a.a();
+    int j = paramWidgetElement.length;
     for (;;)
     {
-      return true;
-      this.a.dismiss();
+      if ((i >= j) || (paramWidgetElement[i].a())) {
+        return;
+      }
+      i += 1;
     }
   }
 }

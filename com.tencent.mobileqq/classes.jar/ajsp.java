@@ -1,26 +1,18 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
 
 public class ajsp
-  extends TextView
+  implements Runnable
 {
-  public ajsp(QQCustomMenuImageLayout paramQQCustomMenuImageLayout, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public ajsp(MessageSubtitleView paramMessageSubtitleView) {}
   
-  public boolean performClick()
+  public void run()
   {
-    boolean bool = super.performClick();
-    QQCustomMenuImageLayout.a(this.a).a();
-    return bool;
+    MessageSubtitleView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsp
  * JD-Core Version:    0.7.0.1
  */

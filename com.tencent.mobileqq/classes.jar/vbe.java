@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
+import android.content.Context;
+import android.content.res.Resources;
 import com.tencent.mobileqq.widget.QQToast;
 
-class vbe
+public final class vbe
   implements Runnable
 {
-  vbe(vbc paramvbc) {}
+  public vbe(Context paramContext) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a.a, "图片已过期或被删除", 0).a();
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131434495), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
   }
 }
 

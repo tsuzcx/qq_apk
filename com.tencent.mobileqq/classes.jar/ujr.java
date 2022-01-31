@@ -1,67 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
+import com.tencent.mobileqq.utils.AudioHelper.AudioPlayerParameter;
 
 public class ujr
-  extends VasQuickUpdateManager.CallBacker
+  extends Handler
 {
-  public ujr(PokePanel paramPokePanel) {}
+  public ujr(AudioPlayer paramAudioPlayer) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool3 = true;
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (paramLong == 21L)
+    if ((paramMessage.what == 1000) && (AudioPlayer.a(this.a) == 0) && (this.a.a()))
     {
-      if ((!paramString1.equals("poke.effectList")) || (paramInt1 != 0)) {
-        break label107;
+      int i = AudioPlayer.a(this.a).getStreamVolume(AudioPlayer.a(this.a).b);
+      int j = AudioPlayer.a(this.a).getStreamMaxVolume(AudioPlayer.a(this.a).b);
+      if (i / j <= 0.1F) {
+        break label126;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.PokePanel", 2, "download vas poke list, refresh now.");
+      AudioPlayer.a(this.a, 1);
+      if (AudioPlayer.a(this.a) != null) {
+        AudioPlayer.a(this.a).c(this.a, AudioPlayer.a(this.a));
       }
-      paramString1 = paramVasQuickUpdateManager.a;
-      ThreadManager.getUIHandler().post(new ujs(this, paramString1));
-      paramString1 = "";
-      paramString2 = "";
-      bool1 = bool2;
     }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramString2)) {
-        ThreadManager.getUIHandler().post(new ujt(this, paramString2, paramString1, bool1));
-      }
-      return;
-      label107:
-      if (paramString1.startsWith("poke.item.effect."))
-      {
-        paramString1 = paramString1.substring("poke.item.effect.".length(), paramString1.length());
-        if (paramInt1 != 0) {}
-        for (;;)
-        {
-          paramString2 = "poke.item.effect.";
-          break;
-          bool1 = false;
-        }
-      }
-      if (paramString1.startsWith("poke.item.res."))
-      {
-        paramString1 = paramString1.substring("poke.item.res.".length(), paramString1.length());
-        if (paramInt1 != 0) {}
-        for (bool1 = bool3;; bool1 = false)
-        {
-          paramString2 = "poke.item.res.";
-          break;
-        }
-      }
-      paramString1 = "";
-      paramString2 = "";
-      bool1 = bool2;
-    }
+    return;
+    label126:
+    AudioPlayer.a(this.a).sendEmptyMessageDelayed(1000, 200L);
   }
 }
 

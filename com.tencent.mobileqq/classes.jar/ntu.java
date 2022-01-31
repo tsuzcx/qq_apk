@@ -1,14 +1,17 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
 
 public class ntu
   implements Runnable
 {
-  public ntu(StoryDetailFragment paramStoryDetailFragment) {}
+  public ntu(QQStoryMainController paramQQStoryMainController) {}
   
   public void run()
   {
-    this.a.a.a(true);
+    this.a.a = this.a.a();
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 

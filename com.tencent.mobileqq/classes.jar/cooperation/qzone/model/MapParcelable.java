@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amen;
+import amur;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.util.Map;
 public class MapParcelable
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amen();
+  public static final Parcelable.Creator CREATOR = new amur();
   private Map a;
   
   public MapParcelable(Map paramMap)

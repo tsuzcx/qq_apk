@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.widget.FadeIconImageView android:gravity="center" android:visibility="visible" android:layout_width="44.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02030e" android:scaleType="center" android:includeFontPadding="false" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2d02" android:layout_centerVertical="true" tencent:skintype="title_right_view"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq" />
+<RelativeLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.RapidCommentEmoView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ac9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02207c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a30cb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a2ac9" />
+</RelativeLayout>

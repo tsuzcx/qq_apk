@@ -1,22 +1,17 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public class kss
+class kss
   implements Runnable
 {
-  public kss(AccountDetailActivity paramAccountDetailActivity) {}
+  kss(ksr paramksr) {}
   
   public void run()
   {
-    Object localObject = this.a.a.a(1, this.a.d, (byte)1, true, 0);
-    if (localObject != null)
-    {
-      localObject = this.a.a((Bitmap)localObject);
-      if (localObject != null) {
-        AccountDetailActivity.c(this.a, new kst(this, (Drawable)localObject));
-      }
+    this.a.a.k();
+    if (!this.a.a.n) {
+      this.a.a.a(this.a.a.d, this.a.a.b, this.a.a.a.name, ChatActivity.class, true);
     }
   }
 }

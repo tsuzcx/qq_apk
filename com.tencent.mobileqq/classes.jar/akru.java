@@ -1,30 +1,21 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
 
-class akru
-  implements Runnable
+public class akru
+  implements View.OnClickListener
 {
-  akru(akrs paramakrs, long paramLong1, long paramLong2, String paramString) {}
+  public akru(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
-    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Akrs.a.c(this.jdField_a_of_type_JavaLangString, i);
-    if (localDownloadInfo == null) {
-      LogUtility.d(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info == null");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Akrs.a.a(2, localDownloadInfo);
-      return;
-      LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.g);
-    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akru
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
 
 public class anda
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public anda(EditVideoDoodle paramEditVideoDoodle) {}
+  public anda(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin, String paramString) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.e();
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = 1;
-      return;
-      if (this.a.jdField_a_of_type_Int == 3) {
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.s();
-      }
-    }
+    QzoneQunFeedJsPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneQunFeedJsPlugin, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anda
  * JD-Core Version:    0.7.0.1
  */

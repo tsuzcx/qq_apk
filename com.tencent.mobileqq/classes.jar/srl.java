@@ -1,35 +1,69 @@
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.adapter.GroupEditeDragSortAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.drawer.FriendProfileBubble;
+import com.tencent.mobileqq.apollo.script.SpriteUtil;
+import com.tencent.mobileqq.apollo.script.callback.ISpriteDrawerInfoCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import mqq.os.MqqHandler;
 
 public class srl
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener, ISpriteDrawerInfoCallback
 {
-  public srl(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
+  private srl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
-    if (paramInt == 0)
-    {
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
-      }
-      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
-        break label110;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131435527);
-    }
-    label110:
-    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
+    if (this.a.app == null) {
       return;
     }
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
+    ApolloActionData localApolloActionData = null;
+    Object localObject = localApolloActionData;
+    if (this.a.a != null)
+    {
+      localObject = localApolloActionData;
+      if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) {
+        localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
+      }
+    }
+    if ((TextUtils.isEmpty((CharSequence)localObject)) && (this.a.a != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard != null)) {
+      localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin;
+    }
+    for (;;)
+    {
+      localApolloActionData = ((ApolloManager)this.a.app.getManager(152)).a(this.a.app, (String)localObject, new int[] { 4 });
+      int i = 5;
+      if (localApolloActionData == null)
+      {
+        localApolloActionData = new ApolloActionData();
+        localApolloActionData.actionId = -1;
+        localApolloActionData.actionType = 0;
+      }
+      for (;;)
+      {
+        SpriteUtil.a(FriendProfileCardActivity.a(this.a), i, localApolloActionData);
+        new FriendProfileBubble((String)localObject).a(FriendProfileCardActivity.a(this.a), this.a, this.a.app, "这是我的厘米秀，你也来领一个吧");
+        return;
+        i = 12;
+      }
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    ThreadManager.getUIHandler().post(new srm(this, paramInt1, paramInt2, paramString));
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.a.a(1, 0, null);
   }
 }
 

@@ -1,134 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyProfileCardMomentAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.ChangMomentFeedInfo;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.MomentFeedInfo;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.PicMomentFeedInfo;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.ShortVideoMomentFeedInfo;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexd
-  extends NearbyMomentManager.MomentDataChangeObserver
+  implements View.OnTouchListener
 {
-  public aexd(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public aexd(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ((NearbyMomentManager)NearbyMomentFragment.a(this.a).getManager(262)).a(new aexg(this));
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      if (!paramString.a)
-      {
-        paramString.a = true;
-        paramString.f += 1;
-      }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    paramString1 = NearbyMomentFragment.a(this.a, paramString1);
-    if (paramString1 != null) {
-      if ((paramString1 instanceof PicMomentFeedInfo)) {
-        ((PicMomentFeedInfo)paramString1).a = paramString2;
-      }
-    }
-    for (int i = 500;; i = 2000)
-    {
-      ThreadManager.getUIHandler().postDelayed(new aexe(this), i);
-      return;
-      ((ShortVideoMomentFeedInfo)paramString1).a = paramString2;
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      NearbyMomentFragment.a(this.a).a().remove(paramString);
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      NearbyMomentFragment.b(this.a, paramString.c);
-    }
-    if (NearbyMomentFragment.a(this.a).a().size() == 0) {
-      this.a.a(1);
-    }
-    if (paramBoolean)
-    {
-      NearbyMomentFragment.b(this.a).remove(paramString);
-      this.a.b();
-      return;
-    }
-    NearbyMomentFragment.a(this.a).remove(paramString);
-  }
-  
-  public void b(String paramString)
-  {
-    ((NearbyMomentManager)NearbyMomentFragment.a(this.a).getManager(262)).a(new aexf(this));
-  }
-  
-  public void b(String paramString, long paramLong)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if ((paramString != null) && (paramString.a))
-    {
-      paramString.a = false;
-      if (paramString.f > 0) {
-        paramString.f -= 1;
-      }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      paramString.g += 1;
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if (paramString != null)
-    {
-      if (paramString.g > 0) {
-        paramString.g -= 1;
-      }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-    }
-  }
-  
-  public void e(String paramString)
-  {
-    paramString = NearbyMomentFragment.a(this.a, paramString);
-    if ((paramString instanceof ShortVideoMomentFeedInfo))
-    {
-      paramString = (ShortVideoMomentFeedInfo)paramString;
-      paramString.e += 1;
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
     }
     for (;;)
     {
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      return;
-      if ((paramString instanceof ChangMomentFeedInfo))
-      {
-        paramString = (ChangMomentFeedInfo)paramString;
-        paramString.e += 1;
-      }
+      return false;
+      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
     }
   }
 }

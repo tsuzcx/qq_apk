@@ -18,8 +18,8 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ygj;
-import ygk;
+import yjq;
+import yjr;
 
 public class ApolloGameArkHandler
 {
@@ -114,7 +114,7 @@ public class ApolloGameArkHandler
   
   private void a(String paramString)
   {
-    ThreadManager.post(new ygk(this, paramString), 5, null, true);
+    ThreadManager.post(new yjr(this, paramString), 5, null, true);
   }
   
   public QQAppInterface a()
@@ -301,7 +301,7 @@ public class ApolloGameArkHandler
     if (QLog.isColorLevel()) {
       QLog.d("QQ_CmGame", 2, new Object[] { "eventName:", paramString1, ",data:", paramString2 });
     }
-    ArkAppCenter.a().post(new ygj(this, paramMessageForApollo, paramString1, paramString2));
+    ArkAppCenter.a().post(new yjq(this, paramMessageForApollo, paramString1, paramString2));
   }
   
   /* Error */

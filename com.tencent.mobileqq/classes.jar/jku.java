@@ -1,23 +1,55 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
 import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import org.json.JSONObject;
 
 public class jku
-  implements Runnable
+  extends jkq
 {
-  public jku(RandomController paramRandomController) {}
-  
-  public void run()
+  public jku(RandomWebProtocol paramRandomWebProtocol, int paramInt1, long paramLong, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RandomController", 2, "mMatchTimeoutRunnable trigger, show timeOutDialog!");
+    super(paramRandomWebProtocol);
+    boolean bool = RandomWebProtocol.b();
+    paramRandomWebProtocol = new JSONObject();
+    try
+    {
+      paramRandomWebProtocol.put("session_type", paramInt1).put("groupid", paramLong);
+      if (4 == paramInt2) {
+        paramRandomWebProtocol.put("peer_enuin", ChatActivityUtils.b(RandomWebProtocol.a(), paramString));
+      }
     }
-    this.a.a = -1;
-    RandomController.a(this.a).a();
-    RandomController.c(this.a);
-    RandomController.a(this.a).a().removeCallbacks(RandomController.c(this.a));
+    catch (Exception paramString)
+    {
+      do
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          continue;
+          paramRandomWebProtocol = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/getroomowner";
+        }
+      } while (paramInt2 != 4);
+      if (!bool) {
+        break label139;
+      }
+    }
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramRandomWebProtocol;
+    this.jdField_a_of_type_Boolean = bool;
+    if (paramInt2 == 5) {
+      if (bool)
+      {
+        paramRandomWebProtocol = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/getroomowner";
+        this.c = paramRandomWebProtocol;
+        this.d = "[m] RequestMultiRoomOwner";
+        return;
+      }
+    }
+    label139:
+    for (paramRandomWebProtocol = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/multichatkick";; paramRandomWebProtocol = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/multichatkick")
+    {
+      this.c = paramRandomWebProtocol;
+      break;
+    }
   }
 }
 

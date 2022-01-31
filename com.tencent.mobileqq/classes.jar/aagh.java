@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aagh
-  implements DialogInterface.OnClickListener
+class aagh
+  implements Runnable
 {
-  public aagh(ARVideoPreviewActivity paramARVideoPreviewActivity) {}
+  aagh(aagg paramaagg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "下载资源失败,请重试！", 1).a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aagh
  * JD-Core Version:    0.7.0.1
  */

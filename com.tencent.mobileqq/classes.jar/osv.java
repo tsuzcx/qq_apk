@@ -1,16 +1,34 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.biz.qrcode.ipc.PreCallUpToolProc.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.biz.qrcode.util.QRCard;
+import java.util.HashMap;
 
 public class osv
-  implements PreCallUpToolProc.Callback
+  implements View.OnClickListener
 {
-  public osv(ScannerActivity paramScannerActivity, long paramLong) {}
+  public osv(QRCardActivity paramQRCardActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b();
-    QLog.d("ScannerActivity", 2, "launchAr time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof Integer)) {
+      if (((Integer)localObject).intValue() != 0) {
+        break label101;
+      }
+    }
+    label101:
+    for (String str = (String)((TextView)paramView.findViewById(2131363057)).getText();; str = null)
+    {
+      if (((Integer)localObject).intValue() == 1)
+      {
+        this.a.a((String)this.a.a.d.get(this.a.h));
+        return;
+      }
+      QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
+      return;
+    }
   }
 }
 

@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:paddingTop="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008d">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d01" android:visibility="visible" android:layout_alignParentLeft="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008f" />
-        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d02" android:layout_width="270.0dip" android:text="请选择支付方式" android:maxLines="1" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:textAlignment="center" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008e" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d03" android:visibility="visible" android:layout_alignParentRight="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0090" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1b" android:text="天天酷跑钻石 × 200" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0088" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:textSize="25.0sp" android:textStyle="bold" android:textColor="#ff333333" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="￥" />
+            <TextView android:textSize="50.0sp" android:textStyle="bold" android:textColor="#ff333333" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="19.50" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1d" />
+            <TextView android:textSize="16.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="Q币" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1e" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1e" />
+        </RelativeLayout>
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d20" android:text="溢价" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1c" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008a" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="￥10.00" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1c" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0d20" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008b" />
     </RelativeLayout>
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d04" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a8" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d22" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0sp" android:textColor="#ffff8444" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ钱包立减优惠5.00元" android:textAlignment="center" />
+        <ImageView android:layout_gravity="center_vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02072d" android:layout_width="7.0dip" android:layout_height="13.0dip" android:layout_marginLeft="4.0dip" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d24" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a8" />
+    </LinearLayout>
 </LinearLayout>

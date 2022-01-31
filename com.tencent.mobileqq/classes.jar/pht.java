@@ -1,19 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.common.IPInfo;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.component.media.image.drawable.AutoGifDrawable;
+import com.tencent.component.media.image.drawable.AutoGifDrawable.AutoGifCallback;
 
-public final class pht
-  implements Parcelable.Creator
+public class pht
+  implements Drawable.Callback
 {
-  public IPInfo a(Parcel paramParcel)
+  public pht(AutoGifDrawable paramAutoGifDrawable) {}
+  
+  public void invalidateDrawable(Drawable paramDrawable)
   {
-    return new IPInfo(paramParcel);
+    if (this.a.a != null) {
+      this.a.a.invalidateGifView();
+    }
   }
   
-  public IPInfo[] a(int paramInt)
-  {
-    return new IPInfo[paramInt];
-  }
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
 }
 
 

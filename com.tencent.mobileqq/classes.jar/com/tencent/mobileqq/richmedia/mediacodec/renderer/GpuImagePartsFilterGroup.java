@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import ahaq;
-import ahar;
+import ahos;
+import ahot;
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.LinkedList;
@@ -60,7 +60,7 @@ public class GpuImagePartsFilterGroup
   
   public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
   {
-    a(new ahar(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
+    a(new ahot(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -68,7 +68,7 @@ public class GpuImagePartsFilterGroup
     if (!FilterFactory.a(paramInt1)) {
       throw new IllegalArgumentException("filterType " + paramInt1 + " is invalid color filter type");
     }
-    a(new ahaq(this, paramInt1, paramInt2, paramInt3));
+    a(new ahos(this, paramInt1, paramInt2, paramInt3));
   }
   
   public void a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)

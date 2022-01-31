@@ -857,21 +857,18 @@ public class MessageHandlerUtils
         k = ((SVIPHandler)localObject2).g();
         m = ((SVIPHandler)localObject2).b();
         if (m <= 0) {
-          break label2925;
+          break label3039;
         }
         localObject1 = ((BubbleManager)localObject1).a(m, false);
         if ((localObject1 != null) && ((localObject1 == null) || (((BubbleConfig)localObject1).a == null) || (((BubbleConfig)localObject1).a.size() <= 0))) {
-          break label2005;
+          break label2008;
         }
       }
       label1053:
       label1191:
-      label2005:
-      label2011:
-      label2016:
-      label2022:
-      label2027:
-      label2925:
+      label2008:
+      label2014:
+      label3039:
       for (boolean bool = true;; bool = false)
       {
         if (QLog.isColorLevel()) {
@@ -923,7 +920,7 @@ public class MessageHandlerUtils
                     n = 1;
                     i1 = 1;
                     if ((!bool) || (((PasswdRedBagManager)localObject2).d)) {
-                      break label2011;
+                      break label2014;
                     }
                     i = 1;
                     label1018:
@@ -932,7 +929,7 @@ public class MessageHandlerUtils
                     }
                     localObject2 = localGeneralFlags.uint32_prp_fold;
                     if (!((MessageForFoldMsg)localObject1).foldFlagTemp) {
-                      break label2016;
+                      break label2019;
                     }
                     j = 1;
                     ((PBUInt32Field)localObject2).set(j);
@@ -961,7 +958,7 @@ public class MessageHandlerUtils
                 {
                   long l = ((MessageForFoldMsg)localObject1).mPasswdRedBagSender;
                   if (!((MessageForFoldMsg)localObject1).foldFlagTemp) {
-                    break label2022;
+                    break label2025;
                   }
                   i = 1;
                   QLog.d("msgFold", 2, String.format("Send, pack foldMsg, senderUin: %d, foldFlag: %s, redBagId: %s", new Object[] { Long.valueOf(l), Integer.valueOf(i), ((MessageForFoldMsg)localObject1).redBagId }));
@@ -985,7 +982,7 @@ public class MessageHandlerUtils
                 localResvAttr.float_sticker_height.set(((EmojiStickerManager.StickerInfo)localObject1).height);
                 localResvAttr.uint32_sticker_rotate.set(((EmojiStickerManager.StickerInfo)localObject1).rotate);
                 if (paramMessageRecord.istroop != 0) {
-                  break label2027;
+                  break label2030;
                 }
                 localResvAttr.uint64_sticker_host_msgseq.set((short)(int)((EmojiStickerManager.StickerInfo)localObject1).hostMsgSeq & 0xFFFF);
                 localResvAttr.uint64_sticker_host_msguid.set(((EmojiStickerManager.StickerInfo)localObject1).hostMsgUid);
@@ -1009,10 +1006,12 @@ public class MessageHandlerUtils
                 i = 1;
               }
               localObject1 = ((FriendsManager)paramQQAppInterface.getManager(50)).a(paramQQAppInterface.c());
+              k = j;
+              j = i;
               if (localObject1 != null)
               {
                 localGeneralFlags.uint64_pendant_id.set(((ExtensionInfo)localObject1).pendantId);
-                k = 1;
+                i = 1;
                 localResvAttr.uint32_mobile_custom_font.set(FontManager.a((ExtensionInfo)localObject1));
                 if ((((ExtensionInfo)localObject1).diyFontTimestampMap != null) && (((ExtensionInfo)localObject1).diyFontTimestampMap.get(Integer.valueOf((int)((ExtensionInfo)localObject1).uVipFont)) != null)) {
                   localResvAttr.uint32_diy_font_timestamp.set(((Integer)((ExtensionInfo)localObject1).diyFontTimestampMap.get(Integer.valueOf((int)((ExtensionInfo)localObject1).uVipFont))).intValue());
@@ -1024,51 +1023,52 @@ public class MessageHandlerUtils
                 if (((ExtensionInfo)localObject1).faceId > 0) {
                   localResvAttr.uint32_face_id.set(((ExtensionInfo)localObject1).faceId);
                 }
-                j = m;
-                i = k;
+                k = m;
+                j = i;
                 if (((ExtensionInfo)localObject1).fontEffect > 0)
                 {
                   localResvAttr.uint32_req_font_effect_id.set(((ExtensionInfo)localObject1).fontEffect);
-                  i = k;
-                  j = m;
+                  j = i;
+                  k = m;
                 }
               }
+              i = k;
               if ((paramMessageRecord instanceof MessageForWantGiftMsg))
               {
                 localResvAttr.want_gift_sender_uin.set(((MessageForWantGiftMsg)paramMessageRecord).wantGiftSenderUin);
-                j = 1;
+                i = 1;
               }
               localObject1 = paramMessageRecord.getExtInfoFromExtStr("robot_news_class_id");
             }
             try
             {
               localResvAttr.uint32_bot_message_class_id.set(Integer.parseInt((String)localObject1));
-              label1777:
+              label1785:
               if (((TroopRobotManager)paramQQAppInterface.getManager(202)).a(paramMessageRecord))
               {
                 localResvAttr.uint32_robot_msg_flag.set(1, true);
                 k = 1;
-                j = k;
+                i = k;
                 if ((paramMessageRecord instanceof MessageForPtt))
                 {
                   localObject1 = (MessageForPtt)paramMessageRecord;
                   new im_msg_body.Elem();
                   new im_msg_body.Text();
-                  j = k;
+                  i = k;
                   if (((MessageForPtt)localObject1).atInfoList != null)
                   {
-                    j = k;
+                    i = k;
                     if (!((MessageForPtt)localObject1).atInfoList.isEmpty())
                     {
                       paramPbSendMsgReq = (im_msg_body.RichText)((im_msg_body.MsgBody)paramPbSendMsgReq.msg_body.get()).rich_text.get();
                       MessageProtoCodec.a(paramPbSendMsgReq, ((MessageForPtt)localObject1).mInputContent, ((MessageForPtt)localObject1).atInfoList);
-                      j = k;
+                      i = k;
                       if (paramPbSendMsgReq.elems.has())
                       {
                         paramPbSendMsgReq = paramPbSendMsgReq.elems.get().iterator();
                         for (;;)
                         {
-                          j = k;
+                          i = k;
                           if (!paramPbSendMsgReq.hasNext()) {
                             break;
                           }
@@ -1121,18 +1121,21 @@ public class MessageHandlerUtils
                   }
                 }
               }
+              label2019:
+              label2025:
+              label2030:
               if (DoutuManager.a(paramMessageRecord))
               {
                 k = 1;
                 localResvAttr.uint32_doutu_msg_type.set(1);
-                j = k;
+                i = k;
                 if (QLog.isColorLevel())
                 {
                   QLog.d("Q.msg.MessageHandlerUtils", 2, "getGeneralFlagElemFromMsg [doutu] set uint32_doutu_msg_type ");
-                  j = k;
+                  i = k;
                 }
               }
-              k = j;
+              k = i;
               String str1;
               String str2;
               String str3;
@@ -1211,17 +1214,17 @@ public class MessageHandlerUtils
                   localObject2 = paramPbSendMsgReq;
                 }
               }
-              k = j;
+              k = i;
               if (localObject2 != null)
               {
                 k = 1;
                 localResvAttr.uint32_golden_msg_type.set(1);
                 localResvAttr.bytes_golden_msg_info.set(ByteStringMicro.copyFrom((byte[])localObject2));
               }
-              j = k;
+              i = k;
               if ((paramMessageRecord instanceof ChatMessage))
               {
-                j = k;
+                i = k;
                 if (TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("msg_ext_key"))) {}
               }
               try
@@ -1247,58 +1250,85 @@ public class MessageHandlerUtils
                   paramQQAppInterface.printStackTrace();
                   paramQQAppInterface = null;
                   continue;
+                  k = 0;
+                  continue;
+                  i = 0;
+                  continue;
                   paramQQAppInterface = null;
                 }
               }
-              j = k;
+              i = k;
               if (paramQQAppInterface != null)
               {
-                j = 1;
+                i = 1;
                 localResvAttr.bytes_kpl_info.set(ByteStringMicro.copyFrom(paramQQAppInterface));
               }
-              k = j;
+              k = i;
               if ((paramMessageRecord instanceof MessageForShortVideo))
               {
                 paramQQAppInterface = (MessageForShortVideo)paramMessageRecord;
-                k = j;
                 if (paramQQAppInterface.redBagType == LocalMediaInfo.REDBAG_TYPE_GET)
                 {
-                  k = 1;
+                  i = 1;
                   localResvAttr.uint32_red_envelope_type.set(paramQQAppInterface.redBagType);
                   localResvAttr.bytes_shortVideoId.set(ByteStringMicro.copyFromUtf8(paramQQAppInterface.shortVideoId));
                   QLog.d("Q.msg.MessageHandlerUtils", 1, "VideoRedbag, generalflag take redbag flag");
                 }
-              }
-              if (LoveLanguageManager.a(paramMessageRecord))
-              {
-                j = 1;
-                localResvAttr.uint32_love_language_flag.set(1);
-                k = j;
-                if (QLog.isColorLevel())
+                paramPbSendMsgReq = localResvAttr.uint32_aio_sync_to_story_flag;
+                if (paramQQAppInterface.syncToStory)
                 {
-                  QLog.d("Q.msg.MessageHandlerUtils", 2, new Object[] { "love language send msg uint32_love_language_flag = 1,msg.uid=", Long.valueOf(paramMessageRecord.uniseq) });
-                  k = j;
+                  k = 1;
+                  paramPbSendMsgReq.set(k);
+                  QLog.d("Q.msg.MessageHandlerUtils", 1, "EditAioSyncToStoryPart Video sync to story is " + paramQQAppInterface.syncToStory);
+                  k = i;
                 }
               }
-              if (k != 0)
+              else
               {
-                i = 1;
-                localGeneralFlags.bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
-              }
-              if (i != 0)
-              {
+                if ((paramMessageRecord instanceof MessageForPic))
+                {
+                  paramQQAppInterface = (MessageForPic)paramMessageRecord;
+                  paramPbSendMsgReq = localResvAttr.uint32_aio_sync_to_story_flag;
+                  if (!paramQQAppInterface.sync2Story) {
+                    break label3018;
+                  }
+                  i = 1;
+                  paramPbSendMsgReq.set(i);
+                  QLog.d("Q.msg.MessageHandlerUtils", 1, "EditAioSyncToStoryPart pic sync to story is " + paramQQAppInterface.sync2Story);
+                }
+                if (LoveLanguageManager.a(paramMessageRecord))
+                {
+                  i = 1;
+                  localResvAttr.uint32_love_language_flag.set(1);
+                  k = i;
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.d("Q.msg.MessageHandlerUtils", 2, new Object[] { "love language send msg uint32_love_language_flag = 1,msg.uid=", Long.valueOf(paramMessageRecord.uniseq) });
+                    k = i;
+                  }
+                }
+                if (k != 0)
+                {
+                  j = 1;
+                  localGeneralFlags.bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
+                }
+                if (j == 0) {
+                  break label3023;
+                }
                 paramQQAppInterface = localGeneralFlags;
                 return paramQQAppInterface;
               }
             }
             catch (Exception localException2)
             {
-              break label1777;
+              break label1785;
             }
           }
         }
       }
       label1417:
+      label3018:
+      label3023:
       int i = 0;
     }
   }

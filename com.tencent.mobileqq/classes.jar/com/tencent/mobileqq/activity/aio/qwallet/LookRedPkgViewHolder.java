@@ -16,7 +16,7 @@ public class LookRedPkgViewHolder
     if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend()) {
       this.i = 0;
     }
-    this.j = 2130843922;
+    this.j = 2130844046;
   }
   
   public boolean b()

@@ -1,6 +1,5 @@
 package dov.com.qq.im.capture.text;
 
-import amyd;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -14,6 +13,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.util.DisplayMetrics;
+import anoi;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -144,7 +144,7 @@ public class RandomSizeTextItem
       return;
     }
     super.a(paramInt, paramString);
-    paramString = a(paramInt, new amyd(this));
+    paramString = a(paramInt, new anoi(this));
     this.jdField_a_of_type_JavaLangString = paramString;
     if (0 == 0) {}
     for (paramString = a(paramString);; paramString = null)

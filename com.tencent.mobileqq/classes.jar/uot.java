@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.activity.aio.doodle.control.GifTemplatePicker.GifTemplatePickerListener;
-import com.tencent.mobileqq.util.SharePreferenceUtils;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.RotateAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
 
-public class uot
-  implements GifTemplatePicker.GifTemplatePickerListener
+class uot
+  implements Action.OnActionEndListener
 {
-  public uot(DoodlePanel paramDoodlePanel) {}
+  uot(uos paramuos) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (DoodlePanel.a(this.a) != null)
-    {
-      if (DoodlePanel.a(this.a) != null) {
-        DoodlePanel.a(this.a).setTemplateID(paramInt);
-      }
-      DoodlePanel.a(this.a);
-      SharePreferenceUtils.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
-    }
+    RotateAction localRotateAction = new RotateAction(3000, 360, 0);
+    localRotateAction.a = true;
+    this.a.a.d.a(new Action[] { localRotateAction });
   }
 }
 

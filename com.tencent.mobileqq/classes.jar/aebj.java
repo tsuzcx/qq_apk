@@ -1,37 +1,47 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView;
+import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView.Listener;
 
-class aebj
-  implements WerewolvesHandler.Callback
+public class aebj
+  implements Animator.AnimatorListener
 {
-  aebj(aebi paramaebi) {}
+  public aebj(LebaFeedsDislikeMaskView paramLebaFeedsDislikeMaskView) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt == 0)
-    {
-      paramRspBody = paramRspBody.poi_info;
-      String str = paramRspBody.bytes_uid.get().toStringUtf8();
-      this.a.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
+    LebaFeedsDislikeMaskView.a(this.a).setAlpha(0.0F);
+    LebaFeedsDislikeMaskView.a(this.a, 0);
+    this.a.invalidate();
+    LebaFeedsDislikeMaskView.a(this.a, false);
+    if (LebaFeedsDislikeMaskView.a(this.a) != null) {
+      LebaFeedsDislikeMaskView.a(this.a).f();
     }
-    do
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    LebaFeedsDislikeMaskView.a(this.a).setAlpha(1.0F);
+    LebaFeedsDislikeMaskView.a(this.a).setScaleX(1.0F);
+    LebaFeedsDislikeMaskView.a(this.a).setScaleY(1.0F);
+    if (LebaFeedsDislikeMaskView.a(this.a) <= 0)
     {
-      return;
-      this.a.a.a(paramInt, paramRspBody, "开始游戏失败");
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
+      int i = this.a.getWidth();
+      int j = this.a.getHeight();
+      LebaFeedsDislikeMaskView.b(this.a, (int)Math.sqrt(i * i + j * j));
+    }
+    LebaFeedsDislikeMaskView.a(this.a, LebaFeedsDislikeMaskView.a(this.a));
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebj
  * JD-Core Version:    0.7.0.1
  */

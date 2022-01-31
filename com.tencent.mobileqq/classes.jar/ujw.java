@@ -1,83 +1,86 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.PanelAdapter.ViewHolder;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import java.net.URI;
-import java.net.URISyntaxException;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.BabyQAIOPanel;
+import com.tencent.mobileqq.util.DisplayUtil;
+import java.util.ArrayList;
 
 public class ujw
+  extends BaseAdapter
 {
-  public static void a(PlusPanel paramPlusPanel, PanelAdapter.ViewHolder paramViewHolder)
+  public ujw(BabyQAIOPanel paramBabyQAIOPanel) {}
+  
+  public uju a(int paramInt)
   {
-    if (paramPlusPanel == null) {
-      return;
+    if ((paramInt >= 0) && (paramInt < BabyQAIOPanel.a(this.a).size())) {
+      return (uju)BabyQAIOPanel.a(this.a).get(paramInt);
     }
-    switch (paramViewHolder.a)
-    {
-    default: 
-      b(paramPlusPanel, paramViewHolder);
-      return;
-    }
-    paramViewHolder = new Bundle();
-    paramViewHolder.putString("extra.GROUP_UIN", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramViewHolder.putString("selfSet_leftViewText", "取消");
-    BulkSendMessageFragment.a(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramViewHolder);
+    return new uju();
   }
   
-  private static void b(PlusPanel paramPlusPanel, PanelAdapter.ViewHolder paramViewHolder)
+  public int getCount()
   {
-    if (paramViewHolder.a >= 0) {}
-    do
+    return BabyQAIOPanel.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
     {
-      do
-      {
-        return;
-        localObject1 = null;
-        if (paramPlusPanel.jdField_a_of_type_AndroidUtilSparseArray != null) {
-          localObject1 = (TroopAIOAppInfo)paramPlusPanel.jdField_a_of_type_AndroidUtilSparseArray.get(paramViewHolder.b);
-        }
-      } while ((localObject1 == null) || (((TroopAIOAppInfo)localObject1).url == null));
-      Object localObject1 = ((TroopAIOAppInfo)localObject1).url.replace("$UIN$", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$GCODE$", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).replace("$APPID$", String.valueOf(paramViewHolder.b));
-      int j = 0;
-      int i = j;
-      try
-      {
-        if (TextUtils.equals(new URI((String)localObject1).getScheme(), "mqqapi"))
-        {
-          localObject2 = JumpParser.a(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), (String)localObject1);
-          i = j;
-          if (localObject2 != null)
-          {
-            ((JumpAction)localObject2).b();
-            i = 1;
-          }
-        }
+      localObject = new ujv();
+      paramView = LayoutInflater.from(BabyQAIOPanel.a(this.a)).inflate(2130968626, paramViewGroup, false);
+      ((ujv)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362749));
+      ((ujv)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362960));
+      ((ujv)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362961));
+      ((ujv)localObject).b = ((ImageView)paramView.findViewById(2131362962));
+      paramView.setTag(localObject);
+      paramViewGroup = (ViewGroup)localObject;
+      localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (paramInt % 2 == 0) {
+        break label249;
       }
-      catch (URISyntaxException localURISyntaxException)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          i = j;
-        }
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(this.a.getContext(), 8.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(this.a.getContext(), 12.0F);
+      label148:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = a(paramInt);
+      paramViewGroup.jdField_a_of_type_Int = ((uju)localObject).jdField_a_of_type_Int;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((uju)localObject).jdField_a_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((uju)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      if (!((uju)localObject).jdField_a_of_type_Boolean) {
+        break label286;
       }
-    } while (i != 0);
-    localObject2 = new Intent(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("url", (String)localObject1);
-    ((Intent)localObject2).putExtra("selfSet_leftViewText", "返回");
-    paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().startActivity((Intent)localObject2);
-    paramPlusPanel.b(paramViewHolder.b);
+      paramViewGroup.b.setVisibility(0);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(this.a);
+      if (AppSetting.b) {
+        paramView.setContentDescription(((uju)localObject).jdField_a_of_type_JavaLangString);
+      }
+      return paramView;
+      paramViewGroup = (ujv)paramView.getTag();
+      break;
+      label249:
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(this.a.getContext(), 12.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(this.a.getContext(), 8.0F);
+      break label148;
+      label286:
+      paramViewGroup.b.setVisibility(8);
+    }
   }
 }
 

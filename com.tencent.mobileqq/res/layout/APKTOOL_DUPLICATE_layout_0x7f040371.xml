@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1298" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1299" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mobileqq.troop.ablum.preview.PictureFlowViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a129a" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a129b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
-    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a129c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a129d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07c0" android:layout_alignParentBottom="true">
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a129e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0181" />
-        <com.tencent.mobileqq.troop.ablum.preview.DotNumberView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a129f" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_centerInParent="true" />
-    </RelativeLayout>
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043e" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0023"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12ac" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:minHeight="30.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03a3" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eba" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1b69" />
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03a3" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ebb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12ad" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="13.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a12ac" android:layout_alignParentBottom="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow_2" />
+    </FrameLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12ae" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021dc3" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12af" android:visibility="invisible" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b45" android:scaleType="centerCrop" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
 </RelativeLayout>

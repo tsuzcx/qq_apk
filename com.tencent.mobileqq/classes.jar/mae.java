@@ -1,24 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
 public class mae
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mae(VideoFeedsAdapter paramVideoFeedsAdapter, boolean paramBoolean) {}
+  public mae(TopicShareHelper paramTopicShareHelper) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter.a(Boolean.valueOf(this.jdField_a_of_type_Boolean));
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).c();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
     }
-    while (VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).c()) {
-      return;
+    if (TopicShareHelper.a(this.a).isShowing()) {
+      TopicShareHelper.a(this.a).dismiss();
     }
-    VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).a();
   }
 }
 

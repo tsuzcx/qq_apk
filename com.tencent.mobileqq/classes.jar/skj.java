@@ -1,25 +1,42 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneShareManager;
+import java.util.ArrayList;
 
-public class skj
-  extends TextItemBuilder
+class skj
+  implements Runnable
 {
-  public skj(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  skj(ski paramski, String paramString) {}
+  
+  public void run()
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    if (this.jdField_a_of_type_Ski.jdField_a_of_type_AndroidAppActivity.isFinishing()) {}
+    do
+    {
+      return;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        QQToast.a(this.jdField_a_of_type_Ski.jdField_a_of_type_AndroidAppActivity, 1, 2131430002, 0).b(this.jdField_a_of_type_Ski.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        localArrayList.add(this.jdField_a_of_type_JavaLangString);
+      }
+      Bundle localBundle = new Bundle();
+      localBundle.putString("title", this.jdField_a_of_type_Ski.c);
+      localBundle.putString("desc", "");
+      localBundle.putLong("req_share_id", 0L);
+      localBundle.putString("detail_url", this.jdField_a_of_type_Ski.b);
+      localBundle.putStringArrayList("image_url", localArrayList);
+      QZoneShareManager.a(this.jdField_a_of_type_Ski.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ski.jdField_a_of_type_AndroidAppActivity, localBundle, null);
+    } while (!QLog.isColorLevel());
+    QLog.i("DiscussionInfoCardActivity", 2, "shareToQzone.title:" + this.jdField_a_of_type_Ski.c + " filePath:" + this.jdField_a_of_type_JavaLangString + " shareLink:" + this.jdField_a_of_type_Ski.b + " desc:" + "");
   }
-  
-  protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
-  
-  protected void b(View paramView) {}
 }
 
 

@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.PluginInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import cooperation.thirdpay.ThirdPayGate;
 
 public class anex
-  implements ProgressPieDrawable.OnProgressListener
+  implements DialogInterface.OnClickListener
 {
-  public anex(EditVideoSave paramEditVideoSave) {}
+  public anex(ThirdPayGate paramThirdPayGate, String paramString, PluginInterface paramPluginInterface, Activity paramActivity, Bundle paramBundle) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
-    }
+    ReportController.a(null, "P_CliOper", "cardpay", "", "installPlugin", "download-again", 0, 0, this.jdField_a_of_type_JavaLangString, "by download", "", "");
+    paramDialogInterface.dismiss();
+    ThirdPayGate.access$100(this.jdField_a_of_type_CooperationThirdpayThirdPayGate, this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterface, this.jdField_a_of_type_JavaLangString);
+    ThirdPayGate.access$200(this.jdField_a_of_type_CooperationThirdpayThirdPayGate, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterface, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anex
  * JD-Core Version:    0.7.0.1
  */

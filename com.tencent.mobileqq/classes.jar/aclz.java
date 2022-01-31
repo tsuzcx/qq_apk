@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
-public final class aclz
-  implements Runnable
+public class aclz
+  extends BroadcastReceiver
 {
-  public aclz(int paramInt) {}
+  public aclz(FMActivity paramFMActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    FileVideoManager.b(this.a);
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
   }
 }
 

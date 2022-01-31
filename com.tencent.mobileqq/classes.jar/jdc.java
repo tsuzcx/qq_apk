@@ -1,22 +1,23 @@
-import android.support.v4.util.LruCache;
-import com.rookery.translate.model.TransMemCache;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.utils.TraeHelper;
 
 public class jdc
-  extends LruCache
+  implements Runnable
 {
-  public jdc(TransMemCache paramTransMemCache, int paramInt)
-  {
-    super(paramInt);
-  }
+  public jdc(VideoController paramVideoController) {}
   
-  protected int a(String paramString1, String paramString2)
+  public void run()
   {
-    return paramString2.length() + 1;
+    this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.a("startTerminalSwitchTimeOutCheck");
+    TraeHelper localTraeHelper = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper;
+    TraeHelper.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    this.a.c(this.a.a().c, 50);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     jdc
  * JD-Core Version:    0.7.0.1
  */

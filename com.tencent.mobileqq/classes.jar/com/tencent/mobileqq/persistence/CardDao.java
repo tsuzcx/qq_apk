@@ -9,7 +9,7 @@ public class CardDao
 {
   public CardDao()
   {
-    this.a = 211;
+    this.a = 220;
   }
   
   public Entity a(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
@@ -142,31 +142,31 @@ public class CardDao
         paramBoolean = true;
         paramEntity.allowPeopleSee = paramBoolean;
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("allowCalInteractive"))) {
-          break label4121;
+          break label4299;
         }
         paramBoolean = true;
         label2266:
         paramEntity.allowCalInteractive = paramBoolean;
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("showOnlineFriends"))) {
-          break label4126;
+          break label4304;
         }
         paramBoolean = true;
         label2292:
         paramEntity.showOnlineFriends = paramBoolean;
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("allowClick"))) {
-          break label4131;
+          break label4309;
         }
         paramBoolean = true;
         label2318:
         paramEntity.allowClick = paramBoolean;
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("babyQSwitch"))) {
-          break label4136;
+          break label4314;
         }
         paramBoolean = true;
         label2344:
         paramEntity.babyQSwitch = paramBoolean;
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("showLightalk"))) {
-          break label4141;
+          break label4319;
         }
         paramBoolean = true;
         label2370:
@@ -174,39 +174,39 @@ public class CardDao
         paramEntity.lightalkNick = paramCursor.getString(paramCursor.getColumnIndex("lightalkNick"));
         paramEntity.lightalkId = paramCursor.getString(paramCursor.getColumnIndex("lightalkId"));
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isSuperRedDiamond"))) {
-          break label4146;
+          break label4324;
         }
         paramBoolean = true;
         label2434:
         paramEntity.isSuperRedDiamond = paramBoolean;
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isRedDiamond"))) {
-          break label4151;
+          break label4329;
         }
         paramBoolean = true;
         label2460:
         paramEntity.isRedDiamond = paramBoolean;
         paramEntity.redLevel = paramCursor.getInt(paramCursor.getColumnIndex("redLevel"));
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isSuperYellowDiamond"))) {
-          break label4156;
+          break label4334;
         }
         paramBoolean = true;
         label2505:
         paramEntity.isSuperYellowDiamond = paramBoolean;
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isYellowDiamond"))) {
-          break label4161;
+          break label4339;
         }
         paramBoolean = true;
         label2531:
         paramEntity.isYellowDiamond = paramBoolean;
         paramEntity.yellowLevel = paramCursor.getInt(paramCursor.getColumnIndex("yellowLevel"));
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isSuperGreenDiamond"))) {
-          break label4166;
+          break label4344;
         }
         paramBoolean = true;
         label2576:
         paramEntity.isSuperGreenDiamond = paramBoolean;
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isGreenDiamond"))) {
-          break label4171;
+          break label4349;
         }
         paramBoolean = true;
         label2602:
@@ -232,19 +232,19 @@ public class CardDao
         paramEntity.busiEntry = paramCursor.getString(paramCursor.getColumnIndex("busiEntry"));
         paramEntity.favoriteSource = paramCursor.getInt(paramCursor.getColumnIndex("favoriteSource"));
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("visibleMusicPendant"))) {
-          break label4176;
+          break label4354;
         }
         paramBoolean = true;
         label3008:
         paramEntity.visibleMusicPendant = paramBoolean;
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("autoPlayMusicPendant"))) {
-          break label4181;
+          break label4359;
         }
         paramBoolean = true;
         label3034:
         paramEntity.autoPlayMusicPendant = paramBoolean;
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("showRedPointMusicPendant"))) {
-          break label4186;
+          break label4364;
         }
         paramBoolean = true;
         label3060:
@@ -265,14 +265,14 @@ public class CardDao
         paramEntity.mNowShowJumpUrl = paramCursor.getString(paramCursor.getColumnIndex("mNowShowJumpUrl"));
         paramEntity.vCoverInfo = paramCursor.getBlob(paramCursor.getColumnIndex("vCoverInfo"));
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("videoHeadFlag"))) {
-          break label4191;
+          break label4369;
         }
         paramBoolean = true;
         label3372:
         paramEntity.videoHeadFlag = paramBoolean;
         paramEntity.videoHeadUrl = paramCursor.getString(paramCursor.getColumnIndex("videoHeadUrl"));
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("medalSwitchDisable"))) {
-          break label4196;
+          break label4374;
         }
         paramBoolean = true;
         label3417:
@@ -291,28 +291,10 @@ public class CardDao
         paramEntity.namePlateOfKingLoginTime = paramCursor.getLong(paramCursor.getColumnIndex("namePlateOfKingLoginTime"));
         paramEntity.namePlateOfKingDan = paramCursor.getInt(paramCursor.getColumnIndex("namePlateOfKingDan"));
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("namePlateOfKingDanDisplatSwitch"))) {
-          break label4201;
+          break label4379;
         }
-      }
-      label4121:
-      label4126:
-      label4131:
-      label4136:
-      label4141:
-      label4146:
-      label4151:
-      label4156:
-      label4161:
-      label4166:
-      label4171:
-      label4176:
-      label4181:
-      label4186:
-      label4191:
-      label4196:
-      label4201:
-      for (paramBoolean = bool1;; paramBoolean = false)
-      {
+        paramBoolean = true;
+        label3690:
         paramEntity.namePlateOfKingDanDisplatSwitch = paramBoolean;
         paramEntity.vPersonalityLabelV2 = paramCursor.getBlob(paramCursor.getColumnIndex("vPersonalityLabelV2"));
         paramEntity.cardType = paramCursor.getInt(paramCursor.getColumnIndex("cardType"));
@@ -336,29 +318,62 @@ public class CardDao
         paramEntity.strCampusCollege = paramCursor.getString(paramCursor.getColumnIndex("strCampusCollege"));
         paramEntity.strCampusClass = paramCursor.getString(paramCursor.getColumnIndex("strCampusClass"));
         paramEntity.strLastCampusFeeds = paramCursor.getString(paramCursor.getColumnIndex("strLastCampusFeeds"));
+        paramEntity.popularity = paramCursor.getInt(paramCursor.getColumnIndex("popularity"));
+        paramEntity.declaration = paramCursor.getString(paramCursor.getColumnIndex("declaration"));
+        paramEntity.voiceUrl = paramCursor.getString(paramCursor.getColumnIndex("voiceUrl"));
+        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isShowCard"))) {
+          break label4384;
+        }
+      }
+      label4354:
+      label4359:
+      label4364:
+      label4369:
+      label4374:
+      label4379:
+      label4384:
+      for (paramBoolean = bool1;; paramBoolean = false)
+      {
+        paramEntity.isShowCard = paramBoolean;
+        paramEntity.updateTime = paramCursor.getLong(paramCursor.getColumnIndex("updateTime"));
+        paramEntity.extendFriendFlag = paramCursor.getInt(paramCursor.getColumnIndex("extendFriendFlag"));
+        paramEntity.extendFriendVoiceDuration = paramCursor.getInt(paramCursor.getColumnIndex("extendFriendVoiceDuration"));
+        paramEntity.extendFriendEntryContact = paramCursor.getShort(paramCursor.getColumnIndex("extendFriendEntryContact"));
+        paramEntity.extendFriendEntryAddFriend = paramCursor.getShort(paramCursor.getColumnIndex("extendFriendEntryAddFriend"));
         return paramEntity;
         paramBoolean = false;
         break;
+        label4299:
         paramBoolean = false;
         break label2266;
+        label4304:
         paramBoolean = false;
         break label2292;
+        label4309:
         paramBoolean = false;
         break label2318;
+        label4314:
         paramBoolean = false;
         break label2344;
+        label4319:
         paramBoolean = false;
         break label2370;
+        label4324:
         paramBoolean = false;
         break label2434;
+        label4329:
         paramBoolean = false;
         break label2460;
+        label4334:
         paramBoolean = false;
         break label2505;
+        label4339:
         paramBoolean = false;
         break label2531;
+        label4344:
         paramBoolean = false;
         break label2576;
+        label4349:
         paramBoolean = false;
         break label2602;
         paramBoolean = false;
@@ -371,6 +386,8 @@ public class CardDao
         break label3372;
         paramBoolean = false;
         break label3417;
+        paramBoolean = false;
+        break label3690;
       }
     }
     int i = paramCursor.getColumnIndex("uin");
@@ -379,1951 +396,2035 @@ public class CardDao
       paramNoColumnErrorHandler.a(new NoColumnError("uin", String.class));
       i = paramCursor.getColumnIndex("strNick");
       if (i != -1) {
-        break label11926;
+        break label12442;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strNick", String.class));
-      label4276:
+      label4459:
       i = paramCursor.getColumnIndex("shGender");
       if (i != -1) {
-        break label11941;
+        break label12457;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("shGender", Short.TYPE));
-      label4311:
+      label4494:
       i = paramCursor.getColumnIndex("shAge");
       if (i != -1) {
-        break label11956;
+        break label12472;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("shAge", Short.TYPE));
-      label4346:
+      label4529:
       i = paramCursor.getColumnIndex("nFaceID");
       if (i != -1) {
-        break label11971;
+        break label12487;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("nFaceID", Integer.TYPE));
-      label4381:
+      label4564:
       i = paramCursor.getColumnIndex("strCertificationInfo");
       if (i != -1) {
-        break label11986;
+        break label12502;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strCertificationInfo", String.class));
-      label4416:
+      label4599:
       i = paramCursor.getColumnIndex("shType");
       if (i != -1) {
-        break label12001;
+        break label12517;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("shType", Short.TYPE));
-      label4451:
+      label4634:
       i = paramCursor.getColumnIndex("vContent");
       if (i != -1) {
-        break label12016;
+        break label12532;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vContent", [B.class));
-      label4486:
+      label4669:
       i = paramCursor.getColumnIndex("strSign");
       if (i != -1) {
-        break label12031;
+        break label12547;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strSign", String.class));
-      label4521:
+      label4704:
       i = paramCursor.getColumnIndex("strCompany");
       if (i != -1) {
-        break label12046;
+        break label12562;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strCompany", String.class));
-      label4556:
+      label4739:
       i = paramCursor.getColumnIndex("strSchool");
       if (i != -1) {
-        break label12061;
+        break label12577;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strSchool", String.class));
-      label4591:
+      label4774:
       i = paramCursor.getColumnIndex("uFaceTimeStamp");
       if (i != -1) {
-        break label12076;
+        break label12592;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("uFaceTimeStamp", Integer.TYPE));
-      label4626:
+      label4809:
       i = paramCursor.getColumnIndex("vQQFaceID");
       if (i != -1) {
-        break label12091;
+        break label12607;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vQQFaceID", [B.class));
-      label4661:
+      label4844:
       i = paramCursor.getColumnIndex("strReMark");
       if (i != -1) {
-        break label12106;
+        break label12622;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strReMark", String.class));
-      label4696:
+      label4879:
       i = paramCursor.getColumnIndex("bWeiboInfo");
       if (i != -1) {
-        break label12121;
+        break label12637;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("bWeiboInfo", Byte.TYPE));
-      label4731:
+      label4914:
       i = paramCursor.getColumnIndex("bQzoneInfo");
       if (i != -1) {
-        break label12137;
+        break label12653;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("bQzoneInfo", Byte.TYPE));
-      label4766:
+      label4949:
       i = paramCursor.getColumnIndex("nSameFriendsNum");
-      if (i != -1) {
-        break label12153;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("nSameFriendsNum", Integer.TYPE));
-      label4801:
-      i = paramCursor.getColumnIndex("strCompanySame");
-      if (i != -1) {
-        break label12168;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strCompanySame", String.class));
-      label4836:
-      i = paramCursor.getColumnIndex("strSchoolSame");
-      if (i != -1) {
-        break label12183;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strSchoolSame", String.class));
-      label4871:
-      i = paramCursor.getColumnIndex("lCardShowNum");
-      if (i != -1) {
-        break label12198;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("lCardShowNum", Long.TYPE));
-      label4906:
-      i = paramCursor.getColumnIndex("bSingle");
-      if (i != -1) {
-        break label12213;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("bSingle", Byte.TYPE));
-      label4941:
-      i = paramCursor.getColumnIndex("lVisitCount");
-      if (i != -1) {
-        break label12229;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("lVisitCount", Long.TYPE));
-      label4976:
-      i = paramCursor.getColumnIndex("lVoteCount");
-      if (i != -1) {
-        break label12244;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("lVoteCount", Long.TYPE));
-      label5011:
-      i = paramCursor.getColumnIndex("tagInfosByte");
-      if (i != -1) {
-        break label12259;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("tagInfosByte", [B.class));
-      label5046:
-      i = paramCursor.getColumnIndex("eUserIdentityType");
-      if (i != -1) {
-        break label12274;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("eUserIdentityType", Byte.TYPE));
-      label5081:
-      i = paramCursor.getColumnIndex("vBackground");
-      if (i != -1) {
-        break label12290;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("vBackground", [B.class));
-      label5116:
-      i = paramCursor.getColumnIndex("labelInfoBytes");
-      if (i != -1) {
-        break label12305;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("labelInfoBytes", [B.class));
-      label5151:
-      i = paramCursor.getColumnIndex("age");
-      if (i != -1) {
-        break label12320;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("age", Byte.TYPE));
-      label5186:
-      i = paramCursor.getColumnIndex("constellation");
-      if (i != -1) {
-        break label12336;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("constellation", Integer.TYPE));
-      label5221:
-      i = paramCursor.getColumnIndex("pyFaceUrl");
-      if (i != -1) {
-        break label12351;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("pyFaceUrl", String.class));
-      label5256:
-      i = paramCursor.getColumnIndex("location");
-      if (i != -1) {
-        break label12366;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("location", String.class));
-      label5291:
-      i = paramCursor.getColumnIndex("bVoted");
-      if (i != -1) {
-        break label12381;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("bVoted", Byte.TYPE));
-      label5326:
-      i = paramCursor.getColumnIndex("bFavorited");
-      if (i != -1) {
-        break label12397;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("bFavorited", Byte.TYPE));
-      label5361:
-      i = paramCursor.getColumnIndex("iVoteIncrement");
-      if (i != -1) {
-        break label12413;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("iVoteIncrement", Integer.TYPE));
-      label5396:
-      i = paramCursor.getColumnIndex("strJoinHexAlbumFileKey");
-      if (i != -1) {
-        break label12428;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strJoinHexAlbumFileKey", String.class));
-      label5431:
-      i = paramCursor.getColumnIndex("iFaceNum");
-      if (i != -1) {
-        break label12443;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("iFaceNum", Integer.TYPE));
-      label5466:
-      i = paramCursor.getColumnIndex("cSqqLevel");
-      if (i != -1) {
-        break label12458;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("cSqqLevel", Byte.TYPE));
-      label5501:
-      i = paramCursor.getColumnIndex("iQQLevel");
-      if (i != -1) {
-        break label12474;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("iQQLevel", Integer.TYPE));
-      label5536:
-      i = paramCursor.getColumnIndex("strProvince");
-      if (i != -1) {
-        break label12489;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strProvince", String.class));
-      label5571:
-      i = paramCursor.getColumnIndex("strCity");
-      if (i != -1) {
-        break label12504;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strCity", String.class));
-      label5606:
-      i = paramCursor.getColumnIndex("strCountry");
-      if (i != -1) {
-        break label12519;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strCountry", String.class));
-      label5641:
-      i = paramCursor.getColumnIndex("lBirthday");
-      if (i != -1) {
-        break label12534;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("lBirthday", Long.TYPE));
-      label5676:
-      i = paramCursor.getColumnIndex("strLocationCodes");
-      if (i != -1) {
-        break label12549;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strLocationCodes", String.class));
-      label5711:
-      i = paramCursor.getColumnIndex("strLocationDesc");
-      if (i != -1) {
-        break label12564;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strLocationDesc", String.class));
-      label5746:
-      i = paramCursor.getColumnIndex("strHometownCodes");
-      if (i != -1) {
-        break label12579;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strHometownCodes", String.class));
-      label5781:
-      i = paramCursor.getColumnIndex("strHometownDesc");
-      if (i != -1) {
-        break label12594;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strHometownDesc", String.class));
-      label5816:
-      i = paramCursor.getColumnIndex("strEmail");
-      if (i != -1) {
-        break label12609;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strEmail", String.class));
-      label5851:
-      i = paramCursor.getColumnIndex("strPersonalNote");
-      if (i != -1) {
-        break label12624;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("strPersonalNote", String.class));
-      label5886:
-      i = paramCursor.getColumnIndex("iProfession");
-      if (i != -1) {
-        break label12639;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("iProfession", Integer.TYPE));
-      label5921:
-      i = paramCursor.getColumnIndex("bindPhoneInfo");
-      if (i != -1) {
-        break label12654;
-      }
-      paramNoColumnErrorHandler.a(new NoColumnError("bindPhoneInfo", String.class));
-      label5956:
-      i = paramCursor.getColumnIndex("bCardInfo");
       if (i != -1) {
         break label12669;
       }
-      paramNoColumnErrorHandler.a(new NoColumnError("bCardInfo", [B.class));
-      label5991:
-      i = paramCursor.getColumnIndex("strTroopName");
+      paramNoColumnErrorHandler.a(new NoColumnError("nSameFriendsNum", Integer.TYPE));
+      label4984:
+      i = paramCursor.getColumnIndex("strCompanySame");
       if (i != -1) {
         break label12684;
       }
-      paramNoColumnErrorHandler.a(new NoColumnError("strTroopName", String.class));
-      label6026:
-      i = paramCursor.getColumnIndex("strTroopNick");
+      paramNoColumnErrorHandler.a(new NoColumnError("strCompanySame", String.class));
+      label5019:
+      i = paramCursor.getColumnIndex("strSchoolSame");
       if (i != -1) {
         break label12699;
       }
-      paramNoColumnErrorHandler.a(new NoColumnError("strTroopNick", String.class));
-      label6063:
-      i = paramCursor.getColumnIndex("strMobile");
+      paramNoColumnErrorHandler.a(new NoColumnError("strSchoolSame", String.class));
+      label5054:
+      i = paramCursor.getColumnIndex("lCardShowNum");
       if (i != -1) {
         break label12714;
       }
-      paramNoColumnErrorHandler.a(new NoColumnError("strMobile", String.class));
-      label6100:
-      i = paramCursor.getColumnIndex("strContactName");
+      paramNoColumnErrorHandler.a(new NoColumnError("lCardShowNum", Long.TYPE));
+      label5089:
+      i = paramCursor.getColumnIndex("bSingle");
       if (i != -1) {
         break label12729;
       }
+      paramNoColumnErrorHandler.a(new NoColumnError("bSingle", Byte.TYPE));
+      label5124:
+      i = paramCursor.getColumnIndex("lVisitCount");
+      if (i != -1) {
+        break label12745;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("lVisitCount", Long.TYPE));
+      label5159:
+      i = paramCursor.getColumnIndex("lVoteCount");
+      if (i != -1) {
+        break label12760;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("lVoteCount", Long.TYPE));
+      label5194:
+      i = paramCursor.getColumnIndex("tagInfosByte");
+      if (i != -1) {
+        break label12775;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("tagInfosByte", [B.class));
+      label5229:
+      i = paramCursor.getColumnIndex("eUserIdentityType");
+      if (i != -1) {
+        break label12790;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("eUserIdentityType", Byte.TYPE));
+      label5264:
+      i = paramCursor.getColumnIndex("vBackground");
+      if (i != -1) {
+        break label12806;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("vBackground", [B.class));
+      label5299:
+      i = paramCursor.getColumnIndex("labelInfoBytes");
+      if (i != -1) {
+        break label12821;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("labelInfoBytes", [B.class));
+      label5334:
+      i = paramCursor.getColumnIndex("age");
+      if (i != -1) {
+        break label12836;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("age", Byte.TYPE));
+      label5369:
+      i = paramCursor.getColumnIndex("constellation");
+      if (i != -1) {
+        break label12852;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("constellation", Integer.TYPE));
+      label5404:
+      i = paramCursor.getColumnIndex("pyFaceUrl");
+      if (i != -1) {
+        break label12867;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("pyFaceUrl", String.class));
+      label5439:
+      i = paramCursor.getColumnIndex("location");
+      if (i != -1) {
+        break label12882;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("location", String.class));
+      label5474:
+      i = paramCursor.getColumnIndex("bVoted");
+      if (i != -1) {
+        break label12897;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("bVoted", Byte.TYPE));
+      label5509:
+      i = paramCursor.getColumnIndex("bFavorited");
+      if (i != -1) {
+        break label12913;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("bFavorited", Byte.TYPE));
+      label5544:
+      i = paramCursor.getColumnIndex("iVoteIncrement");
+      if (i != -1) {
+        break label12929;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("iVoteIncrement", Integer.TYPE));
+      label5579:
+      i = paramCursor.getColumnIndex("strJoinHexAlbumFileKey");
+      if (i != -1) {
+        break label12944;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strJoinHexAlbumFileKey", String.class));
+      label5614:
+      i = paramCursor.getColumnIndex("iFaceNum");
+      if (i != -1) {
+        break label12959;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("iFaceNum", Integer.TYPE));
+      label5649:
+      i = paramCursor.getColumnIndex("cSqqLevel");
+      if (i != -1) {
+        break label12974;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("cSqqLevel", Byte.TYPE));
+      label5684:
+      i = paramCursor.getColumnIndex("iQQLevel");
+      if (i != -1) {
+        break label12990;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("iQQLevel", Integer.TYPE));
+      label5719:
+      i = paramCursor.getColumnIndex("strProvince");
+      if (i != -1) {
+        break label13005;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strProvince", String.class));
+      label5754:
+      i = paramCursor.getColumnIndex("strCity");
+      if (i != -1) {
+        break label13020;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strCity", String.class));
+      label5789:
+      i = paramCursor.getColumnIndex("strCountry");
+      if (i != -1) {
+        break label13035;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strCountry", String.class));
+      label5824:
+      i = paramCursor.getColumnIndex("lBirthday");
+      if (i != -1) {
+        break label13050;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("lBirthday", Long.TYPE));
+      label5859:
+      i = paramCursor.getColumnIndex("strLocationCodes");
+      if (i != -1) {
+        break label13065;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strLocationCodes", String.class));
+      label5894:
+      i = paramCursor.getColumnIndex("strLocationDesc");
+      if (i != -1) {
+        break label13080;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strLocationDesc", String.class));
+      label5929:
+      i = paramCursor.getColumnIndex("strHometownCodes");
+      if (i != -1) {
+        break label13095;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strHometownCodes", String.class));
+      label5964:
+      i = paramCursor.getColumnIndex("strHometownDesc");
+      if (i != -1) {
+        break label13110;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strHometownDesc", String.class));
+      label5999:
+      i = paramCursor.getColumnIndex("strEmail");
+      if (i != -1) {
+        break label13125;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strEmail", String.class));
+      label6034:
+      i = paramCursor.getColumnIndex("strPersonalNote");
+      if (i != -1) {
+        break label13140;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strPersonalNote", String.class));
+      label6069:
+      i = paramCursor.getColumnIndex("iProfession");
+      if (i != -1) {
+        break label13155;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("iProfession", Integer.TYPE));
+      label6104:
+      i = paramCursor.getColumnIndex("bindPhoneInfo");
+      if (i != -1) {
+        break label13170;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("bindPhoneInfo", String.class));
+      label6139:
+      i = paramCursor.getColumnIndex("bCardInfo");
+      if (i != -1) {
+        break label13185;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("bCardInfo", [B.class));
+      label6174:
+      i = paramCursor.getColumnIndex("strTroopName");
+      if (i != -1) {
+        break label13200;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strTroopName", String.class));
+      label6209:
+      i = paramCursor.getColumnIndex("strTroopNick");
+      if (i != -1) {
+        break label13215;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strTroopNick", String.class));
+      label6246:
+      i = paramCursor.getColumnIndex("strMobile");
+      if (i != -1) {
+        break label13230;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strMobile", String.class));
+      label6283:
+      i = paramCursor.getColumnIndex("strContactName");
+      if (i != -1) {
+        break label13245;
+      }
       paramNoColumnErrorHandler.a(new NoColumnError("strContactName", String.class));
-      label6137:
+      label6320:
       i = paramCursor.getColumnIndex("ulShowControl");
       if (i != -1) {
-        break label12744;
+        break label13260;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("ulShowControl", Integer.TYPE));
-      label6174:
+      label6357:
       i = paramCursor.getColumnIndex("feedPreviewTime");
       if (i != -1) {
-        break label12759;
+        break label13275;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("feedPreviewTime", Long.TYPE));
-      label6211:
+      label6394:
       i = paramCursor.getColumnIndex("strQzoneFeedsDesc");
       if (i != -1) {
-        break label12774;
+        break label13290;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strQzoneFeedsDesc", String.class));
-      label6248:
+      label6431:
       i = paramCursor.getColumnIndex("strSpaceName");
       if (i != -1) {
-        break label12789;
+        break label13305;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strSpaceName", String.class));
-      label6285:
+      label6468:
       i = paramCursor.getColumnIndex("strQzoneHeader");
       if (i != -1) {
-        break label12804;
+        break label13320;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strQzoneHeader", String.class));
-      label6322:
+      label6505:
       i = paramCursor.getColumnIndex("vQzonePhotos");
       if (i != -1) {
-        break label12819;
+        break label13335;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vQzonePhotos", [B.class));
-      label6359:
+      label6542:
       i = paramCursor.getColumnIndex("vQzoneCoverInfo");
       if (i != -1) {
-        break label12834;
+        break label13350;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vQzoneCoverInfo", [B.class));
-      label6396:
+      label6579:
       i = paramCursor.getColumnIndex("strStatus");
       if (i != -1) {
-        break label12849;
+        break label13365;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strStatus", String.class));
-      label6433:
+      label6616:
       i = paramCursor.getColumnIndex("strAutoRemark");
       if (i != -1) {
-        break label12864;
+        break label13380;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strAutoRemark", String.class));
-      label6470:
+      label6653:
       i = paramCursor.getColumnIndex("vSeed");
       if (i != -1) {
-        break label12879;
+        break label13395;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vSeed", [B.class));
-      label6507:
+      label6690:
       i = paramCursor.getColumnIndex("vCookies");
       if (i != -1) {
-        break label12894;
+        break label13410;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vCookies", [B.class));
-      label6544:
+      label6727:
       i = paramCursor.getColumnIndex("bQQVipOpen");
       if (i != -1) {
-        break label12909;
+        break label13425;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("bQQVipOpen", Byte.TYPE));
-      label6581:
+      label6764:
       i = paramCursor.getColumnIndex("iQQVipType");
       if (i != -1) {
-        break label12925;
+        break label13441;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iQQVipType", Integer.TYPE));
-      label6618:
+      label6801:
       i = paramCursor.getColumnIndex("iQQVipLevel");
       if (i != -1) {
-        break label12940;
+        break label13456;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iQQVipLevel", Integer.TYPE));
-      label6655:
+      label6838:
       i = paramCursor.getColumnIndex("bSuperVipOpen");
       if (i != -1) {
-        break label12955;
+        break label13471;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("bSuperVipOpen", Byte.TYPE));
-      label6692:
+      label6875:
       i = paramCursor.getColumnIndex("iSuperVipType");
       if (i != -1) {
-        break label12971;
+        break label13487;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iSuperVipType", Integer.TYPE));
-      label6729:
+      label6912:
       i = paramCursor.getColumnIndex("iSuperVipLevel");
       if (i != -1) {
-        break label12986;
+        break label13502;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iSuperVipLevel", Integer.TYPE));
-      label6766:
+      label6949:
       i = paramCursor.getColumnIndex("bSuperQQOpen");
       if (i != -1) {
-        break label13001;
+        break label13517;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("bSuperQQOpen", Byte.TYPE));
-      label6803:
+      label6986:
       i = paramCursor.getColumnIndex("iSuperQQType");
       if (i != -1) {
-        break label13017;
+        break label13533;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iSuperQQType", Integer.TYPE));
-      label6840:
+      label7023:
       i = paramCursor.getColumnIndex("iSuperQQLevel");
       if (i != -1) {
-        break label13032;
+        break label13548;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iSuperQQLevel", Integer.TYPE));
-      label6877:
+      label7060:
       i = paramCursor.getColumnIndex("bHollywoodVipOpen");
       if (i != -1) {
-        break label13047;
+        break label13563;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("bHollywoodVipOpen", Byte.TYPE));
-      label6914:
+      label7097:
       i = paramCursor.getColumnIndex("iHollywoodVipType");
       if (i != -1) {
-        break label13063;
+        break label13579;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iHollywoodVipType", Integer.TYPE));
-      label6951:
+      label7134:
       i = paramCursor.getColumnIndex("iHollywoodVipLevel");
       if (i != -1) {
-        break label13078;
+        break label13594;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iHollywoodVipLevel", Integer.TYPE));
-      label6988:
+      label7171:
       i = paramCursor.getColumnIndex("strShowName");
       if (i != -1) {
-        break label13093;
+        break label13609;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strShowName", String.class));
-      label7025:
+      label7208:
       i = paramCursor.getColumnIndex("strVoiceFilekey");
       if (i != -1) {
-        break label13108;
+        break label13624;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strVoiceFilekey", String.class));
-      label7062:
+      label7245:
       i = paramCursor.getColumnIndex("shDuration");
       if (i != -1) {
-        break label13123;
+        break label13639;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("shDuration", Short.TYPE));
-      label7099:
+      label7282:
       i = paramCursor.getColumnIndex("bRead");
       if (i != -1) {
-        break label13138;
+        break label13654;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("bRead", Byte.TYPE));
-      label7136:
+      label7319:
       i = paramCursor.getColumnIndex("strUrl");
       if (i != -1) {
-        break label13154;
+        break label13670;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strUrl", String.class));
-      label7173:
+      label7356:
       i = paramCursor.getColumnIndex("vRichSign");
       if (i != -1) {
-        break label13169;
+        break label13685;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vRichSign", [B.class));
-      label7210:
+      label7393:
       i = paramCursor.getColumnIndex("lSignModifyTime");
       if (i != -1) {
-        break label13184;
+        break label13700;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lSignModifyTime", Long.TYPE));
-      label7247:
+      label7430:
       i = paramCursor.getColumnIndex("nLastGameFlag");
       if (i != -1) {
-        break label13199;
+        break label13715;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("nLastGameFlag", Integer.TYPE));
-      label7284:
+      label7467:
       i = paramCursor.getColumnIndex("strGameLogoUrl_1");
       if (i != -1) {
-        break label13214;
+        break label13730;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameLogoUrl_1", String.class));
-      label7321:
+      label7504:
       i = paramCursor.getColumnIndex("strGameLogoUrl_2");
       if (i != -1) {
-        break label13229;
+        break label13745;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameLogoUrl_2", String.class));
-      label7358:
+      label7541:
       i = paramCursor.getColumnIndex("strGameLogoUrl_3");
       if (i != -1) {
-        break label13244;
+        break label13760;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameLogoUrl_3", String.class));
-      label7395:
+      label7578:
       i = paramCursor.getColumnIndex("strGameLogoUrl_4");
       if (i != -1) {
-        break label13259;
+        break label13775;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameLogoUrl_4", String.class));
-      label7432:
+      label7615:
       i = paramCursor.getColumnIndex("strGameLogoKey_1");
       if (i != -1) {
-        break label13274;
+        break label13790;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameLogoKey_1", String.class));
-      label7469:
+      label7652:
       i = paramCursor.getColumnIndex("strGameLogoKey_2");
       if (i != -1) {
-        break label13289;
+        break label13805;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameLogoKey_2", String.class));
-      label7506:
+      label7689:
       i = paramCursor.getColumnIndex("strGameLogoKey_3");
       if (i != -1) {
-        break label13304;
+        break label13820;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameLogoKey_3", String.class));
-      label7543:
+      label7726:
       i = paramCursor.getColumnIndex("strGameLogoKey_4");
       if (i != -1) {
-        break label13319;
+        break label13835;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameLogoKey_4", String.class));
-      label7580:
+      label7763:
       i = paramCursor.getColumnIndex("strGameName_1");
       if (i != -1) {
-        break label13334;
+        break label13850;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameName_1", String.class));
-      label7617:
+      label7800:
       i = paramCursor.getColumnIndex("strGameName_2");
       if (i != -1) {
-        break label13349;
+        break label13865;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameName_2", String.class));
-      label7654:
+      label7837:
       i = paramCursor.getColumnIndex("strGameName_3");
       if (i != -1) {
-        break label13364;
+        break label13880;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameName_3", String.class));
-      label7691:
+      label7874:
       i = paramCursor.getColumnIndex("strGameName_4");
       if (i != -1) {
-        break label13379;
+        break label13895;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameName_4", String.class));
-      label7728:
+      label7911:
       i = paramCursor.getColumnIndex("strGameAppid_1");
       if (i != -1) {
-        break label13394;
+        break label13910;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameAppid_1", String.class));
-      label7765:
+      label7948:
       i = paramCursor.getColumnIndex("strGameAppid_2");
       if (i != -1) {
-        break label13409;
+        break label13925;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameAppid_2", String.class));
-      label7802:
+      label7985:
       i = paramCursor.getColumnIndex("strGameAppid_3");
       if (i != -1) {
-        break label13424;
+        break label13940;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameAppid_3", String.class));
-      label7839:
+      label8022:
       i = paramCursor.getColumnIndex("strGameAppid_4");
       if (i != -1) {
-        break label13439;
+        break label13955;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strGameAppid_4", String.class));
-      label7876:
+      label8059:
       i = paramCursor.getColumnIndex("strProfileUrl");
       if (i != -1) {
-        break label13454;
+        break label13970;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strProfileUrl", String.class));
-      label7913:
+      label8096:
       i = paramCursor.getColumnIndex("nStarFansFlag");
       if (i != -1) {
-        break label13469;
+        break label13985;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("nStarFansFlag", Integer.TYPE));
-      label7950:
+      label8133:
       i = paramCursor.getColumnIndex("strStarPicUrl_0");
       if (i != -1) {
-        break label13484;
+        break label14000;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strStarPicUrl_0", String.class));
-      label7987:
+      label8170:
       i = paramCursor.getColumnIndex("strStarPicUrl_1");
       if (i != -1) {
-        break label13499;
+        break label14015;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strStarPicUrl_1", String.class));
-      label8024:
+      label8207:
       i = paramCursor.getColumnIndex("strStarPicUrl_2");
       if (i != -1) {
-        break label13514;
+        break label14030;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strStarPicUrl_2", String.class));
-      label8061:
+      label8244:
       i = paramCursor.getColumnIndex("strStarLvUrl_0");
       if (i != -1) {
-        break label13529;
+        break label14045;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strStarLvUrl_0", String.class));
-      label8098:
+      label8281:
       i = paramCursor.getColumnIndex("strStarLvUrl_1");
       if (i != -1) {
-        break label13544;
+        break label14060;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strStarLvUrl_1", String.class));
-      label8135:
+      label8318:
       i = paramCursor.getColumnIndex("strStarLvUrl_2");
       if (i != -1) {
-        break label13559;
+        break label14075;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strStarLvUrl_2", String.class));
-      label8172:
+      label8355:
       i = paramCursor.getColumnIndex("strStarLogoUrl");
       if (i != -1) {
-        break label13574;
+        break label14090;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strStarLogoUrl", String.class));
-      label8209:
+      label8392:
       i = paramCursor.getColumnIndex("starFansJumpUrl");
       if (i != -1) {
-        break label13589;
+        break label14105;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("starFansJumpUrl", String.class));
-      label8246:
+      label8429:
       i = paramCursor.getColumnIndex("lUserFlag");
       if (i != -1) {
-        break label13604;
+        break label14120;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lUserFlag", Long.TYPE));
-      label8283:
+      label8466:
       i = paramCursor.getColumnIndex("lLoginDays");
       if (i != -1) {
-        break label13619;
+        break label14135;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lLoginDays", Long.TYPE));
-      label8320:
+      label8503:
       i = paramCursor.getColumnIndex("strLoginDaysDesc");
       if (i != -1) {
-        break label13634;
+        break label14150;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strLoginDaysDesc", String.class));
-      label8357:
+      label8540:
       i = paramCursor.getColumnIndex("lQQMasterLogindays");
       if (i != -1) {
-        break label13649;
+        break label14165;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lQQMasterLogindays", Long.TYPE));
-      label8394:
+      label8577:
       i = paramCursor.getColumnIndex("iXManScene1DelayTime");
       if (i != -1) {
-        break label13664;
+        break label14180;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iXManScene1DelayTime", Integer.TYPE));
-      label8431:
+      label8614:
       i = paramCursor.getColumnIndex("iXManScene2DelayTime");
       if (i != -1) {
-        break label13679;
+        break label14195;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iXManScene2DelayTime", Integer.TYPE));
-      label8468:
+      label8651:
       i = paramCursor.getColumnIndex("allowPeopleSee");
       if (i != -1) {
-        break label13694;
+        break label14210;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("allowPeopleSee", Boolean.TYPE));
       i = paramCursor.getColumnIndex("allowCalInteractive");
       if (i != -1) {
-        break label13721;
+        break label14237;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("allowCalInteractive", Boolean.TYPE));
       i = paramCursor.getColumnIndex("showOnlineFriends");
       if (i != -1) {
-        break label13748;
+        break label14264;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("showOnlineFriends", Boolean.TYPE));
       i = paramCursor.getColumnIndex("allowClick");
       if (i != -1) {
-        break label13775;
+        break label14291;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("allowClick", Boolean.TYPE));
       i = paramCursor.getColumnIndex("babyQSwitch");
       if (i != -1) {
-        break label13802;
+        break label14318;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("babyQSwitch", Boolean.TYPE));
       i = paramCursor.getColumnIndex("showLightalk");
       if (i != -1) {
-        break label13829;
+        break label14345;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("showLightalk", Boolean.TYPE));
       i = paramCursor.getColumnIndex("lightalkNick");
       if (i != -1) {
-        break label13856;
+        break label14372;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lightalkNick", String.class));
-      label8727:
+      label8910:
       i = paramCursor.getColumnIndex("lightalkId");
       if (i != -1) {
-        break label13871;
+        break label14387;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lightalkId", String.class));
-      label8764:
+      label8947:
       i = paramCursor.getColumnIndex("isSuperRedDiamond");
       if (i != -1) {
-        break label13886;
+        break label14402;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("isSuperRedDiamond", Boolean.TYPE));
       i = paramCursor.getColumnIndex("isRedDiamond");
       if (i != -1) {
-        break label13913;
+        break label14429;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("isRedDiamond", Boolean.TYPE));
       i = paramCursor.getColumnIndex("redLevel");
       if (i != -1) {
-        break label13940;
+        break label14456;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("redLevel", Integer.TYPE));
-      label8875:
+      label9058:
       i = paramCursor.getColumnIndex("isSuperYellowDiamond");
       if (i != -1) {
-        break label13955;
+        break label14471;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("isSuperYellowDiamond", Boolean.TYPE));
       i = paramCursor.getColumnIndex("isYellowDiamond");
       if (i != -1) {
-        break label13982;
+        break label14498;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("isYellowDiamond", Boolean.TYPE));
       i = paramCursor.getColumnIndex("yellowLevel");
       if (i != -1) {
-        break label14009;
+        break label14525;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("yellowLevel", Integer.TYPE));
-      label8986:
+      label9169:
       i = paramCursor.getColumnIndex("isSuperGreenDiamond");
       if (i != -1) {
-        break label14024;
+        break label14540;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("isSuperGreenDiamond", Boolean.TYPE));
       i = paramCursor.getColumnIndex("isGreenDiamond");
       if (i != -1) {
-        break label14051;
+        break label14567;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("isGreenDiamond", Boolean.TYPE));
       i = paramCursor.getColumnIndex("greenLevel");
       if (i != -1) {
-        break label14078;
+        break label14594;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("greenLevel", Integer.TYPE));
-      label9097:
+      label9280:
       i = paramCursor.getColumnIndex("uAccelerateMultiple");
       if (i != -1) {
-        break label14093;
+        break label14609;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("uAccelerateMultiple", Long.TYPE));
-      label9134:
+      label9317:
       i = paramCursor.getColumnIndex("strRespMusicInfo");
       if (i != -1) {
-        break label14108;
+        break label14624;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strRespMusicInfo", String.class));
-      label9171:
+      label9354:
       i = paramCursor.getColumnIndex("templateRet");
       if (i != -1) {
-        break label14123;
+        break label14639;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("templateRet", Integer.TYPE));
-      label9208:
+      label9391:
       i = paramCursor.getColumnIndex("lCurrentStyleId");
       if (i != -1) {
-        break label14138;
+        break label14654;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lCurrentStyleId", Long.TYPE));
-      label9245:
+      label9428:
       i = paramCursor.getColumnIndex("lCurrentBgId");
       if (i != -1) {
-        break label14153;
+        break label14669;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lCurrentBgId", Long.TYPE));
-      label9282:
+      label9465:
       i = paramCursor.getColumnIndex("backgroundUrl");
       if (i != -1) {
-        break label14168;
+        break label14684;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("backgroundUrl", String.class));
-      label9319:
+      label9502:
       i = paramCursor.getColumnIndex("backgroundColor");
       if (i != -1) {
-        break label14183;
+        break label14699;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("backgroundColor", Long.TYPE));
-      label9356:
+      label9539:
       i = paramCursor.getColumnIndex("dynamicCardFlag");
       if (i != -1) {
-        break label14198;
+        break label14714;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("dynamicCardFlag", Integer.TYPE));
-      label9393:
+      label9576:
       i = paramCursor.getColumnIndex("strZipUrl");
       if (i != -1) {
-        break label14213;
+        break label14729;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strZipUrl", String.class));
-      label9430:
+      label9613:
       i = paramCursor.getColumnIndex("strActiveUrl");
       if (i != -1) {
-        break label14228;
+        break label14744;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strActiveUrl", String.class));
-      label9467:
+      label9650:
       i = paramCursor.getColumnIndex("strDrawerCardUrl");
       if (i != -1) {
-        break label14243;
+        break label14759;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strDrawerCardUrl", String.class));
-      label9504:
+      label9687:
       i = paramCursor.getColumnIndex("strWzryHeroUrl");
       if (i != -1) {
-        break label14258;
+        break label14774;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strWzryHeroUrl", String.class));
-      label9541:
+      label9724:
       i = paramCursor.getColumnIndex("wzryHonorInfo");
       if (i != -1) {
-        break label14273;
+        break label14789;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("wzryHonorInfo", [B.class));
-      label9578:
+      label9761:
       i = paramCursor.getColumnIndex("strExtInfo");
       if (i != -1) {
-        break label14288;
+        break label14804;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strExtInfo", String.class));
-      label9615:
+      label9798:
       i = paramCursor.getColumnIndex("strCurrentBgUrl");
       if (i != -1) {
-        break label14303;
+        break label14819;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strCurrentBgUrl", String.class));
-      label9652:
+      label9835:
       i = paramCursor.getColumnIndex("bgType");
       if (i != -1) {
-        break label14318;
+        break label14834;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("bgType", [B.class));
-      label9689:
+      label9872:
       i = paramCursor.getColumnIndex("encId");
       if (i != -1) {
-        break label14333;
+        break label14849;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("encId", String.class));
-      label9726:
+      label9909:
       i = paramCursor.getColumnIndex("busiEntry");
       if (i != -1) {
-        break label14348;
+        break label14864;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("busiEntry", String.class));
-      label9763:
+      label9946:
       i = paramCursor.getColumnIndex("favoriteSource");
       if (i != -1) {
-        break label14363;
+        break label14879;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("favoriteSource", Integer.TYPE));
-      label9800:
+      label9983:
       i = paramCursor.getColumnIndex("visibleMusicPendant");
       if (i != -1) {
-        break label14378;
+        break label14894;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("visibleMusicPendant", Boolean.TYPE));
       i = paramCursor.getColumnIndex("autoPlayMusicPendant");
       if (i != -1) {
-        break label14405;
+        break label14921;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("autoPlayMusicPendant", Boolean.TYPE));
       i = paramCursor.getColumnIndex("showRedPointMusicPendant");
       if (i != -1) {
-        break label14432;
+        break label14948;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("showRedPointMusicPendant", Boolean.TYPE));
       i = paramCursor.getColumnIndex("privilegePromptStr");
       if (i != -1) {
-        break label14459;
+        break label14975;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("privilegePromptStr", String.class));
-      label9948:
+      label10131:
       i = paramCursor.getColumnIndex("privilegeJumpUrl");
       if (i != -1) {
-        break label14474;
+        break label14990;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("privilegeJumpUrl", String.class));
-      label9985:
+      label10168:
       i = paramCursor.getColumnIndex("vOpenPriv");
       if (i != -1) {
-        break label14489;
+        break label15005;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vOpenPriv", [B.class));
-      label10022:
+      label10205:
       i = paramCursor.getColumnIndex("vClosePriv");
       if (i != -1) {
-        break label14504;
+        break label15020;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vClosePriv", [B.class));
-      label10059:
+      label10242:
       i = paramCursor.getColumnIndex("addSrcName");
       if (i != -1) {
-        break label14519;
+        break label15035;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("addSrcName", String.class));
-      label10096:
+      label10279:
       i = paramCursor.getColumnIndex("addSrcId");
       if (i != -1) {
-        break label14534;
+        break label15050;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("addSrcId", Long.TYPE));
-      label10133:
+      label10316:
       i = paramCursor.getColumnIndex("addSubSrcId");
       if (i != -1) {
-        break label14549;
+        break label15065;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("addSubSrcId", Long.TYPE));
-      label10170:
+      label10353:
       i = paramCursor.getColumnIndex("strVoteLimitedNotice");
       if (i != -1) {
-        break label14564;
+        break label15080;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strVoteLimitedNotice", String.class));
-      label10207:
+      label10390:
       i = paramCursor.getColumnIndex("bHaveVotedCnt");
       if (i != -1) {
-        break label14579;
+        break label15095;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("bHaveVotedCnt", Short.TYPE));
-      label10244:
+      label10427:
       i = paramCursor.getColumnIndex("bAvailVoteCnt");
       if (i != -1) {
-        break label14594;
+        break label15110;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("bAvailVoteCnt", Short.TYPE));
-      label10281:
+      label10464:
       i = paramCursor.getColumnIndex("olympicTorch");
       if (i != -1) {
-        break label14609;
+        break label15125;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("olympicTorch", Byte.TYPE));
-      label10318:
+      label10501:
       i = paramCursor.getColumnIndex("mNowShowFlag");
       if (i != -1) {
-        break label14625;
+        break label15141;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("mNowShowFlag", Integer.TYPE));
-      label10355:
+      label10538:
       i = paramCursor.getColumnIndex("mNowShowIconUrl");
       if (i != -1) {
-        break label14640;
+        break label15156;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("mNowShowIconUrl", String.class));
-      label10392:
+      label10575:
       i = paramCursor.getColumnIndex("mNowShowJumpUrl");
       if (i != -1) {
-        break label14655;
+        break label15171;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("mNowShowJumpUrl", String.class));
-      label10429:
+      label10612:
       i = paramCursor.getColumnIndex("vCoverInfo");
       if (i != -1) {
-        break label14670;
+        break label15186;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vCoverInfo", [B.class));
-      label10466:
+      label10649:
       i = paramCursor.getColumnIndex("videoHeadFlag");
       if (i != -1) {
-        break label14685;
+        break label15201;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("videoHeadFlag", Boolean.TYPE));
       i = paramCursor.getColumnIndex("videoHeadUrl");
       if (i != -1) {
-        break label14712;
+        break label15228;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("videoHeadUrl", String.class));
-      label10540:
+      label10723:
       i = paramCursor.getColumnIndex("medalSwitchDisable");
       if (i != -1) {
-        break label14727;
+        break label15243;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("medalSwitchDisable", Boolean.TYPE));
       i = paramCursor.getColumnIndex("iMedalCount");
       if (i != -1) {
-        break label14754;
+        break label15270;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iMedalCount", Integer.TYPE));
-      label10614:
+      label10797:
       i = paramCursor.getColumnIndex("iNewCount");
       if (i != -1) {
-        break label14769;
+        break label15285;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iNewCount", Integer.TYPE));
-      label10651:
+      label10834:
       i = paramCursor.getColumnIndex("iUpgradeCount");
       if (i != -1) {
-        break label14784;
+        break label15300;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iUpgradeCount", Integer.TYPE));
-      label10688:
+      label10871:
       i = paramCursor.getColumnIndex("strPromptParams");
       if (i != -1) {
-        break label14799;
+        break label15315;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strPromptParams", String.class));
-      label10725:
+      label10908:
       i = paramCursor.getColumnIndex("hobbyEntry");
       if (i != -1) {
-        break label14814;
+        break label15330;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("hobbyEntry", String.class));
-      label10762:
+      label10945:
       i = paramCursor.getColumnIndex("lastPraiseInfoList");
       if (i != -1) {
-        break label14829;
+        break label15345;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lastPraiseInfoList", [B.class));
-      label10799:
+      label10982:
       i = paramCursor.getColumnIndex("tempChatSig");
       if (i != -1) {
-        break label14844;
+        break label15360;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("tempChatSig", [B.class));
-      label10836:
+      label11019:
       i = paramCursor.getColumnIndex("strCampusName");
       if (i != -1) {
-        break label14859;
+        break label15375;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strCampusName", String.class));
-      label10873:
+      label11056:
       i = paramCursor.getColumnIndex("strCampusAcademy");
       if (i != -1) {
-        break label14874;
+        break label15390;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strCampusAcademy", String.class));
-      label10910:
+      label11093:
       i = paramCursor.getColumnIndex("iCampusIsSigned");
       if (i != -1) {
-        break label14889;
+        break label15405;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("iCampusIsSigned", Integer.TYPE));
-      label10947:
+      label11130:
       i = paramCursor.getColumnIndex("namePlateOfKingGameId");
       if (i != -1) {
-        break label14904;
+        break label15420;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("namePlateOfKingGameId", Long.TYPE));
-      label10984:
+      label11167:
       i = paramCursor.getColumnIndex("namePlateOfKingLoginTime");
       if (i != -1) {
-        break label14919;
+        break label15435;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("namePlateOfKingLoginTime", Long.TYPE));
-      label11021:
+      label11204:
       i = paramCursor.getColumnIndex("namePlateOfKingDan");
       if (i != -1) {
-        break label14934;
+        break label15450;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("namePlateOfKingDan", Integer.TYPE));
-      label11058:
+      label11241:
       i = paramCursor.getColumnIndex("namePlateOfKingDanDisplatSwitch");
       if (i != -1) {
-        break label14949;
+        break label15465;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("namePlateOfKingDanDisplatSwitch", Boolean.TYPE));
       i = paramCursor.getColumnIndex("vPersonalityLabelV2");
       if (i != -1) {
-        break label14977;
+        break label15492;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("vPersonalityLabelV2", [B.class));
-      label11132:
+      label11315:
       i = paramCursor.getColumnIndex("cardType");
       if (i != -1) {
-        break label14992;
+        break label15507;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("cardType", Integer.TYPE));
-      label11169:
+      label11352:
       i = paramCursor.getColumnIndex("diyText");
       if (i != -1) {
-        break label15007;
+        break label15522;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("diyText", String.class));
-      label11206:
+      label11389:
       i = paramCursor.getColumnIndex("diyTextFontId");
       if (i != -1) {
-        break label15022;
+        break label15537;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("diyTextFontId", Integer.TYPE));
-      label11243:
+      label11426:
       i = paramCursor.getColumnIndex("diyTextWidth");
       if (i != -1) {
-        break label15037;
+        break label15552;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("diyTextWidth", Float.TYPE));
-      label11280:
+      label11463:
       i = paramCursor.getColumnIndex("diyTextHeight");
       if (i != -1) {
-        break label15052;
+        break label15567;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("diyTextHeight", Float.TYPE));
-      label11317:
+      label11500:
       i = paramCursor.getColumnIndex("diyTextLocX");
       if (i != -1) {
-        break label15067;
+        break label15582;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("diyTextLocX", Float.TYPE));
-      label11354:
+      label11537:
       i = paramCursor.getColumnIndex("diyTextLocY");
       if (i != -1) {
-        break label15082;
+        break label15597;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("diyTextLocY", Float.TYPE));
-      label11391:
+      label11574:
       i = paramCursor.getColumnIndex("diyTextDegree");
       if (i != -1) {
-        break label15097;
+        break label15612;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("diyTextDegree", Float.TYPE));
-      label11428:
+      label11611:
       i = paramCursor.getColumnIndex("diyTextScale");
       if (i != -1) {
-        break label15112;
+        break label15627;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("diyTextScale", Float.TYPE));
-      label11465:
+      label11648:
       i = paramCursor.getColumnIndex("diyTextTransparency");
       if (i != -1) {
-        break label15127;
+        break label15642;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("diyTextTransparency", Float.TYPE));
-      label11502:
+      label11685:
       i = paramCursor.getColumnIndex("diyDefaultText");
       if (i != -1) {
-        break label15142;
+        break label15657;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("diyDefaultText", String.class));
-      label11539:
+      label11722:
       i = paramCursor.getColumnIndex("nCampusStatus");
       if (i != -1) {
-        break label15157;
+        break label15672;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("nCampusStatus", Integer.TYPE));
-      label11576:
+      label11759:
       i = paramCursor.getColumnIndex("lCampusLastModifySchoolTime");
       if (i != -1) {
-        break label15172;
+        break label15687;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lCampusLastModifySchoolTime", Long.TYPE));
-      label11613:
+      label11796:
       i = paramCursor.getColumnIndex("lCampusSchoolID");
       if (i != -1) {
-        break label15187;
+        break label15702;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lCampusSchoolID", Long.TYPE));
-      label11650:
+      label11833:
       i = paramCursor.getColumnIndex("lCampusCollegeID");
       if (i != -1) {
-        break label15202;
+        break label15717;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("lCampusCollegeID", Long.TYPE));
-      label11687:
+      label11870:
       i = paramCursor.getColumnIndex("nCampusSchoolFlag");
       if (i != -1) {
-        break label15217;
+        break label15732;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("nCampusSchoolFlag", Integer.TYPE));
-      label11724:
+      label11907:
       i = paramCursor.getColumnIndex("nCampusEnrolYear");
       if (i != -1) {
-        break label15232;
+        break label15747;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("nCampusEnrolYear", Integer.TYPE));
-      label11761:
+      label11944:
       i = paramCursor.getColumnIndex("strCampusSchool");
       if (i != -1) {
-        break label15247;
+        break label15762;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strCampusSchool", String.class));
-      label11798:
+      label11981:
       i = paramCursor.getColumnIndex("strCampusCollege");
       if (i != -1) {
-        break label15262;
+        break label15777;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strCampusCollege", String.class));
-      label11835:
+      label12018:
       i = paramCursor.getColumnIndex("strCampusClass");
       if (i != -1) {
-        break label15277;
+        break label15792;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("strCampusClass", String.class));
+      label12055:
+      i = paramCursor.getColumnIndex("strLastCampusFeeds");
+      if (i != -1) {
+        break label15807;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("strLastCampusFeeds", String.class));
+      label12092:
+      i = paramCursor.getColumnIndex("popularity");
+      if (i != -1) {
+        break label15822;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("popularity", Integer.TYPE));
+      label12129:
+      i = paramCursor.getColumnIndex("declaration");
+      if (i != -1) {
+        break label15837;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("declaration", String.class));
+      label12166:
+      i = paramCursor.getColumnIndex("voiceUrl");
+      if (i != -1) {
+        break label15852;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("voiceUrl", String.class));
+      label12203:
+      i = paramCursor.getColumnIndex("isShowCard");
+      if (i != -1) {
+        break label15867;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("isShowCard", Boolean.TYPE));
+      i = paramCursor.getColumnIndex("updateTime");
+      if (i != -1) {
+        break label15895;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("updateTime", Long.TYPE));
+      label12277:
+      i = paramCursor.getColumnIndex("extendFriendFlag");
+      if (i != -1) {
+        break label15910;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("extendFriendFlag", Integer.TYPE));
+      label12314:
+      i = paramCursor.getColumnIndex("extendFriendVoiceDuration");
+      if (i != -1) {
+        break label15925;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("extendFriendVoiceDuration", Integer.TYPE));
+      label12351:
+      i = paramCursor.getColumnIndex("extendFriendEntryContact");
+      if (i != -1) {
+        break label15940;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("extendFriendEntryContact", Short.TYPE));
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("strLastCampusFeeds");
+      i = paramCursor.getColumnIndex("extendFriendEntryAddFriend");
       if (i != -1) {
-        break label15292;
+        break label15955;
       }
-      paramNoColumnErrorHandler.a(new NoColumnError("strLastCampusFeeds", String.class));
+      paramNoColumnErrorHandler.a(new NoColumnError("extendFriendEntryAddFriend", Short.TYPE));
       return paramEntity;
       paramEntity.uin = paramCursor.getString(i);
       break;
-      label11926:
+      label12442:
       paramEntity.strNick = paramCursor.getString(i);
-      break label4276;
-      label11941:
+      break label4459;
+      label12457:
       paramEntity.shGender = paramCursor.getShort(i);
-      break label4311;
-      label11956:
+      break label4494;
+      label12472:
       paramEntity.shAge = paramCursor.getShort(i);
-      break label4346;
-      label11971:
+      break label4529;
+      label12487:
       paramEntity.nFaceID = paramCursor.getInt(i);
-      break label4381;
-      label11986:
+      break label4564;
+      label12502:
       paramEntity.strCertificationInfo = paramCursor.getString(i);
-      break label4416;
-      label12001:
+      break label4599;
+      label12517:
       paramEntity.shType = paramCursor.getShort(i);
-      break label4451;
-      label12016:
+      break label4634;
+      label12532:
       paramEntity.vContent = paramCursor.getBlob(i);
-      break label4486;
-      label12031:
+      break label4669;
+      label12547:
       paramEntity.strSign = paramCursor.getString(i);
-      break label4521;
-      label12046:
+      break label4704;
+      label12562:
       paramEntity.strCompany = paramCursor.getString(i);
-      break label4556;
-      label12061:
+      break label4739;
+      label12577:
       paramEntity.strSchool = paramCursor.getString(i);
-      break label4591;
-      label12076:
+      break label4774;
+      label12592:
       paramEntity.uFaceTimeStamp = paramCursor.getInt(i);
-      break label4626;
-      label12091:
+      break label4809;
+      label12607:
       paramEntity.vQQFaceID = paramCursor.getBlob(i);
-      break label4661;
-      label12106:
+      break label4844;
+      label12622:
       paramEntity.strReMark = paramCursor.getString(i);
-      break label4696;
-      label12121:
+      break label4879;
+      label12637:
       paramEntity.bWeiboInfo = ((byte)paramCursor.getShort(i));
-      break label4731;
-      label12137:
+      break label4914;
+      label12653:
       paramEntity.bQzoneInfo = ((byte)paramCursor.getShort(i));
-      break label4766;
-      label12153:
-      paramEntity.nSameFriendsNum = paramCursor.getInt(i);
-      break label4801;
-      label12168:
-      paramEntity.strCompanySame = paramCursor.getString(i);
-      break label4836;
-      label12183:
-      paramEntity.strSchoolSame = paramCursor.getString(i);
-      break label4871;
-      label12198:
-      paramEntity.lCardShowNum = paramCursor.getLong(i);
-      break label4906;
-      label12213:
-      paramEntity.bSingle = ((byte)paramCursor.getShort(i));
-      break label4941;
-      label12229:
-      paramEntity.lVisitCount = paramCursor.getLong(i);
-      break label4976;
-      label12244:
-      paramEntity.lVoteCount = paramCursor.getLong(i);
-      break label5011;
-      label12259:
-      paramEntity.tagInfosByte = paramCursor.getBlob(i);
-      break label5046;
-      label12274:
-      paramEntity.eUserIdentityType = ((byte)paramCursor.getShort(i));
-      break label5081;
-      label12290:
-      paramEntity.vBackground = paramCursor.getBlob(i);
-      break label5116;
-      label12305:
-      paramEntity.labelInfoBytes = paramCursor.getBlob(i);
-      break label5151;
-      label12320:
-      paramEntity.age = ((byte)paramCursor.getShort(i));
-      break label5186;
-      label12336:
-      paramEntity.constellation = paramCursor.getInt(i);
-      break label5221;
-      label12351:
-      paramEntity.pyFaceUrl = paramCursor.getString(i);
-      break label5256;
-      label12366:
-      paramEntity.location = paramCursor.getString(i);
-      break label5291;
-      label12381:
-      paramEntity.bVoted = ((byte)paramCursor.getShort(i));
-      break label5326;
-      label12397:
-      paramEntity.bFavorited = ((byte)paramCursor.getShort(i));
-      break label5361;
-      label12413:
-      paramEntity.iVoteIncrement = paramCursor.getInt(i);
-      break label5396;
-      label12428:
-      paramEntity.strJoinHexAlbumFileKey = paramCursor.getString(i);
-      break label5431;
-      label12443:
-      paramEntity.iFaceNum = paramCursor.getInt(i);
-      break label5466;
-      label12458:
-      paramEntity.cSqqLevel = ((byte)paramCursor.getShort(i));
-      break label5501;
-      label12474:
-      paramEntity.iQQLevel = paramCursor.getInt(i);
-      break label5536;
-      label12489:
-      paramEntity.strProvince = paramCursor.getString(i);
-      break label5571;
-      label12504:
-      paramEntity.strCity = paramCursor.getString(i);
-      break label5606;
-      label12519:
-      paramEntity.strCountry = paramCursor.getString(i);
-      break label5641;
-      label12534:
-      paramEntity.lBirthday = paramCursor.getLong(i);
-      break label5676;
-      label12549:
-      paramEntity.strLocationCodes = paramCursor.getString(i);
-      break label5711;
-      label12564:
-      paramEntity.strLocationDesc = paramCursor.getString(i);
-      break label5746;
-      label12579:
-      paramEntity.strHometownCodes = paramCursor.getString(i);
-      break label5781;
-      label12594:
-      paramEntity.strHometownDesc = paramCursor.getString(i);
-      break label5816;
-      label12609:
-      paramEntity.strEmail = paramCursor.getString(i);
-      break label5851;
-      label12624:
-      paramEntity.strPersonalNote = paramCursor.getString(i);
-      break label5886;
-      label12639:
-      paramEntity.iProfession = paramCursor.getInt(i);
-      break label5921;
-      label12654:
-      paramEntity.bindPhoneInfo = paramCursor.getString(i);
-      break label5956;
+      break label4949;
       label12669:
-      paramEntity.bCardInfo = paramCursor.getBlob(i);
-      break label5991;
+      paramEntity.nSameFriendsNum = paramCursor.getInt(i);
+      break label4984;
       label12684:
-      paramEntity.strTroopName = paramCursor.getString(i);
-      break label6026;
+      paramEntity.strCompanySame = paramCursor.getString(i);
+      break label5019;
       label12699:
-      paramEntity.strTroopNick = paramCursor.getString(i);
-      break label6063;
+      paramEntity.strSchoolSame = paramCursor.getString(i);
+      break label5054;
       label12714:
-      paramEntity.strMobile = paramCursor.getString(i);
-      break label6100;
+      paramEntity.lCardShowNum = paramCursor.getLong(i);
+      break label5089;
       label12729:
-      paramEntity.strContactName = paramCursor.getString(i);
-      break label6137;
-      label12744:
-      paramEntity.ulShowControl = paramCursor.getInt(i);
+      paramEntity.bSingle = ((byte)paramCursor.getShort(i));
+      break label5124;
+      label12745:
+      paramEntity.lVisitCount = paramCursor.getLong(i);
+      break label5159;
+      label12760:
+      paramEntity.lVoteCount = paramCursor.getLong(i);
+      break label5194;
+      label12775:
+      paramEntity.tagInfosByte = paramCursor.getBlob(i);
+      break label5229;
+      label12790:
+      paramEntity.eUserIdentityType = ((byte)paramCursor.getShort(i));
+      break label5264;
+      label12806:
+      paramEntity.vBackground = paramCursor.getBlob(i);
+      break label5299;
+      label12821:
+      paramEntity.labelInfoBytes = paramCursor.getBlob(i);
+      break label5334;
+      label12836:
+      paramEntity.age = ((byte)paramCursor.getShort(i));
+      break label5369;
+      label12852:
+      paramEntity.constellation = paramCursor.getInt(i);
+      break label5404;
+      label12867:
+      paramEntity.pyFaceUrl = paramCursor.getString(i);
+      break label5439;
+      label12882:
+      paramEntity.location = paramCursor.getString(i);
+      break label5474;
+      label12897:
+      paramEntity.bVoted = ((byte)paramCursor.getShort(i));
+      break label5509;
+      label12913:
+      paramEntity.bFavorited = ((byte)paramCursor.getShort(i));
+      break label5544;
+      label12929:
+      paramEntity.iVoteIncrement = paramCursor.getInt(i);
+      break label5579;
+      label12944:
+      paramEntity.strJoinHexAlbumFileKey = paramCursor.getString(i);
+      break label5614;
+      label12959:
+      paramEntity.iFaceNum = paramCursor.getInt(i);
+      break label5649;
+      label12974:
+      paramEntity.cSqqLevel = ((byte)paramCursor.getShort(i));
+      break label5684;
+      label12990:
+      paramEntity.iQQLevel = paramCursor.getInt(i);
+      break label5719;
+      label13005:
+      paramEntity.strProvince = paramCursor.getString(i);
+      break label5754;
+      label13020:
+      paramEntity.strCity = paramCursor.getString(i);
+      break label5789;
+      label13035:
+      paramEntity.strCountry = paramCursor.getString(i);
+      break label5824;
+      label13050:
+      paramEntity.lBirthday = paramCursor.getLong(i);
+      break label5859;
+      label13065:
+      paramEntity.strLocationCodes = paramCursor.getString(i);
+      break label5894;
+      label13080:
+      paramEntity.strLocationDesc = paramCursor.getString(i);
+      break label5929;
+      label13095:
+      paramEntity.strHometownCodes = paramCursor.getString(i);
+      break label5964;
+      label13110:
+      paramEntity.strHometownDesc = paramCursor.getString(i);
+      break label5999;
+      label13125:
+      paramEntity.strEmail = paramCursor.getString(i);
+      break label6034;
+      label13140:
+      paramEntity.strPersonalNote = paramCursor.getString(i);
+      break label6069;
+      label13155:
+      paramEntity.iProfession = paramCursor.getInt(i);
+      break label6104;
+      label13170:
+      paramEntity.bindPhoneInfo = paramCursor.getString(i);
+      break label6139;
+      label13185:
+      paramEntity.bCardInfo = paramCursor.getBlob(i);
       break label6174;
-      label12759:
+      label13200:
+      paramEntity.strTroopName = paramCursor.getString(i);
+      break label6209;
+      label13215:
+      paramEntity.strTroopNick = paramCursor.getString(i);
+      break label6246;
+      label13230:
+      paramEntity.strMobile = paramCursor.getString(i);
+      break label6283;
+      label13245:
+      paramEntity.strContactName = paramCursor.getString(i);
+      break label6320;
+      label13260:
+      paramEntity.ulShowControl = paramCursor.getInt(i);
+      break label6357;
+      label13275:
       paramEntity.feedPreviewTime = paramCursor.getLong(i);
-      break label6211;
-      label12774:
+      break label6394;
+      label13290:
       paramEntity.strQzoneFeedsDesc = paramCursor.getString(i);
-      break label6248;
-      label12789:
+      break label6431;
+      label13305:
       paramEntity.strSpaceName = paramCursor.getString(i);
-      break label6285;
-      label12804:
+      break label6468;
+      label13320:
       paramEntity.strQzoneHeader = paramCursor.getString(i);
-      break label6322;
-      label12819:
+      break label6505;
+      label13335:
       paramEntity.vQzonePhotos = paramCursor.getBlob(i);
-      break label6359;
-      label12834:
+      break label6542;
+      label13350:
       paramEntity.vQzoneCoverInfo = paramCursor.getBlob(i);
-      break label6396;
-      label12849:
+      break label6579;
+      label13365:
       paramEntity.strStatus = paramCursor.getString(i);
-      break label6433;
-      label12864:
+      break label6616;
+      label13380:
       paramEntity.strAutoRemark = paramCursor.getString(i);
-      break label6470;
-      label12879:
+      break label6653;
+      label13395:
       paramEntity.vSeed = paramCursor.getBlob(i);
-      break label6507;
-      label12894:
+      break label6690;
+      label13410:
       paramEntity.vCookies = paramCursor.getBlob(i);
-      break label6544;
-      label12909:
+      break label6727;
+      label13425:
       paramEntity.bQQVipOpen = ((byte)paramCursor.getShort(i));
-      break label6581;
-      label12925:
+      break label6764;
+      label13441:
       paramEntity.iQQVipType = paramCursor.getInt(i);
-      break label6618;
-      label12940:
+      break label6801;
+      label13456:
       paramEntity.iQQVipLevel = paramCursor.getInt(i);
-      break label6655;
-      label12955:
+      break label6838;
+      label13471:
       paramEntity.bSuperVipOpen = ((byte)paramCursor.getShort(i));
-      break label6692;
-      label12971:
+      break label6875;
+      label13487:
       paramEntity.iSuperVipType = paramCursor.getInt(i);
-      break label6729;
-      label12986:
+      break label6912;
+      label13502:
       paramEntity.iSuperVipLevel = paramCursor.getInt(i);
-      break label6766;
-      label13001:
+      break label6949;
+      label13517:
       paramEntity.bSuperQQOpen = ((byte)paramCursor.getShort(i));
-      break label6803;
-      label13017:
+      break label6986;
+      label13533:
       paramEntity.iSuperQQType = paramCursor.getInt(i);
-      break label6840;
-      label13032:
+      break label7023;
+      label13548:
       paramEntity.iSuperQQLevel = paramCursor.getInt(i);
-      break label6877;
-      label13047:
+      break label7060;
+      label13563:
       paramEntity.bHollywoodVipOpen = ((byte)paramCursor.getShort(i));
-      break label6914;
-      label13063:
+      break label7097;
+      label13579:
       paramEntity.iHollywoodVipType = paramCursor.getInt(i);
-      break label6951;
-      label13078:
+      break label7134;
+      label13594:
       paramEntity.iHollywoodVipLevel = paramCursor.getInt(i);
-      break label6988;
-      label13093:
+      break label7171;
+      label13609:
       paramEntity.strShowName = paramCursor.getString(i);
-      break label7025;
-      label13108:
+      break label7208;
+      label13624:
       paramEntity.strVoiceFilekey = paramCursor.getString(i);
-      break label7062;
-      label13123:
+      break label7245;
+      label13639:
       paramEntity.shDuration = paramCursor.getShort(i);
-      break label7099;
-      label13138:
+      break label7282;
+      label13654:
       paramEntity.bRead = ((byte)paramCursor.getShort(i));
-      break label7136;
-      label13154:
+      break label7319;
+      label13670:
       paramEntity.strUrl = paramCursor.getString(i);
-      break label7173;
-      label13169:
+      break label7356;
+      label13685:
       paramEntity.vRichSign = paramCursor.getBlob(i);
-      break label7210;
-      label13184:
+      break label7393;
+      label13700:
       paramEntity.lSignModifyTime = paramCursor.getLong(i);
-      break label7247;
-      label13199:
+      break label7430;
+      label13715:
       paramEntity.nLastGameFlag = paramCursor.getInt(i);
-      break label7284;
-      label13214:
+      break label7467;
+      label13730:
       paramEntity.strGameLogoUrl_1 = paramCursor.getString(i);
-      break label7321;
-      label13229:
+      break label7504;
+      label13745:
       paramEntity.strGameLogoUrl_2 = paramCursor.getString(i);
-      break label7358;
-      label13244:
+      break label7541;
+      label13760:
       paramEntity.strGameLogoUrl_3 = paramCursor.getString(i);
-      break label7395;
-      label13259:
+      break label7578;
+      label13775:
       paramEntity.strGameLogoUrl_4 = paramCursor.getString(i);
-      break label7432;
-      label13274:
+      break label7615;
+      label13790:
       paramEntity.strGameLogoKey_1 = paramCursor.getString(i);
-      break label7469;
-      label13289:
+      break label7652;
+      label13805:
       paramEntity.strGameLogoKey_2 = paramCursor.getString(i);
-      break label7506;
-      label13304:
+      break label7689;
+      label13820:
       paramEntity.strGameLogoKey_3 = paramCursor.getString(i);
-      break label7543;
-      label13319:
+      break label7726;
+      label13835:
       paramEntity.strGameLogoKey_4 = paramCursor.getString(i);
-      break label7580;
-      label13334:
+      break label7763;
+      label13850:
       paramEntity.strGameName_1 = paramCursor.getString(i);
-      break label7617;
-      label13349:
+      break label7800;
+      label13865:
       paramEntity.strGameName_2 = paramCursor.getString(i);
-      break label7654;
-      label13364:
+      break label7837;
+      label13880:
       paramEntity.strGameName_3 = paramCursor.getString(i);
-      break label7691;
-      label13379:
+      break label7874;
+      label13895:
       paramEntity.strGameName_4 = paramCursor.getString(i);
-      break label7728;
-      label13394:
+      break label7911;
+      label13910:
       paramEntity.strGameAppid_1 = paramCursor.getString(i);
-      break label7765;
-      label13409:
+      break label7948;
+      label13925:
       paramEntity.strGameAppid_2 = paramCursor.getString(i);
-      break label7802;
-      label13424:
+      break label7985;
+      label13940:
       paramEntity.strGameAppid_3 = paramCursor.getString(i);
-      break label7839;
-      label13439:
+      break label8022;
+      label13955:
       paramEntity.strGameAppid_4 = paramCursor.getString(i);
-      break label7876;
-      label13454:
+      break label8059;
+      label13970:
       paramEntity.strProfileUrl = paramCursor.getString(i);
-      break label7913;
-      label13469:
+      break label8096;
+      label13985:
       paramEntity.nStarFansFlag = paramCursor.getInt(i);
-      break label7950;
-      label13484:
+      break label8133;
+      label14000:
       paramEntity.strStarPicUrl_0 = paramCursor.getString(i);
-      break label7987;
-      label13499:
+      break label8170;
+      label14015:
       paramEntity.strStarPicUrl_1 = paramCursor.getString(i);
-      break label8024;
-      label13514:
+      break label8207;
+      label14030:
       paramEntity.strStarPicUrl_2 = paramCursor.getString(i);
-      break label8061;
-      label13529:
+      break label8244;
+      label14045:
       paramEntity.strStarLvUrl_0 = paramCursor.getString(i);
-      break label8098;
-      label13544:
+      break label8281;
+      label14060:
       paramEntity.strStarLvUrl_1 = paramCursor.getString(i);
-      break label8135;
-      label13559:
+      break label8318;
+      label14075:
       paramEntity.strStarLvUrl_2 = paramCursor.getString(i);
-      break label8172;
-      label13574:
+      break label8355;
+      label14090:
       paramEntity.strStarLogoUrl = paramCursor.getString(i);
-      break label8209;
-      label13589:
+      break label8392;
+      label14105:
       paramEntity.starFansJumpUrl = paramCursor.getString(i);
-      break label8246;
-      label13604:
+      break label8429;
+      label14120:
       paramEntity.lUserFlag = paramCursor.getLong(i);
-      break label8283;
-      label13619:
+      break label8466;
+      label14135:
       paramEntity.lLoginDays = paramCursor.getLong(i);
-      break label8320;
-      label13634:
+      break label8503;
+      label14150:
       paramEntity.strLoginDaysDesc = paramCursor.getString(i);
-      break label8357;
-      label13649:
+      break label8540;
+      label14165:
       paramEntity.lQQMasterLogindays = paramCursor.getLong(i);
-      break label8394;
-      label13664:
+      break label8577;
+      label14180:
       paramEntity.iXManScene1DelayTime = paramCursor.getInt(i);
-      break label8431;
-      label13679:
+      break label8614;
+      label14195:
       paramEntity.iXManScene2DelayTime = paramCursor.getInt(i);
-      break label8468;
-      label13694:
+      break label8651;
+      label14210:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.allowPeopleSee = paramBoolean;
         break;
       }
-      label13721:
+      label14237:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.allowCalInteractive = paramBoolean;
         break;
       }
-      label13748:
+      label14264:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.showOnlineFriends = paramBoolean;
         break;
       }
-      label13775:
+      label14291:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.allowClick = paramBoolean;
         break;
       }
-      label13802:
+      label14318:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.babyQSwitch = paramBoolean;
         break;
       }
-      label13829:
+      label14345:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.showLightalk = paramBoolean;
         break;
       }
-      label13856:
+      label14372:
       paramEntity.lightalkNick = paramCursor.getString(i);
-      break label8727;
-      label13871:
+      break label8910;
+      label14387:
       paramEntity.lightalkId = paramCursor.getString(i);
-      break label8764;
-      label13886:
+      break label8947;
+      label14402:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.isSuperRedDiamond = paramBoolean;
         break;
       }
-      label13913:
+      label14429:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.isRedDiamond = paramBoolean;
         break;
       }
-      label13940:
+      label14456:
       paramEntity.redLevel = paramCursor.getInt(i);
-      break label8875;
-      label13955:
+      break label9058;
+      label14471:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.isSuperYellowDiamond = paramBoolean;
         break;
       }
-      label13982:
+      label14498:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.isYellowDiamond = paramBoolean;
         break;
       }
-      label14009:
+      label14525:
       paramEntity.yellowLevel = paramCursor.getInt(i);
-      break label8986;
-      label14024:
+      break label9169;
+      label14540:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.isSuperGreenDiamond = paramBoolean;
         break;
       }
-      label14051:
+      label14567:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.isGreenDiamond = paramBoolean;
         break;
       }
-      label14078:
+      label14594:
       paramEntity.greenLevel = paramCursor.getInt(i);
-      break label9097;
-      label14093:
+      break label9280;
+      label14609:
       paramEntity.uAccelerateMultiple = paramCursor.getLong(i);
-      break label9134;
-      label14108:
+      break label9317;
+      label14624:
       paramEntity.strRespMusicInfo = paramCursor.getString(i);
-      break label9171;
-      label14123:
+      break label9354;
+      label14639:
       paramEntity.templateRet = paramCursor.getInt(i);
-      break label9208;
-      label14138:
+      break label9391;
+      label14654:
       paramEntity.lCurrentStyleId = paramCursor.getLong(i);
-      break label9245;
-      label14153:
+      break label9428;
+      label14669:
       paramEntity.lCurrentBgId = paramCursor.getLong(i);
-      break label9282;
-      label14168:
+      break label9465;
+      label14684:
       paramEntity.backgroundUrl = paramCursor.getString(i);
-      break label9319;
-      label14183:
+      break label9502;
+      label14699:
       paramEntity.backgroundColor = paramCursor.getLong(i);
-      break label9356;
-      label14198:
+      break label9539;
+      label14714:
       paramEntity.dynamicCardFlag = paramCursor.getInt(i);
-      break label9393;
-      label14213:
+      break label9576;
+      label14729:
       paramEntity.strZipUrl = paramCursor.getString(i);
-      break label9430;
-      label14228:
+      break label9613;
+      label14744:
       paramEntity.strActiveUrl = paramCursor.getString(i);
-      break label9467;
-      label14243:
+      break label9650;
+      label14759:
       paramEntity.strDrawerCardUrl = paramCursor.getString(i);
-      break label9504;
-      label14258:
+      break label9687;
+      label14774:
       paramEntity.strWzryHeroUrl = paramCursor.getString(i);
-      break label9541;
-      label14273:
+      break label9724;
+      label14789:
       paramEntity.wzryHonorInfo = paramCursor.getBlob(i);
-      break label9578;
-      label14288:
+      break label9761;
+      label14804:
       paramEntity.strExtInfo = paramCursor.getString(i);
-      break label9615;
-      label14303:
+      break label9798;
+      label14819:
       paramEntity.strCurrentBgUrl = paramCursor.getString(i);
-      break label9652;
-      label14318:
+      break label9835;
+      label14834:
       paramEntity.bgType = paramCursor.getBlob(i);
-      break label9689;
-      label14333:
+      break label9872;
+      label14849:
       paramEntity.encId = paramCursor.getString(i);
-      break label9726;
-      label14348:
+      break label9909;
+      label14864:
       paramEntity.busiEntry = paramCursor.getString(i);
-      break label9763;
-      label14363:
+      break label9946;
+      label14879:
       paramEntity.favoriteSource = paramCursor.getInt(i);
-      break label9800;
-      label14378:
+      break label9983;
+      label14894:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.visibleMusicPendant = paramBoolean;
         break;
       }
-      label14405:
+      label14921:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.autoPlayMusicPendant = paramBoolean;
         break;
       }
-      label14432:
+      label14948:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.showRedPointMusicPendant = paramBoolean;
         break;
       }
-      label14459:
+      label14975:
       paramEntity.privilegePromptStr = paramCursor.getString(i);
-      break label9948;
-      label14474:
+      break label10131;
+      label14990:
       paramEntity.privilegeJumpUrl = paramCursor.getString(i);
-      break label9985;
-      label14489:
+      break label10168;
+      label15005:
       paramEntity.vOpenPriv = paramCursor.getBlob(i);
-      break label10022;
-      label14504:
+      break label10205;
+      label15020:
       paramEntity.vClosePriv = paramCursor.getBlob(i);
-      break label10059;
-      label14519:
+      break label10242;
+      label15035:
       paramEntity.addSrcName = paramCursor.getString(i);
-      break label10096;
-      label14534:
+      break label10279;
+      label15050:
       paramEntity.addSrcId = paramCursor.getLong(i);
-      break label10133;
-      label14549:
+      break label10316;
+      label15065:
       paramEntity.addSubSrcId = paramCursor.getLong(i);
-      break label10170;
-      label14564:
+      break label10353;
+      label15080:
       paramEntity.strVoteLimitedNotice = paramCursor.getString(i);
-      break label10207;
-      label14579:
+      break label10390;
+      label15095:
       paramEntity.bHaveVotedCnt = paramCursor.getShort(i);
-      break label10244;
-      label14594:
+      break label10427;
+      label15110:
       paramEntity.bAvailVoteCnt = paramCursor.getShort(i);
-      break label10281;
-      label14609:
+      break label10464;
+      label15125:
       paramEntity.olympicTorch = ((byte)paramCursor.getShort(i));
-      break label10318;
-      label14625:
+      break label10501;
+      label15141:
       paramEntity.mNowShowFlag = paramCursor.getInt(i);
-      break label10355;
-      label14640:
+      break label10538;
+      label15156:
       paramEntity.mNowShowIconUrl = paramCursor.getString(i);
-      break label10392;
-      label14655:
+      break label10575;
+      label15171:
       paramEntity.mNowShowJumpUrl = paramCursor.getString(i);
-      break label10429;
-      label14670:
+      break label10612;
+      label15186:
       paramEntity.vCoverInfo = paramCursor.getBlob(i);
-      break label10466;
-      label14685:
+      break label10649;
+      label15201:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.videoHeadFlag = paramBoolean;
         break;
       }
-      label14712:
+      label15228:
       paramEntity.videoHeadUrl = paramCursor.getString(i);
-      break label10540;
-      label14727:
+      break label10723;
+      label15243:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.medalSwitchDisable = paramBoolean;
         break;
       }
-      label14754:
+      label15270:
       paramEntity.iMedalCount = paramCursor.getInt(i);
-      break label10614;
-      label14769:
+      break label10797;
+      label15285:
       paramEntity.iNewCount = paramCursor.getInt(i);
-      break label10651;
-      label14784:
+      break label10834;
+      label15300:
       paramEntity.iUpgradeCount = paramCursor.getInt(i);
-      break label10688;
-      label14799:
+      break label10871;
+      label15315:
       paramEntity.strPromptParams = paramCursor.getString(i);
-      break label10725;
-      label14814:
+      break label10908;
+      label15330:
       paramEntity.hobbyEntry = paramCursor.getString(i);
-      break label10762;
-      label14829:
+      break label10945;
+      label15345:
       paramEntity.lastPraiseInfoList = paramCursor.getBlob(i);
-      break label10799;
-      label14844:
+      break label10982;
+      label15360:
       paramEntity.tempChatSig = paramCursor.getBlob(i);
-      break label10836;
-      label14859:
+      break label11019;
+      label15375:
       paramEntity.strCampusName = paramCursor.getString(i);
-      break label10873;
-      label14874:
+      break label11056;
+      label15390:
       paramEntity.strCampusAcademy = paramCursor.getString(i);
-      break label10910;
-      label14889:
+      break label11093;
+      label15405:
       paramEntity.iCampusIsSigned = paramCursor.getInt(i);
-      break label10947;
-      label14904:
+      break label11130;
+      label15420:
       paramEntity.namePlateOfKingGameId = paramCursor.getLong(i);
-      break label10984;
-      label14919:
+      break label11167;
+      label15435:
       paramEntity.namePlateOfKingLoginTime = paramCursor.getLong(i);
-      break label11021;
-      label14934:
+      break label11204;
+      label15450:
       paramEntity.namePlateOfKingDan = paramCursor.getInt(i);
-      break label11058;
-      label14949:
+      break label11241;
+      label15465:
       if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = bool2;; paramBoolean = false)
+      for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.namePlateOfKingDanDisplatSwitch = paramBoolean;
         break;
       }
-      label14977:
+      label15492:
       paramEntity.vPersonalityLabelV2 = paramCursor.getBlob(i);
-      break label11132;
-      label14992:
+      break label11315;
+      label15507:
       paramEntity.cardType = paramCursor.getInt(i);
-      break label11169;
-      label15007:
+      break label11352;
+      label15522:
       paramEntity.diyText = paramCursor.getString(i);
-      break label11206;
-      label15022:
+      break label11389;
+      label15537:
       paramEntity.diyTextFontId = paramCursor.getInt(i);
-      break label11243;
-      label15037:
+      break label11426;
+      label15552:
       paramEntity.diyTextWidth = paramCursor.getFloat(i);
-      break label11280;
-      label15052:
+      break label11463;
+      label15567:
       paramEntity.diyTextHeight = paramCursor.getFloat(i);
-      break label11317;
-      label15067:
+      break label11500;
+      label15582:
       paramEntity.diyTextLocX = paramCursor.getFloat(i);
-      break label11354;
-      label15082:
+      break label11537;
+      label15597:
       paramEntity.diyTextLocY = paramCursor.getFloat(i);
-      break label11391;
-      label15097:
+      break label11574;
+      label15612:
       paramEntity.diyTextDegree = paramCursor.getFloat(i);
-      break label11428;
-      label15112:
+      break label11611;
+      label15627:
       paramEntity.diyTextScale = paramCursor.getFloat(i);
-      break label11465;
-      label15127:
+      break label11648;
+      label15642:
       paramEntity.diyTextTransparency = paramCursor.getFloat(i);
-      break label11502;
-      label15142:
+      break label11685;
+      label15657:
       paramEntity.diyDefaultText = paramCursor.getString(i);
-      break label11539;
-      label15157:
+      break label11722;
+      label15672:
       paramEntity.nCampusStatus = paramCursor.getInt(i);
-      break label11576;
-      label15172:
+      break label11759;
+      label15687:
       paramEntity.lCampusLastModifySchoolTime = paramCursor.getLong(i);
-      break label11613;
-      label15187:
+      break label11796;
+      label15702:
       paramEntity.lCampusSchoolID = paramCursor.getLong(i);
-      break label11650;
-      label15202:
+      break label11833;
+      label15717:
       paramEntity.lCampusCollegeID = paramCursor.getLong(i);
-      break label11687;
-      label15217:
+      break label11870;
+      label15732:
       paramEntity.nCampusSchoolFlag = paramCursor.getInt(i);
-      break label11724;
-      label15232:
+      break label11907;
+      label15747:
       paramEntity.nCampusEnrolYear = paramCursor.getInt(i);
-      break label11761;
-      label15247:
+      break label11944;
+      label15762:
       paramEntity.strCampusSchool = paramCursor.getString(i);
-      break label11798;
-      label15262:
+      break label11981;
+      label15777:
       paramEntity.strCampusCollege = paramCursor.getString(i);
-      break label11835;
-      label15277:
+      break label12018;
+      label15792:
       paramEntity.strCampusClass = paramCursor.getString(i);
+      break label12055;
+      label15807:
+      paramEntity.strLastCampusFeeds = paramCursor.getString(i);
+      break label12092;
+      label15822:
+      paramEntity.popularity = paramCursor.getInt(i);
+      break label12129;
+      label15837:
+      paramEntity.declaration = paramCursor.getString(i);
+      break label12166;
+      label15852:
+      paramEntity.voiceUrl = paramCursor.getString(i);
+      break label12203;
+      label15867:
+      if (1 == paramCursor.getShort(i)) {}
+      for (paramBoolean = bool2;; paramBoolean = false)
+      {
+        paramEntity.isShowCard = paramBoolean;
+        break;
+      }
+      label15895:
+      paramEntity.updateTime = paramCursor.getLong(i);
+      break label12277;
+      label15910:
+      paramEntity.extendFriendFlag = paramCursor.getInt(i);
+      break label12314;
+      label15925:
+      paramEntity.extendFriendVoiceDuration = paramCursor.getInt(i);
+      break label12351;
+      label15940:
+      paramEntity.extendFriendEntryContact = paramCursor.getShort(i);
     }
-    label15292:
-    paramEntity.strLastCampusFeeds = paramCursor.getString(i);
+    label15955:
+    paramEntity.extendFriendEntryAddFriend = paramCursor.getShort(i);
     return paramEntity;
   }
   
@@ -2331,7 +2432,7 @@ public class CardDao
   {
     StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
     localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,strNick TEXT ,shGender INTEGER ,shAge INTEGER ,nFaceID INTEGER ,strCertificationInfo TEXT ,shType INTEGER ,vContent BLOB ,strSign TEXT ,strCompany TEXT ,strSchool TEXT ,uFaceTimeStamp INTEGER ,vQQFaceID BLOB ,strReMark TEXT ,bWeiboInfo INTEGER ,bQzoneInfo INTEGER ,nSameFriendsNum INTEGER ,strCompanySame TEXT ,strSchoolSame TEXT ,lCardShowNum INTEGER ,bSingle INTEGER ,lVisitCount INTEGER ,lVoteCount INTEGER ,tagInfosByte BLOB ,eUserIdentityType INTEGER ,vBackground BLOB ,labelInfoBytes BLOB ,age INTEGER ,constellation INTEGER ,pyFaceUrl TEXT ,location TEXT ,bVoted INTEGER ,bFavorited INTEGER ,iVoteIncrement INTEGER ,strJoinHexAlbumFileKey TEXT ,iFaceNum INTEGER ,cSqqLevel INTEGER ,iQQLevel INTEGER ,strProvince TEXT ,strCity TEXT ,strCountry TEXT ,lBirthday INTEGER ,strLocationCodes TEXT ,strLocationDesc TEXT ,strHometownCodes TEXT ,strHometownDesc TEXT ,strEmail TEXT ,strPersonalNote TEXT ,iProfession INTEGER ,bindPhoneInfo TEXT ,bCardInfo BLOB ,strTroopName TEXT ,strTroopNick TEXT ,strMobile TEXT ,strContactName TEXT ,ulShowControl INTEGER ,feedPreviewTime INTEGER ,strQzoneFeedsDesc TEXT ,strSpaceName TEXT ,strQzoneHeader TEXT ,vQzonePhotos BLOB ,vQzoneCoverInfo BLOB ,strStatus TEXT ,strAutoRemark TEXT ,vSeed BLOB ,vCookies BLOB ,bQQVipOpen INTEGER ,iQQVipType INTEGER ,iQQVipLevel INTEGER ,bSuperVipOpen INTEGER ,iSuperVipType INTEGER ,iSuperVipLevel INTEGER ,bSuperQQOpen INTEGER ,iSuperQQType INTEGER ,iSuperQQLevel INTEGER ,bHollywoodVipOpen INTEGER ,iHollywoodVipType INTEGER ,iHollywoodVipLevel INTEGER ,strShowName TEXT ,strVoiceFilekey TEXT ,shDuration INTEGER ,bRead INTEGER ,strUrl TEXT ,vRichSign BLOB ,lSignModifyTime INTEGER ,nLastGameFlag INTEGER ,strGameLogoUrl_1 TEXT ,strGameLogoUrl_2 TEXT ,strGameLogoUrl_3 TEXT ,strGameLogoUrl_4 TEXT ,strGameLogoKey_1 TEXT ,strGameLogoKey_2 TEXT ,strGameLogoKey_3 TEXT ,strGameLogoKey_4 TEXT ,strGameName_1 TEXT ,strGameName_2 TEXT ,strGameName_3 TEXT ,strGameName_4 TEXT ,strGameAppid_1 TEXT ,strGameAppid_2 TEXT ,strGameAppid_3 TEXT ,strGameAppid_4 TEXT ,strProfileUrl TEXT ,nStarFansFlag INTEGER ,strStarPicUrl_0 TEXT ,strStarPicUrl_1 TEXT ,strStarPicUrl_2 TEXT ,strStarLvUrl_0 TEXT ,strStarLvUrl_1 TEXT ,strStarLvUrl_2 TEXT ,strStarLogoUrl TEXT ,starFansJumpUrl TEXT ,lUserFlag INTEGER ,lLoginDays INTEGER ,strLoginDaysDesc TEXT ,lQQMasterLogindays INTEGER ,iXManScene1DelayTime INTEGER ,iXManScene2DelayTime INTEGER ,allowPeopleSee INTEGER ,allowCalInteractive INTEGER ,showOnlineFriends INTEGER ,allowClick INTEGER ,babyQSwitch INTEGER ,showLightalk INTEGER ,lightalkNick TEXT ,lightalkId TEXT ,isSuperRedDiamond INTEGER ,isRedDiamond INTEGER ,redLevel INTEGER ,isSuperYellowDiamond INTEGER ,isYellowDiamond INTEGER ,yellowLevel INTEGER ,isSuperGreenDiamond INTEGER ,isGreenDiamond INTEGER ,greenLevel INTEGER ,uAccelerateMultiple INTEGER ,strRespMusicInfo TEXT ,templateRet INTEGER ,lCurrentStyleId INTEGER ,lCurrentBgId INTEGER ,backgroundUrl TEXT ,backgroundColor INTEGER ,dynamicCardFlag INTEGER ,strZipUrl TEXT ,strActiveUrl TEXT ,strDrawerCardUrl TEXT ,strWzryHeroUrl TEXT ,wzryHonorInfo BLOB ,strExtInfo TEXT ,strCurrentBgUrl TEXT ,bgType BLOB ,encId TEXT ,busiEntry TEXT ,favoriteSource INTEGER ,visibleMusicPendant INTEGER ,autoPlayMusicPendant INTEGER ,showRedPointMusicPendant INTEGER ,privilegePromptStr TEXT ,privilegeJumpUrl TEXT ,vOpenPriv BLOB ,vClosePriv BLOB ,addSrcName TEXT ,addSrcId INTEGER ,addSubSrcId INTEGER ,strVoteLimitedNotice TEXT ,bHaveVotedCnt INTEGER ,bAvailVoteCnt INTEGER ,olympicTorch INTEGER ,mNowShowFlag INTEGER ,mNowShowIconUrl TEXT ,mNowShowJumpUrl TEXT ,vCoverInfo BLOB ,videoHeadFlag INTEGER ,videoHeadUrl TEXT ,medalSwitchDisable INTEGER ,iMedalCount INTEGER ,iNewCount INTEGER ,iUpgradeCount INTEGER ,strPromptParams TEXT ,hobbyEntry TEXT ,lastPraiseInfoList BLOB ,tempChatSig BLOB ,strCampusName TEXT ,strCampusAcademy TEXT ,iCampusIsSigned INTEGER ,namePlateOfKingGameId INTEGER ,namePlateOfKingLoginTime INTEGER ,namePlateOfKingDan INTEGER ,namePlateOfKingDanDisplatSwitch INTEGER ,vPersonalityLabelV2 BLOB ,cardType INTEGER ,diyText TEXT ,diyTextFontId INTEGER ,diyTextWidth REAL ,diyTextHeight REAL ,diyTextLocX REAL ,diyTextLocY REAL ,diyTextDegree REAL ,diyTextScale REAL ,diyTextTransparency REAL ,diyDefaultText TEXT ,nCampusStatus INTEGER ,lCampusLastModifySchoolTime INTEGER ,lCampusSchoolID INTEGER ,lCampusCollegeID INTEGER ,nCampusSchoolFlag INTEGER ,nCampusEnrolYear INTEGER ,strCampusSchool TEXT ,strCampusCollege TEXT ,strCampusClass TEXT ,strLastCampusFeeds TEXT)");
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,strNick TEXT ,shGender INTEGER ,shAge INTEGER ,nFaceID INTEGER ,strCertificationInfo TEXT ,shType INTEGER ,vContent BLOB ,strSign TEXT ,strCompany TEXT ,strSchool TEXT ,uFaceTimeStamp INTEGER ,vQQFaceID BLOB ,strReMark TEXT ,bWeiboInfo INTEGER ,bQzoneInfo INTEGER ,nSameFriendsNum INTEGER ,strCompanySame TEXT ,strSchoolSame TEXT ,lCardShowNum INTEGER ,bSingle INTEGER ,lVisitCount INTEGER ,lVoteCount INTEGER ,tagInfosByte BLOB ,eUserIdentityType INTEGER ,vBackground BLOB ,labelInfoBytes BLOB ,age INTEGER ,constellation INTEGER ,pyFaceUrl TEXT ,location TEXT ,bVoted INTEGER ,bFavorited INTEGER ,iVoteIncrement INTEGER ,strJoinHexAlbumFileKey TEXT ,iFaceNum INTEGER ,cSqqLevel INTEGER ,iQQLevel INTEGER ,strProvince TEXT ,strCity TEXT ,strCountry TEXT ,lBirthday INTEGER ,strLocationCodes TEXT ,strLocationDesc TEXT ,strHometownCodes TEXT ,strHometownDesc TEXT ,strEmail TEXT ,strPersonalNote TEXT ,iProfession INTEGER ,bindPhoneInfo TEXT ,bCardInfo BLOB ,strTroopName TEXT ,strTroopNick TEXT ,strMobile TEXT ,strContactName TEXT ,ulShowControl INTEGER ,feedPreviewTime INTEGER ,strQzoneFeedsDesc TEXT ,strSpaceName TEXT ,strQzoneHeader TEXT ,vQzonePhotos BLOB ,vQzoneCoverInfo BLOB ,strStatus TEXT ,strAutoRemark TEXT ,vSeed BLOB ,vCookies BLOB ,bQQVipOpen INTEGER ,iQQVipType INTEGER ,iQQVipLevel INTEGER ,bSuperVipOpen INTEGER ,iSuperVipType INTEGER ,iSuperVipLevel INTEGER ,bSuperQQOpen INTEGER ,iSuperQQType INTEGER ,iSuperQQLevel INTEGER ,bHollywoodVipOpen INTEGER ,iHollywoodVipType INTEGER ,iHollywoodVipLevel INTEGER ,strShowName TEXT ,strVoiceFilekey TEXT ,shDuration INTEGER ,bRead INTEGER ,strUrl TEXT ,vRichSign BLOB ,lSignModifyTime INTEGER ,nLastGameFlag INTEGER ,strGameLogoUrl_1 TEXT ,strGameLogoUrl_2 TEXT ,strGameLogoUrl_3 TEXT ,strGameLogoUrl_4 TEXT ,strGameLogoKey_1 TEXT ,strGameLogoKey_2 TEXT ,strGameLogoKey_3 TEXT ,strGameLogoKey_4 TEXT ,strGameName_1 TEXT ,strGameName_2 TEXT ,strGameName_3 TEXT ,strGameName_4 TEXT ,strGameAppid_1 TEXT ,strGameAppid_2 TEXT ,strGameAppid_3 TEXT ,strGameAppid_4 TEXT ,strProfileUrl TEXT ,nStarFansFlag INTEGER ,strStarPicUrl_0 TEXT ,strStarPicUrl_1 TEXT ,strStarPicUrl_2 TEXT ,strStarLvUrl_0 TEXT ,strStarLvUrl_1 TEXT ,strStarLvUrl_2 TEXT ,strStarLogoUrl TEXT ,starFansJumpUrl TEXT ,lUserFlag INTEGER ,lLoginDays INTEGER ,strLoginDaysDesc TEXT ,lQQMasterLogindays INTEGER ,iXManScene1DelayTime INTEGER ,iXManScene2DelayTime INTEGER ,allowPeopleSee INTEGER ,allowCalInteractive INTEGER ,showOnlineFriends INTEGER ,allowClick INTEGER ,babyQSwitch INTEGER ,showLightalk INTEGER ,lightalkNick TEXT ,lightalkId TEXT ,isSuperRedDiamond INTEGER ,isRedDiamond INTEGER ,redLevel INTEGER ,isSuperYellowDiamond INTEGER ,isYellowDiamond INTEGER ,yellowLevel INTEGER ,isSuperGreenDiamond INTEGER ,isGreenDiamond INTEGER ,greenLevel INTEGER ,uAccelerateMultiple INTEGER ,strRespMusicInfo TEXT ,templateRet INTEGER ,lCurrentStyleId INTEGER ,lCurrentBgId INTEGER ,backgroundUrl TEXT ,backgroundColor INTEGER ,dynamicCardFlag INTEGER ,strZipUrl TEXT ,strActiveUrl TEXT ,strDrawerCardUrl TEXT ,strWzryHeroUrl TEXT ,wzryHonorInfo BLOB ,strExtInfo TEXT ,strCurrentBgUrl TEXT ,bgType BLOB ,encId TEXT ,busiEntry TEXT ,favoriteSource INTEGER ,visibleMusicPendant INTEGER ,autoPlayMusicPendant INTEGER ,showRedPointMusicPendant INTEGER ,privilegePromptStr TEXT ,privilegeJumpUrl TEXT ,vOpenPriv BLOB ,vClosePriv BLOB ,addSrcName TEXT ,addSrcId INTEGER ,addSubSrcId INTEGER ,strVoteLimitedNotice TEXT ,bHaveVotedCnt INTEGER ,bAvailVoteCnt INTEGER ,olympicTorch INTEGER ,mNowShowFlag INTEGER ,mNowShowIconUrl TEXT ,mNowShowJumpUrl TEXT ,vCoverInfo BLOB ,videoHeadFlag INTEGER ,videoHeadUrl TEXT ,medalSwitchDisable INTEGER ,iMedalCount INTEGER ,iNewCount INTEGER ,iUpgradeCount INTEGER ,strPromptParams TEXT ,hobbyEntry TEXT ,lastPraiseInfoList BLOB ,tempChatSig BLOB ,strCampusName TEXT ,strCampusAcademy TEXT ,iCampusIsSigned INTEGER ,namePlateOfKingGameId INTEGER ,namePlateOfKingLoginTime INTEGER ,namePlateOfKingDan INTEGER ,namePlateOfKingDanDisplatSwitch INTEGER ,vPersonalityLabelV2 BLOB ,cardType INTEGER ,diyText TEXT ,diyTextFontId INTEGER ,diyTextWidth REAL ,diyTextHeight REAL ,diyTextLocX REAL ,diyTextLocY REAL ,diyTextDegree REAL ,diyTextScale REAL ,diyTextTransparency REAL ,diyDefaultText TEXT ,nCampusStatus INTEGER ,lCampusLastModifySchoolTime INTEGER ,lCampusSchoolID INTEGER ,lCampusCollegeID INTEGER ,nCampusSchoolFlag INTEGER ,nCampusEnrolYear INTEGER ,strCampusSchool TEXT ,strCampusCollege TEXT ,strCampusClass TEXT ,strLastCampusFeeds TEXT ,popularity INTEGER ,declaration TEXT ,voiceUrl TEXT ,isShowCard INTEGER ,updateTime INTEGER ,extendFriendFlag INTEGER ,extendFriendVoiceDuration INTEGER ,extendFriendEntryContact INTEGER ,extendFriendEntryAddFriend INTEGER)");
     return localStringBuilder.toString();
   }
   
@@ -2549,6 +2650,15 @@ public class CardDao
     paramContentValues.put("strCampusCollege", paramEntity.strCampusCollege);
     paramContentValues.put("strCampusClass", paramEntity.strCampusClass);
     paramContentValues.put("strLastCampusFeeds", paramEntity.strLastCampusFeeds);
+    paramContentValues.put("popularity", Integer.valueOf(paramEntity.popularity));
+    paramContentValues.put("declaration", paramEntity.declaration);
+    paramContentValues.put("voiceUrl", paramEntity.voiceUrl);
+    paramContentValues.put("isShowCard", Boolean.valueOf(paramEntity.isShowCard));
+    paramContentValues.put("updateTime", Long.valueOf(paramEntity.updateTime));
+    paramContentValues.put("extendFriendFlag", Integer.valueOf(paramEntity.extendFriendFlag));
+    paramContentValues.put("extendFriendVoiceDuration", Integer.valueOf(paramEntity.extendFriendVoiceDuration));
+    paramContentValues.put("extendFriendEntryContact", Short.valueOf(paramEntity.extendFriendEntryContact));
+    paramContentValues.put("extendFriendEntryAddFriend", Short.valueOf(paramEntity.extendFriendEntryAddFriend));
   }
 }
 

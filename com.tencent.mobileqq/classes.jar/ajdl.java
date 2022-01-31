@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopSearchResultDialog;
 
-public class ajdl
+class ajdl
   implements Runnable
 {
-  public ajdl(AvatarWallAdapter paramAvatarWallAdapter, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
+  ajdl(ajdk paramajdk) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    new NewTroopSearchResultDialog(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdl
  * JD-Core Version:    0.7.0.1
  */

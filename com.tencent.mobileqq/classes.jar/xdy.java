@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
 
 public class xdy
+  implements Runnable
 {
-  public static final IRedPacket a = new RedPacketManager();
+  public xdy(ThemeHbFragment paramThemeHbFragment) {}
+  
+  public void run()
+  {
+    ThemeHbFragment.a(this.a).startAnimation(ThemeHbFragment.a(this.a));
+    ThemeHbFragment.a(this.a).setVisibility(0);
+    this.a.a.a("theme.pack.show", 2);
+  }
 }
 
 

@@ -1,15 +1,36 @@
-import com.tencent.av.redpacket.AVRedPacketMusicPlayer;
-import com.tencent.av.redpacket.SoundPoolHelper.OnLoadFinishListener;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
 
 public class jlv
-  implements SoundPoolHelper.OnLoadFinishListener
+  implements Runnable
 {
-  public jlv(AVRedPacketMusicPlayer paramAVRedPacketMusicPlayer) {}
+  public jlv(RedPacketRollTextView paramRedPacketRollTextView) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    while ((RedPacketRollTextView.b(this.a) != RedPacketRollTextView.c(this.a)) && (this.a.a)) {
+      try
+      {
+        if (RedPacketRollTextView.b(this.a) != RedPacketRollTextView.c(this.a)) {
+          RedPacketRollTextView.a(this.a, (RedPacketRollTextView.b(this.a) + 1) % 10);
+        }
+        int i = RedPacketRollTextView.b(this.a);
+        Message localMessage = RedPacketRollTextView.a(this.a).obtainMessage();
+        localMessage.what = 1;
+        Bundle localBundle = new Bundle();
+        localBundle.putString("content", Integer.toString(i % 10));
+        localMessage.setData(localBundle);
+        RedPacketRollTextView.a(this.a).sendMessage(localMessage);
+        Thread.sleep(RedPacketRollTextView.d(this.a));
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
+    if (RedPacketRollTextView.a(this.a) != null) {
+      RedPacketRollTextView.a(this.a).b();
     }
   }
 }

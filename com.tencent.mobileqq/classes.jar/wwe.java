@@ -1,27 +1,15 @@
-import Wallet.GoldMsgGetReq;
-import Wallet.GoldMsgGetRsp;
-import Wallet.GoldMsgSetReq;
-import Wallet.GoldMsgSetRsp;
-import com.tencent.mobileqq.activity.qwallet.GoldConfigObserver;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class wwe
-  extends GoldConfigObserver
+  implements DialogInterface.OnCancelListener
 {
-  public wwe(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
+  public wwe(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void a(boolean paramBoolean, GoldMsgGetReq paramGoldMsgGetReq, GoldMsgGetRsp paramGoldMsgGetRsp)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramGoldMsgGetReq, paramGoldMsgGetRsp);
-    }
-  }
-  
-  public void a(boolean paramBoolean, GoldMsgSetReq paramGoldMsgSetReq, GoldMsgSetRsp paramGoldMsgSetRsp)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramGoldMsgSetReq, paramGoldMsgSetRsp);
-    }
+    this.a.a = null;
   }
 }
 

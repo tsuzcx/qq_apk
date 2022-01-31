@@ -1,24 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class lqg
   implements Runnable
 {
-  public lqg(ArticleReadInfoModule paramArticleReadInfoModule, List paramList) {}
+  public lqg(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ArticleReadInfo localArticleReadInfo = (ArticleReadInfo)localIterator.next();
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleReadInfoModule.a(localArticleReadInfo);
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.b("DELETE FROM " + ArticleInfo.class.getSimpleName() + " WHERE mChannelID = " + this.jdField_a_of_type_Int);
   }
 }
 

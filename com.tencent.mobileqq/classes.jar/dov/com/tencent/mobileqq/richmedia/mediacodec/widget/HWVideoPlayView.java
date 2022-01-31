@@ -13,8 +13,8 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
-import anxq;
-import anxr;
+import aonv;
+import aonw;
 import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
 import com.tencent.biz.qqstory.utils.VideoUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -46,7 +46,7 @@ public class HWVideoPlayView
   public int a;
   public long a;
   private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new anxq(this);
+  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new aonv(this);
   private GPUOESBaseFilter jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESBaseFilter;
   private final DecodeConfig jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig = new DecodeConfig();
   private HWDecodeListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWDecodeListener;
@@ -261,7 +261,7 @@ public class HWVideoPlayView
       if (QLog.isColorLevel()) {
         QLog.d("HWVideoPlayView", 4, "onSurfaceChanged special 8.0 device. Delay play.");
       }
-      postDelayed(new anxr(this), 500L);
+      postDelayed(new aonw(this), 500L);
     }
     for (;;)
     {

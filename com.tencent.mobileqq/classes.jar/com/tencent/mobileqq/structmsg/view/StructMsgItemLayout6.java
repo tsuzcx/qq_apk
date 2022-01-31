@@ -330,7 +330,7 @@ public class StructMsgItemLayout6
               else if ("pavideo".equals(localObject3))
               {
                 localObject1 = ((AbsStructMsgElement)localObject1).a(paramContext, null, paramBundle);
-                ((AnyScaleTypeImageView)localObject1).setImageResource(2130839712);
+                ((AnyScaleTypeImageView)localObject1).setImageResource(2130839718);
                 localObject3 = new LinearLayout.LayoutParams(-1, (int)(BaseChatItemLayout.jdField_a_of_type_Int / 1.8D));
                 if (paramBoolean)
                 {
@@ -513,7 +513,7 @@ public class StructMsgItemLayout6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout6
  * JD-Core Version:    0.7.0.1
  */

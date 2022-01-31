@@ -1,19 +1,21 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class amsz
-  implements Runnable
+class amsz
+  implements DialogInterface.OnDismissListener
 {
-  public amsz(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  amsz(amsy paramamsy) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QIMEffectCameraCaptureUnit.b(this.a);
-    QIMEffectCameraCaptureUnit.c(this.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.onDismiss(paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsz
  * JD-Core Version:    0.7.0.1
  */

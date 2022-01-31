@@ -1,18 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-class antf
-  implements DialogInterface.OnClickListener
+public class antf
+  implements Runnable
 {
-  antf(ante paramante) {}
+  public antf(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.b, this.a.a.a, this.a.a.g + ".mp4", true));
+    if (this.a.jdField_a_of_type_Int == 2) {
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.e();
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = 1;
+      return;
+      if (this.a.jdField_a_of_type_Int == 3) {
+        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.s();
+      }
+    }
   }
 }
 

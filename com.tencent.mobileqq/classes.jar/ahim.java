@@ -1,27 +1,33 @@
-import com.tencent.mobileqq.search.model.PublicAccountSearchResultModel;
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
+import com.tencent.mobileqq.widget.CircleProgress;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ahim
-  implements Comparator
+public class ahim
+  implements Runnable
 {
-  public int a(PublicAccountSearchResultModel paramPublicAccountSearchResultModel1, PublicAccountSearchResultModel paramPublicAccountSearchResultModel2)
+  public ahim(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, String paramString) {}
+  
+  public void run()
   {
-    int j = Long.signum(paramPublicAccountSearchResultModel2.b() - paramPublicAccountSearchResultModel1.b());
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(paramPublicAccountSearchResultModel2.a() - paramPublicAccountSearchResultModel1.a());
+    if (CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite))
+    {
+      CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite).setProgress((CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + CaptureSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite)) / 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "" + this.jdField_a_of_type_JavaLangString + " setProgress=" + (CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + CaptureSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite)) / 2);
+      }
+      CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite);
     }
-    j = i;
-    if (i == 0) {
-      j = PublicAccountSearchEngine.a(paramPublicAccountSearchResultModel1, paramPublicAccountSearchResultModel2);
-    }
-    return j;
+    do
+    {
+      return;
+      CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite).setProgress(CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite));
+    } while (!QLog.isColorLevel());
+    QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "" + this.jdField_a_of_type_JavaLangString + " setProgress=" + CaptureSoDownloadFragmentAllWaite.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahim
  * JD-Core Version:    0.7.0.1
  */

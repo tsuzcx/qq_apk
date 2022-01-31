@@ -1,32 +1,12 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.AVLog;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import java.lang.ref.WeakReference;
-
-public class kdr
-  implements Animation.AnimationListener
+class kdr
+  implements Runnable
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  kdr(kdq paramkdq, int paramInt) {}
   
-  public kdr(EffectFilterTextPager paramEffectFilterTextPager, View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.jdField_a_of_type_Kdq.e(this.jdField_a_of_type_Int - 1);
   }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    AVLog.c("EffectFilterTextPager", "onAnimationEnd :" + localView + "|" + paramAnimation);
-    if (localView != null) {
-      localView.setVisibility(4);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

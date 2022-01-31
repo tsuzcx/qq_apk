@@ -22,7 +22,7 @@ import mqq.app.MobileQQ;
 import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 import mqq.os.MqqHandler;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import rlg;
+import rod;
 
 public class AuthDevUgActivity
   extends IphoneTitleBarActivity
@@ -33,7 +33,7 @@ public class AuthDevUgActivity
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private String jdField_a_of_type_JavaLangString;
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new rlg(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new rod(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo;
   private boolean jdField_a_of_type_Boolean;
   private Button jdField_b_of_type_AndroidWidgetButton;
@@ -52,26 +52,26 @@ public class AuthDevUgActivity
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.VerifyReason);
         if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null)
         {
-          str = getString(2131436542) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
+          str = getString(2131436559) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
           this.jdField_c_of_type_AndroidWidgetTextView.setText(str);
         }
-        this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131436562));
+        this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131436579));
         if ((this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) && (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.BakMobileState == 2))
         {
           this.jdField_c_of_type_AndroidWidgetButton.setVisibility(0);
           if (AppSetting.b) {
-            this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131436606));
+            this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131436623));
           }
         }
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         this.leftView.setVisibility(4);
-        setRightButton(2131432998, this);
+        setRightButton(2131433015, this);
         if (AppSetting.b)
         {
-          this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131436560));
-          this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131436562));
+          this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131436577));
+          this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131436579));
         }
       }
     }
@@ -79,7 +79,7 @@ public class AuthDevUgActivity
     do
     {
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131436561));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131436578));
       break;
       if ((this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.ProtectIntro))) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.ProtectIntro);
@@ -89,27 +89,27 @@ public class AuthDevUgActivity
         if ((this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null) || (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.MbGuideType != 2)) {
           break label420;
         }
-        str = getString(2131436542) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
+        str = getString(2131436559) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
         this.jdField_c_of_type_AndroidWidgetTextView.setText(str);
-        this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131436538));
+        this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131436555));
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         if (!AppSetting.b) {
           break;
         }
-        this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131436560));
-        this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131436538));
+        this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131436577));
+        this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131436555));
         return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131436561));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131436578));
       }
       if ((this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.MbGuideMsg))) {
         this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.MbGuideMsg);
       }
-      this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131436538));
+      this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131436555));
     } while (!AppSetting.b);
-    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131436560));
-    this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131436538));
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131436577));
+    this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131436555));
   }
   
   public void a(int paramInt, Intent paramIntent)
@@ -160,12 +160,12 @@ public class AuthDevUgActivity
         }
         super.getWindow().setFormat(-3);
         if (this.jdField_a_of_type_Boolean) {
-          setTheme(2131624729);
+          setTheme(2131624731);
         }
-        super.setContentView(2130970308);
+        super.setContentView(2130970324);
         if (this.jdField_a_of_type_Boolean)
         {
-          super.setTitle(2131436536);
+          super.setTitle(2131436553);
           this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.app;
           if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
             this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)getAppRuntime());
@@ -183,7 +183,7 @@ public class AuthDevUgActivity
         finish();
         return true;
       }
-      super.setTitle(2131436535);
+      super.setTitle(2131436552);
     }
     if (this.jdField_a_of_type_Boolean)
     {
@@ -202,14 +202,14 @@ public class AuthDevUgActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369988));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369989));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365482));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131369990));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131369981));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370065));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370066));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365504));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131370067));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131370058));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131369991));
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131370068));
       this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
       a();
       this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver.setSeq(this.jdField_a_of_type_Int);
@@ -217,7 +217,7 @@ public class AuthDevUgActivity
       label774:
       finish();
       overridePendingTransition(0, 0);
-      QQToast.a(this, 1, getString(2131433195), 0).a();
+      QQToast.a(this, 1, getString(2131433212), 0).a();
     }
   }
   
@@ -303,9 +303,9 @@ public class AuthDevUgActivity
                 this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile = str;
                 if (!TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile))
                 {
-                  localObject = getString(2131436542) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
+                  localObject = getString(2131436559) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
                   this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-                  this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131436538));
+                  this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131436555));
                   this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
                   this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
                   this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
@@ -336,7 +336,7 @@ public class AuthDevUgActivity
               paramIntent.b(paramInt1);
               ((Intent)localObject).putExtra("auth_dev_open", true);
               startActivity((Intent)localObject);
-              QQToast.a(getApplicationContext(), 2, getString(2131436541), 0).b(getTitleBarHeight());
+              QQToast.a(getApplicationContext(), 2, getString(2131436558), 0).b(getTitleBarHeight());
               paramIntent = new Intent();
               paramIntent.putExtra("auth_dev_open", true);
               paramIntent.putExtra("allow_set", true);
@@ -362,9 +362,9 @@ public class AuthDevUgActivity
       } while (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null);
       this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile = paramIntent;
     } while (TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile));
-    paramIntent = getString(2131436542) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
+    paramIntent = getString(2131436559) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
     this.jdField_c_of_type_AndroidWidgetTextView.setText(paramIntent);
-    this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131436538));
+    this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131436555));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);

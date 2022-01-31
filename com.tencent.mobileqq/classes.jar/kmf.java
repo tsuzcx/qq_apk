@@ -1,24 +1,14 @@
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.OfflineExpire;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.flatbuffers.FlatBuffersParser;
+import java.io.File;
 
-public class kmf
-  extends AbsPreDownloadTask
+public final class kmf
+  implements Runnable
 {
-  BidDownloader a;
+  public kmf(File paramFile, boolean paramBoolean) {}
   
-  public kmf(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
+  public void run()
   {
-    super(paramQQAppInterface, paramString);
-    this.a = paramBidDownloader;
-  }
-  
-  protected void a()
-  {
-    QLog.i(OfflineExpire.a, 1, "start predown bid=" + this.a.a);
-    this.a.a();
+    FlatBuffersParser.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean);
   }
 }
 

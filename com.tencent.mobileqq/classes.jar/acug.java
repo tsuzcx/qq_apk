@@ -1,25 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class acug
-  implements View.OnClickListener
+class acug
+  implements Runnable
 {
-  public acug(FileBrowserPresenterBase paramFileBrowserPresenterBase) {}
+  acug(acuf paramacuf) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.a.a.a();
-    if (paramView != null) {
-      paramView.a();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
+    {
+      QLog.i("FileTransferHandler<FileAssistant>", 1, "Id[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]Send CCMsg, but not size and thumb, try download Pic Thumb");
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, 7);
     }
+    while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType != 2) {
+      return;
+    }
+    QLog.i("FileTransferHandler<FileAssistant>", 1, "Id[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]Send CCMsg, but not size and thumb, try download Video Thumb");
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acug
  * JD-Core Version:    0.7.0.1
  */

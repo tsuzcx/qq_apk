@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.browser;
 
-import aimo;
-import aimp;
-import aimq;
+import ajas;
+import ajat;
+import ajau;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -80,7 +80,7 @@ public class TroopWebviewPlugin
     localObject = new QQProgressDialog((Context)localObject, ((BaseActivity)localObject).getTitleBarHeight());
     ((QQProgressDialog)localObject).a(paramString);
     ((QQProgressDialog)localObject).setCancelable(false);
-    ((QQProgressDialog)localObject).setOnDismissListener(new aimo(this));
+    ((QQProgressDialog)localObject).setOnDismissListener(new ajas(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = ((QQProgressDialog)localObject);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
@@ -90,10 +90,10 @@ public class TroopWebviewPlugin
     Object localObject = (BaseActivity)this.mRuntime.a();
     if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      QQToast.a((Context)localObject, 2131433196, 0).b(((BaseActivity)localObject).getTitleBarHeight());
+      QQToast.a((Context)localObject, 2131433213, 0).b(((BaseActivity)localObject).getTitleBarHeight());
       return;
     }
-    g(((BaseActivity)localObject).getString(2131435532));
+    g(((BaseActivity)localObject).getString(2131435549));
     localObject = new Intent((Context)localObject, TroopCreateLogicActivity.class);
     ((Intent)localObject).putExtra("type", 1);
     ((Intent)localObject).putExtra("cfg", paramString);
@@ -128,9 +128,9 @@ public class TroopWebviewPlugin
         localIntent.putExtra("param_type", 1);
         localIntent.putExtra("param_subtype", 0);
         localIntent.putExtra("param_only_friends", true);
-        localIntent.putExtra("param_title", this.mRuntime.a().getString(2131433654));
-        localIntent.putExtra("param_done_button_wording", this.mRuntime.a().getString(2131432999));
-        localIntent.putExtra("param_done_button_highlight_wording", this.mRuntime.a().getString(2131435029));
+        localIntent.putExtra("param_title", this.mRuntime.a().getString(2131433671));
+        localIntent.putExtra("param_done_button_wording", this.mRuntime.a().getString(2131433016));
+        localIntent.putExtra("param_done_button_highlight_wording", this.mRuntime.a().getString(2131435046));
         localIntent.putExtra("param_only_friends", true);
         localIntent.putExtra("param_exit_animation", 1);
         localIntent.putExtra("param_max", 10);
@@ -174,7 +174,7 @@ public class TroopWebviewPlugin
           if (!TextUtils.isEmpty(paramString))
           {
             paramString = TroopInfoActivity.a(paramString, 9);
-            paramString.putString("troop_info_title", localActivity.getString(2131429851));
+            paramString.putString("troop_info_title", localActivity.getString(2131429857));
             paramString.putInt("troop_info_report_from", 1);
             TroopInfoActivity.a(localActivity, paramString, 45);
             localActivity.overridePendingTransition(2131034123, 2131034124);
@@ -215,7 +215,7 @@ public class TroopWebviewPlugin
   private void m(String paramString)
   {
     Object localObject = this.mRuntime.a();
-    g(((Activity)localObject).getString(2131435539));
+    g(((Activity)localObject).getString(2131435556));
     localObject = new Intent((Context)localObject, TroopCreateLogicActivity.class);
     ((Intent)localObject).putExtra("type", 5);
     ((Intent)localObject).putExtra("troop_location", paramString);
@@ -360,11 +360,11 @@ public class TroopWebviewPlugin
   {
     c();
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.mRuntime.a(), null);
-    localActionSheet.a(2131435537);
-    localActionSheet.a(2131435538, 3);
-    localActionSheet.c(2131432998);
-    localActionSheet.setOnDismissListener(new aimp(this));
-    localActionSheet.a(new aimq(this));
+    localActionSheet.a(2131435554);
+    localActionSheet.a(2131435555, 3);
+    localActionSheet.c(2131433015);
+    localActionSheet.setOnDismissListener(new ajat(this));
+    localActionSheet.a(new ajau(this));
     this.jdField_a_of_type_AndroidAppDialog = localActionSheet;
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -373,7 +373,7 @@ public class TroopWebviewPlugin
   {
     BaseActivity localBaseActivity = (BaseActivity)this.mRuntime.a();
     if (!NetworkUtil.d(localBaseActivity)) {
-      QQToast.a(localBaseActivity, 2131433196, 0).b(localBaseActivity.getTitleBarHeight());
+      QQToast.a(localBaseActivity, 2131433213, 0).b(localBaseActivity.getTitleBarHeight());
     }
     while (TextUtils.isEmpty(paramString)) {
       return;
@@ -394,7 +394,7 @@ public class TroopWebviewPlugin
       }
       if (!NetworkUtil.d(localBaseActivity))
       {
-        QQToast.a(localBaseActivity, 2131433196, 0).b(localBaseActivity.getTitleBarHeight());
+        QQToast.a(localBaseActivity, 2131433213, 0).b(localBaseActivity.getTitleBarHeight());
         return;
       }
       if (TextUtils.isEmpty(paramString))
@@ -1063,11 +1063,11 @@ public class TroopWebviewPlugin
     //   1115: getfield 34	com/tencent/mobileqq/troop/browser/TroopWebviewPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   1118: aload_1
     //   1119: aload_2
-    //   1120: new 742	aimm
+    //   1120: new 742	ajaq
     //   1123: dup
     //   1124: aload_0
     //   1125: aload_3
-    //   1126: invokespecial 744	aimm:<init>	(Lcom/tencent/mobileqq/troop/browser/TroopWebviewPlugin;Ljava/lang/String;)V
+    //   1126: invokespecial 744	ajaq:<init>	(Lcom/tencent/mobileqq/troop/browser/TroopWebviewPlugin;Ljava/lang/String;)V
     //   1129: invokevirtual 747	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   1132: invokestatic 308	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1135: ifeq +744 -> 1879
@@ -1230,11 +1230,11 @@ public class TroopWebviewPlugin
     //   1482: new 797	android/os/Handler
     //   1485: dup
     //   1486: invokespecial 798	android/os/Handler:<init>	()V
-    //   1489: new 800	aimn
+    //   1489: new 800	ajar
     //   1492: dup
     //   1493: aload_0
     //   1494: aload_1
-    //   1495: invokespecial 801	aimn:<init>	(Lcom/tencent/mobileqq/troop/browser/TroopWebviewPlugin;Ljava/lang/String;)V
+    //   1495: invokespecial 801	ajar:<init>	(Lcom/tencent/mobileqq/troop/browser/TroopWebviewPlugin;Ljava/lang/String;)V
     //   1498: ldc2_w 802
     //   1501: invokevirtual 807	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   1504: pop
@@ -1538,7 +1538,7 @@ public class TroopWebviewPlugin
     if (paramByte == 0)
     {
       if (bool) {
-        QQToast.a((Context)localObject2, 2131435542, 0).b(((BaseActivity)localObject2).getTitleBarHeight());
+        QQToast.a((Context)localObject2, 2131435559, 0).b(((BaseActivity)localObject2).getTitleBarHeight());
       }
       for (;;)
       {
@@ -1549,20 +1549,20 @@ public class TroopWebviewPlugin
         ((BaseActivity)localObject2).setResult(-1, paramIntent);
         ((BaseActivity)localObject2).finish();
         return;
-        QQToast.a((Context)localObject2, 2131435540, 0).b(((BaseActivity)localObject2).getTitleBarHeight());
+        QQToast.a((Context)localObject2, 2131435557, 0).b(((BaseActivity)localObject2).getTitleBarHeight());
       }
     }
     if (paramByte == 1002) {
-      paramIntent = ((BaseActivity)localObject2).getString(2131435544);
+      paramIntent = ((BaseActivity)localObject2).getString(2131435561);
     }
     for (;;)
     {
       QQToast.a((Context)localObject2, paramIntent, 0).b(((BaseActivity)localObject2).getTitleBarHeight());
       return;
       if (bool) {
-        paramIntent = ((BaseActivity)localObject2).getString(2131435543);
+        paramIntent = ((BaseActivity)localObject2).getString(2131435560);
       } else {
-        paramIntent = ((BaseActivity)localObject2).getString(2131435541);
+        paramIntent = ((BaseActivity)localObject2).getString(2131435558);
       }
     }
   }
@@ -1594,7 +1594,7 @@ public class TroopWebviewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.browser.TroopWebviewPlugin
  * JD-Core Version:    0.7.0.1
  */

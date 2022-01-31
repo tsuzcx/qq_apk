@@ -1,22 +1,75 @@
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.HotChatCenterManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatItemData;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
-class zer
+public class zer
   implements Runnable
 {
-  zer(zeq paramzeq, boolean paramBoolean) {}
+  public zer(HotChatCenterManager paramHotChatCenterManager, HotChatItemData paramHotChatItemData) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      synchronized (NewFriendManager.a(this.jdField_a_of_type_Zeq.a))
+    EntityManager localEntityManager = null;
+    Object localObject4 = null;
+    localObject2 = localObject4;
+    localObject1 = localEntityManager;
+    for (;;)
+    {
+      try
       {
-        Iterator localIterator = NewFriendManager.a(this.jdField_a_of_type_Zeq.a).iterator();
-        if (localIterator.hasNext()) {
-          ((NewFriendManager.INewFriendListener)localIterator.next()).O_();
+        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppHotChatCenterManager.a();
+        if (localQQAppInterface != null) {
+          continue;
         }
+        if (0 != 0) {
+          throw new NullPointerException();
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QQAppInterface localQQAppInterface;
+        localObject1 = localObject2;
+        QLog.e("HotChatCenterManager", 1, localThrowable, new Object[0]);
+        return;
+      }
+      finally
+      {
+        if (localObject1 == null) {
+          continue;
+        }
+        ((EntityManager)localObject1).a();
+      }
+      return;
+      localObject2 = localObject4;
+      localObject1 = localEntityManager;
+      localEntityManager = localQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localObject2 = localEntityManager;
+      localObject1 = localEntityManager;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData.getStatus() == 1000)
+      {
+        localObject2 = localEntityManager;
+        localObject1 = localEntityManager;
+        localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
+        localObject2 = localEntityManager;
+        localObject1 = localEntityManager;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = localEntityManager;
+          localObject1 = localEntityManager;
+          QLog.d("HotChatCenterManager", 2, new Object[] { "[persist],code:", this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData.mHotChatCode });
+        }
+        if (localEntityManager != null) {
+          localEntityManager.a();
+        }
+      }
+      else
+      {
+        localObject2 = localEntityManager;
+        localObject1 = localEntityManager;
+        localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
       }
     }
   }

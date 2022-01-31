@@ -12,11 +12,11 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.ResidentTip;
 import com.tencent.av.utils.TipsManager;
 import com.tencent.ttpic.util.VideoMaterialUtil.TRIGGER_TYPE;
-import jgp;
-import jgq;
-import jgr;
-import jgs;
-import jgt;
+import jga;
+import jgb;
+import jgc;
+import jgd;
+import jge;
 
 public class EffectPendantTips
 {
@@ -38,12 +38,12 @@ public class EffectPendantTips
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
     this.jdField_a_of_type_Boolean = paramContext.getSharedPreferences("effects_face_file", 4).getBoolean("key_frist_use_Face" + VideoController.a().a().getCurrentAccountUin(), false);
     this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(VideoMaterialUtil.TRIGGER_TYPE.MOUTH_OPEN.value, 2131429255);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(VideoMaterialUtil.TRIGGER_TYPE.EYEBROWS_RAISE.value, 2131429256);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(VideoMaterialUtil.TRIGGER_TYPE.BLINK.value, 2131429257);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(VideoMaterialUtil.TRIGGER_TYPE.HEAD_SHAKE.value, 2131429258);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(VideoMaterialUtil.TRIGGER_TYPE.KISS.value, 2131429259);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(jdField_a_of_type_Int, 2131429260);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(VideoMaterialUtil.TRIGGER_TYPE.MOUTH_OPEN.value, 2131429261);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(VideoMaterialUtil.TRIGGER_TYPE.EYEBROWS_RAISE.value, 2131429262);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(VideoMaterialUtil.TRIGGER_TYPE.BLINK.value, 2131429263);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(VideoMaterialUtil.TRIGGER_TYPE.HEAD_SHAKE.value, 2131429264);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(VideoMaterialUtil.TRIGGER_TYPE.KISS.value, 2131429265);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(jdField_a_of_type_Int, 2131429266);
   }
   
   public String a(Context paramContext, int paramInt)
@@ -63,17 +63,17 @@ public class EffectPendantTips
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new jgs(this, paramInt2, paramInt1));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jgd(this, paramInt2, paramInt1));
   }
   
   public void a(int paramInt, Drawable paramDrawable, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new jgq(this, paramString, paramInt, paramDrawable));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jgb(this, paramString, paramInt, paramDrawable));
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new jgp(this, paramString, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jga(this, paramString, paramInt));
   }
   
   public void a(VideoAppInterface paramVideoAppInterface)
@@ -83,12 +83,12 @@ public class EffectPendantTips
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new jgr(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jgc(this, paramInt));
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new jgt(this, paramInt1), paramInt2);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new jge(this, paramInt1), paramInt2);
   }
   
   public void b(int paramInt, Drawable paramDrawable, String paramString)

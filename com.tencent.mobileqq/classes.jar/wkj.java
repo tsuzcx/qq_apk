@@ -1,20 +1,31 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import mqq.os.MqqHandler;
 
 public class wkj
-  implements Runnable
+  extends MqqHandler
 {
-  public wkj(PhoneContactFragment paramPhoneContactFragment) {}
+  public wkj(NotificationView paramNotificationView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (PhoneContactFragment.a(this.a) == null) {
-      PhoneContactFragment.a(this.a, (PhoneContactManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10));
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter == null);
+      this.a.i();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter.a = GroupSystemMsgController.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter.notifyDataSetChanged();
+      return;
     }
-    boolean bool = PhoneContactFragment.a(this.a).f();
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.post(new wkk(this, bool));
+    this.a.j();
   }
 }
 

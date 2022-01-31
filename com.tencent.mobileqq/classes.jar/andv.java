@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoLabel;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
 
 public class andv
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public andv(EditVideoLabel paramEditVideoLabel) {}
+  public andv(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.a(0);
+    QZoneCoverStoreJsPlugin.a(this.a, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andv
  * JD-Core Version:    0.7.0.1
  */

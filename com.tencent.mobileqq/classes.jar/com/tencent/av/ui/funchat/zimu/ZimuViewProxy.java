@@ -39,7 +39,7 @@ public class ZimuViewProxy
   {
     this.jdField_a_of_type_ComTencentAvBusinessManagerZimuARZimuTask = null;
     this.jdField_a_of_type_ComTencentAvBusinessManagerZimuARZimuTask = ARZimuTaskFactory.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
-    paramString = (GamePlayView)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969283, null);
+    paramString = (GamePlayView)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969284, null);
     if (this.jdField_a_of_type_ComTencentAvBusinessManagerZimuARZimuTask == null) {
       return false;
     }
@@ -88,7 +88,7 @@ public class ZimuViewProxy
       if (!paramString.equals("film")) {
         break label119;
       }
-      f1 = paramInt2 - localResources.getDimension(2131560060);
+      f1 = paramInt2 - localResources.getDimension(2131560078);
       localLayoutParams.addRule(12);
     }
     for (;;)
@@ -197,14 +197,14 @@ public class ZimuViewProxy
         break label91;
       }
       f = paramVideoLayerUI.h() - ScreenLayoutDoubleScreen.b(paramVideoLayerUI.g());
-      localLayoutParams.bottomMargin = ((int)(localResources.getDimension(2131560064) + f));
+      localLayoutParams.bottomMargin = ((int)(localResources.getDimension(2131560082) + f));
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.setLayoutParams(localLayoutParams);
       return;
       label91:
-      localLayoutParams.bottomMargin = ((int)(paramInt2 - localResources.getDimension(2131560060)));
+      localLayoutParams.bottomMargin = ((int)(paramInt2 - localResources.getDimension(2131560078)));
       continue;
       label110:
       if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a().equals("liveshow"))
@@ -215,7 +215,7 @@ public class ZimuViewProxy
       else
       {
         f = paramInt1;
-        localLayoutParams.topMargin = ((int)(localResources.getDimension(2131560057) + f));
+        localLayoutParams.topMargin = ((int)(localResources.getDimension(2131560075) + f));
       }
     }
   }

@@ -115,11 +115,11 @@ import tencent.im.msg.im_msg_body.ElemFlags2;
 import tencent.im.msg.im_msg_body.MsgBody;
 import tencent.im.msg.im_msg_body.PubAccInfo;
 import tencent.im.msg.im_msg_body.RichText;
-import zpm;
-import zpo;
-import zpp;
-import zpq;
-import zps;
+import zss;
+import zsu;
+import zsv;
+import zsw;
+import zsy;
 
 public class C2CMessageProcessor
   extends BaseMessageProcessor
@@ -844,7 +844,7 @@ public class C2CMessageProcessor
         if ((paramInt == -126) || (paramInt == 2))
         {
           localObject1 = paramMsgHead + " 加入了本群";
-          localObject2 = paramQQAppInterface.getApp().getApplicationContext().getString(2131433085);
+          localObject2 = paramQQAppInterface.getApp().getApplicationContext().getString(2131433102);
           paramString2 = (String)localObject1;
           if (a(str1)) {
             paramString2 = (String)localObject1 + "，" + (String)localObject2;
@@ -898,7 +898,7 @@ public class C2CMessageProcessor
           {
             localObject3 = (String)localObject1 + "邀请 ";
             localObject4 = (String)localObject3 + paramMsgHead + " 加入群聊";
-            String str2 = paramQQAppInterface.getApp().getApplicationContext().getString(2131433085);
+            String str2 = paramQQAppInterface.getApp().getApplicationContext().getString(2131433102);
             localObject2 = localObject4;
             if (a(str1)) {
               localObject2 = (String)localObject4 + "，" + str2;
@@ -1319,10 +1319,10 @@ public class C2CMessageProcessor
     //   862: iconst_1
     //   863: if_icmple +15 -> 878
     //   866: aload_3
-    //   867: new 887	zpn
+    //   867: new 887	zst
     //   870: dup
     //   871: aload_0
-    //   872: invokespecial 890	zpn:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
+    //   872: invokespecial 890	zst:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
     //   875: invokestatic 896	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   878: aload_0
     //   879: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -1953,7 +1953,7 @@ public class C2CMessageProcessor
         MessageRecord localMessageRecord = (MessageRecord)paramList.next();
         if (localMessageRecord.istroop == 1008) {
           if ((!TextUtils.isEmpty(localMessageRecord.getExtInfoFromExtStr("public_account_send_flag"))) && (!TextUtils.isEmpty(localMessageRecord.getExtInfoFromExtStr("public_account_msg_id"))) && (!TextUtils.equals(localMessageRecord.frienduin, localMessageRecord.selfuin))) {
-            ThreadManager.post(new zps(this, localMessageRecord.frienduin, localMessageRecord.selfuin, localMessageRecord.getExtInfoFromExtStr("public_account_msg_id"), localMessageRecord.time, l1, localMessageRecord.getExtInfoFromExtStr("public_account_send_flag")), 5, null, false);
+            ThreadManager.post(new zsy(this, localMessageRecord.frienduin, localMessageRecord.selfuin, localMessageRecord.getExtInfoFromExtStr("public_account_msg_id"), localMessageRecord.time, l1, localMessageRecord.getExtInfoFromExtStr("public_account_send_flag")), 5, null, false);
           } else if (QLog.isColorLevel()) {
             QLog.d("Q.msg.C2CMessageProcessor", 2, "reportPubAccMsg exception, public_account_send_flag null || public_account_msg_id null || ");
           }
@@ -2322,7 +2322,7 @@ public class C2CMessageProcessor
         }
         if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
         {
-          Collections.sort((List)localObject3, new zpo(this));
+          Collections.sort((List)localObject3, new zsu(this));
           if (localObject1 == null) {}
         }
         try
@@ -2568,7 +2568,7 @@ public class C2CMessageProcessor
     label479:
     if (paramObject.size() > 0)
     {
-      Collections.sort(paramObject, new zpp(this));
+      Collections.sort(paramObject, new zsv(this));
       l1 = ((MessageRecord)paramObject.get(0)).time;
     }
     for (paramToServiceMsg = paramObject;; paramToServiceMsg = null)
@@ -2976,10 +2976,10 @@ public class C2CMessageProcessor
     //   692: invokevirtual 130	java/util/ArrayList:size	()I
     //   695: ifle +16 -> 711
     //   698: aload 13
-    //   700: new 1560	zpr
+    //   700: new 1560	zsx
     //   703: dup
     //   704: aload_0
-    //   705: invokespecial 1561	zpr:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
+    //   705: invokespecial 1561	zsx:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
     //   708: invokestatic 896	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   711: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   714: ifeq +63 -> 777
@@ -3914,7 +3914,7 @@ public class C2CMessageProcessor
                         }
                         localObject2 = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
                         if (localObject2 != null) {
-                          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(getClass()).postDelayed(new zpm(this, (TroopHandler)localObject2, (String)localObject1), 2000L);
+                          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(getClass()).postDelayed(new zss(this, (TroopHandler)localObject2, (String)localObject1), 2000L);
                         }
                         MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, l5, i7, l6, i6);
                       }
@@ -4094,7 +4094,7 @@ public class C2CMessageProcessor
         }
       }
       if ((localMessageRecord.mQidianMasterUin != 0L) && (!TextUtils.isEmpty(localMessageRecord.mQidianTipText)) && (localMessageRecord.mIsShowQidianTips == 1)) {
-        ThreadManager.executeOnSubThread(new zpq(this, localMessageRecord));
+        ThreadManager.executeOnSubThread(new zsw(this, localMessageRecord));
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(paramArrayList);

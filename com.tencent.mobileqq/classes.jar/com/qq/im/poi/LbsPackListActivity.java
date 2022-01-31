@@ -1,5 +1,10 @@
 package com.qq.im.poi;
 
+import amq;
+import amr;
+import ams;
+import amt;
+import amu;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,11 +20,6 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import ank;
-import anl;
-import anm;
-import ann;
-import ano;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.armap.ArMapInterface;
@@ -79,20 +79,20 @@ public class LbsPackListActivity
   
   public LbsPackListActivity()
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener = new anl(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollLinstener = new anm(this);
-    this.jdField_a_of_type_AndroidOsHandler = new ann(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComQqImPoiLbsPackObserver = new ano(this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener = new amr(this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollLinstener = new ams(this);
+    this.jdField_a_of_type_AndroidOsHandler = new amt(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComQqImPoiLbsPackObserver = new amu(this);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentWidgetLbsPackHorizontalListView = ((LbsPackHorizontalListView)findViewById(2131362832));
+    this.jdField_a_of_type_ComTencentWidgetLbsPackHorizontalListView = ((LbsPackHorizontalListView)findViewById(2131362850));
     this.jdField_a_of_type_ComTencentWidgetLbsPackHorizontalListView.setOnScrollStateChangedListener(this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener);
     this.jdField_a_of_type_ComTencentWidgetLbsPackHorizontalListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollLinstener);
     this.jdField_a_of_type_ComTencentWidgetLbsPackHorizontalListView.setStayDisplayOffsetZero(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362833));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ank(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362851));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new amq(this));
     int m = getResources().getDisplayMetrics().widthPixels;
     this.jdField_c_of_type_Int = ((int)(m * 0.025F));
     this.jdField_d_of_type_Int = ((int)(m * 0.8F));
@@ -103,7 +103,7 @@ public class LbsPackListActivity
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(this.f, -1));
     ProgressBar localProgressBar = new ProgressBar(getApplicationContext());
     localProgressBar.setIndeterminate(true);
-    localProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130838592));
+    localProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130838596));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(18.0F, getResources()), AIOUtils.a(18.0F, getResources()));
     localLayoutParams.addRule(15);
     localLayoutParams.leftMargin = ((this.f + this.jdField_c_of_type_Int - AIOUtils.a(18.0F, getResources())) / 2 - this.jdField_c_of_type_Int);

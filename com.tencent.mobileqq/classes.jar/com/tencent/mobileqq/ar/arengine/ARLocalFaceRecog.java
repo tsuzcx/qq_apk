@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aacf;
-import aach;
+import aahg;
+import aahi;
 import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
@@ -32,7 +32,7 @@ public class ARLocalFaceRecog
   public int a;
   long jdField_a_of_type_Long;
   Context jdField_a_of_type_AndroidContentContext;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aacf(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aahg(this);
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public FaceCluster a;
   ARScanStarFaceConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo;
@@ -528,7 +528,7 @@ public class ARLocalFaceRecog
     }
     this.jdField_d_of_type_Boolean = true;
     long l = System.currentTimeMillis();
-    jdField_a_of_type_AndroidOsHandler.post(new aach(this, paramARCloudRecogRspFaceResult, l));
+    jdField_a_of_type_AndroidOsHandler.post(new aahi(this, paramARCloudRecogRspFaceResult, l));
     return true;
   }
   

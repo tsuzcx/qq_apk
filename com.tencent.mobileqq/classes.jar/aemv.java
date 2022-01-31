@@ -1,19 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
 
 public class aemv
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public aemv(PlayOperationViewModel paramPlayOperationViewModel, String paramString1, String[] paramArrayOfString, String paramString2, Context paramContext, ActionSheet paramActionSheet) {}
+  public aemv(NearbyProxy paramNearbyProxy, NearbyProxyObserver paramNearbyProxyObserver, int paramInt, Object[] paramArrayOfObject) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString[paramInt], this.b, new aemw(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProxyObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

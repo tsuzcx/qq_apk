@@ -1,14 +1,14 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class vzq
+class vzq
   implements Runnable
 {
-  public vzq(GamePartyTipsBar paramGamePartyTipsBar, String paramString) {}
+  vzq(vzp paramvzp) {}
   
   public void run()
   {
-    GamePartyTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar).setText(this.jdField_a_of_type_JavaLangString);
+    this.a.a.a.setStackFromBottomWithoutRequestLayoutIfNecessary(true);
   }
 }
 

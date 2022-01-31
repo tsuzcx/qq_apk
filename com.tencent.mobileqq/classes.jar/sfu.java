@@ -1,14 +1,23 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class sfu
+class sfu
   implements Runnable
 {
-  public sfu(Conversation paramConversation) {}
+  sfu(sft paramsft, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.a.a.q();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Sft.a.a.a.a(15, 2);
+      this.jdField_a_of_type_Sft.a.a.a.a(15, null);
+    }
+    while (!this.b) {
+      return;
+    }
+    this.jdField_a_of_type_Sft.a.a.a.a(15, 0);
+    this.jdField_a_of_type_Sft.a.a.a.a(15, null);
   }
 }
 

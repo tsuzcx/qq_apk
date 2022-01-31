@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
-import ajlp;
-import ajlq;
+import ajzu;
+import ajzv;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import com.tencent.common.app.AppInterface;
@@ -15,7 +15,7 @@ import com.tencent.mobileqq.troop.utils.TroopUtils;
 public class FaceDrawableImpl
   extends FaceDrawable
 {
-  public ajlq a;
+  public ajzv a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   FaceDrawableImpl.InternalDiscussionObserver jdField_a_of_type_ComTencentMobileqqUtilFaceDrawableImpl$InternalDiscussionObserver;
   FaceDrawableImpl.InternalFriendListObserver jdField_a_of_type_ComTencentMobileqqUtilFaceDrawableImpl$InternalFriendListObserver;
@@ -53,7 +53,7 @@ public class FaceDrawableImpl
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a((String)localObject1, false);
         if (((localObject1 == null) || (((ExtensionInfo)localObject1).faceIdUpdateTime == 0L)) && (this.jdField_a_of_type_ComTencentMobileqqUtilIdleUpdater == null))
         {
-          this.jdField_a_of_type_ComTencentMobileqqUtilIdleUpdater = new ajlp(this);
+          this.jdField_a_of_type_ComTencentMobileqqUtilIdleUpdater = new ajzu(this);
           this.jdField_a_of_type_ComTencentMobileqqUtilIdleUpdater.b();
         }
       }
@@ -84,11 +84,11 @@ public class FaceDrawableImpl
           localFaceManager.b(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDrawableImpl$InternalDiscussionObserver);
         }
       }
-      if (this.jdField_a_of_type_Ajlq != null)
+      if (this.jdField_a_of_type_Ajzv != null)
       {
         localFaceManager = (FaceManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(169);
         if (localFaceManager != null) {
-          localFaceManager.b(this.jdField_a_of_type_Ajlq);
+          localFaceManager.b(this.jdField_a_of_type_Ajzv);
         }
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
@@ -147,10 +147,10 @@ public class FaceDrawableImpl
     }
     if (((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int == 113)) && (!TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString)))
     {
-      this.jdField_a_of_type_Ajlq = new ajlq(this, null);
+      this.jdField_a_of_type_Ajzv = new ajzv(this, null);
       localFaceManager = (FaceManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(169);
       if (localFaceManager != null) {
-        localFaceManager.a(this.jdField_a_of_type_Ajlq);
+        localFaceManager.a(this.jdField_a_of_type_Ajzv);
       }
     }
     FaceDecodeTask.a(FaceDecodeTask.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, this));
@@ -202,7 +202,7 @@ public class FaceDrawableImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.util.FaceDrawableImpl
  * JD-Core Version:    0.7.0.1
  */

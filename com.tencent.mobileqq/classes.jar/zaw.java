@@ -1,45 +1,30 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQProfileItem;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.Automator;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
 
 public class zaw
-  extends AccountObserver
+  implements Runnable
 {
-  public zaw(FriendsManager paramFriendsManager) {}
+  public zaw(BrowserAppInterface paramBrowserAppInterface) {}
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public void run()
   {
-    ThreadManager.executeOnSubThread(new zax(this, paramString2, paramString1));
-  }
-  
-  public void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.friend", 2, "onlineStatusChanged isSuccess=" + paramBoolean1 + ",curStatus=" + paramStatus.toString() + ",isFriendListChang=" + paramBoolean2 + ",timeStamp=" + paramLong + ",isGatherListChange=" + paramBoolean3);
-    }
-    if (paramStatus == AppRuntime.Status.online) {
-      FriendsManager.a(this.a).a(11L, false);
-    }
-    for (;;)
+    if ((this.a.isBackground_Stop) && (BaseActivity.sTopActivity == null))
     {
-      FriendsManager.a(this.a).a.a(paramBoolean2, paramLong, paramBoolean3);
-      if (!paramBoolean2)
-      {
-        paramStatus = new QQProfileItem(FriendsManager.a(this.a));
-        FriendsManager.a(this.a).a.a(101, paramStatus);
+      if (QLog.isColorLevel()) {
+        QLog.d("BrowserAppInterface", 2, "no activity running, reboot for tbs now");
       }
-      return;
-      if (paramStatus == AppRuntime.Status.away) {
-        FriendsManager.a(this.a).a(31L, false);
-      } else if (paramStatus == AppRuntime.Status.invisiable) {
-        FriendsManager.a(this.a).a(41L, false);
-      }
+      localIntent = new Intent();
+      localIntent.putExtra("qq_mode_foreground", true);
+      BrowserAppInterface.a(this.a, localIntent);
     }
+    while (!QLog.isColorLevel())
+    {
+      Intent localIntent;
+      return;
+    }
+    QLog.d("BrowserAppInterface", 2, "activity still running, cannot reboot");
   }
 }
 

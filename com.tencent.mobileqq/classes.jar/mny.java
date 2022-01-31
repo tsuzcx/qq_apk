@@ -1,58 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.RecommendAndAd;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.ResponseCallback;
+import java.util.List;
 
-public class mny
-  implements INetInfoHandler
+public final class mny
+  implements FastWebRequestUtil.ResponseCallback
 {
-  public mny(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  public mny(FastWebRequestUtil.RecommendAndAd paramRecommendAndAd) {}
   
-  public void onNetMobile2None()
+  public void a(boolean paramBoolean, List paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetMobile2None()");
-    }
-    FastWebVideoFeedsPlayManager.d(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
-    }
-    FastWebVideoFeedsPlayManager.a(this.a, true);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
-    }
-    FastWebVideoFeedsPlayManager.a(this.a, false);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
-    }
-    FastWebVideoFeedsPlayManager.a(this.a, true);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
-    }
-    FastWebVideoFeedsPlayManager.a(this.a, false);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetWifi2None()");
-    }
-    FastWebVideoFeedsPlayManager.d(this.a);
+    this.a.a(paramList);
   }
 }
 

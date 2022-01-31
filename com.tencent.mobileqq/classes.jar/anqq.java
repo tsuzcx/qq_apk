@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 class anqq
-  implements Animation.AnimationListener
+  implements VideoCompositeHelper.VideoCompositeCallBack
 {
   anqq(anqp paramanqp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    this.a.a.setVisibility(8);
+    this.a.a.b();
+    if (paramInt == 0)
+    {
+      this.a.a.a.sendEmptyMessage(3);
+      return;
+    }
+    this.a.a.a.sendEmptyMessage(5);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

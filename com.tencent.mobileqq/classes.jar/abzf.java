@@ -1,16 +1,15 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.emoticonview.IPSiteListGoodsAdapter;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import java.util.Comparator;
 
 public class abzf
+  implements Comparator
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
+  public abzf(EmoticonFromGroupManager paramEmoticonFromGroupManager) {}
   
-  private abzf(IPSiteListGoodsAdapter paramIPSiteListGoodsAdapter) {}
+  public int a(String paramString1, String paramString2)
+  {
+    return paramString2.compareTo(paramString1);
+  }
 }
 
 

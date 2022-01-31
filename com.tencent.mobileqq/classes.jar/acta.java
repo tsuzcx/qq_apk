@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class acta
-  implements View.OnClickListener
+  implements FMDialogUtil.FMDialogInterface
 {
-  public acta(DefaultFileModel paramDefaultFileModel) {}
+  public acta(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView, Intent paramIntent) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    FileManagerUtil.b(this.a.a, this.a.b());
+    QfileBaseRecentFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 102);
   }
+  
+  public void b() {}
 }
 
 

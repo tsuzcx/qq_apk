@@ -1,21 +1,22 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
-import java.util.HashMap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 
 public class vyp
   implements Runnable
 {
-  public vyp(StickerBubbleAnimationView paramStickerBubbleAnimationView) {}
+  public vyp(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    StickerBubbleAnimationView.a(this.a).clear();
-    StickerBubbleAnimationView.b(this.a).clear();
-    StickerBubbleAnimationView.c(this.a).clear();
-    StickerBubbleAnimationView.d(this.a).clear();
-    Looper localLooper = Looper.myLooper();
-    if (localLooper != null) {
-      localLooper.quit();
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(12);
+      if ((localObject != null) && (((WebProcessManager)localObject).e())) {
+        ((WebProcessManager)localObject).a(-1, new vyq(this));
+      }
     }
   }
 }

@@ -1,39 +1,19 @@
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.DataLineHandler;
 
 public class zcb
-  implements Runnable
+  extends BroadcastReceiver
 {
-  HotChatInfo jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = null;
+  public zcb(DataLineHandler paramDataLineHandler) {}
   
-  public zcb(HotChatManager paramHotChatManager, HotChatInfo paramHotChatInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = paramHotChatInfo;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.jdField_a_of_type_JavaUtilMap.get(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin)) == null) {
-        break label63;
-      }
-      if (QLog.isColorLevel()) {
-        NearbyUtils.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable already exist", this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin });
-      }
+    paramContext = paramIntent.getAction();
+    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
+      this.a.d(8);
     }
-    return;
-    label63:
-    if (QLog.isColorLevel()) {
-      NearbyUtils.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable", this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin });
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, 4);
-    ((HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).b();
   }
 }
 

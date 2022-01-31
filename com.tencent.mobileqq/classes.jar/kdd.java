@@ -1,40 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.ui.VoiceChangeChooseDialog;
+import android.util.LruCache;
+import com.tencent.av.ui.funchat.record.PCMLoader;
 
 public class kdd
-  extends BroadcastReceiver
+  extends LruCache
 {
-  public kdd(VoiceChangeChooseDialog paramVoiceChangeChooseDialog) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public kdd(PCMLoader paramPCMLoader, int paramInt)
   {
-    boolean bool = true;
-    paramContext = paramIntent.getAction();
-    if ((paramContext != null) && (paramContext.equals("android.intent.action.HEADSET_PLUG")) && (paramIntent.hasExtra("state")))
-    {
-      int i = paramIntent.getIntExtra("state", 0);
-      paramContext = this.a;
-      if (i != 1) {
-        break label114;
-      }
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, kde paramkde)
+  {
+    if (paramkde == null) {
+      return 0;
     }
-    for (;;)
-    {
-      paramContext.jdField_a_of_type_Boolean = bool;
-      if ((this.a.jdField_a_of_type_Boolean) && (VoiceChangeChooseDialog.a(this.a) == 2))
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429598);
-        VoiceChangeChooseDialog.a(this.a, 0);
-      }
-      return;
-      label114:
-      bool = false;
-    }
+    return paramkde.a.length;
   }
 }
 

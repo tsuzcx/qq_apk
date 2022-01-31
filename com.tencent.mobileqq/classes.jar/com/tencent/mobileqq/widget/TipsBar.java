@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akix;
+import akxg;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -58,11 +58,11 @@ public class TipsBar
     super(paramContext, paramAttributeSet);
     Resources localResources = getResources();
     this.jdField_a_of_type_Float = localResources.getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131558986);
-    this.e = localResources.getDimensionPixelSize(2131558987);
-    this.f = localResources.getDimensionPixelSize(2131558988);
-    this.jdField_c_of_type_Int = localResources.getDimensionPixelSize(2131558989);
-    this.d = localResources.getDimensionPixelSize(2131558989);
+    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131558988);
+    this.e = localResources.getDimensionPixelSize(2131558989);
+    this.f = localResources.getDimensionPixelSize(2131558990);
+    this.jdField_c_of_type_Int = localResources.getDimensionPixelSize(2131558991);
+    this.d = localResources.getDimensionPixelSize(2131558991);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.TipsBar);
     this.jdField_a_of_type_JavaLangString = paramContext.getString(1);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2);
@@ -80,14 +80,14 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131494231);
+      return paramResources.getColorStateList(2131494238);
     }
-    return paramResources.getColorStateList(2131494231);
+    return paramResources.getColorStateList(2131494238);
   }
   
   public static Drawable a(Resources paramResources, int paramInt)
   {
-    return paramResources.getDrawable(2130838516);
+    return paramResources.getDrawable(2130838520);
   }
   
   private void a()
@@ -156,9 +156,9 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131494302);
+      return paramResources.getColorStateList(2131494309);
     }
-    return paramResources.getColorStateList(2131494303);
+    return paramResources.getColorStateList(2131494310);
   }
   
   private Button b()
@@ -189,7 +189,7 @@ public class TipsBar
     localObject = d((Resources)localObject, this.jdField_a_of_type_Int);
     localImageView.setPadding(15, 15, 15, 15);
     localImageView.setImageDrawable((Drawable)localObject);
-    localImageView.setOnClickListener(new akix(this));
+    localImageView.setOnClickListener(new akxg(this));
     if (AppSetting.b) {
       localImageView.setContentDescription("关闭");
     }
@@ -235,7 +235,7 @@ public class TipsBar
     switch (paramInt)
     {
     }
-    for (paramResources = paramResources.getDrawable(2130838645);; paramResources = paramResources.getDrawable(2130838645)) {
+    for (paramResources = paramResources.getDrawable(2130838649);; paramResources = paramResources.getDrawable(2130838649)) {
       return a(paramResources);
     }
   }
@@ -342,16 +342,16 @@ public class TipsBar
     switch (paramInt)
     {
     default: 
-      paramResources = paramResources.getDrawable(2130838643);
+      paramResources = paramResources.getDrawable(2130838647);
     }
     for (;;)
     {
       return a(paramResources);
-      paramResources = paramResources.getDrawable(2130838643);
+      paramResources = paramResources.getDrawable(2130838647);
       continue;
-      paramResources = paramResources.getDrawable(2130838641);
+      paramResources = paramResources.getDrawable(2130838645);
       continue;
-      paramResources = paramResources.getDrawable(2130838638);
+      paramResources = paramResources.getDrawable(2130838642);
     }
   }
   
@@ -373,7 +373,7 @@ public class TipsBar
     switch (paramInt)
     {
     }
-    for (paramResources = paramResources.getDrawable(2130838635);; paramResources = paramResources.getDrawable(2130838637)) {
+    for (paramResources = paramResources.getDrawable(2130838639);; paramResources = paramResources.getDrawable(2130838641)) {
       return a(paramResources);
     }
   }
@@ -499,7 +499,7 @@ public class TipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TipsBar
  * JD-Core Version:    0.7.0.1
  */

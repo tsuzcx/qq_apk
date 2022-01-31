@@ -1,32 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.DeleteCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 
-class ljp
-  implements ArticleCommentModule.DeleteCommentObserver
+public class ljp
+  implements ReadInJoyCommentUtils.CreateCommentInterface
 {
-  ljp(ljo paramljo) {}
+  public ljp(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, String paramString) {}
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString1, String paramString2)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentListAdapter", 2, "delete first comment success");
-    }
-    QQToast.a(BaseApplication.getContext(), 0, "删除成功", 0).a();
-    this.a.a.notifyDataSetChanged();
-    paramArticleInfo = this.a.a;
-    paramArticleInfo.a -= 1;
+    QQToast.a(BaseApplication.getContext(), 1, BaseApplication.getContext().getString(2131438878), 0).a();
   }
   
-  public void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2, int paramInt, String paramString3)
+  public void a(String paramString, CommentInfo paramCommentInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentListAdapter", 2, "delete first comment failed ,comment id = " + paramString1 + "sub comment id = " + paramString2 + "err code =" + paramInt + "err Msg = " + paramString3);
-    }
-    QQToast.a(BaseApplication.getContext(), 1, "删除失败", 0).a();
+    ReadInJoyCommentUtils.a(ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment), this.jdField_a_of_type_JavaLangString);
+    QQToast.a(BaseApplication.getContext(), 0, BaseApplication.getContext().getString(2131438877), 0).a();
+    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).notifyDataSetChanged();
   }
 }
 

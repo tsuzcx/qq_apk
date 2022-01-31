@@ -1,27 +1,17 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jsc
-  implements ChatActivityUtils.StartVideoListener
+  implements DialogInterface.OnClickListener
 {
-  public jsc(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jsc(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CallbackWaitingActivityExt.a(this.a).a().a().b = -1;
-    CallbackWaitingActivityExt.c(this.a);
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    CallbackWaitingActivityExt.a(this.a).a().a().b = -1;
-    CallbackWaitingActivityExt.c(this.a);
-    this.a.finish();
+    paramDialogInterface.dismiss();
+    ReportController.b(null, "CliOper", "", "", "0x80060EF", "0x80060EF", 0, 0, "", "", "", "");
   }
 }
 

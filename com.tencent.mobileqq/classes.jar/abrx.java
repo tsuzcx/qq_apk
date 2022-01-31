@@ -1,41 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.confess.ConfessConfig;
+import com.tencent.mobileqq.confess.ConfessMsgListFragment;
+import com.tencent.mobileqq.confess.ConfessObserver;
 
 public class abrx
-  extends Handler
+  extends ConfessObserver
 {
-  public abrx(Client paramClient, Looper paramLooper)
+  public abrx(ConfessMsgListFragment paramConfessMsgListFragment) {}
+  
+  public void a(ConfessConfig paramConfessConfig)
   {
-    super(paramLooper);
+    ConfessMsgListFragment.a(this.a);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
+    if (this.a.isResumed()) {
+      this.a.c();
     }
-    do
-    {
-      do
-      {
-        return;
-        this.a.onRespFromServer(paramMessage.getData());
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
-      return;
-      this.a.onPushMsgFromServer(paramMessage.getData());
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (this.a.isResumed()) {
+      this.a.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.qzone.networkedmodule;
 
-import amgn;
+import amws;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -71,7 +71,7 @@ public class QzoneModuleReport
       }
       return;
     }
-    ThreadManager.post(new amgn(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3), 5, null, false);
+    ThreadManager.post(new amws(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3), 5, null, false);
   }
   
   private static boolean a()

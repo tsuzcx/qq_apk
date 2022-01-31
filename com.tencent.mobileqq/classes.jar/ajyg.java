@@ -1,42 +1,19 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.sonic.SonicJsPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sonic.sdk.SonicDiffDataCallback;
-import org.json.JSONObject;
+import android.app.Application;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
 
-public class ajyg
-  implements SonicDiffDataCallback
+public final class ajyg
+  implements Runnable
 {
-  public ajyg(SonicJsPlugin paramSonicJsPlugin, boolean paramBoolean, CustomWebView paramCustomWebView, String paramString) {}
+  public ajyg(Application paramApplication) {}
   
-  public void callback(String paramString)
+  public void run()
   {
-    str = "";
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (!this.jdField_a_of_type_Boolean) {
-        paramString.remove("result");
-      }
-      paramString = paramString.toString();
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        QLog.e("SonicSdkImpl_SonicJsPlugin", 1, "reloadHttpData error!", paramString);
-        paramString = str;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "reloadHttpData , notify data: " + paramString);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.jdField_a_of_type_JavaLangString, new String[] { paramString });
+    UnifiedDebugManager.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyg
  * JD-Core Version:    0.7.0.1
  */

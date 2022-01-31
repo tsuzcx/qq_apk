@@ -1,28 +1,12 @@
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter.WeiyunCallback;
-import mqq.os.MqqHandler;
+import cooperation.qzone.CloseGuard.Reporter;
+import cooperation.qzone.util.QZLog;
 
-public class amre
-  implements WeiYunLogicCenter.WeiyunCallback
+public final class amre
+  implements CloseGuard.Reporter
 {
-  public MqqHandler a;
-  
-  public amre(MqqHandler paramMqqHandler)
+  public void a(String paramString, Throwable paramThrowable)
   {
-    this.a = paramMqqHandler;
-  }
-  
-  public void a()
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessageDelayed(100, 1500L);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (this.a != null) {
-      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
-    }
+    QZLog.e("QZLog", paramString, paramThrowable);
   }
 }
 

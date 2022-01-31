@@ -19,13 +19,13 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
 import java.util.ArrayList;
 import java.util.Iterator;
-import wez;
+import wie;
 
 public class ClassificationSearchFragment$HistoryGridAdapter
   extends BaseAdapter
   implements PublicAccountSearchRecommendManager.GetRecommendListListener, FaceDecoder.DecodeTaskCompletionListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wez(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wie(this);
   private RecentFaceDecoder jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = new RecentFaceDecoder(paramClassificationSearchFragment.a, this, false);
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
@@ -62,7 +62,7 @@ public class ClassificationSearchFragment$HistoryGridAdapter
     {
       if (getCount() == 0)
       {
-        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131365590)).setText("最近搜索的公众号");
+        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131365617)).setText("最近搜索的公众号");
         ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).setVisibility(8);
       }
     }
@@ -90,14 +90,14 @@ public class ClassificationSearchFragment$HistoryGridAdapter
         QLog.d("ClassificationSearchFragment", 2, "onGetRecommendSuccess->" + paramString.toString());
       }
       if (TextUtils.isEmpty(paramString)) {
-        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131365590)).setText("最近搜索的公众号");
+        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131365617)).setText("最近搜索的公众号");
       }
       for (;;)
       {
         ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).setVisibility(0);
         notifyDataSetChanged();
         break;
-        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131365590)).setText(paramString);
+        ((TextView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131365617)).setText(paramString);
       }
       label265:
       paramString.append("size:").append(paramArrayList.size());
@@ -134,7 +134,7 @@ public class ClassificationSearchFragment$HistoryGridAdapter
   {
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment.getActivity()).inflate(2130969231, null);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment.getActivity()).inflate(2130969232, null);
     }
     paramView = (PublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem)getItem(paramInt);
     if (paramView != null)
@@ -142,11 +142,11 @@ public class ClassificationSearchFragment$HistoryGridAdapter
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder != null)
       {
         Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder.a(1008, paramView.jdField_a_of_type_JavaLangString);
-        ((URLImageView)paramViewGroup.findViewById(2131363045)).setImageDrawable(localDrawable);
+        ((URLImageView)paramViewGroup.findViewById(2131363063)).setImageDrawable(localDrawable);
       }
-      ((TextView)paramViewGroup.findViewById(2131362736)).setText(paramView.b);
-      paramViewGroup.findViewById(2131362823).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramViewGroup.findViewById(2131362823).setTag(paramView);
+      ((TextView)paramViewGroup.findViewById(2131362754)).setText(paramView.b);
+      paramViewGroup.findViewById(2131362841).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramViewGroup.findViewById(2131362841).setTag(paramView);
       paramViewGroup.setTag(paramView);
     }
     return paramViewGroup;
@@ -160,14 +160,14 @@ public class ClassificationSearchFragment$HistoryGridAdapter
       return;
       if (((paramBitmap != null) || (paramInt1 <= 0)) && (paramBitmap != null))
       {
-        GridView localGridView = (GridView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131365652);
+        GridView localGridView = (GridView)ClassificationSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment).findViewById(2131365679);
         paramInt2 = localGridView.getChildCount();
         paramInt1 = 0;
         while (paramInt1 < paramInt2)
         {
           View localView = localGridView.getChildAt(paramInt1);
           if (paramString.equals(((PublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem)localView.getTag()).jdField_a_of_type_JavaLangString)) {
-            ((URLImageView)localView.findViewById(2131363045)).setImageBitmap(paramBitmap);
+            ((URLImageView)localView.findViewById(2131363063)).setImageBitmap(paramBitmap);
           }
           paramInt1 += 1;
         }

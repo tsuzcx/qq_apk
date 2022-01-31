@@ -1,18 +1,33 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.MessageObserver;
+import mqq.os.MqqHandler;
 
 public class rza
-  implements DialogInterface.OnClickListener
+  extends MessageObserver
 {
-  public rza(ChatSettingActivity paramChatSettingActivity) {}
+  public rza(ChatHistory paramChatHistory) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
+    this.a.r();
+    if (!paramBoolean)
+    {
+      Message localMessage = this.a.a.obtainMessage(5);
+      this.a.a(localMessage);
     }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(3);
+      this.a.a(localMessage);
+      return;
+    }
+    Message localMessage = this.a.a.obtainMessage(2);
+    this.a.a(localMessage);
   }
 }
 

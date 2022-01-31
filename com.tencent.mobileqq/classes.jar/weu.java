@@ -1,23 +1,27 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.widget.QQVideoView;
+import com.tencent.qphone.base.util.QLog;
 
-public class weu
-  implements View.OnClickListener
+class weu
+  implements Runnable
 {
-  public weu(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  weu(wet paramwet) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) || (this.a.f == ClassificationSearchActivity.d))
-    {
-      ClassificationSearchActivity.a(this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a.a), 2, "videoview bring to top");
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    if (BlessActivity.b(this.a.a) != null) {
+      BlessActivity.b(this.a.a).setVisibility(8);
+    }
+    if (BlessActivity.a(this.a.a) != null) {
+      BlessActivity.a(this.a.a).bringToFront();
+    }
+    this.a.a.findViewById(2131363381).bringToFront();
+    this.a.a.findViewById(2131363378).bringToFront();
   }
 }
 

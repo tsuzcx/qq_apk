@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import akiu;
-import akiv;
-import akiw;
+import akxd;
+import akxe;
+import akxf;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -34,9 +34,9 @@ public class TabDragAnimationView
 {
   float jdField_a_of_type_Float = 0.0F;
   public int a;
-  private final akiu jdField_a_of_type_Akiu;
-  private final akiv jdField_a_of_type_Akiv;
-  private final akiw jdField_a_of_type_Akiw;
+  private final akxd jdField_a_of_type_Akxd;
+  private final akxe jdField_a_of_type_Akxe;
+  private final akxf jdField_a_of_type_Akxf;
   public ValueAnimator a;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public URLDrawable a;
@@ -95,9 +95,9 @@ public class TabDragAnimationView
         QLog.d("TabDragAnimationView", 2, "load xml attr, expected logo width=" + this.jdField_g_of_type_Int + ", expected logo height=" + this.h);
       }
       paramContext.recycle();
-      this.jdField_a_of_type_Akiw = new akiw(this);
-      this.jdField_a_of_type_Akiv = new akiv(this);
-      this.jdField_a_of_type_Akiu = new akiu(this);
+      this.jdField_a_of_type_Akxf = new akxf(this);
+      this.jdField_a_of_type_Akxe = new akxe(this);
+      this.jdField_a_of_type_Akxd = new akxd(this);
       this.jdField_c_of_type_Boolean = ThemeUtil.isNowThemeIsAnimate();
       this.jdField_g_of_type_Boolean = Build.MODEL.contains("vivo");
       return;
@@ -182,15 +182,15 @@ public class TabDragAnimationView
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Akiv);
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Akxe);
     }
     if ((this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Float != paramFloat1))
     {
-      this.jdField_a_of_type_Akiu.a();
+      this.jdField_a_of_type_Akxd.a();
       this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_c_of_type_Float, paramFloat1 });
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(100L);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Akiv);
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Akxe);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
     }
   }
@@ -212,7 +212,7 @@ public class TabDragAnimationView
   {
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Akiw.a();
+      this.jdField_a_of_type_Akxf.a();
       e();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return;
@@ -222,8 +222,8 @@ public class TabDragAnimationView
   
   public void b(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Akiw.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_a_of_type_Akiw.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_a_of_type_Akxf.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_a_of_type_Akxf.jdField_b_of_type_Float = paramFloat2;
   }
   
   public void c()
@@ -239,13 +239,13 @@ public class TabDragAnimationView
     if (this.jdField_c_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_c_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Akiu);
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Akxd);
     }
     this.jdField_d_of_type_Int = 1;
     this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
     this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(200L);
     this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Akiu);
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Akxd);
     this.jdField_c_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -254,12 +254,12 @@ public class TabDragAnimationView
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Akiw);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Akxf);
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Akiw);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Akxf);
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -287,11 +287,11 @@ public class TabDragAnimationView
       if ((this.jdField_d_of_type_Int != 1) || (this.jdField_a_of_type_Boolean)) {
         break label551;
       }
-      if (((this.jdField_a_of_type_Akiu.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Akiu.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
+      if (((this.jdField_a_of_type_Akxd.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Akxd.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
       {
         localDrawable1 = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
         label190:
-        if (((!this.jdField_a_of_type_Akiu.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Akiu.jdField_b_of_type_Boolean)) || (!this.jdField_d_of_type_Boolean)) {
+        if (((!this.jdField_a_of_type_Akxd.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Akxd.jdField_b_of_type_Boolean)) || (!this.jdField_d_of_type_Boolean)) {
           break label542;
         }
       }
@@ -300,8 +300,8 @@ public class TabDragAnimationView
     label542:
     for (Drawable localDrawable2 = a();; localDrawable2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
     {
-      if (this.jdField_a_of_type_Akiu.jdField_a_of_type_Float != 1.0F) {
-        paramCanvas.scale(this.jdField_a_of_type_Akiu.jdField_a_of_type_Float, this.jdField_a_of_type_Akiu.jdField_a_of_type_Float, i4, i3);
+      if (this.jdField_a_of_type_Akxd.jdField_a_of_type_Float != 1.0F) {
+        paramCanvas.scale(this.jdField_a_of_type_Akxd.jdField_a_of_type_Float, this.jdField_a_of_type_Akxd.jdField_a_of_type_Float, i4, i3);
       }
       if (localDrawable2 != null)
       {
@@ -636,7 +636,7 @@ public class TabDragAnimationView
   public void setIconSize(int paramInt1, int paramInt2)
   {
     Drawable localDrawable;
-    if (((this.jdField_a_of_type_Akiu.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Akiu.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
+    if (((this.jdField_a_of_type_Akxd.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_Akxd.jdField_b_of_type_Boolean)) && (this.jdField_d_of_type_Boolean))
     {
       localDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
       if (paramInt2 < 0) {
@@ -685,7 +685,7 @@ public class TabDragAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabDragAnimationView
  * JD-Core Version:    0.7.0.1
  */

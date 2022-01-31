@@ -8,10 +8,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import liv;
-import liw;
-import lix;
-import liy;
+import liq;
+import lir;
+import lis;
+import lit;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -112,12 +112,12 @@ public class ArticleCommentModule
   
   public void commentLike(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, String paramString4, int paramInt3, ArticleCommentModule.CommentLikeObserver paramCommentLikeObserver)
   {
-    NativeCommentServlet.a(paramQQAppInterface, this.articleInfo, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramString4, paramInt3, new liy(this, paramCommentLikeObserver, paramInt2));
+    NativeCommentServlet.a(paramQQAppInterface, this.articleInfo, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramString4, paramInt3, new lit(this, paramCommentLikeObserver, paramInt2));
   }
   
   public void createComment(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, String paramString2, String paramString3, JSONArray paramJSONArray, int paramInt2, int paramInt3, String paramString4, String paramString5, ArticleCommentModule.CreateCommentObserver paramCreateCommentObserver)
   {
-    NativeCommentServlet.a(paramQQAppInterface, this.articleInfo, this.uuid, paramInt1, paramString1, paramString2, paramString3, paramJSONArray, paramInt2, paramInt3, paramString4, paramString5, new liw(this, paramCreateCommentObserver, paramString3));
+    NativeCommentServlet.a(paramQQAppInterface, this.articleInfo, this.uuid, paramInt1, paramString1, paramString2, paramString3, paramJSONArray, paramInt2, paramInt3, paramString4, paramString5, new lir(this, paramCreateCommentObserver, paramString3));
   }
   
   public boolean dealwithRawComment(JSONObject paramJSONObject)
@@ -137,7 +137,7 @@ public class ArticleCommentModule
   
   public void deleteComment(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, ArticleCommentModule.DeleteCommentObserver paramDeleteCommentObserver)
   {
-    NativeCommentServlet.a(paramQQAppInterface, this.articleInfo, this.uuid, paramInt1, paramString1, paramString2, paramString3, paramInt2, new lix(this, paramString1, paramString3, paramDeleteCommentObserver));
+    NativeCommentServlet.a(paramQQAppInterface, this.articleInfo, this.uuid, paramInt1, paramString1, paramString2, paramString3, paramInt2, new lis(this, paramString1, paramString3, paramDeleteCommentObserver));
   }
   
   public boolean fetchNextCommentInfo(QQAppInterface paramQQAppInterface, int paramInt)
@@ -145,7 +145,7 @@ public class ArticleCommentModule
     if (!this.hasNextPage) {
       return false;
     }
-    NativeCommentServlet.a(paramQQAppInterface, this.articleInfo, this.uuid, this.commentType, this.commentId, this.page, 10, paramInt, new liv(this));
+    NativeCommentServlet.a(paramQQAppInterface, this.articleInfo, this.uuid, this.commentType, this.commentId, this.page, 10, paramInt, new liq(this));
     this.page += 1;
     return true;
   }

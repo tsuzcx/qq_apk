@@ -1,51 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.opengl.GlStringParser;
-import com.tencent.av.opengl.texture.YUVTexture;
-import com.tencent.av.opengl.texture.YUVTexture.GLRenderListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jkm
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public jkm(YUVTexture paramYUVTexture, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public jkm(RandomController paramRandomController) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    if (RandomController.a(this.a) == 1) {
+      ReportController.b(null, "CliOper", "", "", "0X80053B5", "0X80053B5", 0, 0, "", "", "", "");
     }
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (YUVTexture.a(this.a) == null);
-          YUVTexture.a(this.a).a();
-          return;
-        } while (YUVTexture.a(this.a) == null);
-        YUVTexture.a(this.a).b();
-        return;
-      } while (YUVTexture.a(this.a) == null);
-      YUVTexture.a(this.a).c();
+      this.a.b();
+      RandomController.d(this.a, false);
       return;
-    } while (YUVTexture.a(this.a) == null);
-    if (YUVTexture.a(this.a) == null) {
-      YUVTexture.a(this.a, new GlStringParser('=', ';'));
+      if (RandomController.a(this.a) == 2) {
+        ReportController.b(null, "CliOper", "", "", "0X80053C1", "0X80053C1", 0, 0, "", "", "", "");
+      }
     }
-    paramMessage = (String)paramMessage.obj;
-    YUVTexture.a(this.a).a(paramMessage);
-    int i = YUVTexture.a(this.a).a("width");
-    int j = YUVTexture.a(this.a).a("height");
-    int k = YUVTexture.a(this.a).a("angle");
-    YUVTexture.a(this.a).a(i, j, k);
   }
 }
 

@@ -1,18 +1,41 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class xip
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xip(LoginView paramLoginView) {}
+  public xip(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int[] arrayOfInt = new int[2];
-    this.a.b.getLocationInWindow(arrayOfInt);
-    LoginView localLoginView = this.a;
-    int i = this.a.b.getHeight();
-    LoginView.a(localLoginView, arrayOfInt[1] + i);
+    switch (paramView.getId())
+    {
+    case 2131365423: 
+    case 2131365424: 
+    default: 
+    case 2131365421: 
+      do
+      {
+        return;
+        paramView = new Intent(BannerManager.a(this.a), LoginManagerActivity.class);
+        paramView.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
+        paramView.putExtra("appType", this.a.jdField_b_of_type_Int);
+        paramView.putExtra("subappid", this.a.a);
+        paramView.putExtra("clientType", this.a.jdField_b_of_type_Long);
+        BannerManager.a(this.a).startActivity(paramView);
+      } while (this.a.jdField_b_of_type_Long != 77313L);
+      ReportController.b(BannerManager.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
+      return;
+    }
+    if (this.a.jdField_b_of_type_Long == 77313L) {
+      this.a.jdField_b_of_type_Boolean = true;
+    }
+    this.a.b();
   }
 }
 

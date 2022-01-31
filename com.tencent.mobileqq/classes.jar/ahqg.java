@@ -1,127 +1,96 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public class ahqg
-  extends ahqh
+class ahqg
+  implements INetEngine.INetEngineListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = -1;
-  public boolean a;
-  int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  int d = 0;
-  public int e;
+  ahqg(ahqf paramahqf) {}
   
-  public ahqg(TCProgressBar paramTCProgressBar)
-  {
-    super(paramTCProgressBar);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = true;
-  }
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
   
-  public int a()
+  public void a(NetResp paramNetResp)
   {
-    return this.f + this.d;
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.left = this.f;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.right = (this.f + this.g);
-    int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top;
-    int j = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = 0;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = this.e;
-    if (this.jdField_a_of_type_Boolean) {
-      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = i;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = j;
-      super.a(paramCanvas);
-      return;
-      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsBitmap);
-    }
-  }
-  
-  void a(Canvas paramCanvas, Bitmap paramBitmap)
-  {
-    if (paramBitmap == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-      }
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    paramCanvas.drawBitmap(paramBitmap, null, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_c_of_type_Int < 0) {}
-    for (int i = -this.jdField_c_of_type_Int; i > 1; i = this.jdField_c_of_type_Int) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(float paramFloat)
-  {
+    int j = 2;
     if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.f + ",x_coord + length = " + (this.f + this.g));
+      QLog.i("ScribbleResMgr", 2, "onResp  mResult: " + paramNetResp.jdField_a_of_type_Int + " url:" + this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.sourceUrl);
     }
-    return (paramFloat > this.f - 25) && (paramFloat < this.f + this.g + 25);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f = paramMotionEvent.getX();
-    int i = paramMotionEvent.getAction();
-    switch (i)
+    int i = j;
+    Object localObject;
+    String str1;
+    String str2;
+    if (paramNetResp.jdField_a_of_type_Int == 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return true;
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Boolean = false;
-        return true;
-        this.jdField_c_of_type_Int = ((int)(f - this.jdField_a_of_type_Float));
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int += 1;
-        this.jdField_c_of_type_Boolean = false;
-      } while (!a());
-      this.f += this.jdField_c_of_type_Int;
-      return true;
+      localObject = "";
+      if (this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.resType == 1) {
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr.b(this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.resType, this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.sourceId);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.resType == 2) {
+        localObject = ScribbleResMgr.a(this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr, this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.sourceId);
+      }
+      str1 = this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.sourceMd5;
+      str2 = FileUtils.b((String)localObject);
+      if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1))) {
+        break label369;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.resType != 2) {
+        break label459;
+      }
+      str1 = ScribbleResMgr.b(this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr, this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.sourceId);
+      i = ZipUtils.a((String)localObject, str1);
+      if (i == 0) {
+        break label459;
+      }
+      QLog.e("ScribbleResMgr", 2, "unzip failed, filepath=" + (String)localObject + " destDir= " + str1 + " result: " + i);
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Boolean = true;
-    return true;
+    label459:
+    for (i = 0;; i = 1)
+    {
+      if (i != 0) {}
+      for (i = 1;; i = 2)
+      {
+        j = i;
+        localObject = (PreDownloadController)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(192);
+        i = j;
+        if (((PreDownloadController)localObject).a())
+        {
+          ((PreDownloadController)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.sourceUrl, paramNetResp.jdField_a_of_type_Long);
+          i = j;
+        }
+        if (paramNetResp.jdField_a_of_type_Int == 3) {
+          i = 4;
+        }
+        ScribbleResMgr.a(this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr, this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo, i);
+        return;
+        label369:
+        if (str2 == null) {}
+        for (localObject = "";; localObject = str2)
+        {
+          if (str1 == null) {
+            str1 = "";
+          }
+          for (;;)
+          {
+            QLog.e("ScribbleResMgr", 2, "onResp url: " + this.a.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResInfo.sourceUrl + "check wrong md5 =" + (String)localObject + " desMd5 = " + str1);
+            break;
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqg
  * JD-Core Version:    0.7.0.1
  */

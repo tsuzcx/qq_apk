@@ -1,16 +1,29 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.NearbyPeopleCard.HiWanItem;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
 
-public class aewf
+class aewf
+  implements Runnable
 {
-  public TextView a;
-  public URLImageView a;
-  public NearbyPeopleCard.HiWanItem a;
-  public TextView b;
+  aewf(aewe paramaewe, String paramString) {}
   
-  aewf(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public void run()
+  {
+    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.isEmpty()))
+    {
+      VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).a = -102;
+      VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a, VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a));
+      return;
+    }
+    if ((VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).c == null) || (this.jdField_a_of_type_JavaLangString.compareTo(VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).c) != 0))
+    {
+      VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).a = -103;
+      VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a, VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a));
+      return;
+    }
+    VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).c = this.jdField_a_of_type_JavaLangString;
+    VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).b = this.jdField_a_of_type_JavaLangString;
+    VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a, 0);
+  }
 }
 
 

@@ -1,40 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
-public class rph
-  implements Runnable
+class rph
+  implements DialogInterface.OnClickListener
 {
-  public rph(BaseChatPie paramBaseChatPie, boolean paramBoolean, Intent paramIntent1, Intent paramIntent2) {}
+  rph(rpf paramrpf) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("forward", 1, "updateSession_forwardType, postDelayed Run! needToBottom=" + this.jdField_a_of_type_Boolean);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f(this.jdField_a_of_type_AndroidContentIntent);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.O();
-    }
-    if (this.b.getBooleanExtra("isFromShare", false))
+    try
     {
-      this.b.removeExtra("forward_type");
-      this.b.removeExtra("isFromShare");
-      String str2 = this.b.getStringExtra("leftBackText");
-      String str1;
-      if (str2 != null)
-      {
-        str1 = str2;
-        if (!"".equals(str2)) {}
-      }
-      else
-      {
-        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131433681);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aJ();
+      this.a.a.a.a.setText("");
+      BaseChatPie.a(this.a.a.a).delete(0, BaseChatPie.a(this.a.a.a).length());
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
     }
   }
 }

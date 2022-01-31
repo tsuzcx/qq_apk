@@ -9,7 +9,7 @@ import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.util.GdtAppOpenUtil;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import qiz;
+import qkr;
 
 public class AppInstallerReceiver
   extends BroadcastReceiver
@@ -19,7 +19,7 @@ public class AppInstallerReceiver
   
   public static AppInstallerReceiver a()
   {
-    return qiz.a;
+    return qkr.a;
   }
   
   public void a(Context paramContext)
@@ -62,7 +62,7 @@ public class AppInstallerReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.ipc.AppInstallerReceiver
  * JD-Core Version:    0.7.0.1
  */

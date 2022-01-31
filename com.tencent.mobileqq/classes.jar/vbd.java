@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
 
-class vbd
+public final class vbd
   implements Runnable
 {
-  vbd(vbc paramvbc, ChatMessage paramChatMessage) {}
+  public vbd(int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Vbc.jdField_a_of_type_Vbb.a.a(this.jdField_a_of_type_Vbc.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Vbc.jdField_a_of_type_AndroidViewView);
+    MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidContentContext.getString(2131433265), this.jdField_a_of_type_JavaLangString);
   }
 }
 

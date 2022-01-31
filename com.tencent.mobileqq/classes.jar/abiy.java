@@ -1,45 +1,42 @@
-import android.graphics.drawable.StateListDrawable;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.armap.wealthgod.SplashBitmapUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
-public class abiy
-  extends StateListDrawable
+public final class abiy
+  implements Runnable
 {
-  public boolean setState(int[] paramArrayOfInt)
+  public abiy(String paramString, Context paramContext, ImageView paramImageView) {}
+  
+  public void run()
   {
-    int k = 0;
-    int j = k;
-    int i;
-    if (paramArrayOfInt != null)
+    ??? = (String)SplashBitmapUtils.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);
+    ??? = String.format("%s/%s%s", new Object[] { SplashBitmapUtils.a(), ???, ".png" });
+    Object localObject2 = SplashBitmapUtils.a(this.jdField_a_of_type_AndroidContentContext, (String)???, 0);
+    if (localObject2 != null)
     {
-      j = k;
-      if (paramArrayOfInt.length > 0)
+      ThreadManager.getUIHandler().post(new abiz(this, (Drawable)localObject2));
+      synchronized (SplashBitmapUtils.jdField_a_of_type_JavaLangObject)
       {
-        i = 0;
-        j = k;
-        if (i < paramArrayOfInt.length)
-        {
-          if (paramArrayOfInt[i] != 16842919) {
-            break label56;
-          }
-          j = 1;
+        localObject2 = new WeakReference(localObject2);
+        SplashBitmapUtils.c.remove(this.jdField_a_of_type_JavaLangString);
+        SplashBitmapUtils.c.put(this.jdField_a_of_type_JavaLangString, localObject2);
+        if (QLog.isColorLevel()) {
+          QLog.d("SplashBitmapUtils", 2, String.format("loadDrawableByKeyAsync add to cache. key=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
         }
+        return;
       }
-    }
-    if (j != 0) {
-      setAlpha(128);
-    }
-    for (;;)
-    {
-      return super.setState(paramArrayOfInt);
-      label56:
-      i += 1;
-      break;
-      setAlpha(255);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abiy
  * JD-Core Version:    0.7.0.1
  */

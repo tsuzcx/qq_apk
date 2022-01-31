@@ -18,7 +18,7 @@ public class QZConfigSqliteManager
   
   public QZConfigSqliteManager(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentCommonConfigProviderQZoneConfigSQLiteHelper = new QZoneConfigSQLiteHelper(paramContext, "config_db", null, 12);
+    this.jdField_a_of_type_ComTencentCommonConfigProviderQZoneConfigSQLiteHelper = new QZoneConfigSQLiteHelper(paramContext, "config_db", null, 13);
   }
   
   public int a()

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec;
 
-import agzz;
+import ahob;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.mobileqq.richmedia.mediacodec.decoder.DecodeConfig;
@@ -109,17 +109,17 @@ public class MergeEditVideo
       for (;;)
       {
         DecodeConfig localDecodeConfig = new DecodeConfig(???, paramEditParam.c, false, true, j, i);
-        if ((paramEditParam.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.businessId == 10) && ((n == 270) || (n == 90)))
+        if (((paramEditParam.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.businessId == 10) && ((n == 270) || (n == 90))) || ((paramEditParam.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.businessId == 12) && ((n == 270) || (n == 90))))
         {
           ??? = new EncodeConfig(paramString2, m, k, i1, 1, 30, paramEditParam.b, false, 0, paramEditParam.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath, paramEditParam.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mosaicPath, str, false);
           ???.i = n;
           localDecodeConfig.c = true;
-          label482:
+          label509:
           a(paramEditParam, ???);
           localDecodeConfig.b = n;
           ???.j = paramEditParam.d;
           ???.k = paramEditParam.e;
-          ((IMp4ReEncoder)localObject).a(localDecodeConfig, ???, new agzz(this, arrayOfInt), null);
+          ((IMp4ReEncoder)localObject).a(localDecodeConfig, ???, new ahob(this, arrayOfInt), null);
           if (!this.jdField_a_of_type_Boolean) {
             synchronized (this.jdField_a_of_type_JavaLangObject)
             {
@@ -131,19 +131,19 @@ public class MergeEditVideo
         try
         {
           this.jdField_a_of_type_JavaLangObject.wait();
-          label564:
+          label591:
           return this.jdField_a_of_type_Int;
           localObject = new Mp4ReEncoder();
           arrayOfInt[0] = 2;
           continue;
           ??? = new EncodeConfig(paramString2, k, m, i1, 1, 30, paramEditParam.b, false, n, paramEditParam.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath, paramEditParam.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mosaicPath, str, false);
-          break label482;
+          break label509;
           paramString2 = finally;
           throw paramString2;
         }
         catch (InterruptedException paramString2)
         {
-          break label564;
+          break label591;
         }
       }
     }

@@ -5,7 +5,7 @@ import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import xak;
+import xdp;
 
 public class HbSkinInfo
 {
@@ -77,7 +77,7 @@ public class HbSkinInfo
   
   public static void a(List paramList)
   {
-    Collections.sort(paramList, new xak());
+    Collections.sort(paramList, new xdp());
   }
   
   public static HbSkinInfo b(String paramString)

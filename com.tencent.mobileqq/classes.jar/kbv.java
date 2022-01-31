@@ -1,45 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteLock;
 
-public class kbv
-  implements DialogInterface.OnClickListener
+class kbv
+  implements QavInOutAnimation.QavOutAnimationListener
 {
-  int jdField_a_of_type_Int;
+  kbv(kbu paramkbu) {}
   
-  public kbv(VideoInviteActivity paramVideoInviteActivity, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.setViewEnable(2131364247, false);
+      this.a.a.a.setViewEnable(2131365414, false);
+      this.a.a.a.setViewEnable(2131365413, false);
+      this.a.a.a.setViewEnable(2131365411, false);
+      this.a.a.a.setViewEnable(2131365409, false);
+      this.a.a.a.setViewEnable(2131364249, false);
+    }
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void b()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a == null) {
-      return;
-    }
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.r();
-      }
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.l()) {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.h(false);
-      }
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = true;
-      paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a;
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.b) {}
-      paramDialogInterface.b(1, false, true);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.f();
-      return;
-    }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(true);
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+    VideoInviteLock.b(this.a.a);
+    VideoInviteLock.a(this.a.a, 0, 2131034269);
   }
 }
 

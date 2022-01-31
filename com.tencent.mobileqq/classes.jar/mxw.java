@@ -1,29 +1,17 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.widget.ActionSheet;
 
 public class mxw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mxw(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager) {}
+  public mxw(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ??? = PublicAccountImageCollectionPreloadManager.a(this.a).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      String str = (String)((Iterator)???).next();
-      PublicAccountImageCollectionPreloadManager.a(this.a, str);
-    }
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      PublicAccountImageCollectionPreloadManager.a(this.a).clear();
-      if (PublicAccountImageCollectionPreloadManager.b(this.a).size() > 0)
-      {
-        PublicAccountImageCollectionPreloadManager.a(this.a);
-        return;
-      }
-      this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
     }
   }
 }

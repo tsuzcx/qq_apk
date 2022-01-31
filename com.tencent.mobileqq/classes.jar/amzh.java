@@ -1,44 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class amzh
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public amzh(QIMCircleProgress paramQIMCircleProgress) {}
+  public amzh(QZoneShareActivity paramQZoneShareActivity, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    this.a.a = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
+    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) == null) {
+      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, new QQProgressDialog(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.getResources().getDimensionPixelSize(2131558448)));
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = false;
-    if ((this.a.c) && (this.a.b != null)) {
-      this.a.b.start();
+    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).c(this.jdField_a_of_type_Int);
+    try
+    {
+      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).show();
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
+    catch (Exception localException)
+    {
+      QLog.e("QZoneShare", 1, localException.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,16 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.Callback;
 import com.tencent.qphone.base.util.QLog;
 
-class xro
-  implements Runnable
+public class xro
+  implements CameraExceptionHandler.Callback
 {
-  xro(xrn paramxrn) {}
+  public xro(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void a(RuntimeException paramRuntimeException)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[runOnUIThread][stopWatching-delete-quit]");
-    }
-    Toast.makeText(VideoEnvironment.a(), "视频缓存被恶意篡改了", 1).show();
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    localRMVideoStateMgr.a("RMFileEventNotify");
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.A();
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
     }
   }
 }

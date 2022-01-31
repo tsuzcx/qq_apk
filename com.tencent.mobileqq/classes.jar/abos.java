@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.image.URLDrawable;
 
-class abos
+public final class abos
   implements Runnable
 {
-  abos(aboq paramaboq) {}
+  public abos(URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.getApplicationContext(), "未检测到db文件", 1).a();
+    this.a.downloadImediatly();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abos
  * JD-Core Version:    0.7.0.1
  */

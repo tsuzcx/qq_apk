@@ -1,31 +1,30 @@
-import android.os.Message;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class sev
+public class sev
   implements Runnable
 {
-  sev(ses paramses, long paramLong) {}
+  public sev(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ses.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager != null)
-    {
-      this.jdField_a_of_type_Ses.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a();
-      if (this.jdField_a_of_type_Ses.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Long) == 2)
-      {
-        Message localMessage = new Message();
-        localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_Ses.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(32, localMessage);
+    if (this.a.a != null) {
+      if (!this.a.a.isShowing()) {
+        this.a.a.show();
       }
     }
-    else
+    do
     {
       return;
-    }
-    this.jdField_a_of_type_Ses.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
+      this.a.a = DialogUtil.a(this.a, 230);
+      this.a.a.setMessage(this.a.getActivity().getResources().getString(2131433685));
+      sew localsew = new sew(this);
+      this.a.a.setPositiveButton(2131432417, localsew);
+    } while (this.a.a.isShowing());
+    this.a.a.show();
   }
 }
 

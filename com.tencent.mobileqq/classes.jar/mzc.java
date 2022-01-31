@@ -1,20 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.support.v4.util.MQLruCache;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.mobileqq.app.AppConstants;
+import java.io.File;
 
-public final class mzc
-  extends SimpleJob
+public class mzc
+  extends Thread
 {
-  public mzc(String paramString) {}
+  public mzc(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    int i = StoryVideoUploadManager.a();
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
-    return null;
+    if (this.a.a != null) {
+      this.a.a.releaseLargeCache();
+    }
+    long l = System.currentTimeMillis();
+    Object localObject1 = new File(AppConstants.ct);
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    {
+      localObject1 = ((File)localObject1).listFiles();
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject2 = localObject1[i];
+        if (l - localObject2.lastModified() > 172800000L) {
+          localObject2.delete();
+        }
+        i += 1;
+      }
+    }
   }
 }
 

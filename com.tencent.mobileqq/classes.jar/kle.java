@@ -1,22 +1,22 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.addContactTroopView.TroopCardSameCity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
-import tencent.im.troop_search_searchtab.searchtab.Item2;
+import android.os.Handler;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.util.IOfflineDownloader;
+import com.tencent.qphone.base.util.QLog;
 
 public class kle
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public kle(TroopCardSameCity paramTroopCardSameCity) {}
+  public kle(BidDownloader paramBidDownloader) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = (searchtab.Item2)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    this.a.a(paramAdapterView.str_transfer_url.get());
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_localac", 0, 0, "", "", "", "");
+    int i = BidDownloader.jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.a.c);
+    if (QLog.isColorLevel()) {
+      QLog.i(BidDownloader.d, 2, "state = " + i);
+    }
+    if (i != 2) {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    }
   }
 }
 

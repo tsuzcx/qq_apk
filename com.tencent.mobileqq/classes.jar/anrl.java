@@ -1,28 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import java.util.concurrent.atomic.AtomicReference;
+import android.view.View;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 
 public class anrl
-  implements Runnable
+  implements ThreadExcutor.IThreadListener
 {
-  public anrl(RMVideoStateMgr paramRMVideoStateMgr) {}
+  public anrl(EditPicSave paramEditPicSave) {}
   
-  public void run()
+  public void a() {}
+  
+  public void b()
   {
-    synchronized (RMVideoStateMgr.a(this.a))
-    {
-      AudioCapture localAudioCapture = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture;
-      if ((localAudioCapture != null) && (localAudioCapture.b != null) && (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilAudioDataCache != null) && (localAudioCapture.c()) && (localAudioCapture != null))
-      {
-        localAudioCapture.c();
-        localAudioCapture.b.getAndSet(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilAudioDataCache);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RMVideoStateMgr", 2, "[@][openAudioRecord]");
-      }
-      return;
-    }
+    this.a.a.a().postDelayed(new anrm(this), 500L);
   }
 }
 

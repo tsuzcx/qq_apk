@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import acwa;
-import acwb;
-import acwc;
-import acwd;
-import acwe;
+import adfx;
+import adfy;
+import adfz;
+import adga;
+import adgb;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -139,22 +139,22 @@ public class VideoFileViewer
     QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: VideoFileViewer initFileView");
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130970036, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368797));
-      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368799));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368803));
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368806));
-      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368808));
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130970050, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368864));
+      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368866));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368870));
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368873));
+      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368875));
       this.f.setText("恢复发送");
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368807));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368874));
       this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368798));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366850));
-      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368804));
-      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368805));
-      this.b = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368778));
+      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368865));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366892));
+      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368871));
+      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368872));
+      this.b = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368845));
       if (ImmersiveUtils.isSupporImmersive() == 1) {
-        ((RelativeLayout.LayoutParams)((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363730)).getLayoutParams()).setMargins(0, ImmersiveUtils.a(this.jdField_a_of_type_AndroidAppActivity), 0, 0);
+        ((RelativeLayout.LayoutParams)((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363753)).getLayoutParams()).setMargins(0, ImmersiveUtils.a(this.jdField_a_of_type_AndroidAppActivity), 0, 0);
       }
     }
   }
@@ -169,7 +169,7 @@ public class VideoFileViewer
     if (this.jdField_c_of_type_AndroidViewView == null)
     {
       this.jdField_c_of_type_AndroidViewView = FileVideoManager.a(paramLong).a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_c_of_type_AndroidViewView.setId(2131374739);
+      this.jdField_c_of_type_AndroidViewView.setId(2131374925);
       this.jdField_c_of_type_AndroidViewView.setBackgroundColor(-16777216);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
       this.jdField_c_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
@@ -205,7 +205,7 @@ public class VideoFileViewer
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
     localRelativeLayout.setBackgroundColor(Color.parseColor("#D8DAE0"));
     TextView localTextView = new TextView(this.jdField_a_of_type_AndroidAppActivity);
-    localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841603, 0, 0);
+    localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130841640, 0, 0);
     localTextView.setText(paramString2);
     localTextView.setTextSize(12.0F);
     localTextView.setTextColor(Color.parseColor("#83889A"));
@@ -219,7 +219,7 @@ public class VideoFileViewer
       paramString2.setContentDescription("用qq浏览器打开");
       paramString2.setTextSize(12.0F);
       paramString2.setTextColor(Color.parseColor("#12B7F5"));
-      paramString2.setOnClickListener(new acwb(this, paramString1));
+      paramString2.setOnClickListener(new adfy(this, paramString1));
       localRelativeLayout.addView(paramString2, -2, -2);
       paramString1 = (RelativeLayout.LayoutParams)paramString2.getLayoutParams();
       paramString1.addRule(13);
@@ -236,7 +236,7 @@ public class VideoFileViewer
     this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(4);
     this.d.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new acwc(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new adfz(this));
   }
   
   public void a(List paramList)
@@ -257,7 +257,7 @@ public class VideoFileViewer
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(localMenuData.jdField_a_of_type_JavaLangString, 0);
     }
     this.jdField_a_of_type_ComTencentWidgetActionSheet.d("取消");
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new acwd(this, paramList));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new adga(this, paramList));
   }
   
   public View b()
@@ -324,7 +324,7 @@ public class VideoFileViewer
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.3F });
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(2500L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new acwe(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new adgb(this));
     }
   }
   
@@ -332,12 +332,12 @@ public class VideoFileViewer
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842911);
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131437380));
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843010);
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131437397));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842909);
-    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131437379));
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843008);
+    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131437396));
   }
   
   public void e()
@@ -398,7 +398,7 @@ public class VideoFileViewer
       this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localRotateAnimation);
       return;
     }
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new acwa(this));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adfx(this));
   }
 }
 

@@ -1,52 +1,35 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.NearbyHandler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
 public class tcb
-  extends TroopObserver
+  extends LbsManager.OnLocationListener
 {
-  public tcb(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public tcb(NearbyActivity paramNearbyActivity, String paramString)
   {
-    TextView localTextView;
-    if (paramBoolean1)
-    {
-      this.a.e.a().setChecked(paramBoolean2);
-      localTextView = this.a.a;
-      if (!paramBoolean2) {
-        break label59;
-      }
-    }
-    label59:
-    for (int i = 2131435375;; i = 2131435376)
-    {
-      localTextView.setText(i);
-      SharedPreUtils.j(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
-      return;
-    }
+    super(paramString);
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    boolean bool = true;
-    if (!paramBoolean1)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      QQToast.a(this.a, 1, "设置失败", 0).a();
-      Switch localSwitch = this.a.e.a();
-      if (!paramBoolean2) {}
-      for (paramBoolean1 = bool;; paramBoolean1 = false)
-      {
-        localSwitch.setChecked(paramBoolean1);
-        return;
+      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
+      if (paramSosoLbsInfo == null) {
+        break label75;
       }
     }
-    SharedPreUtils.j(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
+    label75:
+    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
+    {
+      QLog.d("nearby.heart_beat", 2, localSosoLocation);
+      this.a.a.a(1, paramSosoLbsInfo);
+      return;
+    }
   }
 }
 

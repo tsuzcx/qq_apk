@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoVote;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager;
+import cooperation.troop.TroopPluginManager.TroopPluginCallback;
 
 public class anff
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public anff(EditVideoVote paramEditVideoVote) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public anff(TroopPluginManager paramTroopPluginManager, Looper paramLooper)
   {
-    paramDialogInterface.dismiss();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ((TroopPluginManager.TroopPluginCallback)paramMessage.obj).a(paramMessage.arg1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anff
  * JD-Core Version:    0.7.0.1
  */

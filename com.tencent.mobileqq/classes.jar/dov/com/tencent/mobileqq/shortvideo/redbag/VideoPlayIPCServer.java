@@ -1,11 +1,11 @@
 package dov.com.tencent.mobileqq.shortvideo.redbag;
 
-import aoac;
+import aoqh;
 import com.tencent.mobileqq.qipc.QIPCModule;
 
 public class VideoPlayIPCServer
 {
-  private QIPCModule a = new aoac(this, "Module_VideoPlayIPCServer");
+  private QIPCModule a = new aoqh(this, "Module_VideoPlayIPCServer");
 }
 
 

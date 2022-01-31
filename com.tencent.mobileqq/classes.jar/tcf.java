@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class tcf
-  implements Runnable
+public class tcf
+  implements DialogInterface.OnClickListener
 {
-  tcf(tce paramtce, short paramShort) {}
+  public tcf(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PermisionPrivacyActivity localPermisionPrivacyActivity = this.jdField_a_of_type_Tce.a;
-    if (this.jdField_a_of_type_Short == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localPermisionPrivacyActivity.b(bool);
-      return;
-    }
+    ThreadManager.getSubThreadHandler().postDelayed(new tcg(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tcf
  * JD-Core Version:    0.7.0.1
  */

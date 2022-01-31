@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import ajmb;
+import akag;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import com.tencent.common.app.AppInterface;
@@ -80,7 +80,7 @@ public class NearByFaceDrawable
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppFaceObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceObserver = new ajmb(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceObserver = new akag(this);
       this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFaceObserver);
     }
     ((FaceHandler)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4)).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
@@ -88,7 +88,7 @@ public class NearByFaceDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.util.NearByFaceDrawable
  * JD-Core Version:    0.7.0.1
  */

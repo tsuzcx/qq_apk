@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
+import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
 
 public class aieg
-  implements Comparator
+  implements Runnable
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public aieg(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
+  
+  public void run()
   {
-    paramObject1 = (PreDownloadItem)paramObject1;
-    paramObject2 = (PreDownloadItem)paramObject2;
-    if (paramObject1.c > paramObject2.c) {}
-    do
-    {
-      return -1;
-      if (paramObject1.c < paramObject2.c) {
-        return 1;
-      }
-    } while (paramObject1.d > paramObject2.d);
-    if (paramObject1.d < paramObject2.d) {
-      return 1;
+    if (this.a.a != null) {
+      this.a.a.L_();
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aieg
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,10 @@ import com.tencent.av.videoeffect.config.VideoEffectConfigParser;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import jeu;
-import jev;
-import jew;
-import jex;
+import jef;
+import jeg;
+import jeh;
+import jei;
 
 public class DeviceCapabilityExamination
 {
@@ -27,7 +27,7 @@ public class DeviceCapabilityExamination
   public DeviceCapabilityExamination(VideoAppInterface paramVideoAppInterface)
   {
     this.a = paramVideoAppInterface;
-    paramVideoAppInterface = new jex(this);
+    paramVideoAppInterface = new jei(this);
     this.a.a().postDelayed(paramVideoAppInterface, 5000L);
   }
   
@@ -48,7 +48,7 @@ public class DeviceCapabilityExamination
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putBoolean("hwcodec_avc_decode_test", true);
       ((SharedPreferences.Editor)localObject).commit();
-      new VideoDecTest(ImageResUtil.c() + "bitv.mp4", paramBoolean, new jeu(this)).a();
+      new VideoDecTest(ImageResUtil.c() + "bitv.mp4", paramBoolean, new jef(this)).a();
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -127,7 +127,7 @@ public class DeviceCapabilityExamination
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putBoolean("hwcodec_avc_encode_test", true);
       ((SharedPreferences.Editor)localObject).commit();
-      new VideoEncTest(ImageResUtil.c() + "test2Frame.yuv", paramBoolean, new jev(this)).a();
+      new VideoEncTest(ImageResUtil.c() + "test2Frame.yuv", paramBoolean, new jeg(this)).a();
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -155,7 +155,7 @@ public class DeviceCapabilityExamination
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("qav_key_test_executed", true);
         ((SharedPreferences.Editor)localObject).commit();
-        new VideoEffectTest(new jew(this)).a();
+        new VideoEffectTest(new jeh(this)).a();
       }
     }
     label147:

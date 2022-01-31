@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.activity.shortvideo;
 
-import ansk;
+import aoip;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -10,7 +10,7 @@ public class EncodeVideoTask$ResponseCallBack
   extends ExecuteBinResponseCallback
 {
   long jdField_a_of_type_Long;
-  ansk jdField_a_of_type_Ansk;
+  aoip jdField_a_of_type_Aoip;
   PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
   String jdField_a_of_type_JavaLangString;
   String b;
@@ -28,9 +28,9 @@ public class EncodeVideoTask$ResponseCallBack
     super.a();
   }
   
-  public void a(ansk paramansk)
+  public void a(aoip paramaoip)
   {
-    this.jdField_a_of_type_Ansk = paramansk;
+    this.jdField_a_of_type_Aoip = paramaoip;
   }
   
   public void a(String paramString)
@@ -48,13 +48,13 @@ public class EncodeVideoTask$ResponseCallBack
       QLog.d("EncodeVideoTask", 2, "generate files|second step cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D + ", isSuccess:" + paramBoolean);
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_Ansk.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
+      this.jdField_a_of_type_Aoip.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
     }
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_Ansk.a(-11);
+    this.jdField_a_of_type_Aoip.a(-11);
     if (QLog.isColorLevel()) {
       QLog.d("EncodeVideoTask", 2, "generate files|second step fail:" + paramString);
     }

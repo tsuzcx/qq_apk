@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.RecommendAndAd;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.ResponseCallback;
+import java.util.List;
 
-class mnx
-  implements DialogInterface.OnClickListener
+public final class mnx
+  implements FastWebRequestUtil.ResponseCallback
 {
-  mnx(mnv parammnv) {}
+  public mnx(FastWebRequestUtil.RecommendAndAd paramRecommendAndAd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, List paramList)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.a.b(paramList);
   }
 }
 

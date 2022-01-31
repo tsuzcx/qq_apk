@@ -19,8 +19,8 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
-import uua;
-import uub;
+import uxc;
+import uxd;
 
 public class FileTimDocGrayTipsItemBuilder
   extends GrayTipsItemBuilder
@@ -35,12 +35,12 @@ public class FileTimDocGrayTipsItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramViewHolder = (uub)paramViewHolder;
+    paramViewHolder = (uxd)paramViewHolder;
     paramMessageRecord = paramView;
     if (paramView == null)
     {
-      paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970042, null);
-      paramViewHolder.b = ((TextView)paramMessageRecord.findViewById(2131363766));
+      paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970056, null);
+      paramViewHolder.b = ((TextView)paramMessageRecord.findViewById(2131363789));
     }
     paramView = paramViewHolder.a.getExtInfoFromExtStr("tim_aio_show");
     this.b = paramViewHolder.a.getExtInfoFromExtStr("tim_aio_tips_type");
@@ -54,7 +54,7 @@ public class FileTimDocGrayTipsItemBuilder
     for (;;)
     {
       paramViewHolder.a.saveExtInfoToExtStr("tim_aio_show", "showed");
-      ThreadManager.executeOnSubThread(new uua(this, paramViewHolder));
+      ThreadManager.executeOnSubThread(new uxc(this, paramViewHolder));
       paramView = FileManagerUtil.a(paramViewHolder.a.getExtInfoFromExtStr("tim_aio_file_tips"), paramViewHolder.a.getExtInfoFromExtStr("tim_aio_file_link"), this);
       paramViewHolder.b.setText(paramView);
       paramViewHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
@@ -71,7 +71,7 @@ public class FileTimDocGrayTipsItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new uub(this);
+    return new uxd(this);
   }
   
   public void a(View paramView)

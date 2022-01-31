@@ -24,8 +24,8 @@ import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
-import uxf;
-import uxg;
+import vah;
+import vai;
 
 public class HiBoomItemBuilder
   extends QIMTailItemBubbleBuilder
@@ -37,8 +37,8 @@ public class HiBoomItemBuilder
   public HiBoomItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new uxf(this);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$OnDoubleClick = new uxg(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vah(this);
+    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$OnDoubleClick = new vai(this);
     this.jdField_b_of_type_AndroidContentContext = paramContext;
   }
   
@@ -128,7 +128,7 @@ public class HiBoomItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131375346: 
+    case 2131375577: 
       super.c(paramChatMessage);
       return;
     case 2131362395: 
@@ -137,7 +137,7 @@ public class HiBoomItemBuilder
     case 2131362396: 
       a(paramChatMessage, 1);
       return;
-    case 2131375336: 
+    case 2131375567: 
       ChatActivityFacade.a(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }

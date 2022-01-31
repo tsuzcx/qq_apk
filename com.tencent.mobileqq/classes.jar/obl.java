@@ -1,21 +1,13 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditDoodleExport;
-import com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
 
-public class obl
-  extends PtvTemplateManager.DoodleInfoLoadObserver
+class obl
+  implements Runnable
 {
-  public obl(EditPicActivity paramEditPicActivity) {}
+  obl(obk paramobk) {}
   
-  public void a()
+  public void run()
   {
-    SLog.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.a.a.a(EditDoodleExport.class);
-    if (localEditDoodleExport != null) {
-      localEditDoodleExport.J_();
-    }
+    this.a.a.c(true);
   }
 }
 

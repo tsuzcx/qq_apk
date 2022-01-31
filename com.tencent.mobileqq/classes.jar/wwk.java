@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.MimeHelper;
 
-class wwk
-  implements View.OnFocusChangeListener
+public final class wwk
+  extends MediaFileFilter
 {
-  wwk(wwj paramwwj) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean a(String paramString)
   {
-    if (!paramBoolean) {
-      GoldMsgAioState.a(this.a.a.getWindow(), this.a.a, paramView);
+    String[] arrayOfString = MimeHelper.a(paramString);
+    if (arrayOfString != null)
+    {
+      if (("image".equals(arrayOfString[0])) && (MimeHelper.a(arrayOfString[1]))) {}
+      while (MimeHelper.b(paramString)) {
+        return false;
+      }
     }
+    return true;
   }
 }
 

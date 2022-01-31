@@ -13,11 +13,11 @@ import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToastNotifier;
-import tml;
-import tmm;
-import tmo;
-import tmp;
-import tmq;
+import tpl;
+import tpm;
+import tpo;
+import tpp;
+import tpq;
 
 public class RegisterNewBaseActivity
   extends BaseActivity
@@ -33,13 +33,13 @@ public class RegisterNewBaseActivity
   
   public RegisterNewBaseActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new tml(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new tmq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new tpl(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new tpq(this);
   }
   
   protected void a(int paramInt)
   {
-    ((ProgressBar)findViewById(2131372043)).setProgress(paramInt);
+    ((ProgressBar)findViewById(2131372216)).setProgress(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -49,7 +49,7 @@ public class RegisterNewBaseActivity
   
   protected void a(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131372045);
+    TextView localTextView = (TextView)findViewById(2131372218);
     localTextView.setText(paramString);
     if (AppSetting.b) {
       localTextView.setContentDescription(paramString);
@@ -72,7 +72,7 @@ public class RegisterNewBaseActivity
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new tmm(this, paramString1, paramString2));
+      this.jdField_a_of_type_AndroidOsHandler.post(new tpm(this, paramString1, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -83,7 +83,7 @@ public class RegisterNewBaseActivity
   
   public void a(boolean paramBoolean)
   {
-    ProgressBar localProgressBar = (ProgressBar)findViewById(2131372043);
+    ProgressBar localProgressBar = (ProgressBar)findViewById(2131372216);
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
@@ -94,10 +94,10 @@ public class RegisterNewBaseActivity
   
   public void b()
   {
-    TextView localTextView = (TextView)findViewById(2131372044);
+    TextView localTextView = (TextView)findViewById(2131372217);
     localTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     if (AppSetting.b) {
-      localTextView.setContentDescription(getResources().getString(2131433681));
+      localTextView.setContentDescription(getResources().getString(2131433698));
     }
   }
   
@@ -105,7 +105,7 @@ public class RegisterNewBaseActivity
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new tmp(this, paramInt));
+      this.jdField_a_of_type_AndroidOsHandler.post(new tpp(this, paramInt));
       return;
     }
     catch (Exception localException)
@@ -116,12 +116,12 @@ public class RegisterNewBaseActivity
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new tmo(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new tpo(this));
   }
   
   public void c(int paramInt)
   {
-    TextView localTextView = (TextView)findViewById(2131372045);
+    TextView localTextView = (TextView)findViewById(2131372218);
     String str = getResources().getString(paramInt);
     localTextView.setText(str);
     if (AppSetting.b) {

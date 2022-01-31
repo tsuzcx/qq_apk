@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapActivity.LocationMonitor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
 public class aaut
   implements Runnable
 {
-  public aaut(ARMapActivity.LocationMonitor paramLocationMonitor) {}
+  public aaut(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
   public void run()
   {
-    this.a.a.a(-100);
+    ThreadManager.post(new aauu(this), 5, null, true);
   }
 }
 

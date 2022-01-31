@@ -39,8 +39,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import mfm;
-import mfn;
+import mgr;
+import mgs;
 import mqq.manager.TicketManager;
 import org.json.JSONObject;
 import tencent.im.oidb.gallery.gallery.GalleryInfo;
@@ -56,7 +56,7 @@ public class ReadInJoyAllInOneBar
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   KandianFavoriteBroadcastReceiver jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicKandianFavoriteBroadcastReceiver = new KandianFavoriteBroadcastReceiver(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback);
-  ReadInJoyAtlasManager.AtlasCallback jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback = new mfm(this);
+  ReadInJoyAtlasManager.AtlasCallback jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback = new mgr(this);
   private ReadInJoyAllInOneBar.OnAllInOnEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar$OnAllInOnEventListener;
   protected HttpWebCgiAsyncTask.Callback a;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -81,20 +81,20 @@ public class ReadInJoyAllInOneBar
   public ReadInJoyAllInOneBar(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new mfn(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new mgs(this);
   }
   
   public ReadInJoyAllInOneBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new mfn(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new mgs(this);
     a(paramContext);
     LayoutInflater.from(paramContext).inflate(a(), this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363990);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363991));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363993));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363994));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363992));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364014);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364015));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364017));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364018));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364016));
     a(this.jdField_a_of_type_AndroidViewView);
     a(this.jdField_a_of_type_AndroidWidgetImageView);
     a(this.jdField_b_of_type_AndroidWidgetImageView);
@@ -371,7 +371,7 @@ public class ReadInJoyAllInOneBar
       }
       switch (paramView.getId())
       {
-      case 2131363992: 
+      case 2131364016: 
       default: 
         i = 2;
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar$OnAllInOnEventListener.a(i, paramView)) {
@@ -404,7 +404,7 @@ public class ReadInJoyAllInOneBar
             break;
             switch (paramView.getId())
             {
-            case 2131363992: 
+            case 2131364016: 
             default: 
               return;
             }
@@ -447,7 +447,7 @@ public class ReadInJoyAllInOneBar
       localObject = this.jdField_a_of_type_TencentImOidbGalleryGallery$GalleryInfo.bytes_subject.get().toStringUtf8();
       ReadInJoyAtlasManager.a();
       String str1 = ReadInJoyAtlasManager.a(this.jdField_a_of_type_TencentImOidbGalleryGallery$GalleryInfo);
-      String str2 = ReadInJoyUtils.e(this.jdField_b_of_type_JavaLangString);
+      String str2 = ReadInJoyUtils.f(this.jdField_b_of_type_JavaLangString);
       Bundle localBundle = new Bundle();
       localBundle.putInt("picNum", (int)this.jdField_a_of_type_TencentImOidbGalleryGallery$GalleryInfo.uint64_pic_count.get());
       localBundle.putLong("publishAccountUin", this.jdField_a_of_type_TencentImOidbGalleryGallery$GalleryInfo.uint64_publisher_uin.get());

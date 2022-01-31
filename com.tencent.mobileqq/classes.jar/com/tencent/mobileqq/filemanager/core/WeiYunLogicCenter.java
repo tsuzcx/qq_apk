@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acqd;
-import acqe;
-import acqf;
-import acqg;
-import acqh;
-import acqi;
-import acqj;
-import acqk;
-import acql;
-import acqm;
-import acqn;
+import adaa;
+import adab;
+import adac;
+import adad;
+import adae;
+import adaf;
+import adag;
+import adah;
+import adai;
+import adaj;
+import adak;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.support.annotation.Nullable;
@@ -226,7 +226,7 @@ public class WeiYunLogicCenter
       }
       return null;
     }
-    paramString1 = new acqk(this, paramString1, paramInt, paramObject);
+    paramString1 = new adah(this, paramString1, paramInt, paramObject);
     WyDownloader.a().a((String)((Pair)localPair.first).first, paramString2, (String)((Pair)localPair.first).second, paramString1);
     return null;
   }
@@ -234,7 +234,7 @@ public class WeiYunLogicCenter
   private void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq paramAioPicAndVideoCopyToWeiyunMsgReq, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback)
   {
     ResponseHandler.a();
-    WeiyunApi.a(paramAioPicAndVideoCopyToWeiyunMsgReq, new acqj(this, paramWeiyunCallback));
+    WeiyunApi.a(paramAioPicAndVideoCopyToWeiyunMsgReq, new adag(this, paramWeiyunCallback));
   }
   
   private void b()
@@ -244,7 +244,7 @@ public class WeiYunLogicCenter
       if (NetworkUtils.isWifiAvailable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))
       {
         this.c = true;
-        SoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), new acql(this));
+        SoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), new adai(this));
       }
       return;
     }
@@ -431,7 +431,7 @@ public class WeiYunLogicCenter
     if (QLog.isColorLevel()) {
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd");
     }
-    WeiyunApi.a(new acqe(this));
+    WeiyunApi.a(new adab(this));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -452,7 +452,7 @@ public class WeiYunLogicCenter
     localCrossBidProxyOfflineFileGetListMsgReq.uint32_offline_type.set(paramInt1);
     localCrossBidProxyOfflineFileGetListMsgReq.uint32_offset.set(paramInt2);
     localCrossBidProxyOfflineFileGetListMsgReq.uint32_number.set(paramInt3);
-    WeiyunApi.a(localCrossBidProxyOfflineFileGetListMsgReq, new acqg(this, paramInt1));
+    WeiyunApi.a(localCrossBidProxyOfflineFileGetListMsgReq, new adad(this, paramInt1));
   }
   
   public void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
@@ -497,7 +497,7 @@ public class WeiYunLogicCenter
       localPBStringField.set(str);
       localLibInfoListGetMsgReq.count.set(paramInt3);
       localLibInfoListGetMsgReq.scene_id.set(paramInt1);
-      WeiyunApi.a(localLibInfoListGetMsgReq, new acqd(this, paramString1));
+      WeiyunApi.a(localLibInfoListGetMsgReq, new adaa(this, paramString1));
       return;
       if (this.jdField_a_of_type_JavaUtilLinkedHashMap != null) {
         break label165;
@@ -651,7 +651,7 @@ public class WeiYunLogicCenter
         }
         localCrossBidProxyCopyFileToOtherBidMsgReq.extension_req.set(localExtensionReq);
       }
-      WeiyunApi.a(localCrossBidProxyCopyFileToOtherBidMsgReq, new acqh(this, paramFileManagerEntity, paramInt));
+      WeiyunApi.a(localCrossBidProxyCopyFileToOtherBidMsgReq, new adae(this, paramFileManagerEntity, paramInt));
       FileManagerUtil.b(paramFileManagerEntity.nSessionId);
       return;
       label1140:
@@ -773,7 +773,7 @@ public class WeiYunLogicCenter
         }
         paramString.extension_req.set((MessageMicro)localObject);
       }
-      WeiyunApi.a(paramString, new acqi(this, localTroopFileTransferManager, localTroopFileStatusInfo, paramFileManagerEntity));
+      WeiyunApi.a(paramString, new adaf(this, localTroopFileTransferManager, localTroopFileStatusInfo, paramFileManagerEntity));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity.nSessionId);
       return;
     }
@@ -807,7 +807,7 @@ public class WeiYunLogicCenter
     localArrayList.add(localObject);
     localObject = new WeiyunPB.DiskDirFileBatchDeleteExMsgReq();
     ((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)localObject).file_list.set(localArrayList);
-    WeiyunApi.a((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)localObject, new acqm(this, paramWeiYunFileInfo));
+    WeiyunApi.a((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)localObject, new adaj(this, paramWeiYunFileInfo));
   }
   
   public void a(String paramString)
@@ -820,13 +820,13 @@ public class WeiYunLogicCenter
       if (QLog.isColorLevel()) {
         QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd : network error");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 45, new Object[] { Integer.valueOf(0), BaseApplication.getContext().getString(2131433196) });
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 45, new Object[] { Integer.valueOf(0), BaseApplication.getContext().getString(2131433213) });
       return;
     }
     WeiyunPB.PwdVerifyMsgReq localPwdVerifyMsgReq = new WeiyunPB.PwdVerifyMsgReq();
     paramString = Utils.bytes2HexStr(Utils.str2Md5(paramString));
     localPwdVerifyMsgReq.pwd_md5.set(StringUtils.a(paramString));
-    WeiyunApi.a(localPwdVerifyMsgReq, new acqf(this));
+    WeiyunApi.a(localPwdVerifyMsgReq, new adac(this));
   }
   
   public void a(String paramString1, String paramString2)
@@ -842,7 +842,7 @@ public class WeiYunLogicCenter
     WeiyunPB.DiskFileDocDownloadAbsMsgReq localDiskFileDocDownloadAbsMsgReq = new WeiyunPB.DiskFileDocDownloadAbsMsgReq();
     localDiskFileDocDownloadAbsMsgReq.file_id.set(paramString1);
     localDiskFileDocDownloadAbsMsgReq.pdir_key.set(StringUtils.a(paramString2));
-    WeiyunApi.a(localDiskFileDocDownloadAbsMsgReq, new acqn(this));
+    WeiyunApi.a(localDiskFileDocDownloadAbsMsgReq, new adak(this));
   }
   
   public void a(List paramList1, List paramList2, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback)

@@ -1,49 +1,49 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl.ARCloudControlCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
-import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
+import android.graphics.SurfaceTexture;
+import android.opengl.Matrix;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
 import com.tencent.qphone.base.util.QLog;
 
 public class aaaq
-  extends SosoInterface.OnLocationListener
+  implements Runnable
 {
-  public aaaq(ARCloudControl paramARCloudControl, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aaaq(GreetingCardRender paramGreetingCardRender) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    ARCloudControl.f(this.a, false);
-    if (ARCloudControl.a(this.a) != null) {
-      ARCloudControl.a(this.a).removeMessages(2);
-    }
-    if (ARCloudControl.a(this.a)) {
-      return;
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    try
     {
-      paramSosoLbsInfo = paramSosoLbsInfo.a;
-      paramInt = (int)(paramSosoLbsInfo.jdField_a_of_type_Double * 1000000.0D);
-      int i = (int)(paramSosoLbsInfo.jdField_b_of_type_Double * 1000000.0D);
-      QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info. Lat_02 = " + paramSosoLbsInfo.jdField_a_of_type_Double + ", Lon_02 = " + paramSosoLbsInfo.jdField_b_of_type_Double + ", latitude = " + paramInt + ", longitude = " + i + ", altitude = " + paramSosoLbsInfo.e + ", accuracy = " + paramSosoLbsInfo.jdField_a_of_type_Float + ", name = " + paramSosoLbsInfo.jdField_a_of_type_JavaLangString + ", address = " + paramSosoLbsInfo.jdField_b_of_type_JavaLangString);
-      paramSosoLbsInfo = ARCloudRecogResult.a(this.a.a.recognitions, ARCloudControl.a(this.a));
-      ARCloudControl.a(this.a, paramSosoLbsInfo, paramInt, i);
+      if (GreetingCardRender.a(this.a) != null)
+      {
+        GreetingCardRender.a(this.a).updateTexImage();
+        GreetingCardRender.a(this.a).getTransformMatrix(GreetingCardRender.a(this.a));
+        GreetingCardRender.a(this.a);
+        if (GreetingCardRender.a(this.a) == null) {
+          GreetingCardRender.a(this.a, new RenderBuffer(540, 960, 33984));
+        }
+        if (GreetingCardRender.a(this.a) == null) {
+          GreetingCardRender.a(this.a, new TextureRender());
+        }
+        GreetingCardRender.a(this.a).b();
+        Matrix.setIdentityM(GreetingCardRender.b(this.a), 0);
+        Matrix.rotateM(GreetingCardRender.b(this.a), 0, 180.0F, 1.0F, 0.0F, 0.0F);
+        GreetingCardRender.a(this.a).a(36197, GreetingCardRender.a(this.a), GreetingCardRender.a(this.a), GreetingCardRender.b(this.a));
+        GreetingCardRender.a(this.a).c();
+        if ((!GreetingCardRender.a(this.a)) && (GreetingCardRender.a(this.a) != null) && (GreetingCardRender.b(this.a) > 2L))
+        {
+          GreetingCardRender.a(this.a, GreetingCardRender.a(this.a).a());
+          GreetingCardRender.a(this.a, true);
+          GreetingCardRender.b(this.a, true);
+          QLog.d("GreetingCardRender", 2, "drawFrame hard decode frame update");
+        }
+      }
       return;
     }
-    QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info failed. errCode = " + paramInt);
-    paramSosoLbsInfo = new ARCloudLBSLocationCheckResult();
-    paramSosoLbsInfo.a = 2;
-    ARCloudRecogResult.a(this.a.a.recognitions, ARCloudControl.a(this.a), paramSosoLbsInfo);
-    if (ARCloudControl.a(this.a) != null) {
-      ARCloudControl.a(this.a).a(0, ARCloudControl.a(this.a));
+    catch (Exception localException)
+    {
+      QLog.e("GreetingCardRender", 1, "mUpdateHardTextureRunnable fail.", localException);
     }
-    ARCloudControl.a(this.a, null);
   }
 }
 

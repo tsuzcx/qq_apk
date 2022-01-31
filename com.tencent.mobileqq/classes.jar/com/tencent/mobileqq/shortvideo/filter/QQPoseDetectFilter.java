@@ -83,6 +83,9 @@ public class QQPoseDetectFilter
     if ((this.e > 0) && (this.f > 0) && (QmcfManager.a().b() != 1))
     {
       this.h = (this.i * this.e / this.f);
+      if (this.h < 144) {
+        this.h = 144;
+      }
       this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor.a(this.h, this.i);
       if (QmcfManager.d) {
         this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirHumanPoseFilter.a(this.h, this.i);

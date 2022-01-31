@@ -1,19 +1,37 @@
-import android.view.animation.Interpolator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gameparty.GamePartyManager;
+import java.lang.ref.WeakReference;
 
 public class adon
-  implements Interpolator
+  extends Handler
 {
-  public float getInterpolation(float paramFloat)
+  public adon(GamePartyManager paramGamePartyManager, Looper paramLooper)
   {
-    if (paramFloat < 0.5D) {
-      return 0.0F;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)GamePartyManager.a(this.a).get();
+    if (localQQAppInterface == null) {
+      return;
     }
-    return (paramFloat - 0.5F) * 2.0F;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = "http://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
+    this.a.a(paramMessage, null);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adon
  * JD-Core Version:    0.7.0.1
  */

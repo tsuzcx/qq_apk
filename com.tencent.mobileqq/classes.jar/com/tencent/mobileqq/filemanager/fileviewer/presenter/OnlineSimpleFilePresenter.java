@@ -21,7 +21,7 @@ public class OnlineSimpleFilePresenter
     switch (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.e())
     {
     default: 
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131435085));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131435102));
       switch (i)
       {
       case 0: 
@@ -43,9 +43,9 @@ public class OnlineSimpleFilePresenter
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131435086));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131435103));
       break;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131435087));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131435104));
       break;
       switch (j)
       {

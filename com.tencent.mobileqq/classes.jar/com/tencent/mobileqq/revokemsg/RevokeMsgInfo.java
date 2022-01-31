@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.revokemsg;
 
-import agsf;
+import ahgh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class RevokeMsgInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new agsf();
+  public static final Parcelable.Creator CREATOR = new ahgh();
   public int a;
   public long a;
   public String a;
@@ -72,7 +72,7 @@ public class RevokeMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.revokemsg.RevokeMsgInfo
  * JD-Core Version:    0.7.0.1
  */

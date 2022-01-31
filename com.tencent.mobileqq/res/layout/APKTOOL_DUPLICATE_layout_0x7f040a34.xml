@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ab6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.proxy.albumcomponent.widget.NormalHeaderCell android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e30" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b00" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d032b" android:baselineAligned="false" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b8a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="34.0dip" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d089b">
+            <TextView android:textSize="17.0dip" android:textColor="#ffcecece" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b8c" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="没有相册信息" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2cc5" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        </FrameLayout>
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b8b" android:layout_width="241.0dip" android:layout_height="140.0dip" android:layout_marginTop="23.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c6f" />
+    </LinearLayout>
+</RelativeLayout>

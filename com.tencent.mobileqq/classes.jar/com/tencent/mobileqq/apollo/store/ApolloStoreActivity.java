@@ -60,11 +60,11 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import yqq;
-import yqr;
-import yqs;
-import yqt;
-import yqu;
+import ytw;
+import ytx;
+import yty;
+import ytz;
+import yua;
 
 @TargetApi(14)
 public class ApolloStoreActivity
@@ -124,7 +124,7 @@ public class ApolloStoreActivity
   private void e()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, "温馨提示", "使用特定角色就能体验厘米秀AI功能，快去商城换角色", "取消", "去商城", new yqr(this), new yqs(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, "温馨提示", "使用特定角色就能体验厘米秀AI功能，快去商城换角色", "取消", "去商城", new ytx(this), new yty(this));
     }
     VipUtils.a(null, "cmshow", "Apollo", "AI_alert", 0, 0, new String[0]);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -459,7 +459,7 @@ public class ApolloStoreActivity
       if (paramRelativeLayout != null) {
         paramRelativeLayout.setHandler(ApolloStoreActivity.class, this.jdField_a_of_type_MqqOsMqqHandler);
       }
-      ThreadManager.postImmediately(new yqq(this), null, true);
+      ThreadManager.postImmediately(new ytw(this), null, true);
     }
   }
   
@@ -582,7 +582,7 @@ public class ApolloStoreActivity
     QLog.d("ApolloStoreActivity", 2, "[saveImage] failed view null");
     return "";
     long l = System.currentTimeMillis();
-    ThreadManager.executeOnSubThread(new yqu(this, localApolloTextureView.getBitmap(), l, paramString));
+    ThreadManager.executeOnSubThread(new yua(this, localApolloTextureView.getBitmap(), l, paramString));
     return "";
   }
   
@@ -729,7 +729,7 @@ public class ApolloStoreActivity
           {
             localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.a();
             if (localObject1 != null) {
-              ((ApolloTextureView)localObject1).queueEvent(new yqt(this, paramInt1, paramInt2, paramIntent));
+              ((ApolloTextureView)localObject1).queueEvent(new ytz(this, paramInt1, paramInt2, paramIntent));
             }
           }
         }
@@ -1024,7 +1024,7 @@ public class ApolloStoreActivity
     if (this.mSystemBarComp != null)
     {
       this.mSystemBarComp.init();
-      int m = super.getResources().getColor(2131494247);
+      int m = super.getResources().getColor(2131494254);
       this.mSystemBarComp.setStatusColor(m);
       this.mSystemBarComp.setStatusBarColor(m);
     }

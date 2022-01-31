@@ -1,20 +1,13 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
 public class mos
   implements View.OnClickListener
 {
-  public mos(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  public mos(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
   
-  public void onClick(View paramView)
-  {
-    ReadInJoyDiandianHeaderController.a(this.a, "0X8008B87");
-    ReadInJoyDiandianHeaderController.b(this.a);
-    ReadInJoyUtils.a(ReadInJoyDiandianHeaderController.a(this.a).getContext(), ReadInJoyConstants.m);
-  }
+  public void onClick(View paramView) {}
 }
 
 

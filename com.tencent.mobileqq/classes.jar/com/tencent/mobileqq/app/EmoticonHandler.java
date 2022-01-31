@@ -324,7 +324,7 @@ public class EmoticonHandler
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     localReqBody.msg_subcmd0x2_req_fetchtab.set((MessageMicro)localObject);
     localReqBody.int32_plat_id.set(109);
-    localReqBody.str_app_version.set("7.6.0");
+    localReqBody.str_app_version.set("7.6.3");
     localReqBody.uint32_business_id.set(paramInt3);
     localObject = new ToServiceMsg("mobileqq.service", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "BQMallSvc.TabOpReq");
     ((ToServiceMsg)localObject).extraData.putInt("EmosmSubCmd", 2);
@@ -337,7 +337,7 @@ public class EmoticonHandler
     EmosmPb.ReqBody localReqBody = new EmosmPb.ReqBody();
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     localReqBody.int32_plat_id.set(109);
-    localReqBody.str_app_version.set("7.6.0");
+    localReqBody.str_app_version.set("7.6.3");
     Object localObject;
     if (6 == paramInt1)
     {
@@ -1119,7 +1119,7 @@ public class EmoticonHandler
     paramString.uint32_sub_cmd.set(8);
     paramString.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     paramString.int32_plat_id.set(109);
-    paramString.str_app_version.set("7.6.0");
+    paramString.str_app_version.set("7.6.3");
     paramString.msg_subcmd0x8_req_addtab.set((MessageMicro)localObject);
     paramString.uint32_business_id.set(paramInt);
     paramString.setHasFlag(true);
@@ -1149,7 +1149,7 @@ public class EmoticonHandler
     paramList2.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     paramList2.int32_plat_id.set(109);
     paramList2.uint32_sub_cmd.set(9);
-    paramList2.str_app_version.set("7.6.0");
+    paramList2.str_app_version.set("7.6.3");
     EmosmPb.SubCmd0x9BqAssocReq localSubCmd0x9BqAssocReq = new EmosmPb.SubCmd0x9BqAssocReq();
     localSubCmd0x9BqAssocReq.str_key_word.set(paramString);
     localSubCmd0x9BqAssocReq.rpt_str_bq_item_id.set((List)localObject);
@@ -1178,7 +1178,7 @@ public class EmoticonHandler
     ((ComicIPSite.ModuleInfo)localObject).isRetSummary.set(paramBoolean);
     ComicIPSite.ModuleReq localModuleReq = new ComicIPSite.ModuleReq();
     localModuleReq.platform.set(109L);
-    localModuleReq.mqqver.set("7.6.0");
+    localModuleReq.mqqver.set("7.6.3");
     localModuleReq.uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c()).longValue());
     localModuleReq.sub_cmd.set(1);
     localModuleReq.moduleInfo.set((MessageMicro)localObject);
@@ -1250,7 +1250,7 @@ public class EmoticonHandler
         paramList.uint32_sub_cmd.set(16);
         paramList.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
         paramList.int32_plat_id.set(109);
-        paramList.str_app_version.set("7.6.0");
+        paramList.str_app_version.set("7.6.3");
         paramList.msg_subcmd0x10_req.set((MessageMicro)localObject);
         paramList.uint32_business_id.set(paramInt);
         paramList.setHasFlag(true);
@@ -1293,7 +1293,7 @@ public class EmoticonHandler
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     localReqBody.msg_subcmd0x18_req.set((MessageMicro)localObject);
     localReqBody.int32_plat_id.set(109);
-    localReqBody.str_app_version.set("7.6.0");
+    localReqBody.str_app_version.set("7.6.3");
     localObject = new ToServiceMsg("mobileqq.service", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "BQMallSvc.TabOpReq");
     ((ToServiceMsg)localObject).extraData.putInt("EmosmSubCmd", 24);
     ((ToServiceMsg)localObject).extraData.putInt("tabId", paramInt);
@@ -1331,7 +1331,7 @@ public class EmoticonHandler
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     localReqBody.int32_plat_id.set(109);
     localReqBody.uint32_sub_cmd.set(19);
-    localReqBody.str_app_version.set("7.6.0");
+    localReqBody.str_app_version.set("7.6.3");
     Object localObject1 = ((CommonUsedSystemEmojiManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(171)).b();
     if (localObject1 == null)
     {
@@ -1386,7 +1386,7 @@ public class EmoticonHandler
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     localReqBody.int32_plat_id.set(109);
     localReqBody.uint32_sub_cmd.set(5);
-    localReqBody.str_app_version.set("7.6.0");
+    localReqBody.str_app_version.set("7.6.3");
     localReqBody.uint32_business_id.set(paramInt);
     Object localObject = new EmosmPb.SubCmd0x5ReqBQRecommend();
     int j = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).getInt("recommendEmotion_sp_lastversion" + this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);

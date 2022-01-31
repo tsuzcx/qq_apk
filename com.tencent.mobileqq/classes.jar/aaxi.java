@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.mobileqq.scanfu.view.CameraDialog;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aaxi
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aaxi(ShopScanActivity paramShopScanActivity, CameraDialog paramCameraDialog) {}
+  public aaxi(ArkRecommendController paramArkRecommendController, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqScanfuViewCameraDialog.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.finish();
+    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        RecommendCommonMessage localRecommendCommonMessage = (RecommendCommonMessage)localIterator.next();
+        ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(localRecommendCommonMessage, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController);
+      }
+    }
   }
 }
 

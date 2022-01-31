@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.util.FaceDrawableImpl;
-import com.tencent.mobileqq.util.IdleUpdater;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase.OnEditItemListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
 
-public class ajlp
-  extends IdleUpdater
+class ajlp
+  implements Runnable
 {
-  public ajlp(FaceDrawableImpl paramFaceDrawableImpl) {}
+  ajlp(ajlo paramajlo) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a();
+    HWReciteItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlp
  * JD-Core Version:    0.7.0.1
  */

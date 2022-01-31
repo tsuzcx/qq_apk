@@ -30,7 +30,7 @@ public class TroopGiftUtil
   public static Intent a(Activity paramActivity, String paramString1, String paramString2)
   {
     paramString1 = TroopMemberListActivity.a(paramActivity, paramString1, 14);
-    paramString1.putExtra("custom_title_name", paramActivity.getString(2131430729));
+    paramString1.putExtra("custom_title_name", paramActivity.getString(2131430746));
     paramString1.putExtra("troop_gift_from", paramString2);
     return paramString1;
   }
@@ -377,7 +377,7 @@ public class TroopGiftUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftUtil
  * JD-Core Version:    0.7.0.1
  */

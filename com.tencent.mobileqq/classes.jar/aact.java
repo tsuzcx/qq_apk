@@ -1,31 +1,43 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.ar.ArNativeSoManager;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public final class aact
-  implements INetEngine.IBreakDownFix
+public class aact
+  implements ARPreSoResourceDownload.ARResourceDownloadCallback
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public aact(ArNativeSoManager paramArNativeSoManager, String paramString, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback) {}
+  
+  public void a()
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    while (!(paramNetReq instanceof HttpNetReq)) {
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback.a();
     }
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
-    localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
-    paramNetResp.c = 0L;
-    paramNetResp = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
-    localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-    paramNetResp = localHttpNetReq.jdField_a_of_type_JavaLangString;
-    if (paramNetResp.contains("range="))
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback.a(paramLong1, paramLong2);
+    }
+  }
+  
+  public void a(boolean paramBoolean, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramDownloadInfo.d + ", filename = " + paramDownloadInfo.c + ", url = " + paramDownloadInfo.jdField_a_of_type_JavaLangString);
+    if (paramBoolean) {
+      if (!ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c, paramDownloadInfo.b))
+      {
+        ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback == null)
     {
-      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-      localHttpNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + localHttpNetReq.jdField_a_of_type_Long);
+      return;
+      if ((!paramDownloadInfo.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager.a(paramDownloadInfo.d, paramDownloadInfo.c, paramDownloadInfo.b) != 0)) {}
     }
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).jdField_a_of_type_JavaLangString + ", offset=" + localHttpNetReq.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback.a(paramBoolean, paramDownloadInfo);
   }
 }
 

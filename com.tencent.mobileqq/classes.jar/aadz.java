@@ -1,36 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.arcard.ARBlessWordFragment;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aadz
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public aadz(ARBlessWordFragment paramARBlessWordFragment) {}
+  public aadz(ScanEntranceReport paramScanEntranceReport, int paramInt1, int paramInt2, long paramLong) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (!this.a.a) {
-      if (paramMotionEvent.getAction() == 0) {
-        ARBlessWordFragment.a(this.a).setAlpha(0.5F);
-      }
-    }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        ARBlessWordFragment.a(this.a).setAlpha(1.0F);
-        continue;
-        ARBlessWordFragment.a(this.a).setAlpha(1.0F);
-      }
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("zoom_count", String.valueOf(this.b));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_qr_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aadz
  * JD-Core Version:    0.7.0.1
  */

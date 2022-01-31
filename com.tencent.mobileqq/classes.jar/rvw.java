@@ -1,26 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class rvw
-  extends Handler
+public final class rvw
+  implements DialogInterface.OnClickListener
 {
-  public rvw(ChatHistory paramChatHistory) {}
+  public rvw(QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage.what == 1)
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (this.jdField_a_of_type_Int == 6) {}
+    for (paramInt = 1;; paramInt = 4)
     {
-      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131434466);
-      if (!this.a.isFinishing()) {
-        this.a.a.show();
-      }
+      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", paramInt, 0, "", "", "", "");
+      return;
     }
   }
 }

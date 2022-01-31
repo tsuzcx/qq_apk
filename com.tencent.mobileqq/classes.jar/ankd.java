@@ -1,9 +1,15 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.capture.QIMCaptureController;
 
 public class ankd
-  extends anjw
+  implements Runnable
 {
-  public ankd(GLTextureView paramGLTextureView, boolean paramBoolean) {}
+  public ankd(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  
+  public void run()
+  {
+    this.a.a.a();
+  }
 }
 
 

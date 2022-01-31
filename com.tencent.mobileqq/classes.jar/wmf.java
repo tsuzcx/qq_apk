@@ -1,25 +1,13 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
 
 public class wmf
-  implements ViewPager.OnPageChangeListener
+  implements Runnable
 {
-  public wmf(PicSelectAdapter paramPicSelectAdapter) {}
+  public wmf(ContactsTroopAdapter paramContactsTroopAdapter) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void run()
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = PicSelectAdapter.a(this.a).a(paramInt);
-    if (localEmoticonFromGroupEntity != null)
-    {
-      PicSelectAdapter.a(this.a, localEmoticonFromGroupEntity);
-      PicSelectAdapter.b(this.a, localEmoticonFromGroupEntity);
-    }
+    ContactsTroopAdapter.a(this.a);
   }
 }
 

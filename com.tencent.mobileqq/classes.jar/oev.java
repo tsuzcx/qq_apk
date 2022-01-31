@@ -1,89 +1,82 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoSave;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransformation;
+import com.tencent.biz.qqstory.takevideo.EditDoodleExport;
+import com.tencent.biz.qqstory.takevideo.EditFilterExport;
+import com.tencent.biz.qqstory.takevideo.EditVideoFragment;
+import com.tencent.biz.qqstory.takevideo.VideoFragmentInfo;
+import com.tencent.biz.qqstory.utils.BitmapUtils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class oev
-  extends SimpleObserver
 {
-  public oev(EditVideoSave paramEditVideoSave, GenerateContext paramGenerateContext) {}
+  int jdField_a_of_type_Int;
+  RoundedTransformation jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation;
+  EditDoodleExport jdField_a_of_type_ComTencentBizQqstoryTakevideoEditDoodleExport;
+  EditFilterExport jdField_a_of_type_ComTencentBizQqstoryTakevideoEditFilterExport;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
   
-  public void a(GenerateContext paramGenerateContext)
+  public oev(EditVideoFragment paramEditVideoFragment)
   {
-    super.onNext(paramGenerateContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.a(5);
-    paramGenerateContext = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishGenerateContext.a;
-    SLog.b("EditVideoSave", "publishParam = " + paramGenerateContext);
-    Intent localIntent;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
-    {
-      localIntent = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getIntent();
-      if (localIntent == null) {
-        break label354;
-      }
-      j = localIntent.getIntExtra("sv_total_frame_count", 0);
-      i = localIntent.getIntExtra("sv_total_record_time", 0);
-    }
-    for (;;)
-    {
-      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), paramGenerateContext.b, i, j);
-      EditVideoSave.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave, paramGenerateContext.b);
-      localIntent.putExtra("mediacodec_encode_enable", true);
-      localIntent.putExtra("mc_video.mp4", paramGenerateContext.j);
-      localIntent.putExtra("mc_audio.mp4", paramGenerateContext.k);
-      localIntent.putExtra("all_i_mc_video.mp4", paramGenerateContext.l);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().startActivityForResult(localIntent, 111);
-      EditVideoSave.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave, SystemClock.elapsedRealtime());
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_Int = 5;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.b = ((int)(7000.0D / paramGenerateContext.a * 4.0D));
-      SLog.b("EditVideoSave", "[30s]progressIncrement Old = " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.b);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.b <= 0) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.b = 2;
-      }
-      SLog.b("EditVideoSave", "[30s]progressIncrement new = " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.b);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.e();
-      if (CameraControl.a().jdField_a_of_type_Int == 1) {}
-      for (i = 1;; i = 2)
+    this.jdField_a_of_type_Int = AIOUtils.a(15.0F, paramEditVideoFragment.a());
+    this.b = AIOUtils.a(12.0F, paramEditVideoFragment.a());
+    this.c = AIOUtils.a(2.0F, paramEditVideoFragment.a());
+    this.d = ((ScreenUtil.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2 - this.b * 5) / 6);
+    this.e = (this.d - this.c * 2);
+    this.f = (this.e * 8 / 5);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation = new RoundedTransformation(AIOUtils.a(3.0F, paramEditVideoFragment.a()), 0, this.f * 1.0F / this.e, null, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditDoodleExport = ((EditDoodleExport)paramEditVideoFragment.a(EditDoodleExport.class));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditFilterExport = ((EditFilterExport)paramEditVideoFragment.a(EditFilterExport.class));
+  }
+  
+  public Bitmap a(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditDoodleExport != null) {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditDoodleExport.a(paramInt))
       {
-        CaptureReportUtil.j(i);
-        return;
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditFilterExport != null)
+        {
+          localObject1 = localObject2;
+          if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditFilterExport.a(paramInt)) {}
+        }
       }
-      label354:
-      i = 0;
-      j = 0;
+      else
+      {
+        Bitmap localBitmap1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditDoodleExport.a(paramInt);
+        localObject1 = localObject2;
+        if (localBitmap1 != null)
+        {
+          if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditFilterExport != null) {
+            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditFilterExport.a(paramInt, new Canvas(localBitmap1), localBitmap1.getWidth(), localBitmap1.getHeight());
+          }
+          Bitmap localBitmap2 = BitmapUtils.a(localBitmap1, this.e, this.f, false);
+          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditDoodleExport.a(localBitmap1);
+          localObject1 = localObject2;
+          if (localBitmap2 != null) {
+            localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation.a(localBitmap2);
+          }
+        }
+      }
     }
+    return localObject1;
   }
   
-  public void onCancel()
+  public void a(VideoFragmentInfo paramVideoFragmentInfo, oew paramoew)
   {
-    super.onCancel();
-    SLog.d("EditVideoSave", "saveVideo cancel !");
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.h();
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.e("EditVideoSave", "saveVideo error ：" + paramError);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.h();
+    Bitmap localBitmap = BitmapUtils.a(paramVideoFragmentInfo.c, this.e, this.f, false);
+    paramVideoFragmentInfo = null;
+    if (localBitmap != null) {
+      paramVideoFragmentInfo = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation.a(localBitmap);
+    }
+    paramoew.b = paramVideoFragmentInfo;
   }
 }
 

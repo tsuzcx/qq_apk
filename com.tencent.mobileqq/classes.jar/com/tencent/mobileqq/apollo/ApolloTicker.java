@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-import yjw;
+import ync;
 
 public class ApolloTicker
 {
@@ -31,7 +31,7 @@ public class ApolloTicker
       return;
     }
     Timer localTimer = new Timer();
-    localObject = new yjw(this, (View)localObject, paramLong, 3L);
+    localObject = new ync(this, (View)localObject, paramLong, 3L);
     ApolloTickerInfo localApolloTickerInfo = new ApolloTickerInfo();
     localApolloTickerInfo.jdField_a_of_type_JavaUtilTimer = localTimer;
     localApolloTickerInfo.jdField_a_of_type_Int = 1;
@@ -112,11 +112,11 @@ public class ApolloTicker
       int i = localApolloTickerInfo.jdField_a_of_type_Int;
       if ((localView != null) && (localApolloTickerInfo.jdField_a_of_type_JavaUtilTimer == null))
       {
-        yjw localyjw = new yjw(this, localView, paramLong, i);
+        ync localync = new ync(this, localView, paramLong, i);
         Timer localTimer = new Timer();
-        localTimer.scheduleAtFixedRate(localyjw, 0L, i * 16);
+        localTimer.scheduleAtFixedRate(localync, 0L, i * 16);
         localApolloTickerInfo.jdField_a_of_type_JavaUtilTimer = localTimer;
-        localApolloTickerInfo.jdField_a_of_type_JavaUtilTimerTask = localyjw;
+        localApolloTickerInfo.jdField_a_of_type_JavaUtilTimerTask = localync;
         if ((localView != null) && ((localView instanceof ApolloTextureView)))
         {
           ((ApolloTextureView)localView).getRender().isRunning = true;
@@ -163,7 +163,7 @@ public class ApolloTicker
       localTimer.cancel();
       localTimer.purge();
     }
-    Object localObject = new yjw(this, (View)localObject, paramLong, i);
+    Object localObject = new ync(this, (View)localObject, paramLong, i);
     localTimer = new Timer();
     localTimer.scheduleAtFixedRate((TimerTask)localObject, 0L, i * 16);
     localApolloTickerInfo.jdField_a_of_type_JavaUtilTimer = localTimer;

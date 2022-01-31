@@ -1,21 +1,56 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class whv
-  implements Runnable
+  implements TextWatcher
 {
-  public whv(ShowExternalTroopListActivity paramShowExternalTroopListActivity, TextView paramTextView1, TextView paramTextView2) {}
+  public whv(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    String str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.a);
-    Card localCard = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.a);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.runOnUiThread(new whw(this, str, localCard));
+    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetImageButton;
+    if (str.equals("")) {}
+    for (int i = 8;; i = 0)
+    {
+      paramEditable.setVisibility(i);
+      if (this.a.f != ClassificationSearchActivity.c) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131433015));
+      if (AppSetting.b) {
+        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
+      }
+      if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
+      {
+        if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d)) {
+          break label219;
+        }
+        ClassificationSearchActivity.a(this.a);
+      }
+      return;
+    }
+    Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
+    if (!str.equals("")) {}
+    for (paramEditable = this.a.getResources().getString(2131433958);; paramEditable = this.a.getResources().getString(2131433015))
+    {
+      localButton.setText(paramEditable);
+      break;
+    }
+    label219:
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

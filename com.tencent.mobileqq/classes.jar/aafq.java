@@ -1,27 +1,18 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import com.tencent.mobileqq.ar.arengine.AREngine;
 
-class aafq
-  implements View.OnTouchListener
+public class aafq
+  implements Runnable
 {
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new aafr(this));
+  public aafq(AREngine paramAREngine) {}
   
-  aafq(aafp paramaafp) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (ARGreetingCardListManager.a(this.jdField_a_of_type_Aafp.a)) {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    }
-    return true;
+    AREngine.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aafq
  * JD-Core Version:    0.7.0.1
  */

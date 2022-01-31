@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.AlbumLibDownloaderUtil;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import cooperation.jtcode.JtcodePluginInstallActivity;
 
-public class amln
+class amln
   implements Runnable
 {
-  public amln(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
+  amln(amlm paramamlm) {}
   
   public void run()
   {
-    if (AlbumLibDownloaderUtil.a().a(AlbumLibDownloaderUtil.a, true))
-    {
-      QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime, this.jdField_a_of_type_ArrayOfJavaLangString);
-      return;
-    }
-    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString);
+    JtcodePluginInstallActivity.a(this.a.a, "initPluginManager");
   }
 }
 

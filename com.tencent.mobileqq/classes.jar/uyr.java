@@ -1,20 +1,19 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForMedalNews;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
 
 public class uyr
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  public uyr(MedalNewsItemBuilder paramMedalNewsItemBuilder, MessageForMedalNews paramMessageForMedalNews) {}
+  public uyr(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void onClick(View paramView)
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if ((uyv)paramView.getTag() == null) {
-      return;
-    }
-    ThreadManager.postImmediately(new uys(this), null, true);
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public class aaka
-  implements Runnable
+public final class aaka
+  implements View.OnTouchListener
 {
-  public aaka(ArkActionAppMgr paramArkActionAppMgr, aakf paramaakf) {}
+  public aaka(ImageView paramImageView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ArkActionAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr, this.jdField_a_of_type_Aakf);
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.setAlpha(1.0F);
+    }
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 0) {
+        this.a.setAlpha(0.5F);
+      }
+    }
   }
 }
 

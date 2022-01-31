@@ -31,7 +31,7 @@ public class StructMsgItemLayout2
     paramContext = new TextViewWrapLayout(paramContext);
     paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
     if (!TextUtils.isEmpty(this.c)) {
-      paramContext.setBackgroundResource(2130838619);
+      paramContext.setBackgroundResource(2130838623);
     }
     d(paramContext);
     return paramContext;
@@ -124,7 +124,7 @@ public class StructMsgItemLayout2
     if ((paramView != null) && ((paramView instanceof TextViewWrapLayout)))
     {
       localObject6 = (TextViewWrapLayout)paramView;
-      localObject5 = (RelativeLayout)paramView.findViewById(2131368263);
+      localObject5 = (RelativeLayout)paramView.findViewById(2131368330);
       localObject7 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       paramView = (View)localObject4;
       if (((Iterator)localObject7).hasNext())
@@ -393,7 +393,7 @@ public class StructMsgItemLayout2
                   a((ViewGroup)localObject5, (View)localObject3, (RelativeLayout.LayoutParams)localObject2);
                   a((ViewGroup)localObject5, (View)localObject1, (RelativeLayout.LayoutParams)localObject8);
                   a((ViewGroup)localObject5, paramView, (RelativeLayout.LayoutParams)localObject8);
-                  localObject2 = (RelativeLayout)LayoutInflater.from(paramContext).inflate(2130969945, null);
+                  localObject2 = (RelativeLayout)LayoutInflater.from(paramContext).inflate(2130969959, null);
                   localObject6 = new RelativeLayout.LayoutParams(-1, -2);
                   ((RelativeLayout.LayoutParams)localObject6).topMargin = 0;
                   ((RelativeLayout.LayoutParams)localObject6).addRule(3, ((View)localObject3).getId());
@@ -468,7 +468,7 @@ public class StructMsgItemLayout2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout2
  * JD-Core Version:    0.7.0.1
  */

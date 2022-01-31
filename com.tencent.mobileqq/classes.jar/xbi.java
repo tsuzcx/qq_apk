@@ -1,35 +1,21 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
-import com.tencent.mobileqq.service.message.MessageCache;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-public final class xbi
-  implements Runnable
+public class xbi
+  implements ClickableColorSpanTextView.SpanClickListener
 {
-  public xbi(MessageRecord paramMessageRecord, String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle) {}
+  public xbi(RedPacketRecordFragment paramRedPacketRecordFragment, Context paramContext) {}
   
-  public void run()
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject == null) {
-        return;
-      }
-      UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, ((QQAppInterface)localObject).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_Int, 3145729, MessageCache.a());
-      if ((this.b >= 0) && (this.c > this.b) && (this.jdField_a_of_type_AndroidOsBundle != null)) {
-        localUniteGrayTipParam.a(this.b, this.c, this.jdField_a_of_type_AndroidOsBundle);
-      }
-      MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-      localMessageForUniteGrayTip.initGrayTipMsg((QQAppInterface)localObject, localUniteGrayTipParam);
-      UniteGrayTipUtil.a((QQAppInterface)localObject, localMessageForUniteGrayTip);
-      return;
-    }
+    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
   }
 }
 

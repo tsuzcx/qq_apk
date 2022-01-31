@@ -1,8 +1,18 @@
-import dov.com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag.EditBehavior;
+import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
 
 public class anvg
+  implements QQStoryPullToRefreshListView.PullToRefreshListener
 {
-  private static final CapturePtvTemplateManager a = new CapturePtvTemplateManager(null);
+  public anvg(EditVideoTag paramEditVideoTag) {}
+  
+  public void a()
+  {
+    EditVideoTag.EditBehavior localEditBehavior = EditVideoTag.a(this.a);
+    EditVideoTag.a(this.a, EditVideoTag.a(this.a)).a(localEditBehavior);
+  }
 }
 
 

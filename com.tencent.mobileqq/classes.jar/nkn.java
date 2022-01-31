@@ -1,14 +1,14 @@
-import com.tencent.biz.qqstory.playmode.child.TroopStorySinglePlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.VideoInfoListEvent;
 
-public class nkn
+class nkn
   implements Runnable
 {
-  public nkn(TroopStorySinglePlayMode paramTroopStorySinglePlayMode) {}
+  nkn(nkm paramnkm, BatchGetVideoInfoHandler.VideoInfoListEvent paramVideoInfoListEvent) {}
   
   public void run()
   {
-    this.a.a.setCurrentItem(0, false);
+    this.jdField_a_of_type_Nkm.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$VideoInfoListEvent);
   }
 }
 

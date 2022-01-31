@@ -1,50 +1,18 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import java.lang.ref.WeakReference;
 
 public class xfs
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xfs(BannerManager paramBannerManager, Bundle paramBundle) {}
+  public xfs(PreloadManager paramPreloadManager, WeakReference paramWeakReference) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager) != null)
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramView = BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(1134042);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendMessage(paramView);
-    }
-    paramView = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
-    if (!TextUtils.isEmpty(paramView)) {}
-    try
-    {
-      paramView = Class.forName(paramView);
-      if (paramView != null)
-      {
-        paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getApplicationContext(), paramView);
-        String str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.setAction(str);
-        }
-        str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.addCategory(str);
-        }
-        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView);
-      }
-      return;
-    }
-    catch (ClassNotFoundException paramView)
-    {
-      for (;;)
-      {
-        paramView = null;
+      PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localPreloadManager != null) && (!localPreloadManager.a)) {
+        localPreloadManager.a(false);
       }
     }
   }

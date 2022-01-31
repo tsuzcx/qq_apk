@@ -1,23 +1,13 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
 
 public class kxi
   implements Runnable
 {
-  public kxi(AdModuleBase paramAdModuleBase) {}
+  public kxi(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton != null)
-    {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130838504);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.a.jdField_a_of_type_AndroidContentContext.getText(2131438676));
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-1);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(0);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(true);
-    }
-    this.a.c = 2;
+    ReadInJoyNativeAdAppVideoView.a(this.a);
   }
 }
 

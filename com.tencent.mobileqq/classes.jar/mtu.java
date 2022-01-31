@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class mtu
   implements Runnable
 {
-  public mtu(PublicAccountH5AbilityForPtt paramPublicAccountH5AbilityForPtt) {}
+  public mtu(SubscriptRecommendController paramSubscriptRecommendController) {}
   
   public void run()
   {
-    QQToast.a(this.a.a, "开始录音了", 0).a();
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      this.a.a(str);
+    }
   }
 }
 

@@ -32,12 +32,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import lyu;
-import lyv;
-import lyx;
-import lyz;
-import lzb;
-import lzc;
+import lzu;
+import lzv;
+import lzx;
+import lzz;
+import mab;
+import mac;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import org.json.JSONArray;
@@ -60,7 +60,7 @@ public class ReadInJoyWebDataManager
   public static String g = "1";
   public static String h = "2";
   public static String i = "3";
-  private static final String j = "QQ/7.6.0 Android/0.17 Android/" + Build.VERSION.RELEASE;
+  private static final String j = "QQ/7.6.3 Android/0.17 Android/" + Build.VERSION.RELEASE;
   private volatile HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private long b;
   private String k = "";
@@ -147,7 +147,7 @@ public class ReadInJoyWebDataManager
     if (localAppRuntime == null) {
       return;
     }
-    ThreadManager.post(new lyz(localAppRuntime, paramString), 5, null, true);
+    ThreadManager.post(new lzz(localAppRuntime, paramString), 5, null, true);
   }
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -170,9 +170,9 @@ public class ReadInJoyWebDataManager
     }
   }
   
-  private void a(String paramString1, JSONObject paramJSONObject, String paramString2, lzc paramlzc)
+  private void a(String paramString1, JSONObject paramJSONObject, String paramString2, mac parammac)
   {
-    ThreadManager.post(new lyx(this, paramString1, paramString2, paramlzc, paramJSONObject), 5, null, true);
+    ThreadManager.post(new lzx(this, paramString1, paramString2, parammac, paramJSONObject), 5, null, true);
   }
   
   /* Error */
@@ -216,14 +216,14 @@ public class ReadInJoyWebDataManager
     //   82: ldc2_w 317
     //   85: lcmp
     //   86: ifle +20 -> 106
-    //   89: new 320	lyw
+    //   89: new 320	lzw
     //   92: dup
     //   93: aload_0
     //   94: aload_1
     //   95: aload_2
     //   96: aload_3
     //   97: aload 4
-    //   99: invokespecial 322	lyw:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/video/ReadInJoyWebDataManager;Ljava/net/URL;Ljava/lang/String;Ljava/lang/String;Lorg/json/JSONObject;)V
+    //   99: invokespecial 322	lzw:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/video/ReadInJoyWebDataManager;Ljava/net/URL;Ljava/lang/String;Ljava/lang/String;Lorg/json/JSONObject;)V
     //   102: invokestatic 326	com/tencent/mobileqq/app/ThreadManager:executeOnNetWorkThread	(Ljava/lang/Runnable;)V
     //   105: return
     //   106: aload 10
@@ -570,7 +570,7 @@ public class ReadInJoyWebDataManager
   {
     try
     {
-      ThreadManager.post(new lyv(this, new URL(paramString1), paramString2, paramString3, paramJSONObject), 5, null, false);
+      ThreadManager.post(new lzv(this, new URL(paramString1), paramString2, paramString3, paramJSONObject), 5, null, false);
       return;
     }
     catch (MalformedURLException paramString1) {}
@@ -1462,7 +1462,7 @@ public class ReadInJoyWebDataManager
     if (!a(jdField_b_of_type_JavaLangString)) {
       return;
     }
-    lzb locallzb = null;
+    mab localmab = null;
     for (;;)
     {
       try
@@ -1477,13 +1477,13 @@ public class ReadInJoyWebDataManager
         paramString = str;
         if (paramInt == 1)
         {
-          locallzb = new lzb(this);
+          localmab = new mab(this);
           paramString = str + "&ispreload=1";
         }
         str = jdField_b_of_type_JavaLangString;
         if (paramInt == 1)
         {
-          a("get", paramString, localJSONObject, str, locallzb, Boolean.valueOf(bool));
+          a("get", paramString, localJSONObject, str, localmab, Boolean.valueOf(bool));
           if (!QLog.isColorLevel()) {
             break;
           }
@@ -1514,7 +1514,7 @@ public class ReadInJoyWebDataManager
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new lyu(this, paramString1, paramString2, paramString3, paramJSONObject));
+      new Handler(localLooper).post(new lzu(this, paramString1, paramString2, paramString3, paramJSONObject));
       return;
     }
     b(paramString1, paramString2, paramString3, paramJSONObject);
@@ -1525,7 +1525,7 @@ public class ReadInJoyWebDataManager
     a(paramString1, paramString2, paramJSONObject, paramString3, null, Boolean.valueOf(false));
   }
   
-  public void a(String paramString1, String paramString2, JSONObject paramJSONObject, String paramString3, lzc paramlzc, Boolean paramBoolean)
+  public void a(String paramString1, String paramString2, JSONObject paramJSONObject, String paramString3, mac parammac, Boolean paramBoolean)
   {
     if (this.jdField_a_of_type_JavaUtilHashMap != null) {
       if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString2)) && (System.currentTimeMillis() - ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).longValue() < 1800000L)) {
@@ -1543,7 +1543,7 @@ public class ReadInJoyWebDataManager
         if (paramString2.indexOf("?") != -1) {}
         for (paramString2 = paramString2 + "&g_tk=" + e(); "get".equals(paramString1); paramString2 = paramString2 + "?g_tk=" + e())
         {
-          a(paramString2, paramJSONObject, paramString3, paramlzc);
+          a(paramString2, paramJSONObject, paramString3, parammac);
           return;
         }
       }

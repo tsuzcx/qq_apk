@@ -1,53 +1,43 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.doutu.DoutuManager;
-import com.tencent.mobileqq.doutu.DoutuServlet;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.widget.XListView;
 
 public class abre
-  implements Runnable
+  implements IIconListener
 {
-  public abre(DoutuManager paramDoutuManager) {}
+  public abre(SearchResultActivity paramSearchResultActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoutuManager", 2, "postGetDoutuList : run begin .");
-    }
-    DoutuManager.a(this.a, 1);
-    NewIntent localNewIntent = new NewIntent(DoutuManager.a(this.a).getApp(), DoutuServlet.class);
-    long l = Long.valueOf(DoutuManager.a(this.a).getCurrentAccountUin()).longValue();
-    localNewIntent.putExtra("KEY_SRC_UIN", l);
-    localNewIntent.putExtra("KEY_CMD", 1);
-    Object localObject = (FriendsManager)DoutuManager.a(this.a).getManager(50);
-    int i;
-    if (localObject != null)
-    {
-      localObject = ((FriendsManager)localObject).a(DoutuManager.a(this.a).getCurrentAccountUin());
-      if (localObject != null)
-      {
-        i = ((Card)localObject).age;
-        localNewIntent.putExtra("KEY_AGE", ((Card)localObject).age);
-        localNewIntent.putExtra("key_gender", ((Card)localObject).shGender);
-        DoutuManager.a(this.a, (Card)localObject);
-      }
-    }
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "postGetDoutuList : curUin = " + l + ", age = " + i);
-      }
-      DoutuManager.a(this.a).startServlet(localNewIntent);
       return;
-      i = 0;
+      if (this.a.jdField_a_of_type_Int == 0)
+      {
+        int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof abrg)))
+          {
+            paramBitmap = (abrg)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              SearchResultActivity.a(this.a, paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abre
  * JD-Core Version:    0.7.0.1
  */

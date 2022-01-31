@@ -1,36 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.AuthDevForRoamMsgActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class rky
-  implements Handler.Callback
+class rky
+  implements DialogInterface.OnClickListener
 {
-  public rky(AuthDevForRoamMsgActivity paramAuthDevForRoamMsgActivity) {}
+  rky(rkx paramrkx) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    this.a.findViewById(2131372075).setEnabled(true);
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-    if (paramMessage.arg1 == 0) {
-      QQToast.a(this.a.getApplicationContext(), 2, "开启保护成功", 0).b(this.a.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      this.a.setResult(1);
-      this.a.finish();
-      return false;
-      QQToast.a(this.a.getApplicationContext(), 2, "开启保护失败", 0).b(this.a.getTitleBarHeight());
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

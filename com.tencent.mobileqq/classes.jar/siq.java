@@ -1,17 +1,27 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class siq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public siq(EditActivity paramEditActivity) {}
+  public siq(Conversation paramConversation, Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
+    if ((this.jdField_a_of_type_JavaLangObject instanceof String)) {}
+    for (;;)
+    {
+      try
+      {
+        i = Integer.parseInt((String)this.jdField_a_of_type_JavaLangObject);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "", "", "", "");
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+      int i = 0;
     }
   }
 }

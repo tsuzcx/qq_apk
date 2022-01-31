@@ -2,7 +2,7 @@ package dov.com.tencent.mobileqq.shortvideo;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anyx;
+import aopc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,12 +33,12 @@ public class ShortVideoArtResourceMgr
   
   private static void a()
   {
-    ThreadManager.post(new anyx(), 5, null, false);
+    ThreadManager.post(new aopc(), 5, null, false);
   }
   
   public static boolean a()
   {
-    return PtvFilterSoLoad.c(VideoEnvironment.a());
+    return PtvFilterSoLoad.b(VideoEnvironment.a());
   }
   
   public static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)

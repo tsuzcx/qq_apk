@@ -56,11 +56,11 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qqfav.QfavBuilder;
 import cooperation.qqfav.QfavReport;
 import java.util.ArrayList;
-import uxm;
-import uxn;
-import uxo;
-import uxp;
-import uxq;
+import vao;
+import vap;
+import vaq;
+import var;
+import vas;
 
 public class LongMsgItemBuilder
   extends BaseBubbleBuilder
@@ -81,8 +81,8 @@ public class LongMsgItemBuilder
   public LongMsgItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = new uxp(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new uxq(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = new var(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vas(this);
   }
   
   public int a(ChatMessage paramChatMessage)
@@ -108,11 +108,11 @@ public class LongMsgItemBuilder
       if (i == 1)
       {
         paramView = new AnimationTextView((Context)localObject2);
-        paramView.setTextColor(((Context)localObject2).getResources().getColorStateList(2131494220));
+        paramView.setTextColor(((Context)localObject2).getResources().getColorStateList(2131494227));
         paramView.setMaxWidth(BaseChatItemLayout.d);
         paramView.setSpannableFactory(QQText.a);
         paramView.setMovementMethod(LinkMovementMethod.getInstance());
-        paramView.setId(2131363557);
+        paramView.setId(2131363575);
         localHolder.jdField_a_of_type_AndroidWidgetTextView = paramView;
       }
     }
@@ -158,7 +158,7 @@ public class LongMsgItemBuilder
             localObject1 = (AnimationTextView)localHolder.jdField_a_of_type_AndroidWidgetTextView;
             ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramChatMessage, (AnimationTextView)localObject1, paramViewHolder.jdField_b_of_type_Int, paramViewHolder.c, true);
             ((AnimationTextView)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
-            ((AnimationTextView)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnSingleClick = new uxm(this, paramChatMessage.isSend());
+            ((AnimationTextView)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnSingleClick = new vao(this, paramChatMessage.isSend());
             ((AnimationTextView)localObject1).setStrokeColor(false, 0);
           }
           if ((localHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView instanceof AnimationTextView)) {
@@ -197,15 +197,15 @@ public class LongMsgItemBuilder
     Object localObject = ReplyTextItemBuilder.a(paramContext);
     localLinearLayout.addView((View)localObject);
     paramHolder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject);
-    paramHolder.b = ((TextView)((ViewGroup)localObject).findViewById(2131368469));
-    paramHolder.c = ((TextView)((ViewGroup)localObject).findViewById(2131362736));
-    paramHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject).findViewById(2131366618));
+    paramHolder.b = ((TextView)((ViewGroup)localObject).findViewById(2131368536));
+    paramHolder.c = ((TextView)((ViewGroup)localObject).findViewById(2131362754));
+    paramHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject).findViewById(2131366642));
     localObject = new AnimationTextView(paramContext);
-    ((AnimationTextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131494220));
+    ((AnimationTextView)localObject).setTextColor(paramContext.getResources().getColorStateList(2131494227));
     ((AnimationTextView)localObject).setMaxWidth(BaseChatItemLayout.d);
     ((AnimationTextView)localObject).setSpannableFactory(QQText.a);
     ((AnimationTextView)localObject).setMovementMethod(LinkMovementMethod.getInstance());
-    ((AnimationTextView)localObject).setId(2131363557);
+    ((AnimationTextView)localObject).setId(2131363575);
     localLinearLayout.addView((View)localObject);
     paramHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
     return localLinearLayout;
@@ -241,19 +241,19 @@ public class LongMsgItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131375336: 
+    case 2131375567: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
-    case 2131375346: 
+    case 2131375577: 
       super.c(paramChatMessage);
       return;
-    case 2131375342: 
+    case 2131375573: 
       ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(MessageForMixedMsg.getTextFromMixedMsg(paramChatMessage));
       return;
-    case 2131375344: 
+    case 2131375575: 
       ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForLongMsg)paramChatMessage);
       return;
-    case 2131363499: 
+    case 2131363517: 
       paramContext = new Bundle();
       paramContext.putInt("forward_type", -1);
       paramContext.putString("forward_text", MessageForMixedMsg.getTextFromMixedMsg(paramChatMessage).toString());
@@ -262,7 +262,7 @@ public class LongMsgItemBuilder
       ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramChatMessage, 21);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004045", "0X8004045", 0, 0, "", "", "", "");
       return;
-    case 2131375352: 
+    case 2131375583: 
       StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Clk_about_translate", 0, 1, 0);
       paramContext = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
       paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
@@ -272,7 +272,7 @@ public class LongMsgItemBuilder
       paramContext.putExtra("url", "http://183.62.127.31/MobileQQ/translate.html");
       this.jdField_a_of_type_AndroidContentContext.startActivity(paramContext);
       return;
-    case 2131366733: 
+    case 2131366776: 
       a((MessageForLongMsg)paramChatMessage);
       return;
     }
@@ -289,10 +289,10 @@ public class LongMsgItemBuilder
     {
       return;
       paramView = (MessageForLongMsg)AIOUtils.a(paramView);
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433618);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433619);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uxn(this, paramView), new uxo(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new vap(this, paramView), new vaq(this)).show();
   }
   
   public void a(View paramView, MotionEvent paramMotionEvent)
@@ -356,7 +356,7 @@ public class LongMsgItemBuilder
       paramView = paramView.getResources();
       if (paramChatMessage.isSend())
       {
-        paramViewHolder = paramView.getColorStateList(2131494223);
+        paramViewHolder = paramView.getColorStateList(2131494230);
         if (paramViewHolder != null)
         {
           localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
@@ -372,7 +372,7 @@ public class LongMsgItemBuilder
         }
       }
       label164:
-      for (paramViewHolder = paramView.getColorStateList(2131494222);; paramViewHolder = paramView.getColorStateList(2131494221))
+      for (paramViewHolder = paramView.getColorStateList(2131494229);; paramViewHolder = paramView.getColorStateList(2131494228))
       {
         localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
         if (localHolder.jdField_a_of_type_AndroidViewViewGroup != null)
@@ -382,7 +382,7 @@ public class LongMsgItemBuilder
           ImmersiveUtils.a(localHolder.c, 0.5F);
         }
         return;
-        paramViewHolder = paramView.getColorStateList(2131494220);
+        paramViewHolder = paramView.getColorStateList(2131494227);
         break;
       }
     }
@@ -398,7 +398,7 @@ public class LongMsgItemBuilder
       if (paramBubbleInfo.c != 0) {
         break label439;
       }
-      paramViewHolder = paramView.getResources().getColorStateList(2131494221);
+      paramViewHolder = paramView.getResources().getColorStateList(2131494228);
       localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
       if (localHolder.jdField_a_of_type_AndroidViewViewGroup != null) {
         localHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setLinkTextColor(paramViewHolder);
@@ -467,21 +467,21 @@ public class LongMsgItemBuilder
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     if ((paramView.extraflag == 32768) && (paramView.isSendFromLocal()))
     {
-      localQQCustomMenu.a(2131375342, this.jdField_a_of_type_AndroidContentContext.getString(2131433700), 2130838301);
-      localQQCustomMenu.a(2131375344, this.jdField_a_of_type_AndroidContentContext.getString(2131433704), 2130838313);
+      localQQCustomMenu.a(2131375573, this.jdField_a_of_type_AndroidContentContext.getString(2131433717), 2130838305);
+      localQQCustomMenu.a(2131375575, this.jdField_a_of_type_AndroidContentContext.getString(2131433721), 2130838317);
     }
     for (;;)
     {
-      localQQCustomMenu.a(2131363499, this.jdField_a_of_type_AndroidContentContext.getString(2131435066), 2130838309);
+      localQQCustomMenu.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
       if ((paramView.istroop == 1) && (AIOUtils.a(4) == 1)) {
-        localQQCustomMenu.a(2131375354, this.jdField_a_of_type_AndroidContentContext.getString(2131430715), 2130838317);
+        localQQCustomMenu.a(2131375585, this.jdField_a_of_type_AndroidContentContext.getString(2131430732), 2130838321);
       }
       a(paramView, localQQCustomMenu);
       if (AIOUtils.a(5) == 1) {
-        localQQCustomMenu.a(2131366733, this.jdField_a_of_type_AndroidContentContext.getString(2131431546), 2130838308);
+        localQQCustomMenu.a(2131366776, this.jdField_a_of_type_AndroidContentContext.getString(2131431563), 2130838312);
       }
       if ((paramView.vipBubbleID == 100000L) && (!paramView.isSend())) {
-        localQQCustomMenu.a(2131375352, this.jdField_a_of_type_AndroidContentContext.getString(2131436433), 2130838288);
+        localQQCustomMenu.a(2131375583, this.jdField_a_of_type_AndroidContentContext.getString(2131436450), 2130838292);
       }
       if ((paramView.extraflag != 32768) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView))) {
         a(localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView);
@@ -489,7 +489,7 @@ public class LongMsgItemBuilder
       ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       super.b(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext);
       return localQQCustomMenu.a();
-      localQQCustomMenu.a(2131375342, "复制", 2130838301);
+      localQQCustomMenu.a(2131375573, "复制", 2130838305);
     }
   }
 }

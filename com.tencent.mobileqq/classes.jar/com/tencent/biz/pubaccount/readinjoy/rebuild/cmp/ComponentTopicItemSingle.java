@@ -21,8 +21,8 @@ import cooperation.readinjoy.ReadInJoyHelper;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import lwk;
-import lwl;
+import lwt;
+import lwu;
 
 public class ComponentTopicItemSingle
   extends RelativeLayout
@@ -60,7 +60,7 @@ public class ComponentTopicItemSingle
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969586, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969593, this, true);
   }
   
   public void a() {}
@@ -72,9 +72,9 @@ public class ComponentTopicItemSingle
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364453));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363360));
-    this.b = ((TextView)findViewById(2131363561));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364477));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363378));
+    this.b = ((TextView)findViewById(2131363579));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener) {}
@@ -99,11 +99,11 @@ public class ComponentTopicItemSingle
       Object localObject = new URL(paramObject.d);
       ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, (URL)localObject, getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramObject.c + paramObject.a);
-      localObject = String.format(getResources().getString(2131438901), new Object[] { ReadInJoyHelper.a(paramObject.jdField_b_of_type_Int) });
+      localObject = String.format(getResources().getString(2131438929), new Object[] { ReadInJoyHelper.a(paramObject.jdField_b_of_type_Int) });
       this.b.setText((CharSequence)localObject);
       if (!TextUtils.isEmpty(paramObject.jdField_b_of_type_JavaLangString))
       {
-        setOnClickListener(new lwk(this, paramObject));
+        setOnClickListener(new lwt(this, paramObject));
         return;
       }
     }
@@ -114,7 +114,7 @@ public class ComponentTopicItemSingle
         ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
         localMalformedURLException.printStackTrace();
       }
-      setOnClickListener(new lwl(this));
+      setOnClickListener(new lwu(this));
     }
   }
   

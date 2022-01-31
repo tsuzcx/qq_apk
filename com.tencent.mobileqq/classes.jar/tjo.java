@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class tjo
-  implements Runnable
 {
-  public tjo(QQSettingMe paramQQSettingMe) {}
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "init parse config json");
-    }
-    VipGrayConfigHelper.a().a(this.a.a);
-  }
+  public ImageView a;
+  public TextView a;
 }
 
 

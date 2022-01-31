@@ -1,19 +1,32 @@
 import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.biz.helper.TroopInfoActivityHelper;
+import com.tencent.biz.helper.TroopInfoActivityHelper.ISetSameCityCheckTypeInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class knb
-  implements TroopMemberApiClient.Callback
+public final class knb
+  implements BusinessObserver
 {
-  public knb(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public knb(QQAppInterface paramQQAppInterface, TroopInfoActivityHelper.ISetSameCityCheckTypeInfo paramISetSameCityCheckTypeInfo) {}
   
-  public void a(Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBundle != null)
+    if ((paramBoolean) && (paramBundle != null))
     {
-      int i = paramBundle.getInt("state");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        TroopInfoActivityHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_ComTencentBizHelperTroopInfoActivityHelper$ISetSameCityCheckTypeInfo);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+      }
+      this.jdField_a_of_type_ComTencentBizHelperTroopInfoActivityHelper$ISetSameCityCheckTypeInfo.a("");
+      return;
     }
+    this.jdField_a_of_type_ComTencentBizHelperTroopInfoActivityHelper$ISetSameCityCheckTypeInfo.a("");
   }
 }
 

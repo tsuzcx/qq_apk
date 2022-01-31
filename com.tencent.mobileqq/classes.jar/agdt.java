@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.profile.view.ProfileTagView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.olympic.OlyimpicConfig;
 
-public class agdt
-  implements Runnable
+public final class agdt
+  implements Parcelable.Creator
 {
-  public agdt(ProfileTagView paramProfileTagView) {}
-  
-  public void run()
+  public OlyimpicConfig a(Parcel paramParcel)
   {
-    this.a.a();
+    return new OlyimpicConfig(paramParcel);
+  }
+  
+  public OlyimpicConfig[] a(int paramInt)
+  {
+    return new OlyimpicConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agdt
  * JD-Core Version:    0.7.0.1
  */

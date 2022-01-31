@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public class algj
-  implements DialogInterface.OnClickListener
+public final class algj
+  implements Runnable
 {
-  public algj(Login paramLogin) {}
+  public algj(Bundle paramBundle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    MyAppApi.a().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     algj
  * JD-Core Version:    0.7.0.1
  */

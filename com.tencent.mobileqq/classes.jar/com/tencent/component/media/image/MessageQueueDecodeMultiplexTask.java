@@ -7,11 +7,11 @@ import com.tencent.component.media.ImageManagerEnv;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import pfn;
-import pfp;
+import phh;
+import phj;
 
 public class MessageQueueDecodeMultiplexTask
-  extends pfn
+  extends phh
 {
   private static int jdField_a_of_type_Int;
   private static Handler jdField_a_of_type_AndroidOsHandler;
@@ -26,7 +26,7 @@ public class MessageQueueDecodeMultiplexTask
     jdField_a_of_type_AndroidOsHandler = null;
     if (ImageManagerEnv.g().getDispatcher() != null) {}
     HandlerThread localHandlerThread;
-    for (jdField_a_of_type_AndroidOsHandler = new pfp(ImageManagerEnv.g().getDispatcher());; jdField_a_of_type_AndroidOsHandler = new pfp(localHandlerThread.getLooper()))
+    for (jdField_a_of_type_AndroidOsHandler = new phj(ImageManagerEnv.g().getDispatcher());; jdField_a_of_type_AndroidOsHandler = new phj(localHandlerThread.getLooper()))
     {
       jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDecodeMultiplexTask = null;
       jdField_a_of_type_JavaLangObject = new Object();
@@ -38,9 +38,9 @@ public class MessageQueueDecodeMultiplexTask
     }
   }
   
-  private MessageQueueDecodeMultiplexTask(pfn parampfn)
+  private MessageQueueDecodeMultiplexTask(phh paramphh)
   {
-    super(parampfn);
+    super(paramphh);
   }
   
   private static List b(int paramInt)
@@ -85,7 +85,7 @@ public class MessageQueueDecodeMultiplexTask
     }
   }
   
-  public static MessageQueueDecodeMultiplexTask obtain(pfn parampfn)
+  public static MessageQueueDecodeMultiplexTask obtain(phh paramphh)
   {
     if (needRecycle) {}
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -96,10 +96,10 @@ public class MessageQueueDecodeMultiplexTask
         jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDecodeMultiplexTask = jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDecodeMultiplexTask.b;
         localMessageQueueDecodeMultiplexTask.b = null;
         jdField_a_of_type_Int -= 1;
-        localMessageQueueDecodeMultiplexTask.setImageTask(parampfn);
+        localMessageQueueDecodeMultiplexTask.setImageTask(paramphh);
         return localMessageQueueDecodeMultiplexTask;
       }
-      return new MessageQueueDecodeMultiplexTask(parampfn);
+      return new MessageQueueDecodeMultiplexTask(paramphh);
     }
   }
   

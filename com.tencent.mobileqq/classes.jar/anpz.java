@@ -1,49 +1,41 @@
-import android.content.Context;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateViewPagerAdapter;
+import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.util.HashMap;
 
 public class anpz
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  float jdField_a_of_type_Float;
+  public anpz(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
   
-  public anpz(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
+  public void run()
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    if ((this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.i) || (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.j)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    if (Math.abs(f) > this.jdField_a_of_type_Float)
+    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewQIMPtvTemplateProviderView.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter.a.get(Integer.valueOf(this.jdField_a_of_type_DovComQqImCaptureViewQIMPtvTemplateProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem()));
+    if (localGridView != null)
     {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(f);
-      return true;
+      localListAdapter = localGridView.a();
+      if ((localListAdapter instanceof QIMPtvTemplateAdapter))
+      {
+        i = ((QIMPtvTemplateAdapter)localListAdapter).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+        ((QIMPtvTemplateAdapter)localListAdapter).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, i);
+        localGridView.requestFocusFromTouch();
+        localGridView.setFocusableInTouchMode(true);
+        localGridView.setSelection(i);
+        ((QIMPtvTemplateAdapter)localListAdapter).notifyDataSetChanged();
+      }
     }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapUp(paramMotionEvent);
+    while (!QLog.isColorLevel())
+    {
+      ListAdapter localListAdapter;
+      int i;
+      return;
+    }
+    QLog.d("PtvTemplateProviderView", 2, "gridView is null");
   }
 }
 

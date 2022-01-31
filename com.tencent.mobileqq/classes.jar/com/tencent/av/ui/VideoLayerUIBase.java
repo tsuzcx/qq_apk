@@ -35,10 +35,10 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Observable;
-import kcv;
-import kcw;
-import kcx;
-import kcy;
+import kcg;
+import kch;
+import kci;
+import kcj;
 
 public class VideoLayerUIBase
   extends GLViewGroup
@@ -58,7 +58,7 @@ public class VideoLayerUIBase
   private TextureRender jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender;
   public Runnable a;
   public final String a;
-  protected kcy a;
+  protected kcj a;
   public boolean a;
   private float[] jdField_a_of_type_ArrayOfFloat;
   public GLVideoView[] a;
@@ -77,8 +77,8 @@ public class VideoLayerUIBase
   public VideoLayerUIBase(VideoAppInterface paramVideoAppInterface, Context paramContext, View paramView)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new kcv(this);
-    this.jdField_b_of_type_JavaLangRunnable = new kcw(this);
+    this.jdField_a_of_type_JavaLangRunnable = new kcg(this);
+    this.jdField_b_of_type_JavaLangRunnable = new kch(this);
     this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.a());
     QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onCreate:" + this + ", VideoAppInterface:" + paramVideoAppInterface + ", rootView:" + paramView);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
@@ -86,9 +86,9 @@ public class VideoLayerUIBase
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366275));
-    this.jdField_a_of_type_Kcy = new kcy(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Kcy);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366302));
+    this.jdField_a_of_type_Kcj = new kcj(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Kcj);
   }
   
   private void a(GLCanvas paramGLCanvas, boolean paramBoolean)
@@ -196,8 +196,8 @@ public class VideoLayerUIBase
   {
     int k = 0;
     int j = 1;
-    int n = this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources().getDimensionPixelSize(2131559743);
-    int m = this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources().getDimensionPixelSize(2131559744);
+    int n = this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources().getDimensionPixelSize(2131559761);
+    int m = this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources().getDimensionPixelSize(2131559762);
     if (paramInt4 - paramInt2 > n)
     {
       paramInt2 = 1;
@@ -608,8 +608,8 @@ public class VideoLayerUIBase
     if (this.jdField_a_of_type_AndroidContentContext == null) {
       return;
     }
-    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559728);
-    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559729);
+    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559746);
+    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559747);
     Rect localRect = super.b();
     int m = localRect.width() - i1;
     int k = localRect.height() - i2;
@@ -849,7 +849,7 @@ public class VideoLayerUIBase
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onDestroy:" + this);
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Kcy);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Kcj);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
     this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.setOnTouchListener(null);
     this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.setContentPane(null);
@@ -945,10 +945,10 @@ public class VideoLayerUIBase
   public void l(int paramInt)
   {
     int m = 0;
-    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559728);
-    int i3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559729);
-    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559730);
-    int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559731);
+    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559746);
+    int i3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559747);
+    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559748);
+    int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559749);
     if (this.jdField_c_of_type_Int == 0) {
       k = j;
     }
@@ -963,7 +963,7 @@ public class VideoLayerUIBase
     }
     for (;;)
     {
-      localObject = new kcx(this, paramInt, n, i1, j, k, null);
+      localObject = new kci(this, paramInt, n, i1, j, k, null);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post((Runnable)localObject);
       return;
       k += this.jdField_b_of_type_Int;
@@ -989,7 +989,7 @@ public class VideoLayerUIBase
   
   public void n()
   {
-    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = ((GLRootView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366228));
+    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = ((GLRootView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366255));
     this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.setContentPane(this);
     this.jdField_a_of_type_ComTencentAvSwitchfaceSwitchFaceView = this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.a();
     this.jdField_a_of_type_ComTencentAvSwitchfaceSwitchFaceView.a(this);

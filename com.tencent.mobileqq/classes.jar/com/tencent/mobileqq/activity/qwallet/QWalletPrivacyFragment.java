@@ -17,9 +17,9 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
-import wxm;
-import wxn;
-import wxo;
+import xar;
+import xas;
+import xat;
 
 public class QWalletPrivacyFragment
   extends PublicBaseFragment
@@ -36,17 +36,17 @@ public class QWalletPrivacyFragment
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = ((String)localObject2).replace("\\n", "\n");
     }
-    localObject2 = QWalletTools.a((String)localObject1, getActivity(), new wxm(this));
+    localObject2 = QWalletTools.a((String)localObject1, getActivity(), new xar(this));
     if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty(str1)))
     {
       b();
       return;
     }
-    localObject1 = DialogUtil.a(getActivity(), 230, 2130971000, str2, (CharSequence)localObject2, 2131432329, 2131432328, new wxn(this), new wxo(this));
+    localObject1 = DialogUtil.a(getActivity(), 230, 2130971048, str2, (CharSequence)localObject2, 2131432346, 2131432345, new xas(this), new xat(this));
     ((QQCustomDialog)localObject1).setCancelable(false);
     ((QQCustomDialog)localObject1).setCanceledOnTouchOutside(false);
     ((QQCustomDialog)localObject1).show();
-    paramView = (RelativeLayout)paramView.findViewById(2131372558);
+    paramView = (RelativeLayout)paramView.findViewById(2131372739);
     localObject1 = new ColorDrawable(-1);
     localObject2 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
@@ -72,7 +72,7 @@ public class QWalletPrivacyFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2130970999, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2130971047, paramViewGroup, false);
   }
   
   public void onDestroy()

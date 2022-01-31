@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBarData;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
 
-public class vzu
-  implements Runnable
+class vzu
+  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
 {
-  public vzu(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
+  vzu(vzs paramvzs) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    LightalkBlueTipsBarData localLightalkBlueTipsBarData = LightalkBlueTipsBarData.a();
-    if (localLightalkBlueTipsBarData != null)
-    {
-      this.a.a = localLightalkBlueTipsBarData.d;
-      this.a.b = localLightalkBlueTipsBarData.e;
+    if (this.a.a.a != null) {
+      this.a.a.a.c(HWTroopUtils.b(paramInt));
     }
   }
 }

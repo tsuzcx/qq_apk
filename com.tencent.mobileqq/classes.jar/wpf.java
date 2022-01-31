@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
-class wpf
+public class wpf
   implements Runnable
 {
-  wpf(wpe paramwpe) {}
+  public wpf(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setFaceDrawable(this.a.a.app, 1, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, 640, true, true, true, false, 7);
-    }
+    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
+    EmoticonGroupStoreFragment.c(this.a).setVisibility(0);
   }
 }
 

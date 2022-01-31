@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.armap.config.BaseCheckHandler.ItemConfig;
-import com.tencent.mobileqq.armap.config.POICheckHander;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class aayn
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aayn(POICheckHander paramPOICheckHander, BaseCheckHandler.ItemConfig paramItemConfig) {}
+  public aayn(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapConfigPOICheckHander.a(this.jdField_a_of_type_ComTencentMobileqqArmapConfigBaseCheckHandler$ItemConfig);
+    if (paramBoolean)
+    {
+      this.a.c();
+      ArkIDESettingFragment.a("");
+      ArkAppCenter.b("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
+      return;
+    }
+    this.a.d();
+    ArkIDESettingFragment.a("close");
+    ArkAppCenter.b("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
   }
 }
 

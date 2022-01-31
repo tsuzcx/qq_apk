@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agao;
+import agoq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -15,7 +15,7 @@ import tencent.im.label.comm.PersonalityTagComm.LabelPhoto;
 public class PersonalityLabelPhoto
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agao();
+  public static final Parcelable.Creator CREATOR = new agoq();
   public static final long ID_INVALID = -1L;
   public static final String TAG = "PersonalityLabelPhoto";
   public long fileId = -1L;

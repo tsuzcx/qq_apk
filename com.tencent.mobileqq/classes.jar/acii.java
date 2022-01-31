@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-public class acii
-  implements Runnable
+class acii
+  implements View.OnTouchListener
 {
-  public acii(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  acii(acih paramacih, ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QfileLocalFilePicTabView.a(this.a);
-    this.a.d();
+    this.jdField_a_of_type_Acih.a.onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acii
  * JD-Core Version:    0.7.0.1
  */

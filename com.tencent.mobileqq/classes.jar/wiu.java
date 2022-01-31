@@ -1,51 +1,32 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class wiu
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public wiu(ContactsDisAdapter paramContactsDisAdapter, boolean paramBoolean, DiscussionManager paramDiscussionManager, DiscussionInfo paramDiscussionInfo, ActionSheet paramActionSheet) {}
+  public wiu(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppDiscussionManager.a() >= 80))
-    {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.jdField_a_of_type_AndroidContentContext.getString(2131429829, new Object[] { String.valueOf(80) });
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.jdField_a_of_type_AndroidContentContext, 0, paramView, 0).a();
+    if (SearchBaseFragment.a(this.a) != null) {
+      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
     }
-    for (;;)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+    default: 
       return;
-      if (!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.jdField_a_of_type_AndroidContentContext))
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.jdField_a_of_type_AndroidContentContext, 1, 2131432992, 0).a();
-      }
-      else
-      {
-        paramView = (DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          paramView.e(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.uin).longValue());
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808F", "0X800808F", 0, 0, "", "", "", "");
-        }
-        else
-        {
-          paramView.d(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.uin).longValue());
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800808E", "0X800808E", 0, 0, "", "", "", "");
-        }
-      }
+    case 0: 
+      this.a.a();
+      return;
+    case 1: 
+      this.a.a((String)paramMessage.obj);
+      return;
+    case 2: 
+      this.a.g();
+      return;
     }
+    this.a.c();
   }
 }
 

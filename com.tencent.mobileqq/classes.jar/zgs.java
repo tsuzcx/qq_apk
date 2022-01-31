@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.confess.ConfessMsgUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class zgs
   implements Runnable
 {
-  public zgs(PublicAccountDataManager paramPublicAccountDataManager) {}
+  public zgs(MessageHandler paramMessageHandler, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.a();
+    try
+    {
+      ConfessMsgUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b, false);
+      ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b, false);
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.f(this.jdField_a_of_type_Boolean);
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      QLog.e("Q.msg.MessageHandler", 1, "sendMsgReadedReportInAll error :", localRuntimeException);
+      throw localRuntimeException;
+    }
   }
 }
 

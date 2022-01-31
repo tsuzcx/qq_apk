@@ -43,12 +43,12 @@ import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.TelephonyUtils;
 import com.tencent.widget.OnSizeChangeListener;
-import wqb;
-import wqc;
-import wqd;
-import wqe;
-import wqf;
-import wqg;
+import wtg;
+import wth;
+import wti;
+import wtj;
+import wtk;
+import wtl;
 
 public class BindNumberActivity
   extends DialogBaseActivity
@@ -90,7 +90,7 @@ public class BindNumberActivity
     if (this.jdField_a_of_type_Boolean)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, "更换手机号码", "QQ更换绑定新的手机号码前，需要将当前的绑定关系解除，请确定是否更换。", "确定", "取消", new wqd(this), new wqe(this));
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, "更换手机号码", "QQ更换绑定新的手机号码前，需要将当前的绑定关系解除，请确定是否更换。", "确定", "取消", new wti(this), new wtj(this));
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!isFinishing())) {
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -155,7 +155,7 @@ public class BindNumberActivity
     }
     if (!NetworkUtil.d(this))
     {
-      b(2131434596);
+      b(2131434613);
       return;
     }
     if (this.jdField_a_of_type_Boolean)
@@ -171,8 +171,8 @@ public class BindNumberActivity
     paramString1 = paramString1 + " " + paramString2;
     Rect localRect = new Rect();
     this.jdField_b_of_type_AndroidWidgetTextView.getPaint().getTextBounds(paramString1, 0, paramString1.length(), localRect);
-    int i = getResources().getDimensionPixelSize(2131559651);
-    int j = getResources().getDimensionPixelSize(2131559652);
+    int i = getResources().getDimensionPixelSize(2131559665);
+    int j = getResources().getDimensionPixelSize(2131559666);
     if (localRect.right > i - j) {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString2);
     }
@@ -284,7 +284,7 @@ public class BindNumberActivity
     if ((this.jdField_b_of_type_Int == 10) || (this.jdField_b_of_type_Int == 11) || (this.jdField_b_of_type_Int == 15) || (this.jdField_b_of_type_Int == 17))
     {
       getWindow().setSoftInputMode(18);
-      setContentView(2130969157);
+      setContentView(2130969156);
       if ((Build.MANUFACTURER.equalsIgnoreCase("Letv")) && (Build.MODEL.equalsIgnoreCase("X900+")))
       {
         this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
@@ -294,7 +294,7 @@ public class BindNumberActivity
         this.e = getIntent().getBooleanExtra("cmd_param_is_from_change_bind", false);
         this.f = getIntent().getBooleanExtra("kUnityWebBind", false);
         this.g = getIntent().getBooleanExtra("key_is_from_qav_multi_call", false);
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365406));
+        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365428));
         if (!getIntent().getBooleanExtra("key_change_number", false)) {
           break label806;
         }
@@ -306,10 +306,10 @@ public class BindNumberActivity
         if (this.jdField_b_of_type_Int != 11) {
           break label818;
         }
-        i = 2131434920;
+        i = 2131434937;
         label353:
         setLeftButton(i, this);
-        setRightButton(2131434737, this);
+        setRightButton(2131434754, this);
         label367:
         if (!getIntent().getBooleanExtra("key_is_qqwifi", false)) {
           break label958;
@@ -322,7 +322,7 @@ public class BindNumberActivity
           this.jdField_c_of_type_AndroidWidgetTextView.setText("绑定手机号码需要通过短信验证。");
           this.jdField_c_of_type_AndroidWidgetTextView.setGravity(1);
           this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.rgb(74, 74, 74));
-          this.leftView.setText(2131432397);
+          this.leftView.setText(2131432414);
         }
         paramBundle = TelephonyUtils.a(this);
         if (paramBundle == null) {
@@ -332,13 +332,13 @@ public class BindNumberActivity
         this.jdField_a_of_type_JavaLangString = ('+' + paramBundle[0]);
         this.jdField_b_of_type_JavaLangString = paramBundle[1];
         label498:
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365408));
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365430));
         this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
         b(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364041));
+        this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364065));
         this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
         this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription("已同意");
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365410));
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365432));
         this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
         if ((this.jdField_b_of_type_Int != 10) && (this.jdField_b_of_type_Int != 11) && (this.jdField_b_of_type_Int != 15) && (this.jdField_b_of_type_Int != 17)) {
           break label1189;
@@ -348,30 +348,30 @@ public class BindNumberActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365409));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365431));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
       this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
       this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_b_of_type_JavaLangString);
       if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_b_of_type_JavaLangString.length());
       }
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131365411);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131365433);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365412));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365434));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       if (this.g) {
         ReportController.b(this.app, "CliOper", "", "", "0X8005D0D", "0X8005D0D", 0, 0, "", "", "", "");
       }
       return true;
-      ((BounceScrollView)findViewById(2131363433)).setOnSizeChangeListener(this);
+      ((BounceScrollView)findViewById(2131363451)).setOnSizeChangeListener(this);
       break;
-      setContentView(2130969156);
+      setContentView(2130969155);
       break;
       label806:
       setTitle("验证手机号码", "请输入手机号码");
       break label312;
       label818:
-      i = 2131436285;
+      i = 2131436302;
       break label353;
       label825:
       if ((this.jdField_b_of_type_Int == 15) || (this.jdField_b_of_type_Int == 17))
@@ -380,35 +380,35 @@ public class BindNumberActivity
         if (this.leftView != null) {
           this.leftView.setText("新朋友");
         }
-        setRightButton(2131434737, this);
+        setRightButton(2131434754, this);
         break label367;
       }
       if ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 12) || (this.jdField_b_of_type_Int == 14) || (this.jdField_b_of_type_Int == 9))
       {
-        this.leftView.setText(2131433681);
+        this.leftView.setText(2131433698);
         break label367;
       }
       if (this.jdField_c_of_type_Boolean)
       {
-        setLeftButton(2131434920, null);
+        setLeftButton(2131434937, null);
         break label367;
       }
-      setLeftButton(2131433681, null);
+      setLeftButton(2131433698, null);
       break label367;
       label958:
       if (getIntent().getBooleanExtra("k_is_block", false))
       {
         this.jdField_b_of_type_Boolean = true;
         this.leftViewNotBack.setVisibility(8);
-        this.leftViewNotBack.setOnClickListener(new wqb(this));
+        this.leftViewNotBack.setOnClickListener(new wtg(this));
         this.jdField_a_of_type_Int = getIntent().getIntExtra("k_block_time", -100000);
         this.jdField_c_of_type_AndroidWidgetTextView.setText(getIntent().getStringExtra("k_block_msg"));
-        setRightButton(2131435627, this);
+        setRightButton(2131435644, this);
         break label391;
       }
       if (this.g)
       {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429501);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429507);
         this.rightViewText.setVisibility(8);
         break label391;
       }
@@ -477,7 +477,7 @@ public class BindNumberActivity
   {
     super.doOnResume();
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new wqc(this), 300L);
+      this.jdField_a_of_type_AndroidWidgetEditText.postDelayed(new wth(this), 300L);
     }
     if (this.jdField_a_of_type_Int > 0) {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 1000L);
@@ -501,10 +501,10 @@ public class BindNumberActivity
     default: 
       throw new RuntimeException("Unknown message: " + paramMessage.what);
     case 0: 
-      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wqf(this);
+      this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wtk(this);
       this.app.registObserver(this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       paramMessage = (PhoneContactManager)this.app.getManager(10);
-      a(2131434436, 1000L, true);
+      a(2131434453, 1000L, true);
       paramMessage.b(this.d, this.e);
     case 2: 
     case 3: 
@@ -514,7 +514,7 @@ public class BindNumberActivity
         return true;
         if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wqg(this);
+          this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wtl(this);
           this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
         }
         if ((this.jdField_b_of_type_Int == 10) || (this.jdField_b_of_type_Int == 11) || (this.jdField_b_of_type_Int == 15) || (this.jdField_b_of_type_Int == 17)) {}
@@ -524,7 +524,7 @@ public class BindNumberActivity
           if (3 == paramMessage.what) {
             break;
           }
-          a(2131434436, 1000L, true);
+          a(2131434453, 1000L, true);
           return true;
           this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
         }
@@ -540,7 +540,7 @@ public class BindNumberActivity
       return true;
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(5);
-    ((BounceScrollView)findViewById(2131363433)).fullScroll(130);
+    ((BounceScrollView)findViewById(2131363451)).fullScroll(130);
     return true;
   }
   
@@ -593,10 +593,10 @@ public class BindNumberActivity
       startActivity(new Intent(this, LoginActivity.class));
       a(1);
       ReportController.b(this.app, "CliOper", "", "", "0X80053D3", "0X80053D3", 0, 0, "", "", "", "");
-    case 2131365408: 
-    case 2131363227: 
-    case 2131363455: 
-    case 2131363410: 
+    case 2131365430: 
+    case 2131363245: 
+    case 2131363473: 
+    case 2131363428: 
       do
       {
         do
@@ -637,10 +637,10 @@ public class BindNumberActivity
       } while ((this.jdField_b_of_type_Int != 10) && (this.jdField_b_of_type_Int != 11) && (this.jdField_b_of_type_Int != 15) && (this.jdField_b_of_type_Int != 17));
       a();
       return;
-    case 2131365410: 
+    case 2131365432: 
       a();
       return;
-    case 2131365412: 
+    case 2131365434: 
       paramView = new Intent(this, QQBrowserActivity.class);
       paramView.putExtra("url", "http://vac.qq.com/hall/phone/phone_tos.html?_wv=3");
       startActivity(paramView);

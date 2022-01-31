@@ -1,21 +1,20 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-public class adur
-  implements QueryTask.Query
+class adur
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adur(EmoticonManager paramEmoticonManager) {}
+  adur(aduq paramaduq, View paramView) {}
   
-  public EmoticonPackage a(Pair paramPair)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return this.a.b((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    this.jdField_a_of_type_AndroidViewView.setTranslationX(-((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adur
  * JD-Core Version:    0.7.0.1
  */

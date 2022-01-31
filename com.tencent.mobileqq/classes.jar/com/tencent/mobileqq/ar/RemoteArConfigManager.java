@@ -1,5 +1,10 @@
 package com.tencent.mobileqq.ar;
 
+import aadk;
+import aadl;
+import aadm;
+import aadn;
+import aado;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -26,11 +31,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
-import zyq;
-import zyr;
-import zys;
-import zyt;
-import zyu;
 
 public class RemoteArConfigManager
   implements Handler.Callback
@@ -49,16 +49,16 @@ public class RemoteArConfigManager
   public IArConfigManager a;
   public IArFaceCallback a;
   public IArRemoteCallback a;
-  private IArSoCallback jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new zyu(this);
+  private IArSoCallback jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new aado(this);
   public boolean a;
   boolean b = false;
   public boolean c = false;
   
   public RemoteArConfigManager()
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = new zyq(this);
-    this.jdField_a_of_type_ComTencentMobileqqArAidlIArRemoteCallback = new zys(this);
-    this.jdField_a_of_type_ComTencentMobileqqArAidlIArFaceCallback = new zyt(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new aadk(this);
+    this.jdField_a_of_type_ComTencentMobileqqArAidlIArRemoteCallback = new aadm(this);
+    this.jdField_a_of_type_ComTencentMobileqqArAidlIArFaceCallback = new aadn(this);
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
   }
@@ -199,6 +199,7 @@ public class RemoteArConfigManager
     }
     this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener = null;
     this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener = null;
+    this.jdField_a_of_type_ComTencentMobileqqArIArSoListener = null;
   }
   
   public void a(int paramInt)
@@ -374,7 +375,7 @@ public class RemoteArConfigManager
   
   public void c()
   {
-    ThreadManager.post(new zyr(this), 5, null, true);
+    ThreadManager.post(new aadl(this), 5, null, true);
   }
   
   public boolean c()

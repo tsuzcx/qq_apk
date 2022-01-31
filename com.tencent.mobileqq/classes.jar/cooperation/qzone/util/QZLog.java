@@ -1,6 +1,6 @@
 package cooperation.qzone.util;
 
-import amko;
+import anat;
 import android.util.Log;
 import com.tencent.qphone.base.util.QLog;
 
@@ -45,16 +45,16 @@ public class QZLog
       d(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    amko localamko = amko.a();
+    anat localanat = anat.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localamko.a(paramVarArgs[paramInt]);
+      localanat.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.d(paramString, j, localamko.toString(), paramThrowable);
-    localamko.a();
+    QLog.d(paramString, j, localanat.toString(), paramThrowable);
+    localanat.a();
   }
   
   public static void d(String paramString, int paramInt, Object... paramVarArgs)
@@ -75,16 +75,16 @@ public class QZLog
       QLog.e(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    amko localamko = amko.a();
+    anat localanat = anat.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localamko.a(paramVarArgs[paramInt]);
+      localanat.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.e(paramString, j, localamko.toString(), paramThrowable);
-    localamko.a();
+    QLog.e(paramString, j, localanat.toString(), paramThrowable);
+    localanat.a();
   }
   
   public static void e(String paramString, int paramInt, Object... paramVarArgs)
@@ -138,16 +138,16 @@ public class QZLog
       i(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    amko localamko = amko.a();
+    anat localanat = anat.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localamko.a(paramVarArgs[paramInt]);
+      localanat.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.i(paramString, j, localamko.toString(), paramThrowable);
-    localamko.a();
+    QLog.i(paramString, j, localanat.toString(), paramThrowable);
+    localanat.a();
   }
   
   public static void i(String paramString, int paramInt, Object... paramVarArgs)
@@ -209,16 +209,16 @@ public class QZLog
       QLog.w(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    amko localamko = amko.a();
+    anat localanat = anat.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localamko.a(paramVarArgs[paramInt]);
+      localanat.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.w(paramString, j, localamko.toString(), paramThrowable);
-    localamko.a();
+    QLog.w(paramString, j, localanat.toString(), paramThrowable);
+    localanat.a();
   }
   
   public static void w(String paramString, int paramInt, Object... paramVarArgs)

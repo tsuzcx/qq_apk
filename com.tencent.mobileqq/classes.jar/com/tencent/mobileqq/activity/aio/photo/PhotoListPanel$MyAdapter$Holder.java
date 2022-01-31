@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.widget.NumberCheckBox;
-import vmh;
+import vpj;
 
 public class PhotoListPanel$MyAdapter$Holder
 {
@@ -14,7 +14,7 @@ public class PhotoListPanel$MyAdapter$Holder
   public URLDrawable a;
   public URLImageView a;
   public NumberCheckBox a;
-  vmh jdField_a_of_type_Vmh;
+  vpj jdField_a_of_type_Vpj;
   public ImageView b;
   
   public PhotoListPanel$MyAdapter$Holder(PhotoListPanel.MyAdapter paramMyAdapter) {}

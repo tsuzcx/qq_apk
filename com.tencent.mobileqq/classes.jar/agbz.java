@@ -1,28 +1,35 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.MQLruCache;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.mobileqq.ocr.SearchQuestionCameraFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class agbz
   implements Runnable
 {
-  public agbz(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, String paramString, int paramInt) {}
+  public agbz(SearchQuestionCameraFragment paramSearchQuestionCameraFragment, int paramInt) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, false);
-    if (localObject != null)
+    switch (this.jdField_a_of_type_Int)
     {
-      localObject = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.getResources(), (Bitmap)localObject);
-      BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaLangString, localObject);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage();
-      ((Message)localObject).what = 28;
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
+    default: 
+    case 101: 
+      FragmentActivity localFragmentActivity;
+      do
+      {
+        return;
+        QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
+        localFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqOcrSearchQuestionCameraFragment.getActivity();
+      } while ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()));
+      localFragmentActivity.finish();
+      return;
+    case 102: 
+      QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
+      this.jdField_a_of_type_ComTencentMobileqqOcrSearchQuestionCameraFragment.e();
+      return;
     }
+    QQToast.a(BaseApplicationImpl.getContext(), "拍照出现异常，请重试", 0).a();
   }
 }
 

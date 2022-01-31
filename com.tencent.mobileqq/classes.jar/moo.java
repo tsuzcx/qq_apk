@@ -1,26 +1,14 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
 public class moo
-  extends PhoneStateListener
+  implements Runnable
 {
-  public moo(FastWebVideoVolumeControl paramFastWebVideoVolumeControl) {}
+  public moo(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.FastWebVideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.b(true);
-      return;
-    }
-    this.a.b(true);
+    FastWebVideoFeedsListView.a(this.a, true);
+    this.a.smoothScrollBy(-FastWebVideoFeedsListView.d(this.a), 0);
   }
 }
 

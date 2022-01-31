@@ -1,39 +1,20 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aclc
-  extends MqqHandler
+class aclc
+  implements DialogInterface.OnClickListener
 {
-  public aclc(FileManagerNotifyCenter paramFileManagerNotifyCenter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aclc(acla paramacla) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
-    }
-    this.a.a.a().a(true);
-    this.a.a.a().b(-1);
-    FileVideoManager.a(-1);
+    acla.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aclc
  * JD-Core Version:    0.7.0.1
  */

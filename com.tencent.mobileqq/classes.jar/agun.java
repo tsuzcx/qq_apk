@@ -1,26 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.managers.ShieldMsgManger;
+import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import java.util.ArrayList;
 
-public class agun
-  implements Runnable
+class agun
+  implements DialogInterface.OnClickListener
 {
-  public agun(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, boolean paramBoolean, int paramInt) {}
+  agun(aguk paramaguk, QQCustomDialog paramQQCustomDialog, ShieldMsgManger paramShieldMsgManger, ArrayList paramArrayList) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "onStatusChanged: " + this.jdField_a_of_type_Boolean + " error:" + this.jdField_a_of_type_Int);
+    if (paramInt == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131432961, 0).a();
-      CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, -1);
+    while (paramInt != 1) {
       return;
     }
-    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, 101);
-    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, "onStatusChanged");
+    this.jdField_a_of_type_ComTencentMobileqqManagersShieldMsgManger.b(this.jdField_a_of_type_Aguk.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    QCallDetailActivity.a(this.jdField_a_of_type_Aguk.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a((byte)0);
   }
 }
 

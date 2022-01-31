@@ -1,18 +1,29 @@
-import android.os.Handler;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import com.tencent.av.AVLog;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import com.tencent.av.business.manager.pendant.EffectPendantTips;
 
 public class jgb
   implements Runnable
 {
-  public jgb(MagicFaceDataEntity paramMagicFaceDataEntity, String paramString) {}
+  public jgb(EffectPendantTips paramEffectPendantTips, String paramString, int paramInt, Drawable paramDrawable) {}
   
   public void run()
   {
-    AVLog.c("MagicFaceDataEntity", "reloadDecrateList 2:" + this.jdField_a_of_type_JavaLangString);
-    jgc localjgc = new jgc(this);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity.a.a().post(localjgc);
+    try
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(str))
+      {
+        AVLog.c("EffectPendantTips", "processTips showDrableTips");
+        this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, str);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

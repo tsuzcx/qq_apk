@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 
-public class sgw
-  implements DialogInterface.OnDismissListener
+class sgw
+  implements Runnable
 {
-  public sgw(DialogActivity paramDialogActivity) {}
+  sgw(sgt paramsgt, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    if (this.jdField_a_of_type_Sgt.a.a != null) {
+      this.jdField_a_of_type_Sgt.a.a.a(this.jdField_a_of_type_JavaLangString, true);
+    }
   }
 }
 

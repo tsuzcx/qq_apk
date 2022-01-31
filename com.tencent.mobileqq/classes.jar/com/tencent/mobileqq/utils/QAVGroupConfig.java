@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import ajpk;
-import ajpl;
+import akdr;
+import akds;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -291,12 +291,12 @@ public class QAVGroupConfig
         }
         paramString1 = paramString1 + "_" + AudioHelper.a();
         String str = String.valueOf(l);
-        paramQQAppInterface.addObserver(new ajpk(l, paramString1, paramQQAppInterface, str));
+        paramQQAppInterface.addObserver(new akdr(l, paramString1, paramQQAppInterface, str));
         localTroopHandler.a(l, 480, 0);
         paramString2 = ((TroopManager)paramQQAppInterface.getManager(51)).b(paramString2);
         if (paramString2.maxInviteMemNum == 0)
         {
-          paramQQAppInterface.addObserver(new ajpl(str, paramQQAppInterface, paramString1));
+          paramQQAppInterface.addObserver(new akds(str, paramQQAppInterface, paramString1));
           localTroopHandler.a(str, (byte)1, paramString2.dwTimeStamp, 0);
         }
         QLog.w("QAVGroupConfig", 1, "getGroupInfo[" + paramString1 + "], troopuin[" + l + "], maxInviteMemNum[" + paramString2.maxInviteMemNum + "]");

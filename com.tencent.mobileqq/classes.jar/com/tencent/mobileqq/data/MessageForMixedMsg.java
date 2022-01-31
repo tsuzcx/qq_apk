@@ -101,7 +101,7 @@ public class MessageForMixedMsg
             }
           }
           if ((??? instanceof MessageForPic)) {
-            localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131433004));
+            localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131433021));
           }
         }
       }
@@ -151,11 +151,11 @@ public class MessageForMixedMsg
         if (!(localMessageRecord instanceof MessageForPic)) {
           break label471;
         }
-        localObject1.append(BaseApplicationImpl.getContext().getString(2131433004));
+        localObject1.append(BaseApplicationImpl.getContext().getString(2131433021));
         break label471;
         if ((localObject3 instanceof MessageForPic))
         {
-          localObject1.append(BaseApplicationImpl.getContext().getString(2131433004));
+          localObject1.append(BaseApplicationImpl.getContext().getString(2131433021));
           break label464;
           label456:
           return localObject1.toString();
@@ -487,8 +487,8 @@ public class MessageForMixedMsg
                 ((MessageForPic)localObject6).subMsgId = k;
                 copyBaseInfoFromMixedToPic((MessageForPic)localObject6, this);
                 localArrayList.add(localObject6);
-                localStringBuilder1.append(BaseApplicationImpl.getContext().getString(2131433004));
-                localStringBuilder2.append(BaseApplicationImpl.getContext().getString(2131433004));
+                localStringBuilder1.append(BaseApplicationImpl.getContext().getString(2131433021));
+                localStringBuilder2.append(BaseApplicationImpl.getContext().getString(2131433021));
                 m = i;
                 break;
               } while ((((MessageForPic)localObject6).path == null) || (((MessageForPic)localObject6).path.length() <= 0) || (localHashMap.get(((MessageForPic)localObject6).path) == null));

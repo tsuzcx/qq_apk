@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
+import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
 
-public final class occ
-  implements Parcelable.Creator
+public class occ
+  implements View.OnClickListener
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
-  {
-    return new EditTakeVideoSource(paramParcel);
-  }
+  public occ(TagAdapter paramTagAdapter) {}
   
-  public EditTakeVideoSource[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new EditTakeVideoSource[paramInt];
+    TagAdapter.a(this.a, false);
+    this.a.notifyDataSetChanged();
+    if (TagAdapter.a(this.a) != null) {
+      TagAdapter.a(this.a).f();
+    }
   }
 }
 

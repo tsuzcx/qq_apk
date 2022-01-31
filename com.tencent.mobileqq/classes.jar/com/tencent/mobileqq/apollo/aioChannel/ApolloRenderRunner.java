@@ -7,7 +7,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ylq;
+import yow;
 
 public class ApolloRenderRunner
 {
@@ -219,7 +219,7 @@ public class ApolloRenderRunner
         }
         if (paramLong == localIRenderRunner.getRuntimeState())
         {
-          localIRenderRunner.runRenderTask(new ylq(this, localIRenderRunner, paramLong, paramApolloCmdChannel, paramInt, paramString1, paramString2));
+          localIRenderRunner.runRenderTask(new yow(this, localIRenderRunner, paramLong, paramApolloCmdChannel, paramInt, paramString1, paramString2));
           if (QLog.isColorLevel()) {
             QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine getRenderRunner find runtimeState:" + l);
           }

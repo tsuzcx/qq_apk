@@ -8,7 +8,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import sso;
+import svn;
 
 public class JobSelectionActivity
   extends IphoneTitleBarActivity
@@ -16,23 +16,23 @@ public class JobSelectionActivity
 {
   private int jdField_a_of_type_Int;
   private ListView jdField_a_of_type_AndroidWidgetListView;
-  private sso jdField_a_of_type_Sso;
+  private svn jdField_a_of_type_Svn;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970340);
-    setTitle(2131433074);
-    setLeftViewName(2131432397);
+    super.setContentView(2130970369);
+    setTitle(2131433091);
+    setLeftViewName(2131432414);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("param_id", -1);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("param_need_no_limit", false);
     this.b = getIntent().getBooleanExtra("param_from_consearch", false);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131364160));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131364184));
     this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Sso = new sso(this, null);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Sso);
+    this.jdField_a_of_type_Svn = new svn(this, null);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Svn);
     return true;
   }
   
@@ -41,7 +41,7 @@ public class JobSelectionActivity
     if (this.jdField_a_of_type_Boolean) {}
     for (this.jdField_a_of_type_Int = paramInt;; this.jdField_a_of_type_Int = (paramInt + 1))
     {
-      this.jdField_a_of_type_Sso.notifyDataSetChanged();
+      this.jdField_a_of_type_Svn.notifyDataSetChanged();
       if (this.b) {
         ReportController.b(this.app, "CliOper", "", "", "0X8006F0A", "0X8006F0A", 0, 0, this.jdField_a_of_type_Int + "", "", "", "");
       }

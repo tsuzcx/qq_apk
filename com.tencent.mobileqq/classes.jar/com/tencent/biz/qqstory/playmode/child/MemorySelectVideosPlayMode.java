@@ -95,11 +95,12 @@ public class MemorySelectVideosPlayMode
   {
     PlayPanelController.b(paramLayoutInflater, this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$TopViewHolder);
     PlayPanelController.a(paramLayoutInflater, this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$TopViewHolder);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$TopViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371953));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$TopViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372126));
     if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("完成(" + this.j + ")");
     }
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.d = true;
   }
   
   public void a(LayoutInflater paramLayoutInflater, VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder)
@@ -132,7 +133,7 @@ public class MemorySelectVideosPlayMode
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(((StoryVideoItem)localObject).mVid)) {}
     for (boolean bool1 = ((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(((StoryVideoItem)localObject).mVid)).booleanValue();; bool1 = false)
     {
-      paramView = (ImageView)localVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371954);
+      paramView = (ImageView)localVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372127);
       if (bool1) {
         break label288;
       }
@@ -143,7 +144,7 @@ public class MemorySelectVideosPlayMode
       return;
     }
     this.j += 1;
-    paramView.setImageResource(2130842117);
+    paramView.setImageResource(2130842154);
     if (this.j == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
@@ -165,7 +166,7 @@ public class MemorySelectVideosPlayMode
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
       return;
       this.j -= 1;
-      paramView.setImageResource(2130842884);
+      paramView.setImageResource(2130842983);
       break;
       this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
       break label215;
@@ -188,12 +189,12 @@ public class MemorySelectVideosPlayMode
       if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramStoryVideoItem.mVid))
       {
         bool = ((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramStoryVideoItem.mVid)).booleanValue();
-        localImageView = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371954);
+        localImageView = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372127);
         paramStoryVideoItem.mIsPlaying = 0;
         if (!bool) {
           break label128;
         }
-        localImageView.setImageResource(2130842117);
+        localImageView.setImageResource(2130842154);
         label109:
         if (!paramStoryVideoItem.isPollVideo()) {
           break label138;
@@ -207,7 +208,7 @@ public class MemorySelectVideosPlayMode
         return;
         bool = false;
         break;
-        localImageView.setImageResource(2130842884);
+        localImageView.setImageResource(2130842983);
         break label109;
       }
       PlayModeInteractViewUtils.a(this, paramVideoViewHolder, paramStoryVideoItem);

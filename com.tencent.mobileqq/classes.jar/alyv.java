@@ -1,24 +1,24 @@
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavHelper;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeMediaPlayer.OnCompletionListener;
 
-public final class alyv
-  implements Runnable
+class alyv
+  implements TraeMediaPlayer.OnCompletionListener
 {
-  public void run()
+  alyv(alyu paramalyu) {}
+  
+  public void a()
   {
-    synchronized ()
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "notify(sPluginInstalled) qqfav.apk");
-      }
-      QfavHelper.a().notifyAll();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.w("TRAE", 2, "_ringPlayer onCompletion _activeMode:" + this.a.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a + " _preRingMode:" + this.a.jdField_b_of_type_Int);
     }
+    TraeAudioManager.a("TraeMediaPlayer_OnCompletionListener", null, -1L, true);
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alyv
  * JD-Core Version:    0.7.0.1
  */

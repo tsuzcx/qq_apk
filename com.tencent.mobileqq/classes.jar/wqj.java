@@ -1,17 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.content.res.Resources;
+import android.support.v4.util.MQLruCache;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.MemoryConfigs;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.statistics.battery.BatteryStats;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class wqj
-  implements DialogInterface.OnClickListener
+public class wqj
+  implements Runnable
 {
-  wqj(wqg paramwqg) {}
+  public wqj(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.setText("");
+    Object localObject = this.a.a;
+    if (localObject != null) {}
+    for (QQAppInterface localQQAppInterface = ((SplashActivity)localObject).app; (localObject == null) || (localQQAppInterface == null); localQQAppInterface = null) {
+      return;
+    }
+    try
+    {
+      AIOPanelUtiles.a(localQQAppInterface);
+      MultiMsgManager.a().a(localQQAppInterface);
+      localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
+      int i = ((DisplayMetrics)localObject).widthPixels;
+      int j = ((DisplayMetrics)localObject).heightPixels;
+      localObject = BaseApplicationImpl.sImageCache;
+      float f = MemoryConfigs.a().a;
+      ((MQLruCache)localObject).setLargeSize((int)(j * i * 4 * f));
+      localQQAppInterface.D();
+      QQToast.a(true);
+      QQAppInterface.a().a();
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.d("MainAssistObserver", 4, "notifyWindowShowed e=" + localException);
+      }
     }
   }
 }

@@ -96,19 +96,19 @@ public abstract class ParallelObserver
     for (;;)
     {
       return;
-      int i = ((Integer)this.mObserverFunctions.get(paramInteger.intValue())).intValue();
-      int j = this.mObserverFunctionCount - (i + 1);
-      if (i < 0)
+      if (this.mObserverFunctions.get(paramInteger.intValue()) == null)
       {
         SLog.w("vianhuang.SimpleParallelObserver", "can't find this successful function in observing queue, just ignore.");
         return;
       }
+      int i = ((Integer)this.mObserverFunctions.get(paramInteger.intValue())).intValue();
+      i = this.mObserverFunctionCount - (i + 1);
       SLog.d("vianhuang.SimpleParallelObserver", "on one function success. functionCode = %d, result = %s.", new Object[] { paramInteger, paramObject });
       try
       {
         this.mObserverFunctions.delete(paramInteger.intValue());
-        this.mFunctionResults[j] = paramObject;
-        onOneFuncSuc(j, paramObject);
+        this.mFunctionResults[i] = paramObject;
+        onOneFuncSuc(i, paramObject);
         if (!isAllFunctionComplete()) {
           continue;
         }

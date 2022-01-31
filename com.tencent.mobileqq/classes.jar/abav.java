@@ -1,22 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abav
   implements Runnable
 {
-  public abav(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  public abav(ARMapActivity paramARMapActivity, String paramString) {}
   
   public void run()
   {
-    if (ARMapLoadingActivity.a(this.a) >= 0L)
-    {
-      ARMapLoadingActivity.a(this.a).sendEmptyMessage(101);
-      return;
-    }
-    Message localMessage = ARMapLoadingActivity.a(this.a).obtainMessage(104);
-    localMessage.arg1 = 1;
-    ARMapLoadingActivity.a(this.a).sendMessage(localMessage);
+    this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.b.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,19 +1,13 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
-public class agcm
-  implements ValueAnimation.AnimationUpdateListener
+class agcm
+  implements Runnable
 {
-  public agcm(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  agcm(agch paramagch) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate();
+    ScanOcrActivity.a(this.a.a, null, true, false);
   }
 }
 

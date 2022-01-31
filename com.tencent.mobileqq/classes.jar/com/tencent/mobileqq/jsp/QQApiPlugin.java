@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.jsp;
 
-import admm;
-import admo;
-import admq;
-import admu;
-import admv;
+import adwl;
+import adwn;
+import adwp;
+import adwt;
+import adwu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -185,7 +185,7 @@ public class QQApiPlugin
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
-      QQToast.a(BaseApplication.getContext(), 0, 2131435286, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplication.getContext(), 0, 2131435303, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
     }
     do
     {
@@ -213,7 +213,7 @@ public class QQApiPlugin
       {
         for (;;)
         {
-          QQToast.a(BaseApplication.getContext(), 0, 2131435286, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+          QQToast.a(BaseApplication.getContext(), 0, 2131435303, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
           paramString1.printStackTrace();
           if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
             this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
@@ -452,10 +452,10 @@ public class QQApiPlugin
         }
         if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435466);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435483);
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         }
-        ThreadManager.post(new admm(this, (HashMap)localObject, str4, paramString, str6, str1, localJSONObject, str2, str3, str5, str7, str8, str9, k, str14, i, localActivity), 8, null, true);
+        ThreadManager.post(new adwl(this, (HashMap)localObject, str4, paramString, str6, str1, localJSONObject, str2, str3, str5, str7, str8, str9, k, str14, i, localActivity), 8, null, true);
         return;
       }
       catch (JSONException paramString) {}
@@ -718,7 +718,7 @@ public class QQApiPlugin
     for (int i = this.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$QQBrowserBaseActivityInterface.a(this, (byte)1, true); QZoneShareManager.a(this.mRuntime.a(), a(), paramString1, null, i); i = 1) {
       return;
     }
-    QRUtils.a(1, 2131435463);
+    QRUtils.a(1, 2131435480);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       callJs(this.jdField_a_of_type_JavaLangString, new String[] { "false" });
@@ -732,7 +732,7 @@ public class QQApiPlugin
     paramJSONObject = this.mRuntime.a();
     int i = -1;
     if (!WXShareHelper.a().a()) {
-      i = 2131435302;
+      i = 2131435319;
     }
     while (i != -1)
     {
@@ -745,11 +745,11 @@ public class QQApiPlugin
       }
       return;
       if (!WXShareHelper.a().b()) {
-        i = 2131435303;
+        i = 2131435320;
       }
     }
     HashMap localHashMap = new HashMap(1);
-    paramString2 = new admq(this, paramString1, paramString4, paramInt, localHashMap, paramString6, paramString2, paramString3, paramString7);
+    paramString2 = new adwp(this, paramString1, paramString4, paramInt, localHashMap, paramString6, paramString2, paramString3, paramString7);
     if (TextUtils.isEmpty(paramString5))
     {
       paramString2.run();
@@ -760,10 +760,10 @@ public class QQApiPlugin
     }
     if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435466);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435483);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
-    ThreadManager.post(new admu(this, paramString5, localHashMap, paramString2, paramString1, paramString4), 8, null, false);
+    ThreadManager.post(new adwt(this, paramString5, localHashMap, paramString2, paramString1, paramString4), 8, null, false);
   }
   
   public boolean a(String paramString)
@@ -821,7 +821,7 @@ public class QQApiPlugin
           if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
             this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
           }
-          QQToast.a(BaseApplication.getContext(), 0, 2131435286, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+          QQToast.a(BaseApplication.getContext(), 0, 2131435303, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
           return;
         }
         Object localObject = BaseApplicationImpl.getContext().getPackageManager();
@@ -831,7 +831,7 @@ public class QQApiPlugin
           if (QLog.isColorLevel()) {
             QLog.d("QQApi", 2, "shareMsgToSina installSinaWeibo:true");
           }
-          ThreadManager.executeOnSubThread(new admo(this, paramString4, paramString1, paramString3, (ApplicationInfo)localObject, paramString2));
+          ThreadManager.executeOnSubThread(new adwn(this, paramString4, paramString1, paramString3, (ApplicationInfo)localObject, paramString2));
         }
         catch (PackageManager.NameNotFoundException localNameNotFoundException)
         {
@@ -864,7 +864,7 @@ public class QQApiPlugin
             }
             catch (Exception paramString1)
             {
-              QQToast.a(BaseApplication.getContext(), 0, 2131435286, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+              QQToast.a(BaseApplication.getContext(), 0, 2131435303, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
               paramString1.printStackTrace();
               if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
                 continue;
@@ -1673,7 +1673,7 @@ public class QQApiPlugin
       localIntent.putExtra("req_share_id", paramJSONObject.optLong("appid", -1L));
       localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
       localIntent.putExtra("image_url_remote", paramString5);
-      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430100, new Object[] { paramString1 }));
+      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430117, new Object[] { paramString1 }));
       localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
       if (paramJSONObject.has("contentAction")) {
         localIntent.putExtra("struct_share_key_content_action", paramJSONObject.getString("contentAction"));
@@ -1736,11 +1736,11 @@ public class QQApiPlugin
       }
       if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435466);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435483);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       localIntent.putExtra("struct_share_key_source_name", Long.toString(l));
-      Share.a(paramJSONObject, this.jdField_a_of_type_AndroidContentContext, paramJSONObject.getAccount(), l, 3000L, new admv(this, localIntent));
+      Share.a(paramJSONObject, this.jdField_a_of_type_AndroidContentContext, paramJSONObject.getAccount(), l, 3000L, new adwu(this, localIntent));
       return;
       localIntent.putExtra("isWebCompShare", true);
       localIntent.setClass(this.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
@@ -1809,9 +1809,9 @@ public class QQApiPlugin
         }
         for (;;)
         {
-          if (paramString2.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131432057)))
+          if (paramString2.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131432074)))
           {
-            bool = paramString2.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131432057));
+            bool = paramString2.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131432074));
             if (bool)
             {
               paramJSONObject = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
@@ -1933,7 +1933,7 @@ public class QQApiPlugin
             }
             else
             {
-              localIntent.putExtra("app_name", this.jdField_a_of_type_AndroidContentContext.getString(2131430099));
+              localIntent.putExtra("app_name", this.jdField_a_of_type_AndroidContentContext.getString(2131430116));
             }
           }
           callJs4OpenApiIfNeeded("shareMsg", 0, "false");
@@ -2330,7 +2330,7 @@ public class QQApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.QQApiPlugin
  * JD-Core Version:    0.7.0.1
  */

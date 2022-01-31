@@ -1,93 +1,48 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.utils.DateUtils;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWVideoRecorder;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class olq
+class olq
+  extends olu
 {
-  public View a;
-  public TextView a;
-  public View b;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  
-  public olq(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  olq(olp paramolp, int paramInt, long paramLong1, QQFilterRenderManager paramQQFilterRenderManager, HWVideoRecorder paramHWVideoRecorder1, HWVideoRecorder paramHWVideoRecorder2, long paramLong2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371887));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364178));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364177));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371889));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371885);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131371884);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131371882);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131371883);
+    super(paramInt, paramLong1, paramQQFilterRenderManager, paramHWVideoRecorder1);
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  public void a(String paramString)
   {
-    Object localObject = DateUtils.a(paramTroopStoryItemInfo.publishTime);
-    if (TextUtils.isEmpty(localObject[0]))
+    super.a(paramString);
+    if (SlideShowPhotoListManager.a)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localObject[1]);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      if ((paramInt > 0) && (((TroopStoryItemInfo)this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.get(paramInt - 1)).itemType == 0))
-      {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      while (paramTroopStoryItemInfo.publishCount == 0)
-      {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText("暂无小视频");
-        return;
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.c();
+      return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localObject[1]);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(localObject[0]);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    if ((paramInt > 0) && (((TroopStoryItemInfo)this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.get(paramInt - 1)).itemType == 0))
-    {
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowPhotoListManager", 2, "pic num:" + this.jdField_a_of_type_Olp.a.jdField_a_of_type_JavaUtilList.size() + ", encode cost time:" + (l - this.jdField_a_of_type_Long) / 1000L);
     }
-    for (;;)
-    {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      break;
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramTroopStoryItemInfo.publishCount).append("个小视频");
-    if (paramTroopStoryItemInfo.dayCommentCount > 0)
-    {
-      ((StringBuilder)localObject).append(" 评论").append(paramTroopStoryItemInfo.dayCommentCount);
-      if (paramTroopStoryItemInfo.dayLikeCount > 0) {
-        ((StringBuilder)localObject).append("·");
-      }
-    }
-    if (paramTroopStoryItemInfo.dayLikeCount > 0)
-    {
-      if (paramTroopStoryItemInfo.dayCommentCount <= 0) {
-        ((StringBuilder)localObject).append(" ");
-      }
-      ((StringBuilder)localObject).append("赞").append(paramTroopStoryItemInfo.dayLikeCount);
-    }
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject).toString());
+    this.jdField_a_of_type_Olp.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.path = paramString;
+    localLocalMediaInfo.mMimeType = "video";
+    MediaScanner.a(BaseApplicationImpl.getContext()).a(new olr(this, paramString), localLocalMediaInfo);
+    StoryReportor.a("video_edit", "slides_done", 0, 0, new String[0]);
+    StoryReportor.a("video_edit_slides", "suc_compose", 0, 0, new String[0]);
+  }
+  
+  public void a_(int paramInt, Throwable paramThrowable)
+  {
+    super.a_(paramInt, paramThrowable);
+    this.jdField_a_of_type_Olp.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new olt(this));
   }
 }
 

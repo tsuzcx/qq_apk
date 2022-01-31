@@ -11,7 +11,7 @@ import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
-import map;
+import mbs;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -31,7 +31,8 @@ public class VideoFeedsAppJumpManager
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = 2147483647;
   private boolean jdField_c_of_type_Boolean;
-  private boolean d;
+  private int jdField_d_of_type_Int = 1;
+  private boolean jdField_d_of_type_Boolean;
   private boolean e;
   private boolean f;
   private boolean g;
@@ -47,7 +48,7 @@ public class VideoFeedsAppJumpManager
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayActivity = paramVideoFeedsPlayActivity;
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367309));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367372));
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.h = paramBoolean;
@@ -56,7 +57,7 @@ public class VideoFeedsAppJumpManager
   private void a(boolean paramBoolean)
   {
     if (!a()) {}
-    while (this.d) {
+    while (this.jdField_d_of_type_Boolean) {
       return;
     }
     this.jdField_a_of_type_Boolean = true;
@@ -72,7 +73,9 @@ public class VideoFeedsAppJumpManager
     }
     else
     {
-      VideoFeedsHelper.a(this.jdField_a_of_type_AndroidViewViewGroup, 0);
+      if (this.jdField_a_of_type_AndroidViewViewGroup.getVisibility() == 8) {
+        VideoFeedsHelper.a(this.jdField_a_of_type_AndroidViewViewGroup, 0);
+      }
       if (!this.g)
       {
         this.g = true;
@@ -80,14 +83,14 @@ public class VideoFeedsAppJumpManager
       }
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
       if (!this.f) {
-        break label202;
+        break label214;
       }
     }
-    label202:
+    label214:
     for (String str = "打开看看";; str = "下载微视")
     {
       localTextView.setText(str);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new map(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new mbs(this));
       return;
       PublicAccountReportUtils.a(null, null, "0X8009033", "0X8009033", 0, 0, String.valueOf(j), "", "", VideoReporter.a(null, null, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g, null), false);
       break;
@@ -99,8 +102,8 @@ public class VideoFeedsAppJumpManager
     Object localObject;
     if (!this.e)
     {
-      this.jdField_b_of_type_JavaLangString = ReadInJoyHelper.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localObject = ReadInJoyHelper.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_b_of_type_JavaLangString = ReadInJoyHelper.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject = ReadInJoyHelper.k(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       boolean bool = ReadInJoyHelper.n(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "checkIsNeedShowAd() 后台下发原始配置：" + this.jdField_b_of_type_JavaLangString + "\n本地副本配置：" + (String)localObject + "\n本地副本配置是否为当天：" + bool);
@@ -119,7 +122,7 @@ public class VideoFeedsAppJumpManager
         j = 0;
         if (j < localJSONArray.length())
         {
-          String[] arrayOfString = ((String)localJSONArray.getJSONObject(j).get("video_from_type")).split("|");
+          String[] arrayOfString = ((String)localJSONArray.getJSONObject(j).get("video_from_type")).split("\\|");
           int m = arrayOfString.length;
           k = 0;
           if (k < m)
@@ -129,7 +132,9 @@ public class VideoFeedsAppJumpManager
               continue;
             }
             this.i = true;
-            this.jdField_b_of_type_Int = ((Integer)localJSONArray.getJSONObject(j).get("ad_display_count_each_entrance")).intValue();
+            k = ((Integer)localJSONArray.getJSONObject(j).get("ad_display_count_each_entrance")).intValue();
+            this.jdField_b_of_type_Int = k;
+            this.jdField_d_of_type_Int = k;
             this.jdField_c_of_type_Int = ((Integer)localJSONArray.getJSONObject(j).get("ad_display_count_each_day")).intValue();
           }
           if (!this.i) {
@@ -139,7 +144,9 @@ public class VideoFeedsAppJumpManager
         if (!this.i)
         {
           localObject = ((JSONObject)localObject).getJSONObject("default_value");
-          this.jdField_b_of_type_Int = ((Integer)((JSONObject)localObject).get("ad_display_count_each_entrance")).intValue();
+          j = ((Integer)((JSONObject)localObject).get("ad_display_count_each_entrance")).intValue();
+          this.jdField_b_of_type_Int = j;
+          this.jdField_d_of_type_Int = j;
           this.jdField_c_of_type_Int = ((Integer)((JSONObject)localObject).get("ad_display_count_each_day")).intValue();
           this.i = true;
         }
@@ -148,6 +155,10 @@ public class VideoFeedsAppJumpManager
       {
         int j;
         int k;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "checkIsNeedShowAd() 解析错误 ERROR = " + localException.getMessage());
         continue;
       }
       this.e = true;
@@ -155,7 +166,7 @@ public class VideoFeedsAppJumpManager
         QLog.d(jdField_a_of_type_JavaLangString, 2, "checkIsNeedShowAd() 初始剩余次数 mDisplayCountEachEntrance = " + this.jdField_b_of_type_Int + ", mDisplayCountEachDay = " + this.jdField_c_of_type_Int);
       }
       if ((this.jdField_c_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0)) {
-        continue;
+        break label533;
       }
       this.jdField_c_of_type_Int -= 1;
       this.jdField_b_of_type_Int -= 1;
@@ -167,6 +178,7 @@ public class VideoFeedsAppJumpManager
       continue;
       j += 1;
     }
+    label533:
     return false;
   }
   
@@ -175,7 +187,7 @@ public class VideoFeedsAppJumpManager
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    VideoFeedsHelper.a(this.jdField_a_of_type_AndroidViewViewGroup, 8);
+    VideoFeedsHelper.a(this.jdField_a_of_type_AndroidViewViewGroup, 8, 200);
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -204,7 +216,7 @@ public class VideoFeedsAppJumpManager
           n = 0;
           k = j;
           if (n >= i1) {
-            break label368;
+            break label370;
           }
           String str = arrayOfString[n];
           k = j;
@@ -214,7 +226,7 @@ public class VideoFeedsAppJumpManager
             if (str.equals(String.valueOf(this.jdField_a_of_type_Int)))
             {
               k = 1;
-              ((JSONArray)localObject).getJSONObject(m).put("ad_display_count_each_entrance", this.jdField_b_of_type_Int);
+              ((JSONArray)localObject).getJSONObject(m).put("ad_display_count_each_entrance", this.jdField_d_of_type_Int);
               ((JSONArray)localObject).getJSONObject(m).put("ad_display_count_each_day", this.jdField_c_of_type_Int);
             }
           }
@@ -224,11 +236,11 @@ public class VideoFeedsAppJumpManager
           if (j == 0)
           {
             localObject = localJSONObject.getJSONObject("default_value");
-            ((JSONObject)localObject).put("ad_display_count_each_entrance", this.jdField_b_of_type_Int);
+            ((JSONObject)localObject).put("ad_display_count_each_entrance", this.jdField_d_of_type_Int);
             ((JSONObject)localObject).put("ad_display_count_each_day", this.jdField_c_of_type_Int);
           }
           this.jdField_b_of_type_JavaLangString = localJSONObject.toString();
-          ReadInJoyHelper.x(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString);
+          ReadInJoyHelper.y(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString);
           if (QLog.isColorLevel()) {
             QLog.d(jdField_a_of_type_JavaLangString, 2, "doOnDestory() 本地配置更新成功，mConfigJsonStr = " + this.jdField_b_of_type_JavaLangString);
           }
@@ -245,7 +257,7 @@ public class VideoFeedsAppJumpManager
       }
       if (k != 0)
       {
-        label368:
+        label370:
         m += 1;
         j = k;
       }
@@ -254,6 +266,13 @@ public class VideoFeedsAppJumpManager
         n += 1;
         j = k;
       }
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.i != 0) && (paramFloat >= this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.h) && (!this.jdField_c_of_type_Boolean)) {
+      a(true);
     }
   }
   
@@ -266,7 +285,7 @@ public class VideoFeedsAppJumpManager
       do
       {
         return;
-        this.d = false;
+        this.jdField_d_of_type_Boolean = false;
       } while (!this.jdField_b_of_type_Boolean);
       this.jdField_b_of_type_Boolean = false;
       a(false);
@@ -277,26 +296,24 @@ public class VideoFeedsAppJumpManager
       this.jdField_b_of_type_Boolean = true;
       b();
     }
-    this.d = true;
-  }
-  
-  public void a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.h > 0) && (paramLong > this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.h) && (!this.jdField_c_of_type_Boolean)) {
-      a(true);
-    }
+    this.jdField_d_of_type_Boolean = true;
   }
   
   public void a(VideoInfo paramVideoInfo, VideoFeedsAdapter.BaseVideoItemHolder paramBaseVideoItemHolder)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
-      b();
-    }
     this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter$BaseVideoItemHolder = paramBaseVideoItemHolder;
     this.jdField_c_of_type_Boolean = false;
-    if ((paramVideoInfo != null) && (QLog.isColorLevel())) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setPlayingVideoInfo() videoInfo.isWeishi=" + paramVideoInfo.d + ", videoInfo.appJumpTipsDisplayTimePosition=" + paramVideoInfo.h);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.i != 0) && (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.h <= 0)) {
+      a(true);
+    }
+    for (;;)
+    {
+      if ((paramVideoInfo != null) && (QLog.isColorLevel())) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "setPlayingVideoInfo() videoInfo.isWeishi=" + paramVideoInfo.f + ", videoInfo.appJumpTipsDisplayTimePosition=" + paramVideoInfo.h + ", videoInfo.adsJumpType=" + paramVideoInfo.i);
+      }
+      return;
+      b();
     }
   }
 }

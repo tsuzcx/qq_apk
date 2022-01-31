@@ -1,61 +1,52 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Editable;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class rzj
-  extends TroopObserver
+  implements DialogInterface.OnDismissListener
 {
-  public rzj(ChatSettingForTroop paramChatSettingForTroop) {}
+  public rzj(ChatHistory paramChatHistory, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
   
-  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.a(paramBoolean, paramInt, paramArrayList, paramString);
-    if (!paramBoolean) {}
-    Object localObject1;
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    paramDialogInterface = (MessageSearchDialog)paramDialogInterface;
+    int i = paramDialogInterface.a() + this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.l;
+    boolean bool = paramDialogInterface.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("ChatHistory", 2, "onDismiss, recordCount : " + i);
+    }
+    if (i <= 0) {}
+    int j;
     do
     {
       return;
-      localObject2 = "";
-      localObject1 = localObject2;
-      if (this.a.a != null)
-      {
-        localObject1 = localObject2;
-        if (this.a.a.troopuin != null) {
-          localObject1 = this.a.a.troopuin;
-        }
+      j = (i - 1) / 8 + 1;
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatHistory", 2, "onDismiss, pageIndex = " + j);
       }
-    } while (this.a.e == null);
-    Object localObject2 = new HashSet();
-    if ((paramString != null) && (paramString.equals(localObject1)))
+    } while (j < 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.c = ((i - 1) % 8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(j));
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+    if (bool)
     {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        paramString = (String)paramArrayList.next();
-        localObject1 = this.a.e.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)((Iterator)localObject1).next();
-          if (paramString.equals(localmemberlist.uint64_member_uin.get() + "")) {
-            ((Collection)localObject2).add(localmemberlist);
-          }
-        }
-      }
-      paramArrayList = ((Collection)localObject2).iterator();
-      while (paramArrayList.hasNext())
-      {
-        paramString = (oidb_0x899.memberlist)paramArrayList.next();
-        this.a.e.remove(paramString);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131433698));
+      return;
     }
-    this.a.a(this.a.e);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getIntent().getExtras().getString("leftViewText");
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(paramDialogInterface);
   }
 }
 

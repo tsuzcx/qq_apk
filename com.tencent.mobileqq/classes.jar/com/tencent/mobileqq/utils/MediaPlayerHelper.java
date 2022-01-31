@@ -180,13 +180,13 @@ public class MediaPlayerHelper
     //   17: invokespecial 28	android/media/MediaPlayer:<init>	()V
     //   20: putfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   23: aconst_null
-    //   24: astore 7
+    //   24: astore 8
     //   26: aconst_null
-    //   27: astore 8
+    //   27: astore 9
     //   29: aconst_null
     //   30: astore 10
     //   32: aconst_null
-    //   33: astore 9
+    //   33: astore 7
     //   35: aload 10
     //   37: astore 6
     //   39: aload_0
@@ -292,7 +292,7 @@ public class MediaPlayerHelper
     //   222: istore 4
     //   224: goto -129 -> 95
     //   227: astore_2
-    //   228: aload 9
+    //   228: aload 7
     //   230: astore_1
     //   231: aload_1
     //   232: astore 6
@@ -316,7 +316,7 @@ public class MediaPlayerHelper
     //   267: istore 4
     //   269: goto -174 -> 95
     //   272: astore_2
-    //   273: aload 7
+    //   273: aload 8
     //   275: astore_1
     //   276: aload_1
     //   277: astore 6
@@ -340,7 +340,7 @@ public class MediaPlayerHelper
     //   312: istore 4
     //   314: goto -219 -> 95
     //   317: astore_2
-    //   318: aload 8
+    //   318: aload 9
     //   320: astore_1
     //   321: aload_1
     //   322: astore 6
@@ -365,47 +365,47 @@ public class MediaPlayerHelper
     //   359: goto -264 -> 95
     //   362: astore_1
     //   363: aload 6
-    //   365: ifnull +8 -> 373
-    //   368: aload 6
-    //   370: invokevirtual 108	java/io/FileInputStream:close	()V
-    //   373: aload_1
-    //   374: athrow
-    //   375: astore_1
-    //   376: iload 5
-    //   378: istore 4
-    //   380: goto -285 -> 95
-    //   383: astore_1
-    //   384: goto -207 -> 177
-    //   387: astore_2
-    //   388: goto -15 -> 373
-    //   391: astore_1
-    //   392: aload_2
-    //   393: astore 6
-    //   395: goto -32 -> 363
-    //   398: astore_2
-    //   399: goto -78 -> 321
-    //   402: astore_2
-    //   403: goto -127 -> 276
-    //   406: astore_2
-    //   407: goto -176 -> 231
-    //   410: astore 6
-    //   412: goto -225 -> 187
+    //   365: astore_2
+    //   366: aload_2
+    //   367: ifnull +7 -> 374
+    //   370: aload_2
+    //   371: invokevirtual 108	java/io/FileInputStream:close	()V
+    //   374: aload_1
+    //   375: athrow
+    //   376: astore_1
+    //   377: iload 5
+    //   379: istore 4
+    //   381: goto -286 -> 95
+    //   384: astore_1
+    //   385: goto -208 -> 177
+    //   388: astore_2
+    //   389: goto -15 -> 374
+    //   392: astore_1
+    //   393: goto -27 -> 366
+    //   396: astore_2
+    //   397: goto -76 -> 321
+    //   400: astore_2
+    //   401: goto -125 -> 276
+    //   404: astore_2
+    //   405: goto -174 -> 231
+    //   408: astore 6
+    //   410: goto -223 -> 187
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	415	0	this	MediaPlayerHelper
-    //   0	415	1	paramContext	Context
-    //   0	415	2	paramString	java.lang.String
-    //   0	415	3	paramPreparedListener	com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin.PreparedListener
-    //   72	307	4	bool1	boolean
-    //   1	376	5	bool2	boolean
+    //   0	413	0	this	MediaPlayerHelper
+    //   0	413	1	paramContext	Context
+    //   0	413	2	paramString	java.lang.String
+    //   0	413	3	paramPreparedListener	com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin.PreparedListener
+    //   72	308	4	bool1	boolean
+    //   1	377	5	bool2	boolean
     //   37	81	6	localObject1	Object
     //   183	7	6	localIllegalStateException1	IllegalStateException
-    //   232	162	6	localObject2	Object
-    //   410	1	6	localIllegalStateException2	IllegalStateException
-    //   24	250	7	localObject3	Object
-    //   27	292	8	localObject4	Object
-    //   33	196	9	localObject5	Object
-    //   30	86	10	localObject6	Object
+    //   232	132	6	localContext	Context
+    //   408	1	6	localIllegalStateException2	IllegalStateException
+    //   33	196	7	localObject2	Object
+    //   24	250	8	localObject3	Object
+    //   27	292	9	localObject4	Object
+    //   30	86	10	localObject5	Object
     // Exception table:
     //   from	to	target	type
     //   5	23	110	finally
@@ -416,8 +416,8 @@ public class MediaPlayerHelper
     //   253	257	110	finally
     //   298	302	110	finally
     //   343	347	110	finally
-    //   368	373	110	finally
-    //   373	375	110	finally
+    //   370	374	110	finally
+    //   374	376	110	finally
     //   39	47	183	java/lang/IllegalStateException
     //   51	64	183	java/lang/IllegalStateException
     //   68	74	183	java/lang/IllegalStateException
@@ -448,31 +448,31 @@ public class MediaPlayerHelper
     //   286	290	362	finally
     //   324	328	362	finally
     //   331	335	362	finally
-    //   87	95	375	java/io/IOException
-    //   173	177	383	java/io/IOException
-    //   368	373	387	java/io/IOException
-    //   133	144	391	finally
-    //   146	153	391	finally
-    //   155	163	391	finally
-    //   165	169	391	finally
-    //   189	194	391	finally
-    //   196	200	391	finally
-    //   133	144	398	java/lang/SecurityException
-    //   146	153	398	java/lang/SecurityException
-    //   155	163	398	java/lang/SecurityException
-    //   165	169	398	java/lang/SecurityException
-    //   133	144	402	java/lang/IllegalArgumentException
-    //   146	153	402	java/lang/IllegalArgumentException
-    //   155	163	402	java/lang/IllegalArgumentException
-    //   165	169	402	java/lang/IllegalArgumentException
-    //   133	144	406	java/io/IOException
-    //   146	153	406	java/io/IOException
-    //   155	163	406	java/io/IOException
-    //   165	169	406	java/io/IOException
-    //   133	144	410	java/lang/IllegalStateException
-    //   146	153	410	java/lang/IllegalStateException
-    //   155	163	410	java/lang/IllegalStateException
-    //   165	169	410	java/lang/IllegalStateException
+    //   87	95	376	java/io/IOException
+    //   173	177	384	java/io/IOException
+    //   370	374	388	java/io/IOException
+    //   133	144	392	finally
+    //   146	153	392	finally
+    //   155	163	392	finally
+    //   165	169	392	finally
+    //   189	194	392	finally
+    //   196	200	392	finally
+    //   133	144	396	java/lang/SecurityException
+    //   146	153	396	java/lang/SecurityException
+    //   155	163	396	java/lang/SecurityException
+    //   165	169	396	java/lang/SecurityException
+    //   133	144	400	java/lang/IllegalArgumentException
+    //   146	153	400	java/lang/IllegalArgumentException
+    //   155	163	400	java/lang/IllegalArgumentException
+    //   165	169	400	java/lang/IllegalArgumentException
+    //   133	144	404	java/io/IOException
+    //   146	153	404	java/io/IOException
+    //   155	163	404	java/io/IOException
+    //   165	169	404	java/io/IOException
+    //   133	144	408	java/lang/IllegalStateException
+    //   146	153	408	java/lang/IllegalStateException
+    //   155	163	408	java/lang/IllegalStateException
+    //   165	169	408	java/lang/IllegalStateException
   }
   
   /* Error */

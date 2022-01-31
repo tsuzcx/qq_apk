@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import aoaj;
+import aoqo;
 import com.tencent.mobileqq.nearby.NearbyURLSafeUtil;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class ShortVideoJsApiPlugin
   extends WebViewPlugin
 {
-  public BroadcastReceiver a = new aoaj(this);
+  public BroadcastReceiver a = new aoqo(this);
   
   public ShortVideoJsApiPlugin()
   {

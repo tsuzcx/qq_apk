@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.js;
 
-import akoz;
+import alep;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -35,12 +35,12 @@ public class HttpInterface$JsHttpCallback
     }
     LogUtility.c("HttpInterface", "onException >>> ");
     paramException = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
-    akoz localakoz = new akoz();
-    localakoz.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    paramException.obj = localakoz;
+    alep localalep = new alep();
+    localalep.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    paramException.obj = localalep;
     paramException.arg1 = 0;
     if (TextUtils.isEmpty(this.b)) {}
-    for (localakoz.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");; localakoz.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);"))
+    for (localalep.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");; localalep.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);"))
     {
       this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(paramException);
       return;
@@ -57,9 +57,9 @@ public class HttpInterface$JsHttpCallback
       localJSONObject = new JSONObject();
     }
     Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
-    localakoz = new akoz();
-    localakoz.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
-    localMessage.obj = localakoz;
+    localalep = new alep();
+    localalep.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    localMessage.obj = localalep;
     localMessage.arg1 = 0;
     for (;;)
     {
@@ -74,16 +74,16 @@ public class HttpInterface$JsHttpCallback
         if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
           continue;
         }
-        localakoz.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject + ");}void(0);");
+        localalep.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject + ");}void(0);");
       }
       catch (JSONException paramJSONObject)
       {
         if (!TextUtils.isEmpty(this.b)) {
           continue;
         }
-        localakoz.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");
+        localalep.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");
         continue;
-        localakoz.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
+        localalep.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
         continue;
       }
       this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(localMessage);
@@ -93,7 +93,7 @@ public class HttpInterface$JsHttpCallback
       paramJSONObject.put("content", localJSONObject.toString());
       paramJSONObject = paramJSONObject.toString();
       continue;
-      localakoz.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
+      localalep.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
     }
   }
 }

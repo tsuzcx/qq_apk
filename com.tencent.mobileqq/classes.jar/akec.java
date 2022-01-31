@@ -1,33 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class akec
-  extends Handler
+  implements View.OnClickListener
 {
-  public akec(WerewolvesPluginManager paramWerewolvesPluginManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public akec(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    int i = paramMessage.arg1;
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
+    }
+    try
     {
-    default: 
+      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      }
       return;
     }
-    ((WerewolvesHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(107)).a(3, true, Integer.valueOf(i));
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akec
  * JD-Core Version:    0.7.0.1
  */

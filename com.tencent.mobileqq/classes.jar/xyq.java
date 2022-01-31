@@ -1,17 +1,40 @@
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class xyq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xyq(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
+  public xyq(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopAddFrdsInnerFrame", 2, "read troop members from database before updating data from server");
+    switch (paramInt)
+    {
     }
-    TroopAddFrdsInnerFrame.a(this.a, this.a.b, null);
+    boolean bool;
+    do
+    {
+      return;
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
+      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break;
+      }
+      bool = true;
+      paramDialogInterface.setChecked(bool);
+      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f != 32);
+    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
+    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
+    {
+      QWalletTools.a(0, paramDialogInterface);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

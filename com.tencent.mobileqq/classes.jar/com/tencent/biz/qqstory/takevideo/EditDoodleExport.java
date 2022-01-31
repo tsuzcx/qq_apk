@@ -8,8 +8,6 @@ import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 public abstract interface EditDoodleExport
   extends EditVideoPart.EditExport
 {
-  public abstract void J_();
-  
   public abstract int a();
   
   public abstract Bitmap a();
@@ -34,6 +32,8 @@ public abstract interface EditDoodleExport
   public abstract void b();
   
   public abstract boolean b();
+  
+  public abstract void c();
   
   public abstract boolean c_();
 }

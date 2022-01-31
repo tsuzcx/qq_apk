@@ -1,22 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
+import com.tencent.qphone.base.util.QLog;
 
 public final class ahyc
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ahyc(QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
+    try
+    {
+      SosoInterface.a(QZoneNotifyServlet.a());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "locate exception " + localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahyc
  * JD-Core Version:    0.7.0.1
  */

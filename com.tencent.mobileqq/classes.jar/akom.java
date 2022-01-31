@@ -1,31 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.open.appcommon.js.DownloadInterface;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
+import mqq.app.TicketManagerListener;
 
 public class akom
-  implements Runnable
+  implements TicketManagerListener
 {
-  public akom(DownloadInterface paramDownloadInterface, String paramString) {}
-  
-  public void run()
+  public void onTicketRefreshed()
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview.loadUrl(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.a(this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.TAG, "webview loadUrl>>> ", localException);
-    }
+    QLog.i("SwiftBrowserCookieMonster", 1, "TicketManager invoke onTicketRefreshed");
+    SwiftBrowserCookieMonster.d();
+    SwiftBrowserCookieMonster.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new Intent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akom
  * JD-Core Version:    0.7.0.1
  */

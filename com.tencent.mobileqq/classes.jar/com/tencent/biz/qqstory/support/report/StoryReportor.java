@@ -28,7 +28,7 @@ public class StoryReportor
   
   static
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a(2131432071);
+    jdField_a_of_type_JavaLangString = StoryApi.a(2131432088);
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -89,8 +89,10 @@ public class StoryReportor
       return 7;
     case 5: 
       return 9;
+    case 6: 
+      return 10;
     }
-    return 10;
+    return 11;
   }
   
   public static String a(int paramInt)
@@ -226,7 +228,7 @@ public class StoryReportor
     try
     {
       if (SLog.a()) {
-        SLog.d("StoryReportor", "[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs) });
+        SLog.b("StoryReportor", "[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs) });
       }
       label78:
       ReportController.b(null, "dc00899", jdField_a_of_type_JavaLangString, "", paramString1, paramString2, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
@@ -235,6 +237,23 @@ public class StoryReportor
     catch (Exception localException)
     {
       break label78;
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    try
+    {
+      if (SLog.a()) {
+        SLog.b("StoryReportor", "[department]%s;[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs) });
+      }
+      label84:
+      ReportController.b(null, "dc00899", paramString1, "", paramString2, paramString3, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label84;
     }
   }
   
@@ -296,6 +315,23 @@ public class StoryReportor
       }
       label78:
       ReportController.b(null, "dc00899", "grp_story_engineer", "", paramString1, paramString2, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label78;
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
+  {
+    try
+    {
+      if (SLog.a()) {
+        SLog.b("StoryReportor", "Dev[op_type]%s;[op_name]%s;[op_in]%d;[op_result]%d;[d1]%s;[d2]%s;[d3]%s;[d4]%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs) });
+      }
+      label78:
+      ReportController.b(null, "dc00899", "PGC_story", "", paramString1, paramString2, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
       return;
     }
     catch (Exception localException)

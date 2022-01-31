@@ -1,27 +1,28 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.BezierEvaluator;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import mqq.os.MqqHandler;
 
-public class vee
+class vee
+  implements Runnable
 {
-  public float a;
-  public int a;
-  public ValueAnimator a;
-  public SixCombolEffectView.BezierEvaluator a;
-  public boolean a;
-  public float b;
-  public int b;
-  public ValueAnimator b;
-  public boolean b;
-  public int c;
-  public ValueAnimator c;
-  public int d;
-  public ValueAnimator d;
-  public int e;
-  public int f;
-  public int g;
+  vee(ved paramved, MessageForReplyText paramMessageForReplyText, View paramView) {}
   
-  public vee(SixCombolEffectView paramSixCombolEffectView) {}
+  public void run()
+  {
+    ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_Ved.a.a.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq);
+    if ((localChatMessage != null) && (localChatMessage.msgtype != -2006) && (localChatMessage.isValid) && (localChatMessage.msgtype != -2032))
+    {
+      ThreadManager.getUIHandler().post(new vef(this, localChatMessage));
+      return;
+    }
+    ThreadManager.getUIHandler().post(new veg(this));
+  }
 }
 
 

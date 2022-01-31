@@ -1,30 +1,19 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
 public class adik
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements Runnable
 {
-  public adik(VideoBaseItem paramVideoBaseItem) {}
+  public adik(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void run()
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    VideoBaseItem.a(this.a, true);
-    if (this.a.c == 3) {}
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.a.c = 2;
-    } while (VideoBaseItem.a(this.a) == null);
-    VideoBaseItem.a(this.a).j();
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 3);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adik
  * JD-Core Version:    0.7.0.1
  */

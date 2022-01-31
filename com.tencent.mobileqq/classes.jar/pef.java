@@ -1,33 +1,32 @@
-import com.tencent.component.media.gif.NewGifDrawable;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.hardware.Camera;
+import com.tencent.biz.widgets.ScannerView;
 
-public class pef
+class pef
   implements Runnable
 {
-  long jdField_a_of_type_Long;
-  
-  public pef(NewGifDrawable paramNewGifDrawable, long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  pef(pee parampee) {}
   
   public void run()
   {
-    long l = 0L;
-    NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
-    NewGifDrawable localNewGifDrawable = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable;
-    ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
-    peh localpeh = NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
-    if (this.jdField_a_of_type_Long > 0L) {
-      l = this.jdField_a_of_type_Long;
+    if (this.a.jdField_a_of_type_AndroidHardwareCamera == null) {
+      return;
     }
-    localNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = localScheduledThreadPoolExecutor.schedule(localpeh, l, TimeUnit.MILLISECONDS);
+    try
+    {
+      this.a.jdField_a_of_type_AndroidHardwareCamera.cancelAutoFocus();
+      label21:
+      ScannerView.b(this.a.jdField_a_of_type_ComTencentBizWidgetsScannerView, true);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label21;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pef
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anes;
-import anet;
-import aneu;
-import anev;
-import anew;
-import anex;
+import anux;
+import anuy;
+import anuz;
+import anva;
+import anvb;
+import anvc;
 import com.tencent.biz.qqstory.boundaries.StoryApi;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -70,7 +70,7 @@ public class EditVideoSave
     localProgressPieDrawable.jdField_f_of_type_Boolean = true;
     localProgressPieDrawable.jdField_f_of_type_Int = 2;
     localProgressPieDrawable.e(true);
-    localProgressPieDrawable.a(new anex(this));
+    localProgressPieDrawable.a(new anvc(this));
     return localProgressPieDrawable;
   }
   
@@ -118,7 +118,7 @@ public class EditVideoSave
     SLog.d("EditVideoSave", "PUBLISH start ...");
     a("正在保存...", false, 0);
     a(2);
-    Stream.of(localGenerateContext).map(new ThreadOffFunction(2)).map(new GenerateThumbSegment()).map((StreamFunction)StoryApi.a(GenerateDoodleImageSegment.class, new Object[] { (EditDoodleExport)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(EditDoodleExport.class) })).map(new PublishVideoSegment(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams)).map(new UIThreadOffFunction(this)).subscribe(new anet(this, localGenerateContext));
+    Stream.of(localGenerateContext).map(new ThreadOffFunction(2)).map(new GenerateThumbSegment()).map((StreamFunction)StoryApi.a(GenerateDoodleImageSegment.class, new Object[] { (EditDoodleExport)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(EditDoodleExport.class) })).map(new PublishVideoSegment(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams)).map(new UIThreadOffFunction(this)).subscribe(new anuy(this, localGenerateContext));
   }
   
   private void l()
@@ -185,7 +185,7 @@ public class EditVideoSave
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoAt != null) {
       localObject2 = ((Stream)localObject1).map(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoAt.a(0));
     }
-    ((Stream)localObject2).map(new MergeThumbSegment()).map((StreamFunction)StoryApi.a(DoodleRotateSegment.class, new Object[0])).map(new PublishVideoSegment(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams)).map(new UIThreadOffFunction(this)).subscribe(new aneu(this, localGenerateContext));
+    ((Stream)localObject2).map(new MergeThumbSegment()).map((StreamFunction)StoryApi.a(DoodleRotateSegment.class, new Object[0])).map(new PublishVideoSegment(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams)).map(new UIThreadOffFunction(this)).subscribe(new anuz(this, localGenerateContext));
   }
   
   public void a(int paramInt)
@@ -222,7 +222,7 @@ public class EditVideoSave
         if (paramIntent != null) {
           this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(paramIntent.getStringExtra("save_video_path"));
         }
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().postDelayed(new anes(this), 500L);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().postDelayed(new anux(this), 500L);
         return;
       }
       if (paramInt2 == 1)
@@ -254,16 +254,16 @@ public class EditVideoSave
         }
       }
       this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130970847);
-      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131362987);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130970895);
+      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363005);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable = a();
       ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable);
     }
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366618)).setText(paramString);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366642)).setText(paramString);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(paramBoolean);
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(paramBoolean);
     this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(0);
-    a().a().postDelayed(new anev(this), paramInt);
+    a().a().postDelayed(new anva(this), paramInt);
   }
   
   public void a_(int paramInt, Object paramObject)
@@ -286,7 +286,7 @@ public class EditVideoSave
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi == null) {
       return;
     }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().postDelayed(new anew(this), 1000L);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().postDelayed(new anvb(this), 1000L);
   }
   
   public void h()

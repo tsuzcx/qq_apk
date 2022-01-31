@@ -1,47 +1,29 @@
-import android.app.Activity;
-import android.os.AsyncTask;
-import com.dataline.util.file.FileUtil;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public final class vkt
-  extends AsyncTask
+  implements AsyncBack
 {
-  public vkt(File paramFile1, File paramFile2, Activity paramActivity) {}
+  public void a(int paramInt) {}
   
-  protected String a(Void... paramVarArgs)
+  public void a(String paramString, int paramInt)
   {
-    paramVarArgs = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-    try
-    {
-      if (FileUtil.a(this.b, this.jdField_a_of_type_JavaIoFile))
-      {
-        ImageUtil.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        return this.jdField_a_of_type_AndroidAppActivity.getString(2131434565) + " " + paramVarArgs;
-      }
-      paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getString(2131434566);
-      return paramVarArgs;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
     }
-    catch (OutOfMemoryError paramVarArgs)
+    if ((paramInt == 0) && (paramString == null))
     {
-      paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getString(2131434566);
-      if (QLog.isColorLevel()) {
-        QLog.e("AIOGalleryUtils", 2, "savePhoto  OOM ");
+      paramString = TroopSignItemBuilder.TroopSignVideoItemBuilder.a.entrySet().iterator();
+      while (paramString.hasNext()) {
+        ((TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback)((Map.Entry)paramString.next()).getValue()).a(paramInt);
       }
-    }
-    return paramVarArgs;
-  }
-  
-  protected void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
-    for (int i = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();; i = 0)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, paramString, 0).b(i);
-      return;
+      TroopSignItemBuilder.TroopSignVideoItemBuilder.a.clear();
     }
   }
 }

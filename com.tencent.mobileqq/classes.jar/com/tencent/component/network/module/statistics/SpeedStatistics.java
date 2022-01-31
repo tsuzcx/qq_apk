@@ -2,13 +2,13 @@ package com.tencent.component.network.module.statistics;
 
 import com.tencent.component.network.module.statistics.common.SortedFixedLinkedList;
 import java.util.Comparator;
-import pix;
-import piy;
-import piz;
+import pkr;
+import pks;
+import pkt;
 
 public class SpeedStatistics
 {
-  private static final Comparator jdField_a_of_type_JavaUtilComparator = new pix();
+  private static final Comparator jdField_a_of_type_JavaUtilComparator = new pkr();
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private final SortedFixedLinkedList jdField_a_of_type_ComTencentComponentNetworkModuleStatisticsCommonSortedFixedLinkedList = new SortedFixedLinkedList(100, jdField_a_of_type_JavaUtilComparator, false);
@@ -43,7 +43,7 @@ public class SpeedStatistics
   
   public static SpeedStatistics a()
   {
-    return piy.a;
+    return pks.a;
   }
   
   private void a(int paramInt)
@@ -64,18 +64,18 @@ public class SpeedStatistics
       return;
       paramInt = i;
       break;
-      piz localpiz = (piz)this.jdField_a_of_type_ComTencentComponentNetworkModuleStatisticsCommonSortedFixedLinkedList.get(paramInt - 1);
-      long l2 = localpiz.b;
-      l1 = localpiz.c;
+      pkt localpkt = (pkt)this.jdField_a_of_type_ComTencentComponentNetworkModuleStatisticsCommonSortedFixedLinkedList.get(paramInt - 1);
+      long l2 = localpkt.b;
+      l1 = localpkt.c;
       long l3 = 0L;
       l4 = 0L;
       paramInt -= 1;
       while (paramInt >= 0)
       {
-        localpiz = (piz)this.jdField_a_of_type_ComTencentComponentNetworkModuleStatisticsCommonSortedFixedLinkedList.get(paramInt);
-        l4 += localpiz.a;
-        long l6 = localpiz.b;
-        long l5 = localpiz.c;
+        localpkt = (pkt)this.jdField_a_of_type_ComTencentComponentNetworkModuleStatisticsCommonSortedFixedLinkedList.get(paramInt);
+        l4 += localpkt.a;
+        long l6 = localpkt.b;
+        long l5 = localpkt.c;
         l3 += a(l2, l1, l6, l5);
         l2 = a(l2, l6);
         l1 = b(l1, l5);
@@ -122,13 +122,13 @@ public class SpeedStatistics
     if (paramLong1 < 51200L) {
       return;
     }
-    piz localpiz = new piz();
-    localpiz.a = paramLong1;
-    localpiz.b = a(paramLong2, paramLong3);
-    localpiz.c = b(paramLong2, paramLong3);
+    pkt localpkt = new pkt();
+    localpkt.a = paramLong1;
+    localpkt.b = a(paramLong2, paramLong3);
+    localpkt.c = b(paramLong2, paramLong3);
     synchronized (this.jdField_a_of_type_ComTencentComponentNetworkModuleStatisticsCommonSortedFixedLinkedList)
     {
-      this.jdField_a_of_type_ComTencentComponentNetworkModuleStatisticsCommonSortedFixedLinkedList.add(localpiz);
+      this.jdField_a_of_type_ComTencentComponentNetworkModuleStatisticsCommonSortedFixedLinkedList.add(localpkt);
       this.jdField_a_of_type_Int += 1;
       if (a()) {
         a(5);

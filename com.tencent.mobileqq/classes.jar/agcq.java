@@ -1,17 +1,17 @@
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
 public class agcq
-  implements ValueAnimation.AnimationUpdateListener
+  implements OcrControl.OcrCallback
 {
-  public agcq(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public agcq(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a() {}
+  
+  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
+    this.a.runOnUiThread(new agcr(this, paramString, paramInt, paramOcrRecogResult, paramLong));
   }
 }
 

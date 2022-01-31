@@ -1,46 +1,26 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest;
-import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse;
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.util.ShareUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
+import java.util.Queue;
 
 public class neq
-  extends CmdTaskManger.UIThreadCallback
+  extends SimpleJob
 {
-  public neq(EncryptUrlJob paramEncryptUrlJob, String[] paramArrayOfString) {}
+  public neq(MsgTabStoryVideoPreloader paramMsgTabStoryVideoPreloader, List paramList) {}
   
-  public void a(@NonNull StoryShareTranslateTokenRequest paramStoryShareTranslateTokenRequest, @Nullable StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse paramStoryShareTranslateTokenResponse, @NonNull ErrorMessage paramErrorMessage)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if ((paramStoryShareTranslateTokenResponse == null) || (paramStoryShareTranslateTokenResponse.jdField_a_of_type_Int != 0))
+    paramJobContext = MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader, this.jdField_a_of_type_JavaUtilList);
+    if ((!paramJobContext.isEmpty()) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a()))
     {
-      if (paramStoryShareTranslateTokenResponse != null) {}
-      for (int i = paramStoryShareTranslateTokenResponse.jdField_a_of_type_Int;; i = -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("EncryptUrlJob", 2, "encrypt failed, error code = " + i);
-        }
-        EncryptUrlJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobEncryptUrlJob, false);
-        return;
-      }
+      MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader);
+      MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader, paramJobContext);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.b();
     }
-    if (((Boolean)((StoryConfigManager)SuperManager.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {}
-    for (paramStoryShareTranslateTokenRequest = ShareUtils.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], EncryptUrlJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobEncryptUrlJob));; paramStoryShareTranslateTokenRequest = this.jdField_a_of_type_ArrayOfJavaLangString[1])
-    {
-      paramStoryShareTranslateTokenRequest = this.jdField_a_of_type_ArrayOfJavaLangString[0] + "?token=" + paramStoryShareTranslateTokenResponse.jdField_a_of_type_JavaLangString + "&" + paramStoryShareTranslateTokenRequest;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt done url:", paramStoryShareTranslateTokenRequest });
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobEncryptUrlJob.a("EncryptUrlJob_coverUrl", paramStoryShareTranslateTokenResponse.c);
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobEncryptUrlJob.a("EncryptUrlJob_encryptedUrl", paramStoryShareTranslateTokenRequest);
-      EncryptUrlJob.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobEncryptUrlJob, true);
-      return;
-    }
+    return null;
   }
 }
 

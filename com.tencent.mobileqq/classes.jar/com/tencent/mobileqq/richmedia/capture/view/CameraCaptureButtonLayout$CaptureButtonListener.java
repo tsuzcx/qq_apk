@@ -2,9 +2,9 @@ package com.tencent.mobileqq.richmedia.capture.view;
 
 public abstract interface CameraCaptureButtonLayout$CaptureButtonListener
 {
-  public abstract void c();
+  public abstract void a();
   
-  public abstract void g();
+  public abstract void d();
   
   public abstract void h();
 }

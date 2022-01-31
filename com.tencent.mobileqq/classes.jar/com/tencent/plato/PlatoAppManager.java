@@ -1,16 +1,17 @@
 package com.tencent.plato;
 
-import akuh;
-import akui;
-import akuj;
-import akuk;
+import aljx;
+import aljy;
+import aljz;
+import alka;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.biz.common.offline.OfflineEnvHelper;
 import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
 import com.tencent.plato.core.IExportedModule;
@@ -66,7 +67,7 @@ public class PlatoAppManager
     }
     localIntent.putExtra("bid", paramString);
     localIntent.putExtra("singledog", true);
-    PublicFragmentActivity.a(paramActivity, localIntent, PlatoAppFragment.class);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, PlatoAppFragment.class);
     jdField_a_of_type_Int = -1;
   }
   
@@ -75,7 +76,7 @@ public class PlatoAppManager
     long l = System.currentTimeMillis();
     if (a(paramContext))
     {
-      Ev.init(paramContext, new akuh());
+      Ev.init(paramContext, new aljx());
       PlatoSDKManager.init(paramContext);
       a(paramAppRuntime);
       DeviceInfo.init();
@@ -122,7 +123,7 @@ public class PlatoAppManager
       if (!bool1) {}
       for (bool1 = true;; bool1 = false)
       {
-        HtmlOffline.a(paramString, paramAppRuntime, new akuj(bool1, paramString, l), true, 0, true);
+        HtmlOffline.a(paramString, paramAppRuntime, new aljz(bool1, paramString, l), true, 0, true);
         return;
       }
     }
@@ -156,7 +157,7 @@ public class PlatoAppManager
       String str = a(paramString, "bundler.js");
       if (FileUtils.e(str))
       {
-        ThreadManager.post(new akuk(paramString, str), 8, null, true);
+        ThreadManager.post(new alka(paramString, str), 8, null, true);
         return true;
       }
       if (QLog.isColorLevel()) {
@@ -168,7 +169,7 @@ public class PlatoAppManager
   
   public static void b(Context paramContext, AppRuntime paramAppRuntime)
   {
-    HtmlOffline.a("3152", paramAppRuntime, new akui(paramContext, paramAppRuntime, System.currentTimeMillis(), new long[1]), true, 0, true);
+    HtmlOffline.a("3152", paramAppRuntime, new aljy(paramContext, paramAppRuntime, System.currentTimeMillis(), new long[1]), true, 0, true);
   }
   
   private static void d(Context paramContext, AppRuntime paramAppRuntime)
@@ -185,7 +186,7 @@ public class PlatoAppManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.plato.PlatoAppManager
  * JD-Core Version:    0.7.0.1
  */

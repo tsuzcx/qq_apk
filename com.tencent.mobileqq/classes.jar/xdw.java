@@ -1,40 +1,20 @@
-import Wallet.GetGroupRedPackListRsp;
-import android.content.Context;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceOutputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.widget.EditText;
 
-public class xdw
+public final class xdw
   implements Runnable
 {
-  public xdw(RedPacketManager paramRedPacketManager, GetGroupRedPackListRsp paramGetGroupRedPackListRsp, String paramString1, String paramString2, int paramInt) {}
+  public xdw(EditText paramEditText) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_WalletGetGroupRedPackListRsp == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    try
-    {
-      String str = BaseApplicationImpl.getContext().getApplicationContext().getFilesDir() + "/QWallet/.tmp/group_available_list_" + this.jdField_a_of_type_JavaLangString + this.b + "_" + this.jdField_a_of_type_Int;
-      Object localObject = new File(str);
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
-      }
-      localObject = new JceOutputStream();
-      ((JceOutputStream)localObject).setServerEncoding("utf-8");
-      this.jdField_a_of_type_WalletGetGroupRedPackListRsp.writeTo((JceOutputStream)localObject);
-      FileUtils.a(((JceOutputStream)localObject).toByteArray(), str);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    MotionEvent localMotionEvent1 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 0, 0.0F, 0.0F, 0);
+    this.a.dispatchTouchEvent(localMotionEvent1);
+    MotionEvent localMotionEvent2 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 1, 0.0F, 0.0F, 0);
+    this.a.dispatchTouchEvent(localMotionEvent2);
+    localMotionEvent1.recycle();
+    localMotionEvent2.recycle();
   }
 }
 

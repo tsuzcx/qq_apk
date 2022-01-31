@@ -1,36 +1,29 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
 public class ktu
-  implements ViewPager.OnPageChangeListener
+  implements View.OnTouchListener
 {
-  public ktu(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public ktu(VideoCoverFragment paramVideoCoverFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
+    if (paramMotionEvent.getAction() == 0)
     {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
+      VideoCoverFragment.a(this.a).b();
+      if (VideoCoverFragment.a(this.a)) {
+        this.a.a(false);
+      }
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt2 != 0) {}
-    for (boolean bool = true;; bool = false)
+    else
     {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
+      return false;
     }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    PublicAccountAdvertisementActivity.a(this.a, paramInt);
+    this.a.a(true);
+    return false;
   }
 }
 

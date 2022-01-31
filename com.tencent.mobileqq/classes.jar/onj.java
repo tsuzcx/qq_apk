@@ -1,29 +1,19 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
 
-public final class onj
-  extends ExecuteBinResponseCallback
+public class onj
+  implements View.OnLongClickListener
 {
-  public onj(ExecuteBinResponseCallback paramExecuteBinResponseCallback) {}
+  public onj(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    super.a();
-    this.a.a();
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.a(paramBoolean);
-  }
-  
-  public void b(String paramString)
-  {
-    this.a.b(paramString);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    }
+    return true;
   }
 }
 

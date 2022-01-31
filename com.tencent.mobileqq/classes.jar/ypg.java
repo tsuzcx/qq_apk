@@ -1,21 +1,40 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.script.callback.ISpriteTaskInterface;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.mobileqq.apollo.game.ApolloJSContext;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.lang.ref.WeakReference;
 
 public class ypg
-  implements Runnable
+  implements EIPCResultCallback
 {
-  public ypg(SpriteDrawerInfoBridge paramSpriteDrawerInfoBridge, SpriteTaskParam paramSpriteTaskParam) {}
+  public ypg(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (SpriteDrawerInfoBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge) != null)
+    try
     {
-      if (SpriteDrawerInfoBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge).a()) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.j = 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameInterfaceProxy", 2, "get_open_key_back");
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.a = this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge;
-      SpriteDrawerInfoBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge).a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
+      paramEIPCResult = paramEIPCResult.data.getString("respData");
+      if ((ApolloGameInterfaceProxy.a(this.a) != null) && (ApolloGameInterfaceProxy.a(this.a).get() != null))
+      {
+        ApolloJSContext localApolloJSContext = (ApolloJSContext)ApolloGameInterfaceProxy.a(this.a).get();
+        if (localApolloJSContext != null) {
+          localApolloJSContext.a(0, "cs.on_get_open_key.local", paramEIPCResult);
+        }
+      }
+      else
+      {
+        QLog.e("ApolloGameInterfaceProxy", 1, "[send] can not get js context");
+        return;
+      }
+    }
+    catch (Throwable paramEIPCResult)
+    {
+      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
     }
   }
 }

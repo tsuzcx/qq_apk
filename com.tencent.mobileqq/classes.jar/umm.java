@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class umm
-  implements Runnable
+public final class umm
+  implements DialogInterface.OnClickListener
 {
-  public umm(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
-  
-  public void run()
-  {
-    this.a.c();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,30 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class scs
-  extends ContactBindObserver
+  implements Runnable
 {
-  public scs(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public scs(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    if (paramBoolean1)
-    {
-      int i = ContactSyncJumpActivity.a(this.a).c();
-      if ((i == 1) || (i == 5))
-      {
-        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
-        this.a.finish();
-      }
+    if (this.a.isFinishing()) {
+      return;
     }
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     scs
  * JD-Core Version:    0.7.0.1
  */

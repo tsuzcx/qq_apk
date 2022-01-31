@@ -1,24 +1,10 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class vnt
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public final class vnt
+  implements DialogInterface.OnClickListener
 {
-  public vnt(BaseTroopChatPie paramBaseTroopChatPie) {}
-  
-  public void onGlobalLayout()
-  {
-    if (this.a.O)
-    {
-      this.a.O = false;
-      BaseTroopChatPie.a(this.a).sendEmptyMessageDelayed(23, 100L);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseTroopChatPie", 2, " doOnCreate_initUI onGlobalLayout");
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

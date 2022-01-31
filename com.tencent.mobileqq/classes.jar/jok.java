@@ -1,53 +1,43 @@
-import android.os.Handler;
-import com.tencent.av.business.manager.report.VideoNodeManager;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
-import com.tencent.av.smallscreen.SmallScreenUtils;
-import com.tencent.common.app.AppInterface;
+import android.content.res.Resources;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
+import com.tencent.av.utils.TipsManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class jok
   implements Runnable
 {
-  public jok(BaseSmallScreenService paramBaseSmallScreenService) {}
+  public jok(SmallScreenMultiVideoControlUI paramSmallScreenMultiVideoControlUI) {}
   
   public void run()
   {
-    if (!this.a.d)
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
     {
-      boolean bool = SmallScreenUtils.c(((AppInterface)BaseSmallScreenService.a(this.a)).getApp());
-      if (bool != this.a.e)
+      this.a.jdField_a_of_type_ComTencentAvVideoController.f();
+      if (this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager != null)
       {
-        this.a.e = bool;
-        this.a.e();
+        TipsManager.c(103);
+        TipsManager.c(106);
+        this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(103);
+        this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(106);
+        str = this.a.jdField_a_of_type_AndroidContentResResources.getString(2131429419);
+        TipsManager.a(107, str);
+        this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(107, str, false);
       }
-      bool = SmallScreenUtils.e();
-      if (bool != this.a.b)
-      {
-        this.a.b = bool;
-        this.a.d();
-      }
-      bool = SmallScreenUtils.b(((AppInterface)BaseSmallScreenService.b(this.a)).getApp());
-      if (bool != this.a.c)
-      {
-        this.a.c = bool;
-        this.a.c();
-      }
-      bool = this.a.a();
-      if (bool != this.a.f)
-      {
-        this.a.f = bool;
-        this.a.f();
-        if (!bool) {
-          break label188;
-        }
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(this.a.jdField_a_of_type_Long, true, true);
+      this.a.a(true, false, true);
+      if (this.a.d == 2) {
+        ReportController.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
       }
     }
-    label188:
-    for (long l = 1L;; l = 2L)
+    while (!QLog.isColorLevel())
     {
-      VideoNodeManager.a(20, l);
-      this.a.a().postDelayed(this, 1000L);
+      String str;
       return;
     }
+    QLog.e("SmallScreenMultiVideoControlUI", 2, "RequestVideoTimeOutRunnable, mVideoController = null!!!");
   }
 }
 

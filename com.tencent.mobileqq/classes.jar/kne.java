@@ -1,18 +1,23 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
+import com.tencent.biz.troop.TroopMemberApiClient;
 
 public class kne
-  implements SoundPool.OnLoadCompleteListener
+  extends Handler
 {
-  public kne(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public kne(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    paramMessage = (Bundle)paramMessage.obj;
+    this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(17, paramMessage, this.a.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
   }
 }
 

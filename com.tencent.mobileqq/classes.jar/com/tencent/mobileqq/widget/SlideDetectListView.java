@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akin;
-import akio;
+import akww;
+import akwx;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -49,8 +49,8 @@ public class SlideDetectListView
     this.jdField_c_of_type_Int = 0;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new akin(this);
-    super.setOnScrollListener(new akio(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new akww(this);
+    super.setOnScrollListener(new akwx(this));
     this.f = (ViewConfiguration.getTouchSlop() + 2);
   }
   
@@ -174,7 +174,7 @@ public class SlideDetectListView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362723);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362741);
       if (localView != null) {
         localView.setVisibility(8);
       }
@@ -342,7 +342,7 @@ public class SlideDetectListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideDetectListView
  * JD-Core Version:    0.7.0.1
  */

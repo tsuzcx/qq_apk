@@ -145,7 +145,7 @@ public class URLDrawableHelper
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130838591);
+      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130838595);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -169,7 +169,7 @@ public class URLDrawableHelper
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130837616);
+      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130837619);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -209,7 +209,7 @@ public class URLDrawableHelper
       }
       paramString.setAutoDownload(true);
     }
-    boolean bool3 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433555), "qqsetting_auto_receive_pic_key", true);
+    boolean bool3 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433572), "qqsetting_auto_receive_pic_key", true);
     boolean bool1 = bool2;
     if (NetworkUtil.b(BaseApplication.getContext()) != 1) {
       if (!bool3) {
@@ -615,7 +615,7 @@ public class URLDrawableHelper
   public static boolean a(Context paramContext)
   {
     boolean bool1 = AppNetConnInfo.isMobileConn();
-    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433555), "qqsetting_auto_receive_pic_key", true);
+    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433572), "qqsetting_auto_receive_pic_key", true);
     return (bool1) && (!bool2);
   }
   
@@ -642,7 +642,7 @@ public class URLDrawableHelper
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130837614);
+      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130837617);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -768,7 +768,7 @@ public class URLDrawableHelper
   
   public static boolean b(Context paramContext)
   {
-    return SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433555), "qqsetting_auto_receive_pic_key", true);
+    return SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433572), "qqsetting_auto_receive_pic_key", true);
   }
   
   public static int c(boolean paramBoolean)
@@ -789,7 +789,7 @@ public class URLDrawableHelper
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130841788);
+      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130841825);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -818,7 +818,7 @@ public class URLDrawableHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.URLDrawableHelper
  * JD-Core Version:    0.7.0.1
  */

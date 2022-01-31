@@ -1,26 +1,13 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-public class wqc
+class wqc
   implements Runnable
 {
-  public wqc(BindNumberActivity paramBindNumberActivity) {}
+  wqc(wqb paramwqb, int paramInt) {}
   
   public void run()
   {
-    if (!this.a.isFinishing())
-    {
-      long l = SystemClock.uptimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
-      this.a.a.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
-      this.a.a.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      this.a.a.setSelection(this.a.a.getText().toString().length());
-    }
+    this.jdField_a_of_type_Wqb.a.a(36, 16, Integer.valueOf(this.jdField_a_of_type_Int));
   }
 }
 

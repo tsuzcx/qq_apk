@@ -1,35 +1,104 @@
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
-import java.util.ArrayList;
+import android.os.IBinder;
+import android.os.Parcel;
+import cooperation.qzone.plugin.OnQZonePluginInstallListner;
 
 public class amxa
-  implements AbsListView.OnScrollListener
+  implements OnQZonePluginInstallListner
 {
-  int jdField_a_of_type_Int = 0;
+  private IBinder a;
   
-  public amxa(FacePoiSearchUI paramFacePoiSearchUI) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public amxa(IBinder paramIBinder)
   {
-    if (paramInt == 1) {
-      InputMethodUtil.b(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.h);
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a.size())) {
-      return;
-    }
-    FacePoiSearchUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI);
+    this.a = paramIBinder;
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(String paramString, float paramFloat, long paramLong)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      localParcel1.writeFloat(paramFloat);
+      localParcel1.writeLong(paramLong);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt);
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
+      localParcel1.writeString(paramString);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxa
  * JD-Core Version:    0.7.0.1
  */

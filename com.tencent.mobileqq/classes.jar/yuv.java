@@ -1,22 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class yuv
-  implements Animation.AnimationListener
+public final class yuv
+  implements Runnable
 {
-  yuv(yuu paramyuu) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.a = null;
+    long l = System.currentTimeMillis();
+    if (!ApolloWebDataHandler.a()) {
+      ApolloWebDataHandler.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloWebDataHandler", 2, "apollo_client initInAsyncThread use:" + (System.currentTimeMillis() - l));
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

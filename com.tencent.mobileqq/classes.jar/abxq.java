@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import com.tencent.mobileqq.app.HotChatHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.dating.NearbyTransitActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-class abxq
-  implements WebProcessManager.WebProcessStartListener
+public class abxq
+  implements Runnable
 {
-  abxq(abxp paramabxp) {}
+  public abxq(NearbyTransitActivity paramNearbyTransitActivity, Common.WifiPOIInfo paramWifiPOIInfo) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {
-      this.a.a.a.a();
+    boolean bool = true;
+    HotChatHandler localHotChatHandler = (HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqDatingNearbyTransitActivity.app.a(35);
+    Common.WifiPOIInfo localWifiPOIInfo = this.jdField_a_of_type_TencentImOidbHotchatCommon$WifiPOIInfo;
+    if (this.jdField_a_of_type_TencentImOidbHotchatCommon$WifiPOIInfo.uint32_wifi_poi_type.get() == 1) {}
+    for (;;)
+    {
+      localHotChatHandler.a(localWifiPOIInfo, bool, 4, NearbyTransitActivity.c(this.jdField_a_of_type_ComTencentMobileqqDatingNearbyTransitActivity));
+      return;
+      bool = false;
     }
   }
 }

@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
-class svb
-  implements Runnable
+public class svb
+  implements View.OnTouchListener
 {
-  svb(sva paramsva) {}
+  public svb(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a != null)) {
-      Leba.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityLeba, this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a);
+    switch (paramMotionEvent.getAction())
+    {
     }
+    return false;
   }
 }
 

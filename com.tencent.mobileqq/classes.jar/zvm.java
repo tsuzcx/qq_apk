@@ -1,55 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoder.VideoEncoderCallback;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.dataline.mpfile.MpfileTaskRecord;
+import com.dataline.util.WaitEvent;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy;
 
 public class zvm
-  extends Handler
+  implements Runnable
 {
-  private WeakReference a;
+  public zvm(MpfileTaskProxy paramMpfileTaskProxy, MpfileTaskRecord paramMpfileTaskRecord, WaitEvent paramWaitEvent) {}
   
-  public zvm(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
+  public void run()
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramVideoEncoderCore);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a != null) {}
-    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
-    {
-      switch (paramMessage.what)
-      {
-      }
-      do
-      {
-        do
-        {
-          return;
-        } while (localVideoEncoderCore == null);
-        paramMessage = (Object[])paramMessage.obj;
-        try
-        {
-          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        }
-      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
-      VideoEncoderCore.a(localVideoEncoderCore).a(3);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyMpfileTaskProxy.a(this.jdField_a_of_type_ComDatalineMpfileMpfileTaskRecord, null);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zvm
  * JD-Core Version:    0.7.0.1
  */

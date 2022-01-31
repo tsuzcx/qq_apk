@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="191.0dip" android:weightSum="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel android:id="@id/panelLayout" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0032" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0"
-      xmlns:android="http://schemas.android.com/apk/res/android" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a261d" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0443" />
-</LinearLayout>

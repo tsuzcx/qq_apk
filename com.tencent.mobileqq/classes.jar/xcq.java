@@ -1,50 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.FlowControlDownloadStruct;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import java.util.LinkedList;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class xcq
-  extends Handler
+  implements Runnable
 {
-  private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
+  public xcq(QWalletConfigManager paramQWalletConfigManager, WeakReference paramWeakReference) {}
   
-  public xcq(PreloadManager paramPreloadManager, Looper paramLooper)
+  public void run()
   {
-    super(paramLooper);
-  }
-  
-  private void a()
-  {
-    PreloadManager.FlowControlDownloadStruct localFlowControlDownloadStruct = (PreloadManager.FlowControlDownloadStruct)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
-    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-    localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager, localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    QWalletConfigManager localQWalletConfigManager = (QWalletConfigManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQWalletConfigManager != null)
     {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_JavaUtilLinkedList.addLast((PreloadManager.FlowControlDownloadStruct)paramMessage.obj);
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Boolean = true;
-      sendEmptyMessage(2);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletConfigManager", 2, "getAllConfigAgain");
+      }
+      localQWalletConfigManager.a(QWalletConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager));
     }
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
-    {
-      a();
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
   }
 }
 

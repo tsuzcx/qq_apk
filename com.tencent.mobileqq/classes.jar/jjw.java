@@ -1,33 +1,20 @@
-import android.content.res.Resources;
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.opengl.GLES20;
+import com.tencent.av.opengl.filter.qqavimage.specialeffects.QQAVImageWrongEraseFilter;
+import java.nio.FloatBuffer;
 
 public class jjw
-  implements WXShareHelper.WXShareListener
+  implements Runnable
 {
-  public jjw(GuildMultiActivity paramGuildMultiActivity) {}
+  public jjw(QQAVImageWrongEraseFilter paramQQAVImageWrongEraseFilter, int paramInt1, int paramInt2, float[] paramArrayOfFloat) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.a.b == null) || (!this.a.b.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(this.a, 1, 2131435286, 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
-      return;
-    }
-    QQToast.a(this.a, 2, 2131435285, 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+    GLES20.glUniform4fv(this.jdField_a_of_type_Int, this.b, FloatBuffer.wrap(this.jdField_a_of_type_ArrayOfFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     jjw
  * JD-Core Version:    0.7.0.1
  */

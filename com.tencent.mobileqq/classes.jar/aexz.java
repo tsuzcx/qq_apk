@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.ReportCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import mqq.os.MqqHandler;
 
 public class aexz
-  implements NearbyMomentProtocol.ReportCallback
+  implements Runnable
 {
-  public aexz(NearbyMomentManager paramNearbyMomentManager, NearbyMomentManager.ReportCallback paramReportCallback) {}
+  long jdField_a_of_type_Long;
   
-  public void a(boolean paramBoolean)
+  public aexz(ShortVideoCommentsView paramShortVideoCommentsView, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$ReportCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$ReportCallback.a(paramBoolean);
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void run()
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L) {
+      return;
     }
+    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setFocusable(true);
+    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setFocusableInTouchMode(true);
+    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).requestFocus();
+    ThreadManager.getUIHandler().postDelayed(this, 100L);
   }
 }
 

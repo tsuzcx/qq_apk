@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aizq;
+import ajnu;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.support.v4.util.MQLruCache;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class RollangleImageView$ImageCache
 {
   private static ImageCache jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView$ImageCache;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aizq(this, BaseApplication.getContext().getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new ajnu(this, BaseApplication.getContext().getMainLooper());
   private LinkedList jdField_a_of_type_JavaUtilLinkedList;
   public boolean a;
   
@@ -125,10 +125,10 @@ public class RollangleImageView$ImageCache
     //   60: getfield 39	com/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
     //   63: invokevirtual 80	java/util/LinkedList:isEmpty	()Z
     //   66: ifeq +17 -> 83
-    //   69: new 82	aizp
+    //   69: new 82	ajnt
     //   72: dup
     //   73: aload_0
-    //   74: invokespecial 85	aizp:<init>	(Lcom/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache;)V
+    //   74: invokespecial 85	ajnt:<init>	(Lcom/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache;)V
     //   77: iconst_5
     //   78: aconst_null
     //   79: iconst_1
@@ -172,7 +172,7 @@ public class RollangleImageView$ImageCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache
  * JD-Core Version:    0.7.0.1
  */

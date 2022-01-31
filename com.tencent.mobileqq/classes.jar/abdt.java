@@ -1,20 +1,27 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.binhai.BinHaiOpenRedPackDialog;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 
-public class abdt
-  implements Runnable
+class abdt
+  implements View.OnClickListener
 {
-  public abdt(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog) {}
+  abdt(abds paramabds) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.b.setVisibility(0);
-    this.a.b.startAnimation(this.a.a);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
+    }
+    ShopScanActivity.d(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
+    ShopScanActivity.c(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
+    this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.c.setOnClickListener(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abdt
  * JD-Core Version:    0.7.0.1
  */

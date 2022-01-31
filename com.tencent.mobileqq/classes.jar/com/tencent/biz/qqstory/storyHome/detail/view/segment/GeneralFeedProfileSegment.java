@@ -52,7 +52,7 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nuf;
+import nvt;
 
 public class GeneralFeedProfileSegment
   extends SegmentView
@@ -115,15 +115,15 @@ public class GeneralFeedProfileSegment
       SLog.e("Q.qqstory.detail.GeneralFeedProfileSegment", "bind general view failed because it's invalidate date.");
       return paramBaseViewHolder.a();
     }
-    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131371514);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131371528);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131362725);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371531);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371521);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371529);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371480);
-    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramBaseViewHolder.a(2131371535);
-    StoryQIMBadgeView localStoryQIMBadgeView = (StoryQIMBadgeView)paramBaseViewHolder.a(2131371516);
+    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131371680);
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131371694);
+    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131362743);
+    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371697);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371687);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371695);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371646);
+    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramBaseViewHolder.a(2131371701);
+    StoryQIMBadgeView localStoryQIMBadgeView = (StoryQIMBadgeView)paramBaseViewHolder.a(2131371682);
     ((RelativeLayout)localObject).setOnClickListener(this);
     UIUtils.b(localImageView, localQQUserUIItem.headUrl, 68, 68, ImageUtil.a(1), "QQStory_main");
     localStoryQIMBadgeView.setForceRefresh(true);
@@ -183,12 +183,12 @@ public class GeneralFeedProfileSegment
   
   private void a(List paramList, int paramInt) {}
   
-  public void C_()
+  public void H_()
   {
     a(a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem));
   }
   
-  public void D_() {}
+  public void I_() {}
   
   public int a()
   {
@@ -208,7 +208,7 @@ public class GeneralFeedProfileSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970657, paramViewGroup, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970703, paramViewGroup, false));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a("adapter", null);
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
   }
@@ -256,9 +256,9 @@ public class GeneralFeedProfileSegment
       paramRelativeLayout.setVisibility(0);
       paramStoryHomeHorizontalListView.setVisibility(8);
       paramRelativeLayout = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().get(0);
-      paramStoryHomeHorizontalListView = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131371481);
-      TextView localTextView = (TextView)paramBaseViewHolder.a(2131371482);
-      paramBaseViewHolder = (TextView)paramBaseViewHolder.a(2131371483);
+      paramStoryHomeHorizontalListView = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131371647);
+      TextView localTextView = (TextView)paramBaseViewHolder.a(2131371648);
+      paramBaseViewHolder = (TextView)paramBaseViewHolder.a(2131371649);
       paramStoryHomeHorizontalListView.setItemData(localVideoListFeedItem, paramRelativeLayout, paramInt);
       paramStoryHomeHorizontalListView.setStoryCoverClickListener(this);
       FeedSegment.a(paramRelativeLayout, paramStoryHomeHorizontalListView, "QQStory_feed");
@@ -295,8 +295,9 @@ public class GeneralFeedProfileSegment
     {
       paramRelativeLayout = new FeedItemThumbAdapter(this.jdField_a_of_type_AndroidContentContext, (FragmentActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, PlayModeUtils.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
       paramBaseViewHolder.a("adapter", paramRelativeLayout);
-      paramStoryHomeHorizontalListView.setDividerWidth(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131560262));
+      paramStoryHomeHorizontalListView.setDividerWidth(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131560280));
       paramStoryHomeHorizontalListView.setAdapter(paramRelativeLayout);
+      paramRelativeLayout.a(paramRelativeLayout);
     }
     for (paramBaseViewHolder = paramRelativeLayout;; paramBaseViewHolder = paramRelativeLayout)
     {
@@ -324,7 +325,7 @@ public class GeneralFeedProfileSegment
           paramStoryHomeHorizontalListView.setOnLoadMoreListener(this);
           paramStoryHomeHorizontalListView.setOnScrollChangeListener(this);
           paramStoryHomeHorizontalListView.setOnOverScrollRightListener(this);
-          paramStoryHomeHorizontalListView.setOnScrollStateChangedListener(new nuf(this, paramStoryHomeHorizontalListView, paramBaseViewHolder));
+          paramStoryHomeHorizontalListView.setOnScrollStateChangedListener(new nvt(this, paramStoryHomeHorizontalListView, paramBaseViewHolder));
           return;
         }
         paramInt += 1;
@@ -379,8 +380,8 @@ public class GeneralFeedProfileSegment
       paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 13.0F);
       int i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
       paramTextView.setText(paramString);
-      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494207));
-      paramTextView.setBackgroundResource(2130843371);
+      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494214));
+      paramTextView.setBackgroundResource(2130843489);
       paramTextView.setPadding(paramInt, i, paramInt, i);
       paramTextView.setVisibility(0);
       paramTextView.setOnClickListener(this);
@@ -413,8 +414,8 @@ public class GeneralFeedProfileSegment
   
   protected void a(List paramList, BaseViewHolder paramBaseViewHolder)
   {
-    LinearLayout localLinearLayout = (LinearLayout)paramBaseViewHolder.a(2131371533);
-    paramBaseViewHolder = (TextView)paramBaseViewHolder.a(2131371534);
+    LinearLayout localLinearLayout = (LinearLayout)paramBaseViewHolder.a(2131371699);
+    paramBaseViewHolder = (TextView)paramBaseViewHolder.a(2131371700);
     if ((paramList == null) || (paramList.size() < 1))
     {
       localLinearLayout.setVisibility(8);
@@ -437,7 +438,7 @@ public class GeneralFeedProfileSegment
       {
         localLinearLayout.setVisibility(0);
         localLinearLayout.setOnClickListener(this);
-        paramBaseViewHolder.setText(StoryApi.a(2131432078, new Object[] { Integer.valueOf(i) }));
+        paramBaseViewHolder.setText(StoryApi.a(2131432095, new Object[] { Integer.valueOf(i) }));
         return;
       }
       localLinearLayout.setVisibility(8);
@@ -462,6 +463,8 @@ public class GeneralFeedProfileSegment
     }
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a().getMeasuredHeight();
   }
+  
+  public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}
   
   public void onClick(View paramView)
   {

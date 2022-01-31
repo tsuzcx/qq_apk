@@ -1,18 +1,33 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.qwallet.FrameAnimHelper;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import Wallet.WalletSkinRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class xax
-  implements Runnable
+public class xax
+  implements BusinessObserver
 {
-  xax(xaw paramxaw, Object paramObject) {}
+  public xax(QWalletSkinHandler paramQWalletSkinHandler, QWalletSkinHandler.SkinListener paramSkinListener) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = (int)this.jdField_a_of_type_Xaw.a.a.getResources().getDimension(2131560154);
-    ThemeHbFragment.a(this.jdField_a_of_type_Xaw.a, new FrameAnimHelper(this.jdField_a_of_type_Xaw.a.a, ThemeHbFragment.a(this.jdField_a_of_type_Xaw.a), i, true, null));
-    ThemeHbFragment.a(this.jdField_a_of_type_Xaw.a).a((String)this.jdField_a_of_type_JavaLangObject, false);
+    paramBundle = (WalletSkinRsp)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletSkinHandler", 2, "updateCurWalletSkin get rsp:" + paramBundle + "|" + paramBoolean);
+    }
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      if (paramBundle.status == 0)
+      {
+        QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, 0);
+        QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener);
+      return;
+    }
+    QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
   }
 }
 

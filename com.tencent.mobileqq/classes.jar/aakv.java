@@ -1,34 +1,18 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.ark.ArkAiBubbleView;
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
 
-public class aakv
-  implements Runnable
+public final class aakv
+  implements Parcelable.Creator
 {
-  public aakv(ArkAiBubbleView paramArkAiBubbleView) {}
-  
-  public void run()
+  public ArLBSActivity a(Parcel paramParcel)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ark.ai", 2, String.format("ArkAiBubbleView.mScrollBar == null: %h", new Object[] { this.a }));
-      }
-      this.a.c();
-      return;
-    }
-    this.a.b = true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar.b())
-    {
-      this.a.c();
-      return;
-    }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setAnimationListener(this.a);
-    this.a.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+    return new ArLBSActivity(paramParcel);
+  }
+  
+  public ArLBSActivity[] a(int paramInt)
+  {
+    return new ArLBSActivity[paramInt];
   }
 }
 

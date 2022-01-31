@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
 public class suf
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public suf(Leba paramLeba, LebaViewItem paramLebaViewItem) {}
+  public suf(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getEntityManagerFactory().createEntityManager();
-    ResourcePluginInfo.persistOrReplace(localEntityManager, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a);
-    localEntityManager.a();
+    paramDialogInterface.dismiss();
   }
 }
 

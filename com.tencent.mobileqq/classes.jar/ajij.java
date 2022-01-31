@@ -1,39 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool.GetChoiceListCallback;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteEvaluateViewHolder;
 
 public class ajij
-  extends DownloadListener
+  implements URLDrawable.DownloadListener
 {
-  public ajij(GroupCatalogTool paramGroupCatalogTool, File paramFile, String paramString, GroupCatalogTool.GetChoiceListCallback paramGetChoiceListCallback) {}
+  public ajij(ReciteEvaluateViewHolder paramReciteEvaluateViewHolder) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
   {
-    if ((paramDownloadTask.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool.b(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString) != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool.a(BaseApplicationImpl.getContext())))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool.a(BaseApplicationImpl.getContext(), System.currentTimeMillis());
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool$GetChoiceListCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool$GetChoiceListCallback.a(true);
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool$GetChoiceListCallback != null))
-      {
-        QLog.e("GroupCatalogTool", 1, "getChoiceListFromServer failed!");
-        this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool$GetChoiceListCallback.a(false);
-      }
-      return;
-    }
+    ReciteEvaluateViewHolder.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajij
  * JD-Core Version:    0.7.0.1
  */

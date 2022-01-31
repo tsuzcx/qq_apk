@@ -1,12 +1,12 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.view.View;
+import android.widget.ImageView;
 
-public abstract interface ansk
+class ansk
 {
-  public abstract void a(int paramInt);
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
-  
-  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  ansk(ansj paramansj) {}
 }
 
 

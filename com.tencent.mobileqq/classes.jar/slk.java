@@ -1,31 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.campuscircle.CampusCircleObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class slk
-  extends CampusCircleObserver
+  implements View.OnClickListener
 {
-  public slk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public slk(EditActivity paramEditActivity) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle, Card paramCard)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramCard != null) && (paramCard.uin != null) && (paramCard.uin.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-      this.a.runOnUiThread(new sll(this));
+    this.a.d();
+    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
+    Intent localIntent = this.a.getIntent();
+    localIntent.putExtra("result", paramView);
+    if (this.a.jdField_a_of_type_Int == 103) {
+      localIntent.putExtra("hasChange", EditActivity.b(this.a));
     }
-  }
-  
-  public void a(boolean paramBoolean, Card paramCard)
-  {
-    if ((paramBoolean) && (paramCard != null) && (paramCard.uin != null) && (paramCard.uin.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-      this.a.runOnUiThread(new slm(this));
-    }
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 

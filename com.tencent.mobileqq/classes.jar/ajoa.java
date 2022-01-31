@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopAppMgr;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-public final class ajoa
-  implements Runnable
+public class ajoa
+  extends ThreadLocal
 {
-  public ajoa(String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public ajoa(TroopAppMgr paramTroopAppMgr) {}
   
-  public void run()
+  protected SimpleDateFormat a()
   {
-    try
-    {
-      String str = this.jdField_a_of_type_JavaLangString;
-      int i = this.jdField_a_of_type_Int;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      StatisticConstants.a(new String[] { str }, i, false, true, -1, localQQAppInterface);
-      return;
-    }
-    catch (Exception localException) {}
+    return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajoa
  * JD-Core Version:    0.7.0.1
  */

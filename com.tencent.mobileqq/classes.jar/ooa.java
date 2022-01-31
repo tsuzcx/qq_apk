@@ -1,28 +1,15 @@
-import android.os.Handler;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.view.AnimationPoint;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.troop.model.TroopStorySingleVideoSynchronizer;
+import java.util.Collections;
 
 public class ooa
   implements Runnable
 {
-  public ooa(AnimationPoint paramAnimationPoint) {}
+  public ooa(TroopStorySingleVideoSynchronizer paramTroopStorySingleVideoSynchronizer, StoryVideoItem paramStoryVideoItem) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if ((System.currentTimeMillis() - this.a.c < this.a.b) || (this.a.b < 0L)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 30L);
-    }
-    for (;;)
-    {
-      this.a.invalidate();
-      return;
-      if (this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) {
-        this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener.onAnimationEnd(null);
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStorySingleVideoSynchronizer.a(Collections.singletonList(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem), true);
   }
 }
 

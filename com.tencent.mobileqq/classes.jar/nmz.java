@@ -1,21 +1,39 @@
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class nmz
-  implements Runnable
+public final class nmz
+  implements ActionSheet.OnButtonClickListener
 {
-  nmz(nmy paramnmy, TVKPreloader.PreloadItem paramPreloadItem) {}
+  public nmz(QQUserUIItem paramQQUserUIItem, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Iterator localIterator = TVKPreloader.a().iterator();
-    while (localIterator.hasNext()) {
-      ((TVKPreloader.PreloadListener)localIterator.next()).b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem);
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq)) {
+        new ReportEvilToXinanHandler().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
+      }
+      break;
     }
-    TVKPreloader.a(true);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      SLog.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
+    }
   }
 }
 

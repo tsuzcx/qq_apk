@@ -1,40 +1,25 @@
-import android.media.MediaPlayer;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.RobotPanelItemData;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-class ajtb
-  implements Runnable
+public class ajtb
+  implements TroopRobotManager.Callback
 {
-  ajtb(ajta paramajta, int paramInt1, int paramInt2) {}
+  public ajtb(TroopAIORobotPanel paramTroopAIORobotPanel, TroopAIORobotPanel.RobotPanelItemData paramRobotPanelItemData) {}
   
-  public void run()
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    try
-    {
-      if (this.jdField_a_of_type_Ajta.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-        bool1 = this.jdField_a_of_type_Ajta.a.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
-      }
-      if ((this.jdField_a_of_type_Ajta.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (bool1)) {
-        this.jdField_a_of_type_Ajta.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(this.jdField_a_of_type_Int * 100 / this.b);
-      }
+    if (paramInt == 0) {
       return;
     }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_Ajta.a.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-        this.jdField_a_of_type_Ajta.a.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-        bool1 = bool2;
-      }
-    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotPanel.getContext(), 1, "操作失败" + "", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajtb
  * JD-Core Version:    0.7.0.1
  */

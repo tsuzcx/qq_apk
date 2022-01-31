@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.app.UniformDownload;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetFileInfoCallBack;
 
-class acum
-  implements Runnable
+public class acum
+  implements UniformDownloadUtil.GetFileInfoCallBack
 {
-  acum(acul paramacul) {}
+  public acum(UniformDownload paramUniformDownload, Bundle paramBundle, String paramString, long paramLong1, long paramLong2) {}
   
-  public void run()
+  public void a(String paramString, long paramLong)
   {
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.b(MusicFilePresenter.a(this.a.a))))
-    {
-      int i = this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.a();
-      this.a.a.b(i);
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(i);
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "nofilename.x";
     }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.runOnUiThread(new acun(this, str, paramLong));
   }
 }
 

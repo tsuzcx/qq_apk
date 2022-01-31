@@ -26,6 +26,7 @@ public class UserEntry
   @unique
   public String unionId;
   public int videoCount;
+  public String wsSchema;
   
   public static String getUserSelectionByQQ()
   {

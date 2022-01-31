@@ -14,7 +14,7 @@ public class DebugPollLayoutActivity
     super.onCreate(paramBundle);
     setContentView(2130968604);
     paramBundle = PollWidgetUtils.a(this, 1, 1, null);
-    ((FrameLayout)findViewById(2131362823)).addView(paramBundle.a());
+    ((FrameLayout)findViewById(2131362841)).addView(paramBundle.a());
   }
 }
 

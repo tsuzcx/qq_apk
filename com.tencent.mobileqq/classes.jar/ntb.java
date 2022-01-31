@@ -1,48 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
-import com.tencent.biz.qqstory.network.request.GetFeedFeatureRequest;
-import com.tencent.biz.qqstory.network.response.GetFeedFeatureResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter.ItemHolder;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnCheckBoxClickListener;
 
-class ntb
-  implements CmdTaskManger.CommandCallback
+public class ntb
+  implements View.OnClickListener
 {
-  ntb(nta paramnta, JobContext paramJobContext, String paramString) {}
+  public ntb(StoryPickerHorizontalListAdapter.ItemHolder paramItemHolder) {}
   
-  public void a(@NonNull GetFeedFeatureRequest paramGetFeedFeatureRequest, @Nullable GetFeedFeatureResponse paramGetFeedFeatureResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
-      return;
-    }
-    if ((paramGetFeedFeatureResponse == null) || (paramErrorMessage.isFail()))
-    {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
-      nta.a(this.jdField_a_of_type_Nta, paramErrorMessage);
-      return;
-    }
-    if (paramGetFeedFeatureResponse.a != null)
-    {
-      paramGetFeedFeatureRequest = paramGetFeedFeatureResponse.a.iterator();
-      do
-      {
-        if (!paramGetFeedFeatureRequest.hasNext()) {
-          break;
-        }
-        paramGetFeedFeatureResponse = (FeedFeatureItem)paramGetFeedFeatureRequest.next();
-      } while (!paramGetFeedFeatureResponse.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
-    }
-    for (int i = paramGetFeedFeatureResponse.c;; i = 0)
-    {
-      nta.a(this.jdField_a_of_type_Nta, Integer.valueOf(i));
-      return;
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (this.a.a.a != null) {
+      this.a.a.a.a(paramView, this.a.a.a(i));
     }
   }
 }

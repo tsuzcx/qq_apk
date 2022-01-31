@@ -1,18 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.ark.ArkAiAppCenter;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class aaub
-  implements DialogInterface.OnDismissListener
+public final class aaub
+  implements Runnable
 {
-  public aaub(ARMapActivity paramARMapActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (ARMapActivity.i(this.a)) {
-      this.a.finish();
+    for (;;)
+    {
+      try
+      {
+        if ("open".equals(ArkAiAppCenter.b()))
+        {
+          bool = true;
+          ark.SetArkHttpsSwitch(bool);
+          if (bool)
+          {
+            ArkAppCenter.b("SetArkHttpsSwitch", "ArkHttpsSwitch is Opened ");
+            return;
+          }
+          ArkAppCenter.b("SetArkHttpsSwitch", "ArkHttpsSwitch is Closed ");
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.w("ArkApp", 1, "SetArkHttpsSwitch is failed and message=" + localException.getMessage());
+        return;
+      }
+      boolean bool = false;
     }
-    ARMapActivity.a(this.a, null);
   }
 }
 

@@ -1,26 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.Doraemon.AppInfo;
+import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager;
+import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.OnGetAppInfo;
 
 public class ree
-  implements View.OnClickListener
+  implements DefaultDoraemonAppInfoHelper.OnGetAppInfo
 {
-  public ree(AccountManageActivity paramAccountManageActivity) {}
+  public ree(DefaultDoraemonAPIManager paramDefaultDoraemonAPIManager) {}
   
-  public void onClick(View paramView)
+  public void a(AppInfo paramAppInfo)
   {
-    if (!PhoneNumLoginImpl.a().a(this.a.app, this.a)) {}
-    while ((this.a.b != null) && (this.a.b.isShowing())) {
+    if (paramAppInfo != null)
+    {
+      DefaultDoraemonAPIManager.a(this.a, paramAppInfo);
+      DefaultDoraemonAPIManager.a(this.a, true);
       return;
     }
-    AccountManageActivity.a(this.a);
+    DefaultDoraemonAPIManager.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ree
  * JD-Core Version:    0.7.0.1
  */

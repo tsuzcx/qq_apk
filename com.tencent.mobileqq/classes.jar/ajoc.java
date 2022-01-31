@@ -1,71 +1,54 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ReportHandler;
-import com.tencent.mobileqq.data.PushBannerReportLog;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.mobileqq.troop.utils.TroopAppMgr;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class ajoc
-  extends Thread
+  implements Runnable
 {
-  public ajoc(JumpAction paramJumpAction) {}
+  public ajoc(TroopAppMgr paramTroopAppMgr, ArrayList paramArrayList, EntityManager paramEntityManager, int paramInt) {}
   
   public void run()
   {
-    Object localObject1 = (String)JumpAction.a(this.a).get("version");
-    Object localObject3 = ReportHandler.a(this.a.b, this.a.c, (String)localObject1, "");
-    localObject1 = JumpAction.a(this.a).getEntityManagerFactory().createEntityManager();
-    Object localObject4 = ((EntityManager)localObject1).a(PushBannerReportLog.class);
-    Object localObject2;
-    if ((localObject4 != null) && (((List)localObject4).size() >= 9))
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put(localObject3, Integer.valueOf(1));
-      localObject3 = ((List)localObject4).iterator();
-      while (((Iterator)localObject3).hasNext())
+      Object localObject1 = TableBuilder.b(TroopAIOAppInfo.class);
+      Object localObject2;
+      if (QLog.isColorLevel())
       {
-        localObject4 = (PushBannerReportLog)((Iterator)localObject3).next();
-        if (((HashMap)localObject2).containsKey(((PushBannerReportLog)localObject4).getLog())) {
-          ((HashMap)localObject2).put(((PushBannerReportLog)localObject4).getLog(), Integer.valueOf(((Integer)((HashMap)localObject2).get(((PushBannerReportLog)localObject4).getLog())).intValue() + 1));
-        } else {
-          ((HashMap)localObject2).put(((PushBannerReportLog)localObject4).getLog(), Integer.valueOf(1));
-        }
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "before delete type:" + this.jdField_a_of_type_Int, (List)localObject2);
       }
-      localObject3 = new ArrayList();
-      localObject4 = ((HashMap)localObject2).entrySet().iterator();
-      while (((Iterator)localObject4).hasNext())
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a((String)localObject1, "groupType=?", new String[] { String.valueOf(this.jdField_a_of_type_Int) });
+      if (QLog.isColorLevel())
       {
-        Object localObject5 = (Map.Entry)((Iterator)localObject4).next();
-        String str = (String)((Map.Entry)localObject5).getKey();
-        localObject5 = (Integer)((Map.Entry)localObject5).getValue();
-        ((List)localObject3).add(str + "|" + localObject5);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "before update after delete type:" + this.jdField_a_of_type_Int, (List)localObject1);
       }
-      localObject4 = JumpAction.a(this.a);
-      JumpAction.a(this.a);
-      ((ReportHandler)((QQAppInterface)localObject4).a(5)).a((String[])((List)localObject3).toArray(new String[((List)localObject3).size()]));
-      ((EntityManager)localObject1).a(PushBannerReportLog.class);
-      ((HashMap)localObject2).clear();
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (TroopAIOAppInfo)((Iterator)localObject1).next();
+        ((TroopAIOAppInfo)localObject2).setStatus(1000);
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (Entity)localObject2);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "after update type:" + this.jdField_a_of_type_Int, (List)localObject1);
+      }
     }
-    for (;;)
-    {
-      ((EntityManager)localObject1).a();
-      return;
-      localObject2 = new PushBannerReportLog();
-      ((PushBannerReportLog)localObject2).setLog((String)localObject3);
-      ((EntityManager)localObject1).a((Entity)localObject2);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajoc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,33 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter.WeiyunCallback;
+import mqq.os.MqqHandler;
 
 public class anhj
-  implements LbsManager.LbsUpdateListener
+  implements WeiYunLogicCenter.WeiyunCallback
 {
-  public anhj(DoodleEmojiManager paramDoodleEmojiManager) {}
+  public MqqHandler a;
   
-  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
+  public anhj(MqqHandler paramMqqHandler)
   {
-    SLog.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramBasicLocation != null) && (this.a.a != null)) {
-      this.a.a(paramBasicLocation.b, paramBasicLocation.a, this.a.a);
+    this.a = paramMqqHandler;
+  }
+  
+  public void a()
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessageDelayed(100, 1500L);
     }
-    for (;;)
-    {
-      paramBasicLocation = (LbsManager)SuperManager.a(9);
-      if (paramBasicLocation != null) {
-        paramBasicLocation.b(this);
-      }
-      this.a.a = null;
-      return;
-      SLog.e("DoodleEmojiManager", "onLbsUpdate failed.");
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (this.a != null) {
+      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhj
  * JD-Core Version:    0.7.0.1
  */

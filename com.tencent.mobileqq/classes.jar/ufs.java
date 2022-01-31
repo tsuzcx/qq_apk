@@ -1,25 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class ufs
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  public ufs(ActivateFriendActivity paramActivateFriendActivity) {}
+  public ufs(UpgradeActivity paramUpgradeActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (this.a.a != null) {
-        this.a.a.d();
-      }
-    }
+    this.a.finish();
   }
 }
 

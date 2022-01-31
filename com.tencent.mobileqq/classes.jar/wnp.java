@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.activity.contacts.adapter.PhoneContactAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
 
 class wnp
   implements Runnable
 {
-  wnp(wnn paramwnn, int paramInt, Object paramObject) {}
+  wnp(wno paramwno, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wnn.a.a(39, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject);
+    PhoneContactFragment.a(this.jdField_a_of_type_Wno.a, this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_Wno.a.a != null) {
+      this.jdField_a_of_type_Wno.a.a.notifyDataSetChanged();
+    }
   }
 }
 

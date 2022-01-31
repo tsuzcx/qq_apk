@@ -1,60 +1,75 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.view.widget.StorySwipeTextViewMenuBuilder;
-import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import android.opengl.Matrix;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWVideoRecorder;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class olu
-  extends StorySwipeTextViewMenuBuilder
+  implements HWEncodeListener
 {
-  public View a(Context paramContext, View paramView, SwipRightMenuBuilder.SwipItemBaseHolder paramSwipItemBaseHolder, int paramInt)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private HWVideoRecorder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder;
+  private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  private int b;
+  private int c;
+  
+  public olu(int paramInt, long paramLong, QQFilterRenderManager paramQQFilterRenderManager, HWVideoRecorder paramHWVideoRecorder)
   {
-    paramSwipItemBaseHolder.a = new SwipRightMenuBuilder.SwipRightMenuItem[this.b];
-    paramInt = 0;
-    while (paramInt < this.b)
-    {
-      paramSwipItemBaseHolder.a[paramInt] = new SwipRightMenuBuilder.SwipRightMenuItem();
-      paramSwipItemBaseHolder.a[paramInt].jdField_a_of_type_Int = -1;
-      paramSwipItemBaseHolder.a[paramInt].c = 0;
-      paramSwipItemBaseHolder.a[paramInt].jdField_a_of_type_AndroidViewView = null;
-      paramInt += 1;
-    }
-    paramSwipItemBaseHolder.f = paramView.findViewById(2131363383);
-    return paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = paramQQFilterRenderManager;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder = paramHWVideoRecorder;
+    this.jdField_a_of_type_ArrayOfFloat = new float[16];
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, 1.0F, -1.0F, 1.0F);
   }
   
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  public void a()
   {
-    paramArrayOfSwipRightMenuItem[0].jdField_a_of_type_Int = 0;
-    paramArrayOfSwipRightMenuItem[0].b = 0;
-    paramArrayOfSwipRightMenuItem[1].jdField_a_of_type_Int = -1;
-    paramArrayOfSwipRightMenuItem[1].b = -1;
-    String str = QQStoryContext.a().a();
-    if ((this.a.a) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
-    {
-      paramArrayOfSwipRightMenuItem[1].jdField_a_of_type_Int = 1;
-      paramArrayOfSwipRightMenuItem[1].b = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowPhotoListManager", 2, "onEncodeStart");
+    }
+    this.b = 0;
+    this.c = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(-1);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.e(this.b);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.a(3553, this.c, null, this.jdField_a_of_type_ArrayOfFloat, this.b * this.jdField_a_of_type_Long * 1000000L);
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowPhotoListManager", 2, "onEncodeFinish, filePath:" + paramString);
     }
   }
   
-  protected void a(ViewGroup paramViewGroup, View paramView, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, int paramInt)
+  public void a_(int paramInt, Throwable paramThrowable)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    if (localLayoutParams == null) {
-      paramView.setLayoutParams(new LinearLayout.LayoutParams(paramSwipRightMenuItem.c, paramSwipRightMenuItem.d));
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowPhotoListManager", 2, "onEncodeError");
     }
-    for (;;)
+  }
+  
+  public void b()
+  {
+    this.b += 1;
+    if (this.b >= this.jdField_a_of_type_Int)
     {
-      paramViewGroup.addView(paramView, paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.c();
       return;
-      localLayoutParams.width = paramSwipRightMenuItem.c;
-      localLayoutParams.height = paramSwipRightMenuItem.d;
     }
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.e(this.b);
+    this.c = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(-1);
+    if (SlideShowPhotoListManager.a)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.c();
+      return;
+    }
+    long l1 = this.b;
+    long l2 = this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.a(3553, this.c, null, this.jdField_a_of_type_ArrayOfFloat, l1 * l2);
   }
 }
 

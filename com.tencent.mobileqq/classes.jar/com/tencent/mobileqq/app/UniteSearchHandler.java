@@ -59,7 +59,7 @@ import pb.unite.search.DynamicTabSearch.RspBody;
 import pb.unite.search.UniteSearch.ReqBody;
 import pb.unite.search.UniteSearch.RspBody;
 import pb.unite.search.UniteSearch.TabItemGroup;
-import zma;
+import zpg;
 
 public class UniteSearchHandler
   extends BusinessHandler
@@ -123,7 +123,7 @@ public class UniteSearchHandler
     }
     if (paramInt == 1000)
     {
-      ThreadManager.post(new zma(this, paramString1, paramObject), 5, null, true);
+      ThreadManager.post(new zpg(this, paramString1, paramObject), 5, null, true);
       BaseApplication.getContext().getSharedPreferences(paramString1, 0).edit().putString(paramString2, System.currentTimeMillis() + "").commit();
     }
     while (!QLog.isColorLevel()) {
@@ -396,7 +396,7 @@ public class UniteSearchHandler
     }
     i = localRspBody.trigger_netword_num.get();
     if (i >= 0) {
-      SharedPreUtils.v(BaseApplicationImpl.getContext(), i);
+      SharedPreUtils.u(BaseApplicationImpl.getContext(), i);
     }
     paramObject = localRspBody.item_groups.get();
     paramToServiceMsg = new NetBaseParser().a(new Object[] { str1, paramObject, Integer.valueOf(paramToServiceMsg.extraData.getInt("fromType")) });
@@ -599,7 +599,7 @@ public class UniteSearchHandler
       return;
     }
     DynamicContentRecommend.ReqBody localReqBody = new DynamicContentRecommend.ReqBody();
-    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
     localReqBody.business.set(128);
     ToServiceMsg localToServiceMsg = a("DynamicScRecommend.1");
     localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
@@ -621,7 +621,7 @@ public class UniteSearchHandler
       return;
     }
     paramQQAppInterface = new DynamicDiscovery.ReqBody();
-    paramQQAppInterface.version.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+    paramQQAppInterface.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
     paramQQAppInterface.business.set(128);
     paramQQAppInterface.from_type.set(6);
     ToServiceMsg localToServiceMsg = a("kandian_search_hot_word.1");
@@ -643,7 +643,7 @@ public class UniteSearchHandler
       return;
     }
     paramQQAppInterface = new DynamicDiscovery.ReqBody();
-    paramQQAppInterface.version.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+    paramQQAppInterface.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
     paramQQAppInterface.business.set(128);
     paramQQAppInterface.from_type.set(paramInt);
     ToServiceMsg localToServiceMsg = a("DynamicScDiscovery.1");
@@ -792,7 +792,7 @@ public class UniteSearchHandler
       return;
     }
     localReqBody.key_word.set(ByteStringMicro.copyFromUtf8(paramString));
-    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
     localReqBody.business.set(128);
     localReqBody.need_flag.set(paramInt);
     ToServiceMsg localToServiceMsg = a("dynamic_association_word.1");
@@ -829,7 +829,7 @@ public class UniteSearchHandler
         i = paramInt2 - 1;
       }
       localReqBody.key_word.set(ByteStringMicro.copyFromUtf8(paramString1));
-      localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+      localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
       if (paramBoolean2) {
         localReqBody.client_has_people_and_qun.set(1);
       }
@@ -947,7 +947,7 @@ public class UniteSearchHandler
       return;
     }
     localReqBody.key_word.set(ByteStringMicro.copyFromUtf8(paramString1));
-    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
     Object localObject = new DynamicSearch.RootSearcherRequest();
     ((DynamicSearch.RootSearcherRequest)localObject).business.set(128);
     ((DynamicSearch.RootSearcherRequest)localObject).page_size.set(paramInt1);
@@ -1029,7 +1029,7 @@ public class UniteSearchHandler
     }
     DynamicBusinessHotWord.ReqBody localReqBody = new DynamicBusinessHotWord.ReqBody();
     localReqBody.business.set(128);
-    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
     ToServiceMsg localToServiceMsg = a("dynamic_busi_hot_word.1");
     localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
     b(localToServiceMsg);

@@ -1,138 +1,37 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.PrefixSelectedListener;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
-import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.startup.step.LoadDex;
+import com.tencent.mobileqq.startup.step.Step;
+import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
+import com.tencent.mobileqq.statistics.battery.BatteryStats;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
 public class aife
-  extends BaseAdapter
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private aifd jdField_a_of_type_Aifd;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List jdField_a_of_type_JavaUtilList;
-  private List b;
+  public aife(LoadDex paramLoadDex) {}
   
-  public aife(Context paramContext)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.b = new ArrayList();
-    this.jdField_a_of_type_Aifd = new aifd(this);
-  }
-  
-  private void a()
-  {
-    this.b.clear();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    try
     {
-      if (this.jdField_a_of_type_Int != i) {
-        this.b.add(this.jdField_a_of_type_JavaUtilList.get(i));
-      }
-      i += 1;
+      QQAppInterface.a().a();
+      Step.AmStepFactory.b(28, this.a.a, null).c();
+      return;
     }
-  }
-  
-  private void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    a();
-    notifyDataSetChanged();
-  }
-  
-  private void a(View paramView)
-  {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(ViewUtils.a(17.0F));
-    localGradientDrawable.setColor(Color.parseColor("#FBFBFB"));
-    localGradientDrawable.setStroke(1, Color.parseColor("#E7E7EE"));
-    paramView.setBackgroundDrawable(localGradientDrawable);
-  }
-  
-  public void a(TribeTitlePrefixPanelView.PrefixSelectedListener paramPrefixSelectedListener)
-  {
-    if (this.jdField_a_of_type_Aifd != null) {
-      this.jdField_a_of_type_Aifd.a(paramPrefixSelectedListener);
-    }
-  }
-  
-  public void a(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d(TribeTitlePrefixPanelView.a(), 2, new Object[] { "mPrefixList size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
-    }
-    this.jdField_a_of_type_Int = 0;
-    a();
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.b != null) {
-      return this.b.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.b.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    catch (Throwable localThrowable)
     {
-      Object localObject = new aiff(null);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969470, paramViewGroup, false);
-      ((aiff)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366602));
-      ((aiff)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364910));
-      paramView.setTag(localObject);
-      paramViewGroup = (ViewGroup)localObject;
-      localObject = (TribeTitlePrefixPanelView.TitlePrefixItem)this.b.get(paramInt);
-      if (localObject != null) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((TribeTitlePrefixPanelView.TitlePrefixItem)localObject).a + ((TribeTitlePrefixPanelView.TitlePrefixItem)localObject).b + ((TribeTitlePrefixPanelView.TitlePrefixItem)localObject).c);
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("LoadDex", 2, "", localThrowable);
+        }
       }
-      a(paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      if (paramInt >= this.jdField_a_of_type_Int) {
-        break label178;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_Aifd);
-      return paramView;
-      paramViewGroup = (aiff)paramView.getTag();
-      break;
-      label178:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt + 1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aife
  * JD-Core Version:    0.7.0.1
  */

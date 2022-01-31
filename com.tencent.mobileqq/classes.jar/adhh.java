@@ -1,41 +1,51 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlCallBack;
-import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlResult;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.ShortVideoDownResp;
-import com.tencent.mobileqq.transfile.protohandler.RichProtoProc.RichProtoCallback;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.dataline.util.file.MediaStoreUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-public class adhh
-  implements RichProtoProc.RichProtoCallback
+public final class adhh
+  implements FileManagerUtil.IGetVideoCallback
 {
-  public adhh(HotVideoData paramHotVideoData, HotVideoData.HotVideoGetUrlResult paramHotVideoGetUrlResult, HotVideoData.HotVideoGetUrlCallBack paramHotVideoGetUrlCallBack) {}
+  public adhh(String paramString1, String paramString2) {}
   
-  public void a(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
+  public void a(Bitmap paramBitmap)
   {
-    if (paramRichProtoResp != null) {
-      if (paramRichProtoResp.a.size() > 0)
-      {
-        paramRichProtoReq = (RichProto.RichProtoResp.ShortVideoDownResp)paramRichProtoResp.a.get(0);
-        this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.a(paramRichProtoReq);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlCallBack.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult);
+    if (paramBitmap == null) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_JavaLangString = "Unknown error！";
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_JavaLangString = "Unknown error！";
+    }
+    try
+    {
+      FileUtil.a(paramBitmap, this.a);
+      paramBitmap.recycle();
+      int i = MediaStoreUtil.a(this.b);
+      MediaStoreUtil.a(this.a, i);
+      return;
+    }
+    catch (FileNotFoundException paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
+      return;
+    }
+    catch (IOException paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhh
  * JD-Core Version:    0.7.0.1
  */

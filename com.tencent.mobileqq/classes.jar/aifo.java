@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.util.InputMethodUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
-class aifo
+public final class aifo
   implements Runnable
 {
-  aifo(aifn paramaifn) {}
-  
   public void run()
   {
-    InputMethodUtil.a(this.a.a.b);
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    long l = localCalendar.getTimeInMillis();
+    BaseApplicationImpl.getApplication().getSharedPreferences("banner_and_splash", 0).edit().putLong("splashshowtime", l).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("SetSplash", 2, "显示了一个非默认闪屏时间是" + localCalendar.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aifo
  * JD-Core Version:    0.7.0.1
  */

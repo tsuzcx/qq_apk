@@ -1,21 +1,25 @@
-import android.os.Handler;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aaxb
-  implements Runnable
+public final class aaxb
+  implements View.OnClickListener
 {
-  public aaxb(ShopScanActivity paramShopScanActivity) {}
+  public aaxb(boolean paramBoolean, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ShopScanActivity.b(this.a);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.d.setVisibility(0);
-    this.a.f.setVisibility(4);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(292);
+    paramView = new Intent();
+    paramView.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserDelegationActivity");
+    paramView.putExtra("param_force_internal_browser", this.jdField_a_of_type_Boolean);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("injectrecommend", false);
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity != null) {
+      localBaseActivity.startActivity(paramView);
+    }
   }
 }
 

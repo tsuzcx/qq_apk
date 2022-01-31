@@ -1,30 +1,25 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.Window;
+import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
 import com.tencent.qphone.base.util.QLog;
 
-public final class yie
-  implements Runnable
+public class yie
+  extends FriendListObserver
 {
-  public yie(View paramView, int paramInt) {}
+  public yie(RecommendFriendAdapter paramRecommendFriendAdapter) {}
   
-  public void run()
+  protected void onMayknowStateChanged(boolean paramBoolean)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
-    if (this.jdField_a_of_type_Int == 1) {
-      localActivity.getWindow().addFlags(128);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onStatesChanged ");
     }
-    for (;;)
-    {
-      QLog.e("ApolloRender", 2, "SetKeepScreenOn :" + this.jdField_a_of_type_Int);
-      return;
-      localActivity.getWindow().clearFlags(128);
-    }
+    RecommendFriendAdapter.a(this.a, RecommendFriendAdapter.a(this.a).a());
+    this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yie
  * JD-Core Version:    0.7.0.1
  */

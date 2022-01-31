@@ -1,24 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.businessCard.views.BusinessCardViewScroller;
 
 public class abox
-  implements DialogInterface.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public abox(DBFixDialogUI paramDBFixDialogUI) {}
+  public abox(BusinessCardViewScroller paramBusinessCardViewScroller, Runnable paramRunnable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.cancel();
-    QLog.d(DBFixDialogUI.a(), 1, "showConfirmDialog, cancel click");
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, DBFixDialogUI.d, DBFixDialogUI.d, 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a.removeAllListeners();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abox
  * JD-Core Version:    0.7.0.1
  */

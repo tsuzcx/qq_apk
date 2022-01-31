@@ -1,25 +1,30 @@
-import com.tencent.av.business.manager.BusinessMessageCenter;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import com.tencent.av.business.manager.pendant.EffectPendantTools;
+import com.tencent.av.business.manager.pendant.PendantItem;
 import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
 
 public class jfr
-  implements Observer
+  implements Runnable
 {
-  private WeakReference a;
+  final PendantItem jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public jfr(BusinessMessageCenter paramBusinessMessageCenter)
+  public jfr(MagicFaceDataEntity paramMagicFaceDataEntity, PendantItem paramPendantItem)
   {
-    this.a = new WeakReference(paramBusinessMessageCenter);
+    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = paramPendantItem;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMagicFaceDataEntity);
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void run()
   {
-    BusinessMessageCenter localBusinessMessageCenter = (BusinessMessageCenter)this.a.get();
-    if (localBusinessMessageCenter == null) {
-      return;
+    MagicFaceDataEntity localMagicFaceDataEntity = (MagicFaceDataEntity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localMagicFaceDataEntity != null)
+    {
+      PendantItem localPendantItem = (PendantItem)localMagicFaceDataEntity.a.a();
+      if ((localPendantItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getName().equals(localPendantItem.getName()))) {
+        localMagicFaceDataEntity.a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem);
+      }
     }
-    BusinessMessageCenter.a(localBusinessMessageCenter, paramObservable, paramObject);
   }
 }
 

@@ -1,21 +1,26 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.WatermarkVideoRunnable;
 
-class vmx
-  implements Runnable
+public class vmx
+  implements DialogInterface.OnKeyListener
 {
-  vmx(vmu paramvmu, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
+  public vmx(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Vmu.c != null)
+    if (paramInt == 4)
     {
-      this.jdField_a_of_type_Vmu.c.clearAnimation();
-      this.jdField_a_of_type_Vmu.c.removeAllViews();
-      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_Vmu.b, 50L);
+      this.a.o = true;
+      AIOGalleryScene.a(this.a).dismiss();
+      if (AIOGalleryScene.a(this.a) != null) {
+        AIOGalleryScene.a(this.a).a();
+      }
     }
+    return false;
   }
 }
 

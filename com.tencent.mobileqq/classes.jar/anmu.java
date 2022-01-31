@@ -1,26 +1,48 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import dov.com.qq.im.capture.poi.FacePoiManager;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
-import java.util.ArrayList;
+import dov.com.qq.im.capture.paster.CaptureComboPtvTemplate;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
 public class anmu
-  implements AbsListView.OnScrollListener
+  implements PtvTemplateManager.IPtvTemplateDownloadListener
 {
-  int jdField_a_of_type_Int = 0;
+  public anmu(CaptureComboPtvTemplate paramCaptureComboPtvTemplate) {}
   
-  public anmu(PoiListLayout paramPoiListLayout) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    if ((paramInt == 0) && (PoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout).a() != null) && (this.jdField_a_of_type_Int == PoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout).a().size() - 1)) {
-      PoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout).a();
+    synchronized (CaptureComboPtvTemplate.a(this.a))
+    {
+      if (paramPtvTemplateInfo.id.equals(CaptureComboPtvTemplate.a(this.a).id))
+      {
+        CaptureComboPtvTemplate.a(this.a).downloading = true;
+        CaptureComboPtvTemplate.a(this.a, 1.0F * paramInt / 100.0F);
+        CaptureComboPtvTemplate.a(this.a, 1);
+      }
+      return;
     }
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    synchronized (CaptureComboPtvTemplate.a(this.a))
+    {
+      if (paramPtvTemplateInfo.id.equals(CaptureComboPtvTemplate.a(this.a).id))
+      {
+        CaptureComboPtvTemplate.a(this.a).downloading = false;
+        CaptureComboPtvTemplate.a(this.a).usable = paramBoolean;
+      }
+      if (paramBoolean)
+      {
+        if (CaptureComboPtvTemplate.a(this.a).id.equals(paramPtvTemplateInfo.id))
+        {
+          CaptureComboPtvTemplate.a(this.a, 3);
+          CaptureComboPtvTemplate.a(this.a, 1.0F);
+          this.a.b();
+        }
+        return;
+      }
+      this.a.a(1);
+      CaptureComboPtvTemplate.a(this.a, 2);
+    }
   }
 }
 

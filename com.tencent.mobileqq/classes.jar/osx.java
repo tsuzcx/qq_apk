@@ -1,14 +1,14 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
+import android.view.View;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-public final class osx
-  extends ScannerActivity.QQDialogCancelListener
+class osx
+  implements BubblePopupWindow.OnDismissListener
 {
-  public osx(QrHandleResultCallBack paramQrHandleResultCallBack) {}
+  osx(osw paramosw, View paramView) {}
   
   public void a()
   {
-    this.a.a();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

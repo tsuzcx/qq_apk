@@ -1,26 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreferencesHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Set;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class lak
-  implements Runnable
+  extends SosoInterface.OnLocationListener
 {
-  public lak(EcShopAssistantManager paramEcShopAssistantManager) {}
-  
-  public void run()
+  public lak(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    synchronized (this.a.b)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (this.a.jdField_a_of_type_JavaUtilList == null)) {}
+    ArrayList localArrayList;
+    double d1;
+    double d2;
+    do
     {
-      Object[] arrayOfObject = this.a.jdField_a_of_type_JavaUtilSet.toArray();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        SharedPreferencesHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "ec_shop_assist_new_unread_list", arrayOfObject).commit();
+      do
+      {
+        return;
+      } while ((paramInt != 0) || (paramSosoLbsInfo == null));
+      localArrayList = new ArrayList();
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
+        if (localRecentShopParcel.c != 1) {
+          try
+          {
+            localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
+          }
+          catch (Exception localException) {}
+        }
       }
-      return;
-    }
+      d1 = paramSosoLbsInfo.a.a;
+      d2 = paramSosoLbsInfo.a.b;
+    } while (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool == null);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, localArrayList, d2, d1);
   }
 }
 

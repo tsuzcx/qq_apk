@@ -1,38 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.ArrayMap;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.hotpic.HotVideoBlurTaskManager;
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
 
-public class adhg
+public final class adhg
   implements Runnable
 {
-  public adhg(HotVideoBlurTaskManager paramHotVideoBlurTaskManager) {}
+  public adhg(FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    HotVideoData localHotVideoData = (HotVideoData)this.a.jdField_a_of_type_AndroidSupportV4UtilArrayMap.keyAt(0);
-    HotPicPageView.MyVideoViewHolder localMyVideoViewHolder = (HotPicPageView.MyVideoViewHolder)this.a.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localHotVideoData);
-    if (localMyVideoViewHolder.a(localHotVideoData))
-    {
-      Drawable localDrawable = HotVideoPreviewDownloader.a(this.a.jdField_a_of_type_AndroidContentContext, localHotVideoData);
-      if ((localDrawable != null) && (localMyVideoViewHolder.a(localHotVideoData))) {
-        localMyVideoViewHolder.b(localDrawable);
-      }
-      this.a.a(localHotVideoData);
-    }
-    for (;;)
-    {
-      this.a.a();
-      return;
-      this.a.a(localHotVideoData);
-    }
+    FilePicURLDrawlableHelper.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhg
  * JD-Core Version:    0.7.0.1
  */

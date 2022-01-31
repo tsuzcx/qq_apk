@@ -1,29 +1,11 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorAdapter;
+import com.tencent.widget.SingleLineTextView;
 
 public class aern
-  implements View.OnClickListener
 {
-  public aern(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public SingleLineTextView a;
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.a.a, NearbyVisitorListActivity.class);
-    paramView.putExtra("charmlevel", NearbyProfileDisplayTribePanel.a(this.a).charmLevel);
-    paramView.putExtra("download_tribe_app_url", NearbyProfileDisplayTribePanel.a(this.a).tribeAppDownloadPageUrl);
-    paramView.putExtra("is_show_tribeapp_download_layout", NearbyProfileDisplayTribePanel.a(this.a).isAddPicBtnDownloadAppOpen());
-    this.a.a.startActivity(paramView);
-    NearbyProfileDisplayTribePanel.a(this.a, null);
-    ThreadManager.post(new aero(this), 5, null, false);
-    ReportController.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
-  }
+  private aern(NearbyVisitorAdapter paramNearbyVisitorAdapter) {}
 }
 
 

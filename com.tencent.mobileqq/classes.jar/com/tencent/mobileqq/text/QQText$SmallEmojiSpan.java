@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.text;
 
-import ahzo;
+import ainr;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetricsInt;
@@ -44,7 +44,7 @@ public class QQText$SmallEmojiSpan
   
   private void a()
   {
-    ThreadManager.post(new ahzo(this), 5, null, true);
+    ThreadManager.post(new ainr(this), 5, null, true);
   }
   
   public int a()
@@ -132,7 +132,7 @@ public class QQText$SmallEmojiSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQText.SmallEmojiSpan
  * JD-Core Version:    0.7.0.1
  */

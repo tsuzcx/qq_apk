@@ -1,49 +1,30 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
+import com.tencent.widget.SimpleTextView;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import com.tencent.widget.SwipTextViewMenuBuilder;
 
 public class wlx
-  implements Runnable
+  extends SwipTextViewMenuBuilder
 {
-  public wlx(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void run()
+  public wlx(ContactsDisAdapter paramContactsDisAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    Object localObject = (EmoticonFromGroupDBManager)EmoticonGroupStoreFragment.a(this.a).getManager(258);
-    if (localObject != null) {
-      ((EmoticonFromGroupDBManager)localObject).b();
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  {
+    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
+    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
+      paramSwipRightMenuItem.setTag(paramObject);
     }
-    localObject = new CopyOnWriteArrayList(EmoticonGroupStoreFragment.a(this.a).a());
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      int i = ((List)localObject).size();
-      if (i < 50)
-      {
-        EmoticonGroupStoreFragment.a(this.a, (List)localObject);
-        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a));
-        EmoticonGroupStoreFragment.a(this.a);
-        EmoticonGroupStoreFragment.b(this.a);
-      }
-      for (;;)
-      {
-        if (EmoticonGroupStoreFragment.b(this.a) != null) {
-          EmoticonGroupStoreFragment.c(this.a);
-        }
-        return;
-        EmoticonGroupStoreFragment.a(this.a, ((List)localObject).subList(0, 50));
-        int j = EmoticonGroupStoreFragment.c(this.a).size();
-        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a));
-        EmoticonGroupStoreFragment.b(this.a);
-        EmoticonGroupStoreFragment.a(this.a, ((List)localObject).subList(50, i));
-        EmoticonGroupStoreFragment.a(this.a);
-        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a).subList(j, EmoticonGroupStoreFragment.c(this.a).size()));
-        EmoticonGroupStoreFragment.b(this.a);
-      }
-    }
-    EmoticonGroupStoreFragment.d(this.a);
+    return paramSwipRightMenuItem;
+  }
+  
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  {
+    this.a.a(paramInt, paramArrayOfSwipRightMenuItem, paramObject);
   }
 }
 

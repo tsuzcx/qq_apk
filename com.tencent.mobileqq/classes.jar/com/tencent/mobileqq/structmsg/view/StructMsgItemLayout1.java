@@ -43,7 +43,7 @@ public class StructMsgItemLayout1
     {
       paramView = (LinearLayout)paramView;
       if (!TextUtils.isEmpty(this.c)) {
-        paramView.setBackgroundResource(2130838619);
+        paramView.setBackgroundResource(2130838623);
       }
       d(paramView);
       if (paramView.getChildCount() != this.jdField_a_of_type_JavaUtilArrayList.size()) {
@@ -203,7 +203,7 @@ public class StructMsgItemLayout1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout1
  * JD-Core Version:    0.7.0.1
  */

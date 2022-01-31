@@ -1,80 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
-import dov.com.qq.im.capture.util.ConfigSimplifier.ZipConfig;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import java.io.File;
-import java.io.IOException;
+import cooperation.qzone.remote.RecvMsg;
+import cooperation.qzone.remote.RemoteServiceProxy;
+import cooperation.qzone.remote.SendMsg;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public final class amyj
-  implements INetEngine.INetEngineListener
+public class amyj
+  extends Thread
 {
-  public amyj(String paramString1, String paramString2, ConfigSimplifier.ZipConfig paramZipConfig, String paramString3, String paramString4, ConfigSimplifier.ConfigDownloadCallback paramConfigDownloadCallback) {}
+  public amyj(RemoteServiceProxy paramRemoteServiceProxy) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfigSimplifier_PTV", 2, "onResp resultcode: " + paramNetResp.c + " threadid=" + Thread.currentThread().getId());
-    }
-    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.b);
-    if (!localFile.exists()) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
-      }
-    }
-    do
+    while (!this.a.sendMsgQueue.isEmpty())
     {
-      return;
-      String str = "";
-      try
-      {
-        paramNetResp = FileUtils.b(localFile.getPath());
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ZipConfig.c)) || (!this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ZipConfig.c.equalsIgnoreCase(paramNetResp))) {}
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
+      SendMsg localSendMsg = (SendMsg)this.a.sendMsgQueue.poll();
+      if (localSendMsg != null) {
         try
         {
-          do
-          {
-            ZipUtils.a(localFile, this.c);
-            paramNetResp = new File(this.d);
-            if (!paramNetResp.exists()) {
-              break;
-            }
-            paramNetResp = CapturePtvTemplateManager.a(paramNetResp);
-            this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ConfigDownloadCallback.a(paramNetResp);
-            return;
-            localUnsatisfiedLinkError = localUnsatisfiedLinkError;
-            paramNetResp = str;
-          } while (!QLog.isColorLevel());
-          localUnsatisfiedLinkError.printStackTrace();
-          paramNetResp = str;
+          this.a.sendMsgToService(localSendMsg);
         }
-        catch (IOException paramNetResp)
+        catch (Exception localException)
         {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              paramNetResp.printStackTrace();
-            }
-          }
+          RecvMsg localRecvMsg = this.a.createWaiteRespTimeout(localSendMsg, "sendMsgToServiceFailed，" + localException.toString());
+          this.a.sendFailedRespToApp(localSendMsg, localRecvMsg);
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyj
  * JD-Core Version:    0.7.0.1
  */

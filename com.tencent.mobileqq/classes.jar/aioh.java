@@ -1,55 +1,41 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.theme.ThemeDownloader;
+import com.tencent.mobileqq.theme.ThemeDownloader.ThemeUnzipListener;
+import com.tencent.mobileqq.theme.ThemeSwitchManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aioh
-  implements Runnable
+  implements ThemeDownloader.ThemeUnzipListener
 {
-  public aioh(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, List paramList) {}
+  public aioh(ThemeSwitchManager paramThemeSwitchManager) {}
   
-  public void run()
+  public void onUnzipCallback(Bundle paramBundle, int paramInt, ThemeDownloader paramThemeDownloader)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (MessageRecord)((Iterator)localObject1).next();
-      TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (MessageRecord)localObject2);
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeSwitchManager", 2, "mThemeDownloadListener onUnzipCallback stateCode:" + paramInt);
     }
-    localObject1 = null;
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (((Iterator)localObject2).hasNext())
-    {
-      Object localObject3 = (MessageRecord)((Iterator)localObject2).next();
-      localObject3 = TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (MessageRecord)localObject3);
-      if (localObject3 == null) {
-        break label133;
+    if ((paramInt == 1) || (paramInt == 3)) {
+      if (1 == paramBundle.getInt("themeType", 0))
+      {
+        paramBundle.putBoolean("server_after_download", true);
+        String str1 = paramBundle.getString("themeId");
+        String str2 = paramBundle.getString("version");
+        this.a.a(this.a.a, str1, str2, paramBundle);
       }
-      if (localObject1 != null) {
-        break label130;
-      }
-      localObject1 = new ArrayList();
-      label97:
-      ((List)localObject1).addAll((Collection)localObject3);
     }
-    label130:
-    label133:
     for (;;)
     {
-      break;
-      if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-        TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (List)localObject1);
+      if (paramThemeDownloader != null) {
+        paramThemeDownloader.a();
       }
       return;
-      break label97;
+      QLog.d("ThemeSwitchManager", 1, "mThemeDownloadListener onUnzipCallback Error stateCode:" + paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aioh
  * JD-Core Version:    0.7.0.1
  */

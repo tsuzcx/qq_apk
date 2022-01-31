@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.wealthgod;
 
-import abbz;
+import abja;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -14,7 +14,7 @@ import tencent.im.oidb.cmd0x84c.oidb_0x84c.CAdcodeInfo;
 public class WealthGodInfo
   implements Parcelable, Comparable
 {
-  public static final Parcelable.Creator CREATOR = new abbz();
+  public static final Parcelable.Creator CREATOR = new abja();
   public int a;
   public long a;
   public String a;

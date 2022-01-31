@@ -1,35 +1,19 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.utils.BaseHandler;
+import android.widget.TextView;
+import com.tencent.common.galleryactivity.GalleryPageView;
 
 public class pfh
-  extends BaseHandler
+  implements Runnable
 {
-  public pfh(ImageManager paramImageManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public pfh(GalleryPageView paramGalleryPageView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      ImageManager.a(this.a, paramMessage);
-      return;
-    case 1: 
-      ImageManager.b(this.a, paramMessage);
-      return;
-    }
-    ImageManager.c(this.a, paramMessage);
+    this.a.a.startAnimation(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pfh
  * JD-Core Version:    0.7.0.1
  */

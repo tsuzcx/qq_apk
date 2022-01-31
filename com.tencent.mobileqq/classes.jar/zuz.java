@@ -1,30 +1,42 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy.LoadMoreAioMessageCb;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSetList;
+import java.util.Iterator;
+import java.util.List;
 
-public class zuz
+class zuz
   implements Runnable
 {
-  public zuz(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
+  zuz(zuy paramzuy, List paramList) {}
   
   public void run()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    int j = 0;
+    int i = j;
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      localStringBuilder = new StringBuilder().append("showVideoRecordButton inner run +");
-      if (ARVideoRecordUIControllerImpl.a(this.a) == null) {
-        break label81;
+      i = j;
+      if (DataLineMsgProxy.a(this.jdField_a_of_type_Zuy.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy) != null)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        i = 0;
+        if (localIterator.hasNext())
+        {
+          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
+          if (!DataLineMsgProxy.a(this.jdField_a_of_type_Zuy.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy).insertFrontToList(localDataLineMsgRecord)) {
+            break label107;
+          }
+          i += 1;
+        }
       }
     }
-    label81:
-    for (boolean bool = true;; bool = false)
+    label107:
+    for (;;)
     {
-      QLog.i("ARVideoRecordUIControllerImpl", 2, bool);
-      if (ARVideoRecordUIControllerImpl.a(this.a) != null)
-      {
-        ARVideoRecordUIControllerImpl.a(this.a).a();
-        ARVideoRecordUIControllerImpl.a(this.a).a(0);
+      break;
+      if (this.jdField_a_of_type_Zuy.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$LoadMoreAioMessageCb != null) {
+        this.jdField_a_of_type_Zuy.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$LoadMoreAioMessageCb.a(i);
       }
       return;
     }
@@ -32,7 +44,7 @@ public class zuz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zuz
  * JD-Core Version:    0.7.0.1
  */

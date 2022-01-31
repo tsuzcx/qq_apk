@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
-import kjl;
-import kjm;
+import kiw;
+import kix;
 
 public class JoinGroupTransitActivity
   extends BaseActivity
@@ -16,7 +16,7 @@ public class JoinGroupTransitActivity
   private long jdField_a_of_type_Long;
   private JoinGroupHandler jdField_a_of_type_ComTencentBizJoinGroupHandler;
   private String jdField_a_of_type_JavaLangString;
-  private kjm jdField_a_of_type_Kjm;
+  private kix jdField_a_of_type_Kix;
   private String b = "";
   
   private void a()
@@ -27,7 +27,7 @@ public class JoinGroupTransitActivity
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         finish();
       }
-      this.jdField_a_of_type_Kjm = new kjm(this);
+      this.jdField_a_of_type_Kix = new kix(this);
       JumpAction localJumpAction = JumpParser.a(this.app, this, this.jdField_a_of_type_JavaLangString);
       this.b = localJumpAction.a("activity_titile_name");
       this.jdField_a_of_type_Long = Long.valueOf(localJumpAction.a("group_code")).longValue();
@@ -45,9 +45,9 @@ public class JoinGroupTransitActivity
   {
     super.doOnCreate(paramBundle);
     a();
-    this.jdField_a_of_type_ComTencentBizJoinGroupHandler = new JoinGroupHandler(this, this.app, this.jdField_a_of_type_Int, this.b, new kjl(this));
+    this.jdField_a_of_type_ComTencentBizJoinGroupHandler = new JoinGroupHandler(this, this.app, this.jdField_a_of_type_Int, this.b, new kiw(this));
     this.jdField_a_of_type_ComTencentBizJoinGroupHandler.a();
-    this.jdField_a_of_type_Kjm.sendEmptyMessage(0);
+    this.jdField_a_of_type_Kix.sendEmptyMessage(0);
     return true;
   }
   

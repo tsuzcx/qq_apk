@@ -1,46 +1,34 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.ui.WebViewTopTabHelper;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.ImageUtil;
 
-public class ajyu
-  implements RadioGroup.OnCheckedChangeListener
+public final class ajyu
+  implements DownloadParams.DecodeHandler
 {
-  public ajyu(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper.a))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper.a(paramInt);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    TouchWebView localTouchWebView;
+    Object localObject;
     do
     {
       do
       {
-        return;
-        localTouchWebView = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a();
-      } while (localTouchWebView == null);
-      String str = localTouchWebView.getUrl();
-      paramRadioGroup = str;
-      if (TextUtils.isEmpty(str))
-      {
-        paramRadioGroup = str;
-        if (this.a.jdField_a_of_type_AndroidContentIntent != null) {
-          paramRadioGroup = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
-        }
-      }
-    } while (TextUtils.isEmpty(paramRadioGroup));
-    localTouchWebView.loadUrl(paramRadioGroup.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return ImageUtil.d(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyu
  * JD-Core Version:    0.7.0.1
  */

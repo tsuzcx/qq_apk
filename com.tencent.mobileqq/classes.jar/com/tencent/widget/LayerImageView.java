@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import almv;
+import amcl;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -22,7 +22,7 @@ public class LayerImageView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean;
-  private almv[] jdField_a_of_type_ArrayOfAlmv;
+  private amcl[] jdField_a_of_type_ArrayOfAmcl;
   private boolean b;
   
   public LayerImageView(Context paramContext)
@@ -62,27 +62,27 @@ public class LayerImageView
   public void setBitmaps(Bitmap[] paramArrayOfBitmap, boolean paramBoolean)
   {
     int j = 0;
-    if ((paramBoolean) && (this.jdField_a_of_type_ArrayOfAlmv != null))
+    if ((paramBoolean) && (this.jdField_a_of_type_ArrayOfAmcl != null))
     {
-      almv[] arrayOfalmv = this.jdField_a_of_type_ArrayOfAlmv;
-      int k = arrayOfalmv.length;
+      amcl[] arrayOfamcl = this.jdField_a_of_type_ArrayOfAmcl;
+      int k = arrayOfamcl.length;
       i = 0;
       while (i < k)
       {
-        almv localalmv = arrayOfalmv[i];
-        if (almv.a(localalmv) != null) {
-          almv.a(localalmv).recycle();
+        amcl localamcl = arrayOfamcl[i];
+        if (amcl.a(localamcl) != null) {
+          amcl.a(localamcl).recycle();
         }
         i += 1;
       }
     }
-    this.jdField_a_of_type_ArrayOfAlmv = new almv[paramArrayOfBitmap.length];
+    this.jdField_a_of_type_ArrayOfAmcl = new amcl[paramArrayOfBitmap.length];
     int i = j;
     while (i < paramArrayOfBitmap.length)
     {
-      this.jdField_a_of_type_ArrayOfAlmv[i] = new almv(paramArrayOfBitmap[i], this.jdField_a_of_type_Int, null);
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap$Config == null) || ((almv.a(this.jdField_a_of_type_ArrayOfAlmv[i]) != null) && (almv.a(this.jdField_a_of_type_ArrayOfAlmv[i]).ordinal() > this.jdField_a_of_type_AndroidGraphicsBitmap$Config.ordinal()))) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap$Config = almv.a(this.jdField_a_of_type_ArrayOfAlmv[i]);
+      this.jdField_a_of_type_ArrayOfAmcl[i] = new amcl(paramArrayOfBitmap[i], this.jdField_a_of_type_Int, null);
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap$Config == null) || ((amcl.a(this.jdField_a_of_type_ArrayOfAmcl[i]) != null) && (amcl.a(this.jdField_a_of_type_ArrayOfAmcl[i]).ordinal() > this.jdField_a_of_type_AndroidGraphicsBitmap$Config.ordinal()))) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap$Config = amcl.a(this.jdField_a_of_type_ArrayOfAmcl[i]);
       }
       i += 1;
     }
@@ -98,28 +98,28 @@ public class LayerImageView
   
   public void setLayerBitmap(int paramInt, Bitmap paramBitmap, boolean paramBoolean)
   {
-    almv localalmv = this.jdField_a_of_type_ArrayOfAlmv[paramInt];
-    this.jdField_a_of_type_ArrayOfAlmv[paramInt] = new almv(paramBitmap, this.jdField_a_of_type_Int, null);
-    if ((paramBoolean) && (almv.a(localalmv) != null)) {
-      almv.a(localalmv).recycle();
+    amcl localamcl = this.jdField_a_of_type_ArrayOfAmcl[paramInt];
+    this.jdField_a_of_type_ArrayOfAmcl[paramInt] = new amcl(paramBitmap, this.jdField_a_of_type_Int, null);
+    if ((paramBoolean) && (amcl.a(localamcl) != null)) {
+      amcl.a(localamcl).recycle();
     }
   }
   
   public void setLayerPadding(int paramInt, Rect paramRect)
   {
-    almv.a(this.jdField_a_of_type_ArrayOfAlmv[paramInt], paramRect);
+    amcl.a(this.jdField_a_of_type_ArrayOfAmcl[paramInt], paramRect);
     b();
   }
   
   public void setLayerPadding(Rect[] paramArrayOfRect)
   {
-    if (paramArrayOfRect.length != this.jdField_a_of_type_ArrayOfAlmv.length) {
+    if (paramArrayOfRect.length != this.jdField_a_of_type_ArrayOfAmcl.length) {
       throw new IllegalArgumentException("padding must have the same size as input bitmaps");
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfAlmv.length)
+    while (i < this.jdField_a_of_type_ArrayOfAmcl.length)
     {
-      almv.a(this.jdField_a_of_type_ArrayOfAlmv[i], paramArrayOfRect[i]);
+      amcl.a(this.jdField_a_of_type_ArrayOfAmcl[i], paramArrayOfRect[i]);
       i += 1;
     }
     b();
@@ -127,7 +127,7 @@ public class LayerImageView
   
   public void setLayerVisibility(int paramInt1, int paramInt2)
   {
-    almv.a(this.jdField_a_of_type_ArrayOfAlmv[paramInt1], paramInt2);
+    amcl.a(this.jdField_a_of_type_ArrayOfAmcl[paramInt1], paramInt2);
     b();
   }
   
@@ -138,7 +138,7 @@ public class LayerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.LayerImageView
  * JD-Core Version:    0.7.0.1
  */

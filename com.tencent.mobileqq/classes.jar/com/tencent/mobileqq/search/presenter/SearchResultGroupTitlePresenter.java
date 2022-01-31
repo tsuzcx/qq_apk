@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahgk;
+import ahum;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.text.SpannableString;
@@ -57,13 +57,13 @@ public class SearchResultGroupTitlePresenter
           if ((paramIModel instanceof ISearchResultGroupModel))
           {
             paramIModel = (ISearchResultGroupModel)paramIModel;
-            paramISearchResultGroupView.b().setOnClickListener(new ahgk(this, paramIModel));
+            paramISearchResultGroupView.b().setOnClickListener(new ahum(this, paramIModel));
           }
           paramIModel = localSearchResultGroupTitleView.a().getResources();
           if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
             break label356;
           }
-          localSearchResultGroupTitleView.a.setBackgroundColor(paramIModel.getColor(2131492949));
+          localSearchResultGroupTitleView.a.setBackgroundColor(paramIModel.getColor(2131492950));
           label278:
           paramIModel = paramISearchResultGroupView.a().getTag(2131362080);
           if (!(paramIModel instanceof Integer)) {
@@ -87,7 +87,7 @@ public class SearchResultGroupTitlePresenter
           break;
           paramISearchResultGroupView.b().setVisibility(8);
           break label198;
-          localSearchResultGroupTitleView.a.setBackgroundColor(paramIModel.getColor(2131492948));
+          localSearchResultGroupTitleView.a.setBackgroundColor(paramIModel.getColor(2131492949));
           break label278;
         }
         localSearchResultGroupTitleView.a(false);

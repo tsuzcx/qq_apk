@@ -1,36 +1,34 @@
-import android.view.View;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-public class vbq
+class vbq
+  implements Runnable
 {
-  private Map a = new HashMap();
+  vbq(vbp paramvbp) {}
   
-  public View a(int paramInt)
+  public void run()
   {
-    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    if (localLinkedList == null) {
-      return null;
+    Object localObject = (EmoticonManager)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getManager(13);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a != null) {
+      ((EmoticonManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId);
     }
-    return (View)localLinkedList.poll();
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a != null) {
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getAccount(), 12, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId), false, false);
+    }
+    QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a == null) {}
+    for (localObject = "";; localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId)
     {
-      localLinkedList1 = new LinkedList();
-      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007188", 0, 0, (String)localObject, "", "", "");
+      return;
     }
-    localLinkedList1.add(paramView);
   }
 }
 

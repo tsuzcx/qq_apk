@@ -1,36 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
+import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import cooperation.weiyun.utils.WyReportUtils;
 
-public class anhb
-  implements ValueAnimator.AnimatorUpdateListener
+public final class anhb
+  implements UploadManager.IUploadStatusListener
 {
-  public anhb(TextLayer.TextItem paramTextItem) {}
+  public void onUploadJobAdded(String paramString, long paramLong) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
   {
-    if (this.a.a.b == null) {
+    if (paramBoolean)
+    {
+      if (paramStatusInfo.state != 6) {
+        break label26;
+      }
+      WyReportUtils.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
+    }
+    label26:
+    while (paramStatusInfo.state != 5) {
       return;
     }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * f);
-    this.a.t = (this.a.e + this.a.g * f);
-    this.a.q = (this.a.b + this.a.h * f);
-    this.a.r = (this.a.c + this.a.i * f);
-    if (this.a.a.a != null) {
-      this.a.a.a.a(f);
-    }
-    if (f == 1.0F) {
-      this.a.a.b(5);
-    }
-    TextLayer.a(this.a.a);
+    WyReportUtils.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhb
  * JD-Core Version:    0.7.0.1
  */

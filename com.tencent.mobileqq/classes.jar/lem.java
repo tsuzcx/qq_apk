@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class lem
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  public lem(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public lem(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onDismiss()
   {
-    ReadInJoyNewFeedsActivity.a(this.a);
+    ReadInJoySettingActivity.b(this.a).cancel();
   }
 }
 

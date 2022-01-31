@@ -1,33 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
 
 public class akrs
-  implements ITMAssistantDownloadClientListener
+  implements Runnable
 {
-  public akrs(DownloadManager paramDownloadManager) {}
+  public akrs(WebViewJumpPlugin paramWebViewJumpPlugin) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public void run()
   {
-    ThreadManager.getSubThreadHandler().post(new akru(this, paramLong1, paramLong2, paramString));
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    ThreadManager.getSubThreadHandler().post(new akrt(this, paramTMAssistantDownloadClient, paramInt1, paramString1, paramInt2, paramString2));
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    LogUtility.e(DownloadManager.a, "OnDwonloadSDKServiceInvalid");
+    Activity localActivity = this.a.mRuntime.a();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      localActivity.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akrs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,49 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class tyf
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tyf(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public tyf(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.d == 11) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    try
+    {
+      Object localObject = BaseApplication.getContext();
+      String str = Long.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+      GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a((Context)localObject).a();
+      if ((localGroupCatalogBean != null) && (localGroupCatalogBean.b.equals(str)))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = localGroupCatalogBean.a();
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = localGroupCatalogBean.a;
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+        return;
+        localObject = GroupCatalogTool.a((Context)localObject).a((Context)localObject, str);
+        if (localObject != null)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = ((GroupCatalogBean)localObject).a();
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = ((GroupCatalogBean)localObject).a;
+        }
+      }
+      return;
     }
-    this.a.b.cancel();
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.troopinfo", 2, localException.toString());
+      }
+    }
   }
 }
 

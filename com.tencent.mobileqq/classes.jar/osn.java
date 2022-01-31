@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRLoginActivity;
+import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class osn
-  implements DialogInterface.OnCancelListener
+  extends DownloadListener
 {
-  public osn(QRLoginActivity paramQRLoginActivity) {}
+  public osn(LoginManagerActivity paramLoginManagerActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onCancel(DownloadTask paramDownloadTask)
   {
-    this.a.finish();
+    LoginManagerActivity.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginManagerActivity", 2, "downloadTimZipFile cancel");
+    }
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    LoginManagerActivity.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginManagerActivity", 2, "downloadTimZipFile onDone status: " + paramDownloadTask.a() + ", errMsg :" + paramDownloadTask.b + " code :" + paramDownloadTask.a);
+    }
+    if (paramDownloadTask.a() == 3) {
+      this.a.runOnUiThread(new oso(this));
+    }
   }
 }
 

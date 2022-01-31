@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.RotateAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 
-class ulv
-  implements Action.OnActionEndListener
+public class ulv
+  implements Runnable
 {
-  ulv(uls paramuls) {}
+  public ulv(MediaPlayerManager paramMediaPlayerManager) {}
   
-  public void a()
+  public void run()
   {
-    RotateAction localRotateAction = new RotateAction(3000, 360, 0);
-    localRotateAction.a = true;
-    this.a.a.f.a(new Action[] { localRotateAction });
+    MediaPlayerManager.a(this.a).unregisterListener(MediaPlayerManager.a(this.a));
+    MediaPlayerManager.a(this.a).unregisterListener(this.a);
   }
 }
 

@@ -1,36 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.GetFeedIdListResult;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class omc
-  extends JobSegment
+  implements AdapterView.OnItemClickListener
 {
-  private FeedListPageLoaderBase.FeedIdListCache a;
+  public omc(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public omc(@NonNull FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = paramFeedIdListCache;
-  }
-  
-  protected void a(JobContext paramJobContext, Integer paramInteger)
-  {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() > 0) || (((FeedListPageLoaderBase.GetFeedIdListResult)localObject).b))
-    {
-      SLog.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
-      return;
-    }
-    localObject = new GetTroopAssistantFeedIdListRequest();
-    ((GetTroopAssistantFeedIdListRequest)localObject).a = this.a.a();
-    CmdTaskManger.a().a((NetworkRequest)localObject, new omd(this, paramJobContext, paramInteger));
+    HorizontalSelectColorLayout.a(this.a, paramInt);
   }
 }
 

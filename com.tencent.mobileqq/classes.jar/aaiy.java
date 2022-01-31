@@ -1,30 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.ar.config.MainDownAni;
+import com.tencent.mobileqq.ar.config.WorldCupStaticInstance;
+import com.tencent.qphone.base.util.QLog;
 
-class aaiy
-  implements DialogInterface.OnClickListener
+public class aaiy
+  implements PopupWindow.OnDismissListener
 {
-  aaiy(aaiu paramaaiu, QQCustomDialog paramQQCustomDialog) {}
+  public aaiy(MainDownAni paramMainDownAni, aaji paramaaji) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    ArkAppCenter.a().post(new aaiz(this));
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label38:
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaiu.a, "ark_authority_api_login", this.jdField_a_of_type_Aaiu.c, 1);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label38;
-    }
+    QLog.w(MainDownAni.a(), 1, "modifyMenu, onDismiss");
+    WorldCupStaticInstance.a().a = false;
+    this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a(this.jdField_a_of_type_Aaji.d);
   }
 }
 

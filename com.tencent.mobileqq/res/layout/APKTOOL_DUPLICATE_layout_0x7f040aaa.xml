@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="49.0dip"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3065" android:paddingLeft="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="管理特别关心好友" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3066" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02046b" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a301a" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a301b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="player_video_cover_base_cover" />
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a301c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_net_page" />
+        <ViewStub android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a301d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_loading_layout" />
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a301e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_play_icon_container" />
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a301f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_complete_float_page" />
+        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3020" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_error_page" />
+        <ViewStub android:layout_gravity="bottom|center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3021" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="player_video_cover_complete_page" />
+        <ViewStub android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3022" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0928" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0929" />
+    </FrameLayout>
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3023" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_play_control" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3024" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_danmaku" />
+</FrameLayout>

@@ -1,19 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStartStatistic;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
 
 public class mbt
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public mbt(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mbt(VideoFeedsCommentManager paramVideoFeedsCommentManager) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (VideoFeedsPlayActivity.a(this.a) != null) {
-      VideoFeedsStartStatistic.a(VideoFeedsPlayActivity.a(this.a).getApplication().getApplicationContext());
+    if (VideoFeedsCommentManager.a(this.a) != null) {
+      VideoFeedsCommentManager.a(this.a).setVisibility(8);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

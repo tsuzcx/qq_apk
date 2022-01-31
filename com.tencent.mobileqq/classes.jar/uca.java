@@ -1,16 +1,16 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class uca
   implements View.OnClickListener
 {
-  public uca(TroopTransferActivity paramTroopTransferActivity) {}
+  public uca(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.dismiss();
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

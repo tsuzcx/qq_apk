@@ -1,51 +1,22 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class siv
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public siv(EditInfoActivity paramEditInfoActivity) {}
+  public siv(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramCharSequence == null) || (paramCharSequence.toString().trim().length() == 0))
-    {
-      this.a.jdField_c_of_type_JavaLangString = ("" + this.a.jdField_c_of_type_Int);
-      this.a.a.post(new siw(this));
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.a.f != 0) {
-          break label239;
-        }
-        paramInt1 = paramCharSequence.toString().trim().getBytes("utf-8").length;
-        this.a.jdField_c_of_type_JavaLangString = ("" + (this.a.jdField_c_of_type_Int - paramInt1));
-        if (this.a.jdField_c_of_type_JavaLangString.length() > 4) {
-          this.a.jdField_c_of_type_JavaLangString = (this.a.jdField_c_of_type_JavaLangString.substring(0, 2) + "…");
-        }
-        this.a.a.post(new six(this, paramInt1));
-        return;
-      }
-      catch (UnsupportedEncodingException paramCharSequence) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("IphoneTitleBarActivity", 2, "UnsupportedEncodingException" + paramCharSequence.getMessage());
-      return;
-      label239:
-      paramInt1 = paramCharSequence.toString().trim().length();
-    }
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
+    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(255)).a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.c);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
   }
 }
 

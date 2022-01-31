@@ -1,20 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.view.widget.StoryAddDescribeGuideDialog;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
 public class opp
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public opp(StoryAddDescribeGuideDialog paramStoryAddDescribeGuideDialog) {}
+  public opp(StoryVideoPlayer paramStoryVideoPlayer, Bundle paramBundle) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.dismiss();
+    StoryVideoPlayer.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer, this.jdField_a_of_type_AndroidOsBundle);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

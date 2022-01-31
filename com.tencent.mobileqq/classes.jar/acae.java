@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
 
-public class acae
-  extends FriendListObserver
+class acae
+  implements DialogInterface.OnClickListener
 {
-  public acae(EquipLockWebImpl paramEquipLockWebImpl) {}
+  acae(acac paramacac, EmoticonPackage paramEmoticonPackage, View paramView) {}
   
-  protected void onGetRecommendDeviceList(boolean paramBoolean, ArrayList paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      EquipmentLockImpl.a().a(paramArrayList);
-    }
-    for (;;)
-    {
-      EquipLockWebImpl.a(this.a, false);
-      EquipLockWebImpl.b(this.a, false);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
-      }
-    }
+    DragSortAdapter.a(this.jdField_a_of_type_Acac.a, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.jdField_a_of_type_AndroidViewView);
   }
 }
 

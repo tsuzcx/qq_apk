@@ -1,49 +1,73 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.av.app.PstnSessionInfo;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForVideo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.ChatActivityFacade.SendMsgParams;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.lovelanguage.LoveLanguageManager;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class vin
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public vin(VideoItemBuilder paramVideoItemBuilder, VideoActionSheet paramVideoActionSheet, MessageForVideo paramMessageForVideo, int paramInt, PstnSessionInfo paramPstnSessionInfo) {}
+  public vin(TextItemBuilder paramTextItemBuilder) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (paramInt)
+    paramView = AIOUtils.a(paramView);
+    if (!(paramView instanceof MessageForText))
     {
+      if (QLog.isColorLevel()) {
+        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
+      }
+      return;
     }
-    do
+    MessageForText localMessageForText = (MessageForText)paramView;
+    int i;
+    if (localMessageForText.sb != null)
     {
-      return;
-      VideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo.isVideo)
-      {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005642", "0X8005642", 0, 0, "", "", "", "");
-        return;
+      paramView = localMessageForText.sb.toString();
+      if (!LoveLanguageManager.b(paramView)) {
+        break label275;
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
-      return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        VideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
-        return;
+      paramView = LoveLanguageManager.b(paramView);
+      i = 1;
+    }
+    for (;;)
+    {
+      ChatActivityFacade.SendMsgParams localSendMsgParams = new ChatActivityFacade.SendMsgParams();
+      if ((this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {
+        ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a(paramView, localSendMsgParams, 0);
       }
-      if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2))
-      {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, 0);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006406", "0X8006406", 6, 0, "", "", "", "");
-        return;
+      LoveLanguageManager localLoveLanguageManager = (LoveLanguageManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(273);
+      if ((i != 0) && (localLoveLanguageManager.a())) {
+        localSendMsgParams.i = true;
       }
-    } while (this.jdField_a_of_type_Int != 5);
-    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_AndroidContentContext, 1, 3);
+      ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramView, null, localSendMsgParams);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
+        break;
+      }
+      paramView = (HotChatManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59);
+      if ((paramView != null) && (paramView.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {}
+      for (paramView = "2";; paramView = "1")
+      {
+        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_msg", "", "grp_msg", "clk_like", 0, 0, localMessageForText.frienduin, "", paramView, "");
+        return;
+        paramView = localMessageForText.msg;
+        i = 0;
+        break;
+      }
+      label275:
+      i = 0;
+    }
   }
 }
 

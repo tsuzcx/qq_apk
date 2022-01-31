@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.PSTNC2CActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.av.ui.QAVPtvTemplateAdapter;
 
 public class jzc
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public jzc(PSTNC2CActivity paramPSTNC2CActivity) {}
+  public jzc(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter, String paramString, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80063FA", "0X80063FA", 5, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

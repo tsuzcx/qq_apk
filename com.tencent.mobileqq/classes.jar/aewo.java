@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder.MomentViewHolder;
+import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
 
 public class aewo
-  implements DialogInterface.OnClickListener
+  implements CsTask.OnCsError
 {
-  public aewo(BaseMomentItemBuilder paramBaseMomentItemBuilder, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder) {}
+  public aewo(VideoFeedsUploader paramVideoFeedsUploader) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)) {
-      new NowVideoReporter().h("video_public").i("del_failfeed").d("2").c(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder) + "").a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)).e("2").b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a);
-    }
+    VideoFeedsUploader.a(this.a).a = -1004;
+    VideoFeedsUploader.a(this.a).c = paramInt;
+    VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
   }
 }
 

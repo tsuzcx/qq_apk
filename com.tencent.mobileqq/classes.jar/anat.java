@@ -1,40 +1,61 @@
-import android.util.Log;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.QIMReportController;
-import com.tencent.mobileqq.statistics.reportitem.QIMMsgReportItem;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.DataReporter;
-import java.util.Iterator;
-import java.util.List;
-
 public class anat
-  implements Runnable
 {
-  public anat(DataReporter paramDataReporter, List paramList, QQAppInterface paramQQAppInterface) {}
+  private static int jdField_a_of_type_Int = 0;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static anat b;
+  private anat jdField_a_of_type_Anat;
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(128);
   
-  public void run()
+  public static anat a()
   {
-    try
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      if (b != null)
       {
-        QIMMsgReportItem localQIMMsgReportItem = (QIMMsgReportItem)localIterator.next();
-        QIMReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localQIMMsgReportItem);
+        anat localanat = b;
+        b = localanat.jdField_a_of_type_Anat;
+        localanat.jdField_a_of_type_Anat = null;
+        jdField_a_of_type_Int -= 1;
+        return localanat;
+      }
+      return new anat();
+    }
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
+  }
+  
+  public anat a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramObject);
+    return this;
+  }
+  
+  public void a()
+  {
+    b();
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Int < 50)
+      {
+        this.jdField_a_of_type_Anat = b;
+        b = this;
+        jdField_a_of_type_Int += 1;
       }
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMReportController.DataReporter", 2, Log.getStackTraceString(localThrowable));
-      }
-    }
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anat
  * JD-Core Version:    0.7.0.1
  */

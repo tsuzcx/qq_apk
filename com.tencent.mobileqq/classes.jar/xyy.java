@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.selectmember.TroopListAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
 
-class xyy
-  implements Runnable
+public class xyy
+  implements View.OnClickListener
 {
-  xyy(xyx paramxyx) {}
+  public xyy(FriendTabView paramFriendTabView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a.notifyDataSetChanged();
+    this.a.a.a(1);
   }
 }
 

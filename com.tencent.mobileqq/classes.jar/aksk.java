@@ -1,35 +1,24 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.wholepeople.WholePeoplePlugin;
+import com.tencent.qphone.base.util.QLog;
 
-class aksk
-  implements Runnable
+public class aksk
+  implements View.OnClickListener
 {
-  aksk(aksi paramaksi) {}
+  public aksk(WholePeoplePlugin paramWholePeoplePlugin, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
-    if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a != null)
-    {
-      if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2) {
-        ((TMAssistantCallYYB_V1)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a, "2");
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = null;
-        return;
-        ((TMAssistantCallYYB_V2)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAuthorized(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a, "2");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("WholePeoplePlugin", 2, "onClick " + this.jdField_a_of_type_JavaLangString);
     }
-    LogUtility.e("MyAppApi", "startToAuthorizedDirect->onGetA1Fail mLastAuthorizeParam = null, needCarryQQIdentity = true");
+    this.jdField_a_of_type_ComTencentMobileqqWholepeopleWholePeoplePlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksk
  * JD-Core Version:    0.7.0.1
  */

@@ -24,17 +24,17 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.LinkedBlockingQueue;
-import zlv;
-import zlw;
-import zlx;
-import zly;
-import zlz;
+import zpb;
+import zpc;
+import zpd;
+import zpe;
+import zpf;
 
 public class TroopQZoneUploadAlbumHandler
   extends BusinessHandler
 {
   private volatile int jdField_a_of_type_Int = 0;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new zlx(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new zpd(this);
   public Handler a;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public Messenger a;
@@ -52,7 +52,7 @@ public class TroopQZoneUploadAlbumHandler
     this.jdField_a_of_type_AndroidOsMessenger = null;
     this.jdField_b_of_type_AndroidOsMessenger = null;
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_AndroidOsHandler = new zlv(this, Looper.getMainLooper(), paramQQAppInterface);
+    this.jdField_a_of_type_AndroidOsHandler = new zpb(this, Looper.getMainLooper(), paramQQAppInterface);
   }
   
   private void a(int paramInt)
@@ -66,11 +66,11 @@ public class TroopQZoneUploadAlbumHandler
     }
   }
   
-  private void a(int paramInt1, zlz paramzlz, int paramInt2, int paramInt3)
+  private void a(int paramInt1, zpf paramzpf, int paramInt2, int paramInt3)
   {
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
     localMessage.what = 1;
-    localMessage.obj = new Object[] { Integer.valueOf(paramInt1), paramzlz, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) };
+    localMessage.obj = new Object[] { Integer.valueOf(paramInt1), paramzpf, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) };
     localMessage.sendToTarget();
   }
   
@@ -119,7 +119,7 @@ public class TroopQZoneUploadAlbumHandler
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
       this.jdField_b_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     }
-    this.jdField_b_of_type_AndroidOsHandler.post(new zlw(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new zpc(this));
   }
   
   protected Class a()
@@ -143,17 +143,17 @@ public class TroopQZoneUploadAlbumHandler
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    zlz localzlz = (zlz)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2, null);
-    if (localzlz == null) {
+    zpf localzpf = (zpf)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2, null);
+    if (localzpf == null) {
       return;
     }
-    a(paramInt2, localzlz, paramInt1, paramInt3);
+    a(paramInt2, localzpf, paramInt1, paramInt3);
   }
   
   public void a(int paramInt, String paramString, long paramLong)
   {
     if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt, new zlz(this, paramString, paramLong));
+      this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt, new zpf(this, paramString, paramLong));
     }
     a(paramInt);
   }
@@ -163,9 +163,9 @@ public class TroopQZoneUploadAlbumHandler
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject = (zly)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      View localView = ((zly)localObject).a();
-      localObject = ((zly)localObject).a();
+      Object localObject = (zpe)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      View localView = ((zpe)localObject).a();
+      localObject = ((zpe)localObject).a();
       if ((localView != null) && (localObject != null)) {
         ((TroopQZoneUploadAlbumHandler.Callback)localObject).a(localView, paramLong, paramInt1, paramInt2);
       }
@@ -184,14 +184,14 @@ public class TroopQZoneUploadAlbumHandler
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      zly localzly = (zly)localIterator.next();
-      if (localzly.a() == paramView)
+      zpe localzpe = (zpe)localIterator.next();
+      if (localzpe.a() == paramView)
       {
-        localzly.b = new WeakReference(paramCallback);
+        localzpe.b = new WeakReference(paramCallback);
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new zly(this, paramView, paramCallback));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new zpe(this, paramView, paramCallback));
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, long paramLong, int paramInt2, int paramInt3)
@@ -216,15 +216,15 @@ public class TroopQZoneUploadAlbumHandler
       }
       if ((paramInt2 == 1001) && (((MessageRecord)localObject1).extraflag != 32768))
       {
-        ((StructMsgForGeneralShare)localObject2).setSummary(BaseApplication.getContext().getResources().getString(2131433628));
+        ((StructMsgForGeneralShare)localObject2).setSummary(BaseApplication.getContext().getResources().getString(2131433645));
         ((StructMsgForGeneralShare)localObject2).setProgress(paramInt3);
         return;
       }
       paramInt1 = 32772;
-      localObject1 = BaseApplication.getContext().getResources().getString(2131433625);
+      localObject1 = BaseApplication.getContext().getResources().getString(2131433642);
       if ((paramInt2 == 1000) || (paramInt2 == 1004))
       {
-        localObject1 = BaseApplication.getContext().getResources().getString(2131433625);
+        localObject1 = BaseApplication.getContext().getResources().getString(2131433642);
         paramInt1 = 32772;
       }
       for (;;)
@@ -239,12 +239,12 @@ public class TroopQZoneUploadAlbumHandler
         return;
         if (paramInt2 == 1003)
         {
-          localObject1 = BaseApplication.getContext().getResources().getString(2131433626);
+          localObject1 = BaseApplication.getContext().getResources().getString(2131433643);
           paramInt1 = 32768;
         }
         else if (paramInt2 == 1005)
         {
-          localObject1 = BaseApplication.getContext().getResources().getString(2131433627);
+          localObject1 = BaseApplication.getContext().getResources().getString(2131433644);
           paramInt1 = 32770;
           ((StructMsgForGeneralShare)localObject2).mMsgActionData = "";
           ((StructMsgForGeneralShare)localObject2).mMsg_A_ActionData = "";

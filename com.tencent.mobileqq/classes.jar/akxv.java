@@ -1,53 +1,29 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.qidian.controller.QidianHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.Button;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
 public class akxv
   implements Runnable
 {
-  public akxv(QidianHandler paramQidianHandler, ToServiceMsg paramToServiceMsg, HashMap paramHashMap) {}
+  public akxv(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager, Bitmap paramBitmap1, Bitmap paramBitmap2) {}
   
   public void run()
   {
-    try
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getString("extUin");
-      long l = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getLong("uinseq");
-      int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getInt("uinType");
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = this.jdField_a_of_type_ComTencentQidianControllerQidianHandler.b.a().b((String)localObject, i, l);
-        if ((localObject != null) && ((localObject instanceof MessageForUniteGrayTip)))
-        {
-          localObject = (MessageForUniteGrayTip)localObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null))
-          {
-            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
-            ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsgData(this.jdField_a_of_type_ComTencentQidianControllerQidianHandler.b);
-            this.jdField_a_of_type_ComTencentQidianControllerQidianHandler.a(1005, true, this.jdField_a_of_type_JavaUtilHashMap);
-          }
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(QidianHandler.a(), 2, "handleBlockBulkMsg ", localException);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    localStateListDrawable.addState(new int[] { 16842919 }, localBitmapDrawable);
+    localBitmapDrawable = new BitmapDrawable(this.b);
+    localStateListDrawable.addState(new int[0], localBitmapDrawable);
+    if (ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager) != null) {
+      ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setBackgroundDrawable(localStateListDrawable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,72 @@
-import com.tencent.filter.Frame;
-import com.tencent.mobileqq.shortvideo.filter.QQPtvVideoFilter;
-import com.tencent.sveffects.SLog;
-import com.tencent.ttpic.gles.SegmentDataPipe;
-import com.tencent.ttpic.thread.SegmentGLThread;
-import com.tencent.ttpic.util.OnSegmentReadyListener;
+import com.tencent.mobileqq.richmedia.dc.DataAdapter;
+import com.tencent.mobileqq.richmedia.dc.DataCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class ahnk
-  implements OnSegmentReadyListener
+  extends DataAdapter
 {
-  public ahnk(QQPtvVideoFilter paramQQPtvVideoFilter) {}
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private long c;
   
-  public SegmentDataPipe getReadyData()
+  public HashMap a(String paramString)
   {
-    return QQPtvVideoFilter.a(this.a).getCurrentDataPipe();
-  }
-  
-  public boolean needWait()
-  {
-    return QQPtvVideoFilter.a(this.a).needWait();
-  }
-  
-  public void onTextureReady(Frame paramFrame)
-  {
-    if (QQPtvVideoFilter.a(this.a) != null) {
-      QQPtvVideoFilter.a(this.a).postSegJob(paramFrame);
+    paramString = null;
+    if ((this.jdField_a_of_type_Long == 0L) || (this.c == 0L)) {
+      return null;
     }
-  }
-  
-  public void reset()
-  {
-    if (QQPtvVideoFilter.a(this.a) != null)
+    if (QLog.isColorLevel()) {
+      paramString = new StringBuilder();
+    }
+    HashMap localHashMap = new HashMap();
+    if (this.jdField_a_of_type_Boolean)
     {
-      QQPtvVideoFilter.a(this.a).reset();
-      if (SLog.a()) {
-        SLog.d("QQPtvVideoFilter", "initSegmentGLThread reset!");
+      localHashMap.put("is_progressive", "progressive");
+      localHashMap.put("view_count", "1");
+      if (this.jdField_b_of_type_Boolean)
+      {
+        localHashMap.put("failure", "1");
+        if (QLog.isColorLevel())
+        {
+          paramString.append("progressive:\n");
+          paramString.append("refresh_dp:" + String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) + "\n");
+          paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
+          QLog.i(DataCollector.a, 2, paramString.toString());
+        }
+      }
+    }
+    label391:
+    for (;;)
+    {
+      return localHashMap;
+      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
+        localHashMap.put("to_dp", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
+      }
+      if ((this.c <= this.jdField_a_of_type_Long) || (this.c <= this.jdField_b_of_type_Long)) {
+        break;
+      }
+      localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
+      break;
+      localHashMap.put("is_progressive", "baseline");
+      localHashMap.put("view_count", "1");
+      if (this.jdField_b_of_type_Boolean) {
+        localHashMap.put("failure", "1");
+      }
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label391;
+        }
+        paramString.append("baseline:\n");
+        paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
+        QLog.i(DataCollector.a, 2, paramString.toString());
+        break;
+        if (this.c > this.jdField_a_of_type_Long) {
+          localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
+        }
       }
     }
   }

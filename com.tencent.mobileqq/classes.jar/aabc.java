@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARMusicController;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
 
 public class aabc
   implements Runnable
 {
-  public aabc(AREngine paramAREngine) {}
+  public aabc(Interactive3DRenderable paramInteractive3DRenderable) {}
   
   public void run()
   {
-    QLog.i("AREngine_AREngine", 1, "processMIGCloudObjectClassifyResult. download resource timeout.");
-    AREngine.a(this.a).a();
-    this.a.c(false, null);
+    if (Interactive3DRenderable.a(this.a) != 9) {}
+    do
+    {
+      return;
+      if (Interactive3DRenderable.a(this.a) != null) {
+        Interactive3DRenderable.a(this.a).a(0, 2);
+      }
+    } while (Interactive3DRenderable.a(this.a) == null);
+    Interactive3DRenderable.a(this.a).a(true);
   }
 }
 

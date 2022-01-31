@@ -1,30 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
+import com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.List;
 
 public class ogw
-  implements Animator.AnimatorListener
+  implements AbsListView.OnScrollListener
 {
-  public ogw(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public ogw(EditVideoTag paramEditVideoTag) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.a = false;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag)).a().size()) && (!EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag)).a()))
+    {
+      paramAbsListView = EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag);
+      EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag)).b(paramAbsListView);
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
   }
 }
 

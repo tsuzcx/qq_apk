@@ -85,8 +85,8 @@ public class BlessSelectMemberActivity$BlessPTVProcessTask
       }
       localShortVideoUploadInfo.d = true;
       localShortVideoUploadInfo.a = false;
-      if ((localShortVideoUploadInfo.s != null) && (localShortVideoUploadInfo.s.length() == 39)) {
-        localShortVideoUploadInfo.s = localShortVideoUploadInfo.s.substring(0, 28);
+      if ((localShortVideoUploadInfo.r != null) && (localShortVideoUploadInfo.r.length() == 39)) {
+        localShortVideoUploadInfo.r = localShortVideoUploadInfo.r.substring(0, 28);
       }
       ((ShortVideoReq)localObject1).a(localShortVideoUploadInfo);
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = ((MessageForShortVideo)new AioShortVideoOperator(???.app).a(localShortVideoUploadInfo));

@@ -1,18 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.mobileqq.ark.ArkAiBubbleView;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
 
-class aarx
-  implements DialogInterface.OnDismissListener
+public class aarx
+  implements Runnable
 {
-  aarx(aarv paramaarv) {}
+  public aarx(ArkAiBubbleView paramArkAiBubbleView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    ARMapActivity.a(this.a.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapActivity", 2, "onGetLBSPoiList clicked");
+    ViewParent localViewParent = this.a.jdField_a_of_type_AndroidViewView.getParent();
+    if ((localViewParent instanceof ViewGroup)) {
+      ((ViewGroup)localViewParent).removeView(this.a.jdField_a_of_type_AndroidViewView);
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar = null;
     }
   }
 }

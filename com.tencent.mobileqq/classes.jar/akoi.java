@@ -1,40 +1,20 @@
-import android.os.Bundle;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import mqq.app.AppRuntime;
 
-public class akoi
+public final class akoi
   implements Runnable
 {
-  public akoi(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
+  public akoi(AppRuntime paramAppRuntime, Intent paramIntent) {}
   
   public void run()
   {
-    try
-    {
-      if (BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack) != null)
-      {
-        JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-        SendMsg localSendMsg = new SendMsg("setActionButton");
-        localSendMsg.a.putString("iconType", localJSONObject.optString("iconType"));
-        localSendMsg.a.putString("visible", localJSONObject.optString("visible"));
-        localSendMsg.a.putString("callBackKey", localJSONObject.optString("callBackKey"));
-        localSendMsg.a.putString("rightText", localJSONObject.optString("text"));
-        BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack).b(localSendMsg);
-      }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    SwiftBrowserCookieMonster.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akoi
  * JD-Core Version:    0.7.0.1
  */

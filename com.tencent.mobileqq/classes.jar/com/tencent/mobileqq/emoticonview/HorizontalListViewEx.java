@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abzc;
+import acge;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
@@ -206,7 +206,7 @@ public class HorizontalListViewEx
     }
     if ((k == -1) && (m == -1))
     {
-      ViewCompat.postOnAnimation(this, new abzc(this));
+      ViewCompat.postOnAnimation(this, new acge(this));
       return;
     }
     requestLayout();

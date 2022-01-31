@@ -1,37 +1,23 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
-class uhx
-  implements PreloadManager.OnGetPathListener
+public class uhx
+  implements ValueAnimation.AnimationUpdateListener
 {
-  uhx(uhv paramuhv) {}
+  public uhx(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
+    this.a.c.setText(paramInteger + "");
+    if (paramInteger.intValue() > 9999)
     {
-      paramPathResult = paramPathResult + File.separator;
-      this.a.a.specailBackgroundAnimInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult + "anim_bg");
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_SPECAIL_ANIM specailBackgroundAnimInfo=" + this.a.a.specailBackgroundAnimInfo);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
+      this.a.c.setTextSize(36.0F);
       return;
     }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
+    this.a.c.setTextSize(44.0F);
   }
 }
 

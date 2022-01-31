@@ -1,60 +1,26 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.troop.TroopStoryUtil;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder;
-import com.tencent.mobileqq.data.MessageForQQStoryComment;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class vag
-  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long = 0L;
+  public float a;
+  public int a;
+  public ValueAnimator a;
+  public Scroller a;
+  public boolean a;
+  public float b;
+  public int b;
+  public Scroller b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  public vag(QQStoryCommentItemBuilder paramQQStoryCommentItemBuilder) {}
-  
-  public void onClick(View paramView)
-  {
-    long l1 = System.currentTimeMillis();
-    if (l1 - this.jdField_a_of_type_Long < 50L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l1;
-    MessageForQQStoryComment localMessageForQQStoryComment = (MessageForQQStoryComment)((BaseBubbleBuilder.ViewHolder)AIOUtils.a(paramView)).a;
-    if (TroopStoryUtil.a(localMessageForQQStoryComment.vid))
-    {
-      StoryPlayVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_AndroidContentContext, localMessageForQQStoryComment.vid, 1004);
-      StoryReportor.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
-      return;
-    }
-    paramView = localMessageForQQStoryComment.selfuin;
-    if (localMessageForQQStoryComment.isSend()) {
-      paramView = localMessageForQQStoryComment.frienduin;
-    }
-    long l2 = 0L;
-    try
-    {
-      l1 = Long.parseLong(paramView);
-      StoryPlayVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_AndroidContentContext, localMessageForQQStoryComment.vid, l1, 5, null, 0);
-      return;
-    }
-    catch (NumberFormatException paramView)
-    {
-      for (;;)
-      {
-        l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QQStoryCommentItemBuilder", 2, "uin parse error");
-          l1 = l2;
-        }
-      }
-    }
-  }
+  public vag(HeartCombolEffectView paramHeartCombolEffectView) {}
 }
 
 

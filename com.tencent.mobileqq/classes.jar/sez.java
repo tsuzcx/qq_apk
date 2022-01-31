@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.mobileqq.redtouch.VipBannerInfo;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView.OnTextLineChangeListener;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class sez
-  extends GameCenterObserver
+  implements FollowImageTextView.OnTextLineChangeListener
 {
-  public sez(Conversation paramConversation) {}
+  public sez(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(int paramInt)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt);
-    if ((paramBoolean1) && (paramInt != 2) && (Conversation.b(this.a))) {
-      VipBannerInfo.a(this.a);
-    }
+    if (this.a.f) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramInt <= 0) || (ChatSettingForTroop.b(this.a) == paramInt));
+      ChatSettingForTroop.a(this.a, paramInt);
+    } while (this.a.a.hasSetNewTroopHead);
+    ChatSettingForTroop.b(this.a);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia;
 
-import agsi;
+import ahgk;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -27,7 +27,7 @@ public abstract class ICallBack$Stub
     if ((localIInterface != null) && ((localIInterface instanceof ICallBack))) {
       return (ICallBack)localIInterface;
     }
-    return new agsi(paramIBinder);
+    return new ahgk(paramIBinder);
   }
   
   public IBinder asBinder()

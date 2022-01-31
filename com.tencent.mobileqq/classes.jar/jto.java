@@ -1,25 +1,26 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.BaseToolbar;
+import com.tencent.av.ui.EffectSettingUi;
 
 public class jto
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public jto(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jto(EffectSettingUi paramEffectSettingUi) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      this.a.a.a(new Object[] { Integer.valueOf(102) });
-      return;
+    paramAnimation = (BaseToolbar)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
+    if (paramAnimation != null) {
+      paramAnimation.hideToolbar();
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(this.a.c, 2, "mRootView.post(new Runnable()-->exception=" + localException.getMessage());
-    }
+    this.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

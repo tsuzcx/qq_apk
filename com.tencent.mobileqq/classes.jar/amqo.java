@@ -1,39 +1,33 @@
-import com.tencent.open.wadl.WLog;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
-import cooperation.wadl.ipc.WadlProxyServiceMonitor;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import cooperation.qqpim.QQPimDefineList;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
 
 public class amqo
-  extends Thread
+  implements Runnable
 {
-  public volatile boolean a;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  private amqo(WadlProxyServiceMonitor paramWadlProxyServiceMonitor)
+  public amqo(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
   public void run()
   {
     try
     {
-      while (this.jdField_a_of_type_Boolean)
-      {
-        Thread.sleep(WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor));
-        long l = System.currentTimeMillis();
-        if ((WadlProxyServiceMonitor.b(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) != 0L) && (l - WadlProxyServiceMonitor.b(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) > 30000L) && (WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor)) && (WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) != null))
-        {
-          if (QLog.isColorLevel()) {
-            WLog.b(WadlProxyServiceMonitor.a(), "##@<<<MonitorWorkingThread: check ipc service status...");
-          }
-          WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor).a();
-        }
-      }
+      Bundle localBundle = new Bundle();
+      localBundle.putString(QQPimDefineList.l, this.jdField_a_of_type_JavaLangString);
+      localBundle.putString(QQPimDefineList.m, this.b);
+      QIPCServerHelper.getInstance().callClient(QQPimDefineList.b, QQPimDefineList.c, QQPimDefineList.d, localBundle, new amqp(this));
       return;
     }
-    catch (InterruptedException localInterruptedException)
+    catch (Throwable localThrowable)
     {
-      localInterruptedException.printStackTrace();
+      localThrowable.printStackTrace();
     }
   }
 }

@@ -1,23 +1,28 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.BabyQObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class tqt
-  extends MqqHandler
+  extends BabyQObserver
 {
-  public tqt(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public tqt(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 1981: 
+      if (!TextUtils.isEmpty(this.a.f)) {
+        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      }
+      if (this.a.a == 13) {
+        this.a.b();
+      }
       this.a.finish();
       return;
     }
-    this.a.d();
+    QQToast.a(this.a.app.getApp(), 1, "领取失败", 0).a();
   }
 }
 

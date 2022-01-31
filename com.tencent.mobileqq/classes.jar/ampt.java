@@ -1,40 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
 
-class ampt
-  implements ampw
+public class ampt
+  implements DialogInterface.OnClickListener
 {
-  ampt(amps paramamps) {}
+  public ampt(QfavJumpActivity paramQfavJumpActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_Ampr.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
-      try
-      {
-        localJSONObject.put("result", 0);
-        localJSONObject.put("progress", 1.0D);
-        localJSONObject.put("coverurl", paramString);
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
-        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_Ampr.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("TroopHWJsPlugin", 2, "upload thumb exception:", paramString);
-        return;
-      }
-    }
-    QLog.e("TroopHWJsPlugin", 1, "upload thumb failed!");
-    this.a.b(-1);
+    QfavJumpActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampt
  * JD-Core Version:    0.7.0.1
  */

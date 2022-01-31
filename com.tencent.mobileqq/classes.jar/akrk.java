@@ -1,76 +1,29 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
 public class akrk
-  implements Runnable
+  implements WebSoService.CallBack
 {
-  public akrk(DownloadManager paramDownloadManager) {}
+  public akrk(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    DownloadInfo localDownloadInfo;
-    try
-    {
-      if (!CommonDataAdapter.a().a().getSharedPreferences("opensdk_config", 0).getBoolean("download_clear_unuse", false))
-      {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-        for (;;)
-        {
-          if (!localIterator.hasNext()) {
-            break label174;
-          }
-          localDownloadInfo = (DownloadInfo)localIterator.next();
-          if (localDownloadInfo.jdField_c_of_type_Int != 0) {
-            break label135;
-          }
-          if (localDownloadInfo.a != 0) {
-            break;
-          }
-          String str = localDownloadInfo.jdField_c_of_type_JavaLangString;
-          label77:
-          if (this.a.a(str) == null)
-          {
-            this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
-            DownloadDBHelper.a().a(localDownloadInfo.b);
-          }
-        }
-      }
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10004;
     }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "checkDownloadList>>>", localException);
-    }
-    label135:
-    label174:
-    do
-    {
-      localObject = localDownloadInfo.h;
-      break label77;
-      if (this.a.a(localDownloadInfo) != null) {
-        break;
-      }
-      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
-      DownloadDBHelper.a().a(localDownloadInfo.b);
-      break;
-    } while (this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() <= 200);
-    Object localObject = CommonDataAdapter.a().a().getSharedPreferences("opensdk_config", 0).edit();
-    ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
-    ((SharedPreferences.Editor)localObject).commit();
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter$HybridWebReportInfo.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akrk
  * JD-Core Version:    0.7.0.1
  */

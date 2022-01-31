@@ -1,43 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class ufz
-  extends ActivateFriendsObserver
+  implements DialogInterface.OnDismissListener
 {
-  public ufz(ActivateFriendGrid paramActivateFriendGrid) {}
+  public ufz(UpgradeActivity paramUpgradeActivity) {}
   
-  public void b()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((ActivateFriendGrid.a(this.a) == null) || (ActivateFriendGrid.b(this.a) == null)) {
-      return;
-    }
-    int i = 0;
-    label23:
-    if (i < ActivateFriendGrid.a(this.a).size())
-    {
-      if (!this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2)) {
-        break label122;
-      }
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
-      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131437241));
-    }
-    for (;;)
-    {
-      i += 1;
-      break label23;
-      break;
-      label122:
-      if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
-      {
-        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
-        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131437242));
-      }
-    }
+    this.a.finish();
   }
 }
 

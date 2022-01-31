@@ -15,7 +15,7 @@ public final class EFollowSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.EFollowSource
  * JD-Core Version:    0.7.0.1
  */

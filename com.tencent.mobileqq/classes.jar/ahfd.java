@@ -1,39 +1,39 @@
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.HotWordSearchEntryModel;
-import com.tencent.mobileqq.search.fragment.HotWordsDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.util.FaceDecoder;
 
-public class ahfd
-  extends UniteSearchObserver
+class ahfd
+  extends RecyclerView.OnScrollListener
 {
-  public ahfd(HotWordsDetailFragment paramHotWordsDetailFragment) {}
+  ahfd(ahfc paramahfc) {}
   
-  public void b(int paramInt1, String paramString, int paramInt2)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(HotWordsDetailFragment.jdField_a_of_type_JavaLangString, 2, "handleSearchDiscoveryError resultCode =" + paramInt1 + "  errorMsg =" + paramString + ", fromType = " + paramInt2);
-    }
-  }
-  
-  public void b(List paramList, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(HotWordsDetailFragment.jdField_a_of_type_JavaLangString, 2, "handleSearchDiscoveryResult result =" + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 5)
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    ahfc.a(this.a, paramInt);
+    if (ahfc.a(this.a) == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(HotWordsDetailFragment.jdField_a_of_type_JavaLangString, 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
+      if (ahfc.a(this.a).a()) {
+        ahfc.a(this.a).b();
       }
-      return;
+      int i = ahfc.a(this.a).getChildCount();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        paramRecyclerView = ahfc.a(this.a).getChildAt(paramInt);
+        paramRecyclerView = (ahff)ahfc.a(this.a).getChildViewHolder(paramRecyclerView);
+        ahff.a(paramRecyclerView).setImageBitmap(ahfc.a(this.a, ahff.a(paramRecyclerView)));
+        paramInt += 1;
+      }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.a();
+    ahfc.a(this.a).a();
+    ahfc.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfd
  * JD-Core Version:    0.7.0.1
  */

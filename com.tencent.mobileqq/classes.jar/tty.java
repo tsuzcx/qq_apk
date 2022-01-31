@@ -1,19 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
-public class tty
-  implements View.OnClickListener
+class tty
+  implements Runnable
 {
-  public tty(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
+  tty(ttx paramttx) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    TroopDisbandActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
+    this.a.jdField_a_of_type_Ttw.a.c();
+    this.a.jdField_a_of_type_Ttw.a.b(this.a.jdField_a_of_type_Ttw.a.getString(2131436356));
+    Intent localIntent = new Intent(this.a.jdField_a_of_type_Ttw.a, SubLoginActivity.class);
+    localIntent.putExtra("subuin", this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
+    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_Ttw.a.b);
+    this.a.jdField_a_of_type_Ttw.a.startActivity(localIntent);
   }
 }
 

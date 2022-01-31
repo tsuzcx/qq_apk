@@ -1,33 +1,13 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.OnUseResListener;
-import com.tencent.mobileqq.utils.ContactUtils;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import com.tencent.mobileqq.ocr.OCRManager;
 
-class agaw
+public class agaw
   implements Runnable
 {
-  agaw(agav paramagav, String paramString) {}
+  public agaw(OCRManager paramOCRManager) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Agav.a.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      return;
-    }
-    this.jdField_a_of_type_Agav.a.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(false);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QRUtils.a(1, 2131429987);
-      return;
-    }
-    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
-    localUserInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Agav.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    localUserInfo.b = ContactUtils.j(this.jdField_a_of_type_Agav.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agav.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    QZoneHelper.a(this.jdField_a_of_type_Agav.a.a.jdField_a_of_type_AndroidAppActivity, localUserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agav.a.a.jdField_a_of_type_AndroidAppActivity.getString(2131429952), "快来看看我的QQ个性标签吧", 1);
+    this.a.a();
   }
 }
 

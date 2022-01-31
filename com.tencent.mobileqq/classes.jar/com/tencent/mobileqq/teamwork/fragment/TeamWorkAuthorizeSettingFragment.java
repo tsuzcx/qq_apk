@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.teamwork.fragment;
 
-import ahyo;
-import ahyp;
-import ahyq;
-import ahyr;
-import ahys;
-import ahyv;
-import ahyw;
+import aimr;
+import aims;
+import aimt;
+import aimu;
+import aimv;
+import aimy;
+import aimz;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -53,11 +53,11 @@ public class TeamWorkAuthorizeSettingFragment
 {
   public int a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ahyo(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new aimr(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public TeamWorkAuthorizeUinListAdapter a;
   private TeamWorkHandler jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler;
-  TeamWorkObserver jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkObserver = new ahyp(this);
+  TeamWorkObserver jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkObserver = new aims(this);
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   public String a;
   public List a;
@@ -80,16 +80,16 @@ public class TeamWorkAuthorizeSettingFragment
       QLog.e("TeamWorkAuthorizeSettingFragment", 1, "pubFlag error:" + paramInt);
       return;
     }
-    this.i.setText(2131439142);
+    this.i.setText(2131439170);
     switch (paramInt)
     {
     default: 
       QLog.w("TeamWorkAuthorizeSettingFragment", 1, "no process PUBFLAG:" + paramInt);
       return;
     case 2: 
-      this.g.setText(2131439132);
-      this.h.setText(2131439136);
-      this.i.setText(2131439141);
+      this.g.setText(2131439160);
+      this.h.setText(2131439164);
+      this.i.setText(2131439169);
     }
     for (;;)
     {
@@ -113,12 +113,12 @@ public class TeamWorkAuthorizeSettingFragment
       }
       this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter.a(this.b);
       return;
-      this.g.setText(2131439132);
-      this.h.setText(2131439137);
+      this.g.setText(2131439160);
+      this.h.setText(2131439165);
       continue;
-      this.g.setText(2131439133);
+      this.g.setText(2131439161);
       continue;
-      this.g.setText(2131439135);
+      this.g.setText(2131439163);
     }
   }
   
@@ -129,17 +129,17 @@ public class TeamWorkAuthorizeSettingFragment
     SparseArray localSparseArray = new SparseArray();
     if (this.b != 2)
     {
-      localActionSheet.a(getString(2131439136), 5);
-      localSparseArray.put(0, Integer.valueOf(2131439136));
-      localActionSheet.a(getString(2131439137), 5);
-      localSparseArray.put(1, Integer.valueOf(2131439137));
+      localActionSheet.a(getString(2131439164), 5);
+      localSparseArray.put(0, Integer.valueOf(2131439164));
+      localActionSheet.a(getString(2131439165), 5);
+      localSparseArray.put(1, Integer.valueOf(2131439165));
     }
     for (;;)
     {
-      localActionSheet.a(getString(2131433621), 3);
-      localSparseArray.put(j, Integer.valueOf(2131433621));
-      localActionSheet.a(new ahys(this, paramHolder, localSparseArray, localActionSheet));
-      localActionSheet.c(2131432998);
+      localActionSheet.a(getString(2131433638), 3);
+      localSparseArray.put(j, Integer.valueOf(2131433638));
+      localActionSheet.a(new aimv(this, paramHolder, localSparseArray, localActionSheet));
+      localActionSheet.c(2131433015);
       localActionSheet.show();
       return;
       j = 0;
@@ -149,9 +149,9 @@ public class TeamWorkAuthorizeSettingFragment
   private void a(boolean paramBoolean)
   {
     int m = 0;
-    ViewGroup localViewGroup1 = (ViewGroup)this.e.findViewById(2131375036);
-    ViewGroup localViewGroup2 = (ViewGroup)this.e.findViewById(2131375038);
-    ViewGroup localViewGroup3 = (ViewGroup)this.e.findViewById(2131366438);
+    ViewGroup localViewGroup1 = (ViewGroup)this.e.findViewById(2131375222);
+    ViewGroup localViewGroup2 = (ViewGroup)this.e.findViewById(2131375224);
+    ViewGroup localViewGroup3 = (ViewGroup)this.e.findViewById(2131366465);
     int j = 0;
     while (j < localViewGroup1.getChildCount())
     {
@@ -194,20 +194,20 @@ public class TeamWorkAuthorizeSettingFragment
   private void b()
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.a(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.e.findViewById(2131375035));
-    this.g = ((TextView)this.e.findViewById(2131375037));
-    this.h = ((TextView)this.e.findViewById(2131375039));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.e.findViewById(2131375042));
-    this.i = ((TextView)this.e.findViewById(2131375041));
-    b(2131432397);
-    b(2131432999, this);
-    a(getActivity().getResources().getString(2131439134));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.e.findViewById(2131375221));
+    this.g = ((TextView)this.e.findViewById(2131375223));
+    this.h = ((TextView)this.e.findViewById(2131375225));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.e.findViewById(2131375228));
+    this.i = ((TextView)this.e.findViewById(2131375227));
+    b(2131432414);
+    b(2131433016, this);
+    a(getActivity().getResources().getString(2131439162));
   }
   
   private void c()
   {
-    View localView1 = this.e.findViewById(2131375040);
-    View localView2 = this.e.findViewById(2131375038);
+    View localView1 = this.e.findViewById(2131375226);
+    View localView2 = this.e.findViewById(2131375224);
     if (this.b == 2)
     {
       localView2.setVisibility(0);
@@ -273,15 +273,15 @@ public class TeamWorkAuthorizeSettingFragment
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(getActivity(), null);
     SparseArray localSparseArray = new SparseArray();
-    localActionSheet.a(getString(2131439132), 5);
-    localSparseArray.put(0, Integer.valueOf(2131439132));
-    localActionSheet.a(getString(2131439133), 5);
-    localSparseArray.put(1, Integer.valueOf(2131439133));
-    localActionSheet.a(getString(2131439135), 5);
-    localSparseArray.put(2, Integer.valueOf(2131439135));
-    localActionSheet.a(new ahyq(this, localSparseArray, localActionSheet));
+    localActionSheet.a(getString(2131439160), 5);
+    localSparseArray.put(0, Integer.valueOf(2131439160));
+    localActionSheet.a(getString(2131439161), 5);
+    localSparseArray.put(1, Integer.valueOf(2131439161));
+    localActionSheet.a(getString(2131439163), 5);
+    localSparseArray.put(2, Integer.valueOf(2131439163));
+    localActionSheet.a(new aimt(this, localSparseArray, localActionSheet));
     localActionSheet.a("对谁公开");
-    localActionSheet.c(2131432998);
+    localActionSheet.c(2131433015);
     localActionSheet.show();
   }
   
@@ -289,19 +289,19 @@ public class TeamWorkAuthorizeSettingFragment
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(getActivity(), null);
     SparseArray localSparseArray = new SparseArray();
-    localActionSheet.a(getString(2131439136), 5);
-    localSparseArray.put(0, Integer.valueOf(2131439136));
-    localActionSheet.a(getString(2131439137), 5);
-    localSparseArray.put(1, Integer.valueOf(2131439137));
-    localActionSheet.a(new ahyr(this, localSparseArray, localActionSheet));
+    localActionSheet.a(getString(2131439164), 5);
+    localSparseArray.put(0, Integer.valueOf(2131439164));
+    localActionSheet.a(getString(2131439165), 5);
+    localSparseArray.put(1, Integer.valueOf(2131439165));
+    localActionSheet.a(new aimu(this, localSparseArray, localActionSheet));
     localActionSheet.a("获得文档的人");
-    localActionSheet.c(2131432998);
+    localActionSheet.c(2131433015);
     localActionSheet.show();
   }
   
   protected int a()
   {
-    return 2130971586;
+    return 2130971634;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -324,7 +324,7 @@ public class TeamWorkAuthorizeSettingFragment
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8007D01", "0x8007D01", 0, 0, "", "", "", "");
     if (this.jdField_a_of_type_Boolean)
     {
-      DialogUtil.b(getActivity(), 230, getString(2131439138), "", 2131439140, 2131439139, new ahyv(this), new ahyw(this)).show();
+      DialogUtil.b(getActivity(), 230, getString(2131439166), "", 2131439168, 2131439167, new aimy(this), new aimz(this)).show();
       return false;
     }
     return super.d();
@@ -365,10 +365,10 @@ public class TeamWorkAuthorizeSettingFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131366438: 
-    case 2131375036: 
-    case 2131375038: 
-    case 2131375033: 
+    case 2131366465: 
+    case 2131375222: 
+    case 2131375224: 
+    case 2131375219: 
       do
       {
         return;
@@ -413,7 +413,7 @@ public class TeamWorkAuthorizeSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment
  * JD-Core Version:    0.7.0.1
  */

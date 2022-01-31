@@ -336,6 +336,10 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("PubAccountSvc.get_detail_info", new int[] { 2 });
     jdField_a_of_type_JavaUtilMap.put("SQQShopFolderSvc.GetAcctBindPuin", new int[] { 2 });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xa6d", new int[] { 2 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4b", new int[] { 128 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4a", new int[] { 128 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb4c", new int[] { 128 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb51", new int[] { 128 });
     jdField_a_of_type_JavaUtilMap.put("NearbyGroup.GetGroupList", new int[] { 3 });
     jdField_a_of_type_JavaUtilMap.put("EncounterSvc.ReqGetEntrance", new int[] { 3 });
     jdField_a_of_type_JavaUtilMap.put("NeighborRecommender.ReqGetRecommender", new int[] { 3 });
@@ -694,6 +698,11 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb14", new int[] { 20 });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0xb12", new int[] { 123 });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.cmd0xb67", new int[] { 125 });
+    jdField_a_of_type_JavaUtilMap.put("DynamicFeeds.getFeeds", new int[] { 106 });
+    jdField_a_of_type_JavaUtilMap.put("DynamicList.getlist", new int[] { 106 });
+    jdField_a_of_type_JavaUtilMap.put("DynamicFeedsNew.getfeeds", new int[] { 129 });
+    jdField_a_of_type_JavaUtilMap.put("DynamicFeedsLike.like", new int[] { 129 });
+    jdField_a_of_type_JavaUtilMap.put("DynamicFeedsDislike.dislike", new int[] { 129 });
   }
 }
 

@@ -1,13 +1,19 @@
-import android.util.Pair;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagUtil;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agbe
-  implements Comparator
+  implements DialogInterface.OnDismissListener
 {
-  public int a(Pair paramPair1, Pair paramPair2)
+  public agbe(OCRRecognitionResultActivity paramOCRRecognitionResultActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return TagUtil.a((CharSequence)paramPair1.second) - TagUtil.a((CharSequence)paramPair2.second);
+    OCRRecognitionResultActivity.a(this.a, -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("OCRRecognitionResultActivity", 2, "mProgressDialog dismiss");
+    }
   }
 }
 

@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import android.view.animation.Interpolator;
 
 public class aebt
-  implements DialogInterface.OnDismissListener
+  implements Interpolator
 {
-  public aebt(GameRoomTransActivity paramGameRoomTransActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public float getInterpolation(float paramFloat)
   {
-    this.a.finish();
+    if (paramFloat < 0.5D) {
+      return 0.0F;
+    }
+    return (paramFloat - 0.5F) * 2.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebt
  * JD-Core Version:    0.7.0.1
  */

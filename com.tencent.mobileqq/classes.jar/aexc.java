@@ -1,35 +1,17 @@
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.ListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexc
-  implements AbsListView.OnScrollListener
+  implements View.OnClickListener
 {
-  public aexc(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public aexc(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if (paramInt == 0)
-    {
-      paramInt = i;
-      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
-      {
-        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
-        paramInt = i;
-        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
-          paramInt = 1;
-        }
-      }
-      if (paramInt != 0) {
-        NearbyMomentFragment.a(this.a);
-      }
-    }
+    ((Activity)this.a.getContext()).finish();
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

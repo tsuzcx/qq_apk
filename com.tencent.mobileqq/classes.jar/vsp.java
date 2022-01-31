@@ -1,18 +1,11 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
-
-public class vsp
+class vsp
   implements Runnable
 {
-  public vsp(MultiForwardChatPie paramMultiForwardChatPie) {}
+  vsp(vsn paramvsn, String paramString) {}
   
   public void run()
   {
-    MultiForwardChatPie.a(this.a).setVisibility(0);
-    MultiForwardChatPie.a(this.a).setText(2131433404);
-    this.a.d.setText(this.a.g);
-    this.a.y();
+    vsn.a(this.jdField_a_of_type_Vsn, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,16 +1,15 @@
-import com.tencent.biz.troopgift.TroopGiftAioPanelData;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
 
 class aeco
   implements Runnable
 {
-  aeco(aecn paramaecn, TroopGiftAioPanelData paramTroopGiftAioPanelData) {}
+  aeco(aecn paramaecn) {}
   
   public void run()
   {
-    NearbyGiftPanelDialog.a(this.jdField_a_of_type_Aecn.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog).setGiftData(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData, true);
-    NearbyGiftPanelDialog.a(this.jdField_a_of_type_Aecn.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog).b(this.jdField_a_of_type_Aecn.a.jdField_a_of_type_Int);
+    if (aecn.a(this.a) != null) {
+      aecn.a(this.a).run();
+    }
   }
 }
 

@@ -1,28 +1,24 @@
 import android.view.View;
-import com.tencent.qidian.PhotoWallViewForQiDianProfile;
-import com.tencent.qidian.PhotoWallViewForQiDianProfile.PhotoWallCallback;
-import com.tencent.qidian.data.CompanyShowCaseInfo;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.List;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import cooperation.troop.TroopPluginManager.TroopPluginCallback;
 
 public class akvv
-  implements AdapterView.OnItemClickListener
+  implements TroopPluginManager.TroopPluginCallback
 {
-  public akvv(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile) {}
+  public akvv(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    paramAdapterView = (CompanyShowCaseInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.a.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile$PhotoWallCallback == null) {
-      return;
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.e = true;
+      ProfileCardMoreInfoView.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
     }
-    this.a.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile$PhotoWallCallback.a(paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akvv
  * JD-Core Version:    0.7.0.1
  */

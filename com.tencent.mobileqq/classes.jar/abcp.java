@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-class abcp
-  implements DialogInterface.OnClickListener
+public class abcp
+  extends AnimateUtils.AnimationAdapter
 {
-  abcp(abco paramabco) {}
+  public abcp(ConversationPullDownActiveBase paramConversationPullDownActiveBase) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.a.finish();
+    this.a.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abcp
  * JD-Core Version:    0.7.0.1
  */

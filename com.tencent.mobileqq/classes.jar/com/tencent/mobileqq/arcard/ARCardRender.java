@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.arcard;
 
-import aafb;
-import aafc;
-import aafd;
+import aamc;
+import aamd;
+import aame;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
@@ -306,10 +306,10 @@ public class ARCardRender
       }
       paramARRenderResourceInfo = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
       this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = null;
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aafb(this, paramARRenderResourceInfo));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aamc(this, paramARRenderResourceInfo));
       return false;
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aafc(this, localARBaseRender1, paramARRenderResourceInfo));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aamd(this, localARBaseRender1, paramARRenderResourceInfo));
     return true;
   }
   
@@ -355,7 +355,7 @@ public class ARCardRender
   public void d()
   {
     QLog.i("AREngine_ARRenderManagerImpl", 1, "stopModelRender.");
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aafd(this));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aame(this));
   }
   
   public void e()
@@ -557,7 +557,7 @@ public class ARCardRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARCardRender
  * JD-Core Version:    0.7.0.1
  */

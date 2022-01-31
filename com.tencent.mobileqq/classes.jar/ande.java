@@ -1,29 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import java.util.Comparator;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import cooperation.qzone.webviewplugin.QzoneUiJsPlugin;
 
-public final class ande
-  implements Comparator
+public class ande
+  implements Runnable
 {
-  public int a(FaceLayer.FaceItem paramFaceItem1, FaceLayer.FaceItem paramFaceItem2)
-  {
-    long l = paramFaceItem1.a - paramFaceItem2.a;
-    if (l < 0L) {
-      return -1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return 1;
-  }
+  public ande(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
   
-  public boolean equals(Object paramObject)
+  public void run()
   {
-    return (paramObject != null) && ((paramObject instanceof ande));
+    RemoteHandleManager.a().a().h(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ande
  * JD-Core Version:    0.7.0.1
  */

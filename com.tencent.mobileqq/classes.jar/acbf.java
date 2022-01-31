@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class acbf
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  acbf(acbd paramacbd) {}
+  acbf(acbe paramacbe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    acbd.a(this.a).dismiss();
+    QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.i(this.a.a);
+    QQToast.a(localQQAppInterface.getApplication(), "哦哦~~~获取个签同步说说设置失败，检查一下网络哦！", 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131558448));
   }
 }
 

@@ -1,34 +1,22 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoManager;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListHomeFeed;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedData;
 import java.util.List;
 
 public class nxj
   implements Runnable
 {
-  public nxj(HomeFeedPresenter paramHomeFeedPresenter, ArrayList paramArrayList) {}
+  public nxj(ProfileFeedPresenter paramProfileFeedPresenter, HomeFeedData paramHomeFeedData) {}
   
   public void run()
   {
-    FeedVideoManager localFeedVideoManager = (FeedVideoManager)SuperManager.a(12);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.d)
     {
-      Object localObject = (StoryHomeFeed)localIterator.next();
-      if ((localObject instanceof VideoListHomeFeed))
-      {
-        localObject = (VideoListHomeFeed)localObject;
-        FeedVideoInfo localFeedVideoInfo = ((VideoListHomeFeed)localObject).a().getVideoInfo();
-        localFeedVideoInfo.mVideoItemList.addAll(((VideoListHomeFeed)localObject).a());
-        localFeedVideoManager.a(0, localFeedVideoInfo.feedId, localFeedVideoInfo.mVideoSeq, localFeedVideoInfo.mVideoItemList, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mIsVideoEnd, localFeedVideoInfo.mVideoPullType, true);
-      }
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
+      return;
     }
+    ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
+    ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter).remove(ProfileFeedPresenter.a());
+    ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter);
   }
 }
 

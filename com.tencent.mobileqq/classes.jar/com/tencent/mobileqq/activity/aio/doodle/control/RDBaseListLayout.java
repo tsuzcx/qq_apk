@@ -13,8 +13,8 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.ScrollView;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import uqi;
-import uqj;
+import utk;
+import utl;
 
 public abstract class RDBaseListLayout
   extends RelativeLayout
@@ -22,7 +22,7 @@ public abstract class RDBaseListLayout
   private int jdField_a_of_type_Int = -1;
   private View jdField_a_of_type_AndroidViewView;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private uqi jdField_a_of_type_Uqi;
+  private utk jdField_a_of_type_Utk;
   private int b = 0;
   
   public RDBaseListLayout(Context paramContext)
@@ -40,7 +40,7 @@ public abstract class RDBaseListLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private uqj a(View paramView)
+  private utl a(View paramView)
   {
     if (paramView == null) {
       return null;
@@ -48,8 +48,8 @@ public abstract class RDBaseListLayout
     for (Object localObject = paramView;; localObject = (View)localObject)
     {
       localObject = ((View)localObject).getTag();
-      if ((localObject != null) && ((localObject instanceof uqj))) {
-        return (uqj)localObject;
+      if ((localObject != null) && ((localObject instanceof utl))) {
+        return (utl)localObject;
       }
       localObject = paramView.getParent();
       if (!(localObject instanceof View)) {
@@ -66,7 +66,7 @@ public abstract class RDBaseListLayout
       this.jdField_a_of_type_AndroidViewView = new HorizontalListView(getContext());
       ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setOverScrollMode(2);
       this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setAdapter(this.jdField_a_of_type_Uqi);
+      ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setAdapter(this.jdField_a_of_type_Utk);
       addView(this.jdField_a_of_type_AndroidViewView);
       return;
     }
@@ -79,7 +79,7 @@ public abstract class RDBaseListLayout
     localLinearLayout.setOrientation(1);
     this.jdField_a_of_type_AndroidViewView = new ListView(getContext());
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    ((ListView)this.jdField_a_of_type_AndroidViewView).setAdapter(this.jdField_a_of_type_Uqi);
+    ((ListView)this.jdField_a_of_type_AndroidViewView).setAdapter(this.jdField_a_of_type_Utk);
     localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
   }
   
@@ -166,12 +166,12 @@ public abstract class RDBaseListLayout
   public boolean a(int paramInt)
   {
     this.b = paramInt;
-    this.jdField_a_of_type_Uqi = new uqi(this, null);
-    this.jdField_a_of_type_Uqi.a();
+    this.jdField_a_of_type_Utk = new utk(this, null);
+    this.jdField_a_of_type_Utk.a();
     a(this.b);
     boolean bool = a();
     if (bool) {
-      this.jdField_a_of_type_Uqi.notifyDataSetChanged();
+      this.jdField_a_of_type_Utk.notifyDataSetChanged();
     }
     return bool;
   }
@@ -179,8 +179,8 @@ public abstract class RDBaseListLayout
   public void b()
   {
     a();
-    if (this.jdField_a_of_type_Uqi != null) {
-      this.jdField_a_of_type_Uqi.b();
+    if (this.jdField_a_of_type_Utk != null) {
+      this.jdField_a_of_type_Utk.b();
     }
   }
   
@@ -227,8 +227,8 @@ public abstract class RDBaseListLayout
   
   public void c()
   {
-    if (this.jdField_a_of_type_Uqi != null) {
-      this.jdField_a_of_type_Uqi.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Utk != null) {
+      this.jdField_a_of_type_Utk.notifyDataSetChanged();
     }
   }
 }

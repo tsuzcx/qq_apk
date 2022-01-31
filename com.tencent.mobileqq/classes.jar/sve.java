@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class sve
-  implements WebProcessManager.WebProcessStartListener
+public class sve
+  implements View.OnClickListener
 {
-  sve(svd paramsvd) {}
+  public sve(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      Leba.b(this.a.a.a).a();
+    if (System.currentTimeMillis() - this.a.a < 2000L) {
+      return;
+    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (HongbaoShowerActivity.a(this.a) == 0) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      ReportController.b(localQQAppInterface, "dc01440", "", "", "0X80077EA", "0X80077EA", 0, 0, paramView, "", "", "");
+      return;
     }
   }
 }

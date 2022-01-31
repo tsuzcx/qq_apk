@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class ury
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ury(ArkAppView paramArkAppView) {}
+  public ury(DoodlePanel paramDoodlePanel) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.mViewImpl.getViewModel();
-    if (paramView != null) {
-      paramView.reinitArkContainer();
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
     }
+    if (DoodlePanel.a(this.a) != null) {
+      DoodlePanel.a(this.a).a(false, false);
+    }
+    DoodlePanel.a(this.a);
   }
 }
 

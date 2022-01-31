@@ -1,41 +1,23 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout;
-import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout.OnDraggingListener;
-import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import java.util.ArrayList;
 
 public class ktq
-  implements DragFrameLayout.OnDraggingListener
+  implements Runnable
 {
-  public ktq(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public ktq(VideoCoverAdapter paramVideoCoverAdapter) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void run()
   {
-    if (paramInt1 - paramInt3 > DisplayUtil.a(this.a, 60.0F))
+    if ((VideoCoverAdapter.a(this.a) == null) || (VideoCoverAdapter.a(this.a).size() == 0)) {}
+    VideoCoverItem localVideoCoverItem;
+    do
     {
-      PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.b(this.a);
-      this.a.finish();
       return;
-    }
-    PublicAccountAdvertisementActivity.a(this.a).a();
-  }
-  
-  public boolean a()
-  {
-    return (!PublicAccountAdvertisementActivity.a(this.a)) && (!PublicAccountAdvertisementActivity.b(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+      localVideoCoverItem = (VideoCoverItem)VideoCoverAdapter.a(this.a).get(0);
+    } while ((localVideoCoverItem == null) || (localVideoCoverItem.a == null));
+    localVideoCoverItem.a.a(VideoCoverAdapter.a(this.a));
   }
 }
 

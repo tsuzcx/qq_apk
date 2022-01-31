@@ -1,72 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.Utils;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
 
 public class tit
-  extends FriendListObserver
+  implements Animation.AnimationListener
 {
-  public tit(QQSettingMe paramQQSettingMe) {}
+  public tit(QQLSActivity paramQQLSActivity) {}
   
-  protected void onGetStoreFace(boolean paramBoolean, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    onUpdateCustomHead(paramBoolean, paramString);
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.a(paramString);
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new tiu(this));
     }
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new tiu(this));
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean2) && (paramBoolean1) && (this.a.c)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new tiv(this));
-    }
-  }
-  
-  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    int k = 0;
-    String str;
-    int i;
-    if ((paramBoolean) && (this.a.c) && (paramArrayOfString != null) && (paramArrayOfString.length > 0))
-    {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      i = 0;
-    }
-    for (;;)
-    {
-      int j = k;
-      if (str != null)
-      {
-        j = k;
-        if (i < paramArrayOfString.length)
-        {
-          if (!str.equals(paramArrayOfString[i])) {
-            break label97;
-          }
-          j = 1;
-        }
-      }
-      if (j != 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new tiw(this));
-      }
-      return;
-      label97:
-      i += 1;
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,26 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
 public class vlv
-  extends BroadcastReceiver
 {
-  public vlv(PhotoListPanel paramPhotoListPanel) {}
+  public float a;
+  public int a;
+  public Bitmap a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private vlv()
   {
-    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoListPanel", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
 }
 

@@ -10,7 +10,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import nrq;
+import ntd;
 
 public class StoryPickerListAdapter
   extends BaseAdapter
@@ -30,15 +30,15 @@ public class StoryPickerListAdapter
   
   private View a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970793, paramViewGroup, false);
-    paramViewGroup.setTag(new nrq(this, paramViewGroup, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener));
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970841, paramViewGroup, false);
+    paramViewGroup.setTag(new ntd(this, paramViewGroup, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener));
     return paramViewGroup;
   }
   
   private void a(int paramInt, View paramView)
   {
     VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    ((nrq)paramView.getTag()).a(paramInt, localVideoCollectionItem);
+    ((ntd)paramView.getTag()).a(paramInt, localVideoCollectionItem);
   }
   
   public VideoCollectionItem a()
@@ -73,7 +73,7 @@ public class StoryPickerListAdapter
   {
     WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((StoryPickerHorizontalListAdapter)((nrq)localWeakReference.get()).a.a()).b(paramList, paramString);
+      ((StoryPickerHorizontalListAdapter)((ntd)localWeakReference.get()).a.a()).b(paramList, paramString);
     }
   }
   

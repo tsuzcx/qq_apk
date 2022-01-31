@@ -1,6 +1,6 @@
 package com.tencent.qidian.plugin;
 
-import akxz;
+import alnp;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class QidianWpaWebviewPlugin
   extends WebViewPlugin
 {
-  private BroadcastReceiver a = new akxz(this);
+  private BroadcastReceiver a = new alnp(this);
   
   private void a(Bundle paramBundle)
   {

@@ -1,43 +1,23 @@
-import android.content.IntentFilter;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class tfr
-  implements Runnable
+  extends ContactBindObserver
 {
-  public tfr(QQLSActivity paramQQLSActivity) {}
+  public tfr(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    try
-    {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      if (QQLSActivity.a(this.a) == 0)
-      {
-        BaseApplicationImpl.getContext().registerReceiver(this.a.a, localIntentFilter);
-        QQLSActivity.a(this.a, 1);
-      }
-      QQLSActivity.a(this.a, AnimationUtils.loadAnimation(this.a, 2131034321));
-      QQLSActivity.a(this.a).setFillAfter(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "registerScreenListener");
-      }
-      return;
+    if (paramBoolean) {
+      PhoneUnityBindInfoActivity.a(this.a, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, 1, 2);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("QQLSActivity", 2, "registerScreenListener:" + localException.toString());
+      this.a.app.unRegistObserver(this);
+      this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
+      return;
+      PhoneUnityBindInfoActivity.a(this.a, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, 3, 1);
     }
   }
 }

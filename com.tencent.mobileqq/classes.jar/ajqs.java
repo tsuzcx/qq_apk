@@ -1,25 +1,47 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class ajqs
-  implements View.OnTouchListener
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public ajqs(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
+  public ajqs(TroopTopicMgr paramTroopTopicMgr, TroopChatPie paramTroopChatPie, String paramString1, ChatMessage paramChatMessage, String paramString2, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.a.setImageResource(2130844000);
-    this.a.a.setTag(Integer.valueOf(2130844000));
-    this.a.a();
-    return false;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie == null) || (TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr) == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.bm();
+    TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr);
+    paramJSONObject = TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, paramJSONObject, this.jdField_a_of_type_JavaLangString);
+    if (paramJSONObject != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(".troop.troop_topic", 2, "publishableJson = " + paramJSONObject);
+      }
+      TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).put(this.jdField_a_of_type_JavaLangString, paramJSONObject);
+      paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.a(paramJSONObject, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.b, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie, paramJSONObject.toString());
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.troop_topic", 2, "publishableJson = null");
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a(), TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).getApp().getString(2131430735), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqs
  * JD-Core Version:    0.7.0.1
  */

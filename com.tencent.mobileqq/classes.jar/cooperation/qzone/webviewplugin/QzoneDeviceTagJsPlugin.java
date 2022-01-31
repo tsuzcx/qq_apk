@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import ammc;
-import ammd;
+import anch;
+import anci;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -26,12 +26,12 @@ public class QzoneDeviceTagJsPlugin
   
   private static void a(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new ammc(paramArrayOfString));
+    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new anch(paramArrayOfString));
   }
   
   private static void b(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new ammd());
+    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new anci());
   }
   
   public void a()

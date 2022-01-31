@@ -1,16 +1,22 @@
-import com.tencent.av.service.QavWrapper;
-import com.tencent.av.service.QavWrapper.OnReadyListener;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-class zik
-  implements QavWrapper.OnReadyListener
+public class zik
+  implements Runnable
 {
-  zik(zii paramzii) {}
+  public zik(PhoneContactManagerImp paramPhoneContactManagerImp, int paramInt) {}
   
-  public void a(QavWrapper paramQavWrapper)
+  public void run()
   {
-    paramQavWrapper.a(this.a.a.a);
-    paramQavWrapper.a();
+    synchronized (PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp))
+    {
+      Iterator localIterator = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).iterator();
+      if (localIterator.hasNext()) {
+        ((PhoneContactManager.IPhoneContactListener)localIterator.next()).b(this.jdField_a_of_type_Int);
+      }
+    }
   }
 }
 

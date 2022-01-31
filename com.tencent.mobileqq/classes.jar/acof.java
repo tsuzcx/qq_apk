@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-public class acof
-  extends acnx
+class acof
+  implements Runnable
 {
-  public acof(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  acof(acod paramacod, DownloadInfo paramDownloadInfo) {}
   
-  protected String a()
+  public void run()
   {
-    return "StateRefuseByPC";
+    UniformDownloadActivity.b(this.jdField_a_of_type_Acod.a).setVisibility(0);
+    UniformDownloadActivity.a(this.jdField_a_of_type_Acod.a).setVisibility(0);
+    UniformDownloadActivity.b(this.jdField_a_of_type_Acod.a).setText(this.jdField_a_of_type_Acod.a.getString(2131428580, new Object[] { this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g + "%" }));
   }
 }
 

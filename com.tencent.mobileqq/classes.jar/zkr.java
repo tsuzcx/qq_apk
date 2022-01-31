@@ -1,28 +1,14 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.app.ThreadRegulator.CpuBusyness;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioUtil;
 
 public class zkr
-  extends MqqHandler
+  implements Runnable
 {
-  public zkr(ThreadRegulator paramThreadRegulator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public zkr(QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    paramMessage = (ThreadRegulator.CpuBusyness)paramMessage.obj;
-    if (paramMessage != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-      }
-      paramMessage.recycle();
-    }
+    AudioUtil.a(this.jdField_a_of_type_Int, false);
   }
 }
 

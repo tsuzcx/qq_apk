@@ -28,7 +28,7 @@ import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.os.MqqHandler;
-import pvt;
+import pxn;
 
 public class DevVideoMsgProcessor
   implements DeviceAVFileMsgObserver.DevMsgProcessor
@@ -41,7 +41,7 @@ public class DevVideoMsgProcessor
     }
     if (!Utils.a())
     {
-      ToastUtil.a().a(2131434753);
+      ToastUtil.a().a(2131434770);
       return;
     }
     Object localObject = AppConstants.aJ + "shortvideo/" + System.currentTimeMillis() + ".mp4";
@@ -64,7 +64,7 @@ public class DevVideoMsgProcessor
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    ThreadManager.getFileThreadHandler().post(new pvt(paramString1, paramString2, paramQQAppInterface));
+    ThreadManager.getFileThreadHandler().post(new pxn(paramString1, paramString2, paramQQAppInterface));
   }
   
   public void a(Session paramSession, String paramString, long paramLong, int paramInt, float paramFloat)

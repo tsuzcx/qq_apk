@@ -35,8 +35,8 @@ import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import ofc;
-import ofd;
+import ogv;
+import ogw;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -152,24 +152,24 @@ public class EditVideoTag
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371477));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363227));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364614));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363098);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370686);
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371643));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363245));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364638));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363116);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370826);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362933);
-      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131371473);
-      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131371474);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371475));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371476));
+      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362951);
+      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131371639);
+      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131371640);
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371641));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371642));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagQQStoryTagAdapter = new QQStoryTagAdapter(a());
       h();
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagQQStoryTagAdapter);
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnItemClickListener(this);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new ofc(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnScrollListener(new ofd(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new ogv(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnScrollListener(new ogw(this));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     }
@@ -259,8 +259,8 @@ public class EditVideoTag
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364330));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131367202));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364354));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131367250));
     String str1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a("video_tag_info");
     if (str1 != null) {}
     try
@@ -504,14 +504,14 @@ public class EditVideoTag
     {
     default: 
       return;
-    case 2131363227: 
+    case 2131363245: 
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagQQStoryTagAdapter.a(null);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
       return;
-    case 2131364614: 
+    case 2131364638: 
       m();
       return;
-    case 2131370686: 
+    case 2131370826: 
       k();
       paramView = a();
       a(this.jdField_a_of_type_Int).a(paramView);

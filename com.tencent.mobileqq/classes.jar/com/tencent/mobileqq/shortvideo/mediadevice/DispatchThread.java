@@ -78,10 +78,10 @@ public class DispatchThread
     //   100: monitorenter
     //   101: aload_0
     //   102: getfield 67	com/tencent/mobileqq/shortvideo/mediadevice/DispatchThread:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   105: new 69	ahok
+    //   105: new 69	aicm
     //   108: dup
     //   109: aload_0
-    //   110: invokespecial 73	ahok:<init>	(Lcom/tencent/mobileqq/shortvideo/mediadevice/DispatchThread;)V
+    //   110: invokespecial 73	aicm:<init>	(Lcom/tencent/mobileqq/shortvideo/mediadevice/DispatchThread;)V
     //   113: invokevirtual 79	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   116: pop
     //   117: aload_0

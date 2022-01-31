@@ -1,44 +1,73 @@
-import android.app.Activity;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.AbstractImageListModel;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.mobileqq.campuscircle.CampusCirclePicBrowserActivity;
-import com.tencent.mobileqq.campuscircle.CampusCirclePicBrowserGalleryScene;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.ArNativeSoLoader;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
+import com.tencent.mobileqq.earlydownload.handler.ArNativeSoDownloadHandler;
+import com.tencent.mobileqq.portal.PortalUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class abij
-  extends GalleryManager
+  implements Runnable
 {
-  public abij(CampusCirclePicBrowserActivity paramCampusCirclePicBrowserActivity) {}
+  public abij(ARMapLoadingActivity paramARMapLoadingActivity) {}
   
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public void run()
   {
-    return super.a(paramActivity, paramAbstractImageListModel);
-  }
-  
-  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    this.a.a = new CampusCirclePicBrowserGalleryScene((CampusCirclePicBrowserActivity)paramActivity, paramAbstractImageListModel);
-    return this.a.a;
-  }
-  
-  public AbstractImageListModel a(Activity paramActivity)
-  {
-    paramActivity = new PicBrowserModel(this.a, CampusCirclePicBrowserActivity.a(this.a));
-    paramActivity.a(CampusCirclePicBrowserActivity.a(this.a));
-    return paramActivity;
-  }
-  
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return null;
+    ARMapLoadingActivity.a(this.a).removeMessages(111);
+    ARMapLoadingActivity.a(this.a).sendEmptyMessageDelayed(111, 300000L);
+    boolean bool = ArNativeSoLoader.b("ArMapEngine7651");
+    Object localObject = (ArNativeSoDownloadHandler)((EarlyDownloadManager)this.a.app.getManager(76)).a("qq.android.ar.native.so_v7.6.5.1");
+    if (!bool) {
+      if (localObject != null)
+      {
+        ((ArNativeSoDownloadHandler)localObject).a().Version = 0;
+        ((ArNativeSoDownloadHandler)localObject).a(ARMapLoadingActivity.a(this.a));
+        ((ArNativeSoDownloadHandler)localObject).a(true, true);
+      }
+    }
+    do
+    {
+      return;
+      if (!this.a.a()) {
+        break;
+      }
+      String str1 = ArNativeSoLoader.a() + "/lib" + "ArMapEngine7651" + ".so";
+      String str2 = PortalUtils.a(str1);
+      String str3 = this.a.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapLoadingActivity", 2, "handleCheckAndDownloadSo, path=" + str1 + ", calc=" + str2 + ", md5=" + str3);
+      }
+      if (str3.equalsIgnoreCase(str2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ARMapLoadingActivity", 2, "handleCheckAndDownloadSo, md5 match, lunch armap");
+        }
+        ARMapLoadingActivity.a(this.a).removeMessages(111);
+        localObject = ARMapLoadingActivity.a(this.a).obtainMessage(112);
+        ARMapLoadingActivity.a(this.a).sendMessage((Message)localObject);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapLoadingActivity", 2, "handleCheckAndDownloadSo, md5 mismatch, go download");
+      }
+    } while (localObject == null);
+    ((ArNativeSoDownloadHandler)localObject).a().Version = 0;
+    ((ArNativeSoDownloadHandler)localObject).a(ARMapLoadingActivity.a(this.a));
+    ((ArNativeSoDownloadHandler)localObject).a(true, true);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMapLoadingActivity", 2, "handleCheckAndDownloadSo, not need check");
+    }
+    ARMapLoadingActivity.a(this.a).removeMessages(111);
+    localObject = ARMapLoadingActivity.a(this.a).obtainMessage(112);
+    ARMapLoadingActivity.a(this.a).sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abij
  * JD-Core Version:    0.7.0.1
  */

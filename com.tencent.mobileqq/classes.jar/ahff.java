@@ -1,31 +1,25 @@
-import com.tencent.mobileqq.app.UniteSearchHandler;
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ahff
-  implements Runnable
+public class ahff
+  extends RecyclerView.ViewHolder
 {
-  ahff(ahfe paramahfe, byte[] paramArrayOfByte) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  private ahff(View paramView)
   {
-    if (this.jdField_a_of_type_ArrayOfByte != null)
-    {
-      QLog.d(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 1, "use cache!");
-      this.jdField_a_of_type_Ahfe.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler.a(null, 1000, this.jdField_a_of_type_ArrayOfByte);
-    }
-    while (this.jdField_a_of_type_Ahfe.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "hot word list cache is null！");
-    }
-    this.jdField_a_of_type_Ahfe.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler.b();
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363549));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364340));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahff
  * JD-Core Version:    0.7.0.1
  */

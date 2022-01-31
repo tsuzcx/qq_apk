@@ -1,34 +1,26 @@
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.imaxad.ImaxAdNetPresenter;
-import com.tencent.mobileqq.imaxad.ImaxAdRecentUserManager;
-import com.tencent.mobileqq.imaxad.ImaxAdUtil;
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-public class adiv
+class adiv
   implements Runnable
 {
-  public adiv(ImaxAdRecentUserManager paramImaxAdRecentUserManager, boolean paramBoolean, QQAppInterface paramQQAppInterface, AdvertisementItem paramAdvertisementItem, RecentUser paramRecentUser) {}
+  adiv(adiu paramadiu) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ImaxAdNetPresenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
-    }
-    ImaxAdUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.iterator();
-    while (localIterator.hasNext()) {
-      ImaxAdVideoPreloadManager.a(((VideoCoverItem)localIterator.next()).b);
-    }
+    QfileEditBottomBar.a(this.a.a.a).h();
+    QfileEditBottomBar.a(this.a.a.a).b(FMDataCache.c());
+    QfileEditBottomBar.a(this.a.a.a).c(FMDataCache.b());
+    QfileEditBottomBar.a(this.a.a.a).d(FMDataCache.e());
+    FMDataCache.b();
+    QfileEditBottomBar.a(this.a.a.a).e(false);
+    QfileEditBottomBar.a(this.a.a.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adiv
  * JD-Core Version:    0.7.0.1
  */

@@ -32,15 +32,15 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
-import lqn;
-import lqo;
-import lqp;
-import lqq;
 import lqr;
 import lqs;
 import lqt;
 import lqu;
 import lqv;
+import lqw;
+import lqx;
+import lqy;
+import lqz;
 import tencent.im.oidb.cmd0x69e.oidb_cmd0x69e.ReqBody;
 import tencent.im.oidb.cmd0x69e.oidb_cmd0x69e.RspBody;
 import tencent.im.oidb.cmd0x69f.oidb_cmd0x69f.ReqBody;
@@ -72,13 +72,13 @@ public class ChannelInfoModule
     if (localChannelInfo != null)
     {
       this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramInteger);
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqs(this, localChannelInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqw(this, localChannelInfo));
     }
   }
   
   private void a(boolean paramBoolean1, List paramList1, List paramList2, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqr(this, paramBoolean1, paramBoolean2, paramList1, paramList2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lqv(this, paramBoolean1, paramBoolean2, paramList1, paramList2));
   }
   
   private boolean a(ChannelInfo paramChannelInfo, boolean paramBoolean)
@@ -89,7 +89,7 @@ public class ChannelInfoModule
     ChannelInfo localChannelInfo = paramChannelInfo.clone();
     this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(paramChannelInfo.mChannelID), localChannelInfo);
     if (paramBoolean) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqt(this, localChannelInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqx(this, localChannelInfo));
     }
     return true;
   }
@@ -117,7 +117,7 @@ public class ChannelInfoModule
     List localList = b();
     if ((localList != null) && (!localList.isEmpty()))
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new lqp(this, localList));
+      this.jdField_a_of_type_AndroidOsHandler.post(new lqt(this, localList));
       return 0;
     }
     b();
@@ -183,7 +183,7 @@ public class ChannelInfoModule
         ((ArrayList)localObject1).add(localObject3);
       }
     }
-    Collections.sort((List)localObject1, new lqn(this));
+    Collections.sort((List)localObject1, new lqr(this));
     localObject2 = new ArrayList(((ArrayList)localObject1).size());
     localObject1 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
@@ -336,7 +336,7 @@ public class ChannelInfoModule
         i += 1;
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqo(this, paramBoolean, paramInt, paramSparseArray));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lqs(this, paramBoolean, paramInt, paramSparseArray));
   }
   
   public void a(boolean paramBoolean, int paramInt, List paramList)
@@ -369,7 +369,7 @@ public class ChannelInfoModule
   
   public void a(boolean paramBoolean, List paramList)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqq(this, paramBoolean, paramList));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lqu(this, paramBoolean, paramList));
   }
   
   public boolean a(List paramList, boolean paramBoolean)
@@ -512,7 +512,7 @@ public class ChannelInfoModule
     paramList.remove(Integer.valueOf(9999));
     c(paramList);
     a(paramList);
-    ReadInJoyLogicEngineEventDispatcher.a().a(true, null);
+    ReadInJoyLogicEngineEventDispatcher.a().b(true, null);
   }
   
   public List c()
@@ -528,7 +528,7 @@ public class ChannelInfoModule
         ((ArrayList)localObject1).add(localObject3);
       }
     }
-    Collections.sort((List)localObject1, new lqu(this));
+    Collections.sort((List)localObject1, new lqy(this));
     localObject2 = new ArrayList(((ArrayList)localObject1).size());
     localObject1 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
@@ -595,7 +595,7 @@ public class ChannelInfoModule
     if (QLog.isColorLevel()) {
       QLog.e("ChannelInfoModule", 2, "handle0x8f5FollowUnfollow():  result = " + i);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqv(this, i));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lqz(this, i));
   }
   
   public void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

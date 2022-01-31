@@ -1,6 +1,6 @@
 package cooperation.qqdataline.ipc;
 
-import alys;
+import amow;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,7 +12,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class MessageRecordParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new alys();
+  public static final Parcelable.Creator CREATOR = new amow();
   private MessageRecord a;
   
   public MessageRecordParcel(MessageRecord paramMessageRecord)

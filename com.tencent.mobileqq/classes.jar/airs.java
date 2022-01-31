@@ -1,21 +1,31 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
-import com.tencent.mobileqq.troop.widget.ExpandableTextView.OnExpandStateListener;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import com.tencent.qphone.base.util.QLog;
 
 public class airs
-  implements ExpandableTextView.OnExpandStateListener
+  implements Runnable
 {
-  public airs(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
+  public volatile boolean a;
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  public airs(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  
+  public void run()
   {
-    paramView.setVisibility(8);
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> PreUpload timeout");
+        }
+        ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, 2);
+        ShortVideoUploadProcessor.c(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, 2);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airs
  * JD-Core Version:    0.7.0.1
  */

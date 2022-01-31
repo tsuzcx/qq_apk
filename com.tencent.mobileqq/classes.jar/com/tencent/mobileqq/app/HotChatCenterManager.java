@@ -36,10 +36,10 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import zbl;
-import zbn;
-import zbo;
-import zbp;
+import zer;
+import zet;
+import zeu;
+import zev;
 
 public class HotChatCenterManager
   implements Manager
@@ -141,7 +141,7 @@ public class HotChatCenterManager
       if (i == 0) {
         this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size(), paramHotChatItemData);
       }
-      ThreadManager.getSubThreadHandler().post(new zbl(this, paramHotChatItemData));
+      ThreadManager.getSubThreadHandler().post(new zer(this, paramHotChatItemData));
       return;
       i += 1;
       break;
@@ -384,8 +384,8 @@ public class HotChatCenterManager
           ((List)localObject1).add(localHotChatItemData);
         }
       }
-      Collections.sort((List)localObject2, new zbn(this));
-      Collections.sort((List)localObject1, new zbo(this));
+      Collections.sort((List)localObject2, new zet(this));
+      Collections.sort((List)localObject1, new zeu(this));
       this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
@@ -553,7 +553,7 @@ public class HotChatCenterManager
     if (a() == null) {
       return;
     }
-    ThreadManager.post(new zbp(this), 5, null, false);
+    ThreadManager.post(new zev(this), 5, null, false);
   }
   
   public int a()
@@ -1089,12 +1089,12 @@ public class HotChatCenterManager
     //   138: goto +183 -> 321
     //   141: aload 7
     //   143: ifnull +167 -> 310
-    //   146: new 668	zbm
+    //   146: new 668	zes
     //   149: dup
     //   150: aload_0
     //   151: aload 5
     //   153: aload 7
-    //   155: invokespecial 671	zbm:<init>	(Lcom/tencent/mobileqq/app/HotChatCenterManager;Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/data/HotChatItemData;)V
+    //   155: invokespecial 671	zes:<init>	(Lcom/tencent/mobileqq/app/HotChatCenterManager;Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/data/HotChatItemData;)V
     //   158: bipush 8
     //   160: aconst_null
     //   161: iconst_0

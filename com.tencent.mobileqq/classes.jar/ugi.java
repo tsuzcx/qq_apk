@@ -1,21 +1,23 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ugi
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ugi(SendBirthdayWishesActivity paramSendBirthdayWishesActivity, int paramInt) {}
+  public ugi(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setImageResource(2130837624);
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setContentDescription("键盘");
-      return;
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setImageResource(2130844421);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setContentDescription("表情功能面板");
+    UpgradeActivity.a(this.a, false);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, UpgradeConstants.b(), String.valueOf(2), UpgradeController.a(), "");
   }
 }
 

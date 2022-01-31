@@ -13,7 +13,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import kdv;
+import kdg;
 
 public class QavRecordButtonView
   extends View
@@ -74,10 +74,10 @@ public class QavRecordButtonView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130840296);
-    this.b = a(2130840298);
-    this.c = a(2130840299);
-    super.setOnTouchListener(new kdv(this));
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130840302);
+    this.b = a(2130840304);
+    this.c = a(2130840305);
+    super.setOnTouchListener(new kdg(this));
   }
   
   public int a()
@@ -173,10 +173,10 @@ public class QavRecordButtonView
         continue;
         if (paramBoolean)
         {
-          super.setContentDescription(getResources().getString(2131429649));
+          super.setContentDescription(getResources().getString(2131429655));
           continue;
           if (paramBoolean) {
-            super.setContentDescription(getResources().getString(2131429650));
+            super.setContentDescription(getResources().getString(2131429656));
           }
           this.jdField_a_of_type_Float = 0.0F;
         }

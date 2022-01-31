@@ -1,54 +1,98 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
-import com.tencent.mobileqq.fragment.NearbyBaseFragment;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.view.View;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.LikeRankingListManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.LikeRankingInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.List;
 
 public class syz
-  implements ViewPager.OnPageChangeListener
+  extends CardObserver
 {
-  public syz(NearbyActivity paramNearbyActivity) {}
+  public syz(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      NearbyUtils.a("onPageSelected", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.c), Integer.valueOf(paramInt) });
+      QLog.d("LikeRankingListActivity", 2, "onCardDownload isSuccess=" + paramBoolean);
     }
-    Object localObject = this.a;
-    int i = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a;
-    ((NearbyActivity)localObject).b = i;
-    NearbyBaseFragment.b = i;
-    if ((this.a.h == 0L) && (this.a.b == 2))
+    if ((paramBoolean) && ((paramObject instanceof Card)))
     {
-      this.a.h = System.currentTimeMillis();
-      if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.h) });
+      paramObject = (Card)paramObject;
+      if (paramObject.uin.equals(this.a.b)) {
+        this.a.app.a(new sza(this, paramObject));
       }
     }
-    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.b == 1))
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, List paramList, int paramInt, boolean paramBoolean2)
+  {
+    int i;
+    if (QLog.isColorLevel())
     {
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_a_of_type_Long) });
+      String str = "onReqLikeRankingListResult success:" + paramBoolean1;
+      paramString = new StringBuilder().append(", uin:").append(paramString).append(", size:");
+      if (paramList == null)
+      {
+        i = 0;
+        QLog.d("LikeRankingListActivity", 2, new Object[] { str, i + ", nextIndex: " + paramInt + ", isComplete:" + paramBoolean2 });
       }
     }
-    if (this.a.c != paramInt) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    else
+    {
+      if (!paramBoolean1) {
+        break label333;
+      }
+      if ((paramList == null) || ((paramList.size() <= 0) && (!paramBoolean2))) {
+        break label276;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppLikeRankingListManager.a(paramList, paramInt, paramBoolean2);
+      if ((!paramBoolean2) || (paramList.size() != 0)) {
+        break label250;
+      }
+      this.a.e.setVisibility(0);
+      label165:
+      this.a.jdField_a_of_type_Szh.a(paramList, true);
+      if (this.a.jdField_a_of_type_Int == 0)
+      {
+        if (paramList.size() <= 0) {
+          break label265;
+        }
+        this.a.a(String.valueOf(((LikeRankingInfo)paramList.get(0)).uin));
+      }
     }
-    if (this.a.c != -1) {
-      NearbyUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "switch_tab", this.a.c + 1);
+    for (;;)
+    {
+      paramString = this.a;
+      if (paramBoolean2) {
+        paramInt = -1;
+      }
+      paramString.jdField_a_of_type_Int = paramInt;
+      return;
+      i = paramList.size();
+      break;
+      label250:
+      this.a.e.setVisibility(8);
+      break label165;
+      label265:
+      this.a.a(null);
+      continue;
+      label276:
+      this.a.a(null);
+      this.a.jdField_a_of_type_Szh.a = false;
+      this.a.jdField_a_of_type_Szh.notifyDataSetChanged();
+      if (this.a.jdField_a_of_type_Szh.getCount() <= 1) {
+        this.a.e.setVisibility(0);
+      }
     }
-    localObject = this.a.a(paramInt);
-    if (localObject != null) {
-      ((NearbyBaseFragment)localObject).ap_();
-    }
+    label333:
+    this.a.jdField_a_of_type_Szh.a = false;
+    this.a.jdField_a_of_type_Szh.notifyDataSetChanged();
+    QQToast.a(BaseApplication.getContext(), 1, "获取排行榜失败", 0).a();
   }
 }
 

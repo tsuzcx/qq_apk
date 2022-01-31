@@ -1,41 +1,28 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
-import com.tencent.av.utils.PopupDialog;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class jky
-  implements Runnable
+  extends jkv
 {
-  public jky(RandomController paramRandomController) {}
+  public boolean a;
+  public String b;
+  public String c;
+  public int f = -1;
+  public int g = -1;
   
-  public void run()
+  jky(RandomWebProtocol paramRandomWebProtocol) {}
+  
+  void a(String paramString)
   {
-    RandomController.a(this.a).a().removeCallbacks(RandomController.d(this.a));
-    if (!RandomController.a(this.a).a()) {
-      PopupDialog.a(RandomController.a(this.a).getApp().getApplicationContext(), RandomController.a(this.a).getApp().getResources().getString(2131429365), RandomController.a(this.a, RandomController.d(this.a)));
-    }
-    do
+    super.a(paramString);
+    if ((2 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
     {
-      while (RandomController.d(this.a) > 60)
-      {
-        RandomController.a(this.a).a().postDelayed(RandomController.d(this.a), 60000L);
-        RandomController.a(this.a, RandomController.d(this.a) - 60);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("RandomController", 2, "background mRemainBlockTime : " + RandomController.d(this.a));
-        }
-      }
-      if ((RandomController.d(this.a) <= 60) && (RandomController.d(this.a) > 0))
-      {
-        RandomController.a(this.a).a().postDelayed(RandomController.d(this.a), 10000L);
-        RandomController.a(this.a, RandomController.d(this.a) - 10);
-        return;
-      }
-    } while (RandomController.d(this.a) > 0);
-    this.a.c();
+      this.f = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
+      this.b = this.jdField_a_of_type_OrgJsonJSONObject.optString("groupids");
+      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("businessid", -1);
+      this.c = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
+      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("ownerenable", true);
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffffffff" />
-    <corners android:topLeftRadius="6.0dip" android:topRightRadius="6.0dip" android:bottomLeftRadius="6.0dip" android:bottomRightRadius="6.0dip" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020886" />
+    <item android:state_pressed="true" android:drawable="@drawable/skin_common_btn_blue_pressed" />
+    <item android:drawable="@drawable/skin_common_btn_blue_unpressed" />
+</selector>

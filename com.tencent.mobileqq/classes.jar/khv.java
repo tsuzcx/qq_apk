@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.videoeffect.FilterProcess;
 
 public class khv
-  implements DialogInterface.OnShowListener
 {
-  public khv(TraeHelper paramTraeHelper) {}
+  public int a;
+  int b;
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public khv(FilterProcess paramFilterProcess, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Trae_DRP 0X8008D1E at: " + System.currentTimeMillis());
-    }
-    ReportController.b(null, "CliOper", "", "", "0X8008D1E", "0X8008D1E", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

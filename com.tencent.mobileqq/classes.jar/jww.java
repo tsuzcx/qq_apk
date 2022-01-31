@@ -1,56 +1,25 @@
-import com.tencent.av.AVLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.gaudio.VideoViewInfo;
-import com.tencent.av.ui.ControlUIObserver;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
 
 public class jww
-  implements QavInOutAnimation.QavOutAnimationListener
+  implements View.OnClickListener
 {
-  public jww(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  public jww(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.l = true;
-    this.a.ah();
-  }
-  
-  public void b()
-  {
-    SessionInfo localSessionInfo = this.a.a.a();
-    if (localSessionInfo != null)
+    this.a.a.j();
+    paramView = this.a.j.getText().toString();
+    if ((paramView != null) && (paramView.equals("自我静音")))
     {
-      AVLog.d(this.a.c, " TYPE_NOTIFY_CAMERA_CLOSE 2: " + localSessionInfo.f + "|" + localSessionInfo.d);
-      if (localSessionInfo.f) {
-        this.a.jdField_b_of_type_ComTencentAvUiControlUIObserver.update(null, new Object[] { Integer.valueOf(106) });
-      }
-    }
-    MultiVideoCtrlLayerUI4Discussion.a(this.a);
-    this.a.i(true);
-    if (this.a.a.e)
-    {
-      this.a.a.a(this.a.a.c, this.a.a.a, 100);
-      ReportController.b(null, "CliOper", "", "", "0X8004CF2", "0X8004CF2", 0, 0, "", "", "", "");
-      if (((this.a.e != 90) && (this.a.e != 270)) || (this.a.a.a().a() == -1) || (((VideoViewInfo)this.a.a.a().c.get(0)).a != 1)) {
-        break label304;
-      }
-      ReportController.b(null, "CliOper", "", "", "0X8004CFB", "0X8004CFB", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.l = false;
+      ReportController.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
       return;
-      this.a.a.a(this.a.d, this.a.jdField_b_of_type_Long, 101);
-      break;
-      label304:
-      if (((this.a.e == 90) || (this.a.e == 270)) && (this.a.a.a().a() != -1) && (((VideoViewInfo)this.a.a.a().c.get(0)).a == 2)) {
-        ReportController.b(null, "CliOper", "", "", "0X8004CFC", "0X8004CFC", 0, 0, "", "", "", "");
-      }
     }
+    ReportController.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
   }
 }
 

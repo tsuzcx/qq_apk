@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
 
-class aawy
-  implements Runnable
+public class aawy
 {
-  aawy(aawx paramaawx, String paramString) {}
-  
-  public void run()
-  {
-    QQToast.a(this.jdField_a_of_type_Aawx.a.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Aawx.a.getTitleBarHeight());
-  }
+  ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler;
+  ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler;
+  ArkMessageServerLogic.IPassiveSearchIntentByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler;
+  public Object a;
+  public String a;
 }
 
 

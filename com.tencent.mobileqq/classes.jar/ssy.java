@@ -1,15 +1,14 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.data.Card;
 
-class ssy
+public class ssy
   implements Runnable
 {
-  ssy(ssx paramssx, Bitmap paramBitmap) {}
+  public ssy(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, Card paramCard) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ssx.a.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataCard);
   }
 }
 

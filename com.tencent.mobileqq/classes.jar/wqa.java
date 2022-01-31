@@ -1,43 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class wqa
-  extends Handler
+class wqa
+  implements Runnable
 {
-  private WeakReference a;
+  wqa(wpz paramwpz, int paramInt) {}
   
-  public wqa(BaseActivityView paramBaseActivityView)
+  public void run()
   {
-    this.a = new WeakReference(paramBaseActivityView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
-    if (localBaseActivityView == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localBaseActivityView.b(i, bool);
-        return;
-        bool = false;
-      }
-    case 2: 
-      localBaseActivityView.f();
-      return;
-    }
-    localBaseActivityView.i();
+    this.jdField_a_of_type_Wpz.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a(32, 16, Integer.valueOf(this.jdField_a_of_type_Int));
+    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
+    this.jdField_a_of_type_Wpz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
   }
 }
 

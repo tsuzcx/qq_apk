@@ -1,34 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
+import com.tencent.mobileqq.app.message.OfflineFileMessageProcessor;
+import com.tencent.mobileqq.service.message.MessageProtoCodec;
+import com.tencent.mobileqq.service.message.TransMsgContext;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public final class zto
-  implements Runnable
+public class zto
+  implements BaseMessageProcessor.RequestBuilder
 {
-  public zto(QQAppInterface paramQQAppInterface, String paramString) {}
+  public zto(OfflineFileMessageProcessor paramOfflineFileMessageProcessor, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
   
-  public void run()
+  public ToServiceMsg a()
   {
-    Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    Object localObject1 = ((TroopManager)localObject2).a(this.jdField_a_of_type_JavaLangString);
-    String str;
-    if (localObject1 != null)
-    {
-      ((TroopInfo)localObject1).wClickBAFTipCount += 1;
-      ((TroopManager)localObject2).b((TroopInfo)localObject1);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str = this.jdField_a_of_type_JavaLangString;
-      if (((TroopInfo)localObject1).wInsertBAFTipCount != 1) {
-        break label85;
-      }
-    }
-    label85:
-    for (localObject1 = "0";; localObject1 = "1")
-    {
-      ReportController.b((QQAppInterface)localObject2, "dc00899", "Grp_addFrd", "", "Grp_AIO", "greyTips_clk", 0, 0, str, (String)localObject1, "", "");
-      return;
-    }
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putByte("cmd", (byte)0);
+    localToServiceMsg.extraData.putByte("keyType", (byte)0);
+    localToServiceMsg.extraData.putByte("sendType", (byte)0);
+    localToServiceMsg.extraData.putInt("busiType", 1025);
+    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgsize", 0L);
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
+    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
+    TransMsgContext localTransMsgContext = new TransMsgContext();
+    localTransMsgContext.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    localTransMsgContext.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localToServiceMsg.putWupBuffer(MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 9, this.jdField_a_of_type_JavaLangString, localTransMsgContext, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
+    return localToServiceMsg;
   }
 }
 

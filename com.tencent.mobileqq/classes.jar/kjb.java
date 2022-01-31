@@ -1,38 +1,34 @@
-import android.graphics.Matrix;
-import com.tencent.av.widget.stageview.StageEffectView.StageMember;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class kjb
+  implements AbsListView.OnScrollListener
 {
-  public float a;
-  public int a;
-  public final Matrix a;
-  public StageEffectView.StageMember a;
-  public kja a;
-  public kjb a;
-  public boolean a;
-  public float b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
+  public kjb(PoiMapActivity paramPoiMapActivity) {}
   
-  private kjb()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
+      }
+      if ((!this.a.f) && (this.a.d))
+      {
+        this.a.f = true;
+        paramAbsListView = this.a;
+        paramAbsListView.n += 1;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.n);
+        }
+        this.a.a(this.a.h, this.a.i, this.a.c, "", this.a.n, 20);
+      }
+    }
   }
   
-  public void a(kjb paramkjb)
-  {
-    this.jdField_a_of_type_Int = paramkjb.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Float = paramkjb.jdField_a_of_type_Float;
-    this.b = paramkjb.b;
-    this.c = paramkjb.c;
-    this.d = paramkjb.d;
-    this.e = paramkjb.e;
-    this.f = paramkjb.d;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramkjb.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_Kja = paramkjb.jdField_a_of_type_Kja;
-  }
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

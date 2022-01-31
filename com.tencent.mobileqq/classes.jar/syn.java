@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.leba.header.LebaGridShowManager;
+import java.util.List;
 
 public class syn
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public syn(MainFragment paramMainFragment) {}
+  public syn(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
+    LebaShowListManager.a().a(this.a, this.a.app);
+    List localList = LebaGridShowManager.a().c(this.a.app);
+    this.a.runOnUiThread(new syo(this, localList));
   }
 }
 

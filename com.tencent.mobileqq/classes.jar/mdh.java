@@ -1,29 +1,48 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.content.Context;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.util.ArrayList;
 
 public class mdh
   implements Runnable
 {
-  public mdh(VideoFeedsRecommendManager paramVideoFeedsRecommendManager) {}
+  public mdh(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
   public void run()
   {
-    VideoFeedsRecommendManager.a(this.a, ReadInJoyHelper.B(VideoFeedsRecommendManager.a(this.a)));
-    VideoFeedsRecommendManager.b(this.a, ReadInJoyHelper.C(VideoFeedsRecommendManager.a(this.a)));
-    VideoFeedsRecommendManager.a(this.a, ReadInJoyHelper.a(VideoFeedsRecommendManager.a(this.a)));
-    VideoFeedsRecommendManager.c(this.a, ReadInJoyHelper.D(VideoFeedsRecommendManager.a(this.a)));
-    if ((VideoFeedsRecommendManager.a(this.a) < 0.0F) || (VideoFeedsRecommendManager.a(this.a) > 1.0D)) {
-      VideoFeedsRecommendManager.a(this.a, 0.8F);
+    TranslateAnimation localTranslateAnimation = this.a.a;
+    RelativeLayout.LayoutParams localLayoutParams;
+    int i;
+    if (localTranslateAnimation != null)
+    {
+      VideoFeedsPlayActivity.b(this.a).setVisibility(0);
+      VideoFeedsPlayActivity.b(this.a).findViewById(2131365654).setVisibility(0);
+      VideoFeedsPlayActivity.b(this.a).findViewById(2131365588).setVisibility(0);
+      VideoFeedsPlayActivity.b(this.a).findViewById(2131365589).setVisibility(0);
+      VideoFeedsPlayActivity.b(this.a).bringToFront();
+      localLayoutParams = (RelativeLayout.LayoutParams)VideoFeedsPlayActivity.b(this.a).getLayoutParams();
+      if (!VideoFeedsPlayActivity.i(this.a)) {
+        break label152;
+      }
+      i = AIOUtils.a(130.0F, this.a.getApplicationContext().getResources());
     }
-    if (VideoFeedsRecommendManager.a(this.a) < 1000) {
-      VideoFeedsRecommendManager.b(this.a, 40000);
-    }
-    if (VideoFeedsRecommendManager.b(this.a) != 0) {
-      VideoFeedsRecommendManager.a(this.a, true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsRecommendManager", 2, "init() 开关配置，mIsOpened = " + VideoFeedsRecommendManager.a(this.a) + ", mStrategyID = " + VideoFeedsRecommendManager.b(this.a) + ", mStrategyDurationLimit = " + VideoFeedsRecommendManager.a(this.a) + ", mStrategyDurationPercent = " + VideoFeedsRecommendManager.a(this.a) + ", mOperator = " + VideoFeedsRecommendManager.c(this.a));
+    for (;;)
+    {
+      localLayoutParams.setMargins(0, 0, 0, i);
+      VideoFeedsPlayActivity.b(this.a).setLayoutParams(localLayoutParams);
+      VideoFeedsPlayActivity.b(this.a).startAnimation(localTranslateAnimation);
+      return;
+      label152:
+      if (((VideoInfo)VideoFeedsPlayActivity.a(this.a).get(0)).a(this.a)) {
+        i = AIOUtils.a(65.0F, this.a.getApplicationContext().getResources());
+      } else {
+        i = AIOUtils.a(25.0F, this.a.getApplicationContext().getResources());
+      }
     }
   }
 }

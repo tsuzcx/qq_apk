@@ -1,21 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar;
-import dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar.OnRatingChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.CaptureComboMusic;
+import dov.com.qq.im.capture.music.MusicDownloadListener;
 
 public class anlt
-  implements View.OnClickListener
+  extends MusicDownloadListener
 {
-  public anlt(RateWidgetRatingBar paramRateWidgetRatingBar) {}
+  public anlt(CaptureComboMusic paramCaptureComboMusic) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String arg1, int paramInt)
   {
-    if (RateWidgetRatingBar.a(this.a))
+    synchronized (this.a)
     {
-      this.a.setStar(this.a.indexOfChild(paramView) + 1.0F);
-      if (RateWidgetRatingBar.a(this.a) != null) {
-        RateWidgetRatingBar.a(this.a).b(this.a.indexOfChild(paramView) + 1.0F);
+      this.a.a.c = paramInt;
+      return;
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean) {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicDownloadListener", 2, "notifyDownloadFinish key: " + paramString + ", success " + paramBoolean);
+    }
+    paramString = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        this.a.a.c = 100;
+        this.a.b();
+        return;
       }
+      finally {}
+      this.a.a.c = -1;
+      this.a.a(1);
     }
   }
 }

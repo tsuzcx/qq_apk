@@ -1,6 +1,6 @@
 package com.tencent.open.base;
 
-import akps;
+import alfi;
 import com.tencent.open.adapter.CommonDataAdapter;
 import mqq.app.AppRuntime;
 import mqq.manager.WtloginManager;
@@ -15,7 +15,7 @@ public class TicketUtils
   
   public TicketUtils()
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new akps(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new alfi(this);
   }
   
   public void a()

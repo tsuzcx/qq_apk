@@ -7,6 +7,7 @@ import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoStoryId;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tribe.async.utils.AssertUtils;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,11 +28,18 @@ public class AddGroupVideoResponse$AddGroupFeed
     this.jdField_a_of_type_JavaLangString = paramGroupFeed.union_id.get().toStringUtf8();
     HashMap localHashMap = new HashMap();
     Iterator localIterator = paramGroupFeed.story_id_list.get().iterator();
-    while (localIterator.hasNext())
+    if (localIterator.hasNext())
     {
       qqstory_group.VideoStoryId localVideoStoryId = (qqstory_group.VideoStoryId)localIterator.next();
-      localHashMap.put(localVideoStoryId.vid.get().toStringUtf8(), localVideoStoryId.story_id.get().toStringUtf8());
-      this.b = localVideoStoryId.feed_id.get().toStringUtf8();
+      String str = localVideoStoryId.story_id.get().toStringUtf8();
+      if (!TextUtils.isEmpty(str)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        AssertUtils.assertTrue(bool);
+        localHashMap.put(localVideoStoryId.vid.get().toStringUtf8(), str);
+        this.b = localVideoStoryId.feed_id.get().toStringUtf8();
+        break;
+      }
     }
     if (TextUtils.isEmpty(this.b)) {
       this.b = paramGroupFeed.feed_id.get().toStringUtf8();

@@ -1,36 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgDBHelper;
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-public final class xcc
+public class xcc
   implements Runnable
 {
-  public xcc(boolean paramBoolean, ArrayList paramArrayList) {}
+  public xcc(TransactionActivity paramTransactionActivity) {}
   
   public void run()
   {
-    do
-    {
-      synchronized (NotifyMsgManager.jdField_a_of_type_JavaLangObject)
-      {
-        if (NotifyMsgManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletNotifymsgNotifyMsgDBHelper == null) {
-          NotifyMsgManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletNotifymsgNotifyMsgDBHelper = new NotifyMsgDBHelper(BaseApplicationImpl.getContext());
-        }
-        ??? = QWalletTools.a();
-        if (??? == null) {
-          return;
-        }
-      }
-    } while (NotifyMsgManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletNotifymsgNotifyMsgDBHelper == null);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      NotifyMsgManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletNotifymsgNotifyMsgDBHelper.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
-      return;
-    }
-    NotifyMsgManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletNotifymsgNotifyMsgDBHelper.c(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+    MotionEvent localMotionEvent1 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 0, 0.0F, 0.0F, 0);
+    TransactionActivity.b(this.a).dispatchTouchEvent(localMotionEvent1);
+    MotionEvent localMotionEvent2 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 1, 0.0F, 0.0F, 0);
+    TransactionActivity.b(this.a).dispatchTouchEvent(localMotionEvent2);
+    localMotionEvent1.recycle();
+    localMotionEvent2.recycle();
   }
 }
 

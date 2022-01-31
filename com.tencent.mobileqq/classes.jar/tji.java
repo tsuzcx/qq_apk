@@ -1,74 +1,40 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
-import com.tencent.mobileqq.apollo.drawer.ApolloWeatherInfo;
-import com.tencent.mobileqq.apollo.drawer.WeatherDrawerStatus;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
+import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
+import com.tencent.mobileqq.managers.QQLSRecentManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class tji
-  extends VasExtensionObserver
+  implements NewFriendManager.INewFriendListener
 {
-  public tji(QQSettingMe paramQQSettingMe) {}
+  public tji(QQLSActivity paramQQLSActivity) {}
   
-  protected void c(boolean paramBoolean, Object paramObject)
+  public void Q_() {}
+  
+  public void a(int paramInt)
   {
-    if (paramBoolean) {
-      try
+    if ((paramInt == 0) && (this.a.a.a().size() > 0))
+    {
+      Iterator localIterator = this.a.a.a().iterator();
+      while (localIterator.hasNext())
       {
-        paramObject = (String)paramObject;
-        Object localObject1 = new JSONObject(paramObject);
-        int j = ((JSONObject)localObject1).optInt("actId");
-        int k = ((JSONObject)localObject1).optInt("priority", 99);
-        int i = ((JSONObject)localObject1).optInt("expts");
-        Object localObject2 = ((JSONObject)localObject1).optString("wording");
-        Object localObject3 = ((JSONObject)localObject1).optString("url");
-        String str = ((JSONObject)localObject1).optString("subDesc");
-        localObject1 = new ApolloWeatherInfo();
-        ((ApolloWeatherInfo)localObject1).jdField_a_of_type_Int = j;
-        ((ApolloWeatherInfo)localObject1).jdField_c_of_type_Int = k;
-        ((ApolloWeatherInfo)localObject1).jdField_b_of_type_Int = i;
-        ((ApolloWeatherInfo)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
-        ((ApolloWeatherInfo)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
-        ((ApolloWeatherInfo)localObject1).jdField_c_of_type_JavaLangString = str;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext != null))
+        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
+        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
         {
-          localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSharedPreferences("apollo_sp", 0);
-          localObject3 = Calendar.getInstance();
-          j = ((Calendar)localObject3).get(6);
-          k = ((Calendar)localObject3).get(11);
-          if (((SharedPreferences)localObject2).getInt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "sp_key_apollo_weather_flag", 0) == i)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("QQSettingRedesign", 2, "pull weatherInfo recycle expts=" + i);
-            }
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
           }
-          else
-          {
-            ((SharedPreferences)localObject2).edit().putString("sp_key_apollo_weather_show", "").commit();
-            ((SharedPreferences)localObject2).edit().putInt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "sp_key_apollo_weather_flag", i).commit();
-            ((SharedPreferences)localObject2).edit().putString(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "sp_key_apollo_weather_data", paramObject).commit();
-            paramObject = new WeatherDrawerStatus(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ApolloWeatherInfo)localObject1);
-            this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(paramObject);
-            i = (int)(System.currentTimeMillis() / 1000L);
-            VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "ask_weather", i, 0, new String[0]);
-            if (QLog.isColorLevel())
-            {
-              QLog.d("QQSettingRedesign", 2, "getWeaterInfo day=" + j + ",hour=" + k + ",info=" + ((ApolloWeatherInfo)localObject1).toString());
-              return;
-            }
-          }
+          this.a.a.a().remove(localRecentBaseData);
+          this.a.b();
         }
       }
-      catch (Exception paramObject) {}
     }
   }
+  
+  public void b() {}
 }
 
 

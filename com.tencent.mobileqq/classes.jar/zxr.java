@@ -1,13 +1,33 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.ar.ARMusicController;
+import com.tencent.qphone.base.util.QLog;
 
-class zxr
-  implements Runnable
+public class zxr
+  implements MediaPlayer.OnPreparedListener
 {
-  zxr(zxq paramzxq, int paramInt) {}
+  public zxr(ARMusicController paramARMusicController) {}
   
-  public void run()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    ArConfigService.a(this.jdField_a_of_type_Zxq.a, this.jdField_a_of_type_Int);
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + ARMusicController.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      ARMusicController.b(this.a, true);
+      if (ARMusicController.b(this.a))
+      {
+        this.a.a.start();
+        ARMusicController.c(this.a, false);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 

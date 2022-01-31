@@ -14,8 +14,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ankf;
-import ankg;
+import aoak;
+import aoal;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -164,17 +164,17 @@ public class FaceListPage
   private void d()
   {
     SLog.b("FaceListPage", "FacePackage is NormalFacePackage " + this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage);
-    ThreadManager.postImmediately(new ankg(this), null, true);
+    ThreadManager.postImmediately(new aoal(this), null, true);
   }
   
   private void e()
   {
     this.jdField_b_of_type_Int = AIOUtils.a(130.0F, super.getContext().getResources());
-    LayoutInflater.from(super.getContext()).inflate(2130970672, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371544));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371545));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131362987));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131371542));
+    LayoutInflater.from(super.getContext()).inflate(2130970718, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371709));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371710));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131363005));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131371707));
     View localView = new View(getContext());
     localView.setLayoutParams(new AbsListView.LayoutParams(-1, DisplayUtil.a(getContext(), 10.0F)));
     localView.setVisibility(4);
@@ -183,11 +183,11 @@ public class FaceListPage
     localView.setLayoutParams(new AbsListView.LayoutParams(-1, DisplayUtil.a(getContext(), 36.0F)));
     localView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetListView.addFooterView(localView);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131371543));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131371556));
-    this.c = ((LinearLayout)super.findViewById(2131371557));
-    this.d = ((LinearLayout)super.findViewById(2131371558));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363500));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131371708));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131371721));
+    this.c = ((LinearLayout)super.findViewById(2131371722));
+    this.d = ((LinearLayout)super.findViewById(2131371723));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363518));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.c.setOnClickListener(this);
   }
@@ -231,7 +231,7 @@ public class FaceListPage
   public void a(FacePackage paramFacePackage)
   {
     if (!a()) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ankf(this, paramFacePackage));
+      this.jdField_a_of_type_AndroidOsHandler.post(new aoak(this, paramFacePackage));
     }
     do
     {

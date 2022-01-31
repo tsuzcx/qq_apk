@@ -1,15 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import protocol.KQQConfig.GetResourceRespInfo;
 
-public final class zbv
-  implements DialogInterface.OnDismissListener
+public class zbv
+  implements Runnable
 {
-  public zbv(Activity paramActivity, int paramInt) {}
+  public zbv(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
+    File localFile = new File(AppConstants.bG);
+    try
+    {
+      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b, new URL(this.jdField_a_of_type_JavaLangString), localFile))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, true, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+      return;
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+    }
   }
 }
 

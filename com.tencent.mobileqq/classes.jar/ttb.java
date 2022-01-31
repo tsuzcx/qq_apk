@@ -1,16 +1,46 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class ttb
-  implements Runnable
+public class ttb
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ttb(tsy paramtsy) {}
+  public ttb(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.a.removeMessages(1);
-    this.a.a.a.removeMessages(1);
-    this.a.a.a.sendEmptyMessageDelayed(1, 500L);
+    int i = 1;
+    if (paramBoolean)
+    {
+      this.a.b.setVisibility(0);
+      SoundAndVibrateActivity.d(this.a).setBackgroundResource(2130838635);
+      if (this.a.app.b() == 0)
+      {
+        this.a.b.setChecked(false);
+        this.a.app.f(1);
+        label64:
+        paramCompoundButton = this.a.app;
+        if (!paramBoolean) {
+          break label153;
+        }
+      }
+    }
+    for (;;)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
+      return;
+      this.a.b.setChecked(true);
+      break;
+      this.a.b.setVisibility(8);
+      SoundAndVibrateActivity.d(this.a).setBackgroundResource(2130838623);
+      this.a.app.f(0);
+      break label64;
+      label153:
+      i = 0;
+    }
   }
 }
 

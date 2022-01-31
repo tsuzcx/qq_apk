@@ -1,19 +1,32 @@
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.statistics.QIMReportController;
+import com.tencent.mobileqq.statistics.reportitem.QIMReadWriteReportItem;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerManager;
+import dov.com.qq.im.capture.view.PressScaleAnimDelegate;
 
-class ankm
-  implements Runnable
+public class ankm
+  implements View.OnClickListener
 {
-  ankm(ankk paramankk, boolean paramBoolean, InfomationFacePackage.Item paramItem) {}
+  public ankm(QIMCaptureController paramQIMCaptureController, RedDotImageView paramRedDotImageView, boolean paramBoolean1, boolean paramBoolean2, QIMCaptureBannerManager paramQIMCaptureBannerManager, boolean paramBoolean3) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ankk.a(this.jdField_a_of_type_Ankk).setVisibility(8);
-    if (this.jdField_a_of_type_Boolean) {
-      InformationFaceAdapter.a(this.jdField_a_of_type_Ankk.a, ankk.a(this.jdField_a_of_type_Ankk), ankk.a(this.jdField_a_of_type_Ankk), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceInfomationFacePackage$Item);
+    paramView = new ankn(this);
+    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
+      this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerManager.c(true);
     }
-    this.jdField_a_of_type_Ankk.a();
+    if ((this.jdField_a_of_type_Boolean) && (this.c)) {
+      this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerManager.d(true);
+    }
+    PressScaleAnimDelegate.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView, 200L, paramView);
+    QIMCaptureController.a(this.jdField_a_of_type_DovComQqImCaptureQIMCaptureController, (RelativeLayout)QIMCaptureController.a(this.jdField_a_of_type_DovComQqImCaptureQIMCaptureController).findViewById(2131365911));
+    paramView = new QIMReadWriteReportItem();
+    paramView.d = "0X8008D52";
+    QIMReportController.b(null, paramView);
   }
 }
 

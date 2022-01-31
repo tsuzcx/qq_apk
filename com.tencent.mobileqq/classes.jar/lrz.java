@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
+import com.tencent.mobileqq.app.PublicAccountObserver;
 
 public class lrz
-  implements View.OnClickListener
+  extends PublicAccountObserver
 {
-  public lrz(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, long paramLong, ArticleInfo paramArticleInfo) {}
+  public lrz(SubscriptionInfoModule paramSubscriptionInfoModule) {}
   
-  public void onClick(View paramView)
+  public void b(boolean paramBoolean, String paramString)
   {
-    paramView = ReadInJoyConstants.f + Base64Util.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), paramView);
-    ReadInJoyFooterPresenter.a(1, ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    this.a.f();
   }
 }
 

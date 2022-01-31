@@ -1,53 +1,37 @@
-import android.annotation.TargetApi;
-import android.view.DragEvent;
-import android.view.View;
-import android.view.View.OnDragListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
+import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageUploader.OnResultListener;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-@TargetApi(11)
 public class aevp
-  implements View.OnDragListener
+  implements ImageUploader.OnResultListener
 {
-  private int jdField_a_of_type_Int;
+  public aevp(ImageFeedsUploader paramImageFeedsUploader) {}
   
-  public aevp(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
-  {
-    switch (paramDragEvent.getAction())
+    QLog.i("ImageFeedsUploader", 1, String.format("upload pic image: result=%d, url=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
+    ImageFeedsUploader.a(this.a).a = paramInt;
+    ImageFeedsUploader.a(this.a).d = paramInt;
+    ImageFeedsUploader.a(this.a).e = paramString;
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
-      continue;
-      RelativeLayout localRelativeLayout = NearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel);
-      int i = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.indexOfChild(paramView);
-      int j = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.indexOfChild(localRelativeLayout);
-      if ((i != -1) && (j != -1) && (((i > j) && (paramDragEvent.getX() > this.jdField_a_of_type_Int / 2)) || ((i < j) && (paramDragEvent.getX() < this.jdField_a_of_type_Int / 2))))
+      ((LocalMediaInfo)ImageFeedsUploader.a(this.a).photoInfo.get(0)).d = paramString;
+      ((LocalMediaInfo)ImageFeedsUploader.a(this.a).photoInfo.get(0)).a = true;
+      ImageFeedsUploader.a(this.a).b = 2;
+      if (VideoFeedsUploader.a == 2)
       {
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.removeView(localRelativeLayout);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.addView(localRelativeLayout, i);
-          NearbyProfileEditTribePanel.d(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel);
-        }
-        catch (Exception paramView) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.nearby_people_card.", 2, "drag between small pics exception" + paramView.getMessage());
-          continue;
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.post(new aevq(this));
-        }
+        ImageFeedsUploader.a(this.a).a = -1005;
+        ImageFeedsUploader.a(this.a, ImageFeedsUploader.a(this.a));
+        return;
       }
+      this.a.a(ImageFeedsUploader.a(this.a), 3, null);
+      return;
     }
+    ImageFeedsUploader.a(this.a, ImageFeedsUploader.a(this.a));
   }
 }
 

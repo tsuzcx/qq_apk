@@ -1,30 +1,18 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidPollDataResultReceiver;
+import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class nxm
   implements Runnable
 {
-  public nxm(HomeFeedPresenter.SendVidPollDataResultReceiver paramSendVidPollDataResultReceiver, CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry) {}
+  public nxm(StoryQQ2UidConverter paramStoryQQ2UidConverter, long paramLong) {}
   
   public void run()
   {
-    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.type = 3;
-      localCommentManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    }
-    for (;;)
-    {
-      ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      return;
-      localCommentManager.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    }
+    String str = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelStoryQQ2UidConverter.a(this.jdField_a_of_type_Long);
+    SLog.a("Q.qqstory.memories.StoryQQ2UidConverter", "get uid by qq from cache. qq = %d, uid = %s.", Long.valueOf(this.jdField_a_of_type_Long), str);
+    ThreadManager.getUIHandler().post(new nxn(this, str));
   }
 }
 

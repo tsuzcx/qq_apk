@@ -1,8 +1,28 @@
-import org.json.JSONObject;
+import android.database.DataSetObserver;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
 
-public abstract interface lzc
+public class lzc
+  extends DataSetObserver
 {
-  public abstract void a(JSONObject paramJSONObject);
+  public lzc(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  
+  public void onChanged()
+  {
+    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
+    {
+      ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(0);
+      String str = this.a.getString(2131438911, new Object[] { Integer.valueOf(ReadInJoyVideoTagSelectionFragment.a(this.a).getCount()), Integer.valueOf(5) });
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(str);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-4473925), 5, str.length(), 0);
+      ReadInJoyVideoTagSelectionFragment.a(this.a).setText(localSpannableStringBuilder);
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.a(this.a).setVisibility(8);
+  }
 }
 
 

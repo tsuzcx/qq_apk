@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import aaxr;
-import aaxs;
+import abes;
+import abet;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -50,7 +50,7 @@ public class TreasureBaseActivity
   
   Drawable getRotateDrawable(Bitmap paramBitmap, float paramFloat)
   {
-    return new aaxr(this, getResources(), paramBitmap, paramFloat, paramBitmap);
+    return new abes(this, getResources(), paramBitmap, paramFloat, paramBitmap);
   }
   
   protected void hideGuide()
@@ -75,44 +75,44 @@ public class TreasureBaseActivity
       return;
     }
     Drawable localDrawable = getRotateDrawable(paramString, 315.0F);
-    this.mArrowLeftDown = ((ImageView)findViewById(2131369520));
+    this.mArrowLeftDown = ((ImageView)findViewById(2131369597));
     if ((localDrawable != null) && (this.mArrowLeftDown != null)) {
       this.mArrowLeftDown.setImageDrawable(localDrawable);
     }
     localDrawable = Drawable.createFromPath((String)localObject);
-    this.mArrowLeft = ((ImageView)findViewById(2131369515));
+    this.mArrowLeft = ((ImageView)findViewById(2131369592));
     if ((this.mArrowLeft != null) && (localDrawable != null)) {
       this.mArrowLeft.setImageDrawable(localDrawable);
     }
     while (!QLog.isColorLevel())
     {
       localObject = getRotateDrawable(paramString, 45.0F);
-      this.mArrowLeftUp = ((ImageView)findViewById(2131369516));
+      this.mArrowLeftUp = ((ImageView)findViewById(2131369593));
       if ((localObject != null) && (this.mArrowLeftUp != null)) {
         this.mArrowLeftUp.setImageDrawable((Drawable)localObject);
       }
       localObject = getRotateDrawable(paramString, 90.0F);
-      this.mArrowUp = ((ImageView)findViewById(2131369517));
+      this.mArrowUp = ((ImageView)findViewById(2131369594));
       if ((localObject != null) && (this.mArrowUp != null)) {
         this.mArrowUp.setImageDrawable((Drawable)localObject);
       }
       localObject = getRotateDrawable(paramString, 135.0F);
-      this.mArrowRightUp = ((ImageView)findViewById(2131369518));
+      this.mArrowRightUp = ((ImageView)findViewById(2131369595));
       if ((localObject != null) && (this.mArrowRightUp != null)) {
         this.mArrowRightUp.setImageDrawable((Drawable)localObject);
       }
       localObject = getRotateDrawable(paramString, 180.0F);
-      this.mArrowRight = ((ImageView)findViewById(2131366791));
+      this.mArrowRight = ((ImageView)findViewById(2131366834));
       if ((localObject != null) && (this.mArrowRight != null)) {
         this.mArrowRight.setImageDrawable((Drawable)localObject);
       }
       localObject = getRotateDrawable(paramString, 225.0F);
-      this.mArrowRightDown = ((ImageView)findViewById(2131369519));
+      this.mArrowRightDown = ((ImageView)findViewById(2131369596));
       if ((localObject != null) && (this.mArrowRightDown != null)) {
         this.mArrowRightDown.setImageDrawable((Drawable)localObject);
       }
       paramString = getRotateDrawable(paramString, 270.0F);
-      this.mArrowDown = ((ImageView)findViewById(2131364555));
+      this.mArrowDown = ((ImageView)findViewById(2131364579));
       if ((paramString == null) || (this.mArrowDown == null)) {
         break;
       }
@@ -137,7 +137,7 @@ public class TreasureBaseActivity
   
   public void onTreasureDirectionChange(float paramFloat1, boolean paramBoolean, float paramFloat2)
   {
-    runOnUiThread(new aaxs(this, paramBoolean, paramFloat1));
+    runOnUiThread(new abet(this, paramBoolean, paramFloat1));
   }
   
   protected void showGuide()

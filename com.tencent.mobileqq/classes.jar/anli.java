@@ -1,23 +1,25 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager.PageChangedObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import dov.com.qq.im.capture.data.CaptureComboManager;
 
 public class anli
-  implements ViewPager.OnPageChangeListener
+  implements Handler.Callback
 {
-  public anli(FaceViewPager paramFaceViewPager) {}
+  public anli(CaptureComboManager paramCaptureComboManager) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((FaceViewPager.PageChangedObserver)localIterator.next()).c(paramInt);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.removeMessages(1);
+      if (this.a.a()) {
+        this.a.a.sendEmptyMessageDelayed(1, 50L);
+      }
     }
   }
 }

@@ -1,20 +1,19 @@
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
-import java.util.Map;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
 
 public class anfo
-  implements VideoFilterPlayView.TrackerCallback
+  implements Runnable
 {
-  public anfo(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
+  public anfo(TroopHWFileDownloadManager paramTroopHWFileDownloadManager, String paramString) {}
   
-  public void a(Map paramMap)
+  public void run()
   {
-    this.a.a(new anfp(this, paramMap), 0L);
+    TroopHWFileDownloadManager.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWFileDownloadManager).pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfo
  * JD-Core Version:    0.7.0.1
  */

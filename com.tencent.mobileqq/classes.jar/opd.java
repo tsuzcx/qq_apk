@@ -1,20 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
 
-public class opd
-  implements View.OnClickListener
+public final class opd
+  extends ExecuteBinResponseCallback
 {
-  public opd(LeftTabBarView paramLeftTabBarView, int paramInt) {}
+  public opd(ExecuteBinResponseCallback paramExecuteBinResponseCallback) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    long l = System.currentTimeMillis();
-    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {
-      return;
-    }
-    LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
+    super.a();
+    this.a.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(paramBoolean);
+  }
+  
+  public void b(String paramString)
+  {
+    this.a.b(paramString);
   }
 }
 

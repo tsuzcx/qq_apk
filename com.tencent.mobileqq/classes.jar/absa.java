@@ -1,33 +1,32 @@
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessPlugin;
 
 public class absa
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public absa(EmoticonFromGroupDBManager paramEmoticonFromGroupDBManager, int paramInt, EmoticonFromGroupEntity paramEmoticonFromGroupEntity) {}
+  public absa(ConfessPlugin paramConfessPlugin) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EmoticonFromGroup_DBManager", 2, "db operation start single. opType: " + this.jdField_a_of_type_Int);
-    }
-    switch (this.jdField_a_of_type_Int)
+    switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("EmoticonFromGroup_DBManager", 2, "db operation end single.");
-      }
-      return;
-      if ((!this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity)) && (QLog.isColorLevel()))
+      return false;
+      if ((paramView instanceof TextView))
       {
-        QLog.e("EmoticonFromGroup_DBManager.dberror", 2, "updateEntity error, e.md5=" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity.md5);
+        int i = ((TextView)paramView).getCurrentTextColor();
+        ((TextView)paramView).setTextColor(Color.argb(128, Color.red(i), Color.green(i), Color.blue(i)));
         continue;
-        if ((!this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager.a.b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity)) && (QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity.getStatus() != 1000)) {
-          QLog.e("EmoticonFromGroup_DBManager.dberror", 2, "remove error, e.md5=" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity.md5);
+        if ((paramView instanceof TextView))
+        {
+          i = ((TextView)paramView).getCurrentTextColor();
+          ((TextView)paramView).setTextColor(Color.argb(255, Color.red(i), Color.green(i), Color.blue(i)));
         }
       }
     }
@@ -35,7 +34,7 @@ public class absa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absa
  * JD-Core Version:    0.7.0.1
  */

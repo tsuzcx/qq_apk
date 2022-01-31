@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager.IBannerInteract;
+import com.tencent.mobileqq.activity.recent.BannerManager.MessageToShowBanner;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class xjx
-  implements DialogInterface.OnClickListener
+public class xjx
+  implements View.OnClickListener
 {
-  xjx(xjv paramxjv) {}
+  private BannerManager.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xjx(BannerManager.MessageToShowBanner paramMessageToShowBanner, MqqHandler paramMqqHandler)
   {
-    this.a.a.finish();
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner = paramMessageToShowBanner;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_JavaLangString + " on enter");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$IBannerInteract.a();
   }
 }
 

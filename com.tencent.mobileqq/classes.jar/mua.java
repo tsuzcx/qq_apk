@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.widget.ActionSheet;
-
 public class mua
-  implements View.OnClickListener
 {
-  public mua(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
+  public int a;
+  public boolean a;
+  public int b;
   
-  public void onClick(View paramView)
+  public mua(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.a.a.dismiss();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
+import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter.OnImgClickListener;
 
-class wpm
-  implements Runnable
+public class wpm
+  implements PicSelectAdapter.OnImgClickListener
 {
-  wpm(wpl paramwpl) {}
+  public wpm(PicSelectAdapter paramPicSelectAdapter) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.a.c();
+    PicSelectAdapter.a(this.a, paramInt1, paramInt2);
   }
 }
 

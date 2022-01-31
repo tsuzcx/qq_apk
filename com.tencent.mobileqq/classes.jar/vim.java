@@ -1,43 +1,30 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForVideo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.util.LRULinkedHashMap;
 
 public class vim
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public vim(VideoItemBuilder paramVideoItemBuilder, VideoActionSheet paramVideoActionSheet, MessageForVideo paramMessageForVideo, int paramInt) {}
+  public vim(TextItemBuilder paramTextItemBuilder, CharSequence paramCharSequence, long paramLong1, long paramLong2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (paramInt)
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.a(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Long);
+    if (localObject1 != null) {}
+    synchronized (TextItemBuilder.a)
     {
+      TextItemBuilder.a.put(Long.valueOf(this.b), localObject1);
+      ??? = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.b.obtainMessage();
+      ((Message)???).what = 1;
+      ((Message)???).obj = localObject1;
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putLong("msg_id", this.b);
+      ((Message)???).setData((Bundle)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.b.sendMessage((Message)???);
+      return;
     }
-    do
-    {
-      return;
-      VideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo);
-      return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        VideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo);
-        return;
-      }
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4))
-      {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, true, null, null, 1, 0);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006407", "0X8006407", 3, 0, "", "", "", "");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 5);
-    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_AndroidContentContext, 2, 9);
   }
 }
 

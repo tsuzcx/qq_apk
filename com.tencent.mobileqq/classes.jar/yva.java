@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanelAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.apollo.ApolloPushManager;
+import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionPush;
 
 public class yva
   implements Runnable
 {
-  public yva(ApolloPanel paramApolloPanel) {}
+  public yva(ApolloMsgPlayController paramApolloMsgPlayController, QQAppInterface paramQQAppInterface, ApolloActionPush paramApolloActionPush) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter != null) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPanel", 2, "func showGameViewOnly begins. Thread id = " + Thread.currentThread().getId());
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.notifyDataSetChanged();
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_JavaUtilList.add(this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameViewBinder);
-      ApolloPanel.b(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.a(this.a.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      ((ApolloPushManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(226)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush);
     }
   }
 }

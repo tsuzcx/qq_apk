@@ -1,25 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
 
 public class jsp
-  implements Animation.AnimationListener
+  implements Runnable
 {
   public jsp(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (this.a.a != null)
+    if (!this.a.i)
     {
-      this.a.b = true;
-      this.a.a.g();
+      this.a.i(0);
+      this.a.ad();
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

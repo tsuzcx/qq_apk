@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.ApolloPanelManager;
-import com.tencent.mobileqq.apollo.script.SpriteActionMessage;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel.IRequestHandler;
+import java.util.Comparator;
 
 public class yoo
-  implements Runnable
+  implements Comparator
 {
-  public yoo(SpriteActionMessage paramSpriteActionMessage, int paramInt, boolean paramBoolean) {}
+  public yoo(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public void run()
+  public int a(ApolloCmdChannel.IRequestHandler paramIRequestHandler1, ApolloCmdChannel.IRequestHandler paramIRequestHandler2)
   {
-    if ((SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage) != null) && (SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage).a() != null))
-    {
-      ApolloPanelManager localApolloPanelManager = ((ApolloManager)SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage).a().getManager(152)).a();
-      if (localApolloPanelManager != null)
-      {
-        localApolloPanelManager.a.set(this.jdField_a_of_type_Int);
-        localApolloPanelManager.a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
-      }
-    }
+    return paramIRequestHandler1.a() - paramIRequestHandler2.a();
   }
 }
 

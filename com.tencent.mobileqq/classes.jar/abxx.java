@@ -1,59 +1,45 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.dating.widget.InputBar;
+import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.ListView;
 
 public class abxx
-  implements abyc
+  implements Runnable
 {
-  public abxx(EmoticonMainPanel paramEmoticonMainPanel, int paramInt, long paramLong) {}
+  public abxx(InputBar paramInputBar, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    int j = this.jdField_a_of_type_Int;
-    int i = j;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.g)
+    if (InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) <= this.jdField_a_of_type_Int - InputBar.b(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "switchTabMode mMarketPgkDownloaded = true");
-      }
-      i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a != null)
-      {
-        i = j;
-        if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.size() > 0)
-        {
-          if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.size() <= EmoticonMainPanel.e) || (((EmotionPanelInfo)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.get(EmoticonMainPanel.e)).jdField_a_of_type_Int != 8)) {
-            break label149;
-          }
-          i = 1;
-          if (i == 0) {
-            break label159;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.size() < 4) {
-            break label154;
-          }
-          i = 3;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.g = false;
-      EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_Long, i);
+      InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).setSelectionFromTop(InputBar.d(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) + InputBar.c(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar), this.jdField_a_of_type_Int - InputBar.e(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) - InputBar.b(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar));
       return;
-      label149:
-      i = 0;
-      break;
-      label154:
-      i = 0;
-      continue;
-      label159:
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a.size() >= 3) {
-        i = 2;
-      } else {
-        i = 0;
+    }
+    if (InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).getAdapter() == null) {}
+    for (int i = 0;; i = InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).getAdapter().getCount())
+    {
+      int j = InputBar.c(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar);
+      int k = InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).getFooterViewsCount();
+      float f = this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar.getResources().getDisplayMetrics().density;
+      int m = (int)(61.0F * f);
+      j = InputBar.b(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) - this.jdField_a_of_type_Int + InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).getBottom() - (i - j - k - InputBar.d(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) - 1) * m;
+      i = j;
+      if (InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).getFooterViewsCount() > 0) {
+        i = (int)(j - f * 60.0F);
       }
+      if (i <= 0) {
+        break;
+      }
+      if (InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) != null) {
+        InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).removeFooterView(InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar));
+      }
+      InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar, new View(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar.getContext()));
+      InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).setLayoutParams(new AbsListView.LayoutParams(-1, i));
+      InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).addFooterView(InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar));
+      break;
     }
   }
 }

@@ -2,12 +2,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeBigSocial;
 
 public class ltn
   implements View.OnTouchListener
 {
-  public ltn(FeedItemCellTypeGalleryBiu paramFeedItemCellTypeGalleryBiu, LinearLayout paramLinearLayout) {}
+  public ltn(FeedItemCellTypeBigSocial paramFeedItemCellTypeBigSocial, LinearLayout paramLinearLayout) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {

@@ -1,16 +1,11 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.troop.model.TroopStorySingleVideoSynchronizer;
-import java.util.Collections;
+import android.widget.ImageView;
 
-public class omg
-  implements Runnable
+class omg
 {
-  public omg(TroopStorySingleVideoSynchronizer paramTroopStorySingleVideoSynchronizer, StoryVideoItem paramStoryVideoItem) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStorySingleVideoSynchronizer.a(Collections.singletonList(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem), true);
-  }
+  omg(omf paramomf) {}
 }
 
 

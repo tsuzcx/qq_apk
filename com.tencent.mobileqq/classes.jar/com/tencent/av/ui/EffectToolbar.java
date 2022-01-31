@@ -37,9 +37,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
-import jup;
-import juq;
-import jur;
+import jua;
+import jub;
+import juc;
 
 public class EffectToolbar
   extends BaseToolbar
@@ -48,10 +48,10 @@ public class EffectToolbar
   private static final String TAG = "EffectToolbar";
   QAVPtvTemplateAdapter mAdapter;
   public Button mEarbackBtn = null;
-  QAVPtvTemplateAdapter.IEffectCallback mEffectClickCallback = new jup(this);
+  QAVPtvTemplateAdapter.IEffectCallback mEffectClickCallback = new jua(this);
   boolean mEnableGesture = false;
   HorizontalListView mListView;
-  protected jur mObserver;
+  protected juc mObserver;
   private EffectPendantTools mPendantManager;
   public Map mPtvTemplateInfoMap = new HashMap();
   ArrayList mTemplateList = null;
@@ -101,7 +101,7 @@ public class EffectToolbar
   private void postSetCurrentItemById(String paramString)
   {
     notifyEvent(Integer.valueOf(6101), null, Boolean.valueOf(true));
-    this.mApp.a().post(new juq(this, paramString));
+    this.mApp.a().post(new jub(this, paramString));
     boolean bool;
     if (this.mApp.a(3))
     {
@@ -214,16 +214,16 @@ public class EffectToolbar
   
   public static void showCloseEarbackToast(Context paramContext)
   {
-    paramContext = QQToast.a(paramContext, 2, 2131429601, 1);
+    paramContext = QQToast.a(paramContext, 2, 2131429607, 1);
     paramContext.a();
     paramContext.a();
   }
   
   private void updateEarbackBtn()
   {
-    int i = 2130840355;
+    int i = 2130840361;
     if (this.mApp.a().a().aC) {
-      i = 2130840356;
+      i = 2130840362;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
@@ -236,7 +236,7 @@ public class EffectToolbar
     localArrayList.add(localObject);
     localObject = new QavListItemBase.ItemInfo();
     ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = "0";
-    ((QavListItemBase.ItemInfo)localObject).b = String.valueOf(2130840276);
+    ((QavListItemBase.ItemInfo)localObject).b = String.valueOf(2130840282);
     ((QavListItemBase.ItemInfo)localObject).d = "取消挂件";
     localArrayList.add(localObject);
     this.mPtvTemplateInfoMap.clear();
@@ -270,10 +270,10 @@ public class EffectToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 1;
-      this.mUIInfo.g = 2130969360;
+      this.mUIInfo.g = 2130969361;
       this.mUIInfo.e = 103414;
-      this.mUIInfo.f = 2130840337;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428736);
+      this.mUIInfo.f = 2130840343;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428742);
     }
     return this.mUIInfo;
   }
@@ -281,7 +281,7 @@ public class EffectToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131428730);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131428736);
     }
     return "";
   }
@@ -328,8 +328,8 @@ public class EffectToolbar
   protected void onCreate(AVActivity paramAVActivity)
   {
     this.mPendantManager = ((EffectPendantTools)this.mApp.a(2));
-    this.mObserver = new jur(this);
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366248));
+    this.mObserver = new juc(this);
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366275));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mTemplateList = addItem_with_Double_Video_type(this.mApp);
     this.mAdapter = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mTemplateList, this.mListView);
@@ -341,7 +341,7 @@ public class EffectToolbar
     this.mAdapter.a(this);
     this.mListView.setAdapter(this.mAdapter);
     setLastItem();
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131366255));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131366282));
     this.mEarbackBtn.setOnClickListener(this);
     AVEffectPendantReport.c();
   }

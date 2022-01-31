@@ -1,18 +1,26 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class uhp
-  extends QQLruCache
+  implements View.OnClickListener
 {
-  public uhp(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public uhp(VisitorsActivity paramVisitorsActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString, BaseRedPkgElem paramBaseRedPkgElem1, BaseRedPkgElem paramBaseRedPkgElem2)
+  public void onClick(View paramView)
   {
-    super.entryRemoved(paramBoolean, paramString, paramBaseRedPkgElem1, paramBaseRedPkgElem2);
+    if ((paramView.getTag() instanceof uil))
+    {
+      paramView = (uil)paramView.getTag();
+      ReportController.a(this.a.app, "CliOper", "", "", "0X800444A", "0X800444A", 0, 0, "", "", "", "");
+      VisitorsActivity.a(this.a, (CardProfile)paramView.a);
+    }
+    while (!(paramView.getTag() instanceof uin)) {
+      return;
+    }
+    this.a.a();
   }
 }
 

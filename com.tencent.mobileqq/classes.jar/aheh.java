@@ -1,35 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.VADActivity;
-import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import com.tencent.mobileqq.search.util.ObjectTransfer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class aheh
-  implements Runnable
+class aheh
+  implements ActionSheet.OnButtonClickListener
 {
-  public aheh(VADActivity paramVADActivity) {}
+  aheh(aheg paramaheg, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = new ApproximateSearchEngine(this.a.app, 2, 793, null);
-    ((ApproximateSearchEngine)localObject).a();
-    if (!VADActivity.a(this.a).get())
-    {
-      VADActivity.a(this.a, (ApproximateSearchEngine)localObject);
-      VADActivity.a(this.a).set(true);
-    }
-    localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    VADActivity.a(this.a, new GroupSearchEngine((QQAppInterface)localObject, VADActivity.b()));
-    VADActivity.a(this.a).a();
-    VADActivity.a(this.a, ObjectTransfer.a().a(VADActivity.a(this.a)));
+    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aheh
  * JD-Core Version:    0.7.0.1
  */

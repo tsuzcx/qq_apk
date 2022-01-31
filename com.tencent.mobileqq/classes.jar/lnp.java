@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.mobileqq.widget.BounceScrollView.DrawFinishedListener;
 
 public class lnp
-  implements View.OnClickListener
+  implements BounceScrollView.DrawFinishedListener
 {
-  public lnp(ReadInJoyBBCircleFragment paramReadInJoyBBCircleFragment) {}
+  public lnp(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ReadInJoyUtils.a(this.a.getActivity(), (ViewGroup)this.a.c());
-    PublicAccountReportUtils.a(null, "", "0X8008C5F", "0X8008C5F", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
+    if (ReadInJoySelfFragment.a(this.a))
+    {
+      ReadInJoySelfFragment.a(this.a, false);
+      PublicTracker.a("self_tab_cost", null);
+      PublicTracker.a = 4;
+      PublicTracker.a("KANDIAN_FEEDS_COST", null);
+    }
   }
 }
 

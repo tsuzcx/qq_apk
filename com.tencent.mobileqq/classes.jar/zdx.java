@@ -1,126 +1,14 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FriendListHandler;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 public class zdx
-  extends Handler
+  implements Runnable
 {
-  private HashSet jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  public zdx(FriendListHandler paramFriendListHandler, ArrayList paramArrayList1, String paramString, int paramInt1, int paramInt2, ArrayList paramArrayList2) {}
   
-  public zdx(MessageHandler paramMessageHandler, Looper paramLooper)
+  public void run()
   {
-    super(paramLooper);
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label69;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        sendMessage((Message)localIterator.next());
-      }
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    label69:
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "updateUnreadWorker doC2CUpdateNow");
-    }
-  }
-  
-  public void a(Message paramMessage)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      paramMessage = paramMessage.getData();
-      if ((paramMessage != null) && (paramMessage.containsKey("update_unread_uin")) && (paramMessage.containsKey("update_unread_time")))
-      {
-        String str = paramMessage.getString("update_unread_uin");
-        int i = paramMessage.getInt("update_unread_type", 0);
-        long l = paramMessage.getLong("update_unread_time");
-        this.jdField_a_of_type_JavaUtilHashSet.add(MsgProxyUtils.a(str, i) + "&" + l);
-      }
-      return;
-    }
-  }
-  
-  void a(String paramString, int paramInt, long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      if (this.jdField_a_of_type_JavaUtilHashSet.contains(MsgProxyUtils.a(paramString, paramInt) + "&" + paramLong)) {
-        this.jdField_a_of_type_JavaUtilHashSet.remove(MsgProxyUtils.a(paramString, paramInt) + "&" + paramLong);
-      }
-      return;
-    }
-  }
-  
-  public boolean a(Message paramMessage)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      paramMessage = paramMessage.getData();
-      if ((paramMessage != null) && (paramMessage.containsKey("update_unread_uin")) && (paramMessage.containsKey("update_unread_time")))
-      {
-        String str = paramMessage.getString("update_unread_uin");
-        int i = paramMessage.getInt("update_unread_type", 0);
-        long l = paramMessage.getLong("update_unread_time");
-        boolean bool = this.jdField_a_of_type_JavaUtilHashSet.contains(MsgProxyUtils.a(str, i) + "&" + l);
-        return bool;
-      }
-      return false;
-    }
-  }
-  
-  public void b(Message paramMessage)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramMessage);
-      return;
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!paramMessage.containsKey("update_unread_uin")) || (!paramMessage.containsKey("update_unread_time")));
-      String str = paramMessage.getString("update_unread_uin");
-      int i = paramMessage.getInt("update_unread_type", 0);
-      long l = paramMessage.getLong("update_unread_time");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "msg update_c2c_unread-->uin:" + str + ", uinType:" + i + ", lastReadTime:" + l);
-      }
-      a(str, i, l);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a().a(str, i, l);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(2002, true, null);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "updateUnreadWorker C2CWorkerTimeout");
-    }
-    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaUtilArrayList);
   }
 }
 

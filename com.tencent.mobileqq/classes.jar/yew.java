@@ -1,22 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer;
+import com.tencent.mobileqq.video.IMediaPlayer.OnCompletionListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class yew
-  implements IIconListener
+  implements IMediaPlayer.OnCompletionListener
 {
-  public yew(RecommendFriendAdapter paramRecommendFriendAdapter) {}
+  public yew(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(IMediaPlayer paramIMediaPlayer)
   {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onCompletion");
+    }
+    if (this.a.j == 10) {
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yew
  * JD-Core Version:    0.7.0.1
  */

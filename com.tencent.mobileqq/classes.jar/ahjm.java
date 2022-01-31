@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import msf.msgcomm.msg_comm.Msg;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
-public final class ahjm
-  implements Runnable
+public class ahjm
+  extends AnimatorListenerAdapter
 {
-  public ahjm(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
+  public ahjm(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+    EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjm
  * JD-Core Version:    0.7.0.1
  */

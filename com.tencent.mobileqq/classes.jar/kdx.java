@@ -1,25 +1,17 @@
-import com.tencent.av.ui.funchat.record.AudioFileDecoder.Callback;
-import com.tencent.av.ui.funchat.record.QavRecordReporter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.app.VideoObserver;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
 
-public final class kdx
-  implements AudioFileDecoder.Callback
+public class kdx
+  extends VideoObserver
 {
-  public void a(int paramInt)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onError " + paramInt);
-    QavRecordReporter.a(false, paramInt);
-  }
+  public kdx(AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void a(String paramString)
+  protected void c()
   {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onStart " + paramString);
-  }
-  
-  public void b(String paramString)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onFinish " + paramString);
-    QavRecordReporter.a(true, 0);
+    super.c();
+    this.a.a("onConnected_init_when_not_support");
+    AVRedBagMgr.a(this.a).b(this);
   }
 }
 

@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
 
-class xwc
-  implements DialogInterface.OnClickListener
+public class xwc
+  implements Runnable
 {
-  xwc(xwa paramxwa) {}
+  public xwc(RDBaseDataManager paramRDBaseDataManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.a.app, "CliOper", "", "", "0X8006405", "0X8006405", 0, 0, "", "", "", "");
+    RDBaseDataManager.a(this.a);
   }
 }
 

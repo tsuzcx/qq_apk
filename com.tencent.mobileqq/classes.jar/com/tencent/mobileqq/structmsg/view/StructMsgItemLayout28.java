@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahvb;
-import ahvc;
+import aije;
+import aijf;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -45,20 +45,20 @@ public class StructMsgItemLayout28
   {
     Object localObject1 = null;
     View localView;
-    ahvc localahvc;
+    aijf localaijf;
     label223:
     Object localObject2;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramContext).inflate(2130969948, null);
-      localahvc = new ahvc(this);
-      localahvc.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)localView.findViewById(2131368528));
-      localahvc.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setRadius(13.0F);
-      localahvc.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368532));
-      localahvc.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368531));
-      localahvc.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368529));
-      localahvc.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368530));
-      localView.setTag(this.i, localahvc);
+      localView = LayoutInflater.from(paramContext).inflate(2130969962, null);
+      localaijf = new aijf(this);
+      localaijf.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)localView.findViewById(2131368595));
+      localaijf.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setRadius(13.0F);
+      localaijf.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368599));
+      localaijf.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368598));
+      localaijf.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368596));
+      localaijf.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368597));
+      localView.setTag(this.i, localaijf);
       localView.setOnClickListener(this);
       paramBundle = (ColorDrawable)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.f));
       paramView = paramBundle;
@@ -75,7 +75,7 @@ public class StructMsgItemLayout28
       if (paramView == null) {
         paramBundle = jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
       }
-      localahvc.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramBundle);
+      localaijf.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramBundle);
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       paramView = null;
       paramBundle = (Bundle)localObject1;
@@ -88,7 +88,7 @@ public class StructMsgItemLayout28
         break label346;
       }
       localObject2 = (StructMsgItemTitle)localObject1;
-      localahvc.jdField_b_of_type_AndroidWidgetTextView.setText(((StructMsgItemTitle)localObject2).A);
+      localaijf.jdField_b_of_type_AndroidWidgetTextView.setText(((StructMsgItemTitle)localObject2).A);
       label282:
       if (!TextUtils.isEmpty(paramView)) {
         break label608;
@@ -96,7 +96,7 @@ public class StructMsgItemLayout28
       localObject1 = (StructMsgForGeneralShare)((AbsStructMsgElement)localObject1).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
       paramView = ((StructMsgForGeneralShare)localObject1).animResId;
       paramBundle = ((StructMsgForGeneralShare)localObject1).atMembers;
-      localahvc.c = String.valueOf(((StructMsgForGeneralShare)localObject1).uniseq);
+      localaijf.c = String.valueOf(((StructMsgForGeneralShare)localObject1).uniseq);
     }
     label346:
     label608:
@@ -105,7 +105,7 @@ public class StructMsgItemLayout28
       for (;;)
       {
         break label223;
-        localahvc = (ahvc)paramView.getTag(this.i);
+        localaijf = (aijf)paramView.getTag(this.i);
         localView = paramView;
         break;
         if (!"picture".equals(localObject2)) {
@@ -121,13 +121,13 @@ public class StructMsgItemLayout28
           localURLDrawableOptions.mRequestWidth = ((int)DisplayUtils.a(paramContext, 62.5F));
           localURLDrawableOptions.mRequestHeight = ((int)DisplayUtils.a(paramContext, 115.0F));
           localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
-          localahvc.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
-          localahvc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          localaijf.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+          localaijf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         }
         catch (Exception localException)
         {
           QLog.e("Q.robot.StructMsg", 1, localException, new Object[0]);
-          localahvc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+          localaijf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
         }
       }
       break label282;
@@ -135,22 +135,22 @@ public class StructMsgItemLayout28
         break label282;
       }
       StructMsgItemVoice localStructMsgItemVoice = (StructMsgItemVoice)localObject1;
-      localahvc.jdField_a_of_type_AndroidWidgetTextView.setText(localStructMsgItemVoice.e + "\"");
+      localaijf.jdField_a_of_type_AndroidWidgetTextView.setText(localStructMsgItemVoice.e + "\"");
       break label282;
-      localahvc.jdField_a_of_type_JavaLangString = paramView;
-      localahvc.jdField_b_of_type_JavaLangString = paramBundle;
-      if (RobotResourcesManager.a().c(localahvc.c))
+      localaijf.jdField_a_of_type_JavaLangString = paramView;
+      localaijf.jdField_b_of_type_JavaLangString = paramBundle;
+      if (RobotResourcesManager.a().c(localaijf.c))
       {
         if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable == null) {
-          this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)paramContext.getResources().getDrawable(2130841444));
+          this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)paramContext.getResources().getDrawable(2130841481));
         }
-        localahvc.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable);
+        localaijf.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable);
         if (!this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.isRunning()) {
           this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
         }
         return localView;
       }
-      localahvc.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841443);
+      localaijf.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841480);
       return localView;
     }
   }
@@ -163,9 +163,9 @@ public class StructMsgItemLayout28
   public void onClick(View paramView)
   {
     paramView = paramView.getTag(this.i);
-    if ((paramView instanceof ahvc))
+    if ((paramView instanceof aijf))
     {
-      paramView = (ahvc)paramView;
+      paramView = (aijf)paramView;
       if (TextUtils.isEmpty(paramView.jdField_a_of_type_JavaLangString)) {
         QLog.e("Q.robot.StructMsg", 2, "onClick failed , resid empty!");
       }
@@ -182,12 +182,12 @@ public class StructMsgItemLayout28
       RobotResourcesManager.a().a(str2, paramView.jdField_a_of_type_JavaLangString, paramView.jdField_b_of_type_JavaLangString);
       return;
     }
-    localRobotResourcesManager.a(paramView.jdField_a_of_type_JavaLangString, new ahvb(this, str2, str1, paramView));
+    localRobotResourcesManager.a(paramView.jdField_a_of_type_JavaLangString, new aije(this, str2, str1, paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout28
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
-import com.tencent.mobileqq.utils.QQCustomArkDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class ajpn
-  implements ArkAppContainer.ArkAppModuleCallback
+public final class ajpn
+  implements Runnable
 {
-  public ajpn(QQCustomArkDialog paramQQCustomArkDialog) {}
+  public ajpn(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
-  public boolean a(ArkAppContainer paramArkAppContainer)
+  public void run()
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
-  {
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajpn
  * JD-Core Version:    0.7.0.1
  */

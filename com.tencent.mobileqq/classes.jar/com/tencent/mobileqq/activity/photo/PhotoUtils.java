@@ -584,6 +584,9 @@ public class PhotoUtils
           }
           else
           {
+            if (str1.equals("com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity")) {
+              paramBoolean = paramIntent.getBooleanExtra("PhotoConst.HANDLE_DEST_RESULT", false);
+            }
             paramIntent.putExtra("param_compressInitTime", System.currentTimeMillis());
             if (paramIntent.getBooleanExtra("sIsCloudPrinter", false))
             {

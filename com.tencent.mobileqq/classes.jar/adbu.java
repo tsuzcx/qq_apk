@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager;
+import com.tencent.smtt.sdk.TbsReaderView;
 
-public class adbu
-  implements Runnable
+class adbu
+  implements DialogInterface.OnClickListener
 {
-  public adbu(ForwardSdkShareOption paramForwardSdkShareOption, AbsStructMsg paramAbsStructMsg, String paramString, int paramInt) {}
+  adbu(adbs paramadbs, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StructMsgForImageShare.sendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption.a, (StructMsgForImageShare)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null, 0);
+    LocalTbsViewManager.a(this.jdField_a_of_type_Adbs.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager).userStatistics(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putString("_filename_from_dlg", this.jdField_a_of_type_Adbs.jdField_a_of_type_AndroidAppActivity.getString(2131435108));
+    Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
+    localIntent.putExtra("param", paramDialogInterface);
+    localIntent.putExtra("url", this.b);
+    this.jdField_a_of_type_Adbs.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
   }
 }
 

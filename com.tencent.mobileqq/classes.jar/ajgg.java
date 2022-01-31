@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.OnOnPlayedListener;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
 
 public class ajgg
-  implements VideoSprite.OnOnPlayedListener
+  implements View.OnClickListener
 {
-  public ajgg(TroopSignVideoView paramTroopSignVideoView) {}
+  public ajgg(HomeworkGuideFragment paramHomeworkGuideFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (TroopSignVideoView.a(this.a) != null) {
-      TroopSignVideoView.a(this.a).a();
-    }
+    this.a.getActivity().setResult(1000);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgg
  * JD-Core Version:    0.7.0.1
  */

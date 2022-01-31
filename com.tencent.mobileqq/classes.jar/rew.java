@@ -1,56 +1,68 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import android.os.Bundle;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule.LoginInfo;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserLoginLogic;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class rew
-  implements TextWatcher
+  implements BusinessObserver
 {
-  public rew(AddAccountActivity paramAddAccountActivity) {}
+  public rew(UserLoginLogic paramUserLoginLogic, String paramString) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    AddAccountActivity.a(this.a, null);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AddAccountActivity.a(this.a, paramCharSequence.toString());
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.jdField_a_of_type_JavaLangString.equals(localObject)) {
+      return;
+    }
+    paramInt = paramBundle.getInt("code");
+    if (paramBoolean)
     {
-      paramCharSequence = paramCharSequence.toString();
-      if ((paramCharSequence != null) && (AddAccountActivity.a(this.a) != null) && (AddAccountActivity.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
-        BaseApplicationImpl.sApplication.refreAccountList();
-      }
-      AddAccountActivity.a(this.a, null);
-      if ((AddAccountActivity.a(this.a) == null) || (AddAccountActivity.a(this.a).length() == 0)) {}
-      do
+      localObject = new SdkAuthorize.GetAuthApiListResponse();
+      try
       {
-        return;
-        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != AddAccountActivity.a(this.a).length() + 1))
+        paramBundle = (SdkAuthorize.GetAuthApiListResponse)((SdkAuthorize.GetAuthApiListResponse)localObject).mergeFrom(paramBundle.getByteArray("data"));
+        paramInt = paramBundle.ret.get();
+        localObject = paramBundle.msg.get();
+        if (paramInt != 0)
         {
-          BaseApplicationImpl.sApplication.refreAccountList();
+          DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, (String)localObject);
           return;
         }
-        if ((!paramCharSequence.substring(0, AddAccountActivity.a(this.a).length()).equals(AddAccountActivity.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText == null)) {
-          break;
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d(UserLoginLogic.jdField_a_of_type_JavaLangString, 2, "parse auth info error: \n" + paramBundle.getMessage());
         }
-        paramCharSequence = paramCharSequence.substring(AddAccountActivity.a(this.a).length());
-      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText(paramCharSequence);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(1);
+        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "parse auth info error");
+        return;
+      }
+      localObject = (SdkAuthorize.AuthorizeResponse)paramBundle.auth_response.get();
+      if ((UserLoginLogic.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic, paramBundle)) && (localObject != null) && (((SdkAuthorize.AuthorizeResponse)localObject).has()))
+      {
+        paramBundle = new UserInfoModule.LoginInfo();
+        paramBundle.jdField_a_of_type_JavaLangString = ((SdkAuthorize.AuthorizeResponse)localObject).openid.get().toUpperCase();
+        paramBundle.b = ((SdkAuthorize.AuthorizeResponse)localObject).access_token.get().toUpperCase();
+        this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.a(paramBundle);
+        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramBundle.a());
+        return;
+      }
+      UserLoginLogic.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic);
+      return;
     }
-    AddAccountActivity.a(this.a, null);
+    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserLoginLogic.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "get auth info failure");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rew
  * JD-Core Version:    0.7.0.1
  */

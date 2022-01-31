@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
 
 public class wea
-  implements ConditionSearchManager.IConfigListener
+  implements Runnable
 {
-  public wea(AddContactsView paramAddContactsView) {}
+  public wea(ZhituManager paramZhituManager, String paramString1, int paramInt1, ZhituResponse paramZhituResponse, ZhituImgResponse paramZhituImgResponse, int paramInt2, String paramString2) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
-    }
-    if ((paramInt == 2) && (paramBoolean))
-    {
-      this.a.b = true;
-      this.a.e();
-    }
+    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituImgResponse, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
   }
 }
 

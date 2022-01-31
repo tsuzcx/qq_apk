@@ -1,27 +1,33 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class ope
-  extends AccessibilityDelegateCompat
+public final class ope
+  extends ExecuteBinResponseCallback
 {
-  public ope(LeftTabBarView paramLeftTabBarView) {}
+  public ope(ExecuteBinResponseCallback paramExecuteBinResponseCallback) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void a()
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
+    super.a();
+  }
+  
+  public void a(String paramString)
+  {
+    String str = String.valueOf(System.currentTimeMillis() - this.b);
+    StoryReportor.a("music_composite", "music_clip", 0, 0, new String[] { str });
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + str + '\n' + paramString);
     }
   }
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void b(String paramString)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    }
+    this.a.b(paramString);
+    StoryReportor.a("music_composite", "music_clip", 0, 1, new String[0]);
   }
 }
 

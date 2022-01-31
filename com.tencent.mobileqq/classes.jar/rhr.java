@@ -1,33 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.FriendInfo;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.RecentDataListManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class rhr
+public final class rhr
   implements Runnable
 {
-  rhr(rhq paramrhq, Card paramCard) {}
+  public rhr(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Rhq.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_Rhq.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null) && (this.jdField_a_of_type_Rhq.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.has()) && (this.jdField_a_of_type_Rhq.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.has() == true))
-    {
-      AddRequestActivity.a(this.jdField_a_of_type_Rhq.a.a).setText(this.jdField_a_of_type_Rhq.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.get());
-      AddRequestActivity.a(this.jdField_a_of_type_Rhq.a.a).setVisibility(0);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.AddRequestActivity", 2, "Card find Uin :" + this.jdField_a_of_type_Rhq.a.a.jdField_a_of_type_JavaLangString + "age:" + this.jdField_a_of_type_ComTencentMobileqqDataCard.age + "gender:" + this.jdField_a_of_type_ComTencentMobileqqDataCard.shGender);
-      }
-      return;
-      AddRequestActivity.a(this.jdField_a_of_type_Rhq.a.a).setVisibility(8);
-      this.jdField_a_of_type_Rhq.a.a.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
-    }
+    RecentDataListManager.a().a(this.a, BaseApplicationImpl.sApplication, false);
   }
 }
 

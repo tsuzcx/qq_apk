@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aihi;
-import aihn;
-import aiho;
-import aihp;
-import aihr;
-import aihs;
-import aiht;
-import aihu;
+import aivl;
+import aivq;
+import aivr;
+import aivs;
+import aivu;
+import aivv;
+import aivw;
+import aivx;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -93,38 +93,38 @@ public class TroopAvatarWallEditActivity
   {
     if (this.jdField_a_of_type_ComTencentWidgetGallery == null)
     {
-      QQToast.a(this, getString(2131435531), 0).a();
+      QQToast.a(this, getString(2131435548), 0).a();
       return;
     }
     Object localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
     if (localObject == null)
     {
-      QQToast.a(this, getString(2131435531), 0).a();
+      QQToast.a(this, getString(2131435548), 0).a();
       return;
     }
     localObject = ((ImageView)((View)localObject).findViewById(2131361846)).getDrawable();
     if ((localObject == null) || (!(localObject instanceof URLDrawable)))
     {
-      QQToast.a(this, getString(2131435531), 0).a();
+      QQToast.a(this, getString(2131435548), 0).a();
       return;
     }
     localObject = (URLDrawable)localObject;
     if (((URLDrawable)localObject).getStatus() != 1)
     {
-      QQToast.a(this, getString(2131435531), 0).a();
+      QQToast.a(this, getString(2131435548), 0).a();
       return;
     }
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     if (this.jdField_c_of_type_Boolean)
     {
-      localActionSheet.a(2131435854, 1);
-      localActionSheet.a(2131435860, 1);
+      localActionSheet.a(2131435871, 1);
+      localActionSheet.a(2131435877, 1);
       if (!getIntent().getBooleanExtra("from_photo_wall", false)) {
-        ThreadManager.executeOnFileThread(new aihp(this, (URLDrawable)localObject, localActionSheet));
+        ThreadManager.executeOnFileThread(new aivs(this, (URLDrawable)localObject, localActionSheet));
       }
     }
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new aihr(this, localActionSheet, (URLDrawable)localObject));
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new aivu(this, localActionSheet, (URLDrawable)localObject));
     localActionSheet.show();
   }
   
@@ -160,12 +160,12 @@ public class TroopAvatarWallEditActivity
         }
         catch (IOException paramURLDrawable)
         {
-          QQToast.a(this, getString(2131434566), 0).a();
+          QQToast.a(this, getString(2131434583), 0).a();
           return;
         }
       }
     }
-    DialogUtil.a(this, 230).setTitle(getString(2131434569)).setMessage(getString(2131434571)).setPositiveButton(getString(2131434570), new aiht(this, paramURLDrawable, str)).setNegativeButton(getString(2131432995), new aihs(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131434586)).setMessage(getString(2131434588)).setPositiveButton(getString(2131434587), new aivw(this, paramURLDrawable, str)).setNegativeButton(getString(2131433012), new aivv(this)).show();
   }
   
   private boolean a(AvatarWallAdapter.AvatarInfo paramAvatarInfo)
@@ -457,7 +457,7 @@ public class TroopAvatarWallEditActivity
   
   private void b(URLDrawable paramURLDrawable, String paramString)
   {
-    new aihu(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new aivx(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   private void c(int paramInt)
@@ -499,13 +499,13 @@ public class TroopAvatarWallEditActivity
       {
         if (!NetworkUtil.g(this))
         {
-          QQToast.a(this, 0, getString(2131435586), 0).b(getTitleBarHeight());
+          QQToast.a(this, 0, getString(2131435603), 0).b(getTitleBarHeight());
           return;
         }
         this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.b(paramInt);
         return;
       }
-      QQToast.a(this, getString(2131430211), 1).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131430228), 1).b(getTitleBarHeight());
       return;
     }
   }
@@ -618,14 +618,14 @@ public class TroopAvatarWallEditActivity
       finish();
       return false;
     }
-    setContentView(2130969851);
+    setContentView(2130969865);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131364774));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131364796));
     this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
     this.jdField_a_of_type_ComTencentWidgetGallery.setContentDescription("大图预览区域");
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362727);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364773));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131362722));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362745);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364795));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131362740));
     this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription("删除");
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
@@ -649,19 +649,19 @@ public class TroopAvatarWallEditActivity
       if (this.jdField_a_of_type_JavaUtilList != null) {
         this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
       }
-      ThreadManager.post(new aihi(this, paramBundle), 8, null, true);
+      ThreadManager.post(new aivl(this, paramBundle), 8, null, true);
       this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.a(this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_c_of_type_Int, this.app, this.jdField_a_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.a.a(this.jdField_b_of_type_Boolean);
       this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.a.b(paramBundle.getBoolean("can_add_image", true));
       this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.a(this.jdField_a_of_type_JavaUtilList, this.d);
-      this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.a(new aihn(this));
+      this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.a(new aivq(this));
       if (this.jdField_b_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368248));
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368315));
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364664));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364686));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("返回");
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -698,18 +698,18 @@ public class TroopAvatarWallEditActivity
     {
     default: 
       return;
-    case 2131368248: 
+    case 2131368315: 
       a(this.jdField_a_of_type_Int);
       finish();
       return;
-    case 2131362722: 
+    case 2131362740: 
       paramView = (ActionSheet)ActionSheetHelper.a(this, null);
-      paramView.a(2131435868, 3);
-      paramView.c(2131432998);
-      paramView.a(new aiho(this, paramView));
+      paramView.a(2131435885, 3);
+      paramView.c(2131433015);
+      paramView.a(new aivr(this, paramView));
       paramView.show();
       return;
-    case 2131364776: 
+    case 2131364798: 
       a();
       return;
     }
@@ -744,7 +744,7 @@ public class TroopAvatarWallEditActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity
  * JD-Core Version:    0.7.0.1
  */

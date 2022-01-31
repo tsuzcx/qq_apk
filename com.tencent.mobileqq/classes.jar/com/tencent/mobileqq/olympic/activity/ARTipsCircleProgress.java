@@ -16,7 +16,7 @@ public class ARTipsCircleProgress
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private int b = 8;
-  private int c = getResources().getColor(2131493483);
+  private int c = getResources().getColor(2131493489);
   private int d = -1;
   
   public ARTipsCircleProgress(Context paramContext)

@@ -1,32 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyFakeActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.LebaFeedInfo;
+import java.util.HashMap;
 
-public class adyp
-  extends Handler
+public abstract interface adyp
 {
-  public adyp(NearbyFakeActivity paramNearbyFakeActivity) {}
+  public abstract void a(LebaFeedInfo paramLebaFeedInfo);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
-      }
-      NearbyFakeActivity.a(this.a, 1);
-    }
-  }
+  public abstract void a(LebaFeedInfo paramLebaFeedInfo, HashMap paramHashMap);
+  
+  public abstract void ag_();
+  
+  public abstract void b();
+  
+  public abstract void b(LebaFeedInfo paramLebaFeedInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,66 @@
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.AbsWebView;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils.ProxyConfig;
+import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
+import java.util.ArrayList;
 
-class ajxz
-  implements Runnable
+public class ajxz
+  extends AbsWebView
 {
-  ajxz(ajxy paramajxy, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
-  
-  public void run()
+  public ajxz(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
+    super(paramContext, paramActivity, paramAppInterface);
+    super.y();
+    this.a = new TouchWebView(this.e);
+    b(paramAppInterface);
+  }
+  
+  public void a()
+  {
+    super.u();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    super.b(paramIntent);
+  }
+  
+  public void a(String paramString)
+  {
+    if (SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_Boolean)
+    {
+      SwiftWebViewUtils.a(this.a, SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_JavaLangString);
+      SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_Boolean = false;
     }
+    this.h = paramString;
+    this.a.loadUrl(this.h);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    if (paramArrayList != null) {
+      paramArrayList.add(new WebViewJumpPlugin());
+    }
+  }
+  
+  public void b()
+  {
+    super.v();
+  }
+  
+  public void c()
+  {
+    super.w();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxz
  * JD-Core Version:    0.7.0.1
  */

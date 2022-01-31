@@ -153,8 +153,7 @@ class TbsInstaller
       }
     };
     mTbsInstallerHandler = null;
-    Long[] arrayOfLong = { Long.valueOf(44005L), Long.valueOf(39094008L) };
-    WEBCORE_LIB_LENGTH_MAP = new Long[][] { { Long.valueOf(44006L), Long.valueOf(39094008L) }, arrayOfLong, { Long.valueOf(43910L), Long.valueOf(38917816L) }, { Long.valueOf(43909L), Long.valueOf(38917816L) } };
+    WEBCORE_LIB_LENGTH_MAP = new Long[][] { { Long.valueOf(44006L), Long.valueOf(39094008L) }, { Long.valueOf(44005L), Long.valueOf(39094008L) }, { Long.valueOf(43910L), Long.valueOf(38917816L) }, { Long.valueOf(43909L), Long.valueOf(38917816L) } };
     isStaticTbsInstalling = false;
     tbs_core_copy_filter = new FileFilter()
     {
@@ -4809,145 +4808,153 @@ class TbsInstaller
     //   0: iconst_0
     //   1: istore_2
     //   2: iconst_0
-    //   3: istore_3
-    //   4: aload_1
-    //   5: ifnonnull +5 -> 10
-    //   8: iload_3
-    //   9: ireturn
-    //   10: aconst_null
-    //   11: astore 6
-    //   13: new 440	java/io/File
-    //   16: dup
+    //   3: istore 4
+    //   5: aload_1
+    //   6: ifnonnull +8 -> 14
+    //   9: iload 4
+    //   11: istore_3
+    //   12: iload_3
+    //   13: ireturn
+    //   14: aconst_null
+    //   15: astore 6
     //   17: new 440	java/io/File
     //   20: dup
-    //   21: aload_1
-    //   22: invokespecial 1047	java/io/File:<init>	(Ljava/lang/String;)V
-    //   25: ldc 167
-    //   27: invokespecial 449	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   30: astore_1
-    //   31: aload_1
-    //   32: ifnull +14 -> 46
+    //   21: new 440	java/io/File
+    //   24: dup
+    //   25: aload_1
+    //   26: invokespecial 1047	java/io/File:<init>	(Ljava/lang/String;)V
+    //   29: ldc 167
+    //   31: invokespecial 449	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   34: astore_1
     //   35: aload_1
-    //   36: invokevirtual 453	java/io/File:exists	()Z
-    //   39: istore 5
-    //   41: iload 5
-    //   43: ifne +20 -> 63
-    //   46: iconst_0
-    //   47: ifeq -39 -> 8
-    //   50: iload_2
-    //   51: istore_3
-    //   52: new 1155	java/lang/NullPointerException
-    //   55: dup
-    //   56: invokespecial 1156	java/lang/NullPointerException:<init>	()V
-    //   59: athrow
-    //   60: astore_1
-    //   61: iload_3
-    //   62: ireturn
-    //   63: new 708	java/util/Properties
-    //   66: dup
-    //   67: invokespecial 709	java/util/Properties:<init>	()V
-    //   70: astore 7
-    //   72: new 711	java/io/BufferedInputStream
-    //   75: dup
-    //   76: new 713	java/io/FileInputStream
-    //   79: dup
-    //   80: aload_1
-    //   81: invokespecial 714	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   84: invokespecial 717	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   87: astore_1
-    //   88: aload 7
-    //   90: aload_1
-    //   91: invokevirtual 720	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   94: aload_1
-    //   95: invokevirtual 721	java/io/BufferedInputStream:close	()V
-    //   98: aload 7
-    //   100: ldc 176
-    //   102: invokevirtual 1157	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   105: astore 6
-    //   107: aload 6
-    //   109: ifnonnull +15 -> 124
-    //   112: aload_1
-    //   113: ifnull -105 -> 8
-    //   116: iload_2
-    //   117: istore_3
-    //   118: aload_1
-    //   119: invokevirtual 721	java/io/BufferedInputStream:close	()V
-    //   122: iconst_0
-    //   123: ireturn
-    //   124: aload 6
-    //   126: invokestatic 1541	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   129: istore 4
-    //   131: iload 4
-    //   133: istore_2
-    //   134: iload_2
-    //   135: istore_3
-    //   136: aload_1
-    //   137: ifnull -129 -> 8
-    //   140: iload_2
-    //   141: istore_3
-    //   142: aload_1
-    //   143: invokevirtual 721	java/io/BufferedInputStream:close	()V
-    //   146: iload_2
-    //   147: ireturn
-    //   148: astore_1
-    //   149: aload 6
-    //   151: ifnull +8 -> 159
-    //   154: aload 6
-    //   156: invokevirtual 721	java/io/BufferedInputStream:close	()V
-    //   159: aload_1
-    //   160: athrow
-    //   161: astore_1
-    //   162: aconst_null
-    //   163: astore_1
-    //   164: aload_1
-    //   165: ifnull -157 -> 8
-    //   168: iload_2
-    //   169: istore_3
-    //   170: aload_1
-    //   171: invokevirtual 721	java/io/BufferedInputStream:close	()V
-    //   174: iconst_0
-    //   175: ireturn
-    //   176: astore 6
-    //   178: goto -19 -> 159
-    //   181: astore 7
-    //   183: aload_1
-    //   184: astore 6
-    //   186: aload 7
-    //   188: astore_1
-    //   189: goto -40 -> 149
-    //   192: astore 6
-    //   194: goto -30 -> 164
+    //   36: ifnull +14 -> 50
+    //   39: aload_1
+    //   40: invokevirtual 453	java/io/File:exists	()Z
+    //   43: istore 5
+    //   45: iload 5
+    //   47: ifne +23 -> 70
+    //   50: iload 4
+    //   52: istore_3
+    //   53: iconst_0
+    //   54: ifeq -42 -> 12
+    //   57: iload_2
+    //   58: istore_3
+    //   59: new 1155	java/lang/NullPointerException
+    //   62: dup
+    //   63: invokespecial 1156	java/lang/NullPointerException:<init>	()V
+    //   66: athrow
+    //   67: astore_1
+    //   68: iload_3
+    //   69: ireturn
+    //   70: new 708	java/util/Properties
+    //   73: dup
+    //   74: invokespecial 709	java/util/Properties:<init>	()V
+    //   77: astore 7
+    //   79: new 711	java/io/BufferedInputStream
+    //   82: dup
+    //   83: new 713	java/io/FileInputStream
+    //   86: dup
+    //   87: aload_1
+    //   88: invokespecial 714	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   91: invokespecial 717	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   94: astore_1
+    //   95: aload 7
+    //   97: aload_1
+    //   98: invokevirtual 720	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   101: aload_1
+    //   102: invokevirtual 721	java/io/BufferedInputStream:close	()V
+    //   105: aload 7
+    //   107: ldc 176
+    //   109: invokevirtual 1157	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   112: astore 6
+    //   114: aload 6
+    //   116: ifnonnull +18 -> 134
+    //   119: iload 4
+    //   121: istore_3
+    //   122: aload_1
+    //   123: ifnull -111 -> 12
+    //   126: iload_2
+    //   127: istore_3
+    //   128: aload_1
+    //   129: invokevirtual 721	java/io/BufferedInputStream:close	()V
+    //   132: iconst_0
+    //   133: ireturn
+    //   134: aload 6
+    //   136: invokestatic 1541	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   139: istore_3
+    //   140: iload_3
+    //   141: istore_2
+    //   142: iload_2
+    //   143: istore_3
+    //   144: aload_1
+    //   145: ifnull -133 -> 12
+    //   148: iload_2
+    //   149: istore_3
+    //   150: aload_1
+    //   151: invokevirtual 721	java/io/BufferedInputStream:close	()V
+    //   154: iload_2
+    //   155: ireturn
+    //   156: astore_1
+    //   157: aload 6
+    //   159: ifnull +8 -> 167
+    //   162: aload 6
+    //   164: invokevirtual 721	java/io/BufferedInputStream:close	()V
+    //   167: aload_1
+    //   168: athrow
+    //   169: astore_1
+    //   170: aconst_null
+    //   171: astore_1
+    //   172: iload 4
+    //   174: istore_3
+    //   175: aload_1
+    //   176: ifnull -164 -> 12
+    //   179: iload_2
+    //   180: istore_3
+    //   181: aload_1
+    //   182: invokevirtual 721	java/io/BufferedInputStream:close	()V
+    //   185: iconst_0
+    //   186: ireturn
+    //   187: astore 6
+    //   189: goto -22 -> 167
+    //   192: astore 7
+    //   194: aload_1
+    //   195: astore 6
+    //   197: aload 7
+    //   199: astore_1
+    //   200: goto -43 -> 157
+    //   203: astore 6
+    //   205: goto -33 -> 172
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	197	0	this	TbsInstaller
-    //   0	197	1	paramString	String
-    //   1	168	2	i	int
-    //   3	167	3	j	int
-    //   129	3	4	k	int
-    //   39	3	5	bool	boolean
-    //   11	144	6	str1	String
-    //   176	1	6	localIOException	java.io.IOException
-    //   184	1	6	str2	String
-    //   192	1	6	localException	Exception
-    //   70	29	7	localProperties	java.util.Properties
-    //   181	6	7	localObject	Object
+    //   0	208	0	this	TbsInstaller
+    //   0	208	1	paramString	String
+    //   1	179	2	i	int
+    //   11	170	3	j	int
+    //   3	170	4	k	int
+    //   43	3	5	bool	boolean
+    //   15	148	6	str1	String
+    //   187	1	6	localIOException	java.io.IOException
+    //   195	1	6	str2	String
+    //   203	1	6	localException	Exception
+    //   77	29	7	localProperties	java.util.Properties
+    //   192	6	7	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   52	60	60	java/io/IOException
-    //   118	122	60	java/io/IOException
-    //   142	146	60	java/io/IOException
-    //   170	174	60	java/io/IOException
-    //   13	31	148	finally
-    //   35	41	148	finally
-    //   63	88	148	finally
-    //   13	31	161	java/lang/Exception
-    //   35	41	161	java/lang/Exception
-    //   63	88	161	java/lang/Exception
-    //   154	159	176	java/io/IOException
-    //   88	107	181	finally
-    //   124	131	181	finally
-    //   88	107	192	java/lang/Exception
-    //   124	131	192	java/lang/Exception
+    //   59	67	67	java/io/IOException
+    //   128	132	67	java/io/IOException
+    //   150	154	67	java/io/IOException
+    //   181	185	67	java/io/IOException
+    //   17	35	156	finally
+    //   39	45	156	finally
+    //   70	95	156	finally
+    //   17	35	169	java/lang/Exception
+    //   39	45	169	java/lang/Exception
+    //   70	95	169	java/lang/Exception
+    //   162	167	187	java/io/IOException
+    //   95	114	192	finally
+    //   134	140	192	finally
+    //   95	114	203	java/lang/Exception
+    //   134	140	203	java/lang/Exception
   }
   
   boolean getTbsInstallingFileLock(Context paramContext)

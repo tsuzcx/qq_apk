@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class snb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public snb(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public snb(FontSettingActivity paramFontSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.onBackPressed();
+    FontSettingActivity.a(this.a).dismiss();
   }
 }
 

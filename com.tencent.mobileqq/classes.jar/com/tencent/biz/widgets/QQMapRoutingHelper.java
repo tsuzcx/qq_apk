@@ -37,7 +37,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import pca;
+import pdu;
 
 public class QQMapRoutingHelper
   implements ActionSheet.OnButtonClickListener
@@ -260,7 +260,7 @@ public class QQMapRoutingHelper
     if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
     {
       paramGeoPoint1 = this.jdField_a_of_type_AndroidContentContext.getResources();
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramGeoPoint1.getString(2131434794), 1).b(paramGeoPoint1.getDimensionPixelSize(2131558448));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramGeoPoint1.getString(2131434811), 1).b(paramGeoPoint1.getDimensionPixelSize(2131558448));
       return;
     }
     Bundle localBundle1 = new Bundle();
@@ -286,7 +286,7 @@ public class QQMapRoutingHelper
       paramGeoPoint1 = new HashMap();
       paramGeoPoint1.put("BUNDLE", localBundle1);
       paramGeoPoint1.put("CONTEXT", BaseApplication.getContext());
-      new HttpWebCgiAsyncTask(str, "GET", new pca(this), 1000, localBundle2, true).execute(new HashMap[] { paramGeoPoint1 });
+      new HttpWebCgiAsyncTask(str, "GET", new pdu(this), 1000, localBundle2, true).execute(new HashMap[] { paramGeoPoint1 });
       return;
       str = "https://apis.map.qq.com/ws/direction/v1/walking/";
       localBundle2.putInt("routeMode", 1);
@@ -356,7 +356,7 @@ public class QQMapRoutingHelper
       break;
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c("隐藏路线");
       break label283;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131432998);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       return;
     }

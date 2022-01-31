@@ -1,48 +1,25 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class ucm
-  extends FriendListObserver
+class ucm
+  implements Runnable
 {
-  public ucm(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  ucm(ucl paramucl, TroopInfo paramTroopInfo) {}
   
-  protected void onSetAsNormalContacts(boolean paramBoolean, List paramList)
+  public void run()
   {
-    if (paramBoolean)
+    GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Ucl.a, Long.toString(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwGroupClassExt));
+    if (localGroupCatalogBean != null)
     {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-      return;
-    }
-    this.a.a(2131437745, 1);
-  }
-  
-  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List paramList)
-  {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      this.a.a(2131433244, 2);
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ((paramBoolean1) && (paramBoolean3))
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
+      Message localMessage = new Message();
+      localMessage.what = 2;
+      localMessage.obj = localGroupCatalogBean.a();
+      this.jdField_a_of_type_Ucl.a.a.sendMessage(localMessage);
     }
   }
 }

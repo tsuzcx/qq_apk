@@ -24,9 +24,9 @@ import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
-import oaw;
-import oax;
-import oay;
+import oco;
+import ocp;
+import ocq;
 
 public class DanceMachineUploadVideoFragment
   extends PublicBaseFragment
@@ -37,7 +37,7 @@ public class DanceMachineUploadVideoFragment
   private long jdField_a_of_type_Long = -1L;
   protected Dialog a;
   public BaseActivity a;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new oaw(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new oco(this);
   public QQAppInterface a;
   private MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
   private String jdField_a_of_type_JavaLangString;
@@ -149,10 +149,10 @@ public class DanceMachineUploadVideoFragment
     //   211: aload 8
     //   213: bipush 9
     //   215: invokevirtual 148	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
-    //   218: astore 11
-    //   220: aload 11
+    //   218: astore 9
+    //   220: aload 9
     //   222: ifnull +12 -> 234
-    //   225: aload 11
+    //   225: aload 9
     //   227: invokestatic 154	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
     //   230: invokevirtual 157	java/lang/Long:longValue	()J
     //   233: lstore_2
@@ -171,7 +171,7 @@ public class DanceMachineUploadVideoFragment
     //   259: invokespecial 122	java/lang/StringBuilder:<init>	()V
     //   262: ldc 161
     //   264: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: aload 11
+    //   267: aload 9
     //   269: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   272: ldc 163
     //   274: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -255,7 +255,7 @@ public class DanceMachineUploadVideoFragment
     //   441: invokevirtual 178	android/media/MediaMetadataRetriever:release	()V
     //   444: iconst_m1
     //   445: ireturn
-    //   446: astore 9
+    //   446: astore 11
     //   448: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   451: ifeq +31 -> 482
     //   454: ldc 79
@@ -265,10 +265,10 @@ public class DanceMachineUploadVideoFragment
     //   461: invokespecial 122	java/lang/StringBuilder:<init>	()V
     //   464: ldc 186
     //   466: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   469: aload 11
+    //   469: aload 9
     //   471: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   474: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   477: aload 9
+    //   477: aload 11
     //   479: invokestatic 189	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   482: lconst_0
     //   483: lstore_2
@@ -586,8 +586,7 @@ public class DanceMachineUploadVideoFragment
     //   979	1	8	localObject7	Object
     //   1006	3	8	localIOException6	java.io.IOException
     //   1023	82	8	localObject8	Object
-    //   106	267	9	str1	String
-    //   446	32	9	localNumberFormatException	java.lang.NumberFormatException
+    //   106	364	9	str1	String
     //   492	14	9	localOutOfMemoryError	java.lang.OutOfMemoryError
     //   750	218	9	localObject9	Object
     //   972	14	9	localIOException7	java.io.IOException
@@ -600,8 +599,10 @@ public class DanceMachineUploadVideoFragment
     //   351	477	10	localObject12	Object
     //   1080	1	10	localFileNotFoundException2	java.io.FileNotFoundException
     //   1096	1	10	localFileNotFoundException3	java.io.FileNotFoundException
-    //   218	635	11	localObject13	Object
-    //   975	7	12	localObject14	Object
+    //   297	8	11	localBitmap1	android.graphics.Bitmap
+    //   446	32	11	localNumberFormatException	java.lang.NumberFormatException
+    //   516	337	11	localBitmap2	android.graphics.Bitmap
+    //   975	7	12	localObject13	Object
     //   539	328	13	str3	String
     // Exception table:
     //   from	to	target	type
@@ -638,9 +639,9 @@ public class DanceMachineUploadVideoFragment
   {
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131624515);
+      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131624516);
       this.jdField_a_of_type_AndroidAppDialog.setContentView(2130968870);
-      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new oay(this));
+      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new ocq(this));
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager().getDefaultDisplay();
       WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
       localLayoutParams.width = ((Display)localObject).getWidth();
@@ -648,9 +649,9 @@ public class DanceMachineUploadVideoFragment
       this.jdField_a_of_type_AndroidAppDialog.getWindow().setAttributes(localLayoutParams);
       this.jdField_a_of_type_AndroidAppDialog.show();
     }
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363381);
+    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363399);
     if (TextUtils.isEmpty(paramString)) {
-      ((TextView)localObject).setText(2131434559);
+      ((TextView)localObject).setText(2131434576);
     }
     for (;;)
     {
@@ -755,7 +756,7 @@ public class DanceMachineUploadVideoFragment
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      ThreadManager.executeOnSubThread(new oax(this));
+      ThreadManager.executeOnSubThread(new ocp(this));
       return;
     }
     if (QLog.isColorLevel()) {

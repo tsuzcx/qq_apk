@@ -1,6 +1,6 @@
 package cooperation.qqpim;
 
-import amao;
+import amqs;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class QQPimTipsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amao();
+  public static final Parcelable.Creator CREATOR = new amqs();
   public byte a;
   public int a;
   public String a;

@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.activity.aio.PokePanelAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class umq
+class umq
   implements Runnable
 {
-  public umq(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  umq(ump paramump) {}
   
   public void run()
   {
-    this.a.b();
-    QQToast.a(this.a.a, this.a.a.getString(2131433369), 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]update UI start");
+    }
+    ArrayList localArrayList = this.a.jdField_a_of_type_JavaUtilArrayList;
+    PokePanel.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel).a(localArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]update UI end");
+    }
   }
 }
 

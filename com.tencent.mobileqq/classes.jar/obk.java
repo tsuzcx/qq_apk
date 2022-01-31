@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.CompletedHandler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
-public final class obk
-  implements Parcelable.Creator
+public class obk
+  implements SimpleStepExector.CompletedHandler
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
+  public obk(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public void a()
   {
-    return new EditLocalVideoSource[paramInt];
+    SLog.d("NewMyStorySegment", "finish get all data from server steps");
+    new Handler(Looper.getMainLooper()).post(new obl(this));
   }
 }
 

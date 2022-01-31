@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.arithmetic.stream;
 
-import airv;
+import ajfz;
 import com.tencent.biz.qqstory.channel.CmdTaskManger;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.async.JobContext;
@@ -21,12 +21,12 @@ public class SendArithHomeResultSegment
   {
     SLog.d("QQ.Troop.homework.SendArithHomeResultSegment", "runSegment " + paramString);
     this.jdField_a_of_type_JavaLangString = paramString;
-    CmdTaskManger.a().a(new SendArithHomeResultSegment.Request(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticStreamSendArithHomeResultSegment$ReqInfo, this.jdField_a_of_type_JavaLangString), new airv(this));
+    CmdTaskManger.a().a(new SendArithHomeResultSegment.Request(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticStreamSendArithHomeResultSegment$ReqInfo, this.jdField_a_of_type_JavaLangString), new ajfz(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.stream.SendArithHomeResultSegment
  * JD-Core Version:    0.7.0.1
  */

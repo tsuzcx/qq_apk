@@ -1,39 +1,66 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
+import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
-public class adyh
+class adyh
   implements Runnable
 {
-  public adyh(NearbyAppInterface paramNearbyAppInterface) {}
+  adyh(adyf paramadyf, String paramString) {}
   
   public void run()
   {
-    synchronized (this.a.a)
+    Object localObject1 = new File(this.jdField_a_of_type_JavaLangString);
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
-      boolean bool = this.a.d;
-      if (!bool) {}
-      try
+      localObject1 = ((File)localObject1).listFiles();
+      if ((localObject1 != null) && (localObject1.length > 0))
       {
-        DeviceProfileManager.a(this.a, 214).a(this.a);
-        this.a.d = true;
-        return;
-      }
-      catch (Exception localException)
-      {
+        int i = 0;
         for (;;)
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("NearbyAppInterface", 2, "onDestroy: ", localException);
+          if (i < localObject1.length)
+          {
+            Object localObject2 = localObject1[i].getName();
+            String str = this.jdField_a_of_type_JavaLangString + (String)localObject2;
+            localObject2 = localObject2.split("\\.")[0];
+            Object localObject3 = new SimpleDateFormat("yyyyMMddHHmmssSS");
+            try
+            {
+              localObject2 = ((SimpleDateFormat)localObject3).parse((String)localObject2);
+              localObject3 = Calendar.getInstance();
+              ((Calendar)localObject3).set(11, 0);
+              ((Calendar)localObject3).set(13, 0);
+              ((Calendar)localObject3).set(12, 0);
+              ((Calendar)localObject3).set(14, 0);
+              if (((Date)localObject2).before(((Calendar)localObject3).getTime()))
+              {
+                localObject1[i].delete();
+                SharePreferenceUtils.a(this.jdField_a_of_type_Adyf.a, str);
+              }
+              i += 1;
+            }
+            catch (ParseException localParseException)
+            {
+              for (;;)
+              {
+                localParseException.printStackTrace();
+              }
+            }
           }
         }
       }
+      long l = System.currentTimeMillis();
+      localObject1 = new SimpleDateFormat("yyyyMMdd").format(new Date(l));
+      SharePreferenceUtils.a(this.jdField_a_of_type_Adyf.a, "LAST_DELETE_TIME", (String)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyh
  * JD-Core Version:    0.7.0.1
  */

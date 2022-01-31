@@ -1,14 +1,15 @@
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareData;
 
 public class ngz
   implements Runnable
 {
-  public ngz(VideoPlayModeBase paramVideoPlayModeBase) {}
+  public ngz(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
   
   public void run()
   {
-    this.a.a.a.a = true;
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.a.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
   }
 }
 

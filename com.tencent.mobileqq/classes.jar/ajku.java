@@ -1,22 +1,28 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.EditText;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
 
-public final class ajku
-  extends View.AccessibilityDelegate
+public class ajku
+  extends BroadcastReceiver
 {
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public ajku(AudioItem paramAudioItem) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    EditText localEditText = (EditText)paramView;
-    localEditText.setHint("");
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setContentDescription(localEditText.getContentDescription());
+    paramContext = paramIntent.getAction();
+    if ("com.tencent.mobileqq.activity.ai.audiopanel.startrecord_action".equals(paramContext)) {
+      this.a.b(AudioItem.a(this.a));
+    }
+    while (!"com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video".equals(paramContext)) {
+      return;
+    }
+    this.a.b(AudioItem.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajku
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import android.os.Bundle;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.app.AppRuntime;
 import mqq.app.QQBroadcastReceiver;
-import zhb;
-import zhc;
+import zkh;
+import zki;
 
 public class PushBroadcastReceiver
   extends QQBroadcastReceiver
@@ -15,7 +15,7 @@ public class PushBroadcastReceiver
   private void a(QQAppInterface paramQQAppInterface, Intent paramIntent)
   {
     if (paramIntent.getAction().equals("tencent.notify.background")) {
-      ThreadManager.post(new zhb(this, paramIntent, paramQQAppInterface), 10, null, false);
+      ThreadManager.post(new zkh(this, paramIntent, paramQQAppInterface), 10, null, false);
     }
     for (;;)
     {
@@ -24,7 +24,7 @@ public class PushBroadcastReceiver
       }
       return;
       if (paramIntent.getAction().equals("tencent.notify.foreground")) {
-        ThreadManager.post(new zhc(this, paramQQAppInterface), 10, null, false);
+        ThreadManager.post(new zki(this, paramQQAppInterface), 10, null, false);
       }
     }
   }

@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import java.io.File;
 
 public class vjy
-  implements ProgressPieDrawable.OnProgressListener
+  implements Runnable
 {
-  public vjy(AIOGalleryScene paramAIOGalleryScene) {}
+  public vjy(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder, BubbleImageView paramBubbleImageView, String paramString, int paramInt) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131362148).equals(this.jdField_a_of_type_JavaLangString))
+    {
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(this.jdField_a_of_type_Int);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(this.jdField_a_of_type_Int);
+      localObject = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int)), (URLDrawable.URLDrawableOptions)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable((Drawable)localObject);
     }
   }
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

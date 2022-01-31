@@ -1,19 +1,44 @@
-import android.app.Activity;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class adck
-  implements Runnable
+class adck
+  implements FMDialogUtil.FMDialogInterface
 {
-  public adck(ForwardShortVideoOption paramForwardShortVideoOption, URLDrawable paramURLDrawable, QQCustomDialog paramQQCustomDialog, boolean paramBoolean, int paramInt1, int paramInt2) {}
+  adck(adcj paramadcj) {}
   
-  public void run()
+  public void a()
   {
-    URLDrawableHelper.a(this.jdField_a_of_type_ComTencentImageURLDrawable, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption.a.runOnUiThread(new adcl(this));
+    int i = this.a.a.i();
+    int j = this.a.a.d();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (i == 6) {
+      if (j == 0) {
+        localQQAppInterface.a().b(this.a.a.c());
+      }
+    }
+    for (;;)
+    {
+      if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.d();
+      }
+      return;
+      localQQAppInterface.a().a(this.a.a.c());
+      continue;
+      if (j == 0) {
+        localQQAppInterface.a().a(this.a.a.c());
+      } else {
+        localQQAppInterface.a().b(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
+      }
+    }
   }
+  
+  public void b() {}
 }
 
 

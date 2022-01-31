@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.imaxad;
 
-import adit;
-import adiu;
+import adss;
+import adst;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -144,7 +144,7 @@ public class ImaxAdNetPresenter
           if ("false".equals(paramString1.getExtInfoFromExtStr("recent_list_advertisement_message_first_report")))
           {
             paramString1.saveExtInfoToExtStr("recent_list_advertisement_message_first_report", "true");
-            ThreadManager.post(new adit(this, paramQQAppInterface, paramString1), 5, null, false);
+            ThreadManager.post(new adss(this, paramQQAppInterface, paramString1), 5, null, false);
             if ((localAdvertisementItem != null) && (localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null))
             {
               ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5D", "0X8008F5D", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), PublicAccountAdUtil.a(), "");
@@ -234,7 +234,7 @@ public class ImaxAdNetPresenter
           if ("false".equals(paramString1.getExtInfoFromExtStr("recent_list_advertisement_message_first_report")))
           {
             paramString1.saveExtInfoToExtStr("recent_list_advertisement_message_first_report", "true");
-            ThreadManager.post(new adiu(this, paramQQAppInterface, paramString1), 5, null, false);
+            ThreadManager.post(new adst(this, paramQQAppInterface, paramString1), 5, null, false);
             if ((localAdvertisementItem1 != null) && (localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null))
             {
               ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5D", "0X8008F5D", 0, 0, localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), PublicAccountAdUtil.a(), "");
@@ -284,7 +284,7 @@ public class ImaxAdNetPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdNetPresenter
  * JD-Core Version:    0.7.0.1
  */

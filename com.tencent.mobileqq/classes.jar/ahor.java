@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameEvent;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWVideoRecorder;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.ThumbnailUtil.ThumbnailCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahor
+  implements ThumbnailUtil.ThumbnailCallback
 {
-  public float a;
-  public int a;
-  public long a;
-  public boolean a;
-  public float b = 0.0F;
+  public ahor(HWVideoRecorder paramHWVideoRecorder) {}
   
-  private ahor(GameEvent paramGameEvent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
+    HWVideoRecorder.a(this.a, true);
+    if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
+      QLog.d("HWVideoRecorder", 2, "Generate thumbnail result. success = " + paramBoolean + " ; file path = " + paramString);
+    }
   }
 }
 

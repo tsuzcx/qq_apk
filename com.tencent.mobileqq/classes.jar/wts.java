@@ -1,50 +1,86 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.PortraitImageview;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class wts
-  extends Handler
+  extends ContactBindObserver
 {
-  boolean jdField_a_of_type_Boolean;
+  public wts(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public wts(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity, ExtensionInfo paramExtensionInfo, String paramString) {}
-  
-  public void handleMessage(Message paramMessage)
+  protected void c(boolean paramBoolean, int paramInt)
   {
-    if (1000 == paramMessage.what)
+    this.a.b();
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = true;
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
-      int j = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.b();
-      paramMessage = new RelativeLayout.LayoutParams((int)(i * 1.257D), (int)(j * 1.481D));
-      paramMessage.addRule(14);
-      paramMessage.topMargin = ((int)(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_AndroidViewViewGroup.getHeight() * 0.5F - j * 0.5F * 1.705D));
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView != null) {
-        break label214;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView, paramMessage);
+      this.a.b(2131434455);
+      return;
     }
-    for (;;)
+    if ((paramInt == 0) || (paramInt == 106))
     {
-      ((AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.app.getManager(45)).a(this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId).a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView, 6, PendantInfo.e, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-      return;
-      if (this.jdField_a_of_type_Boolean) {
-        break;
+      if (1 == this.a.a) {
+        MyBusinessActivity.a(true);
       }
-      return;
-      label214:
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropForPortraitActivity.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(paramMessage);
+      if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
+        ReportController.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 0, 0, "", "", "", "");
+      }
+      if (this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false))
+      {
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("bind_mobile", BindVerifyActivity.a(this.a).getText().toString().trim());
+        this.a.setResult(-1, (Intent)localObject);
+        this.a.finish();
+        return;
+      }
+      if (this.a.b == 10)
+      {
+        localObject = new Intent(this.a, SplashActivity.class);
+        ((Intent)localObject).putExtra("main_tab_id", 1);
+        ((Intent)localObject).setFlags(603979776);
+        this.a.startActivity((Intent)localObject);
+        this.a.setResult(-1, null);
+        this.a.finish();
+        return;
+      }
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("bind_mobile", BindVerifyActivity.a(this.a).getText().toString().trim());
+      this.a.app.a(new wtt(this));
+      if ((this.a.b == 15) || (this.a.b == 17) || (this.a.b == 0) || (this.a.b == 1) || (this.a.b == 6) || (this.a.b == 14) || (this.a.b == 9) || (this.a.b == 12))
+      {
+        QQToast.a(BaseApplicationImpl.sApplication, "寻找通讯录联系人中。", 0).a();
+        if (this.a.b == 15) {
+          ReportController.b(this.a.app, "dc00898", "", "", "0X80077C7", "0X80077C7", 0, 0, "", "", "", "");
+        }
+      }
+      for (;;)
+      {
+        this.a.setResult(-1, (Intent)localObject);
+        this.a.finish();
+        return;
+        if (this.a.b == 17)
+        {
+          ReportController.b(this.a.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
+          continue;
+          QQToast.a(BaseApplicationImpl.sApplication, "特征码匹配中。", 0).a();
+        }
+      }
     }
+    if (paramInt == 213)
+    {
+      this.a.b("验证码错误，请重新输入。");
+      return;
+    }
+    Object localObject = "请稍后重试。";
+    if (paramInt == 107) {
+      localObject = "此手机号已与其他帐号绑定，请返回重试。";
+    }
+    this.a.a("请求失败", (String)localObject);
   }
 }
 

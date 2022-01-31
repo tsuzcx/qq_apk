@@ -28,9 +28,9 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
 import java.io.File;
-import oar;
-import oas;
-import oat;
+import ocj;
+import ock;
+import ocl;
 
 public class CommonPicUploadFragment
   extends PublicBaseFragment
@@ -41,7 +41,7 @@ public class CommonPicUploadFragment
   protected Dialog a;
   public BaseActivity a;
   public QQAppInterface a;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new oat(this);
+  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ocl(this);
   private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -88,9 +88,9 @@ public class CommonPicUploadFragment
   {
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131624515);
+      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131624516);
       this.jdField_a_of_type_AndroidAppDialog.setContentView(2130968870);
-      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new oas(this));
+      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new ock(this));
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager().getDefaultDisplay();
       WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
       localLayoutParams.width = ((Display)localObject).getWidth();
@@ -98,9 +98,9 @@ public class CommonPicUploadFragment
       this.jdField_a_of_type_AndroidAppDialog.getWindow().setAttributes(localLayoutParams);
       this.jdField_a_of_type_AndroidAppDialog.show();
     }
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363381);
+    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363399);
     if (TextUtils.isEmpty(paramString)) {
-      ((TextView)localObject).setText(2131434559);
+      ((TextView)localObject).setText(2131434576);
     }
     for (;;)
     {
@@ -269,7 +269,7 @@ public class CommonPicUploadFragment
     this.jdField_a_of_type_Int = paramBundle.getExtras().getInt("upload_pic_busi_type", 0);
     this.jdField_b_of_type_Int = paramBundle.getExtras().getInt("share_method", 0);
     this.f = paramBundle.getExtras().getString("pk_rank", "0");
-    ThreadManager.executeOnSubThread(new oar(this, str2, str1));
+    ThreadManager.executeOnSubThread(new ocj(this, str2, str1));
   }
   
   public void onAttach(Activity paramActivity)

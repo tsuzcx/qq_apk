@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-
-class acwq
-  implements Runnable
+public abstract interface acwq
 {
-  acwq(acwo paramacwo) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void run()
-  {
-    FMSettings.a(4, "-------onMoveFail-------");
-    FMSettings.a(4, FileManagerUtil.a());
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettingInterface$MoveFileCallback.a();
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b();
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(long paramLong, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
 }
 
 

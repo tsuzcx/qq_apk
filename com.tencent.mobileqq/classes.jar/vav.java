@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.aio.item.QQWalletMsgItemBuilder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
 
-public class vav
+class vav
   implements Runnable
 {
-  public vav(QQWalletMsgItemBuilder paramQQWalletMsgItemBuilder, int paramInt) {}
+  vav(vau paramvau, MarketFaceItemBuilder.Holder paramHolder) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_AndroidContentContext == null) {}
-    while (QWalletHelper.isQWalletProcessExist(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_AndroidContentContext)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(QQWalletMsgItemBuilder.jdField_a_of_type_JavaLangString, 2, "preload qwallet process by qqWalletMsg isTroop=" + this.jdField_a_of_type_Int);
-    }
-    QWalletHelper.preloadQWallet(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, "qwallet_red");
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.f.setVisibility(8);
   }
 }
 

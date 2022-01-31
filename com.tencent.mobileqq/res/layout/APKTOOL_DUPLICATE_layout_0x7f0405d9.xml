@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:id="@id/group_item_layout" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020464" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0392"
+<RelativeLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05b1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02047f" android:visibility="visible" android:clickable="false" android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginLeft="15.0dip" android:button="@null" android:scaleType="center" />
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0389" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0541" android:id="@id/group_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:maxWidth="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00f3" android:text="我的好友" android:includeFontPadding="false" />
-    <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <TextView android:textSize="12.0sp" android:textColor="#ffa7a7a7" android:id="@id/contact_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" />
-</LinearLayout>
+    <android.opengl.GLSurfaceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bde" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <dov.com.qq.im.cropvideo.RegionView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bdf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="3.0dip" android:max="100" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218d2" android:minHeight="3.0dip" style="?android:attr/progressBarStyleHorizontal" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a48" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentTop="true">
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="取消" android:layout_centerVertical="true" android:contentDescription="取消" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01c3" />
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2184" android:layout_centerInParent="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b2184" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01c3" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a6b" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0035" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0445" android:layout_alignParentBottom="true">
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be1" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0242" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0447" android:layout_height="fill_parent" android:text="确定" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="确定" />
+    </RelativeLayout>
+</RelativeLayout>

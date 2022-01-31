@@ -1,17 +1,11 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
-
-class aato
-  implements Runnable
+public class aato
+  extends aati
 {
-  aato(aatm paramaatm) {}
+  public String d;
   
-  public void run()
+  private aato()
   {
-    ARMapEngine localARMapEngine = this.a.a.a;
-    ARMapEngine.nativeRequestPOIList();
-    localARMapEngine = this.a.a.a;
-    ARMapEngine.nativeRequestLbsPOIListByPid("");
+    super(null);
   }
 }
 

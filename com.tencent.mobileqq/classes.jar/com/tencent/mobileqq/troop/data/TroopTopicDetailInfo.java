@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import aiqz;
+import ajfd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -17,7 +17,7 @@ public class TroopTopicDetailInfo
   extends Entity
   implements Parcelable, Cloneable, Comparable
 {
-  public static final Parcelable.Creator CREATOR = new aiqz();
+  public static final Parcelable.Creator CREATOR = new ajfd();
   public static final String[] QUERY_TABLE_ALL_FIELDS;
   public static final String[] QUERY_TABLE_BASIC_FIELDS = { "_id", "troopUin", "msgSeq", "bid", "pid", "null as detailInfoData", "pVersion" };
   public long bid;
@@ -93,7 +93,7 @@ public class TroopTopicDetailInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopTopicDetailInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,45 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class tev
-  implements View.OnTouchListener
+  implements URLDrawable.URLDrawableListener
 {
-  public tev(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
+  public tev(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
+    }
+    if (PermisionPrivacyActivity.c(this.a) != null) {
+      PermisionPrivacyActivity.c(this.a).postInvalidate();
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
+    }
+    if (PermisionPrivacyActivity.c(this.a) != null) {
+      PermisionPrivacyActivity.c(this.a).postInvalidate();
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, UIUtils.a(this.a.app.getApp(), 47.0F), UIUtils.a(this.a.app.getApp(), 14.0F));
+    }
+    if (PermisionPrivacyActivity.c(this.a) != null) {
+      PermisionPrivacyActivity.c(this.a).postInvalidate();
+    }
   }
 }
 

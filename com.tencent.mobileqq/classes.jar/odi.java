@@ -1,17 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.EditDoodleExport;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
 
 public class odi
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public odi(EditVideoGuide paramEditVideoGuide) {}
+  public odi(EditPicQzonePublishActivity paramEditPicQzonePublishActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.a.a(EditDoodleExport.class);
-    if (localEditDoodleExport != null) {
-      localEditDoodleExport.b();
-    }
+    paramDialogInterface.dismiss();
+    EditPicQzonePublishActivity.a(this.a, true);
+    EditPicQzonePublishActivity.a(this.a).setSelected(true);
   }
 }
 

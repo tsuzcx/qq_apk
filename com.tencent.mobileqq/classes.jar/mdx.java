@@ -1,39 +1,23 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.OnVideoPluginInstallListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoStatusListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class mdx
-  implements Handler.Callback
+class mdx
+  implements Runnable
 {
-  public mdx(VideoPluginInstall paramVideoPluginInstall) {}
+  mdx(mdv parammdv) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if (VideoFeedsPlayManager.a(this.a.a) != null)
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          VideoPluginInstall.a(this.a, false);
-          VideoPluginInstall.a(this.a).removeMessages(0);
-        } while (VideoPluginInstall.a(this.a) == null);
-        VideoPluginInstall.a(this.a).c(true);
-        return true;
-        VideoPluginInstall.a(this.a, false);
-        VideoPluginInstall.a(this.a).removeMessages(1);
-      } while (VideoPluginInstall.a(this.a) == null);
-      VideoPluginInstall.a(this.a).c(false);
-      return true;
+      Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
+      while (localIterator.hasNext()) {
+        ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).a(VideoFeedsPlayManager.a(this.a.a));
+      }
     }
-    VideoPluginInstall.a(this.a, true);
-    return true;
+    this.a.a.b(0);
   }
 }
 

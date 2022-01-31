@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.PstnManager;
-import com.tencent.mobileqq.qcall.PstnObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
 public class sfi
-  extends PstnObserver
+  extends ScaleAnimation
 {
-  public sfi(Conversation paramConversation) {}
-  
-  public void a(Boolean paramBoolean, int paramInt)
+  public sfi(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
   {
-    super.a(paramBoolean, paramInt);
-    PstnManager localPstnManager = (PstnManager)this.a.a.getManager(142);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "onPstnGrayFlag|isSuccess:" + paramBoolean + " lastPstnGrayFlag:" + this.a.jdField_f_of_type_Int + " grayFlag:" + paramInt + " mIsChatList:" + this.a.jdField_f_of_type_Boolean);
+    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    if (paramTransformation == null) {
+      return;
     }
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
   }
 }
 

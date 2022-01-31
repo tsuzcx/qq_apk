@@ -1,18 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import com.tencent.mobileqq.activity.aio.item.FileTimDocGrayTipsItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class uxc
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public uxc(HeartCombolEffectView paramHeartCombolEffectView, uxe paramuxe) {}
+  public uxc(FileTimDocGrayTipsItemBuilder paramFileTimDocGrayTipsItemBuilder, uxd paramuxd) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_Uxe.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Uxe.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Uxe.jdField_b_of_type_Float > 0.0F)) {
-      this.jdField_a_of_type_Uxe.jdField_b_of_type_Boolean = true;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileTimDocGrayTipsItemBuilder.a.a().a(this.jdField_a_of_type_Uxd.a.frienduin, this.jdField_a_of_type_Uxd.a.istroop, this.jdField_a_of_type_Uxd.a.uniseq, "extStr", this.jdField_a_of_type_Uxd.a.getExtInfoString());
   }
 }
 

@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import cooperation.weiyun.WeiyunRemoteCommand.OnStateChangeListener;
 
-public final class acqu
-  implements Parcelable.Creator
+public class acqu
+  implements WeiyunRemoteCommand.OnStateChangeListener
 {
-  public ForwardFileInfo a(Parcel paramParcel)
-  {
-    return new ForwardFileInfo(paramParcel, null);
-  }
+  public acqu(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
   
-  public ForwardFileInfo[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new ForwardFileInfo[paramInt];
+    this.a.runOnUiThread(new acqv(this));
   }
 }
 

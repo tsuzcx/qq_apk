@@ -1,42 +1,17 @@
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 
-class vjc
-  implements Runnable
+public class vjc
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  vjc(viz paramviz, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
+  public ViewGroup a;
+  public AnyScaleTypeImageView a;
+  public TextView b;
   
-  public void run()
-  {
-    AIOImageListModel localAIOImageListModel;
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null)
-    {
-      localAIOImageListModel = (AIOImageListModel)viy.a(this.jdField_a_of_type_Viz.a);
-      if (!localAIOImageListModel.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int)) {
-        break label92;
-      }
-      if (viy.e(this.jdField_a_of_type_Viz.a) != null) {
-        ((AIOGalleryScene)viy.f(this.jdField_a_of_type_Viz.a)).u();
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Viz.a.a != null) {
-        this.jdField_a_of_type_Viz.a.a.h();
-      }
-      return;
-      label92:
-      if ((this.jdField_a_of_type_Viz.a.a != null) && (this.jdField_a_of_type_Viz.a.a() == this.jdField_a_of_type_Viz.a.a))
-      {
-        localAIOImageListModel.a();
-        if (viy.g(this.jdField_a_of_type_Viz.a) != null) {
-          ((AIOGalleryScene)viy.h(this.jdField_a_of_type_Viz.a)).u();
-        }
-      }
-    }
-  }
+  public vjc(ThumbItemBuilder paramThumbItemBuilder) {}
 }
 
 

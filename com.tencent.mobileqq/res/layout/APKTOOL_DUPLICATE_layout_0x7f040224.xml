@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d84" android:background="#fff8f7f9" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:divider="@null" android:dividerHeight="0.0dip" android:overScrollMode="never" />
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d85" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d86" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" />
-        <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d87" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="快来发表第一条动态" />
-    </LinearLayout>
-</FrameLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d9e" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="46.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d9f" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="取消" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择位置" android:layout_centerInParent="true" android:lineSpacingExtra="0.0sp" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da1" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="确定" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <FrameLayout android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="46.0dip">
+        <FrameLayout android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207b2" android:layout_width="fill_parent" android:layout_height="28.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="搜索附近位置" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207b5" />
+        </FrameLayout>
+        <EditText android:textSize="14.0dip" android:textColor="#ff000000" android:textColorHint="#ff777777" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207b2" android:paddingLeft="3.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="28.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="59.0dip" android:hint="搜索附近位置" android:maxLines="1" android:singleLine="true" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207b5" android:imeOptions="actionSearch" />
+        <ImageView android:layout_gravity="end|center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da4" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="64.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207b4" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff777777" android:gravity="center_vertical" android:layout_gravity="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da5" android:paddingRight="14.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="取消" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.nearby.now.widget.CommonRecyclerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0da8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="100.0dip" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040229" />
+    </FrameLayout>
+</LinearLayout>

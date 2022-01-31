@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.hotpic;
 
-import adgt;
-import adgu;
-import adgv;
-import adgw;
-import adgx;
-import adgy;
-import adgz;
+import adqs;
+import adqt;
+import adqu;
+import adqv;
+import adqw;
+import adqx;
+import adqy;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -25,7 +25,7 @@ import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
 
 public class HotPicPageView$MyVideoViewHolder
-  extends adgz
+  extends adqy
   implements URLDrawable.DownloadListener, HotVideoMongoliaRelativeLayout.OnVideoControlStateListener
 {
   public int a;
@@ -50,17 +50,17 @@ public class HotPicPageView$MyVideoViewHolder
     if (this.itemView != null) {
       this.itemView.setOnTouchListener(null);
     }
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362975));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362979));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362978));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362981));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362982));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362983));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362984));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362985));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362980));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362986);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362977));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362993));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362997));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362996));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362999));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363000));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363001));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363002));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363003));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362998));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363004);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362995));
   }
   
   public HotVideoData a()
@@ -108,7 +108,7 @@ public class HotPicPageView$MyVideoViewHolder
       b(paramInt);
       return;
     }
-    ThreadManager.getUIHandler().post(new adgu(this, paramInt));
+    ThreadManager.getUIHandler().post(new adqt(this, paramInt));
   }
   
   public void a(Drawable paramDrawable)
@@ -122,7 +122,7 @@ public class HotPicPageView$MyVideoViewHolder
     else {
       return;
     }
-    ThreadManager.getUIHandler().post(new adgt(this, paramDrawable));
+    ThreadManager.getUIHandler().post(new adqs(this, paramDrawable));
   }
   
   public void a(HotVideoData paramHotVideoData)
@@ -142,7 +142,7 @@ public class HotPicPageView$MyVideoViewHolder
       this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString);
       return;
     }
-    ThreadManager.getUIHandler().post(new adgy(this, paramString));
+    ThreadManager.getUIHandler().post(new adqx(this, paramString));
   }
   
   public boolean a(HotVideoData paramHotVideoData)
@@ -162,7 +162,7 @@ public class HotPicPageView$MyVideoViewHolder
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
     localValueAnimator.setTarget(this.itemView);
     localValueAnimator.setDuration(500L);
-    localValueAnimator.addUpdateListener(new adgw(this));
+    localValueAnimator.addUpdateListener(new adqv(this));
     localValueAnimator.start();
   }
   
@@ -238,7 +238,7 @@ public class HotPicPageView$MyVideoViewHolder
       {
         localObject = new AlphaAnimation(1.0F, 0.8F);
         ((AlphaAnimation)localObject).setDuration(600L);
-        ((AlphaAnimation)localObject).setAnimationListener(new adgv(this));
+        ((AlphaAnimation)localObject).setAnimationListener(new adqu(this));
         this.jdField_d_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject);
       }
       for (;;)
@@ -285,7 +285,7 @@ public class HotPicPageView$MyVideoViewHolder
     else {
       return;
     }
-    ThreadManager.getUIHandler().post(new adgx(this, paramDrawable));
+    ThreadManager.getUIHandler().post(new adqw(this, paramDrawable));
   }
   
   public void c()
@@ -379,7 +379,7 @@ public class HotPicPageView$MyVideoViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
-class anjc
+public class anjc
   implements Runnable
 {
-  anjc(anjb paramanjb) {}
+  public anjc(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
   public void run()
   {
-    ((QIMInformationPasterManager)QIMManager.a().c(12)).c();
+    this.a.a.setVisibility(8);
   }
 }
 

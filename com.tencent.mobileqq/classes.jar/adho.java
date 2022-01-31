@@ -1,28 +1,30 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.Context;
+import android.os.AsyncTask;
+import com.dataline.core.DirectForwarder;
+import com.dataline.core.DirectForwarder.CallBack;
 
 public final class adho
-  implements Comparator
+  extends DirectForwarder.CallBack
 {
-  private int a(long paramLong1, long paramLong2)
-  {
-    if (paramLong1 < paramLong2) {
-      return -1;
-    }
-    if (paramLong1 == paramLong2) {
-      return 0;
-    }
-    return 1;
-  }
+  public adho(Context paramContext) {}
   
-  public int a(File paramFile1, File paramFile2)
+  protected void a(AsyncTask paramAsyncTask, int paramInt)
   {
-    return a(paramFile1.lastModified(), paramFile2.lastModified());
+    try
+    {
+      DirectForwarder.a(this.a, paramAsyncTask, paramInt, new adhp(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
+    }
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adho
  * JD-Core Version:    0.7.0.1
  */

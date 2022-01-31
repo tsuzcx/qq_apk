@@ -1,17 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.StoryHomePushYellowBarHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView.OnUIClickListener;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.HotSortCardHolder;
 
 public class nso
   implements View.OnClickListener
 {
-  public nso(StoryHomePushYellowBarHandler paramStoryHomePushYellowBarHandler) {}
+  public nso(ShareGroupsListAdapter.HotSortCardHolder paramHotSortCardHolder, String paramString) {}
   
   public void onClick(View paramView)
   {
-    this.a.b();
-    this.a.a.j();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener.a(null, 0, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

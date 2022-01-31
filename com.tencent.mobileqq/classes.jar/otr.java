@@ -1,78 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.FrameLayout;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.graphics.Rect;
+import android.os.CountDownTimer;
+import android.view.MotionEvent;
+import android.view.TouchDelegate;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.util.AccessibilityUtil;
 
-public class otr
-  extends Handler
+class otr
+  extends TouchDelegate
 {
-  private WeakReference a;
-  
-  public otr(TribeVideoPlugin paramTribeVideoPlugin)
+  otr(otq paramotq, Rect paramRect, View paramView)
   {
-    this.a = new WeakReference(paramTribeVideoPlugin);
+    super(paramRect, paramView);
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
-    Object localObject = paramMessage.obj;
-    if ((localTribeVideoPlugin == null) || (localObject == null) || (!(localObject instanceof String))) {}
-    do
+    switch (paramMotionEvent.getAction())
     {
-      do
+    }
+    for (;;)
+    {
+      return true;
+      if (QRDisplayActivity.a(this.a.a) != null)
       {
-        do
+        QRDisplayActivity.a(this.a.a, false);
+        QRDisplayActivity.a(this.a.a).start();
+        continue;
+        if (QRDisplayActivity.a(this.a.a) != null) {
+          QRDisplayActivity.a(this.a.a).cancel();
+        }
+        if (!QRDisplayActivity.a(this.a.a))
         {
-          do
-          {
-            do
-            {
-              return;
-              switch (paramMessage.what)
-              {
-              default: 
-                return;
-              case 1: 
-                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, true);
-                return;
-              case 2: 
-                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, false);
-                return;
-              case 3: 
-                paramMessage = (otu)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-              }
-            } while ((paramMessage == null) || (otu.c(paramMessage)));
-            if (QLog.isColorLevel()) {
-              QLog.d("TribeVideoPlugin", 2, "sdk player is not prepared");
-            }
-            TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, 5);
-            otu.b(paramMessage, true);
-            return;
-            paramMessage = (otu)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-          } while (paramMessage == null);
-          if ((TribeVideoPlugin.a(localTribeVideoPlugin) == 0) && (!TribeVideoPlugin.a(localTribeVideoPlugin)))
-          {
-            QLog.d("TribeVideoPlugin", 2, "MSG_SHOW_PLAYER_LAYOUT plugin.mPlayMode == PARAM_RESULT_PLAY_FRONT videoWrapper.mPlayerID = " + otu.a(paramMessage));
-            TribeVideoPlugin.a(localTribeVideoPlugin).bringToFront();
-            TribeVideoPlugin.a(localTribeVideoPlugin, true);
-          }
-          TribeVideoPlugin.a(localTribeVideoPlugin, otu.a(paramMessage), 1);
-          return;
-          paramMessage = (otu)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-        } while (paramMessage == null);
-        TribeVideoPlugin.a(localTribeVideoPlugin, paramMessage);
-        return;
-        paramMessage = (otu)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-      } while (paramMessage == null);
-      TribeVideoPlugin.b(localTribeVideoPlugin, paramMessage);
-      return;
-      paramMessage = (otu)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-    } while (paramMessage == null);
-    TribeVideoPlugin.c(localTribeVideoPlugin, paramMessage);
+          AccessibilityUtil.c(this.a.a.d);
+          this.a.a.onClick(this.a.a.d);
+        }
+      }
+    }
   }
 }
 

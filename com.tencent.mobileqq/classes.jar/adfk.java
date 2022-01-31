@@ -1,26 +1,30 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import com.tencent.mobileqq.hiboom.HiBoomTextView.OnDoubleClick;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnVideoDataEventListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
 
 public class adfk
-  extends GestureDetector.SimpleOnGestureListener
+  implements FileBrowserModelBase.OnVideoDataEventListener
 {
-  public adfk(HiBoomTextView paramHiBoomTextView) {}
+  public adfk(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.a(this.a);
-      return true;
-    }
-    return super.onDoubleTap(paramMotionEvent);
+    this.a.a.runOnUiThread(new adfl(this));
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.a.a(paramInt, paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.a.a.runOnUiThread(new adfm(this, paramString1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfk
  * JD-Core Version:    0.7.0.1
  */

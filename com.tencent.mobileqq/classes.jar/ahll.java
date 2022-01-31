@@ -1,30 +1,14 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 
 public class ahll
-  implements ShortVideoResourceManager.INet_ShortVideoResource
+  implements Runnable
 {
-  private String a;
+  public ahll(CameraCaptureView paramCameraCaptureView) {}
   
-  public ahll(String paramString)
+  public void run()
   {
-    this.a = paramString;
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    VideoEnvironment.a(this.a, "onDownloadFinish| name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    VideoEnvironment.a(this.a, "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
-  }
-  
-  public void y_()
-  {
-    VideoEnvironment.a(this.a, "onNetWorkNone...", null);
+    this.a.c = true;
+    this.a.requestRender();
   }
 }
 

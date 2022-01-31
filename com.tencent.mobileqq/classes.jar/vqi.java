@@ -1,11 +1,7 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.qim.QIMUserManager.QIMUserIcon;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class vqi
   implements Runnable
@@ -14,12 +10,17 @@ class vqi
   
   public void run()
   {
-    Message localMessage = FriendChatPie.a(this.a.a).obtainMessage(42);
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("showRedDot", false);
-    localMessage.setData(localBundle);
-    FriendChatPie.b(this.a.a).sendMessage(localMessage);
-    SharedPreUtils.b(this.a.a.a.getCurrentAccountUin()).edit().putBoolean("aio_jump_lightalk_red_dot", false).commit();
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext())
+    {
+      QIMUserManager.QIMUserIcon localQIMUserIcon = (QIMUserManager.QIMUserIcon)localIterator.next();
+      if (localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView != null) {
+        localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setImageDrawable(localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      }
+      localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = null;
+      localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    }
+    this.a.a.clear();
   }
 }
 

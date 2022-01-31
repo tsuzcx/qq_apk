@@ -191,6 +191,23 @@ public class ApolloGameTool
   {
     return (!TextUtils.isEmpty(paramString)) && (ApolloGameActivity.a != null) && (ApolloGameActivity.a.get() != null) && (!((ApolloGameActivity)ApolloGameActivity.a.get()).isFinishing());
   }
+  
+  public static String b(String paramString)
+  {
+    String str = paramString;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        str = paramString.replace("\\", "\\\\").replace("'", "\\'");
+      }
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloGameTool", 1, localThrowable, new Object[0]);
+    }
+    return paramString;
+  }
 }
 
 

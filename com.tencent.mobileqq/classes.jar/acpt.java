@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetFileInfoCallBack;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
 public class acpt
-  implements UniformDownloadUtil.GetFileInfoCallBack
+  implements Runnable
 {
-  public acpt(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public acpt(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void a(String paramString, long paramLong)
+  public void run()
   {
-    if (UniformDownloadUtil.a(paramString))
-    {
-      StatisticAssist.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
-      return;
-    }
-    StatisticAssist.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
+    this.a.d();
   }
 }
 

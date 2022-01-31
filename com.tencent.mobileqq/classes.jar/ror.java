@@ -1,21 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.qphone.base.util.QLog;
 
 public class ror
-  implements ClickableColorSpanTextView.SpanClickListener
+  implements Runnable
 {
   public ror(BaseChatPie paramBaseChatPie) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void run()
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie", 2, "mRunOnShow 800 hasDestory=" + this.a.I);
+    }
+    if (!this.a.I) {
+      this.a.j(3);
+    }
   }
 }
 

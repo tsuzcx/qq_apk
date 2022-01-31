@@ -1,33 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.open.agent.DeviceFriendListOpenFrame;
-import com.tencent.open.agent.DeviceFriendListOpenFrame.FriendListAdapter;
+import android.net.Uri;
+import com.tencent.mobileqq.webview.AbsWebView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
 public class akmb
-  extends Handler
+  extends akmf
 {
-  public akmb(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame) {}
-  
-  public void handleMessage(Message paramMessage)
+  public akmb(AbsWebView paramAbsWebView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-    case 2: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
+    super(paramAbsWebView, null);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
     }
-    this.a.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame$FriendListAdapter.notifyDataSetChanged();
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmb
  * JD-Core Version:    0.7.0.1
  */

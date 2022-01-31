@@ -1,29 +1,29 @@
-import android.content.Context;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
 
 public class yxc
   implements Runnable
 {
-  public yxc(BaseActivity paramBaseActivity) {}
+  public yxc(ApolloFavViewBinder paramApolloFavViewBinder, ImageView paramImageView, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2, ApolloLinearLayout.ViewHolder paramViewHolder) {}
   
   public void run()
   {
-    try
-    {
-      if (BaseActivity.access$300() != null)
-      {
-        ((SensorManager)this.a.getApplicationContext().getSystemService("sensor")).unregisterListener(BaseActivity.access$300());
-        BaseActivity.access$302(null);
-      }
-      return;
-    }
-    finally {}
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
+    localTranslateAnimation.setDuration(400L);
+    localTranslateAnimation.setRepeatCount(1);
+    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+    localTranslateAnimation.setAnimationListener(new yxd(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localTranslateAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yxc
  * JD-Core Version:    0.7.0.1
  */

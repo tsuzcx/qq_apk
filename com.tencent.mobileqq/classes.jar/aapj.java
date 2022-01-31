@@ -1,98 +1,69 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ServerCheckCallback;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkContextInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import com.tencent.ark.ark;
+import com.tencent.ark.ark.Container;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.ArkTipsManager;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import java.lang.ref.WeakReference;
 
-class aapj
-  implements BusinessObserver
+public class aapj
+  implements Runnable
 {
-  aapj(aapi paramaapi, String paramString) {}
+  public aapj(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong, String paramString) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (paramBoolean) {}
-    int i;
-    label513:
+    Object localObject3 = ark.arkGetContainer(this.jdField_a_of_type_Long);
+    if (localObject3 == null) {}
+    label12:
+    Object localObject1;
     do
     {
-      try
+      do
       {
-        paramObject = (String)paramObject;
-        if (TextUtils.isEmpty(paramObject))
+        do
         {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("UnkownWordQuery, sso req fail, req=%s", new Object[] { this.jdField_a_of_type_JavaLangString.toString() }));
-          throw new Exception("sso req fail");
-        }
-      }
-      catch (Exception paramObject)
-      {
-        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("UnkownWordQuery, fail, exception=%s", new Object[] { paramObject.getMessage() }));
-        return;
-      }
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("UnkownWordQuery, sso req result, req=%s", new Object[] { paramObject.toString() }));
-      Object localObject1 = new JSONObject(paramObject);
-      paramInt = ((JSONObject)localObject1).optInt("ret");
-      if (paramInt != 0)
-      {
-        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("UnkownWordQuery, fail, ret != 0, ret=%d, req=%s", new Object[] { Integer.valueOf(paramInt), this.jdField_a_of_type_JavaLangString.toString() }));
-        throw new Exception("ret value not 0");
-      }
-      paramObject = new ArrayList();
-      localObject1 = ((JSONObject)((JSONObject)localObject1).opt("data")).getJSONArray("apps");
-      if (localObject1 == null)
-      {
-        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("UnkownWordQuery, fail, apps is null", new Object[0]));
-        throw new Exception("query fail");
-      }
-      i = ((JSONArray)localObject1).length();
-      paramInt = 0;
-      for (;;)
-      {
-        if (paramInt >= i) {
-          break label513;
-        }
-        JSONObject localJSONObject = ((JSONArray)localObject1).optJSONObject(paramInt);
-        String str1 = localJSONObject.optString("intent");
-        String str2 = localJSONObject.optString("meta");
-        String str3 = localJSONObject.optString("name");
-        String str4 = localJSONObject.optString("rawMeta");
-        if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str4))) {
-          break;
-        }
-        Object localObject2 = new JSONObject(str2);
-        localJSONObject = new JSONObject(str4);
-        Object localObject3 = ((JSONObject)localObject2).keys();
-        Iterator localIterator = localJSONObject.keys();
-        RecommendCommonMessage.ArkContextInfo localArkContextInfo = new RecommendCommonMessage.ArkContextInfo();
-        localArkContextInfo.appName = str3;
-        localArkContextInfo.context = str1;
-        localArkContextInfo.meta = str2;
-        localArkContextInfo.rawMeta = str4;
-        while (((Iterator)localObject3).hasNext())
+          do
+          {
+            do
+            {
+              break label12;
+              break label12;
+              break label12;
+              do
+              {
+                return;
+              } while (!(BaseActivity.sTopActivity instanceof FragmentActivity));
+              localObject1 = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+            } while (localObject1 == null);
+            localObject2 = ((ChatFragment)localObject1).a();
+            if (localObject2 == null) {
+              break;
+            }
+            localObject1 = ((BaseChatPie)localObject2).a();
+          } while (localObject1 == null);
+          localObject3 = ArkAppContainer.a((ark.Container)localObject3);
+        } while (localObject3 == null);
+        localObject3 = (ArkAppContainer)((WeakReference)localObject3).get();
+        Object localObject2 = ((BaseChatPie)localObject2).a((ArkAppContainer)localObject3);
+        if (localObject2 != null)
         {
-          str1 = (String)((Iterator)localObject3).next();
-          str2 = ((JSONObject)localObject2).getString(str1);
-          localArkContextInfo.semantic.put(str1, str2);
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("UnkownWordQuery, success, realname=%s", new Object[] { str2 }));
+          ArkTipsManager.a().a(((MessageForArkApp)localObject2).arkContainer, (SessionInfo)localObject1, (MessageForArkApp)localObject2, this.jdField_a_of_type_JavaLangString, ArkAppModuleReg.a());
+          return;
         }
-        while (localIterator.hasNext())
-        {
-          localObject2 = (String)localIterator.next();
-          localObject3 = localJSONObject.getString((String)localObject2);
-          localArkContextInfo.rawSemantic.put(localObject2, localObject3);
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("UnkownWordQuery, success, name=%s", new Object[] { localObject3 }));
-        }
-        paramObject.add(localArkContextInfo);
-        paramInt += 1;
-      }
-    } while (i <= 0);
-    this.jdField_a_of_type_Aapi.a.a(paramObject);
+      } while ((!ArkTipsManager.a().a()) || (localObject3 == null));
+      ArkTipsManager.a().a((ArkAppContainer)localObject3, (SessionInfo)localObject1, this.jdField_a_of_type_JavaLangString);
+      return;
+      localObject1 = ArkAppContainer.a((ark.Container)localObject3);
+    } while (localObject1 == null);
+    ArkTipsManager.a().a((ArkAppContainer)((WeakReference)localObject1).get(), null, this.jdField_a_of_type_JavaLangString);
   }
 }
 

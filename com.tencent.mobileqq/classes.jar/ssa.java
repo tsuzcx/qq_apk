@@ -1,18 +1,16 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class ssa
-  extends TimerTask
+  implements AdapterView.OnItemClickListener
 {
-  public ssa(H5MagicPlayerActivity paramH5MagicPlayerActivity, String paramString) {}
+  public ssa(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool.play(this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.b, 1.0F, 1.0F, 0, this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.b();
   }
 }
 

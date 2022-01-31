@@ -1,31 +1,40 @@
-import com.tencent.mobileqq.app.PPCLoginAuthHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.app.HotChatHandler;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class zex
   implements Runnable
 {
-  public zex(PPCLoginAuthHandler paramPPCLoginAuthHandler) {}
+  public zex(HotChatHandler paramHotChatHandler, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.a.a.getEntityManagerFactory(this.a.a.getCurrentAccountUin()).createEntityManager();
-    ExtensionInfo localExtensionInfo = (ExtensionInfo)localEntityManager.a(ExtensionInfo.class, this.a.a.getAccount());
-    if (localExtensionInfo != null)
+    if ((!GameRoomAVController.a().jdField_a_of_type_Boolean) && (!GameRoomAVController.a().c))
     {
-      localExtensionInfo.commingRingId = 0L;
-      localEntityManager.a(localExtensionInfo);
+      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+        break label110;
+      }
+      localHotChatInfo = (HotChatInfo)this.jdField_a_of_type_JavaUtilList.get(0);
     }
-    for (;;)
-    {
-      localEntityManager.a();
-      return;
-      localExtensionInfo = new ExtensionInfo();
-      localExtensionInfo.uin = this.a.a.getAccount();
-      localEntityManager.a(localExtensionInfo);
+    label110:
+    while (GameRoomAVController.a().a() != 1) {
+      try
+      {
+        long l = Long.parseLong(localHotChatInfo.troopUin);
+        GameRoomAVController.a().a(1, null, l, localHotChatInfo.name);
+        return;
+      }
+      catch (Exception localException)
+      {
+        HotChatInfo localHotChatInfo;
+        while (!QLog.isColorLevel()) {}
+        QLog.e("HotChatHandler", 2, "handleGetMyHostChatListRespError hc.troopUin: " + localHotChatInfo.troopUin);
+        return;
+      }
     }
+    GameRoomAVController.a().d();
   }
 }
 

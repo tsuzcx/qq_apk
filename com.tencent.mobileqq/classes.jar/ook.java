@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.StoryImageDialog;
+import java.lang.reflect.Field;
 
-public class ook
-  implements View.OnClickListener
+public final class ook
 {
-  public ook(StoryImageDialog paramStoryImageDialog) {}
+  public final int a;
+  public final String a;
+  public final Field a;
   
-  public void onClick(View paramView)
+  public ook(String paramString, int paramInt, Field paramField)
   {
-    this.a.dismiss();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectField = paramField;
+    paramField.setAccessible(true);
   }
 }
 

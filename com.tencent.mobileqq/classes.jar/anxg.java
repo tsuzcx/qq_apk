@@ -1,12 +1,31 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+
 public class anxg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public final long a;
-  public final byte[] a;
+  public anxg(TextLayer.TextItem paramTextItem) {}
   
-  public anxg(byte[] paramArrayOfByte, long paramLong)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Long = paramLong;
+    if (this.a.a.b == null) {
+      return;
+    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.s = (this.a.d + this.a.f * f);
+    this.a.t = (this.a.e + this.a.g * f);
+    this.a.q = (this.a.b + this.a.h * f);
+    this.a.r = (this.a.c + this.a.i * f);
+    if (this.a.a.a != null) {
+      this.a.a.a.a(f);
+    }
+    if (f == 1.0F) {
+      this.a.a.b(5);
+    }
+    TextLayer.a(this.a.a);
   }
 }
 

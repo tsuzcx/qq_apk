@@ -32,8 +32,8 @@ import mqq.manager.TicketManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oxt;
-import oxv;
+import ozn;
+import ozp;
 
 public class PluginJumpManager
 {
@@ -442,7 +442,7 @@ public class PluginJumpManager
       }
     }
     localObject2 = (PluginJumpManager.BidInfo)this.mBidInfos.get(localObject2);
-    PluginManagerHelper.getPluginInterface(paramActivity.getApplicationContext(), new oxv(this, (PluginJumpManager.BidInfo)localObject2, paramActivity, paramString3, paramString1, paramString4, l, (PluginJumpManager.UrlMappingInfo)localObject1, paramString2));
+    PluginManagerHelper.getPluginInterface(paramActivity.getApplicationContext(), new ozp(this, (PluginJumpManager.BidInfo)localObject2, paramActivity, paramString3, paramString1, paramString4, l, (PluginJumpManager.UrlMappingInfo)localObject1, paramString2));
     return true;
   }
   
@@ -456,7 +456,7 @@ public class PluginJumpManager
     for (boolean bool = true;; bool = false)
     {
       HtmlOffline.jdField_a_of_type_Boolean = bool;
-      HtmlOffline.b("1007", paramAppRuntime, true, new oxt(this));
+      HtmlOffline.b("1007", paramAppRuntime, true, new ozn(this));
       return;
     }
   }

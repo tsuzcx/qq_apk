@@ -1,22 +1,44 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.video.VipVideoManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class acbk
-  implements Animation.AnimationListener
+class acbk
+  implements TVK_SDKMgr.InstallListener
 {
-  public acbk(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim, int paramInt, boolean paramBoolean) {}
+  acbk(acbg paramacbg, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onInstallProgress(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.b;
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    int i = (int)Math.floor(100.0F * paramFloat);
+    if (i > VipVideoManager.a)
+    {
+      VipVideoManager.a = i;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("status", 1);
+      localBundle.putFloat("progress", i);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onInstalledFailed(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("status", 2);
+    localBundle.putInt("errCode", paramInt);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onInstalledSuccessed()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("status", 3);
+    localBundle.putBoolean("result", true);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+  }
 }
 
 

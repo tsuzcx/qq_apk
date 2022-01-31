@@ -13,7 +13,7 @@ import com.tribe.async.async.Bosses;
 import com.tribe.async.async.JobSegment;
 import com.tribe.async.reactive.Stream;
 import java.util.List;
-import nwy;
+import nyl;
 
 public abstract class FeedListPageLoaderBase
   extends INetPageLoader
@@ -38,7 +38,7 @@ public abstract class FeedListPageLoaderBase
   private void d()
   {
     a();
-    Bosses.get().postLightWeightJob(new nwy(this), 0);
+    Bosses.get().postLightWeightJob(new nyl(this), 0);
   }
   
   public abstract FeedListPageLoaderBase.FeedData a();

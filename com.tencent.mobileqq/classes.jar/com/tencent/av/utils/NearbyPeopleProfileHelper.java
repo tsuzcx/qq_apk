@@ -8,12 +8,12 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.List;
-import kgo;
+import kfz;
 
 public class NearbyPeopleProfileHelper
 {
   private static volatile NearbyPeopleProfileHelper jdField_a_of_type_ComTencentAvUtilsNearbyPeopleProfileHelper;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kgo(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kfz(this);
   Context jdField_a_of_type_AndroidContentContext = null;
   public VideoController a;
   public VideoAppInterface a;

@@ -9,6 +9,11 @@ import android.widget.GridView;
 public class MeasureGridView
   extends GridView
 {
+  public MeasureGridView(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
   public MeasureGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
@@ -30,7 +35,7 @@ public class MeasureGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MeasureGridView
  * JD-Core Version:    0.7.0.1
  */

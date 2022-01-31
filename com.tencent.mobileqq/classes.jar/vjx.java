@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
 
 public class vjx
-  implements Runnable
+  extends Handler
 {
-  public vjx(AIOGalleryScene paramAIOGalleryScene) {}
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void run()
+  public vjx(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.o) {
-      return;
-    }
-    AIOGalleryScene localAIOGalleryScene = this.a;
-    localAIOGalleryScene.h += this.a.i;
-    if (this.a.h > 99)
+    if (paramMessage.what == TroopGiftMsgItemBuilder.a()) {}
+    for (;;)
     {
-      this.a.h = 99;
-      this.a.d(this.a.h);
+      super.handleMessage(paramMessage);
       return;
+      if (paramMessage.what != TroopGiftMsgItemBuilder.b()) {}
     }
-    this.a.d(this.a.h);
-    this.a.v();
   }
 }
 

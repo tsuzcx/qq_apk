@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class vya
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public vya(TroopChatPie paramTroopChatPie, ChatMessage paramChatMessage) {}
+  public vya(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
+    this.a.g = null;
   }
 }
 

@@ -1,22 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public final class acmc
-  implements Runnable
+public class acmc
+  implements View.OnClickListener
 {
-  public acmc(Context paramContext, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
+  public acmc(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (FileVideoManager.a == null) {
-      FileVideoManager.a = new FileVideoManager(null);
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.e, 2, "click too fast , wait a minute.");
+      }
     }
-    if (FileVideoManager.a(FileVideoManager.a) == null) {
-      FileVideoManager.a(FileVideoManager.a, new HashMap());
-    }
-    FileVideoManager.a(FileVideoManager.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback);
+    do
+    {
+      return;
+      this.a.e();
+      paramView = (FileCategoryAdapter.ItemHolder)paramView.getTag();
+    } while (paramView.a == 0);
+    int i = paramView.a;
+    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+    paramView.putBoolean("last_select_All", true);
+    paramView.commit();
+    FMLocalFileActivity.a(this.a, i);
   }
 }
 

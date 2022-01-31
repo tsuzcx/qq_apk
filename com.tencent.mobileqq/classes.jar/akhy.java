@@ -1,24 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.URLInterceptManager;
 
 public class akhy
-  implements DialogInterface.OnKeyListener
+  implements Runnable
 {
-  public akhy(QQProgressDialog paramQQProgressDialog, boolean paramBoolean) {}
+  public akhy(URLInterceptManager paramURLInterceptManager, QQAppInterface paramQQAppInterface) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if ((paramInt == 84) || (paramInt == 4)) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqVasURLInterceptManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhy
  * JD-Core Version:    0.7.0.1
  */

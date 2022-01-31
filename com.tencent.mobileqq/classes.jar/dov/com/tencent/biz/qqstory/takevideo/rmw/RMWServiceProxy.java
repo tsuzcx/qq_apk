@@ -2,14 +2,14 @@ package dov.com.tencent.biz.qqstory.takevideo.rmw;
 
 import android.os.Message;
 import android.os.Messenger;
-import annh;
+import aodm;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class RMWServiceProxy
 {
   private int jdField_a_of_type_Int = 0;
-  private final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new annh(this));
+  private final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new aodm(this));
   private SimpleObservable jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwSimpleObservable = new SimpleObservable();
   private Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
   private int b = 5;

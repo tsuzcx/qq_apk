@@ -20,7 +20,7 @@ public final class UinList$UinListFetchReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\acom2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     msg.uin_list.UinList.UinListFetchReq
  * JD-Core Version:    0.7.0.1
  */

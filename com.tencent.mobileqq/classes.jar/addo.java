@@ -1,41 +1,42 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.RefreshView.OnRefreshListener;
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.biz.troop.file.TroopFileProtocol;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnPreviewVideoOnlineListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class addo
-  implements RefreshView.OnRefreshListener
+  implements Runnable
 {
-  public addo(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public addo(TroopFileModel paramTroopFileModel, FileManagerEntity paramFileManagerEntity, FileBrowserModelBase.OnPreviewVideoOnlineListener paramOnPreviewVideoOnlineListener) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyHybridFragment", 2, "onRefresh");
-    }
-    this.a.g();
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
-    if (localSosoLbsInfo == null) {
-      localSosoLbsInfo = SosoInterface.b();
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isZipInnerFile)
     {
-      if (localSosoLbsInfo != null) {
-        ((NearbyHandler)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)localSosoLbsInfo.a.b, (float)localSosoLbsInfo.a.a, 5);
-      }
-      this.a.jdField_a_of_type_ComTencentBizUiRefreshView.c();
+      TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.zipFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId, new addp(this));
       return;
     }
+    try
+    {
+      TroopFileTransferManager localTroopFileTransferManager = (TroopFileTransferManager)TroopFileTransferManager.a.get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin));
+      if (localTroopFileTransferManager == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.e("TroopFileModel<FileAssistant>", 4, "bad troopUin" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.c();
+        return;
+      }
+    }
+    finally {}
+    localObject.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId, TroopFileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     addo
  * JD-Core Version:    0.7.0.1
  */

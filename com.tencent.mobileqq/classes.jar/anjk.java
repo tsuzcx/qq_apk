@@ -1,6 +1,29 @@
-public abstract interface anjk
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+
+public class anjk
+  implements Animation.AnimationListener
 {
-  public abstract void c(boolean paramBoolean);
+  public anjk(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QIMEffectCameraCaptureUnit.d(this.a) != null)
+    {
+      QIMEffectCameraCaptureUnit.d(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.d(this.a).setVisibility(8);
+    }
+    this.a.i = false;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.i = true;
+  }
 }
 
 

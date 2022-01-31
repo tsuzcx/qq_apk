@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.adapter;
 
-import agss;
-import agst;
+import ahgu;
+import ahgv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -33,11 +33,11 @@ public class PtvTemplateAdapter
   public int a;
   Context jdField_a_of_type_AndroidContentContext;
   public AppInterface a;
-  private PtvTemplateAdapter.IPtvTemplateItemCallback jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterPtvTemplateAdapter$IPtvTemplateItemCallback = new agss(this);
+  private PtvTemplateAdapter.IPtvTemplateItemCallback jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterPtvTemplateAdapter$IPtvTemplateItemCallback = new ahgu(this);
   CapturePtvTemplateManager jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager;
   private TemplateGroupItem jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataTemplateGroupItem;
   private ProviderView.ProviderViewListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener;
-  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new agst(this);
+  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new ahgv(this);
   public PtvTemplateManager.PtvTemplateInfo a;
   public GridView a;
   public String a;

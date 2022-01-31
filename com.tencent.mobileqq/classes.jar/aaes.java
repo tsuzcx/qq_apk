@@ -1,64 +1,81 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout.CaptureButtonListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.IBinder;
+import com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager;
 
 public class aaes
-  extends Handler
+  implements IArGlobalConfigManager
 {
-  public aaes(ARCardCamereButtonLayout paramARCardCamereButtonLayout) {}
+  private IBinder a;
   
-  public void handleMessage(Message paramMessage)
+  public aaes(IBinder paramIBinder)
   {
-    super.handleMessage(paramMessage);
-    if (QLog.isColorLevel()) {
-      QLog.i("ARCardCamereButtonLayout", 2, "handleMessage what:" + paramMessage.what + ", shortVideoShot:" + this.a.a.get());
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            ARCardCamereButtonLayout.c(this.a);
-            return;
-          } while (ARCardCamereButtonLayout.a(this.a) == null);
-          ARCardCamereButtonLayout.a(this.a).b();
-          return;
-        } while (!this.a.a.get());
-        if (ARCardCamereButtonLayout.a(this.a) != null) {
-          ARCardCamereButtonLayout.a(this.a).c();
-        }
-        this.a.a.set(false);
-        ARCardCamereButtonLayout.d(this.a);
-        return;
-        if (ARCardCamereButtonLayout.a(this.a) != null) {
-          ARCardCamereButtonLayout.a(this.a).a();
-        }
-        ARCardCamereButtonLayout.d(this.a);
-        return;
-      } while (!this.a.a.get());
-      ARCardCamereButtonLayout.e(this.a);
-      ARCardCamereButtonLayout.a(this.a).sendEmptyMessageDelayed(5, 50L);
-      return;
-    }
-    this.a.b();
+    this.a = paramIBinder;
+  }
+  
+  /* Error */
+  public com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo a()
+  {
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore_3
+    //   8: aload_2
+    //   9: ldc 25
+    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: aload_0
+    //   15: getfield 15	aaes:a	Landroid/os/IBinder;
+    //   18: iconst_1
+    //   19: aload_2
+    //   20: aload_3
+    //   21: iconst_0
+    //   22: invokeinterface 35 5 0
+    //   27: pop
+    //   28: aload_3
+    //   29: invokevirtual 38	android/os/Parcel:readException	()V
+    //   32: aload_3
+    //   33: invokevirtual 42	android/os/Parcel:readInt	()I
+    //   36: ifeq +26 -> 62
+    //   39: getstatic 48	com/tencent/mobileqq/ar/aidl/ARScanStarFaceConfigInfo:CREATOR	Landroid/os/Parcelable$Creator;
+    //   42: aload_3
+    //   43: invokeinterface 54 2 0
+    //   48: checkcast 44	com/tencent/mobileqq/ar/aidl/ARScanStarFaceConfigInfo
+    //   51: astore_1
+    //   52: aload_3
+    //   53: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   56: aload_2
+    //   57: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   60: aload_1
+    //   61: areturn
+    //   62: aconst_null
+    //   63: astore_1
+    //   64: goto -12 -> 52
+    //   67: astore_1
+    //   68: aload_3
+    //   69: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   72: aload_2
+    //   73: invokevirtual 57	android/os/Parcel:recycle	()V
+    //   76: aload_1
+    //   77: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	78	0	this	aaes
+    //   51	13	1	localARScanStarFaceConfigInfo	com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo
+    //   67	10	1	localObject	Object
+    //   3	70	2	localParcel1	android.os.Parcel
+    //   7	62	3	localParcel2	android.os.Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   8	52	67	finally
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaes
  * JD-Core Version:    0.7.0.1
  */

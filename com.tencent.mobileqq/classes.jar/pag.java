@@ -1,62 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.common.util.LoadedBack2;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.QQBrowserBaseActivityInterface;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.biz.viewplugin.ViewPluginLoader;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class pag
-  implements LoadedBack2
+  extends DownloadListener
 {
-  public pag(OfflinePlugin paramOfflinePlugin) {}
+  public pag(ViewPluginLoader paramViewPluginLoader, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void a()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    Object localObject = this.a.mRuntime.a();
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      WebUiBaseInterface localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.a());
-      if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.QQBrowserBaseActivityInterface)) && (((WebUiUtils.QQBrowserBaseActivityInterface)localWebUiBaseInterface).b() != localObject))
-      {
-        localObject = this.a.mRuntime.a();
-        if (localObject != null) {
-          try
-          {
-            localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.a());
-            if ((localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface))
-            {
-              ((WebView)localObject).loadUrl(((WebUiUtils.WebUiMethodInterface)localWebUiBaseInterface).b());
-              return;
-            }
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "downloadUpdate loaded json = " + paramDownloadTask.c + " code = " + paramDownloadTask.jdField_a_of_type_Int);
     }
+    boolean bool = this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "downloadUpdate unCompressOffline" + bool);
+    }
+    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
   }
   
-  public void a(int paramInt)
+  public void onProgress(DownloadTask paramDownloadTask)
   {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.arg1 = 4;
-    localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 5;
-    paramString.arg2 = paramInt;
-    this.a.a.sendMessage(paramString);
+    int i = (int)(paramDownloadTask.jdField_a_of_type_Float * 100.0F);
+    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
+      QLog.d("ViewPluginLoader", 2, "downding progress = " + i);
+    }
   }
 }
 

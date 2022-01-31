@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
-class mcs
+public class mcs
   implements Runnable
 {
-  mcs(mcr parammcr) {}
+  public mcs(VideoFeedsListView paramVideoFeedsListView) {}
   
   public void run()
   {
-    VideoFeedsPlayManager.a(this.a.a);
+    this.a.d(false);
   }
 }
 

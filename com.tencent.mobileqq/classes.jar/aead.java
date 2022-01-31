@@ -1,4 +1,5 @@
-import com.tencent.mobileqq.nearby.OldBigDataChannelManager;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter;
 
 class aead
   implements Runnable
@@ -7,13 +8,12 @@ class aead
   
   public void run()
   {
-    OldBigDataChannelManager.a(this.a.a);
-    OldBigDataChannelManager.b(this.a.a);
+    this.a.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aead
  * JD-Core Version:    0.7.0.1
  */

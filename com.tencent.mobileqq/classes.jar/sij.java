@@ -1,10 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class sij
-  extends FacePreloadBaseAdapter.ViewHolder
+class sij
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
+  sij(sih paramsih) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -1,34 +1,57 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.StringUtil;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class mvp
-  extends Handler
+  implements Runnable
 {
-  public mvp(SwipeBackLayout paramSwipeBackLayout) {}
+  public mvp(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, ArrayList paramArrayList, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    int i = 0;
+    for (;;)
     {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
+      try
       {
+        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          String str = UUID.randomUUID().toString();
+          str = "mqqpa://resourceid/" + str;
+          this.jdField_a_of_type_OrgJsonJSONArray.put(i, str);
+          CompressInfo localCompressInfo = new CompressInfo((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), 0);
+          localCompressInfo.f = 0;
+          CompressOperator.a(localCompressInfo);
+          if (!StringUtil.a(localCompressInfo.e)) {
+            PublicAccountH5AbilityPlugin.b.put(str, localCompressInfo.e);
+          } else {
+            PublicAccountH5AbilityPlugin.b.put(str, this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          }
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
         return;
-      } while (SwipeBackLayout.a(this.a));
-      SwipeBackLayout.a(this.a, true);
-    } while (!(SwipeBackLayout.a(this.a) instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
+      }
+      this.jdField_a_of_type_OrgJsonJSONObject.put("value", this.jdField_a_of_type_OrgJsonJSONArray);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 0);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "Success");
+      this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "album");
+      this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.callJs(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+      this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n = "";
+      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
+      return;
+      i += 1;
     }
-    SwipeBackLayout.b(this.a, true);
-    ((Activity)SwipeBackLayout.a(this.a)).finish();
   }
 }
 

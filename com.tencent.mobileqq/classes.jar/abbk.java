@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity.LoadingTimeStamp;
+import com.tencent.mobileqq.armap.ARGLSurfaceView;
 
-public final class abbk
-  implements Parcelable.Creator
+class abbk
+  implements Runnable
 {
-  public ARMapLoadingActivity.LoadingTimeStamp a(Parcel paramParcel)
-  {
-    return new ARMapLoadingActivity.LoadingTimeStamp(paramParcel);
-  }
+  abbk(abbj paramabbj, ARGLSurfaceView paramARGLSurfaceView, int paramInt) {}
   
-  public ARMapLoadingActivity.LoadingTimeStamp[] a(int paramInt)
+  public void run()
   {
-    return new ARMapLoadingActivity.LoadingTimeStamp[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.nativeUpdatePerfLevel(this.jdField_a_of_type_Int);
   }
 }
 

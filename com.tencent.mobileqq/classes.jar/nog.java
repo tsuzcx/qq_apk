@@ -1,17 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 public class nog
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  extends AnimatorListenerAdapter
 {
-  public nog(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  public nog(StoryPlayVideoActivity paramStoryPlayVideoActivity, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ThreadManager.getUIHandler().post(new noh(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setVisibility(4);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayVideoActivity.finish();
   }
 }
 

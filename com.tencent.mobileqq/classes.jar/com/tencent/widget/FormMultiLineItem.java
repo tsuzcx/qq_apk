@@ -53,15 +53,15 @@ public class FormMultiLineItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130838619);
+      return paramResources.getDrawable(2130838623);
     case 0: 
-      return paramResources.getDrawable(2130838619);
+      return paramResources.getDrawable(2130838623);
     case 1: 
-      return paramResources.getDrawable(2130838631);
+      return paramResources.getDrawable(2130838635);
     case 2: 
-      return paramResources.getDrawable(2130838629);
+      return paramResources.getDrawable(2130838633);
     }
-    return paramResources.getDrawable(2130838626);
+    return paramResources.getDrawable(2130838630);
   }
   
   private void a()
@@ -69,15 +69,15 @@ public class FormMultiLineItem
     if ((this.b < 2) && (this.b > 0)) {
       throw new RuntimeException("mLineNum < 2, recommend to use FormSimpleItem");
     }
-    int n = getResources().getDimensionPixelSize(2131559305);
-    int k = getResources().getDimensionPixelSize(2131559306);
-    int m = getResources().getDimensionPixelSize(2131559328);
+    int n = getResources().getDimensionPixelSize(2131559307);
+    int k = getResources().getDimensionPixelSize(2131559308);
+    int m = getResources().getDimensionPixelSize(2131559330);
     int j;
     MultiImageTextView localMultiImageTextView;
     RelativeLayout.LayoutParams localLayoutParams;
     if (this.b == 2)
     {
-      j = getResources().getDimensionPixelSize(2131559324);
+      j = getResources().getDimensionPixelSize(2131559326);
       this.c = m;
       setBackgroundDrawable(a(getResources(), this.jdField_a_of_type_Int));
       setMinimumHeight(this.d);
@@ -92,7 +92,7 @@ public class FormMultiLineItem
       localMultiImageTextView = new MultiImageTextView(getContext());
       localMultiImageTextView.setId(2131362295);
       localMultiImageTextView.setTextSize(0, n);
-      localMultiImageTextView.setTextColor(getResources().getColor(2131494250));
+      localMultiImageTextView.setTextColor(getResources().getColor(2131494257));
       localMultiImageTextView.setSingleLine(true);
       localMultiImageTextView.setDuplicateParentStateEnabled(true);
       localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -110,7 +110,7 @@ public class FormMultiLineItem
       }
       localMultiImageTextView = new MultiImageTextView(getContext());
       localMultiImageTextView.setTextSize(0, k);
-      localMultiImageTextView.setTextColor(getResources().getColor(2131494262));
+      localMultiImageTextView.setTextColor(getResources().getColor(2131494269));
       localMultiImageTextView.setSingleLine(true);
       localMultiImageTextView.setDuplicateParentStateEnabled(true);
       localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -132,7 +132,7 @@ public class FormMultiLineItem
       this.jdField_a_of_type_JavaUtilArrayList.add(localMultiImageTextView);
       j += 1;
       break label311;
-      j = getResources().getDimensionPixelSize(2131559327);
+      j = getResources().getDimensionPixelSize(2131559329);
       break;
       label477:
       if (j == 2) {
@@ -168,9 +168,9 @@ public class FormMultiLineItem
       this.f = paramAttributeSet.getDimensionPixelSize(3, 0);
       this.e = paramAttributeSet.getDimensionPixelSize(2, 0);
       this.d = paramAttributeSet.getDimensionPixelSize(4, 0);
-      int j = getResources().getDimensionPixelSize(2131559309);
-      int k = getResources().getDimensionPixelSize(2131559310);
-      int m = getResources().getDimensionPixelSize(2131559308);
+      int j = getResources().getDimensionPixelSize(2131559311);
+      int k = getResources().getDimensionPixelSize(2131559312);
+      int m = getResources().getDimensionPixelSize(2131559310);
       this.g = paramAttributeSet.getDimensionPixelSize(5, j);
       this.h = paramAttributeSet.getDimensionPixelSize(6, k);
       this.i = paramAttributeSet.getDimensionPixelSize(7, m);
@@ -208,7 +208,7 @@ public class FormMultiLineItem
     if (this.e == 0)
     {
       if (this.b == 2) {
-        this.e = getResources().getDimensionPixelSize(2131559323);
+        this.e = getResources().getDimensionPixelSize(2131559325);
       }
     }
     else
@@ -218,7 +218,7 @@ public class FormMultiLineItem
         if (this.b != 2) {
           break label226;
         }
-        this.f = getResources().getDimensionPixelSize(2131559323);
+        this.f = getResources().getDimensionPixelSize(2131559325);
       }
       label58:
       if (this.d == 0) {
@@ -232,7 +232,7 @@ public class FormMultiLineItem
     int j;
     label226:
     label243:
-    for (this.d = getResources().getDimensionPixelSize(2131559322);; this.d = getResources().getDimensionPixelSize(2131559325))
+    for (this.d = getResources().getDimensionPixelSize(2131559324);; this.d = getResources().getDimensionPixelSize(2131559327))
     {
       setMinimumHeight(this.d);
       setPadding(this.g, 0, this.h, 0);
@@ -248,9 +248,9 @@ public class FormMultiLineItem
         j += ((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(k)).getMeasuredHeight();
         k += 1;
       }
-      this.e = getResources().getDimensionPixelSize(2131559326);
+      this.e = getResources().getDimensionPixelSize(2131559328);
       break;
-      this.f = getResources().getDimensionPixelSize(2131559326);
+      this.f = getResources().getDimensionPixelSize(2131559328);
       break label58;
     }
     this.jdField_a_of_type_AndroidWidgetImageView.measure(paramInt1, paramInt2);
@@ -264,8 +264,8 @@ public class FormMultiLineItem
     {
       super.onMeasure(paramInt1, paramInt2);
       return;
-      j = getResources().getDimensionPixelSize(2131559311);
-      k = getResources().getDimensionPixelSize(2131559312);
+      j = getResources().getDimensionPixelSize(2131559313);
+      k = getResources().getDimensionPixelSize(2131559314);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
       localLayoutParams.topMargin = j;
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
@@ -324,14 +324,14 @@ public class FormMultiLineItem
       int j;
       if (this.b < paramInt)
       {
-        int k = getResources().getDimensionPixelSize(2131559306);
+        int k = getResources().getDimensionPixelSize(2131559308);
         int m = this.b;
         j = 0;
         while (j < paramInt - m)
         {
           MultiImageTextView localMultiImageTextView = new MultiImageTextView(getContext());
           localMultiImageTextView.setTextSize(0, k);
-          localMultiImageTextView.setTextColor(getResources().getColor(2131494262));
+          localMultiImageTextView.setTextColor(getResources().getColor(2131494269));
           localMultiImageTextView.setSingleLine(true);
           localMultiImageTextView.setDuplicateParentStateEnabled(true);
           localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -371,7 +371,7 @@ public class FormMultiLineItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.FormMultiLineItem
  * JD-Core Version:    0.7.0.1
  */

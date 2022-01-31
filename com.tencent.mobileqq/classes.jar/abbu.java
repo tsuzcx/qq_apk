@@ -1,23 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.mobileqq.armap.wealthgod.SplashBitmapUtils;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.ARMapActivity.LocationMonitor;
 
 public class abbu
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public abbu(ARMapSplashView paramARMapSplashView) {}
+  public abbu(ARMapActivity.LocationMonitor paramLocationMonitor) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 1000.0F;
-    ARMapSplashView.a(this.a).setRotation(SplashBitmapUtils.d(f, ARMapSplashView.a(this.a)));
-    ARMapSplashView.a(this.a).setTranslationX(SplashBitmapUtils.a(f, ARMapSplashView.a(this.a)));
-    ARMapSplashView.a(this.a).setTranslationY(SplashBitmapUtils.b(f, ARMapSplashView.a(this.a)));
-    f = SplashBitmapUtils.c(f, ARMapSplashView.a(this.a));
-    ARMapSplashView.a(this.a).setScaleX(f);
-    ARMapSplashView.a(this.a).setScaleY(f);
+    this.a.a.a(-100);
   }
 }
 

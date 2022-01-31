@@ -1,28 +1,35 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.PSTNC2CActivity;
-import com.tencent.av.utils.PSTNNotification;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.telephony.PhoneStateListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.PstnCallbackWaitingUi;
+import com.tencent.qphone.base.util.QLog;
 
 public class jyw
-  implements Runnable
+  extends PhoneStateListener
 {
-  public jyw(PSTNC2CActivity paramPSTNC2CActivity) {}
+  public jyw(PstnCallbackWaitingUi paramPstnCallbackWaitingUi) {}
   
-  public void run()
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    this.a.c.setText(this.a.getResources().getString(2131429556));
-    this.a.jdField_a_of_type_ComTencentAvUtilsPSTNNotification.a(1);
-    this.a.a(this.a.b, false, 2130840119);
-    this.a.b.setClickable(true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    super.onCallStateChanged(paramInt, paramString);
+    if (QLog.isColorLevel())
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b = 2;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
+      QLog.d("PstnCallbackWaitingUi", 2, "onCallStateChanged state = " + paramInt);
+      QLog.d("PstnCallbackWaitingUi", 2, "onCallStateChanged incomingNumber = " + paramString);
     }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().x != 1) || (this.a.jdField_a_of_type_AndroidOsHandler == null) || (this.a.jdField_a_of_type_JavaLangRunnable == null) || (paramString == null) || (!paramString.equals("03162412023")));
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+    } while (!QLog.isColorLevel());
+    QLog.d("PstnCallbackWaitingUi", 2, "onCallStateChanged CALL_STATE_OFFHOOK");
   }
 }
 

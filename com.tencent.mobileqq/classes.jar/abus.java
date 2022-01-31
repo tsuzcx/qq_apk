@@ -1,91 +1,94 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.pic.ReportInfo;
 
-class abus
-  implements Runnable
+public final class abus
+  implements Parcelable.Creator
 {
-  abus(abue paramabue, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
-  
-  public void run()
+  public MessageForPic a(Parcel paramParcel)
   {
-    int i = 0;
-    Object localObject2;
-    Object localObject1;
-    ArrayList localArrayList;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    boolean bool2 = true;
+    MessageForPic localMessageForPic = new MessageForPic();
+    localMessageForPic.path = paramParcel.readString();
+    localMessageForPic.size = paramParcel.readLong();
+    localMessageForPic.type = paramParcel.readInt();
+    if (paramParcel.readInt() == 1)
     {
-      localObject2 = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
-      JSONObject localJSONObject = new JSONObject();
-      localObject1 = new JSONArray();
-      localArrayList = new ArrayList();
+      bool1 = true;
+      localMessageForPic.isRead = bool1;
+      localMessageForPic.uuid = paramParcel.readString();
+      localMessageForPic.groupFileID = paramParcel.readLong();
+      localMessageForPic.md5 = paramParcel.readString();
+      localMessageForPic.serverStoreSource = paramParcel.readString();
+      localMessageForPic.thumbMsgUrl = paramParcel.readString();
+      localMessageForPic.bigThumbMsgUrl = paramParcel.readString();
+      localMessageForPic.thumbWidth = paramParcel.readInt();
+      localMessageForPic.thumbHeight = paramParcel.readInt();
+      localMessageForPic.bigMsgUrl = paramParcel.readString();
+      localMessageForPic.rawMsgUrl = paramParcel.readString();
+      localMessageForPic.fileSizeFlag = paramParcel.readInt();
+      localMessageForPic.picExtraFlag = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label450;
+      }
+      bool1 = true;
+      label172:
+      localMessageForPic.isMixed = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label455;
+      }
+      bool1 = true;
+      label188:
+      localMessageForPic.isShareAppActionMsg = bool1;
+      localMessageForPic.action = paramParcel.readString();
+      localMessageForPic.shareAppID = paramParcel.readLong();
+      localMessageForPic.actMsgContentValue = paramParcel.readString();
+      localMessageForPic.localUUID = paramParcel.readString();
+      localMessageForPic.subMsgId = paramParcel.readInt();
+      localMessageForPic.isReport = paramParcel.readInt();
+      localMessageForPic.subVersion = paramParcel.readInt();
+      localMessageForPic.busiType = paramParcel.readInt();
+      localMessageForPic.width = paramParcel.readLong();
+      localMessageForPic.height = paramParcel.readLong();
+      localMessageForPic.imageType = paramParcel.readInt();
+      localMessageForPic.frienduin = paramParcel.readString();
+      localMessageForPic.selfuin = paramParcel.readString();
+      localMessageForPic.senderuin = paramParcel.readString();
+      localMessageForPic.istroop = paramParcel.readInt();
+      localMessageForPic.versionCode = paramParcel.readInt();
+      localMessageForPic.uniseq = paramParcel.readLong();
+      localMessageForPic.issend = paramParcel.readInt();
+      localMessageForPic.time = paramParcel.readLong();
+      localMessageForPic.msgtype = paramParcel.readInt();
+      localMessageForPic.preDownState = paramParcel.readInt();
+      localMessageForPic.preDownNetworkType = paramParcel.readInt();
+      localMessageForPic.previewed = paramParcel.readInt();
+      localMessageForPic.mNotPredownloadReason = paramParcel.readInt();
+      localMessageForPic.reportInfo = ((ReportInfo)paramParcel.readParcelable(ReportInfo.class.getClassLoader()));
+      if (paramParcel.readByte() == 0) {
+        break label460;
+      }
     }
-    for (;;)
+    label450:
+    label455:
+    label460:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(this.jdField_a_of_type_JavaLangString);
-        if (i >= localJSONArray.length()) {
-          break label180;
-        }
-        Object localObject3 = localJSONArray.getJSONObject(i);
-        long l = ((JSONObject)localObject3).optLong("seq");
-        int j = ((JSONObject)localObject3).optInt("actionId");
-        localObject3 = ((ApolloDaoManager)localObject2).a(l);
-        if ((localObject3 == null) || (j != ((ApolloFavActionData)localObject3).acitonId)) {
-          ((JSONArray)localObject1).put(l);
-        } else {
-          localArrayList.add(localObject3);
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
-        }
-      }
-      return;
-      label180:
-      if (localArrayList.size() > 0)
-      {
-        ((ApolloDaoManager)localObject2).g(localArrayList);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-        if (localObject2 != null)
-        {
-          localObject2 = ((MqqHandler)localObject2).obtainMessage(66);
-          ((Message)localObject2).arg1 = 1;
-          ((Message)localObject2).sendToTarget();
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.emoji.web.MessengerService", 2, "del fav action success +" + localJSONException.toString());
-          }
-        }
-      }
-      if (((JSONArray)localObject1).length() > 0) {
-        localJSONException.put("delHasError", true);
-      }
-      for (;;)
-      {
-        localJSONException.put("errorList", ((JSONArray)localObject1).toString());
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putString("delFavListAction", localJSONException.toString());
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-        return;
-        localJSONException.put("delHasError", false);
-      }
-      i += 1;
+      localMessageForPic.sync2Story = bool1;
+      return localMessageForPic;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label172;
+      bool1 = false;
+      break label188;
     }
+  }
+  
+  public MessageForPic[] a(int paramInt)
+  {
+    return new MessageForPic[paramInt];
   }
 }
 

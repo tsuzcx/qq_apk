@@ -26,9 +26,9 @@ import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import xui;
-import xuj;
-import xul;
+import xxo;
+import xxp;
+import xxr;
 
 public class ExtendEditText
   extends EditText
@@ -54,8 +54,8 @@ public class ExtendEditText
   
   static
   {
-    jdField_c_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new xui();
-    jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new xuj();
+    jdField_c_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new xxo();
+    jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new xxp();
   }
   
   public ExtendEditText(Context paramContext)
@@ -227,7 +227,7 @@ public class ExtendEditText
   private void d()
   {
     if (this.jdField_b_of_type_Int >= 0) {
-      setFilters(new InputFilter[] { new xul(this, this.jdField_b_of_type_Int) });
+      setFilters(new InputFilter[] { new xxr(this, this.jdField_b_of_type_Int) });
     }
   }
   
@@ -246,7 +246,7 @@ public class ExtendEditText
     float f2;
     float f3;
     float f4;
-    switch (xuk.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation.ordinal()])
+    switch (xxq.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation.ordinal()])
     {
     default: 
       f1 = localRect.left;

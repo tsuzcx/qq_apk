@@ -1,13 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.widget.TextView;
 
 public class the
-  implements DialogInterface.OnClickListener
 {
-  public the(QQMapActivity paramQQMapActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public TextView a;
 }
 
 

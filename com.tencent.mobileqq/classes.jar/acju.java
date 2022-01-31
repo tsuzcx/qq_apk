@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
+@TargetApi(16)
 public class acju
-  implements Runnable
 {
-  public acju(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
-  
-  public void run()
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    QfileRecentPicFileTabView.a(this.a);
-    this.a.e();
+    paramView.setBackground(paramDrawable);
+  }
+  
+  public static void a(View paramView, Runnable paramRunnable)
+  {
+    paramView.postOnAnimation(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acju
  * JD-Core Version:    0.7.0.1
  */

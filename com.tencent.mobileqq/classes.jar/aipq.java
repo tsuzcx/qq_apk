@@ -1,49 +1,50 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopEntranceBar;
+import android.os.Bundle;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import com.tencent.open.data.SharedPrefs;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.observer.SSOAccountObserver;
 
-public class aipq
-  implements Runnable
+class aipq
+  extends SSOAccountObserver
 {
-  public aipq(TroopEntranceBar paramTroopEntranceBar) {}
+  aipq(aipp paramaipp) {}
   
-  public void run()
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    Object localObject2 = "";
-    Object localObject1 = "";
-    Object localObject4 = PublicAccountUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (localObject4 != null)
-    {
-      localObject3 = ((AccountDetail)localObject4).uin;
-      localObject4 = ((AccountDetail)localObject4).name;
-      localObject1 = localObject4;
-      localObject2 = localObject3;
-      if (localObject4 != null)
-      {
-        localObject1 = localObject4;
-        localObject2 = localObject3;
-        if (((String)localObject4).endsWith("·部落"))
-        {
-          localObject1 = ((String)localObject4).substring(0, ((String)localObject4).length() - 3);
-          localObject2 = localObject3;
-        }
-      }
+    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onFailed|account=" + paramString + ",ret=" + paramInt2);
+    this.a.b.b(9401, "get sKey failed");
+    this.a.c();
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|onGetTicketNoPasswd|account=" + paramString + ",type=" + paramInt);
     }
-    localObject1 = String.format("https://buluo.qq.com/mobile/relativegroup.html?from=%s&scode=%s&keyword=%s&channel=1&_wv=1027&_bid=128", new Object[] { "qun_aio", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localObject1 });
-    Object localObject3 = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    ((Intent)localObject3).putExtra("url", (String)localObject1);
-    this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject3);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "clk_tribechat_aio", "exp_tribechat_aio", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject2, "", "");
+    long l = System.currentTimeMillis();
+    if (paramInt == 4096)
+    {
+      ForwardSdkShareProcessor.d(this.a.b, new String(paramArrayOfByte));
+      aipp.a(this.a).set(true);
+      SharedPrefs.a(paramString, l);
+      this.a.b();
+      return;
+    }
+    this.a.b.b(9401, "get sKey failed");
+    this.a.c();
+  }
+  
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  {
+    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onUserCancel|action=" + paramInt);
+    this.a.b.b(9401, "onUserCancel");
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipq
  * JD-Core Version:    0.7.0.1
  */

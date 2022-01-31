@@ -1,30 +1,27 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.NearbyVideoUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.nearby.now.location.LocationDataManager;
+import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import com.tencent.util.LogUtil;
 
 public class aesr
   implements View.OnClickListener
 {
-  public aesr(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public aesr(SelectLocationFragment paramSelectLocationFragment) {}
   
   public void onClick(View paramView)
   {
-    int i = 1;
-    if (((this.a.a.e == 2) || (this.a.a.e == 4)) && (!NearbyVideoUtils.a(this.a.a, this.a.a.app))) {
-      NearbyVideoUtils.a(this.a.a, this.a.a.app, 1);
-    }
-    paramView = NearbyProfileDisplayTribePanel.a(this.a).uin;
-    StringBuilder localStringBuilder = new StringBuilder().append("");
-    if (this.a.a.e == 2) {}
-    for (;;)
+    LogUtil.d("SelectLocationFragment", "mNetworkErrorView onClick()");
+    if (SelectLocationFragment.a(this.a) == null)
     {
-      NearbyVideoUtils.a("clk_video_entry", new String[] { "2", paramView, i });
-      return;
-      i = 2;
+      LogUtil.d("SelectLocationFragment", "mNetworkErrorView getLocation()");
+      SelectLocationFragment.b(this.a);
     }
+    while (SelectLocationFragment.a(this.a) == null) {
+      return;
+    }
+    LogUtil.d("SelectLocationFragment", "mNetworkErrorView search()");
+    SelectLocationFragment.a(this.a).a(SelectLocationFragment.a(this.a));
   }
 }
 

@@ -1,92 +1,61 @@
-import android.app.ProgressDialog;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
-import cooperation.plugin.PluginInfo;
-import cooperation.plugin.PluginInstaller;
-import cooperation.plugin.PluginManagerV2;
-import cooperation.plugin.PluginManagerV2.LaunchState;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import com.tencent.qqconnect.wtlogin.Login;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class alwj
-  extends OnPluginInstallListener.Stub
+  implements View.OnClickListener
 {
-  private PluginManagerV2.LaunchState jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
+  public alwj(Login paramLogin) {}
   
-  public alwj(PluginManagerV2 paramPluginManagerV2, PluginManagerV2.LaunchState paramLaunchState)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState = paramLaunchState;
-  }
-  
-  public void onInstallBegin(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onInstallBegin." + paramString);
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton) {
+      this.a.b();
     }
-    if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog != null)) {
-      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog.show();
-    }
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onInstallDownloadProgress." + paramString);
-    }
-    if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog != null))
+    do
     {
-      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog.setMax(paramInt2);
-      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog.setProgress(paramInt1);
-    }
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onInstallError." + paramString + "," + paramInt);
-    }
-    PluginManagerV2.LaunchState localLaunchState = this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
-    if ((localLaunchState != null) && (localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null))
-    {
-      paramString = this.jdField_a_of_type_CooperationPluginPluginManagerV2.a(paramString);
-      if ((paramString != null) && (paramString.mInstalledPath != null)) {
-        localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c = paramString.mInstalledPath;
-      }
-      paramString = localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
-      if (paramInt != 2) {
-        break label122;
-      }
-    }
-    label122:
-    for (boolean bool = true;; bool = false)
-    {
-      paramString.a(bool, localLaunchState.jdField_a_of_type_AndroidContentContext, localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
       return;
-    }
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onInstallFinish." + paramString);
-    }
-    paramString = this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
-    if ((paramString != null) && (!paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_AndroidAppProgressDialog != null)) {
-      paramString.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
-    }
-    if ((paramString != null) && (paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null))
-    {
-      PluginInfo localPluginInfo = PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2).a(paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b);
-      if ((localPluginInfo != null) && (localPluginInfo.mInstalledPath != null)) {
-        paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c = localPluginInfo.mInstalledPath;
+      if (paramView == this.a.c)
+      {
+        paramView = (InputMethodManager)this.a.getSystemService("input_method");
+        if (paramView != null) {
+          paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+        }
+        paramView = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+        paramView.what = 0;
+        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessageDelayed(paramView, 100L);
+        return;
       }
-      paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
-    }
+      if (paramView == this.a.jdField_a_of_type_AndroidViewView)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+      if (paramView == this.a.jdField_b_of_type_AndroidViewView)
+      {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+      if (paramView == this.a.jdField_a_of_type_AndroidWidgetTextView)
+      {
+        paramView = new Intent(this.a, LoginPhoneNumActivity2.class);
+        paramView.putExtra("key_req_src", this.a.jdField_a_of_type_Int);
+        this.a.startActivityForResult(paramView, 10000);
+        return;
+      }
+    } while (paramView != this.a.jdField_b_of_type_AndroidWidgetTextView);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alwj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
 import java.util.ArrayList;
-import java.util.List;
 
-public class txi
-  implements View.OnClickListener
+class txi
+  implements Runnable
 {
-  public txi(TroopMemberListActivity paramTroopMemberListActivity) {}
+  txi(txh paramtxh, Handler paramHandler) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    AssertUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter);
-    AssertUtils.a(this.a.jdField_a_of_type_JavaUtilList);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramView.add(((TroopMemberListActivity.ATroopMember)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
-      i += 1;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
+    ArrayList localArrayList = ((TroopGagMgr)this.jdField_a_of_type_Txh.a.app.getManager(47)).a(this.jdField_a_of_type_Txh.a.a, false);
+    this.jdField_a_of_type_AndroidOsHandler.post(new txj(this, localArrayList));
   }
 }
 

@@ -1,40 +1,23 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
 public class agql
-  implements Runnable
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public agql(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public agql(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public void run()
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Rect paramRect, Transformation paramTransformation)
   {
-    if (!this.a.isAdded()) {
-      return;
-    }
-    if (ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp().getSharedPreferences("last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin(), 0).getLong("key_last_update_time" + ReceiptMessageReadMemberListContainerFragment.a(this.a), 0L) - ReceiptMessageReadMemberListContainerFragment.b(this.a) * 1000L > 60000L)
-    {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
-      return;
-    }
-    TroopHandler localTroopHandler = (TroopHandler)ReceiptMessageReadMemberListContainerFragment.a(this.a).a(20);
-    TroopInfo localTroopInfo = ((TroopManager)ReceiptMessageReadMemberListContainerFragment.a(this.a).getManager(51)).a(Long.toString(ReceiptMessageReadMemberListContainerFragment.a(this.a)));
-    if (localTroopInfo == null)
-    {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).addObserver(ReceiptMessageReadMemberListContainerFragment.a(this.a), true);
-    localTroopHandler.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 10);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agql
  * JD-Core Version:    0.7.0.1
  */

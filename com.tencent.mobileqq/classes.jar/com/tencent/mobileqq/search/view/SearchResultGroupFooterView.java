@@ -17,17 +17,17 @@ public class SearchResultGroupFooterView
   
   public SearchResultGroupFooterView(ViewGroup paramViewGroup)
   {
-    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969021, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131364739));
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969020, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131364761));
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838576);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838580);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131364740));
-      this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131363905);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131364762));
+      this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131363928);
       return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838575);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838579);
     }
   }
 }

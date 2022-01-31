@@ -1,32 +1,33 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class xxw
-  implements AdapterView.OnItemClickListener
+  implements INetInfoHandler
 {
-  public xxw(SelectMemberActivity paramSelectMemberActivity) {}
+  public xxw(LbsFilterStatusManager paramLbsFilterStatusManager) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    paramAdapterView = (ResultRecord)paramView.getTag();
-    paramView = paramAdapterView.a;
-    if (this.a.a(paramView))
-    {
-      this.a.d(paramView);
-      this.a.a(paramAdapterView, false);
-      this.a.j();
-      paramInt = this.a.a.a();
-      if ((paramInt == 6) || (paramInt == 7) || (paramInt == 5) || (paramInt == 4) || (paramInt == 1) || (paramInt == 0) || (paramInt == 8) || (paramInt == 9)) {
-        ((SelectMemberInnerFrame)this.a.a.getCurrentView()).f();
-      }
-      this.a.b(false);
+    long l = Thread.currentThread().getId();
+    if (LbsFilterStatusManager.a(this.a) == l) {
+      LbsFilterStatusManager.a(this.a);
     }
+    while (LbsFilterStatusManager.a(this.a) == null) {
+      return;
+    }
+    LbsFilterStatusManager.a(this.a).post(new xxx(this));
   }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

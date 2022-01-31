@@ -16,9 +16,9 @@ import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.util.InputMethodUtil;
 import mqq.observer.WtloginObserver;
-import tmr;
-import tms;
-import tmt;
+import tpr;
+import tps;
+import tpt;
 
 public class RegisterPersonalInfoActivity
   extends RegisterNewBaseActivity
@@ -26,7 +26,7 @@ public class RegisterPersonalInfoActivity
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new tmt(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new tpt(this);
   private boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private String c = "";
@@ -48,7 +48,7 @@ public class RegisterPersonalInfoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970870);
+    setContentView(2130970918);
     a("设置昵称");
     b();
     a(80);
@@ -60,10 +60,10 @@ public class RegisterPersonalInfoActivity
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("key");
     this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("key_register_is_phone_num_registered", false);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("key_register_from_send_sms", false);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370371));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370512));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131372017));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new tmr(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131372190));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new tpr(this));
     ReportController.b(this.app, "CliOper", "", "", "0X8007362", "0X8007362", 0, 0, "", "", "", "");
     ReportController.a(this.app, "dc00898", "", "", "0X8007362", "0X8007362", 0, 0, "", "", "", "");
     if (!this.jdField_b_of_type_Boolean) {
@@ -89,28 +89,28 @@ public class RegisterPersonalInfoActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131370371: 
+    case 2131370512: 
       for (;;)
       {
         return;
         if (!NetworkUtil.d(BaseApplication.getContext()))
         {
-          a(2131432992, 0);
+          a(2131433009, 0);
           return;
         }
         paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
         if ((TextUtils.isEmpty(paramView)) || (paramView.trim().length() == 0))
         {
-          a(2131434301, 1);
+          a(2131434318, 1);
           return;
         }
         try
         {
-          b(2131434220);
+          b(2131434237);
           if (PhoneNumLoginImpl.a().a(this.app, this.c.getBytes(), paramView.getBytes(), this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
           {
             c();
-            a(2131434198, 1);
+            a(2131434215, 1);
             return;
           }
         }
@@ -122,7 +122,7 @@ public class RegisterPersonalInfoActivity
       }
     }
     InputMethodUtil.a(this);
-    new Handler().postDelayed(new tms(this), 200L);
+    new Handler().postDelayed(new tps(this), 200L);
   }
   
   protected void onDestroy()

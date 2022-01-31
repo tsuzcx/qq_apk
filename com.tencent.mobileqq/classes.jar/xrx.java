@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraOperator;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
+import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
+import com.tencent.qphone.base.util.QLog;
 
 public class xrx
   implements Runnable
 {
-  public xrx(RMVideoRecordState paramRMVideoRecordState, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public xrx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.unlockFrameSync();
+    String str = this.a.e;
+    NewFlowCameraActivity.a(this.a);
+    ShortVideoCaptureController.a(str, NewFlowCameraOperator.a);
+    this.a.q = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "shot photo with capture from video");
+    }
+    NewFlowCameraActivity.a(this.a);
+    if (this.a.a == null) {}
+    for (str = "";; str = this.a.a.a())
+    {
+      FlowCameraMqqAction.a("", "0X80075BE", str, "", "", "");
+      return;
     }
   }
 }

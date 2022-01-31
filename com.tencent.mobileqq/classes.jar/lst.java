@@ -1,16 +1,17 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
+import java.util.Map;
 
 public class lst
-  implements AdapterView.OnItemClickListener
+  implements FeedItemCell.CellListener
 {
-  public lst(NativeGridImageView paramNativeGridImageView) {}
+  public lst(ProteusItemView paramProteusItemView, ReadInJoyBaseAdapter.OnLastReadRefreshListener paramOnLastReadRefreshListener) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(View paramView, Map paramMap)
   {
-    NativeGridImageView.a(this.a, paramInt, NativeGridImageView.a(this.a).a());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$OnLastReadRefreshListener.a();
   }
 }
 

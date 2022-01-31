@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView.HiBoomAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
 
 class adfh
   implements Runnable
 {
-  adfh(adfg paramadfg, int paramInt1, int paramInt2) {}
+  adfh(adfg paramadfg) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      this.jdField_a_of_type_Adfg.a.a.a(this.b, 100);
-      return;
-    }
-    this.jdField_a_of_type_Adfg.a.a.a(this.b, -1);
+    this.a.a.a.a(VideoFilePresenter.a(this.a.a));
+    VideoFilePresenter.b(this.a.a);
+    this.a.a.a.d(VideoFilePresenter.a(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavInOutAnimation;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.QavPanelSoundWaveView;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
 
 public class jzu
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public jzu(QavInOutAnimation paramQavInOutAnimation) {}
+  public jzu(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
-    {
-      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.clearAnimation();
-      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.startAnimation(this.a.f);
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a() != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a().startAnimation(this.a.jdField_g_of_type_AndroidViewAnimationAnimation);
-      }
-    }
-    if (this.a.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_c_of_type_AndroidViewAnimationAnimation);
-      }
-    }
-    if (this.a.b != null)
-    {
-      this.a.b.clearAnimation();
-      if (this.a.b.getVisibility() == 0) {
-        this.a.b.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
-      }
-    }
-    if (this.a.jdField_c_of_type_AndroidViewView != null)
-    {
-      this.a.jdField_c_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_c_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_c_of_type_AndroidViewView.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
-      }
-    }
-    if (this.a.jdField_d_of_type_AndroidViewView != null)
-    {
-      this.a.jdField_d_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_d_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_d_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
-      }
-    }
-    if (this.a.jdField_e_of_type_AndroidViewView != null)
-    {
-      this.a.jdField_e_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_e_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
-      }
-    }
-    if (this.a.jdField_g_of_type_AndroidViewView != null)
-    {
-      this.a.jdField_g_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_g_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_g_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
-      }
-    }
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().au = true;
-    }
+    QavVideoRecordUICtrl.a(this.a, 0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

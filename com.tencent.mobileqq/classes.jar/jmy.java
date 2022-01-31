@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVPbInfo;
+import android.graphics.Bitmap;
+import com.tencent.av.service.QavWrapper;
+import com.tencent.av.service.QavWrapper.OnReadyListener;
 
-public final class jmy
-  implements Parcelable.Creator
+class jmy
+  implements QavWrapper.OnReadyListener
 {
-  public AVPbInfo a(Parcel paramParcel)
-  {
-    return new AVPbInfo(paramParcel);
-  }
+  jmy(jmx paramjmx, String paramString, Bitmap paramBitmap) {}
   
-  public AVPbInfo[] a(int paramInt)
+  public void a(QavWrapper paramQavWrapper)
   {
-    return new AVPbInfo[paramInt];
+    paramQavWrapper.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramQavWrapper.a();
   }
 }
 

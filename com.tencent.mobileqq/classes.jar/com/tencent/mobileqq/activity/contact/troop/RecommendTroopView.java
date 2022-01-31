@@ -37,10 +37,10 @@ import com.tencent.widget.SwipListView;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import whn;
-import who;
-import whq;
-import whr;
+import wks;
+import wkt;
+import wkv;
+import wkw;
 
 public class RecommendTroopView
   extends BaseTroopView
@@ -50,7 +50,7 @@ public class RecommendTroopView
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public TextView a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new whn(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new wks(this);
   protected SosoInterface.OnLocationListener a;
   public RecommendTroopAdapter a;
   protected FaceDecoder a;
@@ -155,13 +155,13 @@ public class RecommendTroopView
   
   protected boolean c()
   {
-    a(2130969702);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367511));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367514));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131367512));
-    this.f = LayoutInflater.from(a()).inflate(2130969933, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.f.findViewById(2131368467));
-    this.jdField_e_of_type_AndroidViewView = this.f.findViewById(2131368466);
+    a(2130969716);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367579));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131367582));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131367580));
+    this.f = LayoutInflater.from(a()).inflate(2130969947, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.f.findViewById(2131368534));
+    this.jdField_e_of_type_AndroidViewView = this.f.findViewById(2131368533);
     this.jdField_e_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.addHeaderView(this.f);
     if (a().getSharedPreferences("nearby_troop_count", 0).getInt("troop_num", 0) != 0)
@@ -171,9 +171,9 @@ public class RecommendTroopView
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367513));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367581));
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setTranscriptMode(0);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131367516));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131367584));
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
       this.jdField_a_of_type_ComTencentMobileqqTroopActivityRecommendTroopAdapter = new RecommendTroopAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext, a());
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopActivityRecommendTroopAdapter);
@@ -227,7 +227,7 @@ public class RecommendTroopView
   
   public void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new who(this, 3, true, false, 1800000L, false, false, "RecommendTroopView");
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new wkt(this, 3, true, false, 1800000L, false, false, "RecommendTroopView");
     SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
   }
   
@@ -249,7 +249,7 @@ public class RecommendTroopView
       m();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(new whq(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(new wkv(this));
   }
   
   public void m()
@@ -268,7 +268,7 @@ public class RecommendTroopView
     if (localObject != null) {}
     for (localObject = ((RecommendTroopManagerImp)localObject).b();; localObject = null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(new whr(this, (List)localObject));
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(new wkw(this, (List)localObject));
       this.jdField_e_of_type_Boolean = false;
       return;
     }
@@ -290,7 +290,7 @@ public class RecommendTroopView
     {
     default: 
       return;
-    case 2131367516: 
+    case 2131367584: 
       NearbyTroops.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       ReportController.b(null, "P_CliOper", "Grp_recom", "", "msg_page", "Clk_nearby", 0, 0, "", "", "", "");
       return;

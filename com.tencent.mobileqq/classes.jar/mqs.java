@@ -1,29 +1,32 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.IBitmapCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import java.lang.ref.WeakReference;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
 public class mqs
   implements Runnable
 {
-  public mqs(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface, long paramLong) {}
+  public mqs(RunningJob paramRunningJob, CloseableBitmap paramCloseableBitmap) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(ServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager));
-    Iterator localIterator = localArrayList.iterator();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.a)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderCloseableBitmap.a();
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_JavaUtilSet.iterator();
     while (localIterator.hasNext())
     {
-      ServiceAccountFolderFeed localServiceAccountFolderFeed = (ServiceAccountFolderFeed)localIterator.next();
-      this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localServiceAccountFolderFeed, false);
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if (localWeakReference.get() != null) {
+        ((IBitmapCallback)localWeakReference.get()).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderCloseableBitmap.a());
+      }
     }
-    localArrayList.clear();
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderCloseableBitmap.a();
   }
 }
 

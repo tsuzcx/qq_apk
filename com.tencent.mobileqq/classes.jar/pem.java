@@ -1,20 +1,24 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.ShareResultDialog;
 
-class pem
-  implements Runnable
+public class pem
+  implements View.OnClickListener
 {
-  pem(pel parampel, Drawable paramDrawable) {}
+  public pem(ShareResultDialog paramShareResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Pel.a.listener.onImageLoaded(this.jdField_a_of_type_Pel.a.url, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Pel.a.options);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog, -1);
+    }
+    this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pem
  * JD-Core Version:    0.7.0.1
  */

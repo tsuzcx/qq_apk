@@ -5,7 +5,7 @@ import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.AssertUtils;
 import java.util.ArrayList;
-import nxz;
+import nzk;
 
 public class GetMyStoryDesFromVidListStep
   implements Step
@@ -49,7 +49,7 @@ public class GetMyStoryDesFromVidListStep
     ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.a);
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller = BatchHandlerListPuller.a(localArrayList);
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a("GetMyStoryDesFromVidListStep");
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a(new nxz(this, localArrayList));
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a(new nzk(this, localArrayList));
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.b();
   }
   

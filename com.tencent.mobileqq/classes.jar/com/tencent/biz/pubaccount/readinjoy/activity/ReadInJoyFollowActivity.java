@@ -9,7 +9,7 @@ import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import cooperation.readinjoy.ReadInJoyHelper;
-import ldl;
+import lcw;
 
 public class ReadInJoyFollowActivity
   extends IphoneTitleBarActivity
@@ -18,7 +18,7 @@ public class ReadInJoyFollowActivity
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131367167);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131367215);
     this.a = new ReadInJoyChannelViewController(this);
     this.a.a(70);
     this.a.b(0);
@@ -40,9 +40,9 @@ public class ReadInJoyFollowActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2130969616);
+    setContentView(2130969624);
     getWindow().setBackgroundDrawable(null);
-    setClickableTitle("BB圈", new ldl(this));
+    setClickableTitle("BB圈", new lcw(this));
     a();
     this.a.a();
     return true;

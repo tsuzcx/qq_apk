@@ -1,94 +1,80 @@
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.observer.SubAccountObserver;
 
 public class ttw
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public ttw(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
+  public ttw(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130971614, null);
-    }
-    TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131375101);
-    TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131375103);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131375102);
-    GroupCatalogBean localGroupCatalogBean2 = (GroupCatalogBean)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    Object localObject;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) && (localGroupCatalogBean2.jdField_a_of_type_Int < this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.jdField_a_of_type_Int))
+    Object localObject = paramView.findViewById(2131362756);
+    if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {}
+    SubAccountProtocManager localSubAccountProtocManager;
+    do
     {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
-      paramView = ((GroupCatalogBean)localObject).jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
-      if ((paramView == null) || (paramView.jdField_a_of_type_Int < localGroupCatalogBean2.jdField_a_of_type_Int)) {
-        break label310;
-      }
-      if (!localGroupCatalogBean2.b.equals(paramView.b)) {}
-    }
-    label302:
-    label310:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0)
+      do
       {
-        localTextView2.setVisibility(0);
-        localTextView2.setText(((GroupCatalogBean)localObject).jdField_a_of_type_JavaLangString);
-        localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130846152, 0);
-      }
-      for (;;)
+        return;
+        int i = ((Integer)paramView.getTag()).intValue();
+        paramView = (SimpleAccount)SubAccountBindActivity.a(this.a).get(i);
+        localObject = (SubAccountManager)this.a.app.getManager(60);
+        if (((SubAccountManager)localObject).a(paramView.getUin()))
+        {
+          this.a.c(this.a.getString(2131436373));
+          SubAccountAssistantForward.a(this.a.app);
+          this.a.setTitle("");
+          paramView = new Intent(this.a, SplashActivity.class);
+          paramView.putExtra("tab_index", MainFragment.a);
+          paramView.setFlags(67108864);
+          this.a.startActivity(paramView);
+          this.a.finish();
+          return;
+        }
+        if (((SubAccountManager)localObject).a() >= 2)
+        {
+          SubAccountControll.a(this.a.app, this.a);
+          return;
+        }
+        if (!paramView.isLogined())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onSelectAccountClick.onClick:add account");
+          }
+          localObject = new Intent(this.a, SubLoginActivity.class);
+          ((Intent)localObject).putExtra("subuin", paramView.getUin());
+          ((Intent)localObject).putExtra("fromWhere", this.a.b);
+          this.a.startActivity((Intent)localObject);
+          return;
+        }
+      } while (!this.a.b());
+      localObject = ((SubAccountManager)localObject).a(paramView.getUin());
+      this.a.a(2131436393);
+      if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        localTextView1.setText(localGroupCatalogBean2.jdField_a_of_type_JavaLangString);
-        if ((localGroupCatalogBean2.jdField_a_of_type_JavaUtilArrayList == null) || (localGroupCatalogBean2.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-          break label302;
-        }
-        localImageView.setVisibility(0);
-        return paramViewGroup;
-        GroupCatalogBean localGroupCatalogBean1 = paramView.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean;
-        localObject = paramView;
-        paramView = localGroupCatalogBean1;
-        break;
-        localTextView2.setVisibility(4);
-        continue;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) && (localGroupCatalogBean2.b.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.b)))
-        {
-          localTextView2.setVisibility(0);
-          localTextView2.setText("");
-          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130846152, 0);
-        }
-        else
-        {
-          localTextView2.setVisibility(4);
-        }
+        localObject = new ttx(this, paramView);
+        this.a.getAppRuntime().getSubAccountKey(this.a.app.getAccount(), paramView.getUin(), (SubAccountObserver)localObject);
+        return;
       }
-      localImageView.setVisibility(4);
-      return paramViewGroup;
-    }
+      localSubAccountProtocManager = (SubAccountProtocManager)this.a.app.getManager(27);
+    } while (localSubAccountProtocManager == null);
+    localSubAccountProtocManager.a(paramView.getUin(), (String)localObject, this.a.b);
   }
 }
 

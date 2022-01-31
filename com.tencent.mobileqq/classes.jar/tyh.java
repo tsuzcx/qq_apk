@@ -1,55 +1,48 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchResultAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
 public class tyh
-  implements View.OnClickListener
+  implements Observer
 {
-  public tyh(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public tyh(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (!(localObject instanceof Integer))) {}
+    if (paramObject == null) {}
+    label4:
     int i;
     do
     {
-      return;
-      i = ((Integer)localObject).intValue();
-    } while (i < 0);
-    paramView = paramView.findViewById(2131374899);
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof Boolean))) {}
-    for (boolean bool = ((Boolean)paramView.getTag()).booleanValue();; bool = false)
-    {
-      if (bool)
+      do
       {
-        paramView = (TroopMemberListActivity.ATroopMember)this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$SearchResultAdapter.getItem(i);
-        this.a.a(paramView);
-        if ((this.a.jdField_b_of_type_AndroidAppDialog != null) && (this.a.jdField_b_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_b_of_type_AndroidAppDialog.dismiss();
-        }
-        if (this.a.d != 11) {
-          break;
-        }
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
-        return;
+        do
+        {
+          break label4;
+          do
+          {
+            return;
+          } while (!(paramObject instanceof TroopUploadingThread.UploadState));
+          paramObservable = (TroopUploadingThread.UploadState)paramObject;
+        } while (paramObservable.a == 0);
+        this.a.jdField_a_of_type_AndroidOsHandler.post(new tyi(this, paramObservable));
+      } while ((paramObservable.a != 1) || (paramObservable.c < 0) || (this.a.jdField_a_of_type_AndroidNetUri == null));
+      paramObject = ImageUtil.b(this.a, this.a.jdField_a_of_type_AndroidNetUri);
+      i = AvatarWallAdapter.b(paramObject, AbsDownloader.d(AvatarTroopUtil.b(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 1))));
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.troopinfo", 2, "origin photo,result:" + i);
       }
-      paramView = (TroopMemberListActivity.ATroopMember)this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.getItem(i);
-      this.a.a(paramView);
-      if (this.a.d == 11) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
-      }
-      if (this.a.d != 18) {
-        break;
-      }
-      ReportController.b(this.a.app, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.jdField_b_of_type_JavaLangString, "", "", "");
-      return;
-    }
+      i = AvatarWallAdapter.a(paramObject, AbsDownloader.d(AvatarTroopUtil.a(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 1))));
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.troopinfo", 2, "thumb photo,result:" + i);
   }
 }
 

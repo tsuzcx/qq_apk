@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.test.MapTestHelper.ToolEnableChangedListener;
 
-public class abay
-  implements Runnable
+class abay
+  implements MapTestHelper.ToolEnableChangedListener
 {
-  public abay(ARMapLoadingActivity paramARMapLoadingActivity, int paramInt1, int paramInt2, String paramString) {}
+  abay(abax paramabax) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("failType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("subType", String.valueOf(this.b));
-    localHashMap.put("failInfo", this.jdField_a_of_type_JavaLangString);
-    StatisticCollector.a(BaseApplication.getContext()).a("", "REPORT_TAG_LOADING_FAIL", false, 0L, 0L, localHashMap, "", false);
+    this.a.a.b(paramBoolean);
   }
 }
 

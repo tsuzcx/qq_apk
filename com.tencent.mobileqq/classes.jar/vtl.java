@@ -1,20 +1,20 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.nearpeople.NearbyRecommender.NearbyRecommenderUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import mqq.os.MqqHandler;
 
 public class vtl
   implements Runnable
 {
-  public vtl(NearbyChatPie paramNearbyChatPie) {}
+  public vtl(FriendChatPie paramFriendChatPie) {}
   
   public void run()
   {
-    String[] arrayOfString = NearbyRecommenderUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055FE", "0X80055FE", 0, 0, arrayOfString[0], str, "", "");
-    this.a.O = false;
+    Message localMessage = FriendChatPie.c(this.a).obtainMessage(42);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("showRedDot", false);
+    localMessage.setData(localBundle);
+    FriendChatPie.d(this.a).sendMessage(localMessage);
   }
 }
 

@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
 
-class rwa
-  implements Runnable
+public final class rwa
+  implements DialogInterface.OnClickListener
 {
-  rwa(rvz paramrvz) {}
+  public rwa(QQAppInterface paramQQAppInterface, Context paramContext, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MessageRecord localMessageRecord = new MessageRecord();
-    localMessageRecord.shmsgseq = this.a.a.jdField_a_of_type_Long;
-    int i = this.a.a.app.a().a(this.a.a.b, this.a.a.jdField_a_of_type_Int, localMessageRecord);
-    this.a.a.runOnUiThread(new rwb(this, i));
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 2, 12);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    }
   }
 }
 

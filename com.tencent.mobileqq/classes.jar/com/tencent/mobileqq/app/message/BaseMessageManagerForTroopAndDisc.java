@@ -48,9 +48,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import zpc;
-import zpd;
-import zpe;
+import zsi;
+import zsj;
+import zsk;
 
 public abstract class BaseMessageManagerForTroopAndDisc
   extends BaseMessageManager
@@ -476,7 +476,7 @@ public abstract class BaseMessageManagerForTroopAndDisc
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.jdField_b_of_type_JavaUtilMap.put(MsgProxyUtils.a(paramString, paramInt), Boolean.valueOf(true));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zpe(this, paramRefreshMessageContext, paramString, paramInt, paramLong2, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zsk(this, paramRefreshMessageContext, paramString, paramInt, paramLong2, paramBoolean));
   }
   
   public void a(String paramString, int paramInt, List paramList1, List paramList2, Bundle paramBundle)
@@ -990,7 +990,7 @@ public abstract class BaseMessageManagerForTroopAndDisc
                 paramInt = 0;
                 while (l1 < l4)
                 {
-                  ThreadManager.post(new zpc(this, l1 + 19L, l4, paramInt, l1, paramString, (Bundle)localObject2), 8, null, false);
+                  ThreadManager.post(new zsi(this, l1 + 19L, l4, paramInt, l1, paramString, (Bundle)localObject2), 8, null, false);
                   l1 += 20L;
                   paramInt += 1;
                 }
@@ -1328,7 +1328,7 @@ public abstract class BaseMessageManagerForTroopAndDisc
   public void c(MessageRecord paramMessageRecord)
   {
     long l = System.currentTimeMillis();
-    ThreadManager.post(new zpd(this, paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(paramMessageRecord), l), 8, null, true);
+    ThreadManager.post(new zsj(this, paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(paramMessageRecord), l), 8, null, true);
   }
   
   public void c(String paramString, int paramInt, long paramLong)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.now.enter;
 
-import afnd;
+import agaj;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
@@ -70,13 +70,13 @@ public class NowFestivalEnterFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969145, paramViewGroup, false);
-    paramViewGroup = paramLayoutInflater.findViewById(2131362836);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969144, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.findViewById(2131362854);
     if (paramViewGroup != null) {
       new ImmersionBar(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 0, paramViewGroup);
     }
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131362837);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131362838));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131362855);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131362856));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     paramViewGroup = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 0.7F, 1.0F });
     paramBundle = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 0.7F, 1.0F });
@@ -86,14 +86,14 @@ public class NowFestivalEnterFragment
     localAnimatorSet.play(paramViewGroup).with(paramBundle);
     localAnimatorSet.start();
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("url");
-    ThreadManager.getUIHandler().postDelayed(new afnd(this), 400L);
+    ThreadManager.getUIHandler().postDelayed(new agaj(this), 400L);
     new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("year_icon").d("middle_view").a();
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.now.enter.NowFestivalEnterFragment
  * JD-Core Version:    0.7.0.1
  */

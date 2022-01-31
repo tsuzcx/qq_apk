@@ -1,28 +1,24 @@
-import com.tencent.widget.ListView;
+import com.tencent.image.URLImageView;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
+import com.tencent.qidian.data.GroupItem;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class almy
+class almy
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  private almy(ListView paramListView) {}
-  
-  public almy a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    return this;
-  }
+  almy(almx paramalmx, GroupItem paramGroupItem, URLImageView paramURLImageView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetListView.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
+    String str = String.valueOf(this.jdField_a_of_type_ComTencentQidianDataGroupItem.a);
+    this.jdField_a_of_type_Almx.a.a.put(str, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, 3, str));
+    this.jdField_a_of_type_Almx.a.a(3, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     almy
  * JD-Core Version:    0.7.0.1
  */

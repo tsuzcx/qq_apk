@@ -1,37 +1,19 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.contact.newfriend.ContactMatchBuilder;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.newfriend.ContactMatchMessage;
+import mqq.os.MqqHandler;
 
 public class wjl
-  extends AsyncTask
+  implements Runnable
 {
-  public wjl(CardViewController paramCardViewController, String paramString, wjp paramwjp) {}
+  public wjl(ContactMatchBuilder paramContactMatchBuilder) {}
   
-  protected HashMap a(Void... paramVarArgs)
+  public void run()
   {
-    paramVarArgs = null;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      paramVarArgs = CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, this.jdField_a_of_type_JavaLangString);
-    }
-    return paramVarArgs;
-  }
-  
-  protected void a(HashMap paramHashMap)
-  {
-    if (paramHashMap == null) {
-      return;
-    }
-    String str = (String)paramHashMap.get("displayedStr ");
-    paramHashMap = (String)paramHashMap.get("displayingStr ");
-    CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, str);
-    CardViewController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, paramHashMap);
-    if (this.jdField_a_of_type_Wjp != null)
-    {
-      this.jdField_a_of_type_Wjp.a();
-      return;
-    }
-    CardViewController.d(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController);
+    ((PhoneContactManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).a(((ContactMatchMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
+    ThreadManager.getUIHandler().post(new wjm(this));
   }
 }
 

@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.ViewFactory.GuideView.OnItemClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.bless.CountDownView;
+import com.tencent.mobileqq.activity.bless.CountDownView.CountDownFinishedListener;
 
 public class wfw
-  implements ViewFactory.GuideView.OnItemClickListener
+  implements Runnable
 {
-  public wfw(SearchContactsFragment paramSearchContactsFragment) {}
+  public wfw(CountDownView paramCountDownView) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
+    if ((CountDownView.a(this.a)) && (CountDownView.a(this.a) >= CountDownView.a().length))
+    {
+      this.a.a();
+      if (CountDownView.a(this.a) != null) {
+        CountDownView.a(this.a).a();
+      }
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.a(paramString, false);
+    while (CountDownView.a(this.a) >= CountDownView.a().length) {
+      return;
+    }
+    CountDownView.a(this.a);
+    this.a.setImageResource(CountDownView.a()[CountDownView.a(this.a)]);
+    this.a.postDelayed(CountDownView.a(this.a), 1000L);
+    CountDownView.b(this.a);
   }
 }
 

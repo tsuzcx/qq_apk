@@ -1,51 +1,33 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class ypa
-  implements Runnable
+  implements CmGameStartChecker.ICmGameConfirmListener
 {
-  public ypa(SpriteUIHandler paramSpriteUIHandler, int paramInt) {}
+  public ypa(CmGameStartChecker paramCmGameStartChecker, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
   
-  public void run()
+  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    try
+    CmGameStartChecker localCmGameStartChecker = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker;
+    String str;
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a() == null) {
-        return;
-      }
-      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().a().findViewById(2131362822);
-      if (1 == this.jdField_a_of_type_Int)
-      {
-        if (localXPanelContainer.a() != 21) {
-          return;
-        }
-        SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().ai();
-        return;
+      str = this.jdField_a_of_type_JavaLangString;
+      localCmGameStartChecker.a(paramStartCheckParam, str);
+      if (!"message".equals(this.c)) {
+        break label77;
       }
     }
-    catch (Exception localException)
+    label77:
+    for (int i = 1;; i = 0)
     {
-      QLog.e("cmshow_scripted_SpriteUIHandler", 1, localException, new Object[0]);
+      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(paramStartCheckParam.game.gameId) });
       return;
-    }
-    if (2 == this.jdField_a_of_type_Int)
-    {
-      BaseChatPie localBaseChatPie = SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a();
-      if (localBaseChatPie != null)
-      {
-        ApolloPanel localApolloPanel = localBaseChatPie.a;
-        if ((localApolloPanel != null) && (localApolloPanel.a() == 7))
-        {
-          localBaseChatPie.o(0);
-          return;
-        }
-      }
-      localException.a(21);
+      str = this.b;
+      break;
     }
   }
 }

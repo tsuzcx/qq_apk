@@ -1,18 +1,30 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import com.tencent.biz.qqstory.playmode.util.MultiGroupVideoDataProvider;
+import com.tencent.biz.qqstory.playmode.util.MultiGroupVideoDataProvider.DataObserver;
+import com.tencent.biz.qqstory.playmode.util.VideoData;
+import java.util.ArrayList;
 
 public class nmq
-  implements ViewTreeObserver.OnPreDrawListener
+  implements Runnable
 {
-  public nmq(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
+  public nmq(MultiGroupVideoDataProvider paramMultiGroupVideoDataProvider, VideoData paramVideoData) {}
   
-  public boolean onPreDraw()
+  public void run()
   {
-    this.a.a(this.a.a, this.a.g, this.a.h);
-    this.a.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    int i = 0;
+    try
+    {
+      while (i < this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMultiGroupVideoDataProvider.c.size())
+      {
+        ((MultiGroupVideoDataProvider.DataObserver)this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMultiGroupVideoDataProvider.c.get(i)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilVideoData);
+        i += 1;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

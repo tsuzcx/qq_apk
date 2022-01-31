@@ -1,47 +1,78 @@
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.mobileqq.utils.ImageUtil;
-import java.util.List;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.magicface.drawable.PngFrameUtil;
+import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class rzw
-  implements Runnable
+  implements QueryCallback
 {
-  public rzw(ChatSettingForTroop paramChatSettingForTroop, long paramLong) {}
+  public rzw(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, ImageView paramImageView1, MarkFaceMessage paramMarkFaceMessage, ImageView paramImageView2) {}
   
-  public void run()
+  public void a(PicEmoticonInfo paramPicEmoticonInfo)
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b.size();
-    int i = 0;
-    ImageView localImageView;
     Object localObject;
-    if (i < j)
+    int i;
+    if (paramPicEmoticonInfo != null)
     {
-      localImageView = (ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.b.get(i);
-      localObject = (String)localImageView.getTag();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramPicEmoticonInfo);
+      String str2 = EmoticonUtils.z.replace("[epId]", paramPicEmoticonInfo.a.epId);
+      String str1 = "";
+      localObject = str1;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam != null)
+      {
+        localObject = str1;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam.length > 0) {
+          localObject = new String(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam);
+        }
+      }
+      i = PngFrameUtil.a((String)localObject);
+      if ((!FileUtils.a(str2)) || (i != 1)) {
+        break label190;
+      }
+      i = 3;
     }
     for (;;)
     {
-      i += 1;
-      break;
-      try
+      if (paramPicEmoticonInfo.a())
       {
-        long l = Long.valueOf((String)localObject).longValue();
-        if (l == this.jdField_a_of_type_Long)
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.getResources().getDrawable(2130843978);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      }
+      for (;;)
+      {
+        this.b.setMinimumHeight((int)(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a * 100.0F));
+        this.b.setMinimumWidth((int)(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a * 100.0F));
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.b, i, paramPicEmoticonInfo);
+        return;
+        label190:
+        if (paramPicEmoticonInfo.b())
         {
-          localObject = ImageUtil.a();
-          localObject = FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, 1, Long.toString(this.jdField_a_of_type_Long), 3, (Drawable)localObject, (Drawable)localObject, 4);
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.runOnUiThread(new rzx(this, localImageView, (FaceDrawable)localObject));
-          return;
+          i = 2;
+          break;
+        }
+        if (!paramPicEmoticonInfo.c()) {
+          break label254;
+        }
+        i = 1;
+        break;
+        if (i == 1)
+        {
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.getResources().getDrawable(2130837573);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+      label254:
+      i = 0;
     }
   }
 }

@@ -1,20 +1,52 @@
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.OfflineEnvHelper;
+import com.tencent.mobileqq.troop.homework.recite.utils.SoLibraryChecker;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ajka
-  implements FilenameFilter
+  implements AsyncBack
 {
-  public ajka(UnifiedDebugManager paramUnifiedDebugManager, String paramString) {}
+  public ajka(SoLibraryChecker paramSoLibraryChecker) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLibraryLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
+    }
+    if (paramInt == 0) {}
+    String str;
+    do
+    {
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
+        str = paramString.optString("url");
+        paramInt = paramString.optInt("filesize");
+        if ((str != null) && (str.endsWith("patch")))
+        {
+          FileUtils.a(OfflineEnvHelper.a(SoLibraryChecker.a(this.a)) + SoLibraryChecker.a(this.a));
+          SoLibraryChecker.a(this.a);
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+    } while ((TextUtils.isEmpty(str)) || (paramInt == 0));
+    SoLibraryChecker.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajka
  * JD-Core Version:    0.7.0.1
  */

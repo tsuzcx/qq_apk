@@ -1,70 +1,130 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Typeface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.richmedia.subtitles.ItemBase;
+import com.tencent.mobileqq.activity.richmedia.subtitles.TextItem;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 
-public class xvt
-  implements View.OnClickListener
+class xvt
 {
-  public xvt(FriendTabView paramFriendTabView) {}
+  public int a;
+  public Bitmap a;
+  public TextItem a;
+  public boolean a;
+  public TextItem b;
   
-  public void onClick(View paramView)
+  public xvt(String paramString, float paramFloat1, int paramInt, float paramFloat2, float paramFloat3, Typeface paramTypeface)
   {
-    QLog.d("FriendTabView", 2, "----->onBuddyListClick");
-    xyi localxyi = (xyi)paramView.getTag();
-    String str;
-    boolean bool;
-    if ((localxyi != null) && (localxyi.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localxyi.jdField_a_of_type_JavaLangObject != null))
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem = new TextItem(paramString, paramFloat1, paramInt, paramFloat2, -1.0F, 1, -1.0F, paramTypeface);
+    this.b = new TextItem(paramString, paramFloat1, -1, paramFloat2, -1.0F, 1, paramFloat3, paramTypeface);
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (boolean bool = true;; bool = false)
     {
-      str = "";
-      if (!(localxyi.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label233;
+      this.jdField_a_of_type_Boolean = bool;
+      b(paramString);
+      return;
+    }
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) && (paramString2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramString1 == null) || (paramString2 == null)) {
+        return false;
       }
-      str = ((Friends)localxyi.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localxyi.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+    } while (paramString1.equals(paramString2));
+    return false;
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      if (this.jdField_a_of_type_Int != -1)
       {
-        if (!localxyi.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label259;
-        }
-        bool = this.a.a.a(localxyi.jdField_a_of_type_JavaLangString, str, 4, "-1", "");
-        label110:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("FriendTabView", 2, "----->onBuddyListClick = " + bool);
-        }
-        localxyi.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.b)
-        {
-          if (!localxyi.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label284;
-          }
-          paramView.setContentDescription(localxyi.d.getText().toString() + "已选中,双击取消");
-        }
+        GlUtil.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Int = -1;
       }
     }
-    for (;;)
+    do
     {
-      this.a.c();
-      if (AppSetting.b) {
-        paramView.postDelayed(new xvu(this, paramView), 2000L);
+      return;
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      if (this.jdField_a_of_type_Int != -1)
+      {
+        GlUtil.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Int = -1;
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = ItemBase.a(this.b.jdField_a_of_type_Float + 5.0F, this.b.b);
+    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
+    paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.b.a(paramString, 0.0F, 0.0F);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramString, 0.0F, 0.0F);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int != -1)
+    {
+      GlUtil.a(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = -1;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      this.b.a(paramCanvas, paramFloat1, paramFloat2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramCanvas, paramFloat1, paramFloat2);
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
+  }
+  
+  public void a(RenderBuffer paramRenderBuffer, float paramFloat1, float paramFloat2)
+  {
+    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+        this.jdField_a_of_type_Int = GlUtil.a(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+    } while (this.jdField_a_of_type_Int < 0);
+    ItemBase.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.b.jdField_a_of_type_Float, this.b.b, null, paramFloat1, paramFloat2);
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (!a(paramString, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.jdField_a_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramString);
+        this.b.a(paramString);
+        b(paramString);
       }
       return;
-      label233:
-      if (!(localxyi.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
-        break;
-      }
-      str = ((PhoneContact)localxyi.jdField_a_of_type_JavaLangObject).name;
-      break;
-      label259:
-      bool = this.a.a.a(localxyi.jdField_a_of_type_JavaLangString, str, 0, "-1", "");
-      break label110;
-      label284:
-      paramView.setContentDescription(localxyi.d.getText().toString() + "未选中,双击选中");
     }
   }
 }

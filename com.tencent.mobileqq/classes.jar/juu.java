@@ -1,22 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.av.gaudio.AVPhoneUserInfo;
-import com.tencent.av.ui.GAudioMemberListCtrl;
+import com.tencent.av.opengl.ui.GLRootView;
+import com.tencent.av.ui.GLVideoView;
 
-public final class juu
+public class juu
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  public juu(GLVideoView paramGLVideoView) {}
   
-  private juu(GAudioMemberListCtrl paramGAudioMemberListCtrl) {}
+  public void run()
+  {
+    GLRootView localGLRootView = this.a.a();
+    if (localGLRootView != null)
+    {
+      GLVideoView.e(this.a);
+      localGLRootView.postDelayed(this.a.a, 80L);
+    }
+  }
 }
 
 

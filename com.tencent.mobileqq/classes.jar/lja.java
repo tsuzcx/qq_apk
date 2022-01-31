@@ -1,87 +1,41 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet;
-import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CreateCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
 
-public final class lja
-  implements BusinessObserver
+public class lja
+  implements Runnable
 {
-  public lja(NativeCommentServlet.CreateCommentObserver paramCreateCommentObserver, ArticleInfo paramArticleInfo, int paramInt1, String paramString1, String paramString2, JSONArray paramJSONArray, int paramInt2) {}
+  public lja(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    int i = 0;
-    if (paramBoolean) {}
-    for (;;)
+    if (!new File(this.jdField_a_of_type_JavaLangString).exists())
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label240;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        localObject = paramBundle.getLocalizedMessage();
-      }
-      catch (Exception paramBundle)
-      {
-        try
-        {
-          paramBundle = ((WebSsoBody.WebSsoResponseBody)localObject).data.get();
-          if (QLog.isColorLevel()) {
-            QLog.d(NativeCommentServlet.jdField_a_of_type_JavaLangString, 2, "createComment ret=" + paramBundle);
-          }
-          paramBundle = new JSONObject(paramBundle);
-          if (paramInt != 0)
-          {
-            paramBundle = paramBundle.optString("msg");
-            i = 0;
-            if (i == 0) {
-              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentNativeCommentServlet$CreateCommentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaLangString, paramInt, paramBundle);
-            }
-            return;
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          Object localObject;
-          break label178;
-        }
-        try
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentNativeCommentServlet$CreateCommentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.jdField_b_of_type_Int);
-          paramBundle = "";
-          i = 1;
-        }
-        catch (Exception paramBundle)
-        {
-          i = 1;
-          break label178;
-        }
-        paramBundle = paramBundle;
-        paramInt = -1;
-      }
-      label178:
-      paramBundle.printStackTrace();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.f();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.getString(2131438884));
       if (QLog.isColorLevel()) {
-        QLog.d(NativeCommentServlet.jdField_a_of_type_JavaLangString, 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "startUploadPic file not exist, path=" + this.jdField_a_of_type_JavaLangString);
       }
-      paramBundle = (Bundle)localObject;
-      continue;
-      label240:
-      i = 0;
-      paramInt = -1;
-      paramBundle = "";
+      return;
     }
+    TransFileController localTransFileController = ReadInJoyCommentComponentFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment).app.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a.a(new Class[] { BDHCommonUploadProcessor.class });
+    localTransFileController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a);
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.jdField_a_of_type_Boolean = true;
+    localTransferRequest.jdField_c_of_type_Int = 10;
+    localTransferRequest.i = this.jdField_a_of_type_JavaLangString;
+    localTransferRequest.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
+    localTransferRequest.jdField_c_of_type_JavaLangString = "0";
+    localTransferRequest.b = 24;
+    localTransferRequest.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
+    localTransFileController.a(localTransferRequest);
   }
 }
 

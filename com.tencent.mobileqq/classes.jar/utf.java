@@ -1,17 +1,9 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.EnterTroopChatItemBuilder;
+import android.graphics.Path;
 import java.util.List;
 
-public class utf
-  extends AbstractChatItemBuilder.ViewHolder
+public abstract interface utf
 {
-  public LinearLayout a;
-  public List a;
-  public TextView b;
-  
-  public utf(EnterTroopChatItemBuilder paramEnterTroopChatItemBuilder) {}
+  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List paramList);
 }
 
 

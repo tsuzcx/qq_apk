@@ -1,42 +1,24 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
 
-class vmo
-  implements Runnable
+public class vmo
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  vmo(vmm paramvmm, List paramList) {}
+  AIOGalleryAdapter a;
   
-  public void run()
+  public vmo(AIOGalleryAdapter paramAIOGalleryAdapter)
   {
-    Iterator localIterator1 = this.jdField_a_of_type_Vmm.a.a.iterator();
-    label103:
-    for (;;)
-    {
-      if (localIterator1.hasNext())
-      {
-        String str = (String)localIterator1.next();
-        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator2.hasNext())
-        {
-          LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)localIterator2.next();
-          if (str.equals(localLocalMediaInfo.path)) {
-            localLocalMediaInfo.mChecked = true;
-          }
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label103;
-        }
-        localIterator1.remove();
-        break;
-        return;
-      }
+    this.a = paramAIOGalleryAdapter;
+  }
+  
+  public void onPlayRepeat(int paramInt)
+  {
+    if (paramInt != 1) {
+      return;
     }
+    new Handler(Looper.getMainLooper()).post(new vmp(this));
   }
 }
 

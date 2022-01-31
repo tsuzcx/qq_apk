@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
 
-public class zzc
+class zzc
   implements Runnable
 {
-  public zzc(ScanEntranceReport paramScanEntranceReport, boolean paramBoolean, long paramLong) {}
+  zzc(zzb paramzzb, float[] paramArrayOfFloat) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_result", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    if (6 == ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Zzb.a)) {
+      ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Zzb.a).native_setARWorldCupQuaternion(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]);
+    }
   }
 }
 

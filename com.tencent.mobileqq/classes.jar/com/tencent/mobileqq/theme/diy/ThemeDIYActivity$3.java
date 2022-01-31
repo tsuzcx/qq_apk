@@ -25,7 +25,7 @@ class ThemeDIYActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity.3
  * JD-Core Version:    0.7.0.1
  */

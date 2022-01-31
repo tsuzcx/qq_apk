@@ -1,17 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playmode.util.PlayModeInteractViewUtils;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
 
-public class nms
-  extends AnimatorListenerAdapter
+public final class nms
+  implements Runnable
 {
-  public nms(StoryPlayVideoActivity paramStoryPlayVideoActivity, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
+  public nms(VideoPlayModeBase paramVideoPlayModeBase, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, StoryVideoItem paramStoryVideoItem) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setVisibility(4);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayVideoActivity.finish();
+    PlayModeInteractViewUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase, this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, true);
   }
 }
 

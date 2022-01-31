@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajfc;
-import ajfd;
-import ajff;
+import ajtg;
+import ajth;
+import ajtj;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -78,11 +78,11 @@ public class TroopFeedViewFactory
     switch (paramInt)
     {
     default: 
-      return new ajfd(this);
+      return new ajth(this);
     case 0: 
-      return new ajfd(this);
+      return new ajth(this);
     }
-    return new ajff(this);
+    return new ajtj(this);
   }
   
   public void a()
@@ -92,7 +92,7 @@ public class TroopFeedViewFactory
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof ajfc))
+    if ((paramView.getTag() instanceof ajtg))
     {
       this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.b(true);
       break label18;
@@ -135,7 +135,7 @@ public class TroopFeedViewFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopFeedViewFactory
  * JD-Core Version:    0.7.0.1
  */

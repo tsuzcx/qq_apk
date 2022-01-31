@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import aand;
+import aaue;
 import android.text.TextUtils;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -235,7 +235,7 @@ public class ArkAppDataReport
         paramString1.e = 1;
         paramString1.c = 30L;
         paramString1.jdField_a_of_type_JavaIoOutputStream = ((OutputStream)localObject);
-        paramString1.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aand();
+        paramString1.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aaue();
         paramString2 = (NetEngineFactory)paramQQAppInterface.getManager(20);
         if (paramString2 != null) {}
         for (paramQQAppInterface = paramString2.a(paramQQAppInterface, 0); paramQQAppInterface != null; paramQQAppInterface = null)

@@ -1,29 +1,44 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class ndm
-  extends QQStoryObserver
+  extends SimpleJob
 {
-  public ndm(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate) {}
+  public ndm(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    if ((paramBoolean1) && (paramBoolean2)) {
-      QQToast.a(this.a.a.a, 2, "已关注，可随时查看对方的最新视频", 0).a();
-    }
-    do
+    paramJobContext = ((StoryManager)SuperManager.a(5)).e(QQStoryContext.a().b());
+    if (paramJobContext != null)
     {
-      return;
-      if ((!paramBoolean1) && (paramBoolean2))
+      paramVarArgs = paramJobContext.iterator();
+      while (paramVarArgs.hasNext())
       {
-        QQToast.a(this.a.a.a, 1, "关注失败，请稍后重试", 0).a();
-        return;
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramVarArgs.next();
+        if ((!localStoryVideoItem.isUploadFail()) && (!localStoryVideoItem.isUploadSuc())) {
+          paramVarArgs.remove();
+        }
       }
-    } while ((paramBoolean1) || (paramBoolean2));
-    QQToast.a(this.a.a.a, 1, "取消关注失败，请稍后重试", 0).a();
+    }
+    Collections.sort(paramJobContext, new ndn(this));
+    paramVarArgs = new ArrayList();
+    paramJobContext = paramJobContext.iterator();
+    while (paramJobContext.hasNext()) {
+      paramVarArgs.add(((StoryVideoItem)paramJobContext.next()).mVid);
+    }
+    this.a.a(paramVarArgs);
+    return null;
   }
 }
 

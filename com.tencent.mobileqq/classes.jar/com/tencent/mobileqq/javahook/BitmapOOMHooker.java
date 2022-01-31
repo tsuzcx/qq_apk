@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.javahook;
 
-import adlr;
+import advq;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -27,13 +27,13 @@ public class BitmapOOMHooker
   {
     try
     {
-      JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, Boolean.TYPE, new adlr(90001) });
+      JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, Boolean.TYPE, new advq(90001) });
     }
     catch (NoSuchMethodException localNoSuchMethodException2)
     {
       try
       {
-        JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, [I.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, new adlr(90002) });
+        JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, [I.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, new advq(90002) });
       }
       catch (NoSuchMethodException localNoSuchMethodException2)
       {
@@ -41,10 +41,10 @@ public class BitmapOOMHooker
         {
           for (;;)
           {
-            JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeResource", new Object[] { Resources.class, Integer.TYPE, BitmapFactory.Options.class, new adlr(90003) });
+            JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeResource", new Object[] { Resources.class, Integer.TYPE, BitmapFactory.Options.class, new advq(90003) });
             try
             {
-              JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeFile", new Object[] { String.class, BitmapFactory.Options.class, new adlr(90004) });
+              JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeFile", new Object[] { String.class, BitmapFactory.Options.class, new advq(90004) });
               return;
             }
             catch (NoSuchMethodException localNoSuchMethodException4)
@@ -103,7 +103,7 @@ public class BitmapOOMHooker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.BitmapOOMHooker
  * JD-Core Version:    0.7.0.1
  */

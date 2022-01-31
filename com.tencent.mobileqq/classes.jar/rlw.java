@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
 public class rlw
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public rlw(BaseChatPie paramBaseChatPie) {}
+  public rlw(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    paramView = QZoneHelper.UserInfo.a();
+    paramView.a = this.a.app.getCurrentAccountUin();
+    paramView.b = this.a.app.getCurrentNickname();
+    QZoneHelper.a(this.a, paramView);
   }
 }
 

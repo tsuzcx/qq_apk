@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.skin;
 
 public abstract interface ReadInJoySkinManager$OnSkinChangedListener
 {
-  public abstract void B_();
+  public abstract void F_();
 }
 
 

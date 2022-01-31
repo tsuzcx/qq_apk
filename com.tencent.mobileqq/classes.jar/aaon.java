@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
 
 class aaon
   implements Runnable
 {
-  aaon(aaom paramaaom, boolean paramBoolean, byte[] paramArrayOfByte, Object paramObject) {}
+  aaon(aaom paramaaom) {}
   
   public void run()
   {
-    ArkLocalAppMgr.a(this.jdField_a_of_type_Aaom.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte, (ArkLocalAppMgr.UpdateAppByNameTask)this.jdField_a_of_type_JavaLangObject);
+    aaoo localaaoo = new aaoo(this);
+    this.a.a.jdField_a_of_type_Aanw.a.a.a(localaaoo, this.a.a.jdField_a_of_type_Long);
   }
 }
 

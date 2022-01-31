@@ -54,18 +54,18 @@ public class ScreenLayoutOrigin
         break label463;
       }
       if (paramInt3 == 0) {
-        paramArrayOfGLVideoView[0].a(0, 0, 0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559765));
+        paramArrayOfGLVideoView[0].a(0, 0, 0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559783));
       }
     }
     else
     {
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559730);
+      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559748);
       if (paramInt4 == 0) {
         break label520;
       }
     }
     label520:
-    for (paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559731);; paramInt3 = i)
+    for (paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559749);; paramInt3 = i)
     {
       int k = (paramInt1 - i * 2) / 4;
       int j = paramInt2 - k - paramInt3 - paramInt4;
@@ -108,7 +108,7 @@ public class ScreenLayoutOrigin
         paramArrayOfGLVideoView[3].a(2, 3, 2, 3);
         paramArrayOfGLVideoView[4].a(3, 3, 2, 3);
         return;
-        paramArrayOfGLVideoView[0].a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559765), 0, 0);
+        paramArrayOfGLVideoView[0].a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559783), 0, 0);
         break;
         label463:
         paramArrayOfGLVideoView[0].a(0, 0, 0, 0);
@@ -145,10 +145,10 @@ public class ScreenLayoutOrigin
       AVLog.e("OriginScreenLayout", "setSmallVideoViewLayout mGlVideoView == null");
       return;
     }
-    int n = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559728);
-    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559729);
-    int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559730);
-    int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559731);
+    int n = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559746);
+    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559747);
+    int k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559748);
+    int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559749);
     if (paramInt5 == 0) {
       m = k;
     }
@@ -158,7 +158,7 @@ public class ScreenLayoutOrigin
       Object localObject;
       if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
       {
-        localObject = (ZimuView)((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131362516);
+        localObject = (ZimuView)((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131362537);
         i = paramInt5;
         if (localObject != null)
         {

@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.MotionCallback;
 
-public final class aanx
-  implements FileFilter
+class aanx
+  implements ArkAppEventObserverManager.MotionCallback
 {
-  public boolean accept(File paramFile)
+  aanx(aanw paramaanw, long paramLong) {}
+  
+  public void a(long paramLong)
   {
-    if (!paramFile.isDirectory()) {}
-    while (!ArkLocalAppMgr.a(paramFile.getName())) {
-      return false;
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aanw.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    return true;
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    ArkAppDeviceModule.a(this.jdField_a_of_type_Aanw.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

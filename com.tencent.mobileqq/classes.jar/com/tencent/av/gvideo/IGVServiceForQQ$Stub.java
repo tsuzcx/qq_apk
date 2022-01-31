@@ -7,7 +7,7 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.av.service.IAVServiceCallback.Stub;
-import jjz;
+import jjk;
 
 public abstract class IGVServiceForQQ$Stub
   extends Binder
@@ -27,7 +27,7 @@ public abstract class IGVServiceForQQ$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IGVServiceForQQ))) {
       return (IGVServiceForQQ)localIInterface;
     }
-    return new jjz(paramIBinder);
+    return new jjk(paramIBinder);
   }
   
   public IBinder asBinder()

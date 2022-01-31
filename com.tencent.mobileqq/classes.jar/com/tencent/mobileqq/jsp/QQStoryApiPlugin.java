@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import admw;
+import adwv;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -27,7 +27,7 @@ import org.json.JSONObject;
 public class QQStoryApiPlugin
   extends WebViewPlugin
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new admw(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adwv(this);
   private volatile boolean jdField_a_of_type_Boolean;
   
   public QQStoryApiPlugin()
@@ -169,7 +169,7 @@ public class QQStoryApiPlugin
         int j = paramJsBridgeListener.optInt("fromId", 0);
         paramJsBridgeListener = paramJsBridgeListener.optJSONObject("extras");
         if (i != 1) {
-          break label920;
+          break label960;
         }
         paramString2 = new Intent(paramString1, JumpActivity.class);
         paramString3 = new StringBuilder().append("mqqapi://qstory/openNow?roomid=").append(l).append("&fromid=").append(j).append("&extras=");
@@ -185,7 +185,7 @@ public class QQStoryApiPlugin
       catch (JSONException paramJsBridgeListener)
       {
         if (!QLog.isColorLevel()) {
-          break label920;
+          break label960;
         }
       }
     }
@@ -217,17 +217,23 @@ public class QQStoryApiPlugin
           i = paramString2.optInt("index", 0);
           paramVarArgs = paramString2.optString("play_scence", "");
           if ((TextUtils.isEmpty(paramVarArgs)) || (!"videoLabelDetail".equals(paramVarArgs))) {
-            break label922;
+            break label962;
           }
           paramString2.optInt("tagid");
           paramString2.optInt("tagtype");
           if (TextUtils.isEmpty(paramString3)) {
-            break label922;
+            break label962;
           }
           paramString2 = new ArrayList(Arrays.asList(paramString3.split(",")));
           if (!TextUtils.isEmpty(paramJsBridgeListener)) {}
           for (paramJsBridgeListener = new ArrayList(Arrays.asList(paramJsBridgeListener.split(",")));; paramJsBridgeListener = new ArrayList())
           {
+            if (paramString2.size() > i) {
+              paramString3 = (String)paramString2.get(i);
+            }
+            if (paramJsBridgeListener.size() > i) {
+              paramString3 = (String)paramJsBridgeListener.get(i);
+            }
             StoryPlayVideoActivity.a(paramString1, paramJsBridgeListener, paramString2, i, 105, null);
             break;
           }
@@ -236,16 +242,16 @@ public class QQStoryApiPlugin
         catch (Exception paramJsBridgeListener)
         {
           if (!QLog.isColorLevel()) {
-            break label922;
+            break label962;
           }
         }
-        break label922;
+        break label962;
       }
       return false;
     }
-    label920:
+    label960:
     return true;
-    label922:
+    label962:
     return true;
   }
   
@@ -283,7 +289,7 @@ public class QQStoryApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.QQStoryApiPlugin
  * JD-Core Version:    0.7.0.1
  */

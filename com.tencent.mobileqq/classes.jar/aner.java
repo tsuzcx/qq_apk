@@ -1,39 +1,39 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer.MultiOperateException;
-import dov.com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer.RecordVideoBlockInfo;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
 
 public class aner
-  implements Runnable
+  extends RemoteCommand
 {
-  public aner(EditVideoPlayer paramEditVideoPlayer) {}
-  
-  public void run()
+  public aner(SmartDeviceIPCHost paramSmartDeviceIPCHost, String paramString)
   {
-    this.a.jdField_a_of_type_JavaUtilList = ((MultiBlockVideoPlayer)this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).a(true, 10000L, 6, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditRecordVideoSource.a(), this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditRecordVideoSource.b(), this.a.jdField_a_of_type_Float);
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess getMultiVideoInfo find %d blocks", Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()));
-    if (this.a.jdField_a_of_type_JavaUtilList.size() > 0) {}
-    try
-    {
-      ((MultiBlockVideoPlayer)this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((MultiBlockVideoPlayer.RecordVideoBlockInfo)this.a.jdField_a_of_type_JavaUtilList.get(0));
-      EditVideoPlayer.a(this.a);
-      return;
+    super(paramString);
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    if (paramBundle == null) {
+      paramBundle = null;
     }
-    catch (MultiBlockVideoPlayer.MultiOperateException localMultiOperateException)
+    Bundle localBundle;
+    do
     {
-      for (;;)
-      {
-        SLog.c("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess setCurrentVideoFragment failed", localMultiOperateException);
+      return paramBundle;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localBundle = this.a.b(paramBundle);
+      if (localBundle != null) {
+        localBundle.setClassLoader(getClass().getClassLoader());
       }
-    }
+      paramBundle = localBundle;
+    } while (paramOnInvokeFinishLinstener == null);
+    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aner
  * JD-Core Version:    0.7.0.1
  */

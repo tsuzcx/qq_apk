@@ -1,7 +1,7 @@
 package com.tencent.qqprotect.qsec;
 
-import alht;
-import alhu;
+import alxj;
+import alxk;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
@@ -33,7 +33,7 @@ public class QSecCbMgr
   
   public QSecCbMgr()
   {
-    SecSvcHandlerHelper.a("MobileQQprotect.QSecCb", new alht(this));
+    SecSvcHandlerHelper.a("MobileQQprotect.QSecCb", new alxj(this));
     a();
   }
   
@@ -66,8 +66,8 @@ public class QSecCbMgr
   
   private void a(long paramLong)
   {
-    alhu localalhu = new alhu(this);
-    QSecFramework.a().postDelayed(localalhu, paramLong);
+    alxk localalxk = new alxk(this);
+    QSecFramework.a().postDelayed(localalxk, paramLong);
   }
   
   private void a(String paramString)

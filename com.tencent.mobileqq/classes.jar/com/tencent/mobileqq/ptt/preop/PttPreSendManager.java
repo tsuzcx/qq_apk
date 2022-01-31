@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ptt.preop;
 
-import agfs;
-import agfu;
+import agtu;
+import agtw;
 import android.os.SystemClock;
 import com.tencent.av.core.VcSystemInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -28,7 +28,7 @@ public class PttPreSendManager
   private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   public static boolean b;
   int jdField_a_of_type_Int = -1;
-  agfs jdField_a_of_type_Agfs;
+  agtu jdField_a_of_type_Agtu;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
   PreSendTypeStrategy jdField_a_of_type_ComTencentMobileqqPttPreopPreSendTypeStrategy;
@@ -77,7 +77,7 @@ public class PttPreSendManager
     }
     for (;;)
     {
-      this.jdField_a_of_type_Agfs = new agfs(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 100000, 10000000, 86399999L);
+      this.jdField_a_of_type_Agtu = new agtu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 100000, 10000000, 86399999L);
       this.jdField_a_of_type_ComTencentMobileqqPttPreopPreSendTypeStrategy = new PreSendTypeStrategy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       this.jdField_a_of_type_ComTencentMobileqqPttPreopPttPreVoiceChanger = new PttPreVoiceChanger();
       if (QLog.isColorLevel()) {
@@ -97,7 +97,7 @@ public class PttPreSendManager
     int j = this.jdField_a_of_type_ComTencentMobileqqPttPreopPttPreVoiceChanger.a();
     this.jdField_a_of_type_ComTencentMobileqqPttPreopPttPreVoiceChanger.a();
     this.jdField_b_of_type_Int = ((int)new File(this.jdField_b_of_type_JavaLangString).length());
-    if ((this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Agfs.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int)))
+    if ((this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Agtu.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int)))
     {
       MessageForPtt localMessageForPtt = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramSessionInfo, -2, paramRecorderParam.c);
       if (localMessageForPtt == null)
@@ -131,7 +131,7 @@ public class PttPreSendManager
         paramSessionInfo.voiceChangeFlag = i;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localTransferRequest);
         paramSessionInfo = localTransferRequest.c + localTransferRequest.jdField_a_of_type_Long;
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramSessionInfo, new agfu(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString));
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramSessionInfo, new agtw(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString));
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -148,7 +148,7 @@ public class PttPreSendManager
   
   public void a(String paramString)
   {
-    paramString = (agfu)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    paramString = (agtw)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
     if (paramString != null)
     {
       File localFile1 = new File(paramString.jdField_b_of_type_JavaLangString);
@@ -194,7 +194,7 @@ public class PttPreSendManager
       if (QLog.isDevelopLevel()) {
         QLog.d("PttPreSendManager", 4, "get network type cost " + (SystemClock.uptimeMillis() - l));
       }
-      bool1 = this.jdField_a_of_type_Agfs.a(this.jdField_a_of_type_Boolean);
+      bool1 = this.jdField_a_of_type_Agtu.a(this.jdField_a_of_type_Boolean);
       if ((bool1) && (this.jdField_a_of_type_Int != -1))
       {
         this.jdField_a_of_type_JavaLangString = paramString1;
@@ -241,11 +241,11 @@ public class PttPreSendManager
     //   33: iload_2
     //   34: if_icmpne +17 -> 51
     //   37: aload_0
-    //   38: getfield 75	com/tencent/mobileqq/ptt/preop/PttPreSendManager:jdField_a_of_type_Agfs	Lagfs;
+    //   38: getfield 75	com/tencent/mobileqq/ptt/preop/PttPreSendManager:jdField_a_of_type_Agtu	Lagtu;
     //   41: aload_0
     //   42: getfield 116	com/tencent/mobileqq/ptt/preop/PttPreSendManager:jdField_a_of_type_Boolean	Z
     //   45: ldc2_w 328
-    //   48: invokevirtual 332	agfs:a	(ZJ)V
+    //   48: invokevirtual 332	agtu:a	(ZJ)V
     //   51: aload_0
     //   52: getfield 37	com/tencent/mobileqq/ptt/preop/PttPreSendManager:c	Z
     //   55: ifne +11 -> 66
@@ -325,13 +325,13 @@ public class PttPreSendManager
     //   220: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   223: invokestatic 99	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   226: aload_0
-    //   227: getfield 75	com/tencent/mobileqq/ptt/preop/PttPreSendManager:jdField_a_of_type_Agfs	Lagfs;
+    //   227: getfield 75	com/tencent/mobileqq/ptt/preop/PttPreSendManager:jdField_a_of_type_Agtu	Lagtu;
     //   230: aload_0
     //   231: getfield 116	com/tencent/mobileqq/ptt/preop/PttPreSendManager:jdField_a_of_type_Boolean	Z
     //   234: aload_0
     //   235: getfield 35	com/tencent/mobileqq/ptt/preop/PttPreSendManager:jdField_b_of_type_Int	I
     //   238: i2l
-    //   239: invokevirtual 332	agfs:a	(ZJ)V
+    //   239: invokevirtual 332	agtu:a	(ZJ)V
     //   242: aload_0
     //   243: getfield 39	com/tencent/mobileqq/ptt/preop/PttPreSendManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   246: invokevirtual 359	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
@@ -352,11 +352,11 @@ public class PttPreSendManager
     //   278: getfield 176	com/tencent/mobileqq/ptt/preop/PttPreSendManager:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
     //   281: getfield 156	com/tencent/mobileqq/data/MessageRecord:uniseq	J
     //   284: invokestatic 375	com/tencent/mobileqq/activity/ChatActivityFacade:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/activity/aio/SessionInfo;Ljava/lang/String;IJ)V
-    //   287: new 377	agft
+    //   287: new 377	agtv
     //   290: dup
     //   291: aload_0
     //   292: aload_1
-    //   293: invokespecial 380	agft:<init>	(Lcom/tencent/mobileqq/ptt/preop/PttPreSendManager;Lcom/tencent/mobileqq/activity/BaseChatPie;)V
+    //   293: invokespecial 380	agtv:<init>	(Lcom/tencent/mobileqq/ptt/preop/PttPreSendManager;Lcom/tencent/mobileqq/activity/BaseChatPie;)V
     //   296: aconst_null
     //   297: iconst_0
     //   298: invokestatic 386	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
@@ -444,8 +444,8 @@ public class PttPreSendManager
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Agfs != null) {
-      this.jdField_a_of_type_Agfs.a();
+    if (this.jdField_a_of_type_Agtu != null) {
+      this.jdField_a_of_type_Agtu.a();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPttPreopPreSendTypeStrategy != null) {
       this.jdField_a_of_type_ComTencentMobileqqPttPreopPreSendTypeStrategy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -454,7 +454,7 @@ public class PttPreSendManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.preop.PttPreSendManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,14 @@
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate;
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate.CallBack;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.view.segment.SegmentManager;
 
 public class oqq
-  implements Runnable
+  extends DataSetObserver
 {
-  public oqq(CustomAccessibilityDelegate paramCustomAccessibilityDelegate) {}
+  public oqq(SegmentManager paramSegmentManager) {}
   
-  public void run()
+  public void onChanged()
   {
-    if (CustomAccessibilityDelegate.a(this.a) != null) {
-      CustomAccessibilityDelegate.a(this.a).b();
-    }
+    SegmentManager.a(this.a, true);
   }
 }
 

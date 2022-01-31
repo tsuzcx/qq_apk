@@ -1,36 +1,22 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.utils.StackBlur;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class sni
-  implements Runnable
 {
-  public sni(FriendProfileCardActivity paramFriendProfileCardActivity, Bitmap paramBitmap) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  public sni(FontSettingActivity paramFontSettingActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    Object localObject = localBitmap;
-    if (localBitmap == null) {
-      localObject = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable).b();
-    }
-    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
-    {
-      localObject = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(((Bitmap)localObject).getWidth() * 0.125F), (int)(((Bitmap)localObject).getHeight() * 0.125F), true);
-      StackBlur.a((Bitmap)localObject, 2);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null))
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.obtainMessage(12, localObject);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileShoppingPhotoInfo = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.sendMessage((Message)localObject);
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

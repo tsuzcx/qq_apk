@@ -1,21 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeBigSocial;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
+import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
+import java.util.ArrayList;
 
 public class lti
-  implements View.OnClickListener
+  implements KandianPopupWindow.OnUninterestConfirmListener
 {
-  public lti(FeedItemCellTypeBigSocial paramFeedItemCellTypeBigSocial) {}
+  public lti(FeedItemCell paramFeedItemCell) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
   {
-    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (paramView != null) {
-      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
+    FeedItemCell.a(this.a, (IReadInJoyModel)this.a.a, paramInt, paramArrayList, paramObject);
   }
 }
 

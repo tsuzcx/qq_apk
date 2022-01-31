@@ -1,27 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class mgy
-  extends AnimatorListenerAdapter
+  implements AbsListView.OnScrollListener
 {
-  public mgy(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public mgy(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
     }
+    this.a.f();
+    ReadInJoyBaseAdapter.c(this.a);
+    this.a.g();
   }
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-  }
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

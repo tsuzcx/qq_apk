@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class tgz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tgz(QQMapActivity paramQQMapActivity) {}
+  public tgz(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.onBackPressed();
+    List localList = ProfileLabelEditorActivity.a(this.a, this.a.app.getCurrentAccountUin());
+    ThreadManager.getUIHandler().post(new tha(this, localList));
   }
 }
 

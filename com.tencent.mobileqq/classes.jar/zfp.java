@@ -1,15 +1,30 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.IndividualRedPacketManager;
+import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader;
+import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader.RedPacketTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class zfp
-  implements Comparator
+  implements Runnable
 {
-  public zfp(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zfp(IndividualRedPacketManager paramIndividualRedPacketManager) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void run()
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    this.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d(IndividualRedPacketManager.b(), 2, "AIO_BG_WIDTH:" + this.a.b);
+    }
+    this.a.a().e();
+    this.a.a().d();
+    this.a.a().c();
+    this.a.a();
+    if (this.a.j > 0)
+    {
+      IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo = this.a.a().a(String.valueOf(this.a.j), true);
+      if ((localRedPacketTemplateInfo == null) || (localRedPacketTemplateInfo.a == null) || (localRedPacketTemplateInfo.b == null) || (localRedPacketTemplateInfo.c == null)) {
+        this.a.a().a(16L, String.valueOf(this.a.j), null);
+      }
+    }
   }
 }
 

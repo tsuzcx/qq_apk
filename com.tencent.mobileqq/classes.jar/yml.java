@@ -1,34 +1,15 @@
-import com.tencent.mobileqq.apollo.game.ApolloJSContext;
-import com.tencent.mobileqq.apollo.process.sso.CmGameObserver;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.apollo.ApolloResponseManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
 public class yml
-  extends CmGameObserver
+  implements Comparator
 {
-  public yml(ApolloJSContext paramApolloJSContext) {}
+  public yml(ApolloResponseManager paramApolloResponseManager) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (paramObject == null);
-    try
-    {
-      paramObject = new JSONObject(paramObject.toString());
-      paramInt = paramObject.optInt("errCode");
-      paramObject.remove("errCode");
-      this.a.a(paramInt, "cs.ssoMessage.local", paramObject.toString());
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
-    }
+    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
   }
 }
 

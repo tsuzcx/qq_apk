@@ -1,79 +1,68 @@
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.vas.FlashCarGameManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory;
+import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewProvider;
+import com.tencent.mobileqq.utils.StringUtil;
 
 public class ajtj
-  extends SosoInterface.OnLocationListener
+  extends TroopFeedViewFactory.ViewProvider
 {
-  public ajtj(FlashCarGameManager paramFlashCarGameManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public ajtj(TroopFeedViewFactory paramTroopFeedViewFactory)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(paramTroopFeedViewFactory);
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
   {
-    if (FlashCarGameManager.d) {
-      return;
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(this.a.a).inflate(2130969858, null);
     }
-    String str = "{\"isFromSplash\":1}";
-    Object localObject = str;
-    if (paramInt == 0)
+    paramView = (ajtk)localView.getTag();
+    Object localObject = paramView;
+    if (paramView == null)
     {
-      localObject = str;
-      if (paramSosoLbsInfo != null)
-      {
-        localObject = str;
-        if (paramSosoLbsInfo.a != null) {
-          if (QLog.isColorLevel()) {
-            QLog.d("FlashCarGame", 2, "onLocationFinish errCode = " + paramInt + " location = " + paramSosoLbsInfo.a.e + paramSosoLbsInfo.a.d + paramSosoLbsInfo.a.g + paramSosoLbsInfo.a.j);
-          }
-        }
-      }
+      localObject = new ajtk(this);
+      ((ajtk)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366640));
+      ((ajtk)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363378));
+      ((ajtk)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368297));
+      ((ajtk)localObject).b = ((TextView)localView.findViewById(2131368296));
+      ((ajtk)localObject).c = ((TextView)localView.findViewById(2131368299));
+      localView.setOnClickListener(this.a);
+      localView.setTag(localObject);
     }
-    try
+    ((ajtk)localObject).jdField_a_of_type_Int = paramInt;
+    ((ajtk)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = paramTroopFeedItem;
+    paramView = "[" + paramTroopFeedItem.tag + "] " + paramTroopFeedItem.title;
+    ((ajtk)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+    ((ajtk)localObject).b.setText(paramTroopFeedItem.content);
+    ((ajtk)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    paramView = "点击打开 " + paramTroopFeedItem.tag + " " + paramTroopFeedItem.title + " " + paramTroopFeedItem.content;
+    if (!StringUtil.a(paramTroopFeedItem.ex_1))
     {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("isFromSplash", 1);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("nation", paramSosoLbsInfo.a.c);
-      localJSONObject.put("province", paramSosoLbsInfo.a.d);
-      localJSONObject.put("city", paramSosoLbsInfo.a.e);
-      localJSONObject.put("district", paramSosoLbsInfo.a.g);
-      localJSONObject.put("street", paramSosoLbsInfo.a.j);
-      localJSONObject.put("streetNo", paramSosoLbsInfo.a.k);
-      localJSONObject.put("town", paramSosoLbsInfo.a.h);
-      localJSONObject.put("village", paramSosoLbsInfo.a.i);
-      ((JSONObject)localObject).put("Location", localJSONObject);
-      localObject = ((JSONObject)localObject).toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("FlashCarGame", 2, "gameParam = " + (String)localObject);
-      }
-      if (FlashCarGameManager.a(this.a) != null)
-      {
-        FlashCarGameManager.a(this.a).removeMessages(261);
-        FlashCarGameManager.a(this.a).sendEmptyMessageDelayed(259, 2000L);
-      }
-      ApolloGameActivity.a(FlashCarGameManager.a(this.a), 3003, 1, (String)localObject, null);
-      return;
+      ((ajtk)localObject).c.setText(paramTroopFeedItem.ex_1);
+      paramView = paramView + " " + paramTroopFeedItem.ex_1;
     }
-    catch (Exception paramSosoLbsInfo)
+    for (;;)
     {
-      for (;;)
-      {
-        QLog.e("FlashCarGame", 2, "onLocationFinish error: " + paramSosoLbsInfo.getMessage());
-        localObject = str;
+      ((ajtk)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841238);
+      paramTroopFeedItem = paramView;
+      if (!paramBoolean) {
+        paramTroopFeedItem = paramView + " 两指向左横向滑动查看下一条通知";
       }
+      localView.setContentDescription(paramTroopFeedItem);
+      return localView;
+      ((ajtk)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajtj
  * JD-Core Version:    0.7.0.1
  */

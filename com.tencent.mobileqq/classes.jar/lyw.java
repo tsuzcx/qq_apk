@@ -1,24 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import java.net.URL;
-import org.json.JSONObject;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class lyw
-  implements Runnable
+  extends ReadInJoyObserver
 {
-  public lyw(ReadInJoyWebDataManager paramReadInJoyWebDataManager, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  public lyw(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void run()
+  public void c(List paramList)
   {
-    long l = ReadInJoyWebDataManager.a();
-    try
-    {
-      ReadInJoyWebDataManager.a(l);
-      if (ReadInJoyWebDataManager.b() > 52428800L) {
-        return;
-      }
+    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(false);
+    ReadInJoyVideoSearchTagFragment.a(this.a).clear();
+    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(true);
+    ReadInJoyVideoSearchTagFragment.a(this.a).addAll(paramList);
+    if (paramList.isEmpty()) {
+      QQToast.a(this.a.getActivity(), 2131438916, 0).a();
     }
-    finally {}
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager.a(this.jdField_a_of_type_JavaNetURL.toString(), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

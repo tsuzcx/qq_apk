@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.intervideo.od.ODProxy;
 
 public class advm
-  implements Runnable
 {
-  public advm(EmoticonManager paramEmoticonManager, Emoticon paramEmoticon) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private String b = "";
+  private String c = "";
   
-  public void run()
-  {
-    EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-    if (!EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon)) {
-      QLog.e("EmoticonManager", 1, "saveEmoticon fail epId = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId + ", eId = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
-    }
-  }
+  public advm(ODProxy paramODProxy) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advm
  * JD-Core Version:    0.7.0.1
  */

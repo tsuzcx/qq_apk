@@ -1,12 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
 
-public final class zkl
-  extends Thread
+public class zkl
+  implements Runnable
 {
+  public zkl(QQAppInterface paramQQAppInterface) {}
+  
   public void run()
   {
-    com.tencent.mobileqq.app.ThreadManager.IsRunTimeShutDown = true;
-    QLog.i("ThreadManager", 2, "QQ Runtime ShutDown");
+    QQAppInterface.H();
+    QQAppInterface.a(this.a);
+    IntentFilter localIntentFilter = new IntentFilter("com.tencent.qzone.cleanunreadcount");
+    localIntentFilter.addAction("com.tecent.qzone.clearAlbumRedTouch");
+    QQAppInterface.c(this.a).registerReceiver(QQAppInterface.a(this.a), localIntentFilter);
+    VideoBroadcastReceiver.a(this.a);
+    if (this.a.e()) {
+      PtvTemplateManager.a(this.a);
+    }
   }
 }
 

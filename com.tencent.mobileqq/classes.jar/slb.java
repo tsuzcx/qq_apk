@@ -1,29 +1,23 @@
-import android.os.Bundle;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class slb
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public slb(ForwardRecentActivity paramForwardRecentActivity) {}
+  public slb(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void onClick(View paramView)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = new Bundle();
-    paramView.putString("uin", String.valueOf(AppConstants.z));
-    paramView.putInt("uintype", -1);
-    this.a.a.a(ForwardAbility.ForwardAbilityType.k.intValue(), paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     slb
  * JD-Core Version:    0.7.0.1
  */

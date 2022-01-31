@@ -1,20 +1,23 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
 
-class anfz
+public class anfz
   implements Runnable
 {
-  anfz(anfy paramanfy, Map paramMap) {}
+  public anfz(TroopHWJsPlugin.UploadMediaEntry paramUploadMediaEntry) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Anfy.a.a.a(this.jdField_a_of_type_JavaUtilMap);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHWJsPlugin", 2, "start upload!id = " + this.a.jdField_a_of_type_Int + " type = " + this.a.b);
+    }
+    this.a.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfz
  * JD-Core Version:    0.7.0.1
  */

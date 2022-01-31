@@ -1,39 +1,42 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.webviewplugin.HotchatPlugin;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
+import org.json.JSONObject;
 
 public class pbj
-  implements Runnable
+  implements PopupMenuDialog.OnClickActionListener
 {
-  public pbj(Share paramShare, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo) {}
+  public pbj(HotchatPlugin paramHotchatPlugin, String paramString) {}
   
-  public void run()
+  public void a(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
+    JSONObject localJSONObject = new JSONObject();
+    switch (paramMenuItem.a)
+    {
+    default: 
+      return;
+    case 0: 
+      try
+      {
+        localJSONObject.put("index", 0);
+        this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception paramMenuItem)
+      {
+        paramMenuItem.printStackTrace();
+        return;
+      }
     }
-    String str = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
-    if (QLog.isColorLevel()) {
-      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina path:" + str);
+    try
+    {
+      localJSONObject.put("index", 1);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      return;
     }
-    Intent localIntent = new Intent("android.intent.action.SEND");
-    localIntent.setFlags(268435456);
-    localIntent.setType("image/*");
-    localIntent.putExtra("android.intent.extra.TEXT", this.b + this.c);
-    if (!TextUtils.isEmpty(str)) {
-      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(str)));
-    }
-    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
-    this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start weibo!");
+    catch (Exception paramMenuItem)
+    {
+      paramMenuItem.printStackTrace();
     }
   }
 }

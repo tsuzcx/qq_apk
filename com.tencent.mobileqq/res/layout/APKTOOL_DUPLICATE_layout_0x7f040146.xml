@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06e6" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06f8" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.TCWNumberPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0951" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
-    <com.tencent.widget.TCWNumberPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0952" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
-    <com.tencent.widget.TCWNumberPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0953" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="95.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
+    <com.tencent.widget.TCWNumberPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0969" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
+    <com.tencent.widget.TCWNumberPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a096a" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
+    <com.tencent.widget.TCWNumberPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a096b" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="95.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
 </LinearLayout>

@@ -18,10 +18,10 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.util.FaceDecoder;
-import msa;
-import msb;
-import msc;
-import msd;
+import mth;
+import mti;
+import mtj;
+import mtk;
 
 public class SubscriptRecommendAdapter$RecommendItem
 {
@@ -41,30 +41,30 @@ public class SubscriptRecommendAdapter$RecommendItem
   public SubscriptRecommendAdapter$RecommendItem(SubscriptRecommendAdapter paramSubscriptRecommendAdapter, View paramView, boolean paramBoolean)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131367457);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131367464);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367465));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367466));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367459));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367452));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367460));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367461));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131367462));
-    this.d = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367463));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131367525);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131367532);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367533));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367534));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367527));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367520));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367528));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367529));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131367530));
+    this.d = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367531));
     if (!paramBoolean)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493590));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840872);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493596));
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840909);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new msa(this, paramSubscriptRecommendAdapter));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new msb(this, paramSubscriptRecommendAdapter));
-      this.jdField_c_of_type_AndroidViewView.setOnTouchListener(new msc(this, paramSubscriptRecommendAdapter, paramBoolean));
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new msd(this, paramSubscriptRecommendAdapter));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new mth(this, paramSubscriptRecommendAdapter));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new mti(this, paramSubscriptRecommendAdapter));
+      this.jdField_c_of_type_AndroidViewView.setOnTouchListener(new mtj(this, paramSubscriptRecommendAdapter, paramBoolean));
+      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new mtk(this, paramSubscriptRecommendAdapter));
       return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493591));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840871);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493597));
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840908);
     }
   }
   
@@ -95,16 +95,16 @@ public class SubscriptRecommendAdapter$RecommendItem
       {
         return;
         if (!this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840869);
+          this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840906);
         }
         for (;;)
         {
-          this.jdField_a_of_type_AndroidWidgetButton.setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493601));
+          this.jdField_a_of_type_AndroidWidgetButton.setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493607));
           this.jdField_a_of_type_AndroidWidgetButton.setText("已关注");
           this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
           this.d.setVisibility(8);
           return;
-          this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840870);
+          this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840907);
         }
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         this.d.setVisibility(0);
@@ -113,16 +113,16 @@ public class SubscriptRecommendAdapter$RecommendItem
       return;
     }
     if (!this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840872);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840909);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493599));
+      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493605));
       this.jdField_a_of_type_AndroidWidgetButton.setText("关注");
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.d.setVisibility(8);
       return;
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840871);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840908);
     }
   }
   
@@ -168,7 +168,7 @@ public class SubscriptRecommendAdapter$RecommendItem
         break label323;
       }
       this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a((String)localObject1, 1, true);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839128);
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839132);
     }
     for (;;)
     {

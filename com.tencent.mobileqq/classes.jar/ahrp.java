@@ -1,34 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.statistics.DailyReport;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
 public class ahrp
-  extends DownloadListener
+  implements View.OnClickListener
 {
-  public ahrp(DailyReport paramDailyReport, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public ahrp(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(View paramView)
   {
-    super.onDone(paramDownloadTask);
-    long l = paramDownloadTask.a().getLong("id");
-    VasWebviewUtil.reportVasStatus("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, AvatarPendantUtil.a(new File(AvatarPendantUtil.b(l, 4))), "");
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    return true;
+    this.a.a.setText("");
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahrp
  * JD-Core Version:    0.7.0.1
  */

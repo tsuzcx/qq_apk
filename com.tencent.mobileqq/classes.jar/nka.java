@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playmode.child.MyVideoFromMessageNotifyPlayMode;
 import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-class nka
-  implements View.OnClickListener
+public class nka
+  implements Runnable
 {
-  nka(njz paramnjz) {}
+  public nka(MyVideoFromMessageNotifyPlayMode paramMyVideoFromMessageNotifyPlayMode) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildShareGroupHotSortPlayMode.a(this.a.a.jdField_a_of_type_AndroidOsBundle);
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildShareGroupHotSortPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildShareGroupHotSortPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.a.setCurrentItem(0, false);
   }
 }
 

@@ -1,20 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.UploadSoDownloader;
+import java.io.File;
 
 public class amtr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public amtr(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public amtr(UploadSoDownloader paramUploadSoDownloader) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.c();
+    boolean bool = UploadSoDownloader.a(this.a, UploadSoDownloader.a().getAbsolutePath());
+    QLog.d("UploadEnv", 1, "check so md5 result: " + bool);
+    if (bool)
+    {
+      UploadSoDownloader.a(true);
+      return;
+    }
+    try
+    {
+      if (UploadSoDownloader.a().exists()) {
+        UploadSoDownloader.a().delete();
+      }
+      UploadSoDownloader.a(this.a, false);
+      UploadSoDownloader.a(false);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtr
  * JD-Core Version:    0.7.0.1
  */

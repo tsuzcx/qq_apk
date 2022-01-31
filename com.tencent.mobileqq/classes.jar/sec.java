@@ -1,27 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.data.AppShareID;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import java.util.ArrayList;
 
-public class sec
-  extends ConfigObserver
+class sec
+  implements Runnable
 {
-  public sec(Conversation paramConversation) {}
+  sec(seb paramseb, ArrayList paramArrayList) {}
   
-  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
+  public void run()
   {
-    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    View localView;
+    do
     {
-      ReportController.b(this.a.a, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
-      this.a.a(new sed(this, paramString3, paramString1, paramString2));
+      return;
+      localView = this.jdField_a_of_type_Seb.a.a[33];
+    } while (localView == null);
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+      localView.setVisibility(8);
     }
-  }
-  
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
-  {
-    if (paramBoolean) {
-      this.a.a(0L);
+    for (;;)
+    {
+      this.jdField_a_of_type_Seb.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
+      return;
+      localView.setVisibility(0);
     }
   }
 }

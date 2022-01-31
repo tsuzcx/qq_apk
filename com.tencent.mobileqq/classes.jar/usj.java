@@ -1,14 +1,30 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder;
+import com.tencent.mobileqq.activity.aio.doodle.LineLayer;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class usj
   implements Runnable
 {
-  public usj(CommonHobbyForAIOShowItemBuilder paramCommonHobbyForAIOShowItemBuilder, ImageView paramImageView) {}
+  public final String a;
+  
+  public usj(LineLayer paramLineLayer)
+  {
+    this.jdField_a_of_type_JavaLangString = (AppConstants.bM + "temp" + File.separator);
+  }
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842645);
+    try
+    {
+      FileUtils.a(this.jdField_a_of_type_JavaLangString, true);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("ClearTempFileJobdownloading", 2, "makedir execption: " + localException);
+    }
   }
 }
 

@@ -1,17 +1,31 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.OnLoadListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class aeoo
-  implements Runnable
+  implements WerewolvesHandler.Callback
 {
-  public aeoo(PicBrowserImage paramPicBrowserImage, URLDrawable paramURLDrawable, PicBrowserImage.OnLoadListener paramOnLoadListener, int paramInt) {}
+  public aeoo(GameRoomInviteActivity paramGameRoomInviteActivity, WerewolvesHandler paramWerewolvesHandler) {}
   
-  public void run()
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 2)) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserImage$OnLoadListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLDrawable.getProgress());
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    {
+      GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      if ((!paramRspBody.uint64_leader_uin.has()) || (paramRspBody.uint64_leader_uin.get() == this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, "当前正在组队中，无法加入");
+        return;
+      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b, new aeop(this));
   }
 }
 

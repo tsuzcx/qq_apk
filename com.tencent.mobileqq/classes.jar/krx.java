@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.widget.Switch;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-public class krx
-  implements DialogInterface.OnCancelListener
+class krx
+  implements Runnable
 {
-  public krx(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo, Switch paramSwitch) {}
+  krx(krw paramkrw) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+    if (this.a.a.e)
+    {
+      this.a.a.K();
+      return;
+    }
+    this.a.a.j();
+    this.a.a.d();
   }
 }
 

@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.Ruler;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.SpannableValue;
+import com.tencent.mobileqq.activity.aio.PanelAdapter;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
 public class uma
-  implements NumAnim.Ruler
+  implements Runnable
 {
-  public uma(GoldMsgNumAnim paramGoldMsgNumAnim) {}
+  public uma(PlusPanel paramPlusPanel) {}
   
-  public NumAnim.SpannableValue getNumber(double paramDouble)
+  public void run()
   {
-    String str = NumAnim.formatNumber(paramDouble, true);
-    return new NumAnim.SpannableValue(str, 0, str.length());
+    int i = 0;
+    while (i < this.a.a.getCount())
+    {
+      this.a.a.a(i);
+      i += 1;
+    }
   }
 }
 

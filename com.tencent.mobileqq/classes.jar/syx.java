@@ -1,58 +1,29 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.data.Groups;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class syx
-  extends BaseAdapter
+  implements Animation.AnimationListener
 {
-  private syx(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public syx(LebaQZoneFacePlayHelper paramLebaQZoneFacePlayHelper) {}
   
-  public int getCount()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList != null) {
-      return this.a.jdField_a_of_type_JavaUtilList.size();
+    if ((LebaQZoneFacePlayHelper.a(this.a) != null) && (LebaQZoneFacePlayHelper.a(this.a).size() >= 2)) {
+      LebaQZoneFacePlayHelper.a(this.a).sendEmptyMessageDelayed(1688002, 1000L);
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.a.getLayoutInflater().inflate(2130969106, null);
-    }
-    int i = (byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_id;
-    paramView = (ImageView)paramViewGroup.findViewById(2131365154);
-    if (i == this.a.jdField_a_of_type_Byte) {
-      paramView.setVisibility(0);
-    }
-    for (;;)
+    if (LebaQZoneFacePlayHelper.a(this.a) != null)
     {
-      paramView = (TextView)paramViewGroup.findViewById(2131365153);
-      paramView.setText(((Groups)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).group_name);
-      paramViewGroup.setContentDescription(paramView.getText().toString());
-      paramViewGroup.setTag(Integer.valueOf(paramInt));
-      paramViewGroup.setOnClickListener(this.a);
-      return paramViewGroup;
-      paramView.setVisibility(8);
+      LebaQZoneFacePlayHelper.a(this.a).a();
+      LebaQZoneFacePlayHelper.a(this.a, null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

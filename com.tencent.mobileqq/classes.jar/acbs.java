@@ -1,38 +1,79 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.apollo.view.ApolloInfo;
+import com.tencent.mobileqq.apollo.view.ApolloMainInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloFavActionData;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acbs
-  implements Animation.AnimationListener
+class acbs
+  implements Runnable
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
+  acbs(acbg paramacbg, QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, float paramFloat, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public acbs(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    do
+    Object localObject1;
+    Object localObject2;
+    long l;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        return;
+      localObject1 = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
+      localObject2 = new ApolloFavActionData();
+      ((ApolloFavActionData)localObject2).acitonId = this.jdField_a_of_type_Int;
+      ((ApolloFavActionData)localObject2).text = this.jdField_a_of_type_JavaLangString;
+      ((ApolloFavActionData)localObject2).textType = this.b;
+      ((ApolloFavActionData)localObject2).audioId = this.c;
+      ((ApolloFavActionData)localObject2).playOriginalAudio = this.d;
+      ((ApolloFavActionData)localObject2).audioStartTime = this.jdField_a_of_type_Float;
+      l = System.currentTimeMillis();
+      ((ApolloFavActionData)localObject2).favId = l;
+      ((ApolloDaoManager)localObject1).a((ApolloFavActionData)localObject2);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.emoji.web.MessengerService", 2, "add fav action success +" + ((ApolloFavActionData)localObject2).toString());
       }
-    } while (this.jdField_a_of_type_Int != 1);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+      if (localMqqHandler != null)
+      {
+        localObject2 = new ApolloMainInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+        ((ApolloInfo)localObject2).jdField_a_of_type_ComTencentMobileqqDataApolloActionData = ((ApolloDaoManager)localObject1).a(this.jdField_a_of_type_Int);
+        ((ApolloInfo)localObject2).b = this.jdField_a_of_type_JavaLangString;
+        ((ApolloInfo)localObject2).d = this.b;
+        ((ApolloInfo)localObject2).e = this.c;
+        ((ApolloInfo)localObject2).jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+        ((ApolloInfo)localObject2).f = this.d;
+        localObject1 = localMqqHandler.obtainMessage(66);
+        ((Message)localObject1).obj = localObject2;
+        ((Message)localObject1).sendToTarget();
+      }
+      localObject1 = new JSONObject();
+    }
+    try
+    {
+      ((JSONObject)localObject1).put("seq", l);
+      ((JSONObject)localObject1).put("success", true);
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("addFavAction", ((JSONObject)localObject1).toString());
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject2);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.emoji.web.MessengerService", 2, "addFavAction ipc json error + " + localJSONException.toString());
+        }
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.music;
 
-import amvo;
 import android.app.Activity;
+import anlt;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ public class CaptureComboMusic
   public CaptureComboMusic(int paramInt)
   {
     super(null);
-    this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener = new amvo(this);
+    this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener = new anlt(this);
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = ((QIMMusicConfigManager)QIMManager.a(2)).b(paramInt);
   }
@@ -86,7 +86,7 @@ public class CaptureComboMusic
     do
     {
       return 0;
-      paramActivity = (MusicProviderView)paramActivity.findViewById(2131362417);
+      paramActivity = (MusicProviderView)paramActivity.findViewById(2131362420);
     } while (paramActivity == null);
     MusicItemInfo localMusicItemInfo = ((QimMusicPlayer)QIMManager.a().c(8)).b();
     if ((MusicProviderView.a) && (localMusicItemInfo != null) && (localMusicItemInfo.a != this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a) && (localMusicItemInfo.d == 5))

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.ui;
 
-import afpu;
+import agda;
 import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -24,7 +24,7 @@ public class HighlightModel
     if ((paramString != null) && (!((List)localObject).contains(paramString))) {
       ((List)localObject).add(paramString);
     }
-    Collections.sort((List)localObject, new afpu(this));
+    Collections.sort((List)localObject, new agda(this));
     this.a = ((List)localObject);
   }
   

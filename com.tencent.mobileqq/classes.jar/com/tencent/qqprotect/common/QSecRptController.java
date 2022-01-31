@@ -1,7 +1,7 @@
 package com.tencent.qqprotect.common;
 
-import algv;
-import algw;
+import alwl;
+import alwm;
 import android.os.Build;
 import com.tencent.biz.ProtoUtils;
 import com.tencent.common.config.AppSetting;
@@ -87,7 +87,7 @@ public class QSecRptController
     if (QLog.isColorLevel()) {
       QLog.d("QSRPT", 2, paramString);
     }
-    ThreadManager.post(new algv(paramQQAppInterface, localReqBody), 5, null, true);
+    ThreadManager.post(new alwl(paramQQAppInterface, localReqBody), 5, null, true);
   }
   
   private static void b(QQAppInterface paramQQAppInterface, SafeReport.ReqBody paramReqBody)
@@ -100,7 +100,7 @@ public class QSecRptController
     }
     for (;;)
     {
-      ProtoUtils.a(paramQQAppInterface, new algw(), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
+      ProtoUtils.a(paramQQAppInterface, new alwm(), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
       return;
     }
   }

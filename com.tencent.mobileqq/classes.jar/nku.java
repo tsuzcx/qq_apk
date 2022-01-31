@@ -1,17 +1,15 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.VideoLocalCacheFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
 
 public class nku
-  implements BatchGetVideoInfo.VideoLocalCacheFilter
+  implements DialogInterface.OnDismissListener
 {
-  public nku(BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  public nku(NewFriendsPlayMode paramNewFriendsPlayMode) {}
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+    this.a.s();
   }
 }
 

@@ -19,19 +19,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-import jka;
+import jjl;
 
 @TargetApi(16)
 public class NativeCodec
   implements IMediaCodecCallback
 {
-  static jka jdField_a_of_type_Jka;
-  static jka jdField_b_of_type_Jka;
+  static jjl jdField_a_of_type_Jjl;
+  static jjl jdField_b_of_type_Jjl;
   public static boolean b;
   public static String c;
-  static jka jdField_c_of_type_Jka;
+  static jjl jdField_c_of_type_Jjl;
   public static String d;
-  static jka jdField_d_of_type_Jka;
+  static jjl jdField_d_of_type_Jjl;
   public static String e;
   public static String f;
   public static String g;
@@ -172,7 +172,7 @@ public class NativeCodec
     }
   }
   
-  private static void a(MediaCodecInfo.CodecProfileLevel paramCodecProfileLevel, jka paramjka)
+  private static void a(MediaCodecInfo.CodecProfileLevel paramCodecProfileLevel, jjl paramjjl)
   {
     switch (paramCodecProfileLevel.level)
     {
@@ -210,69 +210,69 @@ public class NativeCodec
                                   do
                                   {
                                     return;
-                                  } while ((paramjka.jdField_a_of_type_Int >= 176) && (paramjka.jdField_b_of_type_Int >= 144));
-                                  paramjka.jdField_a_of_type_Int = 176;
-                                  paramjka.jdField_b_of_type_Int = 144;
+                                  } while ((paramjjl.jdField_a_of_type_Int >= 176) && (paramjjl.jdField_b_of_type_Int >= 144));
+                                  paramjjl.jdField_a_of_type_Int = 176;
+                                  paramjjl.jdField_b_of_type_Int = 144;
                                   return;
-                                } while ((paramjka.jdField_a_of_type_Int >= 352) && (paramjka.jdField_b_of_type_Int >= 288));
-                                paramjka.jdField_a_of_type_Int = 352;
-                                paramjka.jdField_b_of_type_Int = 288;
+                                } while ((paramjjl.jdField_a_of_type_Int >= 352) && (paramjjl.jdField_b_of_type_Int >= 288));
+                                paramjjl.jdField_a_of_type_Int = 352;
+                                paramjjl.jdField_b_of_type_Int = 288;
                                 return;
-                              } while ((paramjka.jdField_a_of_type_Int >= 352) && (paramjka.jdField_b_of_type_Int >= 288));
-                              paramjka.jdField_a_of_type_Int = 352;
-                              paramjka.jdField_b_of_type_Int = 288;
+                              } while ((paramjjl.jdField_a_of_type_Int >= 352) && (paramjjl.jdField_b_of_type_Int >= 288));
+                              paramjjl.jdField_a_of_type_Int = 352;
+                              paramjjl.jdField_b_of_type_Int = 288;
                               return;
-                            } while ((paramjka.jdField_a_of_type_Int >= 352) && (paramjka.jdField_b_of_type_Int >= 288));
-                            paramjka.jdField_a_of_type_Int = 352;
-                            paramjka.jdField_b_of_type_Int = 288;
+                            } while ((paramjjl.jdField_a_of_type_Int >= 352) && (paramjjl.jdField_b_of_type_Int >= 288));
+                            paramjjl.jdField_a_of_type_Int = 352;
+                            paramjjl.jdField_b_of_type_Int = 288;
                             return;
-                          } while ((paramjka.jdField_a_of_type_Int >= 352) && (paramjka.jdField_b_of_type_Int >= 288));
-                          paramjka.jdField_a_of_type_Int = 352;
-                          paramjka.jdField_b_of_type_Int = 288;
+                          } while ((paramjjl.jdField_a_of_type_Int >= 352) && (paramjjl.jdField_b_of_type_Int >= 288));
+                          paramjjl.jdField_a_of_type_Int = 352;
+                          paramjjl.jdField_b_of_type_Int = 288;
                           return;
-                        } while ((paramjka.jdField_a_of_type_Int >= 352) && (paramjka.jdField_b_of_type_Int >= 288));
-                        paramjka.jdField_a_of_type_Int = 352;
-                        paramjka.jdField_b_of_type_Int = 288;
+                        } while ((paramjjl.jdField_a_of_type_Int >= 352) && (paramjjl.jdField_b_of_type_Int >= 288));
+                        paramjjl.jdField_a_of_type_Int = 352;
+                        paramjjl.jdField_b_of_type_Int = 288;
                         return;
-                      } while ((paramjka.jdField_a_of_type_Int >= 352) && (paramjka.jdField_b_of_type_Int >= 576));
-                      paramjka.jdField_a_of_type_Int = 352;
-                      paramjka.jdField_b_of_type_Int = 576;
+                      } while ((paramjjl.jdField_a_of_type_Int >= 352) && (paramjjl.jdField_b_of_type_Int >= 576));
+                      paramjjl.jdField_a_of_type_Int = 352;
+                      paramjjl.jdField_b_of_type_Int = 576;
                       return;
-                    } while ((paramjka.jdField_a_of_type_Int >= 720) && (paramjka.jdField_b_of_type_Int >= 576));
-                    paramjka.jdField_a_of_type_Int = 720;
-                    paramjka.jdField_b_of_type_Int = 576;
+                    } while ((paramjjl.jdField_a_of_type_Int >= 720) && (paramjjl.jdField_b_of_type_Int >= 576));
+                    paramjjl.jdField_a_of_type_Int = 720;
+                    paramjjl.jdField_b_of_type_Int = 576;
                     return;
-                  } while ((paramjka.jdField_a_of_type_Int >= 720) && (paramjka.jdField_b_of_type_Int >= 576));
-                  paramjka.jdField_a_of_type_Int = 720;
-                  paramjka.jdField_b_of_type_Int = 576;
+                  } while ((paramjjl.jdField_a_of_type_Int >= 720) && (paramjjl.jdField_b_of_type_Int >= 576));
+                  paramjjl.jdField_a_of_type_Int = 720;
+                  paramjjl.jdField_b_of_type_Int = 576;
                   return;
-                } while ((paramjka.jdField_a_of_type_Int >= 1280) && (paramjka.jdField_b_of_type_Int >= 720));
-                paramjka.jdField_a_of_type_Int = 1280;
-                paramjka.jdField_b_of_type_Int = 720;
+                } while ((paramjjl.jdField_a_of_type_Int >= 1280) && (paramjjl.jdField_b_of_type_Int >= 720));
+                paramjjl.jdField_a_of_type_Int = 1280;
+                paramjjl.jdField_b_of_type_Int = 720;
                 return;
-              } while ((paramjka.jdField_a_of_type_Int >= 1280) && (paramjka.jdField_b_of_type_Int >= 1024));
-              paramjka.jdField_a_of_type_Int = 1280;
-              paramjka.jdField_b_of_type_Int = 1024;
+              } while ((paramjjl.jdField_a_of_type_Int >= 1280) && (paramjjl.jdField_b_of_type_Int >= 1024));
+              paramjjl.jdField_a_of_type_Int = 1280;
+              paramjjl.jdField_b_of_type_Int = 1024;
               return;
-            } while ((paramjka.jdField_a_of_type_Int >= 2048) && (paramjka.jdField_b_of_type_Int >= 1024));
-            paramjka.jdField_a_of_type_Int = 2048;
-            paramjka.jdField_b_of_type_Int = 1024;
+            } while ((paramjjl.jdField_a_of_type_Int >= 2048) && (paramjjl.jdField_b_of_type_Int >= 1024));
+            paramjjl.jdField_a_of_type_Int = 2048;
+            paramjjl.jdField_b_of_type_Int = 1024;
             return;
-          } while ((paramjka.jdField_a_of_type_Int >= 2048) && (paramjka.jdField_b_of_type_Int >= 1024));
-          paramjka.jdField_a_of_type_Int = 2048;
-          paramjka.jdField_b_of_type_Int = 1024;
+          } while ((paramjjl.jdField_a_of_type_Int >= 2048) && (paramjjl.jdField_b_of_type_Int >= 1024));
+          paramjjl.jdField_a_of_type_Int = 2048;
+          paramjjl.jdField_b_of_type_Int = 1024;
           return;
-        } while ((paramjka.jdField_a_of_type_Int >= 2048) && (paramjka.jdField_b_of_type_Int >= 1088));
-        paramjka.jdField_a_of_type_Int = 2048;
-        paramjka.jdField_b_of_type_Int = 1088;
+        } while ((paramjjl.jdField_a_of_type_Int >= 2048) && (paramjjl.jdField_b_of_type_Int >= 1088));
+        paramjjl.jdField_a_of_type_Int = 2048;
+        paramjjl.jdField_b_of_type_Int = 1088;
         return;
-      } while ((paramjka.jdField_a_of_type_Int >= 3680) && (paramjka.jdField_b_of_type_Int >= 1536));
-      paramjka.jdField_a_of_type_Int = 3680;
-      paramjka.jdField_b_of_type_Int = 1536;
+      } while ((paramjjl.jdField_a_of_type_Int >= 3680) && (paramjjl.jdField_b_of_type_Int >= 1536));
+      paramjjl.jdField_a_of_type_Int = 3680;
+      paramjjl.jdField_b_of_type_Int = 1536;
       return;
-    } while ((paramjka.jdField_a_of_type_Int >= 4096) && (paramjka.jdField_b_of_type_Int >= 2304));
-    paramjka.jdField_a_of_type_Int = 4096;
-    paramjka.jdField_b_of_type_Int = 2304;
+    } while ((paramjjl.jdField_a_of_type_Int >= 4096) && (paramjjl.jdField_b_of_type_Int >= 2304));
+    paramjjl.jdField_a_of_type_Int = 4096;
+    paramjjl.jdField_b_of_type_Int = 2304;
   }
   
   private boolean a(ByteBuffer paramByteBuffer, int paramInt, MediaFormat paramMediaFormat)
@@ -466,13 +466,13 @@ public class NativeCodec
     //   153	157	160	java/lang/Exception
   }
   
-  private static void b(MediaCodecInfo.CodecProfileLevel paramCodecProfileLevel, jka paramjka)
+  private static void b(MediaCodecInfo.CodecProfileLevel paramCodecProfileLevel, jjl paramjjl)
   {
     if (paramCodecProfileLevel.level == 1) {
-      if ((paramjka.jdField_a_of_type_Int < 192) || (paramjka.jdField_b_of_type_Int < 144))
+      if ((paramjjl.jdField_a_of_type_Int < 192) || (paramjjl.jdField_b_of_type_Int < 144))
       {
-        paramjka.jdField_a_of_type_Int = 192;
-        paramjka.jdField_b_of_type_Int = 144;
+        paramjjl.jdField_a_of_type_Int = 192;
+        paramjjl.jdField_b_of_type_Int = 144;
       }
     }
     do
@@ -503,86 +503,86 @@ public class NativeCodec
                             if (paramCodecProfileLevel.level != 4) {
                               break;
                             }
-                          } while ((paramjka.jdField_a_of_type_Int >= 352) && (paramjka.jdField_b_of_type_Int >= 288));
-                          paramjka.jdField_a_of_type_Int = 352;
-                          paramjka.jdField_b_of_type_Int = 288;
+                          } while ((paramjjl.jdField_a_of_type_Int >= 352) && (paramjjl.jdField_b_of_type_Int >= 288));
+                          paramjjl.jdField_a_of_type_Int = 352;
+                          paramjjl.jdField_b_of_type_Int = 288;
                           return;
                           if (paramCodecProfileLevel.level != 16) {
                             break;
                           }
-                        } while ((paramjka.jdField_a_of_type_Int >= 352) && (paramjka.jdField_b_of_type_Int >= 576));
-                        paramjka.jdField_a_of_type_Int = 352;
-                        paramjka.jdField_b_of_type_Int = 576;
+                        } while ((paramjjl.jdField_a_of_type_Int >= 352) && (paramjjl.jdField_b_of_type_Int >= 576));
+                        paramjjl.jdField_a_of_type_Int = 352;
+                        paramjjl.jdField_b_of_type_Int = 576;
                         return;
                         if (paramCodecProfileLevel.level != 64) {
                           break;
                         }
-                      } while ((paramjka.jdField_a_of_type_Int >= 720) && (paramjka.jdField_b_of_type_Int >= 576));
-                      paramjka.jdField_a_of_type_Int = 720;
-                      paramjka.jdField_b_of_type_Int = 576;
+                      } while ((paramjjl.jdField_a_of_type_Int >= 720) && (paramjjl.jdField_b_of_type_Int >= 576));
+                      paramjjl.jdField_a_of_type_Int = 720;
+                      paramjjl.jdField_b_of_type_Int = 576;
                       return;
                       if (paramCodecProfileLevel.level != 256) {
                         break;
                       }
-                    } while ((paramjka.jdField_a_of_type_Int >= 1280) && (paramjka.jdField_b_of_type_Int >= 720));
-                    paramjka.jdField_a_of_type_Int = 1280;
-                    paramjka.jdField_b_of_type_Int = 720;
+                    } while ((paramjjl.jdField_a_of_type_Int >= 1280) && (paramjjl.jdField_b_of_type_Int >= 720));
+                    paramjjl.jdField_a_of_type_Int = 1280;
+                    paramjjl.jdField_b_of_type_Int = 720;
                     return;
                     if (paramCodecProfileLevel.level != 1024) {
                       break;
                     }
-                  } while ((paramjka.jdField_a_of_type_Int >= 1920) && (paramjka.jdField_b_of_type_Int >= 1080));
-                  paramjka.jdField_a_of_type_Int = 1920;
-                  paramjka.jdField_b_of_type_Int = 1080;
+                  } while ((paramjjl.jdField_a_of_type_Int >= 1920) && (paramjjl.jdField_b_of_type_Int >= 1080));
+                  paramjjl.jdField_a_of_type_Int = 1920;
+                  paramjjl.jdField_b_of_type_Int = 1080;
                   return;
                   if (paramCodecProfileLevel.level != 4096) {
                     break;
                   }
-                } while ((paramjka.jdField_a_of_type_Int >= 1920) && (paramjka.jdField_b_of_type_Int >= 1080));
-                paramjka.jdField_a_of_type_Int = 1920;
-                paramjka.jdField_b_of_type_Int = 1080;
+                } while ((paramjjl.jdField_a_of_type_Int >= 1920) && (paramjjl.jdField_b_of_type_Int >= 1080));
+                paramjjl.jdField_a_of_type_Int = 1920;
+                paramjjl.jdField_b_of_type_Int = 1080;
                 return;
                 if (paramCodecProfileLevel.level != 16384) {
                   break;
                 }
-              } while ((paramjka.jdField_a_of_type_Int >= 4096) && (paramjka.jdField_b_of_type_Int >= 2048));
-              paramjka.jdField_a_of_type_Int = 4096;
-              paramjka.jdField_b_of_type_Int = 2048;
+              } while ((paramjjl.jdField_a_of_type_Int >= 4096) && (paramjjl.jdField_b_of_type_Int >= 2048));
+              paramjjl.jdField_a_of_type_Int = 4096;
+              paramjjl.jdField_b_of_type_Int = 2048;
               return;
               if (paramCodecProfileLevel.level != 65536) {
                 break;
               }
-            } while ((paramjka.jdField_a_of_type_Int >= 4096) && (paramjka.jdField_b_of_type_Int >= 2048));
-            paramjka.jdField_a_of_type_Int = 4096;
-            paramjka.jdField_b_of_type_Int = 2048;
+            } while ((paramjjl.jdField_a_of_type_Int >= 4096) && (paramjjl.jdField_b_of_type_Int >= 2048));
+            paramjjl.jdField_a_of_type_Int = 4096;
+            paramjjl.jdField_b_of_type_Int = 2048;
             return;
             if (paramCodecProfileLevel.level != 262144) {
               break;
             }
-          } while ((paramjka.jdField_a_of_type_Int >= 4096) && (paramjka.jdField_b_of_type_Int >= 2048));
-          paramjka.jdField_a_of_type_Int = 4096;
-          paramjka.jdField_b_of_type_Int = 2048;
+          } while ((paramjjl.jdField_a_of_type_Int >= 4096) && (paramjjl.jdField_b_of_type_Int >= 2048));
+          paramjjl.jdField_a_of_type_Int = 4096;
+          paramjjl.jdField_b_of_type_Int = 2048;
           return;
           if (paramCodecProfileLevel.level != 1048576) {
             break;
           }
-        } while ((paramjka.jdField_a_of_type_Int >= 4096) && (paramjka.jdField_b_of_type_Int >= 4096));
-        paramjka.jdField_a_of_type_Int = 4096;
-        paramjka.jdField_b_of_type_Int = 4096;
+        } while ((paramjjl.jdField_a_of_type_Int >= 4096) && (paramjjl.jdField_b_of_type_Int >= 4096));
+        paramjjl.jdField_a_of_type_Int = 4096;
+        paramjjl.jdField_b_of_type_Int = 4096;
         return;
         if (paramCodecProfileLevel.level != 4194304) {
           break;
         }
-      } while ((paramjka.jdField_a_of_type_Int >= 4096) && (paramjka.jdField_b_of_type_Int >= 4096));
-      paramjka.jdField_a_of_type_Int = 4096;
-      paramjka.jdField_b_of_type_Int = 4096;
+      } while ((paramjjl.jdField_a_of_type_Int >= 4096) && (paramjjl.jdField_b_of_type_Int >= 4096));
+      paramjjl.jdField_a_of_type_Int = 4096;
+      paramjjl.jdField_b_of_type_Int = 4096;
       return;
       if (paramCodecProfileLevel.level != 16777216) {
         break;
       }
-    } while ((paramjka.jdField_a_of_type_Int >= 4096) && (paramjka.jdField_b_of_type_Int >= 4096));
-    paramjka.jdField_a_of_type_Int = 4096;
-    paramjka.jdField_b_of_type_Int = 4096;
+    } while ((paramjjl.jdField_a_of_type_Int >= 4096) && (paramjjl.jdField_b_of_type_Int >= 4096));
+    paramjjl.jdField_a_of_type_Int = 4096;
+    paramjjl.jdField_b_of_type_Int = 4096;
     return;
     QLog.e("AndroidCodec", 2, "setHevcLevel level.level = " + paramCodecProfileLevel.level);
   }
@@ -635,7 +635,7 @@ public class NativeCodec
   private static void d()
   {
     MediaCodecInfo.CodecCapabilities localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)AndroidCodec.a(AndroidCodec.jdField_a_of_type_JavaLangString).get(0), AndroidCodec.jdField_a_of_type_JavaLangString);
-    jdField_d_of_type_Jka = new jka();
+    jdField_d_of_type_Jjl = new jjl();
     if (localCodecCapabilities != null)
     {
       int m = 0;
@@ -651,10 +651,10 @@ public class NativeCodec
         {
           m += 1;
           break;
-          jdField_d_of_type_Jka.jdField_c_of_type_Int = 3;
+          jdField_d_of_type_Jjl.jdField_c_of_type_Int = 3;
           MediaCodecInfo.CodecProfileLevel localCodecProfileLevel = localCodecCapabilities.profileLevels[m];
           localCodecProfileLevel.level = 512;
-          a(localCodecProfileLevel, jdField_d_of_type_Jka);
+          a(localCodecProfileLevel, jdField_d_of_type_Jjl);
         }
       }
     }
@@ -663,7 +663,7 @@ public class NativeCodec
   private static void e()
   {
     MediaCodecInfo.CodecCapabilities localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)AndroidCodec.a(AndroidCodec.jdField_b_of_type_JavaLangString).get(0), AndroidCodec.jdField_b_of_type_JavaLangString);
-    jdField_c_of_type_Jka = new jka();
+    jdField_c_of_type_Jjl = new jjl();
     if (localCodecCapabilities == null) {}
     int m;
     do
@@ -678,17 +678,17 @@ public class NativeCodec
     {
       m += 1;
       break;
-      jdField_c_of_type_Jka.jdField_c_of_type_Int = 1;
+      jdField_c_of_type_Jjl.jdField_c_of_type_Int = 1;
       MediaCodecInfo.CodecProfileLevel localCodecProfileLevel = localCodecCapabilities.profileLevels[m];
       localCodecProfileLevel.level = 16384;
-      b(localCodecProfileLevel, jdField_c_of_type_Jka);
+      b(localCodecProfileLevel, jdField_c_of_type_Jjl);
     }
   }
   
   private static void f()
   {
     MediaCodecInfo.CodecCapabilities localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)AndroidCodec.a(AndroidCodec.jdField_a_of_type_JavaLangString).get(0), AndroidCodec.jdField_a_of_type_JavaLangString);
-    jdField_a_of_type_Jka = new jka();
+    jdField_a_of_type_Jjl = new jjl();
     if ((localCodecCapabilities == null) || (localCodecCapabilities.profileLevels == null)) {}
     int m;
     do
@@ -709,120 +709,120 @@ public class NativeCodec
     {
       m += 1;
       break;
-      if (jdField_a_of_type_Jka.jdField_c_of_type_Int > 3) {
+      if (jdField_a_of_type_Jjl.jdField_c_of_type_Int > 3) {
         break label132;
       }
-      jdField_a_of_type_Jka.jdField_c_of_type_Int = 3;
+      jdField_a_of_type_Jjl.jdField_c_of_type_Int = 3;
       break label132;
-      if (jdField_a_of_type_Jka.jdField_c_of_type_Int > 5) {
+      if (jdField_a_of_type_Jjl.jdField_c_of_type_Int > 5) {
         break label132;
       }
-      jdField_a_of_type_Jka.jdField_c_of_type_Int = 5;
+      jdField_a_of_type_Jjl.jdField_c_of_type_Int = 5;
       break label132;
-      if (jdField_a_of_type_Jka.jdField_c_of_type_Int > 5) {
+      if (jdField_a_of_type_Jjl.jdField_c_of_type_Int > 5) {
         break label132;
       }
-      jdField_a_of_type_Jka.jdField_c_of_type_Int = 5;
+      jdField_a_of_type_Jjl.jdField_c_of_type_Int = 5;
       break label132;
-      if (jdField_a_of_type_Jka.jdField_c_of_type_Int > 5) {
+      if (jdField_a_of_type_Jjl.jdField_c_of_type_Int > 5) {
         break label132;
       }
-      jdField_a_of_type_Jka.jdField_c_of_type_Int = 5;
+      jdField_a_of_type_Jjl.jdField_c_of_type_Int = 5;
       break label132;
-      if (jdField_a_of_type_Jka.jdField_c_of_type_Int > 5) {
+      if (jdField_a_of_type_Jjl.jdField_c_of_type_Int > 5) {
         break label132;
       }
-      jdField_a_of_type_Jka.jdField_c_of_type_Int = 5;
+      jdField_a_of_type_Jjl.jdField_c_of_type_Int = 5;
       break label132;
-      if (jdField_a_of_type_Jka.jdField_c_of_type_Int > 5) {
+      if (jdField_a_of_type_Jjl.jdField_c_of_type_Int > 5) {
         break label132;
       }
-      jdField_a_of_type_Jka.jdField_c_of_type_Int = 5;
+      jdField_a_of_type_Jjl.jdField_c_of_type_Int = 5;
       break label132;
-      if (jdField_a_of_type_Jka.jdField_c_of_type_Int > 4) {
+      if (jdField_a_of_type_Jjl.jdField_c_of_type_Int > 4) {
         break label132;
       }
-      jdField_a_of_type_Jka.jdField_c_of_type_Int = 4;
+      jdField_a_of_type_Jjl.jdField_c_of_type_Int = 4;
       break label132;
-      if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 176) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 144))
+      if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 176) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 144))
       {
-        jdField_a_of_type_Jka.jdField_a_of_type_Int = 176;
-        jdField_a_of_type_Jka.jdField_b_of_type_Int = 144;
+        jdField_a_of_type_Jjl.jdField_a_of_type_Int = 176;
+        jdField_a_of_type_Jjl.jdField_b_of_type_Int = 144;
         continue;
-        if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 288))
+        if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 288))
         {
-          jdField_a_of_type_Jka.jdField_a_of_type_Int = 352;
-          jdField_a_of_type_Jka.jdField_b_of_type_Int = 288;
+          jdField_a_of_type_Jjl.jdField_a_of_type_Int = 352;
+          jdField_a_of_type_Jjl.jdField_b_of_type_Int = 288;
           continue;
-          if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 288))
+          if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 288))
           {
-            jdField_a_of_type_Jka.jdField_a_of_type_Int = 352;
-            jdField_a_of_type_Jka.jdField_b_of_type_Int = 288;
+            jdField_a_of_type_Jjl.jdField_a_of_type_Int = 352;
+            jdField_a_of_type_Jjl.jdField_b_of_type_Int = 288;
             continue;
-            if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 288))
+            if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 288))
             {
-              jdField_a_of_type_Jka.jdField_a_of_type_Int = 352;
-              jdField_a_of_type_Jka.jdField_b_of_type_Int = 288;
+              jdField_a_of_type_Jjl.jdField_a_of_type_Int = 352;
+              jdField_a_of_type_Jjl.jdField_b_of_type_Int = 288;
               continue;
-              if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 288))
+              if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 288))
               {
-                jdField_a_of_type_Jka.jdField_a_of_type_Int = 352;
-                jdField_a_of_type_Jka.jdField_b_of_type_Int = 288;
+                jdField_a_of_type_Jjl.jdField_a_of_type_Int = 352;
+                jdField_a_of_type_Jjl.jdField_b_of_type_Int = 288;
                 continue;
-                if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 288))
+                if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 288))
                 {
-                  jdField_a_of_type_Jka.jdField_a_of_type_Int = 352;
-                  jdField_a_of_type_Jka.jdField_b_of_type_Int = 288;
+                  jdField_a_of_type_Jjl.jdField_a_of_type_Int = 352;
+                  jdField_a_of_type_Jjl.jdField_b_of_type_Int = 288;
                   continue;
-                  if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 576))
+                  if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 352) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 576))
                   {
-                    jdField_a_of_type_Jka.jdField_a_of_type_Int = 352;
-                    jdField_a_of_type_Jka.jdField_b_of_type_Int = 576;
+                    jdField_a_of_type_Jjl.jdField_a_of_type_Int = 352;
+                    jdField_a_of_type_Jjl.jdField_b_of_type_Int = 576;
                     continue;
-                    if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 720) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 576))
+                    if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 720) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 576))
                     {
-                      jdField_a_of_type_Jka.jdField_a_of_type_Int = 720;
-                      jdField_a_of_type_Jka.jdField_b_of_type_Int = 576;
+                      jdField_a_of_type_Jjl.jdField_a_of_type_Int = 720;
+                      jdField_a_of_type_Jjl.jdField_b_of_type_Int = 576;
                       continue;
-                      if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 720) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 576))
+                      if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 720) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 576))
                       {
-                        jdField_a_of_type_Jka.jdField_a_of_type_Int = 720;
-                        jdField_a_of_type_Jka.jdField_b_of_type_Int = 576;
+                        jdField_a_of_type_Jjl.jdField_a_of_type_Int = 720;
+                        jdField_a_of_type_Jjl.jdField_b_of_type_Int = 576;
                         continue;
-                        if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 1280) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 720))
+                        if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 1280) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 720))
                         {
-                          jdField_a_of_type_Jka.jdField_a_of_type_Int = 1280;
-                          jdField_a_of_type_Jka.jdField_b_of_type_Int = 720;
+                          jdField_a_of_type_Jjl.jdField_a_of_type_Int = 1280;
+                          jdField_a_of_type_Jjl.jdField_b_of_type_Int = 720;
                           continue;
-                          if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 1280) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 1024))
+                          if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 1280) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 1024))
                           {
-                            jdField_a_of_type_Jka.jdField_a_of_type_Int = 1280;
-                            jdField_a_of_type_Jka.jdField_b_of_type_Int = 1024;
+                            jdField_a_of_type_Jjl.jdField_a_of_type_Int = 1280;
+                            jdField_a_of_type_Jjl.jdField_b_of_type_Int = 1024;
                             continue;
-                            if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 2048) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 1024))
+                            if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 2048) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 1024))
                             {
-                              jdField_a_of_type_Jka.jdField_a_of_type_Int = 2048;
-                              jdField_a_of_type_Jka.jdField_b_of_type_Int = 1024;
+                              jdField_a_of_type_Jjl.jdField_a_of_type_Int = 2048;
+                              jdField_a_of_type_Jjl.jdField_b_of_type_Int = 1024;
                               continue;
-                              if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 2048) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 1024))
+                              if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 2048) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 1024))
                               {
-                                jdField_a_of_type_Jka.jdField_a_of_type_Int = 2048;
-                                jdField_a_of_type_Jka.jdField_b_of_type_Int = 1024;
+                                jdField_a_of_type_Jjl.jdField_a_of_type_Int = 2048;
+                                jdField_a_of_type_Jjl.jdField_b_of_type_Int = 1024;
                                 continue;
-                                if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 2048) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 1088))
+                                if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 2048) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 1088))
                                 {
-                                  jdField_a_of_type_Jka.jdField_a_of_type_Int = 2048;
-                                  jdField_a_of_type_Jka.jdField_b_of_type_Int = 1088;
+                                  jdField_a_of_type_Jjl.jdField_a_of_type_Int = 2048;
+                                  jdField_a_of_type_Jjl.jdField_b_of_type_Int = 1088;
                                   continue;
-                                  if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 3680) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 1536))
+                                  if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 3680) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 1536))
                                   {
-                                    jdField_a_of_type_Jka.jdField_a_of_type_Int = 3680;
-                                    jdField_a_of_type_Jka.jdField_b_of_type_Int = 1536;
+                                    jdField_a_of_type_Jjl.jdField_a_of_type_Int = 3680;
+                                    jdField_a_of_type_Jjl.jdField_b_of_type_Int = 1536;
                                     continue;
-                                    if ((jdField_a_of_type_Jka.jdField_a_of_type_Int < 4096) || (jdField_a_of_type_Jka.jdField_b_of_type_Int < 2304))
+                                    if ((jdField_a_of_type_Jjl.jdField_a_of_type_Int < 4096) || (jdField_a_of_type_Jjl.jdField_b_of_type_Int < 2304))
                                     {
-                                      jdField_a_of_type_Jka.jdField_a_of_type_Int = 4096;
-                                      jdField_a_of_type_Jka.jdField_b_of_type_Int = 2304;
+                                      jdField_a_of_type_Jjl.jdField_a_of_type_Int = 4096;
+                                      jdField_a_of_type_Jjl.jdField_b_of_type_Int = 2304;
                                     }
                                   }
                                 }
@@ -845,7 +845,7 @@ public class NativeCodec
   private static void g()
   {
     MediaCodecInfo.CodecCapabilities localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)AndroidCodec.a(AndroidCodec.jdField_b_of_type_JavaLangString).get(0), AndroidCodec.jdField_b_of_type_JavaLangString);
-    jdField_b_of_type_Jka = new jka();
+    jdField_b_of_type_Jjl = new jjl();
     if (localCodecCapabilities == null) {
       return;
     }
@@ -856,17 +856,17 @@ public class NativeCodec
       if (localCodecCapabilities.profileLevels[m].profile > 1) {
         break label140;
       }
-      if (jdField_b_of_type_Jka.jdField_c_of_type_Int <= 1) {
-        jdField_b_of_type_Jka.jdField_c_of_type_Int = 1;
+      if (jdField_b_of_type_Jjl.jdField_c_of_type_Int <= 1) {
+        jdField_b_of_type_Jjl.jdField_c_of_type_Int = 1;
       }
       label78:
       if (localCodecCapabilities.profileLevels[m].level > 1) {
         break label206;
       }
-      if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 352) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 288))
+      if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 352) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 288))
       {
-        jdField_b_of_type_Jka.jdField_a_of_type_Int = 352;
-        jdField_b_of_type_Jka.jdField_b_of_type_Int = 288;
+        jdField_b_of_type_Jjl.jdField_a_of_type_Int = 352;
+        jdField_b_of_type_Jjl.jdField_b_of_type_Int = 288;
       }
     }
     for (;;)
@@ -877,112 +877,112 @@ public class NativeCodec
       label140:
       if (localCodecCapabilities.profileLevels[m].profile == 2)
       {
-        if (jdField_b_of_type_Jka.jdField_c_of_type_Int > 2) {
+        if (jdField_b_of_type_Jjl.jdField_c_of_type_Int > 2) {
           break label78;
         }
-        jdField_b_of_type_Jka.jdField_c_of_type_Int = 2;
+        jdField_b_of_type_Jjl.jdField_c_of_type_Int = 2;
         break label78;
       }
-      if ((localCodecCapabilities.profileLevels[m].profile < 2) || (jdField_b_of_type_Jka.jdField_c_of_type_Int > 2)) {
+      if ((localCodecCapabilities.profileLevels[m].profile < 2) || (jdField_b_of_type_Jjl.jdField_c_of_type_Int > 2)) {
         break label78;
       }
-      jdField_b_of_type_Jka.jdField_c_of_type_Int = 2;
+      jdField_b_of_type_Jjl.jdField_c_of_type_Int = 2;
       break label78;
       label206:
       if (localCodecCapabilities.profileLevels[m].level == 4)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 352) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 288))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 352) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 288))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 352;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 288;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 352;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 288;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level == 16)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 352) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 576))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 352) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 576))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 352;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 576;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 352;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 576;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level == 64)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 720) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 576))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 720) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 576))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 720;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 576;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 720;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 576;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level == 256)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 1280) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 720))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 1280) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 720))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 1280;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 720;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 1280;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 720;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level == 1024)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 2048) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 1024))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 2048) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 1024))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 2048;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 1024;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 2048;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 1024;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level == 4096)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 2048) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 1024))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 2048) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 1024))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 2048;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 1024;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 2048;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 1024;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level == 16384)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 4096) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 2304))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 4096) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 2304))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 4096;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 2304;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 4096;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 2304;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level == 65536)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 4096) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 2304))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 4096) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 2304))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 4096;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 2304;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 4096;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 2304;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level == 262144)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 4096) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 2304))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 4096) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 2304))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 4096;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 2304;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 4096;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 2304;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level == 1048576)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 8192) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 4320))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 8192) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 4320))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 8192;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 4320;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 8192;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 4320;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level == 4194304)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 8192) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 4320))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 8192) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 4320))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 8192;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 4320;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 8192;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 4320;
         }
       }
       else if (localCodecCapabilities.profileLevels[m].level > 16777216)
       {
-        if ((jdField_b_of_type_Jka.jdField_a_of_type_Int < 8192) || (jdField_b_of_type_Jka.jdField_b_of_type_Int < 4320))
+        if ((jdField_b_of_type_Jjl.jdField_a_of_type_Int < 8192) || (jdField_b_of_type_Jjl.jdField_b_of_type_Int < 4320))
         {
-          jdField_b_of_type_Jka.jdField_a_of_type_Int = 8192;
-          jdField_b_of_type_Jka.jdField_b_of_type_Int = 4320;
+          jdField_b_of_type_Jjl.jdField_a_of_type_Int = 8192;
+          jdField_b_of_type_Jjl.jdField_b_of_type_Int = 4320;
         }
       }
       else {
@@ -1023,18 +1023,18 @@ public class NativeCodec
               if (!paramBoolean) {
                 break;
               }
-              if (jdField_a_of_type_Jka == null) {
+              if (jdField_a_of_type_Jjl == null) {
                 f();
               }
               if (paramString2.equalsIgnoreCase("width")) {
-                return jdField_a_of_type_Jka.jdField_a_of_type_Int;
+                return jdField_a_of_type_Jjl.jdField_a_of_type_Int;
               }
               if (paramString2.equalsIgnoreCase("height")) {
-                return jdField_a_of_type_Jka.jdField_b_of_type_Int;
+                return jdField_a_of_type_Jjl.jdField_b_of_type_Int;
               }
             } while (!paramString2.equalsIgnoreCase("profile"));
-            return jdField_a_of_type_Jka.jdField_c_of_type_Int;
-            if (jdField_d_of_type_Jka == null)
+            return jdField_a_of_type_Jjl.jdField_c_of_type_Int;
+            if (jdField_d_of_type_Jjl == null)
             {
               d();
               if (QLog.isColorLevel()) {
@@ -1044,48 +1044,48 @@ public class NativeCodec
             if (paramString2.equalsIgnoreCase("width"))
             {
               if (QLog.isColorLevel()) {
-                QLog.d("AndroidCodec", 2, "gAVCEncoderCaps width: " + jdField_d_of_type_Jka.jdField_a_of_type_Int);
+                QLog.d("AndroidCodec", 2, "gAVCEncoderCaps width: " + jdField_d_of_type_Jjl.jdField_a_of_type_Int);
               }
-              return jdField_d_of_type_Jka.jdField_a_of_type_Int;
+              return jdField_d_of_type_Jjl.jdField_a_of_type_Int;
             }
             if (paramString2.equalsIgnoreCase("height"))
             {
               if (QLog.isColorLevel()) {
-                QLog.d("AndroidCodec", 2, "getIntValues height: " + jdField_d_of_type_Jka.jdField_b_of_type_Int);
+                QLog.d("AndroidCodec", 2, "getIntValues height: " + jdField_d_of_type_Jjl.jdField_b_of_type_Int);
               }
-              return jdField_d_of_type_Jka.jdField_b_of_type_Int;
+              return jdField_d_of_type_Jjl.jdField_b_of_type_Int;
             }
           } while (!paramString2.equalsIgnoreCase("profile"));
           if (QLog.isColorLevel()) {
-            QLog.d("AndroidCodec", 2, "getIntValues profile: " + jdField_d_of_type_Jka.jdField_c_of_type_Int);
+            QLog.d("AndroidCodec", 2, "getIntValues profile: " + jdField_d_of_type_Jjl.jdField_c_of_type_Int);
           }
-          return jdField_d_of_type_Jka.jdField_c_of_type_Int;
+          return jdField_d_of_type_Jjl.jdField_c_of_type_Int;
         } while (!paramString1.equalsIgnoreCase(AndroidCodec.jdField_b_of_type_JavaLangString));
         if (!paramBoolean) {
           break;
         }
-        if (jdField_b_of_type_Jka == null) {
+        if (jdField_b_of_type_Jjl == null) {
           g();
         }
         if (paramString2.equalsIgnoreCase("width")) {
-          return jdField_b_of_type_Jka.jdField_a_of_type_Int;
+          return jdField_b_of_type_Jjl.jdField_a_of_type_Int;
         }
         if (paramString2.equalsIgnoreCase("height")) {
-          return jdField_b_of_type_Jka.jdField_b_of_type_Int;
+          return jdField_b_of_type_Jjl.jdField_b_of_type_Int;
         }
       } while (!paramString2.equalsIgnoreCase("profile"));
-      return jdField_b_of_type_Jka.jdField_c_of_type_Int;
-      if (jdField_c_of_type_Jka == null) {
+      return jdField_b_of_type_Jjl.jdField_c_of_type_Int;
+      if (jdField_c_of_type_Jjl == null) {
         e();
       }
       if (paramString2.equalsIgnoreCase("width")) {
-        return jdField_c_of_type_Jka.jdField_a_of_type_Int;
+        return jdField_c_of_type_Jjl.jdField_a_of_type_Int;
       }
       if (paramString2.equalsIgnoreCase("height")) {
-        return jdField_c_of_type_Jka.jdField_b_of_type_Int;
+        return jdField_c_of_type_Jjl.jdField_b_of_type_Int;
       }
     } while (!paramString2.equalsIgnoreCase("profile"));
-    return jdField_c_of_type_Jka.jdField_c_of_type_Int;
+    return jdField_c_of_type_Jjl.jdField_c_of_type_Int;
   }
   
   public static native int getVersion();

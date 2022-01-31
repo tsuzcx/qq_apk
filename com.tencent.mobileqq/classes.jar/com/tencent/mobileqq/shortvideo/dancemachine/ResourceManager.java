@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import ahmm;
+import aiao;
 import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.mobileqq.qmcf.QmcfManager;
@@ -38,7 +38,7 @@ public class ResourceManager
   public ResourceManager.ScanResource a;
   public ResourceManager.ShareResource a;
   public ResourceManager.StartResource a;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new ahmm(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new aiao(this);
   public List a;
   private Map jdField_a_of_type_JavaUtilMap;
   public boolean a;

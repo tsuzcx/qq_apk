@@ -1,50 +1,18 @@
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
 
 public class vqz
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public vqz(GameRoomChatPie paramGameRoomChatPie, boolean paramBoolean, ActionSheet paramActionSheet) {}
+  public vqz(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bj();
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bh();
-        continue;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bh();
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bg();
-          continue;
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bg();
-          }
-        }
-      }
+    super.handleMessage(paramMessage);
+    if (this.a.p.isShown()) {
+      this.a.p.setVisibility(8);
     }
   }
 }

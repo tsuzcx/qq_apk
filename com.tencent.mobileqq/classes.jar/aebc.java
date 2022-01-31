@@ -1,68 +1,34 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
-class aebc
+public class aebc
   implements Runnable
 {
-  aebc(aebb paramaebb, List paramList, boolean paramBoolean) {}
+  public aebc(PluginAction paramPluginAction, String paramString, QQAppInterface paramQQAppInterface, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aebb.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Aebb.a.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
-    int j;
-    int i;
-    aecl localaecl;
-    int k;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    int i = localSharedPreferences.getInt("key_web_plugin_click_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    localEditor.putInt("key_web_plugin_click_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i + 1);
+    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 0)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      j = 0;
-      i = 0;
-      if (localIterator.hasNext())
-      {
-        localaecl = (aecl)localIterator.next();
-        if (localaecl.a == 1)
-        {
-          k = j;
-          j = i + 1;
-          i = k;
-        }
-      }
+      i = localSharedPreferences.getInt("key_web_plugin_click_red_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+      localEditor.putInt("key_web_plugin_click_red_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i + 1);
     }
-    for (;;)
-    {
-      k = j;
-      j = i;
-      i = k;
-      break;
-      if (localaecl.a == 0)
-      {
-        k = j + 1;
-        j = i;
-        i = k;
-        continue;
-        ReportController.b(this.jdField_a_of_type_Aebb.a.a.app, "dc00899", "Grp_wolf", "", "invite_page", "exp_invite", 0, 0, "" + i, "" + j, "", "");
-        if (this.jdField_a_of_type_Boolean) {
-          ReportController.b(this.jdField_a_of_type_Aebb.a.a.app, "dc00899", "Grp_wolf", "", "invite_page", "exp_more", 0, 0, "", "", "", "");
-        }
-      }
-      else
-      {
-        k = i;
-        i = j;
-        j = k;
-      }
-    }
+    localEditor.putLong("key_come_webview_time" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), System.currentTimeMillis());
+    localEditor.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebc
  * JD-Core Version:    0.7.0.1
  */

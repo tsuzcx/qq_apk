@@ -1,36 +1,65 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.IMagicCallback;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class adqc
-  implements View.OnClickListener
+public class adqc
+  extends BroadcastReceiver
 {
-  adqc(adqb paramadqb) {}
+  private final String jdField_a_of_type_JavaLangString = "reason";
+  private final String b = "homekey";
   
-  public void onClick(View paramView)
+  public adqc(HotPicPageView paramHotPicPageView) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0) {}
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicManagerHotPicPageView", 2, "onReceive ===>" + paramContext);
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
+      HotPicPageView.b = true;
+    }
+    label49:
     do
     {
       do
       {
-        return;
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0);
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.e(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$IMagicCallback == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$IMagicCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder);
+        do
+        {
+          do
+          {
+            break label49;
+            break label49;
+            do
+            {
+              return;
+            } while ("android.intent.action.SCREEN_ON".equals(paramContext));
+            if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+            {
+              HotPicPageView.b = true;
+              return;
+            }
+          } while (("tencent.av.v2q.StopVideoChat".equals(paramContext)) || (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")));
+          paramContext = paramIntent.getStringExtra("reason");
+          if (paramContext != null) {
+            break;
+          }
+        } while ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a == null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a != 3));
+        paramContext = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a();
+      } while (paramContext == null);
+      paramContext.d();
+      return;
+    } while (!paramContext.equals("homekey"));
+    HotPicPageView.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTimer;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ahvq
-  implements CountdownTextView.TimerCallback
+public final class ahvq
+  implements ThreadFactory
 {
-  public ahvq(StructMsgItemTimer paramStructMsgItemTimer, CountdownTextView paramCountdownTextView) {}
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public void a()
+  public Thread newThread(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, 0L));
-  }
-  
-  public void a(long paramLong)
-  {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, paramLong));
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_d_of_type_Long = paramLong;
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahvq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,27 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListEvent;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.storyHome.StoryHomePushYellowBarHandler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class nua
-  extends UIBaseEventReceiver
+  extends GetRedPointExObserver
 {
-  public nua(StoryDetailPresenter paramStoryDetailPresenter)
-  {
-    super(paramStoryDetailPresenter);
-  }
+  public nua(StoryHomePushYellowBarHandler paramStoryHomePushYellowBarHandler) {}
   
-  public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent)
+  protected void a(Object paramObject)
   {
-    if ((!paramGetLikeListEvent.jdField_a_of_type_Boolean) || (!paramGetLikeListEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (paramGetLikeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null))
+    if ((paramObject != null) && ((paramObject instanceof oidb_0x791.RedDotInfo)))
     {
-      SLog.b(this.TAG, "ignore this like list event. %s.", paramGetLikeListEvent.toString());
-      return;
-    }
-    SLog.a(this.TAG, "receive like list event. %s.", paramGetLikeListEvent.toString());
-    boolean bool2 = StoryDetailPresenter.a(paramStoryDetailPresenter);
-    if (paramGetLikeListEvent.jdField_a_of_type_Int == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
-    {
-      StoryDetailPresenter.a(paramStoryDetailPresenter).b(bool1, paramGetLikeListEvent.b);
-      StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true, bool1);
-      if (bool2 != bool1) {
-        break;
+      paramObject = (oidb_0x791.RedDotInfo)paramObject;
+      if (paramObject.uint32_appid.get() == 21)
+      {
+        int i = paramObject.uint32_number.get();
+        int j = paramObject.uint32_last_time.get();
+        this.a.a.a(i, j);
       }
-      paramStoryDetailPresenter.a();
-      return;
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return DetailLikeListLoader.GetLikeListEvent.class;
-  }
-  
-  public void b(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent) {}
 }
 
 

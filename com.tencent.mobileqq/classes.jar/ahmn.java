@@ -1,19 +1,42 @@
-import com.tencent.mobileqq.shortvideo.dancemachine.GLFrameImage;
-import com.tencent.mobileqq.shortvideo.dancemachine.TrAsyncTextureLoad;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.OnProviderContainerTriggerLisener;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahmn
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public ahmn(TrAsyncTextureLoad paramTrAsyncTextureLoad) {}
+  public ahmn(ProviderContainerView paramProviderContainerView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    long l1 = System.currentTimeMillis();
-    DanceLog.b("GLFrameImage", "asyncLoadBoyTexture start loading");
-    GLFrameImage.h();
-    long l2 = System.currentTimeMillis();
-    DanceLog.b("GLFrameImage", "asyncLoadBoyTexture end loading timeCost=" + (l2 - l1));
+    this.a.c.setVisibility(8);
+    paramAnimator = ProviderContainerView.a(this.a);
+    if (paramAnimator != null) {
+      paramAnimator.y_();
+    }
+    if (ProviderContainerView.a(this.a) != null)
+    {
+      paramAnimator = ProviderContainerView.a(this.a).iterator();
+      while (paramAnimator.hasNext()) {
+        ((ProviderContainerView.ContainerViewListener)paramAnimator.next()).y_();
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (ProviderContainerView.a(this.a) != null) {
+      ProviderContainerView.a(this.a).b();
+    }
   }
 }
 

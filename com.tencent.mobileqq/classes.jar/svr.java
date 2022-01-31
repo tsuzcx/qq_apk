@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.text.format.DateFormat;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.utils.StringUtil;
 import java.util.List;
 
 public class svr
-  extends GameCenterObserver
+  implements Runnable
 {
-  public svr(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public svr(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
+    String str1 = StringUtil.a(this.a.c, 0, 32);
+    String str2 = StringUtil.a(this.a.e, 0, 32);
+    if (this.a.jdField_a_of_type_JavaUtilList != null) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format("(%d人)", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()) }));
     }
-    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
+    for (;;)
     {
-      List localList = LebaShowListManager.a().a();
-      this.a.runOnUiThread(new svs(this, localList));
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + " 创建于 " + DateFormat.format("yy-M-d", this.a.jdField_b_of_type_Long));
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
     }
   }
 }

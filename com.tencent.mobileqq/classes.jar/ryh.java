@@ -1,33 +1,20 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class ryh
-  extends WtloginObserver
+class ryh
+  implements DialogInterface.OnCancelListener
 {
-  public ryh(ChatHistoryForC2C paramChatHistoryForC2C, long paramLong, boolean paramBoolean) {}
+  ryh(ryg paramryg) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    long l;
-    if (QLog.isColorLevel())
-    {
-      l = System.currentTimeMillis();
-      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
-      if (paramDevlockInfo != null) {
-        break label93;
-      }
+    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    label93:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("ChatHistoryForC2C", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.runOnUiThread(new ryi(this, paramInt, paramDevlockInfo));
-      return;
-    }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 

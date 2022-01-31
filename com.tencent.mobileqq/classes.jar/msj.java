@@ -1,38 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
 import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
 import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.widget.SwipListView;
+import java.util.List;
 
-public class msj
-  implements View.OnClickListener
+class msj
+  implements Runnable
 {
-  public msj(SubscriptRecommendController paramSubscriptRecommendController) {}
+  msj(msi parammsi, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
-    ThreadManager.getSubThreadHandler().post(new msk(this));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      SubscriptRecommendController.a(this.a);
-    }
-    do
+    int i;
+    if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a) != null)
     {
-      do
+      i = SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).size();
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        break label142;
+      }
+    }
+    label142:
+    for (int j = this.jdField_a_of_type_JavaUtilList.size();; j = 0)
+    {
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a, this.jdField_a_of_type_JavaUtilList);
+      if ((SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a)) && (i != j))
       {
-        return;
-      } while (this.a.jdField_a_of_type_Int != 3);
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-    } while ((paramView == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (!(this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity)));
-    paramView.sendEmptyMessage(1006);
+        if (this.jdField_a_of_type_Msi.a.a.a == 2) {
+          SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).setSelectionFromBottom(SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).getCount() - 1, 0);
+        }
+        SubscriptFeedsActivity.b(this.jdField_a_of_type_Msi.a, false);
+      }
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

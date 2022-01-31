@@ -1,4 +1,5 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 class tlq
   implements Runnable
@@ -7,8 +8,9 @@ class tlq
   
   public void run()
   {
-    RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, "请重新发送短信");
+    if (QQSettingMe.a(this.a.a) != null) {
+      QQSettingMe.a(this.a.a).a(this.a.a.a);
+    }
   }
 }
 

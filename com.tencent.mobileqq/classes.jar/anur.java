@@ -1,49 +1,36 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.LOG;
-import dov.com.tencent.mobileqq.richmedia.RichmediaClient;
-import dov.com.tencent.mobileqq.richmedia.VideoCompoundController;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
 
 public class anur
-  extends Handler
+  extends SimpleObserver
 {
-  final WeakReference a;
+  public anur(EditVideoPlayer paramEditVideoPlayer) {}
   
-  public anur(Looper paramLooper, RichmediaClient paramRichmediaClient)
+  public void a(Bitmap paramBitmap)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramRichmediaClient);
+    super.onNext(paramBitmap);
+    if (paramBitmap != null)
+    {
+      if (this.a.b)
+      {
+        this.a.a.setImageBitmap(paramBitmap);
+        SLog.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
+      }
+    }
+    else {
+      return;
+    }
+    SLog.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onError(@NonNull Error paramError)
   {
-    LOG.a("PTV.RichmediaClient", "handleMessage, msg.what = " + paramMessage.what);
-    RichmediaClient localRichmediaClient = (RichmediaClient)this.a.get();
-    if (localRichmediaClient == null) {}
-    do
-    {
-      return;
-      if (paramMessage.getData() != null) {
-        paramMessage.getData().getInt("msg_sub_cmd");
-      }
-      switch (paramMessage.what)
-      {
-      case 1001: 
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-      case 1000: 
-        LOG.a("PTV.RichmediaClient", "handleMessage MSG_S2C_TEST");
-        return;
-      }
-      LOG.a("PTV.RichmediaClient", "handleMessage MSG_S2C_VIDEO_SLICE_UPLOAD_FINISH");
-      paramMessage = paramMessage.getData();
-    } while (paramMessage == null);
-    paramMessage = paramMessage.getString("vidoe_record_uniseq");
-    localRichmediaClient.a().a(paramMessage);
+    super.onError(paramError);
+    SLog.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
   }
 }
 

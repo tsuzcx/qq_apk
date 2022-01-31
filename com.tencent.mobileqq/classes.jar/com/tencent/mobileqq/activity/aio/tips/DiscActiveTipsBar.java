@@ -21,7 +21,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.List;
-import vzk;
+import wcp;
 
 public class DiscActiveTipsBar
   implements TipsBarTask
@@ -49,10 +49,10 @@ public class DiscActiveTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970176, null);
-    ((TextView)paramVarArgs.findViewById(2131369418)).setText(2131433026);
-    ((ImageView)paramVarArgs.findViewById(2131369416)).setImageResource(2130845518);
-    paramVarArgs.findViewById(2131369417).setOnClickListener(new vzk(this));
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970190, null);
+    ((TextView)paramVarArgs.findViewById(2131369484)).setText(2131433043);
+    ((ImageView)paramVarArgs.findViewById(2131369482)).setImageResource(2130845646);
+    paramVarArgs.findViewById(2131369483).setOnClickListener(new wcp(this));
     return paramVarArgs;
   }
   

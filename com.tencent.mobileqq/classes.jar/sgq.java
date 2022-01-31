@@ -1,14 +1,21 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.portal.PortalManager;
 
 public class sgq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public sgq(DialogActivity paramDialogActivity, Dialog paramDialog) {}
+  public sgq(Conversation paramConversation, PortalManager paramPortalManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DialogActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDialogActivity, this.jdField_a_of_type_AndroidAppDialog);
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).removeView(Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation));
+    if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), true);
+    }
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
   }
 }
 

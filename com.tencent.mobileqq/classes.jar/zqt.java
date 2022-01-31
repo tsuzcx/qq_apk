@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.app.message.SubAccountMessageProcessor;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Comparator;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetConfig;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 
 public class zqt
-  implements Comparator
+  extends ResourcePluginListener
 {
-  public zqt(SubAccountMessageProcessor paramSubAccountMessageProcessor) {}
+  private zqt(GetConfig paramGetConfig) {}
   
-  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  public void a(byte paramByte)
   {
-    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+    if (GetConfig.a(this.a) == 44)
+    {
+      if ((paramByte != 2) && (paramByte == 3)) {}
+      GetConfig.b(this.a).b.c(GetConfig.a(this.a));
+      this.a.a(7);
+    }
+  }
+  
+  public void b(byte paramByte)
+  {
+    if ((paramByte != 2) && (paramByte == 3)) {}
+    GetConfig.c(this.a).b.d(this);
   }
 }
 

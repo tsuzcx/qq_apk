@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import acgr;
-import acgt;
-import acgu;
-import acgw;
-import acgx;
+import acqo;
+import acqq;
+import acqr;
+import acqt;
+import acqu;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -63,50 +63,50 @@ public class QfileFileAssistantActivity
   QfileFileAssistantActivity.BroadcastMain jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity$BroadcastMain;
   public FileCategoryAdapter a;
   public XListView a;
-  private WeiyunRemoteCommand.OnStateChangeListener jdField_a_of_type_CooperationWeiyunWeiyunRemoteCommand$OnStateChangeListener = new acgx(this);
+  private WeiyunRemoteCommand.OnStateChangeListener jdField_a_of_type_CooperationWeiyunWeiyunRemoteCommand$OnStateChangeListener = new acqu(this);
   private WeiyunRemoteCommand jdField_a_of_type_CooperationWeiyunWeiyunRemoteCommand;
   List jdField_a_of_type_JavaUtilList = new ArrayList();
   TextView jdField_b_of_type_AndroidWidgetTextView;
-  private FMObserver jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acgu(this);
+  private FMObserver jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acqr(this);
   public boolean g = false;
   private volatile boolean h;
   
   public QfileFileAssistantActivity()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new acgt(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new acqq(this);
   }
   
   private void l()
   {
-    String str1 = getString(2131436135);
-    String str2 = getString(2131436136);
-    String str3 = getString(2131439301);
+    String str1 = getString(2131436152);
+    String str2 = getString(2131436153);
+    String str3 = getString(2131439339);
     String str4 = getString(2131428096);
     String str5 = getString(2131428094);
     String str6 = getString(2131428102);
-    String str7 = getString(2131431780);
+    String str7 = getString(2131431797);
     String str8 = getString(2131428104);
     String str9 = getString(2131428093);
     getString(2131428090);
-    a(2130970000, 2130842574, 2, "", 0, false, 0, "video", 1, false, false);
-    a(2130969997, 2130841550, 0, str1, 0, false, 12, "offline", 2, true, false);
-    a(2130969997, 2130842070, 0, str7, 0, false, 17, "other", 3, true, false);
-    a(2130969997, 2130846265, 0, str3, 0, false, 16, "offline", 4, true, false);
-    a(2130970016, 2130842574, 1, str9, 0, true, 0, "other", 1, false, false);
-    a(2130969998, 2130841594, 0, str6, 0, false, 13, "picture", 2, false, false);
-    a(2130969998, 2130841596, 0, str5, 0, false, 15, "other", 3, false, false);
-    a(2130969998, 2130841551, 0, str2, 0, false, 19, "music", 3, false, false);
+    a(2130970014, 2130842666, 2, "", 0, false, 0, "video", 1, false, false);
+    a(2130970011, 2130841587, 0, str1, 0, false, 12, "offline", 2, true, false);
+    a(2130970011, 2130842107, 0, str7, 0, false, 17, "other", 3, true, false);
+    a(2130970011, 2130846393, 0, str3, 0, false, 16, "offline", 4, true, false);
+    a(2130970030, 2130842666, 1, str9, 0, true, 0, "other", 1, false, false);
+    a(2130970012, 2130841631, 0, str6, 0, false, 13, "picture", 2, false, false);
+    a(2130970012, 2130841633, 0, str5, 0, false, 15, "other", 3, false, false);
+    a(2130970012, 2130841588, 0, str2, 0, false, 19, "music", 3, false, false);
     if (getSharedPreferences("tim_convert_teamwork_pre_" + this.app.c(), 0).getBoolean("tim_myfile_teamwork_entry_list", false))
     {
-      a(2130969998, 2130841591, 0, str4, 0, false, 14, "music", 3, false, false);
-      a(2130969998, 2130841600, 0, str8, 0, false, 22, "document", 4, false, false);
+      a(2130970012, 2130841628, 0, str4, 0, false, 14, "music", 3, false, false);
+      a(2130970012, 2130841637, 0, str8, 0, false, 22, "document", 4, false, false);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
       return;
-      a(2130969998, 2130841591, 0, str4, 0, false, 14, "music", 4, false, false);
+      a(2130970012, 2130841628, 0, str4, 0, false, 14, "music", 4, false, false);
     }
   }
   
@@ -132,7 +132,7 @@ public class QfileFileAssistantActivity
       startActivityForResult(localIntent, 101);
       return;
     }
-    FMToastUtil.a(BaseApplication.getContext().getString(2131433196));
+    FMToastUtil.a(BaseApplication.getContext().getString(2131433213));
   }
   
   private void o()
@@ -211,7 +211,7 @@ public class QfileFileAssistantActivity
     try
     {
       i = Integer.valueOf(PreferenceUtils.a(this, getAppRuntime().getAccount(), "sp_un_backup_photo_num")).intValue();
-      ThreadManager.executeOnSubThread(new acgw(this));
+      ThreadManager.executeOnSubThread(new acqt(this));
       int j = this.jdField_a_of_type_CooperationWeiyunWeiyunRemoteCommand.a();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       for (;;)
@@ -229,7 +229,7 @@ public class QfileFileAssistantActivity
         if (QLog.isColorLevel()) {
           QLog.d(e, 2, "AlbumBackup:updateBackupInfo, upload state");
         }
-        localFileCategoryEntity.jdField_b_of_type_JavaLangString = getResources().getString(2131439303);
+        localFileCategoryEntity.jdField_b_of_type_JavaLangString = getResources().getString(2131439341);
       }
     }
     catch (NumberFormatException localNumberFormatException)
@@ -302,16 +302,16 @@ public class QfileFileAssistantActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970002);
+    setContentView(2130970016);
     if (FileManagerUtil.a(this.app, false))
     {
-      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131368722));
+      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131368789));
       this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      findViewById(2131368750).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      findViewById(2131368817).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     }
     this.g = getIntent().getBooleanExtra("COMEFROMDESK", false);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131368723));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131368790));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = new FileCategoryAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter);
     r();
@@ -373,7 +373,7 @@ public class QfileFileAssistantActivity
     }
     for (;;)
     {
-      ThreadManager.executeOnFileThread(new acgr(this, str));
+      ThreadManager.executeOnFileThread(new acqo(this, str));
       return;
       label130:
       this.jdField_a_of_type_AndroidViewViewStub.setVisibility(0);

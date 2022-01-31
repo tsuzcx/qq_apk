@@ -1,14 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
 
 public class lwn
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public lwn(ReadInJoyRefreshManager paramReadInJoyRefreshManager, int paramInt, String paramString) {}
+  public lwn(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyRefreshManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.a.a.post(new lwo(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

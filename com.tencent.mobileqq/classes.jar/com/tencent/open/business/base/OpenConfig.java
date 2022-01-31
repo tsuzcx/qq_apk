@@ -1,7 +1,7 @@
 package com.tencent.open.business.base;
 
-import akpz;
-import akqa;
+import alfp;
+import alfq;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -208,7 +208,7 @@ public class OpenConfig
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-      ThreadManager.executeOnSubThread(new akpz(this));
+      ThreadManager.executeOnSubThread(new alfp(this));
     }
   }
   
@@ -349,7 +349,7 @@ public class OpenConfig
     localBundle.putString("blacklist_logic_version", String.valueOf(1));
     localBundle.putString("yyb_version", String.valueOf(AppUtil.a("com.tencent.android.qqdownloader")));
     localBundle.putString("qq_version", String.valueOf(GlobalUtil.getAppVersionCode(CommonDataAdapter.a().a())));
-    ThreadManager.executeOnNetWorkThread(new akqa(this, localBundle));
+    ThreadManager.executeOnNetWorkThread(new alfq(this, localBundle));
   }
   
   public boolean b(String paramString)

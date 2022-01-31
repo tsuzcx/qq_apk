@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vip;
 
 import VIP.AIOSendRes;
-import ajwp;
+import akkw;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -289,7 +289,7 @@ public class AioVipKeywordHelper
       QLog.d("AioVipKeywordHelper", 4, "keyword has been detected, message is ignored.");
       return;
     } while (!a(paramQQAppInterface, paramSessionInfo));
-    ThreadManager.executeOnSubThread(new ajwp(this, paramQQAppInterface, paramSessionInfo, paramContext, paramString, paramChatMessage, paramBoolean), true);
+    ThreadManager.executeOnSubThread(new akkw(this, paramQQAppInterface, paramSessionInfo, paramContext, paramString, paramChatMessage, paramBoolean), true);
   }
   
   public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, boolean paramBoolean)
@@ -758,7 +758,7 @@ public class AioVipKeywordHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vip.AioVipKeywordHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoMsgTailHelper;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForPic;
 
 public class vcq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vcq(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
+  public vcq(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof MessageForShortVideo))
-    {
-      localObject = (MessageForShortVideo)localObject;
-      ShortVideoMsgTailHelper.a(paramView.getContext(), this.a.a.a, ((MessageForShortVideo)localObject).msgTailType);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
   }
 }
 

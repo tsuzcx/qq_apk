@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="false" android:state_pressed="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206e1" />
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206df" />
-    <item android:state_focused="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206df" />
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206e1" />
-</selector>
+<bitmap android:src="@drawable/skin_chat_background" android:antialias="true" android:dither="true" android:tileMode="disabled"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

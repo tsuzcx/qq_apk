@@ -20,8 +20,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Vector;
-import jje;
-import jjf;
+import jip;
+import jiq;
 
 public class QQGAudioCtrl
 {
@@ -131,7 +131,7 @@ public class QQGAudioCtrl
   private static String mCameraParameters;
   static QQGAudioCtrl sQQGAudioCtrl;
   private int appid;
-  jje mEventHandler = null;
+  jip mEventHandler = null;
   long mGroupId = 0L;
   public Vector mInviteGAudioUinList = new Vector();
   public boolean mIsSwitchGroup;
@@ -160,7 +160,7 @@ public class QQGAudioCtrl
       if (localLooper == null) {
         break label126;
       }
-      this.mEventHandler = new jje(this, localLooper);
+      this.mEventHandler = new jip(this, localLooper);
     }
     for (;;)
     {
@@ -169,7 +169,7 @@ public class QQGAudioCtrl
       label126:
       localLooper = Looper.myLooper();
       if (localLooper != null) {
-        this.mEventHandler = new jje(this, localLooper);
+        this.mEventHandler = new jip(this, localLooper);
       } else {
         this.mEventHandler = null;
       }
@@ -824,22 +824,22 @@ public class QQGAudioCtrl
   {
     if (this.mEventHandler != null)
     {
-      localjjf = new jjf(this);
-      localjjf.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      localjjf.jdField_a_of_type_Long = paramLong2;
-      localjjf.jdField_b_of_type_Long = paramLong1;
-      localjjf.c = paramInt2;
-      localjjf.jdField_a_of_type_Int = paramInt3;
-      localjjf.jdField_b_of_type_Int = paramInt4;
+      localjiq = new jiq(this);
+      localjiq.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      localjiq.jdField_a_of_type_Long = paramLong2;
+      localjiq.jdField_b_of_type_Long = paramLong1;
+      localjiq.c = paramInt2;
+      localjiq.jdField_a_of_type_Int = paramInt3;
+      localjiq.jdField_b_of_type_Int = paramInt4;
       if (paramArrayOfByte == null)
       {
         paramInt2 = 0;
-        localjjf.d = paramInt2;
+        localjiq.d = paramInt2;
         paramArrayOfByte = this.mEventHandler.obtainMessage();
         if (paramArrayOfByte != null)
         {
           paramArrayOfByte.what = paramInt1;
-          paramArrayOfByte.obj = localjjf;
+          paramArrayOfByte.obj = localjiq;
           this.mEventHandler.sendMessage(paramArrayOfByte);
         }
       }
@@ -847,7 +847,7 @@ public class QQGAudioCtrl
     while (!QLog.isColorLevel()) {
       for (;;)
       {
-        jjf localjjf;
+        jiq localjiq;
         return;
         paramInt2 = paramArrayOfByte.length;
       }

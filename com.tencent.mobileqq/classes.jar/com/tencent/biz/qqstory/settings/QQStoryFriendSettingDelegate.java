@@ -34,11 +34,11 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.Switch;
 import java.util.ArrayList;
 import java.util.List;
-import npo;
-import npp;
-import npq;
-import npr;
-import nps;
+import nrb;
+import nrc;
+import nrd;
+import nre;
+import nrf;
 
 public class QQStoryFriendSettingDelegate
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, KeepConstructor, ActivityDelegate
@@ -50,14 +50,14 @@ public class QQStoryFriendSettingDelegate
   
   public QQStoryFriendSettingDelegate()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new npo(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nrb(this);
   }
   
   protected View a(int paramInt1, String paramString, int paramInt2)
   {
-    View localView = View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2130970612, null);
-    ((TextView)localView.findViewById(2131363360)).setText(paramString);
-    ((TextView)localView.findViewById(2131364095)).setText("");
+    View localView = View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2130970656, null);
+    ((TextView)localView.findViewById(2131363378)).setText(paramString);
+    ((TextView)localView.findViewById(2131364119)).setText("");
     localView.setTag(Integer.valueOf(paramInt1));
     localView.setOnClickListener(this);
     localView.setBackgroundResource(paramInt2);
@@ -66,9 +66,9 @@ public class QQStoryFriendSettingDelegate
   
   protected View a(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    View localView = View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2130970615, null);
+    View localView = View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2130970659, null);
     this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt1] = localView;
-    Object localObject = (FormSwitchItem)localView.findViewById(2131371414);
+    Object localObject = (FormSwitchItem)localView.findViewById(2131371577);
     ((FormSwitchItem)localObject).a().setTextSize(1, 18.0F);
     ((FormSwitchItem)localObject).setText(paramString);
     ((FormSwitchItem)localObject).setContentDescription(paramString);
@@ -79,7 +79,7 @@ public class QQStoryFriendSettingDelegate
     ((Switch)localObject).setChecked(paramBoolean);
     ((Switch)localObject).setOnCheckedChangeListener(this);
     ((Switch)localObject).setContentDescription(paramString);
-    ((TextView)localView.findViewById(2131371416)).setVisibility(8);
+    ((TextView)localView.findViewById(2131371579)).setVisibility(8);
     return localView;
   }
   
@@ -92,7 +92,7 @@ public class QQStoryFriendSettingDelegate
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt].findViewById(2131371414);
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt].findViewById(2131371577);
     localFormSwitchItem.setOnCheckedChangeListener(null);
     localFormSwitchItem.setChecked(paramBoolean);
     localFormSwitchItem.setOnCheckedChangeListener(this);
@@ -109,14 +109,14 @@ public class QQStoryFriendSettingDelegate
     this.jdField_a_of_type_Int = paramQQStoryFriendSettings.getIntent().getIntExtra("from", 1);
     LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings);
     paramBundle = new LinearLayout.LayoutParams(-1, -1);
-    localLinearLayout.setBackgroundResource(2130838211);
+    localLinearLayout.setBackgroundResource(2130838215);
     localLinearLayout.setLayoutParams(paramBundle);
     localLinearLayout.setOrientation(1);
     localLinearLayout.setPadding(0, AIOUtils.a(20.0F, paramQQStoryFriendSettings.getResources()), 0, 0);
     this.jdField_a_of_type_ArrayOfAndroidViewView = new View[9];
-    localLinearLayout.addView(a(0, "不看他的日迹", 2130838631));
-    localLinearLayout.addView(a(1, "不让他看我的日迹", 2130838626));
-    localLinearLayout.addView(View.inflate(paramQQStoryFriendSettings, 2130970624, null));
+    localLinearLayout.addView(a(0, "不看他的日迹", 2130838635));
+    localLinearLayout.addView(a(1, "不让他看我的日迹", 2130838630));
+    localLinearLayout.addView(View.inflate(paramQQStoryFriendSettings, 2130970668, null));
     paramBundle = (QQStoryManager)paramQQStoryFriendSettings.app.getManager(180);
     localLinearLayout.addView(a(2, "接收与我相关通知", 1, paramBundle.a()));
     localLinearLayout.addView(a(3, "接收好友日迹通知", 2, paramBundle.b()));
@@ -131,13 +131,13 @@ public class QQStoryFriendSettingDelegate
     SLog.d("QQStoryFriendSettingDelegate", "skipEncodeVisible=%s, skipEncodeEnable=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
     if (bool1)
     {
-      localLinearLayout.addView(View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2130970624, null));
+      localLinearLayout.addView(View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2130970668, null));
       localLinearLayout.addView(a(7, "同步我的好友动态视频到日迹", 0, bool2));
     }
     paramBundle = (MsgTabStoryNodeConfigManager)paramQQStoryFriendSettings.app.getManager(251);
     if ((paramBundle.b) && (paramBundle.c))
     {
-      localLinearLayout.addView(View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2130970624, null));
+      localLinearLayout.addView(View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2130970668, null));
       localLinearLayout.addView(a(8, "在消息顶部展示日迹", 1, paramBundle.d));
       if (!paramBundle.d) {
         break label520;
@@ -169,7 +169,7 @@ public class QQStoryFriendSettingDelegate
       localObject = new ArrayList();
       ((List)localObject).add(localUserConfig);
       localReqSetConfig.user_config.set((List)localObject);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new npp(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new nrc(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
       return;
     }
   }
@@ -187,7 +187,7 @@ public class QQStoryFriendSettingDelegate
       localObject = new ArrayList();
       ((List)localObject).add(localUserConfig);
       localReqSetConfig.user_config.set((List)localObject);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new npq(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new nrd(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
       return;
     }
   }
@@ -205,7 +205,7 @@ public class QQStoryFriendSettingDelegate
       localObject = new ArrayList();
       ((List)localObject).add(localUserConfig);
       localReqSetConfig.user_config.set((List)localObject);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new npr(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new nre(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
       return;
     }
   }
@@ -223,7 +223,7 @@ public class QQStoryFriendSettingDelegate
       localObject = new ArrayList();
       ((List)localObject).add(localUserConfig);
       localReqSetConfig.user_config.set((List)localObject);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new nps(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new nrf(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
       return;
     }
   }
@@ -249,7 +249,7 @@ public class QQStoryFriendSettingDelegate
         for (paramBoolean = true;; paramBoolean = false)
         {
           a(2, paramBoolean);
-          a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131432992));
+          a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131433009));
           return;
         }
       }
@@ -267,7 +267,7 @@ public class QQStoryFriendSettingDelegate
         for (paramBoolean = bool1;; paramBoolean = false)
         {
           a(3, paramBoolean);
-          a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131432992));
+          a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131433009));
           return;
         }
       }
@@ -285,7 +285,7 @@ public class QQStoryFriendSettingDelegate
         for (paramBoolean = bool2;; paramBoolean = false)
         {
           a(5, paramBoolean);
-          a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131432992));
+          a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131433009));
           return;
         }
       }
@@ -303,7 +303,7 @@ public class QQStoryFriendSettingDelegate
         for (paramBoolean = bool3;; paramBoolean = false)
         {
           a(7, paramBoolean);
-          a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131432992));
+          a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131433009));
           return;
         }
       }

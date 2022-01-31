@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
 
 public class uzu
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public int a;
-  public uzw[] a;
+  public TextView b;
   
-  public uzu(PokeItemAnimationManager paramPokeItemAnimationManager)
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
+  public uzu(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
 }
 
 

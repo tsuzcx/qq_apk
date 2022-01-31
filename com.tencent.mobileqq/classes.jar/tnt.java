@@ -1,28 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
-import com.tencent.mobileqq.app.BabyQObserver;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class tnt
-  extends BabyQObserver
+  implements Runnable
 {
-  public tnt(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public tnt(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      if (!TextUtils.isEmpty(this.a.f)) {
-        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
-      }
-      if (this.a.a == 13) {
-        this.a.b();
-      }
-      this.a.finish();
-      return;
+    CUOpenCardGuideMng localCUOpenCardGuideMng = (CUOpenCardGuideMng)this.a.app.getManager(220);
+    localCUOpenCardGuideMng.a();
+    this.a.a = localCUOpenCardGuideMng.a(0);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQSetting2Activity", 2, String.format(Locale.getDefault(), "cu_open_card_guide later init entry: %s ", new Object[] { this.a.a }));
     }
-    QQToast.a(this.a.app.getApp(), 1, "领取失败", 0).a();
+    this.a.runOnUiThread(new tnu(this));
   }
 }
 

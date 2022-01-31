@@ -1,26 +1,64 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView.ILoadMoreDataListener;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+import com.tencent.biz.qqstory.base.QQStoryHandler;
+import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class nra
-  implements LoadingMoreHelper.OnLoadMoreListener
+  extends QQStoryObserver
 {
-  public nra(ShareGroupInnerListView paramShareGroupInnerListView) {}
+  public nra(QQStoryBasicSettingsActivity paramQQStoryBasicSettingsActivity) {}
   
-  public void a()
+  public void b(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener.a(this.a.jdField_a_of_type_JavaLangString);
+    QQStoryBasicSettingsActivity.a(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 1001: 
+      this.a.a(0);
+      return;
+    case 2: 
+      this.a.a(1);
+      return;
+    case 3: 
+      this.a.a(2);
+      return;
     }
+    QQToast.a(this.a, "请求失败!", 0).b(this.a.getTitleBarHeight());
   }
   
-  public boolean a(boolean paramBoolean)
+  public void b(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener != null) {
-      return this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener.a(this.a.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
     }
-    return false;
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a(this.a.b(this.a.jdField_a_of_type_Int));
+      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b(this.a.b(this.a.jdField_a_of_type_Int));
+      if (this.a.jdField_a_of_type_Int == 2) {
+        StoryReportor.a("browse_friend_settings", "close", 0, 0, new String[] { "", "", "", "" });
+      }
+      do
+      {
+        return;
+        if (this.a.jdField_a_of_type_Int == 0)
+        {
+          StoryReportor.a("browse_friend_settings", "choose_all", 0, 0, new String[] { "", "", "", "" });
+          return;
+        }
+      } while (this.a.jdField_a_of_type_Int != 1);
+      StoryReportor.a("browse_friend_settings", "choose_wifi", 0, 0, new String[] { "", "", "", "" });
+      return;
+    }
+    QQToast.a(this.a, 2131437531, 0).b(this.a.getTitleBarHeight());
+    this.a.a(this.a.b);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d();
   }
 }
 

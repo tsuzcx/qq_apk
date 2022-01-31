@@ -1,23 +1,35 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.CallTabUnreadListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class wra
-  implements Animation.AnimationListener
+  implements CallTabUnreadListener
 {
-  public wra(CountryActivity paramCountryActivity, int paramInt) {}
+  public wra(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.requestLayout();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SplashActivity", 4, "msg fresh callback...");
+    }
+    if ((this.a.a == null) || (this.a.a.app == null)) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    int i = QCallFacade.a(localQQAppInterface);
+    this.a.a(36, 16, Integer.valueOf(i));
+    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
+    localQQAppInterface.getApp().sendBroadcast(localIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver通话tab, callUnReadCount[%s]", new Object[] { Integer.valueOf(i) }));
+    }
+    localQQAppInterface.C();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,13 +1,20 @@
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import android.os.Message;
+import dov.com.tencent.biz.qqstory.takevideo.EditMusicExport;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
 
 public class anwa
   implements Runnable
 {
-  public anwa(BeautyBar paramBeautyBar, int paramInt) {}
+  public anwa(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
   
   public void run()
   {
-    BeautyBar.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewBeautyBar, this.jdField_a_of_type_Int, true);
+    EditMusicExport localEditMusicExport = (EditMusicExport)this.a.a(EditMusicExport.class);
+    if (localEditMusicExport != null) {
+      localEditMusicExport.as_();
+    }
+    this.a.a.a(Message.obtain(null, 14));
   }
 }
 

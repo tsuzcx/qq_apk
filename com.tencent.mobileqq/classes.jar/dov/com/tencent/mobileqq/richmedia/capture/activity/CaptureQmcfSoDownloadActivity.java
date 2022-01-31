@@ -80,14 +80,14 @@ public class CaptureQmcfSoDownloadActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970251);
+    super.setContentView(2130970267);
     paramBundle = new CaptureQmcfSoDownloadFragment();
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("pendingIntentClass");
     if ((this.jdField_a_of_type_JavaLangString.equals(WebEffectsCameraCaptureFragment.class.getName())) || (getIntent().getBooleanExtra("pendingIntentAllWait", false))) {
       paramBundle = new CaptureQmcfSoDownloadFragmentAllWaite();
     }
     FragmentTransaction localFragmentTransaction = super.getSupportFragmentManager().beginTransaction();
-    localFragmentTransaction.replace(2131366901, paramBundle);
+    localFragmentTransaction.replace(2131366943, paramBundle);
     localFragmentTransaction.commit();
     this.jdField_a_of_type_Boolean = getIntent().hasExtra("pendingIntentRequest");
     if (this.jdField_a_of_type_Boolean) {

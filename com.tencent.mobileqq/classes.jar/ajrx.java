@@ -1,21 +1,34 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
 
-public final class ajrx
-  implements Runnable
+public class ajrx
+  extends Handler
 {
-  public ajrx(QQAppInterface paramQQAppInterface, String paramString, int paramInt, AbsStructMsg paramAbsStructMsg, BusinessObserver paramBusinessObserver) {}
-  
-  public void run()
+  public ajrx(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
   {
-    ShareMsgHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (AvatarWallViewPager.a(this.a)) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
+      return;
+    }
+    paramMessage = this.a;
+    paramMessage.d += 1;
+    this.a.d %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.d, true);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajrx
  * JD-Core Version:    0.7.0.1
  */

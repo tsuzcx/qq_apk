@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akii;
+import akwr;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,7 +18,7 @@ public class RotateableView
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new akii(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new akwr(this);
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -87,7 +87,7 @@ public class RotateableView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RotateableView
  * JD-Core Version:    0.7.0.1
  */

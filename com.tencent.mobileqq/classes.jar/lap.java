@@ -1,33 +1,21 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
+import java.io.File;
 
 public class lap
   implements Runnable
 {
-  public lap(EcshopCacheTool paramEcshopCacheTool) {}
+  public lap(KanDianViewController.PullRefreshCompleteListener paramPullRefreshCompleteListener) {}
   
   public void run()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(Friends.class, " SELECT * FROM Friends ", new String[0]);
-    this.a.jdField_a_of_type_JavaUtilMap = new HashMap();
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    String str = RefreshRes.e();
+    if ((str != null) && (new File(str).exists()))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Friends localFriends = (Friends)((Iterator)localObject).next();
-        this.a.jdField_a_of_type_JavaUtilMap.put(localFriends.uin, localFriends);
-      }
-    }
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment != null) && (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a != null)) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.getActivity().runOnUiThread(new laq(this));
+      KanDianViewController.a(this.a.a, str);
+      KanDianViewController.a(this.a.a).removeMessages(3);
+      KanDianViewController.a(this.a.a).sendEmptyMessage(2);
     }
   }
 }

@@ -1,27 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class lbw
-  implements TroopMemberApiClient.Callback
+  implements View.OnClickListener
 {
-  public lbw(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public lbw(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
-      }
-      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
-        this.a.jdField_a_of_type_JavaLangString = null;
-      }
-      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
-    }
+    ReadInJoyBaseDeliverActivity.a(this.a);
   }
 }
 

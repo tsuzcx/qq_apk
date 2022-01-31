@@ -1,39 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.util.ShortVideoJsApiPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQVideoMaterial;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
 
 public class aoaj
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public aoaj(ShortVideoJsApiPlugin paramShortVideoJsApiPlugin) {}
+  public aoaj(PersonalityOperator paramPersonalityOperator, QQVideoMaterial paramQQVideoMaterial) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    String str1 = paramIntent.getStringExtra("uuid");
-    String str2 = paramIntent.getStringExtra("md5");
-    paramIntent = new JSONObject();
-    try
-    {
-      paramIntent.put("uuid", str1);
-      paramIntent.put("md5", str2);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoJsApiPlugin", 2, "call webView, uuid" + str1 + ", md5:" + str2);
-      }
-      this.a.callJs(paramContext, new String[] { paramIntent.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    long l1 = System.currentTimeMillis();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getId());
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.b, 1.0D);
+    long l2 = System.currentTimeMillis();
+    SLog.b("PersonalityOperator", "setVideoFilter " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getId() + " t:" + (l2 - l1));
   }
 }
 

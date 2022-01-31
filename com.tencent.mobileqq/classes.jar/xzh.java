@@ -1,45 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import com.tencent.mobileqq.qcall.PstnManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class xzh
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  xzh(xzg paramxzg, List paramList) {}
+  xzh(xzg paramxzg, PstnManager paramPstnManager) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    try
-    {
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("onUpdateTroopGetMemberList:");
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          break label159;
-        }
-      }
-      for (;;)
-      {
-        QLog.d("TroopMemberListInnerFrame", 2, i);
-        this.jdField_a_of_type_Xzg.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_Xzg.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("key_last_update_time" + this.jdField_a_of_type_Xzg.a.b, System.currentTimeMillis()).commit();
-        TroopMemberListInnerFrame.a(this.jdField_a_of_type_Xzg.a, this.jdField_a_of_type_Xzg.a.b, this.jdField_a_of_type_JavaUtilList);
-        return;
-        label159:
-        i = this.jdField_a_of_type_JavaUtilList.size();
-      }
-      return;
+    paramInt = 1;
+    boolean bool = ((QQCustomDialog)paramDialogInterface).getCheckBoxState();
+    if (bool) {
+      this.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.b(true);
     }
-    catch (Exception localException)
+    if (!PhoneContactSelectActivity.a(this.jdField_a_of_type_Xzg.a)) {
+      this.jdField_a_of_type_Xzg.a.a();
+    }
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_Xzg.a.app;
+    if (bool) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopMemberListInnerFrame", 2, "onUpdateTroopGetMemberList:" + localException.toString());
-      }
+      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X8006404", "0X8006404", paramInt, 0, "", "", "", "");
+      return;
+      paramInt = 2;
     }
   }
 }

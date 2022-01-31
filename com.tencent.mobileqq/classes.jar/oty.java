@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class oty
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public oty(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  public oty(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    this.a.b = true;
+    this.a.g();
   }
 }
 

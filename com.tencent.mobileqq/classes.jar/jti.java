@@ -1,22 +1,27 @@
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.av.ui.EffectSettingBtn;
 
 public class jti
-  implements URLDrawable.URLDrawableListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public jti(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, URLDrawable paramURLDrawable) {}
+  public jti(EffectSettingBtn paramEffectSettingBtn) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  @TargetApi(16)
+  public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
-      DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    ViewTreeObserver localViewTreeObserver = this.a.a.getViewTreeObserver();
+    if (Build.VERSION.SDK_INT >= 16) {
+      localViewTreeObserver.removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
+    {
+      this.a.b = true;
+      return;
+      localViewTreeObserver.removeGlobalOnLayoutListener(this);
     }
   }
 }

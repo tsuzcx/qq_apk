@@ -1,33 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.IPtvTemplateItemCallback;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.util.ArrayList;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class xpr
-  implements PtvTemplateAdapter.IPtvTemplateItemCallback
+  implements Runnable
 {
-  public xpr(PtvTemplateAdapter paramPtvTemplateAdapter) {}
+  public xpr(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
-    }
-    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    do
-    {
-      do
-      {
-        return;
-        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      } while (localPtvTemplateInfo == null);
-      this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.b(paramInt, (int)(-this.a.jdField_a_of_type_Int * (0.75F + this.a.c - 1.0F)), 400);
-    } while (localPtvTemplateInfo.usable);
-    FlowCameraMqqAction.b("", "0X8006A1A");
+    this.a.e.setImageDrawable(new ColorDrawable(-16777216));
+    this.a.e.setVisibility(0);
+    this.a.a.postDelayed(new xps(this), 200L);
   }
 }
 

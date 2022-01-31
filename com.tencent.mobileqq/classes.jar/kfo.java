@@ -1,16 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.redbag.GuideTip2;
-
-public class kfo
-  implements View.OnClickListener
+public abstract interface kfo
 {
-  public kfo(GuideTip2 paramGuideTip2) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(true, 0);
-  }
+  public abstract void a();
 }
 
 

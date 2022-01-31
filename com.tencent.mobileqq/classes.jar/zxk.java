@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ar.ARLBSPOIDialog;
 
-class zxk
-  implements Runnable
+public class zxk
+  implements View.OnClickListener
 {
-  zxk(zxi paramzxi) {}
+  public zxk(ARLBSPOIDialog paramARLBSPOIDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArConfigService.d(this.a.a);
+    this.a.b();
   }
 }
 

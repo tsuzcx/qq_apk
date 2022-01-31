@@ -1,42 +1,43 @@
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
-import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView;
-import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DraftTextInfo;
+import com.tencent.mobileqq.managers.DraftTextManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 
 public class aeey
-  implements PlayResultListener
+  implements Runnable
 {
-  public aeey(StoryPlayController paramStoryPlayController) {}
+  public aeey(DraftTextManager paramDraftTextManager, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
   
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void run()
   {
-    int j = 1;
-    int i = 1;
-    if (paramInt1 != 100)
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    localEntityTransaction = localEntityManager.a();
+    try
     {
-      paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.a.a;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.c()) {}
+      localEntityTransaction.a();
+      localEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
+      localEntityTransaction.c();
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        QualityReporter.a(paramString1, i, String.valueOf(paramInt1), String.valueOf(paramInt2));
-        return;
-        i = 2;
+        localException.printStackTrace();
+        localEntityTransaction.b();
       }
     }
-    QualityReporter.e();
-    paramString1 = StoryPlayController.a(this.a);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.c()) {}
-    for (paramInt1 = j;; paramInt1 = 2)
+    finally
     {
-      QualityReporter.a(paramString1, paramInt1, this.a.jdField_a_of_type_Boolean);
-      return;
+      localEntityTransaction.b();
     }
+    localEntityManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeey
  * JD-Core Version:    0.7.0.1
  */

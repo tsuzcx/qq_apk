@@ -1,51 +1,39 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.smallscreen.SmallScreenVideoController;
-import com.tencent.av.ui.ControlUIObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class jpm
-  implements Runnable
+  extends Handler
 {
-  public jpm(SmallScreenVideoController paramSmallScreenVideoController) {}
+  public jpm(AVActivity paramAVActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {
-      break label10;
-    }
-    label10:
-    while (this.a.jdField_a_of_type_ComTencentAvVideoController.a() == null) {
+    boolean bool = true;
+    int i = 0;
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
       return;
     }
-    int i;
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().T)
-    {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c, 1);
-      this.a.jdField_a_of_type_ComTencentAvVideoController.b(226);
-      i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().d;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.c(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c, 21);
-      if (i != 1) {
-        break label262;
-      }
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().d = 3;
-    }
+    if (paramMessage.arg1 == 1) {}
     for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().i = 3000;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().g = false;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().E = 0;
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().g) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().aA) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().Q > 0)) {
-        SmallScreenVideoController.a(this.a);
+      this.a.h(bool);
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.n();
       }
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().d != 2) {
-        break;
+      paramMessage = this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
+      if (bool) {
+        i = this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.a;
       }
-      this.a.jdField_a_of_type_ComTencentAvUiControlUIObserver.h();
+      paramMessage.e(i);
+      this.a.m();
       return;
-      label262:
-      if (i == 2) {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().d = 4;
-      }
+      bool = false;
     }
   }
 }

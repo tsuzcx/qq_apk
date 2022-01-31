@@ -34,6 +34,8 @@ public class ScanEntranceDPC
     b();
     Object localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
     QLog.d("ScanEntranceDPC", 1, String.format("loadDPC dpcValue=%s", new Object[] { localObject }));
+    j = -1;
+    i = j;
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     for (;;)
     {
@@ -48,7 +50,7 @@ public class ScanEntranceDPC
         }
         bool = true;
         this.jdField_a_of_type_Boolean = bool;
-        int i = Integer.valueOf(localObject[2]).intValue();
+        i = Integer.valueOf(localObject[2]).intValue();
         if (i >= 0) {
           this.jdField_a_of_type_Int = i;
         }
@@ -87,15 +89,20 @@ public class ScanEntranceDPC
           bool = true;
           this.e = bool;
         }
+        i = j;
+        if (localObject.length > 12) {
+          i = Integer.valueOf(localObject[12]).intValue();
+        }
       }
       catch (Exception localException)
       {
         boolean bool;
         QLog.e("ScanEntranceDPC", 1, "loadDPC fail, use default value.", localException);
         b();
+        i = j;
         continue;
       }
-      QLog.d("ScanEntranceDPC", 1, String.format("loadDPC mHighPerfDevice=%s mCameraZoom=%s mScanRectRadio=%s mContinuousFocus=%s mARRecogInterval=%s mRecycleFaceResource=%s mRecordEnable=%s mDarkThreshold=%s mNeonCfgSwitch=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.d), Integer.valueOf(this.jdField_c_of_type_Int), Boolean.valueOf(this.e) }));
+      QLog.d("ScanEntranceDPC", 1, String.format("loadDPC mHighPerfDevice=%s mCameraZoom=%s mScanRectRadio=%s mContinuousFocus=%s mARRecogInterval=%s mRecycleFaceResource=%s mRecordEnable=%s mDarkThreshold=%s mNeonCfgSwitch=%s, disableWorldCup=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.d), Integer.valueOf(this.jdField_c_of_type_Int), Boolean.valueOf(this.e), Integer.valueOf(i) }));
       QLog.d("ScanEntranceDPC", 1, String.format("loadDPC time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
       return;
       bool = false;
@@ -109,6 +116,7 @@ public class ScanEntranceDPC
       bool = false;
       continue;
       QLog.e("ScanEntranceDPC", 1, "loadDPC dpc length invalid, use default value.");
+      i = j;
     }
   }
   

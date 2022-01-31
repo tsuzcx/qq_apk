@@ -1,13 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.CompletedHandler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
-class nzt
-  implements Runnable
+public class nzt
+  implements SimpleStepExector.CompletedHandler
 {
-  nzt(nzs paramnzs) {}
+  public nzt(StoryListPresenter paramStoryListPresenter) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.c(true);
+    SLog.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
   }
 }
 

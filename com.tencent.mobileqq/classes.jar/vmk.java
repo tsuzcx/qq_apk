@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.MyAdapter;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
 
 public class vmk
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  public vmk(PhotoListPanel.MyAdapter paramMyAdapter, List paramList) {}
+  public vmk(AIOGalleryAdapter paramAIOGalleryAdapter) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$MyAdapter.a(this.jdField_a_of_type_JavaUtilList);
-  }
+  public void a(Bundle paramBundle) {}
 }
 
 

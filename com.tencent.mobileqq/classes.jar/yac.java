@@ -1,13 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class yac
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public yac(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public yac(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    TroopHandler localTroopHandler = (TroopHandler)this.a.app.a(20);
+    if (localTroopHandler != null) {}
+    try
+    {
+      localTroopHandler.b(Long.valueOf(this.a.c));
+      localTroopHandler.a(Long.valueOf(this.a.c));
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("SelectMemberActivity", 2, "NumberFormatException : mGroupCode = " + this.a.c);
+    }
+  }
 }
 
 

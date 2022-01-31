@@ -1,38 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.model.MemoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller.GetMemoryCollectionKeyEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
+import com.tencent.biz.qqstory.storyHome.detail.view.segment.FeedItemThumbAdapter;
+import com.tencent.biz.qqstory.storyHome.detail.view.segment.GeneralFeedProfileSegment;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import java.util.List;
+import java.util.Map;
 
 public class nvt
-  extends SimpleJob
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public nvt(MemoryDataPuller paramMemoryDataPuller, String paramString) {}
+  public nvt(GeneralFeedProfileSegment paramGeneralFeedProfileSegment, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, FeedItemThumbAdapter paramFeedItemThumbAdapter) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(int paramInt)
   {
-    paramJobContext = (MemoryManager)SuperManager.a(19);
-    paramVarArgs = paramJobContext.a(DateCollectionListPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.b));
-    MemoryDataPuller.GetMemoryCollectionKeyEvent localGetMemoryCollectionKeyEvent = new MemoryDataPuller.GetMemoryCollectionKeyEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.c);
-    ArrayList localArrayList = new ArrayList();
-    localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
-    localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
-    for (boolean bool = true;; bool = false)
+    if (paramInt == 4097)
     {
-      localGetMemoryCollectionKeyEvent.jdField_a_of_type_Boolean = bool;
-      Dispatchers.get().dispatch(localGetMemoryCollectionKeyEvent);
-      SLog.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilList);
-      return null;
+      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
+      paramInt = i;
+      if (i < 0) {
+        paramInt = 0;
+      }
+      GeneralFeedProfileSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentGeneralFeedProfileSegment).a.put("2_" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentGeneralFeedProfileSegment.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentFeedItemThumbAdapter.a.get(paramInt)).mVid);
     }
   }
 }

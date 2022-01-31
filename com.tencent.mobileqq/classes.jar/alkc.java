@@ -1,47 +1,41 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.AbsListView;
+import com.tencent.plato.mqq.network.ProgressListener;
+import com.tencent.plato.mqq.network.ProgressRequestBody;
+import okio.Buffer;
+import okio.ForwardingSink;
+import okio.Sink;
 
 public class alkc
-  extends alkm
-  implements Runnable
+  extends ForwardingSink
 {
-  private alkc(AbsListView paramAbsListView)
+  long jdField_a_of_type_Long = 0L;
+  long b = 0L;
+  
+  public alkc(ProgressRequestBody paramProgressRequestBody, Sink paramSink)
   {
-    super(paramAbsListView, null);
+    super(paramSink);
   }
   
-  public void run()
+  public void write(Buffer paramBuffer, long paramLong)
   {
-    int i = this.a.mMotionPosition;
-    View localView = this.a.getChildAt(i - this.a.mFirstPosition);
-    long l;
-    if (localView != null)
-    {
-      i = this.a.mMotionPosition;
-      l = this.a.mAdapter.getItemId(this.a.mMotionPosition);
-      if ((!a()) || (this.a.mDataChanged)) {
-        break label126;
-      }
+    super.write(paramBuffer, paramLong);
+    if (this.b == 0L) {
+      this.b = this.jdField_a_of_type_ComTencentPlatoMqqNetworkProgressRequestBody.contentLength();
     }
-    label126:
-    for (boolean bool = this.a.performLongPress(localView, i, l);; bool = false)
+    this.jdField_a_of_type_Long += paramLong;
+    paramBuffer = ProgressRequestBody.a(this.jdField_a_of_type_ComTencentPlatoMqqNetworkProgressRequestBody);
+    paramLong = this.jdField_a_of_type_Long;
+    long l = this.b;
+    if (this.jdField_a_of_type_Long == this.b) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (bool)
-      {
-        this.a.mTouchMode = -1;
-        this.a.setPressed(false);
-        localView.setPressed(false);
-        return;
-      }
-      this.a.mTouchMode = 2;
+      paramBuffer.a(paramLong, l, bool);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alkc
  * JD-Core Version:    0.7.0.1
  */

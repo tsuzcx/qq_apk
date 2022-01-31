@@ -1,15 +1,15 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class ssh
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ssh(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public ssh(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HongbaoShowerActivity.a(this.a).setVisibility(0);
-    HongbaoShowerActivity.a(this.a).startAnimation(HongbaoShowerActivity.a(this.a));
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

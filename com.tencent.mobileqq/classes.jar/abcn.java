@@ -1,25 +1,25 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.armap.ConversationActivePendantHolderBase;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
 public class abcn
-  implements Runnable
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public abcn(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity, int paramInt) {}
+  public abcn(ConversationActivePendantHolderBase paramConversationActivePendantHolderBase) {}
   
-  public void run()
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    int i = this.jdField_a_of_type_Int / 1000;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(i);
-    localStringBuilder.append("\"");
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarRecordActivity.jdField_a_of_type_AndroidWidgetTextView.setText(localStringBuilder);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarRecordActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(this.jdField_a_of_type_Int / 80);
+    this.a.b = paramFloat1.floatValue();
+    this.a.jdField_a_of_type_Float = (1.1F - (paramFloat1.floatValue() - 1.0F));
+    if (!this.a.jdField_a_of_type_Boolean) {
+      this.a.b((int)(this.a.jdField_a_of_type_Int * paramFloat1.floatValue()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abcn
  * JD-Core Version:    0.7.0.1
  */

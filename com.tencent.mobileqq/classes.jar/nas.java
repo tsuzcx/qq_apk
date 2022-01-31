@@ -1,15 +1,15 @@
-import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
-import com.tencent.biz.qqstory.comment.FeedLikeLego;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager.CompositeVideoEvent;
 
-class nas
+public class nas
   implements Runnable
 {
-  nas(nar paramnar) {}
+  public nas(StoryVideoUploadManager.VideoCompositeRec paramVideoCompositeRec, StoryVideoUploadManager paramStoryVideoUploadManager, VideoCompositeManager.CompositeVideoEvent paramCompositeVideoEvent) {}
   
   public void run()
   {
-    this.a.a.a(this.a.a.a);
-    ((FeedCommentLikeLego)this.a.a.a()).d();
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeManager$CompositeVideoEvent.a, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeManager$CompositeVideoEvent.b);
   }
 }
 

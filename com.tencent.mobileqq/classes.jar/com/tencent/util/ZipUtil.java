@@ -41,7 +41,7 @@ public class ZipUtil
     //   55: iadd
     //   56: istore_3
     //   57: goto -18 -> 39
-    //   60: new 30	java/util/zip/ZipInputStream
+    //   60: new 30	com/tencent/commonsdk/zip/QZipInputStream
     //   63: dup
     //   64: new 32	java/io/BufferedInputStream
     //   67: dup
@@ -50,15 +50,15 @@ public class ZipUtil
     //   72: aload_1
     //   73: invokevirtual 44	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   76: invokespecial 47	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   79: invokespecial 48	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   79: invokespecial 48	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
     //   82: astore 8
     //   84: aconst_null
     //   85: astore_0
     //   86: aload 8
-    //   88: invokevirtual 52	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   88: invokevirtual 52	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
     //   91: astore_1
     //   92: aload_1
-    //   93: ifnull +282 -> 375
+    //   93: ifnull +281 -> 374
     //   96: sipush 4096
     //   99: newarray byte
     //   101: astore 7
@@ -124,7 +124,7 @@ public class ZipUtil
     //   226: aload 7
     //   228: iconst_0
     //   229: sipush 4096
-    //   232: invokevirtual 105	java/util/zip/ZipInputStream:read	([BII)I
+    //   232: invokevirtual 105	com/tencent/commonsdk/zip/QZipInputStream:read	([BII)I
     //   235: istore_3
     //   236: iload_3
     //   237: iconst_m1
@@ -191,60 +191,58 @@ public class ZipUtil
     //   355: athrow
     //   356: astore_0
     //   357: aload 8
-    //   359: astore_0
-    //   360: aload_0
-    //   361: ifnull -346 -> 15
-    //   364: aload_0
-    //   365: invokevirtual 115	java/util/zip/ZipInputStream:close	()V
-    //   368: return
-    //   369: astore_0
-    //   370: aload_0
-    //   371: invokevirtual 118	java/io/IOException:printStackTrace	()V
-    //   374: return
-    //   375: aload 8
-    //   377: ifnull -362 -> 15
-    //   380: aload 8
-    //   382: invokevirtual 115	java/util/zip/ZipInputStream:close	()V
-    //   385: return
-    //   386: astore_0
-    //   387: aload_0
-    //   388: invokevirtual 118	java/io/IOException:printStackTrace	()V
-    //   391: return
-    //   392: astore_0
-    //   393: aload 6
-    //   395: astore_1
-    //   396: aload_1
-    //   397: ifnull +7 -> 404
-    //   400: aload_1
-    //   401: invokevirtual 115	java/util/zip/ZipInputStream:close	()V
-    //   404: aload_0
-    //   405: athrow
-    //   406: astore_1
-    //   407: aload_1
-    //   408: invokevirtual 118	java/io/IOException:printStackTrace	()V
-    //   411: goto -7 -> 404
-    //   414: astore_1
-    //   415: goto -282 -> 133
-    //   418: astore_0
-    //   419: goto -115 -> 304
-    //   422: astore 6
-    //   424: goto -159 -> 265
-    //   427: astore_1
-    //   428: aload_0
-    //   429: astore 7
-    //   431: goto -152 -> 279
-    //   434: astore_0
-    //   435: goto -89 -> 346
-    //   438: astore_0
-    //   439: goto -85 -> 354
-    //   442: astore_0
-    //   443: aload 8
-    //   445: astore_1
-    //   446: goto -50 -> 396
-    //   449: astore_0
-    //   450: aload 7
-    //   452: astore_0
-    //   453: goto -93 -> 360
+    //   359: ifnull -344 -> 15
+    //   362: aload 8
+    //   364: invokevirtual 115	com/tencent/commonsdk/zip/QZipInputStream:close	()V
+    //   367: return
+    //   368: astore_0
+    //   369: aload_0
+    //   370: invokevirtual 118	java/io/IOException:printStackTrace	()V
+    //   373: return
+    //   374: aload 8
+    //   376: ifnull -361 -> 15
+    //   379: aload 8
+    //   381: invokevirtual 115	com/tencent/commonsdk/zip/QZipInputStream:close	()V
+    //   384: return
+    //   385: astore_0
+    //   386: aload_0
+    //   387: invokevirtual 118	java/io/IOException:printStackTrace	()V
+    //   390: return
+    //   391: astore_0
+    //   392: aload 6
+    //   394: astore_1
+    //   395: aload_1
+    //   396: ifnull +7 -> 403
+    //   399: aload_1
+    //   400: invokevirtual 115	com/tencent/commonsdk/zip/QZipInputStream:close	()V
+    //   403: aload_0
+    //   404: athrow
+    //   405: astore_1
+    //   406: aload_1
+    //   407: invokevirtual 118	java/io/IOException:printStackTrace	()V
+    //   410: goto -7 -> 403
+    //   413: astore_1
+    //   414: goto -281 -> 133
+    //   417: astore_0
+    //   418: goto -114 -> 304
+    //   421: astore 6
+    //   423: goto -158 -> 265
+    //   426: astore_1
+    //   427: aload_0
+    //   428: astore 7
+    //   430: goto -151 -> 279
+    //   433: astore_0
+    //   434: goto -88 -> 346
+    //   437: astore_0
+    //   438: goto -84 -> 354
+    //   441: astore_0
+    //   442: aload 8
+    //   444: astore_1
+    //   445: goto -50 -> 395
+    //   448: astore_0
+    //   449: aload 7
+    //   451: astore 8
+    //   453: goto -96 -> 357
     //   456: astore_1
     //   457: aload 9
     //   459: astore_2
@@ -273,14 +271,14 @@ public class ZipUtil
     //   10	237	3	i	int
     //   37	6	4	j	int
     //   118	3	5	bool	boolean
-    //   4	390	6	localObject1	Object
-    //   422	1	6	localIOException	java.io.IOException
+    //   4	389	6	localObject1	Object
+    //   421	1	6	localIOException	java.io.IOException
     //   461	1	6	localContext1	android.content.Context
     //   466	5	6	localObject2	Object
     //   474	1	6	localContext2	android.content.Context
     //   485	1	6	localException	java.lang.Exception
-    //   1	450	7	localObject3	Object
-    //   27	417	8	localObject4	Object
+    //   1	449	7	localObject3	Object
+    //   27	425	8	localObject4	Object
     //   7	451	9	localObject5	Object
     // Exception table:
     //   from	to	target	type
@@ -302,33 +300,33 @@ public class ZipUtil
     //   341	346	356	java/lang/Exception
     //   350	354	356	java/lang/Exception
     //   354	356	356	java/lang/Exception
-    //   364	368	369	java/io/IOException
-    //   380	385	386	java/io/IOException
-    //   16	29	392	finally
-    //   34	39	392	finally
-    //   45	53	392	finally
-    //   60	84	392	finally
-    //   400	404	406	java/io/IOException
-    //   129	133	414	java/io/IOException
-    //   299	304	418	java/io/IOException
-    //   261	265	422	java/io/IOException
-    //   272	276	427	java/io/IOException
-    //   341	346	434	java/io/IOException
-    //   350	354	438	java/io/IOException
-    //   86	92	442	finally
-    //   129	133	442	finally
-    //   137	145	442	finally
-    //   261	265	442	finally
-    //   272	276	442	finally
-    //   299	304	442	finally
-    //   312	316	442	finally
-    //   341	346	442	finally
-    //   350	354	442	finally
-    //   354	356	442	finally
-    //   16	29	449	java/lang/Exception
-    //   34	39	449	java/lang/Exception
-    //   45	53	449	java/lang/Exception
-    //   60	84	449	java/lang/Exception
+    //   362	367	368	java/io/IOException
+    //   379	384	385	java/io/IOException
+    //   16	29	391	finally
+    //   34	39	391	finally
+    //   45	53	391	finally
+    //   60	84	391	finally
+    //   399	403	405	java/io/IOException
+    //   129	133	413	java/io/IOException
+    //   299	304	417	java/io/IOException
+    //   261	265	421	java/io/IOException
+    //   272	276	426	java/io/IOException
+    //   341	346	433	java/io/IOException
+    //   350	354	437	java/io/IOException
+    //   86	92	441	finally
+    //   129	133	441	finally
+    //   137	145	441	finally
+    //   261	265	441	finally
+    //   272	276	441	finally
+    //   299	304	441	finally
+    //   312	316	441	finally
+    //   341	346	441	finally
+    //   350	354	441	finally
+    //   354	356	441	finally
+    //   16	29	448	java/lang/Exception
+    //   34	39	448	java/lang/Exception
+    //   45	53	448	java/lang/Exception
+    //   60	84	448	java/lang/Exception
     //   96	108	456	finally
     //   112	120	456	finally
     //   149	201	456	finally
@@ -343,7 +341,7 @@ public class ZipUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.util.ZipUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import java.util.List;
 
 public class wki
-  implements IIconListener
+  implements View.OnClickListener
 {
-  private wki(FriendFragment paramFriendFragment) {}
+  public wki(NotificationAdapter paramNotificationAdapter) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
-      FriendFragment.a(this.a, 1400L, false);
+    NotificationAdapter.ViewHolder localViewHolder = (NotificationAdapter.ViewHolder)paramView.getTag();
+    if ((localViewHolder == null) || (!(localViewHolder instanceof NotificationAdapter.ViewHolder))) {
+      return;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+    paramView = (View)paramView.getParent();
+    if ((paramView instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)paramView).d();
+    }
+    NotificationAdapter.a(this.a, localViewHolder.a);
+    this.a.jdField_a_of_type_JavaUtilList.add(NotificationAdapter.a(this.a).remove(this.a.getCount() - localViewHolder.b - 1));
+    this.a.notifyDataSetChanged();
   }
 }
 

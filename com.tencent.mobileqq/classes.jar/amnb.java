@@ -1,20 +1,21 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneUiJsPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QQProxyForQlink;
 
 public class amnb
   implements Runnable
 {
-  public amnb(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
+  public amnb(QQProxyForQlink paramQQProxyForQlink) {}
   
   public void run()
   {
-    RemoteHandleManager.a().a().g(this.jdField_a_of_type_JavaLangString);
+    QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppInit....");
+    QQProxyForQlink.a(this.a);
+    QQProxyForQlink.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amnb
  * JD-Core Version:    0.7.0.1
  */

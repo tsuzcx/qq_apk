@@ -1,37 +1,15 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-public class aayz
-  implements EIPCResultCallback
+class aayz
+  implements Runnable
 {
-  public aayz(ArMapIPCProxy paramArMapIPCProxy) {}
+  aayz(aayw paramaayw, double paramDouble1, double paramDouble2) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramEIPCResult != null)
-    {
-      localObject1 = localObject2;
-      if (paramEIPCResult.isSuccess()) {
-        localObject1 = paramEIPCResult.data.getString("action");
-      }
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ArMapIPCProxy", 2, "onCallback error");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPCProxy", 2, "onCallback action:" + (String)localObject1);
-    }
-    this.a.a((String)localObject1, paramEIPCResult);
+    ARMapEngine localARMapEngine = this.jdField_a_of_type_Aayw.a.a;
+    ARMapEngine.rotateToLngLat(this.jdField_a_of_type_Double, this.b);
   }
 }
 

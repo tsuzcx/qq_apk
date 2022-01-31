@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.arcard.ARCardRender;
 
 public class aamc
-  implements aamg
+  implements Runnable
 {
-  public aamc(ArkAppCGI paramArkAppCGI) {}
+  public aamc(ARCardRender paramARCardRender, ARBaseRender paramARBaseRender) {}
   
-  public void a(aamh paramaamh, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void run()
   {
-    this.a.a((aaml)paramaamh, paramBoolean, paramArrayOfByte);
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamc
  * JD-Core Version:    0.7.0.1
  */

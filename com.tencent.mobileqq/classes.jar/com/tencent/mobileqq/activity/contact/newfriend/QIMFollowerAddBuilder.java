@@ -18,7 +18,7 @@ import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.mobileqq.newfriend.NewFriendMessage;
 import com.tencent.mobileqq.newfriend.QIMFollowMessage;
 import java.util.Locale;
-import wgo;
+import wjt;
 
 public class QIMFollowerAddBuilder
   extends NewFriendBaseBuilder
@@ -46,19 +46,19 @@ public class QIMFollowerAddBuilder
     if ((paramView == null) || (!(paramView.getTag() instanceof QIMFollowerAddBuilder.QIMFollowerAddHolder)))
     {
       localQIMFollowerAddHolder = new QIMFollowerAddBuilder.QIMFollowerAddHolder();
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2130970593, localQIMFollowerAddHolder);
-      localQIMFollowerAddHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366518));
-      localQIMFollowerAddHolder.h = ((TextView)paramView.findViewById(2131362876));
-      localQIMFollowerAddHolder.i = ((TextView)paramView.findViewById(2131369905));
-      localQIMFollowerAddHolder.l = ((TextView)paramView.findViewById(2131371369));
-      localQIMFollowerAddHolder.j = ((TextView)paramView.findViewById(2131369907));
-      localQIMFollowerAddHolder.k = ((TextView)paramView.findViewById(2131368908));
-      localQIMFollowerAddHolder.a = ((Button)paramView.findViewById(2131368907));
+      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2130970637, localQIMFollowerAddHolder);
+      localQIMFollowerAddHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366545));
+      localQIMFollowerAddHolder.h = ((TextView)paramView.findViewById(2131362894));
+      localQIMFollowerAddHolder.i = ((TextView)paramView.findViewById(2131369982));
+      localQIMFollowerAddHolder.l = ((TextView)paramView.findViewById(2131371532));
+      localQIMFollowerAddHolder.j = ((TextView)paramView.findViewById(2131369984));
+      localQIMFollowerAddHolder.k = ((TextView)paramView.findViewById(2131368974));
+      localQIMFollowerAddHolder.a = ((Button)paramView.findViewById(2131368973));
       paramView.setTag(localQIMFollowerAddHolder);
       localQIMFollowerAddHolder.jdField_f_of_type_AndroidViewView.setTag(localQIMFollowerAddHolder);
       localQIMFollowerAddHolder.jdField_f_of_type_AndroidViewView.setOnClickListener(this);
       a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage, localQIMFollowerAddHolder, this);
-      localQIMFollowerAddHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838581);
+      localQIMFollowerAddHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838585);
       localQIMFollwerAdd = ((QIMFollowMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a;
       if (TextUtils.isEmpty(localQIMFollwerAdd.smartRemark)) {
         break label556;
@@ -68,12 +68,12 @@ public class QIMFollowerAddBuilder
       if (this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage.a()) {
         break label569;
       }
-      localQIMFollowerAddHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838585);
+      localQIMFollowerAddHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838589);
       localObject = new StringBuilder(256);
       switch (localQIMFollwerAdd.gender)
       {
       default: 
-        localQIMFollowerAddHolder.l.setBackgroundResource(2130843021);
+        localQIMFollowerAddHolder.l.setBackgroundResource(2130843120);
         paramInt = 0;
         i = 0;
       }
@@ -106,11 +106,11 @@ public class QIMFollowerAddBuilder
         localQIMFollowerAddHolder.a.setText("查看");
         localQIMFollowerAddHolder.a.setVisibility(0);
         localQIMFollowerAddHolder.a.setOnClickListener(this);
-        localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494230);
+        localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494237);
         if (localObject != null) {
           localQIMFollowerAddHolder.a.setTextColor((ColorStateList)localObject);
         }
-        localQIMFollowerAddHolder.a.setBackgroundResource(2130838505);
+        localQIMFollowerAddHolder.a.setBackgroundResource(2130838509);
         localQIMFollowerAddHolder.jdField_f_of_type_JavaLangString = String.valueOf(localQIMFollwerAdd.uin);
         localQIMFollowerAddHolder.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqAdapterSystemMsgListAdapter.a(1, String.valueOf(localQIMFollwerAdd.uin)));
         return paramView;
@@ -120,10 +120,10 @@ public class QIMFollowerAddBuilder
         localQIMFollowerAddHolder.h.setVisibility(8);
         break label231;
         label569:
-        localQIMFollowerAddHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838581);
+        localQIMFollowerAddHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838585);
         break label251;
-        i = 2130843020;
-        localQIMFollowerAddHolder.l.setBackgroundResource(2130843021);
+        i = 2130843119;
+        localQIMFollowerAddHolder.l.setBackgroundResource(2130843120);
         paramInt = i;
         if (!AppSetting.b) {
           break label735;
@@ -133,8 +133,8 @@ public class QIMFollowerAddBuilder
         paramInt = i;
         i = j;
         break label306;
-        i = 2130843018;
-        localQIMFollowerAddHolder.l.setBackgroundResource(2130843019);
+        i = 2130843117;
+        localQIMFollowerAddHolder.l.setBackgroundResource(2130843118);
         paramInt = i;
         if (!AppSetting.b) {
           break label735;
@@ -164,7 +164,7 @@ public class QIMFollowerAddBuilder
   
   protected void a()
   {
-    ThreadManager.postImmediately(new wgo(this), null, true);
+    ThreadManager.postImmediately(new wjt(this), null, true);
   }
   
   public void onClick(View paramView)
@@ -173,7 +173,7 @@ public class QIMFollowerAddBuilder
     {
     default: 
       a(paramView);
-    case 2131366517: 
+    case 2131366544: 
       return;
     }
     ((FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(216)).a(this.jdField_a_of_type_AndroidContentContext, null);

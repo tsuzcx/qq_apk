@@ -109,26 +109,26 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xca.submsgtype0xca.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0xca.submsgtype0xca.MsgContent;
 import tencent.im.s2c.msgtype0x210.submsgtype0xdc.submsgtype0xdc.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0xdc.submsgtype0xdc.MsgContent;
-import ygs;
-import ygt;
-import ygu;
-import ygv;
-import ygw;
-import ygx;
-import ygy;
-import ygz;
-import yha;
-import yhb;
-import yhc;
-import yhd;
-import yhe;
-import yhf;
-import yhg;
-import yhh;
-import yhi;
-import yhj;
-import yhk;
-import yhl;
+import yjz;
+import yka;
+import ykb;
+import ykc;
+import ykd;
+import yke;
+import ykf;
+import ykg;
+import ykh;
+import yki;
+import ykj;
+import ykk;
+import ykl;
+import ykm;
+import ykn;
+import yko;
+import ykp;
+import ykq;
+import ykr;
+import yks;
 
 public class ApolloManager
   implements Manager
@@ -161,7 +161,7 @@ public class ApolloManager
   private static String m;
   public long a;
   public Handler a;
-  private QQLruCache jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new ygs(this, 2009, 1024, ApolloBaseInfo.calcSelfMemorySize());
+  private QQLruCache jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new yjz(this, 2009, 1024, ApolloBaseInfo.calcSelfMemorySize());
   private ApolloGameNormalStartHandler jdField_a_of_type_ComTencentMobileqqApolloApolloGameNormalStartHandler;
   ApolloPanelManager jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager;
   IApolloAIListener jdField_a_of_type_ComTencentMobileqqApolloAiIApolloAIListener;
@@ -171,24 +171,24 @@ public class ApolloManager
   public QQAppInterface a;
   private ApolloBaseInfo jdField_a_of_type_ComTencentMobileqqDataApolloBaseInfo;
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new yhh(this);
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new yko(this);
   private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new yhd(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ykk(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  Comparator jdField_a_of_type_JavaUtilComparator = new yhc(this);
+  Comparator jdField_a_of_type_JavaUtilComparator = new ykj(this);
   public HashMap a;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public JSONObject a;
-  private yhl jdField_a_of_type_Yhl;
+  private yks jdField_a_of_type_Yks;
   public DownloadListener b;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new yhf(this);
+  private Runnable jdField_b_of_type_JavaLangRunnable = new ykm(this);
   private WeakReference jdField_b_of_type_JavaLangRefWeakReference;
   private HashSet jdField_b_of_type_JavaUtilHashSet = new HashSet();
   private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private Runnable jdField_c_of_type_JavaLangRunnable = new yhg(this);
+  private Runnable jdField_c_of_type_JavaLangRunnable = new ykn(this);
   private WeakReference jdField_c_of_type_JavaLangRefWeakReference;
   public boolean c;
   public boolean d;
@@ -218,8 +218,8 @@ public class ApolloManager
     this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
     this.jdField_c_of_type_Boolean = true;
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_ComTencentMobileqqVipDownloadListener = new yhi(this);
-    this.jdField_a_of_type_AndroidOsHandler = new ygv(this, ThreadManager.getSubThreadLooper());
+    this.jdField_b_of_type_ComTencentMobileqqVipDownloadListener = new ykp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ykc(this, ThreadManager.getSubThreadLooper());
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     jdField_c_of_type_Int = -1;
     jdField_a_of_type_JavaUtilVector.clear();
@@ -233,9 +233,9 @@ public class ApolloManager
       ThreadManager.getFileThreadHandler().post(this.jdField_b_of_type_JavaLangRunnable);
     }
     this.jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager = new ApolloPanelManager(paramQQAppInterface);
-    this.jdField_a_of_type_Yhl = new yhl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ApolloGameStateMachine.a().deleteObserver(this.jdField_a_of_type_Yhl);
-    ApolloGameStateMachine.a().addObserver(this.jdField_a_of_type_Yhl);
+    this.jdField_a_of_type_Yks = new yks(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ApolloGameStateMachine.a().deleteObserver(this.jdField_a_of_type_Yks);
+    ApolloGameStateMachine.a().addObserver(this.jdField_a_of_type_Yks);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameNormalStartHandler = new ApolloGameNormalStartHandler(paramQQAppInterface);
   }
@@ -310,7 +310,7 @@ public class ApolloManager
       }
       return n;
       label192:
-      ThreadManager.getSubThreadHandler().post(new ygx(paramString2, paramQQAppInterface));
+      ThreadManager.getSubThreadHandler().post(new yke(paramString2, paramQQAppInterface));
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -690,7 +690,7 @@ public class ApolloManager
   
   public static void a(AppInterface paramAppInterface)
   {
-    ThreadManager.getFileThreadHandler().post(new ygw(paramAppInterface));
+    ThreadManager.getFileThreadHandler().post(new ykd(paramAppInterface));
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -1363,9 +1363,9 @@ public class ApolloManager
   
   private static void i()
   {
-    yhe localyhe = new yhe();
+    ykl localykl = new ykl();
     if (!jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) {
-      ThreadManager.post(localyhe, 8, null, false);
+      ThreadManager.post(localykl, 8, null, false);
     }
   }
   
@@ -1941,7 +1941,7 @@ public class ApolloManager
   public ApolloResDownloader.OnApolloDownLoadListener a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnApolloDownLoadListener == null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnApolloDownLoadListener = new ygt(this);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnApolloDownLoadListener = new yka(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnApolloDownLoadListener;
   }
@@ -2075,7 +2075,7 @@ public class ApolloManager
     if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.containsKey(paramString)) {
       return (ApolloBaseInfo)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
     }
-    ThreadManager.getSubThreadHandler().post(new ygy(this, paramString));
+    ThreadManager.getSubThreadHandler().post(new ykf(this, paramString));
     return null;
   }
   
@@ -2380,7 +2380,7 @@ public class ApolloManager
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    ThreadManager.post(new yhj(this, paramBoolean, paramInt), 5, null, false);
+    ThreadManager.post(new ykq(this, paramBoolean, paramInt), 5, null, false);
   }
   
   public void a(Context paramContext)
@@ -2441,7 +2441,7 @@ public class ApolloManager
   
   public void a(DrawerPushItem paramDrawerPushItem)
   {
-    ThreadManager.post(new ygz(this, paramDrawerPushItem), 5, null, true);
+    ThreadManager.post(new ykg(this, paramDrawerPushItem), 5, null, true);
   }
   
   public void a(DrawerPushItem paramDrawerPushItem, QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
@@ -2507,7 +2507,7 @@ public class ApolloManager
     } while (!QLog.isColorLevel());
     QLog.d("ApolloManager", 2, "doAfterOpenAIO: apollo function is not opened status: " + b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
     return;
-    ThreadManager.getSubThreadHandler().post(new yhk(this, paramSessionInfo));
+    ThreadManager.getSubThreadHandler().post(new ykr(this, paramSessionInfo));
   }
   
   public void a(ApolloManager.IDrawerGameBoxStatus paramIDrawerGameBoxStatus)
@@ -2665,7 +2665,7 @@ public class ApolloManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.executeOnSubThread(new yhb(this, paramString));
+    ThreadManager.executeOnSubThread(new yki(this, paramString));
   }
   
   public void a(String paramString, int paramInt)
@@ -2687,7 +2687,7 @@ public class ApolloManager
     if ((paramList == null) || (paramList.isEmpty()) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new ygu(this, paramList));
+    ThreadManager.getSubThreadHandler().post(new ykb(this, paramList));
   }
   
   public void a(List paramList, String paramString)
@@ -3742,8 +3742,8 @@ public class ApolloManager
         {
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("chat_tool_apollo_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true).commit();
           localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
-          if (!((SharedPreferences)localObject3).getBoolean("7.6.0" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false)) {
-            ((SharedPreferences)localObject3).edit().putBoolean("7.6.0" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true).commit();
+          if (!((SharedPreferences)localObject3).getBoolean("7.6.3" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false)) {
+            ((SharedPreferences)localObject3).edit().putBoolean("7.6.3" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true).commit();
           }
           if (localObject1 != null) {
             ((SharedPreferences)localObject3).edit().putInt("apollo_json_version" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (int)(((JSONObject)localObject1).optLong("timeStamp") / 1000L)).commit();
@@ -4042,7 +4042,7 @@ public class ApolloManager
           if (localJSONObject != null) {
             ((SharedPreferences)localObject1).edit().putInt("apollo_game_version" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (int)localJSONObject.optLong("timestamp")).commit();
           }
-          ((SharedPreferences)localObject1).edit().putBoolean("force_parse_gamejson_once7.6.0", true).commit();
+          ((SharedPreferences)localObject1).edit().putBoolean("force_parse_gamejson_once7.6.3", true).commit();
           return true;
         }
       }
@@ -4101,7 +4101,7 @@ public class ApolloManager
     if (QLog.isColorLevel()) {
       QLog.d("ApolloManager", 2, "[removeAllS2CPushItem]");
     }
-    ThreadManager.post(new yha(this), 5, null, true);
+    ThreadManager.post(new ykh(this), 5, null, true);
   }
   
   public void h()
@@ -4145,10 +4145,10 @@ public class ApolloManager
         this.jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager.c();
         this.jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager = null;
       }
-      if (this.jdField_a_of_type_Yhl != null)
+      if (this.jdField_a_of_type_Yks != null)
       {
-        ApolloGameStateMachine.a().deleteObserver(this.jdField_a_of_type_Yhl);
-        this.jdField_a_of_type_Yhl = null;
+        ApolloGameStateMachine.a().deleteObserver(this.jdField_a_of_type_Yks);
+        this.jdField_a_of_type_Yks = null;
       }
       ApolloGameStateMachine.d();
       ApolloGameUtil.a();

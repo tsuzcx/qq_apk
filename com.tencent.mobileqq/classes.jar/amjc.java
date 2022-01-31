@@ -1,27 +1,29 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.buscard.BuscardPluginRemoteCommand;
 
 public class amjc
-  implements Runnable
+  extends SosoInterface.OnLocationListener
 {
-  public amjc(QZoneShareActivity paramQZoneShareActivity, int paramInt) {}
-  
-  public void run()
+  public amjc(BuscardPluginRemoteCommand paramBuscardPluginRemoteCommand, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) == null) {
-      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, new QQProgressDialog(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.getResources().getDimensionPixelSize(2131558448)));
-    }
-    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).c(this.jdField_a_of_type_Int);
-    try
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).show();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QZoneShare", 1, localException.getMessage());
+      String str = paramSosoLbsInfo.a.d;
+      paramSosoLbsInfo = paramSosoLbsInfo.a.e;
+      this.jdField_a_of_type_AndroidOsBundle.putString("province", str);
+      this.jdField_a_of_type_AndroidOsBundle.putString("city", paramSosoLbsInfo);
+      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
+      }
     }
   }
 }

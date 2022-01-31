@@ -1,30 +1,33 @@
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import java.lang.ref.WeakReference;
 
-class taj
+public class taj
   implements Runnable
 {
-  taj(tai paramtai) {}
+  private int jdField_a_of_type_Int;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public taj(int paramInt, WeakReference paramWeakReference)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+  }
   
   public void run()
   {
-    try
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      Thread.sleep(1500L);
-      this.a.a.a.a();
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
+      FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localFormSimpleItem != null) {
+        localFormSimpleItem.setRightText(localFormSimpleItem.getResources().getString(this.jdField_a_of_type_Int));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     taj
  * JD-Core Version:    0.7.0.1
  */

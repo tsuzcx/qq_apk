@@ -1,16 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.VideoInfoObserver;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.QQStoryMsgHolder;
+import com.tencent.qphone.base.util.QLog;
 
 public class vdw
-  implements ValueAnimator.AnimatorUpdateListener
+  extends PlayModeUtils.VideoInfoObserver
 {
-  public vdw(SixCombolEffectView paramSixCombolEffectView) {}
+  public vdw(QQStoryItemBuilder paramQQStoryItemBuilder, QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder, long paramLong, boolean paramBoolean) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder requestVideoInfo: errorCode = " + paramInt + ", storyVideoItem = " + paramStoryVideoItem);
+    }
+    if ((paramInt == 0) && (paramStoryVideoItem != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_b_of_type_Long, paramStoryVideoItem, this.jdField_b_of_type_Boolean);
+      return;
+    }
+    if (paramInt == 10100)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QQStoryItemBuilder", 2, "onGetVideo video has deleted");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_b_of_type_Long);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("QQStoryItemBuilder", 2, "onGetVideo video error");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_b_of_type_Long);
   }
 }
 

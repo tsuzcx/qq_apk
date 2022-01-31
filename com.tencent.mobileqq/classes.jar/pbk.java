@@ -1,25 +1,16 @@
-import android.app.Activity;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.webviewplugin.Share;
-import java.util.HashMap;
+import com.tencent.biz.webviewplugin.NearbyTroopsPlugin;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.OnAnimationPlayEndListener;
 
 public class pbk
-  extends Thread
+  implements AIOAnimationControlManager.OnAnimationPlayEndListener
 {
-  public pbk(Share paramShare, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  public pbk(NearbyTroopsPlugin paramNearbyTroopsPlugin, String paramString) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2)
   {
-    Object localObject = new HashMap();
-    if (this.jdField_a_of_type_Boolean) {
-      ((HashMap)localObject).put("url", this.jdField_a_of_type_JavaLangString);
-    }
-    localObject = HttpUtil.a((HashMap)localObject);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (localObject = (String)((HashMap)localObject).get("url");; localObject = this.jdField_a_of_type_JavaLangString)
-    {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a.runOnUiThread(new pbl(this, (String)localObject));
-      return;
+    if (AIOAnimationControlManager.jdField_a_of_type_JavaLangString.equals(paramString2)) {
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNearbyTroopsPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
     }
   }
 }

@@ -1,67 +1,42 @@
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatObserver;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class ssi
-  extends HotChatObserver
+  implements Runnable
 {
-  public ssi(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public ssi(FriendProfileImageAvatar paramFriendProfileImageAvatar, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatAnnounceActivity", 2, "onSetUserCreateHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString2);
-    }
-    HotChatAnnounceActivity.a(this.a);
-    if ((paramBoolean) && (paramInt == 0))
+    localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.getEntityManagerFactory().createEntityManager();
+    if (localEntityManager != null) {}
+    try
     {
-      paramString1 = ((HotChatManager)this.a.app.getManager(59)).a(this.a.a);
-      if (paramString1 != null)
+      Setting localSetting = (Setting)localEntityManager.a(Setting.class, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.d);
+      if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
       {
-        paramString1.memo = this.a.d;
-        paramString1.memoUrl = this.a.e;
-        paramString1.memoShowed = false;
+        localSetting.headImgTimestamp = 0L;
+        localSetting.updateTimestamp = 0L;
+        localEntityManager.a(localSetting);
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.a(localSetting);
       }
-      QQToast.a(this.a, 2, "设置公告成功", 0).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      this.a.finish();
-      return;
     }
-    paramString1 = "设置公告失败";
-    if (paramInt == 1282) {
-      paramString1 = "公告含有敏感词，设置失败";
-    }
-    QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatAnnounceActivity", 2, "onSetHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString);
-    }
-    HotChatAnnounceActivity.a(this.a);
-    if ((paramBoolean) && (paramInt == 0))
+    catch (Exception localException)
     {
-      paramArrayOfByte = ((HotChatManager)this.a.app.getManager(59)).a(this.a.a);
-      if (paramArrayOfByte != null)
+      for (;;)
       {
-        paramArrayOfByte.memo = this.a.d;
-        paramArrayOfByte.memoUrl = this.a.e;
-        paramArrayOfByte.memoShowed = false;
+        localEntityManager.a();
       }
-      QQToast.a(this.a, 2, "设置公告成功", 0).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      this.a.finish();
-      return;
     }
-    paramArrayOfByte = "设置公告失败";
-    if (paramInt == 1288) {
-      paramArrayOfByte = "公告含有敏感词，设置失败";
+    finally
+    {
+      localEntityManager.a();
     }
-    QQToast.a(this.a, 1, paramArrayOfByte, 0).b(this.a.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b);
   }
 }
 

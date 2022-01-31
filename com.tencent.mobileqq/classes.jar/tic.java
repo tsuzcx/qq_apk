@@ -1,17 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.dingdong.data.OfficeCenterSharedPref;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class tic
-  implements Runnable
+class tic
+  implements View.OnLongClickListener
 {
-  public tic(QQSettingMe paramQQSettingMe) {}
+  tic(tib paramtib, long paramLong) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    OfficeCenterSharedPref.a().b("officecenter_red_point_flag_" + localQQAppInterface.getLongAccountUin(), false);
+    DialogUtil.a(this.jdField_a_of_type_Tib.a, 230).setTitle(this.jdField_a_of_type_Tib.a.getString(2131434941)).setItems(2131296268, new tid(this)).show();
+    return true;
   }
 }
 

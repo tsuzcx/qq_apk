@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.PhotoCaptureResult;
 
 public class ahic
   implements Runnable
 {
-  public ahic(MessageSearchEngine paramMessageSearchEngine, String paramString) {}
+  public ahic(CameraCaptureFragment paramCameraCaptureFragment, CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.a(this.jdField_a_of_type_JavaLangString);
+    Toast.makeText(BaseApplicationImpl.getContext(), "onPhotoCaptured : " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$PhotoCaptureResult.a, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahic
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
 
 class vnp
   implements Runnable
 {
-  vnp(vnl paramvnl, String paramString1, String paramString2) {}
+  vnp(vno paramvno) {}
   
   public void run()
   {
-    ((ArkAppCenter)this.jdField_a_of_type_Vnl.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(120)).a().b(this.jdField_a_of_type_JavaLangString, this.b);
-    QQToast.a(this.jdField_a_of_type_Vnl.a.a.jdField_a_of_type_AndroidContentContext, "应用创建成功...", 0).a();
+    this.a.a.b(2131435874);
+    ReportController.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
+    this.a.a.b();
   }
 }
 

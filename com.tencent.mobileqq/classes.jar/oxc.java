@@ -1,18 +1,29 @@
-import android.content.Context;
-import android.widget.GridView;
-import com.tencent.biz.troopgift.GridListViewPager;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.qphone.base.util.QLog;
 
 public class oxc
-  extends GridView
+  extends oxo
 {
-  public oxc(GridListViewPager paramGridListViewPager, Context paramContext)
+  public oxc(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, String paramString1, String paramString2)
   {
-    super(paramContext);
+    super(paramVideoCombineHelper);
   }
   
-  public void setOverScrollMode(int paramInt)
+  public void b(boolean paramBoolean)
   {
-    super.setOverScrollMode(2);
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a));
+      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a = System.currentTimeMillis();
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.b, false, "cmobine auido video done.");
   }
 }
 

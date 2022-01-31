@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.text;
 
-import ahzs;
-import ahzt;
+import ainv;
+import ainw;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -176,7 +176,7 @@ public class TextUtils
           return ((Drawable.ConstantState)((Pair)localObject).first).newDrawable(localResources);
         }
       }
-      ThreadManager.executeOnFileThread(new ahzs(paramInt, paramLoadSysEmojiCallback));
+      ThreadManager.executeOnFileThread(new ainv(paramInt, paramLoadSysEmojiCallback));
       return null;
     }
     if ((paramInt >= 0) && (paramInt < EmotcationConstants.jdField_b_of_type_Int)) {}
@@ -189,7 +189,7 @@ public class TextUtils
         if ((localObject != null) && (((Pair)localObject).first != null)) {
           return ((Drawable.ConstantState)((Pair)localObject).first).newDrawable(localResources);
         }
-        ThreadManager.executeOnFileThread(new ahzt(paramInt, paramLoadSysEmojiCallback));
+        ThreadManager.executeOnFileThread(new ainw(paramInt, paramLoadSysEmojiCallback));
         return null;
       }
       return BaseApplicationImpl.getContext().getResources().getDrawable(paramInt);
@@ -1351,7 +1351,7 @@ public class TextUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.text.TextUtils
  * JD-Core Version:    0.7.0.1
  */

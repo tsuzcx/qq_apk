@@ -1,37 +1,20 @@
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import com.tencent.open.downloadnew.common.PackageInstallReceiver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
 
 public class aktr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aktr(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
+  public aktr(CustomedTabWidget paramCustomedTabWidget) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED >> " + this.jdField_a_of_type_JavaLangString);
-    DownloadInfo localDownloadInfo = DownloadDBHelper.a().a(this.b);
-    if (localDownloadInfo != null)
-    {
-      LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.b + " " + localDownloadInfo.d);
-      DownloadManager.a().d(localDownloadInfo);
-      AppCircleReportManager.a().a(101, localDownloadInfo);
-    }
-    for (;;)
-    {
-      DownloadManager.a().a(6, localDownloadInfo);
-      return;
-      localDownloadInfo = new DownloadInfo("", this.b);
-      LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
-    }
+    this.a.setCurrentTab(this.a.indexOfChild(paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aktr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class lkk
-  implements ReadInJoyCommentUtils.CreateCommentInterface
+class lkk
+  implements ViewBase.OnClickListener
 {
-  public lkk(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment, String paramString) {}
+  lkk(lkh paramlkh, ViewBase paramViewBase) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(ViewBase paramViewBase)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment.getActivity(), 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment.getString(2131438860), 0).a();
-  }
-  
-  public void a(String paramString, CommentInfo paramCommentInfo)
-  {
-    ReadInJoyCommentUtils.a(ReadInJoySecondCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment), this.jdField_a_of_type_JavaLangString);
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment.getActivity(), 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment.getString(2131438859), 0).a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment.a(paramString, null, 1, paramCommentInfo);
-    ReadInJoySecondCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment).notifyDataSetChanged();
-    ReadInJoySecondCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment);
+    ReadInJoyUtils.a(this.jdField_a_of_type_Lkh.a.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.b());
   }
 }
 

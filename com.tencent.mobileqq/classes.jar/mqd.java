@@ -1,24 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
+import com.tencent.mobileqq.app.UniteSearchHandler;
 
-public class mqd
-  implements DialogInterface.OnClickListener
+class mqd
+  implements Runnable
 {
-  public mqd(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  mqd(mqc parammqc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new mqe(this), 10, null, true);
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.jdField_a_of_type_Boolean) {
       return;
     }
-    paramDialogInterface.dismiss();
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.e();
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler = new UniteSearchHandler(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

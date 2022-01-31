@@ -1,18 +1,23 @@
-import dov.com.qq.im.capture.QIMCaptureController;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.DiscoverTab;
 
-public class amum
-  implements Runnable
+public final class amum
+  implements Parcelable.Creator
 {
-  public amum(QIMCaptureController paramQIMCaptureController) {}
-  
-  public void run()
+  public DiscoverTab a(Parcel paramParcel)
   {
-    QIMCaptureController.a(this.a, true);
+    return new DiscoverTab(paramParcel);
+  }
+  
+  public DiscoverTab[] a(int paramInt)
+  {
+    return new DiscoverTab[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amum
  * JD-Core Version:    0.7.0.1
  */

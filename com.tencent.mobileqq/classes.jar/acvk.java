@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.ChangeNewPath;
 
-class acvk
-  implements Runnable
+public class acvk
+  implements FileManagerRSWorker.ChangeNewPath
 {
-  acvk(acvj paramacvj) {}
-  
-  public void run()
-  {
-    this.a.a.a.a(VideoFilePresenter.a(this.a.a));
-    VideoFilePresenter.b(this.a.a);
-    this.a.a.a.d(VideoFilePresenter.a(this.a.a));
-  }
+  public acvk(FileManagerRSWorker paramFileManagerRSWorker) {}
 }
 
 

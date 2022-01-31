@@ -1,19 +1,34 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView.OnInnerListRefreshListener;
-import com.tencent.biz.qqstory.storyHome.memory.view.adapter.MemoriesInnerListAdapter;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
+import com.tencent.biz.qqstory.playmode.child.DiscoverPlayMode.PlayVideoEvent;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class nwc
-  implements HorizontalListView.OnScrollStateChangedListener
+  extends UIBaseEventReceiver
 {
-  public nwc(MemoriesInnerListView paramMemoriesInnerListView) {}
-  
-  public void a(int paramInt)
+  public nwc(DiscoverPresenter paramDiscoverPresenter)
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(MemoriesInnerListView.a(this.a).a);
-    }
+    super(paramDiscoverPresenter);
   }
+  
+  public void a(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPlayMode.PlayVideoEvent paramPlayVideoEvent)
+  {
+    if (DiscoverPresenter.a.size() == 0) {}
+    while ((DiscoverPresenter)((WeakReference)DiscoverPresenter.a.get(DiscoverPresenter.a.size() - 1)).get() != paramDiscoverPresenter) {
+      return;
+    }
+    DiscoverPresenter.a(paramDiscoverPresenter).a(paramPlayVideoEvent);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DiscoverPlayMode.PlayVideoEvent.class;
+  }
+  
+  public void b(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPlayMode.PlayVideoEvent paramPlayVideoEvent) {}
 }
 
 

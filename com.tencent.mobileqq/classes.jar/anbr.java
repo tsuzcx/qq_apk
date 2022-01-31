@@ -1,20 +1,24 @@
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI.FacePoiSearchUIListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
+import cooperation.qzone.webviewplugin.QZonePassivePraiseJsPlugin;
 
 public class anbr
-  implements FacePoiSearchUI.FacePoiSearchUIListener
+  implements QzoneGiftFullScreenViewController.GiftFullScreenPlayListener
 {
-  public anbr(EditProviderPart paramEditProviderPart) {}
+  public anbr(QZonePassivePraiseJsPlugin paramQZonePassivePraiseJsPlugin, String paramString) {}
   
-  public void aB_()
+  public void a()
   {
-    EditProviderPart.a(this.a).e();
+    if (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZonePassivePraiseJsPlugin.a != null)
+    {
+      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playAnimationFinish:1})";
+      this.jdField_a_of_type_CooperationQzoneWebviewpluginQZonePassivePraiseJsPlugin.a.callJs(str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbr
  * JD-Core Version:    0.7.0.1
  */

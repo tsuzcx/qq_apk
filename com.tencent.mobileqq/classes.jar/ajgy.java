@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
-class ajgy
+public class ajgy
   implements Runnable
 {
-  ajgy(ajgx paramajgx) {}
+  public ajgy(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
   public void run()
   {
-    this.a.a.b();
+    PublishHomeWorkFragment.a(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgy
  * JD-Core Version:    0.7.0.1
  */

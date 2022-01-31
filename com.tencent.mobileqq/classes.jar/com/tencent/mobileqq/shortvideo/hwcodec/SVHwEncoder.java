@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.hwcodec;
 
-import ahns;
+import aibu;
 import android.annotation.TargetApi;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodecInfo;
@@ -21,7 +21,7 @@ public class SVHwEncoder
   private double jdField_a_of_type_Double;
   private volatile float jdField_a_of_type_Float = 30.0F;
   public int a;
-  private ahns jdField_a_of_type_Ahns;
+  private aibu jdField_a_of_type_Aibu;
   private SVHwOutputNotify jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwOutputNotify;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
@@ -448,8 +448,8 @@ public class SVHwEncoder
   public void a(SVHwOutputNotify paramSVHwOutputNotify, SVHwDataSource paramSVHwDataSource, boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwOutputNotify = paramSVHwOutputNotify;
-    this.jdField_a_of_type_Ahns = new ahns(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 99000);
-    new Thread(this.jdField_a_of_type_Ahns, "encode_qq" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement()).start();
+    this.jdField_a_of_type_Aibu = new aibu(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 99000);
+    new Thread(this.jdField_a_of_type_Aibu, "encode_qq" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement()).start();
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -571,8 +571,8 @@ public class SVHwEncoder
   public void b(SVHwOutputNotify paramSVHwOutputNotify, SVHwDataSource paramSVHwDataSource, boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwOutputNotify = paramSVHwOutputNotify;
-    this.jdField_a_of_type_Ahns = new ahns(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 0);
-    this.jdField_a_of_type_Ahns.run();
+    this.jdField_a_of_type_Aibu = new aibu(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 0);
+    this.jdField_a_of_type_Aibu.run();
   }
   
   public void b(ArrayList paramArrayList)
@@ -623,7 +623,7 @@ public class SVHwEncoder
   public void e()
   {
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Ahns.f();
+    this.jdField_a_of_type_Aibu.f();
   }
   
   public void f()

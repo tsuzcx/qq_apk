@@ -1,28 +1,30 @@
-import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryScene;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class aeol
-  implements ActionSheet.OnButtonClickListener
+  implements WerewolvesHandler.Callback
 {
-  public aeol(PicBrowserGalleryScene paramPicBrowserGalleryScene, ActionSheet paramActionSheet, File paramFile, String paramString) {}
+  public aeol(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-    default: 
-      return;
-    case 0: 
-      AIOGalleryUtils.a(PicBrowserGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryScene), this.jdField_a_of_type_JavaIoFile, Utils.Crc64String(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
-      return;
+      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomInviteActivity.a = this.a.b;
     }
-    PicBrowserGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryScene, this.jdField_a_of_type_JavaLangString);
+    for (;;)
+    {
+      this.a.a(true);
+      return;
+      paramRspBody = this.a;
+      GameRoomInviteActivity.a = null;
+      paramRspBody.b = null;
+    }
   }
 }
 

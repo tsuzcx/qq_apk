@@ -51,7 +51,7 @@ public final class photo_tab_categroy_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_PHOTO.photo_tab_categroy_info
  * JD-Core Version:    0.7.0.1
  */

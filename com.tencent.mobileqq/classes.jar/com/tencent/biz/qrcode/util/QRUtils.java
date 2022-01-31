@@ -25,7 +25,7 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import mqq.app.NewIntent;
-import otf;
+import ouz;
 
 public class QRUtils
 {
@@ -1054,7 +1054,7 @@ public class QRUtils
       return;
     }
     paramString1 = paramString1.a();
-    paramString2 = new otf(paramQRCodeEncodeCallback);
+    paramString2 = new ouz(paramQRCodeEncodeCallback);
     paramContext = new NewIntent(paramContext, QRCodeServlet.class);
     paramContext.putExtra("skey", paramString3);
     paramContext.putExtra("d", paramString1);

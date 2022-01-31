@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import ajsw;
+import akhd;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -52,7 +52,7 @@ public class ClubContentJsonTask
     jdField_a_of_type_ArrayOfComTencentMobileqqVasClubContentJsonTask$TaskInfo = new ClubContentJsonTask.TaskInfo[] { jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo, c, d };
     jdField_a_of_type_JavaLangString = "http://i.gtimg.cn/xydata";
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ajsw();
+    jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new akhd();
   }
   
   public static int a(Context paramContext, String paramString)
@@ -607,7 +607,7 @@ public class ClubContentJsonTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ClubContentJsonTask
  * JD-Core Version:    0.7.0.1
  */

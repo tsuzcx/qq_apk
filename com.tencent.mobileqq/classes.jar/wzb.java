@@ -1,27 +1,29 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.content.Intent;
+import com.dataline.activities.LiteActivity;
+import com.dataline.util.DataLineReportUtil;
+import com.tencent.mobileqq.activity.qfileJumpActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class wzb
-  implements OnCompositionLoadedListener
+  implements Runnable
 {
-  public wzb(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public wzb(qfileJumpActivity paramqfileJumpActivity) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void run()
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    TroopUnAccalimedRedPacketList.a(this.a).setImageDrawable(localLottieDrawable);
+    DataLineReportUtil.r(this.a.app);
+    Intent localIntent = new Intent(this.a, LiteActivity.class);
+    localIntent.addFlags(67108864);
+    localIntent.putExtra("targetUin", this.a.a);
+    localIntent.putExtra("leftViewText", this.a.app.getApp().getString(2131433698));
+    this.a.startActivity(localIntent);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     wzb
  * JD-Core Version:    0.7.0.1
  */

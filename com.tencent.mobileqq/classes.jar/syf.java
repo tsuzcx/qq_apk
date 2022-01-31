@@ -1,20 +1,13 @@
-import com.tencent.biz.now.NowLiveManager;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.mobileqq.activity.Leba;
 
 public class syf
-  extends GetRedPointExObserver
+  implements Runnable
 {
-  public syf(MainFragment paramMainFragment) {}
+  public syf(Leba paramLeba, boolean paramBoolean) {}
   
-  protected void a(Object paramObject)
+  public void run()
   {
-    paramObject = MainFragment.a(this.a).a();
-    if ((paramObject == null) || (!paramObject.a)) {
-      return;
-    }
-    MainFragment.a(this.a);
+    Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba, this.jdField_a_of_type_Boolean);
   }
 }
 

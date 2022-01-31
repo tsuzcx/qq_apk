@@ -412,21 +412,21 @@ public class DynamicSplashManager
     //   331: invokespecial 325	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   334: invokespecial 328	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   337: invokespecial 331	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   340: astore 11
+    //   340: astore 12
     //   342: iconst_0
     //   343: istore_2
-    //   344: aload 11
+    //   344: aload 12
     //   346: astore_0
-    //   347: aload 11
+    //   347: aload 12
     //   349: invokevirtual 334	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   352: astore 12
-    //   354: aload 12
-    //   356: ifnull +600 -> 956
-    //   359: aload 11
+    //   352: astore 11
+    //   354: aload 11
+    //   356: ifnull +605 -> 961
+    //   359: aload 12
     //   361: astore_0
     //   362: invokestatic 19	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   365: ifeq +33 -> 398
-    //   368: aload 11
+    //   368: aload 12
     //   370: astore_0
     //   371: ldc 21
     //   373: iconst_2
@@ -435,13 +435,13 @@ public class DynamicSplashManager
     //   378: invokespecial 30	java/lang/StringBuilder:<init>	()V
     //   381: ldc_w 336
     //   384: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: aload 12
+    //   387: aload 11
     //   389: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   392: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   395: invokestatic 27	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   398: aload 11
+    //   398: aload 12
     //   400: astore_0
-    //   401: aload 12
+    //   401: aload 11
     //   403: invokevirtual 339	java/lang/String:length	()I
     //   406: istore_3
     //   407: iload_3
@@ -451,14 +451,14 @@ public class DynamicSplashManager
     //   413: istore 7
     //   415: iload_2
     //   416: iload 4
-    //   418: if_icmpeq +531 -> 949
+    //   418: if_icmpeq +536 -> 954
     //   421: iload 10
     //   423: istore 9
-    //   425: aload 11
+    //   425: aload 12
     //   427: astore_0
     //   428: invokestatic 19	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   431: ifeq +19 -> 450
-    //   434: aload 11
+    //   434: aload 12
     //   436: astore_0
     //   437: ldc 21
     //   439: iconst_2
@@ -468,31 +468,31 @@ public class DynamicSplashManager
     //   448: istore 9
     //   450: iload 9
     //   452: istore 8
-    //   454: aload 11
+    //   454: aload 12
     //   456: ifnull -428 -> 28
-    //   459: aload 11
+    //   459: aload 12
     //   461: invokevirtual 344	java/io/BufferedReader:close	()V
     //   464: iload 9
     //   466: ireturn
     //   467: astore_0
     //   468: iload 9
     //   470: ireturn
-    //   471: aload 11
+    //   471: aload 12
     //   473: astore_0
-    //   474: aload 12
+    //   474: aload 11
     //   476: ldc_w 346
     //   479: invokevirtual 350	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   482: astore 12
-    //   484: aload 11
+    //   482: astore 11
+    //   484: aload 12
     //   486: astore_0
-    //   487: aload 12
+    //   487: aload 11
     //   489: arraylength
     //   490: iconst_2
     //   491: if_icmpeq +9 -> 500
     //   494: iconst_0
     //   495: istore 7
     //   497: goto -82 -> 415
-    //   500: aload 11
+    //   500: aload 12
     //   502: astore_0
     //   503: new 29	java/lang/StringBuilder
     //   506: dup
@@ -501,17 +501,17 @@ public class DynamicSplashManager
     //   511: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   514: ldc 213
     //   516: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   519: aload 12
+    //   519: aload 11
     //   521: iconst_0
     //   522: aaload
     //   523: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   526: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   529: astore 13
-    //   531: aload 11
+    //   531: aload 12
     //   533: astore_0
     //   534: invokestatic 19	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   537: ifeq +33 -> 570
-    //   540: aload 11
+    //   540: aload 12
     //   542: astore_0
     //   543: ldc 21
     //   545: iconst_2
@@ -524,74 +524,74 @@ public class DynamicSplashManager
     //   561: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   564: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   567: invokestatic 27	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   570: aload 11
+    //   570: aload 12
     //   572: astore_0
     //   573: new 44	java/io/File
     //   576: dup
     //   577: aload 13
     //   579: invokespecial 60	java/io/File:<init>	(Ljava/lang/String;)V
     //   582: astore 13
-    //   584: aload 11
+    //   584: aload 12
     //   586: astore_0
     //   587: aload 13
     //   589: invokevirtual 63	java/io/File:exists	()Z
     //   592: ifne +27 -> 619
-    //   595: aload 11
+    //   595: aload 12
     //   597: astore_0
     //   598: invokestatic 19	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   601: ifeq +361 -> 962
-    //   604: aload 11
+    //   601: ifeq +366 -> 967
+    //   604: aload 12
     //   606: astore_0
     //   607: ldc 21
     //   609: iconst_2
     //   610: ldc_w 354
     //   613: invokestatic 27	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   616: goto +346 -> 962
-    //   619: aload 11
+    //   616: goto +351 -> 967
+    //   619: aload 12
     //   621: astore_0
     //   622: aload 13
     //   624: invokestatic 285	oicq/wlogin_sdk/tools/MD5:getFileMD5	(Ljava/io/File;)Ljava/lang/String;
     //   627: astore 13
     //   629: aload 13
     //   631: ifnull +91 -> 722
-    //   634: aload 11
+    //   634: aload 12
     //   636: astore_0
     //   637: aload 13
     //   639: invokevirtual 339	java/lang/String:length	()I
-    //   642: aload 12
+    //   642: aload 11
     //   644: iconst_1
     //   645: aaload
     //   646: invokevirtual 339	java/lang/String:length	()I
     //   649: if_icmpeq +73 -> 722
-    //   652: aload 11
+    //   652: aload 12
     //   654: astore_0
     //   655: aload 13
     //   657: invokevirtual 339	java/lang/String:length	()I
-    //   660: istore 6
-    //   662: aload 11
+    //   660: istore 5
+    //   662: aload 12
     //   664: astore_0
-    //   665: aload 12
+    //   665: aload 11
     //   667: iconst_1
     //   668: aaload
     //   669: invokevirtual 339	java/lang/String:length	()I
-    //   672: istore 5
+    //   672: istore 6
     //   674: iconst_0
     //   675: istore_3
     //   676: iload_3
-    //   677: iload 6
-    //   679: iload 5
+    //   677: iload 5
+    //   679: iload 6
     //   681: isub
     //   682: if_icmpge +40 -> 722
-    //   685: aload 11
+    //   685: aload 12
     //   687: astore_0
-    //   688: aload 12
+    //   688: aload 11
     //   690: iconst_1
     //   691: new 29	java/lang/StringBuilder
     //   694: dup
     //   695: invokespecial 30	java/lang/StringBuilder:<init>	()V
     //   698: ldc_w 356
     //   701: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   704: aload 12
+    //   704: aload 11
     //   706: iconst_1
     //   707: aaload
     //   708: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -604,19 +604,19 @@ public class DynamicSplashManager
     //   719: goto -43 -> 676
     //   722: aload 13
     //   724: ifnull +18 -> 742
-    //   727: aload 11
+    //   727: aload 12
     //   729: astore_0
     //   730: aload 13
-    //   732: aload 12
+    //   732: aload 11
     //   734: iconst_1
     //   735: aaload
     //   736: invokevirtual 289	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   739: ifne +64 -> 803
-    //   742: aload 11
+    //   742: aload 12
     //   744: astore_0
     //   745: invokestatic 19	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   748: ifeq +220 -> 968
-    //   751: aload 11
+    //   748: ifeq +225 -> 973
+    //   751: aload 12
     //   753: astore_0
     //   754: ldc 21
     //   756: iconst_2
@@ -629,7 +629,7 @@ public class DynamicSplashManager
     //   772: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   775: ldc_w 360
     //   778: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   781: aload 12
+    //   781: aload 11
     //   783: iconst_1
     //   784: aaload
     //   785: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -637,16 +637,16 @@ public class DynamicSplashManager
     //   791: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   794: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   797: invokestatic 27	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   800: goto +168 -> 968
+    //   800: goto +173 -> 973
     //   803: iload_2
     //   804: iconst_1
     //   805: iadd
     //   806: istore_2
-    //   807: aload 11
+    //   807: aload 12
     //   809: astore_0
     //   810: invokestatic 19	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   813: ifeq +32 -> 845
-    //   816: aload 11
+    //   816: aload 12
     //   818: astore_0
     //   819: ldc 21
     //   821: iconst_2
@@ -660,86 +660,93 @@ public class DynamicSplashManager
     //   839: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   842: invokestatic 27	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   845: goto -501 -> 344
-    //   848: astore_1
-    //   849: aconst_null
-    //   850: astore 11
+    //   848: astore 11
+    //   850: aconst_null
+    //   851: astore_1
     //   852: iconst_1
     //   853: istore 7
-    //   855: aload 11
-    //   857: astore_0
-    //   858: invokestatic 19	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   861: ifeq +35 -> 896
-    //   864: aload 11
-    //   866: astore_0
-    //   867: ldc 21
-    //   869: iconst_2
-    //   870: new 29	java/lang/StringBuilder
-    //   873: dup
-    //   874: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   877: ldc_w 366
-    //   880: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   883: aload_1
-    //   884: invokevirtual 276	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   887: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   890: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   893: invokestatic 279	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   896: iload 7
-    //   898: istore 8
-    //   900: aload 11
-    //   902: ifnull -874 -> 28
-    //   905: aload 11
-    //   907: invokevirtual 344	java/io/BufferedReader:close	()V
-    //   910: iload 7
-    //   912: ireturn
-    //   913: astore_0
-    //   914: iload 7
-    //   916: ireturn
-    //   917: astore_1
-    //   918: aconst_null
-    //   919: astore_0
-    //   920: aload_0
-    //   921: ifnull +7 -> 928
-    //   924: aload_0
-    //   925: invokevirtual 344	java/io/BufferedReader:close	()V
-    //   928: aload_1
-    //   929: athrow
-    //   930: astore_0
-    //   931: goto -3 -> 928
-    //   934: astore_1
-    //   935: goto -15 -> 920
-    //   938: astore_1
-    //   939: iconst_1
-    //   940: istore 7
-    //   942: goto -87 -> 855
-    //   945: astore_1
-    //   946: goto -91 -> 855
-    //   949: iload 7
-    //   951: istore 9
-    //   953: goto -503 -> 450
-    //   956: iconst_1
-    //   957: istore 7
-    //   959: goto -544 -> 415
-    //   962: iconst_0
-    //   963: istore 7
-    //   965: goto -550 -> 415
-    //   968: iconst_0
-    //   969: istore 7
-    //   971: goto -556 -> 415
+    //   855: aload_1
+    //   856: astore_0
+    //   857: invokestatic 19	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   860: ifeq +35 -> 895
+    //   863: aload_1
+    //   864: astore_0
+    //   865: ldc 21
+    //   867: iconst_2
+    //   868: new 29	java/lang/StringBuilder
+    //   871: dup
+    //   872: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   875: ldc_w 366
+    //   878: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   881: aload 11
+    //   883: invokevirtual 276	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   886: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   889: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   892: invokestatic 279	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   895: iload 7
+    //   897: istore 8
+    //   899: aload_1
+    //   900: ifnull -872 -> 28
+    //   903: aload_1
+    //   904: invokevirtual 344	java/io/BufferedReader:close	()V
+    //   907: iload 7
+    //   909: ireturn
+    //   910: astore_0
+    //   911: iload 7
+    //   913: ireturn
+    //   914: astore_1
+    //   915: aconst_null
+    //   916: astore_0
+    //   917: aload_0
+    //   918: ifnull +7 -> 925
+    //   921: aload_0
+    //   922: invokevirtual 344	java/io/BufferedReader:close	()V
+    //   925: aload_1
+    //   926: athrow
+    //   927: astore_0
+    //   928: goto -3 -> 925
+    //   931: astore_1
+    //   932: goto -15 -> 917
+    //   935: astore 11
+    //   937: iconst_1
+    //   938: istore 7
+    //   940: aload 12
+    //   942: astore_1
+    //   943: goto -88 -> 855
+    //   946: astore 11
+    //   948: aload 12
+    //   950: astore_1
+    //   951: goto -96 -> 855
+    //   954: iload 7
+    //   956: istore 9
+    //   958: goto -508 -> 450
+    //   961: iconst_1
+    //   962: istore 7
+    //   964: goto -549 -> 415
+    //   967: iconst_0
+    //   968: istore 7
+    //   970: goto -555 -> 415
+    //   973: iconst_0
+    //   974: istore 7
+    //   976: goto -561 -> 415
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	974	0	paramString1	String
-    //   0	974	1	paramString2	String
+    //   0	979	0	paramString1	String
+    //   0	979	1	paramString2	String
     //   119	717	2	i	int
     //   117	602	3	j	int
     //   283	136	4	k	int
-    //   672	10	5	m	int
-    //   660	22	6	n	int
-    //   4	966	7	bool1	boolean
-    //   8	891	8	bool2	boolean
-    //   423	529	9	bool3	boolean
+    //   660	22	5	m	int
+    //   672	10	6	n	int
+    //   4	971	7	bool1	boolean
+    //   8	890	8	bool2	boolean
+    //   423	534	9	bool3	boolean
     //   1	446	10	bool4	boolean
-    //   39	867	11	localObject1	Object
-    //   49	733	12	localObject2	Object
+    //   39	743	11	localObject1	Object
+    //   848	34	11	localException1	Exception
+    //   935	1	11	localException2	Exception
+    //   946	1	11	localException3	Exception
+    //   49	900	12	localObject2	Object
     //   129	642	13	localObject3	Object
     // Exception table:
     //   from	to	target	type
@@ -756,69 +763,69 @@ public class DynamicSplashManager
     //   236	259	848	java/lang/Exception
     //   278	318	848	java/lang/Exception
     //   318	342	848	java/lang/Exception
-    //   905	910	913	java/lang/Exception
-    //   31	67	917	finally
-    //   67	82	917	finally
-    //   101	118	917	finally
-    //   131	161	917	finally
-    //   168	196	917	finally
-    //   196	217	917	finally
-    //   236	259	917	finally
-    //   278	318	917	finally
-    //   318	342	917	finally
-    //   924	928	930	java/lang/Exception
-    //   347	354	934	finally
-    //   362	368	934	finally
-    //   371	398	934	finally
-    //   401	407	934	finally
-    //   428	434	934	finally
-    //   437	446	934	finally
-    //   474	484	934	finally
-    //   487	494	934	finally
-    //   503	531	934	finally
-    //   534	540	934	finally
-    //   543	570	934	finally
-    //   573	584	934	finally
-    //   587	595	934	finally
-    //   598	604	934	finally
-    //   607	616	934	finally
-    //   622	629	934	finally
-    //   637	652	934	finally
-    //   655	662	934	finally
-    //   665	674	934	finally
-    //   688	715	934	finally
-    //   730	742	934	finally
-    //   745	751	934	finally
-    //   754	800	934	finally
-    //   810	816	934	finally
-    //   819	845	934	finally
-    //   858	864	934	finally
-    //   867	896	934	finally
-    //   347	354	938	java/lang/Exception
-    //   362	368	938	java/lang/Exception
-    //   371	398	938	java/lang/Exception
-    //   401	407	938	java/lang/Exception
-    //   474	484	938	java/lang/Exception
-    //   487	494	938	java/lang/Exception
-    //   503	531	938	java/lang/Exception
-    //   534	540	938	java/lang/Exception
-    //   543	570	938	java/lang/Exception
-    //   573	584	938	java/lang/Exception
-    //   587	595	938	java/lang/Exception
-    //   598	604	938	java/lang/Exception
-    //   607	616	938	java/lang/Exception
-    //   622	629	938	java/lang/Exception
-    //   637	652	938	java/lang/Exception
-    //   655	662	938	java/lang/Exception
-    //   665	674	938	java/lang/Exception
-    //   688	715	938	java/lang/Exception
-    //   730	742	938	java/lang/Exception
-    //   745	751	938	java/lang/Exception
-    //   754	800	938	java/lang/Exception
-    //   810	816	938	java/lang/Exception
-    //   819	845	938	java/lang/Exception
-    //   428	434	945	java/lang/Exception
-    //   437	446	945	java/lang/Exception
+    //   903	907	910	java/lang/Exception
+    //   31	67	914	finally
+    //   67	82	914	finally
+    //   101	118	914	finally
+    //   131	161	914	finally
+    //   168	196	914	finally
+    //   196	217	914	finally
+    //   236	259	914	finally
+    //   278	318	914	finally
+    //   318	342	914	finally
+    //   921	925	927	java/lang/Exception
+    //   347	354	931	finally
+    //   362	368	931	finally
+    //   371	398	931	finally
+    //   401	407	931	finally
+    //   428	434	931	finally
+    //   437	446	931	finally
+    //   474	484	931	finally
+    //   487	494	931	finally
+    //   503	531	931	finally
+    //   534	540	931	finally
+    //   543	570	931	finally
+    //   573	584	931	finally
+    //   587	595	931	finally
+    //   598	604	931	finally
+    //   607	616	931	finally
+    //   622	629	931	finally
+    //   637	652	931	finally
+    //   655	662	931	finally
+    //   665	674	931	finally
+    //   688	715	931	finally
+    //   730	742	931	finally
+    //   745	751	931	finally
+    //   754	800	931	finally
+    //   810	816	931	finally
+    //   819	845	931	finally
+    //   857	863	931	finally
+    //   865	895	931	finally
+    //   347	354	935	java/lang/Exception
+    //   362	368	935	java/lang/Exception
+    //   371	398	935	java/lang/Exception
+    //   401	407	935	java/lang/Exception
+    //   474	484	935	java/lang/Exception
+    //   487	494	935	java/lang/Exception
+    //   503	531	935	java/lang/Exception
+    //   534	540	935	java/lang/Exception
+    //   543	570	935	java/lang/Exception
+    //   573	584	935	java/lang/Exception
+    //   587	595	935	java/lang/Exception
+    //   598	604	935	java/lang/Exception
+    //   607	616	935	java/lang/Exception
+    //   622	629	935	java/lang/Exception
+    //   637	652	935	java/lang/Exception
+    //   655	662	935	java/lang/Exception
+    //   665	674	935	java/lang/Exception
+    //   688	715	935	java/lang/Exception
+    //   730	742	935	java/lang/Exception
+    //   745	751	935	java/lang/Exception
+    //   754	800	935	java/lang/Exception
+    //   810	816	935	java/lang/Exception
+    //   819	845	935	java/lang/Exception
+    //   428	434	946	java/lang/Exception
+    //   437	446	946	java/lang/Exception
   }
 }
 

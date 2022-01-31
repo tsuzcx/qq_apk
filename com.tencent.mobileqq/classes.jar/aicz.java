@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 
 class aicz
   implements Runnable
 {
-  aicz(aicx paramaicx, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  aicz(aicy paramaicy) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aicx.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    RedBagVideoManager.c(this.a.a);
+    RedBagVideoManager.a(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aicz
  * JD-Core Version:    0.7.0.1
  */

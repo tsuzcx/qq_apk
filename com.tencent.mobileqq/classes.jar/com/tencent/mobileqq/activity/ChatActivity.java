@@ -210,7 +210,7 @@ public class ChatActivity
     getWindow().setFeatureInt(7, 2130968865);
     try
     {
-      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131364068).getParent());
+      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131364092).getParent());
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return true;
     }

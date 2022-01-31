@@ -1,76 +1,50 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.fling.ContentWrapView;
-import com.tencent.mobileqq.activity.fling.FlingTrackerHandler;
-import com.tencent.mobileqq.activity.fling.ScreenCapture;
-import com.tencent.mobileqq.activity.fling.TopLayout;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class wmj
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public wmj(FlingTrackerHandler paramFlingTrackerHandler) {}
+  public wmj(ContactsTroopAdapter paramContactsTroopAdapter, DiscussionHandler paramDiscussionHandler, DiscussionInfo paramDiscussionInfo, boolean paramBoolean, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject1 = (Activity)this.a.a.get();
-    if (localObject1 == null) {}
-    for (;;)
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo;
+    boolean bool;
+    if (!this.jdField_a_of_type_Boolean)
     {
+      bool = true;
+      paramView.a((DiscussionInfo)localObject, bool);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label154;
+      }
+      paramInt = 1;
+      label43:
+      paramView = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.uin;
+      ((BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a.a(22)).a(18, true, new Object[] { paramView, Integer.valueOf(paramInt), Integer.valueOf(0), null });
+      localObject = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a).a("dc00899").b("Grp_Dis_set").c("Grp_contactlist");
+      if (!this.jdField_a_of_type_Boolean) {
+        break label159;
+      }
+    }
+    label154:
+    label159:
+    for (paramView = "Clk_unstick";; paramView = "Clk_stick")
+    {
+      ((ReportTask)localObject).d(paramView).a();
       return;
-      Object localObject2;
-      if (!ScreenCapture.hasSnapFile((Context)localObject1))
-      {
-        if (FlingTrackerHandler.a(this.a) > 5) {
-          FlingTrackerHandler.a(this.a, 0);
-        }
-      }
-      else
-      {
-        localObject2 = (ViewGroup)((Activity)localObject1).getWindow().getDecorView();
-        if (FlingTrackerHandler.a(this.a) != null) {
-          break label303;
-        }
-        FlingTrackerHandler.a(this.a, ((ViewGroup)localObject2).getChildAt(0));
-        View localView = FlingTrackerHandler.a(this.a);
-        FlingTrackerHandler.a(this.a, new TopLayout((Context)localObject1));
-        FlingTrackerHandler.a(this.a).setBackgroundColor(-16777216);
-        TopLayout localTopLayout = FlingTrackerHandler.a(this.a);
-        localTopLayout.setOnDraggingListener(this.a);
-        ((ViewGroup)localObject2).addView(localTopLayout);
-        ((ViewGroup)localObject2).removeView(localView);
-        FlingTrackerHandler.a(this.a, new ContentWrapView((Context)localObject1));
-        localObject2 = FlingTrackerHandler.a(this.a);
-        ((ContentWrapView)localObject2).addView(localView);
-        localTopLayout.setContent((ContentWrapView)localObject2);
-        FlingTrackerHandler.a(this.a, new ImageView((Context)localObject1));
-        FlingTrackerHandler.a(this.a).setScaleType(ImageView.ScaleType.FIT_START);
-        localObject1 = FlingTrackerHandler.a(this.a);
-        ((ImageView)localObject1).setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-        localTopLayout.setBehind((View)localObject1);
-      }
-      while ((this.a.a()) && (FlingTrackerHandler.a(this.a) != null) && (FlingTrackerHandler.a(this.a).getDrawable() == null))
-      {
-        FlingTrackerHandler.a(this.a);
-        return;
-        FlingTrackerHandler.b(this.a);
-        FlingTrackerHandler.a(this.a).postDelayed(this, 100L);
-        return;
-        label303:
-        if (!this.a.a())
-        {
-          ((ViewGroup)localObject2).addView(FlingTrackerHandler.a(this.a));
-          ((ViewGroup)localObject2).removeView(FlingTrackerHandler.a(this.a));
-          FlingTrackerHandler.a(this.a).addView(FlingTrackerHandler.a(this.a));
-        }
-      }
+      bool = false;
+      break;
+      paramInt = 0;
+      break label43;
     }
   }
 }

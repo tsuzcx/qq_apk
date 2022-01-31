@@ -1,24 +1,27 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.troop.utils.TroopNameHelper;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class ajqe
-  implements View.OnClickListener
+public abstract class ajqe
+  implements Runnable
 {
-  public ajqe(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  public volatile boolean a;
   
-  public void onClick(View paramView)
+  public ajqe(TroopNameHelper paramTroopNameHelper) {}
+  
+  public abstract void a();
+  
+  public final void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    this.a = true;
+    a();
+    this.a = false;
+    this.b.a.remove(this);
+    TroopNameHelper.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqe
  * JD-Core Version:    0.7.0.1
  */

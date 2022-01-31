@@ -1,17 +1,37 @@
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.QQStoryFeedItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.QQStoryFeedItemBuilder.FeedViewHolder;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-class vdl
-  implements Runnable
+public class vdl
+  implements View.OnTouchListener
 {
-  vdl(vdk paramvdk, ProgressPieDrawable paramProgressPieDrawable) {}
+  public vdl(QQStoryFeedItemBuilder paramQQStoryFeedItemBuilder) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.setVisible(false, true);
-    if (QLog.isColorLevel()) {
-      QLog.i("ShortVideoRealItemBuilder", 2, "[onProgressCompleted] set ProgressPieDrawable invisible,ppd = " + this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable);
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return true;
+    case 0: 
+      QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
+      return true;
+    case 3: 
+      QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+      return true;
     }
+    QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+    paramView.performClick();
+    QQStoryFeedItemBuilder.a(this.a);
+    return true;
   }
 }
 

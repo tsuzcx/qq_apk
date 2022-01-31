@@ -1,37 +1,18 @@
-import com.tencent.biz.qqstory.network.handler.GetUserIconHandler;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.Iterator;
 
 public class nef
   implements Runnable
 {
-  public nef(GetUserIconHandler paramGetUserIconHandler) {}
+  public nef(MsgTabNodeListLoader paramMsgTabNodeListLoader, boolean paramBoolean) {}
   
   public void run()
   {
-    for (;;)
-    {
-      try
-      {
-        Thread.sleep(1000L);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        continue;
-      }
-      synchronized (GetUserIconHandler.a())
-      {
-        if (!GetUserIconHandler.a().isEmpty())
-        {
-          ArrayList localArrayList2 = new ArrayList(GetUserIconHandler.a());
-          GetUserIconHandler.a().clear();
-          GetUserIconHandler.a().clear();
-          this.a.a(localArrayList2);
-        }
-        this.a.a = false;
-        return;
-      }
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
+    while (localIterator.hasNext()) {
+      ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a(this.jdField_a_of_type_Boolean);
     }
   }
 }

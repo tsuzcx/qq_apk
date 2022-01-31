@@ -1,46 +1,23 @@
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoderUtils;
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout.CaptureButtonListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class aaej
-  implements ARCardCamereButtonLayout.CaptureButtonListener
+public final class aaej
+  implements Parcelable.Creator
 {
-  public aaej(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
-  
-  public void a()
+  public ARCommonConfigInfo a(Parcel paramParcel)
   {
-    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonPhoto");
+    return new ARCommonConfigInfo(paramParcel);
   }
   
-  public void b()
+  public ARCommonConfigInfo[] a(int paramInt)
   {
-    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonVideoStart");
-    if (!VideoEncoderUtils.a()) {
-      ARRecordUtils.a("该机型不支持录制，无法参与活动", true);
-    }
-    do
-    {
-      return;
-      if (!ARRecordUtils.a(104857600L))
-      {
-        ARRecordUtils.a("无法录制", "sdcard剩余空间不足");
-        return;
-      }
-    } while (this.a.b());
-    ARRecordUtils.a("录制间隔太短，请稍候重试", true);
-  }
-  
-  public void c()
-  {
-    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonVideoStop");
-    this.a.c();
+    return new ARCommonConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaej
  * JD-Core Version:    0.7.0.1
  */

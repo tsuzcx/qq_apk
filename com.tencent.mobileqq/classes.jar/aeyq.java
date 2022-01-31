@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl;
+import com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView;
 
-public final class aeyq
-  implements CsTask.OnCsError
+public class aeyq
+  implements Runnable
 {
-  public aeyq(NearbyMomentProtocol.ReportCallback paramReportCallback) {}
+  public aeyq(VideoInfoListenerImpl paramVideoInfoListenerImpl) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void run()
   {
-    QLog.i("NearbyMomentProtocol", 1, "report ,0xada error errorCode= " + paramInt);
-    if (this.a != null) {
-      this.a.a(false);
+    if (VideoInfoListenerImpl.a(this.a) != null) {
+      VideoInfoListenerImpl.a(this.a).setVisibility(0);
     }
   }
 }

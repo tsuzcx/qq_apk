@@ -1,22 +1,14 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.camera.AndroidCamera.CameraPreviewCallback;
-import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
 
 public class jhi
-  implements AndroidCamera.CameraPreviewCallback
 {
-  public jhi(CameraUtils paramCameraUtils) {}
+  public int a;
+  public String a;
   
-  public void a(byte[] paramArrayOfByte, int paramInt, long paramLong, boolean paramBoolean)
+  public jhi(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
-    {
-      this.a.b("onPreviewData");
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.a("onPreviewData");
-      }
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramArrayOfByte, paramInt, paramLong, paramBoolean);
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

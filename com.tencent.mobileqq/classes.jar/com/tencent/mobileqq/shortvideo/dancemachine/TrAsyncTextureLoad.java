@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import ahmn;
+import aiap;
 import android.annotation.TargetApi;
 import android.opengl.EGL14;
 import android.os.Handler;
@@ -69,7 +69,7 @@ public class TrAsyncTextureLoad
     }
     DanceLog.b("GLFrameImage", "asyncLoadBoyTexture initSuccess=" + bool);
     if (bool) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread.a().post(new ahmn(this));
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread.a().post(new aiap(this));
     }
   }
   

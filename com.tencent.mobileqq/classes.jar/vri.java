@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class vri
-  implements DialogInterface.OnClickListener
+  extends MessageObserver
 {
-  public vri(GameRoomChatPie paramGameRoomChatPie) {}
+  public vri(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void e(boolean paramBoolean)
+  {
+    super.e(paramBoolean);
+    this.a.a.sendEmptyMessage(0);
+  }
 }
 
 

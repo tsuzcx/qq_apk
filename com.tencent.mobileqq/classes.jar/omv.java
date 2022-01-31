@@ -1,17 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.utils.TranslucentTitleBarHelper;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
 
 public class omv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animation.AnimationListener
 {
-  public omv(TranslucentTitleBarHelper paramTranslucentTitleBarHelper) {}
+  public omv(StoryMultiFragmentPart paramStoryMultiFragmentPart) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    TranslucentTitleBarHelper.a(this.a, f);
+    if (StoryMultiFragmentPart.b(this.a) != null) {
+      StoryMultiFragmentPart.b(this.a).setVisibility(4);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,16 +1,65 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAiDictMgr;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.VasUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.wordsegment.WordSegment;
+import java.lang.ref.WeakReference;
+import java.util.Locale;
 
 public class aarz
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aarz(ARMapActivity paramARMapActivity) {}
+  public aarz(ArkAiDictMgr paramArkAiDictMgr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.b("ArkApp.Dict", "initWordData, qq app is null, return.");
+      return;
+    }
+    int j = -1;
+    for (int i = j;; i = j)
+    {
+      try
+      {
+        WordSegment.setLogCallback(new aasa(this));
+        i = j;
+        if (!ArkAiDictMgr.a(localQQAppInterface)) {
+          break label124;
+        }
+        i = j;
+        j = WordSegment.init(ArkAppCenter.e() + '/');
+        i = j;
+        ArkAppCenter.b("ArkApp.Dict", String.format("getWordInitState, WordSegment_Init State is opened", new Object[0]));
+        i = j;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        for (;;)
+        {
+          label124:
+          j = i;
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ArkApp.Dict", 2, "initWordData, UnsatisfiedLinkError, err:" + localUnsatisfiedLinkError.getMessage());
+            i = j;
+          }
+        }
+        ArkAiDictMgr.b = true;
+        VasUtils.a(localQQAppInterface);
+      }
+      if (i == 0) {
+        break;
+      }
+      ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "initWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));
+      return;
+      i = j;
+      ArkAppCenter.b("ArkApp.Dict", String.format("getWordInitState, WordSegment_Init State is closed", new Object[0]));
+    }
   }
 }
 

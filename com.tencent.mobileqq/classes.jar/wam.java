@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumObserver;
 
-public final class wam
-  implements Parcelable.Creator
+public class wam
+  extends TroopQZoneUploadAlbumObserver
 {
-  public ZhituImgResponse a(Parcel paramParcel)
-  {
-    return new ZhituImgResponse(paramParcel);
-  }
+  public wam(TroopChatPie paramTroopChatPie) {}
   
-  public ZhituImgResponse[] a(int paramInt)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    return new ZhituImgResponse[paramInt];
+    this.a.b(65536);
   }
 }
 

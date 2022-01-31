@@ -1,21 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter.CacheRefMap;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
+import android.widget.ImageView;
+import dov.com.qq.im.capture.adapter.ComboProviderGridAdapter;
 
 public class ankw
-  extends SoftReference
+  implements Runnable
 {
-  private Object jdField_a_of_type_JavaLangObject;
+  public ankw(ComboProviderGridAdapter paramComboProviderGridAdapter, ImageView paramImageView) {}
   
-  public ankw(NormalFaceAdapter.CacheRefMap paramCacheRefMap, Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue)
+  public void run()
   {
-    super(paramObject2, paramReferenceQueue);
-    this.jdField_a_of_type_JavaLangObject = paramObject1;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
 }
 

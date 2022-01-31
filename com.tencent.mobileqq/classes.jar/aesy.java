@@ -1,26 +1,20 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.mobileqq.nearby.now.location.LocationDataManager;
+import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import com.tencent.mobileqq.nearby.now.widget.ItemClickHelper;
+import java.util.List;
 
 public class aesy
-  implements View.OnClickListener
+  extends ItemClickHelper
 {
-  public aesy(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public aesy(SelectLocationFragment paramSelectLocationFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, View paramView)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity;
-    if (i >= NearbyPeopleProfileActivity.c)
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131437386), 0).a();
-      return;
-    }
-    NearbyProfileEditPanel.b(this.a);
+    SelectLocationFragment.a(this.a, paramInt);
+    SelectLocationFragment.b(this.a, (LocationInfo)SelectLocationFragment.a(this.a).a().get(SelectLocationFragment.b(this.a)));
+    SelectLocationFragment.a(this.a, SelectLocationFragment.b(this.a));
   }
 }
 

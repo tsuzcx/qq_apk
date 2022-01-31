@@ -30,7 +30,7 @@ public class RedPacketGameParticleHb
   public RedPacketGameParticleHb(Context paramContext)
   {
     this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131429613);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131429619);
   }
   
   public void a(long paramLong)

@@ -1,22 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
 public class tbo
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public tbo(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 4)
-    {
-      SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-      this.a.finish();
-    }
-    return false;
+    ((ViewGroup)paramView.getParent()).performClick();
   }
 }
 

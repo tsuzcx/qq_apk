@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rac;
+import rcs;
 
 public class UpdateManager
 {
@@ -386,7 +386,7 @@ public class UpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.kingkong.UpdateManager
  * JD-Core Version:    0.7.0.1
  */

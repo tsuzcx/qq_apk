@@ -1,47 +1,40 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
 public class orc
-  implements View.OnLongClickListener
+  extends Handler
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ore(this);
-  View jdField_a_of_type_AndroidViewView;
-  
-  public orc(QRCardActivity paramQRCardActivity) {}
-  
-  @SuppressLint({"ServiceCast", "NewApi"})
-  void a(String paramString)
+  public orc(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (Build.VERSION.SDK_INT < 11) {
-        ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
-      }
-    }
-    else {
-      return;
-    }
-    ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+    super(paramLooper);
   }
   
-  public boolean onLongClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramView == null) {
-      return false;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131375342, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131435076), 2130838301);
-    BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new ord(this, paramView));
-    return true;
+    Object localObject = paramMessage.obj;
+    String str;
+    if (paramMessage.what == 8) {
+      str = "GONE";
+    }
+    for (;;)
+    {
+      SLog.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
+      this.a.setVisibility(paramMessage.what);
+      return;
+      if (paramMessage.what == 0) {
+        str = "VISIBLE";
+      } else {
+        str = "INVISIBLE";
+      }
+    }
   }
 }
 

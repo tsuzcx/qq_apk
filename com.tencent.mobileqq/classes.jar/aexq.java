@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.LikeCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexq
-  implements NearbyMomentProtocol.LikeCallback
+  implements View.OnClickListener
 {
-  public aexq(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
+  public aexq(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

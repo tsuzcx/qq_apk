@@ -1,33 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
+import android.view.View;
+import android.view.animation.Transformation;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.widget.QQMapView;
 
 public class kjh
-  implements Runnable
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public kjh(AuthorizeConfig paramAuthorizeConfig, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
+  public kjh(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    try
-    {
-      if (this.jdField_a_of_type_MqqManagerTicketManager != null) {
-        if ((this.jdField_a_of_type_MqqManagerTicketManager.GetPskey(this.jdField_a_of_type_JavaLangString, 16L, this.jdField_a_of_type_ArrayOfJavaLangString, null) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_JavaLangString)))) {
-          break label78;
-        }
-      }
-      label78:
-      for (boolean bool = true;; bool = false)
-      {
-        QLog.d("AuthorizeConfig", 1, "pre hits result : " + bool);
-        return;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("AuthorizeConfig", 1, "preload k exception ");
+    paramValueAnimation = PoiMapActivity.k(this.a).getLayoutParams();
+    paramValueAnimation.height = paramInteger.intValue();
+    PoiMapActivity.l(this.a).setLayoutParams(paramValueAnimation);
+    paramValueAnimation = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+    paramValueAnimation.bottomMargin = (this.a.o - paramInteger.intValue());
+    this.a.b.setLayoutParams(paramValueAnimation);
+    int i = (paramInteger.intValue() - PoiMapActivity.f(this.a)) / 2;
+    if (i >= (this.a.o - PoiMapActivity.g(this.a)) / 2 + this.a.t) {
+      this.a.a(i, false);
     }
   }
 }

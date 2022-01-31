@@ -1,32 +1,43 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
-import com.tencent.mobileqq.util.FaceDrawable.OnLoadingStateChangeListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class ajhc
-  implements FaceDrawable.OnLoadingStateChangeListener
+public class ajhc
+  extends BroadcastReceiver
 {
-  ajhc(ajgz paramajgz) {}
+  public ajhc(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onLoadingStateChanged(int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 1) && ((this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a instanceof TroopGiftToPersonalSurfaceView)))
+    if (PublishHomeWorkFragment.a(this.a) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGiftAnimationController", 2, "onLoadingStateChanged: curState = " + paramInt2);
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label51;
       }
-      Bitmap localBitmap = TroopUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.receiverUin), null));
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a.b(new ajhd(this, localBitmap));
+      if (QLog.isColorLevel()) {
+        QLog.d("PublishHomeWorkFragment", 2, "receive action_recv_video_request");
+      }
+      PublishHomeWorkFragment.a(this.a).b(102);
     }
+    label51:
+    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+      return;
+    }
+    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
+      QLog.d("PublishHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
+    }
+    PublishHomeWorkFragment.a(this.a).b(102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhc
  * JD-Core Version:    0.7.0.1
  */

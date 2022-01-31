@@ -118,7 +118,7 @@ public final class VipBaseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     QQService.VipBaseInfo
  * JD-Core Version:    0.7.0.1
  */

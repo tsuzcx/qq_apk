@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import alnl;
-import alnm;
+import amdb;
+import amdc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -43,8 +43,9 @@ public class PopupMenuDialog
   private PopupMenuDialog.MenuItem jdField_a_of_type_ComTencentWidgetPopupMenuDialog$MenuItem;
   private PopupMenuDialog.OnClickActionListener jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnClickActionListener;
   private PopupMenuDialog.OnDismissListener jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnDismissListener;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public boolean a;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
   private PopupMenuDialog(Activity paramActivity, View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
@@ -60,7 +61,7 @@ public class PopupMenuDialog
   
   private static int a(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    int j = a(paramContext, 2131558948) * paramInt + a(paramContext, 2131558949);
+    int j = a(paramContext, 2131558950) * paramInt + a(paramContext, 2131558951);
     int i = j;
     if (paramBoolean) {
       i = j + (paramInt - 1) * 1;
@@ -70,33 +71,33 @@ public class PopupMenuDialog
   
   private static View a(Activity paramActivity, List paramList, boolean paramBoolean)
   {
-    BounceScrollView localBounceScrollView = (BounceScrollView)LayoutInflater.from(paramActivity).inflate(2130971446, null);
-    LinearLayout localLinearLayout = (LinearLayout)localBounceScrollView.findViewById(2131363039);
-    localBounceScrollView.setVerticalScrollBarEnabled(false);
-    localBounceScrollView.mScrollFlag = 1;
+    View localView = LayoutInflater.from(paramActivity).inflate(2130971494, null);
+    Object localObject1 = (BounceScrollView)localView.findViewById(2131370705);
+    LinearLayout localLinearLayout = (LinearLayout)((BounceScrollView)localObject1).findViewById(2131363057);
+    ((BounceScrollView)localObject1).setVerticalScrollBarEnabled(false);
+    ((BounceScrollView)localObject1).mScrollFlag = 1;
     new LinearLayout.LayoutParams(-1, 1);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, a(paramActivity, 2131558948));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, a(paramActivity, 2131558950));
     int i = 0;
     PopupMenuDialog.MenuItem localMenuItem;
     Object localObject2;
-    Object localObject1;
     if (i < paramList.size())
     {
       localMenuItem = (PopupMenuDialog.MenuItem)paramList.get(i);
       if (i == 0)
       {
-        localObject2 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2130971445, null);
+        localObject2 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2130971493, null);
         localObject1 = null;
       }
     }
     for (;;)
     {
-      Object localObject3 = (ImageView)((LinearLayout)localObject2).findViewById(2131374726);
-      TextView localTextView = (TextView)((LinearLayout)localObject2).findViewById(2131374727);
+      Object localObject3 = (ImageView)((LinearLayout)localObject2).findViewById(2131374907);
+      TextView localTextView = (TextView)((LinearLayout)localObject2).findViewById(2131374908);
       if (localMenuItem.jdField_a_of_type_ComTencentImageURLDrawable != null)
       {
         ((ImageView)localObject3).setImageDrawable(localMenuItem.jdField_a_of_type_ComTencentImageURLDrawable);
-        label153:
+        label162:
         if (localMenuItem.jdField_b_of_type_Int == 0)
         {
           ((ImageView)localObject3).setVisibility(8);
@@ -110,22 +111,25 @@ public class PopupMenuDialog
           localTextView.setTextSize(localMenuItem.jdField_a_of_type_Float);
         }
         if (TextUtils.isEmpty(localMenuItem.c)) {
-          break label415;
+          break label442;
         }
         ((LinearLayout)localObject2).setContentDescription(localMenuItem.c + " 按钮");
-        label270:
+        label279:
         if (localObject1 != null) {
           localLinearLayout.addView((View)localObject1);
         }
         ((LinearLayout)localObject2).setTag(localMenuItem);
+        if (localMenuItem.jdField_a_of_type_Int > 0) {
+          ((LinearLayout)localObject2).setId(localMenuItem.jdField_a_of_type_Int);
+        }
         localLinearLayout.addView((View)localObject2, localLayoutParams);
         i += 1;
         break;
         if (i == paramList.size() - 1)
         {
-          localObject1 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2130971443, null);
+          localObject1 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2130971491, null);
           if (!paramBoolean) {
-            break label455;
+            break label482;
           }
           localObject3 = a(paramActivity);
           localObject2 = localObject1;
@@ -133,27 +137,27 @@ public class PopupMenuDialog
           continue;
         }
         if (!paramBoolean) {
-          break label449;
+          break label476;
         }
       }
-      label415:
-      label449:
+      label442:
+      label476:
       for (localObject1 = a(paramActivity);; localObject1 = null)
       {
-        localObject2 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2130971444, null);
+        localObject2 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2130971492, null);
         break;
         if (localMenuItem.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null)
         {
           ((ImageView)localObject3).setImageDrawable(localMenuItem.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-          break label153;
+          break label162;
         }
         ((ImageView)localObject3).setImageResource(localMenuItem.jdField_b_of_type_Int);
-        break label153;
+        break label162;
         ((LinearLayout)localObject2).setContentDescription(localMenuItem.jdField_a_of_type_JavaLangString + " 按钮");
-        break label270;
-        return localBounceScrollView;
+        break label279;
+        return localView;
       }
-      label455:
+      label482:
       localObject3 = null;
       localObject2 = localObject1;
       localObject1 = localObject3;
@@ -192,25 +196,25 @@ public class PopupMenuDialog
     }
     int i = a(paramActivity, paramList.size(), paramBoolean);
     if (paramInt <= 0) {
-      paramInt = a(paramActivity, 2131558947);
+      paramInt = a(paramActivity, 2131558949);
     }
     for (;;)
     {
       paramActivity = new PopupMenuDialog(paramActivity, a(paramActivity, paramList, paramBoolean), paramInt, i, true);
-      paramActivity.setAnimationStyle(2131624678);
+      paramActivity.setAnimationStyle(2131624679);
       paramActivity.setBackgroundDrawable(new ColorDrawable(0));
       paramActivity.setOutsideTouchable(false);
       if (Build.VERSION.SDK_INT >= 9) {
         a(paramActivity, 1002);
       }
-      if (AppSetting.b) {
+      if (AppSetting.jdField_b_of_type_Boolean) {
         a(paramActivity);
       }
       paramActivity.a(paramActivity.getContentView());
       paramActivity.jdField_b_of_type_Int = i;
       paramActivity.jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnClickActionListener = paramOnClickActionListener;
       paramActivity.jdField_a_of_type_ComTencentWidgetPopupMenuDialog$OnDismissListener = paramOnDismissListener;
-      paramActivity.jdField_a_of_type_Boolean = paramBoolean;
+      paramActivity.jdField_b_of_type_Boolean = paramBoolean;
       return paramActivity;
     }
   }
@@ -235,7 +239,7 @@ public class PopupMenuDialog
   public static void a(PopupWindow paramPopupWindow)
   {
     int i = 0;
-    if (!AppSetting.b) {}
+    if (!AppSetting.jdField_b_of_type_Boolean) {}
     for (;;)
     {
       return;
@@ -325,16 +329,16 @@ public class PopupMenuDialog
     for (;;)
     {
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = i;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131624680;
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131624681;
       if (this.jdField_a_of_type_AndroidViewView == null)
       {
         this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidAppActivity);
         this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131492885));
         this.jdField_a_of_type_AndroidViewView.setContentDescription("返回");
-        this.jdField_a_of_type_AndroidViewView.setOnClickListener(new alnl(this));
+        this.jdField_a_of_type_AndroidViewView.setOnClickListener(new amdb(this));
       }
-      if ((AppSetting.b) && (Build.VERSION.SDK_INT >= 14)) {
-        getContentView().setAccessibilityDelegate(new alnm(this));
+      if ((AppSetting.jdField_b_of_type_Boolean) && (Build.VERSION.SDK_INT >= 14)) {
+        getContentView().setAccessibilityDelegate(new amdc(this));
       }
       return;
     }
@@ -422,12 +426,12 @@ public class PopupMenuDialog
     {
       int i = 0;
       if (j < this.jdField_b_of_type_Int) {
-        i = (1 - a(this.jdField_a_of_type_AndroidAppActivity, 2131558949) + j) / (a(this.jdField_a_of_type_AndroidAppActivity, 2131558948) + 1);
+        i = (1 - a(this.jdField_a_of_type_AndroidAppActivity, 2131558951) + j) / (a(this.jdField_a_of_type_AndroidAppActivity, 2131558950) + 1);
       }
       if (i <= 0) {
         break label113;
       }
-      setHeight(a(this.jdField_a_of_type_AndroidAppActivity, i, this.jdField_a_of_type_Boolean));
+      setHeight(a(this.jdField_a_of_type_AndroidAppActivity, i, this.jdField_b_of_type_Boolean));
     }
     for (;;)
     {
@@ -473,7 +477,7 @@ public class PopupMenuDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.PopupMenuDialog
  * JD-Core Version:    0.7.0.1
  */

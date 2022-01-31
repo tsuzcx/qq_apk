@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aeos;
-import aeot;
-import aeov;
-import aeow;
+import afby;
+import afbz;
+import afcb;
+import afcc;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -54,7 +54,7 @@ public class NearbyAuthVideoPlayerFragment
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   public VideoDrawable a;
-  private DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager$IDynamicAvatarDownloadCallback = new aeot(this);
+  private DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager$IDynamicAvatarDownloadCallback = new afbz(this);
   private DynamicAvatarDownloadManager jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager;
   private DynamicAvatarManager jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager;
   public NearbyCardObserver a;
@@ -68,13 +68,13 @@ public class NearbyAuthVideoPlayerFragment
   
   public NearbyAuthVideoPlayerFragment()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new aeov(this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new afcb(this);
   }
   
   private void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 2;
-    Object localObject = getResources().getDrawable(2130846313);
+    Object localObject = getResources().getDrawable(2130846443);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
@@ -142,17 +142,17 @@ public class NearbyAuthVideoPlayerFragment
   
   private void c()
   {
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363954)).setOnClickListener(this);
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365201);
+    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363978)).setOnClickListener(this);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365223);
     localImageView.setOnClickListener(this);
     if (this.jdField_a_of_type_Int == 3)
     {
       localImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365202));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365204));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362707));
-      this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365199));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365203));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365224));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365226));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362725));
+      this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365221));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365225));
       this.jdField_b_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this);
       if ((this.jdField_a_of_type_Int != 3) || (this.jdField_a_of_type_Boolean)) {
         break label212;
@@ -197,9 +197,9 @@ public class NearbyAuthVideoPlayerFragment
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(getActivity(), null);
     localActionSheet.a("重新拍摄", 1);
-    localActionSheet.a(2131434024, 1);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new aeow(this, localActionSheet));
+    localActionSheet.a(2131434041, 1);
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new afcc(this, localActionSheet));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
     }
@@ -218,13 +218,13 @@ public class NearbyAuthVideoPlayerFragment
       if (NetworkUtil.d(getActivity())) {
         break label54;
       }
-      QQToast.a(getActivity(), getString(2131433196), 0).b(getActivity().getTitleBarHeight());
+      QQToast.a(getActivity(), getString(2131433213), 0).b(getActivity().getTitleBarHeight());
     }
     label54:
     while ((isDetached()) || (getActivity() == null)) {
       return;
     }
-    ThreadManager.post(new aeos(this, paramString), 5, null, true);
+    ThreadManager.post(new afby(this, paramString), 5, null, true);
   }
   
   public boolean a()
@@ -290,7 +290,7 @@ public class NearbyAuthVideoPlayerFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     getActivity().getWindow().addFlags(128);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969110, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969109, paramViewGroup, false);
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager = ((DynamicAvatarManager)getActivity().app.getManager(179));
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a();
     if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager != null) {

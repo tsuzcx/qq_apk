@@ -1,20 +1,18 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
 
 class onn
+  implements View.OnClickListener
 {
-  Process a(String[] paramArrayOfString)
+  onn(onm paramonm) {}
+  
+  public void onClick(View paramView)
   {
-    try
-    {
-      Process localProcess = Runtime.getRuntime().exec(paramArrayOfString);
-      return localProcess;
+    if (this.a.a.a != null) {
+      this.a.a.a.a();
     }
-    catch (IOException localIOException)
-    {
-      SLog.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
-    }
-    return null;
   }
 }
 

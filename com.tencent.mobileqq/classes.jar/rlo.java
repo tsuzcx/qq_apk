@@ -1,71 +1,23 @@
-import java.lang.ref.WeakReference;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.doutu.DoutuManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rlo
-  extends VerifyDevLockManager.VerifyDevLockObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private WeakReference a;
+  public rlo(AssistantSettingActivity paramAssistantSettingActivity, DoutuManager paramDoutuManager) {}
   
-  public rlo(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramVerifyDevLockObserver);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-    this.a = null;
-  }
-  
-  public int getSeq()
-  {
-    if (this.a != null)
+    this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a(paramBoolean);
+    if (!paramBoolean)
     {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        return localVerifyDevLockObserver.getSeq();
-      }
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
+      return;
     }
-    return super.getSeq();
-  }
-  
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      }
-    }
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
-      }
-    }
-  }
-  
-  public void setSeq(int paramInt)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null)
-      {
-        localVerifyDevLockObserver.setSeq(paramInt);
-        return;
-      }
-    }
-    super.setSeq(paramInt);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
   }
 }
 

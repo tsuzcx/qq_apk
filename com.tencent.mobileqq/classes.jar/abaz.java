@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abaz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public abaz(ARMapLoadingActivity paramARMapLoadingActivity, boolean paramBoolean) {}
+  public abaz(ARMapActivity paramARMapActivity) {}
   
-  public void run()
-  {
-    HashMap localHashMap = new HashMap();
-    StatisticCollector.a(BaseApplication.getContext()).a("", "REPORT_TAG_PRE_START_THREAD", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "", false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

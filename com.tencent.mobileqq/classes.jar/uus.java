@@ -1,31 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
 
 class uus
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  uus(uur paramuur) {}
+  uus(uuq paramuuq, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationEnd " + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationRepeat " + paramAnimation);
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationStart " + paramAnimation);
-    }
+    this.jdField_a_of_type_Uuq.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Uuq.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_Uuq.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

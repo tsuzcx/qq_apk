@@ -1,13 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoShareGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class oez
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public oez(EditVideoShareGroup paramEditVideoShareGroup) {}
+  public oez(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(View paramView) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.h();
+    this.a.a.a(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -3,7 +3,11 @@ package com.tencent.mobileqq.Doraemon;
 import android.app.Activity;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
+import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
+import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.Doraemon.monitor.DoraemonFrequenceController;
 import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -16,8 +20,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import rbk;
-import rbl;
+import rea;
+import reb;
+import rec;
 
 public abstract class DoraemonAPIManager
 {
@@ -48,6 +53,9 @@ public abstract class DoraemonAPIManager
       this.jdField_b_of_type_Int = 1;
       b();
       DoraemonFrequenceController.a().a(this.jdField_b_of_type_JavaLangString, paramInt, paramString);
+      if (BaseApplicationImpl.sProcessId != 1) {
+        TroopMemberApiClient.a().a();
+      }
       return;
     }
   }
@@ -71,6 +79,56 @@ public abstract class DoraemonAPIManager
       QLog.i("DoraemonOpenAPI.apiMgr", 2, "module not handled this api");
     }
     DoraemonUtil.a(paramAPICallback, 1);
+  }
+  
+  @UiThread
+  private void b(String paramString, APIParam paramAPIParam, @NonNull APICallback paramAPICallback)
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {}
+    while (this.jdField_b_of_type_Int != 2) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.apiMgr", 2, "call api=" + paramString + ", param=" + paramAPIParam + ", cb=" + paramAPICallback);
+    }
+    if (a().jdField_b_of_type_Int != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.apiMgr", 2, "app not online");
+      }
+      DoraemonUtil.a(paramAPICallback, 9);
+      return;
+    }
+    if (!a(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.apiMgr", 2, "app has no permission");
+      }
+      DoraemonUtil.a(paramAPICallback, 3);
+      return;
+    }
+    APIConfig localAPIConfig = (APIConfig)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localAPIConfig == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.apiMgr", 2, "no such api");
+      }
+      DoraemonUtil.a(paramAPICallback, 1);
+      return;
+    }
+    if (!DoraemonFrequenceController.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.apiMgr", 2, "frequence restricted");
+      }
+      DoraemonUtil.a(paramAPICallback, 8);
+      return;
+    }
+    paramString = paramAPIParam;
+    if (paramAPIParam == null) {
+      paramString = new APIParam();
+    }
+    a(localAPIConfig, paramString, paramAPICallback);
   }
   
   public abstract AppInfo a();
@@ -117,9 +175,12 @@ public abstract class DoraemonAPIManager
       while (localIterator.hasNext()) {
         ((DoraemonAPIModule)localIterator.next()).a();
       }
-      return;
+      if (BaseApplicationImpl.sProcessId == 1) {
+        return;
+      }
     }
     finally {}
+    TroopMemberApiClient.a().b();
   }
   
   public void a(int paramInt, APIConfig paramAPIConfig, APIParam paramAPIParam, APICallback paramAPICallback)
@@ -140,9 +201,6 @@ public abstract class DoraemonAPIManager
   
   public final void a(String paramString, APIParam paramAPIParam, @NonNull APICallback paramAPICallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.apiMgr", 2, "call api=" + paramString + ", param=" + paramAPIParam + ", cb=" + paramAPICallback);
-    }
     if (this.jdField_b_of_type_Int != 2) {}
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -160,69 +218,68 @@ public abstract class DoraemonAPIManager
         }
         return;
       }
-      if (a().jdField_b_of_type_Int != 1)
+      if (Thread.currentThread() == Looper.getMainLooper().getThread())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("DoraemonOpenAPI.apiMgr", 2, "app not online");
-        }
-        DoraemonUtil.a(paramAPICallback, 9);
+        b(paramString, paramAPIParam, paramAPICallback);
         return;
       }
     }
-    if (!a(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.apiMgr", 2, "app has no permission");
-      }
-      DoraemonUtil.a(paramAPICallback, 3);
-      return;
-    }
-    ??? = (APIConfig)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (??? == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.apiMgr", 2, "no such api");
-      }
-      DoraemonUtil.a(paramAPICallback, 1);
-      return;
-    }
-    if (!DoraemonFrequenceController.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.apiMgr", 2, "frequence restricted");
-      }
-      DoraemonUtil.a(paramAPICallback, 8);
-      return;
-    }
-    paramString = paramAPIParam;
-    if (paramAPIParam == null) {
-      paramString = new APIParam();
-    }
-    a((APIConfig)???, paramString, paramAPICallback);
+    ThreadManager.getUIHandler().post(new reb(this, paramString, paramAPIParam, paramAPICallback));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, String paramString4, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    ThreadManager.getUIHandler().post(new rbl(this, paramString1, paramString2, paramString4, paramString3, paramOnClickListener1, paramOnClickListener2, paramOnCancelListener));
+    ThreadManager.getUIHandler().post(new rec(this, paramString1, paramString2, paramString4, paramString3, paramOnClickListener1, paramOnClickListener2, paramOnCancelListener));
   }
   
   public void a(boolean paramBoolean)
   {
     QLog.i("DoraemonOpenAPI.apiMgr", 1, "onLoadAppInfo " + paramBoolean);
-    localObject1 = this.jdField_a_of_type_JavaLangObject;
-    if (paramBoolean) {}
-    for (int i = 2;; i = 0) {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i;
+    if (paramBoolean) {
+      i = 2;
+    }
+    for (;;)
+    {
       try
       {
         this.jdField_b_of_type_Int = i;
         ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
         this.jdField_a_of_type_JavaUtilList.clear();
-        if (localArrayList.size() > 0) {
-          ThreadManager.getUIHandler().post(new rbk(this, paramBoolean, localArrayList));
+        if (localArrayList.size() > 0)
+        {
+          if (!paramBoolean) {
+            break label195;
+          }
+          if (a().jdField_b_of_type_Int != 1) {
+            break label123;
+          }
+          ThreadManager.getUIHandler().post(new rea(this, localArrayList));
         }
         return;
       }
       finally {}
+      i = 0;
+      continue;
+      label123:
+      localObject1 = localObject2.iterator();
+      Object[] arrayOfObject;
+      while (((Iterator)localObject1).hasNext())
+      {
+        arrayOfObject = (Object[])((Iterator)localObject1).next();
+        QLog.i("DoraemonOpenAPI.apiMgr", 1, "app not online, api=" + arrayOfObject[0]);
+        DoraemonUtil.a((APICallback)arrayOfObject[2], 9);
+      }
+      continue;
+      label195:
+      localObject1 = arrayOfObject.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        arrayOfObject = (Object[])((Iterator)localObject1).next();
+        QLog.i("DoraemonOpenAPI.apiMgr", 1, "network error, api=" + arrayOfObject[0]);
+        DoraemonUtil.a((APICallback)arrayOfObject[2], 7);
+      }
     }
   }
   
@@ -235,7 +292,7 @@ public abstract class DoraemonAPIManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.DoraemonAPIManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,15 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.redbag.GuideTip2;
 
 public class kez
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
-  public kez(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
+  public kez(GuideTip2 paramGuideTip2) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void onClick(View paramView)
   {
-    AudioHelper.a("让入口可用");
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a.a = 1;
-    return true;
+    this.a.a(true, 0);
   }
 }
 

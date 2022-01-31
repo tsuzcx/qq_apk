@@ -1,21 +1,28 @@
+import android.app.Activity;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySocialMsgTips;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class mhe
-  implements View.OnClickListener
+class mhe
+  implements Runnable
 {
-  public mhe(ReadInJoyListViewGroup paramReadInJoyListViewGroup, KandianMergeManager paramKandianMergeManager) {}
+  mhe(mhd parammhd, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).b();
-    ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).removeHeaderView(ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).a());
-    ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).postInvalidate();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseAdapter", 2, "scroll " + this.jdField_a_of_type_Int + " to top");
+    }
+    View localView = this.jdField_a_of_type_Mhd.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(this.jdField_a_of_type_Int - this.jdField_a_of_type_Mhd.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getFirstVisiblePosition());
+    if (localView != null)
+    {
+      ReadInJoyBaseAdapter.a(this.jdField_a_of_type_Mhd.a).removeMessages(1001);
+      this.jdField_a_of_type_Mhd.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.smoothScrollBy(localView.getBottom() - AIOUtils.a(175.0F, this.jdField_a_of_type_Mhd.a.jdField_a_of_type_AndroidAppActivity.getResources()), 800);
+      ReadInJoyBaseAdapter.d(this.jdField_a_of_type_Mhd.a, true);
+    }
   }
 }
 

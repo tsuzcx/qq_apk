@@ -1,14 +1,15 @@
-final class oqj
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+
+public class oqj
+  implements Handler.Callback
 {
-  public float a;
-  public float b;
-  public float c;
+  public oqj(SegmentList paramSegmentList) {}
   
-  public oqj(float paramFloat1, float paramFloat2, float paramFloat3)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
+    return SegmentList.a(this.a, paramMessage);
   }
 }
 

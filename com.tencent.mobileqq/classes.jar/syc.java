@@ -1,15 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 
-public class syc
-  implements View.OnClickListener
+class syc
+  implements Runnable
 {
-  public syc(MainFragment paramMainFragment) {}
+  syc(syb paramsyb) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.g();
+    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.a.getManager(12);
+    if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
+      localWebProcessManager.a(202, new syd(this));
+    }
+    this.a.a.n();
+    this.a.a.a(1);
+    if (NearbyUtils.b()) {
+      NearbyUtils.a("Q.lebatab.", new Object[] { "preload nearby process/tool process" });
+    }
+    NearbyProcessMonitor.a(this.a.a.a.getAccount(), 0);
   }
 }
 

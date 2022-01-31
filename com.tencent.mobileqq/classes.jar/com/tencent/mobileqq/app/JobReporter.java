@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
-import zcq;
+import zfw;
 
 public class JobReporter
 {
@@ -26,7 +26,7 @@ public class JobReporter
   private static final long THREAD_COUNT_REPORT_INTERVAL_Release = 86400000L;
   private static final String ThreadMonitorPeakCount = "thread_monitor_peak_count";
   public static final String ThreadOnCreatedCallBack = "com/tencent/mobileqq/app/JobReporter";
-  private static Handler mFileHandler = new zcq(ThreadManager.getFileThreadLooper());
+  private static Handler mFileHandler = new zfw(ThreadManager.getFileThreadLooper());
   public static ThreadCheck mThreadCheck;
   private static boolean sInited;
   private static long sMonitorStartTime;

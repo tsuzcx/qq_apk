@@ -1,26 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
 
-public class ajjj
-  implements ajjo
+class ajjj
+  implements DialogInterface.OnClickListener
 {
-  public ajjj(TroopShareUtility paramTroopShareUtility) {}
+  ajjj(ajji paramajji) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      TroopShareUtility.e(this.a);
-      return;
+    this.a.a.a(this.a.a.a);
+    if (ReciteRecordLayout.a(this.a.a) != null) {
+      ReciteRecordLayout.a(this.a.a).e();
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "分享群聊失败!", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjj
  * JD-Core Version:    0.7.0.1
  */

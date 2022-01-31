@@ -1,53 +1,69 @@
-import android.content.Intent;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.OfflineExpire;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
 
 public final class kmc
-  implements AsyncBack
+  implements BusinessObserver
 {
-  public kmc(WeakReference paramWeakReference, String paramString1, int paramInt, String paramString2) {}
+  public kmc(Context paramContext, QQAppInterface paramQQAppInterface, QQProgressDialog paramQQProgressDialog, SessionInfo paramSessionInfo, String paramString) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject;
-    if (paramString != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+    if (paramBoolean)
     {
-      paramString = (PreDownloadController)paramString.getManager(192);
-      localObject = this.jdField_a_of_type_JavaLangString;
-      if (!BidDownloader.a(paramInt)) {
-        break label172;
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
       }
     }
-    label172:
-    for (long l = this.jdField_a_of_type_Int;; l = -1L)
+    for (;;)
     {
-      paramString.a((String)localObject, l);
-      QLog.i(OfflineExpire.jdField_a_of_type_JavaLangString, 1, "finish predown bid=" + this.b + ", code=" + paramInt);
-      OfflineExpire.a();
-      if (OfflineExpire.b() == 0)
+      try
       {
-        paramString = new Intent("com.tencent.process.tmdownloader.exit");
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add("com.tencent.mobileqq:TMAssistantDownloadSDKService");
-        paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
-        paramString.putExtra("verify", OfflineExpire.a((ArrayList)localObject, false));
-        if (QLog.isColorLevel()) {
-          QLog.d(OfflineExpire.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
+        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
+        if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
+        {
+          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
+          CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
+          CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+          if (QLog.isDevelopLevel()) {
+            QLog.d("IVR_TS_CrmUtils", 4, "<<<end getDetail, ts=" + System.currentTimeMillis());
+          }
+          CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, paramBundle, this.jdField_a_of_type_JavaLangString);
+          CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+          return;
         }
-        BaseApplicationImpl.getContext().sendBroadcast(paramString);
       }
-      return;
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+        CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+        return;
+      }
+      CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      continue;
+      CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
+      continue;
+      CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
     }
   }
 }

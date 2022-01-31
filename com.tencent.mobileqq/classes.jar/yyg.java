@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanelAdapter;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class yyg
   implements Runnable
 {
-  public yyg(ConditionSearchManager paramConditionSearchManager) {}
+  public yyg(ApolloPanel paramApolloPanel) {}
   
   public void run()
   {
-    int i = -1;
-    int j = this.a.a();
-    if (j != 0) {
-      i = this.a.a(j);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "pendCardParseRequest | check reuslt = " + j + " | update result = " + i);
-    }
-    if (j == 0) {
-      ConditionSearchManager.a(this.a).a(new yyh(this));
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter != null) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanel", 2, "func showGameViewOnly begins. Thread id = " + Thread.currentThread().getId());
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.notifyDataSetChanged();
+      this.a.jdField_a_of_type_JavaUtilList.clear();
+      this.a.jdField_a_of_type_JavaUtilList.add(this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameViewBinder);
+      ApolloPanel.b(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.a(this.a.jdField_a_of_type_JavaUtilList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yyg
  * JD-Core Version:    0.7.0.1
  */

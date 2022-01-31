@@ -1,17 +1,28 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import java.util.Iterator;
+import java.util.List;
 
 public class sad
-  implements Runnable
+  implements FMDialogUtil.FMDialogInterface
 {
-  public sad(ChatSettingForTroop paramChatSettingForTroop, String paramString) {}
+  public sad(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, FileManagerEngine paramFileManagerEngine) {}
   
-  public void run()
+  public void a()
   {
-    DBUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
-    DBUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getCurrentAccountUin(), "troop_game_last_visit_time", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.m);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.b(localFileManagerEntity);
+      }
+    }
   }
+  
+  public void b() {}
 }
 
 

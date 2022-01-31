@@ -1,6 +1,6 @@
 package cooperation.qzone.plugin;
 
-import amhz;
+import amye;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -24,7 +24,7 @@ public abstract class QZoneRemotePluginManager$Stub
     if ((localIInterface != null) && ((localIInterface instanceof QZoneRemotePluginManager))) {
       return (QZoneRemotePluginManager)localIInterface;
     }
-    return new amhz(paramIBinder);
+    return new amye(paramIBinder);
   }
   
   public IBinder asBinder()

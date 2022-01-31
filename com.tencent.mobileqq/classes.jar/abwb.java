@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.app.FavEmoRoamingObserver;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
 
 public class abwb
-  extends FavEmoRoamingObserver
+  implements DialogInterface.OnKeyListener
 {
-  public abwb(EmojiManager paramEmojiManager, Object paramObject) {}
+  public abwb(DBFixDialogUI paramDBFixDialogUI) {}
   
-  protected void a(List arg1)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
+    return (paramInt == 84) || (paramInt == 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwb
  * JD-Core Version:    0.7.0.1
  */

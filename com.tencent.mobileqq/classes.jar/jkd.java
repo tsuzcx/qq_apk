@@ -1,27 +1,49 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.AVLog;
-import com.tencent.av.camera.CameraObserver;
-import com.tencent.av.opengl.effects.EffectsRenderController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.random.RandomController;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.av.utils.NearbyPeopleProfileHelper.INearbyPeopleProfileCallBack;
+import com.tencent.av.utils.NearbyPeopleProfileHelper.NearbyProfileData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class jkd
-  extends CameraObserver
+  implements NearbyPeopleProfileHelper.INearbyPeopleProfileCallBack
 {
-  public jkd(EffectsRenderController paramEffectsRenderController) {}
+  public jkd(RandomController paramRandomController) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void a(String paramString, NearbyPeopleProfileHelper.NearbyProfileData paramNearbyProfileData)
   {
-    AVLog.c(EffectsRenderController.jdField_a_of_type_JavaLangString, "onAfterOpenCamera: " + paramBoolean + "|" + paramInt);
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4).sendToTarget();
+    if (QLog.isColorLevel()) {
+      QLog.d("RandomController", 2, "onGetNearbyPeopleProfile uin :" + paramString + ", nickname:" + paramNearbyProfileData.b + ", gender:" + paramNearbyProfileData.a);
     }
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    AVLog.c(EffectsRenderController.jdField_a_of_type_JavaLangString, "onAfterReopenCamera: " + paramBoolean);
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4).sendToTarget();
+    if (paramString.equals(RandomController.a(this.a).getAccount()))
+    {
+      if (paramNearbyProfileData.a != -1) {
+        RandomController.a(this.a).a(paramNearbyProfileData.a);
+      }
+      if (RandomController.a(this.a).a())
+      {
+        if (!RandomController.a(this.a)) {
+          break label209;
+        }
+        RandomController.b(this.a, false);
+        RandomController.a(this.a).set(0);
+        RandomController.a(this.a).a(RandomController.b(this.a), RandomController.c(this.a), 1, new String[0]);
+        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
+      }
+    }
+    for (;;)
+    {
+      RandomController.a(this.a).a().post(new jke(this));
+      return;
+      label209:
+      if (RandomController.b(this.a))
+      {
+        RandomController.c(this.a, false);
+        RandomController.a(this.a).a(this.a.b, RandomController.b(this.a));
+        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
+      }
     }
   }
 }

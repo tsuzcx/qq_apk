@@ -1,24 +1,21 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.forward.ForwardVoiceCallOption;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
 
 public class adco
-  implements ChatActivityUtils.StartVideoListener
+  implements IUploadController
 {
-  public adco(ForwardVoiceCallOption paramForwardVoiceCallOption) {}
+  public adco(DatalineFileModel paramDatalineFileModel) {}
   
   public void a()
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    this.a.a(true, FileModel.a(this.a.a.a()), this.a.b(), new adcp(this));
   }
   
-  public void b() {}
-  
-  public void c()
+  public void b()
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    DatalineFileModel.b(this.a);
   }
 }
 

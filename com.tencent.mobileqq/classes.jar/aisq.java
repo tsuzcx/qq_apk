@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.widget.Button;
+import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
 
 public class aisq
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aisq(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public aisq(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.a.a.setVisibility(8);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisq
  * JD-Core Version:    0.7.0.1
  */

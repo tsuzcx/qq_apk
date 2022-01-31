@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troopgift;
 
-import ajgs;
-import ajgv;
-import ajgw;
-import ajgx;
-import ajgz;
-import ajhg;
+import ajuw;
+import ajuz;
+import ajva;
+import ajvb;
+import ajvd;
+import ajvk;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -60,7 +60,7 @@ public class TroopGiftAnimationController
 {
   public int a;
   private long jdField_a_of_type_Long;
-  private ajhg jdField_a_of_type_Ajhg;
+  private ajvk jdField_a_of_type_Ajvk;
   private Activity jdField_a_of_type_AndroidAppActivity;
   public Drawable a;
   public Handler a;
@@ -73,11 +73,11 @@ public class TroopGiftAnimationController
   private MessageForDeliverGiftTips jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips;
   private ActionGlobalData jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
   private FrameSprite.OnFrameEndListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener;
-  private ImageButton.OnClickListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton$OnClickListener = new ajgw(this);
+  private ImageButton.OnClickListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton$OnClickListener = new ajva(this);
   public SpriteGLView a;
-  private TroopGiftCallback jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback = new ajgv(this);
+  private TroopGiftCallback jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback = new ajuz(this);
   public TroopGiftAnimationController.OnCleanAnimationListener a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ajgs(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ajuw(this);
   public Drawable b;
   
   public TroopGiftAnimationController(BaseChatPie paramBaseChatPie, Activity paramActivity, AppInterface paramAppInterface)
@@ -98,13 +98,13 @@ public class TroopGiftAnimationController
       }
     }
     label100:
-    for (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)View.inflate(BaseApplicationImpl.getContext(), 2130969942, null));; this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)View.inflate(BaseApplicationImpl.getContext(), 2130969943, null)))
+    for (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)View.inflate(BaseApplicationImpl.getContext(), 2130969956, null));; this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)View.inflate(BaseApplicationImpl.getContext(), 2130969957, null)))
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setOnFlingGesture(this);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = ((SpriteGLView)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131368515));
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = ((SpriteGLView)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131368582));
       if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView instanceof TroopGiftToPersonalSurfaceView))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131368516));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131368583));
         this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       }
       return;
@@ -136,7 +136,7 @@ public class TroopGiftAnimationController
       if (!paramString.equals("80000000")) {
         break label136;
       }
-      paramString = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841215);
+      paramString = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841252);
       paramOnLoadingStateChangeListener = URLDrawable.getDrawable(AnonymousChatHelper.a(AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips).b), paramString, paramString);
     }
     label130:
@@ -217,7 +217,7 @@ public class TroopGiftAnimationController
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView instanceof TroopGiftToPersonalSurfaceView))
     {
-      ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(new ajgx(this));
+      ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(new ajvb(this));
       if ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.isToAll()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationBrief))) {
         a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationBrief, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.giftCount, paramInt, paramActionGlobalData);
       }
@@ -229,8 +229,8 @@ public class TroopGiftAnimationController
       return;
       if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView instanceof TroopGiftToAllSurfaceView))
       {
-        this.jdField_a_of_type_Ajhg = new ajhg(this);
-        ((TroopGiftToAllSurfaceView)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(this.jdField_a_of_type_Ajhg);
+        this.jdField_a_of_type_Ajvk = new ajvk(this);
+        ((TroopGiftToAllSurfaceView)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(this.jdField_a_of_type_Ajvk);
         String str;
         label218:
         AppInterface localAppInterface;
@@ -330,7 +330,7 @@ public class TroopGiftAnimationController
     }
     a(paramMessageForDeliverGiftTips.isToAll());
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.setVisibility(0);
-    ThreadManager.post(new ajgz(this, paramMessageForDeliverGiftTips), 8, null, true);
+    ThreadManager.post(new ajvd(this, paramMessageForDeliverGiftTips), 8, null, true);
   }
   
   public void a(FrameSprite.OnFrameEndListener paramOnFrameEndListener)
@@ -364,7 +364,7 @@ public class TroopGiftAnimationController
           this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
           this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(500L);
         }
-        paramString = new RelativeLayout.LayoutParams(-2, (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559208));
+        paramString = new RelativeLayout.LayoutParams(-2, (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559210));
         paramString.addRule(14);
         paramString.setMargins(DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 10.0F), paramInt2, DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 10.0F), 0);
         if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
@@ -375,8 +375,8 @@ public class TroopGiftAnimationController
         this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
         this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 15.0F);
         this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841446);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131492968));
+        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841483);
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131492969));
         this.jdField_a_of_type_AndroidWidgetTextView.setPadding(DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 30.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaddingTop(), DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 30.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaddingBottom());
         label419:
         this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramString);
@@ -437,7 +437,7 @@ public class TroopGiftAnimationController
       this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
       this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = null;
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = null;
-      this.jdField_a_of_type_Ajhg = null;
+      this.jdField_a_of_type_Ajvk = null;
       this.jdField_a_of_type_AndroidWidgetImageView = null;
       if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips != null)
       {
@@ -493,7 +493,7 @@ public class TroopGiftAnimationController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController
  * JD-Core Version:    0.7.0.1
  */

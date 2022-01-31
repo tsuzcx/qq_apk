@@ -1,17 +1,21 @@
-import android.animation.AnimatorSet;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
+import android.os.Handler;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 
 public class abec
   implements Runnable
 {
-  public abec(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimHolder paramAnimHolder) {}
+  public abec(ShopScanActivity paramShopScanActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.start();
-    }
+    ShopScanActivity.b(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.d.setVisibility(0);
+    this.a.f.setVisibility(4);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(292);
   }
 }
 

@@ -32,8 +32,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 import mqq.manager.Manager;
-import zsh;
-import zsi;
+import zvn;
+import zvo;
 
 public class ProxyManager
   implements Manager
@@ -94,7 +94,7 @@ public class ProxyManager
     this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy = new QCallProxy(paramQQAppInterface, this);
     this.jdField_a_of_type_ComTencentMobileqqConfessConfessProxy = new ConfessProxy(paramQQAppInterface, this);
     this.jdField_a_of_type_ArrayOfComTencentMobileqqAppProxyBaseProxy = new BaseProxy[] { this.jdField_a_of_type_ComTencentMobileqqAppMessageMsgProxyContainer, this.jdField_b_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy, this.jdField_a_of_type_ComTencentMobileqqStatisticsReportControllerImpl$ReportProxyAdapter, this.jdField_a_of_type_CooperationQlinkQlinkReliableReport$ReliableReportProxy, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadBPTransProxy, this.jdField_a_of_type_ComTencentMobileqqAppMessageConversationProxy, this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy, this.jdField_a_of_type_ComTencentMobileqqConfessConfessProxy };
-    this.jdField_a_of_type_JavaLangThread = new Thread(new zsi(this));
+    this.jdField_a_of_type_JavaLangThread = new Thread(new zvo(this));
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -1788,7 +1788,7 @@ public class ProxyManager
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().onDestroy();
       this.jdField_a_of_type_Boolean = true;
-      ThreadManager.post(new zsh(this), 8, null, false);
+      ThreadManager.post(new zvn(this), 8, null, false);
       int i = j;
       if (this.jdField_a_of_type_JavaUtilVector != null) {}
       synchronized (this.jdField_a_of_type_JavaLangObject)

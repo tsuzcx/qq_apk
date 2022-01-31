@@ -1,47 +1,35 @@
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.ProGallery;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class wvi
-  implements View.OnClickListener
+  extends ContactBindObserver
 {
-  public wvi(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wvi(RebindActivity paramRebindActivity) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.jdField_b_of_type_AndroidWidgetButton.setClickable(false);
-    if (this.a.getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
+    this.a.b();
+    if (paramBoolean)
     {
-      paramView = this.a.jdField_b_of_type_JavaUtilArrayList.iterator();
-      for (long l = 0L; paramView.hasNext(); l = FileUtils.a((String)paramView.next()) + l) {}
-      if (this.a.jdField_b_of_type_JavaUtilArrayList.size() == 0)
-      {
-        int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.getFirstVisiblePosition();
-        if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-          FileUtils.a((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(i));
-        }
-      }
-      if (FileManagerUtil.a()) {
-        FMDialogUtil.a(this.a, 2131428241, 2131428237, new wvj(this));
-      }
-    }
-    for (;;)
-    {
-      LpReportInfo_pf00064.allReport(603, 1);
+      paramBundle = new Intent(this.a, BindVerifyActivity.class);
+      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
+      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
+      paramBundle.putExtra("keyReqBindMode", 1);
+      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
+      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
+      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
+      paramBundle.addFlags(67108864);
+      paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
+      paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
+      paramBundle.putExtra("key_is_from_qav_multi_call", this.a.getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
+      this.a.startActivityForResult(paramBundle, 1);
       return;
-      this.a.i();
-      continue;
-      this.a.i();
     }
+    this.a.b(2131434455);
   }
 }
 

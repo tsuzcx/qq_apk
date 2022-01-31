@@ -1,25 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 
-class tqk
-  extends BroadcastReceiver
+public class tqk
+  implements Runnable
 {
-  tqk(tqj paramtqj) {}
+  public tqk(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
+    if (RegisterVerifyCodeActivity.a(this.a) == 1)
+    {
+      RegisterVerifyCodeActivity.a(this.a).setText(2131434277);
+      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
+      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
+      return;
     }
-    this.a.a.b();
+    RegisterVerifyCodeActivity.b(this.a);
+    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434277) + "(" + RegisterVerifyCodeActivity.a(this.a) + "s)");
+    this.a.a.postDelayed(this, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tqk
  * JD-Core Version:    0.7.0.1
  */

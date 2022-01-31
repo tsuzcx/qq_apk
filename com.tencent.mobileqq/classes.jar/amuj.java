@@ -1,19 +1,41 @@
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData;
+import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+import cooperation.qzone.model.CoverCacheData.PackageInfo;
 
-public class amuj
-  extends CaptureConfigUpdateObserver
+public final class amuj
+  implements Parcelable.Creator
 {
-  public amuj(QIMCaptureController paramQIMCaptureController) {}
-  
-  public void a()
+  public CoverCacheData a(Parcel paramParcel)
   {
-    this.a.a(true);
+    CoverCacheData localCoverCacheData = new CoverCacheData();
+    if (paramParcel != null)
+    {
+      localCoverCacheData.jdField_a_of_type_Long = paramParcel.readLong();
+      localCoverCacheData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localCoverCacheData.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = ((CoverCacheData.PackageInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo = ((CoverCacheData.GameCoverInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+      localCoverCacheData.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
+      localCoverCacheData.jdField_a_of_type_Int = paramParcel.readInt();
+      localCoverCacheData.jdField_b_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_c_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localCoverCacheData.jdField_b_of_type_Int = paramParcel.readInt();
+    }
+    return localCoverCacheData;
+  }
+  
+  public CoverCacheData[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuj
  * JD-Core Version:    0.7.0.1
  */

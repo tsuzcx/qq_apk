@@ -16,8 +16,8 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.AbsListView.LayoutParams;
-import luq;
-import lur;
+import luz;
+import lva;
 
 public class FeedItemCellTypeUgcPlainSocial
   extends FeedItemCell
@@ -61,15 +61,15 @@ public class FeedItemCellTypeUgcPlainSocial
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
           localLinearLayout3.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
         }
-        ApiCompatibilityUtils.a(localLinearLayout3, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840751));
-        localLinearLayout3.setOnClickListener(new luq(this));
+        ApiCompatibilityUtils.a(localLinearLayout3, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840774));
+        localLinearLayout3.setOnClickListener(new luz(this));
       }
       localLinearLayout2.addView(localLinearLayout3);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
     }
-    ApiCompatibilityUtils.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840806));
+    ApiCompatibilityUtils.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840835));
     localLinearLayout1.addView(localLinearLayout2);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
       localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
@@ -80,7 +80,7 @@ public class FeedItemCellTypeUgcPlainSocial
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
       localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
     }
-    localLinearLayout2.setOnClickListener(new lur(this));
+    localLinearLayout2.setOnClickListener(new lva(this));
     a(localLinearLayout1);
     return this;
   }

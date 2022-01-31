@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDConfigServletProxy;
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDConfigServletProxy.RDConfigServletProxyListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-public final class xtb
-  implements RDConfigServletProxy.RDConfigServletProxyListener
+public class xtb
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public xtb(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
+  public xtb(PtvTemplateAdapter paramPtvTemplateAdapter) {}
   
-  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public void a(int paramInt)
   {
-    RDConfigServletProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
+    }
+    if (paramInt == 4097)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
+      }
+      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
   }
 }
 

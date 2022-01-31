@@ -1,16 +1,17 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
+import android.util.SparseArray;
 
-public class npm
-  implements MediaPlayer.OnInfoListener
+public final class npm
+  extends SparseArray
 {
-  public npm(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnInfoListener paramOnInfoListener) {}
-  
-  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public npm()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener.a_(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper, paramInt1, paramInt2);
+    put(31, "PLAYER_INFO_PLAYER_TYPE");
+    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
+    put(33, "PLAYER_INFO_START_GET_VINFO");
+    put(21, "PLAYER_INFO_START_BUFFERING");
+    put(34, "PLAYER_INFO_END_GET_VINFO");
+    put(22, "PLAYER_INFO_ENDOF_BUFFERING");
+    put(23, "PLAYER_INFO_START_RENDERING");
   }
 }
 

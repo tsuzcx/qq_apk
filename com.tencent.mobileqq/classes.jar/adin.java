@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-public class adin
-  implements TVK_IMediaPlayer.OnNetVideoInfoListener
+class adin
+  implements Runnable
 {
-  public adin(VideoBaseItem paramVideoBaseItem) {}
+  adin(adil paramadil, String paramString1, int paramInt, String paramString2) {}
   
-  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
-    }
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adil.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adil.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adin
  * JD-Core Version:    0.7.0.1
  */

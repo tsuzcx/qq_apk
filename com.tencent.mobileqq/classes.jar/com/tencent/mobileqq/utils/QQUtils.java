@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.utils;
 
-import ajrl;
-import ajrm;
-import ajrn;
-import ajro;
+import akfs;
+import akft;
+import akfu;
+import akfv;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.KeyguardManager;
@@ -53,16 +53,16 @@ public class QQUtils
   
   public static Dialog a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    paramActivity = new Dialog(paramActivity, 2131624515);
-    paramActivity.setContentView(2130970381);
-    TextView localTextView3 = (TextView)paramActivity.findViewById(2131370337);
-    TextView localTextView4 = (TextView)paramActivity.findViewById(2131370339);
-    TextView localTextView1 = (TextView)paramActivity.findViewById(2131370334);
-    TextView localTextView2 = (TextView)paramActivity.findViewById(2131370335);
+    paramActivity = new Dialog(paramActivity, 2131624516);
+    paramActivity.setContentView(2130970422);
+    TextView localTextView3 = (TextView)paramActivity.findViewById(2131370478);
+    TextView localTextView4 = (TextView)paramActivity.findViewById(2131370480);
+    TextView localTextView1 = (TextView)paramActivity.findViewById(2131370475);
+    TextView localTextView2 = (TextView)paramActivity.findViewById(2131370476);
     localTextView3.setText(paramString1);
     localTextView4.setText(new SpannableString(paramString2));
-    paramString1 = (ImageView)paramActivity.findViewById(2131370338);
-    ((ImageButton)paramActivity.findViewById(2131367104)).setOnClickListener(new ajro(paramActivity));
+    paramString1 = (ImageView)paramActivity.findViewById(2131370479);
+    ((ImageButton)paramActivity.findViewById(2131367152)).setOnClickListener(new akfv(paramActivity));
     if (paramInt >= 0)
     {
       paramString1.setVisibility(0);
@@ -544,7 +544,7 @@ public class QQUtils
   {
     if (a(paramQQAppInterface.getApp(), new String[] { paramString2 }))
     {
-      paramString1 = paramQQAppInterface.getApp().getString(2131435248);
+      paramString1 = paramQQAppInterface.getApp().getString(2131435265);
       if (paramString1 != null) {
         QQToast.a(paramQQAppInterface.getApp(), paramString1, 0).b(paramInt2);
       }
@@ -558,7 +558,7 @@ public class QQUtils
     KapalaiAdapterUtil.a().a((Intent)localObject);
     localIntent.putExtra("android.intent.extra.shortcut.INTENT", (Parcelable)localObject);
     localIntent.putExtra("android.intent.extra.shortcut.NAME", paramString2);
-    if (2130841549 == paramInt1)
+    if (2130841586 == paramInt1)
     {
       ((Intent)localObject).putExtra("targetUin", AppConstants.z);
       ((Intent)localObject).putExtra("device_type", 1);
@@ -583,7 +583,7 @@ public class QQUtils
           localIntent.putExtra("duplicate", false);
           localIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
           paramQQAppInterface.getApp().sendOrderedBroadcast(localIntent, null);
-          paramHandler.postDelayed(new ajrn(a(paramQQAppInterface.getApp(), new String[] { paramString2 }), paramQQAppInterface, paramInt2), paramInt3);
+          paramHandler.postDelayed(new akfu(a(paramQQAppInterface.getApp(), new String[] { paramString2 }), paramQQAppInterface, paramInt2), paramInt3);
           return;
         }
       }
@@ -759,9 +759,9 @@ public class QQUtils
     }
     if (a(paramQQAppInterface.getApp(), new String[] { paramString2 }))
     {
-      paramString1 = paramQQAppInterface.getApp().getString(2131435248);
+      paramString1 = paramQQAppInterface.getApp().getString(2131435265);
       if (paramString1 != null) {
-        paramMqqHandler.post(new ajrl(paramQQAppInterface, paramString1, paramInt1));
+        paramMqqHandler.post(new akfs(paramQQAppInterface, paramString1, paramInt1));
       }
       return;
     }
@@ -769,7 +769,7 @@ public class QQUtils
       QLog.d(a, 2, "createShortcutWhihTips.no shortcut.");
     }
     a(paramQQAppInterface, paramString1, paramString2, paramInt3);
-    paramMqqHandler.postDelayed(new ajrm(a(paramQQAppInterface.getApp(), new String[] { paramString2 }), paramQQAppInterface, paramInt1, paramString3), paramInt2);
+    paramMqqHandler.postDelayed(new akft(a(paramQQAppInterface.getApp(), new String[] { paramString2 }), paramQQAppInterface, paramInt1, paramString3), paramInt2);
   }
   
   public static void a(String paramString1, int paramInt, String paramString2, ArrayList paramArrayList)

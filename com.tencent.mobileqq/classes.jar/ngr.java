@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
+import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
 
 public class ngr
-  implements View.OnClickListener
+  extends DownloadPic2FileJob
 {
-  public ngr(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
+  public ngr(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
   
-  public void onClick(View paramView)
+  public boolean b()
   {
-    this.a.a = 0;
-    this.a.a(null);
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
+    return true;
   }
 }
 

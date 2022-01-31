@@ -23,7 +23,7 @@ public class ARMapSaQianView
   public View a;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130842230, 2130842231 };
+  private int[] jdField_a_of_type_ArrayOfInt = { 2130842277, 2130842278 };
   private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[2];
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;

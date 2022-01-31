@@ -1,17 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.tips.FriendHotTipsBar;
-import com.tencent.mobileqq.servlet.ReduFriendObserver;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public class vpq
-  extends ReduFriendObserver
+class vpq
+  implements Runnable
 {
-  public vpq(FriendChatPie paramFriendChatPie) {}
+  vpq(vpo paramvpo, List paramList) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a();
+    Iterator localIterator1 = this.jdField_a_of_type_Vpo.a.a.iterator();
+    label103:
+    for (;;)
+    {
+      if (localIterator1.hasNext())
+      {
+        String str = (String)localIterator1.next();
+        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator2.hasNext())
+        {
+          LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)localIterator2.next();
+          if (str.equals(localLocalMediaInfo.path)) {
+            localLocalMediaInfo.mChecked = true;
+          }
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label103;
+        }
+        localIterator1.remove();
+        break;
+        return;
+      }
     }
   }
 }

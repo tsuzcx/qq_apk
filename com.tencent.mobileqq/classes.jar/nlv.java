@@ -1,38 +1,35 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.child.TroopStoryPlayModeBase;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class nlv
-  extends PagerAdapter
+  implements Runnable
 {
-  private List jdField_a_of_type_JavaUtilList;
+  public nlv(TroopStoryPlayModeBase paramTroopStoryPlayModeBase, StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2, VideoListFeedItem paramVideoListFeedItem, boolean paramBoolean) {}
   
-  public nlv(MyVideoVisibilityDialog paramMyVideoVisibilityDialog, List paramList)
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.b.mStoryType, String.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.hashCode()));
+    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.a();
+    String str2 = PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.a, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.b);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem == null)
+    {
+      str1 = "";
+      StoryReportor.a("story_grp", "clk_one", i, 0, new String[] { "3", str2, "", str1 });
+      if (!this.jdField_a_of_type_Boolean) {
+        break label130;
+      }
+    }
+    label130:
+    for (String str1 = "2";; str1 = "1")
+    {
+      StoryReportor.a("play_video", "clk_download", 0, 0, new String[] { str1 });
+      return;
+      str1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId;
+      break;
+    }
   }
 }
 

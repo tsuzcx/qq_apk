@@ -1,23 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.AuthorityLoginView;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 
-public class akky
-  implements View.OnClickListener
+public final class akky
+  extends DownloadListener
 {
-  public akky(AuthorityLoginView paramAuthorityLoginView) {}
-  
-  public void onClick(View paramView)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof String))) {
-      this.a.b((String)paramView);
-    }
+    super.onDone(paramDownloadTask);
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akky
  * JD-Core Version:    0.7.0.1
  */

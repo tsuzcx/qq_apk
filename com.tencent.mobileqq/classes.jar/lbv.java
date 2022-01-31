@@ -1,17 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicManager;
-import com.tencent.mobileqq.app.BrowserAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class lbv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lbv(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public lbv(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a().b();
-    }
+    this.a.k = true;
+    ReadInJoyBaseDeliverActivity.a(this.a);
+    this.a.a();
   }
 }
 

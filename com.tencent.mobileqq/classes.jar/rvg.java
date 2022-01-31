@@ -1,37 +1,50 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.msgcache.CacheConstants;
-import com.tencent.mobileqq.service.message.MessageCache;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.qphone.base.util.QLog;
 
-public class rvg
+public final class rvg
   implements Runnable
 {
-  public rvg(ChatFragment paramChatFragment, int paramInt1, int paramInt2) {}
+  public rvg(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(CacheConstants.a, 0);
-    long l = ((SharedPreferences)localObject).getLong(CacheConstants.d, 0L);
-    if ((l == 0L) || (l > System.currentTimeMillis()) || (System.currentTimeMillis() - l > 14400000L)) {}
-    for (int i = 1;; i = 0)
+    long l2 = 0L;
+    Object localObject = (MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249);
+    if ((localObject == null) || (((MedalWallMng)localObject).a())) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatActivityFacade", 2, "insertFriendMedalNewsIfNeeded strongRemindOff");
+      }
+    }
+    label119:
+    label126:
+    for (;;)
     {
-      if (i != 0) {
-        ((SharedPreferences)localObject).edit().putLong(CacheConstants.d, System.currentTimeMillis()).commit();
-      }
-      if (i != 0)
-      {
-        i = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("entrance", 0);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_Int, i, this.b);
-      }
-      MessageCache.b.clear();
       return;
+      localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      long l1;
+      if (localObject == null)
+      {
+        l1 = 0L;
+        if (localObject != null) {
+          break label119;
+        }
+      }
+      for (;;)
+      {
+        if (l1 <= l2) {
+          break label126;
+        }
+        ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2);
+        return;
+        l1 = ((ExtensionInfo)localObject).medalUpdateTimestamp;
+        break;
+        l2 = ((ExtensionInfo)localObject).lastMedalTimestamp;
+      }
     }
   }
 }

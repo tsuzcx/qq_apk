@@ -1,19 +1,36 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.ARScanFragment;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aghb
-  extends FriendListObserver
+  implements DialogInterface.OnDismissListener
 {
-  public aghb(QCallFacade paramQCallFacade) {}
+  public aghb(ScanTorchActivity paramScanTorchActivity) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(String.valueOf(paramObject));
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanTorchActivity", 2, "onDismiss");
+    }
+    if ((!this.a.isFinishing()) && (this.a.a != null))
+    {
+      if (this.a.isResume())
+      {
+        this.a.a.b(false);
+        ScanTorchActivity.c(this.a, true);
+      }
+    }
+    else {
+      return;
+    }
+    ScanTorchActivity.n(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghb
  * JD-Core Version:    0.7.0.1
  */

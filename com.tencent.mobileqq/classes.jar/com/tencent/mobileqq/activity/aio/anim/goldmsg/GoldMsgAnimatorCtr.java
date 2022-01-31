@@ -66,7 +66,7 @@ public class GoldMsgAnimatorCtr
     paramQQAppInterface = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
     this.jdField_b_of_type_Int = ((int)(paramQQAppInterface.density * 10.0F + 0.5F));
     this.c = ((int)(paramQQAppInterface.density * 50.0F + 0.5F));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramRelativeLayout.findViewById(2131363489));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramRelativeLayout.findViewById(2131363507));
     this.jdField_a_of_type_AndroidWidgetListAdapter = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
   }
   
@@ -225,13 +225,13 @@ public class GoldMsgAnimatorCtr
         QLog.i("GoldMsgAnimatorCtr", 4, "init...");
       }
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970948, null));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970996, null));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(6, 2131363489);
-      localLayoutParams.addRule(8, 2131363489);
+      localLayoutParams.addRule(6, 2131363507);
+      localLayoutParams.addRule(8, 2131363507);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, -1, localLayoutParams);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131362398).setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131372339));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131372512));
       this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(this);
     } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOFooterViewDetector == null);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOFooterViewDetector.a(2, this.c).a(this.c, false, "goldMsg");

@@ -1,63 +1,128 @@
+import android.content.Context;
+import android.net.Uri;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.util.Map;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.webview.utils.WebStateReporter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class akrb
   implements Runnable
 {
-  public akrb(DownloadManager paramDownloadManager, String paramString, Map paramMap, int paramInt, DownloadInfo paramDownloadInfo1, DownloadInfo paramDownloadInfo2) {}
+  public akrb(WebStateReporter paramWebStateReporter, boolean paramBoolean, String paramString1, Context paramContext, long paramLong, String paramString2) {}
   
   public void run()
   {
+    boolean bool3 = this.jdField_a_of_type_Boolean;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "startDownload download file, url = " + this.jdField_a_of_type_JavaLangString + "params = " + this.jdField_a_of_type_JavaUtilMap);
+      bool2 = bool3;
     }
-    do
+    for (;;)
     {
-      for (;;)
+      try
       {
-        try
+        localObject = Uri.parse(this.jdField_a_of_type_JavaLangString);
+        bool2 = bool3;
+        str1 = ((Uri)localObject).getQueryParameter("hasRedDot");
+        bool1 = bool3;
+        bool2 = bool3;
+        if (!TextUtils.isEmpty(str1))
         {
-          int i;
-          if (this.jdField_a_of_type_Int == 0)
-          {
-            i = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, "application/vnd.android.package-archive", this.jdField_a_of_type_JavaUtilMap);
-            LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "startDownloadTask downloadSDKClient result=" + i + " url=" + this.jdField_a_of_type_JavaLangString);
-            if (i == 0) {
-              break;
-            }
-            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, i, "");
-            return;
+          bool2 = bool3;
+          bool1 = str1.equalsIgnoreCase("1");
+        }
+        bool2 = bool1;
+        localObject = ((Uri)localObject).getQueryParameter("crashFrom");
+        bool2 = bool1;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          continue;
+        }
+        bool2 = bool1;
+        i = Integer.parseInt((String)localObject);
+      }
+      catch (Exception localException1)
+      {
+        String str1;
+        int i = -1;
+        boolean bool1 = bool2;
+        if (QLog.isColorLevel()) {
+          QLog.e("WebStateReporter_report", 2, "parse url got some problem!", localException1);
+        }
+        continue;
+        Object localObject = (Integer)WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get("sample_rate");
+        continue;
+        int j = 0;
+        continue;
+        if (i != -1)
+        {
+          String str2 = localException1 + "?type=" + i;
+          if (QLog.isColorLevel()) {
+            QLog.d("WebStateReporter_report", 2, "try report web status,  step: " + this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Int + ", hasRedDot : " + bool1 + ", crashFrom : " + i + ", stepTime: " + (this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_c_of_type_Long - this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Long) + ", totalTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Long) + "\n" + str2);
           }
-          if (this.jdField_a_of_type_Int == 1)
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_a_of_type_JavaLangString))
           {
-            this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADTYPE, String.valueOf(3));
-            i = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, "application/tm.android.apkdiff", this.jdField_a_of_type_JavaUtilMap);
+            localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_a_of_type_JavaLangString;
+            String str3 = this.b;
+            if (bool1)
+            {
+              i = 1;
+              ReportController.b(null, "P_CliOper", "WebStatusReport", "", (String)localObject, str3, i, 1, this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Int, str2, Build.VERSION.RELEASE, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_c_of_type_Long - this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Long), String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Long));
+            }
           }
           else
           {
-            LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "startDownload download unapk file, url = " + this.jdField_a_of_type_JavaLangString + ",filename = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d);
-            i = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, 0, "resource/tm.android.unknown", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e, this.jdField_a_of_type_JavaUtilMap);
+            localObject = "unknown";
             continue;
-            i = 3;
           }
+          i = 0;
+          continue;
         }
-        catch (Exception localException)
-        {
-          LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
-        }
+        i = -1;
+        continue;
       }
-    } while ((this.b != this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) || (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f != 20));
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(20, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("WebStateReporter_report", 2, "parse url, redDot : " + str1 + ", urlFromType : " + (String)localObject);
+        }
+        j = this.jdField_a_of_type_JavaLangString.indexOf("?");
+        str1 = this.jdField_a_of_type_JavaLangString;
+        if (j == -1) {
+          continue;
+        }
+        str1 = str1.substring(0, j);
+      }
+      catch (Exception localException2)
+      {
+        continue;
+        continue;
+      }
+    }
+    if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.a(this.jdField_a_of_type_AndroidContentContext);
+      if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+        WebStateReporter.jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(10));
+      }
+    }
+    if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.containsKey(str1))
+    {
+      localObject = (Integer)WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get(str1);
+      j = ((Integer)localObject).intValue();
+      if ((1 != j) && (this.jdField_a_of_type_Long % j != WebStateReporter.jdField_c_of_type_Int)) {
+        break label315;
+      }
+      j = 1;
+      if (j != 0) {
+        break label320;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akrb
  * JD-Core Version:    0.7.0.1
  */

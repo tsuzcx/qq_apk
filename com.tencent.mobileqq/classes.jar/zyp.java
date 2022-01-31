@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.ar.FaceUIController;
-import com.tencent.mobileqq.ar.ObjectBaseData;
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
 
 public class zyp
-  implements ARTipsManager.BaikeClickListener
+  implements Runnable
 {
-  public zyp(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
+  public zyp(ARVideoRecordViewProxy paramARVideoRecordViewProxy) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+    if (ARVideoRecordViewProxy.b(this.a) != null) {
+      ARVideoRecordViewProxy.b(this.a).setVisibility(8);
     }
-    ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.a.a();
   }
 }
 

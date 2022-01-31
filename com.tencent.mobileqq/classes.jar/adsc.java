@@ -1,25 +1,39 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
 public class adsc
-  implements Runnable
+  implements TVK_SDKMgr.InstallListener
 {
-  public adsc(TroopAssistantManager paramTroopAssistantManager, TroopAssistantData paramTroopAssistantData, EntityManager paramEntityManager) {}
+  public adsc(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
-  public void run()
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData.getStatus() == 1000)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
-      return;
+    PresenceInterfaceImpl.a = false;
+    this.a.a("腾讯视频插件加载失败");
+    if (QLog.isColorLevel()) {
+      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    PresenceInterfaceImpl.a = false;
+    if (!this.a.c)
+    {
+      ThreadManager.getSubThreadHandler().post(new adsd(this));
+      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
+    }
+    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsc
  * JD-Core Version:    0.7.0.1
  */

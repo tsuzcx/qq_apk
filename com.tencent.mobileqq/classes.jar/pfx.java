@@ -1,16 +1,25 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.UICallbackTask;
+import com.tencent.component.media.gif.InvalidationHandler;
+import com.tencent.component.media.gif.NewGifDecoder;
+import com.tencent.component.media.gif.NewGifDrawable;
 
 public class pfx
-  implements Runnable
+  extends pgd
 {
-  public pfx(UICallbackTask paramUICallbackTask, ImageKey paramImageKey, Drawable paramDrawable) {}
-  
-  public void run()
+  public pfx(NewGifDrawable paramNewGifDrawable1, NewGifDrawable paramNewGifDrawable2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener.onImageLoaded(UICallbackTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
+    super(paramNewGifDrawable2);
+  }
+  
+  public void doWork()
+  {
+    synchronized (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mLock4Bmp)
+    {
+      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mBuffer = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.seekToFrame(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mBuffer);
+      if (!this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.hasMessages(0)) {
+        this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+      }
+      return;
+    }
   }
 }
 

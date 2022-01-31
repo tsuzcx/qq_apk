@@ -1,17 +1,21 @@
 import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
 public class lpe
-  implements Runnable
+  implements Comparator
 {
   public lpe(ArticleInfoModule paramArticleInfoModule) {}
   
-  public void run()
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    List localList = this.a.a.a(ChannelTopCookie.class, true, null, null, null, null, null, null);
-    this.a.a(localList);
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
+    }
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

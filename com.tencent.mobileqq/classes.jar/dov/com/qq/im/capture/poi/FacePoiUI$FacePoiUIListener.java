@@ -2,7 +2,7 @@ package dov.com.qq.im.capture.poi;
 
 public abstract interface FacePoiUI$FacePoiUIListener
 {
-  public abstract void aA_();
+  public abstract void aC_();
   
   public abstract void b();
   

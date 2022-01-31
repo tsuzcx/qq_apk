@@ -1,43 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.troopshare.TroopShareUtility.OnShareListener;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.view.View;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
 
 class rzq
-  implements TroopShareUtility.OnShareListener
+  implements Runnable
 {
-  rzq(rzp paramrzp) {}
+  rzq(rzp paramrzp, Object paramObject, View paramView) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    String str1;
-    if ((this.a.a.d == 1) || (this.a.a.a.isMember))
+    if ((this.jdField_a_of_type_Rzp.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
     {
-      str1 = "";
-      switch (paramInt)
-      {
-      }
-    }
-    while (TextUtils.isEmpty(str1))
-    {
-      return;
-      str1 = "share_circle";
-      continue;
-      str1 = "share_qq";
-      continue;
-      str1 = "share_qzone";
-      continue;
-      str1 = "share_wechat";
-    }
-    String str3 = this.a.a.a.troopUin;
-    String str4 = TroopReportor.a(this.a.a.a);
-    if (paramBoolean) {}
-    for (String str2 = "0";; str2 = "1")
-    {
-      TroopReportor.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
+      Toast.makeText(this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131434491), 0).show();
       return;
     }
+    if (this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
+      this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
+    }
+    this.jdField_a_of_type_Rzp.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Rzp.jdField_a_of_type_JavaLangString);
   }
 }
 

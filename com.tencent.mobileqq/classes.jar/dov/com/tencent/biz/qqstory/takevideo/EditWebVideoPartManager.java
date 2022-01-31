@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anfn;
+import anvs;
 import com.tribe.async.reactive.SimpleObserver;
 import dov.com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
 
@@ -12,7 +12,7 @@ public class EditWebVideoPartManager
   
   protected SimpleObserver a()
   {
-    return new anfn(this);
+    return new anvs(this);
   }
   
   public void a(EncodeVideoTask.ResultListener paramResultListener)

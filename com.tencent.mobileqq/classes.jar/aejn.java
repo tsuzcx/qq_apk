@@ -1,75 +1,73 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import tencent.im.msg.im_msg_body.RichText;
 
-public final class aejn
-  implements AdapterView.OnItemClickListener
+public class aejn
+  implements UpCallBack
 {
-  public aejn(ShareActionSheetBuilder paramShareActionSheetBuilder, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  int jdField_a_of_type_Int;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public aejn(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt)
   {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
+    if (paramSendResult.jdField_a_of_type_Int == 0)
+    {
+      MessageForStructing localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localMessageForStructing.structingMsg.mResid = paramSendResult.c;
+      localMessageForStructing.structingMsg.mFileName = String.valueOf(localMessageForStructing.uniseq);
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localMessageForStructing.uniseq, localMessageForStructing.structingMsg.getBytes());
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg", 2, "send real struct msg done, cost : " + (System.currentTimeMillis() - MultiMsgManager.b()));
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.b();
-    int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.c;
-    if ((i == 9) || (i == 10)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131435302;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiMsg", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
-    {
-      if (paramInt != -1)
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(paramInt), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131558448));
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435303;
-        }
-      }
-      else
-      {
-        paramAdapterView = this.jdField_a_of_type_JavaLangString;
-        switch (i)
-        {
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        default: 
-          return;
-        case 2: 
-          ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.e, false);
-          return;
-        case 3: 
-          ShortVideoShareUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.e);
-          return;
-        case 9: 
-          ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.f);
-          return;
-        }
-        ShortVideoShareUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.f);
-        return;
-      }
-      paramInt = -1;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
+    ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+    paramSendResult = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if ((paramSendResult != null) && (paramSendResult.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)) {
+      paramSendResult.extraflag = 32768;
     }
+    paramSendResult = this.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_Int;
+    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
+    ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).a(MessageHandler.c(this.jdField_a_of_type_Int), false, new Object[] { paramSendResult, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejn
  * JD-Core Version:    0.7.0.1
  */

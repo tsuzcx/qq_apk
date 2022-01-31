@@ -1,49 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.image.JpegExifReader.JpegExifReaderInterface;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Message;
+import com.tencent.mobileqq.search.HistorySearchEntryModel;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class ahra
-  implements JpegExifReader.JpegExifReaderInterface
+  implements Runnable
 {
-  public void doReport(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
+  public ahra(HistorySearchEntryModel paramHistorySearchEntryModel) {}
   
-  public boolean readEnableFromDPC()
+  public void run()
   {
-    try
-    {
-      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("JpegExifReader", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length >= 9)
-        {
-          int i = Integer.parseInt(localObject[8]);
-          if (i != 1) {
-            break label81;
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      label81:
-      while (!QLog.isColorLevel()) {}
-      QLog.e("JpegExifReader", 2, "read dpc", localException);
-    }
-    return true;
-    return false;
-    return true;
+    this.a.jdField_a_of_type_JavaUtilList = HistorySearchEntryModel.a(this.a);
+    Message localMessage = this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage();
+    localMessage.what = 1;
+    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1);
+    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahra
  * JD-Core Version:    0.7.0.1
  */

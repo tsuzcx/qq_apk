@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class sjn
-  implements Runnable
+class sjn
+  implements DialogInterface.OnClickListener
 {
-  public sjn(EmosmActivity paramEmosmActivity) {}
+  sjn(sjl paramsjl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d();
+    this.a.a.a();
+    DevlockQuickLoginActivity.c(this.a.a);
+    DevlockQuickLoginActivity.c(this.a.a, 0, 2131034135);
   }
 }
 

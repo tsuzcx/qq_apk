@@ -1,75 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiBubbleView;
-import com.tencent.mobileqq.ark.ArkAiInfo;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.ark.ArkAppHandler;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.widget.XEditTextEx;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aapz
-  implements View.OnClickListener
+class aapz
+  implements DialogInterface.OnClickListener
 {
-  public aapz(ArkRecommendController paramArkRecommendController) {}
+  aapz(aapv paramaapv, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag();
-    QQAppInterface localQQAppInterface;
-    int i;
-    ArkAiInfo localArkAiInfo;
-    if ((paramView instanceof ArkAiBubbleView))
+    ArkAppCenter.a().post(new aaqa(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      paramView = (ArkAiBubbleView)paramView;
-      if (!paramView.c)
-      {
-        this.a.a(paramView.jdField_a_of_type_JavaUtilList, paramView.jdField_a_of_type_JavaUtilList.indexOf(paramView.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo));
-        List localList = paramView.a();
-        localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        i = 0;
-        if (i >= localList.size()) {
-          break label274;
-        }
-        localArkAiInfo = (ArkAiInfo)localList.get(i);
-        ArkAppDataReport.h(null, localArkAiInfo.jdField_a_of_type_JavaLangString, localArkAiInfo.g, localArkAiInfo.jdField_b_of_type_Int);
-        if (localArkAiInfo.jdField_a_of_type_Int != 0)
-        {
-          ArkAppDataReport.j(localQQAppInterface, localArkAiInfo.jdField_a_of_type_JavaLangString, localArkAiInfo.h, localArkAiInfo.jdField_a_of_type_Int);
-          if (4 == localArkAiInfo.jdField_a_of_type_Int) {
-            ArkAppDataReport.j(localQQAppInterface, localArkAiInfo.jdField_a_of_type_JavaLangString, localArkAiInfo.h, 1);
-          }
-        }
-        if (i == 0)
-        {
-          if ((ArkRecommendController.a(this.a) == null) || (ArkRecommendController.a(this.a).a == null)) {
-            break label275;
-          }
-          paramView = ArkRecommendController.a(this.a).a.getText();
-          if (paramView != null) {
-            break label247;
-          }
-          paramView = null;
-        }
-      }
-    }
-    for (;;)
-    {
-      ((ArkAppHandler)localQQAppInterface.a(95)).a(100, 1, 2, null, null, localArkAiInfo.jdField_a_of_type_JavaLangString, localArkAiInfo.jdField_b_of_type_JavaLangString, paramView, 0, 0);
-      i += 1;
-      break;
-      label247:
-      paramView = paramView.toString();
-      continue;
-      this.a.h();
-      ArkAppDataReport.c((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime());
-      label274:
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aapv.a, "ark_authority_api_login", this.jdField_a_of_type_Aapv.c, 1);
       return;
-      label275:
-      paramView = null;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label38;
     }
   }
 }

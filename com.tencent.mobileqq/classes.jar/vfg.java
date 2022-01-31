@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-public class vfg
-  implements View.OnClickListener
+class vfg
+  implements Runnable
 {
-  public vfg(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
+  vfg(vff paramvff, ProgressPieDrawable paramProgressPieDrawable) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = ((PublicAccountChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
-    ((PublicAccountChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.setVisible(false, true);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] set ProgressPieDrawable invisible,ppd = " + this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable);
+    }
   }
 }
 

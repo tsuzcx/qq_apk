@@ -1,27 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.activity.contact.newfriend.CloneFriendPushHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class vtb
-  extends NearbyRelevantObserver
+  implements Runnable
 {
-  public vtb(NearbyChatPie paramNearbyChatPie) {}
+  public vtb(FriendChatPie paramFriendChatPie) {}
   
-  public void a(String paramString1, String paramString2, Object paramObject)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.a.f, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
-    }
-    if (!"tag_nearby_chat".equals(paramString1)) {}
-    while ((TextUtils.isEmpty(paramString2)) || (this.a.a == null)) {
+    if (CloneFriendPushHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
+    {
+      FriendChatPie.c(this.a, true);
+      CloneFriendPushHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
       return;
     }
-    this.a.ar();
-    this.a.a.setText(paramString2);
-    this.a.a.selectAll();
-    this.a.g = paramString2;
+    FriendChatPie.c(this.a, false);
   }
 }
 

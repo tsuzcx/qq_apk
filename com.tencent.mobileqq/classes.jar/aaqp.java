@@ -1,31 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.statistics.ArkAppReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
+import com.tencent.mobileqq.music.SongInfo;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aaqp
-  implements DialogInterface.OnClickListener
+class aaqp
+  implements Runnable
 {
-  public aaqp(ArkRecommendController paramArkRecommendController, QQCustomDialog paramQQCustomDialog, QQAppInterface paramQQAppInterface, Context paramContext) {}
+  aaqp(aaqn paramaaqn, SongInfo paramSongInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    Iterator localIterator = ArkAppMusicModule.a.iterator();
+    while (localIterator.hasNext())
     {
-      ArkRecommendController.a(ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      ArkAppReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "__global__", "ArkAlertDialogNotConfirm", 0L, 0L, 0L, 0L, 0L, "", "");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      ArkRecommendController.a(this.jdField_a_of_type_AndroidContentContext, "close", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      ArkAppCenter.b("ArkDialog", String.format("NegativeButton click failed, err=%s", new Object[] { paramDialogInterface.getMessage() }));
+      ArkAppMusicModule localArkAppMusicModule = (ArkAppMusicModule)((WeakReference)localIterator.next()).get();
+      if (localArkAppMusicModule != null) {
+        localArkAppMusicModule.a(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+      }
     }
   }
 }

@@ -1,12 +1,12 @@
 package cooperation.plugin;
 
-import alvr;
-import alvs;
-import alvt;
-import alvu;
-import alvv;
-import alvw;
-import alvx;
+import amlv;
+import amlw;
+import amlx;
+import amly;
+import amlz;
+import amma;
+import ammb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -66,7 +66,7 @@ public abstract class IPluginManager
       ((Toast)localObject).show();
     }
     paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("plugin_launch_time", System.currentTimeMillis());
-    paramOnOpenPluginListener = new alvr(paramOnOpenPluginListener);
+    paramOnOpenPluginListener = new amlv(paramOnOpenPluginListener);
     if ((paramPluginParams.jdField_a_of_type_AndroidAppDialog != null) && (!paramActivity.isFinishing())) {
       new SplashDialogWrapper(paramActivity, paramPluginParams.jdField_a_of_type_AndroidAppDialog, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_a_of_type_Boolean, paramPluginParams.jdField_c_of_type_Int).show();
     }
@@ -92,17 +92,17 @@ public abstract class IPluginManager
   
   public static void a(Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    alvu localalvu = new alvu();
+    amly localamly = new amly();
     if (paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession != null) {
       paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession.a();
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if (!(localAppRuntime instanceof QQAppInterface))
     {
-      c(paramContext, paramPluginParams, localalvu);
+      c(paramContext, paramPluginParams, localamly);
       return;
     }
-    ((IPluginManager)((QQAppInterface)localAppRuntime).getManager(26)).a(paramContext, paramPluginParams, localalvu);
+    ((IPluginManager)((QQAppInterface)localAppRuntime).getManager(26)).a(paramContext, paramPluginParams, localamly);
   }
   
   public static void a(String paramString1, String paramString2)
@@ -169,17 +169,17 @@ public abstract class IPluginManager
   
   public static void b(Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    alvv localalvv = new alvv();
+    amlz localamlz = new amlz();
     if (paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession != null) {
       paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession.a();
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if (!(localAppRuntime instanceof QQAppInterface))
     {
-      c(paramContext, paramPluginParams, localalvv);
+      c(paramContext, paramPluginParams, localamlz);
       return;
     }
-    ((IPluginManager)((QQAppInterface)localAppRuntime).getManager(26)).a(paramContext, paramPluginParams, localalvv);
+    ((IPluginManager)((QQAppInterface)localAppRuntime).getManager(26)).a(paramContext, paramPluginParams, localamlz);
   }
   
   public static void c(Context paramContext, IPluginManager.PluginParams paramPluginParams)
@@ -203,15 +203,15 @@ public abstract class IPluginManager
         QLog.i("plugin_tag", 2, "handleOtherProcessWait");
       }
       jdField_a_of_type_Long = System.currentTimeMillis();
-      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new alvx(paramContext, paramPluginParams, paramOnPluginReadyListener));
+      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new ammb(paramContext, paramPluginParams, paramOnPluginReadyListener));
       return;
     }
     jdField_a_of_type_Long = 0L;
     if ((jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient == null) || (!jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.useful()))
     {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new alvx(paramContext, paramPluginParams, paramOnPluginReadyListener));
+      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new ammb(paramContext, paramPluginParams, paramOnPluginReadyListener));
       if (jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener == null) {
-        jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener = new alvs();
+        jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener = new amlw();
       }
       PluginManagerHelper.getPluginInterface(paramContext, jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener);
       return;
@@ -234,7 +234,7 @@ public abstract class IPluginManager
       PluginProxyService.bindService(paramContext, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_c_of_type_JavaLangString, paramPluginParams.e, paramPluginParams.jdField_a_of_type_AndroidContentIntent, paramPluginParams.jdField_a_of_type_AndroidContentServiceConnection);
       return;
     }
-    ThreadManager.post(new alvw(paramContext, paramPluginParams), 5, null, false);
+    ThreadManager.post(new amma(paramContext, paramPluginParams), 5, null, false);
   }
   
   private static void d(Context paramContext, IPluginManager.PluginParams paramPluginParams, IPluginManager.OnPluginReadyListener paramOnPluginReadyListener)
@@ -259,7 +259,7 @@ public abstract class IPluginManager
       QLog.i("plugin_tag", 4, "doHandleOtherProcess: " + jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.useful());
       QLog.i("plugin_tag", 4, "doHandleOtherProcess isPluginInstalled false");
     }
-    jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(paramPluginParams.jdField_b_of_type_JavaLangString, new alvt(paramOnPluginReadyListener, paramPluginParams, paramContext));
+    jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(paramPluginParams.jdField_b_of_type_JavaLangString, new amlx(paramOnPluginReadyListener, paramPluginParams, paramContext));
   }
   
   public abstract PluginInfo a(String paramString);

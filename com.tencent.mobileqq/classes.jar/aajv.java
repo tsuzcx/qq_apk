@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.ark.ArkAppInfo.ContextActionAppInfo;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.qphone.base.util.QLog;
 
-class aajv
-  implements Comparator
+public class aajv
+  implements IMediaPlayer.OnErrorListener
 {
-  aajv(aaju paramaaju) {}
+  public aajv(SplashPopupWin paramSplashPopupWin) {}
   
-  public int a(ArkAppInfo.ContextActionAppInfo paramContextActionAppInfo1, ArkAppInfo.ContextActionAppInfo paramContextActionAppInfo2)
+  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    int i = paramContextActionAppInfo1.a.compareTo(paramContextActionAppInfo2.a);
-    if (i != 0) {
-      return i;
-    }
-    return paramContextActionAppInfo1.b.compareTo(paramContextActionAppInfo2.b);
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin.onError, what[" + paramInt1 + "], extra[" + paramInt2 + "]");
+    return false;
   }
 }
 

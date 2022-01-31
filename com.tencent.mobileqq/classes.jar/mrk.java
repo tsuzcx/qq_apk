@@ -1,53 +1,25 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter.FeedItemCellHolder;
-import com.tencent.image.URLDrawable;
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class mrk
-  implements AbsListView.OnScrollListener
+  implements DialogInterface.OnClickListener
 {
-  public mrk(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mrk(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      DropFrameMonitor.a().a("list_subscript");
-    }
-    for (;;)
-    {
       return;
-      DropFrameMonitor.a().a("list_subscript", false);
-      paramInt = 0;
-      while (paramInt <= paramAbsListView.getChildCount())
-      {
-        Object localObject = paramAbsListView.getChildAt(paramInt);
-        if ((localObject != null) && ((((View)localObject).getTag() instanceof SubscriptFeedsAdapter.FeedItemCellHolder)))
-        {
-          localObject = (SubscriptFeedsAdapter.FeedItemCellHolder)((View)localObject).getTag();
-          Drawable localDrawable = ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject).b.getDrawable();
-          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject).a);
-            }
-            ((URLDrawable)localDrawable).startDownload();
-            ((URLDrawable)localDrawable).setAutoDownload(true);
-          }
-        }
-        paramInt += 1;
-      }
+    case 1: 
+      ThreadManager.post(new mrl(this), 10, null, true);
+      return;
     }
+    paramDialogInterface.dismiss();
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

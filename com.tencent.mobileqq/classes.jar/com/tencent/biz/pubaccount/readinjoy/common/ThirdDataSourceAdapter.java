@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 import com.tencent.image.AbsThirdDataSourceAdapter;
 import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
-import lle;
+import lkz;
 
 public class ThirdDataSourceAdapter
   extends AbsThirdDataSourceAdapter
@@ -38,14 +38,14 @@ public class ThirdDataSourceAdapter
     this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
     this.b = 1;
     paramOnPreparedCallback = ThirdVideoManager.a();
-    lle locallle = new lle(this);
+    lkz locallkz = new lkz(this);
     if (this.jdField_a_of_type_Int == 2) {
-      paramOnPreparedCallback.a(paramString, "PubAccountArticleCenter.GetUrlByVid", locallle);
+      paramOnPreparedCallback.a(paramString, "PubAccountArticleCenter.GetUrlByVid", locallkz);
     }
     while (this.jdField_a_of_type_Int != 4) {
       return;
     }
-    paramOnPreparedCallback.a(paramString, "SQQShopAdSvr.GetUrlByVid", locallle);
+    paramOnPreparedCallback.a(paramString, "SQQShopAdSvr.GetUrlByVid", locallkz);
   }
 }
 

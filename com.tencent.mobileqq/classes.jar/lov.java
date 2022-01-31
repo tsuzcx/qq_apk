@@ -1,19 +1,14 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class lov
   implements Runnable
 {
-  public lov(ArticleInfoModule paramArticleInfoModule, List paramList, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean) {}
+  public lov(AdvertisementInfoModule paramAdvertisementInfoModule, AdvertisementInfo paramAdvertisementInfo) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (List localList = ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean); this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a == null; localList = this.jdField_a_of_type_JavaUtilList) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.post(new low(this, localList));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
   }
 }
 

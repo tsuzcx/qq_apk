@@ -1,43 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
 
-public final class adee
-  implements Runnable
+public class adee
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public void run()
+  public adee(MusicFilePresenter paramMusicFilePresenter) {}
+  
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    Object localObject = BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("module_nearby");
-    if ((localObject instanceof NearbyAppInterface))
+    if (paramBoolean)
     {
-      localObject = (NearbyProcManager)((NearbyAppInterface)localObject).getManager(213);
-      if (localObject != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NowLiveFragment", 2, "pre login now plugin!");
-        }
-        ((NearbyProcManager)localObject).d();
-      }
+      this.a.a.a(paramInt);
+      this.a.b(paramInt);
     }
-    while (!QLog.isColorLevel())
-    {
-      NowLiveFragment.a(true);
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("NowLiveFragment", 2, "pre login now plugin! err npb null;");
-      return;
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((this.a.a != null) && (!this.a.a.b(MusicFilePresenter.a(this.a)))) {
+      this.a.a.d();
     }
-    QLog.d("NowLiveFragment", 2, "pre login now plugin! err runtime null or wrong! app = " + localObject);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adee
  * JD-Core Version:    0.7.0.1
  */

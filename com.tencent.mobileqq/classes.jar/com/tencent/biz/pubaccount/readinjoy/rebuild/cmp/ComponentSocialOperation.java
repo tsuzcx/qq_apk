@@ -30,9 +30,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lwe;
-import lwg;
-import lwh;
+import lwn;
+import lwp;
+import lwq;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -116,21 +116,21 @@ public class ComponentSocialOperation
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969580, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366806));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131367008));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131367007));
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131367006);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131367009));
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969587, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366849));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131367052));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131367051));
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131367050);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131367053));
     this.jdField_a_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(1.0F, 1.8F, 1.0F, 1.8F, 1, 0.5F, 1, 0.5F);
     this.jdField_b_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(1.8F, 0.85F, 1.8F, 0.85F, 1, 0.5F, 1, 0.5F);
     this.jdField_c_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(0.85F, 1.0F, 0.85F, 1.0F, 1, 0.5F, 1, 0.5F);
     this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setDuration(300L);
     this.jdField_b_of_type_AndroidViewAnimationScaleAnimation.setDuration(200L);
     this.jdField_c_of_type_AndroidViewAnimationScaleAnimation.setDuration(100L);
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new lwe(this));
-    this.jdField_b_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new lwg(this));
-    this.jdField_c_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new lwh(this));
+    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new lwn(this));
+    this.jdField_b_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new lwp(this));
+    this.jdField_c_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new lwq(this));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
@@ -184,7 +184,7 @@ public class ComponentSocialOperation
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843269);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843369);
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#07D0B0"));
         label94:
         if (this.jdField_a_of_type_Int <= 0) {
@@ -199,16 +199,16 @@ public class ComponentSocialOperation
         }
         QLog.d("ComponentSocialOperation", 2, "set upvote to " + this.jdField_a_of_type_Boolean + ", set num:" + this.jdField_a_of_type_Int);
         break;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843272);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843372);
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
         break label94;
         label189:
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131428481);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131428487);
       }
       label199:
       break;
       label201:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428482);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428488);
     }
     label213:
     this.jdField_c_of_type_AndroidWidgetTextView.setText("Biu");
@@ -243,7 +243,7 @@ public class ComponentSocialOperation
         continue;
         ReadInJoyUtils.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, true);
         continue;
-        if (paramView.getId() != 2131367006) {
+        if (paramView.getId() != 2131367050) {
           continue;
         }
         if (this.jdField_a_of_type_Boolean) {
@@ -299,7 +299,7 @@ public class ComponentSocialOperation
         continue;
         i = 0;
         continue;
-        if (paramView.getId() != 2131367009) {
+        if (paramView.getId() != 2131367053) {
           continue;
         }
         paramView = getContext();
@@ -342,7 +342,7 @@ public class ComponentSocialOperation
       }
       ReadInJoyUtils.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
       localObject2 = new ReportInfo();
-      if (paramView.getId() != 2131366806) {
+      if (paramView.getId() != 2131366849) {
         continue;
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo != null)

@@ -1,43 +1,38 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 import org.json.JSONObject;
 
 public class liq
-  implements Runnable
+  implements NativeCommentServlet.CommentObserver
 {
-  public liq(ChannelCoverView paramChannelCoverView, ChannelCoverInfo paramChannelCoverInfo) {}
+  public liq(ArticleCommentModule paramArticleCommentModule) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
   {
-    for (;;)
-    {
-      try
+    if (ArticleCommentModule.access$000(this.a) != null) {
+      ArticleCommentModule.access$000(this.a).a(paramArticleInfo, paramInt, paramString);
+    }
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, JSONObject paramJSONObject, String paramString)
+  {
+    if (this.a.dealwithRawComment(paramJSONObject)) {
+      if (ArticleCommentModule.access$000(this.a) != null)
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("is_followed", "1");
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mIsTopic)
-        {
-          String str1 = "0X80088BB";
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mIsTopic)
-          {
-            str3 = "0X80088BB";
-            PublicAccountReportUtils.a(null, "", str1, str3, 0, 0, "1", "", "", VideoReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, localJSONObject), false);
-            return;
-          }
-          String str3 = "0X8007BE6";
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("TRACE_COMMENT_LIST", 2, "element size=" + ArticleCommentModule.access$100(this.a).size());
         }
-        String str2 = "0X8007BE6";
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        return;
+        ArticleCommentModule.access$000(this.a).a(paramArticleInfo);
       }
     }
+    while (ArticleCommentModule.access$000(this.a) == null) {
+      return;
+    }
+    ArticleCommentModule.access$000(this.a).a(paramArticleInfo, -1, " json formate error");
   }
 }
 

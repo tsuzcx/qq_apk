@@ -1,29 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class kuj
-  implements View.OnTouchListener
+class kuj
+  implements TVK_SDKMgr.InstallListener
 {
-  public kuj(VideoCoverFragment paramVideoCoverFragment) {}
+  kuj(kui paramkui) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      VideoCoverFragment.a(this.a).b();
-      if (VideoCoverFragment.a(this.a)) {
-        this.a.a(false);
-      }
-    }
-    else
-    {
-      return false;
-    }
-    this.a.a(true);
-    return false;
+    AdvertisementVideoPreloadManager.c("installSDK onInstalledFailed arg0=" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    AdvertisementVideoPreloadManager.c("installSDK onInstalledSuccessed");
+    AdvertisementVideoPreloadManager.a(this.a.a);
   }
 }
 

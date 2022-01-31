@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.ptt.preop.PttPreSendManager;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agft
   implements Runnable
 {
-  public agft(PttPreSendManager paramPttPreSendManager, BaseChatPie paramBaseChatPie) {}
+  public agft(ScanTorchActivity paramScanTorchActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h(2131230731);
+    this.a.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agft
  * JD-Core Version:    0.7.0.1
  */

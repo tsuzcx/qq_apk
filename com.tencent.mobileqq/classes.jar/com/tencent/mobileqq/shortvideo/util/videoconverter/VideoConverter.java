@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util.videoconverter;
 
-import ahqa;
+import aiec;
 import android.os.Build.VERSION;
 import java.io.File;
 
@@ -11,7 +11,7 @@ public class VideoConverter
   public VideoConverter()
   {
     if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new ahqa();
+      this.a = new aiec();
     }
   }
   

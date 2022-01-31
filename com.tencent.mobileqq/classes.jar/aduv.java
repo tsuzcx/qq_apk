@@ -1,57 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.RecentEmotion;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.intervideo.now.NowDataReporter;
+import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
+import com.tencent.mobileqq.intervideo.now.NowPlugin;
+import com.tencent.mobileqq.intervideo.now.NowProxy;
 
 public class aduv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aduv(EmoticonManager paramEmoticonManager, RecentEmotion paramRecentEmotion) {}
+  public aduv(NowLoadingActivity paramNowLoadingActivity, NowProxy paramNowProxy) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "addRecentEmotionToCache key = " + this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion.keyword;
-    if (TextUtils.isEmpty(str))
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.d)
     {
-      QLog.e("EmoticonManager", 1, "addRecentEmotionToCache keyword empty");
-      return;
-    }
-    RecentEmotion localRecentEmotion = this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion;
-    CopyOnWriteArrayList localCopyOnWriteArrayList = EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, str);
-    if (localCopyOnWriteArrayList != null)
-    {
-      int i = localCopyOnWriteArrayList.indexOf(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
-      if (i > -1)
-      {
-        localRecentEmotion = (RecentEmotion)localCopyOnWriteArrayList.get(i);
-        localRecentEmotion.replace(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.d.remove(localRecentEmotion);
-      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.d.add(0, localRecentEmotion);
-      return;
-      localCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
-      continue;
-      localCopyOnWriteArrayList = new CopyOnWriteArrayList();
-      localCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
-      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.e.put(str, localCopyOnWriteArrayList);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.d = false;
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.a.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.c.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowProxy.a.a.a();
+      NowLoadingActivity.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aduv
  * JD-Core Version:    0.7.0.1
  */

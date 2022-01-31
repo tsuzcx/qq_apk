@@ -1,23 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Base64;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
 public class zef
-  implements Runnable
+  implements Comparator
 {
-  public zef(MessageRoamManager paramMessageRoamManager) {}
+  public zef(FriendsManager paramFriendsManager) {}
   
-  public void run()
+  private String a(SpecialCareInfo paramSpecialCareInfo)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_passwordmd5_and_signature_file", 0);
-      String str = Base64.encodeToString(this.a.jdField_a_of_type_ArrayOfByte, 0);
-      localSharedPreferences.edit().putString("vip_message_roam_passwordmd5" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str).commit();
+    Friends localFriends = this.a.a(paramSpecialCareInfo.uin);
+    if (localFriends == null) {
+      return paramSpecialCareInfo.uin;
     }
+    return ContactUtils.a(localFriends) + localFriends.uin;
+  }
+  
+  public int a(SpecialCareInfo paramSpecialCareInfo1, SpecialCareInfo paramSpecialCareInfo2)
+  {
+    return ContactSorter.a(a(paramSpecialCareInfo1), a(paramSpecialCareInfo2));
   }
 }
 

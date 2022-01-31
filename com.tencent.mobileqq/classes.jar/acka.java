@@ -1,25 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
 
-public final class acka
-  extends Handler
+class acka
+  implements Runnable
 {
-  public acka(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  acka(acjz paramacjz) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    ((FileTransferObserver)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
+    if (ExtendFriendVoiceView.a(this.a.a) != null) {
+      ExtendFriendVoiceView.a(this.a.a).setBackgroundDrawable(ExtendFriendVoiceView.a(this.a.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acka
  * JD-Core Version:    0.7.0.1
  */

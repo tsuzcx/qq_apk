@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class acng
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
+  public acng(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt) {}
   
-  public acng(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = MessageCache.a();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelection(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acng
  * JD-Core Version:    0.7.0.1
  */

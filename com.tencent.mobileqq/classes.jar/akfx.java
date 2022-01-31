@@ -1,22 +1,20 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.mobileqq.utils.RandomAccessFileManager;
+import java.io.RandomAccessFile;
 
-class akfx
-  implements Runnable
+public class akfx
 {
-  akfx(akfw paramakfw, View paramView) {}
+  public volatile int a;
+  public long a;
+  public akfx a;
+  public RandomAccessFile a;
+  public long b;
+  public akfx b;
   
-  public void run()
-  {
-    this.jdField_a_of_type_Akfw.a.jdField_a_of_type_Akfz.showDropDown();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Akfw.a.b);
-    this.jdField_a_of_type_Akfw.a.jdField_a_of_type_Boolean = true;
-  }
+  public akfx(RandomAccessFileManager paramRandomAccessFileManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akfx
  * JD-Core Version:    0.7.0.1
  */

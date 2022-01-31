@@ -1,23 +1,30 @@
-import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.component.media.photogif.NewAnimationDrawable;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.utils.BaseHandler;
 
 public class phb
-  extends Handler
+  extends BaseHandler
 {
-  public phb(NewAnimationDrawable paramNewAnimationDrawable, Looper paramLooper)
+  public phb(ImageManager paramImageManager, Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 0)
+    switch (paramMessage.what)
     {
-      NewAnimationDrawable.a(this.a, NewAnimationDrawable.a(this.a));
-      this.a.invalidateSelf();
+    default: 
+      return;
+    case 0: 
+      ImageManager.a(this.a, paramMessage);
+      return;
+    case 1: 
+      ImageManager.b(this.a, paramMessage);
+      return;
     }
+    ImageManager.c(this.a, paramMessage);
   }
 }
 

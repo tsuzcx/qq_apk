@@ -94,7 +94,7 @@ public class CaiShenActivity
   {
     if ((this.mItemInfoDialog != null) && (this.mItemInfoDialog.isShowing()) && (!isFinishing()))
     {
-      findViewById(2131369506).setVisibility(8);
+      findViewById(2131369583).setVisibility(8);
       this.mItemInfoDialog.dismiss();
     }
   }
@@ -144,7 +144,7 @@ public class CaiShenActivity
       if (QLog.isColorLevel()) {
         QLog.i("CaiShenActivity", 2, "showInfoDialog itemInfo: " + paramItemInfo);
       }
-      findViewById(2131369506).setVisibility(0);
+      findViewById(2131369583).setVisibility(0);
       if ((this.mTaskType == 6) || (this.mTaskType == 7) || (paramItemInfo.b == 2))
       {
         if (this.mItemInfoDialog == null) {
@@ -183,12 +183,12 @@ public class CaiShenActivity
   {
     if (this.mProgressDialog == null)
     {
-      this.mProgressDialog = new ProgressDialog(this, 2131624515);
+      this.mProgressDialog = new ProgressDialog(this, 2131624516);
       this.mProgressDialog.setCanceledOnTouchOutside(false);
       this.mProgressDialog.show();
-      this.mProgressDialog.setContentView(2130969181);
+      this.mProgressDialog.setContentView(2130969180);
     }
-    ((TextView)this.mProgressDialog.findViewById(2131363381)).setText(paramString);
+    ((TextView)this.mProgressDialog.findViewById(2131363399)).setText(paramString);
     if (!isFinishing()) {
       this.mProgressDialog.show();
     }
@@ -228,11 +228,11 @@ public class CaiShenActivity
     boolean bool = true;
     super.doOnCreate(paramBundle);
     getWindow().addFlags(128);
-    setContentView(2130970191);
-    paramBundle = (InterceptTouchEventLayout)findViewById(2131369497);
+    setContentView(2130970207);
+    paramBundle = (InterceptTouchEventLayout)findViewById(2131369574);
     paramBundle.setInterceptTouchEventFlag(true);
     paramBundle.setInterceptTouchEventListener(new CaiShenActivity.2(this));
-    paramBundle = (Button)findViewById(2131369500);
+    paramBundle = (Button)findViewById(2131369577);
     paramBundle.setOnClickListener(new CaiShenActivity.3(this));
     if (this.mSystemBarComp != null)
     {
@@ -263,12 +263,12 @@ public class CaiShenActivity
     if (QLog.isColorLevel()) {
       QLog.i("CaiShenActivity", 2, "mTaskId: " + this.mTaskId + ", mPoiId: " + this.mPoiId + ", mTaskType: " + this.mTaskType + ", mBusinessName: " + this.mBusinessName + ", mResPath: " + this.mResPath + ", logoPath: " + this.mLogoPath + ", textIconPath: " + this.mTextIconPath + ", bannerPath: " + this.mBannerPath + ", wishing: " + this.mWishing);
     }
-    this.mGLSurfaceView = ((ARGLSurfaceView)findViewById(2131365921));
-    this.mCameraSurfaceView = ((CameraSurfaceView)findViewById(2131369498));
+    this.mGLSurfaceView = ((ARGLSurfaceView)findViewById(2131365948));
+    this.mCameraSurfaceView = ((CameraSurfaceView)findViewById(2131369575));
     this.mCameraSurfaceView.setPreviewCallback(this.mPreviewCallback);
     this.mCameraSurfaceView.setCameraSurfaceCallBack(this);
     this.mCameraSurfaceView.setDisplay(getWindowManager().getDefaultDisplay());
-    this.mCameraCover = findViewById(2131369499);
+    this.mCameraCover = findViewById(2131369576);
     initSurface();
     initGuide(this.mResPath, this.mHandler);
     initArrowImageView(this.mResPath);
@@ -359,7 +359,7 @@ public class CaiShenActivity
       this.mGameResumeTime = System.currentTimeMillis();
       return;
       this.mGLSurfaceView.onPause();
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230, null, "资源加载失败！", getResources().getString(2131438732), "", null, new CaiShenActivity.8(this));
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230, null, "资源加载失败！", getResources().getString(2131438750), "", null, new CaiShenActivity.8(this));
       localQQCustomDialog.setOnDismissListener(new CaiShenActivity.9(this));
       localQQCustomDialog.show();
     }
@@ -441,8 +441,8 @@ public class CaiShenActivity
   
   protected void initGuide(String paramString, Handler paramHandler)
   {
-    this.mGuideTips = ((TextView)findViewById(2131369505));
-    this.mGuideLayout = findViewById(2131369502);
+    this.mGuideTips = ((TextView)findViewById(2131369582));
+    this.mGuideLayout = findViewById(2131369579);
     Object localObject = null;
     try
     {
@@ -457,7 +457,7 @@ public class CaiShenActivity
       }
     }
     if (localObject != null) {
-      ((ImageView)findViewById(2131369503)).setImageBitmap((Bitmap)localObject);
+      ((ImageView)findViewById(2131369580)).setImageBitmap((Bitmap)localObject);
     }
     try
     {
@@ -471,7 +471,7 @@ public class CaiShenActivity
         paramString.printStackTrace();
       }
     }
-    paramString = (ImageView)findViewById(2131369504);
+    paramString = (ImageView)findViewById(2131369581);
     if (localObject != null) {
       paramString.setImageBitmap((Bitmap)localObject);
     }

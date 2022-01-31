@@ -1,58 +1,16 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
+import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesProfileSegment;
 
 public class nxq
-  implements Comparator
+  implements Runnable
 {
-  private boolean a;
+  public nxq(MemoriesProfileSegment paramMemoriesProfileSegment) {}
   
-  public nxq(boolean paramBoolean)
+  public void run()
   {
-    this.a = paramBoolean;
-  }
-  
-  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
-  {
-    int j = 1;
-    int i = -1;
-    if (paramStoryVideoItem1.isUploadFail() == paramStoryVideoItem2.isUploadFail()) {
-      if (paramStoryVideoItem1.mCreateTime == paramStoryVideoItem2.mCreateTime) {
-        i = 0;
-      }
-    }
-    do
-    {
-      do
-      {
-        return i;
-        if (paramStoryVideoItem1.mCreateTime <= paramStoryVideoItem2.mCreateTime) {
-          break;
-        }
-        i = j;
-      } while (this.a);
-      return -1;
-      if (this.a) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-      if (!paramStoryVideoItem1.isUploadFail()) {
-        break;
-      }
-      i = j;
-    } while (this.a);
-    return -1;
-    if (paramStoryVideoItem2.isUploadFail())
-    {
-      if (this.a) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-    }
-    return 0;
+    ((UserManager)SuperManager.a(2)).a(MemoriesProfileSegment.a(this.a).a);
   }
 }
 

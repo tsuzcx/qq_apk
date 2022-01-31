@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
+import java.util.List;
 
 class acfu
   implements Runnable
 {
-  acfu(acfs paramacfs, long paramLong) {}
+  acfu(acft paramacft, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acfs.a.d();
-    QfileBaseCloudFileTabView.k(this.jdField_a_of_type_Acfs.a).a().a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Acft.a.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView.StickerBubbleAnimationCallback;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-public class vyu
-  implements StickerBubbleAnimationView.StickerBubbleAnimationCallback
+class vyu
+  implements Runnable
 {
-  public vyu(StickerBubbleAnimationViewHolder paramStickerBubbleAnimationViewHolder) {}
+  vyu(vyt paramvyt) {}
   
-  public void a()
+  public void run()
   {
-    StickerBubbleAnimationViewHolder.a(this.a, StickerBubbleAnimationViewHolder.b(this.a));
-    ThreadManager.getUIHandler().post(new vyv(this));
-  }
-  
-  public void b()
-  {
-    StickerBubbleAnimationViewHolder.b(this.a, StickerBubbleAnimationViewHolder.b(this.a));
+    this.a.a.z(0);
   }
 }
 

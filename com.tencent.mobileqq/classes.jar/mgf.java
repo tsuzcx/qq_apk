@@ -1,25 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.telephony.PhoneStateListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import com.tencent.qphone.base.util.QLog;
 
-class mgf
-  implements Runnable
+public class mgf
+  extends PhoneStateListener
 {
-  mgf(mga parammga) {}
+  public mgf(VideoVolumeControl paramVideoVolumeControl) {}
   
-  public void run()
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    this.a.a.notifyDataSetChanged();
-    if (this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a())
-    {
-      this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.e(true);
-      this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a().g();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
     }
-    while ((this.a.a.jdField_a_of_type_Boolean) || (!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c())) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.d(true);
       return;
     }
-    this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.d(true);
-    this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a().g();
+    this.a.d(true);
   }
 }
 

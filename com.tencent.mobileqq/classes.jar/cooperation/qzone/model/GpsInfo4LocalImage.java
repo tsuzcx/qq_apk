@@ -1,7 +1,7 @@
 package cooperation.qzone.model;
 
 import LBS_V2_PROTOCOL.GPS_V2;
-import amek;
+import amuo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import common.config.service.QzoneLbsConfig;
 public class GpsInfo4LocalImage
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amek();
+  public static final Parcelable.Creator CREATOR = new amuo();
   public float a;
   public int a;
   public float b;

@@ -1,36 +1,15 @@
-import android.animation.Animator;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
 
 public class wze
-  implements IRedPacket.OnGetAvailableListListener
+  implements View.OnClickListener
 {
-  public wze(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public wze(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
   
-  public void OnGetAvailableList(List paramList)
+  public void onClick(View paramView)
   {
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      TroopUnAccalimedRedPacketList.a().setVisibility(8);
-      TroopUnAccalimedRedPacketList.a().setVisibility(0);
-      TroopUnAccalimedRedPacketList.a().setText("暂无未领红包");
-    }
-    do
-    {
-      return;
-      TroopUnAccalimedRedPacketList.a().setVisibility(0);
-      TroopUnAccalimedRedPacketList.a().setVisibility(8);
-      TroopUnAccalimedRedPacketList.a().a(paramList);
-    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
-    TroopUnAccalimedRedPacketList.a(this.a).start();
+    GoldMsgSettingActivity.a(this.a, paramView);
   }
 }
 

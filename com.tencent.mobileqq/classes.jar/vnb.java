@@ -1,31 +1,40 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
+import com.tencent.mobileqq.lightReply.LightReplyEmojs;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class vnb
-  implements Runnable
+public class vnb
+  extends BroadcastReceiver
 {
-  public vnb(LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton) {}
+  public vnb(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845507);
-    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845508);
-    Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845549);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845650);
-    localStateListDrawable.addState(new int[] { -16842910 }, localDrawable4);
-    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845653);
-    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable4);
-    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845654);
-    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable4);
-    ThreadManager.getUIHandler().post(new vnc(this, localDrawable1, localDrawable2, localDrawable3, localStateListDrawable));
+    if ("light_reply_count_changed".equals(paramIntent.getAction()))
+    {
+      paramContext = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a;
+      if ((paramContext instanceof AIOImageData))
+      {
+        paramContext = (AIOImageData)paramContext;
+        QLog.d("AIOGalleryScene", 2, "replyPhotoBtn: isAIOImageData true, isPicFile: " + paramContext.jdField_g_of_type_Boolean + " isFromImageList: false");
+        paramIntent = paramIntent.getExtras();
+        this.a.a(paramIntent, paramContext.b, paramContext.jdField_g_of_type_JavaLangString, paramContext.f, paramContext.jdField_e_of_type_Long, paramContext.jdField_e_of_type_JavaLangString);
+        if (1 == paramIntent.getInt("type"))
+        {
+          paramContext = (LightReplyEmojs)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramContext.b + paramContext.jdField_g_of_type_JavaLangString + paramContext.jdField_e_of_type_Long);
+          if (paramContext != null) {
+            this.a.a(this.a.b, paramContext);
+          }
+        }
+      }
+    }
   }
 }
 

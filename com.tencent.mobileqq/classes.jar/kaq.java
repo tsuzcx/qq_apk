@@ -1,22 +1,67 @@
-import com.tencent.av.ui.RedbagToolbar;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.GuideTip2.OnGuideTipListener;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.utils.SignalStrengthReport;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class kaq
-  implements GuideTip2.OnGuideTipListener
+  implements Runnable
 {
-  public kaq(RedbagToolbar paramRedbagToolbar, AVRedBagMgr paramAVRedBagMgr) {}
+  public kaq(VideoControlUI paramVideoControlUI) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {}
-    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
+    String str;
+    Object localObject;
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
     {
-      if (!paramBoolean)
+      str = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+      if (str == null)
       {
-        this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a(false);
-        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
+        if (QLog.isColorLevel()) {
+          QLog.e(this.a.c, 2, "can not get shape info");
+        }
+        return;
       }
+      if (this.a.k != null)
+      {
+        if (!AudioHelper.b) {
+          break label230;
+        }
+        localObject = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if ((localObject == null) || (((AVActivity)localObject).a == null)) {
+          break label230;
+        }
+        localObject = ((AVActivity)localObject).a.a();
+        str = str + "\r\n" + (String)localObject;
+      }
+    }
+    label196:
+    label230:
+    for (;;)
+    {
+      localObject = str;
+      try
+      {
+        str = str + "\r\n";
+        localObject = str;
+        str = str + SignalStrengthReport.a(VideoController.a().a()).a();
+        localObject = str;
+        str = str + "\r\n";
+        localObject = str;
+      }
+      catch (Exception localException)
+      {
+        break label196;
+      }
+      this.a.k.setText((CharSequence)localObject);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
       return;
     }
   }

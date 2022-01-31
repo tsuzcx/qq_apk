@@ -1,48 +1,55 @@
-import android.os.Build.VERSION;
-import android.util.Log;
-import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
-import com.tencent.gdtad.jsbridge.GdtJsCallHandler;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gamecenter.appointment.GameCenterUtils;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.open.wadl.WLog;
 
-public class qjg
-  implements GdtJsCallHandler
+public final class qjg
+  implements Runnable
 {
-  public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
+  public qjg(String paramString1, String paramString2) {}
+  
+  public void run()
   {
-    if ((paramGdtAdWebPlugin == null) || (paramGdtAdWebPlugin.mRuntime == null) || (paramGdtAdWebPlugin.mRuntime.a() == null))
+    int j = 0;
+    WLog.b("QQInitHandler", "start checkGameCenter isWiFi=" + AppNetConnInfo.isWifiConn());
+    GameCenterUtils.a();
+    String[] arrayOfString;
+    int k;
+    int i;
+    if (!TextUtils.isEmpty(this.a))
     {
-      Log.e("GdtOSVersionJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    paramVarArgs = new JSONObject();
-    try
-    {
-      paramVarArgs.put("osVersion", Build.VERSION.RELEASE);
-      try
-      {
-        paramGdtAdWebPlugin.callJs(paramString, new String[] { paramVarArgs.toString() });
-        return true;
+      if ((GameCenterUtils.a) && (AppNetConnInfo.isWifiConn())) {
+        GameCenterUtils.a(this.a);
       }
-      catch (Throwable paramGdtAdWebPlugin)
+      arrayOfString = this.a.split("\\|");
+      k = arrayOfString.length;
+      i = 0;
+      while (i < k)
       {
-        paramGdtAdWebPlugin.printStackTrace();
-        return true;
+        GameCenterUtils.a(null, "558", "203713", arrayOfString[i], "55801", "4", "430");
+        i += 1;
       }
     }
-    catch (JSONException localJSONException)
+    if (!TextUtils.isEmpty(this.b))
     {
-      for (;;)
+      if ((GameCenterUtils.b) && (GameCenterUtils.a(BaseApplicationImpl.getContext()))) {
+        GameCenterUtils.b(this.b);
+      }
+      arrayOfString = this.b.split("\\|");
+      k = arrayOfString.length;
+      i = j;
+      while (i < k)
       {
-        localJSONException.printStackTrace();
+        GameCenterUtils.a(null, "558", "203701", arrayOfString[i], "55801", "4", "430");
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     qjg
  * JD-Core Version:    0.7.0.1
  */

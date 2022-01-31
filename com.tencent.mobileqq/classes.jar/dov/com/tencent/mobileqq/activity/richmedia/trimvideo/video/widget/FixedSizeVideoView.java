@@ -8,8 +8,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.VideoView;
-import anrr;
-import anrs;
+import aohw;
+import aohx;
 
 public class FixedSizeVideoView
   extends VideoView
@@ -24,13 +24,13 @@ public class FixedSizeVideoView
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new anrr(this));
+    super.setOnCompletionListener(new aohw(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new anrs(this));
+    super.setOnCompletionListener(new aohx(this));
   }
   
   public boolean handleMessage(Message paramMessage)

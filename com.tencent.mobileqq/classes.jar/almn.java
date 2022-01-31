@@ -1,32 +1,26 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.HorizontalListView;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qidian.data.PublicAccountItem;
 
 public class almn
-  extends DataSetObserver
+  implements View.OnLongClickListener
 {
-  public almn(HorizontalListView paramHorizontalListView) {}
+  public almn(QidianProfileCardActivity paramQidianProfileCardActivity, Drawable paramDrawable, PublicAccountItem paramPublicAccountItem) {}
   
-  public void onChanged()
+  public boolean onLongClick(View paramView)
   {
-    this.a.b = true;
-    HorizontalListView.a(this.a, false);
-    HorizontalListView.a(this.a);
-    this.a.invalidate();
-    this.a.requestLayout();
-  }
-  
-  public void onInvalidated()
-  {
-    HorizontalListView.a(this.a, false);
-    HorizontalListView.a(this.a);
-    this.a.a(true);
-    this.a.invalidate();
-    this.a.requestLayout();
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) {
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.b);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     almn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 
-public final class mvl
-  implements DialogInterface.OnCancelListener
+public class mvl
+  implements TroopMemberApiClient.Callback
 {
-  public mvl(Activity paramActivity, ProfileParams paramProfileParams) {}
+  public mvl(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
-    {
-      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    if (this.a.a != null) {
+      this.a.k();
     }
   }
 }

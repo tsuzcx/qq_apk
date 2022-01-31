@@ -9,7 +9,7 @@ import com.tencent.mobileqq.startup.step.Step;
 import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.app.MobileQQ;
-import thh;
+import tkh;
 
 public class QQMapActivity$MapRuntime
   extends PluginRuntime
@@ -20,7 +20,7 @@ public class QQMapActivity$MapRuntime
   
   public QQMapActivity$MapRuntime()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new thh(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new tkh(this);
   }
   
   protected void onCreate(Bundle paramBundle)

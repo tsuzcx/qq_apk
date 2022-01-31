@@ -1,22 +1,29 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
+import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class yng
   implements Runnable
 {
-  public yng(CmGameAvHandler paramCmGameAvHandler, int paramInt1, int paramInt2) {}
+  public yng(ChatPieApolloViewController paramChatPieApolloViewController, BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    QLog.e("CmGameAvHandler", 1, "initAudioRoom ApolloConstant.sGameAVSoUrl=" + ApolloConstant.V + ", ApolloConstant.sGameAVSoMd5=" + ApolloConstant.W);
-    AVEngineWalper.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler.a);
-    AVEngineWalper.a().a(0, ApolloConstant.V, ApolloConstant.W);
-    AVEngineWalper.a().a(BaseApplicationImpl.getContext(), CmGameUtil.a().getCurrentAccountUin(), "" + this.jdField_a_of_type_Int, "" + this.b);
+    if (ApolloActionHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a) != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatPieApolloViewController", 2, "Apollo switch NOT open.");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().obtainMessage(62).sendToTarget();
+      return;
+    }
+    ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().obtainMessage(65).sendToTarget();
   }
 }
 

@@ -1,30 +1,27 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeVideoInfo;
 import com.tencent.biz.qqstory.playmode.util.MsgTabVideoData;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ncp;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MsgTabNodeInfo
-  implements Parcelable, Copyable
+  implements Copyable
 {
-  public static final Parcelable.Creator CREATOR = new ncp();
   public int a;
   public long a;
   public String a;
@@ -38,10 +35,14 @@ public class MsgTabNodeInfo
   public int c;
   public long c;
   public String c;
+  public int d;
   public long d;
   public String d;
+  public int e;
   public long e;
   public String e;
+  public String f;
+  public String g = "";
   
   public MsgTabNodeInfo()
   {
@@ -72,6 +73,40 @@ public class MsgTabNodeInfo
     return 0;
   }
   
+  public MsgTabHaloEntity a()
+  {
+    MsgTabHaloEntity localMsgTabHaloEntity = new MsgTabHaloEntity();
+    localMsgTabHaloEntity.nodeType = this.jdField_a_of_type_Int;
+    localMsgTabHaloEntity.uid = this.jdField_b_of_type_Long;
+    localMsgTabHaloEntity.unionId = this.jdField_a_of_type_JavaLangString;
+    localMsgTabHaloEntity.nodeVid = this.jdField_e_of_type_JavaLangString;
+    localMsgTabHaloEntity.title = this.jdField_c_of_type_JavaLangString;
+    localMsgTabHaloEntity.headUrl = this.jdField_b_of_type_JavaLangString;
+    localMsgTabHaloEntity.recommendId = this.jdField_e_of_type_Long;
+    localMsgTabHaloEntity.jumpUrl = this.jdField_d_of_type_JavaLangString;
+    localMsgTabHaloEntity.nodeVid = this.jdField_e_of_type_JavaLangString;
+    JSONArray localJSONArray = new JSONArray();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localJSONArray.put(((MsgTabNodeVideoInfo)localIterator.next()).a());
+    }
+    localMsgTabHaloEntity.videoInfoList = localJSONArray.toString();
+    localMsgTabHaloEntity.reqTimeStamp = this.jdField_c_of_type_Long;
+    localMsgTabHaloEntity.nodeInfoTimeStamp = this.jdField_d_of_type_Long;
+    localMsgTabHaloEntity.videoCover = this.f;
+    if (this.jdField_b_of_type_JavaUtilList != null)
+    {
+      localJSONArray = new JSONArray();
+      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put(((MsgTabVideoData)localIterator.next()).a());
+      }
+      localMsgTabHaloEntity.localSuccessVideoList = localJSONArray.toString();
+    }
+    localMsgTabHaloEntity.noUpdate = this.jdField_d_of_type_Int;
+    return localMsgTabHaloEntity;
+  }
+  
   public MsgTabNodeEntity a()
   {
     MsgTabNodeEntity localMsgTabNodeEntity = new MsgTabNodeEntity();
@@ -92,6 +127,7 @@ public class MsgTabNodeInfo
     localMsgTabNodeEntity.videoInfoList = localJSONArray.toString();
     localMsgTabNodeEntity.reqTimeStamp = this.jdField_c_of_type_Long;
     localMsgTabNodeEntity.nodeInfoTimeStamp = this.jdField_d_of_type_Long;
+    localMsgTabNodeEntity.videoCover = this.f;
     if (this.jdField_b_of_type_JavaUtilList != null)
     {
       localJSONArray = new JSONArray();
@@ -104,41 +140,86 @@ public class MsgTabNodeInfo
     return localMsgTabNodeEntity;
   }
   
-  public String a()
+  public void a(MsgTabHaloEntity paramMsgTabHaloEntity)
   {
-    return toString() + "\n videoInfoList=" + this.jdField_a_of_type_JavaUtilList.toString();
-  }
-  
-  public void a(Parcel paramParcel)
-  {
-    boolean bool = true;
-    int i = 0;
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
+    int j = 0;
+    this.jdField_a_of_type_Int = paramMsgTabHaloEntity.nodeType;
+    this.jdField_b_of_type_Long = paramMsgTabHaloEntity.uid;
+    this.jdField_a_of_type_JavaLangString = paramMsgTabHaloEntity.unionId;
+    this.jdField_c_of_type_JavaLangString = paramMsgTabHaloEntity.title;
+    this.jdField_b_of_type_JavaLangString = paramMsgTabHaloEntity.headUrl;
+    this.jdField_e_of_type_Long = paramMsgTabHaloEntity.recommendId;
+    this.jdField_d_of_type_JavaLangString = paramMsgTabHaloEntity.jumpUrl;
+    this.jdField_e_of_type_JavaLangString = paramMsgTabHaloEntity.nodeVid;
+    this.f = paramMsgTabHaloEntity.videoCover;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_Int = 0;
+    try
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_c_of_type_Long = paramParcel.readLong();
-      this.jdField_d_of_type_Long = paramParcel.readLong();
-      this.jdField_b_of_type_Int = paramParcel.readInt();
-      this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_e_of_type_Long = paramParcel.readLong();
-      this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      int j = paramParcel.readInt();
-      while (i < j)
+      JSONArray localJSONArray1 = new JSONArray(paramMsgTabHaloEntity.videoInfoList);
+      int k = localJSONArray1.length();
+      i = 0;
+      JSONObject localJSONObject;
+      Object localObject;
+      while (i < k)
       {
-        MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = new MsgTabNodeVideoInfo();
-        localMsgTabNodeVideoInfo.b(paramParcel);
-        this.jdField_a_of_type_JavaUtilList.add(localMsgTabNodeVideoInfo);
+        localJSONObject = localJSONArray1.getJSONObject(i);
+        localObject = new MsgTabNodeVideoInfo();
+        ((MsgTabNodeVideoInfo)localObject).a(localJSONObject);
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        if (!((MsgTabNodeVideoInfo)localObject).jdField_a_of_type_Boolean) {
+          this.jdField_b_of_type_Int += 1;
+        }
         i += 1;
       }
-      bool = false;
+      JSONArray localJSONArray2;
+      if (this.jdField_a_of_type_Int == 11) {
+        break label339;
+      }
+    }
+    catch (JSONException localJSONException1)
+    {
+      localJSONException1.printStackTrace();
+      this.jdField_c_of_type_Long = paramMsgTabHaloEntity.reqTimeStamp;
+      this.jdField_d_of_type_Long = paramMsgTabHaloEntity.nodeInfoTimeStamp;
+      if ((!TextUtils.isEmpty(paramMsgTabHaloEntity.localSuccessVideoList)) && (!paramMsgTabHaloEntity.localSuccessVideoList.equals("null"))) {
+        try
+        {
+          localJSONArray2 = new JSONArray(paramMsgTabHaloEntity.localSuccessVideoList);
+          this.jdField_b_of_type_JavaUtilList = new ArrayList();
+          k = localJSONArray2.length();
+          i = 0;
+          while (i < k)
+          {
+            localJSONObject = localJSONArray2.getJSONObject(i);
+            localObject = new MsgTabVideoData();
+            ((MsgTabVideoData)localObject).a(localJSONObject);
+            this.jdField_b_of_type_JavaUtilList.add(localObject);
+            i += 1;
+          }
+          if (this.jdField_a_of_type_Int == 10) {
+            break label339;
+          }
+        }
+        catch (JSONException localJSONException2)
+        {
+          localJSONException2.printStackTrace();
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Int == 3) {
+      label339:
+      if (!MsgTabStoryManager.b(this)) {
+        break label367;
+      }
+    }
+    label367:
+    for (int i = j;; i = 1)
+    {
+      this.jdField_b_of_type_Int = i;
+      this.jdField_d_of_type_Int = paramMsgTabHaloEntity.noUpdate;
+      this.jdField_e_of_type_Int = 1;
+      return;
     }
   }
   
@@ -153,6 +234,7 @@ public class MsgTabNodeInfo
     this.jdField_e_of_type_Long = paramMsgTabNodeEntity.recommendId;
     this.jdField_d_of_type_JavaLangString = paramMsgTabNodeEntity.jumpUrl;
     this.jdField_e_of_type_JavaLangString = paramMsgTabNodeEntity.nodeVid;
+    this.f = paramMsgTabNodeEntity.videoCover;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_Int = 0;
     try
@@ -174,12 +256,12 @@ public class MsgTabNodeInfo
       }
       JSONObject localJSONObject;
       if (this.jdField_a_of_type_Int != 11) {
-        break label332;
+        break label344;
       }
     }
     catch (JSONException localJSONException)
     {
-      localJSONException.printStackTrace();
+      SLog.c("Q.qqstory.msgTab.nodeList.MsgTabNodeInfo", "convertFrom(entity) errors", localJSONException);
       this.jdField_c_of_type_Long = paramMsgTabNodeEntity.reqTimeStamp;
       this.jdField_d_of_type_Long = paramMsgTabNodeEntity.nodeInfoTimeStamp;
       if ((!TextUtils.isEmpty(paramMsgTabNodeEntity.localSuccessVideoList)) && (!paramMsgTabNodeEntity.localSuccessVideoList.equals("null"))) {
@@ -209,7 +291,7 @@ public class MsgTabNodeInfo
     for (int i = j;; i = 1)
     {
       this.jdField_b_of_type_Int = i;
-      label332:
+      label344:
       return;
     }
   }
@@ -218,6 +300,7 @@ public class MsgTabNodeInfo
   {
     this.jdField_c_of_type_Int = paramMsgTabNodeInfo.jdField_c_of_type_Int;
     this.jdField_b_of_type_Boolean = paramMsgTabNodeInfo.jdField_b_of_type_Boolean;
+    this.g = paramMsgTabNodeInfo.g;
   }
   
   public void a(qqstory_service.MsgTabNodeInfo paramMsgTabNodeInfo)
@@ -227,12 +310,13 @@ public class MsgTabNodeInfo
     this.jdField_a_of_type_JavaLangString = paramMsgTabNodeInfo.bytes_union_id.get().toStringUtf8();
     this.jdField_a_of_type_JavaUtilList = new ArrayList(paramMsgTabNodeInfo.rpt_msg_video_info_list.size());
     this.jdField_b_of_type_Int = 0;
+    ArrayDeque localArrayDeque = new ArrayDeque(3);
     Iterator localIterator = paramMsgTabNodeInfo.rpt_msg_video_info_list.get().iterator();
     while (localIterator.hasNext())
     {
       qqstory_service.MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (qqstory_service.MsgTabNodeVideoInfo)localIterator.next();
       MsgTabNodeVideoInfo localMsgTabNodeVideoInfo1 = new MsgTabNodeVideoInfo();
-      localMsgTabNodeVideoInfo1.a(localMsgTabNodeVideoInfo);
+      localMsgTabNodeVideoInfo1.a(localMsgTabNodeVideoInfo, localArrayDeque);
       this.jdField_a_of_type_JavaUtilList.add(localMsgTabNodeVideoInfo1);
       if (!localMsgTabNodeVideoInfo1.jdField_a_of_type_Boolean) {
         this.jdField_b_of_type_Int += 1;
@@ -253,15 +337,19 @@ public class MsgTabNodeInfo
     if (paramMsgTabNodeInfo.node_vid.has()) {
       this.jdField_e_of_type_JavaLangString = paramMsgTabNodeInfo.node_vid.get().toStringUtf8();
     }
+    if (paramMsgTabNodeInfo.video_cover.has()) {
+      this.f = paramMsgTabNodeInfo.video_cover.get().toStringUtf8();
+    }
     if ((this.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_Int == 11)) {
       if (!MsgTabStoryManager.b(this)) {
-        break label303;
+        break label351;
       }
     }
-    label303:
+    label351:
     for (int i = 0;; i = 1)
     {
       this.jdField_b_of_type_Int = i;
+      this.jdField_d_of_type_Int = paramMsgTabNodeInfo.no_update.get();
       return;
     }
   }
@@ -287,12 +375,9 @@ public class MsgTabNodeInfo
       this.jdField_c_of_type_Int = paramObject.jdField_c_of_type_Int;
       this.jdField_b_of_type_Boolean = paramObject.jdField_b_of_type_Boolean;
       this.jdField_b_of_type_JavaUtilList = paramObject.jdField_b_of_type_JavaUtilList;
+      this.g = paramObject.g;
+      this.jdField_d_of_type_Int = paramObject.jdField_d_of_type_Int;
     }
-  }
-  
-  public int describeContents()
-  {
-    return 0;
   }
   
   public boolean equals(Object paramObject)
@@ -326,36 +411,7 @@ public class MsgTabNodeInfo
   
   public String toString()
   {
-    return "MsgTabNodeInfo{nodeType=" + this.jdField_a_of_type_Int + ", uid=" + this.jdField_b_of_type_Long + ", unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", unreadCount=" + this.jdField_b_of_type_Int + ", videoInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + ", nodeInfoTimeStamp=" + this.jdField_d_of_type_Long + ", unUploadVideoCount=" + this.jdField_c_of_type_Int + ", isUploading=" + this.jdField_b_of_type_Boolean + ", reqTimeStamp=" + this.jdField_c_of_type_Long + ", id=" + this.jdField_a_of_type_Long + ", recommendId=" + this.jdField_e_of_type_Long + ", headerUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", jumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", nodeVid='" + this.jdField_e_of_type_JavaLangString + '\'' + ", videoInfoList=" + this.jdField_a_of_type_JavaUtilList.toString() + '\'' + '}';
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    int i = 0;
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.jdField_c_of_type_Long);
-      paramParcel.writeLong(this.jdField_d_of_type_Long);
-      paramParcel.writeInt(this.jdField_b_of_type_Int);
-      paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-      paramParcel.writeLong(this.jdField_e_of_type_Long);
-      paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-      paramParcel.writeInt(this.jdField_a_of_type_JavaUtilList.size());
-      paramInt = i;
-      while (paramInt < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        ((MsgTabNodeVideoInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(paramParcel);
-        paramInt += 1;
-      }
-    }
+    return "MsgTabNodeInfo{nodeType=" + this.jdField_a_of_type_Int + ", uid=" + this.jdField_b_of_type_Long + ", unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", unreadCount=" + this.jdField_b_of_type_Int + ", videoInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + ", uploadingCover=" + this.g + ", nodeInfoTimeStamp=" + this.jdField_d_of_type_Long + ", unUploadVideoCount=" + this.jdField_c_of_type_Int + ", isUploading=" + this.jdField_b_of_type_Boolean + ", reqTimeStamp=" + this.jdField_c_of_type_Long + ", id=" + this.jdField_a_of_type_Long + ", recommendId=" + this.jdField_e_of_type_Long + ", headerUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", jumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", nodeVid='" + this.jdField_e_of_type_JavaLangString + '\'' + ", videoCover='" + this.f + '\'' + ", videoInfoList=" + this.jdField_a_of_type_JavaUtilList.toString() + '\'' + ", noUpdate=" + this.jdField_d_of_type_Int + '\'' + '}';
   }
 }
 

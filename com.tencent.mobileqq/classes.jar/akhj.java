@@ -1,35 +1,23 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.vas.ColorRingPlayer;
 
 public class akhj
-  implements URLDrawableDownListener
+  extends QQCustomDialog
 {
-  public akhj(ProfileCardMoreInfoView paramProfileCardMoreInfoView, String paramString, URLImageView paramURLImageView) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public akhj(ColorRingPlayer paramColorRingPlayer, Context paramContext, int paramInt)
   {
-    QLog.e("Q.profilecard.FrdProfileCard", 1, "showDiamondImage onLoadFailed iconUrl = " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+    super(paramContext, paramInt);
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onBackPressed()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    super.onBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhj
  * JD-Core Version:    0.7.0.1
  */

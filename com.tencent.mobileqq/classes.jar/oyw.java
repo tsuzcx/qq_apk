@@ -1,20 +1,18 @@
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.widget.GridView;
+import com.tencent.biz.troopgift.GridListViewPager;
 
 public class oyw
-  implements Runnable
+  extends GridView
 {
-  public oyw(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, boolean paramBoolean) {}
-  
-  public void run()
+  public oyw(GridListViewPager paramGridListViewPager, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "start request: " + this.jdField_a_of_type_Boolean);
-    }
-    WebProcessManager.a(true);
-    SwiftWebViewUtils.a();
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
   }
 }
 

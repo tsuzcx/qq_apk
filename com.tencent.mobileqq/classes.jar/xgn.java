@@ -1,26 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 import com.tencent.qphone.base.util.QLog;
 
 public class xgn
-  implements View.OnClickListener
+  implements IRedPacket.OnGetSkinListener
 {
-  public xgn(BannerManager paramBannerManager, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public xgn(QWalletIPCModule paramQWalletIPCModule, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
   
-  public void onClick(View paramView)
+  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
   {
+    this.jdField_a_of_type_AndroidOsBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper click banner, jump");
+      QLog.d("QWalletIPCModule", 2, "getRedPacketBundle | info resPath = " + paramRedPacketInfoBase.resPath);
     }
-    paramView = (QQAppInterface)BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getAppRuntime();
-    ((UpgradeTIMManager)paramView.getManager(255)).a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.g);
-    ReportController.b(paramView, "CliOper", "", "", "0X8008659", "0X8008659", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, this.jdField_a_of_type_AndroidOsBundle);
+    }
   }
 }
 

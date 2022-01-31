@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class tcs
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public tcs(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public tcs(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PhoneUnityBindInfoActivity.a(this.a).g();
-    PhoneUnityBindInfoActivity.b(this.a).f = true;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tcs
  * JD-Core Version:    0.7.0.1
  */

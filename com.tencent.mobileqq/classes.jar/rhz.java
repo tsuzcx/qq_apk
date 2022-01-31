@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendActivity;
 
 public class rhz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rhz(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public rhz(AddFriendActivity paramAddFriendActivity, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
-    this.a.overridePendingTransition(2131034134, 2131034135);
+    AddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity).setText(this.jdField_a_of_type_Int);
+    AddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity).setVisibility(0);
   }
 }
 

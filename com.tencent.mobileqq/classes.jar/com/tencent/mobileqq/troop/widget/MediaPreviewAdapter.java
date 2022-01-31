@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajeh;
-import ajei;
-import ajej;
-import ajek;
+import ajsl;
+import ajsm;
+import ajsn;
+import ajso;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -66,7 +66,7 @@ public class MediaPreviewAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_ComTencentWidgetGallery = paramGallery;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837615);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837618);
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     paramContext = (DynamicAvatarManager)((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(179);
     if (paramContext == null) {}
@@ -125,7 +125,7 @@ public class MediaPreviewAdapter
     paramFile = URLDrawable.getDrawable("qqlive://msgId=" + str, paramFile);
     paramImageView.setImageDrawable(paramFile);
     this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, new WeakReference(paramFile));
-    paramImageView.postDelayed(new ajei(this), 100L);
+    paramImageView.postDelayed(new ajsm(this), 100L);
     if (QLog.isColorLevel()) {
       QLog.i("MediaPreviewAdapter", 2, "doShowVideoFile() drawable = " + paramImageView.getDrawable());
     }
@@ -187,7 +187,7 @@ public class MediaPreviewAdapter
           break label401;
         }
         paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ajeh(this, paramViewHolder, paramMediaPreviewInfo));
+        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ajsl(this, paramViewHolder, paramMediaPreviewInfo));
       }
       while (QLog.isColorLevel())
       {
@@ -319,7 +319,7 @@ public class MediaPreviewAdapter
         if (DynamicAvatarDownloadManager.b(localMediaPreviewInfo.b))
         {
           File localFile = DynamicAvatarDownloadManager.a(localMediaPreviewInfo.b);
-          ((MediaPreviewAdapter.ViewHolder)localObject).jdField_a_of_type_ComTencentImageURLImageView.post(new ajej(this, (MediaPreviewAdapter.ViewHolder)localObject, i, localFile, localMediaPreviewInfo));
+          ((MediaPreviewAdapter.ViewHolder)localObject).jdField_a_of_type_ComTencentImageURLImageView.post(new ajsn(this, (MediaPreviewAdapter.ViewHolder)localObject, i, localFile, localMediaPreviewInfo));
           paramBoolean2 = true;
         }
       }
@@ -328,7 +328,7 @@ public class MediaPreviewAdapter
         if (QLog.isColorLevel()) {
           QLog.e("MediaPreviewAdapter", 2, "onDownloadFinish() finalSuc = " + paramBoolean2 + ", url = " + paramString);
         }
-        ((MediaPreviewAdapter.ViewHolder)localObject).jdField_a_of_type_ComTencentImageURLImageView.post(new ajek(this, (MediaPreviewAdapter.ViewHolder)localObject));
+        ((MediaPreviewAdapter.ViewHolder)localObject).jdField_a_of_type_ComTencentImageURLImageView.post(new ajso(this, (MediaPreviewAdapter.ViewHolder)localObject));
       }
     }
   }
@@ -397,11 +397,11 @@ public class MediaPreviewAdapter
     MediaPreviewInfo localMediaPreviewInfo;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969066, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969065, null);
       paramViewGroup = new MediaPreviewAdapter.ViewHolder(this);
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131361846));
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle = ((ImageProgressCircle)paramView.findViewById(2131361845));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364941));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364963));
       paramView.setTag(paramViewGroup);
       a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
       localMediaPreviewInfo = (MediaPreviewInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
@@ -467,7 +467,7 @@ public class MediaPreviewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.MediaPreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

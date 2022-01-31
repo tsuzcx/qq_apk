@@ -1,39 +1,26 @@
-import android.graphics.Typeface;
-import com.etrump.mixlayout.FontInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.addon.DiyPendantFetcher;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.util.LRULinkedHashMap;
-import mqq.app.AppRuntime;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.ViewHolder;
 
 public class yft
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public yft(DiyPendantFetcher paramDiyPendantFetcher, int paramInt, String paramString) {}
+  public yft(SpecailCareListActivity paramSpecailCareListActivity, SpecailCareListActivity.ViewHolder paramViewHolder) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (AvatarPendantUtil.a(String.valueOf(this.jdField_a_of_type_Int))) {
-      if (this.jdField_a_of_type_Int != 1)
-      {
-        ((FontInfo)this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b.get(Integer.valueOf(this.jdField_a_of_type_Int))).a = Typeface.createFromFile(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.d();
-      }
-    }
-    AppRuntime localAppRuntime;
-    do
-    {
-      return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(localAppRuntime instanceof QQAppInterface));
-    ((VasQuickUpdateManager)((QQAppInterface)localAppRuntime).getManager(183)).a(4L, "faceAddon.stickerFont.android." + this.jdField_a_of_type_Int, "DiyPendantFetcher");
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$ViewHolder.c.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yft
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.open.base.http;
 
-import akpx;
+import alfn;
 import android.content.ContentValues;
 import android.os.Parcel;
 import com.tencent.open.base.MD5Utils;
@@ -20,7 +20,7 @@ public class HttpCacheData
   
   static
   {
-    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new akpx();
+    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new alfn();
   }
   
   public HttpCacheData(String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)

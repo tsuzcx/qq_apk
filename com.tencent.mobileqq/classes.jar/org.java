@@ -1,27 +1,38 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
+import com.tencent.biz.qqstory.view.widget.ViewPagerTapBlockView;
 
 public class org
-  implements Runnable
+  implements ViewPager.OnPageChangeListener
 {
-  public org(QRDisplayActivity paramQRDisplayActivity) {}
+  public org(SlideTabViewPager paramSlideTabViewPager) {}
   
-  public void run()
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    String str = "temp_qrcode_share_" + this.a.jdField_c_of_type_JavaLangString + ".png";
-    try
+    if (SlideTabViewPager.a(this.a) == 0)
     {
-      str = QRUtils.a(this.a.getApplicationContext(), str, this.a.b);
-      this.a.runOnUiThread(new ori(this, str));
-      return;
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)SlideTabViewPager.a(this.a).getLayoutParams();
+      SlideTabViewPager localSlideTabViewPager = this.a;
+      paramInt2 = SlideTabViewPager.b(this.a).getWidth();
+      SlideTabViewPager.a(localSlideTabViewPager, localLayoutParams.leftMargin + paramInt2);
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      if (this.a.jdField_c_of_type_Int == 2) {
-        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
-      }
-      this.a.runOnUiThread(new orh(this));
+    paramInt2 = (int)(SlideTabViewPager.a(this.a, 12.5F) + SlideTabViewPager.a(this.a) * (paramInt1 + paramFloat));
+    SlideTabViewPager.a(this.a).setOffset(paramInt2);
+    paramInt2 = SlideTabViewPager.b(this.a).getWidth();
+    int i = SlideTabViewPager.a(this.a).getWidth();
+    paramInt1 = (int)(paramInt2 + (i - paramInt2) * (paramInt1 + paramFloat));
+    SlideTabViewPager.a(this.a).setBlockWidth(paramInt1);
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.a.b(paramInt);
+    if (SlideTabViewPager.a(this.a) != null) {
+      onPageSelected(paramInt);
     }
   }
 }

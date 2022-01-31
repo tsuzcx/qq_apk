@@ -1,33 +1,82 @@
-import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter.ItemViewGestureListener;
 
 public class oen
-  extends LbsManager.OnLocationListener
+  implements View.OnTouchListener
 {
-  public oen(EditVideoPoi paramEditVideoPoi, String paramString, boolean paramBoolean)
+  private int jdField_a_of_type_Int;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  private EditVideoFilter.ItemViewGestureListener jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener;
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int = 5;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public oen(EditVideoFilter.ItemViewGestureListener paramItemViewGestureListener)
   {
-    super(paramString);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener = paramItemViewGestureListener;
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.a(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener == null) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a = paramSosoLbsInfo.a.a;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b = paramSosoLbsInfo.a.b;
-      SLog.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a + " longitude=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.e();
-      }
-      return;
+      do
+      {
+        float f;
+        do
+        {
+          do
+          {
+            return true;
+            f = paramMotionEvent.getY();
+            switch (paramMotionEvent.getAction() & 0xFF)
+            {
+            case 3: 
+            case 4: 
+            default: 
+              return true;
+            case 0: 
+              this.jdField_a_of_type_Int = ((int)f);
+              this.jdField_a_of_type_Boolean = false;
+              this.jdField_b_of_type_Boolean = false;
+              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+              return true;
+            }
+          } while (paramMotionEvent.getPointerCount() > 2);
+          if (this.jdField_b_of_type_Boolean)
+          {
+            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
+            return true;
+          }
+          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
+        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
+        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
+        return true;
+        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
+          this.jdField_a_of_type_Boolean = true;
+        }
+      } while (!this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
+      return true;
+    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
+    return true;
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramView);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a = 0.0D;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b = 0.0D;
-    SLog.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
+    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
+      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    return true;
   }
 }
 

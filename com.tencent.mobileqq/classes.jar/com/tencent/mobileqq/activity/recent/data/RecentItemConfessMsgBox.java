@@ -38,7 +38,7 @@ public class RecentItemConfessMsgBox
     Object localObject1 = paramQQAppInterface.a();
     paramQQAppInterface.getAccount();
     long l2 = ConfessConfig.a(paramQQAppInterface, "redpoint_box_show");
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131439151);
+    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131439179);
     if (localObject3 != null) {
       localObject2 = ((QQMessageFacade)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);
     }

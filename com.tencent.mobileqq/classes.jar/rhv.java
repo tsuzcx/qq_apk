@@ -1,24 +1,24 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class rhv
   implements View.OnClickListener
 {
-  public rhv(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public rhv(AddAccountActivity paramAddAccountActivity) {}
   
   public void onClick(View paramView)
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      ArkAppDataReport.c(this.a.app, ArkFullScreenAppActivity.a(this.a).a, ArkAppDataReport.b);
+    if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.isShown())) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
-    }
-    this.a.finish();
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
+    libsafeedit.clearPassBuffer();
   }
 }
 

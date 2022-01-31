@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.activity.aio.anim.SigTlpAnimation;
 
 public class unu
   implements Runnable
 {
-  public unu(RecordSoundPanel paramRecordSoundPanel) {}
+  public unu(SigTlpAnimation paramSigTlpAnimation) {}
   
   public void run()
   {
-    this.a.f();
+    this.a.d();
   }
 }
 

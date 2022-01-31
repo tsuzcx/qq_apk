@@ -62,7 +62,7 @@ public class EquipLockWebEntrance
       ((StringBuilder)localObject).append("type=" + Integer.toString(paramInt));
       ((StringBuilder)localObject).append("&plat=1");
       ((StringBuilder)localObject).append("&app=1");
-      ((StringBuilder)localObject).append("&version=7.6.0.3525");
+      ((StringBuilder)localObject).append("&version=7.6.3.3560");
       ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
       ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
       ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));

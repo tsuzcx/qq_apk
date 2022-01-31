@@ -1,30 +1,34 @@
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.qphone.base.util.QLog;
 
-class aaxg
+public class aaxg
   implements Runnable
 {
-  aaxg(aaxc paramaaxc, float paramFloat) {}
+  public aaxg(ArkRecommendController paramArkRecommendController) {}
   
   public void run()
   {
-    if (!ShopScanActivity.b(this.jdField_a_of_type_Aaxc.a)) {
-      return;
-    }
-    int i = (int)(this.jdField_a_of_type_Float * 100.0F);
-    if (this.jdField_a_of_type_Aaxc.a.b.getVisibility() != 0)
+    int j = 1;
+    int i = j;
+    if (ArkRecommendController.a(this.a) == null)
     {
-      this.jdField_a_of_type_Aaxc.a.b.setVisibility(0);
-      if (this.jdField_a_of_type_Aaxc.a.e != null) {
-        this.jdField_a_of_type_Aaxc.a.e.setVisibility(8);
+      ArkRecommendController.a(this.a, new ArkAiScrollBar(this.a));
+      i = j;
+      if (!ArkRecommendController.a(this.a).a())
+      {
+        ArkRecommendController.a(this.a, null);
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkRecommendController", 2, "showBabyQBubbleView.mScrollBar.init.false");
+        }
+        i = 0;
       }
     }
-    this.jdField_a_of_type_Aaxc.a.a.setProgress(i);
-    this.jdField_a_of_type_Aaxc.a.g.setText(this.jdField_a_of_type_Aaxc.a.getResources().getString(2131438480));
+    if (i != 0)
+    {
+      ArkRecommendController.a(this.a).a(ArkRecommendController.a(this.a));
+      ArkRecommendController.a(this.a).b();
+    }
   }
 }
 

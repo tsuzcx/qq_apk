@@ -1,16 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
-public class tpn
+class tpn
   implements DialogInterface.OnClickListener
 {
-  public tpn(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  tpn(tpm paramtpm) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    this.a.finish();
   }
 }
 

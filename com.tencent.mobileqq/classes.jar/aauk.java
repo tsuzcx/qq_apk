@@ -1,20 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.widget.TextView;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
 
-public class aauk
-  implements ClickableColorSpanTextView.SpanClickListener
+class aauk
+  implements Runnable
 {
-  public aauk(ARMapActivity paramARMapActivity) {}
+  aauk(aauj paramaauj, String paramString) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void run()
   {
-    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://wa.qq.com/help/info.html");
-    this.a.startActivity(paramClickableColorSpanTextView);
+    this.jdField_a_of_type_Aauj.a.a.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

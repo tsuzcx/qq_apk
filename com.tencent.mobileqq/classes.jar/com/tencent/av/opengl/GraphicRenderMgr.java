@@ -8,7 +8,7 @@ import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
-import jkb;
+import jjm;
 
 public class GraphicRenderMgr
 {
@@ -20,7 +20,7 @@ public class GraphicRenderMgr
   public int decoderPtrRef;
   private GraphicRenderMgr.FocusDetectCallback mAutoFocusCallback;
   private Object mAutoFocusCallbackLock = new Object();
-  jkb mSetBeautyOrFaceConfigInfo = new jkb();
+  jjm mSetBeautyOrFaceConfigInfo = new jjm();
   
   private GraphicRenderMgr()
   {

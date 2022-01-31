@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.armap.CameraSurfaceView;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aavh
+public final class aavh
   implements Runnable
 {
-  public aavh(CameraSurfaceView paramCameraSurfaceView) {}
+  public aavh(String paramString) {}
   
   public void run()
   {
-    this.a.a(true);
+    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("ArkAppLastUsedTime", 0).edit();
+    localEditor.putLong(this.a, System.currentTimeMillis());
+    localEditor.commit();
   }
 }
 

@@ -1,28 +1,24 @@
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahie
-  implements ISearchListener
+  implements Runnable
 {
-  public ahie(NetSearchEngine paramNetSearchEngine, List paramList) {}
+  public ahie(CameraCaptureFragment paramCameraCaptureFragment, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
   
-  public void a(List paramList) {}
-  
-  public void a(List paramList, int paramInt)
+  public void run()
   {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    SearchUtils.a();
-    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
+    QLog.d("CameraCaptureFragment", 2, "onVideoCaptured. videoFrameCount = " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount + " ; minFrameCount = " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.b);
+    QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.z_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahie
  * JD-Core Version:    0.7.0.1
  */

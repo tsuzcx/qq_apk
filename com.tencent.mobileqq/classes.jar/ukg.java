@@ -1,23 +1,44 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule.BussinessData;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
 public class ukg
-  implements Runnable
+  implements TroopManager.ITroopMemberInfoCallBack
 {
-  public ukg(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, AioAnimationRule paramAioAnimationRule) {}
+  public BaseChatItemLayout a;
   
-  public void run()
+  private ukg(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a.jdField_a_of_type_Int)
+    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if ((localObject != null) && (((TroopInfo)localObject).isHomeworkTroop())) {}
+    do
     {
-      localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(j), Integer.valueOf(i) });
+      return;
+      localObject = (BaseBubbleBuilder.ViewHolder)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getTag();
+    } while ((paramTroopMemberInfo == null) || (!TextUtils.equals(((BaseBubbleBuilder.ViewHolder)localObject).a.senderuin, paramTroopMemberInfo.memberuin)));
+    BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder, paramTroopMemberInfo.globalTroopLevel);
+    paramTroopMemberInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder) > 2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramTroopMemberInfo.a((QQAppInterface)localObject, bool, BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder), false);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.d == null) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.d.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.d.setTag(Integer.valueOf(2131361868));
       return;
     }
   }

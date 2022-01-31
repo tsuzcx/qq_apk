@@ -149,7 +149,7 @@ public class QQUpdateVersion
     }
     try
     {
-      String[] arrayOfString = "7.6.0".split("\\.");
+      String[] arrayOfString = "7.6.3".split("\\.");
       if ((arrayOfString != null) && (arrayOfString.length >= 2))
       {
         int i = Integer.parseInt(arrayOfString[0]);

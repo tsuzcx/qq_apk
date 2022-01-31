@@ -1,31 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class amam
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  private amam(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
+  private WeakReference a;
   
-  public void run()
+  public amam(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    try
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt(QQPimDefineList.r, 3);
-      QIPCServerHelper.getInstance().callClient(QQPimDefineList.b, QQPimDefineList.c, QQPimDefineList.e, localBundle, new aman(this));
+    this.a = new WeakReference(paramOnDismissListener);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss(paramDialogInterface);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    QLog.i("Q.dating", 2, "CustomDismissListener, lis is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amam
  * JD-Core Version:    0.7.0.1
  */

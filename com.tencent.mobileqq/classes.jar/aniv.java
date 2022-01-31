@@ -1,14 +1,25 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
+import android.app.Activity;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.qq.im.QIMCameraUtil;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
 public class aniv
-  implements HorizontalSelectColorLayout.OnUndoViewClickListener
+  implements Runnable
 {
-  public aniv(DoodleLayout paramDoodleLayout) {}
+  public aniv(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public void a()
+  public void run()
   {
-    this.a.c();
+    try
+    {
+      QIMCameraCaptureUnit.a(this.a, QIMCameraUtil.a(this.a.a.a(), true));
+      this.a.a.a().runOnUiThread(new aniw(this));
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

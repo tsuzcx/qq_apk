@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
 
 public class aeqr
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public aeqr(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public aeqr(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.r = false;
+    ChooseInterestTagActivity.a(this.a).fullScroll(66);
   }
 }
 

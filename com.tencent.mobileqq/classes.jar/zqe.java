@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
+import com.tencent.qphone.base.util.QLog;
 
-public final class zqe
-  implements Comparator
+public class zqe
+  extends PublicAccountObserver
 {
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  private zqe(CheckPublicAccount paramCheckPublicAccount) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "PublicAccount onUpdateUserFollowList:" + paramBoolean + " " + paramInt);
     }
-    return -1;
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      CheckPublicAccount.a(this.a).a.edit().putBoolean("isPublicAccountListOK", true).commit();
+      this.a.a(7);
+    }
+    while (paramInt == 0) {
+      return;
+    }
+    this.a.a(6);
   }
 }
 

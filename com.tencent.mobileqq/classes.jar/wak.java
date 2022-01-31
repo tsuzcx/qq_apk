@@ -1,17 +1,14 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wak
-  implements Runnable
+class wak
+  implements DialogInterface.OnClickListener
 {
-  public wak(VideoStatusTipsBar paramVideoStatusTipsBar) {}
+  wak(wai paramwai) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoStatusTipsBar.a(this.a).a().e(true);
-    this.a.a("RefreshMultiStateRunnable", VideoStatusTipsBar.a(this.a).jdField_a_of_type_Int, VideoStatusTipsBar.a(this.a).jdField_a_of_type_JavaLangString, 0, 0L);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -26,8 +26,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
-import myl;
-import mym;
+import mzw;
+import mzx;
 
 public class DownloadUrlManager
   extends BaseManger
@@ -202,7 +202,7 @@ public class DownloadUrlManager
     if ((paramInt != 0) || (TroopStoryUtil.a(paramString))) {
       return;
     }
-    Bosses.get().postJob(new myl(this, paramString, paramInt));
+    Bosses.get().postJob(new mzw(this, paramString, paramInt));
   }
   
   public void a(List paramList)
@@ -296,7 +296,7 @@ public class DownloadUrlManager
   
   public void b(String paramString, int paramInt)
   {
-    Bosses.get().postJob(new mym(this, paramString, paramInt));
+    Bosses.get().postJob(new mzx(this, paramString, paramInt));
   }
   
   public void b(List paramList)

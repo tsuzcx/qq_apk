@@ -1,30 +1,25 @@
-import Wallet.WalletSkinRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import java.util.Map;
 
 public class wxr
-  implements BusinessObserver
+  implements Runnable
 {
-  public wxr(QWalletSkinHandler paramQWalletSkinHandler, QWalletSkinHandler.SkinListener paramSkinListener) {}
+  public wxr(PhotoListActivity paramPhotoListActivity, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    paramBundle = (WalletSkinRsp)paramBundle.getSerializable("rsp");
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletSkinHandler", 2, "OpenWalletSkin openObserver:" + paramBoolean + "|" + paramBundle);
-    }
-    if ((paramBoolean) && (paramBundle != null) && (paramBundle.status == 1))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletSkinHandler", 2, "OpenWalletSkin rsp fail:" + paramBundle);
-    }
-    QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
+    Message localMessage = Message.obtain();
+    localMessage.what = 3;
+    String str = PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, this.jdField_a_of_type_JavaLangString);
+    localMessage.obj = str;
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    AlbumUtil.a(localLocalMediaInfo, str);
+    PhotoListActivity.a().put(str, localLocalMediaInfo);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a.sendMessage(localMessage);
   }
 }
 

@@ -15,11 +15,11 @@ import android.view.animation.Animation;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.ListView;
-import ukj;
-import ukk;
-import ukl;
-import ukn;
-import uko;
+import unj;
+import unk;
+import unl;
+import unn;
+import uno;
 
 public class ComboAnimation3
   extends AIOAnimationConatiner.AIOAnimator
@@ -93,8 +93,8 @@ public class ComboAnimation3
       k = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1].getIntrinsicWidth() + (i + 0 + j);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = this.jdField_a_of_type_ComTencentWidgetListView.getResources().getDrawable(2130838282);
       i = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0].getIntrinsicWidth() + k;
-      this.jdField_a_of_type_AndroidViewView = new uko(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
-      this.jdField_b_of_type_AndroidViewView = new uko(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
+      this.jdField_a_of_type_AndroidViewView = new uno(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
+      this.jdField_b_of_type_AndroidViewView = new uno(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_a_of_type_AndroidViewView, -1, AIOAnimationConatiner.a, false);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_b_of_type_AndroidViewView, -1, AIOAnimationConatiner.a, false);
       this.jdField_a_of_type_AndroidViewView.layout(0, 0, i, jdField_b_of_type_Int);
@@ -127,7 +127,7 @@ public class ComboAnimation3
         localObject1 = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { localObject1 }).setDuration(1000L);
         localObject2 = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { localObject2 }).setDuration(1000L);
         localObject3 = new AnimatorSet();
-        ((AnimatorSet)localObject3).addListener(new ukj(this));
+        ((AnimatorSet)localObject3).addListener(new unj(this));
         ((AnimatorSet)localObject3).play(paramVarArgs).with((Animator)localObject1).with((Animator)localObject2);
         ((AnimatorSet)localObject3).start();
         this.jdField_a_of_type_AndroidViewView.setTag(localObject3);
@@ -162,12 +162,12 @@ public class ComboAnimation3
       } while (n > 0);
       break;
       label867:
-      paramVarArgs = new ukk(this);
+      paramVarArgs = new unk(this);
       paramVarArgs.setDuration(1000L);
       paramVarArgs.setFillAfter(true);
       this.jdField_a_of_type_AndroidViewView.setAnimation(paramVarArgs);
-      paramVarArgs.setAnimationListener(new ukl(this));
-      paramVarArgs = new ukn(this);
+      paramVarArgs.setAnimationListener(new unl(this));
+      paramVarArgs = new unn(this);
       paramVarArgs.setDuration(1000L);
       paramVarArgs.setFillAfter(true);
       this.jdField_b_of_type_AndroidViewView.setAnimation(paramVarArgs);

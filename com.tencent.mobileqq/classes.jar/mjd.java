@@ -1,66 +1,70 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import org.json.JSONObject;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyPullToZoomListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class mjd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public mjd(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  float jdField_a_of_type_Float;
+  long jdField_a_of_type_Long;
+  public boolean a;
+  long b;
   
-  public void onClick(View paramView)
+  public mjd(ReadInJoyPullToZoomListView paramReadInJoyPullToZoomListView)
   {
-    ReadinjoyTabFrame.a(this.a).b();
-    ReadInJoyActivityHelper.a(this.a.a().getApplicationContext(), false);
-    if ((ReadinjoyTabFrame.a(this.a) != null) && (ReadinjoyTabFrame.a(this.a).a())) {
-      ReadinjoyTabFrame.a(this.a).a(null);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a())) {
+      QLog.e("Q.readinjoy.video.PullToZoomListView", 2, "#ScalingRunnalable# abortAnimation(): ");
     }
-    for (;;)
+  }
+  
+  public void a(long paramLong)
+  {
+    this.b = AnimationUtils.currentAnimationTimeMillis();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Float = (ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView).getBottom() / ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView));
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView.post(this);
+    if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a())) {
+      QLog.d("Q.readinjoy.video.PullToZoomListView", 2, "#ScalingRunnalable# startAnimation(): duration =" + paramLong + ", mScale=" + this.jdField_a_of_type_Float);
+    }
+  }
+  
+  public void run()
+  {
+    ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView);
+    float f1;
+    float f2;
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Float > 1.0D))
     {
-      try
-      {
-        JSONObject localJSONObject = ReadInJoyUtils.a();
-        localJSONObject.put("folder_status", ReadInJoyUtils.d);
-        if (!ReadinjoyTabFrame.a(this.a).a()) {
-          continue;
-        }
-        i = 2;
-        localJSONObject.put("reddot", i);
-        localJSONObject.put("kandian_mode", ReadInJoyUtils.e());
-        localJSONObject.put("kandian_mode_new", VideoReporter.a());
-        paramView = (ReadInJoySkinManager)this.a.a.getManager(260);
-        if ((paramView.a() != 1) || (TextUtils.isEmpty(paramView.a()))) {
-          continue;
-        }
-        paramView = paramView.a();
-        localJSONObject.put("skin_id", paramView);
-        localJSONObject.put("button_state", 0);
-        PublicAccountReportUtils.a(this.a.a, "CliOper", "", "", "0X80081C5", "0X80081C5", 0, 1, "4", null, null, localJSONObject.toString(), false);
-        PublicAccountReportUtils.a(this.a.a, "", "0X8007DB0", "0X8007DB0", 0, 0, "4", "", "", localJSONObject.toString(), false);
+      f1 = ((float)AnimationUtils.currentAnimationTimeMillis() - (float)this.b) / (float)this.jdField_a_of_type_Long;
+      f2 = this.jdField_a_of_type_Float - (this.jdField_a_of_type_Float - 1.0F) * ReadInJoyPullToZoomListView.a().getInterpolation(f1);
+      ViewGroup.LayoutParams localLayoutParams = ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView).getLayoutParams();
+      if (f2 <= 1.0F) {
+        break label173;
       }
-      catch (Exception paramView)
-      {
-        int i;
-        paramView.printStackTrace();
-        continue;
+      localLayoutParams.height = ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView);
+      localLayoutParams.height = ((int)(ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView) * f2));
+      ReadInJoyPullToZoomListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView).setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView.post(this);
+      if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a())) {
+        QLog.d("Q.readinjoy.video.PullToZoomListView", 2, "#ScalingRunnalable# runing...... f1 = " + f1 + ", f2=" + f2);
       }
-      PublicTracker.a(null, "self_tab_cost");
-      return;
-      i = 1;
-      continue;
-      paramView = "0";
     }
+    return;
+    label173:
+    if ((QLog.isColorLevel()) && (ReadInJoyPullToZoomListView.a())) {
+      QLog.w("Q.readinjoy.video.PullToZoomListView", 2, "#ScalingRunnalable# run() end! f1 = " + f1 + ", f2=" + f2);
+    }
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

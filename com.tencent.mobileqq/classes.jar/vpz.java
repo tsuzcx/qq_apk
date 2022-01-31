@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.contact.newfriend.CloneFriendPushHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class vpz
+class vpz
   implements Runnable
 {
-  public vpz(FriendChatPie paramFriendChatPie) {}
+  vpz(vpw paramvpw, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
   
   public void run()
   {
-    if (CloneFriendPushHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
+    if (this.jdField_a_of_type_Vpw.c != null)
     {
-      FriendChatPie.c(this.a, true);
-      CloneFriendPushHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
-      return;
+      this.jdField_a_of_type_Vpw.c.clearAnimation();
+      this.jdField_a_of_type_Vpw.c.removeAllViews();
+      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_Vpw.b, 50L);
     }
-    FriendChatPie.c(this.a, false);
   }
 }
 

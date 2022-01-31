@@ -1,16 +1,19 @@
-import com.tencent.biz.qqstory.model.IVidToVideoInfoPuller.OnFinishCallBack;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
 
-class nhc
-  implements IVidToVideoInfoPuller.OnFinishCallBack
+public class nhc
+  extends EncryptUrlJob
 {
-  nhc(nhb paramnhb) {}
-  
-  public void a(List paramList, boolean paramBoolean)
+  public nhc(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareWeChatData paramShareWeChatData)
   {
-    ThreadManager.getUIHandler().post(new nhd(this));
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.d = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

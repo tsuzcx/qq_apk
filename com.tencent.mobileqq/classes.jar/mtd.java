@@ -1,46 +1,10 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.IOException;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsNewActivity;
 
 public class mtd
-  extends AsyncTask
+  extends ReadInJoyObserver
 {
-  public mtd(GalleryShareHelper paramGalleryShareHelper, URLDrawable paramURLDrawable, String paramString) {}
-  
-  protected String a(Void... paramVarArgs)
-  {
-    try
-    {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        ImageUtil.a(GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper), paramVarArgs);
-        if (GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getIntent().getBooleanExtra("from_photo_wall", false)) {
-          return "已保存到手机相册";
-        }
-        return GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getString(2131434565) + " " + paramVarArgs;
-      }
-      paramVarArgs = GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getString(2131434566);
-      return paramVarArgs;
-    }
-    catch (IOException paramVarArgs)
-    {
-      return GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getString(2131434566);
-    }
-    catch (OutOfMemoryError paramVarArgs) {}
-    return GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getString(2131434566);
-  }
-  
-  protected void a(String paramString)
-  {
-    QQToast.a(GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper), paramString, 0).b(GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getTitleBarHeight());
-  }
+  public mtd(SubscriptFeedsNewActivity paramSubscriptFeedsNewActivity) {}
 }
 
 

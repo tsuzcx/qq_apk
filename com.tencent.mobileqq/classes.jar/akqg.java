@@ -1,46 +1,31 @@
 import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.viareport.BatchReportInfo;
-import com.tencent.open.business.viareport.ReportDbHelper;
-import com.tencent.open.business.viareport.ReportManager;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import com.tencent.open.downloadnew.DownloadApi;
+import com.tencent.open.downloadnew.DownloadConstants;
 
 public class akqg
   implements Runnable
 {
-  public akqg(ReportManager paramReportManager, boolean paramBoolean, BatchReportInfo paramBatchReportInfo, Bundle paramBundle, String paramString) {}
+  public akqg(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler, String paramString1, String paramString2) {}
   
   public void run()
   {
-    boolean bool = false;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo == null)) {
-      if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.b(this.jdField_a_of_type_AndroidOsBundle.getString("appid_for_getting_config")))) {
-        this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, false);
-      }
-    }
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo != null) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo.a()) && (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.b(null))) {
-        ReportDbHelper.a().a("table_new_data", this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo);
-      }
-      if (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.jdField_a_of_type_Boolean)
-      {
-        LogUtility.b("viareport", "isUploading ---return");
-        return;
-      }
-    } while ((!this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a()));
-    ReportManager localReportManager = this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager;
-    String str = this.jdField_a_of_type_JavaLangString;
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    if (this.jdField_a_of_type_ComTencentOpenBusinessViareportBatchReportInfo != null) {
-      bool = true;
-    }
-    localReportManager.a(str, localBundle, bool);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.a(MsfSdkUtils.insertMtype("Web", this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_JavaLangString), 0);
+    Bundle localBundle = new Bundle();
+    localBundle.putString(DownloadConstants.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    localBundle.putString(DownloadConstants.i, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_JavaLangString);
+    localBundle.putInt(DownloadConstants.j, 2);
+    localBundle.putString(DownloadConstants.k, this.b);
+    localBundle.putBoolean(DownloadConstants.q, false);
+    localBundle.putBoolean(DownloadConstants.w, false);
+    localBundle.putString(DownloadConstants.l, "_" + this.jdField_a_of_type_JavaLangString);
+    DownloadApi.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, localBundle, 0, null, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akqg
  * JD-Core Version:    0.7.0.1
  */

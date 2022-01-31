@@ -4,7 +4,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
-import vlt;
+import vov;
 
 public abstract class IAIOImageProviderCallBack$Stub
   extends Binder
@@ -24,7 +24,7 @@ public abstract class IAIOImageProviderCallBack$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IAIOImageProviderCallBack))) {
       return (IAIOImageProviderCallBack)localIInterface;
     }
-    return new vlt(paramIBinder);
+    return new vov(paramIBinder);
   }
   
   public IBinder asBinder()

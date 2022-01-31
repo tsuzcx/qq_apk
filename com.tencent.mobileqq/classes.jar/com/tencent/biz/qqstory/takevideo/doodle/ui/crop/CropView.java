@@ -973,8 +973,8 @@ public class CropView
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     setOnTouchListener(this);
-    this.jdField_d_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131559379);
-    this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131559378);
+    this.jdField_d_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131559381);
+    this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131559380);
     this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
   }

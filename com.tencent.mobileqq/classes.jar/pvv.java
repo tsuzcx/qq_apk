@@ -1,27 +1,15 @@
-import android.view.View;
-import com.tencent.device.file.DeviceAVFileMsgObserver;
-import com.tencent.device.file.DeviceAVFileMsgObserver.DevMsgViewCallback;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.bind.DevicePluginDownloadActivity;
 
 public class pvv
+  implements DialogInterface.OnClickListener
 {
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  public WeakReference b;
+  public pvv(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
   
-  public pvv(DeviceAVFileMsgObserver paramDeviceAVFileMsgObserver, View paramView, DeviceAVFileMsgObserver.DevMsgViewCallback paramDevMsgViewCallback)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramDevMsgViewCallback);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public DeviceAVFileMsgObserver.DevMsgViewCallback a()
-  {
-    return (DeviceAVFileMsgObserver.DevMsgViewCallback)this.b.get();
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -20,7 +20,7 @@ public class CardConfigManager
   {
     boolean bool = true;
     CardConfigManager.CardConfigs localCardConfigs = new CardConfigManager.CardConfigs();
-    Object localObject = SharedPreUtils.m(this.a.getApp(), this.a.getCurrentAccountUin());
+    Object localObject = SharedPreUtils.l(this.a.getApp(), this.a.getCurrentAccountUin());
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       if (QLog.isColorLevel()) {

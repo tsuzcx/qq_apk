@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.wealthgod;
 
-import abbk;
+import abil;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ARMapLoadingActivity$LoadingTimeStamp
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abbk();
+  public static final Parcelable.Creator CREATOR = new abil();
   public long a;
   public long b;
   public long c;

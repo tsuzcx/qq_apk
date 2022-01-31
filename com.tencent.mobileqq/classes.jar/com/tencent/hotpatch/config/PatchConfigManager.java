@@ -14,7 +14,7 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qky;
+import qno;
 
 public class PatchConfigManager
 {
@@ -53,7 +53,7 @@ public class PatchConfigManager
       {
         QLog.d("PatchLogTag", 1, "PatchConfigManager getLatestPatchConfig", paramContext);
         if (paramString.size() > 1) {
-          Collections.sort(paramString, new qky());
+          Collections.sort(paramString, new qno());
         }
         if (paramString.size() > 0) {
           return (BasePatchConfig)paramString.get(0);

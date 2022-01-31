@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.like;
 
-import agcf;
-import agcg;
+import agqh;
+import agqi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -111,7 +111,7 @@ public class PraiseManager
         QLog.d("PraiseManager", 2, "start create praise info, id=" + paramInt);
       }
       this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
-      ThreadManager.executeOnFileThread(new agcf(this, paramInt, paramBoolean, paramString));
+      ThreadManager.executeOnFileThread(new agqh(this, paramInt, paramBoolean, paramString));
     }
     return null;
   }
@@ -300,24 +300,24 @@ public class PraiseManager
     if ((paramSet == null) || (paramSet.isEmpty())) {
       return true;
     }
-    agcg localagcg = new agcg(this);
-    localagcg.b = paramSet.size();
-    localagcg.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener = paramOnPraiseLoadListener;
+    agqi localagqi = new agqi(this);
+    localagqi.b = paramSet.size();
+    localagqi.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener = paramOnPraiseLoadListener;
     paramOnPraiseLoadListener = paramSet.iterator();
     while (paramOnPraiseLoadListener.hasNext())
     {
       int i = ((Integer)paramOnPraiseLoadListener.next()).intValue();
       if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(i)) == null)
       {
-        a(localagcg);
+        a(localagqi);
         a(i, true, "from_load_all");
       }
       else
       {
-        localagcg.jdField_a_of_type_Int += 1;
+        localagqi.jdField_a_of_type_Int += 1;
       }
     }
-    return localagcg.jdField_a_of_type_Int == paramSet.size();
+    return localagqi.jdField_a_of_type_Int == paramSet.size();
   }
   
   public void b(PraiseManager.OnPraiseLoadListener paramOnPraiseLoadListener)

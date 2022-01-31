@@ -1,32 +1,20 @@
-import android.os.Handler;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiIncomingCallUICtr;
-import com.tencent.av.ui.VideoInviteFloatBar;
-import com.tencent.av.utils.UITools;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
+import com.tencent.av.utils.MultiVideoMembersClickListener;
 
 public class jvx
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public jvx(MultiIncomingCallUICtr paramMultiIncomingCallUICtr) {}
+  public jvx(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = UITools.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a());
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null)
-    {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a(str);
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a() % 60L >= 1L)
-      {
-        this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a();
-        this.a.a();
-      }
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    else
-    {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
+    return paramMotionEvent.getAction() == 2;
   }
 }
 

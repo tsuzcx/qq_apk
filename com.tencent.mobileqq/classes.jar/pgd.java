@@ -1,49 +1,35 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import com.tencent.component.media.image.BitmapReference;
-import com.tencent.component.media.image.drawable.ImageDrawable;
+import com.tencent.component.media.gif.NewGifDrawable;
 
-public final class pgd
-  extends Drawable.ConstantState
+public abstract class pgd
+  implements Runnable
 {
-  public int a;
-  public Paint a;
-  public BitmapReference a;
-  public int b;
-  public int c;
-  public int d = 160;
+  public final NewGifDrawable b;
   
-  public pgd(BitmapReference paramBitmapReference, int paramInt1, int paramInt2)
+  pgd(NewGifDrawable paramNewGifDrawable)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference = paramBitmapReference;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.b = paramNewGifDrawable;
   }
   
-  public pgd(pgd parampgd)
-  {
-    this(parampgd.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference, parampgd.jdField_a_of_type_Int, parampgd.b);
-    this.c = parampgd.c;
-    this.d = parampgd.d;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(parampgd.jdField_a_of_type_AndroidGraphicsPaint);
-  }
+  public abstract void doWork();
   
-  public int getChangingConfigurations()
+  public final void run()
   {
-    return this.c;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new ImageDrawable(this, null, null);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new ImageDrawable(this, paramResources, null);
+    try
+    {
+      if (!this.b.isRecycled()) {
+        doWork();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      Thread.UncaughtExceptionHandler localUncaughtExceptionHandler;
+      do
+      {
+        localUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+      } while (localUncaughtExceptionHandler == null);
+      localUncaughtExceptionHandler.uncaughtException(Thread.currentThread(), localThrowable);
+    }
   }
 }
 

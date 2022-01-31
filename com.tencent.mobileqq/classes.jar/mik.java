@@ -1,16 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public class mik
-  implements ValueAnimator.AnimatorUpdateListener
+class mik
+  implements Runnable
 {
-  public mik(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  mik(mii parammii) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    ReadinjoySlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    this.a.a.l();
   }
 }
 

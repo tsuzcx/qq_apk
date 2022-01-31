@@ -43,7 +43,7 @@ public class PhoneUnityIntroductionActivity
     paramIntent.putExtra("kSrouce", this.a);
     paramIntent.putExtra("kBindNew", true);
     paramIntent.addFlags(603979776);
-    paramIntent.putExtra("selfSet_leftViewText", getString(2131436773));
+    paramIntent.putExtra("selfSet_leftViewText", getString(2131436790));
     super.startActivity(paramIntent);
     super.setResult(paramInt2);
     super.finish();
@@ -52,9 +52,9 @@ public class PhoneUnityIntroductionActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970475);
-    super.setTitle(getString(2131436819));
-    super.setContentBackgroundResource(2130838210);
+    super.setContentView(2130970516);
+    super.setTitle(getString(2131436836));
+    super.setContentBackgroundResource(2130838214);
     this.a = super.getIntent().getIntExtra("kSrouce", -1);
     if (this.a == 0)
     {
@@ -69,7 +69,7 @@ public class PhoneUnityIntroductionActivity
         if (AppSetting.b) {
           this.leftView.setContentDescription(paramBundle);
         }
-        paramBundle = (TextView)super.findViewById(2131365405);
+        paramBundle = (TextView)super.findViewById(2131365427);
         if (this.a == 9)
         {
           String str = ((PhoneContactManagerImp)this.app.getManager(10)).b();
@@ -85,7 +85,7 @@ public class PhoneUnityIntroductionActivity
     }
     for (;;)
     {
-      paramBundle = (Button)super.findViewById(2131370825);
+      paramBundle = (Button)super.findViewById(2131370974);
       if (paramBundle != null) {
         paramBundle.setOnClickListener(this);
       }
@@ -97,7 +97,7 @@ public class PhoneUnityIntroductionActivity
       break;
       paramBundle = "设置";
       break label119;
-      paramBundle.setText(2131436823);
+      paramBundle.setText(2131436840);
       break label188;
       paramBundle.setGravity(3);
     }
@@ -122,13 +122,13 @@ public class PhoneUnityIntroductionActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131370825)
+    if (paramView.getId() == 2131370974)
     {
       if (NetworkUtil.d(this)) {
         break label40;
       }
       if (!isFinishing()) {
-        QQToast.a(this, 0, 2131434596, 0).b(super.getTitleBarHeight());
+        QQToast.a(this, 0, 2131434613, 0).b(super.getTitleBarHeight());
       }
     }
     label40:

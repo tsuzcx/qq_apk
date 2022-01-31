@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.app.UniPayHandler.UniPayUpdateListener;
 
 public class wsq
-  implements Runnable
+  extends UniPayHandler.UniPayUpdateListener
 {
-  public wsq(AlbumListAdapter paramAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo) {}
+  public wsq(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
+    this.a.runOnUiThread(new wsr(this));
   }
 }
 

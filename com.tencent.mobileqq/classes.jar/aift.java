@@ -1,28 +1,30 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class aift
-  implements InputFilter
+public final class aift
+  implements Runnable
 {
-  public aift(AbsPublishActivity paramAbsPublishActivity) {}
+  public aift(String paramString1, String paramString2) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void run()
   {
-    if (paramCharSequence != null)
+    try
     {
-      paramCharSequence = paramCharSequence.toString();
-      if (TroopBarUtils.a(paramCharSequence, '\n') + TroopBarUtils.a(paramSpanned.toString(), '\n') > 100) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
+      Intent localIntent = new Intent();
+      localIntent.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      localIntent.putExtra("reporting_tag", this.a);
+      localIntent.putExtra("reporting_detail", this.b);
+      localIntent.putExtra("reporting_count", 1);
+      localIntent.putExtra("is_runtime", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+      return;
     }
-    return null;
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aift
  * JD-Core Version:    0.7.0.1
  */

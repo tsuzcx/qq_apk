@@ -1,18 +1,27 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.qwallet.FrameAnimHelper;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class wzd
-  implements PopupWindow.OnDismissListener
+  extends AsyncTask
 {
-  public wzd(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  private wzd(FrameAnimHelper paramFrameAnimHelper) {}
   
-  public void onDismiss()
+  protected AnimationView.AnimationInfo a(String... paramVarArgs)
   {
-    if (!TroopUnAccalimedRedPacketList.a(this.a)) {
-      QWalletTools.a(TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a().getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
+    if ("1".equals(paramVarArgs[1])) {
+      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
     }
+    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+  }
+  
+  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
+    }
+    this.a.a(paramAnimationInfo);
   }
 }
 

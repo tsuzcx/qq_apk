@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
 
-class tiw
+public class tiw
   implements Runnable
 {
-  tiw(tit paramtit) {}
+  public tiw(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    this.a.a.B();
+    if (QQLSActivity.c(this.a) != null) {
+      QQLSActivity.a(this.a).removeView(QQLSActivity.c(this.a));
+    }
+    QQLSActivity.a(this.a, null);
   }
 }
 

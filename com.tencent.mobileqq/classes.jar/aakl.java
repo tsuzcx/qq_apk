@@ -1,14 +1,27 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
+import android.content.res.Resources;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import java.util.HashMap;
 
 public class aakl
-  implements Runnable
+  extends aakq
 {
-  public aakl(ArkAiAppCenter paramArkAiAppCenter, String[] paramArrayOfString) {}
+  public final int a;
+  public final String a;
+  public final HashMap a;
+  public String b;
   
-  public void run()
+  public aakl(String paramString, int paramInt)
   {
-    ark.Application.SetUrlCheckingList(this.jdField_a_of_type_ArrayOfJavaLangString, 0);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(this.jdField_a_of_type_Int);
+  }
+  
+  void a() {}
+  
+  boolean a(Resources paramResources)
+  {
+    return WorldCupMgr.a(paramResources, this, this.b);
   }
 }
 

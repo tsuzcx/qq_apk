@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import com.tencent.mobileqq.pic.CompressInfo;
-import vlu;
+import vow;
 
 public abstract class ICompressionCallBack$Stub
   extends Binder
@@ -25,7 +25,7 @@ public abstract class ICompressionCallBack$Stub
     if ((localIInterface != null) && ((localIInterface instanceof ICompressionCallBack))) {
       return (ICompressionCallBack)localIInterface;
     }
-    return new vlu(paramIBinder);
+    return new vow(paramIBinder);
   }
   
   public IBinder asBinder()

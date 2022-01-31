@@ -1,30 +1,43 @@
-import android.util.Pair;
-import android.view.View;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.DownloadInfo;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class syl
-  implements ActionSheet.OnButtonClickListener
+public final class syl
+  implements Runnable
 {
-  public syl(MainFragment paramMainFragment, List paramList, ActionSheet paramActionSheet) {}
+  public syl(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, HttpDownloadUtil.HttpDownloadListener paramHttpDownloadListener) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
-    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return;
-    }
+    boolean bool = false;
     try
     {
-      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (syq)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+      Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
+      localObject = new DownloadInfo(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
+      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DownloadInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqUtilsHttpDownloadUtil$HttpDownloadListener) == 0) {
+        bool = true;
+      }
+      if (bool)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("LebaIconDownloader", 2, "download ok");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.i("LebaIconDownloader", 2, "download error,error code:" + bool);
+        return;
+      }
     }
-    catch (Throwable paramView)
+    catch (Exception localException)
     {
-      paramView.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.i("LebaIconDownloader", 2, localException.toString());
+      }
     }
   }
 }

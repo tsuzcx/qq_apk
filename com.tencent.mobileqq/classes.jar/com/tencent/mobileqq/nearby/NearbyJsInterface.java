@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
-import adyv;
-import adyy;
-import adyz;
-import adza;
+import aemb;
+import aeme;
+import aemf;
+import aemg;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -89,15 +89,15 @@ public class NearbyJsInterface
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private void a(adza paramadza)
+  private void a(aemg paramaemg)
   {
     if (QLog.isColorLevel()) {
       QLog.d("NearbyJsInterface", 2, "openNearbyAio, from = " + this.jdField_a_of_type_Int);
     }
     Activity localActivity = this.mRuntime.a();
     Intent localIntent = new Intent(localActivity, ChatActivity.class);
-    localIntent.putExtra("PREVIOUS_UIN", paramadza.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("uin", paramadza.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("PREVIOUS_UIN", paramaemg.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uin", paramaemg.jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_Int == 1) {}
     for (int i = 10002;; i = 1001)
     {
@@ -219,7 +219,7 @@ public class NearbyJsInterface
       localJSONObject.remove("callback");
       localWebSsoRequestBody.data.set(localJSONObject.toString());
       ((NewIntent)localObject).putExtra("data", localWebSsoRequestBody.toByteArray());
-      ((NewIntent)localObject).setObserver(new adyz(this, paramString));
+      ((NewIntent)localObject).setObserver(new aemf(this, paramString));
       this.mRuntime.a().startServlet((NewIntent)localObject);
       return;
     }
@@ -330,10 +330,10 @@ public class NearbyJsInterface
   
   public void getMatchPeople(String paramString, int paramInt)
   {
-    adza localadza = (adza)this.jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramString));
-    if ((localadza != null) && (!TextUtils.isEmpty(localadza.jdField_a_of_type_JavaLangString)) && (!localadza.jdField_a_of_type_JavaLangString.equals("0")))
+    aemg localaemg = (aemg)this.jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramString));
+    if ((localaemg != null) && (!TextUtils.isEmpty(localaemg.jdField_a_of_type_JavaLangString)) && (!localaemg.jdField_a_of_type_JavaLangString.equals("0")))
     {
-      a(localadza);
+      a(localaemg);
       return;
     }
     getMatchPeopleInfo(paramString, true, paramInt);
@@ -363,7 +363,7 @@ public class NearbyJsInterface
       localObject1 = new NewIntent(BaseApplication.getContext(), ProtoServlet.class);
       ((NewIntent)localObject1).putExtra("cmd", "OidbSvc.0x8c1_1");
       ((NewIntent)localObject1).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-      ((NewIntent)localObject1).setObserver(new adyy(this, paramString, paramBoolean));
+      ((NewIntent)localObject1).setObserver(new aeme(this, paramString, paramBoolean));
       this.mRuntime.a().startServlet((NewIntent)localObject1);
       return;
     }
@@ -768,7 +768,7 @@ public class NearbyJsInterface
         k = paramString.optInt("age");
         paramString = TroopMemberApiClient.a();
         paramString.a();
-        paramString.c(new adyv(this, paramString, j, i, k));
+        paramString.c(new aemb(this, paramString, j, i, k));
         return;
       }
       catch (JSONException paramString)

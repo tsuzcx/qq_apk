@@ -1,15 +1,15 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
+import cooperation.plugin.PluginInstaller;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class ammh
-  implements Runnable
+  implements FilenameFilter
 {
-  public ammh(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
+  public ammh(PluginInstaller paramPluginInstaller, String paramString) {}
   
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    RemoteHandleManager.a().a().k();
+    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
   }
 }
 

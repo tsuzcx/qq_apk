@@ -1,32 +1,24 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
 public class ahxm
-  implements MediaPlayer.OnCompletionListener
+  implements Runnable
 {
-  public ahxm(VideoSprite paramVideoSprite) {}
+  public ahxm(MessagePBElemDecoder paramMessagePBElemDecoder, msg_comm.Msg paramMsg) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    if (this.a.j) {
-      this.a.b.b(new ahxn(this));
-    }
-    do
-    {
-      return;
-      this.a.g = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    ((PublicAccountHandler)MessagePBElemDecoder.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessagePBElemDecoder).b.a(11)).a(String.valueOf(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_head.from_uin.get()), 0L, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxm
  * JD-Core Version:    0.7.0.1
  */

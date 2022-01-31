@@ -1,53 +1,16 @@
-import android.os.Handler;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class xok
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xok(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean, String paramString, int paramInt) {}
+  public xok(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, null);
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, -1);
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidViewView.isShown())
-      {
-        NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_JavaLangString);
-        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int);
-      }
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int == 1) {}
-      for (long l = 1500L;; l = 3000L)
-      {
-        if (this.jdField_a_of_type_Int == 3) {
-          l = LbsFilterStatusManager.a();
-        }
-        if (this.jdField_a_of_type_JavaLangString == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c.setText(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c.setVisibility(0);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidOsHandler == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidOsHandler.removeCallbacks(NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity));
-        if (l < 0L) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity), l);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c.setText("");
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c.setVisibility(8);
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidOsHandler == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidOsHandler.removeCallbacks(NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity));
+    this.a.a("608", "7", "2", true);
+    EditLocalVideoActivity.b(this.a, "an_yuanshipin");
   }
 }
 

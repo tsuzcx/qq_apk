@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.playvideo.ProgressControler;
 
-class nns
-  implements DialogInterface.OnClickListener
+public class nns
+  extends Handler
 {
-  nns(nnr paramnnr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nns(ProgressControler paramProgressControler, Looper paramLooper)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) {
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
     }
+    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
   }
 }
 

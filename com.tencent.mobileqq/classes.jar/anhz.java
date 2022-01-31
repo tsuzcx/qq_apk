@@ -1,25 +1,28 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import cooperation.weiyun.sdk.download.WyDownloader;
+import java.util.Iterator;
+import java.util.List;
 
-class anhz
-  implements Runnable
+public class anhz
+  implements ThreadPool.Job
 {
-  anhz(anhy paramanhy) {}
+  public anhz(WyDownloader paramWyDownloader, List paramList) {}
   
-  public void run()
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    EditTextDialog.EditTextDialogEventListener localEditTextDialogEventListener = this.a.a.a;
-    if (this.a.a.f != 0) {}
-    for (boolean bool = true;; bool = false)
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
     {
-      localEditTextDialogEventListener.b(bool);
-      return;
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.a(l, true, false, false);
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhz
  * JD-Core Version:    0.7.0.1
  */

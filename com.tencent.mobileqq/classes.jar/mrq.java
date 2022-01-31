@@ -1,21 +1,15 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
 
 public class mrq
   implements Runnable
 {
-  public mrq(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mrq(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed) {}
   
   public void run()
   {
-    QQMessageFacade localQQMessageFacade = this.a.app.a();
-    if (localQQMessageFacade != null)
-    {
-      int i = localQQMessageFacade.b();
-      this.a.leftView.post(new mrr(this, i));
-    }
+    ServiceAccountFolderManager.a().a(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed, true);
   }
 }
 

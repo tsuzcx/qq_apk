@@ -23,10 +23,10 @@ import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.contacts.base.InterceptListener;
-import wlg;
-import wlh;
-import wli;
-import wlj;
+import wol;
+import wom;
+import won;
+import woo;
 
 @TargetApi(14)
 public class SimpleSlidingIndicator
@@ -90,7 +90,7 @@ public class SimpleSlidingIndicator
     b();
     a(paramContext);
     if (Build.VERSION.SDK_INT >= 14) {
-      setAccessibilityDelegate(new wlg(this));
+      setAccessibilityDelegate(new wol(this));
     }
   }
   
@@ -116,7 +116,7 @@ public class SimpleSlidingIndicator
   private void a(int paramInt, View paramView)
   {
     paramView.setFocusable(true);
-    paramView.setOnClickListener(new wlh(this, paramInt));
+    paramView.setOnClickListener(new wom(this, paramInt));
     paramView.setPadding(this.f, 0, this.f, 0);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, paramInt, this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
   }
@@ -196,7 +196,7 @@ public class SimpleSlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new wli(this));
+        ((ValueAnimator)localObject).addUpdateListener(new won(this));
         ((ValueAnimator)localObject).start();
       }
       return;
@@ -216,7 +216,7 @@ public class SimpleSlidingIndicator
       n += 1;
     }
     c();
-    getViewTreeObserver().addOnGlobalLayoutListener(new wlj(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new woo(this));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)

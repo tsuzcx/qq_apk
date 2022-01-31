@@ -1,22 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
 public class aazj
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public aazj(ARGridMapViewDialog paramARGridMapViewDialog) {}
+  public aazj(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.setVisibility(8);
-    this.a.dismiss();
+    this.a.b = 1;
+    this.a.a.post(new aazk(this));
+    ARMapEngine.guideToPOI(0.0F);
+    ThreadManager.post(new aazl(this), 5, null, false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

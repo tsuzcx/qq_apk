@@ -110,6 +110,23 @@ public class ARRenerArumentManager
       ((ARRenerArumentManager.DrawFrameParements)localObject).jdField_a_of_type_ArrayOfFloat = this.jdField_e_of_type_ArrayOfFloat;
       return localObject;
     }
+    if (paramInt1 == 88)
+    {
+      this.jdField_b_of_type_Int = 1;
+      arrayOfFloat1 = new float[jdField_a_of_type_Int];
+      arrayOfFloat2 = new float[jdField_a_of_type_Int];
+      arrayOfFloat3 = new float[jdField_a_of_type_Int];
+      Matrix.setIdentityM(arrayOfFloat2, 0);
+      Matrix.setIdentityM(arrayOfFloat3, 0);
+      Matrix.setIdentityM(arrayOfFloat1, 0);
+      localObject = new ARRenerArumentManager.DrawFrameParements();
+      ((ARRenerArumentManager.DrawFrameParements)localObject).a("TARGET_SIZE", new float[] { 1.0F, 1.0F });
+      ((ARRenerArumentManager.DrawFrameParements)localObject).a("CAMERA_MATRIX", arrayOfFloat3);
+      ((ARRenerArumentManager.DrawFrameParements)localObject).a("CAMERA_POSITION", arrayOfFloat1);
+      ((ARRenerArumentManager.DrawFrameParements)localObject).a("POSE", arrayOfFloat2);
+      ((ARRenerArumentManager.DrawFrameParements)localObject).jdField_a_of_type_ArrayOfFloat = this.jdField_e_of_type_ArrayOfFloat;
+      return localObject;
+    }
     if (!this.jdField_g_of_type_Boolean) {
       return null;
     }
@@ -432,7 +449,7 @@ public class ARRenerArumentManager
     this.jdField_b_of_type_Int = paramARRenderResourceInfo.jdField_b_of_type_Int;
     this.jdField_c_of_type_Int = paramARRenderResourceInfo.jdField_c_of_type_Int;
     this.jdField_h_of_type_Boolean = false;
-    if ((this.jdField_f_of_type_Boolean) || (paramARRenderResourceInfo.jdField_a_of_type_Int == 100))
+    if ((this.jdField_f_of_type_Boolean) || (paramARRenderResourceInfo.jdField_a_of_type_Int == 100) || (paramARRenderResourceInfo.jdField_a_of_type_Int == 88))
     {
       this.jdField_g_of_type_Boolean = true;
       return;

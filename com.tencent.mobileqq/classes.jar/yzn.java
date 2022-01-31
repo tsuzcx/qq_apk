@@ -1,49 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 
-public class yzn
-  extends BroadcastReceiver
+class yzn
+  implements Animation.AnimationListener
 {
-  public yzn(DeviceProfileManager paramDeviceProfileManager) {}
+  yzn(yzm paramyzm) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.e("DeviceProfileManager", 4, "onReceive");
-    }
-    if (paramIntent == null) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramContext = paramIntent.getExtras();
-          if (paramContext != null)
-          {
-            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
-            if (DeviceProfileManager.a() != null)
-            {
-              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
-              return;
-            }
-          }
-        }
-        catch (Exception paramContext) {}
-      }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
+    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.a = null;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yzn
  * JD-Core Version:    0.7.0.1
  */

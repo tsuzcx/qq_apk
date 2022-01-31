@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import com.tencent.mobileqq.apollo.IApolloRenderView;
 
-public class ysk
-  implements Comparator
+class ysk
+  implements Runnable
 {
-  public ysk(ApolloDaoManager paramApolloDaoManager) {}
+  ysk(ysj paramysj, IApolloRenderView paramIApolloRenderView) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void run()
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView != null)
+    {
+      if (ysj.a(this.jdField_a_of_type_Ysj)) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.setVisibility(8);
+      }
     }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
+    else {
+      return;
     }
-    return -1;
+    this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.setVisibility(0);
   }
 }
 

@@ -1,59 +1,29 @@
-import android.os.AsyncTask;
-import com.tencent.device.msg.data.DeviceComnFileMsgProcessor;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RouterHandler;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import cooperation.troop.TroopFileProxyActivity;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.FileInfo;
 
-class aczu
-  extends AsyncTask
+public class aczu
+  implements Runnable
 {
-  aczu(aczt paramaczt) {}
+  public aczu(UniformDownloadMgr paramUniformDownloadMgr, Bundle paramBundle, String paramString) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void run()
   {
-    paramVarArgs = SendBottomBar.a(this.a.a).a();
-    int i = SendBottomBar.a(this.a.a).a();
-    if (i == 5)
+    Object localObject = this.jdField_a_of_type_AndroidOsBundle.getString("_filename_from_dlg");
+    long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_filesize_from_dlg");
+    if ((TextUtils.isEmpty((CharSequence)localObject)) || (0L == l))
     {
-      TroopFileProxyActivity.a.addAll(FMDataCache.b());
-      return null;
+      localObject = UniformDownloadUtil.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", ((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_Long);
+      if (TextUtils.isEmpty(((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_JavaLangString)) {
+        ((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_JavaLangString = "nofilename.x";
+      }
+      this.jdField_a_of_type_AndroidOsBundle.putString("_filename_from_dlg", ((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_JavaLangString);
     }
-    if (paramVarArgs.equals(AppConstants.y))
-    {
-      paramVarArgs = FMDataCache.b();
-      ((DataLineHandler)SendBottomBar.a(this.a.a).a(8)).a(paramVarArgs);
-      return null;
-    }
-    if (i == 6002)
-    {
-      localObject = FMDataCache.b();
-      ((RouterHandler)SendBottomBar.a(this.a.a).a(48)).a((ArrayList)localObject, null, null, Long.parseLong(paramVarArgs));
-      return null;
-    }
-    if (i == 9501)
-    {
-      ((DeviceMsgHandle)SendBottomBar.a(this.a.a).a(49)).a().a(paramVarArgs, FMDataCache.b());
-      return null;
-    }
-    Object localObject = SendBottomBar.a(this.a.a).b();
-    SendBottomBar.a(this.a.a).a().a((String)localObject, paramVarArgs, i);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    super.onPostExecute(paramVoid);
-    this.a.a.d();
-    FMDataCache.b();
-    SendBottomBar.d(this.a.a);
+    UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
   }
 }
 

@@ -1,19 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.wealthgod.WealthGodInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.armap.ARMapOpenRedPackDialog;
 
-public final class abbz
-  implements Parcelable.Creator
+public class abbz
+  implements Animation.AnimationListener
 {
-  public WealthGodInfo a(Parcel paramParcel)
-  {
-    return new WealthGodInfo(paramParcel);
-  }
+  public abbz(ARMapOpenRedPackDialog paramARMapOpenRedPackDialog) {}
   
-  public WealthGodInfo[] a(int paramInt)
-  {
-    return new WealthGodInfo[paramInt];
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

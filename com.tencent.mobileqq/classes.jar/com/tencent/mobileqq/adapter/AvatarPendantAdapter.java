@@ -33,8 +33,8 @@ import com.tencent.widget.GridView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import ydk;
-import ydl;
+import ygr;
+import ygs;
 
 public class AvatarPendantAdapter
   extends BaseAdapter
@@ -110,11 +110,11 @@ public class AvatarPendantAdapter
       if (m < PendantMarketConfig.jdField_a_of_type_JavaUtilList.size())
       {
         Object localObject1 = (PendantMarketConfig.EntryConfig)PendantMarketConfig.jdField_a_of_type_JavaUtilList.get(m);
-        View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970887, null);
-        Object localObject2 = (ImageView)localView.findViewById(2131372103);
-        TextView localTextView1 = (TextView)localView.findViewById(2131372105);
-        TextView localTextView2 = (TextView)localView.findViewById(2131372107);
-        ImageView localImageView = (ImageView)localView.findViewById(2131372106);
+        View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970935, null);
+        Object localObject2 = (ImageView)localView.findViewById(2131372276);
+        TextView localTextView1 = (TextView)localView.findViewById(2131372278);
+        TextView localTextView2 = (TextView)localView.findViewById(2131372280);
+        ImageView localImageView = (ImageView)localView.findViewById(2131372279);
         if (!TextUtils.isEmpty(((PendantMarketConfig.EntryConfig)localObject1).jdField_a_of_type_JavaLangString)) {
           ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable(((PendantMarketConfig.EntryConfig)localObject1).jdField_a_of_type_JavaLangString));
         }
@@ -137,23 +137,23 @@ public class AvatarPendantAdapter
               localImageView.setLayoutParams(new LinearLayout.LayoutParams(((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight()));
             }
           }
-          localView.setOnClickListener(new ydk(this, (PendantMarketConfig.EntryConfig)localObject1, m));
-          localView.addOnLayoutChangeListener(new ydl(this));
+          localView.setOnClickListener(new ygr(this, (PendantMarketConfig.EntryConfig)localObject1, m));
+          localView.addOnLayoutChangeListener(new ygs(this));
           if (m != 0) {
-            localView.findViewById(2131372102).setVisibility(0);
+            localView.findViewById(2131372275).setVisibility(0);
           }
           localObject1 = new LinearLayout.LayoutParams(0, AIOUtils.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
           ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView, (ViewGroup.LayoutParams)localObject1);
           m += 1;
           break;
-          localImageView.setImageResource(2130843017);
+          localImageView.setImageResource(2130843116);
           localImageView.setVisibility(0);
           continue;
-          localImageView.setImageResource(2130843025);
+          localImageView.setImageResource(2130843124);
           localImageView.setVisibility(0);
           continue;
-          localImageView.setImageResource(2130838117);
+          localImageView.setImageResource(2130838120);
           localImageView.setVisibility(0);
           continue;
           localImageView.setVisibility(8);
@@ -213,13 +213,13 @@ public class AvatarPendantAdapter
       localObject1 = new AvatarPendantAdapter.ViewHolder(this);
       if (m == 0)
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970889, paramViewGroup, false);
-        paramViewGroup = paramView.findViewById(2131372119);
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970937, paramViewGroup, false);
+        paramViewGroup = paramView.findViewById(2131372292);
         localObject2 = (LinearLayout.LayoutParams)paramViewGroup.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject2).height = this.e;
         paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372120));
-        this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372121);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372293));
+        this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372294);
         b();
         paramView.setTag(localObject1);
         paramViewGroup = (ViewGroup)localObject1;
@@ -239,7 +239,7 @@ public class AvatarPendantAdapter
         if (localAvatarPendantShopSeriesInfo.c.equals("1"))
         {
           paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844097));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844221));
         }
       }
       else
@@ -297,8 +297,8 @@ public class AvatarPendantAdapter
             if (localAvatarPendantShopSeriesInfo.jdField_a_of_type_Boolean) {
               break label1499;
             }
-            paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(2131436734);
-            paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845460);
+            paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(2131436751);
+            paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845588);
           }
           for (;;)
           {
@@ -310,18 +310,18 @@ public class AvatarPendantAdapter
             if (m != 1) {
               break label1562;
             }
-            paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970888, paramViewGroup, false);
-            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131372109));
-            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372110));
-            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372111));
-            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372112));
-            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131372116));
-            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372117));
-            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372118));
-            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372113));
-            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372114));
-            ((AvatarPendantAdapter.ViewHolder)localObject1).d = ((TextView)paramView.findViewById(2131372115));
-            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363937);
+            paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970936, paramViewGroup, false);
+            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131372282));
+            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372283));
+            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372284));
+            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372285));
+            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131372289));
+            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372290));
+            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372291));
+            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372286));
+            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372287));
+            ((AvatarPendantAdapter.ViewHolder)localObject1).d = ((TextView)paramView.findViewById(2131372288));
+            ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363960);
             paramViewGroup = new AvatarPendantAdapter.PendantGridAdapter(this);
             ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setAdapter(paramViewGroup);
             ((AvatarPendantAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentWidgetGridView.setNumColumns(this.i);
@@ -342,19 +342,19 @@ public class AvatarPendantAdapter
             if (localAvatarPendantShopSeriesInfo.c.equals("3"))
             {
               paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-              paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844096));
+              paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844220));
               break label219;
             }
             paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
             break label219;
             paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843025));
+            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843124));
             break label321;
             paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843017));
+            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843116));
             break label321;
             paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844098));
+            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844222));
             break label321;
             File localFile = new File(AvatarPendantUtil.c + "/free.png");
             if (localFile.exists())
@@ -405,10 +405,10 @@ public class AvatarPendantAdapter
             paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
             break label321;
             paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844102));
+            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844226));
             break label321;
             paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844101));
+            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844225));
             break label321;
             paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
             paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
@@ -417,8 +417,8 @@ public class AvatarPendantAdapter
             paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
             break label448;
             label1499:
-            paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(2131436892);
-            paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845462);
+            paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(2131436909);
+            paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845590);
             continue;
             label1522:
             paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);

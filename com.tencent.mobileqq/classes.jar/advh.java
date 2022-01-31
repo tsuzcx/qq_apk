@@ -1,21 +1,95 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.ShieldListObserver;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import com.tencent.mobileqq.util.Utils;
+import java.util.List;
 
 public class advh
-  implements QueryTask.Query
+  extends ShieldListObserver
 {
-  public advh(EmoticonManager paramEmoticonManager) {}
+  public advh(ShareToQQActivity paramShareToQQActivity) {}
   
-  public Emoticon a(Pair paramPair)
+  protected void a(boolean paramBoolean, List paramList)
   {
-    return this.a.a((String)paramPair.first, (String)paramPair.second);
+    if (this.a.a == null)
+    {
+      this.a.finish();
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.h(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k != 0)
+      {
+        paramList = new Intent();
+        paramList.putExtra("isSuccess", paramBoolean);
+        paramList.putExtra("isCancelShield", false);
+        this.a.setResult(-1, paramList);
+      }
+      this.a.finish();
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List paramList)
+  {
+    int k = 0;
+    if (this.a.a == null)
+    {
+      this.a.finish();
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.h(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k != 0)
+      {
+        paramList = new Intent();
+        paramList.putExtra("isSuccess", paramBoolean);
+        paramList.putExtra("isCancelShield", true);
+        this.a.setResult(-1, paramList);
+      }
+      this.a.finish();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advh
  * JD-Core Version:    0.7.0.1
  */

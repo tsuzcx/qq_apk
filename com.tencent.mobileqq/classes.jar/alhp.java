@@ -1,15 +1,38 @@
-import android.util.Pair;
+import android.os.Bundle;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.ApkGetCodeListener;
+import com.tencent.open.downloadnew.DownloaderGetCodeClient;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class alhp
-  implements alhs
+public class alhp
+  implements EIPCResultCallback
 {
-  public Pair a(String paramString)
+  public alhp(DownloaderGetCodeClient paramDownloaderGetCodeClient) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramString = paramString.split(":", 2);
-    if ((paramString == null) || (paramString.length < 2)) {
-      return null;
+    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback...");
+    if (paramEIPCResult == null) {
+      return;
     }
-    return new Pair(paramString[0].trim(), paramString[1].trim());
+    paramEIPCResult = paramEIPCResult.data;
+    if (paramEIPCResult == null)
+    {
+      LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback data is null...");
+      return;
+    }
+    String str1 = paramEIPCResult.getString("PackageName");
+    int i = paramEIPCResult.getInt("VersionCode");
+    String str2 = paramEIPCResult.getString("Code");
+    boolean bool = paramEIPCResult.getBoolean("IsSuccess");
+    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback pkgName|" + str1 + " versionCode|" + i + " isSuc|" + bool + " code|" + str2);
+    if (DownloaderGetCodeClient.a(this.a) != null)
+    {
+      DownloaderGetCodeClient.a(this.a).a(str1, i, str2, bool, null);
+      return;
+    }
+    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback getCodeListener is null");
   }
 }
 

@@ -1,43 +1,29 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import dov.com.qq.im.capture.util.QIMProviderViewBuilder;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.RDMEtraMsgCollector;
+import cooperation.qzone.share.QZoneShareActivity;
 
-class amzs
-  implements Runnable
+public class amzs
+  implements View.OnClickListener
 {
-  amzs(amzr paramamzr, int paramInt, Drawable[] paramArrayOfDrawable) {}
+  public amzs(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
-    {
-      if (QIMProviderContainerView.a(this.jdField_a_of_type_Amzr.a).a(i))
-      {
-        Object localObject = (ImageView)this.jdField_a_of_type_Amzr.a.a.getChildAt(i);
-        ((Integer)((ImageView)localObject).getTag()).intValue();
-        if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i] != null)
-        {
-          ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i]);
-          if ((((ImageView)localObject).getDrawable() instanceof AnimationDrawable))
-          {
-            localObject = (AnimationDrawable)((ImageView)localObject).getDrawable();
-            ((AnimationDrawable)localObject).stop();
-            ((AnimationDrawable)localObject).setOneShot(true);
-            ((AnimationDrawable)localObject).start();
-          }
-        }
-      }
-      i += 1;
-    }
+    RDMEtraMsgCollector.a().a(QZoneShareActivity.a, paramView);
+    this.a.a(false);
+    paramView = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
+    paramView.putExtra("param_only_friends", true);
+    paramView.putExtra("param_min", 1);
+    this.a.startActivityForResult(paramView, 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzs
  * JD-Core Version:    0.7.0.1
  */

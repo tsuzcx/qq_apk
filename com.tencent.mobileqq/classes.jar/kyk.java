@@ -1,18 +1,15 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import mqq.observer.BusinessObserver;
 
-public class kyk
-  implements DialogInterface.OnClickListener
+class kyk
+  implements BusinessObserver
 {
-  public kyk(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, Context paramContext, Uri paramUri, String paramString1, String paramString2) {}
+  kyk(kyj paramkyj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, true, this.b);
+    this.a.a.a();
   }
 }
 

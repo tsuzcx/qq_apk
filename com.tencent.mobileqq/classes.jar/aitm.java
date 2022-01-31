@@ -1,23 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.util.InputMethodUtil;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemBar;
 
 public class aitm
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aitm(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public aitm(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    InputMethodUtil.b(paramView);
-    this.a.getActivity().doOnBackPressed();
+    this.a.a.clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitm
  * JD-Core Version:    0.7.0.1
  */

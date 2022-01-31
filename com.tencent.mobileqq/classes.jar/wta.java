@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class wta
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public wta(CameraPreviewActivity paramCameraPreviewActivity) {}
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public wta(AvatarPendantActivity paramAvatarPendantActivity, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a = null;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  public void run()
+  {
+    if (this.b) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.b.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.setVisibility(8);
+    }
   }
 }
 

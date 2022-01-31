@@ -1,16 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import java.io.File;
+import java.util.ArrayList;
 
 public class oox
-  implements View.OnClickListener
+  extends ExecuteBinResponseCallback
 {
-  public oox(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
+  public oox(FFmpeg paramFFmpeg, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback, File paramFile) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaIoFile.exists()) {
+      this.jdField_a_of_type_JavaIoFile.delete();
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.b.size())
+    {
+      File localFile = new File((String)this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.b.get(i));
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.b = new ArrayList();
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a(paramBoolean);
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.b(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.c(paramString);
   }
 }
 

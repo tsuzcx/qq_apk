@@ -1,18 +1,45 @@
-import com.tencent.component.media.image.ImageManager;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.common.galleryactivity.AnimationLister;
+import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.qphone.base.util.QLog;
 
-class pfc
-  implements Runnable
+public class pfc
+  implements AnimationLister
 {
-  pfc(pfb parampfb) {}
+  public pfc(AbstractImageListScene paramAbstractImageListScene) {}
   
-  public void run()
+  public void b()
   {
-    ImageManager.b(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
+    }
+    if (this.a.a.a() != this.a) {
+      this.a.l();
+    }
+    this.a.b();
+  }
+  
+  public void c()
+  {
+    this.a.c();
+  }
+  
+  public void d()
+  {
+    this.a.d();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
+    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pfc
  * JD-Core Version:    0.7.0.1
  */

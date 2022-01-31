@@ -1,37 +1,65 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
-import com.tencent.mobileqq.app.SQLiteOpenHelper;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public class zmr
-  implements DeviceProfileManager.DPCObserver
+class zmr
+  implements BusinessObserver
 {
-  public void a(boolean paramBoolean)
+  zmr(zmq paramzmq, BubbleDiyFetcher paramBubbleDiyFetcher) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramBoolean) {
-      paramBoolean = StatisticCollector.a(3);
-    }
-    for (;;)
+    try
     {
-      try
+      String str1 = String.valueOf(this.jdField_a_of_type_Zmq.a.b());
+      if ((paramObject instanceof List))
       {
-        QLog.e("QQInitHandler_WalLog", 1, new Object[] { "onDpcPullFinished, isEnable: ", Boolean.valueOf(paramBoolean) });
-        if (paramBoolean) {
-          continue;
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Object localObject = (BubbleDiyEntity)paramObject.next();
+            String str2;
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
+              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
+              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
+            {
+              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
+              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
+            }
+            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
+            {
+              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
+              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject);
+            }
+          }
         }
-        FileUtils.d(SQLiteOpenHelper.a);
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("QQInitHandler", 1, "onDpcPullFinished, get switch error", localThrowable);
-        continue;
-      }
-      DeviceProfileManager.b(this);
       return;
-      FileUtils.a(SQLiteOpenHelper.a);
     }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b();
   }
 }
 

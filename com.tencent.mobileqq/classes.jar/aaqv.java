@@ -1,17 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppInfo.ContextActionAppInfo;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class aaqv
-  implements ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler
+  implements Runnable
 {
-  public aaqv(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  public aaqv(ArkActionAppMgr paramArkActionAppMgr) {}
   
-  public void a(String paramString, Object paramObject, ArrayList paramArrayList)
+  public void run()
   {
-    ArkRecommendLogic.a().post(new aaqw(this, paramArrayList));
+    TreeMap localTreeMap = new TreeMap(new aaqw(this));
+    ArkActionAppMgr.a(this.a, localTreeMap);
+    if (localTreeMap.isEmpty())
+    {
+      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("updateLocalAppInfo, no action need update", new Object[0]));
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    Iterator localIterator = localTreeMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      ArkAppInfo.ContextActionAppInfo localContextActionAppInfo = (ArkAppInfo.ContextActionAppInfo)localIterator.next();
+      aarf localaarf = (aarf)localTreeMap.get(localContextActionAppInfo);
+      localStringBuilder.append(String.format("%s.%s(%d-%d);", new Object[] { localContextActionAppInfo.a, localContextActionAppInfo.b, Long.valueOf(localaarf.a), Long.valueOf(localaarf.b) }));
+    }
+    ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("updateLocalAppInfo, actions=%s", new Object[] { localStringBuilder.toString() }));
+    ArkActionAppMgr.b(this.a, localTreeMap);
   }
 }
 

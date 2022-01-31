@@ -1,7 +1,7 @@
 package cooperation.qzone.util;
 
-import amkh;
-import amki;
+import anam;
+import anan;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
@@ -135,7 +135,7 @@ public class AlbumLibDownloaderUtil
       }
       return;
     }
-    paramDownloadListener = new amkh(this, paramString2, paramDownloadListener, paramString1);
+    paramDownloadListener = new anam(this, paramString2, paramDownloadListener, paramString1);
     paramString2 = jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + paramString2;
     this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager.a(paramString1, paramString2, paramDownloadListener);
   }
@@ -177,7 +177,7 @@ public class AlbumLibDownloaderUtil
   
   public void b()
   {
-    QzoneModuleManager.getInstance().downloadModule("pictureMarkerSo.so", new amki(this));
+    QzoneModuleManager.getInstance().downloadModule("pictureMarkerSo.so", new anan(this));
   }
   
   public void b(Downloader.DownloadListener paramDownloadListener)

@@ -47,8 +47,8 @@ public class TroopStoryListView
     super.setActTAG("list_qqstory_troop");
     FeedSegment localFeedSegment = new FeedSegment(getContext(), this.jdField_a_of_type_AndroidAppActivity, 11, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView, false);
     a(localFeedSegment);
-    a(new PlaceholderSegment(getContext(), "FeedSegment", "暂时没有小视频\n你可以在这里查看群内的小视频", 2130843444, 2130843444));
-    localFeedSegment.e_(true);
+    a(new PlaceholderSegment(getContext(), "FeedSegment", "暂时没有小视频\n你可以在这里查看群内的小视频", 2130843564, 2130843564));
+    localFeedSegment.f_(true);
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);

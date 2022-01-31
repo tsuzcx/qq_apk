@@ -26,8 +26,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import jlq;
-import jlr;
+import jlb;
+import jlc;
 import tencent.im.oidb.cmd0xa75.oidb_0xa75.ReqBody;
 import tencent.im.oidb.cmd0xa75.oidb_0xa75.RspBody;
 
@@ -35,8 +35,8 @@ public class AVRedPacketHandler
   extends BusinessHandler
 {
   public VideoAppInterface a;
-  AVC2CDataHandler.C2CDataHandler jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler = new jlq(this);
-  AVC2CDataHandler.FrameDataHandler jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$FrameDataHandler = new jlr(this);
+  AVC2CDataHandler.C2CDataHandler jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler = new jlb(this);
+  AVC2CDataHandler.FrameDataHandler jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$FrameDataHandler = new jlc(this);
   public boolean a;
   public boolean b;
   

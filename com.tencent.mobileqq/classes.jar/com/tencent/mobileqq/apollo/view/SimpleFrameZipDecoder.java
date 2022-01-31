@@ -9,7 +9,7 @@ import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.io.File;
-import ywo;
+import yzu;
 
 public class SimpleFrameZipDecoder
   implements Handler.Callback
@@ -59,7 +59,7 @@ public class SimpleFrameZipDecoder
         {
           this.jdField_c_of_type_Int = 0;
           this.jdField_b_of_type_Boolean = true;
-          new ywo(this, 0).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
+          new yzu(this, 0).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
         }
       }
       return;
@@ -93,7 +93,7 @@ public class SimpleFrameZipDecoder
       {
         this.jdField_c_of_type_Int = 0;
         this.jdField_b_of_type_Boolean = true;
-        new ywo(this, 0).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
+        new yzu(this, 0).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
       }
       return;
     }
@@ -245,7 +245,7 @@ public class SimpleFrameZipDecoder
       this.jdField_c_of_type_Int = 0;
     }
     if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > this.jdField_c_of_type_Int)) {
-      new ywo(this, this.jdField_c_of_type_Int).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
+      new yzu(this, this.jdField_c_of_type_Int).execute(new Integer[] { Integer.valueOf(this.jdField_c_of_type_Int) });
     }
     for (;;)
     {

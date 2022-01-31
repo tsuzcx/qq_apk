@@ -1,24 +1,29 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.troop.model.VidToGroupInfoPuller;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class omi
-  implements BatchHandlerListPuller.IPullResultCallback
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public omi(VidToGroupInfoPuller paramVidToGroupInfoPuller) {}
+  public omi(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("StoryId list to group info list finish !");
-    if (paramBoolean) {}
-    for (String str = "Every task success";; str = "Some task error")
+    SLog.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      SLog.d("Q.qqstory.net:VidToGroupInfoPuller", str);
-      this.a.a(this.a.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
-      this.a.jdField_a_of_type_Int = 2;
+    default: 
+    case 4098: 
+    case 4099: 
+      do
+      {
+        return;
+      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
+      ScrollFrameSelectBar.a(this.a).b();
       return;
     }
+    this.a.b();
   }
 }
 

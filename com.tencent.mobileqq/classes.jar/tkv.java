@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class tkv
-  extends ConfigObserver
+  implements Runnable
 {
-  public tkv(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public tkv(QQSettingMe paramQQSettingMe, String paramString) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void run()
   {
-    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
-    QQSettingSettingActivity.b(this.a);
+    String str2 = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (!"".equals(str2.trim())) {}
+    }
+    else
+    {
+      str1 = this.jdField_a_of_type_JavaLangString;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new tkw(this, str1));
   }
 }
 

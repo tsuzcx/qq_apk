@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import zop;
+import zrv;
 
 public class UpdateTroop
   extends AsyncStep
@@ -20,7 +20,7 @@ public class UpdateTroop
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new zop(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new zrv(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
     }
     ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(20)).b();

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas;
 
-import ajtm;
-import ajtn;
-import ajto;
+import akht;
+import akhu;
+import akhv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -99,7 +99,7 @@ public class PendantInfo
     this.n = -1;
     this.jdField_a_of_type_ArrayOfJavaLangString = null;
     this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_MqqOsMqqHandler = new ajtm(this, Looper.getMainLooper(), null);
+    this.jdField_a_of_type_MqqOsMqqHandler = new akht(this, Looper.getMainLooper(), null);
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface == null) {
       return;
@@ -623,7 +623,7 @@ public class PendantInfo
     //   650: invokespecial 355	android/graphics/BitmapFactory$Options:<init>	()V
     //   653: astore 4
     //   655: aload_2
-    //   656: checkcast 460	ajto
+    //   656: checkcast 460	akhv
     //   659: astore_2
     //   660: aload 4
     //   662: sipush 320
@@ -648,7 +648,7 @@ public class PendantInfo
     //   712: new 379	java/io/FileInputStream
     //   715: dup
     //   716: aload_2
-    //   717: getfield 461	ajto:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   717: getfield 461	akhv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   720: invokespecial 381	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   723: invokespecial 394	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   726: aconst_null
@@ -750,7 +750,7 @@ public class PendantInfo
     label256:
     for (;;)
     {
-      ThreadManager.post(new ajtn(this, paramInt1, paramLong, paramString), 8, null, true);
+      ThreadManager.post(new akhu(this, paramInt1, paramLong, paramString), 8, null, true);
       return paramString;
       localObject = "static_pendant";
       break;
@@ -1240,9 +1240,9 @@ public class PendantInfo
   {
     try
     {
-      if (((this.jdField_a_of_type_JavaLangObject instanceof ajto)) && (a()))
+      if (((this.jdField_a_of_type_JavaLangObject instanceof akhv)) && (a()))
       {
-        if ((this.jdField_a_of_type_JavaLangObject != null) && (((ajto)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString != null) && (((ajto)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) {
+        if ((this.jdField_a_of_type_JavaLangObject != null) && (((akhv)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString != null) && (((akhv)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) {
           return;
         }
         if (this.jdField_a_of_type_Boolean) {}
@@ -1262,7 +1262,7 @@ public class PendantInfo
       QLog.e("PendantInfo", 1, "decodeBigImage, e=" + MsfSdkUtils.getStackTraceString(localException));
       return;
     }
-    this.jdField_a_of_type_JavaLangObject = new ajto(this, this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangObject = new akhv(this, this.jdField_b_of_type_JavaLangString);
     this.r = 0;
     this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = new PendantInfo.DecodeNextFrameTask(this, this.jdField_a_of_type_JavaLangObject, g);
     long l1 = SystemClock.uptimeMillis();
@@ -1282,7 +1282,7 @@ public class PendantInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.PendantInfo
  * JD-Core Version:    0.7.0.1
  */

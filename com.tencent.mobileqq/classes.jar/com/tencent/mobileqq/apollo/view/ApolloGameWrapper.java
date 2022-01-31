@@ -7,7 +7,7 @@ import com.tencent.mobileqq.activity.aio.tips.TipsManager;
 import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import yuo;
+import yxu;
 
 public class ApolloGameWrapper
 {
@@ -58,7 +58,7 @@ public class ApolloGameWrapper
       paramCheckGameListener.a(true, paramTipsManager);
       return;
     }
-    paramActivity.runOnUiThread(new yuo(paramString, paramActivity, paramCheckGameListener));
+    paramActivity.runOnUiThread(new yxu(paramString, paramActivity, paramCheckGameListener));
   }
   
   public static void b(Activity paramActivity)

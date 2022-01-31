@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import com.tencent.widget.XListView;
 
-class wna
-  implements DialogInterface.OnCancelListener
+public class wna
+  implements Runnable
 {
-  wna(wmy paramwmy) {}
+  public wna(DeviceFragment paramDeviceFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void run()
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.getCount() > 0))
+    {
+      int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.a();
+      if ((i >= 0) && (i < this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.getCount())) {
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
+      }
+    }
+  }
 }
 
 

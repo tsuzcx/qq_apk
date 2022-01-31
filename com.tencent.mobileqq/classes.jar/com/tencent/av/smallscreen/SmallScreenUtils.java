@@ -40,7 +40,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
-import jph;
+import jos;
 import mqq.app.MobileQQ;
 
 public class SmallScreenUtils
@@ -348,7 +348,7 @@ public class SmallScreenUtils
     {
       ((AlphaAnimation)localObject).setDuration(400L);
       localAnimationSet.addAnimation((Animation)localObject);
-      localAnimationSet.setAnimationListener(new jph(paramView, paramBoolean1));
+      localAnimationSet.setAnimationListener(new jos(paramView, paramBoolean1));
       paramView.startAnimation(localAnimationSet);
       paramView.setVisibility(0);
       paramView.setTag(2131362070, Boolean.valueOf(paramBoolean1));

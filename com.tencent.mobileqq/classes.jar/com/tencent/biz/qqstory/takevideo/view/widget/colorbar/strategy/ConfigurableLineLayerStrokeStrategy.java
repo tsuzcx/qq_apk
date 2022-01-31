@@ -93,7 +93,7 @@ public class ConfigurableLineLayerStrokeStrategy
       }
       if (this.jdField_a_of_type_Boolean)
       {
-        localObject = new PersonalityStroke(paramContext, UIUtils.a(paramContext, 17.0F), UIUtils.a(paramContext, 17.0F), paramContext.getResources().getDrawable(2130843549), paramContext.getResources().getDrawable(2130843291), paramContext.getResources().getDrawable(2130843283), 1, 0);
+        localObject = new PersonalityStroke(paramContext, UIUtils.a(paramContext, 17.0F), UIUtils.a(paramContext, 17.0F), paramContext.getResources().getDrawable(2130843670), paramContext.getResources().getDrawable(2130843407), paramContext.getResources().getDrawable(2130843398), 1, 0);
         ((Stroke)localObject).a(UIUtils.a(paramContext, 12.0F), 0);
         paramArrayList.add(localObject);
       }
@@ -114,7 +114,7 @@ public class ConfigurableLineLayerStrokeStrategy
       QLog.e("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke");
     }
     if (this.jdField_a_of_type_Boolean) {
-      paramArrayList.add(new HorizontalStroke(paramContext.getResources().getDrawable(2130843578), 1, 0));
+      paramArrayList.add(new HorizontalStroke(paramContext.getResources().getDrawable(2130843699), 1, 0));
     }
     Iterator localIterator;
     Object localObject1;
@@ -178,7 +178,7 @@ public class ConfigurableLineLayerStrokeStrategy
             i = Integer.valueOf(((PtvTemplateManager.DoodleInfo)localObject4).doodleId).intValue();
             if ("doodle_image_family".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
             {
-              localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842405), 2, i);
+              localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842452), 2, i);
               localObject2 = localObject3;
               localObject3 = localObject1;
               localObject1 = localObject4;
@@ -196,7 +196,7 @@ public class ConfigurableLineLayerStrokeStrategy
       break;
       if ("doodle_image_mouth".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
       {
-        localHorizontalStroke1 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842406), 2, i);
+        localHorizontalStroke1 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842453), 2, i);
         localObject4 = localObject1;
         localObject1 = localObject2;
         localObject2 = localObject3;
@@ -204,21 +204,21 @@ public class ConfigurableLineLayerStrokeStrategy
       }
       else if ("doodle_image_xin".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
       {
-        localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842407), 2, i);
+        localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842454), 2, i);
         localObject3 = localObject1;
         localObject1 = localObject2;
         localObject2 = localObject4;
       }
       else if ("doodle_highlighter".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
       {
-        localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842404), 2, i);
+        localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842451), 2, i);
         localObject1 = localObject2;
         localObject2 = localObject3;
         localObject3 = localObject4;
       }
       else if ("doodle_fireworks".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
       {
-        localHorizontalStroke2 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842402), 2, i);
+        localHorizontalStroke2 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842449), 2, i);
         localObject4 = localObject1;
         localObject1 = localObject2;
         localObject2 = localObject3;
@@ -244,7 +244,7 @@ public class ConfigurableLineLayerStrokeStrategy
           paramArrayList.add(new HorizontalStroke(paramContext.getResources().getDrawable(HorizontalStroke.b[i]), 0, HorizontalStroke.a[i]));
           i += 1;
         }
-        paramArrayList.add(new HorizontalStroke(paramContext.getResources().getDrawable(2130843571), 0, -1));
+        paramArrayList.add(new HorizontalStroke(paramContext.getResources().getDrawable(2130843692), 0, -1));
         int k = 0;
         paramContext = jdField_a_of_type_ArrayOfJavaLangString;
         int m = paramContext.length;

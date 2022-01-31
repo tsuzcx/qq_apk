@@ -1,26 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdateEvent;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin;
 
 public class andc
-  extends QQUIEventReceiver
+  implements Runnable
 {
-  public andc(@NonNull EditVideoDoodle paramEditVideoDoodle)
-  {
-    super(paramEditVideoDoodle);
-  }
+  public andc(QzoneRecommedPhotoJsPlugin paramQzoneRecommedPhotoJsPlugin) {}
   
-  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiUpdateEvent paramDoodleEmojiUpdateEvent) {}
-  
-  public Class acceptEventClass()
+  public void run()
   {
-    return DoodleEmojiManager.DoodleEmojiUpdateEvent.class;
+    RemoteHandleManager.a().a().q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andc
  * JD-Core Version:    0.7.0.1
  */

@@ -175,15 +175,15 @@ public class e
     //   324: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   327: aconst_null
     //   328: areturn
-    //   329: new 129	java/util/zip/ZipFile
+    //   329: new 129	com/tencent/commonsdk/zip/QZipFile
     //   332: dup
     //   333: aload_1
-    //   334: invokespecial 130	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   334: invokespecial 130	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
     //   337: astore 5
     //   339: aload 5
     //   341: astore_0
     //   342: aload 5
-    //   344: invokevirtual 134	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   344: invokevirtual 134	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   347: astore 6
     //   349: aload 5
     //   351: astore_0
@@ -209,7 +209,7 @@ public class e
     //   397: aload 5
     //   399: aload 7
     //   401: aload 4
-    //   403: invokestatic 160	com/tencent/mqp/app/sec/e:s	(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;Ljava/lang/String;)Z
+    //   403: invokestatic 160	com/tencent/mqp/app/sec/e:s	(Lcom/tencent/commonsdk/zip/QZipFile;Ljava/util/zip/ZipEntry;Ljava/lang/String;)Z
     //   406: pop
     //   407: goto -58 -> 349
     //   410: astore_0
@@ -224,7 +224,7 @@ public class e
     //   426: aload 4
     //   428: ifnull +8 -> 436
     //   431: aload 4
-    //   433: invokevirtual 161	java/util/zip/ZipFile:close	()V
+    //   433: invokevirtual 161	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   436: new 87	java/io/File
     //   439: dup
     //   440: aload_1
@@ -264,7 +264,7 @@ public class e
     //   510: aload 5
     //   512: ifnull +8 -> 520
     //   515: aload 5
-    //   517: invokevirtual 161	java/util/zip/ZipFile:close	()V
+    //   517: invokevirtual 161	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   520: new 87	java/io/File
     //   523: dup
     //   524: aload_1
@@ -319,7 +319,7 @@ public class e
     //   628: aload_0
     //   629: ifnull +7 -> 636
     //   632: aload_0
-    //   633: invokevirtual 161	java/util/zip/ZipFile:close	()V
+    //   633: invokevirtual 161	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   636: new 87	java/io/File
     //   639: dup
     //   640: aload_1
@@ -423,7 +423,7 @@ public class e
   }
   
   /* Error */
-  private static boolean s(java.util.zip.ZipFile paramZipFile, java.util.zip.ZipEntry paramZipEntry, String paramString)
+  private static boolean s(com.tencent.commonsdk.zip.QZipFile paramQZipFile, java.util.zip.ZipEntry paramZipEntry, String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -432,7 +432,7 @@ public class e
     //   4: istore 5
     //   6: aload_0
     //   7: aload_1
-    //   8: invokevirtual 170	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   8: invokevirtual 170	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   11: astore_0
     //   12: new 66	java/io/FileOutputStream
     //   15: dup
@@ -562,7 +562,7 @@ public class e
     //   219: goto -163 -> 56
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	222	0	paramZipFile	java.util.zip.ZipFile
+    //   0	222	0	paramQZipFile	com.tencent.commonsdk.zip.QZipFile
     //   0	222	1	paramZipEntry	java.util.zip.ZipEntry
     //   0	222	2	paramString	String
     //   32	9	3	i	int
@@ -1123,7 +1123,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mqp.app.sec.e
  * JD-Core Version:    0.7.0.1
  */

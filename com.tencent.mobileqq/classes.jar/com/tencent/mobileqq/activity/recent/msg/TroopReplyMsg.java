@@ -7,7 +7,7 @@ public class TroopReplyMsg
 {
   public TroopReplyMsg(Context paramContext)
   {
-    this.a = paramContext.getString(2131430178);
+    this.a = paramContext.getString(2131430195);
   }
 }
 

@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.FaceUIController;
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aadj
-  implements Runnable
+  implements ARTipsManager.BaikeClickListener
 {
-  public aadj(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
+  public aadj(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
   
-  public void run()
+  public void a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
+    if (QLog.isColorLevel()) {
+      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
     }
-    for (;;)
-    {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARCloudControlSo", true, 0L, 0L, localHashMap, "");
-      return;
-      localHashMap.put("result", "1");
-    }
+    ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.a.a();
   }
 }
 

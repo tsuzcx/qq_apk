@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fd1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020439" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip">
-        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fd2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:maxLines="1" android:singleLine="true" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0571" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fd3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="10.0dip" android:maxLines="1" android:singleLine="true" />
-    </LinearLayout>
+    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0578" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0861" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingBottom="5.0dip" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff4" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04080c" />
 </LinearLayout>

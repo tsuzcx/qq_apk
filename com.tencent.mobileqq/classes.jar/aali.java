@@ -1,16 +1,24 @@
-class aali
-  implements aalq
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
+import com.tencent.mobileqq.arcard.ARCardUtils;
+
+public class aali
+  implements Runnable
 {
-  aali(aalb paramaalb, aalq paramaalq) {}
+  public aali(ARBlessWordFragment paramARBlessWordFragment, Bitmap paramBitmap, Runnable paramRunnable) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_Aalq.a(paramBoolean);
+    ARBlessWordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARBlessWordFragment, ARCardUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, null, false));
+    ARBlessWordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARBlessWordFragment, false);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aali
  * JD-Core Version:    0.7.0.1
  */

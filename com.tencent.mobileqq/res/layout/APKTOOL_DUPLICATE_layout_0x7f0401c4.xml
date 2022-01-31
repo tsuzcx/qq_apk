@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb2" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b9b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03a2" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a051a" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="加载中..." />
-</RelativeLayout>
+    <SurfaceView android:layout_width="0.0dip" android:layout_height="0.0dip" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb3" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb4" android:background="#80000000" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb5" android:visibility="invisible" android:layout_width="71.0dip" android:layout_height="45.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+        <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb6" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020066" android:layout_width="50.0dip" android:layout_height="24.0dip" android:layout_margin="10.0dip" android:text="发送" />
+    </RelativeLayout>
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb7" android:layout_width="fill_parent" android:layout_height="3.0dip" android:maxHeight="2.0dip" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020065" android:minHeight="2.0dip" android:layout_alignParentBottom="true" style="@android:style/Widget.ProgressBar.Horizontal" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb8" android:visibility="invisible" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb9" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_margin="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020061" android:scaleType="fitXY" android:contentDescription="静音" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.hotpic.CircleProgressView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bba" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+</com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout>

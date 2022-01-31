@@ -1,157 +1,79 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.VasExtensionObserver;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class tqu
-  extends SubAccountBindObserver
+  extends VasExtensionObserver
 {
-  public tqu(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public tqu(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  protected void d(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "SubAccountBindActivity.onBindSubAccount() isSucc=" + paramBoolean);
-      if (paramSubAccountBackProtocData != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubAccountBindActivity.onBindSubAccount() mainAccount=" + paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString + " subAccount=" + paramSubAccountBackProtocData.c + " errType=" + paramSubAccountBackProtocData.jdField_a_of_type_Int + " errMsg=" + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
-      }
+    paramObject = (Bundle)paramObject;
+    long l = paramObject.getLong("pendantId");
+    String str = paramObject.getString("uin");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.BabyQ", 2, "handlePendantAuth isSuccess:" + paramBoolean + " pendantId:" + l + " uin:" + str);
     }
-    this.a.c();
-    Object localObject2;
+    if ((l == -1L) || (str == null)) {
+      return;
+    }
     if (paramBoolean)
     {
-      this.a.c(this.a.getString(2131436356));
-      SubAccountAssistantForward.a(this.a.app);
-      this.a.getActivity().setTitle("");
-      this.a.finish();
-      if ((QLog.isColorLevel()) && (paramSubAccountBackProtocData != null))
+      FriendsManager localFriendsManager = (FriendsManager)this.a.app.getManager(50);
+      ExtensionInfo localExtensionInfo = localFriendsManager.a(str);
+      paramObject = localExtensionInfo;
+      if (localExtensionInfo == null)
       {
-        localObject2 = new StringBuilder().append("onBindSubAccount:");
-        if (!paramBoolean) {
-          break label873;
-        }
+        paramObject = new ExtensionInfo();
+        paramObject.uin = str;
       }
+      paramObject.pendantId = l;
+      paramObject.timestamp = System.currentTimeMillis();
+      localFriendsManager.a(paramObject);
+      if (!TextUtils.isEmpty(this.a.f)) {
+        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      }
+      this.a.finish();
+      return;
     }
-    label873:
-    for (Object localObject1 = "..success";; localObject1 = "...failed..")
+    int i = paramObject.getInt("result");
+    if (NetworkUtil.d(this.a))
     {
-      QLog.d("SUB_ACCOUNT", 2, (String)localObject1 + " ...errorMsg = " + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString + "...errorType = " + paramSubAccountBackProtocData.jdField_a_of_type_Int);
-      do
-      {
-        return;
-      } while (paramSubAccountBackProtocData == null);
-      switch (paramSubAccountBackProtocData.jdField_a_of_type_Int)
+      paramObject = "4";
+      switch (i)
       {
       default: 
-        localObject2 = this.a.getString(2131436337);
-        localObject1 = localObject2;
-        if (paramSubAccountBackProtocData != null)
-        {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString)) {
-            localObject1 = paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString;
-          }
-        }
-        this.a.b((String)localObject1);
-        break;
-      case 1002: 
-        SubAccountControll.a(this.a.app, this.a);
-        break;
-      case 1003: 
-        this.a.b(this.a.getString(2131436334));
-        break;
-      case 1004: 
-        switch (paramSubAccountBackProtocData.jdField_b_of_type_Int)
-        {
-        default: 
-          localObject2 = paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString;
-          localObject1 = localObject2;
-          if (TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onBindSubAccount:bind error happen but msg is null shit, ");
-            }
-            localObject1 = this.a.getString(2131436337);
-          }
-          this.a.b((String)localObject1);
-          break;
-        case 1200: 
-        case 1214: 
-        case 1215: 
-          localObject1 = this.a.getString(2131436323);
-          localObject2 = this.a.getString(2131436335);
-          this.a.a((String)localObject1, (String)localObject2, new tqv(this, paramSubAccountBackProtocData));
-          break;
-        case 1218: 
-          if (!TextUtils.isEmpty(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131434117);
-          this.a.b((String)localObject1);
-          break;
-        case 1232: 
-          if (!TextUtils.isEmpty(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131436297);
-          this.a.b((String)localObject1);
-          break;
-        case 1233: 
-          if (!TextUtils.isEmpty(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131436298);
-          this.a.b((String)localObject1);
-          break;
-        case 1240: 
-          if (!TextUtils.isEmpty(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131436299);
-          this.a.b((String)localObject1);
-          break;
-        case 1241: 
-          if (!TextUtils.isEmpty(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131436300);
-          this.a.b((String)localObject1);
-          break;
-        case 1242: 
-          if (!TextUtils.isEmpty(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131436301);
-          this.a.b((String)localObject1);
-        }
-        break;
-      case 1011: 
-        localObject2 = this.a.getString(2131436337);
-        localObject1 = localObject2;
-        if (paramSubAccountBackProtocData != null)
-        {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString)) {
-            localObject1 = paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString;
-          }
-        }
-        this.a.b((String)localObject1);
-        localObject1 = new Intent(this.a, SubLoginActivity.class);
-        ((Intent)localObject1).putExtra("subuin", paramSubAccountBackProtocData.c);
-        ((Intent)localObject1).putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
-        this.a.startActivity((Intent)localObject1);
-        break;
+        label225:
+        i = -1;
       }
+    }
+    for (;;)
+    {
+      if ((i != -1) && (QLog.isColorLevel())) {
+        QLog.e("Q.BabyQ", 2, "handlePendantAuth error:" + i + paramObject);
+      }
+      QQToast.a(this.a.app.getApp(), 1, "头像挂件使用失败", 0).a();
+      break;
+      paramObject = "3";
+      break label225;
+      i = 2131436910;
+      continue;
+      paramObject = "0";
+      i = 2131436911;
+      continue;
+      paramObject = "1";
+      i = 2131436912;
+      continue;
+      paramObject = "2";
+      i = -1;
     }
   }
 }

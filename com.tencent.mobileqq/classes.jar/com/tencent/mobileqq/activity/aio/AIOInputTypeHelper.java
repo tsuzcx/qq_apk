@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import ugj;
+import ujj;
 
 public class AIOInputTypeHelper
 {
@@ -77,7 +77,7 @@ public class AIOInputTypeHelper
     if (a)
     {
       a = false;
-      ThreadManager.getFileThreadHandler().post(new ugj(paramQQAppInterface));
+      ThreadManager.getFileThreadHandler().post(new ujj(paramQQAppInterface));
       boolean bool2 = true;
       bool1 = bool2;
       if (QLog.isColorLevel())

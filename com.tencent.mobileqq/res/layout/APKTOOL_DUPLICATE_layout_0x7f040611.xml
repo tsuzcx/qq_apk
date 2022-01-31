@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb1" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cae" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021165" android:visibility="visible" android:layout_width="204.0dip" android:layout_height="35.5dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02113a" android:paddingBottom="14.0dip" android:clipChildren="false" android:layout_width="300.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:textColor="#ff212226" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dc3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:text="来自QIM的新朋友" />
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="19.0dip">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb3" android:layout_width="56.0dip" android:layout_height="56.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02108f" />
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb3" android:layout_centerVertical="true">
-                <TextView android:textSize="17.0dip" android:textColor="#ff212226" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ca2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="安妮儿" android:maxLines="1" />
-                <TextView android:textSize="11.0dip" android:textColor="#ffa7a7a7" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="更新x个视频" android:maxLines="1" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1ca2" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0a1ca2" />
-            </LinearLayout>
-        </RelativeLayout>
-        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="9.0dip" />
-        <TextView android:textSize="15.0dip" android:textColor="#ff212226" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="14.0dip" android:text="你们有%s位共同好友，%w个共同群sfsdfdsfdsfdsfsdfdsfsdfdssdfdsfdsfsdfdsfdssdfsdfsdfdsfsdfsdsdfdsfdsfdsfdsfsd" />
-        <Button android:textSize="17.0dip" android:textColor="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021160" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a08da" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021196" android:clickable="true" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="14.0dip" android:text="OK" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1caf" android:layout_width="204.0dip" android:layout_height="32.0dip" android:layout_marginTop="3.5dip">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" />
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" />
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" />
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" />
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:textColorHighlight="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10c9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="8.0dip" android:text="等人参与 >" />
     </LinearLayout>
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ba4" android:layout_width="92.0dip" android:layout_height="37.0dip" android:layout_marginTop="-18.0dip" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb2" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="DebugText" />
+</FrameLayout>

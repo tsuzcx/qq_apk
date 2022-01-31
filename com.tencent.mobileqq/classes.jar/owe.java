@@ -1,52 +1,46 @@
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.utils.DisplayUtils;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.intervideo.IVPluginEvtListener;
 
 public class owe
-  implements URLDrawable.URLDrawableListener
+  implements IVPluginEvtListener
 {
-  public owe(TroopNewGuidePopWindow paramTroopNewGuidePopWindow, DisplayMetrics paramDisplayMetrics) {}
+  public owe(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(Activity paramActivity) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.c = false;
+    paramString1 = new Bundle();
+    paramString1.putInt("errCode", paramInt);
+    paramString1.putString("desc", paramString2);
+    paramString1.putInt("msg", 92);
+    this.a.a(92, paramString1);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(String paramString1, String paramString2, Bundle paramBundle) {}
+  
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.c = false;
+    paramString = new Bundle();
+    paramString.putInt("state", 1);
+    paramString.putInt("msg", 91);
+    this.a.a(91, paramString);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public void c(String paramString) {}
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void d(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-    float f1 = paramURLDrawable.getIntrinsicHeight();
-    float f2 = paramURLDrawable.getIntrinsicWidth();
-    paramURLDrawable = this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = 0;
-    if (f2 != 0.0F) {
-      if (f1 <= DisplayUtils.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F)) {
-        break label109;
-      }
-    }
-    label109:
-    for (i = (int)DisplayUtils.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F);; i = (int)((this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - DisplayUtils.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 60.0F)) * (f1 / f2)))
-    {
-      if (i > 0)
-      {
-        paramURLDrawable.height = i;
-        this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramURLDrawable);
-      }
-      return;
-    }
+    paramString = new Bundle();
+    paramString.putInt("errCode", 0);
+    paramString.putInt("msg", 92);
+    this.a.a(92, paramString);
   }
 }
 

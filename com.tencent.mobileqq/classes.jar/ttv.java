@@ -1,32 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
-public class ttv
-  implements Runnable
+class ttv
+  implements DialogInterface.OnClickListener
 {
-  public ttv(TroopClassChoiceActivity.GetClassChoiceCallBack paramGetClassChoiceCallBack) {}
+  ttv(ttu paramttu, SubAccountBackProtocData paramSubAccountBackProtocData) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TextUtils.isEmpty(this.a.a.jdField_a_of_type_JavaLangString)) {
-      this.a.a.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this.a.a).a();
-    }
-    for (;;)
+    if ((paramInt == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c)))
     {
-      TroopClassChoiceActivity.a(this.a.a).notifyDataSetChanged();
-      return;
-      this.a.a.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this.a.a).a(this.a.a.jdField_a_of_type_JavaLangString);
-      if ((this.a.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        GroupCatalogBean localGroupCatalogBean = (GroupCatalogBean)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) {
-          this.a.a.setTitle(localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.jdField_a_of_type_JavaLangString);
-        }
-      }
+      paramDialogInterface = new Intent(this.jdField_a_of_type_Ttu.a, SubLoginActivity.class);
+      paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c);
+      paramDialogInterface.putExtra("fromWhere", this.jdField_a_of_type_Ttu.a.b);
+      this.jdField_a_of_type_Ttu.a.startActivity(paramDialogInterface);
     }
   }
 }

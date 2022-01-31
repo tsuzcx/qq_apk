@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abig;
+import abph;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -104,7 +104,7 @@ public class CampusCircleManager
       }
       return;
     }
-    ThreadManager.post(new abig(this, paramCampusTopicReq), 8, null, true);
+    ThreadManager.post(new abph(this, paramCampusTopicReq), 8, null, true);
   }
   
   public void a(List paramList, int paramInt, String paramString)
@@ -170,7 +170,7 @@ public class CampusCircleManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCircleManager
  * JD-Core Version:    0.7.0.1
  */

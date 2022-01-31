@@ -1,42 +1,48 @@
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.HealthPathTracePlugin;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class akjx
-  implements Runnable
+  extends Handler
 {
-  public akjx(MSFIntChkStrike paramMSFIntChkStrike, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, String paramString3, String paramString4, DialogInterface.OnDismissListener paramOnDismissListener) {}
-  
-  public void run()
+  public akjx(PathTraceManager paramPathTraceManager, Looper paramLooper)
   {
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-      if (localQQCustomDialog == null) {
-        return;
-      }
-      localQQCustomDialog.setNegativeButton(this.c, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-      localQQCustomDialog.setPositiveButton(this.d, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-      localQQCustomDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-      localQQCustomDialog.setCancelable(false);
-      localQQCustomDialog.show();
     }
-    catch (Exception localException)
+    for (;;)
     {
-      for (;;)
+      return;
+      try
       {
-        localException.printStackTrace();
+        paramMessage = (JSONObject)paramMessage.obj;
+        String str = paramMessage.getString("callback");
+        if (this.a.a != null)
+        {
+          HealthPathTracePlugin localHealthPathTracePlugin = (HealthPathTracePlugin)this.a.a.get();
+          if (localHealthPathTracePlugin != null)
+          {
+            localHealthPathTracePlugin.callJs(str, new String[] { paramMessage.toString() });
+            return;
+          }
+        }
       }
+      catch (Exception paramMessage) {}
     }
-    MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,22 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
 
-public class noj
-  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
+public final class noj
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  public noj(VideoViewTVKImpl paramVideoViewTVKImpl) {}
-  
-  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onComplete(String arg1, String paramString2)
   {
-    SLog.a("VideoViewTVKImpl", "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
+    SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo onComplete, %s", paramString2);
+    synchronized (TVKPreloader.a())
+    {
+      SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo onComplete, preloadItem = %s, downloadString = %s,  cost %d ms", TVKPreloader.a(), paramString2, Long.valueOf(SystemClock.uptimeMillis() - TVKPreloader.a()));
+      paramString2 = TVKPreloader.a();
+      TVKPreloader.a().post(new nok(this, paramString2));
+      return;
+    }
   }
 }
 

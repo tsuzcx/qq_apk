@@ -25,26 +25,26 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import tqt;
-import tqu;
-import tqw;
-import tqz;
-import tra;
+import ttt;
+import ttu;
+import ttw;
+import ttz;
+import tua;
 
 public class SubAccountBindActivity
   extends SubAccountBaseActivity
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new tqw(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ttw(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tra(this);
-  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new tqu(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tua(this);
+  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new ttu(this);
   private List jdField_a_of_type_JavaUtilList;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tqt(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new ttt(this);
   View.OnClickListener b;
   
   public SubAccountBindActivity()
   {
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new tqz(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new ttz(this);
   }
   
   private SimpleAccount a(String paramString)
@@ -117,10 +117,10 @@ public class SubAccountBindActivity
         if (localSimpleAccount == null) {
           break;
         }
-        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131362701);
-        TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131362736);
-        TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131362737);
-        localObject1 = (ImageView)((View)localObject1).findViewById(2131362738);
+        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131362719);
+        TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131362754);
+        TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131362755);
+        localObject1 = (ImageView)((View)localObject1).findViewById(2131362756);
         localObject2 = ContactUtils.j(this.app, localSimpleAccount.getUin());
         localObject1 = localObject2;
         if (localSimpleAccount.isLogined()) {
@@ -169,7 +169,7 @@ public class SubAccountBindActivity
       if (this.jdField_a_of_type_JavaUtilList.get(i) == null)
       {
         localObject = getLayoutInflater().inflate(2130968589, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        ((TextView)((View)localObject).findViewById(2131362732)).setText(2131436307);
+        ((TextView)((View)localObject).findViewById(2131362750)).setText(2131436324);
         ((View)localObject).setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
         ((View)localObject).setTag(null);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
@@ -180,10 +180,10 @@ public class SubAccountBindActivity
         break;
         localObject = getLayoutInflater().inflate(2130968590, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
         if (i == 0) {
-          ((View)localObject).setBackgroundResource(2130838631);
+          ((View)localObject).setBackgroundResource(2130838635);
         }
         ((View)localObject).setTag(Integer.valueOf(i));
-        ((ImageView)((View)localObject).findViewById(2131362701)).setScaleType(ImageView.ScaleType.FIT_CENTER);
+        ((ImageView)((View)localObject).findViewById(2131362719)).setScaleType(ImageView.ScaleType.FIT_CENTER);
         ((View)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
       }
@@ -195,10 +195,10 @@ public class SubAccountBindActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130971573);
-    setTitle(2131436292);
-    setContentBackgroundResource(2130838210);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362741));
+    super.setContentView(2130971621);
+    setTitle(2131436309);
+    setContentBackgroundResource(2130838214);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362759));
     if (!a(true)) {
       return false;
     }

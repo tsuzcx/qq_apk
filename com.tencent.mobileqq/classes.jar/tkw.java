@@ -1,25 +1,28 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Date;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.util.Utils;
 
-public class tkw
+class tkw
   implements Runnable
 {
-  public tkw(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  tkw(tkv paramtkv, String paramString) {}
   
   public void run()
   {
-    Object localObject = this.a.getSharedPreferences("sp_qs_settings", 0);
-    long l1 = ((SharedPreferences)localObject).getLong("qsec_status_update_last_time" + this.a.app.getCurrentAccountUin(), 0L);
-    long l2 = ((SharedPreferences)localObject).getLong("qsec_status_expired_time" + this.a.app.getCurrentAccountUin(), 3600L);
-    if (new Date().getTime() - l1 <= l2 * 1000L)
-    {
-      localObject = ((SharedPreferences)localObject).getString("qsec_status_tip_text" + this.a.app.getCurrentAccountUin(), "");
-      this.a.runOnUiThread(new tkx(this, (String)localObject));
-      return;
+    if (this.jdField_a_of_type_Tkv.a.a.getTop() > QQSettingMe.a(this.jdField_a_of_type_Tkv.a).getBottom()) {
+      this.jdField_a_of_type_Tkv.a.a.setMaxWidth(QQSettingMe.a(this.jdField_a_of_type_Tkv.a) - QQSettingMe.a(this.jdField_a_of_type_Tkv.a).getWidth());
     }
-    QQSettingSettingActivity.c(this.a);
+    for (;;)
+    {
+      if (!Utils.a(this.jdField_a_of_type_JavaLangString, QQSettingMe.a(this.jdField_a_of_type_Tkv.a)))
+      {
+        QQSettingMe.a(this.jdField_a_of_type_Tkv.a, this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Tkv.a.a.setText(QQSettingMe.a(this.jdField_a_of_type_Tkv.a));
+      }
+      return;
+      this.jdField_a_of_type_Tkv.a.a.setMaxWidth(QQSettingMe.a(this.jdField_a_of_type_Tkv.a));
+    }
   }
 }
 

@@ -1,27 +1,18 @@
-import com.tencent.av.VideoController;
+import com.tencent.av.app.AvAddFriendService;
 
 public class jee
-  implements Runnable
 {
-  public jee(VideoController paramVideoController1, VideoController paramVideoController2, String paramString, int paramInt, boolean paramBoolean, Runnable paramRunnable) {}
+  public int a;
+  public int b = 0;
   
-  public void run()
+  public jee(AvAddFriendService paramAvAddFriendService)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     jee
  * JD-Core Version:    0.7.0.1
  */

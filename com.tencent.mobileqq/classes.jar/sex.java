@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.vas.VasExtensionObserver;
 
-class sex
-  implements Runnable
+public class sex
+  extends VasExtensionObserver
 {
-  sex(ses paramses) {}
+  public sex(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.a();
-      this.a.a.a.a(-1, null);
+    if (paramBoolean) {
+      this.a.a(true);
     }
   }
 }

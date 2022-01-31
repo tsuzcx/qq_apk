@@ -1,32 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.smooth.ItemManager;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnPreparedListener;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
 
 public class aezg
-  implements AdapterView.OnItemSelectedListener
+  implements IMediaPlayer.OnPreparedListener
 {
-  private aezg(ItemManager paramItemManager) {}
+  public aezg(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnPreparedListener paramOnPreparedListener) {}
   
-  public void a(AdapterView paramAdapterView)
+  public void a_(IMediaPlayer paramIMediaPlayer)
   {
-    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.jdField_a_of_type_Aezc.a();
-    if (localOnItemSelectedListener != null) {
-      localOnItemSelectedListener.a(paramAdapterView);
-    }
-  }
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (this.a.jdField_a_of_type_Int != 0)
-    {
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a();
-    }
-    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.jdField_a_of_type_Aezc.a();
-    if (localOnItemSelectedListener != null) {
-      localOnItemSelectedListener.b(paramAdapterView, paramView, paramInt, paramLong);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnPreparedListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl);
   }
 }
 

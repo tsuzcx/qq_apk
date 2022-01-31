@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class rzb
-  extends QvipSpecialCareObserver
+  extends ProxyObserver
 {
-  public rzb(ChatSettingActivity paramChatSettingActivity) {}
+  public rzb(ChatHistory paramChatHistory) {}
   
-  public void a(Object paramObject)
+  public void a()
   {
-    if (paramObject != null) {
-      ((Integer)paramObject).intValue();
-    }
+    this.a.a(11, false);
   }
 }
 

@@ -1,26 +1,25 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.widget.ActionSheet;
 
 public class vsh
-  implements AsyncBack
+  implements View.OnClickListener
 {
-  public vsh(HotChatPie paramHotChatPie) {}
+  public vsh(DiscussChatPie paramDiscussChatPie, String paramString) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
+    if ((DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie) != null) && (DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie).isShowing())) {
+      DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie).dismiss();
     }
-    paramString = this.a;
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
-    for (boolean bool = true;; bool = false)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.a.isShowing()))
     {
-      HotChatPie.b(paramString, bool);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.a.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.a = null;
     }
+    DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie, this.jdField_a_of_type_JavaLangString);
   }
 }
 

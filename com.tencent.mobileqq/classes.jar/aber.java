@@ -1,16 +1,35 @@
-import android.animation.AnimatorSet;
-import com.tencent.mobileqq.bubble.BubbleNewAIOAnim;
+import com.tencent.mobileqq.armap.Sound;
 
 public class aber
-  implements Runnable
 {
-  public aber(BubbleNewAIOAnim paramBubbleNewAIOAnim) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void run()
+  public aber(Sound paramSound, int paramInt1, int paramInt2)
   {
-    if (this.a.a != null) {
-      this.a.a.start();
-    }
+    this.b = paramInt1;
+    this.c = paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return this.c == 1;
+  }
+  
+  public boolean b()
+  {
+    return this.c == 2;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 3;
+  }
+  
+  public boolean d()
+  {
+    return this.c == 4;
   }
 }
 

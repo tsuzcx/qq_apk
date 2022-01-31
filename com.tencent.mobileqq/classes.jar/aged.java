@@ -1,22 +1,18 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.profile.view.ShakeImageView;
+import com.tencent.mobileqq.olympic.OlympicManager;
 
 public class aged
   implements Runnable
 {
-  public aged(ShakeImageView paramShakeImageView) {}
+  public aged(OlympicManager paramOlympicManager) {}
   
   public void run()
   {
-    ShakeImageView.a(this.a, ShakeImageView.a(this.a).getDefaultSensor(9));
-    if (ShakeImageView.a(this.a) != null) {
-      ShakeImageView.a(this.a).registerListener(this.a, ShakeImageView.a(this.a), 1);
-    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aged
  * JD-Core Version:    0.7.0.1
  */

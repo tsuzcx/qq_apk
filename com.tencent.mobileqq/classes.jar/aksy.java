@@ -1,68 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import mqq.os.MqqHandler;
-import oicq.wlogin_sdk.tools.util;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
 
-class aksy
-  implements Runnable
+public class aksy
+  implements View.OnTouchListener
 {
-  aksy(aksx paramaksx, byte[] paramArrayOfByte, String paramString) {}
+  public aksy(ClearableEditText paramClearableEditText) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool2 = false;
-    this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
+    int i = 1;
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    label107:
     for (;;)
     {
-      boolean bool3;
-      try
+      return false;
+      if (paramMotionEvent.getAction() == 1)
       {
-        Object localObject = this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Aksx.jdField_a_of_type_AndroidOsBundle);
-        ThreadManager.getSubThreadHandler().post(new aksz(this, (DownloadInfo)localObject));
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0))
+        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
+        for (;;)
         {
-          localObject = new StringBuilder();
-          this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + util.buf_to_string(this.jdField_a_of_type_ArrayOfByte));
-          this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d = this.jdField_a_of_type_Aksx.jdField_a_of_type_Long;
-        }
-        LogUtility.a("MyAppApi", "OpenSDK startToAppDetail param SNGAppId=" + this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
-        LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
-        if (this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
-        {
-          ((TMAssistantCallYYB_V1)this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.jdField_a_of_type_Aksx.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Aksx.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aksx.b);
-          return;
-        }
-        int i = this.jdField_a_of_type_Aksx.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
-        int j = this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Aksx.jdField_a_of_type_AndroidOsBundle);
-        boolean bool1 = this.jdField_a_of_type_Aksx.jdField_a_of_type_Boolean;
-        bool3 = this.jdField_a_of_type_Aksx.b;
-        if (i == 3)
-        {
-          bool1 = false;
-          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.jdField_a_of_type_Aksx.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aksx.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, bool1, bool2, j);
-          return;
+          if (i == 0) {
+            break label107;
+          }
+          this.a.setText("");
+          this.a.setClearButtonVisible(false);
+          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener == null) {
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener.a();
+          return false;
+          i = 0;
         }
       }
-      catch (Exception localException)
-      {
-        LogUtility.b("MyAppApi", "startToAppDetail err", localException);
-        return;
-      }
-      bool2 = bool3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aksy
  * JD-Core Version:    0.7.0.1
  */

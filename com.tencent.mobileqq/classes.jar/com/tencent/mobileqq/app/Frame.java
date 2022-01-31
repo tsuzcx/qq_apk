@@ -22,8 +22,6 @@ public abstract class Frame
     return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
   }
   
-  public abstract View a();
-  
   public View a(int paramInt)
   {
     return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
@@ -65,13 +63,13 @@ public abstract class Frame
     if (paramView != null)
     {
       if (paramBoolean) {
-        paramView.setBackgroundResource(2130845744);
+        paramView.setBackgroundResource(2130845872);
       }
     }
     else {
       return;
     }
-    paramView.setBackgroundColor(a().getColor(2131494247));
+    paramView.setBackgroundColor(a().getColor(2131494254));
   }
   
   public void a(BaseActivity paramBaseActivity)

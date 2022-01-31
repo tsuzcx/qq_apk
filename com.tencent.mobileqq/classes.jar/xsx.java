@@ -1,13 +1,33 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.IPtvTemplateItemCallback;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.util.ArrayList;
 
 public class xsx
-  implements Runnable
+  implements PtvTemplateAdapter.IPtvTemplateItemCallback
 {
-  public xsx(RDBaseDataManager paramRDBaseDataManager, xsq paramxsq) {}
+  public xsx(PtvTemplateAdapter paramPtvTemplateAdapter) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesRDBaseDataManager.a(this.jdField_a_of_type_Xsq.a, 1, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    do
+    {
+      do
+      {
+        return;
+        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      } while (localPtvTemplateInfo == null);
+      this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.b(paramInt, (int)(-this.a.jdField_a_of_type_Int * (0.75F + this.a.c - 1.0F)), 400);
+    } while (localPtvTemplateInfo.usable);
+    FlowCameraMqqAction.b("", "0X8006A1A");
   }
 }
 

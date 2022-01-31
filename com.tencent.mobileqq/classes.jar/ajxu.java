@@ -1,29 +1,25 @@
-import android.net.Uri;
-import com.tencent.mobileqq.webview.AbsWebView;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
 
 public class ajxu
-  extends ajxy
+  implements Runnable
 {
-  public ajxu(AbsWebView paramAbsWebView)
-  {
-    super(paramAbsWebView, null);
-  }
+  public ajxu(SnapshotService paramSnapshotService, Bitmap paramBitmap, ajxy paramajxy, ajya paramajya) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
+      QLog.i(SnapshotService.a(), 2, "ScreenShot Finish Callback");
     }
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+    SnapshotService.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Ajxy, this.jdField_a_of_type_Ajya);
+    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService.a.post(new ajxv(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxu
  * JD-Core Version:    0.7.0.1
  */

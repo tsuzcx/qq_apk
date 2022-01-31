@@ -318,6 +318,8 @@ public class TroopInfoData
       this.nStatOption = 30;
       continue;
       this.nStatOption = 38;
+      continue;
+      this.nStatOption = 85;
     }
   }
   
@@ -503,7 +505,7 @@ public class TroopInfoData
       if ((!TroopInfo.hasPayPrivilege(paramTroopInfo.troopPrivilegeFlag, 128)) || (!TroopInfo.hasPayPrivilege(paramTroopInfo.troopPrivilegeFlag, 512))) {
         break label595;
       }
-      this.troopAuthen = paramResources.getString(2131433648);
+      this.troopAuthen = paramResources.getString(2131433665);
       i = 6;
       if (!Utils.a(this.troopowneruin, paramTroopInfo.troopowneruin))
       {
@@ -533,7 +535,7 @@ public class TroopInfoData
       if (i != 3) {
         break label751;
       }
-      this.inviteModeDescription = paramResources.getString(2131430153);
+      this.inviteModeDescription = paramResources.getString(2131430170);
       this.inviteMode = 4;
       label451:
       if (paramTroopInfo.cAlbumResult != 33) {
@@ -562,7 +564,7 @@ public class TroopInfoData
       label595:
       if (paramTroopInfo.isOnlyTroopMemberInviteOption())
       {
-        this.troopAuthen = paramResources.getString(2131433649);
+        this.troopAuthen = paramResources.getString(2131433666);
         this.dwGroupFlagExt |= 0x80;
         break;
       }
@@ -572,19 +574,19 @@ public class TroopInfoData
       default: 
         break;
       case 1: 
-        this.troopAuthen = paramResources.getString(2131433645);
+        this.troopAuthen = paramResources.getString(2131433662);
         break;
       case 2: 
-        this.troopAuthen = paramResources.getString(2131433647);
+        this.troopAuthen = paramResources.getString(2131433664);
         break;
       case 4: 
-        this.troopAuthen = paramResources.getString(2131433651);
+        this.troopAuthen = paramResources.getString(2131433668);
         break;
       case 5: 
-        this.troopAuthen = paramResources.getString(2131433652);
+        this.troopAuthen = paramResources.getString(2131433669);
         break;
       case 3: 
-        this.troopAuthen = paramResources.getString(2131433650);
+        this.troopAuthen = paramResources.getString(2131433667);
         break;
         label745:
         j = 0;
@@ -592,7 +594,7 @@ public class TroopInfoData
         label751:
         if (i == 1)
         {
-          this.inviteModeDescription = paramResources.getString(2131430154);
+          this.inviteModeDescription = paramResources.getString(2131430171);
           this.inviteMode = 5;
           break label451;
         }
@@ -600,7 +602,7 @@ public class TroopInfoData
         {
           if (i == 6)
           {
-            this.inviteModeDescription = paramResources.getString(2131430155);
+            this.inviteModeDescription = paramResources.getString(2131430172);
             this.inviteMode = 6;
             break label451;
           }
@@ -629,10 +631,10 @@ public class TroopInfoData
             break label451;
           }
           this.inviteMode = 8;
-          this.inviteModeDescription = paramResources.getString(2131430151);
+          this.inviteModeDescription = paramResources.getString(2131430168);
           break label451;
         }
-        this.inviteModeDescription = paramResources.getString(2131430150);
+        this.inviteModeDescription = paramResources.getString(2131430167);
         this.inviteMode = 1;
         break label451;
       }
@@ -732,7 +734,7 @@ public class TroopInfoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troopinfo.TroopInfoData
  * JD-Core Version:    0.7.0.1
  */

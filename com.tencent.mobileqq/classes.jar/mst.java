@@ -1,14 +1,18 @@
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+
 public class mst
+  implements Runnable
 {
-  public int a;
-  public boolean a;
-  public int b;
+  public mst(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public mst(int paramInt1, int paramInt2, boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    SubscriptFeedsActivity.a(this.a, SubscriptRecommendController.b(this.a.app));
+    if (PublicAccountUtil.a(this.a.app)) {
+      SubscriptFeedsActivity.a(this.a, true);
+    }
   }
 }
 

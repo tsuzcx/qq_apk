@@ -1,40 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
-import cooperation.qzone.util.QZLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.vas.ColorRingPlayer;
 
 public class akhl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public akhl(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
+  public akhl(ColorRingPlayer paramColorRingPlayer, long paramLong, int paramInt, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if (!TextUtils.isEmpty(this.a.a.a.a))
-      {
-        Object localObject = this.a.a.a.a;
-        if (this.a.a.a.a.startsWith("+")) {
-          localObject = this.a.a.a.a.substring(1);
-        }
-        localObject = new LpReportInfo_pf00064(699, 2, Long.valueOf((String)localObject).longValue());
-        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QZLog.e("QzoneReport", "makeOrRefreshQZone", localException);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,35 @@
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
+import com.tencent.mobileqq.apollo.script.callback.ISpriteDrawerInfoCallback;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class tmk
-  extends AccountObserver
+  implements ISpriteDrawerInfoCallback
 {
-  public tmk(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public tmk(QQSettingMe paramQQSettingMe) {}
   
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
+  public void a()
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt, paramArrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginFailed ");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext == null) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(QQSettingMe.a(this.a), this.a.c, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity) != 0) {
+      return;
     }
-    RegisterChooseLoginActivity.a(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(QQSettingMe.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.c);
   }
   
-  public void onLoginSuccess(String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    super.onLoginSuccess(paramString1, paramString2);
     if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginSuccess ");
+      QLog.d("QQSettingRedesign", 2, new Object[] { "[onApolloClick] ", "apolloStatus:", Integer.valueOf(paramInt1), ",clickPart:", Integer.valueOf(paramInt2), ",apolloId:", paramString });
     }
-  }
-  
-  protected void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginTimeout ");
+    if (paramInt1 == 0)
+    {
+      this.a.L();
+      return;
     }
-    RegisterChooseLoginActivity.a(this.a);
-  }
-  
-  protected void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onUserCancel ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
+    ThreadManager.getUIHandler().post(new tml(this, paramInt2, paramString));
   }
 }
 

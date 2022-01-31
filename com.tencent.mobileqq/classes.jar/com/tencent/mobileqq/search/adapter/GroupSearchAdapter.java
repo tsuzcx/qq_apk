@@ -221,7 +221,7 @@ public class GroupSearchAdapter
     case 18: 
     case 20: 
     default: 
-      paramViewGroup = new SearchResultGroupView(paramViewGroup, 2130971477);
+      paramViewGroup = new SearchResultGroupView(paramViewGroup, 2130971525);
       return paramViewGroup;
     case 41: 
       return new FunctionSearchResultGroupView(paramViewGroup);
@@ -244,11 +244,11 @@ public class GroupSearchAdapter
         bool2 = true;
       }
       return new SearchResultGroupTitleView(paramViewGroup, bool2, bool1);
-      return new SearchResultGroupView(paramViewGroup, 2130969232);
+      return new SearchResultGroupView(paramViewGroup, 2130969233);
       return new SearchResultGroupFooterView(paramViewGroup);
-      return new SearchResultGroupMoreItemView(paramViewGroup, 2130971495, 2130843165, -1);
-      return new SearchResultGroupMoreItemView(paramViewGroup, 2130971495, 2130843165, 12);
-      localObject = new SearchResultView(paramViewGroup, 2130969409);
+      return new SearchResultGroupMoreItemView(paramViewGroup, 2130971543, 2130843264, -1);
+      return new SearchResultGroupMoreItemView(paramViewGroup, 2130971543, 2130843264, 12);
+      localObject = new SearchResultView(paramViewGroup, 2130969410);
       int i = j;
       if (paramInt >= 1)
       {
@@ -273,10 +273,10 @@ public class GroupSearchAdapter
       }
       ((SearchResultView)localObject).b().setVisibility(8);
       return localObject;
-      return new ContactSearchResultGroupView(paramViewGroup, 2130971481);
-      return new ApproximateSearchResultGroupView(paramViewGroup, 2130971523);
-      return new SearchResultGroupView(paramViewGroup, 2130971478);
-      return new SearchResultGroupView(paramViewGroup, 2130971483);
+      return new ContactSearchResultGroupView(paramViewGroup, 2130971529);
+      return new ApproximateSearchResultGroupView(paramViewGroup, 2130971571);
+      return new SearchResultGroupView(paramViewGroup, 2130971526);
+      return new SearchResultGroupView(paramViewGroup, 2130971531);
       return new SearchResultFromNetView(paramViewGroup, a(paramInt));
       localObject = a(paramInt);
       if ((localObject instanceof SearchResultModelForEntrance)) {
@@ -311,7 +311,7 @@ public class GroupSearchAdapter
         return new NetSearchTemplateSubItemTitleView(paramViewGroup, ((NetSearchTemplateBaseItem)localObject).e());
       }
       throw new RuntimeException("model type is TYPE_UNITE_TEMPLATE_NORMAL or TYPE_UNITE_TEMPLATE_NEWS, but model item is not instance NetSearchTemplateBaseItem.");
-      return new SearchResultView(paramViewGroup, 2130969233);
+      return new SearchResultView(paramViewGroup, 2130969234);
     }
   }
   

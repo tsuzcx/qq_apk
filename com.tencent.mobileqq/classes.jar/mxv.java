@@ -1,34 +1,14 @@
-import android.support.v4.util.MQLruCache;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.mobileqq.app.AppConstants;
-import java.io.File;
+import android.app.Dialog;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class mxv
-  extends Thread
+  implements Runnable
 {
-  public mxv(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager) {}
+  public mxv(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity, Dialog paramDialog) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.releaseLargeCache();
-    }
-    long l = System.currentTimeMillis();
-    Object localObject1 = new File(AppConstants.ct);
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
-    {
-      localObject1 = ((File)localObject1).listFiles();
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject2 = localObject1[i];
-        if (l - localObject2.lastModified() > 172800000L) {
-          localObject2.delete();
-        }
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

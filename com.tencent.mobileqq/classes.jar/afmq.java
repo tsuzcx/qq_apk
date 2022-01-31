@@ -1,21 +1,19 @@
-import EncounterSvc.RespEncounterInfo;
-import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
-import com.tencent.mobileqq.util.FaceDecoder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.widget.ButtonInfo;
+import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog;
+import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
 
 public class afmq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public afmq(ChatPushCarrierHelper paramChatPushCarrierHelper, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
+  public afmq(NearbyCustomDialog paramNearbyCustomDialog, ButtonInfo paramButtonInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FaceDecoder localFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a;
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
-    for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
-    {
-      localFaceDecoder.a(32, str, 202, l);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyCustomDialog.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a.a(paramView);
     }
   }
 }

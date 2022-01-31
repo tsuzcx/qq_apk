@@ -12,23 +12,23 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import jqw;
+import jqh;
 
 public class AVLoadingDialogActivity
   extends BaseActivity
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jqw(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jqh(this);
   Handler jdField_a_of_type_AndroidOsHandler = new AVLoadingDialogActivity.MyHandler(this.jdField_a_of_type_JavaLangString);
   final String jdField_a_of_type_JavaLangString = "AVLoadingDialogActivity_" + AudioHelper.a();
   
   Dialog a()
   {
-    Dialog localDialog = new Dialog(this, 2131624515);
-    localDialog.setContentView(2130969181);
+    Dialog localDialog = new Dialog(this, 2131624516);
+    localDialog.setContentView(2130969180);
     localDialog.setCancelable(false);
-    TextView localTextView = (TextView)localDialog.findViewById(2131363381);
+    TextView localTextView = (TextView)localDialog.findViewById(2131363399);
     if (localTextView != null) {
-      localTextView.setText(2131429513);
+      localTextView.setText(2131429519);
     }
     return localDialog;
   }

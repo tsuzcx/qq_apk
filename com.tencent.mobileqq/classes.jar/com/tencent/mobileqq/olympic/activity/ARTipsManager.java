@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.olympic.activity;
 
-import afrd;
-import afre;
-import afrf;
-import afrg;
-import afrh;
-import afri;
-import afrj;
-import afrk;
-import afrl;
-import afrm;
-import afrn;
-import afro;
+import agej;
+import agek;
+import agel;
+import agem;
+import agen;
+import ageo;
+import agep;
+import ageq;
+import ager;
+import ages;
+import aget;
+import ageu;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -46,7 +46,7 @@ public class ARTipsManager
     this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
     this.jdField_a_of_type_AndroidViewViewConfiguration = ViewConfiguration.get(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new afrm(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ages(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
     this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener = paramARTipsVisibleListener;
   }
@@ -59,24 +59,24 @@ public class ARTipsManager
     ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968701, null);
     if (localViewGroup != null)
     {
-      afro localafro = new afro(this, null);
-      localafro.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131363266));
-      localafro.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131363267));
-      localafro.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131363268));
-      localafro.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131363269));
-      localafro.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress = ((ARTipsCircleProgress)localViewGroup.findViewById(2131363270));
-      localafro.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131363271));
-      localafro.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131363272));
-      localafro.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131363273));
-      localafro.e = ((TextView)localViewGroup.findViewById(2131363275));
-      localafro.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131363276));
-      localafro.f = ((TextView)localViewGroup.findViewById(2131363277));
-      localafro.jdField_a_of_type_AndroidViewView = localViewGroup.findViewById(2131363278);
-      localafro.g = ((TextView)localViewGroup.findViewById(2131363281));
-      localafro.h = ((TextView)localViewGroup.findViewById(2131363280));
-      localafro.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localViewGroup.findViewById(2131363274));
-      localViewGroup.setTag(localafro);
-      localViewGroup.setOnTouchListener(new afrd(this));
+      ageu localageu = new ageu(this, null);
+      localageu.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131363284));
+      localageu.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131363285));
+      localageu.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131363286));
+      localageu.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131363287));
+      localageu.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress = ((ARTipsCircleProgress)localViewGroup.findViewById(2131363288));
+      localageu.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131363289));
+      localageu.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131363290));
+      localageu.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localViewGroup.findViewById(2131363291));
+      localageu.e = ((TextView)localViewGroup.findViewById(2131363293));
+      localageu.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)localViewGroup.findViewById(2131363294));
+      localageu.f = ((TextView)localViewGroup.findViewById(2131363295));
+      localageu.jdField_a_of_type_AndroidViewView = localViewGroup.findViewById(2131363296);
+      localageu.g = ((TextView)localViewGroup.findViewById(2131363299));
+      localageu.h = ((TextView)localViewGroup.findViewById(2131363298));
+      localageu.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localViewGroup.findViewById(2131363292));
+      localViewGroup.setTag(localageu);
+      localViewGroup.setOnTouchListener(new agej(this));
     }
     return localViewGroup;
   }
@@ -86,14 +86,14 @@ public class ARTipsManager
     if (QLog.isColorLevel()) {
       QLog.d("ARTipsManager", 2, String.format("showOcr tag=%s type=%s listener=%s autoRemove=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramOcrClickListener, Boolean.valueOf(paramBoolean) }));
     }
-    afrn localafrn = new afrn(this, null);
-    localafrn.jdField_a_of_type_Int = paramInt1;
-    localafrn.jdField_b_of_type_Int = paramInt2;
-    localafrn.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$OcrClickListener = paramOcrClickListener;
-    localafrn.jdField_a_of_type_Boolean = paramBoolean;
+    aget localaget = new aget(this, null);
+    localaget.jdField_a_of_type_Int = paramInt1;
+    localaget.jdField_b_of_type_Int = paramInt2;
+    localaget.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$OcrClickListener = paramOcrClickListener;
+    localaget.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
     paramOcrClickListener = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(100);
-    paramOcrClickListener.obj = localafrn;
+    paramOcrClickListener.obj = localaget;
     paramOcrClickListener.sendToTarget();
   }
   
@@ -107,17 +107,17 @@ public class ARTipsManager
     if (QLog.isColorLevel()) {
       QLog.d("ARTipsManager", 2, String.format("showBaike tag=%s type=%s title=%s content=%s listener=%s autoRemove=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramBaikeClickListener, Boolean.valueOf(paramBoolean1) }));
     }
-    afrn localafrn = new afrn(this, null);
-    localafrn.jdField_a_of_type_Int = paramInt1;
-    localafrn.jdField_b_of_type_Int = paramInt2;
-    localafrn.jdField_a_of_type_Boolean = paramBoolean1;
-    localafrn.d = paramString1;
-    localafrn.e = paramString2;
-    localafrn.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$BaikeClickListener = paramBaikeClickListener;
-    localafrn.jdField_b_of_type_Boolean = paramBoolean2;
+    aget localaget = new aget(this, null);
+    localaget.jdField_a_of_type_Int = paramInt1;
+    localaget.jdField_b_of_type_Int = paramInt2;
+    localaget.jdField_a_of_type_Boolean = paramBoolean1;
+    localaget.d = paramString1;
+    localaget.e = paramString2;
+    localaget.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$BaikeClickListener = paramBaikeClickListener;
+    localaget.jdField_b_of_type_Boolean = paramBoolean2;
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
     paramString1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(100);
-    paramString1.obj = localafrn;
+    paramString1.obj = localaget;
     paramString1.sendToTarget();
   }
   
@@ -126,47 +126,47 @@ public class ARTipsManager
     if (QLog.isColorLevel()) {
       QLog.d("ARTipsManager", 2, String.format("showTips tag=%s type=%s tips=%s description=%s btnText=%s btnListener=%s progress=%s autoRemove=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, paramString2, paramString3, paramButtonClickListener, Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean) }));
     }
-    afrn localafrn = new afrn(this, null);
-    localafrn.jdField_a_of_type_Int = paramInt1;
-    localafrn.jdField_b_of_type_Int = paramInt2;
-    localafrn.jdField_a_of_type_Boolean = paramBoolean;
-    localafrn.jdField_a_of_type_JavaLangString = paramString1;
-    localafrn.jdField_b_of_type_JavaLangString = paramString2;
-    localafrn.jdField_c_of_type_JavaLangString = paramString3;
-    localafrn.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ButtonClickListener = paramButtonClickListener;
-    localafrn.jdField_c_of_type_Int = paramInt3;
+    aget localaget = new aget(this, null);
+    localaget.jdField_a_of_type_Int = paramInt1;
+    localaget.jdField_b_of_type_Int = paramInt2;
+    localaget.jdField_a_of_type_Boolean = paramBoolean;
+    localaget.jdField_a_of_type_JavaLangString = paramString1;
+    localaget.jdField_b_of_type_JavaLangString = paramString2;
+    localaget.jdField_c_of_type_JavaLangString = paramString3;
+    localaget.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ButtonClickListener = paramButtonClickListener;
+    localaget.jdField_c_of_type_Int = paramInt3;
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
     paramString1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(100);
-    paramString1.obj = localafrn;
+    paramString1.obj = localaget;
     paramString1.sendToTarget();
   }
   
-  private void a(afrn paramafrn)
+  private void a(aget paramaget)
   {
     if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
       this.jdField_a_of_type_AndroidViewViewGroup = a();
     }
-    afro localafro;
+    ageu localageu;
     int i;
     if (this.jdField_a_of_type_AndroidViewViewGroup != null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setTag(2131362437, paramafrn);
-      localafro = (afro)this.jdField_a_of_type_AndroidViewViewGroup.getTag();
-      if (localafro != null)
+      this.jdField_a_of_type_AndroidViewViewGroup.setTag(2131362440, paramaget);
+      localageu = (ageu)this.jdField_a_of_type_AndroidViewViewGroup.getTag();
+      if (localageu != null)
       {
-        i = paramafrn.jdField_b_of_type_Int;
+        i = paramaget.jdField_b_of_type_Int;
         if ((i != 1) && (i != 2) && (i != 3)) {
           break label353;
         }
-        localafro.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-        localafro.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
-        localafro.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        localafro.jdField_a_of_type_AndroidWidgetTextView.setText(paramafrn.jdField_a_of_type_JavaLangString);
-        if (!TextUtils.isEmpty(paramafrn.jdField_b_of_type_JavaLangString)) {
+        localageu.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+        localageu.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
+        localageu.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        localageu.jdField_a_of_type_AndroidWidgetTextView.setText(paramaget.jdField_a_of_type_JavaLangString);
+        if (!TextUtils.isEmpty(paramaget.jdField_b_of_type_JavaLangString)) {
           break label213;
         }
-        localafro.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        localafro.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
+        localageu.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        localageu.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
         switch (i)
         {
         }
@@ -177,74 +177,74 @@ public class ARTipsManager
       if (this.jdField_a_of_type_AndroidViewViewGroup.getParent() == null) {
         b();
       }
-      if (paramafrn.jdField_a_of_type_Boolean)
+      if (paramaget.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
-        paramafrn = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(101);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramafrn, 5000L);
+        paramaget = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(101);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramaget, 5000L);
       }
       return;
       label213:
-      localafro.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localafro.jdField_b_of_type_AndroidWidgetTextView.setText(paramafrn.jdField_b_of_type_JavaLangString);
-      localafro.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 20.0F);
+      localageu.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      localageu.jdField_b_of_type_AndroidWidgetTextView.setText(paramaget.jdField_b_of_type_JavaLangString);
+      localageu.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 20.0F);
       break;
-      localafro.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      localafro.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(8);
-      localafro.jdField_a_of_type_AndroidViewViewGroup.setEnabled(false);
+      localageu.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      localageu.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(8);
+      localageu.jdField_a_of_type_AndroidViewViewGroup.setEnabled(false);
       continue;
-      localafro.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      localafro.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(8);
-      localafro.jdField_c_of_type_AndroidWidgetTextView.setText(paramafrn.jdField_c_of_type_JavaLangString);
-      localafro.jdField_a_of_type_AndroidViewViewGroup.setEnabled(true);
+      localageu.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      localageu.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(8);
+      localageu.jdField_c_of_type_AndroidWidgetTextView.setText(paramaget.jdField_c_of_type_JavaLangString);
+      localageu.jdField_a_of_type_AndroidViewViewGroup.setEnabled(true);
       continue;
-      localafro.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      localafro.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(0);
-      localafro.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setProgress(paramafrn.jdField_c_of_type_Int);
-      localafro.jdField_a_of_type_AndroidViewViewGroup.setEnabled(false);
+      localageu.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      localageu.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setVisibility(0);
+      localageu.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsCircleProgress.setProgress(paramaget.jdField_c_of_type_Int);
+      localageu.jdField_a_of_type_AndroidViewViewGroup.setEnabled(false);
       continue;
       label353:
       if ((i == 10) || (i == 11))
       {
-        localafro.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-        localafro.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        localafro.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
+        localageu.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+        localageu.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        localageu.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
         FrameLayout.LayoutParams localLayoutParams;
-        if (paramafrn.jdField_b_of_type_Boolean)
+        if (paramaget.jdField_b_of_type_Boolean)
         {
-          localafro.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          localafro.jdField_d_of_type_AndroidWidgetTextView.setText(paramafrn.d);
-          localafro.e.setText(paramafrn.e);
-          localafro.jdField_c_of_type_AndroidViewViewGroup.setOnClickListener(new afre(this, paramafrn));
-          localLayoutParams = (FrameLayout.LayoutParams)localafro.jdField_b_of_type_AndroidViewViewGroup.getLayoutParams();
+          localageu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          localageu.jdField_d_of_type_AndroidWidgetTextView.setText(paramaget.d);
+          localageu.e.setText(paramaget.e);
+          localageu.jdField_c_of_type_AndroidViewViewGroup.setOnClickListener(new agek(this, paramaget));
+          localLayoutParams = (FrameLayout.LayoutParams)localageu.jdField_b_of_type_AndroidViewViewGroup.getLayoutParams();
           switch (i)
           {
           }
         }
         for (;;)
         {
-          localafro.jdField_b_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+          localageu.jdField_b_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
           break;
-          localafro.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+          localageu.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
           break label406;
-          localafro.jdField_d_of_type_AndroidViewViewGroup.setVisibility(8);
+          localageu.jdField_d_of_type_AndroidViewViewGroup.setVisibility(8);
           localLayoutParams.bottomMargin = AIOUtils.a(20.0F, this.jdField_a_of_type_AndroidContentResResources);
           continue;
-          localafro.jdField_d_of_type_AndroidViewViewGroup.setVisibility(0);
-          localafro.f.setOnClickListener(new afrf(this, paramafrn));
+          localageu.jdField_d_of_type_AndroidViewViewGroup.setVisibility(0);
+          localageu.f.setOnClickListener(new agel(this, paramaget));
           localLayoutParams.bottomMargin = AIOUtils.a(0.0F, this.jdField_a_of_type_AndroidContentResResources);
         }
       }
       label406:
       if (i == 12)
       {
-        localafro.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-        localafro.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
-        localafro.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        if (paramafrn.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$OcrClickListener != null)
+        localageu.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+        localageu.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
+        localageu.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        if (paramaget.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$OcrClickListener != null)
         {
-          localafro.g.setOnClickListener(new afrg(this, paramafrn));
-          localafro.h.setOnClickListener(new afrh(this, paramafrn));
+          localageu.g.setOnClickListener(new agem(this, paramaget));
+          localageu.h.setOnClickListener(new agen(this, paramaget));
         }
       }
     }
@@ -261,8 +261,8 @@ public class ARTipsManager
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(4);
     localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     ((ValueAnimator)localObject).setDuration(400L);
-    ((ValueAnimator)localObject).addUpdateListener(new afri(this));
-    ((ValueAnimator)localObject).addListener(new afrj(this));
+    ((ValueAnimator)localObject).addUpdateListener(new ageo(this));
+    ((ValueAnimator)localObject).addListener(new agep(this));
     ((ValueAnimator)localObject).start();
     if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener.a(true);
@@ -280,8 +280,8 @@ public class ARTipsManager
       this.jdField_a_of_type_AndroidViewViewGroup = null;
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       localValueAnimator.setDuration(400L);
-      localValueAnimator.addUpdateListener(new afrk(this, localViewGroup));
-      localValueAnimator.addListener(new afrl(this, localViewGroup));
+      localValueAnimator.addUpdateListener(new ageq(this, localViewGroup));
+      localValueAnimator.addListener(new ager(this, localViewGroup));
       localValueAnimator.start();
       if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener != null) {
         this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ARTipsVisibleListener.a(false);
@@ -293,9 +293,9 @@ public class ARTipsManager
   {
     if (this.jdField_a_of_type_AndroidViewViewGroup != null)
     {
-      afrn localafrn = (afrn)this.jdField_a_of_type_AndroidViewViewGroup.getTag(2131362437);
-      if (localafrn != null) {
-        return localafrn.jdField_a_of_type_Int;
+      aget localaget = (aget)this.jdField_a_of_type_AndroidViewViewGroup.getTag(2131362440);
+      if (localaget != null) {
+        return localaget.jdField_a_of_type_Int;
       }
     }
     return 0;

@@ -1,34 +1,59 @@
-import android.text.Editable;
-import android.widget.EditText;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticonview.SmallEmoticonInfo;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class abzr
-  implements QueryCallback
+  implements Runnable
 {
-  public abzr(SmallEmoticonInfo paramSmallEmoticonInfo, int paramInt1, int paramInt2, EditText paramEditText, QQAppInterface paramQQAppInterface) {}
+  public abzr(FavroamingDBManager paramFavroamingDBManager, List paramList, int paramInt) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void run()
   {
-    char[] arrayOfChar1 = EmosmUtils.a(this.jdField_a_of_type_Int, this.b);
-    char[] arrayOfChar2 = new char[5];
-    arrayOfChar2[0] = '\024';
-    arrayOfChar2[1] = arrayOfChar1[3];
-    arrayOfChar2[2] = arrayOfChar1[2];
-    arrayOfChar2[3] = arrayOfChar1[1];
-    arrayOfChar2[4] = arrayOfChar1[0];
-    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
-      arrayOfChar2[1] = 'ǿ';
-    }
-    int i = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-    int j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-    this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, String.valueOf(arrayOfChar2));
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717E", 0, 0, this.jdField_a_of_type_Int + "", this.b + "", "", "");
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager.a.getEntityManagerFactory().createEntityManager();
+    if (localEntityManager == null) {}
+    boolean bool2;
+    do
+    {
+      return;
+      int i = 0;
+      bool2 = false;
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        CustomEmotionData localCustomEmotionData = (CustomEmotionData)this.jdField_a_of_type_JavaUtilList.get(i);
+        boolean bool1;
+        switch (this.jdField_a_of_type_Int)
+        {
+        case 3: 
+        default: 
+          bool1 = bool2;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("FavroamingDBManager", 2, "can not save fav emoticon data, type:" + this.jdField_a_of_type_Int);
+            bool1 = bool2;
+          }
+          break;
+        }
+        for (;;)
+        {
+          i += 1;
+          bool2 = bool1;
+          break;
+          localCustomEmotionData.setStatus(1000);
+          localEntityManager.a(localCustomEmotionData);
+          bool1 = bool2;
+          continue;
+          bool1 = localEntityManager.a(localCustomEmotionData);
+          continue;
+          bool1 = localEntityManager.b(localCustomEmotionData);
+        }
+      }
+      localEntityManager.a();
+    } while (!QLog.isColorLevel());
+    QLog.d("FavroamingDBManager", 2, "updateFavEmotionDataListInDB type:" + this.jdField_a_of_type_Int + ",data size:" + this.jdField_a_of_type_JavaUtilList.size() + " save result: " + bool2);
   }
 }
 

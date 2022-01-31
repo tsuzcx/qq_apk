@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar.ProgressBarListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
+import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
+import com.tencent.mobileqq.widget.QQViewPager;
+import java.util.List;
 
 public class ahmp
-  implements GLProgressBar.ProgressBarListener
+  implements Runnable
 {
-  public ahmp(DanceReadyFilter paramDanceReadyFilter) {}
+  public ahmp(PtvTemplateProviderView paramPtvTemplateProviderView) {}
   
-  public void a()
+  public void run()
   {
-    DanceReadyFilter.a(this.a).a(DanceReadyFilter.a(this.a));
-    DanceReadyFilter.a(this.a).h_(false);
-    DanceReadyFilter.b(this.a).h_(false);
-    DanceReadyFilter.c(this.a).h_(false);
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_JavaUtilList.size() > 1) && (!this.a.jdField_a_of_type_Boolean))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.setTab(this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.e = -1;
+    }
+    do
+    {
+      return;
+      if ((this.a.e > 0) && (this.a.jdField_a_of_type_JavaUtilList.size() > 1) && (!this.a.jdField_a_of_type_Boolean))
+      {
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.setTab(this.a.e);
+        this.a.jdField_a_of_type_JavaLangString = "";
+        this.a.e = -1;
+        return;
+      }
+    } while ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_JavaUtilList.size() <= this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem() != 0));
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.a.b);
+    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.a.b);
   }
 }
 

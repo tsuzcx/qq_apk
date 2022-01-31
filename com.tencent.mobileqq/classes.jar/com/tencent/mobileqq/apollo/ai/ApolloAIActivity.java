@@ -67,10 +67,10 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import ylb;
-import ylc;
-import yld;
-import yle;
+import yoh;
+import yoi;
+import yoj;
+import yok;
 
 public class ApolloAIActivity
   extends IphoneTitleBarActivity
@@ -233,7 +233,7 @@ public class ApolloAIActivity
     String str = Build.MANUFACTURER;
     int i;
     if (str.equalsIgnoreCase("meizu")) {
-      i = 2131433373;
+      i = 2131433390;
     }
     for (;;)
     {
@@ -253,24 +253,24 @@ public class ApolloAIActivity
       return;
       if (localException.equalsIgnoreCase("xiaomi"))
       {
-        i = 2131433374;
+        i = 2131433391;
       }
       else if (localException.equalsIgnoreCase("vivo"))
       {
-        i = 2131433375;
+        i = 2131433392;
       }
       else
       {
-        i = 2131433372;
+        i = 2131433389;
         j = 1;
       }
     }
     label144:
     SpannableString localSpannableString = new SpannableString(super.getString(i));
     if (j != 0) {
-      localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(super.getResources().getColor(2131493061), super.getResources().getColor(2131493062)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
+      localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(super.getResources().getColor(2131493062), super.getResources().getColor(2131493063)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
     }
-    for (this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, "权限提示", localSpannableString, 0, 2131435179, null, null, new yld(this));; this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230, "权限提示", localSpannableString.toString(), "我知道了", "", null, new yle(this)))
+    for (this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, "权限提示", localSpannableString, 0, 2131435196, null, null, new yoj(this));; this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230, "权限提示", localSpannableString.toString(), "我知道了", "", null, new yok(this)))
     {
       this.jdField_a_of_type_AndroidAppDialog.show();
       return;
@@ -294,7 +294,7 @@ public class ApolloAIActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.a();
     this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView.a();
     this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837976);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837979);
     this.jdField_b_of_type_Boolean = false;
   }
   
@@ -463,7 +463,7 @@ public class ApolloAIActivity
     paramBundle.bottomMargin = AIOUtils.a(47.0F, super.getResources());
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloAiApolloRecorderView, paramBundle);
     this.jdField_c_of_type_AndroidWidgetTextView = new TextView(this);
-    this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130846141);
+    this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130846269);
     paramBundle = new RelativeLayout.LayoutParams(-2, -2);
     paramBundle.addRule(10, -1);
     paramBundle.addRule(11, -1);
@@ -475,7 +475,7 @@ public class ApolloAIActivity
     this.jdField_c_of_type_AndroidWidgetTextView.setGravity(17);
     this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(17.0F);
     this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131434920);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131434937);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidWidgetTextView, paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout = new RoundRectLinearLayout(this);
@@ -494,9 +494,9 @@ public class ApolloAIActivity
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout, paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)super.getResources().getDrawable(2130837971));
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)super.getResources().getDrawable(2130837974));
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getIntrinsicHeight());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837976);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837979);
     paramBundle = new LinearLayout.LayoutParams(-2, -2);
     paramBundle.rightMargin = AIOUtils.a(5.0F, super.getResources());
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramBundle);
@@ -527,9 +527,9 @@ public class ApolloAIActivity
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramBundle);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363108));
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363110));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363109));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363126));
+    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateSquareView = ((VolumeIndicateSquareView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363128));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363127));
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
     paramBundle = super.getAppInterface();
     if (paramBundle != null)
@@ -572,7 +572,7 @@ public class ApolloAIActivity
     if (!paramBundle.exists()) {
       paramBundle.mkdir();
     }
-    ThreadManager.executeOnSubThread(new ylb(this));
+    ThreadManager.executeOnSubThread(new yoh(this));
     VasExtensionHandler.a(this, super.getAppInterface(), "android.ai", 1, "enter_AI", null);
     super.setImmersiveStatus();
     super.hideTitleBar();
@@ -589,7 +589,7 @@ public class ApolloAIActivity
       this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
-    ThreadManager.post(new ylc(this), 5, null, true);
+    ThreadManager.post(new yoi(this), 5, null, true);
     if (this.jdField_a_of_type_ComTencentMobileqqApolloAiApolloAILogicProcessor != null) {
       this.jdField_a_of_type_ComTencentMobileqqApolloAiApolloAILogicProcessor.c();
     }
@@ -660,7 +660,7 @@ public class ApolloAIActivity
             this.jdField_b_of_type_Boolean = false;
             this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
           }
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837976);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837979);
           return false;
           this.jdField_b_of_type_AndroidWidgetTextView.setText("0:00");
           return false;
@@ -767,7 +767,7 @@ public class ApolloAIActivity
         this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(260, this.jdField_a_of_type_ComTencentMobileqqApolloAiApolloAIMessage.jdField_d_of_type_Int);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837976);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837979);
       this.jdField_b_of_type_Boolean = false;
       return;
     } while ((paramView != this.jdField_b_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout) || (this.jdField_a_of_type_ComTencentMobileqqApolloAiApolloAIPresenter == null) || (this.jdField_c_of_type_Boolean));

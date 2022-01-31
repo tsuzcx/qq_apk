@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.os.Handler;
+import android.os.Message;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class anqr
   implements Runnable
 {
-  public anqr(VideoFilterViewPager paramVideoFilterViewPager, View paramView) {}
+  public anqr(CropVideoActivity paramCropVideoActivity) {}
   
   public void run()
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(300L);
-    localAlphaAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
-    localAlphaAnimation.setAnimationListener(new anqs(this));
+    CropVideoActivity.a(this.a, CropVideoActivity.g(this.a) + 10);
+    Message localMessage = new Message();
+    localMessage.what = 1;
+    localMessage.arg1 = CropVideoActivity.g(this.a);
+    this.a.a.sendMessage(localMessage);
   }
 }
 

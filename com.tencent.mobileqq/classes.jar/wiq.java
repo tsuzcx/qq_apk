@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class wiq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wiq(ContactsDeviceAdapter paramContactsDeviceAdapter) {}
+  public wiq(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a = true;
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
 }
 

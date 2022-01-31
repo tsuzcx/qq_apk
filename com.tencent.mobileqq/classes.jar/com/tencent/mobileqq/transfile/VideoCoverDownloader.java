@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aidy;
+import aisb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
@@ -19,12 +19,12 @@ public class VideoCoverDownloader
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return AlbumThumbManager.a(BaseApplicationImpl.getContext()).a(paramDownloadParams.url, new aidy(this));
+    return AlbumThumbManager.a(BaseApplicationImpl.getContext()).a(paramDownloadParams.url, new aisb(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VideoCoverDownloader
  * JD-Core Version:    0.7.0.1
  */

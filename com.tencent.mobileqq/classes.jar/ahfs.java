@@ -1,29 +1,50 @@
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.mobileqq.redtouch.RedTouchTextView;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
+import java.io.File;
 
 public class ahfs
   implements Runnable
 {
-  public ahfs(FTSMessageSearchEngine paramFTSMessageSearchEngine, SearchRequest paramSearchRequest, ISearchListener paramISearchListener) {}
+  public ahfs(RedTouchTextView paramRedTouchTextView, String paramString, int paramInt) {}
   
   public void run()
   {
-    if (SQLiteFTSUtils.g(FTSMessageSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsmsgFTSMessageSearchEngine)) == 1) {}
-    for (List localList = this.jdField_a_of_type_ComTencentMobileqqSearchFtsmsgFTSMessageSearchEngine.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest, false);; localList = this.jdField_a_of_type_ComTencentMobileqqSearchFtsmsgFTSMessageSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest, false))
+    Object localObject = new File(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.getContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
+    Bitmap localBitmap;
+    if (((File)localObject).exists())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+      localBitmap = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a((File)localObject);
+      localObject = localBitmap;
+      if (this.jdField_a_of_type_Int == 1) {
+        localObject = ImageUtil.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
       }
+      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.b = new BitmapDrawable((Bitmap)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a();
+    }
+    while (RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView)) {
       return;
     }
+    RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView, true);
+    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, (File)localObject))
+    {
+      localBitmap = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a((File)localObject);
+      localObject = localBitmap;
+      if (this.jdField_a_of_type_Int == 1) {
+        localObject = ImageUtil.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.b = new BitmapDrawable((Bitmap)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a();
+    }
+    RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahfs
  * JD-Core Version:    0.7.0.1
  */

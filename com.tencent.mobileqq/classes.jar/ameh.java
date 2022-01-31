@@ -1,34 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.PackageInfo;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-public final class ameh
-  implements Parcelable.Creator
+public class ameh
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public CoverCacheData.PackageInfo a(Parcel paramParcel)
-  {
-    CoverCacheData.PackageInfo localPackageInfo = new CoverCacheData.PackageInfo();
-    if (paramParcel != null)
-    {
-      localPackageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localPackageInfo.jdField_a_of_type_Int = paramParcel.readInt();
-      localPackageInfo.jdField_b_of_type_Int = paramParcel.readInt();
-      localPackageInfo.jdField_c_of_type_Int = paramParcel.readInt();
-      localPackageInfo.d = paramParcel.readString();
-    }
-    return localPackageInfo;
-  }
+  public ameh(XPanelContainer paramXPanelContainer) {}
   
-  public CoverCacheData.PackageInfo[] a(int paramInt)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    return null;
+    if (paramInt == 0) {}
+    for (boolean bool = false;; bool = true)
+    {
+      if (XPanelContainer.b != bool)
+      {
+        XPanelContainer.a(this.a, true);
+        XPanelContainer.b = bool;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "onSystemUiVisibilityChange..visibility =  " + paramInt + " context = " + this.a.getContext().getClass().getName());
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ameh
  * JD-Core Version:    0.7.0.1
  */

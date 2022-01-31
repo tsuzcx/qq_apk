@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <bitmap android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021dec" android:alpha="0.7" />
+    </item>
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021dec" />
+</selector>

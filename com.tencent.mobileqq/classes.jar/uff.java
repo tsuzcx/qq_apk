@@ -1,19 +1,13 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
 
-public class uff
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class uff
+  implements Runnable
 {
-  public uff(VisitorsActivity paramVisitorsActivity) {}
+  uff(ufe paramufe) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int[] arrayOfInt = new int[2];
-    this.a.b.getLocationOnScreen(arrayOfInt);
-    this.a.i = arrayOfInt[1];
+    this.a.a.notifyDataSetChanged();
   }
 }
 

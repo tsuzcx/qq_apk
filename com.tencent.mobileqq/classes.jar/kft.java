@@ -1,37 +1,65 @@
-import com.tencent.av.business.handler.AVC2CDataHandler;
-import com.tencent.av.business.handler.AVC2CDataHandler.C2CDataHandler;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.SubHandleBase;
+import android.os.SystemClock;
+import com.tencent.av.utils.GVideoGrayConfig;
+import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
+import com.tencent.av.utils.GVideoGrayConfig.GVideoPreDownloadListener;
+import com.tencent.av.utils.GVideoGrayConfig.Record;
+import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LongSparseArray;
+import java.util.Map;
 
 public class kft
-  extends SubHandleBase
+  extends TroopObserver
 {
-  public int a;
-  public AVC2CDataHandler.C2CDataHandler a;
-  public boolean a;
-  public boolean b;
+  public kft(GVideoGrayConfig paramGVideoGrayConfig) {}
   
-  public kft(AVRedBagMgr paramAVRedBagMgr)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4, int paramInt5, long paramLong)
   {
-    super(paramAVRedBagMgr);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler = new kfu(this);
-    paramAVRedBagMgr = AVC2CDataHandler.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    if (paramAVRedBagMgr != null)
+    GVideoGrayConfig.GVideoGrayConfigListener localGVideoGrayConfigListener = (GVideoGrayConfig.GVideoGrayConfigListener)GVideoGrayConfig.a(this.a).a(paramLong);
+    if (paramBoolean)
     {
-      paramAVRedBagMgr.a(11, this.jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler);
-      return;
+      GVideoGrayConfig.a(this.a, SystemClock.elapsedRealtime());
+      paramString2 = new GVideoGrayConfig.Record(SystemClock.elapsedRealtime(), paramInt3, paramString2, paramString3, paramString4);
+      GVideoGrayConfig.a(this.a).put(paramString1, paramString2);
+      if (localGVideoGrayConfigListener != null)
+      {
+        localGVideoGrayConfigListener.a(paramInt3, paramString2, paramInt5);
+        GVideoGrayConfig.a(this.a).a(paramLong);
+        this.a.a = paramInt4;
+        if (GVideoGrayConfig.a(this.a) == null) {
+          break label261;
+        }
+        GVideoGrayConfig.a(this.a).a(paramInt4);
+        GVideoGrayConfig.a(this.a, null);
+      }
     }
-    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.i, 1, "resetData[" + paramString + "]");
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "onGetTroopHideWebConfig record gVideoStrategy:" + paramInt3 + " isSucc:" + paramBoolean);
+      }
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoGrayConfigListener is null");
+      break;
+      paramString1 = (GVideoGrayConfig.GVideoGrayConfigListener)GVideoGrayConfig.a(this.a).a(paramLong);
+      if (paramString1 != null)
+      {
+        paramString1.a(-1, null, paramInt5);
+        GVideoGrayConfig.a(this.a).a(paramLong);
+        break;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoGrayConfigListener is null");
+      break;
+      label261:
+      if (QLog.isColorLevel()) {
+        QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoPreDownloadListener is null");
+      }
     }
   }
 }

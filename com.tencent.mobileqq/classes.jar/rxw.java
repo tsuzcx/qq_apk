@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class rxw
-  extends ProxyObserver
+class rxw
+  implements Runnable
 {
-  public rxw(ChatHistoryForC2C paramChatHistoryForC2C) {}
+  rxw(rxt paramrxt) {}
   
-  public void a()
+  public void run()
   {
-    this.a.runOnUiThread(new rxx(this));
+    Object localObject = BaseApplication.getContext().getSharedPreferences("free_call", 0);
+    long l = MessageCache.a();
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putString(this.a.a, String.valueOf(l * 1000L));
+    ((SharedPreferences.Editor)localObject).commit();
   }
 }
 

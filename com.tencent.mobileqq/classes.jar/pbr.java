@@ -1,39 +1,60 @@
-import com.tencent.biz.SoftKeyboardObserver.OnSoftKeyboardToggledListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.webviewplugin.UrlCheckPlugin;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Calendar;
 
 public class pbr
-  implements SoftKeyboardObserver.OnSoftKeyboardToggledListener
+  implements IphonePickerView.PickerViewAdapter
 {
-  public pbr(UrlCheckPlugin paramUrlCheckPlugin) {}
+  private int jdField_a_of_type_Int;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public pbr(NewerGuidePlugin paramNewerGuidePlugin, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.TAG, 2, "onSoftKeyboardToggled");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.TAG, 2, "isCheatDialogShow:" + this.a.e);
-    }
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null)) {}
-    do
+    if (paramInt < 1897)
     {
-      do
-      {
-        return;
-      } while ((this.a.f < 1) || (this.a.f > 2) || (this.a.jdField_a_of_type_Boolean));
-      if (this.a.e != UrlCheckPlugin.c) {
-        break;
-      }
-    } while (this.a.f != 2);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.a();
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(2131437450);
-    return;
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(2131437450);
+      paramNewerGuidePlugin = Calendar.getInstance();
+      paramNewerGuidePlugin.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
+      this.jdField_a_of_type_Int = paramNewerGuidePlugin.get(1);
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int getColumnCount()
+  {
+    return 3;
+  }
+  
+  public int getRowCount(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return this.jdField_a_of_type_Int - 1897 + 1;
+    case 1: 
+      return 12;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897);
+    localCalendar.set(2, NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String getText(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1897 + "年";
+    case 1: 
+      return paramInt2 + 1 + "月";
+    }
+    return paramInt2 + 1 + "日";
   }
 }
 

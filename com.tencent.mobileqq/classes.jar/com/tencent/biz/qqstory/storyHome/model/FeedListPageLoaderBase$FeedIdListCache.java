@@ -11,14 +11,18 @@ public class FeedListPageLoaderBase$FeedIdListCache
   private static FeedIdListSeqInfo.HomeComp jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedIdListSeqInfo$HomeComp = new FeedIdListSeqInfo.HomeComp();
   public int a;
   private String jdField_a_of_type_JavaLangString = "";
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  public List a;
+  public boolean a;
   private int b;
   
-  public FeedListPageLoaderBase$FeedIdListCache() {}
+  public FeedListPageLoaderBase$FeedIdListCache()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
   
   public FeedListPageLoaderBase$FeedIdListCache(FeedIdListCache paramFeedIdListCache)
   {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaUtilList.addAll(paramFeedIdListCache.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_JavaLangString = paramFeedIdListCache.jdField_a_of_type_JavaLangString;
     this.jdField_a_of_type_Boolean = paramFeedIdListCache.jdField_a_of_type_Boolean;
@@ -62,14 +66,14 @@ public class FeedListPageLoaderBase$FeedIdListCache
           }
           FeedIdListSeqInfo localFeedIdListSeqInfo1 = (FeedIdListSeqInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
           Iterator localIterator = localGetFeedIdListResult1.jdField_a_of_type_JavaUtilList.iterator();
-          if (!localFeedIdListSeqInfo1.jdField_a_of_type_Boolean) {
+          if (!localFeedIdListSeqInfo1.b) {
             break label309;
           }
           if (!localIterator.hasNext()) {
             break;
           }
           FeedIdListSeqInfo localFeedIdListSeqInfo2 = (FeedIdListSeqInfo)localIterator.next();
-          if ((!localFeedIdListSeqInfo2.jdField_a_of_type_Boolean) || (!localFeedIdListSeqInfo2.c.equals(localFeedIdListSeqInfo1.c))) {
+          if ((!localFeedIdListSeqInfo2.b) || (!localFeedIdListSeqInfo2.c.equals(localFeedIdListSeqInfo1.c))) {
             continue;
           }
           localIterator.remove();
@@ -170,7 +174,7 @@ public class FeedListPageLoaderBase$FeedIdListCache
   {
     try
     {
-      String str = "FeedIdListCache{mFeedIdListSeqInfoList=" + this.jdField_a_of_type_JavaUtilList + ", mFeedIdNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mCurFeedIdPosition=" + this.jdField_a_of_type_Int + ", mTempFeedIdPosition=" + this.b + '}';
+      String str = "FeedIdListCache{mFeedIdListCache=" + this.jdField_a_of_type_JavaUtilList + ", mFeedIdNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mCurFeedIdPosition=" + this.jdField_a_of_type_Int + ", mTempFeedIdPosition=" + this.b + '}';
       return str;
     }
     finally

@@ -1,30 +1,25 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.view.WindowManager;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
 
-@TargetApi(16)
 public class akfe
-  implements BubblePopupWindow.OnDismissListener
+  implements Runnable
 {
-  akfe(ContextMenuTextView paramContextMenuTextView) {}
+  public akfe(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
   
-  public void a()
+  public void run()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      ContextMenuTextView.a(this.a, null);
-    }
-    for (;;)
-    {
-      this.a.a = null;
+    if (this.a.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
       return;
-      ContextMenuTextView.b(this.a, null);
     }
+    this.a.jdField_a_of_type_AndroidViewWindowManager.addView(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout, this.a.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    this.a.b = true;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.post(new akff(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfe
  * JD-Core Version:    0.7.0.1
  */

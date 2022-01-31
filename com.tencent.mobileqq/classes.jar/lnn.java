@@ -1,23 +1,16 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySwipeView.OnSlidingFinishListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
 
 public class lnn
-  implements ReadInJoySwipeView.OnSlidingFinishListener
+  implements View.OnClickListener
 {
-  public lnn(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  public lnn(ReadInJoyBBCircleFragment paramReadInJoyBBCircleFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("exitType", 2);
-    localBundle.putSerializable("lastShowImageModel", this.a.a.a());
-    ReadInJoyAtlasFragment.a(this.a).a(-2, localBundle);
-    ReadInJoyAtlasFragment.a(this.a, true);
-    ReadInJoyAtlasFragment.a(this.a).finish();
+    this.a.a.a(true);
   }
 }
 

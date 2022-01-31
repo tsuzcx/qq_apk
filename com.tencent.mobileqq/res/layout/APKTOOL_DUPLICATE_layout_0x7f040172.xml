@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ScrollView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09dd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="hello" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09f5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="hello" />
         <Button android:id="@id/login" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="login" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getSkey" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getUserInfo" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getAppFriends" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getLocation" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getCity" />
-        <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="100.0dip" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09f7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getSkey" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09f8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getUserInfo" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09f9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getAppFriends" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09fa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getLocation" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09fb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getCity" />
+        <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09fc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="200.0dip" android:minHeight="100.0dip" />
     </LinearLayout>
 </ScrollView>

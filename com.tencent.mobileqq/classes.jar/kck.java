@@ -1,29 +1,26 @@
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteLock;
+import com.tencent.av.app.GAudioUIObserver;
+import com.tencent.av.ui.VideoNetStateBar;
+import com.tencent.qphone.base.util.QLog;
 
-class kck
-  implements QavInOutAnimation.QavOutAnimationListener
+public class kck
+  extends GAudioUIObserver
 {
-  kck(kcj paramkcj) {}
+  public kck(VideoNetStateBar paramVideoNetStateBar) {}
   
-  public void a()
+  protected void a(long paramLong)
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.setViewEnable(2131364223, false);
-      this.a.a.a.setViewEnable(2131365392, false);
-      this.a.a.a.setViewEnable(2131365391, false);
-      this.a.a.a.setViewEnable(2131365389, false);
-      this.a.a.a.setViewEnable(2131365387, false);
-      this.a.a.a.setViewEnable(2131364225, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong);
     }
+    this.a.i();
   }
   
-  public void b()
+  protected void b(long paramLong)
   {
-    VideoInviteLock.b(this.a.a);
-    VideoInviteLock.a(this.a.a, 0, 2131034269);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong);
+    }
+    this.a.i();
   }
 }
 

@@ -1,15 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.utils.TranslucentTitleBarHelper;
 
 public class oop
-  implements Handler.Callback
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public oop(SegmentList paramSegmentList) {}
+  public oop(TranslucentTitleBarHelper paramTranslucentTitleBarHelper) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return SegmentList.a(this.a, paramMessage);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    TranslucentTitleBarHelper.a(this.a, f);
   }
 }
 

@@ -1,23 +1,26 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
 public class amru
-  implements ThreadPool.Job
+  implements URLDrawable.URLDrawableListener
 {
-  public amru(WyDownloader paramWyDownloader, List paramList) {}
+  public amru(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.a(l, true, false, false);
-    }
-    return null;
+    QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onLoadFialed");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QZoneLiveVideoBaseDownLoadActivty.a(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 

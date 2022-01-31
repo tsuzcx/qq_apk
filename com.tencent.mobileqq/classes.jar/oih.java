@@ -1,64 +1,17 @@
-import android.util.SparseBooleanArray;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.model.TextInfo;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
 
 public class oih
-  implements EditTextDialog.EditTextDialogEventListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private oih(DoodleLayout paramDoodleLayout) {}
+  public oih(FaceLayer.FaceItem paramFaceItem) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a().c();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a().a(paramInt);
-  }
-  
-  public void a(boolean paramBoolean, TextInfo paramTextInfo)
-  {
-    TextLayer localTextLayer = this.a.a();
-    if (paramBoolean)
-    {
-      localTextLayer.a(true);
-      switch (this.a.b)
-      {
-      }
-      for (;;)
-      {
-        this.a.c(3);
-        return;
-        this.a.a().b(false);
-      }
-    }
-    if (paramTextInfo.jdField_a_of_type_Int != -1) {
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
-    }
-    for (;;)
-    {
-      localTextLayer.a(paramTextInfo);
-      localTextLayer.a(false);
-      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
-      this.a.c(0);
-      this.a.d(0);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.i();
-      return;
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.b(3, paramInt);
-    }
+    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.g();
   }
 }
 

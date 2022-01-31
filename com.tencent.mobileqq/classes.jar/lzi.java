@@ -1,40 +1,55 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class lzi
-  implements Runnable
+  extends ArrayAdapter
 {
-  public lzi(TopicShareHelper paramTopicShareHelper, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo, Activity paramActivity) {}
+  final Set a = new LinkedHashSet();
   
-  public void run()
+  public lzi(@NonNull Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
+    super(paramContext, paramInt);
+  }
+  
+  public void a(@Nullable TagInfo paramTagInfo)
+  {
+    if (!this.a.contains(paramTagInfo))
+    {
+      this.a.add(paramTagInfo);
+      super.add(paramTagInfo);
     }
-    String str = ImageUtil.a(TopicShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoTopicShareHelper), this.jdField_a_of_type_JavaLangString, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina path:" + str);
-    }
-    Intent localIntent = new Intent("android.intent.action.SEND");
-    localIntent.setFlags(268435456);
-    localIntent.setType("image/*");
-    localIntent.putExtra("android.intent.extra.TEXT", this.b + this.c);
-    if (!TextUtils.isEmpty(str)) {
-      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(str)));
-    }
-    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new lzj(this));
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina start weibo!");
-    }
+  }
+  
+  public void a(TagInfo... paramVarArgs)
+  {
+    addAll(Arrays.asList(paramVarArgs));
+  }
+  
+  public void addAll(@NonNull Collection paramCollection)
+  {
+    paramCollection = new LinkedHashSet(paramCollection);
+    paramCollection.removeAll(this.a);
+    this.a.addAll(paramCollection);
+    super.addAll(paramCollection);
+  }
+  
+  public void b(@Nullable TagInfo paramTagInfo)
+  {
+    this.a.remove(paramTagInfo);
+    super.remove(paramTagInfo);
+  }
+  
+  public void clear()
+  {
+    super.clear();
+    this.a.clear();
   }
 }
 

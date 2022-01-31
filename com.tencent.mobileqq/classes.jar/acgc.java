@@ -1,28 +1,48 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class acgc
-  implements View.OnClickListener
+  implements URLDrawableDownListener
 {
-  public acgc(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public acgc(FavoriteEmotionAdapter paramFavoriteEmotionAdapter, EmoticonInfo paramEmoticonInfo, URLImageView paramURLImageView1, URLImageView paramURLImageView2) {}
   
-  public void onClick(View paramView)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (!QfileBaseCloudFileTabView.a(this.a)) {
-      return;
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FavoriteEmotionAdapter", 2, "onLoadProgressed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
     }
-    QfileBaseCloudFileTabView.a(this.a);
-    this.a.f();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() > 0) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1);
+    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FavoriteEmotionAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
-    QfileBaseCloudFileTabView.a(this.a, false);
-    this.a.h();
+    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
   }
 }
 

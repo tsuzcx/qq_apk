@@ -29,7 +29,7 @@ public class RecentItemTencentDocsAssistantData
       QLog.d("RecentItemTencentDocsAssistantData", 2, "RecentItemTencentDocsAssistantData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131439167);
+    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131439195);
     this.jdField_d_of_type_JavaLangCharSequence = "";
     paramQQAppInterface = ((TroopRedTouchManager)paramQQAppInterface.getManager(69)).a(46, false);
     label117:
@@ -41,7 +41,7 @@ public class RecentItemTencentDocsAssistantData
       this.jdField_c_of_type_Int = 0;
       this.a = 0L;
       this.jdField_c_of_type_JavaLangString = "";
-      this.jdField_c_of_type_JavaLangCharSequence = paramContext.getString(2131439168);
+      this.jdField_c_of_type_JavaLangCharSequence = paramContext.getString(2131439196);
       if (AppSetting.b)
       {
         paramQQAppInterface = new StringBuilder();
@@ -92,7 +92,7 @@ public class RecentItemTencentDocsAssistantData
         label338:
         paramQQAppInterface = null;
         continue;
-        this.jdField_c_of_type_JavaLangCharSequence = paramContext.getString(2131439168);
+        this.jdField_c_of_type_JavaLangCharSequence = paramContext.getString(2131439196);
       }
       if (!TextUtils.isEmpty(paramQQAppInterface))
       {

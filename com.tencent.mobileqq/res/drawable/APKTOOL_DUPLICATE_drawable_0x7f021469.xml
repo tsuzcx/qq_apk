@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="4.0dip" />
-    <size android:height="8.0dip" android:width="8.0dip" />
-    <solid android:color="@android:color/white" />
-</shape>
+    <item android:state_pressed="true">
+        <bitmap android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021468" android:alpha="80.0" />
+    </item>
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021468" />
+</selector>

@@ -54,13 +54,13 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Map;
-import nmp;
-import nmq;
-import nmr;
-import nms;
-import nmt;
-import nmu;
-import nmv;
+import nob;
+import noc;
+import nod;
+import nof;
+import nog;
+import noh;
+import noi;
 
 public class StoryPlayVideoActivity
   extends QQStoryBaseActivity
@@ -73,7 +73,7 @@ public class StoryPlayVideoActivity
   protected AudioManager a;
   protected Bundle a;
   public Handler a;
-  protected View a;
+  public View a;
   public ImageView a;
   public RelativeLayout a;
   public CustomViewPager a;
@@ -93,7 +93,7 @@ public class StoryPlayVideoActivity
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new nmv(this);
+    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new noi(this);
   }
   
   public static void a(Activity paramActivity, long paramLong, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
@@ -161,14 +161,22 @@ public class StoryPlayVideoActivity
     paramActivity.overridePendingTransition(2131034134, 2131034167);
   }
   
-  public static void a(Activity paramActivity, View paramView, String paramString1, String paramString2)
+  public static void a(Activity paramActivity, View paramView, String paramString1, String paramString2, boolean paramBoolean)
   {
     Intent localIntent = new Intent(paramActivity, StoryPlayVideoActivity.class);
     localIntent.putExtra("EXTRA_VIDEO_MODE", 46);
-    localIntent.putExtra("extra_share_from_type", 106);
-    localIntent.putExtra("extra_msgtab_click_node", paramString1);
-    localIntent.putExtra("extra_default_cover", paramString2);
-    AnimationUtils.b(paramActivity, localIntent, paramView);
+    if (paramBoolean) {
+      localIntent.putExtra("extra_share_from_type", 111);
+    }
+    for (;;)
+    {
+      localIntent.putExtra("extra_msgtab_click_node", paramString1);
+      localIntent.putExtra("extra_default_cover", paramString2);
+      localIntent.putExtra("extra_msgtab_from_halo", paramBoolean);
+      AnimationUtils.b(paramActivity, localIntent, paramView);
+      return;
+      localIntent.putExtra("extra_share_from_type", 106);
+    }
   }
   
   public static void a(Activity paramActivity, View paramView, ArrayList paramArrayList, int paramInt1, int paramInt2)
@@ -283,6 +291,15 @@ public class StoryPlayVideoActivity
       return;
     }
     PlayModeUtils.a(QQStoryContext.a(), paramActivity, paramString2, 16, false, -1, paramInt1, paramString3, paramInt2);
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, View paramView)
+  {
+    Intent localIntent = new Intent(paramActivity, StoryPlayVideoActivity.class);
+    localIntent.putExtra("EXTRA_VIDEO_MODE", 51);
+    localIntent.putExtra("extra_feedid", paramString1);
+    localIntent.putExtra("extra_vid", paramString2);
+    AnimationUtils.a(paramActivity, localIntent, paramView);
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, View paramView)
@@ -611,14 +628,13 @@ public class StoryPlayVideoActivity
         this.f = localIntent.getIntExtra("EXTRA_CIRCULAR_REVEAL_START_RADIUS", 0);
         this.g = localIntent.getIntExtra("EXTRA_CIRCULAR_REVEAL_X", 0);
         this.h = localIntent.getIntExtra("EXTRA_CIRCULAR_REVEAL_Y", 0);
-        this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.getViewTreeObserver().addOnPreDrawListener(new nmq(this));
+        this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.getViewTreeObserver().addOnPreDrawListener(new noc(this));
         return;
       }
       this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.getViewTreeObserver().addOnPreDrawListener(new nmr(this));
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-285212672);
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.getViewTreeObserver().addOnPreDrawListener(new nod(this));
   }
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
@@ -683,7 +699,7 @@ public class StoryPlayVideoActivity
     Animator localAnimator = ViewAnimationCompatUtils.a(paramCircularRevealCompatLayout, i, j, 1.5F * f1, paramInt1, paramInt2, this.f);
     localAnimator.setDuration(250L);
     localAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    localAnimator.addListener(new nms(this, paramCircularRevealCompatLayout));
+    localAnimator.addListener(new nof(this, paramCircularRevealCompatLayout));
     localAnimator.start();
   }
   
@@ -715,7 +731,7 @@ public class StoryPlayVideoActivity
     int j = paramCircularRevealCompatLayout.getHeight();
     Animator localAnimator = ViewAnimationCompatUtils.a(paramCircularRevealCompatLayout, i / 2, j / 2, Math.min(i, j) / 2, paramInt1, paramInt2, this.f);
     localAnimator.setDuration(250L);
-    localAnimator.addListener(new nmt(this, paramCircularRevealCompatLayout));
+    localAnimator.addListener(new nog(this, paramCircularRevealCompatLayout));
     localAnimator.start();
   }
   
@@ -744,7 +760,7 @@ public class StoryPlayVideoActivity
     }
     ViewHelper.setAlpha(this.jdField_a_of_type_AndroidViewView, 0.0F);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout.a(this.jdField_a_of_type_Int, this.b, this.c, this.d, 300, new nmu(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout.a(this.jdField_a_of_type_Int, this.b, this.c, this.d, 300, new noh(this));
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -771,22 +787,22 @@ public class StoryPlayVideoActivity
       return false;
     }
     super.getWindow().addFlags(128);
-    super.setContentViewNoTitle(2130970755);
+    super.setContentViewNoTitle(2130970803);
     SLog.b("Q.qqstory.player.StoryPlayVideoActivity", "[2/8] StoryPlayVideoActivity after super setContentViewNoTitle");
     localObject = (QQStoryActivityManager)SuperManager.a(18);
     if ((((QQStoryActivityManager)localObject).jdField_a_of_type_Boolean) && (((QQStoryActivityManager)localObject).jdField_a_of_type_JavaUtilMap != null) && (((QQStoryActivityManager)localObject).jdField_a_of_type_JavaUtilMap.size() >= 10)) {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new nmp(this, (QQStoryActivityManager)localObject), 200L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new nob(this, (QQStoryActivityManager)localObject), 200L);
     }
     StoryPublishParams.a("Q.qqstory.player.StoryPlayVideoActivity", this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer = ((StoryVideoPlayer)findViewById(2131370458));
+    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer = ((StoryVideoPlayer)findViewById(2131370599));
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a(this.jdField_a_of_type_AndroidOsBundle);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager = this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout = ((DragFrameLayout)super.findViewById(2131365545));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370454);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131370456));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout = ((CircularRevealCompatLayout)super.findViewById(2131370455));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout = ((DragFrameLayout)super.findViewById(2131365572));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370595);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131370597));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout = ((CircularRevealCompatLayout)super.findViewById(2131370596));
     a(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131371772));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131371942));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout.setDraggableView(this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout.setOnDraggingListener(this);
     if (this.jdField_a_of_type_ArrayOfInt != null)

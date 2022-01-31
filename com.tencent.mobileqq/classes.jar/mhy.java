@@ -1,20 +1,24 @@
-import android.content.Context;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.ViewHolder;
+import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
+import java.util.ArrayList;
 
 public class mhy
-  implements Runnable
+  implements KandianPopupWindow.OnUninterestConfirmListener
 {
-  public mhy(ReadInJoySkinGuideView paramReadInJoySkinGuideView, QQAppInterface paramQQAppInterface, String paramString1, View.OnClickListener paramOnClickListener1, String paramString2, View.OnClickListener paramOnClickListener2, Context paramContext) {}
+  public mhy(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, int paramInt, ReadInJoyBaseAdapter.ViewHolder paramViewHolder, BaseArticleInfo paramBaseArticleInfo) {}
   
-  public void run()
+  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
   {
-    ReadInJoySkinManager localReadInJoySkinManager = (ReadInJoySkinManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(260);
-    new SceneBuilder().a(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.getWidth()).a(new mib(this)).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a, new mhz(this));
+    if (paramInt == this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.k();
+      ((Animation)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.getTag(2131362291)).setAnimationListener(new mhz(this, paramArrayList, paramObject));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.startAnimation((Animation)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.getTag(2131362291));
+    }
   }
 }
 

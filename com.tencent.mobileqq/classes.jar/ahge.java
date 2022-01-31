@@ -1,21 +1,36 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter.OnActionListener;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class ahge
-  implements View.OnClickListener
+  implements AdapterView.OnItemSelectedListener
 {
-  public ahge(ContactSearchResultPresenter paramContactSearchResultPresenter) {}
+  public ahge(IosTimepicker paramIosTimepicker) {}
   
-  public void onClick(View paramView)
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ContactSearchResultPresenter.a(this.a).a(paramView);
+    IosTimepicker.a(this.a, paramView, 1);
+    if (paramView.getTag() != null)
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt) {
+          IosTimepicker.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+        }
+        paramInt += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahge
  * JD-Core Version:    0.7.0.1
  */

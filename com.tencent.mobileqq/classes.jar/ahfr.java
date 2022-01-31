@@ -1,34 +1,30 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment;
-import com.tencent.mobileqq.search.presenter.FTSMessageSearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.FTSMessageSearchResultView;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.RedpointHandler;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import mqq.app.MobileQQ;
 
 public class ahfr
-  extends BaseMvpFaceAdapter
+  extends MessageObserver
 {
-  public ahfr(FTSEntitySearchFragment paramFTSEntitySearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
-  {
-    super(paramListView, paramFaceDecoder);
-  }
+  public ahfr(RedTouchManager paramRedTouchManager) {}
   
-  protected IPresenter a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new FTSMessageSearchResultPresenter(FTSEntitySearchFragment.a(this.a));
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new FTSMessageSearchResultView(paramViewGroup, 2130971492);
+    if ((paramInt == 113) && (paramBoolean) && ((this.a.a instanceof QQAppInterface)))
+    {
+      RedpointHandler.a((QQAppInterface)this.a.a);
+      paramObject = new Intent();
+      paramObject.setAction("com.tencent.redpoint.broadcast.push");
+      this.a.a.getApplication().sendBroadcast(paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahfr
  * JD-Core Version:    0.7.0.1
  */

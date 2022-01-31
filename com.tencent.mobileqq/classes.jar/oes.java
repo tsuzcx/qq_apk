@@ -1,31 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoFragment;
 
 public class oes
-  implements TextWatcher
+  extends AnimatorListenerAdapter
 {
-  public oes(EditVideoPoiSearch paramEditVideoPoiSearch) {}
+  public oes(EditVideoFragment paramEditVideoFragment, View paramView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    EditVideoPartManager localEditVideoPartManager = this.a.a;
-    if (this.a.a.a()) {}
-    for (paramEditable = "2";; paramEditable = "1")
-    {
-      localEditVideoPartManager.a("search_poi", 0, 0, new String[] { paramEditable });
-      VideoEditReport.a("0X80076D1");
-      VideoEditReport.b("0X80075E6");
-      EditVideoPoiSearch.a(this.a);
-      return;
-    }
+    SLog.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    SLog.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SLog.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
+  }
 }
 
 

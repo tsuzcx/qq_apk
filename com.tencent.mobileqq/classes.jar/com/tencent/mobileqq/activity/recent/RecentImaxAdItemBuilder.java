@@ -20,9 +20,9 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.RecentDynamicAvatarView;
 import com.tencent.widget.SingleLineTextView;
-import xhh;
-import xhi;
-import xhj;
+import xko;
+import xkp;
+import xkq;
 
 public class RecentImaxAdItemBuilder
   extends RecentEfficientItemBuilder
@@ -31,48 +31,48 @@ public class RecentImaxAdItemBuilder
   {
     Animation localAnimation = AnimationUtils.loadAnimation(paramContext, 2131034220);
     paramContext = AnimationUtils.loadAnimation(paramContext, 2131034219);
-    localAnimation.setAnimationListener(new xhh(paramView, paramContext));
-    paramContext.setAnimationListener(new xhi(paramView, localAnimation));
+    localAnimation.setAnimationListener(new xko(paramView, paramContext));
+    paramContext.setAnimationListener(new xkp(paramView, localAnimation));
     paramView.startAnimation(localAnimation);
   }
   
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
   {
-    xhj localxhj;
-    if ((paramView == null) || (!(paramView.getTag() instanceof xhj)))
+    xkq localxkq;
+    if ((paramView == null) || (!(paramView.getTag() instanceof xkq)))
     {
-      localxhj = new xhj(null);
-      View localView = a(paramContext, 2130971440, localxhj);
-      localxhj.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131362701));
-      localxhj.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131363189));
-      localxhj.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131363360));
-      localxhj.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131365632));
-      localxhj.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setGravity(16);
-      localxhj.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131374721));
-      localxhj.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131374722));
+      localxkq = new xkq(null);
+      View localView = a(paramContext, 2130971488, localxkq);
+      localxkq.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)localView.findViewById(2131362719));
+      localxkq.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131363207));
+      localxkq.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131363378));
+      localxkq.b = ((SingleLineTextView)localView.findViewById(2131365659));
+      localxkq.b.setGravity(16);
+      localxkq.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131374902));
+      localxkq.c = ((ImageView)localView.findViewById(2131374903));
       Object localObject = paramContext.getResources();
       float f = DeviceInfoUtil.a();
-      paramView = ((Resources)localObject).getColorStateList(2131494260);
-      ColorStateList localColorStateList = ((Resources)localObject).getColorStateList(2131494212);
-      localObject = ((Resources)localObject).getColorStateList(2131494261);
-      localxhj.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(localColorStateList);
+      paramView = ((Resources)localObject).getColorStateList(2131494267);
+      ColorStateList localColorStateList = ((Resources)localObject).getColorStateList(2131494219);
+      localObject = ((Resources)localObject).getColorStateList(2131494268);
+      localxkq.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(localColorStateList);
       if (ThemeUtil.isNowThemeIsDefault(null, false, null))
       {
-        localxhj.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject, 0);
-        localxhj.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
-        localxhj.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
-        localxhj.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
-        localxhj.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
-        localxhj.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
-        localxhj.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
-        localxhj.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramView);
-        localxhj.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(f * 2.0F), 1);
-        localxhj.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(14.0F, 1);
-        localView.setTag(localxhj);
+        localxkq.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject, 0);
+        localxkq.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
+        localxkq.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
+        localxkq.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
+        localxkq.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(5.0F * f), 2);
+        localxkq.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 2);
+        localxkq.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+        localxkq.b.setTextColor(paramView);
+        localxkq.b.setExtendTextPadding((int)(f * 2.0F), 1);
+        localxkq.b.setExtendTextSize(14.0F, 1);
+        localView.setTag(localxkq);
         paramView = localView;
         if (this.a != null)
         {
-          localxhj.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
+          localxkq.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.a.a());
           paramView = localView;
         }
       }
@@ -80,7 +80,7 @@ public class RecentImaxAdItemBuilder
     for (;;)
     {
       return super.a(paramInt, paramObject, paramRecentFaceDecoder, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramOnDragModeChangedListener);
-      localxhj.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
+      localxkq.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
       break;
     }
   }
@@ -94,10 +94,10 @@ public class RecentImaxAdItemBuilder
       }
       return;
     }
-    if ((paramView.getTag() instanceof xhj)) {}
-    for (xhj localxhj = (xhj)paramView.getTag();; localxhj = null)
+    if ((paramView.getTag() instanceof xkq)) {}
+    for (xkq localxkq = (xkq)paramView.getTag();; localxkq = null)
     {
-      if (localxhj == null)
+      if (localxkq == null)
       {
         if (!QLog.isColorLevel()) {
           break;
@@ -106,10 +106,10 @@ public class RecentImaxAdItemBuilder
         return;
       }
       super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
-      paramView = (RelativeLayout.LayoutParams)localxhj.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      paramView.height = localxhj.jdField_b_of_type_ComTencentWidgetSingleLineTextView.getMeasuredHeight();
-      localxhj.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      a(paramContext, localxhj.jdField_b_of_type_AndroidWidgetImageView);
+      paramView = (RelativeLayout.LayoutParams)localxkq.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      paramView.height = localxkq.b.getMeasuredHeight();
+      localxkq.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      a(paramContext, localxkq.c);
       return;
     }
   }

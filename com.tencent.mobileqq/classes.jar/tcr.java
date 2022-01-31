@@ -1,29 +1,30 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class tcr
-  extends ContactBindObserver
+  implements Runnable
 {
-  public tcr(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public tcr(NotificationActivity paramNotificationActivity, int paramInt1, int paramInt2) {}
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    if (paramBoolean) {
-      PhoneUnityBindInfoActivity.a(this.a, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, 1, 2);
-    }
-    for (;;)
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("SecSig", 0);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    int i = localSharedPreferences.getInt("SecResEntry", -1);
+    if ((i == -1) || ((i ^ 0x12) != this.jdField_a_of_type_Int))
     {
-      this.a.app.unRegistObserver(this);
-      this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
-      return;
-      PhoneUnityBindInfoActivity.a(this.a, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, 3, 1);
+      localEditor.putInt("SecResEntry", this.jdField_a_of_type_Int ^ 0x12);
+      localEditor.putLong("SecStampEntry", System.currentTimeMillis() ^ 0x12);
+      localEditor.putInt("SecCacheTime", this.b);
+      localEditor.commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tcr
  * JD-Core Version:    0.7.0.1
  */

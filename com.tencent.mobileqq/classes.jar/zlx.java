@@ -1,42 +1,106 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.HandlerThread;
-import android.os.IBinder;
-import android.os.Messenger;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQMapActivityProxy;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class zlx
-  implements ServiceConnection
+  extends BroadcastReceiver
 {
-  public zlx(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler) {}
+  public zlx(QQMapActivityProxy paramQQMapActivityProxy) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    TroopQZoneUploadAlbumHandler.a(this.a, 2);
-    TroopQZoneUploadAlbumHandler.a(this.a, false);
+    paramContext = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
+      QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-onReceive:" + hashCode() + ", action=" + paramContext);
     }
-    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
-    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
-    TroopQZoneUploadAlbumHandler.b(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
+    if (paramContext.equals("com.tencent.mobileqq.addLbsObserver")) {
+      if (QQMapActivityProxy.a(this.a) != null) {
+        QQMapActivityProxy.a(this.a).addObserver(QQMapActivityProxy.a(this.a));
+      }
     }
-    this.a.jdField_a_of_type_AndroidOsMessenger = null;
-    TroopQZoneUploadAlbumHandler.a(this.a, 4);
-    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.a.b = null;
-    TroopQZoneUploadAlbumHandler.a(this.a, true);
-    if (TroopQZoneUploadAlbumHandler.a(this.a) != null) {
-      TroopQZoneUploadAlbumHandler.a(this.a).interrupt();
-    }
+    do
+    {
+      do
+      {
+        int i;
+        int j;
+        int k;
+        int m;
+        int n;
+        do
+        {
+          String str;
+          int i1;
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  if (!paramContext.equals("com.tencent.mobileqq.removeLbsObserver")) {
+                    break;
+                  }
+                } while (QQMapActivityProxy.a(this.a) == null);
+                QQMapActivityProxy.a(this.a).removeObserver(QQMapActivityProxy.a(this.a));
+                return;
+                if (!paramContext.equals("com.tencent.mobileqq.getStreetViewUrl")) {
+                  break;
+                }
+              } while (QQMapActivityProxy.a(this.a) == null);
+              ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).b((int)(paramIntent.getDoubleExtra("latitude", 0.0D) * 1000000.0D), (int)(paramIntent.getDoubleExtra("longitude", 0.0D) * 1000000.0D));
+              return;
+              if (!paramContext.equals("com.tencent.mobileqq.unregisterReceiver")) {
+                break;
+              }
+              try
+              {
+                QQMapActivityProxy.a(this.a).unregisterReceiver(QQMapActivityProxy.a(this.a));
+                return;
+              }
+              catch (Exception paramContext) {}
+            } while (!QLog.isColorLevel());
+            QLog.w("QQMapActivityProxy", 2, "mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + paramContext.toString());
+            return;
+            if (!paramContext.equals("com.tencent.mobileqq.getLbsShareSearch")) {
+              break;
+            }
+            i = paramIntent.getIntExtra("latitude", 0);
+            j = paramIntent.getIntExtra("longitude", 0);
+            k = paramIntent.getIntExtra("coordinate", 0);
+            paramContext = paramIntent.getStringExtra("keyword");
+            str = paramIntent.getStringExtra("category");
+            m = paramIntent.getIntExtra("page", 0);
+            n = paramIntent.getIntExtra("count", 0);
+            i1 = paramIntent.getIntExtra("requireMyLbs", 0);
+          } while (QQMapActivityProxy.a(this.a) == null);
+          ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(i, j, k, paramContext, str, m, n, i1);
+          return;
+          if (!paramContext.equals("com.tencent.mobileqq.getLbsShareShop")) {
+            break;
+          }
+          i = paramIntent.getIntExtra("latitude", 0);
+          j = paramIntent.getIntExtra("longitude", 0);
+          k = paramIntent.getIntExtra("coordinate", 0);
+          m = paramIntent.getIntExtra("begin", 0);
+          n = paramIntent.getIntExtra("count", 0);
+        } while (QQMapActivityProxy.a(this.a) == null);
+        ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(i, j, k, m, n);
+        return;
+      } while (!paramContext.equals("com.tencent.mobileqq.getShareShopDetail"));
+      paramContext = paramIntent.getStringExtra("shop_id");
+    } while ((TextUtils.isEmpty(paramContext)) || (QQMapActivityProxy.a(this.a) == null));
+    paramIntent = new ArrayList();
+    paramIntent.add(paramContext);
+    ((LBSHandler)QQMapActivityProxy.a(this.a).a(3)).a(paramIntent);
   }
 }
 

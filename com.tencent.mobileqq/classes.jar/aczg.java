@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 
 public class aczg
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aczg(SendBottomBar paramSendBottomBar) {}
+  public aczg(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (SendBottomBar.a(this.a) != null) {
-      SendBottomBar.a(this.a).a();
-    }
-    FileManagerUtil.a(SendBottomBar.a(this.a));
+    UniformDownloadMgr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
   }
 }
 

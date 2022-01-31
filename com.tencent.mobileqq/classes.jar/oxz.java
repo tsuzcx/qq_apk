@@ -1,29 +1,32 @@
-import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.ui.CustomMenuBar;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.OverScroller;
 
 public class oxz
-  implements View.OnTouchListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public oxz(CustomMenuBar paramCustomMenuBar, ImageView paramImageView) {}
+  public oxz(TroopNewGuidePopWindow paramTroopNewGuidePopWindow, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onGlobalLayout()
   {
-    switch (paramMotionEvent.getAction())
-    {
+    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    int i = this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.b - this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "maxHeight = " + i);
     }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidViewView.getMeasuredHeight() > i)
     {
-      return false;
-      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
-      {
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840892);
-      }
+      localLayoutParams.height = (i - 5);
+      this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    }
+    if ((this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd != null) && (this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.d) && (this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller() != null)) {
+      this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller().a(0, 0, 0, 1);
     }
   }
 }

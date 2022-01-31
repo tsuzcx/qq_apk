@@ -1,30 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.av.ui.AIOTopRightButtonConfig;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopObserver;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatShare;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class vvl
-  extends EcShopObserver
+  implements View.OnClickListener
 {
-  public vvl(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vvl(HotChatPie paramHotChatPie, String paramString) {}
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (PublicAccountChatPie.a(this.a).getVisibility() != 0))
-    {
-      if (AIOTopRightButtonConfig.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-      {
-        PublicAccountChatPie.b(this.a).setVisibility(0);
-        PublicAccountChatPie.c(this.a).setOnClickListener(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130843811, 2130843812);
-      }
-    }
-    else {
-      return;
-    }
-    PublicAccountChatPie.d(this.a).setVisibility(8);
+    paramView = ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59)).a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppHotChatShare.a(paramView);
   }
 }
 

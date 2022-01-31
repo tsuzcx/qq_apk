@@ -2,8 +2,8 @@ package com.tencent.mobileqq.widget;
 
 import NS_MOBILE_MAIN_PAGE.PhotoWall;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
-import akhg;
-import akhh;
+import akvn;
+import akvo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -69,7 +69,7 @@ public class PhotoWallView
     super(paramContext);
     this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppCardHandler$NowOnliveGallayCallback = new akhh(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppCardHandler$NowOnliveGallayCallback = new akvo(this);
     this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -163,32 +163,32 @@ public class PhotoWallView
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
     this.jdField_a_of_type_ComTencentMobileqqAppCardHandler = ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2));
-    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970515, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370973);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView = ((ProfileCardNewPhotoWallView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370974));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370975);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370976);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370977));
-    this.d = findViewById(2131370978);
-    this.e = findViewById(2131370979);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370980));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370981));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370982));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370983));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370984));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.d.findViewById(2131370985));
+    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970559, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131371137);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView = ((ProfileCardNewPhotoWallView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371138));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371139);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371140);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371141));
+    this.d = findViewById(2131371142);
+    this.e = findViewById(2131371143);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371144));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371145));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371146));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371147));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371148));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.d.findViewById(2131371149));
     this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.e.setAlpha(0.15F);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437511);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437528);
     }
     for (;;)
     {
-      ThreadManager.post(new akhg(this), 5, null, true);
+      ThreadManager.post(new akvn(this), 5, null, true);
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437512);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437529);
     }
   }
   
@@ -363,7 +363,7 @@ public class PhotoWallView
     {
     default: 
       return;
-    case 2131370977: 
+    case 2131371141: 
       if (bool) {
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007EBE", "0X8007EBE", 0, 0, "", "", "", "");
       }
@@ -398,7 +398,7 @@ public class PhotoWallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PhotoWallView
  * JD-Core Version:    0.7.0.1
  */

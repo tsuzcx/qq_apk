@@ -1,33 +1,15 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class zfd
-  implements Runnable
+public final class zfd
+  implements DialogInterface.OnDismissListener
 {
-  public zfd(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zfd(Activity paramActivity, int paramInt) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    synchronized (PhoneContactManagerImp.a(this.a))
-    {
-      PhoneContactManagerImp.a(this.a).getPreferences();
-      try
-      {
-        Iterator localIterator = PhoneContactManagerImp.a(this.a).iterator();
-        while (localIterator.hasNext()) {
-          ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.a.a);
-        }
-        localObject = finally;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-    }
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
   }
 }
 

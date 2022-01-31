@@ -1,23 +1,47 @@
-import android.os.Build;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.os.Handler;
+import com.tencent.av.AVLog;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class jfo
-  implements Runnable
+  implements Observer
 {
-  public jfo(VideoAppInterface paramVideoAppInterface) {}
+  private WeakReference a;
   
-  public void run()
+  public jfo(MagicFaceDataEntity paramMagicFaceDataEntity)
   {
-    long l1 = System.currentTimeMillis();
-    if (!Build.MANUFACTURER.toLowerCase().equals("xiaomi")) {
-      ImmersiveUtils.d = false;
+    this.a = new WeakReference(paramMagicFaceDataEntity);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    int j;
+    if (this.a.get() != null)
+    {
+      paramObservable = ((MagicFaceDataEntity)this.a.get()).a;
+      if (paramObject != null)
+      {
+        Object[] arrayOfObject = (Object[])paramObject;
+        if ((arrayOfObject != null) && (arrayOfObject.length > 0))
+        {
+          j = ((Integer)arrayOfObject[0]).intValue();
+          if ((j == 130) || (j == 131) || (j == 132)) {
+            if ((j != 131) && (j != 132)) {
+              break label152;
+            }
+          }
+        }
+      }
     }
-    boolean bool = ImmersiveUtils.a();
-    long l2 = System.currentTimeMillis();
-    VideoAppInterface.a(this.a, null);
-    QLog.w(VideoAppInterface.c(), 1, "supportStatusBarDarkMode, support[" + bool + "], start[" + l1 + "], cost[" + (l2 - l1) + "]");
+    label152:
+    for (int i = 500;; i = 0)
+    {
+      AVLog.c("MagicFaceDataEntity", "MagicFaceDataEntity update :" + j + "|" + i);
+      paramObservable.sendMessageDelayed(paramObservable.obtainMessage(1, paramObject), i);
+      return;
+    }
   }
 }
 

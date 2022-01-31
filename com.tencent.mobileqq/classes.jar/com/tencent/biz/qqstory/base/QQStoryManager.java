@@ -23,7 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
-import mye;
+import mzn;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -137,7 +137,7 @@ public class QQStoryManager
     }
     while (localList != null)
     {
-      Bosses.get().postJob(new mye(this, paramBoolean));
+      Bosses.get().postJob(new mzn(this, paramBoolean));
       return localList;
       if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
         localList = this.jdField_a_of_type_JavaUtilList;
@@ -156,8 +156,7 @@ public class QQStoryManager
     this.g = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("sp_key_show_auto_post2discovery", true);
     this.h = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("sp_key_auto_post2discovery", false);
     this.i = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("sp_key_show_video_info", false);
-    a(SharedPreUtils.g(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    b(SharedPreUtils.h(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    b(SharedPreUtils.g(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
   }
   
   public void a(int paramInt)

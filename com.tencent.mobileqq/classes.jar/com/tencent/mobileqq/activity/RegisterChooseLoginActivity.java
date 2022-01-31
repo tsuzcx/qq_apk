@@ -24,10 +24,10 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import mqq.observer.AccountObserver;
 import mqq.os.MqqHandler;
-import tmh;
-import tmi;
-import tmj;
-import tmk;
+import tph;
+import tpi;
+import tpj;
+import tpk;
 
 public class RegisterChooseLoginActivity
   extends RegisterNewBaseActivity
@@ -36,8 +36,8 @@ public class RegisterChooseLoginActivity
   private InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tmk(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tmh(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tpk(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tph(this);
   public boolean a;
   private String c;
   private String jdField_d_of_type_JavaLangString;
@@ -50,18 +50,18 @@ public class RegisterChooseLoginActivity
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramBoolean)
     {
-      super.setTitle(2131434200);
+      super.setTitle(2131434217);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
     }
-    super.setTitle(2131434199);
+    super.setTitle(2131434216);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
   }
   
   private void d()
   {
-    DialogUtil.a(this, 0, null, super.getResources().getString(2131434283, new Object[] { "+" + this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString }), super.getResources().getString(2131434284), super.getResources().getString(2131434285), null, new tmi(this), new tmj(this)).show();
+    DialogUtil.a(this, 0, null, super.getResources().getString(2131434300, new Object[] { "+" + this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString }), super.getResources().getString(2131434301), super.getResources().getString(2131434302), null, new tpi(this), new tpj(this)).show();
   }
   
   private void e()
@@ -87,11 +87,11 @@ public class RegisterChooseLoginActivity
   
   public void a()
   {
-    c(2131434311);
+    c(2131434328);
     b();
     a(65);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372045));
-    Object localObject1 = (ImageView)super.findViewById(2131372049);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372218));
+    Object localObject1 = (ImageView)super.findViewById(2131372222);
     Object localObject2 = super.getIntent().getStringExtra("key_register_binded_qq_face_url");
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
     for (;;)
@@ -103,21 +103,21 @@ public class RegisterChooseLoginActivity
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mRequestWidth = i;
         localURLDrawableOptions.mRequestHeight = j;
-        localURLDrawableOptions.mLoadingDrawable = super.getResources().getDrawable(2130839128);
-        localURLDrawableOptions.mFailedDrawable = super.getResources().getDrawable(2130839296);
+        localURLDrawableOptions.mLoadingDrawable = super.getResources().getDrawable(2130839132);
+        localURLDrawableOptions.mFailedDrawable = super.getResources().getDrawable(2130839300);
         localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
         ((URLDrawable)localObject2).setTag(URLDrawableDecodeHandler.a(i, j));
         ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.a);
         ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
-        localObject1 = (TextView)super.findViewById(2131372050);
+        localObject1 = (TextView)super.findViewById(2131372223);
         localObject2 = super.getIntent().getStringExtra("key_register_binded_qq_nick");
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           break label259;
         }
         ((TextView)localObject1).setText((CharSequence)localObject2);
-        ((TextView)super.findViewById(2131372051)).setText(this.jdField_e_of_type_JavaLangString);
-        ((Button)super.findViewById(2131372053)).setOnClickListener(this);
-        ((Button)super.findViewById(2131372056)).setOnClickListener(this);
+        ((TextView)super.findViewById(2131372224)).setText(this.jdField_e_of_type_JavaLangString);
+        ((Button)super.findViewById(2131372226)).setOnClickListener(this);
+        ((Button)super.findViewById(2131372229)).setOnClickListener(this);
         b(false);
         return;
       }
@@ -126,7 +126,7 @@ public class RegisterChooseLoginActivity
         localException.printStackTrace();
         continue;
       }
-      localException.setImageResource(2130839296);
+      localException.setImageResource(2130839300);
       continue;
       label259:
       localException.setVisibility(8);
@@ -136,7 +136,7 @@ public class RegisterChooseLoginActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970875);
+    setContentView(2130970923);
     this.jdField_c_of_type_JavaLangString = super.getIntent().getStringExtra("key_register_smscode");
     if (this.jdField_c_of_type_JavaLangString == null) {
       this.jdField_c_of_type_JavaLangString = "";
@@ -215,11 +215,11 @@ public class RegisterChooseLoginActivity
   {
     switch (paramView.getId())
     {
-    case 2131372054: 
-    case 2131372055: 
+    case 2131372227: 
+    case 2131372228: 
     default: 
       return;
-    case 2131372053: 
+    case 2131372226: 
       paramView = new Intent(this, LoginActivity.class);
       paramView.putExtra("from_register_choose", true);
       paramView.putExtra("uin", this.jdField_d_of_type_JavaLangString);

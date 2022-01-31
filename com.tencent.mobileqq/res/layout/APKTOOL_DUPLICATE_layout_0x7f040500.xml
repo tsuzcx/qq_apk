@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/skin_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1961" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="100.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0947" android:layout_width="320.0dip" android:layout_height="177.5dip" android:scaleType="fitXY" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e9b" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-</LinearLayout>
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1962" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1827" />
+</FrameLayout>

@@ -1,24 +1,51 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class agbb
-  implements Comparator
+  implements TextWatcher
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  public agbb(OCRRecognitionResultActivity paramOCRRecognitionResultActivity) {}
   
-  public agbb(TagCloudView paramTagCloudView, Point paramPoint)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    int i = 3400;
+    if (paramEditable.toString().length() == 0)
+    {
+      OCRRecognitionResultActivity.a(this.a);
+      return;
+    }
+    int j;
+    if (paramEditable.length() > 3400)
+    {
+      j = OCRRecognitionResultActivity.b(this.a).getSelectionStart();
+      OCRRecognitionResultActivity.b(this.a).setText(paramEditable.subSequence(0, 3400));
+      if (j <= 3400) {
+        break label128;
+      }
+    }
+    for (;;)
+    {
+      OCRRecognitionResultActivity.b(this.a).setSelection(i);
+      if (OCRRecognitionResultActivity.b(this.a)) {
+        QQToast.a(this.a, 1, "字数超过上限", 0).a();
+      }
+      for (;;)
+      {
+        OCRRecognitionResultActivity.b(this.a);
+        return;
+        OCRRecognitionResultActivity.a(this.a, true);
+      }
+      label128:
+      i = j;
+    }
   }
   
-  public int a(Rect paramRect1, Rect paramRect2)
-  {
-    paramRect1 = new Point((int)(paramRect1.width() * 0.5F + paramRect1.left), (int)(paramRect1.height() * 0.5F + paramRect1.top));
-    paramRect2 = new Point((int)(paramRect2.width() * 0.5F + paramRect2.left), (int)(paramRect2.height() * 0.5F + paramRect2.top));
-    return TagCloudView.a(paramRect1, this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramRect2, this.jdField_a_of_type_AndroidGraphicsPoint);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

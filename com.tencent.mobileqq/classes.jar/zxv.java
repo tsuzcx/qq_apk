@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class zxv
   implements Runnable
 {
-  public zxv(ArConfigService paramArConfigService) {}
+  public zxv(ARRecordReport paramARRecordReport) {}
   
   public void run()
   {
-    ArConfigService.e(this.a);
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.a(BaseApplication.getContext()).a("", "ar_record_pre_record_start", true, 0L, 0L, localHashMap, "");
   }
 }
 

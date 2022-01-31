@@ -1,38 +1,24 @@
-import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
 
 public class rkr
-  implements View.OnClickListener
+  implements ArkAppContainer.ArkAppModuleCallback
 {
-  public rkr(AuthDevActivity paramAuthDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public rkr(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onClick(View paramView)
+  public boolean a(ArkAppContainer paramArkAppContainer)
   {
-    boolean bool2 = true;
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    if (Arrays.equals(NetConnInfoCenter.GUID, paramView.vecGuid)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      AuthDevActivity localAuthDevActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity;
-      String str1 = paramView.strDeviceName;
-      String str2 = AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
-      int i = this.jdField_a_of_type_Int;
-      if (paramView.iLoginPlatform == 3L) {}
-      for (;;)
-      {
-        AuthDevActivity.a(localAuthDevActivity, str1, localArrayList, str2, i, bool2, bool1, paramView.iAppId);
-        return;
-        bool2 = false;
-      }
+    this.a.finish();
+    if (ArkFullScreenAppActivity.a(this.a)) {
+      this.a.overridePendingTransition(2131034134, 2131034135);
     }
+    return false;
+  }
+  
+  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 

@@ -38,7 +38,7 @@ public class BaseFragment
     return false;
   }
   
-  public void ap_()
+  public void ar_()
   {
     c();
     onHiddenChanged(false);
@@ -185,7 +185,7 @@ public class BaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.BaseFragment
  * JD-Core Version:    0.7.0.1
  */

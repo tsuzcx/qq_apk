@@ -1,29 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.AuthorityLoginView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.vipav.VipFunCallMediaListener;
 
-public class aklc
-  implements DialogInterface.OnClickListener
+public final class aklc
+  implements MediaPlayer.OnPreparedListener
 {
-  public aklc(AuthorityLoginView paramAuthorityLoginView, String paramString) {}
+  public aklc(VipFunCallMediaListener paramVipFunCallMediaListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (paramInt == 1) {
-      ThreadManager.executeOnSubThread(new akld(this));
+    paramMediaPlayer.start();
+    paramMediaPlayer.setLooping(true);
+    if (this.a != null) {
+      this.a.a();
     }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.a == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.a.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aklc
  * JD-Core Version:    0.7.0.1
  */

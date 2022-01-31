@@ -1,16 +1,30 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+
 public class aamn
-  extends aamh
+  implements View.OnTouchListener
 {
-  public String d;
+  public aamn(ARGreetingCardListManager paramARGreetingCardListManager) {}
   
-  private aamn()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(null);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamn
  * JD-Core Version:    0.7.0.1
  */

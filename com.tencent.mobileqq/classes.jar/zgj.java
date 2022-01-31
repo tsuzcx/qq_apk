@@ -1,57 +1,89 @@
-import com.dataline.activities.LiteActivity;
-import com.dataline.activities.PrinterActivity;
-import com.dataline.util.PrinterSessionAdapter;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.DataLineObserver;
-import com.tencent.mobileqq.app.PrinterHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.OutputStream;
 
 public class zgj
-  extends DataLineObserver
 {
-  public zgj(PrinterHandler paramPrinterHandler) {}
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
   
-  protected void a(Session paramSession)
+  public void a()
   {
-    this.a.a(3, paramSession, 0.0D, false);
-    if (this.a.a != null)
+    long l = DeviceInfoUtil.e();
+    try
     {
-      this.a.a.c();
-      this.a.a.notifyDataSetChanged();
-      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
-      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).getString("LowMemoryStat", null);
+      if (localObject == null) {
+        return;
+      }
+      if (((String)localObject).length() == 0) {
+        return;
+      }
+      localObject = new DataInputStream(new ByteArrayInputStream(Base64Util.decode((String)localObject, 0)));
+      this.jdField_a_of_type_Long = ((DataInputStream)localObject).readLong();
+      this.jdField_b_of_type_Long = ((DataInputStream)localObject).readLong();
+      this.jdField_a_of_type_Int = ((DataInputStream)localObject).readInt();
+      this.c = ((DataInputStream)localObject).readLong();
+      this.d = ((DataInputStream)localObject).readLong();
+      this.jdField_b_of_type_Int = ((DataInputStream)localObject).readInt();
+      this.e = ((DataInputStream)localObject).readLong();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        b();
+      }
+    }
+    if ((l < this.jdField_a_of_type_Long) || (l < this.jdField_b_of_type_Long) || (l < this.c) || (l < this.d))
+    {
+      b();
+      return;
     }
   }
   
-  protected void a(Session paramSession, float paramFloat)
+  public void b()
   {
-    this.a.a(1, paramSession, paramFloat, false);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+    this.c = 0L;
+    this.d = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.e = 0L;
   }
   
-  protected void a(Session paramSession, boolean paramBoolean)
+  public void c()
   {
-    this.a.a(2, paramSession, 0.0D, paramBoolean);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    try
+    {
+      Object localObject = new ByteArrayOutputStream();
+      DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
+      localDataOutputStream.writeLong(this.jdField_a_of_type_Long);
+      localDataOutputStream.writeLong(this.jdField_b_of_type_Long);
+      localDataOutputStream.writeInt(this.jdField_a_of_type_Int);
+      localDataOutputStream.writeLong(this.c);
+      localDataOutputStream.writeLong(this.d);
+      localDataOutputStream.writeInt(this.jdField_b_of_type_Int);
+      localDataOutputStream.writeLong(this.e);
+      localDataOutputStream.flush();
+      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
+      BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString("LowMemoryStat", Base64Util.encodeToString((byte[])localObject, 0)).commit();
+      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong)
-  {
-    this.a.a(paramLong, paramBoolean);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(Session paramSession)
-  {
-    this.a.a(0, paramSession, 0.0D, false);
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    catch (Exception localException) {}
   }
 }
 

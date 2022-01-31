@@ -1,23 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import android.os.Handler;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahea
-  implements View.OnClickListener
+  extends MessageObserver
 {
-  public ahea(UniteSearchActivity paramUniteSearchActivity) {}
+  public ahea(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong, int paramInt)
   {
-    UniteSearchActivity.e = 1;
-    this.a.a.setText("");
-    this.a.a();
+    if (ReceiptMessageDetailFragment.b(this.a) == paramLong)
+    {
+      if (paramInt != 0) {
+        break label78;
+      }
+      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c succ");
+      ReceiptMessageDetailFragment.a(this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+      if (this.a.isAdded())
+      {
+        ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(4);
+        ReceiptMessageDetailFragment.a(this.a, 1, true);
+      }
+    }
+    label78:
+    do
+    {
+      return;
+      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c fail with reply codes: " + paramInt);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    } while (!this.a.isAdded());
+    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahea
  * JD-Core Version:    0.7.0.1
  */

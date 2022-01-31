@@ -40,8 +40,8 @@ public class FriendProfileImageAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131558493));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130846201);
-    this.b = paramContext.getResources().getDrawable(2130846202);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130846329);
+    this.b = paramContext.getResources().getDrawable(2130846330);
     this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
   }
   
@@ -213,7 +213,7 @@ public class FriendProfileImageAdapter
     ImageView localImageView;
     if (paramView == null)
     {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969032, null);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969031, null);
       paramView = (ImageProgressCircle)paramViewGroup.findViewById(2131361845);
       paramView.setVisibility(4);
       localImageView = (ImageView)paramViewGroup.findViewById(2131361846);
@@ -262,7 +262,7 @@ public class FriendProfileImageAdapter
       }
       else
       {
-        localImageView.setImageResource(2130846202);
+        localImageView.setImageResource(2130846330);
       }
     }
   }

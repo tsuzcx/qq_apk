@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import uhl;
+import ukl;
 
 public class ChatAdapter1
   extends XBaseAdapter
@@ -58,7 +58,7 @@ public class ChatAdapter1
   public Boolean a;
   CharSequence jdField_a_of_type_JavaLangCharSequence = null;
   public List a;
-  uhl jdField_a_of_type_Uhl = new uhl(this, null);
+  ukl jdField_a_of_type_Ukl = new ukl(this, null);
   
   static
   {
@@ -87,9 +87,9 @@ public class ChatAdapter1
   
   public static void a(MessageForStructing paramMessageForStructing, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, boolean paramBoolean)
   {
-    int i = 2130845660;
-    int j = 2130845496;
-    int k = 2130837925;
+    int i = 2130845788;
+    int j = 2130845624;
+    int k = 2130837928;
     if ((paramMessageForStructing == null) || (paramMessageForStructing.structingMsg == null)) {
       return;
     }
@@ -100,7 +100,7 @@ public class ChatAdapter1
         break;
       }
     }
-    for (i = k;; i = 2130837913)
+    for (i = k;; i = 2130837916)
     {
       paramView.setBackgroundResource(i);
       return;
@@ -113,12 +113,12 @@ public class ChatAdapter1
       {
         AIOUtils.a(paramViewHolder.a, i);
         return;
-        i = 2130845661;
+        i = 2130845789;
         continue;
         if (paramBoolean) {
-          i = 2130845496;
+          i = 2130845624;
         } else {
-          i = 2130845497;
+          i = 2130845625;
         }
       }
       if (!paramMessageForStructing.structingMsg.hasFlag(4))
@@ -130,16 +130,16 @@ public class ChatAdapter1
           {
             AIOUtils.a(paramViewHolder.a, i);
             return;
-            i = 2130845661;
+            i = 2130845789;
           }
         }
         if (paramBoolean) {}
-        for (i = j;; i = 2130845497) {
+        for (i = j;; i = 2130845625) {
           break;
         }
       }
       if (paramBoolean) {}
-      for (i = 2130837925;; i = 2130837913)
+      for (i = 2130837928;; i = 2130837916)
       {
         paramView.setBackgroundResource(i);
         return;
@@ -585,8 +585,8 @@ public class ChatAdapter1
   
   public void d()
   {
-    if (this.jdField_a_of_type_Uhl.a != null) {
-      this.jdField_a_of_type_Uhl.a.a();
+    if (this.jdField_a_of_type_Ukl.a != null) {
+      this.jdField_a_of_type_Ukl.a.a();
     }
   }
   
@@ -651,7 +651,7 @@ public class ChatAdapter1
         localChatMessage1.mNeedTimeStamp = true;
       }
     }
-    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage1, paramView, paramViewGroup, this.jdField_a_of_type_Uhl);
+    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage1, paramView, paramViewGroup, this.jdField_a_of_type_Ukl);
     if (paramView != null) {
       paramView.setTag(2131361859, localChatMessage1);
     }

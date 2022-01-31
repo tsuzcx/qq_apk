@@ -1,25 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
 
 public class akde
-  implements WebSoService.CallBack
+  implements Runnable
 {
-  public akde(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState) {}
+  public akde(NewUpgradeDialog paramNewUpgradeDialog) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a = 10004;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
+    NewUpgradeDialog.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akde
  * JD-Core Version:    0.7.0.1
  */

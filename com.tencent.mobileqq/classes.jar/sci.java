@@ -1,31 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troop.widget.ExpandableTextView.OnExpandStateListener;
 
 public class sci
-  implements View.OnClickListener
+  implements ExpandableTextView.OnExpandStateListener
 {
-  public sci(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
+  public sci(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(View paramView)
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      this.a.a = 0;
-    }
-    for (;;)
-    {
-      this.a.a(this.a.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
-      return;
-      this.a.a = 1;
-      continue;
-      this.a.a = 2;
-      continue;
-      this.a.a = 3;
-    }
+    paramView.setVisibility(8);
   }
 }
 

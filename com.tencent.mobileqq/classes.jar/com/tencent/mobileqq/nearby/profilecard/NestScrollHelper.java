@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aeri;
+import afeo;
 import android.graphics.Rect;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -21,7 +21,7 @@ public class NestScrollHelper
     Object localObject = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter();
     if ((localObject != null) && ((localObject instanceof FragmentPagerAdapter)))
     {
-      localObject = ((aeri)localObject).a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
+      localObject = ((afeo)localObject).a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
       if (localObject == null) {
         Log.i("NestScrollHelper", "getScrollableView: fragment is null");
       }

@@ -1,96 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6b6.oidb_0x6b6.RspBody;
-import tencent.im.oidb.cmd0x6b6.oidb_0x6b6.SendFlowerRsp;
-import tencent.im.oidb.cmd0x6b6.oidb_0x6b6.ThrowFlowerRsp;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class ajbo
-  extends ProtoUtils.TroopGiftProtocolObserver
+  implements View.OnTouchListener
 {
-  public ajbo(TroopGiftManager paramTroopGiftManager, TroopGiftCallback paramTroopGiftCallback) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ajbo(NewTroopContactView paramNewTroopContactView) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback == null))
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null)
-      {
-        if (paramArrayOfByte != null) {
-          paramBundle = new oidb_0x6b6.RspBody();
-        }
-      }
-      else {
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = paramBundle.bytes_error_notify.get().toStringUtf8();
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.b(paramInt, paramArrayOfByte);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "InvalidProtocolBufferMicroException");
-          return;
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, "sso request error or callback is null.");
-      return;
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
     }
-    oidb_0x6b6.RspBody localRspBody;
-    try
+    for (;;)
     {
-      localRspBody = new oidb_0x6b6.RspBody();
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramInt = localRspBody.int32_ret.get();
-      if ((paramInt != 0) || (paramBundle == null)) {
-        break label354;
-      }
-      paramInt = paramBundle.getInt("subCmd");
-      if (localRspBody.msg_send_flower.has())
-      {
-        paramArrayOfByte = (oidb_0x6b6.SendFlowerRsp)localRspBody.msg_send_flower.get();
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramArrayOfByte.uint32_product_id.get());
-        return;
+      return false;
+      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a.clearFocus();
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "InvalidProtocolBufferMicroException");
-      return;
-    }
-    if (localRspBody.msg_throw_flower.has())
-    {
-      paramArrayOfByte = (oidb_0x6b6.ThrowFlowerRsp)localRspBody.msg_throw_flower.get();
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.b(paramArrayOfByte.uint32_product_id.get());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "Invalid RspData. subCmd:" + paramInt);
-    return;
-    label354:
-    paramArrayOfByte = localRspBody.bytes_error_notify.get().toStringUtf8();
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.b(paramInt, paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,20 @@
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
 
 public class jtc
-  implements Runnable
+  implements QavInOutAnimation.QavOutAnimationListener
 {
-  public jtc(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jtc(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  public void run()
+  public void a()
   {
-    this.a.h(true);
+    this.a.l = true;
+    this.a.ah();
+  }
+  
+  public void b()
+  {
+    this.a.l = false;
   }
 }
 

@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.DeleteFeedCallback;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import java.util.List;
 
 public class aeya
-  implements NearbyMomentProtocol.DeleteFeedCallback
 {
-  public aeya(NearbyMomentManager paramNearbyMomentManager, NearbyMomentManager.DeleteFeedCallback paramDeleteFeedCallback) {}
+  public String a;
+  public List a;
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.a(paramString, false);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$DeleteFeedCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$DeleteFeedCallback.a(paramBoolean, paramString);
-    }
-  }
+  private aeya(ShortVideoCommentsView paramShortVideoCommentsView) {}
 }
 
 

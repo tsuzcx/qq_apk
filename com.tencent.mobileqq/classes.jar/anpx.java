@@ -1,28 +1,38 @@
-import android.view.View;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import dov.com.qq.im.capture.util.QIMProviderViewBuilder;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
-public class anpx
-  implements ActionSheet.OnButtonClickListener
+class anpx
+  implements Runnable
 {
-  public anpx(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  anpx(anpw paramanpw, int paramInt, Drawable[] paramArrayOfDrawable) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int)
     {
-    default: 
-      return;
+      if (QIMProviderContainerView.a(this.jdField_a_of_type_Anpw.a).a(i))
+      {
+        Object localObject = (ImageView)this.jdField_a_of_type_Anpw.a.a.getChildAt(i);
+        ((Integer)((ImageView)localObject).getTag()).intValue();
+        if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i] != null)
+        {
+          ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i]);
+          if ((((ImageView)localObject).getDrawable() instanceof AnimationDrawable))
+          {
+            localObject = (AnimationDrawable)((ImageView)localObject).getDrawable();
+            ((AnimationDrawable)localObject).stop();
+            ((AnimationDrawable)localObject).setOneShot(true);
+            ((AnimationDrawable)localObject).start();
+          }
+        }
+      }
+      i += 1;
     }
-    if (this.a.a.b.get() == 4) {
-      this.a.a(false);
-    }
-    this.a.a.a("FlowCameraActivity");
-    this.a.b();
-    FlowCameraMqqAction.b("", "0X800656F", "0");
   }
 }
 

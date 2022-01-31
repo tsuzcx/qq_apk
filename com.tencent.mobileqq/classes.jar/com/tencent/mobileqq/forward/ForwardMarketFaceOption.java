@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import adax;
+import adkw;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -66,7 +66,7 @@ public class ForwardMarketFaceOption
     }
     localObject = ((PicEmoticonInfo)localObject).a("fromAIO", false);
     ((URLDrawable)localObject).setBounds(ImageUtil.a((Drawable)localObject, 36, 100, this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adax(this, paramQQCustomDialog, (URLDrawable)localObject));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adkw(this, paramQQCustomDialog, (URLDrawable)localObject));
   }
   
   protected boolean c()

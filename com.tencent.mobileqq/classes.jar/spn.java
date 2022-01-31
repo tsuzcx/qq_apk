@@ -1,95 +1,45 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
-import com.tencent.mobileqq.campuscircle.CampusCircleObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.profile.DataTag;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-public class spn
-  extends CampusCircleObserver
+class spn
+  implements View.OnClickListener
 {
-  public spn(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  spn(spl paramspl) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, List paramList)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean) {}
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataCard.lCampusSchoolID != paramLong) || (paramList == null) || (paramList.size() <= 0)) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.a.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag == null) {}
     for (;;)
     {
-      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
       return;
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle, Card paramCard)
-  {
-    long l;
-    if ((paramBoolean) && (paramBundle != null) && (this.a.i) && (paramBundle.containsKey("campus_school")) && (paramBundle.containsKey("campus_school_id")))
-    {
-      String str = paramBundle.getString("campus_school");
-      l = paramBundle.getLong("campus_school_id");
-      if (TextUtils.isEmpty(str))
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a instanceof String)) {
+        paramView = (String)this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a;
+      }
+      while (paramView != null)
       {
-        i = 3;
-        this.a.a("0X8007ECC", i);
-        this.a.i = false;
-        this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1004, 100L);
-      }
-    }
-    else
-    {
-      if (!paramBoolean) {
-        this.a.runOnUiThread(new spo(this));
-      }
-      if (paramCard != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-      }
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        this.a.app.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver);
-        this.a.jdField_b_of_type_Boolean = false;
-      }
-      if ((this.a.jdField_b_of_type_Int & 0x2) != 2) {
-        break label323;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null) {
-        break label343;
-      }
-    }
-    label323:
-    label343:
-    for (int i = CampusCircleHelper.b(this.a.jdField_a_of_type_ComTencentMobileqqDataCard.lCampusSchoolID);; i = 0)
-    {
-      if ((this.a.k) && (paramBundle != null) && (((i == 4) && (paramBundle.containsKey("campus_college"))) || (paramBundle.containsKey("campus_enroll_year")))) {
-        this.a.k = false;
-      }
-      if ((this.a.l) && (paramBundle != null) && (((i == 4) && (paramBundle.containsKey("campus_enroll_year"))) || (paramBundle.containsKey("campus_class")))) {
-        this.a.l = false;
-      }
-      this.a.b(2);
-      do
-      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b(paramView);
+        ThreadManager.post(new spo(this), 5, null, true);
         return;
-        if (l != 0L)
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a instanceof ProfileActivity.CardContactInfo))
         {
-          i = 1;
-          break;
+          paramView = (ProfileActivity.CardContactInfo)this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a;
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a.a == 33)) {
+            paramView = paramView.c;
+          } else {
+            paramView = paramView.a + " " + paramView.c;
+          }
         }
-        i = 2;
-        break;
-      } while (!paramBoolean);
-      this.a.runOnUiThread(new spp(this));
-      return;
+        else
+        {
+          paramView = null;
+        }
+      }
     }
   }
 }

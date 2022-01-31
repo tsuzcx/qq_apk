@@ -1,41 +1,34 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
-import java.io.Serializable;
-import java.util.List;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.mobileqq.vas.VasH5PayUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vip.AioVipKeywordHelper;
 
 public class uyp
-  implements Runnable
+  implements FileManagerUtil.TipsClickedInterface
 {
-  public uyp(MarketFaceItemBuilder paramMarketFaceItemBuilder, String paramString, MarketFaceItemBuilder.Holder paramHolder) {}
+  public uyp(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, AioVipKeywordHelper paramAioVipKeywordHelper) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, H5MagicPlayerActivity.class);
-    localIntent.putExtra("clickTime", System.currentTimeMillis());
-    localIntent.putExtra("autoPlay", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("senderUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
-    localIntent.putExtra("selfUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localIntent.putExtra("sessionInfo", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    localIntent.putExtra("emoticon", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a);
-    Object localObject = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-    EmoticonPackage localEmoticonPackage = ((EmoticonManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId);
-    if (localEmoticonPackage != null)
-    {
-      localObject = ((EmoticonManager)localObject).a(localEmoticonPackage.childEpId);
-      if ((localObject != null) && (((List)localObject).size() > 0)) {
-        localIntent.putExtra("childEmoticon", (Serializable)((List)localObject).get(0));
-      }
+    paramView = new Bundle();
+    paramView.putString(VasH5PayUtil.i, this.jdField_a_of_type_JavaLangString);
+    paramView.putString(VasH5PayUtil.c, this.b);
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
+      paramView.putString(VasH5PayUtil.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b.startActivity(localIntent);
+    VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, paramView);
+    String str = this.c;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
+    for (paramView = "0";; paramView = "1")
+    {
+      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_ComTencentMobileqqVipAioVipKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", "", "");
+      return;
+    }
   }
 }
 

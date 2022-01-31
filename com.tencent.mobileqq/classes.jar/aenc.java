@@ -1,35 +1,34 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.biz.ProtoServlet;
+import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import mqq.app.MobileQQ;
+import mqq.app.NewIntent;
+import org.json.JSONObject;
 
-public class aenc
-  extends AnimatorListenerAdapter
+public final class aenc
+  implements Runnable
 {
-  public aenc(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aenc(String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    this.a.c = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b.findViewById(2131370485).setBackgroundDrawable(null);
-    this.a.b.findViewById(2131370484).setBackgroundColor(-637534209);
-    this.a.c = false;
-  }
-  
-  public void onAnimationPause(Animator paramAnimator)
-  {
-    this.a.c = false;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.c = true;
-    this.a.b.findViewById(2131370485).setBackgroundResource(2130842653);
-    this.a.b.findViewById(2131370484).setBackgroundColor(0);
+    Object localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("targetuin", Long.parseLong(this.jdField_a_of_type_JavaLangString));
+      ((JSONObject)localObject).put("type", this.jdField_a_of_type_Int);
+      NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), ProtoServlet.class);
+      localNewIntent.putExtra("cmd", "NearbySvr.get_chat_signature");
+      WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
+      localObject = ((JSONObject)localObject).toString();
+      localWebSsoRequestBody.data.set((String)localObject);
+      localNewIntent.putExtra("data", localWebSsoRequestBody.toByteArray());
+      localNewIntent.setObserver(new aend(this));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

@@ -1,37 +1,101 @@
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendsManager;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.BabyQAIOPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.app.BabyQHandler;
+import com.tencent.mobileqq.app.BabyQObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class vsw
-  implements Runnable
+  extends BabyQObserver
 {
-  public vsw(NearbyChatPie paramNearbyChatPie) {}
+  public vsw(FriendChatPie paramFriendChatPie) {}
   
-  public void run()
+  protected void a()
   {
-    try
+    if (this.a.q != null)
     {
-      Card localCard = ((FriendsManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if (localCard == null)
-      {
-        if (StringUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
-          ((CardHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (byte)1, 0);
-        }
+      Animation localAnimation = this.a.q.getAnimation();
+      if (localAnimation != null) {
+        localAnimation.cancel();
       }
-      else if ((localCard != null) && (localCard.strCertificationInfo != null) && (!localCard.strCertificationInfo.equals("")))
-      {
-        ChatActivityFacade.f(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        return;
+      FriendChatPie.b(this.a).removeView(this.a.q);
+      this.a.q = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.BabyQ", 2, "onStopGuide");
       }
     }
-    catch (Throwable localThrowable)
+  }
+  
+  protected void a(Object paramObject)
+  {
+    int i = -1;
+    paramObject = (Integer)paramObject;
+    switch (paramObject.intValue())
     {
-      localThrowable.printStackTrace();
+    default: 
+      if (i < 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.BabyQ", 2, "onStartGuide " + paramObject + " but panel is opened");
+        }
+        ((BabyQHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(53)).b();
+      }
+      break;
+    }
+    do
+    {
+      do
+      {
+        return;
+        if ((FriendChatPie.a(this.a) != null) && (FriendChatPie.b(this.a).getVisibility() == 0)) {
+          break;
+        }
+        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(AIOPanelUtiles.g);
+        break;
+        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(AIOPanelUtiles.m);
+        break;
+        if (ShortVideoUtils.f())
+        {
+          i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(AIOPanelUtiles.j);
+          break;
+        }
+        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(AIOPanelUtiles.m);
+        break;
+        if ((FriendChatPie.a(this.a) != null) && (FriendChatPie.b(this.a).getVisibility() == 0)) {
+          break;
+        }
+        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(AIOPanelUtiles.a);
+        break;
+      } while (this.a.q != null);
+      this.a.q = new View(this.a.jdField_a_of_type_AndroidContentContext);
+      this.a.q.setBackgroundResource(2130842311);
+      Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getChildAt(i);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(((View)localObject).getHeight(), ((View)localObject).getHeight());
+      localLayoutParams.addRule(12);
+      localLayoutParams.setMargins(((View)localObject).getLeft() + ((View)localObject).getWidth() / 2 - ((View)localObject).getHeight() / 2, 0, 0, (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getHeight() - ((View)localObject).getHeight()) / 2);
+      FriendChatPie.a(this.a).addView(this.a.q, localLayoutParams);
+      localObject = AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidContentContext, 2131034320);
+      ((Animation)localObject).setAnimationListener(new vsx(this));
+      this.a.q.startAnimation((Animation)localObject);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.BabyQ", 2, "onStartGuide " + paramObject);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBabyQAIOPanel != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBabyQAIOPanel.a();
     }
   }
 }

@@ -77,10 +77,10 @@ public class QimMusicSeekView
     paramContext = paramContext.getResources();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493234));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493235));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493438));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493442));
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131492904));
@@ -88,7 +88,7 @@ public class QimMusicSeekView
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_d_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_d_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493241));
+    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493242));
     this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);

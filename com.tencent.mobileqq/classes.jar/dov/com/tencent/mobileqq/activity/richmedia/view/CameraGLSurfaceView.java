@@ -14,8 +14,8 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
-import anrv;
-import anrw;
+import aoia;
+import aoib;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
 import com.tencent.qphone.base.util.QLog;
@@ -236,7 +236,7 @@ public class CameraGLSurfaceView
           long l = SystemClock.elapsedRealtime();
           a("handleMessage:requestRender  renderTime=" + l);
           if ((this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext != null) && (this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame)) {
-            post(new anrw(this));
+            post(new aoib(this));
           }
           if (paramMessage.arg1 != 1) {
             break;
@@ -331,7 +331,7 @@ public class CameraGLSurfaceView
   
   public void setCaptureListener(CameraGLSurfaceView.CaptureListener paramCaptureListener)
   {
-    queueEvent(new anrv(this, paramCaptureListener));
+    queueEvent(new aoia(this, paramCaptureListener));
   }
   
   public void setPreviewSize(int paramInt1, int paramInt2, RMVideoClipSpec paramRMVideoClipSpec)

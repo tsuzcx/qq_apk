@@ -1,23 +1,8 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.graphics.Bitmap;
 
-public class ust
-  extends BaseBubbleBuilder.ViewHolder
+public abstract interface ust
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  
-  public ust(DeviceFileItemBuilder paramDeviceFileItemBuilder) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
 }
 
 

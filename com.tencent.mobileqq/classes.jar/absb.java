@@ -1,134 +1,34 @@
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
+import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import mqq.os.MqqHandler;
 
 public class absb
-  implements Runnable
+  implements NonMainAppHeadLoader.FaceObserver
 {
-  public absb(EmoticonFromGroupDBManager paramEmoticonFromGroupDBManager, int paramInt, List paramList) {}
+  public absb(ConfessPlugin paramConfessPlugin) {}
   
-  public void run()
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EmoticonFromGroup_DBManager", 2, "db operation start. opType: " + this.jdField_a_of_type_Int);
-    }
-    Object localObject3;
-    Object localObject1;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager.a != null)
+    if (QLog.isColorLevel())
     {
-      localObject3 = null;
-      localObject1 = null;
-    }
-    for (;;)
-    {
-      try
+      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+      if ((this.a.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.a().getCurrentAccountUin())))
       {
-        localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager.a.a();
-        localObject1 = localEntityTransaction;
-        localObject3 = localEntityTransaction;
-        localEntityTransaction.a();
-        localObject1 = localEntityTransaction;
-        localObject3 = localEntityTransaction;
-        switch (this.jdField_a_of_type_Int)
-        {
-        }
-      }
-      catch (Exception localException)
-      {
-        EntityTransaction localEntityTransaction;
-        localObject3 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject3 = localObject1;
-        QLog.e("EmoticonFromGroup_DBManager", 2, "write2DB ex=", localException);
-        if (localObject1 == null) {
-          continue;
-        }
-        localObject1.b();
-        continue;
-        localObject1 = localException;
-        localObject3 = localException;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        localObject1 = localException;
-        localObject3 = localException;
-        if (!localIterator.hasNext()) {
-          continue;
-        }
-        localObject1 = localException;
-        localObject3 = localException;
-        EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)localIterator.next();
-        localObject1 = localException;
-        localObject3 = localException;
-        if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager.a.b(localEmoticonFromGroupEntity)) {
-          continue;
-        }
-        localObject1 = localException;
-        localObject3 = localException;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject1 = localException;
-        localObject3 = localException;
-        if (localEmoticonFromGroupEntity.getStatus() == 1000) {
-          continue;
-        }
-        localObject1 = localException;
-        localObject3 = localException;
-        QLog.e("EmoticonFromGroup_DBManager.dberror", 2, "remove error, e.md5=" + localEmoticonFromGroupEntity.md5);
-        continue;
-      }
-      finally
-      {
-        if (localObject3 == null) {
-          continue;
-        }
-        localObject3.b();
-      }
-      localObject1 = localEntityTransaction;
-      localObject3 = localEntityTransaction;
-      localEntityTransaction.c();
-      if (localEntityTransaction != null) {
-        localEntityTransaction.b();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("EmoticonFromGroup_DBManager", 2, "db operation end.");
-      }
-      return;
-      localObject1 = localEntityTransaction;
-      localObject3 = localEntityTransaction;
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      localObject1 = localEntityTransaction;
-      localObject3 = localEntityTransaction;
-      if (localIterator.hasNext())
-      {
-        localObject1 = localEntityTransaction;
-        localObject3 = localEntityTransaction;
-        localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)localIterator.next();
-        localObject1 = localEntityTransaction;
-        localObject3 = localEntityTransaction;
-        if (!this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager.a(localEmoticonFromGroupEntity))
-        {
-          localObject1 = localEntityTransaction;
-          localObject3 = localEntityTransaction;
-          if (QLog.isColorLevel())
-          {
-            localObject1 = localEntityTransaction;
-            localObject3 = localEntityTransaction;
-            QLog.e("EmoticonFromGroup_DBManager.dberror", 2, "updateEntity error, e.md5=" + localEmoticonFromGroupEntity.md5);
-          }
-        }
+        ThreadManager.getUIHandler().removeCallbacks(ConfessPlugin.a(this.a));
+        ThreadManager.getUIHandler().post(ConfessPlugin.a(this.a));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absb
  * JD-Core Version:    0.7.0.1
  */

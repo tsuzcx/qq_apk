@@ -1,14 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.addContactTroopView.TroopCardBanner;
+import java.util.TimerTask;
 
 public class kkk
-  implements Runnable
+  extends TimerTask
 {
-  public kkk(ProtoUtils.StoryProtocolObserver paramStoryProtocolObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public kkk(TroopCardBanner paramTroopCardBanner) {}
   
   public void run()
   {
-    ProtoUtils.StoryProtocolObserver.a(this.jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    this.a.a.post(new kkl(this));
   }
 }
 

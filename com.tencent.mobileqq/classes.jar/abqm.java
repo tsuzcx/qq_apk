@@ -1,26 +1,20 @@
-import android.os.Handler.Callback;
+import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class abqm
-  implements Handler.Callback
+  extends Handler
 {
-  private String a;
+  public abqm(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public abqm(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = paramString;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if ((paramMessage.what == 1000) && ((this.a.j == 1) || (this.a.j == 2)))
     {
-    default: 
-      return true;
+      this.a.a();
+      QQToast.a(this.a, 2131437298, 0).b(this.a.getTitleBarHeight());
     }
-    NearbyProcessMonitor.a(this.a, 1);
-    return true;
   }
 }
 

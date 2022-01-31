@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.pic;
 
-import afww;
-import afwx;
-import afwy;
-import afwz;
-import afxa;
-import afxb;
-import afxc;
-import afxd;
-import afxe;
-import afxf;
-import afxg;
+import agky;
+import agkz;
+import agla;
+import aglb;
+import aglc;
+import agld;
+import agle;
+import aglf;
+import aglg;
+import aglh;
+import agli;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -90,11 +90,11 @@ public class PicPreDownloader
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new afxg(paramQQAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new agli(paramQQAppInterface.getCurrentAccountUin());
     paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     this.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta = new PreDownloadStrategyBeta();
     DeviceProfileManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta);
-    ThreadManager.post(new afww(this, paramQQAppInterface), 5, null, true);
+    ThreadManager.post(new agky(this, paramQQAppInterface), 5, null, true);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPicPicStatisticsManager = ((PicStatisticsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(72));
     Logger.a("PIC_TAG_PRELOAD", "onInit", "Finished");
@@ -245,7 +245,7 @@ public class PicPreDownloader
       this.jdField_a_of_type_JavaUtilTimer.purge();
     }
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimer.schedule(new afwy(this), 60000L);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(new agla(this), 60000L);
   }
   
   void a(MessageForPic paramMessageForPic)
@@ -275,7 +275,7 @@ public class PicPreDownloader
       }
     }
     label153:
-    ThreadManager.post(new afxd(this, localPicReq), 5, null, false);
+    ThreadManager.post(new aglf(this, localPicReq), 5, null, false);
     Logger.a("PIC_TAG_PRELOAD", "run picreq thumb", "uniseq:" + paramMessageForPic.uniseq + ",subMsgId:" + paramMessageForPic.subMsgId);
   }
   
@@ -298,7 +298,7 @@ public class PicPreDownloader
   
   void a(MessageForPic paramMessageForPic, int paramInt1, int paramInt2)
   {
-    ThreadManager.post(new afxa(this, paramMessageForPic, paramInt1, paramInt2), 5, null, false);
+    ThreadManager.post(new aglc(this, paramMessageForPic, paramInt1, paramInt2), 5, null, false);
   }
   
   public void a(MessageForPic paramMessageForPic, long paramLong)
@@ -420,7 +420,7 @@ public class PicPreDownloader
   public boolean a()
   {
     boolean bool1 = false;
-    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433555), "qqsetting_auto_receive_pic_key", true);
+    boolean bool2 = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433572), "qqsetting_auto_receive_pic_key", true);
     if ((NetworkUtil.b(BaseApplication.getContext()) == 1) || (bool2)) {}
     for (int i = 1;; i = 0)
     {
@@ -508,7 +508,7 @@ public class PicPreDownloader
     if (QLog.isColorLevel()) {
       QLog.d("PIC_TAG_PRELOAD", 2, "productFromAIODynamicPic(): ");
     }
-    ThreadManager.post(new afwz(this, paramMessageForPic, paramInt), 5, null, false);
+    ThreadManager.post(new aglb(this, paramMessageForPic, paramInt), 5, null, false);
   }
   
   public void b(MessageRecord paramMessageRecord, int paramInt)
@@ -675,7 +675,7 @@ public class PicPreDownloader
         }
       }
     }
-    ThreadManager.post(new afxc(this, paramMessageRecord), 5, null, false);
+    ThreadManager.post(new agle(this, paramMessageRecord), 5, null, false);
     Logger.a("PIC_TAG_PRELOAD", "structMsg-add ", "finish preDownload uniseq =" + paramMessageRecord.uniseq);
   }
   
@@ -784,7 +784,7 @@ public class PicPreDownloader
       if (QLog.isColorLevel()) {
         QLog.d("PIC_TAG_PRELOAD", 2, "clearAIORequests(): AIORequests size=" + i);
       }
-      ThreadManager.post(new afxb(this, i), 5, null, false);
+      ThreadManager.post(new agld(this, i), 5, null, false);
       return;
     }
     catch (Exception localException)
@@ -864,7 +864,7 @@ public class PicPreDownloader
     if (((Iterator)localObject2).hasNext())
     {
       localObject1 = (PicReq)((Iterator)localObject2).next();
-      ThreadManager.post(new afxe(this, (PicReq)localObject1), 5, null, false);
+      ThreadManager.post(new aglg(this, (PicReq)localObject1), 5, null, false);
       if (((PicReq)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo == null) {
         break label248;
       }
@@ -881,7 +881,7 @@ public class PicPreDownloader
         localObject2 = (MessageForStructing)((Iterator)localObject1).next();
         if (localObject2 != null)
         {
-          ThreadManager.post(new afxf(this, (MessageForStructing)localObject2), 5, null, false);
+          ThreadManager.post(new aglh(this, (MessageForStructing)localObject2), 5, null, false);
           Logger.a("PIC_TAG_PRELOAD", "structMsg-add ", "finish MessageForStructing preDownload uniseq =" + ((MessageForStructing)localObject2).uniseq);
         }
       }
@@ -974,7 +974,7 @@ public class PicPreDownloader
         }
         this.jdField_a_of_type_ComTencentMobileqqPicPicStatisticsManager.b(k, i);
       }
-      ThreadManager.post(new afwx(this, localPicReq), 5, null, false);
+      ThreadManager.post(new agkz(this, localPicReq), 5, null, false);
       label739:
       Logger.a("PIC_TAG_PRELOAD", "consume", "END");
       return;

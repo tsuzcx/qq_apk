@@ -1,19 +1,17 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.Job;
+import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
 import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class nac
-  extends Job
+  extends SimpleJob
 {
-  public nac(QQStoryCmdHandler paramQQStoryCmdHandler, NetworkRequest paramNetworkRequest) {}
+  public nac(PlayingListPreloader paramPlayingListPreloader, String paramString, String[] paramArrayOfString) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a().a(880001, "no network", null);
+    PlayingListPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString);
     return null;
   }
 }

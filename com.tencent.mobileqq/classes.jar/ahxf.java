@@ -1,27 +1,23 @@
-import android.content.Context;
-import com.tencent.mobileqq.surfaceviewaction.gl.RobotSpriteVideoView;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendListInfo;
 
-public class ahxf
-  extends VideoSprite
+public final class ahxf
+  implements Parcelable.Creator
 {
-  public ahxf(RobotSpriteVideoView paramRobotSpriteVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
+  public FriendListInfo a(Parcel paramParcel)
   {
-    super(paramSpriteGLView, paramContext, paramBoolean);
+    return new FriendListInfo(paramParcel);
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public FriendListInfo[] a(int paramInt)
   {
-    if (this.a.a == 0) {
-      this.a.a = paramInt2;
-    }
-    super.a(paramInt1, this.a.a);
+    return new FriendListInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxf
  * JD-Core Version:    0.7.0.1
  */

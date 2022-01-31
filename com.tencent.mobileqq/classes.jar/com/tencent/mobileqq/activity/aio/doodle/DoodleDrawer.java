@@ -26,12 +26,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import uob;
-import uoc;
-import upo;
+import urd;
+import ure;
+import usq;
 
 public class DoodleDrawer
-  implements ScribbleResMgr.ResCallback, upo
+  implements ScribbleResMgr.ResCallback, usq
 {
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long = -1L;
@@ -46,7 +46,7 @@ public class DoodleDrawer
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  private uoc jdField_a_of_type_Uoc = new uoc(this);
+  private ure jdField_a_of_type_Ure = new ure(this);
   boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 0;
   private long jdField_b_of_type_Long = -1L;
@@ -324,7 +324,7 @@ public class DoodleDrawer
         l2 = l3 + l2;
         label204:
         l1 = 100L + l1;
-        if (l2 + l1 < paramLong2) {
+        if (l2 + l1 <= paramLong2) {
           break label289;
         }
       }
@@ -426,8 +426,8 @@ public class DoodleDrawer
   
   private void e()
   {
-    if (this.jdField_a_of_type_Uoc != null) {
-      this.jdField_a_of_type_Uoc.c();
+    if (this.jdField_a_of_type_Ure != null) {
+      this.jdField_a_of_type_Ure.c();
     }
     a(-1L, false);
     try
@@ -570,8 +570,8 @@ public class DoodleDrawer
     //   51: aload_0
     //   52: monitorexit
     //   53: aload_0
-    //   54: getfield 60	com/tencent/mobileqq/activity/aio/doodle/DoodleDrawer:jdField_a_of_type_Uoc	Luoc;
-    //   57: invokevirtual 414	uoc:b	()V
+    //   54: getfield 60	com/tencent/mobileqq/activity/aio/doodle/DoodleDrawer:jdField_a_of_type_Ure	Lure;
+    //   57: invokevirtual 414	ure:b	()V
     //   60: aload_0
     //   61: getfield 47	com/tencent/mobileqq/activity/aio/doodle/DoodleDrawer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   64: astore_2
@@ -721,8 +721,8 @@ public class DoodleDrawer
     }
     try
     {
-      if (this.jdField_a_of_type_Uoc != null) {
-        this.jdField_a_of_type_Uoc.a();
+      if (this.jdField_a_of_type_Ure != null) {
+        this.jdField_a_of_type_Ure.a();
       }
       if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)))
       {
@@ -818,7 +818,7 @@ public class DoodleDrawer
         if (!paramBoolean)
         {
           ??? = this.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_Uoc.a(new uob(this, (String)???, paramLong, localArrayList));
+          this.jdField_a_of_type_Ure.a(new urd(this, (String)???, paramLong, localArrayList));
           if (paramLong >= a()) {
             break;
           }

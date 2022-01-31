@@ -1,30 +1,27 @@
-import android.os.Bundle;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class akoj
-  implements Runnable
+public final class akoj
+  implements ThreadExcutor.IThreadListener
 {
-  public akoj(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
+  long a = 0L;
   
-  public void run()
+  public void a()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaLangString.equals("1")) {
-      bool = true;
+    this.a = System.currentTimeMillis();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
     }
-    if (BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack) != null)
-    {
-      SendMsg localSendMsg = new SendMsg("changeLoadingTip");
-      localSendMsg.a.putBoolean("showLoadingView", bool);
-      BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack).b(localSendMsg);
-    }
+    this.a = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akoj
  * JD-Core Version:    0.7.0.1
  */

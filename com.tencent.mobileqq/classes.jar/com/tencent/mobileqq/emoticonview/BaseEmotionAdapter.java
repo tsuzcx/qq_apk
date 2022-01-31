@@ -64,7 +64,7 @@ public abstract class BaseEmotionAdapter
     this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
     new DisplayMetrics();
     this.d = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.e = paramContext.getResources().getColor(2131493136);
+    this.e = paramContext.getResources().getColor(2131493137);
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
   }
   
@@ -253,7 +253,7 @@ public abstract class BaseEmotionAdapter
         break;
       }
       paramView.setVisibility(0);
-      paramView.setImageResource(2130845940);
+      paramView.setImageResource(2130846068);
       return;
       label269:
       ((TextView)localObject1).setText((CharSequence)localObject2);

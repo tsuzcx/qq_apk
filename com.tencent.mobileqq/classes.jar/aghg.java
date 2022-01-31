@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallProxy;
-import java.util.Comparator;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class aghg
-  implements Comparator
+  implements ARTipsManager.ButtonClickListener
 {
-  public aghg(QCallProxy paramQCallProxy) {}
+  public aghg(ScanTorchActivity paramScanTorchActivity) {}
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public void a()
   {
-    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
-      return 0;
-    }
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    ScanTorchActivity.p(this.a);
+    ReportController.b(null, "dc00898", "", "", "0X80085B2", "0X80085B2", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghg
  * JD-Core Version:    0.7.0.1
  */

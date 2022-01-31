@@ -1,22 +1,40 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
+import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import com.tencent.widget.SwipTextViewMenuBuilder;
 
-public final class yic
-  extends ApolloHttpCallBack
+public class yic
+  extends SwipTextViewMenuBuilder
 {
-  public yic(View paramView, long paramLong) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public yic(NewFriendMoreSysMsgAdapter paramNewFriendMoreSysMsgAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ApolloSurfaceView)) {
-      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new yid(this, paramArrayOfByte, paramInt));
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  {
+    paramInt = 0;
+    if ((paramArrayOfSwipRightMenuItem == null) || (paramArrayOfSwipRightMenuItem.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfSwipRightMenuItem.length < 0)
+      {
+        paramArrayOfSwipRightMenuItem[0].b = 0;
+        paramArrayOfSwipRightMenuItem[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfSwipRightMenuItem.length)
+      {
+        paramArrayOfSwipRightMenuItem[paramInt].b = -1;
+        paramArrayOfSwipRightMenuItem[paramInt].a = -1;
+        paramInt += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yic
  * JD-Core Version:    0.7.0.1
  */

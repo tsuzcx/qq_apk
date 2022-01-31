@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anqi;
+import aogn;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
@@ -678,7 +678,7 @@ public class QQStoryFlowCallback
       {
         StoryReportor.b("upload_local_video", "media_info_missing", 0, i, new String[] { a(paramLocalMediaInfo) });
         if (localQQToast != null) {
-          paramActivity.runOnUiThread(new anqi(localQQToast));
+          paramActivity.runOnUiThread(new aogn(localQQToast));
         }
         if (j != 0) {
           break label723;

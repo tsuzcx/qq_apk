@@ -1,16 +1,14 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
 
-public class aavo
-  extends AnimateUtils.AnimationAdapter
+class aavo
+  implements Runnable
 {
-  public aavo(ConversationPullDownActiveBase paramConversationPullDownActiveBase) {}
+  aavo(aavn paramaavn, boolean paramBoolean, byte[] paramArrayOfByte, Object paramObject) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.setVisibility(0);
+    ArkLocalAppMgr.a(this.jdField_a_of_type_Aavn.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte, (ArkLocalAppMgr.UpdateAppByNameTask)this.jdField_a_of_type_JavaLangObject);
   }
 }
 

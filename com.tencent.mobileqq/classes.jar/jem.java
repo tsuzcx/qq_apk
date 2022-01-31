@@ -1,22 +1,61 @@
-import com.tencent.av.VideoController;
+import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class jem
-  implements Runnable
 {
-  jem(VideoController paramVideoController) {}
+  public static String a;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  jen jdField_a_of_type_Jen;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void run()
+  static
   {
-    if (this.a.a() == null) {
-      return;
+    jdField_a_of_type_JavaLangString = "GAudioMsgReceiver";
+  }
+  
+  public jem(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Jen = new jen(paramVideoAppInterface);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Jen);
+      this.jdField_a_of_type_Boolean = false;
     }
+  }
+  
+  public void b()
+  {
     if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "MultiHideCallNotAcceptRunnable");
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQGAudioMsg Receiver");
     }
-    this.a.a().L = false;
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(702) });
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
+    localIntentFilter.addAction("tencent.video.q2v.AddDiscussMember");
+    localIntentFilter.addAction("tencent.video.q2v.SwitchToDiscuss");
+    localIntentFilter.addAction("tencent.video.q2v.GroupSystemMsg");
+    localIntentFilter.addAction("tencent.video.q2v.SelectMember");
+    localIntentFilter.addAction("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoGift");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoLevelUpgrade");
+    localIntentFilter.addAction("tencent.video.q2v.pstnCardInfoChanged");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoMemUntInvite");
+    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box");
+    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box_by_invite_id");
+    localIntentFilter.addAction("tencent.video.q2v.randomMultiOwnerOnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.random1V1OnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.avreportOnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.AudioTransPush");
+    localIntentFilter.addAction("tencent.video.q2v.AudioEngineReady");
+    localIntentFilter.addAction("tencent.video.q2v.GroupInfoChanged");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Jen, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
 }
 

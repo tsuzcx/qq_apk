@@ -2,8 +2,8 @@ package com.tencent.mobileqq.transfile;
 
 import QQService.StreamData;
 import QQService.StreamInfo;
-import aiao;
-import aiap;
+import aior;
+import aios;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -53,7 +53,7 @@ public class BuddyTransfileProcessor
   public static boolean c;
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long = -1L;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aiao(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aior(this);
   public QQAppInterface a;
   private String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
@@ -170,24 +170,26 @@ public class BuddyTransfileProcessor
   
   public static String a(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    Object localObject = AppConstants.aJ + paramString1 + "/";
+    paramString1 = AppConstants.aJ + paramString1 + "/";
+    Object localObject;
     switch (paramInt)
     {
     default: 
-      paramArrayOfByte = "";
-      paramString1 = null;
-      paramString2 = (String)localObject;
+      localObject = "";
+      paramString2 = null;
+      paramArrayOfByte = paramString1;
+      paramString1 = (String)localObject;
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("streamptt", 2, "getTransferFilePath dir: " + paramString2);
+        QLog.d("streamptt", 2, "getTransferFilePath dir: " + paramArrayOfByte);
       }
-      localObject = new File(paramString2);
+      localObject = new File(paramArrayOfByte);
       if (!((File)localObject).exists()) {
         ((File)localObject).mkdirs();
       }
-      paramString1 = new File(paramString2 + paramArrayOfByte + paramString1);
+      paramString1 = new File(paramArrayOfByte + paramString1 + paramString2);
       if (paramInt == 0) {}
       for (;;)
       {
@@ -195,92 +197,97 @@ public class BuddyTransfileProcessor
           QLog.d("streamptt", 2, "getTransferFilePath : " + paramString1.getAbsoluteFile().toString());
         }
         return paramString1.getAbsoluteFile().toString();
-        paramArrayOfByte = (String)localObject + "ptt/" + c() + "/";
+        paramArrayOfByte = paramString1 + "ptt/" + c() + "/";
         String str2 = ".amr";
         localObject = str2;
         paramString1 = paramArrayOfByte;
         if (paramString2 != null) {
-          break label769;
+          break label836;
         }
         if (QLog.isColorLevel()) {
           QLog.i("streamptt", 2, "pttdown,33333");
         }
-        String str1 = "stream_" + d();
-        paramString2 = str2;
-        paramString1 = paramArrayOfByte;
-        localObject = str1;
+        str1 = "stream_" + d();
+        localObject = str2;
+        paramString2 = paramArrayOfByte;
+        paramString1 = str1;
         if (!QLog.isColorLevel()) {
-          break label780;
+          break label851;
         }
         QLog.i("streamptt", 2, "pttdown,name = " + str1);
-        paramString1 = ".amr";
-        paramString2 = paramArrayOfByte;
-        paramArrayOfByte = str1;
+        paramString2 = ".amr";
+        paramString1 = str1;
         break;
-        str1 = (String)localObject + "photo/";
+        str1 = paramString1 + "photo/";
         str2 = ".jpg";
         localObject = str2;
         paramString1 = str1;
         if (paramString2 != null) {
-          break label769;
+          break label836;
         }
         String str3 = d();
-        paramString2 = str2;
-        paramString1 = str1;
-        localObject = str3;
-        if (paramArrayOfByte == null) {
-          break label780;
-        }
-        paramArrayOfByte = str3 + HexUtil.bytes2HexStr(paramArrayOfByte).substring(0, 5);
-        paramString1 = ".jpg";
+        localObject = str2;
         paramString2 = str1;
+        paramString1 = str3;
+        if (paramArrayOfByte == null) {
+          break label851;
+        }
+        paramString1 = str3 + HexUtil.bytes2HexStr(paramArrayOfByte).substring(0, 5);
+        paramString2 = ".jpg";
+        paramArrayOfByte = str1;
         break;
-        str1 = AppConstants.aX;
-        localObject = paramString2;
+        localObject = AppConstants.aX;
+        paramString1 = paramString2;
         if (paramString2 == null)
         {
-          paramString1 = d();
-          localObject = paramString1;
+          paramString2 = d();
+          paramString1 = paramString2;
           if (paramArrayOfByte != null) {
-            localObject = paramString1 + HexUtil.bytes2HexStr(paramArrayOfByte).substring(0, 5);
+            paramString1 = paramString2 + HexUtil.bytes2HexStr(paramArrayOfByte).substring(0, 5);
           }
         }
-        paramString1 = "";
-        paramString2 = str1;
+        paramString2 = "";
         paramArrayOfByte = (byte[])localObject;
         break;
-        paramArrayOfByte = (String)localObject + "ptt/";
+        paramArrayOfByte = paramString1 + "ptt/";
         localObject = ".slk";
         paramString1 = paramArrayOfByte;
         if (paramString2 != null) {
-          break label769;
+          break label836;
         }
-        localObject = "buluo_" + d();
-        paramString1 = ".slk";
-        paramString2 = paramArrayOfByte;
-        paramArrayOfByte = (byte[])localObject;
+        paramString1 = "buluo_" + d();
+        paramString2 = ".slk";
         break;
-        paramArrayOfByte = (String)localObject + "ptt/";
+        paramArrayOfByte = paramString1 + "ptt/";
         localObject = ".slk";
         paramString1 = paramArrayOfByte;
         if (paramString2 != null) {
-          break label769;
+          break label836;
         }
-        localObject = "vs_" + d();
-        paramString1 = ".slk";
-        paramString2 = paramArrayOfByte;
-        paramArrayOfByte = (byte[])localObject;
+        paramString1 = "vs_" + d();
+        paramString2 = ".slk";
         break;
-        paramArrayOfByte = (String)localObject + "ptt/";
+        paramArrayOfByte = paramString1 + "ptt/";
         localObject = ".slk";
         paramString1 = paramArrayOfByte;
         if (paramString2 != null) {
-          break label769;
+          break label836;
         }
-        localObject = "homework_" + d();
+        paramString1 = "homework_" + d();
+        paramString2 = ".slk";
+        break;
+        paramArrayOfByte = paramString1 + "ptt/";
         paramString1 = ".slk";
-        paramString2 = paramArrayOfByte;
-        paramArrayOfByte = (byte[])localObject;
+        if (paramString2 == null)
+        {
+          localObject = "ef_" + d();
+          paramString2 = paramString1;
+          paramString1 = (String)localObject;
+          break;
+        }
+        localObject = "ef_" + paramString2;
+        paramString2 = paramString1;
+        paramString1 = (String)localObject;
         break;
         if ((paramBoolean) && (!paramString1.exists())) {
           try
@@ -290,16 +297,15 @@ public class BuddyTransfileProcessor
           catch (IOException paramString2) {}
         }
       }
-      label769:
-      paramArrayOfByte = "";
-      paramString2 = paramString1;
-      paramString1 = (String)localObject;
-      continue;
-      label780:
+      label836:
+      String str1 = "";
+      paramString2 = (String)localObject;
       paramArrayOfByte = paramString1;
-      paramString1 = paramString2;
-      paramString2 = paramArrayOfByte;
-      paramArrayOfByte = (byte[])localObject;
+      paramString1 = str1;
+      continue;
+      label851:
+      paramArrayOfByte = paramString2;
+      paramString2 = (String)localObject;
     }
   }
   
@@ -502,7 +508,7 @@ public class BuddyTransfileProcessor
     if (((File)localObject2).exists())
     {
       ((MessageForPtt)localObject1).fileSize = ((File)localObject2).length();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800610E", "0X800610E", 1, 0, "", "", "", "7.6.0");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800610E", "0X800610E", 1, 0, "", "", "", "7.6.3");
       ((MessageForPtt)localObject1).itemType = 2;
       ((MessageForPtt)localObject1).isread = false;
       ((MessageForPtt)localObject1).shmsgseq = ((short)paramStreamInfo.msgSeq);
@@ -565,7 +571,7 @@ public class BuddyTransfileProcessor
       }
       return null;
       ((MessageForPtt)localObject1).fileSize = 1000L;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800610E", "0X800610E", 2, 0, "", "", "", "7.6.0");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800610E", "0X800610E", 2, 0, "", "", "", "7.6.3");
       break;
       i = 0;
       break label313;
@@ -722,7 +728,7 @@ public class BuddyTransfileProcessor
         return;
       }
     } while ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null) || (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new aiap(this, str, paramShort, paramLong, paramBundle, paramBoolean));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new aios(this, str, paramShort, paramLong, paramBundle, paramBoolean));
   }
   
   protected void a(boolean paramBoolean)
@@ -806,7 +812,7 @@ public class BuddyTransfileProcessor
     }
   }
   
-  public void an_() {}
+  public void ap_() {}
   
   void d()
   {
@@ -927,7 +933,7 @@ public class BuddyTransfileProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BuddyTransfileProcessor
  * JD-Core Version:    0.7.0.1
  */

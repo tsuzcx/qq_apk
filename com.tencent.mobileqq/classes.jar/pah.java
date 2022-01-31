@@ -1,29 +1,27 @@
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.biz.viewplugin.ViewPluginLoader;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
 public class pah
   implements Runnable
 {
-  public pah(OfflinePlugin paramOfflinePlugin) {}
+  public pah(ViewPluginLoader paramViewPluginLoader, JSONObject paramJSONObject, String paramString, DownloadListener paramDownloadListener) {}
   
   public void run()
   {
-    if (OfflinePlugin.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
-      if ((localOfflineUpdateStatus != null) && (localOfflineUpdateStatus.b() == 1))
-      {
-        if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-        if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-          this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        }
-        localOfflineUpdateStatus.b(2);
-      }
+    String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString);
+    Bundle localBundle = new Bundle();
+    localObject = new DownloadTask(str, (File)localObject);
+    ((DownloadTask)localObject).b = 3;
+    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a().a((DownloadTask)localObject, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "start Download url = " + str);
     }
   }
 }

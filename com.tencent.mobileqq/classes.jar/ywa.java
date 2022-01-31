@@ -1,32 +1,47 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloRecentViewBinder;
-import com.tencent.mobileqq.apollo.view.ApolloViewBinder;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
+import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyGameDressReady;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import eipc.EIPCResult;
+import org.json.JSONObject;
 
-public class ywa
-  implements Runnable
+public final class ywa
+  implements ApolloGameBasicEventUtil.NotifyGameDressReady
 {
-  public ywa(ApolloPanel paramApolloPanel) {}
+  public ywa(int paramInt) {}
   
-  public void run()
+  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "func updateLastApolloPanel begins. Thread id = " + Thread.currentThread().getId());
+      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
     }
-    if (this.a.jdField_a_of_type_JavaUtilList == null) {}
-    ApolloViewBinder localApolloViewBinder;
-    do
-    {
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
       return;
-      localApolloViewBinder = (ApolloViewBinder)this.a.jdField_a_of_type_JavaUtilList.get(0);
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (!(localApolloViewBinder instanceof ApolloRecentViewBinder)));
-    if (localApolloViewBinder.c == 2) {
-      localApolloViewBinder.c = 0;
     }
-    ((ApolloRecentViewBinder)localApolloViewBinder).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.a.j();
+    try
+    {
+      paramQQAppInterface = ApolloGameBasicEventUtil.a(paramInt2, paramArrayOfInt);
+      if (paramQQAppInterface == null)
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
+        return;
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      return;
+    }
+    if (this.a == 1000) {
+      paramQQAppInterface.put("uin", paramString1);
+    }
+    paramQQAppInterface.put("openId", paramString2);
+    paramString1 = new Bundle();
+    paramString1.putString("resData", paramQQAppInterface.toString());
+    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
+    CmGameServerQIPCModule.a().callbackResult(paramInt1, paramQQAppInterface);
   }
 }
 

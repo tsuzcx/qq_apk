@@ -1,25 +1,41 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 
-class wil
-  implements Runnable
+public class wil
+  extends Handler
 {
-  wil(wik paramwik, boolean paramBoolean) {}
+  private WeakReference a;
   
-  public void run()
+  public wil(PublicView paramPublicView)
   {
-    if ((this.jdField_a_of_type_Wik.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b == 0) || (this.jdField_a_of_type_Wik.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b == 2))
-    {
-      if ((!this.jdField_a_of_type_Wik.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.a()) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Wik.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.a.a(1).a(true);
-      }
-    }
-    else {
+    this.a = new WeakReference(paramPublicView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    PublicView localPublicView = (PublicView)this.a.get();
+    if (localPublicView == null) {
       return;
     }
-    this.jdField_a_of_type_Wik.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.a.a(1).a(false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      return;
+    case 2: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      PublicView.a(localPublicView, 1, 2131434349);
+      return;
+    case 3: 
+      PublicView.a(localPublicView, true);
+      return;
+    }
+    PublicView.b(localPublicView);
   }
 }
 

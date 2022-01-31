@@ -1,60 +1,36 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.utils.DateUtils;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
+import com.tencent.biz.qqstory.network.request.GetTagListRequest;
+import com.tencent.biz.qqstory.network.response.GetTagListResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import com.tencent.biz.qqstory.takevideo.tag.IEditVideoTagView;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class olz
-  extends SwipRightMenuBuilder.SwipItemBaseHolder
+  extends CmdTaskManger.UIThreadCallback
 {
-  public View a;
-  public TextView a;
-  public URLImageView a;
-  public TextView b;
-  public URLImageView b;
+  public olz(EditVideoTagPresenter paramEditVideoTagPresenter) {}
   
-  public olz(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public void a(@NonNull GetTagListRequest paramGetTagListRequest, @Nullable GetTagListResponse paramGetTagListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131366993));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362736));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366837));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131371708));
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
-  {
-    TroopStoryMemoriesListAdapter.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(DateUtils.c(paramTroopStoryItemInfo.publishTime));
-    Drawable localDrawable = this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130843674);
-    try
+    SLog.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramGetTagListResponse != null))
     {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
-      paramTroopStoryItemInfo = URLDrawable.getDrawable(paramTroopStoryItemInfo.videoThumbUrl, localURLDrawableOptions);
-      paramTroopStoryItemInfo.setTag(URLDrawableDecodeHandler.a(UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
-      paramTroopStoryItemInfo.setDecodeHandler(URLDrawableDecodeHandler.g);
-      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new oma(this, paramInt));
-      return;
+      SLog.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramGetTagListResponse.toString());
+      EditVideoTagPresenter.a(this.a).addAll(paramGetTagListResponse.jdField_a_of_type_JavaUtilList);
+      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.jdField_a_of_type_JavaLangString);
+      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.b);
+      ThreadManager.executeOnSubThread(new oma(this));
     }
-    catch (Exception paramTroopStoryItemInfo)
+    for (;;)
     {
-      for (;;)
-      {
-        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
-      }
+      EditVideoTagPresenter.a(this.a).b(paramErrorMessage.errorCode, EditVideoTagPresenter.a(this.a), this.a.a());
+      return;
+      SLog.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
   }
 }

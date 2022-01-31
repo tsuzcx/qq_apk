@@ -40,9 +40,9 @@ public class NearbyBaseFragment
     this.jdField_a_of_type_Int = paramTabInfo.jdField_a_of_type_Int;
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     if (!this.e)
     {
       if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.f) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {
@@ -147,7 +147,7 @@ public class NearbyBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyBaseFragment
  * JD-Core Version:    0.7.0.1
  */

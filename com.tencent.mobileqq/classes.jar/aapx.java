@@ -1,14 +1,40 @@
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aapx
+class aapx
+  implements DialogInterface.OnClickListener
 {
-  ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler;
-  ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler;
-  ArkMessageServerLogic.IPassiveSearchIntentByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler;
-  public Object a;
-  public String a;
+  aapx(aapv paramaapv, QQCustomDialog paramQQCustomDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ArkAppCenter.a().post(new aapy(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aapv.a, "ark_authority_api_login", this.jdField_a_of_type_Aapv.c, 2);
+      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438819), 2131435269, 2131435269, new DialogUtil.DialogOnClickAdapter(), null);
+      try
+      {
+        paramDialogInterface.show();
+        return;
+      }
+      catch (Exception paramDialogInterface) {}
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label38;
+    }
+  }
 }
 
 

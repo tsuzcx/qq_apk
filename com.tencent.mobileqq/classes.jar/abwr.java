@@ -1,23 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.VipIPSiteInfo;
-import com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class abwr
-  implements View.OnClickListener
+public final class abwr
+  implements Runnable
 {
-  public abwr(BigEmotionDownloadedAdapter paramBigEmotionDownloadedAdapter, VipIPSiteInfo paramVipIPSiteInfo, String paramString1, String paramString2) {}
+  public abwr(Activity paramActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataVipIPSiteInfo.ipUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_enterclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    Object localObject = new abws(this);
+    localObject = DialogUtil.b(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_JavaLangString, 0, 2131435196, (DialogInterface.OnClickListener)localObject, null);
+    if (localObject != null)
+    {
+      ((TextView)((QQCustomDialog)localObject).findViewById(2131364051)).setVisibility(8);
+      TextView localTextView = (TextView)((QQCustomDialog)localObject).findViewById(2131362776);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+      localLayoutParams.gravity = 17;
+      localTextView.setLayoutParams(localLayoutParams);
+      localTextView.setMinHeight(DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 35.0F));
+      localTextView.setGravity(17);
+      ((QQCustomDialog)localObject).show();
+    }
   }
 }
 

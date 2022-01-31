@@ -1,19 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashBgView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class abbl
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ClickableColorSpanTextView.SpanClickListener
 {
-  public abbl(ARMapSplashBgView paramARMapSplashBgView) {}
+  public abbl(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (ARMapSplashBgView.a(this.a) != null) {
-      ARMapSplashBgView.a(this.a).setTranslationY(paramValueAnimator.floatValue() * ARMapSplashBgView.a(this.a));
-    }
+    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://wa.qq.com/help/info.html");
+    this.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

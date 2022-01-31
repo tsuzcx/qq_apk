@@ -1,17 +1,32 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardResourceInfo;
+import com.tencent.mobileqq.arcard.ARcardSound;
+import com.tencent.mobileqq.armap.sensor.ARSensorManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class aabb
   implements Runnable
 {
-  public aabb(AREngine paramAREngine) {}
+  public aabb(GreetingCardRender paramGreetingCardRender) {}
   
   public void run()
   {
-    QLog.i("AREngine_AREngine", 1, "processCloudObjectClassifyResult. download resource timeout.");
-    AREngine.a(this.a).a();
-    this.a.c(false, null);
+    if (GreetingCardRender.d(this.a) == 6)
+    {
+      if (GreetingCardRender.a(this.a) != null) {
+        GreetingCardRender.a(this.a).a(0, 1);
+      }
+      if (GreetingCardRender.a(this.a) == null) {
+        GreetingCardRender.a(this.a, new ARcardSound());
+      }
+      if (GreetingCardRender.a(this.a) != null) {
+        GreetingCardRender.a(this.a).a(GreetingCardRender.a(this.a).c + "bgmusic.mp3");
+      }
+      if ((GreetingCardRender.a(this.a) != null) && (GreetingCardRender.a(this.a).b == 1)) {
+        QLog.d("GreetingCardRender", 2, String.format("setNativeState start sensor result=%s", new Object[] { Boolean.valueOf(GreetingCardRender.a(this.a).a(GreetingCardRender.a(this.a))) }));
+      }
+    }
   }
 }
 

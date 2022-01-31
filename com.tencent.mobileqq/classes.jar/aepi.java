@@ -1,13 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
 public class aepi
-  implements NearbyCustomDialog.OnClickListener
+  implements View.OnClickListener
 {
-  public aepi(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public aepi(PlayerInvitePanel paramPlayerInvitePanel, int paramInt) {}
   
-  public void a(View paramView) {}
+  public void onClick(View paramView)
+  {
+    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null) {
+      PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel).onItemClick(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    }
+  }
 }
 
 

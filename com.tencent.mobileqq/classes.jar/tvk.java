@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
 
-class tvk
+public class tvk
   implements Runnable
 {
-  tvk(tvj paramtvj) {}
+  public tvk(TextPreviewActivity paramTextPreviewActivity, BubbleDiyFetcher paramBubbleDiyFetcher, String paramString) {}
   
   public void run()
   {
-    this.a.a.o();
-    this.a.a.a(2131435586, 1);
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, this.jdField_a_of_type_JavaLangString, null);
   }
 }
 

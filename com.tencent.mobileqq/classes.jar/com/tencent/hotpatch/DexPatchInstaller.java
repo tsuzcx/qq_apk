@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.SystemClassLoaderInjector;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import qkw;
+import qnm;
 
 public class DexPatchInstaller
 {
@@ -46,7 +46,7 @@ public class DexPatchInstaller
   
   private static void a(Context paramContext, BasePatchConfig paramBasePatchConfig)
   {
-    paramContext = new qkw(paramContext, paramBasePatchConfig);
+    paramContext = new qnm(paramContext, paramBasePatchConfig);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
       ThreadManager.post(paramContext, 5, null, true);

@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils.TroopPrivilegeCallback;
 
-public class udb
-  implements DialogInterface.OnDismissListener
+class udb
+  implements Runnable
 {
-  public udb(UpgradeActivity paramUpgradeActivity) {}
+  udb(uda paramuda, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    this.jdField_a_of_type_Uda.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotificationUtils$TroopPrivilegeCallback.a(this.jdField_a_of_type_Uda.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Uda.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.jdField_a_of_type_Int);
   }
 }
 

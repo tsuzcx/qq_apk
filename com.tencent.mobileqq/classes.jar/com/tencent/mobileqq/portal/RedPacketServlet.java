@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.portal;
 
-import afyv;
+import agmx;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -238,7 +238,7 @@ public class RedPacketServlet
             paramIntent.putExtra("k_retry", n + 1);
             if (m == 7)
             {
-              ThreadManager.getSubThreadHandler().postDelayed(new afyv(this, paramIntent), 60000L);
+              ThreadManager.getSubThreadHandler().postDelayed(new agmx(this, paramIntent), 60000L);
               label182:
               return;
             }
@@ -932,7 +932,7 @@ public class RedPacketServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.portal.RedPacketServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,22 @@
+import android.content.Intent;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.util.FaceDrawable;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMessageHelper;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class rkg
-  implements Runnable
+public class rkg
+  implements View.OnClickListener
 {
-  rkg(rkf paramrkf, String paramString, View paramView) {}
+  public rkg(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Rkf.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362701);
-      if (localImageView != null) {
-        localImageView.setImageDrawable(localFaceDrawable);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    paramView = this.a.getIntent();
+    paramView.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+    SystemMessageHelper.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), paramView);
+    if (AddRequestActivity.a(this.a) != null) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
     }
   }
 }

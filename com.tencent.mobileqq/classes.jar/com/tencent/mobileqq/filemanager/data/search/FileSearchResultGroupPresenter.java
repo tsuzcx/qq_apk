@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import acrb;
+import aday;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,7 +29,7 @@ public class FileSearchResultGroupPresenter
       }
       paramISearchResultView.a().setImageDrawable((Drawable)localObject);
       paramISearchResultView.e().setText("我的文件");
-      localObject = (TextView)paramISearchResultView.a().findViewById(2131366378);
+      localObject = (TextView)paramISearchResultView.a().findViewById(2131366405);
       if (paramISearchResultGroupModel.a() != null) {
         break label177;
       }
@@ -38,10 +38,10 @@ public class FileSearchResultGroupPresenter
     for (int i = 0;; i = paramISearchResultGroupModel.a().size())
     {
       ((TextView)localObject).setText(String.format("%d条与\"", new Object[] { Integer.valueOf(i) }));
-      ((TextView)paramISearchResultView.a().findViewById(2131366379)).setText(paramISearchResultGroupModel.b());
-      ((TextView)paramISearchResultView.a().findViewById(2131366380)).setText("\"相关文件");
+      ((TextView)paramISearchResultView.a().findViewById(2131366406)).setText(paramISearchResultGroupModel.b());
+      ((TextView)paramISearchResultView.a().findViewById(2131366407)).setText("\"相关文件");
       paramISearchResultView.b().setVisibility(8);
-      paramISearchResultView.a().setOnClickListener(new acrb(this, paramISearchResultGroupModel));
+      paramISearchResultView.a().setOnClickListener(new aday(this, paramISearchResultGroupModel));
       return;
     }
   }

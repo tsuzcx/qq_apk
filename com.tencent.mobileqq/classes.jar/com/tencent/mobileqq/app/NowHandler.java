@@ -44,11 +44,11 @@ public class NowHandler
     String str1 = DeviceInfoUtil.e();
     String str2 = String.valueOf(ApkUtils.a(BaseApplicationImpl.sApplication));
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "query, clientTime=" + paramLong + ",nowChannel=" + paramString + ",qq_channel=" + "10000665" + ",qqVersionCode=" + str2 + ",deviceInfo=" + str1);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "query, clientTime=" + paramLong + ",nowChannel=" + paramString + ",qq_channel=" + "2017" + ",qqVersionCode=" + str2 + ",deviceInfo=" + str1);
     }
     ChannelRequest localChannelRequest = new ChannelRequest();
     localChannelRequest.channel = paramString;
-    localChannelRequest.qq_channel = "10000665";
+    localChannelRequest.qq_channel = "2017";
     localChannelRequest.qq_version = str2;
     localChannelRequest.deviceInfo = str1;
     localChannelRequest.clientTime = paramLong;

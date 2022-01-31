@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false">
+        <bitmap android:gravity="center" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021084" />
+    </item>
+    <item android:state_pressed="true">
+        <bitmap android:gravity="center" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021085" />
+    </item>
+</selector>

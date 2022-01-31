@@ -1,29 +1,17 @@
-import com.tencent.image.URLImageView;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
+import java.util.Comparator;
 
-public class anav
-  implements Runnable
+public final class anav
+  implements Comparator
 {
-  public anav(EditGifImage paramEditGifImage) {}
-  
-  public void run()
+  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
   {
-    FastAnimationDrawable localFastAnimationDrawable = this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable;
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = this.a.b;
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
-    this.a.d = false;
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true, false);
-    this.a.b = localFastAnimationDrawable;
+    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anav
  * JD-Core Version:    0.7.0.1
  */

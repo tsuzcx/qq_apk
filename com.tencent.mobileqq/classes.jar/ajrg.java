@@ -1,15 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
+import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
 
-public class ajrg
+class ajrg
+  implements Runnable
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ajrg(ajre paramajre, TroopTopicDetailInfo paramTroopTopicDetailInfo) {}
   
-  private ajrg(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog) {}
+  public void run()
+  {
+    this.jdField_a_of_type_Ajre.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
+    this.jdField_a_of_type_Ajre.a.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajrg
  * JD-Core Version:    0.7.0.1
  */

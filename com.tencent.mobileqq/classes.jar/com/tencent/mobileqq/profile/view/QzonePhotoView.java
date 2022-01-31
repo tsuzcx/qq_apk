@@ -2,9 +2,9 @@ package com.tencent.mobileqq.profile.view;
 
 import NS_MOBILE_MAIN_PAGE.PhotoWall;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
-import agea;
-import ageb;
-import agec;
+import agsc;
+import agsd;
+import agse;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -60,7 +60,7 @@ public class QzonePhotoView
   private int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new agec(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new agse(this);
   View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   public QQAppInterface a;
@@ -170,7 +170,7 @@ public class QzonePhotoView
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
     this.d = 0;
     this.jdField_a_of_type_JavaLangString = paramProfileCardInfo.a.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2130970962, this, true);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2130971010, this, true);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     this.jdField_a_of_type_Float = localDisplayMetrics.density;
     this.jdField_a_of_type_Int = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
@@ -181,7 +181,7 @@ public class QzonePhotoView
       bool = true;
     }
     this.jdField_b_of_type_Boolean = bool;
-    ThreadManager.post(new agea(this), 8, null, true);
+    ThreadManager.post(new agsc(this), 8, null, true);
     paramProfileCardInfo = Message.obtain();
     paramProfileCardInfo.what = 100;
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramProfileCardInfo);
@@ -223,8 +223,8 @@ public class QzonePhotoView
           break label558;
         }
         i = paramList.size();
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365508));
-        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365507);
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365530));
+        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365529);
         this.jdField_b_of_type_AndroidViewView.setTag(new DataTag(25, null));
         this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         localObject2 = ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1L);
@@ -240,15 +240,15 @@ public class QzonePhotoView
         }
         this.jdField_a_of_type_AndroidWidgetImageView.setTag(new DataTag(25, null));
         this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localObject1 = (ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131372379);
-        localObject2 = (CirclePageIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131372380);
+        localObject1 = (ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131372552);
+        localObject2 = (CirclePageIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131370312);
         if (i > 0)
         {
           QzonePhotoView.PhotoGridAdapter localPhotoGridAdapter = new QzonePhotoView.PhotoGridAdapter(this);
           localPhotoGridAdapter.a(paramList);
           localPhotoGridAdapter.a(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
           paramList = new AdapterViewPagerAdapter(getContext(), localPhotoGridAdapter, 8);
-          paramList.a(new ageb(this));
+          paramList.a(new agsd(this));
           ViewGroup.LayoutParams localLayoutParams = ((ViewPager)localObject1).getLayoutParams();
           localLayoutParams.width = this.jdField_a_of_type_Int;
           if (localPhotoGridAdapter.getCount() > 4)
@@ -371,7 +371,7 @@ public class QzonePhotoView
   {
     boolean bool3 = true;
     boolean bool2 = false;
-    ViewPager localViewPager = (ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131372379);
+    ViewPager localViewPager = (ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131372552);
     paramView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
     localViewPager.getLocationInWindow(this.jdField_b_of_type_ArrayOfInt);
     float f1 = paramMotionEvent.getRawY();

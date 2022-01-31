@@ -1,27 +1,23 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
+import com.tencent.biz.qqstory.playmode.util.DiscoverVideoDataProvider;
+import java.util.ArrayList;
 
 public class nmm
-  extends ChildViewClickListener
+  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public nmm(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
+  public nmm(DiscoverVideoDataProvider paramDiscoverVideoDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public void a()
   {
-    if ((paramObject instanceof QQUserUIItem))
-    {
-      paramView = (QQUserUIItem)paramObject;
-      StoryApi.a(this.a, 10, paramView.uid);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
-        StoryReportor.a("home_page", "clk_head_list", StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", StoryReportor.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilDiscoverVideoDataProvider.a(false, null);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilDiscoverVideoDataProvider.a(true, paramArrayList);
   }
 }
 

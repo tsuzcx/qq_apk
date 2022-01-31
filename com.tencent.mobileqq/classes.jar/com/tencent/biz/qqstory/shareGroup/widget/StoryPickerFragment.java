@@ -30,15 +30,15 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import nre;
-import nrf;
-import nrg;
-import nrh;
-import nri;
-import nrj;
-import nrl;
-import nrm;
-import nrn;
+import nsr;
+import nss;
+import nst;
+import nsu;
+import nsv;
+import nsw;
+import nsy;
+import nsz;
+import nta;
 
 public class StoryPickerFragment
   extends QQStoryBaseFragment
@@ -80,7 +80,7 @@ public class StoryPickerFragment
   
   protected int a()
   {
-    return 2130970792;
+    return 2130970840;
   }
   
   protected void a(Bundle paramBundle)
@@ -109,7 +109,7 @@ public class StoryPickerFragment
     {
       paramView = DialogUtil.a(getActivity(), 230);
       paramView.setMessage(String.format("最多只能选择%d个%s小视频", new Object[] { Integer.valueOf(20), "日迹" }));
-      paramView.setPositiveButton("我知道了", new nrh(this));
+      paramView.setPositiveButton("我知道了", new nsu(this));
       paramView.show();
       return;
     }
@@ -121,7 +121,7 @@ public class StoryPickerFragment
       if (!paramFakeVideoUIItem.jdField_a_of_type_Boolean) {
         break label143;
       }
-      i = 2130839270;
+      i = 2130839274;
       label108:
       paramView.setImageResource(i);
       if (!paramFakeVideoUIItem.jdField_a_of_type_Boolean) {
@@ -136,7 +136,7 @@ public class StoryPickerFragment
       bool = false;
       break;
       label143:
-      i = 2130839268;
+      i = 2130839272;
       break label108;
       label149:
       this.jdField_a_of_type_JavaUtilLinkedHashSet.remove(paramFakeVideoUIItem.jdField_a_of_type_JavaLangString);
@@ -146,37 +146,37 @@ public class StoryPickerFragment
   public void a(String paramString, int paramInt, View paramView, VideoCollectionItem.FakeVideoUIItem paramFakeVideoUIItem)
   {
     if (paramFakeVideoUIItem.b) {
-      Bosses.get().postJob(new nrj(this, paramString, paramInt, paramView, paramFakeVideoUIItem));
+      Bosses.get().postJob(new nsw(this, paramString, paramInt, paramView, paramFakeVideoUIItem));
     }
   }
   
   protected void a(@NonNull Map paramMap)
   {
     super.a(paramMap);
-    paramMap.put(new nrm(this), "");
-    paramMap.put(new nrn(this), "");
-    paramMap.put(new nrl(this), "");
+    paramMap.put(new nsz(this), "");
+    paramMap.put(new nta(this), "");
+    paramMap.put(new nsy(this), "");
   }
   
   void b()
   {
     int i = 0;
-    this.b.setText(getString(2131433681));
+    this.b.setText(getString(2131433698));
     super.a("全部日迹");
     super.a(String.format("完成(%d)", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
     if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1) {}
     for (;;)
     {
       super.f(i);
-      this.jdField_a_of_type_AndroidViewView = super.a(2131363098);
+      this.jdField_a_of_type_AndroidViewView = super.a(2131363116);
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter = new StoryPickerListAdapter(getActivity());
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(new nre(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(new nsr(this));
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(this);
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(this);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)super.a(2131364160));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)super.a(2131364184));
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new nrf(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new nrg(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new nss(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new nst(this));
       return;
       i = 1;
     }
@@ -269,10 +269,10 @@ public class StoryPickerFragment
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        paramView = new nri(this);
+        paramView = new nsv(this);
         QQCustomDialog localQQCustomDialog = DialogUtil.a(getActivity(), 230);
-        localQQCustomDialog.setMessage(getString(2131432094, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()), this.b }));
-        localQQCustomDialog.setNegativeButton(2131432998, paramView);
+        localQQCustomDialog.setMessage(getString(2131432111, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()), this.b }));
+        localQQCustomDialog.setNegativeButton(2131433015, paramView);
         localQQCustomDialog.setPositiveButton("添加", paramView);
         localQQCustomDialog.show();
       }

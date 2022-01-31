@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ocr.question;
 
-import afpq;
-import afps;
+import agcw;
+import agcy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -160,7 +160,7 @@ public class SearchQuestionFragment
     if (QLog.isColorLevel()) {
       QLog.d("SearchQuestionFragment", 2, "searchQuestion reqInfo:" + localObject);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a((ARCloudReqInfo)localObject, new afps(this, (ARCloudReqInfo)localObject));
+    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a((ARCloudReqInfo)localObject, new agcy(this, (ARCloudReqInfo)localObject));
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(0, 30000L);
   }
   
@@ -182,30 +182,30 @@ public class SearchQuestionFragment
     default: 
       return true;
     case 0: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439032, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439060, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       ReportController.b(null, "dc00898", "", "", "0X80085D2", "0X80085D2", 0, 0, "", "", "", "");
       return true;
     case 2: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439020, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439048, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return true;
     case 1: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439019, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439047, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return true;
     case 4: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439032, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439060, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       ReportController.b(null, "dc00898", "", "", "0X80085D2", "0X80085D2", 0, 0, "", "", "", "");
       return true;
     case 6: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439033, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439061, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       ReportController.b(null, "dc00898", "", "", "0X80085D2", "0X80085D2", 0, 0, "", "", "", "");
       return true;
     case 7: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439013, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439041, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return true;
     }
@@ -254,7 +254,7 @@ public class SearchQuestionFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131492970));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131492971));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
     paramLayoutInflater = new RelativeLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramLayoutInflater);
@@ -271,9 +271,9 @@ public class SearchQuestionFragment
     paramLayoutInflater.addRule(12);
     paramLayoutInflater.bottomMargin = AIOUtils.a(40.0F, getResources());
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842803);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842902);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131432998));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131433015));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView, paramLayoutInflater);
     return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
   }
@@ -329,7 +329,7 @@ public class SearchQuestionFragment
     this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload = new ARCloudFileUpload(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a();
     this.jdField_b_of_type_JavaLangString = paramView.getString("pic_path", "");
-    ThreadManager.postImmediately(new afpq(this), null, false);
+    ThreadManager.postImmediately(new agcw(this), null, false);
   }
 }
 

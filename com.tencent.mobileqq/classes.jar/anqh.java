@@ -1,40 +1,58 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.LBSDetetor;
+import dov.com.qq.im.capture.view.share.FilterComboSharePlugin;
 
 public class anqh
-  extends SosoInterface.OnLocationListener
+  extends Client.onRemoteRespObserver
 {
-  private int jdField_a_of_type_Int = -1;
+  public anqh(FilterComboSharePlugin paramFilterComboSharePlugin) {}
   
-  public anqh(LBSDetetor paramLBSDetetor, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
-  {
-    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-    this.jdField_a_of_type_Int = paramInt2;
-  }
+  public void onBindedToClient() {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    boolean bool1;
+    boolean bool2;
+    if (paramBundle != null)
     {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
+      paramBundle.getInt("respkey", 0);
+      String str = paramBundle.getString("cmd");
       if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+        QLog.i("FilterComboShare", 2, "onresp cmd" + str);
       }
-      LBSDetetor.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaLBSDetetor, d1, d2, this.jdField_a_of_type_Int);
+      if ((str != null) && ("ipc_f_c_s".equals(str)))
+      {
+        if ((FilterComboSharePlugin.a(this.a) != null) && (FilterComboSharePlugin.a(this.a).isShowing())) {
+          FilterComboSharePlugin.a(this.a).dismiss();
+        }
+        bool1 = paramBundle.getBoolean("k_r");
+        paramBundle = paramBundle.getString("k_s_p_c");
+        bool2 = FileUtils.a(paramBundle);
+        if (QLog.isColorLevel()) {
+          QLog.i("FilterComboShare", 2, "onresp result" + bool1 + " path " + paramBundle + " exist " + bool2);
+        }
+        if (this.a.a != -1) {
+          break label190;
+        }
+        QLog.i("FilterComboShare", 1, "skip -1 resp");
+      }
     }
+    label190:
+    int i;
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
-      }
-    } while ((LBSDetetor.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaLBSDetetor) == null) || (!LBSDetetor.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaLBSDetetor).hasMessages(this.jdField_a_of_type_Int)));
-    LBSDetetor.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaLBSDetetor, false, null, this.jdField_a_of_type_Int);
+      i = this.a.a;
+      this.a.a = -1;
+    } while ((!bool1) || (!bool2));
+    this.a.a(i, paramBundle);
   }
 }
 

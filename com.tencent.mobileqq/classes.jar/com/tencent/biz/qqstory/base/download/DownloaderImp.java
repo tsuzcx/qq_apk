@@ -70,23 +70,23 @@ public class DownloaderImp
     //   84: aconst_null
     //   85: astore 29
     //   87: aconst_null
-    //   88: astore 37
+    //   88: astore 36
     //   90: aconst_null
-    //   91: astore 38
+    //   91: astore 37
     //   93: aconst_null
-    //   94: astore 36
+    //   94: astore 39
     //   96: aconst_null
-    //   97: astore 26
+    //   97: astore 25
     //   99: aconst_null
-    //   100: astore 24
+    //   100: astore 26
     //   102: aconst_null
-    //   103: astore 39
+    //   103: astore 38
     //   105: aconst_null
-    //   106: astore 25
+    //   106: astore 24
     //   108: aconst_null
-    //   109: astore 31
+    //   109: astore 30
     //   111: aconst_null
-    //   112: astore 30
+    //   112: astore 31
     //   114: aconst_null
     //   115: astore 28
     //   117: iload 4
@@ -125,7 +125,7 @@ public class DownloaderImp
     //   188: astore 28
     //   190: iload 10
     //   192: istore 4
-    //   194: aload 31
+    //   194: aload 30
     //   196: astore 24
     //   198: aload 28
     //   200: astore 26
@@ -134,25 +134,25 @@ public class DownloaderImp
     //   206: aload 27
     //   208: astore 29
     //   210: aload 28
-    //   212: astore 33
+    //   212: astore 34
     //   214: aload 24
-    //   216: astore 31
+    //   216: astore 32
     //   218: aload 28
-    //   220: astore 34
+    //   220: astore 33
     //   222: aload 24
-    //   224: astore 32
+    //   224: astore 31
     //   226: aload 28
     //   228: astore 35
     //   230: aload 24
     //   232: astore 30
     //   234: aload 24
-    //   236: astore 39
+    //   236: astore 38
     //   238: aload 24
     //   240: astore 37
     //   242: aload 24
-    //   244: astore 36
+    //   244: astore 39
     //   246: aload 24
-    //   248: astore 38
+    //   248: astore 36
     //   250: aload_0
     //   251: getfield 21	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_Int	I
     //   254: istore 10
@@ -168,29 +168,29 @@ public class DownloaderImp
     //   275: aload 27
     //   277: astore 29
     //   279: aload 28
-    //   281: astore 41
+    //   281: astore 42
     //   283: aload 24
-    //   285: astore 39
+    //   285: astore 38
     //   287: aload 28
-    //   289: astore 33
+    //   289: astore 34
     //   291: aload 24
-    //   293: astore 31
+    //   293: astore 32
     //   295: aload 28
-    //   297: astore 34
+    //   297: astore 33
     //   299: aload 24
-    //   301: astore 32
+    //   301: astore 31
     //   303: aload 28
-    //   305: astore 42
+    //   305: astore 41
     //   307: aload 24
-    //   309: astore 36
+    //   309: astore 39
     //   311: aload 28
     //   313: astore 40
     //   315: aload 24
-    //   317: astore 38
+    //   317: astore 37
     //   319: aload 28
     //   321: astore 43
     //   323: aload 24
-    //   325: astore 37
+    //   325: astore 36
     //   327: aload 28
     //   329: astore 35
     //   331: aload 24
@@ -236,25 +236,25 @@ public class DownloaderImp
     //   418: aload 27
     //   420: astore 29
     //   422: aload 28
-    //   424: astore 33
+    //   424: astore 34
     //   426: aload 24
-    //   428: astore 31
+    //   428: astore 32
     //   430: aload 28
-    //   432: astore 34
+    //   432: astore 33
     //   434: aload 24
-    //   436: astore 32
+    //   436: astore 31
     //   438: aload 28
     //   440: astore 35
     //   442: aload 24
     //   444: astore 30
     //   446: aload 24
-    //   448: astore 39
+    //   448: astore 38
     //   450: aload 24
     //   452: astore 37
     //   454: aload 24
-    //   456: astore 36
+    //   456: astore 39
     //   458: aload 24
-    //   460: astore 38
+    //   460: astore 36
     //   462: aload_0
     //   463: getfield 39	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_Boolean	Z
     //   466: ifeq +10 -> 476
@@ -268,25 +268,25 @@ public class DownloaderImp
     //   484: aload 27
     //   486: astore 29
     //   488: aload 28
-    //   490: astore 33
+    //   490: astore 34
     //   492: aload 24
-    //   494: astore 31
+    //   494: astore 32
     //   496: aload 28
-    //   498: astore 34
+    //   498: astore 33
     //   500: aload 24
-    //   502: astore 32
+    //   502: astore 31
     //   504: aload 28
     //   506: astore 35
     //   508: aload 24
     //   510: astore 30
     //   512: aload 24
-    //   514: astore 39
+    //   514: astore 38
     //   516: aload 24
     //   518: astore 37
     //   520: aload 24
-    //   522: astore 36
+    //   522: astore 39
     //   524: aload 24
-    //   526: astore 38
+    //   526: astore 36
     //   528: aload_0
     //   529: aload 24
     //   531: aload 28
@@ -298,25 +298,25 @@ public class DownloaderImp
     //   544: aload 27
     //   546: astore 29
     //   548: aload 28
-    //   550: astore 33
+    //   550: astore 34
     //   552: aload 24
-    //   554: astore 31
+    //   554: astore 32
     //   556: aload 28
-    //   558: astore 34
+    //   558: astore 33
     //   560: aload 24
-    //   562: astore 32
+    //   562: astore 31
     //   564: aload 28
     //   566: astore 35
     //   568: aload 24
     //   570: astore 30
     //   572: aload 24
-    //   574: astore 39
+    //   574: astore 38
     //   576: aload 24
     //   578: astore 37
     //   580: aload 24
-    //   582: astore 36
+    //   582: astore 39
     //   584: aload 24
-    //   586: astore 38
+    //   586: astore 36
     //   588: aload 44
     //   590: invokevirtual 130	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   593: checkcast 110	java/net/HttpURLConnection
@@ -328,25 +328,25 @@ public class DownloaderImp
     //   606: aload 27
     //   608: astore 29
     //   610: aload 28
-    //   612: astore 33
+    //   612: astore 34
     //   614: aload 24
-    //   616: astore 31
+    //   616: astore 32
     //   618: aload 28
-    //   620: astore 34
+    //   620: astore 33
     //   622: aload 24
-    //   624: astore 32
+    //   624: astore 31
     //   626: aload 28
     //   628: astore 35
     //   630: aload 24
     //   632: astore 30
     //   634: aload 24
-    //   636: astore 39
+    //   636: astore 38
     //   638: aload 24
     //   640: astore 37
     //   642: aload 24
-    //   644: astore 36
+    //   644: astore 39
     //   646: aload 24
-    //   648: astore 38
+    //   648: astore 36
     //   650: aload 24
     //   652: iconst_0
     //   653: invokevirtual 134	java/net/HttpURLConnection:setDoOutput	(Z)V
@@ -357,25 +357,25 @@ public class DownloaderImp
     //   664: aload 27
     //   666: astore 29
     //   668: aload 28
-    //   670: astore 33
+    //   670: astore 34
     //   672: aload 24
-    //   674: astore 31
+    //   674: astore 32
     //   676: aload 28
-    //   678: astore 34
+    //   678: astore 33
     //   680: aload 24
-    //   682: astore 32
+    //   682: astore 31
     //   684: aload 28
     //   686: astore 35
     //   688: aload 24
     //   690: astore 30
     //   692: aload 24
-    //   694: astore 39
+    //   694: astore 38
     //   696: aload 24
     //   698: astore 37
     //   700: aload 24
-    //   702: astore 36
+    //   702: astore 39
     //   704: aload 24
-    //   706: astore 38
+    //   706: astore 36
     //   708: aload 24
     //   710: sipush 5000
     //   713: invokevirtual 138	java/net/HttpURLConnection:setConnectTimeout	(I)V
@@ -386,25 +386,25 @@ public class DownloaderImp
     //   724: aload 27
     //   726: astore 29
     //   728: aload 28
-    //   730: astore 33
+    //   730: astore 34
     //   732: aload 24
-    //   734: astore 31
+    //   734: astore 32
     //   736: aload 28
-    //   738: astore 34
+    //   738: astore 33
     //   740: aload 24
-    //   742: astore 32
+    //   742: astore 31
     //   744: aload 28
     //   746: astore 35
     //   748: aload 24
     //   750: astore 30
     //   752: aload 24
-    //   754: astore 39
+    //   754: astore 38
     //   756: aload 24
     //   758: astore 37
     //   760: aload 24
-    //   762: astore 36
+    //   762: astore 39
     //   764: aload 24
-    //   766: astore 38
+    //   766: astore 36
     //   768: aload 24
     //   770: sipush 5000
     //   773: invokevirtual 141	java/net/HttpURLConnection:setReadTimeout	(I)V
@@ -415,25 +415,25 @@ public class DownloaderImp
     //   784: aload 27
     //   786: astore 29
     //   788: aload 28
-    //   790: astore 33
+    //   790: astore 34
     //   792: aload 24
-    //   794: astore 31
+    //   794: astore 32
     //   796: aload 28
-    //   798: astore 34
+    //   798: astore 33
     //   800: aload 24
-    //   802: astore 32
+    //   802: astore 31
     //   804: aload 28
     //   806: astore 35
     //   808: aload 24
     //   810: astore 30
     //   812: aload 24
-    //   814: astore 39
+    //   814: astore 38
     //   816: aload 24
     //   818: astore 37
     //   820: aload 24
-    //   822: astore 36
+    //   822: astore 39
     //   824: aload 24
-    //   826: astore 38
+    //   826: astore 36
     //   828: aload 24
     //   830: ldc 143
     //   832: ldc 145
@@ -445,25 +445,25 @@ public class DownloaderImp
     //   845: aload 27
     //   847: astore 29
     //   849: aload 28
-    //   851: astore 33
+    //   851: astore 34
     //   853: aload 24
-    //   855: astore 31
+    //   855: astore 32
     //   857: aload 28
-    //   859: astore 34
+    //   859: astore 33
     //   861: aload 24
-    //   863: astore 32
+    //   863: astore 31
     //   865: aload 28
     //   867: astore 35
     //   869: aload 24
     //   871: astore 30
     //   873: aload 24
-    //   875: astore 39
+    //   875: astore 38
     //   877: aload 24
     //   879: astore 37
     //   881: aload 24
-    //   883: astore 36
+    //   883: astore 39
     //   885: aload 24
-    //   887: astore 38
+    //   887: astore 36
     //   889: aload_3
     //   890: aload 24
     //   892: invokestatic 151	com/tencent/biz/qqstory/base/download/DownloaderImp:a	(Ljava/util/HashMap;Ljava/net/HttpURLConnection;)V
@@ -474,25 +474,25 @@ public class DownloaderImp
     //   903: aload 27
     //   905: astore 29
     //   907: aload 28
-    //   909: astore 33
+    //   909: astore 34
     //   911: aload 24
-    //   913: astore 31
+    //   913: astore 32
     //   915: aload 28
-    //   917: astore 34
+    //   917: astore 33
     //   919: aload 24
-    //   921: astore 32
+    //   921: astore 31
     //   923: aload 28
     //   925: astore 35
     //   927: aload 24
     //   929: astore 30
     //   931: aload 24
-    //   933: astore 39
+    //   933: astore 38
     //   935: aload 24
     //   937: astore 37
     //   939: aload 24
-    //   941: astore 36
+    //   941: astore 39
     //   943: aload 24
-    //   945: astore 38
+    //   945: astore 36
     //   947: aload 27
     //   949: lload 5
     //   951: invokevirtual 155	java/io/RandomAccessFile:seek	(J)V
@@ -503,25 +503,25 @@ public class DownloaderImp
     //   962: aload 27
     //   964: astore 29
     //   966: aload 28
-    //   968: astore 33
+    //   968: astore 34
     //   970: aload 24
-    //   972: astore 31
+    //   972: astore 32
     //   974: aload 28
-    //   976: astore 34
+    //   976: astore 33
     //   978: aload 24
-    //   980: astore 32
+    //   980: astore 31
     //   982: aload 28
     //   984: astore 35
     //   986: aload 24
     //   988: astore 30
     //   990: aload 24
-    //   992: astore 39
+    //   992: astore 38
     //   994: aload 24
     //   996: astore 37
     //   998: aload 24
-    //   1000: astore 36
+    //   1000: astore 39
     //   1002: aload 24
-    //   1004: astore 38
+    //   1004: astore 36
     //   1006: aload 24
     //   1008: ldc 157
     //   1010: new 47	java/lang/StringBuilder
@@ -542,25 +542,25 @@ public class DownloaderImp
     //   1046: aload 27
     //   1048: astore 29
     //   1050: aload 28
-    //   1052: astore 33
+    //   1052: astore 34
     //   1054: aload 24
-    //   1056: astore 31
+    //   1056: astore 32
     //   1058: aload 28
-    //   1060: astore 34
+    //   1060: astore 33
     //   1062: aload 24
-    //   1064: astore 32
+    //   1064: astore 31
     //   1066: aload 28
     //   1068: astore 35
     //   1070: aload 24
     //   1072: astore 30
     //   1074: aload 24
-    //   1076: astore 39
+    //   1076: astore 38
     //   1078: aload 24
     //   1080: astore 37
     //   1082: aload 24
-    //   1084: astore 36
+    //   1084: astore 39
     //   1086: aload 24
-    //   1088: astore 38
+    //   1088: astore 36
     //   1090: ldc 45
     //   1092: new 47	java/lang/StringBuilder
     //   1095: dup
@@ -578,65 +578,65 @@ public class DownloaderImp
     //   1123: aload 27
     //   1125: astore 29
     //   1127: aload 28
-    //   1129: astore 33
+    //   1129: astore 34
     //   1131: aload 24
-    //   1133: astore 31
+    //   1133: astore 32
     //   1135: aload 28
-    //   1137: astore 34
+    //   1137: astore 33
     //   1139: aload 24
-    //   1141: astore 32
+    //   1141: astore 31
     //   1143: aload 28
     //   1145: astore 35
     //   1147: aload 24
     //   1149: astore 30
     //   1151: aload 24
-    //   1153: astore 39
+    //   1153: astore 38
     //   1155: aload 24
     //   1157: astore 37
     //   1159: aload 24
-    //   1161: astore 36
+    //   1161: astore 39
     //   1163: aload 24
-    //   1165: astore 38
+    //   1165: astore 36
     //   1167: aload 24
     //   1169: invokevirtual 170	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   1172: astore 40
     //   1174: aload 40
     //   1176: astore 25
     //   1178: lload 5
-    //   1180: lstore 13
+    //   1180: lstore 18
     //   1182: lload 5
-    //   1184: lstore 17
+    //   1184: lstore 14
     //   1186: lload 5
-    //   1188: lstore 15
+    //   1188: lstore 16
     //   1190: lload 5
-    //   1192: lstore 19
+    //   1192: lstore 20
     //   1194: aload 24
     //   1196: invokevirtual 174	java/net/HttpURLConnection:getContentLength	()I
     //   1199: i2l
-    //   1200: lstore 21
+    //   1200: lstore 22
     //   1202: lload 5
-    //   1204: lstore 13
+    //   1204: lstore 18
     //   1206: lload 5
-    //   1208: lstore 17
+    //   1208: lstore 14
     //   1210: lload 5
-    //   1212: lstore 15
+    //   1212: lstore 16
     //   1214: lload 5
-    //   1216: lstore 19
+    //   1216: lstore 20
     //   1218: iload 9
     //   1220: newarray byte
     //   1222: astore 26
     //   1224: lload 5
-    //   1226: lstore 13
-    //   1228: lload 13
-    //   1230: lstore 11
-    //   1232: lload 11
-    //   1234: lstore 13
-    //   1236: lload 11
-    //   1238: lstore 17
-    //   1240: lload 11
-    //   1242: lstore 15
-    //   1244: lload 11
-    //   1246: lstore 19
+    //   1226: lstore 14
+    //   1228: lload 14
+    //   1230: lstore 12
+    //   1232: lload 12
+    //   1234: lstore 18
+    //   1236: lload 12
+    //   1238: lstore 14
+    //   1240: lload 12
+    //   1242: lstore 16
+    //   1244: lload 12
+    //   1246: lstore 20
     //   1248: aload 25
     //   1250: aload 26
     //   1252: invokevirtual 178	java/io/InputStream:read	([B)I
@@ -644,27 +644,27 @@ public class DownloaderImp
     //   1257: iload 10
     //   1259: iconst_m1
     //   1260: if_icmpeq +2254 -> 3514
-    //   1263: lload 11
-    //   1265: lstore 13
-    //   1267: lload 11
-    //   1269: lstore 17
-    //   1271: lload 11
-    //   1273: lstore 15
-    //   1275: lload 11
-    //   1277: lstore 19
+    //   1263: lload 12
+    //   1265: lstore 18
+    //   1267: lload 12
+    //   1269: lstore 14
+    //   1271: lload 12
+    //   1273: lstore 16
+    //   1275: lload 12
+    //   1277: lstore 20
     //   1279: aload_0
     //   1280: getfield 39	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_Boolean	Z
     //   1283: ifeq +42 -> 1325
     //   1286: bipush 6
     //   1288: istore 4
-    //   1290: lload 11
-    //   1292: lstore 13
-    //   1294: lload 11
-    //   1296: lstore 17
-    //   1298: lload 11
-    //   1300: lstore 15
-    //   1302: lload 11
-    //   1304: lstore 19
+    //   1290: lload 12
+    //   1292: lstore 18
+    //   1294: lload 12
+    //   1296: lstore 14
+    //   1298: lload 12
+    //   1300: lstore 16
+    //   1302: lload 12
+    //   1304: lstore 20
     //   1306: aload_0
     //   1307: aload 24
     //   1309: aload 25
@@ -674,74 +674,74 @@ public class DownloaderImp
     //   1318: aload 25
     //   1320: astore 28
     //   1322: goto -1055 -> 267
-    //   1325: lload 11
-    //   1327: lstore 13
-    //   1329: lload 11
-    //   1331: lstore 17
-    //   1333: lload 11
-    //   1335: lstore 15
-    //   1337: lload 11
-    //   1339: lstore 19
+    //   1325: lload 12
+    //   1327: lstore 18
+    //   1329: lload 12
+    //   1331: lstore 14
+    //   1333: lload 12
+    //   1335: lstore 16
+    //   1337: lload 12
+    //   1339: lstore 20
     //   1341: aload 27
     //   1343: aload 26
     //   1345: iconst_0
     //   1346: iload 10
     //   1348: invokevirtual 182	java/io/RandomAccessFile:write	([BII)V
-    //   1351: lload 11
+    //   1351: lload 12
     //   1353: iload 10
     //   1355: i2l
     //   1356: ladd
-    //   1357: lstore 11
-    //   1359: lload 11
-    //   1361: lstore 13
-    //   1363: lload 11
-    //   1365: lstore 17
-    //   1367: lload 11
-    //   1369: lstore 15
-    //   1371: lload 11
-    //   1373: lstore 19
+    //   1357: lstore 12
+    //   1359: lload 12
+    //   1361: lstore 18
+    //   1363: lload 12
+    //   1365: lstore 14
+    //   1367: lload 12
+    //   1369: lstore 16
+    //   1371: lload 12
+    //   1373: lstore 20
     //   1375: aload_0
     //   1376: getfield 67	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener	Lcom/tencent/biz/qqstory/base/download/DownloadProgressListener;
     //   1379: ifnull +36 -> 1415
-    //   1382: lload 11
-    //   1384: lstore 13
-    //   1386: lload 11
-    //   1388: lstore 17
-    //   1390: lload 11
-    //   1392: lstore 15
-    //   1394: lload 11
-    //   1396: lstore 19
+    //   1382: lload 12
+    //   1384: lstore 18
+    //   1386: lload 12
+    //   1388: lstore 14
+    //   1390: lload 12
+    //   1392: lstore 16
+    //   1394: lload 12
+    //   1396: lstore 20
     //   1398: aload_0
     //   1399: getfield 67	com/tencent/biz/qqstory/base/download/DownloaderImp:jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener	Lcom/tencent/biz/qqstory/base/download/DownloadProgressListener;
     //   1402: aload_1
-    //   1403: lload 11
+    //   1403: lload 12
     //   1405: lload 5
-    //   1407: lload 21
+    //   1407: lload 22
     //   1409: ladd
     //   1410: invokeinterface 185 6 0
-    //   1415: lload 11
-    //   1417: lstore 13
-    //   1419: lload 11
-    //   1421: lstore 17
-    //   1423: lload 11
-    //   1425: lstore 15
-    //   1427: lload 11
-    //   1429: lstore 19
+    //   1415: lload 12
+    //   1417: lstore 18
+    //   1419: lload 12
+    //   1421: lstore 14
+    //   1423: lload 12
+    //   1425: lstore 16
+    //   1427: lload 12
+    //   1429: lstore 20
     //   1431: invokestatic 190	com/tencent/mobileqq/msf/sdk/AppNetConnInfo:isWifiConn	()Z
-    //   1434: istore 23
-    //   1436: lload 11
-    //   1438: lstore 13
+    //   1434: istore 11
+    //   1436: lload 12
+    //   1438: lstore 14
     //   1440: iload 7
     //   1442: ifeq -214 -> 1228
-    //   1445: lload 11
-    //   1447: lstore 13
-    //   1449: iload 23
+    //   1445: lload 12
+    //   1447: lstore 14
+    //   1449: iload 11
     //   1451: ifne -223 -> 1228
     //   1454: bipush 7
     //   1456: istore 4
     //   1458: goto -168 -> 1290
     //   1461: astore 45
-    //   1463: lload 13
+    //   1463: lload 18
     //   1465: lstore 5
     //   1467: aload 25
     //   1469: astore 28
@@ -752,29 +752,29 @@ public class DownloaderImp
     //   1479: aload 27
     //   1481: astore 29
     //   1483: aload 28
-    //   1485: astore 41
+    //   1485: astore 42
     //   1487: aload 24
-    //   1489: astore 39
+    //   1489: astore 38
     //   1491: aload 28
-    //   1493: astore 33
+    //   1493: astore 34
     //   1495: aload 24
-    //   1497: astore 31
+    //   1497: astore 32
     //   1499: aload 28
-    //   1501: astore 34
+    //   1501: astore 33
     //   1503: aload 24
-    //   1505: astore 32
+    //   1505: astore 31
     //   1507: aload 28
-    //   1509: astore 42
+    //   1509: astore 41
     //   1511: aload 24
-    //   1513: astore 36
+    //   1513: astore 39
     //   1515: aload 28
     //   1517: astore 40
     //   1519: aload 24
-    //   1521: astore 38
+    //   1521: astore 37
     //   1523: aload 28
     //   1525: astore 43
     //   1527: aload 24
-    //   1529: astore 37
+    //   1529: astore 36
     //   1531: aload 28
     //   1533: astore 35
     //   1535: aload 24
@@ -790,29 +790,29 @@ public class DownloaderImp
     //   1556: aload 27
     //   1558: astore 29
     //   1560: aload 28
-    //   1562: astore 41
+    //   1562: astore 42
     //   1564: aload 24
-    //   1566: astore 39
+    //   1566: astore 38
     //   1568: aload 28
-    //   1570: astore 33
+    //   1570: astore 34
     //   1572: aload 24
-    //   1574: astore 31
+    //   1574: astore 32
     //   1576: aload 28
-    //   1578: astore 34
+    //   1578: astore 33
     //   1580: aload 24
-    //   1582: astore 32
+    //   1582: astore 31
     //   1584: aload 28
-    //   1586: astore 42
+    //   1586: astore 41
     //   1588: aload 24
-    //   1590: astore 36
+    //   1590: astore 39
     //   1592: aload 28
     //   1594: astore 40
     //   1596: aload 24
-    //   1598: astore 38
+    //   1598: astore 37
     //   1600: aload 28
     //   1602: astore 43
     //   1604: aload 24
-    //   1606: astore 37
+    //   1606: astore 36
     //   1608: aload 28
     //   1610: astore 35
     //   1612: aload 24
@@ -826,29 +826,29 @@ public class DownloaderImp
     //   1628: aload 27
     //   1630: astore 29
     //   1632: aload 28
-    //   1634: astore 41
+    //   1634: astore 42
     //   1636: aload 24
-    //   1638: astore 39
+    //   1638: astore 38
     //   1640: aload 28
-    //   1642: astore 33
+    //   1642: astore 34
     //   1644: aload 24
-    //   1646: astore 31
+    //   1646: astore 32
     //   1648: aload 28
-    //   1650: astore 34
+    //   1650: astore 33
     //   1652: aload 24
-    //   1654: astore 32
+    //   1654: astore 31
     //   1656: aload 28
-    //   1658: astore 42
+    //   1658: astore 41
     //   1660: aload 24
-    //   1662: astore 36
+    //   1662: astore 39
     //   1664: aload 28
     //   1666: astore 40
     //   1668: aload 24
-    //   1670: astore 38
+    //   1670: astore 37
     //   1672: aload 28
     //   1674: astore 43
     //   1676: aload 24
-    //   1678: astore 37
+    //   1678: astore 36
     //   1680: aload 28
     //   1682: astore 35
     //   1684: aload 24
@@ -869,29 +869,29 @@ public class DownloaderImp
     //   1714: aload 27
     //   1716: astore 29
     //   1718: aload 28
-    //   1720: astore 41
+    //   1720: astore 42
     //   1722: aload 24
-    //   1724: astore 39
+    //   1724: astore 38
     //   1726: aload 28
-    //   1728: astore 33
+    //   1728: astore 34
     //   1730: aload 24
-    //   1732: astore 31
+    //   1732: astore 32
     //   1734: aload 28
-    //   1736: astore 34
+    //   1736: astore 33
     //   1738: aload 24
-    //   1740: astore 32
+    //   1740: astore 31
     //   1742: aload 28
-    //   1744: astore 42
+    //   1744: astore 41
     //   1746: aload 24
-    //   1748: astore 36
+    //   1748: astore 39
     //   1750: aload 28
     //   1752: astore 40
     //   1754: aload 24
-    //   1756: astore 38
+    //   1756: astore 37
     //   1758: aload 28
     //   1760: astore 43
     //   1762: aload 24
-    //   1764: astore 37
+    //   1764: astore 36
     //   1766: aload 28
     //   1768: astore 35
     //   1770: aload 24
@@ -907,29 +907,29 @@ public class DownloaderImp
     //   1791: aload 27
     //   1793: astore 29
     //   1795: aload 28
-    //   1797: astore 41
+    //   1797: astore 42
     //   1799: aload 24
-    //   1801: astore 39
+    //   1801: astore 38
     //   1803: aload 28
-    //   1805: astore 33
+    //   1805: astore 34
     //   1807: aload 24
-    //   1809: astore 31
+    //   1809: astore 32
     //   1811: aload 28
-    //   1813: astore 34
+    //   1813: astore 33
     //   1815: aload 24
-    //   1817: astore 32
+    //   1817: astore 31
     //   1819: aload 28
-    //   1821: astore 42
+    //   1821: astore 41
     //   1823: aload 24
-    //   1825: astore 36
+    //   1825: astore 39
     //   1827: aload 28
     //   1829: astore 40
     //   1831: aload 24
-    //   1833: astore 38
+    //   1833: astore 37
     //   1835: aload 28
     //   1837: astore 43
     //   1839: aload 24
-    //   1841: astore 37
+    //   1841: astore 36
     //   1843: aload 28
     //   1845: astore 35
     //   1847: aload 24
@@ -943,29 +943,29 @@ public class DownloaderImp
     //   1863: aload 27
     //   1865: astore 29
     //   1867: aload 28
-    //   1869: astore 41
+    //   1869: astore 42
     //   1871: aload 24
-    //   1873: astore 39
+    //   1873: astore 38
     //   1875: aload 28
-    //   1877: astore 33
+    //   1877: astore 34
     //   1879: aload 24
-    //   1881: astore 31
+    //   1881: astore 32
     //   1883: aload 28
-    //   1885: astore 34
+    //   1885: astore 33
     //   1887: aload 24
-    //   1889: astore 32
+    //   1889: astore 31
     //   1891: aload 28
-    //   1893: astore 42
+    //   1893: astore 41
     //   1895: aload 24
-    //   1897: astore 36
+    //   1897: astore 39
     //   1899: aload 28
     //   1901: astore 40
     //   1903: aload 24
-    //   1905: astore 38
+    //   1905: astore 37
     //   1907: aload 28
     //   1909: astore 43
     //   1911: aload 24
-    //   1913: astore 37
+    //   1913: astore 36
     //   1915: aload 28
     //   1917: astore 35
     //   1919: aload 24
@@ -986,29 +986,29 @@ public class DownloaderImp
     //   1949: aload 27
     //   1951: astore 29
     //   1953: aload 28
-    //   1955: astore 41
+    //   1955: astore 42
     //   1957: aload 24
-    //   1959: astore 39
+    //   1959: astore 38
     //   1961: aload 28
-    //   1963: astore 33
+    //   1963: astore 34
     //   1965: aload 24
-    //   1967: astore 31
+    //   1967: astore 32
     //   1969: aload 28
-    //   1971: astore 34
+    //   1971: astore 33
     //   1973: aload 24
-    //   1975: astore 32
+    //   1975: astore 31
     //   1977: aload 28
-    //   1979: astore 42
+    //   1979: astore 41
     //   1981: aload 24
-    //   1983: astore 36
+    //   1983: astore 39
     //   1985: aload 28
     //   1987: astore 40
     //   1989: aload 24
-    //   1991: astore 38
+    //   1991: astore 37
     //   1993: aload 28
     //   1995: astore 43
     //   1997: aload 24
-    //   1999: astore 37
+    //   1999: astore 36
     //   2001: aload 28
     //   2003: astore 35
     //   2005: aload 24
@@ -1024,29 +1024,29 @@ public class DownloaderImp
     //   2026: aload 27
     //   2028: astore 29
     //   2030: aload 28
-    //   2032: astore 41
+    //   2032: astore 42
     //   2034: aload 24
-    //   2036: astore 39
+    //   2036: astore 38
     //   2038: aload 28
-    //   2040: astore 33
+    //   2040: astore 34
     //   2042: aload 24
-    //   2044: astore 31
+    //   2044: astore 32
     //   2046: aload 28
-    //   2048: astore 34
+    //   2048: astore 33
     //   2050: aload 24
-    //   2052: astore 32
+    //   2052: astore 31
     //   2054: aload 28
-    //   2056: astore 42
+    //   2056: astore 41
     //   2058: aload 24
-    //   2060: astore 36
+    //   2060: astore 39
     //   2062: aload 28
     //   2064: astore 40
     //   2066: aload 24
-    //   2068: astore 38
+    //   2068: astore 37
     //   2070: aload 28
     //   2072: astore 43
     //   2074: aload 24
-    //   2076: astore 37
+    //   2076: astore 36
     //   2078: aload 28
     //   2080: astore 35
     //   2082: aload 24
@@ -1060,29 +1060,29 @@ public class DownloaderImp
     //   2098: aload 27
     //   2100: astore 29
     //   2102: aload 28
-    //   2104: astore 41
+    //   2104: astore 42
     //   2106: aload 24
-    //   2108: astore 39
+    //   2108: astore 38
     //   2110: aload 28
-    //   2112: astore 33
+    //   2112: astore 34
     //   2114: aload 24
-    //   2116: astore 31
+    //   2116: astore 32
     //   2118: aload 28
-    //   2120: astore 34
+    //   2120: astore 33
     //   2122: aload 24
-    //   2124: astore 32
+    //   2124: astore 31
     //   2126: aload 28
-    //   2128: astore 42
+    //   2128: astore 41
     //   2130: aload 24
-    //   2132: astore 36
+    //   2132: astore 39
     //   2134: aload 28
     //   2136: astore 40
     //   2138: aload 24
-    //   2140: astore 38
+    //   2140: astore 37
     //   2142: aload 28
     //   2144: astore 43
     //   2146: aload 24
-    //   2148: astore 37
+    //   2148: astore 36
     //   2150: aload 28
     //   2152: astore 35
     //   2154: aload 24
@@ -1103,29 +1103,29 @@ public class DownloaderImp
     //   2184: aload 27
     //   2186: astore 29
     //   2188: aload 28
-    //   2190: astore 41
+    //   2190: astore 42
     //   2192: aload 24
-    //   2194: astore 39
+    //   2194: astore 38
     //   2196: aload 28
-    //   2198: astore 33
+    //   2198: astore 34
     //   2200: aload 24
-    //   2202: astore 31
+    //   2202: astore 32
     //   2204: aload 28
-    //   2206: astore 34
+    //   2206: astore 33
     //   2208: aload 24
-    //   2210: astore 32
+    //   2210: astore 31
     //   2212: aload 28
-    //   2214: astore 42
+    //   2214: astore 41
     //   2216: aload 24
-    //   2218: astore 36
+    //   2218: astore 39
     //   2220: aload 28
     //   2222: astore 40
     //   2224: aload 24
-    //   2226: astore 38
+    //   2226: astore 37
     //   2228: aload 28
     //   2230: astore 43
     //   2232: aload 24
-    //   2234: astore 37
+    //   2234: astore 36
     //   2236: aload 28
     //   2238: astore 35
     //   2240: aload 24
@@ -1141,29 +1141,29 @@ public class DownloaderImp
     //   2261: aload 27
     //   2263: astore 29
     //   2265: aload 28
-    //   2267: astore 41
+    //   2267: astore 42
     //   2269: aload 24
-    //   2271: astore 39
+    //   2271: astore 38
     //   2273: aload 28
-    //   2275: astore 33
+    //   2275: astore 34
     //   2277: aload 24
-    //   2279: astore 31
+    //   2279: astore 32
     //   2281: aload 28
-    //   2283: astore 34
+    //   2283: astore 33
     //   2285: aload 24
-    //   2287: astore 32
+    //   2287: astore 31
     //   2289: aload 28
-    //   2291: astore 42
+    //   2291: astore 41
     //   2293: aload 24
-    //   2295: astore 36
+    //   2295: astore 39
     //   2297: aload 28
     //   2299: astore 40
     //   2301: aload 24
-    //   2303: astore 38
+    //   2303: astore 37
     //   2305: aload 28
     //   2307: astore 43
     //   2309: aload 24
-    //   2311: astore 37
+    //   2311: astore 36
     //   2313: aload 28
     //   2315: astore 35
     //   2317: aload 24
@@ -1177,29 +1177,29 @@ public class DownloaderImp
     //   2333: aload 27
     //   2335: astore 29
     //   2337: aload 28
-    //   2339: astore 41
+    //   2339: astore 42
     //   2341: aload 24
-    //   2343: astore 39
+    //   2343: astore 38
     //   2345: aload 28
-    //   2347: astore 33
+    //   2347: astore 34
     //   2349: aload 24
-    //   2351: astore 31
+    //   2351: astore 32
     //   2353: aload 28
-    //   2355: astore 34
+    //   2355: astore 33
     //   2357: aload 24
-    //   2359: astore 32
+    //   2359: astore 31
     //   2361: aload 28
-    //   2363: astore 42
+    //   2363: astore 41
     //   2365: aload 24
-    //   2367: astore 36
+    //   2367: astore 39
     //   2369: aload 28
     //   2371: astore 40
     //   2373: aload 24
-    //   2375: astore 38
+    //   2375: astore 37
     //   2377: aload 28
     //   2379: astore 43
     //   2381: aload 24
-    //   2383: astore 37
+    //   2383: astore 36
     //   2385: aload 28
     //   2387: astore 35
     //   2389: aload 24
@@ -1234,7 +1234,7 @@ public class DownloaderImp
     //   2446: istore 4
     //   2448: goto -2072 -> 376
     //   2451: astore_3
-    //   2452: aload 30
+    //   2452: aload 31
     //   2454: astore 25
     //   2456: aload 29
     //   2458: astore 24
@@ -1290,7 +1290,7 @@ public class DownloaderImp
     //   2559: astore 43
     //   2561: aload 43
     //   2563: astore 26
-    //   2565: aload 37
+    //   2565: aload 36
     //   2567: astore 25
     //   2569: aload 27
     //   2571: astore 29
@@ -1300,9 +1300,9 @@ public class DownloaderImp
     //   2578: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   2581: iconst_2
     //   2582: istore 8
-    //   2584: aload 37
+    //   2584: aload 36
     //   2586: ifnull +8 -> 2594
-    //   2589: aload 37
+    //   2589: aload 36
     //   2591: invokevirtual 113	java/net/HttpURLConnection:disconnect	()V
     //   2594: aload 43
     //   2596: ifnull +8 -> 2604
@@ -1344,7 +1344,7 @@ public class DownloaderImp
     //   2670: astore 40
     //   2672: aload 40
     //   2674: astore 26
-    //   2676: aload 38
+    //   2676: aload 37
     //   2678: astore 25
     //   2680: aload 27
     //   2682: astore 29
@@ -1354,9 +1354,9 @@ public class DownloaderImp
     //   2689: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   2692: iconst_1
     //   2693: istore 8
-    //   2695: aload 38
+    //   2695: aload 37
     //   2697: ifnull +8 -> 2705
-    //   2700: aload 38
+    //   2700: aload 37
     //   2702: invokevirtual 113	java/net/HttpURLConnection:disconnect	()V
     //   2705: aload 40
     //   2707: ifnull +8 -> 2715
@@ -1395,10 +1395,10 @@ public class DownloaderImp
     //   2777: aconst_null
     //   2778: astore 27
     //   2780: aconst_null
-    //   2781: astore 42
-    //   2783: aload 42
+    //   2781: astore 41
+    //   2783: aload 41
     //   2785: astore 26
-    //   2787: aload 36
+    //   2787: aload 39
     //   2789: astore 25
     //   2791: aload 27
     //   2793: astore 29
@@ -1407,27 +1407,27 @@ public class DownloaderImp
     //   2799: aload_2
     //   2800: invokespecial 210	java/io/File:<init>	(Ljava/lang/String;)V
     //   2803: astore_2
-    //   2804: aload 42
+    //   2804: aload 41
     //   2806: astore 26
-    //   2808: aload 36
+    //   2808: aload 39
     //   2810: astore 25
     //   2812: aload 27
     //   2814: astore 29
     //   2816: aload_2
     //   2817: invokevirtual 95	java/io/File:exists	()Z
     //   2820: ifeq +20 -> 2840
-    //   2823: aload 42
+    //   2823: aload 41
     //   2825: astore 26
-    //   2827: aload 36
+    //   2827: aload 39
     //   2829: astore 25
     //   2831: aload 27
     //   2833: astore 29
     //   2835: aload_2
     //   2836: invokevirtual 213	java/io/File:delete	()Z
     //   2839: pop
-    //   2840: aload 42
+    //   2840: aload 41
     //   2842: astore 26
-    //   2844: aload 36
+    //   2844: aload 39
     //   2846: astore 25
     //   2848: aload 27
     //   2850: astore 29
@@ -1437,13 +1437,13 @@ public class DownloaderImp
     //   2857: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   2860: iconst_3
     //   2861: istore 8
-    //   2863: aload 36
+    //   2863: aload 39
     //   2865: ifnull +8 -> 2873
-    //   2868: aload 36
+    //   2868: aload 39
     //   2870: invokevirtual 113	java/net/HttpURLConnection:disconnect	()V
-    //   2873: aload 42
+    //   2873: aload 41
     //   2875: ifnull +8 -> 2883
-    //   2878: aload 42
+    //   2878: aload 41
     //   2880: invokevirtual 116	java/io/InputStream:close	()V
     //   2883: iload 8
     //   2885: istore 4
@@ -1478,10 +1478,10 @@ public class DownloaderImp
     //   2945: aconst_null
     //   2946: astore 27
     //   2948: aconst_null
-    //   2949: astore 34
-    //   2951: aload 26
+    //   2949: astore 33
+    //   2951: aload 25
     //   2953: astore 24
-    //   2955: aload 34
+    //   2955: aload 33
     //   2957: astore 26
     //   2959: aload 24
     //   2961: astore 25
@@ -1504,9 +1504,9 @@ public class DownloaderImp
     //   2997: ifnull +8 -> 3005
     //   3000: aload 24
     //   3002: invokevirtual 113	java/net/HttpURLConnection:disconnect	()V
-    //   3005: aload 34
+    //   3005: aload 33
     //   3007: ifnull +8 -> 3015
-    //   3010: aload 34
+    //   3010: aload 33
     //   3012: invokevirtual 116	java/io/InputStream:close	()V
     //   3015: iload 8
     //   3017: istore 4
@@ -1541,117 +1541,117 @@ public class DownloaderImp
     //   3077: aconst_null
     //   3078: astore 27
     //   3080: aconst_null
-    //   3081: astore 33
-    //   3083: aload 33
-    //   3085: astore 26
-    //   3087: aload 24
-    //   3089: astore 25
-    //   3091: aload 27
-    //   3093: astore 29
-    //   3095: ldc 45
-    //   3097: ldc 192
-    //   3099: aload_2
-    //   3100: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   3103: iconst_1
-    //   3104: istore 8
-    //   3106: aload 24
-    //   3108: ifnull +8 -> 3116
-    //   3111: aload 24
-    //   3113: invokevirtual 113	java/net/HttpURLConnection:disconnect	()V
-    //   3116: aload 33
-    //   3118: ifnull +8 -> 3126
-    //   3121: aload 33
-    //   3123: invokevirtual 116	java/io/InputStream:close	()V
-    //   3126: iload 8
-    //   3128: istore 4
-    //   3130: aload 27
-    //   3132: ifnull -2756 -> 376
-    //   3135: aload 27
-    //   3137: invokevirtual 108	java/io/RandomAccessFile:close	()V
-    //   3140: iload 8
-    //   3142: istore 4
-    //   3144: goto -2768 -> 376
-    //   3147: astore_2
-    //   3148: ldc 45
-    //   3150: ldc 192
-    //   3152: aload_2
-    //   3153: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   3156: iload 8
-    //   3158: istore 4
-    //   3160: goto -2784 -> 376
-    //   3163: astore_2
-    //   3164: ldc 45
-    //   3166: ldc 209
-    //   3168: aload_2
-    //   3169: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   3172: goto -56 -> 3116
-    //   3175: astore_2
-    //   3176: ldc 45
-    //   3178: ldc 192
-    //   3180: aload_2
-    //   3181: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   3184: goto -58 -> 3126
-    //   3187: astore_2
-    //   3188: aconst_null
-    //   3189: astore 27
-    //   3191: aconst_null
-    //   3192: astore 41
-    //   3194: aload 41
-    //   3196: astore 26
-    //   3198: aload 39
-    //   3200: astore 25
-    //   3202: aload 27
-    //   3204: astore 29
-    //   3206: ldc 45
-    //   3208: ldc 192
-    //   3210: aload_2
-    //   3211: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   3214: iconst_5
-    //   3215: istore 8
-    //   3217: aload 39
-    //   3219: ifnull +8 -> 3227
-    //   3222: aload 39
-    //   3224: invokevirtual 113	java/net/HttpURLConnection:disconnect	()V
-    //   3227: aload 41
-    //   3229: ifnull +8 -> 3237
-    //   3232: aload 41
-    //   3234: invokevirtual 116	java/io/InputStream:close	()V
-    //   3237: iload 8
-    //   3239: istore 4
-    //   3241: aload 27
-    //   3243: ifnull -2867 -> 376
-    //   3246: aload 27
-    //   3248: invokevirtual 108	java/io/RandomAccessFile:close	()V
-    //   3251: iload 8
-    //   3253: istore 4
-    //   3255: goto -2879 -> 376
-    //   3258: astore_2
-    //   3259: ldc 45
-    //   3261: ldc 192
-    //   3263: aload_2
-    //   3264: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   3267: iload 8
-    //   3269: istore 4
-    //   3271: goto -2895 -> 376
-    //   3274: astore_2
-    //   3275: ldc 45
-    //   3277: ldc 209
-    //   3279: aload_2
-    //   3280: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   3283: goto -56 -> 3227
-    //   3286: astore_2
-    //   3287: ldc 45
-    //   3289: ldc 192
-    //   3291: aload_2
-    //   3292: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   3295: goto -58 -> 3237
-    //   3298: astore_1
-    //   3299: aconst_null
-    //   3300: astore 27
-    //   3302: aconst_null
-    //   3303: astore 26
-    //   3305: aload 25
-    //   3307: astore 24
+    //   3081: astore 34
+    //   3083: aload 26
+    //   3085: astore 24
+    //   3087: aload 34
+    //   3089: astore 26
+    //   3091: aload 24
+    //   3093: astore 25
+    //   3095: aload 27
+    //   3097: astore 29
+    //   3099: ldc 45
+    //   3101: ldc 192
+    //   3103: aload_2
+    //   3104: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3107: iconst_1
+    //   3108: istore 8
+    //   3110: aload 24
+    //   3112: ifnull +8 -> 3120
+    //   3115: aload 24
+    //   3117: invokevirtual 113	java/net/HttpURLConnection:disconnect	()V
+    //   3120: aload 34
+    //   3122: ifnull +8 -> 3130
+    //   3125: aload 34
+    //   3127: invokevirtual 116	java/io/InputStream:close	()V
+    //   3130: iload 8
+    //   3132: istore 4
+    //   3134: aload 27
+    //   3136: ifnull -2760 -> 376
+    //   3139: aload 27
+    //   3141: invokevirtual 108	java/io/RandomAccessFile:close	()V
+    //   3144: iload 8
+    //   3146: istore 4
+    //   3148: goto -2772 -> 376
+    //   3151: astore_2
+    //   3152: ldc 45
+    //   3154: ldc 192
+    //   3156: aload_2
+    //   3157: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3160: iload 8
+    //   3162: istore 4
+    //   3164: goto -2788 -> 376
+    //   3167: astore_2
+    //   3168: ldc 45
+    //   3170: ldc 209
+    //   3172: aload_2
+    //   3173: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3176: goto -56 -> 3120
+    //   3179: astore_2
+    //   3180: ldc 45
+    //   3182: ldc 192
+    //   3184: aload_2
+    //   3185: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3188: goto -58 -> 3130
+    //   3191: astore_2
+    //   3192: aconst_null
+    //   3193: astore 27
+    //   3195: aconst_null
+    //   3196: astore 42
+    //   3198: aload 42
+    //   3200: astore 26
+    //   3202: aload 38
+    //   3204: astore 25
+    //   3206: aload 27
+    //   3208: astore 29
+    //   3210: ldc 45
+    //   3212: ldc 192
+    //   3214: aload_2
+    //   3215: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3218: iconst_5
+    //   3219: istore 8
+    //   3221: aload 38
+    //   3223: ifnull +8 -> 3231
+    //   3226: aload 38
+    //   3228: invokevirtual 113	java/net/HttpURLConnection:disconnect	()V
+    //   3231: aload 42
+    //   3233: ifnull +8 -> 3241
+    //   3236: aload 42
+    //   3238: invokevirtual 116	java/io/InputStream:close	()V
+    //   3241: iload 8
+    //   3243: istore 4
+    //   3245: aload 27
+    //   3247: ifnull -2871 -> 376
+    //   3250: aload 27
+    //   3252: invokevirtual 108	java/io/RandomAccessFile:close	()V
+    //   3255: iload 8
+    //   3257: istore 4
+    //   3259: goto -2883 -> 376
+    //   3262: astore_2
+    //   3263: ldc 45
+    //   3265: ldc 192
+    //   3267: aload_2
+    //   3268: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3271: iload 8
+    //   3273: istore 4
+    //   3275: goto -2899 -> 376
+    //   3278: astore_2
+    //   3279: ldc 45
+    //   3281: ldc 209
+    //   3283: aload_2
+    //   3284: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3287: goto -56 -> 3231
+    //   3290: astore_2
+    //   3291: ldc 45
+    //   3293: ldc 192
+    //   3295: aload_2
+    //   3296: invokestatic 196	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   3299: goto -58 -> 3241
+    //   3302: astore_1
+    //   3303: aconst_null
+    //   3304: astore 27
+    //   3306: aconst_null
+    //   3307: astore 26
     //   3309: aload 24
     //   3311: ifnull +8 -> 3319
     //   3314: aload 24
@@ -1701,21 +1701,21 @@ public class DownloaderImp
     //   3403: astore 27
     //   3405: goto -96 -> 3309
     //   3408: astore_2
-    //   3409: goto -215 -> 3194
+    //   3409: goto -211 -> 3198
     //   3412: astore_2
     //   3413: aload 25
-    //   3415: astore 33
-    //   3417: goto -334 -> 3083
+    //   3415: astore 34
+    //   3417: goto -330 -> 3087
     //   3420: astore_2
-    //   3421: aload 31
+    //   3421: aload 32
     //   3423: astore 24
-    //   3425: goto -342 -> 3083
+    //   3425: goto -338 -> 3087
     //   3428: astore_2
     //   3429: aload 25
-    //   3431: astore 34
+    //   3431: astore 33
     //   3433: goto -478 -> 2955
     //   3436: astore_2
-    //   3437: aload 32
+    //   3437: aload 31
     //   3439: astore 24
     //   3441: goto -486 -> 2955
     //   3444: astore_3
@@ -1737,7 +1737,7 @@ public class DownloaderImp
     //   3473: astore 24
     //   3475: goto -1012 -> 2463
     //   3478: astore 45
-    //   3480: aload 39
+    //   3480: aload 38
     //   3482: astore 24
     //   3484: goto -1308 -> 2176
     //   3487: astore 45
@@ -1745,11 +1745,11 @@ public class DownloaderImp
     //   3491: astore 24
     //   3493: goto -1552 -> 1941
     //   3496: astore 45
-    //   3498: aload 36
+    //   3498: aload 39
     //   3500: astore 24
     //   3502: goto -1796 -> 1706
     //   3505: astore 45
-    //   3507: aload 38
+    //   3507: aload 36
     //   3509: astore 24
     //   3511: goto -2040 -> 1471
     //   3514: goto -2224 -> 1290
@@ -1757,19 +1757,19 @@ public class DownloaderImp
     //   3520: astore 45
     //   3522: aload 25
     //   3524: astore 28
-    //   3526: lload 17
+    //   3526: lload 14
     //   3528: lstore 5
     //   3530: goto -1824 -> 1706
     //   3533: astore 45
     //   3535: aload 25
     //   3537: astore 28
-    //   3539: lload 15
+    //   3539: lload 16
     //   3541: lstore 5
     //   3543: goto -1602 -> 1941
     //   3546: astore 45
     //   3548: aload 25
     //   3550: astore 28
-    //   3552: lload 19
+    //   3552: lload 20
     //   3554: lstore 5
     //   3556: goto -1380 -> 2176
     // Local variable table:
@@ -1781,35 +1781,35 @@ public class DownloaderImp
     //   0	3559	4	paramInt	int
     //   0	3559	5	paramLong	long
     //   0	3559	7	paramBoolean	boolean
-    //   185	3083	8	i	int
+    //   185	3087	8	i	int
     //   124	1095	9	j	int
     //   82	1272	10	k	int
-    //   1230	216	11	l1	long
-    //   1180	284	13	l2	long
-    //   1188	2352	15	l3	long
-    //   1184	2343	17	l4	long
-    //   1192	2361	19	l5	long
-    //   1200	208	21	l6	long
-    //   1434	16	23	bool	boolean
-    //   100	3410	24	localObject1	Object
-    //   106	3443	25	localObject2	Object
-    //   97	3304	26	localObject3	Object
+    //   1434	16	11	bool	boolean
+    //   1230	216	12	l1	long
+    //   1184	2343	14	l2	long
+    //   1188	2352	16	l3	long
+    //   1180	284	18	l4	long
+    //   1192	2361	20	l5	long
+    //   1200	208	22	l6	long
+    //   106	3404	24	localObject1	Object
+    //   97	3452	25	localObject2	Object
+    //   100	3301	26	localObject3	Object
     //   155	3314	27	localObject4	Object
     //   115	3436	28	localObject5	Object
     //   85	3306	29	localObject6	Object
-    //   112	3360	30	localObject7	Object
-    //   109	3313	31	localObject8	Object
-    //   224	3214	32	localObject9	Object
-    //   212	3204	33	localObject10	Object
-    //   220	3212	34	localObject11	Object
+    //   109	3363	30	localObject7	Object
+    //   112	3326	31	localObject8	Object
+    //   216	3206	32	localObject9	Object
+    //   220	3212	33	localObject10	Object
+    //   212	3204	34	localObject11	Object
     //   228	3237	35	localObject12	Object
-    //   94	3405	36	localObject13	Object
-    //   88	3402	37	localObject14	Object
-    //   91	3417	38	localObject15	Object
-    //   103	3378	39	localObject16	Object
+    //   88	3420	36	localObject13	Object
+    //   91	3399	37	localObject14	Object
+    //   103	3378	38	localObject15	Object
+    //   94	3405	39	localObject16	Object
     //   313	2398	40	localObject17	Object
-    //   281	2952	41	localObject18	Object
-    //   305	2574	42	localObject19	Object
+    //   305	2574	41	localObject18	Object
+    //   281	2956	42	localObject19	Object
     //   321	2279	43	localObject20	Object
     //   134	455	44	localURL	java.net.URL
     //   1461	788	45	localSocketException1	java.net.SocketException
@@ -1867,18 +1867,18 @@ public class DownloaderImp
     //   126	151	3076	java/io/IOException
     //   151	171	3076	java/io/IOException
     //   171	184	3076	java/io/IOException
-    //   3135	3140	3147	java/io/IOException
-    //   3111	3116	3163	java/lang/Exception
-    //   3121	3126	3175	java/io/IOException
-    //   126	151	3187	java/lang/Exception
-    //   151	171	3187	java/lang/Exception
-    //   171	184	3187	java/lang/Exception
-    //   3246	3251	3258	java/io/IOException
-    //   3222	3227	3274	java/lang/Exception
-    //   3232	3237	3286	java/io/IOException
-    //   126	151	3298	finally
-    //   151	171	3298	finally
-    //   171	184	3298	finally
+    //   3139	3144	3151	java/io/IOException
+    //   3115	3120	3167	java/lang/Exception
+    //   3125	3130	3179	java/io/IOException
+    //   126	151	3191	java/lang/Exception
+    //   151	171	3191	java/lang/Exception
+    //   171	184	3191	java/lang/Exception
+    //   3250	3255	3262	java/io/IOException
+    //   3226	3231	3278	java/lang/Exception
+    //   3236	3241	3290	java/io/IOException
+    //   126	151	3302	finally
+    //   151	171	3302	finally
+    //   171	184	3302	finally
     //   3314	3319	3341	java/lang/Exception
     //   3324	3329	3353	java/io/IOException
     //   3334	3339	3365	java/io/IOException
@@ -1924,8 +1924,8 @@ public class DownloaderImp
     //   2835	2840	3385	finally
     //   2852	2860	3385	finally
     //   2967	2992	3385	finally
-    //   3095	3103	3385	finally
-    //   3206	3214	3385	finally
+    //   3099	3107	3385	finally
+    //   3210	3218	3385	finally
     //   2463	2471	3397	finally
     //   335	340	3408	java/lang/Exception
     //   1539	1548	3408	java/lang/Exception

@@ -1,45 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import com.tencent.ark.ArkDebugger;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class vqm
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public vqm(GameRoomChatPie paramGameRoomChatPie) {}
+  public vqm(ArkDebugChatPie paramArkDebugChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    if (i == 0) {
-      if ((paramView != null) && (paramView.d()))
-      {
-        this.a.j.setText("正在发言");
-        this.a.j.setPressed(true);
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.b();
-        paramView.a(true);
-      }
-    }
-    do
-    {
-      return true;
-      this.a.o(false);
-      return true;
-      if ((i != 3) && (i != 1)) {
-        break;
-      }
-      this.a.j.setText("按住发言");
-      this.a.j.setPressed(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.c();
-    } while (paramView == null);
-    paramView.a(false);
-    return true;
-    return false;
+    ArkDebugger.Create();
+    ArkDebugger.SetCallback(new vqn(this));
+    ArkDebugChatPie.a(this.a, ArkAppCenter.f());
+    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.f());
+    ArkDispatchTask.getInstance().postToMainThread(new vqt(this));
   }
 }
 

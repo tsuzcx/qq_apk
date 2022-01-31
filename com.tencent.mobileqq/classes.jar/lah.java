@@ -1,29 +1,25 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
 
 public class lah
-  extends PublicAccountObserver
+  implements View.OnClickListener
 {
-  public lah(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public lah(ShopWebViewFragment paramShopWebViewFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("已关注");
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      }
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.b(this.a.getActivity(), this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
     }
-    else {
+    try
+    {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a.a(134248548, null, null, null, null, 0L, false);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText("关注");
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130843817);
+    catch (Exception paramView) {}
   }
 }
 

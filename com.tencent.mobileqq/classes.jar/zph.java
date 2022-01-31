@@ -1,25 +1,28 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.DataReport;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
 public class zph
-  implements BaseMessageProcessor.RequestBuilder
+  implements DialogInterface.OnClickListener
 {
-  public zph(BaseMessageProcessor paramBaseMessageProcessor, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq) {}
+  public zph(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2) {}
   
-  public ToServiceMsg a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageProcessor.a.a("PbMessageSvc.PbMsgReadedReport");
-    byte[] arrayOfByte = this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray();
-    if (arrayOfByte != null)
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramInt = this.jdField_a_of_type_Int;
+    int i = this.jdField_b_of_type_Int;
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      localToServiceMsg.putWupBuffer(arrayOfByte);
-      localToServiceMsg.setEnableFastResend(true);
-      return localToServiceMsg;
+      VideoMsgTools.a(localQQAppInterface, paramInt, i, bool, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, null, true, new Object[0]);
+      paramDialogInterface.dismiss();
+      DataReport.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause, this.jdField_a_of_type_Boolean);
+      return;
     }
-    return null;
   }
 }
 

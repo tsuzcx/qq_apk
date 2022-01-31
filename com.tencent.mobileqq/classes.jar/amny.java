@@ -1,17 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import cooperation.qzone.widget.QzoneGuideBubbleHelper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class amny
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public amny(QzoneGuideBubbleHelper paramQzoneGuideBubbleHelper) {}
+  public amny(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a();
-    return false;
+    if ("com.tencent.qlink.finishdlg".equalsIgnoreCase(paramIntent.getAction()))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
   }
 }
 

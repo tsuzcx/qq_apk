@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
 
 public class lry
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lry(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, String paramString, ArticleInfo paramArticleInfo) {}
+  public lry(SubscriptionInfoModule paramSubscriptionInfoModule, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), this.jdField_a_of_type_JavaLangString);
-    ReadInJoyFooterPresenter.a(1, ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.b);
   }
 }
 

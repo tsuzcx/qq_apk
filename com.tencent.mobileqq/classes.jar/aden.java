@@ -1,19 +1,32 @@
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.freshnews.QQInputView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aden
-  implements Runnable
+  extends TeamWorkFileImportObserver
 {
-  public aden(QQInputView paramQQInputView) {}
+  public aden(SimpleFilePresenter paramSimpleFilePresenter) {}
   
-  public void run()
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    QQInputView.a(this.a).setVisibility(0);
-    QQInputView.a(this.a).setImageResource(2130844422);
-    if (AppSetting.b) {
-      QQInputView.a(this.a).setContentDescription("表情");
+    super.a(paramTeamWorkFileImportInfo);
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
+    if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d)) {
+      QQToast.a(((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getApp(), 1, 2131439134, 0).a();
+    }
+  }
+  
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    super.a(paramString, paramTeamWorkFileImportInfo);
+    if (this.a.a != null) {
+      this.a.a.d();
     }
   }
 }

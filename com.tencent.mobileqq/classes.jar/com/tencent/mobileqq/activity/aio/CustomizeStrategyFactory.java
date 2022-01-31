@@ -36,13 +36,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import uhp;
-import uhq;
-import uhr;
-import uhu;
-import uhz;
-import uic;
-import uif;
+import ukp;
+import ukq;
+import ukr;
+import uku;
+import ukz;
+import ulc;
+import ulf;
 
 public class CustomizeStrategyFactory
   implements Handler.Callback, QWalletConfigManager.ConfigUpdateListener
@@ -52,7 +52,7 @@ public class CustomizeStrategyFactory
   public static byte[] a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(5);
-  private QQLruCache jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new uhp(this, 1020, 30, 10000);
+  private QQLruCache jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new ukp(this, 1020, 30, 10000);
   public QWalletConfigManager a;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   public boolean a;
@@ -97,15 +97,15 @@ public class CustomizeStrategyFactory
       this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt, paramQQAppInterface);
       return paramQQAppInterface;
       if (1 == paramInt) {
-        paramQQAppInterface = new uic(paramQQAppInterface);
+        paramQQAppInterface = new ulc(paramQQAppInterface);
       } else if (4 == paramInt) {
-        paramQQAppInterface = new uhz(paramQQAppInterface);
+        paramQQAppInterface = new ukz(paramQQAppInterface);
       } else if (5 == paramInt) {
-        paramQQAppInterface = new uhu(paramQQAppInterface);
+        paramQQAppInterface = new uku(paramQQAppInterface);
       } else if (6 == paramInt) {
-        paramQQAppInterface = new uif(paramQQAppInterface);
+        paramQQAppInterface = new ulf(paramQQAppInterface);
       } else if (7 == paramInt) {
-        paramQQAppInterface = new uhr(paramQQAppInterface);
+        paramQQAppInterface = new ukr(paramQQAppInterface);
       } else {
         paramQQAppInterface = null;
       }
@@ -130,7 +130,7 @@ public class CustomizeStrategyFactory
     if ((paramRedPacketInfo == null) || (!paramRedPacketInfo.jdField_b_of_type_Boolean) || (paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig == null) || (TextUtils.isEmpty(paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig.jdField_a_of_type_JavaLangString))) {
       return;
     }
-    paramRedPacketInfo = new uhq(this, paramRedPacketInfo);
+    paramRedPacketInfo = new ukq(this, paramRedPacketInfo);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
       ThreadManager.post(paramRedPacketInfo, 5, null, true);

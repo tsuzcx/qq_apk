@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.test;
 
-import abau;
+import abhv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.armap.ARGLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
@@ -47,7 +47,7 @@ public class MapTestHelper$TestConfig
       this.jdField_b_of_type_Int = 0;
       this.jdField_a_of_type_JavaLangStringBuilder = null;
     } while (str.length() <= 0);
-    ThreadManager.post(new abau(this, str), 5, null, false);
+    ThreadManager.post(new abhv(this, str), 5, null, false);
   }
 }
 

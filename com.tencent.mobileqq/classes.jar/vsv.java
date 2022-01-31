@@ -1,18 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 class vsv
   implements Runnable
 {
-  vsv(vst paramvst, MultiForwardChatPie paramMultiForwardChatPie) {}
+  vsv(vsu paramvsu, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(2131433404);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.d.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.g);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.y();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.sendFailCode == 41)
+    {
+      QQToast.a(this.jdField_a_of_type_Vsu.a.a.getApp(), 2131436086, 0).a();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_Vsu.a.a.getApp(), 2131438846, 0).a();
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Vsu.a.a.c(), "Stick", "Send", "1", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

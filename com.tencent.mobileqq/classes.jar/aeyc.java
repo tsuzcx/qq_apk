@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView.OnCloseListener;
 
-class aeyc
-  implements Runnable
+public class aeyc
+  implements View.OnClickListener
 {
-  aeyc(aeyb paramaeyb, boolean paramBoolean) {}
+  public aeyc(StuffContainerView paramStuffContainerView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aeyb.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.a(this.jdField_a_of_type_Aeyb.jdField_a_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_Aeyb.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$DeleteFeedCallback != null) {
-      this.jdField_a_of_type_Aeyb.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$DeleteFeedCallback.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aeyb.jdField_a_of_type_JavaLangString);
+    if (this.a.a != null) {
+      this.a.a.a(0);
     }
   }
 }

@@ -1,27 +1,17 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
-public class aiss
-  implements Runnable
+public final class aiss
+  extends DialogUtil.DialogOnClickAdapter
 {
-  public aiss(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditText localEditText = PublishHomeWorkFragment.a(this.a, PublishHomeWorkFragment.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("PublishHomeWorkFragment", 2, "弹起键盘");
-    }
-    if (localEditText != null) {
-      InputMethodUtil.a(localEditText);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiss
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,35 @@
-import com.tencent.mobileqq.activity.aio.MessageShareActivity;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.GridCallBack;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
 
 public class uix
-  implements Runnable
+  implements View.OnClickListener
 {
-  public uix(MessageShareActivity paramMessageShareActivity, AbsStructMsg paramAbsStructMsg, String paramString, int paramInt) {}
+  public uix(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    StructMsgForImageShare.sendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageShareActivity.app, (StructMsgForImageShare)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null, 0);
+    paramView = (ActivateFriendGridItem)paramView;
+    if (paramView.a)
+    {
+      ActivateFriendGrid.a(this.a);
+      if (paramView.a) {
+        break label75;
+      }
+    }
+    label75:
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      if (ActivateFriendGrid.a(this.a) != null) {
+        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
+      }
+      return;
+      ActivateFriendGrid.b(this.a);
+      break;
+    }
   }
 }
 

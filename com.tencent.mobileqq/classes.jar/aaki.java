@@ -1,50 +1,101 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
-import com.tencent.mobileqq.ark.ArkAppHandler;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.mobileqq.ar.config.WorldCupReport;
+import com.tencent.mobileqq.armap.ResDownloadManager.IResDownloadListener;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaki
-  implements ArkAppRootLayout.ArkSearchReportCallback
+  implements ResDownloadManager.IResDownloadListener
 {
-  public aaki(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg) {}
+  int jdField_a_of_type_Int = 0;
+  final long jdField_a_of_type_Long = AudioHelper.a();
+  long jdField_b_of_type_Long = System.currentTimeMillis();
   
-  public void a()
+  public aaki(WorldCupMgr paramWorldCupMgr, QQAppInterface paramQQAppInterface, int paramInt) {}
+  
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    int i;
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    String str5;
-    if (localObject != null)
+    boolean bool2 = false;
+    if ((paramInt == 100) || (paramInt == 0) || (Math.abs(paramInt - this.jdField_a_of_type_Int) >= 10)) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      localObject = (ArkAppHandler)((QQAppInterface)localObject).a(95);
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.isFromArkServer) {
-        break label142;
+      long l = System.currentTimeMillis();
+      if (l - this.jdField_b_of_type_Long >= 1000L) {
+        bool2 = true;
       }
-      i = 2;
-      str1 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.arkServerExtraInfo;
-      str2 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.arkServerMsgId;
-      str3 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName;
-      str4 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView;
-      str5 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.msg;
-      if (!"1".equals(this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.getExtInfoFromExtStr("ark_text_analysis_flag"))) {
-        break label148;
+      if ((QLog.isDevelopLevel()) && ((bool2) || (bool1))) {
+        QLog.w("WorldCupMgr", 1, "onDownloadUpdate, md5[" + paramString2 + "], index[" + this.jdField_b_of_type_Int + "], curPercent[" + paramInt + "], lastPercent[" + this.jdField_a_of_type_Int + "], needNotify[" + bool1 + "], needNotify2[" + bool2 + "]");
       }
-    }
-    label142:
-    label148:
-    for (int j = 1;; j = 0)
-    {
-      ((ArkAppHandler)localObject).a(i, 4, 2, str1, str2, str3, str4, str5, j, 0);
+      if (bool1) {
+        this.jdField_a_of_type_Int = paramInt;
+      }
+      if (bool2) {
+        this.jdField_b_of_type_Long = l;
+      }
+      if ((bool1) || (bool2)) {
+        this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b(this.jdField_b_of_type_Int, paramInt);
+      }
       return;
-      i = 100;
-      break;
     }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramObject instanceof aake))
+    {
+      paramString1 = (aake)paramObject;
+      paramString1.jdField_c_of_type_Long = System.currentTimeMillis();
+      paramString1.jdField_c_of_type_Boolean = false;
+      QLog.w("WorldCupMgr", 1, "onDownloadFinish, md5[" + paramString2 + "], errCode[" + paramInt + "], path[" + paramString3 + "], zipItem[" + paramString1 + "], request[" + paramString1.jdField_a_of_type_Long + "], Begin[" + paramString1.jdField_b_of_type_Long + "], End[" + paramString1.jdField_c_of_type_Long + "], 调度耗时[" + (paramString1.jdField_b_of_type_Long - paramString1.jdField_a_of_type_Long) + "], 下载耗时[" + (paramString1.jdField_c_of_type_Long - paramString1.jdField_b_of_type_Long) + "], fromPreCover[" + paramString1.jdField_c_of_type_Int + "], seq[" + this.jdField_a_of_type_Long + "], Uin[" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "]");
+      if (paramString1.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener == this) {
+        paramString1.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener = null;
+      }
+      if (paramInt != 0) {
+        break label340;
+      }
+      WorldCupConfigInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString1.jdField_a_of_type_Int, paramString1.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b(paramString1.jdField_a_of_type_Int, 100);
+      int i = paramString1.jdField_a_of_type_Int;
+      if (paramInt != 0) {
+        break label328;
+      }
+      bool1 = true;
+      if (paramString1.jdField_c_of_type_Int != 1) {
+        break label334;
+      }
+      label265:
+      WorldCupReport.a(i, bool1, bool2, paramString1.jdField_b_of_type_Boolean, paramString1.jdField_c_of_type_Long - paramString1.jdField_b_of_type_Long);
+      paramString1.jdField_c_of_type_Int = -1;
+    }
+    for (;;)
+    {
+      if ((paramString1.jdField_a_of_type_Boolean) || (paramString1.jdField_b_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1.jdField_b_of_type_Boolean, paramString1.jdField_a_of_type_Int + 1);
+      }
+      return;
+      label328:
+      bool1 = false;
+      break;
+      label334:
+      bool2 = false;
+      break label265;
+      label340:
+      if (paramInt == 100) {
+        this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b(paramString1.jdField_a_of_type_Int, 100);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b(paramString1.jdField_a_of_type_Int, -1);
+      }
+    }
+  }
+  
+  protected void finalize()
+  {
+    super.finalize();
+    QLog.w("WorldCupMgr", 1, "ZipItem.finalize, index[" + this.jdField_b_of_type_Int + "], seq[" + this.jdField_a_of_type_Long + "]");
   }
 }
 

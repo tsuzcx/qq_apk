@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import android.view.Choreographer.FrameCallback;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
 
 public class rdr
-  implements Runnable
+  implements Choreographer.FrameCallback
 {
-  public rdr(AccountManageActivity paramAccountManageActivity) {}
+  public rdr(DropFrameMonitor paramDropFrameMonitor) {}
   
-  public void run()
+  public void doFrame(long paramLong)
   {
-    this.a.g();
+    this.a.a(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     rdr
  * JD-Core Version:    0.7.0.1
  */

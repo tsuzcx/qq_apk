@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import aims;
-import aimt;
+import ajaw;
+import ajax;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewStub;
@@ -12,11 +12,11 @@ import java.util.Iterator;
 public class CateListAdapter$ViewHolder
   implements View.OnClickListener
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aims(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ajaw(this);
   View jdField_a_of_type_AndroidViewView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public CateListAdapter a;
-  SubCateListView.OnToggleSubListListener jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView$OnToggleSubListListener = new aimt(this);
+  SubCateListView.OnToggleSubListListener jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView$OnToggleSubListListener = new ajax(this);
   TroopCateListProvider.TroopCateInfo jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopTroopCateListProvider$TroopCateInfo;
   ArrayList jdField_a_of_type_JavaUtilArrayList;
   ArrayList b;
@@ -25,20 +25,20 @@ public class CateListAdapter$ViewHolder
   {
     this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter = paramCateListAdapter;
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368273));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368340));
     this.b = new ArrayList();
-    CateListAdapter.SingleItemViewHolder localSingleItemViewHolder = new CateListAdapter.SingleItemViewHolder(paramView.findViewById(2131368274), 0);
+    CateListAdapter.SingleItemViewHolder localSingleItemViewHolder = new CateListAdapter.SingleItemViewHolder(paramView.findViewById(2131368341), 0);
     this.b.add(localSingleItemViewHolder);
-    localSingleItemViewHolder = new CateListAdapter.SingleItemViewHolder(paramView.findViewById(2131368275), 1);
+    localSingleItemViewHolder = new CateListAdapter.SingleItemViewHolder(paramView.findViewById(2131368342), 1);
     this.b.add(localSingleItemViewHolder);
-    localSingleItemViewHolder = new CateListAdapter.SingleItemViewHolder(paramView.findViewById(2131368277), 2);
+    localSingleItemViewHolder = new CateListAdapter.SingleItemViewHolder(paramView.findViewById(2131368344), 2);
     this.b.add(localSingleItemViewHolder);
-    paramView = new CateListAdapter.SingleItemViewHolder(paramView.findViewById(2131368278), 3);
+    paramView = new CateListAdapter.SingleItemViewHolder(paramView.findViewById(2131368345), 3);
     this.b.add(paramView);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
-    paramView = new SubCateListView((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131368276), paramCateListAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView$OnToggleSubListListener);
+    paramView = new SubCateListView((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131368343), paramCateListAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView$OnToggleSubListListener);
     this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
-    paramCateListAdapter = new SubCateListView((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131368279), paramCateListAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView$OnToggleSubListListener);
+    paramCateListAdapter = new SubCateListView((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131368346), paramCateListAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView$OnToggleSubListListener);
     this.jdField_a_of_type_JavaUtilArrayList.add(paramCateListAdapter);
   }
   
@@ -82,7 +82,7 @@ public class CateListAdapter$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

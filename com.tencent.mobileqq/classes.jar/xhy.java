@@ -1,17 +1,15 @@
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.observer.BusinessObserver;
 
-public final class xhy
-  implements Runnable
+class xhy
+  implements BusinessObserver
 {
-  public xhy(QQAppInterface paramQQAppInterface, int paramInt) {}
+  xhy(xhx paramxhx, long paramLong) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = TroopBarAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).size();
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "0", "0X80064CB", "0X80064CB", 0, 0, "" + this.jdField_a_of_type_Int, "" + i, "", "");
+    ThreadManager.postImmediately(new xhz(this, paramBoolean, paramBundle, paramInt), null, false);
   }
 }
 

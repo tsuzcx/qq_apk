@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip"
+<RelativeLayout android:gravity="center_vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020468" android:layout_width="fill_parent" android:layout_height="42.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c056e" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07cb" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="河南省、漯河市" android:maxLines="1" android:maxEms="20" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fac" android:layout_width="60.0dip" android:layout_height="42.0dip" android:layout_marginLeft="12.0dip" android:singleLine="true" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c003f" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fad" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginLeft="78.0dip" android:singleLine="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fae" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021343" android:scaleType="fitXY" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1faf" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1faf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="18.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

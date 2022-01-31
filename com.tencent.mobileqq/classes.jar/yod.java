@@ -1,22 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.HotChatHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class yod
-  implements EIPCResultCallback
+public class yod
+  implements Runnable
 {
-  public yod(long paramLong) {}
+  public yod(HotChatCenterFragment paramHotChatCenterFragment, String paramString, int paramInt) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    paramEIPCResult = paramEIPCResult.data.getString("resData");
-    CmGameUtil.a().callbackFromRequest(this.a, 0, "sc.script_notify_action_ready.local", paramEIPCResult);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_ACTION_DATA onCallback resJson:" + paramEIPCResult);
-    }
+    ((HotChatHandler)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).a(35)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
   }
 }
 

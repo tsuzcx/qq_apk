@@ -1,26 +1,22 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13.ViewHolder;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.model.NetSearchTemplateSubItem;
+import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
+import com.tencent.mobileqq.search.view.NetSearchTemplateSubItemView;
 
 public class ahuq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahuq(StructMsgItemLayout13 paramStructMsgItemLayout13, StructMsgForGeneralShare paramStructMsgForGeneralShare, Resources paramResources, StructMsgItemLayout13.ViewHolder paramViewHolder) {}
+  public ahuq(SearchTemplatePresenter paramSearchTemplatePresenter, NetSearchTemplateSubItem paramNetSearchTemplateSubItem, NetSearchTemplateSubItemView paramNetSearchTemplateSubItemView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = ContactUtils.g(StructMsgItemLayout13.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13), this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.frienduin, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.author);
-    new Handler(Looper.getMainLooper()).post(new ahur(this, str));
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateSubItem.a(this.jdField_a_of_type_ComTencentMobileqqSearchViewNetSearchTemplateSubItemView.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahuq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
+import android.app.Activity;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 
-public class pdh
-  implements View.OnClickListener
+class pdh
+  implements Runnable
 {
-  public pdh(AbstractImageListScene paramAbstractImageListScene) {}
+  pdh(pdg parampdg, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.j();
+    this.jdField_a_of_type_Pdg.a.a(this.jdField_a_of_type_Pdg.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pdh
  * JD-Core Version:    0.7.0.1
  */

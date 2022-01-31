@@ -1,23 +1,71 @@
-import cooperation.qzone.report.lp.LpReport_PicInfo_dc02153;
-import cooperation.qzone.report.lp.MachinelearningReport;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.AbstractSet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 public class amip
-  implements Runnable
+  extends AbstractSet
 {
-  public amip(MachinelearningReport paramMachinelearningReport, LpReport_PicInfo_dc02153 paramLpReport_PicInfo_dc02153) {}
+  public amip(SoftHashMap paramSoftHashMap) {}
   
-  public void run()
+  public void clear()
   {
-    if (this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153 != null)
+    this.a.clear();
+  }
+  
+  public boolean contains(Object paramObject)
+  {
+    if (!(paramObject instanceof Map.Entry)) {}
+    amin localamin;
+    do
     {
-      this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153.recheckIfNeed();
-      MachinelearningReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachinelearningReport, 16, this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153);
+      return false;
+      paramObject = (Map.Entry)paramObject;
+      localamin = SoftHashMap.a(this.a, paramObject.getKey());
+    } while ((localamin == null) || (!localamin.equals(paramObject)));
+    return true;
+  }
+  
+  public Iterator iterator()
+  {
+    return new amio(this.a);
+  }
+  
+  public boolean remove(Object paramObject)
+  {
+    return SoftHashMap.b(this.a, paramObject) != null;
+  }
+  
+  public int size()
+  {
+    return this.a.size();
+  }
+  
+  public Object[] toArray()
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(new amit((Map.Entry)localIterator.next()));
     }
+    return localArrayList.toArray();
+  }
+  
+  public Object[] toArray(Object[] paramArrayOfObject)
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(new amit((Map.Entry)localIterator.next()));
+    }
+    return localArrayList.toArray(paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amip
  * JD-Core Version:    0.7.0.1
  */

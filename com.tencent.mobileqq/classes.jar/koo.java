@@ -1,24 +1,17 @@
-import com.tencent.biz.now.NowLiveManager;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
 
 public class koo
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public List a;
-  String b;
+  public koo(EqqAccountDetailActivity paramEqqAccountDetailActivity, PaConfigAttr.PaConfigInfo paramPaConfigInfo) {}
   
-  public koo(NowLiveManager paramNowLiveManager)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a = this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a);
   }
 }
 

@@ -1,24 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-import dov.com.qq.im.capture.QIMCaptureController;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.BusinessAlbumInfo;
 
-class amui
-  implements View.OnClickListener
+public final class amui
+  implements Parcelable.Creator
 {
-  amui(amuh paramamuh) {}
-  
-  public void onClick(View paramView)
+  public BusinessAlbumInfo a(Parcel paramParcel)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setScaleX(0.8F);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setScaleY(0.8F);
-    QIMCaptureController.a(this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.a(false);
+    return new BusinessAlbumInfo(paramParcel, null);
+  }
+  
+  public BusinessAlbumInfo[] a(int paramInt)
+  {
+    return new BusinessAlbumInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amui
  * JD-Core Version:    0.7.0.1
  */

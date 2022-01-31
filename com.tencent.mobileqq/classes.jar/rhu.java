@@ -1,24 +1,28 @@
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class rhu
-  implements ArkAppContainer.ArkAppModuleCallback
+  implements TextWatcher
 {
-  public rhu(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public rhu(AddAccountActivity paramAddAccountActivity) {}
   
-  public boolean a(ArkAppContainer paramArkAppContainer)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.finish();
-    if (ArkFullScreenAppActivity.a(this.a)) {
-      this.a.overridePendingTransition(2131034134, 2131034135);
+    if (paramCharSequence.length() > 0) {
+      if (this.a.a != null) {
+        this.a.a.setVisibility(0);
+      }
     }
-    return false;
-  }
-  
-  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
-  {
-    return false;
+    while ((this.a.a == null) || (!this.a.a.isShown())) {
+      return;
+    }
+    this.a.a.setVisibility(8);
   }
 }
 

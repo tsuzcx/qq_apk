@@ -15,10 +15,10 @@ import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 import com.tencent.widget.PatchedButton;
 import com.tencent.widget.XEditTextEx;
-import ntn;
-import nto;
-import ntp;
-import ntq;
+import nvb;
+import nvc;
+import nvd;
+import nve;
 
 public class KeyboardAndEmojiManager
   implements View.OnClickListener
@@ -28,39 +28,39 @@ public class KeyboardAndEmojiManager
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  EmoticonCallback jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback = new ntp(this);
+  EmoticonCallback jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback = new nvd(this);
   private SystemEmoticonPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel;
   private XEditTextEx jdField_a_of_type_ComTencentWidgetXEditTextEx;
-  private ntq jdField_a_of_type_Ntq;
+  private nve jdField_a_of_type_Nve;
   private boolean jdField_a_of_type_Boolean;
   private View jdField_b_of_type_AndroidViewView;
   private boolean jdField_b_of_type_Boolean;
   private boolean c;
   private boolean d;
   
-  public KeyboardAndEmojiManager(Context paramContext, View paramView, ntq paramntq)
+  public KeyboardAndEmojiManager(Context paramContext, View paramView, nve paramnve)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Ntq = paramntq;
+    this.jdField_a_of_type_Nve = paramnve;
     b();
     c();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131371502));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364473));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364480);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131371503));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131371668));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364497));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364504);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131371669));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = TroopBarPublishUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback);
   }
   
   private void c()
   {
-    ((PatchedButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363481)).setOnClickListener(this);
+    ((PatchedButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363499)).setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new ntn(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new nvb(this));
   }
   
   private void d()
@@ -74,8 +74,8 @@ public class KeyboardAndEmojiManager
     if (!this.jdField_a_of_type_ComTencentWidgetXEditTextEx.isFocused()) {
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
     }
-    if (this.jdField_a_of_type_Ntq != null) {
-      this.jdField_a_of_type_Ntq.b(this.d);
+    if (this.jdField_a_of_type_Nve != null) {
+      this.jdField_a_of_type_Nve.b(this.d);
     }
     this.d = false;
     this.jdField_a_of_type_Boolean = true;
@@ -94,8 +94,8 @@ public class KeyboardAndEmojiManager
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Ntq != null) {
-        this.jdField_a_of_type_Ntq.c(bool);
+      if (this.jdField_a_of_type_Nve != null) {
+        this.jdField_a_of_type_Nve.c(bool);
       }
       this.c = false;
       this.d = false;
@@ -117,8 +117,8 @@ public class KeyboardAndEmojiManager
     if (!this.jdField_a_of_type_ComTencentWidgetXEditTextEx.isFocused()) {
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
     }
-    if (this.jdField_a_of_type_Ntq != null) {
-      this.jdField_a_of_type_Ntq.b(this.d);
+    if (this.jdField_a_of_type_Nve != null) {
+      this.jdField_a_of_type_Nve.b(this.d);
     }
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
@@ -138,8 +138,8 @@ public class KeyboardAndEmojiManager
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Ntq != null) {
-        this.jdField_a_of_type_Ntq.c(bool);
+      if (this.jdField_a_of_type_Nve != null) {
+        this.jdField_a_of_type_Nve.c(bool);
       }
       this.c = false;
       this.jdField_b_of_type_Boolean = false;
@@ -205,7 +205,7 @@ public class KeyboardAndEmojiManager
           return;
         } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L);
         this.jdField_a_of_type_Long = System.currentTimeMillis();
-      } while ((this.jdField_a_of_type_Ntq != null) && (this.jdField_a_of_type_Ntq.b()));
+      } while ((this.jdField_a_of_type_Nve != null) && (this.jdField_a_of_type_Nve.b()));
       this.c = true;
       if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.getVisibility() == 0)
       {
@@ -214,10 +214,10 @@ public class KeyboardAndEmojiManager
         return;
       }
       a(false);
-      new Handler().postDelayed(new nto(this), 200L);
+      new Handler().postDelayed(new nvc(this), 200L);
       return;
-    } while (this.jdField_a_of_type_Ntq == null);
-    this.jdField_a_of_type_Ntq.d();
+    } while (this.jdField_a_of_type_Nve == null);
+    this.jdField_a_of_type_Nve.d();
   }
 }
 

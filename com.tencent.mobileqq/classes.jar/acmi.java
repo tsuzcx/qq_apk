@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.animation.AlphaAnimation;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
-class acmi
+public class acmi
   implements Runnable
 {
-  acmi(acmh paramacmh) {}
+  public acmi(FilePreviewActivity paramFilePreviewActivity, int paramInt) {}
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] chang thread[" + this.a.a.d + "]");
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c == null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c = new FilePreviewAnimQueue(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a);
     }
-    if (this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr != null)
-    {
-      this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(this.a.a.d);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] block is full stop downloadId[" + this.a.a.d + "]");
-      }
-      this.a.a.d = -1;
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setFillAfter(true);
+    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
+    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
+    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
+    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.jdField_a_of_type_Int;
+    localFilePreviewAnim.b = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.a(localFilePreviewAnim);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("<FileAssistant>FilePreviewActivity", 2, "hideGetMore(" + this.jdField_a_of_type_Int + ")");
     }
   }
 }

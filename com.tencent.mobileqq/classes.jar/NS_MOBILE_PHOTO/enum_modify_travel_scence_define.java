@@ -13,7 +13,7 @@ public final class enum_modify_travel_scence_define
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_PHOTO.enum_modify_travel_scence_define
  * JD-Core Version:    0.7.0.1
  */

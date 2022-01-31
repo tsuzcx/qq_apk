@@ -32,12 +32,12 @@ public class HotChatUtil
   {
     Drawable localDrawable = null;
     if (paramInt == 0) {
-      localDrawable = TroopUtils.a(paramResources, paramResources.getColor(2131493726));
+      localDrawable = TroopUtils.a(paramResources, paramResources.getColor(2131493732));
     }
     while (paramInt != 1) {
       return localDrawable;
     }
-    return TroopUtils.a(paramResources, paramResources.getColor(2131493727));
+    return TroopUtils.a(paramResources, paramResources.getColor(2131493733));
   }
   
   public static String a(int paramInt)

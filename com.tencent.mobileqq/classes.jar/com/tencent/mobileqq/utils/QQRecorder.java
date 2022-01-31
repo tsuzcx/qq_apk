@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import ajrj;
+import akfq;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.AudioRecord;
@@ -29,7 +29,7 @@ public class QQRecorder
   public static int a;
   private static String jdField_a_of_type_JavaLangString;
   private static int[] jdField_a_of_type_ArrayOfInt = { 13, 14, 16, 18, 20, 21, 27, 32 };
-  public ajrj a;
+  public akfq a;
   private Context jdField_a_of_type_AndroidContentContext;
   public AudioManager a;
   private AudioRecord jdField_a_of_type_AndroidMediaAudioRecord;
@@ -525,10 +525,10 @@ public class QQRecorder
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Ajrj != null) && (this.jdField_a_of_type_Ajrj.a())) {}
-    synchronized (this.jdField_a_of_type_Ajrj)
+    if ((this.jdField_a_of_type_Akfq != null) && (this.jdField_a_of_type_Akfq.a())) {}
+    synchronized (this.jdField_a_of_type_Akfq)
     {
-      this.jdField_a_of_type_Ajrj.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Akfq.jdField_b_of_type_Boolean = false;
     }
   }
   
@@ -583,7 +583,7 @@ public class QQRecorder
   public void a(String paramString, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Ajrj + ",time is:" + System.currentTimeMillis());
+      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Akfq + ",time is:" + System.currentTimeMillis());
     }
     if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {}
     try
@@ -608,10 +608,10 @@ public class QQRecorder
         break label192;
       }
       QLog.d("QQRecorder", 2, "start, RecordThread exist , notify ");
-      synchronized (this.jdField_a_of_type_Ajrj)
+      synchronized (this.jdField_a_of_type_Akfq)
       {
-        this.jdField_a_of_type_Ajrj.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Ajrj.jdField_a_of_type_JavaLangString = paramString;
+        this.jdField_a_of_type_Akfq.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Akfq.jdField_a_of_type_JavaLangString = paramString;
         try
         {
           notifyAll();
@@ -622,14 +622,14 @@ public class QQRecorder
     }
     this.jdField_c_of_type_Boolean = paramBoolean;
     jdField_a_of_type_JavaLangString = paramString;
-    if ((this.jdField_a_of_type_Ajrj == null) || (!this.jdField_a_of_type_Ajrj.a()))
+    if ((this.jdField_a_of_type_Akfq == null) || (!this.jdField_a_of_type_Akfq.a()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQRecorder", 2, "QQRecorder.start, new RecordThread ");
       }
-      this.jdField_a_of_type_Ajrj = new ajrj(this);
-      this.jdField_a_of_type_Ajrj.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Ajrj.start();
+      this.jdField_a_of_type_Akfq = new akfq(this);
+      this.jdField_a_of_type_Akfq.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Akfq.start();
       return;
     }
   }
@@ -695,23 +695,23 @@ public class QQRecorder
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Ajrj != null) && (this.jdField_a_of_type_Ajrj.jdField_a_of_type_Boolean);
+    return (this.jdField_a_of_type_Akfq != null) && (this.jdField_a_of_type_Akfq.jdField_a_of_type_Boolean);
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Ajrj == null) || (!this.jdField_a_of_type_Ajrj.jdField_a_of_type_Boolean);
+    return (this.jdField_a_of_type_Akfq == null) || (!this.jdField_a_of_type_Akfq.jdField_a_of_type_Boolean);
   }
   
   public boolean c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Ajrj + ",time is:" + System.currentTimeMillis());
+      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Akfq + ",time is:" + System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_Ajrj != null)
+    if (this.jdField_a_of_type_Akfq != null)
     {
-      boolean bool = this.jdField_a_of_type_Ajrj.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_Ajrj.jdField_a_of_type_Boolean = false;
+      boolean bool = this.jdField_a_of_type_Akfq.jdField_a_of_type_Boolean;
+      this.jdField_a_of_type_Akfq.jdField_a_of_type_Boolean = false;
       return bool;
     }
     return false;

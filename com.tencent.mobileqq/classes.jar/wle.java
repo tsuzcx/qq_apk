@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.widget.XListView;
 
 public class wle
-  extends AutomatorObserver
+  extends Handler
 {
-  public wle(TroopFragment paramTroopFragment) {}
+  public wle(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  protected void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    switch (paramMessage.what)
     {
     }
-    do
+    for (;;)
     {
+      super.handleMessage(paramMessage);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
-      }
-    } while (this.a.a == null);
-    this.a.a.d();
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.widget.immersive;
 
-import alox;
+import amen;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.view.View;
@@ -19,7 +19,7 @@ public class SoftInputResizeLayout
   {
     this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new alox(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new amen(this));
     this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
   }
   
@@ -59,7 +59,7 @@ public class SoftInputResizeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.immersive.SoftInputResizeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,18 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 
-public class lfs
-  implements View.OnTouchListener
+class lfs
+  implements View.OnClickListener
 {
-  public lfs(ReadinjoyMsgManagerActivity paramReadinjoyMsgManagerActivity) {}
+  lfs(lfq paramlfq, lft paramlft) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lfq.a, lft.c(this.jdField_a_of_type_Lft));
+    PublicAccountReportUtils.a(null, "CliOper", "", lft.c(this.jdField_a_of_type_Lft), "0X80078A8", "0X80078A8", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
   }
 }
 

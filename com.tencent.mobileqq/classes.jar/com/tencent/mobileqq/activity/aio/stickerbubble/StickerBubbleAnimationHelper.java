@@ -20,27 +20,29 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import vyo;
+import wbq;
+import wbu;
 
 public class StickerBubbleAnimationHelper
 {
   private static int jdField_a_of_type_Int;
   private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private static Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private static String jdField_a_of_type_JavaLangString;
   private static Random jdField_a_of_type_JavaUtilRandom = new Random();
   private static Set jdField_a_of_type_JavaUtilSet = new HashSet();
-  private static boolean jdField_a_of_type_Boolean;
   private static int[] jdField_a_of_type_ArrayOfInt;
   private static int b;
   
-  public static int a()
+  public static int a(@NonNull String paramString)
   {
     try
     {
-      if (!jdField_a_of_type_Boolean)
+      if (!paramString.equals(jdField_a_of_type_JavaLangString))
       {
-        jdField_a_of_type_Int = SharedPreUtils.a();
-        jdField_a_of_type_Boolean = true;
+        jdField_a_of_type_Int = SharedPreUtils.a(paramString);
+        jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+        jdField_a_of_type_JavaLangString = paramString;
       }
       int i = jdField_a_of_type_Int;
       return i;
@@ -49,15 +51,15 @@ public class StickerBubbleAnimationHelper
   }
   
   @Nullable
-  public static Drawable a(Context paramContext)
+  public static Drawable a(@NonNull String paramString)
   {
     try
     {
-      if ((jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (a() > -1)) {
-        jdField_a_of_type_AndroidGraphicsDrawableDrawable = PEPanelHelper.a(a());
+      if (((!paramString.equals(jdField_a_of_type_JavaLangString)) || (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) && (a(paramString) > 0)) {
+        jdField_a_of_type_AndroidGraphicsDrawableDrawable = PEPanelHelper.a(a(paramString));
       }
-      paramContext = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      return paramContext;
+      paramString = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      return paramString;
     }
     finally {}
   }
@@ -79,7 +81,7 @@ public class StickerBubbleAnimationHelper
     return (StickerBubbleAnimationHelper.CacheItem)CommonImageCacheHelper.a("StickerBubbleGifCache_" + paramString);
   }
   
-  public static StickerBubbleAnimationView.AddItemRequest a(int paramInt1, String paramString, int paramInt2, int[] paramArrayOfInt)
+  public static wbu a(int paramInt1, String paramString, int paramInt2, int[] paramArrayOfInt)
   {
     boolean bool = a(paramInt2, paramArrayOfInt);
     paramArrayOfInt = new Point(paramInt1 / 2, 0);
@@ -94,13 +96,13 @@ public class StickerBubbleAnimationHelper
     label114:
     for (double d2 = jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = jdField_a_of_type_JavaUtilRandom.nextInt(2000))
     {
-      return new StickerBubbleAnimationView.AddItemRequest(paramArrayOfInt, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 49);
+      return new wbu(paramArrayOfInt, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 49);
       d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(8000) + 4000;
       break;
     }
   }
   
-  public static StickerBubbleAnimationView.AddItemRequest a(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
+  public static wbu a(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
   {
     boolean bool = a(paramInt);
     double d1;
@@ -114,7 +116,7 @@ public class StickerBubbleAnimationHelper
     label102:
     for (double d2 = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000))
     {
-      return new StickerBubbleAnimationView.AddItemRequest(paramPoint, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 85);
+      return new wbu(paramPoint, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 85);
       d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
       break;
     }
@@ -133,14 +135,14 @@ public class StickerBubbleAnimationHelper
     StickerBubbleAnimationViewHolder.a().a();
   }
   
-  public static void a(PEItemData paramPEItemData)
+  public static void a(@NonNull PEItemData paramPEItemData, @NonNull String paramString)
   {
     try
     {
       jdField_a_of_type_Int = paramPEItemData.jdField_a_of_type_Int;
       jdField_a_of_type_AndroidGraphicsDrawableDrawable = PEPanelHelper.a(jdField_a_of_type_Int);
-      SharedPreUtils.a(paramPEItemData.jdField_a_of_type_Int);
-      jdField_a_of_type_Boolean = true;
+      SharedPreUtils.b(paramPEItemData.jdField_a_of_type_Int, paramString);
+      jdField_a_of_type_JavaLangString = paramString;
       return;
     }
     finally
@@ -180,7 +182,7 @@ public class StickerBubbleAnimationHelper
   
   private static boolean a()
   {
-    return b > 5;
+    return b > 3;
   }
   
   private static boolean a(int paramInt)
@@ -252,7 +254,7 @@ public class StickerBubbleAnimationHelper
     return jdField_a_of_type_ArrayOfInt;
   }
   
-  public static StickerBubbleAnimationView.AddItemRequest b(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
+  public static wbu b(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
   {
     boolean bool = a(paramInt);
     double d1;
@@ -266,7 +268,7 @@ public class StickerBubbleAnimationHelper
     label102:
     for (double d2 = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000))
     {
-      return new StickerBubbleAnimationView.AddItemRequest(paramPoint, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 81);
+      return new wbu(paramPoint, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 81);
       d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
       break;
     }
@@ -278,7 +280,7 @@ public class StickerBubbleAnimationHelper
     if (jdField_a_of_type_AndroidViewAnimationAnimation == null)
     {
       jdField_a_of_type_AndroidViewAnimationAnimation = a(paramView.getContext());
-      jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new vyo());
+      jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new wbq());
     }
     if (QLog.isColorLevel()) {
       QLog.d("StickerBubbleHelper", 2, "start to shake");

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adho;
+import adrn;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -92,7 +92,7 @@ public class HotVideoUtils
     if (arrayOfFile != null)
     {
       paramFile = Arrays.asList(arrayOfFile);
-      Collections.sort(paramFile, new adho(null));
+      Collections.sort(paramFile, new adrn(null));
     }
     return paramFile;
   }
@@ -189,7 +189,7 @@ public class HotVideoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,41 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import java.lang.ref.WeakReference;
 
-public final class ajki
-  implements DownloadParams.DecodeHandler
+class ajki
+  implements Runnable
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  ajki(ajkh paramajkh, VideoInfo paramVideoInfo) {}
+  
+  public void run()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).e = 95;
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).g = -2147483648;
+    XMediaEditor localXMediaEditor = (XMediaEditor)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).get();
+    if (localXMediaEditor != null)
     {
-      do
+      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).c);
+      if ((localObject instanceof VideoItem.VideoViewHolder))
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 2);
-    paramDownloadParams = (int[])localObject;
-    float f2 = DeviceInfoUtil.a();
-    float f1 = f2;
-    if (f2 < 0.01F) {
-      f1 = 1.0F;
+        localObject = (VideoItem.VideoViewHolder)localObject;
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject).a.getTag())) {
+          ((VideoItem)((XMediaEditorAdapter)localXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a), 0);
+        }
+      }
     }
-    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-    return ImageUtil.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajki
  * JD-Core Version:    0.7.0.1
  */

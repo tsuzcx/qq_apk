@@ -1,15 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.DeleteCommentCallback;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.CommentsView;
+import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
 
 public class aezj
-  implements View.OnClickListener
+  implements CommentsDataSource.DeleteCommentCallback
 {
-  public aezj(NearbyCustomDialog paramNearbyCustomDialog) {}
+  public aezj(CommentsPresenterImpl paramCommentsPresenterImpl) {}
   
-  public void onClick(View paramView)
+  public void a(Comments.Comment paramComment, int paramInt)
   {
-    this.a.dismiss();
+    if (CommentsPresenterImpl.a(this.a) != null)
+    {
+      if (paramInt == 0)
+      {
+        CommentsPresenterImpl.a(this.a).b(paramComment);
+        CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430835));
+      }
+    }
+    else {
+      return;
+    }
+    CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430836));
   }
 }
 

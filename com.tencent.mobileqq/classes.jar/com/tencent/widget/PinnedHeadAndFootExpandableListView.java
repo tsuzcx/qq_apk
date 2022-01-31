@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import alni;
-import alnj;
+import amcy;
+import amcz;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -467,7 +467,7 @@ public class PinnedHeadAndFootExpandableListView
         if (this.jdField_b_of_type_AndroidViewView != null)
         {
           this.jdField_b_of_type_AndroidViewView.setTag("headerView");
-          this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new alni(this));
+          this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new amcy(this));
         }
         if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView == null))
         {
@@ -475,7 +475,7 @@ public class PinnedHeadAndFootExpandableListView
           if (this.jdField_a_of_type_AndroidViewView != null)
           {
             this.jdField_a_of_type_AndroidViewView.setTag("footerView");
-            this.jdField_a_of_type_AndroidViewView.setOnClickListener(new alnj(this, this));
+            this.jdField_a_of_type_AndroidViewView.setOnClickListener(new amcz(this, this));
           }
         }
         requestLayout();
@@ -521,7 +521,7 @@ public class PinnedHeadAndFootExpandableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.PinnedHeadAndFootExpandableListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,143 @@
 import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.VideoController.GAudioFriends;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.res.Resources;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.av.app.PstnSessionInfo;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.ui.CallbackWaitingActivity;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.av.utils.PSTNNotification;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.PstnHandler.CallTypeRspParam;
+import com.tencent.mobileqq.qcall.PstnObserver;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
 
 public class jyo
-  implements AdapterView.OnItemClickListener
+  extends PstnObserver
 {
-  public jyo(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity, boolean paramBoolean) {}
+  public jyo(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_Boolean)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().jdField_b_of_type_Int = -1;
+    }
+    this.a.finish();
+  }
+  
+  public void a(Boolean paramBoolean, Object paramObject)
+  {
+    super.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("PSTNC2CActivity", 2, "isSuccess = " + paramBoolean);
+    }
+    Object localObject;
+    if ((paramObject instanceof PstnHandler.CallTypeRspParam))
     {
-      String str;
-      if (!this.jdField_a_of_type_Boolean)
+      localObject = (PstnHandler.CallTypeRspParam)paramObject;
+      VideoMsgTools.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true, ((PstnHandler.CallTypeRspParam)localObject).jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      if (paramBoolean.booleanValue())
       {
-        paramAdapterView = (VideoController.GAudioFriends)this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        paramView = new Intent(this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity, QQBrowserActivity.class);
-        paramAdapterView = String.valueOf(paramAdapterView.a);
-        str = this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-        if (paramAdapterView.equals(str))
+        if (localObject != null)
         {
-          paramAdapterView = "https://qvideo.qq.com/mobile/client/level/detail.html?_bid=2176&uin=" + str;
-          paramView.putExtra("url", paramAdapterView);
-          paramView.putExtra("uin", str);
-          paramView.putExtra("portraitOnly", true);
-          paramView.putExtra("hide_more_button", true);
-          paramView.putExtra("hide_operation_bar", true);
-          paramView.putExtra("isShowAd", false);
-          this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.startActivity(paramView);
-          ReportController.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_member", "Clk_people", 0, 0, "" + this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_ComTencentAvVideoController.a, "" + this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "", "");
+          QLog.d("PSTNC2CActivity", 2, " retCode = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_a_of_type_Int + " callType = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_b_of_type_Int + " callbackPhone = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_c_of_type_JavaLangString + " callbackPrompt = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_b_of_type_JavaLangString + " toPhone = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_d_of_type_JavaLangString + " callbackId = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_a_of_type_JavaLangString + " peerCallId = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_a_of_type_Long + " ability = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_c_of_type_Int + " phoneNumType = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_d_of_type_Int);
+          if (((PstnHandler.CallTypeRspParam)localObject).jdField_b_of_type_Int == 5)
+          {
+            PSTNC2CActivity.jdField_c_of_type_JavaLangString = ((PstnHandler.CallTypeRspParam)localObject).jdField_c_of_type_JavaLangString;
+            paramBoolean = new Intent(this.a, CallbackWaitingActivity.class);
+            paramBoolean.putExtra("callbackId", ((PstnHandler.CallTypeRspParam)localObject).jdField_a_of_type_JavaLangString);
+            paramBoolean.putExtra("toPhone", this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_b_of_type_JavaLangString);
+            paramBoolean.putExtra("fromPhone", this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_c_of_type_JavaLangString);
+            paramBoolean.putExtra("toUin", this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_JavaLangString);
+            paramBoolean.putExtra("fromUin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+            paramBoolean.putExtra("uinType", this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_Int);
+            paramBoolean.putExtra("type", 1001);
+            this.a.startActivity(paramBoolean);
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().e = ((PstnHandler.CallTypeRspParam)localObject).jdField_c_of_type_JavaLangString;
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().jdField_b_of_type_Int = 1;
+          this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new jyp(this), 500L);
+        }
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().jdField_b_of_type_Int = -1;
+      paramBoolean = "呼叫失败，请稍后再试。";
+      int i;
+      if ((paramObject != null) && ((paramObject instanceof Integer))) {
+        switch (((Integer)paramObject).intValue())
+        {
+        case 2: 
+        case 4: 
+        case 5: 
+        case 9: 
+        case 10: 
+        default: 
+          paramBoolean = "呼叫失败，请稍后再试。";
+          i = 1;
         }
       }
-      do
+      for (;;)
       {
-        return;
-        paramAdapterView = "https://qvideo.qq.com/mobile/client/level/pk.html?_bid=2176&my=" + str + "&pk=" + paramAdapterView;
-        break;
-        paramAdapterView = (VideoController.GAudioFriends)this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      } while ((paramAdapterView == null) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin().equals(String.valueOf(paramAdapterView.a))));
-      paramView = new Intent();
-      paramView.setAction("tencent.av.gift.SelectExtra");
-      paramView.putExtra("selectUin", paramAdapterView.a);
-      paramView.setPackage(this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName());
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramView);
-      MultiVideoMembersListviewAvtivity.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity);
-      return;
+        if (i == 2)
+        {
+          paramBoolean = PstnUtils.b(this.a.app, 1);
+          paramObject = PstnUtils.c(this.a.app, 1);
+          localObject = PstnUtils.d(this.a.app, 1);
+          DialogUtil.a(this.a, 230, paramBoolean, paramObject, this.a.getString(2131428675), (String)localObject, new jyq(this), new jyr(this)).show();
+          return;
+          paramBoolean = "你拨打的号码有误，请加拨区号后再试。";
+          i = 1;
+          continue;
+          i = 2;
+          continue;
+          paramBoolean = "呼叫失败，暂不支持呼叫此类号码。";
+          i = 1;
+          continue;
+          paramBoolean = "你拨打的号码有误，请检查后再试。";
+          i = 1;
+          continue;
+          paramBoolean = "呼叫失败，暂不支持呼叫国外号码。";
+          i = 1;
+          continue;
+          paramBoolean = "呼叫失败，最多支持同时接入9个手机//固话用户。";
+          i = 1;
+        }
+        else
+        {
+          DialogUtil.b(this.a, 230, "", paramBoolean, 2131428674, 2131428674, null, new jys(this)).show();
+          return;
+          i = 1;
+        }
+      }
+      localObject = null;
     }
-    paramAdapterView = (VideoController.GAudioFriends)this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    super.a(paramString, paramInt);
     if (QLog.isColorLevel()) {
-      QLog.d("MultiVideoMembersListviewAvtivity", 2, "onItemClick # mRelationUinStr = " + this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_JavaLangString + " # memberUin = " + String.valueOf(paramAdapterView.a));
+      QLog.d("PSTNC2CActivity", 2, " callId = " + paramString + ", time = " + paramInt);
     }
-    paramView = new Intent();
-    paramView.setAction("tencent.video.v2q.GaudioOpenTroopCard");
-    paramView.putExtra("troopUin", this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("memberUin", String.valueOf(paramAdapterView.a));
-    paramView.putExtra("uinType", this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_Int);
-    paramView.setPackage(this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoMembersListviewAvtivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramView);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getResources().getString(2131429562));
+    this.a.jdField_a_of_type_ComTencentAvUtilsPSTNNotification.a(1);
+    this.a.a(this.a.b, false, 2130840125);
+    this.a.b.setClickable(true);
+    this.a.a(this.a.jdField_a_of_type_AndroidWidgetButton, false, 2130840136);
+    this.a.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().jdField_b_of_type_Int = 2;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().g = true;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
   }
 }
 

@@ -1,23 +1,29 @@
 import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class aepx
   implements View.OnClickListener
 {
-  public aepx(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public aepx(NearbyGuideActivity paramNearbyGuideActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
+      this.a.d("正在导入...");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler = ((NearbyCardHandler)this.a.app.a(60));
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(NearbyPeopleProfileActivity.c, 5);
+      this.a.e("0X8005909");
     }
-    this.a.c();
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
   }
 }
 

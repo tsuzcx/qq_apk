@@ -1,16 +1,31 @@
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.OnListViewScrollStateListener;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
-class vkn
-  implements Runnable
+public class vkn
+  implements TroopChatPie.OnListViewScrollStateListener
 {
-  vkn(vkm paramvkm) {}
+  public vkn(TroopSignItemBuilder.TroopSignVideoItemBuilder paramTroopSignVideoItemBuilder, TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder paramSignVideoItemHolder, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.a.a.b(2131435857);
-    ReportController.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
-    this.a.a.b();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.l();
+      TroopSignItemBuilder.TroopSignVideoItemBuilder.a().removeCallbacksAndMessages(null);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getParent() != null)
+    {
+      TroopSignItemBuilder.TroopSignVideoItemBuilder.b().postDelayed(new vko(this), 200L);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.d.setVisibility(0);
   }
 }
 

@@ -67,10 +67,10 @@ import mqq.manager.TicketManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wyf;
-import wyh;
-import wyi;
-import wyj;
+import xbk;
+import xbm;
+import xbn;
+import xbo;
 
 public class SendHbActivity
   extends FragmentActivity
@@ -83,7 +83,7 @@ public class SendHbActivity
   private String E = "";
   public int a;
   public long a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new wyf(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new xbk(this);
   private Context jdField_a_of_type_AndroidContentContext;
   Intent jdField_a_of_type_AndroidContentIntent = new Intent();
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
@@ -97,7 +97,7 @@ public class SendHbActivity
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new wyj(this);
+  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new xbo(this);
   private Intent jdField_b_of_type_AndroidContentIntent;
   private View jdField_b_of_type_AndroidViewView;
   public String b;
@@ -242,11 +242,11 @@ public class SendHbActivity
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     if (this.jdField_a_of_type_AndroidSupportV4AppFragment != null)
     {
-      ((FrameLayout)findViewById(2131368122)).setVisibility(0);
-      localFragmentTransaction.add(2131368122, this.jdField_a_of_type_AndroidSupportV4AppFragment);
+      ((FrameLayout)findViewById(2131368189)).setVisibility(0);
+      localFragmentTransaction.add(2131368189, this.jdField_a_of_type_AndroidSupportV4AppFragment);
       localFragmentTransaction.commit();
     }
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131362836);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131362854);
     new ImmersionBar(this, paramInt, this.jdField_c_of_type_AndroidViewView);
   }
   
@@ -324,11 +324,11 @@ public class SendHbActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362822);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131368123);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368124));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362840);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131368190);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368191));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    ((Button)findViewById(2131368126)).setOnClickListener(this);
+    ((Button)findViewById(2131368193)).setOnClickListener(this);
   }
   
   private void e()
@@ -367,7 +367,7 @@ public class SendHbActivity
       new SendHbLogic(this).a(this.jdField_a_of_type_OrgJsonJSONObject);
       return;
     }
-    int i1 = getResources().getColor(2131493711);
+    int i1 = getResources().getColor(2131493717);
     if ((this.jdField_b_of_type_Boolean) && ("h5".equals(this.v)) && (this.jdField_a_of_type_Int == 2048))
     {
       new SendHbLogic(this).a("", this.w);
@@ -640,7 +640,7 @@ public class SendHbActivity
     this.jdField_a_of_type_AndroidContentIntent.putExtra("hb_id", this.y);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("send_uin", this.w);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("hb_type", "1");
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_text", getString(2131431521));
+    this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_text", getString(2131431538));
     if (this.jdField_c_of_type_Boolean) {
       this.jdField_a_of_type_AndroidContentIntent.putExtra("item", 1);
     }
@@ -756,7 +756,7 @@ public class SendHbActivity
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    DialogUtil.a(this, 230, null, paramString1, paramString2, paramString3, new wyh(this), new wyi(this)).show();
+    DialogUtil.a(this, 230, null, paramString1, paramString2, paramString3, new xbm(this), new xbn(this)).show();
   }
   
   public void a(String paramString, ArrayList paramArrayList)
@@ -767,10 +767,10 @@ public class SendHbActivity
     }
     for (;;)
     {
-      localIntent.putExtra("param_title", getString(2131431514));
+      localIntent.putExtra("param_title", getString(2131431531));
       localIntent.putExtra("param_min", 0);
-      localIntent.putExtra("param_done_button_wording", getString(2131435949));
-      localIntent.putExtra("param_done_button_highlight_wording", getString(2131435950));
+      localIntent.putExtra("param_done_button_wording", getString(2131435966));
+      localIntent.putExtra("param_done_button_highlight_wording", getString(2131435967));
       localIntent.putExtra("param_max", 5);
       localIntent.putExtra("param_entrance", 25);
       if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
@@ -1134,7 +1134,7 @@ public class SendHbActivity
       {
         try
         {
-          setContentView(2130969814);
+          setContentView(2130969828);
           d();
           f(this.jdField_a_of_type_OrgJsonJSONObject);
           e();
@@ -1874,10 +1874,10 @@ public class SendHbActivity
     //   1124: aload_0
     //   1125: ldc_w 1294
     //   1128: invokevirtual 795	com/tencent/mobileqq/activity/qwallet/SendHbActivity:getString	(I)Ljava/lang/String;
-    //   1131: new 1296	wyg
+    //   1131: new 1296	xbl
     //   1134: dup
     //   1135: aload_0
-    //   1136: invokespecial 1297	wyg:<init>	(Lcom/tencent/mobileqq/activity/qwallet/SendHbActivity;)V
+    //   1136: invokespecial 1297	xbl:<init>	(Lcom/tencent/mobileqq/activity/qwallet/SendHbActivity;)V
     //   1139: aconst_null
     //   1140: invokestatic 887	com/tencent/mobileqq/utils/DialogUtil:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   1143: invokevirtual 890	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
@@ -1956,22 +1956,22 @@ public class SendHbActivity
   public void onClick(View paramView)
   {
     int i1 = paramView.getId();
-    if (i1 == 2131368126)
+    if (i1 == 2131368193)
     {
       a(this.w, a(), "hongbao.wrapped.send", "", "");
       a();
     }
-    while (i1 != 2131368124) {
+    while (i1 != 2131368191) {
       return;
     }
-    String str = getString(2131431519) + getString(2131431520);
-    paramView = getString(2131431518);
+    String str = getString(2131431536) + getString(2131431537);
+    paramView = getString(2131431535);
     if (this.jdField_c_of_type_Boolean)
     {
-      str = getString(2131431519);
-      paramView = getString(2131431517);
+      str = getString(2131431536);
+      paramView = getString(2131431534);
     }
-    a(str, paramView, getString(2131431516));
+    a(str, paramView, getString(2131431533));
     if (this.jdField_d_of_type_Boolean)
     {
       a(this.w, a(), "hongbao.wrapped.keyback", "", "");

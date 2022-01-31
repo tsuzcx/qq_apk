@@ -1,63 +1,43 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView.MagicfaceGestureListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.hotpic.HotPicTab;
 
 public class adra
-  extends GestureDetector.SimpleOnGestureListener
+  extends Handler
 {
-  public adra(MagicfaceContainerView paramMagicfaceContainerView) {}
+  public adra(HotPicTab paramHotPicTab) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a != null) {
-      this.a.a.a(5);
-    }
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
-      if (this.a.a != null) {
-        this.a.a.a(0);
-      }
-    }
-    do
+    switch (paramMessage.what)
     {
-      do
+    default: 
+      return;
+    case 0: 
+      HotPicTab.a(this.a, 0.0F);
+      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
+      if (HotPicTab.a(this.a) < 1.0F)
       {
-        do
-        {
-          return false;
-          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
-            break;
-          }
-        } while (this.a.a == null);
-        this.a.a.a(1);
-        return false;
-        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.a(2);
-      return false;
-    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (this.a.a == null));
-    this.a.a.a(3);
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(4);
+        this.a.invalidate();
+        sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(2), 10L);
+      return;
     }
-    return false;
+    HotPicTab.a(this.a, 1.0F);
+    HotPicTab.a(this.a, HotPicTab.a(this.a));
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adra
  * JD-Core Version:    0.7.0.1
  */

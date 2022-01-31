@@ -1,6 +1,6 @@
 package cooperation.qzone.util;
 
-import amkl;
+import anaq;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -279,7 +279,7 @@ public class GifCoder
     boolean[] arrayOfBoolean = new boolean[1];
     arrayOfBoolean[0] = false;
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    AlbumLibDownloaderUtil.a().b(new amkl(arrayOfBoolean, localCountDownLatch));
+    AlbumLibDownloaderUtil.a().b(new anaq(arrayOfBoolean, localCountDownLatch));
     try
     {
       localCountDownLatch.await(30L, TimeUnit.SECONDS);

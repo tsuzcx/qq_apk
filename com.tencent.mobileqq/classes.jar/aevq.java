@@ -1,18 +1,16 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.UploadListener;
 
-class aevq
+public class aevq
   implements Runnable
 {
-  aevq(aevp paramaevp) {}
+  public aevq(ImageFeedsUploader paramImageFeedsUploader, PicFeedUploadInfo paramPicFeedUploadInfo) {}
   
   public void run()
   {
-    if (NearbyProfileEditTribePanel.a(this.a.a) != null)
-    {
-      NearbyProfileEditTribePanel.a(this.a.a).setVisibility(0);
-      NearbyProfileEditTribePanel.a(this.a.a);
-      NearbyProfileEditTribePanel.a(this.a.a, null);
+    if (ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader) != null) {
+      ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader).a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo);
     }
   }
 }

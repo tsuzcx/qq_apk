@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahlg;
-import ahlh;
-import ahli;
-import ahlj;
-import ahlk;
+import ahzi;
+import ahzj;
+import ahzk;
+import ahzl;
+import ahzm;
 import android.os.Handler;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.DiscussionManager;
@@ -42,7 +42,7 @@ public class ShortVideoPreDownloader
   Handler jdField_a_of_type_AndroidOsHandler = null;
   public QQAppInterface a;
   UiCallBack jdField_a_of_type_ComTencentMobileqqShortvideoUiCallBack;
-  Runnable jdField_a_of_type_JavaLangRunnable = new ahlh(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new ahzj(this);
   List jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
   public Map a;
   public PriorityBlockingQueue a;
@@ -69,7 +69,7 @@ public class ShortVideoPreDownloader
     this.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoUiCallBack = new ahlg(this);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoUiCallBack = new ahzi(this);
   }
   
   public static void a(String paramString1, String paramString2)
@@ -269,7 +269,7 @@ public class ShortVideoPreDownloader
         a("isNeedPredownloadThumb", "out of validity, no need to pre download");
         return false;
       }
-      boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433555), "qqsetting_auto_receive_pic_key", true);
+      boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433572), "qqsetting_auto_receive_pic_key", true);
       if ((NetworkUtil.b(BaseApplication.getContext()) == 1) || (bool)) {}
       for (int i = 1; ("1".equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(ServerConfigManager.ConfigType.common, "UseLocalFlowSet"))) || (i != 0); i = 0) {
         return true;
@@ -417,7 +417,7 @@ public class ShortVideoPreDownloader
       break;
     }
     label250:
-    ThreadManager.post(new ahli(this, localShortVideoDownloadInfo, paramMessageForShortVideo, localShortVideoReq), 5, null, false);
+    ThreadManager.post(new ahzk(this, localShortVideoDownloadInfo, paramMessageForShortVideo, localShortVideoReq), 5, null, false);
   }
   
   void b(MessageForShortVideo paramMessageForShortVideo, int paramInt)
@@ -522,7 +522,7 @@ public class ShortVideoPreDownloader
     this.jdField_a_of_type_JavaUtilMap.put(localShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.jdField_a_of_type_JavaLangString, Integer.valueOf(6));
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
     localShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoUiCallBack = this.jdField_a_of_type_ComTencentMobileqqShortvideoUiCallBack;
-    ThreadManager.post(new ahlj(this, localShortVideoReq), 5, null, false);
+    ThreadManager.post(new ahzl(this, localShortVideoReq), 5, null, false);
   }
   
   public void d()
@@ -534,7 +534,7 @@ public class ShortVideoPreDownloader
       a("consumeAllThumbsInPendingQueue", "screenOFF, no preDownload, networkType: " + i);
       return;
     }
-    ThreadManager.post(new ahlk(this), 5, null, false);
+    ThreadManager.post(new ahzm(this), 5, null, false);
   }
   
   public void onDestroy()

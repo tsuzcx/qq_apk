@@ -1,23 +1,21 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
 
-class adkp
-  implements AsyncBack
+public class adkp
+  implements DialogInterface.OnClickListener
 {
-  adkp(adko paramadko) {}
+  public adkp(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorConfig", 2, "3136 offline loaded param:" + paramString + " code:" + paramInt);
-    }
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adkp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView.IInterestTagItemViewCallback;
+import com.tencent.mobileqq.magicface.model.MagicfaceDecoder;
+import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.MagicPlayListener;
 
 public class aedw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aedw(InterestTagItemView paramInterestTagItemView) {}
+  public aedw(MagicfaceDecoder paramMagicfaceDecoder) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((paramView == InterestTagItemView.a(this.a)) || (paramView == this.a))
-    {
-      InterestTagItemView.a(this.a).a(InterestTagItemView.a(this.a));
-      this.a.a();
+    int i = Thread.currentThread().getPriority();
+    Thread.currentThread().setPriority(10);
+    this.a.jdField_a_of_type_Boolean = true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.a();
     }
+    this.a.a();
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.b();
+    }
+    Thread.currentThread().setPriority(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aedw
  * JD-Core Version:    0.7.0.1
  */

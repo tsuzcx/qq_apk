@@ -1,16 +1,15 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.redbag.ResultUI;
 
 public class kfk
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnTouchListener
 {
-  public kfk(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
+  public kfk(ResultUI paramResultUI) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr, 2);
     return true;
   }
 }

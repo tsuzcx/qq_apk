@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.aio.item.FileTimDocGrayTipsItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQItemBubbleBuilder;
 import com.tencent.mobileqq.data.ChatMessage;
 
 public class uua
   implements Runnable
 {
-  public uua(FileTimDocGrayTipsItemBuilder paramFileTimDocGrayTipsItemBuilder, uub paramuub) {}
+  public uua(ArkAppBabyQItemBubbleBuilder paramArkAppBabyQItemBubbleBuilder, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileTimDocGrayTipsItemBuilder.a.a().a(this.jdField_a_of_type_Uub.a.frienduin, this.jdField_a_of_type_Uub.a.istroop, this.jdField_a_of_type_Uub.a.uniseq, "extStr", this.jdField_a_of_type_Uub.a.getExtInfoString());
+    ArkAppBabyQItemBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQItemBubbleBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
   }
 }
 

@@ -1,25 +1,50 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import com.tencent.mobileqq.filemanager.offlinefile.OfflineFileUpload.OfflineFileUploadPara;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 
-class acvp
+public class acvp
   implements Runnable
 {
-  acvp(acvn paramacvn, String paramString) {}
+  public acvp(FileManagerRSWorker paramFileManagerRSWorker) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Acvn.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "running OfflineFileHitReq:" + MessageCache.a());
+    }
+    OfflineFileUploadPara localOfflineFileUploadPara = new OfflineFileUploadPara();
+    localOfflineFileUploadPara.jdField_a_of_type_JavaLangString = this.a.e;
+    localOfflineFileUploadPara.jdField_a_of_type_Long = this.a.d;
+    this.a.jdField_a_of_type_ArrayOfByte = FileManagerUtil.c(this.a.jdField_b_of_type_JavaLangString);
+    this.a.jdField_b_of_type_ArrayOfByte = FileManagerUtil.a(this.a.jdField_b_of_type_JavaLangString);
+    this.a.c = FileManagerUtil.b(this.a.jdField_b_of_type_JavaLangString);
+    if ((this.a.jdField_a_of_type_ArrayOfByte == null) || (this.a.jdField_b_of_type_ArrayOfByte == null) || (this.a.c == null))
+    {
+      this.a.a(null, 0);
       return;
     }
-    this.jdField_a_of_type_Acvn.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-    VideoFilePresenter.a(this.jdField_a_of_type_Acvn.a, this.jdField_a_of_type_JavaLangString);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", "bus_type_filevideo_online_play");
-    this.jdField_a_of_type_Acvn.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    this.jdField_a_of_type_Acvn.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_Acvn.a.jdField_a_of_type_AndroidAppActivity, VideoFilePresenter.a(this.jdField_a_of_type_Acvn.a), 0L, 0L, this.jdField_a_of_type_Acvn.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
+    localOfflineFileUploadPara.c = this.a.jdField_a_of_type_ArrayOfByte;
+    localOfflineFileUploadPara.d = this.a.jdField_b_of_type_ArrayOfByte;
+    localOfflineFileUploadPara.e = this.a.c;
+    try
+    {
+      localOfflineFileUploadPara.jdField_b_of_type_ArrayOfByte = FileManagerUtil.a(this.a.jdField_b_of_type_JavaLangString).getBytes("utf-8");
+      localOfflineFileUploadPara.jdField_a_of_type_ArrayOfByte = this.a.jdField_b_of_type_JavaLangString.getBytes("utf-8");
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localOfflineFileUploadPara, FileManagerRSWorker.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      return;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,23 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.PublicQuickPayManager;
 
 public class xao
-  implements PreloadImgManager.OnSingleDownloadCallback
+  implements DialogInterface.OnClickListener
 {
-  public xao(QzoneHbFragment paramQzoneHbFragment) {}
+  public xao(PublicQuickPayManager paramPublicQuickPayManager) {}
   
-  public void a() {}
-  
-  public void a(Object paramObject)
-  {
-    if ((paramObject instanceof Bitmap))
-    {
-      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
-      paramObject.what = 102;
-      QzoneHbFragment.a(this.a).sendMessage(paramObject);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

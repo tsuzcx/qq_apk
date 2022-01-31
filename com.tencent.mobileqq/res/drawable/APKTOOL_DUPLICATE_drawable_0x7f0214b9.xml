@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214bb" />
-    <item android:state_enabled="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214bb" />
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214ba" />
-</selector>
+    <stroke android:width="1.0dip" android:color="#ffdddddd" />
+    <solid android:color="@android:color/transparent" />
+</shape>

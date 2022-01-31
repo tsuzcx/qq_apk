@@ -1,34 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.JoinGroupHandler;
-import com.tencent.biz.JoinGroupTransitActivity;
-import java.lang.ref.WeakReference;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
 public class kjm
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  private WeakReference a;
+  public kjm(PoiMapActivity paramPoiMapActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
   
-  public kjm(JoinGroupTransitActivity paramJoinGroupTransitActivity)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = new WeakReference(paramJoinGroupTransitActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
-    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
-      return;
-    }
-    localJoinGroupTransitActivity.finish();
+    PoiMapActivity.d(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setEnabled(false);
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHandler().postDelayed(new kjn(this), 150L);
   }
 }
 

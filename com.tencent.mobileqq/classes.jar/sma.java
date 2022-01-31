@@ -1,16 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.data.TroopMemberCard;
 
-public class sma
-  extends GameCenterObserver
+class sma
+  implements Runnable
 {
-  public sma(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  sma(sly paramsly, TroopMemberCard paramTroopMemberCard) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    ThreadManager.post(new smb(this), 5, null, false);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard != null)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("nick", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.card);
+      this.jdField_a_of_type_Sly.a.setResult(-1, localIntent);
+      EditInfoActivity.e(this.jdField_a_of_type_Sly.a);
+    }
   }
 }
 

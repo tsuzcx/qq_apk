@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoLabel;
+import com.tencent.biz.qqstory.takevideo.EditPicSave;
 import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class odl
-  implements View.OnClickListener
+class odl
+  implements Runnable
 {
-  public odl(EditVideoLabel paramEditVideoLabel) {}
+  odl(odk paramodk) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a(0);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    this.a.a.jdField_a_of_type_Boolean = true;
+    this.a.a.a(100);
+    this.a.a.h();
+    QQToast.a(this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "已保存到系统相册", 0).a();
   }
 }
 

@@ -7,8 +7,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.vas.VasExtensionObserver;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import ytu;
-import ytv;
+import yxa;
+import yxb;
 
 public class ApolloDrawerInfoViewListener
   extends VasExtensionObserver
@@ -28,7 +28,7 @@ public class ApolloDrawerInfoViewListener
     if (QLog.isColorLevel()) {
       QLog.d("ApolloDrawerInfoViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
     }
-    ThreadManager.post(new ytv(this, paramBoolean, paramObject), 5, null, true);
+    ThreadManager.post(new yxb(this, paramBoolean, paramObject), 5, null, true);
   }
   
   public void onNotifyLongTouch(String paramString) {}
@@ -61,7 +61,7 @@ public class ApolloDrawerInfoViewListener
     if (QLog.isColorLevel()) {
       QLog.d("ApolloDrawerInfoViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
     }
-    ThreadManager.post(new ytu(this), 8, null, true);
+    ThreadManager.post(new yxa(this), 8, null, true);
   }
 }
 

@@ -136,7 +136,7 @@ public class QzoneSettingJsPlugin
         continue;
       }
       QLog.i("QzoneSettingJsPlugin", 4, "---handleShowQzoneRemindfeedSetting-:" + bool);
-      LocalMultiProcConfig.putBooleanAsync(localActivity.getString(2131434190) + l, bool);
+      LocalMultiProcConfig.putBooleanAsync(localActivity.getString(2131434207) + l, bool);
       return true;
       bool = true;
     }
@@ -167,7 +167,7 @@ public class QzoneSettingJsPlugin
         paramArrayOfString.printStackTrace();
       }
     }
-    bool = LocalMultiProcConfig.getBool(localActivity.getString(2131434190) + l, true);
+    bool = LocalMultiProcConfig.getBool(localActivity.getString(2131434207) + l, true);
     if (bool) {
       i = 1;
     }
@@ -326,7 +326,7 @@ public class QzoneSettingJsPlugin
     }
     paramWebViewPlugin.sendBroadcast(new Intent("com.tencent.qq.syncNoPhotoSetting"));
     QLog.i("QzoneSettingJsPlugin", 4, "---handlePictureModeSetting-:" + i);
-    LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131434193), i);
+    LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131434210), i);
     return true;
   }
   
@@ -343,7 +343,7 @@ public class QzoneSettingJsPlugin
     try
     {
       paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      int i = LocalMultiProcConfig.getInt(localActivity.getResources().getString(2131434193), 0);
+      int i = LocalMultiProcConfig.getInt(localActivity.getResources().getString(2131434210), 0);
       paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
       QLog.i("QzoneSettingJsPlugin", 4, "---handlePictureModeGet-:" + i);
       return true;

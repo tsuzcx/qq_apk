@@ -1,14 +1,17 @@
-import android.view.animation.Interpolator;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
-public final class agce
-  implements Interpolator
+class agce
+  implements Runnable
 {
-  public float getInterpolation(float paramFloat)
+  agce(agcd paramagcd) {}
+  
+  public void run()
   {
-    if (paramFloat <= 0.3333333F) {
-      return 0.0F;
-    }
-    return (paramFloat - 0.3333333F) * 1.5F;
+    ScanOcrActivity.a(this.a.a).setVisibility(4);
+    ScanOcrActivity.b(this.a.a).setVisibility(4);
+    ScanOcrActivity.b(this.a.a).setAlpha(255);
   }
 }
 

@@ -1,16 +1,19 @@
-import dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter;
 
-public class aoar
+class aoar
   implements Runnable
 {
-  public aoar(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
+  aoar(aoap paramaoap, boolean paramBoolean, InfomationFacePackage.Item paramItem) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.as_();
+    aoap.a(this.jdField_a_of_type_Aoap).setVisibility(8);
+    if (this.jdField_a_of_type_Boolean) {
+      InformationFaceAdapter.a(this.jdField_a_of_type_Aoap.a, aoap.a(this.jdField_a_of_type_Aoap), aoap.a(this.jdField_a_of_type_Aoap), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceInfomationFacePackage$Item);
     }
+    this.jdField_a_of_type_Aoap.a();
   }
 }
 

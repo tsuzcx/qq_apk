@@ -1,22 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
 
 public class lrk
   implements Runnable
 {
-  public lrk(SubscriptionInfoModule paramSubscriptionInfoModule) {}
+  public lrk(InterestLabelInfoModule paramInterestLabelInfoModule, int paramInt) {}
   
   public void run()
   {
-    ((PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(55)).a();
-    TroopBarAssistantManager localTroopBarAssistantManager = TroopBarAssistantManager.a();
-    localTroopBarAssistantManager.c((QQAppInterface)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if (localTroopBarAssistantManager.a((QQAppInterface)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
-      localTroopBarAssistantManager.a(this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (QQAppInterface)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    }
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int);
   }
 }
 

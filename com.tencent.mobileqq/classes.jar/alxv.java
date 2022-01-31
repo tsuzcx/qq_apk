@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.qqprotect.qsec.RundownProtection;
 
 public class alxv
-  implements DialogInterface.OnDismissListener
 {
-  public alxv(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public int a;
+  public RundownProtection a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public int c;
+  public int d = -1;
+  public int e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxv
  * JD-Core Version:    0.7.0.1
  */

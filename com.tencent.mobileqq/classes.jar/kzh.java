@@ -1,19 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.pubaccount.SuperWebView;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class kzh
+public class kzh
   implements Runnable
 {
-  kzh(kzg paramkzg, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public kzh(SuperWebView paramSuperWebView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Kzg.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.jdField_a_of_type_Kzg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Kzg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountMenuResponse);
-    if (this.jdField_a_of_type_Kzg.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-      this.jdField_a_of_type_Kzg.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    Iterator localIterator = SuperWebView.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      SuperWebView.a(this.a, str);
     }
+    SuperWebView.a(this.a).clear();
   }
 }
 

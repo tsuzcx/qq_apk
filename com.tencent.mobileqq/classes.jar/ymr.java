@@ -1,17 +1,13 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 public class ymr
   implements Runnable
 {
-  public ymr(ApolloWebViewFragment paramApolloWebViewFragment, Activity paramActivity) {}
+  public ymr(ApolloSurfaceView paramApolloSurfaceView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
   
   public void run()
   {
-    if (MyAppApi.d()) {
-      MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity);
-    }
+    ApolloSurfaceView.access$800(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
   }
 }
 

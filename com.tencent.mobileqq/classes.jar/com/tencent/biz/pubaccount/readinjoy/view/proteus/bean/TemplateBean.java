@@ -14,6 +14,11 @@ public class TemplateBean
     this.jdField_a_of_type_Int = paramInt;
   }
   
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
   public TemplateBean a()
   {
     TemplateBean localTemplateBean = new TemplateBean(this.jdField_a_of_type_Int);

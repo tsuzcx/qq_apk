@@ -1,28 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.now.enter.NowEnterManager;
+import com.tencent.qphone.base.util.QLog;
 
-class agah
-  implements DialogInterface.OnClickListener
+public class agah
+  implements Runnable
 {
-  agah(agad paramagad, View paramView, PersonalityLabelInfo paramPersonalityLabelInfo) {}
+  public agah(NowEnterManager paramNowEnterManager, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("NowEnterManager", 2, "start preload image~");
     }
-    paramDialogInterface = (agac)this.jdField_a_of_type_AndroidViewView.getTag(2131362722);
-    if (paramDialogInterface != null) {
-      this.jdField_a_of_type_Agad.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a, this.jdField_a_of_type_JavaLangString);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      URLDrawable.getDrawable(this.b, localURLDrawableOptions).downloadImediatly();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("NowEnterManager", 1, localException, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agah
  * JD-Core Version:    0.7.0.1
  */

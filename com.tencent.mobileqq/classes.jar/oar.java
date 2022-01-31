@@ -1,36 +1,27 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.biz.qqstory.takevideo.dancemachine.PKVideoSharer;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
-import com.tencent.util.MqqWeakReferenceHandler;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedVideoPreloader;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedVideoPreloader.CurrentVid;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
 public class oar
-  implements Runnable
+  extends SimpleJob
 {
-  public oar(CommonPicUploadFragment paramCommonPicUploadFragment, String paramString1, String paramString2) {}
+  public oar(FeedVideoPreloader paramFeedVideoPreloader, StoryVideoItem paramStoryVideoItem, List paramList) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
   {
-    CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment).sendEmptyMessage(1001);
-    if (CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment) == 2)
+    synchronized (FeedVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader))
     {
-      String str = RecentDanceConfigMgr.a();
-      str = CapturePtvTemplateManager.jdField_a_of_type_JavaLangString + str + File.separator;
-      str = str + "qq_richmedia_capture_dance_share_bg.png";
-      CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment, PKVideoSharer.a(str, 2130843077, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 200), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname(), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment.jdField_a_of_type_ComTencentMobileqqAppBaseActivity));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$CurrentVid = new FeedVideoPreloader.CurrentVid(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.b();
+      return null;
     }
-    if (!TextUtils.isEmpty(CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment)))
-    {
-      CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment, SystemClock.elapsedRealtime());
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment.b(CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment));
-      CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment).sendEmptyMessageDelayed(1002, 10000L);
-      return;
-    }
-    CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment).sendEmptyMessage(1003);
   }
 }
 

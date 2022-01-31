@@ -1,21 +1,52 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer.DoodleDrawerListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import com.tencent.qphone.base.util.QLog;
 
 public class uro
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  implements DoodleDrawer.DoodleDrawerListener
 {
-  public uro(ArkAppItemBubbleBuilder.Holder paramHolder1, ArkAppItemBubbleBuilder.Holder paramHolder2) {}
+  public uro(DoodleMsgView paramDoodleMsgView) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a(String paramString, int paramInt)
   {
-    if ((paramInt == 0) && (paramAppPathInfo.a != null))
+    QLog.d("DoodleMsgView", 2, "onDataState:" + paramInt + " - " + paramString);
+    this.a.a(new urq(this, paramInt));
+  }
+  
+  public void a(String arg1, long paramLong, Bitmap paramBitmap)
+  {
+    if (DoodleMsgView.a(this.a) == null) {}
+    for (;;)
     {
-      ArkAppCenter.a(paramAppPathInfo.a, new urp(this));
-      paramString = ArkAppCenter.b(paramAppPathInfo.a);
-      ArkAppCenter.a().postToMainThread(new urq(this, paramString));
+      return;
+      if (paramBitmap != null) {
+        if (DoodleMsgView.a(this.a, paramBitmap.getWidth(), paramBitmap.getHeight())) {
+          if (DoodleMsgView.a(this.a) == null)
+          {
+            DoodleMsgView.a(this.a, new Paint());
+            DoodleMsgView.a(this.a).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+            DoodleMsgView.a(this.a).setAntiAlias(true);
+          }
+        }
+      }
+      synchronized (this.a)
+      {
+        DoodleMsgView.a(this.a).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, DoodleMsgView.a(this.a).getWidth(), DoodleMsgView.a(this.a).getHeight()), DoodleMsgView.a(this.a));
+        this.a.postInvalidate();
+        if ((!DoodleMsgView.a(this.a)) || (paramLong < DoodleMsgView.a(this.a).a()) || (DoodleMsgView.a(this.a) < DoodleMsgView.a(this.a).a())) {
+          continue;
+        }
+        this.a.d();
+        this.a.a(new urp(this));
+        return;
+      }
     }
   }
 }

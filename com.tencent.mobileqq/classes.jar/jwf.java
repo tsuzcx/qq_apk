@@ -1,29 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.av.app.VideoObserver;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
 
 public class jwf
-  extends VideoObserver
+  implements DialogInterface.OnClickListener
 {
-  public jwf(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public jwf(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  protected void a(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "]");
-    if (TextUtils.equals(this.a.c, paramString))
-    {
-      this.a.b("VideoObserver_onClose");
-      this.a.b(paramInt);
-    }
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
-    if (TextUtils.equals(this.a.c, paramString)) {
-      this.a.b("VideoObserver_onDestroyUI");
-    }
+    this.a.w();
   }
 }
 

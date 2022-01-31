@@ -69,15 +69,15 @@ public class BannerProfileSegment
       return paramBaseViewHolder.a();
     }
     paramViewGroup = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a();
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371514);
-    ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131371515);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371519);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371520);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371521);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131371517);
-    ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131371491);
-    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131371492);
-    StoryQIMBadgeView localStoryQIMBadgeView = (StoryQIMBadgeView)paramBaseViewHolder.a(2131371516);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371680);
+    ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131371681);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371685);
+    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371686);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371687);
+    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131371683);
+    ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131371657);
+    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131371658);
+    StoryQIMBadgeView localStoryQIMBadgeView = (StoryQIMBadgeView)paramBaseViewHolder.a(2131371682);
     localRelativeLayout.setOnClickListener(this);
     UIUtils.b(localImageView1, paramViewGroup.getOwner().headUrl, 68, 68, ImageUtil.a(1), "QQStory_main");
     localStoryQIMBadgeView.a(paramViewGroup.getOwner());
@@ -123,7 +123,7 @@ public class BannerProfileSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970651, paramViewGroup, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970697, paramViewGroup, false));
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
   }
   

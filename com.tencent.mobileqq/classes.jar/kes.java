@@ -1,17 +1,22 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class kes
-  implements Runnable
+  implements MenuItem.OnMenuItemClickListener
 {
-  public kes(AVRedBagMgr paramAVRedBagMgr) {}
+  public kes(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
   
-  public void run()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AVActivity localAVActivity = this.a.a();
-    if (localAVActivity != null) {
-      localAVActivity.f(this.a.a);
-    }
+    paramMenuItem = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin() + "qav_SP", 0).edit();
+    paramMenuItem.putInt("qav_UserGuide_for_av_redbag_count", 0);
+    paramMenuItem.commit();
+    return true;
   }
 }
 

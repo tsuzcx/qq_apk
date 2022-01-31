@@ -36,12 +36,12 @@ public class ReadInJoyInterestLabelViewGroup
     {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-3355444);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840689);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840712);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842049);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842086);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -77,7 +77,7 @@ public class ReadInJoyInterestLabelViewGroup
       PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80067DB", "0X80067DB", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
       if (!NetworkUtil.a(a().getApplication().getApplicationContext()))
       {
-        QQToast.a(a(), a().getResources().getString(2131428454), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(a(), a().getResources().getString(2131428460), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
         return;
       }
       paramView = new ArrayList();
@@ -93,7 +93,7 @@ public class ReadInJoyInterestLabelViewGroup
       ReadInJoyLogicEngine.a().b((List)localObject1);
       ReadInJoyLogicEngine.a().c(paramView);
       return;
-      localObject1 = (InterestLabelInfo)paramView.getTag(2131428431);
+      localObject1 = (InterestLabelInfo)paramView.getTag(2131428437);
     } while (localObject1 == null);
     if ((paramView instanceof Button))
     {
@@ -103,7 +103,7 @@ public class ReadInJoyInterestLabelViewGroup
       }
       this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(((InterestLabelInfo)localObject1).mInterestLabelID));
       paramView.setTextColor(-15550475);
-      paramView.setBackgroundResource(2130840777);
+      paramView.setBackgroundResource(2130840801);
     }
     for (;;)
     {
@@ -112,7 +112,7 @@ public class ReadInJoyInterestLabelViewGroup
       label339:
       this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((InterestLabelInfo)localObject1).mInterestLabelID), localObject1);
       paramView.setTextColor(-1);
-      paramView.setBackgroundResource(2130840778);
+      paramView.setBackgroundResource(2130840802);
     }
   }
 }

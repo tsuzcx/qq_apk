@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-public final class xcb
+public class xcb
   implements Runnable
 {
-  public xcb(MessageRecord paramMessageRecord) {}
+  public xcb(TransactionActivity paramTransactionActivity) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = QWalletTools.a();
-    if ((localQQAppInterface != null) && (this.a != null)) {
-      localQQAppInterface.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
-    }
+    MotionEvent localMotionEvent1 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 0, 0.0F, 0.0F, 0);
+    TransactionActivity.a(this.a).dispatchTouchEvent(localMotionEvent1);
+    MotionEvent localMotionEvent2 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 1, 0.0F, 0.0F, 0);
+    TransactionActivity.a(this.a).dispatchTouchEvent(localMotionEvent2);
+    localMotionEvent1.recycle();
+    localMotionEvent2.recycle();
   }
 }
 

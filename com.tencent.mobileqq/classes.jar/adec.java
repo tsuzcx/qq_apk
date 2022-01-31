@@ -1,29 +1,23 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class adec
-  extends SosoInterface.OnLocationListener
+  implements View.OnClickListener
 {
-  public adec(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public adec(FileBrowserPresenterBase paramFileBrowserPresenterBase) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt != 0)
-    {
-      QQToast.a(this.a.a, 1, "获取地理位置失败。", 1).a();
-      this.a.e();
-    }
-    this.a.a(paramSosoLbsInfo);
+    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adec
  * JD-Core Version:    0.7.0.1
  */

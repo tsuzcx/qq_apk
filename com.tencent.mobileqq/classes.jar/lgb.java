@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.widget.SwipListView;
+import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
 
-class lgb
-  implements View.OnClickListener
+public class lgb
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  lgb(lga paramlga, View paramView) {}
+  public lgb(ReadInJoyArkViewController paramReadInJoyArkViewController, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lga.a).a(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyArkReadInJoyArkViewController.a(this.jdField_a_of_type_JavaLangString, this.b, "download", paramInt);
   }
 }
 

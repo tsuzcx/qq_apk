@@ -1,88 +1,21 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-public final class mvd
-  implements BusinessObserver
+public class mvd
+  implements ClickableColorSpanTextView.SpanClickListener
 {
-  public mvd(PublicAccountObserver paramPublicAccountObserver, String paramString, Context paramContext, AppInterface paramAppInterface) {}
+  public mvd(PublicAccountH5AbilityForPtt paramPublicAccountH5AbilityForPtt) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430016);
-      return;
-    }
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        break label360;
-      }
-      mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-      localFollowResponse.mergeFrom(paramBundle);
-      paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountUtil", 2, "followUin2, retCode=" + paramInt + ", uin=" + this.jdField_a_of_type_JavaLangString + ", errInfo=" + ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).err_info.get());
-      }
-      if (paramInt == 0)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
-        }
-        PublicAccountUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430016);
-      return;
-    }
-    if (paramInt == 58)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430024);
-      return;
-    }
-    if (paramInt == 65)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430025);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-    }
-    PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430016);
-    return;
-    label360:
-    if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-    }
-    PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430016);
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

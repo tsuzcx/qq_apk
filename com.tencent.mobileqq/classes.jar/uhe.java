@@ -1,91 +1,26 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.io.UnsupportedEncodingException;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class uhe
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  BaseChatItemLayout jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  
-  public uhe(QQAppInterface paramQQAppInterface, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, String paramString1, String paramString2, int paramInt, View.OnLongClickListener paramOnLongClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-  }
+  public uhe(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, File paramFile, String paramString) {}
   
   public void run()
   {
-    String str1 = null;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout == null) || (this.jdField_a_of_type_AndroidViewView$OnLongClickListener == null)) {}
-    for (;;)
+    DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
+    localDownloadTask.f = "profileCardDownload";
+    localDownloadTask.e = "VIP_profilecard";
+    int i = DownloaderFactory.a(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.app);
+    if (i == 0)
     {
+      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.c(this.jdField_a_of_type_JavaLangString);
       return;
-      label55:
-      Object localObject;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        str1 = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
-        localObject = str1;
-        if (str1 != null)
-        {
-          localObject = str1;
-          if (str1.getBytes().length > 3)
-          {
-            byte[] arrayOfByte = str1.getBytes();
-            localObject = str1;
-            if (arrayOfByte[0] == -17)
-            {
-              localObject = str1;
-              if (arrayOfByte[1] == -69)
-              {
-                localObject = str1;
-                if (arrayOfByte[2] == -65)
-                {
-                  localObject = new byte[arrayOfByte.length - 3];
-                  System.arraycopy(arrayOfByte, 3, localObject, 0, localObject.length);
-                }
-              }
-            }
-          }
-        }
-      }
-      try
-      {
-        localObject = new String((byte[])localObject, "UTF-8");
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          continue;
-        }
-        ((Activity)this.jdField_a_of_type_AndroidContentContext).runOnUiThread(new uhf(this, (String)localObject));
-        return;
-        if (this.jdField_a_of_type_Int != 3000) {
-          break label55;
-        }
-        str1 = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        for (;;)
-        {
-          localUnsupportedEncodingException.printStackTrace();
-          String str2 = str1;
-        }
-      }
     }
+    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + i + ", url=" + this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,41 +1,18 @@
-public class npf
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
+
+class npf
+  implements DialogInterface.OnClickListener
 {
-  private double jdField_a_of_type_Double = 1.0D;
-  private long jdField_a_of_type_Long;
+  npf(npe paramnpe) {}
   
-  public npf()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a();
-  }
-  
-  private long b()
-  {
-    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
-  }
-  
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
-  public long a()
-  {
-    return b() - this.jdField_a_of_type_Long;
-  }
-  
-  public long a(long paramLong)
-  {
-    return paramLong - a();
-  }
-  
-  public void a()
-  {
-    a(0L);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = (b() - paramLong);
+    if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) {
+      this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer);
+    }
   }
 }
 

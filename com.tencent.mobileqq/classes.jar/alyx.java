@@ -1,48 +1,29 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import android.annotation.TargetApi;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavHelper;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.sharp.jni.TraeAudioManager;
 
 class alyx
-  extends OnPluginInstallListener.Stub
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  alyx(alyw paramalyw) {}
+  alyx(alyu paramalyu) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  @TargetApi(8)
+  public void onAudioFocusChange(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
+      QLog.w("TRAE", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + this.a.b.jdField_a_of_type_AndroidMediaAudioManager.getMode() + " _activeMode:" + this.a.b.jdField_a_of_type_Int);
     }
-    try
-    {
-      ThreadManager.post(this.a.a, 5, null, false);
+    if (paramInt == -1) {}
+    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
       return;
     }
-    catch (Exception paramString) {}
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
-    }
-    QfavHelper.a().set(true);
-    try
-    {
-      ThreadManager.post(this.a.a, 5, null, false);
-      return;
-    }
-    catch (Exception paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alyx
  * JD-Core Version:    0.7.0.1
  */

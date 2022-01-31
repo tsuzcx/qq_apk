@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.statistics.storage;
 
-import ahta;
-import ahtb;
+import aihd;
+import aihe;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -24,8 +24,8 @@ public class StorageReport
   public static final String[] a;
   public static final String[] b;
   private long jdField_a_of_type_Long;
-  private ahta jdField_a_of_type_Ahta = new ahta(null);
-  private ahtb jdField_a_of_type_Ahtb = new ahtb(null);
+  private aihd jdField_a_of_type_Aihd = new aihd(null);
+  private aihe jdField_a_of_type_Aihe = new aihe(null);
   private String jdField_a_of_type_JavaLangString = "";
   private Field jdField_a_of_type_JavaLangReflectField;
   private Method jdField_a_of_type_JavaLangReflectMethod;
@@ -81,7 +81,7 @@ public class StorageReport
     {
       this.jdField_a_of_type_JavaUtilArrayList.add(localStorageItem);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 20) {
-        Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Ahta);
+        Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Aihd);
       }
       return localStorageItem.jdField_a_of_type_Long;
     }
@@ -91,7 +91,7 @@ public class StorageReport
       this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
       jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.recycle(paramString1);
       this.jdField_a_of_type_JavaUtilArrayList.add(localStorageItem);
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Ahta);
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Aihd);
       return localStorageItem.jdField_a_of_type_Long;
     }
     jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.recycle(localStorageItem);
@@ -1474,7 +1474,7 @@ public class StorageReport
     //   2478: aload_0
     //   2479: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   2482: aload_0
-    //   2483: getfield 89	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Ahtb	Lahtb;
+    //   2483: getfield 89	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Aihe	Laihe;
     //   2486: invokestatic 191	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   2489: ldc 161
     //   2491: iconst_1
@@ -1966,7 +1966,7 @@ public class StorageReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.storage.StorageReport
  * JD-Core Version:    0.7.0.1
  */

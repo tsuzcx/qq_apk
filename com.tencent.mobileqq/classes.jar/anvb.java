@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
 
-class anvb
+public class anvb
   implements Runnable
 {
-  anvb(anva paramanva) {}
+  public anvb(EditVideoSave paramEditVideoSave) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a, 1, "分享失败", 0).a();
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    EditVideoSave localEditVideoSave = this.a;
+    localEditVideoSave.jdField_a_of_type_Int += this.a.b;
+    if (this.a.jdField_a_of_type_Int > 99)
+    {
+      this.a.jdField_a_of_type_Int = 99;
+      this.a.a(this.a.jdField_a_of_type_Int);
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_Int);
+    this.a.c();
   }
 }
 

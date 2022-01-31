@@ -1,31 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import mqq.app.AppRuntime;
 
 public class xex
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public xex(AnonymousEntranceView paramAnonymousEntranceView) {}
+  public xex(GoldMsgPayManager paramGoldMsgPayManager, MessageRecord paramMessageRecord) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(4);
-    }
-    if (AnonymousEntranceView.b(this.a) != null)
-    {
-      AnonymousEntranceView.b(this.a).clearAnimation();
-      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(0);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((QQAppInterface)localAppRuntime).a().a(8022, true, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin });
     }
   }
 }

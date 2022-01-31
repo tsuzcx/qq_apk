@@ -1,16 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.component.media.image.BitmapReference;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.utils.RapidNetUtils;
 
 public class phe
+  implements Runnable
 {
-  public int a;
-  public BitmapReference a;
+  public phe(ImageManager paramImageManager) {}
   
-  public phe(BitmapReference paramBitmapReference)
-  {
-    this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference = paramBitmapReference;
-    this.jdField_a_of_type_Int = paramBitmapReference.getBitmap().getGenerationId();
-  }
+  public void run() {}
 }
 
 

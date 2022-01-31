@@ -1,38 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate.CallBack;
+import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
+import com.tencent.qphone.base.util.QLog;
 
-class uwq
-  implements ActionSheet.OnButtonClickListener
+public class uwq
+  implements CustomAccessibilityDelegate.CallBack
 {
-  uwq(uwp paramuwp, ActionSheet paramActionSheet) {}
+  public uwq(FileItemBuilder paramFileItemBuilder, uwr paramuwr) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.jdField_a_of_type_Uwp.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_Uwp.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-      paramView = (BizTroopHandler)this.jdField_a_of_type_Uwp.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      if (paramView != null) {
-        paramView.a(l);
-      }
-      ReportController.b(this.jdField_a_of_type_Uwp.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Uwp.jdField_a_of_type_Int), "", "");
-      return;
-    }
-    catch (NumberFormatException paramView) {}
+    QLog.e("ACCESS_SILAS", 1, "onViewFocus");
+    this.jdField_a_of_type_Uwr.e = 0;
+  }
+  
+  public void b()
+  {
+    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
+    this.jdField_a_of_type_Uwr.e = -1;
   }
 }
 

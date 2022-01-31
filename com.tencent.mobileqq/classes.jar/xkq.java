@@ -1,17 +1,12 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.recent.RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder;
 
-class xkq
-  implements Runnable
+public class xkq
+  extends RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder
 {
-  xkq(xko paramxko) {}
-  
-  public void run()
-  {
-    QQToast.a(this.a.a.a, "音乐下载失败，请稍后重试", 1).a();
-    EditLocalVideoActivity.a(this.a.a.a).setVisibility(8);
-  }
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

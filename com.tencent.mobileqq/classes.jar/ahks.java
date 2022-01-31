@@ -1,14 +1,34 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.util.DanceGameReporter;
 
 public class ahks
-  implements Runnable
 {
-  public ahks(PtvTemplateManager paramPtvTemplateManager, List paramList) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public void run()
+  public ahks(DanceGameReporter paramDanceGameReporter, String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      return this.b * 100 / this.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    this.b += 1;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int += 1;
   }
 }
 

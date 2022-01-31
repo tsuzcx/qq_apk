@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
 public class agqq
-  implements TabBarView.OnTabChangeListener
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public agqq(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public agqq(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Rect paramRect, Transformation paramTransformation)
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate(paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqq
  * JD-Core Version:    0.7.0.1
  */

@@ -106,8 +106,8 @@ import tencent.im.oidb.cmd0x921.cmd0x921.GetAtAllRemainRsp;
 import tencent.im.oidb.cmd0x921.cmd0x921.ReqBody;
 import tencent.im.oidb.cmd0x921.cmd0x921.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import yzr;
-import yzs;
+import zcx;
+import zcy;
 
 public class DiscussionHandler
   extends BusinessHandler
@@ -2048,7 +2048,7 @@ public class DiscussionHandler
   
   void c(long paramLong, ArrayList paramArrayList)
   {
-    ThreadManager.post(new yzs(this, paramLong, paramArrayList), 5, null, false);
+    ThreadManager.post(new zcy(this, paramLong, paramArrayList), 5, null, false);
   }
   
   protected void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -2912,21 +2912,21 @@ public class DiscussionHandler
           case 108: 
           case 109: 
           default: 
-            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438437);
+            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438455);
           }
           for (;;)
           {
-            ThreadManager.getUIHandler().post(new yzr(this, paramToServiceMsg));
+            ThreadManager.getUIHandler().post(new zcx(this, paramToServiceMsg));
             break label336;
             i = 0;
             break;
-            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438431);
+            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438449);
             continue;
-            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438432);
+            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438450);
             continue;
-            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438433);
+            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438451);
             continue;
-            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438438);
+            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438456);
           }
         }
       }

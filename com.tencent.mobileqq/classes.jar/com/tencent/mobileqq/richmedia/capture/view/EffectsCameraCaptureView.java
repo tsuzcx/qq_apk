@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import agxv;
-import agxw;
-import agxx;
-import agxy;
-import agxz;
-import agyb;
-import agyc;
-import agyd;
-import agye;
+import ahlx;
+import ahly;
+import ahlz;
+import ahma;
+import ahmb;
+import ahmd;
+import ahme;
+import ahmf;
+import ahmg;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.opengl.GLES20;
@@ -332,7 +332,7 @@ public class EffectsCameraCaptureView
   protected void a(CameraControl.CustomSize paramCustomSize)
   {
     super.a(paramCustomSize);
-    queueEvent(new agxw(this));
+    queueEvent(new ahly(this));
   }
   
   public void a(boolean paramBoolean, CommonPatternInfo paramCommonPatternInfo)
@@ -340,7 +340,7 @@ public class EffectsCameraCaptureView
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQDanceEventHandler != null) {
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQDanceEventHandler.j();
     }
-    super.queueEvent(new agxv(this, paramBoolean, paramCommonPatternInfo));
+    super.queueEvent(new ahlx(this, paramBoolean, paramCommonPatternInfo));
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -406,7 +406,7 @@ public class EffectsCameraCaptureView
       if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQDanceEventHandler != null) {
         this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQDanceEventHandler.a(false, null);
       }
-      x();
+      y();
       DanceGameVideoManager.a().a(false);
       return false;
     }
@@ -448,13 +448,6 @@ public class EffectsCameraCaptureView
     return this.jdField_s_of_type_Int;
   }
   
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null) {
-      AudioTranslator.a().a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture);
-    }
-  }
-  
   public void d(boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$EffectListener.d(paramBoolean);
@@ -467,7 +460,9 @@ public class EffectsCameraCaptureView
   
   public void e()
   {
-    AudioTranslator.a().a(null);
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null) {
+      AudioTranslator.a().a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture);
+    }
   }
   
   public void e(boolean paramBoolean)
@@ -475,31 +470,36 @@ public class EffectsCameraCaptureView
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$EffectListener.c(paramBoolean);
   }
   
-  public void j()
+  public void f()
+  {
+    AudioTranslator.a().a(null);
+  }
+  
+  public void k()
   {
     if (c())
     {
-      r();
+      s();
       FlowCameraMqqAction.a("", "0X80083BA", QIMPtvTemplateAdapter.jdField_b_of_type_JavaLangString);
     }
-    y();
+    z();
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.p();
       a(this.j, this.k, this.m, this.jdField_n_of_type_Boolean, this.jdField_p_of_type_Int);
     }
-    super.j();
+    super.k();
   }
   
-  protected void m()
-  {
-    super.m();
-    ThreadManager.postImmediately(new agxx(this), null, false);
-  }
-  
-  public void n()
+  protected void n()
   {
     super.n();
+    ThreadManager.postImmediately(new ahlz(this), null, false);
+  }
+  
+  public void o()
+  {
+    super.o();
     if (QLog.isColorLevel()) {
       QLog.d("EffectsCameraCaptureView", 2, "onSurfaceDestroy " + Thread.currentThread().getName() + " mFilterProcessInited=" + this.h);
     }
@@ -516,19 +516,13 @@ public class EffectsCameraCaptureView
     }
   }
   
-  protected void o()
-  {
-    super.o();
-    r();
-  }
-  
   public void onPause()
   {
     super.onPause();
     if ((this.h) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null))
     {
       VideoPrefsUtil.setMaterialMute(true);
-      queueEvent(new agyc(this));
+      queueEvent(new ahme(this));
     }
   }
   
@@ -537,7 +531,7 @@ public class EffectsCameraCaptureView
     super.onResume();
     VideoPrefsUtil.setMaterialMute(this.jdField_s_of_type_Boolean);
     if ((this.h) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)) {
-      queueEvent(new agyb(this));
+      queueEvent(new ahmd(this));
     }
   }
   
@@ -566,12 +560,18 @@ public class EffectsCameraCaptureView
       QLog.d("EffectsCameraCaptureView", 2, "onSurfaceCreated " + Thread.currentThread().getName() + " mFilterProcessInited=" + this.h);
     }
     if (this.h) {
-      t();
+      u();
     }
     VideoModule.initExtensionValues();
   }
   
   protected void p()
+  {
+    super.p();
+    s();
+  }
+  
+  protected void q()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
     {
@@ -582,7 +582,7 @@ public class EffectsCameraCaptureView
     }
   }
   
-  public void q()
+  public void r()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null) && (c()))
     {
@@ -595,14 +595,14 @@ public class EffectsCameraCaptureView
     }
   }
   
-  public void r()
+  public void s()
   {
     MovieMaterial localMovieMaterial = a();
     if (QLog.isColorLevel()) {
       QLog.d("EffectsCameraCaptureView", 2, "playMovieFilter, movieMaterial = " + localMovieMaterial);
     }
     if ((localMovieMaterial == null) || (!this.jdField_a_of_type_Boolean)) {
-      q();
+      r();
     }
     while (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
       return;
@@ -665,13 +665,6 @@ public class EffectsCameraCaptureView
     }
   }
   
-  public void s()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$EffectListener != null) && (c())) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$EffectListener.a(null, null);
-    }
-  }
-  
   public void setBeauty(int paramInt)
   {
     if ((this.h) && (this.jdField_o_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)) {
@@ -719,7 +712,7 @@ public class EffectsCameraCaptureView
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList = null;
-    ThreadManager.getUIHandler().post(new agxz(this, paramString));
+    ThreadManager.getUIHandler().post(new ahmb(this, paramString));
   }
   
   public void setFaceEffectEnable(boolean paramBoolean)
@@ -761,7 +754,7 @@ public class EffectsCameraCaptureView
     {
       if (!FileUtils.b(paramString))
       {
-        q();
+        r();
         a(null);
         this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(null);
         return;
@@ -787,7 +780,7 @@ public class EffectsCameraCaptureView
       }
       a(localMovieMaterial);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(localMovieMaterial);
-      r();
+      s();
     }
     this.jdField_b_of_type_JavaLangString = paramString;
   }
@@ -802,6 +795,13 @@ public class EffectsCameraCaptureView
   
   public void t()
   {
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$EffectListener != null) && (c())) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView$EffectListener.a(null, null);
+    }
+  }
+  
+  public void u()
+  {
     if (!this.h)
     {
       if (QLog.isColorLevel()) {
@@ -812,32 +812,32 @@ public class EffectsCameraCaptureView
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = localQQFilterRenderManager;
       jdField_b_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = localQQFilterRenderManager;
     }
-    queueEvent(new agxy(this));
+    queueEvent(new ahma(this));
   }
   
-  public void u()
+  public void v()
   {
     this.l = true;
   }
   
-  public void v()
+  public void w()
   {
     if ((this.h) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null) && (this.jdField_a_of_type_JavaLangString != null)) {
       setFaceEffect(this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void w()
-  {
-    super.queueEvent(new agyd(this));
-  }
-  
   public void x()
   {
-    super.queueEvent(new agye(this));
+    super.queueEvent(new ahmf(this));
   }
   
   public void y()
+  {
+    super.queueEvent(new ahmg(this));
+  }
+  
+  public void z()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
     {

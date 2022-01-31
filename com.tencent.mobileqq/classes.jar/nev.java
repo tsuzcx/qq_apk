@@ -1,21 +1,30 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.ShareGroupCardShareMode;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeVidListRequest.MsgTabNodeVidListResponse;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider.DataProviderListener;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Collections;
 
 public class nev
-  extends UploadImageJob
+  extends SimpleObserver
 {
-  public nev(ShareGroupCardShareMode paramShareGroupCardShareMode, String paramString)
+  public nev(MsgTabVideoPreloaderDataProvider paramMsgTabVideoPreloaderDataProvider, MsgTabVideoPreloaderDataProvider.DataProviderListener paramDataProviderListener, MsgTabNodeInfo paramMsgTabNodeInfo) {}
+  
+  public void a(MsgTabNodeVidListRequest.MsgTabNodeVidListResponse paramMsgTabNodeVidListResponse)
   {
-    super(paramString);
+    super.onNext(paramMsgTabNodeVidListResponse);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, Collections.emptyList());
+    }
   }
   
-  public boolean b()
+  public void onError(@NonNull Error paramError)
   {
-    ShareGroupCardShareMode.a(this.a, (String)a("UploadImageJob_out_image_url"));
-    ((ShareGroupManager)SuperManager.a(7)).a(this.a.d, ShareGroupCardShareMode.a(this.a));
-    return true;
+    super.onError(paramError);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramError);
+    }
   }
 }
 

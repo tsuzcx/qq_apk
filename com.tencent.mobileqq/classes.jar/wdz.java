@@ -1,26 +1,46 @@
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.biz.pubaccount.util.PADetailReportUtil;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicAdapter;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicData;
+import com.tencent.qphone.base.util.QLog;
 
 public class wdz
   extends Handler
 {
-  public wdz(AddContactsActivity paramAddContactsActivity) {}
+  public wdz(ZhituManager paramZhituManager, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
   public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.b();
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
     }
-    PADetailReportUtil.a().a(300);
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        paramMessage = (ZhituPicData)paramMessage.obj;
+        if (QLog.isColorLevel()) {
+          QLog.d("ZhituManager", 2, ZhituManager.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
+        }
+        this.a.d(paramMessage);
+        return;
+        i = paramMessage.arg1;
+        paramMessage = (String)paramMessage.obj;
+        if (paramMessage.equals(this.a.a())) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ZhituManager", 2, ZhituManager.a(paramMessage, "main handler", "reqKey is outdated, skip"));
+      return;
+    } while (this.a.a == null);
+    this.a.a.a(i, paramMessage);
   }
 }
 

@@ -1,25 +1,34 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public class adxs
+  extends BroadcastReceiver
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
+  public adxs(UiApiPlugin paramUiApiPlugin) {}
   
-  public adxs(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
+    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
+    {
+      Iterator localIterator = UiApiPlugin.a.iterator();
+      while (localIterator.hasNext())
+      {
+        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
+        if (localUiApiPlugin != null) {
+          localUiApiPlugin.b(paramContext, paramIntent);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,24 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
 
-public class adhq
-  implements Runnable
+public final class adhq
+  implements CUKingCardHelper.CUKingDialogListener
 {
-  public adhq(PresenceInterfaceImpl paramPresenceInterfaceImpl, String paramString) {}
+  public adhq(FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
   
-  public void run()
+  public void callback(int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a, 232, null, this.jdField_a_of_type_JavaLangString, new adhr(this), null);
-    try
+    if ((paramInt == 1) || (paramInt == 2))
     {
-      localQQCustomDialog.show();
+      this.a.a();
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PresenceInterfaceImpl", 2, "show dialog fail");
-    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhq
  * JD-Core Version:    0.7.0.1
  */

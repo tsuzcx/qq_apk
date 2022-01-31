@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import abnc;
-import abnd;
+import abud;
+import abue;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -204,7 +204,7 @@ public class MessageForArkApp
   
   public void attachArkView(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, int paramInt)
   {
-    paramItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842200);
+    paramItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842247);
     if (this.arkContainer == null)
     {
       this.arkContainer = new ArkAioContainerWrapper();
@@ -226,7 +226,7 @@ public class MessageForArkApp
     ((ArkAioContainerWrapper)localObject).setFixSize(BaseChatItemLayout.d, BaseChatItemLayout.d);
     ((ArkAioContainerWrapper)localObject).setMaxSize(BaseChatItemLayout.d, BaseChatItemLayout.d);
     ((ArkAioContainerWrapper)localObject).setMinSize(BaseChatItemLayout.d * 7 / 10, BaseChatItemLayout.d);
-    localObject = new abnc(this, paramItemViewHolder, paramArkHorizontalListViewAdapter, (ArkAioContainerWrapper)localObject, paramInt);
+    localObject = new abud(this, paramItemViewHolder, paramArkHorizontalListViewAdapter, (ArkAioContainerWrapper)localObject, paramInt);
     ArkAppView localArkAppView1 = paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
     ArkAppView localArkAppView2 = paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
     localArkAppView1.setClipRadius(15.0F);
@@ -253,14 +253,14 @@ public class MessageForArkApp
       if (TextUtils.isEmpty(this.ark_app_message.appId)) {
         break label58;
       }
-      paramItemViewHolder.b.setBackgroundResource(2130840624);
+      paramItemViewHolder.b.setBackgroundResource(2130840646);
     }
     for (;;)
     {
-      paramItemViewHolder.b.setOnClickListener(new abnd(this, localQQAppInterface, paramContext));
+      paramItemViewHolder.b.setOnClickListener(new abue(this, localQQAppInterface, paramContext));
       return;
       label58:
-      paramItemViewHolder.b.setBackgroundResource(2130840623);
+      paramItemViewHolder.b.setBackgroundResource(2130840645);
     }
   }
   

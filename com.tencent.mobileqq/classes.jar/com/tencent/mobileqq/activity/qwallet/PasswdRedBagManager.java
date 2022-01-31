@@ -62,22 +62,22 @@ import tencent.im.msg.im_msg_body.QQWalletAioBody;
 import tencent.im.msg.im_msg_body.QQWalletAioElem;
 import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
 import tencent.im.oidb.cmd0x438.oidb_0x438.ReqInfo;
-import wwl;
-import wwn;
-import wwo;
-import wwp;
-import wwq;
-import wws;
-import wwt;
-import wwu;
-import wwv;
+import wzq;
+import wzs;
+import wzt;
+import wzu;
+import wzv;
+import wzx;
+import wzy;
+import wzz;
+import xaa;
 
 public class PasswdRedBagManager
   implements Manager
 {
   public int a;
   public Context a;
-  Handler jdField_a_of_type_AndroidOsHandler = new wwl(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new wzq(this, Looper.getMainLooper());
   private PasswdRedBagDBManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagDBManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private QWalletHandler jdField_a_of_type_ComTencentMobileqqAppQWalletHandler;
@@ -530,7 +530,7 @@ public class PasswdRedBagManager
       if (localBitmap1 == null) {
         try
         {
-          Bitmap localBitmap2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130843999);
+          Bitmap localBitmap2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130844123);
           localObject1 = localBitmap2;
           localObject2 = localObject1;
           if (localObject1 != null) {}
@@ -879,7 +879,7 @@ public class PasswdRedBagManager
       localPasswdRedBagInfo = (PasswdRedBagInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     } while ((localPasswdRedBagInfo == null) || (localPasswdRedBagInfo.jdField_b_of_type_Boolean));
     localPasswdRedBagInfo.jdField_b_of_type_Boolean = true;
-    ThreadManager.getFileThreadHandler().post(new wwu(this, paramString));
+    ThreadManager.getFileThreadHandler().post(new wzz(this, paramString));
   }
   
   public void a(String paramString1, int paramInt, String paramString2, String paramString3, MessageForFoldMsgGrayTips paramMessageForFoldMsgGrayTips)
@@ -923,7 +923,7 @@ public class PasswdRedBagManager
       paramString2 = (PasswdRedBagInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
     } while ((paramString2 == null) || (paramString2.jdField_a_of_type_Boolean));
     paramString2.jdField_a_of_type_Boolean = true;
-    ThreadManager.getFileThreadHandler().post(new wwn(this, paramString1));
+    ThreadManager.getFileThreadHandler().post(new wzs(this, paramString1));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5, String paramString6, String paramString7, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
@@ -933,7 +933,7 @@ public class PasswdRedBagManager
       paramString2 = new PasswdRedBagInfo(paramString1, paramString2, paramString4, paramLong, new QQText(paramString3, 5, 16).toString(), paramBoolean1, paramBoolean2, false, paramInt);
       a(paramString2);
       a(true, paramString2.jdField_a_of_type_JavaLangString, paramString2.jdField_b_of_type_JavaLangString);
-      ThreadManager.getFileThreadHandler().post(new wws(this, paramString2));
+      ThreadManager.getFileThreadHandler().post(new wzx(this, paramString2));
     }
     paramString2 = new StringBuilder();
     paramString2.append(paramString5);
@@ -944,7 +944,7 @@ public class PasswdRedBagManager
     if (TextUtils.isEmpty((String)this.jdField_c_of_type_JavaUtilHashMap.get(paramString2.toString())))
     {
       this.jdField_c_of_type_JavaUtilHashMap.put(paramString2.toString(), paramString7);
-      ThreadManager.getFileThreadHandler().post(new wwt(this, paramString5, paramString6, paramString1, paramString7));
+      ThreadManager.getFileThreadHandler().post(new wzy(this, paramString5, paramString6, paramString1, paramString7));
     }
   }
   
@@ -1085,7 +1085,7 @@ public class PasswdRedBagManager
       label153:
       if ((this.jdField_f_of_type_Boolean) && (this.jdField_e_of_type_Boolean))
       {
-        ThreadManager.post(new wwq(this), 8, null, false);
+        ThreadManager.post(new wzv(this), 8, null, false);
         this.jdField_f_of_type_Boolean = false;
       }
     }
@@ -1280,7 +1280,7 @@ public class PasswdRedBagManager
       localPasswdRedBagInfo = (PasswdRedBagInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     } while ((localPasswdRedBagInfo == null) || (localPasswdRedBagInfo.jdField_c_of_type_Boolean));
     localPasswdRedBagInfo.jdField_c_of_type_Boolean = true;
-    ThreadManager.getFileThreadHandler().post(new wwv(this, paramString));
+    ThreadManager.getFileThreadHandler().post(new xaa(this, paramString));
   }
   
   public void b(HashMap paramHashMap)
@@ -1355,11 +1355,11 @@ public class PasswdRedBagManager
       SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("sp_passwd_configs_" + this.jdField_a_of_type_JavaLangString, 0);
       if (localSharedPreferences.getBoolean("key_db_update", true))
       {
-        ThreadManager.getFileThreadHandler().post(new wwo(this));
+        ThreadManager.getFileThreadHandler().post(new wzt(this));
         localSharedPreferences.edit().putBoolean("key_db_update", false);
         localSharedPreferences.edit().commit();
       }
-      ThreadManager.getFileThreadHandler().post(new wwp(this));
+      ThreadManager.getFileThreadHandler().post(new wzu(this));
       return;
     }
     finally {}
@@ -1390,10 +1390,10 @@ public class PasswdRedBagManager
     //   23: monitorexit
     //   24: return
     //   25: invokestatic 724	com/tencent/mobileqq/app/ThreadManager:getFileThreadHandler	()Lmqq/os/MqqHandler;
-    //   28: new 1051	wwr
+    //   28: new 1051	wzw
     //   31: dup
     //   32: aload_0
-    //   33: invokespecial 1052	wwr:<init>	(Lcom/tencent/mobileqq/activity/qwallet/PasswdRedBagManager;)V
+    //   33: invokespecial 1052	wzw:<init>	(Lcom/tencent/mobileqq/activity/qwallet/PasswdRedBagManager;)V
     //   36: invokevirtual 735	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   39: pop
     //   40: aload_0

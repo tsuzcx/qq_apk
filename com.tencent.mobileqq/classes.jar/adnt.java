@@ -1,34 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
-public class adnt
-  extends BroadcastReceiver
+class adnt
+  implements View.OnClickListener
 {
-  public adnt(UiApiPlugin paramUiApiPlugin) {}
+  adnt(adnq paramadnq, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (("com.tencent.msg.newmessage".equals(paramIntent.getAction())) && (UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
-    {
-      Iterator localIterator = UiApiPlugin.a.iterator();
-      while (localIterator.hasNext())
-      {
-        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
-        if (localUiApiPlugin != null) {
-          localUiApiPlugin.a(paramContext, paramIntent);
-        }
-      }
-    }
+    paramView = new Intent(this.jdField_a_of_type_Adnq.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Adnq.a.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnt
  * JD-Core Version:    0.7.0.1
  */

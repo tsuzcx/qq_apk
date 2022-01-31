@@ -1,18 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView.AdapterDataSetObserver;
+import com.tencent.widget.FastScroller;
 
 public class alzq
-  implements DialogInterface.OnDismissListener
+  extends AdapterView.AdapterDataSetObserver
 {
-  public alzq(QfavJumpActivity paramQfavJumpActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public alzq(AbsListView paramAbsListView)
   {
-    if (QfavJumpActivity.a(this.a))
-    {
-      QfavJumpActivity.a(this.a, false);
-      this.a.finish();
+    super(paramAbsListView);
+  }
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    if (this.a.mFastScroller != null) {
+      this.a.mFastScroller.c();
+    }
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    if (this.a.mFastScroller != null) {
+      this.a.mFastScroller.c();
     }
   }
 }

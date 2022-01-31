@@ -1,17 +1,17 @@
-import java.util.Comparator;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
 
-public final class pil
-  implements Comparator
+public class pil
+  implements Runnable
 {
-  public int a(pim parampim1, pim parampim2)
+  public pil(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl, Drawable paramDrawable, Animation paramAnimation) {}
+  
+  public void run()
   {
-    if (parampim1.a < parampim2.a) {
-      return -1;
-    }
-    if (parampim1.a == parampim2.a) {
-      return 0;
-    }
-    return 1;
+    AsyncImageable.AsyncImageableImpl.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageableImpl).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    AsyncImageable.AsyncImageableImpl.a(AsyncImageable.AsyncImageableImpl.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageableImpl), this.jdField_a_of_type_AndroidViewAnimationAnimation, null);
   }
 }
 

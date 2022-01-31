@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.now;
 
-import aeeq;
-import aeer;
-import aees;
+import aerw;
+import aerx;
+import aery;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -74,7 +74,7 @@ public class SmallVideoFragment
   public SmallVideoFragment()
   {
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new aees(this);
+    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new aery(this);
   }
   
   public static void a(Context paramContext, Bundle paramBundle)
@@ -120,11 +120,11 @@ public class SmallVideoFragment
   
   private int b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout = ((DragFrameLayout)a(2131365545));
-    this.jdField_a_of_type_AndroidViewView = a(2131370454);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131370456));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = ((QQStoryLoadingView)a(2131363616));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131370455));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout = ((DragFrameLayout)a(2131365572));
+    this.jdField_a_of_type_AndroidViewView = a(2131370595);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131370597));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = ((QQStoryLoadingView)a(2131363634));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131370596));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout.setDraggableView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout.setOnDraggingListener(this);
     this.jdField_a_of_type_Int = 0;
@@ -143,7 +143,7 @@ public class SmallVideoFragment
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setOnCloseListener(new aeeq(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setOnCloseListener(new aerw(this));
   }
   
   private boolean e()
@@ -171,7 +171,7 @@ public class SmallVideoFragment
         boolean bool = getActivity().getIntent().getBooleanExtra("scroll_to_comment", false);
         this.e = getActivity().getIntent().getIntExtra("feedType", -1);
         if ((i == 2) || (bool)) {
-          ThreadManager.getUIHandler().postDelayed(new aeer(this), 1000L);
+          ThreadManager.getUIHandler().postDelayed(new aerx(this), 1000L);
         }
       }
       return;
@@ -183,7 +183,7 @@ public class SmallVideoFragment
   
   protected int a()
   {
-    return 2130970413;
+    return 2130970454;
   }
   
   public View a(int paramInt)
@@ -363,12 +363,12 @@ public class SmallVideoFragment
     getActivity().getIntent().putExtra("fling_action_key", 0);
     this.jdField_a_of_type_AndroidOsBundle = super.getActivity().getIntent().getExtras();
     NowVideoReporter.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("_from", "");
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView = ((StuffContainerView)a(2131370458));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView = ((StuffContainerView)a(2131370599));
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setApp(getActivity().app);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setCallBack(this);
     a(this.jdField_a_of_type_AndroidOsBundle);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager;
-    this.jdField_b_of_type_AndroidViewView = a(2131370457);
+    this.jdField_b_of_type_AndroidViewView = a(2131370598);
     int i = b();
     f();
     b(this.jdField_a_of_type_AndroidOsBundle);

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.magicface.service;
 
-import adqx;
-import adqy;
+import aeed;
+import aeee;
 import android.media.SoundPool;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
@@ -93,7 +93,7 @@ public class SoundPoolUtil
         }
       } while (!a(paramString));
       if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new adqx(this, paramInt1, paramString));
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new aeed(this, paramInt1, paramString));
       }
       do
       {
@@ -101,7 +101,7 @@ public class SoundPoolUtil
         {
           return true;
           paramInt1 = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-          ThreadManager.getTimer().schedule(new adqy(this, paramInt1, paramString), 200L);
+          ThreadManager.getTimer().schedule(new aeee(this, paramInt1, paramString), 200L);
         }
         paramInt1 = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
       } while (this.jdField_a_of_type_AndroidMediaSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) != 0);
@@ -112,7 +112,7 @@ public class SoundPoolUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.service.SoundPoolUtil
  * JD-Core Version:    0.7.0.1
  */

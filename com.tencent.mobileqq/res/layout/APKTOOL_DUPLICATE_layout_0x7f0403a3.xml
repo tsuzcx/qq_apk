@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/main" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/image" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentLeft="true" />
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0014" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_toRightOf="@id/image">
-        <TextView android:gravity="center_vertical" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="0.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0008" />
-        <TextView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0676" android:layout_width="wrap_content" android:layout_height="0.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e004a" />
+<ScrollView android:orientation="vertical" android:id="@id/root" android:background="#fff8f9fa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1364" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d023a" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d023a" android:layout_margin="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0239" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204ca" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b2061" />
+                <RelativeLayout android:gravity="fill_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d023a" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0239">
+                    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0041" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1365" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+                    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0041" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0114" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1366" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
+                    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0041" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0114" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1367" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <TextView android:textSize="13.0sp" android:textColor="#ffa6a6a6" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1368" android:background="#fff8f9fa" android:paddingLeft="15.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="38.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b01e4" />
+        </LinearLayout>
+        <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="0.0dip">
+            <com.tencent.mobileqq.widget.MyGridView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a030c" android:background="#ffffffff" android:paddingLeft="10.0dip" android:paddingTop="20.0dip" android:paddingRight="10.0dip" android:paddingBottom="20.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:horizontalSpacing="3.0dip" android:verticalSpacing="15.0dip" android:stretchMode="spacingWidth" android:columnWidth="66.0dip" android:numColumns="auto_fit" />
+        </RelativeLayout>
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1369" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0001" formItem:leftText="@string/APKTOOL_DUPLICATE_string_0x7f0b1f4b" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a136a" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0001" formItem:leftText="@string/APKTOOL_DUPLICATE_string_0x7f0b1f19" formItem:showArrow="true" />
     </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="50.0dip" android:minWidth="56.0dip" android:layout_alignParentRight="true">
-        <TextView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0677" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01dd" />
-        <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0678" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginTop="5.0dip" android:maxHeight="4.0dip" android:max="100" android:progress="0" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020050" android:minHeight="4.0dip" style="?android:attr/progressBarStyleHorizontal" />
-        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a135d" android:layout_width="13.5dip" android:layout_height="13.5dip" android:src="@drawable/common_bottom_dialog_checked_icon" />
-    </LinearLayout>
-</RelativeLayout>
+</ScrollView>

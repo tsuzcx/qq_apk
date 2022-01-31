@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set android:shareInterpolator="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <translate android:interpolator="@android:anim/linear_interpolator" android:duration="150" android:fillAfter="true" android:fromXDelta="0.0%" android:toXDelta="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d05d6" android:fillEnabled="true" />
+    <translate android:interpolator="@android:anim/linear_interpolator" android:duration="150" android:fillAfter="true" android:fromXDelta="0.0%" android:toXDelta="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d05e8" android:fillEnabled="true" />
     <alpha android:interpolator="@android:anim/linear_interpolator" android:duration="150" android:fillAfter="true" android:fromAlpha="0.0" android:toAlpha="1.0" android:fillEnabled="true" />
 </set>

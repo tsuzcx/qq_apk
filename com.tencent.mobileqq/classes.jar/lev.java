@@ -1,20 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
 
-public class lev
-  implements Runnable
+class lev
+  implements DialogInterface.OnCancelListener
 {
-  public lev(ReadInJoySettingActivity paramReadInJoySettingActivity, int paramInt) {}
+  lev(leu paramleu) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySettingActivity.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(this.jdField_a_of_type_Int);
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      }
-    }
+    paramDialogInterface = new Intent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("retCode", 1);
+    localBundle.putString("msg", "用户取消");
+    paramDialogInterface.putExtra("Bundle", localBundle);
+    this.a.a.setResult(-1, paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

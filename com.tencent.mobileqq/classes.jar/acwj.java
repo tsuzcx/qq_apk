@@ -1,36 +1,22 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
 
 public class acwj
   implements Runnable
 {
-  public acwj(FMSettings paramFMSettings, String paramString) {}
+  public acwj(FileVideoManager.VideoControl paramVideoControl, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.a == null)
     {
-      Object localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (!((File)localObject).exists()) {
-        return;
-      }
-      if (((File)localObject).isDirectory())
-      {
-        localObject = ((File)localObject).listFiles();
-        if ((localObject != null) && (localObject.length != 0))
-        {
-          int j = localObject.length;
-          int i = 0;
-          while (i < j)
-          {
-            localObject[i].delete();
-            i += 1;
-          }
-        }
-      }
-      return;
+      FileVideoManager.VideoControl.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.a();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
     }
-    catch (Exception localException) {}
+    FileVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
   }
 }
 

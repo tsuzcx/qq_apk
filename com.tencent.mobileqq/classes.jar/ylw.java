@@ -1,14 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public final class ylw
+class ylw
   implements Runnable
 {
-  public ylw(int paramInt) {}
+  ylw(ylv paramylv, String paramString) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), "角色: " + this.a + " 装扮不足7件", 1).a();
+    if (this.jdField_a_of_type_Ylv.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null) {
+      this.jdField_a_of_type_Ylv.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().b(this.jdField_a_of_type_Ylv.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

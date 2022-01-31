@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ahhy;
-import ahia;
-import ahib;
-import ahic;
+import ahwa;
+import ahwc;
+import ahwd;
+import ahwe;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -59,22 +59,22 @@ public class MessageSearchEngine
   
   public void a(SearchRequest paramSearchRequest, ISearchListener paramISearchListener)
   {
-    ThreadManager.post(new ahhy(this, paramISearchListener, paramSearchRequest), 8, null, true);
+    ThreadManager.post(new ahwa(this, paramISearchListener, paramSearchRequest), 8, null, true);
   }
   
   public void b()
   {
-    ThreadManager.post(new ahia(this), 8, null, true);
+    ThreadManager.post(new ahwc(this), 8, null, true);
   }
   
   public void c()
   {
-    ThreadManager.post(new ahib(this, this.jdField_a_of_type_JavaLangString), 8, null, true);
+    ThreadManager.post(new ahwd(this, this.jdField_a_of_type_JavaLangString), 8, null, true);
   }
   
   public void d()
   {
-    ThreadManager.post(new ahic(this, this.jdField_a_of_type_JavaLangString), 8, null, true);
+    ThreadManager.post(new ahwe(this, this.jdField_a_of_type_JavaLangString), 8, null, true);
   }
   
   public void e() {}

@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileView;
-import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter.HistoryFileItemHolder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QAVHrMeeting;
 
-public class rxl
-  implements View.OnClickListener
+public final class rxl
+  implements DialogInterface.OnClickListener
 {
-  public rxl(ChatHistoryFileView paramChatHistoryFileView) {}
+  public rxl(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramView.getTag() instanceof String)) {
-      return;
-    }
-    paramView = (FileManagerEntity)((ChatHistoryFileAdapter.HistoryFileItemHolder)paramView.getTag()).a;
-    this.a.a(paramView);
+    QAVHrMeeting.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
+    paramDialogInterface.dismiss();
   }
 }
 

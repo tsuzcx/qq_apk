@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.now.DownloadEngine;
 
-import adkq;
+import adup;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.beacon.event.UserAction;
@@ -20,7 +20,7 @@ public class NowDownloadManager
   private int jdField_a_of_type_Int;
   private Downloader jdField_a_of_type_ComTencentHlyybDownloaderDownloader;
   private DownloadTaskListenerBridge jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineDownloadTaskListenerBridge;
-  private IHellyEventListener jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineIHellyEventListener = new adkq(this);
+  private IHellyEventListener jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineIHellyEventListener = new adup(this);
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private boolean jdField_a_of_type_Boolean;
   
@@ -183,7 +183,7 @@ public class NowDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.DownloadEngine.NowDownloadManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
 
 public class tvp
-  implements View.OnClickListener
+  extends Handler
 {
-  public tvp(TroopInfoActivity paramTroopInfoActivity) {}
-  
-  public void onClick(View paramView)
+  public tvp(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
   {
-    this.a.d();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+    this.a.b();
   }
 }
 

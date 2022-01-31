@@ -1,37 +1,36 @@
-import com.tencent.mobileqq.profile.upload.task.VipBaseUploadTask;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadTaskCallback;
+import com.tencent.mobileqq.ocr.OcrCamera.CameraCallback;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
 public class agch
-  implements IUploadTaskCallback
+  implements OcrCamera.CameraCallback
 {
-  public agch(VipBaseUploadTask paramVipBaseUploadTask) {}
+  public agch(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
+  public void a()
   {
-    this.a.f = 1002;
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.c = paramString;
-    this.a.a(1002, new Object[0]);
+    this.a.runOnUiThread(new agcm(this));
   }
   
-  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
-  
-  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.a.f != paramInt)
-    {
-      this.a.f = paramInt;
-      this.a.a(this.a.f, new Object[0]);
+    this.a.runOnUiThread(new agci(this, paramInt1));
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.runOnUiThread(new agcn(this, paramString));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.runOnUiThread(new agck(this));
     }
   }
   
-  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
-  {
-    this.a.f = 1001;
-    this.a.jdField_a_of_type_JavaLangObject = paramObject;
-    this.a.a(1001, new Object[0]);
-  }
+  public void b(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean) {}
 }
 
 

@@ -1,19 +1,18 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAiAppPanel.ArkInputPanelTabAdapter;
-import com.tencent.mobileqq.ark.ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 
-public class aakt
-  implements ArkAppCenter.OnGetAppIcon
+public final class aakt
+  implements Parcelable.Creator
 {
-  public aakt(ArkAiAppPanel.ArkInputPanelTabAdapter paramArkInputPanelTabAdapter, ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder paramViewHolder) {}
-  
-  public void a(String paramString, Bitmap paramBitmap)
+  public ArDefaultSetting a(Parcel paramParcel)
   {
-    if (paramBitmap != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$ArkInputPanelTabAdapter$ViewHolder.a.setImageBitmap(paramBitmap);
-    }
+    return new ArDefaultSetting(paramParcel);
+  }
+  
+  public ArDefaultSetting[] a(int paramInt)
+  {
+    return new ArDefaultSetting[paramInt];
   }
 }
 

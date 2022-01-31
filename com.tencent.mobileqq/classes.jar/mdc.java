@@ -1,36 +1,42 @@
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import java.util.Set;
+import com.tencent.biz.pubaccount.VideoPlayRecommendHandler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class mdc
   implements Runnable
 {
-  public mdc(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  public mdc(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
   public void run()
   {
-    if ((VideoFeedsPlayManager.a(this.a) != null) && (VideoFeedsPlayManager.a(this.a).c() == 2))
+    long l2;
+    QQAppInterface localQQAppInterface;
+    long l1;
+    if (VideoFeedsPlayActivity.a(this.a) != null)
     {
-      this.a.b(4);
-      VideoFeedsPlayManager.a(this.a, 8);
-      VideoFeedsPlayManager.a(this.a).d();
-      if (VideoFeedsPlayManager.d(this.a))
+      l2 = VideoFeedsPlayActivity.a(this.a);
+      localQQAppInterface = VideoFeedsPlayActivity.a(this.a);
+      l1 = l2;
+      if (l2 == 0L)
       {
-        String str = VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.h;
-        if (VideoFeedsPlayManager.a(this.a).contains(str)) {
-          break label125;
-        }
-        VideoFeedsPlayManager.a(this.a).add(str);
-        VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.a;
+        l1 = l2;
+        if (localQQAppInterface == null) {}
       }
     }
-    return;
-    label125:
-    VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.c;
+    try
+    {
+      l1 = Long.parseLong(localQQAppInterface.getCurrentAccountUin());
+      VideoFeedsPlayActivity.a(this.a).a(l1, VideoFeedsPlayActivity.a(this.a).a(), VideoFeedsPlayActivity.a(this.a), VideoFeedsPlayActivity.a(this.a), VideoFeedsPlayActivity.a(this.a).b(), VideoFeedsPlayActivity.b(this.a), VideoFeedsPlayActivity.i(this.a), VideoFeedsPlayActivity.b(this.a), VideoFeedsPlayActivity.c(this.a));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        l1 = l2;
+      }
+    }
   }
 }
 

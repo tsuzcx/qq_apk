@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
+import com.tencent.mobileqq.app.PhoneUnityBannerData;
+import com.tencent.mobileqq.app.PhoneUnityManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SecSvcHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class zjk
   implements Runnable
 {
-  public zjk(SVIPHandler paramSVIPHandler, String paramString) {}
+  public zjk(PhoneUnityManager paramPhoneUnityManager) {}
   
   public void run()
   {
-    BubbleDiyFetcher localBubbleDiyFetcher = BubbleDiyFetcher.a();
-    localBubbleDiyFetcher.a(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler.b, this.jdField_a_of_type_JavaLangString, new zjl(this, localBubbleDiyFetcher));
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MobileUnityManager", 4, "load phone local data");
+    }
+    PhoneUnityBannerData localPhoneUnityBannerData = this.a.a();
+    ((SecSvcHandler)this.a.a.a(34)).a(9, true, localPhoneUnityBannerData);
   }
 }
 

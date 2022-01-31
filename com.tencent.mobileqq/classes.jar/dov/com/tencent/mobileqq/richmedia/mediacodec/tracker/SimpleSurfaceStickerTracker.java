@@ -8,8 +8,8 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.view.Surface;
-import anxl;
-import anxm;
+import aonq;
+import aonr;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tracking.sdk.TrackerManager;
@@ -57,7 +57,7 @@ public class SimpleSurfaceStickerTracker
     {
       this.jdField_a_of_type_AndroidMediaImageReader = ImageReader.newInstance(paramInt1, paramInt2, 35, 10);
       this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_AndroidMediaImageReader.getSurface();
-      this.jdField_a_of_type_AndroidMediaImageReader.setOnImageAvailableListener(new anxl(this), this.jdField_a_of_type_AndroidOsHandler);
+      this.jdField_a_of_type_AndroidMediaImageReader.setOnImageAvailableListener(new aonq(this), this.jdField_a_of_type_AndroidOsHandler);
     }
   }
   
@@ -77,7 +77,7 @@ public class SimpleSurfaceStickerTracker
         QLog.e("SimpleSurfaceStickerTracker", 2, "dealImageData get data null");
         return;
       }
-      this.jdField_b_of_type_JavaUtilList.add(new anxm(paramImage, k, m - j * k, l));
+      this.jdField_b_of_type_JavaUtilList.add(new aonr(paramImage, k, m - j * k, l));
     }
     catch (Exception paramImage)
     {

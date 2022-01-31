@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.nearby.now.location.LocationDataManager;
+import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
 
 public class aesz
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aesz(NearbyProfileEditPanel paramNearbyProfileEditPanel, QQCustomDialog paramQQCustomDialog) {}
+  public aesz(SelectLocationFragment paramSelectLocationFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    SelectLocationFragment.a(this.a).setVisibility(8);
+    SelectLocationFragment.a(this.a).setText("");
+    SelectLocationFragment.a(this.a).a("");
   }
 }
 

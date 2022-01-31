@@ -1,9 +1,9 @@
 package dov.com.qq.im;
 
-import amua;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import ankf;
 import com.tencent.biz.qqstory.boundaries.StoryApi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
@@ -33,12 +33,12 @@ public class QIMShortVideoUtils
     NewFlowCameraReporter.a("jumpToCamera");
     if (!VideoEnvironment.b(paramBaseActivity.app))
     {
-      DialogUtil.a(paramBaseActivity, 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131432999, new amua()).show();
+      DialogUtil.a(paramBaseActivity, 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131433016, new ankf()).show();
       return null;
     }
     if (paramQQAppInterface.c())
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131428986, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplicationImpl.getContext(), 2131428992, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
       return null;
     }
     return a(paramBaseActivity, false, paramQQAppInterface, true);

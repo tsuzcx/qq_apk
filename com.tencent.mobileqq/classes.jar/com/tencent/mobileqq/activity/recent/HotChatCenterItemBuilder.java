@@ -28,7 +28,7 @@ import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import xgx;
+import xkc;
 
 public class HotChatCenterItemBuilder
   extends RecentDefaultItemBuilder
@@ -84,14 +84,14 @@ public class HotChatCenterItemBuilder
     {
       paramOnDragModeChangedListener = new RecentDefaultItemBuilder.RecentItemDefaultHolder();
       localObject = a(paramContext, 2130968688, paramOnDragModeChangedListener);
-      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131362701));
-      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject).findViewById(2131363189));
-      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363183));
-      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363187));
+      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131362719));
+      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject).findViewById(2131363207));
+      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363201));
+      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363205));
       paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(16908308));
-      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363185));
-      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363186));
-      paramOnDragModeChangedListener.d = ((TextView)((View)localObject).findViewById(2131363188));
+      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363203));
+      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363204));
+      paramOnDragModeChangedListener.d = ((TextView)((View)localObject).findViewById(2131363206));
       paramOnDragModeChangedListener.e = ((TextView)((View)localObject).findViewById(16908309));
       paramOnDragModeChangedListener.e.setGravity(16);
       a((View)localObject, paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetTextView, paramContext);
@@ -129,10 +129,10 @@ public class HotChatCenterItemBuilder
             paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(String.format("点击进入%s资料卡页面", new Object[] { ((RecentItemEcShop)paramObject).b() }));
           }
         }
-        localObject = paramView.findViewById(2131363182);
-        paramRecentFaceDecoder = paramView.findViewById(2131363190);
-        View localView = paramView.findViewById(2131363181);
-        paramOnDragModeChangedListener = paramView.findViewById(2131363193);
+        localObject = paramView.findViewById(2131363200);
+        paramRecentFaceDecoder = paramView.findViewById(2131363208);
+        View localView = paramView.findViewById(2131363199);
+        paramOnDragModeChangedListener = paramView.findViewById(2131363211);
         a(paramContext, paramView, paramInt, paramObject, paramViewGroup, paramOnClickListener);
         ((View)localObject).setOnClickListener(paramOnClickListener);
         paramRecentFaceDecoder.setOnClickListener(this);
@@ -145,7 +145,7 @@ public class HotChatCenterItemBuilder
         if (((paramObject instanceof RecentHotchatItem)) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a != null))
         {
           paramViewGroup = (RecentHotchatItem)paramObject;
-          paramObject = (TextView)paramView.findViewById(2131363192);
+          paramObject = (TextView)paramView.findViewById(2131363210);
           paramOnClickListener = ApolloGameUtil.a(paramViewGroup.c(), this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a);
           if (paramOnClickListener == null) {
             break label901;
@@ -238,7 +238,7 @@ public class HotChatCenterItemBuilder
       }
       paramView.setTag(-300, null);
       paramView.setTag(-200, null);
-      ThreadManager.post(new xgx(this, i), 5, null, false);
+      ThreadManager.post(new xkc(this, i), 5, null, false);
     }
   }
   

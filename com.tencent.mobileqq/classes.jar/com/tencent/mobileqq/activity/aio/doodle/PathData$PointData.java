@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import upt;
+import usv;
 
 public class PathData$PointData
   implements MyParcelable
@@ -13,7 +13,7 @@ public class PathData$PointData
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new upt();
+    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new usv();
   }
   
   public PathData$PointData() {}

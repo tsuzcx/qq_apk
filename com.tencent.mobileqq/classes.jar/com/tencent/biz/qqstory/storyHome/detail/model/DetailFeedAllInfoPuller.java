@@ -8,8 +8,8 @@ import com.tribe.async.async.Bosses;
 import com.tribe.async.async.ThreadOffFunction;
 import com.tribe.async.reactive.Stream;
 import mqq.os.MqqHandler;
-import ntc;
-import ntd;
+import nuq;
+import nur;
 
 public class DetailFeedAllInfoPuller
 {
@@ -30,12 +30,12 @@ public class DetailFeedAllInfoPuller
   
   private void a(DetailFeedItem paramDetailFeedItem, boolean paramBoolean, ErrorMessage paramErrorMessage)
   {
-    ThreadManager.getUIHandler().post(new ntd(this, paramDetailFeedItem, paramBoolean, paramErrorMessage));
+    ThreadManager.getUIHandler().post(new nur(this, paramDetailFeedItem, paramBoolean, paramErrorMessage));
   }
   
   public void a()
   {
-    Bosses.get().postLightWeightJob(new ntc(this), 0);
+    Bosses.get().postLightWeightJob(new nuq(this), 0);
   }
   
   public void b()

@@ -34,9 +34,9 @@ public class StructMsgItemMore
   {
     paramBundle = paramView;
     if (paramView == null) {
-      paramBundle = LayoutInflater.from(paramContext).inflate(2130971546, null);
+      paramBundle = LayoutInflater.from(paramContext).inflate(2130971594, null);
     }
-    paramContext = (TextView)paramBundle.findViewById(2131374986);
+    paramContext = (TextView)paramBundle.findViewById(2131375172);
     if (TextUtils.isEmpty(this.u)) {
       this.u = "阅读全文";
     }
@@ -81,7 +81,7 @@ public class StructMsgItemMore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemMore
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,23 @@
-import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 public class adfc
-  implements Runnable
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public adfc(HiBoomFontDrawer paramHiBoomFontDrawer) {}
+  public adfc(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void run()
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    int i = 0;
-    label13:
-    HiBoomTextView localHiBoomTextView;
-    if (i < this.a.a.size())
-    {
-      localHiBoomTextView = (HiBoomTextView)((WeakReference)this.a.a.get(i)).get();
-      if ((localHiBoomTextView != null) && (localHiBoomTextView.a == this.a.b)) {
-        break label89;
-      }
-      this.a.a.remove(i);
-      i -= 1;
-    }
-    for (;;)
-    {
-      i += 1;
-      break label13;
-      break;
-      label89:
-      localHiBoomTextView.a();
-    }
+    new Handler(Looper.getMainLooper()).post(new adfd(this, paramInt));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,24 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.ScribblePicUploadProcessor;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameEvent;
 
 public class aict
-  extends MessageObserver
 {
-  public aict(ScribblePicUploadProcessor paramScribblePicUploadProcessor) {}
+  public float a;
+  public int a;
+  public long a;
+  public boolean a;
+  public float b = 0.0F;
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  private aict(GameEvent paramGameEvent)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramStatictisInfo != null) {
-      this.a.u = paramStatictisInfo.d;
-    }
-    this.a.a(-1, "MessageForScribble SEND FAIL", "", this.a.b);
-    this.a.d();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Float = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aict
  * JD-Core Version:    0.7.0.1
  */

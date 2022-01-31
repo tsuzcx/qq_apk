@@ -1,35 +1,49 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.util.TroopReportor;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
+import cooperation.dingdong.DingdongCalendarSyncUtil;
+import cooperation.dingdong.DingdongPluginDataFactory.ScheduleSummaryData;
 
 public final class amkp
-  implements FilenameFilter
+  implements Runnable
 {
-  public amkp(long paramLong1, long paramLong2) {}
+  public amkp(DingdongPluginDataFactory.ScheduleSummaryData paramScheduleSummaryData) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void run()
   {
-    if (!paramString.endsWith(".trace")) {}
-    long l;
+    String str1;
+    String str2;
+    String str3;
+    String str4;
+    long l1;
+    long l2;
+    if (DingdongCalendarSyncUtil.a())
+    {
+      str1 = this.a.id;
+      str2 = this.a.title;
+      str3 = DingdongCalendarSyncUtil.a(this.a);
+      str4 = this.a.location;
+      l1 = this.a.beginTime;
+      l2 = this.a.endTime;
+      if (!DingdongCalendarSyncUtil.a(str1)) {
+        break label80;
+      }
+      DingdongCalendarSyncUtil.a(str1, str2, str3, str4, l1, l2);
+    }
+    label80:
+    String str5;
     do
     {
-      File localFile;
-      do
-      {
-        return false;
-        localFile = new File(paramFile + File.separator + paramString);
-      } while ((localFile == null) || (!localFile.exists()));
-      l = localFile.lastModified();
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
+      return;
+      str5 = DingdongCalendarSyncUtil.a();
+      if (!TextUtils.isEmpty(str5)) {
+        break;
       }
-    } while ((l < this.a) || (l > this.b));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
-    }
-    return true;
+    } while (!QLog.isColorLevel());
+    QLog.e("DingdongCalendarSyncUtil", 2, "accountId not create");
+    return;
+    DingdongCalendarSyncUtil.a(str1, str5, str2, str3, str4, l1, l2);
+    TroopReportor.a("Grp_edu", "Grp_notice", "NoticeSys_Set", 0, 0, new String[] { String.valueOf(this.a.sourceId) });
   }
 }
 

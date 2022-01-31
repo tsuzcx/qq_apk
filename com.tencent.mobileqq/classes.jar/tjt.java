@@ -1,16 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class tjt
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tjt(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  public tjt(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.app.getPreferences().edit().putBoolean("chatHistoryEventEntryFirstShow", false).commit();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
+    }
   }
 }
 

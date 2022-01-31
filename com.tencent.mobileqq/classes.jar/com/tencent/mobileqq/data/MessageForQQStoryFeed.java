@@ -14,72 +14,70 @@ public class MessageForQQStoryFeed
   extends ChatMessage
 {
   public static final String TAG = "MessageForQQStoryFeed";
-  public String str_cover;
-  public String str_feed_id;
-  public String str_jump_url;
-  public int uint32_keep_time;
-  public int uint32_latest_qzone_time;
-  public int uint32_video_num;
-  public long uint64_time;
+  public long friendActionMills;
+  public String mCoverUrl;
+  public String mFeedAddress;
+  public String mFeedId;
+  public long mFeedTime;
+  public int mKeepTime;
+  public String mMainText;
+  public int mQZoneRemainTime;
+  public String mUnionId;
   
   public MessageForQQStoryFeed()
   {
     this.msgtype = -2061;
-    this.msg = "";
   }
   
   public MessageForQQStoryFeed(MessageForQQStoryFeed paramMessageForQQStoryFeed)
   {
     this();
-    this.str_cover = paramMessageForQQStoryFeed.str_cover;
-    this.str_jump_url = paramMessageForQQStoryFeed.str_jump_url;
-    this.str_feed_id = paramMessageForQQStoryFeed.str_feed_id;
-    this.uint64_time = paramMessageForQQStoryFeed.uint64_time;
-    this.uint32_video_num = paramMessageForQQStoryFeed.uint32_video_num;
-    this.uint32_keep_time = paramMessageForQQStoryFeed.uint32_keep_time;
-    this.uint32_latest_qzone_time = paramMessageForQQStoryFeed.uint32_latest_qzone_time;
+    this.mCoverUrl = paramMessageForQQStoryFeed.mCoverUrl;
+    this.mFeedId = paramMessageForQQStoryFeed.mFeedId;
+    this.mFeedTime = paramMessageForQQStoryFeed.mFeedTime;
+    this.mKeepTime = paramMessageForQQStoryFeed.mKeepTime;
+    this.mQZoneRemainTime = paramMessageForQQStoryFeed.mQZoneRemainTime;
     this.frienduin = paramMessageForQQStoryFeed.frienduin;
     this.time = paramMessageForQQStoryFeed.time;
+    this.mFeedAddress = paramMessageForQQStoryFeed.mFeedAddress;
+    this.mMainText = paramMessageForQQStoryFeed.mMainText;
+    this.mUnionId = paramMessageForQQStoryFeed.mUnionId;
+    this.friendActionMills = paramMessageForQQStoryFeed.friendActionMills;
   }
   
   @Deprecated
   public static AIOQQStoryFeedPB.MsgBody mockMsgPB()
   {
     AIOQQStoryFeedPB.CoverItem localCoverItem = new AIOQQStoryFeedPB.CoverItem();
-    localCoverItem.str_cover.set("http://a3.qpic.cn/psb?/V133lZWc2qh6QM/Xo69bsP*acyJTMY26yEy.LwJjP5jPVGtm2G2UAFwIlM!/m/dPIAAAAAAAAA&ek=1&kp=1&pt=0&tm=1506412800&sce=0-12-12&rf=4-24");
-    localCoverItem.str_jump_url.set("http://story.now.qq.com/mobile/transfer.html?token=AACBEBPz&src_type=app&version=1&fromId=17&videoOwnerUin=1332793427&videoId=6BD6D54BC2BC6245326B8221D3948D99&unionid=2_9000000112&ptype=11&actionnamekey=1&storysharefrom=wechat&sharefromtype=71&one_page=0&type=onedaylist&feedid=FEED-0-1332793427-20170928&identify=1&from=singlemessage");
+    localCoverItem.str_cover.set("https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D500/sign=e65f24392c2dd42a5b0901ab333a5b2f/00e93901213fb80e4a9910873fd12f2eb9389411.jpg");
+    localCoverItem.str_content.set("我发表了2个日迹");
     AIOQQStoryFeedPB.MsgBody localMsgBody = new AIOQQStoryFeedPB.MsgBody();
     AIOQQStoryFeedPB.AIOQQStoryFeed localAIOQQStoryFeed = new AIOQQStoryFeedPB.AIOQQStoryFeed();
     localAIOQQStoryFeed.msg_covers_info.set(localCoverItem);
+    localAIOQQStoryFeed.uint64_time.set(System.currentTimeMillis() / 1000L);
+    localAIOQQStoryFeed.str_location.set("江南");
+    localAIOQQStoryFeed.str_feed_id.set("FEED-1000-2f583f987a1ffd3644b2672111f0d64b31d30c72d9598be3-20180412");
+    localAIOQQStoryFeed.str_union_id.set("0_2463624242");
     localMsgBody.msg_aio_feed.set(localAIOQQStoryFeed);
     localMsgBody.uint32_keep_time.set(604800);
     localMsgBody.uint32_latest_qzone_time.set(10000);
     return localMsgBody;
   }
   
-  protected Object clone()
-  {
-    return super.clone();
-  }
-  
   protected void doParse()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("MessageForQQStoryFeed", 2, "doParse invoked. info: TAG: MessageForQQStoryFeed");
+      QLog.i("MessageForQQStoryFeed", 2, "doParse invoked. ");
     }
-    parseMsgFromMsgData(this.msgData);
+    mergeFrom(this.msgData);
   }
   
   public boolean isEmpty()
   {
-    if ((this.uint64_time <= 0L) || (this.uint32_video_num <= 0)) {}
-    while ((TextUtils.isEmpty(this.str_cover)) || (TextUtils.isEmpty(this.str_jump_url))) {
-      return true;
-    }
-    return false;
+    return (this.mFeedTime <= 0L) || (TextUtils.isEmpty(this.mCoverUrl)) || (TextUtils.isEmpty(this.mUnionId)) || (TextUtils.isEmpty(this.mFeedId));
   }
   
-  public void parseMsgFromMsgData(byte[] paramArrayOfByte)
+  public void mergeFrom(byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
       return;
@@ -89,14 +87,15 @@ public class MessageForQQStoryFeed
     {
       localMsgBody.mergeFrom(paramArrayOfByte);
       this.msgData = paramArrayOfByte;
-      this.msg = "";
-      this.str_cover = localMsgBody.msg_aio_feed.msg_covers_info.str_cover.get();
-      this.str_jump_url = localMsgBody.msg_aio_feed.msg_covers_info.str_jump_url.get();
-      this.str_feed_id = localMsgBody.msg_aio_feed.str_feed_id.get();
-      this.uint64_time = localMsgBody.msg_aio_feed.uint64_time.get();
-      this.uint32_video_num = localMsgBody.msg_aio_feed.uint32_video_num.get();
-      this.uint32_keep_time = localMsgBody.uint32_keep_time.get();
-      this.uint32_latest_qzone_time = localMsgBody.uint32_latest_qzone_time.get();
+      this.mCoverUrl = localMsgBody.msg_aio_feed.msg_covers_info.str_cover.get();
+      this.mMainText = localMsgBody.msg_aio_feed.msg_covers_info.str_content.get();
+      this.mFeedAddress = localMsgBody.msg_aio_feed.str_location.get();
+      this.mUnionId = localMsgBody.msg_aio_feed.str_union_id.get();
+      this.mFeedId = localMsgBody.msg_aio_feed.str_feed_id.get();
+      this.mFeedTime = localMsgBody.msg_aio_feed.uint64_time.get();
+      this.mKeepTime = localMsgBody.uint32_keep_time.get();
+      this.mQZoneRemainTime = localMsgBody.uint32_latest_qzone_time.get();
+      this.friendActionMills = localMsgBody.uint64_msg_time.get();
       return;
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -104,7 +103,7 @@ public class MessageForQQStoryFeed
       for (;;)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("MessageForQQStoryFeed", 2, "parseMsgFromMsgData Failed. info: exception: ", localInvalidProtocolBufferMicroException);
+          QLog.e("MessageForQQStoryFeed", 2, "mergeFrom Failed. info: exception: ", localInvalidProtocolBufferMicroException);
         }
       }
     }
@@ -115,16 +114,17 @@ public class MessageForQQStoryFeed
     doParse();
   }
   
-  protected void prewrite()
-  {
-    this.msg = "";
-  }
-  
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str = System.getProperty("line.separator");
-    localStringBuilder.append("msgtype: ").append(this.msgtype).append(str).append("msgseq: ").append(this.msgseq).append(str).append("msg: ").append(this.msg).append(str).append("msgData.length: ").append(this.msgData.length).append(str);
+    StringBuilder localStringBuilder = new StringBuilder("MessageForQQStoryFeed{");
+    localStringBuilder.append(", mFeedId='").append(this.mFeedId).append('\n');
+    localStringBuilder.append(", mFeedTime=").append(this.mFeedTime);
+    localStringBuilder.append(", mKeepTime=").append(this.mKeepTime);
+    localStringBuilder.append(", mQZoneRemainTime=").append(this.mQZoneRemainTime);
+    localStringBuilder.append(", mMainText='").append(this.mMainText).append('\n');
+    localStringBuilder.append(", mFeedAddress='").append(this.mFeedAddress).append('\n');
+    localStringBuilder.append(", friendActionMills=").append(this.friendActionMills);
+    localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }

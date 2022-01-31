@@ -1,24 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class xnn
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public xnn(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xnn(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a("PTV.NewFlowCameraActivity");
-    NewFlowCameraActivity.e(this.a);
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    EditLocalVideoActivity.a(this.a).setVisibility(8);
   }
 }
 

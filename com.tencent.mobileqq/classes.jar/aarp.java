@@ -1,18 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.ark.ArkAiAppPanel;
+import com.tencent.widget.HorizontalListView;
 
-class aarp
-  implements ActionSheet.OnButtonClickListener
+public class aarp
+  implements Runnable
 {
-  aarp(aarn paramaarn, ActionSheet paramActionSheet) {}
+  public aarp(ArkAiAppPanel paramArkAiAppPanel) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Aarn.a.e();
-    this.jdField_a_of_type_Aarn.a.b("本地APP已删除成功");
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    View localView = ArkAiAppPanel.a(this.a).getSelectedView();
+    if (localView != null) {
+      localView.setSelected(true);
+    }
   }
 }
 

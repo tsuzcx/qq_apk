@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import anus;
+import aokx;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
@@ -20,7 +20,7 @@ public class RichmediaService
   static volatile WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
   static volatile RichmediaService jdField_a_of_type_DovComTencentMobileqqRichmediaRichmediaService;
   Messenger jdField_a_of_type_AndroidOsMessenger;
-  anus jdField_a_of_type_Anus;
+  aokx jdField_a_of_type_Aokx;
   public volatile ICallBack a;
   public Messenger b;
   
@@ -74,8 +74,8 @@ public class RichmediaService
   public void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_Anus = new anus(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Anus);
+    this.jdField_a_of_type_Aokx = new aokx(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Aokx);
     jdField_a_of_type_DovComTencentMobileqqRichmediaRichmediaService = this;
     jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
     if (QLog.isColorLevel()) {
@@ -86,7 +86,7 @@ public class RichmediaService
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Anus = null;
+    this.jdField_a_of_type_Aokx = null;
     jdField_a_of_type_DovComTencentMobileqqRichmediaRichmediaService = null;
     jdField_a_of_type_ComTencentUtilWeakReferenceHandler = null;
     if (QLog.isColorLevel()) {

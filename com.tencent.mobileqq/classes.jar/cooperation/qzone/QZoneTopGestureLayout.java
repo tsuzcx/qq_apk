@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amce;
+import amsi;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -31,7 +31,7 @@ public class QZoneTopGestureLayout
   protected void a(Context paramContext)
   {
     a = true;
-    this.mTopGestureDetector = new GestureDetector(paramContext, new amce(this, paramContext), new Handler(Looper.getMainLooper()));
+    this.mTopGestureDetector = new GestureDetector(paramContext, new amsi(this, paramContext), new Handler(Looper.getMainLooper()));
   }
 }
 

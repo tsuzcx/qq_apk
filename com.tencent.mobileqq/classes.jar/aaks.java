@@ -1,37 +1,18 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
-import com.tencent.mobileqq.ark.ArkAiInfo;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.widget.HorizontalListView;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArAwardInfo;
 
-public class aaks
-  implements AdapterView.OnItemClickListener
+public final class aaks
+  implements Parcelable.Creator
 {
-  public aaks(ArkAiAppPanel paramArkAiAppPanel) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public ArAwardInfo a(Parcel paramParcel)
   {
-    paramAdapterView = ArkAiAppPanel.a(this.a).getSelectedView();
-    if (paramAdapterView != null) {
-      paramAdapterView.setSelected(false);
-    }
-    ArkAiAppPanel.a(this.a).setSelection(paramInt);
-    paramAdapterView = ArkAiAppPanel.a(this.a).getSelectedView();
-    if (paramAdapterView != null) {
-      paramAdapterView.setSelected(true);
-    }
-    ArkAiAppPanel.a(this.a, paramInt);
-    ArkAiAppPanel.a(this.a, true);
-    if ((ArkAiAppPanel.a(this.a) != null) && (ArkAiAppPanel.a(this.a).size() > 0) && (ArkAiAppPanel.a(this.a).size() > ArkAiAppPanel.a(this.a)))
-    {
-      paramAdapterView = (ArkAiInfo)ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a));
-      if (paramAdapterView != null) {
-        ArkAppDataReport.b(null, paramAdapterView.a);
-      }
-    }
+    return new ArAwardInfo(paramParcel);
+  }
+  
+  public ArAwardInfo[] a(int paramInt)
+  {
+    return new ArAwardInfo[paramInt];
   }
 }
 

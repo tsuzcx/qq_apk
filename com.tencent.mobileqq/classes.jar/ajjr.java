@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 
-class ajjr
-  implements Runnable
+public class ajjr
+  implements LoadingMoreHelper.OnLoadMoreListener
 {
-  ajjr(ajjq paramajjq) {}
+  public ajjr(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void run()
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    SnapshotService.b(this.a.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService, this.a.jdField_a_of_type_Ajju, this.a.jdField_a_of_type_Ajjw);
+    SearchReciteArticleFragment.a(this.a, SearchReciteArticleFragment.a(this.a).getText().toString());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjr
  * JD-Core Version:    0.7.0.1
  */

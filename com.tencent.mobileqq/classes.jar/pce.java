@@ -1,15 +1,35 @@
-import com.tencent.biz.widgets.ScannerView;
+import android.view.View;
+import com.tencent.biz.webviewplugin.PubAccountMailJsPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class pce
-  implements Runnable
+public class pce
+  implements ActionSheet.OnButtonClickListener
 {
-  pce(pcd parampcd) {}
+  public pce(PubAccountMailJsPlugin paramPubAccountMailJsPlugin) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (ScannerView.a(this.a.a) != null) {
-      ScannerView.a(this.a.a).a();
+    this.a.a.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
+      }
+      return;
+    case 0: 
+      PubAccountMailJsPlugin.a(this.a);
+      return;
+    case 1: 
+      PubAccountMailJsPlugin.b(this.a);
+      return;
+    case 2: 
+      PubAccountMailJsPlugin.c(this.a);
+      return;
     }
+    PubAccountMailJsPlugin.d(this.a);
   }
 }
 

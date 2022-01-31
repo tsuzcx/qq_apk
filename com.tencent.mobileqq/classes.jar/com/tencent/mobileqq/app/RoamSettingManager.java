@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import mqq.manager.Manager;
-import zja;
-import zjb;
-import zjc;
+import zmg;
+import zmh;
+import zmi;
 
 public class RoamSettingManager
   implements Manager
@@ -258,7 +258,7 @@ public class RoamSettingManager
   
   public void a()
   {
-    ThreadManager.post(new zja(this), 8, null, false);
+    ThreadManager.post(new zmg(this), 8, null, false);
   }
   
   public void a(int paramInt)
@@ -304,7 +304,7 @@ public class RoamSettingManager
           if ((j == 1) && (i == 0)) {
             break;
           }
-          ThreadManager.post(new zjb(this, paramRoamSetting), 5, null, false);
+          ThreadManager.post(new zmh(this, paramRoamSetting), 5, null, false);
           return;
         }
         if (QLog.isColorLevel())
@@ -345,7 +345,7 @@ public class RoamSettingManager
         if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
           break;
         }
-        ThreadManager.post(new zjc(this, localRoamSetting), 5, null, false);
+        ThreadManager.post(new zmi(this, localRoamSetting), 5, null, false);
         return;
         this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.remove(localRoamSetting.path);
       }

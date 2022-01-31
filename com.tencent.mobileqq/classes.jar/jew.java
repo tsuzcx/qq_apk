@@ -1,38 +1,51 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.av.app.DeviceCapabilityExamination;
+import android.os.Bundle;
+import com.tencent.av.app.QQServiceProxy;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.videoeffect.VideoEffectTest.TestResultCallback;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.camera.QavCameraUsage;
+import com.tencent.av.service.IQQServiceCallback.Stub;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.service.RecvMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class jew
-  implements VideoEffectTest.TestResultCallback
+  extends IQQServiceCallback.Stub
 {
-  public jew(DeviceCapabilityExamination paramDeviceCapabilityExamination) {}
+  public jew(QQServiceProxy paramQQServiceProxy) {}
   
-  public void a(int paramInt, long paramLong, String paramString1, String paramString2)
+  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("DeviceCapabilityExamination", 2, "testVideoEffectIfNeed onFinish result: " + paramInt + ", timeConsuming: " + paramLong + ", gpuVendor: " + paramString1 + ", gpuModel: " + paramString2);
+      QLog.d("QQServiceProxy", 2, "getDataFromVideoProcess cmd = " + paramInt1 + ",subCmd = " + paramInt2 + ",request = " + paramBundle + ",callbackCookie = " + paramString);
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpu", Build.HARDWARE);
-    localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-    localHashMap.put("manufacturer", Build.MANUFACTURER);
-    localHashMap.put("model", Build.MODEL);
-    localHashMap.put("product", Build.PRODUCT);
-    localHashMap.put("fingerprint", Build.FINGERPRINT);
-    localHashMap.put("gpu_vendor", paramString1);
-    localHashMap.put("gpu_model", paramString2);
-    localHashMap.put("result", String.valueOf(paramInt));
-    localHashMap.put("time_consuming", String.valueOf(paramLong));
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceCapabilityExamination", 2, "testVideoEffectIfNeed reportByRoomId " + localHashMap);
+    switch (paramInt1)
+    {
+    default: 
+      return null;
     }
-    StatisticCollector.a(BaseApplication.getContext()).a(this.a.a.getCurrentAccountUin(), "QAV_REPORT_VIDEO_EFFECT_TEST", true, 0L, 0L, localHashMap, "", true);
+    paramString = new Bundle();
+    paramString.putBoolean("AV_isUsingCamera", QavCameraUsage.a);
+    return paramString;
+  }
+  
+  public void a(RecvMsg paramRecvMsg)
+  {
+    if (paramRecvMsg != null) {
+      this.a.a.a(new Object[] { Integer.valueOf(12), paramRecvMsg });
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  {
+    this.a.a.a(new Object[] { Integer.valueOf(47), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3 });
+  }
+  
+  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
+  {
+    if ((paramArrayOfRecvGVideoLevelInfo != null) && (paramArrayOfRecvGVideoLevelInfo.length > 0)) {
+      this.a.a.a(new Object[] { Integer.valueOf(501), paramArrayOfRecvGVideoLevelInfo });
+    }
   }
 }
 

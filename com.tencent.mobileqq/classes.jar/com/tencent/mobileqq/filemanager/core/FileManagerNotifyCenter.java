@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aclc;
-import acld;
+import acuz;
+import acva;
 import android.os.Looper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -21,7 +21,7 @@ public class FileManagerNotifyCenter
   
   public FileManagerNotifyCenter(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new aclc(this, Looper.getMainLooper());
+    this.jdField_a_of_type_MqqOsMqqHandler = new acuz(this, Looper.getMainLooper());
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     paramQQAppInterface.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
   }
@@ -74,7 +74,7 @@ public class FileManagerNotifyCenter
   public void a(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
   {
     b(paramFileManagerEntity, paramInt, paramString);
-    ThreadManager.executeOnSubThread(new acld(this, paramFileManagerEntity, paramInt));
+    ThreadManager.executeOnSubThread(new acva(this, paramFileManagerEntity, paramInt));
   }
   
   public void a(boolean paramBoolean, int paramInt, Object paramObject)

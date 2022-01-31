@@ -28,8 +28,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
-import wvr;
-import wvs;
+import wyw;
+import wyx;
 
 public class SendPhotoActivity$sendPhotoTask
   implements Runnable
@@ -71,7 +71,7 @@ public class SendPhotoActivity$sendPhotoTask
     if (QLog.isColorLevel()) {
       QLog.d(SendPhotoActivity.a, 2, " sendPhotoTask(),  mBusiType :" + this.jdField_a_of_type_Int + ", mNeedCompress:" + this.jdField_a_of_type_Boolean + ", mCurType:" + this.jdField_b_of_type_Int + ",mIsWaitForResult:" + this.jdField_b_of_type_Boolean + ",picQualityType: " + i + ",mSendBackground = " + this.jdField_c_of_type_Boolean + "mPaths :" + Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray()));
     }
-    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436128);
+    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436145);
   }
   
   private void a(BaseActivity paramBaseActivity, PicReq paramPicReq)
@@ -100,7 +100,7 @@ public class SendPhotoActivity$sendPhotoTask
         ((DeviceMsgHandle)localObject).a().a(DeviceMsgHandle.d, paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c, localArrayList);
         return;
       }
-      ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).runOnUiThread(new wvs(this, localSmartDeviceProxyMgr, paramPicReq, paramBaseActivity));
+      ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).runOnUiThread(new wyx(this, localSmartDeviceProxyMgr, paramPicReq, paramBaseActivity));
       return;
     }
     int j;
@@ -200,11 +200,11 @@ public class SendPhotoActivity$sendPhotoTask
         Logger.b("PIC_TAG_ERROR", "SendPhotoActivity.showProgressDialog", paramContext.toString());
         return;
       }
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624515);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381));
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
     }
   }
@@ -331,7 +331,7 @@ public class SendPhotoActivity$sendPhotoTask
     } while (!QLog.isColorLevel());
     QLog.d(SendPhotoActivity.a, 2, "mActivity.get() == null");
     return;
-    ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).runOnUiThread(new wvr(this));
+    ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).runOnUiThread(new wyw(this));
   }
 }
 

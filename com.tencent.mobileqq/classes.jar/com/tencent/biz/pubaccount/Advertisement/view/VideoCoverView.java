@@ -39,17 +39,17 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import kvn;
-import kvo;
-import kvp;
-import kvq;
-import kvr;
-import kvs;
-import kvv;
-import kvw;
-import kvx;
-import kvy;
-import kvz;
+import kuy;
+import kuz;
+import kva;
+import kvb;
+import kvc;
+import kvd;
+import kvg;
+import kvh;
+import kvi;
+import kvj;
+import kvk;
 import mqq.os.MqqHandler;
 
 public class VideoCoverView
@@ -73,10 +73,10 @@ public class VideoCoverView
   private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
   public TVK_PlayerVideoInfo a;
   public TVK_UserInfo a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new kvp(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new kva(this);
   public String a;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private kvz jdField_a_of_type_Kvz;
+  private kvk jdField_a_of_type_Kvk;
   public boolean a;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -94,14 +94,14 @@ public class VideoCoverView
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(getContext()).inflate(2130969201, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365552));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView = ((ResizeURLImageView)findViewById(2131362707));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131362933);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131364647);
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new kvn(this, paramContext));
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131365553);
-    this.jdField_d_of_type_AndroidViewView.setOnClickListener(new kvq(this));
+    LayoutInflater.from(getContext()).inflate(2130969202, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365579));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView = ((ResizeURLImageView)findViewById(2131362725));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131362951);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131364671);
+    this.jdField_c_of_type_AndroidViewView.setOnClickListener(new kuy(this, paramContext));
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131365580);
+    this.jdField_d_of_type_AndroidViewView.setOnClickListener(new kvb(this));
     this.jdField_c_of_type_Int = paramVideoCoverItem.jdField_a_of_type_Int;
     this.jdField_a_of_type_JavaLangString = paramVideoCoverItem.b;
     this.jdField_b_of_type_Int = paramInt;
@@ -117,8 +117,8 @@ public class VideoCoverView
     this.jdField_c_of_type_Boolean = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_c_of_type_Boolean;
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = paramTroopMemberApiClient;
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(1000L);
-    this.jdField_a_of_type_Kvz = new kvz(this);
-    this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter = new kvr(this);
+    this.jdField_a_of_type_Kvk = new kvk(this);
+    this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter = new kvc(this);
     if (this.jdField_c_of_type_Boolean)
     {
       paramContext = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.getLayoutParams();
@@ -167,7 +167,7 @@ public class VideoCoverView
     int i = NetUtil.a(null);
     if (i == 0)
     {
-      FMToastUtil.a(2131438930);
+      FMToastUtil.a(2131438958);
       this.jdField_a_of_type_Int = 6;
       g();
       return;
@@ -188,7 +188,7 @@ public class VideoCoverView
   private void c(Context paramContext)
   {
     this.jdField_a_of_type_Int = 1;
-    ThreadManager.post(new kvs(this, paramContext), 2, null, false);
+    ThreadManager.post(new kvd(this, paramContext), 2, null, false);
   }
   
   private void d(Context paramContext)
@@ -213,15 +213,15 @@ public class VideoCoverView
       this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView);
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(paramContext, (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new kvv(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new kvg(this));
       if (this.jdField_c_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Kvz);
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Kvk);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new kvw(this), 3000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new kvh(this), 3000L);
       }
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer$OnCompletionListener);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new kvx(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new kvi(this));
       a(false);
       return;
     }
@@ -256,7 +256,7 @@ public class VideoCoverView
     if ((PublicAccountAdvertisementActivity.class.isInstance(this.jdField_a_of_type_AndroidContentContext)) && (!((PublicAccountAdvertisementActivity)this.jdField_a_of_type_AndroidContentContext).isFinishing()))
     {
       this.jdField_d_of_type_Boolean = true;
-      FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131428241, 2131438925, new kvy(this));
+      FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131428241, 2131438953, new kvj(this));
     }
   }
   
@@ -430,7 +430,7 @@ public class VideoCoverView
   {
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      ThreadManager.getUIHandler().post(new kvo(this));
+      ThreadManager.getUIHandler().post(new kuz(this));
       return;
     }
     if (QLog.isColorLevel()) {

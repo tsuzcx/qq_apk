@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import allt;
+import ambj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ExpandableListConnector$GroupMetadata
   implements Parcelable, Comparable
 {
-  public static final Parcelable.Creator CREATOR = new allt();
+  public static final Parcelable.Creator CREATOR = new ambj();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   int b;
@@ -47,7 +47,7 @@ public class ExpandableListConnector$GroupMetadata
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.ExpandableListConnector.GroupMetadata
  * JD-Core Version:    0.7.0.1
  */

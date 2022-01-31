@@ -20,7 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import ocv;
+import oen;
 
 public class EditVideoFilter$FilterPagerAdapter
   extends PagerAdapter
@@ -139,7 +139,7 @@ public class EditVideoFilter$FilterPagerAdapter
         localObject2 = localFilterData.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
       }
       paramViewGroup.addView(((FilterData.FilterPageItem)localObject2).jdField_a_of_type_AndroidViewView);
-      ((FilterData.FilterPageItem)localObject2).jdField_a_of_type_AndroidViewView.setOnTouchListener(new ocv(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener));
+      ((FilterData.FilterPageItem)localObject2).jdField_a_of_type_AndroidViewView.setOnTouchListener(new oen(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener));
       ((FilterData.FilterPageItem)localObject2).a(localFilterData, paramInt);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
       return localObject2;

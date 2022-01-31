@@ -1,69 +1,54 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.utils.CardUtil;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.NewFriendManager;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.contacts.base.CardViewController;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZoneLogTags;
+import java.util.List;
 
 public class wms
-  implements Runnable
+  extends AsyncTask
 {
-  public wms(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
+  public wms(CardViewController paramCardViewController) {}
   
-  public void run()
+  protected List a(Void... paramVarArgs)
   {
+    paramVarArgs = ((MayknowRecommendManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(158)).a();
+    return CardViewController.a(this.a, paramVarArgs);
+  }
+  
+  protected void a(List paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      CardViewController.c(this.a, false);
+      CardViewController.d(this.a);
+      return;
+    }
+    Object localObject = new StringBuilder();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      ((StringBuilder)localObject).append(((MayKnowRecommend)paramList.get(i)).uin);
+      ((StringBuilder)localObject).append(";");
+      i += 1;
+    }
+    localObject = ((StringBuilder)localObject).toString();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      CardViewController.b(this.a, (String)localObject);
+    }
     for (;;)
     {
-      try
-      {
-        Object localObject1 = (NewFriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33);
-        int i = ((NewFriendManager)localObject1).d() + CardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        Object localObject3;
-        if (i > 0)
-        {
-          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(5);
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set(i + "");
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("{'cn':'#FF0000'}");
-          localObject1 = localObject3;
-          if (QLog.isColorLevel())
-          {
-            QLog.d(QZoneLogTags.LOG_TAG_UNDEALCOUNT + "updateTabContactNotify", 2, "unread=" + i);
-            localObject1 = localObject3;
-          }
-          localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.obtainMessage(3);
-          ((Message)localObject3).obj = localObject1;
-          this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.sendMessage((Message)localObject3);
-          return;
-        }
-        if (((NewFriendManager)localObject1).a())
-        {
-          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set("");
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("");
-          localObject1 = localObject3;
-          if (QLog.isColorLevel())
-          {
-            QLog.d(QZoneLogTags.LOG_TAG_UNDEALCOUNT + "updateTabContactNotify", 2, "redpoint");
-            localObject1 = localObject3;
-          }
-        }
-        else
-        {
-          Object localObject2 = null;
-        }
+      CardViewController.a(this.a, paramList);
+      if (QLog.isColorLevel()) {
+        QLog.d("CardViewController", 2, "dealSourceList set isRefreshingRemote = false");
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
+      CardViewController.c(this.a, false);
+      CardViewController.d(this.a);
+      return;
+      CardViewController.b(this.a, null);
     }
   }
 }

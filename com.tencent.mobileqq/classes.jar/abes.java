@@ -1,16 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.bubble.BubbleNewAIOAnim;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.mobileqq.armap.TreasureBaseActivity;
 
 public class abes
-  extends AnimatorListenerAdapter
+  extends BitmapDrawable
 {
-  public abes(BubbleNewAIOAnim paramBubbleNewAIOAnim, ObjectAnimator paramObjectAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public abes(TreasureBaseActivity paramTreasureBaseActivity, Resources paramResources, Bitmap paramBitmap1, float paramFloat, Bitmap paramBitmap2)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    super(paramResources, paramBitmap1);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    paramCanvas.save();
+    paramCanvas.rotate(this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
+    super.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 

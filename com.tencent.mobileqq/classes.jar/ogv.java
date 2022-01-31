@@ -1,17 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
+import com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import com.tencent.biz.qqstory.takevideo.EditVideoTag.EditBehavior;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
 
 public class ogv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements QQStoryPullToRefreshListView.PullToRefreshListener
 {
-  public ogv(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
+  public ogv(EditVideoTag paramEditVideoTag) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.g();
+    EditVideoTag.EditBehavior localEditBehavior = EditVideoTag.a(this.a);
+    EditVideoTag.a(this.a, EditVideoTag.a(this.a)).a(localEditBehavior);
   }
 }
 

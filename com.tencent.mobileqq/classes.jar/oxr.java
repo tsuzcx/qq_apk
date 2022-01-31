@@ -1,18 +1,16 @@
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
 
 public class oxr
-  implements DialogInterface.OnShowListener
+  implements DialogInterface.OnDismissListener
 {
-  public oxr(TroopGiftPanel.GiftNumInputDialog paramGiftNumInputDialog) {}
+  public oxr(TroopNewGuidePopWindow paramTroopNewGuidePopWindow) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
+    this.a.a.deleteObserver(this.a);
   }
 }
 

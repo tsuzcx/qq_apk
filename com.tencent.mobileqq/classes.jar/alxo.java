@@ -1,47 +1,35 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.IQlinkService.Stub;
-import cooperation.qlink.QlinkServiceProxy;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
 
 public class alxo
-  implements ServiceConnection
+  implements QSecFramework.IGoingUpHandler
 {
-  public alxo(QlinkServiceProxy paramQlinkServiceProxy) {}
+  public alxo(QSecFramework paramQSecFramework) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
-    QlinkServiceProxy.a(this.a, IQlinkService.Stub.a(paramIBinder));
-    QlinkServiceProxy.a(this.a, false);
-    QlinkServiceProxy.a(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
-    try
+    if (paramInt1 != 0)
     {
-      QlinkServiceProxy.a(this.a).getApplication().unbindService(QlinkServiceProxy.a(this.a));
-      QlinkServiceProxy.a(this.a, null);
-      QlinkServiceProxy.a(this.a, false);
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("QSecFramework", 2, String.format("Native msg, cookie: %08X, delay: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      }
+      if (paramInt2 != 0) {
+        QSecFramework.a(this.a).sendMessageDelayed(QSecFramework.a(this.a).obtainMessage(1, paramInt1, 0), paramInt2 * 1000);
       }
     }
+    else
+    {
+      return 0;
+    }
+    QSecFramework.a(this.a).sendMessage(QSecFramework.a(this.a).obtainMessage(1, paramInt1, 0));
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxo
  * JD-Core Version:    0.7.0.1
  */

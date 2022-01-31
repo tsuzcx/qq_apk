@@ -1,91 +1,43 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
+import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.CommentListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.GetFeedCommentEvent;
+import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.JobContext;
+import java.util.List;
 
-public class nyk
-  implements AbsListView.OnScrollListener
+class nyk
+  implements CommentListPageLoader.CommentListener
 {
-  public nyk(MystoryListView paramMystoryListView) {}
+  nyk(nyj paramnyj, JobContext paramJobContext, FeedCommentSync paramFeedCommentSync) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
   {
-    if ((MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0)) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      if (MystoryListView.a(this.a) != null) {
-        MystoryListView.a(this.a).a(paramAbsListView, paramInt);
-      }
+      SLog.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync });
       return;
-      MystoryListView.a(this.a, false);
-      continue;
-      View localView = paramAbsListView.getChildAt(0);
-      MystoryListView.a(this.a, paramAbsListView.getFirstVisiblePosition());
-      if (localView != null)
-      {
-        MystoryListView.b(this.a, localView.getTop());
-        MystoryListView.c(this.a, localView.getBottom());
-        MystoryListView.d(this.a, localView.getHeight());
-      }
-      MystoryListView.a(this.a, true);
-      MystoryListView.e(this.a, 0);
     }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j;
-    int k;
-    int m;
-    int i;
-    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0))
+    nyj.a(this.jdField_a_of_type_Nyj);
+    SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(nyj.b(this.jdField_a_of_type_Nyj)), paramGetFeedCommentEvent);
+    if (paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      if (-MystoryListView.b(this.a) > UIUtils.b(this.a.jdField_a_of_type_AndroidAppActivity) * 3) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.b(true);
-      }
-      if ((paramInt3 == 0) || (!MystoryListView.a(this.a))) {
+      nyj.a(this.jdField_a_of_type_Nyj).addAll(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList);
+      if ((!paramGetFeedCommentEvent.jdField_a_of_type_Boolean) && (nyj.b(this.jdField_a_of_type_Nyj) < 10))
+      {
+        SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(nyj.b(this.jdField_a_of_type_Nyj)));
+        nyj.a(this.jdField_a_of_type_Nyj).c();
         return;
       }
-      View localView = paramAbsListView.getChildAt(0);
-      j = localView.getTop();
-      k = localView.getBottom();
-      m = localView.getHeight();
-      if (paramInt1 <= MystoryListView.c(this.a)) {
-        break label257;
-      }
-      MystoryListView.b(this.a, MystoryListView.d(this.a) + MystoryListView.e(this.a));
-      i = j - MystoryListView.d(this.a);
-    }
-    for (;;)
-    {
-      MystoryListView.e(this.a, MystoryListView.g(this.a) + i);
-      MystoryListView.f(this.a, i + MystoryListView.b(this.a));
-      MystoryListView.b(this.a, j);
-      MystoryListView.c(this.a, k);
-      MystoryListView.d(this.a, m);
-      MystoryListView.a(this.a, paramInt1);
-      if (MystoryListView.a(this.a) == null) {
-        break;
-      }
-      MystoryListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = nyj.a(this.jdField_a_of_type_Nyj);
+      SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(nyj.a(this.jdField_a_of_type_Nyj).size()));
+      nyj.a(this.jdField_a_of_type_Nyj, paramGetFeedCommentEvent);
       return;
-      label257:
-      if (paramInt1 < MystoryListView.c(this.a))
-      {
-        MystoryListView.c(this.a, MystoryListView.f(this.a) - MystoryListView.e(this.a));
-        i = k - MystoryListView.f(this.a);
-      }
-      else
-      {
-        i = k - MystoryListView.f(this.a);
-      }
     }
+    paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = nyj.a(this.jdField_a_of_type_Nyj);
+    SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(nyj.a(this.jdField_a_of_type_Nyj).size()));
+    nyj.b(this.jdField_a_of_type_Nyj, paramGetFeedCommentEvent);
   }
 }
 

@@ -48,7 +48,7 @@ public class MaskView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842825);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842924);
     this.jdField_a_of_type_Int = AIOUtils.a(3.0F, getResources());
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     int j;

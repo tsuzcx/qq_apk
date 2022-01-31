@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import anlh;
+import aobm;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory;
 
@@ -71,7 +71,7 @@ public class ElasticImageView
   
   private ValueAnimator a(float paramFloat1, float paramFloat2, long paramLong)
   {
-    return AnimatorFactory.a(paramLong, paramFloat1, paramFloat2, new anlh(this));
+    return AnimatorFactory.a(paramLong, paramFloat1, paramFloat2, new aobm(this));
   }
   
   private void a()

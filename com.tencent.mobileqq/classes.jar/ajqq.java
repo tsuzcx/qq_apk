@@ -1,58 +1,40 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.SoftReference;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class ajqq
-  implements View.OnClickListener
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public ajqq(QQCustomDialogWtihInput paramQQCustomDialogWtihInput, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ajqq(TroopRobotManager paramTroopRobotManager, TroopRobotManager.Callback paramCallback) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramView = QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).getText().toString();
-    if (paramView != null)
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      if ((!QQText.a(paramView)) && (!QQText.b(paramView))) {
-        break label78;
-      }
-      paramView = (Context)QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).get();
-      if (paramView != null)
-      {
-        paramView = new QQToast(paramView);
-        paramView.d(2000);
-        paramView.c(2131436496);
-        paramView.a();
-      }
-    }
-    label78:
-    do
-    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager$Callback.a(paramInt, paramBundle);
       return;
-      if ((QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput) != null) || (24 >= paramView.getBytes().length)) {
-        break;
-      }
-      paramView = (Context)QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).get();
-    } while (paramView == null);
-    paramView = new QQToast(paramView);
-    paramView.d(2000);
-    paramView.c(2131436495);
-    paramView.a();
-    return;
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput, 1);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput.dismiss();
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqq
  * JD-Core Version:    0.7.0.1
  */

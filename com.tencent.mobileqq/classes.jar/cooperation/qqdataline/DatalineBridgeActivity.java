@@ -1,7 +1,7 @@
 package cooperation.qqdataline;
 
-import alye;
-import alyf;
+import amoi;
+import amoj;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -271,8 +271,8 @@ public class DatalineBridgeActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131558448));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在加载，请稍候...");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new alye(this));
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new alyf(this), 300L);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new amoi(this));
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new amoj(this), 300L);
     return true;
   }
   

@@ -14,14 +14,14 @@ public class CampusCircleBaseActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    setContentView(2130970254);
+    setContentView(2130970270);
     switch (getIntent().getIntExtra("tag_busi_id", 0))
     {
     }
     for (paramBundle = null; paramBundle != null; paramBundle = new CampusCircleSelTopicFragment())
     {
       FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-      localFragmentTransaction.add(2131364393, paramBundle);
+      localFragmentTransaction.add(2131364417, paramBundle);
       localFragmentTransaction.commit();
       return bool;
     }
@@ -31,7 +31,7 @@ public class CampusCircleBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCircleBaseActivity
  * JD-Core Version:    0.7.0.1
  */

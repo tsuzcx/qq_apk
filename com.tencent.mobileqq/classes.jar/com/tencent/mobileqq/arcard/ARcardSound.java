@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.arcard;
 
-import aagk;
-import aagl;
+import aanl;
+import aanm;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 import android.text.TextUtils;
@@ -30,6 +30,7 @@ public class ARcardSound
   private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap(10);
   private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   public ARcardSound()
   {
@@ -46,6 +47,31 @@ public class ARcardSound
     }
   }
   
+  private void b()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        aanm localaanm = (aanm)((Map.Entry)localIterator.next()).getValue();
+        if ((localaanm != null) && (localaanm.c()))
+        {
+          this.jdField_a_of_type_AndroidMediaSoundPool.pause(localaanm.a);
+          localaanm.c = 2;
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("Sound", 2, "stopSound exception", localException);
+      }
+    }
+  }
+  
   private void b(String paramString)
   {
     if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)) {
@@ -57,7 +83,7 @@ public class ARcardSound
   
   public void a()
   {
-    ThreadManager.post(new aagk(this), 8, null, true);
+    ThreadManager.post(new aanl(this), 8, null, true);
   }
   
   public void a(String paramString)
@@ -77,6 +103,78 @@ public class ARcardSound
     QLog.e("Sound", 2, "playBackgroundMusic file not exist");
     return;
     b(paramString);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    int i = -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("Sound", 2, "playSound resPath: " + paramString);
+    }
+    this.b = false;
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.e("Sound", 2, "playSound resPath is empty!");
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (new File(paramString).exists()) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("Sound", 2, "playSound file not exist");
+        return;
+      } while (this.b);
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+        break;
+      }
+      b();
+      paramString = (aanm)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    } while (paramString == null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Sound", 2, "playSound contains resPath, state: " + paramString.c);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (paramString.b())
+      {
+        localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
+        j = paramString.b;
+        if (paramBoolean) {
+          paramString.a = localSoundPool.play(j, 1.0F, 1.0F, 0, i, 1.0F);
+        }
+      }
+      while (!paramString.c()) {
+        for (;;)
+        {
+          paramString.c = 3;
+          return;
+          i = 0;
+        }
+      }
+      SoundPool localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
+      int j = paramString.b;
+      if (paramBoolean) {}
+      for (;;)
+      {
+        paramString.a = localSoundPool.play(j, 1.0F, 1.0F, 0, i, 1.0F);
+        break;
+        i = 0;
+      }
+    }
+    paramString.c = 4;
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Sound", 2, "playSound not contains resPath, load");
+    }
+    i = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString, 1);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, new aanm(this, i, 3));
   }
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
@@ -103,18 +201,18 @@ public class ARcardSound
         {
           if (localIterator.hasNext())
           {
-            localaagl = (aagl)((Map.Entry)localIterator.next()).getValue();
-            if ((localaagl != null) && (localaagl.b == paramInt1))
+            localaanm = (aanm)((Map.Entry)localIterator.next()).getValue();
+            if ((localaanm != null) && (localaanm.b == paramInt1))
             {
-              if (localaagl.a())
+              if (localaanm.a())
               {
-                localaagl.c = 2;
+                localaanm.c = 2;
                 return;
               }
-              if (localaagl.b()) {
+              if (localaanm.c()) {
                 if (!this.jdField_a_of_type_Boolean)
                 {
-                  localaagl.a = paramSoundPool.play(paramInt1, 1.0F, 1.0F, 0, -1, 1.0F);
+                  localaanm.a = paramSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F);
                   return;
                 }
               }
@@ -124,13 +222,13 @@ public class ARcardSound
       }
       catch (Exception paramSoundPool)
       {
-        aagl localaagl;
+        aanm localaanm;
         paramSoundPool.printStackTrace();
         if (QLog.isColorLevel())
         {
           QLog.e("Sound", 2, "onLoadComplete exception", paramSoundPool);
           return;
-          localaagl.c = 4;
+          localaanm.c = 4;
         }
       }
     }
@@ -154,7 +252,7 @@ public class ARcardSound
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARcardSound
  * JD-Core Version:    0.7.0.1
  */

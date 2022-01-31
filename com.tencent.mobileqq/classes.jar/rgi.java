@@ -1,27 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class rgi
-  implements View.OnClickListener
+  extends AccountObserver
 {
-  public rgi(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  public rgi(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void onDeleteAccount(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getWindow() != null)) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.dismiss();
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, -1, this.jdField_a_of_type_JavaLangString);
-      label58:
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a = null;
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      break label58;
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "onDeleteAccount isSuccess " + paramBoolean);
     }
   }
 }

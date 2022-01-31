@@ -1,24 +1,15 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.List;
+import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
+import com.tencent.biz.qqstory.comment.FeedLikeLego;
 
-public class ncf
-  implements BatchHandlerListPuller.IPullResultCallback
+class ncf
+  implements Runnable
 {
-  public ncf(VidToVideoInfoPuller paramVidToVideoInfoPuller, List paramList) {}
+  ncf(nce paramnce) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Vid list to video info list finish !");
-    if (paramBoolean) {}
-    for (String str = "Every task success";; str = "Some task error")
-    {
-      SLog.d("Q.qqstory.net:VidToVideoInfoPuller", str);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller.a(this.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
-      return;
-    }
+    this.a.a.a(this.a.a.a);
+    ((FeedCommentLikeLego)this.a.a.a()).d();
   }
 }
 

@@ -22,10 +22,10 @@ import com.tencent.widget.HorizontalListView;
 import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 import java.util.ArrayList;
 import java.util.Iterator;
-import xpq;
-import xpr;
-import xps;
-import xpv;
+import xsw;
+import xsx;
+import xsy;
+import xtb;
 
 public class PtvTemplateAdapter
   extends BaseAdapter
@@ -36,14 +36,14 @@ public class PtvTemplateAdapter
   Context jdField_a_of_type_AndroidContentContext;
   public Handler a;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private PtvTemplateAdapter.IPtvTemplateItemCallback jdField_a_of_type_ComTencentMobileqqActivityRichmediaPtvTemplateAdapter$IPtvTemplateItemCallback = new xpr(this);
+  private PtvTemplateAdapter.IPtvTemplateItemCallback jdField_a_of_type_ComTencentMobileqqActivityRichmediaPtvTemplateAdapter$IPtvTemplateItemCallback = new xsx(this);
   private PtvTemplateAdapter.IPtvTemplateItemChangedCallback jdField_a_of_type_ComTencentMobileqqActivityRichmediaPtvTemplateAdapter$IPtvTemplateItemChangedCallback;
   private PtvTemplateAdapter.IPtvTemplateItemSelectedCallback jdField_a_of_type_ComTencentMobileqqActivityRichmediaPtvTemplateAdapter$IPtvTemplateItemSelectedCallback;
   public FSurfaceViewLayout a;
-  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new xps(this);
+  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new xsy(this);
   public PtvTemplateManager.PtvTemplateInfo a;
   PtvTemplateManager jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager;
-  HorizontalListView.OnScrollStateChangedListener jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener = new xpv(this);
+  HorizontalListView.OnScrollStateChangedListener jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener = new xtb(this);
   public HorizontalListView a;
   public String a;
   public ArrayList a;
@@ -55,7 +55,7 @@ public class PtvTemplateAdapter
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new xpq(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new xsw(this));
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;

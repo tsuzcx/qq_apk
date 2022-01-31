@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.view;
 
-import agej;
+import agsl;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION;
@@ -81,10 +81,10 @@ public class VipPhotoViewForSimple$PhotoAdapter
     View localView;
     if (paramView == null)
     {
-      paramViewGroup = new agej(this);
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970963, null);
+      paramViewGroup = new agsl(this);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971011, null);
       localView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.c, this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple.d));
-      paramViewGroup.a = ((URLImageView)localView.findViewById(2131372381));
+      paramViewGroup.a = ((URLImageView)localView.findViewById(2131372553));
       localView.setTag(paramViewGroup);
       paramViewGroup.a.setTag(new DataTag(25, Integer.valueOf(paramInt)));
       paramViewGroup.a.setOnClickListener(VipPhotoViewForSimple.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipPhotoViewForSimple));
@@ -128,7 +128,7 @@ public class VipPhotoViewForSimple$PhotoAdapter
       }
       paramViewGroup.a.setContentDescription("照片 " + (paramInt + 1));
       return localView;
-      paramViewGroup = (agej)paramView.getTag();
+      paramViewGroup = (agsl)paramView.getTag();
       localView = paramView;
       break;
       localView.setBackgroundDrawable(null);

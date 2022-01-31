@@ -24,6 +24,7 @@ public final class qqstory_struct$StoryVideoFullInfo
   public final PBUInt64Field group_id = PBField.initUInt64(0L);
   public qqstory_struct.VideoSpreadGroupList group_list = new qqstory_struct.VideoSpreadGroupList();
   public qqstory_struct.InteractPasterInfo interact_paster_info = new qqstory_struct.InteractPasterInfo();
+  public final PBUInt32Field player_scale_type = PBField.initUInt32(0);
   public final PBRepeatField poll_options = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBStringField poll_text = PBField.initString("");
   public qqstory_struct.QimVideoInfo qim_video_info = new qqstory_struct.QimVideoInfo();
@@ -38,6 +39,7 @@ public final class qqstory_struct$StoryVideoFullInfo
   public final PBUInt32Field video_source = PBField.initUInt32(0);
   public qqstory_struct.TagInfoBase video_tag = new qqstory_struct.TagInfoBase();
   public final PBBytesField video_url = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField ws_schema = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
   {
@@ -47,7 +49,8 @@ public final class qqstory_struct$StoryVideoFullInfo
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58, 64, 72, 82, 88, 98, 104, 112, 120, 130, 136, 146, 154, 162, 170, 178, 184 }, new String[] { "error", "vid", "type", "union_id", "video_url", "video_cover", "doodle_url", "create_time", "duration", "video_attr", "ban_type", "group_list", "video_source", "url_flag", "group_id", "video_tag", "video_index", "poll_text", "poll_options", "compressed_video", "qim_video_info", "interact_paster_info", "source_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro6, Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, Long.valueOf(0L), "", "", null, null, null, Integer.valueOf(0) }, StoryVideoFullInfo.class);
+    ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58, 64, 72, 82, 88, 98, 104, 112, 120, 130, 136, 146, 154, 162, 170, 178, 184, 192, 202 }, new String[] { "error", "vid", "type", "union_id", "video_url", "video_cover", "doodle_url", "create_time", "duration", "video_attr", "ban_type", "group_list", "video_source", "url_flag", "group_id", "video_tag", "video_index", "poll_text", "poll_options", "compressed_video", "qim_video_info", "interact_paster_info", "source_type", "player_scale_type", "ws_schema" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro6, Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, Long.valueOf(0L), "", "", null, null, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro7 }, StoryVideoFullInfo.class);
   }
 }
 

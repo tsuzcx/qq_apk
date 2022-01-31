@@ -1,10 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import com.tencent.qphone.base.util.QLog;
 
 public final class ujn
-  implements DialogInterface.OnClickListener
+  implements WebProcessManager.WebProcessStartListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
+      }
+      AIOOpenWebMonitor.a();
+    }
+  }
 }
 
 

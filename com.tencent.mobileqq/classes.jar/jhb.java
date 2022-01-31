@@ -1,23 +1,14 @@
-import com.tencent.av.business.manager.report.VideoNodeReporter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class jhb
+public final class jhb
   implements Runnable
 {
-  public jhb(VideoNodeReporter paramVideoNodeReporter, String paramString) {}
+  public jhb(Context paramContext) {}
   
   public void run()
   {
-    QLog.d("VideoNodeReporter", 1, "updateCrashType ,crashType = " + this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a.iterator();
-      while (localIterator.hasNext()) {
-        ((jhd)localIterator.next()).d = this.jdField_a_of_type_JavaLangString;
-      }
-    }
+    QQToast.a(this.a, this.a.getString(2131429501), 0).a();
   }
 }
 

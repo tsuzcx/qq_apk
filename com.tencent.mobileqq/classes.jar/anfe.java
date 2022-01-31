@@ -1,42 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoVote;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.plugin.IPluginManager;
+import cooperation.troop.TroopPluginManager;
+import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class anfe
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  static
+  public anfe(TroopPluginManager paramTroopPluginManager, String paramString, TroopPluginManager.TroopPluginCallback paramTroopPluginCallback) {}
+  
+  public void run()
   {
-    if (!EditVideoVote.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
+    Object localObject = (QQAppInterface)this.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {
       return;
     }
-  }
-  
-  public anfe(EditVideoVote paramEditVideoVote, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    VoteLayer.VoteItem localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoVote.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localVoteItem == null)) {
-      throw new AssertionError();
+    if (((IPluginManager)((QQAppInterface)localObject).getManager(26)).isPlugininstalled(this.jdField_a_of_type_JavaLangString))
+    {
+      localObject = this.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
+      ((Message)localObject).obj = this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback;
+      ((Message)localObject).arg1 = 0;
+      ((Message)localObject).sendToTarget();
+      return;
     }
-    EditVideoVote.a(paramDialogInterface, localVoteItem);
-    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoVote.a.a(35, paramDialogInterface);
+    if (this.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(this.jdField_a_of_type_JavaLangString))
+    {
+      localObject = this.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
+      ((Message)localObject).obj = this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback;
+      ((Message)localObject).arg1 = 1;
+      ((Message)localObject).sendToTarget();
+    }
+    this.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(this.jdField_a_of_type_JavaLangString);
+    ThreadManager.post(new anfg(this.jdField_a_of_type_CooperationTroopTroopPluginManager, this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback, this.jdField_a_of_type_JavaLangString), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfe
  * JD-Core Version:    0.7.0.1
  */

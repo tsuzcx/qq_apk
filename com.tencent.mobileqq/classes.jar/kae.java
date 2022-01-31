@@ -1,23 +1,18 @@
-import android.os.Handler;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
-import com.tencent.av.ui.funchat.record.FileSwapHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.SysCallTransparentActivity;
+import com.tencent.av.utils.PstnUtils;
 
-public class kae
-  implements Runnable
+class kae
+  implements DialogInterface.OnClickListener
 {
-  public kae(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  kae(kac paramkac, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QavVideoRecordUICtrl.a(this.a, this.a.a());
-    QavVideoRecordUICtrl.b(this.a, FileSwapHelper.a());
-    if (QavVideoRecordUICtrl.a(this.a) < 31457280L) {
-      QavVideoRecordUICtrl.a(this.a).post(new kaf(this));
-    }
-    while (!QavVideoRecordUICtrl.b) {
-      return;
-    }
-    QavVideoRecordUICtrl.a(this.a).sendEmptyMessageDelayed(11, 500L);
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.jdField_a_of_type_Kac.a.app, this.jdField_a_of_type_Kac.a, this.jdField_a_of_type_Int, 16, true);
+    this.jdField_a_of_type_Kac.a.finish();
   }
 }
 

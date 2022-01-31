@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahqt;
+import aiev;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
@@ -24,12 +24,12 @@ public class InitMagnifierSDKData
   
   protected boolean a()
   {
-    Object localObject = "V 7.6.0." + ApkUtils.a(BaseApplicationImpl.sApplication);
+    Object localObject = "V 7.6.3." + ApkUtils.a(BaseApplicationImpl.sApplication);
     if (QLog.isColorLevel()) {
       QLog.i("InitMagnifierSDK", 4, "init MagnifierSDK: process =  verson = " + (String)localObject);
     }
     localObject = MagnifierSDK.a(ThreadManager.getSubThreadHandler(), this.a, (String)localObject);
-    ((MagnifierSDK)localObject).a(new ahqt());
+    ((MagnifierSDK)localObject).a(new aiev());
     ((MagnifierSDK)localObject).a(BaseApplicationImpl.getApplication());
     return true;
   }

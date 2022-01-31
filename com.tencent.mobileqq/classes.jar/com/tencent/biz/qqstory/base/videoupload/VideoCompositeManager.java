@@ -17,7 +17,7 @@ import com.tribe.async.async.Bosses;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mzl;
+import naw;
 
 @TargetApi(14)
 public class VideoCompositeManager
@@ -389,7 +389,7 @@ public class VideoCompositeManager
     }
     long l = SystemClock.elapsedRealtime();
     SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "will composite vid:%s", new Object[] { str2 });
-    Bosses.get().postJob(new mzl(this, str2, l));
+    Bosses.get().postJob(new naw(this, str2, l));
   }
 }
 

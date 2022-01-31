@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import acqw;
+import adat;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class WeiYunFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acqw();
+  public static final Parcelable.Creator CREATOR = new adat();
   public int a;
   public long a;
   public String a;

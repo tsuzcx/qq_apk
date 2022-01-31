@@ -1,19 +1,30 @@
-import android.database.DataSetObserver;
-import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.AVLog;
+import com.tencent.av.ui.funchat.zimu.ZimuItemViewFilm;
+import java.lang.ref.WeakReference;
 
-class kdk
-  extends DataSetObserver
+public class kdk
+  extends Handler
 {
-  kdk(kdj paramkdj, EffectCycleViewPager paramEffectCycleViewPager) {}
+  WeakReference a;
   
-  public void onChanged()
+  public kdk(ZimuItemViewFilm paramZimuItemViewFilm)
   {
-    this.jdField_a_of_type_Kdj.notifyDataSetChanged();
+    this.a = new WeakReference(paramZimuItemViewFilm);
   }
   
-  public void onInvalidated()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Kdj.notifyDataSetChanged();
+    ZimuItemViewFilm localZimuItemViewFilm = (ZimuItemViewFilm)this.a.get();
+    if (localZimuItemViewFilm != null) {}
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ZimuItemViewFilm.a(localZimuItemViewFilm);
+    AVLog.c("ZimuItemViewFilm", "ITEM_DISPEAR");
   }
 }
 

@@ -1,14 +1,25 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
-import java.util.List;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lnw
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public lnw(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, List paramList) {}
+  public lnw(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, String paramString, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement.a(this.jdField_a_of_type_JavaUtilList);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement.getActivity());
+    }
   }
 }
 

@@ -1,25 +1,23 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog.OnPriceSelectedListener;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper.GoldMsgChatState;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
 
 public class xbb
-  implements PriceSettingDialog.OnPriceSelectedListener
+  implements View.OnClickListener
 {
-  public xbb(GoldMsgAioState paramGoldMsgAioState, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
+  public xbb(RedPacketRecordFragment paramRedPacketRecordFragment) {}
   
-  public void a(long paramLong)
+  public void onClick(View paramView)
   {
-    GoldMsgChatHelper.GoldMsgChatState localGoldMsgChatState = GoldMsgChatHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    if (localGoldMsgChatState != null) {
-      localGoldMsgChatState.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramLong, 0);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgAioState.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgAioState.a.setText(NumAnim.formatNumber(paramLong / 100.0D, false) + "元");
+    if ((!this.a.e()) && (RedPacketRecordFragment.a(this.a) != null) && (paramView != null))
+    {
+      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
+      localIntent.putExtras(RedPacketRecordFragment.a(this.a));
+      localIntent.putExtra("pay_requestcode", 5);
+      paramView.getContext().startActivity(localIntent);
     }
   }
 }

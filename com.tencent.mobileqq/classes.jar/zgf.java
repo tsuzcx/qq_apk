@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.app.PluginConfigProxy;
-import mqq.observer.ServerConfigObserver;
-import protocol.KQQConfig.GetResourceRespV2;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import mqq.os.MqqHandler;
 
 public class zgf
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver;
-  private GetResourceRespV2 jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public zgf(PluginConfigProxy paramPluginConfigProxy, ServerConfigObserver paramServerConfigObserver, boolean paramBoolean, int paramInt, GetResourceRespV2 paramGetResourceRespV2)
-  {
-    this.jdField_a_of_type_MqqObserverServerConfigObserver = paramServerConfigObserver;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2 = paramGetResourceRespV2;
-  }
+  public zgf(MayknowRecommendManager paramMayknowRecommendManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_MqqObserverServerConfigObserver.onGetPluginConfig(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2);
+    if (MayknowRecommendManager.a(this.a).a.a() == 1)
+    {
+      MayknowRecommendManager.b(this.a);
+      return;
+    }
+    MayknowRecommendManager.a(this.a).postDelayed(this, 5000L);
   }
 }
 

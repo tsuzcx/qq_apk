@@ -1,18 +1,30 @@
-import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class rvx
+public final class rvx
   implements DialogInterface.OnClickListener
 {
-  public rvx(ChatHistory paramChatHistory) {}
+  public rvx(QQAppInterface paramQQAppInterface, Context paramContext, ChatActivityUtils.StartVideoListener paramStartVideoListener, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setEnabled(true);
-    this.a.c.dismiss();
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 2, 12);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (this.jdField_a_of_type_Int == 6) {}
+    for (paramInt = 1;; paramInt = 4)
+    {
+      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063F9", "0X80063F9", paramInt, 0, "", "", "", "");
+      return;
+    }
   }
 }
 

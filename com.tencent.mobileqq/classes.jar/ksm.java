@@ -1,19 +1,18 @@
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class ksm
-  implements Runnable
+public class ksm
+  implements View.OnClickListener
 {
-  ksm(ksl paramksl) {}
+  public ksm(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.e)
-    {
-      this.a.a.K();
-      return;
-    }
-    this.a.a.j();
-    this.a.a.d();
+    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.startActivity(paramView);
   }
 }
 

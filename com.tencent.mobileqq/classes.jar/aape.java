@@ -1,13 +1,18 @@
-import com.tencent.ark.ark.PlayerStub;
-import com.tencent.ark.ark.PlayerStubFactory;
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
 
-public final class aape
-  implements ark.PlayerStubFactory
+class aape
+  implements Runnable
 {
-  public ark.PlayerStub CreateStub()
+  aape(aaoz paramaaoz) {}
+  
+  public void run()
   {
-    return new ArkMediaPlayer();
+    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"wifi".equals(ArkAppEventObserverManager.a(this.a.a))))
+    {
+      ArkAppEventObserverManager.a(this.a.a).a(true, "wifi");
+      ArkAppEventObserverManager.a(this.a.a, "wifi");
+    }
   }
 }
 

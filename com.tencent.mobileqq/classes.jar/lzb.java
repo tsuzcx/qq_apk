@@ -1,18 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
 public class lzb
-  implements lzc
+  implements View.OnTouchListener
 {
-  public lzb(ReadInJoyWebDataManager paramReadInJoyWebDataManager) {}
+  public lzb(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void a(JSONObject paramJSONObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ReadInJoyWebDataManager.a(this.a, paramJSONObject.toString());
-    if (QLog.isColorLevel()) {
-      QLog.w("ReadInJoyWebDataManager", 2, "preLoadMsgBox HttpFetchBizCallback jsonRetData result" + ReadInJoyWebDataManager.a(this.a));
+    paramView = ReadInJoyVideoSearchTagFragment.a(this.a).getCompoundDrawables()[2];
+    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
+    {
+      float f = ReadInJoyVideoSearchTagFragment.a(this.a).getRight() - paramView.getBounds().width();
+      if (paramMotionEvent.getRawX() >= f)
+      {
+        ReadInJoyVideoSearchTagFragment.a(this.a);
+        return true;
+      }
     }
+    return false;
   }
 }
 

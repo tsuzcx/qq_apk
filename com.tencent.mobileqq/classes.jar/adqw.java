@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import com.tencent.mobileqq.magicface.model.RecordVolume.RecordVolumeListener;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
 
 public class adqw
-  implements RecordVolume.RecordVolumeListener
+  implements Runnable
 {
-  public adqw(MagicfaceActionManager paramMagicfaceActionManager) {}
+  public adqw(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, Drawable paramDrawable) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction.a(paramInt, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.b.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqw
  * JD-Core Version:    0.7.0.1
  */

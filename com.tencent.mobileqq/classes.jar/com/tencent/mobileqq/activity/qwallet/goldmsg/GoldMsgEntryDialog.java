@@ -15,14 +15,14 @@ public class GoldMsgEntryDialog
   
   public GoldMsgEntryDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131624517);
+    super(paramContext, 2131624518);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.a = new ImageView(getContext());
-    this.a.setImageResource(2130843976);
+    this.a.setImageResource(2130844100);
     paramBundle = getWindow();
     paramBundle.setContentView(this.a);
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();

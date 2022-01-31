@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.config;
 
-import aayr;
+import abfs;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.armap.ResDownloadManager;
@@ -83,7 +83,7 @@ public class StarConfigCheckHander
   
   public void a(boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new aayr(this, paramBoolean), null, true);
+    ThreadManager.postImmediately(new abfs(this, paramBoolean), null, true);
   }
   
   public boolean a(BaseCheckHandler.ItemConfig paramItemConfig)

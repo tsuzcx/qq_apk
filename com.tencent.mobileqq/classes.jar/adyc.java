@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.mybusiness.MyBusinessServlet;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.ScreenShotUtil.ScreenshotCallback;
 
-public class adyc
-  extends SosoInterface.OnLocationListener
+class adyc
+  implements ScreenShotUtil.ScreenshotCallback
 {
-  public adyc(MyBusinessServlet paramMyBusinessServlet, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  adyc(adyb paramadyb) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyBusinessServlet", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {
-      MyBusinessServlet.a(this.a, paramSosoLbsInfo);
-    }
+    ThreadManager.post(new adyd(this, paramBitmap), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyc
  * JD-Core Version:    0.7.0.1
  */

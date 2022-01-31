@@ -1,22 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 
-public class zwl
+public final class zwl
   implements Runnable
 {
-  public zwl(Interactive3DRenderable paramInteractive3DRenderable, String paramString) {}
-  
-  public void run()
-  {
-    if ((Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).a(Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable) + this.jdField_a_of_type_JavaLangString, true, true);
-    }
-  }
+  public void run() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zwl
  * JD-Core Version:    0.7.0.1
  */

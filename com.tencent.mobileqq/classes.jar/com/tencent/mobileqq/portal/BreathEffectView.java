@@ -24,21 +24,21 @@ public class BreathEffectView
   public void a()
   {
     e();
-    setImageResource(2130842491);
+    setImageResource(2130842583);
     d();
   }
   
   public void b()
   {
     e();
-    setImageResource(2130842208);
+    setImageResource(2130842255);
     d();
   }
   
   public void c()
   {
     e();
-    setImageResource(2130842492);
+    setImageResource(2130842584);
     d();
   }
   
@@ -76,7 +76,7 @@ public class BreathEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.portal.BreathEffectView
  * JD-Core Version:    0.7.0.1
  */

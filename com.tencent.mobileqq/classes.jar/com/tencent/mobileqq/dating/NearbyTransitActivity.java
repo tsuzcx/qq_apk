@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.dating;
 
-import abqn;
-import abqo;
-import abqp;
-import abqq;
+import abxo;
+import abxp;
+import abxq;
+import abxr;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -47,7 +47,7 @@ public class NearbyTransitActivity
   private static long jdField_b_of_type_Long;
   protected int a;
   long jdField_a_of_type_Long;
-  private HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new abqo(this);
+  private HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new abxp(this);
   public QQProgressNotifier a;
   private String jdField_a_of_type_JavaLangString;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
@@ -86,7 +86,7 @@ public class NearbyTransitActivity
         this.e = 1;
       }
       this.jdField_a_of_type_Long = localIntent.getLongExtra("enter_time", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2130970534);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2130970578);
       this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131558448);
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
@@ -287,7 +287,7 @@ public class NearbyTransitActivity
     if (QLog.isDevelopLevel()) {
       NearbyUtils.a("NearbyTransitActivity", "reportResult", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     }
-    ThreadManager.getSubThreadHandler().post(new abqq(paramInt, paramString, paramBoolean, paramLong));
+    ThreadManager.getSubThreadHandler().post(new abxr(paramInt, paramString, paramBoolean, paramLong));
   }
   
   private boolean a(HotChatInfo paramHotChatInfo)
@@ -441,7 +441,7 @@ public class NearbyTransitActivity
         Message localMessage = Message.obtain();
         localMessage.what = 1;
         localMessage.arg1 = 2;
-        localMessage.obj = getString(2131437295);
+        localMessage.obj = getString(2131437312);
         break label182;
         label460:
         localMessage = null;
@@ -471,13 +471,13 @@ public class NearbyTransitActivity
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(5);
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(5, 200L);
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(2, 30000L);
-      ThreadManager.post(new abqp(this, paramWifiPOIInfo), 5, null, true);
+      ThreadManager.post(new abxq(this, paramWifiPOIInfo), 5, null, true);
       return;
     }
     paramWifiPOIInfo = Message.obtain();
     paramWifiPOIInfo.what = 1;
     paramWifiPOIInfo.arg1 = 2;
-    paramWifiPOIInfo.obj = getString(2131437295);
+    paramWifiPOIInfo.obj = getString(2131437312);
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramWifiPOIInfo);
   }
   
@@ -491,7 +491,7 @@ public class NearbyTransitActivity
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(5, 800L);
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(2, 30000L);
     }
-    ThreadManager.getFileThreadHandler().post(new abqn(this));
+    ThreadManager.getFileThreadHandler().post(new abxo(this));
     return false;
   }
   
@@ -522,7 +522,7 @@ public class NearbyTransitActivity
       {
         if (paramMessage.what == 2)
         {
-          str1 = getString(2131437295);
+          str1 = getString(2131437312);
           if ((paramMessage.obj instanceof String)) {
             str1 = (String)paramMessage.obj;
           }
@@ -563,7 +563,7 @@ public class NearbyTransitActivity
       return false;
     } while (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null);
     if (this.e == 1) {}
-    for (String str1 = getString(2131437297);; str1 = getString(2131437296))
+    for (String str1 = getString(2131437314);; str1 = getString(2131437313))
     {
       String str2 = str1;
       if (paramMessage.obj != null)

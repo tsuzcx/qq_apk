@@ -1,43 +1,19 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
 
-public class agct
-  implements ViewPager.OnPageChangeListener
+public final class agct
+  implements Parcelable.Creator
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  
-  public agct(PhotoViewForShopping paramPhotoViewForShopping) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public OcrConfig a(Parcel paramParcel)
   {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (paramInt == 2) {
-      this.b = true;
-    }
-    if (paramInt == 0)
-    {
-      if (this.b)
-      {
-        this.b = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
+    return new OcrConfig(paramParcel);
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt) {}
+  public OcrConfig[] a(int paramInt)
+  {
+    return new OcrConfig[paramInt];
+  }
 }
 
 

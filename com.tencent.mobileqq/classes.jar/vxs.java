@@ -1,50 +1,54 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.PublicAccountHandler.IWeatherInfoListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vxs
-  implements Runnable
+  implements PublicAccountHandler.IWeatherInfoListener
 {
-  public vxs(TroopChatPie paramTroopChatPie) {}
+  public vxs(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    TroopManager localTroopManager = (TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    Object localObject = localTroopManager.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    long l;
-    TroopMemberInfo localTroopMemberInfo;
-    if (localObject != null)
-    {
-      l = NetConnInfoCenter.getServerTime();
-      localObject = ((List)localObject).iterator();
-      l += 2592000L;
-      if (((Iterator)localObject).hasNext())
-      {
-        localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject).next();
-        if ((localTroopMemberInfo.mUniqueTitleExpire > 0) && (localTroopMemberInfo.mUniqueTitleExpire - NetConnInfoCenter.getServerTime() < 259200L) && (!localTroopManager.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopMemberInfo.memberuin)))
-        {
-          ((TroopTipsMsgMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(80)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.a(localTroopMemberInfo), NetConnInfoCenter.getServerTime(), localTroopMemberInfo.mUniqueTitleExpire, 0, 1);
-          localTroopManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopMemberInfo.memberuin, true);
-          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_manage", "", "grp_aio", "exp_expire", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-        }
-      }
-    }
+    int j = 0;
+    String str = "";
+    Object localObject = str;
+    label106:
     for (;;)
     {
-      break;
-      if ((localTroopMemberInfo.mUniqueTitleExpire != 0) && (localTroopMemberInfo.mUniqueTitleExpire != -1) && (localTroopMemberInfo.mUniqueTitleExpire < l))
+      try
       {
-        l = localTroopMemberInfo.mUniqueTitleExpire;
-        continue;
-        localTroopManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l);
-        return;
+        JSONObject localJSONObject = new JSONObject(paramString);
+        localObject = str;
+        paramString = localJSONObject.getString("area");
+        localObject = paramString;
+        int i = localJSONObject.getInt("area_id");
+        int k;
+        localJSONException1.printStackTrace();
+      }
+      catch (JSONException localJSONException1)
+      {
+        try
+        {
+          k = localJSONObject.getInt("switch");
+          j = k;
+          localObject = Message.obtain();
+          ((Message)localObject).what = 6;
+          ((Message)localObject).arg1 = i;
+          ((Message)localObject).arg2 = j;
+          ((Message)localObject).obj = paramString;
+          this.a.a.sendMessage((Message)localObject);
+          return;
+        }
+        catch (JSONException localJSONException2)
+        {
+          break label106;
+        }
+        localJSONException1 = localJSONException1;
+        i = 0;
+        paramString = (String)localObject;
       }
     }
   }

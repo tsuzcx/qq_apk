@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.EmosmActivity;
 
-class sml
+public class sml
   implements Runnable
 {
-  sml(smk paramsmk) {}
+  public sml(EmosmActivity paramEmosmActivity) {}
   
   public void run()
   {
-    this.a.a.n();
+    this.a.d();
   }
 }
 

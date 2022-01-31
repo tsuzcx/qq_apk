@@ -1,18 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceText;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.doodle.PlayLastLogic;
+import java.lang.ref.WeakReference;
 
 public class usz
-  implements DialogInterface.OnClickListener
 {
-  public usz(DeviceTextItemBuilder paramDeviceTextItemBuilder, MessageForDeviceText paramMessageForDeviceText) {}
+  public int a;
+  public long a;
+  public WeakReference a;
+  public long b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public usz(PlayLastLogic paramPlayLastLogic, long paramLong1, long paramLong2, int paramInt, DoodleMsgLayout paramDoodleMsgLayout)
   {
-    ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong1;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleMsgLayout);
   }
 }
 

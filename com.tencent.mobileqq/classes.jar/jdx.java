@@ -1,16 +1,22 @@
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class jdx
   implements Runnable
 {
-  public jdx(VideoController paramVideoController, int paramInt, long paramLong) {}
+  jdx(VideoController paramVideoController) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvVideoController.i = null;
-    this.jdField_a_of_type_ComTencentAvVideoController.a().a("acceptGAudioChat", 0);
-    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 16, 0);
+    if (this.a.a() == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "MultiHideCallNotAcceptRunnable");
+    }
+    this.a.a().L = false;
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(702) });
   }
 }
 

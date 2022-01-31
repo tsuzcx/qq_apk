@@ -41,10 +41,10 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
-import uyr;
-import uyt;
-import uyu;
-import uyv;
+import vbt;
+import vbv;
+import vbw;
+import vbx;
 
 public class MedalNewsItemBuilder
   extends AbstractChatItemBuilder
@@ -60,8 +60,8 @@ public class MedalNewsItemBuilder
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Int = ((int)paramContext.getResources().getDimension(2131559446));
-    this.jdField_b_of_type_Int = ((int)paramContext.getResources().getDimension(2131559463));
+    this.jdField_a_of_type_Int = ((int)paramContext.getResources().getDimension(2131559448));
+    this.jdField_b_of_type_Int = ((int)paramContext.getResources().getDimension(2131559465));
     int i = this.d;
     int j = this.c;
     this.jdField_a_of_type_AndroidContentResColorStateList = new ColorStateList(new int[][] { { 16842919 }, new int[0] }, new int[] { i, j });
@@ -95,26 +95,26 @@ public class MedalNewsItemBuilder
     return i;
   }
   
-  private View a(View paramView, uyv paramuyv)
+  private View a(View paramView, vbx paramvbx)
   {
     View localView = paramView;
     if (paramView == null)
     {
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968751, null);
-      paramuyv.c = ((TextView)paramView.findViewById(2131362736));
-      paramuyv.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362701));
-      paramuyv.d = ((TextView)paramView.findViewById(2131363561));
-      paramuyv.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363360));
-      paramuyv.e = ((TextView)paramView.findViewById(2131362710));
-      paramuyv.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363385));
-      paramuyv.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131363559));
+      paramvbx.c = ((TextView)paramView.findViewById(2131362754));
+      paramvbx.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362719));
+      paramvbx.d = ((TextView)paramView.findViewById(2131363579));
+      paramvbx.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363378));
+      paramvbx.e = ((TextView)paramView.findViewById(2131362728));
+      paramvbx.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363403));
+      paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131363577));
     }
     try
     {
-      paramuyv.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageResource(2130842623);
-      paramuyv.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(AIOUtils.a(3.0F, paramuyv.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getResources()));
-      paramuyv.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressMask(true);
-      Object localObject = paramuyv.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawables();
+      paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageResource(2130842722);
+      paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(AIOUtils.a(3.0F, paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getResources()));
+      paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressMask(true);
+      Object localObject = paramvbx.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawables();
       localView = localObject[0];
       localObject = localObject[2];
       localView.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
@@ -122,14 +122,14 @@ public class MedalNewsItemBuilder
       localView = paramView;
       if (jdField_b_of_type_Boolean)
       {
-        paramuyv.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
+        paramvbx.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
         localView = paramView;
       }
       if (jdField_b_of_type_Boolean)
       {
         localView.setContentDescription(null);
-        paramuyv.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramuyv.jdField_b_of_type_JavaLangStringBuilder.length(), "");
-        paramuyv.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setContentDescription(null);
+        paramvbx.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramvbx.jdField_b_of_type_JavaLangStringBuilder.length(), "");
+        paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setContentDescription(null);
       }
       return localView;
     }
@@ -140,7 +140,7 @@ public class MedalNewsItemBuilder
         try
         {
           System.gc();
-          paramuyv.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageResource(2130842623);
+          paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageResource(2130842722);
         }
         catch (Throwable localThrowable) {}
       }
@@ -256,7 +256,7 @@ public class MedalNewsItemBuilder
       localIntent.putExtra("url", localMedalWallMng.a(paramBoolean, paramString, i));
       this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
       if (paramBoolean) {
-        ThreadManager.post(new uyu(this), 0, null, false);
+        ThreadManager.post(new vbw(this), 0, null, false);
       }
       return;
     }
@@ -265,7 +265,7 @@ public class MedalNewsItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramOnLongClickAndTouchListener = (MessageForMedalNews)paramMessageRecord;
-    paramLinearLayout = (uyv)paramViewHolder;
+    paramLinearLayout = (vbx)paramViewHolder;
     paramView = a(paramView, paramLinearLayout);
     paramLinearLayout.jdField_a_of_type_Long = paramOnLongClickAndTouchListener.uniseq;
     paramLinearLayout.jdField_a_of_type_JavaLangString = paramOnLongClickAndTouchListener.frienduin;
@@ -319,7 +319,7 @@ public class MedalNewsItemBuilder
     if (j != 0)
     {
       localObject = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, 6);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131439093, new Object[] { localObject });
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131439121, new Object[] { localObject });
       if (!paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView.getText().equals(localObject)) {
         paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       }
@@ -371,8 +371,8 @@ public class MedalNewsItemBuilder
     switch (n)
     {
     default: 
-      j = 2130842635;
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493407);
+      j = 2130842734;
+      i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493410);
       label512:
       this.jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(i, PorterDuff.Mode.SRC_IN);
       paramViewHolder = paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawables();
@@ -390,7 +390,7 @@ public class MedalNewsItemBuilder
         paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(n));
         paramLinearLayout.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(paramLinearLayout);
-        paramLinearLayout.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setOnClickListener(new uyr(this, paramOnLongClickAndTouchListener));
+        paramLinearLayout.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setOnClickListener(new vbt(this, paramOnLongClickAndTouchListener));
         if (paramOnLongClickAndTouchListener.myLevel != 0) {
           break label944;
         }
@@ -403,11 +403,11 @@ public class MedalNewsItemBuilder
       if (paramLinearLayout.e.getVisibility() != i) {
         paramLinearLayout.e.setVisibility(i);
       }
-      paramMessageRecord = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131439094);
+      paramMessageRecord = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131439122);
       if (!paramMessageRecord.equalsIgnoreCase(paramLinearLayout.e.getText().toString()))
       {
         paramMessageRecord = new SpannableString(paramMessageRecord);
-        paramMessageRecord.setSpan(new DatingCommentTextView.TouchableSpan(new uyt(this), this.jdField_a_of_type_AndroidContentResColorStateList), 11, 14, 33);
+        paramMessageRecord.setSpan(new DatingCommentTextView.TouchableSpan(new vbv(this), this.jdField_a_of_type_AndroidContentResColorStateList), 11, 14, 33);
         paramLinearLayout.e.setText(paramMessageRecord);
         paramLinearLayout.e.setMovementMethod(LinkMovementMethod.getInstance());
       }
@@ -422,11 +422,11 @@ public class MedalNewsItemBuilder
       break;
       paramLinearLayout.c.setTextSize(1, 15.0F);
       break label378;
-      j = 2130842633;
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493409);
+      j = 2130842732;
+      i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493412);
       break label512;
-      j = 2130842634;
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493408);
+      j = 2130842733;
+      i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493411);
       break label512;
       paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       break label628;
@@ -435,7 +435,7 @@ public class MedalNewsItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new uyv(this);
+    return new vbx(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

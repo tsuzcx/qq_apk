@@ -1,34 +1,22 @@
-import android.database.Cursor;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.qcall.QCallProxy;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class aghh
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aghh(QCallProxy paramQCallProxy, String paramString) {}
+  public aghh(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Cursor localCursor = QCallProxy.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy, this.jdField_a_of_type_JavaLangString);
-    if (localCursor != null)
-    {
-      int i = localCursor.getColumnIndex("name");
-      while (localCursor.moveToNext())
-      {
-        String str = SecurityUtile.a(localCursor.getString(i));
-        int j = QCallProxy.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy, str);
-        if (j != -1) {
-          QCallProxy.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy).a(this.jdField_a_of_type_JavaLangString, j, str, null, null, 2, null);
-        }
-      }
-      localCursor.close();
-    }
+    this.a.startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghh
  * JD-Core Version:    0.7.0.1
  */

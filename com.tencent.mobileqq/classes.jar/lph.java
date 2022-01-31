@@ -1,14 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.List;
 
 public class lph
   implements Runnable
 {
-  public lph(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
+  public lph(ArticleInfoModule paramArticleInfoModule) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_Int);
+    List localList = this.a.a.a(ChannelTopCookie.class, true, null, null, null, null, null, null);
+    this.a.a(localList);
   }
 }
 

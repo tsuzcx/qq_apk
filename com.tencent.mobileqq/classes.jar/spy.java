@@ -1,32 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
-import com.tencent.mobileqq.data.Card;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
 
 public class spy
-  implements sqp
+  implements TroopManager.callbackInMainThread
 {
-  public spy(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public spy(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(Object paramObject)
   {
-    switch (paramInt)
+    if ((paramObject instanceof String))
     {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
     }
-    String str;
-    do
-    {
-      return;
-      str = FriendProfileMoreInfoActivity.b(this.a).getText().toString();
-    } while ((paramString == null) || (paramString.equals(str)));
-    this.a.l = true;
-    this.a.e(paramString);
-    if (CampusCircleHelper.b(this.a.a.lCampusSchoolID) == 4)
-    {
-      this.a.a("0X80081EA", 0);
-      return;
-    }
-    this.a.a("0X80081EC", 1);
   }
 }
 

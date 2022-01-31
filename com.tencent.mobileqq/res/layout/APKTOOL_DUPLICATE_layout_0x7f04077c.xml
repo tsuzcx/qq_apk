@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a090d" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a237a" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a237b" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c020f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a237c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020800" android:layout_alignParentRight="true" />
-</merge>
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02160f" />
+        <TextView android:textSize="18.0dip" android:textColor="#ffbbbbbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1e0b" />
+    </LinearLayout>
+</RelativeLayout>

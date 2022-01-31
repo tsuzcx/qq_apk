@@ -1,28 +1,102 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.av.utils.PSTNNotification;
+import android.text.TextUtils;
+import com.tencent.av.ui.ConferenceFlyTicketActivity;
+import com.tencent.av.utils.download.DownloadParams;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class jrs
-  implements Runnable
+  extends DiscussionObserver
 {
-  public jrs(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jrs(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    this.a.c.setText(this.a.getResources().getString(2131429556));
-    this.a.a.a(1);
-    this.a.a(this.a.b, false, 2130840119);
-    this.a.b.setClickable(true);
-    if (CallbackWaitingActivityExt.a(this.a) != null)
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onGetFlyTicket, isSuccess[" + paramBoolean + "], errorCode[" + paramInt + "], validTime[" + paramLong1 + "], sigUrl[" + paramString1 + "], shortUrl[" + paramString2 + "], discussionUin[" + paramLong2 + "], mDiscID[" + this.a.h + "]");
+    if (paramBoolean)
     {
-      CallbackWaitingActivityExt.a(this.a).a().a().b = 2;
-      CallbackWaitingActivityExt.a(this.a).a().e(true);
-      CallbackWaitingActivityExt.a(this.a).a().c(true);
+      if (!TextUtils.isEmpty(this.a.h))
+      {
+        this.a.jdField_a_of_type_Jrt = new jrt(this.a);
+        paramString1 = new ArrayList();
+        DownloadParams localDownloadParams = new DownloadParams();
+        localDownloadParams.jdField_a_of_type_JavaLangString = ("http://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/createConfCallback?feedkey=" + this.a.b);
+        this.a.d = paramString2.substring("http://url.cn/".length(), paramString2.length() - "#flyticket".length());
+        QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onGetFlyTicket, mTicket[" + this.a.d + "]");
+        localDownloadParams.jdField_a_of_type_JavaLangString = (localDownloadParams.jdField_a_of_type_JavaLangString + "&ret=0&ticket=" + this.a.d);
+        paramString1.add(localDownloadParams);
+        this.a.jdField_a_of_type_Jrt.execute(new ArrayList[] { paramString1 });
+      }
+      return;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.c(paramLong2);
+    this.a.a(1, paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt)
+  {
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onJoinDiscussionByFlyTicket, isSuccess[" + paramBoolean + "], discussUin[" + paramLong + "], errorCode[" + paramInt + "], mDiscID[" + this.a.h + "]");
+    if (paramBoolean)
+    {
+      this.a.h = String.valueOf(paramLong);
+      if (!TextUtils.isEmpty(this.a.h)) {
+        ((DiscussionHandler)this.a.app.a(6)).a(paramLong);
+      }
+      return;
+    }
+    this.a.a(1, paramInt);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "DiscussObserver.onUpdate, type[" + paramInt + "], isSuccess[" + paramBoolean + "], mDiscID[" + this.a.h + "]");
+    if (paramInt == 1001)
+    {
+      AudioHelper.b("获取讨论组资料_rsp");
+      if ((paramObject instanceof ArrayList))
+      {
+        paramObject = (ArrayList)paramObject;
+        paramObject = new Object[] { String.valueOf(paramObject.get(0)), paramObject.get(1) };
+        str = (String)paramObject[0];
+        ((Boolean)paramObject[1]).booleanValue();
+        if ((this.a.h.equals(str)) && (paramBoolean))
+        {
+          this.a.c();
+          this.a.a(this.a.h, this.a.c);
+        }
+        this.a.finish();
+      }
+    }
+    while (1014 != paramInt) {
+      for (;;)
+      {
+        String str;
+        return;
+        paramObject = (Object[])paramObject;
+      }
+    }
+    AudioHelper.b("通过签名加入讨论组_rsp");
+    paramObject = (Long[])paramObject;
+    long l = paramObject[1].longValue();
+    paramInt = paramObject[0].intValue();
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "NOTIFY_TYPE_JOIN_DISCUSSION_BY_FLYY_TICKET, discussUin[" + l + "], errCode[" + paramInt + "], mDiscID[" + this.a.h + "]");
+    if (paramInt == 0)
+    {
+      if (TextUtils.equals(String.valueOf(l), this.a.h))
+      {
+        this.a.c();
+        AudioHelper.b("获取讨论组资料");
+        ((DiscussionHandler)this.a.app.a(6)).a(l);
+        return;
+      }
+      this.a.finish();
+      return;
+    }
+    this.a.finish();
+    this.a.a(1, paramInt);
   }
 }
 

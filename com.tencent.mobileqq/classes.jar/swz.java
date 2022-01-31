@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import mqq.os.MqqHandler;
 
 public class swz
   implements Runnable
 {
-  public swz(LoginInfoActivity paramLoginInfoActivity) {}
+  public swz(Leba paramLeba) {}
   
   public void run()
   {
-    try
-    {
-      if ((LoginInfoActivity.a(this.a) != null) && (LoginInfoActivity.a(this.a).isShowing()))
-      {
-        LoginInfoActivity.a(this.a).dismiss();
-        LoginInfoActivity.a(this.a).cancel();
-      }
-      LoginInfoActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.notifyDataSetChanged();
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(11340005);
   }
 }
 

@@ -1,71 +1,16 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.biz.widgets.ScannerView.FileDecodeListener;
-import com.tencent.biz.widgets.ScannerView.FlashLightListener;
-import com.tencent.biz.widgets.ScannerView.ScannerListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.webviewplugin.OfflineWebResManager;
 
 public class pcc
-  extends Handler
+  implements Runnable
 {
-  public pcc(ScannerView paramScannerView) {}
+  public pcc(OfflineWebResManager paramOfflineWebResManager, SharedPreferences paramSharedPreferences) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 9)
-    {
-      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131429914), 1);
-      paramMessage.setGravity(17, 0, 0);
-      paramMessage.show();
-    }
-    Object localObject;
-    do
-    {
-      return;
-      localObject = ScannerView.a(this.a);
-      if (localObject != null) {}
-      switch (paramMessage.what)
-      {
-      case 3: 
-      case 4: 
-      case 5: 
-      case 6: 
-      default: 
-        localObject = ScannerView.a(this.a);
-        if (localObject != null) {}
-        switch (paramMessage.what)
-        {
-        default: 
-          localObject = ScannerView.a(this.a);
-        }
-        break;
-      }
-    } while (localObject == null);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((ScannerView.FlashLightListener)localObject).a(bool);
-      return;
-      ((ScannerView.ScannerListener)localObject).b(String.valueOf(paramMessage.obj));
-      return;
-      ((ScannerView.ScannerListener)localObject).d();
-      return;
-      ((ScannerView.ScannerListener)localObject).c();
-      return;
-      ((ScannerView.ScannerListener)localObject).b();
-      return;
-      ((ScannerView.FileDecodeListener)localObject).a(String.valueOf(paramMessage.obj));
-      return;
-      ((ScannerView.FileDecodeListener)localObject).a();
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflineWebResManager.b();
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("Last_Check_Cache", System.currentTimeMillis()).commit();
   }
 }
 

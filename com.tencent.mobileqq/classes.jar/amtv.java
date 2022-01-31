@@ -1,48 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.data.CaptureComboManager;
-import dov.com.qq.im.setting.IQIMCameraContainer;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools.DataSet;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import cooperation.qzone.cache.CacheManager;
+import cooperation.qzone.cache.FileStorageHandler.Collector;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
-public class amtv
-  implements Runnable
+public final class amtv
+  implements FileStorageHandler.Collector
 {
-  public amtv(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void run()
+  public Collection a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMEffectCameraCaptureUnit", 2, "onResourceDownload update filterpager begin");
-    }
-    VideoFilterViewPager localVideoFilterViewPager = QIMEffectCameraCaptureUnit.a(this.a);
-    if (localVideoFilterViewPager == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMEffectCameraCaptureUnit", 2, "onResourceDownload filterPager null ");
-      }
-    }
-    do
+    synchronized ()
     {
-      return;
-      localVideoFilterViewPager.setCaptureScene(0);
-      CaptureComboManager localCaptureComboManager = (CaptureComboManager)QIMManager.a(5);
-      QIMPtvTemplateManager localQIMPtvTemplateManager = (QIMPtvTemplateManager)QIMManager.a(3);
-      if (localCaptureComboManager.a() != null) {
-        localVideoFilterViewPager.a(localCaptureComboManager.a().c);
+      if (CacheManager.a().size() <= 0)
+      {
+        localObject1 = null;
+        return localObject1;
       }
-      VideoFilterTools.a().a(null);
-      VideoFilterTools.a().a(null, this.a.a.a(), 0);
-      localQIMPtvTemplateManager.a("0", 0, "");
-    } while (!QLog.isColorLevel());
-    QLog.d("QIMEffectCameraCaptureUnit", 2, "onResourceDownload update filterpager end; postion=" + 0);
+      Object localObject1 = new ArrayList(CacheManager.a().values());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtv
  * JD-Core Version:    0.7.0.1
  */

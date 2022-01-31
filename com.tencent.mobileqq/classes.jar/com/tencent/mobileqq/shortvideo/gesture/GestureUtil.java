@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 import com.tencent.mobileqq.startup.step.UpdateAvSo;
 import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -18,7 +17,7 @@ public class GestureUtil
     for (;;)
     {
       return 11;
-      if (TextUtils.isEmpty(paramDownloadInfo.e))
+      if (TextUtils.isEmpty(paramDownloadInfo.f))
       {
         if (QLog.isDevelopLevel())
         {
@@ -30,11 +29,11 @@ public class GestureUtil
       {
         int i;
         int j;
-        if (paramDownloadInfo.a) {
+        if (paramDownloadInfo.jdField_a_of_type_Boolean) {
           if ((!d(paramDownloadInfo)) || (!c(paramDownloadInfo)))
           {
             i = 11;
-            if (!paramDownloadInfo.jdField_b_of_type_Boolean) {
+            if (!paramDownloadInfo.b) {
               break label132;
             }
             if ((d(paramDownloadInfo)) && (b(paramDownloadInfo))) {
@@ -67,14 +66,9 @@ public class GestureUtil
     return 1;
   }
   
-  static SharedPreferences a()
-  {
-    return BaseApplication.getContext().getSharedPreferences("config_qq.android.qavgesture", 4);
-  }
-  
   public static String a()
   {
-    return UpdateAvSo.a() + "model" + File.separator;
+    return b() + "model" + File.separator;
   }
   
   public static boolean a(DownloadInfo paramDownloadInfo)
@@ -88,14 +82,14 @@ public class GestureUtil
   
   public static String b()
   {
-    return UpdateAvSo.a();
+    return UpdateAvSo.a() + "so763" + File.separator;
   }
   
   public static boolean b(DownloadInfo paramDownloadInfo)
   {
     String str1 = paramDownloadInfo.j;
     paramDownloadInfo = c() + paramDownloadInfo.k;
-    String str2 = a().getString("gamemodel_zip_md5", null);
+    String str2 = DownloadInfo.a().getString("gamemodel_zip_md5", null);
     if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
       if (QLog.isDevelopLevel()) {
         QLog.d("QavGesture", 4, String.format("isGameModelReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
@@ -115,14 +109,14 @@ public class GestureUtil
   
   public static String c()
   {
-    return UpdateAvSo.a() + "gamemodel" + File.separator;
+    return b() + "gamemodel" + File.separator;
   }
   
   public static boolean c(DownloadInfo paramDownloadInfo)
   {
-    String str1 = paramDownloadInfo.d;
+    String str1 = paramDownloadInfo.e;
     paramDownloadInfo = a() + paramDownloadInfo.h;
-    String str2 = a().getString("model_zip_md5", null);
+    String str2 = DownloadInfo.a().getString("model_zip_md5", null);
     if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
       if (QLog.isDevelopLevel()) {
         QLog.d("QavGesture", 4, String.format("isModelReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
@@ -142,9 +136,9 @@ public class GestureUtil
   
   public static boolean d(DownloadInfo paramDownloadInfo)
   {
-    String str1 = paramDownloadInfo.jdField_b_of_type_JavaLangString;
-    paramDownloadInfo = b() + paramDownloadInfo.f;
-    String str2 = a().getString("so_zip_md5", null);
+    String str1 = paramDownloadInfo.c;
+    paramDownloadInfo = b() + paramDownloadInfo.jdField_a_of_type_JavaLangString;
+    String str2 = DownloadInfo.a().getString("so_zip_md5", null);
     if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
       if (QLog.isDevelopLevel()) {
         QLog.d("QavGesture", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));

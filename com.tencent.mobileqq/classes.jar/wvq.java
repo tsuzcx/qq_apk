@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import cooperation.weiyun.utils.PreferenceUtils;
+import java.util.List;
 
-class wvq
-  implements Runnable
+public class wvq
+  implements View.OnClickListener
 {
-  wvq(wvp paramwvp, boolean paramBoolean, String[] paramArrayOfString, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public wvq(AlbumListActivity paramAlbumListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    
-    if (this.jdField_a_of_type_Boolean) {
-      StatisticConstants.e();
+    if (AlbumListActivity.a(this.a)) {
+      PreferenceUtils.a(this.a.getApplicationContext(), this.a.a, "pref_select_album", PreferenceUtils.a(AlbumListActivity.a(this.a).iterator()));
     }
-    try
-    {
-      StatisticConstants.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Int, false, false, -1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
+    if (this.a.i) {
+      StoryReportor.a("pic_choose_slides", "exit_picChoose", 0, 0, new String[0]);
     }
-    catch (Exception localException) {}
+    this.a.onBackPressed();
   }
 }
 

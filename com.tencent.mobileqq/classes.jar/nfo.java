@@ -1,15 +1,22 @@
-import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareData;
+import com.tencent.biz.qqstory.model.HotSortVideoManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler;
+import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse;
+import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetVideoByHotSortEvent;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import java.util.ArrayList;
 
 public class nfo
   implements Runnable
 {
-  public nfo(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
+  public nfo(GetHotSortVideoHandler.GetHotSortVideoResponse paramGetHotSortVideoResponse, ArrayList paramArrayList, GetHotSortVideoHandler.GetVideoByHotSortEvent paramGetVideoByHotSortEvent) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.a.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
+    ((HotSortVideoManager)SuperManager.a(25)).a(this.jdField_a_of_type_JavaUtilArrayList, GetHotSortVideoHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler$GetHotSortVideoResponse.a), true);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler$GetVideoByHotSortEvent.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler$GetVideoByHotSortEvent);
   }
 }
 

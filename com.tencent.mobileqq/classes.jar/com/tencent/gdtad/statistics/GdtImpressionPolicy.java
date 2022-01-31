@@ -7,7 +7,6 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtStatistics;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.views.GdtUIUtils;
 import java.lang.ref.WeakReference;
@@ -30,30 +29,29 @@ public class GdtImpressionPolicy
     this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
   }
   
-  private GdtStatistics a(View paramView)
+  private GdtAd a(View paramView)
   {
     if (paramView == null) {
-      return null;
+      paramView = null;
     }
-    paramView = paramView.getTag(2131362458);
-    if (paramView == null) {
-      return null;
-    }
-    if (!(paramView instanceof GdtAd)) {
-      return null;
-    }
-    paramView = (GdtAd)paramView;
-    GdtStatistics localGdtStatistics = paramView.statistics;
-    if (localGdtStatistics == null) {
-      return null;
-    }
-    if (TextUtils.isEmpty(localGdtStatistics.traceId)) {
-      return null;
-    }
-    if (TextUtils.isEmpty(paramView.getUrlForImpression())) {
-      return null;
-    }
-    return localGdtStatistics;
+    GdtAd localGdtAd;
+    do
+    {
+      return paramView;
+      paramView = paramView.getTag(2131362462);
+      if (paramView == null) {
+        return null;
+      }
+      if (!(paramView instanceof GdtAd)) {
+        return null;
+      }
+      localGdtAd = (GdtAd)paramView;
+      if (TextUtils.isEmpty(localGdtAd.getTraceId())) {
+        return null;
+      }
+      paramView = localGdtAd;
+    } while (!TextUtils.isEmpty(localGdtAd.getUrlForImpression()));
+    return null;
   }
   
   public static GdtImpressionPolicy a()
@@ -70,7 +68,7 @@ public class GdtImpressionPolicy
     }
   }
   
-  private void a(View paramView, GdtStatistics paramGdtStatistics)
+  private void a(View paramView, GdtAd paramGdtAd)
   {
     Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet();
     if (localObject != null)
@@ -81,7 +79,7 @@ public class GdtImpressionPolicy
         String str = (String)((Iterator)localObject).next();
         WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
         if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramView == localWeakReference.get())) {
-          if ((paramGdtStatistics.traceId != null) && (!paramGdtStatistics.traceId.equals(str))) {
+          if ((paramGdtAd.getTraceId() != null) && (!paramGdtAd.getTraceId().equals(str))) {
             a(str);
           }
         }
@@ -129,15 +127,15 @@ public class GdtImpressionPolicy
   public void a(View paramView)
   {
     GdtLog.a("GdtImpressionPolicy", "report view: " + paramView.hashCode());
-    GdtStatistics localGdtStatistics = a(paramView);
-    if (localGdtStatistics == null)
+    GdtAd localGdtAd = a(paramView);
+    if (localGdtAd == null)
     {
       GdtLog.a("GdtImpressionPolicy", "break: statistics == null");
       return;
     }
-    if (localGdtStatistics.reportState == 2)
+    if (localGdtAd.reportState == 2)
     {
-      GdtLog.a("GdtImpressionPolicy", "break: already report " + localGdtStatistics.traceId);
+      GdtLog.a("GdtImpressionPolicy", "break: already report " + localGdtAd.getTraceId());
       return;
     }
     if (!a(paramView))
@@ -145,16 +143,16 @@ public class GdtImpressionPolicy
       GdtLog.a("GdtImpressionPolicy", "break: isVisibleAreaSatisfied not");
       return;
     }
-    a(paramView, localGdtStatistics);
+    a(paramView, localGdtAd);
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
     WeakReference localWeakReference = new WeakReference(paramView);
     localMessage.obj = localWeakReference;
     if (!b(paramView))
     {
-      GdtLog.a("GdtImpressionPolicy", "inCountingMap not " + localGdtStatistics.traceId);
-      a(localGdtStatistics.traceId, localWeakReference);
+      GdtLog.a("GdtImpressionPolicy", "inCountingMap not " + localGdtAd.getTraceId());
+      a(localGdtAd.getTraceId(), localWeakReference);
     }
-    localGdtStatistics.reportState = 1;
+    localGdtAd.reportState = 1;
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
   }
   
@@ -162,7 +160,7 @@ public class GdtImpressionPolicy
   {
     GdtLog.a("GdtImpressionPolicy", "handleMessage : ");
     if ((paramMessage == null) || (paramMessage.obj == null)) {}
-    GdtStatistics localGdtStatistics;
+    GdtAd localGdtAd;
     Object localObject;
     for (;;)
     {
@@ -171,51 +169,51 @@ public class GdtImpressionPolicy
       if (paramMessage.get() != null)
       {
         paramMessage = (View)paramMessage.get();
-        localGdtStatistics = a(paramMessage);
-        if (localGdtStatistics == null)
+        localGdtAd = a(paramMessage);
+        if (localGdtAd == null)
         {
           GdtLog.a("GdtImpressionPolicy", "break: statistics == null");
         }
-        else if (localGdtStatistics.reportState != 1)
+        else if (localGdtAd.reportState != 1)
         {
-          GdtLog.a("GdtImpressionPolicy", "break: statistics.reportState != 1 " + localGdtStatistics.traceId);
+          GdtLog.a("GdtImpressionPolicy", "break: statistics.reportState != 1 " + localGdtAd.getTraceId());
         }
         else if (!a(paramMessage))
         {
-          GdtLog.a("GdtImpressionPolicy", "break: isVisibleAreaSatisfied not " + localGdtStatistics.traceId);
-          localGdtStatistics.reportState = -1;
+          GdtLog.a("GdtImpressionPolicy", "break: isVisibleAreaSatisfied not " + localGdtAd.getTraceId());
+          localGdtAd.reportState = -1;
         }
         else if (!b(paramMessage))
         {
-          GdtLog.a("GdtImpressionPolicy", "break: inCountingMap not " + localGdtStatistics.traceId);
+          GdtLog.a("GdtImpressionPolicy", "break: inCountingMap not " + localGdtAd.getTraceId());
         }
         else
         {
-          localObject = paramMessage.getTag(2131362459);
+          localObject = paramMessage.getTag(2131362463);
           if (localObject == null)
           {
-            GdtLog.a("GdtImpressionPolicy", "break: o2 == null " + localGdtStatistics.traceId);
+            GdtLog.a("GdtImpressionPolicy", "break: o2 == null " + localGdtAd.getTraceId());
           }
           else
           {
             if ((localObject instanceof GdtImpressionPolicy.ReportListener)) {
               break;
             }
-            GdtLog.a("GdtImpressionPolicy", "break: o2 instanceof ReportListener not " + localGdtStatistics.traceId);
+            GdtLog.a("GdtImpressionPolicy", "break: o2 instanceof ReportListener not " + localGdtAd.getTraceId());
           }
         }
       }
     }
     ((GdtImpressionPolicy.ReportListener)localObject).a(paramMessage);
-    localGdtStatistics.reportState = 2;
-    GdtLog.a("GdtImpressionPolicy", "report " + localGdtStatistics.traceId);
-    a(localGdtStatistics.traceId);
+    localGdtAd.reportState = 2;
+    GdtLog.a("GdtImpressionPolicy", "report " + localGdtAd.getTraceId());
+    a(localGdtAd.getTraceId());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtImpressionPolicy
  * JD-Core Version:    0.7.0.1
  */

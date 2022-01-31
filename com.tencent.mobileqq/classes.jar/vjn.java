@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.OnAdapterNotify;
+import com.tencent.mobileqq.app.BizTroopHandler;
 
 class vjn
   implements Runnable
 {
-  vjn(vjm paramvjm) {}
+  vjn(vjm paramvjm, BizTroopHandler paramBizTroopHandler) {}
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(0);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.a(this.jdField_a_of_type_Vjm.a);
   }
 }
 

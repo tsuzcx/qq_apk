@@ -1,32 +1,26 @@
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.MusicProviderPagerAdapter;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class amyz
   implements Runnable
 {
-  public amyz(MusicProviderView paramMusicProviderView, int paramInt) {}
+  public amyz(QZoneShareActivity paramQZoneShareActivity) {}
   
   public void run()
   {
-    GridView localGridView = this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_DovComQqImCaptureAdapterMusicProviderPagerAdapter.a(this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem());
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "position= " + this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem());
-    }
-    if (localGridView != null) {
-      localGridView.setSelection(this.jdField_a_of_type_Int);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("MusicProviderView", 2, "gridView is null");
+    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845271);
+    this.a.d = true;
+    this.a.e = false;
+    QZoneShareActivity.a(this.a, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyz
  * JD-Core Version:    0.7.0.1
  */

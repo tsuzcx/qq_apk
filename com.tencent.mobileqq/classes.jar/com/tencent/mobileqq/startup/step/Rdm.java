@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahrk;
+import aifn;
 import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -27,7 +27,7 @@ public class Rdm
     long l = SystemClock.uptimeMillis();
     MTAReportController localMTAReportController = MTAReportController.a(BaseApplicationImpl.sApplication);
     localMTAReportController.a(false);
-    localMTAReportController.initMtaConfig("10000665", "AGU36HSC29K4");
+    localMTAReportController.initMtaConfig("2017", "AGU36HSC29K4");
     if (!paramString1.endsWith(":openSdk")) {
       localMTAReportController.a(paramString2);
     }
@@ -73,7 +73,7 @@ public class Rdm
             StatisticCollector.a(BaseApplicationImpl.sApplication).a((String)localObject1);
             localObject2 = localObject1;
           }
-          localObject1 = new ahrk(this, str);
+          localObject1 = new aifn(this, str);
           if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
             continue;
           }
@@ -99,7 +99,7 @@ public class Rdm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Rdm
  * JD-Core Version:    0.7.0.1
  */

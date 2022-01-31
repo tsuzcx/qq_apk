@@ -296,7 +296,7 @@ public class FavEmoRoamingHandler
     ((faceroam_sso.ReqDeleteItem)localObject).filename.set(paramList);
     faceroam_sso.PlatInfo localPlatInfo = new faceroam_sso.PlatInfo();
     localPlatInfo.implat.set(109L);
-    localPlatInfo.mqqver.set("7.6.0");
+    localPlatInfo.mqqver.set("7.6.3");
     localPlatInfo.osver.set(Build.VERSION.RELEASE);
     paramList = new faceroam_sso.ReqBody();
     paramList.uint32_sub_cmd.set(2);
@@ -315,7 +315,7 @@ public class FavEmoRoamingHandler
     Object localObject = new faceroam_sso.ReqUserInfo();
     faceroam_sso.PlatInfo localPlatInfo = new faceroam_sso.PlatInfo();
     localPlatInfo.implat.set(109L);
-    localPlatInfo.mqqver.set("7.6.0");
+    localPlatInfo.mqqver.set("7.6.3");
     localPlatInfo.osver.set(Build.VERSION.RELEASE);
     faceroam_sso.ReqBody localReqBody = new faceroam_sso.ReqBody();
     localReqBody.uint32_sub_cmd.set(1);

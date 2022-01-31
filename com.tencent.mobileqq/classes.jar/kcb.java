@@ -1,110 +1,112 @@
-import android.os.Handler;
-import com.tencent.av.VideoController;
-import com.tencent.av.VideoController.GAudioFriends;
-import com.tencent.av.app.GAudioUIObserver;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
-import com.tencent.av.ui.VideoInviteFloatBar;
-import com.tencent.av.ui.VideoInviteFloatBarUICtr;
-import com.tencent.av.utils.TraeHelper;
+import android.graphics.PointF;
+import com.tencent.av.business.manager.zimu.ARZimuTask;
+import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector;
+import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector.OnMoveGestureListener;
+import com.tencent.av.ui.GLVideoView;
+import com.tencent.av.ui.ScreenLayout;
+import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class kcb
-  extends GAudioUIObserver
+  implements MoveGestureDetector.OnMoveGestureListener
 {
-  public kcb(VideoInviteFloatBarUICtr paramVideoInviteFloatBarUICtr) {}
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
   
-  protected void a()
-  {
-    super.a();
-    this.a.c();
-  }
+  private kcb(VideoLayerUI paramVideoLayerUI) {}
   
-  protected void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onCreateRoomSuc-->GroupID=" + paramLong);
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.an = true;
-    if (this.a.jdField_b_of_type_Int == 1) {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong);
-    }
-  }
-  
-  protected void a(long paramLong, int paramInt)
-  {
-    super.c(paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onDestroyInviteUI-->reason=" + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
-      this.a.a();
-    }
-  }
-  
-  protected void a(long paramLong, String paramString)
+  public void a(MoveGestureDetector paramMoveGestureDetector)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseGroupVideoInviteMsgBoxByInviteId-->groupId=" + paramLong);
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMoveEnd");
     }
-    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
-      this.a.a();
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiScreenLayout.a() == 2) {
+      return;
     }
-  }
-  
-  protected void a(long paramLong, ArrayList paramArrayList, int paramInt1, int paramInt2)
-  {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      if (String.valueOf(((VideoController.GAudioFriends)paramArrayList.next()).jdField_a_of_type_Long).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount())) {
-        this.a.a();
+    PointF localPointF = paramMoveGestureDetector.a();
+    int i = (int)localPointF.x;
+    int j = (int)localPointF.y;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.e == 0) {
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(i, j, true);
+    }
+    for (;;)
+    {
+      ARZimuTask.a(false);
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(false));
+      return;
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.e == 1) && ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.c == 0) || (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b == 0) || (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b == this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Int)))
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b(i, j);
+        this.c = ((int)paramMoveGestureDetector.a());
+        this.d = ((int)paramMoveGestureDetector.b());
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.e, this.jdField_a_of_type_Int, this.b, this.c, this.d);
+        if (VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI))
+        {
+          if (this.e == 4) {
+            this.e = 3;
+          }
+          if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h == 4) {
+            this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h = this.e;
+          }
+        }
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.l(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h);
       }
     }
   }
   
-  protected void b(long paramLong)
+  public boolean a(MoveGestureDetector paramMoveGestureDetector)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onEnterRoomSuc-->GroupID=" + paramLong);
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMoveBegin");
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new kcc(this, paramLong), 500L);
-    this.a.jdField_a_of_type_ComTencentAvVideoController.g();
-    SmallScreenActivityPlugin.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(false);
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c();
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.e == 0)
+    {
+      paramMoveGestureDetector = paramMoveGestureDetector.a();
+      int i = (int)paramMoveGestureDetector.x;
+      int j = (int)paramMoveGestureDetector.y;
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(i, j, false);
     }
-    TraeHelper.a().a(this.a.f);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 1000L);
+    for (;;)
+    {
+      ARZimuTask.a(true);
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(true));
+      return true;
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.e == 1) && ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.c == 0) || (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b == 0)))
+      {
+        this.jdField_a_of_type_Int = ((int)paramMoveGestureDetector.a());
+        this.b = ((int)paramMoveGestureDetector.b());
+        this.e = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.c();
+      }
+    }
   }
   
-  protected void b(long paramLong1, long paramLong2, String paramString)
+  public boolean b(MoveGestureDetector paramMoveGestureDetector)
   {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ComTencentAvUiScreenLayout.a() == 2) {
+      return false;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr.troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMove");
     }
-    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
-      this.a.a();
+    paramMoveGestureDetector = paramMoveGestureDetector.a();
+    int i = (int)paramMoveGestureDetector.x;
+    int j = (int)paramMoveGestureDetector.y;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.e == 0) {
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(i, j, false);
     }
-  }
-  
-  protected void g(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseAllGroupVideoInviteMsgBox-->notifyByGroupId=" + paramLong);
-    }
-    if (this.a.jdField_a_of_type_Long != paramLong) {}
-    this.a.a();
-  }
-  
-  protected void h(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseGroupVideoInviteMsgBox-->groupId=" + paramLong);
-    }
-    if (this.a.jdField_a_of_type_Long == paramLong) {
-      this.a.a();
+    for (;;)
+    {
+      return true;
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.e == 1) && ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.c == 0) || (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b == 0) || (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b == this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Int)))
+      {
+        if ((Math.abs(i) > 5) || (Math.abs(j) > 5)) {
+          VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, true);
+        }
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b(i, j);
+      }
     }
   }
 }

@@ -1,17 +1,22 @@
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.webviewbase.WebAIOController;
 
 public class pax
-  implements QzoneZipCacheHelperCallBack
+  extends BroadcastReceiver
 {
-  public pax(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, String paramString1, String paramString2, String paramString3) {}
+  public pax(WebAIOController paramWebAIOController) {}
   
-  public void onResult(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QzoneWebViewOfflinePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzoneWebViewOfflinePlugin, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    if ("com.tencent.msg.newmessage".equals(paramIntent.getAction()))
+    {
+      WebAIOController.b = false;
+      WebAIOController.c = true;
+      this.a.a(true);
+    }
   }
-  
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 

@@ -1,46 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.model.SpecialChannelFilter;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.Comparator;
 
 public class lqr
-  implements Runnable
+  implements Comparator
 {
-  public lqr(ChannelInfoModule paramChannelInfoModule, boolean paramBoolean1, boolean paramBoolean2, List paramList1, List paramList2) {}
+  public lqr(ChannelInfoModule paramChannelInfoModule) {}
   
-  public void run()
+  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      ReadInJoyLogicEngineEventDispatcher.a().b(false, null);
-      return;
+    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
+      return 0;
     }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_JavaUtilList);
-      return;
+    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
+      return -1;
     }
-    ChannelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a(this.jdField_a_of_type_JavaUtilList, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.c(this.jdField_b_of_type_JavaUtilList);
-    if (!ReadInJoyUtils.a())
-    {
-      List localList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a(this.jdField_a_of_type_JavaUtilList);
-      SpecialChannelFilter.a().a(this.jdField_b_of_type_JavaUtilList);
-      SpecialChannelFilter.a().b(localList);
-      localList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.c();
-      if (!this.jdField_b_of_type_JavaUtilList.equals(localList)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.c());
-      }
-    }
-    ReadInJoyLogicEngineEventDispatcher.a().a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a());
-    if (!ReadInJoyUtils.a())
-    {
-      ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.b());
-      return;
-    }
-    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_JavaUtilList);
+    return 1;
   }
 }
 

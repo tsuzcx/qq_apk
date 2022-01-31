@@ -1,20 +1,14 @@
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.widget.ViewTransformer.ViewTransformerListener;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 
 public class wzs
-  implements ViewTransformer.ViewTransformerListener
+  implements Runnable
 {
-  public wzs(CommonHbFragment paramCommonHbFragment, EditText paramEditText, RelativeLayout paramRelativeLayout) {}
+  public wzs(PasswdRedBagManager paramPasswdRedBagManager, String paramString) {}
   
-  public void OnTransferFinished()
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-      this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-    }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {}
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a = false;
+    PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager).a(this.jdField_a_of_type_JavaLangString, true);
   }
 }
 

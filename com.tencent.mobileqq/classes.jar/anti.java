@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent;
 
 public class anti
-  implements DialogInterface.OnClickListener
+  extends QQUIEventReceiver
 {
-  public anti(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public anti(@NonNull EditVideoDoodle paramEditVideoDoodle)
   {
-    this.a.a();
+    super(paramEditVideoDoodle);
+  }
+  
+  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent paramDoodleEmojiUpdatePoiPostersEvent) {}
+  
+  public Class acceptEventClass()
+  {
+    return DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent.class;
   }
 }
 

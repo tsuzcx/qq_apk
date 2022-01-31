@@ -10,7 +10,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.R.styleable;
-import kim;
+import khx;
 
 public class RatingBar
   extends LinearLayout
@@ -37,7 +37,7 @@ public class RatingBar
     while (i < this.jdField_a_of_type_Int)
     {
       localObject = a(paramContext, paramAttributeSet);
-      ((ImageView)localObject).setOnClickListener(new kim(this));
+      ((ImageView)localObject).setOnClickListener(new khx(this));
       addView((View)localObject);
       i += 1;
     }

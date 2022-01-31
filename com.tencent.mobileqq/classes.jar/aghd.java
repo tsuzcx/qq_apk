@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class aghd
   implements Runnable
 {
-  public aghd(QCallFacade paramQCallFacade) {}
+  public aghd(ScanTorchActivity paramScanTorchActivity) {}
   
   public void run()
   {
-    QCallFacade.a(this.a).x();
+    ScanTorchActivity.l(this.a);
+    ScanTorchActivity.k(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghd
  * JD-Core Version:    0.7.0.1
  */

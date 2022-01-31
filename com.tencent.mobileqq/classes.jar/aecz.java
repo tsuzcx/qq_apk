@@ -1,19 +1,16 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.lyric.widget.LyricViewController;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
 
 public class aecz
   implements Runnable
 {
-  public aecz(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public aecz(LyricViewController paramLyricViewController) {}
   
   public void run()
   {
-    int i = (int)(this.a.b.getBottom() - this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() + 30.0F * this.a.getResources().getDisplayMetrics().density);
-    this.a.jdField_a_of_type_AndroidWidgetScrollView.smoothScrollBy(0, i);
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 

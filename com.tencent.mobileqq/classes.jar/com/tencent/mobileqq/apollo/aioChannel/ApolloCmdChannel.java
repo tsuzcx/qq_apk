@@ -35,14 +35,14 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import yli;
-import ylj;
-import ylk;
-import yll;
-import ylm;
-import yln;
-import ylo;
-import ylp;
+import yoo;
+import yop;
+import yoq;
+import yor;
+import yos;
+import yot;
+import you;
+import yov;
 
 public class ApolloCmdChannel
 {
@@ -140,7 +140,7 @@ public class ApolloCmdChannel
     synchronized (this.mRequestHandlers)
     {
       this.mRequestHandlers.add(new GeneralMsgHandler());
-      Collections.sort(this.mRequestHandlers, new ylj(this));
+      Collections.sort(this.mRequestHandlers, new yop(this));
       return;
     }
   }
@@ -195,7 +195,7 @@ public class ApolloCmdChannel
     }
     return;
     label35:
-    paramIRenderRunner.runRenderTask(new yln(this, paramLong, paramInt));
+    paramIRenderRunner.runRenderTask(new yot(this, paramLong, paramInt));
   }
   
   public void addCmdHandler(ApolloCmdChannel.IRequestHandler paramIRequestHandler)
@@ -314,7 +314,7 @@ public class ApolloCmdChannel
     }
     return;
     label38:
-    localIRenderRunner.runRenderTask(new yll(this, paramBitmap, paramString, paramInt, paramLong));
+    localIRenderRunner.runRenderTask(new yor(this, paramBitmap, paramString, paramInt, paramLong));
   }
   
   public void callbackGetNick(String paramString1, String paramString2, int paramInt, long paramLong)
@@ -331,7 +331,7 @@ public class ApolloCmdChannel
     }
     return;
     label38:
-    localIRenderRunner.runRenderTask(new ylk(this, paramString1, paramString2, paramInt, paramLong));
+    localIRenderRunner.runRenderTask(new yoq(this, paramString1, paramString2, paramInt, paramLong));
   }
   
   public void checkSetNative()
@@ -461,7 +461,7 @@ public class ApolloCmdChannel
     } while (!QLog.isColorLevel());
     QLog.d("cmgame_process.ApolloDataChannel", 2, "[handleWebEvent], not find renderRunner");
     return;
-    localIRenderRunner.runRenderTask(new ylm(this, localIRenderRunner, paramString));
+    localIRenderRunner.runRenderTask(new yos(this, localIRenderRunner, paramString));
   }
   
   /* Error */
@@ -611,7 +611,7 @@ public class ApolloCmdChannel
         }
         while ((this.mPlayer != null) && (paramString != null))
         {
-          ThreadManager.post(new ylo(getGameId(), paramString, localIRenderRunner, this.mPlayer, paramLong, paramInt1, paramInt2, str), 5, null, true);
+          ThreadManager.post(new you(getGameId(), paramString, localIRenderRunner, this.mPlayer, paramLong, paramInt1, paramInt2, str), 5, null, true);
           return;
         }
       }
@@ -657,7 +657,7 @@ public class ApolloCmdChannel
     }
     this.mCallJsRuntimeMap.put(Long.valueOf(paramLong), Boolean.valueOf(paramBoolean2));
     ??? = paramString1.trim();
-    Object localObject2 = new ylp(this, paramLong, (String)???, paramString2);
+    Object localObject2 = new yov(this, paramLong, (String)???, paramString2);
     if (("cs.close_room.local".equals(???)) || ("cs.make_room_min.local".equals(???)) || ("cs.share_game_result.local".equals(???)) || ("cs.invite_friends.local".equals(paramString1)) || ("cs.first_frame_drawn.local".equals(paramString1)) || ("cs.share_pic.local".equals(paramString1))) {
       ThreadManager.post((Runnable)localObject2, 5, null, true);
     }
@@ -721,7 +721,7 @@ public class ApolloCmdChannel
         }
       }
       this.mRequestHandlers.add(new GeneralEventHandler(paramActivity, (QQAppInterface)this.mAppRef.get()));
-      Collections.sort(this.mRequestHandlers, new yli(this));
+      Collections.sort(this.mRequestHandlers, new yoo(this));
       QLog.d("cmgame_process.ApolloDataChannel", 1, "setActivityContext activity: " + paramActivity);
     }
   }

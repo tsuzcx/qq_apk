@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.automator.step.QQComicStep;
 
 public class zrh
-  implements Comparator
+  implements Runnable
 {
-  public zrh(MsgLruCache paramMsgLruCache) {}
+  public zrh(QQComicStep paramQQComicStep) {}
   
-  public int a(Map.Entry paramEntry1, Map.Entry paramEntry2)
+  public void run()
   {
-    if (((Integer)paramEntry1.getValue()).intValue() < ((Integer)paramEntry2.getValue()).intValue()) {
-      return 1;
-    }
-    if (paramEntry1.getValue() == paramEntry2.getValue()) {
-      return 0;
-    }
-    return -1;
+    ThreadManager.executeOnNetWorkThread(new zri(this));
   }
 }
 

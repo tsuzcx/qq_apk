@@ -1,29 +1,14 @@
-import com.tencent.mobileqq.apollo.ai.ApolloAIPresenter;
-import com.tencent.mobileqq.apollo.ai.IApolloAIView;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.ttpic.util.youtu.VideoFaceDetector;
 
-public class ylg
-  extends VasExtensionObserver
+public final class ylg
+  implements Runnable
 {
-  public ylg(ApolloAIPresenter paramApolloAIPresenter) {}
+  public ylg(ApolloRender paramApolloRender, byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if ((!paramBoolean) && (ApolloAIPresenter.a(this.a) != null))
-    {
-      ApolloAIPresenter.a(this.a).i();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloAIPresenter", 2, "send msg to ai fail");
-      }
-    }
-  }
-  
-  protected void h(boolean paramBoolean, Object paramObject)
-  {
-    if (ApolloAIPresenter.a(this.a) != null) {
-      ApolloAIPresenter.a(this.a).b(paramBoolean);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mDetector.doFaceDetect(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b);
   }
 }
 

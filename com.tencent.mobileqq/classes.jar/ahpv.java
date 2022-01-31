@@ -1,45 +1,164 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
-import com.tencent.mobileqq.shortvideo.util.ShortVideoJsApiPlugin;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richstatus.ISameStatusListener;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.richstatus.StatusObserver;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import mqq.os.MqqHandler;
 
 public class ahpv
-  extends BroadcastReceiver
+  extends StatusObserver
 {
-  public ahpv(ShortVideoJsApiPlugin paramShortVideoJsApiPlugin) {}
+  public ahpv(StatusManager paramStatusManager) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  @TargetApi(9)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    String str1 = paramIntent.getStringExtra("uuid");
-    String str2 = paramIntent.getStringExtra("md5");
-    String str3 = paramIntent.getStringExtra("imgurl");
-    String str4 = paramIntent.getStringExtra("mediaType");
-    boolean bool = CaptureUtil.g();
-    paramIntent = new JSONObject();
-    try
-    {
-      paramIntent.put("uuid", str1);
-      paramIntent.put("md5", str2);
-      paramIntent.put("imgurl", str3);
-      paramIntent.put("mediaType", str4);
-      paramIntent.put("hasGesture", bool);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoJsApiPlugin", 2, "call webView, uuid" + str1 + ", md5:" + str2 + ", imgurl:" + str3 + ", mediaType:" + str4 + ", hasGesture:" + bool);
-      }
-      this.a.callJs(paramContext, new String[] { paramIntent.toString() });
-      return;
+    ThreadManager.getSubThreadHandler().post(new ahpw(this, paramBoolean, paramBundle));
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.shuo", 2, "onGetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
     }
-    catch (JSONException localJSONException)
+    label83:
+    IStatusListener localIStatusListener;
+    if (paramBoolean1)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
+      StatusManager.c(this.a, 0L);
+      StatusManager.a(this.a, paramBoolean2);
+      if (StatusManager.b(this.a) == null) {
+        return;
       }
+      Iterator localIterator = StatusManager.b(this.a).iterator();
+      if (!localIterator.hasNext()) {
+        return;
+      }
+      localIStatusListener = (IStatusListener)localIterator.next();
+      if (!paramBoolean1) {
+        break label162;
+      }
+    }
+    label162:
+    for (int i = 100;; i = -1)
+    {
+      localIStatusListener.a(i, paramBoolean2);
+      break label83;
+      StatusManager.c(this.a, System.currentTimeMillis() - 180000L + 60000L);
+      paramBoolean2 = StatusManager.b(this.a).getBoolean("k_sync_ss", false);
+      break;
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, byte[] paramArrayOfByte, ArrayList paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.mate", 2, "onGetStatusMate " + paramBoolean1 + " " + paramBoolean2 + " " + paramInt + " " + paramArrayList.size());
+    }
+    if (paramBoolean1) {
+      StatusManager.a(this.a, paramArrayOfByte);
+    }
+    for (;;)
+    {
+      if (paramBoolean1) {
+        if (paramBoolean2)
+        {
+          if (StatusManager.a(this.a) != null)
+          {
+            StatusManager.a(this.a, paramArrayList);
+            return;
+            if (!paramBoolean2) {
+              continue;
+            }
+            StatusManager.a(this.a, null);
+            continue;
+          }
+          if (StatusManager.b(this.a) == null) {
+            StatusManager.b(this.a, new ArrayList());
+          }
+          paramArrayOfByte = this.a.a(StatusManager.b(this.a), paramArrayList, paramInt);
+        }
+      }
+    }
+    for (;;)
+    {
+      label165:
+      if ((StatusManager.a(this.a) != null) && (StatusManager.a(this.a).length > 0)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        if (StatusManager.c(this.a) == null) {
+          break label264;
+        }
+        paramArrayList = StatusManager.c(this.a).iterator();
+        while (paramArrayList.hasNext()) {
+          ((ISameStatusListener)paramArrayList.next()).a(paramBoolean1, paramBoolean2, paramInt, paramArrayOfByte, bool);
+        }
+        break;
+        paramArrayOfByte = this.a.a(paramArrayList);
+        break label165;
+      }
+      label264:
+      break;
+      paramArrayOfByte = paramArrayList;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    StatusManager.a(this.a, null);
+    if (StatusManager.b(this.a) != null)
+    {
+      paramBundle = StatusManager.b(this.a).iterator();
+      if (paramBundle.hasNext())
+      {
+        IStatusListener localIStatusListener = (IStatusListener)paramBundle.next();
+        if (paramBoolean) {}
+        for (int i = 100;; i = -1)
+        {
+          localIStatusListener.a(i, RichStatus.getEmptyStatus(), null);
+          break;
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.shuo", 2, "onSetSyncShuoshuo " + paramBoolean1 + ", " + paramBoolean2);
+    }
+    label74:
+    IStatusListener localIStatusListener;
+    if (paramBoolean1)
+    {
+      StatusManager.a(this.a, paramBoolean2);
+      if (StatusManager.b(this.a) == null) {
+        return;
+      }
+      Iterator localIterator = StatusManager.b(this.a).iterator();
+      if (!localIterator.hasNext()) {
+        return;
+      }
+      localIStatusListener = (IStatusListener)localIterator.next();
+      if (!paramBoolean1) {
+        break label134;
+      }
+    }
+    label134:
+    for (int i = 100;; i = -1)
+    {
+      localIStatusListener.b(i, paramBoolean2);
+      break label74;
+      paramBoolean2 = StatusManager.b(this.a).getBoolean("k_sync_ss", false);
+      break;
     }
   }
 }

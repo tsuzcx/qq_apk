@@ -14,7 +14,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.AbsListView.LayoutParams;
-import luc;
+import lul;
 
 public class FeedItemCellTypeRecommendBig
   extends FeedItemCell
@@ -56,8 +56,8 @@ public class FeedItemCellTypeRecommendBig
       localLayoutParams.addRule(15);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
       localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      localLinearLayout2.setBackgroundResource(2130840756);
-      localLinearLayout2.setOnClickListener(new luc(this));
+      localLinearLayout2.setBackgroundResource(2130840780);
+      localLinearLayout2.setOnClickListener(new lul(this));
       localRelativeLayout1.addView(localLinearLayout2);
       localLinearLayout1.addView(localRelativeLayout1);
     }

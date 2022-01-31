@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import abnj;
-import abns;
-import abnt;
+import abuk;
+import abut;
+import abuu;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -100,7 +100,7 @@ public class MessageForQQWalletTips
           }
           else if ((((String)localObject3).startsWith("http://")) || (((String)localObject3).startsWith("https://")))
           {
-            ((SpannableString)localObject1).setSpan(new abnj(paramContext, 0, (String)localObject3), 0, ((SpannableString)localObject1).length(), 33);
+            ((SpannableString)localObject1).setSpan(new abuk(paramContext, 0, (String)localObject3), 0, ((SpannableString)localObject1).length(), 33);
             localSpannableStringBuilder.append((CharSequence)localObject1);
             localSpannableStringBuilder.append(" ");
           }
@@ -577,7 +577,7 @@ public class MessageForQQWalletTips
         }
       }
       localObject1 = new SoftReference(paramQQAppInterface);
-      ((SpannableString)localObject2).setSpan(new abns(this, new SoftReference(paramContext), (SoftReference)localObject1, paramJSONObject, i), 0, ((SpannableString)localObject2).length(), 33);
+      ((SpannableString)localObject2).setSpan(new abut(this, new SoftReference(paramContext), (SoftReference)localObject1, paramJSONObject, i), 0, ((SpannableString)localObject2).length(), 33);
       paramQQAppInterface = (PasswdRedBagManager)paramQQAppInterface.getManager(124);
       if (paramString.contains("运气王")) {
         paramQQAppInterface.a(paramJSONObject);
@@ -654,7 +654,7 @@ public class MessageForQQWalletTips
     if (TextUtils.isEmpty(str)) {}
     for (;;)
     {
-      ((SpannableString)localObject).setSpan(new abnt(this, paramJSONObject.optString("data"), new SoftReference(paramContext), i), 0, ((SpannableString)localObject).length(), 33);
+      ((SpannableString)localObject).setSpan(new abuu(this, paramJSONObject.optString("data"), new SoftReference(paramContext), i), 0, ((SpannableString)localObject).length(), 33);
       return localObject;
       i = 0xFF000000 | (int)Long.parseLong(str.substring(2), 16);
     }

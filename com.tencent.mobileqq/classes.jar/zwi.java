@@ -1,37 +1,19 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardResourceInfo;
-import com.tencent.mobileqq.arcard.ARcardSound;
-import com.tencent.mobileqq.armap.sensor.ARSensorManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class zwi
+public final class zwi
   implements Runnable
 {
-  public zwi(GreetingCardRender paramGreetingCardRender) {}
+  public zwi(SosoInterface.OnLocationListener paramOnLocationListener, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
   public void run()
   {
-    if (GreetingCardRender.d(this.a) == 6)
-    {
-      if (GreetingCardRender.a(this.a) != null) {
-        GreetingCardRender.a(this.a).a(0, 1);
-      }
-      if (GreetingCardRender.a(this.a) == null) {
-        GreetingCardRender.a(this.a, new ARcardSound());
-      }
-      if (GreetingCardRender.a(this.a) != null) {
-        GreetingCardRender.a(this.a).a(GreetingCardRender.a(this.a).c + "bgmusic.mp3");
-      }
-      if ((GreetingCardRender.a(this.a) != null) && (GreetingCardRender.a(this.a).b == 1)) {
-        QLog.d("GreetingCardRender", 2, String.format("setNativeState start sensor result=%s", new Object[] { Boolean.valueOf(GreetingCardRender.a(this.a).a(GreetingCardRender.a(this.a))) }));
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zwi
  * JD-Core Version:    0.7.0.1
  */

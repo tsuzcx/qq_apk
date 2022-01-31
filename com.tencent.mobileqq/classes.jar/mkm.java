@@ -1,16 +1,28 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.mobileqq.utils.ImageUtil;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class mkm
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
-  public mkm(FastWebActivity paramFastWebActivity) {}
+  public mkm(ReadinjoyTabFrame paramReadinjoyTabFrame, ZImageView paramZImageView, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    this.a.a(FastWebActivity.a(this.a));
-    FastWebActivity.c(this.a);
-    return false;
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setRound(true);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a(ImageUtil.a()).a(new URL(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo)));
+      return;
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      localMalformedURLException.printStackTrace();
+    }
   }
 }
 

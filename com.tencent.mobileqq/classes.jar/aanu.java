@@ -1,53 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
-import com.tencent.mobileqq.ark.ArkAppInfo.AppDownloadInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask.Result;
-import java.util.HashMap;
-import java.util.Locale;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class aanu
-  implements aapc
+  implements aanv
 {
-  public aanu(ArkLocalAppMgr paramArkLocalAppMgr) {}
+  private aanu(ArkAppDeviceModule paramArkAppDeviceModule) {}
   
-  public void a(ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, Object arg2)
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
+    if (!ArkAppModuleReg.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, "permission.CONNECTION_TYPE")) {
+      return false;
+    }
+    if (!AppNetConnInfo.isNetSupport()) {
+      paramVariantWrapper.SetString("none");
+    }
     for (;;)
     {
-      synchronized (ArkLocalAppMgr.a(this.a))
+      return true;
+      if (AppNetConnInfo.isWifiConn())
       {
-        ArkLocalAppMgr.a(this.a).remove(paramUpdateAppByNameTask.jdField_b_of_type_JavaLangString);
-        if ((paramUpdateAppByNameTask.jdField_a_of_type_Int == 1) || (paramUpdateAppByNameTask.jdField_a_of_type_Int == 2))
-        {
-          String str = "";
-          ??? = str;
-          if (paramUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo != null)
-          {
-            ??? = str;
-            if (paramUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a != null)
-            {
-              ??? = str;
-              if (!TextUtils.isEmpty(paramUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a.jdField_b_of_type_JavaLangString)) {
-                ??? = paramUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a.jdField_b_of_type_JavaLangString;
-              }
-            }
-          }
-          if (paramUpdateAppByNameTask.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo == null) {
-            break label198;
-          }
-          i = paramUpdateAppByNameTask.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_Int;
-          ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format(Locale.CHINA, "runUpdateLocalAppTask, updateAppByName success, result=%s, app-name=%s, app-version=%s, update-period=%d", new Object[] { ArkLocalAppMgr.UpdateAppByNameTask.Result.a(paramUpdateAppByNameTask.jdField_a_of_type_Int), paramUpdateAppByNameTask.jdField_b_of_type_JavaLangString, ???, Integer.valueOf(i) }));
-          return;
+        paramVariantWrapper.SetString("wifi");
+      }
+      else if (AppNetConnInfo.isMobileConn())
+      {
+        int i = AppNetConnInfo.getMobileInfo();
+        if (i == 0) {
+          paramVariantWrapper.SetString("none");
+        } else if (-1 == i) {
+          paramVariantWrapper.SetString("other");
+        } else {
+          paramVariantWrapper.SetString("cellular");
         }
       }
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("runUpdateLocalAppTask, updateAppByName fail, result=%s, app-name=%s", new Object[] { ArkLocalAppMgr.UpdateAppByNameTask.Result.a(paramUpdateAppByNameTask.jdField_a_of_type_Int), paramUpdateAppByNameTask.jdField_b_of_type_JavaLangString }));
-      return;
-      label198:
-      int i = 0;
     }
   }
 }

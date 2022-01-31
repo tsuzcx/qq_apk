@@ -1,32 +1,46 @@
-import com.rookery.asyncHttpClient.AsyncHttpClient;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpRequestInterceptor;
-import org.apache.http.protocol.HttpContext;
+import android.content.Context;
+import com.rookery.asyncHttpClient.JsonHttpResponseHandler;
+import com.rookery.translate.microsoft.MicrosoftTranslator;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import com.rookery.translate.type.TranslateWithTimeCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class jcj
-  implements HttpRequestInterceptor
+  extends JsonHttpResponseHandler
 {
-  public jcj(AsyncHttpClient paramAsyncHttpClient) {}
+  public jcj(MicrosoftTranslator paramMicrosoftTranslator, Long paramLong, Context paramContext, List paramList, Language paramLanguage, TranslateWithTimeCallback paramTranslateWithTimeCallback) {}
   
-  public void process(HttpRequest paramHttpRequest, HttpContext paramHttpContext)
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    if (!paramHttpRequest.containsHeader("Accept-Encoding")) {
-      paramHttpRequest.addHeader("Accept-Encoding", "gzip");
-    }
-    paramHttpContext = AsyncHttpClient.a(this.a).keySet().iterator();
-    while (paramHttpContext.hasNext())
+    try
     {
-      String str = (String)paramHttpContext.next();
-      paramHttpRequest.addHeader(str, (String)AsyncHttpClient.a(this.a).get(str));
+      MicrosoftTranslator.a(this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator).jdField_a_of_type_JavaLangString = paramJSONObject.getString("access_token");
+      MicrosoftTranslator.a(this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator).jdField_a_of_type_Long = (paramJSONObject.getLong("expires_in") * 1000L + this.jdField_a_of_type_JavaLangLong.longValue());
+      MicrosoftTranslator.a(this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, MicrosoftTranslator.a(this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback);
+      return;
+    }
+    catch (JSONException paramArrayOfHeader)
+    {
+      this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramArrayOfHeader), this.jdField_a_of_type_JavaLangLong);
+    }
+  }
+  
+  public void a(Throwable paramThrowable, String paramString)
+  {
+    this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    if (QLog.isColorLevel()) {
+      QLog.e("Translator", 2, "error:" + paramThrowable + "\trequest_time:" + this.jdField_a_of_type_JavaLangLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     jcj
  * JD-Core Version:    0.7.0.1
  */

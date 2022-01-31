@@ -50,13 +50,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import zqe;
-import zqf;
-import zqg;
+import ztk;
+import ztl;
+import ztm;
 
 public class MsgProxyUtils
 {
-  static Comparator jdField_a_of_type_JavaUtilComparator = new zqe();
+  static Comparator jdField_a_of_type_JavaUtilComparator = new ztk();
   private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   public static final int[] a;
   public static final String[] a;
@@ -373,7 +373,7 @@ public class MsgProxyUtils
       return localArrayList;
     }
     if (paramBoolean) {
-      Collections.sort(paramList, new zqf());
+      Collections.sort(paramList, new ztl());
     }
     long l1 = ((MessageRecord)paramList.get(paramList.size() - 1)).shmsgseq;
     int i2 = paramList.size() - 1;
@@ -1392,7 +1392,7 @@ public class MsgProxyUtils
   
   public static void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
-    ThreadManager.post(new zqg(paramQQAppInterface, paramString, paramInt1, paramInt2), 8, null, true);
+    ThreadManager.post(new ztm(paramQQAppInterface, paramString, paramInt1, paramInt2), 8, null, true);
   }
   
   public static void b(List paramList, MessageRecord paramMessageRecord, boolean paramBoolean)

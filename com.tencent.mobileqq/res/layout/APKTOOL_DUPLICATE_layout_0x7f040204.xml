@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/midas_wrap"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf2" android:background="@null" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0079">
-        <LinearLayout android:layout_marginLeft="10.0dip" android:layout_weight="100.0" style="@style/midas_wrap">
-            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf3" android:text=" 200书币" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0064" />
-            <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0246" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf4" android:text="(送10)" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0067" />
-        </LinearLayout>
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip">
-            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf5" android:text="100.00" android:layout_centerVertical="true" style="@style/midas_tx.price" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d08" style="@style/APKTOOL_DUPLICATE_style_0x7f0e007a">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0c" android:layout_marginLeft="10.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0081" />
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0253" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d09" android:layout_marginLeft="35.0dip" android:text="1个月" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0063" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0b" android:text="100.00" android:layout_centerVertical="true" style="@style/midas_tx.price" />
             <TextView android:text="元" style="@style/midas_tx.price" />
         </LinearLayout>
-        <ImageView android:layout_marginRight="10.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0080" />
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

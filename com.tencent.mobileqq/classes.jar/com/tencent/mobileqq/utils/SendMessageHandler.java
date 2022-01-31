@@ -281,12 +281,12 @@ public class SendMessageHandler
     //   114: iadd
     //   115: putfield 92	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
     //   118: aload_0
-    //   119: new 174	ajrs
+    //   119: new 174	akfz
     //   122: dup
     //   123: aload_0
     //   124: lload_3
     //   125: aload 5
-    //   127: invokespecial 177	ajrs:<init>	(Lcom/tencent/mobileqq/utils/SendMessageHandler;JLjava/lang/String;)V
+    //   127: invokespecial 177	akfz:<init>	(Lcom/tencent/mobileqq/utils/SendMessageHandler;JLjava/lang/String;)V
     //   130: lload_1
     //   131: invokevirtual 181	com/tencent/mobileqq/utils/SendMessageHandler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   134: pop

@@ -1,39 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.smooth.ItemManager;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
 
 public class aeze
-  implements View.OnTouchListener
+  implements IMediaPlayer.OnErrorListener
 {
-  private aeze(ItemManager paramItemManager) {}
+  public aeze(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnErrorListener paramOnErrorListener, Object paramObject) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    boolean bool3 = true;
-    boolean bool2 = false;
-    int i = paramMotionEvent.getAction();
-    Object localObject = this.a;
-    boolean bool1 = bool3;
-    if (i != 1) {
-      if (i != 3) {
-        break label105;
-      }
-    }
-    label105:
-    for (bool1 = bool3;; bool1 = false)
-    {
-      ((ItemManager)localObject).b = bool1;
-      if ((this.a.b) && (this.a.jdField_a_of_type_Int != 2)) {
-        this.a.a();
-      }
-      localObject = this.a.jdField_a_of_type_Aezc.a();
-      bool1 = bool2;
-      if (localObject != null) {
-        bool1 = ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
-      }
-      return bool1;
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnErrorListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl, 0, paramInt1, this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 

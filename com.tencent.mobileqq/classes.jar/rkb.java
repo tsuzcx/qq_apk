@@ -1,24 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import java.util.ArrayList;
 
 public class rkb
-  implements View.OnClickListener
+  extends DiscussionObserver
 {
-  public rkb(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public rkb(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
   {
-    paramView = (View)paramView.getParent();
-    if ((paramView == null) || (paramView.getTag() == null)) {}
-    do
-    {
-      return;
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SubAccountInfo));
-    this.a.a((SubAccountInfo)paramView.getTag());
+    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
+      this.a.runOnUiThread(new rke(this));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
+      this.a.runOnUiThread(new rkd(this));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
+      this.a.runOnUiThread(new rkc(this));
+    }
   }
 }
 

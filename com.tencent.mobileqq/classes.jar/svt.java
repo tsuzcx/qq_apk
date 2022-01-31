@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.app.RedTouchObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.DiscussionHandler;
 
-public class svt
-  extends RedTouchObserver
+class svt
+  implements Runnable
 {
-  public svt(LebaListMgrActivity paramLebaListMgrActivity) {}
+  svt(svs paramsvs) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
-    }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
-    }
-    paramObject = LebaShowListManager.a().a();
-    this.a.runOnUiThread(new svu(this, paramObject));
+    Bitmap localBitmap = this.a.a.a.a(this.a.a.f);
+    this.a.a.runOnUiThread(new svu(this, localBitmap));
   }
 }
 

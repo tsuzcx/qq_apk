@@ -1,85 +1,49 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.ReportInfo;
+import com.tencent.mobileqq.businessCard.BusinessCardManager;
+import com.tencent.mobileqq.businessCard.BusinessCardObserver;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardListActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class abnr
-  implements Parcelable.Creator
+public class abnr
+  extends BusinessCardObserver
 {
-  public MessageForPic a(Parcel paramParcel)
+  public abnr(BusinessCardListActivity paramBusinessCardListActivity) {}
+  
+  public void a(boolean paramBoolean)
   {
-    boolean bool2 = true;
-    MessageForPic localMessageForPic = new MessageForPic();
-    localMessageForPic.path = paramParcel.readString();
-    localMessageForPic.size = paramParcel.readLong();
-    localMessageForPic.type = paramParcel.readInt();
-    if (paramParcel.readInt() == 1)
-    {
-      bool1 = true;
-      localMessageForPic.isRead = bool1;
-      localMessageForPic.uuid = paramParcel.readString();
-      localMessageForPic.groupFileID = paramParcel.readLong();
-      localMessageForPic.md5 = paramParcel.readString();
-      localMessageForPic.serverStoreSource = paramParcel.readString();
-      localMessageForPic.thumbMsgUrl = paramParcel.readString();
-      localMessageForPic.bigThumbMsgUrl = paramParcel.readString();
-      localMessageForPic.thumbWidth = paramParcel.readInt();
-      localMessageForPic.thumbHeight = paramParcel.readInt();
-      localMessageForPic.bigMsgUrl = paramParcel.readString();
-      localMessageForPic.rawMsgUrl = paramParcel.readString();
-      localMessageForPic.fileSizeFlag = paramParcel.readInt();
-      localMessageForPic.picExtraFlag = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label435;
-      }
-      bool1 = true;
-      label172:
-      localMessageForPic.isMixed = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label440;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_observer", 2, "onGetCardList " + paramBoolean);
     }
-    label435:
-    label440:
-    for (boolean bool1 = bool2;; bool1 = false)
+    if (paramBoolean)
     {
-      localMessageForPic.isShareAppActionMsg = bool1;
-      localMessageForPic.action = paramParcel.readString();
-      localMessageForPic.shareAppID = paramParcel.readLong();
-      localMessageForPic.actMsgContentValue = paramParcel.readString();
-      localMessageForPic.localUUID = paramParcel.readString();
-      localMessageForPic.subMsgId = paramParcel.readInt();
-      localMessageForPic.isReport = paramParcel.readInt();
-      localMessageForPic.subVersion = paramParcel.readInt();
-      localMessageForPic.busiType = paramParcel.readInt();
-      localMessageForPic.width = paramParcel.readLong();
-      localMessageForPic.height = paramParcel.readLong();
-      localMessageForPic.imageType = paramParcel.readInt();
-      localMessageForPic.frienduin = paramParcel.readString();
-      localMessageForPic.selfuin = paramParcel.readString();
-      localMessageForPic.senderuin = paramParcel.readString();
-      localMessageForPic.istroop = paramParcel.readInt();
-      localMessageForPic.versionCode = paramParcel.readInt();
-      localMessageForPic.uniseq = paramParcel.readLong();
-      localMessageForPic.issend = paramParcel.readInt();
-      localMessageForPic.time = paramParcel.readLong();
-      localMessageForPic.msgtype = paramParcel.readInt();
-      localMessageForPic.preDownState = paramParcel.readInt();
-      localMessageForPic.preDownNetworkType = paramParcel.readInt();
-      localMessageForPic.previewed = paramParcel.readInt();
-      localMessageForPic.mNotPredownloadReason = paramParcel.readInt();
-      localMessageForPic.reportInfo = ((ReportInfo)paramParcel.readParcelable(ReportInfo.class.getClassLoader()));
-      return localMessageForPic;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label172;
+      ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a();
+      this.a.a(localArrayList, 0L, false);
     }
   }
   
-  public MessageForPic[] a(int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    return new MessageForPic[paramInt];
+    if ((paramBoolean) && (paramInt != 3))
+    {
+      paramString = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a();
+      if ((paramInt == 1) && (this.a.jdField_a_of_type_Int == 0)) {
+        this.a.a(paramString, 0L, false);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.a(paramString, 500L, false);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      paramString = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a();
+      this.a.a(paramString, 500L, false);
+    }
   }
 }
 

@@ -1,20 +1,54 @@
-import com.tencent.mobileqq.pluginsdk.PluginInterface;
-import com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper.OnPluginInterfaceLoadedListener;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajvk
-  implements PluginInterfaceHelper.OnPluginInterfaceLoadedListener
+  implements FrameSprite.OnFrameEndListener
 {
-  public ajvk(PathTraceManager paramPathTraceManager) {}
+  public int a;
+  public long a;
+  public long b;
+  public long c;
   
-  public void onPluginInterfaceLoaded(PluginInterface paramPluginInterface)
+  public ajvk(TroopGiftAnimationController paramTroopGiftAnimationController)
   {
-    PathTraceManager.a(this.a, paramPluginInterface);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    this.c = NetConnInfoCenter.getServerTimeMillis();
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
+      continue;
+      long l = this.c - this.b;
+      if (l >= 2000L)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(2000L - l);
+        continue;
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvk
  * JD-Core Version:    0.7.0.1
  */

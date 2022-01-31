@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
 
-class aanp
-  extends ArkAppCGI.ArkAppCGICallback
+public class aanp
+  implements DialogInterface.OnClickListener
 {
-  aanp(aano paramaano) {}
+  public aanp(ArCardSelectMemberActivity paramArCardSelectMemberActivity) {}
   
-  public void a(boolean paramBoolean, ArrayList paramArrayList1, ArrayList arg3, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) || (paramArrayList1 == null) || (paramArrayList1.isEmpty())) {
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("_updatePredownloadAppList, fail.", new Object[0]));
-    }
-    synchronized (ArkLocalAppMgr.b(this.a.a))
-    {
-      ArkLocalAppMgr.b(this.a.a).clear();
-      if (paramArrayList1 != null) {
-        ArkLocalAppMgr.b(this.a.a).addAll(paramArrayList1);
-      }
-      return;
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("_updatePredownloadAppList, success, app-count=%d", new Object[] { Integer.valueOf(paramArrayList1.size()) }));
-    }
+    paramDialogInterface.dismiss();
+    ArCardSelectMemberActivity.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aanp
  * JD-Core Version:    0.7.0.1
  */

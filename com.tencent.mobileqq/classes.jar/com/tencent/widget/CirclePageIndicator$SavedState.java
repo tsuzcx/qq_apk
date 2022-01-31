@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import allf;
+import amav;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import android.view.View.BaseSavedState;
 public class CirclePageIndicator$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new allf();
+  public static final Parcelable.Creator CREATOR = new amav();
   int a;
   
   private CirclePageIndicator$SavedState(Parcel paramParcel)
@@ -31,7 +31,7 @@ public class CirclePageIndicator$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.CirclePageIndicator.SavedState
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import android.content.Context;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class xmz
   implements Runnable
 {
-  public xmz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xmz(CameraPreviewNew paramCameraPreviewNew, String paramString, int paramInt, Context paramContext) {}
   
   public void run()
   {
-    if (VideoFilterTools.a(this.a.getApplicationContext()))
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Int == 2002) {
+      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131428347);
+    }
+    localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131428346), new xna(this));
+    try
     {
-      VideoFilterTools localVideoFilterTools = VideoFilterTools.a();
-      localVideoFilterTools.a(this.a.getApplicationContext(), new xna(this, localVideoFilterTools));
+      ((QQCustomDialog)localObject).setCancelable(false);
+      ((QQCustomDialog)localObject).show();
       return;
     }
-    QLog.w("PTV.NewFlowCameraActivity", 2, "your device don't support video filter!");
+    catch (WindowManager.BadTokenException localBadTokenException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("CameraPreviewNew", 2, "", localBadTokenException);
+    }
   }
 }
 

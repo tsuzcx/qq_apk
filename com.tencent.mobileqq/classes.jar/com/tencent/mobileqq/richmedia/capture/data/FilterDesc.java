@@ -15,6 +15,7 @@ public class FilterDesc
   public int e;
   public String e;
   public String f;
+  public String g;
   
   public FilterDesc() {}
   
@@ -43,7 +44,7 @@ public class FilterDesc
     this.jdField_a_of_type_Int = paramInt3;
   }
   
-  public FilterDesc(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt3, int paramInt4)
+  public FilterDesc(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6)
   {
     this.jdField_b_of_type_Int = paramInt1;
     this.jdField_d_of_type_Int = paramInt2;
@@ -54,208 +55,211 @@ public class FilterDesc
     this.jdField_e_of_type_JavaLangString = paramString5;
     this.jdField_a_of_type_Int = paramInt3;
     this.jdField_e_of_type_Int = paramInt4;
+    this.g = paramString6;
   }
   
   /* Error */
   public static java.util.ArrayList a(org.json.JSONArray paramJSONArray)
   {
     // Byte code:
-    //   0: new 47	java/util/ArrayList
+    //   0: new 50	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 48	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 51	java/util/ArrayList:<init>	()V
     //   7: astore 9
     //   9: iconst_0
     //   10: istore_1
     //   11: iload_1
     //   12: aload_0
-    //   13: invokevirtual 54	org/json/JSONArray:length	()I
-    //   16: if_icmpge +282 -> 298
+    //   13: invokevirtual 57	org/json/JSONArray:length	()I
+    //   16: if_icmpge +296 -> 312
     //   19: aload_0
     //   20: iload_1
-    //   21: invokevirtual 58	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   21: invokevirtual 61	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   24: astore 10
-    //   26: aload 10
-    //   28: ldc 60
-    //   30: invokevirtual 66	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   33: ifeq +285 -> 318
-    //   36: aload 10
-    //   38: ldc 60
-    //   40: invokevirtual 70	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   43: invokestatic 76	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   46: invokevirtual 79	java/lang/Integer:intValue	()I
-    //   49: istore_2
-    //   50: aload 10
-    //   52: ldc 81
-    //   54: invokevirtual 66	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   57: ifeq +218 -> 275
-    //   60: aload 10
-    //   62: ldc 81
-    //   64: invokevirtual 70	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   67: invokestatic 76	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   70: invokevirtual 79	java/lang/Integer:intValue	()I
-    //   73: istore_3
-    //   74: aload 10
-    //   76: ldc 83
-    //   78: invokevirtual 66	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   81: ifeq +231 -> 312
-    //   84: aload 10
-    //   86: ldc 83
-    //   88: ldc 85
-    //   90: invokevirtual 89	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   93: invokestatic 76	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   96: invokevirtual 79	java/lang/Integer:intValue	()I
-    //   99: istore 4
-    //   101: aload 10
-    //   103: ldc 91
-    //   105: ldc 93
-    //   107: invokevirtual 89	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   110: astore 6
-    //   112: aload 10
-    //   114: ldc 95
-    //   116: ldc 93
-    //   118: invokevirtual 89	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   121: astore 7
-    //   123: aload 10
-    //   125: ldc 97
-    //   127: invokevirtual 66	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   130: ifeq +25 -> 155
-    //   133: aload 10
-    //   135: ldc 97
-    //   137: ldc 93
-    //   139: invokevirtual 89	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   142: astore 6
-    //   144: aload 10
-    //   146: ldc 99
-    //   148: ldc 93
-    //   150: invokevirtual 89	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   153: astore 7
-    //   155: aload 10
-    //   157: ldc 101
-    //   159: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   162: astore 11
-    //   164: aload 10
-    //   166: ldc 105
-    //   168: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   171: astore 12
-    //   173: aload 10
-    //   175: ldc 107
-    //   177: invokevirtual 103	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   180: astore 5
-    //   182: aload 10
-    //   184: ldc 109
-    //   186: invokevirtual 66	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   189: ifeq +14 -> 203
-    //   192: aload 10
-    //   194: ldc 109
-    //   196: ldc 93
-    //   198: invokevirtual 89	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   201: astore 5
-    //   203: aload 10
-    //   205: ldc 111
-    //   207: ldc 93
-    //   209: invokevirtual 89	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   212: astore 8
-    //   214: aload 8
-    //   216: invokestatic 117	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   219: ifeq +90 -> 309
-    //   222: aload 5
-    //   224: astore 8
-    //   226: new 2	com/tencent/mobileqq/richmedia/capture/data/FilterDesc
-    //   229: dup
-    //   230: iload_2
-    //   231: iload 4
-    //   233: aload 6
-    //   235: aload 7
-    //   237: aload 11
-    //   239: aload 12
-    //   241: aload 5
-    //   243: iload_3
-    //   244: aload 10
-    //   246: ldc 119
-    //   248: iconst_0
-    //   249: invokevirtual 123	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   252: invokespecial 125	com/tencent/mobileqq/richmedia/capture/data/FilterDesc:<init>	(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)V
-    //   255: astore 5
-    //   257: aload 5
-    //   259: aload 8
-    //   261: putfield 127	com/tencent/mobileqq/richmedia/capture/data/FilterDesc:f	Ljava/lang/String;
-    //   264: aload 9
-    //   266: aload 5
-    //   268: invokevirtual 131	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   271: pop
-    //   272: goto +51 -> 323
-    //   275: iload_2
-    //   276: invokestatic 136	com/tencent/av/opengl/filter/qqavimage/QQAVImageFilterConstants:a	(I)I
-    //   279: istore_3
-    //   280: goto -206 -> 74
-    //   283: astore 5
-    //   285: aload 5
-    //   287: invokevirtual 139	org/json/JSONException:printStackTrace	()V
-    //   290: goto +33 -> 323
-    //   293: astore_0
-    //   294: aload_0
-    //   295: invokevirtual 139	org/json/JSONException:printStackTrace	()V
-    //   298: aload 9
-    //   300: areturn
-    //   301: astore_0
-    //   302: aload_0
-    //   303: invokevirtual 140	java/lang/Exception:printStackTrace	()V
-    //   306: aload 9
-    //   308: areturn
-    //   309: goto -83 -> 226
-    //   312: iconst_0
-    //   313: istore 4
-    //   315: goto -214 -> 101
-    //   318: iconst_0
-    //   319: istore_2
-    //   320: goto -270 -> 50
-    //   323: iload_1
-    //   324: iconst_1
-    //   325: iadd
-    //   326: istore_1
-    //   327: goto -316 -> 11
+    //   26: iconst_0
+    //   27: istore_2
+    //   28: aload 10
+    //   30: ldc 63
+    //   32: invokevirtual 69	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   35: ifeq +17 -> 52
+    //   38: aload 10
+    //   40: ldc 63
+    //   42: invokevirtual 73	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: invokestatic 79	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   48: invokevirtual 82	java/lang/Integer:intValue	()I
+    //   51: istore_2
+    //   52: aload 10
+    //   54: ldc 84
+    //   56: invokevirtual 69	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   59: ifeq +230 -> 289
+    //   62: aload 10
+    //   64: ldc 84
+    //   66: invokevirtual 73	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   69: invokestatic 79	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   72: invokevirtual 82	java/lang/Integer:intValue	()I
+    //   75: istore_3
+    //   76: iconst_0
+    //   77: istore 4
+    //   79: aload 10
+    //   81: ldc 86
+    //   83: invokevirtual 69	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   86: ifeq +20 -> 106
+    //   89: aload 10
+    //   91: ldc 86
+    //   93: ldc 88
+    //   95: invokevirtual 92	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   98: invokestatic 79	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   101: invokevirtual 82	java/lang/Integer:intValue	()I
+    //   104: istore 4
+    //   106: aload 10
+    //   108: ldc 94
+    //   110: ldc 96
+    //   112: invokevirtual 92	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   115: astore 6
+    //   117: aload 10
+    //   119: ldc 98
+    //   121: ldc 96
+    //   123: invokevirtual 92	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   126: astore 7
+    //   128: aload 10
+    //   130: ldc 100
+    //   132: invokevirtual 69	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   135: ifeq +25 -> 160
+    //   138: aload 10
+    //   140: ldc 100
+    //   142: ldc 96
+    //   144: invokevirtual 92	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   147: astore 6
+    //   149: aload 10
+    //   151: ldc 102
+    //   153: ldc 96
+    //   155: invokevirtual 92	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   158: astore 7
+    //   160: aload 10
+    //   162: ldc 104
+    //   164: invokevirtual 106	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   167: astore 11
+    //   169: aload 10
+    //   171: ldc 108
+    //   173: invokevirtual 106	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   176: astore 12
+    //   178: aload 10
+    //   180: ldc 110
+    //   182: invokevirtual 106	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   185: astore 5
+    //   187: aload 10
+    //   189: ldc 112
+    //   191: invokevirtual 69	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   194: ifeq +14 -> 208
+    //   197: aload 10
+    //   199: ldc 112
+    //   201: ldc 96
+    //   203: invokevirtual 92	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   206: astore 5
+    //   208: aload 10
+    //   210: ldc 114
+    //   212: ldc 96
+    //   214: invokevirtual 92	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   217: astore 8
+    //   219: aload 8
+    //   221: invokestatic 120	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   224: ifeq +99 -> 323
+    //   227: aload 5
+    //   229: astore 8
+    //   231: new 2	com/tencent/mobileqq/richmedia/capture/data/FilterDesc
+    //   234: dup
+    //   235: iload_2
+    //   236: iload 4
+    //   238: aload 6
+    //   240: aload 7
+    //   242: aload 11
+    //   244: aload 12
+    //   246: aload 5
+    //   248: iload_3
+    //   249: aload 10
+    //   251: ldc 122
+    //   253: iconst_0
+    //   254: invokevirtual 126	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   257: aload 10
+    //   259: ldc 128
+    //   261: ldc 96
+    //   263: invokevirtual 92	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   266: invokespecial 130	com/tencent/mobileqq/richmedia/capture/data/FilterDesc:<init>	(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;)V
+    //   269: astore 5
+    //   271: aload 5
+    //   273: aload 8
+    //   275: putfield 132	com/tencent/mobileqq/richmedia/capture/data/FilterDesc:f	Ljava/lang/String;
+    //   278: aload 9
+    //   280: aload 5
+    //   282: invokevirtual 136	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   285: pop
+    //   286: goto +40 -> 326
+    //   289: iload_2
+    //   290: invokestatic 141	com/tencent/av/opengl/filter/qqavimage/QQAVImageFilterConstants:a	(I)I
+    //   293: istore_3
+    //   294: goto -218 -> 76
+    //   297: astore 5
+    //   299: aload 5
+    //   301: invokevirtual 144	org/json/JSONException:printStackTrace	()V
+    //   304: goto +22 -> 326
+    //   307: astore_0
+    //   308: aload_0
+    //   309: invokevirtual 144	org/json/JSONException:printStackTrace	()V
+    //   312: aload 9
+    //   314: areturn
+    //   315: astore_0
+    //   316: aload_0
+    //   317: invokevirtual 145	java/lang/Exception:printStackTrace	()V
+    //   320: aload 9
+    //   322: areturn
+    //   323: goto -92 -> 231
+    //   326: iload_1
+    //   327: iconst_1
+    //   328: iadd
+    //   329: istore_1
+    //   330: goto -319 -> 11
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	330	0	paramJSONArray	org.json.JSONArray
-    //   10	317	1	i	int
-    //   49	271	2	j	int
-    //   73	207	3	k	int
-    //   99	215	4	m	int
-    //   180	87	5	localObject1	Object
-    //   283	3	5	localJSONException	org.json.JSONException
-    //   110	124	6	str1	String
-    //   121	115	7	str2	String
-    //   212	48	8	localObject2	Object
-    //   7	300	9	localArrayList	java.util.ArrayList
-    //   24	221	10	localJSONObject	org.json.JSONObject
-    //   162	76	11	str3	String
-    //   171	69	12	str4	String
+    //   0	333	0	paramJSONArray	org.json.JSONArray
+    //   10	320	1	i	int
+    //   27	263	2	j	int
+    //   75	219	3	k	int
+    //   77	160	4	m	int
+    //   185	96	5	localObject1	Object
+    //   297	3	5	localJSONException	org.json.JSONException
+    //   115	124	6	str1	String
+    //   126	115	7	str2	String
+    //   217	57	8	localObject2	Object
+    //   7	314	9	localArrayList	java.util.ArrayList
+    //   24	234	10	localJSONObject	org.json.JSONObject
+    //   167	76	11	str3	String
+    //   176	69	12	str4	String
     // Exception table:
     //   from	to	target	type
-    //   26	50	283	org/json/JSONException
-    //   50	74	283	org/json/JSONException
-    //   74	101	283	org/json/JSONException
-    //   101	123	283	org/json/JSONException
-    //   123	155	283	org/json/JSONException
-    //   155	182	283	org/json/JSONException
-    //   182	203	283	org/json/JSONException
-    //   203	222	283	org/json/JSONException
-    //   226	272	283	org/json/JSONException
-    //   275	280	283	org/json/JSONException
-    //   11	26	293	org/json/JSONException
-    //   285	290	293	org/json/JSONException
-    //   11	26	301	java/lang/Exception
-    //   26	50	301	java/lang/Exception
-    //   50	74	301	java/lang/Exception
-    //   74	101	301	java/lang/Exception
-    //   101	123	301	java/lang/Exception
-    //   123	155	301	java/lang/Exception
-    //   155	182	301	java/lang/Exception
-    //   182	203	301	java/lang/Exception
-    //   203	222	301	java/lang/Exception
-    //   226	272	301	java/lang/Exception
-    //   275	280	301	java/lang/Exception
-    //   285	290	301	java/lang/Exception
+    //   28	52	297	org/json/JSONException
+    //   52	76	297	org/json/JSONException
+    //   79	106	297	org/json/JSONException
+    //   106	128	297	org/json/JSONException
+    //   128	160	297	org/json/JSONException
+    //   160	187	297	org/json/JSONException
+    //   187	208	297	org/json/JSONException
+    //   208	227	297	org/json/JSONException
+    //   231	286	297	org/json/JSONException
+    //   289	294	297	org/json/JSONException
+    //   11	26	307	org/json/JSONException
+    //   299	304	307	org/json/JSONException
+    //   11	26	315	java/lang/Exception
+    //   28	52	315	java/lang/Exception
+    //   52	76	315	java/lang/Exception
+    //   79	106	315	java/lang/Exception
+    //   106	128	315	java/lang/Exception
+    //   128	160	315	java/lang/Exception
+    //   160	187	315	java/lang/Exception
+    //   187	208	315	java/lang/Exception
+    //   208	227	315	java/lang/Exception
+    //   231	286	315	java/lang/Exception
+    //   289	294	315	java/lang/Exception
+    //   299	304	315	java/lang/Exception
   }
   
   public String a(String paramString)

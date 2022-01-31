@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aici;
-import aicj;
+import aiql;
+import aiqm;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.util.Log;
@@ -83,7 +83,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramLong != 0L))
       {
-        ThreadManager.getTimer().schedule(new aici(this, paramHttpNetReq), paramLong);
+        ThreadManager.getTimer().schedule(new aiql(this, paramHttpNetReq), paramLong);
         return;
       }
       if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
@@ -103,7 +103,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
     label200:
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      ThreadManager.getTimer().schedule(new aicj(this, paramHttpNetReq), paramLong);
+      ThreadManager.getTimer().schedule(new aiqm(this, paramHttpNetReq), paramLong);
       return;
     }
     if ((QLog.isColorLevel()) && (paramHttpNetReq != null))
@@ -972,7 +972,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner
  * JD-Core Version:    0.7.0.1
  */

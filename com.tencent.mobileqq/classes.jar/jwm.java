@@ -1,20 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.MultiMembersVideoUI;
-import com.tencent.av.utils.MultiVideoMembersClickListener;
+import com.tencent.av.AVLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
-public class jwm
-  implements View.OnTouchListener
+class jwm
+  implements Runnable
 {
-  public jwm(MultiMembersVideoUI paramMultiMembersVideoUI) {}
+  jwm(jwj paramjwj) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    int i = 1;
+    if (this.a.a.a != null) {
+      i = this.a.a.a.b();
     }
-    return paramMotionEvent.getAction() == 2;
+    for (;;)
+    {
+      if (i < MultiVideoCtrlLayerUIBase.a) {
+        this.a.a.M();
+      }
+      return;
+      AVLog.e(this.a.a.c, "mVideoController == null");
+    }
   }
 }
 

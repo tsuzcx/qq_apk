@@ -1,34 +1,14 @@
-import android.text.Editable;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XEditTextEx;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
 public class rpn
   implements Runnable
 {
-  public rpn(BaseChatPie paramBaseChatPie) {}
+  public rpn(BaseChatPie paramBaseChatPie, AIOAnimationControlManager paramAIOAnimationControlManager, boolean paramBoolean) {}
   
   public void run()
   {
-    int i = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length();
-    if ((BaseChatPie.c(this.a) == i) && (BaseChatPie.d(this.a) != 1)) {
-      BaseChatPie.e(this.a);
-    }
-    while (BaseChatPie.f(this.a) <= BaseChatPie.g(this.a))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendMsgSignal();
-      BaseChatPie.h(this.a);
-      ThreadManager.getSubThreadHandler().postDelayed(BaseChatPie.a(this.a), 2000L);
-      return;
-      BaseChatPie.c(this.a, i);
-      BaseChatPie.d(this.a, 0);
-    }
-    BaseChatPie.c(this.a, false);
-    BaseChatPie.e(this.a, 50);
-    BaseChatPie.d(this.a, 0);
-    BaseChatPie.f(this.a, 0);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_Boolean);
   }
 }
 

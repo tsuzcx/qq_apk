@@ -1,16 +1,18 @@
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
+import com.tencent.biz.qqstory.troop.model.TroopStoryAIOVideoListSynchronizer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class ony
-  implements Runnable
+public class ony
+  implements BatchHandlerListPuller.IPullResultCallback
 {
-  ony(onx paramonx) {}
+  public ony(TroopStoryAIOVideoListSynchronizer paramTroopStoryAIOVideoListSynchronizer, BatchHandlerListPuller paramBatchHandlerListPuller) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.b = false;
-    if (!this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.c) {
-      StoryVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer, this.a.jdField_a_of_type_AndroidOsBundle);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.a.set(false);
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.c();
   }
 }
 

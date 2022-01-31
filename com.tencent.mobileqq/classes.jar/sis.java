@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class sis
   implements Runnable
 {
-  public sis(EditInfoActivity paramEditInfoActivity) {}
+  public sis(Conversation paramConversation) {}
   
   public void run()
   {
-    this.a.a();
+    this.a.a.q();
   }
 }
 

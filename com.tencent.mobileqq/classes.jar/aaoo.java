@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
-import java.util.ArrayList;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.GetCurrentPositionCallback;
 
-public class aaoo
-  implements Runnable
+class aaoo
+  implements ArkAppEventObserverManager.GetCurrentPositionCallback
 {
-  public aaoo(ArkLocalAppMgr paramArkLocalAppMgr, ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask) {}
+  aaoo(aaon paramaaon) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.b.size())
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.a.get(i);
-      aapc localaapc = (aapc)this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.b.get(i);
-      if (localaapc != null) {
-        localaapc.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask, localObject);
-      }
-      i += 1;
+    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Aanw.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    ArkAppDeviceModule.a(this.a.a.a.jdField_a_of_type_Aanw.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

@@ -1,56 +1,15 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.troopshare.TroopShareResp;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
 
-public class adci
-  extends TroopObserver
+class adci
+  implements Runnable
 {
-  public adci(ForwardShareCardOption paramForwardShareCardOption) {}
+  adci(adch paramadch) {}
   
-  public void a(boolean paramBoolean, TroopShareResp paramTroopShareResp)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
-    }
-    this.a.t();
-    if (ForwardShareCardOption.a(this.a) != -1)
-    {
-      if ((!paramBoolean) || (paramTroopShareResp.jdField_a_of_type_Int != 0)) {
-        break label189;
-      }
-      if (paramTroopShareResp.jdField_a_of_type_Boolean)
-      {
-        ForwardShareCardOption.a(this.a, paramTroopShareResp.b);
-        if (ForwardShareCardOption.a(this.a) == 0) {}
-      }
-      else
-      {
-        do
-        {
-          return;
-          ForwardShareCardOption.b(this.a, paramTroopShareResp.b);
-        } while (ForwardShareCardOption.a(this.a) != 1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
-      }
-      if ((paramTroopShareResp.jdField_a_of_type_JavaLangString != null) && (paramTroopShareResp.jdField_a_of_type_JavaLangString.equals(ForwardShareCardOption.c(this.a)))) {
-        ForwardShareCardOption.a(this.a);
-      }
-    }
-    for (;;)
-    {
-      ForwardShareCardOption.a(this.a, -1);
-      return;
-      label189:
-      if (((paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 0)) || ((!paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 1))) {
-        break;
-      }
-      QQToast.a(this.a.a, 1, this.a.a.getString(2131435310), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+    if (this.a.a.a != null) {
+      this.a.a.a.f();
     }
   }
 }

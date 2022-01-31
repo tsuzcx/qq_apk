@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#fff8f8f8" />
-    <corners android:radius="5.0dip" />
-</shape>
+    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02211a" />
+    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02211b" />
+    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02211c" />
+    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02211d" />
+    <item android:duration="200" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02211e" />
+</animation-list>

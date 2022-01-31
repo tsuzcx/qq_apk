@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
+import android.content.Context;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.ark.ArkTipsManager;
 
 public class aayh
-  extends SosoInterface.OnLocationListener
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public aayh(ARMapConfigManager paramARMapConfigManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aayh(ArkTipsManager paramArkTipsManager, Context paramContext) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
-      ARMapConfigManager.b(this.a, paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.b);
+    if ((paramInt == 0) && (paramAppPathInfo.a != null)) {
+      ArkAppCenter.a(paramAppPathInfo.a, new aayi(this));
     }
   }
 }

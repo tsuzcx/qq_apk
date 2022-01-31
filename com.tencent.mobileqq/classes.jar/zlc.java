@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class zlc
   implements Runnable
 {
-  zlc(zlb paramzlb, ChatMessage paramChatMessage) {}
+  zlc(zlb paramzlb, Context paramContext, Intent paramIntent) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Zlb.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_Zlb.jdField_a_of_type_Int, this.jdField_a_of_type_Zlb.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    QQAppInterface.a(this.jdField_a_of_type_Zlb.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

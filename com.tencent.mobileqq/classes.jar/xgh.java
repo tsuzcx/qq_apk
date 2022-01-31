@@ -1,19 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.DownloadCallback;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class xgh
-  implements View.OnClickListener
+class xgh
+  implements PreloadManager.DownloadCallback
 {
-  public xgh(BannerManager paramBannerManager) {}
+  xgh(xgg paramxgg, ResultReceiver paramResultReceiver) {}
   
-  public void onClick(View paramView)
+  public void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo)
   {
-    this.a.a(18, 0);
-    this.a.a(-1, null);
-    ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadModule" + paramString2 + "|" + paramResourceInfo + "|" + System.currentTimeMillis());
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("id", paramString1);
+    localBundle.putInt("result", paramInt);
+    localBundle.putString("path", paramString2);
+    localBundle.putSerializable("res_info", paramResourceInfo);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 

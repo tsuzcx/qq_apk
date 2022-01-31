@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajco;
-import ajcp;
-import ajcq;
-import ajcs;
-import ajct;
-import ajcu;
-import ajcv;
-import ajcw;
-import ajcx;
-import ajcy;
-import ajcz;
-import ajda;
-import ajdd;
+import ajqs;
+import ajqt;
+import ajqu;
+import ajqw;
+import ajqx;
+import ajqy;
+import ajqz;
+import ajra;
+import ajrb;
+import ajrc;
+import ajrd;
+import ajre;
+import ajrh;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -344,7 +344,7 @@ public class TroopTopicMgr
       localWebSsoRequestBody.type.set(0);
       localWebSsoRequestBody.data.set(localJSONObject.toString());
       paramMessageForTroopTopic.putExtra("data", localWebSsoRequestBody.toByteArray());
-      paramMessageForTroopTopic.setObserver(new ajcz());
+      paramMessageForTroopTopic.setObserver(new ajrd());
       paramAppInterface.startServlet(paramMessageForTroopTopic);
       return;
     }
@@ -403,7 +403,7 @@ public class TroopTopicMgr
         localJSONObject.put("comment", TroopBarPublishUtils.a(new QQText(str, 13).a(), null, null));
         localJSONObject.put("msgRand", MessageUtils.a(paramMessageRecord.msgUid));
         localJSONObject.put("oriMsgSeq", String.valueOf(paramMessageRecord.shmsgseq));
-        localJSONObject.put("version", "7.6.0.3525");
+        localJSONObject.put("version", "7.6.3.3560");
         if (QLog.isColorLevel()) {
           QLog.d("zivonchen", 2, "commendTopic msgRand = " + MessageUtils.a(paramMessageRecord.msgUid) + ", msgUid = " + paramMessageRecord.msgUid);
         }
@@ -413,7 +413,7 @@ public class TroopTopicMgr
         paramString2.type.set(0);
         paramString2.data.set(localJSONObject.toString());
         paramString1.putExtra("data", paramString2.toByteArray());
-        paramString1.setObserver(new ajcx(paramQQAppInterface, paramMessageRecord));
+        paramString1.setObserver(new ajrb(paramQQAppInterface, paramMessageRecord));
         paramQQAppInterface.startServlet(paramString1);
         return;
       }
@@ -470,7 +470,7 @@ public class TroopTopicMgr
       {
         localPicReq.a(paramMessageForPic, paramMessageForPic.getPicDownloadInfo());
         String str = AbsDownloader.d(URLDrawableHelper.a(paramMessageForPic, i, null).toString().toString());
-        localPicReq.a(new ajcs(paramWeakReference, paramLong, paramInt1, paramInt2, paramMessageForPic.size, str));
+        localPicReq.a(new ajqw(paramWeakReference, paramLong, paramInt1, paramInt2, paramMessageForPic.size, str));
         PicBusiManager.a(localPicReq, (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(paramString));
         return;
       }
@@ -505,7 +505,7 @@ public class TroopTopicMgr
       ((NewIntent)localObject).putExtra("timeout", 5000L);
       ((NewIntent)localObject).putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.sbar_aio_content");
       ((NewIntent)localObject).putExtra("data", localWebSsoRequestBody.toByteArray());
-      ((NewIntent)localObject).setObserver(new ajcq(this, paramTroopTopicDetailInfo, paramMessageForTroopTopic));
+      ((NewIntent)localObject).setObserver(new ajqu(this, paramTroopTopicDetailInfo, paramMessageForTroopTopic));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
       return;
     }
@@ -534,7 +534,7 @@ public class TroopTopicMgr
           localJSONObject.put("bid", localMessageForTroopTopic.bid);
           localJSONObject.put("pid", localMessageForTroopTopic.pid);
           localWebSsoRequestBody.data.set(localJSONObject.toString());
-          ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajda(this, paramTroopTopicDetailInfo, paramMessageRecord), localWebSsoRequestBody.toByteArray(), "MQUpdateSvc_com_qq_buluo.web.sbar_post_extinfo");
+          ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajre(this, paramTroopTopicDetailInfo, paramMessageRecord), localWebSsoRequestBody.toByteArray(), "MQUpdateSvc_com_qq_buluo.web.sbar_post_extinfo");
           return;
         }
       }
@@ -595,7 +595,7 @@ public class TroopTopicMgr
     {
       paramSessionInfo = a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSendMsgParams, str, 3);
       a(paramQQAppInterface, paramSessionInfo);
-      ((TroopTopicMgr)paramQQAppInterface.getManager(97)).a(paramSessionInfo, paramMessageRecord.shmsgseq, str, (String)localObject2, localArrayList, Long.parseLong(paramMessageRecord.frienduin) + 10000000000L, paramEditable, (String)localObject1, 1, new ajcy());
+      ((TroopTopicMgr)paramQQAppInterface.getManager(97)).a(paramSessionInfo, paramMessageRecord.shmsgseq, str, (String)localObject2, localArrayList, Long.parseLong(paramMessageRecord.frienduin) + 10000000000L, paramEditable, (String)localObject1, 1, new ajrc());
       if (QLog.isColorLevel()) {
         QLog.d(".troop.troop_topic.TroopTopicMgr", 2, "commend: 评论ok, send uniseq = " + paramMessageRecord.shmsgseq + ", msg = " + str);
       }
@@ -692,7 +692,7 @@ public class TroopTopicMgr
         QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "getTroopTopicDetailInfo parse xml error");
       }
     }
-    ThreadManager.post(new ajcp(this, (TroopTopicDetailInfo)localObject, paramMessageForTroopTopic), 8, null, false);
+    ThreadManager.post(new ajqt(this, (TroopTopicDetailInfo)localObject, paramMessageForTroopTopic), 8, null, false);
     return null;
   }
   
@@ -785,7 +785,7 @@ public class TroopTopicMgr
       localBundle.putString("Referer", "https://buluo.qq.com");
       localHashMap.put("BUNDLE", localBundle);
       localHashMap.put("CONTEXT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
-      new HttpWebCgiAsyncTask2(jdField_a_of_type_JavaLangString, "POST", new ajco(this, localTroopChatPie, paramString1, paramChatMessage, paramString2, paramInt), 1000, null).a(localHashMap);
+      new HttpWebCgiAsyncTask2(jdField_a_of_type_JavaLangString, "POST", new ajqs(this, localTroopChatPie, paramString1, paramChatMessage, paramString2, paramInt), 1000, null).a(localHashMap);
       return;
     }
   }
@@ -815,7 +815,7 @@ public class TroopTopicMgr
       localJSONObject.put("bid", Long.parseLong(paramChatMessage.frienduin) + 10000000000L);
       localJSONObject.put("post", a(paramChatMessage));
       localWebSsoRequestBody.data.set(localJSONObject.toString());
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajcv(this, paramDoLikeCallback), localWebSsoRequestBody.toByteArray(), "MQUpdateSvc_com_qq_buluo.web.sbar_like");
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajqz(this, paramDoLikeCallback), localWebSsoRequestBody.toByteArray(), "MQUpdateSvc_com_qq_buluo.web.sbar_like");
       return;
     }
     catch (JSONException paramChatMessage)
@@ -901,9 +901,9 @@ public class TroopTopicMgr
       localJSONObject.put("comment", TroopBarPublishUtils.a(new QQText(paramString2, 13).a(), null, null));
       localJSONObject.put("msgRand", MessageUtils.a(paramMessageRecord.msgUid));
       localJSONObject.put("oriMsgSeq", String.valueOf(paramMessageRecord.shmsgseq));
-      localJSONObject.put("version", "7.6.0.3525");
+      localJSONObject.put("version", "7.6.3.3560");
       localWebSsoRequestBody.data.set(localJSONObject.toString());
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajcu(this, paramWriteCommentCallback, paramMessageRecord), localWebSsoRequestBody.toByteArray(), "MQUpdateSvc_com_qq_buluo.web.sbar_comment");
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajqy(this, paramWriteCommentCallback, paramMessageRecord), localWebSsoRequestBody.toByteArray(), "MQUpdateSvc_com_qq_buluo.web.sbar_comment");
       return;
     }
     catch (JSONException paramMessageRecord)
@@ -964,7 +964,7 @@ public class TroopTopicMgr
         QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo cache hit, no update 2");
         return;
       }
-      ThreadManager.post(new ajcw(this, paramMessageRecord), 8, null, true);
+      ThreadManager.post(new ajra(this, paramMessageRecord), 8, null, true);
       return;
       bool = false;
       continue;
@@ -1002,13 +1002,13 @@ public class TroopTopicMgr
       paramString.b = 3;
       Bundle localBundle = new Bundle();
       localBundle.putString("filePath", (String)localObject);
-      ((DownloaderFactory)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46)).a(1).a(paramString, new ajct(this, paramInt), localBundle);
+      ((DownloaderFactory)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46)).a(1).a(paramString, new ajqx(this, paramInt), localBundle);
     }
   }
   
   public void a(String paramString, long paramLong1, long paramLong2)
   {
-    ThreadManager.post(new ajdd(this, paramString, paramLong1, paramLong2), 8, null, false);
+    ThreadManager.post(new ajrh(this, paramString, paramLong1, paramLong2), 8, null, false);
   }
   
   public boolean a(long paramLong)
@@ -1212,7 +1212,7 @@ public class TroopTopicMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopTopicMgr
  * JD-Core Version:    0.7.0.1
  */

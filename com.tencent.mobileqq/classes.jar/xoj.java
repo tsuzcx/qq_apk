@@ -1,14 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class xoj
   implements Runnable
 {
-  public xoj(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xoj(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
   public void run()
   {
-    this.a.c.setVisibility(8);
+    EditLocalVideoActivity.c(this.a);
   }
 }
 

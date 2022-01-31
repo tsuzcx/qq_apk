@@ -19,7 +19,7 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import ztx;
+import zxd;
 
 public class ARDeviceController
 {
@@ -274,7 +274,7 @@ public class ARDeviceController
     if ((this.e) || (this.jdField_c_of_type_Int != paramInt))
     {
       this.e = false;
-      ThreadManager.post(new ztx(this, paramInt, paramBoolean), 5, null, true);
+      ThreadManager.post(new zxd(this, paramInt, paramBoolean), 5, null, true);
     }
     this.jdField_c_of_type_Int = paramInt;
   }

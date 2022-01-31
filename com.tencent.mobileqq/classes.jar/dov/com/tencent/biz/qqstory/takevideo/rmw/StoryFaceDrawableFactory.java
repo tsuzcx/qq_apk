@@ -14,9 +14,9 @@ import android.os.Message;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import anni;
-import annj;
-import annk;
+import aodn;
+import aodo;
+import aodp;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.view.StoryFaceDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -40,8 +40,8 @@ public class StoryFaceDrawableFactory
     this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(60);
     this.jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(120);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new anni(this, Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new annj(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aodn(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aodo(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.qqhead.getheadresp");
@@ -171,7 +171,7 @@ public class StoryFaceDrawableFactory
   
   public void a(String paramString1, String paramString2)
   {
-    ThreadManager.post(new annk(this, paramString2, paramString1), 8, null, true);
+    ThreadManager.post(new aodp(this, paramString2, paramString1), 8, null, true);
   }
 }
 

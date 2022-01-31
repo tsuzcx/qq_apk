@@ -1,30 +1,13 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
 
-public class wme
-  implements View.OnClickListener
+class wme
+  implements Runnable
 {
-  public wme(ImgPreviewAdapter paramImgPreviewAdapter) {}
+  wme(wmd paramwmd) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
-    if (localEmoticonFromGroupEntity != null)
-    {
-      if (localEmoticonFromGroupEntity.msg != null)
-      {
-        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
-        return;
-      }
-      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
-      return;
-    }
-    QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
+    this.a.a.notifyDataSetChanged();
   }
 }
 

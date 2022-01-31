@@ -1,56 +1,71 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.ar.NeonControl;
+import com.tencent.mobileqq.ar.ScanEntranceDPC;
+import com.tencent.mobileqq.statistics.cpu.CPUReport;
+import com.tencent.qphone.base.util.QLog;
 
 public class aadd
   implements Runnable
 {
-  public aadd(ARReport paramARReport, String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, long paramLong4, int paramInt2, long paramLong5, int paramInt3, long paramLong6, long paramLong7, int paramInt4) {}
+  public aadd(NeonControl paramNeonControl, SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localHashMap.put("cloud_download_imgId", String.valueOf(this.jdField_a_of_type_JavaLangString));
+    boolean bool1 = true;
+    ??? = new CPUReport();
+    ((CPUReport)???).a();
+    boolean bool2 = ((CPUReport)???).a();
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_cpu_neon_support", bool2).apply();
+    boolean bool3 = ScanEntranceDPC.a().e;
+    int i;
+    int j;
+    if (QLog.isColorLevel())
+    {
+      if (!bool3) {
+        break label216;
+      }
+      i = 1;
+      if (!bool2) {
+        break label221;
+      }
+      j = 1;
+      label76:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label226;
+      }
     }
-    if (this.jdField_a_of_type_Long > 0L) {
-      localHashMap.put("cloud_download_feature_size", String.valueOf(this.jdField_a_of_type_Long));
+    label216:
+    label221:
+    label226:
+    for (int k = 1;; k = 0)
+    {
+      QLog.i("NeonControl", 2, String.format("dpcNeonCfgSwitch:%d isCpuNeonSupport:%d forceOpenNeon:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }));
+      if (this.jdField_a_of_type_Boolean) {
+        synchronized (this.jdField_a_of_type_ComTencentMobileqqArNeonControl.a)
+        {
+          NeonControl.a(this.jdField_a_of_type_ComTencentMobileqqArNeonControl, bool2);
+          return;
+        }
+      }
+      for (;;)
+      {
+        synchronized (this.jdField_a_of_type_ComTencentMobileqqArNeonControl.a)
+        {
+          NeonControl localNeonControl = this.jdField_a_of_type_ComTencentMobileqqArNeonControl;
+          if ((bool3) && (bool2))
+          {
+            NeonControl.a(localNeonControl, bool1);
+            return;
+          }
+        }
+        bool1 = false;
+      }
+      i = 0;
+      break;
+      j = 0;
+      break label76;
     }
-    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_b_of_type_Long)) {
-      localHashMap.put("cloud_download_feature_time", String.valueOf(this.jdField_b_of_type_Long));
-    }
-    if (this.jdField_a_of_type_Int > -1) {
-      localHashMap.put("cloud_download_feature_code", String.valueOf(this.jdField_a_of_type_Int));
-    }
-    if (this.jdField_c_of_type_Long > 0L) {
-      localHashMap.put("cloud_download_model_size", String.valueOf(this.jdField_c_of_type_Long));
-    }
-    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_d_of_type_Long)) {
-      localHashMap.put("cloud_download_model_time", String.valueOf(this.jdField_d_of_type_Long));
-    }
-    if (this.jdField_b_of_type_Int > -1) {
-      localHashMap.put("cloud_download_model_code", String.valueOf(this.jdField_b_of_type_Int));
-    }
-    if (this.e > 0L) {
-      localHashMap.put("cloud_download_unzip_time", String.valueOf(this.e));
-    }
-    if (this.jdField_c_of_type_Int > -1) {
-      localHashMap.put("cloud_download_type", String.valueOf(this.jdField_c_of_type_Int));
-    }
-    localHashMap.put("cloud_download_net_type", String.valueOf(NetworkUtil.a(BaseApplication.getContext())));
-    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.f)) {
-      localHashMap.put("cloud_download_all_time", String.valueOf(this.f));
-    }
-    if (this.g > 0L) {
-      localHashMap.put("cloud_download_net_size", String.valueOf(this.g));
-    }
-    if (this.jdField_d_of_type_Int > -1) {
-      localHashMap.put("cloud_download_all_result", String.valueOf(this.jdField_d_of_type_Int));
-    }
-    localHashMap.put("cloud_download_type", "0");
-    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARCloudDownLoad", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

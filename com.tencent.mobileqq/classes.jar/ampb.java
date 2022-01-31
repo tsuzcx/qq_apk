@@ -1,39 +1,48 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.plugin.IPluginManager;
-import cooperation.troop.TroopPluginManager;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavHelper;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ampb
-  implements Runnable
+class ampb
+  extends OnPluginInstallListener.Stub
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new ampc(this, Looper.getMainLooper());
-  TroopPluginManager.TroopPluginCallback jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback;
-  String jdField_a_of_type_JavaLangString;
+  ampb(ampa paramampa) {}
   
-  public ampb(TroopPluginManager paramTroopPluginManager, TroopPluginManager.TroopPluginCallback paramTroopPluginCallback, String paramString)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback = paramTroopPluginCallback;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
+    }
+    try
+    {
+      ThreadManager.post(this.a.a, 5, null, false);
+      return;
+    }
+    catch (Exception paramString) {}
   }
   
-  public void run()
+  public void onInstallFinish(String paramString)
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_CooperationTroopTroopPluginManager.a.get();
-    if (localObject == null) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
+    }
+    QfavHelper.a().set(true);
+    try
     {
+      ThreadManager.post(this.a.a, 5, null, false);
       return;
-      localObject = (IPluginManager)((QQAppInterface)localObject).getManager(26);
-    } while (localObject == null);
-    ((IPluginManager)localObject).a(this.jdField_a_of_type_JavaLangString, false, new ampd(this));
+    }
+    catch (Exception paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampb
  * JD-Core Version:    0.7.0.1
  */

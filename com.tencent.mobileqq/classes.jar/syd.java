@@ -1,25 +1,17 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.Frame;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
 
-public class syd
-  extends syo
+class syd
+  implements WebProcessManager.WebProcessStartListener
 {
-  public syd(MainFragment paramMainFragment)
-  {
-    super(null);
-  }
+  syd(syc paramsyc) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    Frame localFrame = MainFragment.a(this.a);
-    if ((localFrame instanceof ReadinjoyTabFrame)) {
-      ((ReadinjoyTabFrame)localFrame).l();
+    if (paramBoolean) {
+      Leba.b(this.a.a.a).a();
     }
-    ReadInJoyLogicEngine.a().a(0);
-    super.onClick(paramView);
   }
 }
 

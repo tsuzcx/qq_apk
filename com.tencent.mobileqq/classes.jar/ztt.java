@@ -1,37 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.MessageRoamHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.message.ProfileCardMessageProcessor;
 
-class ztt
+public class ztt
   implements Runnable
 {
-  ztt(zts paramzts, long paramLong, int paramInt, String paramString, boolean paramBoolean) {}
+  public ztt(ProfileCardMessageProcessor paramProfileCardMessageProcessor) {}
   
   public void run()
   {
-    int i = 0;
-    Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg", 2, "fetchMoreRoamMessage begin fetchNum: " + this.jdField_a_of_type_Int);
+    if (!TextUtils.isEmpty(this.a.a.getAccount())) {
+      ((FriendListHandler)this.a.a.a(1)).b(this.a.a.getAccount());
     }
-    if (this.jdField_a_of_type_Zts.a.a(this.jdField_a_of_type_JavaLangString, (Calendar)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int)) {}
-    do
-    {
-      return;
-      localObject = this.jdField_a_of_type_Zts.a.b.getHandler(ChatHistoryForC2C.class);
-    } while (localObject == null);
-    Message localMessage = ((MqqHandler)localObject).obtainMessage(0);
-    localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Boolean) {
-      i = 1;
-    }
-    localMessage.arg1 = i;
-    ((MqqHandler)localObject).sendMessageDelayed(localMessage, 0L);
   }
 }
 

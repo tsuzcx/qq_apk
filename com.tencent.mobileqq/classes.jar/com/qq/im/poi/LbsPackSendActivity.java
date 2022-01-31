@@ -10,8 +10,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aon;
-import aoo;
+import ant;
+import anu;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.armap.ArMapInterface;
 import com.tencent.mobileqq.businessCard.helpers.ViewHelper;
@@ -43,7 +43,7 @@ public class LbsPackSendActivity
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public LbsPackManager a;
-  LbsPackObserver jdField_a_of_type_ComQqImPoiLbsPackObserver = new aon(this);
+  LbsPackObserver jdField_a_of_type_ComQqImPoiLbsPackObserver = new ant(this);
   public PoiInfo a;
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private URLTextImageView jdField_a_of_type_ComTencentMobileqqWidgetURLTextImageView;
@@ -84,8 +84,8 @@ public class LbsPackSendActivity
         label34:
         ViewHelper.b(localURLTextImageView, 1.0F);
         ViewHelper.c(localURLTextImageView, 1.0F);
-        localURLTextImageView.setImageResource(2130842559);
-        localURLTextImageView.setTextColor(2131493346);
+        localURLTextImageView.setImageResource(2130842651);
+        localURLTextImageView.setTextColor(2131493349);
       }
     }
     else
@@ -100,8 +100,8 @@ public class LbsPackSendActivity
     {
       ViewHelper.b(localURLTextImageView, 1.1F);
       ViewHelper.c(localURLTextImageView, 1.1F);
-      localURLTextImageView.setImageResource(2130842560);
-      localURLTextImageView.setTextColor(2131493347);
+      localURLTextImageView.setImageResource(2130842652);
+      localURLTextImageView.setTextColor(2131493350);
       this.jdField_c_of_type_Int = paramInt;
       if (!QLog.isColorLevel()) {
         break;
@@ -131,33 +131,33 @@ public class LbsPackSendActivity
     paramURLTextImageView.setTextSize(DisplayUtil.a(this, 14.0F));
     paramURLTextImageView.e = paramString;
     paramURLTextImageView.setTopPercent(0.8F);
-    paramURLTextImageView.setTextColor(2131493346);
+    paramURLTextImageView.setTextColor(2131493349);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370174));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370284));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370184);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370294);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370180);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370290);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    super.findViewById(2131363954).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370183));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370187));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131370186));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131370188));
+    super.findViewById(2131363978).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370293));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370297));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131370296));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131370298));
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_b_of_type_AndroidWidgetImageView.getDrawable());
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131370189);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370190));
-    this.d = ((TextView)super.findViewById(2131370191));
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131370299);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370300));
+    this.d = ((TextView)super.findViewById(2131370301));
     this.d.setOnClickListener(this);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetURLTextImageView = ((URLTextImageView)super.findViewById(2131370177));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetURLTextImageView = ((URLTextImageView)super.findViewById(2131370287));
     a(this.jdField_a_of_type_ComTencentMobileqqWidgetURLTextImageView, "左");
-    this.jdField_b_of_type_ComTencentMobileqqWidgetURLTextImageView = ((URLTextImageView)super.findViewById(2131370178));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetURLTextImageView = ((URLTextImageView)super.findViewById(2131370288));
     a(this.jdField_b_of_type_ComTencentMobileqqWidgetURLTextImageView, "中");
-    this.jdField_c_of_type_ComTencentMobileqqWidgetURLTextImageView = ((URLTextImageView)super.findViewById(2131370179));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetURLTextImageView = ((URLTextImageView)super.findViewById(2131370289));
     a(this.jdField_c_of_type_ComTencentMobileqqWidgetURLTextImageView, "右");
     a(new Random().nextInt(3) + 1);
     LbsPackConfig localLbsPackConfig = ((LbsPackManager)this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.getManager(214)).jdField_a_of_type_ComQqImPoiLbsPackConfig;
@@ -166,7 +166,7 @@ public class LbsPackSendActivity
     {
       if (i == 2)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438768);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438786);
         this.jdField_a_of_type_JavaLangString = "-1";
         this.jdField_a_of_type_Int = -1;
       }
@@ -186,19 +186,19 @@ public class LbsPackSendActivity
   void a()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      a(getString(2131438770), -1);
+      a(getString(2131438788), -1);
     }
     do
     {
       return;
       if (this.jdField_a_of_type_ComQqImPoiPoiInfo == null)
       {
-        if (getString(2131438764).equals(this.jdField_c_of_type_AndroidWidgetTextView.getText()))
+        if (getString(2131438782).equals(this.jdField_c_of_type_AndroidWidgetTextView.getText()))
         {
-          a(getString(2131438763));
+          a(getString(2131438781));
           return;
         }
-        a(getString(2131438771), -1);
+        a(getString(2131438789), -1);
         return;
       }
       if (this.jdField_c_of_type_Int == 0)
@@ -212,7 +212,7 @@ public class LbsPackSendActivity
       c();
       return;
     }
-    a(getString(2131438772), -1);
+    a(getString(2131438790), -1);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -225,7 +225,7 @@ public class LbsPackSendActivity
     this.jdField_c_of_type_AndroidViewView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setText(paramInt2);
-    if (2131438763 != paramInt1)
+    if (2131438781 != paramInt1)
     {
       a(getString(paramInt1), -1);
       return;
@@ -247,15 +247,15 @@ public class LbsPackSendActivity
       this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComQqImPoiPoiInfo.jdField_a_of_type_JavaLangString);
       return;
     }
-    a(2131438763, 2131438764);
+    a(2131438781, 2131438782);
   }
   
   void a(String paramString)
   {
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 0);
     localQQCustomDialog.setMessage(paramString).setCancelable(true);
-    localQQCustomDialog.setNegativeButton(2131432998, null);
-    localQQCustomDialog.setPositiveButton(2131438000, new aoo(this, localQQCustomDialog));
+    localQQCustomDialog.setNegativeButton(2131433015, null);
+    localQQCustomDialog.setPositiveButton(2131438017, new anu(this, localQQCustomDialog));
     if (!super.isFinishing()) {
       localQQCustomDialog.show();
     }
@@ -354,7 +354,7 @@ public class LbsPackSendActivity
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131437879);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131437896);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       return;
@@ -516,7 +516,7 @@ public class LbsPackSendActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2130970349);
+    setContentView(2130970378);
     e();
     getAppRuntime().registObserver(this.jdField_a_of_type_ComQqImPoiLbsPackObserver);
     this.jdField_a_of_type_ComQqImPoiLbsPackManager = ((LbsPackManager)getAppRuntime().getManager(214));
@@ -525,7 +525,7 @@ public class LbsPackSendActivity
       b();
       return true;
     }
-    a(2131438763, 2131438764);
+    a(2131438781, 2131438782);
     return true;
   }
   
@@ -565,7 +565,7 @@ public class LbsPackSendActivity
       return;
       jdField_a_of_type_Long = l;
       i = paramView.getId();
-      if (2131370184 != i) {
+      if (2131370294 != i) {
         break;
       }
       if (this.jdField_c_of_type_AndroidViewView.getVisibility() == 0)
@@ -575,14 +575,14 @@ public class LbsPackSendActivity
           b();
           return;
         }
-        a(2131438763, 2131438764);
+        a(2131438781, 2131438782);
         return;
       }
     } while (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0);
     LbsPackPoiListActivity.a(this, this.jdField_a_of_type_ComQqImPoiPoiInfo, 1002);
     this.jdField_a_of_type_Boolean = true;
     return;
-    if (2131370180 == i)
+    if (2131370290 == i)
     {
       paramView = this.jdField_a_of_type_ComQqImPoiLbsPackManager.jdField_a_of_type_ComQqImPoiLbsPackConfig;
       if ((paramView == null) || (paramView.allFriend != 0)) {
@@ -591,29 +591,29 @@ public class LbsPackSendActivity
     }
     for (;;)
     {
-      ForwardLbsHBOption.a(this, 1001, getString(2131438760), bool);
+      ForwardLbsHBOption.a(this, 1001, getString(2131438778), bool);
       return;
-      if (2131370174 == i)
+      if (2131370284 == i)
       {
         a();
         return;
       }
-      if (2131370177 == i)
+      if (2131370287 == i)
       {
         a(1);
         return;
       }
-      if (2131370178 == i)
+      if (2131370288 == i)
       {
         a(2);
         return;
       }
-      if (2131370179 == i)
+      if (2131370289 == i)
       {
         a(3);
         return;
       }
-      if ((2131370191 == i) || (2131363954 != i)) {
+      if ((2131370301 == i) || (2131363978 != i)) {
         break;
       }
       super.finish();

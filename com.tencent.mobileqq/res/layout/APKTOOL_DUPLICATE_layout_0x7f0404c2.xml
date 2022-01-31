@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ee9" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0314" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020df7" android:paddingLeft="12.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040483" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
-                <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0316" android:gravity="bottom" android:id="@id/input_note_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f8b" android:singleLine="true" />
-                <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0316" android:gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06c0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f6b" android:singleLine="true" />
-                <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0872" android:background="@null" android:paddingLeft="3.0dip" android:paddingTop="7.0dip" android:paddingRight="7.0dip" android:paddingBottom="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d9c" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16cf" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-                <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d9d" android:layout_width="fill_parent" android:layout_height="44.0dip">
-                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16c6" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                        <com.tenpay.sdk.i.aj android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16c7" android:visibility="gone" android:imeOptions="actionDone" android:imeActionLabel="@string/APKTOOL_DUPLICATE_string_0x7f0b0e53" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
-                        <com.tenpay.sdk.i.a android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16d1" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b0dff" android:inputType="textPassword" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
-                    </LinearLayout>
-                </LinearLayout>
-                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
-                    <Button android:textSize="15.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a168d" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ead" android:layout_alignParentRight="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00eb" />
-                </RelativeLayout>
-                <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="8.0dip">
-                    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16d2" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0eae" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ef" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-    <com.tenpay.api.MyKeyboardWindow android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a167b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_vertical" android:paddingTop="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a182f" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1830" android:paddingLeft="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1831" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="8.08元" />
+    </LinearLayout>
+    <LinearLayout android:paddingTop="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="11.5dip">
+        <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0330" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1330" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="07-27 14：35：21" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0330" android:gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0689" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="已领完" />
+    </LinearLayout>
 </LinearLayout>

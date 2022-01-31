@@ -1,29 +1,37 @@
-import android.annotation.TargetApi;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.open.appcircle.st.AppCircleReportManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.common.DownloadDBHelper;
+import com.tencent.open.downloadnew.common.PackageInstallReceiver;
 
-class aljh
-  implements AudioManager.OnAudioFocusChangeListener
+public class aljh
+  implements Runnable
 {
-  aljh(alje paramalje) {}
+  public aljh(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
   
-  @TargetApi(8)
-  public void onAudioFocusChange(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "focusChange:" + paramInt + " _focusSteamType:" + this.a.c + " currMode:" + this.a.b.jdField_a_of_type_AndroidMediaAudioManager.getMode() + " _activeMode:" + this.a.b.jdField_a_of_type_Int);
+    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED >> " + this.jdField_a_of_type_JavaLangString);
+    DownloadInfo localDownloadInfo = DownloadDBHelper.a().a(this.b);
+    if (localDownloadInfo != null)
+    {
+      LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.b + " " + localDownloadInfo.d);
+      DownloadManager.a().d(localDownloadInfo);
+      AppCircleReportManager.a().a(101, localDownloadInfo);
     }
-    if (paramInt == -1) {}
-    while ((paramInt == -2) || (paramInt == -3) || (paramInt != 1)) {
+    for (;;)
+    {
+      DownloadManager.a().a(6, localDownloadInfo);
       return;
+      localDownloadInfo = new DownloadInfo("", this.b);
+      LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,29 @@
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class skk
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public skk(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public skk(FontSettingActivity paramFontSettingActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_b_of_type_Int = paramInt2;
+    if ((paramMotionEvent != null) && (this.a.a != null))
+    {
+      paramView = this.a.a;
+      if (paramMotionEvent.getAction() != 0) {
+        break label39;
+      }
+    }
+    label39:
+    for (float f = 0.5F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return false;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qipc;
 
-import aghl;
-import aghm;
+import agvn;
+import agvo;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -25,10 +25,10 @@ public class QIPCEnvironmentInit
     try
     {
       QIPCClientHelper.getInstance().adapterService = QIPCServiceEx.class;
-      QIPCClientHelper.setupThreadEngine(new aghl());
+      QIPCClientHelper.setupThreadEngine(new agvn());
       if (TextUtils.equals(MobileQQ.processName, BaseApplicationImpl.sApplication.getApplicationContext().getPackageName()))
       {
-        QIPCServerHelper.getInstance().getServer().setModuleFactory(new aghm());
+        QIPCServerHelper.getInstance().getServer().setModuleFactory(new agvo());
         if (BaseApplicationImpl.useQIPCStart(MobileQQ.processName))
         {
           if (QLog.isColorLevel()) {
@@ -69,7 +69,7 @@ public class QIPCEnvironmentInit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.QIPCEnvironmentInit
  * JD-Core Version:    0.7.0.1
  */

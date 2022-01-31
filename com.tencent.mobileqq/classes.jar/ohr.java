@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
 public class ohr
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public ohr(EditTextDialog paramEditTextDialog) {}
+  public ohr(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.dismiss();
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 4);
-    }
-    VideoEditReport.a("0X80076C6");
-    VideoEditReport.b("0X80075DA");
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2131034167);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2131034167);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

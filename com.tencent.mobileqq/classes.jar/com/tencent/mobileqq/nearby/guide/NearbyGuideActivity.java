@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby.guide;
 
-import aecq;
-import aecr;
-import aecs;
-import aect;
-import aecv;
-import aecy;
-import aecz;
-import aeda;
-import aedb;
-import aedc;
-import aedd;
+import aepw;
+import aepx;
+import aepy;
+import aepz;
+import aeqb;
+import aeqe;
+import aeqf;
+import aeqg;
+import aeqh;
+import aeqi;
+import aeqj;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
@@ -110,8 +110,8 @@ public class NearbyGuideActivity
   public ScrollView a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public NearbyCardHandler a;
-  NearbyCardObserver jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new aect(this);
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new aecq(this);
+  NearbyCardObserver jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new aepz(this);
+  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new aepw(this);
   MonitorSizeChangeRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetMonitorSizeChangeRelativeLayout;
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   CustomImgView jdField_a_of_type_ComTencentWidgetCustomImgView;
@@ -123,7 +123,7 @@ public class NearbyGuideActivity
   Animation jdField_b_of_type_AndroidViewAnimationAnimation;
   public Button b;
   TextView jdField_b_of_type_AndroidWidgetTextView;
-  NearbyCardObserver jdField_b_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new aecv(this);
+  NearbyCardObserver jdField_b_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new aeqb(this);
   String jdField_b_of_type_JavaLangString;
   boolean jdField_b_of_type_Boolean = false;
   int jdField_c_of_type_Int = 0;
@@ -186,7 +186,7 @@ public class NearbyGuideActivity
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if ((paramInt1 == paramInt3) && (paramInt2 > 0) && (paramInt4 > 0) && (paramInt2 < paramInt4)) {
-      this.jdField_a_of_type_AndroidWidgetScrollView.postDelayed(new aecz(this), 300L);
+      this.jdField_a_of_type_AndroidWidgetScrollView.postDelayed(new aeqf(this), 300L);
     }
   }
   
@@ -202,11 +202,11 @@ public class NearbyGuideActivity
     d();
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130970377, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130970418, null);
       if (Build.VERSION.SDK_INT >= 9) {
         this.jdField_a_of_type_AndroidViewView.setOverScrollMode(2);
       }
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131370325));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131370466));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       e("0X8005901");
     }
@@ -274,7 +274,7 @@ public class NearbyGuideActivity
     localBundle.putString("key_new_nickname", this.jdField_b_of_type_JavaLangString);
     NearbyCardHandler localNearbyCardHandler = (NearbyCardHandler)this.app.a(60);
     if (localNearbyCardHandler != null) {
-      ThreadManager.post(new aedb(this, paramArrayList, localNearbyCardHandler, localBundle), 5, null, true);
+      ThreadManager.post(new aeqh(this, paramArrayList, localNearbyCardHandler, localBundle), 5, null, true);
     }
     while (!QLog.isDevelopLevel()) {
       return;
@@ -392,11 +392,11 @@ public class NearbyGuideActivity
     }
     if (TextUtils.isEmpty(paramString))
     {
-      a(getResources().getDrawable(2130842651));
+      a(getResources().getDrawable(2130842750));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;
     }
-    ThreadManager.postImmediately(new aedc(this, paramString), null, true);
+    ThreadManager.postImmediately(new aeqi(this, paramString), null, true);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -407,7 +407,7 @@ public class NearbyGuideActivity
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMonitorSizeChangeRelativeLayout = ((MonitorSizeChangeRelativeLayout)findViewById(2131362874));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMonitorSizeChangeRelativeLayout = ((MonitorSizeChangeRelativeLayout)findViewById(2131362892));
     a();
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver, true);
     this.app.addObserver(this.jdField_b_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver, true);
@@ -424,26 +424,26 @@ public class NearbyGuideActivity
     }
     if (this.jdField_a_of_type_AndroidWidgetScrollView == null)
     {
-      this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)LayoutInflater.from(this).inflate(2130970390, null));
+      this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)LayoutInflater.from(this).inflate(2130970431, null));
       if (Build.VERSION.SDK_INT >= 9) {
         this.jdField_a_of_type_AndroidWidgetScrollView.setOverScrollMode(2);
       }
       this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131361792).setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370365);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370369);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370364));
-      this.jdField_a_of_type_ComTencentWidgetCustomImgView = ((CustomImgView)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370367));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370370));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370371));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370372));
-      this.jdField_a_of_type_ComTencentWidgetCustomImgView.setBackground(getResources().getDrawable(2130842401));
-      this.jdField_a_of_type_ComTencentWidgetCustomImgView.setImageDrawable(getResources().getDrawable(2130842651));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370368));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370506);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370510);
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370505));
+      this.jdField_a_of_type_ComTencentWidgetCustomImgView = ((CustomImgView)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370508));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370511));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370512));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370513));
+      this.jdField_a_of_type_ComTencentWidgetCustomImgView.setBackground(getResources().getDrawable(2130842448));
+      this.jdField_a_of_type_ComTencentWidgetCustomImgView.setImageDrawable(getResources().getDrawable(2130842750));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetScrollView.findViewById(2131370509));
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
       this.jdField_a_of_type_AndroidWidgetEditText.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(this);
-      this.jdField_b_of_type_AndroidWidgetButton.setText(2131438161);
-      this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131438161));
+      this.jdField_b_of_type_AndroidWidgetButton.setText(2131438179);
+      this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131438179));
       if (this.jdField_a_of_type_Boolean) {
         break label530;
       }
@@ -508,7 +508,7 @@ public class NearbyGuideActivity
   void c()
   {
     String str1 = this.jdField_b_of_type_AndroidWidgetButton.getText().toString();
-    String str2 = getString(2131438161);
+    String str2 = getString(2131438179);
     if ((str2 != null) && (str2.equals(str1)))
     {
       this.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
@@ -540,9 +540,9 @@ public class NearbyGuideActivity
   
   void d()
   {
-    int i = getResources().getColor(2131493283);
+    int i = getResources().getColor(2131493284);
     if (this.mTitleContainer == null) {
-      this.mTitleContainer = findViewById(2131363226);
+      this.mTitleContainer = findViewById(2131363244);
     }
     this.mTitleContainer.setBackgroundColor(i);
     if (this.mSystemBarComp != null) {
@@ -554,7 +554,7 @@ public class NearbyGuideActivity
     if ((this.leftView instanceof TextView))
     {
       this.leftView.setTextColor(-1);
-      this.leftView.setBackgroundResource(2130842778);
+      this.leftView.setBackgroundResource(2130842877);
       this.leftView.setOnClickListener(this);
     }
     if (this.jdField_b_of_type_Int == 1)
@@ -570,7 +570,7 @@ public class NearbyGuideActivity
         }
         String str2 = str1;
         if (TextUtils.isEmpty(str1)) {
-          str2 = getString(2131432397);
+          str2 = getString(2131432414);
         }
         this.leftView.setText(str2);
       }
@@ -578,7 +578,7 @@ public class NearbyGuideActivity
     }
     setTitle("先介绍一下自己");
     if ((this.leftView instanceof TextView)) {
-      this.leftView.setText(2131432397);
+      this.leftView.setText(2131432414);
     }
     this.rightViewText.setVisibility(0);
     this.rightViewImg.setVisibility(8);
@@ -641,7 +641,7 @@ public class NearbyGuideActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    setContentView(2130970389);
+    setContentView(2130970430);
     b();
     getWindow().setBackgroundDrawable(null);
     return bool;
@@ -722,7 +722,7 @@ public class NearbyGuideActivity
   
   public void e(String paramString)
   {
-    ThreadManager.post(new aecs(this, paramString), 5, null, true);
+    ThreadManager.post(new aepy(this, paramString), 5, null, true);
   }
   
   public void f()
@@ -730,8 +730,8 @@ public class NearbyGuideActivity
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     localActionSheet.c("手机相册");
     localActionSheet.c("空间相册");
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new aeda(this, localActionSheet));
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new aeqg(this, localActionSheet));
     localActionSheet.show();
   }
   
@@ -792,8 +792,8 @@ public class NearbyGuideActivity
       i = (int)(this.mDensity * 5.0F + 0.5F);
       j = (int)(this.mDensity * 5.0F + 0.5F);
       this.jdField_c_of_type_AndroidViewView.setPadding(0, i, 0, j);
-      this.jdField_b_of_type_AndroidWidgetButton.setText(2131436735);
-      this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131436735));
+      this.jdField_b_of_type_AndroidWidgetButton.setText(2131436752);
+      this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131436752));
       c();
       if (QLog.isDevelopLevel())
       {
@@ -850,7 +850,7 @@ public class NearbyGuideActivity
     localUserInfo.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
     localUserInfo.jdField_b_of_type_JavaLangString = this.app.getCurrentNickname();
     Bundle localBundle = new Bundle();
-    localBundle.putString("key_title", getString(2131432688));
+    localBundle.putString("key_title", getString(2131432705));
     localBundle.putInt("key_personal_album_enter_model", 2);
     localBundle.putBoolean("show_album", false);
     localBundle.putBoolean("key_need_change_to_jpg", true);
@@ -909,7 +909,7 @@ public class NearbyGuideActivity
   
   void m()
   {
-    this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 2131437716, getString(2131437717), 2131437719, 2131437718, new aedd(this), new aecr(this), false, true);
+    this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 2131437733, getString(2131437734), 2131437736, 2131437735, new aeqj(this), new aepx(this), false, true);
     if ((this.jdField_a_of_type_AndroidAppDialog != null) && (!isFinishing())) {
       this.jdField_a_of_type_AndroidAppDialog.show();
     }
@@ -1021,7 +1021,7 @@ public class NearbyGuideActivity
       }
     } while (this.jdField_e_of_type_Boolean);
     paramView = this.jdField_b_of_type_AndroidWidgetButton.getText().toString();
-    String str = getString(2131438161);
+    String str = getString(2131438179);
     if ((str != null) && (str.equals(paramView)))
     {
       f();
@@ -1059,8 +1059,8 @@ public class NearbyGuideActivity
         paramView = (ActionSheet)ActionSheetHelper.a(this, null);
         paramView.c("查看大图");
         paramView.c("更换头像");
-        paramView.c(2131432998);
-        paramView.a(new aecy(this, paramView));
+        paramView.c(2131433015);
+        paramView.a(new aeqe(this, paramView));
         paramView.show();
         return;
       }

@@ -1,39 +1,49 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.cmgame.OnGameStartCheckListener;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.lang.ref.WeakReference;
 
 public class ypb
-  implements Runnable
+  extends DownloadListener
 {
-  public ypb(SpriteUIHandler paramSpriteUIHandler, int paramInt) {}
+  public ypb(CmGameStartChecker paramCmGameStartChecker) {}
   
-  public void run()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    try
-    {
-      MqqHandler localMqqHandler = SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().a();
-      if (1 == this.jdField_a_of_type_Int)
-      {
-        localMqqHandler.obtainMessage(47, (int)((float)DeviceInfoUtil.i() / 7.0F / 2.84D) + 40, 0).sendToTarget();
-        return;
-      }
-      if (2 == this.jdField_a_of_type_Int)
-      {
-        localMqqHandler.obtainMessage(47, (int)((float)DeviceInfoUtil.i() / 7.0F) + 40, 0).sendToTarget();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("cmshow_scripted_SpriteUIHandler", 1, localException, new Object[0]);
+    super.onDone(paramDownloadTask);
+  }
+  
+  public void onDoneFile(DownloadTask paramDownloadTask)
+  {
+    if (paramDownloadTask == null) {
       return;
     }
-    if (3 == this.jdField_a_of_type_Int) {
-      localException.sendEmptyMessage(62);
+    CmGameStartChecker.StartCheckParam localStartCheckParam = (CmGameStartChecker.StartCheckParam)paramDownloadTask.a().getSerializable("download_param");
+    if (paramDownloadTask.a() != 3)
+    {
+      CmGameStartChecker.a(this.a, localStartCheckParam);
+      QLog.e("apollo_cmGame_CmGameStartChecker", 1, "downLoad game res fail retCode: " + paramDownloadTask.a());
+      return;
+    }
+    this.a.c(localStartCheckParam);
+  }
+  
+  public void onProgress(DownloadTask paramDownloadTask)
+  {
+    CmGameStartChecker.StartCheckParam localStartCheckParam = (CmGameStartChecker.StartCheckParam)paramDownloadTask.a().getSerializable("download_param");
+    int i = (int)paramDownloadTask.a;
+    if (CmGameStartChecker.a(this.a) != null)
+    {
+      paramDownloadTask = (OnGameStartCheckListener)CmGameStartChecker.a(this.a).get();
+      if (paramDownloadTask != null)
+      {
+        QLog.d("apollo_cmGame_CmGameStartChecker", 2, "gameCheckListener.onDownloadGameResProgress startCheckParam:" + localStartCheckParam);
+        paramDownloadTask.onDownloadGameResProgress(localStartCheckParam, i);
+      }
     }
   }
 }

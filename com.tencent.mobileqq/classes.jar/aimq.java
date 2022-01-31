@@ -1,23 +1,31 @@
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.teamwork.TeamWorkSaveDialog;
 
 public class aimq
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public aimq(TroopWebviewPlugin paramTroopWebviewPlugin) {}
+  public aimq(TeamWorkSaveDialog paramTeamWorkSaveDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    TroopWebviewPlugin.a(this.a);
-    if (paramInt == 0) {
-      TroopWebviewPlugin.a(this.a, "");
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog, 0);
     }
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aimq
  * JD-Core Version:    0.7.0.1
  */

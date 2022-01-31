@@ -64,13 +64,13 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
-import mza;
-import mzb;
-import mzc;
-import mzd;
-import mze;
-import mzf;
-import mzg;
+import nal;
+import nam;
+import nan;
+import nao;
+import nap;
+import naq;
+import nar;
 
 @TargetApi(14)
 public class StoryVideoUploadManager
@@ -176,7 +176,7 @@ public class StoryVideoUploadManager
       paramPublishVideoEntry.setStatus(1000);
       ((EntityManager)localObject1).b(paramPublishVideoEntry);
     }
-    ThreadManager.post(new mzd(this, localStoryVideoTaskInfo, localStoryVideoPublishStatusEvent), 8, new mze(this, localStoryVideoTaskInfo), false);
+    ThreadManager.post(new nao(this, localStoryVideoTaskInfo, localStoryVideoPublishStatusEvent), 8, new nap(this, localStoryVideoTaskInfo), false);
   }
   
   public static void a(String paramString)
@@ -331,7 +331,7 @@ public class StoryVideoUploadManager
         ((ArrayList)localObject3).add(Integer.valueOf((int)((StoryVideoItem)localObject5).mTimeZoneOffsetMillis / 1000));
       }
       paramString = new AddGroupVideoRequest(paramString, (List)localObject1, (List)localObject2, (List)localObject3, paramInt);
-      CmdTaskManger.a().a(paramString, new mzb(localVideoListFeedItem, paramList, localStoryManager));
+      CmdTaskManger.a().a(paramString, new nam(localVideoListFeedItem, paramList, localStoryManager));
     }
   }
   
@@ -371,7 +371,7 @@ public class StoryVideoUploadManager
     paramList = DialogUtil.a(paramActivity, 230);
     paramList.setTitle("发表失败");
     paramList.setMessage("文件已被删除，请重新拍摄");
-    paramList.setPositiveButton("我知道了", new mza(localArrayList1));
+    paramList.setPositiveButton("我知道了", new nal(localArrayList1));
     paramList.setCancelable(false);
     paramList.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     paramList.show();
@@ -391,13 +391,13 @@ public class StoryVideoUploadManager
   public static void b(String paramString)
   {
     SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", paramString + " post createStoryVideo ... ");
-    Bosses.get().postJob(new mzc(paramString));
+    Bosses.get().postJob(new nan(paramString));
   }
   
   private void f()
   {
     SLog.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "start load all fail task");
-    Bosses.get().postJob(new mzg(this));
+    Bosses.get().postJob(new nar(this));
   }
   
   protected BasePublishTask a(StoryVideoTaskInfo paramStoryVideoTaskInfo)
@@ -769,13 +769,13 @@ public class StoryVideoUploadManager
     if (localStoryVideoItem != null)
     {
       if (!TextUtils.isEmpty(localStoryVideoItem.mLocalVideoPath)) {
-        FileUtils.f(localStoryVideoItem.mLocalVideoPath);
+        FileUtils.g(localStoryVideoItem.mLocalVideoPath);
       }
       if (!TextUtils.isEmpty(localStoryVideoItem.mLocalMaskPath)) {
-        FileUtils.f(localStoryVideoItem.mLocalMaskPath);
+        FileUtils.g(localStoryVideoItem.mLocalMaskPath);
       }
       if (!TextUtils.isEmpty(localStoryVideoItem.mVideoLocalThumbnailPath)) {
-        FileUtils.f(localStoryVideoItem.mVideoLocalThumbnailPath);
+        FileUtils.g(localStoryVideoItem.mVideoLocalThumbnailPath);
       }
     }
     ((StoryManager)localObject).a(paramString);
@@ -783,7 +783,7 @@ public class StoryVideoUploadManager
     super.c((BaseTaskInfo)localObject);
     SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "delete video %s", new Object[] { paramString });
     VideoCompositeHelper.a(((StoryVideoTaskInfo)localObject).a());
-    Bosses.get().scheduleJobDelayed(new mzf(this, paramString, localStoryVideoItem), 300);
+    Bosses.get().scheduleJobDelayed(new naq(this, paramString, localStoryVideoItem), 300);
   }
   
   public boolean isValidate()

@@ -1,31 +1,59 @@
-import com.tencent.image.VideoDrawable;
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResCallback;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ahqd
-  implements Runnable
+  extends Handler
 {
-  public ahqd(ImageViewVideoPlayer paramImageViewVideoPlayer, int paramInt) {}
-  
-  public void run()
+  public ahqd(ScribbleResMgr paramScribbleResMgr, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.jdField_a_of_type_ComTencentImageVideoDrawable != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScribbleResMgr", 2, "handleMessage  status: " + paramMessage.what + " type: " + paramMessage.arg1);
+    }
+    if (paramMessage.what == 1001) {
+      ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, true);
+    }
+    for (;;)
     {
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.jdField_a_of_type_ComTencentImageVideoDrawable.resetAndPlayAudioOnce();
-      if (QLog.isColorLevel()) {
-        QLog.i("ImageViewVideoPlayer", 2, "onPlayRepeat: repeatTimes = " + this.jdField_a_of_type_Int + ", costTime = " + (System.currentTimeMillis() - l));
+      return;
+      if (paramMessage.what == 1002)
+      {
+        ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, false);
+        return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer$IMPlayerEndListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer$IMPlayerEndListener.Y_();
+      Iterator localIterator = ScribbleResMgr.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (ahqj)localIterator.next();
+        if (localObject != null)
+        {
+          View localView = ((ahqj)localObject).a();
+          localObject = ((ahqj)localObject).a();
+          if ((localView != null) && (localObject != null)) {
+            ((ScribbleResMgr.ResCallback)localObject).a(localView, paramMessage.arg1, (ScribbleResMgr.ResInfo)paramMessage.obj, paramMessage.what);
+          } else {
+            localIterator.remove();
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,42 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterViewPagerAdapter.AdapterViewFactory;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.olympic.TorchInfo;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.ObjectOutputStream;
 
 public class ageb
-  implements AdapterViewPagerAdapter.AdapterViewFactory
+  implements Runnable
 {
-  public ageb(QzonePhotoView paramQzonePhotoView) {}
+  public ageb(OlympicManager paramOlympicManager, TorchInfo paramTorchInfo) {}
   
-  public AdapterView a(Context paramContext, int paramInt)
+  public void run()
   {
-    do
+    synchronized (OlympicManager.b(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager))
     {
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       try
       {
-        paramContext = new GridView(paramContext);
-        ViewPager.LayoutParams localLayoutParams;
-        Context localContext = paramContext;
+        ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
+        localObjectOutputStream.writeObject(this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo);
+        localObjectOutputStream.close();
+        localByteArrayOutputStream.close();
+        FileUtils.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_torchinfo_" + this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager.a.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
+        return;
       }
-      catch (OutOfMemoryError localOutOfMemoryError1)
+      catch (Throwable localThrowable)
       {
-        try
-        {
-          paramContext.setNumColumns(4);
-          paramContext.setFadingEdgeLength(0);
-          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setStretchMode(2);
-          paramContext.setScrollingCacheEnabled(false);
-          paramContext.setSelector(2131492923);
-          localLayoutParams = new ViewPager.LayoutParams();
-          localLayoutParams.gravity = 17;
-          localLayoutParams.height = -2;
-          localLayoutParams.width = -1;
-          paramContext.setLayoutParams(localLayoutParams);
-          localContext = paramContext;
-          return localContext;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          continue;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramContext = null;
+        localThrowable.printStackTrace();
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
-    return paramContext;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ageb
  * JD-Core Version:    0.7.0.1
  */

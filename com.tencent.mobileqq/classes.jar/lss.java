@@ -1,11 +1,38 @@
-import android.view.animation.Interpolator;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class lss
-  implements Interpolator
+class lss
+  implements Runnable
 {
-  public float getInterpolation(float paramFloat)
+  lss(lsr paramlsr) {}
+  
+  public void run()
   {
-    return 12.9184F * paramFloat * paramFloat * paramFloat - 22.5776F * paramFloat * paramFloat + 9.65921F * paramFloat + 1.0F;
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      localArrayList.add(((IReadInJoyModel)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
+      i += 1;
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("headerUninterestConfirm,");
+      if (this.a.b != null) {
+        break label139;
+      }
+    }
+    label139:
+    for (String str = "null";; str = this.a.b.toString())
+    {
+      QLog.d("ReadInJoyHeaderPresenter", 2, str);
+      ReadInJoyHeaderPresenter.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter).a(this.a.jdField_a_of_type_Int, localArrayList, this.a.b, this.a.jdField_a_of_type_JavaLangObject);
+      return;
+    }
   }
 }
 

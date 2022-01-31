@@ -1,6 +1,5 @@
 package dov.com.qq.im.capture.text;
 
-import amxk;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,6 +14,7 @@ import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.TextUtils;
+import annp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.troop.utils.TroopFileUtils;
@@ -112,7 +112,7 @@ public class ApathyTextItem
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    paramString = TroopFileUtils.b(a(paramInt, new amxk(this))).replaceAll("\n", "");
+    paramString = TroopFileUtils.b(a(paramInt, new annp(this))).replaceAll("\n", "");
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     paramInt = paramString.length();

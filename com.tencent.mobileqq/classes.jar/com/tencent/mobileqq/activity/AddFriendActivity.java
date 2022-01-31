@@ -35,21 +35,21 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import rfa;
-import rfb;
-import rfc;
-import rfd;
-import rfe;
+import rhx;
+import rhy;
+import rhz;
+import ria;
+import rib;
 
 public class AddFriendActivity
   extends IphoneTitleBarActivity
   implements TextWatcher, View.OnClickListener
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new rfe(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new rib(this);
   private InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  ContactSearchFacade.ISearchListener jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener = new rfa(this);
+  ContactSearchFacade.ISearchListener jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener = new rhx(this);
   private ContactSearchFacade jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade;
   private TroopHandler jdField_a_of_type_ComTencentMobileqqAppTroopHandler;
   public TroopObserver a;
@@ -65,7 +65,7 @@ public class AddFriendActivity
   
   public AddFriendActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new rfb(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new rhy(this);
   }
   
   public static void a(Activity paramActivity, SearchInfo paramSearchInfo, String paramString, byte[] paramArrayOfByte, boolean paramBoolean, int paramInt)
@@ -169,23 +169,23 @@ public class AddFriendActivity
   
   private void c()
   {
-    Button localButton = (Button)findViewById(2131362865);
-    TextView localTextView = (TextView)findViewById(2131362863);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131362848));
+    Button localButton = (Button)findViewById(2131362883);
+    TextView localTextView = (TextView)findViewById(2131362881);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131362866));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362866));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362884));
     if (this.jdField_a_of_type_Boolean)
     {
-      setTitle(2131434731);
-      localTextView.setText(2131434733);
+      setTitle(2131434748);
+      localTextView.setText(2131434750);
       this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(25) });
       localTextView.setVisibility(8);
-      findViewById(2131362864).setVisibility(8);
-      Object localObject1 = findViewById(2131362861);
+      findViewById(2131362882).setVisibility(8);
+      Object localObject1 = findViewById(2131362879);
       Object localObject2 = (FrameLayout.LayoutParams)((View)localObject1).getLayoutParams();
       ((FrameLayout.LayoutParams)localObject2).height = -1;
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject1 = findViewById(2131362862);
+      localObject1 = findViewById(2131362880);
       localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
       ((LinearLayout.LayoutParams)localObject2).height = -1;
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
@@ -206,9 +206,9 @@ public class AddFriendActivity
       localTextView.setFocusableInTouchMode(true);
       localTextView.requestFocus();
       return;
-      setTitle(2131434730);
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131434732);
-      localTextView.setText(2131434732);
+      setTitle(2131434747);
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131434749);
+      localTextView.setText(2131434749);
     }
     if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
     {
@@ -227,14 +227,14 @@ public class AddFriendActivity
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString().trim();
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.trim();
     if (this.jdField_a_of_type_JavaLangString.equals("")) {
-      a(2131434419);
+      a(2131434436);
     }
     do
     {
       return;
       if (this.jdField_a_of_type_JavaLangString.length() < 5)
       {
-        a(2131434420);
+        a(2131434437);
         return;
       }
       if (this.jdField_a_of_type_JavaLangString.indexOf("@") != -1)
@@ -248,7 +248,7 @@ public class AddFriendActivity
         this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaUtilRegexPattern.matcher(this.jdField_a_of_type_JavaLangString).replaceAll("");
         if (this.jdField_a_of_type_JavaLangString.length() < 5)
         {
-          a(2131434419);
+          a(2131434436);
           return;
         }
       }
@@ -256,18 +256,18 @@ public class AddFriendActivity
         break;
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade.a(this.jdField_a_of_type_JavaLangString);
-      b(2131434422);
+      b(2131434439);
     } while (this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager == null);
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
     return;
-    QQToast.a(this, 2131434794, 0).b(getTitleBarHeight());
+    QQToast.a(this, 2131434811, 0).b(getTitleBarHeight());
   }
   
   private void e()
   {
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
     if (this.jdField_b_of_type_JavaLangString.trim().equals("")) {
-      a(2131434733);
+      a(2131434750);
     }
     do
     {
@@ -275,13 +275,13 @@ public class AddFriendActivity
       if (!NetworkUtil.d(this)) {
         break;
       }
-      b(2131434424);
+      b(2131434441);
       addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
       f();
     } while (this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager == null);
     this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
     return;
-    QQToast.a(this, 2131434794, 0).b(getTitleBarHeight());
+    QQToast.a(this, 2131434811, 0).b(getTitleBarHeight());
   }
   
   private void f()
@@ -295,7 +295,7 @@ public class AddFriendActivity
       QLog.i("AddFriendActivity", 2, "少于5位数字，直接显示找不到群号");
     }
     g();
-    a(2131434937);
+    a(2131434954);
   }
   
   private void g()
@@ -317,7 +317,7 @@ public class AddFriendActivity
   
   public void a(int paramInt)
   {
-    runOnUiThread(new rfc(this, paramInt));
+    runOnUiThread(new rhz(this, paramInt));
   }
   
   public void a(RespSearch paramRespSearch)
@@ -330,7 +330,7 @@ public class AddFriendActivity
   
   public void a(String paramString)
   {
-    runOnUiThread(new rfd(this, paramString));
+    runOnUiThread(new ria(this, paramString));
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -370,7 +370,7 @@ public class AddFriendActivity
       this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler = ((TroopHandler)this.app.a(20));
       this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)getSystemService("input_method"));
       super.setContentView(View.inflate(this, 2130968618, null));
-      setContentBackgroundResource(2130838210);
+      setContentBackgroundResource(2130838214);
       c();
       return true;
       paramBundle.setSoftInputMode(4);
@@ -410,7 +410,7 @@ public class AddFriendActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131362865)
+    if (paramView.getId() == 2131362883)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
       if (!isFinishing())
@@ -431,7 +431,7 @@ public class AddFriendActivity
   protected String setLastActivityName()
   {
     if ((this.centerView == null) || (this.centerView.getText() == null) || (this.centerView.getText().length() == 0) || (this.c)) {
-      return getString(2131433681);
+      return getString(2131433698);
     }
     return this.centerView.getText().toString();
   }

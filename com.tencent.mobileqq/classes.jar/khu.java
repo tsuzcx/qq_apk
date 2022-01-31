@@ -1,19 +1,19 @@
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.utils.download.BaseDownloadAsyncTask;
 
 public class khu
-  implements ActionSheet.OnDismissListener
+  extends Handler
 {
-  public khu(TraeHelper paramTraeHelper) {}
-  
-  public void onDismiss()
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
+    kht localkht = (kht)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
+    localkht.jdField_a_of_type_ComTencentAvUtilsDownloadBaseDownloadAsyncTask.a(((com.tencent.av.utils.download.DownloadParams[])localkht.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
   }
 }
 

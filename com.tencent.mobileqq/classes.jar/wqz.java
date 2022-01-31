@@ -1,26 +1,12 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-
-public class wqz
-  implements Animation.AnimationListener
+class wqz
+  implements Runnable
 {
-  public wqz(CountryActivity paramCountryActivity) {}
+  wqz(wqy paramwqy, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_Wrg.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    this.jdField_a_of_type_Wqy.a.a(this.jdField_a_of_type_Int);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

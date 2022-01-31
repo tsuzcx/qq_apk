@@ -1,26 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.common.util.FileChooserHelper;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 
 public class kmn
-  implements ActionSheet.OnButtonClickListener
+  implements TroopMemberApiClient.Callback
 {
-  public kmn(FileChooserHelper paramFileChooserHelper, Activity paramActivity, String paramString, ActionSheet paramActionSheet) {}
+  public kmn(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    switch (paramInt)
+    if (paramBundle != null)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      FileChooserHelper.c(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      FileChooserHelper.a(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+      int i = paramBundle.getInt("mode");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
     }
   }
 }

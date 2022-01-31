@@ -1,21 +1,28 @@
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import com.tencent.mobileqq.arcard.ARCardPageProcess.Circle;
+import com.tencent.mobileqq.ar.arengine.ARCamera;
 
-public class aafa
-  implements ValueAnimator.AnimatorUpdateListener
+class aafa
+  implements Runnable
 {
-  public aafa(ARCardPageProcess paramARCardPageProcess, ARCardPageProcess.Circle paramCircle) {}
+  aafa(aaez paramaaez) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess$Circle.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    ARCamera localARCamera = this.a.a;
+    int j = ARCamera.a(this.a.a) / 2;
+    int k = ARCamera.b(this.a.a) / 2;
+    int m = ARCamera.a(this.a.a);
+    int n = ARCamera.b(this.a.a);
+    if (!ARCamera.a(this.a.a)) {}
+    for (int i = ARCamera.f();; i = ARCamera.a(this.a.a) * 3 / 4)
+    {
+      ARCamera.a(localARCamera, j, k, m, n, i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aafa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,32 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
-public class aaor
-  implements aapa
+class aaor
+  extends BroadcastReceiver
 {
-  public aaor(ArkLocalAppMgr paramArkLocalAppMgr) {}
+  aaor(aaoq paramaaoq, long paramLong) {}
   
-  public void a(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!paramBoolean)
+    paramContext = paramIntent.getStringExtra("com.tencent.ark.scanResultData");
+    paramIntent = paramIntent.getStringExtra("com.tencent.ark.scanResultType");
+    ArkAppCenter.a().post(new aaos(this, paramContext, paramIntent));
+    try
     {
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", "updateInstalledApps, network not available.");
+      BaseApplicationImpl.getApplication().unregisterReceiver(ArkAppDeviceModule.a(this.jdField_a_of_type_Aaoq.a));
+      label46:
+      ArkAppDeviceModule.a(this.jdField_a_of_type_Aaoq.a, null);
       return;
     }
-    this.a.c();
-    ArkLocalAppMgr.b(this.a);
+    catch (Exception paramContext)
+    {
+      break label46;
+    }
   }
 }
 

@@ -1,16 +1,17 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.statistics.ReportTask;
 
-class uaf
-  implements Runnable
+public class uaf
+  implements View.OnClickListener
 {
-  uaf(uae paramuae) {}
+  public uaf(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.p.setText(this.a.a.i);
-    this.a.a.p.setContentDescription(this.a.a.i);
-    this.a.a.p.setVisibility(0);
+    TroopMemberListActivity.b(this.a);
+    new ReportTask(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.b }).a();
   }
 }
 

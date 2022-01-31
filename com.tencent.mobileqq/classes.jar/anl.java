@@ -1,35 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.Window;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.RelativeLayout;
-import com.qq.im.poi.LbsPackListActivity;
-import com.qq.im.poi.LbsPackMapPoiPackServlet;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
-import com.tencent.widget.LbsPackHorizontalListView;
+import com.qq.im.poi.LbsPackPoiListActivity;
 
 public class anl
-  implements HorizontalListView.OnScrollStateChangedListener
+  implements DialogInterface.OnDismissListener
 {
-  public anl(LbsPackListActivity paramLbsPackListActivity) {}
+  public anl(LbsPackPoiListActivity paramLbsPackPoiListActivity, int paramInt, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
   
-  public void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 4097)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LbsPack", 2, "LbsPackListActivity SCROLL_STATE_IDLE checkRightBorder=" + LbsPackListActivity.a(this.a).b());
-      }
-      if ((!LbsPackListActivity.a(this.a)) && (LbsPackListActivity.a(this.a) != null) && (LbsPackListActivity.a(this.a).b()))
-      {
-        LbsPackListActivity.a(this.a, true);
-        if (LbsPackListActivity.a(this.a) != null) {
-          LbsPackListActivity.a(this.a).setVisibility(0);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("LbsPack", 2, "LbsPackListActivity onScrollStateChanged sendLbsPackPageRequest false");
-        }
-        LbsPackMapPoiPackServlet.a(this.a.a, LbsPackListActivity.a(this.a), false, LbsPackListActivity.b(this.a));
-      }
-    }
-    this.a.a();
+    LbsPackPoiListActivity.a(this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity, false);
+    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.a.setVisibility(0);
+    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.getWindow().peekDecorView().getWindowToken(), 0);
   }
 }
 

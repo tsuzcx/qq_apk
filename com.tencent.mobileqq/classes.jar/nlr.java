@@ -1,43 +1,20 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playmode.child.TagStoryVidListPlayMode;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-public final class nlr
-  implements ActionSheet.OnButtonClickListener
+class nlr
+  implements View.OnClickListener
 {
-  public nlr(StoryVideoItem paramStoryVideoItem, ActionSheet paramActionSheet) {}
+  nlr(nlq paramnlq) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
-      if (!TextUtils.isEmpty(localQQUserUIItem.qq)) {
-        new ReportEvilToXinanHandler().b(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      SLog.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
-    }
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTagStoryVidListPlayMode.a(this.a.a.jdField_a_of_type_AndroidOsBundle);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTagStoryVidListPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTagStoryVidListPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
   }
 }
 

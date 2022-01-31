@@ -1,46 +1,39 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class kuo
-  extends URLDrawableDownListener.Adapter
+  implements Runnable
 {
-  public kuo(VideoCoverFragment paramVideoCoverFragment) {}
+  public kuo(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, String paramString) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void run()
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    while (!(paramView instanceof ImageView)) {
-      return;
+    synchronized (AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager))
+    {
+      AdvertisementVideoPreloadManager.c("loadLocalConfigTask uin:" + this.jdField_a_of_type_JavaLangString);
+      Object localObject2 = AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager);
+      if (localObject2 != null)
+      {
+        localObject2 = ((PublicAccountEntityHelper)localObject2).a(PAAdPreloadTask.class, true, "mUserUin = ?", new String[] { this.jdField_a_of_type_JavaLangString }, null, null, "mExpireTime asc", null);
+        if (localObject2 != null)
+        {
+          AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager).clear();
+          AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager).addAll((Collection)localObject2);
+          AdvertisementVideoPreloadManager.c("loadLocalConfigTask taskSize:" + ((List)localObject2).size());
+          ThreadManager.executeOnNetWorkThread(new kup(this));
+        }
+      }
+      else
+      {
+        return;
+      }
+      AdvertisementVideoPreloadManager.c("loadLocalConfigTask tasklist null");
     }
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = paramURLDrawable.getIntrinsicWidth();
-    int j = paramURLDrawable.getIntrinsicHeight();
-    localLayoutParams.width = (i * AIOUtils.a(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
-    paramView.setLayoutParams(localLayoutParams);
-    ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-    paramView.requestLayout();
   }
 }
 

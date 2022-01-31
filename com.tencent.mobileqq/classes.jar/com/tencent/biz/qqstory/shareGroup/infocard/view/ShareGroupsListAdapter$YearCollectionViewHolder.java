@@ -11,7 +11,7 @@ import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 import com.tencent.biz.qqstory.utils.DateUtils;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import nrc;
+import nsp;
 
 public class ShareGroupsListAdapter$YearCollectionViewHolder
   extends BaseStoryTimeLineAdapter.BaseViewHolder
@@ -28,10 +28,10 @@ public class ShareGroupsListAdapter$YearCollectionViewHolder
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter = paramShareGroupsListAdapter;
     this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369050));
-    this.b = ((TextView)paramView.findViewById(2131369051));
-    this.c = ((TextView)paramView.findViewById(2131371730));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371692);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369116));
+    this.b = ((TextView)paramView.findViewById(2131369117));
+    this.c = ((TextView)paramView.findViewById(2131371900));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371862);
     QQStoryContext.a();
     if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
     {
@@ -44,7 +44,7 @@ public class ShareGroupsListAdapter$YearCollectionViewHolder
         this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#0c284e"));
       }
     }
-    this.c.setOnClickListener(new nrc(this));
+    this.c.setOnClickListener(new nsp(this));
   }
   
   public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
@@ -76,7 +76,7 @@ public class ShareGroupsListAdapter$YearCollectionViewHolder
         this.b.setText("");
         break;
       }
-      this.b.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438693, new Object[] { Integer.valueOf(paramVideoCollectionItem.collectionCount) }));
+      this.b.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438711, new Object[] { Integer.valueOf(paramVideoCollectionItem.collectionCount) }));
       break;
       label171:
       this.c.setVisibility(8);
@@ -89,13 +89,13 @@ public class ShareGroupsListAdapter$YearCollectionViewHolder
     if (paramBoolean)
     {
       this.c.setText("按时间");
-      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843673);
+      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843796);
       localDrawable.setBounds(0, 0, i, i);
       this.c.setCompoundDrawables(localDrawable, null, null, null);
       return;
     }
     this.c.setText("按热度");
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843672);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843795);
     localDrawable.setBounds(0, 0, i, i);
     this.c.setCompoundDrawables(localDrawable, null, null, null);
   }

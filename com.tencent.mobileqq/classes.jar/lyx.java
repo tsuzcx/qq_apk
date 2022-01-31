@@ -1,51 +1,66 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.manager.TicketManager;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
 public class lyx
-  implements Runnable
+  implements TextWatcher
 {
-  public lyx(ReadInJoyWebDataManager paramReadInJoyWebDataManager, String paramString1, String paramString2, lzc paramlzc, JSONObject paramJSONObject) {}
+  private int jdField_a_of_type_Int;
   
-  public void run()
+  public lyx(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    try
+    int k = paramEditable.length();
+    int i;
+    int j;
+    label24:
+    Drawable[] arrayOfDrawable;
+    if (this.jdField_a_of_type_Int > 0)
     {
-      Object localObject3 = (QQAppInterface)ReadInJoyUtils.a();
-      if (localObject3 == null) {
-        return;
+      i = 1;
+      if (k <= 0) {
+        break label120;
       }
-      Object localObject1 = new Bundle();
-      TicketManager localTicketManager = (TicketManager)((QQAppInterface)localObject3).getManager(2);
-      Object localObject2 = ((QQAppInterface)localObject3).getAccount();
-      localObject3 = localTicketManager.getSkey(((QQAppInterface)localObject3).getCurrentAccountUin());
-      ((Bundle)localObject1).putString("Cookie", "uin=o" + (String)localObject2 + "; skey=" + (String)localObject3);
-      ((Bundle)localObject1).putString("User-Agent", ReadInJoyWebDataManager.d());
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("BUNDLE", localObject1);
-      ((HashMap)localObject2).put("CONTEXT", BaseApplicationImpl.getApplication());
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:url :" + this.jdField_a_of_type_JavaLangString);
+      j = 1;
+      if ((j ^ i) != 0)
+      {
+        arrayOfDrawable = ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).getCompoundDrawables();
+        if (k <= 0) {
+          break label125;
+        }
+        arrayOfDrawable[2] = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getResources().getDrawable(2130838703);
       }
-      localObject1 = new lyy(this);
-      new HttpWebCgiAsyncTask2(this.jdField_a_of_type_JavaLangString, "GET", (HttpWebCgiAsyncTask.Callback)localObject1, 0, null).execute(new HashMap[] { localObject2 });
+    }
+    for (;;)
+    {
+      ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      this.jdField_a_of_type_Int = k;
+      if (paramEditable.length() <= 0) {
+        break label133;
+      }
+      ReadInJoyLogicEngine.a().f(paramEditable.toString());
       return;
+      i = 0;
+      break;
+      label120:
+      j = 0;
+      break label24;
+      label125:
+      arrayOfDrawable[2] = null;
     }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:request err " + localException);
-      }
-    }
+    label133:
+    ReadInJoyVideoSearchTagFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment).clear();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

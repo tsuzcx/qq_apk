@@ -1,38 +1,37 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import com.tencent.util.MqqWeakReferenceHandler;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class wfk
-  implements TextView.OnEditorActionListener
+  implements EncodeVideoTask.ResultListener
 {
-  public wfk(SearchBaseActivity paramSearchBaseActivity) {}
+  public wfk(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramInt != 3)
-    {
-      bool1 = bool2;
-      if (paramKeyEvent != null)
-      {
-        bool1 = bool2;
-        if (paramKeyEvent.getKeyCode() != 66) {}
-      }
+    this.a.runOnUiThread(new wfl(this));
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
     }
-    else
+    synchronized (BlessSelectMemberActivity.a())
     {
-      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if (!TextUtils.isEmpty(paramTextView)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
-      }
-      bool1 = true;
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      this.a.finish();
+      return;
     }
-    return bool1;
+  }
+  
+  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    BlessSelectMemberActivity.a = ???;
+    synchronized (BlessSelectMemberActivity.a())
+    {
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      return;
+    }
   }
 }
 

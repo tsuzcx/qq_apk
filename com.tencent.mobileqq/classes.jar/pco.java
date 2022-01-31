@@ -1,32 +1,16 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.webviewplugin.QzonePlugin;
+import com.tencent.smtt.sdk.WebView;
 
 public class pco
-  implements SensorEventListener
+  implements Runnable
 {
-  private WeakReference a;
+  public pco(QzonePlugin paramQzonePlugin, byte[] paramArrayOfByte) {}
   
-  public pco(ScannerView paramScannerView)
+  public void run()
   {
-    this.a = new WeakReference(paramScannerView);
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    ScannerView localScannerView = (ScannerView)this.a.get();
-    if (localScannerView != null) {
-      localScannerView.a(paramSensorEvent);
+    if (QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin) != null) {
+      QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin).postUrl(QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin), this.jdField_a_of_type_ArrayOfByte);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ScannerView", 2, "onSensorChanged but mRef got null");
   }
 }
 

@@ -126,7 +126,7 @@ public class ReadInJoyArticleAdapter
       return;
       ReadInJoyLogicEngine.a().a(this.c, 20, 9223372036854775807L, true);
     } while (this.c != 0);
-    PublicAccountUtil.a(paramBaseArticleInfo, paramBaseArticleInfo.getApp().getResources().getString(2131428458), String.valueOf(NetConnInfoCenter.getServerTime()), "", true);
+    PublicAccountUtil.a(paramBaseArticleInfo, paramBaseArticleInfo.getApp().getResources().getString(2131428464), String.valueOf(NetConnInfoCenter.getServerTime()), "", true);
   }
   
   public void a(int paramInt, ArrayList paramArrayList1, ArrayList paramArrayList2)
@@ -184,7 +184,7 @@ public class ReadInJoyArticleAdapter
       return;
       ReadInJoyLogicEngine.a().a(this.c, 20, 9223372036854775807L, true);
     } while (this.c != 0);
-    PublicAccountUtil.a(paramArrayList1, paramArrayList1.getApp().getResources().getString(2131428458), String.valueOf(NetConnInfoCenter.getServerTime()), "", true);
+    PublicAccountUtil.a(paramArrayList1, paramArrayList1.getApp().getResources().getString(2131428464), String.valueOf(NetConnInfoCenter.getServerTime()), "", true);
   }
   
   public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam, BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean)

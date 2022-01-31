@@ -1,29 +1,13 @@
-import com.tencent.biz.pubaccount.PublicAccountArticleObserver;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.PhotoCollectionInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
 
 public class mxr
-  extends PublicAccountArticleObserver
+  implements Runnable
 {
-  public mxr(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
+  public mxr(PublicAccountImageCollectionListView paramPublicAccountImageCollectionListView, int paramInt1, int paramInt2) {}
   
-  public void a(boolean paramBoolean, PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo, byte[] paramArrayOfByte, String paramString)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
-      if (paramPhotoCollectionInfo != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramPhotoCollectionInfo.a);
-        }
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramPhotoCollectionInfo, paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramPhotoCollectionInfo);
-      }
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionListView.smoothScrollBy(this.jdField_a_of_type_Int, this.b);
   }
 }
 

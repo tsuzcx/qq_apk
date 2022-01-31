@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArDefaultSetting;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public final class aads
-  implements Parcelable.Creator
+public class aads
+  implements Runnable
 {
-  public ArDefaultSetting a(Parcel paramParcel)
-  {
-    return new ArDefaultSetting(paramParcel);
-  }
+  public aads(ScanEntranceReport paramScanEntranceReport, long paramLong1, int paramInt, String paramString, long paramLong2) {}
   
-  public ArDefaultSetting[] a(int paramInt)
+  public void run()
   {
-    return new ArDefaultSetting[paramInt];
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("last_total_time", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("session_ids", this.jdField_a_of_type_JavaLangString);
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_first_ar_recog", true, this.b, 0L, localHashMap, "");
   }
 }
 

@@ -1,15 +1,16 @@
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 
 class lhg
   implements Runnable
 {
-  lhg(lhf paramlhf) {}
+  lhg(lhe paramlhe, int paramInt) {}
   
   public void run()
   {
-    ReadInJoyCameraCaptureActivity.b(this.a.a, 9);
-    ReadInJoyCameraCaptureActivity.a(this.a.a);
-    ReadInJoyCameraCaptureActivity.c(this.a.a);
+    ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setProgress(this.jdField_a_of_type_Int);
+    ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setText(this.jdField_a_of_type_Int + "%");
   }
 }
 

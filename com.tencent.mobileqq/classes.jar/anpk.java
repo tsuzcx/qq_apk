@@ -1,26 +1,28 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import java.io.File;
 
-public class anpk
-  implements View.OnClickListener
+public final class anpk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anpk(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
+  public float a;
+  final View a;
   
-  public void onClick(View paramView)
+  public anpk(View paramView)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
-    if (((!QLog.isColorLevel()) || (!FileUtils.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (FlowCameraConstant.a == 1))
-    {
-      FlowCameraMqqAction.b("", "0X8005F5B", "0");
-      return;
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_Float = f;
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
     }
-    FlowCameraMqqAction.b("", "0X8005F5B", "1");
   }
 }
 

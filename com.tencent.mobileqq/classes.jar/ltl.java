@@ -1,20 +1,38 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class ltl
-  implements View.OnTouchListener
+class ltl
+  implements Runnable
 {
-  public ltl(FeedItemCellTypeGalleryBiu paramFeedItemCellTypeGalleryBiu, LinearLayout paramLinearLayout) {}
+  ltl(ltk paramltk) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      localArrayList.add(((IReadInJoyModel)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
+      i += 1;
     }
-    return false;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("headerUninterestConfirm,");
+      if (this.a.b != null) {
+        break label139;
+      }
+    }
+    label139:
+    for (String str = "null";; str = this.a.b.toString())
+    {
+      QLog.d("FeedItemCell", 2, str);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell.a.a(this.a.jdField_a_of_type_Int, localArrayList, this.a.b, this.a.jdField_a_of_type_JavaLangObject);
+      return;
+    }
   }
 }
 

@@ -1,24 +1,25 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import java.io.File;
+import java.io.FileFilter;
 
-public class aaif
-  implements SensorEventListener
+public final class aaif
+  implements FileFilter
 {
-  public aaif(ArkAppEventObserverManager paramArkAppEventObserverManager) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public boolean accept(File paramFile)
   {
-    if (paramSensorEvent.sensor.getType() == 1) {
-      ArkAppEventObserverManager.a(this.a, paramSensorEvent);
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
+    {
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
     }
-    while (paramSensorEvent.sensor.getType() != 3) {
-      return;
-    }
-    ArkAppEventObserverManager.b(this.a, paramSensorEvent);
+    return false;
   }
 }
 

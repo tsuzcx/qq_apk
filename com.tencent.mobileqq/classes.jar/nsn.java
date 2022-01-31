@@ -1,26 +1,26 @@
-import com.tencent.biz.qqstory.storyHome.StoryHomePushYellowBarHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView.ILoadMoreDataListener;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
 
 public class nsn
-  extends GetRedPointExObserver
+  implements LoadingMoreHelper.OnLoadMoreListener
 {
-  public nsn(StoryHomePushYellowBarHandler paramStoryHomePushYellowBarHandler) {}
+  public nsn(ShareGroupInnerListView paramShareGroupInnerListView) {}
   
-  protected void a(Object paramObject)
+  public void a()
   {
-    if ((paramObject != null) && ((paramObject instanceof oidb_0x791.RedDotInfo)))
-    {
-      paramObject = (oidb_0x791.RedDotInfo)paramObject;
-      if (paramObject.uint32_appid.get() == 21)
-      {
-        int i = paramObject.uint32_number.get();
-        int j = paramObject.uint32_last_time.get();
-        this.a.a.a(i, j);
-      }
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener.a(this.a.jdField_a_of_type_JavaLangString);
     }
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener != null) {
+      return this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener.a(this.a.jdField_a_of_type_JavaLangString);
+    }
+    return false;
   }
 }
 

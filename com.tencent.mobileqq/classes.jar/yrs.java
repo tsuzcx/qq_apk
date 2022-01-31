@@ -1,39 +1,29 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
-import com.tencent.mobileqq.apollo.task.IAudioPlayerListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class yrs
-  implements MediaPlayer.OnCompletionListener
+public final class yrs
+  implements EIPCResultCallback
 {
-  public yrs(ApolloAudioPlayer paramApolloAudioPlayer, int paramInt, String paramString) {}
+  public yrs(String paramString, long paramLong) {}
   
-  public void onCompletion(MediaPlayer arg1)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloAudioPlayer", 2, "[onCompletion]");
-    }
-    int i = this.jdField_a_of_type_Int - 1;
-    if (i == 0) {}
-    do
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("type");
+    if (i == 1)
     {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_JavaLangObject)
-      {
-        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, null);
-        if (ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer) != null) {
-          ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer).a();
-        }
-        return;
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_Boolean)
-      {
-        QLog.d("ApolloAudioPlayer", 2, "[repeat play]");
-        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, i);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloAudioPlayer", 2, "Paused. NOT play");
+      paramEIPCResult = paramEIPCResult.getString("nickName");
+      CmGameUtil.a().callbackGetNick(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
+    }
+    while (i != 2) {
+      return;
+    }
+    paramEIPCResult = (Bitmap)paramEIPCResult.getParcelable("head");
+    CmGameUtil.a().callbackGetHead(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
   }
 }
 

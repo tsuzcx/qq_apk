@@ -1,37 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.Dex2Oat.ResultCallback;
-import cooperation.plugin.PluginInstaller;
-import java.io.File;
+import android.text.Editable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class alwe
-  implements Dex2Oat.ResultCallback
+  implements View.OnTouchListener
 {
-  public alwe(PluginInstaller paramPluginInstaller) {}
+  public alwe(Login paramLogin) {}
   
-  public void a(File paramFile1, File paramFile2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "dex2Oat onStart " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
+      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      }
     }
-  }
-  
-  public void a(File paramFile1, File paramFile2, File paramFile3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "dex2Oat onSuccess " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
+      return false;
     }
-  }
-  
-  public void a(File paramFile1, File paramFile2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "preDex2Oat onFailed " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
-    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alwe
  * JD-Core Version:    0.7.0.1
  */

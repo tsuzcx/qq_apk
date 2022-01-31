@@ -1,37 +1,48 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ablg
-  implements Comparator
+public class ablg
+  extends AnimatorListenerAdapter
 {
-  public ablg(ArrayList paramArrayList) {}
+  public ablg(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimHolder paramAnimHolder) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.a.contains(paramRect1)) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startPassiveAnimator!");
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder != null) && (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.b != null))
     {
-      do
-      {
-        return 1;
-        if (this.a.contains(paramRect2)) {
-          return -1;
-        }
-        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
-          return -1;
-        }
-      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
-      if (paramRect1.width() > paramRect2.width()) {
-        return -1;
+      paramAnimator = "";
+      if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.b.istroop != 0) {
+        break label84;
       }
-    } while (paramRect1.width() < paramRect2.width());
-    return 0;
+      paramAnimator = "1";
+    }
+    for (;;)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Passive_dync", paramAnimator, 1, 0, 0, "", String.valueOf(SVIPHandler.a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.b.vipBubbleID)), "");
+      return;
+      label84:
+      if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.b.istroop == 1) {
+        paramAnimator = "2";
+      } else if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.b.istroop == 3000) {
+        paramAnimator = "3";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ablg
  * JD-Core Version:    0.7.0.1
  */

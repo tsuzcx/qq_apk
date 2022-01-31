@@ -1,25 +1,39 @@
-import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
-import com.tencent.av.service.AVRedPacketConfig;
-import com.tencent.mobileqq.armap.ResDownloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import java.lang.ref.WeakReference;
 
 public class jlx
-  implements Runnable
+  extends Handler
 {
-  public jlx(AVRedPacketConfigManager paramAVRedPacketConfigManager) {}
+  WeakReference a;
   
-  public void run()
+  public jlx(RedPacketRollTextView paramRedPacketRollTextView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketConfigManger", 2, "picPreDownloadTask called");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null)
+    this.a = new WeakReference(paramRedPacketRollTextView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    RedPacketRollTextView localRedPacketRollTextView = (RedPacketRollTextView)this.a.get();
+    if (localRedPacketRollTextView == null) {}
+    do
     {
-      QLog.d("AVRedPacketConfigManger", 1, "picPreDownloadTask, redPacketConfig is null");
-      return;
-    }
-    this.a.b = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resMD5, ".zip", true, 4, Integer.valueOf(1));
+      Bundle localBundle;
+      do
+      {
+        return;
+        localBundle = paramMessage.getData();
+      } while (localBundle == null);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      localRedPacketRollTextView.setText(localBundle.getString("content"));
+    } while (RedPacketRollTextView.a(localRedPacketRollTextView) == null);
+    RedPacketRollTextView.a(localRedPacketRollTextView).a(null);
   }
 }
 

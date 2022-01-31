@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.RemoteException;
 import com.tencent.qphone.base.util.QLog;
-import joe;
+import jnp;
 
 public class QavWrapper
 {
   Context jdField_a_of_type_AndroidContentContext = null;
   public IAVServiceForQQ a;
   public QavWrapper.OnReadyListener a;
-  joe jdField_a_of_type_Joe = new joe(this);
+  jnp jdField_a_of_type_Jnp = new jnp(this);
   
   public QavWrapper(Context paramContext)
   {
@@ -74,7 +74,7 @@ public class QavWrapper
     if (this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ == null)
     {
       Intent localIntent = new Intent(paramContext, AVServiceForQQ.class);
-      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_Joe, 1);
+      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_Jnp, 1);
       if (QLog.isColorLevel()) {
         QLog.d("QavWrapper", 2, "bindService result == " + bool);
       }
@@ -149,7 +149,7 @@ public class QavWrapper
   
   public void b(Context paramContext)
   {
-    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_Joe);
+    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_Jnp);
     this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ = null;
   }
   

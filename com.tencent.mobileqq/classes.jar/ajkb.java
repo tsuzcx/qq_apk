@@ -1,32 +1,38 @@
 import android.content.Context;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import com.tencent.biz.common.offline.AsyncCallBack;
+import com.tencent.biz.common.offline.OfflineEnvHelper;
+import com.tencent.mobileqq.troop.homework.recite.utils.SoLibraryChecker;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Queue;
+import java.io.File;
 
 public class ajkb
-  implements Runnable
+  implements AsyncCallBack
 {
-  public ajkb(UnifiedDebugManager paramUnifiedDebugManager, long paramLong1, Context paramContext, String paramString1, int paramInt, long paramLong2, String paramString2) {}
+  public ajkb(SoLibraryChecker paramSoLibraryChecker, long paramLong) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a)
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLibraryLoader", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SoLibraryLoader", 4, "transToLocalUrl transUrl:" + paramString);
+    }
+    paramString = OfflineEnvHelper.a(SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker)) + SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker) + File.separator + SoLibraryChecker.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker);
+    if (!new File(paramString).exists())
     {
-      ajkd localajkd = (ajkd)this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a.peek();
-      if ((localajkd != null) && (localajkd.jdField_b_of_type_Long == this.jdField_a_of_type_Long))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Long, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaLangString);
-        if (QLog.isColorLevel()) {
-          QLog.d("UnifiedDebugManager", 2, "start debug(retry): seq=" + this.jdField_a_of_type_Long);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("SoLibraryLoader", 2, "file not exist! path = " + paramString);
       }
       return;
     }
+    FileUtils.d(paramString, SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker).getFilesDir().getAbsolutePath() + File.separator + SoLibraryChecker.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkb
  * JD-Core Version:    0.7.0.1
  */

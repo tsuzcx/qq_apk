@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.PublishManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView.OnCloseListener;
 
 public class aeyb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aeyb(NearbyMomentManager paramNearbyMomentManager, String paramString, NearbyMomentManager.DeleteFeedCallback paramDeleteFeedCallback) {}
+  public aeyb(StuffContainerView paramStuffContainerView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = PublishManager.a(this.jdField_a_of_type_JavaLangString);
-    ThreadManager.getUIHandler().post(new aeyc(this, bool));
+    if (this.a.a != null) {
+      this.a.a.a(0);
+    }
   }
 }
 

@@ -1,28 +1,13 @@
-import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
-import java.io.FilterOutputStream;
-import java.io.OutputStream;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
 
-public class mtr
-  extends FilterOutputStream
+class mtr
+  implements Runnable
 {
-  public int a;
+  mtr(mtq parammtq) {}
   
-  public mtr(PubAccountHttpDownloader paramPubAccountHttpDownloader, OutputStream paramOutputStream)
+  public void run()
   {
-    super(paramOutputStream);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void write(int paramInt)
-  {
-    this.jdField_a_of_type_Int += 1;
-    this.out.write(paramInt);
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int += paramInt2;
-    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+    SubscriptRecommendController.a(this.a.a.a, false);
   }
 }
 

@@ -1,15 +1,14 @@
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
 public class lqo
   implements Runnable
 {
-  public lqo(ChannelInfoModule paramChannelInfoModule, boolean paramBoolean, int paramInt, SparseArray paramSparseArray) {}
+  public lqo(ChannelCoverInfoModule paramChannelCoverInfoModule, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidUtilSparseArray);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo);
   }
 }
 

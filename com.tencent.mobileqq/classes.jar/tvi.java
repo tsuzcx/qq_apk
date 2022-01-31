@@ -1,29 +1,26 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.business.sougou.HightlightHotWordText;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.MatchCallback;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.widget.ContainerView;
 
-class tvi
-  implements Runnable
+public class tvi
+  implements WordMatchManager.MatchCallback
 {
-  tvi(tvh paramtvh, TroopUploadingThread.UploadState paramUploadState) {}
+  public tvi(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void run()
+  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
   {
-    if (this.jdField_a_of_type_Tvh.a.c) {}
-    do
+    paramArrayOfHotWordItem = new QQText(HightlightHotWordText.a(this.a.app, this.a.c, paramArrayOfHotWordItem), 13, 32, this.a.jdField_a_of_type_Int);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
     {
+      this.a.jdField_a_of_type_ComTencentMobileqqTextQQText = paramArrayOfHotWordItem;
       return;
-      this.jdField_a_of_type_Tvh.a.o();
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a == 1)
-      {
-        this.jdField_a_of_type_Tvh.a.m();
-        return;
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 2);
-    String str = AvatarWallAdapter.a(this.jdField_a_of_type_Tvh.a.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.b);
-    QQToast.a(BaseApplication.getContext(), 1, str, 0).a();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTextQQText = null;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
+    this.a.h = 0;
   }
 }
 

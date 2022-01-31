@@ -1,28 +1,19 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
-import com.tencent.mobileqq.nearby.now.utils.CommentsUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.model.ChatBackgroundManager.BgThemeColorExtractListener;
+import java.util.Vector;
 
-public class aehq
-  implements InputFilter
+class aehq
+  implements Runnable
 {
-  public aehq(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  aehq(aehp paramaehp, boolean paramBoolean, Vector paramVector) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void run()
   {
-    Object localObject = paramCharSequence;
-    if (CommentsUtil.a(paramSpanned.toString()) + CommentsUtil.a(paramCharSequence.toString()) > 140)
-    {
-      QQToast.a(this.a.a(), 0, "最多输入140个字", 0).a();
-      localObject = "";
-    }
-    return localObject;
+    aehp.a(this.jdField_a_of_type_Aehp).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilVector);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehq
  * JD-Core Version:    0.7.0.1
  */

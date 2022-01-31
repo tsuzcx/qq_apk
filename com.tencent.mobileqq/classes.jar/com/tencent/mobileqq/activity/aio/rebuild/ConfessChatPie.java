@@ -67,10 +67,10 @@ import java.util.List;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import mqq.os.MqqHandler;
-import vot;
-import vou;
-import vov;
-import vow;
+import vrv;
+import vrw;
+import vrx;
+import vry;
 
 public class ConfessChatPie
   extends BaseChatPie
@@ -80,7 +80,7 @@ public class ConfessChatPie
   protected MessageObserver a;
   ConfessHandler jdField_a_of_type_ComTencentMobileqqConfessConfessHandler;
   public ConfessInfo a;
-  ConfessObserver jdField_a_of_type_ComTencentMobileqqConfessConfessObserver = new vot(this);
+  ConfessObserver jdField_a_of_type_ComTencentMobileqqConfessConfessObserver = new vrv(this);
   QQProgressNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier;
   MqqHandler b;
   private String f;
@@ -89,7 +89,7 @@ public class ConfessChatPie
   {
     super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
     this.jdField_b_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new vov(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new vrx(this);
   }
   
   public static String a(String paramString1, String paramString2)
@@ -156,21 +156,21 @@ public class ConfessChatPie
     Object localObject;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1033)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130841202);
-      this.jdField_d_of_type_AndroidViewViewGroup.setBackgroundResource(2130841202);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130841239);
+      this.jdField_d_of_type_AndroidViewViewGroup.setBackgroundResource(2130841239);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.getBackground().setVisible(true, false);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131363477).setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130841208);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131363495).setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130841245);
       if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
       {
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130841220);
+        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130841257);
         this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTextColor(-16777216);
       }
       this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(AnonymousChatHelper.c);
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getColor(2131494205));
+      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getColor(2131494212));
       if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841227);
+        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841264);
         this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(AnonymousChatHelper.c);
         this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(null);
         AIOUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, null);
@@ -202,7 +202,7 @@ public class ConfessChatPie
           localObject = "我收到的";
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131363976).setVisibility(8);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.findViewById(2131364000).setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(16.0F);
         this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setLeftContentDescription((String)localObject);
         localObject = new ConfessNewsBgView(this.jdField_a_of_type_AndroidContentContext);
@@ -222,14 +222,14 @@ public class ConfessChatPie
       if (this.jdField_b_of_type_AndroidWidgetImageView.getVisibility() != 0) {
         break;
       }
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130846137);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130846265);
       this.jdField_b_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(AnonymousChatHelper.c);
       this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130837562);
       break;
       this.jdField_d_of_type_AndroidWidgetTextView.setText(this.f);
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842819);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842918);
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(0);
       break label343;
     }
@@ -242,10 +242,10 @@ public class ConfessChatPie
       return;
     }
     localObject = (ActionSheet)ActionSheetHelper.a((Context)localObject, null);
-    ((ActionSheet)localObject).a(2131433387, 5);
-    ((ActionSheet)localObject).a(2131433435, 5);
-    ((ActionSheet)localObject).c(2131432998);
-    ((ActionSheet)localObject).a(new vow(this, (ActionSheet)localObject));
+    ((ActionSheet)localObject).a(2131433404, 5);
+    ((ActionSheet)localObject).a(2131433452, 5);
+    ((ActionSheet)localObject).c(2131433015);
+    ((ActionSheet)localObject).a(new vry(this, (ActionSheet)localObject));
     ((ActionSheet)localObject).show();
   }
   
@@ -259,7 +259,7 @@ public class ConfessChatPie
   
   protected void L()
   {
-    ThreadManager.post(new vou(this), 8, null, true);
+    ThreadManager.post(new vrw(this), 8, null, true);
   }
   
   protected void M()
@@ -341,31 +341,31 @@ public class ConfessChatPie
       {
         localObject = (ChatFragment)localObject;
         if (((ChatFragment)localObject).a != null) {
-          ((ChatFragment)localObject).a.setStatusBarDrawable(a().getResources().getDrawable(2130843245));
+          ((ChatFragment)localObject).a.setStatusBarDrawable(a().getResources().getDrawable(2130843344));
         }
       }
       this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.e.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130845753));
-      this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131363976).setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130845881));
+      this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364000).setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setIsDefaultTheme(false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130845743));
-      this.jdField_d_of_type_AndroidViewViewGroup.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130845689));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130845507));
-      localObject = SkinEngine.getInstances().getDefaultThemeDrawable(2130845653);
-      Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845650);
-      Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845654);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130845871));
+      this.jdField_d_of_type_AndroidViewViewGroup.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130845817));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130845635));
+      localObject = SkinEngine.getInstances().getDefaultThemeDrawable(2130845781);
+      Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845778);
+      Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845782);
       StateListDrawable localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(new int[] { -16842910 }, localDrawable1);
       localStateListDrawable.addState(new int[] { 16842919 }, localDrawable2);
       localStateListDrawable.addState(new int[0], (Drawable)localObject);
       this.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundDrawable(localStateListDrawable);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130845549));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setBackgroundDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130845677));
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130841220);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130841257);
     this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTextColor(-16777216);
   }
   
@@ -398,7 +398,7 @@ public class ConfessChatPie
     String str = this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
     if ((str != null) && (str.length() > l))
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131433361, 1);
+      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131433378, 1);
       return;
     }
     ChatActivityFacade.SendMsgParams localSendMsgParams = new ChatActivityFacade.SendMsgParams();
@@ -472,7 +472,7 @@ public class ConfessChatPie
   {
     if ((paramMessage.what == 60) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1033))
     {
-      this.jdField_d_of_type_AndroidViewViewGroup.setBackgroundResource(2130841202);
+      this.jdField_d_of_type_AndroidViewViewGroup.setBackgroundResource(2130841239);
       return true;
     }
     return super.handleMessage(paramMessage);
@@ -480,7 +480,7 @@ public class ConfessChatPie
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131363456) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1034))
+    if ((paramView.getId() == 2131363474) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1034))
     {
       aZ();
       return;

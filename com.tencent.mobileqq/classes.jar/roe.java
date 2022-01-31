@@ -1,44 +1,47 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import java.lang.ref.WeakReference;
 
-class roe
+public class roe
   implements Runnable
 {
-  roe(rod paramrod, MessageRecord paramMessageRecord) {}
+  public roe(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Rod.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().isFinishing()) {}
-    int i;
-    do
+    TextView localTextView;
+    if (AuthDevVerifyCodeActivity.b <= 1)
     {
-      do
+      if (AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        return;
-      } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.jdField_a_of_type_Rod.jdField_a_of_type_Int > 200));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie.troop.special_msg", 2, "refreshHeadMessage==>fistseq:" + this.jdField_a_of_type_Rod.jdField_b_of_type_Long + ", mr.shmsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq);
+        localTextView = (TextView)AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localTextView != null)
+        {
+          localTextView.setText(2131434277);
+          localTextView.setEnabled(true);
+          localTextView.setClickable(true);
+          return;
+        }
       }
-      if ((int)this.jdField_a_of_type_Rod.jdField_b_of_type_Long >= this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + 1L)
+      AuthDevVerifyCodeActivity.a(this.a).setText(2131434277);
+      AuthDevVerifyCodeActivity.a(this.a).setEnabled(true);
+      AuthDevVerifyCodeActivity.a(this.a).setClickable(true);
+      return;
+    }
+    AuthDevVerifyCodeActivity.b -= 1;
+    if (AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      localTextView = (TextView)AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localTextView != null)
       {
-        if (this.jdField_a_of_type_Rod.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) {
-          this.jdField_a_of_type_Rod.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a(this.jdField_a_of_type_Rod.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, false);
-        }
-        if (this.jdField_a_of_type_Rod.jdField_b_of_type_Int == 5) {
-          this.jdField_a_of_type_Rod.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-        }
-        this.jdField_a_of_type_Rod.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_Rod.jdField_b_of_type_Int, 0, -1, this.jdField_a_of_type_Rod.jdField_a_of_type_JavaLangRunnable);
+        localTextView.setText(this.a.getString(2131434277) + "(" + AuthDevVerifyCodeActivity.b + ")");
+        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1000L);
         return;
       }
-      i = this.jdField_a_of_type_Rod.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    } while (i == -1);
-    this.jdField_a_of_type_Rod.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_Rod.jdField_b_of_type_Int, i, i, null);
+    }
+    AuthDevVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434277) + "(" + AuthDevVerifyCodeActivity.b + ")");
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1000L);
   }
 }
 

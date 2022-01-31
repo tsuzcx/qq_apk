@@ -1,25 +1,15 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class kvb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public kvb(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kvb(VideoCoverView paramVideoCoverView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PublicAccountEntityHelper localPublicAccountEntityHelper = AdvertisementVideoPreloadManager.a(this.a);
-    if (localPublicAccountEntityHelper != null)
-    {
-      localPublicAccountEntityHelper.a(PAAdPreloadTask.class.getSimpleName());
-      Iterator localIterator = AdvertisementVideoPreloadManager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        localPublicAccountEntityHelper.a((PAAdPreloadTask)localIterator.next());
-      }
-    }
+    VideoCoverView.a(this.a, true);
   }
 }
 

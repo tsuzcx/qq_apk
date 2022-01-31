@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aizs;
+import ajnw;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -49,8 +49,8 @@ public class SchoolTroopKeywordManager$SchoolTroopHighlightSpan
     localObject1 = MessageFormat.format(SchoolTroopKeywordManager.a()[this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_Int], new Object[] { localObject1 });
     localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968601, null);
     ((View)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837532));
-    ((View)localObject2).setOnClickListener(new aizs(this));
-    TextView localTextView = (TextView)((View)localObject2).findViewById(2131362797);
+    ((View)localObject2).setOnClickListener(new ajnw(this));
+    TextView localTextView = (TextView)((View)localObject2).findViewById(2131362815);
     localTextView.setVisibility(0);
     localTextView.setText((CharSequence)localObject1);
     localTextView.setContentDescription((CharSequence)localObject1);
@@ -129,7 +129,7 @@ public class SchoolTroopKeywordManager$SchoolTroopHighlightSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan
  * JD-Core Version:    0.7.0.1
  */

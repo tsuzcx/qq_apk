@@ -233,7 +233,7 @@ public class UniteGrayTipUtil
         paramMessageForUniteGrayTip.editState = 1;
         paramMessageForUniteGrayTip.editTime = NetConnInfoCenter.getServerTimeMillis();
         paramMessageForUniteGrayTip.editMsgData = localStringBuilder.toString();
-        localObject = BaseApplicationImpl.getApplication().getString(2131438086);
+        localObject = BaseApplicationImpl.getApplication().getString(2131438103);
         paramString = paramString.concat(" ");
         j = paramString.length();
         k = ((String)localObject).length() + j;
@@ -444,7 +444,7 @@ public class UniteGrayTipUtil
           }
           paramMessageForUniteGrayTip.editState = 0;
           paramMessageForUniteGrayTip.editTime = 0L;
-          String str = " " + BaseApplicationImpl.getApplication().getString(2131438086);
+          String str = " " + BaseApplicationImpl.getApplication().getString(2131438103);
           if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.jdField_c_of_type_JavaLangString != null)) {
             paramMessageForUniteGrayTip.tipParam.jdField_c_of_type_JavaLangString = paramMessageForUniteGrayTip.tipParam.jdField_c_of_type_JavaLangString.replace(str, "");
           }
@@ -518,7 +518,7 @@ public class UniteGrayTipUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipUtil
  * JD-Core Version:    0.7.0.1
  */

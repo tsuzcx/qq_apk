@@ -1,66 +1,87 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.Locale;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.Doraemon.AppInfo;
+import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
+import tencent.im.oidb.oidb_0xb60.RspBody;
 
-public class reo
-  implements ActionSheet.OnButtonClickListener
+class reo
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public reo(AddAccountActivity paramAddAccountActivity) {}
+  reo(ren paramren, rem paramrem) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (AddAccountActivity.a(this.a)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "onResult type=" + this.jdField_a_of_type_Rem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Rem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
     }
-    if (paramInt == 0)
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      ReportController.a(this.a.app, "dc00898", "", "", "0X8007353", "0X8007353", 0, 0, "", "", "", "");
-      paramView = null;
-      if (this.a.a != null) {
-        paramView = this.a.a.getText().toString();
-      }
-      if (TextUtils.isEmpty(paramView)) {
-        break label292;
+      ren.a(this.jdField_a_of_type_Ren, new ErrorMessage(paramInt, "DoraemonOpenAPI.permissionHelper.jobApiPermission|req error"));
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "req error");
       }
     }
-    label292:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756", paramView });; paramView = "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756")
+    do
     {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
       for (;;)
       {
-        AddAccountActivity.b(this.a, true);
-        AddAccountActivity.a(this.a).dismiss();
         return;
-        if (paramInt == 1)
+        paramBundle = new oidb_0xb60.RspBody();
+        try
         {
-          ReportController.a(this.a.app, "dc00898", "", "", "0X8007354", "0X8007354", 0, 0, "", "", "", "");
-          ReportController.b(this.a.app, "CliOper", "", "", "Mobile_signup", "Clk_ems_login", 0, 0, "", "", "", "");
-          boolean bool = this.a.getIntent().getBooleanExtra("login_from_account_change", false);
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          paramView.putExtra("login_from_account_change", bool);
-          this.a.startActivity(paramView);
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if ((paramBundle.get_privilege_rsp.api_groups.has()) && (paramBundle.get_privilege_rsp.next_req_duration.has())) {
+            break label213;
+          }
+          ren.b(this.jdField_a_of_type_Ren, new ErrorMessage(-1, "DoraemonOpenAPI.permissionHelper.jobApiPermission|rsp invalid"));
+          if (QLog.isColorLevel())
+          {
+            QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "rsp invalid");
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          ren.c(this.jdField_a_of_type_Ren, new ErrorMessage(-1, "DoraemonOpenAPI.permissionHelper.jobApiPermission|parse rsp error"));
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse rsp error", paramArrayOfByte);
+    return;
+    label213:
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
+    }
+    paramArrayOfByte = DefaultDoraemonAppInfoHelper.a();
+    paramArrayOfByte.a(paramBundle.get_privilege_rsp.api_groups.get(), this.jdField_a_of_type_Rem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaUtilSet);
+    if (paramBundle.get_privilege_rsp.api_names.size() > 0)
+    {
+      Iterator localIterator = paramBundle.get_privilege_rsp.api_names.get().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (DefaultDoraemonAppInfoHelper.a(paramArrayOfByte, str)) {
+          this.jdField_a_of_type_Rem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaUtilSet.add(str);
         }
       }
     }
+    this.jdField_a_of_type_Rem.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + paramBundle.get_privilege_rsp.next_req_duration.get() * 1000L);
+    ren.a(this.jdField_a_of_type_Ren, this.jdField_a_of_type_Rem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     reo
  * JD-Core Version:    0.7.0.1
  */

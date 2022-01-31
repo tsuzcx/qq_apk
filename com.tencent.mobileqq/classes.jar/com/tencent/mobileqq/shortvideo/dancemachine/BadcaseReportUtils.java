@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import ahmg;
+import aiai;
 import android.opengl.GLES20;
 import android.os.Build;
 import android.os.SystemClock;
@@ -117,55 +117,55 @@ public class BadcaseReportUtils
   
   public static void a(BadcaseReportUtils.BadDataFrame paramBadDataFrame)
   {
-    Object localObject1 = new ahmg(paramBadDataFrame.jdField_c_of_type_JavaLangString);
+    Object localObject1 = new aiai(paramBadDataFrame.jdField_c_of_type_JavaLangString);
     Object localObject2 = "" + paramBadDataFrame.jdField_a_of_type_Int;
     int i = ((String)localObject2).length();
     if (i > 0)
     {
-      ((ahmg)localObject1).a("Problem");
-      ((ahmg)localObject1).a(i + 1);
-      ((ahmg)localObject1).a((String)localObject2);
+      ((aiai)localObject1).a("Problem");
+      ((aiai)localObject1).a(i + 1);
+      ((aiai)localObject1).a((String)localObject2);
     }
-    ((ahmg)localObject1).a("Picture");
-    ((ahmg)localObject1).b(paramBadDataFrame.jdField_b_of_type_JavaLangString);
+    ((aiai)localObject1).a("Picture");
+    ((aiai)localObject1).b(paramBadDataFrame.jdField_b_of_type_JavaLangString);
     i = jdField_c_of_type_JavaLangString.length();
     if (i > 0)
     {
-      ((ahmg)localObject1).a("Model");
-      ((ahmg)localObject1).a(i + 1);
-      ((ahmg)localObject1).a(jdField_c_of_type_JavaLangString);
+      ((aiai)localObject1).a("Model");
+      ((aiai)localObject1).a(i + 1);
+      ((aiai)localObject1).a(jdField_c_of_type_JavaLangString);
     }
     localObject2 = "" + paramBadDataFrame.jdField_a_of_type_JavaLangString;
     i = ((String)localObject2).length();
     if (i > 0)
     {
-      ((ahmg)localObject1).a("Point");
-      ((ahmg)localObject1).a(i + 1);
-      ((ahmg)localObject1).a((String)localObject2);
+      ((aiai)localObject1).a("Point");
+      ((aiai)localObject1).a(i + 1);
+      ((aiai)localObject1).a((String)localObject2);
     }
     localObject2 = "" + paramBadDataFrame.jdField_a_of_type_Long;
     i = ((String)localObject2).length();
     if (i > 0)
     {
-      ((ahmg)localObject1).a("DetectCost");
-      ((ahmg)localObject1).a(i + 1);
-      ((ahmg)localObject1).a((String)localObject2);
+      ((aiai)localObject1).a("DetectCost");
+      ((aiai)localObject1).a(i + 1);
+      ((aiai)localObject1).a((String)localObject2);
     }
     localObject2 = "" + jdField_b_of_type_JavaLangString;
     i = ((String)localObject2).length();
     if (i > 0)
     {
-      ((ahmg)localObject1).a("FilterID");
-      ((ahmg)localObject1).a(i + 1);
-      ((ahmg)localObject1).a((String)localObject2);
+      ((aiai)localObject1).a("FilterID");
+      ((aiai)localObject1).a(i + 1);
+      ((aiai)localObject1).a((String)localObject2);
     }
     localObject2 = "" + jdField_a_of_type_JavaLangString;
     i = ((String)localObject2).length();
     if (i > 0)
     {
-      ((ahmg)localObject1).a("FilterName");
-      ((ahmg)localObject1).a(i + 1);
-      ((ahmg)localObject1).a((String)localObject2);
+      ((aiai)localObject1).a("FilterName");
+      ((aiai)localObject1).a(i + 1);
+      ((aiai)localObject1).a((String)localObject2);
     }
     localObject2 = new StringBuilder();
     i = 0;
@@ -194,14 +194,14 @@ public class BadcaseReportUtils
       localObject2 = ((StringBuilder)localObject2).substring(0, ((StringBuilder)localObject2).length() - 1);
       if (((String)localObject2).length() > 0)
       {
-        ((ahmg)localObject1).a("boyId");
-        ((ahmg)localObject1).a(((String)localObject2).length() + 1);
-        ((ahmg)localObject1).a((String)localObject2);
+        ((aiai)localObject1).a("boyId");
+        ((aiai)localObject1).a(((String)localObject2).length() + 1);
+        ((aiai)localObject1).a((String)localObject2);
       }
     }
-    ((ahmg)localObject1).a();
-    paramBadDataFrame.jdField_a_of_type_Boolean = ((ahmg)localObject1).jdField_a_of_type_Boolean;
-    ((ahmg)localObject1).b();
+    ((aiai)localObject1).a();
+    paramBadDataFrame.jdField_a_of_type_Boolean = ((aiai)localObject1).jdField_a_of_type_Boolean;
+    ((aiai)localObject1).b();
     a(paramBadDataFrame.jdField_b_of_type_JavaLangString);
     if (paramBadDataFrame.jdField_a_of_type_Boolean)
     {

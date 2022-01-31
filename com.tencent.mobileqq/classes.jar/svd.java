@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
-class svd
-  implements Runnable
+public class svd
+  implements View.OnClickListener
 {
-  svd(svc paramsvc) {}
+  public svd(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.a.getManager(12);
-    if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
-      localWebProcessManager.a(202, new sve(this));
+    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
+    paramView = HongbaoShowerActivity.a(this.a);
+    if (!bool) {}
+    for (bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      return;
     }
-    this.a.a.n();
-    this.a.a.a(1);
-    if (NearbyUtils.b()) {
-      NearbyUtils.a("Q.lebatab.", new Object[] { "preload nearby process/tool process" });
-    }
-    NearbyProcessMonitor.a(this.a.a.a.getAccount(), 0);
   }
 }
 

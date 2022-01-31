@@ -1,32 +1,53 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class tbz
-  implements Runnable
+  implements ViewPager.OnPageChangeListener
 {
-  public tbz(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public tbz(NearbyActivity paramNearbyActivity) {}
   
-  public void run()
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    int i = ((FriendsManager)this.a.app.getManager(50)).c();
-    Object localObject = (PhoneContactManagerImp)this.a.app.getManager(10);
-    int j = ((PhoneContactManagerImp)localObject).c();
-    if ((((PhoneContactManagerImp)localObject).c()) || (j == 8)) {
-      i = ((PhoneContactManagerImp)localObject).a(false).size() + i;
+    if (QLog.isColorLevel()) {
+      NearbyUtils.a("onPageSelected", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.c), Integer.valueOf(paramInt) });
     }
-    for (;;)
+    Object localObject = this.a;
+    int i = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a;
+    ((NearbyActivity)localObject).b = i;
+    NearbyBaseFragment.b = i;
+    if ((this.a.h == 0L) && (this.a.b == 2))
     {
-      if (i > 0) {}
-      for (localObject = i + "人";; localObject = "暂无")
-      {
-        ThreadManager.getUIHandler().post(new tca(this, (String)localObject));
-        return;
+      this.a.h = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        NearbyUtils.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.h) });
       }
+    }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.b == 1))
+    {
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        NearbyUtils.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_a_of_type_Long) });
+      }
+    }
+    if (this.a.c != paramInt) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    }
+    if (this.a.c != -1) {
+      NearbyUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "switch_tab", this.a.c + 1);
+    }
+    localObject = this.a.a(paramInt);
+    if (localObject != null) {
+      ((NearbyBaseFragment)localObject).ar_();
     }
   }
 }

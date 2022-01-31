@@ -1,23 +1,14 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader.GetVideoListEvent;
 
-public class nla
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+class nla
+  implements Runnable
 {
-  public nla(BatchGetVideoInfoHandler paramBatchGetVideoInfoHandler, BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  nla(nky paramnky, NewFriendsPlayMode paramNewFriendsPlayMode, VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b(2);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(2, paramArrayList);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader$GetVideoListEvent);
   }
 }
 

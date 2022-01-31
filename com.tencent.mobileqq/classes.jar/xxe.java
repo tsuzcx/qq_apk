@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
 
-public class xxe
-  implements ChatActivityUtils.StartVideoListener
+class xxe
+  implements Runnable
 {
-  public xxe(SelectMemberActivity paramSelectMemberActivity) {}
+  xxe(xxc paramxxc) {}
   
-  public void a() {}
-  
-  public void b()
+  public void run()
   {
-    this.a.g = 2;
-  }
-  
-  public void c()
-  {
-    this.a.finish();
+    ShortVideoCaptureController.a(2);
   }
 }
 

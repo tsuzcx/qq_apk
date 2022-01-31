@@ -1,6 +1,19 @@
-public abstract interface aapa
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
+
+class aapa
+  implements Runnable
 {
-  public abstract void a(boolean paramBoolean);
+  aapa(aaoz paramaaoz) {}
+  
+  public void run()
+  {
+    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"none".equals(ArkAppEventObserverManager.a(this.a.a))))
+    {
+      ArkAppEventObserverManager.a(this.a.a).a(true, "none");
+      ArkAppEventObserverManager.a(this.a.a, "none");
+    }
+  }
 }
 
 

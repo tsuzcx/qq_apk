@@ -1,21 +1,23 @@
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.widget.GridView;
+import java.util.Comparator;
 
-public class ajdr
-  implements Runnable
+public final class ajdr
+  implements Comparator
 {
-  public ajdr(AvatarWallAdapter paramAvatarWallAdapter, int paramInt, ViewGroup.LayoutParams paramLayoutParams) {}
-  
-  public void run()
+  public int a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.setNumColumns(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    try
+    {
+      int i = paramString1.getBytes("utf-8").length;
+      int j = paramString2.getBytes("utf-8").length;
+      return i - j;
+    }
+    catch (Exception localException) {}
+    return paramString1.getBytes().length - paramString2.getBytes().length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdr
  * JD-Core Version:    0.7.0.1
  */

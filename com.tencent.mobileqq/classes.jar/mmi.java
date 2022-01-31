@@ -1,53 +1,26 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.TimeUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.XListView.DrawFinishedListener;
+import java.util.ArrayList;
+import java.util.List;
 
-class mmi
-  extends PublicAccountObserver
+public class mmi
+  implements XListView.DrawFinishedListener
 {
-  mmi(mmf parammmf) {}
+  public mmi(FastWebActivity paramFastWebActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a()
   {
-    mmf.a(this.a, true);
-    Context localContext = this.a.jdField_a_of_type_AndroidViewView.getContext();
-    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
-      paramString = "2";
-    }
-    for (;;)
+    if (FastWebActivity.f(this.a))
     {
-      paramString = ReadInJoyUtils.a(localContext, localArticleInfo, 0, paramString);
-      int i;
-      if (paramBoolean) {
-        i = 1;
-      }
-      try
-      {
-        for (;;)
-        {
-          paramString.put("is_done", i);
-          ReportUtil.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800898B", paramString.toString());
-          return;
-          paramString = "1";
-          break;
-          i = 2;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+      FastWebActivity.c(this.a, false);
+      FastWebActivity.e(this.a);
+      long l = TimeUtil.a("FastWebActivity.show");
+      TimeUtil.b("fast_web_show_light_house_draw_finish");
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(FastWebActivity.a(this.a));
+      ThreadManager.post(new mmj(this, l, localArrayList), 5, null, false);
     }
   }
 }

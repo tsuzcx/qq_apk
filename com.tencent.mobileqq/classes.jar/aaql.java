@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
+import com.tencent.mobileqq.music.QQPlayerService;
 
-class aaql
+public class aaql
   implements Runnable
 {
-  aaql(aaqk paramaaqk, String paramString, AtTroopMemberSpan[] paramArrayOfAtTroopMemberSpan) {}
+  public aaql(ArkAppMusicModule paramArkAppMusicModule) {}
   
   public void run()
   {
-    if ((ArkRecommendController.a(this.jdField_a_of_type_Aaqk.a) == null) || (ArkRecommendController.a(this.jdField_a_of_type_Aaqk.a) == null) || (ArkRecommendController.a(this.jdField_a_of_type_Aaqk.a).a == null)) {
-      return;
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if ((localBaseActivity instanceof FragmentActivity)) {
+      QQPlayerService.a(localBaseActivity);
     }
-    ArkRecommendController.a(this.jdField_a_of_type_Aaqk.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfComTencentMobileqqTroopTextAtTroopMemberSpan, this.jdField_a_of_type_Aaqk.a);
   }
 }
 

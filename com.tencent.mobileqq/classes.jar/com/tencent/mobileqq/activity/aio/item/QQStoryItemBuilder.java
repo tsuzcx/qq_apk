@@ -80,16 +80,16 @@ import com.tencent.util.VersionUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import vak;
-import val;
-import vam;
-import van;
-import vao;
-import vap;
-import vaq;
-import var;
-import vas;
-import vau;
+import vdm;
+import vdn;
+import vdo;
+import vdp;
+import vdq;
+import vdr;
+import vds;
+import vdt;
+import vdu;
+import vdw;
 
 public class QQStoryItemBuilder
   extends BaseBubbleBuilder
@@ -114,8 +114,8 @@ public class QQStoryItemBuilder
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
     this.jdField_b_of_type_Float = 15.0F;
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader = new PlayingListPreloader();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vak(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$AIOStoryDownloadListener = new vao(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vdm(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$AIOStoryDownloadListener = new vdq(this);
     this.jdField_b_of_type_AndroidContentContext = paramContext;
     float f1 = DisplayUtil.a(this.jdField_b_of_type_AndroidContentContext, 15.0F);
     this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f1, f1, f1 };
@@ -297,11 +297,11 @@ public class QQStoryItemBuilder
     {
       paramViewHolder = LayoutInflater.from(this.jdField_b_of_type_AndroidContentContext).inflate(2130968760, paramBaseChatItemLayout, false);
       localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewHolder.findViewById(2131361877));
-      localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363618));
+      localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363636));
       localQQStoryMsgHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362134));
-      localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363617));
-      localQQStoryMsgHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363615));
-      localQQStoryMsgHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar = ((AutoStartProgressBar)localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363616));
+      localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363635));
+      localQQStoryMsgHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363633));
+      localQQStoryMsgHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar = ((AutoStartProgressBar)localQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363634));
       localQQStoryMsgHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setSharpCornerCor(BubbleImageView.jdField_a_of_type_ArrayOfFloat);
       localQQStoryMsgHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$StoryChatVideoView = new QQStoryItemBuilder.StoryChatVideoView(this.jdField_b_of_type_AndroidContentContext);
       paramView = new RelativeLayout.LayoutParams(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
@@ -554,10 +554,10 @@ public class QQStoryItemBuilder
       return;
       paramView = this.jdField_b_of_type_AndroidContentContext;
       localObject = ((QQStoryItemBuilder.QQStoryMsgHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      str1 = paramView.getString(2131433618);
-      str2 = paramView.getString(2131433619);
+      str1 = paramView.getString(2131433635);
+      str2 = paramView.getString(2131433636);
     } while (!((ChatMessage)localObject).isSendFromLocal());
-    DialogUtil.a(paramView, 230, str1, str2, new vam(this, paramView, (ChatMessage)localObject), new van(this)).show();
+    DialogUtil.a(paramView, 230, str1, str2, new vdo(this, paramView, (ChatMessage)localObject), new vdp(this)).show();
   }
   
   protected void a(View paramView, ChatMessage paramChatMessage)
@@ -704,7 +704,7 @@ public class QQStoryItemBuilder
   
   public void a(QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder, long paramLong)
   {
-    ((Activity)this.jdField_b_of_type_AndroidContentContext).runOnUiThread(new val(this, paramQQStoryMsgHolder, paramLong));
+    ((Activity)this.jdField_b_of_type_AndroidContentContext).runOnUiThread(new vdn(this, paramQQStoryMsgHolder, paramLong));
   }
   
   public void a(QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder, long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2)
@@ -758,7 +758,7 @@ public class QQStoryItemBuilder
     if (!bool) {
       if ((a(paramQQStoryMsgHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) || (paramBoolean))
       {
-        ((Activity)this.jdField_b_of_type_AndroidContentContext).runOnUiThread(new vap(this, paramQQStoryMsgHolder));
+        ((Activity)this.jdField_b_of_type_AndroidContentContext).runOnUiThread(new vdr(this, paramQQStoryMsgHolder));
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder handleGetVideo 1: wifi download");
         }
@@ -775,7 +775,7 @@ public class QQStoryItemBuilder
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder handleGetVideo 2: no wifi");
       }
-      ((Activity)this.jdField_b_of_type_AndroidContentContext).runOnUiThread(new vaq(this, paramQQStoryMsgHolder, paramLong, paramStoryVideoItem));
+      ((Activity)this.jdField_b_of_type_AndroidContentContext).runOnUiThread(new vds(this, paramQQStoryMsgHolder, paramLong, paramStoryVideoItem));
       return;
       String str = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(paramStoryVideoItem.mVid);
       localObject = str;
@@ -787,16 +787,16 @@ public class QQStoryItemBuilder
         }
       }
     } while (!(this.jdField_b_of_type_AndroidContentContext instanceof Activity));
-    ((Activity)this.jdField_b_of_type_AndroidContentContext).runOnUiThread(new var(this, (String)localObject, paramQQStoryMsgHolder, paramStoryVideoItem, paramLong, paramBoolean));
+    ((Activity)this.jdField_b_of_type_AndroidContentContext).runOnUiThread(new vdt(this, (String)localObject, paramQQStoryMsgHolder, paramStoryVideoItem, paramLong, paramBoolean));
   }
   
   protected void a(QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder, ViewGroup paramViewGroup, boolean paramBoolean)
   {
     paramQQStoryMsgHolder.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_b_of_type_AndroidContentContext);
     Object localObject = new TextView(this.jdField_b_of_type_AndroidContentContext);
-    ((TextView)localObject).setBackgroundResource(2130840623);
+    ((TextView)localObject).setBackgroundResource(2130840645);
     ((TextView)localObject).setTextSize(1, 12.0F);
-    ((TextView)localObject).setTextColor(this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131492968));
+    ((TextView)localObject).setTextColor(this.jdField_b_of_type_AndroidContentContext.getResources().getColor(2131492969));
     ((TextView)localObject).setIncludeFontPadding(false);
     ((TextView)localObject).setSingleLine();
     ((TextView)localObject).setGravity(16);
@@ -813,13 +813,13 @@ public class QQStoryItemBuilder
   
   public void a(QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder, String paramString, long paramLong, boolean paramBoolean)
   {
-    PlayModeUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new vau(this, paramQQStoryMsgHolder, paramLong, paramBoolean));
+    PlayModeUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new vdw(this, paramQQStoryMsgHolder, paramLong, paramBoolean));
   }
   
   public void a(QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
     SLog.a("QQStoryItemBuilder", "setVideoView %s vid %s", paramString1, paramString2);
-    ThreadManager.post(new vas(this, paramString2, paramQQStoryMsgHolder, paramLong, paramString1, paramBoolean), 8, null, true);
+    ThreadManager.post(new vdu(this, paramString2, paramQQStoryMsgHolder, paramLong, paramString1, paramBoolean), 8, null, true);
   }
   
   protected boolean a(MessageRecord paramMessageRecord)
@@ -841,7 +841,7 @@ public class QQStoryItemBuilder
     }
     for (;;)
     {
-      localQQCustomMenu.a(2131363499, this.jdField_b_of_type_AndroidContentContext.getString(2131435066), 2130838309);
+      localQQCustomMenu.a(2131363517, this.jdField_b_of_type_AndroidContentContext.getString(2131435083), 2130838313);
       a(paramView, localQQCustomMenu);
       ChatActivityFacade.a(localQQCustomMenu, this.jdField_b_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       if ((paramView.isSend()) && (paramView.extraflag != 32768) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView))) {

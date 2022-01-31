@@ -1,10 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-public final class acxy
-  implements DialogInterface.OnClickListener
+public class acxy
+  extends acxu
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public acxy(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  {
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateGotoOffFileProcess";
+  }
 }
 
 

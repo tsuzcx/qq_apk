@@ -1,44 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleStickerTracker2;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 
 public class anxh
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public anxh(TextLayer.TextItem paramTextItem) {}
   
-  public anxh(SimpleStickerTracker2 paramSimpleStickerTracker21, Looper paramLooper, SimpleStickerTracker2 paramSimpleStickerTracker22)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSimpleStickerTracker22);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    paramMessage = (SimpleStickerTracker2)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramMessage == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("SimpleStickerTracker2", 2, "ProcesserHandler.handleMessage: Processor is null");
-      }
+    if (this.a.a.b == null) {
       return;
     }
-    switch (i)
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.s = (this.a.d + this.a.f * (1.0F - f));
+    this.a.t = (this.a.e + this.a.g * (1.0F - f));
+    this.a.q = (this.a.b + this.a.h * (1.0F - f));
+    this.a.r = (this.a.c + this.a.i * (1.0F - f));
+    if (f == 1.0F)
     {
-    default: 
-      throw new RuntimeException("Unhandled msg what=" + i);
-    case 1: 
-      paramMessage.e();
-      return;
-    case 2: 
-      paramMessage.g();
-      return;
+      this.a.a.b = null;
+      this.a.a.b(4);
     }
-    paramMessage.f();
+    TextLayer.b(this.a.a);
   }
 }
 

@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.mobileqq.armap.ARGLSurfaceView;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
 public class aazi
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aazi(ARGridMapViewDialog paramARGridMapViewDialog, POIInfo paramPOIInfo, int paramInt) {}
+  public aazi(ARMapActivity paramARMapActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ARGridMapViewDialog.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog, this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo, this.jdField_a_of_type_Int);
+    ARMapEngine localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
+    ARMapEngine.nativeSetMapRotateMode(this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.getEngineHandler(), this.a.b);
   }
 }
 

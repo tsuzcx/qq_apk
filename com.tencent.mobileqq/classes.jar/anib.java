@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.GuideHelper;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import cooperation.weiyun.sdk.download.WyDownloader;
+import java.util.Iterator;
+import java.util.List;
 
 public class anib
-  implements View.OnClickListener
+  implements ThreadPool.Job
 {
-  public anib(GuideHelper paramGuideHelper, ViewGroup paramViewGroup) {}
+  public anib(WyDownloader paramWyDownloader, List paramList) {}
   
-  public void onClick(View paramView)
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiGuideHelper.a(this.jdField_a_of_type_AndroidViewViewGroup);
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.b(l);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anib
  * JD-Core Version:    0.7.0.1
  */

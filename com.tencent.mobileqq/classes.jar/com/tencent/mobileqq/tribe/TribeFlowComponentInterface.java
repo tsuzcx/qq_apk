@@ -12,6 +12,8 @@ import org.json.JSONObject;
 public class TribeFlowComponentInterface
   implements FlowComponentInterface
 {
+  public static int a = 60000;
+  
   public String a()
   {
     return "tribe";
@@ -139,11 +141,11 @@ public class TribeFlowComponentInterface
   
   public void a(Activity paramActivity, Intent paramIntent) {}
   
-  public void b(String paramString) {}
+  public void c_(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.TribeFlowComponentInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a267c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a12" android:paddingTop="11.0dip" android:paddingBottom="5.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a13" android:background="@null" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02183b" android:layout_centerInParent="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e010a" />
+    </RelativeLayout>
+</RelativeLayout>

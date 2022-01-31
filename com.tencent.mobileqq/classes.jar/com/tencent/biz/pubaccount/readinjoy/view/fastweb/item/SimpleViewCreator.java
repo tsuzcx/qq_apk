@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.widget.HorizontalLabelLayout;
-import mlp;
-import mlq;
-import mlr;
+import mna;
+import mnb;
+import mnc;
 
 public class SimpleViewCreator
   implements ItemCreator
@@ -41,14 +41,14 @@ public class SimpleViewCreator
     default: 
       throw new IllegalArgumentException();
     case 7: 
-      return new mlr(this, localLayoutInflater.inflate(2130969607, paramViewGroup, false), paramBaseData);
+      return new mnc(this, localLayoutInflater.inflate(2130969615, paramViewGroup, false), paramBaseData);
     case 8: 
-      return new mlq(this, localLayoutInflater.inflate(2130969603, paramViewGroup, false), paramBaseData);
+      return new mnb(this, localLayoutInflater.inflate(2130969611, paramViewGroup, false), paramBaseData);
     }
     paramViewGroup = new HorizontalLabelLayout(paramContext);
     int i = AIOUtils.a(15.0F, paramContext.getResources());
     paramViewGroup.setPadding(i, 0, i, 0);
-    return new mlp(this, paramViewGroup, paramBaseData);
+    return new mna(this, paramViewGroup, paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

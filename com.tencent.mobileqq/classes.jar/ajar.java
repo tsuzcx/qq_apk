@@ -1,21 +1,20 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 
-class ajar
+public class ajar
   implements Runnable
 {
-  ajar(ajaq paramajaq) {}
+  public ajar(TroopWebviewPlugin paramTroopWebviewPlugin, String paramString) {}
   
   public void run()
   {
-    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131558448);
-    QQToast.a(BaseApplicationImpl.sApplication, "转发成功", 0).b(i);
+    SensorAPIJavaScript.returnToAio(this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.a, this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.mRuntime.a(), this.jdField_a_of_type_JavaLangString, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajar
  * JD-Core Version:    0.7.0.1
  */

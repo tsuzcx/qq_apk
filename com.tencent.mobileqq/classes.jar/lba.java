@@ -1,19 +1,29 @@
-import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper;
-import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityManagerFactory;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationAdapter.ChannelButtonListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class lba
-  implements Runnable
+  implements ReadInJoyNavigationAdapter.ChannelButtonListener
 {
-  public lba(PublicAccountEntityHelper paramPublicAccountEntityHelper, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
+  private WeakReference a;
   
-  public void run()
+  public lba(ReadInJoyNaviController paramReadInJoyNaviController)
   {
-    try
+    this.a = new WeakReference(paramReadInJoyNaviController);
+  }
+  
+  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  {
+    ReadInJoyNaviController localReadInJoyNaviController = (ReadInJoyNaviController)this.a.get();
+    if (((localReadInJoyNaviController == null) || (ReadInJoyNaviController.a(localReadInJoyNaviController).a())) && (QLog.isColorLevel()))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory.verifyAuthentication();
+      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
       return;
     }
-    catch (Exception localException) {}
+    localReadInJoyNaviController.a(paramChannelCoverInfo);
   }
 }
 

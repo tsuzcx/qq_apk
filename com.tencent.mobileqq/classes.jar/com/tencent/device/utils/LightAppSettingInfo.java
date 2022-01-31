@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
 import java.util.HashMap;
-import qgf;
+import qhz;
 
 public class LightAppSettingInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new qgf();
+  public static final Parcelable.Creator CREATOR = new qhz();
   public int a;
   public long a;
   public String a;

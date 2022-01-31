@@ -1,23 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class mpz
-  extends Handler
 {
-  public mpz(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (List)paramMessage.obj;
-    ReadInJoyNewSearchActivity.a(this.a, paramMessage);
-  }
+  public TextView a;
+  public URLImageView a;
+  public mpy a;
+  public TextView b;
+  public TextView c;
 }
 
 

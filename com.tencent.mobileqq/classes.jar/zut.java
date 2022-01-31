@@ -1,28 +1,21 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.drawable.AnimationDrawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
 
-public final class zut
+class zut
   implements Runnable
 {
-  public zut(String paramString1, String paramString2) {}
+  zut(zus paramzus, AnimationDrawable paramAnimationDrawable) {}
   
   public void run()
   {
-    try
-    {
-      DialogUtil.a(ARVideoRecordUIControllerImpl.a().a(), 230, this.a, this.b, "", "我知道了", new zuu(this), null).show();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_Zus.a.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable);
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zut
  * JD-Core Version:    0.7.0.1
  */

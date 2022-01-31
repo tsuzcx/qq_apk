@@ -1,22 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
 public class uis
-  implements MediaPlayer.OnCompletionListener
+  implements Handler.Callback
 {
-  public uis(MediaPlayerManager paramMediaPlayerManager) {}
+  public uis(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
+    switch (paramMessage.what)
+    {
     }
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
-    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
-      return;
+    for (;;)
+    {
+      return false;
+      if (this.a.a != null) {
+        this.a.a.d();
+      }
     }
-    this.a.d();
   }
 }
 

@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView.FooterExpandListViewListener;
+import com.tencent.qidian.controller.BigDataHandler;
+import com.tencent.qidian.controller.QidianBusinessObserver;
 
 public class alnj
-  implements View.OnClickListener
+  extends QidianBusinessObserver
 {
-  public alnj(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView1, PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView2) {}
+  public alnj(BigDataHandler paramBigDataHandler) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean)
   {
-    if (this.b.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$FooterExpandListViewListener != null) {
-      this.b.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$FooterExpandListViewListener.a(this.a, this.b.jdField_a_of_type_AndroidViewView, this.b.f);
+    super.a(paramBoolean);
+    if (paramBoolean)
+    {
+      BigDataHandler.a(this.a);
+      return;
     }
+    BigDataHandler.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alnj
  * JD-Core Version:    0.7.0.1
  */

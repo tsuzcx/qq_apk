@@ -1,8 +1,29 @@
-import android.widget.TextView;
-
-public class wot
+public final class wot
 {
-  public TextView a;
+  private static boolean f(int paramInt)
+  {
+    return paramInt == -3;
+  }
+  
+  private static boolean g(int paramInt)
+  {
+    return paramInt == -2;
+  }
+  
+  private static boolean h(int paramInt)
+  {
+    return paramInt == -1;
+  }
+  
+  private static boolean i(int paramInt)
+  {
+    return paramInt < 0;
+  }
+  
+  private static boolean j(int paramInt)
+  {
+    return paramInt == 0;
+  }
 }
 
 

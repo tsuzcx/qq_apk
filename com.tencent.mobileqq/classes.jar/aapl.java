@@ -1,59 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppSSO;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
+import com.tencent.ark.ark;
+import com.tencent.ark.ark.Container;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import java.lang.ref.WeakReference;
 
-class aapl
+public class aapl
   implements Runnable
 {
-  aapl(aapk paramaapk, aapx paramaapx, String paramString) {}
+  public aapl(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong, String paramString) {}
   
   public void run()
   {
-    if (ArkMessageServerLogic.a(this.jdField_a_of_type_Aapx.jdField_a_of_type_JavaLangString)) {
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, skip text");
-    }
-    for (;;)
+    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
+    if (localObject == null) {}
+    ArkFullScreenAppActivity localArkFullScreenAppActivity;
+    do
     {
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, fail");
-      if (this.jdField_a_of_type_Aapx.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler != null) {
-        this.jdField_a_of_type_Aapx.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler.a(this.jdField_a_of_type_Aapx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aapx.jdField_a_of_type_JavaLangObject, null);
-      }
-      Object localObject;
-      String str;
       do
       {
-        return;
-        localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        if (localObject == null)
+        do
         {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, qq app is null");
-          break;
-        }
-        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(120);
-        if (localObject == null)
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, ark center is null");
-          break;
-        }
-        localObject = ((ArkAppCenter)localObject).a();
-        if (localObject == null)
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, ark sso is null");
-          break;
-        }
-        str = ArkMessageServerLogic.a(this.jdField_a_of_type_Aapx, this.jdField_a_of_type_JavaLangString);
-        if (TextUtils.isEmpty(str))
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, req json is null");
-          break;
-        }
-      } while (((ArkAppSSO)localObject).a("ArkTextSvc.AnalyzeTextIntent", str, 10000, 0, new aapm(this)));
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, fail send sso request");
-    }
+          return;
+        } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
+        localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
+        localObject = ArkAppContainer.a((ark.Container)localObject);
+      } while (localObject == null);
+      localObject = (ArkAppContainer)((WeakReference)localObject).get();
+    } while (localObject == null);
+    localArkFullScreenAppActivity.a((ArkAppContainer)localObject, this.jdField_a_of_type_JavaLangString);
   }
 }
 

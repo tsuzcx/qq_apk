@@ -1,32 +1,35 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import android.util.Pair;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
+import java.util.Calendar;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class zhk
   implements Runnable
 {
-  public zhk(QQAppInterface paramQQAppInterface, String paramString, File paramFile) {}
+  public zhk(MessageRoamManager paramMessageRoamManager, int paramInt) {}
   
   public void run()
   {
-    File localFile;
-    if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, MsfSdkUtils.insertMtype("lingyin", this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile))
+    Object localObject = Calendar.getInstance();
+    int j = this.jdField_a_of_type_Int;
+    int i = 8;
+    while (j < this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.size())
     {
-      localFile = new File(QQAppInterface.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getApplicationContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      if (localFile == null) {
-        break label69;
+      ((Calendar)localObject).setTimeInMillis(((Long)this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.get(j)).longValue());
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)localObject);
+      Pair localPair = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)((Calendar)localObject).clone());
+      int k = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
+      if (i - k <= 0) {
+        break;
       }
+      j += 1;
+      i -= k;
     }
-    label69:
-    for (long l = localFile.length();; l = 0L)
-    {
-      QQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(l);
-      return;
-    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatHistoryForC2C.class);
+    ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(0), 0L);
   }
 }
 

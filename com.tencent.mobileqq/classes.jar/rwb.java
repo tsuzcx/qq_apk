@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class rwb
-  implements Runnable
+public final class rwb
+  implements DialogInterface.OnClickListener
 {
-  rwb(rwa paramrwa, int paramInt) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_Rwa.a.a.isFinishing()) {
-      this.jdField_a_of_type_Rwa.a.a.a(this.jdField_a_of_type_Int);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

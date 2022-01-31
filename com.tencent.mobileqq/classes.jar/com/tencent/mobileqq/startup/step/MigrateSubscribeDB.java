@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahre;
-import ahrf;
-import ahrg;
+import aifg;
+import aifh;
+import aifi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
@@ -88,8 +88,8 @@ public class MigrateSubscribeDB
       paramString = null;
       return paramString;
     }
-    ahrf localahrf = new ahrf(this, BaseApplication.getContext(), paramString, 17);
-    paramString = localahrf.getReadableDatabase().rawQuery("select * from RecentSubscribeData order by mLastMsgTime DESC", null);
+    aifh localaifh = new aifh(this, BaseApplication.getContext(), paramString, 17);
+    paramString = localaifh.getReadableDatabase().rawQuery("select * from RecentSubscribeData order by mLastMsgTime DESC", null);
     if (paramString != null) {}
     for (;;)
     {
@@ -108,21 +108,21 @@ public class MigrateSubscribeDB
         int i3 = paramString.getColumnIndex("mSubscribeID");
         int i4 = paramString.getColumnIndex("mSubscribeName");
         int i5 = paramString.getColumnIndex("mUnreadCount");
-        ahrg localahrg = new ahrg(this, null);
-        localahrg.d = a(paramString.getString(i));
-        localahrg.e = a(paramString.getString(j));
-        localahrg.jdField_c_of_type_JavaLangString = a(paramString.getString(k));
-        localahrg.jdField_b_of_type_Long = paramString.getLong(m);
-        localahrg.jdField_a_of_type_Long = paramString.getLong(n);
-        localahrg.jdField_c_of_type_Long = paramString.getLong(i1);
-        localahrg.f = a(paramString.getString(i2));
-        localahrg.jdField_a_of_type_JavaLangString = a(paramString.getString(i3));
-        localahrg.jdField_b_of_type_JavaLangString = a(paramString.getString(i4));
-        localahrg.jdField_a_of_type_Int = paramString.getInt(i5);
+        aifi localaifi = new aifi(this, null);
+        localaifi.d = a(paramString.getString(i));
+        localaifi.e = a(paramString.getString(j));
+        localaifi.jdField_c_of_type_JavaLangString = a(paramString.getString(k));
+        localaifi.jdField_b_of_type_Long = paramString.getLong(m);
+        localaifi.jdField_a_of_type_Long = paramString.getLong(n);
+        localaifi.jdField_c_of_type_Long = paramString.getLong(i1);
+        localaifi.f = a(paramString.getString(i2));
+        localaifi.jdField_a_of_type_JavaLangString = a(paramString.getString(i3));
+        localaifi.jdField_b_of_type_JavaLangString = a(paramString.getString(i4));
+        localaifi.jdField_a_of_type_Int = paramString.getInt(i5);
         if (QLog.isColorLevel()) {
-          QLog.d("MigrateSubscribeDB", 2, "read Subscribe RecentDataResults:(mDraft,mDraftTime,mLastMsg,mLastMsgID,mLastMsgTime,mLastReorderTime,mSubscribeHeadUrl,mSubscribeID,mSubscribeName,mUnreadCount)=(" + localahrg.d + "," + localahrg.e + "," + localahrg.jdField_c_of_type_JavaLangString + "," + localahrg.jdField_b_of_type_Long + "," + localahrg.jdField_a_of_type_Long + "," + localahrg.jdField_c_of_type_Long + localahrg.f + "," + localahrg.jdField_a_of_type_JavaLangString + "," + localahrg.jdField_b_of_type_JavaLangString + "," + localahrg.jdField_a_of_type_Int + ")");
+          QLog.d("MigrateSubscribeDB", 2, "read Subscribe RecentDataResults:(mDraft,mDraftTime,mLastMsg,mLastMsgID,mLastMsgTime,mLastReorderTime,mSubscribeHeadUrl,mSubscribeID,mSubscribeName,mUnreadCount)=(" + localaifi.d + "," + localaifi.e + "," + localaifi.jdField_c_of_type_JavaLangString + "," + localaifi.jdField_b_of_type_Long + "," + localaifi.jdField_a_of_type_Long + "," + localaifi.jdField_c_of_type_Long + localaifi.f + "," + localaifi.jdField_a_of_type_JavaLangString + "," + localaifi.jdField_b_of_type_JavaLangString + "," + localaifi.jdField_a_of_type_Int + ")");
         }
-        localArrayList.add(localahrg);
+        localArrayList.add(localaifi);
         boolean bool = paramString.moveToNext();
         if (bool) {
           continue;
@@ -143,10 +143,10 @@ public class MigrateSubscribeDB
         paramString.close();
       }
       paramString = localArrayList;
-      if (localahrf == null) {
+      if (localaifh == null) {
         break;
       }
-      localahrf.close();
+      localaifh.close();
       return localArrayList;
       if (QLog.isColorLevel())
       {
@@ -230,20 +230,20 @@ public class MigrateSubscribeDB
     //   147: aload_3
     //   148: iload 5
     //   150: invokeinterface 250 2 0
-    //   155: checkcast 140	ahrg
-    //   158: getfield 171	ahrg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   155: checkcast 140	aifi
+    //   158: getfield 171	aifi:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   161: aload_2
     //   162: invokevirtual 253	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   165: ifeq +676 -> 841
     //   168: aload_3
     //   169: iload 5
     //   171: invokeinterface 250 2 0
-    //   176: checkcast 140	ahrg
+    //   176: checkcast 140	aifi
     //   179: astore_3
     //   180: aload_3
     //   181: ifnull +916 -> 1097
     //   184: aload_3
-    //   185: getfield 177	ahrg:jdField_a_of_type_Int	I
+    //   185: getfield 177	aifi:jdField_a_of_type_Int	I
     //   188: istore 5
     //   190: ldc 255
     //   192: astore_3
@@ -264,16 +264,16 @@ public class MigrateSubscribeDB
     //   225: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   228: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   231: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   234: new 88	ahrf
+    //   234: new 88	aifh
     //   237: dup
     //   238: aload_0
     //   239: invokestatic 94	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   242: aload_1
     //   243: bipush 80
-    //   245: invokespecial 97	ahrf:<init>	(Lcom/tencent/mobileqq/startup/step/MigrateSubscribeDB;Landroid/content/Context;Ljava/lang/String;I)V
+    //   245: invokespecial 97	aifh:<init>	(Lcom/tencent/mobileqq/startup/step/MigrateSubscribeDB;Landroid/content/Context;Ljava/lang/String;I)V
     //   248: astore_1
     //   249: aload_1
-    //   250: invokevirtual 101	ahrf:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   250: invokevirtual 101	aifh:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   253: astore 23
     //   255: aload 23
     //   257: iconst_0
@@ -601,7 +601,7 @@ public class MigrateSubscribeDB
     //   1025: aload_1
     //   1026: ifnull +7 -> 1033
     //   1029: aload_1
-    //   1030: invokevirtual 210	ahrf:close	()V
+    //   1030: invokevirtual 210	aifh:close	()V
     //   1033: aload 23
     //   1035: ifnull +8 -> 1043
     //   1038: aload 23
@@ -708,7 +708,7 @@ public class MigrateSubscribeDB
     int i = 0;
     if (i < paramList.size())
     {
-      String str = ((ahrg)paramList.get(i)).jdField_a_of_type_JavaLangString;
+      String str = ((aifi)paramList.get(i)).jdField_a_of_type_JavaLangString;
       int j = 0;
       for (;;)
       {
@@ -961,9 +961,9 @@ public class MigrateSubscribeDB
       int i = 0;
       while (i < j)
       {
-        if (((ahrg)paramList1.get(i)).jdField_a_of_type_JavaLangString.equals(paramString))
+        if (((aifi)paramList1.get(i)).jdField_a_of_type_JavaLangString.equals(paramString))
         {
-          paramString = (ahrg)paramList1.get(i);
+          paramString = (aifi)paramList1.get(i);
           paramString.jdField_c_of_type_Long = l;
           paramList1.set(i, paramString);
           return;
@@ -991,19 +991,19 @@ public class MigrateSubscribeDB
       int i = 0;
       if (i < j)
       {
-        ahrg localahrg = (ahrg)paramList.get(i);
+        aifi localaifi = (aifi)paramList.get(i);
         if (QLog.isColorLevel()) {
-          QLog.d("MigrateSubscribeDB", 2, "migrateToTroopBar subscribeRecentData: " + localahrg);
+          QLog.d("MigrateSubscribeDB", 2, "migrateToTroopBar subscribeRecentData: " + localaifi);
         }
-        String str = SubscriptUtil.a(localahrg.jdField_a_of_type_JavaLangString);
+        String str = SubscriptUtil.a(localaifi.jdField_a_of_type_JavaLangString);
         if (!TextUtils.isEmpty(str))
         {
           TroopBarData localTroopBarData = new TroopBarData();
           localTroopBarData.mUin = str;
-          localTroopBarData.mLastMsgTime = localahrg.jdField_c_of_type_Long;
+          localTroopBarData.mLastMsgTime = localaifi.jdField_c_of_type_Long;
           localTroopBarData.mLastDraftTime = 0L;
           if (QLog.isColorLevel()) {
-            QLog.d("MigrateSubscribeDB", 2, "migrateToTroopBar subscribeid[" + localahrg.jdField_a_of_type_JavaLangString + "] create new TroopBarData: " + localTroopBarData);
+            QLog.d("MigrateSubscribeDB", 2, "migrateToTroopBar subscribeid[" + localaifi.jdField_a_of_type_JavaLangString + "] create new TroopBarData: " + localTroopBarData);
           }
           paramEntityManager.b(localTroopBarData);
         }
@@ -1012,7 +1012,7 @@ public class MigrateSubscribeDB
           i += 1;
           break;
           if (QLog.isColorLevel()) {
-            QLog.d("MigrateSubscribeDB", 2, "migrateToTroopBar we can't subscribeid[" + localahrg.jdField_a_of_type_JavaLangString + "]'s uin");
+            QLog.d("MigrateSubscribeDB", 2, "migrateToTroopBar we can't subscribeid[" + localaifi.jdField_a_of_type_JavaLangString + "]'s uin");
           }
         }
       }
@@ -1033,8 +1033,8 @@ public class MigrateSubscribeDB
     //   13: ldc_w 646
     //   16: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   19: iconst_0
-    //   20: istore 6
-    //   22: iload 6
+    //   20: istore 4
+    //   22: iload 4
     //   24: ireturn
     //   25: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   28: ifeq +32 -> 60
@@ -1051,7 +1051,7 @@ public class MigrateSubscribeDB
     //   54: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   57: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   60: invokestatic 239	java/lang/System:nanoTime	()J
-    //   63: lstore 4
+    //   63: lstore 5
     //   65: aload_1
     //   66: invokevirtual 431	java/io/File:getName	()Ljava/lang/String;
     //   69: astore 11
@@ -1086,7 +1086,7 @@ public class MigrateSubscribeDB
     //   128: ldc_w 657
     //   131: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   134: iconst_0
-    //   135: istore 6
+    //   135: istore 4
     //   137: iconst_0
     //   138: ifeq +11 -> 149
     //   141: new 659	java/lang/NullPointerException
@@ -1236,7 +1236,7 @@ public class MigrateSubscribeDB
     //   509: ldc_w 684
     //   512: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   515: iconst_1
-    //   516: istore 6
+    //   516: istore 4
     //   518: iconst_0
     //   519: ifeq +11 -> 530
     //   522: new 659	java/lang/NullPointerException
@@ -1308,7 +1308,7 @@ public class MigrateSubscribeDB
     //   672: ldc_w 701
     //   675: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   678: invokestatic 239	java/lang/System:nanoTime	()J
-    //   681: lload 4
+    //   681: lload 5
     //   683: lsub
     //   684: ldc2_w 379
     //   687: ldiv
@@ -1442,7 +1442,7 @@ public class MigrateSubscribeDB
     //   988: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   991: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   994: iconst_0
-    //   995: istore 6
+    //   995: istore 4
     //   997: aload 12
     //   999: ifnull +8 -> 1007
     //   1002: aload 12
@@ -1540,17 +1540,17 @@ public class MigrateSubscribeDB
     //   1218: aload_0
     //   1219: getfield 653	com/tencent/mobileqq/startup/step/MigrateSubscribeDB:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   1222: invokeinterface 417 1 0
-    //   1227: astore 9
-    //   1229: aload 9
+    //   1227: astore 10
+    //   1229: aload 10
     //   1231: invokeinterface 422 1 0
     //   1236: ifeq -95 -> 1141
-    //   1239: aload 9
+    //   1239: aload 10
     //   1241: invokeinterface 426 1 0
     //   1246: checkcast 428	java/io/File
     //   1249: invokevirtual 431	java/io/File:getName	()Ljava/lang/String;
-    //   1252: astore 10
+    //   1252: astore 9
     //   1254: aload_0
-    //   1255: aload 10
+    //   1255: aload 9
     //   1257: invokespecial 754	com/tencent/mobileqq/startup/step/MigrateSubscribeDB:a	(Ljava/lang/String;)[Ljava/lang/String;
     //   1260: astore 11
     //   1262: aload 11
@@ -1576,7 +1576,7 @@ public class MigrateSubscribeDB
     //   1308: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1311: ldc_w 769
     //   1314: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1317: aload 10
+    //   1317: aload 9
     //   1319: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1322: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1325: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1593,8 +1593,8 @@ public class MigrateSubscribeDB
     //   1344: aload_1
     //   1345: iload_2
     //   1346: invokeinterface 250 2 0
-    //   1351: checkcast 140	ahrg
-    //   1354: getfield 171	ahrg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1351: checkcast 140	aifi
+    //   1354: getfield 171	aifi:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1357: aastore
     //   1358: iload_2
     //   1359: iconst_1
@@ -1602,7 +1602,7 @@ public class MigrateSubscribeDB
     //   1361: istore_2
     //   1362: goto -26 -> 1336
     //   1365: aload_0
-    //   1366: aload 10
+    //   1366: aload 9
     //   1368: aload 17
     //   1370: aload 11
     //   1372: aload_1
@@ -1677,8 +1677,8 @@ public class MigrateSubscribeDB
     //   0	1506	1	paramFile	File
     //   1335	27	2	i	int
     //   1279	60	3	j	int
-    //   63	619	4	l	long
-    //   20	976	6	bool	boolean
+    //   20	976	4	bool	boolean
+    //   63	619	5	l	long
     //   72	1430	7	localObject1	Object
     //   90	1377	8	localObject2	Object
     //   81	1384	9	localObject3	Object
@@ -1803,16 +1803,16 @@ public class MigrateSubscribeDB
     //   38: areturn
     //   39: invokestatic 94	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   42: astore 4
-    //   44: new 88	ahrf
+    //   44: new 88	aifh
     //   47: dup
     //   48: aload_0
     //   49: aload 4
     //   51: aload_1
     //   52: bipush 80
-    //   54: invokespecial 97	ahrf:<init>	(Lcom/tencent/mobileqq/startup/step/MigrateSubscribeDB;Landroid/content/Context;Ljava/lang/String;I)V
+    //   54: invokespecial 97	aifh:<init>	(Lcom/tencent/mobileqq/startup/step/MigrateSubscribeDB;Landroid/content/Context;Ljava/lang/String;I)V
     //   57: astore 6
     //   59: aload 6
-    //   61: invokevirtual 101	ahrf:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   61: invokevirtual 101	aifh:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   64: astore 5
     //   66: aload 5
     //   68: ldc_w 775
@@ -1915,7 +1915,7 @@ public class MigrateSubscribeDB
     //   279: aload 6
     //   281: ifnull -245 -> 36
     //   284: aload 6
-    //   286: invokevirtual 210	ahrf:close	()V
+    //   286: invokevirtual 210	aifh:close	()V
     //   289: aload_1
     //   290: areturn
     //   291: astore 4
@@ -1985,7 +1985,7 @@ public class MigrateSubscribeDB
     //   426: aload 6
     //   428: ifnull -392 -> 36
     //   431: aload 6
-    //   433: invokevirtual 210	ahrf:close	()V
+    //   433: invokevirtual 210	aifh:close	()V
     //   436: aload 7
     //   438: areturn
     //   439: astore_1
@@ -2032,7 +2032,7 @@ public class MigrateSubscribeDB
     //   526: aload 6
     //   528: ifnull +8 -> 536
     //   531: aload 6
-    //   533: invokevirtual 210	ahrf:close	()V
+    //   533: invokevirtual 210	aifh:close	()V
     //   536: aload_1
     //   537: athrow
     //   538: astore 4
@@ -2212,7 +2212,7 @@ public class MigrateSubscribeDB
         }
         i += 1;
       }
-      Collections.sort(this.jdField_a_of_type_JavaUtilList, new ahre(this));
+      Collections.sort(this.jdField_a_of_type_JavaUtilList, new aifg(this));
       if (QLog.isColorLevel()) {
         QLog.d("MigrateSubscribeDB", 2, "doStep get Migrate db files cost = " + (System.nanoTime() - l) / 1000000L + "ms");
       }
@@ -2248,17 +2248,17 @@ public class MigrateSubscribeDB
       i = 0;
       if (i < paramList.size())
       {
-        ahrg localahrg = (ahrg)paramList.get(i);
+        aifi localaifi = (aifi)paramList.get(i);
         if (QLog.isColorLevel()) {
-          QLog.d("MigrateSubscribeDB", 2, "migrateToCoversationInfo subscribeRecentData: " + localahrg);
+          QLog.d("MigrateSubscribeDB", 2, "migrateToCoversationInfo subscribeRecentData: " + localaifi);
         }
-        String str = SubscriptUtil.a(localahrg.jdField_a_of_type_JavaLangString);
+        String str = SubscriptUtil.a(localaifi.jdField_a_of_type_JavaLangString);
         ConversationInfo localConversationInfo;
         int j;
         if (!TextUtils.isEmpty(str))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("MigrateSubscribeDB", 2, "migrateToCoversationInfo find subscribeID[" + localahrg.jdField_a_of_type_JavaLangString + "]'s uin: " + str);
+            QLog.d("MigrateSubscribeDB", 2, "migrateToCoversationInfo find subscribeID[" + localaifi.jdField_a_of_type_JavaLangString + "]'s uin: " + str);
           }
           localConversationInfo = new ConversationInfo();
           List localList = paramEntityManager.a(ConversationInfo.class, false, "uin=? and type=?", new String[] { str, String.valueOf(1008) }, null, null, null, null);
@@ -2278,7 +2278,7 @@ public class MigrateSubscribeDB
             }
             localConversationInfo = (ConversationInfo)localList.get(0);
             localConversationInfo.uin = str;
-            localConversationInfo.unreadCount += localahrg.jdField_a_of_type_Int;
+            localConversationInfo.unreadCount += localaifi.jdField_a_of_type_Int;
             localConversationInfo.type = 1008;
             paramEntityManager.b(localConversationInfo);
           }
@@ -2290,11 +2290,11 @@ public class MigrateSubscribeDB
           j = 0;
           break label265;
           localConversationInfo.uin = str;
-          localConversationInfo.unreadCount = localahrg.jdField_a_of_type_Int;
+          localConversationInfo.unreadCount = localaifi.jdField_a_of_type_Int;
           localConversationInfo.type = 1008;
           break label340;
           if (QLog.isColorLevel()) {
-            QLog.d("MigrateSubscribeDB", 2, "migrateToCoversationInfo we can't subscribeid[" + localahrg.jdField_a_of_type_JavaLangString + "]'s uin");
+            QLog.d("MigrateSubscribeDB", 2, "migrateToCoversationInfo we can't subscribeid[" + localaifi.jdField_a_of_type_JavaLangString + "]'s uin");
           }
         }
       }
@@ -2310,7 +2310,7 @@ public class MigrateSubscribeDB
     {
       String str = BaseApplicationImpl.sApplication.getSharedPreferences("contact_bind_info_global", 0).getString("last_phone_version_popped", "");
       if (QLog.isColorLevel()) {
-        QLog.d("MigrateSubscribeDB", 2, "isNeedUpdate oldVersion: " + str + " : curVersion: " + "7.6.0");
+        QLog.d("MigrateSubscribeDB", 2, "isNeedUpdate oldVersion: " + str + " : curVersion: " + "7.6.3");
       }
       if (!TextUtils.isEmpty(str)) {
         if (str.startsWith("5.7")) {
@@ -2421,7 +2421,7 @@ public class MigrateSubscribeDB
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.MigrateSubscribeDB
  * JD-Core Version:    0.7.0.1
  */

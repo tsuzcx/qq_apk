@@ -1,27 +1,55 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.kingkong.Common;
+import com.tencent.kingkong.Common.Log;
+import com.tencent.kingkong.PatchManager;
+import com.tencent.kingkong.ReportThread;
+import com.tencent.kingkong.UpdateManager;
+import com.tencent.kingkong.Utils.InterProcessLock;
 
-public class rcq
-  implements View.OnClickListener
+public final class rcq
+  extends Thread
 {
-  public rcq(AboutActivity paramAboutActivity) {}
-  
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
-    this.a.startActivity(paramView.putExtra("url", AboutActivity.a(this.a)));
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
+    try
+    {
+      if ((!Common.jdField_a_of_type_Boolean) && (Common.b()) && (Common.c()) && (Common.d()))
+      {
+        if (!Common.jdField_a_of_type_ComTencentKingkongUtils$InterProcessLock.a()) {
+          return;
+        }
+        Common.a(true);
+        if (PatchManager.a(Common.jdField_a_of_type_AndroidContentContext))
+        {
+          if (Common.jdField_a_of_type_ComTencentKingkongReportThread == null)
+          {
+            Common.jdField_a_of_type_ComTencentKingkongReportThread = new ReportThread();
+            Common.jdField_a_of_type_ComTencentKingkongReportThread.start();
+          }
+          UpdateManager.a(Common.jdField_a_of_type_AndroidContentContext);
+          if (UpdateManager.b()) {
+            UpdateManager.b();
+          }
+          if (UpdateManager.a()) {
+            UpdateManager.a();
+          }
+          PatchManager.a();
+        }
+        Common.jdField_a_of_type_Boolean = true;
+        Common.a(false);
+        Common.jdField_a_of_type_ComTencentKingkongUtils$InterProcessLock.a();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      Common.jdField_a_of_type_Boolean = false;
+      Common.Log.a("KingKongCommon", " SetSafeStatus Exception : " + localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rcq
  * JD-Core Version:    0.7.0.1
  */

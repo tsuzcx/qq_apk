@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2607" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021734" />
-        <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1290" />
+    <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b3" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b6" />
+    <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b9">
+        <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e02c6" />
+        <TextView android:id="@id/info" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02be" />
     </LinearLayout>
-</FrameLayout>
+</RelativeLayout>

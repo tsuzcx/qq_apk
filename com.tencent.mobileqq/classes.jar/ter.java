@@ -1,22 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ter
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public ter(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public ter(PayBridgeActivity paramPayBridgeActivity, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if (paramInt == 1)
     {
-      this.a.c();
-      PublicAccountReportUtils.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (BaseActivity.sTopActivity != null))
+      {
+        Intent localIntent = new Intent(BaseActivity.sTopActivity, QQBrowserActivity.class);
+        localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+        this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.startActivity(localIntent);
+      }
+      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.finish();
     }
-    return true;
   }
 }
 

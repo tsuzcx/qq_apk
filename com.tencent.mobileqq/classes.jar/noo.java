@@ -1,17 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public class noo
-  implements IMediaPlayer.OnErrorListener
+public final class noo
+  implements Runnable
 {
-  public noo(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnErrorListener paramOnErrorListener, Object paramObject) {}
+  public noo(TVKPreloader.PreloadItem paramPreloadItem) {}
   
-  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnErrorListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl, 0, paramInt1, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    Iterator localIterator = TVKPreloader.a().iterator();
+    while (localIterator.hasNext()) {
+      ((TVKPreloader.PreloadListener)localIterator.next()).c(this.a);
+    }
   }
 }
 

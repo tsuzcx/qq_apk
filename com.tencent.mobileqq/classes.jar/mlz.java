@@ -1,40 +1,16 @@
-import android.text.Html;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.LinkData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher.ItemShowCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
 
 public class mlz
-  extends BaseItemViewHolder
-  implements View.OnClickListener
+  implements ItemShowDispatcher.ItemShowCallback
 {
-  private TextView a;
+  public mlz(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public mlz(View paramView, BaseData paramBaseData)
+  public void a()
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367080));
-    paramView.setOnClickListener(this);
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    switch (paramBaseData2.d)
-    {
-    default: 
-      return;
-    }
-    paramBaseData1 = (LinkData)paramBaseData2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(Html.fromHtml(paramBaseData1.a));
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (LinkData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-    ReadInJoyUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), paramView.b);
+    ReportUtil.a(FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import abmr;
-import abms;
+import abts;
+import abtt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -59,7 +59,7 @@ public class ArkBabyqCardInfo
   
   public void attachArkView(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, int paramInt)
   {
-    paramItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842200);
+    paramItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842247);
     if (this.mArkBabyqContainer == null)
     {
       this.mArkBabyqContainer = new ArkAioContainerWrapper();
@@ -82,7 +82,7 @@ public class ArkBabyqCardInfo
     ((ArkAioContainerWrapper)localObject1).setFixSize(BaseChatItemLayout.d, BaseChatItemLayout.d);
     ((ArkAioContainerWrapper)localObject1).setMaxSize(BaseChatItemLayout.d, BaseChatItemLayout.d);
     ((ArkAioContainerWrapper)localObject1).setMinSize(BaseChatItemLayout.d * 7 / 10, BaseChatItemLayout.d);
-    localObject1 = new abmr(this, paramItemViewHolder, paramArkHorizontalListViewAdapter, (ArkAioContainerWrapper)localObject1, paramInt);
+    localObject1 = new abts(this, paramItemViewHolder, paramArkHorizontalListViewAdapter, (ArkAioContainerWrapper)localObject1, paramInt);
     Object localObject2 = paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
     ArkAppView localArkAppView = paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
     ((ArkViewImplement.ArkViewInterface)localObject2).setClipRadius(15.0F);
@@ -96,7 +96,7 @@ public class ArkBabyqCardInfo
       paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setOnTouchListener(paramArkHorizontalListViewAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
       paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout.setOnLongClickListener(paramArkHorizontalListViewAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
     }
-    paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setCallback(new abms(this));
+    paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setCallback(new abtt(this));
     paramItemViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
     paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
   }

@@ -1,21 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-class tcp
-  implements DialogInterface.OnCancelListener
+public class tcp
+  implements DialogInterface.OnClickListener
 {
-  tcp(tcl paramtcl) {}
+  public tcp(NotificationActivity paramNotificationActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tcp
  * JD-Core Version:    0.7.0.1
  */

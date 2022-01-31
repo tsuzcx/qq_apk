@@ -1,32 +1,31 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class zov
+class zov
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
-  public long e;
+  zov(zou paramzou, TroopMemberInfo paramTroopMemberInfo) {}
   
-  public zov(long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList paramArrayList, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public zov(long paramLong, ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    Object localObject = (List)this.jdField_a_of_type_Zou.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b.remove(this.jdField_a_of_type_Zou.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Zou.b);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopManager", 2, "getTroopMemberInfo, size=" + ((List)localObject).size());
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      TroopManager.ITroopMemberInfoCallBack localITroopMemberInfoCallBack = (TroopManager.ITroopMemberInfoCallBack)((WeakReference)((Iterator)localObject).next()).get();
+      if (localITroopMemberInfoCallBack != null) {
+        localITroopMemberInfoCallBack.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      }
+    }
   }
 }
 

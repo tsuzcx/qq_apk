@@ -1,66 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.ReportPublicAccountResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendItem;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil;
+import com.tencent.mobileqq.activity.PublicAccountSearchActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class mtk
-  implements BusinessObserver
+public class mtk
+  implements View.OnClickListener
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public mtk(SubscriptRecommendAdapter.RecommendItem paramRecommendItem, SubscriptRecommendAdapter paramSubscriptRecommendAdapter) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reportClickEventForAdver onReceive: " + String.valueOf(paramBoolean));
-    }
-    long l2;
-    if (paramBoolean) {
-      l2 = -1L;
-    }
-    do
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.ReportPublicAccountResponse localReportPublicAccountResponse = new mobileqq_mp.ReportPublicAccountResponse();
-        localReportPublicAccountResponse.mergeFrom(paramBundle);
-        l1 = l2;
-        if (localReportPublicAccountResponse.ret_info.has())
-        {
-          l1 = l2;
-          if (localReportPublicAccountResponse.ret_info.ret_code.has())
-          {
-            paramInt = localReportPublicAccountResponse.ret_info.ret_code.get();
-            l2 = paramInt;
-            l1 = l2;
-            if (l2 == 0L)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(l2));
-              }
-              return;
-            }
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        long l1;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("PAReport", 2, "reportClickEventRuntime exception", paramBundle);
-        return;
-      }
-      finally
-      {
-        if (!QLog.isColorLevel()) {
-          break label288;
-        }
-        QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(-1L));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(l1));
+    PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B6F", "0X8005B6F", 0, 0, "", "", "", "", false);
+    ReportController.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642D", "0X800642D", 0, 0, "", "", "", "");
+    PublicAccountSearchActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity, PublicAccountConfigUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity), null, null);
+    SubscriptRecommendController.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
   }
 }
 

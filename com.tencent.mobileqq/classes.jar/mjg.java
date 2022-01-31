@@ -1,29 +1,20 @@
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import android.content.Context;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class mjg
   implements Runnable
 {
-  public mjg(ReadinjoyTabFrame paramReadinjoyTabFrame, GuideData paramGuideData, String paramString, int paramInt) {}
+  public mjg(ReadInJoySkinGuideView paramReadInJoySkinGuideView, QQAppInterface paramQQAppInterface, String paramString1, View.OnClickListener paramOnClickListener1, String paramString2, View.OnClickListener paramOnClickListener2, Context paramContext) {}
   
   public void run()
   {
-    if (ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame) == null)
-    {
-      FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a().findViewById(2131364912);
-      ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, new ReadInJoySkinGuideView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.id, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new mjh(this, localFrameLayout), new mji(this, localFrameLayout)));
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a() == 0) {
-        localFrameLayout.addView(ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame), -1, -1);
-      }
-    }
-    else
-    {
-      return;
-    }
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
+    ReadInJoySkinManager localReadInJoySkinManager = (ReadInJoySkinManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(260);
+    new SceneBuilder().a(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.getWidth()).a(new mjj(this)).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a, new mjh(this));
   }
 }
 

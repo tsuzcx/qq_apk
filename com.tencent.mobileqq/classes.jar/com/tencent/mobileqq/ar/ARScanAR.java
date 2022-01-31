@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar;
 
+import aaby;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zxf;
 
 public class ARScanAR
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new zxf();
+  public static final Parcelable.Creator CREATOR = new aaby();
   public int a;
   public long a;
   public String a;

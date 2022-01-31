@@ -1,19 +1,13 @@
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 public class jdq
   implements Runnable
 {
-  public jdq(VideoController paramVideoController) {}
+  public jdq(VideoController paramVideoController, String paramString1, int paramInt1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, int paramInt2) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "mDoubleVideoMeetingSwitchMulti timeOut ");
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(this.a.a().f), Boolean.valueOf(true) });
+    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
   }
 }
 

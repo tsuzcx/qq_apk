@@ -50,7 +50,7 @@ public class GestureRecognitionUtils
       }
     }
     if (paramString.equals("fivea")) {
-      paramContext = paramContext.getResources().getDrawable(2130840222);
+      paramContext = paramContext.getResources().getDrawable(2130840228);
     }
     for (;;)
     {
@@ -62,11 +62,11 @@ public class GestureRecognitionUtils
       return paramContext;
       if (paramString.equals("palmup"))
       {
-        paramContext = paramContext.getResources().getDrawable(2130840223);
+        paramContext = paramContext.getResources().getDrawable(2130840229);
       }
       else if (paramString.equals("qheart"))
       {
-        paramContext = paramContext.getResources().getDrawable(2130840224);
+        paramContext = paramContext.getResources().getDrawable(2130840230);
       }
       else
       {

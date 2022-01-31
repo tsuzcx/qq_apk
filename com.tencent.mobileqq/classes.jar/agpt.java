@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
 
 public class agpt
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public agpt(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public agpt(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReceiptMessageDetailFragment.a(this.a);
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agpt
  * JD-Core Version:    0.7.0.1
  */

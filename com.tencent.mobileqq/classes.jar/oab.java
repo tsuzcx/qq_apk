@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
 
 public class oab
-  implements View.OnClickListener
+  extends LoadingMoreHelper.OnLoadMoreSimpleListener
 {
-  public oab(GuideInfoDialog paramGuideInfoDialog) {}
+  public oab(FeedSegment paramFeedSegment) {}
   
-  public void onClick(View paramView)
+  public boolean a(boolean paramBoolean)
   {
-    StoryReportor.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.a.dismiss();
+    FeedSegment.a(this.a);
+    return true;
   }
 }
 

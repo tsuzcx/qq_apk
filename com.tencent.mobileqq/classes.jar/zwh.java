@@ -1,57 +1,31 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public class zwh
-  implements Runnable
+public final class zwh
+  extends SosoInterface.OnLocationListener
 {
-  public zwh(GreetingCardRender paramGreetingCardRender) {}
-  
-  public void run()
+  public zwh(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (GreetingCardRender.a(this.a) != null) {}
-    try
-    {
-      GreetingCardRender.a(this.a).stop();
-      return;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SOSO.LBS", 2, "onLocationFinish() lock.notifyAll()");
     }
-    catch (Exception localException)
+    synchronized (SosoInterface.a)
     {
-      QLog.e("GreetingCardRender", 2, "playVideo fail.", localException);
+      SosoInterface.a.notifyAll();
       return;
-    }
-    finally
-    {
-      if (GreetingCardRender.a(this.a) != null)
-      {
-        GreetingCardRender.a(this.a).setOnFrameAvailableListener(null);
-        GreetingCardRender.a(this.a).release();
-        GreetingCardRender.a(this.a, null);
-      }
-      if (GreetingCardRender.a(this.a) != -1)
-      {
-        GLES20.glDeleteTextures(1, new int[] { GreetingCardRender.a(this.a) }, 0);
-        GreetingCardRender.c(this.a, -1);
-      }
-      if (GreetingCardRender.a(this.a) != null)
-      {
-        GreetingCardRender.a(this.a).d();
-        GreetingCardRender.a(this.a, null);
-      }
-      if (GreetingCardRender.b(this.a) != null)
-      {
-        GreetingCardRender.b(this.a).d();
-        GreetingCardRender.b(this.a, null);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zwh
  * JD-Core Version:    0.7.0.1
  */

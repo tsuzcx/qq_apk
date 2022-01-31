@@ -1,51 +1,25 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.armap.ARMapManager;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.config.ARMapConfig;
-import com.tencent.mobileqq.armap.ipc.IPCConstants;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
 
-public final class aayv
-  extends QIPCModule
+public class aayv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aayv(String paramString)
-  {
-    super(paramString);
-  }
+  public aayv(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Bundle localBundle = null;
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if (!ArMapInterface.class.isInstance(localAppRuntime))
+    paramCompoundButton = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
+    String str1 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArMapIPC", 2, "[onCall] get app failed.");
-      }
-      callbackResult(paramInt, EIPCResult.createResult(-102, null));
-      paramString = localBundle;
+      ArkAppModuleReg.ModuleQQ.a(paramCompoundButton, str1, str2, i);
+      return;
     }
-    do
-    {
-      return paramString;
-      localBundle = new Bundle();
-      localBundle.putString("action", paramString);
-      if (IPCConstants.e.equals(paramString))
-      {
-        paramString = (ARMapConfig)paramBundle.getParcelable("armap_config");
-        if (paramString != null) {
-          ((ARMapManager)((ArMapInterface)localAppRuntime).getManager(209)).a(paramString);
-        }
-      }
-      paramBundle = EIPCResult.createResult(0, localBundle);
-      paramString = paramBundle;
-    } while (paramInt < 0);
-    callbackResult(paramInt, paramBundle);
-    return paramBundle;
   }
 }
 

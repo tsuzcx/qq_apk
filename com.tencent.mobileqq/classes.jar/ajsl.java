@@ -1,33 +1,24 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.ViewHolder;
 
-public final class ajsl
-  implements Runnable
+public class ajsl
+  implements View.OnClickListener
 {
-  public ajsl(Context paramContext, String paramString) {}
+  public ajsl(MediaPreviewAdapter paramMediaPreviewAdapter, MediaPreviewAdapter.ViewHolder paramViewHolder, MediaPreviewInfo paramMediaPreviewInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
-    {
-      FragmentActivity localFragmentActivity = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-      if ((localFragmentActivity.getChatFragment() != null) && (localFragmentActivity.getChatFragment().a() != null))
-      {
-        localFragmentActivity.getChatFragment().a().R();
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_JavaLangString, 0).a();
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.a.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsl
  * JD-Core Version:    0.7.0.1
  */

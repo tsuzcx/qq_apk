@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 
 public class adpr
-  extends TimerTaskManager.TimerTaskRunnable
+  implements URLDrawable.DownloadListener
 {
-  public adpr(LyricViewController paramLyricViewController) {}
+  public adpr(HotPicMainPanel paramHotPicMainPanel, ImageView paramImageView) {}
   
-  public void a()
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
   {
-    if (!a()) {
-      LyricViewController.a(this.a);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.post(new adps(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpr
  * JD-Core Version:    0.7.0.1
  */

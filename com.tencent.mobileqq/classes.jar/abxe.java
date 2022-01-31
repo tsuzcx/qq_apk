@@ -1,27 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.dating.CarrierHelper;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.NearbyRecommenderUtils;
+import java.util.List;
 
 public class abxe
-  extends EmoticonPackageDownloadListener
+  implements Runnable
 {
-  public abxe(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public abxe(MsgBoxListActivity paramMsgBoxListActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public void run()
   {
-    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
-    do
+    if (MsgBoxListActivity.a(this.a) != null)
+    {
+      MsgBoxListActivity.a(this.a).a("msglist_carrier_5.8");
+      this.a.a = MsgBoxListActivity.a(this.a).a();
+      this.a.runOnUiThread(new abxf(this));
+      long l = this.a.app.getPreferences().getLong("sp_key_dating_config_time", 0L);
+      Object localObject;
+      if (Math.abs(System.currentTimeMillis() - l) > 180000L)
+      {
+        localObject = (LBSHandler)this.a.app.a(3);
+        if (localObject != null) {
+          ((LBSHandler)localObject).a(null);
+        }
+      }
+      if (NearbyRecommenderUtils.b(this.a.app))
+      {
+        localObject = NearbyRecommenderUtils.a(this.a.app, this.a.app.getCurrentAccountUin());
+        this.a.runOnUiThread(new abxg(this, (List)localObject));
+        if (NearbyRecommenderUtils.a(this.a.app, 1))
+        {
+          localObject = (LBSHandler)this.a.app.a(3);
+          if (localObject != null) {
+            ((LBSHandler)localObject).a(1);
+          }
+        }
+        NearbyRecommenderUtils.b(this.a.app);
+      }
+    }
+    else
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
-      }
-    } while (this.a.m);
-    ThreadManager.getUIHandler().post(new abxf(this, paramEmoticonPackage, paramInt));
+    }
+    this.a.runOnUiThread(new abxh(this));
+    this.a.d = false;
   }
 }
 

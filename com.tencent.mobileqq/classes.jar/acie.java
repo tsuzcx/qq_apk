@@ -1,53 +1,57 @@
-import android.content.Context;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.extendfriend.fragment.GroupItemClickListeneer;
 
 public class acie
-  implements Runnable
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public acie(QfileLocalFilePicTabView paramQfileLocalFilePicTabView, Context paramContext) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private GroupItemClickListeneer jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer;
   
-  public void run()
+  public acie(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView, GroupItemClickListeneer paramGroupItemClickListeneer)
   {
-    HashMap localHashMap = (HashMap)FileCategoryUtil.a(this.jdField_a_of_type_AndroidContentContext);
-    if (localHashMap == null) {
-      localHashMap = new HashMap();
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer = paramGroupItemClickListeneer;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362832));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(ExtendFriendGroupFragment.a(paramExtendFriendGroupFragment));
+  }
+  
+  public void a(acie paramacie, int paramInt)
+  {
+    String str = "";
+    boolean bool = false;
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      FileCategoryUtil.a(true, FMSettings.a().b(), ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
-      Object localObject1 = FMSettings.a().a();
-      if (localObject1 != null) {
-        FileCategoryUtil.a(true, (String)localObject1, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
-      }
-      FileCategoryUtil.a(localHashMap);
-      if (localHashMap != null)
-      {
-        localObject1 = localHashMap.keySet().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          Object localObject2 = (String)((Iterator)localObject1).next();
-          if ("QQfile_recv".equalsIgnoreCase((String)localObject2) != true)
-          {
-            localObject2 = (List)localHashMap.get(localObject2);
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.a.addAll((Collection)localObject2);
-          }
-        }
-      }
+      paramacie.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      paramacie.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
       return;
+      str = "载入中，请稍候...";
+      continue;
+      str = "加载失败，点击重试";
+      bool = true;
+      continue;
+      str = "暂无更多的群啦~";
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acie
  * JD-Core Version:    0.7.0.1
  */

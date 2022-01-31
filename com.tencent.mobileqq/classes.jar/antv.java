@@ -1,16 +1,18 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class antv
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public antv(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public antv(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.b = 3;
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(14);
   }
 }
 

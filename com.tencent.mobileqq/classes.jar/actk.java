@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.MPFileVerifyPswEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter;
 
 public class actk
-  implements MPFileVerifyPwdView.MPFileVerifyPswEvent
 {
-  public actk(MPcFileModel paramMPcFileModel) {}
+  public int a;
+  public int b;
   
-  public void a(long paramLong)
-  {
-    MPcFileModel.b(this.a, paramLong);
-  }
+  public actk(QfileRecentFileBaseExpandableListAdapter paramQfileRecentFileBaseExpandableListAdapter) {}
 }
 
 

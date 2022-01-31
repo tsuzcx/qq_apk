@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
+import com.tencent.ark.ark;
+import com.tencent.ark.ark.Container;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import java.lang.ref.WeakReference;
 
-public final class aapn
-  implements ArkAppLocationManager.ArkGetLocationCallback
+public class aapn
+  implements Runnable
 {
-  public aapn(String paramString, Object paramObject, ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler paramIAnalyzeArkBabyQReplyByServerHandler) {}
+  public aapn(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
   
-  public void a(String paramString, double paramDouble1, double paramDouble2)
+  public void run()
   {
-    aapx localaapx = new aapx(null);
-    localaapx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localaapx.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
-    localaapx.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler;
-    ThreadManager.post(new aapo(this, localaapx, paramString, paramDouble1, paramDouble2), 5, null, true);
+    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
+    if (localObject == null) {}
+    ArkFullScreenAppActivity localArkFullScreenAppActivity;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
+        localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
+        localObject = ArkAppContainer.a((ark.Container)localObject);
+      } while (localObject == null);
+      localObject = (ArkAppContainer)((WeakReference)localObject).get();
+    } while (localObject == null);
+    localArkFullScreenAppActivity.a((ArkAppContainer)localObject, false);
   }
 }
 

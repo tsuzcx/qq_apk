@@ -1,20 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.OcrResultCache;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.qphone.base.util.QLog;
 
-public class agcr
-  implements Animation.AnimationListener
+class agcr
+  implements Runnable
 {
-  public agcr(BreatheEffectView paramBreatheEffectView) {}
+  agcr(agcq paramagcq, String paramString, int paramInt, OcrRecogResult paramOcrRecogResult, long paramLong) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.c();
+    if ((!ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a)) || (TextUtils.isEmpty(ScanOcrActivity.b(this.jdField_a_of_type_Agcq.a))) || (!ScanOcrActivity.b(this.jdField_a_of_type_Agcq.a).equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      QLog.d("Q.ocr.ScanOcrActivity", 1, "OcrCallback onResult is not In recog, mRecogPicPath:" + ScanOcrActivity.b(this.jdField_a_of_type_Agcq.a) + " ,imagePath:" + this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    if (!ScanOcrActivity.b(this.jdField_a_of_type_Agcq.a))
+    {
+      ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      return;
+    }
+    ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a, new ScanOcrActivity.OcrResultCache());
+    ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a).jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult = this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult;
+    ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    ScanOcrActivity.a(this.jdField_a_of_type_Agcq.a).jdField_a_of_type_Long = this.jdField_a_of_type_Long;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,67 +1,67 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileView;
-import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter;
-import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter.HistoryFileItemHolder;
-import com.tencent.mobileqq.app.DataLineHandler;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.utils.GVideoGrayConfig;
+import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
+import com.tencent.av.utils.GVideoGrayConfig.Record;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.Map;
 
-public class rxm
-  implements View.OnClickListener
+public final class rxm
+  implements GVideoGrayConfig.GVideoGrayConfigListener
 {
-  public rxm(ChatHistoryFileView paramChatHistoryFileView) {}
+  public rxm(QQProgressDialog paramQQProgressDialog, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, Map paramMap) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
   {
-    paramView = (ChatHistoryFileAdapter.HistoryFileItemHolder)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      FileManagerUtil.c(localFileManagerEntity);
-    }
-    switch (paramView.jdField_a_of_type_Int)
+    try
     {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryFileAdapter.notifyDataSetChanged();
-      return;
-      if (!NetworkUtil.d(BaseApplication.getContext()))
-      {
-        FMToastUtil.a(2131428327);
-        return;
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
-      FileModel.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new rxn(this, localFileManagerEntity));
-      continue;
-      this.a.a(localFileManagerEntity);
-      continue;
-      if (localFileManagerEntity.getCloudType() == 0)
+      label17:
+      if (paramInt2 == 1000)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((DataLineHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
-      }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
-        continue;
-        if (!NetworkUtil.d(BaseApplication.getContext()))
+        switch (paramInt1)
         {
-          FMToastUtil.a(2131428327);
+        default: 
+          return;
+        case 0: 
+          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, true, null, this.jdField_a_of_type_JavaUtilMap);
+          return;
+        case 1: 
+          Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+          localIntent.putExtra("url", paramRecord.jdField_a_of_type_JavaLangString);
+          if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+            localIntent.addFlags(268435456);
+          }
+          this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+          return;
+        case 2: 
+          paramRecord = (String)this.jdField_a_of_type_JavaUtilMap.get("from");
+          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, true, this.jdField_a_of_type_JavaUtilMap);
+          return;
+        case 3: 
+          GVideoGrayConfig.a(this.jdField_a_of_type_AndroidContentContext, paramRecord.b, paramRecord.c, new rxn(this));
           return;
         }
-        boolean bool = localFileManagerEntity.isSend();
-        FileModel.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new rxo(this, localFileManagerEntity));
+        GVideoGrayConfig.a(this.jdField_a_of_type_AndroidContentContext, paramRecord.b, paramRecord.c, new rxo(this));
+        return;
       }
+      if (paramInt2 == 1002) {}
+      for (paramRecord = "操作超时，请重试";; paramRecord = "操作失败，请重试")
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramRecord, 0).a();
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      break label17;
     }
   }
 }

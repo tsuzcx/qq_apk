@@ -1,19 +1,24 @@
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.os.Handler;
+import com.tencent.mobileqq.widget.AudioAnimationView;
 
 public class akst
   implements Runnable
 {
-  public akst(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
+  private akst(AudioAnimationView paramAudioAnimationView) {}
   
   public void run()
   {
-    StaticAnalyz.a("202", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+    this.a.b();
+    if (this.a.a) {
+      AudioAnimationView.a(this.a).postDelayed(this, 100L);
+    }
+    this.a.requestLayout();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akst
  * JD-Core Version:    0.7.0.1
  */

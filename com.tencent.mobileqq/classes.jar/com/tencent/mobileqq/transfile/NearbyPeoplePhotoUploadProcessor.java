@@ -1,11 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import aich;
+import aiqk;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
 import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.mobileqq.pic.UpCallBack;
 import com.tencent.mobileqq.pic.UpCallBack.SendResult;
@@ -34,6 +38,7 @@ public class NearbyPeoplePhotoUploadProcessor
   private byte[] b;
   public String m;
   public String n;
+  public String o;
   
   public NearbyPeoplePhotoUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
@@ -155,7 +160,7 @@ public class NearbyPeoplePhotoUploadProcessor
           if (QLog.isColorLevel()) {
             QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "onBusiProtoResp()---- sessionKey: " + this.jdField_b_of_type_ArrayOfByte);
           }
-          al_();
+          an_();
         }
         for (;;)
         {
@@ -192,13 +197,13 @@ public class NearbyPeoplePhotoUploadProcessor
       l = (System.nanoTime() - this.k) / 1000000L;
       HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
       if (this.jdField_b_of_type_ArrayOfByte != null) {
-        break label442;
+        break label462;
       }
       str2 = "null";
       label139:
       localHashMap.put("param_sessionKey", str2);
       if (!paramBoolean) {
-        break label454;
+        break label474;
       }
       StatisticCollector.a(BaseApplication.getContext()).a(null, str1, true, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
     }
@@ -249,15 +254,20 @@ public class NearbyPeoplePhotoUploadProcessor
         str1 = "actCampusTopicPicUpload";
         break label100;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b != 56) {
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 56)
+      {
+        str1 = "actPersonalityLabelPhotoUpload";
         break label100;
       }
-      str1 = "actPersonalityLabelPhotoUpload";
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b != 23) {
+        break label100;
+      }
+      str1 = "actExtendFriendSoundUpload";
       break label100;
-      label442:
+      label462:
       str2 = PkgTools.a(this.jdField_b_of_type_ArrayOfByte);
       break label139;
-      label454:
+      label474:
       if (this.jdField_j_of_type_Int != -9527) {
         this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
       }
@@ -273,21 +283,21 @@ public class NearbyPeoplePhotoUploadProcessor
     return super.a(paramInt1, paramInt2);
   }
   
-  public void al_()
+  public void an_()
   {
     int i = 21;
     if (QLog.isColorLevel()) {
       QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.sendFile()");
     }
     this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
-    aich localaich = new aich(this, SystemClock.uptimeMillis());
+    aiqk localaiqk = new aiqk(this, SystemClock.uptimeMillis());
     if ((this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 8) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 64)) {
       i = 3;
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_Int = i;
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte, localaich, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_ArrayOfByte);
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte, localaiqk, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_ArrayOfByte);
       int j = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
       if (QLog.isColorLevel()) {
         QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + j + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long + " MD5:" + this.jdField_c_of_type_JavaLangString + " uuid:" + this.g + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + i);
@@ -305,28 +315,49 @@ public class NearbyPeoplePhotoUploadProcessor
       } else if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 34) {
         i = 13;
       } else if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b != 35) {
-        if ((this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 36) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 37) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 38)) {
+        if ((this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 36) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 37) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 38))
+        {
           i = 23;
-        } else if ((this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 39) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 40) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 41)) {
+        }
+        else if ((this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 39) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 40) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 41))
+        {
           i = 22;
-        } else if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 48) {
+        }
+        else if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 48)
+        {
           i = 24;
-        } else if ((this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 50) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 51)) {
+        }
+        else if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 23)
+        {
+          i = 59;
+          Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
+          localCommFileExtReq.uint32_action_type.set(0);
+          localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+          this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_ArrayOfByte = localCommFileExtReq.toByteArray();
+        }
+        else if ((this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 50) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 51))
+        {
           i = 35;
-        } else if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 54) {
+        }
+        else if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 54)
+        {
           i = 43;
-        } else if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 56) {
+        }
+        else if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 56)
+        {
           i = 39;
-        } else {
+        }
+        else
+        {
           i = -1;
         }
       }
     }
   }
   
-  public void an_()
+  public void ap_()
   {
-    super.an_();
+    super.ap_();
     d(1001);
     if (QLog.isColorLevel()) {
       QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.start()");
@@ -434,7 +465,7 @@ public class NearbyPeoplePhotoUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

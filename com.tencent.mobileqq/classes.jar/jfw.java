@@ -1,19 +1,17 @@
-import com.tencent.av.business.manager.EffectOperateManager;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
 import java.lang.ref.WeakReference;
 
 public class jfw
-  extends jfz
+  implements Runnable
 {
-  public jfw(EffectOperateManager paramEffectOperateManager)
-  {
-    super(paramEffectOperateManager);
-  }
+  public jfw(MagicfaceBaseDecoder paramMagicfaceBaseDecoder, String paramString) {}
   
   public void run()
   {
-    EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.a.get();
-    if (localEffectOperateManager != null) {
-      localEffectOperateManager.e();
+    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a.get();
+    if (localMagicPlayListener != null) {
+      localMagicPlayListener.b(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

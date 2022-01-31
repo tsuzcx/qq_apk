@@ -1,33 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.open.appcircle.st.AppCircleReportManager;
+import com.tencent.open.appcircle.st.STUtils;
+import com.tencent.open.base.LogUtility;
 
 public class ufw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ufw(ActivateFriendActivity paramActivateFriendActivity) {}
+  public ufw(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = this.a.app.a().b();
-    Object localObject2 = this.a.app.getApp().getString(2131433280);
-    Object localObject1 = localObject2;
-    if (i > 0)
-    {
-      localObject2 = new StringBuilder().append((String)localObject2).append("(");
-      if (i <= 99) {
-        break label88;
-      }
-    }
-    label88:
-    for (localObject1 = "99+";; localObject1 = Integer.valueOf(i))
-    {
-      localObject1 = localObject1 + ")";
-      ActivateFriendActivity.a(this.a).setText((CharSequence)localObject1);
-      return;
-    }
+    LogUtility.b("qqBaseActivity", STUtils.a(10010, 1, 2, 200));
+    AppCircleReportManager.a().a(17, STUtils.a(10010, 1, 2, 200));
+    this.a.finish();
   }
 }
 

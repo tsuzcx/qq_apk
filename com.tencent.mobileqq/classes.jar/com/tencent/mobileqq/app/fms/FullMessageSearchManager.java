@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Observable;
 import mqq.manager.Manager;
-import zoq;
+import zrw;
 
 public class FullMessageSearchManager
   extends Observable
@@ -35,7 +35,7 @@ public class FullMessageSearchManager
           Object localObject2 = localObject1;
           if (localObject1 == null)
           {
-            localObject2 = new FullMessageSearchTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new zoq(this));
+            localObject2 = new FullMessageSearchTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new zrw(this));
             this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
           }
           return localObject2;

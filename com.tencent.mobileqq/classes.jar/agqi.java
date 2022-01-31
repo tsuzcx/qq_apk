@@ -1,49 +1,32 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
+import com.tencent.mobileqq.profile.like.PraiseInfo;
+import com.tencent.mobileqq.profile.like.PraiseManager;
+import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseLoadListener;
 
 public class agqi
-  extends agrh
+  implements PraiseManager.OnPraiseLoadListener
 {
-  public agqi(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
-  {
-    super(paramReceiptMessageDetailFragment);
-  }
+  public int a;
+  public PraiseManager.OnPraiseLoadListener a;
+  public int b;
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public agqi(PraiseManager paramPraiseManager) {}
+  
+  public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback onRes: " + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    paramInt1 = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = paramInt1;
+    if (paramInt1 == this.b)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback succ");
+      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
+      if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener.a(0, null, 0, "");
       }
-      paramBundle = new oidb_0x986.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = paramBundle.uint32_read_uin_num.get();
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, 2147483647, true);
-      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
-    }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
-    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqi
  * JD-Core Version:    0.7.0.1
  */

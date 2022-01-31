@@ -1,25 +1,34 @@
-import com.tencent.mobileqq.statistics.storage.StorageItem;
-import java.util.Comparator;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter;
+import com.tencent.mobileqq.search.presenter.IPresenter;
+import com.tencent.mobileqq.search.view.IView;
+import com.tencent.mobileqq.search.view.SearchResultFromNetView;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.widget.ListView;
 
 public class ahtb
-  implements Comparator
+  extends BaseMvpFaceAdapter
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public ahtb(FunctionSearchFragment paramFunctionSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
   {
-    paramObject1 = (StorageItem)paramObject1;
-    paramObject2 = (StorageItem)paramObject2;
-    if (paramObject1.a > paramObject2.a) {
-      return -1;
-    }
-    if (paramObject1.a < paramObject2.a) {
-      return 1;
-    }
-    return 0;
+    super(paramListView, paramFaceDecoder);
+  }
+  
+  protected IPresenter a(int paramInt)
+  {
+    return new ActiveEntitySearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, 268435456);
+  }
+  
+  protected IView a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new SearchResultFromNetView(paramViewGroup, 268435456);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahtb
  * JD-Core Version:    0.7.0.1
  */

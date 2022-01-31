@@ -1,17 +1,33 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThemeHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.util.WeakReference;
 
 public class zke
   implements Runnable
 {
-  public zke(ThemeHandler paramThemeHandler) {}
+  private final WeakReference a;
+  private final WeakReference b;
+  
+  public zke(QQAppInterface paramQQAppInterface, PublicAccountDataManager paramPublicAccountDataManager)
+  {
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramPublicAccountDataManager);
+  }
   
   public void run()
   {
-    QQToast.a(this.a.a.getApplication(), "主题资源异常，为你恢复默认主题", 4000).a();
-    QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth Error, QQToast.makeText: set default theme");
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)this.b.get();
+    if ((localQQAppInterface != null) && (localPublicAccountDataManager != null))
+    {
+      TroopBarAssistantManager.a().a(localQQAppInterface, localPublicAccountDataManager.a());
+      ServiceAccountFolderManager.a().c(localQQAppInterface);
+      TroopBarAssistantManager.a().g(localQQAppInterface);
+      ReadInJoyLogicEngine.a().e();
+    }
   }
 }
 

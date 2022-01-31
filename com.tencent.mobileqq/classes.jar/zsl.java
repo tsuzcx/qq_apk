@@ -1,6 +1,7 @@
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.proxy.fts.FTSTroopOperator;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.message.BaseMessageManagerForTroopAndDisc;
+import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import java.util.Map;
 
 class zsl
   implements Runnable
@@ -9,10 +10,9 @@ class zsl
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.fts.troop.operator", 2, "getTroopsMemberList after 24 h");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
     }
-    FTSTroopOperator.a(this.a.a).e();
   }
 }
 

@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.util.QLog;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-class zgx
-  implements Runnable
+public class zgx
+  extends SendMessageHandler.SendMessageRunnable
 {
-  zgx(zgw paramzgw) {}
+  public zgx(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, BusinessObserver paramBusinessObserver, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.a.jdField_a_of_type_Int, 0, 0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler", 2, "--->sendRichTextMessageWith_MR : resend message");
+    }
+    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq, this.c, this.b, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, this.jdField_a_of_type_Boolean);
   }
 }
 

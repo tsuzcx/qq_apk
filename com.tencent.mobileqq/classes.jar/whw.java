@@ -1,39 +1,56 @@
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.TroopMemberCard;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
-class whw
-  implements Runnable
+public class whw
+  implements TextView.OnEditorActionListener
 {
-  whw(whv paramwhv, String paramString, Card paramCard) {}
+  public whw(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Whv.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Whv.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Whv.b.setText("我的群标签");
-    }
-    do
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      TroopMemberCard localTroopMemberCard;
-      do
-      {
-        return;
-        this.jdField_a_of_type_Whv.b.setText("他的群标签");
-        if (this.jdField_a_of_type_Whv.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.b == null) {
-          break;
+      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      if (!TextUtils.isEmpty(paramTextView)) {
+        if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramTextView.trim())))
+        {
+          this.a.a(paramTextView);
+          PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
+          ClassificationSearchActivity.a(this.a, paramTextView);
         }
-        localTroopMemberCard = this.jdField_a_of_type_Whv.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_Whv.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.b, this.jdField_a_of_type_Whv.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString);
-      } while (localTroopMemberCard == null);
-      if (localTroopMemberCard.sex == 1) {
-        this.jdField_a_of_type_Whv.b.setText("她的群标签");
       }
-      this.jdField_a_of_type_Whv.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopMemberCard.nick);
-      return;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqDataCard.shGender != 1));
-    this.jdField_a_of_type_Whv.b.setText("她的群标签");
+      for (;;)
+      {
+        return true;
+        if (this.a.f == ClassificationSearchActivity.d)
+        {
+          PublicAccountReportUtils.a(null, "", "0X800742D", "0X800742D", 0, 0, paramTextView, "", "", "");
+          ClassificationSearchActivity.a(this.a, paramTextView);
+        }
+        else
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
+          continue;
+          if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
+          {
+            paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
+            if ((!TextUtils.isEmpty(paramTextView.trim())) && (!TextUtils.equals(paramTextView, "搜索相关文章")) && (!TextUtils.equals(paramTextView, "搜索")))
+            {
+              this.a.a(paramTextView);
+              PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
+              ClassificationSearchActivity.a(this.a, paramTextView);
+            }
+          }
+        }
+      }
+    }
+    return false;
   }
 }
 

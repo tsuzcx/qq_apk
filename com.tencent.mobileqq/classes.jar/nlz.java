@@ -1,26 +1,15 @@
-import com.tencent.biz.qqstory.base.QQStoryBanInfo;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
 public class nlz
-  extends QQStoryObserver
+  implements Runnable
 {
-  public nlz(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public nlz(VidListPlayMode paramVidListPlayMode) {}
   
-  public void a(boolean paramBoolean, QQStoryBanInfo paramQQStoryBanInfo)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramQQStoryBanInfo);
-    }
-    if (paramBoolean)
-    {
-      if (paramQQStoryBanInfo != null) {
-        this.a.a(paramQQStoryBanInfo.a);
-      }
-      return;
-    }
-    this.a.e();
+    this.a.e = false;
+    this.a.a.setCurrentItem(this.a.b, false);
   }
 }
 

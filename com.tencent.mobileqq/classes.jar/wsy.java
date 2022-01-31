@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener;
 
 public class wsy
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public wsy(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public wsy(AvatarPendantActivity.AnimationScrollListener paramAnimationScrollListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a = null;
+    if (this.a.b.r == 0)
+    {
+      URLDrawable.resume();
+      this.a.b.a.a = false;
+      this.a.b.a.notifyDataSetChanged();
+    }
   }
 }
 

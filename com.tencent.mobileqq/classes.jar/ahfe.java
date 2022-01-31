@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.UniteSearchHandler;
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
 
-public class ahfe
-  implements Runnable
+public final class ahfe
+  implements Parcelable.Creator
 {
-  public ahfe(HotWordsForSubBussFragment paramHotWordsForSubBussFragment, boolean paramBoolean) {}
-  
-  public void run()
+  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
   {
-    byte[] arrayOfByte = this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment.a.a(UniteSearchHandler.a);
-    ThreadManager.getUIHandler().post(new ahff(this, arrayOfByte));
+    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
+  }
+  
+  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
+  {
+    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfe
  * JD-Core Version:    0.7.0.1
  */

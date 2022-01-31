@@ -13,7 +13,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.AbsListView.LayoutParams;
-import lum;
+import luv;
 
 public class FeedItemCellTypeTopicRecommendGrid
   extends FeedItemCell
@@ -47,7 +47,7 @@ public class FeedItemCellTypeTopicRecommendGrid
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
       localLayoutParams.setMargins(AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
       ((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView).setLayoutParams(localLayoutParams);
-      ((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView).setOnNoItemClickListener(new lum(this));
+      ((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView).setOnNoItemClickListener(new luv(this));
       localLinearLayout.addView((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {

@@ -1,17 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
 
-class ouw
-  extends DownloadListener
+public final class ouw
+  implements Parcelable.Creator
 {
-  ouw(ouo paramouo, Bundle paramBundle) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public ScannerParams a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
-    this.jdField_a_of_type_Ouo.a.a(87, this.jdField_a_of_type_AndroidOsBundle);
+    return new ScannerParams(paramParcel);
+  }
+  
+  public ScannerParams[] a(int paramInt)
+  {
+    return new ScannerParams[paramInt];
   }
 }
 

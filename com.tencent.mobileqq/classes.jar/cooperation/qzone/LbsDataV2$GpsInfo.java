@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import ambf;
+import amrj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class LbsDataV2$GpsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ambf();
+  public static final Parcelable.Creator CREATOR = new amrj();
   public int accuracy;
   public int alt = -10000000;
   public int gpsType = 0;

@@ -13,12 +13,15 @@ import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class GeneralFeedItem
   extends VideoListFeedItem
 {
   public QQUserUIItem mUserUIItem = new QQUserUIItem();
+  public String wsSchemaForMain = "default";
+  public String wsSchemaForMemories = "default";
   
   public static GeneralFeedItem createFakeFeedItem(String paramString)
   {
@@ -63,40 +66,42 @@ public class GeneralFeedItem
       this.mUserUIItem = paramObject.mUserUIItem;
       AssertUtils.a(this.mUserUIItem);
     }
+    this.wsSchemaForMain = paramObject.wsSchemaForMain;
+    this.wsSchemaForMemories = paramObject.wsSchemaForMemories;
   }
   
   public boolean covertFrom(String paramString, qqstory_struct.GeneralFeed paramGeneralFeed)
   {
-    boolean bool2 = false;
     this.feedId = paramString;
     super.setDate(String.valueOf(paramGeneralFeed.date.get()));
     this.mVideoSeq = paramGeneralFeed.seq.get();
     if (paramGeneralFeed.is_end.get() == 1)
     {
-      bool1 = true;
-      this.mIsVideoEnd = bool1;
+      bool = true;
+      this.mIsVideoEnd = bool;
       if (paramGeneralFeed.share_to_discover.get() != 1) {
-        break label214;
+        break label255;
       }
-      bool1 = true;
-      label64:
-      this.mIsContribute = bool1;
+      bool = true;
+      label61:
+      this.mIsContribute = bool;
       this.mVideoNextCookie = paramGeneralFeed.next_cookie.get().toStringUtf8();
       this.mVideoPullType = paramGeneralFeed.pull_type.get();
       if (paramGeneralFeed.hasVideoTag.get() != 1) {
-        break label219;
+        break label260;
+      }
+      bool = true;
+      label104:
+      this.mHasTag = bool;
+      if (paramGeneralFeed.has_public_video.get() != 1) {
+        break label265;
       }
     }
-    label214:
-    label219:
-    for (boolean bool1 = true;; bool1 = false)
+    label260:
+    label265:
+    for (boolean bool = true;; bool = false)
     {
-      this.mHasTag = bool1;
-      bool1 = bool2;
-      if (paramGeneralFeed.has_public_video.get() == 1) {
-        bool1 = true;
-      }
-      this.mHasPublicVideo = bool1;
+      this.mHasPublicVideo = bool;
       paramString = new QQUserUIItem();
       paramString.convertFrom(paramGeneralFeed.user);
       this.mUserUIItem = ((UserManager)SuperManager.a(2)).a(paramString);
@@ -105,17 +110,28 @@ public class GeneralFeedItem
       if (paramGeneralFeed.qim_sync_wording.has()) {
         this.mQimSyncWording = paramGeneralFeed.qim_sync_wording.get().toStringUtf8();
       }
+      if (paramGeneralFeed.ws_schemas.size() == 2)
+      {
+        this.wsSchemaForMain = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(0)).toStringUtf8();
+        this.wsSchemaForMemories = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(1)).toStringUtf8();
+      }
       return true;
-      bool1 = false;
+      bool = false;
       break;
-      bool1 = false;
-      break label64;
+      label255:
+      bool = false;
+      break label61;
+      bool = false;
+      break label104;
     }
   }
   
   public byte[] covertToByte()
   {
-    return super.writeVideoListFeedLocalPB().toByteArray();
+    SerializationPB.VideoListFeed localVideoListFeed = super.writeVideoListFeedLocalPB();
+    localVideoListFeed.ws_schema_main.set(ByteStringMicro.copyFromUtf8(this.wsSchemaForMain));
+    localVideoListFeed.ws_schema_memories.set(ByteStringMicro.copyFromUtf8(this.wsSchemaForMemories));
+    return localVideoListFeed.toByteArray();
   }
   
   @NonNull
@@ -177,6 +193,8 @@ public class GeneralFeedItem
   {
     SerializationPB.VideoListFeed localVideoListFeed = new SerializationPB.VideoListFeed();
     localVideoListFeed.mergeFrom(paramArrayOfByte);
+    this.wsSchemaForMain = localVideoListFeed.ws_schema_main.get().toStringUtf8();
+    this.wsSchemaForMemories = localVideoListFeed.ws_schema_memories.get().toStringUtf8();
     super.readVideoListFeedLocalPB(localVideoListFeed);
   }
   

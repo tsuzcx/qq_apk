@@ -1,20 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acwz
-  implements Runnable
+class acwz
+  extends BroadcastReceiver
 {
-  public acwz(String paramString) {}
+  acwz(acwy paramacwy) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 0, this.a, 0).b(FMToastUtil.a());
+    if (paramIntent != null)
+    {
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && (paramContext.equals("com.tencent.mobileqq.intent.logout")))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "OLfilesession[] logout.....!");
+        }
+        this.a.a.a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acwz
  * JD-Core Version:    0.7.0.1
  */

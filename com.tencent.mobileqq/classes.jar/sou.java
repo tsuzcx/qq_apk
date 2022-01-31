@@ -1,30 +1,29 @@
-import android.os.AsyncTask;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class sou
-  implements Animation.AnimationListener
+  extends ContactBindObserver
 {
-  public sou(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public sou(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean)
   {
-    this.a.a.execute(new Void[0]);
-    this.a.f = false;
-    if (this.a.d) {
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-    while (this.a.jdField_c_of_type_Boolean) {
+    this.a.G();
+    if (paramBoolean) {
       return;
     }
-    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+    QQToast.a(this.a, 1, "当前网络不可用", 1000).a();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a(boolean paramBoolean, int paramInt)
+  {
+    super.a(paramBoolean, paramInt);
+    if ((this.a.k) && (paramBoolean)) {
+      this.a.a(0L, null, null, false);
+    }
+    this.a.k = false;
+  }
 }
 
 

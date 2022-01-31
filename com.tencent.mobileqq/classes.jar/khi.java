@@ -1,165 +1,143 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.Button;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
-import com.tencent.av.utils.DataReport;
-import com.tencent.av.utils.SensorHelper;
-import com.tencent.av.utils.SensorReport;
+import com.tencent.av.utils.TipsManager;
 import com.tencent.av.utils.TraeHelper;
+import com.tencent.av.utils.TraeHelper.TraeHelperListener;
+import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class khi
-  implements SensorEventListener
+class khi
+  implements Runnable
 {
-  float jdField_a_of_type_Float = 3.1F;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = true;
-  float b = 0.0F;
+  khi(khh paramkhh) {}
   
-  public khi(SensorHelper paramSensorHelper) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void run()
   {
-    int k = 1;
-    int m = 0;
-    if (paramSensorEvent.sensor.getType() != 8) {}
-    label87:
-    label728:
-    for (;;)
+    try
     {
-      return;
-      float f1 = this.b;
-      float f2 = paramSensorEvent.values[0];
-      this.b = f2;
-      if (this.jdField_a_of_type_Float > this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.b.getMaximumRange()) {
-        this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.b.getMaximumRange();
+      if ((this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_ComTencentAvVideoController.a().d == 2) || ((this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_ComTencentAvVideoController.a().G) && (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_ComTencentAvVideoController.a().d == 4) && (NetworkUtil.a(this.a.jdField_a_of_type_AndroidContentContext))) || (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_ComTencentAvVideoController.m()) || (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_ComTencentAvVideoController.l())) {
+        break label740;
       }
-      int i;
-      boolean bool1;
-      if ((f2 >= 0.0D) && (f2 < this.jdField_a_of_type_Float))
+      if (!this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_c_of_type_Boolean) {
+        break label367;
+      }
+    }
+    catch (Exception localException)
+    {
+      label269:
+      label448:
+      label726:
+      label737:
+      label740:
+      label745:
+      for (;;)
       {
-        i = 1;
-        if (this.jdField_a_of_type_Boolean)
+        Object localObject1;
+        TipsManager localTipsManager;
+        int i;
+        label367:
+        if (QLog.isColorLevel())
         {
-          this.jdField_a_of_type_Boolean = false;
-          if (i != 0)
+          QLog.d(this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_JavaLangString, 2, "switchButton_handFree exception!!");
+          continue;
+          Object localObject2;
+          if ("DEVICE_EARPHONE".equals(this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_ComTencentAvVideoController.a().o))
           {
-            this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Int = 3;
-            paramSensorEvent = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper;
-            if (i != 0) {
-              break label565;
+            localObject2 = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.g;
+            this.a.jdField_a_of_type_AndroidWidgetButton.setText("听筒");
+          }
+          else if ("DEVICE_SPEAKERPHONE".equals(this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_ComTencentAvVideoController.a().o))
+          {
+            localObject2 = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.h;
+            this.a.jdField_a_of_type_AndroidWidgetButton.setText("扬声器");
+          }
+          else
+          {
+            localObject2 = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.h;
+            this.a.jdField_a_of_type_AndroidWidgetButton.setText("扬声器");
+            continue;
+            if (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_d_of_type_MqqUtilWeakReference != null)
+            {
+              localObject2 = (TipsManager)this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_d_of_type_MqqUtilWeakReference.get();
+              if ((localObject2 != null) && (((TipsManager)localObject2).jdField_b_of_type_Int == 1005)) {
+                ((TipsManager)localObject2).a();
+              }
             }
-            bool1 = true;
-            label125:
-            SensorHelper.a(paramSensorEvent, bool1);
-            this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsSensorReport.d();
-          }
-        }
-        if ((this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.b == null) || (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController == null)) {
-          continue;
-        }
-        paramSensorEvent = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController.a();
-        if (paramSensorEvent == null) {
-          continue;
-        }
-        long l = System.currentTimeMillis();
-        boolean bool2 = SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper);
-        Object localObject = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper;
-        if (i != 0) {
-          break label571;
-        }
-        bool1 = true;
-        SensorHelper.d((SensorHelper)localObject, bool1);
-        if (SensorHelper.f(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper) != SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper))
-        {
-          if (3 == this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Int) {
-            this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsSensorReport.e();
-          }
-          this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Int = 0;
-        }
-        if ((l - this.jdField_a_of_type_Long > 1000L) || (bool2 != SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper)))
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.d(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_JavaLangString, 4, "onSensorChanged distance[" + f1 + "->" + f2 + "], mlongDistense[" + SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper) + "], lastlongDistense[" + bool2 + "], mIsMoving[" + SensorHelper.b(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper) + "], mSensorSet[" + this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean + "], isSpeakerOn[" + paramSensorEvent.N + "]");
-          }
-          this.jdField_a_of_type_Long = l;
-        }
-        if ((i == 0) || (!SensorHelper.b(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper))) {
-          break label586;
-        }
-        localObject = paramSensorEvent.a;
-        if ((!paramSensorEvent.N) || (localObject == null)) {
-          continue;
-        }
-        i = 0;
-        if (i >= localObject.length) {
-          break label724;
-        }
-        j = m;
-        if (!localObject[i].equals("DEVICE_WIREDHEADSET")) {
-          if (!localObject[i].equals("DEVICE_BLUETOOTHHEADSET")) {
-            break label577;
+            if (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_b_of_type_Int == 1) {
+              if (i != 0) {
+                localObject2 = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
+              }
+            }
+            for (;;)
+            {
+              this.a.jdField_a_of_type_AndroidWidgetButton.setText("扬声器");
+              break;
+              localObject2 = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+              continue;
+              if (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_b_of_type_Int == 2)
+              {
+                if (i != 0)
+                {
+                  localObject2 = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
+                  continue;
+                }
+                localObject2 = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+                continue;
+                i = 2131494060;
+                break label269;
+              }
+              localObject2 = null;
+            }
+            continue;
+            i = 1;
           }
         }
       }
-      for (int j = m;; j = 1)
+    }
+    if ((this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_b_of_type_Boolean) && (TraeHelper.c()))
+    {
+      if ("DEVICE_BLUETOOTHHEADSET".equals(this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_ComTencentAvVideoController.a().o))
       {
-        if ((j == 0) || (!this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.c)) {
-          break label728;
+        localObject1 = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.e;
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText("蓝牙");
+        if (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_d_of_type_MqqUtilWeakReference == null) {
+          break label737;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_JavaLangString, 2, "setSensors pressHandFreeBtn");
+        localTipsManager = (TipsManager)this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_d_of_type_MqqUtilWeakReference.get();
+        if ((localTipsManager == null) || (localTipsManager.jdField_b_of_type_Int != 1005)) {
+          break label745;
         }
-        if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper != null) {
-          this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper.e();
+        localTipsManager.a();
+        break label745;
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawables(null, (Drawable)localObject1, null, null);
+        localObject1 = this.a.jdField_a_of_type_AndroidWidgetButton.getResources();
+        if (i == 0) {
+          break label726;
         }
-        this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean = true;
-        DataReport.k(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController);
+        i = 2131494068;
+        localObject1 = ((Resources)localObject1).getColorStateList(i);
+        if (localObject1 != null) {
+          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor((ColorStateList)localObject1);
+        }
+        if ((this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_c_of_type_MqqUtilWeakReference != null) && (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_c_of_type_MqqUtilWeakReference.get() != null)) {
+          ((TraeHelper.TraeHelperListener)this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_c_of_type_MqqUtilWeakReference.get()).a(this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_ComTencentAvVideoController.a().N, this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_b_of_type_Int);
+        }
         return;
         i = 0;
-        break label87;
-        bool1 = false;
-        break label125;
-        bool1 = false;
-        break label205;
-        i += 1;
-        break label444;
-        if (!this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean) {
-          break;
+        break;
+        if (!"DEVICE_WIREDHEADSET".equals(this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.jdField_a_of_type_ComTencentAvVideoController.a().o)) {
+          break label448;
         }
-        if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController != null) {}
-        for (paramSensorEvent = paramSensorEvent.a;; paramSensorEvent = null)
-        {
-          if (paramSensorEvent != null) {
-            i = 0;
-          }
-          for (;;)
-          {
-            j = k;
-            if (i < paramSensorEvent.length)
-            {
-              if ((paramSensorEvent[i].equals("DEVICE_WIREDHEADSET")) || (paramSensorEvent[i].equals("DEVICE_BLUETOOTHHEADSET"))) {
-                j = 0;
-              }
-            }
-            else
-            {
-              if ((j != 0) && (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.c))
-              {
-                if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper != null) {
-                  this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper.e();
-                }
-                DataReport.k(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController);
-              }
-              this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean = false;
-              return;
-            }
-            i += 1;
-          }
-        }
+        localObject1 = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.f;
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText("耳机");
       }
     }
   }

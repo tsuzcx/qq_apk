@@ -1,21 +1,45 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.WriteCommentCallback;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import mqq.app.AppActivity;
 
 class ouu
-  implements TroopTopicMgr.WriteCommentCallback
+  implements DialogInterface.OnClickListener
 {
-  ouu(ouo paramouo, int paramInt1, int paramInt2) {}
+  ouu(ous paramous, String paramString) {}
   
-  public void a(int paramInt, JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {}
-    paramJSONObject = new Bundle();
-    paramJSONObject.putInt("reqType", this.jdField_a_of_type_Int);
-    paramJSONObject.putInt("seq", this.b);
-    paramJSONObject.putInt("errorCode", paramInt);
-    this.jdField_a_of_type_Ouo.a.a(60, paramJSONObject);
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
+    if (paramDialogInterface.startsWith("www.")) {
+      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_Ous.jdField_a_of_type_MqqAppAppActivity, QQBrowserDelegationActivity.class);
+      localIntent.putExtra("url", paramDialogInterface);
+      localIntent.putExtra("param_force_internal_browser", true);
+      localIntent.putExtra("key_isReadModeEnabled", true);
+      localIntent.putExtra("fromQrcode", true);
+      localIntent.putExtra("injectrecommend", false);
+      this.jdField_a_of_type_Ous.jdField_a_of_type_MqqAppAppActivity.startActivity(localIntent);
+      if (this.jdField_a_of_type_Ous.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e) {
+        this.jdField_a_of_type_Ous.jdField_a_of_type_MqqAppAppActivity.finish();
+      }
+      if (this.jdField_a_of_type_Ous.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.b) {
+        this.jdField_a_of_type_Ous.jdField_a_of_type_MqqAppAppActivity.finish();
+      }
+      return;
+      if (paramDialogInterface.startsWith("https:")) {
+        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
+      } else if (paramDialogInterface.startsWith("http:")) {
+        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
+      } else {
+        paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+      }
+    }
   }
 }
 

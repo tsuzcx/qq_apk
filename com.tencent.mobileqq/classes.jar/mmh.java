@@ -1,20 +1,16 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-class mmh
+public class mmh
   implements Runnable
 {
-  mmh(mmg parammmg) {}
+  public mmh(FastWebActivity paramFastWebActivity) {}
   
   public void run()
   {
-    if (!mmf.a(this.a.a))
-    {
-      mmf.a(this.a.a, mmf.b(this.a.a));
-      return;
+    if (FastWebActivity.a(this.a) != null) {
+      FastWebActivity.a(this.a).notifyDataSetChanged();
     }
-    mmf.a(this.a.a).setVisibility(8);
-    mmf.a(this.a.a).setVisibility(8);
   }
 }
 

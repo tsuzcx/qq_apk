@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
-import cooperation.qzone.QZoneVideoDownloadActivity;
-
-public class amcg
+class amcg
   implements Runnable
 {
-  public amcg(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
+  amcg(amcf paramamcf, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    P2VEffectLoader.a().a(new amch(this));
+    this.jdField_a_of_type_Amcf.a(this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amcg
  * JD-Core Version:    0.7.0.1
  */

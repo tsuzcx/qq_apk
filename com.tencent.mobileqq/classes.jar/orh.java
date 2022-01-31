@@ -1,17 +1,16 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
 
-class orh
-  implements Runnable
+public class orh
+  implements View.OnClickListener
 {
-  orh(org paramorg) {}
+  public orh(SlideTabViewPager paramSlideTabViewPager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.isFinishing()) {
-      return;
-    }
-    QRUtils.a(1, 2131429986);
+    paramView = (Integer)paramView.getTag();
+    this.a.setTab(paramView.intValue());
   }
 }
 

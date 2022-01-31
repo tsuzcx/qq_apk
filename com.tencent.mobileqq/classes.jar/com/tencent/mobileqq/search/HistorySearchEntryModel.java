@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.search;
 
-import ahcu;
-import ahcv;
-import ahcx;
-import ahcy;
-import ahcz;
+import ahqw;
+import ahqx;
+import ahqz;
+import ahra;
+import ahrb;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -47,7 +47,7 @@ public class HistorySearchEntryModel
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   protected HistorySearchEntryModel.OnHistorySearchCountListener a;
   public MqqWeakReferenceHandler a;
-  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new ahcz(this);
+  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new ahrb(this);
   public XListView a;
   public List a;
   protected boolean a;
@@ -117,7 +117,7 @@ public class HistorySearchEntryModel
   
   private void e()
   {
-    ThreadManager.postImmediately(new ahcy(this), null, true);
+    ThreadManager.postImmediately(new ahra(this), null, true);
   }
   
   public XListView a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -125,20 +125,20 @@ public class HistorySearchEntryModel
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971651, null));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971699, null));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     paramContext = new AbsListView.LayoutParams(-1, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 7.0F));
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramContext);
-    paramContext = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971475, null);
-    this.b = ((TextView)paramContext.findViewById(2131374825));
-    this.c = ((TextView)paramContext.findViewById(2131374826));
-    this.d = ((TextView)paramContext.findViewById(2131374827));
+    paramContext = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971523, null);
+    this.b = ((TextView)paramContext.findViewById(2131375011));
+    this.c = ((TextView)paramContext.findViewById(2131375012));
+    this.d = ((TextView)paramContext.findViewById(2131375013));
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.jdField_a_of_type_AndroidWidgetTextView);
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(paramContext);
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838576);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838580);
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundColor(Color.parseColor("#0b1d35"));
       this.b.setBackgroundColor(Color.parseColor("#0b1d35"));
       this.c.setBackgroundColor(Color.parseColor("#040E1C"));
@@ -146,14 +146,14 @@ public class HistorySearchEntryModel
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter = new ContactsSearchResultAdapter(paramQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentWidgetXListView, null, new ahcu(this), new ahcv(this), false);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ahcx(this));
+      this.jdField_a_of_type_ComTencentMobileqqAdapterContactsSearchResultAdapter = new ContactsSearchResultAdapter(paramQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentWidgetXListView, null, new ahqw(this), new ahqx(this), false);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ahqz(this));
       return this.jdField_a_of_type_ComTencentWidgetXListView;
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundColor(Color.parseColor("#ffffff"));
       this.b.setBackgroundColor(Color.parseColor("#ffffff"));
       this.c.setBackgroundColor(Color.parseColor("#F7F7F8"));
       this.d.setBackgroundColor(Color.parseColor("#ffffff"));
-      this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838575);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838579);
     }
   }
   

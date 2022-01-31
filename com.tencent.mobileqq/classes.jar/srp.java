@@ -1,24 +1,15 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class srp
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
-  public srp(GroupManagerActivity paramGroupManagerActivity) {}
+  public srp(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
-      return;
-    }
-    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
-    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131435521, 2131435522, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 1);
+    FriendProfileImageActivity.a(this.a);
   }
 }
 

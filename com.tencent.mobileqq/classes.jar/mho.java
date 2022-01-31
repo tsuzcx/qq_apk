@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
 class mho
   implements Runnable
 {
-  mho(mhn parammhn) {}
+  mho(mhf parammhf) {}
   
   public void run()
   {
-    ReadInJoyListViewGroup.b(this.a.a);
+    this.a.a.notifyDataSetChanged();
+    ReadInJoyBaseAdapter.a(this.a.a, this.a.a.a, 0);
   }
 }
 

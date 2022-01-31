@@ -1,48 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource.DownloadListenerWrapper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.io.File;
-import java.util.Map;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class xcd
-  extends PreloadResource.DownloadListenerWrapper
+  extends FriendListObserver
 {
-  public xcd(PreloadComDownloader paramPreloadComDownloader, DownloadListener paramDownloadListener)
-  {
-    super(paramDownloadListener);
-  }
+  public xcd(TransactionActivity paramTransactionActivity) {}
   
-  public void onDoneFile(DownloadTask paramDownloadTask)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    long l2 = -1L;
-    super.onDoneFile(paramDownloadTask);
-    if ((paramDownloadTask != null) && (paramDownloadTask.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(paramDownloadTask.jdField_a_of_type_JavaLangString)))
-    {
-      File localFile = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
-      if (localFile != null)
-      {
-        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localObject != null)
-        {
-          localObject = (PreDownloadController)((QQAppInterface)localObject).getManager(192);
-          String str = paramDownloadTask.jdField_a_of_type_JavaLangString;
-          long l1 = l2;
-          if (paramDownloadTask.jdField_a_of_type_Int == 0)
-          {
-            l1 = l2;
-            if (localFile.exists()) {
-              l1 = localFile.length();
-            }
-          }
-          ((PreDownloadController)localObject).a(str, l1);
-        }
-      }
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
     }
+    TransactionActivity.b(this.a, ContactUtils.c(this.a.app, TransactionActivity.c(this.a), false));
+    paramString = QWalletTools.a(TransactionActivity.a(this.a), TransactionActivity.d(this.a), AIOUtils.a(TransactionActivity.c(this.a), TransactionActivity.a(this.a).getResources()), TransactionActivity.a(this.a).getPaint());
+    TransactionActivity.a(this.a).setText(paramString + "(" + TransactionActivity.c(this.a) + ")");
   }
 }
 

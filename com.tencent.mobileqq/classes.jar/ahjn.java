@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.message.MessageProtoCodec;
-import tencent.im.s2c.msgtype0x210.submsgtype0xb1.submsgtype0xb1.MsgBody;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
-public final class ahjn
+public class ahjn
   implements Runnable
 {
-  public ahjn(QQAppInterface paramQQAppInterface, submsgtype0xb1.MsgBody paramMsgBody, boolean paramBoolean) {}
+  public ahjn(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
   public void run()
   {
-    MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xb1Submsgtype0xb1$MsgBody.invite_info, this.jdField_a_of_type_Boolean);
+    EffectsCameraCaptureFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjn
  * JD-Core Version:    0.7.0.1
  */

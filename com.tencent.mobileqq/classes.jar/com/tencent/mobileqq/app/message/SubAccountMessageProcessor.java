@@ -84,8 +84,8 @@ import tencent.im.msgsync.cmd0x100.Submsgtype0x8a.ReqBody;
 import tencent.im.oidb.cmd0x5d0.Oidb_0x5d0.ReqBody;
 import tencent.im.oidb.cmd0x5d0.Oidb_0x5d0.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import zqt;
-import zqu;
+import ztz;
+import zua;
 
 public class SubAccountMessageProcessor
   extends C2CMessageProcessor
@@ -536,7 +536,7 @@ public class SubAccountMessageProcessor
                                 }
                                 localDecodeProtoPkgContext = new DecodeProtoPkgContext(l1, l6, false, false, false, true);
                               } while ((paramObject == null) || (paramObject.size() <= 0));
-                              Collections.sort(paramObject, new zqt(this));
+                              Collections.sort(paramObject, new ztz(this));
                               Iterator localIterator1;
                               if ((paramFromServiceMsg.msg_completed.has()) && (paramFromServiceMsg.msg_completed.get() != 0))
                               {
@@ -604,7 +604,7 @@ public class SubAccountMessageProcessor
                                       paramObject.msgUid = ((msg_comm.MsgHead)localObject3).msg_uid.get();
                                       paramObject.time = ((msg_comm.MsgHead)localObject3).msg_time.get();
                                       paramObject.istroop = 0;
-                                      paramObject.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435924);
+                                      paramObject.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435941);
                                       paramObject.msgtype = 193;
                                       paramFromServiceMsg.add(paramObject);
                                       continue;
@@ -631,7 +631,7 @@ public class SubAccountMessageProcessor
                                               }
                                               paramFromServiceMsg = paramObject;
                                               if (TextUtils.isEmpty(paramObject)) {
-                                                paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435555);
+                                                paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435572);
                                               }
                                               paramObject = MessageRecordFactory.a(-2005);
                                               paramObject.selfuin = String.valueOf(l1);
@@ -807,15 +807,15 @@ public class SubAccountMessageProcessor
                                 if (!TextUtils.isEmpty(paramFromServiceMsg)) {
                                   break label5302;
                                 }
-                                paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131436459);
+                                paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131436476);
                                 continue;
                                 if (FlashPicHelper.a((MessageRecord)localObject4))
                                 {
-                                  paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435551);
+                                  paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435568);
                                 }
                                 else
                                 {
-                                  paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435550);
+                                  paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435567);
                                   continue;
                                   localObject4 = ((MessageRecord)localObject4).msg;
                                   paramFromServiceMsg = null;
@@ -850,23 +850,23 @@ public class SubAccountMessageProcessor
                                     paramObject = paramFromServiceMsg;
                                     continue;
                                     paramFromServiceMsg = paramObject;
-                                    if (paramObject.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435555))) {
+                                    if (paramObject.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435572))) {
                                       continue;
                                     }
-                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435555) + paramObject;
+                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435572) + paramObject;
                                     continue;
                                   }
                                   if (TextUtils.isEmpty(paramObject))
                                   {
-                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435555);
+                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435572);
                                   }
                                   else
                                   {
-                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435553);
+                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131435570);
                                     continue;
-                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131436259);
+                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131436276);
                                     continue;
-                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131436260);
+                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131436277);
                                     continue;
                                     paramFromServiceMsg = (MessageForApollo)localObject4;
                                     paramFromServiceMsg.parse();
@@ -912,7 +912,7 @@ public class SubAccountMessageProcessor
                                     paramFromServiceMsg = paramFromServiceMsg.babyqReplyText;
                                     continue;
                                     paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppShareIDUtil.a(((MsgBody)localObject4).shareAppID));
-                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435917) + paramFromServiceMsg.messagetail + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435918);
+                                    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435934) + paramFromServiceMsg.messagetail + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435935);
                                     continue;
                                     paramFromServiceMsg = paramObject;
                                     if (!ActionMsgUtil.b(((MessageRecord)localObject4).msgtype))
@@ -933,7 +933,7 @@ public class SubAccountMessageProcessor
                                               paramFromServiceMsg = localObject4[2];
                                             }
                                           }
-                                          paramFromServiceMsg = "[" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433822) + "] " + paramFromServiceMsg;
+                                          paramFromServiceMsg = "[" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433839) + "] " + paramFromServiceMsg;
                                         }
                                       }
                                     }
@@ -960,7 +960,7 @@ public class SubAccountMessageProcessor
                               {
                                 paramFromServiceMsg = paramFromServiceMsg.from_nick.get();
                                 if (i != 0) {
-                                  paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131434926);
+                                  paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131434943);
                                 }
                                 if (QLog.isColorLevel()) {
                                   QLog.d("SUB_ACCOUNT", 2, "sub.account.msg isQQMail=" + bool1);
@@ -1240,7 +1240,7 @@ public class SubAccountMessageProcessor
     } while (!QLog.isColorLevel());
     QLog.d("Q.msg.C2CMessageProcessor", 2, "handleGetSubAccountSpecialCare  rspBody==null");
     return;
-    new zqu(this, paramObject, str, (String)localObject, i, j).execute(new Void[0]);
+    new zua(this, paramObject, str, (String)localObject, i, j).execute(new Void[0]);
   }
   
   public void a(byte paramByte, int paramInt, String paramString1, String paramString2, ArrayList paramArrayList)

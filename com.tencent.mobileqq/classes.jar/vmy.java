@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
-import com.tencent.mobileqq.pic.Logger;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
 
-class vmy
+public class vmy
   implements Runnable
 {
-  vmy(vmu paramvmu, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
+  public vmy(AIOGalleryScene paramAIOGalleryScene) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Vmu.b.a.a = false;
-    Logger.a("PhotoListPanel", "enableGuestrue", "mPanel.mDisableGuestrueSend = " + this.jdField_a_of_type_Vmu.b.a.a);
+    AIOGalleryScene.a(this.a).show();
   }
 }
 

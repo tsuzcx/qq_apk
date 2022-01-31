@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
 
 public class xdj
   implements Runnable
 {
-  public xdj(QWRedConfig paramQWRedConfig) {}
+  public xdj(CommonHbFragment paramCommonHbFragment) {}
   
   public void run()
   {
-    synchronized (QWRedConfig.access$000(this.a))
-    {
-      QWalletTools.a(this.a, QWRedConfig.access$100(this.a));
-      return;
+    if ("1".equals(CommonHbFragment.f(this.a))) {
+      CommonHbFragment.b(this.a).performClick();
     }
+    do
+    {
+      return;
+      if ("2".equals(CommonHbFragment.f(this.a)))
+      {
+        CommonHbFragment.c(this.a).performClick();
+        return;
+      }
+    } while (!"3".equals(CommonHbFragment.f(this.a)));
+    CommonHbFragment.d(this.a).performClick();
   }
 }
 

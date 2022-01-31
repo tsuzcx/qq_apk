@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.qphone.base.util.QLog;
 
 public class wnj
-  implements Runnable
+  extends CardObserver
 {
-  public wnj(MainAssistObserver paramMainAssistObserver) {}
+  private wnj(FriendFragment paramFriendFragment) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "-->onGetOpenId timeout.");
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) {
-      return;
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      FriendFragment.a(this.a, 1400L, false);
     }
-    this.a.c = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
   }
 }
 

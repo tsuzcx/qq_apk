@@ -1,35 +1,47 @@
-import android.os.Handler;
-import android.telephony.PhoneStateListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.PstnCallbackWaitingUi;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.av.ui.QavPanel;
 import com.tencent.qphone.base.util.QLog;
 
 public class jzl
-  extends PhoneStateListener
+  implements View.OnTouchListener
 {
-  public jzl(PstnCallbackWaitingUi paramPstnCallbackWaitingUi) {}
+  public jzl(QavPanel paramQavPanel) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.onCallStateChanged(paramInt, paramString);
-    if (QLog.isColorLevel())
-    {
-      QLog.d("PstnCallbackWaitingUi", 2, "onCallStateChanged state = " + paramInt);
-      QLog.d("PstnCallbackWaitingUi", 2, "onCallStateChanged incomingNumber = " + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QavPanel", 2, "onTouch action: " + paramMotionEvent.getAction());
     }
-    switch (paramInt)
+    if (paramView == this.a.m)
     {
-    }
-    do
-    {
-      do
+      if (paramMotionEvent.getAction() == 0)
       {
-        return;
-      } while ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().x != 1) || (this.a.jdField_a_of_type_AndroidOsHandler == null) || (this.a.jdField_a_of_type_JavaLangRunnable == null) || (paramString == null) || (!paramString.equals("03162412023")));
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
-    } while (!QLog.isColorLevel());
-    QLog.d("PstnCallbackWaitingUi", 2, "onCallStateChanged CALL_STATE_OFFHOOK");
+        this.a.d.setAlpha(0.5F);
+        this.a.e.setAlpha(0.5F);
+      }
+      for (;;)
+      {
+        return this.a.a.onTouch(paramView, paramMotionEvent);
+        if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+        {
+          this.a.d.setAlpha(1.0F);
+          this.a.e.setAlpha(1.0F);
+        }
+      }
+    }
+    if (paramMotionEvent.getAction() == 0) {
+      paramView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

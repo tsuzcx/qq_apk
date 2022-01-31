@@ -1,156 +1,118 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.TicketManagerImpl;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class anlz
-  implements Runnable
+public final class anlz
+  extends anmb
 {
-  protected double a;
-  protected int a;
-  protected long a;
-  protected String a;
-  protected WeakReference a;
-  protected boolean a;
-  protected int b;
-  protected long b;
-  protected int c;
-  protected long c;
-  protected int d;
-  protected int e = -1;
+  String a;
   
-  public anlz(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, anma paramanma)
+  anlz(QIMMusicConfigManager paramQIMMusicConfigManager)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramanma);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Long = (1000L * paramLong1);
-    this.jdField_c_of_type_Long = (1000L * paramLong2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.e = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("VFLDecodeRunnable", 2, "decode param, path:" + this.jdField_a_of_type_JavaLangString + " framesize:" + this.jdField_a_of_type_Int + "-" + this.jdField_b_of_type_Int + " framecount:" + this.jdField_c_of_type_Int + " rotation:" + this.d + "range:" + this.jdField_b_of_type_Long + "-" + this.jdField_c_of_type_Long);
-    }
-    if ((this.jdField_c_of_type_Long - this.jdField_b_of_type_Long <= 0L) || (this.jdField_c_of_type_Int <= 0))
+    super(paramQIMMusicConfigManager);
+  }
+  
+  anma a()
+  {
+    return new anma(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager);
+  }
+  
+  public void a(NetResp paramNetResp)
+  {
+    if (paramNetResp.c == 200)
     {
-      a(1);
+      if (paramNetResp.a != null)
+      {
+        anma localanma = a();
+        localanma.jdField_a_of_type_JavaLangString = new String(paramNetResp.a);
+        localanma.jdField_a_of_type_Boolean = true;
+        localanma.a();
+        this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, true, localanma.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      a(false);
+      this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "have no data.");
       return;
     }
-    this.jdField_a_of_type_Double = ((float)(this.jdField_c_of_type_Long - this.jdField_b_of_type_Long) * 1.0F / this.jdField_c_of_type_Int);
+    a(false);
+    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "Http Request fail, code=" + paramNetResp.c);
   }
   
-  protected long a()
+  public void run()
   {
-    if (this.e < this.jdField_c_of_type_Int) {
-      this.e += 1;
-    }
-    this.jdField_a_of_type_Long = ((this.e * this.jdField_a_of_type_Double));
-    this.jdField_a_of_type_Long += this.jdField_b_of_type_Long;
-    if (this.jdField_a_of_type_Long < 0L) {
-      this.jdField_a_of_type_Long = 0L;
-    }
     for (;;)
     {
-      return this.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_Long > this.jdField_c_of_type_Long) {
-        this.jdField_a_of_type_Long = this.jdField_c_of_type_Long;
-      }
-    }
-  }
-  
-  public Bitmap a(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    Object localObject = new Matrix();
-    if (this.d != 0)
-    {
-      float f1 = this.jdField_a_of_type_Int / paramBitmap.getHeight();
-      float f2 = this.jdField_b_of_type_Int / paramBitmap.getWidth();
-      ((Matrix)localObject).postRotate(this.d);
-      ((Matrix)localObject).postScale(f1, f2);
-    }
-    for (;;)
-    {
-      localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
-      paramBitmap.recycle();
-      return localObject;
-      ((Matrix)localObject).postScale(this.jdField_a_of_type_Int / paramBitmap.getWidth(), this.jdField_b_of_type_Int / paramBitmap.getHeight());
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  protected void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      anma localanma = (anma)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localanma != null) {
-        localanma.a(paramInt);
-      }
-    }
-  }
-  
-  protected void a(int paramInt, long paramLong, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      anma localanma = (anma)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localanma != null) {
-        localanma.a(paramInt, paramLong, paramBitmap);
-      }
-    }
-  }
-  
-  protected void a(List paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    anma localanma;
-    do
-    {
-      do
+      int i;
+      try
       {
+        Object localObject1 = new JSONObject(this.jdField_a_of_type_JavaLangString);
+        if (((JSONObject)localObject1).optInt("ret", -1) != 0) {
+          break label383;
+        }
+        localObject1 = ((JSONObject)localObject1).optJSONArray("data");
+        if (localObject1 == null) {
+          break label383;
+        }
+        i = 0;
+        if (i < ((JSONArray)localObject1).length())
+        {
+          Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+          if ((localObject2 == null) || (!"我喜欢".equals(((JSONObject)localObject2).optString("diss_name")))) {
+            break label384;
+          }
+          l1 = ((JSONObject)localObject2).optLong("diss_id", -1L);
+          if (l1 != -1L)
+          {
+            localObject1 = new HttpNetReq();
+            ((HttpNetReq)localObject1).jdField_a_of_type_Int = 0;
+            ((HttpNetReq)localObject1).e = 1;
+            ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
+            long l2 = System.currentTimeMillis() / 1000L;
+            localObject2 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.c);
+            HashMap localHashMap = new HashMap();
+            localHashMap.put("app_id", "2000000025");
+            localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
+            localHashMap.put("device_id", DeviceInfoUtil.a());
+            localHashMap.put("timestamp", String.valueOf(l2));
+            localHashMap.put("sign", a(l2));
+            localHashMap.put("dissid", String.valueOf(l1));
+            localHashMap.putAll(a(this.c, (String)localObject2));
+            ((HttpNetReq)localObject1).jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_detail.fcg", localHashMap);
+            this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.a((NetReq)localObject1);
+            if (!QLog.isColorLevel()) {
+              break label383;
+            }
+            QLog.d("QIMMusicConfigManager", 2, "QQMusicReq GetSongListStepTask req url=" + ((HttpNetReq)localObject1).jdField_a_of_type_JavaLangString);
+            return;
+          }
+          a(true);
+          this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "can not find myFav diss.");
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        a(false);
+        this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "parsed json error, json=" + this.jdField_a_of_type_JavaLangString);
         return;
-      } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localanma = (anma)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localanma == null);
-    localanma.a(paramList);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      anma localanma = (anma)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localanma != null) {
-        localanma.a(paramBoolean);
       }
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      anma localanma = (anma)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localanma != null) {
-        localanma.a();
-      }
+      long l1 = -1L;
+      continue;
+      label383:
+      return;
+      label384:
+      i += 1;
     }
   }
 }

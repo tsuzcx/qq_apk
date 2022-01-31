@@ -21,7 +21,7 @@ public class PureStroke
   static
   {
     jdField_a_of_type_ArrayOfInt = new int[] { -3866832, -10233288, -9576193, -16745729, -15975749, -6989057, -31233, -37737, -845543, -27392, -274353, -1, -16777216 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130843557, 2130843558, 2130843559, 2130843560, 2130843561, 2130843562, 2130843563, 2130843564, 2130843565, 2130843566, 2130843567, 2130843568, 2130843570 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130843678, 2130843679, 2130843680, 2130843681, 2130843682, 2130843683, 2130843684, 2130843685, 2130843686, 2130843687, 2130843688, 2130843689, 2130843691 };
   }
   
   public PureStroke(Context paramContext, int paramInt)
@@ -31,8 +31,8 @@ public class PureStroke
     try
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(paramContext.getResources(), jdField_b_of_type_ArrayOfInt[this.h]));
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(paramContext.getResources(), 2130843292));
-      this.c = new BitmapDrawable(BitmapFactory.decodeResource(paramContext.getResources(), 2130843284));
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(paramContext.getResources(), 2130843408));
+      this.c = new BitmapDrawable(BitmapFactory.decodeResource(paramContext.getResources(), 2130843399));
       return;
     }
     catch (OutOfMemoryError paramContext)
@@ -66,7 +66,7 @@ public class PureStroke
     }
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130843569));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130843690));
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

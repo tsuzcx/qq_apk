@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahvs;
-import ahvv;
-import ahvw;
-import ahvx;
-import ahvy;
-import ahvz;
+import aijv;
+import aijy;
+import aijz;
+import aika;
+import aikb;
+import aikc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -73,11 +73,11 @@ public class StructMsgItemVideo
   public String J;
   public String K;
   public String L;
-  public ahvz a;
+  public aikc a;
   protected View.OnClickListener a;
   private URLDrawableDownListener.Adapter a;
   public boolean a;
-  private View.OnClickListener b = new ahvs(this);
+  private View.OnClickListener b = new aijv(this);
   public boolean b;
   public boolean c;
   boolean d;
@@ -99,8 +99,8 @@ public class StructMsgItemVideo
   {
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new ahvv(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahvx(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new aijy(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aika(this);
     this.jdField_a_of_type_JavaLangString = "video";
     this.jdField_a_of_type_Int = 11;
   }
@@ -109,8 +109,8 @@ public class StructMsgItemVideo
   {
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new ahvv(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahvx(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new aijy(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aika(this);
     this.jdField_a_of_type_JavaLangString = "video";
     this.u = paramString1;
     this.k = paramInt1;
@@ -132,8 +132,8 @@ public class StructMsgItemVideo
   {
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new ahvv(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahvx(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new aijy(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aika(this);
     this.jdField_a_of_type_JavaLangString = "video";
     this.u = paramString1;
     this.v = paramString2;
@@ -171,12 +171,12 @@ public class StructMsgItemVideo
     if (this.e == 1)
     {
       if ((paramView instanceof AnyScaleTypeImageView)) {
-        ((AnyScaleTypeImageView)paramView).setImageResource(2130838590);
+        ((AnyScaleTypeImageView)paramView).setImageResource(2130838594);
       }
-      if (this.jdField_a_of_type_Ahvz == null) {
-        this.jdField_a_of_type_Ahvz = new ahvz(this);
+      if (this.jdField_a_of_type_Aikc == null) {
+        this.jdField_a_of_type_Aikc = new aikc(this);
       }
-      ThreadManager.post(new ahvw(this, paramContext, paramView), 8, null, true);
+      ThreadManager.post(new aijz(this, paramContext, paramView), 8, null, true);
       return;
     }
     a(paramContext, this.v);
@@ -264,7 +264,7 @@ public class StructMsgItemVideo
     paramBundle = new PAVideoView(paramContext);
     paramBundle.setId(2131362177);
     paramBundle.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    paramBundle.setContentDescription(((Resources)localObject1).getText(2131436998));
+    paramBundle.setContentDescription(((Resources)localObject1).getText(2131437015));
     Object localObject2 = new RelativeLayout.LayoutParams(-1, -2);
     int m;
     Object localObject3;
@@ -288,7 +288,7 @@ public class StructMsgItemVideo
         paramBundle.g = true;
         paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject2);
         localObject2 = new ImageView(paramContext);
-        ((ImageView)localObject2).setImageResource(2130840883);
+        ((ImageView)localObject2).setImageResource(2130840920);
         ((ImageView)localObject2).setVisibility(8);
         m = AIOUtils.a(62.0F, (Resources)localObject1);
         if (bool1) {
@@ -469,7 +469,7 @@ public class StructMsgItemVideo
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramStructMsgForGeneralShare.currentAccountUin);
       if ((VideoVolumeControl.a(paramContext)) || ((localQQAppInterface != null) && (localQQAppInterface.c())))
       {
-        QQToast.a(paramContext, 2131428986, 1).b(paramContext.getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(paramContext, 2131428992, 1).b(paramContext.getResources().getDimensionPixelSize(2131558448));
         return;
       }
     }
@@ -930,7 +930,7 @@ public class StructMsgItemVideo
       }
       for (;;)
       {
-        paramView.setImageResource(2130842645);
+        paramView.setImageResource(2130842744);
         paramView.setTag(this);
         try
         {
@@ -953,9 +953,9 @@ public class StructMsgItemVideo
             return localObject1;
             paramView = new TitledImageView(paramContext);
             paramView.setId(2131361925);
-            paramView.setContentDescription(((Resources)localObject1).getString(2131433058));
+            paramView.setContentDescription(((Resources)localObject1).getString(2131433075));
             paramView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-            paramView.setContentDescription(((Resources)localObject1).getText(2131436998));
+            paramView.setContentDescription(((Resources)localObject1).getText(2131437015));
             localObject1 = paramView;
             localObject2 = paramView;
             paramView = (View)localObject1;
@@ -978,7 +978,7 @@ public class StructMsgItemVideo
       {
         localURLDrawable = URLDrawable.getDrawable(this.u, n, n, localDrawable, localDrawable);
         if (paramBundle.getBoolean("has_cnr")) {
-          localURLDrawable.setDecodeHandler(new ahvy(this, m, n, n));
+          localURLDrawable.setDecodeHandler(new aikb(this, m, n, n));
         }
         if ((AbsDownloader.a(this.u)) || (!URLDrawableHelper.a(paramContext))) {
           break label402;
@@ -1007,7 +1007,7 @@ public class StructMsgItemVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemVideo
  * JD-Core Version:    0.7.0.1
  */

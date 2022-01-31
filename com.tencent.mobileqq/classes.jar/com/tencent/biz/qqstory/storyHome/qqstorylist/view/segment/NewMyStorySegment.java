@@ -69,18 +69,18 @@ import com.tribe.async.dispatch.IEventReceiver;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import nzi;
-import nzj;
-import nzk;
-import nzl;
-import nzm;
-import nzn;
-import nzo;
-import nzq;
-import nzs;
-import nzu;
-import nzw;
-import nzx;
+import oba;
+import obb;
+import obc;
+import obd;
+import obe;
+import obf;
+import obg;
+import obi;
+import obk;
+import obm;
+import obo;
+import obp;
 
 public class NewMyStorySegment
   extends SegmentView
@@ -108,15 +108,15 @@ public class NewMyStorySegment
   private boolean jdField_b_of_type_Boolean;
   public final UncheckedCallable c;
   private boolean c;
-  public final UncheckedCallable d = new nzo(this);
+  public final UncheckedCallable d = new obg(this);
   
   public NewMyStorySegment(Activity paramActivity, IMyStoryListView paramIMyStoryListView)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsUncheckedCallable = new nzi(this);
-    this.jdField_b_of_type_ComTencentBizQqstoryUtilsUncheckedCallable = new nzm(this);
-    this.jdField_c_of_type_ComTencentBizQqstoryUtilsUncheckedCallable = new nzn(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nzq(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsUncheckedCallable = new oba(this);
+    this.jdField_b_of_type_ComTencentBizQqstoryUtilsUncheckedCallable = new obe(this);
+    this.jdField_c_of_type_ComTencentBizQqstoryUtilsUncheckedCallable = new obf(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new obi(this);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView = paramIMyStoryListView;
     this.jdField_a_of_type_Float = (UIUtils.a(this.jdField_a_of_type_AndroidContentContext) - UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 145.0F));
@@ -174,11 +174,11 @@ public class NewMyStorySegment
   private void a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = paramBaseViewHolder;
-    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371836);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371840);
-    ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131371837);
-    ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131371841);
-    View localView = paramBaseViewHolder.a(2131371838);
+    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131372005);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131372009);
+    ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131372006);
+    ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131372010);
+    View localView = paramBaseViewHolder.a(2131372007);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.a();
     paramInt = -657931;
     QQStoryContext.a();
@@ -190,15 +190,15 @@ public class NewMyStorySegment
     QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).a();
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.b() == 0)
     {
-      paramViewGroup.setImageResource(2130843617);
-      localTextView.post(new nzw(this, localTextView, localView, localImageView2));
+      paramViewGroup.setImageResource(2130843738);
+      localTextView.post(new obo(this, localTextView, localView, localImageView2));
       if (!this.jdField_b_of_type_Boolean) {
         break label332;
       }
       if (!bool) {
         break label321;
       }
-      localImageView2.setImageResource(2130843485);
+      localImageView2.setImageResource(2130843606);
       label170:
       localImageView2.setContentDescription("收起更多");
       if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.a().size() <= 0) {
@@ -214,32 +214,32 @@ public class NewMyStorySegment
     for (;;)
     {
       paramViewGroup.setOnClickListener(paramBaseViewHolder);
-      paramBaseViewHolder.a().findViewById(2131371835).setOnClickListener(paramBaseViewHolder);
+      paramBaseViewHolder.a().findViewById(2131372004).setOnClickListener(paramBaseViewHolder);
       if (paramBaseViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener == null) {
-        paramBaseViewHolder.a(new nzx(this));
+        paramBaseViewHolder.a(new obp(this));
       }
       return;
       if ((localQQUserUIItem == null) || (TextUtils.isEmpty(localQQUserUIItem.headUrl)))
       {
         SLog.c("NewMyStorySegment", "Self HeadUrl is NULL!", new IllegalStateException());
-        paramViewGroup.setImageResource(2130843617);
+        paramViewGroup.setImageResource(2130843738);
         GetUserInfoHandler.d();
         break;
       }
       UIUtils.b(paramViewGroup, ThumbnailUrlHelper.b(localQQUserUIItem.headUrl), 200, 200, ImageUtil.a(1), "QQStory200");
       break;
       label321:
-      localImageView2.setImageResource(2130843484);
+      localImageView2.setImageResource(2130843605);
       break label170;
       label332:
       if (bool) {
-        localImageView2.setImageResource(2130843483);
+        localImageView2.setImageResource(2130843604);
       }
       for (;;)
       {
         localImageView2.setContentDescription("更多");
         break;
-        localImageView2.setImageResource(2130843482);
+        localImageView2.setImageResource(2130843603);
       }
       label367:
       if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.b() != 0)
@@ -271,7 +271,7 @@ public class NewMyStorySegment
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.a(false, true, 2, null);
       return;
     }
-    if (paramView.getId() == 2131371836) {
+    if (paramView.getId() == 2131372005) {
       StoryReportor.a("mystory", "clk_head_data", 0, 0, new String[0]);
     }
     for (;;)
@@ -288,7 +288,7 @@ public class NewMyStorySegment
     if (UIUtils.b()) {
       return;
     }
-    View localView = paramView.findViewById(2131371842);
+    View localView = paramView.findViewById(2131372011);
     if (paramStoryVideoItem.mUnreadLikeCount > 0)
     {
       a(paramInt, paramStoryVideoItem, localView);
@@ -324,16 +324,16 @@ public class NewMyStorySegment
   private void b(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
     int i = paramInt - 1;
-    Object localObject1 = (StoryCoverView)paramBaseViewHolder.a(2131371842);
-    ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131371852);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371849);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131371848);
-    ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131371844);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371853);
-    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131371850);
-    ImageView localImageView3 = (ImageView)paramBaseViewHolder.a(2131371845);
-    paramViewGroup = (Button)paramBaseViewHolder.a(2131371854);
-    ImageView localImageView4 = (ImageView)paramBaseViewHolder.a(2131371843);
+    Object localObject1 = (StoryCoverView)paramBaseViewHolder.a(2131372011);
+    ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131372021);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131372018);
+    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131372017);
+    ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131372013);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131372022);
+    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131372019);
+    ImageView localImageView3 = (ImageView)paramBaseViewHolder.a(2131372014);
+    paramViewGroup = (Button)paramBaseViewHolder.a(2131372023);
+    ImageView localImageView4 = (ImageView)paramBaseViewHolder.a(2131372012);
     if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.a() == null))
     {
       SLog.e("NewMyStorySegment", "myStorys is null!");
@@ -341,8 +341,8 @@ public class NewMyStorySegment
     }
     paramBaseViewHolder.a().setTag(-3, Integer.valueOf(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 84.0F)));
     paramViewGroup.setOnClickListener(paramBaseViewHolder);
-    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371843);
-    Object localObject2 = (ImageView)paramBaseViewHolder.a(2131371846);
+    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131372012);
+    Object localObject2 = (ImageView)paramBaseViewHolder.a(2131372015);
     paramInt = -657931;
     QQStoryContext.a();
     if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
@@ -396,7 +396,7 @@ public class NewMyStorySegment
         if (paramBaseViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener != null) {
           break;
         }
-        paramBaseViewHolder.a(new nzj(this, bool1));
+        paramBaseViewHolder.a(new obb(this, bool1));
         return;
         if (((StoryVideoItem)localObject2).mVideoThumbnailUrl == null) {
           SLog.e("NewMyStorySegment", "mVideoThumbnailUrl is null! vid=" + ((StoryVideoItem)localObject2).mVid);
@@ -413,7 +413,7 @@ public class NewMyStorySegment
         bool1 = bool2;
         continue;
         localTextView4.setVisibility(0);
-        localTextView4.setText(2131432102);
+        localTextView4.setText(2131432119);
         localTextView1.setVisibility(8);
         localTextView3.setVisibility(8);
         localTextView2.setVisibility(8);
@@ -478,11 +478,11 @@ public class NewMyStorySegment
   
   private void b(BaseViewHolder paramBaseViewHolder, int paramInt)
   {
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371849);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371848);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131371844);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131371853);
-    paramBaseViewHolder = (ImageView)paramBaseViewHolder.a(2131371845);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131372018);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131372017);
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131372013);
+    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131372022);
+    paramBaseViewHolder = (ImageView)paramBaseViewHolder.a(2131372014);
     switch (paramInt)
     {
     case 7: 
@@ -528,19 +528,19 @@ public class NewMyStorySegment
   
   private void c(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = paramBaseViewHolder.a(2131365532);
-    View localView1 = paramBaseViewHolder.a(2131371620);
-    View localView2 = paramBaseViewHolder.a(2131371622);
-    paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494267);
+    paramViewGroup = paramBaseViewHolder.a(2131365554);
+    View localView1 = paramBaseViewHolder.a(2131371785);
+    View localView2 = paramBaseViewHolder.a(2131371787);
+    paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494274);
     paramViewGroup.setBackgroundColor(paramInt);
     localView1.setBackgroundColor(paramInt);
     localView2.setBackgroundColor(paramInt);
-    paramViewGroup = paramBaseViewHolder.a(2131371623);
-    localView1 = paramBaseViewHolder.a(2131371621);
+    paramViewGroup = paramBaseViewHolder.a(2131371788);
+    localView1 = paramBaseViewHolder.a(2131371786);
     paramViewGroup.setOnClickListener(paramBaseViewHolder);
     localView1.setOnClickListener(paramBaseViewHolder);
     if (paramBaseViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener == null) {
-      paramBaseViewHolder.a(new nzk(this));
+      paramBaseViewHolder.a(new obc(this));
     }
   }
   
@@ -600,11 +600,11 @@ public class NewMyStorySegment
     while (paramViewGroup != null)
     {
       return new BaseViewHolder(paramViewGroup);
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970795, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970843, paramViewGroup, false);
       continue;
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970796, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970844, paramViewGroup, false);
       continue;
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970695, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970741, paramViewGroup, false);
     }
     return new BaseViewHolder(new TextView(this.jdField_a_of_type_AndroidContentContext));
   }
@@ -621,7 +621,7 @@ public class NewMyStorySegment
       paramString.mUploadStatus = paramInt;
     }
     QQToast.a(BaseApplication.getContext(), 1, "删除失败，请稍后重试", 0).a();
-    l();
+    m();
   }
   
   protected void a(StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
@@ -649,7 +649,7 @@ public class NewMyStorySegment
           Object localObject2 = paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId;
           localObject1 = new SimpleStep.InitParamSimpleStep(GetMyStoryVideoListStep.Result.a((String)localObject2));
           Step localStep = (Step)this.jdField_b_of_type_ComTencentBizQqstoryUtilsUncheckedCallable.a();
-          localObject2 = new SimpleStep.GetResultSimpleStep(new nzl(this, (String)localObject2));
+          localObject2 = new SimpleStep.GetResultSimpleStep(new obd(this, (String)localObject2));
           SerialStepExecutor localSerialStepExecutor = a();
           a(new Step[] { localObject1, localStep, localObject2 }, localSerialStepExecutor);
         }
@@ -665,7 +665,7 @@ public class NewMyStorySegment
       SLog.e("NewMyStorySegment", "item error info is null!!");
     }
     label279:
-    l();
+    m();
   }
   
   public void a(MyStorys paramMyStorys)
@@ -685,7 +685,7 @@ public class NewMyStorySegment
         break label103;
       }
       StoryVideoUploadManager.a((String)localObject);
-      l();
+      m();
       if (!((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.a().get(paramInt)).isUploading()) {
         break label96;
       }
@@ -699,7 +699,7 @@ public class NewMyStorySegment
     label103:
     new DeleteStoryVideoHandler().a((String)localObject);
     ((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.a().get(paramInt)).mUploadStatus = 9;
-    Object localObject = (TextView)paramBaseViewHolder.a(2131371850);
+    Object localObject = (TextView)paramBaseViewHolder.a(2131372019);
     ((TextView)localObject).setVisibility(0);
     ((TextView)localObject).setText("小视频删除中...");
     b(paramBaseViewHolder, 9);
@@ -716,13 +716,13 @@ public class NewMyStorySegment
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.jdField_b_of_type_Boolean = false;
     }
     ((FeedVideoManager)SuperManager.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_a_of_type_JavaLangString, 0, paramString);
-    l();
+    m();
   }
   
   public void a(boolean paramBoolean)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
-    l();
+    m();
   }
   
   public void a(Step[] paramArrayOfStep)
@@ -757,16 +757,16 @@ public class NewMyStorySegment
         }
       }
     }
-    paramSerialStepExecutor.a(new nzu(this)).a(new nzs(this));
+    paramSerialStepExecutor.a(new obm(this)).a(new obk(this));
     paramSerialStepExecutor.a();
   }
   
   public void a_(BaseViewHolder paramBaseViewHolder)
   {
     super.a_(paramBaseViewHolder);
-    ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131371843);
-    ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131371844);
-    ImageView localImageView3 = (ImageView)paramBaseViewHolder.a(2131371845);
+    ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131372012);
+    ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131372013);
+    ImageView localImageView3 = (ImageView)paramBaseViewHolder.a(2131372014);
     if ((localImageView3 != null) && (localImageView2 != null) && (localImageView1 != null))
     {
       localImageView1.setVisibility(8);
@@ -805,7 +805,7 @@ public class NewMyStorySegment
   public void b_(BaseViewHolder paramBaseViewHolder)
   {
     super.b_(paramBaseViewHolder);
-    ((ImageView)paramBaseViewHolder.a(2131371843)).setVisibility(0);
+    ((ImageView)paramBaseViewHolder.a(2131372012)).setVisibility(0);
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.a().size() > paramBaseViewHolder.jdField_b_of_type_Int) {
       b(paramBaseViewHolder, ((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistMyStorys.a().get(paramBaseViewHolder.jdField_b_of_type_Int)).mUploadStatus);
     }

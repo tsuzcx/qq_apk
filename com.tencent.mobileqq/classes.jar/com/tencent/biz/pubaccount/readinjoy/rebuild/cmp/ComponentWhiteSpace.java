@@ -30,7 +30,7 @@ public class ComponentWhiteSpace
   
   public void a(Context paramContext)
   {
-    setBackgroundResource(2131493464);
+    setBackgroundResource(2131493470);
   }
   
   public void b()

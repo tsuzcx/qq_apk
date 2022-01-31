@@ -1,37 +1,29 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class absc
-  implements Handler.Callback
+  implements Runnable
 {
-  public absc(EmoticonFromGroupManager paramEmoticonFromGroupManager) {}
+  public absc(ConfessPlugin paramConfessPlugin, int paramInt1, int paramInt2) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    try
     {
-    default: 
-      return true;
-    case 1: 
-      QQToast.a(EmoticonFromGroupManager.a(this.a), 2131428195, 0).b(2131558448);
-      return true;
+      QRUtils.a(this.jdField_a_of_type_Int, this.b);
+      return;
     }
-    if (paramMessage.obj != null)
+    catch (Exception localException)
     {
-      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
-      this.a.a(paramMessage);
-      return true;
+      localException.printStackTrace();
+      QLog.d("ConfessPlugin", 1, "showQQToast error: " + localException.getMessage());
     }
-    QQToast.a(EmoticonFromGroupManager.a(this.a), 1, 2131434484, 0).b(2131558448);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absc
  * JD-Core Version:    0.7.0.1
  */

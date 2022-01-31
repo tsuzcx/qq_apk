@@ -12,6 +12,7 @@ public class RecentEfficientItemBuilder$RecentEfficientItemBuilderHolder
   public DragTextView a;
   public RecentDynamicAvatarView a;
   public SingleLineTextView a;
+  public ImageView b;
   public SingleLineTextView b;
 }
 

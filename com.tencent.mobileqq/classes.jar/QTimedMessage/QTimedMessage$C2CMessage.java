@@ -27,7 +27,7 @@ public final class QTimedMessage$C2CMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     QTimedMessage.QTimedMessage.C2CMessage
  * JD-Core Version:    0.7.0.1
  */

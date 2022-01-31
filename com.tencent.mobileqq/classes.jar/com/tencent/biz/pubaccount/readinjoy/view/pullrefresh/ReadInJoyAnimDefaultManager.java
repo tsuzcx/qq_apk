@@ -24,7 +24,7 @@ public class ReadInJoyAnimDefaultManager
   public View a(ViewGroup paramViewGroup)
   {
     if (this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader == null) {
-      this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969238, paramViewGroup, false));
+      this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969239, paramViewGroup, false));
     }
     return (View)this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader;
   }
@@ -35,7 +35,7 @@ public class ReadInJoyAnimDefaultManager
       return;
     }
     this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a(0L);
-    this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.W_();
+    this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.Y_();
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -51,7 +51,7 @@ public class ReadInJoyAnimDefaultManager
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.W_();
+      this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.Y_();
       return;
     }
     this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.c(0L);

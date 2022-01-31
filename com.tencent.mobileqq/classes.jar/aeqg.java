@@ -1,22 +1,25 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class aeqg
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public aeqg(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public aeqg(NearbyGuideActivity paramNearbyGuideActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://buluo.qq.com/mobile/xxq_setting.html?_wv=1027&uin=" + this.a.a.app.c());
-    paramView.putExtra("reqType", 1);
-    this.a.a.startActivity(paramView);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.h();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.i();
   }
 }
 

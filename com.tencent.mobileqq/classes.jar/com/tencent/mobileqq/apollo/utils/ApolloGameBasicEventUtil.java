@@ -47,10 +47,10 @@ import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yst;
-import ysu;
-import ysv;
-import ysw;
+import yvz;
+import ywa;
+import ywb;
+import ywc;
 
 public class ApolloGameBasicEventUtil
 {
@@ -233,7 +233,7 @@ public class ApolloGameBasicEventUtil
           ApolloDress localApolloDress = localObject[paramInt2];
           i = localApolloDress.b;
           int[] arrayOfInt = localApolloDress.a();
-          if ((ApolloActionHelper.a(paramString1, localApolloDress.a, arrayOfInt, paramQQAppInterface, new ysw(paramNotifyGameDressReady, paramInt1, paramQQAppInterface, paramString2, paramString3, localApolloDress, arrayOfInt))) && (localApolloDress.a != 0))
+          if ((ApolloActionHelper.a(paramString1, localApolloDress.a, arrayOfInt, paramQQAppInterface, new ywc(paramNotifyGameDressReady, paramInt1, paramQQAppInterface, paramString2, paramString3, localApolloDress, arrayOfInt))) && (localApolloDress.a != 0))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ApolloGameBasicEventUtil", 2, "valid role and dress RSC.");
@@ -421,7 +421,7 @@ public class ApolloGameBasicEventUtil
       }
       for (;;)
       {
-        a(paramLong, paramQQAppInterface, paramString2, "", 1, paramString1, new yst());
+        a(paramLong, paramQQAppInterface, paramString2, "", 1, paramString1, new yvz());
         return;
         QLog.w("ApolloGameBasicEventUtil", 1, "This branch cann't be reached. If so, something illegal must have been happening.");
         paramString2 = "";
@@ -456,7 +456,7 @@ public class ApolloGameBasicEventUtil
           ApolloDress localApolloDress = localObject[paramInt];
           i = localApolloDress.b;
           int[] arrayOfInt = localApolloDress.a();
-          if ((ApolloActionHelper.a(paramString1, localApolloDress.a, arrayOfInt, paramQQAppInterface, new ysv(paramNotifyDressReady, paramLong, paramQQAppInterface, paramString2, paramString3, localApolloDress, arrayOfInt))) && (localApolloDress.a != 0))
+          if ((ApolloActionHelper.a(paramString1, localApolloDress.a, arrayOfInt, paramQQAppInterface, new ywb(paramNotifyDressReady, paramLong, paramQQAppInterface, paramString2, paramString3, localApolloDress, arrayOfInt))) && (localApolloDress.a != 0))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ApolloGameBasicEventUtil", 2, "valid role and dress RSC.");
@@ -858,7 +858,7 @@ public class ApolloGameBasicEventUtil
         if (!TextUtils.isEmpty(paramString2))
         {
           QLog.i("ApolloGameBasicEventUtil", 1, "pass uin.");
-          a(paramInt, paramQQAppInterface, paramString2, str, 1, paramString1, new ysu(i));
+          a(paramInt, paramQQAppInterface, paramString2, str, 1, paramString1, new ywa(i));
           return;
         }
       }

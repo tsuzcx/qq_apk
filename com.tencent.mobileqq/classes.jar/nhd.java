@@ -1,13 +1,20 @@
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
 
-class nhd
-  implements Runnable
+public class nhd
+  extends AddPollViewJob
 {
-  nhd(nhc paramnhc) {}
-  
-  public void run()
+  public nhd(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareWeChatData paramShareWeChatData)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(this.a.a.jdField_a_of_type_Int);
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.e = ((String)a("result"));
+    return true;
   }
 }
 

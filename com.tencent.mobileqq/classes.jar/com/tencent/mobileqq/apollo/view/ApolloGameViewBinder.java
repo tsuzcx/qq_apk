@@ -53,8 +53,8 @@ import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import yuk;
-import yul;
+import yxq;
+import yxr;
 
 public class ApolloGameViewBinder
   extends ApolloViewBinder
@@ -77,7 +77,7 @@ public class ApolloGameViewBinder
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private CalloutPopupWindow jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow;
-  private yul jdField_a_of_type_Yul;
+  private yxr jdField_a_of_type_Yxr;
   int[] jdField_a_of_type_ArrayOfInt = { 1002, 1001, 1000, 1005 };
   private int jdField_b_of_type_Int = -1;
   private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
@@ -126,29 +126,29 @@ public class ApolloGameViewBinder
     if (this.jdField_a_of_type_AndroidViewViewGroup != paramView)
     {
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363116));
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363117));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363118));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363119));
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363134));
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363135));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363136));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363137));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363121));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363139));
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363122));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363140));
       this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363120));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363138));
       this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363123));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131363124));
+      this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363141));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131363142));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131363125));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131363143));
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363126));
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363144));
       this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363127));
+      this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363145));
       this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363128));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_d_of_type_AndroidViewViewGroup.findViewById(2131363129));
-      this.e = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363130));
+      this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363146));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_d_of_type_AndroidViewViewGroup.findViewById(2131363147));
+      this.e = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363148));
       this.jdField_d_of_type_AndroidViewViewGroup.setVisibility(8);
       this.e.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
@@ -212,8 +212,8 @@ public class ApolloGameViewBinder
       {
         ((SparseArray)localObject).remove(2000);
         ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, paramApolloGameData.gameId, 2000);
-        if (this.jdField_a_of_type_Yul != null) {
-          this.jdField_a_of_type_Yul.notifyDataSetChanged();
+        if (this.jdField_a_of_type_Yxr != null) {
+          this.jdField_a_of_type_Yxr.notifyDataSetChanged();
         }
       }
     }
@@ -267,7 +267,7 @@ public class ApolloGameViewBinder
       localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
       if (this.jdField_b_of_type_JavaUtilList.size() == 1)
       {
-        j = 2130838005;
+        j = 2130838008;
         ((ImageView)localObject1).setImageResource(j);
       }
     }
@@ -412,7 +412,7 @@ public class ApolloGameViewBinder
     {
       VipUtils.a((AppInterface)localObject1, "cmshow", "Apollo", "activity_show", k, 0, new String[] { String.valueOf(m), paramApolloGameData });
       return;
-      j = 2130838071;
+      j = 2130838074;
       break label94;
       label1126:
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -422,7 +422,7 @@ public class ApolloGameViewBinder
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetImageView.setTag(null);
       break label193;
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838049);
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838052);
       QLog.e("ApolloGameViewBinder", 1, "[updateGameItemView] not found drawable ");
       break label340;
       j = ((ApolloGameRedDot)localObject1).mDotId;
@@ -545,21 +545,21 @@ public class ApolloGameViewBinder
       {
       default: 
         localObject1 = (ViewGroup)LayoutInflater.from(this.jdField_b_of_type_AndroidContentContext).inflate(2130968677, null);
-        localObject2 = (XListView)((ViewGroup)localObject1).findViewById(2131363116);
+        localObject2 = (XListView)((ViewGroup)localObject1).findViewById(2131363134);
         return localObject1;
       }
       localObject2 = (ViewGroup)LayoutInflater.from(this.jdField_b_of_type_AndroidContentContext).inflate(2130968681, null);
-      localTextView = (TextView)((ViewGroup)localObject2).findViewById(2131363163);
+      localTextView = (TextView)((ViewGroup)localObject2).findViewById(2131363181);
       if (ApolloGameManager.a())
       {
         localTextView.setOnClickListener(null);
-        localTextView.setText(this.jdField_b_of_type_AndroidContentContext.getResources().getString(2131438219));
+        localTextView.setText(this.jdField_b_of_type_AndroidContentContext.getResources().getString(2131438237));
         return localObject2;
       }
       localObject1 = localObject2;
     } while (!NetworkUtil.g(this.jdField_b_of_type_AndroidContentContext));
     localTextView.setText("点击刷新");
-    localTextView.setOnClickListener(new yuk(this));
+    localTextView.setOnClickListener(new yxq(this));
     return localObject2;
   }
   
@@ -589,8 +589,8 @@ public class ApolloGameViewBinder
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
-    if (this.jdField_a_of_type_Yul != null) {
-      this.jdField_a_of_type_Yul.a();
+    if (this.jdField_a_of_type_Yxr != null) {
+      this.jdField_a_of_type_Yxr.a();
     }
     if ((a()) && (ApolloGameManager.a("apollo_aio_game_guide") == -1))
     {
@@ -655,11 +655,11 @@ public class ApolloGameViewBinder
       if (QLog.isColorLevel()) {
         QLog.d("ApolloGameViewBinder", 2, "[updatePanel] prepare list data");
       }
-      if (this.jdField_a_of_type_Yul == null) {
-        this.jdField_a_of_type_Yul = new yul(this.jdField_b_of_type_AndroidContentContext, this);
+      if (this.jdField_a_of_type_Yxr == null) {
+        this.jdField_a_of_type_Yxr = new yxr(this.jdField_b_of_type_AndroidContentContext, this);
       }
-      this.jdField_a_of_type_Yul.a(this.jdField_b_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Yul);
+      this.jdField_a_of_type_Yxr.a(this.jdField_b_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Yxr);
     }
     if (QLog.isColorLevel()) {
       QLog.d("ApolloGameViewBinder", 2, new Object[] { "[updatePanel] jumpGameInfo=", null });

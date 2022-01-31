@@ -1,23 +1,20 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import com.tencent.qphone.base.util.QLog;
 
 public class xrz
-  implements Runnable
+  implements CameraCover.PictureCallback
 {
-  public xrz(RMVideoRecordState paramRMVideoRecordState) {}
+  public xrz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void a_(String paramString)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.b())
-    {
-      SLog.c("RMRecordState", "run record finish, but state is not right");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
     }
-    this.a.b();
-    localRMVideoStateMgr.a.z();
+    this.a.a.b();
+    NewFlowCameraActivity.a(this.a, paramString, true);
   }
 }
 

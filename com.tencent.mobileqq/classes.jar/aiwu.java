@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class aiwu
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aiwu(ImageItem paramImageItem, EditItemInfoBase paramEditItemInfoBase) {}
+  public aiwu(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    ImageItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiImageItem, (ImageInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase, true);
+    if (this.a.b == null) {
+      return;
+    }
+    this.a.b.post(new aiwv(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwu
  * JD-Core Version:    0.7.0.1
  */

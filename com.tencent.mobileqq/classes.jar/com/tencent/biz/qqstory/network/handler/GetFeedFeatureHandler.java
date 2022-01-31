@@ -24,7 +24,7 @@ import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ned;
+import nfn;
 
 public class GetFeedFeatureHandler
   extends BatchNetHandler
@@ -81,7 +81,7 @@ public class GetFeedFeatureHandler
   
   public void a()
   {
-    ThreadManager.post(new ned(this), 8, null, true);
+    ThreadManager.post(new nfn(this), 8, null, true);
   }
   
   public void a(@NonNull NetworkRequest paramNetworkRequest, @Nullable BaseResponse paramBaseResponse, @NonNull ErrorMessage paramErrorMessage)

@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
 
 public class ajsv
+  implements Runnable
 {
-  public static final KapalaiAdapterUtil a = new KapalaiAdapterUtil(null);
+  public ajsv(PublishItemContainer paramPublishItemContainer) {}
+  
+  public void run()
+  {
+    this.a.fullScroll(66);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsv
  * JD-Core Version:    0.7.0.1
  */

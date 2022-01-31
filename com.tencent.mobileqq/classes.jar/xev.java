@@ -1,32 +1,42 @@
-import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.graphics.BitmapFactory;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.util.DisplayUtil;
+import mqq.app.AppRuntime;
 
-public class xev
-  implements WtTicketPromise
+class xev
+  implements PreloadManager.OnGetPathListener
 {
-  public xev(VoiceRedPacketHelper paramVoiceRedPacketHelper, xew paramxew) {}
+  xev(xeu paramxeu) {}
   
-  public void Done(Ticket paramTicket)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDialog.isShowing()) {}
+    for (;;)
     {
-      paramTicket = new String(paramTicket._sig);
-      this.jdField_a_of_type_Xew.a(paramTicket);
       return;
+      if (paramInt == 0) {
+        try
+        {
+          paramPathResult = GoldMsgDialog.a(BitmapFactory.decodeFile(paramPathResult.filePath), DisplayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDialog.getContext(), 5.0F), true);
+          if (paramPathResult != null)
+          {
+            this.a.jdField_a_of_type_MqqAppAppRuntime.runOnUiThread(new xew(this, paramPathResult));
+            return;
+          }
+        }
+        catch (OutOfMemoryError paramPathResult)
+        {
+          paramPathResult.printStackTrace();
+          return;
+        }
+        catch (Exception paramPathResult)
+        {
+          paramPathResult.printStackTrace();
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey is null");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey failed");
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey time out");
   }
 }
 

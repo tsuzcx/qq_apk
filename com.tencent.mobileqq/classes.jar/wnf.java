@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.device.devicemgr.SmartDeviceObserver;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import java.util.ArrayList;
 
 public class wnf
-  extends CardObserver
+  extends SmartDeviceObserver
 {
-  public wnf(MainAssistObserver paramMainAssistObserver) {}
+  public wnf(DeviceFragment paramDeviceFragment) {}
   
-  protected void e(boolean paramBoolean)
+  protected void a(ArrayList paramArrayList)
   {
-    if (paramBoolean) {
-      this.a.e();
+    if (this.a.e)
+    {
+      this.a.e = false;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener.a(2, true, null);
+      }
     }
-  }
-  
-  protected void m(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.e();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter == null) {
+      return;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.a = ((ArrayList)paramArrayList.clone());
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.notifyDataSetChanged();
   }
 }
 

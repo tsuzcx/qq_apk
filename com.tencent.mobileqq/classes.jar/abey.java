@@ -1,62 +1,18 @@
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.config.ARMapConfig.WealthGodConfig;
 
-public class abey
-  implements Executor
+public final class abey
+  implements Parcelable.Creator
 {
-  final abfa jdField_a_of_type_Abfa = new abfa(30);
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  
-  protected void a()
+  public ARMapConfig.WealthGodConfig a(Parcel paramParcel)
   {
-    try
-    {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_Abfa.a();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null)
-      {
-        QLog.d("QQAnimationDrawable", 2, "scheduleNext start");
-        QQAnimationDrawable.a.execute(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      return;
-    }
-    finally {}
+    return new ARMapConfig.WealthGodConfig(paramParcel);
   }
   
-  public void b()
+  public ARMapConfig.WealthGodConfig[] a(int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_Abfa.a();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void execute(Runnable paramRunnable)
-  {
-    try
-    {
-      QLog.d("QQAnimationDrawable", 2, "SerialExecutor excute");
-      this.jdField_a_of_type_Abfa.a(new abez(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null)
-      {
-        QLog.d("QQAnimationDrawable", 2, "SerialExecutor mActive == null scheduleNext");
-        a();
-      }
-      return;
-    }
-    finally
-    {
-      paramRunnable = finally;
-      throw paramRunnable;
-    }
+    return new ARMapConfig.WealthGodConfig[paramInt];
   }
 }
 

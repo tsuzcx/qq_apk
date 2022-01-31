@@ -1,34 +1,18 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
+import com.tencent.mobileqq.armap.SdCardImageAnimView;
 
 public class abdd
   implements Runnable
 {
-  public abdd(SelectCoverActivity paramSelectCoverActivity) {}
+  public abdd(SdCardImageAnimView paramSdCardImageAnimView) {}
   
   public void run()
   {
-    if (this.a.b) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((!this.a.a()) || (this.a.b));
-      int i = 0;
-      while (i < this.a.a)
-      {
-        if (!this.a.b) {
-          this.a.a(i);
-        }
-        i += 1;
-      }
-    } while (this.a.d != 1);
-    SelectCoverActivity.a(this.a);
+    SdCardImageAnimView.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abdd
  * JD-Core Version:    0.7.0.1
  */

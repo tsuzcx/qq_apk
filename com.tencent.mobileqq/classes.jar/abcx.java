@@ -1,42 +1,55 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class abcx
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public abcx(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  public abcx(NonMainAppHeadLoader paramNonMainAppHeadLoader) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-    this.a.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    if (this.a.jdField_e_of_type_Boolean) {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    for (;;)
+    if ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_a_of_type_Int)) {}
+    ArrayList localArrayList;
+    do
     {
-      this.a.d.setVisibility(4);
-      this.a.c.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(4);
-      this.a.jdField_e_of_type_AndroidWidgetTextView.setVisibility(4);
       return;
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+      paramContext = paramIntent.getStringArrayListExtra("uinList");
+      localArrayList = paramIntent.getStringArrayListExtra("headPathList");
+    } while ((paramContext == null) || (localArrayList == null));
+    int j = paramContext.size();
+    if (QLog.isColorLevel()) {
+      QLog.d("NonMainAppHeadLoader", 2, "onReceive, uinListSize:" + j + " reqSize:" + this.a.jdField_a_of_type_JavaUtilHashSet.size());
     }
+    paramIntent = new ArrayList(this.a.jdField_a_of_type_JavaUtilHashSet.size());
+    int i = 0;
+    while (i < j)
+    {
+      String str = (String)paramContext.get(i);
+      if (this.a.jdField_a_of_type_JavaUtilHashSet.contains(str))
+      {
+        this.a.jdField_a_of_type_JavaUtilHashSet.remove(str);
+        paramIntent.add(str);
+      }
+      this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, localArrayList.get(i));
+      i += 1;
+    }
+    paramContext = Message.obtain();
+    paramContext.obj = paramIntent;
+    paramContext.what = 1001;
+    this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abcx
  * JD-Core Version:    0.7.0.1
  */

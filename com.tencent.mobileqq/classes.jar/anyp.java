@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.io.File;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
 
-public final class anyp
+public class anyp
   implements Runnable
 {
-  public anyp(String paramString1, String paramString2) {}
+  public anyp(DoodleEditView paramDoodleEditView) {}
   
   public void run()
   {
-    FileUtils.a(QIMPtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "save Config to file finish.");
-    }
+    this.a.setVisibility(0);
   }
 }
 

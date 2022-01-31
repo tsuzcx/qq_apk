@@ -28,9 +28,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.av.camera.QavCameraUsage;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import com.tencent.biz.qqstory.takevideo.SlideShowPhotoListManager;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager.SlideShowActionListener;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
@@ -81,6 +83,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -92,33 +95,33 @@ import java.util.Map.Entry;
 import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
-import wtu;
-import wtv;
-import wtw;
-import wtx;
-import wty;
-import wtz;
-import wua;
-import wuc;
-import wud;
-import wue;
-import wuf;
-import wum;
-import wun;
-import wuq;
-import wur;
-import wus;
-import wut;
+import wwz;
+import wxa;
+import wxb;
+import wxc;
+import wxd;
+import wxe;
+import wxf;
+import wxh;
+import wxi;
+import wxj;
+import wxk;
+import wxr;
+import wxs;
+import wxv;
+import wxw;
+import wxx;
+import wxy;
 
 public class PhotoListActivity
   extends PeakActivity
-  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, MediaScanner.OnMediaScannerListener
+  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, SlideShowPhotoListManager.SlideShowActionListener, MediaScanner.OnMediaScannerListener
 {
   static int jdField_a_of_type_Int = 19922944;
   public static ArrayList a;
   public static HashMap a;
   private static Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  private static wut jdField_a_of_type_Wut = new wut();
+  private static wxy jdField_a_of_type_Wxy = new wxy();
   public static boolean a;
   public static boolean b;
   public static long f;
@@ -159,12 +162,12 @@ public class PhotoListActivity
   public LocalMediaInfo a;
   MediaFileFilter jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter;
   public PhotoListActivity.onSelectionChangeListener a;
-  AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new wuf(this);
-  GestureSelectGridView.OnSelectListener jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener = new wtu(this);
+  AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new wxk(this);
+  GestureSelectGridView.OnSelectListener jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener = new wwz(this);
   public GestureSelectGridView a;
   public String a;
   private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap;
-  public wur a;
+  public wxw a;
   private boolean aa;
   private boolean ab;
   private boolean ac;
@@ -273,7 +276,7 @@ public class PhotoListActivity
   public PhotoListActivity()
   {
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Wur = null;
+    this.jdField_a_of_type_Wxw = null;
     this.jdField_i_of_type_Int = 1;
     this.jdField_j_of_type_Int = 1;
     this.jdField_i_of_type_Boolean = true;
@@ -286,7 +289,7 @@ public class PhotoListActivity
     this.jdField_p_of_type_Int = 0;
     this.jdField_q_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = null;
-    this.jdField_a_of_type_AndroidOsHandler = new wuq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new wxv(this);
     this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
     this.jdField_c_of_type_JavaUtilHashSet = new HashSet();
     this.jdField_g_of_type_Long = 0L;
@@ -300,11 +303,11 @@ public class PhotoListActivity
     {
       paramLocalMediaInfo = MimeHelper.a(paramLocalMediaInfo.mMimeType);
       if ((!this.al) || (!this.I)) {
-        break label87;
+        break label88;
       }
       str1 = "最多上传" + this.jdField_i_of_type_Int + "个视频或图片";
     }
-    label87:
+    label88:
     do
     {
       do
@@ -392,9 +395,9 @@ public class PhotoListActivity
       if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 <= paramInt2) && (paramInt1 <= paramInt2)) {
         try
         {
-          if (paramInt1 < this.jdField_a_of_type_Wur.getCount())
+          if (paramInt1 < this.jdField_a_of_type_Wxw.getCount())
           {
-            LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_Wur.a(paramInt1);
+            LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_Wxw.a(paramInt1);
             if (localLocalMediaInfo.mMimeType.equals("image/jpeg")) {
               localArrayList.add(localLocalMediaInfo);
             }
@@ -408,6 +411,46 @@ public class PhotoListActivity
       }
     }
     return localArrayList;
+  }
+  
+  private void a(int paramInt)
+  {
+    int i1 = 2;
+    if (TextUtils.isEmpty(this.jdField_n_of_type_JavaLangString)) {
+      return;
+    }
+    int i2 = this.jdField_c_of_type_JavaUtilArrayList.size();
+    int i3;
+    if (i2 == 0)
+    {
+      i3 = 601;
+      i2 = 0;
+      switch (paramInt)
+      {
+      default: 
+        return;
+      case 2131363245: 
+        i1 = 3;
+      }
+    }
+    for (;;)
+    {
+      LpReportInfo_pf00064.allReport(i3, i2, i1);
+      return;
+      i3 = 600;
+      if (i2 == 1)
+      {
+        i2 = 1;
+        break;
+      }
+      i2 = 2;
+      break;
+      i1 = 4;
+      continue;
+      i1 = 1;
+      continue;
+      i1 = 5;
+    }
   }
   
   private void a(int paramInt, boolean paramBoolean)
@@ -424,7 +467,7 @@ public class PhotoListActivity
         i1 += 1;
         break;
         Object localObject = this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getChildAt(i1 - i2);
-        LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_Wur.a(i1);
+        LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_Wxw.a(i1);
         if (localObject == null)
         {
           if (QLog.isColorLevel()) {
@@ -440,15 +483,15 @@ public class PhotoListActivity
         else
         {
           int i4;
-          wus localwus;
+          wxx localwxx;
           if (paramInt != i1)
           {
             i4 = this.jdField_c_of_type_JavaUtilArrayList.indexOf(localLocalMediaInfo.path);
             if (i4 >= 0)
             {
-              localwus = (wus)((View)localObject).getTag();
-              if ((localwus != null) && (localwus.a != null)) {
-                localwus.a.setCheckedNumber(i4 + 1);
+              localwxx = (wxx)((View)localObject).getTag();
+              if ((localwxx != null) && (localwxx.a != null)) {
+                localwxx.a.setCheckedNumber(i4 + 1);
               }
             }
           }
@@ -457,13 +500,13 @@ public class PhotoListActivity
             i4 = AlbumUtil.a(localLocalMediaInfo);
             if ((i4 == 0) || (i4 == 1))
             {
-              localwus = (wus)((View)localObject).getTag();
-              ImageView localImageView = localwus.c;
+              localwxx = (wxx)((View)localObject).getTag();
+              ImageView localImageView = localwxx.c;
               int i5 = localLocalMediaInfo.selectStatus;
               if (i5 == 1)
               {
                 localImageView.setVisibility(0);
-                localwus.a.setCheckedNumber(this.jdField_c_of_type_JavaUtilArrayList.indexOf(localLocalMediaInfo.path) + 1);
+                localwxx.a.setCheckedNumber(this.jdField_c_of_type_JavaUtilArrayList.indexOf(localLocalMediaInfo.path) + 1);
                 if (((View)localObject).getBackground() != null) {
                   ((View)localObject).setBackgroundDrawable(null);
                 }
@@ -473,17 +516,17 @@ public class PhotoListActivity
                 if (!AppSetting.jdField_b_of_type_Boolean) {
                   break label423;
                 }
-                localObject = PhotoUtils.a(i4, localLocalMediaInfo, i1, localwus.a.isChecked());
-                localwus.a.setContentDescription((CharSequence)localObject);
+                localObject = PhotoUtils.a(i4, localLocalMediaInfo, i1, localwxx.a.isChecked());
+                localwxx.a.setContentDescription((CharSequence)localObject);
                 break;
                 if (i5 == 3)
                 {
                   localImageView.setVisibility(4);
-                  localwus.a.setChecked(false);
+                  localwxx.a.setChecked(false);
                   if (!this.y)
                   {
                     if (((View)localObject).getBackground() == null) {
-                      ((View)localObject).setBackgroundResource(2130837753);
+                      ((View)localObject).setBackgroundResource(2130837756);
                     }
                   }
                   else {
@@ -493,7 +536,7 @@ public class PhotoListActivity
                 else
                 {
                   localImageView.setVisibility(4);
-                  localwus.a.setChecked(false);
+                  localwxx.a.setChecked(false);
                   if (((View)localObject).getBackground() != null) {
                     ((View)localObject).setBackgroundDrawable(null);
                   }
@@ -539,26 +582,26 @@ public class PhotoListActivity
   
   private boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_Wur.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.jdField_a_of_type_Wxw.jdField_a_of_type_JavaUtilArrayList != null)
     {
       int i1 = 0;
       for (boolean bool1 = false;; bool1 = bool2)
       {
         bool2 = bool1;
-        if (i1 >= this.jdField_a_of_type_Wur.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (i1 >= this.jdField_a_of_type_Wxw.jdField_a_of_type_JavaUtilArrayList.size()) {
           break;
         }
         bool2 = bool1;
-        if (this.jdField_a_of_type_Wur.jdField_a_of_type_JavaUtilArrayList.get(i1) != null)
+        if (this.jdField_a_of_type_Wxw.jdField_a_of_type_JavaUtilArrayList.get(i1) != null)
         {
           bool2 = bool1;
-          if (((LocalMediaInfo)this.jdField_a_of_type_Wur.jdField_a_of_type_JavaUtilArrayList.get(i1)).path != null)
+          if (((LocalMediaInfo)this.jdField_a_of_type_Wxw.jdField_a_of_type_JavaUtilArrayList.get(i1)).path != null)
           {
             bool2 = bool1;
-            if (((LocalMediaInfo)this.jdField_a_of_type_Wur.jdField_a_of_type_JavaUtilArrayList.get(i1)).path.equals(paramString))
+            if (((LocalMediaInfo)this.jdField_a_of_type_Wxw.jdField_a_of_type_JavaUtilArrayList.get(i1)).path.equals(paramString))
             {
               bool2 = bool1;
-              if (AlbumUtil.a((LocalMediaInfo)this.jdField_a_of_type_Wur.jdField_a_of_type_JavaUtilArrayList.get(i1)) == 1) {
+              if (AlbumUtil.a((LocalMediaInfo)this.jdField_a_of_type_Wxw.jdField_a_of_type_JavaUtilArrayList.get(i1)) == 1) {
                 bool2 = true;
               }
             }
@@ -572,61 +615,6 @@ public class PhotoListActivity
   }
   
   private void b(int paramInt)
-  {
-    int i1 = 2;
-    if (TextUtils.isEmpty(this.jdField_n_of_type_JavaLangString)) {
-      return;
-    }
-    int i2 = this.jdField_c_of_type_JavaUtilArrayList.size();
-    int i3;
-    if (i2 == 0)
-    {
-      i3 = 601;
-      i2 = 0;
-      switch (paramInt)
-      {
-      default: 
-        return;
-      case 2131363227: 
-        i1 = 3;
-      }
-    }
-    for (;;)
-    {
-      LpReportInfo_pf00064.allReport(i3, i2, i1);
-      return;
-      i3 = 600;
-      if (i2 == 1)
-      {
-        i2 = 1;
-        break;
-      }
-      i2 = 2;
-      break;
-      i1 = 4;
-      continue;
-      i1 = 1;
-      continue;
-      i1 = 5;
-    }
-  }
-  
-  private void b(String paramString)
-  {
-    try
-    {
-      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      localIntent.setData(Uri.fromFile(new File(paramString)));
-      sendBroadcast(localIntent);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QZLog.e("PhotoListActivity", 2, new Object[] { "scanMediaFile :", paramString });
-    }
-  }
-  
-  private void c(int paramInt)
   {
     HashMap localHashMap = new HashMap();
     switch (paramInt)
@@ -661,10 +649,25 @@ public class PhotoListActivity
   
   private void c(Intent paramIntent)
   {
-    c(5);
+    b(5);
     paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
     if ((paramIntent != null) && (paramIntent.size() > 0) && (!TextUtils.isEmpty((CharSequence)paramIntent.get(0)))) {
-      ThreadManager.postImmediately(new wum(this, (String)paramIntent.get(0)), null, true);
+      ThreadManager.postImmediately(new wxr(this, (String)paramIntent.get(0)), null, true);
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    try
+    {
+      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      localIntent.setData(Uri.fromFile(new File(paramString)));
+      sendBroadcast(localIntent);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QZLog.e("PhotoListActivity", 2, new Object[] { "scanMediaFile :", paramString });
     }
   }
   
@@ -685,11 +688,11 @@ public class PhotoListActivity
   private void d(Intent paramIntent)
   {
     c();
-    c(4);
+    b(4);
     this.jdField_g_of_type_Long = System.currentTimeMillis();
     paramIntent = new EncodeVideoTask(this, paramIntent.getStringExtra("video_new_fake_vid"), true, new EncodeVideoTask.ThumbInfo(), true);
     paramIntent.a(true);
-    paramIntent.a(new wun(this));
+    paramIntent.a(new wxs(this));
     paramIntent.execute(new Void[0]);
   }
   
@@ -728,7 +731,7 @@ public class PhotoListActivity
     {
       try
       {
-        if ((!this.af) && (this.jdField_a_of_type_Wur != null) && (this.jdField_a_of_type_Wur.getCount() > 0)) {
+        if ((!this.af) && (this.jdField_a_of_type_Wxw != null) && (this.jdField_a_of_type_Wxw.getCount() > 0)) {
           m();
         }
         int i2 = QzoneConfig.getInstance().getConfig("PhotoAlbum", "MachineLearningExposedMediaUpperBound", 50) - this.jdField_c_of_type_JavaUtilHashMap.size();
@@ -832,7 +835,7 @@ public class PhotoListActivity
         if (((QZoneVideoCommonUtils.VideoSupport)localObject).a() != null) {
           QZLog.e("PhotoListActivity", 2, new Object[] { "gotoCamera fail", ((QZoneVideoCommonUtils.VideoSupport)localObject).a() });
         }
-        c(2);
+        b(2);
         return;
         QQToast.a(this, str, 0).a();
       }
@@ -843,7 +846,7 @@ public class PhotoListActivity
     ((Intent)localObject).putExtra("PhotoConst.PLUGIN_APK", "qzone_plugin.apk");
     ((Intent)localObject).putExtra("DirectBackToQzone", true);
     ((Intent)localObject).putExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME", PhotoListActivity.class.getClass().getName());
-    ((Intent)localObject).putExtra("pic_confirm_text", getString(2131435888));
+    ((Intent)localObject).putExtra("pic_confirm_text", getString(2131435905));
     ((Intent)localObject).putExtra("enable_edit_video", true);
     ((Intent)localObject).putExtra("enable_input_text", false);
     ((Intent)localObject).putExtra("enable_priv_list", false);
@@ -857,7 +860,7 @@ public class PhotoListActivity
     ((Intent)localObject).putExtra("key_latitude", getIntent().getDoubleExtra("key_latitude", 4.9E-324D));
     ((Intent)localObject).putExtra("key_longtitude", getIntent().getDoubleExtra("key_longtitude", 4.9E-324D));
     startActivity((Intent)localObject);
-    c(3);
+    b(3);
   }
   
   private void l()
@@ -939,44 +942,44 @@ public class PhotoListActivity
   @TargetApi(9)
   void a()
   {
-    Object localObject = (RelativeLayout)findViewById(2131362822);
+    Object localObject = (RelativeLayout)findViewById(2131362840);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       ((RelativeLayout)localObject).setFitsSystemWindows(true);
       ((RelativeLayout)localObject).setPadding(0, ImmersiveUtils.a(this), 0, 0);
     }
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363227));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
     label112:
     int i1;
     if (this.X)
     {
       this.jdField_e_of_type_AndroidWidgetTextView.setText("微云");
       this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363410));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363428));
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
       if (!this.X) {
-        break label849;
+        break label855;
       }
       this.jdField_f_of_type_AndroidWidgetTextView.setText("筛选");
       this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363363));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363381));
       if (this.jdField_a_of_type_JavaLangString == null) {
-        break label862;
+        break label868;
       }
       localObject = this.jdField_a_of_type_JavaLangString;
       label146:
       setTitle((CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365502));
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131365503));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365504));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369410));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365524));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131365525));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365526));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369476));
       g();
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131370830));
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131365505));
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131366423);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131370071);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370074));
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)findViewById(2131370831));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131370979));
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131365527));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131366450);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131370182);
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370185));
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)findViewById(2131370980));
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setScrollBarStyle(0);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setNumColumns(3);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setColumnWidth(this.jdField_b_of_type_Int);
@@ -987,24 +990,24 @@ public class PhotoListActivity
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnIndexChangedListener(this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setMaximumVelocity((int)(2500.0F * getResources().getDisplayMetrics().density));
       if (this.ae) {
-        this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnScrollListener(new wtz(this));
+        this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnScrollListener(new wxe(this));
       }
-      this.jdField_a_of_type_Wur = new wur(this);
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setAdapter(this.jdField_a_of_type_Wur);
+      this.jdField_a_of_type_Wxw = new wxw(this);
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setAdapter(this.jdField_a_of_type_Wxw);
       String str = this.jdField_h_of_type_JavaLangString;
       localObject = str;
       if (TextUtils.isEmpty(str))
       {
         if (!this.E) {
-          break label884;
+          break label890;
         }
-        localObject = getString(2131435889);
+        localObject = getString(2131435906);
       }
       label485:
       this.jdField_c_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
       localObject = this.jdField_a_of_type_AndroidViewView;
       if ((!this.jdField_i_of_type_Boolean) && (this.jdField_h_of_type_Int != 2) && (!this.N)) {
-        break label913;
+        break label919;
       }
       i1 = 8;
       label523:
@@ -1012,10 +1015,10 @@ public class PhotoListActivity
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (!this.jdField_m_of_type_Boolean) {
-        break label929;
+        break label935;
       }
       if (this.jdField_k_of_type_Int != 9501) {
-        break label918;
+        break label924;
       }
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       label570:
@@ -1033,7 +1036,7 @@ public class PhotoListActivity
       e();
       if (this.N)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideShowPhotoListManager = new SlideShowPhotoListManager(this, this.jdField_c_of_type_JavaUtilArrayList);
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager = new SlideShowPhotoListManager(this, this, this.jdField_c_of_type_JavaUtilArrayList, this.jdField_i_of_type_Int, 0);
         if (getIntent().getBooleanExtra("report_first_exposure", true))
         {
           getIntent().putExtra("report_first_exposure", false);
@@ -1043,15 +1046,15 @@ public class PhotoListActivity
       if ((this.z) && (this.jdField_e_of_type_JavaLangString != null))
       {
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370075));
-        this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_b_of_type_AndroidViewView.findViewById(2131370073));
+        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370186));
+        this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_b_of_type_AndroidViewView.findViewById(2131370184));
         this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
         this.jdField_b_of_type_AndroidWidgetCheckBox.setOnClickListener(this);
         this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
         this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
         this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-        this.jdField_c_of_type_AndroidViewView = findViewById(2131370076);
-        this.jdField_d_of_type_AndroidViewView = findViewById(2131370072);
+        this.jdField_c_of_type_AndroidViewView = findViewById(2131370187);
+        this.jdField_d_of_type_AndroidViewView = findViewById(2131370183);
         this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
       }
       if (this.K) {
@@ -1060,10 +1063,10 @@ public class PhotoListActivity
       return;
       this.jdField_e_of_type_AndroidWidgetTextView.setText("相册");
       break;
-      label849:
+      label855:
       this.jdField_f_of_type_AndroidWidgetTextView.setText("取消");
       break label112;
-      label862:
+      label868:
       if (this.jdField_h_of_type_Int == 2)
       {
         localObject = "视频";
@@ -1071,21 +1074,21 @@ public class PhotoListActivity
       }
       localObject = "最近照片";
       break label146;
-      label884:
+      label890:
       if (this.jdField_m_of_type_Boolean)
       {
-        localObject = getString(2131435887);
+        localObject = getString(2131435904);
         break label485;
       }
-      localObject = getString(2131435888);
+      localObject = getString(2131435905);
       break label485;
-      label913:
+      label919:
       i1 = 0;
       break label523;
-      label918:
+      label924:
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       break label570;
-      label929:
+      label935:
       if (this.jdField_p_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
@@ -1098,29 +1101,28 @@ public class PhotoListActivity
     }
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    int i1 = paramInt;
-    if (paramInt < 0)
+    if ((paramInt1 >= 0) && (paramInt1 < this.jdField_c_of_type_JavaUtilArrayList.size()) && (paramInt2 >= 0) && (paramInt2 < this.jdField_c_of_type_JavaUtilArrayList.size()))
     {
-      QLog.e("PhotoListActivity", 1, new Object[] { "onQQStorySlideShowItemClick position error:", Integer.valueOf(paramInt) });
-      i1 = 0;
+      Collections.swap(this.jdField_c_of_type_JavaUtilArrayList, paramInt1, paramInt2);
+      paramInt2 = this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getFirstVisiblePosition();
+      int i1 = this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getLastVisiblePosition();
+      paramInt1 = paramInt2;
+      while (paramInt1 <= i1)
+      {
+        Object localObject = this.jdField_a_of_type_Wxw.a(paramInt1);
+        int i2 = this.jdField_c_of_type_JavaUtilArrayList.indexOf(((LocalMediaInfo)localObject).path);
+        if (i2 >= 0)
+        {
+          localObject = (wxx)this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getChildAt(((LocalMediaInfo)localObject).position.intValue() - paramInt2).getTag();
+          if ((localObject != null) && (((wxx)localObject).a != null)) {
+            ((wxx)localObject).a.setCheckedNumber(i2 + 1);
+          }
+        }
+        paramInt1 += 1;
+      }
     }
-    Intent localIntent = getIntent();
-    localIntent.putExtra("ALBUM_NAME", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("ALBUM_ID", this.jdField_b_of_type_JavaLangString);
-    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.jdField_c_of_type_JavaUtilArrayList);
-    localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.jdField_c_of_type_JavaUtilArrayList);
-    localIntent.putIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS", this.jdField_d_of_type_JavaUtilArrayList);
-    localIntent.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
-    jdField_m_of_type_Int = this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getFirstVisiblePosition();
-    localIntent.putExtra("PhotoConst.CURRENT_SELECTED_INDEX", i1);
-    localIntent.setClass(this, PhotoPreviewActivity.class);
-    localIntent.addFlags(603979776);
-    localIntent.putExtra("PhotoConst.IS_FROM_QQSTORY_SLIDESHOW_PREVIEW", true);
-    startActivity(localIntent);
-    g(this);
-    AlbumUtil.a(this, true, true);
   }
   
   public void a(int paramInt, LocalMediaInfo paramLocalMediaInfo)
@@ -1131,8 +1133,8 @@ public class PhotoListActivity
       do
       {
         return;
-      } while ((this.jdField_a_of_type_Wur == null) || (this.jdField_a_of_type_Wur.jdField_a_of_type_JavaUtilArrayList == null));
-      localObject = (LocalMediaInfo)this.jdField_a_of_type_Wur.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      } while ((this.jdField_a_of_type_Wxw == null) || (this.jdField_a_of_type_Wxw.jdField_a_of_type_JavaUtilArrayList == null));
+      localObject = (LocalMediaInfo)this.jdField_a_of_type_Wxw.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     } while ((localObject == null) || (paramLocalMediaInfo == null) || (((LocalMediaInfo)localObject).path == null) || (paramLocalMediaInfo.path == null) || (!((LocalMediaInfo)localObject).path.equals(paramLocalMediaInfo.path)));
     Object localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
     ((Message)localObject).what = 0;
@@ -1212,7 +1214,7 @@ public class PhotoListActivity
       }
       this.jdField_d_of_type_JavaUtilHashMap = ((HashMap)paramIntent.getSerializableExtra("PhotoConst.PANORAMA_IMAGES"));
       if (this.jdField_d_of_type_JavaUtilHashMap != null) {
-        break label1755;
+        break label1762;
       }
       this.jdField_d_of_type_JavaUtilHashMap = new HashMap();
       label525:
@@ -1248,7 +1250,7 @@ public class PhotoListActivity
       this.jdField_t_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", false);
       this.v = paramIntent.getBooleanExtra("PhotoConst.SEND_FLAG", false);
       if ((this.jdField_k_of_type_Int != 1) || (paramIntent.getBooleanExtra("is_anonymous", false))) {
-        break label1845;
+        break label1852;
       }
       bool1 = true;
       label844:
@@ -1256,7 +1258,7 @@ public class PhotoListActivity
       this.A = paramIntent.getBooleanExtra("PhotoConst.DISABLE_UPLOAD_TO_TROOP_ALBUM", false);
       bool1 = paramIntent.getBooleanExtra("filter_photolist_troopalbum_toolbar", false);
       if ((!this.z) || (bool1) || (this.A)) {
-        break label1850;
+        break label1857;
       }
       bool1 = true;
       label890:
@@ -1267,7 +1269,7 @@ public class PhotoListActivity
         this.H = paramIntent.getBooleanExtra("isdevicesupportmultiupload", false);
       }
       if (this.jdField_e_of_type_JavaLangString != null) {
-        break label1855;
+        break label1862;
       }
       localObject = this.jdField_q_of_type_JavaLangString;
       label952:
@@ -1304,7 +1306,7 @@ public class PhotoListActivity
       {
         localObject = QZoneHelper.a(this.jdField_e_of_type_JavaLangString, this.jdField_j_of_type_JavaLangString);
         if ((localObject == null) || (((BaseBusinessAlbumInfo)localObject).a() == null) || (((BaseBusinessAlbumInfo)localObject).a().equals(""))) {
-          break label1864;
+          break label1871;
         }
         this.jdField_k_of_type_JavaLangString = ((BaseBusinessAlbumInfo)localObject).a();
         this.jdField_l_of_type_JavaLangString = ((BaseBusinessAlbumInfo)localObject).b();
@@ -1315,12 +1317,12 @@ public class PhotoListActivity
       this.E = paramIntent.getBooleanExtra("PhotoConst.IS_JUMPTO_TROOP_ALBUM", false);
       this.F = paramIntent.getBooleanExtra("PhotoConst.IS_FROM_TROOP_BAR", false);
       this.G = paramIntent.getBooleanExtra("PhotoConst.IS_FROM_TROOP_REWARD", false);
-      if ((this.E) || (this.F) || (this.G) || (this.al) || (this.N)) {
-        break label1887;
+      if ((this.E) || (this.F) || (this.G) || (this.al) || (this.N) || (this.M)) {
+        break label1894;
       }
     }
-    label1755:
-    label1887:
+    label1762:
+    label1894:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.B = bool1;
@@ -1416,7 +1418,7 @@ public class PhotoListActivity
       if (!paramLocalMediaInfo.containsKey(str)) {
         paramLocalMediaInfo.put(str, new Pair(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
       }
-      a(str);
+      b(str);
       PhotoUtils.a(this, localIntent, this.jdField_c_of_type_JavaUtilArrayList, 0, this.jdField_d_of_type_Boolean);
       return;
     }
@@ -1432,45 +1434,53 @@ public class PhotoListActivity
       localIntent.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
       localIntent.putExtra("PhotoConst.SOURCE_FROM", "FROM_SELECT_PHOTO");
       localIntent.addFlags(603979776);
+      paramLocalMediaInfo = getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+      if (ReadInJoyUploadAvatarActivity.class.getName().equals(paramLocalMediaInfo)) {
+        break label386;
+      }
       startActivity(localIntent);
-      super.finish();
-      AlbumUtil.a(this, true, true);
-      return;
-    }
-    if (100 == localIntent.getIntExtra("Business_Origin", 0))
-    {
-      localIntent.setClass(this, PhotoCropForPortraitActivity.class);
-      localIntent.putExtra("PhotoConst.EDIT_MASK_SHAPE_TYPE", 0);
+      finish();
     }
     for (;;)
     {
-      AlbumUtil.a(localIntent, this.jdField_b_of_type_JavaLangString, str, this.jdField_u_of_type_Boolean);
-      localIntent.putExtra("PHOTOLIST_START_POSITION", this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getFirstVisiblePosition());
-      break;
-      localIntent.setClass(this, PhotoCropActivity.class);
+      AlbumUtil.a(this, true, true);
+      return;
+      if (100 == localIntent.getIntExtra("Business_Origin", 0))
+      {
+        localIntent.setClass(this, PhotoCropForPortraitActivity.class);
+        localIntent.putExtra("PhotoConst.EDIT_MASK_SHAPE_TYPE", 0);
+      }
+      for (;;)
+      {
+        AlbumUtil.a(localIntent, this.jdField_b_of_type_JavaLangString, str, this.jdField_u_of_type_Boolean);
+        localIntent.putExtra("PHOTOLIST_START_POSITION", this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getFirstVisiblePosition());
+        break;
+        localIntent.setClass(this, PhotoCropActivity.class);
+      }
+      label386:
+      startActivityForResult(localIntent, 100014);
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_u_of_type_Boolean)
-    {
-      AlbumUtil.jdField_a_of_type_Long = System.currentTimeMillis();
-      AlbumUtil.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_b_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Wur.getCount()));
-      if (!TextUtils.isEmpty(paramString))
-      {
-        AlbumUtil.jdField_a_of_type_JavaLangString = paramString;
-        HashMap localHashMap = AlbumUtil.jdField_c_of_type_JavaUtilHashMap;
-        if (localHashMap.containsKey(paramString))
-        {
-          paramString = (Pair)localHashMap.get(paramString);
-          AlbumUtil.jdField_b_of_type_JavaLangString = (String)paramString.first;
-          AlbumUtil.jdField_c_of_type_JavaLangString = (String)paramString.second;
-          AlbumUtil.a(this, AlbumUtil.jdField_b_of_type_JavaLangString, AlbumUtil.jdField_c_of_type_JavaLangString);
-        }
-      }
-    }
-    AlbumUtil.c();
+    Intent localIntent = getIntent();
+    localIntent.putExtra("ALBUM_NAME", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("ALBUM_ID", this.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("PhotoConst.IS_OVERLOAD", false);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.jdField_c_of_type_JavaUtilArrayList);
+    localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.jdField_c_of_type_JavaUtilArrayList);
+    localIntent.putIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS", this.jdField_d_of_type_JavaUtilArrayList);
+    localIntent.putExtra("PhotoConst.SHOW_ALBUM", true);
+    localIntent.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
+    jdField_m_of_type_Int = this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getFirstVisiblePosition();
+    localIntent.putExtra("PhotoConst.CURRENT_SELECTED_INDEX", this.jdField_c_of_type_JavaUtilArrayList.indexOf(paramString));
+    localIntent.setClass(this, PhotoPreviewActivity.class);
+    localIntent.addFlags(603979776);
+    localIntent.putExtra("PhotoConst.IS_FROM_QQSTORY_SLIDESHOW_PREVIEW", true);
+    startActivity(localIntent);
+    b(this);
+    AlbumUtil.a(this, true, true);
   }
   
   void a(boolean paramBoolean)
@@ -1709,6 +1719,10 @@ public class PhotoListActivity
       {
         startActivityForResult(localIntent, 100009);
       }
+      else if (this.M)
+      {
+        startActivityForResult(localIntent, 100009);
+      }
       else
       {
         startActivity(localIntent);
@@ -1722,24 +1736,24 @@ public class PhotoListActivity
     this.jdField_k_of_type_JavaLangString = paramIntent.getStringExtra("UploadPhoto.key_album_id");
     this.jdField_l_of_type_JavaLangString = paramIntent.getStringExtra("UploadPhoto.key_album_name");
     this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(this.E);
-    ThreadManager.post(new wua(this), 8, null, true);
+    ThreadManager.post(new wxf(this), 8, null, true);
     String str1 = "";
     paramIntent = "";
     String str2;
     if (TextUtils.isEmpty(this.jdField_k_of_type_JavaLangString))
     {
-      str2 = getString(2131435898);
+      str2 = getString(2131435915);
       if (this.jdField_c_of_type_AndroidWidgetTextView != null)
       {
         if (!"群相册".equals(str2)) {
           break label159;
         }
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(2131435897);
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(2131435914);
       }
     }
     for (;;)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.post(new wuc(this, str2));
+      this.jdField_c_of_type_AndroidWidgetTextView.post(new wxh(this, str2));
       getIntent().putExtra("UploadPhoto.key_album_name", str1);
       getIntent().putExtra("UploadPhoto.key_album_id", paramIntent);
       return;
@@ -1748,8 +1762,30 @@ public class PhotoListActivity
       paramIntent = this.jdField_k_of_type_JavaLangString;
       break;
       label159:
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131435896);
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131435913);
     }
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_u_of_type_Boolean)
+    {
+      AlbumUtil.jdField_a_of_type_Long = System.currentTimeMillis();
+      AlbumUtil.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_b_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Wxw.getCount()));
+      if (!TextUtils.isEmpty(paramString))
+      {
+        AlbumUtil.jdField_a_of_type_JavaLangString = paramString;
+        HashMap localHashMap = AlbumUtil.jdField_c_of_type_JavaUtilHashMap;
+        if (localHashMap.containsKey(paramString))
+        {
+          paramString = (Pair)localHashMap.get(paramString);
+          AlbumUtil.jdField_b_of_type_JavaLangString = (String)paramString.first;
+          AlbumUtil.jdField_c_of_type_JavaLangString = (String)paramString.second;
+          AlbumUtil.a(this, AlbumUtil.jdField_b_of_type_JavaLangString, AlbumUtil.jdField_c_of_type_JavaLangString);
+        }
+      }
+    }
+    AlbumUtil.c();
   }
   
   public boolean b()
@@ -1768,10 +1804,10 @@ public class PhotoListActivity
       {
         this.jdField_a_of_type_AndroidAppDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624515);
+        this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624516);
         this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppDialog.show();
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(2130969181);
+        this.jdField_a_of_type_AndroidAppDialog.setContentView(2130969180);
       }
       return;
     }
@@ -1869,15 +1905,15 @@ public class PhotoListActivity
       return;
       if (this.E)
       {
-        localObject1 = getString(2131435889);
+        localObject1 = getString(2131435906);
         break;
       }
       if (this.jdField_m_of_type_Boolean)
       {
-        localObject1 = getString(2131435887);
+        localObject1 = getString(2131435904);
         break;
       }
-      localObject1 = getString(2131435888);
+      localObject1 = getString(2131435905);
       break;
       bool1 = false;
       break label24;
@@ -2099,7 +2135,7 @@ public class PhotoListActivity
       this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(true);
       return;
     }
-    if ((this.N) && (paramInt2 == -1))
+    if (((this.M) || (this.N)) && (paramInt2 == -1))
     {
       setResult(paramInt2, paramIntent);
       finish();
@@ -2124,12 +2160,15 @@ public class PhotoListActivity
       }
       for (;;)
       {
-        if (!this.Y) {
-          break label584;
+        if (!this.L) {
+          break label549;
         }
         super.setResult(-1, paramIntent);
         super.finish();
         return;
+        setResult(-1, paramIntent);
+        finish();
+        continue;
         paramIntent = PresendPicMgr.a();
         if (paramIntent != null) {
           paramIntent.a(this.jdField_m_of_type_JavaLangString, 1008);
@@ -2152,7 +2191,7 @@ public class PhotoListActivity
         for (Object localObject = this.jdField_a_of_type_JavaLangString;; localObject = "最近照片")
         {
           setTitle((CharSequence)localObject);
-          runOnUiThread(new wud(this));
+          runOnUiThread(new wxi(this));
           break;
         }
         if (paramIntent == null) {
@@ -2180,15 +2219,16 @@ public class PhotoListActivity
             super.setResult(-1, paramIntent);
             super.finish();
           }
-          if (this.L)
-          {
-            super.setResult(-1, paramIntent);
-            super.finish();
-          }
         }
       }
+      label549:
+      if (this.Y)
+      {
+        super.setResult(-1, paramIntent);
+        super.finish();
+      }
     }
-    if (paramInt1 == 17)
+    else if (paramInt1 == 17)
     {
       if ((this.L) && (paramIntent != null) && (!paramIntent.getBooleanExtra("INTENT_VALUE_CANCEL_IN_PREVIEW_ACTIVITY", false)))
       {
@@ -2198,7 +2238,6 @@ public class PhotoListActivity
       AlbumUtil.jdField_a_of_type_Long = 0L;
       return;
     }
-    label584:
     PhotoUtils.a(this, paramInt1, paramInt2, paramIntent, this.jdField_s_of_type_Boolean, this.jdField_e_of_type_JavaLangString);
   }
   
@@ -2255,11 +2294,11 @@ public class PhotoListActivity
           break;
         }
         this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(false);
-        paramCompoundButton = new QQCustomDialog(this, 2131624515);
+        paramCompoundButton = new QQCustomDialog(this, 2131624516);
         paramCompoundButton.setContentView(2130968851);
-        paramCompoundButton.setTitle(getString(2131429880));
-        paramCompoundButton.setMessage(getString(2131429882));
-        paramCompoundButton.setNegativeButton(getString(2131429883), new wtv(this));
+        paramCompoundButton.setTitle(getString(2131429886));
+        paramCompoundButton.setMessage(getString(2131429888));
+        paramCompoundButton.setNegativeButton(getString(2131429889), new wxa(this));
         paramCompoundButton.setCanceledOnTouchOutside(false);
         paramCompoundButton.setCancelable(false);
         paramCompoundButton.show();
@@ -2279,7 +2318,7 @@ public class PhotoListActivity
         }
         if (i1 > 0)
         {
-          QQToast.a(this, getResources().getString(2131435903), 0).b(getResources().getDimensionPixelSize(2131558448));
+          QQToast.a(this, getResources().getString(2131435920), 0).b(getResources().getDimensionPixelSize(2131558448));
           this.jdField_l_of_type_Int = 0;
           this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
           this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
@@ -2309,13 +2348,13 @@ public class PhotoListActivity
     {
       bool = true;
       this.D = bool;
-      b(i1);
+      a(i1);
       switch (i1)
       {
       }
     }
-    label933:
-    label961:
+    label948:
+    label976:
     do
     {
       do
@@ -2336,6 +2375,7 @@ public class PhotoListActivity
             if ((this.M) || (this.N))
             {
               b();
+              StoryReportor.a("pic_choose_slides", "exp_albumList", 0, 0, new String[0]);
               return;
             }
             if (this.O)
@@ -2434,7 +2474,7 @@ public class PhotoListActivity
               }
               if (i1 > 0)
               {
-                QQToast.a(this, getResources().getString(2131435903), 0).b(getResources().getDimensionPixelSize(2131558448));
+                QQToast.a(this, getResources().getString(2131435920), 0).b(getResources().getDimensionPixelSize(2131558448));
                 return;
               }
               this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
@@ -2455,11 +2495,11 @@ public class PhotoListActivity
           else
           {
             if (!VersionUtils.d()) {
-              break label961;
+              break label976;
             }
             new Intent();
             if (!this.jdField_p_of_type_Boolean) {
-              break label933;
+              break label948;
             }
             paramView = new HashMap(1);
             if ((this.jdField_c_of_type_JavaUtilHashMap != null) && (this.jdField_c_of_type_JavaUtilHashMap.get(this.jdField_c_of_type_JavaUtilArrayList.get(0)) != null)) {
@@ -2486,11 +2526,11 @@ public class PhotoListActivity
           return;
           this.jdField_c_of_type_AndroidWidgetButton.setClickable(false);
           if (!this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) {
-            a((String)this.jdField_c_of_type_JavaUtilArrayList.get(this.jdField_c_of_type_JavaUtilArrayList.size() - 1));
+            b((String)this.jdField_c_of_type_JavaUtilArrayList.get(this.jdField_c_of_type_JavaUtilArrayList.size() - 1));
           }
           AlbumUtil.a();
           if (this.jdField_c_of_type_JavaUtilArrayList.size() != 0) {
-            break label1066;
+            break label1081;
           }
         } while (!QLog.isColorLevel());
         QLog.e("PhotoList", 2, "size == 0");
@@ -2502,7 +2542,7 @@ public class PhotoListActivity
           for (long l1 = 0L; paramView.hasNext(); l1 = FileUtils.a((String)paramView.next()) + l1) {}
           if (FileManagerUtil.a())
           {
-            FMDialogUtil.a(this, 2131428241, 2131428237, new wtw(this));
+            FMDialogUtil.a(this, 2131428241, 2131428237, new wxb(this));
             return;
           }
         }
@@ -2532,11 +2572,11 @@ public class PhotoListActivity
         if (!this.D)
         {
           this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(false);
-          paramView = new QQCustomDialog(this, 2131624515);
+          paramView = new QQCustomDialog(this, 2131624516);
           paramView.setContentView(2130968851);
-          paramView.setTitle(getString(2131429880));
-          paramView.setMessage(getString(2131429882));
-          paramView.setNegativeButton(getString(2131429883), new wtx(this));
+          paramView.setTitle(getString(2131429886));
+          paramView.setMessage(getString(2131429888));
+          paramView.setNegativeButton(getString(2131429889), new wxc(this));
           paramView.setCanceledOnTouchOutside(false);
           paramView.setCancelable(false);
           paramView.show();
@@ -2547,7 +2587,7 @@ public class PhotoListActivity
         {
           paramView = this.jdField_b_of_type_AndroidWidgetCheckBox;
           if (this.jdField_b_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label1444;
+            break label1459;
           }
           bool = true;
           paramView.setChecked(bool);
@@ -2564,11 +2604,11 @@ public class PhotoListActivity
       if (!this.D)
       {
         this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(false);
-        paramView = new QQCustomDialog(this, 2131624515);
+        paramView = new QQCustomDialog(this, 2131624516);
         paramView.setContentView(2130968851);
-        paramView.setTitle(getString(2131429880));
-        paramView.setMessage(getString(2131429882));
-        paramView.setNegativeButton(getString(2131429883), new wty(this));
+        paramView.setTitle(getString(2131429886));
+        paramView.setMessage(getString(2131429888));
+        paramView.setNegativeButton(getString(2131429889), new wxd(this));
         paramView.setCanceledOnTouchOutside(false);
         paramView.setCancelable(false);
         paramView.show();
@@ -2581,26 +2621,26 @@ public class PhotoListActivity
       QZoneHelper.c(this, paramView, this.jdField_j_of_type_JavaLangString, this.jdField_i_of_type_JavaLangString, 100);
       return;
     } while (this.jdField_b_of_type_AndroidWidgetCheckBox == null);
-    label1066:
+    label1081:
     if (this.jdField_b_of_type_AndroidWidgetCheckBox.isChecked())
     {
       paramView = "0X80047F8";
       if ((b()) && (this.B) && (this.jdField_b_of_type_AndroidWidgetCheckBox != null))
       {
         if ((Build.VERSION.SDK_INT < 9) || (!TextUtils.isEmpty(this.jdField_k_of_type_JavaLangString))) {
-          break label1740;
+          break label1755;
         }
         this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("qzone_will_upload_to_qun_album" + this.jdField_j_of_type_JavaLangString, this.jdField_b_of_type_AndroidWidgetCheckBox.isChecked()).apply();
       }
     }
     for (;;)
     {
-      label1444:
+      label1459:
       ReportController.a(null, "CliOper", "", "", paramView, paramView, 0, 0, this.jdField_e_of_type_JavaLangString, "", "", "");
       return;
       paramView = "0X80047F9";
       break;
-      label1740:
+      label1755:
       this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("qzone_will_upload_to_qun_album" + this.jdField_j_of_type_JavaLangString, this.jdField_b_of_type_AndroidWidgetCheckBox.isChecked()).commit();
     }
   }
@@ -2611,7 +2651,7 @@ public class PhotoListActivity
     getWindow().setBackgroundDrawable(null);
     try
     {
-      super.setContentView(2130970480);
+      super.setContentView(2130970521);
       getWindow().setBackgroundDrawable(null);
       this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplication.getContext().getSharedPreferences("share", 4);
       paramBundle = getResources();
@@ -2635,7 +2675,7 @@ public class PhotoListActivity
       {
         paramBundle = new NewIntent(BaseApplicationImpl.getApplication(), QZoneAlbumListNumServlet.class);
         paramBundle.putExtra("selfuin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-        BaseApplicationImpl.getApplication().getRuntime().registObserver(jdField_a_of_type_Wut);
+        BaseApplicationImpl.getApplication().getRuntime().registObserver(jdField_a_of_type_Wxy);
         BaseApplicationImpl.getApplication().getRuntime().startServlet(paramBundle);
       }
       return;
@@ -2652,13 +2692,13 @@ public class PhotoListActivity
     if (!this.jdField_w_of_type_Boolean) {
       AlbumThumbManager.a(this).a();
     }
-    if (this.jdField_a_of_type_Wur != null)
+    if (this.jdField_a_of_type_Wxw != null)
     {
-      int i1 = this.jdField_a_of_type_Wur.getCount();
+      int i1 = this.jdField_a_of_type_Wxw.getCount();
       AlbumUtil.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_b_of_type_JavaLangString, Integer.valueOf(i1));
     }
     if (this.jdField_l_of_type_Boolean) {
-      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(jdField_a_of_type_Wut);
+      BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(jdField_a_of_type_Wxy);
     }
     jdField_a_of_type_JavaUtilArrayList = null;
   }
@@ -2703,7 +2743,7 @@ public class PhotoListActivity
     super.onStart();
     if (this.aj)
     {
-      runOnUiThread(new wue(this));
+      runOnUiThread(new wxj(this));
       return;
     }
     this.aj = true;

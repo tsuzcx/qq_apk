@@ -1,16 +1,12 @@
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager.CompositeVideoEvent;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.widget.GridView;
 
 public class mzh
-  implements Runnable
 {
-  public mzh(StoryVideoUploadManager.VideoCompositeRec paramVideoCompositeRec, StoryVideoUploadManager paramStoryVideoUploadManager, VideoCompositeManager.CompositeVideoEvent paramCompositeVideoEvent) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeManager$CompositeVideoEvent.a, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeManager$CompositeVideoEvent.b);
-  }
+  public TextView a;
+  public VideoFeedsAlphaMaskView a;
+  public GridView a;
 }
 
 

@@ -21,8 +21,8 @@ import com.tencent.widget.MaxHeightRelativelayout;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import uku;
-import ukv;
+import unu;
+import unv;
 
 public class SigTlpAnimation
   extends XBubbleAnimation
@@ -155,7 +155,7 @@ public class SigTlpAnimation
     {
       return true;
       if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidOsHandler.post(new uku(this));
+        this.jdField_a_of_type_AndroidOsHandler.post(new unu(this));
       }
     }
   }
@@ -262,7 +262,7 @@ public class SigTlpAnimation
       this.jdField_a_of_type_AndroidViewView = ((View)paramVarArgs[5]);
     }
     this.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$DynamicItem = ((SignatureTemplateInfo.DynamicItem)paramVarArgs[6]);
-    ThreadManager.getFileThreadHandler().post(new ukv(this, str1, str2));
+    ThreadManager.getFileThreadHandler().post(new unv(this, str1, str2));
     return true;
   }
   

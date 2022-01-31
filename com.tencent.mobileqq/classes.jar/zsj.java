@@ -1,67 +1,39 @@
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.FTSDBManager;
-import com.tencent.mobileqq.app.proxy.fts.FTSMsgOperator;
-import com.tencent.mobileqq.app.proxy.fts.FTSMsgUpgrader;
-import com.tencent.mobileqq.app.proxy.fts.FTSSyncHandler;
-import com.tencent.mobileqq.persistence.fts.FTSDatatbase;
+import com.tencent.mobileqq.app.message.BaseMessageManagerForTroopAndDisc;
+import com.tencent.mobileqq.app.message.UncommonMessageProcessor;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 
 public class zsj
   implements Runnable
 {
-  public zsj(FTSMsgUpgrader paramFTSMsgUpgrader) {}
+  public zsj(BaseMessageManagerForTroopAndDisc paramBaseMessageManagerForTroopAndDisc, MessageRecord paramMessageRecord, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
-    if ((!FTSMsgUpgrader.a(this.a)) && (FTSMsgUpgrader.a(this.a).a().a())) {
-      if ((FTSMsgUpgrader.a(this.a) != null) && (FTSMsgUpgrader.a(this.a).a()))
-      {
-        if (!this.a.a) {
-          FTSMsgUpgrader.a(this.a);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade history in handle hasReadNativeCursor = " + this.a.a + " mUpgradeCursor=" + FTSMsgUpgrader.a(this.a) + " mUpgradeMaxIndex=" + FTSMsgUpgrader.b(this.a));
-        }
-        if (this.a.a)
-        {
-          if (FTSMsgUpgrader.a(this.a) >= FTSMsgUpgrader.b(this.a)) {
-            break label201;
-          }
-          if (!FTSMsgUpgrader.b(this.a)) {
-            break label186;
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageManager", 2, "doMsgRevokeRequest " + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getLogColorContent() + " holdFlag: " + this.jdField_a_of_type_Boolean);
     }
-    label186:
-    label201:
-    while (!QLog.isColorLevel())
+    if (!this.jdField_a_of_type_Boolean)
     {
-      do
-      {
-        FTSMsgUpgrader.a(this.a).postDelayed(this, 20L);
-        do
-        {
-          return;
-        } while (!QLog.isColorLevel());
-        QLog.d("Q.fts.FTSMsgUpgrader", 2, "writeNativeIndex failed");
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade compeleted in handler");
-        }
-        FTSMsgUpgrader.b(this.a);
-        FTSMsgUpgrader.a(this.a).c();
-        return;
-      } while (!QLog.isColorLevel());
-      StringBuilder localStringBuilder = new StringBuilder().append("upgrade history in handle mDatabase = ");
-      if (FTSMsgUpgrader.a(this.a) == null) {}
-      for (String str = "null";; str = "@@@")
-      {
-        QLog.d("Q.fts.FTSMsgUpgrader", 2, str);
-        return;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L);
+      return;
     }
-    QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade history in handle isDestroy = " + FTSMsgUpgrader.a(this.a));
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().e(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().e(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L - (l1 - l2));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().e(null);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, UncommonMessageProcessor.e, UncommonMessageProcessor.n);
+    }
   }
 }
 

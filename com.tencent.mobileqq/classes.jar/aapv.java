@@ -1,43 +1,40 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppSSO;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IRequestArkAppListHandler;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class aapv
+public class aapv
   implements Runnable
 {
-  public aapv(ArkMessageServerLogic.IRequestArkAppListHandler paramIRequestArkAppListHandler) {}
+  public aapv(ArkAppModuleReg.ModuleQQ paramModuleQQ, String paramString1, String paramString2, long paramLong1, String paramString3, long paramLong2) {}
   
   public void run()
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject == null) {
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, qq app is null");
-    }
-    for (;;)
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(BaseActivity.sTopActivity, 2131624516);
+    localQQCustomDialog.setContentView(2130968843);
+    localQQCustomDialog.setTitle(BaseActivity.sTopActivity.getString(2131438244, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    ((ImageView)localQQCustomDialog.findViewById(2131364041)).setImageDrawable(BaseActivity.sTopActivity.getResources().getDrawable(2130838200));
+    ((TextView)localQQCustomDialog.findViewById(2131364042)).setText(this.jdField_a_of_type_JavaLangString);
+    ((TextView)localQQCustomDialog.findViewById(2131362776)).setText(BaseActivity.sTopActivity.getString(2131438828));
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    ArkAppCenter.a(this.jdField_b_of_type_JavaLangString, new aapw(this, localQQCustomDialog));
+    localQQCustomDialog.setNegativeButton(2131434674, new aapx(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(2131434672, new aapz(this, localQQCustomDialog));
+    try
     {
-      if (this.a != null) {
-        this.a.b(null);
+      localQQCustomDialog.show();
+      label159:
+      if (ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_login", this.c) == 0) {
+        ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_login", this.c, 2);
       }
-      do
-      {
-        return;
-        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(120);
-        if (localObject == null)
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark center is null");
-          break;
-        }
-        ((ArkAppCenter)localObject).a();
-        localObject = ((ArkAppCenter)localObject).a();
-        if (localObject == null)
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark sso is null");
-          break;
-        }
-      } while (((ArkAppSSO)localObject).a("ArkAppPanel.List", 10000, 0, new aapw(this)));
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, fail send sso request");
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label159;
     }
   }
 }

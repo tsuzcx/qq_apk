@@ -1,20 +1,13 @@
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
 
 public class mvq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public mvq(SwipeBackLayout paramSwipeBackLayout) {}
+  public mvq(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
   
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "isFling:" + SwipeBackLayout.b(this.a));
-    }
-    if (!SwipeBackLayout.b(this.a)) {
-      SwipeBackLayout.a(this.a);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

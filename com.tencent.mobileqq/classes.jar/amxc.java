@@ -1,59 +1,85 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestCallback;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestSession;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.QQStoryPoiListAdapter;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.QZonePatchService;
+import java.util.LinkedList;
 
 public class amxc
-  implements LbsManager.POIListRequestCallback
 {
-  public amxc(FacePoiSearchUI paramFacePoiSearchUI, String paramString) {}
+  private static amxc jdField_a_of_type_Amxc;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt, LbsManager.POIListRequestSession paramPOIListRequestSession, List paramList)
+  public static amxc a()
   {
-    this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession = paramPOIListRequestSession;
-    if (paramInt == 0) {
-      if (paramPOIListRequestSession.a()) {
-        break label199;
-      }
-    }
-    label199:
-    for (boolean bool = true;; bool = false)
+    if (jdField_a_of_type_Amxc == null) {}
+    try
     {
-      this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.d.setVisibility(0);
-      this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a(bool);
-      if (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      if (jdField_a_of_type_Amxc == null) {
+        jdField_a_of_type_Amxc = new amxc();
       }
-      if (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.b()) {
-        this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter != null)
-      {
-        this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList, null);
-        this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter.notifyDataSetChanged();
-        if (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.d.setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      StoryReportor.b("edit_video", "poi_list_success", 0, i, new String[0]);
-      return;
+      return jdField_a_of_type_Amxc;
     }
+    finally {}
+  }
+  
+  private void a(amxe paramamxe)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "processInner, " + paramamxe + ", " + QZonePatchService.class);
+    }
+    if (QZonePatchService.class == null) {}
+    do
+    {
+      return;
+      Context localContext = amxe.a(paramamxe).getApplicationContext();
+      Intent localIntent = new Intent(localContext, QZonePatchService.class);
+      try
+      {
+        localContext.bindService(localIntent, paramamxe, 1);
+        return;
+      }
+      catch (SecurityException paramamxe) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("QZonePluginManger", 2, "processInner", paramamxe);
+  }
+  
+  private void a(amxe paramamxe, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "processInnerDelay. " + paramInt + ", " + paramamxe);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new amxd(this, paramamxe), paramInt);
+  }
+  
+  public void a(Context arg1, ServiceConnection paramServiceConnection, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "PluginRemoteProcessor.process, " + paramInt);
+    }
+    paramServiceConnection = new amxe(this, paramServiceConnection, ???, paramInt);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "queue");
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      {
+        this.jdField_a_of_type_JavaUtilLinkedList.offer(paramServiceConnection);
+        return;
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
+    a(paramServiceConnection);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxc
  * JD-Core Version:    0.7.0.1
  */

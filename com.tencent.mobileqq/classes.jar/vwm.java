@@ -1,19 +1,27 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.utils.BatchAddFriendData;
-import com.tencent.mobileqq.troop.utils.TroopMemberGlobalLevelUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class vwm
   implements Runnable
 {
-  public vwm(TroopChatPie paramTroopChatPie) {}
+  public vwm(NearbyChatPie paramNearbyChatPie, String paramString) {}
   
   public void run()
   {
-    TroopMemberGlobalLevelUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-    BatchAddFriendData.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.f, 4, "0X80052C5, " + this.jdField_a_of_type_JavaLangString);
+    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052C5", "0X80052C5", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangString, "");
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) {}
+    for (String str = "0";; str = "1")
+    {
+      ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_send", 0, 0, str, "", "", "");
+      return;
+    }
   }
 }
 

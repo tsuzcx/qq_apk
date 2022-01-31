@@ -6,7 +6,7 @@ import android.graphics.Bitmap.Config;
 import com.tencent.component.media.ImageManagerEnv;
 import com.tencent.component.media.utils.BitmapUtils;
 import java.util.LinkedList;
-import pek;
+import pge;
 
 @TargetApi(19)
 public class BitmapPool
@@ -62,30 +62,30 @@ public class BitmapPool
     return this.jdField_b_of_type_Long;
   }
   
-  protected int handleBucketListEmpty(pek parampek)
+  protected int handleBucketListEmpty(pge parampge)
   {
-    parampek.c += 1;
-    return parampek.jdField_b_of_type_Int;
+    parampge.c += 1;
+    return parampge.jdField_b_of_type_Int;
   }
   
-  protected boolean handleRecyleData(pek parampek, Bitmap paramBitmap)
+  protected boolean handleRecyleData(pge parampge, Bitmap paramBitmap)
   {
     boolean bool2 = true;
     boolean bool1 = bool2;
-    if (parampek.jdField_a_of_type_JavaUtilLinkedList.size() < parampek.jdField_a_of_type_Int) {
-      if (parampek.c > parampek.jdField_a_of_type_Int + 2)
+    if (parampge.jdField_a_of_type_JavaUtilLinkedList.size() < parampge.jdField_a_of_type_Int) {
+      if (parampge.c > parampge.jdField_a_of_type_Int + 2)
       {
         bool1 = bool2;
-        if (parampek.jdField_a_of_type_JavaUtilLinkedList.size() > parampek.jdField_a_of_type_Int / 4 + 1) {}
+        if (parampge.jdField_a_of_type_JavaUtilLinkedList.size() > parampge.jdField_a_of_type_Int / 4 + 1) {}
       }
       else
       {
-        parampek.jdField_a_of_type_JavaUtilLinkedList.add(paramBitmap);
+        parampge.jdField_a_of_type_JavaUtilLinkedList.add(paramBitmap);
         bool1 = false;
       }
     }
     if (bool1) {
-      parampek.c -= 1;
+      parampge.c -= 1;
     }
     return bool1;
   }

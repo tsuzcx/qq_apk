@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.BounceScrollView android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02159f" android:layout_width="fill_parent" android:layout_height="50.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/content" android:paddingLeft="12.0dip" android:paddingTop="20.0dip" android:paddingRight="12.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01ff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f79" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="推荐版块" />
-        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f7a" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <com.tencent.widget.HorizontalLabelLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f7b" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01ff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f7c" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="20.0dip" android:text="更多版块" />
-        <com.tencent.widget.HorizontalLabelLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f7d" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-</com.tencent.mobileqq.widget.BounceScrollView>
+    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1987" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@null" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb2" android:background="#ffd9d9d9" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="7.0dip" />
+</LinearLayout>

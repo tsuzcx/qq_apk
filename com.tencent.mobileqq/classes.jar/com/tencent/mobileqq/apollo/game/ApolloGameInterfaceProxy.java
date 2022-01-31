@@ -12,6 +12,7 @@ import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 import com.tencent.mobileqq.apollo.process.data.CmGameOpenIdFinder;
 import com.tencent.mobileqq.apollo.process.sso.CmGameSSoHandler;
 import com.tencent.mobileqq.apollo.store.ApolloFloatActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -21,8 +22,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import yma;
-import ymb;
+import ypg;
+import yph;
 
 public class ApolloGameInterfaceProxy
   implements IApolloGameInterface
@@ -287,14 +288,28 @@ public class ApolloGameInterfaceProxy
   private void e(String paramString)
   {
     CmGameLauncher localCmGameLauncher = CmGameUtil.a(this.jdField_a_of_type_Int);
-    if (localCmGameLauncher != null) {
-      localCmGameLauncher.a(paramString);
+    if ((localCmGameLauncher != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      ApolloGameBasicEventUtil.a(this.jdField_a_of_type_Int, paramString, localCmGameLauncher.a());
+      return;
+    }
+    QLog.e("ApolloGameInterfaceProxy", 1, "[shareGameInARK] can not find launcher for " + this.jdField_a_of_type_Int);
+  }
+  
+  private void f(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      CmGameLauncher localCmGameLauncher = CmGameUtil.a(this.jdField_a_of_type_Int);
+      if (localCmGameLauncher != null) {
+        localCmGameLauncher.c(paramString);
+      }
     }
   }
   
-  private void f(String paramString) {}
+  private void g(String paramString) {}
   
-  private void g(String paramString)
+  private void h(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {}
     try
@@ -314,7 +329,7 @@ public class ApolloGameInterfaceProxy
     }
   }
   
-  private void h(String paramString)
+  private void i(String paramString)
   {
     try
     {
@@ -330,7 +345,7 @@ public class ApolloGameInterfaceProxy
     }
   }
   
-  private void i(String paramString)
+  private void j(String paramString)
   {
     try
     {
@@ -372,7 +387,7 @@ public class ApolloGameInterfaceProxy
     }
   }
   
-  private void j(String paramString)
+  private void k(String paramString)
   {
     try
     {
@@ -432,7 +447,7 @@ public class ApolloGameInterfaceProxy
     } while (localCmGameOpenIdFinder == null);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
-    localCmGameOpenIdFinder.a(2, localArrayList, null, 10, 0L, false, "", "", new ymb(this, paramInt, paramString));
+    localCmGameOpenIdFinder.a(2, localArrayList, null, 10, 0L, false, "", "", new yph(this, paramInt, paramString));
   }
   
   public void a(ApolloGameView paramApolloGameView)
@@ -526,6 +541,20 @@ public class ApolloGameInterfaceProxy
     }
   }
   
+  public void b(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameInterfaceProxy", 2, new Object[] { "onNotify, cmd:", paramString1 });
+    }
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      ApolloJSContext localApolloJSContext = (ApolloJSContext)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localApolloJSContext != null) {
+        localApolloJSContext.a(0, paramString1, paramString2);
+      }
+    }
+  }
+  
   public void c() {}
   
   public void d()
@@ -558,7 +587,7 @@ public class ApolloGameInterfaceProxy
       if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView != null)
       {
         if (!this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.b) {
-          break label432;
+          break label448;
         }
         if (!"cs.make_room_min.local".equals(paramString2)) {
           break label82;
@@ -587,22 +616,27 @@ public class ApolloGameInterfaceProxy
             this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a(true);
             d();
             return;
-            if ("cs.game_shell_share_callback.local".equals(paramString2))
+            if ("cs.share_game_in_ark.local".equals(paramString2))
             {
               e(paramString1);
+              return;
+            }
+            if ("cs.game_shell_share_callback.local".equals(paramString2))
+            {
+              f(paramString1);
               return;
             }
             if (!"cs.share_game_result.local".equals(paramString2)) {
               break;
             }
           } while (TextUtils.isEmpty(paramString1));
-          f(paramString1);
+          g(paramString1);
           return;
           if ("sc.web_callback_game.local".equals(paramString2))
           {
             if ((paramString1 != null) && (paramString1.length() < 1024))
             {
-              j(paramString1);
+              k(paramString1);
               return;
             }
             QLog.e("ApolloGameInterfaceProxy", 1, "[send] length invalid");
@@ -620,17 +654,17 @@ public class ApolloGameInterfaceProxy
           }
           if ("cs.openNativeWebView.local".equals(paramString2))
           {
-            i(paramString1);
+            j(paramString1);
             return;
           }
           if ("cs.gameBack.local".equals(paramString2))
           {
-            h(paramString1);
+            i(paramString1);
             return;
           }
           if ("cs.ssoMessage.local".equals(paramString2))
           {
-            g(paramString1);
+            h(paramString1);
             return;
           }
           if (!"cs.get_userInfo.local".equals(paramString2)) {
@@ -656,13 +690,13 @@ public class ApolloGameInterfaceProxy
       } while (!"cs.on_get_open_key.local".equals(paramString2));
       try
       {
-        yma localyma = new yma(this);
+        ypg localypg = new ypg(this);
         Bundle localBundle = new Bundle();
         localBundle.putString("cmd", paramString2);
         localBundle.putString("reqData", paramString1);
         localBundle.putBoolean("async", true);
         localBundle.putInt("gameId", this.jdField_a_of_type_Int);
-        QIPCClientHelper.getInstance().callServer("cm_game_module", "action_chanel_req", localBundle, localyma);
+        QIPCClientHelper.getInstance().callServer("cm_game_module", "action_chanel_req", localBundle, localypg);
         return;
       }
       catch (Throwable paramString1)
@@ -671,10 +705,10 @@ public class ApolloGameInterfaceProxy
         return;
       }
     }
-    label432:
+    label448:
     if ((paramString1 != null) && (paramString1.length() < 1024))
     {
-      j(paramString1);
+      k(paramString1);
       return;
     }
     QLog.e("ApolloGameInterfaceProxy", 1, "[send] length invalid");

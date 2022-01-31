@@ -1,21 +1,41 @@
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class llw
   implements Runnable
 {
-  public llw(KandianMergeManager paramKandianMergeManager) {}
+  public llw(KandianMergeManager paramKandianMergeManager, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    if ((KandianMergeManager.a(this.a) != null) && (this.a.i()))
+    KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).a().a(AppConstants.as, 7220, false, false);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extInt == 2)
     {
-      Kandian210Msg0xeeInfo localKandian210Msg0xeeInfo = KandianMergeManager.a(this.a);
-      KandianMergeManager.a(this.a, null);
-      Kandian210Msg0xeeInfo.removeKandian210Msg0xeeInfoFromSp();
-      KandianAppInPush.a().a(localKandian210Msg0xeeInfo);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isValid = false;
+      if (KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).get() > 0) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.c(2);
+      }
     }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extInt == 1)
+      {
+        SessionInfo localSessionInfo = new SessionInfo();
+        localSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.ar;
+        localSessionInfo.jdField_a_of_type_Int = 1008;
+        ChatActivityFacade.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), localSessionInfo);
+        return;
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extInt != 5);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isValid = false;
+    KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).a().b(AppConstants.as, 7220, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
   }
 }
 

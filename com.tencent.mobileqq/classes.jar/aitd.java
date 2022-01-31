@@ -1,23 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor.IFocusChangeListener;
+import com.tencent.biz.qqstory.base.videoupload.UploadResult;
+import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
+import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
+import com.tencent.mobileqq.tribe.videoupload.TribeVideoFileObject;
+import com.tencent.mobileqq.tribe.videoupload.TribeVideoTaskInfo;
+import com.tencent.mobileqq.tribe.videoupload.TribeVideoUploadTask;
 
 public class aitd
-  implements XMediaEditor.IFocusChangeListener
+  implements UploadObject.UploadFinishListener
 {
-  public aitd(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public aitd(TribeVideoUploadTask paramTribeVideoUploadTask, TribeVideoTaskInfo paramTribeVideoTaskInfo) {}
   
-  public void a(View paramView, boolean paramBoolean)
+  public void a(UploadObject paramUploadObject)
   {
-    if (paramBoolean) {
-      PublishHomeWorkFragment.a(this.a, PublishHomeWorkFragment.a(this.a).a());
-    }
+    paramUploadObject = (TribeVideoFileObject)paramUploadObject;
+    this.jdField_a_of_type_ComTencentMobileqqTribeVideouploadTribeVideoTaskInfo.b = paramUploadObject.a.c;
+    this.jdField_a_of_type_ComTencentMobileqqTribeVideouploadTribeVideoTaskInfo.c = paramUploadObject.a.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitd
  * JD-Core Version:    0.7.0.1
  */

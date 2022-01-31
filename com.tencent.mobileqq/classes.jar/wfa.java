@@ -1,10 +1,24 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.bless.BlessManager;
 
 public class wfa
+  implements Runnable
 {
-  public ProgressBar a;
-  public TextView a;
+  public wfa(BlessManager paramBlessManager) {}
+  
+  public void run()
+  {
+    if (BlessManager.a(this.a) != null)
+    {
+      if (!BlessManager.a(this.a))
+      {
+        BlessManager.b(this.a, BlessManager.a(this.a, BlessManager.a(this.a), false));
+        BlessManager.a(this.a, BlessManager.a(this.a));
+        BlessManager.a(this.a, BlessManager.a(this.a), true);
+      }
+      return;
+    }
+    BlessManager.a(this.a, false);
+  }
 }
 
 

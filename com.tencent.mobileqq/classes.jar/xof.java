@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class xof
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xof(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xof(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.M();
+    EditLocalVideoActivity.a(this.a).dismiss();
   }
 }
 

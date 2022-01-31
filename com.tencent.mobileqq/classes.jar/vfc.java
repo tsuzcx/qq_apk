@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
+import java.lang.ref.WeakReference;
 
-public class vfc
+class vfc
   implements Runnable
 {
-  public vfc(StructingMsgItemBuilder paramStructingMsgItemBuilder, StructingMsgItemBuilder.StructingMsgViewHolder paramStructingMsgViewHolder, Animation paramAnimation) {}
+  vfc(vez paramvez, WeakReference paramWeakReference, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.a.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    vez localvez = (vez)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localvez == null) {
+      return;
+    }
+    localvez.a(this.jdField_a_of_type_Int, -1, null);
   }
 }
 

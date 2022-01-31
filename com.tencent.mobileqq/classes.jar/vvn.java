@@ -1,23 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
 
-public class vvn
+class vvn
   implements Runnable
 {
-  public vvn(PublicAccountChatPie paramPublicAccountChatPie) {}
+  vvn(vvm paramvvm) {}
   
   public void run()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(12);
-      if ((localObject != null) && (((WebProcessManager)localObject).e())) {
-        ((WebProcessManager)localObject).a(-1, new vvo(this));
-      }
-    }
+    this.a.a.aX();
   }
 }
 

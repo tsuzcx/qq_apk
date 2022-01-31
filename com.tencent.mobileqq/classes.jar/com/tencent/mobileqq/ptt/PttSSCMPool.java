@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ptt;
 
-import agfl;
+import agtn;
 import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
@@ -32,7 +32,7 @@ public class PttSSCMPool
       {
         localObject3 = new PttSSCM();
         ((SSCM)localObject3).a();
-        jdField_a_of_type_JavaUtilArrayList.add(new agfl((SSCM)localObject3));
+        jdField_a_of_type_JavaUtilArrayList.add(new agtn((SSCM)localObject3));
         localObject1 = localObject3;
         if (QLog.isColorLevel())
         {
@@ -63,7 +63,7 @@ public class PttSSCMPool
   {
     for (;;)
     {
-      agfl localagfl;
+      agtn localagtn;
       try
       {
         Object localObject = jdField_a_of_type_JavaUtilArrayList;
@@ -73,8 +73,8 @@ public class PttSSCMPool
         if (!((Iterator)localObject).hasNext()) {
           continue;
         }
-        localagfl = (agfl)((Iterator)localObject).next();
-        if (paramSSCM != localagfl.jdField_a_of_type_ComTencentWsttSSCMSSCM) {
+        localagtn = (agtn)((Iterator)localObject).next();
+        if (paramSSCM != localagtn.jdField_a_of_type_ComTencentWsttSSCMSSCM) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -85,10 +85,10 @@ public class PttSSCMPool
           ((Iterator)localObject).remove();
           continue;
         }
-        localagfl.jdField_a_of_type_Boolean = false;
+        localagtn.jdField_a_of_type_Boolean = false;
       }
       finally {}
-      localagfl.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      localagtn.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
     }
   }
   
@@ -100,17 +100,17 @@ public class PttSSCMPool
     Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      agfl localagfl = (agfl)((Iterator)localObject).next();
-      if (!localagfl.jdField_a_of_type_Boolean)
+      agtn localagtn = (agtn)((Iterator)localObject).next();
+      if (!localagtn.jdField_a_of_type_Boolean)
       {
-        localObject = localagfl.jdField_a_of_type_ComTencentWsttSSCMSSCM;
-        localagfl.jdField_a_of_type_Boolean = true;
+        localObject = localagtn.jdField_a_of_type_ComTencentWsttSSCMSSCM;
+        localagtn.jdField_a_of_type_Boolean = true;
         long l = SystemClock.elapsedRealtime();
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "query for sscm, get one expired:" + (l - localagfl.jdField_a_of_type_Long));
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "query for sscm, get one expired:" + (l - localagtn.jdField_a_of_type_Long));
         }
-        if (l - localagfl.jdField_a_of_type_Long > jdField_a_of_type_Long) {
-          localagfl.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
+        if (l - localagtn.jdField_a_of_type_Long > jdField_a_of_type_Long) {
+          localagtn.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
         }
         return localObject;
       }
@@ -120,7 +120,7 @@ public class PttSSCMPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.PttSSCMPool
  * JD-Core Version:    0.7.0.1
  */

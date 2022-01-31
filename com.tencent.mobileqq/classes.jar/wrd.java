@@ -1,46 +1,67 @@
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
+import com.tencent.mobileqq.activity.messagesearch.MessageItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatHistorySearchData;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
+
 public class wrd
+  implements Runnable
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  public wrd(C2CMessageResultAdapter paramC2CMessageResultAdapter, String paramString, long paramLong) {}
   
-  public wrd(String paramString)
+  public void run()
   {
-    String[] arrayOfString = paramString.split(" ");
-    if (arrayOfString.length == 1)
+    int j = 0;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+    int i;
+    MessageRecord localMessageRecord;
+    if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
     {
-      this.jdField_a_of_type_JavaLangString = arrayOfString[0];
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    if (arrayOfString.length == 4)
-    {
-      this.b = arrayOfString[0];
-      this.c = arrayOfString[1];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = arrayOfString[3];
-      return;
-    }
-    if (arrayOfString.length > 4)
-    {
-      int j = arrayOfString.length;
-      paramString = "";
-      int i = 0;
-      while (i < j - 4)
+      i = 0;
+      while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
       {
-        paramString = paramString + arrayOfString[i] + " ";
+        localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(localMessageRecord))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
+          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
+        }
         i += 1;
       }
-      this.d = paramString;
-      this.b = arrayOfString[(j - 4)];
-      this.c = arrayOfString[(j - 3)];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = arrayOfString[(j - 1)];
-      return;
     }
-    throw new RuntimeException("format error!");
+    if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
+      if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
+      {
+        i = j;
+        while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
+        {
+          localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(localMessageRecord))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
+            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
+          }
+          i += 1;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CMessageResultAdapter", 2, "localCacheMsgs size: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.size());
+    }
+    localObject = new HashMap();
+    ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
+    ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(8, localObject).sendToTarget();
   }
 }
 

@@ -1,39 +1,34 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.util.NearbyProfileUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.NearbyFlowerManager;
+import com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aepv
-  implements Runnable
+  extends TroopGiftCallback
 {
-  public aepv(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public aepv(TroopGiftPanelForNearby paramTroopGiftPanelForNearby) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    Object localObject = (NearbyCardManager)this.a.app.getManager(105);
-    this.a.k = ((NearbyCardManager)localObject).b(NearbyPeopleProfileActivity.a(this.a));
-    if (!this.a.k) {}
-    long l;
-    do
+    NearbyFlowerManager.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    }
+    if (paramInt == 20007) {
+      QQToast.a(TroopGiftPanelForNearby.a(this.a), "对方拒收了你的礼物", 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+    }
+    for (;;)
     {
-      do
-      {
-        return;
-      } while ((!NetworkUtil.d(BaseApplication.getContext())) && (this.a.k));
-      localObject = NearbyPeopleProfileActivity.a(this.a).vSeed;
-      l = NearbyPeopleProfileActivity.a(this.a).feedPreviewTime;
-      if (this.a.jdField_a_of_type_Long > 0L)
-      {
-        NearbyProfileUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.a.app, this.a.jdField_a_of_type_Long, null, this.a.d, (byte[])localObject, l, true, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long);
-        return;
-      }
-    } while (StringUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-    NearbyProfileUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.a.app, 0L, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.a.d, (byte[])localObject, l, true, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long);
+      NearbyFlowerManager.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
+      return;
+      QQToast.a(TroopGiftPanelForNearby.b(this.a), "赠送失败", 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+    }
   }
 }
 

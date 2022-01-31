@@ -1,14 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class maz
-  implements Runnable
+public class maz
+  implements DialogInterface.OnDismissListener
 {
-  public maz(View paramView, int paramInt1, int paramInt2) {}
+  public maz(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    VideoFeedsHelper.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    }
+    if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).b()) && (VideoFeedsAdapter.g(this.a)) && (!VideoFeedsAdapter.i(this.a)) && (VideoFeedsAdapter.h(this.a))) {
+      VideoFeedsAdapter.a(this.a).d();
+    }
+    VideoFeedsAdapter.a(this.a).setNeedDetectScreenOrientation(true);
+    VideoFeedsAdapter.e(this.a, false);
   }
 }
 

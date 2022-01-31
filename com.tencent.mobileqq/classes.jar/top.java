@@ -1,23 +1,34 @@
-import android.os.Handler;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
-public class top
-  implements INetEventHandler
+class top
+  implements Runnable
 {
-  public top(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  top(too paramtoo, String paramString) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void run()
   {
-    if (!paramBoolean)
-    {
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131436274), 1).show();
-      toq localtoq = new toq(this);
-      new Handler().postDelayed(localtoq, 3000L);
+    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
+      return;
     }
+    Object localObject1 = localObject2;
+    if (!((String)localObject2).startsWith("http://"))
+    {
+      localObject1 = localObject2;
+      if (!((String)localObject2).startsWith("https://")) {
+        localObject1 = "http://" + (String)localObject2;
+      }
+    }
+    localObject2 = new Intent(this.jdField_a_of_type_Too.a.getActivity(), QQBrowserActivity.class);
+    ((Intent)localObject2).putExtra("is_register_uin", true);
+    ((Intent)localObject2).putExtra("isShowAd", false);
+    ((Intent)localObject2).putExtra("hide_more_button", true);
+    ((Intent)localObject2).putExtra("hide_operation_bar", true);
+    ((Intent)localObject2).putExtra("register_uin_msg", 9);
+    ((Intent)localObject2).putExtra("register_uin_class", RegisterActivity.class.getName());
+    this.jdField_a_of_type_Too.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
   }
 }
 

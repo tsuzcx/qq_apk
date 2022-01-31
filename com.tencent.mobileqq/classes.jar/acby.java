@@ -1,17 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class acby
-  implements DialogInterface.OnClickListener
+class acby
+  implements Runnable
 {
-  public acby(FMActivity paramFMActivity) {}
+  acby(acbg paramacbg, String paramString, Bundle paramBundle, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
-    this.a.finish();
+    try
+    {
+      Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString).getJSONArray("gameList");
+      ArrayList localArrayList = new ArrayList();
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+      {
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          localArrayList.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
+          i += 1;
+        }
+        localObject = new acbz(this);
+        ApolloGameManager localApolloGameManager = (ApolloGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(210);
+        localApolloGameManager.a = new WeakReference(localObject);
+        localApolloGameManager.a("android.web", "apollo_aio_game.del_games_from_user_gamepanel", localArrayList);
+      }
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

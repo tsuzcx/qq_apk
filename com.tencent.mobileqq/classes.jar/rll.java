@@ -1,34 +1,13 @@
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class rll
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rll(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public rll(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
-  {
-    try
-    {
-      if ((AuthDevVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        AuthDevVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        AuthDevVerifyCodeActivity.a(this.a).c(2131435053);
-        AuthDevVerifyCodeActivity.a(this.a).c(true);
-      }
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (!AuthDevVerifyCodeActivity.a(this.a).isShowing())) {
-        AuthDevVerifyCodeActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

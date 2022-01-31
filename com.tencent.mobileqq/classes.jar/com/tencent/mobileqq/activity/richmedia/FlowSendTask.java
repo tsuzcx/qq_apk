@@ -37,8 +37,8 @@ import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import mqq.os.MqqHandler;
-import xme;
-import xmg;
+import xpk;
+import xpm;
 
 public class FlowSendTask
   extends AsyncTask
@@ -227,7 +227,7 @@ public class FlowSendTask
       if (!VideoEnvironment.d()) {
         break label814;
       }
-      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new xme(this));
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new xpk(this));
     }
     for (;;)
     {
@@ -427,10 +427,10 @@ public class FlowSendTask
     //   112: lstore_3
     //   113: aload_0
     //   114: getfield 143	com/tencent/mobileqq/activity/richmedia/FlowSendTask:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   117: new 553	xmf
+    //   117: new 553	xpl
     //   120: dup
     //   121: aload_0
-    //   122: invokespecial 554	xmf:<init>	(Lcom/tencent/mobileqq/activity/richmedia/FlowSendTask;)V
+    //   122: invokespecial 554	xpl:<init>	(Lcom/tencent/mobileqq/activity/richmedia/FlowSendTask;)V
     //   125: invokevirtual 557	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
     //   128: lload 7
     //   130: lstore_3
@@ -1044,11 +1044,11 @@ public class FlowSendTask
         }
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624515);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
       }
       return;
     }
@@ -1174,8 +1174,8 @@ public class FlowSendTask
           paramInteger.putExtra("param_type", 9003);
           paramInteger.putExtra("param_only_friends", true);
           paramInteger.putExtra("param_donot_need_contacts", true);
-          paramInteger.putExtra("param_title", this.jdField_a_of_type_AndroidAppActivity.getString(2131438235));
-          paramInteger.putExtra("param_done_button_wording", this.jdField_a_of_type_AndroidAppActivity.getString(2131432400));
+          paramInteger.putExtra("param_title", this.jdField_a_of_type_AndroidAppActivity.getString(2131438253));
+          paramInteger.putExtra("param_done_button_wording", this.jdField_a_of_type_AndroidAppActivity.getString(2131432417));
           paramInteger.putExtra("param_exit_animation", 1);
           paramInteger.putExtra("param_entrance", this.jdField_h_of_type_Int);
           paramInteger.putExtra("param_blesstype", 2);
@@ -1210,7 +1210,7 @@ public class FlowSendTask
       }
       if ((!this.jdField_d_of_type_Boolean) && ((this.jdField_a_of_type_AndroidAppActivity instanceof FlowCameraActivity2)))
       {
-        ThreadManager.getSubThreadHandler().postDelayed(new xmg(this), 1000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new xpm(this), 1000L);
         return;
       }
       this.jdField_a_of_type_AndroidAppActivity = null;

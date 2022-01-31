@@ -1,24 +1,13 @@
-import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager;
 
 public class vcx
-  implements VideoDrawable.OnAudioPlayOnceListener
 {
-  public vcx(ShortVideoPTVItemBuilder paramShortVideoPTVItemBuilder) {}
+  public int a;
+  public long a;
   
-  public void onFinish()
+  public vcx(PokeItemAnimationManager paramPokeItemAnimationManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
-    }
-    if ((ShortVideoPTVItemBuilder.a() != null) && (ShortVideoPTVItemBuilder.a().get() != null))
-    {
-      ShortVideoPTVItemBuilder.a(ShortVideoPTVItemBuilder.a(this.a), (ChatMessage)ShortVideoPTVItemBuilder.a().get());
-      ShortVideoPTVItemBuilder.a(null);
-    }
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 

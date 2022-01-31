@@ -1,11 +1,21 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class kgp
+public final class kgp
+  implements Runnable
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public String b;
+  public kgp(String paramString1, String paramString2, String paramString3) {}
+  
+  public void run()
+  {
+    FileUtils.a(this.a + File.separator, this.b, this.c);
+    if (QLog.isColorLevel())
+    {
+      QLog.i("ScoreManager", 2, "save Config to path :" + this.a);
+      QLog.i("ScoreManager", 2, "save Config to finish :" + this.c);
+    }
+  }
 }
 
 

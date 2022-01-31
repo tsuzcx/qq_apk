@@ -1,51 +1,38 @@
-import com.tencent.av.AVLog;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.SkinColorFilterDesc;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.ptt.player.AmrPlayer;
+import com.tencent.mobileqq.ptt.player.IPttPlayerListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
 public class agto
-  implements INetEngine.INetEngineListener
+  implements Runnable
 {
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public agto(AmrPlayer paramAmrPlayer) {}
   
-  public void a(NetResp paramNetResp)
+  public void run()
   {
-    Object localObject = (CaptureVideoFilterManager.SkinColorFilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    AVLog.c("CaptureVideoFilterManager", "download file call back. file = " + ((CaptureVideoFilterManager.SkinColorFilterDesc)localObject).a);
-    if (paramNetResp.jdField_a_of_type_Int != 0)
-    {
-      AVLog.c("CaptureVideoFilterManager", "download file faild. errcode = " + paramNetResp.b);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AmrPlayer", 2, "playAmr " + AmrPlayer.a(this.a));
     }
-    if (!((CaptureVideoFilterManager.SkinColorFilterDesc)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c)))
-    {
-      AVLog.c("CaptureVideoFilterManager", "download file faild : md5 is not match.");
-      FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
-      return;
-    }
-    AVLog.c("CaptureVideoFilterManager", "download file successed.");
     try
     {
-      localObject = CaptureVideoFilterManager.a();
-      FileUtils.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c, (String)localObject, false);
-      FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+      AmrPlayer.a(this.a).b();
+      AmrPlayer.a(this.a).start();
+      if (AmrPlayer.a(this.a, AmrPlayer.a(this.a) - 1000) > 0) {
+        AmrPlayer.a(this.a).seekTo(AmrPlayer.a(this.a));
+      }
       return;
     }
-    catch (IOException paramNetResp)
+    catch (Exception localException)
     {
-      paramNetResp.printStackTrace();
-      AVLog.c("CaptureVideoFilterManager", "BEAUTY_ZIP unzip file faild.");
+      while (AmrPlayer.a(this.a) == null) {}
+      AmrPlayer.a(this.a).sendEmptyMessage(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agto
  * JD-Core Version:    0.7.0.1
  */

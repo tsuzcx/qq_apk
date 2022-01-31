@@ -1,26 +1,18 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class kyb
-  implements FMDialogUtil.FMDialogInterface
+  extends BroadcastReceiver
 {
-  public kyb(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public kyb(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    GdtLog.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 5)
-    {
-      ReadInJoyNativeAdAppVideoView.a(this.a).start();
-      ReadInJoyNativeAdAppVideoView.e(this.a, 4);
-      ReadInJoyNativeAdAppVideoView.a(this.a);
-      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
-    }
+    this.a.a.finish();
   }
-  
-  public void b() {}
 }
 
 

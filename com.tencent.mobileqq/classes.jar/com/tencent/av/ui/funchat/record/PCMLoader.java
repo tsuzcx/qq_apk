@@ -6,16 +6,16 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
 import java.util.LinkedList;
-import kds;
-import kdt;
-import kdu;
+import kdd;
+import kde;
+import kdf;
 
 public class PCMLoader
 {
   private int jdField_a_of_type_Int = 4096;
-  private LruCache jdField_a_of_type_AndroidUtilLruCache = new kds(this, 4194304);
+  private LruCache jdField_a_of_type_AndroidUtilLruCache = new kdd(this, 4194304);
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private kdu jdField_a_of_type_Kdu;
+  private kdf jdField_a_of_type_Kdf;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private byte[] b;
   
@@ -264,7 +264,7 @@ public class PCMLoader
   {
     try
     {
-      this.jdField_a_of_type_Kdu = null;
+      this.jdField_a_of_type_Kdf = null;
       return;
     }
     finally
@@ -287,10 +287,10 @@ public class PCMLoader
         if (bool) {
           return;
         }
-        kdt localkdt = (kdt)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
-        if (localkdt != null)
+        kde localkde = (kde)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+        if (localkde != null)
         {
-          this.jdField_a_of_type_Kdu = new kdu(localkdt, true);
+          this.jdField_a_of_type_Kdf = new kdf(localkde, true);
           continue;
         }
         if (!QLog.isColorLevel()) {
@@ -301,9 +301,9 @@ public class PCMLoader
       QLog.i("QavRecord.PCMLoader", 2, "playBGM not in cache");
       label96:
       a(paramString);
-      paramString = (kdt)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+      paramString = (kde)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
       if (paramString != null) {
-        this.jdField_a_of_type_Kdu = new kdu(paramString, true);
+        this.jdField_a_of_type_Kdf = new kdf(paramString, true);
       }
     }
   }
@@ -324,19 +324,19 @@ public class PCMLoader
         this.b = new byte[this.jdField_a_of_type_Int];
       }
       Arrays.fill(this.jdField_a_of_type_ArrayOfByte, (byte)0);
-      kdu localkdu = this.jdField_a_of_type_Kdu;
-      if (localkdu != null) {
-        localkdu.a(this.jdField_a_of_type_ArrayOfByte, 0, paramInt);
+      kdf localkdf = this.jdField_a_of_type_Kdf;
+      if (localkdf != null) {
+        localkdf.a(this.jdField_a_of_type_ArrayOfByte, 0, paramInt);
       }
       Arrays.fill(this.b, (byte)0);
       if ((this.jdField_a_of_type_JavaUtilLinkedList.size() > 0) && (i < paramInt))
       {
-        localkdu = (kdu)this.jdField_a_of_type_JavaUtilLinkedList.get(0);
-        if (localkdu != null)
+        localkdf = (kdf)this.jdField_a_of_type_JavaUtilLinkedList.get(0);
+        if (localkdf != null)
         {
-          int j = i + localkdu.a(this.b, i, paramInt);
+          int j = i + localkdf.a(this.b, i, paramInt);
           i = j;
-          if (!localkdu.a()) {
+          if (!localkdf.a()) {
             break label229;
           }
           this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
@@ -387,7 +387,7 @@ public class PCMLoader
       byte[] arrayOfByte = a((File)localObject);
       if (arrayOfByte != null)
       {
-        localObject = new kdt(paramString, arrayOfByte);
+        localObject = new kde(paramString, arrayOfByte);
         this.jdField_a_of_type_AndroidUtilLruCache.put(paramString, localObject);
         long l2 = System.currentTimeMillis();
         QLog.i("QavRecord.PCMLoader", 1, "putFileToCache filePath=" + paramString + ", cost=" + (l2 - l1) + ", retry=" + i);
@@ -427,10 +427,10 @@ public class PCMLoader
         if (bool) {
           return;
         }
-        kdt localkdt = (kdt)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
-        if (localkdt != null)
+        kde localkde = (kde)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+        if (localkde != null)
         {
-          paramString = new kdu(localkdt, false);
+          paramString = new kdf(localkde, false);
           this.jdField_a_of_type_JavaUtilLinkedList.add(paramString);
           continue;
         }
@@ -442,10 +442,10 @@ public class PCMLoader
       QLog.i("QavRecord.PCMLoader", 2, "playEffect not in cache");
       label102:
       a(paramString);
-      paramString = (kdt)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+      paramString = (kde)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
       if (paramString != null)
       {
-        paramString = new kdu(paramString, false);
+        paramString = new kdf(paramString, false);
         this.jdField_a_of_type_JavaUtilLinkedList.add(paramString);
       }
     }
@@ -455,7 +455,7 @@ public class PCMLoader
   {
     this.jdField_a_of_type_AndroidUtilLruCache.evictAll();
     this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    this.jdField_a_of_type_Kdu = null;
+    this.jdField_a_of_type_Kdf = null;
   }
 }
 

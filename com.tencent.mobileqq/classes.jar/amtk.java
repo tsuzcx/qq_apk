@@ -1,26 +1,51 @@
 import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
 
 public class amtk
-  implements Runnable
+  extends OnQZonePluginInstallListner.Stub
 {
-  public amtk(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  private long jdField_a_of_type_Long = -1L;
   
-  public void run()
+  public amtk(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  
+  public void a(String paramString)
   {
-    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(8);
-    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(false);
-    QIMEffectCameraCaptureUnit.a(this.a, 0);
-    QIMEffectCameraCaptureUnit.a(this.a, QIMEffectCameraCaptureUnit.a(this.a));
-    QIMEffectCameraCaptureUnit.f(this.a).setVisibility(0);
-    this.a.a.postDelayed(QIMEffectCameraCaptureUnit.a(this.a), 500L);
+    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallBegin] pluginId=" + paramString);
+    if (this.jdField_a_of_type_Long < 0L) {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
+  }
+  
+  public void a(String paramString, float paramFloat, long paramLong)
+  {
+    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallDownloadProgress] pluginId=" + paramString + " progress=" + paramFloat + " total=" + paramLong);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
+    paramString = QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).obtainMessage();
+    paramString.what = 1010;
+    if (8 == paramInt) {}
+    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
+    {
+      QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendMessage(paramString);
+      return;
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallFinish] pluginId=" + paramString);
+    QzoneVerticalVideoDownloadActivity.a("vertical_layer", "vertical_layer_time_cost", "plugin_install_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="19.0dip" />
-    <size android:height="38.0dip" android:width="38.0dip" />
-    <solid android:color="#b2000000" />
-</shape>
+    <item>
+        <shape>
+            <solid android:color="#ffe3f3ff" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bc7" android:left="12.0dip" />
+</layer-list>

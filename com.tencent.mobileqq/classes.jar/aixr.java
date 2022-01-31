@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class aixr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aixr(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
+  public aixr(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(this.jdField_a_of_type_JavaLangString);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixr
  * JD-Core Version:    0.7.0.1
  */

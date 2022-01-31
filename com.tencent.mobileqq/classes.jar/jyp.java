@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import android.widget.Button;
+import com.tencent.av.ui.PSTNC2CActivity;
 
-public class jyp
-  implements View.OnClickListener
+class jyp
+  implements Runnable
 {
-  public jyp(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  jyp(jyo paramjyo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b();
+    this.a.a.a(this.a.a.a, false, 2130840136);
+    this.a.a.a.setClickable(true);
   }
 }
 

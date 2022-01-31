@@ -1,24 +1,30 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.AudioAnimationView;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
 public class akem
-  implements Runnable
+  implements View.OnClickListener
 {
-  private akem(AudioAnimationView paramAudioAnimationView) {}
+  int jdField_a_of_type_Int;
   
-  public void run()
+  public akem(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, int paramInt)
   {
-    this.a.b();
-    if (this.a.a) {
-      AudioAnimationView.a(this.a).postDelayed(this, 100L);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
     }
-    this.a.requestLayout();
-    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akem
  * JD-Core Version:    0.7.0.1
  */

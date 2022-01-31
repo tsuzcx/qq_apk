@@ -1,47 +1,14 @@
-import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
-import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob;
+import com.tencent.biz.qqstory.shareGroup.icon.RestrictedBitmap;
 
-public final class nge
-  implements WXShareHelper.WXShareListener
+public class nge
+  implements Runnable
 {
-  public nge(String paramString, StoryShareCallback paramStoryShareCallback, ShareWeChatData paramShareWeChatData) {}
+  public nge(ShareGroupAvatarSaveFileJob paramShareGroupAvatarSaveFileJob, RestrictedBitmap paramRestrictedBitmap) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -3: 
-    case -1: 
-    default: 
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
-      }
-      break;
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
-        continue;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null)
-        {
-          this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
-          continue;
-          if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null) {
-            this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
-          }
-        }
-      }
-    }
+    ShareGroupAvatarSaveFileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobShareGroupAvatarSaveFileJob, ShareGroupAvatarSaveFileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobShareGroupAvatarSaveFileJob, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconRestrictedBitmap));
   }
 }
 

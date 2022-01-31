@@ -33,9 +33,9 @@ import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
 import java.util.ArrayList;
 import java.util.List;
-import naj;
-import nak;
-import nal;
+import nbu;
+import nbv;
+import nbw;
 
 public class FeedCommentLego
   extends LegoBase
@@ -122,7 +122,7 @@ public class FeedCommentLego
   private static void b(CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry, int paramInt, FeedCommentEventHandler.PostCommentCallback paramPostCommentCallback, boolean paramBoolean)
   {
     a(paramInt, 1, paramCommentEntry.feedId, paramCommentEntry.commentId);
-    FeedCommentDataProvider.b(paramCommentEntry, new nak(paramPostCommentCallback, paramCommentEntry, (CommentManager)SuperManager.a(17), paramBoolean, paramCommentLikeFeedItem, paramInt));
+    FeedCommentDataProvider.b(paramCommentEntry, new nbv(paramPostCommentCallback, paramCommentEntry, (CommentManager)SuperManager.a(17), paramBoolean, paramCommentLikeFeedItem, paramInt));
   }
   
   public LegoDataProvider a()
@@ -168,14 +168,14 @@ public class FeedCommentLego
     }
     localCommentEntry.status = 1;
     e();
-    FeedCommentDataProvider.a(localCommentEntry, new nal(this, paramInt, localCommentEntry));
+    FeedCommentDataProvider.a(localCommentEntry, new nbw(this, paramInt, localCommentEntry));
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView = ((InnerListView)paramView.findViewById(2131371570));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView = ((InnerListView)paramView.findViewById(2131371735));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setOverScrollMode(1);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371572));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371737));
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$UserIconUpdateReceiver = new FeedCommentLego.UserIconUpdateReceiver(this);
     Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$UserIconUpdateReceiver);
@@ -252,7 +252,7 @@ public class FeedCommentLego
       break label31;
       label244:
       StoryQQTextCacher.a().a = "";
-      a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, localCommentEntry, false, this.jdField_a_of_type_Int, new naj(this));
+      a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, localCommentEntry, false, this.jdField_a_of_type_Int, new nbu(this));
     }
   }
   
@@ -276,8 +276,8 @@ public class FeedCommentLego
     if (this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$CommentInnerAdpter == null)
     {
       this.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.a(2130970677, 2);
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$CommentInnerAdpter = new FeedCommentLego.CommentInnerAdpter(this, 2130970677, this.jdField_a_of_type_JavaUtilList, true);
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.a(2130970723, 2);
+      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$CommentInnerAdpter = new FeedCommentLego.CommentInnerAdpter(this, 2130970723, this.jdField_a_of_type_JavaUtilList, true);
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$CommentInnerAdpter);
     }
     for (;;)
@@ -327,13 +327,13 @@ public class FeedCommentLego
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$CommentInnerAdpter = new FeedCommentLego.CommentInnerAdpter(this, 2130970677, this.jdField_a_of_type_JavaUtilList, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$CommentInnerAdpter = new FeedCommentLego.CommentInnerAdpter(this, 2130970723, this.jdField_a_of_type_JavaUtilList, true);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$CommentInnerAdpter);
   }
   
   public void f()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$CommentInnerAdpter = new FeedCommentLego.CommentInnerAdpter(this, 2130970677, this.jdField_a_of_type_JavaUtilList, false);
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$CommentInnerAdpter = new FeedCommentLego.CommentInnerAdpter(this, 2130970723, this.jdField_a_of_type_JavaUtilList, false);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego$CommentInnerAdpter);
   }
   

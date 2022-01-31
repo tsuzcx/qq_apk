@@ -1,18 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialogQQSide;
+import android.os.Handler;
+import com.tencent.av.AVLog;
+import com.tencent.av.utils.SignalStrengthReport;
+import com.tencent.av.utils.SignalStrengthReport.PingUtil;
 
 public class kgz
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public kgz(PopupDialogQQSide paramPopupDialogQQSide, DialogInterface.OnClickListener paramOnClickListener) {}
+  public kgz(SignalStrengthReport paramSignalStrengthReport) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    this.a.b = 0;
+    if ((this.a.jdField_a_of_type_Int == -1) || (SignalStrengthReport.e() == 1)) {}
+    try
+    {
+      String str = SignalStrengthReport.a(this.a);
+      this.a.b = SignalStrengthReport.PingUtil.a("http://" + str);
+      if (this.a.b < 0) {
+        this.a.b = 0;
+      }
+      AVLog.c("SignalStrengthReport", "mPingTask gatewayIP:" + str + " | avgRtt:" + this.a.b);
     }
-    paramDialogInterface.dismiss();
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        AVLog.c("SignalStrengthReport", "mPingTask e:" + localException);
+      }
+    }
+    if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.a.jdField_a_of_type_Int);
+    }
   }
 }
 

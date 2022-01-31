@@ -1,33 +1,15 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView.MatrixTouchListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public class myc
-  extends GestureDetector.SimpleOnGestureListener
+class myc
+  implements Runnable
 {
-  private final PublicAccountImageView.MatrixTouchListener jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView$MatrixTouchListener;
+  myc(myb parammyb) {}
   
-  public myc(PublicAccountImageView paramPublicAccountImageView, PublicAccountImageView.MatrixTouchListener paramMatrixTouchListener)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView$MatrixTouchListener = paramMatrixTouchListener;
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return false;
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    if (PublicAccountImageCollectionMainActivity.a(this.a.a) != null) {
+      PublicAccountImageCollectionMainActivity.a(this.a.a).c(PublicAccountImageCollectionMainActivity.e(this.a.a));
+    }
   }
 }
 

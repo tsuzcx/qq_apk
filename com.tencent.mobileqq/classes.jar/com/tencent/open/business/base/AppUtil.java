@@ -21,6 +21,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
+import com.tencent.commonsdk.zip.QZipFile;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.StartAppCheckHandler;
@@ -44,7 +45,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import org.xmlpull.v1.XmlPullParserException;
 
 public class AppUtil
@@ -420,10 +420,10 @@ public class AppUtil
     try
     {
       long l1 = new File(paramString).length();
-      localZipFile = new ZipFile(paramString);
+      localQZipFile = new QZipFile(paramString);
       try
       {
-        paramString = localZipFile.entries();
+        paramString = localQZipFile.entries();
         j = 0;
         do
         {
@@ -448,15 +448,15 @@ public class AppUtil
         ZipEntry localZipEntry;
         long l2;
         long l3;
-        ZipFile localZipFile = null;
+        QZipFile localQZipFile = null;
         continue;
         int k = i;
         i = j;
         int j = k;
       }
     }
-    if (localZipFile != null) {
-      localZipFile.close();
+    if (localQZipFile != null) {
+      localQZipFile.close();
     }
     throw paramString;
     label137:
@@ -465,7 +465,7 @@ public class AppUtil
       if ((l2 == 0L) || (l3 == 0L)) {
         throw new RuntimeException("Invalid AndroidManifest!");
       }
-      a(localZipFile, localZipEntry, false);
+      a(localQZipFile, localZipEntry, false);
       k = 1;
       i = j;
       j = k;
@@ -473,8 +473,8 @@ public class AppUtil
       if ((i == 0) || (j == 0)) {
         break label256;
       }
-      if (localZipFile != null) {
-        localZipFile.close();
+      if (localQZipFile != null) {
+        localQZipFile.close();
       }
     }
     label256:
@@ -484,7 +484,7 @@ public class AppUtil
       if ((localZipEntry.getName() == null) || (!localZipEntry.getName().contains("classes.dex"))) {
         break label283;
       }
-      a(localZipFile, localZipEntry, false);
+      a(localQZipFile, localZipEntry, false);
       k = 1;
       j = i;
       i = k;
@@ -493,12 +493,12 @@ public class AppUtil
       j = i;
       i = k;
       break;
-    } while (localZipFile == null);
-    localZipFile.close();
+    } while (localQZipFile == null);
+    localQZipFile.close();
   }
   
   /* Error */
-  public static void a(ZipFile paramZipFile, ZipEntry paramZipEntry, boolean paramBoolean)
+  public static void a(java.util.zip.ZipFile paramZipFile, ZipEntry paramZipEntry, boolean paramBoolean)
   {
     // Byte code:
     //   0: sipush 4096
@@ -508,7 +508,7 @@ public class AppUtil
     //   8: astore 4
     //   10: aload_0
     //   11: aload_1
-    //   12: invokevirtual 417	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   12: invokevirtual 419	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   15: astore_0
     //   16: iload_2
     //   17: ifeq +27 -> 44
@@ -516,7 +516,7 @@ public class AppUtil
     //   21: astore 4
     //   23: aload_0
     //   24: aload 5
-    //   26: invokevirtual 423	java/io/InputStream:read	([B)I
+    //   26: invokevirtual 425	java/io/InputStream:read	([B)I
     //   29: istore_3
     //   30: iconst_m1
     //   31: iload_3
@@ -524,29 +524,29 @@ public class AppUtil
     //   35: aload_0
     //   36: ifnull +7 -> 43
     //   39: aload_0
-    //   40: invokevirtual 424	java/io/InputStream:close	()V
+    //   40: invokevirtual 426	java/io/InputStream:close	()V
     //   43: return
     //   44: aload_0
     //   45: astore 4
     //   47: aload_0
     //   48: aload 5
-    //   50: invokevirtual 423	java/io/InputStream:read	([B)I
+    //   50: invokevirtual 425	java/io/InputStream:read	([B)I
     //   53: pop
     //   54: goto -19 -> 35
     //   57: astore_0
     //   58: aload 4
     //   60: ifnull +8 -> 68
     //   63: aload 4
-    //   65: invokevirtual 424	java/io/InputStream:close	()V
+    //   65: invokevirtual 426	java/io/InputStream:close	()V
     //   68: aload_0
     //   69: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	70	0	paramZipFile	ZipFile
+    //   0	70	0	paramZipFile	java.util.zip.ZipFile
     //   0	70	1	paramZipEntry	ZipEntry
     //   0	70	2	paramBoolean	boolean
     //   29	4	3	i	int
-    //   8	56	4	localZipFile	ZipFile
+    //   8	56	4	localZipFile	java.util.zip.ZipFile
     //   5	44	5	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type

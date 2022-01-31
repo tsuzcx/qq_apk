@@ -1,16 +1,33 @@
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
-import cooperation.groupvideo.GroupVideoWrapper;
-import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-class zij
-  implements GroupVideoWrapper.OnGVideoReadyListener
+public class zij
+  implements Runnable
 {
-  zij(zii paramzii) {}
+  public zij(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void a(GroupVideoWrapper paramGroupVideoWrapper)
+  public void run()
   {
-    paramGroupVideoWrapper.a(this.a.a.a);
-    paramGroupVideoWrapper.a();
+    synchronized (PhoneContactManagerImp.a(this.a))
+    {
+      PhoneContactManagerImp.a(this.a).getPreferences();
+      try
+      {
+        Iterator localIterator = PhoneContactManagerImp.a(this.a).iterator();
+        while (localIterator.hasNext()) {
+          ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.a.a);
+        }
+        localObject = finally;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+    }
   }
 }
 

@@ -1,31 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.playvideo.player.IVideoView;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
+import java.util.ArrayList;
 
 public class nmh
-  implements Runnable
+  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public nmh(ProgressControler paramProgressControler) {}
+  public nmh(BatchGetVideoInfoHandler paramBatchGetVideoInfoHandler, BatchGetVideoInfo paramBatchGetVideoInfo) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    IVideoView localIVideoView;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localIVideoView = (IVideoView)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localIVideoView == null);
-    if (localIVideoView.b() > 0L)
-    {
-      this.a.a(this.a.jdField_a_of_type_Int, localIVideoView.a(), localIVideoView.b(), localIVideoView);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b(0);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(0, paramArrayList);
   }
 }
 

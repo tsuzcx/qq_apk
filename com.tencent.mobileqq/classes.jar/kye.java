@@ -1,23 +1,14 @@
-import android.media.AudioManager;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONObject;
 
-class kye
+public class kye
   implements Runnable
 {
-  kye(kyd paramkyd) {}
+  public kye(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    if (ReadInJoyNativeAdAppVideoView.a(this.a.a).getStreamVolume(3) > 0)
-    {
-      ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130839655);
-      ReadInJoyNativeAdAppVideoView.a(this.a.a).setOutputMute(false);
-      return;
-    }
-    ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130839654);
-    ReadInJoyNativeAdAppVideoView.a(this.a.a).setOutputMute(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

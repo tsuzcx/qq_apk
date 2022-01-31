@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class aefo
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aefo(SelectLocationFragment paramSelectLocationFragment) {}
+  public aefo(MedalGuideView paramMedalGuideView, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    SelectLocationFragment.a(this.a, SelectLocationFragment.b(this.a));
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80088E9", "0X80088E9", this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalGuideView.e, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
-import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
+import java.util.ArrayList;
 
 public class uxn
-  implements DialogInterface.OnClickListener
+  implements TransFileController.OnCancelListener
 {
-  public uxn(LongMsgItemBuilder paramLongMsgItemBuilder, MessageForLongMsg paramMessageForLongMsg) {}
+  public uxn(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ArrayList paramArrayList)
   {
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLongMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongMsg);
+    this.a.b();
   }
 }
 

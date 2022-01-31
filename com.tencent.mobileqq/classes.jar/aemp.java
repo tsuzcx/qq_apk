@@ -1,43 +1,57 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.ShieldMsgManger;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aemp
-  implements ActionSheet.OnButtonClickListener
+  extends MessageObserver
 {
-  public aemp(PlayOperationViewModel paramPlayOperationViewModel, ActionSheet paramActionSheet) {}
+  public aemp(NearbyProxy paramNearbyProxy) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
+    if (paramInt != 1) {
       return;
-      if (PlayOperationViewModel.e(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel))
-      {
-        PlayOperationViewModel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel, DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_AndroidViewView.getContext(), 230, "确定删除该动态？", null, "取消", "删除", new aemq(this), new aems(this)));
-        PlayOperationViewModel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel).show();
-      }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.b != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        String str2 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.b);
-        String str1 = str2;
-        if (StringUtil.a(str2)) {
-          str1 = "0";
-        }
-        PlayOperationViewModel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel, paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, str1);
-      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyProxy", 2, "onRemoveFromBlackList from nearby");
+    }
+    if (paramBoolean)
+    {
+      ShieldMsgManger localShieldMsgManger = (ShieldMsgManger)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(paramString));
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver);
+      localShieldMsgManger.b(1001, localArrayList, 1);
+      return;
+    }
+    NearbyProxy.a(this.a, 4116, new Object[] { Boolean.valueOf(false) });
+  }
+  
+  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (((Integer)paramArrayOfObject[0]).intValue() != 1) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyProxy", 2, "onInsertIntoBlackList from nearby");
+    }
+    if ((paramBoolean) && (paramArrayOfObject.length == 4))
+    {
+      ((Long)paramArrayOfObject[1]).longValue();
+      String str = (String)paramArrayOfObject[2];
+      int i = ((Integer)paramArrayOfObject[3]).intValue();
+      NearbySPUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "blacklist_sequence", Integer.valueOf(i));
+      paramArrayOfObject = new ArrayList();
+      paramArrayOfObject.add(Long.valueOf(str));
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver);
+      ((ShieldMsgManger)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15)).a(1001, paramArrayOfObject, 1);
+      return;
+    }
+    NearbyProxy.a(this.a, 4115, new Object[] { Boolean.valueOf(false) });
   }
 }
 

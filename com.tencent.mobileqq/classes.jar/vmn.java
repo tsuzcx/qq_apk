@@ -1,17 +1,8 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
-class vmn
-  implements Runnable
+public abstract interface vmn
 {
-  vmn(vmm paramvmm) {}
-  
-  public void run()
-  {
-    this.a.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.a.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
-  }
+  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
 }
 
 

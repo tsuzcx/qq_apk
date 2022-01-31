@@ -26,7 +26,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import khc;
+import kgn;
 import mqq.app.MobileQQ;
 
 public class QAVNotification
@@ -39,7 +39,7 @@ public class QAVNotification
   NotificationStyleDiscover jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover;
   QNotificationManager jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager = null;
   Map jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-  khc jdField_a_of_type_Khc = null;
+  kgn jdField_a_of_type_Kgn = null;
   boolean jdField_a_of_type_Boolean = false;
   
   private QAVNotification(VideoAppInterface paramVideoAppInterface)
@@ -80,15 +80,15 @@ public class QAVNotification
     if (QLog.isColorLevel()) {
       QLog.d("QAVNotification", 2, "cancelNotificationForce");
     }
-    new QNotificationManager(paramContext).cancel("QAVNotification", 2130840347);
+    new QNotificationManager(paramContext).cancel("QAVNotification", 2130840353);
   }
   
-  private void a(khc paramkhc, boolean paramBoolean)
+  private void a(kgn paramkgn, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.w("QAVNotification", 1, "updateNotification, type[" + paramkhc.jdField_a_of_type_Int + "], name[" + paramkhc.jdField_b_of_type_JavaLangString + "], bCreate[" + paramBoolean + "]");
+      QLog.w("QAVNotification", 1, "updateNotification, type[" + paramkgn.jdField_a_of_type_Int + "], name[" + paramkgn.jdField_b_of_type_JavaLangString + "], bCreate[" + paramBoolean + "]");
     }
-    if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().p()) || (!c(paramkhc.jdField_a_of_type_JavaLangString))) {}
+    if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().p()) || (!c(paramkgn.jdField_a_of_type_JavaLangString))) {}
     do
     {
       return;
@@ -101,15 +101,15 @@ public class QAVNotification
         this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager = new QNotificationManager(this.jdField_a_of_type_AndroidContentContext);
       }
       if (this.jdField_a_of_type_AndroidWidgetRemoteViews == null) {
-        this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 2130969371);
+        this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 2130969372);
       }
-    } while ((paramkhc.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager == null) || (this.jdField_a_of_type_AndroidAppNotification == null) || (this.jdField_a_of_type_AndroidWidgetRemoteViews == null));
-    String str = paramkhc.jdField_b_of_type_JavaLangString;
+    } while ((paramkgn.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager == null) || (this.jdField_a_of_type_AndroidAppNotification == null) || (this.jdField_a_of_type_AndroidWidgetRemoteViews == null));
+    String str = paramkgn.jdField_b_of_type_JavaLangString;
     int j = str.length();
     int i;
     if (j >= 7)
     {
-      localObject1 = paramkhc.jdField_b_of_type_JavaLangString.toCharArray();
+      localObject1 = paramkgn.jdField_b_of_type_JavaLangString.toCharArray();
       str = String.valueOf(localObject1[0]);
       i = 1;
       while (i < 5)
@@ -124,7 +124,7 @@ public class QAVNotification
     label399:
     label496:
     Object localObject3;
-    switch (paramkhc.jdField_a_of_type_Int)
+    switch (paramkgn.jdField_a_of_type_Int)
     {
     case 49: 
     case 50: 
@@ -150,15 +150,15 @@ public class QAVNotification
         ((Intent)localObject2).putExtra("Fromwhere", "AVNotification");
         ((Intent)localObject2).addFlags(4194304);
         ((Intent)localObject2).addFlags(262144);
-        if ((paramkhc.jdField_a_of_type_Int != 40) && (paramkhc.jdField_a_of_type_Int != 45) && (paramkhc.jdField_a_of_type_Int != 43)) {
+        if ((paramkgn.jdField_a_of_type_Int != 40) && (paramkgn.jdField_a_of_type_Int != 45) && (paramkgn.jdField_a_of_type_Int != 43)) {
           ((Intent)localObject2).addFlags(268435456);
         }
         localObject2 = PendingIntent.getActivity(this.jdField_a_of_type_AndroidContentContext, 0, (Intent)localObject2, 134217728);
         if (this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.b() > 0.0F) {
-          a(2131366279, this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.b());
+          a(2131366306, this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.b());
         }
         if (this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.a() > 0.0F) {
-          a(2131366281, this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.a());
+          a(2131366308, this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.a());
         }
         localObject3 = localObject1;
         if (localObject1 != null)
@@ -166,11 +166,11 @@ public class QAVNotification
           localObject3 = localObject1;
           if (i == 2)
           {
-            localObject1 = ((String)localObject1).replace(this.jdField_a_of_type_AndroidContentContext.getString(2131433813), this.jdField_a_of_type_AndroidContentContext.getString(2131433815));
+            localObject1 = ((String)localObject1).replace(this.jdField_a_of_type_AndroidContentContext.getString(2131433830), this.jdField_a_of_type_AndroidContentContext.getString(2131433832));
             localObject3 = localObject1;
             if (this.jdField_a_of_type_AndroidAppNotification.tickerText != null)
             {
-              this.jdField_a_of_type_AndroidAppNotification.tickerText = this.jdField_a_of_type_AndroidAppNotification.tickerText.toString().replace(this.jdField_a_of_type_AndroidContentContext.getString(2131433813), this.jdField_a_of_type_AndroidContentContext.getString(2131433815));
+              this.jdField_a_of_type_AndroidAppNotification.tickerText = this.jdField_a_of_type_AndroidAppNotification.tickerText.toString().replace(this.jdField_a_of_type_AndroidContentContext.getString(2131433830), this.jdField_a_of_type_AndroidContentContext.getString(2131433832));
               localObject3 = localObject1;
             }
           }
@@ -180,146 +180,146 @@ public class QAVNotification
         {
           localObject1 = str;
           if (i == 2) {
-            localObject1 = str.replace(this.jdField_a_of_type_AndroidContentContext.getString(2131433813), this.jdField_a_of_type_AndroidContentContext.getString(2131433815));
+            localObject1 = str.replace(this.jdField_a_of_type_AndroidContentContext.getString(2131433830), this.jdField_a_of_type_AndroidContentContext.getString(2131433832));
           }
         }
         if (QLog.isColorLevel()) {
-          QLog.w("QAVNotification", 1, "updateNotification, title[" + (String)localObject3 + "], state[" + (String)localObject1 + "], id[" + paramkhc.jdField_c_of_type_JavaLangString + "], sessionId[" + paramkhc.jdField_a_of_type_JavaLangString + "], name[" + paramkhc.jdField_b_of_type_JavaLangString + "], type[" + paramkhc.jdField_a_of_type_Int + "], avtype[" + i + "]");
+          QLog.w("QAVNotification", 1, "updateNotification, title[" + (String)localObject3 + "], state[" + (String)localObject1 + "], id[" + paramkgn.jdField_c_of_type_JavaLangString + "], sessionId[" + paramkgn.jdField_a_of_type_JavaLangString + "], name[" + paramkgn.jdField_b_of_type_JavaLangString + "], type[" + paramkgn.jdField_a_of_type_Int + "], avtype[" + i + "]");
         }
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366279, paramkhc.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366281, (CharSequence)localObject1);
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366306, paramkgn.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366308, (CharSequence)localObject1);
         if (paramBoolean) {}
         try
         {
-          if (paramkhc.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-            this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewBitmap(2131366278, paramkhc.jdField_a_of_type_AndroidGraphicsBitmap);
+          if (paramkgn.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+            this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewBitmap(2131366305, paramkgn.jdField_a_of_type_AndroidGraphicsBitmap);
           }
           this.jdField_a_of_type_AndroidAppNotification.flags = 2;
           this.jdField_a_of_type_AndroidAppNotification.contentView = this.jdField_a_of_type_AndroidWidgetRemoteViews;
           this.jdField_a_of_type_AndroidAppNotification.contentIntent = ((PendingIntent)localObject2);
           this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(true, this.jdField_a_of_type_AndroidAppNotification);
-          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("QAVNotification", 2130840347, this.jdField_a_of_type_AndroidAppNotification);
-          this.jdField_a_of_type_Khc = paramkhc;
-          paramkhc.jdField_a_of_type_Boolean = false;
+          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("QAVNotification", 2130840353, this.jdField_a_of_type_AndroidAppNotification);
+          this.jdField_a_of_type_Kgn = paramkgn;
+          paramkgn.jdField_a_of_type_Boolean = false;
           this.jdField_a_of_type_Boolean = true;
           return;
         }
-        catch (Throwable paramkhc) {}
+        catch (Throwable paramkgn) {}
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.d("QAVNotification", 2, "updateNotification", paramkhc);
+        QLog.d("QAVNotification", 2, "updateNotification", paramkgn);
         return;
         localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
         ((Intent)localObject2).putExtra("isDoubleVideoMeeting", true);
-        ((Intent)localObject2).putExtra("sessionType", paramkhc.jdField_c_of_type_Int);
-        ((Intent)localObject2).putExtra("GroupId", paramkhc.jdField_c_of_type_JavaLangString);
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429018);
+        ((Intent)localObject2).putExtra("sessionType", paramkgn.jdField_c_of_type_Int);
+        ((Intent)localObject2).putExtra("GroupId", paramkgn.jdField_c_of_type_JavaLangString);
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429024);
         this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840347);
-        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840347;
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840353);
+        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840353;
         localObject1 = str;
         continue;
         localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, VideoInviteFull.class);
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428837);
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131428946);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428843);
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131428952);
         this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840347);
-        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840347;
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840353);
+        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840353;
         continue;
         localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-        ((Intent)localObject2).putExtra("sessionType", paramkhc.jdField_c_of_type_Int);
-        ((Intent)localObject2).putExtra("uin", paramkhc.jdField_c_of_type_JavaLangString);
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428837);
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429098);
+        ((Intent)localObject2).putExtra("sessionType", paramkgn.jdField_c_of_type_Int);
+        ((Intent)localObject2).putExtra("uin", paramkgn.jdField_c_of_type_JavaLangString);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428843);
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429104);
         this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840347);
-        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840347;
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840353);
+        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840353;
         continue;
         localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-        ((Intent)localObject2).putExtra("sessionType", paramkhc.jdField_c_of_type_Int);
-        ((Intent)localObject2).putExtra("uin", paramkhc.jdField_c_of_type_JavaLangString);
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429018);
+        ((Intent)localObject2).putExtra("sessionType", paramkgn.jdField_c_of_type_Int);
+        ((Intent)localObject2).putExtra("uin", paramkgn.jdField_c_of_type_JavaLangString);
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429024);
         this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840347);
-        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840347;
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840353);
+        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840353;
         localObject1 = str;
         continue;
         localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, VideoInviteFull.class);
         ((Intent)localObject2).addFlags(4194304);
         ((Intent)localObject2).addFlags(262144);
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131429058);
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131428883);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131429064);
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131428889);
         this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840216);
-        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840216;
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840222);
+        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840222;
         continue;
         localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-        ((Intent)localObject2).putExtra("sessionType", paramkhc.jdField_c_of_type_Int);
-        ((Intent)localObject2).putExtra("GroupId", paramkhc.jdField_c_of_type_JavaLangString);
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131429058);
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429098);
+        ((Intent)localObject2).putExtra("sessionType", paramkgn.jdField_c_of_type_Int);
+        ((Intent)localObject2).putExtra("GroupId", paramkgn.jdField_c_of_type_JavaLangString);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131429064);
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429104);
         this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840216);
-        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840216;
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840222);
+        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840222;
         continue;
         localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-        ((Intent)localObject2).putExtra("sessionType", paramkhc.jdField_c_of_type_Int);
-        ((Intent)localObject2).putExtra("GroupId", paramkhc.jdField_c_of_type_JavaLangString);
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429019);
+        ((Intent)localObject2).putExtra("sessionType", paramkgn.jdField_c_of_type_Int);
+        ((Intent)localObject2).putExtra("GroupId", paramkgn.jdField_c_of_type_JavaLangString);
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429025);
         this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840216);
-        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840216;
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840222);
+        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840222;
         localObject1 = str;
       }
     case 43: 
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428953);
-      localObject3 = this.jdField_a_of_type_AndroidContentContext.getString(2131428901);
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428959);
+      localObject3 = this.jdField_a_of_type_AndroidContentContext.getString(2131428907);
       localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, GaInviteDialogActivity.class);
-      ((Intent)localObject2).putExtra("sessionType", paramkhc.jdField_c_of_type_Int);
-      ((Intent)localObject2).putExtra("uinType", paramkhc.jdField_b_of_type_Int);
+      ((Intent)localObject2).putExtra("sessionType", paramkgn.jdField_c_of_type_Int);
+      ((Intent)localObject2).putExtra("uinType", paramkgn.jdField_b_of_type_Int);
       BaseGaInvite.a((Intent)localObject2, "updateNotification");
       if (j >= 7) {
         this.jdField_a_of_type_AndroidAppNotification.tickerText = (str + (String)localObject3);
       }
-      for (str = str + (String)localObject3;; str = paramkhc.jdField_b_of_type_JavaLangString + (String)localObject3)
+      for (str = str + (String)localObject3;; str = paramkgn.jdField_b_of_type_JavaLangString + (String)localObject3)
       {
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840216);
-        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840216;
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840222);
+        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840222;
         break;
-        this.jdField_a_of_type_AndroidAppNotification.tickerText = (paramkhc.jdField_b_of_type_JavaLangString + (String)localObject3);
+        this.jdField_a_of_type_AndroidAppNotification.tickerText = (paramkgn.jdField_b_of_type_JavaLangString + (String)localObject3);
       }
     case 44: 
       localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, AVActivity.class);
-      ((Intent)localObject2).putExtra("GroupId", paramkhc.jdField_c_of_type_JavaLangString);
+      ((Intent)localObject2).putExtra("GroupId", paramkgn.jdField_c_of_type_JavaLangString);
       ((Intent)localObject2).putExtra("Type", 2);
       ((Intent)localObject2).putExtra("sessionType", 3);
-      ((Intent)localObject2).putExtra("uinType", paramkhc.jdField_b_of_type_Int);
-      ((Intent)localObject2).putExtra("sessionType", paramkhc.jdField_c_of_type_Int);
-      if (paramkhc.jdField_b_of_type_Int == 3000) {
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429119);
+      ((Intent)localObject2).putExtra("uinType", paramkgn.jdField_b_of_type_Int);
+      ((Intent)localObject2).putExtra("sessionType", paramkgn.jdField_c_of_type_Int);
+      if (paramkgn.jdField_b_of_type_Int == 3000) {
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429125);
       }
       break;
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-      this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840216);
-      this.jdField_a_of_type_AndroidAppNotification.icon = 2130840216;
+      this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840222);
+      this.jdField_a_of_type_AndroidAppNotification.icon = 2130840222;
       localObject1 = str;
       break label399;
-      if (paramkhc.jdField_b_of_type_Int == 1)
+      if (paramkgn.jdField_b_of_type_Int == 1)
       {
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429119);
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131429125);
         continue;
-        if (paramkhc.jdField_c_of_type_Int == 3)
+        if (paramkgn.jdField_c_of_type_Int == 3)
         {
           localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, GuildMultiActivity.class);
-          ((Intent)localObject2).putExtra("sessionType", paramkhc.jdField_c_of_type_Int);
-          ((Intent)localObject2).putExtra("GroupId", paramkhc.jdField_c_of_type_JavaLangString);
-          ((Intent)localObject2).putExtra("uinType", paramkhc.jdField_b_of_type_Int);
-          this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366278, 2130840232);
-          if ((paramkhc.jdField_a_of_type_Int != 58) && (paramkhc.jdField_a_of_type_Int != 59)) {
+          ((Intent)localObject2).putExtra("sessionType", paramkgn.jdField_c_of_type_Int);
+          ((Intent)localObject2).putExtra("GroupId", paramkgn.jdField_c_of_type_JavaLangString);
+          ((Intent)localObject2).putExtra("uinType", paramkgn.jdField_b_of_type_Int);
+          this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366305, 2130840238);
+          if ((paramkgn.jdField_a_of_type_Int != 58) && (paramkgn.jdField_a_of_type_Int != 59)) {
             break label2137;
           }
           i = 1;
@@ -330,12 +330,12 @@ public class QAVNotification
         }
         label2137:
         label2142:
-        for (i = 2131429358;; i = 2131429354)
+        for (i = 2131429364;; i = 2131429360)
         {
           str = this.jdField_a_of_type_AndroidContentContext.getString(i);
           this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-          this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840216);
-          this.jdField_a_of_type_AndroidAppNotification.icon = 2130840216;
+          this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840222);
+          this.jdField_a_of_type_AndroidAppNotification.icon = 2130840222;
           localObject1 = str;
           break label399;
           if (!QLog.isColorLevel()) {
@@ -349,43 +349,43 @@ public class QAVNotification
           break label2055;
         }
         localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, MultiIncomingCallsActivity.class);
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131429058);
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131428883);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131429064);
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131428889);
         this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840216);
-        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840216;
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840222);
+        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840222;
         break label399;
         localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, MultiIncomingCallsActivity.class);
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428837);
-        str = this.jdField_a_of_type_AndroidContentContext.getString(2131428946);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428843);
+        str = this.jdField_a_of_type_AndroidContentContext.getString(2131428952);
         this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840347);
-        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840347;
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840353);
+        this.jdField_a_of_type_AndroidAppNotification.icon = 2130840353;
         break label399;
         localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, MultiIncomingCallsActivity.class);
-        if (paramkhc.jdField_b_of_type_Int == 3000)
+        if (paramkgn.jdField_b_of_type_Int == 3000)
         {
-          localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428952);
+          localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428958);
           label2335:
-          ((Intent)localObject2).putExtra("sessionType", paramkhc.jdField_c_of_type_Int);
-          localObject3 = this.jdField_a_of_type_AndroidContentContext.getString(2131428901);
+          ((Intent)localObject2).putExtra("sessionType", paramkgn.jdField_c_of_type_Int);
+          localObject3 = this.jdField_a_of_type_AndroidContentContext.getString(2131428907);
           if (j < 7) {
             break label2465;
           }
           this.jdField_a_of_type_AndroidAppNotification.tickerText = (str + (String)localObject3);
         }
-        for (str = str + (String)localObject3;; str = paramkhc.jdField_b_of_type_JavaLangString + (String)localObject3)
+        for (str = str + (String)localObject3;; str = paramkgn.jdField_b_of_type_JavaLangString + (String)localObject3)
         {
-          this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840216);
-          this.jdField_a_of_type_AndroidAppNotification.icon = 2130840216;
+          this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840222);
+          this.jdField_a_of_type_AndroidAppNotification.icon = 2130840222;
           break;
-          if (paramkhc.jdField_b_of_type_Int != 1) {
+          if (paramkgn.jdField_b_of_type_Int != 1) {
             break label2335;
           }
-          localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428953);
+          localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131428959);
           break label2335;
           label2465:
-          this.jdField_a_of_type_AndroidAppNotification.tickerText = (paramkhc.jdField_b_of_type_JavaLangString + (String)localObject3);
+          this.jdField_a_of_type_AndroidAppNotification.tickerText = (paramkgn.jdField_b_of_type_JavaLangString + (String)localObject3);
         }
         label2521:
         localObject2 = null;
@@ -397,8 +397,8 @@ public class QAVNotification
   
   private boolean d(String paramString)
   {
-    if ((this.jdField_a_of_type_Khc == null) || (!this.jdField_a_of_type_Boolean)) {}
-    while (!TextUtils.equals(paramString, this.jdField_a_of_type_Khc.jdField_a_of_type_JavaLangString)) {
+    if ((this.jdField_a_of_type_Kgn == null) || (!this.jdField_a_of_type_Boolean)) {}
+    while (!TextUtils.equals(paramString, this.jdField_a_of_type_Kgn.jdField_a_of_type_JavaLangString)) {
       return false;
     }
     return true;
@@ -414,10 +414,10 @@ public class QAVNotification
       if (this.jdField_a_of_type_Boolean)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager != null) {
-          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel("QAVNotification", 2130840347);
+          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel("QAVNotification", 2130840353);
         }
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(false, null);
-        this.jdField_a_of_type_Khc = null;
+        this.jdField_a_of_type_Kgn = null;
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_JavaUtilMap.clear();
         this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager = null;
@@ -440,15 +440,15 @@ public class QAVNotification
         }
         if (d(paramString))
         {
-          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel("QAVNotification", 2130840347);
+          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel("QAVNotification", 2130840353);
           this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-          this.jdField_a_of_type_Khc = null;
+          this.jdField_a_of_type_Kgn = null;
           this.jdField_a_of_type_Boolean = false;
           if (!this.jdField_a_of_type_JavaUtilMap.isEmpty())
           {
             paramString = this.jdField_a_of_type_JavaUtilMap.values().iterator();
             if (paramString.hasNext()) {
-              a((khc)paramString.next(), true);
+              a((kgn)paramString.next(), true);
             }
             return;
           }
@@ -492,13 +492,13 @@ public class QAVNotification
       finally {}
       if (((paramString1 == null) || (paramString1.a.jdField_b_of_type_Int != 4)) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidAppNotification != null))
       {
-        if (this.jdField_a_of_type_Khc.jdField_b_of_type_Int != 1011) {
+        if (this.jdField_a_of_type_Kgn.jdField_b_of_type_Int != 1011) {
           break;
         }
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366281, paramString2);
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366308, paramString2);
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("QAVNotification", 2130840347, this.jdField_a_of_type_AndroidAppNotification);
+          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("QAVNotification", 2130840353, this.jdField_a_of_type_AndroidAppNotification);
         }
         catch (Exception paramString1) {}
         if (QLog.isColorLevel()) {
@@ -510,10 +510,10 @@ public class QAVNotification
     {
       for (;;)
       {
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366281, paramString2);
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366308, paramString2);
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("QAVNotification", 2130840347, this.jdField_a_of_type_AndroidAppNotification);
+          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("QAVNotification", 2130840353, this.jdField_a_of_type_AndroidAppNotification);
         }
         catch (Exception paramString1) {}
       }
@@ -522,10 +522,10 @@ public class QAVNotification
       }
       QLog.d("QAVNotification", 2, "notify Notification", paramString1);
       break;
-      paramString1 = this.jdField_a_of_type_AndroidContentContext.getString(2131429019);
+      paramString1 = this.jdField_a_of_type_AndroidContentContext.getString(2131429025);
       this.jdField_a_of_type_AndroidAppNotification.tickerText = paramString1;
       continue;
-      paramString1 = this.jdField_a_of_type_AndroidContentContext.getString(2131429018);
+      paramString1 = this.jdField_a_of_type_AndroidContentContext.getString(2131429024);
       this.jdField_a_of_type_AndroidAppNotification.tickerText = paramString1;
       continue;
       switch (paramInt)
@@ -541,11 +541,11 @@ public class QAVNotification
       if (QLog.isColorLevel()) {
         QLog.d("QAVNotification", 2, "changeNotificationSessionId " + paramString1 + " to " + paramString2);
       }
-      khc localkhc = (khc)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
-      if (localkhc != null)
+      kgn localkgn = (kgn)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
+      if (localkgn != null)
       {
         this.jdField_a_of_type_JavaUtilMap.remove(paramString1);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString2, localkhc);
+        this.jdField_a_of_type_JavaUtilMap.put(paramString2, localkgn);
       }
       return;
     }
@@ -570,7 +570,7 @@ public class QAVNotification
         }
         if (d(paramString1))
         {
-          paramString2 = this.jdField_a_of_type_Khc;
+          paramString2 = this.jdField_a_of_type_Kgn;
           paramString2.jdField_a_of_type_JavaLangString = paramString1;
           paramString2.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
           paramString2.jdField_a_of_type_Int = paramInt1;
@@ -580,7 +580,7 @@ public class QAVNotification
           a(paramString2, false);
           continue;
         }
-        paramString2 = new khc(this, paramString1, paramString2, paramBitmap, paramString3, paramInt1, paramInt2, paramInt3);
+        paramString2 = new kgn(this, paramString1, paramString2, paramBitmap, paramString3, paramInt1, paramInt2, paramInt3);
       }
       finally {}
       this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
@@ -624,9 +624,9 @@ public class QAVNotification
     //   51: invokespecial 395	com/tencent/av/utils/QAVNotification:d	(Ljava/lang/String;)Z
     //   54: ifeq +36 -> 90
     //   57: aload_0
-    //   58: getfield 34	com/tencent/av/utils/QAVNotification:jdField_a_of_type_Khc	Lkhc;
+    //   58: getfield 34	com/tencent/av/utils/QAVNotification:jdField_a_of_type_Kgn	Lkgn;
     //   61: iconst_1
-    //   62: putfield 305	khc:jdField_a_of_type_Boolean	Z
+    //   62: putfield 305	kgn:jdField_a_of_type_Boolean	Z
     //   65: aload_0
     //   66: getfield 24	com/tencent/av/utils/QAVNotification:jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager	Lcom/tencent/mobileqq/msf/sdk/QNotificationManager;
     //   69: ldc 95
@@ -634,7 +634,7 @@ public class QAVNotification
     //   73: invokevirtual 109	com/tencent/mobileqq/msf/sdk/QNotificationManager:cancel	(Ljava/lang/String;I)V
     //   76: aload_0
     //   77: aconst_null
-    //   78: putfield 34	com/tencent/av/utils/QAVNotification:jdField_a_of_type_Khc	Lkhc;
+    //   78: putfield 34	com/tencent/av/utils/QAVNotification:jdField_a_of_type_Kgn	Lkgn;
     //   81: aload_0
     //   82: iconst_0
     //   83: putfield 32	com/tencent/av/utils/QAVNotification:jdField_a_of_type_Boolean	Z
@@ -684,12 +684,12 @@ public class QAVNotification
     //   35: getfield 39	com/tencent/av/utils/QAVNotification:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   38: aload_1
     //   39: invokeinterface 471 2 0
-    //   44: checkcast 123	khc
+    //   44: checkcast 123	kgn
     //   47: astore_1
     //   48: aload_1
     //   49: ifnull +29 -> 78
     //   52: aload_1
-    //   53: getfield 305	khc:jdField_a_of_type_Boolean	Z
+    //   53: getfield 305	kgn:jdField_a_of_type_Boolean	Z
     //   56: ifeq +22 -> 78
     //   59: aload_0
     //   60: getfield 32	com/tencent/av/utils/QAVNotification:jdField_a_of_type_Boolean	Z
@@ -697,7 +697,7 @@ public class QAVNotification
     //   66: aload_0
     //   67: aload_1
     //   68: iconst_1
-    //   69: invokespecial 423	com/tencent/av/utils/QAVNotification:a	(Lkhc;Z)V
+    //   69: invokespecial 423	com/tencent/av/utils/QAVNotification:a	(Lkgn;Z)V
     //   72: iconst_1
     //   73: istore_2
     //   74: aload_0

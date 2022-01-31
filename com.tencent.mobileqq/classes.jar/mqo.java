@@ -1,24 +1,41 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
-import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
+import android.content.IntentFilter;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class mqo
-  extends SwipRightMenuBuilder.SwipItemBaseHolder
+  implements Runnable
 {
-  public Button a;
-  public ImageView a;
-  public RelativeLayout a;
-  public DragTextView a;
-  public SingleLineTextView a;
-  public String a;
-  public Button b;
-  public SingleLineTextView b;
+  public mqo(ReadInJoyGlobalReporter paramReadInJoyGlobalReporter) {}
   
-  public mqo(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter) {}
+  public void run()
+  {
+    try
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
+      if (ReadInJoyGlobalReporter.b(this.a) == 0)
+      {
+        BaseApplicationImpl.getContext().registerReceiver(this.a.a, localIntentFilter);
+        ReadInJoyGlobalReporter.a(this.a, 1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyGlobalReporter", 2, "registerScreenListener");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.e("ReadInJoyGlobalReporter", 2, "registerScreenListener:" + localException.toString());
+    }
+  }
 }
 
 

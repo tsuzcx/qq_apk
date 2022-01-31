@@ -1,13 +1,13 @@
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 
-class ldx
+public class ldx
   implements Runnable
 {
-  ldx(ldw paramldw) {}
+  public ldx(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.e(this.a.jdField_a_of_type_Int);
+    ReadInJoyNewFeedsActivity.a(this.a);
   }
 }
 

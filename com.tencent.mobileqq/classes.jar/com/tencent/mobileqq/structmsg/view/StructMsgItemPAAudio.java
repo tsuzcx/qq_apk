@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahvj;
-import ahvk;
-import ahvl;
-import ahvm;
+import aijm;
+import aijn;
+import aijo;
+import aijp;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -65,10 +65,10 @@ public class StructMsgItemPAAudio
   extends AbsStructMsgElement
   implements FileTransferManager.Callback
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahvj(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aijm(this);
   public ViewGroup a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLDrawableDownListener.Adapter jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new ahvk(this);
+  URLDrawableDownListener.Adapter jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new aijn(this);
   MediaPlayerManager jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager;
   public QQAppInterface a;
   public boolean a;
@@ -107,7 +107,7 @@ public class StructMsgItemPAAudio
       boolean bool1;
       try
       {
-        paramBundle = localResources.getDrawable(2130839730);
+        paramBundle = localResources.getDrawable(2130839736);
         if (TextUtils.isEmpty(this.u))
         {
           ((AnyScaleTypeImageView)((StructMsgItemPAAudio.ViewHolder)localObject).jdField_a_of_type_AndroidViewView).setBackgroundDrawable(paramBundle);
@@ -123,13 +123,13 @@ public class StructMsgItemPAAudio
             }
             paramBundle = new RelativeLayout.LayoutParams(-1, (int)(BaseChatItemLayout.jdField_a_of_type_Int / 2.4D * 0.69D));
             paramBundle.addRule(12, -1);
-            paramContext.setBackgroundResource(2130839743);
+            paramContext.setBackgroundResource(2130839749);
             ((RelativeLayout)paramView).addView(paramContext, paramBundle);
           }
           paramContext = (Context)localObject;
           paramBundle = paramView;
           paramView = paramContext;
-          paramBundle.post(new ahvl(this, paramBundle, paramView));
+          paramBundle.post(new aijo(this, paramBundle, paramView));
           paramView.jdField_a_of_type_JavaLangString = PAAudioPttDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.x);
           paramBundle.setTag(paramView);
           this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.b);
@@ -181,21 +181,21 @@ public class StructMsgItemPAAudio
       paramBundle = new StructMsgItemPAAudio.ViewHolder();
       localObject = new RelativeLayout(paramContext);
       paramBundle.jdField_a_of_type_AndroidViewView = new AnyScaleTypeImageView(paramContext);
-      paramBundle.jdField_a_of_type_AndroidViewView.setContentDescription(localResources.getString(2131433058));
+      paramBundle.jdField_a_of_type_AndroidViewView.setContentDescription(localResources.getString(2131433075));
       ((AnyScaleTypeImageView)paramBundle.jdField_a_of_type_AndroidViewView).setDisplayRuleDef(CustomScaleType.a);
       ((AnyScaleTypeImageView)paramBundle.jdField_a_of_type_AndroidViewView).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       try
       {
-        paramView = localResources.getDrawable(2130839730);
+        paramView = localResources.getDrawable(2130839736);
         if (TextUtils.isEmpty(this.u))
         {
           ((AnyScaleTypeImageView)paramBundle.jdField_a_of_type_AndroidViewView).setBackgroundDrawable(paramView);
           paramBundle.b = new ImageView(paramContext);
           paramBundle.b.setId(99);
-          paramBundle.b.setBackgroundResource(2130839734);
+          paramBundle.b.setBackgroundResource(2130839740);
           paramBundle.c = new ImageView(paramContext);
           paramBundle.c.setId(98);
-          paramBundle.c.setBackgroundResource(2130839771);
+          paramBundle.c.setBackgroundResource(2130839777);
           paramBundle.d = new TextView(paramContext);
           ((TextView)paramBundle.d).setText(String.valueOf(this.f) + "'");
           ((TextView)paramBundle.d).setTextSize(20.0F);
@@ -211,7 +211,7 @@ public class StructMsgItemPAAudio
             }
             paramView = new RelativeLayout.LayoutParams(-1, (int)(BaseChatItemLayout.jdField_a_of_type_Int / 2.4D * 0.69D));
             paramView.addRule(12, -1);
-            paramContext.setBackgroundResource(2130839743);
+            paramContext.setBackgroundResource(2130839749);
             ((RelativeLayout)localObject).addView(paramContext, paramView);
           }
           paramContext = new RelativeLayout.LayoutParams(AIOUtils.a(12.0F, localResources), AIOUtils.a(20.0F, localResources));
@@ -343,7 +343,7 @@ public class StructMsgItemPAAudio
     if (LoadingStateManager.a().d())
     {
       paramString = paramView.getContext();
-      DialogUtil.a(paramString, 232, null, paramString.getString(2131432992), new ahvm(this), null).show();
+      DialogUtil.a(paramString, 232, null, paramString.getString(2131433009), new aijp(this), null).show();
       b();
       return;
     }
@@ -452,7 +452,7 @@ public class StructMsgItemPAAudio
   void b()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839734);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839740);
     if (this.jdField_a_of_type_Boolean)
     {
       this.b.setBackgroundResource(2131034223);
@@ -460,7 +460,7 @@ public class StructMsgItemPAAudio
       return;
     }
     this.b.clearAnimation();
-    this.b.setBackgroundResource(2130839771);
+    this.b.setBackgroundResource(2130839777);
   }
   
   public void c()
@@ -488,12 +488,12 @@ public class StructMsgItemPAAudio
       localMediaPlayerManager.a(false);
     }
     this.b.clearAnimation();
-    this.b.setBackgroundResource(2130839771);
+    this.b.setBackgroundResource(2130839777);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemPAAudio
  * JD-Core Version:    0.7.0.1
  */

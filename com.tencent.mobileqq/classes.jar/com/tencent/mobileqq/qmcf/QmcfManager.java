@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.qmcf;
 
-import aghn;
+import agvp;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -394,7 +394,7 @@ public class QmcfManager
           }
           this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
         }
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new aghn(this));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new agvp(this));
         return;
       }
       this.jdField_c_of_type_Boolean = true;
@@ -447,31 +447,47 @@ public class QmcfManager
   
   public boolean a(int paramInt)
   {
-    if (Build.VERSION.SDK_INT < 21) {}
+    return a(paramInt, false);
+  }
+  
+  public boolean a(int paramInt, boolean paramBoolean)
+  {
+    boolean bool1 = true;
+    if (Build.VERSION.SDK_INT < 21) {
+      bool1 = false;
+    }
+    boolean bool4;
     boolean bool3;
-    boolean bool1;
     do
     {
-      return false;
-      bool3 = c(paramInt);
-      boolean bool2 = SoLoader.a();
-      bool1 = bool2;
-      if (bool3)
+      do
       {
-        bool1 = bool2;
-        if (!bool2)
+        return bool1;
+        bool4 = c(paramInt);
+        bool3 = SoLoader.a();
+        if (!paramBoolean) {
+          break;
+        }
+        boolean bool2 = SoLoader.b();
+        paramBoolean = bool2;
+        if (bool4)
         {
-          bool2 = SoLoader.a(SdkContext.a().a());
-          bool1 = bool2;
-          if (SLog.a())
+          paramBoolean = bool2;
+          if (!bool2)
           {
-            SLog.d("QMCF_MGR", "reloadso :" + bool2);
-            bool1 = bool2;
+            bool2 = SoLoader.a(SdkContext.a().a());
+            paramBoolean = bool2;
+            if (SLog.a())
+            {
+              SLog.d("QMCF_MGR", "reloadso :" + bool2);
+              paramBoolean = bool2;
+            }
           }
         }
-      }
-    } while ((!bool3) || (!bool1));
-    return true;
+      } while ((bool4) && (bool3) && (paramBoolean));
+      return false;
+    } while ((bool4) && (bool3));
+    return false;
   }
   
   public byte[] a(byte[] paramArrayOfByte)

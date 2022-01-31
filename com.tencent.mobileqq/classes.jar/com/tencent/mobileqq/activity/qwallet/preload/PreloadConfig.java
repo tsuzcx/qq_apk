@@ -16,7 +16,7 @@ import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xcg;
+import xfl;
 
 public class PreloadConfig
   implements Serializable
@@ -413,7 +413,7 @@ public class PreloadConfig
   
   public void savePreloadConfig()
   {
-    ThreadManager.getFileThreadHandler().post(new xcg(this));
+    ThreadManager.getFileThreadHandler().post(new xfl(this));
   }
   
   public String toString()

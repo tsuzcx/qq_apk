@@ -1,63 +1,23 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.PublishManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 public class aeil
   implements Runnable
 {
-  public aeil(ImageFeedsUploader paramImageFeedsUploader, VideoFeedsUploader.UploadResult paramUploadResult) {}
+  public aeil(EmoticonManager paramEmoticonManager, int paramInt, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend) {}
   
   public void run()
   {
-    PicFeedUploadInfo localPicFeedUploadInfo = ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader);
-    int i;
-    VideoFeedsUploader.UploadResult localUploadResult;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_Int == 0)
-    {
-      i = 3;
-      localPicFeedUploadInfo.uploadStatus = i;
-      localPicFeedUploadInfo = new PicFeedUploadInfo(ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader));
-      localPicFeedUploadInfo.anchorUin = this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader.a.getLongAccountUin();
-      localUploadResult = new VideoFeedsUploader.UploadResult(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult);
-    }
-    for (;;)
-    {
-      synchronized (PublishManager.jdField_a_of_type_JavaLangObject)
-      {
-        PublishManager.jdField_a_of_type_JavaUtilHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_JavaLangString);
-        ??? = VideoCompositeHelper.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_JavaLangString);
-        ??? = ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult, (PublishVideoEntry)???);
-        ((PublishVideoEntry)???).setStatus(1001);
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.jdField_a_of_type_Int == 0)
-        {
-          ((PublishVideoEntry)???).publishState = 0;
-          PublishManager.a((PublishVideoEntry)???);
-          PublishManager.a((PublishVideoEntry)???);
-          ThreadManager.getUIHandler().post(new aeim(this, localPicFeedUploadInfo, localUploadResult));
-          if (QLog.isColorLevel()) {
-            QLog.i("ImageFeedsUploader", 2, "upload result: " + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a());
-          }
-          ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader).reset();
-          ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader).a();
-          return;
-          i = 2;
-        }
-      }
-      ((PublishVideoEntry)???).publishState = 2;
-    }
+    FileUtils.a(new File(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.getApplication().getFilesDir(), "recommemd_emotion_file__" + this.jdField_a_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.c()).getAbsolutePath(), this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.toByteArray(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeil
  * JD-Core Version:    0.7.0.1
  */

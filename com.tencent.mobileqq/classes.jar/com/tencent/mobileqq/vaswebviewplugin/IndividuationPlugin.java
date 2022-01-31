@@ -242,12 +242,12 @@ public class IndividuationPlugin
           ThemeReporter.a(null, "theme_detail", "205", 150, 1, i, ThemeUtil.getUserCurrentThemeId(this.mRuntime.a()), ThemeUtil.getUserCurrentThemeVersion(this.mRuntime.a()), "2", "");
           if (!BaseApplicationImpl.IS_SUPPORT_THEME)
           {
-            Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131434073), 0).show();
+            Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131434090), 0).show();
             return;
           }
           if (!Utils.a())
           {
-            Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131434753), 0).show();
+            Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131434770), 0).show();
             return;
           }
         }
@@ -267,7 +267,7 @@ public class IndividuationPlugin
           {
             paramJSONObject = new Intent();
             paramJSONObject.putExtra("bg_replace_entrance", 8);
-            paramJSONObject.putExtra("selfSet_leftViewText", this.mActivity.getString(2131433681));
+            paramJSONObject.putExtra("selfSet_leftViewText", this.mActivity.getString(2131433698));
             paramJSONObject.putExtra("hide_left_button", false);
             paramJSONObject.putExtra("show_right_close_button", false);
             paramJSONObject.putExtra("url", IndividuationUrlHelper.a(this.mActivity, "background", ""));
@@ -303,7 +303,7 @@ public class IndividuationPlugin
           {
             if (!Utils.a())
             {
-              Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131434753), 0).show();
+              Toast.makeText(this.mActivity.getApplicationContext(), this.mActivity.getString(2131434770), 0).show();
               return;
             }
             paramJSONObject = new Intent(this.mActivity, QQBrowserActivity.class);
@@ -352,7 +352,7 @@ public class IndividuationPlugin
           if ("0".equals(localObject))
           {
             paramString = new Intent(this.mActivity, QQBrowserActivity.class);
-            paramJSONObject = URLDecoder.decode(paramJSONObject.getString("detailId"), "UTF-8").replace("{uin}", this.mBrowserApp.getCurrentAccountUin()).replace("{client}", "androidQQ").replace("{version}", "7.6.0.3525").replace("{platformId}", "2").replace("{device}", Build.DEVICE).replace("{system}", Build.VERSION.RELEASE).replace("{systemInt}", Integer.toString(Build.VERSION.SDK_INT)).replace("{adtag}", "mvip.gongneng.anroid.individuation.web").replace("{updateFlag}", "false").replace("{density}", ThemeUtil.getThemeDensity(this.mBrowserApp.getApplication().getApplicationContext()));
+            paramJSONObject = URLDecoder.decode(paramJSONObject.getString("detailId"), "UTF-8").replace("{uin}", this.mBrowserApp.getCurrentAccountUin()).replace("{client}", "androidQQ").replace("{version}", "7.6.3.3560").replace("{platformId}", "2").replace("{device}", Build.DEVICE).replace("{system}", Build.VERSION.RELEASE).replace("{systemInt}", Integer.toString(Build.VERSION.SDK_INT)).replace("{adtag}", "mvip.gongneng.anroid.individuation.web").replace("{updateFlag}", "false").replace("{density}", ThemeUtil.getThemeDensity(this.mBrowserApp.getApplication().getApplicationContext()));
             paramString.putExtra("url", paramJSONObject);
             VasWebviewUtil.openQQBrowserWithoutAD(this.mActivity, paramJSONObject, -1L, paramString, false, -1);
             return;
@@ -394,7 +394,7 @@ public class IndividuationPlugin
           {
             paramJSONObject = paramJSONObject.a.c;
             paramJSONObject.setVisibility(0);
-            paramJSONObject.setText(2131433604);
+            paramJSONObject.setText(2131433621);
             paramJSONObject.setOnClickListener(new IndividuationPlugin.1(this));
             return;
           }
@@ -418,7 +418,7 @@ public class IndividuationPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.IndividuationPlugin
  * JD-Core Version:    0.7.0.1
  */

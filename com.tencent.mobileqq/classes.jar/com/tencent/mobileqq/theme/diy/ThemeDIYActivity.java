@@ -146,7 +146,7 @@ public class ThemeDIYActivity
   DownloadListener resDownloadListener = new ThemeDIYActivity.13(this);
   AdapterView.OnItemClickListener resItemClickListener = new ThemeDIYActivity.15(this);
   ThemeDiyStyleLogic.StyleCallBack saveStyleCallback = new ThemeDIYActivity.10(this);
-  final ThemeDIYData[] showData = { new ThemeDIYData(2130843184, "theme_bg_setting_path", 2131493148, "theme_bg_setting_path_png", -50, 0), new ThemeDIYData(2130844108, "theme_bg_message_path", 2131493147, "theme_bg_message_path_png", 50, 1), new ThemeDIYData(2130845689, "theme_bg_aio_path", 0, "theme_bg_aio_path", 0, 2) };
+  final ThemeDIYData[] showData = { new ThemeDIYData(2130843283, "theme_bg_setting_path", 2131493149, "theme_bg_setting_path_png", -50, 0), new ThemeDIYData(2130844232, "theme_bg_message_path", 2131493148, "theme_bg_message_path_png", 50, 1), new ThemeDIYData(2130845817, "theme_bg_aio_path", 0, "theme_bg_aio_path", 0, 2) };
   HorizontalListView styleResHListView;
   ThemeDiyStyleLogic themeDiyStyleLogic;
   ThemeSwitchManager.ThemeSwitchListener themeSwitchListener = new ThemeDIYActivity.9(this);
@@ -619,10 +619,10 @@ public class ThemeDIYActivity
     this.themeDiyStyleLogic = new ThemeDiyStyleLogic(this.app, this);
     this.themeDiyStyleLogic.saveDealCallBack = this.saveStyleCallback;
     isBacked = false;
-    super.setContentViewNoTitle(2130971589);
-    this.mblurbgView = super.findViewById(2131375059);
-    paramBundle = (TextView)super.findViewById(2131363227);
-    Object localObject = (TextView)super.findViewById(2131364614);
+    super.setContentViewNoTitle(2130971637);
+    this.mblurbgView = super.findViewById(2131375245);
+    paramBundle = (TextView)super.findViewById(2131363245);
+    Object localObject = (TextView)super.findViewById(2131364638);
     paramBundle.setOnClickListener(this);
     ((TextView)localObject).setOnClickListener(this);
     ReportController.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "enter_diy2", 0, 0, "", "", "", "");
@@ -688,7 +688,7 @@ public class ThemeDIYActivity
       paramBundle.put("param_themeid", this.mUserThemeId);
       paramBundle.put("param_isDiy", String.valueOf(this.isDIYThemeBefore));
       StatisticCollector.a(this.mContext).a(this.app.getAccount(), "ThemeDIYActivityRun", true, 1L, 0L, paramBundle, "", false);
-      this.mScrollLayout = ((ScrollLayout)super.findViewById(2131375063));
+      this.mScrollLayout = ((ScrollLayout)super.findViewById(2131375249));
       this.mScrollLayout.setOnScreenChangeListener(this);
       paramBundle = new ResSuitData.StyleSuit();
       this.mStyleSuits.add(paramBundle);
@@ -710,7 +710,7 @@ public class ThemeDIYActivity
       }
       this.mUploadBgRSD = new ResSuitData.BgSuit(null);
       this.mUploadBgRSD.id = "99";
-      this.mUploadBgRSD.resID = 2130843222;
+      this.mUploadBgRSD.resID = 2130843321;
       this.mUploadBgRSD.name = "上传";
       ApngImage.playByTag(0);
       k = (int)(Math.max(j, k) - DisplayUtils.a(this.mContext, 305));
@@ -721,7 +721,7 @@ public class ThemeDIYActivity
       j = 0;
       if (j < this.showData.length)
       {
-        PageView localPageView = (PageView)localLayoutInflater.inflate(2130971590, null);
+        PageView localPageView = (PageView)localLayoutInflater.inflate(2130971638, null);
         localPageView.init(this.showData[j], j, m, k, null);
         if (j == 0) {
           this.mPageView = localPageView;
@@ -784,7 +784,7 @@ public class ThemeDIYActivity
           localPageView.showPic(this.showData[j].usedBgRSD, null, false, localThemeBackground.img);
           paramBundle = new ThemeDIYActivity.ViewHolder();
           paramBundle.id = j;
-          paramBundle.scaleView = localPageView.findViewById(2131375064);
+          paramBundle.scaleView = localPageView.findViewById(2131375250);
           localPageView.setTag(paramBundle);
           if (j != 0) {
             break label1764;
@@ -834,17 +834,17 @@ public class ThemeDIYActivity
           }
         }
       }
-      this.pageIndicator = ((PageIndicator)super.findViewById(2131363249));
+      this.pageIndicator = ((PageIndicator)super.findViewById(2131363267));
       this.pageIndicator.bindScrollViewGroup(this.mScrollLayout);
       this.dataLoad = new ThemeDIYActivity.DataLoading(this);
       this.dataLoad.bindScrollViewGroup(this.mScrollLayout);
-      paramBundle = (TabBarView)super.findViewById(2131375060);
+      paramBundle = (TabBarView)super.findViewById(2131375246);
       paramBundle.setUnderLineHeight(DisplayUtil.a(this, 4.0F));
       paramBundle.setTabTextSize(16);
       paramBundle.setUnselectColor(-8882056);
-      paramBundle.setSelectColor(super.getResources().getColor(2131492970));
-      paramBundle.setUnselectColor(super.getResources().getColor(2131492970));
-      paramBundle.a.setColor(super.getResources().getColor(2131493149));
+      paramBundle.setSelectColor(super.getResources().getColor(2131492971));
+      paramBundle.setUnselectColor(super.getResources().getColor(2131492971));
+      paramBundle.a.setColor(super.getResources().getColor(2131493150));
       paramBundle.a("");
       paramBundle.a("背景");
       paramBundle.a("");
@@ -852,8 +852,8 @@ public class ThemeDIYActivity
       paramBundle.a("");
       paramBundle.setSelectedTab(1, false);
       paramBundle.setOnTabChangeListener(this.mTypeTabChangeListener);
-      paramBundle.setBackgroundDrawable(super.getResources().getDrawable(2130844108));
-      this.mResHListView = ((HorizontalListView)super.findViewById(2131375061));
+      paramBundle.setBackgroundDrawable(super.getResources().getDrawable(2130844232));
+      this.mResHListView = ((HorizontalListView)super.findViewById(2131375247));
       this.mAdapter = new ThemeDiyBgAdapter(this);
       this.mAdapter.themeDIYData = this.mPageView.mData;
       this.mAdapter.isDIYThemeBefore = this.isDIYThemeBefore;
@@ -1029,7 +1029,7 @@ public class ThemeDIYActivity
       if (isNeedSave()) {
         try
         {
-          this.exitDialog = DialogUtil.b(this.mContext, 230, super.getResources().getString(2131433248), "你的自定义主题还未保存，是否保存？", 2131433502, 2131434541, new ThemeDIYActivity.11(this), new ThemeDIYActivity.12(this));
+          this.exitDialog = DialogUtil.b(this.mContext, 230, super.getResources().getString(2131433265), "你的自定义主题还未保存，是否保存？", 2131433519, 2131434558, new ThemeDIYActivity.11(this), new ThemeDIYActivity.12(this));
           this.exitDialog.show();
           return true;
         }
@@ -1121,7 +1121,7 @@ public class ThemeDIYActivity
     {
     default: 
       return;
-    case 2131363227: 
+    case 2131363245: 
       onBackEvent();
       return;
     }
@@ -1154,7 +1154,7 @@ public class ThemeDIYActivity
     }
     if ((this.mNeedStatusTrans) && (this.mSystemBarComp != null))
     {
-      i = super.getResources().getColor(2131494247);
+      i = super.getResources().getColor(2131494254);
       this.mSystemBarComp.setStatusColor(i);
       this.mSystemBarComp.setStatusBarColor(i);
     }
@@ -1255,7 +1255,7 @@ public class ThemeDIYActivity
       setProgessDialog(false, 0);
       if (-404 == j)
       {
-        QQToast.a(this.mContext, 2131434103, 3000).b(this.mContext.getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(this.mContext, 2131434120, 3000).b(this.mContext.getResources().getDimensionPixelSize(2131558448));
         return;
         i = 4;
         paramObject = localObject;
@@ -1347,7 +1347,7 @@ public class ThemeDIYActivity
       localThemeDIYData3.mSaveStatus = 3;
       localThemeDIYData2.mSaveStatus = 3;
       localThemeDIYData1.mSaveStatus = 3;
-      setProgessDialog(true, 2131434102);
+      setProgessDialog(true, 2131434119);
       ThreadManager.post(new ThemeDIYActivity.5(this), 8, null, true);
     }
     for (;;)
@@ -1576,7 +1576,7 @@ public class ThemeDIYActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity
  * JD-Core Version:    0.7.0.1
  */

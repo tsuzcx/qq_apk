@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="false" android:state_pressed="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022183" />
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022185" />
-    <item android:state_focused="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022185" />
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022183" />
-</selector>
+    <stroke android:width="1.5dip" android:color="#7fffffff" />
+    <solid android:color="@android:color/transparent" />
+</shape>

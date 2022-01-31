@@ -1,16 +1,16 @@
 package com.google.zxing.common.reedsolomon;
 
-import aad;
+import zj;
 
 public final class GenericGF
 {
   public static final GenericGF a;
   private final int jdField_a_of_type_Int;
-  private aad jdField_a_of_type_Aad;
+  private zj jdField_a_of_type_Zj;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt;
   private final int jdField_b_of_type_Int;
-  private aad jdField_b_of_type_Aad;
+  private zj jdField_b_of_type_Zj;
   private int[] jdField_b_of_type_ArrayOfInt;
   
   static
@@ -54,8 +54,8 @@ public final class GenericGF
       this.jdField_b_of_type_ArrayOfInt[this.jdField_a_of_type_ArrayOfInt[i]] = i;
       i += 1;
     }
-    this.jdField_a_of_type_Aad = new aad(this, new int[] { 0 });
-    this.jdField_b_of_type_Aad = new aad(this, new int[] { 1 });
+    this.jdField_a_of_type_Zj = new zj(this, new int[] { 0 });
+    this.jdField_b_of_type_Zj = new zj(this, new int[] { 1 });
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -72,24 +72,24 @@ public final class GenericGF
     return this.jdField_a_of_type_ArrayOfInt[paramInt];
   }
   
-  public aad a()
+  public zj a()
   {
     b();
-    return this.jdField_a_of_type_Aad;
+    return this.jdField_a_of_type_Zj;
   }
   
-  public aad a(int paramInt1, int paramInt2)
+  public zj a(int paramInt1, int paramInt2)
   {
     b();
     if (paramInt1 < 0) {
       throw new IllegalArgumentException();
     }
     if (paramInt2 == 0) {
-      return this.jdField_a_of_type_Aad;
+      return this.jdField_a_of_type_Zj;
     }
     int[] arrayOfInt = new int[paramInt1 + 1];
     arrayOfInt[0] = paramInt2;
-    return new aad(this, arrayOfInt);
+    return new zj(this, arrayOfInt);
   }
   
   public int b(int paramInt)

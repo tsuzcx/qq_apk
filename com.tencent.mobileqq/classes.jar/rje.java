@@ -1,16 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
+import org.xmlpull.v1.XmlSerializer;
 
 public class rje
-  implements CompoundButton.OnCheckedChangeListener
+  extends StructMsgItemCover
 {
-  public rje(AssistantSettingActivity paramAssistantSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public rje(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString)
   {
-    SettingCloneUtil.writeValue(this.a, null, null, "qqsetting_clear_memory_key", paramBoolean);
+    super(paramString);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "picture");
+    if (this.u == null) {}
+    for (String str = "";; str = this.u)
+    {
+      paramXmlSerializer.attribute(null, "cover", str);
+      paramXmlSerializer.endTag(null, "picture");
+      return;
+    }
   }
 }
 

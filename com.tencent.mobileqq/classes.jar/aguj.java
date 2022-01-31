@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class aguj
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  public aguj(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite) {}
+  public aguj(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void run()
+  public void onDismiss()
   {
-    this.a.a();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004E70", "0X8004E70", 0, 0, "", "", "", "");
   }
 }
 

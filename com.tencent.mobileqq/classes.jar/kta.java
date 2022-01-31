@@ -1,18 +1,25 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.InfoUpdateListener;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
+import java.lang.ref.WeakReference;
 
 public class kta
-  implements View.OnClickListener
+  implements FriendProfileImageModel.InfoUpdateListener
 {
-  public kta(AccountDetailActivity paramAccountDetailActivity, Dialog paramDialog) {}
+  WeakReference a;
   
-  public void onClick(View paramView)
+  public kta(AccountDetailActivity paramAccountDetailActivity)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a = new WeakReference(paramAccountDetailActivity);
+  }
+  
+  public void a(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
+  {
+    if ((this.a == null) || (this.a.get() == null)) {
+      return;
     }
+    ((AccountDetailActivity)this.a.get()).a(paramProfileImageInfo);
+    ((AccountDetailActivity)this.a.get()).N();
   }
 }
 

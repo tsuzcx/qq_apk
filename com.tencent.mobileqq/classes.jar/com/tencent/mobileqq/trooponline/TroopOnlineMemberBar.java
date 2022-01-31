@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.trooponline;
 
-import ajik;
-import ajil;
-import ajim;
-import ajin;
+import ajwo;
+import ajwp;
+import ajwq;
+import ajwr;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -47,8 +47,8 @@ public class TroopOnlineMemberBar
   implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, StoryHomeHorizontalListView.OnOverScrollRightListener
 {
   public static final int a;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new ajin(this);
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new ajil(this);
+  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new ajwr(this);
+  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new ajwp(this);
   protected ValueAnimator a;
   public Context a;
   public Animatable a;
@@ -63,7 +63,7 @@ public class TroopOnlineMemberBar
   protected String a;
   protected boolean a;
   private int jdField_b_of_type_Int = 1;
-  private ValueAnimator.AnimatorUpdateListener jdField_b_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new ajim(this);
+  private ValueAnimator.AnimatorUpdateListener jdField_b_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new ajwq(this);
   protected ValueAnimator b;
   public RelativeLayout b;
   
@@ -96,7 +96,7 @@ public class TroopOnlineMemberBar
     }
   }
   
-  public void C_()
+  public void H_()
   {
     Intent localIntent = TroopMemberListActivity.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 17);
     localIntent.putExtra("selfSet_leftViewText", "返回");
@@ -105,7 +105,7 @@ public class TroopOnlineMemberBar
     new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_online").c("online_box").d("enter_mberList").a(new String[] { this.jdField_a_of_type_JavaLangString }).a();
   }
   
-  public void D_() {}
+  public void I_() {}
   
   public int a()
   {
@@ -151,12 +151,12 @@ public class TroopOnlineMemberBar
   {
     this.jdField_b_of_type_Int = paramInt;
     if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969839, null));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969853, null));
     }
     Object localObject;
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView == null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView = ((StoryHomeHorizontalListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362419));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView = ((StoryHomeHorizontalListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362422));
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setOnItemClickListener(this);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setOnItemLongClickListener(this);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setOnOverScrollRightListener(this);
@@ -203,9 +203,9 @@ public class TroopOnlineMemberBar
       break;
       label413:
       if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368216));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368283));
       }
-      ThreadManager.getUIHandler().postDelayed(new ajik(this), 500L);
+      ThreadManager.getUIHandler().postDelayed(new ajwo(this), 500L);
       if (QLog.isColorLevel()) {
         QLog.i("TroopOnlineMemberBar", 2, "show(), itemList == null || itemList.empty");
       }
@@ -266,7 +266,7 @@ public class TroopOnlineMemberBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.BaseMessageManagerForTroopAndDisc;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.troop.data.TroopMessageManager;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class zpc
   implements Runnable
 {
-  public zpc(BaseMessageManagerForTroopAndDisc paramBaseMessageManagerForTroopAndDisc, long paramLong1, long paramLong2, int paramInt, long paramLong3, String paramString, Bundle paramBundle) {}
+  public zpc(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler) {}
   
   public void run()
   {
-    long l = Math.min(this.jdField_a_of_type_Long, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager.trooptroop_pull_msg.troop_parallel_pull_msg.trooptroop_pull_msg", 2, "--->>pkgIndex : " + this.jdField_a_of_type_Int + " beginSeq:" + this.c + " fixEndSeq:" + l);
+    while (!TroopQZoneUploadAlbumHandler.a(this.a)) {
+      try
+      {
+        i = ((Integer)TroopQZoneUploadAlbumHandler.a(this.a).take()).intValue();
+        if ((this.a.jdField_a_of_type_AndroidOsMessenger == null) || (this.a.jdField_a_of_type_AndroidOsMessenger.getBinder() == null) || (!this.a.jdField_a_of_type_AndroidOsMessenger.getBinder().isBinderAlive()) || (!this.a.jdField_a_of_type_AndroidOsMessenger.getBinder().pingBinder()))
+        {
+          QLog.i("UploadPhoto", 1, "需要重新创建连接");
+          this.a.b();
+          TroopQZoneUploadAlbumHandler.a(this.a);
+          TroopQZoneUploadAlbumHandler.a(this.a).offer(Integer.valueOf(i));
+          TroopQZoneUploadAlbumHandler.a(this.a, true);
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        int i;
+        TroopQZoneUploadAlbumHandler.a(this.a, true);
+        QLog.e("UploadPhoto", 1, localInterruptedException, new Object[0]);
+        continue;
+        Message localMessage = Message.obtain(null, 998, i, 0);
+        if (this.a.b == null) {
+          this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
+        }
+        localMessage.replyTo = this.a.b;
+        this.a.jdField_a_of_type_AndroidOsMessenger.send(localMessage);
+      }
+      catch (RemoteException localRemoteException)
+      {
+        QLog.e("UploadPhoto", 1, localRemoteException, new Object[0]);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a().a(this.jdField_a_of_type_JavaLangString, this.c, l);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.c, l, true, this.jdField_a_of_type_AndroidOsBundle, 0);
   }
 }
 

@@ -1,22 +1,15 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.BeautySettingUi;
 
-class jqr
-  implements Runnable
+public class jqr
+  implements DialogInterface.OnDismissListener
 {
-  jqr(jqo paramjqo, DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jqr(BeautySettingUi paramBeautySettingUi, int paramInt) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QavPanel localQavPanel = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a;
-    if (this.jdField_a_of_type_Jqo.a.a.t) {}
-    for (int i = 2;; i = 0)
-    {
-      localQavPanel.a(true, i, false);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentAvUiBeautySettingUi.c(this.jdField_a_of_type_Int);
   }
 }
 

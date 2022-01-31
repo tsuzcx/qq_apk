@@ -16,12 +16,12 @@ public class CampusCirclePicBrowserGalleryScene
   
   protected RelativeLayout a()
   {
-    return (RelativeLayout)LayoutInflater.from(this.a).inflate(2130970255, null);
+    return (RelativeLayout)LayoutInflater.from(this.a).inflate(2130970271, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCirclePicBrowserGalleryScene
  * JD-Core Version:    0.7.0.1
  */

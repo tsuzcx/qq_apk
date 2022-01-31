@@ -1,86 +1,84 @@
-import android.util.Log;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.startup.director.StartupDirector;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.search.BusinessSearchEntryModel;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.model.BusinessSearchEntryDataModel.SearchEntry;
+import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class ahqk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahqk(StartupDirector paramStartupDirector, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6) {}
+  public ahqk(BusinessSearchEntryModel paramBusinessSearchEntryModel, View paramView1, BusinessSearchEntryDataModel.SearchEntry paramSearchEntry, View paramView2, String paramString, List paramList) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject;
-    QQAppInterface localQQAppInterface;
-    if (BaseApplicationImpl.sProcessId == 1)
+    long l = System.currentTimeMillis();
+    if (((this.jdField_a_of_type_AndroidViewView.getTag() instanceof Long)) && (l - ((Long)this.jdField_a_of_type_AndroidViewView.getTag()).longValue() < 400L)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setTag(Long.valueOf(l));
+    String str;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelBusinessSearchEntryDataModel$SearchEntry.jdField_c_of_type_JavaLangString))
     {
-      if (this.jdField_a_of_type_Long > 0L) {
-        StatisticCollector.a(BaseApplicationImpl.sApplication).a(null, "actLoginA", true, this.jdField_a_of_type_Long, 0L, null, null);
-      }
-      if (this.b > 0L)
+      str = this.jdField_a_of_type_ComTencentMobileqqSearchModelBusinessSearchEntryDataModel$SearchEntry.jdField_c_of_type_JavaLangString;
+      if ((str.startsWith("http://")) || (str.startsWith("https://")))
       {
-        localObject = BaseApplicationImpl.sApplication.getRuntime();
-        if ((localObject != null) && ((localObject instanceof QQAppInterface)))
-        {
-          localQQAppInterface = (QQAppInterface)localObject;
-          if (this.b != 2201L) {
-            break label368;
-          }
-          localObject = "1";
-          ReportController.b(localQQAppInterface, "CliOper", "", "", "0X80064F6", "0X80064F6", 0, 0, (String)localObject, "", "", "");
-        }
+        paramView = new Intent(BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel), QQBrowserActivity.class);
+        paramView.putExtra("url", str);
+        BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel).startActivity(paramView);
       }
-      if (this.c > 0L)
-      {
-        Log.i("AutoMonitor", "ActionLoginM, cost=" + this.d);
-        localObject = new HashMap();
-        ((HashMap)localObject).put("cost", this.d + "");
-        StatisticCollector.a(BaseApplicationImpl.sApplication).a(null, "actLoginM", true, this.d, 0L, (HashMap)localObject, null);
-      }
-      if ((this.e > 0L) && (this.f < 30000L))
-      {
-        Log.i("AutoMonitor", "ActionLoginS, cost=" + this.f);
-        localObject = new HashMap();
-        ((HashMap)localObject).put("cost", this.f + "");
-        StatisticCollector.a(BaseApplicationImpl.sApplication).a(null, "actLoginS", true, this.f, 0L, (HashMap)localObject, null);
-      }
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (localQQAppInterface != null) {
-        break label391;
-      }
-      localObject = "0";
     }
     for (;;)
     {
-      ReportController.a(localQQAppInterface, "P_CliOper", "Vip_login_upload", "", "upload", "report", 0, 0, AppSetting.a(BaseApplicationImpl.sApplication, (String)localObject), "", "", "");
-      if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
-        UnifiedMonitor.a().a();
-      }
-      return;
-      label368:
-      if (this.b == 2200L)
+      if (this.b.getVisibility() == 0)
       {
-        localObject = "3";
-        break;
+        this.b.setVisibility(8);
+        SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelBusinessSearchEntryDataModel$SearchEntry.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString);
       }
-      localObject = "2";
-      break;
-      label391:
-      localObject = localQQAppInterface.getAccount();
-      if ((localObject == null) || (((String)localObject).length() == 0)) {
-        localObject = "0";
+      SearchUtils.a("home_page", "clk_entry", new String[] { this.jdField_a_of_type_ComTencentMobileqqSearchModelBusinessSearchEntryDataModel$SearchEntry.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel.a), String.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+      return;
+      if ((BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel) instanceof BaseActivity))
+      {
+        paramView = JumpParser.a(((BaseActivity)paramView.getContext()).app, BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel), str);
+        if (paramView != null) {
+          paramView.b();
+        } else {
+          BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel).startActivity(new Intent(BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel), JumpActivity.class).setData(Uri.parse(str)));
+        }
+      }
+      else
+      {
+        BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel).startActivity(new Intent(BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel), JumpActivity.class).setData(Uri.parse(str)));
+        continue;
+        int i = this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel.a;
+        if (this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel.a == 3) {
+          i = 21;
+        }
+        ActiveEntitySearchActivity.a(BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel), this.jdField_a_of_type_ComTencentMobileqqSearchModelBusinessSearchEntryDataModel$SearchEntry.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSearchModelBusinessSearchEntryDataModel$SearchEntry.jdField_a_of_type_ArrayOfLong, i);
+        if (!NetworkUtil.g(BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel))) {
+          QQToast.a(BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel), 0, BusinessSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel).getResources().getString(2131438866), 0).a();
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahqk
  * JD-Core Version:    0.7.0.1
  */

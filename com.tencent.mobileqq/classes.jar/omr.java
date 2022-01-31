@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.OnWidgetElementClickListener;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetElement;
+import android.widget.ImageButton;
+import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
 
 public class omr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public omr(PollWidgetUtils.WidgetElement paramWidgetElement) {}
+  public omr(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener;
-    if (paramView != null) {
-      paramView.a(this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$WidgetWrapper, this.a);
-    }
+    StoryLocalPublishPart.a(this.a).setVisibility(0);
   }
 }
 

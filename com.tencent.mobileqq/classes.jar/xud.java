@@ -1,22 +1,81 @@
-public class xud
+import android.app.Activity;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+
+class xud
+  implements FFmpegExecuteResponseCallback
 {
-  public int a;
-  public String a;
-  public String b = "";
-  public String c = "";
+  long jdField_a_of_type_Long;
+  PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  private xud()
+  xud(xua paramxua, PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = paramPublishVideoEntry;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
-    this.c = "";
+    SaveVideoActivity.a(true);
   }
+  
+  public void a(String paramString)
+  {
+    com.tencent.biz.qqstory.utils.FileUtils.a(BaseApplication.getContext(), new File(this.b));
+    com.tencent.mobileqq.utils.FileUtils.d(new File(this.jdField_a_of_type_JavaLangString).getParent());
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    double d = (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D;
+    if (QLog.isColorLevel()) {
+      QLog.d("SaveVideoActivity", 2, "generate files|third step cost:" + d);
+    }
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("generate_video_cost", this.jdField_a_of_type_Xua.a + "");
+    ((HashMap)localObject).put("watermark_cost", d + "");
+    StatisticCollector.a(BaseApplication.getContext()).a(null, "qq_ptv_save_time", true, 0L, 0L, (HashMap)localObject, null);
+    com.tencent.mobileqq.utils.FileUtils.d(this.jdField_a_of_type_JavaLangString);
+    SaveVideoActivity.a(false);
+    if (xua.a(this.jdField_a_of_type_Xua).get() != null)
+    {
+      localObject = (Activity)xua.a(this.jdField_a_of_type_Xua).get();
+      if (xua.b(this.jdField_a_of_type_Xua).get() != null) {
+        SaveVideoActivity.a((AppInterface)xua.b(this.jdField_a_of_type_Xua).get(), this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+      }
+      if (!paramBoolean) {
+        break label238;
+      }
+    }
+    label238:
+    for (int i = xua.a(this.jdField_a_of_type_Xua, -1);; i = xua.a(this.jdField_a_of_type_Xua, 1))
+    {
+      ((Activity)localObject).setResult(i, ((Activity)localObject).getIntent());
+      ((Activity)localObject).finish();
+      return;
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SaveVideoActivity", 2, "generate files|third step fail:" + paramString);
+    }
+  }
+  
+  public void c(String paramString) {}
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.open.appcommon.js;
 
-import akob;
-import akoc;
-import akod;
+import aldr;
+import alds;
+import aldt;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -48,9 +48,9 @@ public abstract class BaseInterface
     if (this.firstIn)
     {
       Timer localTimer = ThreadManager.getTimer();
-      akob localakob = new akob(this, paramWebView, paramLong1);
-      this.mTask = localakob;
-      localTimer.schedule(localakob, paramLong2, paramLong2);
+      aldr localaldr = new aldr(this, paramWebView, paramLong1);
+      this.mTask = localaldr;
+      localTimer.schedule(localaldr, paramLong2, paramLong2);
       this.firstIn = false;
     }
     try
@@ -87,7 +87,7 @@ public abstract class BaseInterface
     finally {}
     if (localArrayList.size() > 0)
     {
-      new Handler(Looper.getMainLooper()).post(new akoc(this, paramLong, localArrayList, paramWebView));
+      new Handler(Looper.getMainLooper()).post(new alds(this, paramLong, localArrayList, paramWebView));
       return;
     }
     LogUtility.c(TAG, "Response<callBatch> AsyncInterface no need response");
@@ -96,7 +96,7 @@ public abstract class BaseInterface
   protected void batchCallbackError(WebView paramWebView, long paramLong, String paramString)
   {
     LogUtility.c(TAG, "batchCallbackError guid : " + paramLong + ", msg : " + paramString);
-    new Handler(Looper.getMainLooper()).post(new akod(this, paramLong, paramString, paramWebView));
+    new Handler(Looper.getMainLooper()).post(new aldt(this, paramLong, paramString, paramWebView));
   }
   
   public void call(String paramString, List paramList, JsBridge.JsBridgeListener paramJsBridgeListener)

@@ -1,50 +1,65 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoLabel;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
+import android.os.Environment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class andw
-  implements View.OnClickListener
 {
-  public andw(EditVideoLabel paramEditVideoLabel) {}
+  private static final File a;
+  public static String a;
+  private static File b;
   
-  public void onClick(View paramView)
+  static
   {
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString))
+    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getAbsolutePath();
+    jdField_a_of_type_JavaIoFile = new File(jdField_a_of_type_JavaLangString + File.separator + "Android" + File.separator + "data");
+  }
+  
+  public static File a()
+  {
+    try
     {
-      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString;
-      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
-      {
-        EditVideoPartManager localEditVideoPartManager = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager;
-        if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a())
+      File localFile1 = a(BaseApplicationImpl.getContext().getPackageName());
+      boolean bool = localFile1.exists();
+      if (!bool) {
+        try
         {
-          paramView = "2";
-          localEditVideoPartManager.a("use_custom_tag", 0, 0, new String[] { paramView });
+          new File(jdField_a_of_type_JavaIoFile, ".nomedia").createNewFile();
+          if (!localFile1.mkdirs())
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("InnerEnvironment", 2, "Unable to create external cache directory");
+            }
+            return null;
+          }
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            localIOException.printStackTrace();
+          }
         }
       }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
-      }
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-      return;
-      paramView = "1";
-      break;
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    finally {}
+    return localFile2;
+  }
+  
+  public static File a(String paramString)
+  {
+    if (b != null) {
+      return b;
     }
+    b = new File(jdField_a_of_type_JavaIoFile, paramString + File.separator + "qzone");
+    return b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,35 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.XListView;
 
-class mmb
-  implements URLDrawableDownListener
+public class mmb
+  implements AbsListView.OnScrollListener
 {
-  mmb(mma parammma) {}
+  public mmb(FastWebActivity paramFastWebActivity) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    QLog.d("Q.readinjoy.fast_web", 2, " onLoadFailed: " + paramURLDrawable.getURL().toString() + " retryCnt: " + mma.a(this.a));
-    if ((((RecommendAdData)this.a.a).d.equals(paramURLDrawable.getURL().getFile())) && (mma.a(this.a) < 3))
+    if (paramInt == 0)
     {
-      mma.b(this.a);
-      this.a.b(this.a.a, this.a.a, true);
+      AbstractGifImage.resumeAll();
+      int i = FastWebActivity.a(this.a).getFirstVisiblePosition();
+      FastWebActivity.c(this.a);
+      FastWebActivity.a(this.a, i);
+    }
+    for (;;)
+    {
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      }
+      return;
+      AbstractGifImage.pauseAll();
     }
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    mma.a(this.a).setImageDrawable(paramURLDrawable);
-  }
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

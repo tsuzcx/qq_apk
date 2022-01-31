@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
 
-class ajya
-  implements Runnable
+public class ajya
 {
-  ajya(ajxy paramajxy, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public long a;
+  public ajxz a;
+  public ResultReceiver a;
+  public String a;
+  public long b;
+  public String b;
+  private long c;
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public ajya(SnapshotService paramSnapshotService) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajya
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import admd;
+import adwc;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
@@ -47,7 +47,7 @@ public class DocxApiPlugin
             QLog.i("TeamWorkDocEditBrowserActivity", 2, "回调id = " + paramJsBridgeListener + " localPath = " + paramString1);
           }
           if ((paramString2 != null) && ((paramString2 instanceof TeamWorkDocEditBrowserActivity))) {
-            ThreadManager.postImmediately(new admd(this, paramString2, paramString1, paramJsBridgeListener), null, false);
+            ThreadManager.postImmediately(new adwc(this, paramString2, paramString1, paramJsBridgeListener), null, false);
           }
         }
       }
@@ -124,7 +124,7 @@ public class DocxApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin
  * JD-Core Version:    0.7.0.1
  */

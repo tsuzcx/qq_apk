@@ -1,39 +1,75 @@
-import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.open.agent.BindGroupActivity.ViewHolder;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.vipav.VipFullScreenVideoView;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
+import java.util.ArrayList;
 
 public class aklg
-  implements Runnable
+  extends Handler
 {
-  public aklg(BindGroupActivity paramBindGroupActivity, String paramString, Bitmap paramBitmap) {}
-  
-  public void run()
+  public aklg(VipFunCallPreviewActivity paramVipFunCallPreviewActivity, Looper paramLooper)
   {
-    int j = this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity.a.getChildCount();
-    int i = 0;
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (i < j)
-      {
-        BindGroupActivity.ViewHolder localViewHolder = (BindGroupActivity.ViewHolder)this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity.a.getChildAt(i).getTag();
-        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.jdField_a_of_type_JavaLangString))) {
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
     }
+    BitmapDrawable localBitmapDrawable;
+    do
+    {
+      RelativeLayout localRelativeLayout;
+      do
+      {
+        do
+        {
+          return;
+          if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+          {
+            if (this.a.jdField_a_of_type_Boolean)
+            {
+              if ((this.a.g instanceof Button)) {
+                ((Button)this.a.g).setText("已设置");
+              }
+              this.a.g.setEnabled(false);
+              return;
+            }
+            this.a.g.setEnabled(true);
+            return;
+          }
+          if (this.a.jdField_a_of_type_Boolean)
+          {
+            this.a.g.setVisibility(0);
+            this.a.g.setEnabled(true);
+            if ((this.a.g instanceof Button)) {
+              ((Button)this.a.g).setText("已设置");
+            }
+            this.a.g.setEnabled(false);
+            this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+            this.a.f.setVisibility(8);
+            return;
+          }
+          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+          return;
+        } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof BitmapDrawable)));
+        localRelativeLayout = (RelativeLayout)this.a.findViewById(2131375431);
+        localBitmapDrawable = (BitmapDrawable)paramMessage.obj;
+      } while ((localBitmapDrawable == null) || (localRelativeLayout == null));
+      localRelativeLayout.setBackgroundDrawable(localBitmapDrawable);
+    } while (paramMessage.arg1 != 1);
+    this.a.jdField_a_of_type_ComTencentMobileqqVipavVipFullScreenVideoView.setBackgroundDrawable(localBitmapDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aklg
  * JD-Core Version:    0.7.0.1
  */

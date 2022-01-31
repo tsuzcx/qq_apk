@@ -1,14 +1,16 @@
-import com.tencent.av.redpacket.ui.RedPacketGameScore;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class jmc
   implements Runnable
 {
-  public jmc(RedPacketGameScore paramRedPacketGameScore) {}
+  public jmc(RedPacketShareFragment paramRedPacketShareFragment, int paramInt) {}
   
   public void run()
   {
-    this.a.b = System.currentTimeMillis();
-    this.a.a = true;
+    String str = RedPacketShareFragment.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment);
+    ThreadManager.getUIHandler().post(new jmd(this, str));
   }
 }
 

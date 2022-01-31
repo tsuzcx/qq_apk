@@ -48,12 +48,12 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import nye;
-import nyf;
-import nyg;
-import nyh;
-import nyi;
-import nyj;
+import nzp;
+import nzq;
+import nzr;
+import nzs;
+import nzt;
+import nzu;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class StoryListPresenter
@@ -123,7 +123,7 @@ public class StoryListPresenter
     } while (paramResponse.b <= i);
     this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_guide_info_seqno", Integer.valueOf(paramResponse.b));
     GuideInfoDialog localGuideInfoDialog = new GuideInfoDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624193);
-    localGuideInfoDialog.a(paramResponse.a).b(paramResponse.c).c(paramResponse.e).b(new nyh(this, localGuideInfoDialog)).d(paramResponse.d).a(new nyg(this, localGuideInfoDialog)).setCancelable(true);
+    localGuideInfoDialog.a(paramResponse.a).b(paramResponse.c).c(paramResponse.e).b(new nzs(this, localGuideInfoDialog)).d(paramResponse.d).a(new nzr(this, localGuideInfoDialog)).setCancelable(true);
     localGuideInfoDialog.setCanceledOnTouchOutside(true);
     localGuideInfoDialog.show();
     StoryReportor.a("home_page", "guide_cnt", 0, 0, new String[0]);
@@ -209,7 +209,7 @@ public class StoryListPresenter
     if (NetworkUtils.a(this.jdField_a_of_type_AndroidAppActivity))
     {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestParallelStepExecutor.c();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestParallelStepExecutor.a(new GetUserSelfInfoStep(null)).a(new ReportWatchVideoListStep(this)).a(new GetPhotographyGuideInfoStep()).a(new GetUserGuideInfoStep(this)).a(new nyj(this)).a(new nyi(this)).a();
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestParallelStepExecutor.a(new GetUserSelfInfoStep(null)).a(new ReportWatchVideoListStep(this)).a(new GetPhotographyGuideInfoStep()).a(new GetUserGuideInfoStep(this)).a(new nzu(this)).a(new nzt(this)).a();
       GetUserInfoHandler.d();
       return true;
     }
@@ -227,8 +227,8 @@ public class StoryListPresenter
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle("你的每一天，都值得分享");
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage("在日迹，你可以拍摄小视频记录真实所见，与好友分享生活美好瞬间。\n");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton("我知道了", new nyf(this)).setPositiveButton("开启我的一天", new nye(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getBtnight().setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493765));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton("我知道了", new nzq(this)).setPositiveButton("开启我的一天", new nzp(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getBtnight().setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493771));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       StoryReportor.a("home_page", "guide_exp", 0, 0, new String[0]);
     }
@@ -285,13 +285,13 @@ public class StoryListPresenter
     {
       SLog.e("Q.qqstory.home.StoryListPresenter", "showGuideDialog but now new User dialog is showing");
       if (localLocalVideoPushSegment != null) {
-        localLocalVideoPushSegment.e_(false);
+        localLocalVideoPushSegment.f_(false);
       }
     }
     while (localLocalVideoPushSegment == null) {
       return;
     }
-    localLocalVideoPushSegment.e_(true);
+    localLocalVideoPushSegment.f_(true);
   }
   
   public boolean handleMessage(Message paramMessage)

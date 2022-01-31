@@ -1,13 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
 public class lfp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lfp(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  public lfp(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, lfu paramlfu, Bitmap paramBitmap) {}
   
-  public void onClick(View paramView) {}
+  public void run()
+  {
+    lfu.a(this.jdField_a_of_type_Lfu).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+  }
 }
 
 

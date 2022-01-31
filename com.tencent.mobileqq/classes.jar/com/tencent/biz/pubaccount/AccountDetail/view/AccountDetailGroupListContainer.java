@@ -53,6 +53,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import kqu;
+import kqv;
+import kqw;
+import kqx;
+import kqy;
+import kqz;
+import kra;
+import krb;
+import krc;
+import krd;
+import kre;
+import krf;
+import krg;
+import krh;
+import kri;
 import krj;
 import krk;
 import krl;
@@ -62,21 +77,6 @@ import kro;
 import krp;
 import krq;
 import krr;
-import krs;
-import krt;
-import kru;
-import krv;
-import krw;
-import krx;
-import kry;
-import krz;
-import ksa;
-import ksb;
-import ksc;
-import ksd;
-import kse;
-import ksf;
-import ksg;
 import mqq.manager.TicketManager;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -90,14 +90,14 @@ public class AccountDetailGroupListContainer
   public ViewGroup a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  PhotoWallViewForAccountDetail.PhotoWallCallback jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail$PhotoWallCallback = new krk(this);
+  PhotoWallViewForAccountDetail.PhotoWallCallback jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail$PhotoWallCallback = new kqv(this);
   protected FriendListObserver a;
   public QQAppInterface a;
   public AccountDetail a;
   public String a;
   public WeakReference a;
   public ArrayList a;
-  protected ksg a;
+  protected krr a;
   boolean jdField_a_of_type_Boolean = false;
   public boolean b = true;
   public boolean c;
@@ -107,15 +107,15 @@ public class AccountDetailGroupListContainer
   public AccountDetailGroupListContainer(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, AccountDetail paramAccountDetail, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new krs(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new krd(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((BaseActivity)paramContext);
     this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = paramAccountDetail;
     this.jdField_a_of_type_Boolean = paramBoolean;
     c();
-    this.jdField_a_of_type_Ksg = new ksg(this, this);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Ksg);
+    this.jdField_a_of_type_Krr = new krr(this, this);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Krr);
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     a();
   }
@@ -125,15 +125,15 @@ public class AccountDetailGroupListContainer
     if ((TextUtils.isEmpty(paramPaConfigInfo.g)) || (TextUtils.isEmpty(paramPaConfigInfo.f))) {
       return null;
     }
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969037, null);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969036, null);
     a(localView, paramPaConfigInfo.i);
-    TextView localTextView = (TextView)localView.findViewById(2131363360);
+    TextView localTextView = (TextView)localView.findViewById(2131363378);
     String str1 = paramPaConfigInfo.jdField_a_of_type_JavaLangString;
     String str2 = paramPaConfigInfo.jdField_b_of_type_JavaLangString;
     if (!TextUtils.isEmpty(str1))
     {
       localTextView.setText(str1);
-      localView.setOnClickListener(new krj(this, paramPaConfigInfo, str2));
+      localView.setOnClickListener(new kqu(this, paramPaConfigInfo, str2));
       return localView;
     }
     return null;
@@ -141,11 +141,11 @@ public class AccountDetailGroupListContainer
   
   private View a(PaConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt)
   {
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969037, null);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969036, null);
     a(localView, paramPaConfigInfo.i);
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131363039)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
-    localView.setOnClickListener(new kse(this, paramInt, paramPaConfigInfo));
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131363057)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
+    localView.setOnClickListener(new krp(this, paramInt, paramPaConfigInfo));
     return localView;
   }
   
@@ -190,7 +190,7 @@ public class AccountDetailGroupListContainer
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    paramView = (ImageView)paramView.findViewById(2131362729);
+    paramView = (ImageView)paramView.findViewById(2131362747);
     paramView.setImageDrawable(URLDrawable.getDrawable(paramString));
     paramView.setVisibility(0);
   }
@@ -210,31 +210,31 @@ public class AccountDetailGroupListContainer
     {
       int i = paramPaConfigInfo.jdField_d_of_type_Int;
       if ((i == 1) || (i == 2)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437757);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437774);
       }
     }
     else
     {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437758);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437775);
   }
   
   private void a(String paramString)
   {
-    Dialog localDialog = new Dialog((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131624515);
-    localDialog.setContentView(2130970286);
-    ((TextView)localDialog.findViewById(2131369910)).setVisibility(8);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131369911);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131369912);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131369913);
+    Dialog localDialog = new Dialog((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131624516);
+    localDialog.setContentView(2130970302);
+    ((TextView)localDialog.findViewById(2131369987)).setVisibility(8);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131369988);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131369989);
+    TextView localTextView3 = (TextView)localDialog.findViewById(2131369990);
     localTextView1.setText(paramString);
     localTextView1.setGravity(3);
-    localTextView2.setText(2131432998);
-    localTextView3.setText(2131435075);
+    localTextView2.setText(2131433015);
+    localTextView3.setText(2131435092);
     localDialog.setCanceledOnTouchOutside(false);
-    localTextView2.setOnClickListener(new krv(this, localDialog));
-    localTextView3.setOnClickListener(new krw(this, paramString));
+    localTextView2.setOnClickListener(new krg(this, localDialog));
+    localTextView3.setOnClickListener(new krh(this, paramString));
     try
     {
       localDialog.show();
@@ -312,7 +312,7 @@ public class AccountDetailGroupListContainer
       try
       {
         if (TextUtils.isEmpty(paramJSONArray.getString(i))) {
-          localImageView.setImageResource(2130838715);
+          localImageView.setImageResource(2130838719);
         }
         for (;;)
         {
@@ -422,7 +422,7 @@ public class AccountDetailGroupListContainer
   
   private View b(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969037, null);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969036, null);
     a(localView, paramPaConfigInfo.i);
     String str = paramPaConfigInfo.h;
     if (str != null)
@@ -436,8 +436,8 @@ public class AccountDetailGroupListContainer
     {
       return null;
     }
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    localView.setOnClickListener(new kru(this, str, paramPaConfigInfo));
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    localView.setOnClickListener(new krf(this, str, paramPaConfigInfo));
     return localView;
   }
   
@@ -475,8 +475,8 @@ public class AccountDetailGroupListContainer
   private View c(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
     View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130968908, null);
-    ((TextView)localView.findViewById(2131363039)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131363057)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
     return localView;
   }
   
@@ -498,13 +498,13 @@ public class AccountDetailGroupListContainer
     if ((paramPaConfigInfo.jdField_a_of_type_JavaLangString.contains("历史")) && (this.jdField_a_of_type_Boolean)) {
       return null;
     }
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969188, null);
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969187, null);
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
     String str = paramPaConfigInfo.jdField_c_of_type_JavaLangString;
     if (!TextUtils.isEmpty(str))
     {
-      localView.findViewById(2131365524).setVisibility(0);
-      localView.setOnClickListener(new krz(this, str, paramPaConfigInfo));
+      localView.findViewById(2131365546).setVisibility(0);
+      localView.setOnClickListener(new krk(this, str, paramPaConfigInfo));
       bool = true;
     }
     try
@@ -512,9 +512,9 @@ public class AccountDetailGroupListContainer
       for (;;)
       {
         paramPaConfigInfo = new JSONArray(paramPaConfigInfo.jdField_e_of_type_JavaLangString);
-        a(bool, (LinearLayout)localView.findViewById(2131365523), paramPaConfigInfo);
+        a(bool, (LinearLayout)localView.findViewById(2131365545), paramPaConfigInfo);
         return localView;
-        localView.findViewById(2131365524).setVisibility(8);
+        localView.findViewById(2131365546).setVisibility(8);
       }
     }
     catch (JSONException paramPaConfigInfo)
@@ -531,52 +531,52 @@ public class AccountDetailGroupListContainer
   
   private View e(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969037, null);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969036, null);
     a(localView, paramPaConfigInfo.i);
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131363039)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
-    localView.setOnClickListener(new ksa(this, paramPaConfigInfo));
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131363057)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
+    localView.setOnClickListener(new krl(this, paramPaConfigInfo));
     return localView;
   }
   
   private View f(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969037, null);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969036, null);
     a(localView, paramPaConfigInfo.i);
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131363039)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
-    localView.setOnClickListener(new ksb(this, paramPaConfigInfo));
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131363057)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
+    localView.setOnClickListener(new krm(this, paramPaConfigInfo));
     return localView;
   }
   
   private View g(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969037, null);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969036, null);
     a(localView, paramPaConfigInfo.i);
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131363039)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
-    localView.setOnClickListener(new ksc(this, paramPaConfigInfo));
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131363057)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
+    localView.setOnClickListener(new krn(this, paramPaConfigInfo));
     return localView;
   }
   
   private View h(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969037, null);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969036, null);
     a(localView, paramPaConfigInfo.i);
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131363039)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
-    localView.setOnClickListener(new ksd(this, paramPaConfigInfo));
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131363057)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
+    localView.setOnClickListener(new kro(this, paramPaConfigInfo));
     return localView;
   }
   
   private View i(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969037, null);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969036, null);
     a(localView, paramPaConfigInfo.i);
     String str = paramPaConfigInfo.jdField_c_of_type_JavaLangString;
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131363039)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
-    localView.setOnClickListener(new ksf(this, str, paramPaConfigInfo));
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131363057)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
+    localView.setOnClickListener(new krq(this, str, paramPaConfigInfo));
     return localView;
   }
   
@@ -586,21 +586,21 @@ public class AccountDetailGroupListContainer
       return;
     }
     b(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969205, null);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969206, null);
     String str = "";
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedWeixin)) {
       str = this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedWeixin + "\n";
     }
     str = str + this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedEnterprise;
-    ((TextView)localView.findViewById(2131365576)).setText(str);
+    ((TextView)localView.findViewById(2131365603)).setText(str);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
   }
   
   private View j(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130971660, null);
-    ((TextView)localView.findViewById(2131363039)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130971708, null);
+    ((TextView)localView.findViewById(2131363057)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
     return localView;
   }
   
@@ -609,10 +609,10 @@ public class AccountDetailGroupListContainer
     if ((this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary))) {
       return;
     }
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969205, null);
-    ((TextView)localView.findViewById(2131365576)).setText(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary);
-    ((ImageView)localView.findViewById(2131362729)).setVisibility(8);
-    ((TextView)localView.findViewById(2131363360)).setText(2131430039);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969206, null);
+    ((TextView)localView.findViewById(2131365603)).setText(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary);
+    ((ImageView)localView.findViewById(2131362747)).setVisibility(8);
+    ((TextView)localView.findViewById(2131363378)).setText(2131430056);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
   }
   
@@ -625,17 +625,17 @@ public class AccountDetailGroupListContainer
       }
       return null;
     }
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130971539, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363185));
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130971587, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363203));
     if ((paramPaConfigInfo.jdField_d_of_type_Int == 1) || (paramPaConfigInfo.jdField_d_of_type_Int == 2)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437757);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437774);
     }
     for (;;)
     {
-      ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-      localView.setOnClickListener(new krl(this, paramPaConfigInfo));
+      ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+      localView.setOnClickListener(new kqw(this, paramPaConfigInfo));
       return localView;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437758);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437775);
     }
   }
   
@@ -649,15 +649,15 @@ public class AccountDetailGroupListContainer
   
   private View l(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130971578, null);
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    Switch localSwitch = (Switch)localView.findViewById(2131364096);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130971626, null);
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    Switch localSwitch = (Switch)localView.findViewById(2131364120);
     if (paramPaConfigInfo.jdField_d_of_type_Int == 1) {
       localSwitch.setChecked(true);
     }
     for (;;)
     {
-      localSwitch.setOnCheckedChangeListener(new kro(this, paramPaConfigInfo, localSwitch));
+      localSwitch.setOnCheckedChangeListener(new kqz(this, paramPaConfigInfo, localSwitch));
       return localView;
       localSwitch.setChecked(false);
     }
@@ -668,12 +668,12 @@ public class AccountDetailGroupListContainer
     if ((this.jdField_a_of_type_Boolean) && (paramPaConfigInfo.jdField_a_of_type_JavaLangString.contains("历史"))) {
       return null;
     }
-    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969037, null);
+    View localView = ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969036, null);
     a(localView, paramPaConfigInfo.i);
     String str = paramPaConfigInfo.jdField_c_of_type_JavaLangString;
-    ((TextView)localView.findViewById(2131363360)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131363039)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
-    localView.setOnClickListener(new krp(this, str, paramPaConfigInfo));
+    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    ((TextView)localView.findViewById(2131363057)).setText(paramPaConfigInfo.jdField_b_of_type_JavaLangString);
+    localView.setOnClickListener(new kra(this, str, paramPaConfigInfo));
     return localView;
   }
   
@@ -715,9 +715,9 @@ public class AccountDetailGroupListContainer
         QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "addBindedTroopItem:" + j + "," + this.c);
       }
     } while ((j == 0) && (!this.c));
-    View localView = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).inflate(2130969511, paramViewGroup, false);
-    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131365523);
-    Object localObject = localView.findViewById(2131363039);
+    View localView = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).inflate(2130969518, paramViewGroup, false);
+    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131365545);
+    Object localObject = localView.findViewById(2131363057);
     this.jdField_a_of_type_AndroidViewViewGroup = localLinearLayout;
     if (j == 0)
     {
@@ -748,7 +748,7 @@ public class AccountDetailGroupListContainer
       localLinearLayout.setVisibility(0);
       ((View)localObject).setVisibility(8);
     }
-    localView.setOnClickListener(new krq(this, j));
+    localView.setOnClickListener(new krb(this, j));
     paramViewGroup.addView(localView);
     b(paramViewGroup);
   }
@@ -877,17 +877,17 @@ public class AccountDetailGroupListContainer
   public void a(PaConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), null);
-    localActionSheet.a(2131437757, 5, false);
-    localActionSheet.a(2131437758, 5, false);
+    localActionSheet.a(2131437774, 5, false);
+    localActionSheet.a(2131437775, 5, false);
     if ((paramInt == 1) || (paramInt == 2)) {
       localActionSheet.d(0);
     }
     for (;;)
     {
       if ((paramInt != 1) && (paramInt == 2)) {}
-      localActionSheet.c(2131432998);
-      localActionSheet.setOnDismissListener(new krm(this));
-      localActionSheet.a(new krn(this, paramPaConfigInfo, localActionSheet));
+      localActionSheet.c(2131433015);
+      localActionSheet.setOnDismissListener(new kqx(this));
+      localActionSheet.a(new kqy(this, paramPaConfigInfo, localActionSheet));
       if (!localActionSheet.isShowing())
       {
         this.e = false;
@@ -921,8 +921,8 @@ public class AccountDetailGroupListContainer
     }
     localQQCustomDialog.setTitle("温馨提示");
     localQQCustomDialog.setMessage(str);
-    localQQCustomDialog.setOnCancelListener(new krx(this, paramPaConfigInfo, paramSwitch));
-    paramPaConfigInfo = new kry(this, paramPaConfigInfo, paramBoolean, paramSwitch);
+    localQQCustomDialog.setOnCancelListener(new kri(this, paramPaConfigInfo, paramSwitch));
+    paramPaConfigInfo = new krj(this, paramPaConfigInfo, paramBoolean, paramSwitch);
     localQQCustomDialog.setNegativeButton("取消", paramPaConfigInfo);
     localQQCustomDialog.setPositiveButton("确定", paramPaConfigInfo);
     try
@@ -962,10 +962,10 @@ public class AccountDetailGroupListContainer
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ksg != null)
+    if (this.jdField_a_of_type_Krr != null)
     {
-      this.jdField_a_of_type_Ksg.a();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ksg);
+      this.jdField_a_of_type_Krr.a();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Krr);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
   }
@@ -1065,7 +1065,7 @@ public class AccountDetailGroupListContainer
         oidb_0x487.ReqBody localReqBody = new oidb_0x487.ReqBody();
         localReqBody.uint32_channel.set(1);
         localReqBody.uint64_subscribe_code.set(l);
-        ProtoUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new krr(this), localReqBody.toByteArray(), "OidbSvc.0x487_0", 1159, 0);
+        ProtoUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new krc(this), localReqBody.toByteArray(), "OidbSvc.0x487_0", 1159, 0);
         return;
       }
       catch (Exception localException)
@@ -1109,7 +1109,7 @@ public class AccountDetailGroupListContainer
       localBundle.putString("Referer", "https://buluo.qq.com/");
       ((HashMap)localObject3).put("BUNDLE", localBundle);
       ((HashMap)localObject3).put("CONTEXT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
-      new HttpWebCgiAsyncTask2("https://buluo.qq.com/cgi-bin/bar/qunlist_all", "POST", new krt(this), 1000, null).a((HashMap)localObject3);
+      new HttpWebCgiAsyncTask2("https://buluo.qq.com/cgi-bin/bar/qunlist_all", "POST", new kre(this), 1000, null).a((HashMap)localObject3);
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin;
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "exp_tribechat_data", "exp_tribechat_aio", 0, 0, this.jdField_a_of_type_JavaLangString, (String)localObject1, "", "");
       return;

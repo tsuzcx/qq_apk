@@ -1,75 +1,80 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.Context;
+import android.opengl.GLES20;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.util.GLUtil;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import java.io.File;
 
-class ajul
-  implements View.OnTouchListener
+public class ajul
+  extends VideoSprite
 {
-  ajul(ajuk paramajuk) {}
+  private int k = GLES20.glGetUniformLocation(this.h, "v_isShowCover");
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ajul(TroopSignVideoView paramTroopSignVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
   {
-    paramView = this.a.a.e.keySet().iterator();
-    while (paramView.hasNext())
-    {
-      paramMotionEvent = (String)paramView.next();
-      Object localObject = (FrameLayout)this.a.a.e.get(paramMotionEvent);
-      localObject = ((ajva)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetSeekBar;
-      TextView localTextView1 = ((ajva)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_c_of_type_AndroidWidgetTextView;
-      TextView localTextView2 = ((ajva)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_b_of_type_AndroidWidgetTextView;
-      ImageView localImageView1 = ((ajva)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetImageView;
-      ImageView localImageView2 = ((ajva)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_b_of_type_AndroidWidgetImageView;
-      TextView localTextView3 = ((ajva)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetTextView;
-      ImageView localImageView3 = ((ajva)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_c_of_type_AndroidWidgetImageView;
-      if (QLog.isColorLevel()) {
-        QLog.d("HealthBusinessPlugin", 2, "videoplayer section clicked");
-      }
-      if (((SeekBar)localObject).getVisibility() == 4)
-      {
-        ((SeekBar)localObject).setVisibility(0);
-        localTextView1.setVisibility(0);
-        localTextView2.setVisibility(0);
-        localImageView3.setVisibility(0);
-        if (((TVK_IMediaPlayer)this.a.a.d.get(paramMotionEvent)).isPlaying()) {}
-        for (int i = 2130844885;; i = 2130845166)
-        {
-          localImageView1.setImageResource(i);
-          localImageView1.setVisibility(0);
-          this.a.a.jdField_f_of_type_Boolean = true;
-          localImageView2.setVisibility(4);
-          localTextView3.setVisibility(4);
-          this.a.a.c.removeCallbacksAndMessages(null);
-          paramMotionEvent = new ajum(this, (SeekBar)localObject, localTextView1, localTextView2, localImageView3, localImageView1, localImageView2, localTextView3);
-          this.a.a.c.postDelayed(paramMotionEvent, 3000L);
-          break;
-        }
-      }
-      ((SeekBar)localObject).setVisibility(4);
-      localTextView1.setVisibility(4);
-      localTextView2.setVisibility(4);
-      localImageView3.setVisibility(4);
-      localImageView1.setVisibility(4);
-      this.a.a.jdField_f_of_type_Boolean = false;
-      localImageView2.setVisibility(0);
-      localTextView3.setVisibility(0);
+    super(paramSpriteGLView, paramContext, paramBoolean);
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    if (TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView) == 0) {
+      TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView, paramInt2);
     }
-    return false;
+    super.a(paramInt1, TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView));
+  }
+  
+  public String b()
+  {
+    return GLUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShaderVideoForTroopSign.glsl");
+  }
+  
+  protected void b(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_e_of_type_JavaNioFloatBuffer == null) {
+      return;
+    }
+    a(paramInt1, paramInt2);
+    GLES20.glEnableVertexAttribArray(this.jdField_e_of_type_Int);
+    GLES20.glVertexAttribPointer(this.jdField_e_of_type_Int, 2, 5126, false, 0, this.jdField_e_of_type_JavaNioFloatBuffer);
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glUniform1i(this.jdField_a_of_type_Int, 0);
+    GLES20.glEnableVertexAttribArray(this.jdField_c_of_type_Int);
+    GLES20.glVertexAttribPointer(this.jdField_c_of_type_Int, 4, 5126, false, 0, this.jdField_c_of_type_JavaNioFloatBuffer);
+    if (this.jdField_f_of_type_Boolean)
+    {
+      GLES20.glUniform1i(this.g, 1);
+      GLES20.glEnableVertexAttribArray(this.jdField_d_of_type_Int);
+      GLES20.glVertexAttribPointer(this.jdField_d_of_type_Int, 4, 5126, false, 0, this.jdField_d_of_type_JavaNioFloatBuffer);
+      paramInt2 = this.k;
+      if (!TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView)) {
+        break label205;
+      }
+    }
+    label205:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      GLES20.glUniform1i(paramInt2, paramInt1);
+      GLES20.glUniformMatrix4fv(this.jdField_f_of_type_Int, 1, false, this.jdField_f_of_type_ArrayOfFloat, 0);
+      GLES20.glDrawElements(4, jdField_b_of_type_ArrayOfShort.length, 5123, this.jdField_b_of_type_JavaNioShortBuffer);
+      GLES20.glDisableVertexAttribArray(this.jdField_e_of_type_Int);
+      GLES20.glDisableVertexAttribArray(this.jdField_c_of_type_Int);
+      GLES20.glDisableVertexAttribArray(this.jdField_d_of_type_Int);
+      return;
+      GLES20.glUniform1i(this.g, 0);
+      break;
+    }
+  }
+  
+  protected void i()
+  {
+    super.i();
+    this.k = GLES20.glGetUniformLocation(this.h, "v_isShowCover");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajul
  * JD-Core Version:    0.7.0.1
  */

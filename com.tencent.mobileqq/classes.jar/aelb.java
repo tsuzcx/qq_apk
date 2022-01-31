@@ -1,22 +1,57 @@
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.musicpendant.MusicPendantListener;
+import com.tencent.mobileqq.musicpendant.MusicPendantManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
-public final class aelb
-  implements TVK_ICacheMgr.IPreloadCallback
+public class aelb
+  implements Runnable
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
-  }
+  public aelb(MusicPendantManager paramMusicPendantManager) {}
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
+  public void run()
   {
-    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
+    Card localCard = null;
+    for (;;)
+    {
+      try
+      {
+        Object localObject2 = this.a.b();
+        localObject1 = this.a.a();
+        if (localObject1 != null)
+        {
+          localObject1 = (FriendsManager)((QQAppInterface)localObject1).getManager(50);
+          if (localObject1 != null) {
+            localCard = ((FriendsManager)localObject1).a((String)localObject2);
+          }
+          localObject1 = MusicPendantManager.a().iterator();
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (MusicPendantListener)((WeakReference)((Iterator)localObject1).next()).get();
+            if (localObject2 == null) {
+              continue;
+            }
+            ((MusicPendantListener)localObject2).a(localCard);
+            continue;
+          }
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("MusicPendantManager", 1, "setMusicPendantSongList().run() exception", localException);
+      }
+      Object localObject1 = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelb
  * JD-Core Version:    0.7.0.1
  */

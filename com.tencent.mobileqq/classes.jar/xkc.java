@@ -1,48 +1,36 @@
-import android.media.MediaPlayer;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView.OnTrimVDPlayCompelteListener;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.recent.HotChatCenterItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.lang.ref.WeakReference;
 
 public class xkc
-  implements FixedSizeVideoView.OnTrimVDPlayCompelteListener
+  implements Runnable
 {
-  public xkc(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public xkc(HotChatCenterItemBuilder paramHotChatCenterItemBuilder, int paramInt) {}
   
-  public void a(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    if (EditLocalVideoActivity.a(this.a))
+    ??? = ((QQAppInterface)HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get()).getEntityManagerFactory().createEntityManager();
+    HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder, ApolloGameUtil.a((EntityManager)???));
+    if ((HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder) != null) && (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).size() > 0))
     {
-      QLog.e("EditLocalVideoActivity", 2, "onComplete() ---------------1   mStartTime=" + EditLocalVideoActivity.a(this.a) + " mEndTime=" + EditLocalVideoActivity.b(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-      EditLocalVideoActivity.a(this.a).pause();
-      paramMediaPlayer.seekTo(EditLocalVideoActivity.e(this.a));
-      EditLocalVideoActivity.c(this.a, false);
-      EditLocalVideoActivity.b(this.a).setVisibility(0);
-      return;
+      SparseArray localSparseArray = (SparseArray)HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get(this.jdField_a_of_type_Int);
+      if ((localSparseArray != null) && (localSparseArray.size() > 0))
+      {
+        if ((HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder) != null) && (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get() != null)) {
+          ApolloGameUtil.a((EntityManager)???, ApolloUtil.a(localSparseArray));
+        }
+        synchronized (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder))
+        {
+          localSparseArray.remove(1000);
+          return;
+        }
+      }
     }
-    QLog.e("EditLocalVideoActivity", 2, "onComplete() ---------------2   mStartTime=" + EditLocalVideoActivity.a(this.a) + " mEndTime=" + EditLocalVideoActivity.b(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-    paramMediaPlayer.seekTo(EditLocalVideoActivity.a(this.a));
-    EditLocalVideoActivity.a(this.a).start();
-  }
-  
-  public void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2)
-  {
-    if (EditLocalVideoActivity.a(this.a))
-    {
-      QLog.e("EditLocalVideoActivity", 2, "onArriveTrimEnd() ---------------3   mStartTime=" + EditLocalVideoActivity.a(this.a) + " mEndTime=" + EditLocalVideoActivity.b(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-      paramFixedSizeVideoView.pause();
-      paramFixedSizeVideoView.seekTo(EditLocalVideoActivity.e(this.a));
-      EditLocalVideoActivity.c(this.a, false);
-      EditLocalVideoActivity.b(this.a).setVisibility(0);
-    }
-    while (EditLocalVideoActivity.b(this.a) == 0) {
-      return;
-    }
-    QLog.e("EditLocalVideoActivity", 2, "onArriveTrimEnd() ---------------4   mStartTime=" + EditLocalVideoActivity.a(this.a) + " mEndTime=" + EditLocalVideoActivity.b(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
-    paramFixedSizeVideoView.setPlayDuration(EditLocalVideoActivity.a(this.a), EditLocalVideoActivity.b(this.a) - EditLocalVideoActivity.a(this.a));
-    paramFixedSizeVideoView.seekTo(EditLocalVideoActivity.a(this.a));
-    paramFixedSizeVideoView.start();
   }
 }
 

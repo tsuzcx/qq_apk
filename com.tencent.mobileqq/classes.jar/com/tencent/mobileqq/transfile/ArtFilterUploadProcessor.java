@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aiaj;
-import aiak;
+import aiom;
+import aion;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.SparseArray;
@@ -157,7 +157,7 @@ public class ArtFilterUploadProcessor
     }
     if ((!paramBoolean) && (this.jdField_l_of_type_JavaLangString != null))
     {
-      am_();
+      ao_();
       return;
     }
     a();
@@ -289,7 +289,7 @@ public class ArtFilterUploadProcessor
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.jdField_b_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterFilterUploadInfo.jdField_a_of_type_JavaLangString))
       {
         this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.jdField_a_of_type_JavaLangString = paramRichProtoReq.jdField_c_of_type_JavaLangString;
-        al_();
+        an_();
       }
     }
     for (;;)
@@ -307,7 +307,7 @@ public class ArtFilterUploadProcessor
     this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
   }
   
-  public final void al_()
+  public final void an_()
   {
     if (this.jdField_a_of_type_Boolean) {}
     int k;
@@ -317,7 +317,7 @@ public class ArtFilterUploadProcessor
       if (QLog.isColorLevel()) {
         QLog.d("ArtFilterUploadProcessor", 2, "ArtFilterUploadProcessor.sendFile()");
       }
-      aiaj localaiaj = new aiaj(this);
+      aiom localaiom = new aiom(this);
       byte[] arrayOfByte = HexUtil.a(this.jdField_l_of_type_JavaLangString);
       Object localObject = new CSDataHighwayHead.FilterExtendinfo();
       ((CSDataHighwayHead.FilterExtendinfo)localObject).uint32_filter_flag.set(1);
@@ -325,7 +325,7 @@ public class ArtFilterUploadProcessor
       localC2CCommonExtendinfo.uint32_info_id.set(1);
       localC2CCommonExtendinfo.msg_filter_extendinfo.set((MessageMicro)localObject);
       localObject = localC2CCommonExtendinfo.toByteArray();
-      this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 1, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterFilterUploadInfo.jdField_a_of_type_JavaLangString, (int)this.r, arrayOfByte, this.jdField_a_of_type_ArrayOfByte, localaiaj, (byte[])localObject);
+      this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 1, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterFilterUploadInfo.jdField_a_of_type_JavaLangString, (int)this.r, arrayOfByte, this.jdField_a_of_type_ArrayOfByte, localaiom, (byte[])localObject);
       k = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction);
       this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_a_of_type_Int = 2;
@@ -336,12 +336,12 @@ public class ArtFilterUploadProcessor
     a(k, "submit transaction error");
   }
   
-  public void am_()
+  public void ao_()
   {
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    Object localObject1 = new aiak(this);
+    Object localObject1 = new aion(this);
     Object localObject2 = new CSDataHighwayHead.FilterExtendinfo();
     ((CSDataHighwayHead.FilterExtendinfo)localObject2).uint32_filter_flag.set(2);
     CSDataHighwayHead.C2CCommonExtendinfo localC2CCommonExtendinfo = new CSDataHighwayHead.C2CCommonExtendinfo();
@@ -392,7 +392,7 @@ public class ArtFilterUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ArtFilterUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

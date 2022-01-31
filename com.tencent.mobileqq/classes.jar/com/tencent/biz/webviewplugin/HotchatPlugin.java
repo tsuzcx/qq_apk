@@ -14,23 +14,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ozo;
-import ozp;
+import pbi;
+import pbj;
 
 public class HotchatPlugin
   extends WebViewPlugin
 {
   protected static final int[] a;
-  protected static final int[] b = { 2130841275, 2130841271 };
+  protected static final int[] b = { 2130841312, 2130841308 };
   TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-  private Client.onRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new ozo(this);
+  private Client.onRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new pbi(this);
   protected PopupMenuDialog a;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131429682, 2131429683 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131429688, 2131429689 };
   }
   
   public HotchatPlugin()
@@ -54,15 +54,15 @@ public class HotchatPlugin
       i += 1;
     }
     if (this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog == null) {
-      this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.a(localActivity, localArrayList, new ozp(this, paramString));
+      this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.a(localActivity, localArrayList, new pbj(this, paramString));
     }
     if (this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.isShowing())
     {
       this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.dismiss();
       return;
     }
-    paramString = localActivity.findViewById(2131363226);
-    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.showAsDropDown(paramString, paramString.getWidth() - localActivity.getResources().getDimensionPixelSize(2131558947) - localActivity.getResources().getDimensionPixelSize(2131558951), localActivity.getResources().getDimensionPixelSize(2131558952));
+    paramString = localActivity.findViewById(2131363244);
+    this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.showAsDropDown(paramString, paramString.getWidth() - localActivity.getResources().getDimensionPixelSize(2131558949) - localActivity.getResources().getDimensionPixelSize(2131558953), localActivity.getResources().getDimensionPixelSize(2131558954));
   }
   
   /* Error */
@@ -151,12 +151,12 @@ public class HotchatPlugin
     //   176: goto +2259 -> 2435
     //   179: aload_3
     //   180: checkcast 206	com/tencent/mobileqq/fragment/HotChatFragment
-    //   183: new 217	ozj
+    //   183: new 217	pbd
     //   186: dup
     //   187: aload_0
     //   188: aload_1
     //   189: aload_2
-    //   190: invokespecial 220	ozj:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;Landroid/app/Activity;)V
+    //   190: invokespecial 220	pbd:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;Landroid/app/Activity;)V
     //   193: invokevirtual 215	com/tencent/mobileqq/fragment/HotChatFragment:a	(Landroid/view/View$OnClickListener;)V
     //   196: goto +2239 -> 2435
     //   199: astore_1
@@ -232,11 +232,11 @@ public class HotchatPlugin
     //   346: invokevirtual 178	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   349: ifeq +23 -> 372
     //   352: invokestatic 259	com/tencent/mobileqq/app/ThreadManager:getFileThreadHandler	()Lmqq/os/MqqHandler;
-    //   355: new 261	ozk
+    //   355: new 261	pbe
     //   358: dup
     //   359: aload_0
     //   360: aload 5
-    //   362: invokespecial 264	ozk:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;[Ljava/lang/String;)V
+    //   362: invokespecial 264	pbe:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;[Ljava/lang/String;)V
     //   365: invokevirtual 270	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   368: pop
     //   369: goto -84 -> 285
@@ -846,12 +846,12 @@ public class HotchatPlugin
     //   1542: goto +895 -> 2437
     //   1545: aload_3
     //   1546: checkcast 206	com/tencent/mobileqq/fragment/HotChatFragment
-    //   1549: new 450	ozl
+    //   1549: new 450	pbf
     //   1552: dup
     //   1553: aload_0
     //   1554: aload_1
     //   1555: aload_2
-    //   1556: invokespecial 451	ozl:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;Landroid/app/Activity;)V
+    //   1556: invokespecial 451	pbf:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;Landroid/app/Activity;)V
     //   1559: invokevirtual 215	com/tencent/mobileqq/fragment/HotChatFragment:a	(Landroid/view/View$OnClickListener;)V
     //   1562: goto +875 -> 2437
     //   1565: astore_1
@@ -977,11 +977,11 @@ public class HotchatPlugin
     //   1820: getfield 33	com/tencent/biz/webviewplugin/HotchatPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   1823: aload_2
     //   1824: aload_3
-    //   1825: new 490	ozm
+    //   1825: new 490	pbg
     //   1828: dup
     //   1829: aload_0
     //   1830: aload_1
-    //   1831: invokespecial 491	ozm:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;)V
+    //   1831: invokespecial 491	pbg:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;)V
     //   1834: invokevirtual 494	com/tencent/biz/troop/TroopMemberApiClient:d	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   1837: goto -1552 -> 285
     //   1840: astore_1
@@ -1045,10 +1045,10 @@ public class HotchatPlugin
     //   1957: aload_0
     //   1958: getfield 33	com/tencent/biz/webviewplugin/HotchatPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   1961: aload_1
-    //   1962: new 502	ozn
+    //   1962: new 502	pbh
     //   1965: dup
     //   1966: aload_0
-    //   1967: invokespecial 503	ozn:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;)V
+    //   1967: invokespecial 503	pbh:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;)V
     //   1970: invokevirtual 506	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/util/ArrayList;Lcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   1973: goto -1688 -> 285
     //   1976: astore_1

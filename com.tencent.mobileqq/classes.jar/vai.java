@@ -1,30 +1,25 @@
 import android.support.v4.app.FragmentActivity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.view.View;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.HiBoomItemBuilder;
+import com.tencent.mobileqq.hiboom.HiBoomTextView.OnDoubleClick;
+import com.tencent.qphone.base.util.QLog;
 
-class vai
-  extends GestureDetector.SimpleOnGestureListener
+public class vai
+  implements HiBoomTextView.OnDoubleClick
 {
-  vai(vah paramvah) {}
+  public vai(HiBoomItemBuilder paramHiBoomItemBuilder) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    if (QQStoryCommentItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder)) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
     }
     com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_AndroidContentContext);
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
+    if (HiBoomItemBuilder.a(this.a)) {
+      return;
     }
+    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
   }
 }
 

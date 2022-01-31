@@ -1,34 +1,46 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView.IFace2faceContext;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class acbp
-  implements Animation.AnimationListener
+class acbp
+  implements BusinessObserver
 {
-  public acbp(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
+  acbp(acbg paramacbg, Bundle paramBundle1, MessengerService paramMessengerService, Bundle paramBundle2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.setVisibility(4);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.b();
-    this.a.c.setBackgroundDrawable(null);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceDetailBaseView$IFace2faceContext.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationEnd " + hashCode());
+    if ((paramBoolean) && (paramObject != null)) {}
+    try
+    {
+      if ((paramObject instanceof List))
+      {
+        paramObject = (List)paramObject;
+        if (!paramObject.isEmpty())
+        {
+          this.jdField_a_of_type_AndroidOsBundle.putString("diyText", ((BubbleDiyEntity)paramObject.get(0)).diyText);
+          this.jdField_a_of_type_AndroidOsBundle.putString("isDiy", "1");
+          this.jdField_a_of_type_AndroidOsBundle.putString("tl", ((BubbleDiyEntity)paramObject.get(0)).topLeftId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("tr", ((BubbleDiyEntity)paramObject.get(0)).topRightId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("bl", ((BubbleDiyEntity)paramObject.get(0)).bottomLeftId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
+        }
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+        return;
+        this.jdField_a_of_type_AndroidOsBundle.putString("diyText", "");
+      }
+      return;
     }
-    Face2FaceDetailBaseView.a(this.a, true);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationStart " + hashCode());
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.emoji.web.MessengerService", 2, paramObject.getMessage());
+      }
     }
   }
 }

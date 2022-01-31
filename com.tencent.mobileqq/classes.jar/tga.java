@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
-public class tga
-  implements Runnable
+class tga
+  extends ContactBindObserver
 {
-  public tga(QQLSActivity paramQQLSActivity) {}
+  tga(tfz paramtfz) {}
   
-  public void run()
+  protected void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("moveTaskToBack", 2, "moveTaskToBackInSubThread");
-    }
-    try
+    super.b(paramBoolean);
+    PhoneUnityChangeActivity.a(this.a.a.a);
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
     {
-      this.a.moveTaskToBack(true);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("moveTaskToBack", 2, "moveTaskToBack e=" + localThrowable.toString());
+      this.a.a.a.setResult(4001);
+      this.a.a.a.finish();
     }
   }
 }

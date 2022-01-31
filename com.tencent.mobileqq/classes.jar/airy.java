@@ -1,55 +1,101 @@
-import android.graphics.Bitmap;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class airy
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+class airy
+  implements UpCallBack
 {
-  private airy(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
+  airy(airx paramairx, boolean paramBoolean) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    BaseScaleAndMoveBitmapView.a(this.a, false);
-    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
-    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
-    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
+    return null;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
+    boolean bool;
+    int i;
+    if (QLog.isColorLevel())
     {
-      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
-      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
-        break label323;
-      }
-      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
-    }
-    for (;;)
-    {
-      SLog.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
-      this.a.invalidate();
-      return true;
-      if (this.a.b(0.0F) >= 0.0F)
+      localObject = new StringBuilder().append(" onSend result is null ? ");
+      if (paramSendResult == null)
       {
-        this.a.b = 0.0F;
-        break;
-      }
-      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
-        break;
-      }
-      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      break;
-      label323:
-      if (this.a.a(0.0F) >= 0.0F) {
-        this.a.jdField_a_of_type_Float = 0.0F;
-      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
-        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+        bool = true;
+        localObject = ((StringBuilder)localObject).append(bool).append(" result is: ");
+        if (paramSendResult != null) {
+          break label71;
+        }
+        i = -99;
+        label46:
+        QLog.i("NearbyPeoplePhotoUploadProcessor", 2, i);
       }
     }
+    else
+    {
+      if (paramSendResult != null) {
+        break label79;
+      }
+    }
+    label71:
+    label79:
+    do
+    {
+      return;
+      bool = false;
+      break;
+      i = paramSendResult.a;
+      break label46;
+      if (paramSendResult.a == 0)
+      {
+        bool = true;
+        localObject = (CardHandler)this.jdField_a_of_type_Airx.a.a(2);
+        if (localObject == null) {
+          break label149;
+        }
+        ((CardHandler)localObject).a(bool, this.jdField_a_of_type_Airx.a.getCurrentAccountUin(), 0);
+      }
+      for (;;)
+      {
+        if (bool) {
+          break label156;
+        }
+        ProfileCardUtil.a("TransferRequest.onSend", paramSendResult.b, paramSendResult.toString());
+        return;
+        bool = false;
+        break;
+        ProfileCardUtil.a(null);
+      }
+      if (((Integer)NearbySPUtil.a(this.jdField_a_of_type_Airx.a.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
+        NearbySPUtil.a(this.jdField_a_of_type_Airx.a.getAccount(), "qq_avatar_type", Integer.valueOf(1));
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        ThreadManager.getUIHandler().post(new airz(this));
+      }
+    } while (SharedPreUtils.az(this.jdField_a_of_type_Airx.a.getApp(), this.jdField_a_of_type_Airx.a.getCurrentAccountUin()) == 2);
+    label149:
+    label156:
+    paramSendResult = (CardHandler)this.jdField_a_of_type_Airx.a.a(2);
+    Object localObject = new ArrayList();
+    ((ArrayList)localObject).add(Integer.valueOf(42104));
+    paramSendResult.a(this.jdField_a_of_type_Airx.a.getCurrentAccountUin(), this.jdField_a_of_type_Airx.a.getCurrentAccountUin(), 0, (ArrayList)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     airy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
-public class xvc
-  implements View.OnClickListener
+class xvc
+  implements Runnable
 {
-  public xvc(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  xvc(xuw paramxuw) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.c) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.app, "dc00899", "Grp_create_new", "", "suc_create", "clk_cancel", 0, 0, "", "" + this.a.h, "", "");
-      this.a.finish();
-      return;
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
-    }
+    RMVideoStateMgr.a().b(0, "麦克风参数初始化失败", false);
   }
 }
 

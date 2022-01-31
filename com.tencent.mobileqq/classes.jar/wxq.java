@@ -1,24 +1,24 @@
-import Wallet.WalletSkinRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
-import mqq.observer.BusinessObserver;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.nearby.now.send.capturepart.QQNowVideoFlowCallback;
+import java.util.ArrayList;
 
-public class wxq
-  implements BusinessObserver
+class wxq
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public wxq(QWalletSkinHandler paramQWalletSkinHandler, QWalletSkinHandler.SkinListener paramSkinListener) {}
+  wxq(wxk paramwxk, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    paramBundle = (WalletSkinRsp)paramBundle.getSerializable("rsp");
-    if ((paramBoolean) && (paramBundle != null) && (paramBundle.status == 0))
+    this.jdField_a_of_type_Wxk.a.d();
+    if (QQNowVideoFlowCallback.a(this.jdField_a_of_type_Wxk.a, paramLocalMediaInfo))
     {
-      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, 0);
-      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
-      return;
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a(this.jdField_a_of_type_Wxk.a, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
     }
-    QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
   }
 }
 

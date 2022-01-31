@@ -1,49 +1,26 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.OutputStream;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
 public class aclo
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aclo(FileManagerRSWorker paramFileManagerRSWorker) {}
+  public aclo(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.b == 0)
+    if ((Face2FaceFriendBubbleView.a(this.a) == 2) || (Face2FaceFriendBubbleView.a(this.a) == 3) || (Face2FaceFriendBubbleView.a(this.a) == 4))
     {
-      if (this.a.f != null)
-      {
-        this.a.a(this.a.f, 0L);
-        return;
-      }
-      this.a.b();
+      Face2FaceFriendBubbleView.a(this.a).startAnimation(Face2FaceFriendBubbleView.a(this.a));
       return;
     }
-    if (this.a.f.equalsIgnoreCase(""))
-    {
-      this.a.a();
-      return;
-    }
-    try
-    {
-      if (this.a.jdField_a_of_type_JavaIoOutputStream != null) {
-        this.a.jdField_a_of_type_JavaIoOutputStream.flush();
-      }
-      this.a.jdField_a_of_type_Long = FileManagerUtil.a(this.a.d);
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.a.c + "]retry request Httpmsg,rd[" + String.valueOf(this.a.jdField_a_of_type_Long) + "]");
-      FileManagerRSWorker.a(this.a, this.a.jdField_a_of_type_Long, this.a.h);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        QLog.e("FileManagerRSWorker<FileAssistant>", 1, localIOException.getMessage());
-      }
-    }
+    Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

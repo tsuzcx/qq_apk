@@ -1,32 +1,23 @@
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class abtm
-  extends abto
+  implements AccountManagerCallback
 {
-  private float jdField_a_of_type_Float;
-  private float b;
+  public abtm(ContactSyncManager paramContactSyncManager) {}
   
-  public void a()
+  public void run(AccountManagerFuture paramAccountManagerFuture)
   {
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f;
-    this.b = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.j;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.g != 4)
-    {
-      d();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f = ((int)(this.b * paramFloat2 + (1.0F - paramFloat2) * this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a.y = (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.k - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abtm
  * JD-Core Version:    0.7.0.1
  */

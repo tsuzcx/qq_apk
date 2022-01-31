@@ -7,7 +7,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import oiw;
+import okg;
 
 public class NormalFacePackage
   extends FacePackage
@@ -53,7 +53,7 @@ public class NormalFacePackage
       this.jdField_a_of_type_JavaUtilList.clear();
       if (((File)localObject1).isDirectory())
       {
-        localObject1 = ((File)localObject1).listFiles(new oiw(this));
+        localObject1 = ((File)localObject1).listFiles(new okg(this));
         if (localObject1 != null)
         {
           int j = localObject1.length;

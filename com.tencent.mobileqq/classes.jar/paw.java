@@ -1,53 +1,13 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-import org.json.JSONObject;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
-public class paw
-  extends Handler
+class paw
+  implements Runnable
 {
-  public paw(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  paw(pav parampav, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    Object localObject;
-    int i;
-    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
-    {
-      paramMessage = (Bundle)paramMessage.obj;
-      localObject = paramMessage.getString("url");
-      if ((paramMessage.getInt("req_state", 0) == 2) && (!TextUtils.isEmpty(QzoneWebViewOfflinePlugin.a(this.a))) && (!TextUtils.isEmpty(QzoneWebViewOfflinePlugin.b(this.a))) && (QzoneWebViewOfflinePlugin.b(this.a).equals(localObject)))
-      {
-        i = paramMessage.getInt("result_code");
-        localObject = new JSONObject();
-        if (i != 0) {
-          break label158;
-        }
-      }
-    }
-    try
-    {
-      ((JSONObject)localObject).put("code", 0);
-      for (;;)
-      {
-        label113:
-        this.a.callJs(QzoneWebViewOfflinePlugin.a(this.a) + "(" + ((JSONObject)localObject).toString() + ");");
-        return;
-        label158:
-        ((JSONObject)localObject).put("code", i);
-        ((JSONObject)localObject).put("msg", paramMessage.getString("error_message"));
-      }
-    }
-    catch (Exception paramMessage)
-    {
-      break label113;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

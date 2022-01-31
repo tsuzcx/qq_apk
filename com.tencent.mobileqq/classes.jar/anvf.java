@@ -1,32 +1,21 @@
-import dov.com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import dov.com.tencent.mobileqq.richmedia.capture.data.TemplateGroupItem;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 
 public class anvf
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public anvf(CapturePtvTemplateManager paramCapturePtvTemplateManager) {}
+  public anvf(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (TemplateGroupItem)localIterator.next();
-      if (((TemplateGroupItem)localObject).a != null)
-      {
-        localObject = ((TemplateGroupItem)localObject).a.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
-          if (localPtvTemplateInfo != null) {
-            localPtvTemplateInfo.usable = this.a.a(localPtvTemplateInfo);
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "showSyncStoryGuide ->onDismiss-------");
     }
+    SharedPreUtils.b(this.a.a.a());
   }
 }
 

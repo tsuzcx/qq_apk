@@ -1,21 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.qphone.base.util.QLog;
 
 public class sun
   extends FriendListObserver
 {
-  public sun(Leba paramLeba) {}
+  public sun(GroupManagerActivity paramGroupManagerActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    while ((QZoneManagerImp)this.a.a.getManager(9) == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
     }
-    Leba.c(this.a);
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onRenameGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onResortGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(true);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 

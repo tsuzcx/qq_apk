@@ -1,19 +1,37 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.network.request.GetPoiFacesRequest;
+import com.tencent.biz.qqstory.network.response.GetPoiFacesResponse;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQVideoMaterial;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
 public class ois
-  implements Runnable
+  implements CmdTaskManger.CommandCallback
 {
-  public ois(PersonalityOperator paramPersonalityOperator, QQVideoMaterial paramQQVideoMaterial) {}
+  public ois(DoodleEmojiManager paramDoodleEmojiManager, WeakReference paramWeakReference) {}
   
-  public void run()
+  public void a(@NonNull GetPoiFacesRequest paramGetPoiFacesRequest, @Nullable GetPoiFacesResponse paramGetPoiFacesResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    long l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getId());
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.b, 1.0D);
-    long l2 = System.currentTimeMillis();
-    SLog.b("PersonalityOperator", "setVideoFilter " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getId() + " t:" + (l2 - l1));
+    if (paramGetPoiFacesResponse == null)
+    {
+      paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramGetPoiFacesRequest != null) {
+        paramGetPoiFacesRequest.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
+      return;
+    }
+    paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramGetPoiFacesRequest != null)
+    {
+      paramGetPoiFacesRequest.a(0, paramGetPoiFacesResponse.a);
+      return;
+    }
+    SLog.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 
 public class aidj
-  implements ITransCallbackForReport
+  implements Runnable
 {
-  public aidj(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  public aidj(RedBagVideoManager paramRedBagVideoManager) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void run()
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    RedBagVideoManager.f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aidj
  * JD-Core Version:    0.7.0.1
  */

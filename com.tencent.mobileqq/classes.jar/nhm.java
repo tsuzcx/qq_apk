@@ -1,16 +1,14 @@
-import android.app.Dialog;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.newshare.model.Job;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor;
 
 public class nhm
   implements Runnable
 {
-  public nhm(VideoPlayModeBase paramVideoPlayModeBase) {}
+  public nhm(JobExecutor paramJobExecutor, Job paramJob) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
+    JobExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a);
   }
 }
 

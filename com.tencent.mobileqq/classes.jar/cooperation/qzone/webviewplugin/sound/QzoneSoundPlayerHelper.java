@@ -124,13 +124,13 @@ public class QzoneSoundPlayerHelper
     //   16: invokespecial 23	android/media/MediaPlayer:<init>	()V
     //   19: putfield 13	cooperation/qzone/webviewplugin/sound/QzoneSoundPlayerHelper:a	Landroid/media/MediaPlayer;
     //   22: aconst_null
-    //   23: astore 6
+    //   23: astore 7
     //   25: aconst_null
     //   26: astore 5
     //   28: aconst_null
     //   29: astore 8
     //   31: aconst_null
-    //   32: astore 7
+    //   32: astore 6
     //   34: aload 8
     //   36: astore 4
     //   38: aload_0
@@ -224,7 +224,7 @@ public class QzoneSoundPlayerHelper
     //   194: istore_2
     //   195: goto -109 -> 86
     //   198: astore 5
-    //   200: aload 7
+    //   200: aload 6
     //   202: astore_1
     //   203: aload_1
     //   204: astore 4
@@ -244,7 +244,7 @@ public class QzoneSoundPlayerHelper
     //   228: istore_2
     //   229: goto -143 -> 86
     //   232: astore 5
-    //   234: aload 6
+    //   234: aload 7
     //   236: astore_1
     //   237: aload_1
     //   238: astore 4
@@ -329,8 +329,8 @@ public class QzoneSoundPlayerHelper
     //   341	1	5	localIllegalArgumentException2	java.lang.IllegalArgumentException
     //   346	1	5	localIOException3	java.io.IOException
     //   351	1	5	localIllegalStateException2	java.lang.IllegalStateException
-    //   23	212	6	localObject4	Object
-    //   32	169	7	localObject5	Object
+    //   32	169	6	localObject4	Object
+    //   23	212	7	localObject5	Object
     //   29	77	8	localObject6	Object
     // Exception table:
     //   from	to	target	type

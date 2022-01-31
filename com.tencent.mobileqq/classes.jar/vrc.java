@@ -1,33 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.app.EnterpriseQQObserver;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import java.util.List;
 
 public class vrc
-  extends BroadcastReceiver
+  extends EnterpriseQQObserver
 {
-  public vrc(GameRoomChatPie paramGameRoomChatPie) {}
+  public vrc(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    paramIntent.getStringExtra("peerUin");
-    paramIntent.getIntExtra("sessionType", -1);
-    paramContext = paramIntent.getStringExtra("sessionId");
-    if (TextUtils.isEmpty(paramContext)) {}
-    while (!paramContext.startsWith("10-")) {
-      return;
+    if (paramBoolean)
+    {
+      this.a.b = EnterpriseQQManager.a(this.a.a).a(this.a.a, this.a.a());
+      this.a.b(this.a.b);
+      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
+        this.a.o(false);
+      }
     }
-    this.a.a.c();
-    this.a.j.setEnabled(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onBind enter room setSoundDisable");
-    }
-    this.a.a.a(false);
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

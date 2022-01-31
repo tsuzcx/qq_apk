@@ -1,37 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.ReportR5Builder;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
+import cooperation.readinjoy.ReadInJoyHelper;
 
-class lsj
-  implements Runnable
+public class lsj
+  implements View.OnClickListener
 {
-  lsj(lsi paramlsi) {}
+  public lsj(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localArrayList.add(((IReadInJoyModel)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
-      i += 1;
-    }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("headerUninterestConfirm,");
-      if (this.a.b != null) {
-        break label139;
-      }
-    }
-    label139:
-    for (String str = "null";; str = this.a.b.toString())
-    {
-      QLog.d("ReadInJoyHeaderPresenter", 2, str);
-      ReadInJoyHeaderPresenter.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter).a(this.a.jdField_a_of_type_Int, localArrayList, this.a.b, this.a.jdField_a_of_type_JavaLangObject);
-      return;
+    paramView = new ReadInJoyUtils.ReportR5Builder().g().a().d().a(ReadInJoyFooterPresenter.a(this.a).e()).e().f().c().a();
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, ReadInJoyHelper.a(), "", "", paramView, false);
+    if (ReadInJoyFooterPresenter.a(this.a) != null) {
+      ReadInJoyFooterPresenter.a(this.a).a();
     }
   }
 }

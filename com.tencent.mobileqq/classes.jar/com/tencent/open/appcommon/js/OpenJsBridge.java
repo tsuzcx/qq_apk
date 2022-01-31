@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.js;
 
-import akow;
+import alem;
 import android.net.Uri;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.jsbridge.JsBridge;
@@ -86,7 +86,7 @@ public class OpenJsBridge
       localUri = Uri.parse(paramString);
     } while ((localUri == null) || (localUri.getScheme() == null) || (!localUri.getScheme().equals("jsbridge")));
     LogUtility.b("Request", "canHandleBatchUrl AsyncInterface_start:" + paramString);
-    ThreadManager.executeOnSubThread(new akow(this, paramString, paramWebView));
+    ThreadManager.executeOnSubThread(new alem(this, paramString, paramWebView));
     return true;
   }
 }

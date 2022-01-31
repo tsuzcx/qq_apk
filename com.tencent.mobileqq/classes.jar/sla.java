@@ -1,37 +1,23 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.open.agent.report.ReportCenter;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class sla
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public sla(ForwardRecentActivity paramForwardRecentActivity) {}
+  public sla(DiscussionMemberActivity paramDiscussionMemberActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = new Bundle();
-    paramView.putString("uin", String.valueOf(AppConstants.y));
-    paramView.putInt("uintype", -1);
-    paramView.putBoolean("forward_report_confirm", true);
-    paramView.putString("forward_report_confirm_action_name", "0X8005A13");
-    paramView.putString("forward_report_confirm_reverse2", "0");
-    this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(ForwardAbility.ForwardAbilityType.f.intValue(), paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
-    if (this.a.jdField_a_of_type_Boolean) {
-      ReportCenter.a().a(this.a.app.getAccount(), "", this.a.b, "1000", "34", "0", false);
-    }
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     sla
  * JD-Core Version:    0.7.0.1
  */

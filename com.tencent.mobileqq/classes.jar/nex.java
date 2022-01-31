@@ -1,16 +1,24 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader.OnPreloaderListener;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class nex
-  extends UploadImageJob
+  implements MsgTabStoryVideoPreloader.OnPreloaderListener
 {
-  public nex(ShareModeBase paramShareModeBase, ShareQZoneData paramShareQZoneData) {}
+  private long jdField_a_of_type_Long;
   
-  public boolean b()
+  public nex(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate) {}
+  
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Long != 0L) {
+      StoryReportor.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2fef" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b12" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03dc" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d71" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+    <com.qzone.widget.AvatarClickImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2faa" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d19" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d077d" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d077d" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="12.0sp" android:textColor="#ff727272" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2fab" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2faa" android:layout_centerHorizontal="true" />
 </RelativeLayout>

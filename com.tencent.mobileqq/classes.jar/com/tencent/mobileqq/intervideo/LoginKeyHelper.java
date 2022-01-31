@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo;
 
-import adji;
-import adjj;
+import adth;
+import adti;
 import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
@@ -76,7 +76,7 @@ public class LoginKeyHelper
       }
       return;
     }
-    adjj localadjj = new adjj(this, paramGetLoginKeyListener, paramString1);
+    adti localadti = new adti(this, paramGetLoginKeyListener, paramString1);
     FastAuthorize.AuthorizeRequest localAuthorizeRequest = new FastAuthorize.AuthorizeRequest();
     localAuthorizeRequest.uin.set(Long.parseLong(paramAppInterface.getCurrentAccountUin()));
     localAuthorizeRequest.client_id.set(Long.parseLong(paramString2));
@@ -106,7 +106,7 @@ public class LoginKeyHelper
       try
       {
         paramContext.putExtra("data", localAuthorizeRequest.toByteArray());
-        paramContext.setObserver(localadjj);
+        paramContext.setObserver(localadti);
         paramAppInterface.startServlet(paramContext);
         return;
         if (!(paramAppInterface instanceof BrowserAppInterface)) {
@@ -184,7 +184,7 @@ public class LoginKeyHelper
     }
     for (;;)
     {
-      this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.SetListener(new adji(this, paramString2));
+      this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.SetListener(new adth(this, paramString2));
       this.jdField_a_of_type_JavaUtilList.add(paramGetLoginKeyListener);
       int i = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.GetA1WithA1(paramString1, 16L, 16L, paramString3.getBytes(), 1L, Long.valueOf(paramString4).longValue(), 1L, "5.2".getBytes(), paramString5, new WUserSigInfo(), new WFastLoginInfo());
       if (i != -1001)
@@ -246,7 +246,7 @@ public class LoginKeyHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.LoginKeyHelper
  * JD-Core Version:    0.7.0.1
  */

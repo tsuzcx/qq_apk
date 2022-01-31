@@ -1,36 +1,122 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoFactory;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.LinkedList;
 import org.json.JSONObject;
 
-class ajhy
-  implements FrameSprite.OnFrameEndListener
+public class ajhy
+  extends Handler
 {
-  ajhy(ajhs paramajhs, int paramInt1, String paramString, JSONObject paramJSONObject1, int paramInt2, JSONObject paramJSONObject2) {}
+  WeakReference a;
   
-  public void a()
+  public ajhy(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds / 1000L > this.jdField_a_of_type_Int)
+    super(paramLooper);
+    this.a = new WeakReference(paramSubmitHomeWorkFragment);
+  }
+  
+  void a(SubmitHomeWorkFragment paramSubmitHomeWorkFragment)
+  {
+    if ((SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment) == null) || (SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment) == null)) {}
+    do
     {
-      String str = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_OrgJsonJSONObject.optString("videoPath", "2.mp4");
-      this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(str, new ajhz(this));
-      this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_b_of_type_Int - 300);
+      do
+      {
+        return;
+        if (SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).isEmpty())
+        {
+          SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).setVisibility(8);
+          SubmitHomeWorkFragment.b(paramSubmitHomeWorkFragment).a();
+          SubmitHomeWorkFragment.b(paramSubmitHomeWorkFragment).setHint(paramSubmitHomeWorkFragment.getActivity().getString(2131430649));
+          SubmitHomeWorkFragment.b(paramSubmitHomeWorkFragment).getAdapter().notifyDataSetChanged();
+          return;
+        }
+      } while (SubmitHomeWorkFragment.b(paramSubmitHomeWorkFragment));
+      SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).b();
+      Iterator localIterator = SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).iterator();
+      while (localIterator.hasNext())
+      {
+        JSONObject localJSONObject = (JSONObject)localIterator.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("SubmitHomeWorkFragment", 2, "insert special item: " + localJSONObject.optString("type"));
+        }
+        SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).a(EditItemInfoFactory.a(localJSONObject));
+      }
+      SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment, true);
+    } while (SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment) != null);
+    SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment, SubmitHomeWorkFragment.a(paramSubmitHomeWorkFragment).a());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    SubmitHomeWorkFragment localSubmitHomeWorkFragment = (SubmitHomeWorkFragment)this.a.get();
+    if ((localSubmitHomeWorkFragment == null) || (!localSubmitHomeWorkFragment.isAdded())) {
       return;
     }
-    this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
-    if (this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-      this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 3: 
+      SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment, true);
+      SubmitHomeWorkFragment.a(localSubmitHomeWorkFragment).b(false);
+      return;
+    case 513: 
+      a(localSubmitHomeWorkFragment);
+      return;
+    case 101: 
+      SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment, false);
+      SubmitHomeWorkFragment.d(localSubmitHomeWorkFragment);
+      return;
     }
-    this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.jdField_a_of_type_Ajhs.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_Int, true);
+    int i = (int)SubmitHomeWorkFragment.a(localSubmitHomeWorkFragment).a();
+    if (i < 1000)
+    {
+      QQToast.a(localSubmitHomeWorkFragment.getActivity(), "录音不能小于1秒,录制失败", 0).a();
+      SubmitHomeWorkFragment.a(localSubmitHomeWorkFragment).b();
+      return;
+    }
+    if (!NetworkUtil.d(localSubmitHomeWorkFragment.getActivity()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SubmitHomeWorkFragment", 2, "no network toast");
+      }
+      QQToast.a(localSubmitHomeWorkFragment.getActivity(), 2131430298, 0).a();
+      SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment, false);
+      SubmitHomeWorkFragment.d(localSubmitHomeWorkFragment);
+      return;
+    }
+    paramMessage = paramMessage.obj.toString();
+    File localFile = new File(paramMessage);
+    if (localFile.exists()) {}
+    for (long l = localFile.length();; l = 0L)
+    {
+      paramMessage = new AudioInfo(paramMessage, null, i / 1000, (int)l, SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment));
+      SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment).a(paramMessage);
+      SubmitHomeWorkFragment.b(localSubmitHomeWorkFragment, false);
+      SubmitHomeWorkFragment.d(localSubmitHomeWorkFragment);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhy
  * JD-Core Version:    0.7.0.1
  */

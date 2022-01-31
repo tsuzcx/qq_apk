@@ -1,24 +1,33 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.avatar.dynamicavatar.VasFaceManager;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class thx
-  implements Runnable
 {
-  public thx(QQSettingMe paramQQSettingMe, String paramString) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public void run()
+  public thx(PublicAccountInfo paramPublicAccountInfo)
   {
-    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFaceDrawable, 1, this.jdField_a_of_type_JavaLangString, 100, true, true, 6);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.b.setVisibility(VasFaceManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.A();
-    if (QLog.isDevelopLevel()) {
-      QLog.i("QQSettingRedesign", 4, "updateFace, " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

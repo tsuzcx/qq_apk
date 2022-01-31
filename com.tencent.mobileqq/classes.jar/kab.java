@@ -1,46 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectOperateManager;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.utils.UITools;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.RedbagToolbar;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.GuideTip2.OnGuideTipListener;
 
 public class kab
-  extends AnimatorListenerAdapter
+  implements GuideTip2.OnGuideTipListener
 {
-  public kab(QavPanel paramQavPanel, String paramString, int paramInt1, int paramInt2) {}
+  public kab(RedbagToolbar paramRedbagToolbar, AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_d_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_d_of_type_AndroidWidgetImageView.setVisibility(4);
-    }
-    QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel);
-    if ((this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if (paramBoolean) {}
+    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
     {
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
-      float f = UITools.a(this.jdField_a_of_type_ComTencentAvUiQavPanel.getContext(), -10.0F);
-      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView, "translationY", new float[] { 0.0F, f });
-      paramAnimator.setDuration(500L);
-      paramAnimator.start();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("QavPanel", 2, "showEffectOperateAnimation onAnimationEnd");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_d_of_type_Boolean = true;
-    paramAnimator = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvUiQavPanel.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
-    if (paramAnimator != null) {
-      paramAnimator.c(true);
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a(false);
+        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
+      }
+      return;
     }
   }
 }

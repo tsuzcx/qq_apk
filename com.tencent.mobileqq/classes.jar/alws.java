@@ -1,42 +1,27 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qappcenter.remote.IServiceHandler.Stub;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
+import com.tencent.qqprotect.qsec.CSProcessorImpl;
+import com.tencent.qqprotect.qsec.ICSProcessor.ICSProcessorListener;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class alws
-  implements ServiceConnection
+  implements ICSProcessor.ICSProcessorListener
 {
-  public alws(RemoteServiceProxy paramRemoteServiceProxy) {}
+  protected int a;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public alws(CSProcessorImpl paramCSProcessorImpl, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.a(this.a));
-    }
-    this.a.a = IServiceHandler.Stub.a(paramIBinder);
-    if (RemoteServiceProxy.a(this.a) != null)
-    {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.a = RemoteServiceProxy.a(this.a);
-      this.a.b(paramComponentName);
-    }
-    this.a.a();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.a(this.a));
+    if (this.jdField_a_of_type_Int != 0) {
+      QSecFramework.a(7, this.jdField_a_of_type_Int, paramInt, 0, paramArrayOfByte1, paramArrayOfByte2, null, null);
     }
-    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alws
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,23 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
+import com.tencent.biz.qqstory.playmode.util.NewDiscoverBannerDataProvider;
+import java.util.ArrayList;
 
 public class nmr
-  implements ViewTreeObserver.OnPreDrawListener
+  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public nmr(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
+  public nmr(NewDiscoverBannerDataProvider paramNewDiscoverBannerDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo) {}
   
-  public boolean onPreDraw()
+  public void a()
   {
-    this.a.h();
-    this.a.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilNewDiscoverBannerDataProvider.a(false, null);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilNewDiscoverBannerDataProvider.a(true, paramArrayList);
   }
 }
 

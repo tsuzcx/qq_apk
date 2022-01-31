@@ -1,18 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.OnVideoPlayListener;
 
-public class kqn
+class kqn
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
+  kqn(kqm paramkqm) {}
   
-  public kqn(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public void run()
+  {
+    if (this.a.a.a != null) {
+      this.a.a.a.h();
+    }
+  }
 }
 
 

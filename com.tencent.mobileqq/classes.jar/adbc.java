@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.forward.ForwardQFavBatchOption;
-import com.tencent.mobileqq.utils.ForwardSendPicUtil;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
-class adbc
+public class adbc
   implements Runnable
 {
-  adbc(adbb paramadbb, String paramString) {}
+  public adbc(FileBrowserActivity paramFileBrowserActivity, String paramString) {}
   
   public void run()
   {
-    ForwardSendPicUtil.a(this.jdField_a_of_type_Adbb.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adbb.b, this.jdField_a_of_type_Adbb.jdField_a_of_type_Int, this.jdField_a_of_type_Adbb.c, false, this.jdField_a_of_type_Adbb.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption.jdField_a_of_type_AndroidAppActivity);
+    int i = FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity).getMeasuredWidth();
+    String str2 = (String)TextUtils.ellipsize(this.jdField_a_of_type_JavaLangString, FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity).getPaint(), i - 15, TextUtils.TruncateAt.END);
+    String str1 = str2;
+    if (str2.length() > 2)
+    {
+      str1 = str2;
+      if (str2.substring(str2.length() - 1).equals(FileBrowserActivity.a())) {
+        str1 = str2.substring(0, str2.length() - 1) + FileBrowserActivity.b();
+      }
+    }
+    FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity).setText(str1);
   }
 }
 

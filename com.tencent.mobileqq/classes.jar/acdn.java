@@ -1,17 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import com.tencent.mobileqq.emoticon.SogouEmojiTaskController;
+import com.tencent.qphone.base.util.QLog;
 
 public class acdn
   implements DialogInterface.OnDismissListener
 {
-  public acdn(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public acdn(SogouEmojiTaskController paramSogouEmojiTaskController) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
+    }
+    this.a.a(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
+    }
   }
 }
 

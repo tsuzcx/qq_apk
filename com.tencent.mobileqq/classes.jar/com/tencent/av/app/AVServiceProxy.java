@@ -7,7 +7,7 @@ import com.tencent.av.AVLog;
 import com.tencent.av.service.AVServiceForQQ;
 import com.tencent.av.service.IAVServiceForQQ;
 import com.tencent.qphone.base.util.QLog;
-import jeq;
+import jeb;
 import mqq.app.MobileQQ;
 
 public class AVServiceProxy
@@ -15,7 +15,7 @@ public class AVServiceProxy
   private static String jdField_a_of_type_JavaLangString = "AVServiceProxy";
   protected VideoAppInterface a;
   public IAVServiceForQQ a;
-  protected jeq a;
+  protected jeb a;
   private boolean jdField_a_of_type_Boolean = true;
   
   public AVServiceProxy(VideoAppInterface paramVideoAppInterface)
@@ -27,8 +27,8 @@ public class AVServiceProxy
   {
     Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), AVServiceForQQ.class);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().startService(localIntent);
-    this.jdField_a_of_type_Jeq = new jeq(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().bindService(localIntent, this.jdField_a_of_type_Jeq, 1);
+    this.jdField_a_of_type_Jeb = new jeb(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().bindService(localIntent, this.jdField_a_of_type_Jeb, 1);
   }
   
   public void a(boolean paramBoolean, Notification paramNotification)
@@ -62,7 +62,7 @@ public class AVServiceProxy
     if (this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unbindService(this.jdField_a_of_type_Jeq);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unbindService(this.jdField_a_of_type_Jeb);
       return;
     }
     catch (Exception localException)

@@ -1,67 +1,38 @@
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.TouchDelegate;
+import com.tencent.mobileqq.search.searchengine.ContactSearchEngine;
+import com.tencent.mobileqq.search.searchengine.CreateDiscussionSearchEngine;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
+import java.util.List;
 
 public class ahve
-  implements BaseBubbleBuilder.TouchDelegate
+  implements Runnable
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public boolean a;
-  public TextView b;
+  public ahve(ContactSearchEngine paramContactSearchEngine, SearchRequest paramSearchRequest) {}
   
-  private void a(boolean paramBoolean)
+  public void run()
   {
-    Drawable localDrawable = this.a.getBackground();
-    if (localDrawable != null) {
-      if (!paramBoolean) {
-        break label28;
+    List localList1 = ContactSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineContactSearchEngine, this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
+    ISearchListener localISearchListener = ContactSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineContactSearchEngine);
+    if ((localISearchListener != null) && (localList1 != null))
+    {
+      if (ContactSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineContactSearchEngine) == null) {
+        localISearchListener.a(localList1, 1);
       }
     }
-    label28:
-    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
-    {
-      localDrawable.setColorFilter(localColorFilter);
-      localDrawable.invalidateSelf();
+    else {
       return;
     }
-  }
-  
-  public void a(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-    case 1: 
-    case 3: 
-      do
-      {
-        return;
-        paramView = this.a.getBackground();
-      } while (paramView == null);
-      paramView.setColorFilter(null);
-      paramView.invalidateSelf();
-      return;
+    localISearchListener.a(localList1);
+    List localList2 = ContactSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineContactSearchEngine).a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
+    if ((localList2 != null) && (!localList2.isEmpty())) {
+      localList1.addAll(localList2);
     }
-    a(false);
-  }
-  
-  public void a(View paramView, boolean paramBoolean)
-  {
-    a(paramBoolean);
+    localISearchListener.a(localList1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahve
  * JD-Core Version:    0.7.0.1
  */

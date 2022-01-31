@@ -1,13 +1,14 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.widget.ImageView;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
 
-class anrg
+public class anrg
   implements Runnable
 {
-  anrg(anqz paramanqz) {}
+  public anrg(EditLocalVideoPlayer paramEditLocalVideoPlayer) {}
   
   public void run()
   {
-    RMVideoStateMgr.a().b(0, "麦克风参数初始化失败", false);
+    this.a.a.setVisibility(8);
   }
 }
 

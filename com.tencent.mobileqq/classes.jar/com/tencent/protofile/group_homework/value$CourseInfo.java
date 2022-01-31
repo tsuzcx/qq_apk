@@ -15,7 +15,7 @@ public final class value$CourseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.protofile.group_homework.value.CourseInfo
  * JD-Core Version:    0.7.0.1
  */

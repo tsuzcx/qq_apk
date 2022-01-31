@@ -1,71 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.JourneyTextItem;
 
 public class anoc
-  implements Animator.AnimatorListener
+  implements annx
 {
-  public anoc(HintDrawable paramHintDrawable) {}
+  public anoc(JourneyTextItem paramJourneyTextItem) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    if (!HintDrawable.a(this.a)) {
-      return;
+    String str = paramString;
+    if (paramInt == 0) {
+      str = TroopFileUtils.b(paramString);
     }
-    if (!HintDrawable.b(this.a))
-    {
-      HintDrawable.a(this.a, false);
-      if (HintDrawable.b(this.a) == 1)
-      {
-        HintDrawable.a(this.a, 3);
-        return;
-      }
-      HintDrawable.a(this.a, 0);
-      HintDrawable.a(this.a, "");
-      return;
-    }
-    if (HintDrawable.b(this.a) == 1)
-    {
-      HintDrawable.a(this.a, 2);
-      HintDrawable.a(this.a, HintDrawable.b(this.a), 1000);
-      return;
-    }
-    HintDrawable.a(this.a, "");
-    HintDrawable.a(this.a, 0);
-    HintDrawable.a(this.a, false);
+    return str;
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!HintDrawable.a(this.a)) {
-      return;
-    }
-    if (!HintDrawable.b(this.a))
-    {
-      HintDrawable.a(this.a, false);
-      if (HintDrawable.b(this.a) == 1)
-      {
-        HintDrawable.a(this.a, 3);
-        return;
-      }
-      HintDrawable.a(this.a, 0);
-      HintDrawable.a(this.a, "");
-      return;
-    }
-    if (HintDrawable.b(this.a) == 1)
-    {
-      HintDrawable.a(this.a, 2);
-      HintDrawable.a(this.a, HintDrawable.b(this.a), 1000);
-      return;
-    }
-    HintDrawable.a(this.a, "");
-    HintDrawable.a(this.a, 0);
-    HintDrawable.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

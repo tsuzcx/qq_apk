@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter.LebaGridItemViewHolder;
+import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
 
-public class aeay
-  implements View.OnClickListener
+class aeay
+  implements Runnable
 {
-  public aeay(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  aeay(aeax paramaeax, Bitmap paramBitmap) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!NetworkUtils.isNetworkAvailable(this.a))
-    {
-      QQToast.a(this.a, 1, 2131434794, 1).a();
-      return;
+    if (this.jdField_a_of_type_Aeax.jdField_a_of_type_ComTencentMobileqqLebaModelPluginactionsPluginAction != null) {
+      this.jdField_a_of_type_Aeax.jdField_a_of_type_ComTencentMobileqqLebaModelPluginactionsPluginAction.a(this.jdField_a_of_type_Aeax.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridMenuAdapter$LebaGridItemViewHolder.a, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    this.a.d();
-    this.a.a("invite_page", "clk_exit");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeay
  * JD-Core Version:    0.7.0.1
  */

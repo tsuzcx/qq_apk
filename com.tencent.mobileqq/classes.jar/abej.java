@@ -1,44 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.scanfu.view.CameraDialog;
 
 public class abej
-  extends DownloadListener
+  implements View.OnClickListener
 {
-  public abej(BubbleManager paramBubbleManager, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public abej(ShopScanActivity paramShopScanActivity, CameraDialog paramCameraDialog) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public void onClick(View paramView)
   {
-    String str = paramDownloadTask.a().getString("name");
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleManager", 2, "bubbleDownloadListener onCancel pkgName = " + str);
-    }
-    this.a.a("Bubble_download_cancel", paramDownloadTask.b(), str, 0L);
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    long l = paramDownloadTask.h - paramDownloadTask.g;
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleManager", 2, "bubbleDownloadListener onDone downloadTime = " + l);
-    }
-    this.a.a("Bubble_download_succ", paramDownloadTask.b(), "pkgName", l);
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    String str = paramDownloadTask.a().getString("name");
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleManager", 2, "bubbleDownloadListener onStart pkgName = " + str);
-    }
-    this.a.a("Bubble_download", paramDownloadTask.b(), str, 0L);
-    super.onStart(paramDownloadTask);
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqScanfuViewCameraDialog.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.finish();
   }
 }
 

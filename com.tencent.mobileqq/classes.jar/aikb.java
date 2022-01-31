@@ -1,25 +1,41 @@
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.PrefixSelectedListener;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 public class aikb
-  implements TribeTitlePrefixPanelView.PrefixSelectedListener
+  extends URLDrawableDecodeHandler
 {
-  private aikb(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
   
-  public void a(TribeTitlePrefixPanelView.TitlePrefixItem paramTitlePrefixItem)
+  public aikb(StructMsgItemVideo paramStructMsgItemVideo, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem = paramTitlePrefixItem;
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeTribePostTitlePrefixPanelController.b();
-    this.a.e(true);
-    ReportController.b(null, "dc00899", "Grp_tribe", "", "pub_page", "choose_prefix", 0, 0, this.a.r, "", "", "");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return null;
+    }
+    int j = this.c;
+    int k = paramBitmap.getWidth();
+    if (paramBitmap.getHeight() != 0) {}
+    for (int i = paramBitmap.getHeight();; i = this.c)
+    {
+      i = k * j / i;
+      return ImageUtil.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikb
  * JD-Core Version:    0.7.0.1
  */

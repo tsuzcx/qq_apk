@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.view.CommentsAdapter;
+import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenter;
+import java.util.List;
 
-public final class aewx
-  implements ImageFeedsUploader.UploadListener
+public class aewx
+  implements View.OnClickListener
 {
-  public void a(PicFeedUploadInfo paramPicFeedUploadInfo) {}
+  public aewx(CommentsAdapter paramCommentsAdapter) {}
   
-  public void a(PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new aewy(this, paramPicFeedUploadInfo, paramUploadResult));
+    CommentsAdapter.a(this.a).a.clear();
+    CommentsAdapter.a(this.a).a();
   }
-  
-  public void b(PicFeedUploadInfo paramPicFeedUploadInfo) {}
 }
 
 

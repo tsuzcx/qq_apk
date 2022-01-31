@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.adapter.ForwardRecentListAdapter;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class yeb
+public class yeb
   implements Runnable
 {
-  yeb(yea paramyea, ArrayList paramArrayList) {}
+  public yeb(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
   public void run()
   {
-    ForwardRecentListAdapter.a(this.jdField_a_of_type_Yea.a, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Yea.a.notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "mStartHidingRunnable run");
+    }
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yeb
  * JD-Core Version:    0.7.0.1
  */

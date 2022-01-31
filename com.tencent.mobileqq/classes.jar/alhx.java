@@ -1,26 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class alhx
-  extends Handler
+  implements Runnable
 {
-  public alhx(QSecFramework paramQSecFramework, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public alhx(MyAppApi paramMyAppApi, String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((paramMessage.what == 1) && (paramMessage.arg1 != 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSecFramework", 2, "handle native msg for cookie:" + paramMessage.arg1);
-      }
-      QSecFramework.a(6, paramMessage.arg1, 0, 0, null, null, null, null);
-    }
+    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

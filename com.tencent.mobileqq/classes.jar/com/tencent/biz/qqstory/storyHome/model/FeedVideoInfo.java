@@ -16,6 +16,17 @@ public class FeedVideoInfo
   public int mVideoPullType;
   public int mVideoSeq;
   
+  public FeedVideoInfo() {}
+  
+  public FeedVideoInfo(String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean)
+  {
+    this.feedId = paramString1;
+    this.mVideoSeq = paramInt1;
+    this.mVideoPullType = paramInt2;
+    this.mVideoNextCookie = paramString2;
+    this.mIsVideoEnd = paramBoolean;
+  }
+  
   public void copy(Object paramObject)
   {
     paramObject = (FeedVideoInfo)paramObject;

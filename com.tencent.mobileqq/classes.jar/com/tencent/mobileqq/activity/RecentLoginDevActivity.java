@@ -24,19 +24,19 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import java.util.ArrayList;
 import java.util.List;
-import tlc;
-import tld;
-import tle;
-import tlf;
-import tlg;
-import tlh;
+import toc;
+import tod;
+import toe;
+import tof;
+import tog;
+import toh;
 
 public class RecentLoginDevActivity
   extends IphoneTitleBarActivity
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new tlc(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new toc(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tlf(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tof(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
   private String jdField_a_of_type_JavaLangString = "";
@@ -44,21 +44,21 @@ public class RecentLoginDevActivity
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new tlg(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new tog(this));
   }
   
   private void a(String paramString1, ArrayList paramArrayList, String paramString2, int paramInt)
   {
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = getResources().getString(2131436490);
+      str = getResources().getString(2131436507);
     }
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-    paramString1 = getString(2131436488, new Object[] { str });
+    paramString1 = getString(2131436505, new Object[] { str });
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramString1);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131436489), 3);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131432998);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new tle(this, paramString2, paramArrayList, paramInt));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131436506), 3);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new toe(this, paramString2, paramArrayList, paramInt));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
   }
   
@@ -87,22 +87,22 @@ public class RecentLoginDevActivity
       }
     }
     label76:
-    View localView = getLayoutInflater().inflate(2130969061, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131362731);
-    ((ImageView)localView.findViewById(2131362749)).setVisibility(0);
+    View localView = getLayoutInflater().inflate(2130969060, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131362749);
+    ((ImageView)localView.findViewById(2131362767)).setVisibility(0);
     label130:
     Object localObject;
     TextView localTextView;
     if (j == 1)
     {
-      localRelativeLayout.setBackgroundResource(2130838619);
-      ((TextView)localView.findViewById(2131364899)).setVisibility(8);
-      localObject = (TextView)localView.findViewById(2131362736);
-      localTextView = (TextView)localView.findViewById(2131364095);
+      localRelativeLayout.setBackgroundResource(2130838623);
+      ((TextView)localView.findViewById(2131364921)).setVisibility(8);
+      localObject = (TextView)localView.findViewById(2131362754);
+      localTextView = (TextView)localView.findViewById(2131364119);
       if (!TextUtils.isEmpty(localSvcDevLoginInfo.strDeviceName)) {
         break label386;
       }
-      ((TextView)localObject).setText(2131436490);
+      ((TextView)localObject).setText(2131436507);
     }
     for (;;)
     {
@@ -125,20 +125,20 @@ public class RecentLoginDevActivity
       }
       localRelativeLayout.setClickable(true);
       localRelativeLayout.setTag(localSvcDevLoginInfo);
-      localRelativeLayout.setOnClickListener(new tld(this, localRelativeLayout, i));
+      localRelativeLayout.setOnClickListener(new tod(this, localRelativeLayout, i));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       break;
       if (i == 0)
       {
-        localRelativeLayout.setBackgroundResource(2130838631);
+        localRelativeLayout.setBackgroundResource(2130838635);
         break label130;
       }
       if (i == j - 1)
       {
-        localRelativeLayout.setBackgroundResource(2130838626);
+        localRelativeLayout.setBackgroundResource(2130838630);
         break label130;
       }
-      localRelativeLayout.setBackgroundResource(2130838629);
+      localRelativeLayout.setBackgroundResource(2130838633);
       break label130;
       label386:
       ((TextView)localObject).setText(localSvcDevLoginInfo.strDeviceName);
@@ -147,15 +147,15 @@ public class RecentLoginDevActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new tlh(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new toh(this));
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130970306);
-    setTitle(2131436493);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369986));
+    super.setContentView(2130970322);
+    setTitle(2131436510);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370063));
     try
     {
       this.jdField_a_of_type_JavaLangString = getPackageManager().getPackageInfo(getPackageName(), 0).packageName;

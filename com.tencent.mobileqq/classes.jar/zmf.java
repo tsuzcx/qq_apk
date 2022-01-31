@@ -1,153 +1,21 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.utils.DataReport;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.RoamInfoListWrapper;
+import java.util.ArrayList;
 
-public class zmf
-  extends MqqHandler
+public final class zmf
+  implements Parcelable.Creator
 {
-  WeakReference a;
-  
-  public zmf(Looper paramLooper, VideoBroadcastReceiver paramVideoBroadcastReceiver)
+  public RoamInfoListWrapper a(Parcel paramParcel)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramVideoBroadcastReceiver);
+    RoamInfoListWrapper localRoamInfoListWrapper = new RoamInfoListWrapper();
+    localRoamInfoListWrapper.a = paramParcel.readArrayList(ArrayList.class.getClassLoader());
+    return localRoamInfoListWrapper;
   }
   
-  public void handleMessage(Message paramMessage)
+  public RoamInfoListWrapper[] a(int paramInt)
   {
-    if (this.a == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      Object localObject1;
-      Object localObject2;
-      int i;
-      Object localObject4;
-      String str;
-      Object localObject3;
-      int j;
-      do
-      {
-        boolean bool2;
-        boolean bool3;
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              localObject1 = (VideoBroadcastReceiver)this.a.get();
-            } while ((localObject1 == null) || (VideoBroadcastReceiver.a((VideoBroadcastReceiver)localObject1) == null));
-            localQQAppInterface = (QQAppInterface)VideoBroadcastReceiver.a((VideoBroadcastReceiver)localObject1).get();
-          } while (localQQAppInterface == null);
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 0: 
-            localObject2 = (Object[])paramMessage.obj;
-            i = ((Integer)localObject2[0]).intValue();
-            localObject4 = (String)localObject2[1];
-            localObject1 = (String)localObject2[2];
-            str = (String)localObject2[3];
-            paramMessage = (Context)localObject2[4];
-            localObject2 = (String)localObject2[5];
-            localObject3 = new SessionInfo();
-            ((SessionInfo)localObject3).jdField_a_of_type_Int = i;
-            ((SessionInfo)localObject3).d = ((String)localObject4);
-            if (i == 1006)
-            {
-              ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
-              localObject1 = ((PhoneContactManager)localQQAppInterface.getManager(10)).a();
-              if (localObject1 != null) {
-                ((SessionInfo)localObject3).e = (((RespondQueryQQBindingStat)localObject1).nationCode + ((RespondQueryQQBindingStat)localObject1).mobileNo);
-              }
-            }
-            for (;;)
-            {
-              ChatActivityFacade.b(localQQAppInterface, paramMessage, (SessionInfo)localObject3, (String)localObject2);
-              return;
-              if (i == 1000)
-              {
-                localObject4 = ((TroopManager)localQQAppInterface.getManager(51)).a((String)localObject1);
-                if (localObject4 == null)
-                {
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.e(VideoBroadcastReceiver.jdField_a_of_type_JavaLangString, 2, "findTroopInfo fail ,uin : " + (String)localObject1);
-                  return;
-                }
-                ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = str;
-                ((SessionInfo)localObject3).b = ((TroopInfo)localObject4).troopcode;
-                ((SessionInfo)localObject3).c = ((TroopInfo)localObject4).troopuin;
-                continue;
-              }
-              if (i == 1004)
-              {
-                ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = str;
-                ((SessionInfo)localObject3).b = ((String)localObject1);
-              }
-              else
-              {
-                ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = str;
-              }
-            }
-          case 1: 
-            paramMessage = (Object[])paramMessage.obj;
-            localObject1 = (QQCustomDialog)paramMessage[0];
-            i = ((Integer)paramMessage[1]).intValue();
-            bool2 = ((Boolean)paramMessage[2]).booleanValue();
-            str = (String)paramMessage[3];
-            localObject2 = (String)paramMessage[4];
-            bool3 = ((Boolean)paramMessage[5]).booleanValue();
-          }
-        } while (!((QQCustomDialog)localObject1).isShowing());
-        ((QQCustomDialog)localObject1).dismiss();
-        if (!bool2) {}
-        for (boolean bool1 = true;; bool1 = false)
-        {
-          VideoMsgTools.a(localQQAppInterface, i, 10, bool1, str, (String)localObject2, bool3, null, true, new Object[0]);
-          DataReport.c(localQQAppInterface.isBackground_Pause, bool2);
-          return;
-        }
-        localObject4 = (Object[])paramMessage.obj;
-        paramMessage = (QQCustomDialog)localObject4[0];
-        i = ((Integer)localObject4[1]).intValue();
-        j = ((Integer)localObject4[2]).intValue();
-        str = (String)localObject4[3];
-        localObject2 = (String)localObject4[4];
-        localObject3 = (String)localObject4[5];
-        localObject4 = (String)localObject4[6];
-      } while (!paramMessage.isShowing());
-      paramMessage.dismiss();
-      VideoMsgTools.a(localQQAppInterface, i, j, false, str, (String)localObject2, false, null, false, new Object[0]);
-      VideoBroadcastReceiver.a((VideoBroadcastReceiver)localObject1, 8, str, (String)localObject3, (String)localObject4);
-      DataReport.e(localQQAppInterface.isBackground_Pause);
-      return;
-      paramMessage = (QQCustomDialog)((Object[])(Object[])paramMessage.obj)[0];
-    } while (!paramMessage.isShowing());
-    paramMessage.dismiss();
-    return;
-    paramMessage = (Intent)((Object[])(Object[])paramMessage.obj)[0];
-    localQQAppInterface.getApp().startActivity(paramMessage);
+    return new RoamInfoListWrapper[paramInt];
   }
 }
 

@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import java.nio.ByteBuffer;
 
-class aikf
-  implements Runnable
+public class aikf
 {
-  aikf(aikd paramaikd) {}
-  
-  public void run()
-  {
-    this.a.a.a(1);
-  }
+  public long a;
+  public ByteBuffer a;
+  public long b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikf
  * JD-Core Version:    0.7.0.1
  */

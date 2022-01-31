@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewStub;
 import android.widget.TextView;
-import andu;
-import andv;
-import andw;
+import antz;
+import anua;
+import anub;
 import com.tencent.util.InputMethodUtil;
 import com.tencent.widget.XEditTextEx;
 import dov.com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
@@ -55,8 +55,8 @@ public class EditVideoLabel
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart == null)
     {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart = new QQStoryAddVideoLabelViewPart(this.jdField_a_of_type_AndroidViewViewStub.inflate());
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.a(new andv(this));
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.b(new andw(this));
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.a(new anua(this));
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.b(new anub(this));
     }
   }
   
@@ -68,9 +68,9 @@ public class EditVideoLabel
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364398));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364422));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new andu(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new antz(this));
   }
   
   public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)

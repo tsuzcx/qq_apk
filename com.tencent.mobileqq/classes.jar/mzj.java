@@ -1,99 +1,33 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView.MatrixTouchListener;
 
 public class mzj
-  implements FFmpegExecuteResponseCallback
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private final int jdField_a_of_type_Int;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private final PublicAccountImageView.MatrixTouchListener jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView$MatrixTouchListener;
   
-  public mzj(Object paramObject, AtomicInteger paramAtomicInteger, int paramInt)
+  public mzj(PublicAccountImageView paramPublicAccountImageView, PublicAccountImageView.MatrixTouchListener paramMatrixTouchListener)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView$MatrixTouchListener = paramMatrixTouchListener;
   }
   
-  public void a()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    SLog.c(VideoCompositeHelper.a, "onStart() mTaskType = " + this.jdField_a_of_type_Int);
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return false;
   }
   
-  public void a(String paramString)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    SLog.c(VideoCompositeHelper.a, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
+    return true;
   }
   
-  public void a(boolean paramBoolean)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int i = 0;
-    SLog.d(VideoCompositeHelper.a, "FFMPEGResponseCallback onFinish() mTaskType = " + this.jdField_a_of_type_Int + " isSuccess = " + paramBoolean);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      switch (this.jdField_a_of_type_Int)
-      {
-      case 1: 
-        SLog.e(VideoCompositeHelper.a, "Undefined task type mTaskType = " + this.jdField_a_of_type_Int);
-        throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
-      }
-    }
-    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-    if (paramBoolean)
-    {
-      label152:
-      localAtomicInteger.set(i);
-      for (;;)
-      {
-        label158:
-        return;
-        localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-        if (!paramBoolean) {
-          break;
-        }
-        i = j;
-        label174:
-        localAtomicInteger.set(i);
-      }
-      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (!paramBoolean) {
-        break label248;
-      }
-    }
-    label248:
-    for (i = k;; i = 945001)
-    {
-      localAtomicInteger.set(i);
-      break label158;
-      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (paramBoolean) {}
-      for (i = m;; i = 944004)
-      {
-        localAtomicInteger.set(i);
-        break;
-      }
-      break;
-      i = 943004;
-      break label152;
-      i = 942004;
-      break label174;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    SLog.d(VideoCompositeHelper.a, "FFMPEGResponseCallback onFailure() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    SLog.c(VideoCompositeHelper.a, "FFMPEGResponseCallback onProgress() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
+    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

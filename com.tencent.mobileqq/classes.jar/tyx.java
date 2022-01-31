@@ -1,53 +1,85 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
 
 public class tyx
-  implements Runnable
+  extends TroopObserver
 {
-  public tyx(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public tyx(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
   
-  public void run()
+  protected void a(oidb_0xaf4.RspBody paramRspBody, int paramInt)
   {
-    for (;;)
+    if (paramRspBody.group_id.has())
     {
-      Object localObject3;
-      try
-      {
-        localObject3 = this.a.app.getEntityManagerFactory().createEntityManager();
-        if (localObject3 == null) {
-          break label168;
-        }
-        Object localObject1 = ((EntityManager)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.a.b }, null, null, null, null);
-        ((EntityManager)localObject3).a();
-        if (localObject1 == null) {
-          break label165;
-        }
-        localObject3 = new ArrayList(((List)localObject1).size());
-        localObject1 = ((List)localObject1).iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          ((ArrayList)localObject3).add(((TroopMemberInfo)((Iterator)localObject1).next()).memberuin);
-          continue;
-        }
-        localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      paramRspBody = String.valueOf(paramRspBody.group_id.get());
+      if (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramRspBody)) {
+        break label119;
       }
-      finally {}
-      localMessage.what = 8;
-      localMessage.obj = new Object[] { Boolean.valueOf(this.a.jdField_a_of_type_Boolean), localObject3 };
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      label165:
-      return;
-      label168:
-      Message localMessage = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList troopUin not match. rsp uin=" + paramRspBody + ", current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      }
     }
+    label119:
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList group_id lost. current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      }
+      this.a.d();
+      paramRspBody = this.a.a(1101236949L);
+    } while (paramRspBody == null);
+    this.a.a(paramRspBody);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramBoolean);
+    }
+    if (!this.a.jdField_a_of_type_JavaLangString.equals(paramLong + "")) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.a.d();
+          } while (!paramBoolean);
+          localObject = (TroopManager)this.a.app.getManager(51);
+        } while (localObject == null);
+        localObject = ((TroopManager)localObject).a(this.a.jdField_a_of_type_JavaLangString);
+      } while (localObject == null);
+      paramLong = ((TroopInfo)localObject).troopCreditLevel;
+      if (QLog.isColorLevel()) {
+        QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramLong);
+      }
+    } while (paramLong == 2L);
+    if (paramLong == 1L)
+    {
+      localObject = DialogUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131434781)).setMessage("无法操作，此群已经完全停封");
+      ((QQCustomDialog)localObject).setPositiveButton(2131430693, new tyy(this));
+      ((QQCustomDialog)localObject).setNegativeButton("", null);
+      ((QQCustomDialog)localObject).setCancelable(false);
+      ((QQCustomDialog)localObject).show();
+      return;
+    }
+    Object localObject = DialogUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131434781)).setMessage("此群临时停封已经解除");
+    ((QQCustomDialog)localObject).setPositiveButton(2131430693, new tyz(this));
+    ((QQCustomDialog)localObject).setNegativeButton("", null);
+    ((QQCustomDialog)localObject).setCancelable(false);
+    ((QQCustomDialog)localObject).show();
   }
 }
 

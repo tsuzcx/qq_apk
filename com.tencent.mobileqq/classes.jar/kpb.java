@@ -1,13 +1,17 @@
 import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class kpb
+public class kpb
   implements Runnable
 {
-  kpb(kpa paramkpa) {}
+  public kpb(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
   public void run()
   {
-    EqqAccountDetailActivity.b(this.a.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "saveEqqDetailInSubThread");
+    }
+    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
   }
 }
 

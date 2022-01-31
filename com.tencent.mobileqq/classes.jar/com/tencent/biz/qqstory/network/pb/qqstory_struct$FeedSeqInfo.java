@@ -13,6 +13,7 @@ public final class qqstory_struct$FeedSeqInfo
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field date = PBField.initUInt32(0);
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBUInt32Field is_playable = PBField.initUInt32(0);
   public final PBUInt32Field seq = PBField.initUInt32(0);
   public final PBBytesField union_id = PBField.initBytes(ByteStringMicro.EMPTY);
   
@@ -20,7 +21,7 @@ public final class qqstory_struct$FeedSeqInfo
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "feed_id", "seq", "union_id", "date" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0) }, FeedSeqInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "feed_id", "seq", "union_id", "date", "is_playable" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0) }, FeedSeqInfo.class);
   }
 }
 

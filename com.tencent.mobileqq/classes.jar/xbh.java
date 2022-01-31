@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
 
-public final class xbh
+class xbh
   implements Runnable
 {
-  public xbh(MessageRecord paramMessageRecord, boolean paramBoolean) {}
+  xbh(xbg paramxbg) {}
   
   public void run()
   {
-    GoldMsgChatHelper.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
+    if (!this.a.a.e()) {
+      this.a.a.a(this.a.a.getResources().getString(2131432342));
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vashealth;
 
-import ajvt;
-import ajvu;
+import akka;
+import akkb;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -502,7 +502,7 @@ public class SSOHttpUtils
       {
         ((JSONObject)localObject1).put("oauth_consumer_key", 1002);
         ((JSONObject)localObject1).put("data", paramJSONArray);
-        ((JSONObject)localObject1).put("version", "7.6.0");
+        ((JSONObject)localObject1).put("version", "7.6.3");
         if (TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) {
           jdField_b_of_type_JavaLangString = URLEncoder.encode(Build.MODEL, "utf-8");
         }
@@ -525,7 +525,7 @@ public class SSOHttpUtils
         long l1 = paramJSONArray.getLong("search_lbs_timestamp", 0L);
         long l2 = System.currentTimeMillis();
         if (l2 - l1 > 3600000L) {
-          SosoInterface.a(new ajvt(0, true, true, 0L, false, false, "SSOHttpUtils", paramJSONArray, l2));
+          SosoInterface.a(new akka(0, true, true, 0L, false, false, "SSOHttpUtils", paramJSONArray, l2));
         }
         double d1 = paramJSONArray.getFloat("search_lbs_logitude", 0.0F);
         double d2 = paramJSONArray.getFloat("search_lbs_latitude", 0.0F);
@@ -557,7 +557,7 @@ public class SSOHttpUtils
       localObject2 = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("7.6.0");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("7.6.3");
       paramJSONArray = new WebSSOAgent.UniSsoServerReq();
       paramJSONArray.comm.set((MessageMicro)localObject2);
       paramJSONArray.reqdata.set(((JSONObject)localObject1).toString());
@@ -567,7 +567,7 @@ public class SSOHttpUtils
       localObject1 = new NewIntent(BaseApplicationImpl.getApplication().getApplicationContext(), WebSSOAgentServlet.class);
       ((NewIntent)localObject1).putExtra("extra_cmd", "yundong_report.steps");
       ((NewIntent)localObject1).putExtra("extra_data", paramJSONArray.toByteArray());
-      ((NewIntent)localObject1).setObserver(new ajvu());
+      ((NewIntent)localObject1).setObserver(new akkb());
       BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject1);
       return;
       i = 1;
@@ -666,7 +666,7 @@ public class SSOHttpUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.SSOHttpUtils
  * JD-Core Version:    0.7.0.1
  */

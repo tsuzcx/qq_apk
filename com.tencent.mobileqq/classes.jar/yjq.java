@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.apollo.ApolloGameArkHandler;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.qphone.base.util.QLog;
 
 public class yjq
   implements Runnable
 {
-  public yjq(ApolloTextureView paramApolloTextureView) {}
+  public yjq(ApolloGameArkHandler paramApolloGameArkHandler, MessageForApollo paramMessageForApollo, String paramString1, String paramString2) {}
   
   public void run()
   {
-    ApolloRender localApolloRender = this.a.getRender();
-    if ((localApolloRender != null) && (localApolloRender.getSavaWrapper() != null))
+    try
     {
-      double d = 0.0D;
-      if (localApolloRender.mIsFrameMode) {
-        d = localApolloRender.mDuration;
-      }
-      localApolloRender.getSavaWrapper().a(d);
+      ark.arkNotify(ApolloGameArkHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo), this.jdField_a_of_type_JavaLangString, this.b, "json");
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQ_CmGame", 1, localThrowable, new Object[0]);
     }
   }
 }

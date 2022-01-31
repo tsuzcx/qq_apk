@@ -1,18 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.List;
 
-public class thg
-  implements DialogInterface.OnDismissListener
+class thg
+  implements View.OnClickListener
 {
-  public thg(QQMapActivity paramQQMapActivity) {}
+  thg(thf paramthf) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
-      this.a.finish();
+    paramView = paramView.getTag();
+    if ((paramView instanceof the))
+    {
+      paramView = (the)paramView;
+      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
+      {
+        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
+        this.a.a.a(this.a.a.a.size());
+        this.a.notifyDataSetChanged();
+        thf.a(this.a, paramView);
+        ReportController.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+      }
     }
-    this.a.m = false;
   }
 }
 

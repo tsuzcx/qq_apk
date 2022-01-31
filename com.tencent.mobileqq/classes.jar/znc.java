@@ -1,17 +1,50 @@
-import java.io.File;
-import java.util.Comparator;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.ProtoServlet;
+import com.tencent.ims.signature.SignatureReport;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.StartAppCheckHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.app.NewIntent;
 
-class znc
-  implements Comparator
+public class znc
+  extends Handler
 {
-  znc(zmz paramzmz) {}
-  
-  public int a(File paramFile1, File paramFile2)
+  public znc(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 2: 
+    default: 
+      return;
+    case 1: 
+      Object localObject;
+      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
+      {
+        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), ProtoServlet.class);
+        ((NewIntent)localObject).putExtra("data", ((znh)paramMessage.obj).a.toByteArray());
+        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
+        ((NewIntent)localObject).setObserver(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.jdField_a_of_type_Znh = null;
+        return;
+        localObject = this.a.a("SecCheckSigSvc.UploadReq");
+        ((ToServiceMsg)localObject).putWupBuffer(((znh)paramMessage.obj).a.toByteArray());
+        this.a.b((ToServiceMsg)localObject);
+      }
     }
-    return 0;
+    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
   }
 }
 

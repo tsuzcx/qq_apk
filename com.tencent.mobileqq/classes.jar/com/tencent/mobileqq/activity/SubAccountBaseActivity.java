@@ -38,7 +38,7 @@ public class SubAccountBaseActivity
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435053);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435070);
     }
   }
   
@@ -50,8 +50,8 @@ public class SubAccountBaseActivity
     }
     d();
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131432400, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131432998, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131432417, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433015, (DialogInterface.OnClickListener)localObject);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
@@ -70,7 +70,7 @@ public class SubAccountBaseActivity
   {
     boolean bool = a();
     if (!bool) {
-      b(getString(2131432992));
+      b(getString(2131433009));
     }
     return bool;
   }

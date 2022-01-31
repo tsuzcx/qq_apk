@@ -1,44 +1,27 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-import mqq.app.MobileQQ;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity;
+import cooperation.qzone.util.QZLog;
 
 public class tob
-  extends RecyclerView.Adapter
+  extends BroadcastReceiver
 {
-  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
+  public tob(QzoneTiantaiTranslucentBrowserActivity paramQzoneTiantaiTranslucentBrowserActivity) {}
   
-  public tob(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public toc a(ViewGroup paramViewGroup, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new toc(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2130969350, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener);
-  }
-  
-  public void a(ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
-  }
-  
-  public void a(toc paramtoc, int paramInt)
-  {
-    paramtoc.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
+    try
     {
-      paramtoc.a.setSelected(true);
+      QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "收到广播，视频播放完毕");
+      QzoneTiantaiTranslucentBrowserActivity.a(this.a, true);
+      QzoneTiantaiTranslucentBrowserActivity.a(this.a);
       return;
     }
-    paramtoc.a.setSelected(false);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
+    catch (Exception paramContext)
+    {
+      QZLog.e("QzoneTiantaiTranslucentBrowserActivity", "onReceive error", paramContext);
+    }
   }
 }
 

@@ -1,29 +1,24 @@
 import android.app.Activity;
-import com.tencent.biz.common.util.Util;
-import com.tencent.mobileqq.jsp.DataApiPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class admb
-  implements Runnable
+public class admb
+  implements DialogInterface.OnClickListener
 {
-  admb(adma paramadma, Activity paramActivity, String paramString, int paramInt) {}
+  public admb(ForwardSendHongBaoOption paramForwardSendHongBaoOption, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
-    {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_Adma.a.callJs(this.jdField_a_of_type_Adma.c, new String[] { "null", Integer.toString(this.jdField_a_of_type_Int) });
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Adma.a.callJs(this.jdField_a_of_type_Adma.c, new String[] { Util.a(this.jdField_a_of_type_JavaLangString), Integer.toString(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.setResult(-1);
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     admb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.RMWLog;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.RMWProto;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.RMWService;
+import com.tencent.util.InputMethodUtil;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import java.util.ArrayList;
 
 public class annf
-  extends Handler
+  implements AbsListView.OnScrollListener
 {
-  public annf(RMWService paramRMWService) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void handleMessage(Message paramMessage)
+  public annf(FacePoiSearchUI paramFacePoiSearchUI) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    RMWLog.a("RMWService", "service.handle : " + RMWProto.a(paramMessage));
+    if (paramInt == 1) {
+      InputMethodUtil.b(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.h);
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a.size())) {
+      return;
+    }
+    FacePoiSearchUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
   }
 }
 

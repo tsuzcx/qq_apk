@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import adkb;
-import adkc;
-import adkm;
+import adua;
+import adub;
+import adul;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -20,7 +20,7 @@ public class HuayangDowanloadHelper
 {
   private static HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private long jdField_a_of_type_Long;
-  private adkm jdField_a_of_type_Adkm = new adkb(this);
+  private adul jdField_a_of_type_Adul = new adua(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private LoginKeyHelper jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper = new LoginKeyHelper();
   private HuayangPluginNewDownloader jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginNewDownloader;
@@ -62,7 +62,7 @@ public class HuayangDowanloadHelper
     if (QLog.isColorLevel()) {
       QLog.d("HuayangPluginNewDownloader", 2, "开始拉取AI票据：" + localIVPluginInfo.jdField_a_of_type_Int);
     }
-    paramInstalledPlugin = new adkc(this, this.d, localIVPluginInfo, paramInstalledPlugin, paramBoolean);
+    paramInstalledPlugin = new adub(this, this.d, localIVPluginInfo, paramInstalledPlugin, paramBoolean);
     if (localIVPluginInfo.jdField_a_of_type_Int == 1)
     {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -99,13 +99,13 @@ public class HuayangDowanloadHelper
     this.c = paramString4;
     this.e = paramString1;
     this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginNewDownloader.a(this.jdField_a_of_type_Adkm);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginNewDownloader.a(this.jdField_a_of_type_Adul);
     this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginNewDownloader.a(paramString1, paramString4, this.d, paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper
  * JD-Core Version:    0.7.0.1
  */

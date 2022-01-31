@@ -1,20 +1,28 @@
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.EffectSettingBtn;
+import com.tencent.av.ui.EffectSettingUi;
+import java.lang.ref.WeakReference;
 
 public class jty
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public jty(EffectSettingBtn paramEffectSettingBtn) {}
+  public jty(EffectSettingUi paramEffectSettingUi) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.a.b)
-    {
-      this.a.a.postDelayed(EffectSettingBtn.a(this.a), 1000L);
-      return;
+    this.a.setVisibility(0);
+    if (this.a.jdField_a_of_type_ComTencentAvUiEffectSettingBtn != null) {
+      this.a.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.b();
     }
-    EffectSettingBtn.a(this.a);
+    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    ((AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).m();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

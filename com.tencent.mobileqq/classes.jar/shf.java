@@ -1,27 +1,68 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
+import com.tencent.mobileqq.now.enter.ConversationNowController;
+import com.tencent.mobileqq.utils.StartupTracker;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class shf
-  implements WXShareHelper.WXShareListener
+class shf
+  implements Runnable
 {
-  public shf(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  shf(she paramshe, boolean paramBoolean) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    this.jdField_a_of_type_She.a.d(true);
+    if (this.jdField_a_of_type_She.a.i)
     {
-    case -2: 
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435286);
-      return;
+      Conversation.a(this.jdField_a_of_type_She.a, 800L);
+      Object localObject;
+      label102:
+      ConversationPullDownActiveBase localConversationPullDownActiveBase;
+      if (this.jdField_a_of_type_She.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
+      {
+        localObject = this.jdField_a_of_type_She.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          i = 0;
+          ((PullRefreshHeader)localObject).a(i);
+        }
+      }
+      else
+      {
+        if (this.jdField_a_of_type_She.a.jdField_a_of_type_JavaUtilArrayList == null) {
+          break label152;
+        }
+        localObject = this.jdField_a_of_type_She.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localConversationPullDownActiveBase = (ConversationPullDownActiveBase)((Iterator)localObject).next();
+        } while (localConversationPullDownActiveBase == null);
+        if (!this.jdField_a_of_type_Boolean) {
+          break label147;
+        }
+      }
+      label147:
+      for (int i = 0;; i = 2)
+      {
+        localConversationPullDownActiveBase.b(i);
+        break label102;
+        i = 2;
+        break;
+      }
+      label152:
+      if (Conversation.a(this.jdField_a_of_type_She.a) != null) {
+        Conversation.a(this.jdField_a_of_type_She.a).a(this.jdField_a_of_type_Boolean);
+      }
     }
-    QRUtils.a(2, 2131435285);
+    if (this.jdField_a_of_type_She.a.b > 0L) {
+      StartupTracker.a("Conversation_PullToRefresh_cbSwitchToUI", SystemClock.uptimeMillis() - this.jdField_a_of_type_She.a.b);
+    }
   }
 }
 

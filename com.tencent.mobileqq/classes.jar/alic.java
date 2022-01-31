@@ -1,52 +1,39 @@
-import com.tencent.qqprotect.qsec.CrashProtector.IProtectedMethod;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import com.tencent.qqprotect.qsec.QSecLibMgr;
-import com.tencent.qqprotect.qsec.RundownProtection;
-import com.tencent.qqprotect.singleupdate.VerifyFileUtil;
-import java.io.File;
+import android.app.Activity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.open.base.APNUtil;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.ControlPolicyUtil;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.MyAppApi.InstallParams;
+import mqq.os.MqqHandler;
 
-public final class alic
-  implements CrashProtector.IProtectedMethod
+public class alic
+  implements Runnable
 {
-  public alif a;
+  public alic(MyAppApi paramMyAppApi, Activity paramActivity, String paramString) {}
   
-  public alic(QSecLibMgr paramQSecLibMgr) {}
-  
-  public void a()
+  public void run()
   {
-    if ((this.jdField_a_of_type_Alif.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_Alif.jdField_b_of_type_JavaLangString.contains("..")))
+    LogUtility.c("MyAppApi", "---isAutoInstall:" + ControlPolicyUtil.c() + " url:" + ControlPolicyUtil.a() + " interval:" + ControlPolicyUtil.a());
+    if ((APNUtil.b(this.jdField_a_of_type_AndroidAppActivity)) && (APNUtil.c(this.jdField_a_of_type_AndroidAppActivity)))
     {
-      this.jdField_a_of_type_Alif.d = 15;
-      return;
-    }
-    Object localObject = new File(this.jdField_a_of_type_Alif.jdField_b_of_type_JavaLangString);
-    if (!((File)localObject).exists())
-    {
-      this.jdField_a_of_type_Alif.d = 12;
-      return;
-    }
-    this.jdField_a_of_type_Alif.jdField_a_of_type_ComTencentQqprotectQsecRundownProtection = new RundownProtection();
-    if ((this.jdField_a_of_type_Alif.jdField_b_of_type_Int == 2) || (this.jdField_a_of_type_Alif.jdField_b_of_type_Int == 1)) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 1) && (!VerifyFileUtil.a((File)localObject, null)))
+      boolean bool1 = ControlPolicyUtil.b();
+      boolean bool2 = ControlPolicyUtil.j();
+      String str = SharedPreUtils.k(this.jdField_a_of_type_AndroidAppActivity, "wifiAutoPreDown");
+      if ((!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b()) && (bool1) && (bool2) && ("true".equals(str)))
       {
-        this.jdField_a_of_type_Alif.d = 10;
-        return;
+        ThreadManager.getUIHandler().post(new alid(this));
+        LogUtility.c("MyAppApi", "---startDownloadYYB---");
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = new MyAppApi.InstallParams(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.b = false;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidOsBundle = null;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Int = -1;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 1);
       }
-      localObject = new Object[1];
-      this.jdField_a_of_type_Alif.d = QSecFramework.a(2, this.jdField_a_of_type_Alif.jdField_b_of_type_Int, this.jdField_a_of_type_Alif.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Alif.jdField_b_of_type_JavaLangString, null, null, (Object[])localObject);
-      if ((localObject[0] == null) || (!(localObject[0] instanceof Integer))) {
-        break;
-      }
-      this.jdField_a_of_type_Alif.f = ((Integer)localObject[0]).intValue();
-      return;
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Alif.d = 26;
   }
 }
 

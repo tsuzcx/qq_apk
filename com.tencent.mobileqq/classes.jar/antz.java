@@ -1,14 +1,27 @@
-import android.widget.ImageView;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoLabel;
 
 public class antz
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public antz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public antz(EditVideoLabel paramEditVideoLabel) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.a.jdField_a_of_type_AndroidGraphicsBitmap);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
+    }
   }
 }
 

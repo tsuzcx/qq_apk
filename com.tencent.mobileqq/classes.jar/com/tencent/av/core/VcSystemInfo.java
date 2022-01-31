@@ -11,7 +11,7 @@ import com.tencent.mobileqq.startup.step.UpdateAvSo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import jid;
+import jho;
 
 public class VcSystemInfo
 {
@@ -50,7 +50,7 @@ public class VcSystemInfo
   {
     try
     {
-      int j = new File("/sys/devices/system/cpu/").listFiles(new jid()).length;
+      int j = new File("/sys/devices/system/cpu/").listFiles(new jho()).length;
       return j;
     }
     catch (Exception localException) {}

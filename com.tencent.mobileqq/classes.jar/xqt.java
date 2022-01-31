@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class xqt
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public xqt(SaveVideoActivity paramSaveVideoActivity, String paramString) {}
+  public xqt(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    SaveVideoActivity.a(SaveVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSaveVideoActivity), SaveVideoActivity.a(SaveVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSaveVideoActivity), this.jdField_a_of_type_JavaLangString));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a("PTV.NewFlowCameraActivity");
+    NewFlowCameraActivity.e(this.a);
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

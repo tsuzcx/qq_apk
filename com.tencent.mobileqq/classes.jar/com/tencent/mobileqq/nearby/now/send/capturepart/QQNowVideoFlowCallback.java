@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.send.capturepart;
 
-import aehu;
+import aeva;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -82,7 +82,7 @@ public class QQNowVideoFlowCallback
         paramLocalMediaInfo.addedDate = (new File(paramLocalMediaInfo.path).lastModified() / 1000L);
       }
       if (localQQToast != null) {
-        paramActivity.runOnUiThread(new aehu(localQQToast));
+        paramActivity.runOnUiThread(new aeva(localQQToast));
       }
       if (i == 0)
       {

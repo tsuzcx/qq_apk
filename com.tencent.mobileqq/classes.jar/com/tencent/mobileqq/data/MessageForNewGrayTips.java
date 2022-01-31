@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abnp;
+import abuq;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -41,7 +41,7 @@ public class MessageForNewGrayTips
         GrayTipsSpan localGrayTipsSpan = (GrayTipsSpan)localIterator.next();
         try
         {
-          paramQQAppInterface.setSpan(new DatingCommentTextView.TouchableSpan(new abnp(this, localGrayTipsSpan), Color.rgb(26, 144, 240)), localGrayTipsSpan.begin, localGrayTipsSpan.end, 33);
+          paramQQAppInterface.setSpan(new DatingCommentTextView.TouchableSpan(new abuq(this, localGrayTipsSpan), Color.rgb(26, 144, 240)), localGrayTipsSpan.begin, localGrayTipsSpan.end, 33);
         }
         catch (Exception localException)
         {

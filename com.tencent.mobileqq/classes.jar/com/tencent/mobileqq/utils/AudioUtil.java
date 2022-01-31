@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.utils;
 
-import ajni;
-import ajnj;
-import ajnk;
-import ajnm;
+import akbo;
+import akbp;
+import akbq;
+import akbs;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
@@ -144,7 +144,7 @@ public class AudioUtil
           if (jdField_a_of_type_Int != 0) {
             jdField_a_of_type_Int -= 1;
           }
-          jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new ajnk(paramOnCompletionListener, paramHandler));
+          jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new akbq(paramOnCompletionListener, paramHandler));
           jdField_a_of_type_AndroidMediaMediaPlayer.start();
           jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(false);
         }
@@ -156,7 +156,7 @@ public class AudioUtil
       }
       continue;
       label154:
-      paramHandler.post(new ajnm(paramOnCompletionListener));
+      paramHandler.post(new akbs(paramOnCompletionListener));
     }
   }
   
@@ -227,7 +227,7 @@ public class AudioUtil
         QLog.d("mediaPlayerStartForMsg", 2, "media palyer uri=" + Settings.System.DEFAULT_NOTIFICATION_URI);
         continue;
       }
-      jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new ajni());
+      jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new akbo());
       jdField_a_of_type_AndroidMediaMediaPlayer.start();
       jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
     }
@@ -252,20 +252,20 @@ public class AudioUtil
     //   0: ldc 2
     //   2: monitorenter
     //   3: aconst_null
-    //   4: astore 7
+    //   4: astore 8
     //   6: aconst_null
-    //   7: astore 8
+    //   7: astore 7
     //   9: aconst_null
     //   10: astore 5
-    //   12: aload 7
+    //   12: aload 8
     //   14: astore 6
-    //   16: aload 8
+    //   16: aload 7
     //   18: astore 4
     //   20: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   23: ifnull +63 -> 86
-    //   26: aload 7
+    //   26: aload 8
     //   28: astore 6
-    //   30: aload 8
+    //   30: aload 7
     //   32: astore 4
     //   34: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   37: invokevirtual 106	android/media/MediaPlayer:isPlaying	()Z
@@ -290,31 +290,31 @@ public class AudioUtil
     //   72: monitorexit
     //   73: aload_0
     //   74: athrow
-    //   75: aload 7
+    //   75: aload 8
     //   77: astore 6
-    //   79: aload 8
+    //   79: aload 7
     //   81: astore 4
     //   83: invokestatic 108	com/tencent/mobileqq/utils/AudioUtil:a	()V
-    //   86: aload 7
+    //   86: aload 8
     //   88: astore 6
-    //   90: aload 8
+    //   90: aload 7
     //   92: astore 4
     //   94: aload_0
     //   95: invokevirtual 248	android/net/Uri:getScheme	()Ljava/lang/String;
     //   98: ldc 250
     //   100: invokevirtual 256	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   103: ifeq +67 -> 170
-    //   106: aload 7
+    //   106: aload 8
     //   108: astore 6
-    //   110: aload 8
+    //   110: aload 7
     //   112: astore 4
     //   114: new 47	android/media/MediaPlayer
     //   117: dup
     //   118: invokespecial 48	android/media/MediaPlayer:<init>	()V
     //   121: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   124: aload 7
+    //   124: aload 8
     //   126: astore 6
-    //   128: aload 8
+    //   128: aload 7
     //   130: astore 4
     //   132: new 258	java/io/FileInputStream
     //   135: dup
@@ -375,10 +375,10 @@ public class AudioUtil
     //   253: aload 5
     //   255: astore 4
     //   257: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   260: new 278	ajno
+    //   260: new 278	akbu
     //   263: dup
     //   264: aload_2
-    //   265: invokespecial 279	ajno:<init>	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   265: invokespecial 279	akbu:<init>	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   268: invokevirtual 127	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   271: aload 5
     //   273: astore 6
@@ -448,8 +448,8 @@ public class AudioUtil
     //   18	357	4	localObject1	Object
     //   10	296	5	localUri	Uri
     //   14	370	6	localObject2	Object
-    //   4	121	7	localObject3	Object
-    //   7	122	8	localObject4	Object
+    //   7	122	7	localObject3	Object
+    //   4	121	8	localObject4	Object
     // Exception table:
     //   from	to	target	type
     //   49	57	61	java/io/IOException
@@ -504,223 +504,223 @@ public class AudioUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   8: astore 4
-    //   10: aload 4
-    //   12: ifnull +13 -> 25
-    //   15: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   18: invokevirtual 99	android/media/MediaPlayer:release	()V
-    //   21: aconst_null
-    //   22: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   25: aload_0
-    //   26: invokevirtual 248	android/net/Uri:getScheme	()Ljava/lang/String;
-    //   29: ldc 250
-    //   31: invokevirtual 256	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   34: ifeq +195 -> 229
-    //   37: new 47	android/media/MediaPlayer
-    //   40: dup
-    //   41: invokespecial 48	android/media/MediaPlayer:<init>	()V
-    //   44: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   47: iload_2
-    //   48: ifeq +25 -> 73
-    //   51: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   54: ifeq +13 -> 67
-    //   57: ldc_w 283
-    //   60: iconst_2
-    //   61: ldc_w 285
-    //   64: invokestatic 193	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   67: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   70: invokestatic 51	com/tencent/mobileqq/utils/AudioUtil:a	(Landroid/media/MediaPlayer;)V
-    //   73: new 258	java/io/FileInputStream
-    //   76: dup
-    //   77: new 260	java/io/File
-    //   80: dup
-    //   81: aload_0
-    //   82: invokevirtual 263	android/net/Uri:getPath	()Ljava/lang/String;
-    //   85: invokespecial 266	java/io/File:<init>	(Ljava/lang/String;)V
-    //   88: invokespecial 269	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   91: astore_0
-    //   92: aload_0
-    //   93: astore_3
+    //   1: astore 4
+    //   3: ldc 2
+    //   5: monitorenter
+    //   6: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   9: astore_3
+    //   10: aload_3
+    //   11: ifnull +13 -> 24
+    //   14: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   17: invokevirtual 99	android/media/MediaPlayer:release	()V
+    //   20: aconst_null
+    //   21: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   24: aload_0
+    //   25: invokevirtual 248	android/net/Uri:getScheme	()Ljava/lang/String;
+    //   28: ldc 250
+    //   30: invokevirtual 256	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   33: ifeq +193 -> 226
+    //   36: new 47	android/media/MediaPlayer
+    //   39: dup
+    //   40: invokespecial 48	android/media/MediaPlayer:<init>	()V
+    //   43: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   46: iload_2
+    //   47: ifeq +25 -> 72
+    //   50: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   53: ifeq +13 -> 66
+    //   56: ldc_w 283
+    //   59: iconst_2
+    //   60: ldc_w 285
+    //   63: invokestatic 193	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   66: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   69: invokestatic 51	com/tencent/mobileqq/utils/AudioUtil:a	(Landroid/media/MediaPlayer;)V
+    //   72: new 258	java/io/FileInputStream
+    //   75: dup
+    //   76: new 260	java/io/File
+    //   79: dup
+    //   80: aload_0
+    //   81: invokevirtual 263	android/net/Uri:getPath	()Ljava/lang/String;
+    //   84: invokespecial 266	java/io/File:<init>	(Ljava/lang/String;)V
+    //   87: invokespecial 269	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   90: astore_0
+    //   91: aload_0
+    //   92: astore 4
     //   94: aload_0
-    //   95: astore 4
-    //   97: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   100: aload_0
-    //   101: invokevirtual 272	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   104: invokevirtual 275	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   107: aload_0
-    //   108: astore_3
+    //   95: astore_3
+    //   96: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   99: aload_0
+    //   100: invokevirtual 272	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   103: invokevirtual 275	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   106: aload_0
+    //   107: astore 4
     //   109: aload_0
-    //   110: astore 4
-    //   112: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   115: invokevirtual 74	android/media/MediaPlayer:prepare	()V
-    //   118: aload_0
-    //   119: astore_3
+    //   110: astore_3
+    //   111: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   114: invokevirtual 74	android/media/MediaPlayer:prepare	()V
+    //   117: aload_0
+    //   118: astore 4
     //   120: aload_0
-    //   121: astore 4
-    //   123: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   126: new 287	ajnn
-    //   129: dup
-    //   130: invokespecial 288	ajnn:<init>	()V
-    //   133: invokevirtual 127	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
-    //   136: aload_0
-    //   137: astore_3
+    //   121: astore_3
+    //   122: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   125: new 287	akbt
+    //   128: dup
+    //   129: invokespecial 288	akbt:<init>	()V
+    //   132: invokevirtual 127	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   135: aload_0
+    //   136: astore 4
     //   138: aload_0
-    //   139: astore 4
-    //   141: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   144: invokevirtual 130	android/media/MediaPlayer:start	()V
-    //   147: aload_0
-    //   148: astore_3
+    //   139: astore_3
+    //   140: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   143: invokevirtual 130	android/media/MediaPlayer:start	()V
+    //   146: aload_0
+    //   147: astore 4
     //   149: aload_0
-    //   150: astore 4
-    //   152: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   155: iload_1
-    //   156: invokevirtual 134	android/media/MediaPlayer:setLooping	(Z)V
-    //   159: aload_0
-    //   160: ifnull +7 -> 167
-    //   163: aload_0
-    //   164: invokevirtual 276	java/io/FileInputStream:close	()V
-    //   167: ldc 2
-    //   169: monitorexit
-    //   170: return
-    //   171: astore 4
-    //   173: aconst_null
-    //   174: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   177: goto -152 -> 25
-    //   180: astore_0
-    //   181: aconst_null
-    //   182: astore 4
-    //   184: aload 4
-    //   186: ifnull -19 -> 167
-    //   189: aload 4
-    //   191: invokevirtual 276	java/io/FileInputStream:close	()V
-    //   194: goto -27 -> 167
-    //   197: astore_0
-    //   198: aload_0
-    //   199: invokevirtual 243	java/io/IOException:printStackTrace	()V
-    //   202: goto -35 -> 167
-    //   205: astore_0
-    //   206: ldc 2
-    //   208: monitorexit
-    //   209: aload_0
-    //   210: athrow
-    //   211: astore_0
-    //   212: aconst_null
-    //   213: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   216: aload_0
-    //   217: athrow
-    //   218: astore_0
-    //   219: aload_3
-    //   220: ifnull +7 -> 227
-    //   223: aload_3
-    //   224: invokevirtual 276	java/io/FileInputStream:close	()V
-    //   227: aload_0
-    //   228: athrow
-    //   229: getstatic 19	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   232: aload_0
-    //   233: invokestatic 158	android/media/MediaPlayer:create	(Landroid/content/Context;Landroid/net/Uri;)Landroid/media/MediaPlayer;
-    //   236: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   239: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   242: astore_0
-    //   243: aload_0
-    //   244: ifnonnull +23 -> 267
-    //   247: iconst_0
-    //   248: ifeq -81 -> 167
-    //   251: new 239	java/lang/NullPointerException
-    //   254: dup
-    //   255: invokespecial 240	java/lang/NullPointerException:<init>	()V
-    //   258: athrow
-    //   259: astore_0
-    //   260: aload_0
-    //   261: invokevirtual 243	java/io/IOException:printStackTrace	()V
-    //   264: goto -97 -> 167
-    //   267: iload_2
-    //   268: ifeq +25 -> 293
-    //   271: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   274: ifeq +13 -> 287
-    //   277: ldc_w 283
-    //   280: iconst_2
-    //   281: ldc_w 285
-    //   284: invokestatic 193	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   287: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   290: invokestatic 51	com/tencent/mobileqq/utils/AudioUtil:a	(Landroid/media/MediaPlayer;)V
-    //   293: aconst_null
-    //   294: astore_0
-    //   295: goto -177 -> 118
-    //   298: astore_0
-    //   299: aload_0
-    //   300: invokevirtual 243	java/io/IOException:printStackTrace	()V
-    //   303: goto -136 -> 167
-    //   306: astore_3
-    //   307: aload_3
-    //   308: invokevirtual 243	java/io/IOException:printStackTrace	()V
-    //   311: goto -84 -> 227
-    //   314: astore_0
-    //   315: goto -96 -> 219
-    //   318: astore_0
-    //   319: goto -135 -> 184
+    //   150: astore_3
+    //   151: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   154: iload_1
+    //   155: invokevirtual 134	android/media/MediaPlayer:setLooping	(Z)V
+    //   158: aload_0
+    //   159: ifnull +7 -> 166
+    //   162: aload_0
+    //   163: invokevirtual 276	java/io/FileInputStream:close	()V
+    //   166: ldc 2
+    //   168: monitorexit
+    //   169: return
+    //   170: astore_3
+    //   171: aconst_null
+    //   172: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   175: goto -151 -> 24
+    //   178: astore_0
+    //   179: aconst_null
+    //   180: astore_3
+    //   181: aload_3
+    //   182: ifnull -16 -> 166
+    //   185: aload_3
+    //   186: invokevirtual 276	java/io/FileInputStream:close	()V
+    //   189: goto -23 -> 166
+    //   192: astore_0
+    //   193: aload_0
+    //   194: invokevirtual 243	java/io/IOException:printStackTrace	()V
+    //   197: goto -31 -> 166
+    //   200: astore_0
+    //   201: ldc 2
+    //   203: monitorexit
+    //   204: aload_0
+    //   205: athrow
+    //   206: astore_0
+    //   207: aconst_null
+    //   208: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   211: aload_0
+    //   212: athrow
+    //   213: astore_0
+    //   214: aload 4
+    //   216: ifnull +8 -> 224
+    //   219: aload 4
+    //   221: invokevirtual 276	java/io/FileInputStream:close	()V
+    //   224: aload_0
+    //   225: athrow
+    //   226: getstatic 19	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   229: aload_0
+    //   230: invokestatic 158	android/media/MediaPlayer:create	(Landroid/content/Context;Landroid/net/Uri;)Landroid/media/MediaPlayer;
+    //   233: putstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   236: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   239: astore_0
+    //   240: aload_0
+    //   241: ifnonnull +23 -> 264
+    //   244: iconst_0
+    //   245: ifeq -79 -> 166
+    //   248: new 239	java/lang/NullPointerException
+    //   251: dup
+    //   252: invokespecial 240	java/lang/NullPointerException:<init>	()V
+    //   255: athrow
+    //   256: astore_0
+    //   257: aload_0
+    //   258: invokevirtual 243	java/io/IOException:printStackTrace	()V
+    //   261: goto -95 -> 166
+    //   264: iload_2
+    //   265: ifeq +25 -> 290
+    //   268: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   271: ifeq +13 -> 284
+    //   274: ldc_w 283
+    //   277: iconst_2
+    //   278: ldc_w 285
+    //   281: invokestatic 193	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   284: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   287: invokestatic 51	com/tencent/mobileqq/utils/AudioUtil:a	(Landroid/media/MediaPlayer;)V
+    //   290: aconst_null
+    //   291: astore_0
+    //   292: goto -175 -> 117
+    //   295: astore_0
+    //   296: aload_0
+    //   297: invokevirtual 243	java/io/IOException:printStackTrace	()V
+    //   300: goto -134 -> 166
+    //   303: astore_3
+    //   304: aload_3
+    //   305: invokevirtual 243	java/io/IOException:printStackTrace	()V
+    //   308: goto -84 -> 224
+    //   311: astore_0
+    //   312: goto -98 -> 214
+    //   315: astore_0
+    //   316: goto -135 -> 181
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	322	0	paramUri	Uri
-    //   0	322	1	paramBoolean1	boolean
-    //   0	322	2	paramBoolean2	boolean
-    //   1	223	3	localUri	Uri
-    //   306	2	3	localIOException	IOException
-    //   8	143	4	localObject1	Object
-    //   171	1	4	localException	Exception
-    //   182	8	4	localObject2	Object
+    //   0	319	0	paramUri	Uri
+    //   0	319	1	paramBoolean1	boolean
+    //   0	319	2	paramBoolean2	boolean
+    //   9	142	3	localObject1	Object
+    //   170	1	3	localException	Exception
+    //   180	6	3	localObject2	Object
+    //   303	2	3	localIOException	IOException
+    //   1	219	4	localUri	Uri
     // Exception table:
     //   from	to	target	type
-    //   15	21	171	java/lang/Exception
-    //   5	10	180	java/lang/Exception
-    //   21	25	180	java/lang/Exception
-    //   25	47	180	java/lang/Exception
-    //   51	67	180	java/lang/Exception
-    //   67	73	180	java/lang/Exception
-    //   73	92	180	java/lang/Exception
-    //   173	177	180	java/lang/Exception
-    //   212	218	180	java/lang/Exception
-    //   229	243	180	java/lang/Exception
-    //   271	287	180	java/lang/Exception
-    //   287	293	180	java/lang/Exception
-    //   189	194	197	java/io/IOException
-    //   163	167	205	finally
-    //   189	194	205	finally
-    //   198	202	205	finally
-    //   223	227	205	finally
-    //   227	229	205	finally
-    //   251	259	205	finally
-    //   260	264	205	finally
-    //   299	303	205	finally
-    //   307	311	205	finally
-    //   15	21	211	finally
-    //   5	10	218	finally
-    //   21	25	218	finally
-    //   25	47	218	finally
-    //   51	67	218	finally
-    //   67	73	218	finally
-    //   73	92	218	finally
-    //   173	177	218	finally
-    //   212	218	218	finally
-    //   229	243	218	finally
-    //   271	287	218	finally
-    //   287	293	218	finally
-    //   251	259	259	java/io/IOException
-    //   163	167	298	java/io/IOException
-    //   223	227	306	java/io/IOException
-    //   97	107	314	finally
-    //   112	118	314	finally
-    //   123	136	314	finally
-    //   141	147	314	finally
-    //   152	159	314	finally
-    //   97	107	318	java/lang/Exception
-    //   112	118	318	java/lang/Exception
-    //   123	136	318	java/lang/Exception
-    //   141	147	318	java/lang/Exception
-    //   152	159	318	java/lang/Exception
+    //   14	20	170	java/lang/Exception
+    //   6	10	178	java/lang/Exception
+    //   20	24	178	java/lang/Exception
+    //   24	46	178	java/lang/Exception
+    //   50	66	178	java/lang/Exception
+    //   66	72	178	java/lang/Exception
+    //   72	91	178	java/lang/Exception
+    //   171	175	178	java/lang/Exception
+    //   207	213	178	java/lang/Exception
+    //   226	240	178	java/lang/Exception
+    //   268	284	178	java/lang/Exception
+    //   284	290	178	java/lang/Exception
+    //   185	189	192	java/io/IOException
+    //   162	166	200	finally
+    //   185	189	200	finally
+    //   193	197	200	finally
+    //   219	224	200	finally
+    //   224	226	200	finally
+    //   248	256	200	finally
+    //   257	261	200	finally
+    //   296	300	200	finally
+    //   304	308	200	finally
+    //   14	20	206	finally
+    //   6	10	213	finally
+    //   20	24	213	finally
+    //   24	46	213	finally
+    //   50	66	213	finally
+    //   66	72	213	finally
+    //   72	91	213	finally
+    //   171	175	213	finally
+    //   207	213	213	finally
+    //   226	240	213	finally
+    //   268	284	213	finally
+    //   284	290	213	finally
+    //   248	256	256	java/io/IOException
+    //   162	166	295	java/io/IOException
+    //   219	224	303	java/io/IOException
+    //   96	106	311	finally
+    //   111	117	311	finally
+    //   122	135	311	finally
+    //   140	146	311	finally
+    //   151	158	311	finally
+    //   96	106	315	java/lang/Exception
+    //   111	117	315	java/lang/Exception
+    //   122	135	315	java/lang/Exception
+    //   140	146	315	java/lang/Exception
+    //   151	158	315	java/lang/Exception
   }
   
   /* Error */
@@ -798,9 +798,9 @@ public class AudioUtil
     //   134: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   137: invokevirtual 74	android/media/MediaPlayer:prepare	()V
     //   140: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   143: new 295	ajnh
+    //   143: new 295	akbn
     //   146: dup
-    //   147: invokespecial 296	ajnh:<init>	()V
+    //   147: invokespecial 296	akbn:<init>	()V
     //   150: invokevirtual 127	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   153: getstatic 96	com/tencent/mobileqq/utils/AudioUtil:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   156: invokevirtual 130	android/media/MediaPlayer:start	()V
@@ -1044,7 +1044,7 @@ public class AudioUtil
         QLog.d("MediaPlayerStart", 2, "media palyer uri=" + Settings.System.DEFAULT_NOTIFICATION_URI);
         continue;
       }
-      jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new ajnj());
+      jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new akbp());
       jdField_a_of_type_AndroidMediaMediaPlayer.start();
       jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean);
     }

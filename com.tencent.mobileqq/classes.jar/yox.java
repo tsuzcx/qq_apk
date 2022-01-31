@@ -1,68 +1,48 @@
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ItemBuilderFactory;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.barrage.Barrage;
+import com.tencent.mobileqq.apollo.barrage.BarrageView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import com.tencent.util.WeakReferenceHandler;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class yox
   implements Runnable
 {
-  public yox(SpriteUIHandler paramSpriteUIHandler, long paramLong, int paramInt1, int paramInt2) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private List jdField_a_of_type_JavaUtilList;
+  
+  public yox(List paramList, BarrageView paramBarrageView)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBarrageView);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
   
   public void run()
   {
-    try
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    do
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler.a();
-      if (localObject1 == null)
+      BarrageView localBarrageView;
+      do
       {
-        QLog.e("cmshow_scripted_SpriteUIHandler", 1, "adatper is null.");
         return;
-      }
-      int i = AIOUtils.a(this.jdField_a_of_type_Long, (ListAdapter)localObject1);
-      if (i >= 0)
+        localBarrageView = (BarrageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while ((localBarrageView == null) || (BarrageView.a(localBarrageView) == null));
+      List localList = this.jdField_a_of_type_JavaUtilList;
+      if ((localList != null) && (!localList.isEmpty()))
       {
-        XListView localXListView = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler.a();
-        Object localObject2 = (ChatMessage)((ChatAdapter1)localObject1).getItem(i);
-        if ((localXListView != null) && (localObject2 != null) && ((localObject2 instanceof MessageForApollo)))
+        int i = localList.size() - 1;
+        while (i >= 0)
         {
-          localObject1 = ((ChatAdapter1)localObject1).a.a((ChatMessage)localObject2, (BaseAdapter)localObject1);
-          if ((localObject1 instanceof ApolloItemBuilder))
-          {
-            localObject1 = (ApolloItemBuilder)localObject1;
-            localObject2 = (BaseChatItemLayout)AIOUtils.a(localXListView, AIOUtils.a(this.jdField_a_of_type_Long, localXListView.getAdapter()));
-            if (localObject2 != null)
-            {
-              ((ApolloItemBuilder)localObject1).a((View)localObject2, this.jdField_a_of_type_Int, this.b);
-              localXListView.getFirstVisiblePosition();
-              int j = localXListView.getLastVisiblePosition();
-              i = 0;
-              while (i < j)
-              {
-                BaseChatItemLayout localBaseChatItemLayout = (BaseChatItemLayout)AIOUtils.a(localXListView, i);
-                if (localBaseChatItemLayout != null) {
-                  ((ApolloItemBuilder)localObject1).a(localBaseChatItemLayout, (BaseChatItemLayout)localObject2, this.jdField_a_of_type_Int, this.b);
-                }
-                i += 1;
-              }
-            }
-          }
+          ((Barrage)localList.get(i)).a();
+          i -= 1;
         }
+        BarrageView.a(localBarrageView).obtainMessage(256, 1, 0, localList).sendToTarget();
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmshow_scripted_SpriteUIHandler", 1, "[onActionDownloadNotify], error.", localThrowable);
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("BarrageView", 2, "BarrageView PreBuild use->" + (System.currentTimeMillis() - l));
   }
 }
 

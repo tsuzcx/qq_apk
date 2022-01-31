@@ -1,15 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
 public class mkw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mkw(FastWebActivity paramFastWebActivity) {}
+  public mkw(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (FastWebActivity.a(this.a) != null) {
-      FastWebActivity.a(this.a).notifyDataSetChanged();
+    if (this.a.a() != null)
+    {
+      this.a.a().c();
+      PublicAccountReportUtils.a(this.a.a, "CliOper", "", "", "0X8009160", "0X8009160", 0, 1, null, null, null, null, false);
     }
   }
 }

@@ -1,25 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
 
-public class aifj
-  implements Animation.AnimationListener
+public final class aifj
+  extends PluginRecoverReceiver
 {
-  public aifj(AbsPublishActivity paramAbsPublishActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void onRecver(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifj
  * JD-Core Version:    0.7.0.1
  */

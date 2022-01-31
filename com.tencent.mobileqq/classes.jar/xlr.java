@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.tips.PubAccountTips;
+import com.tencent.mobileqq.activity.aio.tips.PubAccountTips.PubAccountTipsMsg;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecentUser;
 
 public class xlr
   implements Runnable
 {
-  public xlr(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xlr(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface, PubAccountTips.PubAccountTipsMsg paramPubAccountTipsMsg) {}
   
   public void run()
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a(2002, "抱歉，摄像头可能被禁止了", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@] ERR_CODE_CAMERA_CREATE  黑名单机型,2秒还没有获取到预览帧,可能没有权限");
-      }
-    }
+    PubAccountTips.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a.uin, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg, null);
   }
 }
 

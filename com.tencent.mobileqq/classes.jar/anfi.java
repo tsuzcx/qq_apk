@@ -1,29 +1,52 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
+import android.os.Handler;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop.TroopPluginManager;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class anfi
-  implements Runnable
+class anfi
+  extends OnPluginInstallListener.Stub
 {
-  public anfi(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload, boolean paramBoolean, String paramString1, String paramString2) {}
+  anfi(anfg paramanfg) {}
   
-  public void run()
+  public void onInstallBegin(String paramString)
   {
-    Runnable localRunnable = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.jdField_a_of_type_JavaLangRunnable;
-    if (localRunnable != null) {
-      localRunnable.run();
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallBegin...  pluginId = " + this.a.jdField_a_of_type_JavaLangString);
     }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
-      return;
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallDownloadProgress... pluginId = " + this.a.jdField_a_of_type_JavaLangString);
     }
-    QQToast.a(BaseApplicationImpl.sApplication, "上传失败", 0).a();
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallError... = " + this.a.jdField_a_of_type_JavaLangString);
+    }
+    this.a.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1002);
+    ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_plugin", "install_plugin", 0, 1, null, null, null, null);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallFinish...   pluginId = " + this.a.jdField_a_of_type_JavaLangString);
+    }
+    this.a.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_plugin", "install_plugin", 0, 0, null, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfi
  * JD-Core Version:    0.7.0.1
  */

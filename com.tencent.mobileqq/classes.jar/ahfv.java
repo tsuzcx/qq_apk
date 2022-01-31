@@ -1,38 +1,39 @@
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.redtouch.RedTouchWebviewHandler;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
-public class ahfv
-  implements Comparator
+class ahfv
+  implements Runnable
 {
-  public ahfv(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
+  ahfv(ahfu paramahfu, String paramString1, JSONObject paramJSONObject, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString2, String paramString3) {}
   
-  public int a(FTSEntity paramFTSEntity1, FTSEntity paramFTSEntity2)
+  public void run()
   {
-    paramFTSEntity1 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity1).msgExts;
-    paramFTSEntity2 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity2).msgExts;
-    long l1;
-    if (paramFTSEntity1 != null)
-    {
-      l1 = paramFTSEntity1.time;
-      if (paramFTSEntity2 == null) {
-        break label54;
-      }
+    this.jdField_a_of_type_Ahfu.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+    Object localObject = "";
+    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null) {
+      localObject = RedTouchWebviewHandler.access$100(this.jdField_a_of_type_Ahfu.a, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.buffer.get());
     }
-    label54:
-    for (long l2 = paramFTSEntity2.time;; l2 = 0L)
-    {
-      return Long.signum(l2 - l1);
-      l1 = 0L;
-      break;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("ret", String.valueOf(this.jdField_a_of_type_Int));
+    localBundle.putString("buffer", (String)localObject);
+    localBundle.putString("red", String.valueOf(this.jdField_b_of_type_Int));
+    localBundle.putStringArrayList("missions", this.jdField_a_of_type_JavaUtilArrayList);
+    localBundle.putString("path", this.jdField_b_of_type_JavaLangString);
+    localBundle.putString("serial", this.c);
+    localBundle.putString("callback", this.jdField_a_of_type_JavaLangString);
+    localObject = DataFactory.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahfu.a.mOnRemoteResp.key, localBundle);
+    this.jdField_a_of_type_Ahfu.a.sendRemoteReq((Bundle)localObject, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahfv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.image.URLImageView;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
 public class ocs
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ocs(EditVideoFilter paramEditVideoFilter) {}
+  public ocs(EditGifImage paramEditGifImage) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return this.a.a.a(paramMotionEvent);
+    FastAnimationDrawable localFastAnimationDrawable = this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable;
+    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
+    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = this.a.b;
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
+    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
+    this.a.b = localFastAnimationDrawable;
+    this.a.d = true;
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true, true);
   }
 }
 

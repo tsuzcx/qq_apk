@@ -29,9 +29,9 @@ public class CellFactory
           paramView = paramReadInJoyBaseAdapter.a();
           paramView.setTag(paramReadInJoyBaseAdapter);
           if (!UtilsForComponent.c(paramInt2)) {
-            ApiCompatibilityUtils.a(paramView, paramContext.getResources().getDrawable(2130839717));
+            ApiCompatibilityUtils.a(paramView, paramContext.getResources().getDrawable(2130839723));
           } else {
-            ApiCompatibilityUtils.a(paramView, paramContext.getResources().getDrawable(2131493464));
+            ApiCompatibilityUtils.a(paramView, paramContext.getResources().getDrawable(2131493470));
           }
         }
         catch (Exception paramObject)
@@ -50,6 +50,7 @@ public class CellFactory
     case 13: 
     case 38: 
     case 46: 
+    case 70: 
     default: 
       paramContext = null;
     }
@@ -196,6 +197,7 @@ public class CellFactory
     case 50: 
     case 51: 
     case 52: 
+    case 70: 
     default: 
       bool = false;
     }

@@ -1,13 +1,19 @@
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
 
-class ansu
-  implements Runnable
+public class ansu
+  extends AnimatorListenerAdapter
 {
-  ansu(anst paramanst) {}
+  public ansu(EditVideoButton paramEditVideoButton) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.b();
+    EditVideoButton.b(this.a).setVisibility(8);
+    EditVideoButton.c(this.a).setVisibility(8);
+    EditVideoButton.d(this.a).setVisibility(8);
+    EditVideoButton.a(this.a, EditVideoButton.a(this.a));
   }
 }
 

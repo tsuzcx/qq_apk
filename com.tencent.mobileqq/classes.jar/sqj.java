@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.vas.ClubContentJsonTask;
 
 public class sqj
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public sqj(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public sqj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.a("0X80081E6", 1);
+    ClubContentJsonTask.b(this.a.app);
   }
 }
 

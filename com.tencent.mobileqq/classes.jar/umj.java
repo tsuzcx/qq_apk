@@ -1,37 +1,46 @@
-import android.os.Build;
-import android.view.LayoutInflater;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelAdapter;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ptt.preop.PttPreSendManager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class umj
-  implements Runnable
+public final class umj
+  implements ActionSheet.OnButtonClickListener
 {
-  public umj(AudioPanelAdapter paramAudioPanelAdapter) {}
+  public umj(ActionSheet paramActionSheet, QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt1, String paramString, int paramInt2) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.b == null) {}
-    try
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
     {
-      ListenChangeVoicePanel localListenChangeVoicePanel = (ListenChangeVoicePanel)LayoutInflater.from(AudioPanelAdapter.a(this.a).getApp()).inflate(2130970168, null);
-      if (this.a.b == null) {
-        this.a.b = localListenChangeVoicePanel;
-      }
-      PttPreSendManager.a(AudioPanelAdapter.a(this.a));
+    }
+    do
+    {
       return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, true, null, null);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004863", "0X8004863", 0, 0, "", "", "", "");
+      return;
+      if ((this.b == 3) || (this.b == 4))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOAudioPanel", 2, "inflate ListenPanel on subthread get exception " + localException + " model=" + Build.MANUFACTURER + Build.MODEL);
-        }
+        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, true, true, null, null, 1, 0);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006407", "0X8006407", 3, 0, "", "", "", "");
+        return;
       }
-    }
+      if (this.b == 5)
+      {
+        PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, 2, 9);
+        return;
+      }
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, true, null, null);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004863", "0X8004863", 0, 0, "", "", "", "");
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("PlusPanelUtils", 2, "enterGAudioWithActionSheet");
   }
 }
 

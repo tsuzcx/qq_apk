@@ -1,23 +1,33 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
-import com.tencent.mobileqq.apollo.drawer.ApolloDrawerStatus;
-import com.tencent.mobileqq.apollo.drawer.ApolloStepInfo;
-import com.tencent.mobileqq.apollo.drawer.StepDrawerStatus;
-import com.tencent.mobileqq.vashealth.SSOHttpUtils;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
+import mqq.os.MqqHandler;
 
-class tiy
-  implements Runnable
+public class tiy
+  implements Animation.AnimationListener
 {
-  tiy(tix paramtix) {}
+  public tiy(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = new ApolloStepInfo(SSOHttpUtils.a());
-    localObject = new StepDrawerStatus(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ApolloStepInfo)localObject);
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a((ApolloDrawerStatus)localObject);
+    this.a.a.removeMessages(99);
+    if (VersionUtils.g())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, "do SmoothFinish");
+      }
+      QQLSActivity.g(this.a);
+      this.a.finish();
+      return;
     }
+    this.a.a.postAtFrontOfQueue(new tiz(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

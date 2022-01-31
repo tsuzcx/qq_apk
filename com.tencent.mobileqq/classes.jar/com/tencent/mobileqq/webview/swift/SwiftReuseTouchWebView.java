@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift;
 
-import ajyv;
+import aknc;
 import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.os.Handler;
@@ -108,7 +108,7 @@ public class SwiftReuseTouchWebView
       a("about:blank");
       clearHistory();
       clearView();
-      new Handler(Looper.getMainLooper()).postDelayed(new ajyv(this), 1000L);
+      new Handler(Looper.getMainLooper()).postDelayed(new aknc(this), 1000L);
       return;
     }
     catch (Throwable localThrowable)
@@ -122,7 +122,7 @@ public class SwiftReuseTouchWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView
  * JD-Core Version:    0.7.0.1
  */

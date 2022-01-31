@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import aauv;
+import abbw;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Xml;
@@ -68,7 +68,7 @@ public class ARMapCityData
         }
         else if (localXmlPullParser.getName().equals("city"))
         {
-          paramInputStream = new aauv(this);
+          paramInputStream = new abbw(this);
           paramInputStream.jdField_a_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(null, "idx")).intValue();
           paramInputStream.b = Integer.valueOf(localXmlPullParser.getAttributeValue(null, "ver")).intValue();
           if ((paramInputStream.jdField_a_of_type_Int != 0) && (paramInputStream.b != 0)) {
@@ -232,16 +232,16 @@ public class ARMapCityData
     //   210: aload 6
     //   212: iload_2
     //   213: invokeinterface 290 2 0
-    //   218: checkcast 118	aauv
-    //   221: getfield 139	aauv:jdField_a_of_type_Int	I
+    //   218: checkcast 118	abbw
+    //   221: getfield 139	abbw:jdField_a_of_type_Int	I
     //   224: iastore
     //   225: aload 7
     //   227: iload_2
     //   228: aload 6
     //   230: iload_2
     //   231: invokeinterface 290 2 0
-    //   236: checkcast 118	aauv
-    //   239: getfield 143	aauv:b	I
+    //   236: checkcast 118	abbw
+    //   239: getfield 143	abbw:b	I
     //   242: iastore
     //   243: iload_2
     //   244: iconst_1

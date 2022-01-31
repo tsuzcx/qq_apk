@@ -1,16 +1,27 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class skd
-  implements View.OnClickListener
+  implements WXShareHelper.WXShareListener
 {
-  public skd(FontSettingActivity paramFontSettingActivity) {}
+  public skd(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    FontSettingActivity.a(this.a).dismiss();
+    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435303);
+      return;
+    }
+    QRUtils.a(2, 2131435302);
   }
 }
 

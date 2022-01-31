@@ -1,41 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.app.Activity;
+import com.tencent.common.galleryactivity.AbstractAnimationManager;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.AbstractImageListModel;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
+import com.tencent.mobileqq.profile.FriendProfileCardPicScene;
 
 public class sts
-  implements View.OnClickListener
+  extends GalleryManager
 {
-  public sts(Leba paramLeba) {}
+  public sts(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
   
-  public void onClick(View paramView)
+  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
-    try
-    {
-      int i = ((Integer)paramView.getTag(-1)).intValue();
-      if (i > -1)
-      {
-        LebaViewItem localLebaViewItem = (LebaViewItem)this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.getItem(i);
-        if ((localLebaViewItem != null) && (localLebaViewItem.a != null) && (localLebaViewItem.a.uiResId == 3050L)) {
-          StoryReportor.a("dynamic", "clk_story", 0, ((TroopRedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).c(), new String[0]);
-        }
-      }
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        QLog.w("Q.lebatab.leba", 2, "" + localNullPointerException);
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener.a(this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView, paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
+    return super.a(paramActivity, paramAbstractImageListModel);
+  }
+  
+  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    this.a.a = new FriendProfileCardPicScene((FriendProfilePicBrowserActivity)paramActivity, paramAbstractImageListModel);
+    return this.a.a;
+  }
+  
+  public AbstractImageListModel a(Activity paramActivity)
+  {
+    paramActivity = new PicBrowserModel(this.a, FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
+    return paramActivity;
+  }
+  
+  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    return null;
   }
 }
 

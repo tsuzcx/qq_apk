@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAiAppPanel;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.widget.ActionSheet;
 
-class aarr
-  implements DialogInterface.OnDismissListener
+public class aarr
+  implements View.OnClickListener
 {
-  aarr(aarq paramaarq, ActionSheet paramActionSheet) {}
+  public aarr(ArkAiAppPanel paramArkAiAppPanel) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    ArkAppCenter.b("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
+    ArkAppCenter.a().post(new aars(this));
   }
 }
 

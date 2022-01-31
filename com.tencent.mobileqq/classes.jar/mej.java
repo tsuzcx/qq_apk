@@ -1,23 +1,43 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.biz.widgets.ElasticHorScrView;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
 
 public class mej
-  implements Runnable
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public mej(VideoShareHelper paramVideoShareHelper, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
+  public mej(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-    }
-    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
-    {
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    if ((VideoFeedsPlayManager.a(this.a) == null) || (!paramBoolean)) {
       return;
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
     }
-    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    VideoFeedsPlayManager.b(this.a, System.currentTimeMillis());
+    long l = VideoFeedsPlayManager.a(this.a).b();
+    double d = paramInt / 100.0D;
+    paramInt = (int)(l * d);
+    VideoFeedsHelper.a(VideoFeedsPlayManager.a(this.a).a, paramInt);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    VideoFeedsPlayManager.e(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (VideoFeedsPlayManager.a(this.a) == null) {
+      return;
+    }
+    VideoFeedsPlayManager.e(this.a, false);
+    int i = paramSeekBar.getProgress();
+    long l = VideoFeedsPlayManager.a(this.a).b();
+    i = (int)(i / 100.0D * l);
+    VideoFeedsPlayManager.a(this.a).a(i);
+    VideoFeedsPlayManager.c(this.a, false);
   }
 }
 

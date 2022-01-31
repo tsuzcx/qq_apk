@@ -1,19 +1,32 @@
-import android.content.Context;
-import android.view.MotionEvent;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
 public class woo
-  implements View.OnTouchListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public woo(MessageSearchDialog paramMessageSearchDialog) {}
+  public woo(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  @SuppressLint({"NewApi"})
+  public void onGlobalLayout()
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      SimpleSlidingIndicator.a(this.a, SimpleSlidingIndicator.a(this.a));
+      SimpleSlidingIndicator.b(this.a, SimpleSlidingIndicator.a(this.a));
+      View localView = SimpleSlidingIndicator.a(this.a).getChildAt(SimpleSlidingIndicator.a(this.a));
+      SimpleSlidingIndicator.a(this.a, localView.getLeft());
+      this.a.invalidate();
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
 }
 

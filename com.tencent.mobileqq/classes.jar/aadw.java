@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public final class aadw
-  implements Parcelable.Creator
+public class aadw
+  implements Runnable
 {
-  public ArVideoResourceInfo a(Parcel paramParcel)
-  {
-    return new ArVideoResourceInfo(paramParcel);
-  }
+  public aadw(ScanEntranceReport paramScanEntranceReport, boolean paramBoolean, long paramLong) {}
   
-  public ArVideoResourceInfo[] a(int paramInt)
+  public void run()
   {
-    return new ArVideoResourceInfo[paramInt];
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_result", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

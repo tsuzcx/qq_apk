@@ -1,20 +1,40 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import java.io.File;
+import java.util.ArrayList;
 
 public class xot
-  implements CameraCover.PictureCallback
+  implements View.OnClickListener
 {
-  public xot(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xot(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile, Button paramButton) {}
   
-  public void a_(String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
+    if (new File(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b).exists())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.fromFile(this.jdField_a_of_type_JavaIoFile)));
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
+      paramView = new ArrayList();
+      paramView.add(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.b);
+      FlowCameraMqqAction.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2, paramView);
+      this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.setResult(1001);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.finish();
+      if (FlowCameraConstant.a == 1) {
+        FlowCameraMqqAction.b("", "0X8005F5C", "0");
+      }
     }
-    this.a.a.b();
-    NewFlowCameraActivity.a(this.a, paramString, true);
+    else
+    {
+      return;
+    }
+    FlowCameraMqqAction.b("", "0X8005F5C", "1");
   }
 }
 

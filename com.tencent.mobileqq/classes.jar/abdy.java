@@ -1,57 +1,78 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
-import com.tencent.mobileqq.bubble.BubbleDiyHandler;
-import com.tencent.mobileqq.bubble.VipBubbleDrawable;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ARScanFragment;
+import com.tencent.mobileqq.armap.ArMapObserver;
+import com.tencent.mobileqq.armap.ItemInfo;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 public class abdy
-  implements Runnable
+  extends ArMapObserver
 {
-  public abdy(BubbleDiyFetcher paramBubbleDiyFetcher, QQAppInterface paramQQAppInterface) {}
+  public abdy(ShopScanActivity paramShopScanActivity) {}
   
-  public void run()
+  public void onOpenPOI(boolean paramBoolean1, int paramInt1, ItemInfo paramItemInfo, boolean paramBoolean2, int paramInt2, int paramInt3, boolean paramBoolean3)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
+    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(299)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(299);
+    }
+    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(297))
     {
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(297);
       if (QLog.isColorLevel()) {
-        QLog.i("BubbleDiyFetcher", 2, "now query mUnCacheDiyId: " + TextUtils.join(",", this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet));
+        QLog.i("ShopScanActivity", 2, "onOpenPoi isSuccess: " + paramBoolean1 + ", resultCode: " + paramInt1 + ", mode: " + paramInt3 + ", holder: " + paramBoolean2 + ", bussiType: " + paramInt2 + ", isServerSuccess: " + paramBoolean3 + ", itemInfo: " + paramItemInfo);
       }
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
+      if (paramItemInfo != null) {
+        QLog.i("ShopScanActivity", 1, "itemInfo is " + paramItemInfo.toString());
+      }
+      if (!paramBoolean1) {
+        break label321;
+      }
+      ShopScanActivity.b(this.a, true);
+      label192:
+      ShopScanActivity.d(this.a, paramBoolean3);
+      if ((paramBoolean1) && (paramInt1 == 0)) {
+        break label409;
+      }
+      switch (paramInt1)
       {
-        ((BubbleDiyHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(70)).a(new ArrayList(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet), null);
-        this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
+      default: 
+        paramItemInfo = "领奖失败，请稍候再试。";
+        this.a.runOnUiThread(new abdz(this, paramItemInfo));
+        ShopScanActivity.a(this.a, ShopScanActivity.a(this.a), false);
       }
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.isEmpty()) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b();
-    }
-    Object localObject;
-    if (!this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.c.isEmpty())
-    {
-      localIterator = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.c.iterator();
-      while (localIterator.hasNext())
+    label321:
+    while ((paramItemInfo == null) || (paramItemInfo.e <= 0)) {
+      for (;;)
       {
-        localObject = (String)localIterator.next();
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.c((String)localObject);
+        return;
+        ShopScanActivity.f(this.a);
+        break;
+        if (paramInt1 == 19) {
+          break label192;
         }
+        ShopScanActivity.c(this.a, true);
+        break label192;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(298, 30000L);
+        paramItemInfo = "领奖失败，请稍候再试。";
+        continue;
+        paramItemInfo = "你已经领过这里的奖品了。";
+        continue;
+        paramItemInfo = "请到达指定地点后再扫描领奖。";
+        continue;
+        paramItemInfo = "今天领奖次数已达到上限。";
+        continue;
+        paramItemInfo = "来晚了一步，奖品已经发完了。";
+        continue;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(298, 30000L);
+        paramItemInfo = "领奖失败，请稍候再试。";
       }
     }
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      localObject = (VipBubbleDrawable)localIterator.next();
-      if ((localObject == null) || (((VipBubbleDrawable)localObject).getCallback() == null)) {
-        this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject);
-      }
-    }
-    BubbleDiyFetcher.jdField_a_of_type_Long = 0L;
+    label409:
+    paramItemInfo.h = ShopScanActivity.b(this.a);
+    this.a.runOnUiThread(new abea(this, paramItemInfo));
+    this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.b(true);
+    ShopScanActivity.a(this.a, ShopScanActivity.a(this.a), true);
   }
 }
 

@@ -1,41 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdQueryMsgRsp;
-import cooperation.weiyun.sdk.api.IWeiyunCallback;
-import cooperation.weiyun.sdk.api.WeiyunApi;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class acqe
-  implements IWeiyunCallback
+  implements Runnable
 {
-  public acqe(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  public acqe(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
+    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
+      String str = QfileTimeUtils.b(localWeiYunFileInfo.b);
+      if (!this.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
+        this.a.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
+      }
+      ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localWeiYunFileInfo);
     }
-    WeiYunLogicCenter.a(this.a).a().a(false, 44, new Object[] { Integer.valueOf(paramInt), paramString, null });
-  }
-  
-  public void a(WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onSucceed  need pwd[" + paramPwdQueryMsgRsp.pwd_open.get() + "]");
-    }
-    WeiyunApi.a(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
-    if (paramPwdQueryMsgRsp.pwd_open.get()) {
-      WeiyunApi.b(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
-    }
-    WeiYunLogicCenter.a(this.a).a().a(true, 44, new Object[] { Integer.valueOf(0), null, Boolean.valueOf(paramPwdQueryMsgRsp.pwd_open.get()) });
+    this.a.i();
+    this.a.setSelect(0);
+    this.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acqe
  * JD-Core Version:    0.7.0.1
  */

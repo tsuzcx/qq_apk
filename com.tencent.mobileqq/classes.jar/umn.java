@@ -1,19 +1,10 @@
-import android.view.Window;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class umn
-  implements Runnable
+public final class umn
+  implements DialogInterface.OnClickListener
 {
-  public umn(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
-  
-  public void run()
-  {
-    this.a.setRequestedOrientation4Recording(true);
-    this.a.a.getWindow().clearFlags(128);
-    QQToast.a(this.a.a, 2131433770, 1).b(this.a.a.getTitleBarHeight());
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

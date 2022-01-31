@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajez;
+import ajtd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -126,7 +126,7 @@ public class TroopAvatarBigPhotoAdapter
           if (((this.jdField_a_of_type_ComTencentMobileqqDataSetting != null) && (this.jdField_a_of_type_ComTencentMobileqqDataSetting.bHeadType != 0)) || (paramViewHolder == null) || (!paramViewHolder.equals(AvatarWallAdapter.AvatarInfo.jdField_a_of_type_JavaLangString))) {
             break label324;
           }
-          localURLImageView.setImageResource(2130840537);
+          localURLImageView.setImageResource(2130840543);
           return;
         }
         catch (MalformedURLException paramViewHolder) {}
@@ -171,7 +171,7 @@ public class TroopAvatarBigPhotoAdapter
     }
     localURLImageView.setImageDrawable(URLDrawable.getDrawable((URL)localObject, paramViewHolder));
     a(localImageProgressCircle);
-    localURLImageView.setURLDrawableDownListener(new ajez(this, localImageProgressCircle, localURLImageView));
+    localURLImageView.setURLDrawableDownListener(new ajtd(this, localImageProgressCircle, localURLImageView));
   }
   
   public void a(TextView paramTextView)
@@ -261,7 +261,7 @@ public class TroopAvatarBigPhotoAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter
  * JD-Core Version:    0.7.0.1
  */

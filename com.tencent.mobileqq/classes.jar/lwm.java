@@ -1,106 +1,90 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyBaseResManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyModelImpl;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.CellFactory;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import java.util.List;
 
 public class lwm
-  extends DownloadListener
+  extends BaseAdapter
 {
-  public lwm(ReadInJoyBaseResManager paramReadInJoyBaseResManager, String paramString1, BaseResData paramBaseResData, String paramString2) {}
+  private lwm(ComponentPolymericView paramComponentPolymericView) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public int getCount()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((DownloadListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_JavaUtilArrayList.get(i)).onCancel(paramDownloadTask);
-      i += 1;
-    }
-    String str = paramDownloadTask.a().getString("resId");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_JavaUtilHashMap.remove(this.b + "_" + str);
-    super.onCancel(paramDownloadTask);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.a("onCancel", paramDownloadTask);
+    return ComponentPolymericView.a(this.a).size();
   }
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public Object getItem(int paramInt)
   {
-    Object localObject = paramDownloadTask.a();
-    String str1 = ((Bundle)localObject).getString("resId");
-    String str2 = ((Bundle)localObject).getString("prefix");
-    if (paramDownloadTask.a == 0)
-    {
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (!((File)localObject).exists()) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        FileUtils.a(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.a(str2), false);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData);
-        ((File)localObject).delete();
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_JavaUtilHashMap.remove(str2 + "_" + str1);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.a(str2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData);
-        i = 0;
-        if (i >= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break;
-        }
-        ((DownloadListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_JavaUtilArrayList.get(i)).onDone(paramDownloadTask);
-        i += 1;
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-      }
-      catch (Exception paramDownloadTask)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide uncompressZip failed: id = " + str1 + ", " + QLog.getStackTraceString(paramDownloadTask));
-        }
-        return;
-      }
-      finally
-      {
-        ((File)localObject).delete();
-      }
-      QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide failed: id = " + str1);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.a("onDone", paramDownloadTask);
-    int i = paramDownloadTask.a;
-    long l1 = paramDownloadTask.h;
-    long l2 = paramDownloadTask.g;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.a(new String[] { String.valueOf(i), str1, String.valueOf(l1 - l2) });
+    return ComponentPolymericView.a(this.a).get(paramInt);
   }
   
-  public void onProgress(DownloadTask paramDownloadTask)
+  public long getItemId(int paramInt)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((DownloadListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_JavaUtilArrayList.get(i)).onProgress(paramDownloadTask);
-      i += 1;
-    }
-    super.onProgress(paramDownloadTask);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.a("onProgress", paramDownloadTask);
+    return ((BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt)).mRecommendSeq;
   }
   
-  public boolean onStart(DownloadTask paramDownloadTask)
+  public int getItemViewType(int paramInt)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_JavaUtilArrayList.size())
+    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
+    if (localBaseArticleInfo.mPolymericInfo != null) {}
+    switch (localBaseArticleInfo.mPolymericInfo.a)
     {
-      ((DownloadListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.jdField_a_of_type_JavaUtilArrayList.get(i)).onStart(paramDownloadTask);
-      i += 1;
+    default: 
+      if (ReadInJoyUtils.a(localBaseArticleInfo)) {
+        return 51;
+      }
+      break;
+    case 9: 
+      return 67;
+    case 11: 
+      return 69;
+    case 10: 
+      return 68;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyBaseResManager.a("onStart", paramDownloadTask);
-    return super.onStart(paramDownloadTask);
+    if (ReadInJoyUtils.b(localBaseArticleInfo)) {
+      return 52;
+    }
+    if (localBaseArticleInfo.mSinglePicture != null) {
+      return 50;
+    }
+    return 50;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
+    Object localObject = ComponentPolymericView.a(this.a);
+    ArticleInfo localArticleInfo = (ArticleInfo)paramViewGroup;
+    int j = getItemViewType(paramInt);
+    int k = (int)paramViewGroup.mChannelID;
+    if (paramViewGroup.mChannelID == 3L) {}
+    for (int i = 1;; i = 0)
+    {
+      localObject = new ReadInJoyModelImpl((Context)localObject, localArticleInfo, j, k, i, paramInt, false, getCount(), null, ComponentPolymericView.a(this.a).a.a());
+      paramView = CellFactory.a(paramInt, localObject, getItemViewType(paramInt), paramView, ComponentPolymericView.a(this.a), ComponentPolymericView.a(this.a).a.a(), ComponentPolymericView.a(this.a).a.a().a());
+      if (paramView != null)
+      {
+        paramView.setTag(2131362079, localObject);
+        ComponentPolymericView.a(this.a).a.a().a(paramViewGroup, (IReadInJoyModel)localObject, System.currentTimeMillis(), paramInt);
+      }
+      return paramView;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 6;
   }
 }
 

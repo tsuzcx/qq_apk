@@ -1,18 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.annotation.TargetApi;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
-class xjs
-  implements Animator.AnimatorListener
+public class xjs
+  implements View.OnClickListener
 {
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public xjs(BannerManager paramBannerManager, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper click banner, jump");
+    }
+    paramView = (QQAppInterface)BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getAppRuntime();
+    ((UpgradeTIMManager)paramView.getManager(255)).a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.g);
+    ReportController.b(paramView, "CliOper", "", "", "0X8008659", "0X8008659", 0, 0, "", "", "", "");
+  }
 }
 
 

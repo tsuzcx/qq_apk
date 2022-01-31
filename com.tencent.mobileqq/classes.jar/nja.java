@@ -1,132 +1,252 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.MainPageChangeEvent;
+import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
 import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.QQStoryApiPlugin;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class nja
-  extends QQStoryObserver
+  extends IPlayVideoStatusChangeListener
 {
-  public nja(NewFriendsPlayMode paramNewFriendsPlayMode) {}
+  public nja(VideoPlayModeBase paramVideoPlayModeBase) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    Object localObject1 = (UserManager)SuperManager.a(2);
-    Object localObject2 = ((UserManager)localObject1).a(paramString, false);
-    QQUserUIItem localQQUserUIItem = ((UserManager)localObject1).b(paramString);
-    QQStoryApiPlugin.a(PlayModeUtils.a(), paramBoolean2, (String)localObject2, QQStoryContext.a().a());
-    if (paramBoolean1)
-    {
-      label159:
-      int i;
-      if (paramBoolean2)
-      {
-        paramInt = 1;
-        localQQUserUIItem.isSubscribe = paramInt;
-        ThreadManager.post(new njb(this, (UserManager)localObject1, localQQUserUIItem), 5, null, false);
-        if (paramBoolean2)
-        {
-          localObject1 = (QQStoryManager)PlayModeUtils.a().getManager(180);
-          if (!((QQStoryManager)localObject1).h())
-          {
-            ((QQStoryManager)localObject1).c();
-            QQToast.a(PlayModeUtils.a(), 2, "已关注，可随时查看对方的最新日迹", 0).a();
-          }
-          localObject1 = new MainPageChangeEvent(2);
-          Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject1);
-        }
-        int j = this.a.a.jdField_a_of_type_AndroidUtilSparseArray.size();
-        paramInt = 0;
-        if (paramInt >= j) {
-          break label473;
-        }
-        i = this.a.a.jdField_a_of_type_AndroidUtilSparseArray.keyAt(paramInt);
-        localObject1 = (VideoPlayerPagerAdapter.VideoViewHolder)this.a.a.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt);
-        if (localObject1 != null) {
-          break label217;
-        }
-      }
-      for (;;)
-      {
-        paramInt += 1;
-        break label159;
-        paramInt = 0;
-        break;
-        label217:
-        if ((Math.abs(this.a.b - i) <= 2) && (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()))
-        {
-          localObject2 = (StoryVideoItem)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if ((localObject2 != null) && (((StoryVideoItem)localObject2).mStoryType == 1) && (((StoryVideoItem)localObject2).mOwnerUid.equals(localQQUserUIItem.uid))) {
-            if (paramString.equals(((StoryVideoItem)localObject2).mOwnerUid))
-            {
-              if (paramBoolean2)
-              {
-                ((View)((VideoPlayerPagerAdapter.VideoViewHolder)localObject1).jdField_a_of_type_AndroidUtilSparseArray.get(2131371529)).setVisibility(8);
-              }
-              else
-              {
-                localObject1 = (View)((VideoPlayerPagerAdapter.VideoViewHolder)localObject1).jdField_a_of_type_AndroidUtilSparseArray.get(2131371529);
-                if (paramBoolean2) {}
-                for (i = 8;; i = 0)
-                {
-                  ((View)localObject1).setVisibility(i);
-                  break;
-                }
-              }
-            }
-            else if (QLog.isColorLevel()) {
-              QLog.d("VipCardPlayMode", 2, "他人视频, 不刷新关注按钮");
-            }
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onStartPlay:" + paramInt);
     }
-    else
-    {
-      if (!paramBoolean2) {
-        break label474;
-      }
-      paramString = "取消";
-      if (paramInt != 1) {
-        break label481;
-      }
-      QQToast.a(PlayModeUtils.a(), 1, paramString + "关注失败，请稍后重试", 0).a();
-      StoryReportor.a("play_video", "follow_fail", 0, 0, new String[] { "1" });
-    }
+    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.a.c = this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.a.b();
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipCardPlayMode", 2, "onSetPGCSubscribeStatus failed.");
-      }
-      label473:
       return;
-      label474:
-      paramString = "";
-      break;
-      label481:
-      if (paramInt == 0)
-      {
-        QQToast.a(PlayModeUtils.a(), 1, paramString + "订阅失败，请稍后重试", 0).a();
-        StoryReportor.a("play_video", "follow_fail", 0, 0, new String[] { "2" });
+      Iterator localIterator = this.a.b.iterator();
+      while (localIterator.hasNext()) {
+        ((IPlayVideoStatusChangeListener)localIterator.next()).a(paramInt);
+      }
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onNext:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.b.iterator();
+      while (localIterator.hasNext()) {
+        ((IPlayVideoStatusChangeListener)localIterator.next()).b(paramInt);
+      }
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onSingleTapNext:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {
+      return;
+    }
+    this.a.a(paramInt, 3);
+    Iterator localIterator = this.a.b.iterator();
+    while (localIterator.hasNext()) {
+      ((IPlayVideoStatusChangeListener)localIterator.next()).c(paramInt);
+    }
+    this.a.d(paramInt);
+  }
+  
+  public void d(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onSlideNext:" + paramInt);
+    }
+    StoryReportor.a("play_video", "clk_next", 0, 0, new String[] { "2", "", "", "" });
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {
+      return;
+    }
+    this.a.a(paramInt, 3);
+    Iterator localIterator = this.a.b.iterator();
+    while (localIterator.hasNext()) {
+      ((IPlayVideoStatusChangeListener)localIterator.next()).d(paramInt);
+    }
+    this.a.d(paramInt);
+  }
+  
+  public void e(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onSlidePrevious:" + paramInt);
+    }
+    StoryReportor.a("play_video", "clk_previous", 0, 0, new String[] { "", "", "", "" });
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {
+      return;
+    }
+    this.a.a(paramInt, 3);
+    Iterator localIterator = this.a.b.iterator();
+    while (localIterator.hasNext()) {
+      ((IPlayVideoStatusChangeListener)localIterator.next()).e(paramInt);
+    }
+    this.a.d(paramInt);
+  }
+  
+  public void f(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onClickClose:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size()))
+    {
+      StoryReportor.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", "" });
+      return;
+    }
+    Object localObject = (StoryVideoItem)this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.get(paramInt);
+    this.a.a(paramInt, 2);
+    StoryReportor.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", ((StoryVideoItem)localObject).mVid });
+    localObject = this.a.b.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((IPlayVideoStatusChangeListener)((Iterator)localObject).next()).f(paramInt);
+    }
+    this.a.d(paramInt);
+  }
+  
+  public void g(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onSlideClose:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size()))
+    {
+      StoryReportor.a("play_video", "slide_quit", 0, 0, new String[] { "", "", "", "" });
+      return;
+    }
+    Object localObject = (StoryVideoItem)this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.get(paramInt);
+    this.a.a(paramInt, 2);
+    StoryReportor.a("play_video", "slide_quit", 0, 0, new String[] { "", "", "", ((StoryVideoItem)localObject).mVid });
+    localObject = this.a.b.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((IPlayVideoStatusChangeListener)((Iterator)localObject).next()).g(paramInt);
+    }
+    this.a.d(paramInt);
+  }
+  
+  public void h(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onPlayEndClose:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.b.iterator();
+      while (localIterator.hasNext()) {
+        ((IPlayVideoStatusChangeListener)localIterator.next()).h(paramInt);
+      }
+    }
+  }
+  
+  public void i(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onPlayComplete:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {
+      return;
+    }
+    this.a.a(paramInt, 1);
+    Iterator localIterator = this.a.b.iterator();
+    while (localIterator.hasNext()) {
+      ((IPlayVideoStatusChangeListener)localIterator.next()).i(paramInt);
+    }
+    this.a.d(paramInt);
+    StoryReportor.c("video_ope", "play_finish", 0, 0, new String[] { "", "", "", ((StoryVideoItem)this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.get(paramInt)).mVid });
+  }
+  
+  public void j(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onPressBackKeyClose:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {
+      return;
+    }
+    this.a.a(paramInt, 2);
+    Iterator localIterator = this.a.b.iterator();
+    while (localIterator.hasNext()) {
+      ((IPlayVideoStatusChangeListener)localIterator.next()).j(paramInt);
+    }
+    this.a.d(paramInt);
+  }
+  
+  public void k(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onPause:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.b.iterator();
+      while (localIterator.hasNext()) {
+        ((IPlayVideoStatusChangeListener)localIterator.next()).k(paramInt);
+      }
+    }
+  }
+  
+  public void l(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onResume:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.b.iterator();
+      while (localIterator.hasNext()) {
+        ((IPlayVideoStatusChangeListener)localIterator.next()).l(paramInt);
+      }
+    }
+  }
+  
+  public void m(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onRemoveCover:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.b.iterator();
+      while (localIterator.hasNext()) {
+        ((IPlayVideoStatusChangeListener)localIterator.next()).m(paramInt);
+      }
+    }
+  }
+  
+  public void n(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("videolistener_tag", 2, "onRestart:" + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.a.b.iterator();
+      while (localIterator.hasNext()) {
+        ((IPlayVideoStatusChangeListener)localIterator.next()).n(paramInt);
       }
     }
   }

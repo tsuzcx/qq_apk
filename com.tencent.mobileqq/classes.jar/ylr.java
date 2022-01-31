@@ -1,48 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.apollo.barrage.Barrage;
-import com.tencent.mobileqq.apollo.barrage.BarrageView;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import java.lang.ref.WeakReference;
-import java.util.List;
 
-public class ylr
+class ylr
   implements Runnable
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private List jdField_a_of_type_JavaUtilList;
-  
-  public ylr(List paramList, BarrageView paramBarrageView)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBarrageView);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
+  ylr(ylq paramylq, byte[] paramArrayOfByte, int paramInt) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    do
-    {
-      BarrageView localBarrageView;
-      do
-      {
-        return;
-        localBarrageView = (BarrageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while ((localBarrageView == null) || (BarrageView.a(localBarrageView) == null));
-      List localList = this.jdField_a_of_type_JavaUtilList;
-      if ((localList != null) && (!localList.isEmpty()))
-      {
-        int i = localList.size() - 1;
-        while (i >= 0)
-        {
-          ((Barrage)localList.get(i)).a();
-          i -= 1;
-        }
-        BarrageView.a(localBarrageView).obtainMessage(256, 1, 0, localList).sendToTarget();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BarrageView", 2, "BarrageView PreBuild use->" + (System.currentTimeMillis() - l));
+    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ArrayOfByte != null)) {
+      QLog.d("ApolloRender", 2, "httpLog httpCallBack data.len=" + this.jdField_a_of_type_ArrayOfByte.length);
+    }
+    ((ApolloSurfaceView)this.jdField_a_of_type_Ylq.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(this.jdField_a_of_type_Ylq.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

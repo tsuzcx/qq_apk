@@ -1,16 +1,24 @@
-import com.tencent.biz.widgets.ScannerView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
 public class pch
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public pch(ScannerView paramScannerView) {}
+  public pch(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, URLDrawable paramURLDrawable, ScaleAnimation paramScaleAnimation) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ScannerView.a(this.a, false);
-    ScannerView.a(this.a, ScannerView.a(this.a));
-    this.a.a(ScannerView.c(this.a));
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.AVActivity;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.utils.UITools;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
 public class jsy
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   public jsy(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    UITools.a((AVActivity)this.a.a.get());
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
+    {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c, 0);
+      this.a.jdField_a_of_type_ComTencentAvVideoController.b(239);
+      this.a.jdField_a_of_type_ComTencentAvVideoController.c(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c, 9);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), this.a.jdField_a_of_type_ComTencentAvVideoController.a().c, Boolean.valueOf(true) });
+      QLog.d(this.a.c, 1, "exit when OnCreate");
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1008);
+    }
   }
 }
 

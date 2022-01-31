@@ -1,31 +1,26 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
 
-public final class ajrz
-  extends MessageObserver
+class ajrz
+  implements Runnable
 {
-  public void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  ajrz(ajry paramajry) {}
+  
+  public void run()
   {
-    if (paramStatictisInfo != null)
+    Bitmap localBitmap = this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.a;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      StringBuilder localStringBuilder = new StringBuilder(256);
-      localStringBuilder.append("StatictisInfo[ ");
-      localStringBuilder.append("appSeq: " + paramStatictisInfo.jdField_a_of_type_Int);
-      localStringBuilder.append("errCode: " + paramStatictisInfo.b);
-      localStringBuilder.append("retryCount: " + paramStatictisInfo.c);
-      localStringBuilder.append("detailErrorReason: " + paramStatictisInfo.jdField_a_of_type_Long);
-      localStringBuilder.append("timeoutReason: " + paramStatictisInfo.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(" ]");
-      QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + "," + localStringBuilder.toString());
+      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(localBitmap);
       return;
     }
-    QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + ",statictisInfo == null");
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajrz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.ims.SafeReport.RspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.UpdateManager;
 
-public final class algw
-  extends ProtoUtils.TroopProtocolObserver
+public class algw
+  implements Runnable
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public algw(DownloadManager paramDownloadManager) {}
+  
+  public void run()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new SafeReport.RspBody();
+    this.a.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = null;
+    if (UpdateManager.a()) {
+      UpdateManager.a().a();
     }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
-        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
-      }
-      return;
+    if (MyAppApi.d()) {
+      MyAppApi.a().h();
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    this.a.a(this.a.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadLogListener);
   }
 }
 

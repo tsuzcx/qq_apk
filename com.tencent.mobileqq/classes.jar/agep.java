@@ -1,32 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.profile.view.helper.ShakeEffectGenerator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
 
 public class agep
-  implements Animation.AnimationListener
+  extends AnimatorListenerAdapter
 {
-  public agep(VipTagView paramVipTagView) {}
+  public agep(ARTipsManager paramARTipsManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (VipTagView.a(this.a)) {
-      VipTagView.a(this.a).a();
+    if (ARTipsManager.a(this.a) != null) {
+      ARTipsManager.a(this.a).setVisibility(0);
     }
-    VipTagView.a(this.a, false);
-    this.a.invalidate();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    VipTagView.a(this.a, 0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agep
  * JD-Core Version:    0.7.0.1
  */

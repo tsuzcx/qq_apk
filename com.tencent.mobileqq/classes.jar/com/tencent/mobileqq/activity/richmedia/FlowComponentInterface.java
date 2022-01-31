@@ -13,7 +13,7 @@ public abstract interface FlowComponentInterface
   
   public abstract void a(Activity paramActivity, Intent paramIntent);
   
-  public abstract void b(String paramString);
+  public abstract void c_(String paramString);
 }
 
 

@@ -21,8 +21,8 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import jrh;
-import jri;
+import jqs;
+import jqt;
 
 public class BeautyToolbar
   extends BaseToolbar
@@ -35,7 +35,7 @@ public class BeautyToolbar
   private VideoControlUI mControlUI;
   public boolean mIs1stShow = false;
   boolean mIsShown = false;
-  SeekBar.OnSeekBarChangeListener mOnSeekBarChangeListener = new jrh(this);
+  SeekBar.OnSeekBarChangeListener mOnSeekBarChangeListener = new jqs(this);
   public BidirectionSeekBar mSeek = null;
   int mThumbWidth;
   public Drawable mThumb_0;
@@ -63,10 +63,10 @@ public class BeautyToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 4;
-      this.mUIInfo.g = 2130969359;
+      this.mUIInfo.g = 2130969360;
       this.mUIInfo.e = 103415;
-      this.mUIInfo.f = 2130840120;
-      this.mUIInfo.a = this.mApp.getApp().getResources().getString(2131428724);
+      this.mUIInfo.f = 2130840126;
+      this.mUIInfo.a = this.mApp.getApp().getResources().getString(2131428730);
     }
     return this.mUIInfo;
   }
@@ -74,7 +74,7 @@ public class BeautyToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131428731);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131428737);
     }
     return "";
   }
@@ -86,27 +86,27 @@ public class BeautyToolbar
   
   protected void onCreate(AVActivity paramAVActivity)
   {
-    this.mBeautySeekBar = ((RelativeLayout)this.toolbarView.findViewById(2131366250));
-    this.mSeek = ((BidirectionSeekBar)this.toolbarView.findViewById(2131366253));
-    this.mTip = ((TextView)this.toolbarView.findViewById(2131366252));
+    this.mBeautySeekBar = ((RelativeLayout)this.toolbarView.findViewById(2131366277));
+    this.mSeek = ((BidirectionSeekBar)this.toolbarView.findViewById(2131366280));
+    this.mTip = ((TextView)this.toolbarView.findViewById(2131366279));
     this.mTipLayoutParams = null;
     this.mContext = paramAVActivity;
-    this.mThumb_0 = this.mContext.getResources().getDrawable(2130840087);
-    this.mThumb_30 = this.mContext.getResources().getDrawable(2130840089);
-    this.mThumb_60 = this.mContext.getResources().getDrawable(2130840090);
-    this.mThumb_100 = this.mContext.getResources().getDrawable(2130840088);
+    this.mThumb_0 = this.mContext.getResources().getDrawable(2130840093);
+    this.mThumb_30 = this.mContext.getResources().getDrawable(2130840095);
+    this.mThumb_60 = this.mContext.getResources().getDrawable(2130840096);
+    this.mThumb_100 = this.mContext.getResources().getDrawable(2130840094);
     this.mSeek.setMax(100);
     this.mSeek.setOnSeekBarChangeListener(this.mOnSeekBarChangeListener);
-    this.mSeek.getViewTreeObserver().addOnGlobalLayoutListener(new jri(this));
+    this.mSeek.getViewTreeObserver().addOnGlobalLayoutListener(new jqt(this));
     if ((paramAVActivity instanceof AVActivity)) {
       this.mControlUI = paramAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI;
     }
     if (AudioHelper.a(0) == 1)
     {
       this.toolbarView.setBackgroundColor(-16711936);
-      this.toolbarView.findViewById(2131366250).setBackgroundColor(-256);
-      this.toolbarView.findViewById(2131366251).setBackgroundColor(-16711681);
-      this.toolbarView.findViewById(2131366253).setBackgroundColor(-65281);
+      this.toolbarView.findViewById(2131366277).setBackgroundColor(-256);
+      this.toolbarView.findViewById(2131366278).setBackgroundColor(-16711681);
+      this.toolbarView.findViewById(2131366280).setBackgroundColor(-65281);
     }
   }
   
@@ -147,7 +147,7 @@ public class BeautyToolbar
     }
     applyBeautyValue(this.mBeautyValue);
     this.mSeek.setProgress(this.mBeautyValue);
-    this.mSeek.setContentDescription(this.mContext.getResources().getString(2131429254));
+    this.mSeek.setContentDescription(this.mContext.getResources().getString(2131429260));
     this.mControlUI.z();
     Object localObject = VideoController.a().a(((AVActivity)this.mActivity.get()).getApplicationContext());
     if (localObject != null)
@@ -182,7 +182,7 @@ public class BeautyToolbar
     int j = this.mSeek.getWidth();
     this.mTipLayoutParams.leftMargin = (this.mTipLayoutMargin - i / 2 + (j - this.mThumbWidth) * paramInt / 100);
     this.mTip.requestLayout();
-    this.mTip.setText(this.mContext.getResources().getString(2131429254) + paramInt + "%");
+    this.mTip.setText(this.mContext.getResources().getString(2131429260) + paramInt + "%");
   }
 }
 

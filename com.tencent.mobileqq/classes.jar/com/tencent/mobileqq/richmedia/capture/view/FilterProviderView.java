@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import agyf;
-import agyg;
+import ahmh;
+import ahmi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -76,7 +76,7 @@ public class FilterProviderView
   
   protected int a()
   {
-    return 2130970539;
+    return 2130970583;
   }
   
   public ArrayList a()
@@ -102,7 +102,7 @@ public class FilterProviderView
   
   public void a()
   {
-    ThreadManager.getUIHandler().post(new agyf(this));
+    ThreadManager.getUIHandler().post(new ahmh(this));
   }
   
   public void a(int paramInt)
@@ -120,7 +120,7 @@ public class FilterProviderView
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new agyg(this, null);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ahmi(this, null);
     getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("action_brocassreceiver_for_filter"));
     CaptureVideoFilterManager.a().a(this);
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -128,7 +128,7 @@ public class FilterProviderView
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(a());
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.setTabCheckListener(this);
     if (this.jdField_a_of_type_AndroidViewView == null) {}
-    for (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)LayoutInflater.from(getContext()).inflate(2130970539, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_AndroidViewView))
+    for (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)LayoutInflater.from(getContext()).inflate(2130970583, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_AndroidViewView))
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter = new FilterProviderPagerAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Boolean);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter.a(this);
@@ -187,7 +187,7 @@ public class FilterProviderView
     a((FilterCategoryItem)paramAdapterView.get(paramInt));
   }
   
-  public void af_()
+  public void ai_()
   {
     FilterCategoryItem localFilterCategoryItem = CaptureVideoFilterManager.a().a();
     if (localFilterCategoryItem != null) {

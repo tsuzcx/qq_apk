@@ -1,53 +1,26 @@
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
+import VACDReport.ReportRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportMgr;
+import mqq.observer.BusinessObserver;
 
 public class xhl
-  implements PopupMenuDialog.OnClickActionListener
+  implements BusinessObserver
 {
-  public xhl(RecentOptPopBar paramRecentOptPopBar) {}
+  public xhl(VACDReportMgr paramVACDReportMgr) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMenuItem.a)
+    switch (paramInt)
     {
     default: 
       return;
-    case 2131438720: 
-      this.a.g();
-      return;
-    case 2131439161: 
-      this.a.h();
-      return;
-    case 2131436215: 
-      this.a.d();
-      return;
-    case 2131436212: 
-      this.a.c();
-      return;
-    case 2131436219: 
-      this.a.i();
-      return;
-    case 2131436216: 
-      this.a.l();
-      return;
-    case 2131436225: 
-      RecentOptPopBar.a(this.a);
-      return;
-    case 2131436220: 
-      this.a.a(8);
-      ReportController.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
-      return;
-    case 2131436210: 
-      this.a.k();
-      return;
-    case 2131438722: 
-      this.a.e();
+    }
+    if (paramBundle.containsKey("rsp")) {}
+    for (paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;; paramBundle = null)
+    {
+      VACDReportMgr.a(this.a, paramBundle);
       return;
     }
-    this.a.j();
   }
 }
 

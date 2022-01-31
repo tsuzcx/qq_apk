@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteEvaluateViewHolder;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
 public class aiue
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public aiue(ReciteEvaluateViewHolder paramReciteEvaluateViewHolder, boolean paramBoolean) {}
+  public aiue(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    ReciteEvaluateViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ReciteEvaluateViewHolder.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder).setVisibility(4);
-    ReciteEvaluateViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder, this.jdField_a_of_type_Boolean, ReciteEvaluateViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder), ReciteEvaluateViewHolder.c(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder));
+    this.a.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiue
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alng;
+import amcw;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -20,7 +20,7 @@ public class PagerBaseAdapterWrapper
     {
       this.jdField_a_of_type_Int = paramInt;
       if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
-        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new alng(this));
+        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new amcw(this));
       }
       return;
       paramInt = 1;
@@ -89,7 +89,7 @@ public class PagerBaseAdapterWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.PagerBaseAdapterWrapper
  * JD-Core Version:    0.7.0.1
  */

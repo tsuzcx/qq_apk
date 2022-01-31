@@ -1,43 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ygp
-  extends BroadcastReceiver
+  implements MediaPlayer.OnCompletionListener
 {
-  protected WeakReference a;
+  public ygp(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin, String paramString1, String paramString2) {}
   
-  public ygp(QQAppInterface paramQQAppInterface)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      QLog.e("ApolloGameManager", 1, "[onReceive] intent null");
-    }
-    String str;
-    do
+    int i = VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin).a(this.jdField_a_of_type_JavaLangString);
+    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->media:" + this.jdField_a_of_type_JavaLangString + " play completed, soundId:" + i);
+    try
     {
+      paramMediaPlayer = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("id", i);
+      paramMediaPlayer.put("code", 0);
+      paramMediaPlayer.put("data", localJSONObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.b, new String[] { paramMediaPlayer.toString() });
       return;
-      str = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameManager", 2, new Object[] { "[onReceive] action=", str + ", app: " + this.a.get() });
-      }
-      paramContext = (QQAppInterface)this.a.get();
-    } while ((paramContext == null) || (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(str)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
-    paramIntent = paramIntent.getStringExtra("data");
-    ApolloCmdChannel.getChannel(paramContext).handleWebEvent(paramIntent);
+    }
+    catch (JSONException paramMediaPlayer)
+    {
+      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->json exception:" + paramMediaPlayer.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ygp
  * JD-Core Version:    0.7.0.1
  */

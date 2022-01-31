@@ -1,27 +1,18 @@
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abbc
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnDismissListener
 {
-  public abbc(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  public abbc(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    if (ARMapLoadingActivity.a(this.a) != paramValueAnimator.intValue())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapLoadingActivity", 2, String.format("onAnimationUpdate mCurProgress=%s", new Object[] { Integer.valueOf(ARMapLoadingActivity.a(this.a)) }));
-      }
-      ARMapLoadingActivity.a(this.a, paramValueAnimator.intValue());
-      if (ARMapLoadingActivity.a(this.a) != null) {
-        ARMapLoadingActivity.a(this.a).setProgress(ARMapLoadingActivity.a(this.a));
-      }
+    if (ARMapActivity.i(this.a)) {
+      this.a.finish();
     }
+    ARMapActivity.a(this.a, null);
   }
 }
 

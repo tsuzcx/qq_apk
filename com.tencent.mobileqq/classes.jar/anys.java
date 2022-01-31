@@ -1,60 +1,50 @@
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import dov.com.tencent.biz.qqstory.takevideo.EditInteractExport;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.LayerEventListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class anys
-  implements INetEngine.INetEngineListener
+public class anys
+  implements VoteLayer.LayerEventListener
 {
-  anys(anyr paramanyr) {}
+  public anys(DoodleLayout paramDoodleLayout) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void a()
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.c);
-    }
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
+    SLog.b("DoodleLayout", "deleteInteractPaster.");
+    if (DoodleLayout.a(this.a) != null)
     {
-      ZipUtils.a(new File(QIMPtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name), QIMPtvTemplateManager.jdField_a_of_type_JavaLangString);
-      paramNetResp = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-      if (paramNetResp.size() > 0)
-      {
-        i = ((Integer)paramNetResp.get(0)).intValue();
-        localPtvTemplateInfo.type = i;
-        localPtvTemplateInfo = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-        i = j;
-        if (paramNetResp.size() > 1) {
-          i = ((Integer)paramNetResp.get(1)).intValue();
-        }
-        localPtvTemplateInfo.color = i;
-        return;
+      EditInteractExport localEditInteractExport = (EditInteractExport)DoodleLayout.a(this.a).a(EditInteractExport.class);
+      if (localEditInteractExport != null) {
+        localEditInteractExport.b();
       }
     }
-    catch (IOException paramNetResp)
+  }
+  
+  public boolean a(VoteLayer.VoteItem paramVoteItem)
+  {
+    boolean bool = false;
+    if (this.a.a != null)
     {
-      for (;;)
-      {
-        int i;
-        if (QLog.isColorLevel())
-        {
-          paramNetResp.printStackTrace();
-          continue;
-          i = 0;
-        }
+      this.a.a.setVisibility(0);
+      if (this.a.a.a.b()) {
+        this.a.a.a.a().j = false;
       }
+      this.a.a.a.a(paramVoteItem);
+      paramVoteItem.j = true;
+      paramVoteItem = paramVoteItem.a;
+      if (!this.a.a.a()) {
+        bool = true;
+      }
+      paramVoteItem.a(bool);
+      this.a.a.requestLayout();
+      return true;
     }
+    return false;
   }
 }
 

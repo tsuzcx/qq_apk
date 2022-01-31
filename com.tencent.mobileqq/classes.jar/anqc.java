@@ -1,43 +1,35 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowSendTask;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.paster.PasterDataManager;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage.FacePackagePageEventListener;
 
 public class anqc
-  implements Runnable
+  implements FaceListPage.FacePackagePageEventListener
 {
-  public anqc(FlowSendTask paramFlowSendTask) {}
+  public anqc(StaticStickerProviderView paramStaticStickerProviderView) {}
   
-  public void run()
+  public void a()
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.j, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoCacheDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
-      }
-      RecordManager.a().a().recordSubmit();
-      return;
+    SLog.b("StaticStickerProviderView", "用户点击重新拉取地理贴纸");
+    ((PasterDataManager)QIMManager.a(4)).d();
+  }
+  
+  public void a(String paramString)
+  {
+    SLog.b("StaticStickerProviderView", "用户点击下载：" + paramString);
+    VideoEditReport.b("0X80075DD");
+    if (!((DoodleEmojiManager)SuperManager.a(36)).a(paramString, true)) {
+      SLog.d("StaticStickerProviderView", "用户点击下载启动失败");
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        this.a.k = -6;
-        synchronized (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a)
-        {
-          this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.set(true);
-          this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(this.a.j, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoCacheDir:" + this.a.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
-        }
-      }
-    }
+  }
+  
+  public void b(String paramString)
+  {
+    SLog.b("StaticStickerProviderView", "用户点击下载取消：" + paramString);
   }
 }
 

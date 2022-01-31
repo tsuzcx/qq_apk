@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader.OnRefreshHeaderUpdateListener;
 
-class wmx
-  implements Runnable
+public class wmx
+  implements ContactRefreshHeader.OnRefreshHeaderUpdateListener
 {
-  wmx(wmw paramwmw, int paramInt) {}
+  public wmx(ContactsViewController paramContactsViewController) {}
   
-  public void run()
+  public long a()
   {
-    this.jdField_a_of_type_Wmw.a.a(36, 16, Integer.valueOf(this.jdField_a_of_type_Int));
+    return ContactsViewController.a(this.a);
   }
 }
 

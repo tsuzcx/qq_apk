@@ -1,102 +1,107 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.EmoticonHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ContactCard;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.model.QueryCallback;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class sme
-  implements ActionSheet.OnButtonClickListener
+  implements QueryCallback
 {
-  public sme(FriendProfileCardActivity paramFriendProfileCardActivity, PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean, ActionSheet paramActionSheet) {}
+  public sme(EmosmActivity paramEmosmActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(List paramList)
   {
-    boolean bool = true;
-    switch (paramInt)
-    {
+    if (paramList == null) {
+      return;
+    }
+    int j = paramList.size();
+    int i = 0;
+    label14:
+    if (i < j) {
+      if (((EmoticonPackage)paramList.get(i)).jobType != 3) {}
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-      Object localObject;
-      if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getApplication().getApplicationContext()))
+      ArrayList localArrayList = new ArrayList();
+      Object localObject1;
+      Object localObject2;
+      if (1 == this.a.b)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k;
-        paramView = (View)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.nickName;
-        }
-        localObject = ForwardShareCardOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.bindQQ);
-        paramView = new Bundle();
-        paramView.putString("uin", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataContactCard.mobileNo);
-        paramView.putInt("uintype", 1006);
-        paramView.putInt("forward_type", 20);
-        paramView.putInt("structmsg_service_id", ((AbsShareMsg)localObject).mMsgServiceID);
-        paramView.putByteArray("stuctmsg_bytes", ((AbsShareMsg)localObject).getBytes());
-        paramView.putBoolean("k_dataline", false);
-        paramView.putInt("pa_type", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int);
-        localObject = new Intent();
-        ((Intent)localObject).putExtras(paramView);
-        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, (Intent)localObject, 21);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 53) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007016", "0X8007016", 0, 0, "", "", "", "");
-        } else {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "CliOper", "", "", "0X8007168", "0X8007168", 0, 0, "", "", "", "");
-        }
-      }
-      else
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1, "当前网络不可用", 1000).a();
-        continue;
-        if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app.getApplication().getApplicationContext()))
+        if (i == -1)
         {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
-          localObject = FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-          label403:
-          QQAppInterface localQQAppInterface;
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            paramView.a((String)localObject, bool);
-            this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.G();
-            localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app;
-            if (!this.jdField_a_of_type_Boolean) {
-              break label479;
-            }
-            paramView = "0X800603E";
-            label436:
-            if (!this.jdField_a_of_type_Boolean) {
-              break label485;
-            }
+          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (paramList.hasNext()) {
+            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
           }
-          label479:
-          label485:
-          for (localObject = "0X800603E";; localObject = "0X800603D")
-          {
-            ReportController.b(localQQAppInterface, "CliOper", "", "", paramView, (String)localObject, 0, 0, "", "", "", "");
-            break;
-            bool = false;
-            break label403;
-            paramView = "0X800603D";
-            break label436;
+          i += 1;
+          break label14;
+        }
+        localObject1 = new ArrayList();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject2 = (EmoticonPackage)paramList.next();
+          if (((EmoticonPackage)localObject2).jobType == 3) {
+            ((ArrayList)localObject1).add(((EmoticonPackage)localObject2).epId);
           }
         }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, 1, "当前网络不可用", 1000).a();
+        if (i >= this.a.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (paramList.hasNext()) {
+            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
+          }
+          localArrayList.addAll((Collection)localObject1);
+        }
       }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(localArrayList, 0);
+        paramList = (EmoticonHandler)this.a.app.a(12);
+        if (paramList == null) {
+          break;
+        }
+        paramList.a(localArrayList, true, 0);
+        return;
+        int k = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+        j = 0;
+        while (j < k)
+        {
+          paramList = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(j);
+          if (j == i) {
+            localArrayList.addAll((Collection)localObject1);
+          }
+          localArrayList.add(paramList.epId);
+          j += 1;
+        }
+        continue;
+        if (2 == this.a.b)
+        {
+          k = paramList.size();
+          j = 0;
+          while (j < k)
+          {
+            localObject1 = (EmoticonPackage)paramList.get(j);
+            if (j == i)
+            {
+              localObject2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+              while (((Iterator)localObject2).hasNext()) {
+                localArrayList.add(((EmoticonPackage)((Iterator)localObject2).next()).epId);
+              }
+            }
+            if (((EmoticonPackage)localObject1).jobType != 3) {
+              localArrayList.add(((EmoticonPackage)localObject1).epId);
+            }
+            j += 1;
+          }
+        }
+      }
+      i = -1;
     }
   }
 }

@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-class wgn
-  implements Runnable
+public class wgn
+  implements BubblePopupWindow.OnDismissListener
 {
-  wgn(wgm paramwgm) {}
+  public wgn(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.a.c();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

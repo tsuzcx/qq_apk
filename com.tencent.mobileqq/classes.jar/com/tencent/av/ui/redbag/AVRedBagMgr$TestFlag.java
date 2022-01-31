@@ -6,24 +6,24 @@ import android.widget.PopupMenu;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
+import kee;
+import kef;
+import keg;
+import keh;
+import kej;
+import kek;
+import kel;
+import kem;
+import ken;
+import keo;
+import kep;
+import keq;
+import ker;
+import kes;
 import ket;
 import keu;
 import kev;
 import kew;
-import key;
-import kez;
-import kfa;
-import kfb;
-import kfc;
-import kfd;
-import kfe;
-import kff;
-import kfg;
-import kfh;
-import kfi;
-import kfj;
-import kfk;
-import kfl;
 
 public class AVRedBagMgr$TestFlag
 {
@@ -62,28 +62,28 @@ public class AVRedBagMgr$TestFlag
     {
       if (i != 0)
       {
-        AVRedBagMgr.a(localVideoAppInterface, localMenu, "抢红包", new kff(this, paramAVRedBagMgr));
-        AVRedBagMgr.a(localVideoAppInterface, localMenu, "显示debug页面", new kfg(this, localVideoAppInterface));
+        AVRedBagMgr.a(localVideoAppInterface, localMenu, "抢红包", new keq(this, paramAVRedBagMgr));
+        AVRedBagMgr.a(localVideoAppInterface, localMenu, "显示debug页面", new ker(this, localVideoAppInterface));
       }
       paramPopupMenu = AVRedBagMgr.a(localVideoAppInterface, localMenu, "新手tips相关");
-      AVRedBagMgr.a(localVideoAppInterface, paramPopupMenu, "清除新手tips的计数", new kfh(this, localVideoAppInterface));
-      AVRedBagMgr.a(localVideoAppInterface, paramPopupMenu, "清除游戏指引的计数", new kfi(this, localVideoAppInterface));
-      AVRedBagMgr.a(localVideoAppInterface, paramPopupMenu, "立即显示新手tips（正式）", new kfj(this, paramAVRedBagMgr));
+      AVRedBagMgr.a(localVideoAppInterface, paramPopupMenu, "清除新手tips的计数", new kes(this, localVideoAppInterface));
+      AVRedBagMgr.a(localVideoAppInterface, paramPopupMenu, "清除游戏指引的计数", new ket(this, localVideoAppInterface));
+      AVRedBagMgr.a(localVideoAppInterface, paramPopupMenu, "立即显示新手tips（正式）", new keu(this, paramAVRedBagMgr));
       if (i != 0)
       {
-        AVRedBagMgr.a(localVideoAppInterface, paramPopupMenu, "立即显示新手tips（全红）", new kfk(this, paramAVRedBagMgr));
-        AVRedBagMgr.a(localVideoAppInterface, localMenu, "结果页", new kfl(this, paramAVRedBagMgr));
-        AVRedBagMgr.a(localVideoAppInterface, localMenu, "发红包", new keu(this, paramAVRedBagMgr));
-        AVRedBagMgr.a(localVideoAppInterface, localMenu, "测试小灰条消息", new kev(this, paramAVRedBagMgr));
-        AVRedBagMgr.a(localVideoAppInterface, localMenu, "TYPE_Request_Refresh_RecordBtn", new kew(this, localVideoAppInterface, paramAVRedBagMgr));
+        AVRedBagMgr.a(localVideoAppInterface, paramPopupMenu, "立即显示新手tips（全红）", new kev(this, paramAVRedBagMgr));
+        AVRedBagMgr.a(localVideoAppInterface, localMenu, "结果页", new kew(this, paramAVRedBagMgr));
+        AVRedBagMgr.a(localVideoAppInterface, localMenu, "发红包", new kef(this, paramAVRedBagMgr));
+        AVRedBagMgr.a(localVideoAppInterface, localMenu, "测试小灰条消息", new keg(this, paramAVRedBagMgr));
+        AVRedBagMgr.a(localVideoAppInterface, localMenu, "TYPE_Request_Refresh_RecordBtn", new keh(this, localVideoAppInterface, paramAVRedBagMgr));
         if (!this.jdField_b_of_type_Boolean) {
           break label388;
         }
         paramPopupMenu = "恢复正常发红包逻辑(当前已经忽略发红包错误)";
         label241:
-        AVRedBagMgr.a(localVideoAppInterface, localMenu, paramPopupMenu, new key(this));
-        AVRedBagMgr.a(localVideoAppInterface, localMenu, "让入口可用", new kez(this, paramAVRedBagMgr));
-        AVRedBagMgr.a(localVideoAppInterface, localMenu, "reOpenCamera", new kfa(this, localVideoAppInterface));
+        AVRedBagMgr.a(localVideoAppInterface, localMenu, paramPopupMenu, new kej(this));
+        AVRedBagMgr.a(localVideoAppInterface, localMenu, "让入口可用", new kek(this, paramAVRedBagMgr));
+        AVRedBagMgr.a(localVideoAppInterface, localMenu, "reOpenCamera", new kel(this, localVideoAppInterface));
         if (!this.jdField_a_of_type_Boolean) {
           break label394;
         }
@@ -93,9 +93,9 @@ public class AVRedBagMgr$TestFlag
     label394:
     for (paramAVRedBagMgr = "表情掉落减速：开";; paramAVRedBagMgr = "表情掉落减速：关")
     {
-      AVRedBagMgr.a(localVideoAppInterface, localMenu, paramAVRedBagMgr, new kfb(this));
-      AVRedBagMgr.a(localVideoAppInterface, localMenu, "禁用C2C发包索引:" + this.jdField_a_of_type_Int, new kfc(this));
-      AVRedBagMgr.a(localVideoAppInterface, localMenu, "显示debuginfo", new kfd(this, localVideoAppInterface));
+      AVRedBagMgr.a(localVideoAppInterface, localMenu, paramAVRedBagMgr, new kem(this));
+      AVRedBagMgr.a(localVideoAppInterface, localMenu, "禁用C2C发包索引:" + this.jdField_a_of_type_Int, new ken(this));
+      AVRedBagMgr.a(localVideoAppInterface, localMenu, "显示debuginfo", new keo(this, localVideoAppInterface));
       return;
       i = 0;
       break;
@@ -112,13 +112,13 @@ public class AVRedBagMgr$TestFlag
   public void c(AVRedBagMgr paramAVRedBagMgr)
   {
     paramAVRedBagMgr.a().finish();
-    paramAVRedBagMgr.a().a().postDelayed(new ket(this, paramAVRedBagMgr), 3000L);
+    paramAVRedBagMgr.a().a().postDelayed(new kee(this, paramAVRedBagMgr), 3000L);
   }
   
   public void d(AVRedBagMgr paramAVRedBagMgr)
   {
     paramAVRedBagMgr.a().finish();
-    paramAVRedBagMgr.a().a().postDelayed(new kfe(this, paramAVRedBagMgr), 5000L);
+    paramAVRedBagMgr.a().a().postDelayed(new kep(this, paramAVRedBagMgr), 5000L);
   }
 }
 

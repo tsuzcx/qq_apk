@@ -1,17 +1,20 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
-import java.util.Map;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackJumpInfo;
 
 public class lsk
-  implements FeedItemCell.CellListener
+  implements View.OnClickListener
 {
-  public lsk(ProteusItemView paramProteusItemView, ReadInJoyBaseAdapter.OnLastReadRefreshListener paramOnLastReadRefreshListener) {}
+  public lsk(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, oidb_cmd0x68b.PackJumpInfo paramPackJumpInfo) {}
   
-  public void a(View paramView, Map paramMap)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$OnLastReadRefreshListener.a();
+    paramView = this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_url.get();
+    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), paramView);
+    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_wording.get());
   }
 }
 

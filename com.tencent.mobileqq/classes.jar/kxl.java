@@ -1,23 +1,18 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class kxl
   implements Runnable
 {
-  public kxl(AdModuleBase paramAdModuleBase) {}
+  public kxl(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton != null)
-    {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130838504);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.a.jdField_a_of_type_AndroidContentContext.getText(2131438675));
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-1);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(0);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(true);
-    }
-    this.a.c = 0;
+    ReadInJoyNativeAdAppVideoView.e(this.a, 5);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    QQToast.a(ReadInJoyNativeAdAppVideoView.a(this.a), 1, "视频加载失败，请稍后重试", 0).a();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
   }
 }
 

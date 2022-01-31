@@ -1,20 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.utils.QQLSSensor;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 public class tix
-  implements BusinessObserver
+  implements Runnable
 {
-  public tix(QQSettingMe paramQQSettingMe) {}
+  public tix(QQLSActivity paramQQLSActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSSensor", 2, "====shutSensor===" + Thread.currentThread().getId());
+    }
+    if (this.a.a != null)
     {
-      QLog.i("SSOHttpUtils", 2, "PublicAccount RefreshStepsObserver onReceive");
-      ThreadManager.post(new tiy(this), 5, null, true);
+      this.a.a.b();
+      this.a.a = null;
     }
   }
 }

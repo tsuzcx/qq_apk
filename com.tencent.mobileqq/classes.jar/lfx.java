@@ -1,23 +1,32 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.pubaccount.PublicAccountUnfollowTask.UnFollowPublicAccountListenner;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkUtil;
+import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class lfx
-  implements PublicAccountUnfollowTask.UnFollowPublicAccountListenner
+class lfx
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public lfx(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, Context paramContext) {}
+  lfx(lfw paramlfw) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyArkUtil", 2, new Object[] { "retCode: ", Integer.valueOf(paramInt), ", msg: ", paramString });
+    }
+    if ((paramAppPathInfo != null) && (paramInt == 0))
     {
-      new Handler(Looper.getMainLooper()).postDelayed(new lfy(this), 500L);
+      paramString = paramAppPathInfo.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDesc;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArkUtil", 2, new Object[] { "preDownloadArkApp succeed, appPath: ", paramAppPathInfo.jdField_a_of_type_JavaLangString, ", appName: ", paramString.jdField_a_of_type_JavaLangString, ", appVersion: ", paramString.b });
+      }
+      ReadInJoyArkUtil.a(new lfy(this, paramString), 5);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, "取消关注失败，请检查网络设置！", 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyArkUtil", 2, new Object[] { "preDownloadArkApp appPath is null or downloadFailed, retryTimes: ", Integer.valueOf(this.a.jdField_a_of_type_Int) });
+    }
+    ReadInJoyArkUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage, this.a.jdField_a_of_type_Int + 1);
   }
 }
 

@@ -1,14 +1,55 @@
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.av.ui.BeautyToolbar;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.widget.BidirectionSeekBar;
 
-class jqs
-  implements Runnable
+public class jqs
+  implements SeekBar.OnSeekBarChangeListener
 {
-  jqs(jqo paramjqo, DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jqs(BeautyToolbar paramBeautyToolbar) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.setViewEnable(2131365377, false);
+    if (this.a.mBeautyValue != paramInt)
+    {
+      this.a.applyBeautyValue(paramInt);
+      this.a.updateTip(paramInt);
+      if ((paramInt != 0) || (this.a.mBeautyValue <= 0)) {
+        break label142;
+      }
+      this.a.mSeek.setThumb(this.a.mThumb_0);
+    }
+    for (;;)
+    {
+      if (paramBoolean) {
+        this.a.mSeek.setContentDescription(this.a.mContext.getResources().getString(2131429260) + paramInt + "%");
+      }
+      this.a.mBeautyValue = paramInt;
+      this.a.applyBeautyValue(this.a.mBeautyValue);
+      EffectSettingUi.a(this.a.mApp);
+      return;
+      label142:
+      if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
+        this.a.mSeek.setThumb(this.a.mThumb_30);
+      } else if ((paramInt > 30) && (paramInt <= 60) && ((this.a.mBeautyValue <= 30) || (this.a.mBeautyValue > 60))) {
+        this.a.mSeek.setThumb(this.a.mThumb_60);
+      } else if ((paramInt > 60) && (paramInt <= 100) && ((this.a.mBeautyValue <= 60) || (this.a.mBeautyValue > 100))) {
+        this.a.mSeek.setThumb(this.a.mThumb_100);
+      }
+    }
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    EffectSettingUi.a(this.a.mApp);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    EffectSettingUi.a(this.a.mApp);
   }
 }
 

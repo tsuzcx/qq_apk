@@ -1,26 +1,12 @@
-import com.tencent.mobileqq.app.HotChatObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
+import com.tencent.qphone.base.util.QLog;
 
-public class znr
-  extends HotChatObserver
+public final class znr
+  extends Thread
 {
-  private znr(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
-  
-  protected void a(int paramInt)
+  public void run()
   {
-    if (GetJoinedHotChatListStep.a(this.a) != null)
-    {
-      GetJoinedHotChatListStep.a(this.a).b.removeObserver(GetJoinedHotChatListStep.a(this.a));
-      GetJoinedHotChatListStep.a(this.a, null);
-    }
-    if (paramInt == 0)
-    {
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
+    com.tencent.mobileqq.app.ThreadManager.IsRunTimeShutDown = true;
+    QLog.i("ThreadManager", 2, "QQ Runtime ShutDown");
   }
 }
 

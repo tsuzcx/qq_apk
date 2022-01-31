@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.qq.im.poi.LbsPackInfo;
-import com.qq.im.poi.LbsPackListAdapter;
-import com.qq.im.poi.LbsPackListAdapter.LbsPackItemCallback;
+import com.qq.im.poi.LbsPackPoiListActivity;
+import com.qq.im.poi.LbsPackPoiListAdapter.onClickListener;
+import com.qq.im.poi.PoiInfo;
 
 public class anq
-  implements View.OnClickListener
+  implements LbsPackPoiListAdapter.onClickListener
 {
-  public anq(LbsPackListAdapter paramLbsPackListAdapter, LbsPackInfo paramLbsPackInfo, int paramInt) {}
+  public anq(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(PoiInfo paramPoiInfo)
   {
-    if (LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter) != null) {
-      LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter).b(this.jdField_a_of_type_ComQqImPoiLbsPackInfo, this.jdField_a_of_type_Int);
-    }
+    LbsPackPoiListActivity.a(this.a, paramPoiInfo);
   }
 }
 

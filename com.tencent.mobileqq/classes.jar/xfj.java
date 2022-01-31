@@ -1,28 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.mobileqq.vip.DownloadListener;
 
 public class xfj
-  implements View.OnClickListener
+  extends AbsPreDownloadTask
 {
-  public xfj(BannerManager paramBannerManager) {}
-  
-  public void onClick(View paramView)
+  public xfj(PreloadComDownloader paramPreloadComDownloader, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, Bundle paramBundle, DownloadListener paramDownloadListener)
   {
-    if (UpgradeController.a().a() == 4) {
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
-    }
-    for (;;)
-    {
-      this.a.a(10, 0);
-      this.a.a(-1, null);
-      return;
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
-    }
+    super(paramQQAppInterface, paramString1);
+  }
+  
+  protected void a()
+  {
+    PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
   }
 }
 

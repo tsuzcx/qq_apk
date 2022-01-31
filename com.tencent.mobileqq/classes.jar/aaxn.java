@@ -1,37 +1,50 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.armap.ShopScanDragView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAiInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.ark.ArkRecommendController.ReferencCount;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkContextInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aaxn
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public aaxn(ShopScanDragView paramShopScanDragView) {}
+  public aaxn(ArkRecommendController paramArkRecommendController, RecommendCommonMessage paramRecommendCommonMessage, RecommendCommonMessage.ArkContextInfo paramArkContextInfo, ArkAiInfo paramArkAiInfo, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    ShopScanDragView.a(this.a).setAlpha(1.0F);
-    ShopScanDragView.b(this.a).setAlpha(0.0F);
-    ShopScanDragView.a(this.a).setVisibility(0);
-    ShopScanDragView.b(this.a).setVisibility(4);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ShopScanDragView.a(this.a).setAlpha(1.0F);
-    ShopScanDragView.b(this.a).setAlpha(0.0F);
-    ShopScanDragView.a(this.a).setVisibility(0);
-    ShopScanDragView.b(this.a).setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ShopScanDragView.a(this.a).setAlpha(0.0F);
-    ShopScanDragView.a(this.a).setVisibility(0);
-    ShopScanDragView.b(this.a).setAlpha(1.0F);
-    ShopScanDragView.b(this.a).setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mContextList.add(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkContextInfo);
+    this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mEchoType = this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.a;
+    this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mContextMatchType = this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.b;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (localQQAppInterface == null) {}
+    for (;;)
+    {
+      return;
+      ArkRecommendController.ReferencCount localReferencCount = new ArkRecommendController.ReferencCount();
+      localReferencCount.a = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mContextList.size();
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mContextList.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (RecommendCommonMessage.ArkContextInfo)localIterator.next();
+        String[] arrayOfString = ((RecommendCommonMessage.ArkContextInfo)localObject).context.split("\\.");
+        if (arrayOfString.length != 2)
+        {
+          localReferencCount.a -= 1;
+        }
+        else
+        {
+          ArkAppCenter localArkAppCenter = (ArkAppCenter)localQQAppInterface.getManager(120);
+          localObject = new aaxo(this, (RecommendCommonMessage.ArkContextInfo)localObject);
+          localArkAppCenter.a().a(arrayOfString[0], arrayOfString[1], 1, null, null, localReferencCount, (ArkLocalAppMgr.IGetAppPathByActionCallback)localObject);
+        }
+      }
+    }
   }
 }
 

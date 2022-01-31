@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import lai;
+import kzt;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -99,7 +99,7 @@ public class BusinessReporter
       if (a()) {
         break label54;
       }
-      ThreadManager.post(new lai(str, paramCustomWebView), 5, null, true);
+      ThreadManager.post(new kzt(str, paramCustomWebView), 5, null, true);
     }
     label54:
     while (!a(str)) {

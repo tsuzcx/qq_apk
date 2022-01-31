@@ -1,29 +1,65 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
-import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
 
 public class yka
-  implements Runnable
+  implements ApolloResDownloader.OnApolloDownLoadListener
 {
-  public yka(ChatPieApolloViewController paramChatPieApolloViewController, BaseChatPie paramBaseChatPie) {}
+  public yka(ApolloManager paramApolloManager) {}
   
-  public void run()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (ApolloActionHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a) != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatPieApolloViewController", 2, "Apollo switch NOT open.");
+    if (paramBoolean) {
+      if ((paramInt1 > 0) && (!ApolloUtil.c(paramInt1))) {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "role rsc NOT complete.");
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().obtainMessage(62).sendToTarget();
-      return;
     }
-    ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().obtainMessage(65).sendToTarget();
+    label96:
+    do
+    {
+      do
+      {
+        return;
+        if (paramArrayOfInt != null)
+        {
+          paramInt1 = 0;
+          for (;;)
+          {
+            if (paramInt1 >= paramArrayOfInt.length) {
+              break label96;
+            }
+            if (!ApolloUtil.b(paramArrayOfInt[paramInt1]))
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("ApolloManager", 2, "dress rsc NOT complete, id:" + paramArrayOfInt[paramInt1]);
+              return;
+            }
+            paramInt1 += 1;
+          }
+        }
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        ((VasExtensionHandler)this.a.a.a(71)).a(2, true, paramArrayOfInt);
+      } while (!QLog.isColorLevel());
+      QLog.d("ApolloManager", 2, "apollo dress download ok notifyUI uin: " + paramString.substring(0, 4));
+      return;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        ((VasExtensionHandler)this.a.a.a(71)).a(2, false, paramArrayOfInt);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloManager", 2, "apollo dress download failed " + paramString.substring(0, 4));
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import akav;
-import akaw;
-import akax;
+import akpc;
+import akpd;
+import akpe;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -54,7 +54,7 @@ public class SwiftBrowserMiscHandler
     } while (paramScreenShotCallback == null);
     paramScreenShotCallback.a("");
     return;
-    ThreadManager.post(new akax(this, ScreenShotUtil.a(localCustomWebView, paramInt1, paramInt2), paramScreenShotCallback), 8, null, true);
+    ThreadManager.post(new akpe(this, ScreenShotUtil.a(localCustomWebView, paramInt1, paramInt2), paramScreenShotCallback), 8, null, true);
   }
   
   public void a(int paramInt, Bundle paramBundle)
@@ -79,7 +79,7 @@ public class SwiftBrowserMiscHandler
         this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.e();
       }
     } while (!this.jdField_a_of_type_Boolean);
-    ThreadManager.executeOnFileThread(new akaw(this));
+    ThreadManager.executeOnFileThread(new akpd(this));
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -139,12 +139,12 @@ public class SwiftBrowserMiscHandler
       {
         if (this.jdField_a_of_type_AndroidViewViewGroup == null)
         {
-          RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.findViewById(2131363436);
-          this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2130970891, null));
+          RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.findViewById(2131363454);
+          this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2130970939, null));
           RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
           localLayoutParams.addRule(12);
           localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewViewGroup, localLayoutParams);
-          this.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(new akav(this));
+          this.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(new akpc(this));
         }
         if (this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer == null) {
           this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer = new ColorRingPlayer(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, this.jdField_a_of_type_AndroidViewViewGroup);
@@ -170,7 +170,7 @@ public class SwiftBrowserMiscHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler
  * JD-Core Version:    0.7.0.1
  */

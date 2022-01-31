@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aidc;
+import airf;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.media.MediaMetadataRetriever;
@@ -82,7 +82,7 @@ public class ShortVideoUploadABTest
     for (;;)
     {
       localStringBuilder1.append("StepInfo:").append(paramABTestInfo.jdField_c_of_type_JavaLangString).append("\n");
-      localStringBuilder1.append("版本:").append("7.6.0.3525.2018-05-05.r345599.BanBenPuJi");
+      localStringBuilder1.append("版本:").append("7.6.3.3560.2018-05-25.r349884.GuanWang");
       return localStringBuilder1.toString();
       str = "失败(";
       break;
@@ -124,7 +124,7 @@ public class ShortVideoUploadABTest
         localObject1 = new SessionInfo();
         ((SessionInfo)localObject1).jdField_a_of_type_Int = jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadABTest$ABTestInfo.jdField_a_of_type_Int;
         ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString = jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadABTest$ABTestInfo.jdField_a_of_type_JavaLangString;
-        ThreadManager.getUIHandler().postDelayed(new aidc(paramQQAppInterface, (SessionInfo)localObject1, localStringBuilder1), 200L);
+        ThreadManager.getUIHandler().postDelayed(new airf(paramQQAppInterface, (SessionInfo)localObject1, localStringBuilder1), 200L);
         jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadABTest$ABTestInfo = null;
         b = null;
         return;
@@ -340,7 +340,7 @@ public class ShortVideoUploadABTest
     {
       localStringBuilder1.append("分片耗时:").append(paramABTestInfo.jdField_e_of_type_JavaLangString).append("\n");
       localStringBuilder1.append("uniSeq:").append(paramABTestInfo.k).append("\n");
-      localStringBuilder1.append("版本:").append("7.6.0.3525.2018-05-05.r345599.BanBenPuJi");
+      localStringBuilder1.append("版本:").append("7.6.3.3560.2018-05-25.r349884.GuanWang");
       return localStringBuilder1.toString();
       str = "失败-";
       break;
@@ -373,7 +373,7 @@ public class ShortVideoUploadABTest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoUploadABTest
  * JD-Core Version:    0.7.0.1
  */

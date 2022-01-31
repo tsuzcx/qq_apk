@@ -1,38 +1,76 @@
-import android.content.res.Resources;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class amiw
-  implements Runnable
+public class amiw
+  implements OnPluginInstallListener, Runnable
 {
-  amiw(amiv paramamiv, int paramInt) {}
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  public void run()
+  public amiw(AppRuntime paramAppRuntime, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Amiv.a.a == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Int <= 0) {
-          break;
-        }
-        String str = "超出" + this.jdField_a_of_type_Int + "个字";
-        int i = this.jdField_a_of_type_Amiv.a.getResources().getColor(2131493812);
-        this.jdField_a_of_type_Amiv.a.a.setTextColor(i);
-        this.jdField_a_of_type_Amiv.a.a.setText(str);
-        if (this.jdField_a_of_type_Amiv.a.a.getVisibility() != 0) {
-          this.jdField_a_of_type_Amiv.a.a.setVisibility(0);
-        }
-      } while (!this.jdField_a_of_type_Amiv.a.b);
-      QQToast.a(this.jdField_a_of_type_Amiv.a, 2131432429, 0).a();
-      this.jdField_a_of_type_Amiv.a.b = false;
-      return;
-    } while (this.jdField_a_of_type_Amiv.a.a.getVisibility() == 8);
-    this.jdField_a_of_type_Amiv.a.a.setVisibility(8);
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    if (paramIntent != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramIntent.getParcelableExtra("result"));
+    }
   }
+  
+  public IBinder asBinder()
+  {
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BuscardHelper", 2, "onInstallBegin");
+    }
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BuscardHelper", 2, "onInstallDownloadProgress");
+    }
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, null);
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BuscardHelper", 2, "onInstallError");
+    }
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      paramString = new Bundle();
+      paramString.putParcelable("nfcIntent", this.jdField_a_of_type_AndroidContentIntent);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(-2, paramString);
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BuscardHelper", 2, "onInstallFinish");
+    }
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      paramString = new Bundle();
+      paramString.putParcelable("nfcIntent", this.jdField_a_of_type_AndroidContentIntent);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(4, paramString);
+    }
+  }
+  
+  public void run() {}
 }
 
 

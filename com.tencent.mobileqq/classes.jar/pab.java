@@ -1,42 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.ui.IPullRefreshHeader;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class pab
-  implements AsyncBack
+  implements OverScrollViewListener
 {
-  public pab(OfflinePlugin paramOfflinePlugin, JsBridgeListener paramJsBridgeListener) {}
+  public pab(RefreshView paramRefreshView) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject();
-        paramString.put("retcode", -1);
-        paramString.put("msg", "error");
-        this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.callJs(this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + paramString);
-        return;
-      }
+    if (this.a.jdField_a_of_type_Int == 2)
+    {
+      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.Y_();
+      return;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 121;
-    localMessage.obj = new Object[] { this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, paramString };
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.c(0L);
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2)
+    {
+      RefreshView.a(this.a, false);
+      this.a.b(RefreshView.a(this.a));
+      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a(0L);
+      this.a.jdField_a_of_type_Int = 2;
+      RefreshView.a(this.a);
+    }
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2) {
+      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.b(0L);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.b();
   }
 }
 

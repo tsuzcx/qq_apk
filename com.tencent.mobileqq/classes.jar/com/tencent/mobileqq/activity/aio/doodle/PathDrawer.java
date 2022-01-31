@@ -16,7 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import upu;
+import usw;
 
 public class PathDrawer
   implements MyParcelable
@@ -35,7 +35,7 @@ public class PathDrawer
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new upu();
+    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new usw();
   }
   
   public PathDrawer(MyParcel paramMyParcel)
@@ -430,6 +430,9 @@ public class PathDrawer
         a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData);
       }
       return false;
+    }
+    if ((paramLong2 == 0L) && (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)) {
+      return true;
     }
     int j = a(l, true);
     int i = a(paramLong2, false);

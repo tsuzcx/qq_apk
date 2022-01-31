@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alok;
+import amea;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -23,7 +23,7 @@ public class UpSideDownDrawable
   implements Handler.Callback
 {
   private int jdField_a_of_type_Int;
-  private alok jdField_a_of_type_Alok;
+  private amea jdField_a_of_type_Amea;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
@@ -62,25 +62,25 @@ public class UpSideDownDrawable
       this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
       this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new AccelerateDecelerateInterpolator());
       this.c = this.f;
-      this.jdField_a_of_type_Alok = new alok(this);
+      this.jdField_a_of_type_Amea = new amea(this);
       return;
     }
   }
   
   private void e()
   {
-    this.jdField_a_of_type_Alok.jdField_a_of_type_Int = (this.g - this.e);
-    this.jdField_a_of_type_Alok.jdField_b_of_type_Int = (-(this.g - this.f - this.e));
-    this.jdField_a_of_type_Alok.c = 8000;
-    this.jdField_a_of_type_Alok.d = 3;
+    this.jdField_a_of_type_Amea.jdField_a_of_type_Int = (this.g - this.e);
+    this.jdField_a_of_type_Amea.jdField_b_of_type_Int = (-(this.g - this.f - this.e));
+    this.jdField_a_of_type_Amea.c = 8000;
+    this.jdField_a_of_type_Amea.d = 3;
   }
   
   private void f()
   {
-    this.jdField_a_of_type_Alok.jdField_a_of_type_Int = this.f;
-    this.jdField_a_of_type_Alok.jdField_b_of_type_Int = (this.g - this.f - this.e);
-    this.jdField_a_of_type_Alok.c = 8000;
-    this.jdField_a_of_type_Alok.d = 2;
+    this.jdField_a_of_type_Amea.jdField_a_of_type_Int = this.f;
+    this.jdField_a_of_type_Amea.jdField_b_of_type_Int = (this.g - this.f - this.e);
+    this.jdField_a_of_type_Amea.c = 8000;
+    this.jdField_a_of_type_Amea.d = 2;
   }
   
   public Bitmap a()
@@ -93,10 +93,10 @@ public class UpSideDownDrawable
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Alok.jdField_a_of_type_Int = this.f;
-    this.jdField_a_of_type_Alok.jdField_b_of_type_Int = (this.g - this.f - this.e);
-    this.jdField_a_of_type_Alok.c = 8000;
-    this.jdField_a_of_type_Alok.d = 2;
+    this.jdField_a_of_type_Amea.jdField_a_of_type_Int = this.f;
+    this.jdField_a_of_type_Amea.jdField_b_of_type_Int = (this.g - this.f - this.e);
+    this.jdField_a_of_type_Amea.c = 8000;
+    this.jdField_a_of_type_Amea.d = 2;
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
   
@@ -105,10 +105,10 @@ public class UpSideDownDrawable
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_Alok.jdField_a_of_type_Int = this.f;
-    this.jdField_a_of_type_Alok.jdField_b_of_type_Int = (this.g - this.f - this.e);
-    this.jdField_a_of_type_Alok.c = 8000;
-    this.jdField_a_of_type_Alok.d = 2;
+    this.jdField_a_of_type_Amea.jdField_a_of_type_Int = this.f;
+    this.jdField_a_of_type_Amea.jdField_b_of_type_Int = (this.g - this.f - this.e);
+    this.jdField_a_of_type_Amea.c = 8000;
+    this.jdField_a_of_type_Amea.d = 2;
     this.c = this.f;
     this.jdField_a_of_type_Boolean = false;
     invalidateSelf();
@@ -121,13 +121,13 @@ public class UpSideDownDrawable
     }
     if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2))
     {
-      this.jdField_a_of_type_Alok.d = 2;
-      this.jdField_a_of_type_Alok.jdField_b_of_type_Int = (this.g - this.f - this.e);
+      this.jdField_a_of_type_Amea.d = 2;
+      this.jdField_a_of_type_Amea.jdField_b_of_type_Int = (this.g - this.f - this.e);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Alok.jdField_a_of_type_Int = this.c;
-      this.jdField_a_of_type_Alok.c = (this.jdField_a_of_type_AndroidWidgetScroller.getDuration() - this.jdField_a_of_type_AndroidWidgetScroller.timePassed());
+      this.jdField_a_of_type_Amea.jdField_a_of_type_Int = this.c;
+      this.jdField_a_of_type_Amea.c = (this.jdField_a_of_type_AndroidWidgetScroller.getDuration() - this.jdField_a_of_type_AndroidWidgetScroller.timePassed());
       this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
@@ -135,8 +135,8 @@ public class UpSideDownDrawable
       return;
       if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(3))
       {
-        this.jdField_a_of_type_Alok.d = 3;
-        this.jdField_a_of_type_Alok.jdField_b_of_type_Int = (-(this.g - this.f - this.e));
+        this.jdField_a_of_type_Amea.d = 3;
+        this.jdField_a_of_type_Amea.jdField_b_of_type_Int = (-(this.g - this.f - this.e));
       }
     }
   }
@@ -178,8 +178,8 @@ public class UpSideDownDrawable
     default: 
       return false;
     case 1: 
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, this.jdField_a_of_type_Alok.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Alok.jdField_b_of_type_Int, this.jdField_a_of_type_Alok.c);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(this.jdField_a_of_type_Alok.d);
+      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, this.jdField_a_of_type_Amea.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Amea.jdField_b_of_type_Int, this.jdField_a_of_type_Amea.c);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(this.jdField_a_of_type_Amea.d);
       this.jdField_a_of_type_Boolean = true;
       return false;
     case 2: 
@@ -237,7 +237,7 @@ public class UpSideDownDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.UpSideDownDrawable
  * JD-Core Version:    0.7.0.1
  */

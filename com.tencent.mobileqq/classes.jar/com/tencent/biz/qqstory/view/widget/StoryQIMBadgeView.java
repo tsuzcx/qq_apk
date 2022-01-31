@@ -18,7 +18,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendListObserver;
-import opq;
+import ork;
 
 public class StoryQIMBadgeView
   extends ImageView
@@ -57,7 +57,7 @@ public class StoryQIMBadgeView
   protected void a()
   {
     if (StoryDepends.b()) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new opq(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ork(this);
     }
   }
   

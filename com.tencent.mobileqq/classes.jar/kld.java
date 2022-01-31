@@ -1,80 +1,17 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.addContactTroopView.TroopCardPopClassfic;
-import com.tencent.biz.addContactTroopView.TroopCardPopClassfic.ViewHolder;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.util.DisplayUtil;
-import tencent.im.troop_search_popclassifc.popclassifc.PopCard;
-import tencent.im.troop_search_popclassifc.popclassifc.PopItem;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.util.IOfflineDownloader;
+import java.util.HashMap;
 
 public class kld
-  extends BaseAdapter
+  implements Runnable
 {
-  public kld(TroopCardPopClassfic paramTroopCardPopClassfic) {}
+  public kld(BidDownloader paramBidDownloader) {}
   
-  private void a(TroopCardPopClassfic.ViewHolder paramViewHolder, popclassifc.PopItem paramPopItem)
+  public void run()
   {
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramPopItem.str_desc.get());
-    int i = DisplayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), 48.0F);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, i);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    paramPopItem = URLDrawable.getDrawable(paramPopItem.str_icon_url.get(), null);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramPopItem);
-    if ((paramPopItem != null) && (1 != paramPopItem.getStatus())) {
-      paramPopItem.restartDownload();
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard != null) {
-      return ((popclassifc.PopCard)this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard.get()).rpt_pop_items.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    popclassifc.PopItem localPopItem = (popclassifc.PopItem)((popclassifc.PopCard)this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard.get()).rpt_pop_items.get(paramInt);
-    View localView;
-    if (paramView == null)
-    {
-      paramView = new TroopCardPopClassfic.ViewHolder();
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2130969418, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366403));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366402));
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      a(paramViewGroup, localPopItem);
-      localView.setOnClickListener(this.a);
-      return localView;
-      paramViewGroup = (TroopCardPopClassfic.ViewHolder)paramView.getTag();
-      localView = paramView;
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("Accept-Encoding", "gzip");
+    BidDownloader.jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.a.c, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_b_of_type_ComTencentBizCommonOfflineAsyncBack, localHashMap);
   }
 }
 

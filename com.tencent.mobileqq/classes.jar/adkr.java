@@ -1,41 +1,22 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.animation.LinearInterpolator;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.intervideo.now.HorizontalLoadingView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
 
 public class adkr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnClickListener
 {
-  public adkr(HorizontalLoadingView paramHorizontalLoadingView) {}
+  public adkr(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
-  @TargetApi(16)
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = this.a.getMeasuredWidth() * 40 / 710;
-    View localView = new View(this.a.getContext());
-    localView.setBackgroundResource(2130843584);
-    Object localObject = new FrameLayout.LayoutParams(-1, -1);
-    ((FrameLayout.LayoutParams)localObject).gravity = 3;
-    this.a.addView(localView, (ViewGroup.LayoutParams)localObject);
-    localObject = ValueAnimator.ofFloat(new float[] { 0.0F, i });
-    ((ValueAnimator)localObject).setInterpolator(new LinearInterpolator());
-    ((ValueAnimator)localObject).setRepeatMode(1);
-    ((ValueAnimator)localObject).setRepeatCount(-1);
-    ((ValueAnimator)localObject).setDuration(1000L);
-    ((ValueAnimator)localObject).addUpdateListener(new adks(this, localView));
-    ((ValueAnimator)localObject).start();
-    HorizontalLoadingView.a(this.a, (ValueAnimator)localObject);
-    this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    ForwardFileBaseOption.a(this.a, false);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adkr
  * JD-Core Version:    0.7.0.1
  */

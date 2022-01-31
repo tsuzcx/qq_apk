@@ -1,26 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AutomatorObserver;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
-class snx
-  implements ValueAnimator.AnimatorUpdateListener
+public class snx
+  extends AutomatorObserver
 {
-  snx(snw paramsnw, View paramView1, View paramView2, View paramView3, View paramView4, View paramView5) {}
+  public snx(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(int paramInt)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue("txtAlpha")).floatValue();
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue("redAlpha")).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(f1);
-    this.b.setAlpha(f2);
-    this.c.setAlpha(f2);
-    this.d.setAlpha(1.0F);
-    this.e.setAlpha(1.0F);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ForwardRecentActivity.c(this.a);
+      return;
+      this.a.a.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     snx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.mobileqq.activity.Now;
 
 public class tej
-  extends FriendListObserver
+  implements Runnable
 {
-  public tej(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public tej(Now paramNow) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (paramBoolean) {
-      this.a.e();
-    }
+    ((UserManager)SuperManager.a(2)).c();
   }
 }
 

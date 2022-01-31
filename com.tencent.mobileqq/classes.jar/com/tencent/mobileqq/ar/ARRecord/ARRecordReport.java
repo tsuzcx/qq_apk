@@ -2,10 +2,10 @@ package com.tencent.mobileqq.ar.ARRecord;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import zup;
-import zuq;
-import zur;
-import zus;
+import zxv;
+import zxw;
+import zxx;
+import zxy;
 
 public class ARRecordReport
 {
@@ -22,25 +22,25 @@ public class ARRecordReport
   public void a()
   {
     QLog.d("ARRecordReport", 2, "reportPreRecordStart");
-    ThreadManager.post(new zup(this), 5, null, false);
+    ThreadManager.post(new zxv(this), 5, null, false);
   }
   
   public void a(int paramInt)
   {
     QLog.d("ARRecordReport", 2, String.format("reportRecordFail failType=%s", new Object[] { Integer.valueOf(paramInt) }));
-    ThreadManager.post(new zus(this, paramInt), 5, null, false);
+    ThreadManager.post(new zxy(this, paramInt), 5, null, false);
   }
   
   public void a(int paramInt, long paramLong)
   {
     QLog.d("ARRecordReport", 2, String.format("reportRecordSuccess successType=%s videoLength=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
-    ThreadManager.post(new zur(this, paramInt, paramLong), 5, null, false);
+    ThreadManager.post(new zxx(this, paramInt, paramLong), 5, null, false);
   }
   
   public void a(boolean paramBoolean)
   {
     QLog.d("ARRecordReport", 2, String.format("reportActiveRecordStart inPreRecord=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    ThreadManager.post(new zuq(this, paramBoolean), 5, null, false);
+    ThreadManager.post(new zxw(this, paramBoolean), 5, null, false);
   }
 }
 

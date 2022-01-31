@@ -1,21 +1,25 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class skf
-  extends MqqHandler
+  implements ActionSheet.OnButtonClickListener
 {
-  public skf(FontSettingActivity paramFontSettingActivity) {}
+  public skf(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, ActionSheet paramActionSheet) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (16711697 == paramMessage.what)
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
     {
-      FontSettingManager.a(this.a, FontSettingActivity.a(this.a), false);
-      this.a.c = true;
-      this.a.a.notifyDataSetChanged();
+    default: 
+      return;
     }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "P_CliOper", "Grp_discuss", "", "0X80040ED", "0X80040ED", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006623", "0X8006623", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.g();
   }
 }
 

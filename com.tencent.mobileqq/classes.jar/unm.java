@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
 
-public class unm
+class unm
   implements Runnable
 {
-  public unm(PressToSpeakPanel paramPressToSpeakPanel) {}
+  unm(unl paramunl) {}
   
   public void run()
   {
-    this.a.b();
+    this.a.a.d();
+    this.a.a.a.invalidate();
   }
 }
 

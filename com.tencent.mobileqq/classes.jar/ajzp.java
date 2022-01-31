@@ -1,25 +1,12 @@
-import android.net.Uri;
-import com.tencent.mobileqq.webview.swift.WebViewWrapper;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.graphics.Bitmap;
 
-public class ajzp
-  extends ajzs
+public abstract interface ajzp
 {
-  public ajzp(WebViewWrapper paramWebViewWrapper)
-  {
-    super(paramWebViewWrapper);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
-  }
+  public abstract void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajzp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,98 @@
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Typeface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.richmedia.subtitles.ItemBase;
+import com.tencent.mobileqq.activity.richmedia.subtitles.TextItem;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 
 public class xvy
-  extends FriendListObserver
+  extends ItemBase
 {
-  public xvy(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  int jdField_a_of_type_Int = -1;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  TextItem jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem = null;
+  TextItem b = null;
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public xvy(long paramLong1, long paramLong2, boolean paramBoolean, String paramString, float paramFloat1, int paramInt, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, Typeface paramTypeface)
   {
-    if (paramBoolean1) {
-      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    super(paramLong1, paramLong2, paramBoolean);
+    a(6, paramFloat3);
+    a(7, paramFloat4);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem = new TextItem(paramString, paramFloat1, paramInt, paramFloat5, paramFloat6, 2, -1.0F, paramTypeface);
+    this.b = new TextItem(paramString, paramFloat1, -16777216, paramFloat5, paramFloat6, 2, paramFloat2, paramTypeface);
+    a(3, this.b.jdField_a_of_type_Float);
+    paramInt = this.b.a();
+    paramFloat1 = this.b.b * 2.0F / paramInt;
+    if (paramInt == 1) {
+      paramFloat1 = this.b.b;
     }
+    a(4, paramFloat1);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.b.jdField_a_of_type_Float, paramFloat1);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.b.a(paramString, 0.0F, paramFloat1 - this.b.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramString, 0.0F, paramFloat1 - this.b.b);
+    }
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      this.b.a(paramCanvas, a(6), a(7) + a(4) - this.b.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramCanvas, a(6), a(7) + a(4) - this.b.b);
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, a(6), a(7), null);
+  }
+  
+  public void a(RenderBuffer paramRenderBuffer)
+  {
+    if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+      this.jdField_a_of_type_Int = GlUtil.a(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    if (this.jdField_a_of_type_Int >= 0) {
+      a(paramRenderBuffer, this.jdField_a_of_type_Int, a(3), a(4), null, a(6), a(7));
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (a()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    float f;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramString);
+      this.b.a(paramString);
+      int i = this.b.a();
+      f = this.b.b * 2.0F / i;
+      if (i == 1) {
+        f = this.b.b;
+      }
+      a(4, f);
+      a(3, this.b.jdField_a_of_type_Float);
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.b.jdField_a_of_type_Float, f);
+    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
+    paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.b.a(paramString, 0.0F, f - this.b.b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramString, 0.0F, f - this.b.b);
   }
 }
 

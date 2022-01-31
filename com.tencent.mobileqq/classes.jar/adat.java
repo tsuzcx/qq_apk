@@ -1,20 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class adat
-  implements DialogInterface.OnDismissListener
+public final class adat
+  implements Parcelable.Creator
 {
-  public adat(ForwardFileBaseOption paramForwardFileBaseOption) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public WeiYunFileInfo a(Parcel paramParcel)
   {
-    if (ForwardFileBaseOption.a(this.a))
-    {
-      ForwardFileBaseOption.a(this.a, false);
-      this.a.a.finish();
-    }
+    return new WeiYunFileInfo(paramParcel);
+  }
+  
+  public WeiYunFileInfo[] a(int paramInt)
+  {
+    return new WeiYunFileInfo[paramInt];
   }
 }
 

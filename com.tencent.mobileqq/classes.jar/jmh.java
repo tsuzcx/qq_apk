@@ -1,30 +1,16 @@
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import com.tencent.av.redpacket.ui.RedPacketGameView;
+import com.tencent.av.report.VideoConnRateReport;
 
 public class jmh
   implements Runnable
 {
-  public jmh(RedPacketGameView paramRedPacketGameView, ViewGroup paramViewGroup) {}
+  public jmh(VideoConnRateReport paramVideoConnRateReport) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidViewView = null;
-    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c != null)
+    synchronized (this.a.a)
     {
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c.recycle();
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b != null)
-    {
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b.recycle();
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      VideoConnRateReport.a(this.a);
+      return;
     }
   }
 }

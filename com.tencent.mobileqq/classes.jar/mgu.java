@@ -1,22 +1,25 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.ViewHolder;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager.PageItemScrollListener;
 
-class mgu
-  implements Animation.AnimationListener
+public class mgu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  mgu(mgt parammgt, ArrayList paramArrayList, Object paramObject) {}
+  public mgu(ReadInJoyAtlasViewPager paramReadInJoyAtlasViewPager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Mgt.a.f.post(new mgv(this));
+    this.a.getChildAt(this.a.getCurrentItem()).setScrollY(((Float)paramValueAnimator.getAnimatedValue()).intValue());
+    if (ReadInJoyAtlasViewPager.a(this.a) != null)
+    {
+      ReadInJoyAtlasViewPager.a(this.a).a(0.0F, this.a.getChildAt(this.a.getCurrentItem()).getScrollY(), null);
+      if (paramValueAnimator.getAnimatedFraction() == 1.0F) {
+        ReadInJoyAtlasViewPager.a(this.a).b();
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

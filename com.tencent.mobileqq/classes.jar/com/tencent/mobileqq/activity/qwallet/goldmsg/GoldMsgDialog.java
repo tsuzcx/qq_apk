@@ -31,8 +31,8 @@ import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
-import xbo;
-import xbp;
+import xet;
+import xeu;
 
 public class GoldMsgDialog
   extends NearbyCustomDialog
@@ -108,12 +108,12 @@ public class GoldMsgDialog
     for (int i = paramButtonInfo.jdField_a_of_type_Int;; i = -1)
     {
       localButton.setTextColor(i);
-      localButton.setOnClickListener(new xbo(this, paramButtonInfo));
+      localButton.setOnClickListener(new xet(this, paramButtonInfo));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localButton, localLayoutParams);
       return this;
       localObject = "";
       break;
-      localObject = getContext().getResources().getDrawable(2130838487);
+      localObject = getContext().getResources().getDrawable(2130838491);
       break label76;
     }
   }
@@ -133,7 +133,7 @@ public class GoldMsgDialog
     localPreloadManager.c(paramString);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
-    ThreadManager.post(new xbp(this, localPreloadManager, localArrayList, (AppRuntime)localObject), 5, null, true);
+    ThreadManager.post(new xeu(this, localPreloadManager, localArrayList, (AppRuntime)localObject), 5, null, true);
   }
   
   public void onDismiss(DialogInterface paramDialogInterface)

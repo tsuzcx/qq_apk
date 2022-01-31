@@ -1,17 +1,18 @@
-public class adza
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
+
+public abstract interface adza
 {
-  public int a;
-  public String a;
+  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer);
   
-  public adza(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer, int paramInt1, int paramInt2);
+  
+  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
+  
+  public abstract void b(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adza
  * JD-Core Version:    0.7.0.1
  */

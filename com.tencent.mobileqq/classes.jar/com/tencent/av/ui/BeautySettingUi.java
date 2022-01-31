@@ -28,12 +28,12 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import jrb;
-import jrc;
-import jrd;
-import jre;
-import jrf;
-import jrg;
+import jqm;
+import jqn;
+import jqo;
+import jqp;
+import jqq;
+import jqr;
 
 public class BeautySettingUi
   implements SeekBar.OnSeekBarChangeListener
@@ -120,11 +120,11 @@ public class BeautySettingUi
   {
     switch (paramView.getId())
     {
-    case 2131365867: 
-    case 2131365868: 
+    case 2131365894: 
+    case 2131365895: 
     default: 
       return;
-    case 2131365869: 
+    case 2131365896: 
       AVNotifyCenter.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), this.jdField_c_of_type_Int);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(117) });
       if (this.jdField_c_of_type_Boolean)
@@ -173,18 +173,18 @@ public class BeautySettingUi
     if (this.jdField_c_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131429252);
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429253));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131429258);
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429259));
       ReportController.b(null, "CliOper", "", "", "0X800501C", "0X800501C", 0, 0, "", "", "", "");
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429254));
+      this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429260));
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131429250);
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429251));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131429256);
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429257));
       ReportController.b(null, "CliOper", "", "", "0X8005017", "0X8005017", 0, 0, "", "", "", "");
     }
   }
@@ -211,19 +211,19 @@ public class BeautySettingUi
       AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (localAVActivity != null)
       {
-        localAVActivity.getLayoutInflater().inflate(2130969268, this.jdField_a_of_type_AndroidViewViewGroup);
+        localAVActivity.getLayoutInflater().inflate(2130969269, this.jdField_a_of_type_AndroidViewViewGroup);
         this.jdField_a_of_type_AndroidContentResResources = localAVActivity.getResources();
       }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365866));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365869));
-    this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar = ((BidirectionSeekBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365870));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365871));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365893));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365896));
+    this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar = ((BidirectionSeekBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365897));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365898));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
-    ThreadManager.post(new jrb(this), 5, null, false);
+    ThreadManager.post(new jqm(this), 5, null, false);
     this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.setMax(100);
     this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.setOnSeekBarChangeListener(this);
-    this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.getViewTreeObserver().addOnGlobalLayoutListener(new jrc(this));
+    this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.getViewTreeObserver().addOnGlobalLayoutListener(new jqn(this));
   }
   
   public void b(int paramInt)
@@ -234,8 +234,8 @@ public class BeautySettingUi
     AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if ((paramInt == 1) || (paramInt == 2))
     {
-      str = localAVActivity.getString(2131429198);
-      localObject = localAVActivity.getString(2131429200);
+      str = localAVActivity.getString(2131429204);
+      localObject = localAVActivity.getString(2131429206);
     }
     for (;;)
     {
@@ -248,12 +248,12 @@ public class BeautySettingUi
       return;
       i = 1;
     }
-    localObject = DialogUtil.a(localAVActivity, 230).setMessage(str).setTitle((String)localObject).setNegativeButton(2131432998, new jrf(this, localAVActivity));
+    localObject = DialogUtil.a(localAVActivity, 230).setMessage(str).setTitle((String)localObject).setNegativeButton(2131433015, new jqq(this, localAVActivity));
     if (UITools.a(localAVActivity)) {}
-    for (i = 2131429202;; i = 2131429203)
+    for (i = 2131429208;; i = 2131429209)
     {
-      localObject = ((QQCustomDialog)localObject).setPositiveButton(i, new jre(this, localAVActivity));
-      ((QQCustomDialog)localObject).setOnDismissListener(new jrg(this, paramInt));
+      localObject = ((QQCustomDialog)localObject).setPositiveButton(i, new jqp(this, localAVActivity));
+      ((QQCustomDialog)localObject).setOnDismissListener(new jqr(this, paramInt));
       ((QQCustomDialog)localObject).show();
       return;
     }
@@ -325,8 +325,8 @@ public class BeautySettingUi
   
   void f()
   {
-    jrd localjrd = new jrd(this);
-    new Handler().post(localjrd);
+    jqo localjqo = new jqo(this);
+    new Handler().post(localjqo);
   }
   
   void g()
@@ -349,7 +349,7 @@ public class BeautySettingUi
     for (;;)
     {
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429254) + paramInt + "%");
+        this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429260) + paramInt + "%");
       }
       this.jdField_c_of_type_Int = paramInt;
       return;

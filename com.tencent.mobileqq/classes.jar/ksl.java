@@ -1,23 +1,17 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class ksl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ksl(AccountDetailActivity paramAccountDetailActivity) {}
+  public ksl(AccountDetailActivity paramAccountDetailActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "initData loadDatabase");
-    }
-    AccountDetailActivity localAccountDetailActivity = this.a;
-    if (!this.a.e()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localAccountDetailActivity.e = bool;
-      AccountDetailActivity.b(this.a, new ksm(this));
-      return;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

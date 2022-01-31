@@ -1,24 +1,36 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class mrr
-  implements Runnable
+public class mrr
+  implements ActionSheet.OnButtonClickListener
 {
-  mrr(mrq parammrq, int paramInt) {}
+  public mrr(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed, int paramInt, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Int <= 0)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Mrq.a.leftView.setText(2131433280);
+    default: 
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
     }
-    if (this.jdField_a_of_type_Int > 99)
-    {
-      this.jdField_a_of_type_Mrq.a.leftView.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_Mrq.a.getString(2131433280), Integer.valueOf(99) }));
-      return;
+    ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter, this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
+    paramInt = this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.b;
+    int i = this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_Int != 1) {
+      paramInt = 0;
     }
-    this.jdField_a_of_type_Mrq.a.leftView.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_Mrq.a.getString(2131433280), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    for (;;)
+    {
+      long l = ServiceAccountFolderManager.a().a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
+      ReportController.b(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
+      break;
+    }
   }
 }
 

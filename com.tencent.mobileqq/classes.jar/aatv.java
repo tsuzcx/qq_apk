@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapManager;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.RedPackRainCloudView;
+import android.graphics.Bitmap;
 
-public class aatv
+public final class aatv
   implements Runnable
 {
-  public aatv(ARMapActivity paramARMapActivity) {}
+  public aatv(aauc paramaauc) {}
   
   public void run()
   {
-    ARMapManager localARMapManager = (ARMapManager)this.a.app.getManager(209);
-    if ((localARMapManager != null) && (this.a.a != null)) {
-      this.a.a.a(localARMapManager.d());
+    if (this.a.a != null)
+    {
+      this.a.a.recycle();
+      this.a.a = null;
     }
   }
 }

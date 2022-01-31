@@ -1,29 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 class sax
-  implements Runnable
+  extends AccountObserver
 {
-  sax(saw paramsaw, ArrayList paramArrayList) {}
+  sax(saw paramsaw) {}
   
-  public void run()
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    View localView;
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      localView = this.jdField_a_of_type_Saw.a.a[33];
-    } while (localView == null);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      localView.setVisibility(8);
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 != null) {
+        break label70;
+      }
     }
-    for (;;)
+    label70:
+    for (int i = 0;; i = paramString2.length())
     {
-      this.jdField_a_of_type_Saw.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
+      QLog.e("ChatHistoryForC2C", 2, i);
+      this.a.a.runOnUiThread(new say(this, paramBoolean));
       return;
-      localView.setVisibility(0);
     }
   }
 }

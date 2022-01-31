@@ -1,25 +1,121 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.View;
-import com.tencent.mobileqq.bubble.BubbleNewAIOAnim;
+import com.tencent.mobileqq.armap.TreasureBaseActivity;
 
 public class abet
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public abet(BubbleNewAIOAnim paramBubbleNewAIOAnim, ObjectAnimator paramObjectAnimator) {}
+  public abet(TreasureBaseActivity paramTreasureBaseActivity, boolean paramBoolean, float paramFloat) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c != null) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c.setVisibility(0);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+      TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+      TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+      TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+      TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+      TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+      TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+      TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
     }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    double d;
+    do
+    {
+      return;
+      d = Math.toDegrees(this.jdField_a_of_type_Float);
+      if ((d >= -157.5D) && (d < -112.5D))
+      {
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 0);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        return;
+      }
+      if ((d >= -112.5D) && (d < -67.5D))
+      {
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 0);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        return;
+      }
+      if ((d >= -67.5D) && (d < -22.5D))
+      {
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 0);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        return;
+      }
+      if ((d >= -22.5D) && (d < 22.5D))
+      {
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 0);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        return;
+      }
+      if ((d >= 22.5D) && (d < 67.5D))
+      {
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 0);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        return;
+      }
+      if ((d >= 67.5D) && (d < 112.5D))
+      {
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 0);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        return;
+      }
+      if ((d >= 112.5D) && (d < 157.5D))
+      {
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 0);
+        TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+        return;
+      }
+    } while ((d < 157.5D) && (d >= -157.5D));
+    TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+    TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+    TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+    TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+    TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+    TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+    TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 8);
+    TreasureBaseActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity, TreasureBaseActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqArmapTreasureBaseActivity), 0);
   }
 }
 

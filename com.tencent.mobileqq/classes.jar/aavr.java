@@ -1,27 +1,11 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
-
-public class aavr
-  implements ValueAnimator.AnimatorUpdateListener
+class aavr
+  implements Runnable
 {
-  public aavr(ConversationPullDownActiveBase paramConversationPullDownActiveBase, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  aavr(aavq paramaavq) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
-    {
-      return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.g * (1.0F - f));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.k);
-    this.b.setAlpha(f);
+    this.a.jdField_a_of_type_Aawb.a(this.a.jdField_a_of_type_Aavu.a);
   }
 }
 

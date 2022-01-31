@@ -1,30 +1,17 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMStoryEffectCameraCaptureUnit;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import com.tencent.mobileqq.lyric.util.Singleton;
+import cooperation.qzone.font.FontManager;
 
-public class amub
-  extends BroadcastReceiver
+public final class amub
+  extends Singleton
 {
-  public amub(QIMStoryEffectCameraCaptureUnit paramQIMStoryEffectCameraCaptureUnit) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected FontManager a(Void paramVoid)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStoryEffectCameraCaptureUnit", 2, new Object[] { "onReceive action=", paramContext });
-    }
-    if ("dov.com.qq.im.finish_capture_action".equals(paramContext)) {
-      this.a.a.a().finish();
-    }
+    return new FontManager();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amub
  * JD-Core Version:    0.7.0.1
  */

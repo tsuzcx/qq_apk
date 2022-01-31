@@ -1,22 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.bless.BlessBaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class wex
-  extends ReadInJoyObserver
+  extends MessageObserver
 {
-  public wex(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public wex(BlessBaseActivity paramBlessBaseActivity) {}
   
-  public void d(boolean paramBoolean, List paramList)
+  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
   {
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1);
+    }
+    this.a.a();
+    if (!this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_a_of_type_Boolean = false;
+    if (paramInt == 67L)
     {
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        this.a.c.clear();
-        this.a.c.addAll(paramList);
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.a.a(paramLong);
+      QQToast.a(this.a.app.getApp(), 2131438285, 1).a();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessManager", 2, "onSendBlessMsgResp failed:" + paramInt + " waitTime=" + paramLong);
       }
-      ClassificationSearchActivity.b(this.a, true);
+      this.a.b(paramBoolean1);
+      return;
+      if (!paramBoolean1) {
+        QQToast.a(this.a.app.getApp(), 2131438286, 1).a();
+      }
     }
   }
 }

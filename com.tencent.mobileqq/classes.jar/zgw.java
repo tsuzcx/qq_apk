@@ -1,35 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.util.QLog;
 
 public class zgw
-  extends SosoInterface.OnLocationListener
+  implements Runnable
 {
-  public zgw(PublicAccountHandler paramPublicAccountHandler, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2, SharedPreferences paramSharedPreferences)
-  {
-    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public zgw(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))
     {
-      paramInt = (int)(paramSosoLbsInfo.a.a * 1000000.0D);
-      int i = (int)(paramSosoLbsInfo.a.b * 1000000.0D);
-      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.jdField_a_of_type_Int, paramInt, i, 0);
-      paramSosoLbsInfo = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      paramSosoLbsInfo.putInt("loc_lat", paramInt);
-      paramSosoLbsInfo.putInt("loc_lng", i);
-      paramSosoLbsInfo.putLong("location_time", System.currentTimeMillis());
-      paramSosoLbsInfo.commit();
-      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MsgSend", 4, "delay notify: " + MessageHandler.d);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(8022, true, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin });
     }
-    ThreadManager.getSubThreadHandler().post(new zgx(this));
   }
 }
 

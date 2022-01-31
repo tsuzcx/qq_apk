@@ -1,20 +1,24 @@
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.TextView;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.EffectSettingBtn;
+import com.tencent.av.utils.UITools;
 import com.tencent.qphone.base.util.QLog;
 
-class jtl
-  implements Runnable
+public class jtl
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  jtl(jtk paramjtk, long paramLong1, long paramLong2) {}
+  public jtl(EffectSettingBtn paramEffectSettingBtn, TextView paramTextView) {}
   
-  public void run()
+  public boolean onPreDraw()
   {
-    if ((this.jdField_a_of_type_Jtk.a.a != null) && (this.jdField_a_of_type_Jtk.a.a.a() != null))
-    {
-      QLog.d(this.jdField_a_of_type_Jtk.a.c, 1, "AsyncReadDoubleGlassConfig Timer lCurrent=" + this.jdField_a_of_type_Long + ", lLastTick=" + this.b + ", mCurrentVideoGlassWaitTime=" + this.jdField_a_of_type_Jtk.a.a.a().Q + ", mCurrentDefaultTimeOutRule=" + this.jdField_a_of_type_Jtk.a.a.a().R + ", mCurrentVideoGlassSwitch=" + this.jdField_a_of_type_Jtk.a.a.a().P);
-      this.jdField_a_of_type_Jtk.a.k(this.jdField_a_of_type_Jtk.a.a.a().R);
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
+    this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.a.a().a().ax = true;
+    UITools.a(this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.a);
+    QLog.d("qav_face_guide", 1, "onPreDraw");
+    return false;
   }
 }
 

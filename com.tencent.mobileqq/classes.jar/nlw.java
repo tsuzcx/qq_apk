@@ -1,17 +1,15 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playmode.child.TroopStoryPlayModeBase;
 
 public class nlw
-  implements AbsListView.OnScrollListener
+  implements DialogInterface.OnDismissListener
 {
-  public nlw(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public nlw(TroopStoryPlayModeBase paramTroopStoryPlayModeBase) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.b = paramInt1;
+    this.a.s();
   }
 }
 

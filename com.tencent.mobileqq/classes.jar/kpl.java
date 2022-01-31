@@ -1,49 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.widget.Switch;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class kpl
-  implements DialogInterface.OnClickListener
+  extends URLDrawableDownListener.Adapter
 {
-  public kpl(EqqAccountDetailActivity paramEqqAccountDetailActivity, PaConfigAttr.PaConfigInfo paramPaConfigInfo, Switch paramSwitch, boolean paramBoolean) {}
+  public kpl(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramInt == 0) {
-      if ((3 == this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.e) && (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d == 0))
-      {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity;
-        localPaConfigInfo = this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo;
-        localSwitch = this.jdField_a_of_type_ComTencentWidgetSwitch;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          bool = true;
-          paramDialogInterface.a(localPaConfigInfo, localSwitch, bool);
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(true);
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.g();
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = false;
-      }
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadCancelled");
     }
-    while (paramInt != 1) {
-      for (;;)
-      {
-        PaConfigAttr.PaConfigInfo localPaConfigInfo;
-        Switch localSwitch;
-        return;
-        boolean bool = false;
-      }
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (!this.a.f) {
+      this.a.l();
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.g();
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    do
+    {
+      return;
+      this.a.k();
+      if ((paramView instanceof ImageView))
+      {
+        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
   }
 }
 

@@ -1,22 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class acbl
-  implements Animation.AnimationListener
+class acbl
+  implements ApolloResDownloader.OnApolloDownLoadListener
 {
-  public acbl(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
+  acbl(acbg paramacbg, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
-    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
+    paramString = new Bundle();
+    if (paramBoolean)
+    {
+      paramString.putInt("apollo_result", 0);
+      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    paramString.putInt("apollo_result", 1);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

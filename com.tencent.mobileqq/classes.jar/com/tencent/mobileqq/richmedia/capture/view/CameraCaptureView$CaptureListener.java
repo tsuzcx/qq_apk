@@ -2,7 +2,9 @@ package com.tencent.mobileqq.richmedia.capture.view;
 
 public abstract interface CameraCaptureView$CaptureListener
 {
-  public abstract void L_();
+  public abstract void A_();
+  
+  public abstract void B_();
   
   public abstract void a(int paramInt);
   
@@ -12,11 +14,9 @@ public abstract interface CameraCaptureView$CaptureListener
   
   public abstract void a(boolean paramBoolean, String paramString);
   
-  public abstract void ag_();
+  public abstract void aj_();
   
-  public abstract void ah_();
-  
-  public abstract void f();
+  public abstract void g();
   
   public abstract void g_(boolean paramBoolean);
 }

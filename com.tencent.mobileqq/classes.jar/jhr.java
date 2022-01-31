@@ -1,20 +1,11 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.av.camera.VcCamera;
-import com.tencent.av.opengl.GraphicRenderMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gameplay.QavGPDownloadManager;
 
-public class jhr
-  implements Camera.AutoFocusCallback
+public final class jhr
+  implements Runnable
 {
-  public jhr(VcCamera paramVcCamera) {}
-  
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AndroidCamera", 2, "camera focus success ? " + paramBoolean);
-    }
-    GraphicRenderMgr.getInstance().setIsFocusing(false);
+    QavGPDownloadManager.a().b();
   }
 }
 

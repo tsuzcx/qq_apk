@@ -1,41 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.now.ilive_short_video_label.GetShortVideoVideoLabelRsp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.HashMap;
 
-public class aenb
-  implements NowShortVideoProtoManager.Callback
+class aenb
+  implements Runnable
 {
-  public aenb(PlayOperationViewModel paramPlayOperationViewModel) {}
+  aenb(aena paramaena) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i("PlayOperationViewModel", 2, "queryVideoState err_msg:   " + paramBundle.err_msg.get());
-      }
-      if (paramBundle.busi_buf.has())
+      NearbySPUtil.c(this.a.jdField_a_of_type_JavaLangString);
+      long l1 = this.a.jdField_a_of_type_Long - this.a.c;
+      long l2 = this.a.d - this.a.c;
+      long l3 = this.a.jdField_b_of_type_Long;
+      long l4 = this.a.c;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_DeviceType", StatisticConstants.a() + "");
+      localHashMap.put("param_PreloadType", this.a.jdField_b_of_type_Int + "");
+      if ((l1 > 0L) && (l1 < 60000L) && (l2 > 0L) && (l2 < 60000L))
       {
-        paramArrayOfByte = new ilive_short_video_label.GetShortVideoVideoLabelRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        this.a.a(paramArrayOfByte);
+        if (this.a.jdField_a_of_type_Int != 0) {
+          break label261;
+        }
+        StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.a.jdField_a_of_type_JavaLangString, "actEnterNearbyActCost", false, l2, l1, localHashMap, "");
+      }
+      while (QLog.isColorLevel())
+      {
+        NearbyUtils.a("NearbyProcessPerf", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3 - l4), Integer.valueOf(this.a.jdField_b_of_type_Int) });
+        return;
+        label261:
+        if (this.a.jdField_a_of_type_Int == 1) {
+          StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.a.jdField_a_of_type_JavaLangString, "actEnterNearbyActCost", true, l2, l1, localHashMap, "");
+        }
       }
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (Throwable localThrowable)
     {
-      paramArrayOfByte.printStackTrace();
+      localThrowable.printStackTrace();
     }
   }
 }

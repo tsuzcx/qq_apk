@@ -1,7 +1,7 @@
 package cooperation.qzone.model;
 
 import NS_MOBILE_FEEDS.stPhotoTag;
-import amel;
+import amup;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +11,7 @@ import java.util.Iterator;
 public class ImageTagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amel();
+  public static final Parcelable.Creator CREATOR = new amup();
   public int a;
   public String a;
   public int b;

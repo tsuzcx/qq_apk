@@ -1,47 +1,32 @@
-import android.text.TextUtils;
-import android.util.Log;
-import cooperation.weiyun.sdk.download.DownloadJobContext.StatusInfo;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadStatusListener;
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QZoneHelper;
 
-public class amrq
-  implements WyDownloader.IDownloadListener
+public final class amrq
+  implements Runnable
 {
-  public amrq(WyDownloader paramWyDownloader, WyDownloader.IDownloadStatusListener paramIDownloadStatusListener, int paramInt) {}
+  public amrq(QQAppInterface paramQQAppInterface, PreloadProcHitPluginSession paramPreloadProcHitPluginSession) {}
   
-  public void a(String paramString, long paramLong, float paramFloat)
+  public void run()
   {
-    DownloadJobContext.StatusInfo localStatusInfo = new DownloadJobContext.StatusInfo();
-    localStatusInfo.c = paramString;
-    localStatusInfo.jdField_a_of_type_Int = 2;
-    localStatusInfo.jdField_b_of_type_Long = (paramFloat);
-    localStatusInfo.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString, this.jdField_a_of_type_Int, localStatusInfo, false);
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
-  {
-    Log.e("WyDownloader", "download finish:" + paramString1 + " successed:" + paramBoolean + "errorCode:" + paramInt);
-    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists())) {}
-    DownloadJobContext.StatusInfo localStatusInfo;
-    for (int i = 1;; i = 0)
-    {
-      localStatusInfo = new DownloadJobContext.StatusInfo();
-      localStatusInfo.jdField_b_of_type_JavaLangString = paramString2;
-      localStatusInfo.c = paramString1;
-      localStatusInfo.jdField_b_of_type_Int = paramInt;
-      localStatusInfo.jdField_a_of_type_JavaLangString = paramString3;
-      if (i == 0) {
-        break;
-      }
-      localStatusInfo.jdField_a_of_type_Int = 4;
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString1, this.jdField_a_of_type_Int, localStatusInfo, true);
-      return;
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessEnable", 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard enable:" + i);
     }
-    localStatusInfo.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString1, this.jdField_a_of_type_Int, localStatusInfo, true);
+    if (i == 1)
+    {
+      long l = DeviceInfoUtil.e() / 1048576L;
+      i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessRamThreshold", 1024);
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard totalMemSize:" + l + ",threshold:" + i);
+      }
+      if (l >= i) {
+        QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "FriendProfileCardActivity", this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession);
+      }
+    }
   }
 }
 

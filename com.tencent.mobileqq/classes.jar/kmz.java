@@ -1,21 +1,49 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.os.Bundle;
+import com.tencent.biz.helper.TroopCardAppInfoHelper;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class kmz
-  extends Handler
+  implements BusinessObserver
 {
-  public kmz(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  public kmz(TroopCardAppInfoHelper paramTroopCardAppInfoHelper) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramMessage.what == 5) {
-      this.a.a((String)paramMessage.obj);
-    }
-    while (paramMessage.what != 291) {
+    if (this.a.a) {
       return;
     }
-    this.a.updateMicStatus((String)paramMessage.obj);
+    if ((!paramBoolean) || (paramBundle == null))
+    {
+      TroopCardAppInfoHelper.a(this.a);
+      return;
+    }
+    do
+    {
+      oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        localOIDBSSOPkg.mergeFrom(paramBundle);
+        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
+        {
+          TroopCardAppInfoHelper.a(this.a);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        TroopCardAppInfoHelper.a(this.a);
+        return;
+      }
+      paramBundle = TroopCardAppInfoHelper.b(this.a, localOIDBSSOPkg);
+    } while ((paramBundle == null) || (paramBundle.size() <= 0));
+    TroopCardAppInfoHelper.a(this.a, paramBundle);
   }
 }
 

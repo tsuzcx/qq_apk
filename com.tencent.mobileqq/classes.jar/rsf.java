@@ -1,47 +1,41 @@
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.transfile.TransFileController;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 
-public final class rsf
+public class rsf
   implements Runnable
 {
-  public rsf(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong) {}
+  public rsf(BaseChatPie paramBaseChatPie, boolean paramBoolean, Intent paramIntent1, Intent paramIntent2) {}
   
   public void run()
   {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSendFromLocal()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq));
-      }
-      AbsStructMsg localAbsStructMsg = StructMsgFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      if ((localAbsStructMsg instanceof StructMsgForImageShare))
-      {
-        StructMsgForImageShare.resendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (StructMsgForImageShare)localAbsStructMsg);
-        return;
-      }
-      if (((localAbsStructMsg instanceof AbsShareMsg)) && (ForwardUtils.a(((AbsShareMsg)localAbsStructMsg).forwardType, localAbsStructMsg.mMsgServiceID)))
-      {
-        AbsShareMsg.resendSdkShareMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (AbsShareMsg)localAbsStructMsg);
-        return;
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("forward", 1, "updateSession_forwardType, postDelayed Run! needToBottom=" + this.jdField_a_of_type_Boolean);
     }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.e("ChatActivityFacade", 1, "resendStructMessage error :", localRuntimeException);
-      throw localRuntimeException;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f(this.jdField_a_of_type_AndroidContentIntent);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.O();
     }
-    MessageRecord localMessageRecord = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, null, true);
+    if (this.b.getBooleanExtra("isFromShare", false))
+    {
+      this.b.removeExtra("forward_type");
+      this.b.removeExtra("isFromShare");
+      String str2 = this.b.getStringExtra("leftBackText");
+      String str1;
+      if (str2 != null)
+      {
+        str1 = str2;
+        if (!"".equals(str2)) {}
+      }
+      else
+      {
+        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131433698);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aJ();
+    }
   }
 }
 

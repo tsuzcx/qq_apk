@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0fdf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a259a" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a259b" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0fdf">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a259c" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a259d" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a259e" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a259f" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25a0" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25a1" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
-    </LinearLayout>
-    <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a259b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:drawableRight="@drawable/common_arrow_right_selector" android:drawablePadding="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25b3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">"
+<TextView android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0176" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0176" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0174" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b28bb" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b28bb" style="@style/APKTOOL_DUPLICATE_style_0x7f0e004c" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25b4" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="name" formItem:switchText="@string/APKTOOL_DUPLICATE_string_0x7f0b28bc" formItem:switchChecked="true" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25b5" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0001" formItem:switchText="@string/APKTOOL_DUPLICATE_string_0x7f0b28bd" formItem:switchChecked="true" />
+</LinearLayout>

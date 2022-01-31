@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 
-class rxx
-  implements Runnable
+public final class rxx
+  implements View.OnClickListener
 {
-  rxx(rxw paramrxw) {}
+  public rxx(Toast paramToast) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.b)
-    {
-      this.a.a.b = false;
-      MessageRoamManager localMessageRoamManager = (MessageRoamManager)this.a.a.app.getManager(91);
-      if (localMessageRoamManager != null) {
-        localMessageRoamManager.d();
-      }
-    }
+    this.a.cancel();
   }
 }
 

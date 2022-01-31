@@ -1,90 +1,79 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.map.geolocation.TencentLocationManager;
-import com.tencent.map.geolocation.TencentLocationRequest;
-import com.tencent.map.geolocation.internal.TencentExtraKeys;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.DatalineMessageManager;
+import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.data.DataLineMsgSetList;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.Map;
 
-public final class ztd
+public class ztd
   implements Runnable
 {
-  public ztd(SosoInterface.OnLocationListener paramOnLocationListener) {}
+  public ztd(DatalineMessageManager paramDatalineMessageManager, DataLineMsgSet paramDataLineMsgSet) {}
   
   public void run()
   {
-    Object localObject;
-    if (QLog.isColorLevel())
+    boolean bool = false;
+    Object localObject1;
+    int i;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.a().a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet) > 0)
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("startLocation() reqLoc=").append(this.a.g).append(" askGPS=").append(this.a.h).append(" level=").append(this.a.jdField_c_of_type_Int).append(" caller=").append(this.a.jdField_c_of_type_JavaLangString).append(" ui=").append(this.a.e).append(" goon=").append(this.a.f);
-      if (SosoInterface.a().get() == 0)
-      {
-        localObject = " do startLocation";
-        QLog.d("SOSO.LBS", 2, (String)localObject);
+      localObject1 = MsgProxyUtils.a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_Int);
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.containsKey(localObject1)) {
+        break label384;
       }
+      bool = ((QQMessageFacade.Message)this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.get(localObject1)).hasReply;
+      i = ((QQMessageFacade.Message)this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.get(localObject1)).counter;
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.remove(localObject1);
     }
-    else
+    for (;;)
     {
-      SosoInterface.c(this.a);
-      if (SosoInterface.a().get() != 0) {
-        break label450;
-      }
-      if (this.a != SosoInterface.a()) {
-        break label435;
-      }
-      SosoInterface.a().set(1);
-      this.a.d = SystemClock.elapsedRealtime();
-      localObject = TencentLocationRequest.create();
-      ((TencentLocationRequest)localObject).setInterval(SosoInterface.a);
-      ((TencentLocationRequest)localObject).setRequestLevel(this.a.jdField_c_of_type_Int);
-      ((TencentLocationRequest)localObject).setAllowCache(true);
-      ((TencentLocationRequest)localObject).setAllowGPS(this.a.h);
-      ((TencentLocationRequest)localObject).setCheckInterval(30000L);
-      if (this.a.g) {
-        break label445;
-      }
-      bool = true;
-      TencentExtraKeys.setRequestRawData((TencentLocationRequest)localObject, bool);
-      ((TencentLocationRequest)localObject).getExtras().putInt("qq_level", this.a.jdField_c_of_type_Int);
-      ((TencentLocationRequest)localObject).getExtras().putBoolean("qq_reqLocation", this.a.g);
-      ((TencentLocationRequest)localObject).getExtras().putString("qq_caller", this.a.jdField_c_of_type_JavaLangString);
-      ((TencentLocationRequest)localObject).getExtras().putBoolean("qq_goonListener", this.a.f);
-      SosoInterface.b(0);
-      SosoInterface.a(SystemClock.elapsedRealtime());
-      SosoInterface.c(0);
-      SosoInterface.OnLocationListener.b(this.a, true);
-      if (SosoInterface.a() == null) {
-        SosoInterface.a(TencentLocationManager.getInstance(BaseApplicationImpl.getContext()));
-      }
-      if (SosoInterface.a().hasMessages(1001)) {
-        SosoInterface.a().removeMessages(1001);
-      }
-      SosoInterface.a().sendEmptyMessageDelayed(1001, 35000L);
-      SosoInterface.a(0);
-      i = SosoInterface.a().requestLocationUpdates((TencentLocationRequest)localObject, SosoInterface.a(), ThreadManager.getSubThreadLooper());
-      QLog.i("SOSO.LBS", 1, "location manager requestLocationUpdates result is: " + i);
-    }
-    label435:
-    label445:
-    label450:
-    while (!QLog.isColorLevel()) {
-      for (;;)
+      long l = this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.a().a().size();
+      if (l > 0L)
       {
-        int i;
-        return;
-        localObject = " waitting...";
-        break;
-        SosoInterface.a().set(2);
-        continue;
-        boolean bool = false;
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.a().a();
+        localObject1 = localObject2;
+        if (localObject2 != null)
+        {
+          localObject1 = localObject2;
+          if (((DataLineMsgRecord)localObject2).msgtype == -5000)
+          {
+            localObject1 = localObject2;
+            if (l > 1L) {
+              localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.a().a().get((int)(l - 2L)).getLastItem();
+            }
+          }
+        }
+        localObject2 = new QQMessageFacade.Message();
+        if (localObject1 != null)
+        {
+          MessageRecord.copyMessageRecordBaseField((MessageRecord)localObject2, (MessageRecord)localObject1);
+          ((QQMessageFacade.Message)localObject2).emoRecentMsg = null;
+          ((QQMessageFacade.Message)localObject2).counter = i;
+          ((QQMessageFacade.Message)localObject2).hasReply = bool;
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a((QQMessageFacade.Message)localObject2);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.put(MsgProxyUtils.a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_Int), localObject2);
+        }
       }
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localObject2 = ((RecentUserProxy)localObject2).a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_Int);
+      ((EntityManager)localObject1).a();
+      if (localObject2 != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localObject2);
+      }
+      return;
+      label384:
+      i = 0;
     }
-    QLog.d("SOSO.LBS", 2, "status != REQ_STOP");
   }
 }
 

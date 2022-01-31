@@ -1,62 +1,32 @@
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class muh
-  implements Runnable
+  implements WXShareHelper.WXShareListener
 {
-  public muh(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
+  public muh(GalleryShareHelper paramGalleryShareHelper, String paramString) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    CompressInfo localCompressInfo = new CompressInfo(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.l, 0);
-    localCompressInfo.f = 0;
-    CompressOperator.a(localCompressInfo);
-    String str;
-    if (!StringUtil.a(localCompressInfo.e))
+    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      str = "mqqpa://resourceid/" + this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n;
-      PublicAccountH5AbilityPlugin.b.put(str, localCompressInfo.e);
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435303);
     }
     for (;;)
     {
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONArray.put(0, str);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("value", this.jdField_a_of_type_OrgJsonJSONArray);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 0);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "Success");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.callJs(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.m, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.l = "";
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.m = "";
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n = "";
-        return;
-      }
-      catch (JSONException localJSONException1)
-      {
-        localJSONException1.printStackTrace();
-        continue;
-      }
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", -1);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "compress fail");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.callJs(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.m, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, -1, "1", "", "", "");
-      }
-      catch (JSONException localJSONException2)
-      {
-        localJSONException2.printStackTrace();
-      }
+      WXShareHelper.a().b(this);
+      return;
+      QRUtils.a(2, 2131435302);
     }
   }
 }

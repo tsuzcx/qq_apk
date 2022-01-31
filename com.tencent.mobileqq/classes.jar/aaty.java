@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.os.HandlerThread;
+import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public class aaty
-  implements DialogInterface.OnClickListener
+public final class aaty
+  implements ArkEnvironmentManager.ThreadCreater
 {
-  public aaty(ARMapActivity paramARMapActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public HandlerThread createHanderThread(String paramString)
+  {
+    return ThreadManager.newFreeHandlerThread(paramString, -1);
+  }
 }
 
 

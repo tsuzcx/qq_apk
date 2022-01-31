@@ -1,16 +1,22 @@
-import com.tencent.plato.core.utils.Ev.IApp;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.FormEditItem;
 
-public final class akuh
-  implements Ev.IApp
+public class akuh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public String version()
+  public akuh(FormEditItem paramFormEditItem) {}
+  
+  public void onGlobalLayout()
   {
-    return "1.0";
+    this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    FormEditItem.a(this.a, this.a.getMeasuredWidth());
+    FormEditItem.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akuh
  * JD-Core Version:    0.7.0.1
  */

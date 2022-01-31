@@ -22,8 +22,8 @@ import com.tencent.mobileqq.ark.ArkAppDataReport;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.BubblePopupWindow;
 import java.util.Locale;
-import urw;
-import ury;
+import uuy;
+import uva;
 
 public class ArkAppView
   extends ArkTextureView
@@ -31,7 +31,7 @@ public class ArkAppView
 {
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ArkViewImplement.InputCallback jdField_a_of_type_ComTencentArkArkViewImplement$InputCallback = new urw(this);
+  ArkViewImplement.InputCallback jdField_a_of_type_ComTencentArkArkViewImplement$InputCallback = new uuy(this);
   public ArkAppLoadLayout a;
   private ArkAppView.Callback jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView$Callback;
   private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
@@ -134,7 +134,7 @@ public class ArkAppView
     paramView = (RelativeLayout)paramView.getParent();
     if (paramView != null)
     {
-      paramView = paramView.findViewById(2131363296);
+      paramView = paramView.findViewById(2131363314);
       if (paramView != null) {
         paramView.setVisibility(paramInt);
       }
@@ -177,12 +177,12 @@ public class ArkAppView
         if (!paramBoolean) {
           break;
         }
-        ((View)localObject).setOnClickListener(new ury(this));
+        ((View)localObject).setOnClickListener(new uva(this));
         a();
         setVisibility(8);
         ((View)localObject).setVisibility(0);
-        View localView2 = ((View)localObject).findViewById(2131362709);
-        localView1 = ((View)localObject).findViewById(2131363282);
+        View localView2 = ((View)localObject).findViewById(2131362727);
+        localView1 = ((View)localObject).findViewById(2131363300);
         a((View)localObject, 0);
         requestLayout();
         if (localView2 != null) {
@@ -190,18 +190,18 @@ public class ArkAppView
         }
       } while (localView1 == null);
       localView1.setVisibility(0);
-      localObject = (TextView)localView1.findViewById(2131363284);
+      localObject = (TextView)localView1.findViewById(2131363302);
       if (localObject != null)
       {
         if (paramString != null) {
           break label174;
         }
-        ((TextView)localObject).setText(getResources().getString(2131438223));
+        ((TextView)localObject).setText(getResources().getString(2131438241));
       }
-      paramString = localView1.findViewById(2131363283);
+      paramString = localView1.findViewById(2131363301);
     } while (paramString == null);
     if (paramBoolean) {}
-    for (paramInt = 2130838199;; paramInt = 2130838198)
+    for (paramInt = 2130838203;; paramInt = 2130838202)
     {
       paramString.setBackgroundDrawable(paramString.getResources().getDrawable(paramInt));
       return;
@@ -241,8 +241,8 @@ public class ArkAppView
       ArkAppLoadLayout localArkAppLoadLayout = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout;
       a();
       localArkAppLoadLayout.setVisibility(0);
-      View localView1 = localArkAppLoadLayout.findViewById(2131362709);
-      localView2 = localArkAppLoadLayout.findViewById(2131363282);
+      View localView1 = localArkAppLoadLayout.findViewById(2131362727);
+      localView2 = localArkAppLoadLayout.findViewById(2131363300);
       a(localArkAppLoadLayout, 0);
       requestLayout();
       if (localView1 != null) {

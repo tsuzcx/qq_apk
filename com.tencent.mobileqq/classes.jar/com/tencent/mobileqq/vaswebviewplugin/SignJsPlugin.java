@@ -1759,7 +1759,7 @@ public class SignJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.SignJsPlugin
  * JD-Core Version:    0.7.0.1
  */

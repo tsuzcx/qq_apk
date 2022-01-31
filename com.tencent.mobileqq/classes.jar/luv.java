@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicRecommendGrid;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage.OnNoItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class luv
-  implements View.OnClickListener
+  implements ComponentContentGridImage.OnNoItemClickListener
 {
-  public luv(ComponentComment paramComponentComment, String paramString, ArticleInfo paramArticleInfo) {}
+  public luv(FeedItemCellTypeTopicRecommendGrid paramFeedItemCellTypeTopicRecommendGrid) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), this.jdField_a_of_type_JavaLangString);
-    ReadInJoyFooterPresenter.a(1, ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    ReadInJoyBaseAdapter.OnSubRegionClickListener localOnSubRegionClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (localOnSubRegionClickListener != null) {
+      localOnSubRegionClickListener.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
-import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import com.tencent.mobileqq.portal.SanHuaView;
 
-class abhe
-  implements Runnable
+public class abhe
+  implements Animation.AnimationListener
 {
-  abhe(abhc paramabhc) {}
+  public abhe(ARMapPOIStarDialog paramARMapPOIStarDialog) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((QLog.isColorLevel()) && (this.a.a.a != null)) {
-      QLog.w("BusinessCard_FlowCameraPhotoActivity", 2, "onSend error " + this.a.a.a.toString() + "errorCode=" + this.a.a.a.a);
-    }
-    this.a.a.e();
-    QQToast.a(this.a.a, 2131437062, 1).a();
+    this.a.b.setVisibility(8);
+    this.a.dismiss();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.b();
   }
 }
 

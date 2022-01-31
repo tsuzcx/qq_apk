@@ -27,15 +27,15 @@ public class DoodleToolbar
   
   private ColorPickerView addColorPickerView(ViewGroup paramViewGroup)
   {
-    Object localObject2 = (ColorPickerView)paramViewGroup.findViewById(2131362513);
+    Object localObject2 = (ColorPickerView)paramViewGroup.findViewById(2131362534);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new ColorPickerView(paramViewGroup.getContext());
       localObject2 = paramViewGroup.getResources();
-      int i = ((Resources)localObject2).getDimensionPixelOffset(2131560036);
-      int j = ((Resources)localObject2).getDimensionPixelOffset(2131560037);
-      int k = ((Resources)localObject2).getDimensionPixelOffset(2131560038);
+      int i = ((Resources)localObject2).getDimensionPixelOffset(2131560054);
+      int j = ((Resources)localObject2).getDimensionPixelOffset(2131560055);
+      int k = ((Resources)localObject2).getDimensionPixelOffset(2131560056);
       localObject2 = new RelativeLayout.LayoutParams(i, j);
       ((RelativeLayout.LayoutParams)localObject2).setMargins(0, k, 0, 0);
       ((RelativeLayout.LayoutParams)localObject2).addRule(11);
@@ -46,7 +46,7 @@ public class DoodleToolbar
   
   private void removeColorPickerView(ViewGroup paramViewGroup)
   {
-    View localView = paramViewGroup.findViewById(2131362513);
+    View localView = paramViewGroup.findViewById(2131362534);
     if (localView != null) {
       paramViewGroup.removeView(localView);
     }
@@ -58,10 +58,10 @@ public class DoodleToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 3;
-      this.mUIInfo.g = 2130969358;
+      this.mUIInfo.g = 2130969359;
       this.mUIInfo.e = 103413;
-      this.mUIInfo.f = 2130840138;
-      this.mUIInfo.a = this.mApp.getApp().getResources().getString(2131428737);
+      this.mUIInfo.f = 2130840144;
+      this.mUIInfo.a = this.mApp.getApp().getResources().getString(2131428743);
     }
     return this.mUIInfo;
   }
@@ -74,15 +74,15 @@ public class DoodleToolbar
       int i = 0;
       DoodleLogic localDoodleLogic = DoodleLogic.a();
       if (!DoodleUtils.a()) {
-        i = 2131429587;
+        i = 2131429593;
       }
       while (i != 0)
       {
         return localAVActivity.getString(i);
         if (!localDoodleLogic.a()) {
-          i = 2131429589;
+          i = 2131429595;
         } else if (!localDoodleLogic.b) {
-          i = 2131429588;
+          i = 2131429594;
         }
       }
     }
@@ -102,10 +102,10 @@ public class DoodleToolbar
       AVActivity localAVActivity = (AVActivity)this.mActivity.get();
       if (localAVActivity != null)
       {
-        ViewGroup localViewGroup = (ViewGroup)localAVActivity.findViewById(2131365798);
+        ViewGroup localViewGroup = (ViewGroup)localAVActivity.findViewById(2131365825);
         if (localViewGroup != null)
         {
-          Object localObject = (DoodleSurfaceView)localViewGroup.findViewById(2131362514);
+          Object localObject = (DoodleSurfaceView)localViewGroup.findViewById(2131362535);
           if (localObject != null)
           {
             ((DoodleSurfaceView)localObject).setClickable(false);
@@ -113,7 +113,7 @@ public class DoodleToolbar
               DoodleUtils.a(localViewGroup);
             }
           }
-          localObject = (ColorPickerView)localViewGroup.findViewById(2131362513);
+          localObject = (ColorPickerView)localViewGroup.findViewById(2131362534);
           if (localObject != null)
           {
             ((ColorPickerView)localObject).clearAnimation();
@@ -132,7 +132,7 @@ public class DoodleToolbar
     if (this.mActivity.get() != null)
     {
       AVActivity localAVActivity = (AVActivity)this.mActivity.get();
-      Object localObject = (ViewGroup)localAVActivity.findViewById(2131365798);
+      Object localObject = (ViewGroup)localAVActivity.findViewById(2131365825);
       if (localObject != null)
       {
         DoodleSurfaceView localDoodleSurfaceView = DoodleUtils.a((ViewGroup)localObject);

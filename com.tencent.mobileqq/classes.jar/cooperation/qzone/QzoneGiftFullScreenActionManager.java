@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amck;
+import amso;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -175,7 +175,7 @@ public class QzoneGiftFullScreenActionManager
       this.jdField_a_of_type_JavaUtilList = a(false);
       return;
     }
-    int[] arrayOfInt1 = a("7.6.0");
+    int[] arrayOfInt1 = a("7.6.3");
     int[] arrayOfInt2 = a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.b);
     int i;
     if ((arrayOfInt1 != null) && (arrayOfInt2 != null) && (arrayOfInt1.length == arrayOfInt2.length))
@@ -267,7 +267,7 @@ public class QzoneGiftFullScreenActionManager
       return;
     }
     this.jdField_a_of_type_JavaLangString = paramString1;
-    ThreadManager.post(new amck(this, paramString2), 8, null, true);
+    ThreadManager.post(new amso(this, paramString2), 8, null, true);
   }
   
   public void a(boolean paramBoolean)

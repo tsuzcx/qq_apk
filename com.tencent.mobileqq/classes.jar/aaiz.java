@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ar.config.MainDownAni;
+import com.tencent.widget.PopupMenuDialog;
+import java.lang.ref.WeakReference;
 
-class aaiz
-  implements Runnable
+public class aaiz
+  implements View.OnClickListener
 {
-  aaiz(aaiy paramaaiy) {}
+  public aaiz(MainDownAni paramMainDownAni, aaji paramaaji) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, 16L, this.a.a.b, 1);
+    paramView = (PopupMenuDialog)this.jdField_a_of_type_Aaji.d.get();
+    if (paramView != null) {
+      paramView.dismiss();
+    }
   }
 }
 

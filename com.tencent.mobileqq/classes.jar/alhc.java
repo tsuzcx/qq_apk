@@ -1,21 +1,56 @@
-import com.tencent.qqprotect.qsec.CSProcessorImpl;
-import com.tencent.qqprotect.qsec.ICSProcessor.ICSProcessorListener;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.common.DownloadDBHelper;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class alhc
-  implements ICSProcessor.ICSProcessorListener
+  implements Runnable
 {
-  protected int a;
+  public alhc(DownloadManager paramDownloadManager) {}
   
-  public alhc(CSProcessorImpl paramCSProcessorImpl, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if (this.jdField_a_of_type_Int != 0) {
-      QSecFramework.a(7, this.jdField_a_of_type_Int, paramInt, 0, paramArrayOfByte1, paramArrayOfByte2, null, null);
+    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = ((ConcurrentHashMap)DownloadDBHelper.a().a());
+    try
+    {
+      DownloadInfo localDownloadInfo = this.a.b("com.tencent.mobileqq");
+      if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 0))
+      {
+        String str = "";
+        TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo1;
+        if (localDownloadInfo.a == 0)
+        {
+          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2 = this.a.a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
+          if (localTMAssistantDownloadTaskInfo2 != null)
+          {
+            str = localTMAssistantDownloadTaskInfo2.mSavePath;
+            localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
+          }
+        }
+        while (localTMAssistantDownloadTaskInfo1 == null)
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+          DownloadDBHelper.a().a(localDownloadInfo.b);
+          return;
+          localTMAssistantDownloadTaskInfo1 = this.a.a(localDownloadInfo.h);
+          str = localDownloadInfo.k;
+        }
+        if ((localTMAssistantDownloadTaskInfo1.mState == 4) && (AppUtil.c(str) <= CommonDataAdapter.a().a()))
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
+          DownloadDBHelper.a().a(localDownloadInfo.b);
+          return;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "speical clear>>>", localException);
     }
   }
 }

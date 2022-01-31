@@ -34,8 +34,8 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
-import okq;
-import okr;
+import omk;
+import oml;
 
 public class StoryEffectsCameraCaptureFragment
   extends EffectsCameraCaptureFragment
@@ -68,9 +68,19 @@ public class StoryEffectsCameraCaptureFragment
     return true;
   }
   
-  protected int a()
+  public void B_()
   {
-    return 2130970670;
+    super.B_();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+    while (localIterator.hasNext()) {
+      ((StoryCapturePart)localIterator.next()).b();
+    }
+    StoryReportor.a("video_edit", "clk_shoot", 0, 0, new String[] { "2" });
+  }
+  
+  public int a()
+  {
+    return 10002;
   }
   
   Bundle a()
@@ -106,7 +116,7 @@ public class StoryEffectsCameraCaptureFragment
       SLog.d("story.publish.CaptureFragment", "setVideoSizeRate=%s, defaultRatio=%s, storyVideoWidth=%d, storyVideoHeight=%d, previewWidth=%d, previewHeight=%d", new Object[] { Float.valueOf(Math.max(f2, f3)), Float.valueOf(f1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(localSize.a()), Integer.valueOf(localSize.b()) });
       j = SVParamManager.a().a(2) * 1000;
       if (i <= 0) {
-        break label471;
+        break label474;
       }
       i *= 1000;
       localCaptureParam.d(i);
@@ -132,7 +142,7 @@ public class StoryEffectsCameraCaptureFragment
         localCaptureParam.d(i * 1000);
         localCaptureParam.g(j);
         if (!bool) {
-          break label505;
+          break label509;
         }
         localCaptureParam.h(8);
       }
@@ -145,12 +155,12 @@ public class StoryEffectsCameraCaptureFragment
       localCaptureParam.a(f1);
       SLog.d("story.publish.CaptureFragment", "setVideoSizeRate=%s as default", new Object[] { Float.valueOf(f1) });
       break;
-      label471:
+      label474:
       localCaptureParam.d(j);
       com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.r = j;
       SLog.d("story.publish.CaptureFragment", "setVideoBitRate=%d as default", new Object[] { Integer.valueOf(j) });
       break label288;
-      label505:
+      label509:
       localCaptureParam.h(-1);
     }
   }
@@ -255,19 +265,9 @@ public class StoryEffectsCameraCaptureFragment
     }
   }
   
-  public void ag_()
+  public void aj_()
   {
-    super.ag_();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-    while (localIterator.hasNext()) {
-      ((StoryCapturePart)localIterator.next()).b();
-    }
-    StoryReportor.a("video_edit", "clk_shoot", 0, 0, new String[] { "2" });
-  }
-  
-  public void ah_()
-  {
-    super.ah_();
+    super.aj_();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
     while (localIterator.hasNext()) {
       ((StoryCapturePart)localIterator.next()).a();
@@ -275,9 +275,9 @@ public class StoryEffectsCameraCaptureFragment
     StoryReportor.a("video_edit", "press_shoot", 0, 0, new String[] { "1" });
   }
   
-  public int b()
+  protected int b()
   {
-    return 10002;
+    return 2130970716;
   }
   
   public boolean b()
@@ -311,7 +311,7 @@ public class StoryEffectsCameraCaptureFragment
       return;
       StoryReportor.a("video_shoot", "clk_left", 0, 0, new String[0]);
       continue;
-      if (!this.c.isSelected()) {}
+      if (!this.d.isSelected()) {}
       for (int i = 1;; i = 0)
       {
         if (i == 0) {
@@ -350,12 +350,12 @@ public class StoryEffectsCameraCaptureFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    LayoutModifier.a(paramLayoutInflater, new okq(this, paramLayoutInflater));
+    LayoutModifier.a(paramLayoutInflater, new omk(this, paramLayoutInflater));
     paramViewGroup = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramViewGroup.setFocusable(true);
     paramViewGroup.setFocusableInTouchMode(true);
     paramViewGroup.requestFocus();
-    paramViewGroup.setOnKeyListener(new okr(this, null));
+    paramViewGroup.setOnKeyListener(new oml(this, null));
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
     while (localIterator.hasNext()) {
       ((StoryCapturePart)localIterator.next()).a(paramLayoutInflater, paramViewGroup, paramBundle);

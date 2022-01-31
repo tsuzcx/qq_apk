@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class kkd
-  implements View.OnClickListener
+  extends MessageObserver
 {
-  public kkd(PoiMapActivity paramPoiMapActivity) {}
+  public kkd(TroopRedTouchHandler paramTroopRedTouchHandler) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.a.setText("");
+    if (105 == paramInt)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "mGetRedPointPushObserver");
+      }
+      this.a.a(105, true, paramObject);
+    }
   }
 }
 

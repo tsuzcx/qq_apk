@@ -32,9 +32,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import vmh;
-import vmk;
-import vml;
+import vpj;
+import vpm;
+import vpn;
 
 public class PhotoListPanel$MyAdapter
   extends BaseAdapter
@@ -107,7 +107,7 @@ public class PhotoListPanel$MyAdapter
   
   public void a(View paramView1, View paramView2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_AndroidOsHandler.post(new vml(this, paramView2, paramInt1, paramInt2, paramInt3, paramInt4, paramView1));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_AndroidOsHandler.post(new vpn(this, paramView2, paramInt1, paramInt2, paramInt3, paramInt4, paramView1));
   }
   
   public void a(List paramList)
@@ -126,13 +126,13 @@ public class PhotoListPanel$MyAdapter
     notifyDataSetChanged();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.h();
     if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
-      String.format(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.getResources().getString(2131432951), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_JavaUtilLinkedList.size()) });
+      String.format(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.getResources().getString(2131432968), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_JavaUtilLinkedList.size()) });
     }
     for (;;)
     {
       PhotoListPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.getResources().getString(2131432952);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.getResources().getString(2131432969);
     }
   }
   
@@ -143,7 +143,7 @@ public class PhotoListPanel$MyAdapter
       a(paramList);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_AndroidOsHandler.post(new vmk(this, paramList));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_AndroidOsHandler.post(new vpm(this, paramList));
   }
   
   public int getCount()
@@ -174,27 +174,27 @@ public class PhotoListPanel$MyAdapter
     int i;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970482, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970523, paramViewGroup, false);
       paramViewGroup = new PhotoListPanel.MyAdapter.Holder(this);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131370835));
-      paramViewGroup.jdField_a_of_type_Vmh = new vmh(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364032));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370837);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131370984));
+      paramViewGroup.jdField_a_of_type_Vpj = new vpj(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364056));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370986);
       if (!AppSetting.b) {
         a(paramView, paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox, this.jdField_a_of_type_Int, this.b, this.c, this.d);
       }
       if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox != null) {
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setOnClickListener(paramViewGroup.jdField_a_of_type_Vmh);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setOnClickListener(paramViewGroup.jdField_a_of_type_Vpj);
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$MyAdapter.getItemViewType(paramInt);
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.m) && (paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox != null)) {
         paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setVisibility(8);
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370838));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131370836));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370987));
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131370985));
       paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_Vmh.a(paramInt);
-      paramViewGroup.jdField_a_of_type_Vmh.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox);
+      paramViewGroup.jdField_a_of_type_Vpj.a(paramInt);
+      paramViewGroup.jdField_a_of_type_Vpj.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox);
       localObject1 = a(paramInt);
       localObject2 = paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView;
       Object localObject4 = new EmptyDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.h, ((LocalMediaInfo)localObject1).thumbWidth, ((LocalMediaInfo)localObject1).thumbHeight);

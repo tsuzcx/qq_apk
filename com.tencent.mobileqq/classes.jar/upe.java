@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
-import com.tencent.mobileqq.activity.aio.doodle.LineLayer.LineLayerListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
+import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.AnimListener;
+import java.util.List;
 
 public class upe
-  implements LineLayer.LineLayerListener
+  implements NumAnim.AnimListener
 {
-  public upe(DoodleView paramDoodleView) {}
+  public upe(GoldMsgNumAnim paramGoldMsgNumAnim) {}
   
-  public void a()
+  public void onFinished()
   {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    if (this.a.jdField_a_of_type_JavaUtilList.size() < 1) {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, GoldMsgNumAnim.a(this.a));
     }
   }
 }

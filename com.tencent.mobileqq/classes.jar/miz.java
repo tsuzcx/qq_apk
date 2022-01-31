@@ -1,13 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview.NaviMaskTouchListener;
 
 public class miz
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public miz(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public miz(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ReadinjoyTabFrame.a(this.a);
+    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
+      ReadInJoyNavigationGridview.a(this.a).a();
+    }
+    return true;
   }
 }
 

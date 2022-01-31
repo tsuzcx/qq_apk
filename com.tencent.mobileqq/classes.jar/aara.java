@@ -1,19 +1,30 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class aara
-  implements ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler
+class aara
+  implements Runnable
 {
-  public aara(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference1, WeakReference paramWeakReference2, SessionInfo paramSessionInfo) {}
+  aara(aaqz paramaaqz, Object paramObject, boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public void a(String paramString, Object paramObject, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, boolean paramBoolean)
+  public void run()
   {
-    ArkAppCenter.a().postDelayed(new aarb(this, paramSearchArkBabyQInfo, paramBoolean), 200L);
+    aarh localaarh = (aarh)this.jdField_a_of_type_JavaLangObject;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      long l1 = ArkActionAppMgr.a(this.jdField_a_of_type_Aaqz.a, 2, this.jdField_a_of_type_JavaUtilArrayList);
+      long l2 = ArkActionAppMgr.a(this.jdField_a_of_type_Aaqz.a, 1, this.b);
+      if ((l1 < 0L) || (l2 < 0L))
+      {
+        ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionAppList, fail, gray-app-id=%d, app-id=%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) }));
+        ArkActionAppMgr.a(this.jdField_a_of_type_Aaqz.a, localaarh, false);
+        return;
+      }
+      ArkActionAppMgr.a(this.jdField_a_of_type_Aaqz.a, localaarh, true);
+      return;
+    }
+    ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionAppList, fail, success is false.", new Object[0]));
+    ArkActionAppMgr.a(this.jdField_a_of_type_Aaqz.a, localaarh, false);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import adkw;
-import adkx;
-import adky;
-import adkz;
-import adla;
-import adlb;
+import aduv;
+import aduw;
+import adux;
+import aduy;
+import aduz;
+import adva;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -147,12 +147,12 @@ public class NowLoadingActivity
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    new Handler().postDelayed(new adlb(this), 3000L);
+    new Handler().postDelayed(new adva(this), 3000L);
   }
   
   public void a(String paramString, int paramInt)
   {
-    runOnUiThread(new adla(this, paramInt));
+    runOnUiThread(new aduz(this, paramInt));
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
@@ -172,13 +172,13 @@ public class NowLoadingActivity
     if (paramString2.equals("action.now.showloading"))
     {
       QLog.i("XProxy|NowLoadingActivity", 1, "Now插件已显示，NowLoadingActivity 销毁");
-      new Handler().postDelayed(new adky(this), 0L);
+      new Handler().postDelayed(new adux(this), 0L);
     }
     while (!paramString2.equals("action.now.removeoutloading")) {
       return;
     }
     QLog.i("XProxy|NowLoadingActivity", 1, "收到广播action.now.removeoutloading");
-    new Handler().postDelayed(new adkz(this), 0L);
+    new Handler().postDelayed(new aduy(this), 0L);
   }
   
   public void b(String paramString)
@@ -249,29 +249,29 @@ public class NowLoadingActivity
     QLog.i("XProxy|NowLoadingActivity", 1, "NowLoadingActivity  onCreate ");
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    setContentView(2130970743);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370090);
-    this.jdField_a_of_type_ComTencentBizUiRoundProgressBar = ((RoundProgressBar)findViewById(2131371752));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131371753));
+    setContentView(2130970791);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370201);
+    this.jdField_a_of_type_ComTencentBizUiRoundProgressBar = ((RoundProgressBar)findViewById(2131371922));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131371923));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     paramBundle = getIntent().getExtras();
     paramBundle.setClassLoader(getClass().getClassLoader());
     this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = ((IVPluginInfo)paramBundle.getParcelable("plugininfo"));
-    paramBundle = (ImageView)findViewById(2131371504);
+    paramBundle = (ImageView)findViewById(2131371670);
     try
     {
-      paramBundle.setImageDrawable(getResources().getDrawable(2130839540));
-      findViewById(2131371504).setVisibility(0);
+      paramBundle.setImageDrawable(getResources().getDrawable(2130839545));
+      findViewById(2131371670).setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371754));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370098));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371286));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371924));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370209));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371449));
       paramBundle = (NowProxy)((QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null)).getManager(181);
       if (paramBundle.a.a() == 3) {
         a("Live", 95);
       }
-      findViewById(2131371504).setOnClickListener(new adkw(this, paramBundle));
-      new Handler().postDelayed(new adkx(this, paramBundle), 10L);
+      findViewById(2131371670).setOnClickListener(new aduv(this, paramBundle));
+      new Handler().postDelayed(new aduw(this, paramBundle), 10L);
       return;
     }
     catch (Throwable paramBundle)
@@ -327,7 +327,7 @@ public class NowLoadingActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowLoadingActivity
  * JD-Core Version:    0.7.0.1
  */

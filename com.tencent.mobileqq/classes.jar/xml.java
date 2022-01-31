@@ -1,18 +1,14 @@
-import android.graphics.drawable.ColorDrawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class xml
-  implements Runnable
+class xml
+  implements DialogInterface.OnClickListener
 {
-  public xml(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xml(xmi paramxmi) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.e.setImageDrawable(new ColorDrawable(-16777216));
-    this.a.e.setVisibility(0);
-    this.a.a.postDelayed(new xmm(this), 200L);
+    paramDialogInterface.dismiss();
   }
 }
 

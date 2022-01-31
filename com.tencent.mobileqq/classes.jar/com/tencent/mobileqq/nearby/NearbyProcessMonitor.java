@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import adzf;
+import aeml;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -250,7 +250,7 @@ public class NearbyProcessMonitor
     NearbyUtils.a("cation: preload  to much times, ", new Object[] { Integer.valueOf(jdField_a_of_type_Int) });
     return;
     label140:
-    ThreadManager.post(new adzf(paramString), 10, null, false);
+    ThreadManager.post(new aeml(paramString), 10, null, false);
   }
   
   public static void b(int paramInt)

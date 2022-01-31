@@ -1,17 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.nearby.now.view.StoryViewRelayoutListener;
-import com.tencent.mobileqq.nearby.now.view.widget.FitXImageView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
 
-class aenr
-  implements Runnable
+public class aenr
+  extends BroadcastReceiver
 {
-  aenr(aenp paramaenp, Bitmap paramBitmap) {}
+  public aenr(GameRoomFloatView paramGameRoomFloatView) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Aenp.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    ImageDisplayView.a(this.jdField_a_of_type_Aenp.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView).a(this.jdField_a_of_type_Aenp.jdField_a_of_type_Int, this.jdField_a_of_type_Aenp.b);
+    int i = paramIntent.getIntExtra("SmallScreenState", 0);
+    if (i == 3) {
+      this.a.a.setVisibility(4);
+    }
+    while ((i != 2) && (i != 0)) {
+      return;
+    }
+    this.a.a.setVisibility(0);
   }
 }
 

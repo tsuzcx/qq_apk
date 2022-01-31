@@ -1,31 +1,17 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.CardObserver;
+import android.media.SoundPool;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.os.MqqHandler;
+import java.util.TimerTask;
 
 public class suz
-  extends CardObserver
+  extends TimerTask
 {
-  public suz(Leba paramLeba) {}
+  public suz(H5MagicPlayerActivity paramH5MagicPlayerActivity, String paramString) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetCampusLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
-    }
-    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
-      this.a.a.sendEmptyMessage(11340002);
-    }
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
-    }
-    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
-      this.a.a.sendEmptyMessage(11340002);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool.play(this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.b, 1.0F, 1.0F, 0, this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
     }
   }
 }

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.fling.TopGestureLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a42" android:layout_width="375.0dip" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a43" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-</com.tencent.mobileqq.activity.fling.TopGestureLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a46" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="20.0dip" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1a46">
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0142" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a47" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="群成员" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a48" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:text="星期五" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <com.tencent.mobileqq.troop.widget.LimitTextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a49" android:paddingRight="34.0dip" android:paddingBottom="20.0dip" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="消息" android:maxLines="4" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1a47" />
+        <View android:background="#ff777777" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

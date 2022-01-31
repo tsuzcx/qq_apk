@@ -1,17 +1,19 @@
-import com.tencent.av.ui.BaseInviteFloatBarUICtr;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jqz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public jqz(BaseInviteFloatBarUICtr paramBaseInviteFloatBarUICtr) {}
+  public jqz(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "timeout~ mPeerUin:" + this.a.c);
-    }
-    this.a.d();
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.a.app, this.a, 2, 12);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 5, 0, "", "", "", "");
   }
 }
 

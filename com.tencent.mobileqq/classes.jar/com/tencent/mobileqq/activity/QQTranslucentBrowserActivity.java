@@ -15,10 +15,10 @@ public class QQTranslucentBrowserActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131492923);
-    paramBundle = findViewById(2131363436);
+    getWindow().setBackgroundDrawableResource(2131492924);
+    paramBundle = findViewById(2131363454);
     if (paramBundle != null) {
-      paramBundle.setBackgroundResource(2131492923);
+      paramBundle.setBackgroundResource(2131492924);
     }
     return bool;
   }

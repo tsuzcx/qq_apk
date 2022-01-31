@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import adbb;
+import adla;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -65,7 +65,7 @@ public class ForwardQFavBatchOption
   public String c()
   {
     if (!this.g) {
-      return this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131431703);
+      return this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131431720);
     }
     return null;
   }
@@ -114,7 +114,7 @@ public class ForwardQFavBatchOption
       if (localObject3 != null)
       {
         localMqqHandler = ThreadManager.getUIHandler();
-        localObject3 = new adbb(this, (Bundle)localObject3, (String)localObject2, str2, str1, k, i, str3, (Intent)localObject1);
+        localObject3 = new adla(this, (Bundle)localObject3, (String)localObject2, str2, str1, k, i, str3, (Intent)localObject1);
         if (j != 0) {
           break label251;
         }

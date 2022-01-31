@@ -1,16 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
-import com.tencent.biz.qqstory.takevideo.filter.WeatherFilterData;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 
-class ocx
-  implements Runnable
+public final class ocx
+  implements Parcelable.Creator
 {
-  ocx(ocw paramocw, int paramInt) {}
-  
-  public void run()
+  public EditLocalGifSource a(Parcel paramParcel)
   {
-    if (EditVideoFilterNeo.a(this.jdField_a_of_type_Ocw.a) != null) {
-      EditVideoFilterNeo.a(this.jdField_a_of_type_Ocw.a).a(this.jdField_a_of_type_Int);
-    }
+    return new EditLocalGifSource(paramParcel);
+  }
+  
+  public EditLocalGifSource[] a(int paramInt)
+  {
+    return new EditLocalGifSource[paramInt];
   }
 }
 

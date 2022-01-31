@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.service.message;
 
-import ahjj;
-import ahjk;
-import ahjl;
+import ahxl;
+import ahxm;
+import ahxn;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -683,7 +683,7 @@ public class MessagePBElemDecoder
   
   private void a(im_msg_body.Elem paramElem, im_msg_body.NotOnlineImage paramNotOnlineImage, List paramList, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg)
   {
-    BaseApplication.getContext().getString(2131436281);
+    BaseApplication.getContext().getString(2131436298);
     boolean bool;
     if (paramNotOnlineImage != null) {
       bool = true;
@@ -1519,7 +1519,7 @@ public class MessagePBElemDecoder
             if (QLog.isColorLevel()) {
               paramStringBuilder2.append("elemType:OnlineImage;\n");
             }
-            localStringBuilder.append(BaseApplication.getContext().getString(2131436281));
+            localStringBuilder.append(BaseApplication.getContext().getString(2131436298));
             paramList2 = paramStringBuilder1;
             paramStringBuilder1 = paramList1;
             paramList1 = paramList2;
@@ -2434,7 +2434,7 @@ public class MessagePBElemDecoder
                 label887:
                 QLog.d("DecodeMsg", 2, paramMessageInfo);
               }
-              ThreadManager.getSubThreadHandler().postDelayed(new ahjj(this), 1000L);
+              ThreadManager.getSubThreadHandler().postDelayed(new ahxl(this), 1000L);
             }
             if (!paramList2.isEmpty())
             {
@@ -2597,7 +2597,7 @@ public class MessagePBElemDecoder
           paramList1 = (MessageRecord)paramList2.get(0);
           paramList1.saveExtInfoToExtStr("welcome_msg", "true");
           if ((i != 2) && (((paramList1 instanceof MessageForText)) || ((paramList1 instanceof MessageForLongMsg)))) {
-            ThreadManager.executeOnSubThread(new ahjk(this, paramMsg));
+            ThreadManager.executeOnSubThread(new ahxm(this, paramMsg));
           }
           label1641:
           if (paramList2.isEmpty()) {
@@ -2801,7 +2801,7 @@ public class MessagePBElemDecoder
         StringBuilder localStringBuilder = new StringBuilder("");
         if (paramBoolean)
         {
-          localStringBuilder.append(BaseApplication.getContext().getString(2131436281));
+          localStringBuilder.append(BaseApplication.getContext().getString(2131436298));
           paramElem = (msg_comm.MsgHead)paramMsg.msg_head.get();
           l1 = paramElem.msg_seq.get();
           l2 = paramElem.msg_uid.get();
@@ -3254,7 +3254,7 @@ public class MessagePBElemDecoder
           if (QLog.isColorLevel()) {
             QLog.i("DingdongScheduleMessage", 2, "A Schedule message");
           }
-          ThreadManager.post(new ahjl(this), 5, null, true);
+          ThreadManager.post(new ahxn(this), 5, null, true);
           int i = ((Qworkflow.Notification)localObject).msg_schedule_change.uint32_main_type.get();
           int j = ((Qworkflow.Notification)localObject).msg_schedule_change.uint32_sub_type.get();
           if ((i != 100) || (j != 1)) {
@@ -4583,7 +4583,7 @@ public class MessagePBElemDecoder
             default: 
               return;
             case 3: 
-              paramList1 = BaseApplication.getContext().getString(2131436281);
+              paramList1 = BaseApplication.getContext().getString(2131436298);
               paramStringBuilder = (MessageForText)MessageRecordFactory.a(-1000);
               paramStringBuilder.msgtype = -1000;
               paramStringBuilder.msg = paramList1;
@@ -5030,7 +5030,7 @@ public class MessagePBElemDecoder
         }
         paramList1 = (MessageForText)MessageRecordFactory.a(-1000);
         paramList1.msgtype = -1000;
-        paramList1.msg = BaseApplication.getContext().getString(2131436160);
+        paramList1.msg = BaseApplication.getContext().getString(2131436177);
         paramList2.add(paramList1);
         return;
       }

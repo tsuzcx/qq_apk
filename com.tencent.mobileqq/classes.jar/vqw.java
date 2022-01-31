@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class vqw
-  implements DialogInterface.OnClickListener
+  extends ProxyObserver
 {
-  public vqw(GameRoomChatPie paramGameRoomChatPie) {}
+  public vqw(BaseTroopChatPie paramBaseTroopChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void b()
   {
-    this.a.b(1);
+    this.a.a(false, false);
   }
 }
 

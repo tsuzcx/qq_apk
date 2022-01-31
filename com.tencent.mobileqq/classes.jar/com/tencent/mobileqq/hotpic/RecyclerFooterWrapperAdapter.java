@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adif;
+import adse;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.AdapterDataObserver;
@@ -11,7 +11,7 @@ public class RecyclerFooterWrapperAdapter
   extends RecyclerView.Adapter
 {
   private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new adif(this);
+  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new adse(this);
   HotPicFooterInterface jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface;
   
   public RecyclerFooterWrapperAdapter(@NonNull RecyclerView.Adapter paramAdapter, HotPicFooterInterface paramHotPicFooterInterface)
@@ -57,7 +57,7 @@ public class RecyclerFooterWrapperAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.RecyclerFooterWrapperAdapter
  * JD-Core Version:    0.7.0.1
  */

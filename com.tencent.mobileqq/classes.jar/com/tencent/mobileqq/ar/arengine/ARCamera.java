@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aaae;
-import aaaf;
+import aaey;
+import aaez;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
@@ -39,7 +39,7 @@ public class ARCamera
   private static int jdField_c_of_type_Int;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Camera jdField_a_of_type_AndroidHardwareCamera;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aaaf(this, Looper.myLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new aaez(this, Looper.myLooper());
   private ARCamera.AutoFocusListener jdField_a_of_type_ComTencentMobileqqArArengineARCamera$AutoFocusListener;
   private boolean jdField_a_of_type_Boolean;
   private boolean jdField_b_of_type_Boolean;
@@ -458,7 +458,7 @@ public class ARCamera
   {
     QLog.i("AREngine_ARCamera", 1, String.format("manualFocus touchX=%s touchY=%s surfaceWidth=%s surfaceHeight=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) }));
     if (this.jdField_a_of_type_AndroidHardwareCamera != null) {
-      AREngine.c(new aaae(this, paramInt1, paramInt2, paramInt3, paramInt4));
+      AREngine.c(new aaey(this, paramInt1, paramInt2, paramInt3, paramInt4));
     }
   }
   

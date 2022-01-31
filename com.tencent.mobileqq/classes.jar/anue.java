@@ -1,18 +1,18 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class anue
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnDismissListener
 {
-  public anue(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public anue(EditVideoMusic paramEditVideoMusic) {}
   
-  public void onGlobalLayout()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ThreadManager.post(this.a, 8, null, false);
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.a(0);
+    VideoEditReport.a("0X80076DD");
   }
 }
 

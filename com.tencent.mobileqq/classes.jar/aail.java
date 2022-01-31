@@ -1,35 +1,26 @@
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Container;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aail
   implements Runnable
 {
-  public aail(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  public aail(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
-    if (localObject == null) {}
-    ArkFullScreenAppActivity localArkFullScreenAppActivity;
-    do
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
+    if (this.jdField_a_of_type_Boolean) {
+      localHashMap.put("result", "0");
+    }
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
-        localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
-        localObject = ArkAppContainer.a((ark.Container)localObject);
-      } while (localObject == null);
-      localObject = (ArkAppContainer)((WeakReference)localObject).get();
-    } while (localObject == null);
-    localArkFullScreenAppActivity.a((ArkAppContainer)localObject, true);
+      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalControlInt", true, 0L, 0L, localHashMap, "");
+      return;
+      localHashMap.put("result", "1");
+    }
   }
 }
 

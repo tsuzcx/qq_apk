@@ -1,27 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager.PayItem;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class xey
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public xey(AnonymousEntranceView paramAnonymousEntranceView) {}
+  public xey(GoldMsgPayManager paramGoldMsgPayManager, GoldMsgPayManager.PayItem paramPayItem) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(4);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(0);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager$PayItem.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager$PayItem.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
 }
 

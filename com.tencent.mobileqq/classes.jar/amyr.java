@@ -1,33 +1,19 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.ComboProviderPagerAdapter;
-import dov.com.qq.im.capture.view.ComboProviderView;
+import cooperation.qzone.report.lp.LpReportInfo;
+import cooperation.qzone.report.lp.LpReportManager;
 
 public class amyr
   implements Runnable
 {
-  public amyr(ComboProviderView paramComboProviderView, int paramInt) {}
+  public amyr(LpReportManager paramLpReportManager, int paramInt, LpReportInfo paramLpReportInfo, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewComboProviderView.a.a.get(this.jdField_a_of_type_DovComQqImCaptureViewComboProviderView.b());
-    if (localGridView != null)
-    {
-      localGridView.setSelection(this.jdField_a_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.d("ComboProviderView", 2, "positon= " + this.jdField_a_of_type_Int);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ComboProviderView", 2, "gridView is null");
+    LpReportManager.access$000(this.jdField_a_of_type_CooperationQzoneReportLpLpReportManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyr
  * JD-Core Version:    0.7.0.1
  */

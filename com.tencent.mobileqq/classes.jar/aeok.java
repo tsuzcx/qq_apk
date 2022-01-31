@@ -1,17 +1,34 @@
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.OnLoadListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class aeok
-  implements Runnable
+  implements WerewolvesHandler.Callback
 {
-  public aeok(PicBrowserGalleryAdapter paramPicBrowserGalleryAdapter, int paramInt, boolean paramBoolean) {}
+  public aeok(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
   
-  public void run()
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    if (PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter) != null) {
-      PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
+      return;
     }
+    paramRspBody = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
+    paramRspBody.b = null;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.c();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
   }
 }
 

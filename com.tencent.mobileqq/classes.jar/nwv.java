@@ -1,39 +1,36 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.GetFeedCommentEvent;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentBackgroundSyncer.CommentPullConsumer;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class nwv
-  extends SimpleObserver
+  extends QQUIEventReceiver
 {
-  public nwv(FeedCommentBackgroundSyncer.CommentPullConsumer paramCommentPullConsumer) {}
-  
-  public void a(CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
+  public nwv(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter)
   {
-    super.onNext(paramGetFeedCommentEvent);
-    if (paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-      localCommentManager.a(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList, paramGetFeedCommentEvent.jdField_a_of_type_JavaLangString, false, false);
-      paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList.addAll(localCommentManager.b(paramGetFeedCommentEvent.jdField_a_of_type_JavaLangString, false));
-    }
-    Dispatchers.get().dispatch(paramGetFeedCommentEvent);
-    this.a.c();
-    SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull next");
+    super(paramMemoriesProfilePresenter);
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
   {
-    super.onError(paramError);
-    this.a.c();
-    SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull error", paramError);
+    if (paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramGetCollectionListEvent.jdField_a_of_type_Int));
+      MemoriesProfilePresenter.a(paramMemoriesProfilePresenter, paramGetCollectionListEvent.jdField_a_of_type_Int);
+      if (paramMemoriesProfilePresenter.a != null)
+      {
+        paramMemoriesProfilePresenter.a.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
+        ThreadManager.post(new nww(this, paramMemoriesProfilePresenter), 5, null, false);
+      }
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DateCollectionListPageLoader.GetCollectionListEvent.class;
   }
 }
 

@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class jxd
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public jxd(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = null;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public jxd(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void run()
+  {
+    AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.get();
+    if (localAVActivity != null) {
+      localAVActivity.runOnUiThread(new jxe(this));
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.c, 2, "onInviteUserNotice-->Can not get AVActivity");
   }
 }
 

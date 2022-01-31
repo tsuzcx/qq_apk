@@ -1,17 +1,20 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
 public class nmc
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public nmc(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  public nmc(VidListPlayMode paramVidListPlayMode, boolean paramBoolean) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.e = false;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.g();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.a.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.b, false);
   }
 }
 

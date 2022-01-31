@@ -1,18 +1,26 @@
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem.FakeVideoUIItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.qqstory.shareGroup.addvideo.AddVideoController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class nrk
-  implements Runnable
+public class nrk
+  implements ActionSheet.OnButtonClickListener
 {
-  nrk(nrj paramnrj, String paramString, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, boolean paramBoolean) {}
+  public nrk(AddVideoController paramAddVideoController, ActionSheet paramActionSheet, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    StoryPlayVideoActivity.a(this.jdField_a_of_type_Nrj.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Nrj.jdField_a_of_type_Int, this.b, new ArrayList(this.jdField_a_of_type_Nrj.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.a), this.jdField_a_of_type_Nrj.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Boolean, 86);
-    SLog.b("StoryPickerFragment", "go to player , collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_Nrj.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Nrj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem$FakeVideoUIItem.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Nrj.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilArrayList });
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupAddvideoAddVideoController.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupAddvideoAddVideoController.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
   }
 }
 

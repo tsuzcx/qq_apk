@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.build;
 
-import ajye;
+import akml;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -68,21 +68,21 @@ public class WebViewBaseBuilder
     if (QLog.isColorLevel()) {
       QLog.d("WebViewBaseBuilder", 2, "initLayout");
     }
-    View localView = LayoutInflater.from(this.jdField_f_of_type_AndroidContentContext).inflate(2130971674, null);
+    View localView = LayoutInflater.from(this.jdField_f_of_type_AndroidContentContext).inflate(2130971722, null);
     this.jdField_h_of_type_AndroidAppActivity.setContentView(localView);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131375267);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131375453);
     if ((this.e) && (ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
       this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(this.jdField_f_of_type_Boolean);
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366324));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372909));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131367095));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131363031));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131375268);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364094));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366351));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131373090));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131367143));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131363049));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131375454);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364118));
     if ((this.d != null) && (!this.d.getBooleanExtra("webview_hide_progress", false)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131366727));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131366770));
       this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController = new WebViewProgressBarController();
       this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController);
       if ((this.jdField_h_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.b() != 0)) {
@@ -98,7 +98,7 @@ public class WebViewBaseBuilder
     }
     j();
     this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(this.jdField_f_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setId(2131362556);
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setId(2131362573);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
   }
   
@@ -115,7 +115,7 @@ public class WebViewBaseBuilder
     if ((this.e) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       this.jdField_h_of_type_AndroidAppActivity.getWindow().addFlags(67108864);
-      int i = this.jdField_h_of_type_AndroidAppActivity.getResources().getColor(2131494247);
+      int i = this.jdField_h_of_type_AndroidAppActivity.getResources().getColor(2131494254);
       this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this.jdField_h_of_type_AndroidAppActivity, true, i);
       this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.init();
     }
@@ -192,7 +192,7 @@ public class WebViewBaseBuilder
     }
     j();
     this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(paramContext);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setId(2131362556);
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setId(2131362573);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView, 0, new RelativeLayout.LayoutParams(-1, -1));
   }
   
@@ -239,7 +239,7 @@ public class WebViewBaseBuilder
     if (this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null) {
       this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(true, 0);
     }
-    paramImmersiveParam.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130845743);
+    paramImmersiveParam.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130845871);
     this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.a(255, 0);
   }
   
@@ -305,7 +305,7 @@ public class WebViewBaseBuilder
       QLog.d("WebViewBaseBuilder", 2, "buildTitleBar");
     }
     this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar = new WebViewTitlerBar(this.jdField_h_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130845743);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130845871);
     if (this.d != null)
     {
       this.j = this.d.getStringExtra("webview_title");
@@ -317,7 +317,7 @@ public class WebViewBaseBuilder
         this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.a(this.k);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.a(new ajye(this));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.a(new akml(this));
   }
   
   public void g() {}
@@ -330,7 +330,7 @@ public class WebViewBaseBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.build.WebViewBaseBuilder
  * JD-Core Version:    0.7.0.1
  */

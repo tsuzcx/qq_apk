@@ -1,24 +1,29 @@
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
-import com.tencent.mobileqq.apollo.view.ApolloSlaveViewBinder;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.GameMsgInfo;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class ywe
-  implements Runnable
+class ywe
+  implements WXShareHelper.WXShareListener
 {
-  public ywe(ApolloSlaveViewBinder paramApolloSlaveViewBinder, ImageView paramImageView, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2, ApolloLinearLayout.ViewHolder paramViewHolder) {}
+  ywe(ywd paramywd) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setRepeatCount(1);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new ywf(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localTranslateAnimation);
+    if (paramBaseResp == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((ApolloGameInvitation.a(this.a.a) == null) || (!ApolloGameInvitation.a(this.a.a).equals(paramBaseResp.transaction)));
+      QLog.i("ApolloGameInvitation", 1, "[onWXShareResp], resp.errCode:" + paramBaseResp.errCode);
+    } while ((paramBaseResp.errCode != 0) || (ApolloGameInvitation.a(this.a.a) == null) || (ApolloGameInvitation.a(this.a.a) == null) || ((AppInterface)ApolloGameInvitation.a(this.a.a).get() == null));
+    VipUtils.a(null, "cmshow", "Apollo", "wechat_invite_sent", 0, 0, new String[] { Integer.toString(ApolloGameInvitation.a(this.a.a).e) });
   }
 }
 

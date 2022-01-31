@@ -1,39 +1,27 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.PinnedDividerListView;
-import com.tencent.open.agent.DeviceFriendListOpenFrame;
-import com.tencent.open.agent.DeviceFriendListOpenFrame.ViewHolder;
+import com.tencent.mobileqq.webview.AbsWebView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
 public class akmc
-  implements Runnable
+  extends akmf
 {
-  public akmc(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame, String paramString, Bitmap paramBitmap) {}
-  
-  public void run()
+  public akmc(AbsWebView paramAbsWebView)
   {
-    int j = this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.a.getChildCount();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        DeviceFriendListOpenFrame.ViewHolder localViewHolder = (DeviceFriendListOpenFrame.ViewHolder)this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.a.getChildAt(i).getTag();
-        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.b))) {
-          localViewHolder.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
+    super(paramAbsWebView, null);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "old shouldInterceptRequest");
     }
+    return a(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmc
  * JD-Core Version:    0.7.0.1
  */

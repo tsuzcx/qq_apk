@@ -1,14 +1,40 @@
-import com.tencent.biz.qqstory.newshare.model.Job;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor;
+import com.tencent.biz.qqstory.newshare.StoryShare;
+import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.ui.OnShareUIListener;
 
 public class nfy
-  implements Runnable
+  implements OnShareUIListener
 {
-  public nfy(JobExecutor paramJobExecutor, Job paramJob) {}
+  public nfy(StoryShare paramStoryShare) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.b());
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).c();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    StoryShare.a(this.a).a(paramInt);
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).b(paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).d();
+    }
+  }
+  
+  public void c()
+  {
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).d(-1);
+    }
   }
 }
 

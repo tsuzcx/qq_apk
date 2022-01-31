@@ -77,7 +77,7 @@ public class HongBao2018ListView
     try
     {
       this.o = true;
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(super.getResources(), 2130839534);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(super.getResources(), 2130839539);
       this.g = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
       this.h = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
@@ -261,7 +261,7 @@ public class HongBao2018ListView
       super.setOverScrollHeader(null);
       setOverscrollHeaderShadowEnable(false);
       Resources localResources = super.getResources();
-      this.i = ((int)localResources.getDimension(2131559471));
+      this.i = ((int)localResources.getDimension(2131559473));
       this.k = localResources.getDisplayMetrics().widthPixels;
     } while (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder != null);
     this.jdField_c_of_type_Boolean = false;
@@ -639,7 +639,7 @@ public class HongBao2018ListView
   {
     if (paramBoolean)
     {
-      this.mOverScrollHeaderShadow = getResources().getDrawable(2130839289);
+      this.mOverScrollHeaderShadow = getResources().getDrawable(2130839293);
       return;
     }
     this.mOverScrollHeaderShadow = null;
@@ -647,7 +647,7 @@ public class HongBao2018ListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.now.enter.widget.HongBao2018ListView
  * JD-Core Version:    0.7.0.1
  */

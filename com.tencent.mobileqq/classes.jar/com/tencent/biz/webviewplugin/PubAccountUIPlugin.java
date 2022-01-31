@@ -39,12 +39,12 @@ import java.util.Map;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pam;
-import pan;
-import pao;
-import pap;
-import paq;
-import par;
+import pcg;
+import pch;
+import pci;
+import pcj;
+import pck;
+import pcl;
 
 public class PubAccountUIPlugin
   extends WebViewPlugin
@@ -174,49 +174,49 @@ public class PubAccountUIPlugin
         {
           if (this.jdField_b_of_type_Boolean)
           {
-            ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839663));
-            break;
-          }
-          ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839662));
-          break;
-        }
-        if (paramPAArticleButton.jdField_a_of_type_Int == jdField_c_of_type_Int)
-        {
-          if (this.jdField_b_of_type_Boolean)
-          {
-            ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839665));
-            break;
-          }
-          ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839664));
-          break;
-        }
-        if (paramPAArticleButton.jdField_a_of_type_Int == d)
-        {
-          if (this.jdField_b_of_type_Boolean)
-          {
-            ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839672));
-            break;
-          }
-          ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839671));
-          break;
-        }
-        if (paramPAArticleButton.jdField_a_of_type_Int == e)
-        {
-          if (this.jdField_b_of_type_Boolean)
-          {
             ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839669));
             break;
           }
           ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839668));
           break;
         }
+        if (paramPAArticleButton.jdField_a_of_type_Int == jdField_c_of_type_Int)
+        {
+          if (this.jdField_b_of_type_Boolean)
+          {
+            ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839671));
+            break;
+          }
+          ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839670));
+          break;
+        }
+        if (paramPAArticleButton.jdField_a_of_type_Int == d)
+        {
+          if (this.jdField_b_of_type_Boolean)
+          {
+            ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839678));
+            break;
+          }
+          ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839677));
+          break;
+        }
+        if (paramPAArticleButton.jdField_a_of_type_Int == e)
+        {
+          if (this.jdField_b_of_type_Boolean)
+          {
+            ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839675));
+            break;
+          }
+          ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839674));
+          break;
+        }
       } while (paramPAArticleButton.jdField_a_of_type_Int != f);
       if (this.jdField_b_of_type_Boolean)
       {
-        ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839667));
+        ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839673));
         break;
       }
-      ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839666));
+      ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839672));
       break;
       label592:
       localLayoutParams.leftMargin = ((a() + ViewUtils.a(24.0F)) * paramInt);
@@ -245,11 +245,11 @@ public class PubAccountUIPlugin
     ScaleAnimation localScaleAnimation6 = new ScaleAnimation(0.95F, 1.0F, 0.95F, 1.0F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation6.setDuration(100L);
     paramURLImageView.startAnimation(localScaleAnimation1);
-    localScaleAnimation1.setAnimationListener(new pan(this, paramURLImageView, paramURLDrawable, localScaleAnimation2));
-    localScaleAnimation2.setAnimationListener(new pao(this, paramURLImageView, localScaleAnimation3));
-    localScaleAnimation3.setAnimationListener(new pap(this, paramURLImageView, localScaleAnimation4));
-    localScaleAnimation4.setAnimationListener(new paq(this, paramURLImageView, localScaleAnimation5));
-    localScaleAnimation5.setAnimationListener(new par(this, paramURLImageView, localScaleAnimation6));
+    localScaleAnimation1.setAnimationListener(new pch(this, paramURLImageView, paramURLDrawable, localScaleAnimation2));
+    localScaleAnimation2.setAnimationListener(new pci(this, paramURLImageView, localScaleAnimation3));
+    localScaleAnimation3.setAnimationListener(new pcj(this, paramURLImageView, localScaleAnimation4));
+    localScaleAnimation4.setAnimationListener(new pck(this, paramURLImageView, localScaleAnimation5));
+    localScaleAnimation5.setAnimationListener(new pcl(this, paramURLImageView, localScaleAnimation6));
   }
   
   private boolean a()
@@ -275,29 +275,29 @@ public class PubAccountUIPlugin
     int i = 0;
     if (this.mRuntime.a() != null)
     {
-      localObject = (ViewGroup)LayoutInflater.from(this.mRuntime.a()).inflate(2130969501, null);
+      localObject = (ViewGroup)LayoutInflater.from(this.mRuntime.a()).inflate(2130969508, null);
       if (this.mRuntime.a().jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup != null) {
         this.mRuntime.a().jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup.addView((View)localObject);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131366720));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131366763));
       if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
         break;
       }
       return;
-      ((ViewStub)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131366728)).inflate();
+      ((ViewStub)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131366771)).inflate();
     }
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    Object localObject = (ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131363612);
+    Object localObject = (ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131363630);
     if (this.jdField_b_of_type_Boolean) {
       ((ImageView)localObject).setBackgroundColor(Color.parseColor("#333333"));
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131366721));
-      this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new pam(this));
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131366764));
+      this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new pcg(this));
       this.jdField_b_of_type_AndroidViewViewGroup.setEnabled(false);
       if (this.jdField_a_of_type_ComTencentBizWebviewpluginPubAccountUIPlugin$PAArticleInfo == null) {
         break;
@@ -474,7 +474,7 @@ public class PubAccountUIPlugin
         if (!this.jdField_b_of_type_Boolean) {
           break label535;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839665);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839671);
         label333:
         localObject1 = URLDrawable.getDrawable(paramPAArticleButton.jdField_a_of_type_JavaLangString, ViewUtils.a(24.0F), ViewUtils.a(24.0F), (Drawable)localObject1, (Drawable)localObject1, true);
         if ((localObject1 != null) && (((URLDrawable)localObject1).getStatus() == 2)) {
@@ -515,17 +515,17 @@ public class PubAccountUIPlugin
         break label122;
         break;
         label535:
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839664);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839670);
         break label333;
         label552:
         if (paramPAArticleButton.jdField_a_of_type_Int == d)
         {
           if (this.jdField_b_of_type_Boolean)
           {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839672);
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839678);
             break label333;
           }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839671);
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130839677);
           break label333;
         }
         localObject1 = null;

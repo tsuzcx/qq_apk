@@ -1,19 +1,23 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rfr
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public rfr(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public rfr(AboutActivity paramAboutActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
-    return false;
+    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
+    {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", UpgradeController.a(), "");
+      UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
+    }
   }
 }
 

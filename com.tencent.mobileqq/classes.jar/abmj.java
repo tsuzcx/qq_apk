@@ -1,32 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.MatcherCallback;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class abmj
-  extends Handler
+class abmj
+  implements Runnable
 {
-  public abmj(ContactSyncManager paramContactSyncManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  abmj(abmi paramabmi) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.b = this.a.jdField_a_of_type_Boolean;
+    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.c = this.a.jdField_a_of_type_Boolean;
+    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.d = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.e = false;
+    Iterator localIterator = this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-    default: 
-      return;
-    case 1: 
-      ContactSyncManager.a(this.a);
-      return;
+      WordMatchManager.MatcherCallback localMatcherCallback = (WordMatchManager.MatcherCallback)localIterator.next();
+      if (localMatcherCallback != null) {
+        localMatcherCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$WordMatcher);
+      }
     }
-    ContactSyncManager.b(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_JavaUtilArrayList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abmj
  * JD-Core Version:    0.7.0.1
  */

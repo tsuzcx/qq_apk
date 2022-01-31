@@ -1,22 +1,19 @@
-import android.content.res.Resources;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jym
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public jym(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public jym(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TimeoutRunnable Run");
-    }
-    QQToast.a(MultiVideoEnterPageActivity.c(this.a), 2131429185, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131558448));
-    if (!this.a.jdField_a_of_type_Boolean) {
-      MultiVideoEnterPageActivity.g(this.a);
-    }
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.a.app, this.a, 2, 12);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 5, 0, "", "", "", "");
   }
 }
 

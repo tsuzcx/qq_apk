@@ -1,53 +1,38 @@
-import android.support.v4.util.MQLruCache;
-import com.tencent.biz.pubaccount.util.PreloadManager;
-import com.tencent.mobileqq.app.AppConstants;
-import java.io.File;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptObserver;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class mtl
-  extends Thread
+  extends SubscriptObserver
 {
-  public mtl(PreloadManager paramPreloadManager) {}
+  public mtl(SubscriptRecommendController paramSubscriptRecommendController) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, List paramList)
   {
-    int j = 0;
-    if (PreloadManager.a(this.a) != null) {
-      PreloadManager.a(this.a).releaseLargeCache();
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptObserver", 2, "onGetRecommendList isSuccess: " + paramBoolean + " | data: " + paramList + " | isShowRecommend: " + this.a.jdField_a_of_type_Boolean);
     }
-    long l = System.currentTimeMillis();
-    Object localObject1 = new File(AppConstants.cn);
-    int k;
-    int i;
-    Object localObject2;
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    if ((paramBoolean) && (this.a.jdField_a_of_type_Boolean))
     {
-      localObject1 = ((File)localObject1).listFiles();
-      k = localObject1.length;
-      i = 0;
-      while (i < k)
-      {
-        localObject2 = localObject1[i];
-        if (l - localObject2.lastModified() > 172800000L) {
-          localObject2.delete();
-        }
-        i += 1;
+      if ((paramList == null) || (paramList.isEmpty())) {
+        break label145;
+      }
+      this.a.a(paramList);
+      paramList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
+      if ((paramList != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
+        paramList.sendEmptyMessage(1004);
       }
     }
-    localObject1 = new File(AppConstants.co);
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
-    {
-      localObject1 = ((File)localObject1).listFiles();
-      k = localObject1.length;
-      i = j;
-      while (i < k)
-      {
-        localObject2 = localObject1[i];
-        if (l - localObject2.lastModified() > 172800000L) {
-          localObject2.delete();
-        }
-        i += 1;
-      }
+    label145:
+    while (!QLog.isColorLevel()) {
+      return;
     }
+    QLog.d("SubscriptObserver", 2, "onGetRecommendList data is null or empty");
   }
 }
 

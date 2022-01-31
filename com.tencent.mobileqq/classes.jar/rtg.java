@@ -1,17 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 
-public final class rtg
+class rtg
   implements DialogInterface.OnClickListener
 {
-  public rtg(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  rtg(rtc paramrtc) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
     paramDialogInterface.dismiss();
   }
 }

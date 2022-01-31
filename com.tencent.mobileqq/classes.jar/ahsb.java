@@ -1,27 +1,31 @@
-public class ahsb
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+
+class ahsb
+  extends SosoInterface.OnLocationListener
 {
-  public int a;
-  public boolean a;
-  public int b = 86400;
-  public int c = 5;
-  
-  public ahsb()
+  ahsb(ahsa paramahsa, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 1;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void a()
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 1;
-    this.b = 86400;
-    this.c = 5;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
+      return;
+    }
+    com.tencent.mobileqq.search.activity.UniteSearchActivity.a = paramSosoLbsInfo.a.a;
+    com.tencent.mobileqq.search.activity.UniteSearchActivity.b = paramSosoLbsInfo.a.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahsb
  * JD-Core Version:    0.7.0.1
  */

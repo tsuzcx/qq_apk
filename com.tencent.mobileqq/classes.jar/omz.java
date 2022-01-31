@@ -1,9 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
-public final class omz
-  implements DialogInterface.OnClickListener
+public class omz
+  extends DialogUtil.DialogOnClickAdapter
 {
+  public omz(StoryPublishLauncher paramStoryPublishLauncher) {}
+  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();

@@ -1,21 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
 public class aeei
-  implements ExpandableListView.OnGroupClickListener
+  implements Runnable
 {
-  public aeei(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
+  public aeei(MagicfaceViewController paramMagicfaceViewController) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    return true;
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeei
  * JD-Core Version:    0.7.0.1
  */

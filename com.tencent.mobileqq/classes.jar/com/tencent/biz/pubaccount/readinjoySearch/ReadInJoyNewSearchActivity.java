@@ -37,19 +37,19 @@ import com.tencent.widget.XListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.List;
-import mpz;
-import mqa;
-import mqb;
-import mqc;
-import mqd;
-import mqf;
+import mrg;
+import mrh;
+import mri;
+import mrj;
+import mrk;
+import mrm;
 
 public class ReadInJoyNewSearchActivity
   extends FragmentActivity
   implements View.OnClickListener, ReadInJoySearchHistoryAdapter.OnItemClickObserver
 {
   public Handler a;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new mqa(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new mrh(this);
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
@@ -60,7 +60,7 @@ public class ReadInJoyNewSearchActivity
   
   public ReadInJoyNewSearchActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new mpz(this);
+    this.jdField_a_of_type_AndroidOsHandler = new mrg(this);
   }
   
   private void a(List paramList)
@@ -82,19 +82,19 @@ public class ReadInJoyNewSearchActivity
   @TargetApi(14)
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131362822);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131362840);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(true);
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131368254));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131368321));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131368256));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131368323));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131368255));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131368322));
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new mqf(this, null));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new mrm(this, null));
   }
   
   private void b(String paramString)
@@ -159,25 +159,25 @@ public class ReadInJoyNewSearchActivity
   private void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter = new ReadInJoySearchHistoryAdapter(this, null, this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131363903));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131363926));
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter);
-    this.b = super.findViewById(2131365590);
+    this.b = super.findViewById(2131365617);
     e();
   }
   
   private void e()
   {
-    ThreadManager.post(new mqc(this), 10, null, true);
+    ThreadManager.post(new mrj(this), 10, null, true);
   }
   
   public void a()
   {
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
-    Object localObject = new mqd(this);
-    localQQCustomDialog.setPositiveButton(2131430509, (DialogInterface.OnClickListener)localObject);
-    localQQCustomDialog.setNegativeButton(2131430508, (DialogInterface.OnClickListener)localObject);
-    localObject = getString(2131430507);
-    localQQCustomDialog.setTitle(2131430466);
+    Object localObject = new mrk(this);
+    localQQCustomDialog.setPositiveButton(2131430526, (DialogInterface.OnClickListener)localObject);
+    localQQCustomDialog.setNegativeButton(2131430525, (DialogInterface.OnClickListener)localObject);
+    localObject = getString(2131430524);
+    localQQCustomDialog.setTitle(2131430483);
     TextView localTextView = new TextView(this);
     localTextView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     localTextView.setTextSize(14.0F);
@@ -206,13 +206,13 @@ public class ReadInJoyNewSearchActivity
   
   public void a(String paramString)
   {
-    ThreadManager.post(new mqb(this, paramString), 10, null, true);
+    ThreadManager.post(new mri(this, paramString), 10, null, true);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969637);
+    super.setContentView(2130969645);
     c();
     b();
     d();
@@ -248,10 +248,10 @@ public class ReadInJoyNewSearchActivity
   {
     switch (paramView.getId())
     {
-    case 2131368255: 
+    case 2131368322: 
     default: 
       return;
-    case 2131368254: 
+    case 2131368321: 
       finish();
       return;
     }

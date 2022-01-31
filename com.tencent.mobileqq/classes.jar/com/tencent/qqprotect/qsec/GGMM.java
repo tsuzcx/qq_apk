@@ -1,8 +1,8 @@
 package com.tencent.qqprotect.qsec;
 
-import alhp;
-import alhq;
-import alhr;
+import alxf;
+import alxg;
+import alxh;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
@@ -127,7 +127,7 @@ public class GGMM
   {
     try
     {
-      Map localMap = a(new FileInputStream("/proc/cpuinfo"), new alhp());
+      Map localMap = a(new FileInputStream("/proc/cpuinfo"), new alxf());
       return localMap;
     }
     catch (IOException localIOException)
@@ -138,7 +138,7 @@ public class GGMM
   }
   
   /* Error */
-  private static Map a(InputStream paramInputStream, alhs paramalhs)
+  private static Map a(InputStream paramInputStream, alxi paramalxi)
   {
     // Byte code:
     //   0: new 208	java/util/HashMap
@@ -232,7 +232,7 @@ public class GGMM
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	152	0	paramInputStream	InputStream
-    //   0	152	1	paramalhs	alhs
+    //   0	152	1	paramalxi	alxi
     //   25	77	2	localObject1	Object
     //   146	1	2	localException	Exception
     //   7	113	3	localHashMap	HashMap
@@ -376,7 +376,7 @@ public class GGMM
       if (QLog.isColorLevel()) {
         QLog.d("GGMM", 2, "rpt after: " + l1);
       }
-      QSecFramework.a().postDelayed(new alhr(), l1);
+      QSecFramework.a().postDelayed(new alxh(), l1);
       return;
       l1 = 604800000L - l3 + l2;
     }
@@ -627,7 +627,7 @@ public class GGMM
     do
     {
       return localHashMap;
-      a(a(localInputStream, new alhq()), localHashMap);
+      a(a(localInputStream, new alxg()), localHashMap);
     } while (localInputStream == null);
     try
     {

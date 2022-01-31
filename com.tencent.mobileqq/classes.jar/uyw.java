@@ -1,21 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.MixedImageOnclickListener;
-import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public class uyw
-  implements View.OnClickListener
+class uyw
+  implements ActionSheet.OnDismissListener
 {
-  public uyw(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
+  uyw(uyv paramuyv) {}
   
-  public void onClick(View paramView)
-  {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    if (MixedMsgItemBuilder.a(this.a)) {
-      return;
-    }
-    MixedMsgItemBuilder.a(this.a).onClick(paramView);
-  }
+  public void onDismiss() {}
 }
 
 

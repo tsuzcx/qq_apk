@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class ybc
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ybc(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public ybc(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    this.a.c.sendAccessibilityEvent(8);
   }
 }
 

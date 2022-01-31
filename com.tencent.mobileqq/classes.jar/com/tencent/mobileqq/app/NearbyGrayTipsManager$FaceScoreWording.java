@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import mqq.os.MqqHandler;
-import zen;
+import zht;
 
 public class NearbyGrayTipsManager$FaceScoreWording
   implements Serializable
@@ -105,7 +105,7 @@ public class NearbyGrayTipsManager$FaceScoreWording
         if ((!paramBoolean) || (localFaceScoreWording == null)) {
           continue;
         }
-        ThreadManager.getFileThreadHandler().post(new zen(this, localFaceScoreWording));
+        ThreadManager.getFileThreadHandler().post(new zht(this, localFaceScoreWording));
         return;
       }
     }

@@ -1,20 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.service.message.MessageCache;
 
-public final class acxd
-  implements Runnable
+public class acxd
 {
-  public acxd(String paramString) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
   
-  public void run()
+  public acxd(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 0, this.a, 0).b(FMToastUtil.a());
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = MessageCache.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxd
  * JD-Core Version:    0.7.0.1
  */

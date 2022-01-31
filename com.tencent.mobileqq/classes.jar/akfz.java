@@ -1,130 +1,29 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.util.AttributeSet;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.widget.DropdownView;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import java.util.List;
 
 public class akfz
-  extends AutoCompleteTextView
+  implements Runnable
 {
-  private boolean jdField_a_of_type_Boolean;
+  public akfz(SendMessageHandler paramSendMessageHandler, long paramLong, String paramString) {}
   
-  public akfz(DropdownView paramDropdownView, Context paramContext)
+  public void run()
   {
-    super(paramContext);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public akfz(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    super(paramContext, paramAttributeSet);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public akfz(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
-  {
-    super(paramContext, paramAttributeSet, paramInt);
-    setId(526);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean enoughToFilter()
-  {
-    return true;
-  }
-  
-  public boolean isPopupShowing()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return super.isPopupShowing();
-    }
-    return false;
-  }
-  
-  public void onEditorAction(int paramInt)
-  {
-    if (paramInt == 5)
-    {
-      View localView = focusSearch(130);
-      if ((localView != null) && (!localView.requestFocus(130))) {
-        throw new IllegalStateException("focus search returned a view that wasn't able to take focus!");
-      }
-    }
-    else
-    {
-      super.onEditorAction(paramInt);
-    }
-  }
-  
-  protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    try
-    {
-      if (isPopupShowing()) {
-        dismissDropDown();
-      }
+    if (SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler) >= SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).size()) {
       return;
     }
-    catch (Exception paramCharSequence) {}
-  }
-  
-  protected void performFiltering(CharSequence paramCharSequence, int paramInt) {}
-  
-  public void showDropDown()
-  {
-    try
-    {
-      super.showDropDown();
-      if (Build.VERSION.SDK_INT <= 8) {
-        return;
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
-      return;
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      return;
-    }
-    try
-    {
-      Object localObject1 = getClass().getSuperclass().getDeclaredField("mDropDownList");
-      ((Field)localObject1).setAccessible(true);
-      localObject1 = ((Field)localObject1).get(this);
-      localObject1.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(0) });
-      return;
-    }
-    catch (Exception localException2)
-    {
-      try
-      {
-        Object localObject2 = getClass().getSuperclass().getDeclaredField("mPopup");
-        ((Field)localObject2).setAccessible(true);
-        localObject2 = ((Field)localObject2).get(this);
-        Object localObject3 = localObject2.getClass().getDeclaredField("mDropDownList");
-        ((Field)localObject3).setAccessible(true);
-        localObject3 = ((Field)localObject3).get(localObject2);
-        localObject3.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject3, new Object[] { Integer.valueOf(0) });
-        ((PopupWindow)localObject2).setAnimationStyle(2131034381);
-        return;
-      }
-      catch (Exception localException3) {}
-    }
+    int i = SendMessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler);
+    SendMessageHandler.SendMessageRunnable localSendMessageRunnable = (SendMessageHandler.SendMessageRunnable)SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).get(i);
+    localSendMessageRunnable.b = i;
+    localSendMessageRunnable.g = System.currentTimeMillis();
+    localSendMessageRunnable.c = this.jdField_a_of_type_Long;
+    localSendMessageRunnable.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localSendMessageRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akfz
  * JD-Core Version:    0.7.0.1
  */

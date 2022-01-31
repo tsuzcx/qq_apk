@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
+import android.app.Activity;
+import android.view.View;
+import cooperation.qzone.widget.QzoneGuideBubbleHelper;
 
-class xty
+public final class xty
   implements Runnable
 {
-  xty(xtw paramxtw) {}
+  public xty(Activity paramActivity, View paramView) {}
   
   public void run()
   {
-    ShortVideoCaptureController.a(2);
+    QzoneGuideBubbleHelper.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, "同步到日迹，与更多好友分享", 1, 14.0F, 5.0D, 10.0D, 5000L, -15550475, false, true, 0, null, 0);
   }
 }
 

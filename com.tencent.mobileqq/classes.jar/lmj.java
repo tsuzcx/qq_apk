@@ -1,20 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderStateMachineScheduler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
 
-public class lmj
+class lmj
   implements Runnable
 {
-  public lmj(ReadInJoyWebRenderEngine paramReadInJoyWebRenderEngine) {}
+  lmj(lmi paramlmi) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderStateMachineScheduler.a(null);
-    if (QLog.isColorLevel()) {
-      QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render mCreateLoopScheduler schedule finish or fail all cost:" + (System.currentTimeMillis() - l) + "ms");
-    }
+    ReadinjoySPEventReport.a(-1L);
   }
 }
 

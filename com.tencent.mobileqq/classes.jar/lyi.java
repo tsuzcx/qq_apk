@@ -1,13 +1,34 @@
+import android.os.Bundle;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.struct.KingMomentInfo;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
 
 public class lyi
-  implements Runnable
+  extends ReadInJoyObserver
 {
   public lyi(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void run()
+  public void a(int paramInt, KingMomentInfo paramKingMomentInfo)
   {
-    ReadInJoyDeliverVideoActivity.e(this.a);
+    if ((paramInt == 0) && (ReadInJoyDeliverVideoActivity.a(this.a)))
+    {
+      ReadInJoyDeliverVideoActivity.a(this.a, new Bundle());
+      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_cover_url", paramKingMomentInfo.h);
+      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_url", paramKingMomentInfo.g);
+      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_title", paramKingMomentInfo.jdField_d_of_type_JavaLangString);
+      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_uuid", paramKingMomentInfo.f);
+      ReadInJoyDeliverVideoActivity.a(this.a).putLong("arg_video_duration", paramKingMomentInfo.jdField_a_of_type_Long);
+      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_width", paramKingMomentInfo.c);
+      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_height", paramKingMomentInfo.jdField_b_of_type_Int);
+      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_width", paramKingMomentInfo.e);
+      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_height", paramKingMomentInfo.jdField_d_of_type_Int);
+      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_topic_id", paramKingMomentInfo.jdField_a_of_type_Int + "");
+      ReadInJoyDeliverVideoActivity.a(this.a).setHint("#" + paramKingMomentInfo.jdField_a_of_type_JavaLangString + "#");
+      ReadInJoyDeliverVideoActivity.a(this.a, paramKingMomentInfo.jdField_b_of_type_JavaLangString);
+      ReadInJoyDeliverVideoActivity.a(this.a, true);
+      ReadInJoyDeliverVideoActivity.a(this.a, paramKingMomentInfo.h);
+    }
   }
 }
 

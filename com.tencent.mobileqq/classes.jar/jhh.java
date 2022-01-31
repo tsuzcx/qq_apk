@@ -1,13 +1,20 @@
-import com.tencent.av.camera.CameraObserver;
+import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
 
 public class jhh
-  implements Runnable
 {
-  public jhh(CameraObserver paramCameraObserver, Object paramObject) {}
+  public byte a;
+  public byte b = 0;
+  public byte c = 1;
+  public byte d = 1;
+  public byte e = 1;
+  public byte f = 0;
+  public byte g = 0;
+  public byte h = 0;
+  public byte i = 0;
   
-  public void run()
+  public jhh(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
   {
-    CameraObserver.a(this.jdField_a_of_type_ComTencentAvCameraCameraObserver, this.jdField_a_of_type_JavaLangObject);
+    this.jdField_a_of_type_Byte = 1;
   }
 }
 

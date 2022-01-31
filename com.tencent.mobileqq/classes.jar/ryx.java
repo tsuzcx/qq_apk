@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ryx
   implements Runnable
 {
-  public ryx(ChatSettingActivity paramChatSettingActivity) {}
+  public ryx(ChatHistory paramChatHistory) {}
   
   public void run()
   {
-    QQUtils.a(this.a.app, ChatSettingActivity.b(this.a), ChatSettingActivity.f(this.a), this.a.getTitleBarHeight(), this.a.a, 500, "0", ChatSettingActivity.a(this.a));
+    if (!this.a.isFinishing()) {
+      ThreadManager.post(new ryy(this), 8, null, true);
+    }
   }
 }
 

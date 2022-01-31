@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 public class VideoFeedsAdapter$BaseItemHolder
 {
-  int jdField_a_of_type_Int;
-  VideoFeedsAlphaMaskView jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
+  public int a;
+  VideoFeedsAlphaMaskView a;
   public int b;
 }
 

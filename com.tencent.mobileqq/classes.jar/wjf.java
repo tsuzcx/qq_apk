@@ -1,19 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.addContactTroopView.TroopCardBanner;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wjf
-  extends TroopObserver
+  implements View.OnClickListener
 {
-  public wjf(ContactsTroopAdapter paramContactsTroopAdapter) {}
+  public wjf(TroopView paramTroopView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void onClick(View paramView)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      ContactsTroopAdapter.a(this.a, paramString, localBitmap);
+    if (TroopView.a(this.a) != null) {
+      TroopView.a(this.a).c();
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a();
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
   }
 }
 

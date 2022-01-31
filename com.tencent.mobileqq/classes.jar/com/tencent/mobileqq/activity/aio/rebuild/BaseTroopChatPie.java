@@ -69,10 +69,10 @@ import java.util.Observable;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import vnt;
-import vnu;
-import vnv;
-import vnw;
+import vqv;
+import vqw;
+import vqx;
+import vqy;
 
 public class BaseTroopChatPie
   extends BaseChatPie
@@ -96,7 +96,7 @@ public class BaseTroopChatPie
   public BaseTroopChatPie(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, FragmentActivity paramFragmentActivity, Context paramContext)
   {
     super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyObserver = new vnu(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyObserver = new vqw(this);
   }
   
   protected void D()
@@ -171,7 +171,7 @@ public class BaseTroopChatPie
     if (this.Q)
     {
       this.jdField_b_of_type_AndroidWidgetLinearLayout.getBackground().setVisible(true, false);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131363477).setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131363495).setVisibility(8);
     }
     int i = paramIntent.getIntExtra("input_panel_status", 0);
     if (i > 0) {
@@ -247,7 +247,7 @@ public class BaseTroopChatPie
     if ((this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getConfiguration().orientation == 2)) {
       this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new vnw(this, paramBoolean, paramString1, paramString2, paramInt), 300L);
+    this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new vqy(this, paramBoolean, paramString1, paramString2, paramInt), 300L);
   }
   
   public boolean a(int paramInt, View paramView, ListView paramListView)
@@ -306,7 +306,7 @@ public class BaseTroopChatPie
   void aY()
   {
     this.h = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131433664));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131433681));
     if (QLog.isColorLevel()) {
       QLog.d("Q.aio.BaseTroopChatPie", 2, "--->current AIO info<--- onresume. troopUin:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b + ",curFriendUin:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + ",type:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
     }
@@ -403,7 +403,7 @@ public class BaseTroopChatPie
     if (QLog.isColorLevel()) {
       QLog.d("Q.aio.BaseTroopChatPie", 2, "troopAIO has unread troopTipMsg");
     }
-    localObject = new vnv(this, (TroopTipsMsgMgr)localObject);
+    localObject = new vqx(this, (TroopTipsMsgMgr)localObject);
     ThreadManager.getSubThreadHandler().post((Runnable)localObject);
   }
   
@@ -417,14 +417,14 @@ public class BaseTroopChatPie
     super.d();
     if (this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener != null)
     {
-      this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new vnt(this);
+      this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new vqv(this);
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
     }
     if (!GoldMsgChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo))
     {
-      this.d.setTextColor(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getColor(2131494205));
-      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getColor(2131494205));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getColor(2131494203));
+      this.d.setTextColor(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getColor(2131494212));
+      this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getColor(2131494212));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getColor(2131494210));
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotPanel = new TroopAIORobotPanel(this.jdField_a_of_type_AndroidContentContext);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable != null) {
@@ -469,12 +469,12 @@ public class BaseTroopChatPie
   protected void u()
   {
     if ((this.Q) || (this.R)) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841223);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841260);
     }
     while (GoldMsgChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
       return;
     }
-    a(this.jdField_a_of_type_AndroidWidgetImageView, 2130845766, 2130845767);
+    a(this.jdField_a_of_type_AndroidWidgetImageView, 2130845894, 2130845895);
   }
   
   public void update(Observable paramObservable, Object paramObject)

@@ -1,26 +1,16 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class vbv
-  extends VasQuickUpdateManager.CallBacker
+  implements View.OnClickListener
 {
-  public vbv(RichStatItemBuilder paramRichStatItemBuilder) {}
+  public vbv(MedalNewsItemBuilder paramMedalNewsItemBuilder) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onClick(View paramView)
   {
-    if ((paramLong == 9L) && (paramString1.startsWith("signature.sticker.")) && (paramInt1 == 0))
-    {
-      paramString1 = paramString1.substring("signature.sticker.".length(), paramString1.length());
-      paramString1 = paramString1.substring(0, paramString1.length() - 4);
-      if (TextUtils.isDigitsOnly(paramString1))
-      {
-        paramInt1 = Integer.parseInt(paramString1);
-        this.a.b.post(new vbw(this, paramInt1));
-      }
-    }
+    MedalNewsItemBuilder.a(this.a, true, this.a.a.getCurrentAccountUin());
   }
 }
 

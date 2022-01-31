@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@android:color/background_dark" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ad6" android:layout_width="375.0dip" android:layout_height="375.0dip" android:layout_centerInParent="true" />
-    <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbc" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219fa" android:layout_width="160.0dip" android:layout_height="40.0dip" android:layout_marginLeft="23.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="23.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b146b" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2ad6" android:layout_centerHorizontal="true" />
+    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1391" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b8d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/ivTitleBtnLeft" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:minWidth="40.0dip" android:layout_alignParentLeft="true" />
+    <com.qzone.proxy.albumcomponent.ui.widget.anim.FaceFocusAnimateSurfaceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ace" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b8e" android:background="#99000000" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07e3" android:textColor="#ccffffff" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="54.0dip" android:text="选择要查找的人" />
+        <android.support.v7.widget.RecyclerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b8f" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
 </RelativeLayout>

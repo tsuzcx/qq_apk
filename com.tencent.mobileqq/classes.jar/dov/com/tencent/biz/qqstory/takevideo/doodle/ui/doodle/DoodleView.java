@@ -16,8 +16,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import anjr;
-import anjs;
+import anzw;
+import anzx;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
@@ -55,7 +55,7 @@ public class DoodleView
   protected BaseLayer a;
   public DoodleConfig a;
   public DoodleLayout a;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new anjr(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new anzw(this);
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   protected List a;
   protected Map a;
@@ -666,7 +666,7 @@ public class DoodleView
       }
       return;
     }
-    ThreadManager.getUIHandler().post(new anjs(this, paramLong));
+    ThreadManager.getUIHandler().post(new anzx(this, paramLong));
   }
   
   public void setTopLevelLayer(BaseLayer paramBaseLayer)

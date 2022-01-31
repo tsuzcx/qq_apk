@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 
-class wno
+public class wno
   implements Runnable
 {
-  wno(wnn paramwnn) {}
+  public wno(PhoneContactFragment paramPhoneContactFragment) {}
   
   public void run()
   {
-    this.a.a.a(39, null);
+    if (PhoneContactFragment.a(this.a) == null) {
+      PhoneContactFragment.a(this.a, (PhoneContactManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10));
+    }
+    boolean bool = PhoneContactFragment.a(this.a).f();
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.post(new wnp(this, bool));
   }
 }
 

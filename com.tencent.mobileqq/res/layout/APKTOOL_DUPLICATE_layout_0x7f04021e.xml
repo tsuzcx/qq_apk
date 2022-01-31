@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d6c" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerHorizontal="true" />
-    <com.tencent.image.URLImageView android:id="@id/icon" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerHorizontal="true" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07fb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/icon">
-        <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d6e" android:layout_width="wrap_content" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06ce" android:background="#ff323e6f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true">
+        <TextView android:textSize="17.0dip" android:textColor="@android:color/white" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220b5" android:layout_width="wrap_content" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="返回" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@android:color/white" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b1e" android:background="@drawable/top_button_right_selector" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="44.0dip" android:layout_marginRight="10.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="退出" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="70.0dip">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0775" android:layout_width="125.0dip" android:layout_height="127.5dip" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d85" android:layout_width="fill_parent" android:layout_height="160.0dip" android:layout_marginTop="20.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0775" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d86" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            <Button android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d87" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207a3" android:padding="0.0dip" android:visibility="gone" android:layout_width="230.0dip" android:layout_height="45.0dip" android:layout_marginBottom="10.0dip" android:text="取消准备" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d88" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="28.0dip" android:paddingRight="28.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <View android:background="#ffbbbbbb" android:layout_width="86.0dip" android:layout_height="1.0dip" />
+                    <TextView android:textSize="14.0dip" android:textColor="#ffbbbbbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="邀请群及好友组队" />
+                    <View android:background="#ffbbbbbb" android:layout_width="86.0dip" android:layout_height="1.0dip" />
+                </LinearLayout>
+                <com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d89" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="10.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d8a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d8b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207a6" android:padding="0.0dip" android:visibility="visible" android:layout_width="140.0dip" android:layout_height="45.0dip" android:text="多人组队" />
+        <Button android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d8c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207a3" android:padding="0.0dip" android:visibility="visible" android:layout_width="140.0dip" android:layout_height="45.0dip" android:layout_marginLeft="10.0dip" android:text="单人匹配" />
     </LinearLayout>
+    <com.tencent.mobileqq.werewolves.WereWolvesLoadingView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d8d" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlCommenTitle" />
 </RelativeLayout>

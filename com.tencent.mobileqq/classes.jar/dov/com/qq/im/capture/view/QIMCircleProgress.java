@@ -1,9 +1,5 @@
 package dov.com.qq.im.capture.view;
 
-import amzg;
-import amzh;
-import amzi;
-import amzj;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -15,6 +11,10 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
+import anpl;
+import anpm;
+import anpn;
+import anpo;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,8 +79,8 @@ public class QIMCircleProgress
   {
     setLayerType(1, null);
     this.jdField_b_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_d_of_type_Int = getResources().getColor(2131492981);
-    this.f = getResources().getColor(2131493438);
+    this.jdField_d_of_type_Int = getResources().getColor(2131492982);
+    this.f = getResources().getColor(2131493442);
     this.jdField_e_of_type_Int = 51;
     this.g = 100;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -90,7 +90,7 @@ public class QIMCircleProgress
     this.jdField_d_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_d_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131492968));
+    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131492969));
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -119,8 +119,8 @@ public class QIMCircleProgress
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(150L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(3);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new amzg(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new amzh(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anpl(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new anpm(this));
     }
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
     {
@@ -128,8 +128,8 @@ public class QIMCircleProgress
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new amzi(this));
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new amzj(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anpn(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new anpo(this));
     }
   }
   
@@ -213,7 +213,7 @@ public class QIMCircleProgress
           this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth((int)(this.jdField_c_of_type_Int * (1.0D - 0.2D * this.jdField_c_of_type_Float)));
           this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeWidth((int)(this.jdField_c_of_type_Int * (1.0D - 0.2D * this.jdField_c_of_type_Float)));
           this.jdField_d_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * this.jdField_c_of_type_Float));
-          this.jdField_d_of_type_AndroidGraphicsPaint.setShadowLayer(this.jdField_d_of_type_Float * this.jdField_c_of_type_Float, 0.0F, 0.0F, getResources().getColor(2131492968));
+          this.jdField_d_of_type_AndroidGraphicsPaint.setShadowLayer(this.jdField_d_of_type_Float * this.jdField_c_of_type_Float, 0.0F, 0.0F, getResources().getColor(2131492969));
           paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, f3, f1, false, this.jdField_a_of_type_AndroidGraphicsPaint);
           paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, f3, f1, false, this.jdField_d_of_type_AndroidGraphicsPaint);
           this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_c_of_type_Int);

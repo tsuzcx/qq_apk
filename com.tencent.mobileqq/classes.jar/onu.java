@@ -1,16 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.SplitedProgressBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
 
-public class onu
-  implements Runnable
+class onu
+  implements View.OnClickListener
 {
-  public onu(StoryVideoPlayer paramStoryVideoPlayer) {}
+  onu(ont paramont, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.jdField_a_of_type_Ont.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      this.jdField_a_of_type_Ont.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Ont.jdField_b_of_type_ComTencentImageURLImageView);
+    }
   }
 }
 

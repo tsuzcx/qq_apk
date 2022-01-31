@@ -1,25 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
 import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.qphone.base.util.QLog;
 
 public class koy
-  implements View.OnClickListener
+  implements Runnable
 {
-  public koy(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public koy(EqqAccountDetailActivity paramEqqAccountDetailActivity, EqqDetail paramEqqDetail, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a != null)
-    {
-      paramView = new Intent(this.a, ChatHistory.class);
-      paramView.putExtra("uin", EqqAccountDetailActivity.i(this.a));
-      paramView.putExtra("uintype", 1024);
-      this.a.startActivity(paramView);
-      PublicAccountReportUtils.a(EqqAccountDetailActivity.i(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.j(this.a), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "updateDetailInfo");
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+      if (this.jdField_a_of_type_Boolean) {
+        EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).sendEmptyMessage(1);
+      }
+    }
+    else
+    {
+      return;
+    }
+    EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, new koz(this));
   }
 }
 

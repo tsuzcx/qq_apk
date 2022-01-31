@@ -1,21 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.setting.ICameraEntrance;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import cooperation.qzone.QzoneGiftFullScreenViewController;
+import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
+import cooperation.qzone.QzoneGiftFullScreenViewController.MagicData;
+import java.util.List;
 
 class amst
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  amst(amss paramamss) {}
+  amst(amsr paramamsr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.a.a(2);
+    URLDrawable.resume();
+    ((View)this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.a).setBackgroundColor(0);
+    QzoneGiftFullScreenViewController.a(this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController);
+    this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController$GiftFullScreenPlayListener.a();
+    if (QzoneGiftFullScreenViewController.a(this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController).size() > 0)
+    {
+      QzoneGiftFullScreenViewController.MagicData localMagicData = (QzoneGiftFullScreenViewController.MagicData)QzoneGiftFullScreenViewController.a(this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController).get(0);
+      this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.a(localMagicData.jdField_a_of_type_JavaLangString, localMagicData.b, localMagicData.jdField_a_of_type_Boolean, localMagicData.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController$GiftFullScreenPlayListener);
+      QzoneGiftFullScreenViewController.a(this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController).remove(localMagicData);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amst
  * JD-Core Version:    0.7.0.1
  */

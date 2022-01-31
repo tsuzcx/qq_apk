@@ -1,41 +1,67 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.DiscussionObserver;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneShareManager;
 import java.util.ArrayList;
 
-class shl
-  implements Runnable
+public class shl
+  extends DiscussionObserver
 {
-  shl(shk paramshk, String paramString) {}
+  public shl(Conversation paramConversation) {}
   
-  public void run()
+  protected void a()
   {
-    if (this.jdField_a_of_type_Shk.jdField_a_of_type_AndroidAppActivity.isFinishing()) {}
-    do
+    this.a.a(9, null, -2147483648);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
+    }
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  {
+    this.a.a(8, Long.toString(paramLong), 3000);
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
     {
-      return;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        QQToast.a(this.jdField_a_of_type_Shk.jdField_a_of_type_AndroidAppActivity, 1, 2131429985, 0).b(this.jdField_a_of_type_Shk.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
       }
-      ArrayList localArrayList = new ArrayList();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localArrayList.add(this.jdField_a_of_type_JavaLangString);
+      this.a.a(0L);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
       }
-      Bundle localBundle = new Bundle();
-      localBundle.putString("title", this.jdField_a_of_type_Shk.c);
-      localBundle.putString("desc", "");
-      localBundle.putLong("req_share_id", 0L);
-      localBundle.putString("detail_url", this.jdField_a_of_type_Shk.b);
-      localBundle.putStringArrayList("image_url", localArrayList);
-      QZoneShareManager.a(this.jdField_a_of_type_Shk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Shk.jdField_a_of_type_AndroidAppActivity, localBundle, null);
-    } while (!QLog.isColorLevel());
-    QLog.i("DiscussionInfoCardActivity", 2, "shareToQzone.title:" + this.jdField_a_of_type_Shk.c + " filePath:" + this.jdField_a_of_type_JavaLangString + " shareLink:" + this.jdField_a_of_type_Shk.b + " desc:" + "");
+      this.a.a(8, paramString, 3000);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "conversation onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramBoolean2 + ", " + paramString + "]");
+    }
+    if (paramBoolean1) {
+      this.a.a(new shm(this, paramString));
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
+      }
+      this.a.a(8, paramString, 3000);
+    }
   }
 }
 

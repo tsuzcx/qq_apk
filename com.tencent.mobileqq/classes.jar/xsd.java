@@ -1,125 +1,26 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
 public class xsd
-  implements INetInfoHandler
+  implements Runnable
 {
-  public xsd(AudioTranslator paramAudioTranslator) {}
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onNetMobile2None()
+  public xsd(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean)
   {
-    boolean bool = true;
-    synchronized (this.a)
-    {
-      if (AudioTranslator.a(this.a) == null) {
-        return;
-      }
-      if (AudioTranslator.a(this.a).a == null) {
-        return;
-      }
-    }
-    AudioTranslator localAudioTranslator2 = this.a;
-    if (!AudioTranslator.a(this.a).c) {}
-    for (;;)
-    {
-      localAudioTranslator2.a(bool, true);
-      return;
-      bool = false;
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramNewFlowCameraActivity.a.jdField_a_of_type_Int;
   }
   
-  public void onNetMobile2Wifi(String arg1)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(AudioTranslator.a(), 2, "onNetMobile2Wifi, AutoTranslate:  ");
-    }
-    synchronized (this.a)
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (AudioTranslator.a(this.a) == null) {
-        return;
-      }
-      if (AudioTranslator.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    AudioTranslator.a(this.a);
-  }
-  
-  public void onNetNone2Mobile(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(AudioTranslator.a(), 2, "onNetNone2Mobile ");
-    }
-    synchronized (this.a)
-    {
-      if (AudioTranslator.a(this.a) == null) {
-        return;
-      }
-      if (AudioTranslator.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    AudioTranslator.a(this.a);
-  }
-  
-  public void onNetNone2Wifi(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(AudioTranslator.a(), 2, "onNetNone2Wifi, AutoTranslate:  ");
-    }
-    synchronized (this.a)
-    {
-      if (AudioTranslator.a(this.a) == null) {
-        return;
-      }
-      if (AudioTranslator.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    AudioTranslator.a(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(AudioTranslator.a(), 2, "onNetWifi2Mobile, need restore:  ");
-    }
-    synchronized (this.a)
-    {
-      if (AudioTranslator.a(this.a) == null) {
-        return;
-      }
-      if (AudioTranslator.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    AudioTranslator.a(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    boolean bool = true;
-    synchronized (this.a)
-    {
-      if (AudioTranslator.a(this.a) == null) {
-        return;
-      }
-      if (AudioTranslator.a(this.a).a == null) {
-        return;
-      }
-    }
-    AudioTranslator localAudioTranslator2 = this.a;
-    if (!AudioTranslator.a(this.a).c) {}
-    for (;;)
-    {
-      localAudioTranslator2.a(bool, true);
-      return;
-      bool = false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.I();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.J();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.K();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.L();
     }
   }
 }

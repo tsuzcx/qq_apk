@@ -21,7 +21,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anwm;
+import aomr;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
@@ -140,7 +140,7 @@ public class GuideVideoView
   {
     Object localObject1 = new LinearLayout.LayoutParams(-1, -1);
     int i = ScreenUtil.a(getContext()) - ScreenUtil.a(95.0F) * 2;
-    double d2 = a(2130843079);
+    double d2 = a(2130843178);
     double d1 = d2;
     if (Double.isNaN(d2)) {
       d1 = 0.6D;
@@ -152,7 +152,7 @@ public class GuideVideoView
     setLayoutParams((ViewGroup.LayoutParams)localObject1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding((int)(i * 0.05D), (int)(i * 0.06D), (int)(i * 0.05D), (int)(i * 0.05D));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130843079);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130843178);
     localObject1 = new LinearLayout.LayoutParams(-1, i);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
@@ -173,7 +173,7 @@ public class GuideVideoView
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton = new FadedButton(getContext());
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton.setBackgroundResource(2130843080);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton.setBackgroundResource(2130843179);
     localObject1 = new LinearLayout.LayoutParams(ScreenUtil.a(40.0F), ScreenUtil.a(40.0F));
     ((LinearLayout.LayoutParams)localObject1).gravity = 1;
     ((LinearLayout.LayoutParams)localObject1).topMargin = 26;
@@ -222,7 +222,7 @@ public class GuideVideoView
     ((RelativeLayout.LayoutParams)localObject1).addRule(13, -1);
     this.jdField_b_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     this.jdField_b_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton.setOnClickListener(this);
-    this.jdField_b_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton.setBackgroundResource(2130843081);
+    this.jdField_b_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton.setBackgroundResource(2130843180);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_DovComTencentMobileqqRichmediaCaptureViewFadedButton);
   }
   
@@ -371,7 +371,7 @@ public class GuideVideoView
   
   public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    post(new anwm(this));
+    post(new aomr(this));
   }
   
   public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)

@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.mobileqq.troop.data.TroopAioNotificationBar;
 
-class ajdb
+public class ajdb
   implements Runnable
 {
-  ajdb(ajda paramajda, TroopTopicDetailInfo paramTroopTopicDetailInfo) {}
+  public ajdb(TroopAioNotificationBar paramTroopAioNotificationBar) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ajda.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
-    this.jdField_a_of_type_Ajda.a.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
+    TroopAioNotificationBar.a(this.a, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdb
  * JD-Core Version:    0.7.0.1
  */

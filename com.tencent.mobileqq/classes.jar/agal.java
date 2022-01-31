@@ -1,34 +1,39 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.now.enter.NowHongbaoPushManager;
+import com.tencent.mobileqq.now.enter.NowHongbaoPushManager.Callback;
 
 public class agal
-  extends RecyclerView.ViewHolder
+  implements Handler.Callback
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public RelativeLayout a;
-  public MessageProgressView a;
-  public ImageView b;
+  public agal(NowHongbaoPushManager paramNowHongbaoPushManager) {}
   
-  public agal(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    super(paramView);
-    float f = 2.0F * PersonalityLabelGalleryActivity.a(paramPersonalityLabelGalleryActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370810));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365190));
-    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setRadius(f);
-    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setPressMask(true);
-    this.b = ((ImageView)paramView.findViewById(2131370811));
-    ((CornerImageView)this.b).setRadius(f);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (NowHongbaoPushManager.a(this.a) == 0)
+      {
+        NowHongbaoPushManager.a(this.a);
+      }
+      else
+      {
+        NowHongbaoPushManager.b(this.a);
+        continue;
+        paramMessage = (NowHongbaoPushManager.Callback)paramMessage.obj;
+        NowHongbaoPushManager.a(this.a, paramMessage);
+        this.a.c();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agal
  * JD-Core Version:    0.7.0.1
  */

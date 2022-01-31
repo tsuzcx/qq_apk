@@ -1,21 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import java.util.ArrayList;
 
-public class lfm
-  implements ActionSheet.OnButtonClickListener
+class lfm
+  implements Runnable
 {
-  public lfm(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
+  lfm(lfl paramlfl, ArrayList paramArrayList) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt == 0)
-    {
-      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo, false);
-      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity).dismiss();
-    }
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lfl.a, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

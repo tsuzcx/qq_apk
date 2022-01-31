@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.ArkAiBubbleView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class aakx
-  implements View.OnClickListener
+public final class aakx
+  implements Parcelable.Creator
 {
-  public aakx(ArkAiBubbleView paramArkAiBubbleView, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public ArVideoResourceInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView.a.removeCallbacks(ArkAiBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView));
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView.a.clearAnimation();
-    ArkAiBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView).run();
-    if (QLog.isColorLevel()) {
-      QLog.i("ark.ai", 2, String.format("ArkRecommendLogic.activate: %h", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView }));
-    }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    return new ArVideoResourceInfo(paramParcel);
+  }
+  
+  public ArVideoResourceInfo[] a(int paramInt)
+  {
+    return new ArVideoResourceInfo[paramInt];
   }
 }
 

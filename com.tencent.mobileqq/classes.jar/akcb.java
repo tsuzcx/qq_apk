@@ -1,25 +1,12 @@
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import com.tencent.mobileqq.utils.DBUtils;
 
 public class akcb
-  implements Runnable
 {
-  public akcb(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
-  
-  public void run()
-  {
-    this.a.a(MsfSdkUtils.insertMtype("Web", this.a.jdField_a_of_type_JavaLangString), 0);
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
-    }
-  }
+  public static DBUtils a = new DBUtils(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akcb
  * JD-Core Version:    0.7.0.1
  */

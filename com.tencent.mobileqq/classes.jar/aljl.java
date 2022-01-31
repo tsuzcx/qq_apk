@@ -1,65 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import android.os.Bundle;
+import com.tencent.open.model.AccountManage;
+import java.lang.ref.WeakReference;
+import mqq.observer.SSOAccountObserver;
 
 public class aljl
-  extends aljm
+  implements Runnable
 {
-  public aljl(TraeAudioManager paramTraeAudioManager)
-  {
-    super(paramTraeAudioManager);
-  }
+  public aljl(AccountManage paramAccountManage, WeakReference paramWeakReference, String paramString1, String paramString2, int paramInt, Bundle paramBundle) {}
   
-  public String a()
+  public void run()
   {
-    return "DEVICE_SPEAKERPHONE";
-  }
-  
-  public void a()
-  {
-    int j = 0;
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a, true);
-    e();
-    int i = j;
-    if (QLog.isColorLevel())
-    {
-      QLog.w("TRAE", 2, " _run:" + a() + " _running:" + this.jdField_a_of_type_Boolean);
-      i = j;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Boolean == true)
-      {
-        if (TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager) != true) {
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a, true);
-        }
-        long l;
-        if (i < 5) {
-          l = 1000L;
-        }
-        try
-        {
-          for (;;)
-          {
-            Thread.sleep(l);
-            label120:
-            i += 1;
-            break;
-            l = 4000L;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          break label120;
-        }
-      }
+    SSOAccountObserver localSSOAccountObserver = (SSOAccountObserver)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localSSOAccountObserver != null) {
+      localSSOAccountObserver.onGetTicketNoPasswd(this.jdField_a_of_type_JavaLangString, this.b.getBytes(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,31 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-class thk
-  implements Runnable
+public class thk
+  extends PublicAccountObserver
 {
-  thk(thj paramthj) {}
+  public thk(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    ReportController.b(this.a.a.app, "dc00898", "", "", "0X8007914", "0X8007914", 0, 0, this.a.a.app.getCurrentAccountUin(), "", "", "");
-    HttpDownloadUtil.a("http://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean", this.a.a);
+    if (paramInt == 0) {
+      this.a.e();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.e();
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.e();
+    }
   }
 }
 

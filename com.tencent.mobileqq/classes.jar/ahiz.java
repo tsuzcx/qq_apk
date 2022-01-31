@@ -1,43 +1,29 @@
-import com.tencent.common.app.BaseProtocolCoder;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.compatible.ActionListener;
-import com.tencent.mobileqq.service.MobileQQService;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
 
 public class ahiz
-  extends ActionListener
+  implements Runnable
 {
-  public ahiz(MobileQQService paramMobileQQService) {}
+  public ahiz(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void run()
   {
-    if ((paramFromServiceMsg != null) && ("VideoSvc.Send".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
-    {
-      localObject = this.a.a("VideoSvc.Send");
-      if (localObject != null)
-      {
-        localObject = ((BaseProtocolCoder)localObject).a(paramToServiceMsg, paramFromServiceMsg);
-        localMessageHandler = MobileQQService.a(this.a).a();
-        if ((localMessageHandler != null) && (localObject != null)) {
-          localMessageHandler.a(paramToServiceMsg, paramFromServiceMsg, localObject);
-        }
-      }
-    }
-    while (paramFromServiceMsg == null)
-    {
-      Object localObject;
-      MessageHandler localMessageHandler;
-      return;
-    }
-    this.a.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    DanceLog.a("EffectsFragment", "playSceneEndEvent  begin exe...");
+    EffectsCameraCaptureFragment.a(this.a).setVisibility(8);
+    EffectsCameraCaptureFragment.a(this.a).setEnabled(false);
+    EffectsCameraCaptureFragment.a(this.a, 0);
+    EffectsCameraCaptureFragment.a(this.a, EffectsCameraCaptureFragment.a(this.a));
+    EffectsCameraCaptureFragment.e(this.a).setVisibility(0);
+    this.a.a.postDelayed(EffectsCameraCaptureFragment.a(this.a), 500L);
+    DanceLog.a("EffectsFragment", "playSceneEndEvent  end exe...");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahiz
  * JD-Core Version:    0.7.0.1
  */

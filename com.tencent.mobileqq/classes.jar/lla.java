@@ -1,24 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager;
+import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public final class lla
-  implements Runnable
+public class lla
+  implements BusinessObserver
 {
-  public lla(boolean paramBoolean, String paramString) {}
+  public lla(ThirdVideoManager paramThirdVideoManager, NewIntent paramNewIntent, long paramLong, ThirdVideoManager.UUIDToUrlCallback paramUUIDToUrlCallback, String paramString1, String paramString2, AppRuntime paramAppRuntime) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = ReadInJoyHelper.a(ReadInJoyUtils.a(), this.jdField_a_of_type_Boolean, true);
-    if (localObject != null)
-    {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).remove(this.jdField_a_of_type_JavaLangString);
-      ((SharedPreferences.Editor)localObject).apply();
-      QLog.d("ReadInJoyUtils", 2, "delete data in sp successful ! key : " + this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    ThreadManager.post(new llb(this, paramBoolean, paramBundle), 8, null, false);
   }
 }
 

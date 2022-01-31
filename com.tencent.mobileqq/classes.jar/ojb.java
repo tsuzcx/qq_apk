@@ -1,24 +1,23 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager.PageChangedObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class ojb
-  implements ViewPager.OnPageChangeListener
+  implements View.OnClickListener
 {
-  public ojb(FaceViewPager paramFaceViewPager) {}
+  public ojb(EditTextDialog paramEditTextDialog) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onClick(View paramView)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((FaceViewPager.PageChangedObserver)localIterator.next()).b(paramInt);
+    this.a.dismiss();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 4);
     }
+    VideoEditReport.a("0X80076C6");
+    VideoEditReport.b("0X80075DA");
   }
 }
 

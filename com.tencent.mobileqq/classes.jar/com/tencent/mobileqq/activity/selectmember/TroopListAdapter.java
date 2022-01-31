@@ -39,8 +39,8 @@ import java.util.List;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.ReqBody;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.ReqGroupInfo;
-import xyw;
-import xyz;
+import ycd;
+import ycg;
 
 public class TroopListAdapter
   extends FacePreloadBaseAdapter
@@ -49,10 +49,10 @@ public class TroopListAdapter
   protected Context a;
   protected LayoutInflater a;
   protected View.OnClickListener a;
-  private ProtoUtils.TroopProtocolObserver jdField_a_of_type_ComTencentBizProtoUtils$TroopProtocolObserver = new xyw(this);
+  private ProtoUtils.TroopProtocolObserver jdField_a_of_type_ComTencentBizProtoUtils$TroopProtocolObserver = new ycd(this);
   protected DiscussionManager a;
   public QQAppInterface a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new xyz(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ycg(this);
   protected XListView a;
   protected List a;
   public int b;
@@ -72,7 +72,7 @@ public class TroopListAdapter
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.g = paramContext.getResources().getColor(2131494207);
+    this.g = paramContext.getResources().getColor(2131494214);
     this.h = Color.parseColor("#808080");
     this.jdField_a_of_type_ComTencentMobileqqAppDiscussionManager = ((DiscussionManager)paramQQAppInterface.getManager(52));
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
@@ -114,10 +114,10 @@ public class TroopListAdapter
     ProtoUtils.b(paramQQAppInterface, paramTroopProtocolObserver, localReqBody.toByteArray(), "OidbSvc.0x88d_0", 2189, 0, (Bundle)localObject);
   }
   
-  public void V_()
+  public void X_()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
-    super.V_();
+    super.X_();
   }
   
   public int a(int paramInt)
@@ -349,50 +349,50 @@ public class TroopListAdapter
       }
       for (;;)
       {
-        localView = paramView.findViewById(2131366514);
-        localObject2 = (TextView)paramView.findViewById(2131366465);
+        localView = paramView.findViewById(2131366541);
+        localObject2 = (TextView)paramView.findViewById(2131366492);
         if (localTroopListItem.jdField_a_of_type_Int != 0) {
           break;
         }
         localView.setVisibility(8);
         ((TextView)localObject2).setVisibility(0);
-        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429832, new Object[] { String.valueOf(this.d) }));
+        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429838, new Object[] { String.valueOf(this.d) }));
         return paramView;
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971520, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971568, this.jdField_a_of_type_ComTencentWidgetXListView, false);
         paramViewGroup = new TroopListAdapter.TroopViewHolder(this);
-        paramViewGroup.c = ((ImageView)paramView.findViewById(2131362721));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374900));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363667));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374901));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363425));
+        paramViewGroup.c = ((ImageView)paramView.findViewById(2131362739));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375086));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363690));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375087));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363443));
         paramView.setTag(paramViewGroup);
       }
       if (localTroopListItem.jdField_a_of_type_Int == 2)
       {
         localView.setVisibility(8);
         ((TextView)localObject2).setVisibility(0);
-        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429826, new Object[] { String.valueOf(this.c) }));
+        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429832, new Object[] { String.valueOf(this.c) }));
         return paramView;
       }
       if (localTroopListItem.jdField_a_of_type_Int == 4)
       {
         localView.setVisibility(8);
         ((TextView)localObject2).setVisibility(0);
-        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429824, new Object[] { String.valueOf(this.jdField_a_of_type_Int) }));
+        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429830, new Object[] { String.valueOf(this.jdField_a_of_type_Int) }));
         return paramView;
       }
       if (localTroopListItem.jdField_a_of_type_Int == 6)
       {
         localView.setVisibility(8);
         ((TextView)localObject2).setVisibility(0);
-        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429825, new Object[] { String.valueOf(this.b) }));
+        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429831, new Object[] { String.valueOf(this.b) }));
         return paramView;
       }
       if (localTroopListItem.jdField_a_of_type_Int == 8)
       {
         localView.setVisibility(8);
         ((TextView)localObject2).setVisibility(0);
-        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429827, new Object[] { String.valueOf(this.e) }));
+        ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429833, new Object[] { String.valueOf(this.e) }));
         return paramView;
       }
       if (localTroopListItem.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)

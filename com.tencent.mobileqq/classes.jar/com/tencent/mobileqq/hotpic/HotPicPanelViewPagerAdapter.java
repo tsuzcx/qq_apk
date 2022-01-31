@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hotpic;
 
-import adgp;
-import adgr;
+import adqo;
+import adqq;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -50,7 +50,7 @@ public class HotPicPanelViewPagerAdapter
     Object localObject2 = HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     HotPicPageView localHotPicPageView = (HotPicPageView)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
     if ((localHotPicPageView != null) && (localHotPicPageView.c)) {
-      localHotPicPageView.jdField_a_of_type_Adgr.a(false);
+      localHotPicPageView.jdField_a_of_type_Adqq.a(false);
     }
     switch (paramInt2)
     {
@@ -66,17 +66,17 @@ public class HotPicPanelViewPagerAdapter
       try
       {
         localHotPicPageView.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.mClearSpanOnItemsChanged = false;
-        paramInt2 = localHotPicPageView.jdField_a_of_type_Adgp.a.size();
+        paramInt2 = localHotPicPageView.jdField_a_of_type_Adqo.a.size();
         localObject2 = ((HotPicManager)localObject2).a(paramInt1);
-        localHotPicPageView.jdField_a_of_type_Adgp.a((List)localObject2);
+        localHotPicPageView.jdField_a_of_type_Adqo.a((List)localObject2);
         int i = ((List)localObject2).size();
         paramInt1 = paramInt2;
         while (paramInt1 < i - paramInt2)
         {
-          localHotPicPageView.jdField_a_of_type_Adgp.notifyItemInserted(paramInt1);
+          localHotPicPageView.jdField_a_of_type_Adqo.notifyItemInserted(paramInt1);
           paramInt1 += 1;
         }
-        localHotPicPageView.jdField_a_of_type_Adgp.notifyItemRangeChanged(paramInt2, ((List)localObject2).size());
+        localHotPicPageView.jdField_a_of_type_Adqo.notifyItemRangeChanged(paramInt2, ((List)localObject2).size());
         localHotPicPageView.m();
         return;
       }
@@ -85,9 +85,9 @@ public class HotPicPanelViewPagerAdapter
       if (((HotPicManager)localObject2).c(paramInt1)) {}
       for (paramInt1 = 2;; paramInt1 = 1)
       {
-        localObject1.jdField_a_of_type_Adgr.a(paramInt1);
-        localObject1.jdField_a_of_type_Adgr.a(false);
-        localObject1.jdField_a_of_type_Adgp.notifyItemChanged(localObject1.jdField_a_of_type_Adgp.getItemCount());
+        localObject1.jdField_a_of_type_Adqq.a(paramInt1);
+        localObject1.jdField_a_of_type_Adqq.a(false);
+        localObject1.jdField_a_of_type_Adqo.notifyItemChanged(localObject1.jdField_a_of_type_Adqo.getItemCount());
         return;
       }
     }
@@ -193,7 +193,7 @@ public class HotPicPanelViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPanelViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

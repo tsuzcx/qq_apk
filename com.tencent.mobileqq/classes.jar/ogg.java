@@ -1,75 +1,33 @@
-import android.opengl.Matrix;
-import com.tencent.biz.qqstory.takevideo.SlideShowPhotoListManager;
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWVideoRecorder;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class ogg
-  implements HWEncodeListener
+  extends LbsManager.OnLocationListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private HWVideoRecorder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder;
-  private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private int b;
-  private int c;
-  
-  public ogg(int paramInt, long paramLong, QQFilterRenderManager paramQQFilterRenderManager, HWVideoRecorder paramHWVideoRecorder)
+  public ogg(EditVideoPoi paramEditVideoPoi, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = paramQQFilterRenderManager;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder = paramHWVideoRecorder;
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, 1.0F, -1.0F, 1.0F);
+    super(paramString);
   }
   
-  public void a()
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowPhotoListManager", 2, "onEncodeStart");
-    }
-    this.b = 0;
-    this.c = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(-1);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.e(this.b);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.a(3553, this.c, null, this.jdField_a_of_type_ArrayOfFloat, this.b * this.jdField_a_of_type_Long * 1000000L);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowPhotoListManager", 2, "onEncodeFinish, filePath:" + paramString);
-    }
-  }
-  
-  public void a_(int paramInt, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowPhotoListManager", 2, "onEncodeError");
-    }
-  }
-  
-  public void b()
-  {
-    this.b += 1;
-    if (this.b >= this.jdField_a_of_type_Int)
+    super.a(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.c();
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a = paramSosoLbsInfo.a.a;
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b = paramSosoLbsInfo.a.b;
+      SLog.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a + " longitude=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.e();
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.e(this.b);
-    this.c = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(-1);
-    if (SlideShowPhotoListManager.a)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.c();
-      return;
-    }
-    long l1 = this.b;
-    long l2 = this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.a(3553, this.c, null, this.jdField_a_of_type_ArrayOfFloat, l1 * l2);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a = 0.0D;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b = 0.0D;
+    SLog.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
 }
 

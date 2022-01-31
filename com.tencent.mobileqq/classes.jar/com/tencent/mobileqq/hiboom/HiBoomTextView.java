@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hiboom;
 
-import adfk;
+import adpj;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -24,7 +24,7 @@ public class HiBoomTextView
 {
   public int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new adfk(this));
+  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new adpj(this));
   protected EMEmoticon a;
   public HiBoomFont.HiBoomFontDownloader a;
   private HiBoomFontDrawer jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer;
@@ -39,7 +39,7 @@ public class HiBoomTextView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    setImageResource(2130838589);
+    setImageResource(2130838593);
     setScaleType(ImageView.ScaleType.CENTER);
   }
   
@@ -49,7 +49,7 @@ public class HiBoomTextView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    setImageResource(2130838589);
+    setImageResource(2130838593);
     setScaleType(ImageView.ScaleType.CENTER);
   }
   
@@ -59,7 +59,7 @@ public class HiBoomTextView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    setImageResource(2130838589);
+    setImageResource(2130838593);
     setScaleType(ImageView.ScaleType.CENTER);
   }
   
@@ -279,7 +279,7 @@ public class HiBoomTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,51 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.ProfilePresenterListener;
+import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
+import com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader.GetVideoListEvent;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class nvn
-  extends QQUIEventReceiver
+  extends UIBaseEventReceiver
 {
-  public nvn(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter)
+  public nvn(StoryDetailPresenter paramStoryDetailPresenter)
   {
-    super(paramMemoriesProfilePresenter);
+    super(paramStoryDetailPresenter);
   }
   
-  public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
   {
-    if (TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_JavaLangString, String.valueOf(paramMemoriesProfilePresenter.hashCode())))
+    if ((!paramGetVideoListEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null))
     {
-      if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
-      {
-        SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", paramUpdateUserInfoEvent);
-        paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-        paramMemoriesProfilePresenter.jdField_a_of_type_JavaLangString = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
-        if (MemoriesProfilePresenter.a(paramMemoriesProfilePresenter) != -1) {
-          paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
-        }
-        if (MemoriesProfilePresenter.b(paramMemoriesProfilePresenter) != -1) {
-          paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.shareGroupCount = MemoriesProfilePresenter.b(paramMemoriesProfilePresenter);
-        }
-        ((FriendListHandler)PlayModeUtils.a().a(1)).c(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
-        ThreadManager.post(new nvo(this, paramMemoriesProfilePresenter), 5, null, false);
-      }
-      for (;;)
-      {
-        MemoriesProfilePresenter.a(paramMemoriesProfilePresenter).a(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-        return;
-        QQToast.a(BaseApplicationImpl.getContext(), 1, "更新用户信息错误: " + paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessage(), 0);
-        SLog.e("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", new Object[] { paramUpdateUserInfoEvent });
-      }
+      SLog.b(this.TAG, "ignore this comment list event. %s.", paramGetVideoListEvent.toString());
+      return;
     }
-    SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "ignore this update user info event: %s.", paramUpdateUserInfoEvent);
+    if (!StoryDetailPresenter.a(paramStoryDetailPresenter).c())
+    {
+      SLog.e(this.TAG, "this feed does not support video list. ignore this comment list event. %s.", new Object[] { paramGetVideoListEvent.toString() });
+      return;
+    }
+    SLog.a(this.TAG, "receive comment list event. %s.", paramGetVideoListEvent.toString());
+    StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramGetVideoListEvent.jdField_a_of_type_JavaUtilList, paramGetVideoListEvent.c);
+    StoryDetailPresenter.a(paramStoryDetailPresenter).a().updateVideoInfo(paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+    if (StoryDetailPresenter.a(paramStoryDetailPresenter).a().size() < 1)
+    {
+      StoryDetailPresenter.a(paramStoryDetailPresenter).b();
+      return;
+    }
+    paramStoryDetailPresenter.a();
   }
   
   public Class acceptEventClass()
   {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+    return VideoListPageLoader.GetVideoListEvent.class;
   }
+  
+  public void b(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent) {}
 }
 
 

@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
 
 public class xba
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xba(GoldMsgAioState paramGoldMsgAioState) {}
+  public xba(QWalletSkinHandler paramQWalletSkinHandler, QWalletSkinHandler.SkinListener paramSkinListener, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener.onResult(this.jdField_a_of_type_Boolean);
   }
 }
 

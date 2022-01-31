@@ -12,8 +12,8 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.AbsListView.LayoutParams;
-import lut;
-import luu;
+import lvc;
+import lvd;
 
 public class FeedItemCellTypeUgcVideoSocial
   extends FeedItemCellTypeUgcPlainSocial
@@ -57,14 +57,14 @@ public class FeedItemCellTypeUgcVideoSocial
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
           localLinearLayout3.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
         }
-        localLinearLayout3.setOnClickListener(new lut(this));
+        localLinearLayout3.setOnClickListener(new lvc(this));
       }
       localLinearLayout2.addView(localLinearLayout3);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
     }
-    ApiCompatibilityUtils.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840806));
+    ApiCompatibilityUtils.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840835));
     localLinearLayout1.addView(localLinearLayout2);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
       localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
@@ -75,7 +75,7 @@ public class FeedItemCellTypeUgcVideoSocial
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
       localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
     }
-    localLinearLayout2.setOnClickListener(new luu(this));
+    localLinearLayout2.setOnClickListener(new lvd(this));
     a(localLinearLayout1);
     return this;
   }

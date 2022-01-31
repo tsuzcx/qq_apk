@@ -47,11 +47,11 @@ public class ChildGuideUi
       AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (localAVActivity != null)
       {
-        localAVActivity.getLayoutInflater().inflate(2130969273, this.jdField_a_of_type_AndroidViewViewGroup);
+        localAVActivity.getLayoutInflater().inflate(2130969274, this.jdField_a_of_type_AndroidViewViewGroup);
         this.jdField_a_of_type_AndroidContentResResources = localAVActivity.getResources();
       }
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365891));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365918));
   }
   
   void a(View paramView)

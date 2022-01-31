@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import adkg;
+import aduf;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,7 @@ public class HuayangLoadbackgroudActivity
 {
   private long jdField_a_of_type_Long;
   private IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
-  private HuayangPluginLauncher.HuayangPluginLauncherListener jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher$HuayangPluginLauncherListener = new adkg(this);
+  private HuayangPluginLauncher.HuayangPluginLauncherListener jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher$HuayangPluginLauncherListener = new aduf(this);
   private HuayangPluginLauncher jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher;
   private String jdField_a_of_type_JavaLangString;
   
@@ -145,7 +145,7 @@ public class HuayangLoadbackgroudActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity
  * JD-Core Version:    0.7.0.1
  */

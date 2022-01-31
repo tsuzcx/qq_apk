@@ -1,57 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import com.tracking.sdk.TrackerManager;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleStickerTrackerOrigin;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
-import java.util.HashMap;
-import java.util.Map;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 
 public class anxj
-  extends Handler
+  extends AnimatorListenerAdapter
 {
-  public anxj(SimpleStickerTrackerOrigin paramSimpleStickerTrackerOrigin, Looper paramLooper)
+  public anxj(TextLayer.TextItem paramTextItem) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramLooper);
+    SLog.b(TextLayer.a, "scaleAnimator cancel!");
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (byte[])paramMessage.obj;
-      TrackerManager.newInstance().openTrack(paramMessage, 2, 0, this.a.jdField_a_of_type_Float, this.a.b, this.a.c, this.a.d, SimpleStickerTrackerOrigin.a(this.a), SimpleStickerTrackerOrigin.b(this.a), 1.0F);
-      this.a.jdField_a_of_type_Boolean = true;
-      return;
-    case 2: 
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleStickerTrackerOrigin", 2, "handle frame start");
-      }
-      SimpleStickerTrackerOrigin.a(this.a).clear();
-      return;
-    case 3: 
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleStickerTrackerOrigin", 2, "handle frame in  , thread id=" + Thread.currentThread().getId());
-      }
-      SimpleStickerTrackerOrigin.a(this.a);
-      return;
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = SimpleStickerTrackerOrigin.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTrackerOrigin", 2, "handle finish cos time  =" + (l1 - l2));
-    }
-    if (SimpleStickerTrackerOrigin.a(this.a) != null)
-    {
-      paramMessage = new HashMap();
-      paramMessage.putAll(SimpleStickerTrackerOrigin.a(this.a));
-      SimpleStickerTrackerOrigin.a(this.a).a(paramMessage);
-    }
-    this.a.a();
+    SLog.b(TextLayer.a, "scaleAnimator end!");
+    this.a.w = 1.0F;
+    this.a.i = false;
+    this.a.a.k();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SLog.b(TextLayer.a, "scaleAnimator start!");
+    this.a.i = true;
   }
 }
 

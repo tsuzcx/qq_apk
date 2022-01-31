@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
 
-public class uxk
-  implements DialogInterface.OnClickListener
+class uxk
+  implements Runnable
 {
-  public uxk(LocationItemBuilder paramLocationItemBuilder) {}
+  uxk(uxj paramuxj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    ChatActivityUtils.a(this.a.a.a, 2131433730, 1);
+  }
 }
 
 

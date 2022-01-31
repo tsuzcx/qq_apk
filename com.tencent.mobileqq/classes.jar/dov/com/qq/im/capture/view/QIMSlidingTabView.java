@@ -1,7 +1,5 @@
 package dov.com.qq.im.capture.view;
 
-import amzv;
-import amzw;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -21,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import anqa;
+import anqb;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
@@ -70,7 +70,7 @@ public class QIMSlidingTabView
     if (paramInt < 0) {
       return -1;
     }
-    paramView.setOnClickListener(new amzv(this, paramInt));
+    paramView.setOnClickListener(new anqa(this, paramInt));
     this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramView);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, paramInt);
     return 0;
@@ -161,7 +161,7 @@ public class QIMSlidingTabView
       this.jdField_a_of_type_Boolean = false;
       localObject = ValueAnimator.ofInt(new int[] { i1, i2 });
       ((ValueAnimator)localObject).setDuration(100L);
-      ((ValueAnimator)localObject).addUpdateListener(new amzw(this));
+      ((ValueAnimator)localObject).addUpdateListener(new anqb(this));
       ((ValueAnimator)localObject).start();
       return;
     }
@@ -189,7 +189,7 @@ public class QIMSlidingTabView
         }
         localObject = (Bundle)localView.getTag();
         if (localObject != null) {
-          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130843458));
+          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130843579));
         }
       }
       label189:
@@ -215,7 +215,7 @@ public class QIMSlidingTabView
           {
             localObject = (Bundle)localView.getTag();
             if (localObject != null) {
-              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130843457));
+              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130843578));
             }
           }
           else if ((localView instanceof RedDotTextView))

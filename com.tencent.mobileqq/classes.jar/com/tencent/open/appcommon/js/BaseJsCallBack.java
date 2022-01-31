@@ -1,11 +1,11 @@
 package com.tencent.open.appcommon.js;
 
-import akoe;
-import akof;
-import akog;
-import akoh;
-import akoi;
-import akoj;
+import aldu;
+import aldv;
+import aldw;
+import aldx;
+import aldy;
+import aldz;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -148,7 +148,7 @@ public class BaseJsCallBack
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.mHandler.post(new akoj(this, paramString));
+    this.mHandler.post(new aldz(this, paramString));
   }
   
   public void clearJS()
@@ -379,7 +379,7 @@ public class BaseJsCallBack
         if (!MyAppApi.a().c()) {
           break;
         }
-        ThreadManager.getSubThreadHandler().post(new akof(this, paramString2, bool1, bool2));
+        ThreadManager.getSubThreadHandler().post(new aldv(this, paramString2, bool1, bool2));
         return;
       }
       return;
@@ -394,7 +394,7 @@ public class BaseJsCallBack
     label282:
     if ((((DownloadInfo)localObject).c == 1) && (MyAppApi.a().b()))
     {
-      ThreadManager.getSubThreadHandler().post(new akog(this, paramString2, bool1, bool2));
+      ThreadManager.getSubThreadHandler().post(new aldw(this, paramString2, bool1, bool2));
       return;
     }
     goUrl(paramString1.optString("url"), true);
@@ -408,7 +408,7 @@ public class BaseJsCallBack
     {
       paramString = new JSONObject(paramString);
       localBundle.putString(DownloadConstants.h, paramString.optString("via"));
-      ThreadManager.getSubThreadHandler().post(new akoh(this, localBundle));
+      ThreadManager.getSubThreadHandler().post(new aldx(this, localBundle));
       return;
     }
     catch (JSONException paramString)
@@ -515,7 +515,7 @@ public class BaseJsCallBack
     JSONArray localJSONArray = new JSONArray();
     try
     {
-      localJSONArray.put(this.activity.getString(2131428544));
+      localJSONArray.put(this.activity.getString(2131428550));
       localJSONObject.put("url", paramString);
       localJSONObject.put("titleName", localJSONArray);
       goUrl(localJSONObject.toString());
@@ -1170,7 +1170,7 @@ public class BaseJsCallBack
   
   public void onJsAlert(String paramString)
   {
-    new AlertDialog.Builder(this.activity).setTitle("javaScript dialog").setMessage(paramString).setPositiveButton(17039370, new akoe(this)).setCancelable(false).create().show();
+    new AlertDialog.Builder(this.activity).setTitle("javaScript dialog").setMessage(paramString).setPositiveButton(17039370, new aldu(this)).setCancelable(false).create().show();
   }
   
   public void reportForVia(String paramString)
@@ -1258,7 +1258,7 @@ public class BaseJsCallBack
   
   public void setActionButton(String paramString)
   {
-    this.mHandler.post(new akoi(this, paramString));
+    this.mHandler.post(new aldy(this, paramString));
   }
   
   public void setAllowCallBackEvent(String paramString)

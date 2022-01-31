@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Bundle;
+import cooperation.comic.VipComicConfigHelper;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class amjg
-  implements View.OnClickListener
+public final class amjg
+  implements EIPCResultCallback
 {
-  public amjg(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.j();
+    if (paramEIPCResult.isSuccess()) {
+      VipComicConfigHelper.a(paramEIPCResult.data.getString("config_json"));
+    }
   }
 }
 

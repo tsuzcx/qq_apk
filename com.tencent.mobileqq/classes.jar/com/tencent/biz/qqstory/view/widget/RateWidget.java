@@ -19,8 +19,8 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 import dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar;
 import dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar.OnRatingChangeListener;
 import java.text.DecimalFormat;
-import opk;
-import opl;
+import ore;
+import orf;
 
 public class RateWidget
   extends InteractPasterWidget
@@ -28,10 +28,10 @@ public class RateWidget
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369089);
+  private TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369155);
   private RateWidget.AttendViewClickListener jdField_a_of_type_ComTencentBizQqstoryViewWidgetRateWidget$AttendViewClickListener;
   private RateWidget.WidgetRatingChangedListener jdField_a_of_type_ComTencentBizQqstoryViewWidgetRateWidget$WidgetRatingChangedListener;
-  private RateWidgetRatingBar jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractRateWidgetRatingBar = (RateWidgetRatingBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131369090);
+  private RateWidgetRatingBar jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractRateWidgetRatingBar = (RateWidgetRatingBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131369156);
   private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
@@ -40,7 +40,7 @@ public class RateWidget
   
   public RateWidget(Context paramContext)
   {
-    super(paramContext, 2130970119);
+    super(paramContext, 2130970133);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractRateWidgetRatingBar.setOnRatingChangeListener(this);
   }
   
@@ -135,13 +135,13 @@ public class RateWidget
   
   protected View b()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidViewView.getContext()).inflate(2130970118, null).findViewById(2131369081);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidViewView.getContext()).inflate(2130970132, null).findViewById(2131369147);
     localView.setLayoutParams(new ViewGroup.LayoutParams(UIUtils.a(this.jdField_a_of_type_AndroidViewView.getContext(), 225.0F), UIUtils.a(this.jdField_a_of_type_AndroidViewView.getContext(), 54.0F)));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369083));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369085));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369088));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131369087));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131363425));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369149));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369151));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369154));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131369153));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131363443));
     this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(this);
     return localView;
   }
@@ -191,7 +191,7 @@ public class RateWidget
   {
     TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
     if (paramBoolean) {}
-    for (int i = 2130841930;; i = 0)
+    for (int i = 2130841967;; i = 0)
     {
       localTextView.setBackgroundResource(i);
       return;
@@ -207,10 +207,10 @@ public class RateWidget
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       while (i < 2500)
       {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new opk(this), i);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ore(this), i);
         i += 500;
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new opl(this), i);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new orf(this), i);
       return;
     }
     this.jdField_c_of_type_Boolean = false;

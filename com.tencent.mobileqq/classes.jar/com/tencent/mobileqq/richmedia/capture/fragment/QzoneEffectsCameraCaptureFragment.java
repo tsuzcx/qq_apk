@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.richmedia.capture.fragment;
 
-import agwd;
-import agwe;
-import agwf;
-import agwg;
-import agwh;
+import ahkf;
+import ahkg;
+import ahkh;
+import ahki;
+import ahkj;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -82,14 +82,14 @@ public class QzoneEffectsCameraCaptureFragment
   private int jdField_a_of_type_Int = -1;
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
   private Bundle jdField_a_of_type_AndroidOsBundle;
+  private Button jdField_a_of_type_AndroidWidgetButton;
   private LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
   private FlowComponentInterface jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowComponentInterface;
   private CameraCaptureView.VideoCaptureResult jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
   private String jdField_a_of_type_JavaLangString;
   private int c;
   private int d;
-  private int jdField_e_of_type_Int;
-  private Button jdField_e_of_type_AndroidWidgetButton;
+  private int e;
   private String f;
   private String g;
   private String h;
@@ -392,7 +392,7 @@ public class QzoneEffectsCameraCaptureFragment
           if ((paramBundle instanceof FlowComponentInterface))
           {
             this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowComponentInterface = ((FlowComponentInterface)paramBundle);
-            this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowComponentInterface.b(paramString);
+            this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowComponentInterface.c_(paramString);
             if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowComponentInterface instanceof VideoComponentCallback))
             {
               ((VideoComponentCallback)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowComponentInterface).a(this);
@@ -516,7 +516,7 @@ public class QzoneEffectsCameraCaptureFragment
       localIntent.putExtra("extra_key_super_font_info", this.jdField_j_of_type_JavaLangString);
       localIntent.putExtra("short_video_refer", this.jdField_f_of_type_JavaLangString);
       localIntent.putExtra("set_user_callback", this.jdField_a_of_type_AndroidOsBundle.getString("set_user_callback"));
-      ThreadManager.getUIHandler().postDelayed(new agwh(this, localIntent), 0L);
+      ThreadManager.getUIHandler().postDelayed(new ahkj(this, localIntent), 0L);
       return;
     }
     catch (Exception paramIntent)
@@ -801,11 +801,11 @@ public class QzoneEffectsCameraCaptureFragment
           continue;
         }
         p();
-        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381);
+        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399);
         if (!StringUtil.a(paramString)) {
           continue;
         }
-        localTextView.setText(2131434297);
+        localTextView.setText(2131434314);
       }
       catch (Throwable paramString)
       {
@@ -823,10 +823,10 @@ public class QzoneEffectsCameraCaptureFragment
       }
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       return;
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(getActivity(), 2131624515);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(getActivity(), 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
     }
   }
   
@@ -835,7 +835,7 @@ public class QzoneEffectsCameraCaptureFragment
     if ((getActivity() == null) || (getActivity().isFinishing())) {
       return;
     }
-    getActivity().runOnUiThread(new agwg(this, paramBoolean, paramString));
+    getActivity().runOnUiThread(new ahki(this, paramBoolean, paramString));
   }
   
   private int c()
@@ -878,9 +878,9 @@ public class QzoneEffectsCameraCaptureFragment
   private void c(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
   {
     if (getActivity() != null) {
-      getActivity().runOnUiThread(new agwe(this));
+      getActivity().runOnUiThread(new ahkg(this));
     }
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new agwf(this, paramVideoCaptureResult, paramLocalMediaInfo));
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new ahkh(this, paramVideoCaptureResult, paramLocalMediaInfo));
   }
   
   private void d(int paramInt)
@@ -900,9 +900,9 @@ public class QzoneEffectsCameraCaptureFragment
   {
     if (this.p)
     {
-      this.jdField_e_of_type_AndroidWidgetButton = ((Button)getView().findViewById(2131370005));
-      this.jdField_e_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_e_of_type_AndroidWidgetButton.setOnClickListener(this);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)getView().findViewById(2131370116));
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     }
   }
   
@@ -941,7 +941,7 @@ public class QzoneEffectsCameraCaptureFragment
     {
       Bitmap localBitmap = a(getActivity());
       if (localBitmap != null) {
-        this.jdField_e_of_type_AndroidWidgetButton.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(new BitmapDrawable(localBitmap));
       }
     }
   }
@@ -960,9 +960,9 @@ public class QzoneEffectsCameraCaptureFragment
     }
   }
   
-  protected int a()
+  public int a()
   {
-    return 2130971122;
+    return 10001;
   }
   
   protected CameraCaptureView.CaptureParam a()
@@ -1111,9 +1111,9 @@ public class QzoneEffectsCameraCaptureFragment
     return this.o;
   }
   
-  public int b()
+  protected int b()
   {
-    return 10001;
+    return 2130971170;
   }
   
   protected boolean c()
@@ -1121,9 +1121,9 @@ public class QzoneEffectsCameraCaptureFragment
     return false;
   }
   
-  protected void d()
+  protected void e()
   {
-    super.d();
+    super.e();
     if (this.r) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.jdField_k_of_type_JavaLangString, this.jdField_l_of_type_JavaLangString);
     }
@@ -1139,7 +1139,7 @@ public class QzoneEffectsCameraCaptureFragment
     if ((!this.p) || (getActivity() == null) || (getActivity().isFinishing())) {
       return;
     }
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_e_of_type_AndroidWidgetButton, "translationY", new float[] { 0.0F, UIUtils.a(getActivity(), 100.0F) });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetButton, "translationY", new float[] { 0.0F, UIUtils.a(getActivity(), 100.0F) });
     localObjectAnimator.setDuration(150L);
     localObjectAnimator.start();
   }
@@ -1150,7 +1150,7 @@ public class QzoneEffectsCameraCaptureFragment
     if ((!this.p) || (getActivity() == null) || (getActivity().isFinishing())) {
       return;
     }
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_e_of_type_AndroidWidgetButton, "translationY", new float[] { UIUtils.a(getActivity(), 100.0F), 0.0F });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetButton, "translationY", new float[] { UIUtils.a(getActivity(), 100.0F), 0.0F });
     localObjectAnimator.setDuration(150L);
     localObjectAnimator.start();
   }
@@ -1236,7 +1236,7 @@ public class QzoneEffectsCameraCaptureFragment
     super.onViewCreated(paramView, paramBundle);
     n();
     b(this.jdField_a_of_type_AndroidOsBundle);
-    ThreadManager.getUIHandler().postDelayed(new agwd(this), 500L);
+    ThreadManager.getUIHandler().postDelayed(new ahkf(this), 500L);
   }
 }
 

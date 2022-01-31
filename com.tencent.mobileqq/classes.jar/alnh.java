@@ -1,23 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import com.tencent.widget.PinnedFooterExpandableListView.FooterExpandListViewListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public class alnh
-  implements View.OnClickListener
+class alnh
+  implements Runnable
 {
-  public alnh(PinnedFooterExpandableListView paramPinnedFooterExpandableListView1, PinnedFooterExpandableListView paramPinnedFooterExpandableListView2) {}
+  alnh(alng paramalng, QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (PinnedFooterExpandableListView.a(this.b) != null) {
-      PinnedFooterExpandableListView.a(this.b).a(this.a, this.b.a, this.b.c);
-    }
+    QQToast.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
 
 public class ude
-  implements DialogInterface.OnKeyListener
+  implements Runnable
 {
-  public ude(UpgradeActivity paramUpgradeActivity) {}
+  public ude(TroopRequestActivity paramTroopRequestActivity, TroopInfo paramTroopInfo) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, Long.toString(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwGroupClassExt));
+    if (localGroupCatalogBean != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.i = localGroupCatalogBean.a();
+      ThreadManager.getUIHandler().post(new udf(this));
     }
-    return false;
   }
 }
 

@@ -1,37 +1,63 @@
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import java.io.File;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.utils.DateUtils;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public final class onl
-  extends ExecuteBinResponseCallback
+public class onl
 {
-  public onl(ExecuteBinResponseCallback paramExecuteBinResponseCallback, String paramString) {}
+  public View a;
+  public View b;
   
-  public void a()
+  public onl(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    super.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.a();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView.findViewById(2131365554);
   }
   
-  public void a(String paramString)
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
   {
-    StoryReportor.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.b) });
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
+    float f = 0.0F;
+    if (localIterator.hasNext())
+    {
+      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
+      {
+      }
+      for (;;)
+      {
+        break;
+        if ((DateUtils.b(paramTroopStoryItemInfo.publishTime)) || (DateUtils.d(paramTroopStoryItemInfo.publishTime)))
+        {
+          f = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
+        }
+        else
+        {
+          f = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
+          continue;
+          f = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+          continue;
+          f = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
+          continue;
+          f = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.a(paramBoolean);
-  }
-  
-  public void b(String paramString)
-  {
-    StoryReportor.a("music_composite", "video_music_composite", 0, 1, new String[0]);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.b(paramString);
+    int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
+    paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
+    if (i <= 0)
+    {
+      paramTroopStoryItemInfo.height = 0;
+      this.b.setLayoutParams(paramTroopStoryItemInfo);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+    }
+    paramTroopStoryItemInfo.height = i;
+    this.b.setLayoutParams(paramTroopStoryItemInfo);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

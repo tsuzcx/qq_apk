@@ -1,15 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationAdapter;
 
 public class miy
-  implements Runnable
 {
-  public miy(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public View a;
+  public TextView a;
   
-  public void run()
-  {
-    ReadInJoyGlobalReporter.a().b(this.a.a);
-  }
+  private miy(ReadInJoyNavigationAdapter paramReadInJoyNavigationAdapter) {}
 }
 
 

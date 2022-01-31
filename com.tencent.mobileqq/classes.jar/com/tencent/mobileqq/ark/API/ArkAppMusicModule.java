@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark.API;
 
-import aaji;
-import aajj;
-import aajk;
-import aajl;
-import aajm;
+import aaqj;
+import aaqk;
+import aaql;
+import aaqm;
+import aaqn;
 import android.text.TextUtils;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.ark.VariantWrapper;
@@ -21,7 +21,7 @@ import org.json.JSONObject;
 public class ArkAppMusicModule
   extends ArkAppModuleReg.ModuleBase
 {
-  private static aajm jdField_a_of_type_Aajm = new aajm(null);
+  private static aaqn jdField_a_of_type_Aaqn = new aaqn(null);
   public static final ArrayList a;
   private static String c;
   protected SongInfo a;
@@ -70,7 +70,7 @@ public class ArkAppMusicModule
   
   public void Destruct()
   {
-    QQPlayerService.c(jdField_a_of_type_Aajm);
+    QQPlayerService.c(jdField_a_of_type_Aaqn);
     jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaLangRefWeakReference);
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
     super.Destruct();
@@ -104,17 +104,17 @@ public class ArkAppMusicModule
     }
     if (paramString.equals("Stop"))
     {
-      ArkAppCenter.a().postToMainThread(new aajj(this));
+      ArkAppCenter.a().postToMainThread(new aaqk(this));
       return true;
     }
     if (paramString.equals("Pause"))
     {
-      ArkAppCenter.a().postToMainThread(new aajk(this));
+      ArkAppCenter.a().postToMainThread(new aaql(this));
       return true;
     }
     if (paramString.equals("Resume"))
     {
-      ArkAppCenter.a().postToMainThread(new aajl(this));
+      ArkAppCenter.a().postToMainThread(new aaqm(this));
       return true;
     }
     double d1;
@@ -172,7 +172,7 @@ public class ArkAppMusicModule
         return true;
       }
       this.jdField_c_of_type_Long = a(paramString.Copy());
-      QQPlayerService.b(jdField_a_of_type_Aajm);
+      QQPlayerService.b(jdField_a_of_type_Aaqn);
       QQPlayerService.a(null);
       return true;
     }
@@ -334,7 +334,7 @@ public class ArkAppMusicModule
       localSongInfo.jdField_a_of_type_Long = paramArrayOfVariantWrapper.optLong("id");
       this.b = localSongInfo.jdField_a_of_type_JavaLangString;
       this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo = localSongInfo;
-      ArkAppCenter.a().postToMainThread(new aaji(this, localSongInfo));
+      ArkAppCenter.a().postToMainThread(new aaqj(this, localSongInfo));
       return;
     }
     catch (JSONException paramArrayOfVariantWrapper)

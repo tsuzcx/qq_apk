@@ -61,10 +61,10 @@ public class QQStoryPoiListAdapter
     TroopBarPOI localTroopBarPOI;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970762, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970810, null);
       paramViewGroup = new QQStoryPoiListAdapter.ViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364337));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364336));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364361));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364360));
       paramView.setTag(paramViewGroup);
       localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);

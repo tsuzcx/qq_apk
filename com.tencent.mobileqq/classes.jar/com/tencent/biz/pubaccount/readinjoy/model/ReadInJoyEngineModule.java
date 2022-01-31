@@ -9,6 +9,7 @@ import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -129,16 +130,25 @@ public abstract class ReadInJoyEngineModule
           localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(ChannelInfo.class, "mChannelID = ?", new String[] { String.valueOf(paramEntity.mChannelID) });
         }
       }
+      else if ((paramEntity instanceof ChannelCoverInfo))
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.d(ChannelCoverInfo.class.getSimpleName()))
+        {
+          paramEntity = (ChannelCoverInfo)paramEntity;
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(ChannelCoverInfo.class, "mChannelCoverId = ?", new String[] { String.valueOf(paramEntity.mChannelCoverId) });
+        }
+      }
       else
       {
         localObject1 = localObject2;
-        if ((paramEntity instanceof ChannelCoverInfo))
+        if ((paramEntity instanceof ReadInJoyUserInfo))
         {
           localObject1 = localObject2;
-          if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.d(ChannelCoverInfo.class.getSimpleName()))
+          if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.d(ReadInJoyUserInfo.class.getSimpleName()))
           {
-            paramEntity = (ChannelCoverInfo)paramEntity;
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(ChannelCoverInfo.class, "mChannelCoverId = ?", new String[] { String.valueOf(paramEntity.mChannelCoverId) });
+            paramEntity = (ReadInJoyUserInfo)paramEntity;
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(ReadInJoyUserInfo.class, "md5Uin = ?", new String[] { paramEntity.md5Uin });
           }
         }
       }
@@ -169,18 +179,18 @@ public abstract class ReadInJoyEngineModule
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_1
-    //   5: invokevirtual 218	com/tencent/mobileqq/persistence/Entity:getStatus	()I
+    //   5: invokevirtual 225	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   8: sipush 1000
     //   11: if_icmpne +34 -> 45
     //   14: aload_0
     //   15: aload_1
-    //   16: invokevirtual 220	com/tencent/biz/pubaccount/readinjoy/model/ReadInJoyEngineModule:a	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   16: invokevirtual 227	com/tencent/biz/pubaccount/readinjoy/model/ReadInJoyEngineModule:a	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   19: aload_0
     //   20: getfield 63	com/tencent/biz/pubaccount/readinjoy/model/ReadInJoyEngineModule:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   23: aload_1
-    //   24: invokevirtual 222	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   24: invokevirtual 229	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   27: aload_1
-    //   28: invokevirtual 218	com/tencent/mobileqq/persistence/Entity:getStatus	()I
+    //   28: invokevirtual 225	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   31: istore_2
     //   32: iload_2
     //   33: sipush 1001
@@ -192,17 +202,17 @@ public abstract class ReadInJoyEngineModule
     //   43: iload_3
     //   44: ireturn
     //   45: aload_1
-    //   46: invokevirtual 218	com/tencent/mobileqq/persistence/Entity:getStatus	()I
+    //   46: invokevirtual 225	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   49: sipush 1001
     //   52: if_icmpeq +13 -> 65
     //   55: aload_1
-    //   56: invokevirtual 218	com/tencent/mobileqq/persistence/Entity:getStatus	()I
+    //   56: invokevirtual 225	com/tencent/mobileqq/persistence/Entity:getStatus	()I
     //   59: sipush 1002
     //   62: if_icmpne -21 -> 41
     //   65: aload_0
     //   66: getfield 63	com/tencent/biz/pubaccount/readinjoy/model/ReadInJoyEngineModule:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   69: aload_1
-    //   70: invokevirtual 224	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   70: invokevirtual 231	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   73: istore_3
     //   74: goto -33 -> 41
     //   77: astore_1

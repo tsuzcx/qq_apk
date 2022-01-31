@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ArkAppShareMultiItemBuilder;
 
 public class uux
-  extends VasQuickUpdateManager.CallBacker
+  implements DialogInterface.OnClickListener
 {
-  public uux(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
+  public uux(ArkAppShareMultiItemBuilder paramArkAppShareMultiItemBuilder) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
-  {
-    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
-      }
-      ThreadManager.getFileThreadHandler().post(new uuy(this));
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

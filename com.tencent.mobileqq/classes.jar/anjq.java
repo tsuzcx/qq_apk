@@ -1,27 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.os.Handler;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anjq
   implements Runnable
 {
-  public anjq(DoodleTextureView paramDoodleTextureView) {}
+  public anjq(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
   public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.g();
-      PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.a.a(102);
-      if (localPersonalityOperator != null) {
-        localPersonalityOperator.b();
-      }
-      this.a.a = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleTextureView", 2, "onDestroy end");
-    }
+    QIMEffectCameraCaptureUnit.d(this.a);
+    this.a.a.removeCallbacks(QIMEffectCameraCaptureUnit.a(this.a));
+    QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
   }
 }
 

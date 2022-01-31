@@ -1,25 +1,16 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class miq
-  extends AnimateUtils.AnimationAdapter
+  implements Runnable
 {
-  public miq(ReadinjoyTabFrame paramReadinjoyTabFrame, View paramView) {}
+  public miq(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = new ScaleAnimation(1.05F, 0.72F, 1.05F, 0.72F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(170L);
-    paramAnimation.setAnimationListener(new mir(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    if (ReadInJoyListViewGroup.a(this.a) != null) {
+      ReadInJoyListViewGroup.a(this.a).setVisibility(8);
+    }
   }
 }
 

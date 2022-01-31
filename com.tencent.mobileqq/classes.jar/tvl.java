@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.widget.XListView;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
+import com.etrump.mixlayout.FontManager;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 
 public class tvl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tvl(TroopInfoActivity paramTroopInfoActivity, XListView paramXListView) {}
+  public tvl(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView.removeHeaderView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b = null;
+    Drawable localDrawable = this.a.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.a.d);
+    if (localDrawable == null)
+    {
+      this.a.b(this.a.d);
+      return;
+    }
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(18);
+    localMessage.obj = localDrawable;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }
 

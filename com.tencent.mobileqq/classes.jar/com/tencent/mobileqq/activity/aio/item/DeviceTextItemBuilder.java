@@ -30,11 +30,11 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.mobileqq.widget.AnimationTextView;
-import usz;
-import uta;
-import utb;
-import utc;
-import utd;
+import uwb;
+import uwc;
+import uwd;
+import uwe;
+import uwf;
 
 public class DeviceTextItemBuilder
   extends TextItemBuilder
@@ -52,12 +52,12 @@ public class DeviceTextItemBuilder
     if (paramView == null)
     {
       paramViewHolder = new ETTextView((Context)localObject);
-      paramViewHolder.setTextColor(((Context)localObject).getResources().getColorStateList(2131494220));
-      paramViewHolder.setLinkTextColor(((Context)localObject).getResources().getColorStateList(2131494217));
+      paramViewHolder.setTextColor(((Context)localObject).getResources().getColorStateList(2131494227));
+      paramViewHolder.setLinkTextColor(((Context)localObject).getResources().getColorStateList(2131494224));
       paramViewHolder.setSpannableFactory(QQText.a);
       paramViewHolder.setMaxWidth(BaseChatItemLayout.d);
       paramViewHolder.setMovementMethod(LinkMovementMethod.getInstance());
-      paramViewHolder.setId(2131363557);
+      paramViewHolder.setId(2131363575);
       paramBaseChatItemLayout.e = paramViewHolder;
     }
     ((ETTextView)paramBaseChatItemLayout.e).setFont(0, paramChatMessage.uniseq);
@@ -82,7 +82,7 @@ public class DeviceTextItemBuilder
       paramView = (MessageForDeviceText)paramChatMessage;
       if (paramChatMessage.msgtype == -2008) {
         if (paramChatMessage.isSend()) {
-          paramBaseChatItemLayout.e.setText(((Context)localObject).getString(2131436147));
+          paramBaseChatItemLayout.e.setText(((Context)localObject).getString(2131436164));
         }
       }
     }
@@ -91,10 +91,10 @@ public class DeviceTextItemBuilder
       paramBaseChatItemLayout.e.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramBaseChatItemLayout.e.setOnLongClickListener(paramOnLongClickAndTouchListener);
       if ((paramBaseChatItemLayout.e instanceof AnimationTextView)) {
-        ((AnimationTextView)paramBaseChatItemLayout.e).a = new utd(this);
+        ((AnimationTextView)paramBaseChatItemLayout.e).a = new uwf(this);
       }
       return paramViewHolder;
-      paramBaseChatItemLayout.e.setText(((Context)localObject).getString(2131436146));
+      paramBaseChatItemLayout.e.setText(((Context)localObject).getString(2131436163));
       continue;
       if ("device_lock_msg".equals(paramView.extStr))
       {
@@ -107,12 +107,12 @@ public class DeviceTextItemBuilder
         j = "点这里开启QQ设备锁".length();
         int k = ((String)localObject).indexOf("QQ设备锁介绍");
         int m = "QQ设备锁介绍".length();
-        localObject = new utb(this);
-        utc localutc = new utc(this);
+        localObject = new uwd(this);
+        uwe localuwe = new uwe(this);
         ((ClickableSpan)localObject).updateDrawState(paramChatMessage);
-        localutc.updateDrawState(paramChatMessage);
+        localuwe.updateDrawState(paramChatMessage);
         paramView.setSpan(localObject, i, j + i, 33);
-        paramView.setSpan(localutc, k, m + k, 33);
+        paramView.setSpan(localuwe, k, m + k, 33);
         paramBaseChatItemLayout.e.setMovementMethod(LinkMovementMethod.getInstance());
         paramBaseChatItemLayout.e.setText(paramView);
       }
@@ -147,22 +147,22 @@ public class DeviceTextItemBuilder
     {
       return;
       paramView = (MessageForDeviceText)AIOUtils.a(paramView);
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433618);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433619);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new usz(this, paramView), new uta(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uwb(this, paramView), new uwc(this)).show();
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = AIOUtils.a(paramView);
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131375342, "复制", 2130838301);
+    localQQCustomMenu.a(2131375573, "复制", 2130838305);
     if ((paramView.extraflag == 32768) && (paramView.isSendFromLocal())) {
-      localQQCustomMenu.a(2131375344, this.jdField_a_of_type_AndroidContentContext.getString(2131433704), 2130838313);
+      localQQCustomMenu.a(2131375575, this.jdField_a_of_type_AndroidContentContext.getString(2131433721), 2130838317);
     }
     if (AIOUtils.a(5) == 1) {
-      localQQCustomMenu.a(2131366733, this.jdField_a_of_type_AndroidContentContext.getString(2131431546), 2130838308);
+      localQQCustomMenu.a(2131366776, this.jdField_a_of_type_AndroidContentContext.getString(2131431563), 2130838312);
     }
     ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     return localQQCustomMenu.a();

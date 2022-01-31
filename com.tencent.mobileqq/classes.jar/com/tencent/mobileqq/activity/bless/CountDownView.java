@@ -5,15 +5,15 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.mobileqq.utils.AudioUtil;
-import wcr;
+import wfw;
 
 public class CountDownView
   extends ImageView
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838220, 2130838219, 2130838218 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838224, 2130838223, 2130838222 };
   private int jdField_a_of_type_Int;
   private CountDownView.CountDownFinishedListener jdField_a_of_type_ComTencentMobileqqActivityBlessCountDownView$CountDownFinishedListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new wcr(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new wfw(this);
   private boolean jdField_a_of_type_Boolean;
   
   public CountDownView(Context paramContext)

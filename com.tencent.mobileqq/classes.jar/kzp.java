@@ -1,13 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountManager;
+import android.view.View;
+import com.tencent.biz.pubaccount.assistant.PubAccountTipsManager;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class kzp
-  implements DialogInterface.OnClickListener
+  implements URLDrawableDownListener
 {
-  public kzp(PublicAccountManager paramPublicAccountManager) {}
+  public kzp(PubAccountTipsManager paramPubAccountTipsManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountTipsManager", 2, "img Load Failed.");
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountTipsManager", 2, "img Load Interrupted.");
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (PubAccountTipsManager.a(this.a) != null) {
+      PubAccountTipsManager.a(this.a).setVisibility(0);
+    }
+  }
 }
 
 

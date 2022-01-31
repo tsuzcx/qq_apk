@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import adyf;
+import aell;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -462,7 +462,7 @@ public class NearbyAlumniServlet
         localObject3 = ((ByteArrayOutputStream)localObject5).toByteArray();
         paramPacket = new HttpNetReq();
         paramPacket.jdField_a_of_type_ArrayOfByte = ((byte[])localObject3);
-        paramPacket.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new adyf(this, paramIntent, (byte[])localObject1);
+        paramPacket.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aell(this, paramIntent, (byte[])localObject1);
         paramPacket.jdField_a_of_type_JavaLangString = str;
         paramPacket.jdField_a_of_type_Int = 1;
         paramPacket.f = 131080;

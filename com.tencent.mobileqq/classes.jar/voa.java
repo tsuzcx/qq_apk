@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.EnterpriseQQObserver;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 
 public class voa
-  extends EnterpriseQQObserver
+  implements DialogInterface.OnDismissListener
 {
-  public voa(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public voa(AIOImageListScene paramAIOImageListScene) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean)
-    {
-      this.a.b = EnterpriseQQManager.a(this.a.a).a(this.a.a, this.a.a());
-      this.a.b(this.a.b);
-      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
-        this.a.o(false);
-      }
-    }
+    AIOImageListScene.a(this.a, null);
   }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

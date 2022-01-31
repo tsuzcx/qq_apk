@@ -1,26 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class wpv
-  implements Runnable
+  extends ConfigObserver
 {
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public wpv(MainAssistObserver paramMainAssistObserver) {}
   
-  public wpv(AvatarPendantActivity paramAvatarPendantActivity, boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-  }
-  
-  public void run()
-  {
-    if (this.b) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.b.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.setVisibility(8);
-    }
+    MainAssistObserver.a(this.a, paramUpgradeDetailWrapper);
+    this.a.e();
   }
 }
 

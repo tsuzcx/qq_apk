@@ -1,7 +1,7 @@
 package cooperation.qzone.networkedmodule;
 
-import amgh;
-import amgi;
+import amwm;
+import amwn;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -24,7 +24,7 @@ public final class QzoneModuleDownloadManager
   private static String jdField_a_of_type_JavaLangString = "QzoneModuleDownloadManager";
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new amgh(this);
+  private Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new amwm(this);
   private QzonePreDownloadManager jdField_a_of_type_CooperationQzoneQzonePreDownloadManager;
   private Map jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
@@ -35,14 +35,14 @@ public final class QzoneModuleDownloadManager
     this.jdField_a_of_type_AndroidOsHandler = new Handler(QzoneHandlerThreadFactory.getHandlerThreadLooper("Normal_HandlerThread"), this);
   }
   
-  private void a(amgi paramamgi)
+  private void a(amwn paramamwn)
   {
-    String str1 = paramamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord.d;
+    String str1 = paramamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord.d;
     if (this.jdField_a_of_type_JavaUtilMap.containsKey(str1)) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap.put(str1, paramamgi);
-    Object localObject = paramamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord;
+    this.jdField_a_of_type_JavaUtilMap.put(str1, paramamwn);
+    Object localObject = paramamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord;
     String str2 = QzoneModuleConst.getModuleSavePath(this.jdField_a_of_type_AndroidContentContext, (QzoneModuleConfigManager.QzoneModuleRecord)localObject);
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 1, "----------savePath--" + str2);
@@ -55,9 +55,9 @@ public final class QzoneModuleDownloadManager
       {
         QLog.i(jdField_a_of_type_JavaLangString, 1, "download succeed: from cache.");
         QzoneModuleConfigManager.a().a((QzoneModuleConfigManager.QzoneModuleRecord)localObject);
-        if (paramamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null)
+        if (paramamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null)
         {
-          paramamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadSucceed(paramamgi.jdField_a_of_type_JavaLangString);
+          paramamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadSucceed(paramamwn.jdField_a_of_type_JavaLangString);
           this.jdField_a_of_type_JavaUtilMap.remove(str1);
         }
       }
@@ -73,22 +73,22 @@ public final class QzoneModuleDownloadManager
         QLog.i(jdField_a_of_type_JavaLangString, 1, "check download cache failed: md5 verify is not passed.");
       }
     }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "start download--" + paramamgi.jdField_a_of_type_JavaLangString + ",priority: " + paramamgi.jdField_a_of_type_Boolean + " ,startImmediately: " + paramamgi.b);
-    paramamgi.jdField_a_of_type_Long = System.nanoTime();
-    this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager.a(str1, str2, paramamgi.jdField_a_of_type_Boolean, paramamgi.b, this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "start download--" + paramamwn.jdField_a_of_type_JavaLangString + ",priority: " + paramamwn.jdField_a_of_type_Boolean + " ,startImmediately: " + paramamwn.b);
+    paramamwn.jdField_a_of_type_Long = System.nanoTime();
+    this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager.a(str1, str2, paramamwn.jdField_a_of_type_Boolean, paramamwn.b, this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);
   }
   
   private void c(String paramString)
   {
-    amgi localamgi = (amgi)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    amwn localamwn = (amwn)this.jdField_a_of_type_JavaUtilMap.get(paramString);
     String str2;
     QzoneModuleConfigManager.QzoneModuleRecord localQzoneModuleRecord;
     String str3;
     long l;
-    if (localamgi != null)
+    if (localamwn != null)
     {
-      str2 = QzoneModuleConst.getModuleSavePath(this.jdField_a_of_type_AndroidContentContext, localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord);
-      localQzoneModuleRecord = localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord;
+      str2 = QzoneModuleConst.getModuleSavePath(this.jdField_a_of_type_AndroidContentContext, localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord);
+      localQzoneModuleRecord = localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord;
       if (QLog.isDevelopLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 1, "download complete: " + str2);
       }
@@ -97,7 +97,7 @@ public final class QzoneModuleDownloadManager
       if (!TextUtils.isEmpty(str3)) {
         str1 = MD5Utils.a(str2);
       }
-      l = (System.nanoTime() - localamgi.jdField_a_of_type_Long) / 1000000L;
+      l = (System.nanoTime() - localamwn.jdField_a_of_type_Long) / 1000000L;
       if ((!TextUtils.isEmpty(str3)) && (!str3.equalsIgnoreCase(str1))) {
         break label253;
       }
@@ -110,8 +110,8 @@ public final class QzoneModuleDownloadManager
         if (QzoneModuleConst.QZONE_MODULES_NEED_INSTALL.contains(localQzoneModuleRecord.jdField_a_of_type_JavaLangString)) {
           new DexClassLoader(str2, this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getDir("dex", 0).getAbsolutePath(), str2, this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getClassLoader());
         }
-        if (localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
-          localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadSucceed(localamgi.jdField_a_of_type_JavaLangString);
+        if (localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
+          localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadSucceed(localamwn.jdField_a_of_type_JavaLangString);
         }
         QzoneModuleReport.a(localQzoneModuleRecord, true, l);
         this.jdField_a_of_type_JavaUtilMap.remove(paramString);
@@ -131,8 +131,8 @@ public final class QzoneModuleDownloadManager
         localFile.delete();
       }
       QLog.i(jdField_a_of_type_JavaLangString, 1, "download failed: md5 verify is not passed.");
-      if (localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
-        localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadFailed(localamgi.jdField_a_of_type_JavaLangString);
+      if (localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
+        localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadFailed(localamwn.jdField_a_of_type_JavaLangString);
       }
       QzoneModuleReport.a(localQzoneModuleRecord, false, l);
     }
@@ -145,7 +145,7 @@ public final class QzoneModuleDownloadManager
     do
     {
       return;
-      paramString = (amgi)this.jdField_a_of_type_JavaUtilMap.get(paramString.d);
+      paramString = (amwn)this.jdField_a_of_type_JavaUtilMap.get(paramString.d);
     } while (paramString == null);
     Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler);
     localMessage.what = 4;
@@ -168,15 +168,15 @@ public final class QzoneModuleDownloadManager
     if (paramQzoneModuleRecord == null) {
       return false;
     }
-    amgi localamgi = new amgi(null);
-    localamgi.jdField_a_of_type_JavaLangString = paramQzoneModuleRecord.jdField_a_of_type_JavaLangString;
-    localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord = paramQzoneModuleRecord;
-    localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener = paramModuleDownloadListener;
-    localamgi.jdField_a_of_type_Boolean = paramBoolean1;
-    localamgi.b = paramBoolean2;
+    amwn localamwn = new amwn(null);
+    localamwn.jdField_a_of_type_JavaLangString = paramQzoneModuleRecord.jdField_a_of_type_JavaLangString;
+    localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord = paramQzoneModuleRecord;
+    localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener = paramModuleDownloadListener;
+    localamwn.jdField_a_of_type_Boolean = paramBoolean1;
+    localamwn.b = paramBoolean2;
     paramQzoneModuleRecord = Message.obtain(this.jdField_a_of_type_AndroidOsHandler);
     paramQzoneModuleRecord.what = 1;
-    paramQzoneModuleRecord.obj = localamgi;
+    paramQzoneModuleRecord.obj = localamwn;
     paramQzoneModuleRecord.sendToTarget();
     return true;
   }
@@ -188,7 +188,7 @@ public final class QzoneModuleDownloadManager
     do
     {
       return;
-      paramString = (amgi)this.jdField_a_of_type_JavaUtilMap.get(paramString.d);
+      paramString = (amwn)this.jdField_a_of_type_JavaUtilMap.get(paramString.d);
     } while (paramString == null);
     Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler);
     localMessage.what = 7;
@@ -198,51 +198,51 @@ public final class QzoneModuleDownloadManager
   
   public boolean handleMessage(Message paramMessage)
   {
-    amgi localamgi;
+    amwn localamwn;
     switch (paramMessage.what)
     {
     default: 
       return false;
     case 1: 
-      a((amgi)paramMessage.obj);
+      a((amwn)paramMessage.obj);
       return true;
     case 2: 
       c((String)paramMessage.obj);
       return true;
     case 3: 
       paramMessage = (String)paramMessage.obj;
-      localamgi = (amgi)this.jdField_a_of_type_JavaUtilMap.get(paramMessage);
-      if (localamgi != null)
+      localamwn = (amwn)this.jdField_a_of_type_JavaUtilMap.get(paramMessage);
+      if (localamwn != null)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "download failed: " + localamgi.jdField_a_of_type_JavaLangString);
-        if (localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
-          localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadFailed(localamgi.jdField_a_of_type_JavaLangString);
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "download failed: " + localamwn.jdField_a_of_type_JavaLangString);
+        if (localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
+          localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadFailed(localamwn.jdField_a_of_type_JavaLangString);
         }
-        long l = (System.nanoTime() - localamgi.jdField_a_of_type_Long) / 1000000L;
-        QzoneModuleReport.a(localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord, false, l);
+        long l = (System.nanoTime() - localamwn.jdField_a_of_type_Long) / 1000000L;
+        QzoneModuleReport.a(localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord, false, l);
       }
       this.jdField_a_of_type_JavaUtilMap.remove(paramMessage);
       return true;
     case 4: 
-      paramMessage = (amgi)paramMessage.obj;
+      paramMessage = (amwn)paramMessage.obj;
       QLog.w(jdField_a_of_type_JavaLangString, 1, "cancel download: " + paramMessage.jdField_a_of_type_JavaLangString);
       paramMessage = paramMessage.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord.d;
       this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager.a(paramMessage, this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);
       return true;
     case 5: 
       paramMessage = (String)paramMessage.obj;
-      localamgi = (amgi)this.jdField_a_of_type_JavaUtilMap.get(paramMessage);
-      if (localamgi != null)
+      localamwn = (amwn)this.jdField_a_of_type_JavaUtilMap.get(paramMessage);
+      if (localamwn != null)
       {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "download canceled: " + localamgi.jdField_a_of_type_JavaLangString);
-        if (localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
-          localamgi.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadCanceled(localamgi.jdField_a_of_type_JavaLangString);
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "download canceled: " + localamwn.jdField_a_of_type_JavaLangString);
+        if (localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null) {
+          localamwn.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener.onDownloadCanceled(localamwn.jdField_a_of_type_JavaLangString);
         }
       }
       this.jdField_a_of_type_JavaUtilMap.remove(paramMessage);
       return true;
     case 6: 
-      paramMessage = (amgi)paramMessage.obj;
+      paramMessage = (amwn)paramMessage.obj;
       if ((paramMessage != null) && (paramMessage.jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener != null))
       {
         float f = ((Float)paramMessage.jdField_a_of_type_JavaLangObject).floatValue();
@@ -250,7 +250,7 @@ public final class QzoneModuleDownloadManager
       }
       return true;
     }
-    paramMessage = (amgi)paramMessage.obj;
+    paramMessage = (amwn)paramMessage.obj;
     QLog.w(jdField_a_of_type_JavaLangString, 1, "abort download: " + paramMessage.jdField_a_of_type_JavaLangString);
     paramMessage = paramMessage.jdField_a_of_type_CooperationQzoneNetworkedmoduleQzoneModuleConfigManager$QzoneModuleRecord.d;
     this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager.b(paramMessage, this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener);

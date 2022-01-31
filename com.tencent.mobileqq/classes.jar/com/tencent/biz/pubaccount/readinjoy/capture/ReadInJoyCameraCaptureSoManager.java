@@ -56,6 +56,11 @@ public class ReadInJoyCameraCaptureSoManager
     }
   }
   
+  public void C_()
+  {
+    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onNetWorkNone", null);
+  }
+  
   public void a()
   {
     ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
@@ -140,11 +145,6 @@ public class ReadInJoyCameraCaptureSoManager
   }
   
   public void a(String paramString, long paramLong1, long paramLong2) {}
-  
-  public void y_()
-  {
-    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onNetWorkNone", null);
-  }
 }
 
 

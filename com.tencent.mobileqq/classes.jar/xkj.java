@@ -1,51 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class xkj
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public xkj(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public xkj(RecentAdapter paramRecentAdapter) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    if (paramIntent != null) {
-      if (paramIntent.getAction().equals("action_music_info_js_to_qzone"))
-      {
-        if (paramIntent.getIntExtra("key_is_paly_music", 0) != 1) {
-          break label116;
-        }
-        paramContext = paramIntent.getStringExtra("key_music_url");
-        EditLocalVideoActivity.b(this.a, paramIntent.getStringExtra("key_song_id"));
-        EditLocalVideoActivity.c(this.a, paramIntent.getStringExtra("key_song_interval"));
-        if (i == 0) {
-          break label121;
-        }
-        if (!TextUtils.isEmpty(paramContext))
-        {
-          paramIntent = new Message();
-          paramIntent.what = 1006;
-          paramIntent.obj = paramContext;
-          EditLocalVideoActivity.a(this.a).sendMessage(paramIntent);
-        }
-      }
-    }
-    for (;;)
-    {
-      LpReportInfo_pf00064.allReport(664, 3, 3);
-      return;
-      label116:
-      i = 0;
-      break;
-      label121:
-      EditLocalVideoActivity.a(this.a).sendEmptyMessage(1007);
-    }
+    ((CardHandler)this.a.a.a(2)).j(false);
   }
 }
 

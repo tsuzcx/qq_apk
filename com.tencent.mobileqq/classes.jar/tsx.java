@@ -1,38 +1,25 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class tsx
-  extends BizTroopObserver
+  implements View.OnClickListener
 {
-  public tsx(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public tsx(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onClick(View paramView)
   {
-    if (paramInt2 != 0)
+    this.a.a(1);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
+    if (this.a.a().booleanValue())
     {
-      paramString1 = paramString2;
-      if (!this.a.isFinishing())
-      {
-        paramString1 = paramString2;
-        if (this.a.isResume())
-        {
-          paramString1 = paramString2;
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString1 = this.a.getResources().getString(2131435563);
-          }
-          QQToast.a(this.a, 1, paramString1, 0).a();
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopAssistantActivity", 2, "onSetCommonUsedTroop error, retCode = " + paramInt2 + " , wording = " + paramString1);
-      }
-      return;
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
     }
-    this.a.c();
   }
 }
 

@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.mobileqq.nearby.now.widget.CommonRecyclerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
 public class aefn
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aefn(SelectLocationFragment paramSelectLocationFragment) {}
+  public aefn(MedalGuideView paramMedalGuideView) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (SelectLocationFragment.a(this.a) != null) {
-      SelectLocationFragment.a(this.a).smoothScrollToPosition(0);
-    }
+    MedalGuideView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefn
  * JD-Core Version:    0.7.0.1
  */

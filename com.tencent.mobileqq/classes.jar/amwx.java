@@ -1,25 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.IInformationPasterResDownloaderCallback;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
+import android.content.Context;
+import com.tencent.mobileqq.pluginsdk.PluginProxyService;
+import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 
-public class amwx
-  implements QIMInformationPasterManager.IInformationPasterResDownloaderCallback
+public final class amwx
+  implements Runnable
 {
-  public amwx(QIMInformationPasterManager paramQIMInformationPasterManager) {}
+  public amwx(Context paramContext, IQZonePluginManager.PluginParams paramPluginParams, String paramString) {}
   
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, InfomationFacePackage.Item paramItem)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + paramItem.toString());
-    }
+    PluginProxyService.openService(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams.d, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams.e, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwx
  * JD-Core Version:    0.7.0.1
  */

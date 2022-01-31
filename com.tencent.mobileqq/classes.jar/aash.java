@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.armap.ARGLSurfaceView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
 
-public class aash
-  implements Runnable
+class aash
+  implements aasr
 {
-  public aash(ARMapActivity paramARMapActivity) {}
+  aash(aasc paramaasc, aasp paramaasp, aasr paramaasr, String paramString) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    ARMapEngine localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
-    ARMapEngine.nativeSetMapRotateMode(this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.getEngineHandler(), this.a.b);
+    if (paramBoolean)
+    {
+      ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString }));
+      ArkAppDataReport.a(this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, 4);
+      this.jdField_a_of_type_Aasr.a(true);
+      return;
+    }
+    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString }));
+    ArkAppDataReport.a(this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, 1);
+    aasc.a(this.jdField_a_of_type_Aasc, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp, new aasi(this));
   }
 }
 

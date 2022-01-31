@@ -1,54 +1,36 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.widget.CircleProgress;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
-public class xoa
+class xoa
   implements Runnable
 {
-  public xoa(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean) {}
+  xoa(xnz paramxnz, int paramInt, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 3) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 4))
+    if ((this.jdField_a_of_type_Int == 0) && (EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a) != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.k) {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.f >= 60000)
-        {
-          i = 10000;
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.D) {
-            break label142;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(i * 1.0F / (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.p * 10));
-        }
+      QLog.d("EditLocalVideoActivity", 2, "ret = " + this.jdField_a_of_type_Int);
+      EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a).setVideoPath(this.jdField_a_of_type_JavaLangString);
+      EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a).seekTo(EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a));
+      EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a).start();
+      if ((!TextUtils.equals(EditLocalVideoActivity.f(this.jdField_a_of_type_Xnz.a), EditLocalVideoActivity.h())) && (!TextUtils.equals(EditLocalVideoActivity.f(this.jdField_a_of_type_Xnz.a), EditLocalVideoActivity.a(this.jdField_a_of_type_Xnz.a)))) {
+        QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new xob(this));
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(100.0F);
-        }
+        EditLocalVideoActivity.d(this.jdField_a_of_type_Xnz.a, true);
         return;
-        i = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.f % 10000;
-        break;
-        i = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.f;
-        break;
-        label142:
-        if (!NewFlowCameraActivity.k(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) {
-          break label181;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(i * 1.0F / (NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) * 10));
-      }
-      label181:
-      CircleProgress localCircleProgress = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress;
-      float f = i;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.i) {}
-      for (int i = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.c() + 1;; i = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.c())
-      {
-        localCircleProgress.setProgress(1.0F * f / i);
-        break;
+        EditLocalVideoActivity.f(this.jdField_a_of_type_Xnz.a, this.jdField_a_of_type_JavaLangString);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+    QQToast.a(this.jdField_a_of_type_Xnz.a, "音乐合成失败，请稍后重试", 1).a();
+    QLog.d("EditLocalVideoActivity", 2, "mixMusicToLocalVideo error ret = " + this.jdField_a_of_type_Int);
   }
 }
 

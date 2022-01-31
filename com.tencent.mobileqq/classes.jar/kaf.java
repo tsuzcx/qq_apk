@@ -1,16 +1,16 @@
-import android.content.res.Resources;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.SysCallTransparentActivity;
 
 class kaf
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  kaf(kae paramkae) {}
+  kaf(kac paramkac) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.c();
-    QavVideoRecordUICtrl.a(this.a.a, 1003, QavVideoRecordUICtrl.a(this.a.a).getResources().getString(2131429643), 3000L, 1);
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 

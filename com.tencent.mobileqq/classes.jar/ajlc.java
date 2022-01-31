@@ -1,20 +1,19 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
+import com.tencent.mobileqq.widget.MessageProgressView.AnimRunnableListener;
 
 public class ajlc
-  extends WeakReference
+  implements MessageProgressView.AnimRunnableListener
 {
-  private final String a;
+  public ajlc(ImageItem.ImageViewHolder paramImageViewHolder) {}
   
-  public ajlc(String paramString, Object paramObject, ReferenceQueue paramReferenceQueue)
+  public void a(String paramString)
   {
-    super(paramObject, paramReferenceQueue);
-    this.a = paramString;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlc
  * JD-Core Version:    0.7.0.1
  */

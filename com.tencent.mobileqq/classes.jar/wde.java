@@ -1,28 +1,96 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.QQOperateTips;
+import com.tencent.mobileqq.config.operation.QQOperateManager;
+import com.tencent.mobileqq.config.operation.QQOperationRequestInfo;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wde
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public wde(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment, ChatMessage paramChatMessage, ActionSheet paramActionSheet) {}
+  public wde(QQOperateTips paramQQOperateTips) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    Object localObject2 = QQOperateTips.a(this.a).a();
+    Object localObject1;
+    if ((localObject2 != null) && (((List)localObject2).size() > 0))
     {
+      int j = ((List)localObject2).size();
+      localObject1 = new ArrayList();
+      int i;
+      ChatMessage localChatMessage;
+      if (QQOperateTips.a(this.a).jdField_a_of_type_Int == 0)
+      {
+        i = j - 1;
+        if (i >= 0)
+        {
+          localChatMessage = (ChatMessage)((List)localObject2).get(i);
+          if ((localChatMessage != null) && (localChatMessage.time > QQOperateTips.a(this.a)))
+          {
+            if (localChatMessage.uniseq != QQOperateTips.b(this.a)) {
+              ((ArrayList)localObject1).add(localChatMessage);
+            }
+            for (;;)
+            {
+              i -= 1;
+              break;
+              QQOperateTips.a(this.a, localChatMessage.time);
+            }
+          }
+        }
+      }
+      else if (QQOperateTips.a(this.a).jdField_a_of_type_Int == 3000)
+      {
+        i = j - 1;
+        if (i >= 0)
+        {
+          localChatMessage = (ChatMessage)((List)localObject2).get(i);
+          if ((localChatMessage != null) && (localChatMessage.shmsgseq > QQOperateTips.a(this.a)))
+          {
+            if (localChatMessage.uniseq != QQOperateTips.b(this.a)) {
+              ((ArrayList)localObject1).add(localChatMessage);
+            }
+            for (;;)
+            {
+              i -= 1;
+              break;
+              QQOperateTips.a(this.a, localChatMessage.shmsgseq);
+            }
+          }
+        }
+      }
+      if (((ArrayList)localObject1).size() > 0)
+      {
+        localObject2 = (ChatMessage)((List)localObject2).get(j - 1);
+        if (localObject2 != null)
+        {
+          if (QQOperateTips.a(this.a).jdField_a_of_type_Int != 0) {
+            break label408;
+          }
+          QQOperateTips.a(this.a, ((ChatMessage)localObject2).time);
+          QQOperateTips.b(this.a, ((ChatMessage)localObject2).uniseq);
+        }
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      localObject2 = QQOperateManager.a(QQOperateTips.a(this.a));
+      localObject1 = ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, QQOperateTips.a(this.a), (List)localObject1, false, -1);
+      if (((QQOperationRequestInfo)localObject1).jdField_a_of_type_Boolean)
+      {
+        localObject1 = ((QQOperationRequestInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
+        ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, (ArrayList)localObject1, QQOperateTips.a(this.a));
+      }
       return;
-      ThreadManager.post(new wdf(this), 5, null, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a.notifyDataSetChanged();
+      label408:
+      if (QQOperateTips.a(this.a).jdField_a_of_type_Int == 3000)
+      {
+        QQOperateTips.a(this.a, ((ChatMessage)localObject2).shmsgseq);
+        QQOperateTips.b(this.a, ((ChatMessage)localObject2).uniseq);
+      }
     }
   }
 }

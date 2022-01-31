@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
 
-class xzr
-  implements Runnable
+public class xzr
+  implements View.OnClickListener
 {
-  xzr(xzp paramxzp) {}
+  public xzr(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.setResult(0);
-    this.a.a.finish();
+    PhoneContactTabView.a(this.a);
   }
 }
 

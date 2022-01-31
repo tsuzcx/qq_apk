@@ -1,16 +1,13 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class kst
+public class kst
   implements Runnable
 {
-  kst(kss paramkss, Drawable paramDrawable) {}
+  public kst(AccountDetailActivity paramAccountDetailActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Kss.a.a.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_Kss.a.a.notifyDataSetChanged();
+    this.a.i = false;
   }
 }
 

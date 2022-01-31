@@ -1,41 +1,25 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.emosm.view.DragSortController;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.app.HotchatSCMng;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 public class abtd
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  public abtd(DragSortController paramDragSortController) {}
+  public abtd(ConfigServlet paramConfigServlet, ConfigurationService.Config paramConfig) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (this.a.d != -1)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setTapPos(this.a.d);
-    }
-    return false;
-  }
-  
-  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) || (Math.abs(paramFloat1) <= Math.abs(paramFloat2)) || (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c()) || (this.a.c) || (Math.abs(paramFloat1) <= this.a.jdField_a_of_type_Float) || ((paramFloat1 < 0.0F) && (this.a.jdField_a_of_type_Int == 2))) {}
-    while ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Int == 1)) {
-      return false;
-    }
-    int i = this.a.d;
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSrcPos(i);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c();
-    return false;
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqConfigSplashlogoConfigServlet.getAppRuntime();
+    boolean bool = ((HotchatSCMng)localQQAppInterface.getManager(122)).a(this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config);
+    SharedPreUtils.a(localQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get(), bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abtd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,19 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class agfc
-  extends LSRecordAnimations.LSRecordAnimationCallback
+class agfc
+  implements Runnable
 {
-  public agfc(LSRecordPanel paramLSRecordPanel) {}
+  agfc(agfb paramagfb) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS stopRecordingBarAnimation onAnimationEnd");
-    }
-    LSRecordPanel.a(this.a).post(new agfd(this));
+    ScanTorchActivity.a(this.a.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfc
  * JD-Core Version:    0.7.0.1
  */

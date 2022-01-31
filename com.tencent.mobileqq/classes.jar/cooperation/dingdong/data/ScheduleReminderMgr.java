@@ -1,7 +1,7 @@
 package cooperation.dingdong.data;
 
-import aluz;
-import alva;
+import amld;
+import amle;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -51,7 +51,7 @@ public class ScheduleReminderMgr
   
   private void a(DingdongPluginDataFactory.ScheduleSummaryData paramScheduleSummaryData)
   {
-    new alva(this, paramScheduleSummaryData).execute(new Void[] { null, null, null });
+    new amle(this, paramScheduleSummaryData).execute(new Void[] { null, null, null });
   }
   
   public void a(DingdongPluginBizObserver.ScheduleNotificationData paramScheduleNotificationData)
@@ -67,7 +67,7 @@ public class ScheduleReminderMgr
         this.jdField_a_of_type_ComTencentMobileqqAppUtilsDingdongPluginBizObserver$ScheduleNotificationData = paramScheduleNotificationData;
         paramScheduleNotificationData = new Handler(Looper.myLooper());
         if (paramScheduleNotificationData != null) {
-          paramScheduleNotificationData.postDelayed(new aluz(this), 8000L);
+          paramScheduleNotificationData.postDelayed(new amld(this), 8000L);
         }
       }
     }

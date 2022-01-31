@@ -1,66 +1,32 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class uiw
-  implements SensorEventListener
+  implements Runnable
 {
-  public uiw(MediaPlayerManager paramMediaPlayerManager) {}
+  public uiw(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void run()
   {
-    float f6;
-    float f5;
-    float f4;
-    float f3;
-    float f2;
-    float f1;
-    if (paramSensorEvent.sensor.getType() == 1)
+    int i = this.a.app.a().b();
+    Object localObject2 = this.a.app.getApp().getString(2131433297);
+    Object localObject1 = localObject2;
+    if (i > 0)
     {
-      f6 = paramSensorEvent.values[0];
-      f5 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      f3 = f4;
-      f2 = f5;
-      f1 = f6;
-      if (MediaPlayerManager.a())
-      {
-        f1 = f6 * 10.0F;
-        f2 = f5 * 10.0F;
-        f3 = f4 * 10.0F;
-      }
-      if ((this.a.jdField_a_of_type_Float != -999.0F) || (this.a.b != -999.0F) || (this.a.c != -999.0F)) {
-        break label135;
+      localObject2 = new StringBuilder().append((String)localObject2).append("(");
+      if (i <= 99) {
+        break label88;
       }
     }
-    for (;;)
+    label88:
+    for (localObject1 = "99+";; localObject1 = Integer.valueOf(i))
     {
-      this.a.jdField_a_of_type_Float = f1;
-      this.a.b = f2;
-      this.a.c = f3;
+      localObject1 = localObject1 + ")";
+      ActivateFriendActivity.a(this.a).setText((CharSequence)localObject1);
       return;
-      label135:
-      f4 = Math.abs(this.a.jdField_a_of_type_Float - f1);
-      f5 = Math.abs(this.a.b - f2);
-      f6 = Math.abs(this.a.c - f3);
-      if ((f4 >= MediaPlayerManager.a(this.a)) || (f5 >= MediaPlayerManager.a(this.a)) || (f6 >= MediaPlayerManager.a(this.a)))
-      {
-        if ((!this.a.jdField_a_of_type_Boolean) && (QLog.isColorLevel())) {
-          QLog.d("MediaPlayerManager", 2, "ProximityEventListener$onSensorChanged moving | x=" + f1 + " | y = " + f2 + " | z = " + f3 + " | ax = " + f4 + " | ay = " + f5 + " | az = " + f6 + " | value=" + MediaPlayerManager.a(this.a));
-        }
-        this.a.jdField_a_of_type_Boolean = true;
-      }
-      else if ((f4 < MediaPlayerManager.b(this.a)) && (f5 < MediaPlayerManager.b(this.a)) && (f6 < MediaPlayerManager.b(this.a)))
-      {
-        if ((this.a.jdField_a_of_type_Boolean) && (QLog.isColorLevel())) {
-          QLog.d("MediaPlayerManager", 2, "ProximityEventListener$onSensorChanged stop moving | x=" + f1 + " | y = " + f2 + " | z = " + f3 + " | ax = " + f4 + " | ay = " + f5 + " | az = " + f6 + " | value=" + MediaPlayerManager.a(this.a));
-        }
-        this.a.jdField_a_of_type_Boolean = false;
-      }
     }
   }
 }

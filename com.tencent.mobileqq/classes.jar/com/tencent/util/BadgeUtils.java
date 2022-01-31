@@ -1,7 +1,7 @@
 package com.tencent.util;
 
-import aljp;
-import aljq;
+import alzf;
+import alzg;
 import android.app.Notification;
 import android.content.Context;
 import android.os.Handler;
@@ -18,7 +18,7 @@ public class BadgeUtils
 {
   public static int a;
   private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private static Runnable jdField_a_of_type_JavaLangRunnable = new aljq();
+  private static Runnable jdField_a_of_type_JavaLangRunnable = new alzg();
   public static boolean a;
   
   static
@@ -98,7 +98,7 @@ public class BadgeUtils
     } while (!QLog.isColorLevel());
     QLog.e("BadgeUtilImpl", 2, "badge not support");
     return;
-    ThreadManager.executeOnSubThread(new aljp(i, paramContext, paramInt));
+    ThreadManager.executeOnSubThread(new alzf(i, paramContext, paramInt));
   }
   
   public static void a(Context paramContext, int paramInt, Notification paramNotification)
@@ -133,7 +133,7 @@ public class BadgeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.util.BadgeUtils
  * JD-Core Version:    0.7.0.1
  */

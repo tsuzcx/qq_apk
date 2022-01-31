@@ -2,7 +2,7 @@ package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import ankw;
+import aobb;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class NormalFaceAdapter$CacheRefMap
   {
     if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramObject))
     {
-      paramObject = (ankw)this.jdField_a_of_type_JavaUtilHashMap.get(paramObject);
+      paramObject = (aobb)this.jdField_a_of_type_JavaUtilHashMap.get(paramObject);
       if (paramObject.get() != null) {
         return paramObject.get();
       }
@@ -33,7 +33,7 @@ public class NormalFaceAdapter$CacheRefMap
       if (localReference == null) {
         break;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.remove(((ankw)localReference).a());
+      this.jdField_a_of_type_JavaUtilHashMap.remove(((aobb)localReference).a());
     }
   }
   
@@ -42,10 +42,10 @@ public class NormalFaceAdapter$CacheRefMap
     if ((paramObject1 == null) || (paramObject2 == null)) {
       throw new IllegalArgumentException("key-value cannot be null");
     }
-    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramObject1)) && (((ankw)this.jdField_a_of_type_JavaUtilHashMap.get(paramObject1)).get() != null)) {
+    if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramObject1)) && (((aobb)this.jdField_a_of_type_JavaUtilHashMap.get(paramObject1)).get() != null)) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramObject1, new ankw(this, paramObject1, paramObject2, this.jdField_a_of_type_JavaLangRefReferenceQueue));
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramObject1, new aobb(this, paramObject1, paramObject2, this.jdField_a_of_type_JavaLangRefReferenceQueue));
   }
 }
 

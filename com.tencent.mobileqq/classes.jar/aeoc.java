@@ -1,10 +1,18 @@
-import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public final class aeoc
+public class aeoc
+  implements DialogInterface.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString;
+  public aeoc(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
   
-  private aeoc(TopicLabelListView paramTopicLabelListView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      GameRoomInviteActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity);
+    }
+  }
 }
 
 

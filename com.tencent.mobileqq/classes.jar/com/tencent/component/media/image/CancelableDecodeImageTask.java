@@ -1,6 +1,6 @@
 package com.tencent.component.media.image;
 
-import pfn;
+import phh;
 
 public class CancelableDecodeImageTask
   extends DecodeImageTask
@@ -21,9 +21,9 @@ public class CancelableDecodeImageTask
     super(paramImageKey);
   }
   
-  private CancelableDecodeImageTask(pfn parampfn)
+  private CancelableDecodeImageTask(phh paramphh)
   {
-    super(parampfn);
+    super(paramphh);
   }
   
   public static void clearAndInitSize()
@@ -62,7 +62,7 @@ public class CancelableDecodeImageTask
     }
   }
   
-  public static CancelableDecodeImageTask obtain(pfn parampfn)
+  public static CancelableDecodeImageTask obtain(phh paramphh)
   {
     if (needRecycle) {}
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -73,10 +73,10 @@ public class CancelableDecodeImageTask
         jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask = jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask.b;
         localCancelableDecodeImageTask.b = null;
         jdField_a_of_type_Int -= 1;
-        localCancelableDecodeImageTask.setImageTask(parampfn);
+        localCancelableDecodeImageTask.setImageTask(paramphh);
         return localCancelableDecodeImageTask;
       }
-      return new CancelableDecodeImageTask(parampfn);
+      return new CancelableDecodeImageTask(paramphh);
     }
   }
   

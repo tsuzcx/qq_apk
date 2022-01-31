@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e7" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040177" android:inflatedId="@id/APKTOOL_DUPLICATE_id_0x7f0a0489" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a063e" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04017f" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e8" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04088b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e9" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040889" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ea" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04080f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09eb" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040855" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ec" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04017c" />
-    <dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ed" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
-    <dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ee" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ef" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0405de" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09fd" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09fe" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ff" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040177" android:inflatedId="@id/APKTOOL_DUPLICATE_id_0x7f0a049b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0650" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04017f" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a00" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0408bb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a01" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0408b9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a02" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04083c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a03" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040885" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a04" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04017c" />
+    <dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a05" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
+    <dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a06" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a07" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0405ec" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

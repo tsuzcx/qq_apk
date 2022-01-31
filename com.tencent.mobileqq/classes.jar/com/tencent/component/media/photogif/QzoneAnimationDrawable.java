@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import phg;
-import phh;
+import pja;
+import pjb;
 
 public class QzoneAnimationDrawable
   extends Drawable
@@ -35,8 +35,8 @@ public class QzoneAnimationDrawable
   private QzoneAnimationDrawable.AnimationListener jdField_a_of_type_ComTencentComponentMediaPhotogifQzoneAnimationDrawable$AnimationListener;
   private ScheduledFuture jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
   private ScheduledThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
-  private phg jdField_a_of_type_Phg;
-  private phh jdField_a_of_type_Phh;
+  private pja jdField_a_of_type_Pja;
+  private pjb jdField_a_of_type_Pjb;
   private volatile boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int;
   private volatile Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
@@ -64,8 +64,8 @@ public class QzoneAnimationDrawable
     this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.photoList = null;
     this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor = GifRenderingExecutor.getInstance();
     this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler = new InvalidationHandler(this);
-    this.jdField_a_of_type_Phh = new phh(this, null);
-    this.jdField_a_of_type_Phg = new phg(this, null);
+    this.jdField_a_of_type_Pjb = new pjb(this, null);
+    this.jdField_a_of_type_Pja = new pja(this, null);
     this.jdField_a_of_type_AndroidGraphicsPaint.setARGB(255, 240, 240, 240);
   }
   
@@ -93,7 +93,7 @@ public class QzoneAnimationDrawable
       }
       if ((this.jdField_b_of_type_Int == LOOP_INFINITE) || (this.jdField_c_of_type_Int < this.jdField_b_of_type_Int))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Phg, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
+        this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Pja, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
         ImageManagerEnv.getLogger().d("QzoneAnimationDrawable", new Object[] { "------next index:" + this.jdField_a_of_type_Int });
       }
       for (;;)
@@ -136,7 +136,7 @@ public class QzoneAnimationDrawable
     if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoList.size())
     {
       String str = (String)this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoList.get(this.jdField_a_of_type_Int);
-      ImageLoader.getInstance().loadImageAsync(str, this.jdField_a_of_type_Phh, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
+      ImageLoader.getInstance().loadImageAsync(str, this.jdField_a_of_type_Pjb, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
       ImageManagerEnv.getLogger().d("QzoneAnimationDrawable", new Object[] { "loadNextFrame:" + str + ",frameIndex:" + this.jdField_a_of_type_Int });
       if (this.jdField_a_of_type_Int == getFrameCounts() - 1) {
         this.jdField_c_of_type_Int += 1;
@@ -300,7 +300,7 @@ public class QzoneAnimationDrawable
     if ((this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture != null) && (!this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.isDone())) {
       this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.cancel(true);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Phg, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
+    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Pja, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
   }
   
   public void stop()

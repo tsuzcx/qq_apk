@@ -57,7 +57,7 @@ public class ContactsSearchResultAdapter
     {
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramTextView.getContext().getResources().getDrawable(2130839745);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramTextView.getContext().getResources().getDrawable(2130839751);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
       }
       paramTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
@@ -115,16 +115,16 @@ public class ContactsSearchResultAdapter
     {
       paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968820, paramViewGroup, false);
       paramViewGroup = new ContactsSearchResultAdapter.ViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363367));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363908));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363910));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363531));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363913);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363385));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363931));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363933));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363549));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363936);
       paramViewGroup.jdField_a_of_type_AndroidViewView.setContentDescription("删除搜索历史");
       SearchUtil.a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363912));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363911));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131363907));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363935));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363934));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131363930));
       paramView.setTag(paramViewGroup);
     }
     IContactSearchable localIContactSearchable;
@@ -169,7 +169,7 @@ public class ContactsSearchResultAdapter
       {
         if (((((PhoneContactSelectActivity)localObject2).f != null) && (((PhoneContactSelectActivity)localObject2).f.contains(str))) || (i != 0))
         {
-          paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(2131433991);
+          paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(2131434008);
           paramViewGroup.jdField_a_of_type_JavaLangString = localIContactSearchable.d();
           paramViewGroup.jdField_a_of_type_Int = localIContactSearchable.c();
           if (!(localIContactSearchable instanceof ContactSearchableSearchHistory)) {
@@ -191,7 +191,7 @@ public class ContactsSearchResultAdapter
           paramViewGroup.jdField_a_of_type_Boolean = bool1;
           if (paramViewGroup.jdField_a_of_type_Boolean)
           {
-            paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840183);
+            paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840189);
             paramViewGroup.d.setVisibility(0);
             paramViewGroup.d.setText(ContactUtils.a((String)localObject1));
             label474:
@@ -211,12 +211,12 @@ public class ContactsSearchResultAdapter
               paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(-1, Long.valueOf(((SearchHistory)localIContactSearchable.a()).getId()));
               paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
             }
-            paramViewGroup = paramView.findViewById(2131363905);
+            paramViewGroup = paramView.findViewById(2131363928);
             if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
               break label731;
             }
-            paramView.setBackgroundResource(2130838576);
-            paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492949));
+            paramView.setBackgroundResource(2130838580);
+            paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492950));
           }
           for (;;)
           {
@@ -227,7 +227,7 @@ public class ContactsSearchResultAdapter
             return paramView;
             if (((PhoneContactSelectActivity)localObject2).a(str))
             {
-              paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(2131433992);
+              paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(2131434009);
               break;
             }
             paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(localIContactSearchable.a());
@@ -245,8 +245,8 @@ public class ContactsSearchResultAdapter
             paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
             break label495;
             label731:
-            paramView.setBackgroundResource(2130838575);
-            paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492948));
+            paramView.setBackgroundResource(2130838579);
+            paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492949));
           }
           label758:
           paramViewGroup.setVisibility(0);

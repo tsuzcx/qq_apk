@@ -1,15 +1,11 @@
-import com.tencent.biz.common.util.FileChooserHelper;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.biz.game.MSFToWebViewConnector;
 
 public class kmj
-  implements ActionSheet.OnDismissListener
 {
-  public kmj(FileChooserHelper paramFileChooserHelper) {}
+  public int a;
+  public long a;
   
-  public void onDismiss()
-  {
-    FileChooserHelper.a(this.a);
-  }
+  private kmj(MSFToWebViewConnector paramMSFToWebViewConnector) {}
 }
 
 

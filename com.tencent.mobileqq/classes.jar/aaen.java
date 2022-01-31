@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class aaen
-  implements Runnable
+public final class aaen
+  implements Parcelable.Creator
 {
-  public aaen(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
-  
-  public void run()
+  public ArCloudConfigInfo a(Parcel paramParcel)
   {
-    ARCardCameraRecordFragment.a(this.a);
+    return new ArCloudConfigInfo(paramParcel);
+  }
+  
+  public ArCloudConfigInfo[] a(int paramInt)
+  {
+    return new ArCloudConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaen
  * JD-Core Version:    0.7.0.1
  */

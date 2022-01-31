@@ -1,39 +1,18 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.LOG;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload.Listener;
 
-public class anun
-  extends Handler
+class anun
+  implements EditWebVideoHallowenUpload.Listener
 {
-  public anun(Looper paramLooper)
+  anun(anul paramanul, Runnable paramRunnable) {}
+  
+  public void a()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void b()
   {
-    LOG.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
-    switch (paramMessage.what)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      i = paramMessage.arg1;
-      paramMessage = paramMessage.getData();
-      LOG.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
-      return;
-    }
-    int i = paramMessage.arg1;
-    switch (paramMessage.arg1)
-    {
-    default: 
-      return;
-    }
-    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    LOG.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

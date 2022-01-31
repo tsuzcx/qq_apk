@@ -11,10 +11,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.animation.LinearInterpolator;
-import angx;
-import angy;
-import angz;
-import anha;
+import anxc;
+import anxd;
+import anxe;
+import anxf;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.mobileqq.troop.data.TroopBarPOI;
 import dov.com.qq.im.capture.QIMManager;
@@ -126,22 +126,22 @@ public class FaceLayer$FaceItem
     int k;
     if (this.jdField_k_of_type_Int == 0)
     {
-      i = 2130841972;
+      i = 2130842009;
       if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.a())
       {
         if (this.jdField_k_of_type_Int != 0) {
           break label494;
         }
-        i = 2130841980;
+        i = 2130842017;
       }
       if (this.jdField_k_of_type_Int != 1) {
         break label501;
       }
-      j = 2130841970;
+      j = 2130842007;
       if (this.jdField_k_of_type_Int != 2) {
         break label508;
       }
-      k = 2130841977;
+      k = 2130842014;
       label429:
       if (!this.jdField_k_of_type_Boolean) {
         break label515;
@@ -156,18 +156,18 @@ public class FaceLayer$FaceItem
       if (!this.jdField_c_of_type_Boolean) {
         break;
       }
-      DisplayUtil.b(paramCanvas, this.jdField_b_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerFaceLayer.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, 2130841983, 2130841983, 2130841982);
+      DisplayUtil.b(paramCanvas, this.jdField_b_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerFaceLayer.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, 2130842020, 2130842020, 2130842019);
       return;
-      i = 2130841971;
+      i = 2130842008;
       break label384;
       label494:
-      i = 2130841978;
+      i = 2130842015;
       break label405;
       label501:
-      j = 2130841969;
+      j = 2130842006;
       break label417;
       label508:
-      k = 2130841976;
+      k = 2130842013;
       break label429;
     }
   }
@@ -258,8 +258,8 @@ public class FaceLayer$FaceItem
       this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
       this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(200L);
       this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new angx(this));
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new angy(this));
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anxc(this));
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new anxd(this));
     }
     if (!this.i) {
       this.jdField_c_of_type_AndroidAnimationValueAnimator.start();
@@ -275,7 +275,7 @@ public class FaceLayer$FaceItem
   
   public void d()
   {
-    a(new angz(this), new anha(this));
+    a(new anxe(this), new anxf(this));
   }
   
   public void e()

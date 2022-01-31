@@ -57,7 +57,7 @@ public class ForwardMapOption
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwwardMapOption", 2, "updateImageView:setDefaultDialogPreviewImage");
     }
-    a(ForwardOptionUtils.a(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838859), this.jdField_a_of_type_Float), false, 0);
+    a(ForwardOptionUtils.a(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838864), this.jdField_a_of_type_Float), false, 0);
   }
   
   protected void b()

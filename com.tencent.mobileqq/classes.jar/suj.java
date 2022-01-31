@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
-class suj
-  implements Runnable
+public class suj
+  implements View.OnClickListener
 {
-  suj(sui paramsui, List paramList) {}
+  public suj(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (Leba.a(this.jdField_a_of_type_Sui.a) != null)
-    {
-      Leba.a(this.jdField_a_of_type_Sui.a).clear();
-      Leba.a(this.jdField_a_of_type_Sui.a).addAll(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Sui.a.a != null) {
-        this.jdField_a_of_type_Sui.a.a.notifyDataSetChanged();
-      }
-      Leba.c(this.jdField_a_of_type_Sui.a);
-    }
+    this.a.finish();
   }
 }
 

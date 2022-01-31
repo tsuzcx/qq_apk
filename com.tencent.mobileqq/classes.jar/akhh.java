@@ -1,67 +1,53 @@
+import android.media.MediaPlayer;
 import android.os.Handler;
-import com.tencent.mobileqq.app.CardHandler.NowOnliveGallayCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NowShowVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.PhotoWallView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
+import com.tencent.mobileqq.vas.ColorRingPlayer;
 
 public class akhh
-  extends CardHandler.NowOnliveGallayCallback
+  implements Runnable
 {
-  private WeakReference a;
+  public akhh(ColorRingPlayer paramColorRingPlayer) {}
   
-  public akhh(PhotoWallView paramPhotoWallView)
+  public void run()
   {
-    this.a = new WeakReference(paramPhotoWallView);
-  }
-  
-  public void a(int paramInt, List paramList)
-  {
-    if (this.a != null) {}
-    for (PhotoWallView localPhotoWallView = (PhotoWallView)this.a.get();; localPhotoWallView = null)
+    for (;;)
     {
-      if (localPhotoWallView == null) {
-        return;
-      }
-      if (paramInt != 0)
+      Object localObject1 = this.a.jdField_a_of_type_JavaLangObject;
+      boolean bool = false;
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
+        if (this.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+          bool = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
         }
-        localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        return;
+        if ((this.a.jdField_a_of_type_AndroidMediaMediaPlayer == null) || (!bool)) {
+          break;
+        }
+        int i = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
+        int j = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
+        this.a.jdField_a_of_type_AndroidOsHandler.post(new akhi(this, j, i));
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay size:" + paramList.size());
-      }
-      localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramInt = 0;
-      while (paramInt < paramList.size())
+      catch (IllegalStateException localIllegalStateException)
       {
-        Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
-        localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
-        localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        paramInt += 1;
+        for (;;)
+        {
+          this.a.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+          this.a.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+        }
       }
-      if (localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        ReportController.b((QQAppInterface)this.b.get(), "dc00899", "NOW", "", "qq_zlk", "replay_exp", 0, 0, localPhotoWallView.jdField_a_of_type_JavaLangString, "", "", "");
+      finally {}
+      try
+      {
+        Thread.sleep(50L);
       }
-      localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      return;
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhh
  * JD-Core Version:    0.7.0.1
  */

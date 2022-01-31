@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.structmsg;
 
-import ahth;
-import ahtj;
-import ahtk;
-import ahtl;
+import aihk;
+import aihm;
+import aihn;
+import aiho;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -44,10 +44,10 @@ public class StructMsgForAudioShare
   extends AbsShareMsg
   implements QQPlayerService.QQPlayerCallback
 {
-  private static View.OnClickListener a = new ahth();
+  private static View.OnClickListener a = new aihk();
   private WeakReference mCoverImage;
   private boolean mIsShowCommentLayout;
-  private View.OnClickListener musicShareCoverClikListener = new ahtj(this);
+  private View.OnClickListener musicShareCoverClikListener = new aihm(this);
   
   StructMsgForAudioShare()
   {
@@ -159,14 +159,14 @@ public class StructMsgForAudioShare
     for (int i = 3;; i = 2)
     {
       ((TextView)localObject).setMaxLines(i);
-      localObject = paramContext.getResources().getDrawable(2130845974);
+      localObject = paramContext.getResources().getDrawable(2130846102);
       localImageView.setBackgroundDrawable(null);
       if (!TextUtils.isEmpty(str1)) {
         break label179;
       }
       localImageView.setImageDrawable((Drawable)localObject);
       return paramView;
-      paramView = LayoutInflater.from(paramContext).inflate(2130971547, null);
+      paramView = LayoutInflater.from(paramContext).inflate(2130971595, null);
       break;
       ((TextView)localObject).setVisibility(8);
       localTextView.setMaxLines(4);
@@ -197,9 +197,9 @@ public class StructMsgForAudioShare
     }
     this.mIsShowCommentLayout = paramBundle.getBoolean("isShowCommentLayout", false);
     paramBundle = paramContext.getResources();
-    paramView = LayoutInflater.from(paramContext).inflate(2130971544, null);
+    paramView = LayoutInflater.from(paramContext).inflate(2130971592, null);
     paramOnLongClickAndTouchListener = (URLImageView)paramView.findViewById(2131361925);
-    Object localObject1 = paramView.findViewById(2131368263);
+    Object localObject1 = paramView.findViewById(2131368330);
     int i;
     Object localObject2;
     if (this.mIsShowCommentLayout)
@@ -228,14 +228,14 @@ public class StructMsgForAudioShare
       if (!QQPlayerService.a(this)) {
         break label421;
       }
-      paramOnLongClickAndTouchListener.setImageResource(2130842646);
-      paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131437002));
+      paramOnLongClickAndTouchListener.setImageResource(2130842745);
+      paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131437019));
       label250:
       if (TextUtils.isEmpty(this.mContentCover)) {
         break label489;
       }
       localObject1 = this.mContentCover;
-      localObject2 = paramBundle.getDrawable(2130845974);
+      localObject2 = paramBundle.getDrawable(2130846102);
     }
     for (;;)
     {
@@ -280,13 +280,13 @@ public class StructMsgForAudioShare
         break label199;
         i = 2;
         break label212;
-        paramOnLongClickAndTouchListener.setImageResource(2130842645);
-        paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131437001));
+        paramOnLongClickAndTouchListener.setImageResource(2130842744);
+        paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131437018));
         break label250;
         bool = false;
         continue;
         label489:
-        paramOnLongClickAndTouchListener.setBackgroundResource(2130845974);
+        paramOnLongClickAndTouchListener.setBackgroundResource(2130846102);
         continue;
       }
       paramContext.width = BaseChatItemLayout.e;
@@ -311,12 +311,12 @@ public class StructMsgForAudioShare
     Resources localResources = localURLImageView.getContext().getResources();
     if ((paramInt == 2) || (paramInt == 1))
     {
-      localURLImageView.post(new ahtk(this, localURLImageView));
-      localURLImageView.setContentDescription(localResources.getString(2131437002));
+      localURLImageView.post(new aihn(this, localURLImageView));
+      localURLImageView.setContentDescription(localResources.getString(2131437019));
       return;
     }
-    localURLImageView.post(new ahtl(this, localURLImageView));
-    localURLImageView.setContentDescription(localResources.getString(2131437001));
+    localURLImageView.post(new aiho(this, localURLImageView));
+    localURLImageView.setContentDescription(localResources.getString(2131437018));
   }
   
   protected boolean parseContentNode(StructMsgNode paramStructMsgNode)
@@ -750,7 +750,7 @@ public class StructMsgForAudioShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForAudioShare
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class swv
-  implements Animation.AnimationListener
+  implements AdapterView.OnItemClickListener
 {
-  public swv(LoginInfoActivity paramLoginInfoActivity) {}
+  public swv(Leba paramLeba) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
+    if (this.a.c()) {
+      ThreadManager.post(new sww(this, paramView, paramInt), 8, null, true);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

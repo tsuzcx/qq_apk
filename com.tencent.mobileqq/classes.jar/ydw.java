@@ -1,30 +1,19 @@
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class ydw
-  implements Comparator
+  implements Runnable
 {
-  public ydw(DiscussionListAdapter2 paramDiscussionListAdapter2, HashMap paramHashMap) {}
+  public ydw(ShortVideoPlayActivity paramShortVideoPlayActivity, TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public void run()
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
-    }
-    if (l1 > l2) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ydw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,27 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanelAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
+import java.lang.ref.WeakReference;
 
 public class yuz
   implements Runnable
 {
-  public yuz(ApolloPanel paramApolloPanel) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public yuz(String paramString, ApolloAudioPlayer paramApolloAudioPlayer, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloAudioPlayer);
+  }
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter != null) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPanel", 2, "func initLastApolloPanel begins. Thread id = " + Thread.currentThread().getId());
-      }
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_JavaUtilList.add(this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloMainViewBinder);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.notifyDataSetChanged();
+    ApolloAudioPlayer localApolloAudioPlayer = (ApolloAudioPlayer)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localApolloAudioPlayer == null) {
+      return;
     }
+    ApolloAudioPlayer.a(localApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

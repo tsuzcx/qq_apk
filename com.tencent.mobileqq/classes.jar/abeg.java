@@ -1,16 +1,21 @@
-import android.animation.AnimatorSet;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimFrameData;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 
-public class abeg
+class abeg
   implements Runnable
 {
-  public abeg(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimFrameData paramAnimFrameData) {}
+  abeg(abed paramabed) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimFrameData.a.a.cancel();
+    if (!ShopScanActivity.a(this.a.a))
+    {
+      this.a.a.e.setVisibility(0);
+      this.a.a.b.setVisibility(8);
+      this.a.a.f.setVisibility(8);
+    }
   }
 }
 

@@ -1,32 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.camera.CameraObserver;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.ui.redbag.AVRedBag;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
 
 public class kdp
-  extends Handler
+  extends CameraObserver
 {
-  WeakReference a;
+  public kdp(AVRedBag paramAVRedBag) {}
   
-  public kdp(EffectFilterTextPager paramEffectFilterTextPager)
+  protected void a(boolean paramBoolean)
   {
-    this.a = new WeakReference(paramEffectFilterTextPager);
+    d();
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    EffectFilterTextPager localEffectFilterTextPager = (EffectFilterTextPager)this.a.get();
-    if (localEffectFilterTextPager == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      localEffectFilterTextPager.b();
+    d();
+  }
+  
+  void d()
+  {
+    AVRedBagMgr localAVRedBagMgr = this.a.a();
+    if ((localAVRedBagMgr != null) && (localAVRedBagMgr.a())) {
+      ((AVRedPacketManager)this.a.a.a(6)).c(this.a.a.a().a().f);
     }
   }
 }

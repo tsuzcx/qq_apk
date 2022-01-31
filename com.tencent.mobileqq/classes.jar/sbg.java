@@ -1,58 +1,48 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.MessageRoamManager;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
 
 class sbg
   implements Runnable
 {
-  sbg(sbf paramsbf) {}
+  sbg(sbf paramsbf, int paramInt, DevlockInfo paramDevlockInfo) {}
   
   public void run()
   {
-    ArrayList localArrayList = this.a.jdField_a_of_type_AndroidContentIntent.getExtras().getStringArrayList("deleted_members");
-    if (localArrayList != null)
+    boolean bool2 = true;
+    this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.d();
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null))
     {
-      int i;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c != null)
+      ChatHistoryForC2C localChatHistoryForC2C = this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C;
+      boolean bool1;
+      if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.DevSetup == 1)
       {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.d == 2) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.isMember)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.wMemberNum + "人");
+        bool1 = true;
+        if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet != 1) {
+          break label77;
         }
-      }
-      else {
-        i = localArrayList.size() - 1;
       }
       for (;;)
       {
-        if (i < 0) {
-          break label277;
-        }
-        int j = this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.size() - 1;
-        label136:
-        if (j >= 0)
-        {
-          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.get(j);
-          if ((localmemberlist == null) || (!localmemberlist.uint64_member_uin.has())) {}
-          while (!String.valueOf(localmemberlist.uint64_member_uin.get()).equals(localArrayList.get(i)))
-          {
-            j -= 1;
-            break label136;
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.wMemberNum + "名成员");
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.remove(j);
-        }
-        i -= 1;
+        localChatHistoryForC2C.a(bool1, bool2, this.jdField_a_of_type_Sbf.jdField_a_of_type_Boolean);
+        return;
+        bool1 = false;
+        break;
+        label77:
+        bool2 = false;
       }
     }
-    label277:
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e);
+    if (1 == this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.b())
+    {
+      this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.g();
+      return;
+    }
+    if (!this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.f())
+    {
+      this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b();
+      return;
+    }
+    this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b(this.jdField_a_of_type_Sbf.jdField_a_of_type_Boolean);
   }
 }
 

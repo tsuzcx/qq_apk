@@ -1,14 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anch;
-import anci;
-import ancj;
-import anck;
-import ancl;
-import ancm;
-import ancn;
-import anco;
-import ancp;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.LayoutTransition;
@@ -41,6 +32,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import ansm;
+import ansn;
+import anso;
+import ansp;
+import ansq;
+import ansr;
+import anss;
+import anst;
+import ansu;
 import com.tencent.biz.qqstory.model.AddressDataProvider;
 import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
 import com.tencent.biz.qqstory.model.DataProviderManager;
@@ -131,26 +131,26 @@ public class EditVideoButton
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131364441, 2131364442, 2131364443, 2131364444, 2131364445, 2131364446, 2131364447, 2131364448, 2131364449, 2131364450, 2131364451, 2131364433, 2131364434 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131364465, 2131364466, 2131364467, 2131364468, 2131364469, 2131364470, 2131364471, 2131364472, 2131364473, 2131364474, 2131364475, 2131364457, 2131364458 };
     jdField_a_of_type_Int = 103;
     jdField_b_of_type_Int = 536870920;
     jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    jdField_a_of_type_AndroidUtilSparseArray.put(4, new EditVideoButton.EntryButtonInfo(4, 2130841781, "添加背景音乐"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(32, new EditVideoButton.EntryButtonInfo(32, 2130841779, "涂鸦画笔"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(8, new EditVideoButton.EntryButtonInfo(8, 2130841777, "添加文字"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(2, new EditVideoButton.EntryButtonInfo(2, 2130841783, "添加贴纸"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(512, new EditVideoButton.EntryButtonInfo(512, 2130843502, "添加标签"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(128, new EditVideoButton.EntryButtonInfo(128, 2130841776, "艺术化滤镜"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(64, new EditVideoButton.EntryButtonInfo(64, 2130841775, "裁剪"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1048576, new EditVideoButton.EntryButtonInfo(1048576, 2130843621, "分享到群"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(8192, new EditVideoButton.EntryButtonInfo(8192, 2130843061, "保存到手机"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(32768, new EditVideoButton.EntryButtonInfo(32768, 2130841782, "GIF快慢"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(65536, new EditVideoButton.EntryButtonInfo(65536, 2130843366, "生成GIF"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(4194304, new EditVideoButton.EntryButtonInfo(4194304, 2130841782, "镜头速度"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(16, new EditVideoButton.EntryButtonInfo(16, 2130841776, "滤镜"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(1, new EditVideoButton.EntryButtonInfo(1, 2130841773, "套餐"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(8388608, new EditVideoButton.EntryButtonInfo(8388608, 2130841780, "多人分享"));
-    jdField_a_of_type_AndroidUtilSparseArray.put(536870912, new EditVideoButton.EntryButtonInfo(536870912, 2130841778, "好友互动"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(4, new EditVideoButton.EntryButtonInfo(4, 2130841818, "添加背景音乐"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(32, new EditVideoButton.EntryButtonInfo(32, 2130841816, "涂鸦画笔"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(8, new EditVideoButton.EntryButtonInfo(8, 2130841814, "添加文字"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(2, new EditVideoButton.EntryButtonInfo(2, 2130841820, "添加贴纸"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(512, new EditVideoButton.EntryButtonInfo(512, 2130843623, "添加标签"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(128, new EditVideoButton.EntryButtonInfo(128, 2130841813, "艺术化滤镜"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(64, new EditVideoButton.EntryButtonInfo(64, 2130841812, "裁剪"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1048576, new EditVideoButton.EntryButtonInfo(1048576, 2130843742, "分享到群"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(8192, new EditVideoButton.EntryButtonInfo(8192, 2130843160, "保存到手机"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(32768, new EditVideoButton.EntryButtonInfo(32768, 2130841819, "GIF快慢"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(65536, new EditVideoButton.EntryButtonInfo(65536, 2130843484, "生成GIF"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(4194304, new EditVideoButton.EntryButtonInfo(4194304, 2130841819, "镜头速度"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(16, new EditVideoButton.EntryButtonInfo(16, 2130841813, "滤镜"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(1, new EditVideoButton.EntryButtonInfo(1, 2130841810, "套餐"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(8388608, new EditVideoButton.EntryButtonInfo(8388608, 2130841817, "多人分享"));
+    jdField_a_of_type_AndroidUtilSparseArray.put(536870912, new EditVideoButton.EntryButtonInfo(536870912, 2130841815, "好友互动"));
   }
   
   public EditVideoButton(@NonNull EditVideoPartManager paramEditVideoPartManager, int paramInt)
@@ -173,13 +173,13 @@ public class EditVideoButton
       j += 1;
     }
     if (paramImageView != null) {
-      paramImageView.setColorFilter(a().getColor(2131493438), PorterDuff.Mode.SRC_IN);
+      paramImageView.setColorFilter(a().getColor(2131493442), PorterDuff.Mode.SRC_IN);
     }
     if (this.jdField_f_of_type_Boolean)
     {
       paramImageView = (ImageView)this.jdField_b_of_type_AndroidUtilSparseArray.get(4);
       if (paramImageView != null) {
-        paramImageView.setColorFilter(a().getColor(2131493438), PorterDuff.Mode.SRC_IN);
+        paramImageView.setColorFilter(a().getColor(2131493442), PorterDuff.Mode.SRC_IN);
       }
     }
   }
@@ -207,7 +207,7 @@ public class EditVideoButton
         return;
       }
       ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-      if (localView.getId() != 2131364436) {
+      if (localView.getId() != 2131364460) {
         localLayoutParams.height = ((int)(localLayoutParams.height * (16.0F / f1)));
       }
       localLayoutParams.width = ((int)(localLayoutParams.width * (16.0F / f1)));
@@ -230,7 +230,7 @@ public class EditVideoButton
     }
     int m = jdField_a_of_type_ArrayOfInt.length;
     if (((PasterDataManager)QIMManager.a(4)).a()) {
-      jdField_a_of_type_AndroidUtilSparseArray.put(1, new EditVideoButton.EntryButtonInfo(1, 2130841774, "套餐"));
+      jdField_a_of_type_AndroidUtilSparseArray.put(1, new EditVideoButton.EntryButtonInfo(1, 2130841811, "套餐"));
     }
     int i1;
     int n;
@@ -249,7 +249,7 @@ public class EditVideoButton
         paramInt += 1;
         j = k;
       }
-      jdField_a_of_type_AndroidUtilSparseArray.put(1, new EditVideoButton.EntryButtonInfo(1, 2130841773, "套餐"));
+      jdField_a_of_type_AndroidUtilSparseArray.put(1, new EditVideoButton.EntryButtonInfo(1, 2130841810, "套餐"));
     }
     SLog.a("Q.qqstory.record.EditVideoButton", "initEditButtons, needFirstStepButtonCount = %d", Integer.valueOf(j));
     if (m < j) {
@@ -369,7 +369,7 @@ public class EditVideoButton
     } while (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditGifImage.jdField_b_of_type_Boolean);
     this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_d_of_type_AndroidWidgetTextView.setText("0%");
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844577);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844701);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(false);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
   }
@@ -378,7 +378,7 @@ public class EditVideoButton
   {
     if (this.jdField_a_of_type_AndroidViewViewGroup != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362493);
+      View localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362500);
       if (localView != null) {
         this.jdField_a_of_type_AndroidViewViewGroup.removeView(localView);
       }
@@ -395,17 +395,17 @@ public class EditVideoButton
     this.jdField_f_of_type_AndroidViewViewGroup.setAlpha(0.0F);
     this.i.setVisibility(0);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_d_of_type_AndroidViewViewGroup, "translationY", 0.0F, a().getDimension(2131559491), 300L, 0L));
+    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_d_of_type_AndroidViewViewGroup, "translationY", 0.0F, a().getDimension(2131559493), 300L, 0L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_d_of_type_AndroidViewViewGroup, "alpha", 1.0F, 0.0F, 300L, 0L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_e_of_type_AndroidViewViewGroup, "translationY", UIUtils.a(a(), 160.0F), 0.0F, 300L, 300L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_e_of_type_AndroidViewViewGroup, "alpha", 0.0F, 1.0F, 300L, 300L));
-    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_b_of_type_AndroidWidgetTextView, "translationY", 0.0F, -1.0F * a().getDimension(2131559492), 300L, 0L));
+    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_b_of_type_AndroidWidgetTextView, "translationY", 0.0F, -1.0F * a().getDimension(2131559494), 300L, 0L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_b_of_type_AndroidWidgetTextView, "alpha", 1.0F, 0.0F, 300L, 0L));
-    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.i, "translationY", -1.0F * a().getDimension(2131559492), 0.0F, 300L, 300L));
+    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.i, "translationY", -1.0F * a().getDimension(2131559494), 0.0F, 300L, 300L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.i, "alpha", 0.0F, 1.0F, 300L, 300L));
-    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_f_of_type_AndroidViewViewGroup, "translationY", -1.0F * a().getDimension(2131559492), 0.0F, 300L, 300L));
+    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_f_of_type_AndroidViewViewGroup, "translationY", -1.0F * a().getDimension(2131559494), 0.0F, 300L, 300L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_f_of_type_AndroidViewViewGroup, "alpha", 0.0F, 1.0F, 300L, 300L));
-    QIMAnimationUtils.a(localArrayList, new anco(this));
+    QIMAnimationUtils.a(localArrayList, new anst(this));
     this.jdField_c_of_type_Long = (System.currentTimeMillis() + 600L);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 11, Long.valueOf(this.jdField_c_of_type_Long)));
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 12, 2, (int)this.jdField_c_of_type_Long));
@@ -422,15 +422,15 @@ public class EditVideoButton
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_e_of_type_AndroidViewViewGroup, "translationY", 0.0F, UIUtils.a(a(), 160.0F), 300L, 0L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_e_of_type_AndroidViewViewGroup, "alpha", 1.0F, 0.0F, 300L, 0L));
-    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_d_of_type_AndroidViewViewGroup, "translationY", a().getDimension(2131559491), 0.0F, 300L, 300L));
+    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_d_of_type_AndroidViewViewGroup, "translationY", a().getDimension(2131559493), 0.0F, 300L, 300L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_d_of_type_AndroidViewViewGroup, "alpha", 0.0F, 1.0F, 300L, 300L));
-    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_b_of_type_AndroidWidgetTextView, "translationY", -1.0F * a().getDimension(2131559492), 0.0F, 300L, 300L));
+    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_b_of_type_AndroidWidgetTextView, "translationY", -1.0F * a().getDimension(2131559494), 0.0F, 300L, 300L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_b_of_type_AndroidWidgetTextView, "alpha", 0.0F, 1.0F, 300L, 300L));
-    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.i, "translationY", 0.0F, -1.0F * a().getDimension(2131559492), 300L, 0L));
+    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.i, "translationY", 0.0F, -1.0F * a().getDimension(2131559494), 300L, 0L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.i, "alpha", 1.0F, 0.0F, 300L, 0L));
-    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_f_of_type_AndroidViewViewGroup, "translationY", 0.0F, -1.0F * a().getDimension(2131559492), 300L, 0L));
+    localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_f_of_type_AndroidViewViewGroup, "translationY", 0.0F, -1.0F * a().getDimension(2131559494), 300L, 0L));
     localArrayList.add(new QIMAnimationUtils.AnimatorParams(this.jdField_f_of_type_AndroidViewViewGroup, "alpha", 1.0F, 0.0F, 300L, 0L));
-    QIMAnimationUtils.a(localArrayList, new ancp(this));
+    QIMAnimationUtils.a(localArrayList, new ansu(this));
     this.jdField_c_of_type_Long = (System.currentTimeMillis() + 600L);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 11, Long.valueOf(this.jdField_c_of_type_Long)));
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 12, 1, (int)this.jdField_c_of_type_Long));
@@ -447,32 +447,32 @@ public class EditVideoButton
   public void a()
   {
     super.a();
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131364402));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131364426));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131364428));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131364452));
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131364436));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131364460));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = a(2131364440);
+    this.jdField_a_of_type_AndroidViewView = a(2131364464);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView = a(2131364419);
-    this.jdField_f_of_type_AndroidViewView = a(2131364418);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131363390));
-    this.jdField_g_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364439));
+    this.jdField_c_of_type_AndroidViewView = a(2131364443);
+    this.jdField_f_of_type_AndroidViewView = a(2131364442);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131363408));
+    this.jdField_g_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364463));
     this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = a(this.jdField_c_of_type_Int, this.jdField_g_of_type_AndroidViewViewGroup, this);
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364400));
-    this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364435));
-    this.jdField_e_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364427));
-    this.jdField_f_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364417));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364424));
+    this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364459));
+    this.jdField_e_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364451));
+    this.jdField_f_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364441));
     this.jdField_c_of_type_AndroidViewViewGroup = this.jdField_d_of_type_AndroidViewViewGroup;
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)a(2131364438));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.getViewTreeObserver().addOnScrollChangedListener(new anch(this));
-    this.h = ((ViewGroup)a(2131364432));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364430));
-    this.i = ((ViewGroup)a(2131364401));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)a(2131364462));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.getViewTreeObserver().addOnScrollChangedListener(new ansm(this));
+    this.h = ((ViewGroup)a(2131364456));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364454));
+    this.i = ((ViewGroup)a(2131364425));
     this.i.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = a(2131364415);
+    this.jdField_b_of_type_AndroidViewView = a(2131364439);
     Object localObject1;
     Object localObject2;
     boolean bool;
@@ -480,7 +480,6 @@ public class EditVideoButton
     {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_b_of_type_AndroidViewView.findViewById(2131364416));
       localObject1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_AndroidOsBundle;
       localObject2 = this.jdField_a_of_type_AndroidWidgetCheckBox;
       if ((localObject1 != null) && (((Bundle)localObject1).getBoolean("sync_story_checked", false))) {
@@ -491,12 +490,12 @@ public class EditVideoButton
     {
       a((CheckBox)localObject2, bool);
       this.jdField_d_of_type_Boolean = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      label415:
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)a(2131364403));
-      if (SharedPreUtils.aW(a(), a().getCurrentAccountUin()) == 0)
+      label398:
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)a(2131364427));
+      if (SharedPreUtils.aY(a(), a().getCurrentAccountUin()) == 0)
       {
         this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        label455:
+        label438:
         if ((this.jdField_c_of_type_Int & 0x2000) != 0) {
           localObject1 = (EditVideoButton.EntryButtonInfo)jdField_a_of_type_AndroidUtilSparseArray.get(8192);
         }
@@ -507,7 +506,7 @@ public class EditVideoButton
         this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(new BitmapDrawable((Bitmap)localObject2));
         this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(((EditVideoButton.EntryButtonInfo)localObject1).a);
         this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364407));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364431));
         if ((this.jdField_c_of_type_Int & 0x40000000) != 0)
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -525,9 +524,9 @@ public class EditVideoButton
           if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a() == 102) {
             this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
           }
-          this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)a(2131364404));
-          this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131364406));
-          this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)a(2131364405));
+          this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)a(2131364428));
+          this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131364430));
+          this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)a(2131364429));
           if (((this.jdField_c_of_type_Int & 0x4000000) != 0) && (this.jdField_d_of_type_AndroidWidgetImageView.getVisibility() != 0))
           {
             this.jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(0);
@@ -540,12 +539,12 @@ public class EditVideoButton
               this.jdField_b_of_type_Boolean = bool;
               a(this.jdField_b_of_type_AndroidWidgetCheckBox, this.jdField_b_of_type_Boolean);
               this.jdField_e_of_type_Boolean = this.jdField_b_of_type_AndroidWidgetCheckBox.isChecked();
-              this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new anci(this, (Intent)localObject2));
-              this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131364410));
-              this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131364414));
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131364411));
-              this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131364412));
-              this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131364413));
+              this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new ansn(this, (Intent)localObject2));
+              this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131364434));
+              this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131364438));
+              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131364435));
+              this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131364436));
+              this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131364437));
               this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
               this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
               this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
@@ -558,21 +557,21 @@ public class EditVideoButton
               this.jdField_a_of_type_AndroidAnimationLayoutTransition.setAnimator(2, ObjectAnimator.ofFloat(null, "alpha", new float[] { 0.0F, 1.0F }));
               this.jdField_a_of_type_AndroidAnimationLayoutTransition.setDuration(2, 500L);
               if ((this.jdField_c_of_type_Int & 0x20000) == 0) {
-                break label1335;
+                break label1318;
               }
               this.jdField_f_of_type_AndroidViewView.setVisibility(0);
               this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
               StoryReportor.a("pub_control", "exp_entry", 0, 0, new String[0]);
-              this.jdField_d_of_type_AndroidViewView = a(2131364423);
-              this.jdField_e_of_type_AndroidViewView = a(2131364398);
+              this.jdField_d_of_type_AndroidViewView = a(2131364447);
+              this.jdField_e_of_type_AndroidViewView = a(2131364422);
               if ((this.jdField_c_of_type_Int & 0x8000000) == 0) {
-                break label1347;
+                break label1330;
               }
               this.jdField_d_of_type_AndroidViewView.setVisibility(0);
               this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
               this.jdField_e_of_type_AndroidViewView.setOnClickListener(this);
               if (!(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeGifSource)) {
-                break label1368;
+                break label1351;
               }
               this.jdField_b_of_type_AndroidWidgetTextView.setText("重拍");
               this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("重拍");
@@ -582,14 +581,14 @@ public class EditVideoButton
               if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a()) {
                 this.jdField_a_of_type_AndroidWidgetTextView.setText("给图片贴上文字");
               }
-              ((View)this.jdField_a_of_type_AndroidWidgetButton.getParent()).post(new ancj(this));
+              ((View)this.jdField_a_of_type_AndroidWidgetButton.getParent()).post(new anso(this));
               return;
               bool = false;
               continue;
               this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-              break label415;
+              break label398;
               this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-              break label455;
+              break label438;
               localOutOfMemoryError1 = localOutOfMemoryError1;
               SLog.e("Q.qqstory.record.EditVideoButton", "decodeResource OutOfMemoryError : %s", new Object[] { ((EditVideoButton.EntryButtonInfo)localObject1).a });
             }
@@ -606,14 +605,14 @@ public class EditVideoButton
             this.jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(8);
             this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
             continue;
-            label1335:
+            label1318:
             this.jdField_f_of_type_AndroidViewView.setVisibility(8);
             continue;
-            label1347:
+            label1330:
             this.jdField_d_of_type_AndroidViewView.setVisibility(8);
             this.jdField_e_of_type_AndroidViewView.setVisibility(8);
             continue;
-            label1368:
+            label1351:
             if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource))
             {
               this.jdField_b_of_type_AndroidWidgetTextView.setText("返回");
@@ -717,7 +716,7 @@ public class EditVideoButton
       return;
     case 7: 
       a((ImageView)this.jdField_b_of_type_AndroidUtilSparseArray.get(32));
-      this.jdField_c_of_type_AndroidViewViewGroup.setBackgroundColor(a().getColor(2131492915));
+      this.jdField_c_of_type_AndroidViewViewGroup.setBackgroundColor(a().getColor(2131492916));
       if (paramInt1 == 8)
       {
         if ((paramObject != null) && ((paramObject instanceof Boolean)))
@@ -851,10 +850,10 @@ public class EditVideoButton
     paramCheckBox.setChecked(paramBoolean);
     if (paramBoolean)
     {
-      paramCheckBox.setButtonDrawable(2130842886);
+      paramCheckBox.setButtonDrawable(2130842985);
       return;
     }
-    paramCheckBox.setButtonDrawable(2130842884);
+    paramCheckBox.setButtonDrawable(2130842983);
   }
   
   public void a(boolean paramBoolean)
@@ -897,7 +896,7 @@ public class EditVideoButton
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844250);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844374);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(4);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       return;
@@ -905,7 +904,7 @@ public class EditVideoButton
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844251);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844375);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -1012,9 +1011,9 @@ public class EditVideoButton
     }
   }
   
-  public void aC_()
+  public void aE_()
   {
-    super.aC_();
+    super.aE_();
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_b_of_type_Int == 0) && (!this.jdField_g_of_type_Boolean))
     {
       if (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakePhotoSource)) || ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) || ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource)))
@@ -1022,7 +1021,7 @@ public class EditVideoButton
         int j = AIOUtils.a(-48.0F, a());
         ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidViewViewGroup, "translationY", new float[] { j, 0.0F });
         localObjectAnimator1.setDuration(800L);
-        j = AIOUtils.a(a().getDimension(2131559491), a());
+        j = AIOUtils.a(a().getDimension(2131559493), a());
         ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_c_of_type_AndroidViewViewGroup, "translationY", new float[] { j, 0.0F });
         localObjectAnimator2.setDuration(800L);
         AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -1179,7 +1178,7 @@ public class EditVideoButton
           {
             localObject1 = null;
             if (j != -1) {
-              localObject1 = new anck(this, j);
+              localObject1 = new ansp(this, j);
             }
             if ((jdField_a_of_type_Int & k) != k) {
               break;
@@ -1370,15 +1369,15 @@ public class EditVideoButton
                   if (!this.jdField_f_of_type_Boolean) {
                     break label1564;
                   }
-                  ((ImageView)localObject1).setImageResource(2130843367);
+                  ((ImageView)localObject1).setImageResource(2130843485);
                   if (localObject2 == null) {
                     break;
                   }
-                  ((ImageView)localObject2).setColorFilter(a().getColor(2131493438), PorterDuff.Mode.SRC_IN);
+                  ((ImageView)localObject2).setColorFilter(a().getColor(2131493442), PorterDuff.Mode.SRC_IN);
                   j = -1;
                   break label362;
                 }
-                ((ImageView)localObject1).setImageResource(2130843366);
+                ((ImageView)localObject1).setImageResource(2130843484);
                 if (localObject2 == null) {
                   break label360;
                 }
@@ -1437,10 +1436,10 @@ public class EditVideoButton
       {
       default: 
         return;
-      case 2131364398: 
-        PressScaleAnimDelegate.a(paramView, 200L, new ancn(this));
+      case 2131364422: 
+        PressScaleAnimDelegate.a(paramView, 200L, new anss(this));
         return;
-      case 2131364436: 
+      case 2131364460: 
         if (this.jdField_c_of_type_Boolean) {
           break label1920;
         }
@@ -1455,7 +1454,7 @@ public class EditVideoButton
     label587:
     label597:
     label1117:
-    ThreadManager.post(new ancl(this, paramView), 8, null, true);
+    ThreadManager.post(new ansq(this, paramView), 8, null, true);
     label769:
     label777:
     label787:
@@ -1499,6 +1498,7 @@ public class EditVideoButton
         break;
       }
       QIMStoryEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a());
+      StoryReportor.a("video_edit_slides", "clk_pub", 0, 0, new String[] { "0" });
       return;
       DataReporter.a().a(a(), DataReporter.a().a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager, DataReporter.T.PIC_PUBLISH, DataReporter.T.VIDEO_PUBLISH), "FEED", DataReporter.Destination.MOMENTS);
       continue;
@@ -1521,22 +1521,22 @@ public class EditVideoButton
         this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(20);
       }
       if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_AndroidOsBundle == null) {
-        break label2457;
+        break label2478;
       }
       j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_AndroidOsBundle.getInt("curType", 1);
-      label2407:
+      label2428:
       if (j != 1) {
-        break label2462;
+        break label2483;
       }
       paramView = "1";
-      label2416:
+      label2437:
       if (!bool) {
-        break label2469;
+        break label2490;
       }
     }
-    label2457:
-    label2462:
-    label2469:
+    label2478:
+    label2483:
+    label2490:
     for (Object localObject1 = "2";; localObject1 = "1")
     {
       StoryReportor.a("aio_shoot", "clk_sync", 0, 0, new String[] { paramView, localObject1 });
@@ -1544,11 +1544,11 @@ public class EditVideoButton
       bool = false;
       break;
       j = 1;
-      break label2407;
+      break label2428;
       paramView = "2";
-      break label2416;
+      break label2437;
     }
-    PressScaleAnimDelegate.a(paramView, 200L, new ancm(this));
+    PressScaleAnimDelegate.a(paramView, 200L, new ansr(this));
     return;
     j();
     return;

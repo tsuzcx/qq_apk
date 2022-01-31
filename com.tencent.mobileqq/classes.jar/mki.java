@@ -1,19 +1,20 @@
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo.NotifyInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class mki
-  implements AppInPushNotification.OnClickListener
+  implements Runnable
 {
-  public mki(KandianAppInPush paramKandianAppInPush, String paramString, int paramInt, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo) {}
+  public mki(ReadinjoyTabFrame paramReadinjoyTabFrame, long paramLong) {}
   
-  public void a()
+  public void run()
   {
-    ReadInJoyUtils.a(BaseActivity.sTopActivity, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush.a("0X8008459", this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo);
-    KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush, null);
+    PublicAccountReportUtils.a((QQAppInterface)ReadInJoyUtils.a(), "CliOper", "", "", "0X80066F7", "0X80066F7", 1, 1, Long.toString(this.jdField_a_of_type_Long / 1000L), "", "", ReadInJoyUtils.d(), false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.4tab", 2, "report ReadinjoyTabFrame use time: " + Long.toString(this.jdField_a_of_type_Long / 1000L));
+    }
   }
 }
 

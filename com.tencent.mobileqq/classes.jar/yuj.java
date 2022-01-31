@@ -1,39 +1,52 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
-class yuj
-  implements View.OnClickListener
+public class yuj
+  implements Runnable
 {
-  yuj(yuh paramyuh) {}
+  public yuj(ApolloCardWindow paramApolloCardWindow) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((!TextUtils.isEmpty(yuh.a(this.a))) && (!yuh.a(this.a).equals("0")))
+    int i = 0;
+    for (;;)
     {
-      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-      int i = this.a.a.jdField_a_of_type_Int;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null) {}
-      for (paramView = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);; paramView = "")
+      try
       {
-        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { paramView });
-        paramView = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
-        paramView.putExtra("uin", yuh.a(this.a));
-        paramView.putExtra("uintype", 1008);
-        this.a.a.getActivity().startActivity(paramView);
+        Object localObject1 = new File(ApolloConstant.g);
+        if (((File)localObject1).exists())
+        {
+          if (!((File)localObject1).isDirectory()) {
+            return;
+          }
+          localObject1 = ((File)localObject1).listFiles();
+          int j = localObject1.length;
+          if (i < j)
+          {
+            Object localObject3 = localObject1[i];
+            if ((localObject3 == null) || (!localObject3.getPath().endsWith(".cache"))) {
+              break label143;
+            }
+            ??? = localObject3.getName();
+            String str = ((String)???).substring(0, ((String)???).indexOf("."));
+            synchronized (ApolloCardWindow.a)
+            {
+              ApolloCardWindow.a.put(str, this.a.a(localObject3.getPath()));
+            }
+          }
+        }
         return;
       }
+      catch (Exception localException)
+      {
+        QLog.e("ApolloCardWindow", 1, "mPreloadRunnable error:", localException);
+      }
+      label143:
+      i += 1;
     }
-    QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
   }
 }
 

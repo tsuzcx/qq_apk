@@ -1,15 +1,15 @@
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
 public class ofm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ofm(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, int paramInt) {}
+  public ofm(EditVideoPartManager paramEditVideoPartManager) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 8, 1, this.jdField_a_of_type_Int));
+    this.a.c();
   }
 }
 

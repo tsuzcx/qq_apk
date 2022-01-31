@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.arcard.ARCardUtils;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
 
 public class aagi
   implements Runnable
 {
-  public aagi(ARVideoPreviewActivity paramARVideoPreviewActivity) {}
+  public aagi(AREngine paramAREngine) {}
   
   public void run()
   {
-    this.a.b();
-    ARCardUtils.a(this.a, 0, this.a.a, this.a.b, 1, ARVideoPreviewActivity.c(this.a), ARVideoPreviewActivity.d(this.a), ARVideoPreviewActivity.e(this.a), ARVideoPreviewActivity.f(this.a), ARVideoPreviewActivity.g(this.a), ARVideoPreviewActivity.h(this.a), ARVideoPreviewActivity.i(this.a));
+    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null)) {
+      AREngine.a(this.a).a(0, 4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aagi
  * JD-Core Version:    0.7.0.1
  */

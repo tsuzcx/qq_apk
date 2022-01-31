@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import com.tencent.mobileqq.hotpic.HotPicTab;
 
 public class adrb
   implements Runnable
 {
-  public adrb(MagicfaceViewController paramMagicfaceViewController) {}
+  public adrb(HotPicTab paramHotPicTab) {}
   
   public void run()
   {
-    this.a.a.g();
+    this.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrb
  * JD-Core Version:    0.7.0.1
  */

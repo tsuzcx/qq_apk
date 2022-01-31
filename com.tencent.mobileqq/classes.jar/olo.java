@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglHandlerThread;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class olo
-  implements View.OnLongClickListener
+public final class olo
+  implements Runnable
 {
-  public olo(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
+  public olo(EglHandlerThread paramEglHandlerThread, int paramInt1, int paramInt2, List paramList, int paramInt3, QQProgressNotifier paramQQProgressNotifier, Activity paramActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.a();
+    if (!bool)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SlideShowPhotoListManager", 2, "EglHandlerThread initSuccess:" + bool);
+      }
+      return;
     }
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.a().post(new olp(this));
   }
 }
 

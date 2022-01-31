@@ -57,6 +57,7 @@ public class QQUserUIItem
   public String symbolUrl;
   public String uid;
   public int videoCount = -1;
+  public String wsScahema;
   
   public QQUserUIItem() {}
   
@@ -91,6 +92,7 @@ public class QQUserUIItem
     this.iconUrl = paramUserEntry.iconUrl;
     this.iconJumpUrl = paramUserEntry.iconJumpUrl;
     this.iconUrlCacheTime = paramUserEntry.dbCacheTime;
+    this.wsScahema = paramUserEntry.wsSchema;
   }
   
   public static boolean isNotDovUser(String paramString)
@@ -139,6 +141,7 @@ public class QQUserUIItem
     localUserEntry.iconUrl = this.iconUrl;
     localUserEntry.iconJumpUrl = this.iconJumpUrl;
     localUserEntry.dbCacheTime = this.iconUrlCacheTime;
+    localUserEntry.wsSchema = this.wsScahema;
     return localUserEntry;
   }
   
@@ -182,7 +185,7 @@ public class QQUserUIItem
       }
       if (paramUserInfo.is_subscribe.has()) {
         if (paramUserInfo.is_subscribe.get() != 1) {
-          break label494;
+          break label521;
         }
       }
     }
@@ -198,9 +201,9 @@ public class QQUserUIItem
       if (paramUserInfo.usr_icon_list.has())
       {
         this.iconUrlCacheTime = System.currentTimeMillis();
-        paramUserInfo = (qqstory_struct.UsrIcon)paramUserInfo.usr_icon_list.get(0);
-        this.iconUrl = paramUserInfo.icon_postfix.get().toStringUtf8();
-        this.iconJumpUrl = paramUserInfo.jmp_postfix.get().toStringUtf8();
+        qqstory_struct.UsrIcon localUsrIcon = (qqstory_struct.UsrIcon)paramUserInfo.usr_icon_list.get(0);
+        this.iconUrl = localUsrIcon.icon_postfix.get().toStringUtf8();
+        this.iconJumpUrl = localUsrIcon.jmp_postfix.get().toStringUtf8();
         if (!TextUtils.isEmpty(this.iconUrl)) {
           this.iconUrl = ("http://pub.idqqimg.com/pc/misc/qqstory_icon/" + this.iconUrl);
         }
@@ -208,10 +211,13 @@ public class QQUserUIItem
           this.iconJumpUrl = ("https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031" + this.iconJumpUrl);
         }
       }
+      if (paramUserInfo.ws_schema.has()) {
+        this.wsScahema = paramUserInfo.ws_schema.get().toStringUtf8();
+      }
       return;
       bool = false;
       break;
-      label494:
+      label521:
       i = 0;
     }
   }
@@ -288,8 +294,11 @@ public class QQUserUIItem
       if (paramObject.iconJumpUrl != null) {
         this.iconJumpUrl = paramObject.iconJumpUrl;
       }
-    } while (paramObject.iconUrlCacheTime == -1L);
-    this.iconUrlCacheTime = paramObject.iconUrlCacheTime;
+      if (paramObject.iconUrlCacheTime != -1L) {
+        this.iconUrlCacheTime = paramObject.iconUrlCacheTime;
+      }
+    } while (TextUtils.isEmpty(paramObject.wsScahema));
+    this.wsScahema = paramObject.wsScahema;
   }
   
   public boolean equals(Object paramObject)

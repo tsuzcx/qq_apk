@@ -1,7 +1,18 @@
-public class aayi
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.ark.ArkTipsManager;
+
+class aayi
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public int a;
-  public String a;
+  aayi(aayh paramaayh) {}
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      ArkTipsManager.a(this.a.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
+    }
+  }
 }
 
 

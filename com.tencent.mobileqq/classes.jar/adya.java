@@ -1,49 +1,45 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.qphone.base.util.QLog;
 
-public class adya
-  extends ContactBindObserver
+class adya
+  implements TroopMemberApiClient.Callback
 {
-  boolean jdField_a_of_type_Boolean = false;
+  adya(adxz paramadxz, String paramString) {}
   
-  public adya(MyBusinessManager paramMyBusinessManager) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramBoolean2))
+    if (paramBundle.getBoolean("isSuccess", false))
     {
-      RespondQueryQQBindingStat localRespondQueryQQBindingStat = ((PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessManager.a.getManager(10)).a();
-      if ((localRespondQueryQQBindingStat == null) || (TextUtils.isEmpty(localRespondQueryQQBindingStat.mobileNo))) {
-        break label95;
+      int i = paramBundle.getInt("appid");
+      Object localObject = paramBundle.getString("openId");
+      if ((i != this.jdField_a_of_type_Adxz.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Adxz.jdField_a_of_type_JavaLangString))) {
+        break label120;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneContact", 2, "mybusiness ContactBindObserver onQueryBindState");
+      paramBundle = paramBundle.getString("uin");
+      if (!TextUtils.isEmpty(paramBundle))
+      {
+        localObject = new Intent(this.jdField_a_of_type_Adxz.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
+        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
+        ((Intent)localObject).putExtra("memberUin", paramBundle);
+        this.jdField_a_of_type_Adxz.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
       }
-      ((MyBusinessManager)this.jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessManager.a.getManager(48)).a(localRespondQueryQQBindingStat.mobileNo, localRespondQueryQQBindingStat.type, "", false);
-      this.jdField_a_of_type_Boolean = false;
     }
-    label95:
+    label120:
     while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("PhoneContact", 2, "mybusiness bindInfo null ");
-  }
-  
-  protected void c(boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adya
  * JD-Core Version:    0.7.0.1
  */

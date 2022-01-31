@@ -14,8 +14,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import lwn;
-import lwo;
+import lww;
+import lwx;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
@@ -65,7 +65,7 @@ public class ReadInJoyRefreshManager
   public RefreshData a(Context paramContext)
   {
     RefreshData localRefreshData = null;
-    paramContext = SharedPreUtils.t(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    paramContext = SharedPreUtils.s(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
     if (paramContext != null) {}
     for (;;)
     {
@@ -98,7 +98,7 @@ public class ReadInJoyRefreshManager
       b(paramInt, paramString);
       return;
     }
-    ThreadManager.getUIHandler().post(new lwn(this, paramInt, paramString));
+    ThreadManager.getUIHandler().post(new lww(this, paramInt, paramString));
   }
   
   public void a(ReadInJoyRefreshManager.OnRefreshChangedListener paramOnRefreshChangedListener)
@@ -144,7 +144,7 @@ public class ReadInJoyRefreshManager
     localObject = new DownloadTask(paramRefreshData.url, localFile);
     ((DownloadTask)localObject).b = paramInt;
     ((DownloadTask)localObject).d = 60L;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject, new lwo(this, str, paramRefreshData), localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject, new lwx(this, str, paramRefreshData), localBundle);
     return false;
   }
   

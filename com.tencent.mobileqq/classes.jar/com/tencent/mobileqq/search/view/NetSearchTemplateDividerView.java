@@ -55,7 +55,7 @@ public class NetSearchTemplateDividerView
     {
     default: 
       if (bool) {
-        localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492947));
+        localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492948));
       }
       break;
     }
@@ -66,7 +66,7 @@ public class NetSearchTemplateDividerView
       localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 12.0F)));
       View localView = new View(this.jdField_a_of_type_AndroidContentContext);
       if (bool) {
-        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492949));
+        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492950));
       }
       for (;;)
       {
@@ -76,11 +76,11 @@ public class NetSearchTemplateDividerView
         localLayoutParams.rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
         localRelativeLayout.addView(localView, localLayoutParams);
         break;
-        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492948));
+        localView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492949));
       }
       localRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F)));
       break;
-      localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492968));
+      localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492969));
     }
   }
 }

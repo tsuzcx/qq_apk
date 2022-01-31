@@ -1,23 +1,28 @@
-import com.tencent.component.media.image.ImageManager;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.animation.Animation;
+import com.tencent.common.galleryactivity.AbstractAnimationManager;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-class pew
-  implements Runnable
+public class pew
+  extends AnimateUtils.AnimationAdapter
 {
-  pew(pev parampev) {}
+  public pew(AbstractGalleryScene paramAbstractGalleryScene) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ImageManager.b(false);
-    ImageManager.a(this.a.a, 0L);
-    ImageManager.a(this.a.a).clear();
-    ImageManager.a().clear();
-    ImageManager.b().clear();
+    this.a.a.a().b();
+    this.a.a.a().a();
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pew
  * JD-Core Version:    0.7.0.1
  */

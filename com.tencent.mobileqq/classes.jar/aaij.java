@@ -1,25 +1,18 @@
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Container;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkTipsManager;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aaij
   implements Runnable
 {
-  public aaij(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  public aaij(ARReport paramARReport, long paramLong) {}
   
   public void run()
   {
-    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ArkAppContainer.a((ark.Container)localObject);
-    } while ((localObject == null) || ((ArkAppContainer)((WeakReference)localObject).get() == null));
-    ArkTipsManager.a().b();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("loadingtime", String.valueOf(this.jdField_a_of_type_Long));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARWebView", true, 0L, 0L, localHashMap, "");
   }
 }
 

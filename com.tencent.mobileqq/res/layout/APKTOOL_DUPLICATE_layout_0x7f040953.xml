@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:background="#ffdedcdd" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a295d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a294d" android:background="#ccffffff" android:layout_width="fill_parent" android:layout_height="43.0dip" android:layout_alignParentTop="true" />
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a294e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02194a" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="24.0dip" android:layout_marginLeft="9.0dip" android:layout_marginTop="9.0dip" />
+    <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a294f" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021963" />
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0043" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2950" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_centerHorizontal="true" />
+    </LinearLayout>
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10f1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02195e" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
 </RelativeLayout>

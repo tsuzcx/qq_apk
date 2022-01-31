@@ -1,42 +1,17 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import com.tencent.mobileqq.nearby.now.widget.CommonRecyclerView;
 
 public class aest
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aest(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public aest(SelectLocationFragment paramSelectLocationFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (paramAnimation == NearbyProfileDisplayTribePanel.b(this.a))
-    {
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(8);
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(4);
-      NearbyProfileDisplayTribePanel.a(this.a).clearAnimation();
-      NearbyProfileDisplayTribePanel.a(this.a).clearAnimation();
-      NearbyProfileDisplayTribePanel.a(this.a).setBackgroundResource(2130845149);
-      NearbyProfileDisplayTribePanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494181));
-      NearbyProfileDisplayTribePanel.b(this.a).setTextColor(this.a.a.getResources().getColor(2131494181));
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == NearbyProfileDisplayTribePanel.a(this.a))
-    {
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(0);
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(0);
-      NearbyProfileDisplayTribePanel.a(this.a).setBackgroundResource(2130846136);
-      NearbyProfileDisplayTribePanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494203));
-      NearbyProfileDisplayTribePanel.b(this.a).setTextColor(this.a.a.getResources().getColor(2131494203));
+    if (SelectLocationFragment.a(this.a) != null) {
+      SelectLocationFragment.a(this.a).smoothScrollToPosition(0);
     }
   }
 }

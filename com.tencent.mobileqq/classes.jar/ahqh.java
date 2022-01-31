@@ -1,36 +1,43 @@
-import android.graphics.Canvas;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahqh
+  implements Runnable
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
+  public ahqh(ScribbleResMgr paramScribbleResMgr, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  ahqh(TCProgressBar paramTCProgressBar)
+  public void run()
   {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  void a(Canvas paramCanvas)
-  {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    ScribbleResMgr.b(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr, this.jdField_a_of_type_Int, 0, true);
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahqi(this);
+    localHttpNetReq.jdField_a_of_type_JavaLangString = "";
+    localHttpNetReq.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_Int == 3)
+    {
+      localHttpNetReq.jdField_a_of_type_JavaLangString = ScribbleResMgr.e(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
+      localHttpNetReq.jdField_c_of_type_JavaLangString = ScribbleResMgr.a(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
     }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+    if (this.jdField_a_of_type_Int == 4)
+    {
+      localHttpNetReq.jdField_a_of_type_JavaLangString = ScribbleResMgr.f(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
+      localHttpNetReq.jdField_c_of_type_JavaLangString = ScribbleResMgr.c(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
+    }
+    localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).a(localHttpNetReq);
+    if (QLog.isColorLevel()) {
+      QLog.i("ScribbleResMgrdownloading", 2, "startDownloadhttpscribbleRes, url: " + localHttpNetReq.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqh
  * JD-Core Version:    0.7.0.1
  */

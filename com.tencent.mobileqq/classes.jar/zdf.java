@@ -1,29 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import com.tencent.mobileqq.app.Frame;
+import com.tencent.mobileqq.app.FrameFragment;
+import com.tencent.mobileqq.widget.QQTabHost;
+import com.tencent.mobileqq.widget.QQTabHost.OnTabSelectionListener;
 
 public class zdf
-  extends SendMessageHandler.SendMessageRunnable
+  implements QQTabHost.OnTabSelectionListener
 {
-  public zdf(MessageHandler paramMessageHandler, msg_svc.PbSendMsgReq paramPbSendMsgReq, int paramInt, long paramLong) {}
+  public zdf(FrameFragment paramFrameFragment) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "sendReceiptMessageRead.prepareRetryRunnable: " + this.c + " / " + this.b);
+    if (paramInt1 == paramInt2)
+    {
+      paramQQTabHost = this.a.b();
+      if (paramQQTabHost != null) {
+        paramQQTabHost.e();
+      }
     }
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.PbReceiptRead", null);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.extraData.putLong("msgSeq", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putInt("msgtype", 1);
-    localToServiceMsg.extraData.putString("uin", Long.toString(this.jdField_a_of_type_Long));
-    localToServiceMsg.extraData.putLong("timeOut", this.c);
-    localToServiceMsg.extraData.putInt("retryIndex", this.b);
-    localToServiceMsg.setTimeout(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
   }
 }
 

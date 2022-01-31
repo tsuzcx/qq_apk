@@ -12,7 +12,7 @@ import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager;
 import com.tencent.biz.qqstory.storyHome.model.FeedManager;
 import com.tencent.biz.qqstory.storyHome.model.FeedVideoManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import nbo;
+import ncz;
 
 public class SuperManager
   implements IManager
@@ -21,12 +21,12 @@ public class SuperManager
   
   public static IManager a(int paramInt)
   {
-    return nbo.a.b(paramInt);
+    return ncz.a.b(paramInt);
   }
   
   public static SuperManager a()
   {
-    return nbo.a;
+    return ncz.a;
   }
   
   private void a(int paramInt, IManager paramIManager)

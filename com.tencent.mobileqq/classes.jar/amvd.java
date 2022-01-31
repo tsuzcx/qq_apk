@@ -1,31 +1,26 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import dov.com.qq.im.capture.data.CaptureComboManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiUserInfo;
 
-public class amvd
-  implements Handler.Callback
+public final class amvd
+  implements Parcelable.Creator
 {
-  public amvd(CaptureComboManager paramCaptureComboManager) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public WeishiUserInfo a(Parcel paramParcel)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.removeMessages(1);
-      if (this.a.a()) {
-        this.a.a.sendEmptyMessageDelayed(1, 50L);
-      }
-    }
+    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
+    localWeishiUserInfo.uin = paramParcel.readLong();
+    localWeishiUserInfo.nickName = paramParcel.readString();
+    return localWeishiUserInfo;
+  }
+  
+  public WeishiUserInfo[] a(int paramInt)
+  {
+    return new WeishiUserInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvd
  * JD-Core Version:    0.7.0.1
  */

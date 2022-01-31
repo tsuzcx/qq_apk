@@ -1,24 +1,129 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar.OnAllInOnEventListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class lmz
-  extends BroadcastReceiver
+  implements ReadInJoyAllInOneBar.OnAllInOnEventListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public lmz(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  
+  public boolean a(int paramInt, View paramView)
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+    boolean bool1;
+    if (ReadInJoyAtlasFragment.a(this.a) != 1) {
+      bool1 = true;
+    }
+    do
     {
-      QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
-      ReadinjoySPEventReport.b(false);
+      boolean bool2;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              do
+                              {
+                                do
+                                {
+                                  do
+                                  {
+                                    return bool1;
+                                    bool2 = false;
+                                    switch (paramInt)
+                                    {
+                                    default: 
+                                      return false;
+                                    case 1: 
+                                      bool1 = bool2;
+                                    }
+                                  } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
+                                  bool1 = bool2;
+                                } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
+                                bool1 = bool2;
+                              } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
+                              bool1 = bool2;
+                            } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
+                            if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
+                            for (paramInt = 2;; paramInt = 1)
+                            {
+                              PublicAccountReportUtils.a(null, "", "0X8008E38", "0X8008E38", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a)), false);
+                              GalleryReportedUtils.a(3, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 4, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
+                              return false;
+                            }
+                            bool1 = bool2;
+                          } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
+                          bool1 = bool2;
+                        } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
+                        bool1 = bool2;
+                      } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
+                      bool1 = bool2;
+                    } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
+                    if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
+                    for (paramInt = 2;; paramInt = 1)
+                    {
+                      PublicAccountReportUtils.a(null, "", "0X8008E39", "0X8008E39", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a)), false);
+                      GalleryReportedUtils.a(3, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 4, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
+                      return false;
+                    }
+                    bool1 = bool2;
+                  } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
+                  bool1 = bool2;
+                } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
+                bool1 = bool2;
+              } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
+              bool1 = bool2;
+            } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
+            if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
+            for (paramInt = 2;; paramInt = 1)
+            {
+              PublicAccountReportUtils.a(null, "", "0X8008E3A", "0X8008E3A", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a), this.a.a.b()), false);
+              GalleryReportedUtils.a(8, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 3, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
+              return false;
+            }
+            bool1 = bool2;
+          } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
+          bool1 = bool2;
+        } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
+        bool1 = bool2;
+      } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
+      bool1 = bool2;
+    } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
+    if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      PublicAccountReportUtils.a(null, "", "0X8008E3B", "0X8008E3B", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a)), false);
+      GalleryReportedUtils.a(25, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 2, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
+      return false;
     }
-    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
-      return;
-    }
-    QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
-    ReadinjoySPEventReport.b(true);
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    return false;
   }
 }
 

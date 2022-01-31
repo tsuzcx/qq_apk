@@ -1,34 +1,21 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AdapterView.AdapterDataSetObserver;
-import com.tencent.widget.FastScroller;
+import com.tencent.plato.PlatoLoadEvent;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
-public class alka
-  extends AdapterView.AdapterDataSetObserver
+public final class alka
+  implements Runnable
 {
-  public alka(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView);
-  }
+  public alka(String paramString1, String paramString2) {}
   
-  public void onChanged()
+  public void run()
   {
-    super.onChanged();
-    if (this.a.mFastScroller != null) {
-      this.a.mFastScroller.c();
-    }
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    if (this.a.mFastScroller != null) {
-      this.a.mFastScroller.c();
-    }
+    PlatoLoadEvent localPlatoLoadEvent = PlatoLoadEvent.a(0, this.a, this.b);
+    Dispatchers.get().dispatch(localPlatoLoadEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alka
  * JD-Core Version:    0.7.0.1
  */

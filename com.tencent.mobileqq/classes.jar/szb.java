@@ -1,34 +1,24 @@
-import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
 public class szb
-  extends LbsManager.OnLocationListener
+  implements Runnable
 {
-  public szb(NearbyActivity paramNearbyActivity, String paramString)
-  {
-    super(paramString);
-  }
+  public szb(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.app.getManager(159);
+    RedTouchItem localRedTouchItem1 = localLocalRedTouchManager.a(100601);
+    if (localLocalRedTouchManager.a(localRedTouchItem1, false))
     {
-      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
-      if (paramSosoLbsInfo == null) {
-        break label75;
+      RedTouchItem localRedTouchItem2 = localLocalRedTouchManager.a(100500);
+      if ((localLocalRedTouchManager.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
+        localRedTouchItem2.unReadFlag = false;
       }
-    }
-    label75:
-    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
-    {
-      QLog.d("nearby.heart_beat", 2, localSosoLocation);
-      this.a.a.a(1, paramSosoLbsInfo);
-      return;
+      localLocalRedTouchManager.a(100601);
     }
   }
 }

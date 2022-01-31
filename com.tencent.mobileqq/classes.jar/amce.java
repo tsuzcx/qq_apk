@@ -1,56 +1,44 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
-import cooperation.qzone.QZoneTopGestureLayout;
+import android.view.View;
+import android.widget.ListAdapter;
+import com.tencent.widget.HorizontalListView;
 
 public class amce
-  extends TopGestureLayout.TopGestureDetector
+  extends amci
+  implements Runnable
 {
-  public amce(QZoneTopGestureLayout paramQZoneTopGestureLayout, Context paramContext)
+  public int a;
+  
+  private amce(HorizontalListView paramHorizontalListView)
   {
-    super(paramQZoneTopGestureLayout, paramContext);
+    super(paramHorizontalListView, null);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void run()
   {
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.b(this.a, -1);
-    }
-    if (QZoneTopGestureLayout.a(this.a)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    paramFloat2 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat2);
-    if (QZoneTopGestureLayout.a(this.a, 1))
+    if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView.c()) {}
+    ListAdapter localListAdapter;
+    int i;
+    View localView;
+    do
     {
-      if ((paramFloat2 < 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (paramFloat1 > 500.0F))
+      do
       {
-        QZoneTopGestureLayout.c(this.a, -1);
-        this.a.mOnFlingGesture.flingLToR();
-        return true;
-      }
-    }
-    else if ((QZoneTopGestureLayout.b(this.a, 0)) && (paramFloat2 > 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (-1.0F * paramFloat1 > 500.0F))
-    {
-      QZoneTopGestureLayout.d(this.a, -1);
-      this.a.mOnFlingGesture.flingRToL();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.a(this.a, -1);
-    }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+        ((View)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getParent()).performClick();
+        do
+        {
+          return;
+        } while (this.jdField_a_of_type_ComTencentWidgetHorizontalListView.b);
+        localListAdapter = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.a;
+        i = this.jdField_a_of_type_Int;
+      } while ((localListAdapter == null) || (i == -1) || (i >= localListAdapter.getCount()) || (!a()));
+      localView = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(i - this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition());
+    } while (localView == null);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.performItemClick(localView, i, localListAdapter.getItemId(i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amce
  * JD-Core Version:    0.7.0.1
  */

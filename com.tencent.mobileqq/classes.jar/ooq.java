@@ -1,19 +1,29 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.widget.SwipListView.SwipListListener;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class ooq
-  implements SwipListView.SwipListListener
+public final class ooq
+  implements DownloadParams.DecodeHandler
 {
-  public ooq(SegmentList paramSegmentList) {}
-  
-  public void a(View paramView) {}
-  
-  public void d() {}
-  
-  public void e(boolean paramBoolean)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return UIUtils.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

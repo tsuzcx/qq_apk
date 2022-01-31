@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 
-public class rwd
-  extends ProxyObserver
+public final class rwd
+  implements DialogInterface.OnClickListener
 {
-  public rwd(ChatHistory paramChatHistory) {}
+  public rwd(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(11, false);
+    if (this.a != null) {
+      this.a.a();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

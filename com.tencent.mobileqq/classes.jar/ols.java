@@ -1,21 +1,14 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
 
-public class ols
+class ols
+  implements Runnable
 {
-  public View a;
-  public View b;
+  ols(olr paramolr, LocalMediaInfo paramLocalMediaInfo) {}
   
-  public ols(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131362707);
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
-  {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new olt(this));
+    QQStoryFlowCallback.a(this.jdField_a_of_type_Olr.jdField_a_of_type_Olq.a.a.a, this.jdField_a_of_type_Olr.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, 0, (int)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, 99, 10002, 0, null, null, false, 7);
   }
 }
 

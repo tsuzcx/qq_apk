@@ -11,6 +11,7 @@ import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
 import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
 import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem;
 import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
 import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
@@ -38,7 +39,13 @@ public class DetailTagListSegment
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter = new TagAdapter(paramContext);
   }
   
-  public void E_()
+  public void G_()
+  {
+    StoryTagUtil.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.qim");
+    StoryReportor.a("home_page", "clk_tag", 0, 0, new String[] { "2", "3", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
+  }
+  
+  public void J_()
   {
     if (((StoryDetailListView)a()).a())
     {
@@ -58,7 +65,7 @@ public class DetailTagListSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    TagFlowLayout localTagFlowLayout = (TagFlowLayout)paramBaseViewHolder.a(2131371539);
+    TagFlowLayout localTagFlowLayout = (TagFlowLayout)paramBaseViewHolder.a(2131371705);
     paramViewGroup = null;
     if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a instanceof VideoListFeedItem)) {
       paramViewGroup = ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a).mQimSyncWording;
@@ -79,7 +86,7 @@ public class DetailTagListSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970661, paramViewGroup, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970707, paramViewGroup, false));
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
   }
   
@@ -115,20 +122,24 @@ public class DetailTagListSegment
     }
   }
   
-  public void g()
-  {
-    StoryTagUtil.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.qim");
-    StoryReportor.a("home_page", "clk_tag", 0, 0, new String[] { "2", "3", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
-  }
-  
   public void h()
   {
-    WeShiGuideDialog.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().getUnionId(), "2", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId);
-    if (WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext)) {}
+    String str;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.type == 1)
+    {
+      str = ((GeneralFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a).wsSchemaForMemories;
+      WeShiGuideDialog.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().getUnionId(), "2", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId, 1, str);
+      if (!WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext)) {
+        break label155;
+      }
+    }
+    label155:
     for (int i = 2;; i = 1)
     {
       StoryReportor.a("weishi_share", "tag_clk", 0, i, new String[] { "2", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().getUnionId(), "weishi", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId });
       return;
+      str = ((GeneralRecommendFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a).wsSchemaForMemories;
+      break;
     }
   }
 }

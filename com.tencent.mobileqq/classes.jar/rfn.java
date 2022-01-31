@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class rfn
-  implements Runnable
+public class rfn
+  implements View.OnClickListener
 {
-  rfn(rfm paramrfm, String paramString) {}
+  public rfn(AboutActivity paramAboutActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((FriendListHandler)this.jdField_a_of_type_Rfm.a.app.a(1)).a(this.jdField_a_of_type_JavaLangString, 0, 3999, "", true, false, -1L);
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
+    this.a.startActivity(paramView.putExtra("url", AboutActivity.a(this.a)));
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8005745", "0X8005745", 0, 0, "", "", "", "");
   }
 }
 

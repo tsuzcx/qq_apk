@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b32" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.qzone.proxy.albumcomponent.widget.AlbumRecomGalleryPage android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c79" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </LinearLayout>
-</RelativeLayout>
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbe" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409e7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbf" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409e8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bc0" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409e9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bc1" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409e5" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bc2" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409e6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</merge>

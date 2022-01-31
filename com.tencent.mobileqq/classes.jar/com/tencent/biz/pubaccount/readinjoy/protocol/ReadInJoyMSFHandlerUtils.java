@@ -13,9 +13,11 @@ import com.tencent.biz.pubaccount.readinjoy.struct.DislikeResult;
 import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBDoubleField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -41,6 +43,7 @@ import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.TopicRecommendFeedsInfo;
 import tencent.im.oidb.cmd0x69f.oidb_cmd0x69f.ChannelInfo;
 import tencent.im.oidb.cmd0x69f.oidb_cmd0x69f.RichTips;
 import tencent.im.oidb.cmd0x6e5.oidb_cmd0x6e5.InterestLabelInfo;
+import tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.TagInfo;
 
 public class ReadInJoyMSFHandlerUtils
 {
@@ -284,7 +287,7 @@ public class ReadInJoyMSFHandlerUtils
             paramArticleInfo.add(localArticleInfo2);
             if ((QLog.isColorLevel()) && (localArticleInfo2 != null))
             {
-              QLog.e("ReadInJoyMSFHandlerUtils", 2, "convertArticleInfo(): 解析 sub articleSummary【" + i + "】 id : " + localArticleInfo1.mArticleID + " seq : " + localArticleInfo1.mRecommendSeq + " title : " + ReadInJoyUtils.c(localArticleInfo1.mTitle) + " , groupID : " + localArticleInfo1.mGroupId + " algorithmID : " + localArticleInfo1.mAlgorithmID + " strategyId : " + localArticleInfo1.mStrategyId + " businessID : " + localArticleInfo1.businessId + " businessName :" + localArticleInfo1.businessName);
+              QLog.e("ReadInJoyMSFHandlerUtils", 2, "convertArticleInfo(): 解析 sub articleSummary【" + i + "】 id : " + localArticleInfo1.mArticleID + " seq : " + localArticleInfo1.mRecommendSeq + " title : " + ReadInJoyUtils.d(localArticleInfo1.mTitle) + " , groupID : " + localArticleInfo1.mGroupId + " algorithmID : " + localArticleInfo1.mAlgorithmID + " strategyId : " + localArticleInfo1.mStrategyId + " businessID : " + localArticleInfo1.businessId + " businessName :" + localArticleInfo1.businessName);
               i += 1;
             }
           }
@@ -722,6 +725,9 @@ public class ReadInJoyMSFHandlerUtils
     if (paramFeedsInfo.uint32_business_id.has()) {
       paramArticleInfo.businessId = paramFeedsInfo.uint32_business_id.get();
     }
+    if (paramFeedsInfo.bytes_feeds_cookie.has()) {
+      paramArticleInfo.mFeedCookie = paramFeedsInfo.bytes_feeds_cookie.get().toStringUtf8();
+    }
     if (paramFeedsInfo.bytes_business_name.has()) {
       paramArticleInfo.businessName = paramFeedsInfo.bytes_business_name.get().toStringUtf8();
     }
@@ -747,10 +753,10 @@ public class ReadInJoyMSFHandlerUtils
       paramArticleInfo.mTopicRecommendFeedsInfo = TopicRecommendFeedsInfo.a((oidb_cmd0x68b.TopicRecommendFeedsInfo)localObject);
       paramArticleInfo.mTopicRecommendFeedsInfoByte = ((oidb_cmd0x68b.TopicRecommendFeedsInfo)localObject).toByteArray();
       if (paramArticleInfo.mTopicRecommendFeedsInfo == null) {
-        break label342;
+        break label366;
       }
     }
-    label342:
+    label366:
     for (long l = paramArticleInfo.mTopicRecommendFeedsInfo.jdField_a_of_type_Long;; l = 0L)
     {
       paramArticleInfo.mFeedId = l;
@@ -799,6 +805,21 @@ public class ReadInJoyMSFHandlerUtils
         localDislikeResult1.jdField_a_of_type_JavaLangString = localDislikeResult.str_message.get();
       }
       localArrayList.add(localDislikeResult1);
+    }
+    return localArrayList;
+  }
+  
+  public static List c(List paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        oidb_cmd0xb83.TagInfo localTagInfo = (oidb_cmd0xb83.TagInfo)paramList.next();
+        localArrayList.add(new TagInfo(localTagInfo.uint64_tag_id.get(), localTagInfo.bytes_tag_name.get().toStringUtf8(), localTagInfo.double_tag_score.get(), localTagInfo.uint64_channel.get()));
+      }
     }
     return localArrayList;
   }

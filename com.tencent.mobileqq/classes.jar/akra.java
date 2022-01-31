@@ -1,26 +1,30 @@
-import com.tencent.open.base.ImageUtil;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.base.img.ImageDownCallback;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.webview.ui.WebViewTitlerBar;
 
 public class akra
-  implements ImageDownCallback
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public akra(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  public akra(WebViewTitlerBar paramWebViewTitlerBar, int paramInt) {}
   
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public void b(String paramString1, String paramString2, String paramString3)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    LogUtility.d(DownloadManager.a, ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", ImageUtil.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, 75), null);
+    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Int = paramInteger.intValue();
+    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akra
  * JD-Core Version:    0.7.0.1
  */

@@ -55,15 +55,15 @@ public class RecentLiveTipItemBuilder
     if (paramViewGroup == null)
     {
       paramViewGroup = new RecentLiveTipItemBuilder.RecentLiveTipItemHolder();
-      paramView = a(paramContext, 2130971442, paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362701));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131363189));
+      paramView = a(paramContext, 2130971490, paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131363207));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(16908308));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131374724));
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131374725));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131363183));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131374905));
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131374906));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131363201));
       paramViewGroup.d = ((TextView)paramView.findViewById(16908309));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363184);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363202);
       paramView.setTag(paramViewGroup);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
         paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a());
@@ -241,14 +241,14 @@ public class RecentLiveTipItemBuilder
           {
             if ((paramRecentBaseData instanceof RecentTroopAssistantItem)) {}
             paramDrawable.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, paramView);
-            j = 2130845928;
+            j = 2130846056;
             m = i;
             i = 3;
             k = 99;
           }
           else
           {
-            j = 2130845927;
+            j = 2130846055;
             paramDrawable.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
             m = i;
             i = 3;

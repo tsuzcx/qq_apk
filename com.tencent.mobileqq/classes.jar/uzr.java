@@ -1,42 +1,39 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.app.Activity;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.widget.ActionSheet;
 
 public class uzr
-  implements URLDrawable.URLDrawableListener
+  extends ClickableSpan
 {
-  public uzr(PicItemBuilder paramPicItemBuilder, URL paramURL, BaseChatItemLayout paramBaseChatItemLayout, MessageForPic paramMessageForPic, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, PicItemBuilder.Holder paramHolder) {}
+  public uzr(GrayTipsItemBuilder paramGrayTipsItemBuilder, int paramInt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null) && (paramURLDrawable.getURL().equals(this.jdField_a_of_type_JavaNetURL))) {
-      PicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder$Holder);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a instanceof Activity))
+    {
+      paramView = ActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a);
+      paramView.b(2131436688);
+      paramView.c(2131433015);
+      paramView.a(new uzs(this, paramView));
+      paramView.show();
+      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a).getChatFragment().a();
+      if ((localBaseChatPie instanceof DiscussChatPie)) {
+        ((DiscussChatPie)localBaseChatPie).a = paramView;
+      }
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null) && (paramURLDrawable.getURL().equals(this.jdField_a_of_type_JavaNetURL))) {
-      PicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder$Holder);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null) && (paramURLDrawable.getURL().equals(this.jdField_a_of_type_JavaNetURL))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder$Holder);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("PicItemBuilder", 2, "on loadsucceed ");
-    }
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

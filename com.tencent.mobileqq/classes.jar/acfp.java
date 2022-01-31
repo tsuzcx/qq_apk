@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter;
+import java.util.List;
 
 class acfp
-  implements FMDialogUtil.FMDialogInterface
+  implements Runnable
 {
-  acfp(acfo paramacfo, FileManagerEntity paramFileManagerEntity) {}
+  acfp(acfo paramacfo, List paramList) {}
   
-  public void a()
+  public void run()
   {
-    QfileBaseCloudFileTabView.d(this.jdField_a_of_type_Acfo.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+      this.jdField_a_of_type_Acfo.a.a(this.jdField_a_of_type_JavaUtilList);
+    }
   }
-  
-  public void b() {}
 }
 
 

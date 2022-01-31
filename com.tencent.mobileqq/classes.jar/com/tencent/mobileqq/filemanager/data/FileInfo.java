@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import acqp;
+import adam;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 public class FileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acqp();
+  public static final Parcelable.Creator CREATOR = new adam();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;

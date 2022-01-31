@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.LayoutInflater.Factory;
 import android.view.LayoutInflater.Factory2;
 import android.view.View;
-import okp;
+import omj;
 
 public class LayoutModifier$FactoryMerger
   implements LayoutInflater.Factory2
@@ -25,7 +25,7 @@ public class LayoutModifier$FactoryMerger
   
   public View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    okp.a("LayoutModifier", "onCreateViewPrivate " + paramString);
+    omj.a("LayoutModifier", "onCreateViewPrivate " + paramString);
     return null;
   }
   
@@ -40,7 +40,7 @@ public class LayoutModifier$FactoryMerger
         localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
       }
     }
-    okp.a("LayoutModifier", "onCreateView " + localView1);
+    omj.a("LayoutModifier", "onCreateView " + localView1);
     return localView1;
   }
   
@@ -55,7 +55,7 @@ public class LayoutModifier$FactoryMerger
         localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory.onCreateView(paramString, paramContext, paramAttributeSet);
       }
     }
-    okp.a("LayoutModifier", "onCreateView " + localView1);
+    omj.a("LayoutModifier", "onCreateView " + localView1);
     return localView1;
   }
 }

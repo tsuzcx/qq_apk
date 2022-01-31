@@ -1,16 +1,30 @@
 import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.widget.SimpleTextView;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import com.tencent.widget.SwipTextViewMenuBuilder;
 
 public class wma
-  implements Runnable
+  extends SwipTextViewMenuBuilder
 {
-  public wma(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void run()
+  public wma(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
-    EmoticonGroupStoreFragment.c(this.a).setVisibility(0);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  {
+    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
+    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
+      paramSwipRightMenuItem.setTag(paramObject);
+    }
+    return paramSwipRightMenuItem;
+  }
+  
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  {
+    this.a.a(paramInt, paramArrayOfSwipRightMenuItem, paramObject);
   }
 }
 

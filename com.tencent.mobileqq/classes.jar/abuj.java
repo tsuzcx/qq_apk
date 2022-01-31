@@ -1,26 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 
-class abuj
-  implements ApolloResDownloader.OnApolloDownLoadListener
+public class abuj
+  implements DialogInterface.OnClickListener
 {
-  abuj(abue paramabue, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public abuj(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramString = new Bundle();
-    if (paramBoolean)
-    {
-      paramString.putInt("apollo_result", 0);
-      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    paramString.putInt("apollo_result", 1);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    paramDialogInterface.dismiss();
   }
 }
 

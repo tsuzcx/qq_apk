@@ -1,27 +1,14 @@
-import android.content.IntentFilter;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.ui.QavPanel;
 
-public class jqd
+class jqd
   implements Runnable
 {
-  public jqd(AVActivity paramAVActivity) {}
+  jqd(jpz paramjpz, DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
   public void run()
   {
-    try
-    {
-      this.a.a = new jqn(this.a);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.a.registerReceiver(this.a.a, localIntentFilter);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(this.a.b, 2, "Exception", localException);
-    }
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.setViewEnable(2131365399, false);
   }
 }
 

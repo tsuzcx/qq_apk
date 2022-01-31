@@ -1,41 +1,57 @@
-import android.view.View;
-import android.widget.FrameLayout;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.telephony.TelephonyManager;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class rqt
-  implements Runnable
+  extends BroadcastReceiver
 {
   public rqt(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
+    paramContext = paramIntent.getAction();
+    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.aio.BaseChatPie", 2, "receive action_recv_video_request");
+      }
+      this.a.f(2);
+    }
+    do
+    {
+      return;
+      if ("android.intent.action.PHONE_STATE".equals(paramContext))
+      {
+        paramContext = (TelephonyManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("phone");
+        if (paramContext.getCallState() == 1)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.aio.BaseChatPie", 2, "receive action_phone_state_changed|call_state_ringing");
+          }
+          this.a.f(2);
+        }
+        if (paramContext.getCallState() == 1)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.aio.BaseChatPie", 2, "receive action_phone_state_changed|call_state_ringing");
+          }
+          paramIntent = MediaPlayerManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          if (paramIntent.b()) {
+            paramIntent.a(false);
+          }
+        }
+        this.a.a(paramContext.getCallState());
+        return;
+      }
+    } while ((BaseChatPie.h() != 1) || (!"vivo_smart_shot_enter".equals(paramContext)));
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
+      QLog.d("vivo", 2, "receive action_vivo_smart_shot_enter");
     }
-    int i;
-    if (this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout != null)
-    {
-      i = 0;
-      while (i < this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout.length)
-      {
-        if (this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout[i] != null) {
-          this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout[i].setVisibility(8);
-        }
-        i += 1;
-      }
-    }
-    if (this.a.jdField_a_of_type_ArrayOfAndroidViewView != null)
-    {
-      i = 0;
-      while (i < this.a.jdField_a_of_type_ArrayOfAndroidViewView.length)
-      {
-        if (this.a.jdField_a_of_type_ArrayOfAndroidViewView[i] != null) {
-          this.a.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(0);
-        }
-        i += 1;
-      }
-    }
+    BaseChatPie.a(this.a, Boolean.valueOf(false));
   }
 }
 

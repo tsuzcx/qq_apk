@@ -1,43 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.widget.Switch;
 
 public class kov
-  extends Thread
+  implements DialogInterface.OnCancelListener
 {
-  public kov(NowVideoView paramNowVideoView) {}
+  public kov(EqqAccountDetailActivity paramEqqAccountDetailActivity, PaConfigAttr.PaConfigInfo paramPaConfigInfo, Switch paramSwitch) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
-    for (;;)
-    {
-      if ((this != null) && (!this.a.jdField_a_of_type_Boolean))
-      {
-        if ((this.a.jdField_a_of_type_Long != 0L) && (System.currentTimeMillis() - this.a.jdField_a_of_type_Long > 2000L))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NowVideoView", 2, "no draw for Now");
-          }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1003);
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return;
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-        continue;
-      }
-      try
-      {
-        Thread.sleep(1000L);
-      }
-      catch (Exception localException) {}
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = false;
   }
 }
 

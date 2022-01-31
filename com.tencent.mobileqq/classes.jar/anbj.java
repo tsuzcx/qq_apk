@@ -1,37 +1,40 @@
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import java.io.File;
+import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
-class anbj
+public class anbj
   implements Runnable
 {
-  anbj(anbi paramanbi, String paramString) {}
+  public anbj(QZoneDNSAnalyzeJsPlugin paramQZoneDNSAnalyzeJsPlugin, String paramString1, String paramString2) {}
   
   public void run()
   {
+    Object localObject = "";
     try
     {
-      EditPicSave.a(this.jdField_a_of_type_Anbi.a, PlusPanelUtils.a());
-      File localFile = new File(EditPicSave.a(this.jdField_a_of_type_Anbi.a));
-      if (FileUtils.a(new File(this.jdField_a_of_type_JavaLangString), localFile)) {
-        ImageUtil.a(this.jdField_a_of_type_Anbi.a.a.getActivity(), localFile);
+      String str = InetAddress.getByName(this.jdField_a_of_type_JavaLangString).getHostAddress();
+      localObject = str;
+      if (!TextUtils.isEmpty(str))
+      {
+        localObject = str;
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "Analyze " + this.jdField_a_of_type_JavaLangString + " ip address : " + str);
+        localObject = str;
+        QZoneDNSAnalyzeJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneDNSAnalyzeJsPlugin, this.b, 0, str);
       }
       return;
     }
-    catch (Exception localException)
+    catch (UnknownHostException localUnknownHostException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("EditPicSave", 2, "savePic " + localException.toString());
+      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "UnknownHostException:Analyze " + this.jdField_a_of_type_JavaLangString + " ip address failed");
+      QZoneDNSAnalyzeJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneDNSAnalyzeJsPlugin, this.b, -1, (String)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbj
  * JD-Core Version:    0.7.0.1
  */

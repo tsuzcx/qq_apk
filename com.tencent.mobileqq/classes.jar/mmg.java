@@ -1,8 +1,4 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 class mmg
   implements Runnable
@@ -11,12 +7,7 @@ class mmg
   
   public void run()
   {
-    PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)BaseApplicationImpl.getApplication().getRuntime().getManager(55);
-    mmf.a(this.a, localPublicAccountDataManager.a(Long.valueOf(mmf.a(this.a))));
-    if ((!mmf.a(this.a)) && (mmf.b(this.a))) {
-      mmf.b(this.a, true);
-    }
-    ThreadManager.getUIHandler().post(new mmh(this));
+    FastWebActivity.d(this.a.a);
   }
 }
 

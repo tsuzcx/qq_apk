@@ -20,9 +20,9 @@ import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
-import khn;
-import kho;
-import khp;
+import kgy;
+import kgz;
+import kha;
 import org.json.JSONObject;
 
 public class SignalStrengthReport
@@ -34,9 +34,9 @@ public class SignalStrengthReport
   public Handler a;
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager;
-  Runnable jdField_a_of_type_JavaLangRunnable = new khn(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new kgy(this);
   WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  khp jdField_a_of_type_Khp;
+  kha jdField_a_of_type_Kha;
   public int b;
   Runnable b;
   public String b;
@@ -48,10 +48,10 @@ public class SignalStrengthReport
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = 0;
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangRunnable = new kho(this);
+    this.jdField_b_of_type_JavaLangRunnable = new kgz(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
     if (Looper.myLooper() != null) {
-      this.jdField_a_of_type_Khp = new khp(this);
+      this.jdField_a_of_type_Kha = new kha(this);
     }
     if (paramContext != null)
     {
@@ -272,8 +272,8 @@ public class SignalStrengthReport
       if (this.jdField_b_of_type_JavaLangRunnable != null) {
         this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_b_of_type_JavaLangRunnable);
       }
-    } while ((this.jdField_a_of_type_Khp == null) || (this.jdField_a_of_type_AndroidTelephonyTelephonyManager == null));
-    this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Khp, 256);
+    } while ((this.jdField_a_of_type_Kha == null) || (this.jdField_a_of_type_AndroidTelephonyTelephonyManager == null));
+    this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Kha, 256);
   }
   
   public int b()
@@ -414,8 +414,8 @@ public class SignalStrengthReport
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
     this.jdField_a_of_type_Int = -1;
-    if ((this.jdField_a_of_type_Khp != null) && (this.jdField_a_of_type_AndroidTelephonyTelephonyManager != null)) {
-      this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Khp, 0);
+    if ((this.jdField_a_of_type_Kha != null) && (this.jdField_a_of_type_AndroidTelephonyTelephonyManager != null)) {
+      this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Kha, 0);
     }
     if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
     {

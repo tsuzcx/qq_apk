@@ -1,21 +1,17 @@
+import android.os.Bundle;
+import android.os.ResultReceiver;
 import com.tencent.av.service.QQServiceForAV;
-import com.tencent.av.service.QavWrapper;
+import com.tencent.av.ui.redbag.GetRedBag;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallCardHandler.OnGetQCallCardListener;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 
-public class jno
-  implements QCallCardHandler.OnGetQCallCardListener
+class jno
+  implements Runnable
 {
-  public jno(QQServiceForAV paramQQServiceForAV) {}
+  jno(jnk paramjnk, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "onGetQCallNickName");
-    }
-    new QavWrapper(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new jnp(this, paramString));
+    GetRedBag.a((QQAppInterface)this.jdField_a_of_type_Jnk.a.a(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_AndroidOsResultReceiver);
   }
 }
 

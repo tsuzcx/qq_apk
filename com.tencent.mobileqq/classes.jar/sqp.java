@@ -1,6 +1,20 @@
-public abstract interface sqp
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+
+public class sqp
+  implements Runnable
 {
-  public abstract void a(int paramInt, String paramString);
+  public sqp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  
+  public void run()
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView == null)) {
+      return;
+    }
+    int i = (int)this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getManRectMaxHeight();
+    this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a(i);
+  }
 }
 
 

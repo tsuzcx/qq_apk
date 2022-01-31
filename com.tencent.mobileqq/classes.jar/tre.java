@@ -1,24 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.util.Pair;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import java.util.ArrayList;
 
-class tre
-  implements DialogInterface.OnClickListener
+public class tre
+  extends BaseAdapter
 {
-  tre(trd paramtrd, SubAccountControll paramSubAccountControll, Pair paramPair) {}
+  private tre(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int getCount()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!SubAccountControll.a(this.jdField_a_of_type_Trd.a.app))
+    return SearchFriendListActivity.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return SearchFriendListActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
     {
-      this.jdField_a_of_type_Trd.a.setTitle("");
-      SubAccountAssistantForward.a(this.jdField_a_of_type_Trd.a.app, this.jdField_a_of_type_Trd.a, null);
+      localView = this.a.getLayoutInflater().inflate(2130971521, paramViewGroup, false);
+      paramView = new trf();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362869));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362870));
+      paramView.b = ((TextView)localView.findViewById(2131375009));
+      localView.setTag(paramView);
+      localView.setOnClickListener(this.a);
     }
-    this.jdField_a_of_type_Trd.a.finish();
+    this.a.a(localView, paramInt);
+    return localView;
   }
 }
 

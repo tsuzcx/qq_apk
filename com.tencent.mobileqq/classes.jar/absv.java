@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.app.FavEmoRoamingObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import java.util.List;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
+import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 
 public class absv
-  extends FavEmoRoamingObserver
+  implements ConfigSimplifier.ConfigDownloadCallback
 {
-  public absv(FavroamingManager paramFavroamingManager) {}
+  public absv(ConfigServlet paramConfigServlet, QIMPtvTemplateManager paramQIMPtvTemplateManager) {}
   
-  public void a(List paramList)
+  public void a(String paramString)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    this.a.a.removeObserver(FavroamingManager.a(this.a));
-    ThreadManager.post(new absw(this, paramList), 5, null, true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.a == null) {}
-    while (!paramBoolean) {
-      return;
-    }
-    this.a.a();
+    this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(paramString, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     absv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class actl
-  implements DialogInterface.OnClickListener
+  extends IClickListener_Ver51
 {
-  public actl(MPcFileModel paramMPcFileModel) {}
+  public actl(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.c();
-    this.a.a.removeObserver(MPcFileModel.a(this.a));
-    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
-    localIntent.addFlags(67108864);
-    this.a.a.getApplication().startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

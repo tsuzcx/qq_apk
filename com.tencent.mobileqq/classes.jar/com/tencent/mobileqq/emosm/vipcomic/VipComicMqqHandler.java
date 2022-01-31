@@ -77,8 +77,8 @@ public class VipComicMqqHandler
     localComicReqHead.optTs.set(l);
     localComicReqHead.os.set(2);
     PBStringField localPBStringField = localComicReqHead.clientVer;
-    if (TextUtils.isEmpty("7.6.0")) {}
-    for (String str = "";; str = "7.6.0")
+    if (TextUtils.isEmpty("7.6.3")) {}
+    for (String str = "";; str = "7.6.3")
     {
       localPBStringField.set(str);
       localComicReqHead.net.set(HttpUtil.a());

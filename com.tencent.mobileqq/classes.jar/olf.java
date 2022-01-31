@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Friend;
+import com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Group;
 
 public class olf
-  extends DialogUtil.DialogOnClickAdapter
 {
-  public olf(StoryPublishLauncher paramStoryPublishLauncher) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public ComplexPart.Friend a;
+  public ComplexPart.Group a;
 }
 
 

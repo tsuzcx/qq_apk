@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import rbm;
+import red;
 
 public class DoraemonOpenAPI
 {
@@ -40,12 +40,12 @@ public class DoraemonOpenAPI
   
   public static void a()
   {
-    ThreadManager.post(new rbm(), 5, null, false);
+    ThreadManager.post(new red(), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.DoraemonOpenAPI
  * JD-Core Version:    0.7.0.1
  */

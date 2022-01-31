@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class wda
   implements Runnable
 {
-  public wda(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment, int paramInt) {}
+  public wda(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
   
   public void run()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.b, 20);
-    if (localList != null) {
-      ThreadManager.getUIHandler().post(new wdb(this, localList));
+    Object localObject = LightalkBlueTipsBar.a(this.a).getPreferences();
+    int i = ((SharedPreferences)localObject).getInt("LT_tip_show_times" + LightalkBlueTipsBar.a(this.a).getCurrentAccountUin(), 0);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + LightalkBlueTipsBar.a(this.a).getCurrentAccountUin(), i + 1);
+    ((SharedPreferences.Editor)localObject).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : commit =====> tipsum = " + (i + 1));
     }
   }
 }

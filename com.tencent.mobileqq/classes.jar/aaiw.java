@@ -1,39 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ar.aidl.IArSoCallback.Stub;
+import com.tencent.mobileqq.ar.config.DownloadDependRes;
+import com.tencent.qphone.base.util.QLog;
 
-class aaiw
-  implements DialogInterface.OnClickListener
+public class aaiw
+  extends IArSoCallback.Stub
 {
-  aaiw(aaiu paramaaiu, QQCustomDialog paramQQCustomDialog) {}
+  public aaiw(DownloadDependRes paramDownloadDependRes) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    ArkAppCenter.a().post(new aaix(this));
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label38:
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaiu.a, "ark_authority_api_login", this.jdField_a_of_type_Aaiu.c, 2);
-      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438801), 2131435252, 2131435252, new DialogUtil.DialogOnClickAdapter(), null);
-      try
-      {
-        paramDialogInterface.show();
-        return;
-      }
-      catch (Exception paramDialogInterface) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("WorldCupMgr", 2, "onArSoDownloadSuccess");
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label38;
+    this.a.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WorldCupMgr", 2, "onArSoDownloadProcess process=" + paramInt);
     }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WorldCupMgr", 2, "onArSoDownloadFail");
+    }
+    this.a.a();
   }
 }
 

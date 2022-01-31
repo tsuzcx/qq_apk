@@ -1,25 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.av.business.manager.pendant.EffectPendantTips;
+import com.tencent.av.business.manager.zimu.ARZimuTask;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class jgp
-  implements Runnable
+  implements Observer
 {
-  public jgp(EffectPendantTips paramEffectPendantTips, String paramString, int paramInt) {}
+  private WeakReference a;
   
-  public void run()
+  public jgp(ARZimuTask paramARZimuTask)
   {
-    try
-    {
-      String str = this.jdField_a_of_type_JavaLangString;
-      if (!TextUtils.isEmpty(str)) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.b(this.jdField_a_of_type_Int, str);
-      }
+    this.a = new WeakReference(paramARZimuTask);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    ARZimuTask localARZimuTask = (ARZimuTask)this.a.get();
+    if (localARZimuTask == null) {
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    ARZimuTask.a(localARZimuTask, paramObservable, paramObject);
   }
 }
 

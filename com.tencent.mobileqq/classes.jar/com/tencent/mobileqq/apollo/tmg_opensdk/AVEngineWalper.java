@@ -8,21 +8,21 @@ import com.tencent.qqavopensdk.AVEngineEventHandler;
 import com.tencent.qqavopensdk.PBuffer.SSOTunnelEvent;
 import java.util.HashMap;
 import java.util.Map;
-import yrw;
-import yry;
-import yrz;
-import ysb;
-import ysc;
-import ysd;
-import yse;
+import yvc;
+import yve;
+import yvf;
+import yvh;
+import yvi;
+import yvj;
+import yvk;
 
 public class AVEngineWalper
 {
   static AVEngineWalper jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper;
   int jdField_a_of_type_Int = 0;
   public Context a;
-  private AVCallback jdField_a_of_type_ComTencentTMGSdkAVCallback = new ysd(this);
-  private AVManager.RoomInfoListener jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$RoomInfoListener = new yse(this);
+  private AVCallback jdField_a_of_type_ComTencentTMGSdkAVCallback = new yvj(this);
+  private AVManager.RoomInfoListener jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$RoomInfoListener = new yvk(this);
   TMG_DownloadInfo jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkTMG_DownloadInfo;
   public AVEngineEventHandler a;
   public String a;
@@ -45,7 +45,7 @@ public class AVEngineWalper
   
   private void d()
   {
-    TMG_Downloader.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkTMG_DownloadInfo, new yrw(this));
+    TMG_Downloader.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkTMG_DownloadInfo, new yvc(this));
   }
   
   public void a()
@@ -99,12 +99,12 @@ public class AVEngineWalper
   
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AVManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramString, paramBoolean1, paramBoolean2, this.jdField_a_of_type_Int, new yry(this));
+    AVManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramString, paramBoolean1, paramBoolean2, this.jdField_a_of_type_Int, new yve(this));
   }
   
   public void a(boolean paramBoolean)
   {
-    AVManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new ysb(this));
+    AVManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new yvh(this));
   }
   
   public boolean a()
@@ -140,12 +140,12 @@ public class AVEngineWalper
   
   public void b(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    SSOTunnelEvent.a().a(Integer.valueOf(this.jdField_a_of_type_JavaLangString).intValue(), new yrz(this, paramString, paramBoolean1, paramBoolean2));
+    SSOTunnelEvent.a().a(Integer.valueOf(this.jdField_a_of_type_JavaLangString).intValue(), new yvf(this, paramString, paramBoolean1, paramBoolean2));
   }
   
   public void b(boolean paramBoolean)
   {
-    AVManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new ysc(this));
+    AVManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramBoolean, new yvi(this));
   }
   
   public void c()

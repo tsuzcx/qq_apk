@@ -35,7 +35,7 @@ public class SmartDevicePluginDownloadActivity
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getResources().getDimensionPixelSize(2131558448));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434558);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434575);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
@@ -62,11 +62,11 @@ public class SmartDevicePluginDownloadActivity
     super.setContentView(2130968912);
     super.setTitle(2131427531);
     SmartDevicePluginLoader.a().addObserver(this);
-    this.leftView.setText(2131432397);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364212));
+    this.leftView.setText(2131432414);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364236));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131364211));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363302));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131364235));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363320));
     if (!NetworkUtil.h(this.app.getApp())) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     }
@@ -145,7 +145,7 @@ public class SmartDevicePluginDownloadActivity
       b();
       if (paramObservable.intValue() != 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437878);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437895);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       }
     }

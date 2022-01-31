@@ -1,16 +1,21 @@
-import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
-import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import java.io.File;
 
-class laq
+public class laq
   implements Runnable
 {
-  laq(lap paramlap) {}
+  public laq(KanDianViewController.PullRefreshCompleteListener paramPullRefreshCompleteListener) {}
   
   public void run()
   {
-    if ((this.a.a.a != null) && (this.a.a.a.a != null)) {
-      this.a.a.a.a.notifyDataSetChanged();
+    String str = CommonSkinRes.e();
+    if ((str != null) && (new File(str).exists()))
+    {
+      KanDianViewController.a(this.a.a, str);
+      KanDianViewController.a(this.a.a).removeMessages(3);
+      KanDianViewController.a(this.a.a).sendEmptyMessage(2);
     }
   }
 }

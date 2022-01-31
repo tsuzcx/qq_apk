@@ -44,7 +44,7 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setTag(((Integer)localView.getTag()).intValue(), paramString);
-      ((TextView)localView.findViewById(2131362858)).setText(paramString);
+      ((TextView)localView.findViewById(2131362876)).setText(paramString);
       String str = localView.getContentDescription().toString();
       int k = str.length();
       int m = str.indexOf(":");
@@ -68,9 +68,9 @@ public class ViewFactory$GuideView
       localView.setOnClickListener(this);
       localView.setTag(Integer.valueOf(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b));
       localView.setTag(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b, paramString);
-      ((ImageView)localView.findViewById(2131362856)).setImageResource(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b);
-      ((TextView)localView.findViewById(2131362857)).setText(localView.getContext().getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
-      ((TextView)localView.findViewById(2131362858)).setText(paramString);
+      ((ImageView)localView.findViewById(2131362874)).setImageResource(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b);
+      ((TextView)localView.findViewById(2131362875)).setText(localView.getContext().getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
+      ((TextView)localView.findViewById(2131362876)).setText(paramString);
       localView.setContentDescription(getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
       i += 1;
     }
@@ -83,11 +83,11 @@ public class ViewFactory$GuideView
     default: 
       return null;
     case 80000000: 
-      return new ViewFactory.GuideView.DataHolder(2131434344, 2130842110);
+      return new ViewFactory.GuideView.DataHolder(2131434361, 2130842147);
     case 80000001: 
-      return new ViewFactory.GuideView.DataHolder(2131434345, 2130842111);
+      return new ViewFactory.GuideView.DataHolder(2131434362, 2130842148);
     }
-    return new ViewFactory.GuideView.DataHolder(2131434346, 2130842112);
+    return new ViewFactory.GuideView.DataHolder(2131434363, 2130842149);
   }
   
   public void a(int paramInt, String paramString)

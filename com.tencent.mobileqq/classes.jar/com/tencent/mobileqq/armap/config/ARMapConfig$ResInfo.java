@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.config;
 
-import aaxu;
+import abev;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class ARMapConfig$ResInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new aaxu();
+  public static final Parcelable.Creator CREATOR = new abev();
   public static final int POI_TYPE_LBS_DISABLE = 4;
   public static final int POI_TYPE_LBS_DOUBLE = 2;
   public static final int POI_TYPE_LBS_MULTY = 3;

@@ -12,8 +12,8 @@ import com.tencent.image.QQLiveImage;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.Gallery;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import pdj;
-import pdk;
+import pfd;
+import pfe;
 
 public abstract class GalleryManager
 {
@@ -78,7 +78,7 @@ public abstract class GalleryManager
   public AnimationView a()
   {
     AnimationView localAnimationView = new AnimationView(this.jdField_a_of_type_AndroidAppActivity, null);
-    localAnimationView.setId(2131364775);
+    localAnimationView.setId(2131364797);
     localAnimationView.setVisibility(4);
     return localAnimationView;
   }
@@ -112,11 +112,11 @@ public abstract class GalleryManager
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.a(this.jdField_a_of_type_AndroidViewViewGroup);
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.a(this);
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.k();
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a().post(new pdj(this));
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a().post(new pfd(this));
       this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene;
       return;
     } while (this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene != this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a().post(new pdk(this));
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a().post(new pfe(this));
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)

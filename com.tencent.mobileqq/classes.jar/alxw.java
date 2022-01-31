@@ -1,22 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QQProxyForQlink;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qqprotect.qsec.QSecLibMgr;
+import com.tencent.qqprotect.qsec.QSecLibMgr.LibEventListener;
+import java.util.List;
 
 public class alxw
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public alxw(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public alxw(QSecLibMgr paramQSecLibMgr, Looper paramLooper)
   {
-    QQProxyForQlink.a(this.a, 5, null);
-    this.a.finish();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        QSecLibMgr.a(this.a);
+        return;
+      } while (paramMessage.obj == null);
+      QSecLibMgr.a(this.a, (List)paramMessage.obj);
+      return;
+      QSecLibMgr.b(this.a);
+      return;
+      QSecLibMgr.c(this.a);
+      return;
+    } while (paramMessage.obj == null);
+    QSecLibMgr.a(this.a, (QSecLibMgr.LibEventListener)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxw
  * JD-Core Version:    0.7.0.1
  */

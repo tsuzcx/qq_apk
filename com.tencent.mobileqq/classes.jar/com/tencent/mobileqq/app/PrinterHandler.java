@@ -33,16 +33,16 @@ import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgB
 import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgBody.HPPrinterStateInfo;
 import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgBody.MsgPrinter;
 import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgBody.SupportFileInfo;
-import zgh;
-import zgi;
-import zgj;
-import zgk;
+import zjn;
+import zjo;
+import zjp;
+import zjq;
 
 public class PrinterHandler
 {
   long jdField_a_of_type_Long = 0L;
   public PrinterSessionAdapter a;
-  private DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new zgj(this);
+  private DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new zjp(this);
   public QQAppInterface a;
   public String a;
   public ArrayList a;
@@ -145,7 +145,7 @@ public class PrinterHandler
       paramSession.status = 2;
       localObject = new Timer();
       paramSession.mTimer_for_Print = ((Timer)localObject);
-      localObject = new zgi(this, paramSession.uSessionID, (Timer)localObject);
+      localObject = new zjo(this, paramSession.uSessionID, (Timer)localObject);
       l2 = MessageCache.a();
       if (l2 < paramSession.time) {
         break label454;
@@ -172,7 +172,7 @@ public class PrinterHandler
     {
       if (FileUtils.a(paramString) > FMConfig.a())
       {
-        FMDialogUtil.a(paramBaseActivity, 2131428241, 2131428237, new zgk(this, paramBaseActivity, paramString));
+        FMDialogUtil.a(paramBaseActivity, 2131428241, 2131428237, new zjq(this, paramBaseActivity, paramString));
         return;
       }
       localIntent = new Intent(paramBaseActivity, PrinterActivity.class);
@@ -202,7 +202,7 @@ public class PrinterHandler
       if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0)
       {
         localObject = new Timer();
-        ((Timer)localObject).schedule(new zgh(this, paramDataLineHandler, (Timer)localObject), 5000L);
+        ((Timer)localObject).schedule(new zjn(this, paramDataLineHandler, (Timer)localObject), 5000L);
       }
     }
   }

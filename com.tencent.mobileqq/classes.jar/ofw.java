@@ -1,14 +1,36 @@
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
 import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import com.tribe.async.reactive.SimpleObserver;
 
-class ofw
-  implements Runnable
+public class ofw
+  extends SimpleObserver
 {
-  ofw(ofv paramofv) {}
+  public ofw(EditVideoPlayer paramEditVideoPlayer) {}
   
-  public void run()
+  public void a(Bitmap paramBitmap)
   {
-    LocalVideoSelectActivity.a(this.a.a).setVisibility(8);
+    super.onNext(paramBitmap);
+    if (paramBitmap != null)
+    {
+      if (this.a.b)
+      {
+        this.a.a.setImageBitmap(paramBitmap);
+        SLog.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
+      }
+    }
+    else {
+      return;
+    }
+    SLog.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    SLog.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
   }
 }
 

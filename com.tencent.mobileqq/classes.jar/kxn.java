@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleSinglePic;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class kxn
-  implements View.OnClickListener
+public class kxn
+  implements Runnable
 {
-  kxn(kxm paramkxm) {}
+  public kxn(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.d();
+    ReadInJoyNativeAdAppVideoView.a(this.a).start();
+    ReadInJoyNativeAdAppVideoView.e(this.a, 3);
+    ReadInJoyNativeAdAppVideoView.a(this.a);
   }
 }
 

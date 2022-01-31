@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.mobileqq.utils.DESUtil;
 
 public class abwy
-  implements Comparator
+  implements Runnable
 {
-  public abwy(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
+  public abwy(HotChatFlashPicActivity paramHotChatFlashPicActivity, String paramString) {}
   
-  public int a(EmosmPb.SmallYellowItem paramSmallYellowItem1, EmosmPb.SmallYellowItem paramSmallYellowItem2)
+  public void run()
   {
-    if (paramSmallYellowItem2.ts.get() > paramSmallYellowItem1.ts.get()) {
-      return 1;
-    }
-    if (paramSmallYellowItem2.ts.get() == paramSmallYellowItem1.ts.get()) {
-      return 0;
-    }
-    return -1;
+    DESUtil.a(this.jdField_a_of_type_JavaLangString, HotChatFlashPicActivity.c(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity));
   }
 }
 

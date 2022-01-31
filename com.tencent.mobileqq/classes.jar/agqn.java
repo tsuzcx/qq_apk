@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import java.util.Comparator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class agqn
-  implements Comparator
+  implements Animation.AnimationListener
 {
-  public agqn(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public agqn(BreatheEffectView paramBreatheEffectView) {}
   
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramMemberInfo1.a == paramMemberInfo2.a) {
-      return 0;
-    }
-    if (paramMemberInfo1.a < paramMemberInfo2.a) {
-      return -1;
-    }
-    return 1;
+    this.a.a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqn
  * JD-Core Version:    0.7.0.1
  */

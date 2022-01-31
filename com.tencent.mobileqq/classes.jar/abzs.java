@@ -1,54 +1,50 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonRecDressup;
-import com.tencent.mobileqq.emoticonview.SmallEmotionDownloadedAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
 public class abzs
-  implements View.OnClickListener
+  implements Runnable
 {
-  public abzs(SmallEmotionDownloadedAdapter paramSmallEmotionDownloadedAdapter, EmoticonRecDressup paramEmoticonRecDressup) {}
+  public abzs(FavroamingDBManager paramFavroamingDBManager, int paramInt, CustomEmotionData paramCustomEmotionData) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Intent localIntent = new Intent();
-    label41:
-    String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Boolean)
-    {
-      localIntent.putExtra("emoji_to_dressup", true);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label212;
-      }
-      paramView = "";
-      str2 = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-      if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Boolean) {
-        break label226;
-      }
-    }
-    label212:
-    label226:
-    for (String str1 = "1";; str1 = "2")
-    {
-      VasWebviewUtil.reportCommercialDrainage(paramView, "ep_mall", "0X8007192", null, 1, 0, 0, null, str2, str1);
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, localIntent, true);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, "2", "");
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager.a.getEntityManagerFactory().createEntityManager();
+    if (localEntityManager == null) {
       return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
-      for (boolean bool = true;; bool = false)
+    }
+    boolean bool2 = false;
+    boolean bool1;
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 3: 
+    default: 
+      bool1 = bool2;
+      if (QLog.isColorLevel())
       {
-        localIntent.putExtra("emoji_is_original", bool);
-        localIntent.putExtra("emoji_author_id", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Int);
+        QLog.d("FavroamingDBManager", 2, "can not save fav emoticon data, type:" + this.jdField_a_of_type_Int);
+        bool1 = bool2;
+      }
+      break;
+    }
+    for (;;)
+    {
+      localEntityManager.a();
+      if (!QLog.isColorLevel()) {
         break;
       }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      break label41;
+      QLog.d("FavroamingDBManager", 2, "updateFavEmotionDataListInDB type:" + this.jdField_a_of_type_Int + "save result: " + bool1);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.setStatus(1000);
+      localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      bool1 = bool2;
+      continue;
+      bool1 = localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      continue;
+      bool1 = localEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
     }
   }
 }

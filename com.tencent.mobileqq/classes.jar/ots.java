@@ -1,16 +1,37 @@
-import android.widget.ProgressBar;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.os.CountDownTimer;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ots
+  extends CountDownTimer
 {
-  private int jdField_a_of_type_Int = 0;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
+  public ots(QRDisplayActivity paramQRDisplayActivity, long paramLong1, long paramLong2)
+  {
+    super(paramLong1, paramLong2);
+  }
+  
+  public void onFinish()
+  {
+    QRDisplayActivity.a(this.a, true);
+    if (QRDisplayActivity.a(this.a) == null)
+    {
+      QRDisplayActivity.b(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QRDisplayActivity", 4, "enter longclick");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (QRDisplayActivity.a(this.a) == null);
+      QRDisplayActivity.c(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("QRDisplayActivity", 4, "enter longclickstop");
+  }
+  
+  public void onTick(long paramLong) {}
 }
 
 

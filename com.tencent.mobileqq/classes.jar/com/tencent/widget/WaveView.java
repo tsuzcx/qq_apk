@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import aloo;
+import amee;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -21,7 +21,7 @@ public class WaveView
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new aloo(this));
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new amee(this));
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private Path jdField_b_of_type_AndroidGraphicsPath;
   public int c;
@@ -67,7 +67,7 @@ public class WaveView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
     this.jdField_b_of_type_AndroidGraphicsPaint.setAlpha(38);
     this.i = getResources().getDisplayMetrics().widthPixels;
-    this.h = getResources().getDimensionPixelSize(2131559243);
+    this.h = getResources().getDimensionPixelSize(2131559245);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     jdField_a_of_type_Int = (int)(this.jdField_a_of_type_Float * 4.0F + 0.5D);
     this.c = jdField_a_of_type_Int;
@@ -158,7 +158,7 @@ public class WaveView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.WaveView
  * JD-Core Version:    0.7.0.1
  */

@@ -48,12 +48,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
-import loo;
-import lop;
-import loq;
 import lor;
 import los;
 import lot;
+import lou;
+import lov;
+import low;
 import mqq.app.NewIntent;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,9 +67,6 @@ import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqAdvertisePara;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqBody;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspBody;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.PhoneInfo;
-import tencent.im.oidb.cmd0x886.oidb_cmd0x886.ReqBody;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.RspBody;
 
 public class AdvertisementInfoModule
@@ -136,7 +133,7 @@ public class AdvertisementInfoModule
         {
           paramConcurrentHashMap.remove();
           if (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) {
-            this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new loo(this, localAdvertisementInfo));
+            this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lor(this, localAdvertisementInfo));
           }
           if (QLog.isColorLevel()) {
             QLog.d("AdvertisementInfoModule", 2, "filterOverTimeAdvertisement traceId=" + localAdvertisementInfo.mAdTraceId + ", fetchTime=" + localAdvertisementInfo.mAdFetchTime);
@@ -303,7 +300,7 @@ public class AdvertisementInfoModule
     while (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lop(this, paramInt));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new los(this, paramInt));
   }
   
   public void a(int paramInt, FixPosArticleInterface.FixPosArticleAsyncListener paramFixPosArticleAsyncListener)
@@ -314,99 +311,39 @@ public class AdvertisementInfoModule
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramFixPosArticleAsyncListener));
   }
   
-  public void a(int paramInt, AdvertisementInfo paramAdvertisementInfo, long paramLong)
-  {
-    if (paramAdvertisementInfo == null) {}
-    for (;;)
-    {
-      return;
-      Object localObject2;
-      Object localObject1;
-      if (paramInt == 1)
-      {
-        int i = (int)paramAdvertisementInfo.mChannelID;
-        localObject2 = (HashSet)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject1 = new HashSet();
-          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(i), localObject1);
-        }
-        if (((HashSet)localObject1).contains(paramAdvertisementInfo.mAdTraceId)) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementInfoModule", 2, "doAdvertisementReport(exposure) type=" + paramInt + ", channelId=" + paramAdvertisementInfo.mChannelID + ", pos=" + paramAdvertisementInfo.mAdKdPos + ", traceID=" + paramAdvertisementInfo.mAdTraceId);
-        }
-        ((HashSet)localObject1).add(paramAdvertisementInfo.mAdTraceId);
-        label159:
-        localObject1 = PublicAccountAdUtil.a();
-      }
-      try
-      {
-        l = Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-        localObject2 = paramAdvertisementInfo.makeReportAdInfo(paramInt);
-        if (paramInt == 3) {
-          ((oidb_cmd0x886.AdInfo)localObject2).uint64_neg_fb_type_id.set(paramLong);
-        }
-        paramLong = NetConnInfoCenter.getServerTimeMillis();
-        String str = MD5Utils.d(l + paramAdvertisementInfo.mAdTraceId + paramInt + paramLong);
-        oidb_cmd0x886.ReqBody localReqBody = new oidb_cmd0x886.ReqBody();
-        localReqBody.uint64_uin.set(l);
-        localReqBody.msg_phone_info.set((MessageMicro)localObject1);
-        localReqBody.msg_ad_info.set((MessageMicro)localObject2);
-        localReqBody.uint64_client_time.set(paramLong);
-        localReqBody.bytes_uuid.set(ByteStringMicro.copyFromUtf8(str));
-        localReqBody.enum_ad_display.set(2);
-        localObject1 = ReadInJoyOidbHelper.a("OidbSvc.0x886", 2182, 0, localReqBody.toByteArray());
-        ((ToServiceMsg)localObject1).getAttributes().put(h, Integer.valueOf(1));
-        a((ToServiceMsg)localObject1);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject1 = new StringBuilder("AdReport(");
-        ((StringBuilder)localObject1).append(paramInt).append(") chan=").append(paramAdvertisementInfo.mChannelID);
-        ((StringBuilder)localObject1).append(",pos=").append(paramAdvertisementInfo.mAdKdPos).append(",trace=").append(paramAdvertisementInfo.mAdTraceId);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("AdvertisementInfoModule", 2, ((StringBuilder)localObject1).toString());
-        return;
-        if (!QLog.isColorLevel()) {
-          break label159;
-        }
-        QLog.d("AdvertisementInfoModule", 2, "doAdvertisementReport type=" + paramInt + ", channelId=" + paramAdvertisementInfo.mChannelID + ", pos=" + paramAdvertisementInfo.mAdKdPos + ", traceID=" + paramAdvertisementInfo.mAdTraceId);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          long l = 0L;
-          localException.printStackTrace();
-        }
-      }
-    }
-  }
-  
   public void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo, long paramLong)
   {
-    if (paramAdvertisementInfo == null) {}
-    do
-    {
+    if (paramAdvertisementInfo == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementInfoModule", 2, "doUninterestAdvertisement tagId=" + paramLong + ", channelId=" + paramAdvertisementInfo.mChannelID + ", pos=" + paramAdvertisementInfo.mAdKdPos + ", traceID=" + paramAdvertisementInfo.mAdTraceId);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdvertisementInfoModule", 2, "doUninterestAdvertisement tagId=" + paramLong + ", channelId=" + paramAdvertisementInfo.mChannelID + ", pos=" + paramAdvertisementInfo.mAdKdPos + ", traceID=" + paramAdvertisementInfo.mAdTraceId);
+    }
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf((int)paramAdvertisementInfo.mChannelID));
+    if ((localConcurrentHashMap != null) && (localConcurrentHashMap.containsKey(Integer.valueOf(paramAdvertisementInfo.mAdKdPos)))) {
+      localConcurrentHashMap.remove(Integer.valueOf(paramAdvertisementInfo.mAdKdPos));
+    }
+    if (paramAdvertisementInfo.mChannelID == 56L)
+    {
+      NativeAdUtils.a(null, paramContext, NativeAdUtils.c, NativeAdUtils.l, paramAdvertisementInfo, null, (int)paramLong);
+      label155:
+      if (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) {
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lov(this, paramAdvertisementInfo));
       }
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf((int)paramAdvertisementInfo.mChannelID));
-      if ((localConcurrentHashMap != null) && (localConcurrentHashMap.containsKey(Integer.valueOf(paramAdvertisementInfo.mAdKdPos)))) {
-        localConcurrentHashMap.remove(Integer.valueOf(paramAdvertisementInfo.mAdKdPos));
+    }
+    else
+    {
+      if (!ReadInJoyUtils.a(paramAdvertisementInfo)) {
+        break label216;
       }
-      if (paramAdvertisementInfo.mChannelID == 56L) {
-        NativeAdUtils.a(null, paramContext, NativeAdUtils.c, NativeAdUtils.j, paramAdvertisementInfo, null, (int)paramLong);
-      }
-      a(3, paramAdvertisementInfo, paramLong);
-    } while (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown());
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new los(this, paramAdvertisementInfo));
+    }
+    label216:
+    for (int i = NativeAdUtils.o;; i = NativeAdUtils.k)
+    {
+      NativeAdUtils.a(null, paramContext, NativeAdUtils.c, i, paramAdvertisementInfo, null, (int)paramLong);
+      break label155;
+      break;
+    }
   }
   
   public void a(AppInterface paramAppInterface, AdvertisementInfo paramAdvertisementInfo)
@@ -449,7 +386,7 @@ public class AdvertisementInfoModule
           localObject2 = new NewIntent(paramAppInterface.getApplication(), PublicAccountServlet.class);
           ((NewIntent)localObject2).putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_native");
           ((NewIntent)localObject2).putExtra("data", ((WebSsoBody.WebSsoRequestBody)localObject1).toByteArray());
-          ((NewIntent)localObject2).setObserver(new lot(this, paramAdvertisementInfo));
+          ((NewIntent)localObject2).setObserver(new low(this, paramAdvertisementInfo));
           paramAppInterface.startServlet((NewIntent)localObject2);
           return;
         }
@@ -551,7 +488,7 @@ public class AdvertisementInfoModule
         if (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) {
           break;
         }
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lor(this, i, localArrayList));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lou(this, i, localArrayList));
         return;
         if (!QLog.isColorLevel()) {
           break;
@@ -562,11 +499,75 @@ public class AdvertisementInfoModule
     }
   }
   
+  /* Error */
   public boolean a(AdvertisementInfo paramAdvertisementInfo)
   {
-    int i = (int)paramAdvertisementInfo.mChannelID;
-    HashSet localHashSet = (HashSet)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-    return (localHashSet == null) || (!localHashSet.contains(paramAdvertisementInfo.mAdTraceId));
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: getfield 488	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mChannelID	J
+    //   6: l2i
+    //   7: istore_2
+    //   8: aload_0
+    //   9: getfield 33	com/tencent/biz/pubaccount/readinjoy/model/AdvertisementInfoModule:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   12: iload_2
+    //   13: invokestatic 257	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   16: invokevirtual 263	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   19: checkcast 760	java/util/HashSet
+    //   22: astore 5
+    //   24: aload 5
+    //   26: astore 4
+    //   28: aload 5
+    //   30: ifnonnull +26 -> 56
+    //   33: new 760	java/util/HashSet
+    //   36: dup
+    //   37: invokespecial 761	java/util/HashSet:<init>	()V
+    //   40: astore 4
+    //   42: aload_0
+    //   43: getfield 33	com/tencent/biz/pubaccount/readinjoy/model/AdvertisementInfoModule:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   46: iload_2
+    //   47: invokestatic 257	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   50: aload 4
+    //   52: invokevirtual 482	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   55: pop
+    //   56: aload 4
+    //   58: aload_1
+    //   59: getfield 177	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdTraceId	Ljava/lang/String;
+    //   62: invokevirtual 764	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   65: ifne +19 -> 84
+    //   68: aload 4
+    //   70: aload_1
+    //   71: getfield 177	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdTraceId	Ljava/lang/String;
+    //   74: invokevirtual 765	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   77: pop
+    //   78: iconst_1
+    //   79: istore_3
+    //   80: aload_0
+    //   81: monitorexit
+    //   82: iload_3
+    //   83: ireturn
+    //   84: iconst_0
+    //   85: istore_3
+    //   86: goto -6 -> 80
+    //   89: astore_1
+    //   90: aload_0
+    //   91: monitorexit
+    //   92: aload_1
+    //   93: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	94	0	this	AdvertisementInfoModule
+    //   0	94	1	paramAdvertisementInfo	AdvertisementInfo
+    //   7	40	2	i	int
+    //   79	7	3	bool	boolean
+    //   26	43	4	localHashSet1	HashSet
+    //   22	7	5	localHashSet2	HashSet
+    // Exception table:
+    //   from	to	target	type
+    //   2	24	89	finally
+    //   33	56	89	finally
+    //   56	78	89	finally
   }
   
   public int[] a(int paramInt)
@@ -608,7 +609,7 @@ public class AdvertisementInfoModule
       while (((Iterator)localObject).hasNext()) {
         localArrayList.add((AdvertisementInfo)((Iterator)localObject).next());
       }
-      Collections.sort(localArrayList, new loq(this));
+      Collections.sort(localArrayList, new lot(this));
     }
     if (QLog.isColorLevel())
     {

@@ -1,17 +1,24 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import Wallet.WalletSkinRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
+import mqq.observer.BusinessObserver;
 
-class xav
-  implements Runnable
+public class xav
+  implements BusinessObserver
 {
-  xav(xau paramxau, Object paramObject) {}
+  public xav(QWalletSkinHandler paramQWalletSkinHandler, QWalletSkinHandler.SkinListener paramSkinListener) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (ThemeHbFragment.a(this.jdField_a_of_type_Xau.a) != null) {
-      ThemeHbFragment.a(this.jdField_a_of_type_Xau.a).setImageBitmap(ThemeHbFragment.a(this.jdField_a_of_type_Xau.a, (Bitmap)this.jdField_a_of_type_JavaLangObject));
+    paramBundle = (WalletSkinRsp)paramBundle.getSerializable("rsp");
+    if ((paramBoolean) && (paramBundle != null) && (paramBundle.status == 0))
+    {
+      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, 0);
+      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
+      return;
     }
+    QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
   }
 }
 

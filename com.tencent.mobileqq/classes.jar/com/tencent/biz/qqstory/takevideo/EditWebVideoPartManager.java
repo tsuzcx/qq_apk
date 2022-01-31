@@ -7,8 +7,8 @@ import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
 import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ThumbInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tribe.async.reactive.SimpleObserver;
-import ofg;
-import ofh;
+import ogz;
+import oha;
 
 public class EditWebVideoPartManager
   extends EditVideoPartManager
@@ -477,7 +477,7 @@ public class EditWebVideoPartManager
   
   private void a(Activity paramActivity, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam)
   {
-    ThreadManager.post(new ofh(this, paramEditSource, paramPublishParam, paramActivity), 5, null, true);
+    ThreadManager.post(new oha(this, paramEditSource, paramPublishParam, paramActivity), 5, null, true);
   }
   
   /* Error */
@@ -491,11 +491,11 @@ public class EditWebVideoPartManager
     //   11: ldc_w 268
     //   14: iconst_0
     //   15: invokestatic 274	cooperation/qzone/thread/QzoneHandlerThreadFactory:getHandlerThread	(Ljava/lang/String;Z)Lcooperation/qzone/thread/QzoneBaseThread;
-    //   18: new 276	ofi
+    //   18: new 276	ohb
     //   21: dup
     //   22: aload_0
     //   23: aload 10
-    //   25: invokespecial 279	ofi:<init>	(Lcom/tencent/biz/qqstory/takevideo/EditWebVideoPartManager;Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
+    //   25: invokespecial 279	ohb:<init>	(Lcom/tencent/biz/qqstory/takevideo/EditWebVideoPartManager;Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
     //   28: invokevirtual 284	cooperation/qzone/thread/QzoneBaseThread:post	(Ljava/lang/Runnable;)V
     //   31: invokestatic 266	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
     //   34: ifeq +209 -> 243
@@ -685,7 +685,7 @@ public class EditWebVideoPartManager
   
   protected SimpleObserver a(GenerateContext paramGenerateContext)
   {
-    return new ofg(this, paramGenerateContext);
+    return new ogz(this, paramGenerateContext);
   }
   
   public void a()

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.capture.fragment;
 
-import agug;
-import aguh;
-import agui;
+import ahii;
+import ahij;
+import ahik;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -44,12 +44,12 @@ public class CaptureSoDownloadFragment
   
   private void a(String paramString)
   {
-    ThreadManager.getUIHandler().post(new aguh(this, paramString));
+    ThreadManager.getUIHandler().post(new ahij(this, paramString));
   }
   
   private void b(String paramString)
   {
-    ThreadManager.getUIHandler().post(new agui(this, paramString));
+    ThreadManager.getUIHandler().post(new ahik(this, paramString));
   }
   
   private void c()
@@ -65,9 +65,16 @@ public class CaptureSoDownloadFragment
     b("请连接网络后,重新进入短视频重试");
   }
   
+  public void C_()
+  {
+    b("网络已断,请连接网络后继续下载");
+    VideoEnvironment.a("CaptureSoDownloadFragment", "网络已断,请连接网络后继续下载", null);
+    ShortVideoErrorReport.a(3, -1500);
+  }
+  
   protected int a()
   {
-    return 2130970253;
+    return 2130970269;
   }
   
   public void a()
@@ -169,7 +176,7 @@ public class CaptureSoDownloadFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = paramLayoutInflater.inflate(a(), paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = ((CameraCaptureView)paramLayoutInflater.findViewById(2131366903));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = ((CameraCaptureView)paramLayoutInflater.findViewById(2131366945));
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setDarkModeEnable(false);
     int i = CameraHelper.a();
     paramViewGroup = SVParamManager.a().a(i);
@@ -183,13 +190,13 @@ public class CaptureSoDownloadFragment
     paramBundle.a(false);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCaptureParam(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setSyncStopCamera(true);
-    ((Button)paramLayoutInflater.findViewById(2131363969)).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)paramLayoutInflater.findViewById(2131368942));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492968), 100, getResources().getColor(2131493307));
+    ((Button)paramLayoutInflater.findViewById(2131363993)).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)paramLayoutInflater.findViewById(2131369008));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492969), 100, getResources().getColor(2131493308));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(6.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131369444));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131369521));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppInterface());
     if (!VideoEnvironment.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
     {
@@ -203,7 +210,7 @@ public class CaptureSoDownloadFragment
       return paramLayoutInflater;
     }
     VideoEnvironment.a("CaptureSoDownloadFragment", "checkAVCodecLoadIsOK loaded=true", null);
-    ThreadManager.getUIHandler().postDelayed(new agug(this), 5L);
+    ThreadManager.getUIHandler().postDelayed(new ahii(this), 5L);
     return paramLayoutInflater;
   }
   
@@ -227,13 +234,6 @@ public class CaptureSoDownloadFragment
   {
     super.onResume();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.onResume();
-  }
-  
-  public void y_()
-  {
-    b("网络已断,请连接网络后继续下载");
-    VideoEnvironment.a("CaptureSoDownloadFragment", "网络已断,请连接网络后继续下载", null);
-    ShortVideoErrorReport.a(3, -1500);
   }
 }
 

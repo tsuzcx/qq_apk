@@ -1,11 +1,22 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.ChangeNewPath;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
 
-class acli
-  implements FileManagerRSWorker.ChangeNewPath
+public class acli
+  implements Animation.AnimationListener
 {
-  acli(aclh paramaclh, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, long paramLong2) {}
+  public acli(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
+    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

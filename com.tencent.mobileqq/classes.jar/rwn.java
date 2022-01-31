@@ -1,32 +1,33 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class rwn
-  implements Runnable
+public final class rwn
+  implements DialogInterface.OnClickListener
 {
-  public rwn(ChatHistory paramChatHistory, boolean paramBoolean, int paramInt) {}
+  public rwn(boolean paramBoolean, int paramInt, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder = null;
-    if (this.jdField_a_of_type_Boolean) {
-      localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Int != 2) {
+        break label56;
+      }
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
     }
-    int i = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(MessageRecord.getTableName(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_Int));
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+      }
+      return;
+      label56:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      }
     }
-    int j = ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_Int, localStringBuilder);
-    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(this.jdField_a_of_type_Int);
-    if ((localStringBuilder != null) && (localStringBuilder.length() > 0)) {
-      localMessage.obj = localStringBuilder.toString();
-    }
-    localMessage.arg1 = j;
-    localMessage.arg2 = i;
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
   }
 }
 

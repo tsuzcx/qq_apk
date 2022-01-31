@@ -1,94 +1,19 @@
 import android.os.Handler;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import tencent.im.oidb.cmd0x962.oidb_0x962.FinishInfo;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
-public class aiyt
-  extends TroopGiftCallback
+class aiyt
+  implements Runnable
 {
-  public aiyt(AIOAnimationControlManager paramAIOAnimationControlManager, MessageForDeliverGiftTips paramMessageForDeliverGiftTips, boolean paramBoolean) {}
+  aiyt(aiyr paramaiyr) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void run()
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAnimationControlManager", 2, "checkInteract interactId: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId + ", interactState: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 2) && (paramRspBody.msg_finish_info.has()))
-      {
-        paramRspBody = (oidb_0x962.FinishInfo)paramRspBody.msg_finish_info.get();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactText = paramRspBody.bytes_text.get().toStringUtf8();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.participateNum = paramRspBody.uint32_participate_num.get();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstUin = paramRspBody.uint64_first_uin.get();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_AndroidOsHandler.post(new aiyu(this));
-      return;
-      List localList = (List)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.c.get(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin);
-      paramRspBody = localList;
-      if (localList == null)
-      {
-        paramRspBody = new ArrayList();
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.c.put(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, paramRspBody);
-      }
-      try
-      {
-        if (!paramRspBody.contains(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips))
-        {
-          paramRspBody.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-          if (paramRspBody.size() > 5) {
-            paramRspBody.remove(0);
-          }
-        }
-        paramRspBody = (List)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.b.get(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin);
-        if (paramRspBody == null) {}
-      }
-      finally
-      {
-        try
-        {
-          paramRspBody.remove(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-          if (!this.jdField_a_of_type_Boolean) {
-            break;
-          }
-          AIOAnimationControlManager.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager);
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.notifyObservers(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-          break;
-        }
-        finally {}
-        localObject1 = finally;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("AIOAnimationControlManager", 2, "checkInteract errorCode: " + paramInt);
-      }
-    }
+    this.a.a.a.sendEmptyMessage(1006);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyt
  * JD-Core Version:    0.7.0.1
  */

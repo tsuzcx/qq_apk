@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
 public class xqr
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public xqr(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
+  public xqr(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    QzDynamicVideoPreviewActivity.e(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.b(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

@@ -1,50 +1,29 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.ForwardImageProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.SystemClock;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.sveffects.SLog;
+import com.tencent.ttpic.facedetect.FaceDetector;
 
 public class aibg
-  extends TransProcessorHandler
+  implements Runnable
 {
-  public aibg(ForwardImageProcessor paramForwardImageProcessor) {}
+  public aibg(QQFilterRenderManager paramQQFilterRenderManager, aibh paramaibh) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    int i = paramMessage.what;
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((i == 2002) || ((ForwardImageProcessor.a(this.a).equals(localFileMsg.p)) && (localFileMsg.b == 1) && (i != 2002)))
-    {
-      if ((localFileMsg.r == null) || (!localFileMsg.r.equals(ForwardImageProcessor.b(this.a)))) {
-        return;
-      }
-      switch (i)
-      {
-      }
+    long l1 = SystemClock.elapsedRealtimeNanos();
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a.doFaceDetect(this.jdField_a_of_type_Aibh.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Aibh.jdField_a_of_type_Int, this.jdField_a_of_type_Aibh.b);
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      ForwardImageProcessor.a(this.a);
-      continue;
-      if (FileUtils.b(ForwardImageProcessor.c(this.a)))
-      {
-        ForwardImageProcessor.a(this.a).a().b(this);
-        ForwardImageProcessor.b(this.a);
-      }
-      else
-      {
-        ForwardImageProcessor.a(this.a);
-      }
+    long l2 = SystemClock.elapsedRealtimeNanos();
+    long l3 = (l2 - l1) / 1000L;
+    if (SLog.a()) {
+      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doFaceDetect=" + (l2 - l1) / 1000L + "us]");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aibg
  * JD-Core Version:    0.7.0.1
  */

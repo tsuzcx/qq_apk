@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDConfigServletProxy;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDConfigServletProxy.RDConfigServletProxyListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class xwh
-  implements DialogInterface.OnClickListener
+public final class xwh
+  implements RDConfigServletProxy.RDConfigServletProxyListener
 {
-  public xwh(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
+  public xwh(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    paramDialogInterface.dismiss();
+    RDConfigServletProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
+    return true;
   }
 }
 

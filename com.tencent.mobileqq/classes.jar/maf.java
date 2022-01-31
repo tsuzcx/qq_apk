@@ -1,15 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.widget.ActionSheet.WatchDismissActions;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
 
 public class maf
-  implements ActionSheet.WatchDismissActions
+  implements DialogInterface.OnDismissListener
 {
-  public maf(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public maf(TopicShareHelper paramTopicShareHelper) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    VideoFeedsAdapter.a(this.a).d();
+    if (TopicShareHelper.a(this.a) != null) {
+      TopicShareHelper.a(this.a).a(TopicShareHelper.a(this.a), TopicShareHelper.b(this.a), false, false);
+    }
+    TopicShareHelper.a(this.a, true);
+    TopicShareHelper.b(this.a, false);
   }
 }
 

@@ -1,9 +1,16 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.ChangeNewPath;
+import android.view.animation.Interpolator;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
 
-class aclk
-  implements FileManagerRSWorker.ChangeNewPath
+public class aclk
+  implements Interpolator
 {
-  aclk(aclh paramaclh, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2) {}
+  public aclk(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
+  
+  public float getInterpolation(float paramFloat)
+  {
+    paramFloat -= 1.0F;
+    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
+  }
 }
 
 

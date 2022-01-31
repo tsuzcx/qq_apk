@@ -1,46 +1,25 @@
-import android.text.TextUtils;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
+import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 
-public class amwv
-  implements Runnable
+public final class amwv
+  implements IQZonePluginManager.OnPluginReadyListener
 {
-  public amwv(QIMInformationPasterManager paramQIMInformationPasterManager, List paramList) {}
-  
-  public void run()
+  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
   {
-    QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).clear();
     if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "patch pull res");
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    InfomationFacePackage.Item localItem;
-    while (localIterator.hasNext())
-    {
-      localItem = (InfomationFacePackage.Item)localIterator.next();
-      if ((!TextUtils.isEmpty(localItem.d)) && (!this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a(localItem))) {
-        QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).add(localItem);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "need download size:" + QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).size());
-    }
-    localIterator = QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).iterator();
-    while (localIterator.hasNext())
-    {
-      localItem = (InfomationFacePackage.Item)localIterator.next();
-      this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a.a(localItem, new amww(this));
+    if (paramBoolean) {
+      IQZonePluginManager.d(paramContext, paramPluginParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwv
  * JD-Core Version:    0.7.0.1
  */

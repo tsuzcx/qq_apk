@@ -18,20 +18,20 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import kbz;
-import kca;
-import kcb;
-import kcd;
+import kbk;
+import kbl;
+import kbm;
+import kbo;
 import mqq.app.MobileQQ;
 
 public class VideoInviteFloatBarUICtr
   extends BaseInviteFloatBarUICtr
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kbz(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kbk(this);
   Intent jdField_a_of_type_AndroidContentIntent;
   public VideoController a;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new kcb(this);
-  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new kca(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new kbm(this);
+  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new kbl(this);
   VideoWifiLock jdField_a_of_type_ComTencentAvUtilsVideoWifiLock;
   public Runnable b;
   public boolean b;
@@ -45,7 +45,7 @@ public class VideoInviteFloatBarUICtr
     this.jdField_a_of_type_ComTencentAvVideoController = null;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Int = -1;
-    this.jdField_b_of_type_JavaLangRunnable = new kcd(this);
+    this.jdField_b_of_type_JavaLangRunnable = new kbo(this);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
     this.jdField_a_of_type_AndroidContentIntent = paramIntent;

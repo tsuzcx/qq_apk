@@ -1,29 +1,42 @@
-import com.tencent.av.ui.VoiceChangeAdapter;
-import com.tencent.av.ui.VoiceChangeAdapter.ICallback;
-import com.tencent.av.ui.VoiceChangeData.VoiceInfo;
-import com.tencent.av.ui.VoiceChangeItemView1;
-import com.tencent.av.ui.VoiceChangeItemView1.ICallback;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.av.AVLog;
+import com.tencent.av.business.manager.filter.FilterItem;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager.OnEffectFilterChangeListener;
+import java.lang.ref.WeakReference;
 
 public class kdb
-  implements VoiceChangeItemView1.ICallback
+  implements ViewPager.OnPageChangeListener
 {
-  public kdb(VoiceChangeAdapter paramVoiceChangeAdapter) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(VoiceChangeItemView1 paramVoiceChangeItemView1, int paramInt)
+  public kdb(EffectFilterTextPager paramEffectFilterTextPager, EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
   {
-    VoiceChangeData.VoiceInfo localVoiceInfo = (VoiceChangeData.VoiceInfo)this.a.getItem(paramInt);
-    if ((localVoiceInfo == null) || (localVoiceInfo.a == VoiceChangeAdapter.a(this.a))) {}
-    do
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnEffectFilterChangeListener);
+  }
+  
+  public void onPageScrollStateChanged(int paramInt)
+  {
+    AVLog.c("EffectFilterTextPager", "onPageScrollStateChanged : " + paramInt);
+    if (paramInt == 0) {
+      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a(1300);
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    AVLog.c("EffectFilterTextPager", "onPageScrollStateChanged onPageSelected : " + paramInt + "|" + EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager));
+    if ((EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) != paramInt) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      return;
-      if (VoiceChangeAdapter.a(this.a) != null) {
-        VoiceChangeAdapter.a(this.a).setHighlight(false);
+      FilterItem localFilterItem = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a.a(paramInt);
+      if (localFilterItem != null) {
+        ((EffectFilterTextPager.OnEffectFilterChangeListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt, localFilterItem.getId());
       }
-      VoiceChangeAdapter.a(this.a, localVoiceInfo.a);
-      VoiceChangeAdapter.a(this.a, paramVoiceChangeItemView1);
-      VoiceChangeAdapter.a(this.a).setHighlight(true);
-    } while (VoiceChangeAdapter.a(this.a) == null);
-    VoiceChangeAdapter.a(this.a).a(VoiceChangeAdapter.a(this.a));
+      EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager, -1);
+    }
   }
 }
 

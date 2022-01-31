@@ -1,18 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.content.res.Resources;
+import com.tencent.biz.qqstory.view.widget.StorySwipeTextViewMenuBuilder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
 
 public class nye
-  implements DialogInterface.OnClickListener
+  extends StorySwipeTextViewMenuBuilder
 {
-  public nye(StoryListPresenter paramStoryListPresenter) {}
+  private static final int[] e = { 2131434041 };
+  private static final int[] f = { 2131493370 };
+  private static final int[] g = { 2131370002 };
+  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131559401) };
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nye()
   {
-    this.a.a.a(false, true, 12, null);
-    StoryReportor.a("home_page", "guide_open", 0, 0, new String[0]);
+    super(1, 1, h, -1, g, e, f);
+  }
+  
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  {
+    paramArrayOfSwipRightMenuItem[0].a = 0;
+    paramArrayOfSwipRightMenuItem[0].b = 0;
   }
 }
 

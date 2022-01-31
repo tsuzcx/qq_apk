@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
 
 public class xxu
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xxu(SelectMemberActivity paramSelectMemberActivity) {}
+  public xxu(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
+    LbsFilterStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

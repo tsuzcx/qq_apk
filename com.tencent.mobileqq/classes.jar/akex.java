@@ -1,23 +1,58 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.ContainerView;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import java.lang.ref.SoftReference;
 
 public class akex
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  public akex(ContainerView paramContainerView) {}
+  public akex(QQCustomDialogWtihInput paramQQCustomDialogWtihInput, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (!ContainerView.a(this.a))
+    paramView = QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).getText().toString();
+    if (paramView != null)
     {
-      ContainerView.a(this.a, ContainerView.a);
-      ContainerView.a(this.a, true);
+      if ((!QQText.a(paramView)) && (!QQText.b(paramView))) {
+        break label78;
+      }
+      paramView = (Context)QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).get();
+      if (paramView != null)
+      {
+        paramView = new QQToast(paramView);
+        paramView.d(2000);
+        paramView.c(2131436513);
+        paramView.a();
+      }
     }
+    label78:
+    do
+    {
+      return;
+      if ((QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput) != null) || (24 >= paramView.getBytes().length)) {
+        break;
+      }
+      paramView = (Context)QQCustomDialogWtihInput.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput).get();
+    } while (paramView == null);
+    paramView = new QQToast(paramView);
+    paramView.d(2000);
+    paramView.c(2131436512);
+    paramView.a();
+    return;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput, 1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInput.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akex
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
 
-public final class aavf
+public class aavf
   implements Runnable
 {
-  public aavf(String paramString) {}
+  public aavf(ArkLocalAppMgr paramArkLocalAppMgr, aavw paramaavw) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), this.a, 1000).a();
+    if (this.jdField_a_of_type_Aavw.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback != null) {
+      this.jdField_a_of_type_Aavw.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback.a(this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aavw.c);
+    }
   }
 }
 

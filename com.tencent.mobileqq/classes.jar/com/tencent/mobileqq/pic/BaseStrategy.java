@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import afws;
+import agku;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class BaseStrategy
 {
-  private static afws a;
+  private static agku a;
   public static long c;
   public static long d;
   protected long a;
@@ -22,22 +22,22 @@ public class BaseStrategy
   public static final void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
     c();
-    jdField_a_of_type_Afws.a(paramLong, paramBoolean1, paramBoolean2);
+    jdField_a_of_type_Agku.a(paramLong, paramBoolean1, paramBoolean2);
   }
   
   public static final void b()
   {
     c();
-    jdField_a_of_type_Afws.a();
+    jdField_a_of_type_Agku.a();
   }
   
   private static final void c()
   {
-    if (jdField_a_of_type_Afws == null) {
+    if (jdField_a_of_type_Agku == null) {
       try
       {
-        if (jdField_a_of_type_Afws == null) {
-          jdField_a_of_type_Afws = new afws();
+        if (jdField_a_of_type_Agku == null) {
+          jdField_a_of_type_Agku = new agku();
         }
         return;
       }
@@ -48,7 +48,7 @@ public class BaseStrategy
   private void d()
   {
     c();
-    long[] arrayOfLong = jdField_a_of_type_Afws.a();
+    long[] arrayOfLong = jdField_a_of_type_Agku.a();
     this.jdField_a_of_type_Long = (arrayOfLong[0] + arrayOfLong[1]);
     this.b = (arrayOfLong[2] + arrayOfLong[3]);
     if (QLog.isColorLevel()) {

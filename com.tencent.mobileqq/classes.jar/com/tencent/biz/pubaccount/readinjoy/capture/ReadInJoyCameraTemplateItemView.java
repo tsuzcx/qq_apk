@@ -66,8 +66,8 @@ public class ReadInJoyCameraTemplateItemView
     int m = AIOUtils.a(60.0F, getResources());
     int j = AIOUtils.a(70.0F, getResources());
     int n = AIOUtils.a(20.0F, getResources());
-    int i1 = getResources().getColor(2131494207);
-    int i2 = getResources().getColor(2131493307);
+    int i1 = getResources().getColor(2131494214);
+    int i2 = getResources().getColor(2131493308);
     int i3 = AIOUtils.a(18.0F, getResources());
     int i4 = AIOUtils.a(17.0F, getResources());
     int i5 = AIOUtils.a(13.0F, getResources());
@@ -86,13 +86,13 @@ public class ReadInJoyCameraTemplateItemView
     localObject = new RelativeLayout.LayoutParams(m, m);
     this.jdField_a_of_type_AndroidWidgetImageView.setMinimumWidth(m);
     this.jdField_a_of_type_AndroidWidgetImageView.setMinimumHeight(m);
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840709);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840732);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
     this.c = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     localObject = new RelativeLayout.LayoutParams(i4, i5);
-    this.c.setImageResource(2130840707);
+    this.c.setImageResource(2130840730);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.c, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = new CircleProgress(this.jdField_a_of_type_AndroidContentContext);
@@ -116,7 +116,7 @@ public class ReadInJoyCameraTemplateItemView
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_ComTencentMobileqqWidgetCircleProgress, (ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     localObject = new RelativeLayout.LayoutParams(i3, i3);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843157);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843256);
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
@@ -164,7 +164,7 @@ public class ReadInJoyCameraTemplateItemView
       paramTemplateItemCallback = URLDrawable.URLDrawableOptions.obtain();
       paramInt = AIOUtils.a(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(getResources().getColor(2131493212));
+      localGradientDrawable.setColor(getResources().getColor(2131493213));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt, paramInt);
       paramTemplateItemCallback.mRequestWidth = paramInt;
@@ -186,9 +186,9 @@ public class ReadInJoyCameraTemplateItemView
       return;
       if ("0".equals(paramPtvTemplateInfo.id)) {
         if (paramPtvTemplateInfo.isSelected) {
-          this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840701);
+          this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840724);
         } else {
-          this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840702);
+          this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840725);
         }
       }
     }
@@ -232,10 +232,10 @@ public class ReadInJoyCameraTemplateItemView
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840701);
+        this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840724);
         return;
       }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840702);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840725);
       return;
     }
     if (paramBoolean)

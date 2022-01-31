@@ -1,34 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13.ViewHolder;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class aiit
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aiit(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public aiit(StructMsgItemLayout13 paramStructMsgItemLayout13, StructMsgForGeneralShare paramStructMsgForGeneralShare, Resources paramResources, StructMsgItemLayout13.ViewHolder paramViewHolder) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131364635: 
-      TroopAvatarWallPreviewActivity.d(this.a);
-      return;
-    case 2131364636: 
-      TroopAvatarWallPreviewActivity.e(this.a);
-      return;
-    case 2131364637: 
-      TroopAvatarWallPreviewActivity.f(this.a);
-      return;
-    }
-    TroopAvatarWallPreviewActivity.g(this.a);
+    String str = ContactUtils.g(StructMsgItemLayout13.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13), this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.frienduin, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.author);
+    new Handler(Looper.getMainLooper()).post(new aiiu(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiit
  * JD-Core Version:    0.7.0.1
  */

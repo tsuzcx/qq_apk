@@ -1,47 +1,88 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.av.utils.ImageResUtil;
+import com.tencent.av.widget.RatingBar.OnRatingListener;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.observer.SubAccountObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-class tqx
-  extends SubAccountObserver
+public class tqx
+  implements RatingBar.OnRatingListener
 {
-  tqx(tqw paramtqw, SimpleAccount paramSimpleAccount) {}
+  public tqx(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public void a(Object paramObject, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString3))
-    {
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12005");
-      paramString1.put("fail_step", "getKeyEmpty");
-      paramString1.put("fail_location", "SubBind");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Tqw.a.app.getCurrentAccountUin(), "actSBDLoginGetkey", false, 0L, 0L, paramString1, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onGetKeyBack: key is empty? why? shit");
-      }
-      this.jdField_a_of_type_Tqw.a.runOnUiThread(new tqy(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
     }
-    do
+    this.a.e = paramInt;
+    if (paramInt <= 3) {}
+    for (;;)
     {
-      return;
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12006");
-      paramString1.put("fail_step", "getKeyNotEmpty");
-      paramString1.put("fail_location", "SubBind");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Tqw.a.app.getCurrentAccountUin(), "actSBDLoginGetkey", true, 0L, 0L, paramString1, "");
-      paramString1 = (SubAccountProtocManager)this.jdField_a_of_type_Tqw.a.app.getManager(27);
-      if (paramString1 != null) {
-        paramString1.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin(), paramString3, this.jdField_a_of_type_Tqw.a.b);
+      try
+      {
+        if (ImageResUtil.a("qav_score_bad.jpg")) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), ImageResUtil.b() + "qav_score_bad.jpg"));
+        }
+        ScoreQAVFragment.a(this.a).setVisibility(0);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.b.setText(2131429659);
+        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+        {
+          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
+          if (paramInt <= 0) {
+            break label398;
+          }
+          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
+          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+          return;
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onGetKeyBack:getA2 subAccount = " + paramString2 + ".....subA2 = " + paramString3);
+      catch (OutOfMemoryError paramObject)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
+        continue;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
+        continue;
+      }
+      if (paramInt > 3)
+      {
+        ScoreQAVFragment.a(this.a).setVisibility(8);
+        try
+        {
+          if (ImageResUtil.a("qav_score_good.jpg")) {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), ImageResUtil.b() + "qav_score_good.jpg"));
+          }
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+          this.a.b.setText(2131429659);
+        }
+        catch (OutOfMemoryError paramObject)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
+            }
+          }
+        }
+        label398:
+        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
+      }
+    }
   }
 }
 

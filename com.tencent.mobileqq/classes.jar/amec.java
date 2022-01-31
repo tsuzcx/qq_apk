@@ -1,20 +1,18 @@
-import cooperation.qzone.font.FontManager;
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.widget.VerticalGallery;
 
 public class amec
-  implements FileFilter
+  implements Runnable
 {
-  public amec(FontManager paramFontManager) {}
+  public amec(VerticalGallery paramVerticalGallery) {}
   
-  public boolean accept(File paramFile)
+  public void run()
   {
-    return paramFile.getName().endsWith(".ftf");
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amec
  * JD-Core Version:    0.7.0.1
  */

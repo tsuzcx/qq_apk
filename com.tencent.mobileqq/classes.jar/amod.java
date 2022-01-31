@@ -1,17 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-class amod
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+public class amod
+  implements DialogInterface.OnClickListener
 {
-  amod(amoc paramamoc) {}
+  public amod(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0) {
-      ReadInJoyArkViewController.a().a("0", this.a.c);
-    }
+    this.a.finish();
   }
 }
 

@@ -1,16 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class vme
-  implements DialogInterface.OnClickListener
+class vme
+  implements Runnable
 {
-  public vme(PhotoListPanel paramPhotoListPanel) {}
+  vme(vmb paramvmb, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.a.a, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "0", "", "", "");
+    AIOImageListModel localAIOImageListModel;
+    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null)
+    {
+      localAIOImageListModel = (AIOImageListModel)vma.a(this.jdField_a_of_type_Vmb.a);
+      if (!localAIOImageListModel.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int)) {
+        break label92;
+      }
+      if (vma.e(this.jdField_a_of_type_Vmb.a) != null) {
+        ((AIOGalleryScene)vma.f(this.jdField_a_of_type_Vmb.a)).u();
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Vmb.a.a != null) {
+        this.jdField_a_of_type_Vmb.a.a.h();
+      }
+      return;
+      label92:
+      if ((this.jdField_a_of_type_Vmb.a.a != null) && (this.jdField_a_of_type_Vmb.a.a() == this.jdField_a_of_type_Vmb.a.a))
+      {
+        localAIOImageListModel.a();
+        if (vma.g(this.jdField_a_of_type_Vmb.a) != null) {
+          ((AIOGalleryScene)vma.h(this.jdField_a_of_type_Vmb.a)).u();
+        }
+      }
+    }
   }
 }
 

@@ -1,25 +1,51 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.widget.TextView;
-import com.tencent.widget.BubblePopupWindow;
+import android.content.Intent;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.troop.utils.NonMainAppListViewFaceLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class ajnr
-  extends TextView
+public class ajnr
+  extends BroadcastReceiver
 {
-  public ajnr(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
-  {
-    super(paramContext);
-  }
+  public ajnr(NonMainAppListViewFaceLoader paramNonMainAppListViewFaceLoader) {}
   
-  public boolean performClick()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = super.performClick();
-    this.a.a();
-    return bool;
+    if (this.a.jdField_a_of_type_ComTencentWidgetListView == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_b_of_type_Int));
+        paramContext = paramIntent.getStringArrayListExtra("uinList");
+        paramIntent = paramIntent.getStringArrayListExtra("headPathList");
+      } while ((paramContext == null) || (paramIntent == null));
+      int j = paramContext.size();
+      if (QLog.isColorLevel()) {
+        QLog.d("NonMainAppListViewFaceLoader", 2, "onReceive, uinList:" + paramContext.toString() + " reqList:" + this.a.jdField_a_of_type_JavaUtilArrayList + ", headPathList = " + paramIntent.toString());
+      }
+      int i = 0;
+      while (i < j)
+      {
+        String str = (String)paramContext.get(i);
+        if (this.a.jdField_a_of_type_JavaUtilArrayList.contains(str)) {
+          this.a.jdField_a_of_type_JavaUtilArrayList.remove(str);
+        }
+        this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, paramIntent.get(i));
+        i += 1;
+      }
+    } while (this.a.jdField_a_of_type_Int != 0);
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnr
  * JD-Core Version:    0.7.0.1
  */

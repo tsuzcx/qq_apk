@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
-import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.view.View;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-public class wrw
-  extends ContactBindObserver
+class wrw
+  implements BubblePopupWindow.OnDismissListener
 {
-  public wrw(PhoneInnerFrame paramPhoneInnerFrame) {}
+  wrw(wrv paramwrv, View paramView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a()
   {
-    if (this.a.a)
-    {
-      this.a.b().a().unRegistObserver(this);
-      this.a.g();
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

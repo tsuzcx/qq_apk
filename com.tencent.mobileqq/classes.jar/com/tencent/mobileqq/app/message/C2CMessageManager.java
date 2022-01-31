@@ -69,8 +69,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
-import zpk;
-import zpl;
+import zsq;
+import zsr;
 
 public class C2CMessageManager
   extends BaseMessageManager
@@ -630,7 +630,7 @@ public class C2CMessageManager
                     {
                       ((RecentUser)localObject3).uin = AppConstants.C;
                       ((RecentUser)localObject3).type = 4000;
-                      ((RecentUser)localObject3).displayName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getString(2131433298);
+                      ((RecentUser)localObject3).displayName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getString(2131433315);
                       if (l > ((RecentUser)localObject3).lastmsgtime) {
                         ((RecentUser)localObject3).lastmsgtime = l;
                       }
@@ -643,7 +643,7 @@ public class C2CMessageManager
                     {
                       ((RecentUser)localObject3).uin = AppConstants.C;
                       ((RecentUser)localObject3).type = 4000;
-                      ((RecentUser)localObject3).displayName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getString(2131433298);
+                      ((RecentUser)localObject3).displayName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getString(2131433315);
                       if (l > ((RecentUser)localObject3).lastmsgtime) {
                         ((RecentUser)localObject3).lastmsgtime = l;
                       }
@@ -656,7 +656,7 @@ public class C2CMessageManager
                     {
                       ((RecentUser)localObject3).uin = AppConstants.C;
                       ((RecentUser)localObject3).type = 4000;
-                      ((RecentUser)localObject3).displayName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getString(2131433298);
+                      ((RecentUser)localObject3).displayName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getString(2131433315);
                       if (l > ((RecentUser)localObject3).lastmsgtime) {
                         ((RecentUser)localObject3).lastmsgtime = l;
                       }
@@ -728,7 +728,7 @@ public class C2CMessageManager
           ((QCallFacade)localObject1).a((MessageForVideo)paramMessageRecord, true);
           ((QCallFacade)localObject1).a((MessageForVideo)paramMessageRecord);
           if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zpk(this));
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zsq(this));
           }
           k = paramMessageRecord.istroop;
           if ((i != 1008) || (!PublicAccountAdUtil.a(paramMessageRecord))) {
@@ -1695,7 +1695,7 @@ public class C2CMessageManager
   
   public void c(MessageRecord paramMessageRecord)
   {
-    ThreadManager.post(new zpl(this, paramMessageRecord), 8, null, true);
+    ThreadManager.post(new zsr(this, paramMessageRecord), 8, null, true);
   }
   
   public void c(String paramString, int paramInt1, int paramInt2, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext)

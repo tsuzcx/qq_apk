@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import ahng;
+import aibi;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.av.video.effect.core.EffectTexture;
@@ -128,7 +128,7 @@ public class QQLowLightFilter
     if (!new File(jdField_b_of_type_JavaLangString).exists())
     {
       e = i;
-      new Thread(new ahng()).start();
+      new Thread(new aibi()).start();
       return;
     }
     e = h;

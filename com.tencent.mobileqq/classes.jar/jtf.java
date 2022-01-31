@@ -1,36 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.utils.TipsManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class jtf
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public jtf(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, int paramInt) {}
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public jtf(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
+  
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController != null)
-    {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.j(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().c, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvUtilsTipsManager != null) {
-        this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvUtilsTipsManager.b(2, true);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.c, 2, "QueryPeerVideoRunnable-->Function Name = " + this.jdField_a_of_type_JavaLangString);
     }
-    if (this.jdField_a_of_type_Int == 0) {
-      ReportController.b(null, "CliOper", "", "", "0X8005CFD", "0X8005CFD", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (this.jdField_a_of_type_Int == 1) {
-        ReportController.b(null, "CliOper", "", "", "0X8005CFF", "0X8005CFF", 0, 0, "", "", "", "");
-      }
-    }
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.D();
   }
 }
 

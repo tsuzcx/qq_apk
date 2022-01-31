@@ -1,18 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 
-class accn
+public class accn
   implements Runnable
 {
-  accn(accm paramaccm, int paramInt1, int paramInt2) {}
+  public accn(WebIPCOperator paramWebIPCOperator, acct paramacct) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Accm.a.a()) {
-      return;
-    }
-    String str = String.valueOf(this.jdField_a_of_type_Int) + "/" + String.valueOf(this.b);
-    this.jdField_a_of_type_Accm.a.a.setText(str);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator.e(this.jdField_a_of_type_Acct.a);
   }
 }
 

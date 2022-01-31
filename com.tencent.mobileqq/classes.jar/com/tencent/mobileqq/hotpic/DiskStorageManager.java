@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adfq;
+import adpp;
 import android.util.Log;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -68,7 +68,7 @@ public class DiskStorageManager
   
   public void a(File paramFile)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new adfq(this, paramFile));
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new adpp(this, paramFile));
   }
   
   protected boolean a(File paramFile, long paramLong, int paramInt)
@@ -78,7 +78,7 @@ public class DiskStorageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.DiskStorageManager
  * JD-Core Version:    0.7.0.1
  */

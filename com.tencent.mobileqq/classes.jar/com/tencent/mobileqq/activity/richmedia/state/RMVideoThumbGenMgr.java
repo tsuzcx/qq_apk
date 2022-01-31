@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.richmedia.state;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
-import xsc;
+import xvi;
 
 public class RMVideoThumbGenMgr
 {
@@ -110,8 +110,8 @@ public class RMVideoThumbGenMgr
     }
     localThumbGenItem.jdField_b_of_type_Int = paramInt1;
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem = localThumbGenItem;
-    localThumbGenItem.jdField_a_of_type_Xsc.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem = localThumbGenItem;
-    localThumbGenItem.jdField_a_of_type_Xsc.execute(new Void[0]);
+    localThumbGenItem.jdField_a_of_type_Xvi.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr$ThumbGenItem = localThumbGenItem;
+    localThumbGenItem.jdField_a_of_type_Xvi.execute(new Void[0]);
   }
 }
 

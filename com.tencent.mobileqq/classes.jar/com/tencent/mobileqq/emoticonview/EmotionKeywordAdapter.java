@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abyk;
-import abyl;
-import abym;
-import abyo;
+import acfm;
+import acfn;
+import acfo;
+import acfq;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -66,8 +66,8 @@ public class EmotionKeywordAdapter
   private Context jdField_a_of_type_AndroidContentContext;
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
   EditText jdField_a_of_type_AndroidWidgetEditText;
-  URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new abyl(this);
-  URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new abyk(this);
+  URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new acfn(this);
+  URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new acfm(this);
   BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -305,7 +305,7 @@ public class EmotionKeywordAdapter
     while (!paramBoolean) {
       return;
     }
-    ThreadManager.post(new abym(this, paramEmoticonResp, paramString), 5, null, true);
+    ThreadManager.post(new acfo(this, paramEmoticonResp, paramString), 5, null, true);
   }
   
   public void b()
@@ -420,7 +420,7 @@ public class EmotionKeywordAdapter
     }
     if (paramView == null)
     {
-      paramViewGroup = new abyo(null);
+      paramViewGroup = new acfq(null);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = new EmojiStickerManager.EmotionKeywordLayout(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
       paramView = new ViewGroup.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
@@ -429,7 +429,7 @@ public class EmotionKeywordAdapter
       paramView.addRule(13, -1);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView, paramView);
       paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838592));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838596));
       paramView = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 30.0F), (int)(this.jdField_a_of_type_Float * 30.0F));
       paramView.addRule(13, -1);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar, paramView);
@@ -445,7 +445,7 @@ public class EmotionKeywordAdapter
       }
       QLog.e("EmotionKeywordAdapter", 1, "getView emoticon empty position = " + paramInt);
       return null;
-      paramViewGroup = (abyo)paramView.getTag();
+      paramViewGroup = (acfq)paramView.getTag();
     }
     paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataEmoticon = localEmoticon;
     paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
@@ -544,8 +544,8 @@ public class EmotionKeywordAdapter
   public void onClick(View paramView)
   {
     paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof abyo))) {}
-    for (paramView = (abyo)paramView;; paramView = null)
+    if ((paramView != null) && ((paramView instanceof acfq))) {}
+    for (paramView = (acfq)paramView;; paramView = null)
     {
       if (paramView == null) {}
       do
@@ -598,9 +598,9 @@ public class EmotionKeywordAdapter
       URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
       localURLImageView.setAdjustViewBounds(false);
       localURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      if ((paramView.getTag() instanceof abyo))
+      if ((paramView.getTag() instanceof acfq))
       {
-        paramView = ((abyo)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqDataEmoticon;
+        paramView = ((acfq)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqDataEmoticon;
         localURLImageView.setImageDrawable(EmojiStickerManager.a().a(this.jdField_a_of_type_AndroidContentContext, paramView));
         localStickerFrameLayout.setTag(paramView);
       }
@@ -610,7 +610,7 @@ public class EmotionKeywordAdapter
       localLayoutParams.addRule(11);
       localLayoutParams.addRule(10);
       localStickerFrameLayout.addView(paramView, localLayoutParams);
-      paramView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843870));
+      paramView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843994));
       paramView.setVisibility(4);
       paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
       localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 20.0F), (int)(this.jdField_a_of_type_Float * 20.0F));
@@ -618,7 +618,7 @@ public class EmotionKeywordAdapter
       localLayoutParams.addRule(12);
       localStickerFrameLayout.addView(paramView, localLayoutParams);
       paramView.setVisibility(4);
-      paramView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844826));
+      paramView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844951));
       int k = (int)(5.0F * f);
       int i = (int)(110.0F * f);
       int j = (int)(110.0F * f);

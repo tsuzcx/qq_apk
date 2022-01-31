@@ -15,12 +15,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import mqq.os.MqqHandler;
-import zkl;
-import zkm;
-import zkn;
-import zko;
-import zkp;
-import zkq;
+import znr;
+import zns;
+import znt;
+import znu;
+import znv;
+import znw;
 
 public class ThreadManager
 {
@@ -40,7 +40,7 @@ public class ThreadManager
   private static Timer TIMER;
   private static volatile MqqHandler UI_HANDLER;
   public static boolean logcatBgTaskMonitor;
-  private static Executor mNetExcutorPool = new ThreadPoolExecutor(5, 9, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue(256), new zkp());
+  private static Executor mNetExcutorPool = new ThreadPoolExecutor(5, 9, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue(256), new znv());
   
   static
   {
@@ -85,7 +85,7 @@ public class ThreadManager
       {
         FILE_THREAD = newFreeHandlerThread("QQ_FILE_RW", 0);
         FILE_THREAD.start();
-        FILE_THREAD_HANDLER = new zkm(FILE_THREAD.getLooper());
+        FILE_THREAD_HANDLER = new zns(FILE_THREAD.getLooper());
       }
       return FILE_THREAD_HANDLER;
     }
@@ -140,7 +140,7 @@ public class ThreadManager
       {
         SUB_THREAD = newFreeHandlerThread("QQ_SUB", 0);
         SUB_THREAD.start();
-        SUB_THREAD_HANDLER = new zkn(SUB_THREAD.getLooper());
+        SUB_THREAD_HANDLER = new znt(SUB_THREAD.getLooper());
       }
       return SUB_THREAD_HANDLER;
     }
@@ -157,7 +157,7 @@ public class ThreadManager
     if (TIMER == null) {}
     try
     {
-      TIMER = new zkq("QQ_Timer");
+      TIMER = new znw("QQ_Timer");
       return TIMER;
     }
     finally {}
@@ -191,7 +191,7 @@ public class ThreadManager
   
   private static void initRuntimShutDownHook()
   {
-    Runtime.getRuntime().addShutdownHook(new zkl());
+    Runtime.getRuntime().addShutdownHook(new znr());
   }
   
   public static HandlerThread newFreeHandlerThread(String paramString, int paramInt)
@@ -225,7 +225,7 @@ public class ThreadManager
   
   public static Executor newSerialExecutor()
   {
-    return Executors.newSingleThreadExecutor(new zko());
+    return Executors.newSingleThreadExecutor(new znu());
   }
   
   public static void post(Runnable paramRunnable, int paramInt, ThreadExcutor.IThreadListener paramIThreadListener, boolean paramBoolean)

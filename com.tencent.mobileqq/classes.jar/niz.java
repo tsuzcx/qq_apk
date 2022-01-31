@@ -1,15 +1,34 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase.ProgressView;
 
 public class niz
   implements Runnable
 {
-  public niz(NewFriendsPlayMode paramNewFriendsPlayMode, StoryVideoItem paramStoryVideoItem) {}
+  public niz(VideoPlayModeBase paramVideoPlayModeBase, Context paramContext, boolean paramBoolean, CharSequence paramCharSequence) {}
   
   public void run()
   {
-    PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType, "forShare");
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog == null)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$ProgressView = new VideoPlayModeBase.ProgressView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.setContentView(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$ProgressView);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.setCancelable(this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$ProgressView.a(this.jdField_a_of_type_JavaLangCharSequence);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.show();
+      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

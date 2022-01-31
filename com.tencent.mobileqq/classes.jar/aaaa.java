@@ -1,74 +1,17 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import com.tencent.mobileqq.ar.aidl.IArSoCallback;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaaa
-  implements IArSoCallback
+  implements Runnable
 {
-  private IBinder a;
+  public aaaa(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
-  public aaaa(IBinder paramIBinder)
+  public void run()
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+    QLog.i("ARWorldCupGlobalSceneRenderable", 1, "zoomOutWorldCupSparks.");
+    if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
+      ARWorldCupGlobalSceneRenderable.a(this.a).native_hiddenBigScreen();
     }
   }
 }

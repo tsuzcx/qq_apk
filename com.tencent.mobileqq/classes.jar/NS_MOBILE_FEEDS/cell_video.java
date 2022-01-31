@@ -10,19 +10,22 @@ import java.util.Map;
 public final class cell_video
   extends JceStruct
 {
+  static s_button cache_bottom_button = new s_button();
   static Map cache_coverurl = new HashMap();
   static Map cache_extendinfo;
   static Map cache_gaussPicUrl;
+  static s_kingcard cache_stKingCard;
   static ArrayList cache_vcCovers;
   static int cache_video_show_type;
   static int cache_video_source;
   static s_videoremark cache_videoremark;
   static Map cache_videourls;
-  static s_weishi cache_weishi = new s_weishi();
+  static s_weishi cache_weishi;
   public int actiontype;
   public String actionurl = "";
   public int adv_delay_time;
   public int auto_refresh_second;
+  public s_button bottom_button;
   public String clientkey = "";
   public Map coverurl;
   public Map extendinfo;
@@ -36,6 +39,7 @@ public final class cell_video
   public byte playtype;
   public int report_video_feeds_type;
   public String sloc = "";
+  public s_kingcard stKingCard;
   public String toast = "";
   public ArrayList vcCovers;
   public int video_form;
@@ -71,11 +75,13 @@ public final class cell_video
     cache_gaussPicUrl = new HashMap();
     localObject = new s_picurl();
     cache_gaussPicUrl.put(Integer.valueOf(0), localObject);
+    cache_weishi = new s_weishi();
+    cache_stKingCard = new s_kingcard();
   }
   
   public cell_video() {}
   
-  public cell_video(String paramString1, String paramString2, Map paramMap1, int paramInt1, String paramString3, String paramString4, int paramInt2, byte paramByte1, long paramLong, Map paramMap2, byte paramByte2, int paramInt3, String paramString5, Map paramMap3, s_videoremark params_videoremark, int paramInt4, boolean paramBoolean1, int paramInt5, String paramString6, String paramString7, int paramInt6, int paramInt7, boolean paramBoolean2, int paramInt8, String paramString8, boolean paramBoolean3, boolean paramBoolean4, int paramInt9, ArrayList paramArrayList, int paramInt10, Map paramMap4, s_weishi params_weishi)
+  public cell_video(String paramString1, String paramString2, Map paramMap1, int paramInt1, String paramString3, String paramString4, int paramInt2, byte paramByte1, long paramLong, Map paramMap2, byte paramByte2, int paramInt3, String paramString5, Map paramMap3, s_videoremark params_videoremark, int paramInt4, boolean paramBoolean1, int paramInt5, String paramString6, String paramString7, int paramInt6, int paramInt7, boolean paramBoolean2, int paramInt8, String paramString8, boolean paramBoolean3, boolean paramBoolean4, int paramInt9, ArrayList paramArrayList, int paramInt10, Map paramMap4, s_weishi params_weishi, s_kingcard params_kingcard, s_button params_button)
   {
     this.videoid = paramString1;
     this.videourl = paramString2;
@@ -109,6 +115,8 @@ public final class cell_video
     this.video_form = paramInt10;
     this.gaussPicUrl = paramMap4;
     this.weishi = params_weishi;
+    this.stKingCard = params_kingcard;
+    this.bottom_button = params_button;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -145,6 +153,8 @@ public final class cell_video
     this.video_form = paramJceInputStream.read(this.video_form, 29, false);
     this.gaussPicUrl = ((Map)paramJceInputStream.read(cache_gaussPicUrl, 30, false));
     this.weishi = ((s_weishi)paramJceInputStream.read(cache_weishi, 31, false));
+    this.stKingCard = ((s_kingcard)paramJceInputStream.read(cache_stKingCard, 32, false));
+    this.bottom_button = ((s_button)paramJceInputStream.read(cache_bottom_button, 33, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -210,6 +220,12 @@ public final class cell_video
     }
     if (this.weishi != null) {
       paramJceOutputStream.write(this.weishi, 31);
+    }
+    if (this.stKingCard != null) {
+      paramJceOutputStream.write(this.stKingCard, 32);
+    }
+    if (this.bottom_button != null) {
+      paramJceOutputStream.write(this.bottom_button, 33);
     }
   }
 }

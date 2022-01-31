@@ -1,31 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ogy
-  extends AnimatorListenerAdapter
+class ogy
+  implements Runnable
 {
-  public ogy(FaceLayer.FaceItem paramFaceItem) {}
+  ogy(ogx paramogx) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    SLog.b("FaceLayer", "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    SLog.b("FaceLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.b.g();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    SLog.b("FaceLayer", "scaleAnimator start!");
-    this.a.c = true;
+    this.a.a.c();
+    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).a();
+    this.a.a.finish();
   }
 }
 

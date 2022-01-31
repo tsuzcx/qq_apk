@@ -1,17 +1,28 @@
-import com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class jos
-  implements Runnable
+public final class jos
+  implements Animation.AnimationListener
 {
-  public jos(SmallScreenDoubleVideoControlUI paramSmallScreenDoubleVideoControlUI) {}
+  public jos(View paramView, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenDoubleVideoControlUI", 2, "2s has past, startTimer now!");
+    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramAnimation.setVisibility(i);
+      return;
     }
-    this.a.v();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

@@ -1,15 +1,18 @@
-import android.view.View;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
-public final class kmp
-  implements Runnable
+public class kmp
+  implements SoundPool.OnLoadCompleteListener
 {
-  public kmp(QQAppInterface paramQQAppInterface, View paramView, String paramString) {}
+  public kmp(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void run()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_JavaLangString, CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
+    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

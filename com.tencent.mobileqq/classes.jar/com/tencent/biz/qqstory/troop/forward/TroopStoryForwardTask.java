@@ -21,9 +21,9 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
-import oli;
-import olj;
-import oll;
+import onc;
+import ond;
+import onf;
 
 public class TroopStoryForwardTask
   implements Handler.Callback, TroopStoryForwardStep
@@ -31,8 +31,8 @@ public class TroopStoryForwardTask
   static final String jdField_a_of_type_JavaLangString = StoryApi.a("StoryGroupSvc.do_group_video_forward");
   public int a;
   public Handler a;
-  ProtoUtils.StoryProtocolObserver jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new olj(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new oll(this);
+  ProtoUtils.StoryProtocolObserver jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new ond(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new onf(this);
   public QQAppInterface a;
   public MessageForTroopStory a;
   protected boolean a;
@@ -129,7 +129,7 @@ public class TroopStoryForwardTask
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      ThreadManager.executeOnSubThread(new oli(this));
+      ThreadManager.executeOnSubThread(new onc(this));
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory, 0);

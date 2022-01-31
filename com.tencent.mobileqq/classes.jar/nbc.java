@@ -1,17 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.common.recyclerview.BaseAdapter.OnItemClickListener;
-import com.tencent.biz.qqstory.common.recyclerview.BaseViewHolder;
-import com.tencent.biz.qqstory.common.recyclerview.HeaderAndFooterAdapter;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class nbc
-  implements View.OnClickListener
+  extends SimpleObserver
 {
-  public nbc(HeaderAndFooterAdapter paramHeaderAndFooterAdapter, BaseViewHolder paramBaseViewHolder) {}
+  private nbc(BasePublishTask paramBasePublishTask) {}
   
-  public void onClick(View paramView)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewHeaderAndFooterAdapter.a.a(this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.itemView, this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.getPosition());
+    if (paramErrorMessage.isSuccess())
+    {
+      this.a.a(new ErrorMessage());
+      return;
+    }
+    this.a.a(paramErrorMessage);
+  }
+  
+  public void onCancel() {}
+  
+  public void onComplete() {}
+  
+  public void onError(@NonNull Error paramError)
+  {
+    if ((paramError instanceof ErrorMessage))
+    {
+      this.a.a((ErrorMessage)paramError);
+      return;
+    }
+    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
   }
 }
 

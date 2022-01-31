@@ -16,8 +16,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.GridView;
 import java.util.ArrayList;
-import mxy;
-import mya;
+import mzf;
+import mzh;
 
 public class PublicAccountImageCollectionRecommendViewWrapper
 {
@@ -36,7 +36,7 @@ public class PublicAccountImageCollectionRecommendViewWrapper
   
   public PublicAccountImageCollectionRecommendViewWrapper(Activity paramActivity, ArrayList paramArrayList, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new mxy(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new mzf(this);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     jdField_a_of_type_AndroidContentContext = paramActivity.getApplicationContext();
     jdField_a_of_type_Int = paramInt1;
@@ -92,7 +92,7 @@ public class PublicAccountImageCollectionRecommendViewWrapper
     }
     int i = AIOUtils.a(2.0F, jdField_a_of_type_AndroidContentContext.getResources());
     int j = (b - i) / 2;
-    paramRelativeLayout = (GridView)paramRelativeLayout.findViewById(2131365539);
+    paramRelativeLayout = (GridView)paramRelativeLayout.findViewById(2131365566);
     paramRelativeLayout.setColumnWidth(j);
     paramRelativeLayout.setStretchMode(0);
     paramRelativeLayout.setHorizontalSpacing(i);
@@ -111,7 +111,7 @@ public class PublicAccountImageCollectionRecommendViewWrapper
     {
       paramView = (RelativeLayout)paramView;
       Object localObject = paramView.getTag();
-      if ((localObject != null) && ((localObject instanceof mya)))
+      if ((localObject != null) && ((localObject instanceof mzh)))
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "createView reuse!");
@@ -122,14 +122,14 @@ public class PublicAccountImageCollectionRecommendViewWrapper
     if (QLog.isDevelopLevel()) {
       QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "createView new create!");
     }
-    paramActivity = (RelativeLayout)LayoutInflater.from(paramActivity).inflate(2130969197, paramViewGroup, false);
+    paramActivity = (RelativeLayout)LayoutInflater.from(paramActivity).inflate(2130969198, paramViewGroup, false);
     paramView = paramActivity.getLayoutParams();
     paramView.height = jdField_a_of_type_Int;
     paramActivity.setLayoutParams(paramView);
-    paramView = new mya();
-    paramView.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramActivity.findViewById(2131365539));
-    paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramActivity.findViewById(2131365541));
-    paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131365540));
+    paramView = new mzh();
+    paramView.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramActivity.findViewById(2131365566));
+    paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramActivity.findViewById(2131365568));
+    paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131365567));
     paramActivity.setTag(paramView);
     if ((jdField_a_of_type_JavaUtilArrayList == null) && (jdField_a_of_type_Boolean))
     {

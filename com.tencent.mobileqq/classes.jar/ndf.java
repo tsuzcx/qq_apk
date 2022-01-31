@@ -1,16 +1,13 @@
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.model.TroopNickNameManager;
 
 public class ndf
-  implements DeviceProfileManager.DPCObserver
+  implements Runnable
 {
-  public ndf(MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
+  public ndf(TroopNickNameManager paramTroopNickNameManager) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    ((QQStoryHandler)this.a.a.a(98)).a(1023, true, Boolean.valueOf(paramBoolean));
+    this.a.c();
   }
 }
 

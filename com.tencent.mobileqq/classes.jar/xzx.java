@@ -1,32 +1,19 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.ContactFriendInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class xzx
-  implements TVK_SDKMgr.InstallListener
+class xzx
+  implements DialogInterface.OnClickListener
 {
-  public xzx(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  xzx(xzv paramxzv) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoPlayActivity.a(this.a, false);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a("腾讯视频插件加载失败");
-    ShortVideoPlayActivity.c(this.a, 3000);
-    ShortVideoPlayActivity.d(this.a, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    ShortVideoPlayActivity.a(this.a, true);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a.post(new xzy(this));
+    paramDialogInterface.dismiss();
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactFriendInnerFrame.g();
+    ReportController.b(this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", 1, 0, "", "", "", "");
   }
 }
 

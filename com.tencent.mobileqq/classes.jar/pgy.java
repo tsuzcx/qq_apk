@@ -1,17 +1,27 @@
-import android.view.animation.Animation;
-import com.tencent.component.media.image.view.ExtendImageView;
+import com.tencent.component.media.image.ImageDefaultConfig;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.image.PoolParams;
+import com.tencent.component.media.image.PoolParams.BucketParams;
 
 public class pgy
-  implements Runnable
+  implements PoolParams
 {
-  public pgy(ExtendImageView paramExtendImageView, int paramInt, Animation paramAnimation) {}
+  public pgy(ImageManager paramImageManager, boolean paramBoolean) {}
   
-  public void run()
+  public PoolParams.BucketParams getBucketParams(int paramInt)
   {
-    ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation != null) {
-      ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_AndroidViewAnimationAnimation, null);
+    if (this.jdField_a_of_type_Boolean) {
+      return new PoolParams.BucketParams(ImageDefaultConfig.BYTE_ARRAY_LOCAL[paramInt][1], ImageDefaultConfig.BYTE_ARRAY_LOCAL[paramInt][0]);
     }
+    return new PoolParams.BucketParams(ImageDefaultConfig.BYTE_ARRAY[paramInt][1], ImageDefaultConfig.BYTE_ARRAY[paramInt][0]);
+  }
+  
+  public int getBucketPoolSize()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return ImageDefaultConfig.BYTE_ARRAY_LOCAL.length;
+    }
+    return ImageDefaultConfig.BYTE_ARRAY.length;
   }
 }
 

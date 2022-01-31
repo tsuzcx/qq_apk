@@ -16,6 +16,7 @@ public class ImmersionBar
   private boolean darkFont;
   private Activity mActivity;
   private Window mWindow;
+  private int resId;
   private View statusBarView;
   private int statusBarViewColor;
   
@@ -25,6 +26,16 @@ public class ImmersionBar
     this.mWindow = this.mActivity.getWindow();
     this.statusBarView = paramView;
     this.statusBarViewColor = paramInt;
+    this.resId = 0;
+    initStateBar(paramInt);
+  }
+  
+  public ImmersionBar(Activity paramActivity, int paramInt, View paramView, boolean paramBoolean)
+  {
+    this.mActivity = paramActivity;
+    this.mWindow = this.mActivity.getWindow();
+    this.statusBarView = paramView;
+    this.resId = paramInt;
     initStateBar(paramInt);
   }
   
@@ -122,6 +133,11 @@ public class ImmersionBar
     ViewGroup.LayoutParams localLayoutParams = this.statusBarView.getLayoutParams();
     localLayoutParams.height = ImmersiveUtils.a(this.mActivity);
     this.statusBarView.setLayoutParams(localLayoutParams);
+    if (this.resId != 0)
+    {
+      this.statusBarView.setBackgroundResource(this.resId);
+      return;
+    }
     this.statusBarView.setBackgroundColor(paramInt);
   }
   
@@ -130,7 +146,7 @@ public class ImmersionBar
     this.darkFont = paramBoolean;
     try
     {
-      if ((isSupportStatusBarDarkFont()) && (paramBoolean))
+      if (isSupportStatusBarDarkFont())
       {
         initStateBar(this.statusBarViewColor);
         if (OSUtils.b()) {

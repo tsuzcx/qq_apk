@@ -1,14 +1,30 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
-public class srd
+class srd
   implements Runnable
 {
-  public srd(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  srd(src paramsrc) {}
   
   public void run()
   {
-    GesturePWDUnlockActivity.a(this.a).setEnabled(true);
+    Object localObject = (FriendsManager)this.a.a.app.getManager(50);
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((FriendsManager)localObject).c(this.a.a.a.a.a);
+    } while ((localObject == null) || ((((Friends)localObject).abilityBits & 0x2) == 0L));
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "mReportPCCameraAblibityRunnable-->report");
+    }
+    ReportController.b(null, "CliOper", "", "", "0X8004991", "0X8004991", 0, 0, "", "", "", "");
   }
 }
 

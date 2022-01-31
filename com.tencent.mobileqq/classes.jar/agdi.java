@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.ocr.ui.SearchResultPageView;
+import com.tencent.widget.XListView;
 
 public class agdi
   implements Runnable
 {
-  public agdi(ProfileHeaderView paramProfileHeaderView) {}
+  public agdi(SearchResultPageView paramSearchResultPageView) {}
   
   public void run()
   {
-    ((MedalWallMng)this.a.a.getManager(249)).a(1, null);
+    this.a.a.setSelection(0);
   }
 }
 

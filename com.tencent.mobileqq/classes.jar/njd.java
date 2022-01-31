@@ -1,14 +1,44 @@
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.VideoInfoListEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase.VideoOnErrorListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewFactory;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-class njd
-  implements Runnable
+public class njd
+  implements View.OnClickListener
 {
-  njd(njc paramnjc, BatchGetVideoInfoHandler.VideoInfoListEvent paramVideoInfoListEvent) {}
+  public njd(VideoPlayModeBase.VideoOnErrorListener paramVideoOnErrorListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Njc.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$VideoInfoListEvent);
+    if (!NetworkUtil.a(VideoPlayModeBase.a()))
+    {
+      QQToast.a(VideoPlayModeBase.a(), 1, 2131430298, 0).a();
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    if (VideoViewFactory.a(BaseApplicationImpl.getContext()).a())
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.e = 0L;
+      this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.d();
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+      return;
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+    }
   }
 }
 

@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.DownloadResult.Status;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import com.tencent.component.media.image.UICallbackTask;
 
-public final class php
-  implements Parcelable.Creator
+public class php
+  implements Runnable
 {
-  public DownloadResult.Status a(Parcel paramParcel)
-  {
-    return new DownloadResult.Status(paramParcel);
-  }
+  public php(UICallbackTask paramUICallbackTask, ImageKey paramImageKey) {}
   
-  public DownloadResult.Status[] a(int paramInt)
+  public void run()
   {
-    return new DownloadResult.Status[paramInt];
+    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener.onImageFailed(UICallbackTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey), this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
   }
 }
 

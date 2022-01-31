@@ -1,59 +1,48 @@
 import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.BaseVideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView.OnUninterestConfirmListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.ActionSheet;
+import java.util.ArrayList;
 
 public class mbk
-  extends OrientationEventListener
+  implements ReadInJoyDisLikeDialogView.OnUninterestConfirmListener
 {
-  public mbk(VideoFeedsListView paramVideoFeedsListView, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public mbk(VideoFeedsAdapter paramVideoFeedsAdapter, VideoInfo paramVideoInfo) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void a(View paramView, ArrayList paramArrayList, Object paramObject)
   {
-    if (VideoFeedsListView.a(this.a)) {}
-    label10:
-    do
+    paramView = ReadInJoyUtils.a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                break label10;
-                break label10;
-                break label10;
-                break label10;
-                do
-                {
-                  return;
-                } while ((!VideoFeedsListView.b(this.a)) || (!VideoFeedsListView.c(this.a)) || (VideoFeedsListView.a(this.a) == 1) || (!VideoFeedsListView.a(this.a, paramInt)) || (!VideoFeedsListView.d(this.a)));
-                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
-                  break;
-                }
-              } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 0));
-              VideoFeedsListView.a(this.a, -1);
-            } while (VideoFeedsListView.c(this.a) == 0);
-            this.a.c(true);
-            return;
-            if ((paramInt < 70) || (paramInt > 110)) {
-              break;
-            }
-          } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 2));
-          VideoFeedsListView.a(this.a, -1);
-        } while (VideoFeedsListView.c(this.a) == 2);
-        VideoFeedsListView.a(this.a, 2, true);
-        return;
-      } while ((paramInt < 250) || (paramInt > 290) || ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 1)));
-      VideoFeedsListView.a(this.a, -1);
-    } while (VideoFeedsListView.c(this.a) == 1);
-    VideoFeedsListView.a(this.a, 1, true);
+      if (VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+        VideoFeedsHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      }
+      ReadInJoyLogicEngine.a().a(Long.valueOf(paramView).longValue(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.makeDislikeParam(paramArrayList, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g));
+      paramView = NativeAdUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
+      if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
+        break label185;
+      }
+    }
+    label185:
+    for (int i = ((DislikeInfo)paramArrayList.get(0)).a;; i = 0)
+    {
+      NativeAdUtils.a(null, VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter), NativeAdUtils.c, NativeAdUtils.n, paramView, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, i);
+      QQToast.a(VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter), -1, VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getString(2131428476), 0).b(VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getResources().getDimensionPixelSize(2131558448));
+      VideoFeedsAdapter.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).dismiss();
+      return;
+    }
   }
 }
 

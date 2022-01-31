@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import abrz;
-import absa;
-import absb;
+import abzb;
+import abzc;
+import abzd;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
@@ -30,7 +30,7 @@ public class EmoticonFromGroupDBManager
   implements Manager
 {
   public volatile int a;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abrz(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abzb(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public EntityManager a;
   public List a;
@@ -153,7 +153,7 @@ public class EmoticonFromGroupDBManager
     if (paramEmoticonFromGroupEntity == null) {
       return;
     }
-    paramEmoticonFromGroupEntity = new absa(this, paramInt, paramEmoticonFromGroupEntity);
+    paramEmoticonFromGroupEntity = new abzc(this, paramInt, paramEmoticonFromGroupEntity);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       paramEmoticonFromGroupEntity.run();
@@ -230,7 +230,7 @@ public class EmoticonFromGroupDBManager
     if ((paramList == null) || (paramList.isEmpty())) {
       return;
     }
-    paramList = new absb(this, paramInt, paramList);
+    paramList = new abzd(this, paramInt, paramList);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       paramList.run();

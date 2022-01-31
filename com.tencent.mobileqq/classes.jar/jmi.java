@@ -1,23 +1,17 @@
-import android.view.View;
-import com.tencent.av.redpacket.ui.RedPacketRollNumberView;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import com.tencent.av.report.VideoConnRateReport;
 
 public class jmi
   implements Runnable
 {
-  public jmi(RedPacketRollNumberView paramRedPacketRollNumberView) {}
+  public jmi(VideoConnRateReport paramVideoConnRateReport) {}
   
   public void run()
   {
-    RedPacketRollNumberView.a(this.a, this.a.getChildCount());
-    int i = 0;
-    while (i < RedPacketRollNumberView.a(this.a))
+    synchronized (this.a.a)
     {
-      View localView = this.a.getChildAt(i);
-      if ((localView != null) && ((localView instanceof RedPacketRollTextView))) {
-        ((RedPacketRollTextView)localView).b();
-      }
-      i += 1;
+      VideoConnRateReport.a(this.a);
+      VideoConnRateReport.b(this.a);
+      return;
     }
   }
 }

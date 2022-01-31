@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker.ViewHolder;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
 
 public class uqe
-  implements uqg
+  implements Runnable
 {
-  public uqe(ColorPicker paramColorPicker, ColorPicker.ViewHolder paramViewHolder) {}
+  public uqe(PressToChangeVoicePanel paramPressToChangeVoicePanel) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker$ViewHolder.a);
+    PressToChangeVoicePanel.a(this.a).sendAccessibilityEvent(128);
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import ambi;
+import amrm;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -151,7 +151,7 @@ public class LocalMultiProcConfig
   
   public static void putBooleanAsync(String paramString1, String paramString2, boolean paramBoolean)
   {
-    ThreadManager.post(new ambi(paramString1, paramString2, paramBoolean), 8, null, true);
+    ThreadManager.post(new amrm(paramString1, paramString2, paramBoolean), 8, null, true);
   }
   
   public static void putBooleanAsync(String paramString, boolean paramBoolean)

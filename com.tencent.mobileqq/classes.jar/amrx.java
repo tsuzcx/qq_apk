@@ -1,43 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import cooperation.weiyun.sdk.download.DownloadFile;
-import cooperation.weiyun.sdk.download.DownloadJobContext;
-import cooperation.weiyun.sdk.download.WyDownloader.DownloadServerInfoCallback;
-import cooperation.weiyun.sdk.download.processor.UrlFetcher;
-import cooperation.weiyun.sdk.download.processor.UrlFetcher.UrlFetcherCallback;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import cooperation.qzone.plugin.IQZonePluginManager;
 
 public class amrx
-  implements WyDownloader.DownloadServerInfoCallback
+  implements Runnable
 {
-  public amrx(UrlFetcher paramUrlFetcher, String paramString, long paramLong, DownloadJobContext paramDownloadJobContext, int paramInt) {}
+  public amrx(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2, PluginBaseInfo paramPluginBaseInfo) {}
   
-  public void a(DownloadFile paramDownloadFile, boolean paramBoolean, int paramInt, String paramString)
+  public void run()
   {
-    if ((paramDownloadFile == null) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramDownloadFile.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if (paramBoolean)
+    try
     {
-      if (paramDownloadFile.jdField_a_of_type_CooperationWeiyunSdkDownloadDownloadFile$DownloadServerInfo == null)
-      {
-        UrlFetcher.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadProcessorUrlFetcher).a(this.jdField_a_of_type_Long, 1810024, "");
-        return;
+      if (this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.a != null) {
+        this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.a.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.mID, null, this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.c);
       }
-      UrlFetcher.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadProcessorUrlFetcher).a(this.jdField_a_of_type_Long, paramDownloadFile.jdField_a_of_type_CooperationWeiyunSdkDownloadDownloadFile$DownloadServerInfo);
       return;
     }
-    if ((paramInt == 1002) && (!this.jdField_a_of_type_CooperationWeiyunSdkDownloadDownloadJobContext.a()))
+    catch (Exception localException)
     {
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadDownloadJobContext.d(true);
-      paramDownloadFile = Message.obtain();
-      paramDownloadFile.what = 1;
-      paramDownloadFile.obj = this.jdField_a_of_type_CooperationWeiyunSdkDownloadDownloadJobContext;
-      paramDownloadFile.arg1 = this.jdField_a_of_type_Int;
-      UrlFetcher.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadProcessorUrlFetcher).sendMessageDelayed(paramDownloadFile, 1000L);
-      return;
+      QLog.e("QZoneLiveVideoDownLoadActivtyV2", 1, localException, new Object[0]);
     }
-    UrlFetcher.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadProcessorUrlFetcher).a(this.jdField_a_of_type_Long, paramInt, paramString);
   }
 }
 

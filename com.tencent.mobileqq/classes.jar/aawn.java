@@ -1,51 +1,28 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
 
-public class aawn
-  implements Runnable
+class aawn
+  implements BusinessObserver
 {
-  public aawn(ShopScanActivity paramShopScanActivity, ARTarget paramARTarget, int paramInt, boolean paramBoolean) {}
+  aawn(aawm paramaawm) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.b)
-      {
-        ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, true);
-        this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqArARScanFragment.e(true);
-        this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        if (this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a(1L);
-          this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqArARScanFragment.b();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.d();
+    Object localObject = null;
+    String str = (String)paramObject;
+    paramObject = localObject;
+    if (paramBoolean)
+    {
+      paramObject = localObject;
+      if (!TextUtils.isEmpty(str)) {
+        paramObject = ArkMessageServerLogic.a(this.a.a.jdField_a_of_type_JavaLangString, str);
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        String str = this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.setResult(11);
-        Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, QQBrowserActivity.class);
-        localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.a(str));
-        this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.startActivity(localIntent);
-        this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a(true);
-      } while ((ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity) == null) || (ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity).a.c()));
-      this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface.reportClickEvent("CliOper", "", "", "0X8008145", "0X8008145", 0, 0, "1", this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface.getCurrentAccountUin(), ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity).a.b, "2");
-      return;
-      ShopScanActivity.c(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    } while (!this.jdField_a_of_type_Boolean);
-    ShopScanActivity.e(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler != null) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler.a(this.a.a.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_JavaLangObject, paramObject);
+    }
   }
 }
 

@@ -1,67 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class yjw
-  extends TimerTask
+  extends BroadcastReceiver
 {
-  private final long jdField_a_of_type_Long;
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private yjx jdField_a_of_type_Yjx;
-  private yjy jdField_a_of_type_Yjy;
-  private final long b;
+  protected WeakReference a;
   
-  public yjw(ApolloTicker paramApolloTicker, View paramView, long paramLong1, long paramLong2)
+  public yjw(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    this.a = new WeakReference(paramQQAppInterface);
   }
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    Object localObject;
+    if (paramIntent == null) {
+      QLog.e("ApolloGameManager", 1, "[onReceive] intent null");
+    }
+    String str;
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              localObject = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-            } while (localObject == null);
-            if (!(localObject instanceof ApolloSurfaceView)) {
-              break;
-            }
-            localObject = (ApolloSurfaceView)localObject;
-          } while ((((ApolloSurfaceView)localObject).mIsDestroy == null) || (((ApolloSurfaceView)localObject).mIsDestroy.get()));
-          if (this.jdField_a_of_type_Yjx == null) {
-            this.jdField_a_of_type_Yjx = new yjx(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker, (ApolloSurfaceView)localObject, this.jdField_a_of_type_Long, this.b);
-          }
-          if (((ApolloSurfaceView)localObject).mRenderMode == 0)
-          {
-            ((ApolloSurfaceView)localObject).queueEvent(this.jdField_a_of_type_Yjx);
-            return;
-          }
-        } while (((ApolloSurfaceView)localObject).mRenderMode != 1);
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker.pauseTicker(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker.ticker);
-        return;
-      } while (!(localObject instanceof ApolloTextureView));
-      localObject = (ApolloTextureView)localObject;
-    } while ((((ApolloTextureView)localObject).mIsDestroy == null) || (((ApolloTextureView)localObject).mIsDestroy.get()));
-    if (this.jdField_a_of_type_Yjy == null) {
-      this.jdField_a_of_type_Yjy = new yjy(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker, (ApolloTextureView)localObject, this.jdField_a_of_type_Long, this.b);
-    }
-    ((ApolloTextureView)localObject).queueEvent(this.jdField_a_of_type_Yjy);
+      return;
+      str = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameManager", 2, new Object[] { "[onReceive] action=", str + ", app: " + this.a.get() });
+      }
+      paramContext = (QQAppInterface)this.a.get();
+    } while ((paramContext == null) || (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(str)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
+    paramIntent = paramIntent.getStringExtra("data");
+    ApolloCmdChannel.getChannel(paramContext).handleWebEvent(paramIntent);
   }
 }
 

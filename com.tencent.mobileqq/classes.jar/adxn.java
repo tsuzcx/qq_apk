@@ -1,64 +1,44 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.IQQPlayerService.Stub;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerHandler;
-import java.util.HashMap;
+import android.app.Activity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class adxn
-  implements ServiceConnection
+  extends DownloadListener
 {
-  public adxn(MusicPlayerActivity paramMusicPlayerActivity) {}
+  public adxn(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    MusicPlayerActivity.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
-    try
+    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
+      return;
+    }
+    if (paramDownloadTask.a == 0)
     {
-      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
-      paramComponentName = MusicPlayerActivity.a(this.a).a();
-      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
-      if (paramComponentName != null)
+      paramDownloadTask = new File(AbsDownloader.d(this.jdField_a_of_type_JavaLangString));
+      if (paramDownloadTask.exists())
       {
-        String str = MusicPlayerActivity.a(this.a, paramComponentName);
-        if (MusicPlayerActivity.b().containsKey(str)) {
-          MusicPlayerActivity.a(this.a, (adxt)MusicPlayerActivity.b().get(str), paramIBinder);
+        if (QLog.isColorLevel()) {
+          QLog.d("UiApiPlugin", 2, "shareImageToAIO->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
         }
-        for (;;)
-        {
-          int i = MusicPlayerActivity.a(this.a).a();
-          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
-          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.b, paramComponentName.g, paramComponentName.f, String.valueOf(paramComponentName.a), paramComponentName.c, MusicPlayerActivity.a(this.a).c());
-          return;
-          MusicPlayerActivity.a(this.a, paramComponentName.b, paramComponentName.g, paramComponentName.d, paramIBinder, false, false);
-        }
+        localActivity.runOnUiThread(new adxo(this, paramDownloadTask));
+        return;
       }
-      return;
     }
-    catch (Exception paramComponentName) {}
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    paramComponentName = MusicPlayerActivity.a(this.a);
-    if (paramComponentName != null) {}
-    try
-    {
-      paramComponentName.b(MusicPlayerActivity.a(this.a));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "shareImageToAIO->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
     }
-    catch (RemoteException paramComponentName) {}
+    localActivity.runOnUiThread(new adxp(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxn
  * JD-Core Version:    0.7.0.1
  */

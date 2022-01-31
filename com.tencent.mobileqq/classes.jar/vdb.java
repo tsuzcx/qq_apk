@@ -1,29 +1,17 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ThumbInfo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
-public class vdb
-  implements Runnable
+class vdb
+  implements ImageAssetDelegate
 {
-  public vdb(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo) {}
+  vdb(vda paramvda) {}
   
-  public void run()
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      ShortVideoRealItemBuilder.a(true);
-      ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      EncodeVideoTask.ThumbInfo localThumbInfo = new EncodeVideoTask.ThumbInfo(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mThumbFilePath, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbMD5, null, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbHeight);
-      localObject = new EncodeVideoTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.mediacodecEncode, localThumbInfo);
-      ((EncodeVideoTask)localObject).a(ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder));
-      ((EncodeVideoTask)localObject).a(false);
-      Utils.executeAsyncTaskOnSerialExcuter((AsyncTask)localObject, new Void[] { (Void)null });
-    }
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
   }
 }
 

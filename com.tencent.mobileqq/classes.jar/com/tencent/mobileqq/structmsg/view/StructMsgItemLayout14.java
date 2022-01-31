@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahuu;
+import aiix;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -56,7 +56,7 @@ public class StructMsgItemLayout14
   private LinearLayout a(Context paramContext)
   {
     Resources localResources = paramContext.getResources();
-    paramContext = new ahuu(this, paramContext);
+    paramContext = new aiix(this, paramContext);
     paramContext.setOrientation(1);
     paramContext.setGravity(1);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
@@ -351,7 +351,7 @@ public class StructMsgItemLayout14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout14
  * JD-Core Version:    0.7.0.1
  */

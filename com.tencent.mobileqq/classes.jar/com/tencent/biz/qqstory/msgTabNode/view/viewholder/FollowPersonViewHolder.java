@@ -43,7 +43,7 @@ public class FollowPersonViewHolder
     boolean bool;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843449);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843570);
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       localObject1 = localObject2;
       if (localObject2 == null) {

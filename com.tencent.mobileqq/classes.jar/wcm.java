@@ -1,17 +1,31 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.tips.ArkTipsBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.ArkTipsManager;
 
-public final class wcm
-  implements DialogInterface.OnClickListener
+public class wcm
+  implements View.OnClickListener
 {
-  public wcm(boolean paramBoolean, Context paramContext) {}
+  public wcm(ArkTipsBar paramArkTipsBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    {
+      paramView = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (paramView != null)
+      {
+        paramView = paramView.a();
+        if (paramView != null) {
+          paramView.a(ArkTipsBar.a(this.a));
+        }
+      }
+      ArkTipsManager.a().a();
     }
   }
 }

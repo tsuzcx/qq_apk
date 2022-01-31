@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.tmg_opensdk.TMG_Downloader.TMG_Downloader_DownloadEvent;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.script.SpriteAioScript;
+import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyDressReady;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class yrw
-  extends TMG_Downloader.TMG_Downloader_DownloadEvent
+  implements ApolloGameBasicEventUtil.NotifyDressReady
 {
-  public yrw(AVEngineWalper paramAVEngineWalper) {}
+  public yrw(SpriteAioScript paramSpriteAioScript, boolean paramBoolean) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (paramInt == 0) {
-      ThreadManager.getUIHandler().post(new yrx(this));
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteAioScript.a(paramQQAppInterface, paramString1, paramInt1, paramArrayOfInt, paramInt2);
     }
   }
 }

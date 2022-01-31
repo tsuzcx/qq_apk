@@ -1,24 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.statistics.ReportController;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class udh
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public udh(UpgradeActivity paramUpgradeActivity) {}
+  public udh(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
-    if (UpgradeActivity.a(this.a)) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800714D", "0X800714D", 0, 0, "", "", "", "");
-    }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, UpgradeConstants.b(), String.valueOf(2), UpgradeController.a(), "0");
-    UpgradeController.a().a(this.a.app);
-    this.a.finish();
+    paramView = new Intent(this.a, AccountDetailActivity.class);
+    paramView.putExtra("uin", this.a.a.req_uin.get() + "");
+    paramView.putExtra("source", 112);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
   }
 }
 

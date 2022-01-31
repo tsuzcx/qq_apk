@@ -1,12 +1,23 @@
-import dov.com.qq.im.capture.QIMManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.LocalImageShootInfo;
 
-public class amuq
+public final class amuq
+  implements Parcelable.Creator
 {
-  public static final QIMManager a = new QIMManager(null);
+  public LocalImageShootInfo a(Parcel paramParcel)
+  {
+    return new LocalImageShootInfo(paramParcel);
+  }
+  
+  public LocalImageShootInfo[] a(int paramInt)
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuq
  * JD-Core Version:    0.7.0.1
  */

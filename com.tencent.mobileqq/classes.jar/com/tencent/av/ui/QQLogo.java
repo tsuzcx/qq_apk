@@ -9,7 +9,7 @@ import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.av.AVLog;
-import jzs;
+import jzd;
 
 public class QQLogo
   extends ImageView
@@ -36,7 +36,7 @@ public class QQLogo
   {
     boolean bool = false;
     this.a = false;
-    int i = getResources().getDimensionPixelSize(2131560026);
+    int i = getResources().getDimensionPixelSize(2131560044);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
     StringBuilder localStringBuilder = new StringBuilder().append("dispearLogo_internal:");
     if (localLayoutParams.bottomMargin != i) {
@@ -94,7 +94,7 @@ public class QQLogo
     AVLog.c("QQLogo", "dispearLogo:");
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setAnimationListener(new jzs(this));
+    localAlphaAnimation.setAnimationListener(new jzd(this));
     clearAnimation();
     startAnimation(localAlphaAnimation);
   }

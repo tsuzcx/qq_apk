@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.ar;
 
+import aact;
+import aacu;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
@@ -11,8 +13,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import zxz;
-import zya;
 
 public class ArNativeSoManager
 {
@@ -65,7 +65,7 @@ public class ArNativeSoManager
     if (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a(paramDownloadInfo, new zya(this, paramNativeSoRes));
+    this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a(paramDownloadInfo, new aacu(this, paramNativeSoRes));
   }
   
   private void a(String paramString)
@@ -236,7 +236,7 @@ public class ArNativeSoManager
             ((ARPreSoResourceDownload.DownloadInfo)localObject2).d = paramArrayList.jdField_a_of_type_JavaLangString;
             ((ARPreSoResourceDownload.DownloadInfo)localObject2).c = ((String)localObject1);
             ((ARPreSoResourceDownload.DownloadInfo)localObject2).jdField_a_of_type_Boolean = true;
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a((ARPreSoResourceDownload.DownloadInfo)localObject2, new zxz(this, paramString, paramARResourceDownloadCallback));
+            this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a((ARPreSoResourceDownload.DownloadInfo)localObject2, new aact(this, paramString, paramARResourceDownloadCallback));
           }
         }
       }

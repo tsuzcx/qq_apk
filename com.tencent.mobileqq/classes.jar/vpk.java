@@ -1,36 +1,40 @@
-import android.text.Editable;
-import android.text.SpannableString;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Environment;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class vpk
-  implements Runnable
+class vpk
+  implements DialogInterface.OnClickListener
 {
-  public vpk(DiscussChatPie paramDiscussChatPie, boolean paramBoolean, String paramString1, String paramString2) {}
+  vpk(vpj paramvpj, BaseActivity paramBaseActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Boolean)
+    if (Environment.getExternalStorageState().equals("mounted"))
     {
-      j = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().delete(j - 1, j);
+      if (this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1) {
+        break label97;
+      }
+      PlusPanelUtils.b(this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     }
-    SpannableString localSpannableString = AtTroopMemberSpan.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx, false);
-    if ((localSpannableString == null) || (localSpannableString.length() == 0)) {
-      return;
-    }
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-    if (j < 0) {}
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().insert(i, localSpannableString);
-      DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie).a(1);
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setCanLock(false);
+      ReportController.b(this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "1", "", "", "");
       return;
-      i = j;
+      label97:
+      paramDialogInterface = new FileManagerReporter.fileAssistantReportData();
+      paramDialogInterface.b = "send_file";
+      paramDialogInterface.a = 1;
+      FileManagerReporter.a(this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramDialogInterface);
+      PlusPanelUtils.a(this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     }
   }
 }

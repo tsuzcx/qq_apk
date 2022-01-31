@@ -1,14 +1,15 @@
-import com.tencent.av.gameplay.ARNativeBridge;
-import com.tencent.av.ui.GamePlayView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
 public class jvm
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public jvm(GamePlayView paramGamePlayView, byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public jvm(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView).native_updateParticleTexture(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
+    this.a.b("onDismiss");
   }
 }
 

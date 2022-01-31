@@ -13,6 +13,38 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Bdh_extinfo
 {
+  public static final class CommFileExtReq
+    extends MessageMicro<CommFileExtReq>
+  {
+    public static final int BYTES_UUID_FIELD_NUMBER = 2;
+    public static final int UINT32_ACTION_TYPE_FIELD_NUMBER = 1;
+    static final MessageMicro.FieldMap __fieldMap__;
+    public final PBBytesField bytes_uuid = PBField.initBytes(ByteStringMicro.EMPTY);
+    public final PBUInt32Field uint32_action_type = PBField.initUInt32(0);
+    
+    static
+    {
+      ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
+      __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_action_type", "bytes_uuid" }, new Object[] { Integer.valueOf(0), localByteStringMicro }, CommFileExtReq.class);
+    }
+  }
+  
+  public static final class CommFileExtRsp
+    extends MessageMicro<CommFileExtRsp>
+  {
+    public static final int BYTES_DOWNLOAD_URL_FIELD_NUMBER = 2;
+    public static final int INT32_RETCODE_FIELD_NUMBER = 1;
+    static final MessageMicro.FieldMap __fieldMap__;
+    public final PBBytesField bytes_download_url = PBField.initBytes(ByteStringMicro.EMPTY);
+    public final PBInt32Field int32_retcode = PBField.initInt32(0);
+    
+    static
+    {
+      ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
+      __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "int32_retcode", "bytes_download_url" }, new Object[] { Integer.valueOf(0), localByteStringMicro }, CommFileExtRsp.class);
+    }
+  }
+  
   public static final class PicInfo
     extends MessageMicro<PicInfo>
   {
@@ -182,6 +214,37 @@ public final class Bdh_extinfo
       ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
       ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
       __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32 }, new String[] { "bytes_fileid", "bytes_ukey", "msg_videoinfo", "uint32_merge_cost" }, new Object[] { localByteStringMicro1, localByteStringMicro2, null, Integer.valueOf(0) }, ShortVideoSureRspInfo.class);
+    }
+  }
+  
+  public static final class StoryVideoExtReq
+    extends MessageMicro<StoryVideoExtReq>
+  {
+    static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[0], new String[0], new Object[0], StoryVideoExtReq.class);
+  }
+  
+  public static final class StoryVideoExtRsp
+    extends MessageMicro<StoryVideoExtRsp>
+  {
+    public static final int BYTES_CDN_URL_FIELD_NUMBER = 3;
+    public static final int BYTES_FILE_ID_FIELD_NUMBER = 5;
+    public static final int BYTES_FILE_KEY_FIELD_NUMBER = 4;
+    public static final int BYTES_MSG_FIELD_NUMBER = 2;
+    public static final int INT32_RETCODE_FIELD_NUMBER = 1;
+    static final MessageMicro.FieldMap __fieldMap__;
+    public final PBBytesField bytes_cdn_url = PBField.initBytes(ByteStringMicro.EMPTY);
+    public final PBBytesField bytes_file_id = PBField.initBytes(ByteStringMicro.EMPTY);
+    public final PBBytesField bytes_file_key = PBField.initBytes(ByteStringMicro.EMPTY);
+    public final PBBytesField bytes_msg = PBField.initBytes(ByteStringMicro.EMPTY);
+    public final PBInt32Field int32_retcode = PBField.initInt32(0);
+    
+    static
+    {
+      ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+      ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+      ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
+      ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
+      __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42 }, new String[] { "int32_retcode", "bytes_msg", "bytes_cdn_url", "bytes_file_key", "bytes_file_id" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, StoryVideoExtRsp.class);
     }
   }
   

@@ -1,53 +1,34 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.BmqqAccountType;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.AnimationSet;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
+import com.tencent.mobileqq.widget.ScrollerRunnable.FlushMessageItemAnimation;
 
 public class akws
-  extends CardObserver
+  implements Runnable
 {
-  public akws(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public akws(ScrollerRunnable paramScrollerRunnable, View paramView) {}
   
-  protected void a(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  public void run()
   {
-    super.a(paramBoolean, paramBmqqAccountType);
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianProfileCardActivity", 2, "onGetAccountType isSuccess: " + paramBoolean + " | type: " + paramBmqqAccountType + " | cardInfo.allinone.uin: " + this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
-    {
-      this.a.c = paramBmqqAccountType.getAccountType();
-      this.a.b();
-      if (this.a.c == 1) {
-        this.a.jdField_a_of_type_ComTencentQidianQidianManager.b(this.a, paramBmqqAccountType);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.a();
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    this.a.a();
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)paramObject);
-      if (QidianProfileCardActivity.b(this.a)) {
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
-      }
-    }
+    ScrollerRunnable.FlushMessageItemAnimation localFlushMessageItemAnimation1 = new ScrollerRunnable.FlushMessageItemAnimation(this.jdField_a_of_type_AndroidViewView, 1.0F, 0.0F);
+    localFlushMessageItemAnimation1.setFillEnabled(true);
+    localFlushMessageItemAnimation1.setDuration(700L);
+    ScrollerRunnable.FlushMessageItemAnimation localFlushMessageItemAnimation2 = new ScrollerRunnable.FlushMessageItemAnimation(this.jdField_a_of_type_AndroidViewView, 0.0F, 1.0F);
+    localFlushMessageItemAnimation2.setFillEnabled(true);
+    localFlushMessageItemAnimation2.setStartTime(700L);
+    localFlushMessageItemAnimation2.setDuration(700L);
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    localAnimationSet.addAnimation(localFlushMessageItemAnimation1);
+    localAnimationSet.addAnimation(localFlushMessageItemAnimation2);
+    localAnimationSet.setFillAfter(true);
+    localAnimationSet.setAnimationListener(new akwt(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+    ScrollerRunnable.a(this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akws
  * JD-Core Version:    0.7.0.1
  */

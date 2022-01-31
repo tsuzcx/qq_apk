@@ -1,22 +1,19 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.mobileqq.statistics.ReportTask;
 
 public class wmb
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  public wmb(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public wmb(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    EmoticonGroupStoreFragment.a(this.a).invalidate();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = 2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.notifyDataSetChanged();
+    int i = ContactsTroopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter, this.jdField_a_of_type_Int);
+    new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("clk_inactive").a(new String[] { "", String.valueOf(i) }).a();
   }
 }
 

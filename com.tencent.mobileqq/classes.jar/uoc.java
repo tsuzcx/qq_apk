@@ -1,48 +1,16 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
 import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class uoc
+  implements Runnable
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  public uoc(XBubbleAnimation paramXBubbleAnimation, Object[] paramArrayOfObject) {}
   
-  public uoc(DoodleDrawer paramDoodleDrawer) {}
-  
-  public void a()
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
-    {
-      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("DoodleDrawerThread", 0);
-      localHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if ((paramRunnable == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.getLooper().quit();
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation.b(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    ThreadManager.getUIHandler().postDelayed(new uod(this), 100L);
   }
 }
 

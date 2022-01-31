@@ -1,34 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
 
 public class kjv
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public kjv(PoiMapActivity paramPoiMapActivity) {}
+  public kjv(ProtoUtils.StoryProtocolObserver paramStoryProtocolObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = PoiMapActivity.i(this.a).getLayoutParams();
-    paramAnimation.height = this.a.o;
-    PoiMapActivity.j(this.a).setLayoutParams(paramAnimation);
-    paramAnimation = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-    paramAnimation.bottomMargin = 0;
-    this.a.b.setLayoutParams(paramAnimation);
-    this.a.a((this.a.o - PoiMapActivity.e(this.a)) / 2 + this.a.t, false);
-    if (this.a.e != null) {
-      this.a.e.setVisibility(8);
-    }
-    PoiMapActivity.c(this.a).clearAnimation();
-    this.a.a = true;
+    ProtoUtils.StoryProtocolObserver.a(this.jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

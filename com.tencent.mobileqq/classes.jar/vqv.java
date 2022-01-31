@@ -1,46 +1,23 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
-import com.tencent.mobileqq.werewolves.WerewolvesObserver;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class vqv
-  extends WerewolvesObserver
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public vqv(GameRoomChatPie paramGameRoomChatPie) {}
+  public vqv(BaseTroopChatPie paramBaseTroopChatPie) {}
   
-  public void a(int paramInt)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onDownLoadedPluginResult result = " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.bf();
-    }
-    do
+    if (this.a.O)
     {
-      return;
-      QQToast.a(this.a.a(), "游戏加载失败", 0).a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
-  }
-  
-  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
+      this.a.O = false;
+      BaseTroopChatPie.a(this.a).sendEmptyMessageDelayed(23, 100L);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.aio.BaseTroopChatPie", 2, " doOnCreate_initUI onGlobalLayout");
+      }
     }
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager == null)) {}
-    WerewolvesPluginInterface localWerewolvesPluginInterface;
-    do
-    {
-      return;
-      localWerewolvesPluginInterface = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    } while (localWerewolvesPluginInterface == null);
-    localWerewolvesPluginInterface.a(String.valueOf(paramLong2), paramBoolean);
   }
 }
 

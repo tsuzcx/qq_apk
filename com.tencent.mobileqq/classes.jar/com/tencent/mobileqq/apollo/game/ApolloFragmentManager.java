@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicInteger;
-import yly;
+import ype;
 
 public class ApolloFragmentManager
 {
@@ -273,7 +273,7 @@ public class ApolloFragmentManager
         b(b);
         b(jdField_a_of_type_JavaUtilStack);
         if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) && ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof ApolloGameActivity))) {
-          this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new yly(this, localApolloFragment));
+          this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new ype(this, localApolloFragment));
         }
       }
     }

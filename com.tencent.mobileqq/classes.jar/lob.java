@@ -1,57 +1,15 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
 
-class lob
-  implements View.OnClickListener
+public class lob
+  implements Runnable
 {
-  lob(loa paramloa) {}
+  public lob(ReadInJoyVideoChannelFragment paramReadInJoyVideoChannelFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (loa.a(this.a) != null)
-    {
-      paramView = (Context)loa.a(this.a).get();
-      if (paramView != null)
-      {
-        this.a.b();
-        ReadInJoyUtils.a(paramView, ReadInJoyHelper.g(ReadInJoySubscribeFragement.a(this.a.a)));
-        paramView = (KandianMergeManager)ReadInJoySubscribeFragement.a(this.a.a).getManager(161);
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("folder_status", ReadInJoyUtils.d);
-        KandianOx210MsgInfo.Biu0x210Msg localBiu0x210Msg = paramView.a();
-        if (localBiu0x210Msg == null) {
-          continue;
-        }
-        l = localBiu0x210Msg.b;
-        localJSONObject.put("reddot_source", l);
-        localJSONObject.toString();
-      }
-      catch (JSONException localJSONException)
-      {
-        long l;
-        localJSONException.printStackTrace();
-        continue;
-      }
-      paramView.f();
-      return;
-      l = 0L;
-    }
+    PublicAccountReportUtils.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", VideoReporter.a(56, null), false);
   }
 }
 

@@ -1,65 +1,81 @@
-import android.graphics.Bitmap;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
+import android.content.Intent;
+import com.tencent.av.config.ByteBuffer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class airx
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  private airx(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
+  public airx(TransFileController paramTransFileController, String paramString, Intent paramIntent, QQAppInterface paramQQAppInterface) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void run()
   {
-    float f2 = 0.0F;
-    BaseScaleAndMoveBitmapView.a(this.a, false);
-    float f3 = this.a.jdField_a_of_type_Float - paramFloat1 / this.a.c;
-    float f4 = this.a.b;
-    float f5 = paramFloat2 / this.a.c;
-    float f1;
-    if ((paramFloat1 < 0.0F) && (this.a.a(0.0F) >= 0.0F))
+    Object localObject1 = new CompressInfo(this.jdField_a_of_type_JavaLangString, 0);
+    ((CompressInfo)localObject1).f = 0;
+    CompressOperator.a((CompressInfo)localObject1);
+    boolean bool;
+    Object localObject2;
+    int i;
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
-      f1 = 0.0F;
-      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c > this.a.getHeight()) {
-        break label247;
+      bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("PhotoConst.SYNCQZONE", false);
+      localObject2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("PhotoConst.SOURCE_FROM");
+      if ("FROM_SELECT_PHOTO".equals(localObject2)) {
+        i = 1;
       }
-      paramFloat1 = (this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c;
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Float = f1;
-      this.a.b = paramFloat1;
-      this.a.invalidate();
-      return true;
-      f1 = f3;
-      if (paramFloat1 <= 0.0F) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby_people_card.upload_local_photo", 2, ".uploadPhoto(), img_path = " + ((CompressInfo)localObject1).e + ",isSyncQZone=" + bool);
+      }
+      if (!StringUtil.a(((CompressInfo)localObject1).e))
+      {
+        localObject2 = new TransferRequest();
+        ((TransferRequest)localObject2).jdField_a_of_type_Boolean = true;
+        ((TransferRequest)localObject2).i = ((CompressInfo)localObject1).e;
+        ((TransferRequest)localObject2).b = 22;
+        localObject1 = new ByteBuffer();
+        if (!bool) {
+          break label304;
+        }
+      }
+      label304:
+      for (byte b = 1;; b = 0)
+      {
+        ((ByteBuffer)localObject1).a(b);
+        ((TransferRequest)localObject2).jdField_a_of_type_ArrayOfByte = ((ByteBuffer)localObject1).a();
+        ((TransferRequest)localObject2).jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new airy(this, bool);
+        this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a((TransferRequest)localObject2);
+        if (bool)
+        {
+          int j = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("PhotoConst.SYNCQZONE_CHECKSTATE", 1);
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007C16", "0X8007C16", j, 0, "", "", "", "");
+        }
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007C17", "0X8007C17", i, 0, "", "", "", "");
+        return;
+        if ("FROM_TAKE_PHOTO".equals(localObject2))
+        {
+          i = 2;
+          break;
+        }
+        i = 3;
         break;
       }
-      f1 = f3;
-      if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) > this.a.getWidth()) {
-        break;
-      }
-      f1 = this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      break;
-      label247:
-      if (paramFloat2 < 0.0F)
-      {
-        paramFloat1 = f2;
-        if (this.a.b(0.0F) >= 0.0F) {}
-      }
-      else if ((paramFloat2 > 0.0F) && (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) <= this.a.getHeight()))
-      {
-        paramFloat1 = this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      }
-      else
-      {
-        paramFloat1 = f4 - f5;
-      }
+      i = 3;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     airx
  * JD-Core Version:    0.7.0.1
  */

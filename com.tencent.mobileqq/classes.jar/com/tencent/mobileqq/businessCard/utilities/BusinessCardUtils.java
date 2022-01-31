@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.businessCard.utilities;
 
-import abhq;
-import abhr;
+import abor;
+import abos;
 import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -195,7 +195,7 @@ public class BusinessCardUtils
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestWidth = 1000;
       localURLDrawableOptions.mRequestHeight = 600;
-      ThreadManager.post(new abhr(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
+      ThreadManager.post(new abos(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
       return;
     }
     catch (Exception paramString)
@@ -230,9 +230,9 @@ public class BusinessCardUtils
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mRequestWidth = paramInt1;
         localURLDrawableOptions.mRequestHeight = paramInt2;
-        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130842288);
+        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130842335);
         paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-        paramURLImageView.setURLDrawableDownListener(new abhq(paramURLImageView));
+        paramURLImageView.setURLDrawableDownListener(new abor(paramURLImageView));
         return;
       }
       catch (Exception paramString) {}

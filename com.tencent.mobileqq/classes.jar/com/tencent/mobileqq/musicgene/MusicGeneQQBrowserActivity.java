@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.musicgene;
 
-import adxb;
+import aekh;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -25,7 +25,7 @@ public class MusicGeneQQBrowserActivity
   
   public MusicGeneQQBrowserActivity()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adxb(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aekh(this);
     this.jdField_a_of_type_JavaLangClass = MusicGeneQQBrowserActivity.MusicGeneQQBrowserFragment.class;
   }
   
@@ -139,7 +139,7 @@ public class MusicGeneQQBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

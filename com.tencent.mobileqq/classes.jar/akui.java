@@ -1,49 +1,36 @@
-import android.content.Context;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
-import com.tencent.plato.PlatoAppManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.widget.GridListView;
+import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
+import com.tencent.mobileqq.widget.GridListView.WraperAdapter;
 
-public final class akui
-  implements AsyncBack
+public class akui
+  extends DataSetObserver
 {
-  public akui(Context paramContext, AppRuntime paramAppRuntime, long paramLong, long[] paramArrayOfLong) {}
+  public akui(GridListView paramGridListView) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onChanged()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(PlatoAppManager.a(), 2, "preInitV8So loaded,code=" + paramInt + ", param :" + paramString);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter != null) {
+      GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
     }
-    if (paramInt == 0)
-    {
-      if (paramString != null) {
-        break label85;
-      }
-      PlatoAppManager.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_MqqAppAppRuntime);
-      TroopTechReportUtils.a("plato_v1", "v8_so_unzip", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "", "", "");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
     }
-    label85:
-    do
-    {
-      return;
-      if (paramString.contains("url"))
-      {
-        PlatoAppManager.a.set(false);
-        this.jdField_a_of_type_ArrayOfLong[0] = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
-        TroopTechReportUtils.a("plato_v1", "v8_so_download", String.valueOf(this.jdField_a_of_type_ArrayOfLong[0]), "", "", "");
-        return;
-      }
-    } while (PlatoAppManager.a.get());
-    PlatoAppManager.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_MqqAppAppRuntime);
+  }
+  
+  public void onInvalidated()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter != null) {
+      GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetInvalidated();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akui
  * JD-Core Version:    0.7.0.1
  */

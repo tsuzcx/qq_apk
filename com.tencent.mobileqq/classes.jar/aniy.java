@@ -1,17 +1,16 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.qq.im.setting.ICameraEntrance;
 
-public class aniy
-  implements DoodleOpController.DoodleOpListener
+class aniy
+  implements DialogInterface.OnClickListener
 {
-  public aniy(DoodleLayout paramDoodleLayout) {}
+  aniy(anix paramanix) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.n();
-    }
+    this.a.a.a.a(2);
   }
 }
 

@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import android.os.Message;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
 public class anwh
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public anwh(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager, View paramView, int paramInt) {}
+  public anwh(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.jdField_a_of_type_Int == CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager)) {
-      CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, false);
-    }
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 8, 1, this.jdField_a_of_type_Int));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,15 +1,30 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.richmedia.EditVideoQzComment;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class xlg
-  implements CompoundButton.OnCheckedChangeListener
+public final class xlg
+  implements Runnable
 {
-  public xlg(EditVideoQzComment paramEditVideoQzComment) {}
+  public xlg(QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    EditVideoQzComment.a(this.a).a = paramBoolean;
+    String str = "0X80067EA";
+    ServiceAccountFolderManager localServiceAccountFolderManager = ServiceAccountFolderManager.a();
+    int i = localServiceAccountFolderManager.b();
+    int j = localServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (j == 1) {
+      str = "0X80067E8";
+    }
+    for (;;)
+    {
+      long l = localServiceAccountFolderManager.a();
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "Pb_account_lifeservice", "", str, str, 0, 0, "" + l, "" + j, "" + i, String.valueOf(this.jdField_a_of_type_Int + 1));
+      return;
+      if (j == 2) {
+        str = "0X80067E9";
+      }
+    }
   }
 }
 

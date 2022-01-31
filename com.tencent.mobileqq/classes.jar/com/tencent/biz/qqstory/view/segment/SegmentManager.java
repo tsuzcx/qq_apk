@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import oow;
+import oqq;
 
 public class SegmentManager
   extends BaseAdapter
@@ -40,7 +40,7 @@ public class SegmentManager
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    super.registerDataSetObserver(new oow(this));
+    super.registerDataSetObserver(new oqq(this));
   }
   
   private int a(int paramInt)
@@ -84,7 +84,7 @@ public class SegmentManager
     UIUtils.b();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((SegmentView)localIterator.next()).E_();
+      ((SegmentView)localIterator.next()).J_();
     }
   }
   
@@ -271,7 +271,7 @@ public class SegmentManager
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((SegmentView)localIterator.next()).i();
+      ((SegmentView)localIterator.next()).g();
     }
   }
   

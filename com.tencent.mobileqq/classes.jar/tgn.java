@@ -1,10 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class tgn
+  implements Runnable
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  public tgn(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  
+  public void run()
+  {
+    this.a.c(this.a.a.getLeft(), this.a.a.getTop() + this.a.a.getMeasuredHeight() - 20);
+  }
 }
 
 

@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout.DoodleLayoutListener;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
 
-public class uod
-  implements upf
+class uod
+  implements Runnable
 {
-  public uod(DoodleLayout paramDoodleLayout) {}
+  uod(uoc paramuoc) {}
   
-  public void a()
+  public void run()
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation.c(this.a.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

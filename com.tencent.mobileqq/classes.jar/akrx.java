@@ -1,33 +1,30 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Handler;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
 
 public class akrx
   implements Runnable
 {
-  public akrx(DownloadManager paramDownloadManager, String paramString, DownloadInfo paramDownloadInfo) {}
+  public akrx(WereWolvesLoadingView paramWereWolvesLoadingView) {}
   
   public void run()
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
-      DownloadDBHelper.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
+    if ((this.a.jdField_b_of_type_Int > 90) || (this.a.jdField_b_of_type_Boolean)) {
       return;
     }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
-    }
+    WereWolvesLoadingView localWereWolvesLoadingView1 = this.a;
+    localWereWolvesLoadingView1.jdField_b_of_type_Int += 1;
+    localWereWolvesLoadingView1 = this.a;
+    WereWolvesLoadingView localWereWolvesLoadingView2 = this.a;
+    int i = localWereWolvesLoadingView2.jdField_b_of_type_Int;
+    localWereWolvesLoadingView2.jdField_b_of_type_Int = (i + 1);
+    localWereWolvesLoadingView1.setProgress(i);
+    i = (int)(2.222222F * this.a.jdField_b_of_type_Int + 100.0F);
+    this.a.a.postDelayed(this, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akrx
  * JD-Core Version:    0.7.0.1
  */

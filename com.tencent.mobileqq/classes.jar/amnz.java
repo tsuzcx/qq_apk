@@ -1,13 +1,15 @@
-import cooperation.qzone.widget.RedTouchExtendButton;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class amnz
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public amnz(RedTouchExtendButton paramRedTouchExtendButton) {}
+  public amnz(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.invalidate();
+    this.a.finish();
   }
 }
 

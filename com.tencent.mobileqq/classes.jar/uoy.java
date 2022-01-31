@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.scribble.ScribbleMsgUtils;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton;
 
-class uoy
-  implements Runnable
+public class uoy
+  implements Action.OnActionEndListener
 {
-  uoy(uox paramuox, int paramInt) {}
+  public uoy(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_Uox.a.d();
-    if (this.jdField_a_of_type_Int == ScribbleMsgUtils.d)
-    {
-      this.jdField_a_of_type_Uox.a.c();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_Uox.a.getContext(), 2131439040, 0).b(DoodlePanel.a(this.jdField_a_of_type_Uox.a).a());
+    this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.b = 255;
+    this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton$OnClickListener);
   }
 }
 

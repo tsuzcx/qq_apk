@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.confess;
 
-import abkt;
-import abkx;
-import abky;
+import abru;
+import abry;
+import abrz;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -115,19 +115,19 @@ public class ConfessMsgUtil
       do
       {
         return localObject1;
-        localObject2 = abkt.a(str);
+        localObject2 = abru.a(str);
       } while (localObject2 == null);
       localElem = new im_msg_body.Elem();
       localObject1 = new hummer_commelem.MsgElemInfo_servtype21();
       hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext localC2CConfessContext = new hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext();
-      localC2CConfessContext.uint64_confessor_uin.set(Long.parseLong(((abkt)localObject2).jdField_c_of_type_JavaLangString));
-      localC2CConfessContext.uint64_confess_to_uin.set(Long.parseLong(((abkt)localObject2).jdField_b_of_type_JavaLangString));
+      localC2CConfessContext.uint64_confessor_uin.set(Long.parseLong(((abru)localObject2).jdField_c_of_type_JavaLangString));
+      localC2CConfessContext.uint64_confess_to_uin.set(Long.parseLong(((abru)localObject2).jdField_b_of_type_JavaLangString));
       localC2CConfessContext.uint64_send_uin.set(Long.parseLong(paramMessageRecord.senderuin));
-      localC2CConfessContext.bytes_confess.set(ByteStringMicro.copyFromUtf8(((abkt)localObject2).d));
-      localC2CConfessContext.bytes_confessor_nick.set(ByteStringMicro.copyFromUtf8(((abkt)localObject2).e));
-      localC2CConfessContext.uint64_confess_time.set(((abkt)localObject2).jdField_a_of_type_Long);
-      localC2CConfessContext.uint32_bg_type.set(((abkt)localObject2).jdField_b_of_type_Int);
-      localC2CConfessContext.uint32_topic_id.set(((abkt)localObject2).jdField_a_of_type_Int);
+      localC2CConfessContext.bytes_confess.set(ByteStringMicro.copyFromUtf8(((abru)localObject2).d));
+      localC2CConfessContext.bytes_confessor_nick.set(ByteStringMicro.copyFromUtf8(((abru)localObject2).e));
+      localC2CConfessContext.uint64_confess_time.set(((abru)localObject2).jdField_a_of_type_Long);
+      localC2CConfessContext.uint32_bg_type.set(((abru)localObject2).jdField_b_of_type_Int);
+      localC2CConfessContext.uint32_topic_id.set(((abru)localObject2).jdField_a_of_type_Int);
       ((hummer_commelem.MsgElemInfo_servtype21)localObject1).c2c_confess_ctx.set(localC2CConfessContext);
       Object localObject2 = new im_msg_body.CommonElem();
       ((im_msg_body.CommonElem)localObject2).uint32_service_type.set(21);
@@ -353,7 +353,7 @@ public class ConfessMsgUtil
     }
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      ThreadManager.post(new abky(paramQQAppInterface, paramString, paramInt1, paramInt2, paramBoolean1, paramBoolean2), 8, null, false);
+      ThreadManager.post(new abrz(paramQQAppInterface, paramString, paramInt1, paramInt2, paramBoolean1, paramBoolean2), 8, null, false);
       return;
     }
     paramQQAppInterface.a().a(paramString, paramInt1, paramInt2, paramBoolean1, paramBoolean2);
@@ -685,15 +685,15 @@ public class ConfessMsgUtil
         if (paramList.a(paramElem, str1, str2, i) != 1) {
           break;
         }
-        localObject1 = new abkt();
-        ((abkt)localObject1).jdField_a_of_type_Int = i;
-        ((abkt)localObject1).jdField_b_of_type_Int = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_bg_type.get();
-        ((abkt)localObject1).jdField_b_of_type_JavaLangString = str1;
-        ((abkt)localObject1).jdField_c_of_type_JavaLangString = str2;
-        ((abkt)localObject1).d = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).bytes_confess.get().toStringUtf8();
-        ((abkt)localObject1).e = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).bytes_confessor_nick.get().toStringUtf8();
-        ((abkt)localObject1).jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentNickname();
-        ((abkt)localObject1).jdField_c_of_type_Int = -1;
+        localObject1 = new abru();
+        ((abru)localObject1).jdField_a_of_type_Int = i;
+        ((abru)localObject1).jdField_b_of_type_Int = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint32_bg_type.get();
+        ((abru)localObject1).jdField_b_of_type_JavaLangString = str1;
+        ((abru)localObject1).jdField_c_of_type_JavaLangString = str2;
+        ((abru)localObject1).d = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).bytes_confess.get().toStringUtf8();
+        ((abru)localObject1).e = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).bytes_confessor_nick.get().toStringUtf8();
+        ((abru)localObject1).jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentNickname();
+        ((abru)localObject1).jdField_c_of_type_Int = -1;
         if (!((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint64_confess_time.has()) {
           break label1173;
         }
@@ -701,15 +701,15 @@ public class ConfessMsgUtil
       label1173:
       for (long l1 = ((hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext)localObject2).uint64_confess_time.get();; l1 = 0L)
       {
-        ((abkt)localObject1).jdField_a_of_type_Long = l1;
+        ((abru)localObject1).jdField_a_of_type_Long = l1;
         l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get() - 1L;
         l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get() - 1L;
-        paramList.a(paramElem, (abkt)localObject1, l1, l2);
+        paramList.a(paramElem, (abru)localObject1, l1, l2);
         if (!QLog.isColorLevel()) {
           break;
         }
         long l3 = MessageCache.a();
-        QLog.i("ConfessMsgUtil", 2, "decodeConfessMsgElem strConfessorDesc:" + ((abkt)localObject1).d + " msgTime:" + l1 + " msgSeq:" + l2 + " nowTime" + l3);
+        QLog.i("ConfessMsgUtil", 2, "decodeConfessMsgElem strConfessorDesc:" + ((abru)localObject1).d + " msgTime:" + l1 + " msgSeq:" + l2 + " nowTime" + l3);
         return;
         bool = TextUtils.equals(str1, (CharSequence)localObject1);
         if (!bool) {
@@ -848,7 +848,7 @@ public class ConfessMsgUtil
           ((FrdConfessInfo)localObject).jdField_b_of_type_JavaLangString = "";
           ((FrdConfessInfo)localObject).jdField_b_of_type_Int = 0;
         }
-        ThreadManager.post(new abkx((FrdConfessInfo)localObject), 8, null, false);
+        ThreadManager.post(new abry((FrdConfessInfo)localObject), 8, null, false);
       }
     }
     for (;;)
@@ -874,7 +874,7 @@ public class ConfessMsgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessMsgUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
-import lxe;
+import lxn;
 
 public class ArticleInfo
   extends BaseArticleInfo
@@ -24,7 +24,7 @@ public class ArticleInfo
   
   public static Parcelable.Creator makeArticleInfoCreator()
   {
-    return new lxe();
+    return new lxn();
   }
   
   public ArticleInfo clone()

@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
+import com.tencent.qphone.base.util.QLog;
 
-public final class zzt
-  implements Parcelable.Creator
+class zzt
+  implements Runnable
 {
-  public ArCloudConfigInfo a(Parcel paramParcel)
-  {
-    return new ArCloudConfigInfo(paramParcel);
-  }
+  zzt(zzs paramzzs) {}
   
-  public ArCloudConfigInfo[] a(int paramInt)
+  public void run()
   {
-    return new ArCloudConfigInfo[paramInt];
+    if ((ARWorldCupGlobalSceneRenderable.a(this.a.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a.a).a()))
+    {
+      ARWorldCupGlobalSceneRenderable.a(this.a.a).a();
+      QLog.d("ARWorldCupGlobalSceneRenderable", 2, "mRepeatCheckRunnable run ");
+    }
   }
 }
 

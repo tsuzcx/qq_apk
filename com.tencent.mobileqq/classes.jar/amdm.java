@@ -1,25 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
-import cooperation.qzone.UploadEnv;
-import cooperation.qzone.util.NetworkState.NetworkStateListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ReadInJoyAccountActiveTips;
 
 public class amdm
-  implements NetworkState.NetworkStateListener
+  implements View.OnTouchListener
 {
-  public amdm(UploadEnv paramUploadEnv, UploadConfiguration.NetworkStateObserver paramNetworkStateObserver) {}
+  public amdm(ReadInJoyAccountActiveTips paramReadInJoyAccountActiveTips) {}
   
-  public void onNetworkConnect(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
-    }
-    UploadEnv.a(this.jdField_a_of_type_CooperationQzoneUploadEnv, paramBoolean);
-    this.jdField_a_of_type_ComTencentUploadCommonUploadConfiguration$NetworkStateObserver.onStateChanged(paramBoolean);
+    this.a.dismiss();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amdm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,53 @@
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
 
-class juj
-  implements Runnable
+public class juj
+  implements View.OnClickListener
 {
-  juj(juh paramjuh, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
+  public juj(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Juh.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
-    boolean bool;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Juh.a.jdField_a_of_type_AndroidWidgetLinearLayout == null);
-      this.jdField_a_of_type_Juh.a.a("onStatusChanged", false);
-      bool = this.jdField_a_of_type_Juh.a.isShown();
-      if ((this.jdField_a_of_type_Boolean) && (bool)) {
-        this.jdField_a_of_type_Juh.a.a(true);
+    boolean bool = false;
+    if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().V) {
+      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
+        ReportController.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("AVRedBag", 1, "onStatusChanged, remoteHasVideo[" + this.b + "], peerSupportRedBag[" + this.c + "], isInGameMode[" + this.jdField_a_of_type_Boolean + "], isshow[" + bool + "]");
+    }
+    for (;;)
+    {
+      if (!this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().V) {
+        bool = true;
+      }
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a(bool);
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().V = bool;
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a();
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.b();
+      try
+      {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        return;
+      }
+      catch (Throwable paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
+        continue;
+        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
+          ReportController.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
+        } else if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000) {
+          ReportController.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
+        }
+      }
+    }
   }
 }
 

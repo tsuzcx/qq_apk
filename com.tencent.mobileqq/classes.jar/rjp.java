@@ -1,15 +1,40 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
-public class rjp
+class rjp
   implements Runnable
 {
-  public rjp(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  rjp(rjo paramrjo, String paramString) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.springBackOverScrollHeaderView();
+    TextView localTextView;
+    if (AddFriendVerifyActivity.b(this.jdField_a_of_type_Rjo.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).isShown())
+    {
+      localTextView = AddFriendVerifyActivity.b(this.jdField_a_of_type_Rjo.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Rjo.jdField_a_of_type_JavaLangString)) {
+        break label91;
+      }
+      str = this.jdField_a_of_type_JavaLangString;
+      localTextView.setText(str);
+      if (AppSetting.b)
+      {
+        localTextView = AddFriendVerifyActivity.b(this.jdField_a_of_type_Rjo.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Rjo.jdField_a_of_type_JavaLangString)) {
+          break label102;
+        }
+      }
+    }
+    label91:
+    label102:
+    for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_a_of_type_Rjo.jdField_a_of_type_JavaLangString)
+    {
+      localTextView.setContentDescription(str);
+      return;
+      str = this.jdField_a_of_type_Rjo.jdField_a_of_type_JavaLangString;
+      break;
     }
   }
 }

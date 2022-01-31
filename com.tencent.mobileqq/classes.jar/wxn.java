@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
-import cooperation.qwallet.plugin.QWalletPrivacyUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.nearby.now.send.capturepart.QQNowVideoFlowCallback;
 
-public class wxn
-  implements DialogInterface.OnClickListener
+class wxn
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public wxn(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  wxn(wxk paramwxk, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    QWalletPrivacyUtils.setHasClickAgree(this.a.getActivity().app);
-    this.a.b();
+    this.jdField_a_of_type_Wxk.a.d();
+    if (QQNowVideoFlowCallback.a(this.jdField_a_of_type_Wxk.a, paramLocalMediaInfo)) {
+      this.jdField_a_of_type_Wxk.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
+    }
   }
 }
 

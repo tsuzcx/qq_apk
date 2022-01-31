@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import java.util.ArrayList;
 
-public final class agtt
-  implements Parcelable.Creator
+public class agtt
 {
-  public SegmentKeeper a(Parcel paramParcel)
-  {
-    return new SegmentKeeper(paramParcel);
-  }
-  
-  public SegmentKeeper[] a(int paramInt)
-  {
-    return new SegmentKeeper[paramInt];
-  }
+  public int a;
+  public final ArrayList a = new ArrayList(100);
+  public final int b = 99;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agtt
  * JD-Core Version:    0.7.0.1
  */

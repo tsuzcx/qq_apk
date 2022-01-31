@@ -9,7 +9,7 @@ public class AIOFakePanel
   public AIOFakePanel(Context paramContext)
   {
     super(paramContext);
-    setBackgroundResource(2130845819);
+    setBackgroundResource(2130845947);
   }
   
   public void setPanelType() {}

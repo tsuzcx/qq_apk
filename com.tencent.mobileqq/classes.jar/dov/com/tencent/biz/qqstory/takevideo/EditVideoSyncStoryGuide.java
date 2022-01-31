@@ -2,8 +2,8 @@ package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import anez;
-import anfa;
+import anve;
+import anvf;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -31,8 +31,8 @@ public class EditVideoSyncStoryGuide
     Object localObject = DialogUtil.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 230);
     ((QQCustomDialog)localObject).setTitle("分享到日迹");
     ((QQCustomDialog)localObject).setMessage("分享后，好友即可在日迹中查看该视频，并保存到\"我的日迹\"");
-    ((QQCustomDialog)localObject).setNegativeButton("我知道了", new anez(this, (QQCustomDialog)localObject));
-    ((QQCustomDialog)localObject).setOnDismissListener(new anfa(this));
+    ((QQCustomDialog)localObject).setNegativeButton("我知道了", new anve(this, (QQCustomDialog)localObject));
+    ((QQCustomDialog)localObject).setOnDismissListener(new anvf(this));
     ((QQCustomDialog)localObject).show();
     int i;
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a != null)

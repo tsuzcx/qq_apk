@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
 
 public class acwb
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public acwb(VideoFileViewer paramVideoFileViewer, String paramString) {}
+  public acwb(FileVideoManager paramFileVideoManager, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileManagerUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback.a();
   }
 }
 

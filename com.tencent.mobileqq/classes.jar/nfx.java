@@ -1,14 +1,42 @@
-import com.tencent.biz.qqstory.newshare.model.Job;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor;
+import android.app.Activity;
+import com.tencent.biz.qqstory.newshare.StoryShare;
+import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
+import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
+import com.tencent.biz.qqstory.newshare.model.ShareData;
+import com.tencent.biz.qqstory.newshare.ui.ShareUI;
+import com.tencent.biz.qqstory.newshare.util.StoryBasicShareUtils;
 
 public class nfx
-  implements Runnable
+  implements OnPrepareShareListener
 {
-  public nfx(JobExecutor paramJobExecutor, Job paramJob) {}
+  public nfx(StoryShare paramStoryShare) {}
   
-  public void run()
+  public void a(ShareData paramShareData)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a();
+    StoryShare.a(this.a).c();
+    Activity localActivity = StoryShare.a(this.a).a();
+    if (localActivity == null)
+    {
+      c(paramShareData);
+      return;
+    }
+    StoryBasicShareUtils.a(localActivity, paramShareData, StoryShare.a(this.a));
+  }
+  
+  public void b(ShareData paramShareData)
+  {
+    StoryShare.a(this.a).c();
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).c(paramShareData.a);
+    }
+  }
+  
+  public void c(ShareData paramShareData)
+  {
+    StoryShare.a(this.a).c();
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).d(paramShareData.a);
+    }
   }
 }
 

@@ -1,15 +1,14 @@
-import cooperation.qzone.video.QzoneVerticalVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoTransparentActivity;
+import cooperation.dingdong.data.ScheduleReminderMgr;
 
 public class amld
+  implements Runnable
 {
-  public static Class a(String paramString)
+  public amld(ScheduleReminderMgr paramScheduleReminderMgr) {}
+  
+  public void run()
   {
-    if (QzoneVerticalVideoPluginProxyActivity.a(QzoneVerticalVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneVerticalVideoTransparentActivity.class;
-    }
-    return QzoneVerticalVideoGpuProxyActivity.class;
+    this.a.b(ScheduleReminderMgr.a(this.a));
+    ScheduleReminderMgr.a(this.a, null);
   }
 }
 

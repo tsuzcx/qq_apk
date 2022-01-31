@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class wwd
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public wwd(GoldMsgSettingActivity paramGoldMsgSettingActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  public wwd(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GoldMsgSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity, this.jdField_a_of_type_Boolean, this.b);
+    this.a.a = null;
   }
 }
 

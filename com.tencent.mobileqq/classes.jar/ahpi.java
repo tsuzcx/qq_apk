@@ -1,54 +1,25 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.richstatus.ActionInfo;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
 public class ahpi
-  extends AsyncTask
+  implements IActionListener
 {
-  public ahpi(RedBagVideoManager paramRedBagVideoManager) {}
+  public ahpi(EditActivity paramEditActivity) {}
   
-  protected Boolean a(String... paramVarArgs)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramVarArgs = paramVarArgs[0];
-    if (paramVarArgs == null) {
-      paramVarArgs = Boolean.valueOf(false);
-    }
-    Object localObject;
-    do
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
     {
-      do
+      ActionInfo localActionInfo = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
+      if (localActionInfo != null)
       {
-        return paramVarArgs;
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("VALUE_MSG_VIDEO_ID", paramVarArgs);
-        paramVarArgs = VideoPlayIPCClient.a().a("CMD_QUERY_VIDEO_REDBAG_STAT", (Bundle)localObject);
-        if (paramVarArgs == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RedBagVideoManager", 2, "QueryRewardedTask VideoPlayIPCClient.callServer value=null");
-          }
-          return Boolean.valueOf(false);
-        }
-        localObject = Boolean.valueOf(paramVarArgs.getBoolean("VALUE_MSG_REDBAG_STAT"));
-        paramVarArgs = (String[])localObject;
-      } while (!((Boolean)localObject).booleanValue());
-      paramVarArgs = (String[])localObject;
-    } while (RedBagVideoManager.b(this.a) == null);
-    RedBagVideoManager.b(this.a).g = 1;
-    return localObject;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    if (paramBoolean.booleanValue()) {
-      RedBagVideoManager.c(this.a);
+        EditActivity.a(this.a).actionText = localActionInfo.d;
+        EditActivity.a(this.a, false);
+      }
     }
-    while (RedBagVideoManager.a(this.a)) {
-      return;
-    }
-    RedBagVideoManager.d(this.a);
   }
 }
 

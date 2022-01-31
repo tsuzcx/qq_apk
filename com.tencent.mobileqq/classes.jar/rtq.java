@@ -1,32 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rtq
-  implements DialogInterface.OnCancelListener
+public class rtq
+  implements Runnable
 {
-  public rtq(boolean paramBoolean, int paramInt, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public rtq(BaseChatPie paramBaseChatPie, FrameLayout paramFrameLayout) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label56;
-      }
-      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
-      }
-      return;
-      label56:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
-      }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f.setVisibility(0);
     }
   }
 }

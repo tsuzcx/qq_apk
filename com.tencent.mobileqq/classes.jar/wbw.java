@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.mobileqq.app.ShortVideoObserver;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
 
-public class wbw
-  extends ShortVideoObserver
+class wbw
+  implements Runnable
 {
-  public wbw(BlessResultActivity paramBlessResultActivity) {}
+  wbw(wbv paramwbv) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "VideoRedbag, onCheckRealNameRsp in bless");
-    }
-    if ((paramBoolean) && (paramInt == RedBagVideoManager.a)) {
-      DialogUtil.b(this.a.getActivity(), 0, null, this.a.getString(2131439096), 2131439098, 2131439097, new wbx(this), new wby(this)).show();
-    }
+    this.a.a.b(StickerBubbleAnimationViewHolder.a(this.a.a));
   }
 }
 

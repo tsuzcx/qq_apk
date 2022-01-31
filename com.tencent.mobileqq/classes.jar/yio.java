@@ -1,27 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public final class yio
-  implements View.OnClickListener
+public class yio
+  implements Runnable
 {
-  public yio(ApolloRender paramApolloRender, ApolloSurfaceView paramApolloSurfaceView) {}
+  public yio(TroopListAdapter2 paramTroopListAdapter2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null))
-    {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.getText().toString();
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setText("");
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.queueEvent(new yip(this, paramView));
-    }
+    List localList = TroopListAdapter2.a(this.a);
+    ThreadManager.getUIHandler().post(new yip(this, localList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yio
  * JD-Core Version:    0.7.0.1
  */

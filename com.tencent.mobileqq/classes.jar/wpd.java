@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class wpd
-  extends VasQuickUpdateManager.CallBacker
+  implements Runnable
 {
-  public wpd(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public wpd(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void run()
   {
-    if ((paramLong == 1000L) && (paramString1.equals("pendant_market_json.android.v2")) && (paramInt1 == 0)) {
-      this.a.a(false);
+    if (!EmoticonGroupStoreFragment.c(this.a).isEmpty())
+    {
+      ArrayList localArrayList = new ArrayList(EmoticonGroupStoreFragment.c(this.a));
+      Map localMap = EmoticonGroupStoreFragment.a(this.a).a(localArrayList);
+      if (localMap != null) {
+        EmoticonGroupStoreFragment.a(this.a).a(localMap, localArrayList);
+      }
     }
   }
 }

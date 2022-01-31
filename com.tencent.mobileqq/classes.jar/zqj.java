@@ -1,17 +1,17 @@
-import IMMsgBodyPack.MsgType0x210;
-import com.tencent.av.service.QavWrapper;
-import com.tencent.av.service.QavWrapper.OnReadyListener;
-import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
+import java.io.File;
+import java.util.Comparator;
 
-public class zqj
-  implements QavWrapper.OnReadyListener
+class zqj
+  implements Comparator
 {
-  public zqj(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210) {}
+  zqj(zqf paramzqf) {}
   
-  public void a(QavWrapper paramQavWrapper)
+  public int a(File paramFile1, File paramFile2)
   {
-    paramQavWrapper.b(this.jdField_a_of_type_IMMsgBodyPackMsgType0x210.vProtobuf);
-    paramQavWrapper.a();
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 

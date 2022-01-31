@@ -1,91 +1,28 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.handler.AccountDetailBaseItemClickHandler;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailCustomModuleBaseWrapper;
 import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
 
-public final class kqs
-  implements BusinessObserver
+public class kqs
+  implements View.OnClickListener
 {
-  public kqs(QQAppInterface paramQQAppInterface, PaConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt, String paramString) {}
+  public kqs(AccountDetailCustomModuleBaseWrapper paramAccountDetailCustomModuleBaseWrapper) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseInfoModel", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    PublicAccountHandler localPublicAccountHandler = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-    if (paramBoolean) {}
-    for (;;)
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof PaConfigAttr.PaConfigInfo)))
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          Object localObject = new mobileqq_mp.SetFunctionFlagResponse();
-          ((mobileqq_mp.SetFunctionFlagResponse)localObject).mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)((mobileqq_mp.SetFunctionFlagResponse)localObject).ret_info.get()).ret_code.get() == 0)
-          {
-            ((mobileqq_mp.RetInfo)((mobileqq_mp.SetFunctionFlagResponse)localObject).ret_info.get()).ret_code.get();
-            if (QLog.isColorLevel()) {
-              QLog.d("AccountDetailBaseInfoModel", 2, "sendSetFunctionFlagRequest success");
-            }
-            this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d = this.jdField_a_of_type_Int;
-            paramBundle = null;
-            localObject = (PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-            if (localObject != null) {
-              paramBundle = ((PublicAccountDataManager)localObject).a(this.jdField_a_of_type_JavaLangString);
-            }
-            if (paramBundle != null)
-            {
-              if (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.e == 6)
-              {
-                if (this.jdField_a_of_type_Int == 1) {
-                  paramBundle.mShowMsgFlag = this.jdField_a_of_type_Int;
-                }
-                ThreadManager.getSubThreadHandler().postDelayed(new kqt(this, paramBundle), 10L);
-                localPublicAccountHandler.a(109, true, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-                return;
-              }
-              if (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.e != 3) {
-                continue;
-              }
-              paramBundle.isSyncLbs = true;
-              if (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d != 1) {
-                break label315;
-              }
-              paramBoolean = true;
-              paramBundle.isAgreeSyncLbs = paramBoolean;
-              continue;
-            }
-          }
-          else
-          {
-            localPublicAccountHandler.a(109, false, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-          }
-        }
-        else
-        {
-          localPublicAccountHandler.a(109, false, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-          return;
-          localPublicAccountHandler.a(109, false, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-        }
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "click!");
       }
-      catch (Exception paramBundle)
-      {
-        return;
+      paramView = (PaConfigAttr.PaConfigInfo)paramView;
+      if (this.a.a != null) {
+        this.a.a.a(paramView);
       }
-      label315:
-      paramBoolean = false;
+      this.a.a(paramView);
     }
   }
 }

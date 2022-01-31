@@ -1,32 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.biz.qqstory.utils.BitmapUtils.OutOfMemHandleCommand;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Subscriber;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
+import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader.Listener;
+import com.tencent.biz.qqstory.shareGroup.icon.UrlListToBitmapListSegment;
 import java.util.List;
 
 public class nrw
-  implements Subscriber
+  implements UrlBitmapDownloader.Listener
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public nrw(UrlListToBitmapListSegment paramUrlListToBitmapListSegment, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
   
-  public nrw(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    IconLog.b(UrlListToBitmapListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlListToBitmapListSegment), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
   }
   
-  public void accept(@NonNull List paramList)
+  public void a(String paramString, Throwable paramThrowable)
   {
-    paramList.add(BitmapUtils.OutOfMemHandleCommand.class);
-  }
-  
-  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
-  {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDispatchable != null) {
-      paramDispatchable.g();
-    }
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    IconLog.c(UrlListToBitmapListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlListToBitmapListSegment), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
   }
 }
 

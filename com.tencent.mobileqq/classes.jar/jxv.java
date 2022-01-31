@@ -1,21 +1,29 @@
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.MultiMembersAudioUI;
-import com.tencent.av.ui.MultiMembersVideoUI;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.ui.MultiVideoEnterPageMembersControlUI;
 
 public class jxv
   implements Runnable
 {
-  public jxv(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public jxv(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
   public void run()
   {
+    if (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null)
+    {
+      MultiVideoEnterPageMembersControlUI[] arrayOfMultiVideoEnterPageMembersControlUI = this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI;
+      int j = arrayOfMultiVideoEnterPageMembersControlUI.length;
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfMultiVideoEnterPageMembersControlUI[i].c();
+        i += 1;
+      }
+    }
     if (this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI != null) {
       this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a();
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvUiMultiMembersVideoUI != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiMultiMembersVideoUI.c();
     }
     this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 2000L);
   }

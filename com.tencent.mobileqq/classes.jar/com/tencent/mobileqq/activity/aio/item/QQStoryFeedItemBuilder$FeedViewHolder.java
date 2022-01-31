@@ -1,19 +1,21 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 public class QQStoryFeedItemBuilder$FeedViewHolder
   extends AbstractChatItemBuilder.ViewHolder
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  TextView b;
+  ViewGroup a;
+  public ImageView a;
+  public CornerImageView a;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   TextView c;
   TextView d;
-  TextView e;
 }
 
 

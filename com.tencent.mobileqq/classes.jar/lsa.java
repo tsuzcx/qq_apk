@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
 
 public class lsa
-  implements View.OnClickListener
+  extends Handler
 {
-  public lsa(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter) {}
-  
-  public void onClick(View paramView)
+  public lsa(SubscriptionInfoModule paramSubscriptionInfoModule, Looper paramLooper)
   {
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.c(), false);
-    if (ReadInJoyFooterPresenter.a(this.a) != null) {
-      ReadInJoyFooterPresenter.a(this.a).a();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    this.a.f();
   }
 }
 

@@ -1,65 +1,23 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.QzonePreDownloadManager;
-import java.util.Vector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import com.tencent.widget.PinnedFooterExpandableListView.FooterExpandListViewListener;
 
 public class amcx
-  implements Downloader.DownloadListener
+  implements View.OnClickListener
 {
-  public amcx(QzonePreDownloadManager paramQzonePreDownloadManager, amcy paramamcy) {}
+  public amcx(PinnedFooterExpandableListView paramPinnedFooterExpandableListView1, PinnedFooterExpandableListView paramPinnedFooterExpandableListView2) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onClick(View paramView)
   {
-    QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, false);
-    if (QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).size() > 0)
-    {
-      amcy localamcy = (amcy)QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).get(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).remove(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, localamcy);
-    }
-    if (this.jdField_a_of_type_Amcy.a != null) {
-      this.jdField_a_of_type_Amcy.a.onDownloadCanceled(paramString);
-    }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, false);
-    if (QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).size() > 0)
-    {
-      amcy localamcy = (amcy)QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).get(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).remove(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, localamcy);
-    }
-    if (this.jdField_a_of_type_Amcy.a != null) {
-      this.jdField_a_of_type_Amcy.a.onDownloadFailed(paramString, paramDownloadResult);
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    if (this.jdField_a_of_type_Amcy.a != null) {
-      this.jdField_a_of_type_Amcy.a.onDownloadProgress(paramString, paramLong, paramFloat);
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, false);
-    if (QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).size() > 0)
-    {
-      amcy localamcy = (amcy)QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).get(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).remove(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, localamcy);
-    }
-    if (this.jdField_a_of_type_Amcy.a != null) {
-      this.jdField_a_of_type_Amcy.a.onDownloadSucceed(paramString, paramDownloadResult);
+    if (PinnedFooterExpandableListView.a(this.b) != null) {
+      PinnedFooterExpandableListView.a(this.b).a(this.a, this.b.a, this.b.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amcx
  * JD-Core Version:    0.7.0.1
  */

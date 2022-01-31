@@ -1,39 +1,19 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.WXShareFromQZHelper.WXShareListener;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import java.io.File;
+import java.util.Comparator;
 
-public class amlt
-  implements WXShareFromQZHelper.WXShareListener
+public final class amlt
+  implements Comparator
 {
-  public amlt(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public int a(File paramFile1, File paramFile2)
   {
-    int i = 1;
-    int j = paramBaseResp.errCode;
-    if (j == 0)
-    {
-      i = 0;
-      paramBaseResp = "分享成功";
-      QZoneSharePictureJsPlugin.d(this.a, "分享成功");
+    long l = paramFile1.length() - paramFile2.length();
+    if (l > 0L) {
+      return 1;
     }
-    for (;;)
-    {
-      QZoneSharePictureJsPlugin.a(this.a, QZoneSharePictureJsPlugin.a(this.a), i, paramBaseResp);
-      return;
-      if (j == -2)
-      {
-        paramBaseResp = "取消分享";
-        QZoneSharePictureJsPlugin.d(this.a, "取消分享");
-      }
-      else
-      {
-        paramBaseResp = "分享失败";
-        QLog.e("QZoneSharePictureJsPlugin", 1, "wx share fail:" + j);
-        i = j;
-      }
+    if (l == 0L) {
+      return 0;
     }
+    return -1;
   }
 }
 

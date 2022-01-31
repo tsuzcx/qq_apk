@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.ark.ArkTipsManager;
 
-class xir
-  implements Runnable
+public class xir
+  implements View.OnClickListener
 {
-  xir(xiq paramxiq) {}
+  public xir(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a.isFinishing()))
+    if (BannerManager.a(this.a) != null) {}
+    for (paramView = BannerManager.a(this.a).app;; paramView = null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+      if (paramView != null) {
+        ArkTipsManager.a().a(BannerManager.a(this.a), paramView);
+      }
+      ArkTipsManager.a().a();
+      return;
     }
   }
 }

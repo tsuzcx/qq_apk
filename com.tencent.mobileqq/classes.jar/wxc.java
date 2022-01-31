@@ -1,25 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class wxc
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  private wxc(PayCodeEntryActivity paramPayCodeEntryActivity) {}
+  public wxc(PhotoListActivity paramPhotoListActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext == null) || (paramContext.length() == 0)) {}
-    while (!paramContext.equals("wlx.plugin.paycode.enterpage.exit")) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PayCodeEntryActivity", 2, "receive broadcast, exit paycode entry activity");
-    }
-    this.a.finish();
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
   }
 }
 

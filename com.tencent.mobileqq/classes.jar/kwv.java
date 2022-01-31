@@ -1,24 +1,17 @@
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import java.net.URL;
+import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class kwv
-  implements PublicAccountImageDownListener
+  implements Runnable
 {
-  public kwv(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public kwv(AdModuleBase paramAdModuleBase, DownloadInfo paramDownloadInfo) {}
   
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
+  public void run()
   {
-    ReadInJoyNativeAdFragment.b(this.a, 2);
-    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
-    ReadInJoyNativeAdFragment.a(this.a, null);
-  }
-  
-  public void a(URL paramURL, Throwable paramThrowable)
-  {
-    ReadInJoyNativeAdFragment.b(this.a, 3);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleBase.a != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleBase.a.setProgress(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g);
+    }
   }
 }
 

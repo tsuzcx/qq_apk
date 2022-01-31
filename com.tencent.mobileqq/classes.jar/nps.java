@@ -1,29 +1,31 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnInfoListener;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
 
-public class nps
-  extends ProtoUtils.TroopProtocolObserver
+class nps
+  implements Runnable
 {
-  public nps(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate, boolean paramBoolean) {}
+  nps(npr paramnpr, int paramInt, Object paramObject) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if (paramInt != 0)
+    int i;
+    if (this.jdField_a_of_type_Npr.a.a != null)
     {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(7, bool);
-        this.a.a(0, this.a.a.getString(2131435357));
-        return;
+      i = this.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_Int != 21) {
+        break label58;
+      }
+      i = 2;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Npr.a.a.a(this.jdField_a_of_type_Npr.a, i, this.jdField_a_of_type_JavaLangObject);
+      return;
+      label58:
+      if (this.jdField_a_of_type_Int == 22) {
+        i = 3;
       }
     }
-    ((StoryConfigManager)SuperManager.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
   }
 }
 

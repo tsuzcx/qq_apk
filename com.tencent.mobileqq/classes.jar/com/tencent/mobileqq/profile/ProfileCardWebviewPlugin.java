@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profile;
 
-import agbh;
-import agbi;
-import agbk;
+import agpj;
+import agpk;
+import agpm;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -44,7 +44,7 @@ public class ProfileCardWebviewPlugin
   extends VasWebviewJsPlugin
 {
   public int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new agbh(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new agpj(this);
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory;
   ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
   public List a;
@@ -97,10 +97,10 @@ public class ProfileCardWebviewPlugin
   {
     c();
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.c(this.mRuntime.a());
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131436143));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131436141));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131432998));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new agbk(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131436160));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131436158));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131433015));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new agpm(this));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setCanceledOnTouchOutside(true);
     try
     {
@@ -243,7 +243,7 @@ public class ProfileCardWebviewPlugin
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    ThreadManager.post(new agbi(this, paramString2, paramBoolean, paramString4, paramString3, paramString1), 8, null, false);
+    ThreadManager.post(new agpk(this, paramString2, paramBoolean, paramString4, paramString3, paramString1), 8, null, false);
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)

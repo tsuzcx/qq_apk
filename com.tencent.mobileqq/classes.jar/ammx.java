@@ -1,15 +1,30 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin;
+import cooperation.qappcenter.remote.RecvMsg;
+import cooperation.qappcenter.remote.RemoteServiceProxy;
+import cooperation.qappcenter.remote.SendMsg;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ammx
-  implements Runnable
+  extends Thread
 {
-  public ammx(QzoneRecommedPhotoJsPlugin paramQzoneRecommedPhotoJsPlugin) {}
+  public ammx(RemoteServiceProxy paramRemoteServiceProxy) {}
   
   public void run()
   {
-    RemoteHandleManager.a().a().q();
+    while (!this.a.a.isEmpty())
+    {
+      SendMsg localSendMsg = (SendMsg)this.a.a.poll();
+      if (localSendMsg != null) {
+        try
+        {
+          this.a.a(localSendMsg);
+        }
+        catch (Exception localException)
+        {
+          RecvMsg localRecvMsg = this.a.a(localSendMsg, "sendMsgToServiceFailed，" + localException.toString());
+          this.a.a(localSendMsg, localRecvMsg);
+        }
+      }
+    }
   }
 }
 

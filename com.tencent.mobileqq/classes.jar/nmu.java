@@ -1,42 +1,34 @@
-import android.graphics.Bitmap;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.CustomViewPager;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.ImageViewLoadCallback;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class nmu
-  implements Animation.AnimationListener
+public final class nmu
+  implements URLDrawable.URLDrawableListener
 {
-  public nmu(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
+  public nmu(long paramLong, PlayModeUtils.ImageViewLoadCallback paramImageViewLoadCallback) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a.setResult(-1);
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
-    if (this.a.a() != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramAnimation = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      paramAnimation.width = this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth();
-      paramAnimation.height = (paramAnimation.width * this.a.a().getHeight() / this.a.a().getWidth());
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramAnimation);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.a.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
     }
-    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setDuration(300L);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.startAnimation(paramAnimation);
+    StoryReportor.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$ImageViewLoadCallback != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$ImageViewLoadCallback.a();
+    }
   }
 }
 

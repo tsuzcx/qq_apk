@@ -1,16 +1,9 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-
-class xxl
-  implements Runnable
+public class xxl
 {
-  xxl(xxk paramxxk) {}
-  
-  public void run()
-  {
-    if (!this.a.a.isFinishing()) {
-      this.a.a.finish();
-    }
-  }
+  public int a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

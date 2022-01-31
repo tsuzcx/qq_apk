@@ -18,7 +18,6 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForStructing;
@@ -42,6 +41,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import lmg;
+import lmh;
+import lmi;
+import lmk;
 import lml;
 import lmm;
 import lmn;
@@ -54,32 +57,29 @@ import lmt;
 import lmu;
 import lmv;
 import lmw;
-import lmx;
-import lmy;
-import lmz;
-import mqq.app.AppRuntime;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class ReadinjoySPEventReport
 {
   private static int jdField_a_of_type_Int;
   private static volatile ReadinjoySPEventReport jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport;
-  private static lmz jdField_a_of_type_Lmz = new lmz(null);
+  private static lmw jdField_a_of_type_Lmw = new lmw(null);
   private static int jdField_b_of_type_Int;
-  private static long jdField_b_of_type_Long;
+  public static long b;
   private static boolean jdField_b_of_type_Boolean;
   private static long jdField_c_of_type_Long;
-  private static boolean jdField_c_of_type_Boolean;
+  private static volatile boolean jdField_c_of_type_Boolean;
   private static long jdField_d_of_type_Long;
-  private static volatile boolean jdField_d_of_type_Boolean;
   private static long jdField_e_of_type_Long;
-  private static long jdField_f_of_type_Long;
+  private static long f;
   private static long g;
+  private static long h;
+  private static long i;
   long jdField_a_of_type_Long = -1L;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   private Pair jdField_a_of_type_AndroidUtilPair;
   private ReadinjoySPEventReport.ExitAIOAttributes jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport$ExitAIOAttributes;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new lmx(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new lmt(this);
   String jdField_a_of_type_JavaLangString = "";
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(1024);
   private HashMap jdField_a_of_type_JavaUtilHashMap = (HashMap)ReadInJoyUtils.a(ReadInJoyUtils.a(), "kandian_aio_sp_word", true);
@@ -89,29 +89,55 @@ public class ReadinjoySPEventReport
   private List jdField_b_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private List jdField_c_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private List jdField_d_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private boolean jdField_d_of_type_Boolean;
   private boolean jdField_e_of_type_Boolean;
-  private boolean jdField_f_of_type_Boolean;
+  
+  static
+  {
+    jdField_b_of_type_Long = -1L;
+    h = System.currentTimeMillis();
+  }
   
   private ReadinjoySPEventReport()
   {
-    n();
+    l();
+  }
+  
+  public static int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return -1;
+    case 0: 
+      return 2;
+    case 1: 
+      return 0;
+    }
+    return 1;
   }
   
   public static long a()
   {
-    return jdField_d_of_type_Long;
+    return jdField_e_of_type_Long;
+  }
+  
+  public static long a(long paramLong)
+  {
+    paramLong = Math.max(Math.max(a(), h), paramLong);
+    return System.currentTimeMillis() - paramLong;
   }
   
   private ReadinjoySPEventReport.ExitAIOAttributes a(List paramList)
   {
     ReadinjoySPEventReport.ExitAIOAttributes localExitAIOAttributes = new ReadinjoySPEventReport.ExitAIOAttributes(this);
-    int i = 0;
     int j = 0;
+    int k = 0;
     Object localObject1 = ReadInJoyHelper.a();
     long l5 = ((Integer)((Pair)localObject1).first).intValue();
     long l6 = ((Integer)((Pair)localObject1).second).intValue();
     long l1 = NetConnInfoCenter.getServerTime();
-    int k = paramList.size() - 1;
+    int m = paramList.size() - 1;
     long l2;
     StringBuilder localStringBuilder;
     Object localObject2;
@@ -120,9 +146,9 @@ public class ReadinjoySPEventReport
     long l4;
     long l3;
     String str1;
-    if (k >= 0)
+    if (m >= 0)
     {
-      localObject1 = (ChatMessage)paramList.get(k);
+      localObject1 = (ChatMessage)paramList.get(m);
       l2 = l1 - ((ChatMessage)localObject1).time;
       if ((l2 <= l5) || (l2 <= l6)) {}
     }
@@ -147,24 +173,24 @@ public class ReadinjoySPEventReport
       if (this.jdField_a_of_type_JavaUtilHashMap.size() <= 0) {
         break label629;
       }
-      k = paramList.size() - 1;
+      m = paramList.size() - 1;
       for (;;)
       {
         localObject4 = localObject2;
         localObject3 = localObject1;
         l4 = l2;
         l3 = l1;
-        if (paramList.size() - k >= 7) {
+        if (paramList.size() - m >= 7) {
           break label629;
         }
         localObject4 = localObject2;
         localObject3 = localObject1;
         l4 = l2;
         l3 = l1;
-        if (k < 0) {
+        if (m < 0) {
           break label629;
         }
-        localObject4 = (ChatMessage)paramList.get(k);
+        localObject4 = (ChatMessage)paramList.get(m);
         str1 = ((ChatMessage)localObject4).msg;
         if (str1 != null) {
           break;
@@ -173,33 +199,33 @@ public class ReadinjoySPEventReport
         l3 = l2;
         localObject4 = localObject1;
         localObject3 = localObject2;
-        k -= 1;
+        m -= 1;
         l1 = l4;
         l2 = l3;
         localObject1 = localObject4;
         localObject2 = localObject3;
       }
     }
-    int m;
+    int n;
     if ((!((ChatMessage)localObject1).isSendFromLocal()) && (l2 <= l5))
     {
-      m = j + 1;
-      j = i;
-      i = m;
+      n = k + 1;
+      k = j;
+      j = n;
     }
     for (;;)
     {
-      m = k - 1;
+      n = m - 1;
+      m = k;
       k = j;
-      j = i;
-      i = k;
-      k = m;
+      j = m;
+      m = n;
       break;
       if ((((ChatMessage)localObject1).isSendFromLocal()) && (l2 <= l6))
       {
-        m = i + 1;
-        i = j;
-        j = m;
+        n = j + 1;
+        j = k;
+        k = n;
         continue;
         Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
         localObject3 = "";
@@ -257,7 +283,7 @@ public class ReadinjoySPEventReport
             localStringBuilder.append(l3).append(":").append((String)localObject3);
             paramList = ReadInJoyUtils.a();
             if ((paramList != null) && ((paramList instanceof QQAppInterface))) {}
-            for (k = ((QQAppInterface)paramList).a().b();; k = 0)
+            for (m = ((QQAppInterface)paramList).a().b();; m = 0)
             {
               paramList = new oidb_cmd0x80a.AttributeList();
               paramList.att_id.set(1);
@@ -266,7 +292,7 @@ public class ReadinjoySPEventReport
               localObject1 = new oidb_cmd0x80a.AttributeList();
               ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(2);
               ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("MsgPulse");
-              ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(l5 + ":" + j + "`" + l6 + ":" + i);
+              ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(l5 + ":" + k + "`" + l6 + ":" + j);
               localObject2 = new oidb_cmd0x80a.AttributeList();
               ((oidb_cmd0x80a.AttributeList)localObject2).att_id.set(3);
               ((oidb_cmd0x80a.AttributeList)localObject2).att_name.set("Keyword");
@@ -274,7 +300,7 @@ public class ReadinjoySPEventReport
               localObject3 = new oidb_cmd0x80a.AttributeList();
               ((oidb_cmd0x80a.AttributeList)localObject3).att_id.set(4);
               ((oidb_cmd0x80a.AttributeList)localObject3).att_name.set("LeftBtmRedCnt");
-              ((oidb_cmd0x80a.AttributeList)localObject3).att_value.set(String.valueOf(k));
+              ((oidb_cmd0x80a.AttributeList)localObject3).att_value.set(String.valueOf(m));
               localExitAIOAttributes.a = paramList;
               localExitAIOAttributes.b = ((oidb_cmd0x80a.AttributeList)localObject1);
               localExitAIOAttributes.c = ((oidb_cmd0x80a.AttributeList)localObject2);
@@ -303,9 +329,9 @@ public class ReadinjoySPEventReport
       else
       {
         label987:
-        m = i;
-        i = j;
-        j = m;
+        n = j;
+        j = k;
+        k = n;
       }
     }
   }
@@ -411,25 +437,62 @@ public class ReadinjoySPEventReport
     return localStringBuilder.toString();
   }
   
+  public static void a(int paramInt1, int paramInt2, List paramList)
+  {
+    if (a(paramInt1) < 0) {
+      return;
+    }
+    ThreadManager.executeOnSubThread(new lmm(paramList, paramInt1, paramInt2));
+  }
+  
+  public static void a(long paramLong)
+  {
+    jdField_e_of_type_Long = paramLong;
+  }
+  
+  public static void a(List paramList)
+  {
+    ThreadManager.executeOnSubThread(new lmn(paramList));
+  }
+  
   public static boolean a()
   {
     return jdField_b_of_type_Boolean;
   }
   
+  public static int b(int paramInt)
+  {
+    int j = 0;
+    if (paramInt == MainFragment.jdField_a_of_type_Int) {
+      j = 1;
+    }
+    do
+    {
+      return j;
+      if (paramInt == MainFragment.c) {
+        return 2;
+      }
+      if (paramInt == MainFragment.g) {
+        return 3;
+      }
+    } while (paramInt != MainFragment.d);
+    return 4;
+  }
+  
   public static long b()
   {
-    return jdField_e_of_type_Long;
+    return f;
   }
   
   public static long c()
   {
-    return jdField_f_of_type_Long;
+    return g;
   }
   
   public static void c(int paramInt)
   {
+    int k = 1;
     int j = 1;
-    int i = 1;
     boolean bool1 = false;
     Object localObject = BaseActivity.sTopActivity;
     if ((localObject != null) && ((localObject instanceof SplashActivity)))
@@ -441,9 +504,9 @@ public class ReadinjoySPEventReport
     {
       try
       {
-        int k = MainFragment.jdField_a_of_type_Int;
-        if (paramInt == k) {
-          paramInt = j;
+        int m = MainFragment.jdField_a_of_type_Int;
+        if (paramInt == m) {
+          paramInt = k;
         }
       }
       catch (Exception localException1)
@@ -455,12 +518,12 @@ public class ReadinjoySPEventReport
       }
       try
       {
-        j = ((View)((MainFragment)localObject).a().get("消息_num")).getVisibility();
-        if (j != 0) {
+        k = ((View)((MainFragment)localObject).a().get("消息_num")).getVisibility();
+        if (k != 0) {
           continue;
         }
         bool1 = true;
-        paramInt = i;
+        paramInt = j;
       }
       catch (Exception localException2)
       {
@@ -474,38 +537,38 @@ public class ReadinjoySPEventReport
       }
       return;
       bool1 = false;
-      paramInt = i;
+      paramInt = j;
       continue;
-      i = MainFragment.c;
-      if (paramInt == i)
+      j = MainFragment.c;
+      if (paramInt == j)
       {
-        i = 2;
-        paramInt = i;
+        j = 2;
+        paramInt = j;
         bool2 = ((MainFragment)localObject).a("联系人").a();
         bool1 = bool2;
-        paramInt = i;
+        paramInt = j;
       }
       else
       {
-        i = MainFragment.g;
-        if (paramInt == i)
+        j = MainFragment.g;
+        if (paramInt == j)
         {
-          i = 3;
-          paramInt = i;
+          j = 3;
+          paramInt = j;
           bool2 = ((MainFragment)localObject).a("看点").a();
           bool1 = bool2;
-          paramInt = i;
+          paramInt = j;
         }
         else
         {
-          i = MainFragment.d;
-          if (paramInt == i)
+          j = MainFragment.d;
+          if (paramInt == j)
           {
-            i = 4;
-            paramInt = i;
+            j = 4;
+            paramInt = j;
             bool2 = ((MainFragment)localObject).a("动态").a();
             bool1 = bool2;
-            paramInt = i;
+            paramInt = j;
           }
           else
           {
@@ -518,12 +581,12 @@ public class ReadinjoySPEventReport
   
   public static void c(int paramInt, boolean paramBoolean)
   {
-    ThreadManager.executeOnSubThread(new lmp(paramInt, paramBoolean));
+    ThreadManager.executeOnSubThread(new lmk(paramInt, paramBoolean));
   }
   
   private static void c(boolean paramBoolean)
   {
-    ThreadManager.executeOnSubThread(new lmt(paramBoolean));
+    ThreadManager.executeOnSubThread(new lmp(paramBoolean));
   }
   
   private static boolean c(int paramInt)
@@ -532,69 +595,77 @@ public class ReadinjoySPEventReport
     switch (paramInt)
     {
     }
-    for (;;)
+    label243:
+    do
     {
-      return false;
-      long l2 = jdField_b_of_type_Long;
-      if (((SPEventReportSwitch.a()) && (l1 - l2 >= SPEventReportSwitch.b() * 1000)) || (SPEventReportSwitch.a(paramInt)))
+      do
       {
-        return true;
-        if (SPEventReportSwitch.a(paramInt))
+        for (;;)
         {
-          return true;
-          if (SPEventReportSwitch.a(paramInt))
+          return false;
+          long l2 = jdField_c_of_type_Long;
+          if (((SPEventReportSwitch.a()) && (l1 - l2 >= SPEventReportSwitch.b() * 1000)) || (SPEventReportSwitch.a(paramInt)))
           {
             return true;
             if (SPEventReportSwitch.a(paramInt))
             {
               return true;
-              if (((SPEventReportSwitch.a()) && (l1 - jdField_c_of_type_Long >= SPEventReportSwitch.c() * 1000) && (jdField_a_of_type_Int <= 1)) || (SPEventReportSwitch.a(paramInt)))
+              if (SPEventReportSwitch.a(paramInt))
               {
                 return true;
-                int i;
-                if (Calendar.getInstance().get(5) != jdField_b_of_type_Int)
+                if (SPEventReportSwitch.a(paramInt))
                 {
-                  i = 1;
-                  if ((i == 0) && ((!SPEventReportSwitch.a()) || (!SPEventReportSwitch.a(paramInt)))) {
-                    break label239;
-                  }
-                }
-                label239:
-                for (boolean bool = true;; bool = false)
-                {
-                  return bool;
-                  i = 0;
-                  break;
-                }
-                return true;
-                try
-                {
-                  Pair localPair = ReadInJoyHelper.b();
-                  paramInt = (int)(Long.valueOf(ReadInJoyUtils.a()).longValue() % 100L);
-                  if ((localPair != null) && (paramInt >= ((Integer)localPair.first).intValue()))
+                  return true;
+                  if (((SPEventReportSwitch.a()) && (l1 - jdField_d_of_type_Long >= SPEventReportSwitch.c() * 1000) && (jdField_a_of_type_Int <= 1)) || (SPEventReportSwitch.a(paramInt)))
                   {
-                    i = ((Integer)localPair.second).intValue();
-                    if (paramInt <= i) {
-                      return true;
+                    return true;
+                    int j;
+                    if (Calendar.getInstance().get(5) != jdField_b_of_type_Int)
+                    {
+                      j = 1;
+                      if ((j == 0) && ((!SPEventReportSwitch.a()) || (!SPEventReportSwitch.a(paramInt)))) {
+                        break label243;
+                      }
+                    }
+                    for (boolean bool = true;; bool = false)
+                    {
+                      return bool;
+                      j = 0;
+                      break;
+                    }
+                    return true;
+                    try
+                    {
+                      Pair localPair = ReadInJoyHelper.b();
+                      paramInt = (int)(Long.valueOf(ReadInJoyUtils.a()).longValue() % 100L);
+                      if ((localPair != null) && (paramInt >= ((Integer)localPair.first).intValue()))
+                      {
+                        j = ((Integer)localPair.second).intValue();
+                        if (paramInt <= j) {
+                          return true;
+                        }
+                      }
+                    }
+                    catch (Exception localException)
+                    {
+                      localException.printStackTrace();
+                      return false;
                     }
                   }
-                }
-                catch (Exception localException)
-                {
-                  localException.printStackTrace();
                 }
               }
             }
           }
         }
-      }
-    }
-    return false;
+      } while (!SPEventReportSwitch.a(paramInt));
+      return true;
+    } while (NetConnInfoCenter.getServerTime() - i >= jdField_b_of_type_Long);
+    return true;
   }
   
   public static void d()
   {
-    jdField_d_of_type_Long = System.currentTimeMillis();
+    f = NetConnInfoCenter.getServerTime();
   }
   
   private void d(int paramInt)
@@ -613,59 +684,28 @@ public class ReadinjoySPEventReport
   
   public static void e()
   {
-    jdField_e_of_type_Long = System.currentTimeMillis();
+    g = System.currentTimeMillis();
   }
   
   public static void f()
   {
-    jdField_f_of_type_Long = System.currentTimeMillis();
+    a(System.currentTimeMillis());
+    ThreadManager.executeOnSubThread(new lmo());
   }
   
   public static void g()
   {
-    d();
-    ThreadManager.executeOnSubThread(new lmr());
-  }
-  
-  public static void h()
-  {
-    if (c(11))
-    {
-      AppRuntime localAppRuntime = ReadInJoyUtils.a();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)) && (!((QQAppInterface)localAppRuntime).a.b()))
-      {
-        PublicAccountUtil.a(11, "MsgTabExposure", new ArrayList());
-        jdField_b_of_type_Int = Calendar.getInstance().get(5);
-      }
-    }
-    else
-    {
+    if (jdField_c_of_type_Boolean) {
       return;
     }
     jdField_c_of_type_Boolean = true;
-  }
-  
-  public static void i()
-  {
-    if (jdField_c_of_type_Boolean)
-    {
-      ThreadManager.executeOnSubThread(new lms());
-      jdField_c_of_type_Boolean = false;
-    }
-  }
-  
-  public static void j()
-  {
-    if (jdField_d_of_type_Boolean) {
-      return;
-    }
-    jdField_d_of_type_Boolean = true;
     try
     {
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      BaseApplicationImpl.getContext().registerReceiver(jdField_a_of_type_Lmz, localIntentFilter);
+      localIntentFilter.addAction("com.tencent.plugin.state.change");
+      BaseApplicationImpl.getContext().registerReceiver(jdField_a_of_type_Lmw, localIntentFilter);
       return;
     }
     catch (Exception localException)
@@ -674,19 +714,21 @@ public class ReadinjoySPEventReport
     }
   }
   
-  public static void l()
+  public static void i()
   {
-    ThreadManager.executeOnSubThread(new lmo(System.currentTimeMillis() - a()));
+    ThreadManager.executeOnSubThread(new lmi(a(a())));
   }
   
-  public static void m()
+  public static void j()
   {
-    ThreadManager.executeOnSubThread(new lmq());
+    ThreadManager.executeOnSubThread(new lml());
   }
   
-  private void n() {}
+  public static void k() {}
   
-  private void o()
+  private void l() {}
+  
+  private void m()
   {
     if (c(14))
     {
@@ -707,26 +749,26 @@ public class ReadinjoySPEventReport
   
   public ArrayList a()
   {
-    int j = 0;
+    int k = 0;
     ArrayList localArrayList = new ArrayList();
     StringBuilder localStringBuilder = new StringBuilder(1024);
-    int i;
+    int j;
     Pair localPair;
     if (this.jdField_b_of_type_JavaUtilList.size() > 0)
     {
       localObject = new ArrayList(this.jdField_b_of_type_JavaUtilList);
-      i = 0;
-      while (i < ((ArrayList)localObject).size())
+      j = 0;
+      while (j < ((ArrayList)localObject).size())
       {
-        localPair = (Pair)((ArrayList)localObject).get(i);
-        if (i != 0) {
+        localPair = (Pair)((ArrayList)localObject).get(j);
+        if (j != 0) {
           localStringBuilder.append("`");
         }
         localStringBuilder.append(String.valueOf(localPair.first));
-        if (i != 0) {
+        if (j != 0) {
           localStringBuilder.append(":").append(String.valueOf(localPair.second));
         }
-        i += 1;
+        j += 1;
       }
       this.jdField_b_of_type_JavaUtilList.clear();
     }
@@ -740,18 +782,18 @@ public class ReadinjoySPEventReport
     if (this.jdField_c_of_type_JavaUtilList.size() > 0)
     {
       localObject = new ArrayList(this.jdField_c_of_type_JavaUtilList);
-      i = 0;
-      while (i < ((ArrayList)localObject).size())
+      j = 0;
+      while (j < ((ArrayList)localObject).size())
       {
-        localPair = (Pair)((ArrayList)localObject).get(i);
-        if (i != 0) {
+        localPair = (Pair)((ArrayList)localObject).get(j);
+        if (j != 0) {
           localStringBuilder.append("`");
         }
         localStringBuilder.append(String.valueOf(localPair.first));
-        if (i != 0) {
+        if (j != 0) {
           localStringBuilder.append(":").append(String.valueOf(localPair.second));
         }
-        i += 1;
+        j += 1;
       }
       this.jdField_c_of_type_JavaUtilList.clear();
     }
@@ -765,18 +807,18 @@ public class ReadinjoySPEventReport
     if (this.jdField_d_of_type_JavaUtilList.size() > 0)
     {
       localObject = new ArrayList(this.jdField_d_of_type_JavaUtilList);
-      i = j;
-      while (i < ((ArrayList)localObject).size())
+      j = k;
+      while (j < ((ArrayList)localObject).size())
       {
-        localPair = (Pair)((ArrayList)localObject).get(i);
-        if (i != 0) {
+        localPair = (Pair)((ArrayList)localObject).get(j);
+        if (j != 0) {
           localStringBuilder.append("`");
         }
         localStringBuilder.append(String.valueOf(localPair.first));
-        if (i != 0) {
+        if (j != 0) {
           localStringBuilder.append(":").append(String.valueOf(localPair.second));
         }
-        i += 1;
+        j += 1;
       }
       this.jdField_d_of_type_JavaUtilList.clear();
     }
@@ -790,43 +832,46 @@ public class ReadinjoySPEventReport
   
   public void a()
   {
-    ThreadManager.post(new lml(this), 8, null, true);
+    ThreadManager.post(new lmg(this), 8, null, true);
   }
   
   public void a(int paramInt)
   {
-    ThreadManager.executeOnSubThread(new lmu(this, paramInt));
+    ThreadManager.executeOnSubThread(new lmq(this, paramInt));
   }
   
   public void a(int paramInt, long paramLong)
   {
-    ThreadManager.executeOnSubThread(new lmm(this, paramInt, paramLong));
+    i = NetConnInfoCenter.getServerTime();
+    ThreadManager.executeOnSubThread(new lmv(this, paramInt, paramLong));
   }
   
   public void a(int paramInt, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo)
   {
-    ThreadManager.executeOnSubThread(new lmy(this, paramNotifyInfo, paramInt));
+    ThreadManager.executeOnSubThread(new lmu(this, paramNotifyInfo, paramInt));
   }
   
-  public void a(int paramInt1, List paramList, String paramString, int paramInt2)
+  public void a(int paramInt1, List paramList, String paramString, int paramInt2, int paramInt3)
   {
     AppInPushNotification.a(2);
     if ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 3000) || (a(paramInt2)))
     {
       if (paramInt1 == 1) {
-        e();
+        d();
       }
-      ThreadManager.executeOnSubThread(new lmv(this, paramInt1, paramList));
-      return;
+      for (;;)
+      {
+        ThreadManager.executeOnSubThread(new lmr(this, paramInt1, paramList));
+        return;
+        a(paramInt2, paramInt3, paramList);
+      }
     }
     if (paramInt1 == 1)
     {
-      f();
+      e();
       return;
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = c();
-    a().a(paramString, l1 - l2);
+    a().a(paramString, c());
   }
   
   public void a(int paramInt, boolean paramBoolean) {}
@@ -872,7 +917,7 @@ public class ReadinjoySPEventReport
   
   public void a(String paramString, long paramLong)
   {
-    ThreadManager.executeOnSubThread(new lmn(this, paramString, paramLong));
+    ThreadManager.executeOnSubThread(new lmh(this, paramString, paramLong));
   }
   
   public void a(String paramString1, long paramLong, boolean paramBoolean, String paramString2, String paramString3)
@@ -894,7 +939,7 @@ public class ReadinjoySPEventReport
         localObject1 = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(3);
         ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("Time");
-        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(String.valueOf(paramLong));
+        ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(String.valueOf(a(paramLong)));
         localObject2 = new oidb_cmd0x80a.AttributeList();
         ((oidb_cmd0x80a.AttributeList)localObject2).att_id.set(4);
         ((oidb_cmd0x80a.AttributeList)localObject2).att_name.set("Exposures");
@@ -991,12 +1036,12 @@ public class ReadinjoySPEventReport
     try
     {
       Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      int i = ((QQAppInterface)localObject1).a().b();
+      int j = ((QQAppInterface)localObject1).a().b();
       boolean bool = ReadInJoyUtils.c((QQAppInterface)localObject1);
       oidb_cmd0x80a.AttributeList localAttributeList1 = new oidb_cmd0x80a.AttributeList();
       localAttributeList1.att_id.set(1);
       localAttributeList1.att_name.set("UnreadMsg");
-      localAttributeList1.att_value.set(String.valueOf(i));
+      localAttributeList1.att_value.set(String.valueOf(j));
       oidb_cmd0x80a.AttributeList localAttributeList2 = new oidb_cmd0x80a.AttributeList();
       localAttributeList2.att_id.set(2);
       localAttributeList2.att_name.set("KDInScreen");
@@ -1017,7 +1062,7 @@ public class ReadinjoySPEventReport
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.d("ReadinjoySPEventReport", 2, "reportManualRefresMsg unRead:" + i + " isFirst:" + bool);
+        QLog.d("ReadinjoySPEventReport", 2, "reportManualRefresMsg unRead:" + j + " isFirst:" + bool);
         return;
       }
       return;
@@ -1047,15 +1092,15 @@ public class ReadinjoySPEventReport
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      ReadinjoyReportUtils.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      ReadinjoyReportUtils.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long);
       this.jdField_a_of_type_JavaLangString = "";
     }
   }
   
-  public void k()
+  public void h()
   {
-    ThreadManager.executeOnSubThread(new lmw(this));
-    this.jdField_f_of_type_Boolean = true;
+    ThreadManager.executeOnSubThread(new lms(this));
+    this.jdField_e_of_type_Boolean = true;
   }
 }
 

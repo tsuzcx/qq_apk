@@ -31,12 +31,12 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.Comparator;
 import java.util.List;
+import lfk;
+import lfl;
+import lfn;
+import lfp;
+import lfq;
 import lfu;
-import lfv;
-import lfx;
-import lfz;
-import lga;
-import lge;
 import mqq.os.MqqHandler;
 
 public class ReadinjoySubscriptManagerActivity
@@ -48,25 +48,25 @@ public class ReadinjoySubscriptManagerActivity
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   private RecentFaceDecoder jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new lfu(this);
-  private lga jdField_a_of_type_Lga;
+  private Comparator jdField_a_of_type_JavaUtilComparator = new lfk(this);
+  private lfq jdField_a_of_type_Lfq;
   private boolean jdField_a_of_type_Boolean;
   private View b;
   
   private void a(String paramString)
   {
     Context localContext = getApplicationContext();
-    new PublicAccountUnfollowTask(this.app, paramString, localContext, new lfx(this, localContext)).a();
+    new PublicAccountUnfollowTask(this.app, paramString, localContext, new lfn(this, localContext)).a();
   }
   
   private void a(List paramList)
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_Lga.a(paramList);
+      this.jdField_a_of_type_Lfq.a(paramList);
       this.jdField_a_of_type_ComTencentWidgetSwipListView.u();
     }
-    if (this.jdField_a_of_type_Lga.getCount() == 0)
+    if (this.jdField_a_of_type_Lfq.getCount() == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -106,27 +106,27 @@ public class ReadinjoySubscriptManagerActivity
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new ReadInJoyNewFeedsTopGestureLayout(this));
     }
     setTitle("已订阅公众号管理");
-    setLeftViewName(2131432397);
+    setLeftViewName(2131432414);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)getRightTextView());
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428479);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363098);
-    ((TextView)findViewById(2131368250)).setText("你还未有订阅的公众号");
-    this.jdField_a_of_type_Lga = new lga(this, null);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131367291));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428485);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363116);
+    ((TextView)findViewById(2131368317)).setText("你还未有订阅的公众号");
+    this.jdField_a_of_type_Lfq = new lfq(this, null);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131367346));
     TextView localTextView = new TextView(this);
     localTextView.setHeight(AIOUtils.a(20.0F, getResources()));
-    localTextView.setBackgroundResource(2131492923);
+    localTextView.setBackgroundResource(2131492924);
     localTextView.setClickable(false);
-    localTextView.setHintTextColor(getResources().getColor(2131492923));
+    localTextView.setHintTextColor(getResources().getColor(2131492924));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.addHeaderView(localTextView, null, false);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Lga);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Lfq);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_Lga);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this.jdField_a_of_type_Lfq);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = new RecentFaceDecoder(this.app, this, false);
-    this.b = findViewById(2131366941);
+    this.b = findViewById(2131366983);
     if (ThemeUtil.isInNightMode(this.app)) {
       this.b.setVisibility(0);
     }
@@ -134,7 +134,7 @@ public class ReadinjoySubscriptManagerActivity
   
   private void c()
   {
-    ThreadManager.getSubThreadHandler().post(new lfv(this));
+    ThreadManager.getSubThreadHandler().post(new lfl(this));
   }
   
   public void a()
@@ -158,7 +158,7 @@ public class ReadinjoySubscriptManagerActivity
     {
       this.leftView.setTextColor(-14408926);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130845305);
+      this.leftView.setBackgroundResource(2130845433);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -205,7 +205,7 @@ public class ReadinjoySubscriptManagerActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2130969648);
+    setContentView(2130969656);
     b();
     a();
     c();
@@ -247,10 +247,10 @@ public class ReadinjoySubscriptManagerActivity
       }
     }
     label84:
-    for (int i = 2131428480;; i = 2131428479)
+    for (int i = 2131428486;; i = 2131428485)
     {
       paramView.setText(i);
-      this.jdField_a_of_type_Lga.notifyDataSetChanged();
+      this.jdField_a_of_type_Lfq.notifyDataSetChanged();
       return;
       bool = false;
       break;
@@ -268,12 +268,12 @@ public class ReadinjoySubscriptManagerActivity
       while (paramInt1 < paramInt2)
       {
         Object localObject = this.jdField_a_of_type_ComTencentWidgetSwipListView.getChildAt(paramInt1);
-        if ((((View)localObject).getTag() instanceof lge))
+        if ((((View)localObject).getTag() instanceof lfu))
         {
-          localObject = (lge)((View)localObject).getTag();
-          if (TextUtils.equals(lge.a((lge)localObject), paramString))
+          localObject = (lfu)((View)localObject).getTag();
+          if (TextUtils.equals(lfu.a((lfu)localObject), paramString))
           {
-            new Handler(Looper.getMainLooper()).post(new lfz(this, (lge)localObject, paramBitmap));
+            new Handler(Looper.getMainLooper()).post(new lfp(this, (lfu)localObject, paramBitmap));
             return;
           }
         }

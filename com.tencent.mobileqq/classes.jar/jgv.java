@@ -1,25 +1,23 @@
-import com.tencent.av.business.manager.pendant.EffectPendantTools;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.av.camera.CameraUtils;
+import java.util.Observable;
 
 public class jgv
-  implements Runnable
+  extends Observable
 {
-  public jgv(EffectPendantTools paramEffectPendantTools, File paramFile, PendantItem paramPendantItem) {}
+  public jgv(CameraUtils paramCameraUtils) {}
   
-  public void run()
+  public void a(Object[] paramArrayOfObject)
   {
     try
     {
-      ZipUtils.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.b(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem));
+      super.setChanged();
+      super.notifyObservers(paramArrayOfObject);
       return;
     }
-    catch (Exception localException)
+    finally
     {
-      while (!QLog.isColorLevel()) {}
-      localException.printStackTrace();
+      paramArrayOfObject = finally;
+      throw paramArrayOfObject;
     }
   }
 }

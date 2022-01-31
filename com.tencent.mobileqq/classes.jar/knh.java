@@ -1,35 +1,20 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
-public final class knh
-  implements TroopMemberApiClient.Callback
+public class knh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public knh(Activity paramActivity, boolean paramBoolean, String paramString) {}
+  public knh(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void onGlobalLayout()
   {
-    if (paramBundle.getInt("currentFragment", -1) == 2)
-    {
-      paramBundle = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-      paramBundle.setFlags(67108864);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
-      return;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      paramBundle = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-      paramBundle.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      paramBundle.putExtra("uintype", 1);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppActivity.setResult(4660);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int i = this.a.getWindow().getDecorView().getBottom();
+    int j = this.a.getWindow().getDecorView().getTop();
+    LebaSearchPluginManagerActivity.a(this.a, i - j);
   }
 }
 

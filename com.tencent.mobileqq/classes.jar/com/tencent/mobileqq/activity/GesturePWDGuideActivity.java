@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import sra;
+import stz;
 
 public class GesturePWDGuideActivity
   extends IphoneTitleBarActivity
@@ -13,9 +13,9 @@ public class GesturePWDGuideActivity
   
   private void a()
   {
-    setTitle(2131436017);
-    this.a = ((Button)findViewById(2131364687));
-    this.a.setOnClickListener(new sra(this));
+    setTitle(2131436034);
+    this.a = ((Button)findViewById(2131364709));
+    this.a.setOnClickListener(new stz(this));
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -31,7 +31,7 @@ public class GesturePWDGuideActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130969011);
+    super.setContentView(2130969010);
     a();
   }
 }

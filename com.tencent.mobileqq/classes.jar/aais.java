@@ -1,39 +1,36 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.ar.arengine.ARWorldCupBaseResDownload;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.mobileqq.ar.config.WorldCupMgr.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class aais
-  implements Runnable
+  implements WorldCupMgr.DownloadListener
 {
-  public aais(ArkAppModuleReg.ModuleQQ paramModuleQQ, ArkAppMessage paramArkAppMessage) {}
+  public aais(ARWorldCupBaseResDownload paramARWorldCupBaseResDownload) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof FragmentActivity))
+    if (paramInt2 < 0)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("forward_type", 27);
-      localBundle.putString("forward_ark_app_name", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appName);
-      localBundle.putString("forward_ark_app_view", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appView);
-      localBundle.putString("forward_ark_app_ver", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appMinVersion);
-      localBundle.putString("forward_ark_app_prompt", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.promptText);
-      localBundle.putString("forward_ark_app_config", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.config);
-      localBundle.putString("forward_ark_app_desc", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appDesc);
-      localBundle.putString("forward_ark_app_compat", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.compatibleText);
-      localBundle.putString("forward_ark_app_meta", this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.metaList);
-      Intent localIntent = new Intent();
-      localIntent.putExtras(localBundle);
-      ForwardBaseOption.a(localBaseActivity, localIntent, 21);
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkApp", 1, "QQ.SendMessage light success.");
-      }
+      QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes0. download failed. error code = " + paramInt2);
+      WorldCupMgr.a(ARWorldCupBaseResDownload.a(this.a)).b(this);
+      ARWorldCupBaseResDownload.a(this.a, 0, paramInt2);
     }
+    do
+    {
+      return;
+      if ((paramInt2 >= 0) && (paramInt2 <= 99))
+      {
+        QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes0. download... progress = " + paramInt2);
+        ARWorldCupBaseResDownload.a(this.a, 0, paramInt2);
+        return;
+      }
+    } while (paramInt2 != 100);
+    QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes0. download successfully.");
+    WorldCupMgr.a(ARWorldCupBaseResDownload.a(this.a)).b(this);
+    ARWorldCupBaseResDownload.a(this.a, 0, paramInt2);
   }
 }
 

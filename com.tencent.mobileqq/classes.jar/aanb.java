@@ -1,13 +1,22 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
+import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipReqInfo;
+import com.tencent.mobileqq.highway.transaction.Transaction;
 
-public final class aanb
+public class aanb
 {
-  public int a = 1;
-  public Bitmap a;
+  public ARRelationShipFileUpload.ARRelationShipFileUploadCallBack a;
+  public ARRelationShipFileUpload.ARRelationShipReqInfo a;
+  public Transaction a;
+  
+  public aanb()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
+    this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipFileUploadCallBack = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aanb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCloseListener;
 
 public class anjs
-  implements Runnable
+  implements GuideVideoView.OnCloseListener
 {
-  public anjs(DoodleView paramDoodleView, long paramLong) {}
+  public anjs(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void run()
+  public void a()
   {
-    if (DoodleView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView, this.jdField_a_of_type_Long))
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.requestLayout();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
-    }
+    QIMEffectCameraCaptureUnit.e(this.a);
   }
 }
 

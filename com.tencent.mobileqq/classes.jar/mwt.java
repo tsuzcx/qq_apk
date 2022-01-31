@@ -1,20 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.util.PreloadManager;
+import com.tencent.biz.pubaccount.util.PreloadManager.ImgStruct;
 
-public class mwt
-  extends Handler
+public final class mwt
+  implements Runnable
 {
-  public mwt(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public mwt(PreloadManager paramPreloadManager, PreloadManager.ImgStruct paramImgStruct) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    PublicAccountImageCollectionMainActivity.b(this.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager$ImgStruct.a);
   }
 }
 

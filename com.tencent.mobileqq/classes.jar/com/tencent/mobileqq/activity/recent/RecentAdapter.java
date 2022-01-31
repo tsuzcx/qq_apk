@@ -28,6 +28,8 @@ import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil;
 import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
+import com.tencent.biz.qqstory.base.StoryHaloManager;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter;
 import com.tencent.mobileqq.activity.bless.BlessManager;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.IDragViewProvider;
@@ -93,13 +95,15 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.json.JSONObject;
-import xha;
-import xhb;
-import xhc;
-import xhd;
-import xhe;
-import xhf;
-import xhg;
+import xkf;
+import xkg;
+import xkh;
+import xki;
+import xkj;
+import xkk;
+import xkl;
+import xkm;
+import xkn;
 
 public class RecentAdapter
   extends BaseAdapter
@@ -108,14 +112,15 @@ public class RecentAdapter
   public int a;
   private long jdField_a_of_type_Long;
   protected Context a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new xhg(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new xkm(this);
+  protected RecentTabHaloPresenter a;
   private OnRecentUserOpsListener jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener;
   protected RecentFaceDecoder a;
   protected RecentItemBuilderFactory a;
   protected DragFrameLayout a;
   public QQAppInterface a;
   protected BubblePopupWindow a;
-  protected XListView a;
+  public XListView a;
   private Hashtable jdField_a_of_type_JavaUtilHashtable = new Hashtable();
   public final List a;
   private int b;
@@ -138,6 +143,8 @@ public class RecentAdapter
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentItemBuilderFactory = new RecentItemBuilderFactory(paramInt);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentItemBuilderFactory.a(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = new RecentFaceDecoder(paramQQAppInterface, this, paramBoolean);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter = new RecentTabHaloPresenter(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter.a(new xkf(this));
     if (paramInt == 0) {
       this.jdField_b_of_type_Int = 0;
     }
@@ -186,7 +193,7 @@ public class RecentAdapter
       View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i);
       if (localView != null)
       {
-        localView = localView.findViewById(2131363189);
+        localView = localView.findViewById(2131363207);
         if ((localView != null) && ((localView instanceof DragTextView)))
         {
           DragTextView localDragTextView = (DragTextView)localView;
@@ -417,6 +424,14 @@ public class RecentAdapter
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
       a(null);
       this.jdField_b_of_type_JavaUtilList = null;
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter.a();
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter = new RecentTabHaloPresenter(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter.a(new xkn(this));
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "onAccountChanged: invoked. Message: app: " + paramQQAppInterface + " recreate mRecentTabHaloPresenter: " + this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter);
     }
   }
   
@@ -837,7 +852,7 @@ public class RecentAdapter
       }
       if ((localObject5 instanceof SendBlessRecentItemData))
       {
-        ThreadManager.post(new xhb(this), 5, null, true);
+        ThreadManager.post(new xkh(this), 5, null, true);
         localObject3 = paramDragFrameLayout;
         localObject4 = localObject1;
         localObject5 = localObject2;
@@ -869,7 +884,7 @@ public class RecentAdapter
             ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", String.valueOf(localObject2), "0X8005C37", "0X8005C37", 0, 1, 0, String.valueOf(paramDragFrameLayout), String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", String.valueOf(localObject1));
           }
         }
-        ReadinjoySPEventReport.a().k();
+        ReadinjoySPEventReport.a().h();
         label1234:
         do
         {
@@ -949,7 +964,7 @@ public class RecentAdapter
                               }
                               for (paramDragFrameLayout = "0";; paramDragFrameLayout = "1")
                               {
-                                ThreadManager.executeOnSubThread(new xhc(this, paramInt, paramDragFrameLayout, String.valueOf(i), String.valueOf(j + 1)));
+                                ThreadManager.executeOnSubThread(new xki(this, paramInt, paramDragFrameLayout, String.valueOf(i), String.valueOf(j + 1)));
                                 return;
                                 paramInt = 0;
                                 break;
@@ -991,7 +1006,7 @@ public class RecentAdapter
                     paramInt = i;
                     if (i >= 3)
                     {
-                      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, "babyQ提醒", "是否需要关闭babyQ的推送开关\n", "取消", "确定", new xhd(this), new xhe(this)).show();
+                      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, "babyQ提醒", "是否需要关闭babyQ的推送开关\n", "取消", "确定", new xkj(this), new xkk(this)).show();
                       paramInt = 0;
                       paramDragFrameLayout.edit().putBoolean("babyQ_toast_flag", true);
                     }
@@ -1029,7 +1044,7 @@ public class RecentAdapter
               paramDragFrameLayout.c();
               if (MsgProxyUtils.c(paramDragFrameLayout.a()))
               {
-                ThreadManager.post(new xhf(this, paramDragFrameLayout.a(), paramDragFrameLayout.a()), 8, null, false);
+                ThreadManager.post(new xkl(this, paramDragFrameLayout.a(), paramDragFrameLayout.a()), 8, null, false);
                 ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005298", "0X8005298", 0, 0, "", "", "", "");
                 ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "grp_lbs", "", "msg_box", "drag_hi", 0, 0, "", "", "", "");
                 return;
@@ -1101,6 +1116,9 @@ public class RecentAdapter
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder.a();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter.a();
+    }
   }
   
   public void b(RecentBaseData paramRecentBaseData)
@@ -1236,15 +1254,16 @@ public class RecentAdapter
         QLog.i("Q.recent", 4, "RecentAdpater onClick v is null");
       }
     }
-    label395:
-    label442:
+    label440:
+    label487:
     do
     {
-      Object localObject;
+      Object localObject1;
       do
       {
         do
         {
+          Object localObject2;
           do
           {
             for (;;)
@@ -1252,9 +1271,9 @@ public class RecentAdapter
               return;
               if (Utils.a("tag_swip_icon_menu_item", paramView.getTag()))
               {
-                localObject = paramView.getTag(-1);
+                localObject1 = paramView.getTag(-1);
                 paramView = paramView.getTag(-2);
-                if ((!(localObject instanceof Integer)) || (!(paramView instanceof Integer)))
+                if ((!(localObject1 instanceof Integer)) || (!(paramView instanceof Integer)))
                 {
                   if (!QLog.isDevelopLevel()) {
                     continue;
@@ -1262,18 +1281,18 @@ public class RecentAdapter
                   QLog.i("Q.recent", 4, "RecentAdpater onClick tag is not int");
                   return;
                 }
-                i = ((Integer)localObject).intValue();
+                i = ((Integer)localObject1).intValue();
                 int j = ((Integer)paramView).intValue();
                 try
                 {
                   paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(j);
-                  localObject = getItem(i);
+                  localObject1 = getItem(i);
                   if (QLog.isDevelopLevel()) {
-                    QLog.i("Q.recent", 4, "onClick|obj = " + localObject + ", " + paramView);
+                    QLog.i("Q.recent", 4, "onClick|obj = " + localObject1 + ", " + paramView);
                   }
-                  if ((paramView != null) && ((localObject instanceof RecentBaseData)))
+                  if ((paramView != null) && ((localObject1 instanceof RecentBaseData)))
                   {
-                    a((RecentBaseData)localObject, paramView, "2");
+                    a((RecentBaseData)localObject1, paramView, "2");
                     return;
                   }
                 }
@@ -1289,48 +1308,53 @@ public class RecentAdapter
                 }
               }
             }
+            localObject1 = (StoryHaloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(196);
             if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener == null) {
-              break label442;
+              break label487;
             }
-            localObject = paramView.getTag(-1);
-            if ((localObject instanceof Integer)) {
+            localObject2 = paramView.getTag(-22);
+            if (((StoryHaloManager)localObject1).b(localObject2)) {
+              this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener.a(paramView, localObject2);
+            }
+            localObject1 = paramView.getTag(-1);
+            if ((localObject1 instanceof Integer)) {
               break;
             }
           } while (!QLog.isDevelopLevel());
           QLog.i("Q.recent", 4, "RecentAdpater onClick tag is not int");
           return;
-          int i = ((Integer)localObject).intValue();
-          localObject = getItem(i);
+          int i = ((Integer)localObject1).intValue();
+          localObject1 = getItem(i);
           if (QLog.isDevelopLevel()) {
-            QLog.i("Q.recent", 4, "onClick|obj = " + localObject);
+            QLog.i("Q.recent", 4, "onClick|obj = " + localObject1);
           }
-          if (!(localObject instanceof RecentBaseData)) {
+          if (!(localObject1 instanceof RecentBaseData)) {
             break;
           }
-          if (((paramView instanceof IRecentImgv)) && ((localObject instanceof RecentItemEcShop))) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener.a(paramView, localObject);
+          if (((paramView instanceof IRecentImgv)) && ((localObject1 instanceof RecentItemEcShop))) {
+            this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener.a(paramView, localObject1);
           }
           for (;;)
           {
-            if (!(localObject instanceof RecentItemTroopMsgData)) {
-              break label395;
+            if (!(localObject1 instanceof RecentItemTroopMsgData)) {
+              break label440;
             }
-            paramView = (RecentItemTroopMsgData)localObject;
+            paramView = (RecentItemTroopMsgData)localObject1;
             if ((paramView == null) || (!paramView.b)) {
               break;
             }
             a(paramView.a());
             return;
-            RecentBaseData localRecentBaseData = (RecentBaseData)localObject;
-            localRecentBaseData.i = i;
-            this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener.a(paramView, localRecentBaseData, localRecentBaseData.b, true);
+            localObject2 = (RecentBaseData)localObject1;
+            ((RecentBaseData)localObject2).i = i;
+            this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener.a(paramView, (RecentBaseData)localObject2, ((RecentBaseData)localObject2).b, true);
           }
-        } while (!(localObject instanceof RecentTroopAssistantItem));
-        paramView = (RecentTroopAssistantItem)localObject;
+        } while (!(localObject1 instanceof RecentTroopAssistantItem));
+        paramView = (RecentTroopAssistantItem)localObject1;
       } while ((paramView == null) || (!paramView.b));
       a(paramView.a());
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener.a(paramView, localObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentOnRecentUserOpsListener.a(paramView, localObject1);
       return;
     } while (!QLog.isDevelopLevel());
     QLog.i("Q.recent", 4, "onClick|mRecentLis is null");
@@ -1437,7 +1461,7 @@ public class RecentAdapter
         if (i == 103)
         {
           l = System.currentTimeMillis();
-          paramBitmap = BaseApplication.getContext().getResources().getDrawable(2130839192);
+          paramBitmap = BaseApplication.getContext().getResources().getDrawable(2130839196);
           if ((paramBitmap instanceof SkinnableBitmapDrawable)) {
             ((SkinnableBitmapDrawable)paramBitmap).setGravity(81);
           }
@@ -1525,7 +1549,7 @@ public class RecentAdapter
           }
           try
           {
-            this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, (QQCustomMenu)localObject2, this.jdField_a_of_type_AndroidViewView$OnClickListener, new xha(this, paramView));
+            this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, (QQCustomMenu)localObject2, this.jdField_a_of_type_AndroidViewView$OnClickListener, new xkg(this, paramView));
             return true;
           }
           catch (Throwable paramView)

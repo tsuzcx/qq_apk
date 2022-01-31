@@ -88,16 +88,16 @@ public class SelectStrokeLayout
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2130970644, this, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarStrokePicker = ((StrokePicker)a(2131371498));
+    LayoutInflater.from(getContext()).inflate(2130970689, this, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarStrokePicker = ((StrokePicker)a(2131371664));
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarStrokePicker == null) {
       throw new IllegalStateException("can not find ColorPicker.");
     }
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarStrokePicker.setOnStrokeSelectedListener(this);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarStrokePicker.setContentDescription("颜色条");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131371499));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131362823));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131371500));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131371665));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131362841));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131371666));
     this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = this.c;
     this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = this.c;
     this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams().width = this.d;

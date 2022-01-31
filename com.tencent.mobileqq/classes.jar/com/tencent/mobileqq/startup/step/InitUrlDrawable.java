@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahqz;
-import ahra;
-import ahrb;
+import aifb;
+import aifc;
+import aifd;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -92,9 +92,9 @@ public class InitUrlDrawable
     {
       for (;;)
       {
-        URLDrawable.init(localBaseApplicationImpl, new ahrb(localBaseApplicationImpl));
+        URLDrawable.init(localBaseApplicationImpl, new aifd(localBaseApplicationImpl));
         if (Build.VERSION.SDK_INT >= 11) {
-          URLDrawable.setDebuggableCallback(new ahqz());
+          URLDrawable.setDebuggableCallback(new aifb());
         }
         localFile = new File(localFile, "diskcache");
         if (localFile != null) {
@@ -103,7 +103,7 @@ public class InitUrlDrawable
         localFile = Utils.getExternalCacheDir(localBaseApplicationImpl);
         a = new DiskCache(localFile);
         com.tencent.mobileqq.transfile.URLDrawableHelper.a = localFile;
-        JpegExifReader.initJpegExifReader(new ahra());
+        JpegExifReader.initJpegExifReader(new aifc());
         return true;
         localFile = localBaseApplicationImpl.getCacheDir();
       }
@@ -119,7 +119,7 @@ public class InitUrlDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitUrlDrawable
  * JD-Core Version:    0.7.0.1
  */

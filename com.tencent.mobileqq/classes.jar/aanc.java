@@ -1,37 +1,60 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.arcard.ARCardUtils;
+import com.tencent.mobileqq.arcard.ARRelationShipFileUpload;
+import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipReqInfo;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
+import java.io.File;
 
-public final class aanc
-  extends BroadcastReceiver
+public class aanc
   implements Runnable
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("android.intent.action.PROXY_CHANGE".equals(paramIntent.getAction()))
-    {
-      ArkAppCenter.b("ArkApp", "receive broadcast proxy change.");
-      ThreadManager.executeOnSubThread(this);
-    }
-  }
+  public aanc(ARVideoPreviewActivity paramARVideoPreviewActivity) {}
   
   public void run()
   {
-    if (AppNetConnInfo.isWifiConn())
+    Object localObject1 = "";
+    if (this.a.jdField_a_of_type_Int == 1)
     {
-      ArkAppContainer.setArkHttpProxy();
-      return;
+      localObject1 = new File(ARCardUtils.jdField_b_of_type_JavaLangString);
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).mkdir();
+      }
+      localObject1 = ARCardUtils.jdField_b_of_type_JavaLangString + System.currentTimeMillis() + ".jpg";
+      ARCardUtils.a(ARVideoPreviewActivity.a(this.a), (String)localObject1);
     }
-    ArkAppContainer.clearArkHttpProxy();
+    for (;;)
+    {
+      Object localObject2 = new File((String)localObject1);
+      if (((File)localObject2).exists()) {
+        this.a.jdField_b_of_type_Long = ((File)localObject2).length();
+      }
+      localObject2 = new File(ARVideoPreviewActivity.a(this.a));
+      if (((File)localObject2).exists()) {
+        this.a.d = ((File)localObject2).length();
+      }
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_b_of_type_JavaLangString = "";
+      this.a.jdField_a_of_type_Long = 0L;
+      this.a.c = 0L;
+      localObject2 = new ARRelationShipFileUpload.ARRelationShipReqInfo();
+      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_a_of_type_Int = 2;
+      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_b_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a();
+      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_a_of_type_JavaLangString = ARVideoPreviewActivity.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2, new aand(this));
+      localObject2 = new ARRelationShipFileUpload.ARRelationShipReqInfo();
+      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_a_of_type_Int = 1;
+      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_b_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a();
+      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
+      this.a.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2, new aanf(this));
+      return;
+      if (this.a.jdField_a_of_type_Int == 2) {
+        localObject1 = ARVideoPreviewActivity.b(this.a);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aanc
  * JD-Core Version:    0.7.0.1
  */

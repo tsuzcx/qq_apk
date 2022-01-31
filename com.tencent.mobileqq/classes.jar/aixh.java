@@ -1,62 +1,46 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Map;
+import android.graphics.Color;
+import android.os.Build.VERSION;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.TipsView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 public class aixh
-  extends SimpleObserver
+  implements Runnable
 {
-  public aixh(VideoItem paramVideoItem, VideoInfo paramVideoInfo) {}
+  public aixh(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void a(VideoInfo paramVideoInfo)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onNext. info position=", Integer.valueOf(paramVideoInfo.c), ", old status=", Integer.valueOf(paramVideoInfo.g) });
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.b.remove(paramVideoInfo);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.a(1, false);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onError. info position=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.c), ", old status=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.g) });
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.g = 2;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.b.remove(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo);
-    QLog.d("VideoItem", 1, paramError, new Object[0]);
-    paramError = paramError.getMessage();
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
+    TroopBarPublishActivity localTroopBarPublishActivity = this.a;
+    TEditText localTEditText = this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText;
+    int j = DisplayUtil.a(this.a, 71.0F);
+    if (Build.VERSION.SDK_INT < 19)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.c);
-      if ((localObject instanceof VideoItem.VideoViewHolder))
-      {
-        localObject = (VideoItem.VideoViewHolder)localObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject).a.getTag())) {
-          ((VideoItem)((XMediaEditorAdapter)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo, 0);
-        }
+      i = DisplayUtil.a(this.a, 20.0F);
+      TipsView.a(localTroopBarPublishActivity, localTEditText, "添加话题，更快上热门", 1, 1, j, i, DisplayUtil.a(this.a, 20.0F), 5000, Color.argb(204, 0, 0, 0));
+      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), "tribe_video_post_has_show_tips", true);
+      if ((this.a.jdField_b_of_type_AndroidWidgetTextView == null) || (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
+        break label150;
       }
     }
-    if (!paramError.startsWith("c_")) {
-      TroopTechReportUtils.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.a), "");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.a(1, false);
+    label150:
+    for (int i = 2;; i = 1)
+    {
+      ReportController.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_guide", i, 0, "", "", "", "");
+      return;
+      i = 0;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixh
  * JD-Core Version:    0.7.0.1
  */

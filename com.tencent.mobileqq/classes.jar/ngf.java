@@ -1,31 +1,37 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.io.File;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public final class ngf
-  implements Runnable
+public class ngf
+  implements UpCallBack
 {
-  public ngf(ShareSinaData paramShareSinaData, ApplicationInfo paramApplicationInfo, Context paramContext, StoryShareCallback paramStoryShareCallback) {}
+  public ngf(UploadImageJob paramUploadImageJob) {}
   
-  public void run()
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    Intent localIntent = new Intent("android.intent.action.SEND");
-    localIntent.setFlags(268435456);
-    localIntent.setType("image/*");
-    localIntent.putExtra("android.intent.extra.TEXT", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.a + this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.c);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d)) {
-      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d)));
+    return null;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
+    if ((paramSendResult.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramSendResult.jdField_b_of_type_JavaLangString)))
+    {
+      this.a.a("UploadImageJob_out_image_url", paramSendResult.jdField_b_of_type_JavaLangString);
+      UploadImageJob.a(this.a, true);
+      return;
     }
-    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    ThreadManager.getUIHandler().post(new ngg(this));
+    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramSendResult, new Object[0]);
+    }
+    UploadImageJob.b(this.a, false);
   }
 }
 

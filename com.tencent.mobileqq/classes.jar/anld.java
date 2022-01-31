@@ -1,13 +1,21 @@
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import dov.com.qq.im.capture.view.QIMCommonLoadingProgress;
+import dov.com.tencent.mobileqq.activity.richmedia.ShortVideoMtaReport;
+import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 
-class anld
-  implements Runnable
+public class anld
+  implements DialogInterface.OnClickListener
 {
-  anld(anlc paramanlc, ankz paramankz) {}
+  public anld(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Ankz.a(this.jdField_a_of_type_Ankz.a.getProgress());
+    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(), this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, QIMPtvTemplateAdapter.a(this.a));
+    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.downloading = true;
+    QIMCommonLoadingProgress.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo).a();
+    ShortVideoMtaReport.a("shortvideo_download_effects", null);
   }
 }
 

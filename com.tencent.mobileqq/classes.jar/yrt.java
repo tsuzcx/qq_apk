@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.data.CmGameScreenRotate;
 
 public class yrt
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public yrt(String paramString, ApolloAudioPlayer paramApolloAudioPlayer, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloAudioPlayer);
-  }
+  public yrt(CmGameScreenRotate paramCmGameScreenRotate, int paramInt) {}
   
   public void run()
   {
-    ApolloAudioPlayer localApolloAudioPlayer = (ApolloAudioPlayer)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloAudioPlayer == null) {
+    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 8))
+    {
+      if ((CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate) != null) && (CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate).getVisibility() == 0)) {
+        CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate).setRequestedOrientation(this.jdField_a_of_type_Int);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
       return;
     }
-    ApolloAudioPlayer.a(localApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate).setRequestedOrientation(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
   }
 }
 

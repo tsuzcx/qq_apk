@@ -1,21 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashBgView;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abbo
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public abbo(ARMapSplashBgView paramARMapSplashBgView) {}
+  public abbo(ARMapActivity paramARMapActivity, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (ARMapSplashBgView.b(this.a) != null)
-    {
-      ARMapSplashBgView.b(this.a).setPivotY(ARMapSplashBgView.b(this.a).getHeight() * 0.7F);
-      ARMapSplashBgView.b(this.a).setRotation(paramValueAnimator.floatValue() * ARMapSplashBgView.d(this.a));
+    if (!this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.isResume()) {
+      return;
     }
+    SosoInterface.b(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a);
+    SosoInterface.jdField_a_of_type_Int = this.jdField_a_of_type_Int * 1000;
+    SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a);
   }
 }
 

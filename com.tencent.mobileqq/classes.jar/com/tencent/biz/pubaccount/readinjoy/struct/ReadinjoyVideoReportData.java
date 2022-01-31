@@ -1,5 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class ReadinjoyVideoReportData
@@ -20,6 +22,7 @@ public class ReadinjoyVideoReportData
   public boolean c;
   public int d;
   public long d;
+  public String d;
   public boolean d;
   public int e;
   public long e;
@@ -88,6 +91,15 @@ public class ReadinjoyVideoReportData
     localHashMap.put("param_height", String.valueOf(this.jdField_i_of_type_Int));
     localHashMap.put("param_totalDuration", String.valueOf(this.s));
     localHashMap.put("param_videoCodeFormat", String.valueOf(this.jdField_d_of_type_Boolean));
+    if (((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      localHashMap.put("param_fileBitRate", String.valueOf(this.jdField_d_of_type_JavaLangString));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadinjoyVideoReportData", 4, "param_fileBitRate:" + this.jdField_d_of_type_JavaLangString + "   vid:" + this.jdField_a_of_type_JavaLangString);
+      }
+      return localHashMap;
+    }
+    localHashMap.put("param_fileBitRate", String.valueOf(this.o));
     return localHashMap;
   }
 }

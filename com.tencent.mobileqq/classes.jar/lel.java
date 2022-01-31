@@ -1,39 +1,24 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoBrightnessControl;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar.OnTabChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar.Tab;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lel
-  implements BaseTabbar.OnTabChangeListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public lel(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public lel(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((ReadInJoyNewFeedsActivity.a(this.a).a(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a() != null)) {
-      ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a().a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 1) {
-      this.a.getIntent().putExtra("channel_from", 7);
-    }
-    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.a() instanceof ReadInJoySubChannelFragment))) {
-      this.a.a().e();
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      if ((paramInt1 == 1) && (paramInt2 != paramInt1)) {
-        VideoBrightnessControl.a().b(this.a);
-      }
+      ReadInJoySettingActivity.b(this.a).cancel();
       return;
-      this.a.a(paramInt2, 256, null, true);
+      ReadInJoySettingActivity.d(this.a, false);
+      ReadInJoySettingActivity.c(this.a, ReadInJoySettingActivity.c(this.a));
     }
   }
 }

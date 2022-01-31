@@ -1,13 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vip.CUKingCardHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class mbz
-  implements Runnable
+public final class mbz
+  extends ClickableSpan
 {
-  public mbz(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mbz(Context paramContext) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.d();
+    paramView = CUKingCardHelper.a("kandian");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "handleKingCardHintTextView span is clicked, guideUrl=" + paramView);
+    }
+    if (!TextUtils.isEmpty(paramView))
+    {
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.a.startActivity(localIntent);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(7, 208, 176));
   }
 }
 

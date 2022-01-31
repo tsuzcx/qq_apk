@@ -1,57 +1,21 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class xfw
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  public xfw(BannerManager paramBannerManager, Bundle paramBundle) {}
+  public xfw(PreloadManagerProxy paramPreloadManagerProxy, ResultReceiver paramResultReceiver) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager) != null)
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
     {
-      paramView = BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(30);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendMessageDelayed(paramView, 2500L);
-    }
-    paramView = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
-    if (!TextUtils.isEmpty(paramView)) {}
-    try
-    {
-      paramView = Class.forName(paramView);
-      if (paramView != null)
-      {
-        paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getApplicationContext(), paramView);
-        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.setAction(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.addCategory(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.putExtra("url", str);
-        }
-        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        paramView.putExtra("back_from_aio", true);
-        BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView);
-      }
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
       return;
     }
-    catch (ClassNotFoundException paramView)
-    {
-      for (;;)
-      {
-        paramView = null;
-      }
-    }
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, null);
   }
 }
 

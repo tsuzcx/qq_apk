@@ -23,8 +23,8 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import oju;
-import ojv;
+import ole;
+import olf;
 
 public class ComplexPart
   extends PermissionPart
@@ -39,7 +39,7 @@ public class ComplexPart
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private ojv a(int paramInt)
+  private olf a(int paramInt)
   {
     int i = c();
     if ((paramInt < 0) || (paramInt >= i)) {
@@ -48,8 +48,8 @@ public class ComplexPart
     Object localObject1;
     if (paramInt == 0)
     {
-      localObject1 = new ojv(null);
-      ((ojv)localObject1).jdField_a_of_type_Int = 1;
+      localObject1 = new olf(null);
+      ((olf)localObject1).jdField_a_of_type_Int = 1;
       return localObject1;
     }
     Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
@@ -60,9 +60,9 @@ public class ComplexPart
       i += 1;
       if (i == paramInt)
       {
-        localObject2 = new ojv(null);
-        ((ojv)localObject2).jdField_a_of_type_Int = 2;
-        ((ojv)localObject2).jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group = ((ComplexPart.Group)localObject1);
+        localObject2 = new olf(null);
+        ((olf)localObject2).jdField_a_of_type_Int = 2;
+        ((olf)localObject2).jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group = ((ComplexPart.Group)localObject1);
         return localObject2;
       }
       if (!ComplexPart.Group.a((ComplexPart.Group)localObject1)) {
@@ -71,11 +71,11 @@ public class ComplexPart
       if (paramInt <= ((ComplexPart.Group)localObject1).a().size() + i)
       {
         localObject2 = (ComplexPart.Friend)((ComplexPart.Group)localObject1).a().get(paramInt - i - 1);
-        ojv localojv = new ojv(null);
-        localojv.jdField_a_of_type_Int = 3;
-        localojv.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group = ((ComplexPart.Group)localObject1);
-        localojv.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Friend = ((ComplexPart.Friend)localObject2);
-        return localojv;
+        olf localolf = new olf(null);
+        localolf.jdField_a_of_type_Int = 3;
+        localolf.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group = ((ComplexPart.Group)localObject1);
+        localolf.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Friend = ((ComplexPart.Friend)localObject2);
+        return localolf;
       }
       i = ((ComplexPart.Group)localObject1).a().size() + i;
     }
@@ -89,10 +89,10 @@ public class ComplexPart
   
   private void a(View paramView)
   {
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131371755);
-    Object localObject = (ImageView)paramView.findViewById(2131364365);
-    TextView localTextView = (TextView)paramView.findViewById(2131364366);
-    paramView = paramView.findViewById(2131364368);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131371925);
+    Object localObject = (ImageView)paramView.findViewById(2131364389);
+    TextView localTextView = (TextView)paramView.findViewById(2131364390);
+    paramView = paramView.findViewById(2131364392);
     localTextView.setText(this.jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_Boolean)
     {
@@ -122,10 +122,10 @@ public class ComplexPart
   
   private void a(View paramView, ComplexPart.Group paramGroup)
   {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131363819);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131371759);
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131371760);
-    paramView = (CheckBox)paramView.findViewById(2131371758);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131363842);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131371929);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131371930);
+    paramView = (CheckBox)paramView.findViewById(2131371928);
     localTextView1.setText(paramGroup.a.group_name);
     localTextView2.setText(String.format("(%s/%s)", new Object[] { Integer.valueOf(paramGroup.a()), Integer.valueOf(paramGroup.b()) }));
     if (paramGroup.b() == 0)
@@ -143,7 +143,7 @@ public class ComplexPart
     }
     for (;;)
     {
-      paramView.setOnClickListener(new oju(this, paramGroup));
+      paramView.setOnClickListener(new ole(this, paramGroup));
       return;
       paramView.setVisibility(0);
       break;
@@ -157,10 +157,10 @@ public class ComplexPart
   
   private void a(View paramView, ComplexPart.Group paramGroup, ComplexPart.Friend paramFriend)
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131364582);
-    Object localObject1 = (TextView)paramView.findViewById(2131364592);
-    Object localObject2 = (CheckBox)paramView.findViewById(2131371756);
-    paramView = paramView.findViewById(2131371757);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131364606);
+    Object localObject1 = (TextView)paramView.findViewById(2131364616);
+    Object localObject2 = (CheckBox)paramView.findViewById(2131371926);
+    paramView = paramView.findViewById(2131371927);
     ((TextView)localObject1).setText(paramFriend.jdField_a_of_type_ComTencentMobileqqDataFriends.remark);
     if (paramFriend.jdField_a_of_type_Boolean)
     {
@@ -205,7 +205,7 @@ public class ComplexPart
     }
   }
   
-  private void a(ojv paramojv)
+  private void a(olf paramolf)
   {
     boolean bool;
     if (this.jdField_a_of_type_Boolean) {
@@ -222,9 +222,9 @@ public class ComplexPart
     }
   }
   
-  private void b(ojv paramojv)
+  private void b(olf paramolf)
   {
-    paramojv.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a();
+    paramolf.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a();
   }
   
   private int c()
@@ -252,9 +252,9 @@ public class ComplexPart
     }
   }
   
-  private void c(ojv paramojv)
+  private void c(olf paramolf)
   {
-    paramojv.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a(paramojv.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Friend);
+    paramolf.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a(paramolf.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Friend);
   }
   
   public int a()
@@ -274,11 +274,11 @@ public class ComplexPart
     default: 
       return null;
     case 1: 
-      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970745, null);
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970793, null);
     case 2: 
-      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970747, null);
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970795, null);
     }
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970746, null);
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970794, null);
   }
   
   @NonNull
@@ -294,25 +294,25 @@ public class ComplexPart
   
   public void a(int paramInt)
   {
-    ojv localojv = a(paramInt);
-    switch (localojv.jdField_a_of_type_Int)
+    olf localolf = a(paramInt);
+    switch (localolf.jdField_a_of_type_Int)
     {
     default: 
       return;
     case 1: 
-      a(localojv);
+      a(localolf);
       return;
     case 2: 
-      b(localojv);
+      b(localolf);
       return;
     }
-    c(localojv);
+    c(localolf);
   }
   
   public void a(int paramInt, View paramView)
   {
-    ojv localojv = a(paramInt);
-    switch (localojv.jdField_a_of_type_Int)
+    olf localolf = a(paramInt);
+    switch (localolf.jdField_a_of_type_Int)
     {
     default: 
       return;
@@ -320,10 +320,10 @@ public class ComplexPart
       a(paramView);
       return;
     case 2: 
-      a(paramView, localojv.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group);
+      a(paramView, localolf.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group);
       return;
     }
-    a(paramView, localojv.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group, localojv.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Friend);
+    a(paramView, localolf.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group, localolf.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Friend);
   }
   
   public void a(List paramList)

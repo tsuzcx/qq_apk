@@ -1,18 +1,10 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-
 public class muc
-  implements TroopMemberApiClient.Callback
 {
-  public muc(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
-  
-  public void a(Bundle paramBundle)
-  {
-    if (this.a.a != null) {
-      this.a.k();
-    }
-  }
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
 }
 
 

@@ -1,79 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper.SendingFileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import java.util.ArrayList;
 
-public class trq
-  extends SubAccountBindObserver
+class trq
+  implements Runnable
 {
-  public trq(SubLoginActivity paramSubLoginActivity) {}
+  trq(trp paramtrp) {}
   
-  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void run()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "SubLoginActivity.onBindSubAccount() isSucc=" + paramBoolean + " isBindFromThis=" + this.a.a);
-      if (paramSubAccountBackProtocData != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubLoginActivity.onBindSubAccount() mainAccount=" + paramSubAccountBackProtocData.b + " subAccount=" + paramSubAccountBackProtocData.c + " errType=" + paramSubAccountBackProtocData.jdField_a_of_type_Int + " errMsg=" + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if (!this.a.a) {}
-    label428:
-    for (;;)
-    {
+    if (NetworkUtil.d(this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
       return;
-      this.a.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount: start");
-      }
-      this.a.c();
-      if (paramBoolean)
-      {
-        this.a.c(this.a.getString(2131436356));
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
-        }
-        SubAccountAssistantForward.b(this.a.app);
-        SubAccountAssistantForward.a(this.a.app);
-        this.a.finish();
-      }
-      for (;;)
-      {
-        if ((paramSubAccountBackProtocData == null) || (!QLog.isColorLevel())) {
-          break label428;
-        }
-        QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString + "...errorType = " + paramSubAccountBackProtocData.jdField_a_of_type_Int);
-        return;
-        if (paramSubAccountBackProtocData == null) {
-          break;
-        }
-        switch (paramSubAccountBackProtocData.jdField_a_of_type_Int)
-        {
-        default: 
-          this.a.b(this.a.getString(2131436337));
-          break;
-        case 1002: 
-          SubAccountControll.a(this.a.app, this.a);
-          break;
-        case 1003: 
-          this.a.b(this.a.getString(2131436334));
-          break;
-        case 1004: 
-          String str2 = paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString;
-          String str1 = str2;
-          if (TextUtils.isEmpty(str2)) {
-            str1 = this.a.getString(2131436336);
-          }
-          this.a.b(str1);
-          this.a.runOnUiThread(new trr(this));
-          SubLoginActivity.a(this.a, null);
-          SubAccountAssistantForward.a(this.a.app, 300L);
-        }
-      }
     }
+    this.a.a.jdField_d_of_type_Boolean = true;
+    SendMultiPictureHelper.a(this.a.a);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    int i = 1;
+    while (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      this.a.a.a((SendMultiPictureHelper.SendingFileInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i), this.a.a.c, this.a.a.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_JavaLangString);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.a.jdField_a_of_type_Int + i), Integer.valueOf(this.a.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
+      i += 1;
+    }
+    this.a.a.c();
   }
 }
 

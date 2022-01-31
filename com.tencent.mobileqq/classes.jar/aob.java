@@ -1,18 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.qq.im.poi.LbsPackPoiListActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.qq.im.poi.PoiInfo;
 
-public class aob
-  implements View.OnTouchListener
+public final class aob
+  implements Parcelable.Creator
 {
-  public aob(LbsPackPoiListActivity paramLbsPackPoiListActivity, InputMethodManager paramInputMethodManager) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public PoiInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    return new PoiInfo(paramParcel, null);
+  }
+  
+  public PoiInfo[] a(int paramInt)
+  {
+    return new PoiInfo[paramInt];
   }
 }
 

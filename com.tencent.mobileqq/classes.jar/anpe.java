@@ -1,15 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import dov.com.tencent.mobileqq.activity.richmedia.EditVideoQzComment;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
+import dov.com.qq.im.capture.adapter.MusicProviderPagerAdapter;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class anpe
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public anpe(EditVideoQzComment paramEditVideoQzComment) {}
+  public anpe(MusicProviderView paramMusicProviderView, int paramInt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    EditVideoQzComment.a(this.a).f = paramBoolean;
+    GridView localGridView = this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_DovComQqImCaptureAdapterMusicProviderPagerAdapter.a(this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem());
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicProviderView", 2, "position= " + this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem());
+    }
+    if (localGridView != null) {
+      localGridView.setSelection(this.jdField_a_of_type_Int);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.e("MusicProviderView", 2, "gridView is null");
   }
 }
 

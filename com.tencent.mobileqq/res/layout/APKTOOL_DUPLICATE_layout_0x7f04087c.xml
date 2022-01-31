@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="46.0dip"
+<FrameLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0d" android:layout_width="14.0dip" android:layout_height="10.0dip" android:layout_marginLeft="11.0dip" android:layout_marginRight="11.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bf6" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a73" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021777" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0d" android:layout_centerVertical="true" />
-    <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0e" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="46.0dip" android:text="QQ好友" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1a73" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a10" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="36.0dip" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2719" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-2.5dip" android:layout_marginRight="-2.5dip">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a271a" android:layout_width="fill_parent" android:layout_height="180.0dip" android:src="@color/APKTOOL_DUPLICATE_color_0x7f0c0386" android:scaleType="centerCrop" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a271b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02173a" android:layout_width="fill_parent" android:layout_height="180.0dip" android:alpha="0.6" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="40.0dip" android:layout_centerInParent="true">
+            <TextView android:textSize="22.0sp" android:textColor="@android:color/white" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a271c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="开学啦，你的女神是谁" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a271d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="65人参与" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021738" android:drawableRight="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021739" android:drawablePadding="10.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a271c" android:layout_centerHorizontal="true" android:alpha="0.7" />
+            <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a271e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="来推荐你学校的校花吧，谁的颜最能如你的眼？立刻推送，赢取大礼" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a271d" android:layout_centerHorizontal="true" android:lineSpacingExtra="7.0dip" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

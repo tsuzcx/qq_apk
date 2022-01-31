@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.data.FlowMusic;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager.GetSingleMusicInfoCallback;
-import dov.com.qq.im.capture.music.humrecognition.recognize.RecognitionManager;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import java.util.ArrayList;
 
 public class amwk
-  implements QIMMusicConfigManager.GetSingleMusicInfoCallback
+  implements Runnable
 {
-  public amwk(RecognitionManager paramRecognitionManager, String paramString) {}
+  public amwk(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt, ArrayList paramArrayList) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    paramObject = (FlowMusic)paramObject;
-    RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager, RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager, paramObject, this.jdField_a_of_type_JavaLangString));
-    if (RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager).equals(RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager).getClass())) {
-      this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.d();
-    }
+    RemoteHandleManager.a().a().a(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwk
  * JD-Core Version:    0.7.0.1
  */

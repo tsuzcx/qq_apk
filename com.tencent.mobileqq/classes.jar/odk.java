@@ -1,26 +1,27 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.EditVideoLabel;
+import com.tencent.biz.qqstory.takevideo.EditPicSave;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
 
 public class odk
-  implements View.OnTouchListener
+  implements ThreadExcutor.IThreadListener
 {
-  public odk(EditVideoLabel paramEditVideoLabel) {}
+  public odk(EditPicSave paramEditPicSave) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a() {}
+  
+  public void b()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
+    int i = 1;
+    this.a.a.a().postDelayed(new odl(this), 500L);
+    if (CameraControl.a().a == 1) {}
     for (;;)
     {
-      return false;
-      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
-      continue;
-      this.a.a.setTextColor(Color.parseColor("#ffffff"));
+      CaptureReportUtil.h(i);
+      return;
+      i = 2;
     }
   }
 }

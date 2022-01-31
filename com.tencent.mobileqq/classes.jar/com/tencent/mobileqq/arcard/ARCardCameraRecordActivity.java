@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.arcard;
 
-import aaei;
+import aalj;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
@@ -69,7 +69,7 @@ public class ARCardCameraRecordActivity
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment = new ARCardCameraRecordFragment();
     this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment.a(this);
-    localFragmentTransaction.add(2131369448, this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, "VideoRecord");
+    localFragmentTransaction.add(2131369525, this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, "VideoRecord");
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
@@ -80,7 +80,7 @@ public class ARCardCameraRecordActivity
     this.jdField_a_of_type_ComTencentMobileqqArcardARBlessWordFragment.a(this);
     this.jdField_a_of_type_ComTencentMobileqqArcardARBlessWordFragment.a(this.b, this.c, this.d, this.e, this.g, this.f, this.h, this.i);
     this.jdField_a_of_type_ComTencentMobileqqArcardARBlessWordFragment.a(this);
-    localFragmentTransaction.add(2131369448, this.jdField_a_of_type_ComTencentMobileqqArcardARBlessWordFragment, "BlessText");
+    localFragmentTransaction.add(2131369525, this.jdField_a_of_type_ComTencentMobileqqArcardARBlessWordFragment, "BlessText");
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
@@ -94,7 +94,7 @@ public class ARCardCameraRecordActivity
       QLog.d("ARCardCameraRecordActivity", 2, "doOnActivityResult flag:" + paramVideoRecordResult.jdField_a_of_type_Int + ", path:" + paramVideoRecordResult.b);
     }
     if (paramVideoRecordResult.jdField_a_of_type_Int == 1) {
-      ThreadManager.getUIHandler().post(new aaei(this, paramVideoRecordResult));
+      ThreadManager.getUIHandler().post(new aalj(this, paramVideoRecordResult));
     }
     while ((paramVideoRecordResult.jdField_a_of_type_Int != 2) || (new File("/sdcard/test.mp4").exists())) {
       return;
@@ -148,20 +148,20 @@ public class ARCardCameraRecordActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970183);
+    super.setContentView(2130970199);
     if (isInMultiWindow())
     {
       QQToast.a(this, "该功能无法在分屏模式下使用。", 0).a();
       finish();
       return true;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369447));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369524));
     try
     {
       paramBundle = new BitmapFactory.Options();
       paramBundle.inJustDecodeBounds = false;
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeFile(ARResouceDir.b() + "arcard.jpg", paramBundle));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369446));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369523));
       paramBundle = getIntent();
       if (paramBundle != null)
       {
@@ -216,7 +216,7 @@ public class ARCardCameraRecordActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARCardCameraRecordActivity
  * JD-Core Version:    0.7.0.1
  */

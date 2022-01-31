@@ -1,53 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import java.io.IOException;
-import java.util.Map;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
-public class msy
+class msy
   implements Runnable
 {
-  public msy(GalleryShareHelper paramGalleryShareHelper, String paramString, Map paramMap, int paramInt) {}
+  msy(msx parammsx, int paramInt) {}
   
   public void run()
   {
-    label149:
-    try
+    if (this.jdField_a_of_type_Int <= 0)
     {
-      localObject = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
-      if (localObject == null) {
-        break label120;
-      }
-      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-      if (localObject == null) {
-        break label120;
-      }
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j <= 8000) {
-        break label149;
-      }
-      double d = Math.sqrt(8000.0D / (i * j));
-      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-      ((Bitmap)localObject).recycle();
-      localObject = localBitmap;
+      this.jdField_a_of_type_Msx.a.leftView.setText(2131433297);
+      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    if (this.jdField_a_of_type_Int > 99)
     {
-      Object localObject;
-      break label120;
+      this.jdField_a_of_type_Msx.a.leftView.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_Msx.a.getString(2131433297), Integer.valueOf(99) }));
+      return;
     }
-    catch (IOException localIOException)
-    {
-      label120:
-      for (;;) {}
-    }
-    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
-    GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).runOnUiThread(new msz(this));
+    this.jdField_a_of_type_Msx.a.leftView.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_Msx.a.getString(2131433297), Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
 }
 

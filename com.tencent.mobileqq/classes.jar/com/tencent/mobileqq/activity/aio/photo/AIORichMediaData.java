@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.device.msg.activities.AIODevLittleVideoData;
 import java.io.File;
-import vlr;
+import vot;
 
 public abstract class AIORichMediaData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new vlr();
+  public static final Parcelable.Creator CREATOR = new vot();
   public int f;
   public long g;
   public long h;

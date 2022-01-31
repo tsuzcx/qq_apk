@@ -1,25 +1,15 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
 
-class njj
-  extends OnPlayModeShareListener
+public class njj
+  implements DialogInterface.OnDismissListener
 {
-  njj(nji paramnji, VideoPlayModeBase paramVideoPlayModeBase)
-  {
-    super(paramVideoPlayModeBase);
-  }
+  public njj(FeedsPlayModeBase paramFeedsPlayModeBase) {}
   
-  public void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super.a(paramInt);
-    if (this.a.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 2)
-    {
-      StoryReportor.a("play_video", "guest_share_suc", i, paramInt, new String[] { "", String.valueOf(StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      return;
-    }
+    this.a.s();
   }
 }
 

@@ -1,8 +1,19 @@
+import com.tencent.av.opengl.ui.GLView;
+import com.tencent.av.opengl.ui.GLViewGroup;
+import java.util.Comparator;
+
 public class jka
+  implements Comparator
 {
-  public int a;
-  public int b;
-  public int c = 3;
+  public jka(GLViewGroup paramGLViewGroup) {}
+  
+  public int a(GLView paramGLView1, GLView paramGLView2)
+  {
+    if (paramGLView1.i() >= paramGLView2.i()) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

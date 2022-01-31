@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
-
-public class aipm
-  implements DialogInterface.OnDismissListener
+class aipm
+  implements Runnable
 {
-  public aipm(TroopCreateLogic paramTroopCreateLogic) {}
+  aipm(aipl paramaipl) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
+    aipl.a(this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipm
  * JD-Core Version:    0.7.0.1
  */

@@ -32,9 +32,9 @@ public class NetSearchTemplateBaseView
     localLinearLayout.addView(paramViewGroup, new LinearLayout.LayoutParams(-1, -2));
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
     {
-      localLinearLayout.setBackgroundColor(localResources.getColor(2131492947));
+      localLinearLayout.setBackgroundColor(localResources.getColor(2131492948));
       if (c(paramInt)) {
-        paramViewGroup.setBackgroundResource(2130838576);
+        paramViewGroup.setBackgroundResource(2130838580);
       }
     }
     for (;;)
@@ -44,11 +44,11 @@ public class NetSearchTemplateBaseView
       this.d = localLinearLayout;
       a();
       return;
-      paramViewGroup.setBackgroundColor(localResources.getColor(2131492947));
+      paramViewGroup.setBackgroundColor(localResources.getColor(2131492948));
       continue;
-      localLinearLayout.setBackgroundColor(localResources.getColor(2131492968));
+      localLinearLayout.setBackgroundColor(localResources.getColor(2131492969));
       if (c(paramInt)) {
-        paramViewGroup.setBackgroundResource(2130838575);
+        paramViewGroup.setBackgroundResource(2130838579);
       }
     }
   }
@@ -70,14 +70,14 @@ public class NetSearchTemplateBaseView
   
   protected void a(View paramView)
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366349));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366376));
     if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366348));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366375));
     }
-    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131366350));
-    this.c = ((ImageView)paramView.findViewById(2131366351));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131366377));
+    this.c = ((ImageView)paramView.findViewById(2131366378));
     this.e = ((TextView)paramView.findViewById(2131361928));
-    this.f = ((TextView)paramView.findViewById(2131366352));
+    this.f = ((TextView)paramView.findViewById(2131366379));
   }
 }
 

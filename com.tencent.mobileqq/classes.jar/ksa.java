@@ -1,25 +1,40 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ksa
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public ksa(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo) {}
+  public ksa(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = new Intent((Context)this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a.get(), ScannerActivity.class);
-    paramView.putExtra("from", this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a.getClass().getName());
-    paramView.putExtra("finishAfterSucc", true);
-    ((BaseActivity)this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a.get()).startActivity(paramView);
-    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.a);
+    if (this.a.r) {
+      return;
+    }
+    this.a.r = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.b.dismiss();
+      return;
+      this.a.l = false;
+      this.a.x();
+      if (((EcShopAssistantManager)this.a.a.getManager(87)).a(this.a.d)) {
+        ((EcshopReportHandler)this.a.a.a(88)).a(134243868, this.a.d, null, null, null, 2L, false);
+      }
+      com.tencent.mobileqq.activity.aio.AIOUtils.m = false;
+      if ("2290230341".equals(this.a.d)) {
+        ReportController.b(this.a.a, "CliOper", "", "", "0X80090E7", "0X80090E7", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

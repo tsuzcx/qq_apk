@@ -16,14 +16,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import lyo;
-import lyp;
+import lzo;
+import lzp;
 
 public class VideoUploadController
   extends FileUploadController
 {
   private long jdField_a_of_type_Long;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new lyp(this);
+  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new lzp(this);
   private TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
   private String jdField_a_of_type_JavaLangString;
   private long jdField_b_of_type_Long;
@@ -54,6 +54,7 @@ public class VideoUploadController
   
   private void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
+    QLog.d("VideoUploadController", 2, "finish: retCode - " + paramInt + " fileUrl : " + paramString1);
     this.jdField_b_of_type_Long = System.currentTimeMillis();
     a(paramInt);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener != null) {
@@ -101,11 +102,13 @@ public class VideoUploadController
     }
     if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
     {
+      QLog.d("VideoUploadController", 2, "upload: network not available");
       a(1003, null, null, null);
       return;
     }
     if ((!paramBoolean) && (!NetworkUtil.h(this.jdField_a_of_type_AndroidContentContext)))
     {
+      QLog.d("VideoUploadController", 2, "upload: wifi not connected and not upload with mobile");
       a(1005, null, null, null);
       return;
     }
@@ -150,7 +153,7 @@ public class VideoUploadController
   public void c()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-    ThreadManager.executeOnFileThread(new lyo(this));
+    ThreadManager.executeOnFileThread(new lzo(this));
   }
 }
 

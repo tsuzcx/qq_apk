@@ -54,7 +54,7 @@ public class ForwardLbsHBOption
     paramInt = paramBundle.getInt("uintype");
     String str = paramBundle.getString("uin");
     if ("-1".equals(str)) {
-      paramBundle.putString("uinname", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438768));
+      paramBundle.putString("uinname", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438786));
     }
     Object localObject;
     if (paramInt == 1)

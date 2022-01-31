@@ -12,6 +12,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
@@ -21,8 +22,8 @@ import cooperation.qzone.util.NetworkState;
 import dov.com.qq.im.capture.data.FilterCategory;
 import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import omy;
-import omz;
+import oos;
+import oot;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,26 +31,27 @@ public class WeishiGuideUtils
 {
   public static WeShiGuideDialog a(Context paramContext, Object paramObject)
   {
-    Object localObject = a(paramObject);
-    paramObject = localObject[0];
-    localObject = localObject[1];
+    String[] arrayOfString = a(paramObject);
+    paramObject = arrayOfString[0];
+    String str1 = arrayOfString[1];
+    String str2 = arrayOfString[2];
     if (a(paramContext))
     {
-      ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "clk_ws", 0, 1, paramObject, (String)localObject, "", "");
+      ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "clk_ws", 0, 1, paramObject, str1, "", "");
       if (paramContext != null)
       {
         paramObject = new Intent();
         paramObject.setAction("android.intent.action.VIEW");
-        paramObject.setData(Uri.parse("weishi://camera?logsour=3006"));
+        paramObject.setData(Uri.parse(str2));
         paramContext.startActivity(paramObject);
       }
       return null;
     }
-    ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "cover_exp", 0, 0, "5", "", "", "");
-    ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "clk_ws", 0, 2, paramObject, (String)localObject, "", "");
-    paramContext = new WeShiGuideDialog(paramContext, 2131624516);
+    str2 = arrayOfString[3];
+    ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "clk_ws", 0, 2, paramObject, str1, "", "");
+    paramContext = new WeShiGuideDialog(paramContext, 2131624517);
     paramContext.a("https://pub.idqqimg.com/pc/misc/files/20180423/4c3ece054ae044eb85797d31fa487ce7.jpg");
-    paramContext.a("", "5", "");
+    paramContext.a("", str2, "");
     paramContext.show();
     return paramContext;
   }
@@ -103,78 +105,6 @@ public class WeishiGuideUtils
   
   public static void a(Context paramContext)
   {
-    if (paramContext == null) {
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setData(Uri.parse("weishi://main?goto=recommend&logsour=3006"));
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(Object paramObject)
-  {
-    paramObject = a(paramObject);
-    ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "exp_ws", 0, 0, paramObject[0], paramObject[1], "", "");
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return PackageUtil.a(paramContext, "com.tencent.weishi");
-  }
-  
-  public static String[] a(Object paramObject)
-  {
-    String str4 = "1";
-    String str3 = "";
-    String str2 = str3;
-    String str1 = str4;
-    if (paramObject != null)
-    {
-      if (!(paramObject instanceof FilterCategory)) {
-        break label49;
-      }
-      paramObject = (FilterCategory)paramObject;
-      str1 = "2";
-      str2 = paramObject.a;
-    }
-    for (;;)
-    {
-      return new String[] { str1, str2 };
-      label49:
-      if ((paramObject instanceof QIMFilterCategoryItem))
-      {
-        paramObject = (QIMFilterCategoryItem)paramObject;
-        str1 = "10";
-        str2 = paramObject.b;
-      }
-      else if ((paramObject instanceof MusicItemInfo))
-      {
-        paramObject = (MusicItemInfo)paramObject;
-        str1 = "4";
-        str2 = paramObject.a;
-      }
-      else if ((paramObject instanceof PtvTemplateManager.PtvTemplateInfo))
-      {
-        paramObject = (PtvTemplateManager.PtvTemplateInfo)paramObject;
-        str1 = "3";
-        str2 = paramObject.name;
-      }
-      else
-      {
-        str2 = str3;
-        str1 = str4;
-        if ((paramObject instanceof PressDarkImageButton))
-        {
-          str1 = "5";
-          str2 = str3;
-        }
-      }
-    }
-  }
-  
-  public static void b(Context paramContext)
-  {
     if (!NetworkUtils.b(paramContext))
     {
       QQToast.a(paramContext, "网络连接错误，请检查网络并重试!", 0).a();
@@ -191,13 +121,111 @@ public class WeishiGuideUtils
       paramContext = DialogUtil.a(paramContext, 230);
       paramContext.setTitle(null);
       paramContext.setMessage("当前为非WiFi网络，确定要下载吗？");
-      paramContext.setNegativeButton("取消", new omz()).setPositiveButton("下载", new omy((DownloadInfo)localObject));
+      paramContext.setNegativeButton("取消", new oot()).setPositiveButton("下载", new oos((DownloadInfo)localObject));
       paramContext.show();
       return;
     }
     localObject = new Intent(paramContext, QQBrowserActivity.class);
     ((Intent)localObject).putExtra("url", "https://mobile.qzone.qq.com/l?g=4025");
     paramContext.startActivity((Intent)localObject);
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    String str;
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("no")))
+    {
+      str = paramString;
+      if (!paramString.equals("default")) {}
+    }
+    else
+    {
+      str = "weishi://main?goto=recommend&logsour=3006";
+    }
+    paramString = new Intent();
+    paramString.setAction("android.intent.action.VIEW");
+    paramString.setData(Uri.parse(str));
+    paramContext.startActivity(paramString);
+  }
+  
+  public static void a(Object paramObject)
+  {
+    paramObject = a(paramObject);
+    ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "exp_ws", 0, 0, paramObject[0], paramObject[1], "", "");
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return PackageUtil.a(paramContext, "com.tencent.weishi");
+  }
+  
+  public static String[] a(Object paramObject)
+  {
+    String str3 = "5";
+    String str1;
+    String str2;
+    if (paramObject != null) {
+      if ((paramObject instanceof FilterCategory))
+      {
+        str1 = ((FilterCategory)paramObject).a;
+        paramObject = null;
+        str2 = "10";
+      }
+    }
+    for (;;)
+    {
+      Object localObject = paramObject;
+      if (StringUtil.a(paramObject)) {
+        localObject = "weishi://camera?logsour=3006";
+      }
+      return new String[] { str2, str1, localObject, str3 };
+      if ((paramObject instanceof QIMFilterCategoryItem))
+      {
+        paramObject = (QIMFilterCategoryItem)paramObject;
+        str2 = "2";
+        str1 = paramObject.b;
+        paramObject = paramObject.g;
+        str3 = "7";
+      }
+      else if ((paramObject instanceof MusicItemInfo))
+      {
+        paramObject = (MusicItemInfo)paramObject;
+        str2 = "4";
+        str1 = paramObject.a;
+        paramObject = paramObject.f;
+        str3 = "9";
+      }
+      else if ((paramObject instanceof PtvTemplateManager.PtvTemplateInfo))
+      {
+        paramObject = (PtvTemplateManager.PtvTemplateInfo)paramObject;
+        str2 = "3";
+        str1 = paramObject.name;
+        paramObject = paramObject.jump_ws;
+        str3 = "8";
+      }
+      else if ((paramObject instanceof PressDarkImageButton))
+      {
+        paramObject = null;
+        str1 = "";
+        str2 = "5";
+      }
+      else if ((paramObject instanceof String))
+      {
+        str2 = "1";
+        str1 = "";
+        paramObject = (String)paramObject;
+        str3 = "6";
+      }
+      else
+      {
+        paramObject = null;
+        str1 = "";
+        str2 = "1";
+      }
+    }
   }
   
   private static void b(DownloadInfo paramDownloadInfo)

@@ -6,7 +6,7 @@ import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.net.GdtAdHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import qjj;
+import qld;
 
 public class GdtReporter
 {
@@ -38,13 +38,13 @@ public class GdtReporter
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.post(new qjj(paramString), 2, null, false);
+    ThreadManager.post(new qld(paramString), 2, null, false);
     GdtLog.b("GDT_CGI_REPORT", paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtReporter
  * JD-Core Version:    0.7.0.1
  */

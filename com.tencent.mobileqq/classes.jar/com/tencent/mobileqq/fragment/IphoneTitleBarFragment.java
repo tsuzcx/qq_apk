@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import adcv;
+import admu;
 import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -54,7 +54,7 @@ public abstract class IphoneTitleBarFragment
   
   public IphoneTitleBarFragment()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new adcv(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new admu(this);
   }
   
   public static void c(View paramView)
@@ -69,10 +69,10 @@ public abstract class IphoneTitleBarFragment
   
   protected View a()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363227));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363245));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.f = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363971));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363970));
+    this.f = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363995));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363994));
     if ((this.f != null) && (this.jdField_b_of_type_AndroidWidgetImageView != null))
     {
       this.f.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -84,7 +84,7 @@ public abstract class IphoneTitleBarFragment
   public void a(int paramInt, View.OnClickListener paramOnClickListener)
   {
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363455));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363473));
     c(this.jdField_c_of_type_AndroidWidgetTextView);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setText(paramInt);
@@ -102,7 +102,7 @@ public abstract class IphoneTitleBarFragment
     do
     {
       return;
-      ((FrameLayout)getActivity().findViewById(16908290)).setForeground(getResources().getDrawable(2130845746));
+      ((FrameLayout)getActivity().findViewById(16908290)).setForeground(getResources().getDrawable(2130845874));
       if ((f()) && (b()) && (a()))
       {
         ViewParent localViewParent = getActivity().findViewById(16908310).getParent();
@@ -111,7 +111,7 @@ public abstract class IphoneTitleBarFragment
         }
       }
     } while (this.jdField_b_of_type_AndroidWidgetTextView != null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363226));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363244));
     a();
     try
     {
@@ -138,7 +138,7 @@ public abstract class IphoneTitleBarFragment
   
   public View b()
   {
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363410));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363428));
     c(this.jdField_e_of_type_AndroidWidgetTextView);
     return this.jdField_e_of_type_AndroidWidgetTextView;
   }
@@ -170,7 +170,7 @@ public abstract class IphoneTitleBarFragment
   public void b(String paramString, View.OnClickListener paramOnClickListener)
   {
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363455));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363473));
     c(this.jdField_c_of_type_AndroidWidgetTextView);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString);
@@ -184,12 +184,12 @@ public abstract class IphoneTitleBarFragment
   
   public View c()
   {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363226);
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363244);
   }
   
   protected View d()
   {
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363363));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363381));
     return this.jdField_d_of_type_AndroidWidgetTextView;
   }
   
@@ -203,8 +203,8 @@ public abstract class IphoneTitleBarFragment
   
   protected View e()
   {
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363410));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363456));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363428));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363474));
     c(this.jdField_e_of_type_AndroidWidgetTextView);
     c(this.jdField_a_of_type_AndroidWidgetImageView);
     return this.jdField_e_of_type_AndroidWidgetTextView;
@@ -236,7 +236,7 @@ public abstract class IphoneTitleBarFragment
     Object localObject1;
     if (this.jdField_e_of_type_Boolean)
     {
-      localObject1 = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363362);
+      localObject1 = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363380);
       if (this.jdField_d_of_type_AndroidWidgetTextView.getVisibility() == 0)
       {
         localObject1 = this.jdField_d_of_type_AndroidWidgetTextView;
@@ -289,13 +289,13 @@ public abstract class IphoneTitleBarFragment
           ((RelativeLayout.LayoutParams)localObject1).leftMargin = 0;
           ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
           this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(getActivity());
-          this.jdField_c_of_type_AndroidWidgetImageView.setId(2131365681);
+          this.jdField_c_of_type_AndroidWidgetImageView.setId(2131365708);
           localObject1 = new RelativeLayout.LayoutParams(-2, -2);
           ((RelativeLayout.LayoutParams)localObject1).addRule(0, ((View)localObject2).getId());
           ((RelativeLayout.LayoutParams)localObject1).addRule(15);
           ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)(7.0F * DeviceInfoUtil.a()));
           this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
-          localObject1 = getActivity().getResources().getDrawable(2130838594);
+          localObject1 = getActivity().getResources().getDrawable(2130838598);
           this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
           if ((localObject1 instanceof Animatable)) {
             ((Animatable)localObject1).start();
@@ -313,7 +313,7 @@ public abstract class IphoneTitleBarFragment
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838594);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838598);
         this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_d_of_type_AndroidWidgetTextView.getCompoundDrawables();
         this.jdField_a_of_type_Int = this.jdField_d_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
         this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
@@ -368,14 +368,14 @@ public abstract class IphoneTitleBarFragment
     try
     {
       View localView2 = paramLayoutInflater.inflate(a(), (ViewGroup)localView1, false);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView1.findViewById(2131363995));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView1.findViewById(2131364019));
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, ImmersiveUtils.a(paramLayoutInflater.getContext()), 0, 0);
       }
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(3, 2131363226);
+      localLayoutParams.addRule(3, 2131363244);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localView2, localLayoutParams);
       this.jdField_e_of_type_AndroidViewView = localView2;
     }
@@ -406,7 +406,7 @@ public abstract class IphoneTitleBarFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.IphoneTitleBarFragment
  * JD-Core Version:    0.7.0.1
  */

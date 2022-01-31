@@ -1,22 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
 
 public class swu
-  implements Animation.AnimationListener
+  implements View.OnFocusChangeListener
 {
-  public swu(LoginInfoActivity paramLoginInfoActivity) {}
+  public swu(Leba paramLeba) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    LoginInfoActivity.a(this.a).setVisibility(4);
-    LoginInfoActivity.a(this.a).clearAnimation();
+    if (paramBoolean)
+    {
+      paramView.clearFocus();
+      UniteSearchActivity.a(this.a.a(), null, 21, 0L, (HotWordSearchEntryDataModel.HotSearchItem)Leba.a(this.a).getTag(), 3);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

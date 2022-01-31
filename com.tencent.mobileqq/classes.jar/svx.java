@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
 
-public class svx
+class svx
   implements Runnable
 {
-  public svx(LebaListMgrActivity paramLebaListMgrActivity) {}
+  svx(svw paramsvw, Bitmap paramBitmap) {}
   
   public void run()
   {
-    LebaListMgrActivity.a(this.a, true);
+    this.jdField_a_of_type_Svw.a.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

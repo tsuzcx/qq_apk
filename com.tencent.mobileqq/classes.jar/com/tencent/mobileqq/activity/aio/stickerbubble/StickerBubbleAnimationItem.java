@@ -17,7 +17,6 @@ public class StickerBubbleAnimationItem
   private ItemStatus jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus;
   private StickerBubbleAnimationItem.ItemAnimationCallback jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem$ItemAnimationCallback;
   private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
   private double jdField_b_of_type_Double = 1.0D;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -228,31 +227,7 @@ public class StickerBubbleAnimationItem
     }
   }
   
-  private double b(long paramLong)
-  {
-    if (Math.abs(this.jdField_c_of_type_Double - this.jdField_a_of_type_Double) < 0.01D) {
-      return this.jdField_a_of_type_Double;
-    }
-    paramLong -= this.jdField_a_of_type_Long;
-    if (this.jdField_c_of_type_Double < this.jdField_a_of_type_Double)
-    {
-      double d1 = this.jdField_c_of_type_Double;
-      this.jdField_c_of_type_Double = (paramLong * 2L / 1000.0D + d1);
-    }
-    for (this.jdField_c_of_type_Double = Math.min(this.jdField_a_of_type_Double, this.jdField_c_of_type_Double);; this.jdField_c_of_type_Double = Math.max(this.jdField_a_of_type_Double, this.jdField_c_of_type_Double))
-    {
-      return this.jdField_c_of_type_Double;
-      this.jdField_c_of_type_Double -= paramLong * 2L / 1000.0D;
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Double = 1.0D;
-    this.jdField_b_of_type_Double = 1.0D;
-  }
-  
-  private void b(long paramLong)
+  private void a(long paramLong)
   {
     double d1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_AndroidGraphicsRectF.centerX();
     double d2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_AndroidGraphicsRectF.centerY();
@@ -324,12 +299,31 @@ public class StickerBubbleAnimationItem
     this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_AndroidGraphicsRectF.bottom = ((float)(d2 + d4 * 1.0D / 2.0D));
   }
   
-  private void c()
+  private double b(long paramLong)
   {
-    this.jdField_a_of_type_Double = Math.max(1.0D - Math.abs(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity.jdField_a_of_type_Double) * 0.0003D, 0.8D);
+    if (Math.abs(this.jdField_c_of_type_Double - this.jdField_a_of_type_Double) < 0.01D) {
+      return this.jdField_a_of_type_Double;
+    }
+    paramLong -= this.jdField_a_of_type_Long;
+    if (this.jdField_c_of_type_Double < this.jdField_a_of_type_Double)
+    {
+      double d1 = this.jdField_c_of_type_Double;
+      this.jdField_c_of_type_Double = (paramLong * 2L / 1000.0D + d1);
+    }
+    for (this.jdField_c_of_type_Double = Math.min(this.jdField_a_of_type_Double, this.jdField_c_of_type_Double);; this.jdField_c_of_type_Double = Math.max(this.jdField_a_of_type_Double, this.jdField_c_of_type_Double))
+    {
+      return this.jdField_c_of_type_Double;
+      this.jdField_c_of_type_Double -= paramLong * 2L / 1000.0D;
+    }
   }
   
-  private void c(long paramLong)
+  private void b()
+  {
+    this.jdField_a_of_type_Double = 1.0D;
+    this.jdField_b_of_type_Double = 1.0D;
+  }
+  
+  private void b(long paramLong)
   {
     double d1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_AndroidGraphicsRectF.centerX();
     double d2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_AndroidGraphicsRectF.centerY();
@@ -343,12 +337,12 @@ public class StickerBubbleAnimationItem
     this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_AndroidGraphicsRectF.bottom = ((float)(d2 + this.jdField_d_of_type_Double * d4 / 2.0D));
   }
   
-  private void d()
+  private void c()
   {
-    this.jdField_b_of_type_Double = Math.max(1.0D - Math.abs(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity.jdField_b_of_type_Double) * 0.0003D, 0.8D);
+    this.jdField_a_of_type_Double = Math.max(1.0D - Math.abs(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity.jdField_a_of_type_Double) * 0.0003D, 0.8D);
   }
   
-  private void d(long paramLong)
+  private void c(long paramLong)
   {
     double d1 = (paramLong - this.jdField_a_of_type_Long) / 1000.0D;
     double d2 = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity.jdField_a_of_type_Double, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Acceleration.jdField_a_of_type_Double, d1);
@@ -366,6 +360,11 @@ public class StickerBubbleAnimationItem
     this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_AndroidGraphicsRectF.offset((float)d2, (float)d3);
   }
   
+  private void d()
+  {
+    this.jdField_b_of_type_Double = Math.max(1.0D - Math.abs(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity.jdField_b_of_type_Double) * 0.0003D, 0.8D);
+  }
+  
   public long a()
   {
     return this.jdField_e_of_type_Long;
@@ -374,16 +373,6 @@ public class StickerBubbleAnimationItem
   public String a()
   {
     return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(long paramLong)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_Int = 4;
-      this.jdField_d_of_type_Long = paramLong;
-      this.jdField_a_of_type_Boolean = true;
-    }
   }
   
   public void a(Canvas paramCanvas, Paint paramPaint, long paramLong, Drawable paramDrawable)
@@ -397,19 +386,19 @@ public class StickerBubbleAnimationItem
       this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_Int == 5) {
-      b(paramLong);
+      a(paramLong);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_Int != 5)
     {
       if (paramLong - this.jdField_b_of_type_Long > 170L) {
         b();
       }
-      c(paramLong);
+      b(paramLong);
     }
     int i;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_Int != 3)
     {
-      d(paramLong);
+      c(paramLong);
       i = a(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus.jdField_a_of_type_AndroidGraphicsRectF);
       if (i != 0)
       {

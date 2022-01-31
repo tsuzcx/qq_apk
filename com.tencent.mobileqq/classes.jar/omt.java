@@ -1,20 +1,20 @@
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.QuestionElement;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureView.CaptureRequest;
+import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class omt
-  implements Runnable
+  implements StoryEffectsCameraCaptureView.CaptureRequest
 {
-  public omt(PollWidgetUtils.WidgetWrapper paramWidgetWrapper) {}
+  public omt(StoryMultiFragmentPart paramStoryMultiFragmentPart, Context paramContext) {}
   
-  public void run()
+  public void a(Bitmap paramBitmap)
   {
-    PollWidgetUtils.WidgetWrapper localWidgetWrapper = this.a;
-    if (!PollWidgetUtils.WidgetWrapper.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PollWidgetUtils.WidgetWrapper.a(localWidgetWrapper, bool);
-      this.a.a.a(PollWidgetUtils.WidgetWrapper.a(this.a));
-      return;
+    SLog.a("story.publish.StoryMultiFragmentPart", "requestGetCurrentFrameBitmap done %s", paramBitmap);
+    if (paramBitmap != null) {
+      ThreadManager.postImmediately(new omu(this, paramBitmap), null, false);
     }
   }
 }

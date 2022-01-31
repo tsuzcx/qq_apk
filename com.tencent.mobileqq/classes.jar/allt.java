@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qidian.QidianManager;
+import com.tencent.qidian.data.BmqqAccountType;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class allt
-  implements Parcelable.Creator
+public class allt
+  implements Runnable
 {
-  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
-  {
-    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
-  }
+  public allt(QidianManager paramQidianManager, String paramString) {}
   
-  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  public void run()
   {
-    return new ExpandableListConnector.GroupMetadata[paramInt];
+    this.jdField_a_of_type_ComTencentQidianQidianManager.b(this.jdField_a_of_type_ComTencentQidianQidianManager.a.getApp().getBaseContext(), new BmqqAccountType(this.jdField_a_of_type_JavaLangString, 1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     allt
  * JD-Core Version:    0.7.0.1
  */

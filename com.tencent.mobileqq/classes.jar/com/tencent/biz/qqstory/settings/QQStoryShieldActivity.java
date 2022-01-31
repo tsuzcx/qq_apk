@@ -30,7 +30,7 @@ import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.Switch;
 import java.util.ArrayList;
-import npt;
+import nrg;
 
 public class QQStoryShieldActivity
   extends IphoneTitleBarActivity
@@ -40,7 +40,7 @@ public class QQStoryShieldActivity
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   QQStoryHandler jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler;
   QQStoryManager jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
-  QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new npt(this);
+  QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nrg(this);
   public QQProgressNotifier a;
   public Switch a;
   String jdField_a_of_type_JavaLangString;
@@ -49,9 +49,9 @@ public class QQStoryShieldActivity
   
   protected View a(int paramInt, String paramString)
   {
-    View localView = View.inflate(this, 2130970612, null);
-    ((TextView)localView.findViewById(2131363360)).setText(paramString);
-    ((TextView)localView.findViewById(2131364095)).setText("");
+    View localView = View.inflate(this, 2130970656, null);
+    ((TextView)localView.findViewById(2131363378)).setText(paramString);
+    ((TextView)localView.findViewById(2131364119)).setText("");
     localView.setTag(Integer.valueOf(paramInt));
     localView.setOnClickListener(this);
     return localView;
@@ -78,13 +78,13 @@ public class QQStoryShieldActivity
     this.app.addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
     paramBundle = new LinearLayout(this);
     Object localObject = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838211);
+    paramBundle.setBackgroundResource(2130838215);
     paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
     paramBundle.setOrientation(1);
     paramBundle.setPadding(0, AIOUtils.a(20.0F, getResources()), 0, 0);
     this.jdField_a_of_type_AndroidViewViewGroup = paramBundle;
     paramBundle = a(0, "查看个人资料卡");
-    paramBundle.setBackgroundResource(2130838626);
+    paramBundle.setBackgroundResource(2130838630);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
     if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 2)) {
       paramBundle.setVisibility(8);
@@ -145,7 +145,7 @@ public class QQStoryShieldActivity
       }
       super.setTitle("日迹设置");
       label509:
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2130970534);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2130970578);
       if (NetworkUtil.g(this)) {
         break label655;
       }
@@ -221,7 +221,7 @@ public class QQStoryShieldActivity
         if (i != 0)
         {
           this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.a(paramCompoundButton, true, paramBoolean);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131432990, 0);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433007, 0);
           break;
         }
         paramCompoundButton = this.jdField_a_of_type_ComTencentWidgetSwitch;
@@ -234,7 +234,7 @@ public class QQStoryShieldActivity
         if (i != 0)
         {
           this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.a(paramCompoundButton, false, paramBoolean);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131432990, 0);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433007, 0);
           break;
         }
         paramCompoundButton = this.b;

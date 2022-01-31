@@ -1,17 +1,17 @@
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jyl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public jyl(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public jyl(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "RemoveTipsRunnale Run");
-    }
-    this.a.c();
+    paramDialogInterface.dismiss();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063FA", "0X80063FA", 5, 0, "", "", "", "");
   }
 }
 

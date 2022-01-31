@@ -1,40 +1,42 @@
-import com.tencent.mobileqq.activity.bless.BlessBaseActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.mobileqq.activity.aio.stickerbubble.ManualDecodeGifImage;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
 import com.tencent.qphone.base.util.QLog;
 
 public class wbs
-  extends MessageObserver
+  implements Runnable
 {
-  public wbs(BlessBaseActivity paramBlessBaseActivity) {}
+  public wbs(StickerBubbleAnimationView paramStickerBubbleAnimationView, BitmapDrawable[] paramArrayOfBitmapDrawable, ManualDecodeGifImage paramManualDecodeGifImage, String paramString, int paramInt) {}
   
-  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1);
-    }
-    this.a.a();
-    if (!this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    if (paramInt == 67L)
+    int j = 0;
+    int i = 1;
+    if (i < this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length)
     {
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.a(paramLong);
-      QQToast.a(this.a.app.getApp(), 2131438267, 1).a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.a();
+      Object localObject = StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.a(), 0.7D);
+      BitmapDrawable[] arrayOfBitmapDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+      if (localObject != null) {}
+      for (localObject = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.getResources(), (Bitmap)localObject);; localObject = null)
+      {
+        arrayOfBitmapDrawable[i] = localObject;
+        QLog.d("StickerBubbleAnimationView", 2, "decode gif: " + i + " / " + this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.c() + " / " + this.jdField_a_of_type_JavaLangString);
+        if (i != this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.c())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("StickerBubbleAnimationView", 2, "index is not matched, " + i + " / " + this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length + " / " + this.jdField_a_of_type_JavaLangString);
+          }
+          j = 1;
+        }
+        i += 1;
+        break;
+      }
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "onSendBlessMsgResp failed:" + paramInt + " waitTime=" + paramLong);
-      }
-      this.a.b(paramBoolean1);
-      return;
-      if (!paramBoolean1) {
-        QQToast.a(this.a.app.getApp(), 2131438268, 1).a();
-      }
+    if (j == 0) {
+      StickerBubbleAnimationHelper.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable, this.jdField_a_of_type_Int);
     }
   }
 }

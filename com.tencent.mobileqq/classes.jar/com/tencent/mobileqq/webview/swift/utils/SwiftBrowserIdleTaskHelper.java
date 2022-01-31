@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import akch;
+import akqo;
 import android.os.Looper;
 import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
@@ -24,7 +24,7 @@ public class SwiftBrowserIdleTaskHelper
   private static SwiftBrowserIdleTaskHelper jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftBrowserIdleTaskHelper;
   static WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private static final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  final MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new akch(this);
+  final MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new akqo(this);
   public boolean a;
   
   SwiftBrowserIdleTaskHelper()
@@ -122,7 +122,7 @@ public class SwiftBrowserIdleTaskHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,15 @@
-import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
 
 public class acfg
+  implements Runnable
 {
-  public View[] a = new View[12];
+  public acfg(EmoticonPanelLinearLayout paramEmoticonPanelLinearLayout) {}
+  
+  public void run()
+  {
+    EmoticonPanelLinearLayout.a(this.a).removeView(EmoticonPanelLinearLayout.a(this.a));
+  }
 }
 
 

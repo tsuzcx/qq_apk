@@ -1,97 +1,52 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.fling.TopContentLayout;
-import com.tencent.mobileqq.activity.fling.TopContentLayout.OnOutScreenListener;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contacts.adapter.HeadCardAdapter;
+import com.tencent.mobileqq.activity.contacts.adapter.HeadCardAdapter.HeadAdapterCallback;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import java.util.List;
 
 public class wml
-  extends GestureDetector.SimpleOnGestureListener
+  implements IIconListener
 {
-  private float jdField_a_of_type_Float;
+  public wml(HeadCardAdapter paramHeadCardAdapter) {}
   
-  public wml(TopContentLayout paramTopContentLayout, Context paramContext)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    int i;
-    int j;
-    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    if ((paramInt2 == 200) && (paramBitmap != null))
     {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
-      j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
-      if (paramFloat1 <= 0.0F) {
-        break label96;
-      }
-      i -= j;
-    }
-    for (;;)
-    {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label96:
-      i = -j;
-    }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    float f1;
-    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
-    {
-      f1 = Math.abs(paramFloat2 / paramFloat1);
-      float f2 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
-      if ((paramFloat1 < 0.0F) && (f1 < 0.5F) && (f2 > this.jdField_a_of_type_Float))
+      List localList = HeadCardAdapter.a(this.a).a();
+      paramInt2 = 0;
+      if (paramInt2 < localList.size())
       {
-        TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
-        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
-          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
+        Object localObject2 = (View)localList.get(paramInt2);
+        if (localObject2 == null) {}
+        label167:
+        for (;;)
+        {
+          paramInt2 += 1;
+          break;
+          if ((((View)localObject2).getTag() instanceof wmm)) {}
+          for (Object localObject1 = (wmm)((View)localObject2).getTag();; localObject1 = null)
+          {
+            if ((localObject1 == null) || (!(((wmm)localObject1).a instanceof MayKnowRecommend))) {
+              break label167;
+            }
+            localObject1 = (MayKnowRecommend)((wmm)localObject1).a;
+            RichStatus localRichStatus = ((MayKnowRecommend)localObject1).getRichStatus();
+            if ((localRichStatus == null) || (localRichStatus.actId != paramInt1)) {
+              break;
+            }
+            localObject2 = (TextView)((View)localObject2).findViewById(2131363852);
+            if (localObject2 == null) {
+              break;
+            }
+            HeadCardAdapter.a(this.a, (MayKnowRecommend)localObject1, (TextView)localObject2, paramBitmap);
+            break;
+          }
         }
-        return true;
-      }
-      f1 = paramFloat1;
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, f1, paramFloat2);
-    }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
-    int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
-    if ((paramFloat1 < 0.0F) && (j < i)) {
-      if (Math.abs(paramFloat1) > i - j) {
-        paramFloat1 = i - j;
-      }
-    }
-    for (;;)
-    {
-      f1 = paramFloat1;
-      if (Math.abs(paramFloat1) <= 0.0F) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
-      f1 = paramFloat1;
-      if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) == null) {
-        break;
-      }
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
-      f1 = paramFloat1;
-      break;
-      paramFloat1 = -paramFloat1;
-      continue;
-      if ((paramFloat1 > 0.0F) && (j > 0))
-      {
-        if (Math.abs(paramFloat1) > j) {
-          paramFloat1 = -j;
-        } else {
-          paramFloat1 = -paramFloat1;
-        }
-      }
-      else {
-        paramFloat1 = 0.0F;
       }
     }
   }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hiboom;
 
-import adfj;
+import adpi;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -26,9 +26,9 @@ public class HiBoomPanelView$HiBoomAdapter
     this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
   }
   
-  public adfj a(ViewGroup paramViewGroup, int paramInt)
+  public adpi a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new adfj(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2130971671, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener);
+    return new adpi(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2130971719, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -52,10 +52,10 @@ public class HiBoomPanelView$HiBoomAdapter
     }
   }
   
-  public void a(adfj paramadfj, int paramInt)
+  public void a(adpi paramadpi, int paramInt)
   {
     HiBoomItem localHiBoomItem = (HiBoomItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = (ViewGroup.MarginLayoutParams)paramadfj.itemView.getLayoutParams();
+    Object localObject = (ViewGroup.MarginLayoutParams)paramadpi.itemView.getLayoutParams();
     ((ViewGroup.MarginLayoutParams)localObject).height = FlashChatPanel.f;
     ((ViewGroup.MarginLayoutParams)localObject).width = FlashChatPanel.e;
     if (paramInt % 3 == 0)
@@ -72,7 +72,7 @@ public class HiBoomPanelView$HiBoomAdapter
       URLDrawable localURLDrawable;
       if (!TextUtils.isEmpty(localHiBoomItem.g))
       {
-        paramadfj.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localHiBoomItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramadpi.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localHiBoomItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         if ((localHiBoomItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable))
         {
           localURLDrawable = (URLDrawable)localHiBoomItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -84,8 +84,8 @@ public class HiBoomPanelView$HiBoomAdapter
       if (TextUtils.isEmpty(localHiBoomItem.h)) {
         break label375;
       }
-      paramadfj.b.setVisibility(0);
-      paramadfj.b.setImageDrawable(localHiBoomItem.b);
+      paramadpi.b.setVisibility(0);
+      paramadpi.b.setImageDrawable(localHiBoomItem.b);
       if ((localHiBoomItem.b instanceof URLDrawable))
       {
         localURLDrawable = (URLDrawable)localHiBoomItem.b;
@@ -93,21 +93,21 @@ public class HiBoomPanelView$HiBoomAdapter
           localURLDrawable.restartDownload();
         }
         if (localURLDrawable.getStatus() != 1) {
-          paramadfj.b.setVisibility(8);
+          paramadpi.b.setVisibility(8);
         }
       }
       label237:
       if (localHiBoomItem.jdField_a_of_type_Int != ((HiBoomManager)localObject).jdField_a_of_type_Int) {
         break label387;
       }
-      paramadfj.c.setVisibility(0);
+      paramadpi.c.setVisibility(0);
     }
     for (;;)
     {
       if ((localHiBoomItem.d != 100) && (localHiBoomItem.d != -1)) {
         break label399;
       }
-      paramadfj.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramadpi.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
       if (paramInt % 3 == 2)
       {
@@ -129,15 +129,15 @@ public class HiBoomPanelView$HiBoomAdapter
       ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = FlashChatPanel.g;
       break label82;
       label375:
-      paramadfj.b.setVisibility(8);
+      paramadpi.b.setVisibility(8);
       break label237;
       label387:
-      paramadfj.c.setVisibility(8);
+      paramadpi.c.setVisibility(8);
     }
     label399:
-    paramadfj.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    paramInt = paramadfj.jdField_a_of_type_AndroidWidgetImageView.getHeight();
-    paramadfj.jdField_a_of_type_AndroidViewView.getLayoutParams().height = ((100 - localHiBoomItem.d) * paramInt / 100);
+    paramadpi.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    paramInt = paramadpi.jdField_a_of_type_AndroidWidgetImageView.getHeight();
+    paramadpi.jdField_a_of_type_AndroidViewView.getLayoutParams().height = ((100 - localHiBoomItem.d) * paramInt / 100);
   }
   
   public void a(List paramList)
@@ -155,7 +155,7 @@ public class HiBoomPanelView$HiBoomAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomPanelView.HiBoomAdapter
  * JD-Core Version:    0.7.0.1
  */

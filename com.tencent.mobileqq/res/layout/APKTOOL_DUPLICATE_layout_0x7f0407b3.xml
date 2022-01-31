@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:paddingTop="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0097"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/tips_popup_win_bg" android:layout_width="98.0dip" android:layout_height="98.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
-        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a242e" android:visibility="gone" android:layout_width="13.5dip" android:layout_height="13.5dip" android:src="@drawable/common_bottom_dialog_checked_icon" />
-        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0562" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/common_loading2" android:layout_centerHorizontal="true" />
-        <TextView android:textColor="@android:color/white" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05e6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="test" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0562" />
+    <View android:id="@id/icon" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215a8" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0281" />
+    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2465" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2466" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2467" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </RelativeLayout>
-</FrameLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0284" />
+</LinearLayout>

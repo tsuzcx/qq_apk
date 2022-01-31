@@ -1,63 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 class see
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   see(sed paramsed) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    ArrayList localArrayList = this.a.jdField_a_of_type_AndroidContentIntent.getExtras().getStringArrayList("deleted_members");
+    if (localArrayList != null)
     {
-    }
-    for (;;)
-    {
-      try
+      int i;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c != null)
       {
-        paramDialogInterface.dismiss();
-        this.a.jdField_a_of_type_Sec.a.jdField_a_of_type_AndroidAppDialog = null;
-        return;
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.d == 2) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.isMember)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.wMemberNum + "人");
+        }
       }
-      catch (Exception paramDialogInterface) {}
-      if (SettingCloneUtil.readValue(this.a.jdField_a_of_type_Sec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.jdField_a_of_type_Sec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, "pcactive_config", false)) {
-        this.a.jdField_a_of_type_Sec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startPCActivePolling(this.a.jdField_a_of_type_Sec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "logout");
+      else {
+        i = localArrayList.size() - 1;
       }
-      this.a.jdField_a_of_type_Sec.a.a(this.a.jdField_a_of_type_Sec.a.a(), this.a.jdField_a_of_type_Sec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      continue;
-      if (this.a.jdField_a_of_type_JavaLangString.startsWith("http")) {}
       for (;;)
       {
-        try
-        {
-          Intent localIntent = new Intent(this.a.jdField_a_of_type_Sec.a.a(), QQBrowserActivity.class);
-          localIntent.putExtra("url", this.a.jdField_a_of_type_JavaLangString);
-          this.a.jdField_a_of_type_Sec.a.a().startActivity(localIntent);
-          ReportController.b(this.a.jdField_a_of_type_Sec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008273", "0X8008273", 0, 0, "", "", "", "");
+        if (i < 0) {
+          break label277;
         }
-        catch (Exception localException)
+        int j = this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.size() - 1;
+        label136:
+        if (j >= 0)
         {
-          if (!QLog.isDevelopLevel()) {
-            continue;
+          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.get(j);
+          if ((localmemberlist == null) || (!localmemberlist.uint64_member_uin.has())) {}
+          while (!String.valueOf(localmemberlist.uint64_member_uin.get()).equals(localArrayList.get(i)))
+          {
+            j -= 1;
+            break label136;
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.wMemberNum + "名成员");
+            break;
           }
-          localException.printStackTrace();
-          continue;
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.remove(j);
         }
-        if (this.a.jdField_a_of_type_JavaLangString.startsWith("mqqapi:")) {
-          JumpParser.a(this.a.jdField_a_of_type_Sec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_Sec.a.a(), this.a.jdField_a_of_type_JavaLangString).b();
-        }
+        i -= 1;
       }
     }
+    label277:
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e);
   }
 }
 

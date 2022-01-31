@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark;
 
-import aakl;
-import aakm;
-import aalb;
+import aarm;
+import aarn;
+import aasc;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
@@ -53,7 +53,7 @@ public class ArkAiAppCenter
   public static boolean n;
   private static boolean o;
   private static boolean p;
-  private aalb jdField_a_of_type_Aalb;
+  private aasc jdField_a_of_type_Aasc;
   private ArkAiDictMgr jdField_a_of_type_ComTencentMobileqqArkArkAiDictMgr;
   private ArkAppCenter jdField_a_of_type_ComTencentMobileqqArkArkAppCenter;
   
@@ -110,7 +110,7 @@ public class ArkAiAppCenter
         ArkAppCenter.b("ArkApp.AI", "ArkAiAppCenter isServerDisable");
       }
       this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictMgr = new ArkAiDictMgr(paramArkAppCenter.b());
-      this.jdField_a_of_type_Aalb = new aalb(paramArkAppCenter.b());
+      this.jdField_a_of_type_Aasc = new aasc(paramArkAppCenter.b());
       d();
       a();
       c();
@@ -218,7 +218,7 @@ public class ArkAiAppCenter
   
   public void a()
   {
-    this.jdField_a_of_type_Aalb.a();
+    this.jdField_a_of_type_Aasc.a();
   }
   
   public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -246,7 +246,7 @@ public class ArkAiAppCenter
     l = a(paramString, "ark_terms_dialog_switch");
     jdField_a_of_type_JavaLangString = a(paramString, "ark_terms_url");
     jdField_b_of_type_JavaLangString = a(paramString, "ark_terms_text");
-    j = this.jdField_a_of_type_Aalb.a(paramString);
+    j = this.jdField_a_of_type_Aasc.a(paramString);
     m = a(paramString, "ark_android_https_switch");
     a(m);
   }
@@ -571,7 +571,7 @@ public class ArkAiAppCenter
           QLog.d("ArkApp.AI", 2, String.format("updateArkAiKeywordConfig.appGlobalUrlConfig.white.%s", new Object[] { localObject3[i1] }));
           break label1966;
         }
-        ArkAppCenter.a().post(new aakl(this, (String[])localObject3));
+        ArkAppCenter.a().post(new aarm(this, (String[])localObject3));
       }
       localObject2 = localJSONObject.optJSONArray("black");
     } while (localObject2 == null);
@@ -596,7 +596,7 @@ public class ArkAiAppCenter
       }
       else
       {
-        ArkAppCenter.a().post(new aakm(this, (String[])localObject3));
+        ArkAppCenter.a().post(new aarn(this, (String[])localObject3));
         return;
         if (!QLog.isColorLevel()) {
           break label24;

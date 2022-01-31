@@ -64,7 +64,7 @@ public class Workspace
     c();
     setDrawingCacheEnabled(true);
     setAlwaysDrawnWithCacheEnabled(true);
-    setBackgroundDrawable(getResources().getDrawable(2130838210));
+    setBackgroundDrawable(getResources().getDrawable(2130838214));
   }
   
   private void c()
@@ -566,7 +566,7 @@ public class Workspace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.Workspace
  * JD-Core Version:    0.7.0.1
  */

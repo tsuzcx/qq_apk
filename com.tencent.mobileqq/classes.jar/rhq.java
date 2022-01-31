@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class rhq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  rhq(rhp paramrhp) {}
+  rhq(rhn paramrhn) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Card localCard = ((FriendsManager)this.a.a.app.getManager(50)).a(this.a.a.a);
-    if (localCard != null) {
-      this.a.a.runOnUiThread(new rhr(this, localCard));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

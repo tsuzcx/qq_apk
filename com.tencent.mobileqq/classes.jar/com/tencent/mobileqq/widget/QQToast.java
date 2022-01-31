@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.widget;
 
-import akhz;
-import akia;
-import akic;
-import akid;
+import akwi;
+import akwj;
+import akwl;
+import akwm;
 import android.annotation.TargetApi;
 import android.app.AppOpsManager;
 import android.content.Context;
@@ -35,7 +35,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class QQToast
 {
   private static int jdField_a_of_type_Int = -1;
-  private static akid jdField_a_of_type_Akid = new akid(Looper.getMainLooper(), null);
+  private static akwm jdField_a_of_type_Akwm = new akwm(Looper.getMainLooper(), null);
   private static Class jdField_a_of_type_JavaLangClass;
   private static Field jdField_a_of_type_JavaLangReflectField;
   private static Method jdField_a_of_type_JavaLangReflectMethod;
@@ -110,12 +110,12 @@ public class QQToast
     case 3: 
     case 6: 
     default: 
-      return 2130838483;
+      return 2130838487;
     case 1: 
     case 4: 
-      return 2130844353;
+      return 2130844477;
     }
-    return 2130844354;
+    return 2130844478;
   }
   
   public static QQToast a(Context paramContext, int paramInt1, int paramInt2)
@@ -272,19 +272,19 @@ public class QQToast
   
   public Toast a(int paramInt)
   {
-    return a(paramInt, 2130970597);
+    return a(paramInt, 2130970641);
   }
   
   public Toast a(int paramInt1, int paramInt2)
   {
-    akia localakia = new akia(this.jdField_a_of_type_AndroidContentContext);
+    akwj localakwj = new akwj(this.jdField_a_of_type_AndroidContentContext);
     View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt2, null);
-    Object localObject2 = localView.findViewById(2131365395);
-    Object localObject1 = localView.findViewById(2131363241);
+    Object localObject2 = localView.findViewById(2131365417);
+    Object localObject1 = localView.findViewById(2131363259);
     if (localObject2 != null) {
       ((View)localObject2).setBackgroundColor(b(this.jdField_b_of_type_Int));
     }
-    localObject2 = localView.findViewById(2131365396);
+    localObject2 = localView.findViewById(2131365418);
     if (a())
     {
       Object localObject3;
@@ -298,13 +298,13 @@ public class QQToast
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
         break label411;
       }
-      localObject1 = (ImageView)localView.findViewById(2131364080);
+      localObject1 = (ImageView)localView.findViewById(2131364104);
       ((ImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       ((ImageView)localObject1).setColorFilter(c(this.jdField_b_of_type_Int), PorterDuff.Mode.MULTIPLY);
       label163:
       if (this.jdField_a_of_type_JavaLangCharSequence != null)
       {
-        localObject1 = (TextView)localView.findViewById(2131364081);
+        localObject1 = (TextView)localView.findViewById(2131364105);
         ((TextView)localObject1).setTextColor(d(this.jdField_b_of_type_Int));
         ((TextView)localObject1).setText(this.jdField_a_of_type_JavaLangCharSequence);
         localObject2 = this.jdField_a_of_type_JavaLangCharSequence.toString();
@@ -327,29 +327,29 @@ public class QQToast
       if (!a()) {
         break label430;
       }
-      localakia.setGravity(55, 0, 0);
+      localakwj.setGravity(55, 0, 0);
     }
     for (;;)
     {
-      localakia.setView(localView);
-      localakia.setDuration(this.c);
+      localakwj.setView(localView);
+      localakwj.setDuration(this.c);
       if (a()) {
-        localView.setOnTouchListener(new akhz(this, localakia));
+        localView.setOnTouchListener(new akwi(this, localakwj));
       }
-      return localakia;
+      return localakwj;
       if (localObject1 == null) {
         break;
       }
       ((View)localObject1).setVisibility(8);
       break;
       label411:
-      ((ImageView)localView.findViewById(2131364080)).setVisibility(8);
+      ((ImageView)localView.findViewById(2131364104)).setVisibility(8);
       break label163;
       label430:
       if (paramInt1 == 6316128) {
-        localakia.setGravity(55, 0, b());
+        localakwj.setGravity(55, 0, b());
       } else {
-        localakia.setGravity(55, 0, c());
+        localakwj.setGravity(55, 0, c());
       }
     }
   }
@@ -371,9 +371,9 @@ public class QQToast
   
   public void a(QQToast.IToastValidListener paramIToastValidListener)
   {
-    paramIToastValidListener = new akic(this, paramIToastValidListener);
+    paramIToastValidListener = new akwl(this, paramIToastValidListener);
     jdField_a_of_type_JavaUtilConcurrentBlockingQueue.add(paramIToastValidListener);
-    jdField_a_of_type_Akid.sendEmptyMessage(1);
+    jdField_a_of_type_Akwm.sendEmptyMessage(1);
     if (QLog.isColorLevel()) {
       QLog.d("QQToast", 2, "current queue size is " + jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size());
     }

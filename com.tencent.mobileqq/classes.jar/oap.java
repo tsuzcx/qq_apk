@@ -1,15 +1,20 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
+import android.graphics.Rect;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.FakeFeedViewUpdateCompletedEvent;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
 public class oap
-  extends DataSetObserver
+  implements Runnable
 {
-  public oap(TagFlowLayout paramTagFlowLayout) {}
+  public oap(FeedSegment paramFeedSegment, Rect paramRect) {}
   
-  public void onChanged()
+  public void run()
   {
-    super.onChanged();
-    TagFlowLayout.a(this.a);
+    FeedSegment.FakeFeedViewUpdateCompletedEvent localFakeFeedViewUpdateCompletedEvent = new FeedSegment.FakeFeedViewUpdateCompletedEvent(this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
+    Dispatchers.get().dispatch(localFakeFeedViewUpdateCompletedEvent);
+    SLog.b("Q.qqstory.home:FeedSegment_animation", "发了动画时间过去了 2");
   }
 }
 

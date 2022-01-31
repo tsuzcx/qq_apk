@@ -1,26 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.PrefixSelectedListener;
+import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
+import java.util.List;
 
 public class aitg
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aitg(PublishHomeWorkFragment paramPublishHomeWorkFragment, CompoundButton paramCompoundButton) {}
+  private aith jdField_a_of_type_Aith;
+  private TribeTitlePrefixPanelView.PrefixSelectedListener jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aitg(aith paramaith)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    this.jdField_a_of_type_Aith = paramaith;
+  }
+  
+  public void a(TribeTitlePrefixPanelView.PrefixSelectedListener paramPrefixSelectedListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener = paramPrefixSelectedListener;
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = ((Integer)paramView.getTag()).intValue();
+    aith.a(this.jdField_a_of_type_Aith, i);
+    if (this.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener.a((TribeTitlePrefixPanelView.TitlePrefixItem)aith.a(this.jdField_a_of_type_Aith).get(i));
     }
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitg
  * JD-Core Version:    0.7.0.1
  */

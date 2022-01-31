@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewplugin;
 
-import amlg;
+import anbl;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -456,7 +456,7 @@ public class QZoneFeedActionJsPlugin
   private void b()
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new amlg(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new anbl(this);
     }
     if (!this.c)
     {

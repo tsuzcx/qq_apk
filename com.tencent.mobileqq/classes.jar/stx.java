@@ -1,14 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 
 class stx
   implements Runnable
 {
-  stx(stw paramstw, View paramView, int paramInt) {}
+  stx(stu paramstu) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Stw.a.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, null);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

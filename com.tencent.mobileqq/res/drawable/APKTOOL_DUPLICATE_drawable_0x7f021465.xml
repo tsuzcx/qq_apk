@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="13.0dip" />
-    <padding android:left="9.0dip" android:top="5.0dip" android:right="9.0dip" android:bottom="5.0dip" />
-    <stroke android:width="1.0dip" android:color="#ffffffff" android:dashWidth="4.0dip" android:dashGap="4.0dip" />
-</shape>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0423" />
+            <padding android:left="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0422" android:right="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0422" />
+            <stroke android:width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0424" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0226" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0423" />
+            <padding android:left="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0422" android:right="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0422" />
+            <stroke android:width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0424" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0223" />
+        </shape>
+    </item>
+</selector>

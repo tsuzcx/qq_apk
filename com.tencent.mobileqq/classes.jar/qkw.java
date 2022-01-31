@@ -1,37 +1,50 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.hotpatch.DexPatchInstaller;
-import com.tencent.hotpatch.PatchSecurityMode;
-import com.tencent.hotpatch.config.BasePatchConfig;
-import com.tencent.hotpatch.config.PatchConfigManager;
-import com.tencent.hotpatch.utils.PatchSharedPreUtil;
+import android.app.Activity;
+import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
+import com.tencent.gdtad.jsbridge.GdtJsCallHandler;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.util.GdtDeviceUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class qkw
-  implements Runnable
+public class qkw
+  implements GdtJsCallHandler
 {
-  public qkw(Context paramContext, BasePatchConfig paramBasePatchConfig) {}
-  
-  public void run()
+  public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    int i = PatchSharedPreUtil.b(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, this.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c);
-    if (i <= 5) {
-      PatchSharedPreUtil.b(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, this.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c, i + 1);
-    }
-    PatchConfigManager.a(this.jdField_a_of_type_AndroidContentContext, "dex", this.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig);
-    if ((501 == DexPatchInstaller.a) || (502 == DexPatchInstaller.a))
+    if ((paramGdtAdWebPlugin == null) || (paramGdtAdWebPlugin.mRuntime == null) || (paramGdtAdWebPlugin.mRuntime.a() == null))
     {
-      i = PatchSharedPreUtil.a(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, this.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c);
-      PatchSharedPreUtil.a(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, this.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c, i + 1);
+      GdtLog.d("GdtMacJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    while ((500 != DexPatchInstaller.a) || (!PatchSecurityMode.a(this.jdField_a_of_type_AndroidContentContext))) {
-      return;
+    Activity localActivity = paramGdtAdWebPlugin.mRuntime.a();
+    paramVarArgs = new JSONObject();
+    try
+    {
+      paramVarArgs.put("macAddress", GdtDeviceUtil.b(localActivity));
+      try
+      {
+        paramGdtAdWebPlugin.callJs(paramString, new String[] { paramVarArgs.toString() });
+        return true;
+      }
+      catch (Throwable paramGdtAdWebPlugin)
+      {
+        GdtLog.d("GdtMacJsCallHandler", "handleJsCallRequest error", paramGdtAdWebPlugin);
+        return true;
+      }
     }
-    PatchSecurityMode.a(this.jdField_a_of_type_AndroidContentContext, false);
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        GdtLog.d("GdtMacJsCallHandler", "handleJsCallRequest error", localJSONException);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     qkw
  * JD-Core Version:    0.7.0.1
  */

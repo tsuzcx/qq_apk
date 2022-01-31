@@ -1,25 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
+import java.util.ArrayList;
 
 public class nmi
-  extends TimerTask
+  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public nmi(ProgressControler paramProgressControler) {}
+  public nmi(BatchGetVideoInfoHandler paramBatchGetVideoInfoHandler, BatchGetVideoInfo paramBatchGetVideoInfo) {}
   
-  public void run()
+  public void a()
   {
-    ProgressControler localProgressControler = this.a;
-    localProgressControler.c += 50L;
-    if (this.a.c >= this.a.b)
-    {
-      this.a.c = this.a.b;
-      if (this.a.jdField_a_of_type_JavaUtilTimer != null) {
-        this.a.jdField_a_of_type_JavaUtilTimer.cancel();
-      }
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b(1);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(1, paramArrayList);
   }
 }
 

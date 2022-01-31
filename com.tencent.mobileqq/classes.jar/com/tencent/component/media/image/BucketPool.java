@@ -1,14 +1,14 @@
 package com.tencent.component.media.image;
 
 import java.util.LinkedList;
-import pek;
+import pge;
 
 public abstract class BucketPool
   implements Releaser
 {
   private static int[] jdField_a_of_type_ArrayOfInt = new int[30];
   private int jdField_a_of_type_Int = 0;
-  private pek[] jdField_a_of_type_ArrayOfPek;
+  private pge[] jdField_a_of_type_ArrayOfPge;
   
   public BucketPool(PoolParams paramPoolParams)
   {
@@ -16,13 +16,13 @@ public abstract class BucketPool
     if (this.jdField_a_of_type_Int <= 0) {
       throw new RuntimeException("bucket size <= 0 !!");
     }
-    this.jdField_a_of_type_ArrayOfPek = new pek[this.jdField_a_of_type_Int];
+    this.jdField_a_of_type_ArrayOfPge = new pge[this.jdField_a_of_type_Int];
     PoolParams.BucketParams localBucketParams;
     for (Object localObject = null; i < this.jdField_a_of_type_Int; localObject = localBucketParams)
     {
       localBucketParams = paramPoolParams.getBucketParams(i);
       a(localBucketParams, (PoolParams.BucketParams)localObject);
-      this.jdField_a_of_type_ArrayOfPek[i] = getBuck(localBucketParams);
+      this.jdField_a_of_type_ArrayOfPge[i] = getBuck(localBucketParams);
       i += 1;
     }
   }
@@ -54,14 +54,14 @@ public abstract class BucketPool
         if (i >= this.jdField_a_of_type_Int) {
           break label96;
         }
-        pek localpek = this.jdField_a_of_type_ArrayOfPek[i];
-        if (localpek.b >= paramInt)
+        pge localpge = this.jdField_a_of_type_ArrayOfPge[i];
+        if (localpge.b >= paramInt)
         {
-          localObject1 = localpek.jdField_a_of_type_JavaUtilLinkedList.poll();
+          localObject1 = localpge.jdField_a_of_type_JavaUtilLinkedList.poll();
           if (localObject1 != null) {
             break label91;
           }
-          i = handleBucketListEmpty(localpek);
+          i = handleBucketListEmpty(localpge);
           if (localObject1 == null)
           {
             localObject1 = allocData(i);
@@ -86,27 +86,27 @@ public abstract class BucketPool
     }
   }
   
-  protected pek getBuck(PoolParams.BucketParams paramBucketParams)
+  protected pge getBuck(PoolParams.BucketParams paramBucketParams)
   {
-    pek localpek = new pek(this);
-    localpek.jdField_a_of_type_Int = paramBucketParams.arraysSize;
-    localpek.b = paramBucketParams.bucketMinSize;
-    localpek.c = localpek.jdField_a_of_type_Int;
-    localpek.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    pge localpge = new pge(this);
+    localpge.jdField_a_of_type_Int = paramBucketParams.arraysSize;
+    localpge.b = paramBucketParams.bucketMinSize;
+    localpge.c = localpge.jdField_a_of_type_Int;
+    localpge.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
     int i = 0;
-    while (i < localpek.jdField_a_of_type_Int)
+    while (i < localpge.jdField_a_of_type_Int)
     {
-      localpek.jdField_a_of_type_JavaUtilLinkedList.add(allocData(localpek.b));
+      localpge.jdField_a_of_type_JavaUtilLinkedList.add(allocData(localpge.b));
       i += 1;
     }
-    return localpek;
+    return localpge;
   }
   
   protected abstract int getSizeForData(Object paramObject);
   
-  protected abstract int handleBucketListEmpty(pek parampek);
+  protected abstract int handleBucketListEmpty(pge parampge);
   
-  protected abstract boolean handleRecyleData(pek parampek, Object paramObject);
+  protected abstract boolean handleRecyleData(pge parampge, Object paramObject);
   
   protected void hit(int paramInt, Object paramObject) {}
   
@@ -122,7 +122,7 @@ public abstract class BucketPool
       int j;
       int i;
       boolean bool1;
-      pek localpek;
+      pge localpge;
       try
       {
         j = getSizeForData(paramObject);
@@ -132,17 +132,17 @@ public abstract class BucketPool
         if (i < 0) {
           break label85;
         }
-        localpek = this.jdField_a_of_type_ArrayOfPek[i];
-        if (j > localpek.b + 2500)
+        localpge = this.jdField_a_of_type_ArrayOfPge[i];
+        if (j > localpge.b + 2500)
         {
           releaseData(paramObject);
           break;
         }
       }
       finally {}
-      if (j >= localpek.b)
+      if (j >= localpge.b)
       {
-        bool1 = handleRecyleData(localpek, paramObject);
+        bool1 = handleRecyleData(localpge, paramObject);
         label85:
         if (!bool1) {
           break;

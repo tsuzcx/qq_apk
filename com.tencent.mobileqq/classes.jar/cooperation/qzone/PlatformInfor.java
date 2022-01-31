@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import ambj;
+import amrn;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -49,7 +49,7 @@ public class PlatformInfor
   {
     if (this.jdField_a_of_type_Int == -1)
     {
-      ThreadManager.executeOnSubThread(new ambj(this, paramContext));
+      ThreadManager.executeOnSubThread(new amrn(this, paramContext));
       return 0;
     }
     return this.jdField_a_of_type_Int;

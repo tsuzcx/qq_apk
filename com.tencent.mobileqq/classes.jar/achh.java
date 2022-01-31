@@ -1,25 +1,39 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class achh
-  implements View.OnLongClickListener
+  extends WtloginObserver
 {
-  public achh(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public achh(EquipLockWebImpl paramEquipLockWebImpl) {}
   
-  public boolean onLongClick(View paramView)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
     }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131362722, paramView.getContext().getString(2131434024));
-    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new achi(this, paramView), new achk(this, paramView));
-    return true;
+    if (paramInt == 0)
+    {
+      EquipLockWebImpl.c(this.a, true);
+      if (EquipLockWebImpl.a(this.a) != null)
+      {
+        paramWUserSigInfo = (QQAppInterface)EquipLockWebImpl.a(this.a).get();
+        if ((paramWUserSigInfo != null) && (EquipmentLockImpl.a().a(paramWUserSigInfo))) {}
+      }
+      else
+      {
+        EquipLockWebImpl.a(this.a, false);
+        EquipLockWebImpl.b(this.a, false);
+      }
+      return;
+    }
+    EquipLockWebImpl.a(this.a, false);
+    EquipLockWebImpl.c(this.a, false);
   }
 }
 

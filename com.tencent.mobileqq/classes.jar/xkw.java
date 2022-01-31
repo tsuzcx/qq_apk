@@ -1,45 +1,14 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class xkw
-  implements ActionSheet.OnButtonClickListener
+class xkw
+  implements Runnable
 {
-  public xkw(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
+  xkw(xku paramxku) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
-    new StringBuilder().append(EditLocalVideoActivity.g()).append("mix_").append(System.currentTimeMillis()).append(".mp4").toString();
-    this.jdField_a_of_type_AndroidOsBundle.putString("param.videoPath", EditLocalVideoActivity.h());
-    if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
-      RemoteHandleManager.a().a("cmd.publishVideoMood", this.jdField_a_of_type_AndroidOsBundle, false);
-    }
-    for (;;)
-    {
-      if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.setResult(-1);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.finish();
-      return;
-      if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 1)
-      {
-        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.getIntent());
-        paramView.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        String str = paramView.getStringExtra("PhotoConst.PLUGIN_APK");
-        boolean bool = paramView.getBooleanExtra("DirectBackToQzone", false);
-        if (("qzone_plugin.apk".equals(str)) && (bool))
-        {
-          paramView.setFlags(603979776);
-          QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, "", paramView, -1);
-        }
-      }
-    }
+    QQToast.a(this.a.a.a, 1, "资源加载失败", 1).a();
   }
 }
 

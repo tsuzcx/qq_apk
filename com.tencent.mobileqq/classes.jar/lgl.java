@@ -1,15 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class lgl
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  implements View.OnClickListener
 {
-  public lgl(ReadInJoyArkViewController paramReadInJoyArkViewController, String paramString1, String paramString2) {}
+  public lgl(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyArkReadInJoyArkViewController.a(this.jdField_a_of_type_JavaLangString, this.b, "download", paramInt);
+    if ((ReadInJoyDeliverBiuActivity.b(this.a)) && ((!ReadInJoyDeliverBiuActivity.c(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1)))
+    {
+      this.a.c(ReadInJoyDeliverBiuActivity.l(this.a));
+      return;
+    }
+    PublicAccountReportUtils.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+    this.a.finish();
+    ReadInJoyDeliverBiuActivity.a(this.a, false);
   }
 }
 

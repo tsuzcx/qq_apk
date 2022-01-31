@@ -119,7 +119,7 @@ public class ApolloConfigUtils
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    return paramString.replace("[client]", "androidQQ").replace("[version]", "7.6.0.3525").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
+    return paramString.replace("[client]", "androidQQ").replace("[version]", "7.6.3.3560").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
   }
   
   public static void a(String paramString)
@@ -241,7 +241,7 @@ public class ApolloConfigUtils
         if (i < paramString.length())
         {
           localObject2 = paramString.getJSONObject(i);
-          if (!a("7.6.0", ((JSONObject)localObject2).optString("minVersion"), ((JSONObject)localObject2).optString("maxVersion"))) {
+          if (!a("7.6.3", ((JSONObject)localObject2).optString("minVersion"), ((JSONObject)localObject2).optString("maxVersion"))) {
             break label917;
           }
           localObject2 = ((JSONObject)localObject2).optString("url");
@@ -465,7 +465,7 @@ public class ApolloConfigUtils
           if (i < paramJSONObject.length())
           {
             JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-            if (!a("7.6.0", localJSONObject.optString("minVersion"), localJSONObject.optString("maxVersion"))) {
+            if (!a("7.6.3", localJSONObject.optString("minVersion"), localJSONObject.optString("maxVersion"))) {
               continue;
             }
             String str = localJSONObject.optString("androidUrl");

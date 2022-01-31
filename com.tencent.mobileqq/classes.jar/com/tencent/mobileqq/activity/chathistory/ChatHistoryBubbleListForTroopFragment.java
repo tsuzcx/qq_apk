@@ -40,11 +40,11 @@ import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import mqq.os.MqqHandler;
-import wcw;
-import wcy;
-import wda;
-import wdc;
-import wde;
+import wgb;
+import wgd;
+import wgf;
+import wgh;
+import wgj;
 
 public class ChatHistoryBubbleListForTroopFragment
   extends IphoneTitleBarFragment
@@ -93,7 +93,7 @@ public class ChatHistoryBubbleListForTroopFragment
   
   protected int a()
   {
-    return 2130969853;
+    return 2130969867;
   }
   
   public void a(int paramInt, View paramView, ListView paramListView) {}
@@ -133,8 +133,8 @@ public class ChatHistoryBubbleListForTroopFragment
       localFragmentActivity = getActivity();
     } while (localFragmentActivity == null);
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    a(getString(2131433632));
-    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)this.e.findViewById(2131363731));
+    a(getString(2131433649));
+    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)this.e.findViewById(2131363754));
     paramLayoutInflater = new SessionInfo();
     paramLayoutInflater.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
     paramLayoutInflater.jdField_a_of_type_Int = 1;
@@ -146,7 +146,7 @@ public class ChatHistoryBubbleListForTroopFragment
     this.jdField_a_of_type_AndroidViewView.setPadding(0, 0, 0, i);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(localFragmentActivity);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494262));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494269));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(1);
     this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, i, 0, i);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -178,10 +178,10 @@ public class ChatHistoryBubbleListForTroopFragment
       return;
     }
     localObject = (ActionSheet)ActionSheetHelper.a((Context)localObject, null);
-    ((ActionSheet)localObject).a(getResources().getString(2131430158));
-    ((ActionSheet)localObject).a(2131434024, 3);
-    ((ActionSheet)localObject).c(2131432998);
-    ((ActionSheet)localObject).a(new wde(this, paramChatMessage, (ActionSheet)localObject));
+    ((ActionSheet)localObject).a(getResources().getString(2131430175));
+    ((ActionSheet)localObject).a(2131434041, 3);
+    ((ActionSheet)localObject).c(2131433015);
+    ((ActionSheet)localObject).a(new wgj(this, paramChatMessage, (ActionSheet)localObject));
     ((ActionSheet)localObject).show();
   }
   
@@ -241,7 +241,7 @@ public class ChatHistoryBubbleListForTroopFragment
     if (QLog.isColorLevel()) {
       QLog.d("chatHistory.troop.msgList", 2, "loadData");
     }
-    ThreadManager.post(new wcw(this), 5, null, true);
+    ThreadManager.post(new wgb(this), 5, null, true);
   }
   
   public void c(int paramInt, View paramView, ListView paramListView) {}
@@ -251,7 +251,7 @@ public class ChatHistoryBubbleListForTroopFragment
     if (QLog.isColorLevel()) {
       QLog.d("chatHistory.troop.msgList", 2, "loadTarget");
     }
-    ThreadManager.post(new wcy(this), 5, null, true);
+    ThreadManager.post(new wgd(this), 5, null, true);
   }
   
   public void e()
@@ -265,7 +265,7 @@ public class ChatHistoryBubbleListForTroopFragment
     this.jdField_a_of_type_AndroidWidgetTextView.setText("加载中…");
     int i = this.jdField_a_of_type_Int + 1;
     this.jdField_a_of_type_Int = i;
-    ThreadManager.post(new wda(this, i), 5, null, true);
+    ThreadManager.post(new wgf(this, i), 5, null, true);
   }
   
   public void f()
@@ -278,7 +278,7 @@ public class ChatHistoryBubbleListForTroopFragment
     }
     int i = this.jdField_a_of_type_Int + 1;
     this.jdField_a_of_type_Int = i;
-    ThreadManager.post(new wdc(this, i), 5, null, true);
+    ThreadManager.post(new wgh(this, i), 5, null, true);
   }
   
   public boolean handleMessage(Message paramMessage)

@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicUtils;
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import java.io.File;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 
-class abdi
+public class abdi
   implements Runnable
 {
-  abdi(abdh paramabdh, SelectCoverActivity paramSelectCoverActivity, QQAppInterface paramQQAppInterface) {}
+  public abdi(ShopScanActivity paramShopScanActivity) {}
   
   public void run()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a.a;
-    File localFile = new File(str);
-    if ((localFile != null) && (localFile.exists()))
-    {
-      DynamicUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 37, this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.e, 200);
-      ProfileCardUtil.a(str);
-      return;
-    }
-    SelectCoverActivity.a(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity, 2, "上传失败，请重试", 0);
+    ShopScanActivity.d(this.a);
+    ShopScanActivity.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abdi
  * JD-Core Version:    0.7.0.1
  */

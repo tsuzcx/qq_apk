@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class ldq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ldq(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
+  public ldq(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.onBackEvent();
+    ReadInJoyGlobalReporter.a().a(this.a.app, NetConnInfoCenter.getServerTimeMillis(), ReadInJoyUtils.e(), ReadInJoyUtils.d);
   }
 }
 

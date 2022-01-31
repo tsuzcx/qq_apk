@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.business.sougou;
 
-import abfe;
+import abmf;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
@@ -68,9 +68,9 @@ public class HightlightHotWordText
   private void a(Context paramContext)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
-    localActionSheet.a(2131429889, 5);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new abfe(this, paramContext, localActionSheet));
+    localActionSheet.a(2131429895, 5);
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new abmf(this, paramContext, localActionSheet));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
     }
@@ -128,7 +128,7 @@ public class HightlightHotWordText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.HightlightHotWordText
  * JD-Core Version:    0.7.0.1
  */

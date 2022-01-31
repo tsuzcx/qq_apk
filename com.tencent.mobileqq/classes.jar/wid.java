@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
 
 public class wid
   implements Runnable
 {
-  public wid(TroopActivity paramTroopActivity) {}
+  public wid(ClassificationSearchFragment paramClassificationSearchFragment, SearchResult paramSearchResult) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    ClassificationSearchFragment localClassificationSearchFragment;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult != null)
+    {
+      localClassificationSearchFragment = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.a) {
+        break label30;
+      }
+    }
+    label30:
+    for (int i = 1;; i = 0)
+    {
+      ClassificationSearchFragment.a(localClassificationSearchFragment, i);
+      return;
     }
   }
 }

@@ -1,36 +1,19 @@
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.http.HttpResponse;
-import org.apache.http.impl.client.DefaultRedirectHandler;
-import org.apache.http.protocol.HttpContext;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.Callback;
 
-public final class aice
-  extends DefaultRedirectHandler
+public class aice
+  implements Runnable
 {
-  public URI getLocationURI(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
+  public aice(CameraExceptionHandler paramCameraExceptionHandler, RuntimeException paramRuntimeException) {}
+  
+  public void run()
   {
-    URI localURI = super.getLocationURI(paramHttpResponse, paramHttpContext);
-    paramHttpResponse = paramHttpContext.getAttribute("mobileqq_report_flag");
-    if ((paramHttpResponse != null) && ((paramHttpResponse instanceof Integer)) && (((Integer)paramHttpResponse).intValue() > 0))
-    {
-      Object localObject = paramHttpContext.getAttribute("mobileqq_direct_uri");
-      paramHttpResponse = localObject;
-      if (localObject == null)
-      {
-        paramHttpResponse = new ArrayList();
-        paramHttpContext.setAttribute("mobileqq_direct_uri", paramHttpResponse);
-      }
-      if ((paramHttpResponse != null) && ((paramHttpResponse instanceof List))) {
-        ((List)paramHttpResponse).add(localURI);
-      }
-    }
-    return localURI;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraExceptionHandler.a.a(this.jdField_a_of_type_JavaLangRuntimeException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aice
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class lgs
+public class lgs
   implements Runnable
 {
-  lgs(lgr paramlgr) {}
+  public lgs(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
   public void run()
   {
-    ReadInJoyDeliverBiuActivity.d(this.a.a);
-    ReadInJoyDeliverBiuActivity.e(this.a.a);
+    ShortVideoUtils.a(ReadInJoyCameraCaptureActivity.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "ShortVideoUtils.isVideoSoLibLoaded() = " + ShortVideoUtils.a());
+    }
   }
 }
 

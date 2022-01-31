@@ -1,24 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
 public class wen
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public wen(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public wen(BlessActivity paramBlessActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new weo(this), 10, null, true);
-      return;
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
+      BlessActivity.a(this.a, true);
     }
-    paramDialogInterface.dismiss();
   }
 }
 

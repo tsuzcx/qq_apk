@@ -13,11 +13,11 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anqp;
-import anqr;
-import anqt;
-import anqu;
-import anqv;
+import aogu;
+import aogw;
+import aogy;
+import aogz;
+import aoha;
 import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
 import com.tencent.mobileqq.shortvideo.util.MediaCodecDPC;
 import com.tencent.qphone.base.util.QLog;
@@ -42,8 +42,8 @@ public class VideoFilterViewPager
   public int a;
   public long a;
   private View jdField_a_of_type_AndroidViewView;
-  private anqu jdField_a_of_type_Anqu;
-  private anqv jdField_a_of_type_Anqv;
+  private aogz jdField_a_of_type_Aogz;
+  private aoha jdField_a_of_type_Aoha;
   private ProviderView.ProviderViewListener jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener;
   private VideoFilterViewPager.ScrollCallBack jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager$ScrollCallBack;
   public boolean a;
@@ -89,7 +89,7 @@ public class VideoFilterViewPager
         int i = this.jdField_b_of_type_Int;
         this.jdField_b_of_type_Int = paramInt;
         paramView.setVisibility(0);
-        QIMFilterCategoryItem localQIMFilterCategoryItem = this.jdField_a_of_type_Anqv.a(paramInt);
+        QIMFilterCategoryItem localQIMFilterCategoryItem = this.jdField_a_of_type_Aoha.a(paramInt);
         if (localQIMFilterCategoryItem == null)
         {
           if (QLog.isColorLevel()) {
@@ -98,7 +98,7 @@ public class VideoFilterViewPager
         }
         else
         {
-          TextView localTextView = (TextView)paramView.findViewById(2131364339);
+          TextView localTextView = (TextView)paramView.findViewById(2131364363);
           Object localObject2 = (CaptureComboManager)QIMManager.a(5);
           Object localObject1;
           ImageView localImageView;
@@ -107,16 +107,16 @@ public class VideoFilterViewPager
             localObject1 = ((CaptureComboManager)localObject2).a(localQIMFilterCategoryItem);
             a(paramView);
             ((CaptureComboManager)localObject2).a(localQIMFilterCategoryItem);
-            this.jdField_a_of_type_Anqv.a(i);
-            localObject2 = (ComboProviderView)((Activity)getContext()).findViewById(2131362414);
-            localObject2 = (QIMFilterProviderView)((Activity)getContext()).findViewById(2131362415);
+            this.jdField_a_of_type_Aoha.a(i);
+            localObject2 = (ComboProviderView)((Activity)getContext()).findViewById(2131362417);
+            localObject2 = (QIMFilterProviderView)((Activity)getContext()).findViewById(2131362418);
             paramInt = ((CaptureComboBase)localObject1).jdField_a_of_type_Int;
             if (QLog.isColorLevel()) {
               QLog.i("QCombo", 2, "onPageSelect state = " + paramInt);
             }
-            localObject1 = (LinearLayout)paramView.findViewById(2131364338);
-            localObject2 = paramView.findViewById(2131364341);
-            localImageView = (ImageView)paramView.findViewById(2131364340);
+            localObject1 = (LinearLayout)paramView.findViewById(2131364362);
+            localObject2 = paramView.findViewById(2131364365);
+            localImageView = (ImageView)paramView.findViewById(2131364364);
             ((LinearLayout)localObject1).setGravity(3);
             if ((!localQIMFilterCategoryItem.b()) && (!localQIMFilterCategoryItem.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
               break label460;
@@ -174,19 +174,19 @@ public class VideoFilterViewPager
   
   private void a(View paramView, QIMFilterCategoryItem paramQIMFilterCategoryItem, int paramInt)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131364339);
-    paramView.findViewById(2131364342);
-    paramView.findViewById(2131364344);
-    Object localObject = (TextView)paramView.findViewById(2131364343);
-    localObject = (TextView)paramView.findViewById(2131364345);
-    localObject = (FilterDetailAnimationLayout)paramView.findViewById(2131364341);
-    localObject = (ImageView)paramView.findViewById(2131364340);
+    TextView localTextView = (TextView)paramView.findViewById(2131364363);
+    paramView.findViewById(2131364366);
+    paramView.findViewById(2131364368);
+    Object localObject = (TextView)paramView.findViewById(2131364367);
+    localObject = (TextView)paramView.findViewById(2131364369);
+    localObject = (FilterDetailAnimationLayout)paramView.findViewById(2131364365);
+    localObject = (ImageView)paramView.findViewById(2131364364);
     switch (paramInt)
     {
     default: 
       return;
     case 3: 
-      localObject = new anqr(this, paramView);
+      localObject = new aogw(this, paramView);
       paramView.setVisibility(0);
       paramView.postDelayed((Runnable)localObject, 800L);
       paramView.setTag(localObject);
@@ -199,10 +199,10 @@ public class VideoFilterViewPager
   
   private void b()
   {
-    this.jdField_a_of_type_Anqv = new anqv(this);
-    this.jdField_a_of_type_Anqu = new anqu(this);
-    setAdapter(this.jdField_a_of_type_Anqv);
-    setOnPageChangeListener(this.jdField_a_of_type_Anqu);
+    this.jdField_a_of_type_Aoha = new aoha(this);
+    this.jdField_a_of_type_Aogz = new aogz(this);
+    setAdapter(this.jdField_a_of_type_Aoha);
+    setOnPageChangeListener(this.jdField_a_of_type_Aogz);
   }
   
   public AnimationSet a(ImageView paramImageView)
@@ -217,7 +217,7 @@ public class VideoFilterViewPager
     localAnimationSet.addAnimation((Animation)localObject);
     localAnimationSet.setDuration(200L);
     paramImageView.startAnimation(localAnimationSet);
-    localAnimationSet.setAnimationListener(new anqt(this, paramImageView));
+    localAnimationSet.setAnimationListener(new aogy(this, paramImageView));
     return localAnimationSet;
   }
   
@@ -228,15 +228,15 @@ public class VideoFilterViewPager
   
   public void a(int paramInt)
   {
-    setCurrentItem(this.jdField_a_of_type_Anqv.a() * 50 + paramInt);
+    setCurrentItem(this.jdField_a_of_type_Aoha.a() * 50 + paramInt);
   }
   
   public void a(View paramView)
   {
-    anqp localanqp = new anqp(this, paramView);
+    aogu localaogu = new aogu(this, paramView);
     paramView.setVisibility(0);
-    paramView.postDelayed(localanqp, 800L);
-    paramView.setTag(localanqp);
+    paramView.postDelayed(localaogu, 800L);
+    paramView.setTag(localaogu);
   }
   
   public void a(ComboSet paramComboSet, boolean paramBoolean, int paramInt, Bundle paramBundle)
@@ -253,8 +253,8 @@ public class VideoFilterViewPager
         QLog.e("QCombo", 2, "onComboApply aborted " + this.jdField_a_of_type_Int + paramInt);
         return;
       }
-      paramBundle = ((CaptureComboManager)QIMManager.a(5)).a(paramComboSet, this.jdField_a_of_type_Anqv.a);
-      ArrayList localArrayList = this.jdField_a_of_type_Anqv.a;
+      paramBundle = ((CaptureComboManager)QIMManager.a(5)).a(paramComboSet, this.jdField_a_of_type_Aoha.a);
+      ArrayList localArrayList = this.jdField_a_of_type_Aoha.a;
       this.jdField_b_of_type_Boolean = true;
       int i;
       if (localArrayList != null)
@@ -302,7 +302,7 @@ public class VideoFilterViewPager
             }
           } while (!(paramFilterSet.a instanceof QIMFilterCategoryItem));
           paramFilterSet = (QIMFilterCategoryItem)paramFilterSet.a;
-          localArrayList = this.jdField_a_of_type_Anqv.a;
+          localArrayList = this.jdField_a_of_type_Aoha.a;
         } while (localArrayList == null);
         paramInt = localArrayList.indexOf(paramFilterSet);
       } while (paramInt < 0);
@@ -339,9 +339,9 @@ public class VideoFilterViewPager
     }
     for (;;)
     {
-      this.jdField_a_of_type_Anqv.a(paramList);
+      this.jdField_a_of_type_Aoha.a(paramList);
       if (getCurrentItem() == 0) {
-        setCurrentItem(this.jdField_a_of_type_Anqv.a() * 50, false);
+        setCurrentItem(this.jdField_a_of_type_Aoha.a() * 50, false);
       }
       return;
       setVisibility(0);

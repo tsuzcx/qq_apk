@@ -1,18 +1,31 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.aioChannel.IRenderRunner;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.Doraemon.APIParam;
+import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
+import com.tencent.mobileqq.apollo.ApolloRender;
 
-public class ylm
-  implements Runnable
+public final class ylm
+  implements APICallback
 {
-  public ylm(ApolloCmdChannel paramApolloCmdChannel, IRenderRunner paramIRenderRunner, String paramString) {}
+  public ylm(View paramView, DoraemonAPIManager paramDoraemonAPIManager, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.callbackEngineWrapper(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner.isJsRuntime(), this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner.getRuntimeState(), 0, "sc.apolloGameWebMessage.local", this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.ApolloDataChannel", 2, "handleWebEvent data:" + this.jdField_a_of_type_JavaLangString);
-    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
+  }
+  
+  public void a(APIParam paramAPIParam)
+  {
+    paramAPIParam = (String)DoraemonUtil.a(paramAPIParam, "city", "");
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramAPIParam, 0, "location success");
   }
 }
 

@@ -20,7 +20,7 @@ import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nee;
+import nfo;
 
 public class GetHotSortVideoHandler$GetHotSortVideoResponse
   extends LegoResponseBase
@@ -64,7 +64,7 @@ public class GetHotSortVideoHandler$GetHotSortVideoResponse
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      ThreadManager.post(new nee(this, (ArrayList)localObject, localGetVideoByHotSortEvent), 5, null, true);
+      ThreadManager.post(new nfo(this, (ArrayList)localObject, localGetVideoByHotSortEvent), 5, null, true);
       return;
       label203:
       SLog.e("GetHotSortVideoHandler", "GetHotSortVideoResponse Success but video_card_list is empty。");

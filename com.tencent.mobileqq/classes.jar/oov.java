@@ -1,13 +1,31 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-
-public class oov
-  implements Runnable
+class oov
 {
-  public oov(SegmentList paramSegmentList) {}
+  final String jdField_a_of_type_JavaLangString;
+  final boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public void run()
+  oov(boolean paramBoolean, String paramString)
   {
-    this.a.springBackOverScrollHeaderView();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  static oov a()
+  {
+    return new oov(false, "");
+  }
+  
+  static oov a(Process paramProcess)
+  {
+    if (a(Integer.valueOf(paramProcess.exitValue()))) {}
+    for (String str = opi.a(paramProcess.getInputStream());; str = opi.a(paramProcess.getErrorStream())) {
+      return new oov(a(Integer.valueOf(paramProcess.exitValue())), str);
+    }
+  }
+  
+  static boolean a(Integer paramInteger)
+  {
+    return (paramInteger != null) && (paramInteger.intValue() == 0);
   }
 }
 

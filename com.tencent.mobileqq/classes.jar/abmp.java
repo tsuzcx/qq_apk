@@ -1,35 +1,40 @@
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
+import com.tencent.mobileqq.businessCard.BusinessCardManager;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class abmp
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  
-  public abmp(MessageProgressTextView paramMessageProgressTextView, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
+  public abmp(BusinessCardManager paramBusinessCardManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.a = null;
-    if (!this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.b)
+    Object localObject = this.a.a();
+    if (localObject != null) {}
+    for (int i = ((List)localObject).size();; i = 0)
     {
-      this.jdField_a_of_type_Int += this.b;
-      MessageProgressTextView.a(this.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView, this.jdField_a_of_type_Int, this.b);
+      if (QLog.isColorLevel()) {
+        QLog.d("BusinessCard_Manager", 2, "Init cache from DB,count=" + i);
+      }
+      this.a.a.clear();
+      if (i <= 0) {
+        break;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        BusinessCard localBusinessCard = (BusinessCard)((Iterator)localObject).next();
+        this.a.a.put(localBusinessCard.cardId, localBusinessCard);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abmp
  * JD-Core Version:    0.7.0.1
  */

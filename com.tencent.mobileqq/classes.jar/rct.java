@@ -1,70 +1,39 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper.NewApkInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.SPSettings;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.qphone.base.util.BaseApplication;
-import protocol.KQQConfig.UpgradeInfo;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.qphone.base.util.QLog;
 
 public class rct
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rct(AboutActivity paramAboutActivity) {}
+  public rct(LiteTransferWrapper paramLiteTransferWrapper) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = 2;
-    if (MyAppApi.a().b())
-    {
-      if (SPSettings.a()) {
-        i = 1;
-      }
-      ReportController.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-      paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-      paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-      paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-      paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-      paramView.putExtra("activity_type", 4096);
-      if (BaseActivity.sTopActivity != null) {
-        BaseActivity.sTopActivity.startActivity(paramView);
+    if ((LiteTransferWrapper.access$000(this.a) == null) || (LiteTransferWrapper.access$100(this.a) == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("dataline.LiteTTransferWrapper", 2, "litetransfer callback is null, do nothing");
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        if ((AboutActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper$NewApkInfo == null) || (!SPSettings.a(AboutActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper$NewApkInfo.a))) {
-          break;
-        }
-        if (SPSettings.a()) {
-          i = 1;
-        }
-        ReportController.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-        paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-        paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-        paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-        paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-        paramView.putExtra("activity_type", 4096);
-      } while (BaseActivity.sTopActivity == null);
-      BaseActivity.sTopActivity.startActivity(paramView);
+    while (LiteTransferWrapper.access$200(this.a) != 0L) {
       return;
-    } while ((AboutActivity.a(this.a) == null) || (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null));
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", UpgradeController.a(), "");
-    UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
+    }
+    try
+    {
+      LiteTransferWrapper.access$202(this.a, this.a.createOperator(LiteTransferWrapper.access$000(this.a), LiteTransferWrapper.access$100(this.a)));
+      this.a.SetBusinessID(38, 3, 106, 102);
+      QLog.i("dataline.LiteTTransferWrapper", 1, "createOperator mLiteTransferOperator:" + LiteTransferWrapper.access$200(this.a) + " threadId:" + Thread.currentThread().getId());
+      this.a.checkPathExist();
+      this.a.SetProxyToJni();
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      localUnsatisfiedLinkError.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rct
  * JD-Core Version:    0.7.0.1
  */

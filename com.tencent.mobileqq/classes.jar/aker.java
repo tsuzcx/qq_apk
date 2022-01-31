@@ -1,43 +1,87 @@
 import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
 public class aker
-  implements View.OnTouchListener
+  implements EmoticonCallback
 {
-  public aker(ClearableEditText paramClearableEditText) {}
+  public aker(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(EmoticonInfo paramEmoticonInfo)
   {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
+    int i;
+    int j;
+    if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
+    {
+      i = this.a.a.getSelectionStart();
+      j = this.a.a.getSelectionEnd();
+      if ((i < 0) || (j < 0) || (j < i)) {}
+    }
+    int k;
+    int m;
+    do
+    {
+      this.a.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.c(((SystemEmoticonInfo)paramEmoticonInfo).a));
+      do
+      {
+        return;
+      } while (!(paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo));
+      paramEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
+      i = this.a.a.getSelectionStart();
+      j = this.a.a.getSelectionEnd();
+      k = paramEmoticonInfo.a;
+      m = paramEmoticonInfo.b;
+    } while ((i < 0) || (j < 0) || (j < i) || ((k == 2) && (m == -1)));
+    if (k == 1) {}
+    for (paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.c(m);; paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.a(m))
+    {
+      this.a.a.getEditableText().replace(i, j, paramEmoticonInfo);
+      this.a.a.requestFocus();
+      return;
+    }
+  }
+  
+  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public boolean a(EmoticonInfo paramEmoticonInfo)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.a.getSelectionStart() == 0) {}
     for (;;)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
+      return;
+      try
       {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
+        Editable localEditable = this.a.a.getText();
+        int i = this.a.a.getSelectionStart();
+        int j = android.text.TextUtils.getOffsetBefore(this.a.a.getText(), i);
+        if (i != j)
         {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener.a();
-          return false;
-          i = 0;
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
         }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
   }
+  
+  public void b(EmoticonInfo paramEmoticonInfo) {}
+  
+  public void c() {}
+  
+  public void setting() {}
 }
 
 

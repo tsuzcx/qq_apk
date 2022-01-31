@@ -1,44 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.LruCache;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
-import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
+import android.widget.TextView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public class mym
-  extends SimpleJob
+class mym
+  implements Runnable
 {
-  public mym(DownloadUrlManager paramDownloadUrlManager, String paramString, int paramInt) {}
+  mym(mye parammye, boolean paramBoolean, int paramInt) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    try
-    {
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).lock();
-      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).remove(paramJobContext);
-      paramJobContext = QQStoryContext.a().a().createEntityManager();
-      paramVarArgs = StoryManager.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
-      if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
-      {
-        paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
-        paramVarArgs.setStatus(1000);
-        paramVarArgs.bIsDownloadCompleted = 1;
-        paramJobContext.b(paramVarArgs);
-      }
-      return null;
-    }
-    finally
-    {
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).unlock();
-    }
+    this.jdField_a_of_type_Mye.a.a.setText("" + PublicAccountImageCollectionMainActivity.c(this.jdField_a_of_type_Mye.a));
+    PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Mye.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 

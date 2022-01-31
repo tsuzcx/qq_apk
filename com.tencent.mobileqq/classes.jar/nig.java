@@ -1,26 +1,45 @@
-import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoDataProvider.MsgTabVideoDataEvent;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.OnFetchUserInfoCallback;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class nig
-  implements Runnable
+  implements PlayModeUtils.OnFetchUserInfoCallback
 {
-  public nig(MsgTabPlayMode paramMsgTabPlayMode, MsgTabVideoDataProvider.MsgTabVideoDataEvent paramMsgTabVideoDataEvent) {}
+  public nig(VideoPlayModeBase paramVideoPlayModeBase, int paramInt, String paramString1, String paramString2, StoryVideoItem paramStoryVideoItem) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, QQUserUIItem paramQQUserUIItem, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.e = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("wyx", 2, new Object[] { "before current setCurrentItem index=", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent.jdField_a_of_type_Int), ", mCurrentIndex=", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_b_of_type_Int) });
+    SLog.d("Q.qqstory.player.YPlayModeUtils", "fetchUserInfo, onFinish, position = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder().append("[az]VideoPlayModeBase.fetchUserInfo: unionId ==>").append(this.jdField_a_of_type_JavaLangString).append("; uin ==> ").append(this.b).append("; \r\nsuccess ==>").append(paramBoolean1).append("; isFromNet ==>").append(paramBoolean2).append("; [important]storyVideoItem.mOwnerUid ==> ").append(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid).append("; \r\nuserUIItem ==> ");
+      if (paramQQUserUIItem == null) {
+        break label207;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.a.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent.jdField_a_of_type_Int, false);
-    if ((!this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      MsgTabPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent);
+    label207:
+    for (String str = paramQQUserUIItem.toString();; str = "null")
+    {
+      QLog.d("VideoPlayModeBase", 2, str);
+      if ((paramBoolean1) && (paramQQUserUIItem != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid)))
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid = paramQQUserUIItem.uid;
+        ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      }
+      if (Looper.getMainLooper() != Looper.myLooper()) {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a.post(new nih(this));
+      }
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_b_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.c, false);
   }
 }
 

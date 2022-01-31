@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.ViewFactory.GuideView.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class wjb
-  implements Runnable
+  implements ViewFactory.GuideView.OnItemClickListener
 {
-  public wjb(ContactsTroopAdapter paramContactsTroopAdapter, TroopManager paramTroopManager, RecentUserProxy paramRecentUserProxy) {}
+  public wjb(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a();
-    ArrayList localArrayList2 = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a.getManager(52)).a();
-    ThreadManager.getUIHandler().post(new wjc(this, localArrayList1, localArrayList2));
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
+    }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.a(paramString, false);
   }
 }
 

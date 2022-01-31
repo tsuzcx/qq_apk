@@ -1,15 +1,13 @@
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
 
 public class lgx
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public lgx(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public lgx(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void run()
-  {
-    ReadInJoyDeliverBiuActivity.c(this.a).setSelection(0);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

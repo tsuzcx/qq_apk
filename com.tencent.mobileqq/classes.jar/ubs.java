@@ -1,41 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import java.util.List;
 
-public class ubs
-  extends FriendListObserver
+class ubs
+  implements Runnable
 {
-  public ubs(TroopTransferActivity paramTroopTransferActivity) {}
+  ubs(ubr paramubr, TroopMemberListActivity.ATroopMember paramATroopMember) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    this.jdField_a_of_type_Ubr.jdField_a_of_type_Ubp.a.a(this.jdField_a_of_type_Ubr.jdField_a_of_type_JavaLangString);
+    synchronized (this.jdField_a_of_type_Ubr.jdField_a_of_type_Ubp.a)
     {
-      paramString = this.a.a.a(paramString);
-      if (paramString != null) {
-        break label28;
-      }
-    }
-    label28:
-    Friends localFriends;
-    do
-    {
+      this.jdField_a_of_type_Ubr.jdField_a_of_type_Ubp.a.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember);
+      this.jdField_a_of_type_Ubr.jdField_a_of_type_Ubp.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
       return;
-      localFriends = ((FriendsManager)this.a.app.getManager(50)).c(paramString.a);
-    } while (localFriends == null);
-    this.a.a(paramString, localFriends);
+    }
   }
 }
 

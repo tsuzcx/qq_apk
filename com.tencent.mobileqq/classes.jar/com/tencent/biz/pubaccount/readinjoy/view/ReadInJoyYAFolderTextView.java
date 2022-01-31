@@ -23,7 +23,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
-import mif;
+import mjn;
 
 public class ReadInJoyYAFolderTextView
   extends TextView
@@ -105,7 +105,7 @@ public class ReadInJoyYAFolderTextView
   
   private void b()
   {
-    setMovementMethod(mif.a());
+    setMovementMethod(mjn.a());
   }
   
   public void a()

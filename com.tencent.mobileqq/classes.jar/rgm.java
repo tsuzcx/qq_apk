@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
 
 public class rgm
   implements Runnable
 {
-  public rgm(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public rgm(AccountManageActivity paramAccountManageActivity) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      if (!this.a.a.isShowing()) {
-        this.a.a.show();
-      }
-    }
-    do
-    {
-      return;
-      this.a.a = DialogUtil.a(this.a, 230);
-      this.a.a.setMessage(2131433670);
-      rgn localrgn = new rgn(this);
-      this.a.a.setPositiveButton(2131432400, localrgn);
-    } while (this.a.a.isShowing());
-    this.a.a.show();
+    long l = this.a.app.a();
+    SubAccountManager localSubAccountManager = (SubAccountManager)this.a.app.getManager(60);
+    this.a.runOnUiThread(new rgn(this, l));
   }
 }
 

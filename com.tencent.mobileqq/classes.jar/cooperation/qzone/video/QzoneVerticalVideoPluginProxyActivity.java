@@ -1,6 +1,6 @@
 package cooperation.qzone.video;
 
-import amld;
+import anbi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public class QzoneVerticalVideoPluginProxyActivity
   
   public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
   {
-    Class localClass = amld.a("com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity");
+    Class localClass = anbi.a("com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity");
     paramIntent.putExtra("userQqResources", -1);
     paramIntent.putExtra("useSkinEngine", false);
     paramIntent.putExtra("param_plugin_gesturelock", false);
@@ -106,7 +106,7 @@ public class QzoneVerticalVideoPluginProxyActivity
   
   protected Class getProxyActivity(String paramString)
   {
-    return amld.a(paramString);
+    return anbi.a(paramString);
   }
   
   protected int getThemeResId()

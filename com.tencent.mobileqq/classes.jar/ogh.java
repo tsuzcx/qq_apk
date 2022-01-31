@@ -1,38 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.util.DiffUtil.Callback;
-import com.tencent.biz.qqstory.takevideo.SlideShowPhotoListManager.SlideItemInfo;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
+import com.tencent.widget.XListView;
 
 public class ogh
-  extends DiffUtil.Callback
+  implements Runnable
 {
-  private List a;
-  private List b;
+  public ogh(EditVideoPoi paramEditVideoPoi) {}
   
-  public ogh(List paramList1, List paramList2)
+  public void run()
   {
-    this.a = paramList1;
-    this.b = paramList2;
-  }
-  
-  public int a()
-  {
-    return this.a.size();
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return TextUtils.equals(((SlideShowPhotoListManager.SlideItemInfo)this.a.get(paramInt1)).a, ((SlideShowPhotoListManager.SlideItemInfo)this.b.get(paramInt2)).a);
-  }
-  
-  public int b()
-  {
-    return this.b.size();
-  }
-  
-  public boolean b(int paramInt1, int paramInt2)
-  {
-    return a(paramInt1, paramInt2);
+    this.a.a.springBackOverScrollHeaderView();
   }
 }
 

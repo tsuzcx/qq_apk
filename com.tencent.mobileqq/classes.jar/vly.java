@@ -1,21 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.widget.ListView;
+import com.tencent.widget.XPanelContainer;
 
-public class vly
-  implements View.OnTouchListener
+class vly
+  implements Runnable
 {
-  public vly(PhotoListPanel paramPhotoListPanel) {}
+  vly(vlx paramvlx) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    paramView = paramView.getParent();
-    if (paramView != null) {
-      paramView.requestDisallowInterceptTouchEvent(true);
-    }
-    return false;
+    PEPanel.a(this.a.a).setVisibility(0);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
+    localTranslateAnimation.setDuration(200L);
+    PEPanel.a(this.a.a).startAnimation(localTranslateAnimation);
   }
 }
 

@@ -12,7 +12,6 @@ public final class qqstory_service$RspMsgTabNodeList
   extends MessageMicro
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBUInt32Field is_animate = PBField.initUInt32(0);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public final PBBytesField list_seq = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +22,7 @@ public final class qqstory_service$RspMsgTabNodeList
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48 }, new String[] { "result", "list_seq", "next_cookie", "is_end", "node_list", "is_animate" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), null, Integer.valueOf(0) }, RspMsgTabNodeList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42 }, new String[] { "result", "list_seq", "next_cookie", "is_end", "node_list" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), null }, RspMsgTabNodeList.class);
   }
 }
 

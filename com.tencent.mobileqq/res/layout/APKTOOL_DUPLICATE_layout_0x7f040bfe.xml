@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3453" android:background="@drawable/common_btn_blue" android:layout_width="210.0dip" android:layout_height="44.0dip" android:layout_marginRight="44.0dip" android:layout_marginBottom="20.0dip" android:text="知道了" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3454" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="44.0dip" android:layout_marginBottom="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221bf" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a3453" android:layout_alignParentRight="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3455" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221be" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a3454" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+<com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

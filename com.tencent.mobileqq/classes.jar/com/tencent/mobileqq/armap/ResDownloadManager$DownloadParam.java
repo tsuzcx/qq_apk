@@ -3,6 +3,7 @@ package com.tencent.mobileqq.armap;
 public class ResDownloadManager$DownloadParam
 {
   public int a;
+  public ResDownloadManager.IResDownloadListener a;
   public Object a;
   public String a;
   public boolean a;

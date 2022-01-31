@@ -20,8 +20,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import you;
-import yov;
+import ysa;
+import ysb;
 
 public class SpriteBridge
   implements ISpriteBridgeInterface
@@ -83,7 +83,7 @@ public class SpriteBridge
   
   private void b()
   {
-    ThreadManager.getUIHandler().post(new yov(this));
+    ThreadManager.getUIHandler().post(new ysb(this));
   }
   
   public void a()
@@ -197,7 +197,7 @@ public class SpriteBridge
     if (paramSpriteTaskParam == null) {
       return;
     }
-    ThreadManager.post(new you(this, paramSpriteTaskParam), 8, null, true);
+    ThreadManager.post(new ysa(this, paramSpriteTaskParam), 8, null, true);
   }
   
   public void a(ISpriteStatusChanged paramISpriteStatusChanged)

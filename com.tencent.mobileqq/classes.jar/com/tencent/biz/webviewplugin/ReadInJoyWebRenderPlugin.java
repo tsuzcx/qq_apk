@@ -29,7 +29,7 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import pba;
+import pcu;
 
 public class ReadInJoyWebRenderPlugin
   extends WebViewPlugin
@@ -265,7 +265,7 @@ public class ReadInJoyWebRenderPlugin
           {
             this.jdField_b_of_type_JavaLangString = HtmlOffline.a((String)localObject, "_bid=" + str);
             this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString.replace("_nativeRender", "");
-            ThreadManager.post(new pba(this), 5, null, true);
+            ThreadManager.post(new pcu(this), 5, null, true);
           }
         }
       }

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25d7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:text="点击选择一个你要评论的小视频" />
-    <RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25d8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25d9" android:layout_width="205.0dip" android:layout_height="332.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="7.0dip" />
-        <TextView android:textSize="12.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25da" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="23:46" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a25d9" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0a25d9" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25db" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="vianhuang" android:singleLine="true" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a25da" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a25d9" />
-    </RelativeLayout>
-    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25dc" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0744" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0745" android:visibility="gone" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a25d7" />
-    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="16.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0475" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12a7" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25dd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040820" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e29" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center|left" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e2a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="51.0dip">
+            <ImageView android:id="@id/toast_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/common_alert_icon" android:scaleType="fitXY" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c05a4" android:ellipsize="end" android:gravity="center" android:id="@id/toast_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="已转发成功" android:maxLines="1" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05bb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216d1" android:layout_width="fill_parent" android:layout_height="5.0dip" />
+</LinearLayout>

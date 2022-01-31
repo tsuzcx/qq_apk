@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
 
 public class aaul
-  implements DialogInterface.OnDismissListener
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public aaul(ARMapActivity paramARMapActivity) {}
+  public aaul(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    ARMapActivity.q(this.a);
+    if ((paramInt == 0) && (paramAppPathInfo.a != null))
+    {
+      ArkAppCenter.a(paramAppPathInfo.a, new aaum(this));
+      paramString = ArkAppCenter.b(paramAppPathInfo.a);
+      ArkAppCenter.a().postToMainThread(new aaun(this, paramString));
+    }
   }
 }
 

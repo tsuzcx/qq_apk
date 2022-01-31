@@ -1,36 +1,23 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class wzw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public wzw(CommonHbFragment paramCommonHbFragment, View paramView, ImageView paramImageView, URLDrawable paramURLDrawable) {}
+  public wzw(PasswdRedBagManager paramPasswdRedBagManager) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int k = this.jdField_a_of_type_AndroidViewView.getHeight();
-    int j = (int)(k * 3.076923076923077D + 0.5D);
-    int i = j;
-    if (j > CommonHbFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment)) {
-      i = CommonHbFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment);
-    }
-    if ((i > 0) && (k > 0))
+    Iterator localIterator = PasswdRedBagManager.a(this.a).a().entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, k);
-      localLayoutParams.gravity = 5;
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      this.a.c.put(localEntry.getKey(), localEntry.getValue());
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.postInvalidate();
   }
 }
 

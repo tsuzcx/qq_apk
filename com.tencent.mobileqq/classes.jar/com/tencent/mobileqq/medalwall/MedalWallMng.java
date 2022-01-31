@@ -152,7 +152,7 @@ public class MedalWallMng
     }
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    int k = localResources.getDimensionPixelSize(2131559459);
+    int k = localResources.getDimensionPixelSize(2131559461);
     localURLDrawableOptions.mRequestWidth = k;
     localURLDrawableOptions.mRequestHeight = k;
     URLDrawable.getDrawable(new File(paramNeedGuideMedal.jdField_b_of_type_JavaLangString), localURLDrawableOptions).startDownload(true);
@@ -1442,7 +1442,7 @@ public class MedalWallMng
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalWallMng
  * JD-Core Version:    0.7.0.1
  */

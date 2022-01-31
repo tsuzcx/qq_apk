@@ -21,7 +21,7 @@ public class EditSyncToStory
   public void a()
   {
     super.a();
-    this.a = a(2131373358);
+    this.a = a(2131373539);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)

@@ -1,37 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.provider.Settings.System;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.TimeManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class sfg
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public sfg(Conversation paramConversation) {}
+  public sfg(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext)))
+    switch (paramView.getId())
     {
-      paramContext = Settings.System.getString(this.a.a().getContentResolver(), "date_format");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (TimeManager.a().a(paramContext)) && (this.a.h)) {
-        this.a.a(1014, 0L, false);
-      }
-      SubAccountControll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        paramContext = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(TroopAssistantActivity.class);
-        if (paramContext != null) {
-          paramContext.sendEmptyMessage(2);
-        }
-      }
+    default: 
+      this.a.a = 0;
+    }
+    for (;;)
+    {
+      this.a.a(this.a.a);
+      ReportController.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
+      return;
+      this.a.a = 1;
+      continue;
+      this.a.a = 2;
+      continue;
+      this.a.a = 3;
     }
   }
 }

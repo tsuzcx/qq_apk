@@ -1,74 +1,84 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.service.message.MessageUtils;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
-import com.tencent.mobileqq.text.TextUtils;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.mobileqq.apollo.store.ApolloImageShareLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.util.WeakReferenceHandler;
+import java.lang.ref.WeakReference;
 
-public final class ytq
+public class ytq
   implements Runnable
 {
-  public ytq(CharSequence paramCharSequence, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage) {}
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private final int jdField_b_of_type_Int;
+  private final WeakReference jdField_b_of_type_JavaLangRefWeakReference;
+  private final int c;
+  
+  public ytq(ApolloImageShareLayout paramApolloImageShareLayout, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloImageShareLayout);
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = paramInt3;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBitmap);
+  }
   
   public void run()
   {
-    Object localObject1 = (QQText)this.jdField_a_of_type_JavaLangCharSequence;
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2 = (QQText.EmoticonSpan[])((QQText)localObject1).getSpans(0, ((QQText)localObject1).length(), QQText.EmoticonSpan.class);
-    if ((localObject2 != null) && (localObject2.length > 0))
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_b_of_type_JavaLangRefWeakReference == null)) {}
+    do
     {
-      int j = localObject2.length;
-      i = 0;
-      while (i < j)
-      {
-        int k = localObject2[i].a();
-        if ((TextUtils.a(k)) && (k >= 0) && (k < MessageUtils.a.length)) {
-          localArrayList.add(Integer.valueOf(ApolloUtil.e(MessageUtils.a[k])));
-        }
-        i += 1;
-      }
-    }
-    if (localArrayList.size() == 0) {
-      ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (QQText)localObject1, localArrayList);
-    }
-    for (int i = 1;; i = 0)
+      return;
+      localApolloImageShareLayout = (ApolloImageShareLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while ((localApolloImageShareLayout == null) || (ApolloImageShareLayout.a(localApolloImageShareLayout) == null) || (localApolloImageShareLayout.jdField_a_of_type_ComTencentUtilWeakReferenceHandler == null));
+    for (;;)
     {
-      QQAppInterface localQQAppInterface;
-      ChatMessage localChatMessage;
-      if (localArrayList.size() > 0)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloUtil", 2, new Object[] { "[playApolloEmoticonAction] send action list to play, actionList=", localArrayList });
+        Object localObject1 = (Bitmap)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+        if (localObject1 == null) {
+          continue;
         }
-        localObject2 = ApolloMsgPlayController.a();
-        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        localChatMessage = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-        if (i == 0) {
-          break label273;
+        Object localObject3 = Bitmap.createBitmap(ApolloImageShareLayout.a(localApolloImageShareLayout).getWidth(), ApolloImageShareLayout.a(localApolloImageShareLayout).getHeight(), Bitmap.Config.ARGB_8888);
+        if (localObject3 == null) {
+          continue;
         }
+        Canvas localCanvas = new Canvas((Bitmap)localObject3);
+        Bitmap localBitmap = ApolloImageShareLayout.a(localApolloImageShareLayout).getDrawingCache();
+        if (localBitmap != null) {
+          localCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
+        }
+        localCanvas.drawBitmap((Bitmap)localObject1, (ApolloImageShareLayout.a(localApolloImageShareLayout).getWidth() - ((Bitmap)localObject1).getWidth()) / 2, ApolloImageShareLayout.a(localApolloImageShareLayout), null);
+        localObject1 = ImageUtil.a((Bitmap)localObject3);
+        localObject3 = localApolloImageShareLayout.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(this.jdField_a_of_type_Int);
+        ((Message)localObject3).obj = localObject1;
+        ((Message)localObject3).sendToTarget();
       }
-      label273:
-      for (localObject1 = localArrayList;; localObject1 = null)
+      catch (Exception localException)
       {
-        ((ApolloMsgPlayController)localObject2).a(localQQAppInterface, localChatMessage, localArrayList, (ArrayList)localObject1);
-        localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-        if (localObject1 != null)
-        {
-          localObject1 = (QQMessageFacade)((AppRuntime)localObject1).getManager(19);
-          if (localObject1 != null) {
-            ((QQMessageFacade)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
-          }
-        }
+        QLog.e("ApolloImageShareLayout", 2, localException.getMessage());
+        return;
+        QLog.e("ApolloImageShareLayout", 2, "error! bitmap null");
+        continue;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        QLog.e("ApolloImageShareLayout", 2, localOutOfMemoryError.getMessage());
         return;
       }
+      finally
+      {
+        localApolloImageShareLayout.jdField_a_of_type_Boolean = false;
+      }
+      localApolloImageShareLayout.jdField_a_of_type_Boolean = false;
+      return;
+      QLog.e("ApolloImageShareLayout", 2, "error! layout.mBackLayout.getDrawingCache() null");
     }
   }
 }

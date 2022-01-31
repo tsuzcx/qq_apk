@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 import com.tencent.qphone.base.util.QLog;
 
-public class sgv
-  implements DialogInterface.OnClickListener
+class sgv
+  implements Runnable
 {
-  public sgv(DialogActivity paramDialogActivity) {}
+  sgv(sgt paramsgt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    if (this.jdField_a_of_type_Sgt.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
+      this.jdField_a_of_type_Sgt.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, false);
+    }
+    if (this.jdField_a_of_type_Sgt.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null)
+    {
+      this.jdField_a_of_type_Sgt.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, "Conversation onUpdateCustomHead uin = " + this.jdField_a_of_type_JavaLangString);
+      }
+    }
   }
 }
 

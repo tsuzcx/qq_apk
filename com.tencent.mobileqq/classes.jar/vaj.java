@@ -1,23 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryFeedItemBuilder;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map.Entry;
-
-public class vaj
-  implements View.OnClickListener
+public abstract interface vaj
 {
-  public vaj(QQStoryFeedItemBuilder paramQQStoryFeedItemBuilder) {}
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQStoryFeedItemBuilder", 2, "mClickListener.onClick: invoked. info: v: " + paramView);
-    }
-    paramView = (String)((Map.Entry)QQStoryFeedItemBuilder.a(this.a).get(0)).getKey();
-    QQStoryFeedItemBuilder.a(this.a, paramView);
-  }
+  public abstract void a();
 }
 
 

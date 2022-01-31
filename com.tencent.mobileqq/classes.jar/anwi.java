@@ -1,26 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import java.util.List;
+import dov.com.tencent.biz.qqstory.takevideo.EditMusicExport;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
-public final class anwi
-  extends BroadcastReceiver
+public class anwi
+  implements Runnable
 {
-  private anwi(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  public anwi(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      CaptureVideoFilterManager.a().b();
-      CaptureVideoFilterManager.a().a(new anwj(this));
-      this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
+    EditMusicExport localEditMusicExport = (EditMusicExport)this.a.a(EditMusicExport.class);
+    if (localEditMusicExport != null) {
+      localEditMusicExport.as_();
     }
   }
 }

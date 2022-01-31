@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.KplCard;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.data.Card;
 
-public class stl
-  extends CardObserver
+class stl
+  implements Runnable
 {
-  public stl(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  stl(stk paramstk, Card paramCard) {}
   
-  protected void f(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
-    {
-      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
-      this.a.a = ((KplCard)paramObject);
-    }
+    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_Stk.a, this.jdField_a_of_type_ComTencentMobileqqDataCard, false);
   }
 }
 

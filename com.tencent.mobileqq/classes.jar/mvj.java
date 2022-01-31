@@ -1,27 +1,16 @@
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.data.OpenID;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 
-class mvj
-  implements Runnable
+public class mvj
+  implements TroopMemberApiClient.Callback
 {
-  mvj(mvi parammvi, Object paramObject) {}
+  public mvj(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof OpenID))
-    {
-      OpenID localOpenID = (OpenID)this.jdField_a_of_type_JavaLangObject;
-      if (PublicAccountUtil.a(this.jdField_a_of_type_Mvi.jdField_a_of_type_AndroidAppActivity, localOpenID, this.jdField_a_of_type_Mvi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Mvi.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams)) {
-        break label77;
-      }
-    }
-    label77:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        PublicAccountUtil.b(this.jdField_a_of_type_Mvi.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Mvi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Mvi.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
-      }
-      return;
+    if (this.a.a != null) {
+      this.a.k();
     }
   }
 }

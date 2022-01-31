@@ -6,8 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.PriorityBlockingQueue;
-import xtq;
-import xtr;
+import xww;
+import xwx;
 
 public class VideoFramesFetcher
   implements OnFetchFrameListener
@@ -29,7 +29,7 @@ public class VideoFramesFetcher
         QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    xtr localxtr2;
+    xwx localxwx2;
     do
     {
       return null;
@@ -37,10 +37,10 @@ public class VideoFramesFetcher
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          xtr localxtr1 = (xtr)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          xwx localxwx1 = (xwx)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localxtr1.jdField_a_of_type_Long = l;
+          localxwx1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -51,9 +51,9 @@ public class VideoFramesFetcher
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localxtr2 = new xtr(this, l, paramInt, paramInt + this.b);
+      localxwx2 = new xwx(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localxtr2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localxwx2);
     return null;
   }
   
@@ -65,7 +65,7 @@ public class VideoFramesFetcher
     this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new PriorityBlockingQueue();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new xtq(this));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new xww(this));
     return 0;
   }
   

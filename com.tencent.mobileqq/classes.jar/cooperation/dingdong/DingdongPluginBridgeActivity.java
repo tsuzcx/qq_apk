@@ -1,7 +1,7 @@
 package cooperation.dingdong;
 
-import alun;
-import aluo;
+import amkr;
+import amks;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -205,9 +205,9 @@ public class DingdongPluginBridgeActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131558448));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在加载，请稍候...");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new alun(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new amkr(this));
     this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new aluo(this), 300L);
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new amks(this), 300L);
     return true;
   }
   

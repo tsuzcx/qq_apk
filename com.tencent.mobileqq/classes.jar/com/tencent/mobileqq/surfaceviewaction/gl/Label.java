@@ -55,7 +55,7 @@ public class Label
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Label
  * JD-Core Version:    0.7.0.1
  */

@@ -66,10 +66,10 @@ import tencent.im.apollo_game_status.STCMGameMessage.STGameQuitRoom;
 import tencent.im.apollo_game_status.STCMGameMessage.STGameStart;
 import tencent.im.apollo_game_status.STCMGameMessage.STMsgComm;
 import tencent.im.apollo_game_status.STCMGameMessage.STScoreInfo;
-import ygl;
-import ygn;
-import ygo;
-import ygp;
+import yjs;
+import yju;
+import yjv;
+import yjw;
 
 public class ApolloGameManager
   implements Handler.Callback, Manager
@@ -88,12 +88,12 @@ public class ApolloGameManager
   public ApolloAioBubblePush a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ygl(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new yjs(this);
   public WeakReference a;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   public AtomicBoolean a;
-  private ygo jdField_a_of_type_Ygo;
+  private yjv jdField_a_of_type_Yjv;
   private long jdField_b_of_type_Long = 600L;
   private WeakReference jdField_b_of_type_JavaLangRefWeakReference;
   private WeakReference c;
@@ -124,7 +124,7 @@ public class ApolloGameManager
       this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameObserver = new ApolloGameObserver(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameObserver);
     }
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ygp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new yjw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
     try
@@ -136,8 +136,8 @@ public class ApolloGameManager
       {
         CmGameServerQIPCModule.a();
         this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler = new ApolloGameArkHandler(paramQQAppInterface);
-        this.jdField_a_of_type_Ygo = new ygo(null);
-        AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Ygo);
+        this.jdField_a_of_type_Yjv = new yjv(null);
+        AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Yjv);
         return;
         QLog.e("ApolloGameManager", 1, "[ApolloGameManager] app is null");
       }
@@ -927,10 +927,10 @@ public class ApolloGameManager
     //   725: iload 11
     //   727: ifeq -642 -> 85
     //   730: invokestatic 927	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   733: new 929	ygm
+    //   733: new 929	yjt
     //   736: dup
     //   737: aload_0
-    //   738: invokespecial 930	ygm:<init>	(Lcom/tencent/mobileqq/apollo/ApolloGameManager;)V
+    //   738: invokespecial 930	yjt:<init>	(Lcom/tencent/mobileqq/apollo/ApolloGameManager;)V
     //   741: invokevirtual 936	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   744: pop
     //   745: return
@@ -1052,7 +1052,7 @@ public class ApolloGameManager
           }
           paramString1.commit();
           ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong);
-          ThreadManager.getUIHandler().post(new ygn(this));
+          ThreadManager.getUIHandler().post(new yju(this));
           i = -1;
           if (!"android.web".equals(paramString3)) {
             break label648;
@@ -1321,7 +1321,7 @@ public class ApolloGameManager
         }
       } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
       paramMessage = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152);
-    } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean("force_parse_gamejson_once7.6.0", false));
+    } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean("force_parse_gamejson_once7.6.3", false));
     paramMessage.c();
     QLog.i("ApolloGameManager", 1, "force to parse game json once!!!");
     return true;
@@ -1336,8 +1336,8 @@ public class ApolloGameManager
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       }
-      if (this.jdField_a_of_type_Ygo != null) {
-        AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Ygo);
+      if (this.jdField_a_of_type_Yjv != null) {
+        AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Yjv);
       }
       if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
         this.jdField_a_of_type_AndroidUtilSparseArray.clear();

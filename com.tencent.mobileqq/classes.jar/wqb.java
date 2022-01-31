@@ -1,15 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
 public class wqb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wqb(BindNumberActivity paramBindNumberActivity) {}
+  public wqb(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.doOnBackPressed();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      QCallFacade localQCallFacade = (QCallFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
+      if (localQCallFacade != null)
+      {
+        int i = localQCallFacade.a();
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wqc(this, i));
+      }
+    }
   }
 }
 

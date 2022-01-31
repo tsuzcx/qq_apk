@@ -1,8 +1,8 @@
 package cooperation.weiyun.sdk.api;
 
-import amrk;
-import amrl;
 import android.content.Context;
+import anhp;
+import anhq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -41,7 +41,7 @@ public final class WeiyunApi
   
   public static void a(Context paramContext)
   {
-    ThreadManager.executeOnSubThread(new amrl(paramContext));
+    ThreadManager.executeOnSubThread(new anhq(paramContext));
   }
   
   public static void a(Context paramContext, long paramLong)
@@ -78,57 +78,57 @@ public final class WeiyunApi
   
   public static void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq paramAioPicAndVideoCopyToWeiyunMsgReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(246001), a(246001, paramAioPicAndVideoCopyToWeiyunMsgReq), new amrk(246001, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(246001), a(246001, paramAioPicAndVideoCopyToWeiyunMsgReq), new anhp(246001, paramIWeiyunCallback));
   }
   
   public static void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq paramCrossBidProxyCopyFileToOtherBidMsgReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(245700), a(245700, paramCrossBidProxyCopyFileToOtherBidMsgReq), new amrk(245700, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(245700), a(245700, paramCrossBidProxyCopyFileToOtherBidMsgReq), new anhp(245700, paramIWeiyunCallback));
   }
   
   public static void a(WeiyunPB.CrossBidProxyOfflineFileGetListMsgReq paramCrossBidProxyOfflineFileGetListMsgReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(245706), a(245706, paramCrossBidProxyOfflineFileGetListMsgReq), new amrk(245706, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(245706), a(245706, paramCrossBidProxyOfflineFileGetListMsgReq), new anhp(245706, paramIWeiyunCallback));
   }
   
   public static void a(WeiyunPB.DiskDirFileBatchDeleteExMsgReq paramDiskDirFileBatchDeleteExMsgReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(2509), a(2509, paramDiskDirFileBatchDeleteExMsgReq), new amrk(2509, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(2509), a(2509, paramDiskDirFileBatchDeleteExMsgReq), new anhp(2509, paramIWeiyunCallback));
   }
   
   public static void a(WeiyunPB.DiskFileBatchDownloadMsgReq paramDiskFileBatchDownloadMsgReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(2402), a(2402, paramDiskFileBatchDownloadMsgReq), new amrk(2402, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(2402), a(2402, paramDiskFileBatchDownloadMsgReq), new anhp(2402, paramIWeiyunCallback));
   }
   
   public static void a(WeiyunPB.DiskFileDocDownloadAbsMsgReq paramDiskFileDocDownloadAbsMsgReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(2414), a(2414, paramDiskFileDocDownloadAbsMsgReq), new amrk(2414, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(2414), a(2414, paramDiskFileDocDownloadAbsMsgReq), new anhp(2414, paramIWeiyunCallback));
   }
   
   public static void a(WeiyunPB.DiskPicBackupReq paramDiskPicBackupReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(2803), a(2803, paramDiskPicBackupReq), new amrk(2803, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(2803), a(2803, paramDiskPicBackupReq), new anhp(2803, paramIWeiyunCallback));
   }
   
   public static void a(WeiyunPB.LibInfoListGetMsgReq paramLibInfoListGetMsgReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(26113), a(26113, paramLibInfoListGetMsgReq), new amrk(26113, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(26113), a(26113, paramLibInfoListGetMsgReq), new anhp(26113, paramIWeiyunCallback));
   }
   
   public static void a(WeiyunPB.PwdVerifyMsgReq paramPwdVerifyMsgReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(11005), a(11005, paramPwdVerifyMsgReq), new amrk(11005, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(11005), a(11005, paramPwdVerifyMsgReq), new anhp(11005, paramIWeiyunCallback));
   }
   
   public static void a(WeiyunPB.QqSdkFileUploadMsgReq paramQqSdkFileUploadMsgReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(246000), a(246000, paramQqSdkFileUploadMsgReq), new amrk(246000, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(246000), a(246000, paramQqSdkFileUploadMsgReq), new anhp(246000, paramIWeiyunCallback));
   }
   
   public static void a(WeiyunPB.WeiyunTrialCouponUseMsgReq paramWeiyunTrialCouponUseMsgReq, IWeiyunCallback paramIWeiyunCallback)
   {
-    WySender.a().a(Integer.toString(245520), a(245520, paramWeiyunTrialCouponUseMsgReq), new amrk(245520, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(245520), a(245520, paramWeiyunTrialCouponUseMsgReq), new anhp(245520, paramIWeiyunCallback));
   }
   
   public static void a(IWeiyunCallback paramIWeiyunCallback)
@@ -149,7 +149,7 @@ public final class WeiyunApi
       paramIWeiyunCallback.a(localPwdQueryMsgRsp);
       return;
     }
-    WySender.a().a(Integer.toString(11001), a(11001, new WeiyunPB.PwdQueryMsgReq()), new amrk(11001, paramIWeiyunCallback));
+    WySender.a().a(Integer.toString(11001), a(11001, new WeiyunPB.PwdQueryMsgReq()), new anhp(11001, paramIWeiyunCallback));
   }
   
   public static void a(String paramString, IWeiyunCallback paramIWeiyunCallback)

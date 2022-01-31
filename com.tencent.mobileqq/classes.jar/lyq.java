@@ -1,14 +1,18 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
-public class lyq
-  implements Runnable
+class lyq
+  implements DialogInterface.OnClickListener
 {
-  public lyq(OrientationDetector paramOrientationDetector, Activity paramActivity) {}
+  lyq(lyp paramlyp) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, this.jdField_a_of_type_AndroidAppActivity.getRequestedOrientation());
+    ForwardSdkShareOption.a(this.a.a, true, "shareToQQ", ReadInJoyDeliverVideoActivity.b(this.a.a));
+    this.a.a.moveTaskToBack(true);
+    this.a.a.finish();
   }
 }
 

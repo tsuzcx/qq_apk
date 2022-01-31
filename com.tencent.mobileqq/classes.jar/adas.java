@@ -1,17 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
 
-public class adas
-  implements DialogInterface.OnClickListener
+public final class adas
+  implements Parcelable.Creator
 {
-  public adas(ForwardFileBaseOption paramForwardFileBaseOption) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public OfflineFileInfo a(Parcel paramParcel)
   {
-    ForwardFileBaseOption.a(this.a, false);
-    this.a.a.finish();
+    return new OfflineFileInfo(paramParcel);
+  }
+  
+  public OfflineFileInfo[] a(int paramInt)
+  {
+    return new OfflineFileInfo[paramInt];
   }
 }
 

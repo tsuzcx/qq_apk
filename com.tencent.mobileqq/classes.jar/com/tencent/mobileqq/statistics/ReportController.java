@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import ahru;
+import aifx;
 import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -105,7 +105,7 @@ public class ReportController
   
   public static void a(PluginRuntime paramPluginRuntime)
   {
-    paramPluginRuntime.setClickEventReportor(new ahru());
+    paramPluginRuntime.setClickEventReportor(new aifx());
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)

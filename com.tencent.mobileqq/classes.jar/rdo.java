@@ -1,22 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.app.Activity;
+import android.view.Choreographer;
+import com.tencent.mfsdk.LeakInspector.ActivityLeakSolution;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 
-public class rdo
-  implements DialogInterface.OnClickListener
+public final class rdo
+  implements Runnable
 {
-  public rdo(AccountManageActivity paramAccountManageActivity) {}
+  public rdo(Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80040A7", "0X80040A7", 0, 0, "", "", "", "");
-    this.a.d();
+    try
+    {
+      Choreographer localChoreographer = Choreographer.getInstance();
+      ActivityLeakSolution.a.set(localChoreographer, this.a.getApplicationContext());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("LeakInspector", 2, "", localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rdo
  * JD-Core Version:    0.7.0.1
  */

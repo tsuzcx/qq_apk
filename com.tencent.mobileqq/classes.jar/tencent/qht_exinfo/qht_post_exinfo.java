@@ -18,7 +18,7 @@ public final class qht_post_exinfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.qht_exinfo.qht_post_exinfo
  * JD-Core Version:    0.7.0.1
  */

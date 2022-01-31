@@ -1,20 +1,44 @@
-import android.view.View;
-import android.view.Window;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import cooperation.weiyun.sdk.download.WyDownloader;
 
 public class anhu
-  implements Runnable
+  implements INetInfoHandler
 {
-  public anhu(EditTextDialog paramEditTextDialog) {}
+  public anhu(WyDownloader paramWyDownloader) {}
   
-  public void run()
+  public void onNetMobile2None()
   {
-    this.a.getWindow().getDecorView().setSystemUiVisibility(4);
+    this.a.a(false, false);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    this.a.a(true, true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.a(true, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.a(false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhu
  * JD-Core Version:    0.7.0.1
  */

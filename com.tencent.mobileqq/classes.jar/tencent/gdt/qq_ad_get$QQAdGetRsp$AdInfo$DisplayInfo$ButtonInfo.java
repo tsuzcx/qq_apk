@@ -17,7 +17,7 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$DisplayInfo$ButtonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo
  * JD-Core Version:    0.7.0.1
  */

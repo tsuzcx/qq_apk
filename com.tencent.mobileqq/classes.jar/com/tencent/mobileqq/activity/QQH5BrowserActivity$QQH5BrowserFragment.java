@@ -38,7 +38,7 @@ public class QQH5BrowserActivity$QQH5BrowserFragment
     paramBundle.width = ((int)UITools.a(BaseApplicationImpl.getApplication(), 15.0F));
     paramBundle.height = ((int)UITools.a(BaseApplicationImpl.getApplication(), 15.0F));
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130844341);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130844465);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText("");
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.getParent();
     if ((paramBundle instanceof RelativeLayout))
@@ -46,7 +46,7 @@ public class QQH5BrowserActivity$QQH5BrowserFragment
       ((RelativeLayout)paramBundle).setPadding(0, 0, 0, 0);
       paramBundle.requestLayout();
     }
-    paramBundle = super.getActivity().findViewById(2131363454);
+    paramBundle = super.getActivity().findViewById(2131363472);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(9);
     localLayoutParams.setMargins(i, i, 0, 0);
@@ -55,14 +55,14 @@ public class QQH5BrowserActivity$QQH5BrowserFragment
     paramBundle.width = ((int)UITools.a(BaseApplicationImpl.getApplication(), 22.0F));
     paramBundle.height = ((int)UITools.a(BaseApplicationImpl.getApplication(), 15.0F));
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844754);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844879);
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.getParent();
     if ((paramBundle instanceof RelativeLayout))
     {
       ((RelativeLayout)paramBundle).setPadding(0, 0, 0, 0);
       paramBundle.requestLayout();
     }
-    paramBundle = super.getActivity().findViewById(2131362677);
+    paramBundle = super.getActivity().findViewById(2131362695);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(11);
     localLayoutParams.setMargins(0, i, i, 0);

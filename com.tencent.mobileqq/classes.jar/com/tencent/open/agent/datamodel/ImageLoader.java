@@ -1,6 +1,6 @@
 package com.tencent.open.agent.datamodel;
 
-import akng;
+import alcw;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 import com.tencent.open.base.MD5Utils;
@@ -57,7 +57,7 @@ public class ImageLoader
   
   public void a(String paramString, ImageLoader.ImageLoadListener paramImageLoadListener)
   {
-    ImageCache.a("app", paramString, new akng(this, paramImageLoadListener, paramString));
+    ImageCache.a("app", paramString, new alcw(this, paramImageLoadListener, paramString));
   }
 }
 

@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.RotateAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager.Listener;
 
-class ulu
-  implements Action.OnActionEndListener
+public class ulu
+  implements Runnable
 {
-  ulu(uls paramuls) {}
+  public ulu(MediaPlayerManager paramMediaPlayerManager, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    RotateAction localRotateAction = new RotateAction(3000, 360, 0);
-    localRotateAction.a = true;
-    this.a.a.e.a(new Action[] { localRotateAction });
+    if (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager) != null) {
+      MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager).e(this.jdField_a_of_type_Int);
+    }
   }
 }
 

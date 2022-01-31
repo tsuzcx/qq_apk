@@ -1,77 +1,77 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity;
-import java.io.File;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
 
 public class anuy
-  implements Runnable
+  extends SimpleObserver
 {
-  public anuy(EditWebDanceMachineVideoActivity paramEditWebDanceMachineVideoActivity, int paramInt) {}
+  public anuy(EditVideoSave paramEditVideoSave, GenerateContext paramGenerateContext) {}
   
-  public void run()
+  public void a(GenerateContext paramGenerateContext)
   {
-    String str = EditWebDanceMachineVideoActivity.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity, EditWebDanceMachineVideoActivity.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity), EditWebDanceMachineVideoActivity.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity), this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity.getAppInterface().getCurrentNickname(), this.jdField_a_of_type_Int);
+    super.onNext(paramGenerateContext);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.a(5);
+    paramGenerateContext = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGenerateContext.a;
+    SLog.b("EditVideoSave", "publishParam = " + paramGenerateContext);
+    Intent localIntent;
+    int j;
     int i;
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
     {
-      i = EditWebDanceMachineVideoActivity.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity, str, EditWebDanceMachineVideoActivity.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity), EditWebDanceMachineVideoActivity.c(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity));
-      if (QLog.isColorLevel()) {
-        QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "[DanceMachine Share]  shareToSinaResult : " + i);
+      localIntent = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getIntent();
+      if (localIntent == null) {
+        break label238;
       }
-      if (i != 0) {
-        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity.runOnUiThread(new anuz(this, i));
-      }
+      j = localIntent.getIntExtra("sv_total_frame_count", 0);
+      i = localIntent.getIntExtra("sv_total_record_time", 0);
     }
-    Object localObject;
-    do
+    for (;;)
     {
-      do
+      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), paramGenerateContext.b, i, j, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a());
+      if (paramGenerateContext.e != 0) {}
+      for (boolean bool = true;; bool = false)
       {
-        do
-        {
-          return;
-          localObject = new BitmapFactory.Options();
-          ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-          BitmapFactory.decodeFile(EditWebDanceMachineVideoActivity.c(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity), (BitmapFactory.Options)localObject);
-          if (((BitmapFactory.Options)localObject).outHeight != 0) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "decode bitmap failed, outHeight == 0");
-        return;
-        i = ((BitmapFactory.Options)localObject).outHeight / 120;
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-        ((BitmapFactory.Options)localObject).inSampleSize = i;
-        localObject = BitmapFactory.decodeFile(EditWebDanceMachineVideoActivity.c(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity), (BitmapFactory.Options)localObject);
-        if (localObject != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "decode bitmap failed : iconBitmap is null");
-      return;
-      int j = ((Bitmap)localObject).getRowBytes();
-      int k = ((Bitmap)localObject).getHeight();
-      if (QLog.isColorLevel()) {
-        QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "share to wechat bitmap ratio  : " + i + "   size : " + j * k / 1024 + "KB  fileSize : " + new File(EditWebDanceMachineVideoActivity.c(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity)).length());
-      }
-      if (EditWebDanceMachineVideoActivity.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity) == null) {
-        EditWebDanceMachineVideoActivity.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity, new anva(this, (Bitmap)localObject));
-      }
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        WXShareHelper.a().d(String.valueOf(System.currentTimeMillis()), str, (Bitmap)localObject, EditWebDanceMachineVideoActivity.d(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity), EditWebDanceMachineVideoActivity.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity));
-        WXShareHelper.a().a(EditWebDanceMachineVideoActivity.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity));
-        EditWebDanceMachineVideoActivity.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity, 1);
+        localIntent.putExtra("video_edit_flag", bool);
+        EditVideoSave.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave, paramGenerateContext.b);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().startActivityForResult(localIntent, 111);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_Int = 5;
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.b = ((int)(7000.0D / paramGenerateContext.a * 4.0D));
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.c();
         return;
       }
-    } while (this.jdField_a_of_type_Int != 2);
-    WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), str, (Bitmap)localObject, EditWebDanceMachineVideoActivity.d(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity), EditWebDanceMachineVideoActivity.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity));
-    WXShareHelper.a().a(EditWebDanceMachineVideoActivity.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity));
-    EditWebDanceMachineVideoActivity.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureActivityEditWebDanceMachineVideoActivity, 2);
+      label238:
+      i = 0;
+      j = 0;
+    }
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    SLog.d("EditVideoSave", "saveVideo cancel !");
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.j();
+    QQToast.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    SLog.e("EditVideoSave", "saveVideo error ：" + paramError);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    QQToast.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.j();
   }
 }
 

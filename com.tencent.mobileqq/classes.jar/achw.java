@@ -1,34 +1,58 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class achw
-  implements Runnable
+  extends ExtendFriendObserver
 {
-  public achw(QfileLocalFileDocTabView paramQfileLocalFileDocTabView, FileInfo paramFileInfo) {}
+  public achw(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.d());
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject, new ArrayList());
-    }
-    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo) == true) {}
-    do
+    super.a(paramBoolean);
+    if (paramBoolean)
     {
+      ExtendFriendEditFragment.a(this.a).dismiss();
+      ExtendFriendEditFragment.a(this.a).setResult(8193);
+      if (ExtendFriendEditFragment.a(this.a) != null) {
+        ExtendFriendEditFragment.a(this.a).finish();
+      }
       return;
-      ((List)localObject).add(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.i();
-    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.jdField_a_of_type_JavaUtilArrayList.size() != 1);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView.setSelect(0);
+    }
+    ExtendFriendEditFragment.a(this.a).dismiss();
+  }
+  
+  protected void a(boolean paramBoolean, Card paramCard)
+  {
+    super.a(paramBoolean, paramCard);
+    if (paramBoolean)
+    {
+      paramCard = new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramCard);
+      if ((TextUtils.isEmpty(paramCard.a)) && (TextUtils.isEmpty(paramCard.b)))
+      {
+        ExtendFriendEditFragment.a(this.a, true);
+        this.a.a.a(paramCard);
+      }
+    }
+    for (;;)
+    {
+      ExtendFriendEditFragment.a(this.a).dismiss();
+      return;
+      ExtendFriendEditFragment.a(this.a, false);
+      break;
+      QQToast.a(ExtendFriendEditFragment.a(this.a), "获取扩列信息失败", 0).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achw
  * JD-Core Version:    0.7.0.1
  */

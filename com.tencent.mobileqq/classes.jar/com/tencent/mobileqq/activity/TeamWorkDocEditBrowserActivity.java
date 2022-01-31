@@ -89,7 +89,7 @@ public class TeamWorkDocEditBrowserActivity
       }
       paramContext.startActivity(localIntent);
       return;
-      QQToast.a(BaseApplication.getContext(), paramContext.getResources().getString(2131432992), 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplication.getContext(), paramContext.getResources().getString(2131433009), 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
       return;
     }
   }

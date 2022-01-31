@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
-import zco;
+import zfu;
 
 public class InjectUtils
 {
@@ -1505,7 +1505,7 @@ public class InjectUtils
         localStringBuilder.append(paramContext.getDeviceId()).append("|");
       }
       localStringBuilder.append(paramString2).append("|");
-      ThreadManager.post(new zco(arrayOfByte, localStringBuilder.toString()), 8, null, false);
+      ThreadManager.post(new zfu(arrayOfByte, localStringBuilder.toString()), 8, null, false);
       return;
     }
     catch (Throwable paramContext) {}

@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class rwj
-  implements Animation.AnimationListener
+public final class rwj
+  implements DialogInterface.OnClickListener
 {
-  public rwj(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
+  public rwj(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.b.setVisibility(8);
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 1, 8);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (this.jdField_a_of_type_Int == 5) {}
+    for (paramInt = 2;; paramInt = 3)
+    {
+      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FB", "0X80063FB", paramInt, 0, "", "", "", "");
+      return;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

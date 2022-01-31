@@ -1,16 +1,13 @@
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
 
 public class swg
   implements Runnable
 {
-  public swg(LikeRankingListActivity paramLikeRankingListActivity) {}
+  public swg(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
   public void run()
   {
-    this.a.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.a.b.setImageResource(2130842919);
+    KPLProfileCardActivity.a(this.a);
   }
 }
 

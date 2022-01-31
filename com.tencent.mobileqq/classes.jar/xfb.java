@@ -1,32 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.CmGameClientQIPCModule;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
-import com.tencent.mobileqq.data.ApolloGameData;
-import mqq.os.MqqHandler;
+import android.graphics.drawable.ColorDrawable;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.widget.ButtonInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class xfb
-  implements DialogInterface.OnClickListener
+public class xfb
+  implements Runnable
 {
-  xfb(xfa paramxfa) {}
+  public xfb(GoldMsgPayManager paramGoldMsgPayManager, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = CmGameMainManager.a();
-    if (paramDialogInterface != null) {
-      CmGameClientQIPCModule.a(paramDialogInterface.a.game.gameId);
-    }
-    paramDialogInterface = CmGameUtil.a();
-    if (paramDialogInterface != null)
+    if ((BaseActivity.sTopActivity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {}
+    for (;;)
     {
-      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
+      return;
+      try
+      {
+        Object localObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString);
+        Object localObject3 = ((JSONObject)localObject2).optString("agreement_url");
+        Object localObject1 = ((JSONObject)localObject2).optString("agreement_text");
+        String str3 = ((JSONObject)localObject2).optString("agreement_text_pre");
+        String str1 = ((JSONObject)localObject2).optString("agreement_title");
+        String str2 = ((JSONObject)localObject2).optString("agreement_guide");
+        Object localObject4 = ((JSONObject)localObject2).optString("returl");
+        String str4 = ((JSONObject)localObject2).optString("rbutton");
+        localObject2 = ((JSONObject)localObject2).optString("agreement_bgurl");
+        if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str4)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+        {
+          xfc localxfc = new xfc(this, (String)localObject4);
+          localObject4 = new SpannableString(str3 + (String)localObject1);
+          ((SpannableString)localObject4).setSpan(new ForegroundColorSpan(-7829368), 0, str3.length(), 33);
+          ((SpannableString)localObject4).setSpan(new ForegroundColorSpan(-16776961), str3.length(), str3.length() + ((String)localObject1).length(), 33);
+          localObject3 = new xfd(this, (String)localObject3);
+          int i = str3.length();
+          int j = str3.length();
+          ((SpannableString)localObject4).setSpan(localObject3, i, ((String)localObject1).length() + j, 33);
+          localObject1 = new ButtonInfo(str4, new ColorDrawable(-15550475), -1, localxfc);
+          GoldMsgChatHelper.a(BaseActivity.sTopActivity, str1, (String)localObject2, str2, (ButtonInfo)localObject1, (SpannableString)localObject4);
+          return;
+        }
       }
+      catch (JSONException localJSONException) {}
     }
   }
 }

@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameTouchView;
 
-public final class zzq
-  implements Parcelable.Creator
+public class zzq
+  implements Runnable
 {
-  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
-  {
-    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
-  }
+  public zzq(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
-  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  public void run()
   {
-    return new ARCommonConfigInfo.NativeSoRes[paramInt];
+    ARWorldCupGlobalSceneRenderable.a(this.a).c();
+    ARWorldCupGlobalSceneRenderable.a(this.a).setClickable(false);
+    ARWorldCupGlobalSceneRenderable.a(this.a).setVisibility(8);
   }
 }
 

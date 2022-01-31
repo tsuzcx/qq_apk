@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02042f" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02ef" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0402" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0404" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020439" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="40.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/image" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02ef" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b2b" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0572" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="150.0dip" android:maxLines="1" />
-    <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f1b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02ef" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11bb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0578" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11bc" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:maxLines="1" android:layout_centerVertical="true" />
+        <TextView android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="15.0dip" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11bd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="清空搜索历史" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

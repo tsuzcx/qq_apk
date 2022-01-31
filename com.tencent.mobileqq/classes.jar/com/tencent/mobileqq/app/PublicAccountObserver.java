@@ -3,8 +3,8 @@ package com.tencent.mobileqq.app;
 import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import java.util.ArrayList;
-import zgz;
-import zha;
+import zkf;
+import zkg;
 
 public class PublicAccountObserver
   implements BusinessObserver
@@ -39,7 +39,7 @@ public class PublicAccountObserver
   {
     if (100 == paramInt)
     {
-      paramObject = (zha)paramObject;
+      paramObject = (zkg)paramObject;
       a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
     }
     do
@@ -47,9 +47,9 @@ public class PublicAccountObserver
       return;
       if (101 == paramInt)
       {
-        if ((paramObject instanceof zgz))
+        if ((paramObject instanceof zkf))
         {
-          paramObject = (zgz)paramObject;
+          paramObject = (zkf)paramObject;
           b(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
           return;
         }
@@ -63,9 +63,9 @@ public class PublicAccountObserver
       }
       if (102 == paramInt)
       {
-        if ((paramObject instanceof zgz))
+        if ((paramObject instanceof zkf))
         {
-          paramObject = (zgz)paramObject;
+          paramObject = (zkf)paramObject;
           a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
           return;
         }

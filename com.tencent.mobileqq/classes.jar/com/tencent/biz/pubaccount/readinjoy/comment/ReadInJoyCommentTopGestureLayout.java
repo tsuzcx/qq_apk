@@ -10,8 +10,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import com.tencent.mobileqq.app.ThreadManager;
-import ljw;
-import ljx;
+import ljr;
+import ljs;
 import mqq.os.MqqHandler;
 
 public class ReadInJoyCommentTopGestureLayout
@@ -64,7 +64,7 @@ public class ReadInJoyCommentTopGestureLayout
         this.jdField_a_of_type_AndroidWidgetScroller.setFinalY(0);
       }
       Object localObject = this.jdField_a_of_type_AndroidViewView;
-      ThreadManager.getUIHandler().postDelayed(new ljw(this, (View)localObject), 32L);
+      ThreadManager.getUIHandler().postDelayed(new ljr(this, (View)localObject), 32L);
       localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment;
       if (this.jdField_a_of_type_Boolean) {}
       for (int i = 1;; i = 2)
@@ -137,7 +137,7 @@ public class ReadInJoyCommentTopGestureLayout
       }
     }
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { ((ViewGroup.LayoutParams)localObject).height, this.jdField_a_of_type_Int });
-    localValueAnimator.addUpdateListener(new ljx(this, (ViewGroup.LayoutParams)localObject));
+    localValueAnimator.addUpdateListener(new ljs(this, (ViewGroup.LayoutParams)localObject));
     localValueAnimator.setDuration(120L);
     localValueAnimator.start();
   }

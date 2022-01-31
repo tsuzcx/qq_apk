@@ -14,13 +14,12 @@ import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import nxp;
-import nxq;
+import nzb;
 
 public abstract class VideoListHomeFeed
   extends CommentLikeHomeFeed
 {
-  public static nxp a;
+  public static nzb a;
   private boolean a;
   protected HashSet c;
   protected List c;
@@ -29,7 +28,7 @@ public abstract class VideoListHomeFeed
   
   static
   {
-    jdField_a_of_type_Nxp = new nxp(null);
+    jdField_a_of_type_Nzb = new nzb(null);
   }
   
   public VideoListHomeFeed(@NonNull VideoListFeedItem paramVideoListFeedItem)
@@ -101,25 +100,28 @@ public abstract class VideoListHomeFeed
   
   public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
   {
-    boolean bool = true;
+    boolean bool1 = true;
     if (this.jdField_c_of_type_JavaUtilHashSet.contains(paramStoryVideoItem.mVid)) {
       this.jdField_c_of_type_JavaUtilList.remove(paramStoryVideoItem);
     }
     this.jdField_c_of_type_JavaUtilList.add(0, paramStoryVideoItem);
     this.jdField_c_of_type_JavaUtilHashSet.add(paramStoryVideoItem.mVid);
     this.jdField_a_of_type_Boolean = true;
+    boolean bool2;
     if (paramBoolean)
     {
-      paramBoolean = a(a().date);
+      bool2 = a(a().date);
+      SLog.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b before %s", Boolean.valueOf(bool2), this.jdField_c_of_type_JavaUtilList);
       paramStoryVideoItem = this.jdField_c_of_type_JavaUtilList;
-      if (paramBoolean) {
-        break label95;
+      if (bool2) {
+        break label129;
       }
     }
-    label95:
-    for (paramBoolean = bool;; paramBoolean = false)
+    label129:
+    for (paramBoolean = bool1;; paramBoolean = false)
     {
-      Collections.sort(paramStoryVideoItem, new nxq(paramBoolean));
+      Collections.sort(paramStoryVideoItem, new VideoListHomeFeed.StoryVideoListComp(paramBoolean));
+      SLog.b("Q.qqstory.home.data.VideoListHomeFeed", "sort today=%b after %s", Boolean.valueOf(bool2), this.jdField_c_of_type_JavaUtilList);
       return;
     }
   }
@@ -188,17 +190,17 @@ public abstract class VideoListHomeFeed
       }
     }
     paramBoolean = a(a().date);
-    if (!(a() instanceof TagFeedItem))
+    if ((!(a() instanceof TagFeedItem)) && (a().assignType() != 7))
     {
       paramList = this.jdField_c_of_type_JavaUtilList;
       if (paramBoolean) {
-        break label161;
+        break label173;
       }
     }
-    label161:
+    label173:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      Collections.sort(paramList, new nxq(paramBoolean));
+      Collections.sort(paramList, new VideoListHomeFeed.StoryVideoListComp(paramBoolean));
       return;
     }
   }

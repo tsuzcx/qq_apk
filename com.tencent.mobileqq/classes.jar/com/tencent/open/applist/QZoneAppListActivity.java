@@ -1,7 +1,7 @@
 package com.tencent.open.applist;
 
-import akpn;
-import akpp;
+import alfd;
+import alff;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -68,7 +68,7 @@ public class QZoneAppListActivity
       i = j;
       if (localPluginInfo.mState != 1)
       {
-        this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("qappcenter_plugin.apk", new akpn(this));
+        this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("qappcenter_plugin.apk", new alfd(this));
         i = j;
       }
     }
@@ -107,7 +107,7 @@ public class QZoneAppListActivity
   
   public void a(int paramInt)
   {
-    runOnUiThread(new akpp(this, paramInt));
+    runOnUiThread(new alff(this, paramInt));
   }
   
   public void a(String paramString, PluginBaseInfo paramPluginBaseInfo)
@@ -154,12 +154,12 @@ public class QZoneAppListActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131492923);
-    setContentView(2130969245);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362987));
+    getWindow().setBackgroundDrawableResource(2131492924);
+    setContentView(2130969246);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363005));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("0%");
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365285);
-    setTitle(2131428579);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365307);
+    setTitle(2131428585);
     updateAppRuntime();
     this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(26));
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(this);

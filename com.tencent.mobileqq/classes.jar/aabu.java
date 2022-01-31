@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManager;
-import com.tencent.mobileqq.ar.arengine.ARCamera;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.qphone.base.util.QLog;
+import android.opengl.GLES20;
+import com.tencent.mobileqq.ar.ARVideoUtil;
+import com.tencent.mobileqq.ar.keying.KeyingBase.UserInterface;
 
-public class aabu
-  implements Runnable
+class aabu
+  implements KeyingBase.UserInterface
 {
-  public aabu(AREngine paramAREngine, boolean paramBoolean) {}
+  aabu(aabt paramaabt) {}
   
-  public void run()
+  public void a()
   {
-    if ((AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != 3) || (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a == null))
-    {
-      QLog.i("AREngine_AREngine", 2, "cancel to close camera. next mCurCameraState = " + AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine));
-      return;
-    }
-    if ((AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null) && (this.jdField_a_of_type_Boolean)) {
-      AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).c();
-    }
-    if (AREngine.c(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a.a();
-    }
-    AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, false);
-    this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a.a();
-    if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != 3)
-    {
-      QLog.i("AREngine_AREngine", 2, "cancel to close camera. next mCurCameraState = " + AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine));
-      return;
-    }
-    AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, 0);
-    QLog.i("AREngine_AREngine", 2, "closeCamera successfully. mCurCameraState = " + AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine));
+    GLES20.glUniform1i(aabt.a(this.a), aabt.b(this.a));
+  }
+  
+  public void a(int paramInt)
+  {
+    aabt.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    ARVideoUtil.a("glGetUniformLocation uDisplayType");
   }
 }
 

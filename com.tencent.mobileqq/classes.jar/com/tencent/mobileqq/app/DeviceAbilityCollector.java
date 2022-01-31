@@ -1,14 +1,18 @@
 package com.tencent.mobileqq.app;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.os.PowerManager;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -40,91 +44,125 @@ public class DeviceAbilityCollector
     QLog.d("TAG", 2, "", paramContext);
   }
   
+  @SuppressLint({"WrongConstant"})
   private static void b(Context paramContext)
   {
-    boolean bool1 = false;
+    int j = 0;
     Object localObject1 = BluetoothAdapter.getDefaultAdapter();
     int i;
     if ((localObject1 != null) && (((BluetoothAdapter)localObject1).isEnabled())) {
-      if (((BluetoothAdapter)localObject1).getScanMode() == 23)
-      {
+      if (((BluetoothAdapter)localObject1).getScanMode() == 23) {
         i = 1;
-        i += 2;
       }
     }
-    for (;;)
+    for (int k = i + 2;; k = 0)
     {
-      int j;
       if (paramContext.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le")) {
-        if (Build.VERSION.SDK_INT >= 21)
-        {
-          j = 1;
-          label59:
-          j += 2;
+        if (Build.VERSION.SDK_INT >= 21) {
+          i = 1;
         }
       }
-      for (;;)
+      label58:
+      for (int m = i + 2;; m = 0)
       {
         localObject1 = (WifiManager)paramContext.getSystemService("wifi");
         Object localObject2;
-        int k;
         if ((localObject1 != null) && (((WifiManager)localObject1).isWifiEnabled()))
         {
           localObject2 = ((WifiManager)localObject1).getConnectionInfo();
-          if ((localObject2 != null) && (((WifiInfo)localObject2).getIpAddress() != 0))
-          {
-            k = 1;
-            label109:
-            k += 2;
+          if ((localObject2 != null) && (((WifiInfo)localObject2).getIpAddress() != 0)) {
+            i = 1;
           }
         }
-        for (;;)
-        {
+        label109:
+        for (int n = i + 2;; n = 0) {
           try
           {
             localObject2 = localObject1.getClass().getDeclaredMethod("isWifiApEnabled", new Class[0]);
             ((Method)localObject2).setAccessible(true);
-            boolean bool2 = ((Boolean)((Method)localObject2).invoke(localObject1, new Object[0])).booleanValue();
-            bool1 = bool2;
+            bool1 = ((Boolean)((Method)localObject2).invoke(localObject1, new Object[0])).booleanValue();
           }
-          catch (Throwable localThrowable)
+          catch (Throwable localThrowable2)
           {
-            continue;
+            try
+            {
+              if (Build.VERSION.SDK_INT >= 23)
+              {
+                boolean bool2 = ((PowerManager)BaseApplicationImpl.getApplication().getSystemService("power")).isIgnoringBatteryOptimizations("com.tencent.mobileqq");
+                i = j;
+                if (bool2) {
+                  i = 1;
+                }
+              }
+            }
+            catch (Throwable localThrowable2)
+            {
+              for (;;)
+              {
+                try
+                {
+                  boolean bool1;
+                  if (Build.VERSION.SDK_INT >= 24)
+                  {
+                    j = ((ConnectivityManager)BaseApplicationImpl.getApplication().getSystemService("connectivity")).getRestrictBackgroundStatus();
+                    if (QLog.isColorLevel())
+                    {
+                      localObject1 = new StringBuilder(30);
+                      ((StringBuilder)localObject1).append("report:").append(k);
+                      ((StringBuilder)localObject1).append(", ").append(m);
+                      ((StringBuilder)localObject1).append(", ").append(n);
+                      ((StringBuilder)localObject1).append(", ").append(bool1);
+                      ((StringBuilder)localObject1).append(", ").append(i);
+                      ((StringBuilder)localObject1).append(", ").append(Build.MODEL);
+                      ((StringBuilder)localObject1).append(", ").append(Build.MANUFACTURER);
+                      ((StringBuilder)localObject1).append(", ").append(j);
+                      QLog.d("DeviceAbilityCollector", 2, ((StringBuilder)localObject1).toString());
+                    }
+                    localObject2 = new HashMap(10);
+                    ((HashMap)localObject2).put("btStatus", k + "");
+                    ((HashMap)localObject2).put("btAbility", m + "");
+                    ((HashMap)localObject2).put("wifiStatus", n + "");
+                    if (bool1)
+                    {
+                      localObject1 = "1";
+                      ((HashMap)localObject2).put("hsEnabled", localObject1);
+                      ((HashMap)localObject2).put("osVersion", Build.VERSION.SDK_INT + "");
+                      ((HashMap)localObject2).put("ignoreBat", String.valueOf(i));
+                      ((HashMap)localObject2).put("model", Build.MODEL);
+                      ((HashMap)localObject2).put("manufacture", Build.MANUFACTURER);
+                      ((HashMap)localObject2).put("restrictBgStatus", String.valueOf(j));
+                      StatisticCollector.a(paramContext).a("", "actDeviceAbility", true, 0L, 0L, (HashMap)localObject2, "");
+                      return;
+                      i = 0;
+                      break;
+                      i = 0;
+                      break label58;
+                      i = 0;
+                      break label109;
+                      localThrowable1 = localThrowable1;
+                      bool1 = false;
+                      continue;
+                      localThrowable2 = localThrowable2;
+                      i = -1;
+                      j = -1;
+                      continue;
+                    }
+                    String str = "0";
+                    continue;
+                  }
+                }
+                catch (Throwable localThrowable3)
+                {
+                  continue;
+                  j = -1;
+                  continue;
+                }
+                i = -1;
+              }
+            }
           }
-          if (QLog.isColorLevel())
-          {
-            localObject1 = new StringBuilder(30);
-            ((StringBuilder)localObject1).append("report:").append(i);
-            ((StringBuilder)localObject1).append(", ").append(j);
-            ((StringBuilder)localObject1).append(", ").append(k);
-            ((StringBuilder)localObject1).append(", ").append(bool1);
-            QLog.d("DeviceAbilityCollector", 2, ((StringBuilder)localObject1).toString());
-          }
-          localObject2 = new HashMap(10);
-          ((HashMap)localObject2).put("btStatus", i + "");
-          ((HashMap)localObject2).put("btAbility", j + "");
-          ((HashMap)localObject2).put("wifiStatus", k + "");
-          if (bool1)
-          {
-            localObject1 = "1";
-            ((HashMap)localObject2).put("hsEnabled", localObject1);
-            ((HashMap)localObject2).put("osVersion", Build.VERSION.SDK_INT + "");
-            StatisticCollector.a(paramContext).a("", "actDeviceAbility", true, 0L, 0L, (HashMap)localObject2, "");
-            return;
-            i = 0;
-            break;
-            j = 0;
-            break label59;
-            k = 0;
-            break label109;
-          }
-          localObject1 = "0";
-          continue;
-          k = 0;
         }
-        j = 0;
       }
-      i = 0;
     }
   }
   
@@ -143,7 +181,7 @@ public class DeviceAbilityCollector
       k = (int)(FileUtils.b() / 1024.0F / 1024.0F);
       j = (int)(FileUtils.a() / 1024.0F / 1024.0F);
       if (Build.VERSION.SDK_INT < 9) {
-        break label368;
+        break label376;
       }
       localObject = FileUtils.a(paramContext);
       n = ((List)localObject).size();
@@ -152,7 +190,7 @@ public class DeviceAbilityCollector
       while (((Iterator)localObject).hasNext())
       {
         if (!((FileUtils.StorageInfo)((Iterator)localObject).next()).a) {
-          break label365;
+          break label373;
         }
         i += 1;
       }
@@ -179,9 +217,9 @@ public class DeviceAbilityCollector
       ((HashMap)localObject).put("ramSize", String.valueOf(i3));
       StatisticCollector.a(paramContext).a("", "actStorageStats", true, 0L, 0L, (HashMap)localObject, "");
       return;
-      label365:
+      label373:
       break;
-      label368:
+      label376:
       i = k;
       m = i1;
     }

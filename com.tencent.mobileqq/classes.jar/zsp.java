@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.mobileqq.app.qim.QIMUndecideNotifyDialog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.message.BaseMessageProcessorForTroopAndDisc;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class zsp
-  implements View.OnClickListener
+  implements Comparator
 {
-  public zsp(QIMUndecideNotifyDialog paramQIMUndecideNotifyDialog, ArrayList paramArrayList, int paramInt) {}
+  public zsp(BaseMessageProcessorForTroopAndDisc paramBaseMessageProcessorForTroopAndDisc) {}
   
-  public void onClick(View paramView)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    StoryPlayVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.a, paramView, this.jdField_a_of_type_JavaUtilArrayList, null, this.jdField_a_of_type_Int, 120, 1);
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 

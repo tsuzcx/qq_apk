@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.DrawerPushItem;
-import com.tencent.mobileqq.apollo.ApolloManager;
 import java.util.Comparator;
 
-public class yhc
+public final class yhc
   implements Comparator
 {
-  public yhc(ApolloManager paramApolloManager) {}
-  
-  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
+  public int a(String paramString1, String paramString2)
   {
-    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
-      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
-    }
-    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
+    if ("★".equals(paramString2)) {}
+    do
+    {
+      return 1;
+      if ("★".equals(paramString1)) {
+        return -1;
+      }
+      if ("#".equals(paramString2)) {
+        return -1;
+      }
+    } while ("#".equals(paramString1));
+    return paramString1.compareTo(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yhc
  * JD-Core Version:    0.7.0.1
  */

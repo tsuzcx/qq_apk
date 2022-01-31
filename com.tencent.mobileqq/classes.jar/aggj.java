@@ -1,39 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aggj
-  implements DialogInterface.OnClickListener
+public class aggj
+  implements Runnable
 {
-  aggj(aggi paramaggi, QQCustomDialog paramQQCustomDialog, long paramLong) {}
+  public aggj(ScanTorchActivity paramScanTorchActivity, ARRenderMangerInnerCallback paramARRenderMangerInnerCallback, ArVideoResourceInfo paramArVideoResourceInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    paramDialogInterface = QCallDetailActivity.a(this.jdField_a_of_type_Aggi.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-    long l = this.jdField_a_of_type_Long;
-    if (!this.jdField_a_of_type_Aggi.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      paramDialogInterface.a(l, bool);
-      QCallDetailActivity.a(this.jdField_a_of_type_Aggi.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a((byte)0);
-      return;
-      bool = false;
+    ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
+    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new aggk(this));
+    if (QLog.isColorLevel()) {
+      QLog.i("ScanTorchActivity", 2, "onMultiARAnimationInteraction 请点击屏幕进入下一动画片段！");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggj
  * JD-Core Version:    0.7.0.1
  */

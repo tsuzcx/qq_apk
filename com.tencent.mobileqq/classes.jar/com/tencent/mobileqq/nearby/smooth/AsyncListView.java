@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.smooth;
 
-import aezc;
+import afmi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnTouchListener;
@@ -13,7 +13,7 @@ public class AsyncListView
   extends FPSXListView
   implements AsyncAbsListView
 {
-  final aezc a = new aezc(this);
+  final afmi a = new afmi(this);
   
   public AsyncListView(Context paramContext)
   {

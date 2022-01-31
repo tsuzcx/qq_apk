@@ -26,6 +26,7 @@ public class TroopBarPublishUtils$PicUploadThread
   protected final ArrayList a;
   protected WeakReference a;
   protected boolean a;
+  protected String b;
   
   public TroopBarPublishUtils$PicUploadThread(BaseActivity paramBaseActivity, Handler paramHandler, ArrayList paramArrayList, String paramString)
   {
@@ -33,6 +34,16 @@ public class TroopBarPublishUtils$PicUploadThread
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = "2";
+  }
+  
+  public TroopBarPublishUtils$PicUploadThread(BaseActivity paramBaseActivity, Handler paramHandler, ArrayList paramArrayList, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramArrayList);
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
   private void a(int paramInt1, Object paramObject, int paramInt2, int paramInt3)
@@ -98,7 +109,7 @@ public class TroopBarPublishUtils$PicUploadThread
         else
         {
           HashMap localHashMap = new HashMap();
-          localHashMap.put("type", "2");
+          localHashMap.put("type", this.b);
           localObject = TroopBarUtils.a(this.jdField_a_of_type_JavaLangString, localBaseActivity, (String)localObject, str1, str2, localHashMap);
           if (localObject != null)
           {
@@ -120,7 +131,7 @@ public class TroopBarPublishUtils$PicUploadThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.PicUploadThread
  * JD-Core Version:    0.7.0.1
  */

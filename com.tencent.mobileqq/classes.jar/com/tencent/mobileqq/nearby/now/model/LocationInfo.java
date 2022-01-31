@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import aegk;
+import aetq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class LocationInfo
   implements Parcelable, Serializable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new aegk();
+  public static final Parcelable.Creator CREATOR = new aetq();
   public String address = "";
   public String city = "";
   boolean isForeign = false;

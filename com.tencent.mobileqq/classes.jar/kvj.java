@@ -1,40 +1,36 @@
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
 import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementStatistics;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class kvj
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+  implements FMDialogUtil.FMDialogInterface
 {
-  private kvj(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kvj(VideoCoverView paramVideoCoverView) {}
   
-  public void onComplete(String paramString1, String paramString2)
+  public void a()
   {
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    if (this.a.jdField_a_of_type_Int == 5) {
+      this.a.d();
+    }
     for (;;)
     {
-      synchronized (AdvertisementVideoPreloadManager.a(this.a))
-      {
-        AdvertisementVideoPreloadManager.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
-        paramString2 = new File(AdvertisementVideoPreloadManager.b(paramString1));
-        if (paramString2.exists()) {
-          paramString2.renameTo(new File(AdvertisementVideoPreloadManager.a(paramString1)));
-        }
-        ReportController.b(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", AdvertisementVideoPreloadManager.a(this.a).mVideoVid, String.valueOf(AdvertisementVideoPreloadManager.a(this.a).mSource));
-        paramString2 = (QQAppInterface)AdvertisementVideoPreloadManager.a(this.a).get();
-        if (paramString2 != null)
-        {
-          paramString2 = paramString2.getCurrentAccountUin();
-          AdvertisementStatistics.b(paramString2, paramString1);
-          AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
-          return;
-        }
-      }
-      paramString2 = "";
+      AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
+      return;
+      this.a.b(VideoCoverView.a(this.a));
     }
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_Int = 6;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    this.a.g();
+    AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
   }
 }
 

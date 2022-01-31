@@ -1,26 +1,31 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.WatermarkVideoRunnable;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TroopFilePicItemBuilder;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class vjv
-  implements DialogInterface.OnKeyListener
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public vjv(AIOGalleryScene paramAIOGalleryScene) {}
+  public long a;
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public PicProgressView a;
+  public BubbleImageView a;
+  public boolean a;
+  public int e;
+  public int f;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public vjv(TroopFilePicItemBuilder paramTroopFilePicItemBuilder)
   {
-    if (paramInt == 4)
-    {
-      this.a.o = true;
-      AIOGalleryScene.a(this.a).dismiss();
-      if (AIOGalleryScene.a(this.a) != null) {
-        AIOGalleryScene.a(this.a).a();
-      }
-    }
-    return false;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

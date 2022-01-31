@@ -1,47 +1,98 @@
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.opengl.effects.EffectController;
+import com.tencent.av.ui.AVEffectReport;
+import com.tencent.av.ui.EffectSettingBtn;
+import com.tencent.av.ui.EffectSettingUi;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class jtq
-  implements Runnable
+  implements View.OnClickListener
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  final int jdField_b_of_type_Int;
-  final String jdField_b_of_type_JavaLangString;
-  WeakReference jdField_b_of_type_JavaLangRefWeakReference;
+  public jtq(EffectSettingUi paramEffectSettingUi) {}
   
-  public jtq(String paramString1, VideoAppInterface paramVideoAppInterface, QavPanel paramQavPanel, String paramString2, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQavPanel);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoAppInterface);
-  }
-  
-  public void run()
-  {
-    boolean bool2 = false;
-    QavPanel localQavPanel = (QavPanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    VideoAppInterface localVideoAppInterface = (VideoAppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    String str = this.jdField_b_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("ShowEffectOperateRunnable, mQavPanel[");
-    if (localQavPanel != null) {}
-    for (boolean bool1 = true;; bool1 = false)
+    int i = paramView.getId();
+    paramView = paramView.getTag(2131362544);
+    if ((paramView != null) && ((paramView instanceof Boolean))) {}
+    for (boolean bool1 = ((Boolean)paramView).booleanValue();; bool1 = false)
     {
-      localStringBuilder = localStringBuilder.append(bool1).append("], mApp[");
-      bool1 = bool2;
-      if (localVideoAppInterface != null) {
-        bool1 = true;
+      int j = this.a.jdField_a_of_type_Int;
+      boolean bool2 = this.a.a(i, bool1);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EffectSettingUi", 4, "toolbar btn onClick, id[" + j + "->" + i + "], bFromPerformClick[" + bool1 + "], showSuc[" + bool2 + "]");
       }
-      QLog.w(str, 1, bool1 + "]");
-      if ((localQavPanel != null) && (localVideoAppInterface != null)) {
-        localQavPanel.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      if ((bool2) && (j != i)) {
+        this.a.a(Integer.valueOf(6105), Integer.valueOf(i));
       }
+      if (bool2)
+      {
+        paramView = VideoController.a().a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get());
+        if (paramView != null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("EffectSettingUi", 1, "onShow clear state");
+          }
+          paramView.d(i);
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(165), Integer.valueOf(1) });
+      if (j != i)
+      {
+        if (i != 1) {
+          break label306;
+        }
+        AVEffectReport.b((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().F, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool2);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("EffectSettingUi", 4, "[red dot] click qav_effect");
+        }
+      }
+      label306:
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                if (i != 2) {
+                  break;
+                }
+                AVEffectReport.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.a(), bool2);
+                if (this.a.jdField_a_of_type_ComTencentAvUiEffectSettingBtn != null) {
+                  this.a.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.a();
+                }
+              } while (!QLog.isDevelopLevel());
+              QLog.d("EffectSettingUi", 4, "[red dot] click qav_face");
+              return;
+              if (i != 4) {
+                break;
+              }
+              AVEffectReport.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().F, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool2);
+            } while (!QLog.isDevelopLevel());
+            QLog.d("EffectSettingUi", 4, "[red dot] click qav_beauty");
+            return;
+            if (i != 3) {
+              break;
+            }
+            AVEffectReport.a(this.a.a(), bool2);
+          } while (!QLog.isDevelopLevel());
+          QLog.d("EffectSettingUi", 4, "[red dot] click qav_doodle");
+          return;
+        } while (i != 5);
+        AVEffectReport.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().F, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool2);
+      } while (!QLog.isDevelopLevel());
+      QLog.d("EffectSettingUi", 4, "[red dot] click qav_voice_change");
       return;
     }
   }

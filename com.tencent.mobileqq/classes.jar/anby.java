@@ -1,29 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditSyncQzonePart;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.share.WXShareFromQZHelper.WXShareListener;
+import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
 
 public class anby
-  implements View.OnClickListener
+  implements WXShareFromQZHelper.WXShareListener
 {
-  public anby(EditSyncQzonePart paramEditSyncQzonePart) {}
+  public anby(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    paramView = this.a;
-    if (!EditSyncQzonePart.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
+    int i = 1;
+    int j = paramBaseResp.errCode;
+    if (j == 0)
     {
-      EditSyncQzonePart.a(paramView, bool);
-      EditSyncQzonePart.a(this.a, EditSyncQzonePart.a(this.a));
-      StoryConfigManager.c(EditSyncQzonePart.a(this.a));
+      i = 0;
+      paramBaseResp = "分享成功";
+      QZoneSharePictureJsPlugin.d(this.a, "分享成功");
+    }
+    for (;;)
+    {
+      QZoneSharePictureJsPlugin.a(this.a, QZoneSharePictureJsPlugin.a(this.a), i, paramBaseResp);
       return;
+      if (j == -2)
+      {
+        paramBaseResp = "取消分享";
+        QZoneSharePictureJsPlugin.d(this.a, "取消分享");
+      }
+      else
+      {
+        paramBaseResp = "分享失败";
+        QLog.e("QZoneSharePictureJsPlugin", 1, "wx share fail:" + j);
+        i = j;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anby
  * JD-Core Version:    0.7.0.1
  */

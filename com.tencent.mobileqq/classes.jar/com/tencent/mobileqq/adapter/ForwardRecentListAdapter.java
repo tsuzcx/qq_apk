@@ -27,7 +27,7 @@ import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import yea;
+import yhh;
 
 public class ForwardRecentListAdapter
   extends FacePreloadBaseAdapter
@@ -171,7 +171,7 @@ public class ForwardRecentListAdapter
           {
             localObject2 = localObject1;
             if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433983);
+              localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131434000);
             }
             localObject1 = localObject2;
             i = 101;
@@ -194,7 +194,7 @@ public class ForwardRecentListAdapter
   
   public void a(List paramList)
   {
-    ThreadManager.getSubThreadHandler().post(new yea(this, paramList));
+    ThreadManager.getSubThreadHandler().post(new yhh(this, paramList));
   }
   
   public int getCount()
@@ -216,11 +216,11 @@ public class ForwardRecentListAdapter
   {
     if (paramView == null)
     {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130971439, null);
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130971487, null);
       paramViewGroup = new ForwardRecentListAdapter.ForwardViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363873));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363878));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362701));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363896));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363901));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
       paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setClickable(false);
       paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setFocusable(false);
       paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setLongClickable(false);

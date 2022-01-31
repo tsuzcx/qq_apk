@@ -1,19 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 
 public class tbq
-  implements DialogInterface.OnDismissListener
 {
-  public tbq(PayBridgeActivity paramPayBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.qwallet.payPayBridgeActivity", 4, "finish dialog dismiss...");
-    }
-  }
+  public ResourcePluginInfo a;
+  public String a;
 }
 
 

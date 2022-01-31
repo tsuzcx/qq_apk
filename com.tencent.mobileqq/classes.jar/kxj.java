@@ -1,23 +1,47 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import android.os.Handler;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.gdtad.views.GdtUIUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class kxj
   implements Runnable
 {
-  public kxj(AdModuleBase paramAdModuleBase) {}
+  public kxj(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton != null)
+    if ((ReadInJoyNativeAdAppVideoView.a(this.a) != null) && (ReadInJoyNativeAdAppVideoView.a(this.a).isPlaying()))
     {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130838504);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.a.jdField_a_of_type_AndroidContentContext.getText(2131438675));
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-1);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(0);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(true);
+      long l = ReadInJoyNativeAdAppVideoView.a(this.a).getCurrentPostion();
+      ReadInJoyNativeAdAppVideoView.a(this.a, ReadInJoyNativeAdAppVideoView.a(this.a).getDuration());
+      int i = (int)((float)l * 1.0F * ReadInJoyNativeAdAppVideoView.b(this.a) / (float)ReadInJoyNativeAdAppVideoView.a(this.a) + 0.5D);
+      ReadInJoyNativeAdAppVideoView.a(this.a).setProgress(i);
+      ReadInJoyNativeAdAppVideoView.a(this.a).setText(GdtUIUtils.a(l));
+      ReadInJoyNativeAdAppVideoView.b(this.a).setText(GdtUIUtils.a(ReadInJoyNativeAdAppVideoView.a(this.a)));
+      if (ReadInJoyNativeAdAppVideoView.a(this.a) - l >= 50L) {
+        break label330;
+      }
+      if (!ReadInJoyNativeAdAppVideoView.a(this.a))
+      {
+        ReadInJoyNativeAdAppVideoView.a(this.a, (int)(ReadInJoyNativeAdAppVideoView.a(this.a) / 1000L));
+        ReadInJoyNativeAdAppVideoView.b(this.a, 1);
+        NativeAdUtils.a(ReadInJoyNativeAdAppVideoView.a(this.a), this.a.getContext(), NativeAdUtils.f, 9, ReadInJoyNativeAdAppVideoView.a(this.a), null, 0L, NativeAdUtils.a(ReadInJoyNativeAdAppVideoView.c(this.a), ReadInJoyNativeAdAppVideoView.d(this.a), ReadInJoyNativeAdAppVideoView.e(this.a), ReadInJoyNativeAdAppVideoView.f(this.a), ReadInJoyNativeAdAppVideoView.g(this.a), ReadInJoyNativeAdAppVideoView.h(this.a), (int)(ReadInJoyNativeAdAppVideoView.a(this.a) / 1000L), NativeAdUtils.t));
+        ReadInJoyNativeAdAppVideoView.c(this.a, 0);
+        ReadInJoyNativeAdAppVideoView.d(this.a, 1);
+        ReadInJoyNativeAdAppVideoView.b(this.a, 0);
+        ReadInJoyNativeAdAppVideoView.a(this.a, true);
+      }
     }
-    this.a.c = 0;
+    for (;;)
+    {
+      ReadInJoyNativeAdAppVideoView.a(this.a).postDelayed(this, 50L);
+      return;
+      label330:
+      ReadInJoyNativeAdAppVideoView.a(this.a, false);
+    }
   }
 }
 

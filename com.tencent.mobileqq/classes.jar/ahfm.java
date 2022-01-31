@@ -1,23 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import com.tencent.mobileqq.redtouch.RedTypeInfo;
 
-class ahfm
-  implements Runnable
+public final class ahfm
+  implements Parcelable.Creator
 {
-  ahfm(ahfl paramahfl, boolean paramBoolean) {}
-  
-  public void run()
+  public RedDisplayInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Ahfl.a.c.setVisibility(8);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ahfl.a.b != null) && (this.jdField_a_of_type_Ahfl.a.b.size() > 0)) {
-      this.jdField_a_of_type_Ahfl.a.b(true);
-    }
+    RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
+    localRedDisplayInfo.a = paramParcel.readArrayList(RedTypeInfo.class.getClassLoader());
+    RedDisplayInfo.a(localRedDisplayInfo, (RedTypeInfo)paramParcel.readSerializable());
+    return localRedDisplayInfo;
+  }
+  
+  public RedDisplayInfo[] a(int paramInt)
+  {
+    return new RedDisplayInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahfm
  * JD-Core Version:    0.7.0.1
  */

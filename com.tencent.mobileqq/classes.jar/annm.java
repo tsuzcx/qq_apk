@@ -1,15 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.ContainerDrawable;
+import dov.com.qq.im.capture.poi.FacePoiUI;
 
-public class annm
-  implements ValueAnimator.AnimatorUpdateListener
+class annm
+  implements Runnable
 {
-  public annm(ContainerDrawable paramContainerDrawable) {}
+  annm(annl paramannl) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.invalidateSelf();
+    FacePoiUI.a(this.a.a, 0);
   }
 }
 

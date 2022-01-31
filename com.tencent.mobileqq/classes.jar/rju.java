@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 
 public class rju
   implements Runnable
 {
-  public rju(AssociatedAccountActivity paramAssociatedAccountActivity, boolean paramBoolean) {}
+  public rju(AddRequestActivity paramAddRequestActivity) {}
   
   public void run()
   {
-    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity, this.jdField_a_of_type_Boolean);
+    Card localCard = ((FriendsManager)this.a.app.getManager(50)).a(this.a.a);
+    this.a.runOnUiThread(new rjv(this, localCard));
   }
 }
 

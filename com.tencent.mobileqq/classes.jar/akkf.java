@@ -1,65 +1,23 @@
-import android.content.res.Resources;
-import android.os.Message;
-import android.os.SystemClock;
-import android.widget.Button;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vashealth.SportManager;
+import mqq.observer.BusinessObserver;
 
 public class akkf
-  implements Runnable
+  implements BusinessObserver
 {
-  public akkf(AuthorityActivity paramAuthorityActivity) {}
+  public akkf(SportManager paramSportManager) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = this.a;
-    int i = ((AuthorityActivity)localObject).jdField_b_of_type_Int;
-    ((AuthorityActivity)localObject).jdField_b_of_type_Int = (i - 1);
-    if (i > 0)
-    {
-      localObject = (String)this.a.getResources().getText(2131435595);
-      AuthorityActivity localAuthorityActivity = this.a;
-      i = localAuthorityActivity.c;
-      localAuthorityActivity.c = (i + 1);
-      switch (i % 3)
-      {
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 500L);
-        return;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "·  ");
-        continue;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "·· ");
-        continue;
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "···");
-      }
+    if (paramBoolean) {
+      ThreadManager.post(new akkg(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
     }
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.a.h = true;
-    this.a.i = false;
-    if (this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SDKQQAgentPref", 2, "AutoAuth:" + SystemClock.elapsedRealtime());
-      }
-      localObject = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-      ((Message)localObject).what = 1;
-      ((Message)localObject).obj = this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse;
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject);
-      this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKQQAgentPref", 2, "AutoAuth -- doAuthorize(): " + SystemClock.elapsedRealtime());
-    }
-    this.a.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akkf
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
-import lad;
+import kzo;
 
 public class VideoShareUtils
 {
@@ -66,7 +66,7 @@ public class VideoShareUtils
       {
         int i;
         if (!WXShareHelper.a().a()) {
-          i = 2131435302;
+          i = 2131435319;
         }
         for (;;)
         {
@@ -78,15 +78,15 @@ public class VideoShareUtils
             }
             return;
             if (!WXShareHelper.a().b()) {
-              i = 2131435303;
+              i = 2131435320;
             }
           }
           else
           {
             paramString2 = String.valueOf(System.currentTimeMillis());
-            Object localObject = new lad(paramString2);
+            Object localObject = new kzo(paramString2);
             WXShareHelper.a().a((WXShareHelper.WXShareListener)localObject);
-            if (ReadInJoyHelper.t(ReadInJoyUtils.a()) == 1)
+            if (ReadInJoyHelper.u(ReadInJoyUtils.a()) == 1)
             {
               localObject = WXShareHelper.a();
               paramBitmap = a(paramBitmap);

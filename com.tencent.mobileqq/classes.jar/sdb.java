@@ -1,22 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.DBUtils;
 
-class sdb
+public class sdb
   implements Runnable
 {
-  sdb(sda paramsda, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public sdb(ChatSettingForTroop paramChatSettingForTroop, String paramString) {}
   
   public void run()
   {
-    Message localMessage = this.jdField_a_of_type_Sda.a.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage();
-    localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper;
-    this.jdField_a_of_type_Sda.a.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(22, 2);
-    this.jdField_a_of_type_Sda.a.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(22, localMessage);
-    ReportController.b(this.jdField_a_of_type_Sda.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008658", "0X8008658", 0, 0, "", "", "", "");
+    DBUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
+    DBUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getCurrentAccountUin(), "troop_game_last_visit_time", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.m);
   }
 }
 

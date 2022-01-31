@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
+import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
 
-public class wju
-  extends View.AccessibilityDelegate
+class wju
+  implements Runnable
 {
-  public wju(ContactsBaseFragment paramContactsBaseFragment) {}
+  wju(wjt paramwjt) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void run()
   {
-    int i = paramInt;
-    if (paramInt == 8) {
-      i = 32768;
-    }
-    super.sendAccessibilityEvent(paramView, i);
+    this.a.a.a.c();
   }
 }
 

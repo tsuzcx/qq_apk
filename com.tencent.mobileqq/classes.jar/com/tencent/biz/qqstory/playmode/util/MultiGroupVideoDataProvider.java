@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.playmode.util;
 import android.os.Handler;
 import android.os.Looper;
 import java.util.ArrayList;
-import nlg;
+import nmq;
 
 public abstract class MultiGroupVideoDataProvider
 {
@@ -35,7 +35,7 @@ public abstract class MultiGroupVideoDataProvider
   {
     try
     {
-      new Handler(Looper.getMainLooper()).post(new nlg(this, paramVideoData));
+      new Handler(Looper.getMainLooper()).post(new nmq(this, paramVideoData));
       return;
     }
     finally

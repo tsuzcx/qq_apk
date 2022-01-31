@@ -1,26 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
-class sfk
-  implements DialogInterface.OnClickListener
+public class sfk
+  extends FlingGestureHandler
 {
-  sfk(sfj paramsfj) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public sfk(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
   {
-    if (this.a.a.a() != null)
-    {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://myun.tenpay.com/mqq/auth/index.shtml?_wv=1027&from=36");
-      this.a.a.a().startActivity(localIntent);
+    super(paramActivity);
+  }
+  
+  public void flingLToR()
+  {
+    if (!this.a.a) {
+      super.flingLToR();
     }
-    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.qzone.remote.logic;
 
 import NS_QMALL_COVER.AlbumThemeSkin;
-import amii;
+import amyn;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -241,7 +241,7 @@ public class RemoteRequestSender
     localBundle.putInt("param.actionExpectation", paramInt2);
     localBundle.putLong("costTime", paramLong1);
     localBundle.putLong("error_code", paramLong2);
-    ThreadManager.post(new amii(this, localBundle), 2, null, false);
+    ThreadManager.post(new amyn(this, localBundle), 2, null, false);
   }
   
   public int b()

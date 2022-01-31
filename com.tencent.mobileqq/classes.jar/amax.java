@@ -1,20 +1,23 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import cooperation.qqreader.VipProxyRreLoadReaderProcess;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.DynamicGridView;
 
 public class amax
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public amax(VipProxyRreLoadReaderProcess paramVipProxyRreLoadReaderProcess, AppRuntime paramAppRuntime) {}
+  public amax(DynamicGridView paramDynamicGridView) {}
   
-  public void run()
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    HtmlOffline.b("354", this.jdField_a_of_type_MqqAppAppRuntime, true, new amay(this));
+    if ((!this.a.a()) && (this.a.isEnabled()) && (DynamicGridView.a(this.a) != null)) {
+      DynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amax
  * JD-Core Version:    0.7.0.1
  */

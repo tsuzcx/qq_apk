@@ -46,9 +46,9 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.xml.sax.InputSource;
-import yzn;
-import yzo;
-import yzp;
+import zct;
+import zcu;
+import zcv;
 
 public class DeviceProfileManager
 {
@@ -62,7 +62,7 @@ public class DeviceProfileManager
   private static Field[] jdField_a_of_type_ArrayOfJavaLangReflectField;
   public static boolean b;
   public int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new yzn(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new zct(this);
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   private HashMap b;
@@ -773,7 +773,7 @@ public class DeviceProfileManager
   {
     try
     {
-      ThreadManager.getSubThreadHandler().post(new yzo(this, paramRespGetConfig, paramString));
+      ThreadManager.getSubThreadHandler().post(new zcu(this, paramRespGetConfig, paramString));
       return true;
     }
     finally
@@ -850,11 +850,11 @@ public class DeviceProfileManager
   
   public boolean a(String paramString, HashMap paramHashMap)
   {
-    QLog.i("DeviceProfileManager", 1, "dpcStart{" + SecUtil.xor(paramString, "7.6.0") + "}dpcEnd");
+    QLog.i("DeviceProfileManager", 1, "dpcStart{" + SecUtil.xor(paramString, "7.6.3") + "}dpcEnd");
     if ((paramString == null) || (paramString.length() == 0)) {
       return false;
     }
-    paramHashMap = new yzp(paramHashMap);
+    paramHashMap = new zcv(paramHashMap);
     try
     {
       SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes("utf-8"))), paramHashMap);

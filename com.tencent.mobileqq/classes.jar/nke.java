@@ -1,21 +1,15 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.TagStoryVidListPlayMode;
+import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
 import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import java.util.ArrayList;
 
-class nke
+public class nke
   implements Runnable
 {
-  nke(nkd paramnkd, ArrayList paramArrayList) {}
+  public nke(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nkd.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.setVisibility(8);
-    this.jdField_a_of_type_Nkd.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Nkd.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_Nkd.a.jdField_a_of_type_AndroidOsHandler.post(new nkf(this));
+    this.a.e = false;
+    this.a.a.setCurrentItem(this.a.b, false);
   }
 }
 

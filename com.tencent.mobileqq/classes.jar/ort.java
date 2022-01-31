@@ -1,27 +1,16 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class ort
-  implements Runnable
+public class ort
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ort(ors paramors, String paramString) {}
+  public ort(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_Ors.a.isFinishing()) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    localBundle.putString("forward_filepath", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
-    Intent localIntent = new Intent();
-    localIntent.putExtras(localBundle);
-    ForwardBaseOption.a(this.jdField_a_of_type_Ors.a, localIntent, 21);
+    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

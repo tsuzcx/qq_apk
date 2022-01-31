@@ -30,15 +30,15 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mll;
-import mlm;
+import mmw;
+import mmx;
 
 public class WebFastAdapter
   extends BaseAdapter
   implements OnItemClickListener
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new mlm(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new mmx(this);
   private BaseItemViewHolder jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder;
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
@@ -111,11 +111,11 @@ public class WebFastAdapter
         if (((BaseData)localObject).d == 3)
         {
           localObject = (ImageData)localObject;
-          this.jdField_a_of_type_JavaUtilArrayList.add(ReadInJoyUtils.f(((ImageData)localObject).a));
+          this.jdField_a_of_type_JavaUtilArrayList.add(ReadInJoyUtils.g(((ImageData)localObject).a));
         }
       }
     }
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(ReadInJoyUtils.f(((ImageData)paramBaseData).a));
+    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(ReadInJoyUtils.g(((ImageData)paramBaseData).a));
     TroopNoticeJsHandler.a((Activity)this.jdField_a_of_type_AndroidContentContext, i, this.jdField_a_of_type_JavaUtilArrayList, true, "", 1000);
   }
   
@@ -124,7 +124,7 @@ public class WebFastAdapter
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder = paramBaseItemViewHolder;
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     localQQCustomMenu.a(0, "复制");
-    BubbleContextMenu.a(paramBaseItemViewHolder.jdField_a_of_type_AndroidViewView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new mll(this, paramBaseItemViewHolder));
+    BubbleContextMenu.a(paramBaseItemViewHolder.jdField_a_of_type_AndroidViewView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new mmw(this, paramBaseItemViewHolder));
   }
   
   public int getCount()

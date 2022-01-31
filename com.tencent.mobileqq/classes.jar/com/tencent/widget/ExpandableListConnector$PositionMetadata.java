@@ -1,13 +1,13 @@
 package com.tencent.widget;
 
-import allu;
+import ambk;
 import java.util.ArrayList;
 
 public class ExpandableListConnector$PositionMetadata
 {
   private static ArrayList a;
   public int a;
-  public allu a;
+  public ambk a;
   public ExpandableListConnector.GroupMetadata a;
   
   static
@@ -33,7 +33,7 @@ public class ExpandableListConnector$PositionMetadata
   static PositionMetadata a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
   {
     PositionMetadata localPositionMetadata = a();
-    localPositionMetadata.jdField_a_of_type_Allu = allu.a(paramInt2, paramInt3, paramInt4, paramInt1);
+    localPositionMetadata.jdField_a_of_type_Ambk = ambk.a(paramInt2, paramInt3, paramInt4, paramInt1);
     localPositionMetadata.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
     localPositionMetadata.jdField_a_of_type_Int = paramInt5;
     return localPositionMetadata;
@@ -41,7 +41,7 @@ public class ExpandableListConnector$PositionMetadata
   
   private void b()
   {
-    this.jdField_a_of_type_Allu = null;
+    this.jdField_a_of_type_Ambk = null;
     this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
     this.jdField_a_of_type_Int = 0;
   }
@@ -64,7 +64,7 @@ public class ExpandableListConnector$PositionMetadata
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.ExpandableListConnector.PositionMetadata
  * JD-Core Version:    0.7.0.1
  */

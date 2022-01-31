@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia;
 
-import agsj;
-import agsk;
-import agsl;
+import ahgl;
+import ahgm;
+import ahgn;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -17,7 +17,7 @@ public class RichmediaClient
   implements RichmediaIPCConstants
 {
   static volatile RichmediaClient jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaClient;
-  agsl jdField_a_of_type_Agsl;
+  ahgn jdField_a_of_type_Ahgn;
   ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public Messenger a;
@@ -31,10 +31,10 @@ public class RichmediaClient
     LOG.a("PTV.RichmediaClient", "RichmediaClient");
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("RichmediaClientWorkerThread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Agsl = new agsl(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Agsl);
-    this.jdField_a_of_type_AndroidContentServiceConnection = new agsj(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaICallBack = new agsk(this);
+    this.jdField_a_of_type_Ahgn = new ahgn(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Ahgn);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new ahgl(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaICallBack = new ahgm(this);
   }
   
   public static RichmediaClient a()

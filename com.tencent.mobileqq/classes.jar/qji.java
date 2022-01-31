@@ -1,25 +1,30 @@
-import com.tencent.gdtad.qqproxy.GdtLocationUtil;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.gamecenter.common.util.ReportInfoManager;
+import com.tencent.gamecenter.common.util.TrafficStatistics;
 
 public class qji
-  extends SosoInterface.OnLocationListener
+  extends Handler
 {
-  public qji(GdtLocationUtil paramGdtLocationUtil, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public qji(ReportInfoManager paramReportInfoManager, long paramLong) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {
-      this.a.mLocation = paramSosoLbsInfo.a;
+    super.handleMessage(paramMessage);
+    if (paramMessage == null) {
+      return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    TrafficStatistics.a("post report", this.jdField_a_of_type_Long, (short)1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     qji
  * JD-Core Version:    0.7.0.1
  */

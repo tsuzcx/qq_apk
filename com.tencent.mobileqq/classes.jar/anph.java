@@ -1,37 +1,15 @@
-import android.animation.Animator;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowPlusPanel;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class anph
-  extends anpd
+  implements DialogInterface.OnClickListener
 {
-  public anph(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public anph(MusicProviderView paramMusicProviderView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
-    }
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel != null) {
-      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel.a();
-    }
-    this.a.k();
-    this.a.e.setVisibility(4);
-    this.a.e.setPadding(0, 0, 0, 0);
-    if ((this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.y();
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

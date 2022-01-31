@@ -1,16 +1,26 @@
-import android.os.Bundle;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.av.ui.redbag.RedBagUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
-class joc
+public class joc
   implements Runnable
 {
-  joc(jnz paramjnz, Bundle paramBundle) {}
+  public joc(SmallScreenDoubleVideoControlUI paramSmallScreenDoubleVideoControlUI) {}
   
   public void run()
   {
-    RedBagUtil.a((QQAppInterface)this.jdField_a_of_type_Jnz.a.a(), this.jdField_a_of_type_AndroidOsBundle);
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
+    {
+      SessionInfo localSessionInfo = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a(localSessionInfo.c, 0);
+      this.a.jdField_a_of_type_ComTencentAvVideoController.b(225);
+      this.a.jdField_a_of_type_ComTencentAvVideoController.c(localSessionInfo.c, 9);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), localSessionInfo.c, Boolean.valueOf(true) });
+      QLog.d("SmallScreenDoubleVideoControlUI", 1, "exit when onCreate fail");
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1008);
+    }
   }
 }
 

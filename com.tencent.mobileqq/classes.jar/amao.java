@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqpim.QQPimTipsInfo;
+import com.tencent.widget.AdapterView;
 
-public final class amao
-  implements Parcelable.Creator
+public class amao
+  implements Runnable
 {
-  public QQPimTipsInfo a(Parcel paramParcel)
-  {
-    return new QQPimTipsInfo(paramParcel, null);
-  }
+  private amao(AdapterView paramAdapterView) {}
   
-  public QQPimTipsInfo[] a(int paramInt)
+  public void run()
   {
-    return new QQPimTipsInfo[paramInt];
+    if (this.a.mDataChanged)
+    {
+      if (this.a.getAdapter() != null) {
+        this.a.post(this);
+      }
+      return;
+    }
+    AdapterView.access$200(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amao
  * JD-Core Version:    0.7.0.1
  */

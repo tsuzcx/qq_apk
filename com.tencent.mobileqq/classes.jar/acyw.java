@@ -1,19 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
+import com.tencent.qphone.base.util.QLog;
 
 public class acyw
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public acyw(QfileEditBottomBar paramQfileEditBottomBar, ActionSheet paramActionSheet) {}
+  public acyw(QfavFilePreviewController paramQfavFilePreviewController) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    ThreadManager.executeOnFileThread(new acyx(this));
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (3 != QfavFilePreviewController.b(this.a))
+    {
+      this.a.a.a(false, QfavFilePreviewController.a(this.a), String.valueOf(QfavFilePreviewController.a(this.a)), QfavFilePreviewController.a(this.a), null, QfavFilePreviewController.b(this.a), null, QfavFilePreviewController.c(this.a));
+      QfavFilePreviewController.b(this.a, 3);
+      if (QLog.isColorLevel()) {
+        QLog.i("QfavFilePreviewController", 2, "QfavFilePreviewController.run:wait for remote command timeout(5min).");
+      }
     }
   }
 }

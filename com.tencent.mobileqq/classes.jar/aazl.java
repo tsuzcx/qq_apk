@@ -1,16 +1,13 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class aazl
   implements Runnable
 {
-  aazl(aazk paramaazk, Bitmap paramBitmap) {}
+  aazl(aazj paramaazj) {}
   
   public void run()
   {
-    ((ImageView)this.jdField_a_of_type_Aazk.a.b.findViewById(2131369509)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    ReportController.b(null, "dc01440", "", "", "0X800784A", "0X800784A", 0, 0, "", "", "", "");
   }
 }
 

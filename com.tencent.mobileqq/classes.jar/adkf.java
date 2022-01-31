@@ -1,49 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.pic.PicResult;
+import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-public class adkf
-  extends Handler
+class adkf
+  extends UiCallBack.DownAdapter
 {
-  public adkf(HuayangJsPlugin paramHuayangJsPlugin, Looper paramLooper)
+  adkf(adke paramadke, MessageForPic paramMessageForPic) {}
+  
+  public void a(int paramInt, PicResult paramPicResult)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Adke.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a.setProgressBarVisibility(8);
+    paramPicResult = AbsDownloader.d(URLDrawableHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
+    }
+    ForwardBaseOption.a(this.jdField_a_of_type_Adke.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramPicResult, this.jdField_a_of_type_Adke.jdField_a_of_type_JavaLangString);
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.arg1;
-    if (i > 90) {
-      return;
-    }
-    HuayangJsPlugin.a(this.a, "STATE_Loading:" + i);
-    paramMessage = new JSONObject();
-    try
-    {
-      paramMessage.putOpt("state", Integer.valueOf(4));
-      paramMessage.putOpt("totalSize", Integer.valueOf(100));
-      paramMessage.putOpt("pro", Integer.valueOf(i));
-      this.a.callJs(this.a.a, new String[] { paramMessage.toString() });
-      paramMessage = Message.obtain();
-      paramMessage.arg1 = (i + 5);
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
+  public void a(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkf
  * JD-Core Version:    0.7.0.1
  */

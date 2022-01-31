@@ -1,25 +1,38 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-public class vbg
-  implements URLDrawable.DownloadListener
+public final class vbg
+  implements DialogInterface.OnClickListener
 {
-  public vbg(ReplyTextItemBuilder paramReplyTextItemBuilder, MessageForReplyText paramMessageForReplyText, vbp paramvbp, URLDrawable paramURLDrawable) {}
+  public vbg(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mIsPlayedPicCommentAnimate) && (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a instanceof MultiForwardActivity)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.uniseq))) {
-      ThreadManager.getUIHandler().post(new vbh(this));
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
+    {
+      bool = true;
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
+      if (7 != this.jdField_a_of_type_Int) {
+        break label74;
+      }
+      MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
     }
+    label74:
+    while (6 != this.jdField_a_of_type_Int)
+    {
+      return;
+      bool = false;
+      break;
+    }
+    MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_collect_more", 0);
   }
 }
 

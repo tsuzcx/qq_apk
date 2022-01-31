@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import ahnj;
-import ahnk;
+import aibl;
+import aibm;
 import android.annotation.TargetApi;
 import android.opengl.EGL14;
 import android.opengl.GLES20;
@@ -258,8 +258,8 @@ public class QQPtvVideoFilter
           FabbyManager.setModelPath(str);
           long l = System.currentTimeMillis();
           this.jdField_a_of_type_ComTencentTtpicThreadSegmentGLThread = new SegmentGLThread(EGL14.eglGetCurrentContext());
-          this.jdField_a_of_type_ComTencentTtpicThreadSegmentGLThread.setOnDataReadyListener(new ahnj(this));
-          a(new ahnk(this));
+          this.jdField_a_of_type_ComTencentTtpicThreadSegmentGLThread.setOnDataReadyListener(new aibl(this));
+          a(new aibm(this));
           if (SLog.a()) {
             SLog.d("QQPtvVideoFilter", "initSegmentGLThread create, cost:" + (float)(System.currentTimeMillis() - l) / 1000.0F);
           }
@@ -361,7 +361,7 @@ public class QQPtvVideoFilter
         {
           if (this.jdField_a_of_type_ComTencentTtpicThreadSegmentGLThread == null)
           {
-            if (!SoLoader.e()) {
+            if (!SoLoader.f()) {
               break label1092;
             }
             j();
@@ -614,7 +614,7 @@ public class QQPtvVideoFilter
   
   public void d()
   {
-    if ((SoLoader.e()) && (a().d())) {
+    if ((SoLoader.f()) && (a().d())) {
       j();
     }
   }

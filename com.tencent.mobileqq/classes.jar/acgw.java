@@ -1,29 +1,28 @@
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.provider.MediaStore.Images.Media;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
-import cooperation.weiyun.utils.PreferenceUtils;
-import cooperation.weiyun.utils.SoHelper;
-import mqq.app.AppRuntime;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
 
 public class acgw
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public acgw(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
+  public acgw(StickerGestureDetector paramStickerGestureDetector) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!SoHelper.a(this.a.getApplicationContext()))
+    if (this.a.a != null)
     {
-      Cursor localCursor = this.a.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_data" }, null, null, "bucket_display_name");
-      if (localCursor != null)
-      {
-        int i = localCursor.getCount();
-        PreferenceUtils.a(this.a.getApplicationContext(), this.a.getAppRuntime().getAccount(), "sp_un_backup_photo_num", Integer.toString(i));
-        localCursor.close();
-      }
+      float f = this.a.a.getTranslationX();
+      this.a.a.setTranslationX(0.0F);
+      this.a.a((int)(this.a.a.getLeft() + f), this.a.a.getTop(), (int)(f + this.a.a.getLeft() + this.a.a.getWidth()), this.a.a.getBottom());
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

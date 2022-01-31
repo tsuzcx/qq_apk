@@ -1,31 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.ttpic.util.VideoPrefsUtil;
-import com.tencent.ttpic.util.youtu.VideoFaceDetector;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import com.tencent.mobileqq.newfriend.PhoneContactAddMessage;
 
-public final class yhy
-  implements EIPCResultCallback
+public class yhy
+  implements Runnable
 {
-  public yhy(ApolloRender paramApolloRender) {}
+  public yhy(NewFriendMoreSysMsgAdapter paramNewFriendMoreSysMsgAdapter, NewFriendMessage paramNewFriendMessage) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    VideoPrefsUtil.init(BaseApplicationImpl.getContext());
-    VideoGlobalContext.setContext(BaseApplicationImpl.getContext());
-    if (PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), false))
-    {
-      this.a.mDetector = new VideoFaceDetector(PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), null));
-      this.a.mDetector.init();
-    }
+    ((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.a.getManager(10)).a(((PhoneContactAddMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.a.runOnUiThread(new yhz(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yhy
  * JD-Core Version:    0.7.0.1
  */

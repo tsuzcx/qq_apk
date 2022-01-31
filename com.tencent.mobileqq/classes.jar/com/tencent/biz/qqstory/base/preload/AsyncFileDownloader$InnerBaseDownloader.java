@@ -6,8 +6,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import myp;
-import myq;
+import naa;
+import nab;
 
 public class AsyncFileDownloader$InnerBaseDownloader
   implements AsyncFileDownloader.InnerDownloader
@@ -16,7 +16,7 @@ public class AsyncFileDownloader$InnerBaseDownloader
   
   protected AsyncFileDownloader$InnerBaseDownloader(AsyncFileDownloader paramAsyncFileDownloader)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new myq(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new nab(this);
   }
   
   protected INetEngine a()
@@ -38,7 +38,7 @@ public class AsyncFileDownloader$InnerBaseDownloader
     localHttpNetReq.a(paramDownloadTask);
     localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
     paramDownloadTask.a = localHttpNetReq;
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new myp(this);
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new naa(this);
     a().a(localHttpNetReq);
     SLog.a("AsyncFileDownloader", "start download with base downloader, task = %s", paramDownloadTask);
   }

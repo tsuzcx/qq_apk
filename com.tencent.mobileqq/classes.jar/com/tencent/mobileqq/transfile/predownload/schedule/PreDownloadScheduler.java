@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile.predownload.schedule;
 
-import aief;
-import aieg;
+import aisi;
+import aisj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -33,11 +33,11 @@ public class PreDownloadScheduler
 {
   private double jdField_a_of_type_Double = 0.0D;
   private long jdField_a_of_type_Long;
-  private aieg jdField_a_of_type_Aieg = new aieg(null);
+  private aisj jdField_a_of_type_Aisj = new aisj(null);
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PreDownloadItem jdField_a_of_type_ComTencentMobileqqTransfilePredownloadSchedulePreDownloadItem;
-  private FPSCalculator.GetFPSListener jdField_a_of_type_ComTencentMobileqqUtilFPSCalculator$GetFPSListener = new aief(this);
+  private FPSCalculator.GetFPSListener jdField_a_of_type_ComTencentMobileqqUtilFPSCalculator$GetFPSListener = new aisi(this);
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
@@ -261,7 +261,7 @@ public class PreDownloadScheduler
     int m;
     if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadSchedulePreDownloadItem == null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Aieg);
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Aisj);
       k = a();
       m = NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
       if (m != 0) {
@@ -814,7 +814,7 @@ public class PreDownloadScheduler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadScheduler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.util.InputMethodUtil;
 
-class aizb
+public class aizb
   implements Runnable
 {
-  aizb(aiza paramaiza) {}
+  public aizb(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
-    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.a.jdField_a_of_type_Boolean);
+    InputMethodUtil.a(this.a.jdField_a_of_type_AndroidWidgetEditText);
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setSelected(false);
+    this.a.c.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aizb
  * JD-Core Version:    0.7.0.1
  */

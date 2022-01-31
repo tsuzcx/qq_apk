@@ -1,28 +1,41 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.BaseVideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
 public class mas
-  implements View.OnSystemUiVisibilityChangeListener
+  extends MqqHandler
 {
-  public mas(VideoFeedsCommentManager paramVideoFeedsCommentManager) {}
+  public mas(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    ReadInJoyCommentListFragment localReadInJoyCommentListFragment;
-    if (VideoFeedsCommentManager.a(this.a) != null)
+    switch (paramMessage.what)
     {
-      localReadInJoyCommentListFragment = VideoFeedsCommentManager.a(this.a);
-      if ((paramInt & 0x2) != 0) {
-        break label32;
-      }
     }
-    label32:
-    for (boolean bool = true;; bool = false)
+    do
     {
-      localReadInJoyCommentListFragment.d_(bool);
       return;
-    }
+      QQToast.a(VideoFeedsAdapter.a(this.a), 2131437361, 0).a();
+      return;
+      String str = VideoFeedsAdapter.a(this.a).getString(2131437362);
+      paramMessage = (String)paramMessage.obj;
+      QQToast.a(VideoFeedsAdapter.a(this.a), 2, str + paramMessage, 0).a();
+      ImageUtil.a(VideoFeedsAdapter.a(this.a), paramMessage);
+      return;
+    } while (VideoFeedsAdapter.a(this.a).a.a.jdField_a_of_type_Int != 0);
+    paramMessage = ShortVideoUtils.a(VideoFeedsAdapter.a(this.a).a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
+    DialogUtil.b(VideoFeedsAdapter.a(this.a), 232, VideoFeedsAdapter.a(this.a).getResources().getString(2131437389), VideoFeedsAdapter.a(this.a).getResources().getString(2131437390), 2131437391, 2131434587, new mat(this, paramMessage), new mau(this)).show();
   }
 }
 

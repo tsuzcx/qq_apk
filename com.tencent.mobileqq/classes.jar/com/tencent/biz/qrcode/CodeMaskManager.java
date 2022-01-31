@@ -19,12 +19,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-import oql;
-import oqn;
-import oqo;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import osf;
+import osh;
+import osi;
 
 public class CodeMaskManager
 {
@@ -383,7 +383,7 @@ public class CodeMaskManager
     Bundle localBundle = new Bundle();
     if (paramInt == 1)
     {
-      localBundle.putInt("qrbkgRes", 2130840887);
+      localBundle.putInt("qrbkgRes", 2130840924);
       localBundle.putInt("bkgRes", 0);
       localBundle.putInt("nameClr", -16777216);
       localBundle.putInt("tipsClr", -8947849);
@@ -647,7 +647,7 @@ public class CodeMaskManager
     } while (System.currentTimeMillis() - l < 86400000L);
     Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("window")).getDefaultDisplay();
     int i = localDisplay.getHeight();
-    this.jdField_a_of_type_JavaLangThread = new oql(this, localSharedPreferences, localDisplay.getWidth(), i, paramInt);
+    this.jdField_a_of_type_JavaLangThread = new osf(this, localSharedPreferences, localDisplay.getWidth(), i, paramInt);
     this.jdField_a_of_type_JavaLangThread.start();
   }
   
@@ -719,9 +719,9 @@ public class CodeMaskManager
       b();
       return;
     }
-    localObject = new oqo(this, paramCallback, (Bundle)localObject);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new oqn(this, (oqo)localObject, paramCallback), 10000L);
-    ((oqo)localObject).start();
+    localObject = new osi(this, paramCallback, (Bundle)localObject);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new osh(this, (osi)localObject, paramCallback), 10000L);
+    ((osi)localObject).start();
   }
 }
 

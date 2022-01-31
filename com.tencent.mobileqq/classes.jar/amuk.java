@@ -1,18 +1,34 @@
-import dov.com.qq.im.capture.QIMCaptureController;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
 
-public class amuk
-  implements Runnable
+public final class amuk
+  implements Parcelable.Creator
 {
-  public amuk(QIMCaptureController paramQIMCaptureController, boolean paramBoolean) {}
-  
-  public void run()
+  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
   {
-    QIMCaptureController.a(this.jdField_a_of_type_DovComQqImCaptureQIMCaptureController, this.jdField_a_of_type_Boolean);
+    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
+    if (paramParcel != null)
+    {
+      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.c = paramParcel.readDouble();
+      localGameCoverInfo.d = paramParcel.readDouble();
+      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    }
+    return localGameCoverInfo;
+  }
+  
+  public CoverCacheData.GameCoverInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuk
  * JD-Core Version:    0.7.0.1
  */

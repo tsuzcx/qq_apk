@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public class yas
-  implements DialogInterface.OnClickListener
+class yas
+  implements Runnable
 {
-  public yas(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  yas(yar paramyar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.pauseDownload();
+    if (!this.a.a.isFinishing()) {
+      this.a.a.finish();
     }
   }
 }

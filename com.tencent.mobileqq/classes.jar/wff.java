@@ -1,107 +1,40 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
-import com.tencent.mobileqq.utils.DisplayUtils;
-import com.tencent.widget.FormMultiLineItem;
-import com.tencent.widget.MultiImageTextView;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import android.os.Message;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class wff
-  extends FacePreloadBaseAdapter
+  implements Runnable
 {
-  public wff(PublicView paramPublicView, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, 1, true);
-    paramXListView.setAdapter(this);
-  }
+  public wff(BlessResultActivity paramBlessResultActivity, String paramString) {}
   
-  public PublicRecommendAccountInfo a(int paramInt)
+  public void run()
   {
-    if ((PublicView.a(this.a) != null) && (paramInt >= 0) && (paramInt < PublicView.a(this.a).size())) {
-      return (PublicRecommendAccountInfo)PublicView.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if ((PublicView.a(this.a) != null) && (PublicView.a(this.a).size() > 0)) {
-      return PublicView.a(this.a).size();
-    }
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    try
     {
-      paramView = new FormMultiLineItem(this.a.a);
-      paramView.setId(2131367431);
-      paramViewGroup = new wfh();
-      paramViewGroup.c = ((FormMultiLineItem)paramView).a();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((FormMultiLineItem)paramView).a(0);
-      paramViewGroup.b = ((FormMultiLineItem)paramView).a(1);
-      paramView.setTag(paramViewGroup);
-      paramView.setOnClickListener(this.a);
-    }
-    Object localObject;
-    for (;;)
-    {
-      localObject = a(paramInt);
-      if (localObject != null) {
-        break;
-      }
-      return paramView;
-      paramViewGroup = (wfh)paramView.getTag();
-    }
-    if (((PublicRecommendAccountInfo)localObject).mSource == 1)
-    {
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((PublicRecommendAccountInfo)localObject).mEqqNameAccount;
-      label124:
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataPublicRecommendAccountInfo = ((PublicRecommendAccountInfo)localObject);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramViewGroup.b.setVisibility(0);
-      paramViewGroup.c.setImageBitmap(a(1, paramViewGroup.jdField_a_of_type_JavaLangString));
-      if (((PublicRecommendAccountInfo)localObject).mSource != 1) {
-        break label367;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject).mEqqCs);
-      paramViewGroup.b.setText(((PublicRecommendAccountInfo)localObject).mEqqSi);
-    }
-    for (;;)
-    {
-      if ((((PublicRecommendAccountInfo)localObject).mIsVerified != null) && (((PublicRecommendAccountInfo)localObject).mIsVerified.equalsIgnoreCase("1")))
+      long l = FileUtils.a(this.jdField_a_of_type_JavaLangString);
+      if (l < 25600L)
       {
-        localObject = this.a.getResources().getDrawable(2130839745);
-        paramInt = (int)DisplayUtils.a(this.a.a, 15.0F);
-        ((Drawable)localObject).setBounds(0, 0, paramInt, paramInt);
-        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).a(6.0F);
-        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).a((Drawable)localObject, paramInt, paramInt);
-        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).a();
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity.a.obtainMessage(1004);
+        this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity.a.sendMessage((Message)localObject);
+        return;
       }
-      if (!AppSetting.b) {
-        break;
+      Object localObject = BlessResultActivity.a(this.jdField_a_of_type_JavaLangString);
+      ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, (String)localObject, 160, 160);
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessResultActivity", 2, "share ptv to FC. srcLen:" + l + " ,objLen:" + FileUtils.a((String)localObject) + " , thumbPath:" + (String)localObject);
       }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
-      ((StringBuilder)localObject).append(paramViewGroup.b.getText().toString());
-      paramView.setContentDescription(((StringBuilder)localObject).toString());
-      return paramView;
-      paramViewGroup.jdField_a_of_type_JavaLangString = String.valueOf(((PublicRecommendAccountInfo)localObject).mPublicuin);
-      break label124;
-      label367:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject).mPublicname);
-      paramViewGroup.b.setText(((PublicRecommendAccountInfo)localObject).mPublicdesc);
+      Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity.a.obtainMessage(1004);
+      localMessage.obj = localObject;
+      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity.a.sendMessage(localMessage);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }

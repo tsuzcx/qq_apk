@@ -1,35 +1,14 @@
-import com.tencent.mobileqq.businessCard.BusinessCardManager;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.armap.config.BaseCheckHandler.ItemConfig;
+import com.tencent.mobileqq.armap.config.POICheckHander;
 
 public class abfo
   implements Runnable
 {
-  public abfo(BusinessCardManager paramBusinessCardManager) {}
+  public abfo(POICheckHander paramPOICheckHander, BaseCheckHandler.ItemConfig paramItemConfig) {}
   
   public void run()
   {
-    Object localObject = this.a.a();
-    if (localObject != null) {}
-    for (int i = ((List)localObject).size();; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessCard_Manager", 2, "Init cache from DB,count=" + i);
-      }
-      this.a.a.clear();
-      if (i <= 0) {
-        break;
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        BusinessCard localBusinessCard = (BusinessCard)((Iterator)localObject).next();
-        this.a.a.put(localBusinessCard.cardId, localBusinessCard);
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArmapConfigPOICheckHander.a(this.jdField_a_of_type_ComTencentMobileqqArmapConfigBaseCheckHandler$ItemConfig);
   }
 }
 

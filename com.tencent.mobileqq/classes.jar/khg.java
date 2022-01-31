@@ -1,36 +1,20 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import com.tencent.av.utils.TraeHelper;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public final class khg
-  implements INetEngine.IBreakDownFix
+public class khg
+  implements DialogInterface.OnShowListener
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public khg(TraeHelper paramTraeHelper) {}
+  
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    HttpNetReq localHttpNetReq;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      localHttpNetReq = (HttpNetReq)paramNetReq;
-      localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
-      paramNetResp.c = 0L;
-      paramNetResp = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
-      localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-      paramNetResp = localHttpNetReq.jdField_a_of_type_JavaLangString;
-      if (paramNetResp.contains("range="))
-      {
-        paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        localHttpNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + localHttpNetReq.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).jdField_a_of_type_JavaLangString + ", offset=" + localHttpNetReq.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Trae_DRP 0X8008D1E at: " + System.currentTimeMillis());
+    }
+    ReportController.b(null, "CliOper", "", "", "0X8008D1E", "0X8008D1E", 0, 0, "", "", "", "");
   }
 }
 

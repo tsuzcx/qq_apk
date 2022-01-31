@@ -1,44 +1,32 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class wjx
-  extends MessageObserver
+  extends Handler
 {
-  public wjx(DeviceFragment paramDeviceFragment) {}
+  public wjx(SystemMsgListView paramSystemMsgListView) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramMessage.what)
     {
-      localDeviceFragment.c = bool;
-      this.a.a.c();
-      this.a.a.notifyDataSetChanged();
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (SystemMsgListView.a(this.a) == null);
+      this.a.i();
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
       return;
     }
-  }
-  
-  protected void c(int paramInt1, int paramInt2)
-  {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localDeviceFragment.d = bool;
-      this.a.a.d();
-      this.a.a.a(this.a.d, AppConstants.z);
-      this.a.a.notifyDataSetChanged();
-      return;
-    }
+    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131433178);
+    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.widget;
 
-import alor;
-import alos;
-import alot;
-import alou;
+import ameh;
+import amei;
+import amej;
+import amek;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -107,7 +107,7 @@ public class XPanelContainer
       }
       this.l = ImmersiveUtils.a(getContext());
       if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 24) && (!DeviceInfoUtil2.a())) {
-        setOnSystemUiVisibilityChangeListener(new alor(this));
+        setOnSystemUiVisibilityChangeListener(new ameh(this));
       }
       return;
     }
@@ -526,7 +526,7 @@ public class XPanelContainer
                   int i1 = jdField_a_of_type_Int;
                   localObject1 = ValueAnimator.ofInt(new int[] { paramInt, paramInt - jdField_a_of_type_Int });
                   ((ValueAnimator)localObject1).setDuration(150L);
-                  ((ValueAnimator)localObject1).addUpdateListener(new alot(this, paramInt));
+                  ((ValueAnimator)localObject1).addUpdateListener(new amej(this, paramInt));
                   ((ValueAnimator)localObject1).start();
                   return;
                   if (paramInt != 21) {
@@ -593,7 +593,7 @@ public class XPanelContainer
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
     if (paramView.getOnFocusChangeListener() == null) {
-      paramView.setOnFocusChangeListener(new alos(this));
+      paramView.setOnFocusChangeListener(new amei(this));
     }
     if ((paramBoolean) && (paramView.getParent() != null) && ((paramView.getParent() instanceof ViewGroup)))
     {
@@ -667,7 +667,7 @@ public class XPanelContainer
       i1 = getHeight();
       localObject = ValueAnimator.ofInt(new int[] { i1 - jdField_a_of_type_Int, i1 });
       ((ValueAnimator)localObject).setDuration(150L);
-      ((ValueAnimator)localObject).addUpdateListener(new alou(this, i1));
+      ((ValueAnimator)localObject).addUpdateListener(new amek(this, i1));
       ((ValueAnimator)localObject).start();
       return bool;
     }
@@ -1166,7 +1166,7 @@ public class XPanelContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.XPanelContainer
  * JD-Core Version:    0.7.0.1
  */

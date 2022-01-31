@@ -1,26 +1,22 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.app.PstnSessionInfo;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.lightReply.LightReplyEmojs;
+import mqq.os.MqqHandler;
 
-public final class rtw
-  implements DialogInterface.OnClickListener
+public class rtw
+  implements Runnable
 {
-  public rtw(QQAppInterface paramQQAppInterface, Context paramContext, PstnSessionInfo paramPstnSessionInfo, int paramInt) {}
+  public rtw(BaseChatPie paramBaseChatPie, String paramString, int paramInt1, long paramLong, Context paramContext, int paramInt2, LightReplyEmojs paramLightReplyEmojs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.d, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.b, true, null, true, true, null, "from_internal");
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 5) {}
-    for (paramInt = 2;; paramInt = 3)
-    {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FC", "0X80063FC", paramInt, 0, "", "", "", "");
-      return;
+    ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a().c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    if (localChatMessage != null) {
+      ThreadManager.getUIHandler().post(new rtx(this, localChatMessage));
     }
   }
 }

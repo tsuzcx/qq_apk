@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.Context;
+import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class xhw
-  implements Animation.AnimationListener
+public class xhw
+  implements Runnable
 {
-  public xhw(View paramView, Animation paramAnimation) {}
+  public xhw(VoiceRedPacketHelper paramVoiceRedPacketHelper, Context paramContext, int paramInt1, int paramInt2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, 0).b(this.b);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

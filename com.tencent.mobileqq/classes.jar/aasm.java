@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.lang.ref.WeakReference;
 
-public class aasm
-  implements DialogInterface.OnDismissListener
+class aasm
+  implements Runnable
 {
-  public aasm(ARMapActivity paramARMapActivity) {}
+  aasm(aasc paramaasc, String paramString, aass paramaass, aasq paramaasq) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    ARMapActivity.f(this.a, false);
+    QQAppInterface localQQAppInterface = (QQAppInterface)aasc.a(this.jdField_a_of_type_Aasc).get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.b("ArkApp.Dict.Update", "downloadDictFile, qq app interface is null, return from task");
+      return;
+    }
+    ((ArkAppCenter)localQQAppInterface.getManager(120)).a().a(this.jdField_a_of_type_JavaLangString, 0L, new aasn(this));
   }
 }
 

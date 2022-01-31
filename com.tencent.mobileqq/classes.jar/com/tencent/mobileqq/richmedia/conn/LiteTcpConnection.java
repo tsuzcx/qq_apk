@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import agzd;
-import agze;
+import ahnf;
+import ahng;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,8 +18,8 @@ public class LiteTcpConnection
 {
   private int jdField_a_of_type_Int;
   public long a;
-  private agzd jdField_a_of_type_Agzd;
-  private agze jdField_a_of_type_Agze;
+  private ahnf jdField_a_of_type_Ahnf;
+  private ahng jdField_a_of_type_Ahng;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private ConnManager jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager;
@@ -202,11 +202,11 @@ public class LiteTcpConnection
     //   313: lload 6
     //   315: lstore 4
     //   317: aload_0
-    //   318: new 197	agze
+    //   318: new 197	ahng
     //   321: dup
     //   322: aload_0
-    //   323: invokespecial 200	agze:<init>	(Lcom/tencent/mobileqq/richmedia/conn/LiteTcpConnection;)V
-    //   326: putfield 202	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Agze	Lagze;
+    //   323: invokespecial 200	ahng:<init>	(Lcom/tencent/mobileqq/richmedia/conn/LiteTcpConnection;)V
+    //   326: putfield 202	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Ahng	Lahng;
     //   329: lload 6
     //   331: lstore 4
     //   333: aload_0
@@ -240,7 +240,7 @@ public class LiteTcpConnection
     //   392: aload_0
     //   393: getfield 222	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   396: aload_0
-    //   397: getfield 202	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Agze	Lagze;
+    //   397: getfield 202	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Ahng	Lahng;
     //   400: invokevirtual 226	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   403: pop
     //   404: lload 6
@@ -374,8 +374,8 @@ public class LiteTcpConnection
     //   708: iload 10
     //   710: ifeq +536 -> 1246
     //   713: aload_0
-    //   714: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Agzd	Lagzd;
-    //   717: invokevirtual 300	agzd:b	()V
+    //   714: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Ahnf	Lahnf;
+    //   717: invokevirtual 300	ahnf:b	()V
     //   720: iload_2
     //   721: ireturn
     //   722: astore 12
@@ -674,8 +674,8 @@ public class LiteTcpConnection
     //   1331: aconst_null
     //   1332: invokevirtual 393	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   1335: aload_0
-    //   1336: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Agzd	Lagzd;
-    //   1339: invokevirtual 395	agzd:a	()V
+    //   1336: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Ahnf	Lahnf;
+    //   1339: invokevirtual 395	ahnf:a	()V
     //   1342: iload_2
     //   1343: ireturn
     //   1344: astore 12
@@ -876,12 +876,12 @@ public class LiteTcpConnection
     //   94: aload 5
     //   96: ifnull +3 -> 99
     //   99: aload_0
-    //   100: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Agzd	Lagzd;
+    //   100: getfield 296	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Ahnf	Lahnf;
     //   103: astore 5
     //   105: aload 5
     //   107: ifnull +8 -> 115
     //   110: aload 5
-    //   112: invokevirtual 395	agzd:a	()V
+    //   112: invokevirtual 395	ahnf:a	()V
     //   115: aload_0
     //   116: aconst_null
     //   117: putfield 195	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_ComTencentQphoneBaseUtilMsfSocketInputBuffer	Lcom/tencent/qphone/base/util/MsfSocketInputBuffer;
@@ -916,7 +916,7 @@ public class LiteTcpConnection
     //   174: putfield 222	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   177: aload_0
     //   178: aconst_null
-    //   179: putfield 202	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Agze	Lagze;
+    //   179: putfield 202	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_Ahng	Lahng;
     //   182: aload_0
     //   183: getfield 38	com/tencent/mobileqq/richmedia/conn/LiteTcpConnection:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
     //   186: invokevirtual 274	java/util/concurrent/locks/ReentrantLock:unlock	()V
@@ -1075,8 +1075,8 @@ public class LiteTcpConnection
   public void a()
   {
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Agzd = new agzd(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_a_of_type_Agzd.sendEmptyMessage(1);
+    this.jdField_a_of_type_Ahnf = new ahnf(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_Ahnf.sendEmptyMessage(1);
   }
   
   public void a(IConnectionListener paramIConnectionListener)
@@ -1091,9 +1091,9 @@ public class LiteTcpConnection
   
   public void c()
   {
-    agzd localagzd = this.jdField_a_of_type_Agzd;
-    if ((this.d.get()) && (localagzd != null)) {
-      localagzd.b();
+    ahnf localahnf = this.jdField_a_of_type_Ahnf;
+    if ((this.d.get()) && (localahnf != null)) {
+      localahnf.b();
     }
   }
 }

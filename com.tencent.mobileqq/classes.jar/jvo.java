@@ -1,14 +1,21 @@
-import com.tencent.av.gameplay.ARNativeBridge;
-import com.tencent.av.ui.GamePlayView;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
 public class jvo
   implements Runnable
 {
-  public jvo(GamePlayView paramGamePlayView, boolean paramBoolean) {}
+  public jvo(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, VideoController paramVideoController, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView).native_stopEmitter(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(242);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_JavaLangString, 23);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_JavaLangString, 1);
   }
 }
 

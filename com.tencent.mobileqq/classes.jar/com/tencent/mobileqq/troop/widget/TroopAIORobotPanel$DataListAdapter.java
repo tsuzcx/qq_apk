@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajey;
+import ajtc;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
@@ -40,18 +40,18 @@ public class TroopAIORobotPanel$DataListAdapter
   
   public View a(LayoutInflater paramLayoutInflater, int paramInt1, int paramInt2, ViewGroup paramViewGroup)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969939, paramViewGroup, false);
-    paramViewGroup = new ajey(this.a, null);
-    paramViewGroup.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131365658);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131362943));
-    paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131362942));
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969953, paramViewGroup, false);
+    paramViewGroup = new ajtc(this.a, null);
+    paramViewGroup.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131365685);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131362961));
+    paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131362960));
     paramLayoutInflater.setTag(paramViewGroup);
     return paramLayoutInflater;
   }
   
   public View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2130969938, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2130969952, paramViewGroup, false);
   }
   
   public TroopAIORobotPanel.RobotPanelItemData a(int paramInt1, int paramInt2)
@@ -79,7 +79,7 @@ public class TroopAIORobotPanel$DataListAdapter
   
   public void a(View paramView, int paramInt1, int paramInt2)
   {
-    ajey localajey = (ajey)paramView.getTag();
+    ajtc localajtc = (ajtc)paramView.getTag();
     paramView = a(paramInt1, paramInt2);
     Object localObject;
     if (paramView.a())
@@ -97,12 +97,12 @@ public class TroopAIORobotPanel$DataListAdapter
     if (paramView.jdField_b_of_type_Boolean)
     {
       paramView = paramView.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotPanel$RobotPanelItemInfoData;
-      localajey.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.jdField_a_of_type_JavaLangString);
-      localajey.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramView.jdField_b_of_type_Int);
+      localajtc.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.jdField_a_of_type_JavaLangString);
+      localajtc.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramView.jdField_b_of_type_Int);
       if (!TextUtils.isEmpty(paramView.jdField_b_of_type_JavaLangString)) {
         break label286;
       }
-      localajey.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      localajtc.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
     }
     for (;;)
     {
@@ -120,20 +120,20 @@ public class TroopAIORobotPanel$DataListAdapter
       paramView = new StateListDrawable();
       paramView.addState(new int[] { 16842919 }, localGradientDrawable);
       paramView.addState(new int[0], (Drawable)localObject);
-      localajey.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramView);
+      localajtc.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramView);
       return;
       paramView = paramView.a;
       break;
       label286:
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      localajey.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-      localajey.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable(paramView.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject));
+      localajtc.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      localajtc.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable(paramView.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.DataListAdapter
  * JD-Core Version:    0.7.0.1
  */

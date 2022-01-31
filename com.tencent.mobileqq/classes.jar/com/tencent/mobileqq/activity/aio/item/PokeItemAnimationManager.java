@@ -25,9 +25,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
-import uzu;
-import uzv;
-import uzw;
+import vcw;
+import vcx;
+import vcy;
 
 public class PokeItemAnimationManager
 {
@@ -41,7 +41,7 @@ public class PokeItemAnimationManager
   HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   public MqqHandler a;
   private ArrayList[] jdField_a_of_type_ArrayOfJavaUtilArrayList = new ArrayList[6];
-  uzv[] jdField_a_of_type_ArrayOfUzv = null;
+  vcx[] jdField_a_of_type_ArrayOfVcx = null;
   private ArrayList[] b;
   
   static
@@ -66,16 +66,16 @@ public class PokeItemAnimationManager
       this.jdField_b_of_type_ArrayOfJavaUtilArrayList[i] = null;
       i += 1;
     }
-    this.jdField_a_of_type_ArrayOfUzv = new uzv[6];
-    uzv[] arrayOfuzv = this.jdField_a_of_type_ArrayOfUzv;
-    int k = arrayOfuzv.length;
+    this.jdField_a_of_type_ArrayOfVcx = new vcx[6];
+    vcx[] arrayOfvcx = this.jdField_a_of_type_ArrayOfVcx;
+    int k = arrayOfvcx.length;
     i = j;
     while (i < k)
     {
-      uzv localuzv = arrayOfuzv[i];
-      localuzv = new uzv(this);
-      localuzv.jdField_a_of_type_Int = 1;
-      localuzv.jdField_a_of_type_Long = -1L;
+      vcx localvcx = arrayOfvcx[i];
+      localvcx = new vcx(this);
+      localvcx.jdField_a_of_type_Int = 1;
+      localvcx.jdField_a_of_type_Long = -1L;
       i += 1;
     }
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("PokeAIOAnimThread");
@@ -121,11 +121,11 @@ public class PokeItemAnimationManager
     }
     if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) || (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) == null))
     {
-      localObject1 = new uzu(this);
-      ((uzu)localObject1).jdField_a_of_type_ArrayOfUzw = new uzw[6];
+      localObject1 = new vcw(this);
+      ((vcw)localObject1).jdField_a_of_type_ArrayOfVcy = new vcy[6];
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject1);
     }
-    Object localObject2 = (uzu)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    Object localObject2 = (vcw)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     if (localObject2 == null)
     {
       paramQQAppInterface = new HashMap();
@@ -133,8 +133,8 @@ public class PokeItemAnimationManager
       StatisticCollector.a(BaseApplication.getContext()).a(null, "pokeStrengthNullPoint", false, 0L, 0L, paramQQAppInterface, "");
       return 0;
     }
-    Object localObject1 = ((uzu)localObject2).jdField_a_of_type_ArrayOfUzw;
-    paramInt2 = ((uzu)localObject2).jdField_a_of_type_Int;
+    Object localObject1 = ((vcw)localObject2).jdField_a_of_type_ArrayOfVcy;
+    paramInt2 = ((vcw)localObject2).jdField_a_of_type_Int;
     if (paramInt1 - 1 == -1) {
       paramInt1 = 0;
     }
@@ -143,7 +143,7 @@ public class PokeItemAnimationManager
       l1 = SystemClock.uptimeMillis();
       if (localObject1[paramInt1] == null)
       {
-        localObject1[paramInt1] = new uzw(this);
+        localObject1[paramInt1] = new vcy(this);
         localObject1[paramInt1].jdField_a_of_type_Int = 0;
         localObject1[paramInt1].jdField_b_of_type_Int = 0;
         localObject1[paramInt1].jdField_a_of_type_Long = -1L;
@@ -152,7 +152,7 @@ public class PokeItemAnimationManager
       {
         localObject1[paramInt1].jdField_a_of_type_Int = paramInt3;
         localObject1[paramInt1].jdField_a_of_type_Long = l1;
-        ((uzu)localObject2).jdField_a_of_type_Int = paramInt1;
+        ((vcw)localObject2).jdField_a_of_type_Int = paramInt1;
         return localObject1[paramInt1].jdField_a_of_type_Int;
         paramInt1 -= 1;
       }
@@ -167,7 +167,7 @@ public class PokeItemAnimationManager
           if (QLog.isColorLevel()) {
             QLog.d("PokeMsg", 2, "Strength first click,type:" + paramInt1 + ".with status " + localObject1[paramInt1].jdField_a_of_type_Int);
           }
-          ((uzu)localObject2).jdField_a_of_type_Int = paramInt1;
+          ((vcw)localObject2).jdField_a_of_type_Int = paramInt1;
           localObject1[paramInt1].jdField_a_of_type_Int = 0;
           localObject1[paramInt1].jdField_b_of_type_Int = 1;
           return localObject1[paramInt1].jdField_a_of_type_Int;
@@ -180,7 +180,7 @@ public class PokeItemAnimationManager
           if (QLog.isColorLevel()) {
             QLog.d("PokeMsg", 2, "Strength click,type:" + paramInt1 + ".with status " + localObject1[paramInt1].jdField_a_of_type_Int + "to 0");
           }
-          ((uzu)localObject2).jdField_a_of_type_Int = paramInt1;
+          ((vcw)localObject2).jdField_a_of_type_Int = paramInt1;
           localObject1[paramInt1].jdField_a_of_type_Int = 0;
           localObject1[paramInt1].jdField_b_of_type_Int = 1;
           return localObject1[paramInt1].jdField_a_of_type_Int;
@@ -213,7 +213,7 @@ public class PokeItemAnimationManager
     if (paramInt2 != -1)
     {
       ReportController.b(paramQQAppInterface, "CliOper", "", paramString, "0X8008914", "0X8008914", 0, 0, "" + localObject1[paramInt2].jdField_b_of_type_Int, "", "", "");
-      ((uzu)localObject2).jdField_a_of_type_Int = -1;
+      ((vcw)localObject2).jdField_a_of_type_Int = -1;
     }
     return 0;
   }

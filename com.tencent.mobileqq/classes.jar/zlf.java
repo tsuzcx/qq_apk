@@ -1,51 +1,30 @@
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopHandler.Oidb_0xb36;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.RspBody;
-import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.ToastInfo;
+import mqq.app.Constants.LogoutReason;
 
 public class zlf
   implements Runnable
 {
-  public zlf(TroopManager paramTroopManager) {}
+  public zlf(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Object localObject = this.a.jdField_a_of_type_JavaUtilMap.values();
-    long l = NetConnInfoCenter.getServerTime();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    if (!QQAppInterface.a(this.a).verifyAuthentication())
     {
-      QLog.e(".troop.survey", 1, "Error: check survey list expire, app is null!");
-      return;
-    }
-    TroopHandler localTroopHandler = (TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if (localTroopHandler == null)
-    {
-      QLog.e(".troop.survey", 1, "Error: check survey list expire, troop handler is null!");
-      return;
-    }
-    localObject = ((Collection)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      oidb_cmd0xb36.RspBody localRspBody = (oidb_cmd0xb36.RspBody)((Iterator)localObject).next();
-      if ((localRspBody.toast.expired.has()) && (localRspBody.toast.expired.get() < l))
-      {
-        String str = String.valueOf(localRspBody.group_id.get());
-        if (QLog.isColorLevel()) {
-          QLog.d(".troop.survey", 2, new Object[] { "group id ", str, "request survey toast, expiredTime: ", Integer.valueOf(localRspBody.toast.expired.get()) });
-        }
-        TroopHandler.Oidb_0xb36.a(localTroopHandler, str, 0);
+      QLog.e("QQAppInterface", 1, "", new RuntimeException("WTF"));
+      if (this.a.isLogin()) {
+        this.a.logout(true);
       }
+      Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
+      localIntent.putExtra("title", "登录失败");
+      localIntent.putExtra("msg", "登录失败");
+      localIntent.putExtra("reason", Constants.LogoutReason.kicked);
+      localIntent.addFlags(268435456);
+      BaseApplicationImpl.sApplication.startActivity(localIntent);
     }
-    this.a.a();
   }
 }
 

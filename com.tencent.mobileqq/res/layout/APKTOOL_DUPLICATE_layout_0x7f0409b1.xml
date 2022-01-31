@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="188.0dip" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219fe" android:layout_width="188.0dip" android:layout_height="wrap_content">
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbe" android:layout_width="fill_parent" android:layout_height="46.0dip">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219fd" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <TextView android:textColor="#ffbbbbbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="好友选择器" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2bbf" android:layout_centerVertical="true" />
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219fc" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bc0" android:background="#25ffffff" android:layout_width="fill_parent" android:layout_height="2.0px" />
-        <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d20" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bc1" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
-    </LinearLayout>
+<LinearLayout android:orientation="vertical" android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.qzone.widget.AvatarImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2af0" android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_marginTop="120.0dip" android:scaleType="centerCrop" qzone:avatarSize="90.0dip" />
+    <com.qzone.widget.AsyncRichTextView android:textSize="16.0dip" android:ellipsize="end" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2af1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:singleLine="true" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2af2" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="45.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="45.0dip" android:text="主人设置了权限，你无法查看此内容去他的空间主页看看吧" />
+    <Button android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0569" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2af3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021db4" android:paddingLeft="32.0dip" android:paddingTop="10.0dip" android:paddingRight="32.0dip" android:paddingBottom="10.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="进入空间" />
 </LinearLayout>

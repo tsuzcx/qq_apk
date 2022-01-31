@@ -1,21 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.ConfigInfo;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class xgp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xgp(BannerManager paramBannerManager) {}
+  public xgp(QWalletRedManager paramQWalletRedManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = CmGameMainManager.a();
-    if (paramView != null)
+    Object localObject = (QWalletConfigManager)QWalletRedManager.a(this.a).getManager(244);
+    if (localObject != null)
     {
-      paramView.a(BannerManager.a(this.a));
-      paramView.a();
-      CmGameMainManager.f();
+      ((QWalletConfigManager)localObject).a("redPoint", this.a);
+      localObject = ((QWalletConfigManager)localObject).a("redPoint");
+      QWalletRedManager.a(this.a).parseConfig((QWalletConfig.ConfigInfo)localObject);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "synDataFromMoggy" + QWalletRedManager.a(this.a));
     }
   }
 }

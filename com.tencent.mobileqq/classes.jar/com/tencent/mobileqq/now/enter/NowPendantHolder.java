@@ -41,7 +41,7 @@ public class NowPendantHolder
   {
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130839535);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130839540);
       this.jdField_b_of_type_Boolean = false;
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
       this.jdField_a_of_type_JavaLangString = "";
@@ -259,7 +259,7 @@ public class NowPendantHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.now.enter.NowPendantHolder
  * JD-Core Version:    0.7.0.1
  */

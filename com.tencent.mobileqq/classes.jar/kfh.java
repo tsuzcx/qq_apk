@@ -1,22 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.ui.redbag.OtherBtnController;
 
 public class kfh
-  implements MenuItem.OnMenuItemClickListener
+  implements Runnable
 {
-  public kfh(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
+  public kfh(OtherBtnController paramOtherBtnController) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void run()
   {
-    paramMenuItem = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin() + "qav_SP", 0).edit();
-    paramMenuItem.putInt("qav_UserGuide_for_av_redbag_count", 0);
-    paramMenuItem.commit();
-    return true;
+    if (!this.a.a()) {}
+    do
+    {
+      return;
+      this.a.a();
+    } while (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null);
+    if (this.a.jdField_a_of_type_ComTencentAvUiControlUIObserver != null)
+    {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.jdField_a_of_type_ComTencentAvUiControlUIObserver);
+      this.a.jdField_a_of_type_ComTencentAvUiControlUIObserver = null;
+    }
+    this.a.a(true);
   }
 }
 

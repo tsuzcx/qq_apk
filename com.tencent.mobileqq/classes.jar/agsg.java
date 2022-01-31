@@ -1,28 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.richmedia.CompoundProcessor;
-import com.tencent.mobileqq.richmedia.RichmediaClient;
-import com.tencent.mobileqq.utils.LogTag;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.profile.view.ShakeImageView;
 
 public class agsg
   implements Runnable
 {
-  public agsg(CompoundProcessor paramCompoundProcessor) {}
+  public agsg(ShakeImageView paramShakeImageView) {}
   
   public void run()
   {
-    RichmediaClient localRichmediaClient = RichmediaClient.a();
-    String str = this.a.a(this.a.jdField_b_of_type_JavaLangString);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("vidoe_record_uniseq", this.a.a);
-    localBundle.putString("full_video_path", str);
-    localBundle.putInt("video_slices_total_time_length", this.a.jdField_b_of_type_Int);
-    localRichmediaClient.a(103, -1, localBundle);
-    LogTag.a(this.a.a, "clicompCompoundProcessor.compressSourceYUV", "path = " + str + ",totalTime = " + this.a.jdField_b_of_type_Int);
+    ShakeImageView.a(this.a).unregisterListener(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agsg
  * JD-Core Version:    0.7.0.1
  */

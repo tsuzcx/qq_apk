@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.activity.aio.tips.PubAccountTips;
-import com.tencent.mobileqq.activity.aio.tips.PubAccountTips.PubAccountTipsMsg;
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.util.VersionUtils;
 
 public class xik
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xik(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface, PubAccountTips.PubAccountTipsMsg paramPubAccountTipsMsg) {}
+  public xik(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PubAccountTips.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a.uin, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg, null);
+    if (VersionUtils.e())
+    {
+      BannerManager.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
+      return;
+    }
+    BannerManager.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

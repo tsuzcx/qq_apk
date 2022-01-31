@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
-import aixo;
+import ajls;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
@@ -22,13 +22,13 @@ public class GotoReciteSubViewHolder
   public GotoReciteSubViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368399));
-    this.b = ((TextView)paramView.findViewById(2131368400));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368466));
+    this.b = ((TextView)paramView.findViewById(2131368467));
   }
   
-  public void a(View paramView, HWReciteItem paramHWReciteItem, aixo paramaixo)
+  public void a(View paramView, HWReciteItem paramHWReciteItem, ajls paramajls)
   {
-    paramHWReciteItem = (HWReciteInfo)paramaixo.a;
+    paramHWReciteItem = (HWReciteInfo)paramajls.a;
     switch (paramView.getId())
     {
     }
@@ -42,7 +42,7 @@ public class GotoReciteSubViewHolder
     TroopReportor.a("Grp_edu", "Grp_recite", "Recite_Clk", 0, 0, new String[] { paramHWReciteItem.f, TroopReportor.a(paramView, paramHWReciteItem.f, paramView.getCurrentAccountUin()), paramHWReciteItem.b });
   }
   
-  public void a(HWReciteItem paramHWReciteItem, aixo paramaixo, HWReciteInfo paramHWReciteInfo, int paramInt)
+  public void a(HWReciteItem paramHWReciteItem, ajls paramajls, HWReciteInfo paramHWReciteInfo, int paramInt)
   {
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     if (TextUtils.isEmpty(paramHWReciteInfo.jdField_c_of_type_JavaLangString))
@@ -54,12 +54,12 @@ public class GotoReciteSubViewHolder
       paramHWReciteInfo.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramHWReciteInfo.jdField_c_of_type_JavaLangString);
-    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, paramaixo);
+    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, paramajls);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.GotoReciteSubViewHolder
  * JD-Core Version:    0.7.0.1
  */

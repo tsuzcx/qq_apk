@@ -1,36 +1,40 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdateEvent;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class ocp
-  extends QQUIEventReceiver
+  implements Runnable
 {
-  public ocp(@NonNull EditVideoDoodle paramEditVideoDoodle)
-  {
-    super(paramEditVideoDoodle);
-  }
+  public ocp(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
   
-  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiUpdateEvent paramDoodleEmojiUpdateEvent)
+  public void run()
   {
-    ocr localocr = paramEditVideoDoodle.a;
-    if (localocr != null) {
-      localocr.a(paramEditVideoDoodle.a());
-    }
-    for (;;)
+    try
     {
-      StoryReportor.b("edit_video", "face_list_success", 0, paramDoodleEmojiUpdateEvent.a.errorCode, new String[0]);
-      return;
-      SLog.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
+      i = DanceMachineUploadVideoFragment.a(this.a, DanceMachineUploadVideoFragment.a(this.a));
+      if (i != 0)
+      {
+        DanceMachineUploadVideoFragment.a(this.a, -1L);
+        this.a.a.setResult(2);
+        this.a.a.finish();
+        return;
+      }
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return DoodleEmojiManager.DoodleEmojiUpdateEvent.class;
+    catch (Exception localException)
+    {
+      do
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+          int i = -1;
+        }
+        DanceMachineUploadVideoFragment.a(this.a, SystemClock.elapsedRealtime());
+      } while (DanceMachineUploadVideoFragment.a() == null);
+      DanceMachineUploadVideoFragment.a().sendEmptyMessage(-2);
+      DanceMachineUploadVideoFragment.a().sendEmptyMessageDelayed(-1, 120000L);
+    }
   }
 }
 

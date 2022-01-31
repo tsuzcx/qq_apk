@@ -1,21 +1,21 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-public class onq
+class onq
+  implements View.OnClickListener
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
-  public int b;
+  onq(onp paramonp, TroopStoryItemInfo paramTroopStoryItemInfo) {}
   
-  private onq()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    paramView = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
+    if (paramView != null) {
+      ((StoryVideoUploadManager)SuperManager.a().b(3)).a(paramView);
+    }
   }
 }
 

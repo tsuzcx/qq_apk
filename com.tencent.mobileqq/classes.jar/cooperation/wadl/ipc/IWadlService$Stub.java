@@ -1,12 +1,12 @@
 package cooperation.wadl.ipc;
 
-import amqc;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import angh;
 
 public abstract class IWadlService$Stub
   extends Binder
@@ -26,7 +26,7 @@ public abstract class IWadlService$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IWadlService))) {
       return (IWadlService)localIInterface;
     }
-    return new amqc(paramIBinder);
+    return new angh(paramIBinder);
   }
   
   public IBinder asBinder()

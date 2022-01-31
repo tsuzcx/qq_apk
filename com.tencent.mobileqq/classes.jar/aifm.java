@@ -1,39 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.startup.step.ProcessInfoUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class aifm
-  extends BroadcastReceiver
+public final class aifm
+  implements Runnable
 {
-  public aifm(AbsPublishActivity paramAbsPublishActivity) {}
+  public aifm(String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
+    SharedPreferences localSharedPreferences = ProcessInfoUtil.a();
+    int i;
+    if (localSharedPreferences != null)
     {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      this.a.a(i, 9);
+      i = ProcessInfoUtil.a(BaseApplicationImpl.getContext(), this.a);
+      if (i != -1) {
+        break label27;
+      }
     }
+    label27:
+    long l;
     do
     {
       return;
-      if ("key_audio_delete_action".equals(paramContext))
-      {
-        this.a.a(0);
-        this.a.a = null;
-        TroopBarUtils.a(this.a.p, this.a.q, "del_record", this.a.r, this.a.c, "", "");
-        return;
-      }
-    } while (!"key_audio_play_action".equals(paramContext));
-    TroopBarUtils.a(this.a.p, this.a.q, "preview_record", this.a.r, this.a.c, "", "");
+      l = System.currentTimeMillis();
+      localSharedPreferences.edit().putInt("pid" + this.a, i);
+      localSharedPreferences.edit().putLong("start_time" + this.a, l).apply();
+    } while (!QLog.isColorLevel());
+    QLog.d("ProcessUtils", 2, "recordProcessStart - " + this.a + ":" + i + "|" + l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifm
  * JD-Core Version:    0.7.0.1
  */

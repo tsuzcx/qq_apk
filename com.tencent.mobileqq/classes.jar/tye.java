@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-public class tye
-  implements DialogInterface.OnDismissListener
+class tye
+  implements Runnable
 {
-  public tye(TroopMemberListActivity paramTroopMemberListActivity) {}
+  tye(tyc paramtyc) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a.postDelayed(new tzg(this.a), 150L);
+    TroopInfoActivity.g(this.a.a);
   }
 }
 

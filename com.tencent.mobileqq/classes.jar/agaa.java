@@ -1,24 +1,48 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.now.enter.ConversationNowController;
+import com.tencent.qphone.base.util.QLog;
 
 public class agaa
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Handler.Callback
 {
-  public agaa(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
+  public agaa(ConversationNowController paramConversationNowController) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      QLog.d("ConversationNowController", 1, "preload eve packet list");
+      continue;
+      QLog.d("ConversationNowController", 1, "report pendant show data");
+      try
+      {
+        this.a.c();
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("ConversationNowController", 1, "MSG_PENDANT_SHOW_REPORT, exception=", paramMessage);
+      }
+      continue;
+      QLog.d("ConversationNowController", 1, "report saved pendant show");
+      try
+      {
+        this.a.d();
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.e("ConversationNowController", 1, "MSG_SAVED_PENDANT_SHOW_REPORT, exception=", paramMessage);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agaa
  * JD-Core Version:    0.7.0.1
  */

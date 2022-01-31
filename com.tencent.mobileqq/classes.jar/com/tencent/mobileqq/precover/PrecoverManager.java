@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.precover;
 
-import afyz;
-import afza;
-import afzb;
+import agnb;
+import agnc;
+import agnd;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -57,7 +57,7 @@ public class PrecoverManager
     this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverReporter = new PrecoverReporter(this);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      ThreadManager.post(new afyz(this), 10, null, false);
+      ThreadManager.post(new agnb(this), 10, null, false);
       return;
     }
     b();
@@ -558,7 +558,7 @@ public class PrecoverManager
     this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverResDownloader.b(this);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilHashSet = null;
-    ThreadManager.post(new afzb(this), 5, null, false);
+    ThreadManager.post(new agnd(this), 5, null, false);
   }
   
   protected void a(PrecoverResource paramPrecoverResource)
@@ -604,7 +604,7 @@ public class PrecoverManager
     for (String str = "null";; str = paramString)
     {
       QLog.d("PrecoverManager", 1, new Object[] { "startDownload, businessId=", str });
-      ThreadManager.post(new afza(this, paramString), 5, null, false);
+      ThreadManager.post(new agnc(this, paramString), 5, null, false);
       return;
     }
   }
@@ -852,7 +852,7 @@ public class PrecoverManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.precover.PrecoverManager
  * JD-Core Version:    0.7.0.1
  */

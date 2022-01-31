@@ -1,4 +1,6 @@
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 class tgs
   implements Runnable
@@ -7,8 +9,13 @@ class tgs
   
   public void run()
   {
-    this.a.a.m = true;
-    this.a.a.w();
+    FormSimpleItem localFormSimpleItem = this.a.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+    if (TextUtils.isEmpty(this.a.a.jdField_c_of_type_JavaLangString)) {}
+    for (String str = "";; str = this.a.a.jdField_c_of_type_JavaLangString)
+    {
+      localFormSimpleItem.setRightText(str);
+      return;
+    }
   }
 }
 

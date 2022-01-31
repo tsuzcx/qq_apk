@@ -1,27 +1,61 @@
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneStartupMonitor;
+import android.view.View;
+import android.view.ViewConfiguration;
+import com.tencent.widget.HorizontalListView;
 
-class amcc
+public final class amcc
   implements Runnable
 {
-  amcc(amcb paramamcb, int paramInt) {}
+  public amcc(HorizontalListView paramHorizontalListView) {}
   
   public void run()
   {
-    QZoneStartupMonitor.a(this.jdField_a_of_type_Amcb.a);
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "atuoRecoveryQzoneCount", 1) > this.jdField_a_of_type_Int)
+    View localView;
+    int i;
+    if (this.a.p == 0)
     {
-      QLog.i("QZoneStartupMonitor", 1, "oat 不合法，并且wns配置要自动修复，重新安装qzone=");
-      QZoneStartupMonitor.b(this.jdField_a_of_type_Amcb.a);
-      LocalMultiProcConfig.putInt("key_recovery_count", this.jdField_a_of_type_Int + 1);
+      this.a.p = 1;
+      if (!this.a.c()) {
+        break label169;
+      }
+      localView = (View)this.a.getParent();
+      if ((this.a.c()) || ((localView != null) && (!localView.hasFocusable())))
+      {
+        if ((this.a.b) && (!this.a.c())) {
+          break label215;
+        }
+        HorizontalListView.a(this.a, localView);
+        i = ViewConfiguration.getLongPressTimeout();
+        if (!this.a.c()) {
+          break label195;
+        }
+      }
     }
+    label169:
+    label195:
+    for (boolean bool = localView.isLongClickable();; bool = this.a.isLongClickable())
+    {
+      if (!bool) {
+        break label206;
+      }
+      if (HorizontalListView.a(this.a) == null) {
+        HorizontalListView.a(this.a, new amcb(this.a, null));
+      }
+      HorizontalListView.a(this.a).a();
+      this.a.postDelayed(HorizontalListView.a(this.a), i);
+      return;
+      localView = this.a.getChildAt(HorizontalListView.b(this.a) - this.a.getFirstVisiblePosition());
+      break;
+    }
+    label206:
+    this.a.p = 2;
+    return;
+    label215:
+    this.a.p = 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amcc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1571" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip"
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="16.0sp" android:textColor="#ff12b7f5" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1572" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cc9" android:paddingLeft="33.0dip" android:paddingRight="33.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="44.0dip" android:text="时尚达人" android:layout_alignParentBottom="true" />
-    <Button android:textSize="16.0sp" android:textColor="#ff12b7f5" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1573" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cc9" android:paddingLeft="33.0dip" android:paddingRight="33.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="44.0dip" android:layout_marginLeft="15.0dip" android:text="互联网" android:layout_alignParentBottom="true" />
+    <include android:clickable="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407e5" />
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403b1" />
 </LinearLayout>

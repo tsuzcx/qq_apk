@@ -1,30 +1,21 @@
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemButton;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.search.presenter.EntranceResultPresenter;
 
 public class ahui
   implements View.OnTouchListener
 {
-  public ahui(StructMsgItemButton paramStructMsgItemButton) {}
+  public ahui(EntranceResultPresenter paramEntranceResultPresenter) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null)
-    {
-      OnLongClickAndTouchListener localOnLongClickAndTouchListener = (OnLongClickAndTouchListener)this.a.a.get();
-      if (localOnLongClickAndTouchListener != null) {
-        return localOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
-      }
-    }
-    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahui
  * JD-Core Version:    0.7.0.1
  */

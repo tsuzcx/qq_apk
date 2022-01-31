@@ -1,15 +1,18 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneUiJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.SendMsg;
 
-public class ammz
-  implements Runnable
+public final class ammz
+  implements Parcelable.Creator
 {
-  public ammz(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
-  
-  public void run()
+  public SendMsg a(Parcel paramParcel)
   {
-    RemoteHandleManager.a().a().h(this.jdField_a_of_type_JavaLangString);
+    return new SendMsg(paramParcel);
+  }
+  
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
   }
 }
 

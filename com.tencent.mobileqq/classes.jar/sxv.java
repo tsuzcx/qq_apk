@@ -1,47 +1,18 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class sxv
   implements Runnable
 {
-  public sxv(LoginVerifyCodeActivity paramLoginVerifyCodeActivity, String paramString1, String paramString2) {}
+  public sxv(Leba paramLeba) {}
   
   public void run()
   {
-    int k = 0;
-    String str = Utils.b(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() == 6) && (LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity) != null) && (!str.equals(LoginVerifyCodeActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity))))
-    {
-      LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity, str);
-      int m = 1;
-      int i = 0;
-      for (;;)
-      {
-        int j = m;
-        if (i < 6)
-        {
-          Editable localEditable = LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity)[i].getText();
-          if ((localEditable != null) && (localEditable.toString().length() > 0)) {
-            j = 0;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            break;
-          }
-          i = k;
-          while (i < 6)
-          {
-            LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity)[i].setText(str.substring(i, i + 1));
-            i += 1;
-          }
-        }
-        i += 1;
-      }
-    }
+    TroopRedTouchManager localTroopRedTouchManager = (TroopRedTouchManager)this.a.a.getManager(69);
+    oidb_0x791.RedDotInfo localRedDotInfo = localTroopRedTouchManager.a(7);
+    this.a.a(new sxw(this, localRedDotInfo, localTroopRedTouchManager));
   }
 }
 

@@ -1,27 +1,32 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
 
 public class abcu
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abcu(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  public abcu(ConversationPullDownActiveBase paramConversationPullDownActiveBase, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.a.c.setVisibility(4);
-    this.a.d.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.a.b.setVisibility(4);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(4);
-    this.a.e.setVisibility(0);
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
+    {
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.g * f);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.k);
+    this.b.setAlpha(1.0F - f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abcu
  * JD-Core Version:    0.7.0.1
  */

@@ -80,10 +80,10 @@ public class SearchEntryFragment
     {
       if (bool)
       {
-        getView().setBackgroundResource(2130838576);
+        getView().setBackgroundResource(2130838580);
         return;
       }
-      getView().setBackgroundResource(2130838575);
+      getView().setBackgroundResource(2130838579);
       return;
     }
     getView().setBackgroundResource(0);

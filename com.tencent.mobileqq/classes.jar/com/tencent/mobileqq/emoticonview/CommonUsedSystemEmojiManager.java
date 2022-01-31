@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abwx;
-import abwy;
-import abwz;
+import acdz;
+import acea;
+import aceb;
 import android.util.SparseIntArray;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -192,7 +192,7 @@ public class CommonUsedSystemEmojiManager
           }
           QLog.d("CommonUsedSystemEmojiManager", 2, "mergeAndSortSystemEmojiInfo merge:" + ((StringBuilder)localObject).toString());
         }
-        Collections.sort(localList, new abwy(this));
+        Collections.sort(localList, new acea(this));
         if (QLog.isColorLevel())
         {
           paramList1 = new StringBuilder("mergeAndSortSystemEmojiInfo:");
@@ -320,7 +320,7 @@ public class CommonUsedSystemEmojiManager
     if (QLog.isColorLevel()) {
       QLog.d("CommonUsedSystemEmojiManager", 2, "updateCacheFromFile");
     }
-    ThreadManager.getFileThreadHandler().post(new abwx(this));
+    ThreadManager.getFileThreadHandler().post(new acdz(this));
   }
   
   public void a(EmosmPb.SmallYellowItem paramSmallYellowItem)
@@ -701,7 +701,7 @@ public class CommonUsedSystemEmojiManager
     if (QLog.isColorLevel()) {
       QLog.d("CommonUsedSystemEmojiManager", 2, "saveSystemEmojiInfoToFile");
     }
-    ThreadManager.getFileThreadHandler().post(new abwz(this));
+    ThreadManager.getFileThreadHandler().post(new aceb(this));
   }
   
   public void onDestroy()

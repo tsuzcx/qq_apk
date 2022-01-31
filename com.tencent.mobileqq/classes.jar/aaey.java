@@ -1,35 +1,18 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ar.arengine.ARCamera;
 
 public class aaey
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public aaey(ARCardPageProcess paramARCardPageProcess, boolean paramBoolean) {}
+  public aaey(ARCamera paramARCamera, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.jdField_a_of_type_Boolean = false;
+    ARCamera.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera, this.jdField_a_of_type_Int, this.b, this.c, this.d, ARCamera.e());
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.b) && (this.jdField_a_of_type_Boolean))
-    {
-      ARCardPageProcess.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess).remove(0);
-      ARCardPageProcess.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaey
  * JD-Core Version:    0.7.0.1
  */

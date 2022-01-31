@@ -9,9 +9,9 @@ import java.lang.ref.WeakReference;
 import java.security.InvalidParameterException;
 import java.util.Timer;
 import java.util.TimerTask;
-import nmg;
-import nmh;
-import nmi;
+import nns;
+import nnt;
+import nnu;
 
 public class ProgressControler
 {
@@ -29,7 +29,7 @@ public class ProgressControler
   
   public ProgressControler(SplitedProgressBar paramSplitedProgressBar)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new nmg(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new nns(this, Looper.getMainLooper());
     if (paramSplitedProgressBar == null) {
       throw new InvalidParameterException("ProgressControler: progressBar is null");
     }
@@ -39,10 +39,10 @@ public class ProgressControler
   private void g()
   {
     Timer localTimer = new Timer();
-    nmi localnmi = new nmi(this);
-    localTimer.scheduleAtFixedRate(localnmi, 0L, 50L);
+    nnu localnnu = new nnu(this);
+    localTimer.scheduleAtFixedRate(localnnu, 0L, 50L);
     this.jdField_a_of_type_JavaUtilTimer = localTimer;
-    this.jdField_a_of_type_JavaUtilTimerTask = localnmi;
+    this.jdField_a_of_type_JavaUtilTimerTask = localnnu;
   }
   
   public int a()
@@ -57,8 +57,8 @@ public class ProgressControler
   
   protected void a()
   {
-    nmh localnmh = new nmh(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(localnmh);
+    nnt localnnt = new nnt(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(localnnt);
   }
   
   public void a(int paramInt)

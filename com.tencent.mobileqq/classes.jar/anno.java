@@ -1,27 +1,14 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import com.tencent.widget.XListView;
+import dov.com.qq.im.capture.poi.FacePoiUI;
 
 public class anno
-  extends Property
+  implements Runnable
 {
-  public anno(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public anno(FacePoiUI paramFacePoiUI) {}
   
-  public Float a(GroundDrawable paramGroundDrawable)
+  public void run()
   {
-    if (paramGroundDrawable != null) {
-      return Float.valueOf(GroundDrawable.a(paramGroundDrawable));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.a(paramGroundDrawable, paramFloat.floatValue());
-    }
+    this.a.a.springBackOverScrollHeaderView();
   }
 }
 

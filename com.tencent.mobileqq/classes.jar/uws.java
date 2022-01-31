@@ -1,13 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
 
 public class uws
-  extends AbstractChatItemBuilder.ViewHolder
+  implements Runnable
 {
-  public TextView b;
+  public uws(FilePicItemBuilder paramFilePicItemBuilder, FileManagerEntity paramFileManagerEntity) {}
   
-  public uws(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public void run()
+  {
+    FilePicURLDrawlableHelper.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.b.post(new uwt(this));
+  }
 }
 
 

@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetFileInfoCallBack;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import mqq.app.MobileQQ;
 
-class aczq
-  implements DialogInterface.OnClickListener
+public class aczq
+  implements UniformDownloadUtil.GetFileInfoCallBack
 {
-  aczq(aczn paramaczn) {}
+  public aczq(UniformDownloadMgr paramUniformDownloadMgr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, long paramLong)
   {
-    if (paramInt == 1) {
-      this.a.a.c();
+    if (UniformDownloadUtil.a(paramString))
+    {
+      StatisticAssist.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
+      return;
     }
-    paramDialogInterface.dismiss();
+    StatisticAssist.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
   }
 }
 

@@ -1,29 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.CSProcessorImpl;
-import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class algz
-  implements QSecFramework.IGoingUpHandler
+class algz
+  implements DialogInterface.OnClickListener
 {
-  public algz(CSProcessorImpl paramCSProcessorImpl) {}
+  algz(algx paramalgx) {}
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)) && (paramObject2 != null) && ((paramObject2 instanceof byte[])))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Integer.valueOf(paramInt1), paramObject1 }));
-      }
-      if (paramInt1 != 0) {
-        this.a.a((String)paramObject1, (byte[])paramObject2, new alhc(this.a, paramInt1));
-      }
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.a);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.e);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.h);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.k);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.x, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_Int, bool);
+      this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(10, paramDialogInterface);
+      return;
     }
-    else
+    catch (Exception paramDialogInterface)
     {
-      return 0;
+      break label6;
     }
-    this.a.a((String)paramObject1, (byte[])paramObject2, null);
-    return 0;
   }
 }
 

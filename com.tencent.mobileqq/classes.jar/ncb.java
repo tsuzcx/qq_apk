@@ -1,44 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
+import com.tencent.biz.qqstory.comment.FeedLikeLego;
+import com.tencent.biz.qqstory.comment.lego.LegoEvenHandler;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class ncb
-  extends SimpleJob
+  extends LegoEvenHandler
 {
-  public ncb(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
+  public ncb(FeedLikeLego paramFeedLikeLego) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    paramJobContext = ((StoryManager)SuperManager.a(5)).e(QQStoryContext.a().b());
-    if (paramJobContext != null)
+    int i;
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_AndroidAppActivity != null))
     {
-      paramVarArgs = paramJobContext.iterator();
-      while (paramVarArgs.hasNext())
-      {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramVarArgs.next();
-        if ((!localStoryVideoItem.isUploadFail()) && (!localStoryVideoItem.isUploadSuc())) {
-          paramVarArgs.remove();
-        }
+      paramView = (FeedCommentLikeLego)this.a.a();
+      if (FeedLikeLego.a(this.a) != 11) {
+        break label138;
+      }
+      i = 211;
+    }
+    for (;;)
+    {
+      StoryDetailActivity.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, i, 0);
+      i = StoryReportor.b(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      StoryReportor.a("home_page", "clk_like_more", StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), StoryReportor.a(paramView.a), "", this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      return;
+      label138:
+      if (FeedLikeLego.a(this.a) == 12) {
+        i = 222;
+      } else {
+        i = 210;
       }
     }
-    Collections.sort(paramJobContext, new ncc(this));
-    paramVarArgs = new ArrayList();
-    paramJobContext = paramJobContext.iterator();
-    while (paramJobContext.hasNext()) {
-      paramVarArgs.add(((StoryVideoItem)paramJobContext.next()).mVid);
-    }
-    this.a.a(paramVarArgs);
-    return null;
   }
 }
 

@@ -1,37 +1,64 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint.FontMetrics;
-import android.text.TextPaint;
-import android.view.View;
-import com.tencent.av.widget.stageview.MemberEffect;
-import com.tencent.av.widget.stageview.StageMemberView;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.PoiTab;
+import java.util.ArrayList;
 
 public class kjc
-  extends View
+  implements Runnable
 {
-  public kjc(StageMemberView paramStageMemberView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public kjc(PoiMapActivity paramPoiMapActivity, boolean paramBoolean1, String paramString1, String paramString2, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2) {}
   
-  public void draw(Canvas paramCanvas)
+  public void run()
   {
-    float f;
-    if (StageMemberView.a(this.a) != null)
-    {
-      f = -StageMemberView.a(this.a).getFontMetrics().ascent;
-      if (this.a.a == null) {
-        break label76;
+    label109:
+    PoiMapActivity localPoiMapActivity;
+    String str;
+    ArrayList localArrayList;
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.i) {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("rec_locate", "call_foursquare", "", "", "", "");
+        this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_AndroidWidgetLinearLayout != null) {
+          this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        }
+        if (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_ArrayOfJavaLangString[0]))
+        {
+          this.jdField_a_of_type_ComTencentBizPoiMapActivity.l = 0;
+          this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_ArrayOfComTencentBizPoiMapActivity$PoiTab[0].b(true);
+        }
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          break label226;
+        }
+        if (this.jdField_b_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentBizPoiMapActivity.c))
+        {
+          localPoiMapActivity = this.jdField_a_of_type_ComTencentBizPoiMapActivity;
+          str = this.jdField_b_of_type_JavaLangString;
+          localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+          if (this.jdField_a_of_type_Int <= 0) {
+            break label221;
+          }
+        }
       }
-      StageMemberView.a(this.a).setColor(this.a.a.a);
     }
-    for (;;)
+    label221:
+    for (boolean bool = true;; bool = false)
     {
-      paramCanvas.drawText(StageMemberView.a(this.a), 0.0F, f, StageMemberView.a(this.a));
+      localPoiMapActivity.a(str, localArrayList, bool);
       return;
-      label76:
-      StageMemberView.a(this.a).setColor(-1);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      break;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_AndroidWidgetLinearLayout == null) {
+        break label109;
+      }
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      break label109;
     }
+    label226:
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.d, this.jdField_b_of_type_Boolean);
   }
 }
 

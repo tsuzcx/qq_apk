@@ -1,6 +1,6 @@
 package com.tencent.qqprotect.singleupdate;
 
-import alip;
+import alyf;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -197,26 +197,26 @@ public class QPUpdateManager
       return;
     }
     File localFile = new File(paramNetReq.jdField_c_of_type_JavaLangString);
-    alip localalip = (alip)paramNetReq.a();
-    if ((!localFile.exists()) || (localalip == null))
+    alyf localalyf = (alyf)paramNetReq.a();
+    if ((!localFile.exists()) || (localalyf == null))
     {
       a(3);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] http download complete: %s, %s", new Object[] { paramNetReq.jdField_c_of_type_JavaLangString, localalip.jdField_c_of_type_JavaLangString }));
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] http download complete: %s, %s", new Object[] { paramNetReq.jdField_c_of_type_JavaLangString, localalyf.jdField_c_of_type_JavaLangString }));
     }
-    switch (localalip.jdField_a_of_type_Int)
+    switch (localalyf.jdField_a_of_type_Int)
     {
     default: 
       return;
     case 1: 
       localFile = new File(b());
       new File(paramNetReq.jdField_c_of_type_JavaLangString).renameTo(localFile);
-      a("0X80078AC", localalip.jdField_c_of_type_Int, "", "");
+      a("0X80078AC", localalyf.jdField_c_of_type_Int, "", "");
       if (this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPUpdateConfig.a(localFile.toString()))
       {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("last_update_config_version", localalip.jdField_c_of_type_Int).commit();
+        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("last_update_config_version", localalyf.jdField_c_of_type_Int).commit();
         if (this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPUpdateConfig.a().isEmpty())
         {
           if (QLog.isColorLevel()) {
@@ -228,14 +228,14 @@ public class QPUpdateManager
         d(5);
         return;
       }
-      a("0X80078AC", localalip.jdField_c_of_type_Int, localalip.jdField_b_of_type_JavaLangString, localalip.jdField_c_of_type_JavaLangString);
+      a("0X80078AC", localalyf.jdField_c_of_type_Int, localalyf.jdField_b_of_type_JavaLangString, localalyf.jdField_c_of_type_JavaLangString);
       if (QLog.isColorLevel()) {
         QLog.d("QQProtect.QPUpdate", 2, "[SFU] invalid config (sig not accepted)");
       }
       a(1);
       return;
     }
-    a("0X80078AE", localalip.jdField_c_of_type_Int, "", "");
+    a("0X80078AE", localalyf.jdField_c_of_type_Int, "", "");
     d(7);
   }
   
@@ -264,13 +264,13 @@ public class QPUpdateManager
     }
   }
   
-  private boolean a(alip paramalip)
+  private boolean a(alyf paramalyf)
   {
-    if (paramalip == null) {}
+    if (paramalyf == null) {}
     do
     {
       return false;
-      if ((paramalip.jdField_a_of_type_Int == 2) && (paramalip.e != 1) && (!NetworkUtils.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())))
+      if ((paramalyf.jdField_a_of_type_Int == 2) && (paramalyf.e != 1) && (!NetworkUtils.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())))
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQProtect.QPUpdate", 2, "[SFU] donot download file because not using wifi");
@@ -278,21 +278,21 @@ public class QPUpdateManager
         CommTvRpt.a(3, 1);
         return false;
       }
-    } while ((paramalip.jdField_d_of_type_Int < 3) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(paramalip.jdField_d_of_type_JavaLangString.toLowerCase())));
+    } while ((paramalyf.jdField_d_of_type_Int < 3) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(paramalyf.jdField_d_of_type_JavaLangString.toLowerCase())));
     INetEngine localINetEngine = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
     localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = this;
-    localHttpNetReq.jdField_a_of_type_JavaLangString = paramalip.jdField_c_of_type_JavaLangString;
+    localHttpNetReq.jdField_a_of_type_JavaLangString = paramalyf.jdField_c_of_type_JavaLangString;
     localHttpNetReq.jdField_a_of_type_Int = 0;
-    localHttpNetReq.jdField_c_of_type_JavaLangString = (paramalip.jdField_a_of_type_JavaLangString + paramalip.jdField_b_of_type_JavaLangString);
-    paramalip.jdField_d_of_type_Int += 1;
-    paramalip.jdField_a_of_type_Long = new Date().getTime();
-    localHttpNetReq.a(paramalip);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramalip.jdField_d_of_type_JavaLangString.toLowerCase(), localHttpNetReq);
+    localHttpNetReq.jdField_c_of_type_JavaLangString = (paramalyf.jdField_a_of_type_JavaLangString + paramalyf.jdField_b_of_type_JavaLangString);
+    paramalyf.jdField_d_of_type_Int += 1;
+    paramalyf.jdField_a_of_type_Long = new Date().getTime();
+    localHttpNetReq.a(paramalyf);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramalyf.jdField_d_of_type_JavaLangString.toLowerCase(), localHttpNetReq);
     localINetEngine.a(localHttpNetReq);
     if (QLog.isColorLevel()) {
-      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] begin http download %s", new Object[] { paramalip.jdField_c_of_type_JavaLangString }));
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] begin http download %s", new Object[] { paramalyf.jdField_c_of_type_JavaLangString }));
     }
     return true;
   }
@@ -671,7 +671,7 @@ public class QPUpdateManager
   {
     boolean bool = true;
     if (paramNetResp == null) {}
-    alip localalip;
+    alyf localalyf;
     do
     {
       do
@@ -683,20 +683,20 @@ public class QPUpdateManager
       } while (!QLog.isColorLevel());
       QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] http download error=%d", new Object[] { Integer.valueOf(paramNetResp.jdField_a_of_type_Int) }));
       return;
-      localalip = (alip)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    } while (localalip == null);
+      localalyf = (alyf)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
+    } while (localalyf == null);
     if (paramNetResp.jdField_a_of_type_Int == 0) {}
     while (!bool)
     {
       try
       {
-        if (localalip.jdField_d_of_type_Int >= 3) {
+        if (localalyf.jdField_d_of_type_Int >= 3) {
           break label146;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] retried to download, retry=%d, result=%b, url=%s", new Object[] { Integer.valueOf(localalip.jdField_d_of_type_Int), Boolean.valueOf(bool), localalip.jdField_c_of_type_JavaLangString }));
+          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] retried to download, retry=%d, result=%b, url=%s", new Object[] { Integer.valueOf(localalyf.jdField_d_of_type_Int), Boolean.valueOf(bool), localalyf.jdField_c_of_type_JavaLangString }));
         }
-        a(localalip);
+        a(localalyf);
         return;
       }
       catch (Throwable paramNetResp)
@@ -712,7 +712,7 @@ public class QPUpdateManager
         localFile.delete();
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localalip.jdField_d_of_type_JavaLangString.toLowerCase());
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localalyf.jdField_d_of_type_JavaLangString.toLowerCase());
     a(bool, paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq);
   }
   
@@ -1216,7 +1216,7 @@ public class QPUpdateManager
       if (QLog.isColorLevel()) {
         QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] download package: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
       }
-      bool = a(new alip(2, 0, a(paramUpdateSection), paramUpdateSection.jdField_a_of_type_JavaLangString, paramUpdateSection.jdField_c_of_type_JavaLangString, paramUpdateSection.jdField_b_of_type_JavaLangString, 0, true, 0, new Date().getTime(), paramUpdateSection.jdField_b_of_type_Int));
+      bool = a(new alyf(2, 0, a(paramUpdateSection), paramUpdateSection.jdField_a_of_type_JavaLangString, paramUpdateSection.jdField_c_of_type_JavaLangString, paramUpdateSection.jdField_b_of_type_JavaLangString, 0, true, 0, new Date().getTime(), paramUpdateSection.jdField_b_of_type_Int));
     }
     return bool;
   }
@@ -1411,7 +1411,7 @@ public class QPUpdateManager
             if (QLog.isColorLevel()) {
               QLog.d("QQProtect.QPUpdate", 2, String.format("Need to update config file, fileid=%d", new Object[] { Integer.valueOf(k) }));
             }
-            bool1 = a(new alip(1, k, a(), "qp_sfu_config.dat", paramFromServiceMsg, paramToServiceMsg, m, bool1, 0, new Date().getTime(), 1));
+            bool1 = a(new alyf(1, k, a(), "qp_sfu_config.dat", paramFromServiceMsg, paramToServiceMsg, m, bool1, 0, new Date().getTime(), 1));
           }
         }
         else

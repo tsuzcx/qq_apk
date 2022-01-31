@@ -16,22 +16,22 @@ public class LabelEditCtrl
 {
   protected int a()
   {
-    return 2130970384;
+    return 2130970425;
   }
   
   protected LabelContainer a(View paramView, int paramInt1, InterestTag paramInterestTag, int paramInt2)
   {
-    ((TextView)paramView.findViewById(2131368270)).setText(c[paramInt1]);
+    ((TextView)paramView.findViewById(2131368337)).setText(c[paramInt1]);
     paramInt1 = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
     int i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    LabelContainer localLabelContainer = (LabelContainer)paramView.findViewById(2131370353);
+    LabelContainer localLabelContainer = (LabelContainer)paramView.findViewById(2131370494);
     localLabelContainer.setSpace(paramInt1, i);
     paramView.setTag(paramInterestTag);
     paramView.setOnClickListener(this);
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() == paramInt2 - 1)
     {
       paramInt1 = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-      paramView.setBackgroundResource(2130838626);
+      paramView.setBackgroundResource(2130838630);
       paramView.setPadding(0, paramInt1, 0, paramInt1);
     }
     return localLabelContainer;

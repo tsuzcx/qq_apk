@@ -1,29 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyRequestParams.Request0x68bParams;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class lou
   implements Runnable
 {
-  public lou(ArticleInfoModule paramArticleInfoModule, ReadInJoyRequestParams.Request0x68bParams paramRequest0x68bParams) {}
+  public lou(AdvertisementInfoModule paramAdvertisementInfoModule, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_a_of_type_Boolean = true;
-    ToServiceMsg localToServiceMsg = ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams);
-    if (localToServiceMsg != null)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.b("DELETE FROM " + AdvertisementInfo.class.getSimpleName() + " WHERE mChannelID = " + this.jdField_a_of_type_Int);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      localToServiceMsg.getAttributes().put("channelID", new Integer(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.b));
-      localToServiceMsg.getAttributes().put("isSingleHighLight", Boolean.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.g));
-      localToServiceMsg.getAttributes().put("clientSwithes", Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.f));
+      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)localIterator.next();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(localAdvertisementInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("adAppModule", 2, "info type = " + localAdvertisementInfo.mAdJumpMode);
+      }
+      if ((localAdvertisementInfo.mAdJumpMode == 4) && (TextUtils.isEmpty(localAdvertisementInfo.mAdAppJson))) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.jdField_a_of_type_ComTencentCommonAppAppInterface, localAdvertisementInfo);
+      }
     }
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.b == 0) && (ReadInJoyUtils.a())) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(-1L, 1, 0);
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(localToServiceMsg);
   }
 }
 

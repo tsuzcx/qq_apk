@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import jfd;
+import jeo;
 
 public class GAudioUIObserver
   implements Observer
@@ -365,7 +365,7 @@ public class GAudioUIObserver
       if (this.a == null) {
         this.a = new Handler(paramObservable);
       }
-      this.a.post(new jfd(this, paramObject));
+      this.a.post(new jeo(this, paramObject));
       return;
     }
     a(paramObject);

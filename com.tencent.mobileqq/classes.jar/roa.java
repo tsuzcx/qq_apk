@@ -1,25 +1,10 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
 
 public class roa
-  implements Runnable
+  extends Handler
 {
-  public roa(BaseChatPie paramBaseChatPie) {}
-  
-  public void run()
-  {
-    if (this.a.a.e)
-    {
-      if (this.a.a.g)
-      {
-        this.a.b(131078);
-        return;
-      }
-      this.a.b(131077);
-      return;
-    }
-    this.a.b(131075);
-  }
+  public roa(AuthDevRenameActivity paramAuthDevRenameActivity) {}
 }
 
 

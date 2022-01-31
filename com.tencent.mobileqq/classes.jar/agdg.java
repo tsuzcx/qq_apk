@@ -1,35 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.lebasearch.widget.ScrolledTabHost.OnTabSelectedListener;
+import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment.SearchActivityInterface;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
 
 public class agdg
-  extends AnimateUtils.AnimationAdapter
+  implements ScrolledTabHost.OnTabSelectedListener
 {
-  public agdg(ProfileHeaderView paramProfileHeaderView, LinearLayout paramLinearLayout, View paramView) {}
+  public agdg(SearchResultFragment paramSearchResultFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView updateTips sideOutAnim onAnimationEnd");
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    paramAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131034358);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.c < 4)
-    {
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView;
-      paramAnimation.c += 1;
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(ProfileHeaderView.d);
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendMessageDelayed(paramAnimation, 4000L);
-    }
+    this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(paramInt);
+    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface.a(false);
   }
+  
+  public void b(int paramInt) {}
 }
 
 

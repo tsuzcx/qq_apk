@@ -1,78 +1,82 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.ark.ArkAppPanelList.AppDetail;
+import com.tencent.ark.ArkAppPanelList.RespBody;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppManagerPanel.ArkAppPanelData;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IRequestArkAppListHandler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class aawx
-  extends ArMapObserver
+class aawx
+  implements BusinessObserver
 {
-  public aawx(ShopScanActivity paramShopScanActivity) {}
+  aawx(aaww paramaaww) {}
   
-  public void onOpenPOI(boolean paramBoolean1, int paramInt1, ItemInfo paramItemInfo, boolean paramBoolean2, int paramInt2, int paramInt3, boolean paramBoolean3)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(299)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(299);
-    }
-    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(297))
+    if ((paramBoolean) && (paramObject != null))
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(297);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShopScanActivity", 2, "onOpenPoi isSuccess: " + paramBoolean1 + ", resultCode: " + paramInt1 + ", mode: " + paramInt3 + ", holder: " + paramBoolean2 + ", bussiType: " + paramInt2 + ", isServerSuccess: " + paramBoolean3 + ", itemInfo: " + paramItemInfo);
-      }
-      if (paramItemInfo != null) {
-        QLog.i("ShopScanActivity", 1, "itemInfo is " + paramItemInfo.toString());
-      }
-      if (!paramBoolean1) {
-        break label321;
-      }
-      ShopScanActivity.b(this.a, true);
-      label192:
-      ShopScanActivity.d(this.a, paramBoolean3);
-      if ((paramBoolean1) && (paramInt1 == 0)) {
-        break label409;
-      }
-      switch (paramInt1)
+      localObject1 = new ArkAppPanelList.RespBody();
+      try
       {
-      default: 
-        paramItemInfo = "领奖失败，请稍候再试。";
-        this.a.runOnUiThread(new aawy(this, paramItemInfo));
-        ShopScanActivity.a(this.a, ShopScanActivity.a(this.a), false);
-      }
-    }
-    label321:
-    while ((paramItemInfo == null) || (paramItemInfo.e <= 0)) {
-      for (;;)
-      {
-        return;
-        ShopScanActivity.f(this.a);
-        break;
-        if (paramInt1 == 19) {
-          break label192;
+        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
+        localArrayList = new ArrayList();
+        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
+        {
+          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
+          if ((paramObject == null) || (paramObject.size() <= 0)) {
+            break label234;
+          }
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
+            if (localObject2 != null)
+            {
+              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
+              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
+              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
+              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+              {
+                localArrayList.add(new ArkAppManagerPanel.ArkAppPanelData((String)localObject1, str, (String)localObject2));
+                continue;
+                return;
+              }
+            }
+          }
         }
-        ShopScanActivity.c(this.a, true);
-        break label192;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(298, 30000L);
-        paramItemInfo = "领奖失败，请稍候再试。";
-        continue;
-        paramItemInfo = "你已经领过这里的奖品了。";
-        continue;
-        paramItemInfo = "请到达指定地点后再扫描领奖。";
-        continue;
-        paramItemInfo = "今天领奖次数已达到上限。";
-        continue;
-        paramItemInfo = "来晚了一步，奖品已经发完了。";
-        continue;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(298, 30000L);
-        paramItemInfo = "领奖失败，请稍候再试。";
+      }
+      catch (InvalidProtocolBufferMicroException paramObject)
+      {
+        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
+        if (this.a.a != null) {
+          this.a.a.b(null);
+        }
       }
     }
-    label409:
-    paramItemInfo.h = ShopScanActivity.b(this.a);
-    this.a.runOnUiThread(new aawz(this, paramItemInfo));
-    this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.b(true);
-    ShopScanActivity.a(this.a, ShopScanActivity.a(this.a), true);
+    label234:
+    while (this.a.a == null)
+    {
+      ArrayList localArrayList;
+      do
+      {
+        for (;;)
+        {
+          Object localObject1;
+          Object localObject2;
+          String str;
+          paramObject = null;
+        }
+      } while (this.a.a == null);
+      this.a.a.b(localArrayList);
+      return;
+    }
+    this.a.a.b(null);
   }
 }
 

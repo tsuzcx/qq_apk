@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public class spr
-  implements IphonePickerView.IphonePickListener
+class spr
+  implements ActionSheet.OnDismissListener
 {
-  public spr(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  spr(spp paramspp) {}
   
-  public void onConfirmBtClicked()
+  public void onDismiss()
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
-  }
-  
-  public void onItemSelected(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {}
-    for (paramInt1 = 0;; paramInt1 = 1)
-    {
-      this.a.c = true;
-      this.a.a(paramInt1, true);
-      return;
-    }
+    ReportController.b(this.a.a.app, "CliOper", "", "", "0X8008406", "0X8008406", 0, 0, "", "", "", "");
   }
 }
 

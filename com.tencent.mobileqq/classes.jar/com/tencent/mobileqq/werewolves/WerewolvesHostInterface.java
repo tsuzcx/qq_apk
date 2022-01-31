@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.werewolves;
 
-import akdx;
-import akdy;
-import akdz;
-import akea;
-import akeb;
+import akse;
+import aksf;
+import aksg;
+import aksh;
+import aksi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -67,7 +67,7 @@ public class WerewolvesHostInterface
       this.mGameRoomAVController.c();
       return;
     }
-    this.mGameRoomAVController.a(new akdx(this));
+    this.mGameRoomAVController.a(new akse(this));
   }
   
   public void enableMic()
@@ -197,13 +197,13 @@ public class WerewolvesHostInterface
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     TroopHandler localTroopHandler = (TroopHandler)localQQAppInterface.a(20);
-    localQQAppInterface.addObserver(new akeb(this, localQQAppInterface));
+    localQQAppInterface.addObserver(new aksi(this, localQQAppInterface));
     localTroopHandler.p(paramString);
   }
   
   public String getQQVersion()
   {
-    return "7.6.0";
+    return "7.6.3";
   }
   
   public String getSKey()
@@ -335,7 +335,7 @@ public class WerewolvesHostInterface
     for (String str = "1";; str = "2")
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      NearbyHandler.a(localQQAppInterface, paramString, "6", str, 1, new akea(this, localQQAppInterface, paramString, str, paramBoolean));
+      NearbyHandler.a(localQQAppInterface, paramString, "6", str, 1, new aksh(this, localQQAppInterface, paramString, str, paramBoolean));
       return;
     }
   }
@@ -351,7 +351,7 @@ public class WerewolvesHostInterface
     else {
       return;
     }
-    this.mGameRoomAVController.a(new akdy(this, paramBoolean));
+    this.mGameRoomAVController.a(new aksf(this, paramBoolean));
   }
   
   public void showActionSheet(String paramString, String[] paramArrayOfString, int[] paramArrayOfInt, Object paramObject)
@@ -369,8 +369,8 @@ public class WerewolvesHostInterface
       localActionSheet.a(paramArrayOfString[i], paramArrayOfInt[i]);
       i += 1;
     }
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new akdz(this, paramObject, localActionSheet));
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new aksg(this, paramObject, localActionSheet));
     localActionSheet.show();
   }
   
@@ -401,7 +401,7 @@ public class WerewolvesHostInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHostInterface
  * JD-Core Version:    0.7.0.1
  */

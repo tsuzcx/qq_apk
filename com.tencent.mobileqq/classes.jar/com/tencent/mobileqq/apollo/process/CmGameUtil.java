@@ -48,6 +48,7 @@ import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
@@ -677,9 +678,6 @@ public class CmGameUtil
       } while (((CmGameManager)localObject).a() == null);
       return true;
       localObject = localCmGameLauncher.a();
-      if (paramStartCheckParam.launchNewGame) {
-        return true;
-      }
     } while ((localCmGameLauncher.a() == paramStartCheckParam.game.gameId) && ((paramStartCheckParam.roomId == 0L) || (paramStartCheckParam.roomId == ((ApolloPanel.GameMsgInfo)localObject).jdField_b_of_type_Long)));
     return true;
   }
@@ -755,7 +753,7 @@ public class CmGameUtil
         {
           localJSONObject1.put("gameId", paramCmGameInitParams.mGameName);
           if ((!ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) || (ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo == null)) {
-            break label844;
+            break label849;
           }
           localJSONObject1.put("freeMemory", ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo.jdField_b_of_type_Long);
           localJSONObject1.put("totalMemory", ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo.jdField_c_of_type_Long);
@@ -765,7 +763,7 @@ public class CmGameUtil
           localJSONObject1.put("cpuNumber", ApolloGameStateMachine.HardwareInfo.jdField_a_of_type_Int);
           localJSONObject1.put("cpuFrequency", ApolloGameStateMachine.HardwareInfo.jdField_a_of_type_Long);
           localJSONObject1.put("gameVersion", paramCmGameInitParams.mVersion);
-          localJSONObject1.put("QQVer", "7.6.0.3525");
+          localJSONObject1.put("QQVer", "7.6.3.3560");
           localJSONObject1.put("platform", "android");
           localJSONObject1.put("gameMode", paramCmGameInitParams.mGameMode);
           if (!TextUtils.isEmpty(paramCmGameInitParams.openId)) {
@@ -800,25 +798,19 @@ public class CmGameUtil
         QLog.e("cmgame_process.CmGameUtil", 1, localThrowable, new Object[0]);
         String str1 = str2;
         continue;
-        if (TextUtils.isEmpty(paramCmGameInitParams.mSessionId)) {
-          continue;
-        }
-        localJSONObject1.put("sessionId", paramCmGameInitParams.sessionOpenId);
-        continue;
         localJSONObject1.put("aioType", paramCmGameInitParams.mSessionType);
         if (!paramCmGameInitParams.mIsMaster) {
-          break label1025;
+          break label991;
         }
         for (i = 1;; i = 0)
         {
           localJSONObject1.put("isMaster", i);
-          localJSONObject1.put("sessionId", paramCmGameInitParams.sessionOpenId);
           break;
         }
         bool2 = false;
         bool1 = true;
         if (!bool1) {
-          break label1051;
+          break label1017;
         }
         i = 0;
         continue;
@@ -829,7 +821,7 @@ public class CmGameUtil
       }
       localJSONObject1.put("gameParam", localObject);
       if (!paramCmGameInitParams.isWhiteUsr) {
-        break label1046;
+        break label1012;
       }
       i = 1;
       localJSONObject1.put("isWhiteUser", i);
@@ -838,26 +830,23 @@ public class CmGameUtil
       localJSONObject1.put("networkType", ApolloGameBasicEventUtil.b());
       localObject = BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0);
       if (localObject == null) {
-        break label1030;
+        break label996;
       }
       bool1 = ((SharedPreferences)localObject).getBoolean("is_ever_play_cmgame" + paramCmGameInitParams.mGameName + paramCmGameInitParams.mSelfUin, false);
       bool2 = ((SharedPreferences)localObject).getBoolean("is_first_install_cmgame" + paramCmGameInitParams.mGameName + paramCmGameInitParams.mSelfUin, true);
       if (!bool2) {
-        break label1037;
+        break label1003;
       }
       ((SharedPreferences)localObject).edit().putBoolean("is_first_install_cmgame" + paramCmGameInitParams.mGameName + paramCmGameInitParams.mSelfUin, false).commit();
-      break label1037;
+      break label1003;
       localJSONObject1.put("isFirstPlay", i);
       localJSONObject1.put("isFirstInstall", bool2);
+      localJSONObject1.put("sessionId", String.valueOf(new Random(System.currentTimeMillis()).nextInt(100000)));
       if ((paramCmGameInitParams.mGameMode != 1) && (paramCmGameInitParams.mGameMode != 2)) {
-        break label977;
+        break;
       }
       localJSONObject1.put("aioType", 1);
       localJSONObject1.put("isMaster", 1);
-      if (TextUtils.isEmpty(paramCmGameInitParams.mFriendUin)) {
-        break;
-      }
-      localJSONObject1.put("sessionId", paramCmGameInitParams.mFriendUin);
       if ((!TextUtils.isEmpty(paramCmGameInitParams.mExtraStr)) && (("1".equals(paramCmGameInitParams.mGameName)) || ("2".equals(paramCmGameInitParams.mGameName)))) {
         localJSONObject1.put("extraStr", paramCmGameInitParams.mExtraStr);
       }
@@ -875,7 +864,7 @@ public class CmGameUtil
         localException.printStackTrace();
       }
       continue;
-      label844:
+      label849:
       localJSONObject1.put("freeMemory", DeviceInfoUtil.a(Process.myPid()));
       localJSONObject1.put("totalMemory", DeviceInfoUtil.g());
       localJSONObject1.put("osVersion", DeviceInfoUtil.f());

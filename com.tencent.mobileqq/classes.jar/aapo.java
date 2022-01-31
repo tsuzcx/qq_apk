@@ -1,56 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppSSO;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import java.util.ArrayList;
 
-class aapo
+public class aapo
   implements Runnable
 {
-  aapo(aapn paramaapn, aapx paramaapx, String paramString, double paramDouble1, double paramDouble2) {}
+  public aapo(ArkAppModuleReg.ModuleQQ paramModuleQQ, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
-    Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject1 == null) {
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, qq app is null");
-    }
-    for (;;)
-    {
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, fail");
-      if (this.jdField_a_of_type_Aapx.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler != null) {
-        this.jdField_a_of_type_Aapx.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler.a(this.jdField_a_of_type_Aapx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aapx.jdField_a_of_type_JavaLangObject, null, true);
-      }
-      Object localObject2;
-      String str;
-      do
-      {
-        return;
-        localObject2 = (ArkAppCenter)((QQAppInterface)localObject1).getManager(120);
-        if (localObject2 == null)
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, ark center is null");
-          break;
-        }
-        localObject1 = ((ArkAppCenter)localObject2).a();
-        localObject2 = ((ArkAppCenter)localObject2).a();
-        if (localObject2 == null)
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, ark sso is null");
-          break;
-        }
-        str = ArkMessageServerLogic.a(this.jdField_a_of_type_Aapx, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Double, this.b);
-        if (TextUtils.isEmpty(str))
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, req json is null");
-          break;
-        }
-      } while (((ArkAppSSO)localObject2).a("ArkSearchService.ActiveSearch", str, 10000, 0, new aapp(this, (ArkLocalAppMgr)localObject1)));
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, fail send sso request");
-    }
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    Intent localIntent = new Intent(localBaseActivity, TroopAvatarWallPreviewActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("index", this.jdField_a_of_type_Int);
+    localBundle.putStringArrayList("seqNum", this.jdField_a_of_type_JavaUtilArrayList);
+    localBundle.putBoolean("needBottomBar", false);
+    localBundle.putBoolean("IS_EDIT", false);
+    localBundle.putBoolean("is_use_path", true);
+    localBundle.putBoolean("is_show_action", true);
+    localBundle.putBoolean("is_not_show_index", false);
+    localBundle.putBoolean("is_index_show_bottom", true);
+    localIntent.putExtras(localBundle);
+    localBaseActivity.startActivity(localIntent);
   }
 }
 

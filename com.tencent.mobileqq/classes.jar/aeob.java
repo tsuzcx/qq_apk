@@ -1,50 +1,33 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem;
-import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
-import java.util.List;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class aeob
-  extends BaseAdapter
+  implements WerewolvesHandler.Callback
 {
-  public aeob(TopicLabelListView paramTopicLabelListView) {}
+  public aeob(GameRoomInviteActivity paramGameRoomInviteActivity, aeor paramaeor) {}
   
-  public int getCount()
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
-    }
-    return TopicLabelListView.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    if ((paramInt == 0) && (paramRspBody != null))
     {
-      paramViewGroup = new aeoc(this.a, null);
-      paramView = new LabelViewItem(TopicLabelListView.a(this.a));
-      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      paramView.setTag(paramViewGroup);
+      paramRspBody = this.jdField_a_of_type_Aeor;
+      if (!this.jdField_a_of_type_Aeor.a)
+      {
+        bool = true;
+        paramRspBody.a = bool;
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
+      }
     }
-    for (;;)
-    {
-      paramViewGroup.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
-      ((LabelViewItem)paramView).setText(paramViewGroup.a);
-      return paramView;
-      paramViewGroup = (aeoc)paramView.getTag();
+    while (paramRspBody == null) {
+      for (;;)
+      {
+        return;
+        boolean bool = false;
+      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, "设置失败");
   }
 }
 

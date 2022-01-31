@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.activity;
 
-import ahdr;
-import ahds;
-import ahdt;
+import ahrt;
+import ahru;
+import ahrv;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -60,7 +60,7 @@ public abstract class BaseSearchActivity
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)super.findViewById(2131368255));
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)super.findViewById(2131368322));
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setHint(a());
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setImeOptions(3);
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setOnEditorActionListener(this);
@@ -73,19 +73,19 @@ public abstract class BaseSearchActivity
       if (this.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getInputExtras(true).putInt("QUICK_SEARCH", 1);
       }
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131368256));
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new ahdr(this));
-      this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131371103));
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131368323));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new ahrt(this));
+      this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131370344));
       if (this.jdField_b_of_type_AndroidWidgetImageButton != null) {
         this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
       }
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131368254));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131368321));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131432998);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahds(this));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371096));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131433015);
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahru(this));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371260));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ahdt(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ahrv(this));
       return;
       this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setInputType(524289);
     }
@@ -93,7 +93,7 @@ public abstract class BaseSearchActivity
   
   protected int a()
   {
-    return 2130970552;
+    return 2130970596;
   }
   
   public abstract BaseSearchFragment a();
@@ -155,7 +155,7 @@ public abstract class BaseSearchActivity
     jdField_b_of_type_Int = -1;
     super.doOnCreate(paramBundle);
     super.setContentView(a());
-    paramBundle = super.findViewById(2131362822);
+    paramBundle = super.findViewById(2131362840);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       paramBundle.setFitsSystemWindows(true);
     }
@@ -165,7 +165,7 @@ public abstract class BaseSearchActivity
     paramBundle = super.getSupportFragmentManager();
     this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment = a();
     paramBundle = paramBundle.beginTransaction();
-    paramBundle.replace(2131371102, this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment);
+    paramBundle.replace(2131371266, this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment);
     paramBundle.commit();
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {

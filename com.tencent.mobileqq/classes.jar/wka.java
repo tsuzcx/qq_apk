@@ -1,28 +1,36 @@
-import com.tencent.device.devicemgr.SmartDeviceObserver;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import friendlist.EAddFriendSourceID;
 import java.util.ArrayList;
 
 public class wka
-  extends SmartDeviceObserver
+  extends FriendListObserver
 {
-  public wka(DeviceFragment paramDeviceFragment) {}
+  public wka(SystemMsgListView paramSystemMsgListView) {}
   
-  protected void a(ArrayList paramArrayList)
+  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList paramArrayList)
   {
-    if (this.a.e)
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if (paramBoolean1)
     {
-      this.a.e = false;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener.a(2, true, null);
+      paramString = paramBundle.getString("uin");
+      int i = paramBundle.getInt("source_id");
+      paramBundle = paramBundle.getString("extra");
+      if (((i == 3006) || (i == 3075)) && ("ContactMatchBuilder".equals(paramBundle))) {
+        this.a.a(paramString);
+      }
+      if (EAddFriendSourceID.a(i)) {
+        SystemMsgListView.a(this.a).c();
       }
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.a = ((ArrayList)paramArrayList.clone());
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.notifyDataSetChanged();
   }
 }
 

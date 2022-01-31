@@ -18,7 +18,6 @@ import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
 import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyOidbHelper;
 import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyRequestParams.Request0x68bParams;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeParam;
@@ -32,12 +31,14 @@ import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.PGCVideoIn
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCPicInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendFeedsTitle;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendInfo;
 import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -49,6 +50,7 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBDoubleField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -57,6 +59,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -79,12 +82,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicBoolean;
-import lou;
-import lov;
 import lox;
+import loy;
 import lpa;
-import lpb;
-import lpc;
 import lpd;
 import lpe;
 import lpf;
@@ -100,9 +100,9 @@ import lpo;
 import lpp;
 import lpq;
 import lpr;
+import lps;
 import lpt;
 import lpu;
-import lpv;
 import lpw;
 import lpx;
 import lpy;
@@ -112,6 +112,10 @@ import lqb;
 import lqc;
 import lqd;
 import lqe;
+import lqf;
+import lqg;
+import lqh;
+import lqi;
 import mqq.os.MqqHandler;
 import tencent.im.oidb.cmd0x46f.oidb_cmd0x46f.DislikeParam;
 import tencent.im.oidb.cmd0x46f.oidb_cmd0x46f.ReqBody;
@@ -147,6 +151,7 @@ import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.ReqBody;
 import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.RspBody;
 import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.SocializeFeedsInfo;
 import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.SocializeFeedsInfoUser;
+import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.TagInfo;
 import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.TopicRecommendFeedsInfo;
 import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.TopicRecommendFeedsTitle;
 import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.TopicRecommendInfo;
@@ -157,6 +162,13 @@ import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.RspBody;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.TopicRecommendFeedsInfo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.TopicRecommendInfo;
+import tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.ReqBody;
+import tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.ReqRecommendTagInfo;
+import tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.ReqSearchTagInfo;
+import tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.RspBody;
+import tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.RspRecommendTagInfo;
+import tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.RspSearchTagInfo;
+import tencent.im.oidb.cmd0xb83.oidb_cmd0xb83.SearchInfo;
 
 public class ArticleInfoModule
   extends ReadInJoyEngineModule
@@ -203,6 +215,7 @@ public class ArticleInfoModule
     }
     Object localObject2;
     label250:
+    label894:
     do
     {
       return localObject1;
@@ -242,11 +255,11 @@ public class ArticleInfoModule
       {
         ((oidb_cmd0x68b.ReqChannelPara)localObject2).uint32_req_video_list.set(1);
         if (!paramRequest0x68bParams.jdField_e_of_type_Boolean) {
-          break label749;
+          break label818;
         }
         ((oidb_cmd0x68b.ReqChannelPara)localObject2).uint32_req_picture_list.set(1);
         if (!paramRequest0x68bParams.jdField_f_of_type_Boolean) {
-          break label761;
+          break label830;
         }
         ((oidb_cmd0x68b.ReqChannelPara)localObject2).uint32_need_force_set_top.set(1);
         if (paramRequest0x68bParams.jdField_a_of_type_ArrayOfByte != null) {
@@ -272,26 +285,36 @@ public class ArticleInfoModule
           localArrayList.add(localObject3);
         }
         if (TextUtils.isEmpty(paramRequest0x68bParams.jdField_a_of_type_JavaLangString)) {
-          break label773;
+          break label894;
         }
         localObject3 = new oidb_cmd0x68b.InnerMsg();
-        ((oidb_cmd0x68b.InnerMsg)localObject3).uint32_jump_src_type.set(3);
+        if (paramRequest0x68bParams.jdField_h_of_type_Int != 5) {
+          break label842;
+        }
+        ((oidb_cmd0x68b.InnerMsg)localObject3).uint32_jump_src_type.set(5);
         ((oidb_cmd0x68b.InnerMsg)localObject3).bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(paramRequest0x68bParams.jdField_a_of_type_JavaLangString));
         if (!TextUtils.isEmpty(paramRequest0x68bParams.jdField_b_of_type_JavaLangString)) {
           ((oidb_cmd0x68b.InnerMsg)localObject3).bytes_title.set(ByteStringMicro.copyFromUtf8(paramRequest0x68bParams.jdField_b_of_type_JavaLangString));
         }
+        if (!TextUtils.isEmpty(paramRequest0x68bParams.jdField_c_of_type_JavaLangString))
+        {
+          ((oidb_cmd0x68b.InnerMsg)localObject3).bytes_push_context.set(ByteStringMicro.copyFromUtf8(paramRequest0x68bParams.jdField_c_of_type_JavaLangString));
+          if (QLog.isColorLevel()) {
+            QLog.d("ArticleInfoModule", 2, "add push contenxt:" + paramRequest0x68bParams.jdField_c_of_type_JavaLangString);
+          }
+        }
         localArrayList.add(localObject3);
         if ((paramRequest0x68bParams.jdField_b_of_type_JavaUtilList == null) || (paramRequest0x68bParams.jdField_b_of_type_JavaUtilList.size() <= 0)) {
-          break label945;
+          break label1066;
         }
         localObject3 = paramRequest0x68bParams.jdField_b_of_type_JavaUtilList.iterator();
         if (!((Iterator)localObject3).hasNext()) {
-          break label945;
+          break label1066;
         }
         localObject4 = (Long)((Iterator)localObject3).next();
         localInnerMsg = new oidb_cmd0x68b.InnerMsg();
         if (paramRequest0x68bParams.jdField_h_of_type_Int <= 0) {
-          break label933;
+          break label1054;
         }
         localInnerMsg.uint32_jump_src_type.set(paramRequest0x68bParams.jdField_h_of_type_Int);
       }
@@ -308,15 +331,22 @@ public class ArticleInfoModule
         localInnerMsg.uint64_algorithm_id.set(paramRequest0x68bParams.jdField_d_of_type_Long);
         localInnerMsg.uint32_strategy_id.set((int)paramRequest0x68bParams.jdField_e_of_type_Long);
         localArrayList.add(localInnerMsg);
-        break label572;
+        break label641;
         ((oidb_cmd0x68b.ReqChannelPara)localObject2).uint32_req_video_list.set(0);
         break;
         ((oidb_cmd0x68b.ReqChannelPara)localObject2).uint32_req_picture_list.set(0);
         break label250;
         ((oidb_cmd0x68b.ReqChannelPara)localObject2).uint32_need_force_set_top.set(0);
         break label266;
+        ((oidb_cmd0x68b.InnerMsg)localObject3).uint32_jump_src_type.set(3);
+        ((oidb_cmd0x68b.InnerMsg)localObject3).bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(paramRequest0x68bParams.jdField_a_of_type_JavaLangString));
+        if (TextUtils.isEmpty(paramRequest0x68bParams.jdField_b_of_type_JavaLangString)) {
+          break label601;
+        }
+        ((oidb_cmd0x68b.InnerMsg)localObject3).bytes_title.set(ByteStringMicro.copyFromUtf8(paramRequest0x68bParams.jdField_b_of_type_JavaLangString));
+        break label601;
         if (paramRequest0x68bParams.jdField_c_of_type_Long == -1L) {
-          break label542;
+          break label611;
         }
         localObject3 = new ArrayList();
         localObject4 = new oidb_cmd0x68b.SubscribeMsg();
@@ -333,14 +363,14 @@ public class ArticleInfoModule
           ((oidb_cmd0x68b.InnerMsg)localObject3).bytes_title.set(ByteStringMicro.copyFromUtf8(paramRequest0x68bParams.jdField_b_of_type_JavaLangString));
         }
         localArrayList.add(localObject3);
-        break label542;
+        break label611;
         localInnerMsg.uint32_jump_src_type.set(1);
       }
       Object localObject3 = SosoInterface.a();
       if (System.currentTimeMillis() - this.jdField_b_of_type_Long > jdField_a_of_type_Long)
       {
         this.jdField_b_of_type_Long = System.currentTimeMillis();
-        ThreadManager.post(new lpi(this), 2, null, true);
+        ThreadManager.post(new lpl(this), 2, null, true);
       }
       if ((localObject3 != null) && (((SosoInterface.SosoLbsInfo)localObject3).a != null))
       {
@@ -393,14 +423,13 @@ public class ArticleInfoModule
       localObject1 = localObject2;
     } while (paramRequest0x68bParams.jdField_b_of_type_JavaUtilList == null);
     label266:
-    label542:
-    label572:
-    label749:
-    label761:
+    label601:
+    label611:
     ((ToServiceMsg)localObject2).getAttributes().put(jdField_f_of_type_JavaLangString, paramRequest0x68bParams.jdField_b_of_type_JavaUtilList);
-    label773:
-    label933:
-    label945:
+    label641:
+    label818:
+    label830:
+    label842:
     return localObject2;
   }
   
@@ -458,7 +487,7 @@ public class ArticleInfoModule
   private void a(int paramInt)
   {
     this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqc(this, paramInt));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqg(this, paramInt));
   }
   
   private void a(long paramLong, int paramInt, oidb_cmd0x8c8.SocializeFeedsInfo paramSocializeFeedsInfo)
@@ -523,12 +552,11 @@ public class ArticleInfoModule
   
   private void a(boolean paramBoolean, int paramInt, List paramList)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqa(this, paramBoolean, paramInt, paramList));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lqe(this, paramBoolean, paramInt, paramList));
   }
   
   private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List paramList, long paramLong1, long paramLong2)
   {
-    boolean bool2 = false;
     if (!paramBoolean1)
     {
       ReadInJoyLogicEngineEventDispatcher.a().b(false, paramInt, null, false);
@@ -540,67 +568,82 @@ public class ArticleInfoModule
       return;
     }
     a(Integer.valueOf(paramInt), paramList, true);
-    if (paramList.isEmpty()) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
+    if (paramList.isEmpty())
     {
-      boolean bool1 = paramBoolean1;
-      if (paramInt == 70)
-      {
-        if (!paramBoolean1)
-        {
-          paramBoolean1 = bool2;
-          if (!paramBoolean2) {}
-        }
-        else
-        {
-          paramBoolean1 = true;
-        }
-        bool1 = paramBoolean1;
+      paramBoolean1 = true;
+      if (paramInt != 70) {
+        break label155;
       }
-      paramList = a(Integer.valueOf(paramInt));
-      if ((paramInt == 70) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (bool1)) {
-        ((KandianMergeManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(161)).a(paramList.size());
+      if ((!paramBoolean1) && (!paramBoolean2)) {
+        break label150;
       }
-      ReadInJoyLogicEngineEventDispatcher.a().b(true, paramInt, paramList, bool1);
+      paramBoolean1 = true;
+    }
+    label150:
+    label155:
+    for (;;)
+    {
+      List localList = a(Integer.valueOf(paramInt));
+      if ((paramInt == 70) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (paramBoolean1)) {
+        ((KandianMergeManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(161)).a(localList.size());
+      }
+      if (paramInt == 0) {
+        ReadinjoyReportUtils.a(paramList, localList, false);
+      }
+      ReadInJoyLogicEngineEventDispatcher.a().b(true, paramInt, localList, paramBoolean1);
       return;
+      paramBoolean1 = false;
+      break;
+      paramBoolean1 = false;
     }
   }
   
-  private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List paramList1, long paramLong1, long paramLong2, List paramList2)
+  private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List paramList1, long paramLong1, long paramLong2, List paramList2, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject;
     if (paramBoolean1)
     {
       if ((paramList1 != null) && (paramList1.size() > 0))
       {
-        localObject = new CopyOnWriteArrayList(paramList1);
-        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
+        paramFromServiceMsg = new CopyOnWriteArrayList(paramList1);
+        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramFromServiceMsg);
       }
       if (paramInt == 70) {
-        break label436;
+        break label482;
       }
-      if (!paramBoolean2) {
-        break label368;
+      if (paramBoolean2)
+      {
+        a(Integer.valueOf(paramInt), paramList1, true);
+        a(paramInt, paramList2);
       }
-      a(Integer.valueOf(paramInt), paramList1, true);
-      a(paramInt, paramList2);
     }
-    for (;;)
+    else
     {
       paramList2 = a(Integer.valueOf(paramInt));
       if ((paramInt == 70) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((paramBoolean2) || ((paramList1 == null) && (paramBoolean1))) && (paramList2 != null)) {
         ((KandianMergeManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(161)).a(paramList2.size());
       }
+      if (paramInt == 0)
+      {
+        paramToServiceMsg = paramToServiceMsg.getAttribute("isRedRefreshReq");
+        if ((paramToServiceMsg == null) || (!(paramToServiceMsg instanceof Boolean))) {
+          break label555;
+        }
+      }
+    }
+    label555:
+    for (boolean bool = ((Boolean)paramToServiceMsg).booleanValue();; bool = false)
+    {
+      ReadinjoyReportUtils.a(paramList1, paramList2, bool);
       ReadInJoyLogicEngineEventDispatcher.a().a(paramBoolean1, paramInt, paramList2, paramBoolean2);
       if ((paramInt == 0) && (paramList2 != null) && (!paramList2.isEmpty()))
       {
         paramLong1 = NetConnInfoCenter.getServerTime();
-        localObject = a(Integer.valueOf(paramInt), (Long)paramList2.get(0));
-        if ((localObject != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)))
+        paramToServiceMsg = a(Integer.valueOf(paramInt), (Long)paramList2.get(0));
+        if ((paramToServiceMsg != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)))
         {
-          paramList1 = PublicAccountUtil.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, (BaseArticleInfo)localObject);
-          localObject = PublicAccountUtil.a((BaseArticleInfo)localObject);
-          PublicAccountUtil.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject, String.valueOf(paramLong1), paramList1, paramBoolean1);
+          paramList1 = PublicAccountUtil.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramToServiceMsg);
+          paramToServiceMsg = PublicAccountUtil.a(paramToServiceMsg);
+          PublicAccountUtil.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramToServiceMsg, String.valueOf(paramLong1), paramList1, paramBoolean1);
         }
       }
       if ((paramInt == 40677) && (paramList2 != null) && (!paramList2.isEmpty()))
@@ -616,36 +659,34 @@ public class ArticleInfoModule
         }
       }
       return;
-      label368:
       if (QLog.isColorLevel()) {
         QLog.e("ArticleInfoModule", 2, "handleRefreshChannel clearChannelArticleInfo channelId=" + paramInt);
       }
+      if ((paramList1 == null) || (paramList1.size() <= 0)) {
+        break;
+      }
+      a(paramInt);
+      a(Integer.valueOf(paramInt), paramList1, true);
+      break;
+      label482:
       if ((paramList1 != null) && (paramList1.size() > 0))
       {
         a(paramInt);
         a(Integer.valueOf(paramInt), paramList1, true);
-        continue;
-        label436:
-        if ((paramList1 != null) && (paramList1.size() > 0))
-        {
-          a(paramInt);
-          a(Integer.valueOf(paramInt), paramList1, true);
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ArticleInfoModule", 2, "articleInfoList is wrong");
-          }
-          a(Integer.valueOf(paramInt), paramList1, true);
-          a(paramInt, paramList2);
-        }
+        break;
       }
+      if (QLog.isColorLevel()) {
+        QLog.e("ArticleInfoModule", 2, "articleInfoList is wrong");
+      }
+      a(Integer.valueOf(paramInt), paramList1, true);
+      a(paramInt, paramList2);
+      break;
     }
   }
   
-  private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List paramList1, long paramLong1, long paramLong2, List paramList2, List paramList3, byte[] paramArrayOfByte, boolean paramBoolean3)
+  private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List paramList1, long paramLong1, long paramLong2, List paramList2, byte[] paramArrayOfByte, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpz(this, paramLong1, paramInt, paramArrayOfByte, paramBoolean1, paramList1, paramBoolean2, paramLong2, paramList2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lqd(this, paramLong1, paramInt, paramArrayOfByte, paramBoolean1, paramList1, paramBoolean2, paramLong2, paramList2, paramToServiceMsg, paramFromServiceMsg));
   }
   
   public static boolean a()
@@ -700,7 +741,7 @@ public class ArticleInfoModule
             {
               b(paramInteger.intValue(), localArticleInfo.mRecommendSeq);
               if (QLog.isColorLevel()) {
-                QLog.e("ArticleInfoModule", 2, "saveArticleInfo, find article vid duplicated! old article: channelID=" + paramInteger + ", id=" + localArticleInfo.mArticleID + "，seq: " + localArticleInfo.mRecommendSeq + ", title: " + ReadInJoyUtils.c(localArticleInfo.mTitle) + "，vid =" + localArticleInfo.mVideoVid + "\n new article  id : " + paramArticleInfo.mArticleID + " seq : " + paramArticleInfo.mRecommendSeq + " title : " + ReadInJoyUtils.c(paramArticleInfo.mTitle) + "，vid =" + paramArticleInfo.mVideoVid);
+                QLog.e("ArticleInfoModule", 2, "saveArticleInfo, find article vid duplicated! old article: channelID=" + paramInteger + ", id=" + localArticleInfo.mArticleID + "，seq: " + localArticleInfo.mRecommendSeq + ", title: " + ReadInJoyUtils.d(localArticleInfo.mTitle) + "，vid =" + localArticleInfo.mVideoVid + "\n new article  id : " + paramArticleInfo.mArticleID + " seq : " + paramArticleInfo.mRecommendSeq + " title : " + ReadInJoyUtils.d(paramArticleInfo.mTitle) + "，vid =" + paramArticleInfo.mVideoVid);
               }
             }
           }
@@ -709,7 +750,7 @@ public class ArticleInfoModule
           {
             localConcurrentHashMap1.put(Long.valueOf(paramArticleInfo.mRecommendSeq), paramArticleInfo);
             if (paramBoolean1) {
-              this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpa(this, paramArticleInfo));
+              this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpd(this, paramArticleInfo));
             }
           }
           return true;
@@ -756,80 +797,77 @@ public class ArticleInfoModule
   
   private void b(int paramInt, List paramList)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqb(this, paramInt, paramList));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lqf(this, paramInt, paramList));
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     oidb_cmd0x68b.RspBody localRspBody = new oidb_cmd0x68b.RspBody();
-    Object localObject1 = (Integer)paramToServiceMsg.getAttributes().get("channelID");
+    Integer localInteger = (Integer)paramToServiceMsg.getAttributes().get("channelID");
     boolean bool3 = false;
     boolean bool2 = false;
-    Object localObject4 = null;
     oidb_cmd0x68b.RspChannelArticle localRspChannelArticle = null;
     Object localObject3 = null;
     Object localObject2 = null;
+    Object localObject1 = null;
     int m = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, localRspBody);
-    paramFromServiceMsg = ReadInJoyUtils.a();
+    paramObject = ReadInJoyUtils.a();
     long l1;
-    label255:
+    label249:
     int i;
-    label281:
-    label304:
-    label335:
+    label275:
+    label299:
+    label330:
     int k;
-    label425:
-    label434:
+    label420:
+    label582:
     int j;
     if (m == 0)
     {
       bool1 = true;
-      ReadInJoyUtils.a(paramFromServiceMsg, bool1, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey"), m, ((Integer)localObject1).intValue());
+      ReadInJoyUtils.a(paramObject, bool1, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey"), m, localInteger.intValue());
       jdField_a_of_type_Boolean = false;
       if (m != 0) {
-        break label1556;
+        break label1665;
       }
       if (!localRspBody.uint64_client_swithes.has()) {
-        break label1537;
+        break label1645;
       }
       l1 = localRspBody.uint64_client_swithes.get();
       if (((l1 >> 9 & 1L) != 1L) || (!localRspBody.msg_rsp_get_follow_tab_data.has())) {
-        break label1521;
+        break label1632;
       }
       localObject2 = (oidb_cmd0x68b.RspGetFollowTabData)localRspBody.msg_rsp_get_follow_tab_data.get();
       if ((!((oidb_cmd0x68b.RspGetFollowTabData)localObject2).bytes_set_top_cookie.has()) || (((oidb_cmd0x68b.RspGetFollowTabData)localObject2).bytes_set_top_cookie.get() == null)) {
-        break label1516;
+        break label1627;
       }
       paramObject = ((oidb_cmd0x68b.RspGetFollowTabData)localObject2).bytes_set_top_cookie.get().toByteArray();
-      paramFromServiceMsg = paramObject;
-      if (((Integer)localObject1).intValue() == 70)
-      {
-        if ((paramObject == null) || (paramObject.length <= 0)) {
-          break label785;
-        }
-        paramFromServiceMsg = paramObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArticleInfoModule", 2, "follow request back cookie is " + new String(paramObject));
-          paramFromServiceMsg = paramObject;
-        }
+      if (localInteger.intValue() != 70) {
+        break label952;
       }
+      if ((paramObject == null) || (paramObject.length <= 0)) {
+        break label936;
+      }
+      if (!QLog.isColorLevel()) {
+        break label952;
+      }
+      QLog.d("ArticleInfoModule", 2, "follow request back cookie is " + new String(paramObject));
       if (!((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_is_no_more_data.has()) {
-        break label1510;
+        break label1621;
       }
       if (((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_is_no_more_data.get() != 1) {
-        break label808;
+        break label955;
       }
       bool1 = true;
       if (!((oidb_cmd0x68b.RspGetFollowTabData)localObject2).rpt_article_list.has()) {
-        break label1505;
+        break label1615;
       }
-      paramObject = ReadInJoyMSFHandlerUtils.a(((oidb_cmd0x68b.RspGetFollowTabData)localObject2).rpt_article_list.get());
+      localObject1 = ReadInJoyMSFHandlerUtils.a(((oidb_cmd0x68b.RspGetFollowTabData)localObject2).rpt_article_list.get());
       if (((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_has_followed_topic.has())
       {
         localObject3 = ReadInJoyLogicEngine.a();
         if (((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_has_followed_topic.get() != 1) {
-          break label814;
+          break label961;
         }
         bool2 = true;
         ((ReadInJoyLogicEngine)localObject3).c(bool2);
@@ -840,142 +878,150 @@ public class ArticleInfoModule
       if ((((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_refresh_topic_update_info.has()) && (((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_refresh_topic_update_info.get() == 1))
       {
         if (!((oidb_cmd0x68b.RspGetFollowTabData)localObject2).topic_update_info.has()) {
-          break label820;
+          break label967;
         }
-        localObject2 = TopicRecommendFeedsInfo.a((oidb_cmd0x68b.TopicRecommendFeedsInfo)((oidb_cmd0x68b.RspGetFollowTabData)localObject2).topic_update_info.get());
-        ReadInJoyLogicEngine.a().a((TopicRecommendFeedsInfo)localObject2);
+        localObject3 = TopicRecommendFeedsInfo.a((oidb_cmd0x68b.TopicRecommendFeedsInfo)((oidb_cmd0x68b.RspGetFollowTabData)localObject2).topic_update_info.get());
+        ReadInJoyLogicEngine.a().a((TopicRecommendFeedsInfo)localObject3);
         ReadInJoyLogicEngine.a().o();
+      }
+      if (((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_hint_index.has())
+      {
+        i = ((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_hint_index.get() - 1;
+        if ((localObject1 != null) && (i > 0) && (i < ((List)localObject1).size())) {
+          ((ArticleInfo)((List)localObject1).get(i)).hintFlag = true;
+        }
+        QLog.d("ArticleInfoModule", 2, "getFollowTabData : hint " + i);
+      }
+      if (((oidb_cmd0x68b.RspGetFollowTabData)localObject2).bytes_refresh_cookie.has())
+      {
+        localObject2 = Base64Util.encodeToString(((oidb_cmd0x68b.RspGetFollowTabData)localObject2).bytes_refresh_cookie.get().toByteArray(), 0);
+        ReadInJoyLogicEngine.a().e((String)localObject2);
+        QLog.d("ArticleInfoModule", 2, "getFollowTabData : lastRefreshCookie " + (String)localObject2);
       }
       i = 1;
       if ((l1 >> 13 & 1L) != 1L) {
-        break label1491;
+        break label1601;
       }
       k = 1;
       j = i;
       i = k;
-      label457:
+      label605:
       if (localRspBody.uint64_uin.has()) {
         localRspBody.uint64_uin.get();
       }
       if ((!localRspBody.rspChannelArticle.has()) || (localRspBody.rspChannelArticle.get() == null) || (j != 0)) {
-        break label1477;
+        break label1585;
       }
       localRspChannelArticle = (oidb_cmd0x68b.RspChannelArticle)localRspBody.rspChannelArticle.get();
       if (localRspChannelArticle.uint64_channel_id.has()) {
-        localObject1 = Integer.valueOf((int)localRspChannelArticle.uint64_channel_id.get());
+        localInteger = Integer.valueOf((int)localRspChannelArticle.uint64_channel_id.get());
       }
       if (localRspChannelArticle.uint32_is_no_more_data.has()) {
         if (localRspChannelArticle.uint32_is_no_more_data.get() != 1) {
-          break label830;
+          break label977;
         }
       }
     }
-    label653:
-    label785:
-    label808:
-    label814:
-    label820:
-    label830:
+    label804:
+    label936:
+    label952:
+    label955:
+    label961:
+    label967:
+    label977:
     for (boolean bool1 = true;; bool1 = false)
     {
-      localObject2 = paramObject;
+      localObject2 = localObject1;
       if (localRspChannelArticle.rpt_article_list.has())
       {
-        localObject2 = paramObject;
+        localObject2 = localObject1;
         if (localRspChannelArticle.rpt_article_list.get() != null) {
-          localObject2 = ReadInJoyMSFHandlerUtils.a(localRspChannelArticle.rpt_article_list.get(), ((Integer)localObject1).intValue());
+          localObject2 = ReadInJoyMSFHandlerUtils.a(localRspChannelArticle.rpt_article_list.get(), localInteger.intValue());
         }
       }
       if ((!localRspChannelArticle.rpt_deleted_article_list.has()) || (localRspChannelArticle.rpt_deleted_article_list.get() == null)) {
-        break label1472;
+        break label1579;
       }
-      paramObject = ReadInJoyMSFHandlerUtils.a(localRspChannelArticle.rpt_deleted_article_list.get(), ((Integer)localObject1).intValue());
-      localObject3 = paramFromServiceMsg;
+      localObject1 = ReadInJoyMSFHandlerUtils.a(localRspChannelArticle.rpt_deleted_article_list.get(), localInteger.intValue());
+      localObject3 = paramObject;
       if (localRspChannelArticle.bytes_set_top_cookie.has())
       {
-        localObject3 = paramFromServiceMsg;
+        localObject3 = paramObject;
         if (localRspChannelArticle.bytes_set_top_cookie.get() != null) {
           localObject3 = localRspChannelArticle.bytes_set_top_cookie.get().toByteArray();
         }
       }
       if ((localRspChannelArticle.rpt_advertise_list.has()) && (localRspChannelArticle.rpt_advertise_list.get() != null))
       {
-        paramFromServiceMsg = (ReadInJoyLogicManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(162);
-        if (paramFromServiceMsg != null) {
-          paramFromServiceMsg.a().a(localRspChannelArticle);
+        paramObject = (ReadInJoyLogicManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(162);
+        if (paramObject != null) {
+          paramObject.a().a(localRspChannelArticle);
         }
       }
-      paramFromServiceMsg = (FromServiceMsg)localObject2;
+      paramObject = localObject2;
       localObject2 = localObject3;
-      label750:
       if (i == 0) {
-        break label836;
+        break label983;
       }
       paramToServiceMsg = (List)paramToServiceMsg.getAttribute(jdField_f_of_type_JavaLangString);
-      a(true, ((Integer)localObject1).intValue(), paramToServiceMsg, paramFromServiceMsg);
+      a(true, localInteger.intValue(), paramToServiceMsg, paramObject);
       return;
       bool1 = false;
       break;
-      paramFromServiceMsg = paramObject;
-      if (!QLog.isColorLevel()) {
-        break label255;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArticleInfoModule", 2, "follow request back cookie is null");
       }
-      QLog.d("ArticleInfoModule", 2, "follow request back cookie is null");
-      paramFromServiceMsg = paramObject;
-      break label255;
+      break label249;
       bool1 = false;
-      break label281;
+      break label275;
       bool2 = false;
-      break label335;
+      break label330;
       ReadInJoyLogicEngine.a().a(null);
-      break label425;
+      break label420;
     }
-    label836:
+    label901:
+    label983:
     if (localRspBody.msg_rsp_trace.has()) {
       ReadInJoyUtils.a(ReadInJoyUtils.a(), localRspBody.msg_rsp_trace.rpt_trace_record_list.get());
     }
+    label1169:
     if ((j == 0) && (((Long)paramToServiceMsg.getAttribute(jdField_d_of_type_JavaLangString)).longValue() == -1L) && (localRspBody.rspRedBonusInfo.has()))
     {
       j = ((Integer)paramToServiceMsg.getAttribute("clientSwithes")).intValue();
       if ((j & 0x4) == 0) {
-        break label1392;
+        break label1499;
       }
       i = 1;
       if ((i == 0) || ((j & 0x8) == 0)) {
-        break label1398;
+        break label1505;
       }
       i = 1;
-      label941:
+      label1088:
       if (i != 0)
       {
         localObject3 = (oidb_cmd0x68b.RspRedBonusInfo)localRspBody.rspRedBonusInfo.get();
         if (!((oidb_cmd0x68b.RspRedBonusInfo)localObject3).uint32_accumlated_days.has()) {
-          break label1404;
+          break label1511;
         }
         i = ((oidb_cmd0x68b.RspRedBonusInfo)localObject3).uint32_accumlated_days.get();
-        label980:
+        label1127:
         if (!((oidb_cmd0x68b.RspRedBonusInfo)localObject3).uint32_required_days.has()) {
-          break label1410;
+          break label1517;
         }
         j = ((oidb_cmd0x68b.RspRedBonusInfo)localObject3).uint32_required_days.get();
-        label1001:
+        label1148:
         if (!((oidb_cmd0x68b.RspRedBonusInfo)localObject3).str_turntable_url.has()) {
-          break label1416;
+          break label1523;
         }
         localObject3 = ((oidb_cmd0x68b.RspRedBonusInfo)localObject3).str_turntable_url.get();
-        label1022:
         if ((i > 0) && (j > 0)) {
           KandianHBManager.a().a(j, i, (String)localObject3);
         }
       }
     }
-    localObject3 = localObject1;
     bool3 = true;
     bool2 = bool1;
-    localObject1 = paramObject;
-    paramObject = paramFromServiceMsg;
     bool1 = bool3;
-    paramFromServiceMsg = (FromServiceMsg)localObject3;
     for (;;)
     {
       switch (((Integer)paramToServiceMsg.getAttribute(jdField_c_of_type_JavaLangString)).intValue())
@@ -985,93 +1031,89 @@ public class ArticleInfoModule
       case 5: 
         l1 = ((Long)paramToServiceMsg.getAttribute(jdField_d_of_type_JavaLangString)).longValue();
         long l2 = ((Long)paramToServiceMsg.getAttribute(jdField_e_of_type_JavaLangString)).longValue();
-        bool3 = ((Boolean)paramToServiceMsg.getAttribute("isSingleHighLight")).booleanValue();
         j = ((Integer)paramToServiceMsg.getAttribute(g)).intValue();
         k = ((Integer)paramToServiceMsg.getAttribute(jdField_b_of_type_JavaLangString)).intValue();
-        localObject3 = (List)paramToServiceMsg.getAttribute(jdField_f_of_type_JavaLangString);
         if (QLog.isColorLevel()) {
           if (paramObject != null) {
-            break label1422;
+            break label1529;
           }
         }
-        label1410:
-        label1416:
-        label1422:
+        label1499:
+        label1505:
+        label1511:
+        label1517:
+        label1523:
+        label1529:
         for (i = 0;; i = paramObject.size())
         {
-          QLog.d("ArticleInfoModule", 2, "handle0x68bGetSubscribeArticalList result=" + m + " channelID=" + paramFromServiceMsg + " beginSeq=" + l1 + " endSeq=" + l2 + " articlecount=" + i + " reqType=" + k);
+          QLog.d("ArticleInfoModule", 2, "handle0x68bGetSubscribeArticalList result=" + m + " channelID=" + localInteger + " beginSeq=" + l1 + " endSeq=" + l2 + " articlecount=" + i + " reqType=" + k);
           if ((m != 154) || (j != 1)) {
-            break label1433;
+            break label1540;
           }
           if (QLog.isColorLevel()) {
-            QLog.d("ArticleInfoModule", 2, "handle0x68bGetSubscribeArticalList re-request" + m + " channelID=" + paramFromServiceMsg + " beginSeq=" + l1 + " endSeq=" + l2);
+            QLog.d("ArticleInfoModule", 2, "handle0x68bGetSubscribeArticalList re-request" + m + " channelID=" + localInteger + " beginSeq=" + l1 + " endSeq=" + l2);
           }
           paramToServiceMsg.getAttributes().put(g, Integer.valueOf(2));
           a(paramToServiceMsg);
           return;
-          label1392:
           i = 0;
           break;
-          label1398:
           i = 0;
-          break label941;
-          label1404:
+          break label1088;
           i = -1;
-          break label980;
+          break label1127;
           j = -1;
-          break label1001;
+          break label1148;
           localObject3 = null;
-          break label1022;
+          break label1169;
         }
-        label1433:
-        a(bool1, paramFromServiceMsg.intValue(), bool2, paramObject, l1, l2, (List)localObject1, (List)localObject3, (byte[])localObject2, bool3);
+        label1540:
+        a(bool1, localInteger.intValue(), bool2, paramObject, l1, l2, (List)localObject1, (byte[])localObject2, paramToServiceMsg, paramFromServiceMsg);
         return;
       }
-      a(bool1, paramFromServiceMsg.intValue(), (List)localObject1);
+      a(bool1, localInteger.intValue(), (List)localObject1);
       return;
-      label1472:
-      paramObject = null;
-      break label653;
-      label1477:
+      label1579:
+      localObject1 = null;
+      break label804;
+      label1585:
       localObject3 = null;
-      localObject2 = paramFromServiceMsg;
-      paramFromServiceMsg = paramObject;
-      paramObject = localObject3;
-      break label750;
-      label1491:
+      localObject2 = paramObject;
+      paramObject = localObject1;
+      localObject1 = localObject3;
+      break label901;
+      label1601:
       k = 0;
       j = i;
       i = k;
-      break label457;
-      label1505:
-      paramObject = null;
-      break label304;
-      label1510:
+      break label605;
+      label1615:
+      localObject1 = null;
+      break label299;
+      label1621:
       bool1 = false;
-      break label281;
-      label1516:
-      paramFromServiceMsg = null;
+      break label275;
+      label1627:
+      paramObject = null;
       break;
-      label1521:
+      label1632:
       i = 0;
-      paramFromServiceMsg = localRspChannelArticle;
+      paramObject = localObject3;
       bool1 = bool2;
-      paramObject = localObject2;
-      break label434;
-      label1537:
+      break label582;
+      label1645:
       i = 0;
       j = 0;
-      paramFromServiceMsg = localObject4;
+      paramObject = localRspChannelArticle;
       bool1 = bool3;
-      paramObject = localObject3;
-      break label457;
-      label1556:
+      localObject1 = localObject2;
+      break label605;
+      label1665:
       paramObject = null;
-      localObject2 = null;
       bool2 = false;
-      paramFromServiceMsg = (FromServiceMsg)localObject1;
       bool1 = false;
       localObject1 = null;
+      localObject2 = null;
     }
   }
   
@@ -1094,7 +1136,7 @@ public class ArticleInfoModule
   
   private void c(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lph(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lpk(this, paramInt));
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1172,7 +1214,7 @@ public class ArticleInfoModule
         try
         {
           paramToServiceMsg = (ArticleInfo)paramToServiceMsg.getAttribute("0x83e_article");
-          this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpj(this, paramToServiceMsg));
+          this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpm(this, paramToServiceMsg));
           return;
         }
         catch (Exception paramToServiceMsg)
@@ -1199,7 +1241,7 @@ public class ArticleInfoModule
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 1, "handle0x83eBiuAtlasDeliverAction result:" + i);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpk(this, i));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lpn(this, i));
   }
   
   private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1213,7 +1255,7 @@ public class ArticleInfoModule
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 1, "handle0x83eDeliverUGCAction result=" + i + ", feedsId=" + l + ", rowkey=" + paramFromServiceMsg + ", status=" + j + ", comment=" + paramToServiceMsg);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpl(this, i, l, paramFromServiceMsg, j, paramToServiceMsg));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lpo(this, i, l, paramFromServiceMsg, j, paramToServiceMsg));
   }
   
   private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1227,7 +1269,7 @@ public class ArticleInfoModule
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 1, "handle0x83eDeliverUpMasterAction result=" + i + ", feedsId=" + l + ", rowkey=" + paramFromServiceMsg + ", status=" + j + ", comment=" + paramToServiceMsg);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpm(this, i, l, paramFromServiceMsg, j, paramToServiceMsg));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lpp(this, i, l, paramFromServiceMsg, j, paramToServiceMsg));
   }
   
   private void i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1258,7 +1300,7 @@ public class ArticleInfoModule
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new lpn(this, i));
+      this.jdField_a_of_type_AndroidOsHandler.post(new lpq(this, i));
       return;
       if (i != 33) {}
     }
@@ -1276,12 +1318,12 @@ public class ArticleInfoModule
       if ((localRspBody.rpt_social_feeds_info.has()) && (localRspBody.rpt_social_feeds_info.get() != null))
       {
         paramToServiceMsg = localRspBody.rpt_social_feeds_info.get();
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpq(this, paramToServiceMsg, paramFromServiceMsg, bool));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpt(this, paramToServiceMsg, paramFromServiceMsg, bool));
       }
       if ((localRspBody.rpt_del_feeds_info_list.has()) && (localRspBody.rpt_del_feeds_info_list.get() != null))
       {
         paramToServiceMsg = localRspBody.rpt_del_feeds_info_list.get();
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpr(this, paramToServiceMsg, paramFromServiceMsg));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpu(this, paramToServiceMsg, paramFromServiceMsg));
       }
       return;
     }
@@ -1293,6 +1335,27 @@ public class ArticleInfoModule
       return;
     }
     QLog.d("ArticleInfoModule", 1, "retry times:" + i + " exceeds");
+  }
+  
+  private void k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    paramToServiceMsg = new oidb_cmd0xb83.RspBody();
+    int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    paramFromServiceMsg = new ArrayList();
+    if (i == 0)
+    {
+      QLog.d("ArticleInfoModule", 1, "handle0xb83GetKeywordList result OK");
+      paramObject = ReadInJoyMSFHandlerUtils.c(paramToServiceMsg.msg_rsp_search_tag_info.rpt_msg_tag_info_list.get());
+      paramToServiceMsg = ReadInJoyMSFHandlerUtils.c(paramToServiceMsg.msg_rsp_recommend_tag_info.rpt_msg_tag_info_list.get());
+      paramFromServiceMsg.addAll(paramObject);
+      paramFromServiceMsg.addAll(paramToServiceMsg);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.post(new lqc(this, paramFromServiceMsg));
+      return;
+      QLog.d("ArticleInfoModule", 2, "handle0xb83GetKeywordList: failed, result: " + i);
+    }
   }
   
   public int a(Integer paramInteger)
@@ -1423,9 +1486,22 @@ public class ArticleInfoModule
   
   public ArticleInfo a(Integer paramInteger)
   {
-    paramInteger = (List)this.jdField_b_of_type_JavaUtilMap.get(paramInteger);
-    if ((paramInteger != null) && (!paramInteger.isEmpty())) {
-      return (ArticleInfo)paramInteger.get(paramInteger.size() - 1);
+    List localList = (List)this.jdField_b_of_type_JavaUtilMap.get(paramInteger);
+    if ((localList != null) && (!localList.isEmpty()))
+    {
+      if (paramInteger.intValue() == 70)
+      {
+        int i = 0;
+        while (i < localList.size())
+        {
+          paramInteger = (ArticleInfo)localList.get(i);
+          if (paramInteger.hintFlag) {
+            return paramInteger;
+          }
+          i += 1;
+        }
+      }
+      return (ArticleInfo)localList.get(localList.size() - 1);
     }
     return null;
   }
@@ -1542,10 +1618,10 @@ public class ArticleInfoModule
         }
         ((ArticleInfo)localObject).invalidateProteusTemplateBean();
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpx(this, localArticleInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqa(this, localArticleInfo));
       i += 1;
       break;
-      this.jdField_a_of_type_AndroidOsHandler.post(new lpy(this, paramInt1, paramInt2));
+      this.jdField_a_of_type_AndroidOsHandler.post(new lqb(this, paramInt1, paramInt2));
       return;
     }
   }
@@ -1556,7 +1632,7 @@ public class ArticleInfoModule
       return;
     }
     List localList = a(Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lov(this, localList, paramInt1, paramInt2, paramLong, paramBoolean));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new loy(this, localList, paramInt1, paramInt2, paramLong, paramBoolean));
   }
   
   public void a(int paramInt, long paramLong)
@@ -1607,7 +1683,7 @@ public class ArticleInfoModule
     int j = ((ConcurrentHashMap)localObject2).size() - ((ArrayList)localObject1).size();
     if (j < paramInt2)
     {
-      Collections.sort((List)localObject1, new lqd(this));
+      Collections.sort((List)localObject1, new lqh(this));
       int i = 0;
       for (;;)
       {
@@ -1630,7 +1706,7 @@ public class ArticleInfoModule
       a(Integer.valueOf(paramInt1), localArticleInfo);
     }
     localObject2 = a(Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqe(this, paramInt1, (List)localObject2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lqi(this, paramInt1, (List)localObject2));
     localObject1 = new StringBuilder().append("delete outdated article cache , cnt ").append(((ArrayList)localObject1).size()).append(", reservedCnt : ");
     if (j < paramInt2) {}
     for (;;)
@@ -1689,7 +1765,7 @@ public class ArticleInfoModule
       }
       a(Integer.valueOf(paramInt), paramList);
       ((ConcurrentHashMap)localObject1).remove(Long.valueOf(paramList.mRecommendSeq));
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpc(this, paramList));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpf(this, paramList));
       break label150;
       if (((StringBuilder)localObject2).length() <= 0) {
         break;
@@ -1697,6 +1773,15 @@ public class ArticleInfoModule
       QLog.e("ArticleInfoModule", 2, ((StringBuilder)localObject2).toString());
       return;
     }
+  }
+  
+  public void a(long paramLong)
+  {
+    oidb_cmd0xb83.ReqRecommendTagInfo localReqRecommendTagInfo = new oidb_cmd0xb83.ReqRecommendTagInfo();
+    localReqRecommendTagInfo.uint64_topic_id.set(paramLong);
+    oidb_cmd0xb83.ReqBody localReqBody = new oidb_cmd0xb83.ReqBody();
+    localReqBody.msg_req_recommend_tag_info.set(localReqRecommendTagInfo);
+    a(ReadInJoyOidbHelper.a("OidbSvc.0xb83", 2947, 0, localReqBody.toByteArray()));
   }
   
   public void a(long paramLong, int paramInt)
@@ -1717,10 +1802,10 @@ public class ArticleInfoModule
   
   public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpo(this, paramLong, paramInt1, paramInt2, paramBoolean));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpr(this, paramLong, paramInt1, paramInt2, paramBoolean));
   }
   
-  public void a(long paramLong1, long paramLong2, int paramInt1, HashMap paramHashMap, int paramInt2)
+  public void a(long paramLong1, long paramLong2, int paramInt1, HashMap paramHashMap, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
     oidb_cmd0x68b.ReqBody localReqBody = new oidb_cmd0x68b.ReqBody();
     long l = Long.valueOf(ReadInJoyUtils.a()).longValue();
@@ -1764,10 +1849,19 @@ public class ArticleInfoModule
         QLog.d("ArticleInfoModule", 1, "request0x68bFollowList: cookie: " + new String(paramHashMap));
       }
     }
+    if (!TextUtils.isEmpty(paramString1)) {
+      localReqBody.msg_get_follow_tab_feeds_para.bytes_red_dot_cookie.set(ByteStringMicro.copyFromUtf8(paramString1));
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      localReqBody.msg_get_follow_tab_feeds_para.bytes_refresh_cookie.set(ByteStringMicro.copyFrom(Base64Util.decode(paramString2, 0)));
+    }
+    if (!TextUtils.isEmpty(paramString3)) {
+      localReqBody.msg_get_follow_tab_feeds_para.bytes_last_feed_cookie.set(ByteStringMicro.copyFromUtf8(paramString3));
+    }
     localReqBody.msg_get_follow_tab_feeds_para.uint32_update_times.set(paramInt1);
     localReqBody.msg_get_follow_tab_feeds_para.uint32_enter_topic_reddot_time.set(paramInt2);
     if (QLog.isColorLevel()) {
-      QLog.d("ArticleInfoModule", 1, "request0x68bFollowList: beginRecommendSeq: " + paramLong1 + "endRecommendSeq: " + paramLong2 + "upDate_times" + paramInt1);
+      QLog.d("ArticleInfoModule", 1, "request0x68bFollowList: beginRecommendSeq : " + paramLong1 + ", endRecommendSeq : " + paramLong2 + ", upDate_times : " + paramInt1 + ", reddotCookie : " + paramString1 + ", lastRefreshCookie : " + paramString2 + ", lastFeedsCookie : " + paramString3);
     }
     paramHashMap = ReadInJoyOidbHelper.a("OidbSvc.0x68b", 1675, 0, localReqBody.toByteArray());
     paramHashMap.getAttributes().put(jdField_c_of_type_JavaLangString, Integer.valueOf(5));
@@ -2181,13 +2275,13 @@ public class ArticleInfoModule
       return;
     }
     jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lou(this, paramRequest0x68bParams));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lox(this, paramRequest0x68bParams));
   }
   
   public void a(ArticleInfo paramArticleInfo)
   {
     if (paramArticleInfo != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpp(this, paramArticleInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lps(this, paramArticleInfo));
     }
   }
   
@@ -2259,8 +2353,13 @@ public class ArticleInfoModule
         e(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
-    } while (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x8c8"));
-    j(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x8c8"))
+      {
+        j(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xb83"));
+    k(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
   public void a(Integer paramInteger, byte[] paramArrayOfByte)
@@ -2287,7 +2386,7 @@ public class ArticleInfoModule
       a(localChannelTopCookie1);
       try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpg(this, localChannelTopCookie1));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpj(this, localChannelTopCookie1));
         return;
       }
       catch (Exception paramInteger)
@@ -2304,6 +2403,26 @@ public class ArticleInfoModule
           localChannelTopCookie1 = localChannelTopCookie2;
         }
       }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    oidb_cmd0xb83.ReqBody localReqBody = new oidb_cmd0xb83.ReqBody();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      oidb_cmd0xb83.SearchInfo localSearchInfo = new oidb_cmd0xb83.SearchInfo();
+      localSearchInfo.bytes_key.set(ByteStringMicro.copyFromUtf8(paramString));
+      paramString = new oidb_cmd0xb83.ReqSearchTagInfo();
+      paramString.rpt_msg_search_info_list.add(localSearchInfo);
+      localReqBody.msg_req_search_tag_info.set(paramString);
+    }
+    for (;;)
+    {
+      a(ReadInJoyOidbHelper.a("OidbSvc.0xb83", 2947, 0, localReqBody.toByteArray()));
+      return;
+      paramString = new oidb_cmd0xb83.ReqRecommendTagInfo();
+      localReqBody.msg_req_recommend_tag_info.set(paramString);
     }
   }
   
@@ -2481,92 +2600,107 @@ public class ArticleInfoModule
     {
       label78:
       oidb_cmd0x83e.FeedsInfo localFeedsInfo;
+      int i;
       break label78;
     }
     localReqBody.uint64_uin.set(l1);
     localReqBody.uint32_operation.set(5);
-    if (!TextUtils.isEmpty(paramString2)) {
+    if (!TextUtils.isEmpty(paramString2))
+    {
       localReqBody.bytes_comment.set(ByteStringMicro.copyFromUtf8(paramString2));
+      localReqBody.bool_is_master.set(true);
+      localFeedsInfo = new oidb_cmd0x83e.FeedsInfo();
+      i = paramBundle.getInt("arg_ad_tag");
+      if (i != 12) {
+        break label401;
+      }
+      localFeedsInfo.feeds_type.set(4);
+      label159:
+      i = 0;
+    }
+    try
+    {
+      int j = Integer.parseInt(paramBundle.getString("arg_topic_id"));
+      i = j;
+    }
+    catch (Exception paramString1)
+    {
+      label178:
+      oidb_cmd0x83e.SocializeFeedsInfo localSocializeFeedsInfo;
+      oidb_cmd0x83e.UGCFeedsInfo localUGCFeedsInfo;
+      Object localObject;
+      break label178;
+    }
+    localFeedsInfo.uint32_business_id.set(i);
+    if (paramBoolean2) {
+      localReqBody.enum_ugc_src.set(1);
+    }
+    localSocializeFeedsInfo = new oidb_cmd0x83e.SocializeFeedsInfo();
+    paramString1 = new oidb_cmd0x83e.SocializeFeedsInfoUser();
+    paramString1.uint64_uin.set(l1);
+    paramString1.enum_uin_type.set(0);
+    localSocializeFeedsInfo.msg_master_uin.set(paramString1);
+    if (!TextUtils.isEmpty(paramString2)) {
+      localSocializeFeedsInfo.bytes_comments.set(ByteStringMicro.copyFromUtf8(paramString2));
     }
     for (;;)
     {
-      localReqBody.bool_is_master.set(true);
-      localFeedsInfo = new oidb_cmd0x83e.FeedsInfo();
-      int i = paramBundle.getInt("arg_ad_tag");
-      if (i == 12)
-      {
-        localFeedsInfo.feeds_type.set(4);
-        label159:
-        i = 0;
+      localUGCFeedsInfo = new oidb_cmd0x83e.UGCFeedsInfo();
+      paramString1 = paramBundle.getParcelableArrayList("arg_ugc_tag_list");
+      if (paramString1 == null) {
+        break label437;
       }
-      try
+      paramString1 = paramString1.iterator();
+      while (paramString1.hasNext())
       {
-        int j = Integer.parseInt(paramBundle.getString("arg_topic_id"));
-        i = j;
+        paramString2 = (TagInfo)paramString1.next();
+        localObject = new oidb_cmd0x83e.TagInfo();
+        ((oidb_cmd0x83e.TagInfo)localObject).uint64_tag_id.set(paramString2.a());
+        ((oidb_cmd0x83e.TagInfo)localObject).bytes_tag_name.set(ByteStringMicro.copyFromUtf8(paramString2.a()));
+        ((oidb_cmd0x83e.TagInfo)localObject).double_tag_score.set(paramString2.a());
+        ((oidb_cmd0x83e.TagInfo)localObject).uint64_channel.set(paramString2.b());
+        localUGCFeedsInfo.rpt_msg_tag_info_list.add((MessageMicro)localObject);
       }
-      catch (Exception paramString1)
+      localReqBody.bytes_comment.set(ByteStringMicro.copyFromUtf8(""));
+      break;
+      label401:
+      if (i != 13) {
+        break label159;
+      }
+      localFeedsInfo.feeds_type.set(5);
+      break label159;
+      localSocializeFeedsInfo.bytes_comments.set(ByteStringMicro.copyFromUtf8(""));
+    }
+    label437:
+    if (paramArrayList != null)
+    {
+      paramString1 = new oidb_cmd0x83e.BiuMultiLevel();
+      i = paramArrayList.size() - 1;
+      for (;;)
       {
-        label178:
-        oidb_cmd0x83e.SocializeFeedsInfo localSocializeFeedsInfo;
-        oidb_cmd0x83e.UGCFeedsInfo localUGCFeedsInfo;
-        oidb_cmd0x83e.BiuOneLevelItem localBiuOneLevelItem;
-        break label178;
-      }
-      localFeedsInfo.uint32_business_id.set(i);
-      if (paramBoolean2) {
-        localReqBody.enum_ugc_src.set(1);
-      }
-      localSocializeFeedsInfo = new oidb_cmd0x83e.SocializeFeedsInfo();
-      paramString1 = new oidb_cmd0x83e.SocializeFeedsInfoUser();
-      paramString1.uint64_uin.set(l1);
-      paramString1.enum_uin_type.set(0);
-      localSocializeFeedsInfo.msg_master_uin.set(paramString1);
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        localSocializeFeedsInfo.bytes_comments.set(ByteStringMicro.copyFromUtf8(paramString2));
-        localUGCFeedsInfo = new oidb_cmd0x83e.UGCFeedsInfo();
-        if (paramArrayList == null) {
-          break label464;
-        }
-        paramString1 = new oidb_cmd0x83e.BiuMultiLevel();
-        i = paramArrayList.size() - 1;
-        label295:
         if (i >= 0)
         {
           paramString2 = (ReadInJoyBaseDeliverActivity.UserBiuInfo)paramArrayList.get(i);
-          localBiuOneLevelItem = new oidb_cmd0x83e.BiuOneLevelItem();
-        }
-      }
-      else
-      {
-        try
-        {
-          localBiuOneLevelItem.uint64_uin.set(Long.valueOf(paramString2.jdField_a_of_type_JavaLangString).longValue());
-          localBiuOneLevelItem.bytes_biu_comments.set(ByteStringMicro.copyFromUtf8(paramString2.b.toString()));
-          localBiuOneLevelItem.op_type.set(paramString2.jdField_d_of_type_Int);
-          paramString1.rpt_biu_mutli_level.add(localBiuOneLevelItem);
-          i -= 1;
-          break label295;
-          localReqBody.bytes_comment.set(ByteStringMicro.copyFromUtf8(""));
-          continue;
-          if (i != 13) {
-            break label159;
-          }
-          localFeedsInfo.feeds_type.set(5);
-          break label159;
-          localSocializeFeedsInfo.bytes_comments.set(ByteStringMicro.copyFromUtf8(""));
-        }
-        catch (Exception localException)
-        {
-          for (;;)
+          localObject = new oidb_cmd0x83e.BiuOneLevelItem();
+          try
           {
-            localBiuOneLevelItem.uint64_uin.set(0L);
+            ((oidb_cmd0x83e.BiuOneLevelItem)localObject).uint64_uin.set(Long.valueOf(paramString2.jdField_a_of_type_JavaLangString).longValue());
+            ((oidb_cmd0x83e.BiuOneLevelItem)localObject).bytes_biu_comments.set(ByteStringMicro.copyFromUtf8(paramString2.b.toString()));
+            ((oidb_cmd0x83e.BiuOneLevelItem)localObject).op_type.set(paramString2.jdField_d_of_type_Int);
+            paramString1.rpt_biu_mutli_level.add((MessageMicro)localObject);
+            i -= 1;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              ((oidb_cmd0x83e.BiuOneLevelItem)localObject).uint64_uin.set(0L);
+            }
           }
         }
       }
+      localUGCFeedsInfo.msg_at_multi_level.set(paramString1);
     }
-    localUGCFeedsInfo.msg_at_multi_level.set(paramString1);
-    label464:
     if (paramBoolean1) {
       localUGCFeedsInfo.enum_ugc_feeds_src.set(1);
     }
@@ -2614,12 +2748,12 @@ public class ArticleInfoModule
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpf(this, paramList));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lpi(this, paramList));
   }
   
   public void a(boolean paramBoolean, int paramInt, List paramList1, List paramList2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpu(this, paramBoolean, paramList1, paramList2, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lpx(this, paramBoolean, paramList1, paramList2, paramInt));
   }
   
   public boolean a(int paramInt1, int paramInt2)
@@ -2669,10 +2803,10 @@ public class ArticleInfoModule
         }
         ((ArticleInfo)localObject).invalidateProteusTemplateBean();
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpv(this, localArticleInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpy(this, localArticleInfo));
       paramInt1 += 1;
       break;
-      this.jdField_a_of_type_AndroidOsHandler.post(new lpw(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new lpz(this));
       return true;
     }
   }
@@ -2683,7 +2817,7 @@ public class ArticleInfoModule
     for (String str = "mChannelID = ? and mRecommendSeq < ?";; str = "mChannelID = ? and mRecommendSeq > ?")
     {
       QLog.i("ArticleInfoModule", 1, "loadMoreChannelArticleList with selection=" + str + "channelId=" + paramInt1 + "recommendSeq=" + paramLong + "count=" + paramInt2);
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lox(this, str, paramInt1, paramLong, paramInt2, paramInt3, paramInt4, paramInt6, paramBoolean, paramInt5));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpa(this, str, paramInt1, paramLong, paramInt2, paramInt3, paramInt4, paramInt6, paramBoolean, paramInt5));
       return true;
     }
   }
@@ -2811,7 +2945,7 @@ public class ArticleInfoModule
     return;
     a(Integer.valueOf(paramInt), localArticleInfo);
     localConcurrentHashMap.remove(Long.valueOf(paramLong));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpd(this, localArticleInfo));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpg(this, localArticleInfo));
   }
   
   public boolean b(Long paramLong)
@@ -2843,7 +2977,7 @@ public class ArticleInfoModule
     while (localIterator.hasNext()) {
       localArrayList.add((ArticleInfo)paramInteger.get((Long)localIterator.next()));
     }
-    Collections.sort(localArrayList, new lpb(this));
+    Collections.sort(localArrayList, new lpe(this));
     return localArrayList;
   }
   
@@ -2868,7 +3002,7 @@ public class ArticleInfoModule
   
   public void f()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpe(this));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lph(this));
   }
   
   public void g()
@@ -2881,7 +3015,7 @@ public class ArticleInfoModule
   
   public void h()
   {
-    ThreadManager.getUIHandler().post(new lpt(this));
+    ThreadManager.getUIHandler().post(new lpw(this));
   }
 }
 

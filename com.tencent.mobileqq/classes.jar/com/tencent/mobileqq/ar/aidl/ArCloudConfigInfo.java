@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
+import aaen;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -13,14 +14,14 @@ import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 import com.tencent.mobileqq.ar.model.ArWebInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import zzt;
 
 public class ArCloudConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new zzt();
+  public static final Parcelable.Creator CREATOR = new aaen();
   public static int f = 3;
   public int a;
+  public ArCloudConfigInfo.WorldCupResPath a;
   public ARRelationShip a;
   public ArAwardInfo a;
   public ArFeatureInfo a;
@@ -113,17 +114,17 @@ public class ArCloudConfigInfo
   
   public boolean b()
   {
-    return (this.g == 1) && (this.d == 7);
+    return this.d == 88;
   }
   
   public boolean c()
   {
-    return this.c == 0;
+    return (this.g == 1) && (this.d == 7);
   }
   
   public boolean d()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.c == 0;
   }
   
   public int describeContents()
@@ -133,10 +134,15 @@ public class ArCloudConfigInfo
   
   public boolean e()
   {
-    return (this.d != 6) && ((!d()) || (this.e != 0));
+    return this.jdField_a_of_type_Int == 1;
   }
   
   public boolean f()
+  {
+    return (this.d != 6) && ((!e()) || (this.e != 0));
+  }
+  
+  public boolean g()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) {
       return false;
@@ -144,7 +150,7 @@ public class ArCloudConfigInfo
     return this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.b;
   }
   
-  public boolean g()
+  public boolean h()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) {}
     while (((this.jdField_a_of_type_Int != 1) || (this.e != 1)) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString))) {
@@ -153,23 +159,23 @@ public class ArCloudConfigInfo
     return true;
   }
   
-  public boolean h()
+  public boolean i()
   {
     return this.c == 2;
   }
   
-  public boolean i()
+  public boolean j()
   {
     return this.c == 1;
   }
   
-  public boolean j()
+  public boolean k()
   {
     boolean bool = true;
     if (this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) {
       return false;
     }
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int != 1) && (!c())) {}
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int != 1) && (!d())) {}
     for (;;)
     {
       return bool;

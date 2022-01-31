@@ -1,16 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.qcall.QCallStartBrigeActivity;
 
 public class agvm
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public agvm(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agvm(QCallStartBrigeActivity paramQCallStartBrigeActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(8);
+    QCallStartBrigeActivity.a(this.a);
   }
 }
 

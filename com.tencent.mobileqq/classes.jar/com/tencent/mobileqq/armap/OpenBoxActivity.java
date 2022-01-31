@@ -117,7 +117,7 @@ public class OpenBoxActivity
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
     getWindow().addFlags(128);
-    setContentView(2130970206);
+    setContentView(2130970222);
     paramBundle = getIntent();
     if (paramBundle != null)
     {
@@ -132,11 +132,11 @@ public class OpenBoxActivity
       this.mWishing = paramBundle.getStringExtra("wishing");
       this.mBusiJumpUrl = paramBundle.getStringExtra("business_url");
     }
-    this.mGLSurfaceView = ((ARGLSurfaceView)findViewById(2131365921));
-    this.mCameraSurfaceView = ((CameraSurfaceView)findViewById(2131369498));
+    this.mGLSurfaceView = ((ARGLSurfaceView)findViewById(2131365948));
+    this.mCameraSurfaceView = ((CameraSurfaceView)findViewById(2131369575));
     this.mCameraSurfaceView.setCameraSurfaceCallBack(this);
-    findViewById(2131369623).setOnClickListener(this);
-    this.tvAnim = ((TextView)findViewById(2131369624));
+    findViewById(2131369700).setOnClickListener(this);
+    this.tvAnim = ((TextView)findViewById(2131369701));
     initSurface();
     addObserver(this.mARMapObserver);
     return true;
@@ -192,7 +192,7 @@ public class OpenBoxActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369623) {
+    if (paramView.getId() == 2131369700) {
       this.mGLSurfaceView.runOnGlThread(new OpenBoxActivity.3(this));
     }
   }

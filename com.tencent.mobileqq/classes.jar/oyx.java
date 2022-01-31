@@ -1,14 +1,18 @@
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.mobileqq.webview.webso.WebSoService;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.biz.troopgift.RadioButtonIndicator;
 
 public class oyx
-  implements Runnable
+  extends RadioButton
 {
-  public oyx(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, String paramString) {}
-  
-  public void run()
+  public oyx(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
   {
-    WebSoService.a().a(this.jdField_a_of_type_JavaLangString, null);
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 

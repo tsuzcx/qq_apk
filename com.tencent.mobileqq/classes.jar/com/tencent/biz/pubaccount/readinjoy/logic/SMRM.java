@@ -30,7 +30,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import lon;
+import loq;
 import mqq.app.AppRuntime;
 
 public class SMRM
@@ -183,7 +183,7 @@ public class SMRM
     int j;
     int i2;
     int m;
-    lon locallon;
+    loq localloq;
     Cursor localCursor2;
     Cursor localCursor1;
     while (localIterator.hasNext())
@@ -206,10 +206,10 @@ public class SMRM
           j = 0;
           i2 = 0;
           m = 0;
-          locallon = null;
+          localloq = null;
           localCursor2 = null;
           localCursor1 = localCursor2;
-          localObject = locallon;
+          localObject = localloq;
         }
       }
     }
@@ -220,10 +220,10 @@ public class SMRM
       {
         String str = MessageRecord.getTableName(localRecentUser.uin, localRecentUser.type);
         localCursor1 = localCursor2;
-        localObject = locallon;
+        localObject = localloq;
         long l = b();
         localCursor1 = localCursor2;
-        localObject = locallon;
+        localObject = localloq;
         localCursor2 = localSQLiteDatabase.query(str, new String[] { "issend" }, "time>?", new String[] { String.valueOf(l) }, null, null, "time");
         k = i2;
         i = i1;
@@ -258,26 +258,26 @@ public class SMRM
         }
         localCursor1 = localCursor2;
         localObject = localCursor2;
-        locallon = new lon();
+        localloq = new loq();
         localCursor1 = localCursor2;
         localObject = localCursor2;
-        locallon.jdField_a_of_type_Int = k;
+        localloq.jdField_a_of_type_Int = k;
         localCursor1 = localCursor2;
         localObject = localCursor2;
-        locallon.jdField_b_of_type_Int = i;
+        localloq.jdField_b_of_type_Int = i;
         localCursor1 = localCursor2;
         localObject = localCursor2;
-        locallon.jdField_a_of_type_Long = Long.parseLong(localRecentUser.uin);
+        localloq.jdField_a_of_type_Long = Long.parseLong(localRecentUser.uin);
         localCursor1 = localCursor2;
         localObject = localCursor2;
-        localLinkedList.add(locallon);
+        localLinkedList.add(localloq);
         localCursor1 = localCursor2;
         localObject = localCursor2;
         if (a())
         {
           localCursor1 = localCursor2;
           localObject = localCursor2;
-          QLog.d("SMRM", 2, locallon.toString());
+          QLog.d("SMRM", 2, localloq.toString());
         }
         if (localCursor2 == null) {
           break;
@@ -342,11 +342,11 @@ public class SMRM
         localObject = (Friends)localObject;
         if (localFriendsManager.a(((Friends)localObject).uin) != null)
         {
-          lon locallon = new lon();
-          locallon.jdField_a_of_type_Long = Long.parseLong(((Friends)localObject).uin);
-          localLinkedList.add(locallon);
+          loq localloq = new loq();
+          localloq.jdField_a_of_type_Long = Long.parseLong(((Friends)localObject).uin);
+          localLinkedList.add(localloq);
           if (a()) {
-            QLog.d("SMRM", 2, locallon.toString());
+            QLog.d("SMRM", 2, localloq.toString());
           }
         }
       }
@@ -636,19 +636,19 @@ public class SMRM
     //   650: aload 7
     //   652: invokevirtual 401	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   655: ifeq +40 -> 695
-    //   658: new 328	lon
+    //   658: new 328	loq
     //   661: dup
-    //   662: invokespecial 329	lon:<init>	()V
+    //   662: invokespecial 329	loq:<init>	()V
     //   665: astore 9
     //   667: aload 9
     //   669: aload 9
-    //   671: getfield 331	lon:jdField_a_of_type_Int	I
+    //   671: getfield 331	loq:jdField_a_of_type_Int	I
     //   674: iconst_1
     //   675: iadd
-    //   676: putfield 331	lon:jdField_a_of_type_Int	I
+    //   676: putfield 331	loq:jdField_a_of_type_Int	I
     //   679: aload 9
     //   681: iconst_1
-    //   682: putfield 333	lon:jdField_b_of_type_Int	I
+    //   682: putfield 333	loq:jdField_b_of_type_Int	I
     //   685: iconst_1
     //   686: istore_2
     //   687: aload 7
@@ -669,7 +669,7 @@ public class SMRM
     //   719: aload 9
     //   721: ifnull +32 -> 753
     //   724: aload 9
-    //   726: getfield 333	lon:jdField_b_of_type_Int	I
+    //   726: getfield 333	loq:jdField_b_of_type_Int	I
     //   729: iconst_3
     //   730: if_icmplt +23 -> 753
     //   733: aload 23
@@ -727,19 +727,19 @@ public class SMRM
     //   880: aload 10
     //   882: invokeinterface 252 1 0
     //   887: ifle -120 -> 767
-    //   890: new 328	lon
+    //   890: new 328	loq
     //   893: dup
-    //   894: invokespecial 329	lon:<init>	()V
+    //   894: invokespecial 329	loq:<init>	()V
     //   897: astore 9
     //   899: aload 9
     //   901: aload 7
     //   903: invokestatic 258	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   906: putfield 335	lon:jdField_a_of_type_Long	J
+    //   906: putfield 335	loq:jdField_a_of_type_Long	J
     //   909: aload 9
     //   911: aload 22
     //   913: getfield 285	com/tencent/mobileqq/data/RecentUser:uin	Ljava/lang/String;
     //   916: invokestatic 258	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   919: putfield 420	lon:jdField_b_of_type_Long	J
+    //   919: putfield 420	loq:jdField_b_of_type_Long	J
     //   922: aload 10
     //   924: invokeinterface 266 1 0
     //   929: astore 10
@@ -748,37 +748,37 @@ public class SMRM
     //   938: ifeq +333 -> 1271
     //   941: aload 10
     //   943: invokeinterface 62 1 0
-    //   948: checkcast 328	lon
+    //   948: checkcast 328	loq
     //   951: astore 12
     //   953: aload 9
     //   955: aload 9
-    //   957: getfield 331	lon:jdField_a_of_type_Int	I
+    //   957: getfield 331	loq:jdField_a_of_type_Int	I
     //   960: aload 12
-    //   962: getfield 331	lon:jdField_a_of_type_Int	I
+    //   962: getfield 331	loq:jdField_a_of_type_Int	I
     //   965: iadd
-    //   966: putfield 331	lon:jdField_a_of_type_Int	I
+    //   966: putfield 331	loq:jdField_a_of_type_Int	I
     //   969: aload 9
     //   971: aload 9
-    //   973: getfield 333	lon:jdField_b_of_type_Int	I
+    //   973: getfield 333	loq:jdField_b_of_type_Int	I
     //   976: aload 12
-    //   978: getfield 333	lon:jdField_b_of_type_Int	I
+    //   978: getfield 333	loq:jdField_b_of_type_Int	I
     //   981: iadd
-    //   982: putfield 333	lon:jdField_b_of_type_Int	I
+    //   982: putfield 333	loq:jdField_b_of_type_Int	I
     //   985: aload 9
     //   987: aload 9
-    //   989: getfield 422	lon:d	I
+    //   989: getfield 422	loq:d	I
     //   992: iconst_1
     //   993: iadd
-    //   994: putfield 422	lon:d	I
+    //   994: putfield 422	loq:d	I
     //   997: aload 9
-    //   999: getfield 424	lon:c	I
+    //   999: getfield 424	loq:c	I
     //   1002: aload 12
-    //   1004: getfield 333	lon:jdField_b_of_type_Int	I
+    //   1004: getfield 333	loq:jdField_b_of_type_Int	I
     //   1007: if_icmpge -76 -> 931
     //   1010: aload 9
     //   1012: aload 12
-    //   1014: getfield 333	lon:jdField_b_of_type_Int	I
-    //   1017: putfield 424	lon:c	I
+    //   1014: getfield 333	loq:jdField_b_of_type_Int	I
+    //   1017: putfield 424	loq:c	I
     //   1020: goto -89 -> 931
     //   1023: astore 7
     //   1025: aload 8
@@ -797,10 +797,10 @@ public class SMRM
     //   1057: ifnonnull +97 -> 1154
     //   1060: aload 13
     //   1062: aload 13
-    //   1064: getfield 331	lon:jdField_a_of_type_Int	I
+    //   1064: getfield 331	loq:jdField_a_of_type_Int	I
     //   1067: iconst_1
     //   1068: iadd
-    //   1069: putfield 331	lon:jdField_a_of_type_Int	I
+    //   1069: putfield 331	loq:jdField_a_of_type_Int	I
     //   1072: aload 14
     //   1074: astore 6
     //   1076: aload 13
@@ -826,10 +826,10 @@ public class SMRM
     //   1124: pop
     //   1125: aload 13
     //   1127: aload 13
-    //   1129: getfield 333	lon:jdField_b_of_type_Int	I
+    //   1129: getfield 333	loq:jdField_b_of_type_Int	I
     //   1132: iconst_1
     //   1133: iadd
-    //   1134: putfield 333	lon:jdField_b_of_type_Int	I
+    //   1134: putfield 333	loq:jdField_b_of_type_Int	I
     //   1137: aload 7
     //   1139: astore 6
     //   1141: aload 13
@@ -848,7 +848,7 @@ public class SMRM
     //   1168: invokevirtual 401	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1171: ifne +35 -> 1206
     //   1174: aload 13
-    //   1176: getfield 333	lon:jdField_b_of_type_Int	I
+    //   1176: getfield 333	loq:jdField_b_of_type_Int	I
     //   1179: iconst_3
     //   1180: if_icmplt +336 -> 1516
     //   1183: aload 23
@@ -861,10 +861,10 @@ public class SMRM
     //   1203: goto +313 -> 1516
     //   1206: aload 13
     //   1208: aload 13
-    //   1210: getfield 331	lon:jdField_a_of_type_Int	I
+    //   1210: getfield 331	loq:jdField_a_of_type_Int	I
     //   1213: iconst_1
     //   1214: iadd
-    //   1215: putfield 331	lon:jdField_a_of_type_Int	I
+    //   1215: putfield 331	loq:jdField_a_of_type_Int	I
     //   1218: aload 14
     //   1220: astore 6
     //   1222: aload 13
@@ -879,10 +879,10 @@ public class SMRM
     //   1239: ifne -544 -> 695
     //   1242: aload 13
     //   1244: aload 13
-    //   1246: getfield 333	lon:jdField_b_of_type_Int	I
+    //   1246: getfield 333	loq:jdField_b_of_type_Int	I
     //   1249: iconst_1
     //   1250: iadd
-    //   1251: putfield 333	lon:jdField_b_of_type_Int	I
+    //   1251: putfield 333	loq:jdField_b_of_type_Int	I
     //   1254: aload 7
     //   1256: astore 6
     //   1258: aload 13
@@ -1125,11 +1125,11 @@ public class SMRM
     //   31: iconst_2
     //   32: ldc_w 455
     //   35: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   38: new 457	lom
+    //   38: new 457	lop
     //   41: dup
     //   42: aload_0
     //   43: aload_1
-    //   44: invokespecial 459	lom:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/logic/SMRM;Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   44: invokespecial 459	lop:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/logic/SMRM;Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   47: invokestatic 465	com/tencent/mobileqq/app/ThreadManager:executeOnSubThread	(Ljava/lang/Runnable;)V
     //   50: aload_0
     //   51: monitorexit

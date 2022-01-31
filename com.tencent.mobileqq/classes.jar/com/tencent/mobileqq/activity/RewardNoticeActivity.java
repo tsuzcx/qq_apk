@@ -35,9 +35,9 @@ import com.tencent.mobileqq.vas.VasExtensionObserver;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
-import tnr;
-import tnt;
-import tnu;
+import tqr;
+import tqt;
+import tqu;
 
 public class RewardNoticeActivity
   extends BaseActivity
@@ -45,14 +45,14 @@ public class RewardNoticeActivity
 {
   public int a;
   protected long a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new tnr(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new tqr(this);
   View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   public RelativeLayout a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  BabyQObserver jdField_a_of_type_ComTencentMobileqqAppBabyQObserver = new tnt(this);
+  BabyQObserver jdField_a_of_type_ComTencentMobileqqAppBabyQObserver = new tqt(this);
   private CustomHandler jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler;
-  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new tnu(this);
+  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new tqu(this);
   protected String a;
   protected byte[] a;
   protected int b;
@@ -139,7 +139,7 @@ public class RewardNoticeActivity
   {
     int i = 0;
     if (!NetworkUtil.g(BaseApplicationImpl.getContext())) {
-      QQToast.a(this, 1, 2131433196, 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, 2131433213, 0).b(getTitleBarHeight());
     }
     for (;;)
     {
@@ -205,7 +205,7 @@ public class RewardNoticeActivity
     localIntent.putExtra("hide_more_button", true);
     localIntent.putExtra("hide_operation_bar", true);
     localIntent.putExtra("url", this.jdField_b_of_type_JavaLangString);
-    localIntent.putExtra("leftViewText", super.getString(2131432397));
+    localIntent.putExtra("leftViewText", super.getString(2131432414));
     super.startActivity(localIntent);
   }
   
@@ -263,17 +263,17 @@ public class RewardNoticeActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970544);
+    super.setContentView(2130970588);
     e();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131371071));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131371073));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371072));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371074));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371080));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371077));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363954));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371078));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131371075);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131371235));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131371237));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371236));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371238));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371244));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371241));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363978));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371242));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131371239);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
@@ -325,7 +325,7 @@ public class RewardNoticeActivity
     {
     default: 
       return;
-    case 2131371080: 
+    case 2131371244: 
       a();
       return;
     }

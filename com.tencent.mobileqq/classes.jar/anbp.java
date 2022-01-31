@@ -1,27 +1,67 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.os.RemoteException;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
+import cooperation.qzone.util.NetworkState;
+import cooperation.qzone.webviewplugin.QZoneLiveJsPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anbp
-  implements EditVideoPoiPickerCallback
+  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
 {
-  public anbp(EditProviderPart paramEditProviderPart) {}
+  public anbp(QZoneLiveJsPlugin paramQZoneLiveJsPlugin, JSONObject paramJSONObject, boolean paramBoolean, String paramString) {}
   
-  public void a() {}
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public void a(IQZonePluginManager paramIQZonePluginManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "onSelectLocation " + paramTroopBarPOI);
+    if (paramIQZonePluginManager == null) {
+      return;
     }
-    EditProviderPart.a(this.a).setLocation(paramTroopBarPOI);
+    try
+    {
+      localPluginRecord = paramIQZonePluginManager.a("qzone_live_video_plugin_hack.apk");
+      if ((localPluginRecord == null) || (localPluginRecord.a != 4)) {
+        break label104;
+      }
+      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", true);
+    }
+    catch (JSONException paramIQZonePluginManager)
+    {
+      for (;;)
+      {
+        PluginRecord localPluginRecord;
+        paramIQZonePluginManager.printStackTrace();
+        return;
+        if ((localPluginRecord != null) && ((localPluginRecord.a == 2) || (NetworkState.isWifiConn())))
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", false);
+          if (this.jdField_a_of_type_Boolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("QZoneLiveJsPlugin", 2, " needInstall:" + this.jdField_a_of_type_Boolean + ",需要安装插件");
+            }
+            paramIQZonePluginManager.a(localPluginRecord.f, null, 0);
+          }
+        }
+      }
+    }
+    catch (RemoteException paramIQZonePluginManager)
+    {
+      paramIQZonePluginManager.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneLiveJsPlugin", 2, " 返回结果：" + this.jdField_a_of_type_OrgJsonJSONObject);
+    }
+    this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneLiveJsPlugin.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+    return;
+    label104:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbp
  * JD-Core Version:    0.7.0.1
  */

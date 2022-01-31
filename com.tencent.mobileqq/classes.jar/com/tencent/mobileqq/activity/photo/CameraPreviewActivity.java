@@ -21,13 +21,13 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.Gallery;
 import java.io.File;
 import java.util.ArrayList;
-import wsv;
-import wsw;
-import wsx;
-import wsy;
-import wsz;
-import wta;
-import wtb;
+import wwa;
+import wwb;
+import wwc;
+import wwd;
+import wwe;
+import wwf;
+import wwg;
 
 public class CameraPreviewActivity
   extends IphoneTitleBarActivity
@@ -40,7 +40,7 @@ public class CameraPreviewActivity
   private Gallery jdField_a_of_type_ComTencentWidgetGallery;
   String jdField_a_of_type_JavaLangString = null;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private wtb jdField_a_of_type_Wtb;
+  private wwg jdField_a_of_type_Wwg;
   boolean jdField_a_of_type_Boolean;
   private int b;
   public boolean b;
@@ -73,20 +73,20 @@ public class CameraPreviewActivity
     String str2;
     if (paramInt == 6)
     {
-      str1 = getString(2131433429);
-      str2 = getString(2131433430);
+      str1 = getString(2131433446);
+      str2 = getString(2131433447);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, str1, str2, new wsy(this), null);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new wsz(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new wta(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, str1, str2, new wwd(this), null);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new wwe(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new wwf(this));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
       if (paramInt == 7)
       {
-        str1 = getString(2131433425);
-        str2 = getString(2131433426);
+        str1 = getString(2131433442);
+        str2 = getString(2131433443);
       }
       else
       {
@@ -121,7 +121,7 @@ public class CameraPreviewActivity
     boolean bool = false;
     if (new File(paramString).length() > 19922944L)
     {
-      QQToast.a(this, getResources().getString(2131435903), 0).b(getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(this, getResources().getString(2131435920), 0).b(getResources().getDimensionPixelSize(2131558448));
       bool = true;
     }
     return bool;
@@ -132,8 +132,8 @@ public class CameraPreviewActivity
     this.jdField_a_of_type_ComTencentWidgetGallery = new Gallery(this);
     this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131558524));
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentWidgetGallery, -1, -1);
-    this.jdField_a_of_type_Wtb = new wtb(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Wtb);
+    this.jdField_a_of_type_Wwg = new wwg(this);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Wwg);
   }
   
   protected void doOnDestroy()
@@ -174,25 +174,25 @@ public class CameraPreviewActivity
   {
     super.onCreate(paramBundle);
     a();
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getLayoutInflater().inflate(2130969177, null));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getLayoutInflater().inflate(2130969176, null));
     b();
-    getLayoutInflater().inflate(2130969179, this.jdField_a_of_type_AndroidViewViewGroup);
+    getLayoutInflater().inflate(2130969178, this.jdField_a_of_type_AndroidViewViewGroup);
     this.jdField_a_of_type_Int = getResources().getDisplayMetrics().widthPixels;
     this.jdField_b_of_type_Int = getResources().getDisplayMetrics().heightPixels;
     super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
     if (this.jdField_a_of_type_Boolean) {
-      setRightButton(2131436092, new wsv(this));
+      setRightButton(2131436109, new wwa(this));
     }
-    setTitle(2131434539);
+    setTitle(2131434556);
     this.leftView.setVisibility(8);
-    this.leftViewNotBack = ((TextView)findViewById(2131363455));
+    this.leftViewNotBack = ((TextView)findViewById(2131363473));
     this.leftViewNotBack.setVisibility(8);
-    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365498);
+    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365520);
     if (this.jdField_a_of_type_JavaLangString != null) {
       paramBundle.setText(this.jdField_a_of_type_JavaLangString);
     }
-    paramBundle.setOnClickListener(new wsw(this));
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365497).setOnClickListener(new wsx(this));
+    paramBundle.setOnClickListener(new wwb(this));
+    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365519).setOnClickListener(new wwc(this));
   }
 }
 

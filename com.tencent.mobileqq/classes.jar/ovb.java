@@ -1,14 +1,20 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
 public class ovb
-  implements Runnable
+  implements TouchWebView.OnScrollChangedListener
 {
-  public ovb(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, long paramLong, String paramString) {}
+  public ovb(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    new ovs(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, new ovc(this), this.jdField_a_of_type_JavaLangString).a();
+    if (TribeVideoPlugin.a(this.a) != null)
+    {
+      TribeVideoPlugin.a(this.a).scrollBy(0, paramInt2 - paramInt4);
+      TribeVideoPlugin.a(this.a);
+    }
   }
 }
 

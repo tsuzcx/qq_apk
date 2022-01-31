@@ -1,16 +1,22 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
-import com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.scribble.ScribbleMsgUtils;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class usa
-  implements ArkAppView.Callback
+class usa
+  implements Runnable
 {
-  public usa(ArkFlashChatItemBubbleBuilder paramArkFlashChatItemBubbleBuilder, MessageForArkFlashChat paramMessageForArkFlashChat) {}
+  usa(urz paramurz, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    ArkDispatchTask.getInstance().post(new usb(this));
+    this.jdField_a_of_type_Urz.a.d();
+    if (this.jdField_a_of_type_Int == ScribbleMsgUtils.d)
+    {
+      this.jdField_a_of_type_Urz.a.c();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_Urz.a.getContext(), 2131439068, 0).b(DoodlePanel.a(this.jdField_a_of_type_Urz.a).a());
   }
 }
 

@@ -1,15 +1,30 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkActionAppMgr.IUpdateActionAppCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.mobileqq.ar.config.WorldCup;
+import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
+import com.tencent.mobileqq.ar.config.WorldCupReport;
 
 public class aakb
-  implements ArkActionAppMgr.IUpdateActionAppCallback
+  implements View.OnClickListener
 {
-  public aakb(ArkActionAppMgr paramArkActionAppMgr) {}
+  public aakb(SplashPopupWin paramSplashPopupWin, aakd paramaakd, AppInterface paramAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    paramObject = (aakf)paramObject;
-    ArkActionAppMgr.a(this.a, paramObject);
+    if (SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin) != null) {
+      SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin).dismiss();
+    }
+    if (this.jdField_a_of_type_Aakd.a.b)
+    {
+      WorldCup.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 1);
+      WorldCupReport.d();
+      RecentOptPopBar.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2L, 4096L, 2);
+    }
   }
 }
 

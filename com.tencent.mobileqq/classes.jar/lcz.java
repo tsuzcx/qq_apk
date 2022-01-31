@@ -1,15 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import java.util.List;
 
 public class lcz
   implements Runnable
 {
-  public lcz(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public lcz(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, List paramList) {}
   
   public void run()
   {
-    ReadInJoyGlobalReporter.a().a();
-    ReadInJoyGlobalReporter.a().b(this.a.app);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

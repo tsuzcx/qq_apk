@@ -1,22 +1,16 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-class kuy
-  implements TVK_SDKMgr.InstallListener
+public class kuy
+  implements View.OnClickListener
 {
-  kuy(kux paramkux) {}
+  public kuy(VideoCoverView paramVideoCoverView, Context paramContext) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onClick(View paramView)
   {
-    AdvertisementVideoPreloadManager.c("installSDK onInstalledFailed arg0=" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    AdvertisementVideoPreloadManager.c("installSDK onInstalledSuccessed");
-    AdvertisementVideoPreloadManager.a(this.a.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView.b(this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

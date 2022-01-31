@@ -1,30 +1,77 @@
-import android.content.Context;
-import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.downloadnew.UpdateManager.OnCheckUpdateListener;
+import com.tencent.open.wadl.WLog;
+import com.tencent.open.wadl.WadlJsBridge;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class aljp
-  implements Runnable
+public class aljp
+  implements UpdateManager.OnCheckUpdateListener
 {
-  public aljp(int paramInt1, Context paramContext, int paramInt2) {}
+  protected String a;
   
-  public void run()
+  public aljp(WadlJsBridge paramWadlJsBridge, String paramString)
   {
-    BadgeUtilImpl.setLimitCount(this.jdField_a_of_type_Int);
-    try
-    {
-      BadgeUtilImpl.setBadge(this.jdField_a_of_type_AndroidContentContext, this.b);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.hasRight()) {
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("BadgeUtilImpl", 2, "badge not support");
+    WLog.a("WadlJsBridge", "##@!JsCheckUpdateCallback onException >>> " + paramString);
+    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.jsCallBack(paramString);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    WLog.b("WadlJsBridge", "##@checkUpdate(End) onResult()");
+    if (!this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.hasRight()) {
+      return;
     }
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
+    try
+    {
+      while (i < paramArrayList.size())
+      {
+        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
+        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
+        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
+        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
+        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
+        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
+        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
+        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
+        localJSONObject2.put("url", localApkUpdateDetail.url);
+        localJSONArray.put(localJSONObject2);
+        i += 1;
+      }
+      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject1.put("content", localJSONArray.toString());
+      localJSONObject1.put("resultCode", "0");
+      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
+    }
+    catch (JSONException paramArrayList)
+    {
+      for (;;)
+      {
+        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+      }
+    }
+    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.jsCallBack(paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljp
  * JD-Core Version:    0.7.0.1
  */

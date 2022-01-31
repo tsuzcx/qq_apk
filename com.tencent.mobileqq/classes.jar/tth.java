@@ -1,27 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
 import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class tth
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public tth(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public tth(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.app.isLogin()) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.c();
-      return;
-    }
-    this.a.c();
+    QQSettingCleanActivity.a(this.a);
+    ReportController.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 

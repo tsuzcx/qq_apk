@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import acqz;
+import adaw;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -44,9 +44,9 @@ public class FileSearchDetailFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969069, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364953));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131364021));
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969068, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364975));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131364045));
     return paramLayoutInflater;
   }
   
@@ -63,7 +63,7 @@ public class FileSearchDetailFragment
     super.onViewCreated(paramView, paramBundle);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%d条与\"%s\"相关的同名文件记录", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileEntitySearchResultModel.a.size()), this.jdField_a_of_type_JavaLangString }));
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getActivity(), getActivity().app);
-    this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter = new acqz(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileEntitySearchResultModel, this.jdField_a_of_type_JavaLangString, getActivity().app);
+    this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter = new adaw(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileEntitySearchResultModel, this.jdField_a_of_type_JavaLangString, getActivity().app);
     this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter);
   }
 }

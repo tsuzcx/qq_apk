@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.qphone.base.util.QLog;
 
-class jry
-  implements DialogInterface.OnClickListener
+public class jry
+  implements Runnable
 {
-  jry(jrt paramjrt) {}
+  public jry(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.c, 2, "2s has past, startTimer now!");
+    }
+    this.a.Z();
   }
 }
 

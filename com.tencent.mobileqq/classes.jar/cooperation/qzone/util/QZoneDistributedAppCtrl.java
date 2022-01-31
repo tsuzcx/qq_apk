@@ -1,7 +1,7 @@
 package cooperation.qzone.util;
 
-import amks;
-import amkt;
+import anax;
+import anay;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
@@ -51,7 +51,7 @@ public class QZoneDistributedAppCtrl
   
   public static void a(String paramString1, String paramString2)
   {
-    new Handler(Looper.getMainLooper()).post(new amkt(paramString2, paramString1));
+    new Handler(Looper.getMainLooper()).post(new anay(paramString2, paramString1));
   }
   
   public static void a(Map paramMap)
@@ -356,7 +356,7 @@ public class QZoneDistributedAppCtrl
   public void a(QZoneDistributedAppCtrl.Control paramControl)
   {
     if (paramControl != null) {
-      ThreadManager.executeOnNetWorkThread(new amks(this, paramControl));
+      ThreadManager.executeOnNetWorkThread(new anax(this, paramControl));
     }
   }
   

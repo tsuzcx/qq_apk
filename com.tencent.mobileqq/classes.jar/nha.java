@@ -1,28 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareData;
 
 public class nha
-  implements View.OnClickListener
+  implements Runnable
 {
-  public nha(VideoPlayModeBase paramVideoPlayModeBase, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, String paramString) {}
+  public nha(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!NetworkUtil.a(VideoPlayModeBase.a()))
-    {
-      QQToast.a(VideoPlayModeBase.a(), 1, 2131433196, 0).a();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a.a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.a.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
   }
 }
 

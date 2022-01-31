@@ -1,66 +1,41 @@
-import com.tencent.mobileqq.util.SharePreferenceUtils;
-import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import android.text.TextUtils;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.fragment.UnitedVerifyMsgEditFragment;
 
 class adog
   implements Runnable
 {
-  adog(adoe paramadoe, String paramString) {}
+  adog(adof paramadof, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject1 = new File(this.jdField_a_of_type_JavaLangString);
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    this.jdField_a_of_type_Adof.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_JavaLangString);
+    try
     {
-      localObject1 = ((File)localObject1).listFiles();
-      if ((localObject1 != null) && (localObject1.length > 0))
+      if (!TextUtils.isEmpty(this.b)) {
+        this.jdField_a_of_type_Adof.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.lastIndexOf(this.b), this.jdField_a_of_type_JavaLangString.length());
+      }
+      for (;;)
       {
-        int i = 0;
-        for (;;)
-        {
-          if (i < localObject1.length)
-          {
-            Object localObject2 = localObject1[i].getName();
-            String str = this.jdField_a_of_type_JavaLangString + (String)localObject2;
-            localObject2 = localObject2.split("\\.")[0];
-            Object localObject3 = new SimpleDateFormat("yyyyMMddHHmmssSS");
-            try
-            {
-              localObject2 = ((SimpleDateFormat)localObject3).parse((String)localObject2);
-              localObject3 = Calendar.getInstance();
-              ((Calendar)localObject3).set(11, 0);
-              ((Calendar)localObject3).set(13, 0);
-              ((Calendar)localObject3).set(12, 0);
-              ((Calendar)localObject3).set(14, 0);
-              if (((Date)localObject2).before(((Calendar)localObject3).getTime()))
-              {
-                localObject1[i].delete();
-                SharePreferenceUtils.a(this.jdField_a_of_type_Adoe.a, str);
-              }
-              i += 1;
-            }
-            catch (ParseException localParseException)
-            {
-              for (;;)
-              {
-                localParseException.printStackTrace();
-              }
-            }
-          }
+        label58:
+        this.jdField_a_of_type_Adof.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().setSoftInputMode(4);
+        return;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_Adof.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.length());
         }
       }
-      long l = System.currentTimeMillis();
-      localObject1 = new SimpleDateFormat("yyyyMMdd").format(new Date(l));
-      SharePreferenceUtils.a(this.jdField_a_of_type_Adoe.a, "LAST_DELETE_TIME", (String)localObject1);
+    }
+    catch (Throwable localThrowable)
+    {
+      break label58;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adog
  * JD-Core Version:    0.7.0.1
  */

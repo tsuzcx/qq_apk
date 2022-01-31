@@ -190,7 +190,7 @@ public class QzoneContactsFeedServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.qzonestatus.QzoneContactsFeedServlet
  * JD-Core Version:    0.7.0.1
  */

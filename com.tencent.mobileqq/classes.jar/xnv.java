@@ -1,27 +1,14 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-public class xnv
-  implements Camera.AutoFocusCallback
+class xnv
+  implements Runnable
 {
-  public xnv(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xnv(xnu paramxnu) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "single tap focus " + paramBoolean);
-    }
-    NewFlowCameraReporter.a(paramBoolean);
-    if (paramBoolean)
-    {
-      NewFlowCameraActivity.h(this.a, true);
-      return;
-    }
-    this.a.a.f();
+    EditLocalVideoActivity.a(this.a.a.a).setVisibility(8);
   }
 }
 

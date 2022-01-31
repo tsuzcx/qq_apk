@@ -1,70 +1,47 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQHeadDownloadHandler;
 
 public class zlv
-  extends Handler
+  implements Runnable
 {
-  public zlv(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler, Looper paramLooper, QQAppInterface paramQQAppInterface)
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int c;
+  int d;
+  int e;
+  int f;
+  
+  public zlv(QQHeadDownloadHandler paramQQHeadDownloadHandler, int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2, int paramInt6, long paramLong)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.f = paramInt6;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1001: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message Progress. clientKey= " + paramMessage.arg1 + " progress=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1000: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message Finished. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1003: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message failed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
-      return;
-    case 1005: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message task removed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      i = paramMessage.arg1;
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, i, paramMessage.arg2);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a.remove(i);
-      return;
-    case 1004: 
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadPhoto", 2, "Get Message no task. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a.clear();
-      return;
+    QQHeadDownloadHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQHeadDownloadHandler).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, 4, this.e, this.jdField_b_of_type_JavaLangString, this.f, this.jdField_a_of_type_Long);
+    String str = this.c + "_" + this.jdField_a_of_type_JavaLangString;
+    if (this.c == 32) {
+      str = "stranger_" + String.valueOf(this.jdField_b_of_type_Int) + "_" + this.jdField_a_of_type_JavaLangString;
     }
-    paramMessage = (Object[])paramMessage.obj;
-    int i = ((Integer)paramMessage[0]).intValue();
-    zlz localzlz = (zlz)paramMessage[1];
-    int j = ((Integer)paramMessage[2]).intValue();
-    int k = ((Integer)paramMessage[3]).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(localzlz.jdField_a_of_type_Long, j, k);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopQZoneUploadAlbumHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, localzlz.jdField_a_of_type_JavaLangString, localzlz.jdField_a_of_type_Long, j, k);
+    for (;;)
+    {
+      QQHeadDownloadHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQHeadDownloadHandler).b(str, true);
+      return;
+      if (this.c == 16) {
+        str = "qcall_" + String.valueOf(this.jdField_b_of_type_Int) + "_" + this.jdField_a_of_type_JavaLangString;
+      }
+    }
   }
 }
 

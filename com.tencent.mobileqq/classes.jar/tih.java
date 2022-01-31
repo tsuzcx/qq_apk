@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class tih
-  implements IActionListener
+  implements Runnable
 {
-  public tih(QQSettingMe paramQQSettingMe) {}
+  public tih(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.B();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_QQBrowserActivity", 2, "start request: " + WebAccelerateHelper.isWebViewCache);
     }
+    WebProcessManager.a(true);
+    SwiftWebViewUtils.a();
+    SwiftWebViewUtils.b();
   }
 }
 

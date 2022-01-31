@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e8e" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bd0" android:duplicateParentState="true" android:layout_width="14.0dip" android:layout_height="14.0dip" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bd1" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" />
+    <TextView android:textSize="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="本机CPU过高上限：" />
+    <EditText android:textSize="15.0dip" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0be8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+    <TextView android:textSize="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="主进程CPU过高上限：" />
+    <EditText android:textSize="15.0dip" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0be9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+    <TextView android:textSize="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="线程CPU过高上限：" />
+    <EditText android:textSize="15.0dip" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bea" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+    <TextView android:textSize="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="AIO进出是否监控(1:是  0:否)：" />
+    <EditText android:textSize="15.0dip" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0beb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
 </LinearLayout>

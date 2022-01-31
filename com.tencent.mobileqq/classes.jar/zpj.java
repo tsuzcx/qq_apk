@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.app.message.BaseMessageProcessorForTroopAndDisc;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
 public class zpj
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public zpj(BaseMessageProcessorForTroopAndDisc paramBaseMessageProcessorForTroopAndDisc) {}
+  public zpj(VideoBroadcastReceiver paramVideoBroadcastReceiver) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    paramDialogInterface.dismiss();
   }
 }
 

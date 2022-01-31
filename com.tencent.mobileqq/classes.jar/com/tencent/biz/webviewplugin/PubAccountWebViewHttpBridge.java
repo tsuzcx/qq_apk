@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.zip.GZIPInputStream;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pat;
+import pcn;
 
 public class PubAccountWebViewHttpBridge
 {
@@ -408,7 +408,7 @@ public class PubAccountWebViewHttpBridge
         if (QLog.isColorLevel()) {
           QLog.d("PubAccountWebViewHttpBridge", 2, "read byte stream cost : " + (System.currentTimeMillis() - l) + ", total cost: " + (System.currentTimeMillis() - paramLong));
         }
-        this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesWebResourceResponse = new WebResourceResponse(a(this.jdField_a_of_type_JavaLangString), "utf-8", new pat(this, (BufferedInputStream)localObject1, (BufferedInputStream)localObject3, (ByteArrayOutputStream)localObject2, paramHttpURLConnection));
+        this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesWebResourceResponse = new WebResourceResponse(a(this.jdField_a_of_type_JavaLangString), "utf-8", new pcn(this, (BufferedInputStream)localObject1, (BufferedInputStream)localObject3, (ByteArrayOutputStream)localObject2, paramHttpURLConnection));
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -459,10 +459,10 @@ public class PubAccountWebViewHttpBridge
     //   37: iload_2
     //   38: putfield 108	com/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge:jdField_a_of_type_Boolean	Z
     //   41: aload_0
-    //   42: new 475	pas
+    //   42: new 475	pcm
     //   45: dup
     //   46: aload_0
-    //   47: invokespecial 477	pas:<init>	(Lcom/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge;)V
+    //   47: invokespecial 477	pcm:<init>	(Lcom/tencent/biz/webviewplugin/PubAccountWebViewHttpBridge;)V
     //   50: ldc 118
     //   52: iconst_5
     //   53: invokestatic 483	com/tencent/mobileqq/app/ThreadManager:newFreeThread	(Ljava/lang/Runnable;Ljava/lang/String;I)Ljava/lang/Thread;

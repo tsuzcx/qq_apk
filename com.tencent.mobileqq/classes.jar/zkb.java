@@ -1,20 +1,18 @@
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class zkb
+  implements Runnable
 {
-  public int a;
-  public long a;
-  signature.SignatureReport jdField_a_of_type_ComTencentImsSignature$SignatureReport;
-  public String a;
-  String b;
-  String c;
-  String d;
+  public zkb(PublicAccountHandler paramPublicAccountHandler) {}
   
-  public zkb(StartAppCheckHandler paramStartAppCheckHandler, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentImsSignature$SignatureReport = new signature.SignatureReport();
+    EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)this.a.b.getManager(87);
+    if (localEcShopAssistantManager != null) {
+      localEcShopAssistantManager.a(null, "FollowList");
+    }
   }
 }
 

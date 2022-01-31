@@ -1,15 +1,40 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qidian.util.QidianUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
+import com.tencent.qphone.base.util.QLog;
 
 public class zpq
   implements Runnable
 {
-  public zpq(C2CMessageProcessor paramC2CMessageProcessor, MessageRecord paramMessageRecord) {}
+  public zpq(RecentUserCache paramRecentUserCache, long paramLong) {}
   
   public void run()
   {
-    QidianUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageC2CMessageProcessor.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mQidianMasterUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mQidianTaskId), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mQidianTipText, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | start");
+    }
+    try
+    {
+      int i = RecentUserCache.a(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).a().a("recent", "_id=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | RecentUser delCount = " + i);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | delete recommend error~");
+      }
+      return;
+    }
+    finally
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | end");
+      }
+    }
   }
 }
 

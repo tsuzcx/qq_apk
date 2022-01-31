@@ -41,17 +41,17 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import jnm;
-import jno;
-import jnq;
-import jns;
-import jnt;
-import jnu;
-import jnv;
-import jnw;
-import jnx;
-import jny;
-import jnz;
+import jmx;
+import jmz;
+import jnb;
+import jnd;
+import jne;
+import jnf;
+import jng;
+import jnh;
+import jni;
+import jnj;
+import jnk;
 import mqq.app.AppRuntime;
 import mqq.app.AppService;
 import mqq.app.MobileQQ;
@@ -65,11 +65,11 @@ public class QQServiceForAV
   public static IBinder a;
   public int a;
   long jdField_a_of_type_Long = -1L;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new jnt(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new jne(this);
   public final RemoteCallbackList a;
-  final IQQServiceForAV.Stub jdField_a_of_type_ComTencentAvServiceIQQServiceForAV$Stub = new jnz(this);
+  final IQQServiceForAV.Stub jdField_a_of_type_ComTencentAvServiceIQQServiceForAV$Stub = new jnk(this);
   public FriendListObserver a;
-  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new jnq(this);
+  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new jnb(this);
   public TroopObserver a;
   public NearbyCardObserver a;
   public QCallCardHandler.OnGetQCallCardListener a;
@@ -77,8 +77,8 @@ public class QQServiceForAV
   public FaceDecoder a;
   public String a;
   public ArrayList a;
-  private jnx jdField_a_of_type_Jnx;
-  private jny jdField_a_of_type_Jny;
+  private jni jdField_a_of_type_Jni;
+  private jnj jdField_a_of_type_Jnj;
   public boolean a;
   public int b;
   public long b;
@@ -99,15 +99,15 @@ public class QQServiceForAV
     this.jdField_b_of_type_Long = 9223372036854775807L;
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = null;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener = new jnm(this);
-    this.jdField_a_of_type_ComTencentMobileqqQcallQCallCardHandler$OnGetQCallCardListener = new jno(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener = new jmx(this);
+    this.jdField_a_of_type_ComTencentMobileqqQcallQCallCardHandler$OnGetQCallCardListener = new jmz(this);
     this.jdField_a_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new jnu(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new jnv(this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new jnf(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new jng(this);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new jnw(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new jnh(this);
   }
   
   public static boolean a()
@@ -308,7 +308,7 @@ public class QQServiceForAV
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("client_ver", "7.6.0");
+      localJSONObject.put("client_ver", "7.6.3");
       localJSONObject.put("from", paramString2);
       if ("1".equals(paramString2))
       {
@@ -330,7 +330,7 @@ public class QQServiceForAV
       localWebSsoRequestBody.type.set(0);
       localWebSsoRequestBody.data.set(localJSONObject.toString());
       paramString2.putExtra("data", localWebSsoRequestBody.toByteArray());
-      paramString2.setObserver(new jns(this, paramString1, paramString3));
+      paramString2.setObserver(new jnd(this, paramString1, paramString3));
       localQQAppInterface.startServlet(paramString2);
       return;
     }
@@ -522,21 +522,21 @@ public class QQServiceForAV
         paramObservable = paramObject;
         if (paramObject.indexOf("http://maps.google.com/maps?q=") != -1)
         {
-          paramObservable = getResources().getString(2131428851);
+          paramObservable = getResources().getString(2131428857);
           continue;
-          paramObservable = getResources().getString(2131428848);
+          paramObservable = getResources().getString(2131428854);
           continue;
           paramObservable = "[秀图]";
           continue;
-          paramObservable = getResources().getString(2131428849);
+          paramObservable = getResources().getString(2131428855);
           continue;
-          paramObservable = getResources().getString(2131428850);
+          paramObservable = getResources().getString(2131428856);
           continue;
-          paramObservable = getResources().getString(2131428852);
+          paramObservable = getResources().getString(2131428858);
           continue;
-          paramObservable = getResources().getString(2131428853);
+          paramObservable = getResources().getString(2131428859);
           continue;
-          paramObservable = getResources().getString(2131428854);
+          paramObservable = getResources().getString(2131428860);
           continue;
           if ((localMessageRecord instanceof MessageForMixedMsg))
           {
@@ -576,7 +576,7 @@ public class QQServiceForAV
               paramObservable = null;
             }
             continue;
-            paramObservable = getResources().getString(2131428855);
+            paramObservable = getResources().getString(2131428861);
             continue;
             if ((localMessageRecord instanceof MessageForGrayTips))
             {

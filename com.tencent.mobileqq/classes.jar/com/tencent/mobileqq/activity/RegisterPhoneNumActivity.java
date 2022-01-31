@@ -26,12 +26,12 @@ import java.util.HashMap;
 import mqq.manager.AccountManager;
 import mqq.observer.AccountObserver;
 import mqq.os.MqqHandler;
-import tmu;
-import tmv;
-import tmw;
-import tmx;
-import tmy;
-import tmz;
+import tpu;
+import tpv;
+import tpw;
+import tpx;
+import tpy;
+import tpz;
 
 public class RegisterPhoneNumActivity
   extends RegisterNewBaseActivity
@@ -42,8 +42,8 @@ public class RegisterPhoneNumActivity
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ConfigClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tmz(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tmu(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tpz(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tpu(this);
   private boolean jdField_a_of_type_Boolean = true;
   private TextView b;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
@@ -131,33 +131,33 @@ public class RegisterPhoneNumActivity
   @TargetApi(11)
   private void a()
   {
-    c(2131434316);
+    c(2131434333);
     b();
     a(25);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372023));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372196));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131434255) + getString(2131427457));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372025));
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131434272) + getString(2131427457));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372198));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131434256) + getString(2131427457));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370263));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131434300));
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131434273) + getString(2131427457));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370404));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131434317));
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370264));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370405));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.d = ((TextView)findViewById(2131370266));
+    this.d = ((TextView)findViewById(2131370407));
     this.d.setText("+" + this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText = ((ConfigClearableEditText)findViewById(2131365409));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText = ((ConfigClearableEditText)findViewById(2131365431));
     this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.addTextChangedListener(this);
     if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setCustomSelectionActionModeCallback(new tmv(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setCustomSelectionActionModeCallback(new tpv(this));
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370268));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370409));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setOnCreateContextMenuListener(new tmw(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setOnCreateContextMenuListener(new tpw(this));
     }
   }
   
@@ -167,7 +167,7 @@ public class RegisterPhoneNumActivity
     this.jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.getText().toString());
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      a(2131434232, 1);
+      a(2131434249, 1);
       bool = false;
     }
     return bool;
@@ -231,7 +231,7 @@ public class RegisterPhoneNumActivity
     }
     if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      a(2131432992, 0);
+      a(2131433009, 0);
       return;
     }
     try
@@ -240,7 +240,7 @@ public class RegisterPhoneNumActivity
         QLog.d("queryMobile", 2, "RegisterPhoneNumActivity.startQueryAccount countryCode=" + this.jdField_b_of_type_JavaLangString + " phoneNum=" + this.jdField_a_of_type_JavaLangString);
       }
       ((AccountManager)this.app.getManager(0)).sendRegisterQueryMobile(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, null);
-      b(2131434214);
+      b(2131434231);
       return;
     }
     catch (Exception localException)
@@ -253,7 +253,7 @@ public class RegisterPhoneNumActivity
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new tmy(this, paramString));
+      this.jdField_a_of_type_AndroidOsHandler.post(new tpy(this, paramString));
       return;
     }
     catch (Exception paramString)
@@ -343,7 +343,7 @@ public class RegisterPhoneNumActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970871);
+    setContentView(2130970919);
     if (this.app == null)
     {
       paramBundle = getAppRuntime();
@@ -391,7 +391,7 @@ public class RegisterPhoneNumActivity
       ReportController.a(this.app, "dc00898", "", "", "0X8007CC7", "0X8007CC7", 0, 0, "", "", "", "");
       paramView = this.jdField_c_of_type_AndroidWidgetTextView.getText().toString();
       localObject = this.app;
-      if ((!TextUtils.isEmpty(paramView)) && (paramView.equals(getString(2131434299)))) {}
+      if ((!TextUtils.isEmpty(paramView)) && (paramView.equals(getString(2131434316)))) {}
       for (int i = 1;; i = 2)
       {
         ReportController.a((QQAppInterface)localObject, "dc00898", "", "", "0X8007CC7", "0X8007CC7", i, 0, "", "", "", "");
@@ -400,11 +400,11 @@ public class RegisterPhoneNumActivity
       }
     } while (!this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new tmx(this), 1000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new tpx(this), 1000L);
     Object localObject = new Intent(this, QQBrowserActivity.class);
     ((Intent)localObject).putExtra("uin", this.app.getCurrentAccountUin());
     ((Intent)localObject).putExtra("ba_is_login", false);
-    if (paramView.getId() == 2131372023) {}
+    if (paramView.getId() == 2131372196) {}
     for (paramView = "http://zc.qq.com/chs/agreement1_chs.html";; paramView = "http://www.qq.com/privacy.htm")
     {
       ((Intent)localObject).putExtra("url", paramView);

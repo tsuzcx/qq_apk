@@ -1,20 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import android.os.Message;
+import com.tencent.mobileqq.dating.NewVoteAnimHelper;
+import com.tencent.mobileqq.profile.like.PraiseInfo;
+import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseLoadListener;
+import mqq.os.MqqHandler;
 
 public class abxs
-  implements QueryTask.Query
+  implements PraiseManager.OnPraiseLoadListener
 {
-  public abxs(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
+  public abxs(NewVoteAnimHelper paramNewVoteAnimHelper, int paramInt) {}
   
-  public Integer a(String paramString)
+  public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
   {
-    EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a);
-    int i = this.jdField_a_of_type_Int;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.hasMessages(0))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.removeMessages(0);
+      this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
     }
-    return Integer.valueOf(i);
   }
 }
 

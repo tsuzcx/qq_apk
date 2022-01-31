@@ -1,24 +1,12 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.biz.qqstory.view.segment.SegmentManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class oot
-  extends SimpleJob
+public final class oot
+  implements DialogInterface.OnClickListener
 {
-  public oot(SegmentList paramSegmentList) {}
-  
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.f();
-    if (SegmentList.a(this.a)) {
-      return null;
-    }
-    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
-    return null;
+    paramDialogInterface.dismiss();
   }
 }
 

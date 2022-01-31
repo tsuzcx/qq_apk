@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class wnz
-  implements Comparator
+  implements ThreadExcutor.IThreadListener
 {
-  public wnz(C2CMessageResultAdapter paramC2CMessageResultAdapter) {}
+  public wnz(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public int a(MessageItem paramMessageItem1, MessageItem paramMessageItem2)
+  public void a() {}
+  
+  public void b()
   {
-    return (int)(paramMessageItem2.a.time - paramMessageItem1.a.time);
+    ThreadManager.getUIHandler().post(new woa(this));
   }
 }
 

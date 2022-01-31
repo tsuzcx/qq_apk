@@ -1,21 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class xkl
   implements Runnable
 {
-  public xkl(EditLocalVideoActivity paramEditLocalVideoActivity, float paramFloat) {}
+  public xkl(RecentAdapter paramRecentAdapter, String paramString, int paramInt) {}
   
   public void run()
   {
-    if (EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EditLocalVideoActivity", 2, "onCurrentRangeTimeChanged, time=" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.b((int)this.jdField_a_of_type_Float));
-      }
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.b((int)this.jdField_a_of_type_Float));
-    }
+    ((MessageHandler)this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a.a(0)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
   }
 }
 

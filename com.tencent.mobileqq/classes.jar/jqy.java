@@ -1,22 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.av.gaudio.BaseGaInvite.GetGaFaceRunnable.OnGetSink;
-import com.tencent.av.ui.BaseInviteFloatBarUICtr;
-import com.tencent.av.ui.VideoInviteFloatBar;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
 
 public class jqy
-  implements BaseGaInvite.GetGaFaceRunnable.OnGetSink
+  extends Handler
 {
-  public jqy(BaseInviteFloatBarUICtr paramBaseInviteFloatBarUICtr) {}
-  
-  public boolean a(Bitmap paramBitmap, String paramString)
+  public jqy(CallbackWaitingActivityExt paramCallbackWaitingActivityExt, Looper paramLooper)
   {
-    boolean bool = false;
-    if (this.a.a != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      this.a.a.a(paramBitmap);
-      bool = true;
+    default: 
+      return;
     }
-    return bool;
+    this.a.finish();
   }
 }
 

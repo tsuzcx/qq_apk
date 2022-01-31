@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
 
 public class wjz
-  extends FriendListObserver
+  implements Runnable
 {
-  public wjz(DeviceFragment paramDeviceFragment) {}
+  public wjz(SystemMsgListView paramSystemMsgListView) {}
   
-  protected void onPullIpad()
+  public void run()
   {
-    if (this.a.a == null) {
-      return;
-    }
-    this.a.a.d();
-    this.a.a.notifyDataSetChanged();
+    this.a.i();
   }
 }
 

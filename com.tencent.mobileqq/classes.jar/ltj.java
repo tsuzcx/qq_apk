@@ -1,33 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnGalleryImageClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
+import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
+import java.util.ArrayList;
 
 public class ltj
-  implements View.OnClickListener
+  implements KandianPopupWindow.OnUninterestConfirmListener
 {
-  public ltj(FeedItemCellTypeGalleryBiu paramFeedItemCellTypeGalleryBiu) {}
+  public ltj(FeedItemCell paramFeedItemCell) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter == null) {}
-    int i;
-    ReadInJoyBaseAdapter.OnGalleryImageClickListener localOnGalleryImageClickListener;
-    do
-    {
-      do
-      {
-        return;
-        paramView = ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a();
-      } while (paramView == null);
-      i = ComponentContentGalleryBiu.a(paramView, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter);
-      localOnGalleryImageClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    } while (localOnGalleryImageClickListener == null);
-    localOnGalleryImageClickListener.a(this.a.jdField_a_of_type_AndroidContentContext, paramView, 0, paramView.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
+    FeedItemCell.a(this.a, (IReadInJoyModel)this.a.a, paramInt, paramArrayList, paramObject);
   }
 }
 

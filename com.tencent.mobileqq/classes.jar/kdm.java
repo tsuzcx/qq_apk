@@ -1,21 +1,44 @@
-import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.av.ui.QAVPtvTemplateAdapter;
+import com.tencent.av.ui.QavListItemBase.ItemInfo;
+import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import com.tencent.common.app.AppInterface;
+import com.tencent.widget.HorizontalListView;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class kdm
-  implements Runnable
+public final class kdm
+  extends QAVPtvTemplateAdapter
 {
   WeakReference a;
   
-  public kdm(EffectFilterPanel paramEffectFilterPanel)
+  public kdm(AppInterface paramAppInterface, Context paramContext, ArrayList paramArrayList, HorizontalListView paramHorizontalListView, ZimuToolbar paramZimuToolbar)
   {
-    this.a = new WeakReference(paramEffectFilterPanel);
+    super(paramAppInterface, paramContext, paramArrayList, paramHorizontalListView);
+    this.a = new WeakReference(paramZimuToolbar);
   }
   
-  public void run()
+  public void a(String paramString)
   {
-    EffectFilterPanel localEffectFilterPanel = (EffectFilterPanel)this.a.get();
-    if (localEffectFilterPanel != null) {
-      localEffectFilterPanel.a();
+    int i;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      int j = getCount();
+      i = 1;
+      if (i < j)
+      {
+        QavListItemBase.ItemInfo localItemInfo = a(i);
+        if ((localItemInfo == null) || (!paramString.equals(localItemInfo.a))) {}
+      }
+    }
+    for (;;)
+    {
+      a(i);
+      return;
+      i += 1;
+      break;
+      i = 1;
     }
   }
 }

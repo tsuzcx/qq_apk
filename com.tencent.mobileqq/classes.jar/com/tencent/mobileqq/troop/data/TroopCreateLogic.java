@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.data;
 
-import aipg;
-import aipj;
-import aipk;
-import aipm;
-import aipn;
-import aipo;
+import ajdk;
+import ajdn;
+import ajdo;
+import ajdq;
+import ajdr;
+import ajds;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Dialog;
@@ -72,14 +72,14 @@ public class TroopCreateLogic
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "DEFAULT";
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo = new TroopCreateLogic.TroopCreateInfo();
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new aipj(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new aipk(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ajdn(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new ajdo(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
   public static String a(ArrayList paramArrayList)
   {
-    Collections.sort(paramArrayList, new aipn());
+    Collections.sort(paramArrayList, new ajdr());
     StringBuffer localStringBuffer = new StringBuffer();
     Iterator localIterator = paramArrayList.iterator();
     int i = 0;
@@ -224,7 +224,7 @@ public class TroopCreateLogic
       localObject = new QQProgressDialog((Context)localObject, ((BaseActivity)localObject).getTitleBarHeight());
       ((QQProgressDialog)localObject).a(paramString);
       ((QQProgressDialog)localObject).setCancelable(false);
-      ((QQProgressDialog)localObject).setOnDismissListener(new aipm(this));
+      ((QQProgressDialog)localObject).setOnDismissListener(new ajdq(this));
       this.jdField_a_of_type_AndroidAppDialog = ((Dialog)localObject);
       try
       {
@@ -375,9 +375,9 @@ public class TroopCreateLogic
       localMessageForGrayTips = (MessageForGrayTips)MessageRecordFactory.a(2024);
       localMessageForGrayTips.frienduin = paramString;
       Object localObject = BaseApplicationImpl.getApplication().getResources();
-      String str1 = ((Resources)localObject).getString(2131430597);
-      String str2 = ((Resources)localObject).getString(2131430598);
-      localObject = ((Resources)localObject).getString(2131430599);
+      String str1 = ((Resources)localObject).getString(2131430614);
+      String str2 = ((Resources)localObject).getString(2131430615);
+      localObject = ((Resources)localObject).getString(2131430616);
       localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, str1, NetConnInfoCenter.getServerTime(), -1047, 1, 0L);
       localMessageForGrayTips.setTextGravity(17);
       paramString = new Bundle();
@@ -400,7 +400,7 @@ public class TroopCreateLogic
   public void a(TroopCreateLogic.TroopCreateCallback paramTroopCreateCallback, BaseActivity paramBaseActivity, ArrayList paramArrayList)
   {
     if (!NetworkUtil.g(BaseApplicationImpl.getContext())) {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131434794, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131434811, 0).a();
     }
     while ((this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateAdvanceData == null)) {
       return;
@@ -590,10 +590,10 @@ public class TroopCreateLogic
         ResultRecord localResultRecord = (ResultRecord)localIterator.next();
         if (!localResultRecord.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
         {
-          aipo localaipo = new aipo(this);
-          localaipo.jdField_a_of_type_JavaLangString = localResultRecord.jdField_b_of_type_JavaLangString;
-          localaipo.jdField_b_of_type_JavaLangString = ChnToSpell.a(localResultRecord.jdField_b_of_type_JavaLangString, 2);
-          localArrayList.add(localaipo);
+          ajds localajds = new ajds(this);
+          localajds.jdField_a_of_type_JavaLangString = localResultRecord.jdField_b_of_type_JavaLangString;
+          localajds.jdField_b_of_type_JavaLangString = ChnToSpell.a(localResultRecord.jdField_b_of_type_JavaLangString, 2);
+          localArrayList.add(localajds);
         }
       }
       Collections.sort(localArrayList);
@@ -604,7 +604,7 @@ public class TroopCreateLogic
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
       this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = paramTroopCreateCallback;
       this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-      this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic.a(paramArrayList, new aipg(this, localArrayList, paramBaseActivity, paramTroopCreateCallback, paramArrayList));
+      this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopSearchLogic.a(paramArrayList, new ajdk(this, localArrayList, paramBaseActivity, paramTroopCreateCallback, paramArrayList));
     }
   }
   
@@ -615,7 +615,7 @@ public class TroopCreateLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopCreateLogic
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.paster.QIMPasterConfigManager;
+import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
 
-class absw
-  implements Runnable
+public class absw
+  implements ConfigSimplifier.ConfigDownloadCallback
 {
-  absw(absv paramabsv, List paramList) {}
+  public absw(ConfigServlet paramConfigServlet) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavEmoRoamingObserver", 2, "start upload and download fav");
-    }
-    this.jdField_a_of_type_Absv.a.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Absv.a.c();
+    ((QIMPasterConfigManager)QIMManager.a(1)).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     absw
  * JD-Core Version:    0.7.0.1
  */

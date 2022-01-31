@@ -1,54 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager.RenderProxy;
 
-public final class akxp
-  implements Parcelable.Creator
+public class akxp
+  implements View.OnClickListener
 {
-  public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
-    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
-      localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-      localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
-      localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label109;
-      }
-      bool1 = true;
-      label80:
-      localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label114;
-      }
-    }
-    label109:
-    label114:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
-      return localQidianSimpleProfileItem;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label80;
-    }
-  }
+  public akxp(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
   
-  public QidianProfileCardActivity.QidianSimpleProfileItem[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new QidianProfileCardActivity.QidianSimpleProfileItem[paramInt];
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.a.g();
+    if (ARWorldCupGameLogicManager.a(this.a) != null)
+    {
+      ARWorldCupGameLogicManager.a(this.a).i();
+      ARWorldCupGameLogicManager.a(this.a).j();
+      this.a.a = null;
+    }
+    this.a.a(0, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxp
  * JD-Core Version:    0.7.0.1
  */

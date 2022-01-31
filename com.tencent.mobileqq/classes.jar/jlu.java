@@ -1,27 +1,42 @@
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.RedPacketGameShower;
-import com.tencent.av.redpacket.SoundPoolHelper.OnLoadFinishListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Typeface;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.portal.StrokeTextView;
 
-class jlu
-  implements SoundPoolHelper.OnLoadFinishListener
+public class jlu
+  implements ViewSwitcher.ViewFactory
 {
-  jlu(jlt paramjlt, long paramLong) {}
+  public jlu(RedPacketRollTextView paramRedPacketRollTextView, boolean paramBoolean) {}
   
-  public void a()
+  public View makeView()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, music load finish,cost =" + (l1 - l2));
-    l1 = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Jlt.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower != null)
+    localStrokeTextView = new StrokeTextView(RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+    try
     {
-      this.jdField_a_of_type_Jlt.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.a(1, this.jdField_a_of_type_Jlt.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$ResPreLoadObserver);
-      l2 = System.currentTimeMillis();
-      QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, preloadRes finish,cost =" + (l2 - l1));
-      return;
+      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(AIOUtils.a(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
+      localStrokeTextView.setTextSize(0, RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+      localStrokeTextView.setIncludeFontPadding(false);
+      if (this.jdField_a_of_type_Boolean) {}
+      for (String str = "0";; str = "")
+      {
+        localStrokeTextView.setText(str);
+        localStrokeTextView.setStrokeEnable(true);
+        localStrokeTextView.setStrokeColor(-1);
+        localStrokeTextView.setStrokeSize(AIOUtils.a(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
+        localStrokeTextView.setInnerTextColor(-2094274);
+        localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
+        localStrokeTextView.setGravity(17);
+        return localStrokeTextView;
+      }
+      return localStrokeTextView;
     }
-    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes,  mRedPacketGameShower is null");
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

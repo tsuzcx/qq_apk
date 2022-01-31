@@ -72,7 +72,7 @@ public class QQWalletTroopHbItem
     this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQQWalletHbItemUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder, this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
-    Object localObject1 = paramLinearLayout.findViewById(2131372204);
+    Object localObject1 = paramLinearLayout.findViewById(2131372377);
     if (QLog.isColorLevel()) {
       QLog.d("TroopUnAccalimedRedPacketList", 2, new Object[] { Boolean.valueOf(localObject1 instanceof RelativeLayout) });
     }
@@ -88,7 +88,7 @@ public class QQWalletTroopHbItem
       this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQQWalletHbItemUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder, this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
       ((FrameLayout)localObject2).addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout, a(i, j, k, m));
-      View localView = paramLinearLayout.findViewById(2131372299);
+      View localView = paramLinearLayout.findViewById(2131372472);
       localObject1 = localObject2;
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.b != null)
       {
@@ -117,7 +117,7 @@ public class QQWalletTroopHbItem
         this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
         ((FrameLayout)localObject1).addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout, a(i, j, k, m));
         localObject2 = new RelativeLayout.LayoutParams(i, j);
-        paramLinearLayout = paramLinearLayout.findViewById(2131372299);
+        paramLinearLayout = paramLinearLayout.findViewById(2131372472);
         if (paramLinearLayout != null) {
           paramLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject2);
         } else {
@@ -196,7 +196,7 @@ public class QQWalletTroopHbItem
       return false;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQQWalletHbItemUtils.a(paramHbItemClickListener);
-    paramFrameLayout = (RelativeLayout)paramFrameLayout.findViewById(2131372204);
+    paramFrameLayout = (RelativeLayout)paramFrameLayout.findViewById(2131372377);
     if (paramFrameLayout == null) {
       return false;
     }
@@ -204,7 +204,7 @@ public class QQWalletTroopHbItem
       return false;
     }
     if (this.jdField_a_of_type_AndroidContentContext != null) {
-      this.jdField_a_of_type_AndroidContentContext.getString(2131432205);
+      this.jdField_a_of_type_AndroidContentContext.getString(2131432222);
     }
     return this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQQWalletHbItemUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, paramFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Int, paramRedPackGrapInfo.iSkinId, "");
   }

@@ -1,29 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
+import android.view.SurfaceHolder;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 public class adsf
-  implements Runnable
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  public adsf(MedalGuideView paramMedalGuideView) {}
+  public adsf(VideoBaseItem paramVideoBaseItem) {}
   
-  public void run()
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
   {
-    try
-    {
-      ((MedalWallMng)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(249)).a(1, null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
+  }
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    this.a.a = true;
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,9 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.OfflineUtils;
 
-public class mqz
-  extends MessageObserver
+public final class mqz
+  implements Runnable
 {
-  public mqz(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    this.a.b();
-  }
+  public void run() {}
 }
 
 

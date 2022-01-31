@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="3.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:addStatesFromChildren="false" android:layout_width="fill_parent" android:layout_height="50.0dip"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09f0" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09f1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="7.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021792" />
-    </LinearLayout>
-    <View android:background="#4dffffff" android:layout_width="fill_parent" android:layout_height="0.5px" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="14.0dip" android:textColor="#7fffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a22" android:layout_width="fill_parent" android:layout_height="20.0dip" android:maxLines="1" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="5.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a0a22">
+        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+        <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a24" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateOnly="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02179b" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+    </RelativeLayout>
 </RelativeLayout>

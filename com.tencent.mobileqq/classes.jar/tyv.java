@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-class tyv
-  implements Runnable
+public class tyv
+  implements DialogInterface.OnClickListener
 {
-  tyv(typ paramtyp, List paramList) {}
+  public tyv(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Typ.a.isFinishing()) {}
-    while (this.jdField_a_of_type_Typ.a.a == null) {
+    paramDialogInterface.dismiss();
+    TroopInfoActivity.b(this.a);
+    switch (TroopInfoActivity.a(this.a))
+    {
+    default: 
       return;
     }
-    this.jdField_a_of_type_Typ.a.a.c = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Typ.a.a.a();
+    this.a.overridePendingTransition(0, 2131034122);
   }
 }
 

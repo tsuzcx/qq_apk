@@ -1,20 +1,21 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QQProxyForQlink;
 
 public class amng
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public amng(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin) {}
+  public amng(QQProxyForQlink paramQQProxyForQlink) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RemoteHandleManager.a().a().n();
+    this.a.a("0X8004857", 1);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amng
  * JD-Core Version:    0.7.0.1
  */

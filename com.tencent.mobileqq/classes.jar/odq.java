@@ -1,16 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import java.util.TimerTask;
+import com.tencent.biz.qqstory.takevideo.EditPicSave;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class odq
-  extends TimerTask
+  implements ProgressPieDrawable.OnProgressListener
 {
-  private odq(EditVideoMusic paramEditVideoMusic) {}
+  public odq(EditPicSave paramEditPicSave) {}
   
-  public void run()
+  public void a(ProgressPieDrawable paramProgressPieDrawable)
   {
-    this.a.a.sendEmptyMessage(1001);
+    if (QLog.isColorLevel()) {
+      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    }
   }
+  
+  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

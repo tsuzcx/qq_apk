@@ -1,13 +1,26 @@
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public final class mbe
-  implements Runnable
+public class mbe
+  implements URLDrawable.URLDrawableListener
 {
-  public mbe(TextView paramTextView, StringBuilder paramStringBuilder) {}
+  public mbe(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangStringBuilder);
+    if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).getStatus() == 1) && ((VideoFeedsAdapter.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)VideoFeedsAdapter.a(this.a).getCurrDrawable();
+      VideoFeedsAdapter.a(this.a, paramURLDrawable.getBitmap());
+    }
   }
 }
 

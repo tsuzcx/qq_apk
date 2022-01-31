@@ -1,27 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.Dex2Oat.ResultCallback;
+import cooperation.plugin.PluginInstaller;
+import java.io.File;
 
 public class ammi
-  extends Handler
+  implements Dex2Oat.ResultCallback
 {
-  public ammi(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
+  public ammi(PluginInstaller paramPluginInstaller) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(File paramFile1, File paramFile2)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "dex2Oat onStart " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
     }
-    do
-    {
-      return;
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String[])));
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = (String[])paramMessage.obj;
-    localArrayList.add(QzoneDynamicAlbumPlugin.a(this.a, arrayOfString));
-    this.a.a(localArrayList, paramMessage.arg1);
+  }
+  
+  public void a(File paramFile1, File paramFile2, File paramFile3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "dex2Oat onSuccess " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
+    }
+  }
+  
+  public void a(File paramFile1, File paramFile2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "preDex2Oat onFailed " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
+    }
   }
 }
 

@@ -1,16 +1,13 @@
-import android.os.Bundle;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
-import java.util.ArrayList;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
 
 public class amok
   implements Runnable
 {
-  public amok(SmartDeviceIPCHost paramSmartDeviceIPCHost, Bundle paramBundle) {}
+  public amok(DatalineRemoteManager paramDatalineRemoteManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a.add(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.b();
+    DatalineRemoteManager.a(this.a);
   }
 }
 

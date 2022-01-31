@@ -1,35 +1,77 @@
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.managers.DraftTextManager;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetBigEmoticonStep;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MsgAutoMonitorUtil;
-import com.tencent.widget.TraceUtils;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zqo
   implements Runnable
 {
-  public zqo(QQMessageFacade paramQQMessageFacade) {}
+  public zqo(GetBigEmoticonStep paramGetBigEmoticonStep) {}
   
   public void run()
   {
-    TraceUtils.a("initMsgCache");
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.QQMessageFacade", 2, "before refreshCache");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(AppConstants.br);
+    ((StringBuilder)localObject1).append("emojiIds.txt");
+    Object localObject2 = new File(((StringBuilder)localObject1).toString());
+    if (!((File)localObject2).exists()) {
+      if (QLog.isColorLevel()) {
+        QLog.d("GetBigEmoticonStep", 2, "doStep ends, file not exist.");
+      }
     }
-    QQMessageFacade.a(this.a, DraftTextManager.a(QQMessageFacade.a(this.a)));
-    this.a.a().a();
-    this.a.d();
-    QQMessageFacade.a(this.a);
-    this.a.notifyObservers(new RecentUser());
-    if (QLog.isColorLevel())
+    for (;;)
     {
-      QLog.d("Q.msg.QQMessageFacade", 2, "after refreshCache");
-      long l2 = System.currentTimeMillis();
-      MsgAutoMonitorUtil.a().a("MSG_InitCostTime", l2 - l1 + "");
+      return;
+      localObject1 = new ArrayList();
+      zqp localzqp;
+      try
+      {
+        localObject2 = new JSONObject(FileUtils.a((File)localObject2)).getJSONArray("data");
+        if ((localObject2 == null) || (((JSONArray)localObject2).length() == 0)) {
+          continue;
+        }
+        i = 0;
+        while (i < ((JSONArray)localObject2).length())
+        {
+          int j = ((JSONArray)localObject2).getJSONObject(i).getInt("epId");
+          int k = ((JSONArray)localObject2).getJSONObject(i).getInt("type");
+          localzqp = new zqp();
+          localzqp.jdField_a_of_type_JavaLangString = Integer.toString(j);
+          localzqp.jdField_a_of_type_Int = k;
+          ((List)localObject1).add(localzqp);
+          i += 1;
+        }
+        if (localJSONException.size() == 0) {
+          continue;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        return;
+      }
+      localObject2 = (EmojiManager)GetBigEmoticonStep.a(this.a).b.getManager(42);
+      int i = 0;
+      while (i < localJSONException.size())
+      {
+        localzqp = (zqp)localJSONException.get(i);
+        EmoticonPackage localEmoticonPackage = new EmoticonPackage();
+        localEmoticonPackage.jobType = localzqp.jdField_a_of_type_Int;
+        localEmoticonPackage.epId = localzqp.jdField_a_of_type_JavaLangString;
+        ((EmojiManager)localObject2).a(localEmoticonPackage, true);
+        i += 1;
+      }
     }
-    TraceUtils.a();
   }
 }
 

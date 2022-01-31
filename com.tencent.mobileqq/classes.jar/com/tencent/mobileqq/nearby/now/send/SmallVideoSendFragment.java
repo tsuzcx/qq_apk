@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.nearby.now.send;
 
-import aehg;
-import aehj;
-import aehl;
-import aehm;
-import aehn;
-import aeho;
-import aehp;
-import aehq;
-import aehr;
-import aehs;
-import aeht;
+import aeum;
+import aeup;
+import aeur;
+import aeus;
+import aeut;
+import aeuu;
+import aeuv;
+import aeuw;
+import aeux;
+import aeuy;
+import aeuz;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -122,7 +122,7 @@ public class SmallVideoSendFragment
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendPublishManager.a(new LocationInfo(paramIntent));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842734);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842833);
     StringBuilder localStringBuilder = new StringBuilder(paramIntent.getCity());
     if (!TextUtils.isEmpty(paramIntent.getName()))
     {
@@ -141,7 +141,7 @@ public class SmallVideoSendFragment
       b();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842734);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842833);
     StringBuilder localStringBuilder = new StringBuilder(paramLocationInfo.getCity());
     if (!TextUtils.isEmpty(paramLocationInfo.getName()))
     {
@@ -153,27 +153,27 @@ public class SmallVideoSendFragment
   
   private void d()
   {
-    this.c.findViewById(2131364381).setVisibility(8);
+    this.c.findViewById(2131364405).setVisibility(8);
   }
   
   private void e()
   {
-    this.c.findViewById(2131364381).setVisibility(0);
+    this.c.findViewById(2131364405).setVisibility(0);
   }
   
   private void f()
   {
     a("处理中", false);
     d();
-    ThreadManager.post(new aehg(this), 5, null, true);
+    ThreadManager.post(new aeum(this), 5, null, true);
   }
   
   private void g()
   {
     LocationInfo localLocationInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendPublishManager.b();
-    View localView = a(2131370467);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370469));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370468));
+    View localView = a(2131370608);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370610));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370609));
     if (localLocationInfo != null)
     {
       LogUtil.d("PublishActivity", "initLocationView: last :" + localLocationInfo.toString());
@@ -183,7 +183,7 @@ public class SmallVideoSendFragment
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendPublishManager.a();
-      localView.setOnClickListener(new aehm(this));
+      localView.setOnClickListener(new aeus(this));
       return;
       LogUtil.d("PublishActivity", "initLocationView: get last error.");
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendPublishManager.a(new LocationInfo());
@@ -192,20 +192,20 @@ public class SmallVideoSendFragment
   
   private void h()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)a(2131370463));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout = ((RoundRelativeLayout)a(2131370464));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131370465));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131364381));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131370462));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new aehn(this));
-    ThreadManager.getUIHandler().postDelayed(new aeho(this), 500L);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131370471));
-    this.jdField_b_of_type_AndroidViewView = a(2131370472);
-    this.jdField_a_of_type_AndroidViewView = a(2131370470);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aehp(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new aehq(this) });
-    this.c = a(2131362874);
-    this.c.setOnTouchListener(new aehr(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)a(2131370604));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout = ((RoundRelativeLayout)a(2131370605));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131370606));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131364405));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131370603));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new aeut(this));
+    ThreadManager.getUIHandler().postDelayed(new aeuu(this), 500L);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131370612));
+    this.jdField_b_of_type_AndroidViewView = a(2131370613);
+    this.jdField_a_of_type_AndroidViewView = a(2131370611);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aeuv(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new aeuw(this) });
+    this.c = a(2131362892);
+    this.c.setOnTouchListener(new aeux(this));
     this.c.addOnLayoutChangeListener(this);
   }
   
@@ -215,7 +215,7 @@ public class SmallVideoSendFragment
     {
       URLDrawable localURLDrawable = URLDrawable.getDrawable(new URL("file:///" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam.c), URLDrawable.URLDrawableOptions.obtain());
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setBackgroundDrawable(localURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new aehs(this));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new aeuy(this));
       return;
     }
     catch (MalformedURLException localMalformedURLException)
@@ -236,7 +236,7 @@ public class SmallVideoSendFragment
     {
       URLDrawable localURLDrawable = URLDrawable.getDrawable(new URL("file:///" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam.c), URLDrawable.URLDrawableOptions.obtain());
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout.setBackgroundDrawable(localURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new aeht(this));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new aeuz(this));
       return;
     }
     catch (MalformedURLException localMalformedURLException)
@@ -289,7 +289,7 @@ public class SmallVideoSendFragment
   
   public void a(CharSequence paramCharSequence, boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new aehj(this, paramCharSequence, paramBoolean));
+    ThreadManager.getUIHandler().post(new aeup(this, paramCharSequence, paramBoolean));
   }
   
   public boolean a()
@@ -300,10 +300,10 @@ public class SmallVideoSendFragment
   public void b()
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842733);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842832);
     }
     if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131431609);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131431626);
     }
   }
   
@@ -314,7 +314,7 @@ public class SmallVideoSendFragment
   
   public void c()
   {
-    ThreadManager.getUIHandler().post(new aehl(this));
+    ThreadManager.getUIHandler().post(new aeur(this));
   }
   
   public boolean d()
@@ -341,7 +341,7 @@ public class SmallVideoSendFragment
       QLog.i("PublishActivity", 2, "onCreateView ");
     }
     super.onCreate(paramBundle);
-    this.c = paramLayoutInflater.inflate(2130970414, null);
+    this.c = paramLayoutInflater.inflate(2130970455, null);
     h();
     this.jdField_a_of_type_Int = (getResources().getDisplayMetrics().heightPixels / 4);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam = ((PublishParam)a().getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString));

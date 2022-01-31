@@ -1,26 +1,62 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.common.util.FileChooserHelper;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.Context;
+import android.text.TextUtils;
+import com.google.zxing.client.android.wifi.BizWifiConfigManager;
+import com.tencent.biz.common.util.Util;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class kml
-  implements ActionSheet.OnButtonClickListener
+  extends Thread
 {
-  public kml(FileChooserHelper paramFileChooserHelper, Activity paramActivity, String paramString, ActionSheet paramActionSheet) {}
+  public kml(SensorAPIJavaScript paramSensorAPIJavaScript, Context paramContext, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
+    int i = 15;
+    String str = "";
+    if ((i > 0) && (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a != null)) {
+      if (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.get() == null) {
+        i = 2;
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      FileChooserHelper.a(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity);
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.c = false;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("SensorApi", 4, "run check end: " + i);
+        }
+        if (i != 0) {
+          break label200;
+        }
+        int j = this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a();
+        this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { Util.a(Integer.toString(i)), Util.a(str), Util.a(Integer.toString(j)) });
+        return;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("SensorApi", 4, "run check: " + i);
+        }
+        str = BizWifiConfigManager.a(this.jdField_a_of_type_AndroidContentContext);
+        if (!TextUtils.isEmpty(str)) {
+          i = 0;
+        } else {
+          try
+          {
+            Thread.sleep(2000L);
+            i -= 1;
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            i = 2;
+          }
+        }
+      }
       continue;
-      FileChooserHelper.a(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+      label200:
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { Util.a(Integer.toString(i)) });
+      return;
+      i = 2;
     }
   }
 }

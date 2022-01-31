@@ -1,9 +1,9 @@
 package cooperation.qqfav;
 
-import alyu;
-import alyv;
-import alyw;
-import alyy;
+import amoy;
+import amoz;
+import ampa;
+import ampc;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -17,6 +17,7 @@ import android.os.Build.VERSION;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.Window;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
@@ -116,61 +117,6 @@ public final class QfavHelper
     return (AppRuntime)a("com.qqfav.QfavAppInterface", new Class[] { BaseApplicationImpl.class, String.class }, new Object[] { paramBaseApplicationImpl, "qqfav" });
   }
   
-  @TargetApi(9)
-  public static void a(Activity paramActivity, String paramString1, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
-  {
-    QQToast localQQToast = new QQToast(paramActivity);
-    localQQToast.d(2000);
-    String str = paramString1;
-    if (TextUtils.isEmpty(paramString1)) {
-      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    }
-    if (paramBoolean1)
-    {
-      localQQToast.b(2);
-      localQQToast.a(QQToast.a(2));
-      localQQToast.c(2131431555);
-      if (!a(paramActivity).getBoolean("pref_first_collection_" + str, true)) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString2 = paramActivity.getString(2131431578);
-        if (!paramBoolean2) {
-          continue;
-        }
-        paramString1 = paramActivity.getString(2131431580);
-        DialogUtil.b(paramActivity, 230, paramString2, paramString1, 2131432998, 2131431581, new alyu(), null).setMessageCount(null).show();
-        if (9 <= Build.VERSION.SDK_INT) {
-          continue;
-        }
-        a(paramActivity).edit().putBoolean("pref_first_collection_" + str, false).commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("qqfav", 2, "First collection guide shown. Uin=" + str + ", flag=" + a(paramActivity).getBoolean(new StringBuilder().append("pref_first_collection_").append(str).toString(), true));
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        QLog.e("qqfav", 1, "First collection guide error. Uin=" + str + ", flag=" + a(paramActivity).getBoolean(new StringBuilder().append("pref_first_collection_").append(str).toString(), true));
-        continue;
-      }
-      localQQToast.b(paramActivity.getResources().getDimensionPixelSize(2131558448) - (int)(5.0F * paramActivity.getResources().getDisplayMetrics().density));
-      return;
-      paramString1 = paramActivity.getString(2131431579);
-      continue;
-      a(paramActivity).edit().putBoolean("pref_first_collection_" + str, false).apply();
-      continue;
-      localQQToast.b(1);
-      localQQToast.a(QQToast.a(1));
-      if (paramString2 == null) {
-        localQQToast.c(2131431563);
-      } else {
-        localQQToast.a(paramString2);
-      }
-    }
-  }
-  
   public static void a(Context paramContext, OnPluginInstallListener paramOnPluginInstallListener)
   {
     Object localObject = paramContext;
@@ -179,7 +125,7 @@ public final class QfavHelper
     }
     try
     {
-      new alyy((Context)localObject, paramOnPluginInstallListener).start();
+      new ampc((Context)localObject, paramOnPluginInstallListener).start();
       return;
     }
     catch (Throwable paramContext)
@@ -196,6 +142,82 @@ public final class QfavHelper
       catch (RemoteException paramContext)
       {
         paramContext.printStackTrace();
+      }
+    }
+  }
+  
+  @TargetApi(9)
+  public static void a(Context paramContext, String paramString1, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
+  {
+    QQToast localQQToast = new QQToast(paramContext);
+    localQQToast.d(2000);
+    String str = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    }
+    if (paramBoolean1)
+    {
+      localQQToast.b(2);
+      localQQToast.a(QQToast.a(2));
+      localQQToast.c(2131431572);
+      if (a(paramContext).getBoolean("pref_first_collection_" + str, true)) {}
+      try
+      {
+        paramString2 = paramContext.getString(2131431595);
+        if (!paramBoolean2) {
+          break label333;
+        }
+        paramString1 = paramContext.getString(2131431597);
+        paramString1 = DialogUtil.b(paramContext, 230, paramString2, paramString1, 2131433015, 2131431598, new amoy(), null);
+        if (paramContext == BaseApplicationImpl.getContext())
+        {
+          if (Build.VERSION.SDK_INT < 19) {
+            break label427;
+          }
+          if (Build.VERSION.SDK_INT <= 24) {
+            break label344;
+          }
+          paramString1.getWindow().setType(2002);
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        for (;;)
+        {
+          label172:
+          QLog.e("qqfav", 1, "First collection guide error. Uin=" + str + ", flag=" + a(paramContext).getBoolean(new StringBuilder().append("pref_first_collection_").append(str).toString(), true));
+          continue;
+          paramString1.getWindow().setType(2002);
+          continue;
+          a(paramContext).edit().putBoolean("pref_first_collection_" + str, false).apply();
+        }
+      }
+      paramString1.setMessageCount(null).show();
+      if (9 > Build.VERSION.SDK_INT)
+      {
+        a(paramContext).edit().putBoolean("pref_first_collection_" + str, false).commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "First collection guide shown. Uin=" + str + ", flag=" + a(paramContext).getBoolean(new StringBuilder().append("pref_first_collection_").append(str).toString(), true));
+        }
+      }
+    }
+    for (;;)
+    {
+      localQQToast.b(paramContext.getResources().getDimensionPixelSize(2131558448) - (int)(5.0F * paramContext.getResources().getDisplayMetrics().density));
+      return;
+      label333:
+      paramString1 = paramContext.getString(2131431596);
+      break;
+      label344:
+      paramString1.getWindow().setType(2005);
+      break label172;
+      label427:
+      localQQToast.b(1);
+      localQQToast.a(QQToast.a(1));
+      if (paramString2 == null) {
+        localQQToast.c(2131431580);
+      } else {
+        localQQToast.a(paramString2);
       }
     }
   }
@@ -283,11 +305,11 @@ public final class QfavHelper
     if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return true;
     }
-    Object localObject2 = new alyv();
+    Object localObject2 = new amoz();
     if (paramBoolean) {}
     synchronized (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
     {
-      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getApplication(), new alyw((Runnable)localObject2));
+      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getApplication(), new ampa((Runnable)localObject2));
       localObject2 = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
       if (??? == localObject2) {}
       try

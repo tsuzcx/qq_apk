@@ -1,34 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.DingdongScheduleItemBuilder;
+import cooperation.dingdong.DingdongMsgItemTitleImageView;
 
 public class uwg
-  implements Runnable
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public uwg(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString1, int paramInt, long paramLong, String paramString2) {}
+  public LinearLayout a;
+  public TextView a;
+  public DingdongMsgItemTitleImageView a;
+  public View b;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
   
-  public void run()
-  {
-    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null)
-    {
-      localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(19);
-      if (localObject != null)
-      {
-        MessageRecord localMessageRecord = ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-        if ((localMessageRecord != null) && (!TextUtils.equals(localMessageRecord.getExtInfoFromExtStr("sens_msg_original_text"), this.b)))
-        {
-          localMessageRecord.saveExtInfoToExtStr("sens_msg_original_text", this.b);
-          ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extLong", Integer.valueOf(localMessageRecord.extLong));
-          ((QQMessageFacade)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
-          ((QQMessageFacade)localObject).a(localMessageRecord);
-        }
-      }
-    }
-  }
+  public uwg(DingdongScheduleItemBuilder paramDingdongScheduleItemBuilder) {}
 }
 
 

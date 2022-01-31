@@ -1,22 +1,8 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.av.ui.redbag.GetRedBag;
 
-public class key
-  implements MenuItem.OnMenuItemClickListener
+public abstract interface key
 {
-  public key(AVRedBagMgr.TestFlag paramTestFlag) {}
-  
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
-  {
-    paramMenuItem = this.a;
-    if (!this.a.b) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramMenuItem.b = bool;
-      return true;
-    }
-  }
+  public abstract void a(GetRedBag paramGetRedBag);
 }
 
 

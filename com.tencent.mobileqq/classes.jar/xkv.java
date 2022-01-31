@@ -1,6 +1,5 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.widget.QQToast;
 
 class xkv
   implements Runnable
@@ -9,15 +8,7 @@ class xkv
   
   public void run()
   {
-    if (!FileUtils.d(EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xkt.a))) {
-      QLog.d("EditLocalVideoActivity", 2, "delete origin final mp4 failed!" + EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xkt.a));
-    }
-    for (;;)
-    {
-      EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xkt.a, this.a.jdField_a_of_type_JavaLangString);
-      return;
-      QLog.d("EditLocalVideoActivity", 2, "delete origin final mp4 success!" + EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xkt.a));
-    }
+    QQToast.a(this.a.a.a, 1, "资源加载失败", 1).a();
   }
 }
 

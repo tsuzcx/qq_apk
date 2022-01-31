@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork;
 
-import ahyd;
-import ahye;
-import ahyf;
+import aimg;
+import aimh;
+import aimi;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,7 +45,7 @@ public class TeamWorkFileImportHandler
   private void a(Runnable paramRunnable)
   {
     if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    while (((TicketManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).GetPskey(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 16L, this.jdField_a_of_type_ArrayOfJavaLangString, new ahyf(this, paramRunnable)) == null) {
+    while (((TicketManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).GetPskey(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 16L, this.jdField_a_of_type_ArrayOfJavaLangString, new aimi(this, paramRunnable)) == null) {
       return;
     }
     ThreadManager.executeOnNetWorkThread(paramRunnable);
@@ -418,7 +418,7 @@ public class TeamWorkFileImportHandler
     if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;
     }
-    a(new ahye(this, paramJSONObject, paramTeamWorkFileImportInfo));
+    a(new aimh(this, paramJSONObject, paramTeamWorkFileImportInfo));
   }
   
   public void a(boolean paramBoolean)
@@ -644,7 +644,7 @@ public class TeamWorkFileImportHandler
   
   public void f(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    a(new ahyd(this, paramTeamWorkFileImportInfo));
+    a(new aimg(this, paramTeamWorkFileImportInfo));
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -666,7 +666,7 @@ public class TeamWorkFileImportHandler
           QLog.i("teamConvert", 2, "convert finish time [" + System.currentTimeMillis() / 1000L + "]");
         }
       } while (!this.jdField_b_of_type_Boolean);
-      QQToast.a(BaseApplicationImpl.getApplication(), 2, BaseApplicationImpl.getApplication().getString(2131439122), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, BaseApplicationImpl.getApplication().getString(2131439150), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448));
       return true;
     }
     paramMessage = (TeamWorkFileImportInfo)paramMessage.obj;
@@ -677,7 +677,7 @@ public class TeamWorkFileImportHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler
  * JD-Core Version:    0.7.0.1
  */

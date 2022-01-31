@@ -16,11 +16,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import jyn;
-import jyo;
-import jyp;
-import jyq;
-import jyr;
+import jxy;
+import jxz;
+import jya;
+import jyb;
+import jyc;
 import mqq.app.BaseActivity;
 
 public class MultiVideoMembersListviewAvtivity
@@ -29,16 +29,16 @@ public class MultiVideoMembersListviewAvtivity
   public int a;
   public long a;
   public LayoutInflater a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new jyp(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new jya(this);
   AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = null;
   ListView jdField_a_of_type_AndroidWidgetListView = null;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   public VideoController a;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jyq(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jyb(this);
   public VideoAppInterface a;
   public String a;
   public ArrayList a;
-  public jyr a;
+  public jyc a;
   public boolean a;
   TextView b = null;
   
@@ -51,7 +51,7 @@ public class MultiVideoMembersListviewAvtivity
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_JavaLangString = null;
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Jyr = null;
+    this.jdField_a_of_type_Jyc = null;
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -88,7 +88,7 @@ public class MultiVideoMembersListviewAvtivity
   
   public void c()
   {
-    String str = String.format(super.getResources().getString(2131429187), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().size()) });
+    String str = String.format(super.getResources().getString(2131429193), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().size()) });
     if (this.b != null) {
       this.b.setText(str);
     }
@@ -99,7 +99,7 @@ public class MultiVideoMembersListviewAvtivity
     super.onCreate(paramBundle);
     this.jdField_a_of_type_Boolean = super.getIntent().getBooleanExtra("KEY_ISFORGVIDEO", false);
     if (this.jdField_a_of_type_Boolean) {
-      super.setContentView(2130969304);
+      super.setContentView(2130969305);
     }
     for (;;)
     {
@@ -112,7 +112,7 @@ public class MultiVideoMembersListviewAvtivity
       }
       super.finish();
       return;
-      super.setContentView(2130969320);
+      super.setContentView(2130969321);
     }
     this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
     if (this.jdField_a_of_type_ComTencentAvVideoController == null)
@@ -126,11 +126,11 @@ public class MultiVideoMembersListviewAvtivity
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(super.getApplicationContext());
     a();
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvAppGAudioUIObserver);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366046));
-    this.b = ((TextView)super.findViewById(2131366047));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366073));
+    this.b = ((TextView)super.findViewById(2131366074));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131366049));
-    this.jdField_a_of_type_Jyr = new jyr(this);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131366076));
+    this.jdField_a_of_type_Jyc = new jyc(this);
     if (super.getIntent().getIntExtra("needDataSimple", 0) == 1) {}
     boolean bool;
     VideoController.GAudioFriends localGAudioFriends;
@@ -157,14 +157,14 @@ public class MultiVideoMembersListviewAvtivity
       this.jdField_a_of_type_JavaUtilArrayList.add(localGAudioFriends);
     }
     if (this.jdField_a_of_type_Boolean) {
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new jyn(this));
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new jxy(this));
     }
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Jyr);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Jyc);
     if (!bool) {}
-    for (paramBundle = String.format(super.getResources().getString(2131429187), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });; paramBundle = super.getResources().getString(2131429488))
+    for (paramBundle = String.format(super.getResources().getString(2131429193), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });; paramBundle = super.getResources().getString(2131429494))
     {
       this.b.setText(paramBundle);
-      this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new jyo(this, bool);
+      this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new jxz(this, bool);
       this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
       return;
     }
@@ -178,7 +178,7 @@ public class MultiVideoMembersListviewAvtivity
     this.jdField_a_of_type_ComTencentAvVideoController = null;
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
     this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_Jyr = null;
+    this.jdField_a_of_type_Jyc = null;
     this.jdField_a_of_type_AndroidWidgetListView = null;
     this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = null;
     this.jdField_a_of_type_AndroidWidgetTextView = null;

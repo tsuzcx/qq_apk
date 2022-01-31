@@ -1,19 +1,13 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.QQStoryNetReqUtils.RequestCallBack;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step.ErrorCallBack;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
-public final class nxy
-  implements Step.ErrorCallBack
+class nxy
+  implements Runnable
 {
-  public nxy(WeakReference paramWeakReference) {}
+  nxy(nxw paramnxw) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public void run()
   {
-    QQStoryNetReqUtils.RequestCallBack localRequestCallBack = (QQStoryNetReqUtils.RequestCallBack)this.a.get();
-    if (localRequestCallBack != null) {
-      localRequestCallBack.a(paramErrorMessage);
-    }
+    this.a.a.b();
   }
 }
 

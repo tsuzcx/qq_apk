@@ -1,65 +1,43 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.activity.selectmember.TroopListAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspBody;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import com.tencent.widget.PinnedFooterExpandableListView.FooterExpandListViewListener;
 
-class xyx
-  implements Runnable
+public class xyx
+  implements PinnedFooterExpandableListView.FooterExpandListViewListener
 {
-  xyx(xyw paramxyw, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
+  public xyx(FriendTabView paramFriendTabView) {}
   
-  public void run()
+  public void a()
   {
-    try
+    this.a.a = true;
+    FriendTabView.a(this.a).setFooterEnable(false);
+  }
+  
+  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  {
+    if (!this.a.a)
     {
-      TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      Object localObject = new oidb_0x88d.RspBody();
-      ((oidb_0x88d.RspBody)localObject).mergeFrom(this.jdField_a_of_type_ArrayOfByte);
-      if (((oidb_0x88d.RspBody)localObject).stzrspgroupinfo.has())
+      if (paramInt - 1 >= 0) {
+        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      }
+      for (;;)
       {
-        localObject = ((oidb_0x88d.RspBody)localObject).stzrspgroupinfo.get();
-        if ((localObject != null) && (((List)localObject).size() > 0))
-        {
-          int i = 0;
-          while (i < ((List)localObject).size())
-          {
-            oidb_0x88d.RspGroupInfo localRspGroupInfo = (oidb_0x88d.RspGroupInfo)((List)localObject).get(i);
-            if (localRspGroupInfo.uint32_result.get() == 0)
-            {
-              TroopInfo localTroopInfo = localTroopManager.a(localRspGroupInfo.uint64_group_code.get() + "");
-              localTroopInfo.troopPrivilegeFlag = ((oidb_0x88d.GroupInfo)localRspGroupInfo.stgroupinfo.get()).uint32_app_privilege_flag.get();
-              localTroopManager.b(localTroopInfo);
-            }
-            i += 1;
-          }
+        this.a.a = true;
+        FriendTabView.a(this.a).setFooterEnable(false);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendTabView", 2, "header group unusal: " + paramInt);
         }
       }
-      ArrayList localArrayList;
+    }
+    if (paramPinnedFooterExpandableListView.c(paramInt))
+    {
+      paramPinnedFooterExpandableListView.b(paramInt);
       return;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      localArrayList = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("TroopList");
-      if (localArrayList != null)
-      {
-        TroopListAdapter.a((QQAppInterface)TroopListAdapter.a(this.jdField_a_of_type_Xyw.a).b.get(), TroopListAdapter.a(this.jdField_a_of_type_Xyw.a), localArrayList);
-        return;
-      }
-      this.jdField_a_of_type_AndroidOsHandler.post(new xyy(this));
-    }
+    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 

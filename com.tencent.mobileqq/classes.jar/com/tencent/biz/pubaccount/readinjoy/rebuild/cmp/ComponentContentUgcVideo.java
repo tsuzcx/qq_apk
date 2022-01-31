@@ -37,7 +37,7 @@ public class ComponentContentUgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969567, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969574, this, true);
   }
   
   public void b()

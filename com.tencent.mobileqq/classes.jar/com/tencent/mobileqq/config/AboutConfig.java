@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.config;
 
-import ablk;
-import abll;
-import ablm;
+import absl;
+import absm;
+import absn;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -37,7 +37,7 @@ public class AboutConfig
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Hashtable jdField_a_of_type_JavaUtilHashtable;
   private List jdField_a_of_type_JavaUtilList;
-  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new abll(this);
+  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new absm(this);
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b;
   
@@ -53,7 +53,7 @@ public class AboutConfig
     Hashtable localHashtable = new Hashtable();
     ResourcePluginInfo localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tx.aboutfunction";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435361);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435378);
     localResourcePluginInfo.strResURL = "";
     localResourcePluginInfo.sResSubType = 2;
     localResourcePluginInfo.cCanChangeState = 0;
@@ -68,7 +68,7 @@ public class AboutConfig
     localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
     localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tx.aboutimage";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435363);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435380);
     localResourcePluginInfo.strResURL = "";
     localResourcePluginInfo.sResSubType = 2;
     localResourcePluginInfo.cCanChangeState = 0;
@@ -83,7 +83,7 @@ public class AboutConfig
     localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
     localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tencent.help_5_8";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433499);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433516);
     localResourcePluginInfo.strResDesc = "";
     localResourcePluginInfo.strResURL = "";
     localResourcePluginInfo.sResSubType = 2;
@@ -100,7 +100,7 @@ public class AboutConfig
     localHashtable.put(localResourcePluginInfo.strPkgName, localResourcePluginInfo);
     localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tencent.Feedback_5_8";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437459);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437476);
     localResourcePluginInfo.strResDesc = "";
     localResourcePluginInfo.strResURL = "";
     localResourcePluginInfo.sResSubType = 2;
@@ -122,7 +122,7 @@ public class AboutConfig
   {
     AboutConfig localAboutConfig = paramQQAppInterface.a();
     Object localObject2 = paramResourcePluginInfo.strGotoUrl;
-    Object localObject1 = "version=7.6.0.3525&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a();
+    Object localObject1 = "version=7.6.3.3560&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a();
     Object localObject3;
     if (!paramResourcePluginInfo.strPkgName.equals("com.tencent.Feedback_5_8"))
     {
@@ -131,7 +131,7 @@ public class AboutConfig
     }
     else
     {
-      localObject3 = (String)localObject1 + "&adtag=3525";
+      localObject3 = (String)localObject1 + "&adtag=3560";
     }
     if (paramResourcePluginInfo.strPkgName.equals("com.tencent.Feedback_5_8"))
     {
@@ -219,7 +219,7 @@ public class AboutConfig
           if (paramResourcePluginInfo.isNew == 0)
           {
             paramResourcePluginInfo.isNew = 1;
-            ThreadManager.post(new ablm(localAboutConfig, paramResourcePluginInfo), 8, null, false);
+            ThreadManager.post(new absn(localAboutConfig, paramResourcePluginInfo), 8, null, false);
           }
           return;
           localObject1 = "&" + (String)localObject3;
@@ -416,13 +416,13 @@ public class AboutConfig
     QLog.d("AboutConfig", 2, "there has about data in memory cache, do not need load from DB");
     return;
     this.jdField_a_of_type_JavaUtilHashtable = a();
-    ablk localablk = new ablk(this, paramBoolean2);
+    absl localabsl = new absl(this, paramBoolean2);
     if (paramBoolean2)
     {
-      ThreadManager.post(localablk, 5, null, false);
+      ThreadManager.post(localabsl, 5, null, false);
       return;
     }
-    localablk.run();
+    localabsl.run();
   }
   
   public void b()

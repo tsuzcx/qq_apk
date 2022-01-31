@@ -1,13 +1,16 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils.OnDownloadAsyncTaskListener;
 
 public class jxr
-  implements Runnable
+  implements ChatActivityUtils.OnDownloadAsyncTaskListener
 {
-  public jxr(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public jxr(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.Q();
+    this.a.h = paramInt1;
+    this.a.i = paramInt2;
+    this.a.c(10);
   }
 }
 

@@ -1,16 +1,13 @@
-import android.app.ProgressDialog;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class uao
-  implements ConditionSearchManager.IConfigListener
+  implements Runnable
 {
-  public uao(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  public uao(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    TroopRobotPickerActivity.a(this.a);
-    this.a.a.dismiss();
+    TroopMemberListActivity.a(this.a.app, Long.valueOf(this.a.b).longValue(), new uap(this));
   }
 }
 

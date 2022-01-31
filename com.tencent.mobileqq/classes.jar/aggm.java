@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class aggm
-  implements ActionSheet.OnDismissListener
+  implements Runnable
 {
-  public aggm(QCallDetailActivity paramQCallDetailActivity) {}
+  public aggm(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onDismiss() {}
+  public void run()
+  {
+    this.a.a.setVisibility(8);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggm
  * JD-Core Version:    0.7.0.1
  */

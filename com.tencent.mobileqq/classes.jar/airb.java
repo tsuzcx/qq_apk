@@ -1,23 +1,18 @@
-import android.content.Context;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
 
-public class airb
-  extends ScrollView
+class airb
+  implements Runnable
 {
-  public airb(TroopEnterEffectController paramTroopEnterEffectController, Context paramContext)
-  {
-    super(paramContext);
-  }
+  airb(aira paramaira, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
-  public void setOverScrollMode(int paramInt)
+  public void run()
   {
-    super.setOverScrollMode(2);
+    this.jdField_a_of_type_Aira.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airb
  * JD-Core Version:    0.7.0.1
  */

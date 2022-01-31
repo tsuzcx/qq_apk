@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.like;
 
-import agce;
+import agqg;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -54,7 +54,7 @@ public class PraiseAnimation
     localAlphaAnimation.setAnimationListener(paramAnimationListener);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.setInterpolator(new agce());
+    localAnimationSet.setInterpolator(new agqg());
     return localAnimationSet;
   }
   
@@ -90,7 +90,7 @@ public class PraiseAnimation
     Drawable localDrawable2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     Drawable localDrawable1;
     if (paramBoolean2) {
-      localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131493019));
+      localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131493020));
     }
     while (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable == null)
     {
@@ -98,7 +98,7 @@ public class PraiseAnimation
       return;
       localDrawable1 = localDrawable2;
       if (paramBoolean1) {
-        localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131493018));
+        localDrawable1 = ImageUtil.a(localDrawable2, paramResources.getColor(2131493019));
       }
     }
     this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = paramDrawable;

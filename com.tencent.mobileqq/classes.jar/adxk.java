@@ -1,36 +1,22 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import mqq.os.MqqHandler;
 
-class adxk
+public class adxk
   implements Runnable
 {
-  adxk(adxj paramadxj, int paramInt) {}
+  public adxk(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
-    Object localObject = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_Adxj.jdField_a_of_type_Adxs.c);
-    if (localObject != null)
-    {
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j > 8000)
-      {
-        double d = Math.sqrt(8000.0D / (i * j));
-        Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-        ((Bitmap)localObject).recycle();
-        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Adxj.jdField_a_of_type_Adxi.a), 55);
-        ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-        ((Message)localObject).obj = localBitmap;
-        ((Message)localObject).sendToTarget();
-      }
-    }
+    boolean bool = UiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, UiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, null, this.jdField_a_of_type_JavaLangString, "qqbrowser_float_shortcut"), this.b, this.c);
+    ThreadManager.getUIHandler().post(new adxl(this, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxk
  * JD-Core Version:    0.7.0.1
  */

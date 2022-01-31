@@ -1,22 +1,28 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
+import com.tencent.qphone.base.util.QLog;
 
 public class zrr
-  implements Runnable
+  extends DiscussionObserver
 {
-  public zrr(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
+  private zrr(UpdateDiscuss paramUpdateDiscuss) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
-    if (localDataLineMsgRecord != null)
-    {
-      localDataLineMsgRecord.issuc = false;
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("issuc", Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
     }
+    if (!paramBoolean)
+    {
+      this.a.a(6);
+      return;
+    }
+    UpdateDiscuss.a(this.a).a.edit().putBoolean("isDiscussionlistok", true).commit();
+    UpdateDiscuss.b(this.a).a(3, true, Integer.valueOf(3));
+    this.a.a(7);
   }
 }
 

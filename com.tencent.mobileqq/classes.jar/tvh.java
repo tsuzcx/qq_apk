@@ -1,48 +1,39 @@
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.etrump.mixlayout.FontManager;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.mobileqq.widget.ContainerView.NoSelLinkMovementMethod;
+import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
 
 public class tvh
-  implements Observer
+  extends Handler
 {
-  public tvh(TroopInfoActivity paramTroopInfoActivity) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public tvh(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
   {
-    if (paramObject == null) {}
-    label4:
-    int i;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      do
-      {
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while (!(paramObject instanceof TroopUploadingThread.UploadState));
-          paramObservable = (TroopUploadingThread.UploadState)paramObject;
-        } while (paramObservable.a == 0);
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new tvi(this, paramObservable));
-      } while ((paramObservable.a != 1) || (paramObservable.c < 0) || (this.a.jdField_a_of_type_AndroidNetUri == null));
-      paramObject = ImageUtil.b(this.a, this.a.jdField_a_of_type_AndroidNetUri);
-      i = AvatarWallAdapter.b(paramObject, AbsDownloader.d(AvatarTroopUtil.b(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 1))));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.troopinfo", 2, "origin photo,result:" + i);
+      return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTextQQText != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_ComTencentMobileqqTextQQText);
       }
-      i = AvatarWallAdapter.a(paramObject, AbsDownloader.d(AvatarTroopUtil.a(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 1))));
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.troopinfo", 2, "thumb photo,result:" + i);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(ContainerView.NoSelLinkMovementMethod.a());
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.a.d));
+      return;
+    } while (!(paramMessage.obj instanceof Drawable));
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
   }
 }
 

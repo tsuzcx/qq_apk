@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.doutu;
 
-import abra;
-import abrb;
-import abrc;
-import abrd;
-import abre;
-import abrf;
-import abrg;
-import abrh;
-import abri;
-import abrj;
-import abrk;
-import abrl;
-import abrm;
+import abyb;
+import abyc;
+import abyd;
+import abye;
+import abyf;
+import abyg;
+import abyh;
+import abyi;
+import abyj;
+import abyk;
+import abyl;
+import abym;
+import abyn;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.HandlerThread;
@@ -448,7 +448,7 @@ public class DoutuManager
               this.jdField_d_of_type_Int = i;
             }
             if (!DuiButtonImageView.jdField_a_of_type_Boolean) {
-              ThreadManager.post(new abrk(this), 5, null, true);
+              ThreadManager.post(new abyl(this), 5, null, true);
             }
           }
           if (!QLog.isColorLevel()) {
@@ -876,7 +876,7 @@ public class DoutuManager
           if (paramInt > 0)
           {
             if (!DuiButtonImageView.jdField_a_of_type_Boolean) {
-              ThreadManager.post(new abrb(this), 5, null, true);
+              ThreadManager.post(new abyc(this), 5, null, true);
             }
             if (localArrayList.size() - 1 != this.jdField_e_of_type_Int)
             {
@@ -1044,7 +1044,7 @@ public class DoutuManager
       return 0;
     }
     if ((this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str) != null) && (((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo) != null)) {
-      return ((abrl)((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo)).jdField_a_of_type_Int;
+      return ((abym)((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo)).jdField_a_of_type_Int;
     }
     return 0;
   }
@@ -1057,7 +1057,7 @@ public class DoutuManager
       return 0L;
     }
     if ((this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(str) != null) && (((ConcurrentHashMap)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo) != null)) {
-      return ((abrm)((ConcurrentHashMap)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo)).jdField_a_of_type_Long;
+      return ((abyn)((ConcurrentHashMap)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo)).jdField_a_of_type_Long;
     }
     return 0L;
   }
@@ -1107,7 +1107,7 @@ public class DoutuManager
       {
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
         if ((this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionAdapter.jdField_a_of_type_Long == paramLong)) {
-          ThreadManager.getUIHandler().post(new abrj(this, paramLong));
+          ThreadManager.getUIHandler().post(new abyk(this, paramLong));
         }
       }
       return;
@@ -1125,14 +1125,14 @@ public class DoutuManager
       return;
     }
     finally {}
-    Object localObject = (LinearLayout)paramViewGroup.findViewById(2131362960);
+    Object localObject = (LinearLayout)paramViewGroup.findViewById(2131362978);
     if (localObject != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("DoutuManager", 2, "showDoutuEmotionLayout : doutuLayout != null.");
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject);
-      localObject = (DoutuEmotionHorizonListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362961);
+      localObject = (DoutuEmotionHorizonListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362979);
       this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionAdapter = ((DoutuEmotionAdapter)((DoutuEmotionHorizonListView)localObject).a());
       paramViewGroup = (ViewGroup)localObject;
       if (this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionAdapter == null)
@@ -1176,13 +1176,13 @@ public class DoutuManager
                   QLog.d("DoutuManager", 2, "showDoutuEmotionLayout : doutuLayout == null.");
                 }
                 this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)View.inflate(paramContext, 2130968632, null));
-                localObject = (DoutuEmotionHorizonListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362961);
+                localObject = (DoutuEmotionHorizonListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362979);
                 this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionAdapter = new DoutuEmotionAdapter(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseActivity, paramSessionInfo, paramMqqHandler, this.jdField_b_of_type_Boolean, paramDoutuItem, this.jdField_a_of_type_Int);
                 ((DoutuEmotionHorizonListView)localObject).setAdapter(this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionAdapter);
-                ((DoutuEmotionHorizonListView)localObject).setOnScrollStateChangedListener(new abra(this));
-                ((DoutuEmotionHorizonListView)localObject).setTouchListener(new abrd(this, paramMqqHandler));
+                ((DoutuEmotionHorizonListView)localObject).setOnScrollStateChangedListener(new abyb(this));
+                ((DoutuEmotionHorizonListView)localObject).setTouchListener(new abye(this, paramMqqHandler));
                 RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-                localLayoutParams.addRule(2, 2131363476);
+                localLayoutParams.addRule(2, 2131363494);
                 localLayoutParams.addRule(11);
                 paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
                 paramViewGroup = (ViewGroup)localObject;
@@ -1274,11 +1274,11 @@ public class DoutuManager
     } while ((paramChatMessage == null) || (paramChatMessage.length() == 0) || (paramSessionInfo == null) || (paramSessionInfo.length() == 0));
     if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramChatMessage) != null)
     {
-      ((ConcurrentHashMap)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramChatMessage)).put(paramSessionInfo, new abrm(this, l1, l2));
+      ((ConcurrentHashMap)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramChatMessage)).put(paramSessionInfo, new abyn(this, l1, l2));
       return;
     }
     ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    localConcurrentHashMap.put(paramSessionInfo, new abrm(this, l1, l2));
+    localConcurrentHashMap.put(paramSessionInfo, new abyn(this, l1, l2));
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramChatMessage, localConcurrentHashMap);
   }
   
@@ -1293,27 +1293,27 @@ public class DoutuManager
     }
     if (this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str) != null)
     {
-      ((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).put(paramSessionInfo, new abrl(this, l1, l2, paramChatMessage.senderuin, paramInt1, paramInt2));
+      ((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).put(paramSessionInfo, new abym(this, l1, l2, paramChatMessage.senderuin, paramInt1, paramInt2));
       return;
     }
     ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    localConcurrentHashMap.put(paramSessionInfo, new abrl(this, l1, l2, paramChatMessage.senderuin, paramInt1, paramInt2));
+    localConcurrentHashMap.put(paramSessionInfo, new abym(this, l1, l2, paramChatMessage.senderuin, paramInt1, paramInt2));
     this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localConcurrentHashMap);
   }
   
   public void a(DoutuData paramDoutuData, long paramLong, String paramString)
   {
-    ThreadManager.post(new abrh(this, paramDoutuData, paramLong, paramString), 5, null, true);
+    ThreadManager.post(new abyi(this, paramDoutuData, paramLong, paramString), 5, null, true);
   }
   
   public void a(DoutuItem paramDoutuItem, SessionInfo paramSessionInfo, long paramLong)
   {
-    ThreadManager.post(new abrg(this, paramDoutuItem, paramLong, paramSessionInfo), 5, null, true);
+    ThreadManager.post(new abyh(this, paramDoutuItem, paramLong, paramSessionInfo), 5, null, true);
   }
   
   public void a(String paramString, long paramLong)
   {
-    ThreadManager.post(new abrf(this, paramString, paramLong), 5, null, true);
+    ThreadManager.post(new abyg(this, paramString, paramLong), 5, null, true);
   }
   
   public void a(List paramList, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie, int paramInt)
@@ -1531,7 +1531,7 @@ public class DoutuManager
       for (boolean bool = true;; bool = false)
       {
         if ((this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionAdapter.jdField_a_of_type_Long == paramLong)) {
-          ThreadManager.getUIHandler().post(new abri(this, paramBoolean, (List)localObject, bool, paramLong));
+          ThreadManager.getUIHandler().post(new abyj(this, paramBoolean, (List)localObject, bool, paramLong));
         }
         if (bool) {
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
@@ -1579,7 +1579,7 @@ public class DoutuManager
       return 0L;
     }
     if ((this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str) != null) && (((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo) != null)) {
-      return ((abrl)((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo)).jdField_a_of_type_Long;
+      return ((abym)((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo)).jdField_a_of_type_Long;
     }
     return 0L;
   }
@@ -1630,14 +1630,14 @@ public class DoutuManager
       return 0L;
     }
     if ((this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str) != null) && (((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo) != null)) {
-      return ((abrl)((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo)).jdField_b_of_type_Long;
+      return ((abym)((ConcurrentHashMap)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).get(paramSessionInfo)).jdField_b_of_type_Long;
     }
     return 0L;
   }
   
   public void c()
   {
-    ThreadManager.post(new abre(this), 5, null, true);
+    ThreadManager.post(new abyf(this), 5, null, true);
   }
   
   public boolean c()
@@ -1666,8 +1666,8 @@ public class DoutuManager
       jdField_a_of_type_Boolean = false;
       return;
     }
-    String str1 = SharedPreUtils.o(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    String str2 = SharedPreUtils.n(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    String str1 = SharedPreUtils.n(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    String str2 = SharedPreUtils.m(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     if ((QLog.isColorLevel()) && (str1 != null) && (str2 != null)) {
       QLog.d("DoutuManager", 2, "checkAndDownloadRes: md5 = " + str1 + ", url = " + str2);
     }
@@ -1685,7 +1685,7 @@ public class DoutuManager
       if (QLog.isColorLevel()) {
         QLog.d("DoutuManager", 2, "checkAndDownloadRes : [download] startDownload: " + str2 + " path=" + str3);
       }
-      localDownloaderInterface.a(localDownloadTask, new abrc(this, str2, str3, str1), null);
+      localDownloaderInterface.a(localDownloadTask, new abyd(this, str2, str3, str1), null);
       return;
     }
     DuiButtonImageView.a();
@@ -1694,7 +1694,7 @@ public class DoutuManager
   
   public boolean d()
   {
-    return a(SharedPreUtils.o(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    return a(SharedPreUtils.n(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
   }
   
   public void onDestroy()
@@ -1721,7 +1721,7 @@ public class DoutuManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuManager
  * JD-Core Version:    0.7.0.1
  */

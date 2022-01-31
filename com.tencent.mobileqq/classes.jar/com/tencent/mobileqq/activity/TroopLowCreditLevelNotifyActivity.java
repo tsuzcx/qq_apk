@@ -35,8 +35,8 @@ import java.util.List;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.AppInfo;
 import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
-import tvw;
-import tvx;
+import tyw;
+import tyx;
 
 public class TroopLowCreditLevelNotifyActivity
   extends IphoneTitleBarActivity
@@ -63,7 +63,7 @@ public class TroopLowCreditLevelNotifyActivity
     this.jdField_a_of_type_ArrayOfBoolean = new boolean[4];
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new tvx(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new tyx(this);
   }
   
   private String a(String paramString, long paramLong)
@@ -81,7 +81,7 @@ public class TroopLowCreditLevelNotifyActivity
     }
     for (;;)
     {
-      paramString = paramString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$CLIENTVER$", "android7.6.0").replace("$UIN$", str).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", (CharSequence)localObject).replace("$ENTERSOURCE$", "1");
+      paramString = paramString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$CLIENTVER$", "android7.6.3").replace("$UIN$", str).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", (CharSequence)localObject).replace("$ENTERSOURCE$", "1");
       return paramString + "&credit=1";
       if ((((TroopInfo)localObject).dwCmdUinUinFlag & 1L) == 1L) {
         localObject = "1";
@@ -94,23 +94,23 @@ public class TroopLowCreditLevelNotifyActivity
   private void e()
   {
     this.jdField_a_of_type_AndroidContentContext = this;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363844));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363667));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364607));
-    this.c = ((TextView)findViewById(2131375127));
-    this.d = ((TextView)findViewById(2131375128));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366320));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375129));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363867));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363690));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364631));
+    this.c = ((TextView)findViewById(2131375313));
+    this.d = ((TextView)findViewById(2131375314));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366347));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375315));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    setTitle(2131430661);
-    this.c.setText(2131430662);
-    this.d.setText(2131430663);
+    setTitle(2131430678);
+    this.c.setText(2131430679);
+    this.d.setText(2131430680);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    a(2131430664, 2131430670, this.jdField_a_of_type_ArrayOfBoolean[0], 0);
-    a(2131430665, 2131430670, this.jdField_a_of_type_ArrayOfBoolean[1], 1);
-    a(2131430666, 2131430669, this.jdField_a_of_type_ArrayOfBoolean[2], 2);
-    a(2131430667, 2131430668, this.jdField_a_of_type_ArrayOfBoolean[3], 3);
+    a(2131430681, 2131430687, this.jdField_a_of_type_ArrayOfBoolean[0], 0);
+    a(2131430682, 2131430687, this.jdField_a_of_type_ArrayOfBoolean[1], 1);
+    a(2131430683, 2131430686, this.jdField_a_of_type_ArrayOfBoolean[2], 2);
+    a(2131430684, 2131430685, this.jdField_a_of_type_ArrayOfBoolean[3], 3);
     Bitmap localBitmap = this.app.a(this.jdField_a_of_type_JavaLangString, (byte)3, false, false);
     if (localBitmap != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
@@ -198,8 +198,8 @@ public class TroopLowCreditLevelNotifyActivity
       label56:
       if ((i == 0) && (j == 0))
       {
-        localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(getString(2131434764)).setMessage("错误，仅群主和管理员能访问");
-        ((QQCustomDialog)localObject).setPositiveButton(2131430676, new tvw(this));
+        localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(getString(2131434781)).setMessage("错误，仅群主和管理员能访问");
+        ((QQCustomDialog)localObject).setPositiveButton(2131430693, new tyw(this));
         ((QQCustomDialog)localObject).setNegativeButton("", null);
         ((QQCustomDialog)localObject).setCancelable(false);
         ((QQCustomDialog)localObject).show();
@@ -227,10 +227,10 @@ public class TroopLowCreditLevelNotifyActivity
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971623, null);
-    TextView localTextView1 = (TextView)localView.findViewById(2131365299);
-    TextView localTextView2 = (TextView)localView.findViewById(2131375126);
-    TextView localTextView3 = (TextView)localView.findViewById(2131369133);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971671, null);
+    TextView localTextView1 = (TextView)localView.findViewById(2131365321);
+    TextView localTextView2 = (TextView)localView.findViewById(2131375312);
+    TextView localTextView3 = (TextView)localView.findViewById(2131369199);
     localTextView1.setText(paramInt1);
     localTextView2.setText(paramInt2);
     if (paramBoolean) {
@@ -344,7 +344,7 @@ public class TroopLowCreditLevelNotifyActivity
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131430678);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131430695);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(getTitleBarHeight());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
@@ -370,7 +370,7 @@ public class TroopLowCreditLevelNotifyActivity
     {
       if (paramInt1 >= 0)
       {
-        this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt1].findViewById(2131369133).setVisibility(0);
+        this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt1].findViewById(2131369199).setVisibility(0);
         this.jdField_a_of_type_ArrayOfBoolean[paramInt1] = true;
       }
       if (!b()) {
@@ -400,7 +400,7 @@ public class TroopLowCreditLevelNotifyActivity
       finish();
       return false;
     }
-    super.setContentView(2130971624);
+    super.setContentView(2130971672);
     e();
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
     a();
@@ -417,7 +417,7 @@ public class TroopLowCreditLevelNotifyActivity
   public void onClick(View paramView)
   {
     Object localObject;
-    if (paramView.getId() == 2131375129)
+    if (paramView.getId() == 2131375315)
     {
       paramView = "http://qqweb.qq.com/m/business/qunlevel/index.html?gc=" + this.jdField_a_of_type_JavaLangString + "&from=0&_wv=1027";
       localObject = new Intent(this, QQBrowserActivity.class);

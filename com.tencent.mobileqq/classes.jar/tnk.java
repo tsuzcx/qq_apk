@@ -1,24 +1,70 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tnk
-  implements Runnable
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public tnk(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public tnk(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (RegisterVerifyCodeActivity.a(this.a) == 1)
+    int i = 0;
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (paramInt = 0;; paramInt = 1)
     {
-      RegisterVerifyCodeActivity.a(this.a).setText(2131434260);
-      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
-      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
-      return;
+      if (paramInt != 0) {}
+      try
+      {
+        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
+        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
+        paramInt = i;
+        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
+          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
+        }
+        if (paramInt == 1)
+        {
+          long l = 3600L;
+          paramArrayOfByte = "";
+          if (localQQProtectRisksResponse.uint32_cache_time.has()) {
+            l = localQQProtectRisksResponse.uint32_cache_time.get();
+          }
+          if (localQQProtectRisksResponse.str_risk_exist.has()) {
+            paramArrayOfByte = localQQProtectRisksResponse.str_risk_exist.get();
+          }
+          paramBundle = paramArrayOfByte;
+          if (TextUtils.isEmpty(paramArrayOfByte))
+          {
+            paramBundle = paramArrayOfByte;
+            if (localQQProtectRisksResponse.risk_info_list.has())
+            {
+              paramBundle = paramArrayOfByte;
+              if (!localQQProtectRisksResponse.risk_info_list.isEmpty()) {
+                paramBundle = this.a.getString(2131436800);
+              }
+            }
+          }
+          QQSettingSettingActivity.a(this.a, l, paramBundle);
+          this.a.runOnUiThread(new tnl(this, paramBundle));
+        }
+        return;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        return;
+      }
     }
-    RegisterVerifyCodeActivity.b(this.a);
-    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434260) + "(" + RegisterVerifyCodeActivity.a(this.a) + "s)");
-    this.a.a.postDelayed(this, 1000L);
   }
 }
 

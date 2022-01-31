@@ -1,21 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.os.Bundle;
+import com.tencent.gdtad.net.GdtAdObserver;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.util.JSONUtils;
+import org.json.JSONObject;
 
 public class acav
-  implements Animation.AnimationListener
+  extends GdtAdObserver
 {
-  public acav(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public acav(MessengerService paramMessengerService) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(Object paramObject)
   {
-    this.a.a.setVisibility(4);
+    if (this.a.a != null)
+    {
+      this.a.a.putString("data", JSONUtils.a(paramObject).toString());
+      this.a.a(this.a.a);
+      this.a.a = null;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

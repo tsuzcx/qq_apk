@@ -1,20 +1,28 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class kqp
+class kqp
+  implements TVK_SDKMgr.InstallListener
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
+  kqp(kqo paramkqo) {}
   
-  public kqp(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    }
+    com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.a = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
+    }
+    com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.a = true;
+  }
 }
 
 

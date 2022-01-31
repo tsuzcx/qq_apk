@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahly;
-import ahlz;
-import ahmc;
-import ahmd;
-import ahme;
+import aiaa;
+import aiab;
+import aiae;
+import aiaf;
+import aiag;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -123,17 +123,17 @@ public class VideoEnvironment
   
   private static int a(String[] paramArrayOfString)
   {
-    String str = ahly.a();
+    String str = aiaa.a();
     a("LoadPathso: currentSoName=" + str, null);
     if (str.equals("d000_1")) {
       return -11;
     }
-    Object localObject = ahly.a(str);
-    int i = ((ahlz)localObject).a();
+    Object localObject = aiaa.a(str);
+    int i = ((aiab)localObject).a();
     a("LoadPathso: CfgParser err=" + i, null);
     if (i == 0)
     {
-      localObject = ((ahlz)localObject).b();
+      localObject = ((aiab)localObject).b();
       a("LoadPathso: currentVersion=" + (String)localObject + " dymAVCodecVersion=" + 56, null);
       if (Integer.parseInt((String)localObject) >= 56)
       {
@@ -201,7 +201,7 @@ public class VideoEnvironment
       while (i < localObject.length)
       {
         VideoEnvironment.ShortVideoDownload localShortVideoDownload = (VideoEnvironment.ShortVideoDownload)localObject[i];
-        jdField_a_of_type_AndroidOsHandler.post(new ahmd(localShortVideoDownload, paramInt));
+        jdField_a_of_type_AndroidOsHandler.post(new aiaf(localShortVideoDownload, paramInt));
         i += 1;
       }
     }
@@ -602,7 +602,7 @@ public class VideoEnvironment
       while (i < paramAppInterface.length)
       {
         VideoEnvironment.ShortVideoDownload localShortVideoDownload = (VideoEnvironment.ShortVideoDownload)paramAppInterface[i];
-        jdField_a_of_type_AndroidOsHandler.post(new ahme(localShortVideoDownload, paramBoolean));
+        jdField_a_of_type_AndroidOsHandler.post(new aiag(localShortVideoDownload, paramBoolean));
         i += 1;
       }
     }
@@ -702,22 +702,22 @@ public class VideoEnvironment
     if (!paramString.exists()) {
       throw new RuntimeException("After uncompressZip,config_version file not exist...");
     }
-    localObject2 = ahly.a(ahly.a(paramString));
-    paramInt = ((ahlz)localObject2).a();
+    localObject2 = aiaa.a(aiaa.a(paramString));
+    paramInt = ((aiab)localObject2).a();
     if (paramInt != 0)
     {
       a("VideoEnvironment:[uncompressZipSo][createParser] errorCodec=" + paramInt, null);
       throw new RuntimeException("createParser err=" + paramInt);
     }
-    Object localObject3 = ahly.a(paramQQAppInterface);
-    paramString = ((ahlz)localObject2).a();
+    Object localObject3 = aiaa.a(paramQQAppInterface);
+    paramString = ((aiab)localObject2).a();
     a("VideoEnvironment:[uncompressZipSo][Md5] md5Cfg=" + paramString + " md5Cmp=" + (String)localObject3, null);
     if (!paramString.equalsIgnoreCase((String)localObject3)) {
       throw new RuntimeException("[Md5 error] md5Cfg=" + paramString + " md5Cmp=" + (String)localObject3);
     }
     long l1 = localFile.length();
-    localObject3 = ((ahlz)localObject2).b().trim();
-    localObject2 = ahly.a(paramString, (String)localObject3);
+    localObject3 = ((aiab)localObject2).b().trim();
+    localObject2 = aiaa.a(paramString, (String)localObject3);
     a("VideoEnvironment:[uncompressZipSo][trim] versionvalid=" + (String)localObject3 + " soNewName=" + (String)localObject2, null);
     str1 = str1 + (String)localObject2;
     localObject3 = new File(str1);
@@ -727,7 +727,7 @@ public class VideoEnvironment
     if (((File)localObject3).exists())
     {
       l2 = ((File)localObject3).length();
-      str2 = ahly.a(str1);
+      str2 = aiaa.a(str1);
       if (!paramString.equalsIgnoreCase(str2))
       {
         bool1 = true;
@@ -790,9 +790,9 @@ public class VideoEnvironment
       a("copySoToFilesDir: srcPath=" + str3 + " dstPath=" + str1 + " dstExists=" + bool, null);
       if (bool)
       {
-        String str2 = ahly.a(str3);
+        String str2 = aiaa.a(str3);
         a("copySoToFilesDir:[destFile exists] srcMd5=" + str2 + " srcPath=" + str3, null);
-        str3 = ahly.a(str1);
+        str3 = aiaa.a(str1);
         a("copySoToFilesDir:[destFile exists] dstMd5=" + str3 + " dstPath=" + str1, null);
         if ((str2 != null) && (!"".equals(str2)) && (str2.equalsIgnoreCase(str3))) {
           return true;
@@ -810,18 +810,18 @@ public class VideoEnvironment
   private static boolean a(String paramString1, String paramString2)
   {
     boolean bool2 = false;
-    boolean bool3 = ahly.a(paramString2);
+    boolean bool3 = aiaa.a(paramString2);
     a(paramString1 + " saveSuccess=" + bool3, null);
     boolean bool1 = bool2;
     if (!bool3)
     {
-      bool3 = ahly.a(paramString2);
+      bool3 = aiaa.a(paramString2);
       a(paramString1 + " saveSuccessTwo=" + bool3, null);
       bool1 = bool2;
       if (!bool3)
       {
         bool1 = true;
-        bool2 = ahly.a("d000_1");
+        bool2 = aiaa.a("d000_1");
         a("VideoEnvironment", paramString1 + "clearMemoryOK=" + bool2 + ",signature=" + paramString2, null);
       }
     }
@@ -1120,12 +1120,12 @@ public class VideoEnvironment
           do
           {
             return false;
-            paramString = ahly.a(paramString);
+            paramString = aiaa.a(paramString);
           } while (TextUtils.isEmpty(paramString));
           paramString = paramString.trim();
           str = a();
         } while ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(paramString)));
-        paramString = ahly.a(str);
+        paramString = aiaa.a(str);
       } while (paramString.a() != 0);
       paramString = paramString.b().trim();
     } while ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase("" + paramInt)));
@@ -1550,7 +1550,7 @@ public class VideoEnvironment
   
   private static String d()
   {
-    return ahly.a("HookTestAVCodec001", "56");
+    return aiaa.a("HookTestAVCodec001", "56");
   }
   
   public static void d()
@@ -1598,12 +1598,12 @@ public class VideoEnvironment
   
   private static String e()
   {
-    return ahly.a("HookTestAVCodecSdcard002", "56");
+    return aiaa.a("HookTestAVCodecSdcard002", "56");
   }
   
   private static void e()
   {
-    ThreadManager.post(new ahmc(), 5, null, false);
+    ThreadManager.post(new aiae(), 5, null, false);
   }
   
   public static boolean e()

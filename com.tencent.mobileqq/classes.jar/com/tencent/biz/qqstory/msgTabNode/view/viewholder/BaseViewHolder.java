@@ -17,16 +17,16 @@ public class BaseViewHolder
   protected RotateCircleImageView a;
   protected ImageView b;
   protected TextView b;
-  protected ImageView c = (ImageView)a(2131371739);
+  protected ImageView c = (ImageView)a(2131371909);
   
   public BaseViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView = ((RotateCircleImageView)a(2131371738));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131371737));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131371741));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131363360));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371740));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView = ((RotateCircleImageView)a(2131371908));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131371907));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131371911));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131363378));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371910));
   }
   
   protected void a(int paramInt1, int paramInt2)

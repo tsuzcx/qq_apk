@@ -1,53 +1,22 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.mobileqq.webview.swift.SwiftFloatViewUI;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class akms
-  extends Handler
+  implements Runnable
 {
-  public akms(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public akms(SwiftFloatViewUI paramSwiftFloatViewUI) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
+    if ((this.a.a != null) && (this.a.a.a != null)) {
+      this.a.a.a.y();
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (Bitmap)paramMessage.obj;
-        } while (paramMessage == null);
-        paramMessage = AuthorityUtil.a(this.a, paramMessage, 50, 50);
-        localMessage = Message.obtain();
-        localMessage.what = 1002;
-        localMessage.obj = paramMessage;
-        this.a.b.sendMessage(localMessage);
-        return;
-        paramMessage = (String)paramMessage.obj;
-      } while (TextUtils.isEmpty(paramMessage));
-      paramMessage = AuthorityActivity.a(paramMessage);
-    } while (paramMessage == null);
-    Message localMessage = Message.obtain();
-    localMessage.what = 1003;
-    localMessage.obj = paramMessage;
-    this.a.b.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akms
  * JD-Core Version:    0.7.0.1
  */

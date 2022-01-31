@@ -1,42 +1,35 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.BaseAnimDrawer;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class xwn
-  extends ContactBindObserver
+  implements Runnable
 {
-  public xwn(PhoneContactTabView paramPhoneContactTabView) {}
+  public xwn(SubtitleLayout paramSubtitleLayout) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    this.a.a.unRegistObserver(this);
-    switch (PhoneContactTabView.a(this.a).c())
+    SubtitleLayout.a(this.a, true);
+    if ((SubtitleLayout.a(this.a) != null) && (SubtitleLayout.a(this.a).b() == 3))
     {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      PhoneContactTabView.b(this.a);
-      return;
-    case 9: 
-      this.a.d();
-      return;
-    case 0: 
-    case 1: 
-    case 5: 
-    case 7: 
-      PhoneContactTabView.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("SubtitleLayout", 2, "count down, not in preview state.");
+      }
+      SubtitleLayout.a(this.a, null);
       return;
     }
-    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
+    AudioTranslator.a().a(true, false);
+    this.a.a();
+    if (this.a.a != 0)
     {
-      this.a.d();
-      return;
+      SubtitleLayout.a(this.a);
+      SubtitleLayout.b(this.a);
     }
-    PhoneContactTabView.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("SubtitleLayout", 2, "stop auto trans.");
+    }
+    SubtitleLayout.a(this.a, null);
   }
 }
 

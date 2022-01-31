@@ -86,7 +86,7 @@ public class StoryUserBadgeView
           UIUtils.a(this, str, 50, 50, null, null);
           return;
         }
-        super.setImageResource(2130843620);
+        super.setImageResource(2130843741);
         return;
       }
       super.setVisibility(8);
@@ -97,7 +97,7 @@ public class StoryUserBadgeView
       this.jdField_a_of_type_Int = 10002;
       super.setVisibility(0);
       super.setOnClickListener(this);
-      super.setImageResource(2130843618);
+      super.setImageResource(2130843739);
       return;
     }
     this.jdField_a_of_type_Int = 10003;

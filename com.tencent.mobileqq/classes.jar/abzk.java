@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController.OnMagicPlayEnd;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import java.util.List;
+import java.util.concurrent.Executor;
 
-class abzk
-  implements MagicfaceViewController.OnMagicPlayEnd
+public class abzk
+  implements URLDrawable.URLDrawableListener
 {
-  abzk(abzj paramabzj, String paramString) {}
+  public abzk(EmoticonFromGroupManager paramEmoticonFromGroupManager, URLDrawable paramURLDrawable) {}
   
-  public void a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicEmoticonInfo", 2, "[play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Abzj.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue);
-    }
-    this.jdField_a_of_type_Abzj.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = this.jdField_a_of_type_JavaLangString;
-    ChatActivityFacade.a(this.jdField_a_of_type_Abzj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Abzj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Abzj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Abzj.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-    ReportController.b(this.jdField_a_of_type_Abzj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, this.jdField_a_of_type_Abzj.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+    EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).a.remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    EmoticonFromGroupManager.a().execute(new abzl(this, paramURLDrawable));
   }
 }
 

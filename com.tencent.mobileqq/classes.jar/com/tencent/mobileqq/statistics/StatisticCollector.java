@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.statistics;
 
-import ahrw;
-import ahrx;
-import ahry;
-import ahrz;
-import ahsa;
-import ahsb;
-import ahsc;
+import aifz;
+import aiga;
+import aigb;
+import aigc;
+import aigd;
+import aige;
+import aigf;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.content.BroadcastReceiver;
@@ -75,14 +75,14 @@ public class StatisticCollector
   public static boolean b;
   private static boolean d;
   private int jdField_a_of_type_Int;
-  ahsb jdField_a_of_type_Ahsb = new ahsb();
+  aige jdField_a_of_type_Aige = new aige();
   public String a;
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder("DPC info:\n");
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private Stack jdField_a_of_type_JavaUtilStack = new Stack();
   public boolean a;
-  private ahsc[] jdField_a_of_type_ArrayOfAhsc = { new ahsc("com.tencent.mtt", "qqBrowser"), new ahsc("com.tencent.android.qqdownloader", "qqMarket"), new ahsc("com.tencent.qqgame", "qqGame"), new ahsc("com.tencent.qqmusic", "qqMusic"), new ahsc("com.tencent.news", "qqNews"), new ahsc("com.qq.reader", "qqReader"), new ahsc("com.tencent.qqlive", "qqVideo"), new ahsc("com.tencent.wblog", "qqMicroblog"), new ahsc("com.tencent.qqphonebook", "qqPhonebook") };
+  private aigf[] jdField_a_of_type_ArrayOfAigf = { new aigf("com.tencent.mtt", "qqBrowser"), new aigf("com.tencent.android.qqdownloader", "qqMarket"), new aigf("com.tencent.qqgame", "qqGame"), new aigf("com.tencent.qqmusic", "qqMusic"), new aigf("com.tencent.news", "qqNews"), new aigf("com.qq.reader", "qqReader"), new aigf("com.tencent.qqlive", "qqVideo"), new aigf("com.tencent.wblog", "qqMicroblog"), new aigf("com.tencent.qqphonebook", "qqPhonebook") };
   private String jdField_b_of_type_JavaLangString;
   private StringBuilder jdField_b_of_type_JavaLangStringBuilder = new StringBuilder("Thread info:\n");
   private boolean c;
@@ -94,7 +94,7 @@ public class StatisticCollector
     jdField_a_of_type_AndroidContentContext = paramContext;
     UserAction.setUserID("10000");
     UserAction.initUserAction(jdField_a_of_type_AndroidContentContext, false, paramLong);
-    UserAction.setChannelID("10000665");
+    UserAction.setChannelID("2017");
   }
   
   public static int a()
@@ -205,7 +205,7 @@ public class StatisticCollector
   
   public static boolean a()
   {
-    if ("7.6.0".startsWith("7.1.")) {}
+    if ("7.6.3".startsWith("7.1.")) {}
     return false;
   }
   
@@ -327,16 +327,16 @@ public class StatisticCollector
     try
     {
       Object localObject = new JSONObject(str);
-      this.jdField_a_of_type_Ahsb.jdField_a_of_type_Boolean = ((JSONObject)localObject).getBoolean("control_switch");
-      this.jdField_a_of_type_Ahsb.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("control_level");
-      this.jdField_a_of_type_Ahsb.b = ((JSONObject)localObject).getInt("control_window");
-      this.jdField_a_of_type_Ahsb.c = ((JSONObject)localObject).getInt("control_freq");
+      this.jdField_a_of_type_Aige.jdField_a_of_type_Boolean = ((JSONObject)localObject).getBoolean("control_switch");
+      this.jdField_a_of_type_Aige.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("control_level");
+      this.jdField_a_of_type_Aige.b = ((JSONObject)localObject).getInt("control_window");
+      this.jdField_a_of_type_Aige.c = ((JSONObject)localObject).getInt("control_freq");
       localObject = this.jdField_a_of_type_JavaLangStringBuilder.append("initCrashControl");
       ((StringBuilder)localObject).append(",controlJson=").append(str);
-      ((StringBuilder)localObject).append(",switch=").append(this.jdField_a_of_type_Ahsb.jdField_a_of_type_Boolean);
-      ((StringBuilder)localObject).append(",level=").append(this.jdField_a_of_type_Ahsb.jdField_a_of_type_Int);
-      ((StringBuilder)localObject).append(",window=").append(this.jdField_a_of_type_Ahsb.b);
-      ((StringBuilder)localObject).append(",Freq=").append(this.jdField_a_of_type_Ahsb.c);
+      ((StringBuilder)localObject).append(",switch=").append(this.jdField_a_of_type_Aige.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(",level=").append(this.jdField_a_of_type_Aige.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(",window=").append(this.jdField_a_of_type_Aige.b);
+      ((StringBuilder)localObject).append(",Freq=").append(this.jdField_a_of_type_Aige.c);
       this.jdField_a_of_type_JavaLangStringBuilder.append("\n");
       return;
     }
@@ -344,7 +344,7 @@ public class StatisticCollector
     {
       for (;;)
       {
-        this.jdField_a_of_type_Ahsb.a();
+        this.jdField_a_of_type_Aige.a();
         QLog.d("StatisticCollector", 1, "initCrashControl parse json throws an exception, so reset.");
       }
     }
@@ -381,11 +381,11 @@ public class StatisticCollector
     for (;;)
     {
       return;
-      paramString1 = new ahsa(System.currentTimeMillis(), paramString1, paramString2);
+      paramString1 = new aigd(System.currentTimeMillis(), paramString1, paramString2);
       this.jdField_a_of_type_JavaUtilLinkedList.add(paramString1);
       int i = this.jdField_a_of_type_Int;
       for (this.jdField_a_of_type_Int = (paramString1.jdField_a_of_type_Int + i); (this.jdField_a_of_type_Int > 15360L) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 1); this.jdField_a_of_type_Int -= paramString1.jdField_a_of_type_Int) {
-        paramString1 = (ahsa)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
+        paramString1 = (aigd)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
       }
     }
   }
@@ -441,7 +441,7 @@ public class StatisticCollector
         paramString1 = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), paramHashMap);
         paramString1.setAppId(AppSetting.jdField_a_of_type_Int);
         paramString1.setTimeout(30000L);
-        ThreadManager.post(new ahrz(this, paramString1), 5, null, true);
+        ThreadManager.post(new aigc(this, paramString1), 5, null, true);
         return;
       }
       catch (Exception paramString1)
@@ -1007,7 +1007,7 @@ public class StatisticCollector
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Ahsb.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Aige.jdField_a_of_type_Boolean) {
       QLog.d("StatisticCollector", 1, "updateLocalCrashData crash control is off..");
     }
     Object localObject;
@@ -1015,7 +1015,7 @@ public class StatisticCollector
     {
       return;
       localObject = BaseApplicationImpl.getApplication().startComponentInfo;
-      if ((this.jdField_a_of_type_Ahsb.jdField_a_of_type_Int == 2) && ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains("QQBroadcastReceiver"))))
+      if ((this.jdField_a_of_type_Aige.jdField_a_of_type_Int == 2) && ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains("QQBroadcastReceiver"))))
       {
         QLog.d("StatisticCollector", 1, "updateLocalCrashData controllevel is 2 but not QQBroadcastReceiver start QQ.");
         return;
@@ -1026,14 +1026,14 @@ public class StatisticCollector
     int i = ((SharedPreferences)localObject).getInt("crashcount", 0);
     long l2 = System.currentTimeMillis();
     this.jdField_a_of_type_JavaLangStringBuilder.append("updateLocalCrashData startTime=").append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l1))).append(",currenttime=").append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l2))).append(",crashCount=").append(i).append(",mCurUin=").append(this.jdField_a_of_type_JavaLangString).append("\n");
-    if ((l1 <= 0L) || (l2 <= l1) || (i < 0) || (l2 - l1 > this.jdField_a_of_type_Ahsb.b * 1000))
+    if ((l1 <= 0L) || (l2 <= l1) || (i < 0) || (l2 - l1 > this.jdField_a_of_type_Aige.b * 1000))
     {
       i = 1;
       l1 = l2;
     }
     for (;;)
     {
-      if (i > this.jdField_a_of_type_Ahsb.c) {
+      if (i > this.jdField_a_of_type_Aige.c) {
         this.jdField_a_of_type_Boolean = true;
       }
       this.jdField_a_of_type_JavaLangStringBuilder.append("updateLocalCrashData shouldStopMsf=").append(this.jdField_a_of_type_Boolean).append("\n");
@@ -1053,7 +1053,7 @@ public class StatisticCollector
   public void b(String paramString)
   {
     boolean bool1 = true;
-    if (!this.jdField_a_of_type_Ahsb.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Aige.jdField_a_of_type_Boolean) {
       QLog.d("StatisticCollector", 1, "updatePreloadCrashData crash control is off..");
     }
     SharedPreferences localSharedPreferences;
@@ -1067,18 +1067,18 @@ public class StatisticCollector
     boolean bool2 = localSharedPreferences.getBoolean("allowpreload", true);
     long l2 = System.currentTimeMillis();
     this.jdField_a_of_type_JavaLangStringBuilder.append("updatePreloadCrashData process=").append(paramString).append(",startTime=").append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l1))).append(",currenttime=").append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l2))).append(",crashCount=").append(i).append(",allowPreload=").append(bool2).append(",mCurUin=").append(this.jdField_a_of_type_JavaLangString).append("\n");
-    if ((l1 <= 0L) || (l2 <= l1) || (i < 0) || (l2 - l1 > this.jdField_a_of_type_Ahsb.b * 1000))
+    if ((l1 <= 0L) || (l2 <= l1) || (i < 0) || (l2 - l1 > this.jdField_a_of_type_Aige.b * 1000))
     {
       i = 1;
       l1 = l2;
     }
     for (;;)
     {
-      if (i > this.jdField_a_of_type_Ahsb.c) {
+      if (i > this.jdField_a_of_type_Aige.c) {
         bool1 = false;
       }
       this.jdField_a_of_type_JavaLangStringBuilder.append("updatePreloadCrashData update allowPreload=").append(bool1).append("\n");
-      localSharedPreferences.edit().putLong("starttime", l1).putInt("crashcount", i).putBoolean("allowpreload", bool1).putInt("controlwindow", this.jdField_a_of_type_Ahsb.b).commit();
+      localSharedPreferences.edit().putLong("starttime", l1).putInt("crashcount", i).putBoolean("allowpreload", bool1).putInt("controlwindow", this.jdField_a_of_type_Aige.b).commit();
       return;
       i += 1;
     }
@@ -1149,15 +1149,15 @@ public class StatisticCollector
       ((CrashStrategyBean)localObject).setMaxStackFrame(6);
       QLog.d("StatisticCollector", 1, "initCrashReport process=" + BaseApplicationImpl.processName + ", pid=" + Process.myPid());
       if (BaseApplicationImpl.processName.endsWith(":qzone")) {
-        ThreadManager.executeOnSubThread(new ahrw(this));
+        ThreadManager.executeOnSubThread(new aifz(this));
       }
       Context localContext = jdField_a_of_type_AndroidContentContext;
-      ahrx localahrx = new ahrx(this);
+      aiga localaiga = new aiga(this);
       boolean bool;
       if (BaseApplicationImpl.sProcessId == 1)
       {
         bool = true;
-        CrashReport.initCrashReport(localContext, localahrx, null, bool, (CrashStrategyBean)localObject, 30000L);
+        CrashReport.initCrashReport(localContext, localaiga, null, bool, (CrashStrategyBean)localObject, 30000L);
         localObject = jdField_a_of_type_AndroidContentContext.getDir("tombs", 0).getAbsolutePath();
       }
       try
@@ -1178,7 +1178,7 @@ public class StatisticCollector
         if (!BaseApplicationImpl.processName.equals("com.tencent.mobileqq")) {
           continue;
         }
-        ThreadManager.getSubThreadHandler().postDelayed(new ahry(this, paramString), 3000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new aigb(this, paramString), 3000L);
         return;
         bool = false;
       }

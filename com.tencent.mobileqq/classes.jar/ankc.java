@@ -1,46 +1,35 @@
-import android.util.Log;
-import java.io.Writer;
+import android.view.View;
+import android.widget.RelativeLayout;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerManager;
 
 public class ankc
-  extends Writer
+  implements Runnable
 {
-  private StringBuilder a = new StringBuilder();
+  public ankc(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  private void a()
+  public void run()
   {
-    if (this.a.length() > 0)
+    this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController.c();
+    if (this.a.j) {}
+    QIMCaptureBannerManager localQIMCaptureBannerManager;
+    View localView;
+    do
     {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
-    }
-  }
-  
-  public void close()
-  {
-    a();
-  }
-  
-  public void flush()
-  {
-    a();
-  }
-  
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
-    {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
-      }
-      for (;;)
+      do
       {
-        i += 1;
-        break;
-        this.a.append(c);
-      }
-    }
+        do
+        {
+          return;
+        } while (this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController == null);
+        localQIMCaptureBannerManager = (QIMCaptureBannerManager)QIMManager.a(9);
+      } while ((!localQIMCaptureBannerManager.a()) || (localQIMCaptureBannerManager.b()));
+      localView = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369015);
+    } while ((localView == null) || (localView.getVisibility() != 0));
+    localQIMCaptureBannerManager.b(true);
+    this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController.a((RelativeLayout)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131365911), this.a.jdField_a_of_type_AndroidViewView.getContext());
   }
 }
 

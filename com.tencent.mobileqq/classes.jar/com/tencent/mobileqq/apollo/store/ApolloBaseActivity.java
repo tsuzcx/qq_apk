@@ -25,7 +25,7 @@ import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import yph;
+import ysn;
 
 public class ApolloBaseActivity
   extends AbsBaseWebViewActivity
@@ -89,7 +89,7 @@ public class ApolloBaseActivity
           if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
             this.jdField_a_of_type_AndroidContentSharedPreferences = getSharedPreferences("apollo_WebView_Report_Step", 0);
           }
-          ThreadManager.post(new yph(this, localCharSequence, k), 5, null, false);
+          ThreadManager.post(new ysn(this, localCharSequence, k), 5, null, false);
           return;
         }
       }

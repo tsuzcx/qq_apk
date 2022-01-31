@@ -1,15 +1,38 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler;
-import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
 public class ynz
   implements Runnable
 {
-  public ynz(CmGameSubProcessHandler paramCmGameSubProcessHandler) {}
+  public ynz(HotChatCenterFragment paramHotChatCenterFragment, int paramInt, TextView paramTextView) {}
   
   public void run()
   {
-    if (CmGameSubProcessHandler.a(this.a) != null) {
-      CmGameSubProcessHandler.a(this.a).a();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.isAdded())
+    {
+      String str1 = "" + this.jdField_a_of_type_Int;
+      if (!HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment))
+      {
+        str1 = this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getString(2131433297) + "(" + this.jdField_a_of_type_Int + ")";
+        if (this.jdField_a_of_type_Int > 99) {
+          str1 = this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getString(2131433297) + "(99+)";
+        }
+        if (this.jdField_a_of_type_Int <= 0) {
+          str1 = this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getString(2131433297);
+        }
+      }
+      String str2 = str1;
+      if (HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment))
+      {
+        str2 = str1;
+        if (this.jdField_a_of_type_Int > 99) {
+          str2 = "99+";
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.isAdded()) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getActivity().runOnUiThread(new yoa(this, str2));
+      }
     }
   }
 }

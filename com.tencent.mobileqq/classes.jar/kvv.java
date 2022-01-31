@@ -1,34 +1,16 @@
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementStatistics;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 public class kvv
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements DialogInterface.OnClickListener
 {
-  public kvv(VideoCoverView paramVideoCoverView) {}
+  public kvv(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "is prepare");
-    }
-    if (VideoCoverView.a(this.a) == 1) {
-      com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
-    ReportController.b(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, "");
-    AdvertisementStatistics.a().b(this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a));
-    this.a.jdField_a_of_type_Long = VideoCoverView.a(this.a).getDuration();
-    if ((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
-    {
-      VideoCoverView.a(this.a).start();
-      this.a.jdField_a_of_type_Int = 4;
-      this.a.g();
-    }
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
   }
 }
 

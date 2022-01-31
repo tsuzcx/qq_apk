@@ -1,30 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoStatusListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
 public class mht
-  extends Handler
+  implements VideoPlayManager.VideoStatusListener
 {
-  private WeakReference a;
+  public mht(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
   
-  public mht(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
+  public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam)
   {
-    this.a = new WeakReference(paramReadInJoyNavigationGridview);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
-    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
-      return;
-    }
-    switch (paramMessage.what)
+    this.a.a(paramVideoPlayParam);
+    if (paramVideoPlayParam != null)
     {
-    default: 
-      return;
+      paramVideoPlayParam = paramVideoPlayParam.a;
+      if ((paramVideoPlayParam != null) && (paramVideoPlayParam.mChannelID == 56L) && (AdvertisementInfo.isAdvertisementInfo(paramVideoPlayParam))) {
+        NativeAdUtils.a(null, this.a.a, NativeAdUtils.f, NativeAdUtils.l, (AdvertisementInfo)paramVideoPlayParam, null, 0L, NativeAdUtils.a(ReadInJoyBaseAdapter.h, paramVideoPlayParam.mVideoDuration, ReadInJoyBaseAdapter.i, 1, ReadInJoyBaseAdapter.f, ReadInJoyBaseAdapter.g, paramVideoPlayParam.mVideoDuration, NativeAdUtils.s));
+      }
     }
-    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
   }
 }
 

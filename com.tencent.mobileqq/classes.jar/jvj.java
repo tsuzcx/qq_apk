@@ -1,18 +1,23 @@
-import com.tencent.av.opengl.ui.GLRootView;
-import com.tencent.av.ui.GLVideoView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.SessionMgr;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
 public class jvj
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public jvj(GLVideoView paramGLVideoView) {}
+  public jvj(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    GLRootView localGLRootView = this.a.a();
-    if (localGLRootView != null)
+    if (paramIntent.getAction().equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
     {
-      GLVideoView.e(this.a);
-      localGLRootView.postDelayed(this.a.a, 80L);
+      paramContext = SessionMgr.a().a();
+      this.a.a("BroadcastReceiver_qzone", this.a.getIntent(), paramContext);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
+      this.a.b("BroadcastReceiver_qzone");
     }
   }
 }

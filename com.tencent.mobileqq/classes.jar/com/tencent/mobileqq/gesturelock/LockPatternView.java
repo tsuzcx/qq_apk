@@ -124,10 +124,10 @@ public class LockPatternView
       setClickable(true);
       localContext = paramContext;
       localObject = paramContext;
-      this.n = getResources().getColor(2131493027);
+      this.n = getResources().getColor(2131493028);
       localContext = paramContext;
       localObject = paramContext;
-      this.o = getResources().getColor(2131493028);
+      this.o = getResources().getColor(2131493029);
       localContext = paramContext;
       localObject = paramContext;
       this.p = getResources().getDimensionPixelSize(2131558641);
@@ -163,31 +163,31 @@ public class LockPatternView
       this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_b_of_type_Int = getResources().getColor(2131493032);
+      this.jdField_b_of_type_Int = getResources().getColor(2131493033);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_c_of_type_Int = getResources().getColor(2131493033);
+      this.jdField_c_of_type_Int = getResources().getColor(2131493034);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_d_of_type_Int = getResources().getColor(2131493034);
+      this.jdField_d_of_type_Int = getResources().getColor(2131493035);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_e_of_type_Int = getResources().getColor(2131493035);
+      this.jdField_e_of_type_Int = getResources().getColor(2131493036);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_f_of_type_Int = getResources().getColor(2131493036);
+      this.jdField_f_of_type_Int = getResources().getColor(2131493037);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_g_of_type_Int = getResources().getColor(2131493037);
+      this.jdField_g_of_type_Int = getResources().getColor(2131493038);
       localContext = paramContext;
       localObject = paramContext;
-      this.h = getResources().getColor(2131493038);
+      this.h = getResources().getColor(2131493039);
       localContext = paramContext;
       localObject = paramContext;
-      this.i = getResources().getColor(2131493039);
+      this.i = getResources().getColor(2131493040);
       localContext = paramContext;
       localObject = paramContext;
-      this.j = getResources().getColor(2131493040);
+      this.j = getResources().getColor(2131493041);
       localContext = paramContext;
       localObject = paramContext;
       this.jdField_g_of_type_Float = getResources().getDimensionPixelSize(2131558642);
@@ -543,7 +543,7 @@ public class LockPatternView
       a(String.format("%d", new Object[] { Integer.valueOf(paramCell.a() * 3 + paramCell.b() + 1) }));
       return;
     }
-    a(2131436047);
+    a(2131436064);
   }
   
   private void a(String paramString)
@@ -618,7 +618,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.a(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    a(2131436048);
+    a(2131436065);
   }
   
   private void c(MotionEvent paramMotionEvent)
@@ -656,7 +656,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.b();
     }
-    a(2131436046);
+    a(2131436063);
   }
   
   private void e()
@@ -944,7 +944,7 @@ public class LockPatternView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.gesturelock.LockPatternView
  * JD-Core Version:    0.7.0.1
  */

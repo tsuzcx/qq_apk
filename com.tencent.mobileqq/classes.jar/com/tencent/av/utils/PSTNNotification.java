@@ -21,7 +21,7 @@ import java.util.Stack;
 public class PSTNNotification
 {
   static PSTNNotification jdField_a_of_type_ComTencentAvUtilsPSTNNotification;
-  final int jdField_a_of_type_Int = 2130840216;
+  final int jdField_a_of_type_Int = 2130840222;
   Notification jdField_a_of_type_AndroidAppNotification = null;
   Context jdField_a_of_type_AndroidContentContext = null;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
@@ -43,7 +43,7 @@ public class PSTNNotification
     this.jdField_a_of_type_AndroidAppNotification = new Notification();
     this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager = new QNotificationManager(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover = new NotificationStyleDiscover(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 2130969371);
+    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 2130969372);
   }
   
   public static PSTNNotification a(Context paramContext)
@@ -61,7 +61,7 @@ public class PSTNNotification
     }
     this.jdField_a_of_type_AndroidAppNotification = new Notification();
     this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager = new QNotificationManager(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 2130969371);
+    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(this.jdField_a_of_type_AndroidContentContext.getPackageName(), 2130969372);
     if (this.jdField_a_of_type_JavaLangString == null)
     {
       this.jdField_a_of_type_JavaLangString = "";
@@ -95,29 +95,29 @@ public class PSTNNotification
       localObject2 = this.jdField_a_of_type_JavaLangString;
       this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
       localIntent.putExtra("PID", i);
-      this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366280, 2130840216);
-      this.jdField_a_of_type_AndroidAppNotification.icon = 2130840216;
+      this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewResource(2131366307, 2130840222);
+      this.jdField_a_of_type_AndroidAppNotification.icon = 2130840222;
       localObject1 = null;
       if (localIntent != null) {
         localObject1 = PendingIntent.getActivity(this.jdField_a_of_type_AndroidContentContext, 0, localIntent, 268435456);
       }
       if (this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.b() > 0.0F) {
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setFloat(2131366279, "setTextSize", this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.b());
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setFloat(2131366306, "setTextSize", this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.b());
       }
       if (this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.a() > 0.0F) {
-        this.jdField_a_of_type_AndroidWidgetRemoteViews.setFloat(2131366281, "setTextSize", this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.a());
+        this.jdField_a_of_type_AndroidWidgetRemoteViews.setFloat(2131366308, "setTextSize", this.jdField_a_of_type_ComTencentAvUtilsNotificationStyleDiscover.a());
       }
-      this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366279, (CharSequence)localObject2);
-      this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366281, str);
+      this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366306, (CharSequence)localObject2);
+      this.jdField_a_of_type_AndroidWidgetRemoteViews.setTextViewText(2131366308, str);
       try
       {
         if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-          this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewBitmap(2131366278, this.jdField_a_of_type_AndroidGraphicsBitmap);
+          this.jdField_a_of_type_AndroidWidgetRemoteViews.setImageViewBitmap(2131366305, this.jdField_a_of_type_AndroidGraphicsBitmap);
         }
         this.jdField_a_of_type_AndroidAppNotification.flags = 2;
         this.jdField_a_of_type_AndroidAppNotification.contentView = this.jdField_a_of_type_AndroidWidgetRemoteViews;
         this.jdField_a_of_type_AndroidAppNotification.contentIntent = ((PendingIntent)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("PSTNNotification", 2130840216, this.jdField_a_of_type_AndroidAppNotification);
+        this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("PSTNNotification", 2130840222, this.jdField_a_of_type_AndroidAppNotification);
       }
       catch (Exception localException)
       {
@@ -128,9 +128,9 @@ public class PSTNNotification
       }
       this.jdField_a_of_type_Boolean = true;
       return;
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131429549);
+      str = this.jdField_a_of_type_AndroidContentContext.getString(2131429555);
       continue;
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131429556);
+      str = this.jdField_a_of_type_AndroidContentContext.getString(2131429562);
     }
   }
   
@@ -150,14 +150,14 @@ public class PSTNNotification
         {
         case 0: 
           this.jdField_a_of_type_AndroidAppNotification.tickerText = str;
-          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("PSTNNotification", 2130840216, this.jdField_a_of_type_AndroidAppNotification);
+          this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("PSTNNotification", 2130840222, this.jdField_a_of_type_AndroidAppNotification);
           return;
         }
       }
       finally {}
-      String str = this.jdField_a_of_type_AndroidContentContext.getString(2131429549);
+      String str = this.jdField_a_of_type_AndroidContentContext.getString(2131429555);
       continue;
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131429556);
+      str = this.jdField_a_of_type_AndroidContentContext.getString(2131429562);
     }
   }
   
@@ -184,7 +184,7 @@ public class PSTNNotification
     this.jdField_b_of_type_JavaLangString = paramString2;
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     a();
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("PSTNNotification", 2130840216, this.jdField_a_of_type_AndroidAppNotification);
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("PSTNNotification", 2130840222, this.jdField_a_of_type_AndroidAppNotification);
   }
   
   void b()
@@ -194,7 +194,7 @@ public class PSTNNotification
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("PSTNNotification", 2130840216, this.jdField_a_of_type_AndroidAppNotification);
+      this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.notify("PSTNNotification", 2130840222, this.jdField_a_of_type_AndroidAppNotification);
       return;
     }
     a();
@@ -241,23 +241,23 @@ public class PSTNNotification
     //   80: aload_0
     //   81: getfield 51	com/tencent/av/utils/PSTNNotification:jdField_a_of_type_JavaUtilStack	Ljava/util/Stack;
     //   84: invokevirtual 300	java/util/Stack:pop	()Ljava/lang/Object;
-    //   87: checkcast 302	kgp
+    //   87: checkcast 302	kga
     //   90: astore_1
     //   91: aload_0
     //   92: aload_1
-    //   93: getfield 303	kgp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   93: getfield 303	kga:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   96: putfield 36	com/tencent/av/utils/PSTNNotification:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   99: aload_0
     //   100: aload_1
-    //   101: getfield 304	kgp:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   101: getfield 304	kga:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   104: putfield 38	com/tencent/av/utils/PSTNNotification:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   107: aload_0
     //   108: aload_1
-    //   109: getfield 305	kgp:jdField_a_of_type_Int	I
+    //   109: getfield 305	kga:jdField_a_of_type_Int	I
     //   112: putfield 42	com/tencent/av/utils/PSTNNotification:jdField_b_of_type_Int	I
     //   115: aload_0
     //   116: aload_1
-    //   117: getfield 306	kgp:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   117: getfield 306	kga:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   120: putfield 40	com/tencent/av/utils/PSTNNotification:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   123: aload_0
     //   124: invokevirtual 284	com/tencent/av/utils/PSTNNotification:a	()V
@@ -279,7 +279,7 @@ public class PSTNNotification
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	148	0	this	PSTNNotification
-    //   90	27	1	localkgp	kgp
+    //   90	27	1	localkga	kga
     //   143	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -304,7 +304,7 @@ public class PSTNNotification
         this.jdField_a_of_type_AndroidGraphicsBitmap = null;
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_JavaUtilStack.clear();
-        this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel("PSTNNotification", 2130840216);
+        this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel("PSTNNotification", 2130840222);
         this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager = null;
         this.jdField_a_of_type_AndroidWidgetRemoteViews = null;
         this.jdField_a_of_type_AndroidAppNotification = null;

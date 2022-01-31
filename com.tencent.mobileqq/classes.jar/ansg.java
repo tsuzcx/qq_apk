@@ -1,70 +1,18 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 
-public class ansg
+public final class ansg
+  implements Parcelable.Creator
 {
-  public int a;
-  public long a;
-  public ansg a;
-  public ArrayList a;
-  public boolean a;
-  
-  private ansg()
+  public EditTakeVideoSource a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Ansg = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
+    return new EditTakeVideoSource(paramParcel);
   }
   
-  public static ansg a()
+  public EditTakeVideoSource[] a(int paramInt)
   {
-    ansg localansg = new ansg();
-    localansg.a();
-    return localansg;
-  }
-  
-  public String a()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return "LBS_REQ_OK";
-    case 1: 
-      return "LBS_REQ_PENDING";
-    }
-    return "LBS_REQ_PERM_OK";
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Ansg == null) {
-      this.jdField_a_of_type_Ansg = new ansg();
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    LbsFilterStatusManager.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
-    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Ansg.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Ansg.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Ansg.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Ansg.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Ansg.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    return new EditTakeVideoSource[paramInt];
   }
 }
 

@@ -1,16 +1,31 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.open.business.viareport.OpenSdkStatic;
+import com.tencent.widget.ActionSheet;
 
 public class acot
-  extends acnx
+  implements View.OnClickListener
 {
-  public acot(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  public acot(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateUploadoneWhenPause";
+    if (this.a.a != null)
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    if (UniformDownloadActivity.a(this.a)) {
+      OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
+    }
+    for (;;)
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      return;
+      OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
+    }
   }
 }
 

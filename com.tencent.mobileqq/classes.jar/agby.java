@@ -1,33 +1,15 @@
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agby
-  extends DownloadListener
+  implements DialogInterface.OnClickListener
 {
-  agby(agbx paramagbx) {}
+  agby(agbx paramagbx, Activity paramActivity) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style end download, url : %s, resultCode : %d ", new Object[] { paramDownloadTask.jdField_a_of_type_JavaLangString, Integer.valueOf(paramDownloadTask.jdField_a_of_type_Int) }));
-    }
-  }
-  
-  public void onProgress(DownloadTask paramDownloadTask)
-  {
-    int i = (int)paramDownloadTask.jdField_a_of_type_Float;
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style progress, url : %s, progress : %d", new Object[] { paramDownloadTask.jdField_a_of_type_JavaLangString, Integer.valueOf(i) }));
-    }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style start download, url : %s, position : %s ", new Object[] { paramDownloadTask.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-    }
-    return true;
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

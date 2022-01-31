@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
 
 public class wkf
-  extends ContactBindObserver
+  implements DialogInterface.OnDismissListener
 {
-  private wkf(FriendFragment paramFriendFragment) {}
+  public wkf(SystemRequestInfoView paramSystemRequestInfoView) {}
   
-  protected void a(boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    FriendFragment.a(this.a);
+    this.a.a = null;
   }
 }
 

@@ -8,9 +8,9 @@ import com.tencent.mobileqq.statistics.UnifiedMonitor;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqMessageQueue;
 import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
-import zcw;
-import zcx;
-import zkk;
+import zgc;
+import zgd;
+import znq;
 
 public class LooperMonitorHelper
 {
@@ -20,7 +20,7 @@ public class LooperMonitorHelper
   static
   {
     jdField_a_of_type_Int = 100;
-    jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = new zcw();
+    jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = new zgc();
   }
   
   public static void a()
@@ -30,10 +30,10 @@ public class LooperMonitorHelper
     }
     int i = UnifiedMonitor.a().getThreshold(0);
     UnifiedMonitor.a().setMonitoredThread(0, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    zcx localzcx = new zcx(0);
-    localzcx.a(i, false);
-    Looper.getMainLooper().setMessageLogging(localzcx);
-    MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(localzcx);
+    zgd localzgd = new zgd(0);
+    localzgd.a(i, false);
+    Looper.getMainLooper().setMessageLogging(localzgd);
+    MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(localzgd);
   }
   
   public static void b()
@@ -43,9 +43,9 @@ public class LooperMonitorHelper
     }
     int i = UnifiedMonitor.a().getThreshold(14);
     UnifiedMonitor.a().setMonitoredThread(14, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    zcx localzcx = new zcx(14);
-    localzcx.a(i, false);
-    Looper.getMainLooper().setMessageLogging(localzcx);
+    zgd localzgd = new zgd(14);
+    localzgd.a(i, false);
+    Looper.getMainLooper().setMessageLogging(localzgd);
   }
   
   public static void c()
@@ -55,9 +55,9 @@ public class LooperMonitorHelper
     }
     int i = UnifiedMonitor.a().getThreshold(4);
     UnifiedMonitor.a().setMonitoredThread(4, ThreadManager.getSubThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    zkk localzkk = new zkk(4, "SubLooper");
-    localzkk.a(i, false);
-    ThreadManager.getSubThreadLooper().setMessageLogging(localzkk);
+    znq localznq = new znq(4, "SubLooper");
+    localznq.a(i, false);
+    ThreadManager.getSubThreadLooper().setMessageLogging(localznq);
   }
   
   public static void d()
@@ -85,8 +85,8 @@ public class LooperMonitorHelper
     }
     int i = UnifiedMonitor.a().getThreshold(18);
     UnifiedMonitor.a().setMonitoredThread(18, (Thread)localObject2, jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    localObject2 = new zkk(18, "msf-network");
-    ((zkk)localObject2).a(i, false);
+    localObject2 = new znq(18, "msf-network");
+    ((znq)localObject2).a(i, false);
     ((Looper)localObject1).setMessageLogging((Printer)localObject2);
   }
   
@@ -97,9 +97,9 @@ public class LooperMonitorHelper
     }
     int i = UnifiedMonitor.a().getThreshold(13);
     UnifiedMonitor.a().setMonitoredThread(13, ThreadManager.getRecentThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    zkk localzkk = new zkk(13, "RecentLooper");
-    localzkk.a(i, false);
-    ThreadManager.getRecentThreadLooper().setMessageLogging(localzkk);
+    znq localznq = new znq(13, "RecentLooper");
+    localznq.a(i, false);
+    ThreadManager.getRecentThreadLooper().setMessageLogging(localznq);
   }
   
   public static void f()
@@ -109,9 +109,9 @@ public class LooperMonitorHelper
     }
     int i = UnifiedMonitor.a().getThreshold(5);
     UnifiedMonitor.a().setMonitoredThread(5, ThreadManager.getFileThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    zkk localzkk = new zkk(5, "FileLooper");
-    localzkk.a(i, false);
-    ThreadManager.getFileThreadLooper().setMessageLogging(localzkk);
+    znq localznq = new znq(5, "FileLooper");
+    localznq.a(i, false);
+    ThreadManager.getFileThreadLooper().setMessageLogging(localznq);
   }
   
   public static void g()
@@ -132,9 +132,9 @@ public class LooperMonitorHelper
     }
     int i = UnifiedMonitor.a().getThreshold(19);
     UnifiedMonitor.a().setMonitoredThread(19, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
-    zcx localzcx = new zcx(19);
-    localzcx.a(i, false);
-    Looper.getMainLooper().setMessageLogging(localzcx);
+    zgd localzgd = new zgd(19);
+    localzgd.a(i, false);
+    Looper.getMainLooper().setMessageLogging(localzgd);
   }
 }
 

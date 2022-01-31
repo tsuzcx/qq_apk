@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
+import com.tencent.mobileqq.ocr.OcrControl;
+import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
 
 public class agbr
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public agbr(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public agbr(OcrControl paramOcrControl, String paramString, ARCloudReqFileInfo paramARCloudReqFileInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.f();
+    ARCloudReqInfo localARCloudReqInfo = OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl, this.jdField_a_of_type_JavaLangString);
+    if ((localARCloudReqInfo != null) && (OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl) != null))
+    {
+      long l1 = System.currentTimeMillis();
+      long l2 = localARCloudReqInfo.c;
+      OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl).a(4, null, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.b, l1 - l2);
+    }
   }
 }
 

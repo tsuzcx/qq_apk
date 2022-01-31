@@ -1,42 +1,47 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.util.Iterator;
+import java.util.List;
 
 public class sae
-  implements ActionSheet.OnButtonClickListener
+  implements FMDialogUtil.FMDialogInterface
 {
-  public sae(ChatSettingForTroop paramChatSettingForTroop, ActionSheet paramActionSheet) {}
+  public sae(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, FileManagerEngine paramFileManagerEngine) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
+    Iterator localIterator;
+    if (this.jdField_a_of_type_JavaUtilList.size() > 1)
     {
-    default: 
-      return;
+      FMToastUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131428195));
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ArrayOfAndroidViewView[28];
-    if (paramView != null)
+    for (;;)
     {
-      TextView localTextView = (TextView)paramView.findViewById(2131363360);
-      if (localTextView != null) {
-        localTextView.setTextColor(Color.parseColor("#cccccc"));
+      if (!localIterator.hasNext()) {
+        return;
       }
-      paramView = (ProgressBar)paramView.findViewById(2131364769);
-      if (paramView != null) {
-        paramView.setVisibility(0);
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful())
+      {
+        if (FileUtils.b(localFileManagerEntity.getFilePath()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+          continue;
+          FMToastUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131428195));
+          break;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
       }
     }
-    ThreadManager.post(new sce(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop), 5, null, false);
-    TroopReportor.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
   }
+  
+  public void b() {}
 }
 
 

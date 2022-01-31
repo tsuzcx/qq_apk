@@ -1,21 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
-import com.tencent.mobileqq.nearby.NearbyProxy;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
-public class adzm
+class adzm
   implements Runnable
 {
-  public adzm(NearbyProxy paramNearbyProxy, Context paramContext) {}
+  adzm(adzl paramadzl, Bitmap paramBitmap) {}
   
   public void run()
   {
-    ((NowProxy)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy.a.getManager(181)).b(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Adzl.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzm
  * JD-Core Version:    0.7.0.1
  */

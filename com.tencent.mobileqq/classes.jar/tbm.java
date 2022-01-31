@@ -1,19 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.OverloadTipsActivity;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.List;
 
 public class tbm
-  implements DialogInterface.OnKeyListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public tbm(OverloadTipsActivity paramOverloadTipsActivity) {}
+  public tbm(MainFragment paramMainFragment, List paramList, ActionSheet paramActionSheet) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment.e();
+    if ((paramInt < 0) && (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
+      return;
     }
-    return false;
+    try
+    {
+      MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).first).intValue(), (tbq)((Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt)).second);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
 }
 

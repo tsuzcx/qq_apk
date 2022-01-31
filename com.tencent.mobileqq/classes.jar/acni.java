@@ -1,26 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-class acni
-  extends TimerTask
+public class acni
+  implements View.OnClickListener
 {
-  acni(acnh paramacnh) {}
+  public acni(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (acnh.a(this.a) == null) {
-      return;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
     }
-    Message localMessage = new Message();
-    localMessage.what = 1;
-    this.a.a.a.sendMessage(localMessage);
+    paramView = (Button)paramView.findViewById(2131364602);
+    if (paramView.getTag() != null)
+    {
+      this.a.d = ((Integer)paramView.getTag()).intValue();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
+      }
+    }
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acni
  * JD-Core Version:    0.7.0.1
  */

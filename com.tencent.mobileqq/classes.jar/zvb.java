@@ -1,20 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.ContentValues;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
 public class zvb
   implements Runnable
 {
-  public zvb(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
+  public zvb(DataLineMsgProxy paramDataLineMsgProxy, String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "AR视频保存失败，请重新录制。", 1).a();
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContentValues, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 1, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zvb
  * JD-Core Version:    0.7.0.1
  */

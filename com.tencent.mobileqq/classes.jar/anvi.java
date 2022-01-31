@@ -1,17 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
 
 public class anvi
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anvi(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
+  public anvi(EditVideoTag paramEditVideoTag) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMRedDotConfig", 2, "saved to red dot config file");
-    }
+    EditVideoTag.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

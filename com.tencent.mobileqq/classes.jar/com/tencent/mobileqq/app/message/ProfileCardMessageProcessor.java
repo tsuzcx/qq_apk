@@ -13,8 +13,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import zqm;
-import zqn;
+import zts;
+import ztt;
 
 public class ProfileCardMessageProcessor
   extends BaseMessageProcessor
@@ -71,7 +71,7 @@ public class ProfileCardMessageProcessor
             paramMsgInfo.c(this.a.getAccount());
           }
           if (i != 0) {
-            BaseApplicationImpl.sUiHandler.postDelayed(new zqn(this), 150L);
+            BaseApplicationImpl.sUiHandler.postDelayed(new ztt(this), 150L);
           }
         }
         do
@@ -89,14 +89,14 @@ public class ProfileCardMessageProcessor
     }
   }
   
-  public zqm a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public zts a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     switch (paramInt)
     {
     }
     for (;;)
     {
-      return new zqm(null, false);
+      return new zts(null, false);
       if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
         a(paramMsgInfo);
       } else {

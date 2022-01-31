@@ -1,60 +1,45 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import com.tencent.open.export.js.VipDownloadInterface;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
 
 public class akts
-  implements DownloadQueryListener
+  implements View.OnTouchListener
 {
-  public akts(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
+  public akts(CustomedTabWidget paramCustomedTabWidget) {}
   
-  public void a(int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    LogUtility.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction ERROR");
-  }
-  
-  public void b_(List paramList)
-  {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    if (paramMotionEvent.getAction() == 0)
     {
-      if (i < j)
+      i = 0;
+      if (i < this.a.getChildCount())
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.b);
-          localJSONObject.put("pro", localDownloadInfo.g);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.c);
-          localJSONArray.put(localJSONObject);
-          i += 1;
+        if (this.a.getChildAt(i) != paramView) {
+          break label57;
         }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+        this.a.jdField_a_of_type_Int = i;
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.invalidate();
       }
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
+    label57:
+    while (paramMotionEvent.getAction() != 1) {
+      for (;;)
+      {
+        int i;
+        return false;
+        i += 1;
+      }
+    }
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.invalidate();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akts
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
-class smh
-  implements Runnable
+public class smh
+  implements TabBarView.OnTabChangeListener
 {
-  smh(smg paramsmg) {}
+  public smh(EmosmActivity paramEmosmActivity) {}
   
-  public void run()
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    ReportController.b(this.a.a.app, "CliOper", "", "", "personal_profile", "copy_uin", 0, 0, "", "", "", "");
+    if (paramInt1 == paramInt2) {
+      return;
+    }
+    if (paramInt2 == 0) {
+      this.a.b = 1;
+    }
+    for (;;)
+    {
+      this.a.c = false;
+      this.a.runOnUiThread(this.a.a);
+      return;
+      if (paramInt2 == 1) {
+        this.a.b = 2;
+      }
+    }
   }
 }
 

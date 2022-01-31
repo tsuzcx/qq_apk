@@ -1,8 +1,8 @@
 package com.tencent.util;
 
-import aljs;
-import aljt;
-import alju;
+import alzi;
+import alzj;
+import alzk;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
@@ -39,7 +39,7 @@ public class DrawerCoverUtil
     }
     if (!a(paramQQAppInterface, paramCard))
     {
-      ThreadManager.getUIHandler().post(new aljs(paramRandomCoverView, paramString));
+      ThreadManager.getUIHandler().post(new alzi(paramRandomCoverView, paramString));
       a();
     }
     do
@@ -61,9 +61,9 @@ public class DrawerCoverUtil
     if (QLog.isColorLevel()) {
       QLog.d("Q.profilecard.", 2, "[personal card] fileName:" + paramQQAppInterface + " bitmap:" + paramString);
     }
-    ThreadManager.getUIHandler().post(new aljt(paramBaseActivity, paramString, paramRandomCoverView, paramBoolean, paramQQSettingMeListener, paramCard));
+    ThreadManager.getUIHandler().post(new alzj(paramBaseActivity, paramString, paramRandomCoverView, paramBoolean, paramQQSettingMeListener, paramCard));
     return;
-    ThreadManager.getUIHandler().post(new alju(paramRandomCoverView, paramQQAppInterface, paramBoolean));
+    ThreadManager.getUIHandler().post(new alzk(paramRandomCoverView, paramQQAppInterface, paramBoolean));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Card paramCard)
@@ -146,7 +146,7 @@ public class DrawerCoverUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.util.DrawerCoverUtil
  * JD-Core Version:    0.7.0.1
  */

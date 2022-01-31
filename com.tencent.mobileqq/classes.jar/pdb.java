@@ -1,86 +1,31 @@
 import android.app.Activity;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryPageView;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.AbstractProgressView;
-import com.tencent.common.galleryactivity.AnimationLister;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
+import android.graphics.Bitmap;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import java.lang.ref.WeakReference;
 
-public class pdb
-  implements AnimationLister
+class pdb
+  implements Runnable
 {
-  public pdb(AbstractGalleryScene paramAbstractGalleryScene) {}
+  pdb(pda parampda, Bitmap paramBitmap) {}
   
-  public void b()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "gallery onEnterAnimationEnd");
-    }
-    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getVisibility() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    }
-    this.a.b();
-    if ((this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) && (!this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a())) {
-      this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a();
-    }
-  }
-  
-  public void c()
-  {
-    if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    this.a.c();
-    if ((this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) && (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a())) {
-      this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.b();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView != null) {
-      this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryPageView.a(4);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView != null) && (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.a())) {
-      this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView.b();
-    }
-    this.a.d();
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.d();
-  }
-  
-  public void e()
-  {
-    this.a.e();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    WebUiBaseInterface localWebUiBaseInterface = (WebUiBaseInterface)this.jdField_a_of_type_Pda.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface)) && (((WebUiUtils.WebUiMethodInterface)localWebUiBaseInterface).b()) && (!this.jdField_a_of_type_Pda.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidAppActivity.isFinishing()))
     {
-      localStringBuilder = new StringBuilder().append("gallery onExitAnimationEnd ");
-      if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a() != this.a) {
-        break label87;
+      if ((this.jdField_a_of_type_Pda.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_Pda.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+        this.jdField_a_of_type_Pda.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
+      Share.a(this.jdField_a_of_type_Pda.jdField_a_of_type_ComTencentBizWebviewpluginShare, this.jdField_a_of_type_Pda.jdField_a_of_type_Int, this.jdField_a_of_type_Pda.jdField_a_of_type_ComTencentBizWebviewpluginShare.d, this.jdField_a_of_type_Pda.jdField_a_of_type_ComTencentBizWebviewpluginShare.e, this.jdField_a_of_type_Pda.jdField_a_of_type_ComTencentBizWebviewpluginShare.b, this.jdField_a_of_type_Pda.jdField_a_of_type_ComTencentBizWebviewpluginShare.f, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    label87:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("GalleryComponent", 2, bool);
-      if (this.a.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a() != this.a) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pdb
  * JD-Core Version:    0.7.0.1
  */

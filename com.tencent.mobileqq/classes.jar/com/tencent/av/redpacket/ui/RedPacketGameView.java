@@ -34,10 +34,10 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import jmd;
-import jme;
-import jmg;
-import jmh;
+import jlo;
+import jlp;
+import jlr;
+import jls;
 
 public class RedPacketGameView
   extends RelativeLayout
@@ -125,14 +125,14 @@ public class RedPacketGameView
     {
       if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
       {
-        localObject = (VideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366214);
+        localObject = (VideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366241);
         if (localObject != null) {
           ((VideoView)localObject).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
         }
       }
       Object localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent();
       if (localObject != null) {
-        ((ViewGroup)localObject).post(new jmh(this, (ViewGroup)localObject));
+        ((ViewGroup)localObject).post(new jls(this, (ViewGroup)localObject));
       }
     }
   }
@@ -153,7 +153,7 @@ public class RedPacketGameView
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameScore.c(paramInt);
       if (l > 0L)
       {
-        postDelayed(new jmd(this, localAVRedPacketManager), l);
+        postDelayed(new jlo(this, localAVRedPacketManager), l);
         return;
       }
       localAVRedPacketManager.a(1, false);
@@ -181,7 +181,7 @@ public class RedPacketGameView
   
   public void a(Context paramContext)
   {
-    setId(2131362515);
+    setId(2131362536);
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameStartAnimation = new RedPacketGameStartAnimation(paramContext);
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameEmojiAnimation = new RedPacketGameEmojiAnimation(paramContext);
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameScore = new RedPacketGameScore(this);
@@ -218,7 +218,7 @@ public class RedPacketGameView
     {
       AVRedPacketManager localAVRedPacketManager = (AVRedPacketManager)((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(6);
       if (localAVRedPacketManager.b(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameEmojiAnimation.a(paramLocalFrameSyncInfo.localHitInfo.emojiId))) {
-        postDelayed(new jme(this, localAVRedPacketManager), 50L);
+        postDelayed(new jlp(this, localAVRedPacketManager), 50L);
       }
     }
   }
@@ -284,12 +284,12 @@ public class RedPacketGameView
     {
       if (this.jdField_b_of_type_Boolean)
       {
-        localAVActivity.a(localAVActivity.getText(2131429609), 10000, null);
+        localAVActivity.a(localAVActivity.getText(2131429615), 10000, null);
         return;
       }
-      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(localAVActivity.getText(2131429608));
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(2131493307)), 0, 7, 34);
-      localAVActivity.a(localSpannableStringBuilder, 10000, new jmg(this, localAVActivity));
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(localAVActivity.getText(2131429614));
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(2131493308)), 0, 7, 34);
+      localAVActivity.a(localSpannableStringBuilder, 10000, new jlr(this, localAVActivity));
       return;
     }
     localAVActivity.n();
@@ -308,7 +308,7 @@ public class RedPacketGameView
     AVActivity localAVActivity = (AVActivity)getContext();
     if (paramBoolean)
     {
-      localAVActivity.a(localAVActivity.getText(2131429610), 3000, null);
+      localAVActivity.a(localAVActivity.getText(2131429616), 3000, null);
       return;
     }
     localAVActivity.n();
@@ -324,7 +324,7 @@ public class RedPacketGameView
     AVActivity localAVActivity = (AVActivity)getContext();
     if (paramBoolean)
     {
-      localAVActivity.a(localAVActivity.getText(2131429611), 5000, null);
+      localAVActivity.a(localAVActivity.getText(2131429617), 5000, null);
       if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameStartAnimation != null) {
         this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameStartAnimation.a(0L);
       }
@@ -384,7 +384,7 @@ public class RedPacketGameView
     AVActivity localAVActivity = (AVActivity)getContext();
     if (paramBoolean)
     {
-      localAVActivity.a(localAVActivity.getText(2131429612), 5000, null);
+      localAVActivity.a(localAVActivity.getText(2131429618), 5000, null);
       if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameStartAnimation != null) {
         this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameStartAnimation.a(0L);
       }
@@ -399,13 +399,13 @@ public class RedPacketGameView
     Object localObject1 = localAVActivity.getLayoutInflater();
     Object localObject2 = (ViewGroup)getParent();
     AVRedPacketManager localAVRedPacketManager = (AVRedPacketManager)((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(6);
-    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)localObject2).findViewById(2131366213);
+    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)localObject2).findViewById(2131366240);
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      ((LayoutInflater)localObject1).inflate(2130969347, (ViewGroup)localObject2);
-      this.jdField_a_of_type_AndroidViewView = ((ViewGroup)localObject2).findViewById(2131366213);
+      ((LayoutInflater)localObject1).inflate(2130969348, (ViewGroup)localObject2);
+      this.jdField_a_of_type_AndroidViewView = ((ViewGroup)localObject2).findViewById(2131366240);
     }
-    localObject1 = (VideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366214);
+    localObject1 = (VideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366241);
     String str = RedBagUtil.b() + "qav_redpacket_guide.mp4";
     ((VideoView)localObject1).setVideoPath(str);
     ((VideoView)localObject1).setOnErrorListener(this);
@@ -425,19 +425,19 @@ public class RedPacketGameView
       if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
         ((VideoView)localObject1).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
       }
-      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131366215);
+      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131366242);
       if (this.c == null) {
         this.c = localAVRedPacketManager.a("qav_redpacket_receive_popup.png");
       }
       if (this.c != null) {
         ((View)localObject1).setBackgroundDrawable(new BitmapDrawable(this.c));
       }
-      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131366216);
+      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131366243);
       if (this.jdField_b_of_type_AndroidGraphicsBitmap == null) {
         this.jdField_b_of_type_AndroidGraphicsBitmap = localAVRedPacketManager.a("qav_redpacket_result_close.png");
       }
       if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-        ((View)localObject1).setBackgroundDrawable(TintStateDrawable.a(localAVActivity.getResources(), this.jdField_b_of_type_AndroidGraphicsBitmap, 2131494065));
+        ((View)localObject1).setBackgroundDrawable(TintStateDrawable.a(localAVActivity.getResources(), this.jdField_b_of_type_AndroidGraphicsBitmap, 2131494071));
       }
       ((View)localObject1).setOnClickListener(this);
       RedBagReport.k();
@@ -480,7 +480,7 @@ public class RedPacketGameView
   {
     if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt1 == 3))
     {
-      paramMediaPlayer = (VideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366214);
+      paramMediaPlayer = (VideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366241);
       if (paramMediaPlayer != null) {
         paramMediaPlayer.setBackgroundDrawable(null);
       }
@@ -492,7 +492,7 @@ public class RedPacketGameView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      paramMediaPlayer = (VideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366214);
+      paramMediaPlayer = (VideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366241);
       if (paramMediaPlayer != null) {
         paramMediaPlayer.start();
       }

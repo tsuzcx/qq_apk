@@ -1,14 +1,9 @@
-import android.view.View;
-
-class xvx
-  implements Runnable
+public class xvx
 {
-  xvx(xvw paramxvw, View paramView) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidViewView.sendAccessibilityEvent(8);
-  }
+  public long a;
+  public xvy a;
+  public long b;
+  public xvy b;
 }
 
 

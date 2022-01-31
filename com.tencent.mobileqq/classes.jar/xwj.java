@@ -1,22 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.ContactFriendInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class xwj
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xwj(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
+  public xwj(SubtitleDataManager paramSubtitleDataManager, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    ((ContactFriendInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80063FA", "0X80063FA", 1, 0, "", "", "", "");
+    FileUtils.d(this.jdField_a_of_type_JavaLangString);
   }
 }
 

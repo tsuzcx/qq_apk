@@ -11,8 +11,8 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import kqu;
-import kqv;
+import kqf;
+import kqg;
 import mqq.manager.Manager;
 
 public class AccountDetailDynamicDataManager
@@ -70,7 +70,7 @@ public class AccountDetailDynamicDataManager
       if (QLog.isColorLevel()) {
         QLog.d("AccountDetailDynamicDataManager", 2, "updateAccountDetailDynamicInfoDB puin:" + paramLong1 + " last_msg_id:" + paramLong2 + " msg_cnt:" + paramLong3 + " isFirstEnter:" + paramBoolean1 + " isFromDB:" + paramBoolean2);
       }
-      ThreadManager.post(new kqu(this, paramLong1, paramArrayOfByte), 8, null, true);
+      ThreadManager.post(new kqf(this, paramLong1, paramArrayOfByte), 8, null, true);
     }
     return 0;
   }
@@ -115,7 +115,7 @@ public class AccountDetailDynamicDataManager
   {
     ArrayList localArrayList = a(paramLong);
     if ((localArrayList == null) || (localArrayList.isEmpty())) {
-      ThreadManager.post(new kqv(this, paramLong, paramQQAppInterface, paramPublicAccountObserver), 8, null, true);
+      ThreadManager.post(new kqg(this, paramLong, paramQQAppInterface, paramPublicAccountObserver), 8, null, true);
     }
   }
   

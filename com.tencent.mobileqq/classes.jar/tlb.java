@@ -1,27 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity;
-import cooperation.qzone.util.QZLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 
 public class tlb
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public tlb(QzoneTiantaiTranslucentBrowserActivity paramQzoneTiantaiTranslucentBrowserActivity) {}
+  public tlb(QQSettingMe paramQQSettingMe) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    try
+    if (this.a.a == null) {}
+    String str;
+    do
     {
-      QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "收到广播，视频播放完毕");
-      QzoneTiantaiTranslucentBrowserActivity.a(this.a, true);
-      QzoneTiantaiTranslucentBrowserActivity.a(this.a);
       return;
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e("QzoneTiantaiTranslucentBrowserActivity", "onReceive error", paramContext);
-    }
+      str = this.a.a.getCurrentAccountUin();
+    } while (TextUtils.isEmpty(str));
+    WebProcessManager.b(str, System.currentTimeMillis());
   }
 }
 

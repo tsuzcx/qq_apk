@@ -1,38 +1,44 @@
-import android.content.Context;
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.biz.common.offline.OfflineEnvHelper;
-import com.tencent.mobileqq.troop.homework.recite.utils.SoLibraryChecker;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.IOException;
 
 public class aivx
-  implements AsyncCallBack
+  extends AsyncTask
 {
-  public aivx(SoLibraryChecker paramSoLibraryChecker, long paramLong) {}
+  public aivx(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void a(int paramInt, String paramString)
+  protected String a(Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLibraryLoader", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SoLibraryLoader", 4, "transToLocalUrl transUrl:" + paramString);
-    }
-    paramString = OfflineEnvHelper.a(SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker)) + SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker) + File.separator + SoLibraryChecker.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker);
-    if (!new File(paramString).exists())
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SoLibraryLoader", 2, "file not exist! path = " + paramString);
+      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null)
+      {
+        ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, paramVarArgs);
+        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131434582) + " " + paramVarArgs;
       }
-      return;
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131434583);
+      return paramVarArgs;
     }
-    FileUtils.d(paramString, SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker).getFilesDir().getAbsolutePath() + File.separator + SoLibraryChecker.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker));
+    catch (IOException paramVarArgs)
+    {
+      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131434583);
+    }
+    catch (OutOfMemoryError paramVarArgs) {}
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131434583);
+  }
+  
+  protected void a(String paramString)
+  {
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aivx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,28 @@
-import android.os.Handler;
+import android.os.FileObserver;
 import android.text.TextUtils;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.util.ScreenshotContentObserver;
+import com.tencent.biz.pubaccount.util.ScreenshotContentObserver.Listener;
+import com.tencent.qphone.base.util.QLog;
 
 public class mwu
-  implements Runnable
+  extends FileObserver
 {
-  public mwu(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public void run()
+  public mwu(ScreenshotContentObserver paramScreenshotContentObserver, String paramString1, int paramInt, String paramString2)
   {
-    if (TextUtils.isEmpty(this.a.a)) {}
-    PublicAccountDataManager localPublicAccountDataManager;
-    do
-    {
+    super(paramString1, paramInt);
+  }
+  
+  public void onEvent(int paramInt, String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
+    while ((paramString.equalsIgnoreCase(ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver))) || (paramString.contains("temp")) || (ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver) == null)) {
       return;
-      localPublicAccountDataManager = (PublicAccountDataManager)this.a.app.getManager(55);
-    } while (localPublicAccountDataManager == null);
-    PublicAccountImageCollectionMainActivity.c(this.a, localPublicAccountDataManager.a(Long.valueOf(this.a.a)));
-    PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new mwv(this), 0L);
+    }
+    ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
+    ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver, paramString);
   }
 }
 

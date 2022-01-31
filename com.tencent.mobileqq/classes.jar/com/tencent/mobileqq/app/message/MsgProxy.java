@@ -64,8 +64,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
-import zqc;
-import zqd;
+import zti;
+import ztj;
 
 public class MsgProxy
   extends BaseProxy
@@ -754,7 +754,7 @@ public class MsgProxy
       if (Thread.currentThread() != localLooper.getThread()) {
         break label93;
       }
-      ThreadManager.post(new zqc(this, localQSlowTableManager, paramString, paramInt), 10, null, false);
+      ThreadManager.post(new zti(this, localQSlowTableManager, paramString, paramInt), 10, null, false);
     }
     label93:
     while (localQSlowTableManager == null) {
@@ -867,9 +867,9 @@ public class MsgProxy
           paramInt += 1;
         }
       }
-      return new zqd(this, localArrayList);
+      return new ztj(this, localArrayList);
     }
-    return new zqd(this, (List)((ArrayList)localList).clone());
+    return new ztj(this, (List)((ArrayList)localList).clone());
   }
   
   /* Error */

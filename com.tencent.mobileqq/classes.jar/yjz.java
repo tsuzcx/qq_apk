@@ -1,17 +1,34 @@
-import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.CheckGameListener;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import java.util.HashSet;
 
 public class yjz
-  implements ApolloGameWrapper.CheckGameListener
+  extends QQLruCache
 {
-  public yjz(ChatPieApolloViewController paramChatPieApolloViewController) {}
-  
-  public void a(boolean paramBoolean, CmGameMainManager paramCmGameMainManager)
+  public yjz(ApolloManager paramApolloManager, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramBoolean) && (paramCmGameMainManager != null)) {
-      paramCmGameMainManager.d();
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public ApolloBaseInfo a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  {
+    if (paramApolloBaseInfo != null) {
+      ApolloManager.a(this.a).remove(paramApolloBaseInfo.uin);
     }
+    return (ApolloBaseInfo)super.put(paramString, paramApolloBaseInfo);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, ApolloBaseInfo paramApolloBaseInfo1, ApolloBaseInfo paramApolloBaseInfo2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramApolloBaseInfo1, paramApolloBaseInfo2);
+    if (paramApolloBaseInfo1 != null) {}
+    try
+    {
+      ApolloManager.a(this.a).add(paramApolloBaseInfo1.uin);
+      return;
+    }
+    catch (OutOfMemoryError paramString) {}
   }
 }
 

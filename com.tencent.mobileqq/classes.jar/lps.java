@@ -1,15 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class lps
+public class lps
   implements Runnable
 {
-  lps(lpr paramlpr, List paramList1, List paramList2) {}
+  public lps(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(0, this.jdField_a_of_type_JavaUtilList);
-    ReadInJoyLogicEngineEventDispatcher.a().c(70, this.b);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

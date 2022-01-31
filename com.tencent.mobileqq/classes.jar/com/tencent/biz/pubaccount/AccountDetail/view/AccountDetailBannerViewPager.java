@@ -13,7 +13,7 @@ import android.view.ViewParent;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.List;
-import krg;
+import kqr;
 import mqq.os.MqqHandler;
 
 public class AccountDetailBannerViewPager
@@ -21,7 +21,7 @@ public class AccountDetailBannerViewPager
   implements Handler.Callback
 {
   private final int jdField_a_of_type_Int = 2000;
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new krg(this);
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new kqr(this);
   private AccountDetailBannerIndicator jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailBannerIndicator;
   private List jdField_a_of_type_JavaUtilList;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);

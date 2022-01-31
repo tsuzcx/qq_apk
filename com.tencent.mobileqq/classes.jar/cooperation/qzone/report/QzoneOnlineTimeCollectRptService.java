@@ -1,9 +1,9 @@
 package cooperation.qzone.report;
 
 import NS_MOBILE_FEEDS.mobile_online_report_item;
-import amij;
-import amik;
-import amil;
+import amyo;
+import amyp;
+import amyq;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -22,7 +22,7 @@ public class QzoneOnlineTimeCollectRptService
   int jdField_a_of_type_Int = 0;
   public long a;
   private mobile_online_report_item jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new amil(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new amyq(this);
   private String jdField_a_of_type_JavaLangString = "QZonlinetime";
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean;
@@ -187,7 +187,7 @@ public class QzoneOnlineTimeCollectRptService
   
   public void a()
   {
-    ThreadManager.getSubThreadHandler().post(new amik(this));
+    ThreadManager.getSubThreadHandler().post(new amyp(this));
   }
   
   public void a(int paramInt)
@@ -277,7 +277,7 @@ public class QzoneOnlineTimeCollectRptService
   public void b(int paramInt)
   {
     a(paramInt);
-    ThreadManager.getSubThreadHandler().post(new amij(this));
+    ThreadManager.getSubThreadHandler().post(new amyo(this));
   }
   
   public void c()

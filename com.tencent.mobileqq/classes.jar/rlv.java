@@ -1,44 +1,34 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class rlv
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rlv(BaseChatPie paramBaseChatPie) {}
+  public rlv(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    Iterator localIterator = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (ChatMessage)localIterator.next();
-      if ((localObject instanceof MessageForUniteGrayTip))
-      {
-        localObject = (MessageForUniteGrayTip)localObject;
-        if (UniteGrayTipUtil.a((MessageForUniteGrayTip)localObject, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-        {
-          Message localMessage = new Message();
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("messageUniseq", ((MessageForUniteGrayTip)localObject).uniseq);
-          localMessage.setData(localBundle);
-          localMessage.what = 78;
-          localMessage.arg1 = 0;
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-        }
-      }
+    if (AppSetting.b) {
+      this.a.a.setContentDescription("摇动手机截屏");
     }
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433581), "qqsetting_screenshot_key", paramBoolean);
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.turnOnShake();
+      return;
+    }
+    this.a.turnOffShake();
   }
 }
 

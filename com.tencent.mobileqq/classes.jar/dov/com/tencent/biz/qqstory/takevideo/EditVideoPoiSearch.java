@@ -34,7 +34,7 @@ public class EditVideoPoiSearch
     return bool;
   }
   
-  public void aB_()
+  public void aD_()
   {
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
   }

@@ -1,34 +1,14 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
-import com.tencent.mobileqq.imaxad.ImaxAdNetPresenter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
 
 class ktx
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
   ktx(ktv paramktv) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    PublicAccountAdvertisementActivity.a(this.a.a).dismiss();
-    if (paramView != null)
-    {
-      paramView = PublicAccountAdvertisementActivity.a(this.a.a).a(paramInt);
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
-        }
-        ImaxAdNetPresenter.a().a(PublicAccountAdvertisementActivity.a(this.a.a), 3);
-        ReportController.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a.a).a.c, "", "", "");
-      }
-    }
+    VideoCoverFragment.a(this.a.a).setCurrentItem(VideoCoverFragment.a(this.a.a) + 1, true);
   }
 }
 

@@ -1,51 +1,46 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class alml
-  extends alms
   implements Runnable
 {
-  private alml(HorizontalListView paramHorizontalListView)
-  {
-    super(paramHorizontalListView, null);
-  }
+  public alml(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
   
   public void run()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this.a.c()) {
-      bool1 = ((View)this.a.getParent()).performLongClick();
-    }
-    while (bool1)
+    Object localObject2 = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.c(this.jdField_a_of_type_JavaLangString);
+    String str1 = "";
+    Object localObject1 = str1;
+    if (localObject2 != null)
     {
-      this.a.p = -1;
-      HorizontalListView.a(this.a);
-      return;
-      int i = HorizontalListView.b(this.a);
-      View localView = this.a.getChildAt(i - this.a.getFirstVisiblePosition());
-      bool1 = bool2;
-      if (localView != null)
+      localObject1 = str1;
+      if (((Friends)localObject2).remark != null)
       {
-        i = HorizontalListView.b(this.a);
-        long l = this.a.a.getItemId(HorizontalListView.b(this.a));
-        bool1 = bool2;
-        if (a())
+        str1 = ((Friends)localObject2).remark;
+        localObject1 = str1;
+        if (((Friends)localObject2).remark.equals(((Friends)localObject2).name))
         {
-          bool1 = bool2;
-          if (!this.a.b) {
-            bool1 = this.a.a(localView, i, l);
-          }
+          localObject1 = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler;
+          localObject2 = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentAccountUin();
+          String str2 = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString;
+          long l = ProfileActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a, false);
+          ((CardHandler)localObject1).a((String)localObject2, str2, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", l, 10004, new byte[] { 0 }, (byte)0);
+          localObject1 = str1;
         }
       }
     }
-    this.a.p = 2;
+    this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.i = ((String)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alml
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import aejt;
-import aeju;
-import aejv;
-import aejw;
-import aejx;
-import aejy;
-import aejz;
-import aeka;
-import aekb;
-import aekc;
-import aekd;
-import aeke;
-import aekf;
-import aekg;
-import aekh;
-import aeki;
-import aekj;
-import aekk;
-import aekl;
-import aekm;
-import aekn;
-import aeko;
-import aekp;
-import aekq;
-import aeks;
-import aekt;
-import aeku;
+import aewz;
+import aexa;
+import aexb;
+import aexc;
+import aexd;
+import aexe;
+import aexf;
+import aexg;
+import aexh;
+import aexi;
+import aexj;
+import aexk;
+import aexl;
+import aexm;
+import aexn;
+import aexo;
+import aexp;
+import aexq;
+import aexr;
+import aexs;
+import aext;
+import aexu;
+import aexv;
+import aexw;
+import aexy;
+import aexz;
+import aeya;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -87,8 +87,8 @@ public class ShortVideoCommentsView
 {
   private static int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private aeks jdField_a_of_type_Aeks;
-  private aekt jdField_a_of_type_Aekt;
+  private aexy jdField_a_of_type_Aexy;
+  private aexz jdField_a_of_type_Aexz;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   public View a;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
@@ -102,7 +102,7 @@ public class ShortVideoCommentsView
   private Comments.Comment jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment;
   public Comments a;
   private MedalInfo jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfo;
-  private MedalInfoMgr.IMediaInfoListener jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfoMgr$IMediaInfoListener = new aekf(this);
+  private MedalInfoMgr.IMediaInfoListener jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfoMgr$IMediaInfoListener = new aexl(this);
   private VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
   private CommentsAdapter jdField_a_of_type_ComTencentMobileqqNearbyNowViewCommentsAdapter;
   private VideoPlayerPagerAdapter.VideoViewHolder jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder;
@@ -150,26 +150,26 @@ public class ShortVideoCommentsView
     jdField_a_of_type_Int = (int)UITools.a(getContext(), 60.0F);
   }
   
-  private aeku a(String paramString)
+  private aeya a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    aeku localaeku;
+    aeya localaeya;
     do
     {
       return null;
-      localaeku = new aeku(this, null);
+      localaeya = new aeya(this, null);
       m = paramString.indexOf("#");
       if (m == -1)
       {
-        localaeku.jdField_a_of_type_JavaLangString = paramString;
-        return localaeku;
+        localaeya.jdField_a_of_type_JavaLangString = paramString;
+        return localaeya;
       }
       paramString = paramString.split("#");
     } while (paramString == null);
     if (m > 0) {
-      localaeku.jdField_a_of_type_JavaLangString = paramString[0];
+      localaeya.jdField_a_of_type_JavaLangString = paramString[0];
     }
-    localaeku.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localaeya.jdField_a_of_type_JavaUtilList = new ArrayList();
     int m = 1;
     if (m < paramString.length)
     {
@@ -178,21 +178,21 @@ public class ShortVideoCommentsView
       {
         m += 1;
         break;
-        if (!localaeku.jdField_a_of_type_JavaUtilList.contains(paramString[m])) {
-          localaeku.jdField_a_of_type_JavaUtilList.add(paramString[m]);
+        if (!localaeya.jdField_a_of_type_JavaUtilList.contains(paramString[m])) {
+          localaeya.jdField_a_of_type_JavaUtilList.add(paramString[m]);
         }
       }
     }
-    return localaeku;
+    return localaeya;
   }
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Aeks != null) {
-      ThreadManager.getUIHandler().post(this.jdField_a_of_type_Aeks);
+    if (this.jdField_a_of_type_Aexy != null) {
+      ThreadManager.getUIHandler().post(this.jdField_a_of_type_Aexy);
     }
-    this.jdField_a_of_type_Aeks = new aeks(this, paramInt);
-    ThreadManager.getUIHandler().post(this.jdField_a_of_type_Aeks);
+    this.jdField_a_of_type_Aexy = new aexy(this, paramInt);
+    ThreadManager.getUIHandler().post(this.jdField_a_of_type_Aexy);
   }
   
   private void a(boolean paramBoolean)
@@ -276,7 +276,7 @@ public class ShortVideoCommentsView
           paramComment = (Activity)getContext();
           m = UITools.b(getContext());
           this.jdField_a_of_type_AndroidWidgetListView.setSelectionFromTop(1, (int)(m - ViewUtils.a(paramComment) - jdField_a_of_type_Int - UITools.a(getContext(), 50.0F)));
-          postDelayed(new aejy(this), 100L);
+          postDelayed(new aexe(this), 100L);
         }
         return;
       }
@@ -306,24 +306,24 @@ public class ShortVideoCommentsView
   
   private void f(Comments.Comment paramComment)
   {
-    String str = getResources().getString(2131430817);
-    DialogUtil.a(getContext(), 232, null, str, new aeki(this, paramComment), new aekj(this)).show();
+    String str = getResources().getString(2131430834);
+    DialogUtil.a(getContext(), 232, null, str, new aexo(this, paramComment), new aexp(this)).show();
   }
   
   private void p()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aekn(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new aeko(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aext(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new aexu(this));
     q();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new aekp(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new aexv(this));
   }
   
   private void q()
   {
-    this.jdField_a_of_type_AndroidWidgetListView.setOnScrollListener(new aekq(this));
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new aeju(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnScrollListener(new aexw(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new aexa(this));
     this.jdField_a_of_type_AndroidWidgetListView.setLongClickable(true);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemLongClickListener(new aejv(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemLongClickListener(new aexb(this));
   }
   
   private void r()
@@ -344,17 +344,17 @@ public class ShortVideoCommentsView
     {
       j();
       return;
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(getContext().getResources().getString(2131430821));
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(getContext().getResources().getString(2131430838));
     }
   }
   
   private void t()
   {
-    if (this.jdField_a_of_type_Aekt != null) {
-      ThreadManager.getUIHandler().post(this.jdField_a_of_type_Aekt);
+    if (this.jdField_a_of_type_Aexz != null) {
+      ThreadManager.getUIHandler().post(this.jdField_a_of_type_Aexz);
     }
-    this.jdField_a_of_type_Aekt = new aekt(this, System.currentTimeMillis());
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_Aekt, 100L);
+    this.jdField_a_of_type_Aexz = new aexz(this, System.currentTimeMillis());
+    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_Aexz, 100L);
   }
   
   private void u()
@@ -369,27 +369,27 @@ public class ShortVideoCommentsView
   
   public View a()
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970420, this, true);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970461, this, true);
     this.jdField_b_of_type_Int = (UITools.b(getContext()) / 3);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new aejt(this));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370432));
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new aewz(this));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370573));
     if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a())) {
-      this.jdField_a_of_type_AndroidWidgetListView.setOnTouchListener(new aeke(this));
+      this.jdField_a_of_type_AndroidWidgetListView.setOnTouchListener(new aexk(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCommentsAdapter = new CommentsAdapter(getContext(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData, this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPresenterCommentsPresenter, this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970419, this, false);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370500));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView = ((ImageDisplayView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370502));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView = ((OperationView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370503));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970460, this, false);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370641));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView = ((ImageDisplayView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370643));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView = ((OperationView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370644));
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370499));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370640));
     Object localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getLayoutParams();
     ((FrameLayout.LayoutParams)localObject).height = UITools.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getContext());
     ((FrameLayout.LayoutParams)localObject).width = UITools.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getContext());
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.requestLayout();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnClickListener(new aekk(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnClickListener(new aexq(this));
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_g_of_type_Int != 4)
     {
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
@@ -397,22 +397,22 @@ public class ShortVideoCommentsView
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a();
       if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Int != 1)
       {
-        localObject = LayoutInflater.from(getContext()).inflate(2130970416, (ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131370505), true);
+        localObject = LayoutInflater.from(getContext()).inflate(2130970457, (ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131370646), true);
         this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.a((View)localObject);
         this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_AndroidViewView = ((View)localObject);
       }
-      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970421, this, false);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131370515);
+      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970462, this, false);
+      this.jdField_d_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131370656);
       this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131361926));
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetTopicLabelListView = ((TopicLabelListView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370516));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370517));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370518));
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131363531));
-      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370519));
-      this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370520));
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetTopicLabelListView = ((TopicLabelListView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370657));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370658));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370659));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131363549));
+      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370660));
+      this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370661));
       this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_f_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970410, this, false);
-      this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131370435));
+      this.jdField_f_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970451, this, false);
+      this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131370576));
       this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#00000000"));
       int m = ViewUtils.a((Activity)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext());
@@ -439,7 +439,7 @@ public class ShortVideoCommentsView
         break label1165;
       }
       g();
-      this.jdField_a_of_type_AndroidWidgetListView.setOnTouchListener(new aekl(this));
+      this.jdField_a_of_type_AndroidWidgetListView.setOnTouchListener(new aexr(this));
     }
     for (;;)
     {
@@ -448,27 +448,27 @@ public class ShortVideoCommentsView
         this.jdField_c_of_type_AndroidViewView.setVisibility(8);
         this.jdField_f_of_type_AndroidViewView.setVisibility(8);
       }
-      this.jdField_e_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131370506);
-      this.jdField_e_of_type_AndroidViewView.setOnClickListener(new aekm(this));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370513));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131370512));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidViewView.findViewById(2131370514));
+      this.jdField_e_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131370647);
+      this.jdField_e_of_type_AndroidViewView.setOnClickListener(new aexs(this));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370654));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131370653));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidViewView.findViewById(2131370655));
       p();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131370508));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370509));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370510));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131370511));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131370649));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370650));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370651));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131370652));
       j();
-      this.jdField_g_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131367217);
+      this.jdField_g_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131367265);
       return this.jdField_b_of_type_AndroidViewView;
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(0);
       break;
       label1165:
       StoryRelayoutUtil.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.i, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_h_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(getContext()).inflate(2130970405, null, false));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(getContext()).inflate(2130970446, null, false));
       localObject = new AbsListView.LayoutParams(-1, (int)UITools.a(getContext(), 50.0F));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView = ((HorizontalBallLoadingView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131370424));
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView = ((HorizontalBallLoadingView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131370565));
       this.jdField_a_of_type_AndroidWidgetListView.addFooterView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
     }
   }
@@ -500,7 +500,7 @@ public class ShortVideoCommentsView
       if (paramInt != 10003) {
         break label70;
       }
-      a(getContext().getResources().getString(2131430825));
+      a(getContext().getResources().getString(2131430842));
     }
     for (;;)
     {
@@ -512,7 +512,7 @@ public class ShortVideoCommentsView
       if (paramInt == 10010) {
         a("当前等级不够，请努力升级吧！");
       } else {
-        a(getContext().getResources().getString(2131430826));
+        a(getContext().getResources().getString(2131430843));
       }
     }
   }
@@ -593,7 +593,7 @@ public class ShortVideoCommentsView
       if (QLog.isColorLevel()) {
         QLog.w("ShortVideoComments", 2, "onPermissionGranted text ie empty! etinput use defualt hint ");
       }
-      this.jdField_a_of_type_JavaLangString = getContext().getResources().getString(2131430821);
+      this.jdField_a_of_type_JavaLangString = getContext().getResources().getString(2131430838);
       this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_a_of_type_JavaLangString);
       break;
       label145:
@@ -602,7 +602,7 @@ public class ShortVideoCommentsView
         if (QLog.isColorLevel()) {
           QLog.w("ShortVideoComments", 2, "onPermissionGranted btnText ie empty! btnSend use defualt text ");
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getContext().getResources().getString(2131430822));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getContext().getResources().getString(2131430839));
       }
     }
   }
@@ -671,7 +671,7 @@ public class ShortVideoCommentsView
       }
       ((StringBuilder)localObject1).append(((LocationInfo)localObject2).getName());
     }
-    Object localObject2 = new ImageSpan(getContext(), 2130842693);
+    Object localObject2 = new ImageSpan(getContext(), 2130842792);
     int m = (int)(14.0F * getContext().getResources().getDisplayMetrics().density + 0.5F);
     ((ImageSpan)localObject2).getDrawable().setBounds(0, 0, m, m);
     localObject1 = new SpannableString("P " + ((StringBuilder)localObject1).toString());
@@ -702,8 +702,8 @@ public class ShortVideoCommentsView
   
   public void g()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370507));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aejw(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370648));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aexc(this));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
@@ -738,7 +738,7 @@ public class ShortVideoCommentsView
         this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_h_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_g_of_type_AndroidWidgetTextView.setOnTouchListener(new aejx(this));
+        this.jdField_g_of_type_AndroidWidgetTextView.setOnTouchListener(new aexd(this));
         l = System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.c * 1000L;
         if (l >= 0L) {
           break label573;
@@ -751,21 +751,21 @@ public class ShortVideoCommentsView
       this.jdField_e_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_c_of_type_AndroidViewView.setVisibility(0);
       return;
-      if (TextUtils.isEmpty(((aeku)localObject).jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(((aeya)localObject).jdField_a_of_type_JavaLangString)) {
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
       }
       for (;;)
       {
-        if ((((aeku)localObject).jdField_a_of_type_JavaUtilList != null) && (((aeku)localObject).jdField_a_of_type_JavaUtilList.size() != 0)) {
+        if ((((aeya)localObject).jdField_a_of_type_JavaUtilList != null) && (((aeya)localObject).jdField_a_of_type_JavaUtilList.size() != 0)) {
           break label303;
         }
         this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetTopicLabelListView.setVisibility(8);
         break;
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(((aeku)localObject).jdField_a_of_type_JavaLangString);
+        this.jdField_d_of_type_AndroidWidgetTextView.setText(((aeya)localObject).jdField_a_of_type_JavaLangString);
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
       }
       label303:
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetTopicLabelListView.setData(((aeku)localObject).jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetTopicLabelListView.setData(((aeya)localObject).jdField_a_of_type_JavaUtilList);
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetTopicLabelListView.setVisibility(0);
       break;
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -850,8 +850,8 @@ public class ShortVideoCommentsView
       this.jdField_h_of_type_Boolean = false;
       this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
       this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-    } while (this.jdField_a_of_type_Aekt == null);
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Aekt);
+    } while (this.jdField_a_of_type_Aexz == null);
+    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Aexz);
   }
   
   public void k()
@@ -862,7 +862,7 @@ public class ShortVideoCommentsView
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetListView.setSelection(0);
     this.jdField_d_of_type_Int = 0;
-    ThreadManager.getUIHandler().postDelayed(new aejz(this), 10L);
+    ThreadManager.getUIHandler().postDelayed(new aexf(this), 10L);
   }
   
   public void l()
@@ -879,8 +879,8 @@ public class ShortVideoCommentsView
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     u();
-    postDelayed(new aeka(this), 100L);
-    postDelayed(new aekb(this), 200L);
+    postDelayed(new aexg(this), 100L);
+    postDelayed(new aexh(this), 200L);
   }
   
   public void m()
@@ -892,8 +892,8 @@ public class ShortVideoCommentsView
     }
     for (;;)
     {
-      postDelayed(new aekc(this), 100L);
-      postDelayed(new aekd(this), 200L);
+      postDelayed(new aexi(this), 100L);
+      postDelayed(new aexj(this), 200L);
       return;
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Int != 4)) {
@@ -935,7 +935,7 @@ public class ShortVideoCommentsView
       if (paramInt8 - paramInt4 <= this.jdField_b_of_type_Int) {
         break label53;
       }
-      ThreadManager.getUIHandler().post(new aekg(this));
+      ThreadManager.getUIHandler().post(new aexm(this));
     }
     for (;;)
     {
@@ -945,7 +945,7 @@ public class ShortVideoCommentsView
       return;
       label53:
       if (paramInt4 - paramInt8 > this.jdField_b_of_type_Int) {
-        ThreadManager.getUIHandler().post(new aekh(this));
+        ThreadManager.getUIHandler().post(new aexn(this));
       }
     }
   }

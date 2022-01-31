@@ -1,12 +1,32 @@
-import com.tencent.ttpic.util.Coffee;
-import com.tencent.ttpic.util.DecryptListener;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.FilterFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUDrawPartFilter;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup;
 
-public final class ahos
-  implements DecryptListener
+public class ahos
+  implements Runnable
 {
-  public byte[] decrypt(byte[] paramArrayOfByte)
+  public ahos(GpuImagePartsFilterGroup paramGpuImagePartsFilterGroup, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void run()
   {
-    return Coffee.drink(paramArrayOfByte);
+    GPUDrawPartFilter localGPUDrawPartFilter1 = null;
+    GPUDrawPartFilter localGPUDrawPartFilter2 = GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup);
+    GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, null);
+    if ((GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup) == null) || (GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).b() != this.jdField_a_of_type_Int))
+    {
+      localGPUDrawPartFilter1 = GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup);
+      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, (GPUDrawPartFilter)FilterFactory.a(this.jdField_a_of_type_Int));
+      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a();
+      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(this.b, this.c);
+    }
+    GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(false, 0.0F);
+    GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, 0.0F);
+    if (localGPUDrawPartFilter2 != null) {
+      localGPUDrawPartFilter2.c();
+    }
+    if (localGPUDrawPartFilter1 != null) {
+      localGPUDrawPartFilter1.c();
+    }
   }
 }
 

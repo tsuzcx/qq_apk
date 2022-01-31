@@ -1,25 +1,16 @@
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoStatusListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianTipFloatingWindow;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianTipFloatingWindow.TipFloatingWindowInfo;
 
 public class mgo
-  implements VideoPlayManager.VideoStatusListener
+  implements Runnable
 {
-  public mgo(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mgo(KandianTipFloatingWindow paramKandianTipFloatingWindow, KandianTipFloatingWindow.TipFloatingWindowInfo paramTipFloatingWindowInfo, View paramView) {}
   
-  public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam)
+  public void run()
   {
-    this.a.a(paramVideoPlayParam);
-    if (paramVideoPlayParam != null)
-    {
-      paramVideoPlayParam = paramVideoPlayParam.a;
-      if ((paramVideoPlayParam != null) && (paramVideoPlayParam.mChannelID == 56L) && (AdvertisementInfo.isAdvertisementInfo(paramVideoPlayParam))) {
-        NativeAdUtils.a(null, this.a.a, NativeAdUtils.f, NativeAdUtils.j, (AdvertisementInfo)paramVideoPlayParam, null, 0, NativeAdUtils.a(ReadInJoyBaseAdapter.h, paramVideoPlayParam.mVideoDuration, ReadInJoyBaseAdapter.i, 1, ReadInJoyBaseAdapter.f, ReadInJoyBaseAdapter.g, paramVideoPlayParam.mVideoDuration, NativeAdUtils.m));
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianTipFloatingWindow$TipFloatingWindowInfo.a.onClick(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

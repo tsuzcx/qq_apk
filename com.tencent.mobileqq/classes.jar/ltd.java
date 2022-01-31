@@ -1,34 +1,59 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeBigSocial;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView.PicInfo;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ltd
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public ltd(FeedItemCellTypeBigSocial paramFeedItemCellTypeBigSocial, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2, LinearLayout paramLinearLayout3) {}
+  List jdField_a_of_type_JavaUtilList = new ArrayList();
+  List b = new ArrayList();
   
-  public void onClick(View paramView)
+  public ltd(NativeGridImageView paramNativeGridImageView) {}
+  
+  public List a()
   {
-    ReadInJoyHelper.f(ReadInJoyUtils.a(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() + this.b.getTop() + this.c.getTop());
-    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCellTypeBigSocial.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (paramView != null) {
-      paramView.a(null, ((IReadInJoyModel)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCellTypeBigSocial.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-    if (QLog.isColorLevel())
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(lte paramlte)
+  {
+    this.b = paramlte.a();
+    this.jdField_a_of_type_JavaUtilList = paramlte.b();
+  }
+  
+  public int getCount()
+  {
+    return this.b.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.b.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramViewGroup.getContext();
+    if (paramView == null)
     {
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout top" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() });
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout width" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() });
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout top" + this.b.getTop() });
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout width" + this.b.getWidth() });
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout top" + this.c.getTop() });
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout width" + this.c.getWidth() });
+      paramView = new SquareCornerTextImageView(paramViewGroup);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    }
+    for (;;)
+    {
+      ((SquareCornerTextImageView)paramView).a((SquareCornerTextImageView.PicInfo)this.b.get(paramInt));
+      return paramView;
     }
   }
 }

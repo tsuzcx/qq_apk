@@ -216,7 +216,7 @@ public class BizTroopObserver
         k(paramBoolean, paramObject);
         return;
         if ((localObject != null) && (localObject.length >= 1)) {}
-        for (paramInt = ((Integer)localObject[0]).intValue(); (paramBoolean) && (localObject != null) && (localObject.length >= 4); paramInt = 2131429857)
+        for (paramInt = ((Integer)localObject[0]).intValue(); (paramBoolean) && (localObject != null) && (localObject.length >= 4); paramInt = 2131429863)
         {
           a(paramBoolean, paramInt, (String)localObject[1], (String)localObject[2], (Boolean)localObject[3]);
           return;

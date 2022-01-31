@@ -1,22 +1,43 @@
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.network.request.GetFeedFeatureRequest;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler.GetSimpleInfoListEvent;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerListAdapter;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem.FakeVideoUIItem;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 public class nta
-  extends ParallelJobSegment
+  extends QQUIEventReceiver
 {
-  public nta(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
-  
-  protected void a(JobContext paramJobContext, String paramString)
+  public nta(@NonNull StoryPickerFragment paramStoryPickerFragment)
   {
-    GetFeedFeatureRequest localGetFeedFeatureRequest = new GetFeedFeatureRequest();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    localGetFeedFeatureRequest.a = localArrayList;
-    CmdTaskManger.a().a(localGetFeedFeatureRequest, new ntb(this, paramJobContext, paramString));
+    super(paramStoryPickerFragment);
+  }
+  
+  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
+  {
+    SLog.b(this.TAG, "GetSimpleInfoListEventReceiver. event=%s", paramGetSimpleInfoListEvent.toString());
+    if ((paramGetSimpleInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList != null) && (!paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      Iterator localIterator = paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)localIterator.next();
+        if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localFakeVideoUIItem.jdField_a_of_type_JavaLangString)) {
+          localFakeVideoUIItem.jdField_a_of_type_Boolean = true;
+        }
+      }
+      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(paramGetSimpleInfoListEvent.jdField_a_of_type_JavaLangString, paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return VidToSimpleInfoHandler.GetSimpleInfoListEvent.class;
   }
 }
 

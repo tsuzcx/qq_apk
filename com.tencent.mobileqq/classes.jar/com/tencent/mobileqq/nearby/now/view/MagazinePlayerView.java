@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import aejs;
+import aewy;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
@@ -50,7 +50,7 @@ public class MagazinePlayerView
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       d();
       ImageLoader.a().a(this.jdField_a_of_type_AndroidWidgetImageView, paramVideoData.c, new ColorDrawable(0), new ColorDrawable(0), null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new aejs(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new aewy(this));
       return;
     }
     super.a(paramRelativeLayout, paramVideoData, paramPlayResultListener);

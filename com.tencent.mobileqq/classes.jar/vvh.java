@@ -1,18 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.adapter.HotChatPostListAdapter;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class vvh
-  implements View.OnClickListener
+  implements OverScrollViewListener
 {
-  public vvh(PublicAccountChatPie paramPublicAccountChatPie, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
+  public vvh(HotChatPie paramHotChatPie) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    HotChatPie.a(this.a).setPullType(0);
+    HotChatPie.a(this.a).c(HotChatPie.j);
+    HotChatPie.a(this.a, 0, this.a.a.a());
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView) {}
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

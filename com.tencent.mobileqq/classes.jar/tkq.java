@@ -1,14 +1,40 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.data.Card;
+import android.graphics.Bitmap;
+import com.tencent.common.cache.MemoryClearManagerNew.IClearMemoryListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.widget.UpSideDownDrawable;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-class tkq
-  implements Runnable
+public class tkq
+  implements MemoryClearManagerNew.IClearMemoryListener
 {
-  tkq(tkp paramtkp, Card paramCard) {}
+  public tkq(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public int a()
   {
-    QQSettingSettingActivity.a(this.jdField_a_of_type_Tkp.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    if (QQSettingMe.a(this.a).size() > 0)
+    {
+      Iterator localIterator = QQSettingMe.a(this.a).values().iterator();
+      int i = 0;
+      if (localIterator.hasNext())
+      {
+        Bitmap localBitmap = ((UpSideDownDrawable)localIterator.next()).a();
+        if (localBitmap == null) {
+          break label79;
+        }
+        i = Utils.a(localBitmap) + i;
+      }
+      label79:
+      for (;;)
+      {
+        break;
+        QQSettingMe.a(this.a).clear();
+        return i;
+      }
+    }
+    return 0;
   }
 }
 

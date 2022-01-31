@@ -1,25 +1,26 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.ClipboardManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentContext;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class akaj
-  implements DialogInterface.OnClickListener
+public final class akaj
+  implements Runnable
 {
-  public akaj(SwiftBrowserDebugHelper paramSwiftBrowserDebugHelper, String paramString) {}
+  public akaj(String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserDebugHelper.a.a().getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-    Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserDebugHelper.a.a().getApplicationContext(), "复制成功", 0).show();
+    File localFile = new File(this.a);
+    if ((localFile.exists()) && (localFile.isFile()))
+    {
+      boolean bool = localFile.delete();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.VoiceIntro", 2, "delete result=" + bool + " f.path=" + this.a);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akaj
  * JD-Core Version:    0.7.0.1
  */

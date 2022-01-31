@@ -1,53 +1,32 @@
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.QQStoryHomeJumpHelper.JumpListener;
+import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoActivityLauncher;
+import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
+import com.tencent.mobileqq.utils.JumpAction;
 
 public class akcm
-  implements Runnable
+  implements QQStoryHomeJumpHelper.JumpListener
 {
-  public akcm(SwiftWebAccelerator paramSwiftWebAccelerator, long paramLong, Bundle paramBundle) {}
+  public akcm(JumpAction paramJumpAction) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    long l = System.currentTimeMillis();
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs.run cost " + (l - this.jdField_a_of_type_Long) + "ms.");
-    l = System.currentTimeMillis();
-    InnerDns.a();
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:init inner-dns cost " + (l - this.jdField_a_of_type_Long) + "ms.");
-    l = System.currentTimeMillis();
-    AuthorizeConfig localAuthorizeConfig = AuthorizeConfig.a(false);
-    localAuthorizeConfig.a("http://www.qq.com/", "foo.bar");
-    localAuthorizeConfig.a("skey");
-    localAuthorizeConfig.a("pskey");
-    localAuthorizeConfig.a("pt4_token");
-    localAuthorizeConfig.a("a1");
-    localAuthorizeConfig.a("a2");
-    localAuthorizeConfig.b("http://www.qq.com/");
-    localAuthorizeConfig.a();
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:load domain white list config, cost " + (System.currentTimeMillis() - l) + "ms.");
-    l = System.currentTimeMillis();
-    if (WebAccelerateHelper.getInstance().isPreGetKey()) {
-      SwiftBrowserCookieMonster.a(BaseApplicationImpl.sApplication.getRuntime(), new Intent());
+    paramString = StoryPublishLauncher.a();
+    if (paramString.a())
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("entrance_type", 15);
+      paramString.a((Activity)this.a.a, localBundle, 20000);
+      return;
     }
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:pre get key, cost " + (System.currentTimeMillis() - l) + "ms.");
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("from", -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwiftWebAccelerator", 2, "doThreadedStep_LoadConfigs: preload from " + i);
-    }
-    new Handler(Looper.getMainLooper()).post(new akcn(this, i));
+    paramString = new QQStoryTakeVideoActivityLauncher(JumpAction.a(this.a)).a(this.a.a, 15);
+    ((Activity)this.a.a).startActivityForResult(paramString, 20000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akcm
  * JD-Core Version:    0.7.0.1
  */

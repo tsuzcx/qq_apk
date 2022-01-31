@@ -1,55 +1,86 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import android.util.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.startup.director.StartupDirector;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import java.util.HashMap;
 
 public class aiem
-  implements ProviderContainerView.ContainerViewListener
+  implements Runnable
 {
-  public aiem(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
+  public aiem(StartupDirector paramStartupDirector, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6) {}
   
-  public void a()
+  public void run()
   {
-    this.a.e.setVisibility(0);
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    int j = 1;
-    int k = 1;
-    int i = 1;
-    this.a.e.setVisibility(8);
-    switch (paramInt)
+    Object localObject;
+    QQAppInterface localQQAppInterface;
+    if (BaseApplicationImpl.sProcessId == 1)
     {
-    default: 
-      return;
-    case 102: 
-      if ("barindex".equals(this.a.a)) {}
-      for (paramInt = i;; paramInt = 2)
-      {
-        ReportController.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "Clk_changeface", paramInt, 0, "", "", "", "");
-        return;
+      if (this.jdField_a_of_type_Long > 0L) {
+        StatisticCollector.a(BaseApplicationImpl.sApplication).a(null, "actLoginA", true, this.jdField_a_of_type_Long, 0L, null, null);
       }
-    case 103: 
-      if ("barindex".equals(this.a.a)) {}
-      for (paramInt = j;; paramInt = 2)
+      if (this.b > 0L)
       {
-        ReportController.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "Clk_beauty ", paramInt, 0, "", "", "", "");
-        return;
+        localObject = BaseApplicationImpl.sApplication.getRuntime();
+        if ((localObject != null) && ((localObject instanceof QQAppInterface)))
+        {
+          localQQAppInterface = (QQAppInterface)localObject;
+          if (this.b != 2201L) {
+            break label368;
+          }
+          localObject = "1";
+          ReportController.b(localQQAppInterface, "CliOper", "", "", "0X80064F6", "0X80064F6", 0, 0, (String)localObject, "", "", "");
+        }
       }
+      if (this.c > 0L)
+      {
+        Log.i("AutoMonitor", "ActionLoginM, cost=" + this.d);
+        localObject = new HashMap();
+        ((HashMap)localObject).put("cost", this.d + "");
+        StatisticCollector.a(BaseApplicationImpl.sApplication).a(null, "actLoginM", true, this.d, 0L, (HashMap)localObject, null);
+      }
+      if ((this.e > 0L) && (this.f < 30000L))
+      {
+        Log.i("AutoMonitor", "ActionLoginS, cost=" + this.f);
+        localObject = new HashMap();
+        ((HashMap)localObject).put("cost", this.f + "");
+        StatisticCollector.a(BaseApplicationImpl.sApplication).a(null, "actLoginS", true, this.f, 0L, (HashMap)localObject, null);
+      }
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (localQQAppInterface != null) {
+        break label391;
+      }
+      localObject = "0";
     }
-    if ("barindex".equals(this.a.a)) {}
-    for (paramInt = k;; paramInt = 2)
+    for (;;)
     {
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "Clk_filter ", paramInt, 0, "", "", "", "");
+      ReportController.a(localQQAppInterface, "P_CliOper", "Vip_login_upload", "", "upload", "report", 0, 0, AppSetting.a(BaseApplicationImpl.sApplication, (String)localObject), "", "", "");
+      if ("Success".equals(BaseApplicationImpl.sInjectResult)) {
+        UnifiedMonitor.a().a();
+      }
       return;
+      label368:
+      if (this.b == 2200L)
+      {
+        localObject = "3";
+        break;
+      }
+      localObject = "2";
+      break;
+      label391:
+      localObject = localQQAppInterface.getAccount();
+      if ((localObject == null) || (((String)localObject).length() == 0)) {
+        localObject = "0";
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aiem
  * JD-Core Version:    0.7.0.1
  */

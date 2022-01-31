@@ -1,30 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.VideoInfo.VideoRemark;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
 
-public final class amet
-  implements Parcelable.Creator
+public class amet
+  implements Runnable
 {
-  public VideoInfo.VideoRemark a(Parcel paramParcel)
-  {
-    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
-    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localVideoRemark.c = paramParcel.readString();
-    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
-    localVideoRemark.d = paramParcel.readString();
-    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
-    return localVideoRemark;
-  }
+  public amet(ItemTouchHelper paramItemTouchHelper) {}
   
-  public VideoInfo.VideoRemark[] a(int paramInt)
+  public void run()
   {
-    return new VideoInfo.VideoRemark[paramInt];
+    if ((this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder != null) && (this.a.b()))
+    {
+      if (this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder != null) {
+        this.a.a(this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      }
+      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      ViewCompat.postOnAnimation(this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amet
  * JD-Core Version:    0.7.0.1
  */

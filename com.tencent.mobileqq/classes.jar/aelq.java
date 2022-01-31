@@ -1,30 +1,42 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
-class aelq
+public final class aelq
   implements Runnable
 {
-  aelq(aelp paramaelp, int paramInt, Object paramObject) {}
+  public aelq(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    int i;
-    if (this.jdField_a_of_type_Aelp.a.a != null)
+    this.a.a(this.a.getCurrentAccountUin(), 200, true);
+    long l1 = ((Long)NearbySPUtil.a(this.a.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
+    long l2 = l1;
+    EntityManager localEntityManager;
+    if (l1 == 0L)
     {
-      i = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Int != 21) {
-        break label58;
+      localEntityManager = this.a.getEntityManagerFactory(this.a.getAccount()).createEntityManager();
+      l2 = l1;
+      if (localEntityManager != null)
+      {
+        NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
+        if (localNearbyPeopleCard == null) {
+          break label143;
+        }
+        l1 = localNearbyPeopleCard.tinyId;
       }
-      i = 2;
     }
+    label143:
     for (;;)
     {
-      this.jdField_a_of_type_Aelp.a.a.a(this.jdField_a_of_type_Aelp.a, i, this.jdField_a_of_type_JavaLangObject);
-      return;
-      label58:
-      if (this.jdField_a_of_type_Int == 22) {
-        i = 3;
+      localEntityManager.a();
+      l2 = l1;
+      if (l2 != 0L) {
+        this.a.a(String.valueOf(l2), 202, true);
       }
+      return;
     }
   }
 }

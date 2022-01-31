@@ -1,61 +1,28 @@
-import com.tencent.ims.QSecControlBitsQuery.QSecCbResp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qqprotect.qsec.QSecCbMgr;
-import com.tencent.qqprotect.qsec.SecSvcHandlerHelper.ISecSvcRespListener;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
+import mqq.os.MqqHandler;
 
 public class alht
-  implements SecSvcHandlerHelper.ISecSvcRespListener
+  implements TicketUtils.TicketCallback
 {
-  public alht(QSecCbMgr paramQSecCbMgr) {}
+  public alht(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a()
   {
-    if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        QSecControlBitsQuery.QSecCbResp localQSecCbResp = new QSecControlBitsQuery.QSecCbResp();
-        localQSecCbResp.mergeFrom((byte[])paramObject);
-        int j = -1;
-        int i = j;
-        if (localQSecCbResp.u32_status != null)
-        {
-          i = j;
-          if (localQSecCbResp.u32_status.has()) {
-            i = localQSecCbResp.u32_status.get();
-          }
-        }
-        if (i == 0)
-        {
-          if ((localQSecCbResp.u32_time_interval != null) && (localQSecCbResp.u32_time_interval.has())) {
-            localQSecCbResp.u32_time_interval.get();
-          }
-          paramFromServiceMsg = null;
-          paramToServiceMsg = paramFromServiceMsg;
-          if (localQSecCbResp.str_cbstr != null)
-          {
-            paramToServiceMsg = paramFromServiceMsg;
-            if (localQSecCbResp.str_cbstr.has()) {
-              paramToServiceMsg = localQSecCbResp.str_cbstr.get();
-            }
-          }
-          if ((paramToServiceMsg != null) && (!paramToServiceMsg.equals("")))
-          {
-            QSecCbMgr.a(this.a, paramToServiceMsg);
-            return;
-          }
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-      }
-    }
+    LogUtility.c("TIME-STATISTIC", "onGetA1Fail");
+    ThreadManager.getSubThreadHandler().post(new alhv(this));
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    LogUtility.c("TIME-STATISTIC", "onGetA1");
+    ThreadManager.getSubThreadHandler().post(new alhu(this, paramArrayOfByte, paramString));
   }
 }
 

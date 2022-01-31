@@ -1,18 +1,21 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-public class usl
-  extends AbstractChatItemBuilder.ViewHolder
+class usl
+  implements Runnable
 {
-  public long a;
-  public ConfessNewsBgView a;
-  public String a;
-  public View b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  usl(usk paramusk, int paramInt, Bitmap paramBitmap) {}
+  
+  public void run()
+  {
+    if (usk.a(this.jdField_a_of_type_Usk) != null)
+    {
+      ust localust = (ust)usk.a(this.jdField_a_of_type_Usk).get();
+      if (localust != null) {
+        localust.a(usk.a(this.jdField_a_of_type_Usk), this.jdField_a_of_type_Int, usk.b(this.jdField_a_of_type_Usk), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+    }
+  }
 }
 
 

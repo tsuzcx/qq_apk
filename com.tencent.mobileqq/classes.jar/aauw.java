@@ -1,26 +1,12 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.armap.ARMapManager;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
 
-public class aauw
-  implements MediaPlayer.OnPreparedListener
+public final class aauw
+  implements FileFilter
 {
-  public aauw(ARMapManager paramARMapManager) {}
-  
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public boolean accept(File paramFile)
   {
-    if ((ARMapManager.a(this.a) == 0) && (paramMediaPlayer != null)) {}
-    try
-    {
-      paramMediaPlayer.start();
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ARMapManager", 2, "playMapBGSound2-----" + paramMediaPlayer.getMessage());
-    }
+    return (paramFile.isFile()) && (paramFile.exists());
   }
 }
 

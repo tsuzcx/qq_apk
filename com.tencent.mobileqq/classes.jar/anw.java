@@ -1,15 +1,15 @@
-import android.graphics.Bitmap;
-import com.qq.im.poi.LbsPackListAdapter;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.qq.im.poi.LbsStrangerPoiDialog;
 
 public class anw
-  implements NonMainAppHeadLoader.FaceObserver
+  implements View.OnClickListener
 {
-  public anw(LbsPackListAdapter paramLbsPackListAdapter) {}
+  public anw(LbsStrangerPoiDialog paramLbsStrangerPoiDialog) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    this.a.notifyDataSetChanged();
+    this.a.a();
   }
 }
 

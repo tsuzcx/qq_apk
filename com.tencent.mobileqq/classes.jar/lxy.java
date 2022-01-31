@@ -1,18 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class lxy
   implements Runnable
 {
-  public lxy(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public lxy(KandianOx210MsgInfo.Biu0x210Msg paramBiu0x210Msg, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (ReadInJoyDeliverVideoActivity.a(this.a)) {
-      return;
-    }
-    DialogUtil.a(this.a, 233, "提示", this.a.getString(2131438894), new lxz(this), null).show();
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
+    localEditor.remove("kandian_biu_0x210_seq");
+    localEditor.remove("kandian_biu_0x210_uin");
+    localEditor.remove("kandian_biu_0x210_status");
+    ReadInJoyHelper.a(localEditor, true);
   }
 }
 

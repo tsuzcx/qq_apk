@@ -1,29 +1,21 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.model.QueryTask.Query;
 
-class aehx
-  implements Runnable
+public class aehx
+  implements QueryTask.Query
 {
-  aehx(aehw paramaehw, Bitmap paramBitmap) {}
+  public aehx(EmoticonManager paramEmoticonManager) {}
   
-  public void run()
+  public EmoticonPackage a(Pair paramPair)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      StoryLocalPublishPart.a(this.jdField_a_of_type_Aehw.jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLocalPublishPart).setImageDrawable(new BitmapDrawable(this.jdField_a_of_type_Aehw.jdField_a_of_type_AndroidViewView.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap));
-      StoryLocalPublishPart.a(this.jdField_a_of_type_Aehw.jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLocalPublishPart).setOnClickListener(StoryLocalPublishPart.a(this.jdField_a_of_type_Aehw.jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLocalPublishPart));
-      return;
-    }
-    SLog.d("story.publish.StoryLocalPublishPart", "queryFirstMediaThumbnail return null");
+    return this.a.b((String)paramPair.first, ((Integer)paramPair.second).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehx
  * JD-Core Version:    0.7.0.1
  */

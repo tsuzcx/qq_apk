@@ -1,20 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qidian.QidianManager;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-public final class akvy
+public class akvy
   implements Runnable
 {
-  public akvy(QidianManager paramQidianManager, QQAppInterface paramQQAppInterface, Friends[] paramArrayOfFriends) {}
+  public akvy(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
   
   public void run()
   {
-    QidianManager.a(this.jdField_a_of_type_ComTencentQidianQidianManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ArrayOfComTencentMobileqqDataFriends);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a == null)) {}
+    Object localObject;
+    do
+    {
+      return;
+      localObject = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+    } while (localObject == null);
+    if ((!ProfileActivity.AllInOne.f(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a)) || (this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.h) || ("0".equals(((ProfileShoppingPhotoInfo)localObject).bindShoppingNo)))
+    {
+      localObject = (View)this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_JavaUtilHashMap.remove("map_key_shopping_photo");
+      return;
+    }
+    new MqqHandler(Looper.getMainLooper()).post(new akvz(this, (ProfileShoppingPhotoInfo)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akvy
  * JD-Core Version:    0.7.0.1
  */

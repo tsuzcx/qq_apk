@@ -1,29 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
-import java.lang.ref.WeakReference;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
 
-public final class kec
-  extends Handler
+public class kec
+  implements Runnable
 {
-  WeakReference a;
+  public kec(AVRedBagMgr paramAVRedBagMgr) {}
   
-  public kec(ZimuViewMotion paramZimuViewMotion)
+  public void run()
   {
-    this.a = new WeakReference(paramZimuViewMotion);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (ZimuViewMotion)this.a.get();
-    } while (paramMessage == null);
-    paramMessage.e();
+    this.a.c("onGameStart_from_GameSink");
   }
 }
 

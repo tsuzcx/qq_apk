@@ -1,30 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PointF;
-import android.util.Log;
-import android.view.View;
+import android.widget.ImageView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import com.tencent.mobileqq.freshnews.QQInputView;
 
 public class adom
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  private View a;
+  public adom(QQInputView paramQQInputView) {}
   
-  public adom(View paramView)
+  public void run()
   {
-    this.a = paramView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
-    this.a.setX(paramValueAnimator.x);
-    this.a.setY(paramValueAnimator.y);
-    Log.i("tag", "x:" + paramValueAnimator.x + ",y:" + paramValueAnimator.y);
+    QQInputView.a(this.a).setVisibility(0);
+    QQInputView.a(this.a).setImageResource(2130844546);
+    if (AppSetting.b) {
+      QQInputView.a(this.a).setContentDescription("表情");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adom
  * JD-Core Version:    0.7.0.1
  */

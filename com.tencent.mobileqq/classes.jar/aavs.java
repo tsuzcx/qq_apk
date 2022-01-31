@@ -1,30 +1,20 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
 public class aavs
-  implements Animator.AnimatorListener
+  implements aawb
 {
-  public aavs(ConversationPullDownActiveBase paramConversationPullDownActiveBase, View paramView) {}
+  public aavs(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.p();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.p();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.k) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (!paramBoolean)
+    {
+      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", "updateInstalledApps, network not available.");
+      return;
     }
+    this.a.c();
+    ArkLocalAppMgr.b(this.a);
   }
 }
 

@@ -1,43 +1,22 @@
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SecurityPickproofActivity;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class trh
-  extends MessageObserver
+  implements Runnable
 {
-  public trh(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public trh(SecurityPickproofActivity paramSecurityPickproofActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void run()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() isSuccess=" + paramBoolean + "  subAccount=" + paramString);
-      if (paramSubAccountBackProtocData != null) {
-        QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() data.errorType=" + paramSubAccountBackProtocData.jdField_a_of_type_Int + "  errorMsg=" + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString + " mainAccount=" + paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString + "  subAccount=" + paramSubAccountBackProtocData.c + " isNeedStartGetMsg=" + paramSubAccountBackProtocData.jdField_b_of_type_Boolean);
-      }
-    }
-    if ((paramSubAccountBackProtocData == null) || (paramString == null) || (paramString.length() < 5)) {}
-    SubAccountControll localSubAccountControll;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.a.isFinishing());
-        localSubAccountControll = (SubAccountControll)this.a.app.getManager(61);
-        if (paramSubAccountBackProtocData.jdField_a_of_type_Int != 1) {
-          break;
-        }
-      } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
-      SubAccountUgActivity.a(this.a, localSubAccountControll, paramString);
-      return;
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
-    localSubAccountControll.a(this.a.jdField_a_of_type_JavaLangString, 1, true);
+    SecurityPickproofActivity.a(this.a, false);
+    FMToastUtil.a(2131434613);
+    SecurityPickproofActivity.a(this.a).setText(SecurityPickproofActivity.a(this.a));
+    SecurityPickproofActivity.b(this.a).setVisibility(0);
+    SecurityPickproofActivity.a(this.a).setVisibility(0);
+    SecurityPickproofActivity.a(this.a).setVisibility(8);
   }
 }
 

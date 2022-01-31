@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import adme;
+import adwd;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -86,7 +86,7 @@ public class EventApiPlugin
   
   private void b()
   {
-    jdField_a_of_type_AndroidContentBroadcastReceiver = new adme(this);
+    jdField_a_of_type_AndroidContentBroadcastReceiver = new adwd(this);
     if (QLog.isColorLevel()) {
       QLog.d("EventApiPlugin", 2, "init dispatch Event Receiver!");
     }
@@ -644,7 +644,7 @@ public class EventApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.EventApiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,45 @@
-import android.os.Bundle;
-import cooperation.qzone.remote.logic.WebEventListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.pluginbridge.BridgeHelper;
+import cooperation.pluginbridge.BridgePluginInstallActivity;
+import cooperation.qqwifi.PluginLoadDialog;
 
 public class amms
-  implements WebEventListener
+  extends BroadcastReceiver
 {
-  public amms(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
-  
-  public void onWebEvent(String paramString, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ("cmd.troop.download.photo".equals(paramString))
+    paramIntent = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
+    }
+    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
+    try
     {
-      paramString = paramBundle.getBundle("data");
-      paramString.getInt("totalNum");
-      int i = paramString.getInt("successNum");
-      int j = paramString.getInt("failNum");
-      boolean bool = paramString.getBoolean("isDownloadCanceled");
-      paramString = paramString.getString("path");
-      QzoneQunFeedJsPlugin.a(this.a, i, j, paramString, bool);
+      paramContext.unregisterReceiver(BridgeHelper.a());
+      BridgeHelper.a(null);
+      if (BridgeHelper.a() != null)
+      {
+        BridgeHelper.a().dismiss();
+        BridgeHelper.a(null);
+      }
+      if ((paramContext instanceof BridgePluginInstallActivity))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("BridgeHelper", 2, "Activity finish!");
+        }
+        ((BridgePluginInstallActivity)paramContext).finish();
+      }
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        paramIntent.printStackTrace();
+      }
     }
   }
 }

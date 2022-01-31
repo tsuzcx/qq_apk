@@ -1,38 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiPlugin;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class oud
-  implements VideoCombineHelper.Callback
+  implements Comparator
 {
-  public oud(TroopMemberApiPlugin paramTroopMemberApiPlugin, String paramString) {}
+  public oud(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public int a(String paramString1, String paramString2)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("retCode", 0);
-        if (!TextUtils.isEmpty(paramString2)) {
-          localJSONObject.put("errMsg", paramString2);
-        }
-        if (!TextUtils.isEmpty(paramString1)) {
-          localJSONObject.put("file", paramString1);
-        }
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.TAG, 1, paramString2, paramString1);
-      }
-      localJSONObject.put("retCode", 1);
+    int i = 1;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
     }
+    while (paramString1 != null) {
+      return i;
+    }
+    if (paramString2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 

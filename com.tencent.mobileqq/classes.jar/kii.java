@@ -1,15 +1,27 @@
-import com.tencent.av.utils.download.BaseDownloadAsyncTask;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.av.widget.stageview.StageEffectView;
+import com.tencent.av.widget.stageview.StageMemberView;
 
 public class kii
+  implements Animation.AnimationListener
 {
-  final BaseDownloadAsyncTask jdField_a_of_type_ComTencentAvUtilsDownloadBaseDownloadAsyncTask;
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  public kii(StageEffectView paramStageEffectView, boolean paramBoolean, StageMemberView paramStageMemberView, Drawable paramDrawable, ImageView paramImageView, float paramFloat1, float paramFloat2) {}
   
-  public kii(BaseDownloadAsyncTask paramBaseDownloadAsyncTask, Object... paramVarArgs)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsDownloadBaseDownloadAsyncTask = paramBaseDownloadAsyncTask;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.post(new kij(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
+import com.tencent.mobileqq.app.Job;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class znp
-  extends FriendListObserver
+  extends znz
 {
-  private znp(GetGeneralSettings paramGetGeneralSettings) {}
-  
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public znp(BlockingQueue paramBlockingQueue, zjv paramzjv)
   {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      GetGeneralSettings.a(this.a).a = 3;
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
+    super(2, 128, 2L, paramBlockingQueue, paramzjv);
+  }
+  
+  protected String a()
+  {
+    return "ThreadLightPool";
+  }
+  
+  protected ConcurrentLinkedQueue a()
+  {
+    return Job.c;
   }
 }
 

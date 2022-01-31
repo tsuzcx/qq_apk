@@ -27,10 +27,10 @@ import java.util.Random;
 import java.util.Timer;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import xcu;
-import xcv;
-import xcw;
-import xcx;
+import xfz;
+import xga;
+import xgb;
+import xgc;
 
 public class PreloadResource
   implements Serializable
@@ -60,7 +60,7 @@ public class PreloadResource
   public boolean mIsNeedUnzip;
   public boolean mIsTemp;
   public boolean mIsUnzipInside;
-  private xcx mReqTask;
+  private xgc mReqTask;
   public String mResId;
   public int mRetryTime;
   public String mUnzipPrefix;
@@ -126,15 +126,15 @@ public class PreloadResource
     //   23: aload_1
     //   24: invokevirtual 156	java/io/File:exists	()Z
     //   27: ifeq +137 -> 164
-    //   30: new 158	java/util/zip/ZipFile
+    //   30: new 158	com/tencent/commonsdk/zip/QZipFile
     //   33: dup
     //   34: aload_1
-    //   35: invokespecial 161	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   35: invokespecial 161	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   38: astore_3
     //   39: aload_3
     //   40: astore_1
     //   41: aload_3
-    //   42: invokevirtual 165	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   42: invokevirtual 165	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   45: astore 5
     //   47: aload_3
     //   48: astore_1
@@ -189,12 +189,12 @@ public class PreloadResource
     //   156: aload_3
     //   157: ifnull +7 -> 164
     //   160: aload_3
-    //   161: invokevirtual 224	java/util/zip/ZipFile:close	()V
+    //   161: invokevirtual 224	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   164: return
     //   165: aload_3
     //   166: ifnull -2 -> 164
     //   169: aload_3
-    //   170: invokevirtual 224	java/util/zip/ZipFile:close	()V
+    //   170: invokevirtual 224	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   173: return
     //   174: astore_1
     //   175: aload_1
@@ -210,7 +210,7 @@ public class PreloadResource
     //   189: aload_1
     //   190: ifnull +7 -> 197
     //   193: aload_1
-    //   194: invokevirtual 224	java/util/zip/ZipFile:close	()V
+    //   194: invokevirtual 224	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   197: aload_3
     //   198: athrow
     //   199: astore_1
@@ -228,7 +228,7 @@ public class PreloadResource
     //   0	218	0	this	PreloadResource
     //   0	218	1	paramString	String
     //   95	27	2	bool	boolean
-    //   38	132	3	localZipFile	java.util.zip.ZipFile
+    //   38	132	3	localQZipFile	com.tencent.commonsdk.zip.QZipFile
     //   186	12	3	localObject1	Object
     //   207	1	3	localObject2	Object
     //   214	1	3	localObject3	Object
@@ -559,7 +559,7 @@ public class PreloadResource
   
   public DownloadListener getFlowControlDownloadListener(long paramLong, DownloadListener paramDownloadListener, PreloadManager paramPreloadManager, int paramInt)
   {
-    return new xcv(this, paramInt, new WeakReference(paramPreloadManager), paramDownloadListener, paramLong);
+    return new xga(this, paramInt, new WeakReference(paramPreloadManager), paramDownloadListener, paramLong);
   }
   
   public String getFolderPath(String paramString1, String paramString2)
@@ -708,7 +708,7 @@ public class PreloadResource
             {
               if ((this.mReqTask == null) || (this.mReqTask.a()))
               {
-                this.mReqTask = new xcu(this, new WeakReference(paramPreloadManager), paramPreloadModule);
+                this.mReqTask = new xfz(this, new WeakReference(paramPreloadManager), paramPreloadModule);
                 ThreadManager.getTimer().schedule(this.mReqTask, l3);
               }
               paramPreloadManager.d();
@@ -740,15 +740,15 @@ public class PreloadResource
     //   23: aload_1
     //   24: invokevirtual 156	java/io/File:exists	()Z
     //   27: ifeq +164 -> 191
-    //   30: new 158	java/util/zip/ZipFile
+    //   30: new 158	com/tencent/commonsdk/zip/QZipFile
     //   33: dup
     //   34: aload_1
-    //   35: invokespecial 161	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   35: invokespecial 161	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   38: astore_2
     //   39: aload_2
     //   40: astore_1
     //   41: aload_2
-    //   42: invokevirtual 165	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   42: invokevirtual 165	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   45: astore_3
     //   46: aload_2
     //   47: astore_1
@@ -811,7 +811,7 @@ public class PreloadResource
     //   166: aload_2
     //   167: ifnull +7 -> 174
     //   170: aload_2
-    //   171: invokevirtual 224	java/util/zip/ZipFile:close	()V
+    //   171: invokevirtual 224	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   174: iconst_0
     //   175: ireturn
     //   176: astore_1
@@ -822,7 +822,7 @@ public class PreloadResource
     //   183: aload_2
     //   184: ifnull +7 -> 191
     //   187: aload_2
-    //   188: invokevirtual 224	java/util/zip/ZipFile:close	()V
+    //   188: invokevirtual 224	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   191: invokestatic 195	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   194: ifeq +30 -> 224
     //   197: ldc 197
@@ -852,7 +852,7 @@ public class PreloadResource
     //   243: aload_2
     //   244: ifnull -53 -> 191
     //   247: aload_2
-    //   248: invokevirtual 224	java/util/zip/ZipFile:close	()V
+    //   248: invokevirtual 224	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   251: goto -60 -> 191
     //   254: astore_1
     //   255: aload_1
@@ -864,7 +864,7 @@ public class PreloadResource
     //   265: aload_1
     //   266: ifnull +7 -> 273
     //   269: aload_1
-    //   270: invokevirtual 224	java/util/zip/ZipFile:close	()V
+    //   270: invokevirtual 224	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   273: aload_2
     //   274: athrow
     //   275: astore_1
@@ -879,7 +879,7 @@ public class PreloadResource
     //   start	length	slot	name	signature
     //   0	291	0	this	PreloadResource
     //   0	291	1	paramString	String
-    //   38	210	2	localZipFile	java.util.zip.ZipFile
+    //   38	210	2	localQZipFile	com.tencent.commonsdk.zip.QZipFile
     //   262	12	2	localObject1	Object
     //   283	1	2	localObject2	Object
     //   45	15	3	localEnumeration	java.util.Enumeration
@@ -1122,7 +1122,7 @@ public class PreloadResource
   
   public void startFlowControlReq(JudgeDownloadReq paramJudgeDownloadReq, PreloadManager paramPreloadManager, PreloadModule paramPreloadModule, DownloadListener paramDownloadListener)
   {
-    QWalletCommonServlet.a(paramJudgeDownloadReq, new xcw(this, new WeakReference(paramPreloadManager), paramDownloadListener, paramPreloadModule), 1);
+    QWalletCommonServlet.a(paramJudgeDownloadReq, new xgb(this, new WeakReference(paramPreloadManager), paramDownloadListener, paramPreloadModule), 1);
   }
   
   public String toString()

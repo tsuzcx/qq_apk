@@ -1,7 +1,5 @@
 package cooperation.readinjoy;
 
-import amoc;
-import amoe;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -12,12 +10,15 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import aneh;
+import anej;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkUtil;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.SelfInfoModule.BusinessCountInfo;
 import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
 import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
@@ -33,6 +34,7 @@ import com.tencent.mobileqq.data.ResourcePluginInfo;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,9 +48,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class ReadInJoyHelper
 {
@@ -56,7 +65,8 @@ public class ReadInJoyHelper
   private static long jdField_a_of_type_Long;
   public static String a;
   private static HashMap jdField_a_of_type_JavaUtilHashMap;
-  public static Map a;
+  private static List jdField_a_of_type_JavaUtilList;
+  private static Map jdField_a_of_type_JavaUtilMap;
   private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   protected static boolean a;
   public static final String[] a;
@@ -72,8 +82,10 @@ public class ReadInJoyHelper
   private static String jdField_d_of_type_JavaLangString;
   private static int jdField_e_of_type_Int;
   private static String jdField_e_of_type_JavaLangString;
-  private static int f;
-  private static int g;
+  private static int jdField_f_of_type_Int;
+  private static String jdField_f_of_type_JavaLangString;
+  private static int jdField_g_of_type_Int;
+  private static String jdField_g_of_type_JavaLangString;
   private static int h;
   private static int i;
   private static int j;
@@ -90,6 +102,7 @@ public class ReadInJoyHelper
   private static int u;
   private static int v;
   private static int w;
+  private static int x;
   
   static
   {
@@ -98,14 +111,14 @@ public class ReadInJoyHelper
     jdField_b_of_type_JavaLangString = "_mode_videochannel_";
     jdField_a_of_type_Int = -1;
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "collectbox", "homepage", "messagebox_V3", "messagebox_pendant_V3", "commentpage", "recommend_friends", "accountpage", "topicvideo" };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "collectbox", "homepage", "messagebox_V3", "messagebox_pendant_V3", "commentpage", "recommend_friends", "accountpage", "topicvideo", "mytopic", "myhistory", "myfollow", "myfans", "mynotify" };
     jdField_b_of_type_Int = -1;
     jdField_c_of_type_Int = -1;
     jdField_d_of_type_Int = -1;
     jdField_e_of_type_Int = -1;
     jdField_a_of_type_Long = -1L;
-    f = -1;
-    g = -1;
+    jdField_f_of_type_Int = -1;
+    jdField_g_of_type_Int = -1;
     h = -1;
     i = -1;
     j = -1;
@@ -120,13 +133,55 @@ public class ReadInJoyHelper
     s = -1;
     v = -1;
     w = -1;
-    jdField_e_of_type_JavaLangString = "try_stick_flag";
+    x = -1;
+    jdField_g_of_type_JavaLangString = "try_stick_flag";
     jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
     jdField_b_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
     jdField_c_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
   }
   
   public static int A(AppRuntime paramAppRuntime)
+  {
+    if (t > 0) {
+      return t;
+    }
+    paramAppRuntime = a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null)
+    {
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianFollowCount() failed");
+      return 0;
+    }
+    t = paramAppRuntime.getInt("kandian_user_follow_count", 0);
+    return t;
+  }
+  
+  public static void A(AppRuntime paramAppRuntime, String paramString)
+  {
+    paramAppRuntime = a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
+      return;
+    }
+    paramAppRuntime = paramAppRuntime.edit();
+    paramAppRuntime.putString("native_engine_timeout_config", paramString);
+    a(paramAppRuntime, true);
+  }
+  
+  public static int B(AppRuntime paramAppRuntime)
+  {
+    if (u > 0) {
+      return u;
+    }
+    paramAppRuntime = a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null)
+    {
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianFansCount() failed");
+      return 0;
+    }
+    u = paramAppRuntime.getInt("kandian_user_fans_count", 0);
+    return u;
+  }
+  
+  public static int C(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
@@ -137,7 +192,7 @@ public class ReadInJoyHelper
     return paramAppRuntime.getInt("video_channel_cover_style", 0);
   }
   
-  public static int B(AppRuntime paramAppRuntime)
+  public static int D(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
@@ -150,7 +205,7 @@ public class ReadInJoyHelper
     return i1;
   }
   
-  public static int C(AppRuntime paramAppRuntime)
+  public static int E(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
@@ -163,7 +218,7 @@ public class ReadInJoyHelper
     return i1;
   }
   
-  public static int D(AppRuntime paramAppRuntime)
+  public static int F(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
@@ -176,7 +231,7 @@ public class ReadInJoyHelper
     return i1;
   }
   
-  public static int E(AppRuntime paramAppRuntime)
+  public static int G(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
@@ -189,7 +244,7 @@ public class ReadInJoyHelper
     return i1;
   }
   
-  public static int F(AppRuntime paramAppRuntime)
+  public static int H(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
@@ -202,7 +257,7 @@ public class ReadInJoyHelper
     return i1;
   }
   
-  public static int G(AppRuntime paramAppRuntime)
+  public static int I(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
@@ -215,7 +270,7 @@ public class ReadInJoyHelper
     return i1;
   }
   
-  public static int H(AppRuntime paramAppRuntime)
+  public static int J(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
@@ -228,7 +283,7 @@ public class ReadInJoyHelper
     return i1;
   }
   
-  public static int I(AppRuntime paramAppRuntime)
+  public static int K(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
@@ -236,14 +291,14 @@ public class ReadInJoyHelper
       QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigBadgeSwitch() failed");
       return -1;
     }
-    if (w != -1) {
-      return w;
+    if (x != -1) {
+      return x;
     }
-    w = paramAppRuntime.getInt("kandian_badge_switch", 0);
-    return w;
+    x = paramAppRuntime.getInt("kandian_badge_switch", 0);
+    return x;
   }
   
-  public static int J(AppRuntime paramAppRuntime)
+  public static int L(AppRuntime paramAppRuntime)
   {
     if (paramAppRuntime == null) {
       return -1;
@@ -261,7 +316,7 @@ public class ReadInJoyHelper
     }
   }
   
-  public static int K(AppRuntime paramAppRuntime)
+  public static int M(AppRuntime paramAppRuntime)
   {
     int i1 = 0;
     paramAppRuntime = a(paramAppRuntime, true, true);
@@ -308,7 +363,7 @@ public class ReadInJoyHelper
     if (paramInt1 <= paramInt2)
     {
       i1 = ReadInJoyConstants.jdField_c_of_type_Int;
-      paramInt1 = x(BaseApplicationImpl.getApplication().getRuntime());
+      paramInt1 = y(BaseApplicationImpl.getApplication().getRuntime());
       if (paramInt1 <= 0) {
         break label81;
       }
@@ -504,6 +559,87 @@ public class ReadInJoyHelper
     return new com.tencent.util.Pair(Long.valueOf(paramAppRuntime.getLong("kandian_delete_outdate_article_interval", 86400L)), Integer.valueOf(paramAppRuntime.getInt("kandian_delete_outdate_article_feeds_cnt", 5)));
   }
   
+  public static ReadInJoyHelper.DefaultSetting a(Node paramNode)
+  {
+    ReadInJoyHelper.DefaultSetting localDefaultSetting = new ReadInJoyHelper.DefaultSetting();
+    if (TextUtils.equals("setting", paramNode.getNodeName()))
+    {
+      paramNode = paramNode.getFirstChild();
+      if (paramNode != null)
+      {
+        String str2;
+        if (paramNode.getNodeType() == 1)
+        {
+          String str1 = paramNode.getNodeName();
+          str2 = paramNode.getFirstChild().getNodeValue();
+          if (!TextUtils.equals(str1, "id")) {
+            break label99;
+          }
+        }
+        for (;;)
+        {
+          try
+          {
+            localDefaultSetting.jdField_a_of_type_Int = Integer.parseInt(str2);
+            paramNode = paramNode.getNextSibling();
+          }
+          catch (NumberFormatException localNumberFormatException1)
+          {
+            localNumberFormatException1.printStackTrace();
+            continue;
+          }
+          label99:
+          if (TextUtils.equals(localNumberFormatException1, "title")) {
+            localDefaultSetting.jdField_a_of_type_JavaLangString = str2;
+          } else if (TextUtils.equals(localNumberFormatException1, "hidden")) {
+            try
+            {
+              localDefaultSetting.jdField_b_of_type_Int = Integer.parseInt(str2);
+            }
+            catch (NumberFormatException localNumberFormatException2)
+            {
+              localNumberFormatException2.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+    return localDefaultSetting;
+  }
+  
+  public static ReadInJoyHelper.OperatingSetting a(Node paramNode)
+  {
+    ReadInJoyHelper.OperatingSetting localOperatingSetting = new ReadInJoyHelper.OperatingSetting();
+    if (TextUtils.equals("setting", paramNode.getNodeName()))
+    {
+      paramNode = paramNode.getFirstChild();
+      if (paramNode != null)
+      {
+        String str1;
+        String str2;
+        if (paramNode.getNodeType() == 1)
+        {
+          str1 = paramNode.getNodeName();
+          str2 = paramNode.getFirstChild().getNodeValue();
+          if (!TextUtils.equals(str1, "title")) {
+            break label88;
+          }
+          localOperatingSetting.jdField_a_of_type_JavaLangString = str2;
+        }
+        for (;;)
+        {
+          paramNode = paramNode.getNextSibling();
+          break;
+          label88:
+          if (TextUtils.equals(str1, "jumpurl")) {
+            localOperatingSetting.jdField_b_of_type_JavaLangString = str2;
+          }
+        }
+      }
+    }
+    return localOperatingSetting;
+  }
+  
   public static Boolean a(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
@@ -513,6 +649,12 @@ public class ReadInJoyHelper
       return Boolean.valueOf(false);
     }
     return Boolean.valueOf(paramAppRuntime.getBoolean("kandian_user_forbidden", false));
+  }
+  
+  public static Integer a(String paramString)
+  {
+    String str = ReadInJoyUtils.a();
+    return (Integer)jdField_a_of_type_JavaUtilMap.get(paramString + "_" + str);
   }
   
   public static Object a(String paramString)
@@ -621,6 +763,54 @@ public class ReadInJoyHelper
     return jdField_a_of_type_JavaUtilHashMap;
   }
   
+  public static List a(AppRuntime paramAppRuntime)
+  {
+    JSONObject localJSONObject = null;
+    if (jdField_a_of_type_JavaUtilList != null) {
+      paramAppRuntime = jdField_a_of_type_JavaUtilList;
+    }
+    for (;;)
+    {
+      return paramAppRuntime;
+      paramAppRuntime = a(paramAppRuntime, true, true);
+      if (paramAppRuntime == null)
+      {
+        QLog.d("Q.readinjoy.tt_report", 1, "getFansInfoList() failed");
+        return null;
+      }
+      Object localObject = paramAppRuntime.getString("kandian_user_fans_info_list", null);
+      paramAppRuntime = localJSONObject;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        try
+        {
+          localObject = new JSONArray((String)localObject);
+          int i2 = ((JSONArray)localObject).length();
+          paramAppRuntime = localJSONObject;
+          if (i2 > 0)
+          {
+            paramAppRuntime = new ArrayList(i2);
+            int i1 = 0;
+            while (i1 < i2)
+            {
+              localJSONObject = ((JSONArray)localObject).getJSONObject(i1);
+              SelfInfoModule.BusinessCountInfo localBusinessCountInfo = new SelfInfoModule.BusinessCountInfo();
+              localBusinessCountInfo.a(localJSONObject);
+              paramAppRuntime.add(localBusinessCountInfo);
+              i1 += 1;
+            }
+            jdField_a_of_type_JavaUtilList = paramAppRuntime;
+            return paramAppRuntime;
+          }
+        }
+        catch (JSONException paramAppRuntime)
+        {
+          QLog.d("ReadInJoyHelper", 1, "getFansInfoList error. " + paramAppRuntime);
+        }
+      }
+    }
+    return null;
+  }
+  
   public static void a()
   {
     jdField_a_of_type_Int = -1;
@@ -629,17 +819,21 @@ public class ReadInJoyHelper
     jdField_d_of_type_Int = -1;
     jdField_e_of_type_Int = -1;
     jdField_a_of_type_Long = -1L;
-    f = -1;
-    g = -1;
+    jdField_f_of_type_Int = -1;
+    jdField_g_of_type_Int = -1;
     h = -1;
     i = -1;
     k = -1;
     j = -1;
-    v = -1;
     w = -1;
+    x = -1;
     s = -1;
     t = 0;
     u = 0;
+    jdField_a_of_type_JavaUtilList = null;
+    jdField_e_of_type_JavaLangString = null;
+    jdField_f_of_type_JavaLangString = null;
+    v = -1;
     n = -1;
   }
   
@@ -826,10 +1020,10 @@ public class ReadInJoyHelper
     //   0: ldc 2
     //   2: monitorenter
     //   3: iload_1
-    //   4: putstatic 728	cooperation/readinjoy/ReadInJoyHelper:jdField_b_of_type_Boolean	Z
+    //   4: putstatic 850	cooperation/readinjoy/ReadInJoyHelper:jdField_b_of_type_Boolean	Z
     //   7: aload_0
     //   8: iconst_1
-    //   9: invokestatic 360	cooperation/readinjoy/ReadInJoyHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;I)Landroid/content/SharedPreferences;
+    //   9: invokestatic 404	cooperation/readinjoy/ReadInJoyHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;I)Landroid/content/SharedPreferences;
     //   12: astore_2
     //   13: aload_2
     //   14: ifnonnull +7 -> 21
@@ -837,19 +1031,19 @@ public class ReadInJoyHelper
     //   19: monitorexit
     //   20: return
     //   21: aload_2
-    //   22: invokeinterface 570 1 0
+    //   22: invokeinterface 186 1 0
     //   27: astore_2
     //   28: aload_2
-    //   29: ldc_w 730
+    //   29: ldc_w 852
     //   32: iload_1
-    //   33: invokeinterface 596 3 0
+    //   33: invokeinterface 728 3 0
     //   38: pop
     //   39: aload_2
     //   40: iconst_1
-    //   41: invokestatic 579	cooperation/readinjoy/ReadInJoyHelper:a	(Landroid/content/SharedPreferences$Editor;Z)V
+    //   41: invokestatic 197	cooperation/readinjoy/ReadInJoyHelper:a	(Landroid/content/SharedPreferences$Editor;Z)V
     //   44: aload_0
     //   45: iload_1
-    //   46: invokestatic 732	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Z)V
+    //   46: invokestatic 854	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Z)V
     //   49: goto -32 -> 17
     //   52: astore_0
     //   53: ldc 2
@@ -909,7 +1103,9 @@ public class ReadInJoyHelper
   
   public static void a(String paramString, Integer paramInteger)
   {
-    jdField_a_of_type_JavaUtilMap.put(paramString, paramInteger);
+    String str = ReadInJoyUtils.a();
+    jdField_a_of_type_JavaUtilMap.put(paramString + "_" + str, paramInteger);
+    QLog.d("ReadInJoyHelper", 2, "updateKDTabConfigCache" + paramString + ", value : " + paramInteger + ", account" + str);
   }
   
   public static void a(AppRuntime paramAppRuntime)
@@ -964,20 +1160,45 @@ public class ReadInJoyHelper
     a(paramAppRuntime, true);
   }
   
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, List paramList)
   {
-    paramAppRuntime = a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null)
+    SharedPreferences localSharedPreferences = a(paramAppRuntime, true, true);
+    if (localSharedPreferences == null)
     {
       QLog.d("Q.readinjoy.tt_report", 1, "updateKandianFollowAndFansCount() failed");
       return;
     }
-    paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("kandian_user_follow_count", paramInt1);
-    paramAppRuntime.putInt("kandian_user_fans_count", paramInt2);
-    a(paramAppRuntime, true);
+    Object localObject = null;
+    paramAppRuntime = (AppRuntime)localObject;
+    if (paramList != null)
+    {
+      paramAppRuntime = (AppRuntime)localObject;
+      if (paramList.size() > 0)
+      {
+        paramAppRuntime = new JSONArray();
+        localObject = paramList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          paramAppRuntime.put(((SelfInfoModule.BusinessCountInfo)((Iterator)localObject).next()).a());
+        }
+        localObject = paramAppRuntime.toString();
+        paramAppRuntime = (AppRuntime)localObject;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ReadInJoyHelper", 2, "updateKandianFollowAndFansCount followNum:" + paramInt1 + ", userNickName:" + paramInt2 + ", fansInfoList = " + paramList.size());
+          paramAppRuntime = (AppRuntime)localObject;
+        }
+      }
+    }
+    localObject = localSharedPreferences.edit();
+    ((SharedPreferences.Editor)localObject).putInt("kandian_user_follow_count", paramInt1);
+    ((SharedPreferences.Editor)localObject).putInt("kandian_user_fans_count", paramInt2);
+    if (paramAppRuntime != null) {
+      ((SharedPreferences.Editor)localObject).putString("kandian_user_fans_info_list", paramAppRuntime);
+    }
+    a((SharedPreferences.Editor)localObject, true);
     t = paramInt1;
     u = paramInt2;
+    jdField_a_of_type_JavaUtilList = paramList;
   }
   
   public static void a(AppRuntime paramAppRuntime, long paramLong)
@@ -1070,6 +1291,36 @@ public class ReadInJoyHelper
     paramAppRuntime = paramAppRuntime.edit();
     paramAppRuntime.putString("readinjoy_social_weburl_" + paramString1, paramString2);
     a(paramAppRuntime, true);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt)
+  {
+    paramAppRuntime = a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
+      QLog.d("Q.readinjoy.tt_report", 1, "updateUserInfo() failed");
+    }
+    do
+    {
+      return;
+      paramAppRuntime = paramAppRuntime.edit();
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        paramAppRuntime.putString("kandian_user_head_url", paramString1);
+        jdField_e_of_type_JavaLangString = paramString1;
+      }
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        paramAppRuntime.putString("kandian_user_nick_name", paramString2);
+        jdField_f_of_type_JavaLangString = paramString2;
+      }
+      if (paramInt != -1)
+      {
+        paramAppRuntime.putInt("kandian_user_is_vip", paramInt);
+        v = paramInt;
+      }
+      a(paramAppRuntime, true);
+    } while (!QLog.isColorLevel());
+    QLog.d("ReadInJoyHelper", 2, "updateUserInfo userHeadUrl:" + paramString1 + ", userNickName:" + paramString2 + ", userIsVip = " + paramInt);
   }
   
   public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
@@ -1184,7 +1435,7 @@ public class ReadInJoyHelper
       String str = ((JSONObject)localObject).optString("app");
       localObject = ((JSONObject)localObject).optString("ver", null);
       if (!TextUtils.isEmpty(str)) {
-        ThreadManager.executeOnSubThread(new amoc(((ArkAppCenter)paramAppRuntime.getManager(120)).a(), str, (String)localObject, paramString));
+        ThreadManager.executeOnSubThread(new aneh(((ArkAppCenter)paramAppRuntime.getManager(120)).a(), str, (String)localObject, paramString));
       }
       paramString = new HashMap();
       if (TextUtils.isEmpty(str)) {
@@ -1298,6 +1549,48 @@ public class ReadInJoyHelper
       }
     }
     return localHashMap;
+  }
+  
+  public static List b(AppRuntime paramAppRuntime)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = a(paramAppRuntime, true, true);
+    if (localObject == null) {
+      localObject = null;
+    }
+    for (;;)
+    {
+      return localObject;
+      paramAppRuntime = ((SharedPreferences)localObject).getString("readinjoy_my_tab_setting" + paramAppRuntime.getAccount(), "");
+      try
+      {
+        for (paramAppRuntime = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramAppRuntime.getBytes("utf-8"))).getElementsByTagName("configs").item(0).getFirstChild();; paramAppRuntime = paramAppRuntime.getNextSibling())
+        {
+          localObject = localArrayList;
+          if (paramAppRuntime == null) {
+            break;
+          }
+          if ((paramAppRuntime.getFirstChild() != null) && (TextUtils.equals(paramAppRuntime.getNodeName(), "kandiansettings"))) {
+            for (localObject = paramAppRuntime.getFirstChild(); localObject != null; localObject = ((Node)localObject).getNextSibling()) {
+              if ((((Node)localObject).getNodeType() == 1) && (TextUtils.equals("defaultsettings", ((Node)localObject).getNodeName()))) {
+                for (Node localNode = ((Node)localObject).getFirstChild(); localNode != null; localNode = localNode.getNextSibling()) {
+                  if (localNode.getNodeType() == 1) {
+                    localArrayList.add(a(localNode));
+                  }
+                }
+              }
+            }
+          }
+        }
+        if (!QLog.isColorLevel()) {}
+      }
+      catch (Exception paramAppRuntime)
+      {
+        localObject = localArrayList;
+      }
+    }
+    QLog.d("ReadInJoyHelper", 2, "exception occurs", paramAppRuntime);
+    return localArrayList;
   }
   
   public static void b(int paramInt1, int paramInt2)
@@ -1616,6 +1909,48 @@ public class ReadInJoyHelper
     return paramAppRuntime.getString("readinjoy_feeds_ark_app_name", "");
   }
   
+  public static List c(AppRuntime paramAppRuntime)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = a(paramAppRuntime, true, true);
+    if (localObject == null) {
+      localObject = null;
+    }
+    for (;;)
+    {
+      return localObject;
+      paramAppRuntime = ((SharedPreferences)localObject).getString("readinjoy_my_tab_setting" + paramAppRuntime.getAccount(), "");
+      try
+      {
+        for (paramAppRuntime = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramAppRuntime.getBytes("utf-8"))).getElementsByTagName("configs").item(0).getFirstChild();; paramAppRuntime = paramAppRuntime.getNextSibling())
+        {
+          localObject = localArrayList;
+          if (paramAppRuntime == null) {
+            break;
+          }
+          if ((paramAppRuntime.getFirstChild() != null) && (TextUtils.equals(paramAppRuntime.getNodeName(), "kandiansettings"))) {
+            for (localObject = paramAppRuntime.getFirstChild(); localObject != null; localObject = ((Node)localObject).getNextSibling()) {
+              if ((((Node)localObject).getNodeType() == 1) && (TextUtils.equals("operatingsettings", ((Node)localObject).getNodeName()))) {
+                for (Node localNode = ((Node)localObject).getFirstChild(); localNode != null; localNode = localNode.getNextSibling()) {
+                  if (localNode.getNodeType() == 1) {
+                    localArrayList.add(a(localNode));
+                  }
+                }
+              }
+            }
+          }
+        }
+        if (!QLog.isColorLevel()) {}
+      }
+      catch (Exception paramAppRuntime)
+      {
+        localObject = localArrayList;
+      }
+    }
+    QLog.d("ReadInJoyHelper", 2, "exception occurs", paramAppRuntime);
+    return localArrayList;
+  }
+  
   public static void c(QQAppInterface paramQQAppInterface)
   {
     jdField_b_of_type_Boolean = c(paramQQAppInterface);
@@ -1665,7 +2000,7 @@ public class ReadInJoyHelper
       return;
       String str = paramAppRuntime.getString("readinjoy_social_weburl_homepage", "");
       if (!TextUtils.isEmpty(str)) {
-        ReadInJoyConstants.f = str;
+        ReadInJoyConstants.jdField_f_of_type_JavaLangString = str;
       }
       str = paramAppRuntime.getString("readinjoy_social_weburl_messagebox_V3", "");
       if (!TextUtils.isEmpty(str)) {
@@ -1677,7 +2012,7 @@ public class ReadInJoyHelper
       }
       str = paramAppRuntime.getString("readinjoy_social_weburl_messagebox_pendant_V3", "");
       if (!TextUtils.isEmpty(str)) {
-        ReadInJoyConstants.g = str;
+        ReadInJoyConstants.jdField_g_of_type_JavaLangString = str;
       }
       str = paramAppRuntime.getString("readinjoy_social_weburl_commentpage", "");
       if (!TextUtils.isEmpty(str)) {
@@ -1687,9 +2022,29 @@ public class ReadInJoyHelper
       if (!TextUtils.isEmpty(str)) {
         ReadInJoyConstants.jdField_e_of_type_JavaLangString = str;
       }
-      paramAppRuntime = paramAppRuntime.getString("readinjoy_social_weburl_accountpage", "");
+      str = paramAppRuntime.getString("readinjoy_social_weburl_accountpage", "");
+      if (!TextUtils.isEmpty(str)) {
+        ReadInJoyConstants.i = str;
+      }
+      str = paramAppRuntime.getString("readinjoy_social_weburl_mytopic", "");
+      if (!TextUtils.isEmpty(str)) {
+        ReadInJoyConstants.m = str;
+      }
+      str = paramAppRuntime.getString("readinjoy_social_weburl_myhistory", "");
+      if (!TextUtils.isEmpty(str)) {
+        ReadInJoyConstants.l = str;
+      }
+      str = paramAppRuntime.getString("readinjoy_social_weburl_myfollow", "");
+      if (!TextUtils.isEmpty(str)) {
+        ReadInJoyConstants.p = str;
+      }
+      str = paramAppRuntime.getString("readinjoy_social_weburl_myfans", "");
+      if (!TextUtils.isEmpty(str)) {
+        ReadInJoyConstants.q = str;
+      }
+      paramAppRuntime = paramAppRuntime.getString("readinjoy_social_weburl_mynotify", "");
     } while (TextUtils.isEmpty(paramAppRuntime));
-    ReadInJoyConstants.i = paramAppRuntime;
+    ReadInJoyConstants.o = paramAppRuntime;
   }
   
   public static void c(AppRuntime paramAppRuntime, float paramFloat)
@@ -1904,27 +2259,29 @@ public class ReadInJoyHelper
   public static boolean d()
   {
     int i2 = 0;
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject == null)
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime == null)
     {
       QLog.d("ReadInJoyHelper", 1, new Object[] { "app is null, isShowKandianTabNew, isShowKandian = ", Integer.valueOf(0) });
       return false;
     }
-    if (!jdField_a_of_type_JavaUtilMap.containsKey("local_kd_tab_switch"))
+    SharedPreferences localSharedPreferences;
+    if (a("local_kd_tab_switch") == null)
     {
-      localObject = a((AppRuntime)localObject, true, true);
-      if (localObject == null) {
-        break label167;
+      localSharedPreferences = a(localAppRuntime, true, true);
+      if (localSharedPreferences == null) {
+        break label187;
       }
     }
-    label167:
-    for (boolean bool = ((SharedPreferences)localObject).getBoolean("local_kd_tab_switch", false);; bool = false)
+    label187:
+    for (boolean bool = localSharedPreferences.getBoolean("local_kd_tab_switch", false);; bool = false)
     {
       int i1;
       if (bool)
       {
         i1 = 1;
         a("local_kd_tab_switch", Integer.valueOf(i1));
+        QLog.d("ReadInJoyHelper", 2, "isShowKandianTabNew cache is null, read from sp, " + localAppRuntime.getAccount());
       }
       for (;;)
       {
@@ -1939,7 +2296,7 @@ public class ReadInJoyHelper
         return bool;
         i1 = 0;
         break;
-        if (((Integer)jdField_a_of_type_JavaUtilMap.get("local_kd_tab_switch")).intValue() == 1) {
+        if (a("local_kd_tab_switch").intValue() == 1) {
           bool = true;
         } else {
           bool = false;
@@ -2059,28 +2416,29 @@ public class ReadInJoyHelper
     int i1;
     if (f())
     {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject == null)
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (localAppRuntime == null)
       {
         QLog.d("ReadInJoyHelper", 1, new Object[] { "app is null, isShowMainVideoTabNew, isShowMainVideo = ", Integer.valueOf(0) });
         return false;
       }
-      if (!jdField_a_of_type_JavaUtilMap.containsKey("local_kd_tab_type"))
+      if (a("local_kd_tab_type") == null)
       {
-        localObject = a((AppRuntime)localObject, true, true);
+        Object localObject = a(localAppRuntime, true, true);
         if (localObject == null) {
-          break label193;
+          break label216;
         }
         localObject = ((SharedPreferences)localObject).getString("local_kd_tab_type", "1");
         if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equals("0"))) {
-          break label193;
+          break label216;
         }
         bool = true;
         if (bool)
         {
           i1 = 0;
-          label108:
+          label109:
           a("local_kd_tab_type", Integer.valueOf(i1));
+          QLog.d("ReadInJoyHelper", 2, "isShowMainVideoTabNew cache is null, read from sp, " + localAppRuntime.getAccount());
         }
       }
     }
@@ -2096,8 +2454,8 @@ public class ReadInJoyHelper
       }
       return bool;
       i1 = 1;
-      break label108;
-      if (((Integer)jdField_a_of_type_JavaUtilMap.get("local_kd_tab_type")).intValue() == 0)
+      break label109;
+      if (a("local_kd_tab_type").intValue() == 0)
       {
         bool = true;
       }
@@ -2105,7 +2463,7 @@ public class ReadInJoyHelper
       {
         bool = false;
         continue;
-        label193:
+        label216:
         bool = false;
         break;
         bool = false;
@@ -2135,7 +2493,7 @@ public class ReadInJoyHelper
     if (paramAppRuntime == null) {
       return 0;
     }
-    return paramAppRuntime.getInt("readinjoy_video_videoinfo_switch", 0);
+    return paramAppRuntime.getInt("readinjoy_video_videoinfo_anim_viewtop", 0);
   }
   
   public static String f(AppRuntime paramAppRuntime)
@@ -2169,7 +2527,7 @@ public class ReadInJoyHelper
       return;
     }
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("readinjoy_video_videoinfo_switch", paramInt);
+    paramAppRuntime.putInt("readinjoy_video_videoinfo_anim_viewtop", paramInt);
     a(paramAppRuntime, true);
   }
   
@@ -2201,17 +2559,17 @@ public class ReadInJoyHelper
   
   public static boolean f()
   {
-    int i1 = J(ReadInJoyUtils.a());
+    int i1 = L(ReadInJoyUtils.a());
     Object localObject;
     if (i1 != -1)
     {
       a(ReadInJoyUtils.a(), "local_kd_tab_has_set", Boolean.valueOf(true));
       localObject = ReadInJoyUtils.a();
       if (i1 != 1) {
-        break label91;
+        break label92;
       }
     }
-    label91:
+    label92:
     for (boolean bool = true;; bool = false)
     {
       a((AppRuntime)localObject, "local_kd_tab_switch", Boolean.valueOf(bool));
@@ -2258,14 +2616,12 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigRedShowNum() failed");
-      return -1;
+      QLog.d("Q.readinjoy.video", 1, "getVideoFeedsAdConfigLocal() failed");
+      return 60;
     }
-    if (jdField_c_of_type_Int != -1) {
-      return jdField_c_of_type_Int;
-    }
-    jdField_c_of_type_Int = paramAppRuntime.getInt("kandian_tabdot_show_num", 0);
-    return jdField_c_of_type_Int;
+    int i1 = paramAppRuntime.getInt("camera_capture_max_duration", 60);
+    QLog.d("Q.readinjoy.video", 1, "getCameraCaptureMaxDuration() result=" + i1);
+    return i1;
   }
   
   public static String g(AppRuntime paramAppRuntime)
@@ -2288,13 +2644,13 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianConfigRedShowNum() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateCameraCaptureMaxDuration() failed");
       return;
     }
+    QLog.d("Q.readinjoy.video", 1, "updateCameraCaptureMaxDuration() value=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("kandian_tabdot_show_num", paramInt);
+    paramAppRuntime.putInt("camera_capture_max_duration", paramInt);
     a(paramAppRuntime, true);
-    jdField_c_of_type_Int = paramInt;
   }
   
   public static void g(AppRuntime paramAppRuntime, String paramString)
@@ -2356,27 +2712,29 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigRedThreshold() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigRedShowNum() failed");
       return -1;
     }
-    if (jdField_d_of_type_Int != -1) {
-      return jdField_d_of_type_Int;
+    if (jdField_c_of_type_Int != -1) {
+      return jdField_c_of_type_Int;
     }
-    jdField_d_of_type_Int = paramAppRuntime.getInt("kandian_tabdot_threshold", 0);
-    return jdField_d_of_type_Int;
+    jdField_c_of_type_Int = paramAppRuntime.getInt("kandian_tabdot_show_num", 0);
+    return jdField_c_of_type_Int;
   }
   
   public static String h(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null)
+    if (TextUtils.isEmpty(jdField_e_of_type_JavaLangString))
     {
-      QLog.d("Q.readinjoy.video", 1, "getVideoFeedsAdConfigFromServer() failed");
-      return null;
+      paramAppRuntime = a(paramAppRuntime, true, true);
+      if (paramAppRuntime == null)
+      {
+        QLog.d("Q.readinjoy.tt_report", 1, "getKandianFollowCount() failed");
+        return null;
+      }
+      jdField_e_of_type_JavaLangString = paramAppRuntime.getString("kandian_user_head_url", null);
     }
-    paramAppRuntime = paramAppRuntime.getString("video_feeds_ad_config", null);
-    QLog.d("Q.readinjoy.tt_report", 1, "getVideoFeedsAdConfigFromServer() result=" + paramAppRuntime);
-    return paramAppRuntime;
+    return jdField_e_of_type_JavaLangString;
   }
   
   public static void h(AppRuntime paramAppRuntime, int paramInt)
@@ -2384,13 +2742,13 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianConfigRedThreshold() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianConfigRedShowNum() failed");
       return;
     }
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("kandian_tabdot_threshold", paramInt);
+    paramAppRuntime.putInt("kandian_tabdot_show_num", paramInt);
     a(paramAppRuntime, true);
-    jdField_d_of_type_Int = paramInt;
+    jdField_c_of_type_Int = paramInt;
   }
   
   public static void h(AppRuntime paramAppRuntime, String paramString)
@@ -2457,27 +2815,29 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianLocalRedShowNum() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigRedThreshold() failed");
       return -1;
     }
-    if (jdField_e_of_type_Int != -1) {
-      return jdField_e_of_type_Int;
+    if (jdField_d_of_type_Int != -1) {
+      return jdField_d_of_type_Int;
     }
-    jdField_e_of_type_Int = paramAppRuntime.getInt("kandian_tabdot_has_show_num", 0);
-    return jdField_e_of_type_Int;
+    jdField_d_of_type_Int = paramAppRuntime.getInt("kandian_tabdot_threshold", 0);
+    return jdField_d_of_type_Int;
   }
   
   public static String i(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null)
+    if (TextUtils.isEmpty(jdField_f_of_type_JavaLangString))
     {
-      QLog.d("Q.readinjoy.video", 1, "getVideoFeedsAdConfigLocal() failed");
-      return null;
+      paramAppRuntime = a(paramAppRuntime, true, true);
+      if (paramAppRuntime == null)
+      {
+        QLog.d("Q.readinjoy.tt_report", 1, "getKandianFollowCount() failed");
+        return null;
+      }
+      jdField_f_of_type_JavaLangString = paramAppRuntime.getString("kandian_user_nick_name", null);
     }
-    paramAppRuntime = paramAppRuntime.getString("video_feeds_ad_local_config", null);
-    QLog.d("Q.readinjoy.tt_report", 1, "getVideoFeedsAdConfigLocal() result=" + paramAppRuntime);
-    return paramAppRuntime;
+    return jdField_f_of_type_JavaLangString;
   }
   
   public static void i(AppRuntime paramAppRuntime, int paramInt)
@@ -2485,13 +2845,13 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianLocalRedShowNum() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianConfigRedThreshold() failed");
       return;
     }
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("kandian_tabdot_has_show_num", paramInt);
+    paramAppRuntime.putInt("kandian_tabdot_threshold", paramInt);
     a(paramAppRuntime, true);
-    jdField_e_of_type_Int = paramInt;
+    jdField_d_of_type_Int = paramInt;
   }
   
   public static void i(AppRuntime paramAppRuntime, String paramString)
@@ -2520,7 +2880,7 @@ public class ReadInJoyHelper
     paramAppRuntime = paramAppRuntime.edit();
     paramAppRuntime.putInt("kandian_biu_word_count", i1);
     a(paramAppRuntime, true);
-    g = i1;
+    jdField_g_of_type_Int = i1;
   }
   
   public static void i(AppRuntime paramAppRuntime, boolean paramBoolean)
@@ -2576,23 +2936,27 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigBiuFeedsSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianLocalRedShowNum() failed");
       return -1;
     }
-    if (f != -1) {
-      return f;
+    if (jdField_e_of_type_Int != -1) {
+      return jdField_e_of_type_Int;
     }
-    f = paramAppRuntime.getInt("kandian_biu_feeds_switch", 0);
-    return f;
+    jdField_e_of_type_Int = paramAppRuntime.getInt("kandian_tabdot_has_show_num", 0);
+    return jdField_e_of_type_Int;
   }
   
   public static String j(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null) {
+    if (paramAppRuntime == null)
+    {
+      QLog.d("Q.readinjoy.video", 1, "getVideoFeedsAdConfigFromServer() failed");
       return null;
     }
-    return paramAppRuntime.getString("native_engine_timeout_config", null);
+    paramAppRuntime = paramAppRuntime.getString("video_feeds_ad_config", null);
+    QLog.d("Q.readinjoy.tt_report", 1, "getVideoFeedsAdConfigFromServer() result=" + paramAppRuntime);
+    return paramAppRuntime;
   }
   
   public static void j(AppRuntime paramAppRuntime, int paramInt)
@@ -2600,13 +2964,13 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianConfigBiuFeedsSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianLocalRedShowNum() failed");
       return;
     }
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("kandian_biu_feeds_switch", paramInt);
+    paramAppRuntime.putInt("kandian_tabdot_has_show_num", paramInt);
     a(paramAppRuntime, true);
-    f = paramInt;
+    jdField_e_of_type_Int = paramInt;
   }
   
   public static void j(AppRuntime paramAppRuntime, String paramString)
@@ -2666,7 +3030,7 @@ public class ReadInJoyHelper
   public static boolean j(AppRuntime paramAppRuntime)
   {
     if (jdField_b_of_type_Int == -1) {
-      ThreadManager.post(new amoe(paramAppRuntime), 8, null, true);
+      ThreadManager.post(new anej(paramAppRuntime), 8, null, true);
     }
     while (jdField_b_of_type_Int == 1) {
       return true;
@@ -2676,17 +3040,30 @@ public class ReadInJoyHelper
   
   public static int k(AppRuntime paramAppRuntime)
   {
-    if (g > 0) {
-      return g;
-    }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigBiuWordCount() failed");
-      return ReadInJoyConstants.jdField_a_of_type_Int;
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigBiuFeedsSwitch() failed");
+      return -1;
     }
-    g = paramAppRuntime.getInt("kandian_biu_word_count", ReadInJoyConstants.jdField_a_of_type_Int);
-    return g;
+    if (jdField_f_of_type_Int != -1) {
+      return jdField_f_of_type_Int;
+    }
+    jdField_f_of_type_Int = paramAppRuntime.getInt("kandian_biu_feeds_switch", 0);
+    return jdField_f_of_type_Int;
+  }
+  
+  public static String k(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null)
+    {
+      QLog.d("Q.readinjoy.video", 1, "getVideoFeedsAdConfigLocal() failed");
+      return null;
+    }
+    paramAppRuntime = paramAppRuntime.getString("video_feeds_ad_local_config", null);
+    QLog.d("Q.readinjoy.tt_report", 1, "getVideoFeedsAdConfigLocal() result=" + paramAppRuntime);
+    return paramAppRuntime;
   }
   
   public static void k(AppRuntime paramAppRuntime, int paramInt)
@@ -2694,13 +3071,13 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianNewChannelStyle() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianConfigBiuFeedsSwitch() failed");
       return;
     }
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt(jdField_a_of_type_JavaLangString, paramInt);
+    paramAppRuntime.putInt("kandian_biu_feeds_switch", paramInt);
     a(paramAppRuntime, true);
-    v = paramInt;
+    jdField_f_of_type_Int = paramInt;
   }
   
   public static void k(AppRuntime paramAppRuntime, String paramString)
@@ -2746,7 +3123,7 @@ public class ReadInJoyHelper
       return;
     }
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putBoolean(jdField_e_of_type_JavaLangString, paramBoolean);
+    paramAppRuntime.putBoolean(jdField_g_of_type_JavaLangString, paramBoolean);
     a(paramAppRuntime, true);
   }
   
@@ -2775,17 +3152,26 @@ public class ReadInJoyHelper
   
   public static int l(AppRuntime paramAppRuntime)
   {
-    if (h > 0) {
-      return h;
+    if (jdField_g_of_type_Int > 0) {
+      return jdField_g_of_type_Int;
     }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigCommentWordCount() failed");
-      return ReadInJoyConstants.jdField_b_of_type_Int;
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigBiuWordCount() failed");
+      return ReadInJoyConstants.jdField_a_of_type_Int;
     }
-    h = paramAppRuntime.getInt("kandian_comment_word_count", ReadInJoyConstants.jdField_b_of_type_Int);
-    return h;
+    jdField_g_of_type_Int = paramAppRuntime.getInt("kandian_biu_word_count", ReadInJoyConstants.jdField_a_of_type_Int);
+    return jdField_g_of_type_Int;
+  }
+  
+  public static String l(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
+      return null;
+    }
+    return paramAppRuntime.getString("native_engine_timeout_config", null);
   }
   
   public static void l(AppRuntime paramAppRuntime, int paramInt)
@@ -2793,12 +3179,13 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.video", 1, "updateVideoChannelCoverStyle() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianNewChannelStyle() failed");
       return;
     }
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("video_channel_cover_style", paramInt);
+    paramAppRuntime.putInt(jdField_a_of_type_JavaLangString, paramInt);
     a(paramAppRuntime, true);
+    w = paramInt;
   }
   
   public static void l(AppRuntime paramAppRuntime, String paramString)
@@ -2863,17 +3250,17 @@ public class ReadInJoyHelper
   
   public static int m(AppRuntime paramAppRuntime)
   {
-    if ((i == 0) || (i == 1)) {
-      return i;
+    if (h > 0) {
+      return h;
     }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigCommentGifSwitch() failed");
-      return 0;
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigCommentWordCount() failed");
+      return ReadInJoyConstants.jdField_b_of_type_Int;
     }
-    i = paramAppRuntime.getInt("kandian_comment_gif_switch", 0);
-    return i;
+    h = paramAppRuntime.getInt("kandian_comment_word_count", ReadInJoyConstants.jdField_b_of_type_Int);
+    return h;
   }
   
   public static void m(AppRuntime paramAppRuntime, int paramInt)
@@ -2881,12 +3268,11 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.video", 1, "updateMultiVideoDynamicRecommmendStrategy() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateVideoChannelCoverStyle() failed");
       return;
     }
-    QLog.d("Q.readinjoy.tt_report", 1, "updateMultiVideoDynamicRecommmendStrategy() num=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("multi_video_dynamic_recommend_strategyid", paramInt);
+    paramAppRuntime.putInt("video_channel_cover_style", paramInt);
     a(paramAppRuntime, true);
   }
   
@@ -2952,17 +3338,17 @@ public class ReadInJoyHelper
   
   public static int n(AppRuntime paramAppRuntime)
   {
-    if ((k == 0) || (k == 1)) {
-      return k;
+    if ((i == 0) || (i == 1)) {
+      return i;
     }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigCommentZhituSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigCommentGifSwitch() failed");
       return 0;
     }
-    k = paramAppRuntime.getInt("kandian_comment_zhitu_switch", 0);
-    return k;
+    i = paramAppRuntime.getInt("kandian_comment_gif_switch", 0);
+    return i;
   }
   
   public static void n(AppRuntime paramAppRuntime, int paramInt)
@@ -2970,12 +3356,12 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.video", 1, "updateMultiVideoDynamicRecommmendDurationLimit() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateMultiVideoDynamicRecommmendStrategy() failed");
       return;
     }
-    QLog.d("Q.readinjoy.tt_report", 1, "updateMultiVideoDynamicRecommmendDurationLimit() num=" + paramInt);
+    QLog.d("Q.readinjoy.tt_report", 1, "updateMultiVideoDynamicRecommmendStrategy() num=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("multi_video_dynamic_recommend_duration_limit", paramInt);
+    paramAppRuntime.putInt("multi_video_dynamic_recommend_strategyid", paramInt);
     a(paramAppRuntime, true);
   }
   
@@ -3050,17 +3436,17 @@ public class ReadInJoyHelper
   
   public static int o(AppRuntime paramAppRuntime)
   {
-    if ((j == 0) || (j == 1)) {
-      return j;
+    if ((k == 0) || (k == 1)) {
+      return k;
     }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianUGCCommentGifSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigCommentZhituSwitch() failed");
       return 0;
     }
-    j = paramAppRuntime.getInt("kandian_ugc_gif_switch", 0);
-    return j;
+    k = paramAppRuntime.getInt("kandian_comment_zhitu_switch", 0);
+    return k;
   }
   
   public static void o(AppRuntime paramAppRuntime, int paramInt)
@@ -3068,12 +3454,12 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.video", 1, "updateMultiVideoDynamicRecommendOperator() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateMultiVideoDynamicRecommmendDurationLimit() failed");
       return;
     }
-    QLog.d("Q.readinjoy.tt_report", 1, "updateMultiVideoDynamicRecommendOperator() num=" + paramInt);
+    QLog.d("Q.readinjoy.tt_report", 1, "updateMultiVideoDynamicRecommmendDurationLimit() num=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("multi_video_dynamic_recommend_operator", paramInt);
+    paramAppRuntime.putInt("multi_video_dynamic_recommend_duration_limit", paramInt);
     a(paramAppRuntime, true);
   }
   
@@ -3130,22 +3516,22 @@ public class ReadInJoyHelper
       QLog.d("Q.readinjoy.tt_report", 1, "getKandianMsgStickFlag() failed");
       return false;
     }
-    return paramAppRuntime.getBoolean(jdField_e_of_type_JavaLangString, false);
+    return paramAppRuntime.getBoolean(jdField_g_of_type_JavaLangString, false);
   }
   
   public static int p(AppRuntime paramAppRuntime)
   {
-    if ((l == 0) || (l == 1)) {
-      return l;
+    if ((j == 0) || (j == 1)) {
+      return j;
     }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigUgcAtSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianUGCCommentGifSwitch() failed");
       return 0;
     }
-    l = paramAppRuntime.getInt("kandian_ugc_at_switch", 0);
-    return l;
+    j = paramAppRuntime.getInt("kandian_ugc_gif_switch", 0);
+    return j;
   }
   
   public static void p(AppRuntime paramAppRuntime, int paramInt)
@@ -3153,12 +3539,12 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.video", 1, "updateVideoDynamicRecommmendStrategy() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateMultiVideoDynamicRecommendOperator() failed");
       return;
     }
-    QLog.d("Q.readinjoy.tt_report", 1, "updateVideoDynamicRecommmendStrategy() num=" + paramInt);
+    QLog.d("Q.readinjoy.tt_report", 1, "updateMultiVideoDynamicRecommendOperator() num=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("video_dynamic_recommend_strategyid", paramInt);
+    paramAppRuntime.putInt("multi_video_dynamic_recommend_operator", paramInt);
     a(paramAppRuntime, true);
   }
   
@@ -3218,17 +3604,17 @@ public class ReadInJoyHelper
   
   public static int q(AppRuntime paramAppRuntime)
   {
-    if ((m == 0) || (m == 1)) {
-      return m;
+    if ((l == 0) || (l == 1)) {
+      return l;
     }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigBiuAtSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigUgcAtSwitch() failed");
       return 0;
     }
-    m = paramAppRuntime.getInt("kandian_biu_at_switch", 0);
-    return m;
+    l = paramAppRuntime.getInt("kandian_ugc_at_switch", 0);
+    return l;
   }
   
   public static void q(AppRuntime paramAppRuntime, int paramInt)
@@ -3236,12 +3622,12 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.video", 1, "updateVideoDynamicRecommmendDurationLimit() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateVideoDynamicRecommmendStrategy() failed");
       return;
     }
-    QLog.d("Q.readinjoy.tt_report", 1, "updateVideoDynamicRecommmendDurationLimit() num=" + paramInt);
+    QLog.d("Q.readinjoy.tt_report", 1, "updateVideoDynamicRecommmendStrategy() num=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("video_dynamic_recommend_duration_limit", paramInt);
+    paramAppRuntime.putInt("video_dynamic_recommend_strategyid", paramInt);
     a(paramAppRuntime, true);
   }
   
@@ -3303,17 +3689,17 @@ public class ReadInJoyHelper
   
   public static int r(AppRuntime paramAppRuntime)
   {
-    if ((n == 0) || (n == 1)) {
-      return n;
+    if ((m == 0) || (m == 1)) {
+      return m;
     }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigBiuProfileAtSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigBiuAtSwitch() failed");
       return 0;
     }
-    n = paramAppRuntime.getInt("kandian_biu_profile_at_switch", 0);
-    return n;
+    m = paramAppRuntime.getInt("kandian_biu_at_switch", 0);
+    return m;
   }
   
   public static void r(AppRuntime paramAppRuntime, int paramInt)
@@ -3321,12 +3707,12 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.video", 1, "updateVideoDynamicRecommendOperator() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateVideoDynamicRecommmendDurationLimit() failed");
       return;
     }
-    QLog.d("Q.readinjoy.tt_report", 1, "updateVideoDynamicRecommendOperator() num=" + paramInt);
+    QLog.d("Q.readinjoy.tt_report", 1, "updateVideoDynamicRecommmendDurationLimit() num=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("video_dynamic_recommend_operator", paramInt);
+    paramAppRuntime.putInt("video_dynamic_recommend_duration_limit", paramInt);
     a(paramAppRuntime, true);
   }
   
@@ -3412,13 +3798,17 @@ public class ReadInJoyHelper
   
   public static int s(AppRuntime paramAppRuntime)
   {
+    if ((n == 0) || (n == 1)) {
+      return n;
+    }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getDianDianConfigRightButtonAtSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigBiuProfileAtSwitch() failed");
       return 0;
     }
-    return paramAppRuntime.getInt("diandian_right_button_at_switch", 0);
+    n = paramAppRuntime.getInt("kandian_biu_profile_at_switch", 0);
+    return n;
   }
   
   public static void s(AppRuntime paramAppRuntime, int paramInt)
@@ -3426,18 +3816,13 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.video", 1, "updateWebRenderConfig() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateVideoDynamicRecommendOperator() failed");
       return;
     }
-    QLog.d("Q.readinjoy.tt_report", 1, "updateWebRenderConfig() value=" + paramInt);
+    QLog.d("Q.readinjoy.tt_report", 1, "updateVideoDynamicRecommendOperator() num=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
-    if (paramInt == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAppRuntime.putBoolean("web_native_render", bool);
-      a(paramAppRuntime, true);
-      return;
-    }
+    paramAppRuntime.putInt("video_dynamic_recommend_operator", paramInt);
+    a(paramAppRuntime, true);
   }
   
   public static void s(AppRuntime paramAppRuntime, String paramString)
@@ -3481,17 +3866,13 @@ public class ReadInJoyHelper
   
   public static int t(AppRuntime paramAppRuntime)
   {
-    if ((o == 0) || (o == 1)) {
-      return o;
-    }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getReadInjoyShareToWxAtSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getDianDianConfigRightButtonAtSwitch() failed");
       return 0;
     }
-    o = paramAppRuntime.getInt("readinjoy_share_to_WX_at_switch", 0);
-    return o;
+    return paramAppRuntime.getInt("diandian_right_button_at_switch", 0);
   }
   
   public static void t(AppRuntime paramAppRuntime, int paramInt)
@@ -3499,15 +3880,15 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.video", 1, "updateWebRenderModeConfig() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateWebRenderConfig() failed");
       return;
     }
-    QLog.d("Q.readinjoy.tt_report", 1, "updateWebRenderModeConfig() value=" + paramInt);
+    QLog.d("Q.readinjoy.tt_report", 1, "updateWebRenderConfig() value=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
     if (paramInt == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      paramAppRuntime.putBoolean("web_native_render_mode_start", bool);
+      paramAppRuntime.putBoolean("web_native_render", bool);
       a(paramAppRuntime, true);
       return;
     }
@@ -3558,17 +3939,17 @@ public class ReadInJoyHelper
   
   public static int u(AppRuntime paramAppRuntime)
   {
-    if ((p == 0) || (p == 1)) {
-      return p;
+    if ((o == 0) || (o == 1)) {
+      return o;
     }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigCommentBiuSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getReadInjoyShareToWxAtSwitch() failed");
       return 0;
     }
-    p = paramAppRuntime.getInt("kandian_comment_biu_switch", 0);
-    return p;
+    o = paramAppRuntime.getInt("readinjoy_share_to_WX_at_switch", 0);
+    return o;
   }
   
   public static void u(AppRuntime paramAppRuntime, int paramInt)
@@ -3576,13 +3957,18 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.video", 1, "updateVideoFeedsShortVideoMaxDrationLimit() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateWebRenderModeConfig() failed");
       return;
     }
-    QLog.d("Q.readinjoy.tt_report", 1, "updateVideoFeedsShortVideoMaxDrationLimit() value=" + paramInt);
+    QLog.d("Q.readinjoy.tt_report", 1, "updateWebRenderModeConfig() value=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("readinjoy_short_video_max_duration_limit", paramInt);
-    a(paramAppRuntime, true);
+    if (paramInt == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramAppRuntime.putBoolean("web_native_render_mode_start", bool);
+      a(paramAppRuntime, true);
+      return;
+    }
   }
   
   public static void u(AppRuntime paramAppRuntime, String paramString)
@@ -3621,17 +4007,17 @@ public class ReadInJoyHelper
   
   public static int v(AppRuntime paramAppRuntime)
   {
-    if ((q == 0) || (q == 1)) {
-      return q;
+    if ((p == 0) || (p == 1)) {
+      return p;
     }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigNativeCommentBiuSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigCommentBiuSwitch() failed");
       return 0;
     }
-    q = paramAppRuntime.getInt("kandian_native_comment_biu_switch", 0);
-    return q;
+    p = paramAppRuntime.getInt("kandian_comment_biu_switch", 0);
+    return p;
   }
   
   public static void v(AppRuntime paramAppRuntime, int paramInt)
@@ -3639,13 +4025,13 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianConfigBadgeSwitch() failed");
+      QLog.d("Q.readinjoy.video", 1, "updateVideoFeedsShortVideoMaxDrationLimit() failed");
       return;
     }
+    QLog.d("Q.readinjoy.tt_report", 1, "updateVideoFeedsShortVideoMaxDrationLimit() value=" + paramInt);
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("kandian_badge_switch", paramInt);
+    paramAppRuntime.putInt("readinjoy_short_video_max_duration_limit", paramInt);
     a(paramAppRuntime, true);
-    w = paramInt;
   }
   
   public static void v(AppRuntime paramAppRuntime, String paramString)
@@ -3679,17 +4065,17 @@ public class ReadInJoyHelper
   
   public static int w(AppRuntime paramAppRuntime)
   {
-    if ((r == 0) || (r == 1)) {
-      return r;
+    if ((q == 0) || (q == 1)) {
+      return q;
     }
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigCommentAtSwitch() failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigNativeCommentBiuSwitch() failed");
       return 0;
     }
-    r = paramAppRuntime.getInt("kandian_comment_at_switch", 0);
-    return r;
+    q = paramAppRuntime.getInt("kandian_native_comment_biu_switch", 0);
+    return q;
   }
   
   public static void w(AppRuntime paramAppRuntime, int paramInt)
@@ -3697,12 +4083,13 @@ public class ReadInJoyHelper
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianDeleteOutDateArticleInterval failed");
+      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianConfigBadgeSwitch() failed");
       return;
     }
     paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putInt("kandian_delete_outdate_article_feeds_cnt", paramInt);
+    paramAppRuntime.putInt("kandian_badge_switch", paramInt);
     a(paramAppRuntime, true);
+    x = paramInt;
   }
   
   public static void w(AppRuntime paramAppRuntime, String paramString)
@@ -3721,6 +4108,48 @@ public class ReadInJoyHelper
   
   public static int x(AppRuntime paramAppRuntime)
   {
+    if ((r == 0) || (r == 1)) {
+      return r;
+    }
+    paramAppRuntime = a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null)
+    {
+      QLog.d("Q.readinjoy.tt_report", 1, "getKandianConfigCommentAtSwitch() failed");
+      return 0;
+    }
+    r = paramAppRuntime.getInt("kandian_comment_at_switch", 0);
+    return r;
+  }
+  
+  public static void x(AppRuntime paramAppRuntime, int paramInt)
+  {
+    paramAppRuntime = a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null)
+    {
+      QLog.d("Q.readinjoy.tt_report", 1, "updateKandianDeleteOutDateArticleInterval failed");
+      return;
+    }
+    paramAppRuntime = paramAppRuntime.edit();
+    paramAppRuntime.putInt("kandian_delete_outdate_article_feeds_cnt", paramInt);
+    a(paramAppRuntime, true);
+  }
+  
+  public static void x(AppRuntime paramAppRuntime, String paramString)
+  {
+    Object localObject = a(paramAppRuntime, true, true);
+    if (localObject == null)
+    {
+      QLog.d("Q.readinjoy.video", 1, "updateVideoFeedsAdConfigFromServer() failed");
+      return;
+    }
+    QLog.d("Q.readinjoy.tt_report", 1, "updateVideoFeedsAdConfigFromServer() value=" + paramString);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putString("readinjoy_my_tab_setting" + paramAppRuntime.getAccount(), paramString);
+    a((SharedPreferences.Editor)localObject, true);
+  }
+  
+  public static int y(AppRuntime paramAppRuntime)
+  {
     if (s > 0) {
       return s;
     }
@@ -3734,7 +4163,7 @@ public class ReadInJoyHelper
     return s;
   }
   
-  public static void x(AppRuntime paramAppRuntime, int paramInt)
+  public static void y(AppRuntime paramAppRuntime, int paramInt)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null) {
@@ -3750,7 +4179,7 @@ public class ReadInJoyHelper
     QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "updateVideoFeedsUserGuideShowCount newCount = " + paramInt);
   }
   
-  public static void x(AppRuntime paramAppRuntime, String paramString)
+  public static void y(AppRuntime paramAppRuntime, String paramString)
   {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
@@ -3764,22 +4193,37 @@ public class ReadInJoyHelper
     a(paramAppRuntime, true);
   }
   
-  public static int y(AppRuntime paramAppRuntime)
+  public static int z(AppRuntime paramAppRuntime)
   {
-    if (t > 0) {
-      return t;
+    if (v == -1)
+    {
+      paramAppRuntime = a(paramAppRuntime, true, true);
+      if (paramAppRuntime == null)
+      {
+        QLog.d("Q.readinjoy.tt_report", 1, "getKandianFollowCount() failed");
+        return -1;
+      }
+      v = paramAppRuntime.getInt("kandian_user_is_vip", -1);
     }
+    return v;
+  }
+  
+  public static void z(AppRuntime paramAppRuntime, int paramInt)
+  {
     paramAppRuntime = a(paramAppRuntime, true, true);
     if (paramAppRuntime == null)
     {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianFollowCount() failed");
-      return 0;
+      QLog.d("ReadInJoyHelper", 2, "increaseUgcDeliverVideoTipsShowCount: sp is null");
+      return;
     }
-    t = paramAppRuntime.getInt("kandian_user_follow_count", 0);
-    return t;
+    SharedPreferences.Editor localEditor = paramAppRuntime.edit();
+    paramInt = paramAppRuntime.getInt("ugc_deliver_video_tips_show_count", 0) + paramInt;
+    localEditor.putInt("ugc_deliver_video_tips_show_count", paramInt);
+    a(localEditor, true);
+    QLog.d("ReadInJoyHelper", 2, "increaseUgcDeliverVideoTipsShowCount: success, newCount = " + paramInt);
   }
   
-  public static void y(AppRuntime paramAppRuntime, String paramString)
+  public static void z(AppRuntime paramAppRuntime, String paramString)
   {
     if (paramString != null)
     {
@@ -3800,32 +4244,6 @@ public class ReadInJoyHelper
     }
     q(paramAppRuntime, false);
     r(paramAppRuntime, false);
-  }
-  
-  public static int z(AppRuntime paramAppRuntime)
-  {
-    if (u > 0) {
-      return u;
-    }
-    paramAppRuntime = a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null)
-    {
-      QLog.d("Q.readinjoy.tt_report", 1, "getKandianFansCount() failed");
-      return 0;
-    }
-    u = paramAppRuntime.getInt("kandian_user_fans_count", 0);
-    return u;
-  }
-  
-  public static void z(AppRuntime paramAppRuntime, String paramString)
-  {
-    paramAppRuntime = a(paramAppRuntime, true, true);
-    if (paramAppRuntime == null) {
-      return;
-    }
-    paramAppRuntime = paramAppRuntime.edit();
-    paramAppRuntime.putString("native_engine_timeout_config", paramString);
-    a(paramAppRuntime, true);
   }
 }
 

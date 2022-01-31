@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 
 public class sgj
   implements Runnable
 {
-  public sgj(DevlockPushActivity paramDevlockPushActivity) {}
+  public sgj(Conversation paramConversation) {}
   
   public void run()
   {
-    try
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing()))
-      {
-        this.a.a.dismiss();
-        this.a.a.cancel();
-      }
-      this.a.a = null;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    ReadInJoyUtils.a(this.a.a.getMeasuredHeight(), this.a.a.getResources());
   }
 }
 

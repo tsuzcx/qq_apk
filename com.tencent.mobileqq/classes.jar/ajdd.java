@@ -1,41 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfoManager;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
-import com.tencent.mobileqq.troop.utils.TroopTopicObserver;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.troop.data.TroopAioTips;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajdd
-  implements Runnable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public ajdd(TroopTopicMgr paramTroopTopicMgr, String paramString, long paramLong1, long paramLong2) {}
+  public ajdd(TroopAioTips paramTroopAioTips) {}
   
-  public void run()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    Object localObject = TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-    TroopTopicDetailInfo localTroopTopicDetailInfo = (TroopTopicDetailInfo)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-    localObject = localTroopTopicDetailInfo;
-    if (localTroopTopicDetailInfo == null)
-    {
-      localObject = new TroopTopicDetailInfo();
-      ((TroopTopicDetailInfo)localObject).troopUin = this.jdField_a_of_type_JavaLangString;
-      ((TroopTopicDetailInfo)localObject).msgSeq = this.jdField_a_of_type_Long;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
     }
-    ((TroopTopicDetailInfo)localObject).pVersion = this.b;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b((TroopTopicDetailInfo)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfoManager.a((TroopTopicDetailInfo)localObject, true);
-    localObject = new Bundle();
-    ((Bundle)localObject).putInt("ret", 0);
-    ((Bundle)localObject).putString("troopUin", this.jdField_a_of_type_JavaLangString);
-    ((Bundle)localObject).putLong("msgSeq", this.jdField_a_of_type_Long);
-    ((Bundle)localObject).putLong("pVersion", this.b);
-    TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).notifyObservers(TroopTopicObserver.class, 3, true, (Bundle)localObject);
+    if (paramFloat2 < -10.0F) {}
+    for (;;)
+    {
+      return false;
+      if (paramFloat2 <= 10.0F) {}
+    }
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdd
  * JD-Core Version:    0.7.0.1
  */

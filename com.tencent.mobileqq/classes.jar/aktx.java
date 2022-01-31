@@ -1,34 +1,48 @@
-import com.tencent.open.wadl.WLog;
-import com.tencent.open.wadl.WadlJsBridge;
-import com.tencent.tmassistantbase.util.GlobalUtil;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
 
 public class aktx
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aktx(WadlJsBridge paramWadlJsBridge) {}
+  private aktx(DraggableGridView paramDraggableGridView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
+    int i = 0;
+    while (i < DraggableGridView.a(this.a).getChildCount())
     {
-      WLog.b("WadlJsBridge", "initYYBSDKService start restoreTaskFromYYB=false");
-      GlobalUtil.getInstance().setContext(WadlJsBridge.a(this.a));
-      return;
+      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
+      if ((paramAnimation instanceof GridView))
+      {
+        paramAnimation = (GridView)paramAnimation;
+        int j = 0;
+        while (j < paramAnimation.getChildCount())
+        {
+          paramAnimation.getChildAt(j).clearAnimation();
+          paramAnimation.getChildAt(j).setPressed(false);
+          paramAnimation.getChildAt(j).setVisibility(0);
+          j += 1;
+        }
+      }
+      i += 1;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return;
-    }
-    finally
-    {
-      WLog.b("WadlJsBridge", "initYYBSDKService end");
-    }
+    this.a.b();
+    DraggableGridView.b(this.a, false);
+    DraggableGridView.c(this.a, false);
+    DraggableGridView.a(this.a).notifyDataSetChanged();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aktx
  * JD-Core Version:    0.7.0.1
  */

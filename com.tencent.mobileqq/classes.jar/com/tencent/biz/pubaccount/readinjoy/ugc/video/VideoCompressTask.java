@@ -21,7 +21,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
 import java.io.File;
 import java.util.HashMap;
-import lyj;
+import lzj;
 
 public class VideoCompressTask
   extends AsyncTask
@@ -58,7 +58,7 @@ public class VideoCompressTask
     if (paramInt1 <= paramInt2)
     {
       i = ReadInJoyConstants.c;
-      paramInt1 = ReadInJoyHelper.x(BaseApplicationImpl.getApplication().getRuntime());
+      paramInt1 = ReadInJoyHelper.y(BaseApplicationImpl.getApplication().getRuntime());
       if (paramInt1 <= 0) {
         break label80;
       }
@@ -136,8 +136,8 @@ public class VideoCompressTask
             QLog.d("ReadInJoyUploadVideoCompressTask", 2, "CompressTask, step: Try to compress using MediaCodec");
           }
           localObject1 = new File(paramString);
-          localObject2 = new lyj(this, str2, (int)(localCompressConfig.jdField_b_of_type_Long * 1024L), (int)localCompressConfig.jdField_a_of_type_Long, 0L, l1);
-          if ((!new VideoConverter().a((File)localObject1, (VideoConverter.Processor)localObject2, true)) || (((lyj)localObject2).a != null)) {
+          localObject2 = new lzj(this, str2, (int)(localCompressConfig.jdField_b_of_type_Long * 1024L), (int)localCompressConfig.jdField_a_of_type_Long, 0L, l1);
+          if ((!new VideoConverter().a((File)localObject1, (VideoConverter.Processor)localObject2, true)) || (((lzj)localObject2).a != null)) {
             continue;
           }
           if (QLog.isColorLevel()) {

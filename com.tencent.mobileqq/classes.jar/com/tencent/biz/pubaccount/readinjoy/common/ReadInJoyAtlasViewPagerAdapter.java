@@ -34,7 +34,7 @@ import com.tencent.widget.Gallery;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lkq;
+import lkm;
 import tencent.im.oidb.gallery.gallery.GalleryInfo;
 import tencent.im.oidb.gallery.gallery.PictureInfo;
 
@@ -44,7 +44,7 @@ public class ReadInJoyAtlasViewPagerAdapter
 {
   public static final String a;
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new lkq(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new lkm(this);
   public ReadInJoyAtlasAdapter a;
   private ReadInJoyAtlasViewPagerAdapter.OnChildGalleryEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter$OnChildGalleryEventListener;
   public Gallery a;
@@ -101,16 +101,16 @@ public class ReadInJoyAtlasViewPagerAdapter
         ((gallery.PictureInfo)localObject1).bytes_pic_url.set(ByteStringMicro.copyFromUtf8((String)localObject2));
       }
       localObject1 = new AtlasModelImage(((gallery.GalleryInfo)localObject3).bytes_row_key.get().toStringUtf8(), (gallery.PictureInfo)localObject1);
-      localObject2 = LayoutInflater.from(paramContext).inflate(2130969546, paramViewGroup, false);
+      localObject2 = LayoutInflater.from(paramContext).inflate(2130969553, paramViewGroup, false);
       if (i != 0) {
         ((View)localObject2).setPadding(((View)localObject2).getPaddingLeft(), DisplayUtil.a(paramContext, 15.0F), ((View)localObject2).getPaddingRight(), ((View)localObject2).getPaddingBottom());
       }
-      Object localObject4 = (LinearLayout)((View)localObject2).findViewById(2131366883);
+      Object localObject4 = (LinearLayout)((View)localObject2).findViewById(2131366925);
       a(paramViewGroup, (LinearLayout)localObject4, (AtlasModelImage)localObject1, (gallery.GalleryInfo)localObject3, i);
-      ((LinearLayout)localObject4).setTag(2131362465, localObject3);
-      ((LinearLayout)localObject4).setTag(2131362466, Integer.valueOf(i));
+      ((LinearLayout)localObject4).setTag(2131362469, localObject3);
+      ((LinearLayout)localObject4).setTag(2131362470, Integer.valueOf(i));
       ((LinearLayout)localObject4).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localObject3 = (LinearLayout)((View)localObject2).findViewById(2131366884);
+      localObject3 = (LinearLayout)((View)localObject2).findViewById(2131366926);
       if (i + 1 < j)
       {
         localObject4 = (gallery.GalleryInfo)paramAtlasModelRecommend.recommendGalleryList.get(i + 1);
@@ -126,8 +126,8 @@ public class ReadInJoyAtlasViewPagerAdapter
         }
         localObject1 = new AtlasModelImage(str1, (gallery.PictureInfo)localObject1);
         a(paramViewGroup, (LinearLayout)localObject3, (AtlasModelImage)localObject1, (gallery.GalleryInfo)localObject4, i + 1);
-        ((LinearLayout)localObject3).setTag(2131362465, localObject4);
-        ((LinearLayout)localObject3).setTag(2131362466, Integer.valueOf(i + 1));
+        ((LinearLayout)localObject3).setTag(2131362469, localObject4);
+        ((LinearLayout)localObject3).setTag(2131362470, Integer.valueOf(i + 1));
         ((LinearLayout)localObject3).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
       for (;;)
@@ -179,8 +179,8 @@ public class ReadInJoyAtlasViewPagerAdapter
   {
     paramLinearLayout.setVisibility(0);
     URLImageView localURLImageView = (URLImageView)paramLinearLayout.findViewById(2131361846);
-    TextView localTextView = (TextView)paramLinearLayout.findViewById(2131365632);
-    paramLinearLayout = (TextView)paramLinearLayout.findViewById(2131366886);
+    TextView localTextView = (TextView)paramLinearLayout.findViewById(2131365659);
+    paramLinearLayout = (TextView)paramLinearLayout.findViewById(2131366928);
     a(paramViewGroup, localURLImageView, paramAtlasModelImage.pictureInfo.bytes_pic_url.get().toStringUtf8());
     localTextView.setText(paramAtlasModelImage.pictureInfo.bytes_pic_desc.get().toStringUtf8());
     paramLinearLayout.setText(paramGalleryInfo.uint64_pic_count.get() + "图");
@@ -308,6 +308,10 @@ public class ReadInJoyAtlasViewPagerAdapter
       }
       this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasAdapter);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasAdapter.a(((AtlasModelImageList)localObject).imageList);
+      localObject = (ViewGroup)this.jdField_a_of_type_ComTencentWidgetGallery.getParent();
+      if (localObject != null) {
+        ((ViewGroup)localObject).removeView(this.jdField_a_of_type_ComTencentWidgetGallery);
+      }
       paramViewGroup.addView(this.jdField_a_of_type_ComTencentWidgetGallery);
       return this.jdField_a_of_type_ComTencentWidgetGallery;
     }

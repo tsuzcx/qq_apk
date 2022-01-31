@@ -315,7 +315,7 @@ public class AvatarPendantJsPlugin
       label291:
       Object localObject1 = this.mRuntime.a(this.mRuntime.a());
       if ((localObject1 != null) && ((localObject1 instanceof WebUiUtils.WebTitleBarInterface))) {
-        QQToast.a(this.mRuntime.a(), 2131435908, 0).b(((WebUiUtils.WebTitleBarInterface)localObject1).b());
+        QQToast.a(this.mRuntime.a(), 2131435925, 0).b(((WebUiUtils.WebTitleBarInterface)localObject1).b());
       }
       paramBundle.put("result", 1001);
       continue;
@@ -416,7 +416,7 @@ public class AvatarPendantJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin
  * JD-Core Version:    0.7.0.1
  */

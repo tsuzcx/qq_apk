@@ -1,25 +1,106 @@
-import QQService.CARDSETTYPE;
-import SummaryCardTaf.SSummaryCardSetReq;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudFileUploadCallback;
+import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
+import com.tencent.mobileqq.ocr.OcrControl;
+import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
+import com.tencent.mobileqq.ocr.data.ARCloudOcrResult;
+import com.tencent.mobileqq.ocr.data.ARCloudOcrResult.JDSearchResult;
+import com.tencent.mobileqq.ocr.data.ARCloudOcrResult.YoutuOcrResult;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class agbt
-  implements Runnable
+  implements ARCloudFileUpload.ARCloudFileUploadCallback
 {
-  public agbt(VipProfileCardBaseActivity paramVipProfileCardBaseActivity, long paramLong1, long paramLong2, String paramString, int paramInt) {}
+  public agbt(OcrControl paramOcrControl) {}
   
-  public void run()
+  public void a(int paramInt, String paramString, ARCloudRecogResult paramARCloudRecogResult)
   {
-    Object localObject = new SSummaryCardSetReq(2, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity.app.getCurrentAccountUin()), 0L, "7.6.0", 109L, this.jdField_a_of_type_Long, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null, null);
-    UniPacket localUniPacket = new UniPacket(true);
-    localUniPacket.setEncodeName("utf-8");
-    localUniPacket.setFuncName("set");
-    localUniPacket.setServantName("MCardSvc");
-    localUniPacket.put("req", localObject);
-    localObject = localUniPacket.encode();
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity.a.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardBaseActivity.app.getCurrentAccountUin(), CARDSETTYPE.TYPE_SET_TEMPLATE.value(), (byte)0, null, null, null, null, (byte[])localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.control", 2, "retCode:" + paramInt + ",sessionId:" + paramString + ",recogResult:" + paramARCloudRecogResult);
+    }
+    paramString = OcrControl.a(this.a, paramString);
+    long l = 0L;
+    if (paramString != null) {
+      l = System.currentTimeMillis() - paramString.c;
+    }
+    int n = -1;
+    int i1 = -1;
+    int i2 = -1;
+    int i3 = -1;
+    int i = i1;
+    int j = n;
+    int k = i3;
+    int m = i2;
+    if (paramString != null)
+    {
+      i = i1;
+      j = n;
+      k = i3;
+      m = i2;
+      if (paramString.a != null)
+      {
+        if ((paramInt != 0) || (paramARCloudRecogResult == null) || (paramARCloudRecogResult.a == null)) {
+          break label345;
+        }
+        paramARCloudRecogResult = paramARCloudRecogResult.a;
+        OcrRecogResult localOcrRecogResult = paramARCloudRecogResult.a();
+        if (OcrControl.a(this.a) != null) {
+          OcrControl.a(this.a).a(0, localOcrRecogResult, paramString.a.b, l);
+        }
+        if ((localOcrRecogResult != null) && ((this.a.a == 1) || (this.a.a == 2))) {
+          ThreadManager.postImmediately(new agbu(this, localOcrRecogResult, paramString), null, false);
+        }
+        if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult == null) {
+          break label422;
+        }
+        i = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.a;
+        j = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.b;
+      }
+    }
+    for (;;)
+    {
+      if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult != null)
+      {
+        k = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult.a;
+        m = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult.b;
+      }
+      for (;;)
+      {
+        n = m;
+        i1 = j;
+        m = k;
+        k = n;
+        j = i;
+        i = i1;
+        for (;;)
+        {
+          ThreadManager.postImmediately(new agbv(this, paramString), null, false);
+          ThreadManager.post(new agbw(this, j, i, m, k, paramInt), 5, null, false);
+          return;
+          label345:
+          i = i1;
+          j = n;
+          k = i3;
+          m = i2;
+          if (OcrControl.a(this.a) != null)
+          {
+            OcrControl.a(this.a).a(3, null, paramString.a.b, l);
+            i = i1;
+            j = n;
+            k = i3;
+            m = i2;
+          }
+        }
+        m = -1;
+        k = -1;
+      }
+      label422:
+      j = -1;
+      i = -1;
+    }
   }
 }
 

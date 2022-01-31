@@ -1,23 +1,15 @@
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper.GenerateManifestCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.EditVideoQzComment;
 
 public class xom
-  implements QQStoryTakeVideoHelper.GenerateManifestCallback
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public xom(NewFlowCameraActivity paramNewFlowCameraActivity, long paramLong, int paramInt) {}
+  public xom(EditVideoQzComment paramEditVideoQzComment) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    SLog.c("PTV.NewFlowCameraActivity", "generate manifest file success. cost = " + (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.post(new xon(this));
-  }
-  
-  public void b()
-  {
-    SLog.e("PTV.NewFlowCameraActivity", "generate manifest file failed. cost = " + (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    EditVideoQzComment.a(this.a).a = paramBoolean;
   }
 }
 

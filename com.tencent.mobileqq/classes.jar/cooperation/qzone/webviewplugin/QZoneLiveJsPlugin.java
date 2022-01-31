@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import amlj;
-import amlk;
+import anbo;
+import anbp;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
@@ -71,10 +71,10 @@ public class QZoneLiveJsPlugin
         this.a.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
         return false;
       }
-      PluginManagerHelper.getPluginInterface(paramString2, new amlj(this, paramString1, paramJsBridgeListener, bool));
+      PluginManagerHelper.getPluginInterface(paramString2, new anbo(this, paramString1, paramJsBridgeListener, bool));
       return false;
     } while ((!paramString2.equals("qzone_live_video_plugin_hack.apk")) || (TextUtils.isEmpty(paramJsBridgeListener)));
-    QZonePluginMangerHelper.a(BaseApplicationImpl.getContext(), new amlk(this, paramString1, bool, paramJsBridgeListener));
+    QZonePluginMangerHelper.a(BaseApplicationImpl.getContext(), new anbp(this, paramString1, bool, paramJsBridgeListener));
     return false;
   }
 }

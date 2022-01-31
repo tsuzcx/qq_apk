@@ -1,31 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
 
-public final class ngl
-  implements Parcelable.Creator
+public class ngl
+  extends UploadImageJob
 {
-  public StoryPushMsg a(Parcel paramParcel)
-  {
-    int i = paramParcel.readInt();
-    Object localObject = paramParcel.readString();
-    String str1 = paramParcel.readString();
-    long l = paramParcel.readLong();
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    int j = paramParcel.readInt();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    paramParcel = paramParcel.readBundle();
-    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
-    ((StoryPushMsg)localObject).a = paramParcel;
-    return localObject;
-  }
+  public ngl(ShareModeBase paramShareModeBase, ShareQZoneData paramShareQZoneData) {}
   
-  public StoryPushMsg[] a(int paramInt)
+  public boolean b()
   {
-    return new StoryPushMsg[paramInt];
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

@@ -1,39 +1,45 @@
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView.OnEndScrollListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class kps
-  implements Runnable
+  implements AccountDetailXListView.OnEndScrollListener
 {
-  public kps(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public kps(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "updateFollowInfo");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null)
+    float f;
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
     {
-      this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-      EqqAccountDetailActivity.b(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-      this.a.d();
-      EnterpriseQQManager.a(EqqAccountDetailActivity.g(this.a)).a(EqqAccountDetailActivity.f(this.a), this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
-      if (EqqAccountDetailActivity.a(this.a) != null) {
-        break label130;
+      paramInt = -this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
+      }
+      f = 150.0F * this.a.jdField_a_of_type_Float;
+      if (paramInt != 0)
+      {
+        if (!this.a.e) {
+          break label127;
+        }
+        if (paramInt <= f) {
+          break label119;
+        }
+        this.a.d(paramInt);
       }
     }
-    for (;;)
+    return;
+    label119:
+    this.a.e();
+    return;
+    label127:
+    if (paramInt > this.a.o - f)
     {
-      if (i != 0) {
-        EqqAccountDetailActivity.b(this.a, new kpt(this));
-      }
+      this.a.d(paramInt);
       return;
-      label130:
-      i = 0;
     }
+    this.a.e();
   }
 }
 

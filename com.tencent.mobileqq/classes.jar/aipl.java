@@ -1,64 +1,155 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateInfo;
+import com.tencent.mobileqq.transfile.BaseTransFileController;
+import com.tencent.mobileqq.transfile.BaseTransFileController.ProcHandler;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class aipl
-  implements Runnable
+public abstract class aipl
 {
-  aipl(aipk paramaipk, String paramString, TroopInfo paramTroopInfo, int paramInt) {}
+  protected long a;
+  private aipl jdField_a_of_type_Aipl;
+  protected String a;
+  protected AtomicBoolean a;
+  private aipl[] jdField_a_of_type_ArrayOfAipl;
+  protected AtomicBoolean b = new AtomicBoolean(false);
   
-  public void run()
+  aipl(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
   {
-    ((TroopHandler)this.jdField_a_of_type_Aipk.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(this.jdField_a_of_type_JavaLangString, (byte)1, 0L, 0);
-    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_Aipk.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
-    if (localTroopInfo == null) {
-      localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_JavaLangString = "ForwardStep";
+  }
+  
+  public void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|doStep");
     }
-    for (;;)
+    if ((this.jdField_a_of_type_ArrayOfAipl != null) && (this.jdField_a_of_type_ArrayOfAipl.length > 0))
     {
-      Object localObject;
-      int j;
-      int i;
-      if (localTroopInfo != null)
-      {
-        localTroopInfo.dwGroupClassExt = this.jdField_a_of_type_Aipk.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_Int;
-        localTroopInfo.mRichFingerMemo = this.jdField_a_of_type_Aipk.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.d;
-        localObject = this.jdField_a_of_type_Aipk.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.e.split("\\|");
-        if (localObject.length != 4) {
-          break label260;
-        }
-        j = (int)(Float.valueOf(localObject[1]).floatValue() * 1000000.0F);
-        i = (int)(Float.valueOf(localObject[2]).floatValue() * 1000000.0F);
-      }
+      aipl[] arrayOfaipl = this.jdField_a_of_type_ArrayOfAipl;
+      int m = arrayOfaipl.length;
+      int j = 0;
+      int i = 1;
       for (;;)
       {
-        localTroopInfo.troopLat = j;
-        localTroopInfo.troopLon = i;
-        localTroopInfo.isNewTroop = true;
-        localTroopInfo.hasSetNewTroopHead = false;
-        localTroopInfo.hasSetNewTroopName = false;
-        localTroopInfo.wMemberNum = this.jdField_a_of_type_Int;
-        localTroopInfo.wMemberNumClient = localTroopInfo.wMemberNum;
-        localTroopInfo.troopowneruin = this.jdField_a_of_type_Aipk.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        localTroopInfo.troopCreateTime = (System.currentTimeMillis() / 1000L);
-        localObject = (TroopManager)this.jdField_a_of_type_Aipk.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-        if (localObject != null) {
-          ((TroopManager)localObject).b(localTroopInfo);
+        k = i;
+        if (j >= m) {
+          break;
         }
-        return;
-        label260:
-        i = 0;
-        j = 0;
+        aipl localaipl = arrayOfaipl[j];
+        if (QLog.isDevelopLevel()) {
+          QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|finished=" + localaipl.a() + ",processing=" + localaipl.b());
+        }
+        if (!localaipl.a())
+        {
+          if (!localaipl.b()) {
+            localaipl.a();
+          }
+          i = 0;
+        }
+        j += 1;
       }
     }
+    int k = 1;
+    if ((k != 0) && (!a()) && (!b()))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      d();
+    }
+  }
+  
+  public void a(aipl[] paramArrayOfaipl)
+  {
+    this.jdField_a_of_type_ArrayOfAipl = paramArrayOfaipl;
+    if ((this.jdField_a_of_type_ArrayOfAipl != null) && (this.jdField_a_of_type_ArrayOfAipl.length > 0))
+    {
+      paramArrayOfaipl = this.jdField_a_of_type_ArrayOfAipl;
+      int j = paramArrayOfaipl.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramArrayOfaipl[i].jdField_a_of_type_Aipl = this;
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  void b()
+  {
+    long l = 0L;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|doNextStep");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Long != 0L) {
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, this.jdField_a_of_type_JavaLangString + "|finished,cost=" + l);
+    }
+    if ((this.jdField_a_of_type_Aipl != null) && (!this.b.get())) {
+      this.jdField_a_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.a.post(new aipm(this));
+    }
+  }
+  
+  protected boolean b()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  void c()
+  {
+    long l = 0L;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Long != 0L) {
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    }
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.jdField_a_of_type_JavaLangString + "|doError,cost=" + l);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.d();
+  }
+  
+  protected abstract void d();
+  
+  public void e()
+  {
+    if (a()) {}
+    for (;;)
+    {
+      return;
+      this.b.set(true);
+      if ((this.jdField_a_of_type_ArrayOfAipl != null) && (this.jdField_a_of_type_ArrayOfAipl.length > 0))
+      {
+        aipl[] arrayOfaipl = this.jdField_a_of_type_ArrayOfAipl;
+        int j = arrayOfaipl.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfaipl[i].e();
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  protected void f()
+  {
+    long l = 0L;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Long != 0L) {
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    }
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.jdField_a_of_type_JavaLangString + "|doCancel,cost=" + l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipl
  * JD-Core Version:    0.7.0.1
  */

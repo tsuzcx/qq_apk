@@ -1,45 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
 import java.lang.ref.WeakReference;
 
 public class jfu
-  extends Handler
+  implements Runnable
 {
-  WeakReference a;
+  public jfu(MagicfaceBaseDecoder paramMagicfaceBaseDecoder, String paramString, int paramInt) {}
   
-  public jfu(EffectConfigBase paramEffectConfigBase)
+  public void run()
   {
-    this.a = new WeakReference(paramEffectConfigBase);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    EffectConfigBase localEffectConfigBase;
-    if (this.a.get() != null) {
-      localEffectConfigBase = (EffectConfigBase)this.a.get();
+    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a.get();
+    if (localMagicPlayListener != null) {
+      localMagicPlayListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      localEffectConfigBase.a(paramMessage);
-      return;
-    case 0: 
-      EffectConfigBase.a(localEffectConfigBase, (EffectConfigBase.ItemBase)paramMessage.obj);
-      return;
-    case 1: 
-      EffectConfigBase.ItemBase localItemBase = (EffectConfigBase.ItemBase)paramMessage.obj;
-      if (paramMessage.arg1 == 1) {}
-      for (;;)
-      {
-        EffectConfigBase.a(localEffectConfigBase, localItemBase, bool);
-        return;
-        bool = false;
-      }
-    }
-    EffectConfigBase.a(localEffectConfigBase, (EffectConfigBase.ItemBase)paramMessage.obj, paramMessage.arg1);
   }
 }
 

@@ -1,48 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
 
 public class xad
-  implements IRedPacket.OnGetSkinListener
+  implements View.OnClickListener
 {
-  public xad(CommonHbFragment paramCommonHbFragment) {}
+  public xad(PayCodeEntryActivity paramPayCodeEntryActivity) {}
   
-  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
+  public void onClick(View paramView)
   {
-    HbSkinInfo localHbSkinInfo = HbSkinInfo.a(CommonHbFragment.a(this.a), paramRedPacketInfoBase.skinId);
-    List localList;
-    if (localHbSkinInfo != null)
-    {
-      localList = CommonHbFragment.a(this.a).getList();
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonHbFragment", 2, "redl iscache = " + HbSkinInfo.jdField_a_of_type_Boolean + " info.iscache = " + paramRedPacketInfoBase.isCache);
-      }
-      if ((HbSkinInfo.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localHbSkinInfo))) {
-        break label110;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonHbFragment", 2, "no add in list...");
-      }
-    }
-    label110:
-    while ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
-      paramRedPacketInfoBase.title = CommonHbFragment.e(this.a);
-    }
-    localHbSkinInfo.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = paramRedPacketInfoBase;
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonHbFragment", 2, "redl add to list show!");
-    }
-    localList.add(localHbSkinInfo);
-    HbSkinInfo.a(localList);
-    CommonHbFragment.a(this.a).notifyDataSetChanged();
+    this.a.a("payCodeEntry.payCode", "actQQWlxclick", "0001");
+    PayCodeEntryActivity.b(this.a);
   }
 }
 

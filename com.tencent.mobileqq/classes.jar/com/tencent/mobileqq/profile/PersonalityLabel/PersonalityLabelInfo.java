@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agan;
+import agop;
 import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -24,7 +24,7 @@ import tencent.im.label.comm.PersonalityTagComm.PraiseUserInfo;
 public class PersonalityLabelInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agan();
+  public static final Parcelable.Creator CREATOR = new agop();
   public static final String TAG = "PersonalityLabelInfo";
   int addTime = 0;
   public int bgColor = -16777216;

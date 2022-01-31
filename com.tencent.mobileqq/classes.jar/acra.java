@@ -1,58 +1,23 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.FileEntitySearchResultModel;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchFragment;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchResultPresenter;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.SearchResultView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
 
 public class acra
-  extends BaseMvpFaceAdapter
+  implements Runnable
 {
-  public acra(FileSearchFragment paramFileSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder, List paramList, String paramString, QQAppInterface paramQQAppInterface)
+  public acra(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView, int paramInt1, int paramInt2) {}
+  
+  public void run()
   {
-    super(paramListView, paramFaceDecoder);
-    if (paramList == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.a != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.a.a(this.jdField_a_of_type_Int);
+      if (this.b - 2 >= 0) {}
+    }
+    else
+    {
       return;
     }
-    if (paramList.size() == 1)
-    {
-      paramFileSearchFragment = (FileEntitySearchResultModel)paramList.get(0);
-      if (paramFileSearchFragment.jdField_a_of_type_JavaUtilList.size() > 1)
-      {
-        paramListView = new ArrayList();
-        paramFaceDecoder = paramFileSearchFragment.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramFaceDecoder.hasNext())
-        {
-          paramList = (FileManagerEntity)paramFaceDecoder.next();
-          paramString = new FileEntitySearchResultModel();
-          paramString.jdField_a_of_type_JavaLangString = paramFileSearchFragment.jdField_a_of_type_JavaLangString;
-          paramString.jdField_a_of_type_JavaUtilList.add(paramList);
-          paramListView.add(paramString);
-        }
-        a(paramListView);
-        return;
-      }
-    }
-    a(paramList);
-  }
-  
-  protected IPresenter a(int paramInt)
-  {
-    return new FileSearchResultPresenter(FileSearchFragment.a(this.a));
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new SearchResultView(paramViewGroup, 2130971489);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.a.a(this.jdField_a_of_type_Int, this.b - 2, true);
   }
 }
 

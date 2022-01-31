@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-class ztk
-  implements Runnable
+public final class ztk
+  implements Comparator
 {
-  ztk(ztj paramztj) {}
-  
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    ThreadManager.post(this.a, 5, null, true);
+    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
+      return 1;
+    }
+    return -1;
   }
 }
 

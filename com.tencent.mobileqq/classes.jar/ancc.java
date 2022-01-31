@@ -1,15 +1,22 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ancc
-  implements Runnable
+public final class ancc
+  implements DialogInterface.OnClickListener
 {
-  public ancc(EditVideoActivity paramEditVideoActivity) {}
+  public ancc(QQCustomDialog paramQQCustomDialog) {}
   
-  public void run() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancc
  * JD-Core Version:    0.7.0.1
  */

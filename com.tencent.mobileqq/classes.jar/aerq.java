@@ -1,20 +1,17 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
+import java.util.List;
 
-public class aerq
-  extends TroopGiftCallback
+class aerq
+  implements Runnable
 {
-  public aerq(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  aerq(aerp paramaerp) {}
   
-  public void a(long paramLong)
+  public void run()
   {
-    if (paramLong > 0L)
-    {
-      NearbyProfileDisplayTribePanel.c(this.a).setText(String.format("获得%d礼物积分", new Object[] { Long.valueOf(paramLong) }));
-      return;
+    if (this.a.a.a.size() > 0) {
+      this.a.a.a(true, true);
     }
-    NearbyProfileDisplayTribePanel.c(this.a).setText("我的礼物积分");
+    NearbyVisitorListActivity.a(this.a.a, true, true);
   }
 }
 

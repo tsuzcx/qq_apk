@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
 
-public final class ahjc
-  implements Parcelable.Creator
+public class ahjc
+  implements ProviderContainerView.ContainerViewListener
 {
-  public FriendGroupListInfo a(Parcel paramParcel)
+  public ahjc(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  
+  public void a(View paramView, int paramInt)
   {
-    return new FriendGroupListInfo(paramParcel);
+    EffectsCameraCaptureFragment.a(this.a).setState(1);
   }
   
-  public FriendGroupListInfo[] a(int paramInt)
+  public void y_()
   {
-    return new FriendGroupListInfo[paramInt];
+    EffectsCameraCaptureFragment.a(this.a).setState(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjc
  * JD-Core Version:    0.7.0.1
  */

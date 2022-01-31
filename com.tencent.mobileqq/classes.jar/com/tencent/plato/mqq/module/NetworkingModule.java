@@ -1,6 +1,6 @@
 package com.tencent.plato.mqq.module;
 
-import akul;
+import alkb;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import com.squareup.okhttp.Call;
@@ -51,7 +51,7 @@ public final class NetworkingModule
   {
     paramObject = (Call)this.jdField_a_of_type_JavaUtilMap.get(paramObject);
     if ((paramObject != null) && (!paramObject.isCanceled())) {
-      AsyncTask.THREAD_POOL_EXECUTOR.execute(new akul(this, paramObject));
+      AsyncTask.THREAD_POOL_EXECUTOR.execute(new alkb(this, paramObject));
     }
   }
   
@@ -64,7 +64,7 @@ public final class NetworkingModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.plato.mqq.module.NetworkingModule
  * JD-Core Version:    0.7.0.1
  */

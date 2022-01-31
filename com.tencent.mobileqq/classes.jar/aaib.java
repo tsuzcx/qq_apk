@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-class aaib
+public class aaib
   implements Runnable
 {
-  aaib(aahy paramaahy) {}
+  public aaib(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"wifi".equals(ArkAppEventObserverManager.a(this.a.a))))
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
+    if (this.jdField_a_of_type_Boolean) {
+      localHashMap.put("result", "0");
+    }
+    for (;;)
     {
-      ArkAppEventObserverManager.a(this.a.a).a(true, "wifi");
-      ArkAppEventObserverManager.a(this.a.a, "wifi");
+      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalFaceRecogInit", true, 0L, 0L, localHashMap, "");
+      return;
+      localHashMap.put("result", "1");
     }
   }
 }

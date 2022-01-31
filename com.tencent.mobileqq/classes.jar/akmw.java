@@ -1,22 +1,22 @@
-import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.open.agent.RecommendListManager;
-import java.util.HashMap;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 
 public class akmw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akmw(RecommendListManager paramRecommendListManager, String paramString, Bitmap paramBitmap) {}
+  public akmw(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((ImageView)((View)this.jdField_a_of_type_ComTencentOpenAgentRecommendListManager.a.get(this.jdField_a_of_type_JavaLangString)).findViewById(2131362701)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (SwiftIphoneTitleBarUI.a(this.a) != null) {
+      SwiftIphoneTitleBarUI.a(this.a).onClick(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmw
  * JD-Core Version:    0.7.0.1
  */

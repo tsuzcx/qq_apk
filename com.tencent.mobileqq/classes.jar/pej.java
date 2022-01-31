@@ -1,40 +1,24 @@
-import com.tencent.component.media.gif.NewGifDrawable;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.ShareAioResultDialog;
 
-public abstract class pej
-  implements Runnable
+public class pej
+  implements View.OnClickListener
 {
-  public final NewGifDrawable b;
+  public pej(ShareAioResultDialog paramShareAioResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  pej(NewGifDrawable paramNewGifDrawable)
+  public void onClick(View paramView)
   {
-    this.b = paramNewGifDrawable;
-  }
-  
-  public abstract void doWork();
-  
-  public final void run()
-  {
-    try
-    {
-      if (!this.b.isRecycled()) {
-        doWork();
-      }
-      return;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog, 0);
     }
-    catch (Throwable localThrowable)
-    {
-      Thread.UncaughtExceptionHandler localUncaughtExceptionHandler;
-      do
-      {
-        localUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
-      } while (localUncaughtExceptionHandler == null);
-      localUncaughtExceptionHandler.uncaughtException(Thread.currentThread(), localThrowable);
-    }
+    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pej
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,30 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
 
 public class abkh
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public abkh(IphonePickerView paramIphonePickerView) {}
+  public abkh(SelectCoverActivity paramSelectCoverActivity, View paramView1, View paramView2) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (IphonePickerView.a(this.a) != null) {
-      IphonePickerView.a(this.a).onConfirmBtClicked();
-    }
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abkh
  * JD-Core Version:    0.7.0.1
  */

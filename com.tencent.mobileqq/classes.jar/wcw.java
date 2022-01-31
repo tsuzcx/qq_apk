@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.aio.tips.HomeworkTroopSurveyBar;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
 public class wcw
-  implements Runnable
+  implements TroopManager.ITroopMemberInfoCallBack
 {
-  public wcw(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  public wcw(HomeworkTroopSurveyBar paramHomeworkTroopSurveyBar, TroopManager paramTroopManager, TipsManager paramTipsManager) {}
   
-  public void run()
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    List localList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, 1, 9223372036854775807L, 20);
-    if (localList != null) {
-      ThreadManager.getUIHandler().post(new wcx(this, localList));
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new wcx(this, paramTroopMemberInfo));
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, paramTroopMemberInfo);
   }
 }
 

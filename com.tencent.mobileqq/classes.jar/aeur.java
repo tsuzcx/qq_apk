@@ -1,47 +1,24 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import java.util.Calendar;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeur
-  implements IphonePickerView.PickerViewAdapter
+  implements Runnable
 {
-  public aeur(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public aeur(SmallVideoSendFragment paramSmallVideoSendFragment) {}
   
-  public int getColumnCount()
+  public void run()
   {
-    return 3;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {
+      if (QLog.isColorLevel()) {
+        QLog.w("PublishActivity", 2, "Activity has been destroy.");
+      }
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + "年";
-    case 1: 
-      return paramInt2 + 1 + "月";
+    while (this.a.a == null) {
+      return;
     }
-    return paramInt2 + 1 + "日";
+    this.a.a.dismiss();
   }
 }
 

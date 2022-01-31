@@ -1,20 +1,14 @@
-import com.tencent.av.opengl.glrenderer.GLCanvas;
-import com.tencent.av.switchface.SwitchFaceView;
+import com.tencent.av.ui.AVActivity;
 
-public class jpu
+class jpu
+  implements Runnable
 {
-  public GLCanvas a;
-  public jpt[] a;
+  jpu(jps paramjps) {}
   
-  public jpu(SwitchFaceView paramSwitchFaceView)
+  public void run()
   {
-    this.jdField_a_of_type_ArrayOfJpt = new jpt[2];
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfJpt.length)
-    {
-      this.jdField_a_of_type_ArrayOfJpt[i] = new jpt(paramSwitchFaceView);
-      i += 1;
-    }
+    this.a.a.b(false);
+    this.a.a.d(false);
   }
 }
 

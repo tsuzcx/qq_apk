@@ -1,20 +1,20 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import cooperation.readinjoy.ReadInJoyHelper;
 
 public class lxp
   implements Runnable
 {
-  public lxp(KandianOx210MsgInfo.Biu0x210Msg paramBiu0x210Msg, QQAppInterface paramQQAppInterface) {}
+  public lxp(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
-    localEditor.remove("kandian_biu_0x210_seq");
-    localEditor.remove("kandian_biu_0x210_uin");
-    localEditor.remove("kandian_biu_0x210_status");
+    localEditor.putString("kandian_push_ox210_msg", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a());
+    localEditor.putInt("kandian_push_ox210_c5_msg_count", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a);
+    localEditor.putLong("kandian_push_0x210_c5_msg_time", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.d);
     ReadInJoyHelper.a(localEditor, true);
   }
 }

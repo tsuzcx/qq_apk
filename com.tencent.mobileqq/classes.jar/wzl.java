@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class wzl
-  implements Runnable
+class wzl
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public wzl(QWalletConfigManager paramQWalletConfigManager, WeakReference paramWeakReference) {}
+  wzl(wzk paramwzk) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QWalletConfigManager localQWalletConfigManager = (QWalletConfigManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQWalletConfigManager != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletConfigManager", 2, "getAllConfigAgain");
-      }
-      localQWalletConfigManager.a(QWalletConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager));
+    if (QLog.isColorLevel()) {
+      QLog.i("GoldMsgSettingActivity", 2, "mGoldOnlyChanged. isChecked:" + paramBoolean);
+    }
+    wzk.a(this.a, paramBoolean);
+    this.a.c = true;
+    if (this.a.a.getVisibility() == 0) {
+      this.a.a.setVisibility(8);
     }
   }
 }

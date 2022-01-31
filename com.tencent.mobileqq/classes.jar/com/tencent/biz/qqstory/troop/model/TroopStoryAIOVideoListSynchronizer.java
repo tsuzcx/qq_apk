@@ -32,7 +32,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ome;
+import ony;
 
 public class TroopStoryAIOVideoListSynchronizer
   extends DefaultPlayerVideoListSynchronizer
@@ -164,7 +164,7 @@ public class TroopStoryAIOVideoListSynchronizer
     {
       paramList = BatchHandlerListPuller.a(localObject1);
       paramList.a("Q.qqstory.troopstory.aioSynchronizer");
-      paramList.a(new ome(this, paramList));
+      paramList.a(new ony(this, paramList));
       paramList.b();
       return;
     }

@@ -1,10 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
 
 public class lww
-  extends BaseSkinRes
+  implements Runnable
 {
-  public lww(ReadInJoySkinManager paramReadInJoySkinManager) {}
+  public lww(ReadInJoyRefreshManager paramReadInJoyRefreshManager, int paramInt, String paramString) {}
+  
+  public void run()
+  {
+    ReadInJoyRefreshManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

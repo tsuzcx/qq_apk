@@ -1,23 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter.WeiyunCallback;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp;
+import cooperation.weiyun.sdk.api.IWeiyunCallback;
 
 public class adag
-  implements DialogInterface.OnClickListener
+  implements IWeiyunCallback
 {
-  public adag(ForwardBaseOption paramForwardBaseOption) {}
+  public adag(WeiYunLogicCenter paramWeiYunLogicCenter, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString, WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case -2: 
-      this.a.k();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Failed errorCode=" + paramInt + "; errorMsg=" + paramString);
     }
-    this.a.l();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback.a(paramInt, paramString);
+    }
+  }
+  
+  public void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Success");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback.a();
+    }
   }
 }
 

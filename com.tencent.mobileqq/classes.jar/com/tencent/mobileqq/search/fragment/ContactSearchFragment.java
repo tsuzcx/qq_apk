@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahew;
-import ahex;
+import ahsy;
+import ahsz;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -72,7 +72,7 @@ public class ContactSearchFragment
   
   protected BaseMvpAdapter a()
   {
-    return new ahex(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new ahsz(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
   }
   
   protected ISearchEngine a()
@@ -112,18 +112,18 @@ public class ContactSearchFragment
       }
       this.f = false;
       if (this.jdField_c_of_type_Int == -1) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131492923);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131492924);
       }
     }
     else
     {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493240);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493241);
     return;
     label71:
     this.f = true;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838210);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838214);
   }
   
   public void a(List paramList, int paramInt)
@@ -241,15 +241,15 @@ public class ContactSearchFragment
       if (this.jdField_c_of_type_Int != -1) {
         break label54;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131492923);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131492924);
     }
     for (;;)
     {
       this.f = false;
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahew(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahsy(this));
       return;
       label54:
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493240);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493241);
     }
   }
 }

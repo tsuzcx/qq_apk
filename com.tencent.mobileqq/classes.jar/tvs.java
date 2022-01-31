@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnGroupClickListener;
 
 public class tvs
-  implements DialogInterface.OnClickListener
+  implements ExpandableListView.OnGroupClickListener
 {
-  public tvs(TroopInfoActivity paramTroopInfoActivity) {}
+  public tvs(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
-    paramDialogInterface.dismiss();
+    return true;
   }
 }
 

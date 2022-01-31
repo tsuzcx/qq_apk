@@ -35,7 +35,7 @@ public class FeedCommentLego$CommentInnerAdpter
       do
       {
         return;
-        localObject2 = (TextView)paramBaseViewHolder.a(2131371522);
+        localObject2 = (TextView)paramBaseViewHolder.a(2131371688);
         paramBaseViewHolder = paramCommentEntry.commentId + paramCommentEntry.feedId + paramCommentEntry.status;
         localObject1 = StoryQQTextCacher.a().a(paramBaseViewHolder);
         if ((localObject1 != null) && (this.jdField_a_of_type_Boolean))

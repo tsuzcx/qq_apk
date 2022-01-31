@@ -1,15 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import java.net.URL;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoDeliverController;
 
 public class lyv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lyv(ReadInJoyWebDataManager paramReadInJoyWebDataManager, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  public lyv(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyWebDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager, this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    ReadInJoyDeliverVideoActivity.d(this.a, true);
+    ReadInJoyDeliverVideoActivity.e(this.a);
+    ReadInJoyDeliverVideoActivity.a(this.a).a(ReadInJoyDeliverVideoActivity.c(this.a));
   }
 }
 

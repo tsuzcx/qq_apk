@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.lightReply;
 
-import adoj;
-import adok;
+import aebq;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
@@ -62,26 +60,24 @@ public class FacePicDectect
   
   public void a()
   {
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject1 instanceof QQAppInterface)) {}
-    Object localObject2;
-    for (localObject1 = (QQAppInterface)localObject1;; localObject2 = null)
+    if (this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector != null) {}
+    try
     {
-      if (localObject1 != null)
-      {
-        localObject1 = new LightReplyFaceDetectSoManager((QQAppInterface)localObject1, BaseApplicationImpl.getContext());
-        ((LightReplyFaceDetectSoManager)localObject1).a(new adoj(this));
+      this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.destroy();
+      jdField_a_of_type_ArrayOfByte = null;
+      LightReplyMenuManager localLightReplyMenuManager = LightReplyMenuManager.a();
+      if (localLightReplyMenuManager != null) {
+        localLightReplyMenuManager.a = false;
       }
-      try
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        ((LightReplyFaceDetectSoManager)localObject1).a();
-        return;
-      }
-      catch (Exception localException)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("FacePicDetect", 2, "start load youtu so failed");
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FacePicDetect", 2, "destroy failed" + localException.getMessage());
+        }
       }
     }
   }
@@ -96,7 +92,7 @@ public class FacePicDectect
       if (QLog.isColorLevel()) {
         QLog.d("FacePicDetect", 2, "drawable convert time is" + (l2 - l1));
       }
-      ThreadManager.post(new adok(this, paramFaceDetectFinishedListener), 5, null, true);
+      ThreadManager.post(new aebq(this, paramFaceDetectFinishedListener), 5, null, true);
       return;
     }
     catch (Exception paramDrawable)
@@ -197,34 +193,10 @@ public class FacePicDectect
     QLog.e("FacePicDetect", 1, "init failed", paramContext);
     return bool;
   }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.destroy();
-      jdField_a_of_type_ArrayOfByte = null;
-      LightReplyMenuManager localLightReplyMenuManager = LightReplyMenuManager.a();
-      if (localLightReplyMenuManager != null) {
-        localLightReplyMenuManager.a = false;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FacePicDetect", 2, "destroy failed" + localException.getMessage());
-        }
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.lightReply.FacePicDectect
  * JD-Core Version:    0.7.0.1
  */

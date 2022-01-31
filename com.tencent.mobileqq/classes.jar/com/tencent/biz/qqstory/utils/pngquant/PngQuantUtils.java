@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
-import onr;
+import opl;
 
 public final class PngQuantUtils
 {
@@ -15,7 +15,7 @@ public final class PngQuantUtils
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    HtmlOffline.b("1017", paramAppRuntime, true, new onr());
+    HtmlOffline.b("1017", paramAppRuntime, true, new opl());
   }
   
   public static boolean a()

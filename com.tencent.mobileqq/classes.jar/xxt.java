@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
 
 public class xxt
-  implements View.OnClickListener
 {
-  public xxt(SelectMemberActivity paramSelectMemberActivity) {}
+  public int a;
   
-  public void onClick(View paramView)
-  {
-    this.a.b(true, false);
-  }
+  private xxt(GLVideoClipUtil paramGLVideoClipUtil) {}
 }
 
 

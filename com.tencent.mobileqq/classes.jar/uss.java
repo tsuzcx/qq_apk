@@ -1,20 +1,8 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
 
-public class uss
-  implements ActionSheet.OnButtonClickListener
+public abstract interface uss
 {
-  public uss(DeviceFileItemBuilder paramDeviceFileItemBuilder, MessageForDeviceFile paramMessageForDeviceFile, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceFileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceFileItemBuilder.b();
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-  }
+  public abstract void a(PathDrawer paramPathDrawer);
 }
 
 

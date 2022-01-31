@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
 public class yms
   implements Runnable
 {
-  public yms(ApolloWebViewFragment paramApolloWebViewFragment, String paramString) {}
+  public yms(ApolloSurfaceView paramApolloSurfaceView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
   
   public void run()
   {
-    WebAccelerateHelper.getInstance().preGetKey(this.jdField_a_of_type_JavaLangString, ApolloWebViewFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloWebViewFragment), null);
-    WebAccelerateHelper.getInstance().preCheckOffline(this.jdField_a_of_type_JavaLangString);
-    WebAccelerateHelper.getInstance().preFetchResource(this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloSurfaceView", 1, "send touch event err e=" + localThrowable.toString());
+    }
   }
 }
 

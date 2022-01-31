@@ -17,6 +17,7 @@ import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
 import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManager;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo.WorldCupResPath;
 import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 import com.tencent.mobileqq.ar.arengine.ARCamera;
 import com.tencent.mobileqq.ar.arengine.AREngine;
@@ -46,6 +47,8 @@ public class ARScanFragment
   private boolean c;
   private boolean d;
   private boolean e;
+  private boolean f;
+  private boolean g = true;
   
   public ARScanFragment()
   {
@@ -119,8 +122,10 @@ public class ARScanFragment
     QLog.d("AREngine_ARScanFragment", 2, String.format("initVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController == null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController == null)
+      {
         this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = new VideoRecordController(getActivity());
+        ARVideoRecordUIControllerImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
       ARRenderManager localARRenderManager = null;
       if (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine != null) {
@@ -129,7 +134,6 @@ public class ARScanFragment
       if (localARRenderManager != null) {
         localARRenderManager.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
-      ARVideoRecordUIControllerImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
     }
   }
   
@@ -200,7 +204,7 @@ public class ARScanFragment
   public void a(int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqArARScanFragment$ARScanFragmentCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARScanFragment$ARScanFragmentCallback.b(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqArARScanFragment$ARScanFragmentCallback.c(paramInt);
     }
   }
   
@@ -248,7 +252,7 @@ public class ARScanFragment
       FragmentActivity localFragmentActivity = getActivity();
       if ((localFragmentActivity != null) && ((localFragmentActivity instanceof ScanTorchActivity)))
       {
-        long l = ((ScanTorchActivity)localFragmentActivity).a();
+        long l = ((ScanTorchActivity)localFragmentActivity).b();
         if (l > 0L)
         {
           int i = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.b();
@@ -311,6 +315,24 @@ public class ARScanFragment
     }
   }
   
+  public boolean a(ArCloudConfigInfo.WorldCupResPath paramWorldCupResPath)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a(paramWorldCupResPath);
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    this.f = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.c(paramBoolean);
+    if (this.f) {
+      ARVideoRecordUIControllerImpl.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+    }
+    for (;;)
+    {
+      return this.f;
+      ARVideoRecordUIControllerImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+    }
+  }
+  
   public void b()
   {
     if (QLog.isColorLevel()) {
@@ -334,6 +356,18 @@ public class ARScanFragment
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.h();
+  }
+  
+  public boolean b(boolean paramBoolean)
+  {
+    if (!this.f) {
+      return this.g;
+    }
+    if (this.g == paramBoolean) {
+      return this.g;
+    }
+    this.g = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.d(paramBoolean);
+    return this.g;
   }
   
   public void c(boolean paramBoolean)
@@ -390,7 +424,7 @@ public class ARScanFragment
     this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine = AREngine.a();
     int i = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a(paramBundle, paramBundle.getAppInterface());
     if (this.jdField_a_of_type_ComTencentMobileqqArARScanFragment$ARScanFragmentCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARScanFragment$ARScanFragmentCallback.a(i);
+      this.jdField_a_of_type_ComTencentMobileqqArARScanFragment$ARScanFragmentCallback.b(i);
     }
     e();
     if (QLog.isColorLevel()) {
@@ -445,6 +479,7 @@ public class ARScanFragment
         this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a(true);
         b(true);
         c(true);
+        b(true);
       }
       int i = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.b();
       long l = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.c();
@@ -472,6 +507,7 @@ public class ARScanFragment
         this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.e();
         b(false);
         c(false);
+        b(false);
       }
     }
     QLog.i("AREngine_ARScanFragment", 1, "onResume end.");

@@ -1,27 +1,37 @@
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class mwe
-  implements TextWatcher
+public final class mwe
+  implements Runnable
 {
-  public mwe(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public mwe(QQMessageFacade paramQQMessageFacade, String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
-      QQToast.a(this.a, 0, this.a.getString(2131438541), 0).b(this.a.getTitleBarHeight());
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.ar, -3006);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      localObject = this.b;
+      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForStructing))) {
+        break label108;
+      }
+    }
+    label108:
+    for (Object localObject = PublicAccountUtil.a((MessageForStructing)localMessageRecord, (String)localObject, null, null, this.c);; localObject = PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, null, null, this.c))
+    {
+      if (localObject != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a((MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      }
+      return;
+      localObject = this.jdField_a_of_type_JavaLangString + ": " + this.b;
+      break;
     }
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

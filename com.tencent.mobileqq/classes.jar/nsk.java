@@ -1,25 +1,23 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper.GenerateManifestCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader;
+import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader.CacheContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class nsk
-  implements QQStoryTakeVideoHelper.GenerateManifestCallback
+  extends SimpleJob
 {
-  public nsk(QQStoryTakeVideoHelper paramQQStoryTakeVideoHelper, PublishParam paramPublishParam, String paramString, int paramInt) {}
+  public nsk(ShareGroupDateListPageLoader paramShareGroupDateListPageLoader) {}
   
-  public void a()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    SLog.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
-    QQStoryTakeVideoHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void b()
-  {
-    SLog.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
-    QQStoryTakeVideoHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper).finish();
-    QQStoryTakeVideoHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper).overridePendingTransition(0, 0);
+    if (this.a.a == null) {
+      this.a.a = new ShareGroupDateListPageLoader.CacheContext(this.a, this.a.c);
+    }
+    this.a.d = this.a.a.a;
+    ShareGroupDateListPageLoader.a(this.a);
+    return null;
   }
 }
 

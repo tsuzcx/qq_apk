@@ -30,6 +30,9 @@ public class PBUtils
 {
   public static String a(MessageMicro paramMessageMicro)
   {
+    if (paramMessageMicro == null) {
+      return String.valueOf(paramMessageMicro);
+    }
     return a(paramMessageMicro).toString();
   }
   

@@ -1,30 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajqh
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ajqh(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
+  public ajqh(TroopRobotManager paramTroopRobotManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845730);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130845730));
-    if (this.a.b)
+    oidb_0x496.Robot localRobot = new oidb_0x496.Robot();
+    byte[] arrayOfByte = this.a.a();
+    if (arrayOfByte != null) {}
+    try
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-      this.a.b = false;
+      localRobot.mergeFrom(arrayOfByte);
+      this.a.a(localRobot);
+      TroopRobotManager.a(this.a);
+      return;
     }
-    return false;
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, "file data error");
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqh
  * JD-Core Version:    0.7.0.1
  */

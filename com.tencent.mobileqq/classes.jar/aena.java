@@ -1,22 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aena
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public aena(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public long c;
+  public long d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370449).setAlpha(0.5F);
-    }
-    for (;;)
+    try
     {
-      return false;
-      this.a.a.findViewById(2131370449).setAlpha(1.0F);
+      this.d = System.currentTimeMillis();
+      ThreadManager.post(new aenb(this), 5, null, false);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }

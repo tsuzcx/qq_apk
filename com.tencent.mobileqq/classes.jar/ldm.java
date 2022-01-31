@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
-public class ldm
-  extends ReadInJoyObserver
+class ldm
+  implements Runnable
 {
-  public ldm(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
+  ldm(ldl paramldl) {}
   
-  public void a(List paramList)
+  public void run()
   {
-    this.a.a(paramList);
+    if ((ReadInJoyNewFeedsActivity.a(this.a.a) == 0) && (ReadInJoyNewFeedsActivity.a(this.a.a) != null) && (ReadInJoyNewFeedsActivity.a(this.a.a).mChannelCoverId == 0) && (!this.a.a.a(0))) {
+      this.a.a.c(true);
+    }
   }
 }
 

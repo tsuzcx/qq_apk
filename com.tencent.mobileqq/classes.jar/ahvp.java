@@ -1,25 +1,26 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTextButton;
+import com.tencent.mobileqq.search.ftsmsg.FTSGroupSearchModelMessage;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import java.util.List;
 
 public class ahvp
+  extends GroupSearchEngine.SearchEngineEntity
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ImageView b = null;
-  
-  public ahvp(StructMsgItemTextButton paramStructMsgItemTextButton)
+  public ahvp(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
+  }
+  
+  public ISearchResultGroupModel a(List paramList, String paramString)
+  {
+    return new FTSGroupSearchModelMessage(paramList, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahvp
  * JD-Core Version:    0.7.0.1
  */

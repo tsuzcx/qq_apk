@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import java.util.Observable;
 import java.util.Observer;
-import jhh;
+import jgs;
 
 public class CameraObserver
   implements Observer
@@ -82,7 +82,7 @@ public class CameraObserver
       if (this.a == null) {
         this.a = new Handler(paramObservable);
       }
-      this.a.post(new jhh(this, paramObject));
+      this.a.post(new jgs(this, paramObject));
       return;
     }
     a(paramObject);

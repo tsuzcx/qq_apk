@@ -37,9 +37,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import mqq.os.MqqHandler;
-import pyt;
-import pyu;
-import pyv;
+import qan;
+import qao;
+import qap;
 
 public class DevShortVideoItemBuilder
   extends ShortVideoItemBuilder
@@ -86,9 +86,9 @@ public class DevShortVideoItemBuilder
     if (localMessageForShortVideo.isSendFromLocal())
     {
       ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-      localActionSheet.a(2131433618, 5);
-      localActionSheet.c(2131432998);
-      localActionSheet.a(new pyv(this, localMessageForShortVideo, paramView, localActionSheet));
+      localActionSheet.a(2131433635, 5);
+      localActionSheet.c(2131433015);
+      localActionSheet.a(new qap(this, localMessageForShortVideo, paramView, localActionSheet));
       localActionSheet.show();
     }
   }
@@ -138,7 +138,7 @@ public class DevShortVideoItemBuilder
     b();
     return;
     b(paramView);
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131437350, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131437367, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
     return;
     b(paramView);
     paramView.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(false, this);
@@ -159,20 +159,20 @@ public class DevShortVideoItemBuilder
         FMToastUtil.a(2131427563);
         return;
       }
-      new Handler(paramMessageForShortVideo).post(new pyt(this));
+      new Handler(paramMessageForShortVideo).post(new qan(this));
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("DeviceShortVideo", 2, "startUploadVideo");
     }
-    ThreadManager.getFileThreadHandler().post(new pyu(this, paramMessageForShortVideo));
+    ThreadManager.getFileThreadHandler().post(new qao(this, paramMessageForShortVideo));
   }
   
   protected void a(MessageForShortVideo paramMessageForShortVideo, long paramLong)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131437362, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131437379, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
       return;
     }
     Object localObject = ShortVideoUtils.a(paramMessageForShortVideo.thumbMD5, "jpg");

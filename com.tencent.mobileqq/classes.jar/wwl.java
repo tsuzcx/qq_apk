@@ -1,57 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.MimeHelper;
 
-public class wwl
-  extends Handler
+public final class wwl
+  extends MediaFileFilter
 {
-  public wwl(PasswdRedBagManager paramPasswdRedBagManager, Looper paramLooper)
+  public boolean a(String paramString)
   {
-    super(paramLooper);
+    paramString = MimeHelper.a(paramString);
+    return (paramString == null) || (!"image".equals(paramString[0])) || (!MimeHelper.a(paramString[1]));
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean b()
   {
-    int i = paramMessage.what;
-    boolean bool;
-    if (paramMessage.arg1 == 1)
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
-      }
-      if (bool) {
-        break label56;
-      }
-    }
-    for (;;)
-    {
-      return;
-      bool = false;
-      break;
-      label56:
-      if ((i == 1) || (i == 0))
-      {
-        ThreadManager.getFileThreadHandler().post(new wwm(this, i));
-        paramMessage = (List)paramMessage.obj;
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.iterator();
-          while (paramMessage.hasNext())
-          {
-            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
-            this.a.a(localRedBagInfo);
-          }
-        }
-      }
-    }
+    return false;
   }
 }
 

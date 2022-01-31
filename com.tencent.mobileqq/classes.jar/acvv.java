@@ -1,19 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class acvv
-  implements View.OnClickListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public acvv(ZipFilePresenter paramZipFilePresenter) {}
+  public acvv(FileVideoManager paramFileVideoManager, long paramLong, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
   
-  public void onClick(View paramView)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    if (this.a.a.a() != null) {
-      this.a.a.a().a();
-    }
+    System.currentTimeMillis();
+    long l = this.jdField_a_of_type_Long;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    System.currentTimeMillis();
+    long l = this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback.b();
   }
 }
 

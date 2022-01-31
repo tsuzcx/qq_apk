@@ -1,47 +1,30 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class sro
-  extends FriendListObserver
+  implements WebProcessManager.WebProcessStartListener
 {
-  public sro(GroupManagerActivity paramGroupManagerActivity) {}
+  private WeakReference a;
   
-  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  public sro(PreloadProcHitSession paramPreloadProcHitSession)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
+    this.a = new WeakReference(paramPreloadProcHitSession);
   }
   
-  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
+    if (paramBoolean)
+    {
+      PreloadProcHitSession localPreloadProcHitSession = (PreloadProcHitSession)this.a.get();
+      if (localPreloadProcHitSession != null) {
+        localPreloadProcHitSession.a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileCardActivity", 2, "check friend's profile and preload web-process!");
+      }
     }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onRenameGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onResortGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(true);
-    GroupManagerActivity.c(this.a, true);
   }
 }
 

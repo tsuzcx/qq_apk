@@ -1,13 +1,33 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.ar.ARMusicController;
+import com.tencent.qphone.base.util.QLog;
 
-class zxo
-  implements Runnable
+public class zxo
+  implements MediaPlayer.OnPreparedListener
 {
-  zxo(zxm paramzxm) {}
+  public zxo(ARMusicController paramARMusicController) {}
   
-  public void run()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    ArConfigService.d(this.a.a);
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + ARMusicController.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      ARMusicController.b(this.a, true);
+      if (ARMusicController.b(this.a))
+      {
+        this.a.a.start();
+        ARMusicController.c(this.a, false);
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 

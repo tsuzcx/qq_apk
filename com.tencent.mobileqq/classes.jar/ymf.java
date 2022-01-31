@@ -1,27 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.ITriggerRenderCallback;
+import com.tencent.mobileqq.apollo.task.OnDressDoneListener;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ymf
-  implements Observer
+  implements Runnable
 {
-  public ymf(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  public ymf(ApolloRenderDriver paramApolloRenderDriver, String[] paramArrayOfString, OnDressDoneListener paramOnDressDoneListener) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void run()
   {
-    if ((paramObject != null) && ((paramObject instanceof Bundle)))
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    int i = 0;
+    try
     {
-      paramObservable = (Bundle)paramObject;
-      long l1 = paramObservable.getLong("START_TIME_KEY");
-      long l2 = paramObservable.getLong("END_TIME_KEY");
-      paramObject = paramObservable.getString("MESSAGE");
-      int i = paramObservable.getInt("FROM");
-      int j = paramObservable.getInt("TO");
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
+        i += 1;
       }
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloTaskOnDressDoneListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloTaskOnDressDoneListener.d();
+      }
+      if ((!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
     }
   }
 }

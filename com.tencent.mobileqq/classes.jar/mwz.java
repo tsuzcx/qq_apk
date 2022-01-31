@@ -1,15 +1,15 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.VideoFeedsWeiShiUtils;
+import com.tencent.open.downloadnew.DownloadManager;
 
-class mwz
-  implements Runnable
+public final class mwz
+  implements DialogInterface.OnClickListener
 {
-  mwz(mwx parammwx) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null)) {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).b(true);
-    }
+    paramDialogInterface.dismiss();
+    DownloadManager.a().a(VideoFeedsWeiShiUtils.a());
   }
 }
 

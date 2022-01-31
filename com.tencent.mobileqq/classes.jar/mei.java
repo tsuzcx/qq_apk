@@ -1,24 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class mei
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public mei(VideoShareHelper paramVideoShareHelper) {}
+  public mei(VideoFeedsPlayManager paramVideoFeedsPlayManager, JSONObject paramJSONObject, mel parammel, int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    try
+    {
+      for (;;)
+      {
+        synchronized (this.jdField_a_of_type_OrgJsonJSONObject)
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("watch_duration", this.jdField_a_of_type_Mel.a);
+          this.jdField_a_of_type_OrgJsonJSONObject.put("current_duration", this.jdField_a_of_type_Mel.b);
+          this.jdField_a_of_type_OrgJsonJSONObject.put("is_loop", this.jdField_a_of_type_Int);
+          String str1;
+          if (VideoFeedsPlayManager.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager))
+          {
+            str4 = this.jdField_a_of_type_JavaLangString;
+            i = this.jdField_b_of_type_Int;
+            j = this.jdField_c_of_type_Int;
+            if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+              break;
+            }
+            str1 = this.jdField_b_of_type_JavaLangString;
+            PublicAccountReportUtils.b(null, str4, "0X8009297", "0X8009297", 0, 0, String.valueOf(i), String.valueOf(j), str1, VideoReporter.a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Mel.b, this.jdField_a_of_type_OrgJsonJSONObject), false);
+            PublicAccountReportUtils.a("0X8009297", this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_c_of_type_Int), "", VideoReporter.a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Mel.b, this.jdField_a_of_type_OrgJsonJSONObject));
+            return;
+          }
+          String str4 = this.jdField_a_of_type_JavaLangString;
+          int i = this.jdField_b_of_type_Int;
+          int j = this.jdField_c_of_type_Int;
+          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+          {
+            str1 = this.jdField_b_of_type_JavaLangString;
+            PublicAccountReportUtils.b(null, str4, "0X8007409", "0X8007409", 0, 0, String.valueOf(i), String.valueOf(j), str1, VideoReporter.a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Mel.b, this.jdField_a_of_type_OrgJsonJSONObject), false);
+            PublicAccountReportUtils.a("0X8007409", this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_c_of_type_Int), "", VideoReporter.a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Mel.b, this.jdField_a_of_type_OrgJsonJSONObject));
+          }
+        }
+        String str2 = "0";
+      }
     }
-    if (VideoShareHelper.a(this.a) != null) {
-      VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), false, false);
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        continue;
+        String str3 = "0";
+      }
     }
-    VideoShareHelper.a(this.a, true);
-    VideoShareHelper.b(this.a, false);
   }
 }
 

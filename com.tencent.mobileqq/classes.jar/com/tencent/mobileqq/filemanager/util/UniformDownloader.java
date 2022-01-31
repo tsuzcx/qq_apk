@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import acyi;
-import acyj;
+import adif;
+import adig;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,7 +18,7 @@ public class UniformDownloader
   public final long a;
   private final Bundle jdField_a_of_type_AndroidOsBundle;
   private UniformDownloader.IUniformDownloader jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader$IUniformDownloader;
-  private UniformDownloader.IUniformDownloaderListener jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader$IUniformDownloaderListener = new acyi(this);
+  private UniformDownloader.IUniformDownloaderListener jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader$IUniformDownloaderListener = new adif(this);
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
@@ -98,7 +98,7 @@ public class UniformDownloader
   
   private void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    ThreadManager.getSubThreadHandler().post(new acyj(this, paramBundle, paramInt, paramString));
+    ThreadManager.getSubThreadHandler().post(new adig(this, paramBundle, paramInt, paramString));
   }
   
   /* Error */

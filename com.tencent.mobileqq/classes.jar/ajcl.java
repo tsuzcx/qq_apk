@@ -1,40 +1,55 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class ajcl
-  extends ProtoUtils.TroopProtocolObserver
+  implements Runnable
 {
-  public ajcl(TroopRobotManager paramTroopRobotManager, TroopRobotManager.Callback paramCallback) {}
+  public ajcl(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, List paramList) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager$Callback.a(paramInt, paramBundle);
-      return;
+      localObject2 = (MessageRecord)((Iterator)localObject1).next();
+      TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (MessageRecord)localObject2);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    localObject1 = null;
+    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    if (((Iterator)localObject2).hasNext())
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
+      Object localObject3 = (MessageRecord)((Iterator)localObject2).next();
+      localObject3 = TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (MessageRecord)localObject3);
+      if (localObject3 == null) {
+        break label133;
       }
+      if (localObject1 != null) {
+        break label130;
+      }
+      localObject1 = new ArrayList();
+      label97:
+      ((List)localObject1).addAll((Collection)localObject3);
+    }
+    label130:
+    label133:
+    for (;;)
+    {
+      break;
+      if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
+        TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (List)localObject1);
+      }
+      return;
+      break label97;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajcl
  * JD-Core Version:    0.7.0.1
  */

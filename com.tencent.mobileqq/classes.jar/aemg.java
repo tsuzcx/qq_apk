@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-
 public class aemg
-  implements View.OnClickListener
 {
-  public aemg(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public aemg(String paramString, int paramInt)
   {
-    this.a.h(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

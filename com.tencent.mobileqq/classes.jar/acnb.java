@@ -1,23 +1,26 @@
-import android.content.IntentFilter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
-public class acnb
+class acnb
   implements Runnable
 {
-  public acnb(OnlineFileSessionCenter paramOnlineFileSessionCenter, QQAppInterface paramQQAppInterface) {}
+  acnb(acna paramacna) {}
   
   public void run()
   {
-    OnlineFileSessionCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter, new acnc(this));
-    IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.intent.logout");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(OnlineFileSessionCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionCenter), localIntentFilter);
+    if (this.a.a.f)
+    {
+      this.a.a.d();
+      return;
+    }
+    this.a.a.e();
+    this.a.a.d();
+    new Handler().postDelayed(new acnc(this), 1500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acnb
  * JD-Core Version:    0.7.0.1
  */

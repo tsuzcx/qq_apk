@@ -1,24 +1,19 @@
-import android.graphics.PointF;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.mobileqq.widget.RatioLayout;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import java.util.List;
 
 public class agdx
-  implements ValueAnimation.AnimationUpdateListener
+  implements Runnable
 {
-  public agdx(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
+  public agdx(OlympicManager paramOlympicManager, List paramList1, List paramList2) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, PointF paramPointF, Transformation paramTransformation)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, paramPointF.x, paramPointF.y);
+    OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager, "olympic_predown_shua", this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agdx
  * JD-Core Version:    0.7.0.1
  */

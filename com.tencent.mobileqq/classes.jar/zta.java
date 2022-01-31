@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.message.ConversationProxy;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class zta
-  implements Runnable
+public class zta
+  implements NoColumnErrorHandler
 {
-  zta(zsy paramzsy, SosoInterface.OnLocationListener paramOnLocationListener) {}
+  public zta(ConversationProxy paramConversationProxy) {}
   
-  public void run()
+  public void a(NoColumnError paramNoColumnError)
   {
-    if (!SosoInterface.OnLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener)) {
-      SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
+    if ((paramNoColumnError != null) && (("unreadGiftCount".equals(paramNoColumnError.mColumnName)) || ("unreadMark".equals(paramNoColumnError.mColumnName))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.unread.Proxy", 2, paramNoColumnError.getMessage(), paramNoColumnError);
+      }
+      ConversationProxy.a(this.a, true);
     }
   }
 }

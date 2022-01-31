@@ -1,18 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.TextUrlClickListener;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
 
-public class wxm
-  implements QWalletTools.TextUrlClickListener
+class wxm
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public wxm(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  wxm(wxk paramwxk, int paramInt) {}
   
-  public void a(String paramString)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    this.a.startActivity(localIntent);
+    this.jdField_a_of_type_Wxk.a.d();
+    if (QQStoryFlowCallback.a(this.jdField_a_of_type_Wxk.a, paramLocalMediaInfo)) {
+      this.jdField_a_of_type_Wxk.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
+    }
   }
 }
 

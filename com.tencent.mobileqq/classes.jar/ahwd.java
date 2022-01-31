@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
+import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
 
 public class ahwd
   implements Runnable
 {
-  public ahwd(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  public ahwd(MessageSearchEngine paramMessageSearchEngine, String paramString) {}
   
   public void run()
   {
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a()))
-    {
-      this.a.a.app.f(false);
-      SubAccountControll.a(this.a.a.app, false);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahwd
  * JD-Core Version:    0.7.0.1
  */

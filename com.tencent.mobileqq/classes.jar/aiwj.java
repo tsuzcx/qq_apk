@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class aiwj
-  implements Runnable
+class aiwj
+  implements ActionSheet.OnButtonClickListener
 {
-  public aiwj(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView, TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
+  aiwj(aiwi paramaiwi, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_Aiwi.a.a(this.jdField_a_of_type_Aiwi.a.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwj
  * JD-Core Version:    0.7.0.1
  */

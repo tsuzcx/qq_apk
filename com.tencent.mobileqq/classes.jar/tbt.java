@@ -1,21 +1,23 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.text.QQBrowserLinkSpan;
+import android.media.MediaRecorder;
+import android.media.MediaRecorder.OnInfoListener;
+import com.tencent.mobileqq.activity.MakeVideoActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class tbt
-  extends QQBrowserLinkSpan
+  implements MediaRecorder.OnInfoListener
 {
-  public tbt(PermisionPrivacyActivity paramPermisionPrivacyActivity, Context paramContext, String paramString)
-  {
-    super(paramContext, paramString);
-  }
+  public tbt(MakeVideoActivity paramMakeVideoActivity) {}
   
-  public void onClick(View paramView)
+  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
   {
-    super.onClick(paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004E73", "0X8004E73", 0, 0, "", "", "", "");
+    switch (paramInt1)
+    {
+    default: 
+      QLog.i(this.a.a, 4, "start|onInfo|what=" + paramInt1 + ",extra=" + paramInt2);
+      return;
+    }
+    QLog.i(this.a.a, 4, "start|onInfo|max file size reached.extra=" + paramInt2);
+    this.a.b();
   }
 }
 

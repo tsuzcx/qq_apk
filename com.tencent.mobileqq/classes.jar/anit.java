@@ -1,14 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.widget.TextView;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
-public class anit
+class anit
   implements Runnable
 {
-  public anit(DoodleLayout paramDoodleLayout, FaceLayer.FaceItem paramFaceItem) {}
+  anit(anis paramanis) {}
   
   public void run()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$FaceItem);
+    TextView localTextView = this.a.a.b;
+    if (QIMCameraCaptureUnit.b(this.a.a)) {}
+    for (int i = 0;; i = 8)
+    {
+      localTextView.setVisibility(i);
+      return;
+    }
   }
 }
 

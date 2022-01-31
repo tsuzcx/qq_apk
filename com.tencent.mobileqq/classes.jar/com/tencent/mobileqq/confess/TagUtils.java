@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.confess;
 
-import ablg;
-import ablh;
-import abli;
-import ablj;
+import absh;
+import absi;
+import absj;
+import absk;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Point;
@@ -353,7 +353,7 @@ public class TagUtils
     do
     {
       return localObject;
-      Collections.sort(paramArrayList1, new ablg(paramArrayList2));
+      Collections.sort(paramArrayList1, new absh(paramArrayList2));
       localRect = (Rect)paramArrayList1.get(jdField_a_of_type_JavaUtilRandom.nextInt(Math.min(paramArrayList1.size(), 2)));
       localObject = localRect;
     } while (!paramArrayList2.contains(localRect));
@@ -825,7 +825,7 @@ public class TagUtils
       Rect localRect2;
       if ((paramArrayList1.size() > 0) && (i < 100))
       {
-        Collections.sort(paramArrayList1, new ablh());
+        Collections.sort(paramArrayList1, new absi());
         int k = paramArrayList1.size();
         localRect1 = null;
         localRect2 = null;
@@ -889,7 +889,7 @@ public class TagUtils
     int i1;
     if ((paramArrayList1.size() > 0) && (i2 < 100))
     {
-      Collections.sort(paramArrayList1, new abli());
+      Collections.sort(paramArrayList1, new absj());
       int i4 = paramArrayList1.size();
       localObject2 = null;
       i = 0;
@@ -1018,7 +1018,7 @@ public class TagUtils
   
   public static void a(ArrayList paramArrayList, boolean paramBoolean)
   {
-    Collections.sort(paramArrayList, new ablj(paramBoolean, paramArrayList));
+    Collections.sort(paramArrayList, new absk(paramBoolean, paramArrayList));
   }
   
   public static boolean a(int paramInt)
@@ -1128,7 +1128,7 @@ public class TagUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TagUtils
  * JD-Core Version:    0.7.0.1
  */

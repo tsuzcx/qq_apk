@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.widget.BounceScrollView.OnScrollChangedListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
 
-public class akxe
-  implements BounceScrollView.OnScrollChangedListener
+public final class akxe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akxe(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  private final TabDragAnimationView a;
   
-  public void a(float paramFloat1, float paramFloat2) {}
+  public akxe(TabDragAnimationView paramTabDragAnimationView)
+  {
+    this.a = paramTabDragAnimationView;
+  }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(f, 0.0F, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxe
  * JD-Core Version:    0.7.0.1
  */

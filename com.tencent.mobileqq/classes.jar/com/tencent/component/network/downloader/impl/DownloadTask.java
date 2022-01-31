@@ -54,8 +54,8 @@ import org.apache.http.Header;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import phu;
-import phv;
+import pjo;
+import pjp;
 
 public abstract class DownloadTask
   implements NetworkManager.NetStatusListener, ThreadPool.Job
@@ -105,7 +105,7 @@ public abstract class DownloadTask
   static
   {
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_JavaLangThreadLocal = new phu();
+    jdField_a_of_type_JavaLangThreadLocal = new pjo();
   }
   
   public DownloadTask(Context paramContext, QZoneHttp2Client paramQZoneHttp2Client, QZoneHttpClient paramQZoneHttpClient, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
@@ -213,7 +213,7 @@ public abstract class DownloadTask
       try
       {
         paramString = new File(paramString);
-        if (!phv.a(paramString, true)) {
+        if (!pjp.a(paramString, true)) {
           continue;
         }
         this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService.a(paramString.getName());
@@ -1044,7 +1044,7 @@ public abstract class DownloadTask
     //   12: iconst_0
     //   13: ireturn
     //   14: invokestatic 69	java/lang/System:currentTimeMillis	()J
-    //   17: lstore 23
+    //   17: lstore 19
     //   19: iload 5
     //   21: sipush 206
     //   24: if_icmpne +218 -> 242
@@ -1087,7 +1087,7 @@ public abstract class DownloadTask
     //   109: astore 28
     //   111: aload 28
     //   113: iconst_0
-    //   114: invokestatic 224	phv:a	(Ljava/io/File;Z)Z
+    //   114: invokestatic 224	pjp:a	(Ljava/io/File;Z)Z
     //   117: pop
     //   118: aload 4
     //   120: invokeinterface 186 1 0
@@ -1236,7 +1236,7 @@ public abstract class DownloadTask
     //   453: astore_2
     //   454: aload 28
     //   456: invokevirtual 842	java/io/File:length	()J
-    //   459: lstore 19
+    //   459: lstore 23
     //   461: iconst_0
     //   462: istore 5
     //   464: lconst_0
@@ -1323,14 +1323,14 @@ public abstract class DownloadTask
     //   627: aload_0
     //   628: getfield 131	com/tencent/component/network/downloader/impl/DownloadTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   631: lload 21
-    //   633: lload 19
+    //   633: lload 23
     //   635: ladd
     //   636: lload 15
-    //   638: lload 19
+    //   638: lload 23
     //   640: ladd
     //   641: l2f
     //   642: lload 21
-    //   644: lload 19
+    //   644: lload 23
     //   646: ladd
     //   647: l2f
     //   648: fdiv
@@ -1414,7 +1414,7 @@ public abstract class DownloadTask
     //   811: lstore 7
     //   813: aload_0
     //   814: invokestatic 69	java/lang/System:currentTimeMillis	()J
-    //   817: lload 23
+    //   817: lload 19
     //   819: lsub
     //   820: putfield 104	com/tencent/component/network/downloader/impl/DownloadTask:jdField_c_of_type_Long	J
     //   823: lload 21
@@ -1429,7 +1429,7 @@ public abstract class DownloadTask
     //   839: aload_0
     //   840: getfield 131	com/tencent/component/network/downloader/impl/DownloadTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   843: lload 21
-    //   845: lload 19
+    //   845: lload 23
     //   847: ladd
     //   848: fconst_1
     //   849: invokespecial 867	com/tencent/component/network/downloader/impl/DownloadTask:a	(Ljava/lang/String;JF)V
@@ -1621,9 +1621,9 @@ public abstract class DownloadTask
     //   469	688	13	l4	long
     //   82	1073	15	l5	long
     //   663	454	17	l6	long
-    //   459	387	19	l7	long
+    //   17	801	19	l7	long
     //   88	756	21	l8	long
-    //   17	801	23	l9	long
+    //   459	387	23	l9	long
     //   71	378	25	bool1	boolean
     //   125	3	26	bool2	boolean
     //   79	924	27	localObject1	Object

@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class tgf
-  implements Comparator
+  implements Runnable
 {
-  public tgf(QQLSActivity paramQQLSActivity) {}
+  public tgf(PortraitImageview paramPortraitImageview, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public void run()
   {
-    if (paramChatMessage1.time == paramChatMessage2.time) {
-      return 0;
+    long l = System.currentTimeMillis();
+    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
+    float f2 = this.b;
+    float f3 = this.c;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f2 + f3 * f1, this.d, this.e);
+    if (f1 < this.jdField_a_of_type_Float) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.post(this);
     }
-    if (paramChatMessage1.time > paramChatMessage2.time) {
-      return 1;
-    }
-    return -1;
   }
 }
 

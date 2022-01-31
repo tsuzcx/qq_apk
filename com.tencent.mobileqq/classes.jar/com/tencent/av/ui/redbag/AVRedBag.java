@@ -5,9 +5,9 @@ import com.tencent.av.app.VideoObserver;
 import com.tencent.av.camera.CameraObserver;
 import com.tencent.av.camera.CameraUtils;
 import com.tencent.av.ui.ControlUIObserver;
-import kee;
-import kef;
-import keh;
+import kdp;
+import kdq;
+import kds;
 
 public class AVRedBag
   extends SubHandleBase
@@ -23,9 +23,9 @@ public class AVRedBag
   
   void a()
   {
-    this.jdField_a_of_type_ComTencentAvCameraCameraObserver = new kee(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoObserver = new kef(this);
-    this.jdField_a_of_type_ComTencentAvUiControlUIObserver = new keh(this);
+    this.jdField_a_of_type_ComTencentAvCameraCameraObserver = new kdp(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoObserver = new kdq(this);
+    this.jdField_a_of_type_ComTencentAvUiControlUIObserver = new kds(this);
     CameraUtils.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication()).a(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvAppVideoObserver);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvUiControlUIObserver);

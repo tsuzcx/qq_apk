@@ -1,30 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.utils.QAVGroupConfig.GroupInviteFlag;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool;
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class ajpl
-  extends TroopObserver
+public class ajpl
+  implements Runnable
 {
-  public ajpl(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
+  public ajpl(TroopFileTransferManager.TaskPool paramTaskPool) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
-      return;
+    synchronized (this.a)
+    {
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+          return;
+        }
+        TroopFileTransferManager.Task localTask = (TroopFileTransferManager.Task)this.a.jdField_a_of_type_JavaUtilLinkedList.remove(0);
+        localTask.run();
+        if (localTask.a != 0) {
+          continue;
+        }
+        try
+        {
+          Thread.sleep(200L);
+        }
+        catch (InterruptedException localInterruptedException) {}
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
-    if (paramBoolean) {
-      QAVGroupConfig.GroupInviteFlag.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajpl
  * JD-Core Version:    0.7.0.1
  */

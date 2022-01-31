@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.od;
 
-import adln;
+import advm;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class ODProxy
   implements LoginKeyHelper.GetLoginKeyListener, Manager
 {
   long jdField_a_of_type_Long = 0L;
-  adln jdField_a_of_type_Adln = new adln(this);
+  advm jdField_a_of_type_Advm = new advm(this);
   private Context jdField_a_of_type_AndroidContentContext;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
@@ -232,7 +232,7 @@ public class ODProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODProxy
  * JD-Core Version:    0.7.0.1
  */

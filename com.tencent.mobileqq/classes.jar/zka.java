@@ -1,18 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
 public class zka
+  implements Runnable
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  public String a;
+  public zka(PublicAccountHandler paramPublicAccountHandler, long paramLong, boolean paramBoolean) {}
   
-  public zka(StartAppCheckHandler paramStartAppCheckHandler, String paramString, Context paramContext, Intent paramIntent)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 

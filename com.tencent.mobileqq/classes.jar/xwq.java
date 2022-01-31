@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.statistics.ReportController;
-
 class xwq
-  implements DialogInterface.OnClickListener
 {
-  xwq(xwp paramxwp) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xwq(long paramLong, int paramInt1, int paramInt2)
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.a.jdField_a_of_type_AndroidContentContext, 2, 12);
-    ReportController.b(this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80063F9", "0X80063F9", 1, 0, "", "", "", "");
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt1;
   }
 }
 

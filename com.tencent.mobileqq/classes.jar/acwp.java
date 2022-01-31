@@ -1,15 +1,13 @@
-import android.widget.ProgressBar;
+import com.tencent.mobileqq.filemanager.core.HttpThumbDownloader;
 
-class acwp
+public class acwp
   implements Runnable
 {
-  acwp(acwo paramacwo, long paramLong1, long paramLong2) {}
+  public acwp(HttpThumbDownloader paramHttpThumbDownloader) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acwo.a.a.setVisibility(0);
-    float f = (float)this.jdField_a_of_type_Long / (float)this.b;
-    this.jdField_a_of_type_Acwo.a.a.setProgress((int)(f * 100.0F));
+    HttpThumbDownloader.a(this.a);
   }
 }
 

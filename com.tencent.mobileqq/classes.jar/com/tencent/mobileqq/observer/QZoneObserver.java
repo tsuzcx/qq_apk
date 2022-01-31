@@ -2,14 +2,11 @@ package com.tencent.mobileqq.observer;
 
 import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZoneLogTags;
 import mqq.observer.BusinessObserver;
 
 public class QZoneObserver
   implements BusinessObserver
 {
-  public static final String a = QZoneLogTags.LOG_TAG_UNDEALCOUNT + "QZoneObserver";
-  
   public void a(boolean paramBoolean, Bundle paramBundle) {}
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong) {}
@@ -29,9 +26,9 @@ public class QZoneObserver
       if (QLog.isColorLevel())
       {
         if ((l >>> 17 & 1L) != 0L) {
-          QLog.d(QZoneLogTags.LOG_TAG_ZEBRAALBUM + a, 2, "onReceive QZONE_GET_UNREAD hasNew: " + bool + "type:" + l + "and then call onGetQZoneFeedCountFin");
+          QLog.d("ZebraAlbum.UndealCount.QZoneObserver", 2, "onReceive QZONE_GET_UNREAD hasNew: " + bool + "type:" + l + "and then call onGetQZoneFeedCountFin");
         }
-        QLog.d(QZoneLogTags.LOG_TAG_UNDEALCOUNT + a, 2, "qzone redtypeinfo:onReceive QZONE_GET_UNREAD hasNew: " + bool + "type:" + l + "and then call onGetQZoneFeedCountFin");
+        QLog.d("UndealCount.UndealCount.QZoneObserver", 2, "qzone redtypeinfo:onReceive QZONE_GET_UNREAD hasNew: " + bool + ",type:" + l + " and then call onGetQZoneFeedCountFin");
       }
       a(paramBoolean, bool, l);
     }
@@ -59,7 +56,7 @@ public class QZoneObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.observer.QZoneObserver
  * JD-Core Version:    0.7.0.1
  */

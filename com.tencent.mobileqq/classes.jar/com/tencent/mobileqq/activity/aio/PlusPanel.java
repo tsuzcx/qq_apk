@@ -148,61 +148,61 @@ import java.util.Map;
 import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
-import uiz;
-import uja;
-import ujb;
-import ujc;
-import ujd;
-import uje;
-import ujf;
-import ujw;
+import ulz;
+import uma;
+import umb;
+import umc;
+import umd;
+import ume;
+import umf;
+import umw;
 
 public class PlusPanel
   extends RelativeLayout
   implements ViewPager.OnPageChangeListener, View.OnClickListener
 {
-  private static final int[] A = { 2131433168, 2130840499, 1104864064 };
-  private static final int[] B = { 2131433169, 2130840500, 1101678813 };
-  private static final int[] C = { 2131432204, 2130838406 };
-  private static final int[] D = { 2131437879, 2130838388, 1104864062 };
-  private static final int[] E = { 2131430727, 2130846157 };
-  private static final int[] F = { 2131430727, 2130846157, 1104874204 };
-  private static final int[] G = { 2131430728, 2130846148 };
-  private static final int[] H = { 2131431546, 2130841531, 1104639410 };
-  private static final int[] I = { 2131429890, 2130840507 };
-  private static final int[] J = { 2131429891, 2130840547, 1104536706 };
-  private static final int[] K = { 2131436957, 2130838407 };
-  private static final int[] L = { 2131438051, 2130840582 };
-  private static final int[] M = { 2131427866, 2130838383, 1104823592 };
-  private static final int[] N = { 2131427867, 2130838373, 1105298834 };
-  private static final int[] O = { 2131434944, 2130838402, 1104788679 };
-  private static final int[] P = { 2131437086, 2130838392 };
-  private static final int[] Q = { 2131438059, 2130842684 };
-  private static final int[] R = { 2131430717, 2130838405, 1105015724 };
-  private static final int[] T = { 2131438154, 2130838006 };
-  private static final int[] U = { 2131438155, 2130838004 };
-  private static int[] V = { 2131433327, 2130838395 };
-  private static final int[] W = { 2131438107, 2130838396 };
-  private static final int[] X = { 2131438126, 2130837745, 1106189400 };
-  private static final int[] Y = { 2131430780, 2130846158, 1106194086 };
-  private static final int[] Z = { 2131433614, 2130840621 };
+  private static final int[] A = { 2131433185, 2130840505, 1104864064 };
+  private static final int[] B = { 2131433186, 2130840506, 1101678813 };
+  private static final int[] C = { 2131432221, 2130838410 };
+  private static final int[] D = { 2131437896, 2130838392, 1104864062 };
+  private static final int[] E = { 2131430744, 2130846285 };
+  private static final int[] F = { 2131430744, 2130846285, 1104874204 };
+  private static final int[] G = { 2131430745, 2130846276 };
+  private static final int[] H = { 2131431563, 2130841568, 1104639410 };
+  private static final int[] I = { 2131429896, 2130840513 };
+  private static final int[] J = { 2131429897, 2130840553, 1104536706 };
+  private static final int[] K = { 2131436974, 2130838411 };
+  private static final int[] L = { 2131438068, 2130840588 };
+  private static final int[] M = { 2131427866, 2130838387, 1104823592 };
+  private static final int[] N = { 2131427867, 2130838377, 1105298834 };
+  private static final int[] O = { 2131434961, 2130838406, 1104788679 };
+  private static final int[] P = { 2131437103, 2130838396 };
+  private static final int[] Q = { 2131438076, 2130842783 };
+  private static final int[] R = { 2131430734, 2130838409, 1105015724 };
+  private static final int[] T = { 2131438172, 2130838009 };
+  private static final int[] U = { 2131438173, 2130838007 };
+  private static int[] V = { 2131438137, 2130838399 };
+  private static final int[] W = { 2131438124, 2130838400 };
+  private static final int[] X = { 2131438144, 2130837748, 1106189400 };
+  private static final int[] Y = { 2131430797, 2130846286, 1106194086 };
+  private static final int[] Z = { 2131433631, 2130840643 };
   private static ArrayMap jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-  private static final int[] aa = { 2131438817, 2130838185 };
-  private static final int[] ab = { 2131432264, 2130843978, 1106338673 };
-  private static final int[] ac = { 2131432265, 2130843977 };
-  private static final int[] ad = { 2131432266, 2130843975 };
-  private static final int[] ae = { 2131432290, 2130843985 };
-  private static final int[] af = { 2131432290, 2130843984 };
-  private static final int[] ag = { 2131432302, 2130843983 };
-  private static final int[] ah = { 0, 2130843950 };
-  private static final int[] ai = { 2131430835, 2130840542, 1105981808 };
-  private static final int[] aj = { 2131429892, 2130841250, 1106729451 };
-  private static final int[] t = { 2131434892, 2130838391, 1104864070 };
-  private static final int[] v = { 2131437038, 2130840425 };
-  private static final int[] x = { 2131430436, 2130841219, 1101487426 };
-  private static final int[] y = { 2131430437, 2130841219 };
-  private static final int[] z = { 2131430438, 2130841226 };
-  private final int[] S = { 2131439039, 2130837694, 1106114157 };
+  private static final int[] aa = { 2131438835, 2130838189 };
+  private static final int[] ab = { 2131432281, 2130844102, 1106338673 };
+  private static final int[] ac = { 2131432282, 2130844101 };
+  private static final int[] ad = { 2131432283, 2130844099 };
+  private static final int[] ae = { 2131432307, 2130844109 };
+  private static final int[] af = { 2131432307, 2130844108 };
+  private static final int[] ag = { 2131432319, 2130844107 };
+  private static final int[] ah = { 0, 2130844074 };
+  private static final int[] ai = { 2131430852, 2130840548, 1105981808 };
+  private static final int[] aj = { 2131429898, 2130841287, 1106729451 };
+  private static final int[] t = { 2131434909, 2130838395, 1104864070 };
+  private static final int[] v = { 2131437055, 2130840431 };
+  private static final int[] x = { 2131430453, 2130841256, 1101487426 };
+  private static final int[] y = { 2131430454, 2130841256 };
+  private static final int[] z = { 2131430455, 2130841263 };
+  private final int[] S = { 2131439067, 2130837697, 1106114157 };
   public int a;
   long jdField_a_of_type_Long;
   public ViewPager.OnPageChangeListener a;
@@ -218,33 +218,33 @@ public class PlusPanel
   private QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   ArrayList jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131438103, 2130838398 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131438120, 2130838402 };
   String[] jdField_a_of_type_ArrayOfJavaLangString = { "chat_tool_hongbao", "chat_tool_qwallettransfer" };
   protected final int[][] a;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = -1L;
-  private final int[] jdField_b_of_type_ArrayOfInt = { 2131433805, 2130838397, 1104864054 };
+  private final int[] jdField_b_of_type_ArrayOfInt = { 2131433822, 2130838401, 1104864054 };
   private final int[][] jdField_b_of_type_Array2dOfInt = { this.k, this.l, this.j, x, ab, this.S, this.q, D, A, this.m, t, v, O, B, J, H, F };
-  private final int[] jdField_c_of_type_ArrayOfInt = { 2131433806, 2130838380 };
+  private final int[] jdField_c_of_type_ArrayOfInt = { 2131433823, 2130838384 };
   private final int[][] jdField_c_of_type_Array2dOfInt = { this.jdField_b_of_type_ArrayOfInt, this.e, this.k, this.l, this.S, this.j, D, A, x, this.q, R, this.m, t, v, O, B, J, H, F, this.w, M, N, Y, X, ab, ai, aj };
-  private final int[] d = { 2131433818, 2130838403 };
-  private final int[] e = { 2131433818, 2130838403, 1104788673 };
-  private final int[] f = { 2131436957, 2130838407 };
-  private final int[] g = { 2131427780, 2130838408 };
-  private final int[] h = { 2131433811, 2130838374 };
-  private final int[] i = { 2131433812, 2130838374 };
-  private final int[] j = { 2131433815, 2130838375, 100719166 };
-  private final int[] k = { 2131433813, 2130838374, 1104651886 };
-  private final int[] l = { 2131433814, 2130838407, 1106658188 };
-  private final int[] m = { 2131433822, 2130838389, 1104864068 };
-  private final int[] n = { 2131433344, 2130838400 };
-  private final int[] o = { 2131438089, 2130838404 };
-  private final int[] p = { 2131433345, 2130838399 };
-  private final int[] q = { 2131433346, 2130838400, 1104864066 };
-  private final int[] r = { 2131433495, 2130838393 };
-  private final int[] s = { 2131433347, 2130838401 };
-  private final int[] u = { 2131432206, 2130838372 };
-  private final int[] w = { 2131438024, 2130841324, 1104445552 };
+  private final int[] d = { 2131433835, 2130838407 };
+  private final int[] e = { 2131433835, 2130838407, 1104788673 };
+  private final int[] f = { 2131436974, 2130838411 };
+  private final int[] g = { 2131427780, 2130838412 };
+  private final int[] h = { 2131433828, 2130838378 };
+  private final int[] i = { 2131433829, 2130838378 };
+  private final int[] j = { 2131433832, 2130838379, 100719166 };
+  private final int[] k = { 2131433830, 2130838378, 1104651886 };
+  private final int[] l = { 2131433831, 2130838411, 1106658188 };
+  private final int[] m = { 2131433839, 2130838393, 1104864068 };
+  private final int[] n = { 2131433361, 2130838404 };
+  private final int[] o = { 2131438106, 2130838408 };
+  private final int[] p = { 2131433362, 2130838403 };
+  private final int[] q = { 2131433363, 2130838404, 1104864066 };
+  private final int[] r = { 2131433512, 2130838397 };
+  private final int[] s = { 2131433364, 2130838405 };
+  private final int[] u = { 2131432223, 2130838376 };
+  private final int[] w = { 2131438041, 2130841361, 1104445552 };
   
   public PlusPanel(Context paramContext)
   {
@@ -266,17 +266,17 @@ public class PlusPanel
     {
     default: 
       return "";
-    case 2130838374: 
+    case 2130838378: 
       return "0";
-    case 2130838407: 
+    case 2130838411: 
       return "1";
-    case 2130838400: 
+    case 2130838404: 
       return "3";
-    case 2130841531: 
+    case 2130841568: 
       return "4";
-    case 2130838389: 
+    case 2130838393: 
       return "5";
-    case 2130838388: 
+    case 2130838392: 
       return "6";
     }
     return "7";
@@ -464,13 +464,13 @@ public class PlusPanel
     Context localContext = getContext();
     if ((localObject1 != null) && (!((GoldMsgChatHelper.GoldMsgChatState)localObject1).jdField_a_of_type_Boolean))
     {
-      QQToast.a(localContext, 2131432297, 0).a();
+      QQToast.a(localContext, 2131432314, 0).a();
       return;
     }
     localObject1 = localContext.getResources();
     long l2 = QWalletSetting.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "money_max", 20000L);
-    Object localObject3 = String.format(((Resources)localObject1).getString(2131432285), new Object[] { NumAnim.formatNumber(0.01D, false) });
-    String str = String.format(((Resources)localObject1).getString(2131432284), new Object[] { NumAnim.formatNumber(l2 / 100.0D, false) });
+    Object localObject3 = String.format(((Resources)localObject1).getString(2131432302), new Object[] { NumAnim.formatNumber(0.01D, false) });
+    String str = String.format(((Resources)localObject1).getString(2131432301), new Object[] { NumAnim.formatNumber(l2 / 100.0D, false) });
     PriceSettingDialog.PriceTextWater localPriceTextWater = new PriceSettingDialog.PriceTextWater(localContext, 1L, l2, (String)localObject3, str);
     long l1 = 1L;
     Object localObject2 = GoldMsgChatHelper.GoldMsgFriendSet.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
@@ -478,13 +478,13 @@ public class PlusPanel
       l1 = ((GoldMsgChatHelper.GoldMsgFriendSet)localObject2).jdField_a_of_type_Long;
     }
     localObject2 = NumAnim.formatNumber(l1 / 100.0D, false);
-    ujd localujd = new ujd(this);
-    localObject3 = new uje(this, localContext, (String)localObject3, l2, str);
-    str = ((Resources)localObject1).getString(2131432276);
+    umd localumd = new umd(this);
+    localObject3 = new ume(this, localContext, (String)localObject3, l2, str);
+    str = ((Resources)localObject1).getString(2131432293);
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      DialogUtil.a(localContext, 2131432290, 2131432295, str, paramBoolean, ((Resources)localObject1).getString(2131432295), (String)localObject2, localPriceTextWater, localujd, (DialogInterface.OnClickListener)localObject3);
+      DialogUtil.a(localContext, 2131432307, 2131432312, str, paramBoolean, ((Resources)localObject1).getString(2131432312), (String)localObject2, localPriceTextWater, localumd, (DialogInterface.OnClickListener)localObject3);
       return;
     }
   }
@@ -542,7 +542,7 @@ public class PlusPanel
       if (i1 < i3)
       {
         PlusPanel.PluginData localPluginData = (PlusPanel.PluginData)localArrayList.get(i1);
-        if ((localPluginData == null) || (localPluginData.jdField_a_of_type_Int != 2130838004)) {
+        if ((localPluginData == null) || (localPluginData.jdField_a_of_type_Int != 2130838007)) {
           break label654;
         }
         i2 = i1;
@@ -593,7 +593,7 @@ public class PlusPanel
           if (i2 != i1) {
             this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(i1);
           }
-          postDelayed(new uiz(this, i1, bool1, bool2, bool3, str), 300L);
+          postDelayed(new ulz(this, i1, bool1, bool2, bool3, str), 300L);
           return;
           bool1 = false;
           break;
@@ -810,14 +810,14 @@ public class PlusPanel
   private void e()
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), null);
-    localActionSheet.a(2131430406, 5);
+    localActionSheet.a(2131430423, 5);
     boolean bool = ((TroopInfoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     if (bool) {}
-    for (String str = BaseApplicationImpl.getContext().getResources().getString(2131430405);; str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getResources().getString(2131430404))
+    for (String str = BaseApplicationImpl.getContext().getResources().getString(2131430422);; str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getResources().getString(2131430421))
     {
       localActionSheet.a(str, 5);
-      localActionSheet.c(2131432998);
-      localActionSheet.a(new ujf(this, bool, localActionSheet));
+      localActionSheet.c(2131433015);
+      localActionSheet.a(new umf(this, bool, localActionSheet));
       if (!localActionSheet.isShowing()) {
         localActionSheet.show();
       }
@@ -1029,7 +1029,7 @@ public class PlusPanel
                 catch (Exception localException2)
                 {
                   Object localObject1;
-                  localObject2 = localResources.getDrawable(2130841229);
+                  localObject2 = localResources.getDrawable(2130841266);
                   continue;
                 }
                 localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject1);
@@ -1249,7 +1249,7 @@ public class PlusPanel
               }
               this.jdField_a_of_type_JavaUtilArrayList.add(this.m);
               break label164;
-              i3 = 2130841229;
+              i3 = 2130841266;
             }
           }
         }
@@ -1272,7 +1272,7 @@ public class PlusPanel
             }
             catch (Exception localException3)
             {
-              localObject3 = ((Resources)localObject4).getDrawable(2130841229);
+              localObject3 = ((Resources)localObject4).getDrawable(2130841266);
               continue;
             }
             localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject2);
@@ -1281,7 +1281,7 @@ public class PlusPanel
             localPluginData.jdField_b_of_type_JavaLangString = (localPluginData.jdField_a_of_type_JavaLangString + " 按钮");
             localArrayList.add(localPluginData);
             break;
-            i3 = 2130841229;
+            i3 = 2130841266;
           }
         }
         localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(arrayOfInt[1]);
@@ -1311,7 +1311,7 @@ public class PlusPanel
             if (arrayOfInt != this.jdField_b_of_type_ArrayOfInt) {
               break label2627;
             }
-            localPluginData.jdField_b_of_type_JavaLangString = BaseApplicationImpl.getContext().getResources().getString(2131430440);
+            localPluginData.jdField_b_of_type_JavaLangString = BaseApplicationImpl.getContext().getResources().getString(2131430457);
           }
         }
         for (;;)
@@ -1361,7 +1361,7 @@ public class PlusPanel
           localPluginData.jdField_a_of_type_Boolean = false;
           break label2326;
           if (arrayOfInt == this.jdField_c_of_type_ArrayOfInt) {
-            localPluginData.jdField_b_of_type_JavaLangString = BaseApplicationImpl.getContext().getResources().getString(2131430439);
+            localPluginData.jdField_b_of_type_JavaLangString = BaseApplicationImpl.getContext().getResources().getString(2131430456);
           }
         }
       }
@@ -1382,7 +1382,7 @@ public class PlusPanel
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAdapter.getCount(), false);
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setVisibility(0);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAdapter.notifyDataSetChanged();
-          post(new uja(this));
+          post(new uma(this));
           return;
         }
         catch (Exception localException4)
@@ -1429,14 +1429,14 @@ public class PlusPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.a();
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131363017));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131363018));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131363035));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131363036));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAdapter = new PanelAdapter(BaseApplicationImpl.getContext());
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAdapter.a(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelAdapter);
     a(this);
-    paramBaseChatPie = getResources().getDrawable(2130845819);
+    paramBaseChatPie = getResources().getDrawable(2130845947);
     if ((paramBaseChatPie instanceof BitmapDrawable)) {
       paramBaseChatPie = ((BitmapDrawable)paramBaseChatPie).getBitmap();
     }
@@ -1592,7 +1592,7 @@ public class PlusPanel
         if (VideoEnvironment.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
           continue;
         }
-        DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131432999, new ujb(this)).show();
+        DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131433016, new umb(this)).show();
         continue;
         if (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.r()) {
           continue;
@@ -1611,9 +1611,9 @@ public class PlusPanel
       switch (i3)
       {
       default: 
-        ujw.a(this, (PanelAdapter.ViewHolder)localObject1);
-      case 2130838383: 
-      case 2130840621: 
+        umw.a(this, (PanelAdapter.ViewHolder)localObject1);
+      case 2130838387: 
+      case 2130840643: 
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
         {
           if (!((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
@@ -1624,7 +1624,7 @@ public class PlusPanel
             paramView = null;
             localObject2 = (TroopAppMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(108);
             if ((paramView != null) && (paramView.redPoint)) {
-              ThreadManager.post(new ujc(this, (TroopAppMgr)localObject2, paramView), 8, null, false);
+              ThreadManager.post(new umc(this, (TroopAppMgr)localObject2, paramView), 8, null, false);
             }
             if ((paramView == null) || (!paramView.canRemove)) {
               break label7906;
@@ -1638,10 +1638,10 @@ public class PlusPanel
           return;
         }
         break;
-      case 2130838380: 
-      case 2130838403: 
-      case 2130838394: 
-      case 2130838397: 
+      case 2130838384: 
+      case 2130838407: 
+      case 2130838398: 
+      case 2130838401: 
         label620:
         paramView = new Intent();
         label656:
@@ -1792,7 +1792,7 @@ public class PlusPanel
               ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005153", "0X8005153", 0, 0, "", "", "", "");
               if (!LBSHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
               {
-                this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d(BaseApplicationImpl.getContext().getString(2131437394));
+                this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d(BaseApplicationImpl.getContext().getString(2131437411));
                 ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005155", "0X8005155", 0, 0, "", "", "", "");
                 ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005155", "0X8005155", 0, 0, "", "", "", "");
                 localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -1806,7 +1806,7 @@ public class PlusPanel
             }
             else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1010) && (!DatingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
             {
-              this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d(BaseApplicationImpl.getContext().getString(2131437394));
+              this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d(BaseApplicationImpl.getContext().getString(2131437411));
               break;
             }
             this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.ao();
@@ -1849,7 +1849,7 @@ public class PlusPanel
               ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005152", "0X8005152", 0, 0, "", "", "", "");
               if (!LBSHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
               {
-                this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d(BaseApplicationImpl.getContext().getString(2131437393));
+                this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d(BaseApplicationImpl.getContext().getString(2131437410));
                 ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005154", "0X8005154", 0, 0, "", "", "", "");
                 localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
                 if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) {}
@@ -1862,7 +1862,7 @@ public class PlusPanel
             }
             else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1010) && (!DatingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
             {
-              this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d(BaseApplicationImpl.getContext().getString(2131437393));
+              this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d(BaseApplicationImpl.getContext().getString(2131437410));
               ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049C8", "0X80049C8", 0, 0, "", "", "", "");
               break;
             }
@@ -1889,7 +1889,7 @@ public class PlusPanel
               }
               AIOPanelUtiles.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800407B", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
               break;
-              QQToast.a(BaseApplicationImpl.getContext(), 2131429069, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
+              QQToast.a(BaseApplicationImpl.getContext(), 2131429075, 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
               if (QLog.isColorLevel())
               {
                 QLog.d("AIOAudioPanel", 2, "Don't support ivr");
@@ -2308,7 +2308,7 @@ public class PlusPanel
                 {
                   TroopPicEffectsController.a("app_entry", "page_clk");
                   break;
-                  SharedPreUtils.F(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+                  SharedPreUtils.E(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
                   paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), TroopPicEffectGuidePicActivity.class);
                   paramView.putExtra("friendUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
                   paramView.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString);

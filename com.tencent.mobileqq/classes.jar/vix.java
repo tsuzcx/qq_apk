@@ -1,37 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder.Holder;
 
 public class vix
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+  implements Animation.AnimationListener
 {
-  public vix(PEPanel paramPEPanel) {}
+  public vix(TextTranslationItemBuilder paramTextTranslationItemBuilder, TextTranslationItemBuilder.Holder paramHolder, CharSequence paramCharSequence) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.setListViewVisibile(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.e.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.e.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.a.requestLayout();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.g = 0;
+    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.a.getLayoutParams();
+    paramAnimation.width = -2;
+    paramAnimation.height = -2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.a.setAnimation(null);
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if ((paramValueAnimator.getCurrentPlayTime() >= paramValueAnimator.getDuration() / 3L) && (QLog.isDebugVersion()))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("zuiAnim.getDuration =  ");
-      localStringBuilder.append(paramValueAnimator.getDuration());
-      localStringBuilder.append(" currentPlaytime = ");
-      localStringBuilder.append(paramValueAnimator.getCurrentPlayTime());
-      QLog.d("PokeEmo.PEPanel", 4, localStringBuilder.toString());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.g = 0;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.e.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.b);
   }
 }
 

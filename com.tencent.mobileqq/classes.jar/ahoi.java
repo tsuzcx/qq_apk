@@ -1,18 +1,9 @@
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import java.io.File;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
 
 public class ahoi
+  extends ahoh
 {
-  public int a;
-  public Rect a;
-  public CameraCover.PictureCallback a;
-  public File a;
-  public boolean a;
-  public int b;
-  
-  private ahoi(CameraProxy paramCameraProxy) {}
+  public ahoi(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase, boolean paramBoolean) {}
 }
 
 

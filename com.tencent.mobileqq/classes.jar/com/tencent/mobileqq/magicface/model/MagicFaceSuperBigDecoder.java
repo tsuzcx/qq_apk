@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.magicface.model;
 
-import adqp;
+import aedv;
 import com.tencent.mobileqq.magicface.DecoderUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ public class MagicFaceSuperBigDecoder
   
   public MagicFaceSuperBigDecoder()
   {
-    this.jdField_a_of_type_JavaLangRunnable = new adqp(this);
+    this.jdField_a_of_type_JavaLangRunnable = new aedv(this);
     if (QLog.isColorLevel()) {
       QLog.d("MagicFaceSuperBigDecoder", 2, "func MagicFaceSuperBigDecoder [Constructor] begins");
     }
@@ -92,7 +92,7 @@ public class MagicFaceSuperBigDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.MagicFaceSuperBigDecoder
  * JD-Core Version:    0.7.0.1
  */

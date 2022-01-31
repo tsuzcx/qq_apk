@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelPublicAcnt;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
 
-public class ahhs
-  extends GroupSearchEngine.SearchEngineEntity
+public final class ahhs
+  implements Parcelable.Creator
 {
-  public ahhs(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
+  public FilterCategory a(Parcel paramParcel)
   {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
+    return new FilterCategory(paramParcel);
   }
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public FilterCategory[] a(int paramInt)
   {
-    return new GroupSearchModelPublicAcnt(paramList, paramString, GroupSearchEngine.a(this.a));
+    return new FilterCategory[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahhs
  * JD-Core Version:    0.7.0.1
  */

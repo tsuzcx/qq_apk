@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.activity.aio.HotReactiveHelper;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ydp
-  implements Runnable
+class ydp
+  implements DialogInterface.OnClickListener
 {
-  public ydp(BuddyListAdapter paramBuddyListAdapter) {}
+  ydp(ydn paramydn) {}
   
-  public void run()
-  {
-    if ((FriendsManager)BuddyListAdapter.a(this.a).getManager(50) != null)
-    {
-      HashSet localHashSet = HotReactiveHelper.a();
-      if ((localHashSet != null) && (localHashSet.size() > 0))
-      {
-        ArrayList localArrayList = new ArrayList(localHashSet);
-        BuddyListAdapter.a(this.a).b(localArrayList);
-        localHashSet.clear();
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ydp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.OnCustomizeListener;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class xds
-  implements CustomizeStrategyFactory.OnCustomizeListener
+  implements DialogInterface.OnClickListener
 {
-  public xds(RedPacketManager paramRedPacketManager, RedPacketInfoBase paramRedPacketInfoBase, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
+  public xds(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramRedPacketInfo.isCache = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.isCache;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
+    paramDialogInterface.dismiss();
   }
 }
 

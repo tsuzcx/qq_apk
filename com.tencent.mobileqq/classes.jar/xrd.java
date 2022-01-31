@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.AnimationProxy;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-class xrd
+public class xrd
   implements Runnable
 {
-  xrd(xrc paramxrc, int paramInt, View paramView) {}
+  public xrd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
   public void run()
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(1000L);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new VideoFilterViewPager.AnimationProxy(this.jdField_a_of_type_Xrc.a, VideoFilterViewPager.a(this.jdField_a_of_type_Xrc.a), this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+    if ((this.a.a != null) && (!this.a.a.isEnabled())) {
+      this.a.a.setEnabled(true);
+    }
   }
 }
 

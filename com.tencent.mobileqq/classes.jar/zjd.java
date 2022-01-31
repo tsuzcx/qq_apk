@@ -1,19 +1,32 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.MsgCSBody;
-import com.tencent.litetransfersdk.ProtocolHelper;
-import com.tencent.mobileqq.app.RouterHandler;
-import java.util.List;
-import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class zjd
-  implements Runnable
+  implements Comparator
 {
-  public zjd(RouterHandler paramRouterHandler, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList, boolean paramBoolean) {}
+  public zjd(PhoneContactManagerImp paramPhoneContactManagerImp, FriendsManager paramFriendsManager) {}
   
-  public void run()
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    MsgCSBody localMsgCSBody = this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.MsgCSBodyFromNFCNotify(0, this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReceive(localMsgCSBody);
+    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramPhoneContact1.unifiedCode, true);
+    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramPhoneContact2.unifiedCode, true);
+    if ((bool1) && (bool2)) {}
+    while (paramPhoneContact2.samFriend > paramPhoneContact1.samFriend)
+    {
+      do
+      {
+        return 1;
+      } while (bool1);
+      if (bool2) {
+        return -1;
+      }
+    }
+    if (paramPhoneContact2.samFriend < paramPhoneContact1.samFriend) {
+      return -1;
+    }
+    return PhoneContactManagerImp.a(paramPhoneContact1, paramPhoneContact2);
   }
 }
 

@@ -1,24 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.FoodAloneTextItem;
+import cooperation.qzone.plugin.QZonePluginManager;
 
 public class amxw
-  implements amxs
+  implements Runnable
 {
-  public amxw(FoodAloneTextItem paramFoodAloneTextItem) {}
+  public amxw(QZonePluginManager paramQZonePluginManager) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void run()
   {
-    if (paramInt == 0) {
-      return TroopFileUtils.b(paramString);
-    }
-    return "";
+    QZonePluginManager.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxw
  * JD-Core Version:    0.7.0.1
  */

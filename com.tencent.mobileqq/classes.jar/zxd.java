@@ -1,41 +1,25 @@
-import android.opengl.GLES20;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARDeviceController;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import java.util.HashMap;
 
-class zxd
+public class zxd
   implements Runnable
 {
-  zxd(zxa paramzxa, byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3) {}
+  public zxd(ARDeviceController paramARDeviceController, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if (zxa.c(this.jdField_a_of_type_Zxa) != -1) {
-      GLES20.glDeleteTextures(1, new int[] { zxa.c(this.jdField_a_of_type_Zxa) }, 0);
-    }
-    if (zxa.d(this.jdField_a_of_type_Zxa) != -1) {
-      GLES20.glDeleteTextures(1, new int[] { zxa.d(this.jdField_a_of_type_Zxa) }, 0);
-    }
-    if (zxa.e(this.jdField_a_of_type_Zxa) != -1) {
-      GLES20.glDeleteTextures(1, new int[] { zxa.e(this.jdField_a_of_type_Zxa) }, 0);
-    }
-    try
-    {
-      zxa.b(this.jdField_a_of_type_Zxa, zxa.a(this.jdField_a_of_type_Zxa, 1, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-      zxa.c(this.jdField_a_of_type_Zxa, zxa.a(this.jdField_a_of_type_Zxa, 2, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_Int / 2, (this.jdField_b_of_type_Int + 1) / 2));
-      zxa.d(this.jdField_a_of_type_Zxa, zxa.a(this.jdField_a_of_type_Zxa, 3, this.c, this.jdField_a_of_type_Int / 2, (this.jdField_b_of_type_Int + 1) / 2));
-      zxa.a(this.jdField_a_of_type_Zxa, true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("AREngine_OnlineVideoARRenderable", 2, "drawFrame_soft exception=" + localException.getMessage());
-          localException.printStackTrace();
-        }
-      }
-    }
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplication.getContext()).a(null, "AREnable", this.jdField_a_of_type_Boolean, 0L, 0L, (HashMap)localObject, null);
+    localObject = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
+    ((SharedPreferences.Editor)localObject).putInt("ar_incompatible_reason", this.jdField_a_of_type_Int);
+    SharedPreUtils.a((SharedPreferences.Editor)localObject);
   }
 }
 

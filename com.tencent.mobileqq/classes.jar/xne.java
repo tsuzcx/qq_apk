@@ -1,14 +1,15 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class xne
-  implements Runnable
+public class xne
+  implements DialogInterface.OnClickListener
 {
-  xne(xnd paramxnd) {}
+  public xne(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NewFlowCameraActivity.a(this.a.a).setVisibility(8);
+    paramDialogInterface.dismiss();
   }
 }
 

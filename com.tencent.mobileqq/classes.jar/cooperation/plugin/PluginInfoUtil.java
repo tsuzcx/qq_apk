@@ -1,6 +1,6 @@
 package cooperation.plugin;
 
-import alwc;
+import ammg;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -204,7 +204,7 @@ public class PluginInfoUtil
   
   public static boolean a(File paramFile)
   {
-    return !IOUtil.contentEquals(new File(paramFile, "PluginVersion.ini"), "345599");
+    return !IOUtil.contentEquals(new File(paramFile, "PluginVersion.ini"), "349884");
   }
   
   /* Error */
@@ -296,7 +296,7 @@ public class PluginInfoUtil
   
   public static File[] a(File paramFile)
   {
-    return paramFile.listFiles(new alwc());
+    return paramFile.listFiles(new ammg());
   }
 }
 

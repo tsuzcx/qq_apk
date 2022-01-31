@@ -1,18 +1,32 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.annotation.TargetApi;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager.LoadMusicStepListener;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
-@TargetApi(11)
-class anpd
-  implements Animator.AnimatorListener
+public class anpd
+  implements QIMMusicConfigManager.LoadMusicStepListener
 {
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public anpd(MusicProviderView paramMusicProviderView) {}
   
-  public void onAnimationEnd(Animator paramAnimator) {}
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicProviderView", 2, "onStep:" + paramInt + " done:" + paramBoolean);
+    }
+    if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
+      this.a.a.sendEmptyMessage(3);
+    }
+  }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(MusicItemInfo paramMusicItemInfo)
+  {
+    Message localMessage = this.a.a.obtainMessage();
+    localMessage.obj = paramMusicItemInfo;
+    localMessage.what = 4;
+    this.a.a.sendMessage(localMessage);
+  }
 }
 
 

@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class abxr
-  implements WebProcessManager.WebProcessStartListener
+public final class abxr
+  implements Runnable
 {
-  abxr(abxp paramabxp) {}
+  public abxr(int paramInt, String paramString, boolean paramBoolean, long paramLong) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {
-      this.a.a.a.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, "actEnterHotChatAIO", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, localHashMap, "");
+    if (QLog.isDevelopLevel()) {
+      NearbyUtils.a("NearbyTransitActivity", "reportResult", new Object[] { "end of report" });
     }
   }
 }

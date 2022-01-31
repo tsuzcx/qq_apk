@@ -1,121 +1,93 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
+import com.tencent.widget.HorizontalListView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class xre
-  extends PagerAdapter
+  implements Animator.AnimatorListener
 {
-  private final SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final Map jdField_a_of_type_JavaUtilMap = new HashMap();
+  public xre(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public xre(VideoFilterViewPager paramVideoFilterViewPager) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public int a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
-    }
-    return -1;
-  }
-  
-  @Nullable
-  public View a(int paramInt)
-  {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterDesc a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterDesc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
-    }
-    View localView = (View)paramObject;
-    localView.removeCallbacks((Runnable)localView.getTag());
-    localView.clearAnimation();
-    paramViewGroup.removeView(localView);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
-    paramViewGroup = paramObject;
-    if (paramObject == null)
+    if (!this.a.s)
     {
-      paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
-    }
-    paramViewGroup.offer(localView);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
-    }
-    Object localObject1 = a(paramInt);
-    if (localObject1 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
+      if (FlowCameraConstant.a == 2) {
+        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.e();
       }
-      return null;
-    }
-    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
-    if (localObject1 != null) {}
-    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2130970322, null);
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      if (NewFlowCameraActivity.i(this.a))
+      {
+        AVCodec.get().retake();
+        SLog.c("PTV.NewFlowCameraActivity", "AVCodec.get().retake() by mbRetake flag");
+        NewFlowCameraActivity.i(this.a, false);
       }
-      paramViewGroup.addView((View)localObject2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      return localObject2;
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.x();
+      if (NewFlowCameraActivity.j(this.a))
+      {
+        if (FlowCameraConstant.a != 1) {
+          break label235;
+        }
+        NewFlowCameraActivity.a(this.a, true);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Double = 0.0D;
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.f();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.reset();
+        this.a.F();
+        if (QLog.isColorLevel()) {
+          QLog.d("PTV.NewFlowCameraActivity", 2, "start recording start time=" + this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_Long);
+        }
+        this.a.s = true;
+        if (this.a.g) {
+          this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(4);
+        }
+        return;
+        label235:
+        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.c(true);
+      }
     }
+    if (this.a.g) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    }
+    paramAnimator = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    int i = AIOUtils.a(59.0F, this.a.getResources());
+    paramAnimator.width = i;
+    paramAnimator.height = i;
+    paramAnimator.addRule(13);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramAnimator);
+    paramAnimator = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
+    i = AIOUtils.a(84.0F, this.a.getResources());
+    paramAnimator.width = i;
+    paramAnimator.height = i;
+    paramAnimator.addRule(13);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramAnimator);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return ((paramObject instanceof View)) && (paramObject == paramView);
+    this.a.s = false;
   }
 }
 

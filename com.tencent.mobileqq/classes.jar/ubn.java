@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class ubn
-  implements DialogInterface.OnClickListener
+class ubn
+  implements Runnable
 {
-  public ubn(TroopTransferActivity paramTroopTransferActivity, QQCustomDialog paramQQCustomDialog) {}
+  ubn(ubm paramubm, boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    TroopMemberListActivity.a(this.jdField_a_of_type_Ubm.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "");
   }
 }
 

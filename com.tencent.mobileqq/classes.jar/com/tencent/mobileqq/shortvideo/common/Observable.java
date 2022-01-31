@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.shortvideo.common;
 
-import ahmf;
+import aiah;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Observable
 {
-  private ahmf a;
+  private aiah a;
   public String a;
   
   public Observable()
   {
     this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_a_of_type_Ahmf = new ahmf(this);
+    this.jdField_a_of_type_Aiah = new aiah(this);
   }
   
   public void a(int paramInt)
   {
     try
     {
-      ArrayList localArrayList = this.jdField_a_of_type_Ahmf.a(Integer.valueOf(paramInt));
+      ArrayList localArrayList = this.jdField_a_of_type_Aiah.a(Integer.valueOf(paramInt));
       if (localArrayList != null) {
         localArrayList.clear();
       }
@@ -32,7 +32,7 @@ public class Observable
   {
     try
     {
-      Object localObject = this.jdField_a_of_type_Ahmf.a(Integer.valueOf(paramInt));
+      Object localObject = this.jdField_a_of_type_Aiah.a(Integer.valueOf(paramInt));
       if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
       {
         localObject = ((ArrayList)localObject).iterator();
@@ -53,7 +53,7 @@ public class Observable
   {
     try
     {
-      this.jdField_a_of_type_Ahmf.a(paramObserver);
+      this.jdField_a_of_type_Aiah.a(paramObserver);
       return;
     }
     finally
@@ -72,7 +72,7 @@ public class Observable
       while (i < j)
       {
         int k = paramVarArgs[i];
-        this.jdField_a_of_type_Ahmf.a(Integer.valueOf(k), paramObserver);
+        this.jdField_a_of_type_Aiah.a(Integer.valueOf(k), paramObserver);
         i += 1;
       }
       return;

@@ -1,137 +1,126 @@
-public final class wyk
-  implements Runnable
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.pic.PresendPicMgr;
+import com.tencent.mobileqq.pic.compress.Utils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class wyk
+  implements View.OnClickListener
 {
-  public wyk(int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public wyk(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  /* Error */
-  public void run()
+  public void onClick(View paramView)
   {
-    // Byte code:
-    //   0: ldc 27
-    //   2: astore_1
-    //   3: invokestatic 32	com/tencent/mobileqq/activity/qwallet/utils/QWalletTools:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnull +8 -> 16
-    //   11: aload_2
-    //   12: invokevirtual 38	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   15: astore_1
-    //   16: new 40	java/lang/StringBuilder
-    //   19: dup
-    //   20: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   23: invokestatic 47	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   26: invokevirtual 53	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
-    //   29: invokevirtual 59	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   32: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   35: ldc 65
-    //   37: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: aload_1
-    //   41: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: astore_2
-    //   48: aload_2
-    //   49: astore_1
-    //   50: aload_0
-    //   51: getfield 14	wyk:jdField_a_of_type_Int	I
-    //   54: iconst_1
-    //   55: if_icmpne +61 -> 116
-    //   58: aload_2
-    //   59: astore_1
-    //   60: aload_0
-    //   61: getfield 16	wyk:b	I
-    //   64: ifle +52 -> 116
-    //   67: aload_2
-    //   68: astore_1
-    //   69: aload_0
-    //   70: getfield 16	wyk:b	I
-    //   73: iconst_3
-    //   74: if_icmpge +42 -> 116
-    //   77: new 40	java/lang/StringBuilder
-    //   80: dup
-    //   81: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   84: aload_2
-    //   85: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: ldc 73
-    //   90: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: aload_0
-    //   94: getfield 14	wyk:jdField_a_of_type_Int	I
-    //   97: invokevirtual 76	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   100: ldc 73
-    //   102: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: aload_0
-    //   106: getfield 16	wyk:b	I
-    //   109: invokevirtual 76	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   112: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   115: astore_1
-    //   116: new 78	java/io/File
-    //   119: dup
-    //   120: aload_1
-    //   121: invokespecial 81	java/io/File:<init>	(Ljava/lang/String;)V
-    //   124: invokevirtual 85	java/io/File:exists	()Z
-    //   127: ifeq +81 -> 208
-    //   130: aload_1
-    //   131: invokestatic 90	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)[B
-    //   134: astore_1
-    //   135: aload_1
-    //   136: ifnull +72 -> 208
-    //   139: aload_1
-    //   140: arraylength
-    //   141: ifle +67 -> 208
-    //   144: new 92	com/qq/taf/jce/JceInputStream
-    //   147: dup
-    //   148: aload_1
-    //   149: invokespecial 95	com/qq/taf/jce/JceInputStream:<init>	([B)V
-    //   152: astore_2
-    //   153: aload_2
-    //   154: ldc 97
-    //   156: invokevirtual 101	com/qq/taf/jce/JceInputStream:setServerEncoding	(Ljava/lang/String;)I
-    //   159: pop
-    //   160: new 103	Wallet/PfaFriendRsp
-    //   163: dup
-    //   164: invokespecial 104	Wallet/PfaFriendRsp:<init>	()V
-    //   167: astore_1
-    //   168: aload_1
-    //   169: aload_2
-    //   170: invokevirtual 108	Wallet/PfaFriendRsp:readFrom	(Lcom/qq/taf/jce/JceInputStream;)V
-    //   173: iconst_0
-    //   174: putstatic 111	com/tencent/mobileqq/activity/qwallet/TopayManager:jdField_a_of_type_Int	I
-    //   177: getstatic 114	com/tencent/mobileqq/activity/qwallet/TopayManager:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   180: new 116	wyl
-    //   183: dup
-    //   184: aload_0
-    //   185: aload_1
-    //   186: invokespecial 119	wyl:<init>	(Lwyk;LWallet/PfaFriendRsp;)V
-    //   189: invokevirtual 125	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   192: pop
-    //   193: return
-    //   194: astore_2
-    //   195: aconst_null
-    //   196: astore_1
-    //   197: aload_2
-    //   198: invokevirtual 128	java/lang/Exception:printStackTrace	()V
-    //   201: goto -28 -> 173
-    //   204: astore_2
-    //   205: goto -8 -> 197
-    //   208: aconst_null
-    //   209: astore_1
-    //   210: goto -37 -> 173
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	213	0	this	wyk
-    //   2	208	1	localObject1	Object
-    //   6	164	2	localObject2	Object
-    //   194	4	2	localException1	java.lang.Exception
-    //   204	1	2	localException2	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   11	16	194	java/lang/Exception
-    //   16	48	194	java/lang/Exception
-    //   50	58	194	java/lang/Exception
-    //   60	67	194	java/lang/Exception
-    //   69	116	194	java/lang/Exception
-    //   116	135	194	java/lang/Exception
-    //   139	168	194	java/lang/Exception
-    //   168	173	204	java/lang/Exception
+    paramView = PresendPicMgr.a(null);
+    if (this.a.jdField_c_of_type_JavaUtilArrayList.contains(Integer.valueOf(this.a.r)))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
+      int i = this.a.jdField_c_of_type_JavaUtilArrayList.indexOf(Integer.valueOf(this.a.r));
+      if (i >= 0)
+      {
+        this.a.jdField_b_of_type_JavaUtilArrayList.remove(this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.r));
+        this.a.jdField_c_of_type_JavaUtilArrayList.remove(i);
+        if (PhotoPreviewActivity.a(this.a) != null) {
+          PhotoPreviewActivity.a(this.a).remove(this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.r));
+        }
+        if (paramView != null) {
+          paramView.b((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.r), 1014);
+        }
+      }
+      this.a.e();
+      if ((this.a.jdField_c_of_type_JavaUtilArrayList.size() == 0) && (!PhotoPreviewActivity.a(this.a))) {
+        PhotoPreviewActivity.a(this.a, false);
+      }
+    }
+    for (;;)
+    {
+      if (((this.a.k) || (this.a.l)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager != null))
+      {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.a(this.a.jdField_b_of_type_JavaUtilArrayList);
+        PhotoPreviewActivity.a(this.a, (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.r));
+      }
+      LpReportInfo_pf00064.allReport(603, 2);
+      return;
+      if (this.a.jdField_b_of_type_JavaUtilArrayList.size() >= this.a.jdField_c_of_type_Int)
+      {
+        long l = System.currentTimeMillis();
+        if (l - this.a.jdField_a_of_type_Long >= 700L)
+        {
+          QQToast.a(this.a, this.a.a(), 1000).b(this.a.d);
+          this.a.jdField_a_of_type_Long = l;
+          if (PhotoPreviewActivity.b(this.a)) {
+            ReportController.b(null, "CliOper", "", "", "0x80083EC", "0x80083EC", 0, 0, "", "", "", "");
+          }
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
+        return;
+      }
+      if ((this.a.e == 2) && (this.a.r < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (this.a.r >= 0) && (new File((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.r)).length() > 19922944L))
+      {
+        QQToast.a(this.a, this.a.getResources().getString(2131435920), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
+        return;
+      }
+      Object localObject;
+      if ((this.a.s) && (this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.r < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (this.a.r >= 0) && (this.a.r < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (this.a.r >= 0))
+      {
+        localObject = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.r);
+        LocalMediaInfo localLocalMediaInfo = PhotoPreviewActivity.a(this.a, (String)localObject);
+        if ((PhotoPreviewActivity.a(this.a, (String)localObject) == 1) && (!AlbumUtil.a(this.a, PhotoPreviewActivity.a(this.a), localLocalMediaInfo, this.a.j)))
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
+          return;
+        }
+      }
+      if (this.a.getIntent().getBooleanExtra("PhotoConst.IS_SEND_GIF_SIZE_LIMIT", false))
+      {
+        localObject = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.r);
+        if ((Utils.a((String)localObject)) && (FileUtils.a((String)localObject) > 3145728L))
+        {
+          QQToast.a(this.a, "图片文件过大", 0).b(this.a.d);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
+          return;
+        }
+      }
+      if ((paramView != null) && (this.a.r < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (this.a.r >= 0) && (!PhotoPreviewActivity.a(this.a))) {
+        paramView.a((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.r), this.a.m);
+      }
+      paramView = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.r);
+      if ((this.a.r < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (this.a.r >= 0))
+      {
+        this.a.jdField_b_of_type_JavaUtilArrayList.add(paramView);
+        this.a.jdField_c_of_type_JavaUtilArrayList.add(Integer.valueOf(this.a.r));
+        if (this.a.s)
+        {
+          if (this.a.jdField_b_of_type_JavaUtilHashMap == null) {
+            this.a.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+          }
+          localObject = PhotoPreviewActivity.a(this.a, paramView);
+          this.a.jdField_b_of_type_JavaUtilHashMap.put(paramView, localObject);
+          if (PhotoPreviewActivity.a(this.a) == null) {
+            PhotoPreviewActivity.a(this.a, new HashMap());
+          }
+          if (localObject != null) {
+            PhotoPreviewActivity.a(this.a).put(paramView, Integer.valueOf(((LocalMediaInfo)localObject).panoramaPhotoType));
+          }
+        }
+      }
+      PhotoPreviewActivity.a(this.a, this.a.jdField_c_of_type_JavaUtilArrayList.indexOf(Integer.valueOf(this.a.r)) + 1);
+      this.a.e();
+    }
   }
 }
 

@@ -1,23 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqdataline.DatalineBridgeActivity;
 
 public class amoi
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  public amoi(SmartDeviceIPCHost paramSmartDeviceIPCHost, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public amoi(DatalineBridgeActivity paramDatalineBridgeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramMessage.what == 1)
-    {
-      this.a.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = null;
-      this.a.jdField_a_of_type_Boolean = false;
-    }
+    this.a.finish();
   }
 }
 

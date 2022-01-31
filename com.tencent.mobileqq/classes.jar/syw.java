@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
 
 public class syw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public syw(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public syw(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    MoveToGroupActivity.b(this.a);
+    LebaListMgrActivity.a(this.a, true);
   }
 }
 

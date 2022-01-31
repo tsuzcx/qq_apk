@@ -49,12 +49,12 @@ public class ShareGroupsListAdapter$DayCollectionViewHolder
   {
     this.jdField_a_of_type_AndroidContentContext = paramShareGroupsListAdapter.jdField_a_of_type_AndroidContentContext;
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366837));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371694));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371695));
-    this.c = ((TextView)paramView.findViewById(2131371698));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371699));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView = ((ShareGroupInnerListView)paramView.findViewById(2131371701));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366704));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371864));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371865));
+    this.c = ((TextView)paramView.findViewById(2131371868));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371869));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView = ((ShareGroupInnerListView)paramView.findViewById(2131371871));
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView.setSelection(0);
     AccessibilityUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView, false);
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView.setFocusable(false);
@@ -63,10 +63,10 @@ public class ShareGroupsListAdapter$DayCollectionViewHolder
     paramShareGroupsListAdapter = (MemoriesInnerListAdapter)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView.a();
     paramShareGroupsListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId);
     paramShareGroupsListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView$UIEventListener);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371692);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131371693);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371696));
-    this.d = ((TextView)paramView.findViewById(2131371700));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371862);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131371863);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371866));
+    this.d = ((TextView)paramView.findViewById(2131371870));
     a();
   }
   
@@ -76,10 +76,10 @@ public class ShareGroupsListAdapter$DayCollectionViewHolder
     if (!ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843441);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843561);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#0c284e"));
     this.jdField_b_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#0c284e"));
-    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843437);
+    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843557);
     this.c.setTextColor(Color.parseColor("#44608a"));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
@@ -176,7 +176,7 @@ public class ShareGroupsListAdapter$DayCollectionViewHolder
         ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 7.0F));
       }
       label649:
-      this.c.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438691, new Object[] { Integer.valueOf(paramVideoCollectionItem.collectionCount) }));
+      this.c.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438709, new Object[] { Integer.valueOf(paramVideoCollectionItem.collectionCount) }));
       break label379;
       label683:
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);

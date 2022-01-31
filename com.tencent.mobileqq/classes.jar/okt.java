@@ -1,27 +1,19 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo2.GetFirstMediaThumbnailFunction;
-import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailArgs;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailProgress;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailTaskContext;
 
 public class okt
-  extends SimpleJob
+  implements Runnable
 {
-  public okt(StoryLocalPublishPart paramStoryLocalPublishPart, View paramView) {}
+  public okt(MediaCodecThumbnailGenerator.CodecHandler paramCodecHandler, MediaCodecThumbnailGenerator.ThumbnailTaskContext paramThumbnailTaskContext, MediaCodecThumbnailGenerator.ThumbnailProgress paramThumbnailProgress) {}
   
-  protected Bitmap a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    return new GetFirstMediaThumbnailFunction(this.jdField_a_of_type_AndroidViewView.getContext()).a();
-  }
-  
-  protected void a(@Nullable Bitmap paramBitmap)
-  {
-    new Handler(Looper.getMainLooper()).post(new oku(this, paramBitmap));
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.a != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.a.a(Boolean.valueOf(true), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailProgress);
+    }
   }
 }
 

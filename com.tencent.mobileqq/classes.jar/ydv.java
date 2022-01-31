@@ -1,27 +1,19 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public final class ydv
-  implements Comparator
+public class ydv
+  implements Runnable
 {
-  public int a(String paramString1, String paramString2)
+  public ydv(ShortVideoPlayActivity paramShortVideoPlayActivity, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  
+  public void run()
   {
-    if ("★".equals(paramString2)) {}
-    do
-    {
-      return 1;
-      if ("★".equals(paramString1)) {
-        return -1;
-      }
-      if ("#".equals(paramString2)) {
-        return -1;
-      }
-    } while ("#".equals(paramString1));
-    return paramString1.compareTo(paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ydv
  * JD-Core Version:    0.7.0.1
  */

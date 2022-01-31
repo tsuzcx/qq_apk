@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg;
 
-import ahuc;
+import aiif;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -57,7 +57,7 @@ public class StructMsgForImageShare
   extends AbsShareMsg
 {
   public static final int SHARE_IMAGE_FREVIEW_MAX_SZIE = 288;
-  private static View.OnClickListener a = new ahuc();
+  private static View.OnClickListener a = new aiif();
   public String bigUrl;
   public int mImageBizType;
   public int mIsSend = 1;
@@ -475,9 +475,9 @@ public class StructMsgForImageShare
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     paramView.setMinimumHeight(i * 120);
     if (ChatActivityConstants.N) {
-      paramView.setContentDescription(paramContext.getString(2131432741));
+      paramView.setContentDescription(paramContext.getString(2131432758));
     }
-    paramContext = ((Resources)localObject1).getDrawable(2130845965);
+    paramContext = ((Resources)localObject1).getDrawable(2130846093);
     localObject1 = getFirstImageElement();
     if ((localObject1 != null) && (((StructMsgItemImage)localObject1).u != null))
     {
@@ -990,7 +990,7 @@ public class StructMsgForImageShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForImageShare
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
+import com.tencent.qphone.base.util.QLog;
 
 public class jwu
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public jwu(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  jwu(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.w();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.c, 2, "AutoCheckVideoRunnable");
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null) {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().an = true;
+    }
+    MultiVideoCtrlLayerUI4NewGroupChat.h(this.a);
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.b);
+    }
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark.API;
 
-import aaht;
-import aahw;
-import aahx;
-import aahy;
-import aaif;
+import aaou;
+import aaox;
+import aaoy;
+import aaoz;
+import aapg;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -24,10 +24,10 @@ public class ArkAppEventObserverManager
   private static double jdField_c_of_type_Double = 0.006693421622965943D;
   private float jdField_a_of_type_Float;
   private long jdField_a_of_type_Long = 0L;
-  private aahy jdField_a_of_type_Aahy;
+  private aaoz jdField_a_of_type_Aaoz;
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
-  private SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener = new aaif(this);
-  private SosoInterface.OnLocationListener jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new aaht(this, 3, true, true, 0L, true, true, "ArkAppEventObserverManager");
+  private SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener = new aapg(this);
+  private SosoInterface.OnLocationListener jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new aaou(this, 3, true, true, 0L, true, true, "ArkAppEventObserverManager");
   private ArkAppEventObserverManager.ConnectionCallback jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager$ConnectionCallback;
   private ArkAppEventObserverManager.GetCurrentPositionCallback jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager$GetCurrentPositionCallback;
   private ArkAppEventObserverManager.MotionCallback jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager$MotionCallback;
@@ -54,7 +54,7 @@ public class ArkAppEventObserverManager
   private void a(SensorEvent paramSensorEvent)
   {
     long l = System.currentTimeMillis();
-    ArkAppCenter.a().post(new aahw(this, paramSensorEvent, l));
+    ArkAppCenter.a().post(new aaox(this, paramSensorEvent, l));
   }
   
   private static boolean a(double paramDouble1, double paramDouble2)
@@ -90,7 +90,7 @@ public class ArkAppEventObserverManager
   private void b(SensorEvent paramSensorEvent)
   {
     long l = System.currentTimeMillis();
-    ArkAppCenter.a().post(new aahx(this, l, paramSensorEvent));
+    ArkAppCenter.a().post(new aaoy(this, l, paramSensorEvent));
   }
   
   public void a()
@@ -176,9 +176,9 @@ public class ArkAppEventObserverManager
         }
         this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager$ConnectionCallback = ((ArkAppEventObserverManager.ConnectionCallback)paramObserverCallback);
         this.jdField_d_of_type_Long = paramLong;
-      } while (this.jdField_a_of_type_Aahy != null);
-      this.jdField_a_of_type_Aahy = new aahy(this);
-      AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_Aahy);
+      } while (this.jdField_a_of_type_Aaoz != null);
+      this.jdField_a_of_type_Aaoz = new aaoz(this);
+      AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_Aaoz);
       return;
     } while (!(paramObserverCallback instanceof ArkAppEventObserverManager.GetCurrentPositionCallback));
     if (QLog.isColorLevel()) {
@@ -243,10 +243,10 @@ public class ArkAppEventObserverManager
         return;
       }
     } while (!"ConnectionTypeChange".equals(paramString));
-    if (this.jdField_a_of_type_Aahy != null)
+    if (this.jdField_a_of_type_Aaoz != null)
     {
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Aahy);
-      this.jdField_a_of_type_Aahy = null;
+      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Aaoz);
+      this.jdField_a_of_type_Aaoz = null;
     }
     if ((this.jdField_d_of_type_Long != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager$ConnectionCallback != null)) {
       this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager$ConnectionCallback.a(this.jdField_d_of_type_Long);

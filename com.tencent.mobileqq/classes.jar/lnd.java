@@ -1,69 +1,61 @@
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager.PageItemScrollListener;
-import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.biz.pubaccount.readinjoy.model.AtlasModel;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class lnd
-  implements ReadInJoyAtlasViewPager.PageItemScrollListener
+  implements ReadInJoyAtlasFragment.ReportEventListener
 {
   public lnd(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
   
-  public void a()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    ReadInJoyAtlasFragment.a(this.a).a(1, null);
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager != null) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getCurrentItem() == 0))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("exitType", 1);
-      localBundle.putSerializable("lastShowImageModel", this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.a());
-      ReadInJoyAtlasFragment.a(this.a).a(-2, localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d(ReadInJoyAtlasFragment.a, 2, "ReportEventListener.onReportEvent(" + paramInt + ", data=" + paramBundle + ")");
     }
-    ReadInJoyAtlasFragment.a(this.a, true);
-    ReadInJoyAtlasFragment.a(this.a).finish();
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, View paramView)
-  {
-    paramFloat1 = 1.0F;
-    float f = 1.0F - Math.abs(paramFloat2) * 10.0F / ScreenUtil.b;
-    if (f < 0.0F) {
-      paramFloat1 = 0.0F;
-    }
-    for (;;)
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat1);
-      this.a.b.setAlpha(paramFloat1);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setAlpha(paramFloat1);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar.setAlpha(paramFloat1);
-      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getBackground() != null)
+    case 0: 
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case -1: 
+      do
       {
-        int i = (int)((int)(Math.max(0.0F, ScreenUtil.b - 2.0F * Math.abs(paramFloat2)) * 255.0F / ScreenUtil.b) * 0.8F + 51.0F);
-        paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getBackground().mutate();
-        paramView.setAlpha(i);
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.setBackgroundDrawable(paramView);
-      }
+        return;
+        PublicAccountReportUtils.a(null, "", "0X8008E37", "0X8008E37", 0, 0, "", "", "", GalleryReportedUtils.b(BaseApplicationImpl.getContext(), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a), paramInt), false);
+        return;
+      } while (paramBundle == null);
+      paramBundle = (AtlasModel)paramBundle.getSerializable("lastShowImageModel");
+      ReadInJoyAtlasFragment.a(this.a, paramBundle);
       return;
-      if (f <= 1.0F) {
-        paramFloat1 = f;
-      }
     }
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getBackground() != null)
+    paramInt = -1;
+    if (paramBundle != null)
     {
-      Drawable localDrawable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getBackground().mutate();
-      localDrawable.setAlpha(255);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.setBackgroundDrawable(localDrawable);
+      AtlasModel localAtlasModel = (AtlasModel)paramBundle.getSerializable("lastShowImageModel");
+      if (localAtlasModel != null) {
+        localAtlasModel.modelExitTime = System.currentTimeMillis();
+      }
+      ReadInJoyAtlasFragment.a(this.a, localAtlasModel);
+      paramInt = paramBundle.getInt("exitType", -1);
+    }
+    if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
+    for (int i = 2;; i = 1)
+    {
+      paramBundle = ReadInJoyAtlasFragment.e(this.a);
+      paramBundle = GalleryReportedUtils.a(BaseApplicationImpl.getContext(), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a) + 1, ReadInJoyAtlasFragment.b(this.a), paramInt, ReadInJoyAtlasFragment.d(this.a), ReadInJoyAtlasFragment.d(this.a), i, ReadInJoyAtlasFragment.b(this.a), paramBundle.toString(), ReadInJoyAtlasFragment.f(this.a));
+      PublicAccountReportUtils.a(null, "", "0X8008E30", "0X8008E30", 0, 0, "", ReadInJoyAtlasFragment.a(this.a) + "", ReadInJoyAtlasFragment.c(this.a) + "", paramBundle, false);
+      GalleryReportedUtils.a(1, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).getCurrentAccountUin()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.d(this.a), i, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.f(this.a));
+      ReadInJoyAtlasFragment.a(this.a);
+      return;
     }
   }
 }

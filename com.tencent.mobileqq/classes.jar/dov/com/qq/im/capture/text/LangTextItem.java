@@ -1,6 +1,5 @@
 package dov.com.qq.im.capture.text;
 
-import amxz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -15,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import anoe;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.mobileqq.utils.ChnToSpell.ChnSpelling;
@@ -116,7 +116,7 @@ public class LangTextItem
     super.a(paramInt, paramString);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.d.clear();
-    paramString = a(paramInt, new amxz(this)).split("\n");
+    paramString = a(paramInt, new anoe(this)).split("\n");
     int i = paramString.length;
     paramInt = 0;
     if (paramInt < i)

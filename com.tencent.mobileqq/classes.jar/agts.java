@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.mobileqq.ptt.preop.PreDownloadParams.Params;
 
-public final class agts
-  implements Parcelable.Creator
+class agts
 {
-  public MusicItemInfo a(Parcel paramParcel)
-  {
-    return new MusicItemInfo(paramParcel);
-  }
+  public int a;
+  public final PreDownloadParams.Params a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public MusicItemInfo[] a(int paramInt)
+  public agts(int paramInt)
   {
-    return new MusicItemInfo[0];
+    this.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params = new PreDownloadParams.Params();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int = -2147483648;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agts
  * JD-Core Version:    0.7.0.1
  */

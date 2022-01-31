@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.arcard;
 
-import aaej;
-import aaek;
-import aael;
-import aaem;
-import aaen;
-import aaeo;
+import aalk;
+import aall;
+import aalm;
+import aaln;
+import aalo;
+import aalp;
 import android.annotation.TargetApi;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
@@ -96,22 +96,22 @@ public class ARCardCameraRecordFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardCamereButtonLayout = ((ARCardCamereButtonLayout)paramView.findViewById(2131363262));
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardCamereButtonLayout = ((ARCardCamereButtonLayout)paramView.findViewById(2131363280));
     this.jdField_a_of_type_ComTencentMobileqqArcardARCardCamereButtonLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardCamereButtonLayout.a(new aaej(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366913));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369162));
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardCamereButtonLayout.a(new aalk(this));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366955));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369228));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369449));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369526));
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369450));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369527));
     try
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = false;
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeFile(ARResouceDir.c() + "arcard_videorecord_bg.png", localOptions));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369451));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369528));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentMobileqqArcardARCardCamereButtonLayout.setVisibility(0);
@@ -149,7 +149,7 @@ public class ARCardCameraRecordFragment
   
   private void e()
   {
-    a(new aaek(this));
+    a(new aall(this));
   }
   
   private void f()
@@ -260,7 +260,7 @@ public class ARCardCameraRecordFragment
   
   public void a(ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject)
   {
-    paramArCloudConfigInfo = new aaeo(this, paramInt1, paramObject);
+    paramArCloudConfigInfo = new aalp(this, paramInt1, paramObject);
     ThreadManager.getSubThreadHandler().post(paramArCloudConfigInfo);
   }
   
@@ -303,7 +303,7 @@ public class ARCardCameraRecordFragment
     if (this.f == 1) {}
     this.f = 3;
     this.jdField_c_of_type_Int = 10;
-    a(new aaem(this, paramBoolean));
+    a(new aaln(this, paramBoolean));
     return true;
   }
   
@@ -319,7 +319,7 @@ public class ARCardCameraRecordFragment
     {
       QLog.i("ARCardCameraRecordFragment", 2, "changeCamera." + this.jdField_a_of_type_Int);
       a(false);
-      a(new aael(this));
+      a(new aalm(this));
       return;
     }
   }
@@ -332,7 +332,7 @@ public class ARCardCameraRecordFragment
     if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null)
     {
       this.l = 0;
-      bool = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(true);
+      bool = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(true, null);
     }
     return bool;
   }
@@ -366,18 +366,18 @@ public class ARCardCameraRecordFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131366913) {
+    if (paramView.getId() == 2131366955) {
       b();
     }
     do
     {
       return;
-      if (paramView.getId() == 2131369451)
+      if (paramView.getId() == 2131369528)
       {
         this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManager.e();
         return;
       }
-    } while (paramView.getId() != 2131369449);
+    } while (paramView.getId() != 2131369526);
     getActivity().finish();
   }
   
@@ -401,7 +401,7 @@ public class ARCardCameraRecordFragment
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)???.inflate(2130970184, null));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)???.inflate(2130970200, null));
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera = new ARCamera();
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.a(true);
       this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView = new ARGLSurfaceView(getActivity(), this, this);
@@ -523,7 +523,7 @@ public class ARCardCameraRecordFragment
       return;
       label208:
       QLog.i("ARCardCameraRecordFragment", 2, "continue to start preview after SurfaceCreated.");
-      a(new aaen(this));
+      a(new aalo(this));
     }
   }
   
@@ -537,7 +537,7 @@ public class ARCardCameraRecordFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARCardCameraRecordFragment
  * JD-Core Version:    0.7.0.1
  */

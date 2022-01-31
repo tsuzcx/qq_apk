@@ -1,62 +1,52 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import android.support.v4.util.MQLruCache;
+import com.tencent.biz.pubaccount.util.PreloadManager;
+import com.tencent.mobileqq.app.AppConstants;
+import java.io.File;
 
-public final class mus
-  implements ActionSheet.OnButtonClickListener
+public class mus
+  extends Thread
 {
-  public mus(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, ActionSheet paramActionSheet) {}
+  public mus(PreloadManager paramPreloadManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
+    int j = 0;
+    if (PreloadManager.a(this.a) != null) {
+      PreloadManager.a(this.a).releaseLargeCache();
     }
-    do
+    long l = System.currentTimeMillis();
+    Object localObject1 = new File(AppConstants.cn);
+    int k;
+    int i;
+    Object localObject2;
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Boolean) {
-        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
-      }
-      for (;;)
+      localObject1 = ((File)localObject1).listFiles();
+      k = localObject1.length;
+      i = 0;
+      while (i < k)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        break;
-        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
-      }
-    } while (!this.jdField_a_of_type_JavaLangString.equals("2010741172"));
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (paramView != null)
-    {
-      paramView = XMLMessageUtils.a(paramView);
-      if (paramView != null)
-      {
-        paramView = (PAMessage.Item)paramView.items.get(0);
-        if (paramView.url != null) {
-          PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView.url);
+        localObject2 = localObject1[i];
+        if (l - localObject2.lastModified() > 172800000L) {
+          localObject2.delete();
         }
+        i += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Boolean) {
-      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
-    }
-    for (;;)
+    localObject1 = new File(AppConstants.co);
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      break;
-      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+      localObject1 = ((File)localObject1).listFiles();
+      k = localObject1.length;
+      i = j;
+      while (i < k)
+      {
+        localObject2 = localObject1[i];
+        if (l - localObject2.lastModified() > 172800000L) {
+          localObject2.delete();
+        }
+        i += 1;
+      }
     }
   }
 }

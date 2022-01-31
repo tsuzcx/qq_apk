@@ -265,7 +265,7 @@ public class WeChatImageJob
       localBitmap1 = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
       localCanvas = new Canvas(localBitmap1);
       localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, new Paint());
-      localBitmap2 = ImageUtil.a(BaseApplicationImpl.sApplication.getResources(), 2130843598);
+      localBitmap2 = ImageUtil.a(BaseApplicationImpl.sApplication.getResources(), 2130843719);
       float f1 = paramBitmap.getWidth() / 2.0F;
       float f2 = paramBitmap.getHeight() / 2.0F;
       if (localBitmap2.getWidth() <= f1)

@@ -1,82 +1,61 @@
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.PublishCommentCallback;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSourceImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentResp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TimJumpLoginManager;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aefe
-  extends ProtoUtils.TroopGiftProtocolObserver
+  extends WtloginListener
 {
-  public aefe(CommentsDataSourceImpl paramCommentsDataSourceImpl, CommentsDataSource.PublishCommentCallback paramPublishCommentCallback, Comments.Comment paramComment) {}
+  public aefe(TimJumpLoginManager paramTimJumpLoginManager, QQProgressDialog paramQQProgressDialog, WtloginHelper paramWtloginHelper, Bundle paramBundle) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      paramBundle = new oidb_0xada.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("CommentsDataSource", 2, "err_msg:   " + paramBundle.err_msg.get());
-        }
-        if (!paramBundle.busi_buf.has())
-        {
-          QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
-          return;
-        }
-        paramArrayOfByte = new NowNearbyVideoCommentProto.AddCommentResp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        QLog.i("CommentsDataSource", 1, "id: " + paramArrayOfByte.comment_id.get() + ",ret:" + paramArrayOfByte.result.get());
-        if (paramArrayOfByte.result.get() != 0L)
-        {
-          QLog.i("CommentsDataSource", 1, "error code :" + paramArrayOfByte.result.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("CommentsDataSource", 1, "merge publish resp data error");
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
-        return;
-      }
-      if (paramArrayOfByte.comment_id.get() > 0L)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a = paramArrayOfByte.comment_id.get();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-        CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).add(Long.valueOf(paramArrayOfByte.comment_id.get()));
-        paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramArrayOfByte != null) {
-          ((NearbyMomentManager)paramArrayOfByte.getManager(262)).f(CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).a);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(TimJumpLoginManager.a, 2, "jumpTimLogin OnException=" + paramErrMsg + ", cmd=" + paramInt);
     }
-    else
-    {
-      QLog.i("CommentsDataSource", 1, "publishComment failed");
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
+    QQToast.a(TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp(), 1, 2131439134, 0).a();
+  }
+  
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(TimJumpLoginManager.a, 2, "jumpTimLogin onGetA1WithA1 ret=" + paramInt2);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+    if (paramInt2 != 0)
+    {
+      QQToast.a(TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp(), 1, 2131439134, 0).a();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(TimJumpLoginManager.a, 2, "jumpTimLogin call TIM JumpActivity");
+    }
+    paramArrayOfByte1 = new Intent();
+    paramArrayOfByte1.setComponent(new ComponentName("com.tencent.tim", "com.tencent.mobileqq.activity.LoginJumpTeamWorkActivity"));
+    paramArrayOfByte1.setFlags(268435456);
+    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
+    paramArrayOfByte1.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+    TimJumpLoginManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTimJumpLoginManager).getApp().startActivity(paramArrayOfByte1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefe
  * JD-Core Version:    0.7.0.1
  */

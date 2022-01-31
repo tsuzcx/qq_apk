@@ -1,16 +1,18 @@
-import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
-import com.tencent.mobileqq.shortvideo.facedancegame.GestureDetectManager;
-import com.tencent.sveffects.Reporter;
-import com.tencent.sveffects.SdkContext;
+import com.tencent.mobileqq.richmedia.conn.ConnManager;
+import com.tencent.mobileqq.richmedia.conn.HostInfo;
+import com.tencent.mobileqq.richmedia.server.ChannelStateManager;
+import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
 
 public class ahnb
-  implements AVGestureWrapper.AVUploadReport
+  implements Runnable
 {
-  public ahnb(GestureDetectManager paramGestureDetectManager) {}
+  public ahnb(ConnManager paramConnManager, PeakAudioTransHandler paramPeakAudioTransHandler, long paramLong, HostInfo paramHostInfo) {}
   
-  public void avGestureUploadReport(String paramString1, String paramString2)
+  public void run()
   {
-    SdkContext.a().a().a("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+    ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).b(12);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakAudioTransHandler.a(1, true, new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.d), Integer.valueOf(2000), this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo });
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakAudioTransHandler.a(this.jdField_a_of_type_Long, true);
   }
 }
 

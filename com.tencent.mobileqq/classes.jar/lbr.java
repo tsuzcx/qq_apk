@@ -1,30 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.ActionSheet.OnDismissListener;
+import mqq.os.MqqHandler;
 
 public class lbr
-  extends Handler
+  implements ActionSheet.OnDismissListener
 {
-  private WeakReference a;
+  public lbr(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public lbr(ReadInJoyRainAnimationController paramReadInJoyRainAnimationController)
+  public void onDismiss()
   {
-    this.a = new WeakReference(paramReadInJoyRainAnimationController);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoyRainAnimationController localReadInJoyRainAnimationController = (ReadInJoyRainAnimationController)this.a.get();
-    if ((localReadInJoyRainAnimationController == null) || (!localReadInJoyRainAnimationController.b())) {
-      return;
+    if ((!this.a.a) && (this.a.h != -1)) {
+      ThreadManager.getUIHandler().postDelayed(new lbs(this), 300L);
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localReadInJoyRainAnimationController.b();
+    this.a.a = false;
   }
 }
 

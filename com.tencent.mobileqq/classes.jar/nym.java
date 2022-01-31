@@ -1,36 +1,29 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.model.CommentManager;
+import com.tencent.biz.qqstory.model.LikeManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.util.ArrayList;
 
-public class nym
+public final class nym
   implements Runnable
 {
-  int jdField_a_of_type_Int = -1;
-  
-  public nym(MystoryListView paramMystoryListView, int[] paramArrayOfInt1, int[] paramArrayOfInt2, float[] paramArrayOfFloat) {}
+  public nym(String paramString) {}
   
   public void run()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfInt.length) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int < 0)
-      {
-        this.jdField_a_of_type_Int += 1;
-        if (this.jdField_a_of_type_Int >= 0) {
-          i = this.b[this.jdField_a_of_type_Int];
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.postDelayed(this, i);
-        return;
-      }
-      long l = System.currentTimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int], this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.getWidth() / 2, this.jdField_a_of_type_ArrayOfFloat[this.jdField_a_of_type_Int], 0);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfInt.length);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.postDelayed(this, this.b[this.jdField_a_of_type_Int]);
+    Object localObject = (LikeManager)SuperManager.a(15);
+    ((LikeManager)localObject).a(new ArrayList(0), this.a, false, true);
+    ((LikeManager)localObject).a(new ArrayList(0), this.a, true, true);
+    localObject = (CommentManager)SuperManager.a(17);
+    ((CommentManager)localObject).a(new ArrayList(0), this.a, false, true);
+    ((CommentManager)localObject).a(new ArrayList(0), this.a, true, true);
+    localObject = (FeedManager)SuperManager.a(11);
+    FeedItem localFeedItem = ((FeedManager)localObject).a(this.a);
+    localFeedItem.reset();
+    ((FeedManager)localObject).a(localFeedItem);
+    SLog.a("Q.qqstory.home.data.FeedManager", "clear all feed interactive data %s", this.a);
   }
 }
 

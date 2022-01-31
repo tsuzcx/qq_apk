@@ -1,27 +1,85 @@
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ApolloGameItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ApolloGameItemBuilder.GameHolder;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import java.lang.ref.WeakReference;
 
-public class ywl
+public final class ywl
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private QQFrameZipDecoder jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  
-  public void a(QQFrameZipDecoder paramQQFrameZipDecoder, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder = paramQQFrameZipDecoder;
-  }
+  public ywl(WeakReference paramWeakReference, MessageForApollo paramMessageForApollo, Bundle paramBundle, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    for (;;)
+    {
+      int j;
+      int i;
+      try
+      {
+        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+          break label293;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo == null) {
+          return;
+        }
+        localAbsListView = (AbsListView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localAbsListView == null) {
+          break label293;
+        }
+        j = localAbsListView.getFirstVisiblePosition();
+        k = localAbsListView.getLastVisiblePosition();
+        if (!QLog.isColorLevel()) {
+          break label294;
+        }
+        QLog.d("ApolloGameUtil", 2, new Object[] { "[notifyUIUpdate] firstVPos:", Integer.valueOf(j), ",lastVPos:", Integer.valueOf(k) });
+      }
+      catch (Throwable localThrowable)
+      {
+        AbsListView localAbsListView;
+        int k;
+        Object localObject;
+        MessageForApollo localMessageForApollo;
+        localThrowable.printStackTrace();
+        QLog.e("ApolloGameUtil", 1, "[notifyUIUpdate],errInfo->" + localThrowable.getMessage());
+      }
+      if (i <= k)
+      {
+        localObject = localAbsListView.getChildAt(i - j);
+        if (localObject != null)
+        {
+          localObject = ((View)localObject).getTag();
+          if ((localObject instanceof ArkAppItemBubbleBuilder.Holder))
+          {
+            localObject = (ApolloGameItemBuilder.GameHolder)localObject;
+            localMessageForApollo = (MessageForApollo)((ApolloGameItemBuilder.GameHolder)localObject).a;
+            if ((ApolloGameUtil.a(localMessageForApollo.msgType)) && (localMessageForApollo.roomId == this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.roomId))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("ApolloGameUtil", 2, new Object[] { "find the view with the same roomId,", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.roomId) });
+              }
+              if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.getInt("type") == 1)) {
+                ApolloGameItemBuilder.a((ApolloGameItemBuilder.GameHolder)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getInt("gameId"), this.jdField_a_of_type_AndroidOsBundle.getInt("process"));
+              }
+            }
+          }
+        }
+      }
+      else
+      {
+        label293:
+        return;
+        label294:
+        i = j;
+        continue;
+      }
+      i += 1;
     }
   }
 }

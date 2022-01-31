@@ -1,20 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import android.net.Uri;
+import android.provider.ContactsContract.Data;
+import android.provider.ContactsContract.RawContacts;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import com.tencent.qphone.base.util.QLog;
 
-public class advt
-  implements DialogInterface.OnClickListener
+public final class advt
+  implements HookMethodCallback
 {
-  public advt(AIOShareActionSheet paramAIOShareActionSheet) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    paramDialogInterface.dismiss();
+    paramMethodHookParam = ((Uri)paramMethodHookParam.args[0]).toString();
+    if ((paramMethodHookParam.contains(ContactsContract.RawContacts.CONTENT_URI.toString())) || (paramMethodHookParam.contains(ContactsContract.Data.CONTENT_URI.toString())))
+    {
+      paramMethodHookParam = new StringBuilder(1000);
+      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+      int i = 0;
+      while (i < arrayOfStackTraceElement.length)
+      {
+        paramMethodHookParam.append(arrayOfStackTraceElement[i] + "-");
+        i += 1;
+      }
+      QLog.d("ContactDelete", 1, paramMethodHookParam.toString());
+    }
   }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advt
  * JD-Core Version:    0.7.0.1
  */

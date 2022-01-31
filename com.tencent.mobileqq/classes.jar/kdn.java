@@ -1,32 +1,30 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.AVLog;
-import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
 import java.lang.ref.WeakReference;
 
-public class kdn
-  implements Animation.AnimationListener
+public final class kdn
+  extends Handler
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference a;
   
-  public kdn(EffectFilterPanel paramEffectFilterPanel, View paramView)
+  public kdn(ZimuViewMotion paramZimuViewMotion)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.a = new WeakReference(paramZimuViewMotion);
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    AVLog.c("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
-    if (localView != null) {
-      localView.setVisibility(8);
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      return;
+      paramMessage = (ZimuViewMotion)this.a.get();
+    } while (paramMessage == null);
+    paramMessage.e();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

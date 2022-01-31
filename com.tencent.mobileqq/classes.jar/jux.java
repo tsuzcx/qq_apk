@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.gameplay.ARNativeBridge;
+import com.tencent.av.ui.GamePlayView;
 
 public class jux
-  implements View.OnClickListener
+  implements Runnable
 {
-  public jux(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public jux(GamePlayView paramGamePlayView, byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
+    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView).native_updateParticleTexture(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -32,9 +32,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import upb;
-import upc;
-import upd;
+import usd;
+import use;
+import usf;
 
 public class DoodleResHelper
 {
@@ -319,7 +319,7 @@ public class DoodleResHelper
   public void a(int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback)
   {
     if (Looper.getMainLooper() != Looper.myLooper()) {
-      new Handler(Looper.getMainLooper()).post(new upb(this, paramInt1, paramInt2, paramView, paramResCallback));
+      new Handler(Looper.getMainLooper()).post(new usd(this, paramInt1, paramInt2, paramView, paramResCallback));
     }
     QQAppInterface localQQAppInterface;
     do
@@ -350,19 +350,19 @@ public class DoodleResHelper
     Object localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
-      upd localupd = (upd)((Iterator)localObject).next();
-      if ((localupd.jdField_a_of_type_JavaLangRefWeakReference != null) && (localupd.jdField_a_of_type_JavaLangRefWeakReference.get() == paramBitmap))
+      usf localusf = (usf)((Iterator)localObject).next();
+      if ((localusf.jdField_a_of_type_JavaLangRefWeakReference != null) && (localusf.jdField_a_of_type_JavaLangRefWeakReference.get() == paramBitmap))
       {
-        localupd.jdField_a_of_type_Boolean = true;
+        localusf.jdField_a_of_type_Boolean = true;
         QLog.d("DoodleResHelper", 2, "releaseBitmap succ:" + this.jdField_a_of_type_JavaUtilMap.size());
         return;
       }
     }
-    localObject = new upd(this);
-    ((upd)localObject).b = paramBitmap.getHeight();
-    ((upd)localObject).jdField_a_of_type_Int = paramBitmap.getWidth();
-    ((upd)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBitmap);
-    ((upd)localObject).jdField_a_of_type_Boolean = true;
+    localObject = new usf(this);
+    ((usf)localObject).b = paramBitmap.getHeight();
+    ((usf)localObject).jdField_a_of_type_Int = paramBitmap.getWidth();
+    ((usf)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBitmap);
+    ((usf)localObject).jdField_a_of_type_Boolean = true;
     paramBitmap = this.jdField_a_of_type_JavaUtilMap;
     int i = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_Int = (i + 1);
@@ -436,7 +436,7 @@ public class DoodleResHelper
   public void b(int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback)
   {
     if (Looper.getMainLooper() != Looper.myLooper()) {
-      new Handler(Looper.getMainLooper()).post(new upc(this, paramInt1, paramInt2, paramView, paramResCallback));
+      new Handler(Looper.getMainLooper()).post(new use(this, paramInt1, paramInt2, paramView, paramResCallback));
     }
     QQAppInterface localQQAppInterface;
     do
@@ -478,37 +478,37 @@ public class DoodleResHelper
         if (!((Iterator)localObject4).hasNext()) {
           break label233;
         }
-        localObject5 = (upd)((Map.Entry)((Iterator)localObject4).next()).getValue();
-        if ((localObject5 == null) || (((upd)localObject5).jdField_a_of_type_JavaLangRefWeakReference == null) || (((upd)localObject5).jdField_a_of_type_JavaLangRefWeakReference.get() == null))
+        localObject5 = (usf)((Map.Entry)((Iterator)localObject4).next()).getValue();
+        if ((localObject5 == null) || (((usf)localObject5).jdField_a_of_type_JavaLangRefWeakReference == null) || (((usf)localObject5).jdField_a_of_type_JavaLangRefWeakReference.get() == null))
         {
           ((Iterator)localObject4).remove();
           QLog.d("DoodleResHelper", 2, "getBitmap remove a invalid item");
           continue;
         }
-        if (!((upd)localObject5).jdField_a_of_type_Boolean) {
+        if (!((usf)localObject5).jdField_a_of_type_Boolean) {
           continue;
         }
       }
       finally {}
-      if ((((upd)localObject5).b == paramInt2) && (((upd)localObject5).jdField_a_of_type_Int == paramInt1))
+      if ((((usf)localObject5).b == paramInt2) && (((usf)localObject5).jdField_a_of_type_Int == paramInt1))
       {
-        if (((upd)localObject5).jdField_a_of_type_JavaLangRefWeakReference != null) {}
+        if (((usf)localObject5).jdField_a_of_type_JavaLangRefWeakReference != null) {}
         label233:
         Object localObject3;
-        for (Object localObject2 = (Bitmap)((upd)localObject5).jdField_a_of_type_JavaLangRefWeakReference.get(); localObject2 != null; localObject3 = null)
+        for (Object localObject2 = (Bitmap)((usf)localObject5).jdField_a_of_type_JavaLangRefWeakReference.get(); localObject2 != null; localObject3 = null)
         {
           QLog.d("DoodleResHelper", 2, "getBitmap find idle :" + this.jdField_a_of_type_JavaUtilMap.size());
-          ((upd)localObject5).jdField_a_of_type_Boolean = false;
+          ((usf)localObject5).jdField_a_of_type_Boolean = false;
           return localObject2;
           QLog.d("DoodleResHelper", 2, "getBitmap add new item");
-          localObject2 = new upd(this);
-          ((upd)localObject2).b = paramInt2;
-          ((upd)localObject2).jdField_a_of_type_Int = paramInt1;
+          localObject2 = new usf(this);
+          ((usf)localObject2).b = paramInt2;
+          ((usf)localObject2).jdField_a_of_type_Int = paramInt1;
           try
           {
             localObject4 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-            ((upd)localObject2).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject4);
-            ((upd)localObject2).jdField_a_of_type_Boolean = false;
+            ((usf)localObject2).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject4);
+            ((usf)localObject2).jdField_a_of_type_Boolean = false;
             localObject5 = this.jdField_a_of_type_JavaUtilMap;
             paramInt1 = this.jdField_a_of_type_Int;
             this.jdField_a_of_type_Int = (paramInt1 + 1);

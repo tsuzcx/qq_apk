@@ -1,15 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.widgets.ElasticHorScrView;
 
-public final class mba
-  extends AnimatorListenerAdapter
+public class mba
+  implements Runnable
 {
-  public mba(View paramView) {}
+  public mba(VideoFeedsAdapter paramVideoFeedsAdapter, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.a.setLayerType(0, null);
+    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    }
+    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+      return;
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    }
+    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
   }
 }
 

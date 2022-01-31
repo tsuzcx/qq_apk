@@ -1,80 +1,30 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUOESMovieFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodePlayer;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
-import com.tencent.mobileqq.shortvideo.filter.QQMovieFilter;
-import com.tencent.mobileqq.shortvideo.util.FileUtil;
-import com.tencent.mobileqq.shortvideo.util.VideoUtil;
-import com.tencent.sveffects.SLog;
+import android.util.SparseArray;
+import com.tencent.mobileqq.richmedia.dc.DCAIOPreview;
+import com.tencent.mobileqq.richmedia.dc.DataReport;
 
 public class ahnh
   extends Handler
 {
-  public ahnh(QQMovieFilter paramQQMovieFilter, Looper paramLooper)
+  public ahnh(DCAIOPreview paramDCAIOPreview, Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    SLog.c("QQMovieFilter", "handle movie filter msg, what = " + paramMessage.what);
-    switch (paramMessage.what)
+    paramMessage = DataReport.a();
+    int j = DCAIOPreview.a(this.a).size();
+    int i = 0;
+    while (i < j)
     {
+      ahni localahni = (ahni)DCAIOPreview.a(this.a).valueAt(i);
+      paramMessage.a(new ahnz("Pic.AioPreview", localahni.a("Pic.AioPreview")));
+      paramMessage.a(new ahnz("Pic.AioPreview.Preload", localahni.a("Pic.AioPreview.Preload")));
+      i += 1;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if ((QQMovieFilter.a(this.a) != null) && (QQMovieFilter.a(this.a).a() == 1))
-            {
-              SLog.c("QQMovieFilter", "DecodePlayer is preparing");
-              return;
-            }
-            Object localObject = (Object[])paramMessage.obj;
-            QQMovieFilter.a(this.a, (String)localObject[0]);
-            paramMessage = (String)localObject[1];
-            boolean bool = ((Boolean)localObject[2]).booleanValue();
-            QQMovieFilter.a(this.a, ((Float)localObject[3]).floatValue());
-            QQMovieFilter.b(this.a, ((Float)localObject[4]).floatValue());
-            localObject = (HWDecodeListener)localObject[5];
-            if (QQMovieFilter.a(this.a) == null) {
-              QQMovieFilter.a(this.a, new DecodePlayer());
-            }
-            if (QQMovieFilter.a(this.a) != null) {
-              QQMovieFilter.a(this.a).a();
-            }
-            if (!FileUtil.b(QQMovieFilter.a(this.a))) {
-              break;
-            }
-            QQMovieFilter.a(this.a).a(QQMovieFilter.a(this.a), paramMessage);
-            QQMovieFilter.a(this.a).a(bool);
-            QQMovieFilter.a(this.a).a((HWDecodeListener)localObject);
-            QQMovieFilter.a(this.a, new ahni(this.a));
-            QQMovieFilter.a(this.a).a(QQMovieFilter.a(this.a), QQMovieFilter.a(this.a));
-            QQMovieFilter.a(this.a, null);
-            QQMovieFilter.a(this.a).a(0);
-          } while (QQMovieFilter.a(this.a) == null);
-          QQMovieFilter.a(this.a).a(VideoUtil.a(QQMovieFilter.a(this.a)), QQMovieFilter.a(this.a), QQMovieFilter.b(this.a));
-          return;
-          QQMovieFilter.a(this.a);
-          QQMovieFilter.a(this.a).a("", "");
-          return;
-        } while (QQMovieFilter.a(this.a) == null);
-        QQMovieFilter.a(this.a).c();
-        return;
-        QQMovieFilter.a(this.a);
-      } while (QQMovieFilter.a(this.a) == null);
-      QQMovieFilter.a(this.a).a("", "");
-      return;
-    } while (QQMovieFilter.a(this.a) == null);
-    QQMovieFilter.a(this.a).b();
   }
 }
 

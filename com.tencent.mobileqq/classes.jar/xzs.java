@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import mqq.os.MqqHandler;
 
-class xzs
-  implements Runnable
+public class xzs
+  extends MqqHandler
 {
-  xzs(xzp paramxzp) {}
+  public xzs(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.setResult(0);
-    this.a.a.finish();
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    this.a.d();
   }
 }
 

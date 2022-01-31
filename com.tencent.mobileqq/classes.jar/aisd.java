@@ -1,52 +1,36 @@
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment.ContentViewHolder;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
 public class aisd
-  extends PagerAdapter
+  implements EIPClientConnectListener
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public aisd(InnerDns paramInnerDns) {}
   
-  public aisd(HomeworkGuideFragment paramHomeworkGuideFragment, Context paramContext)
+  public void connectFailed()
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    InnerDns.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "connectFailed");
+    }
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
   {
-    paramViewGroup.removeView((View)paramObject);
-  }
-  
-  public int getCount()
-  {
-    return HomeworkGuideFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment).size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969895, paramViewGroup, false);
-    HomeworkGuideFragment.ContentViewHolder localContentViewHolder = new HomeworkGuideFragment.ContentViewHolder(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment);
-    localContentViewHolder.a(paramInt, localView);
-    localView.setTag(localContentViewHolder);
-    HomeworkGuideFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment).add(localContentViewHolder);
-    paramViewGroup.addView(localView, 0);
-    return localView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    if (paramEIPCConnection != null) {
+      InnerDns.a(this.a, paramEIPCConnection.procName);
+    }
+    InnerDns.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "connectSuccess");
+    }
+    InnerDns.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisd
  * JD-Core Version:    0.7.0.1
  */

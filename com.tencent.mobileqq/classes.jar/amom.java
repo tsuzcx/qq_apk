@@ -1,34 +1,25 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.qqdataline.QQProxyForDataline;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
 
 public class amom
-  extends RemoteCommand
+  implements Runnable
 {
-  public amom(SmartDeviceIPCHost paramSmartDeviceIPCHost, String paramString)
-  {
-    super(paramString);
-  }
+  public amom(DatalineRemoteManager paramDatalineRemoteManager) {}
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public void run()
   {
-    if (paramBundle == null) {
-      paramBundle = null;
+    if (BaseActivity.sTopActivity == null) {
+      return;
     }
-    Bundle localBundle;
-    do
-    {
-      return paramBundle;
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      localBundle = this.a.b(paramBundle);
-      if (localBundle != null) {
-        localBundle.setClassLoader(getClass().getClassLoader());
-      }
-      paramBundle = localBundle;
-    } while (paramOnInvokeFinishLinstener == null);
-    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
-    return localBundle;
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("string_from", true);
+    localBundle.putBoolean("string_uin", false);
+    localBundle.putLong("device_din", 0L);
+    localBundle.putInt("sTitleID", 0);
+    QQProxyForDataline.a(BaseActivity.sTopActivity, localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
+    BaseActivity.sTopActivity.overridePendingTransition(2131034134, 0);
   }
 }
 

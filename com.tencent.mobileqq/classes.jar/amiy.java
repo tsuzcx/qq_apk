@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.data.OpenID;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.buscard.BuscardPluginInstallActivity;
 
-public class amiy
-  implements BusinessObserver
+class amiy
+  implements Runnable
 {
-  public amiy(QZoneShareActivity paramQZoneShareActivity, String paramString, QZoneShareData paramQZoneShareData) {}
+  amiy(amix paramamix) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if ((paramInt == 1) && ((paramObject instanceof OpenID)))
-    {
-      paramObject = (OpenID)paramObject;
-      if ((paramObject.openID != null) && (!paramObject.openID.equals(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData);
-      }
-    }
+    BuscardPluginInstallActivity.a(this.a.a, "initPluginManager");
   }
 }
 

@@ -81,16 +81,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import lfh;
-import lfi;
-import lfj;
-import lfk;
-import lfl;
-import lfm;
-import lfn;
-import lfo;
-import lfp;
-import lfq;
+import lex;
+import ley;
+import lez;
+import lfa;
+import lfb;
+import lfc;
+import lfd;
+import lfe;
+import lff;
+import lfg;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -114,7 +114,7 @@ public class ReadInJoyVideoSubChannelActivity
   public ReadInJoyXListView a;
   protected FaceDecoder a;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new lfo(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new lfe(this);
   private String jdField_a_of_type_JavaLangString;
   public Map a;
   private boolean jdField_a_of_type_Boolean;
@@ -144,7 +144,7 @@ public class ReadInJoyVideoSubChannelActivity
   {
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lfq(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lfg(this);
   }
   
   private int a()
@@ -212,7 +212,7 @@ public class ReadInJoyVideoSubChannelActivity
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a("取消关注", 3);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.d("取消");
     this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new lfm(this, paramChannelInfo));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new lfc(this, paramChannelInfo));
   }
   
   private void a(ChannelInfo paramChannelInfo, boolean paramBoolean)
@@ -224,19 +224,19 @@ public class ReadInJoyVideoSubChannelActivity
     c(paramChannelInfo.mIsFollowed);
     ReadInJoyLogicEngine.a().a(paramChannelInfo);
     ReadInJoyLogicEngine.a().a(paramBoolean, 56, paramChannelInfo.mChannelID);
-    ThreadManager.executeOnSubThread(new lfn(this, paramChannelInfo, paramBoolean));
+    ThreadManager.executeOnSubThread(new lfd(this, paramChannelInfo, paramBoolean));
   }
   
   private void a(ListView paramListView)
   {
     if (this.jdField_a_of_type_Int != 0)
     {
-      View localView = LayoutInflater.from(a()).inflate(2130969673, paramListView, false);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367399));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367401));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367404));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367402));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367403));
+      View localView = LayoutInflater.from(a()).inflate(2130969687, paramListView, false);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367467));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367469));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367472));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367470));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367471));
       this.jdField_c_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
       this.jdField_d_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
       this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -246,12 +246,12 @@ public class ReadInJoyVideoSubChannelActivity
   
   private void a(String paramString)
   {
-    findViewById(2131367048).setVisibility(8);
+    findViewById(2131367096).setVisibility(8);
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((ViewStub)findViewById(2131367270)).inflate();
-      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367175));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367174));
+      this.jdField_a_of_type_AndroidViewView = ((ViewStub)findViewById(2131367325)).inflate();
+      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367223));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367222));
     }
     this.g.setText(paramString);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setEmptyView(this.jdField_a_of_type_AndroidViewView);
@@ -398,7 +398,7 @@ public class ReadInJoyVideoSubChannelActivity
         break;
       }
       this.jdField_e_of_type_Boolean = true;
-      ThreadManager.executeOnSubThread(new lfi(this, paramChannelInfo));
+      ThreadManager.executeOnSubThread(new ley(this, paramChannelInfo));
       return;
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_f_of_type_AndroidWidgetTextView.setText(paramChannelInfo.mFollowNum + "人正在关注");
@@ -518,13 +518,13 @@ public class ReadInJoyVideoSubChannelActivity
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.g();
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      this.jdField_b_of_type_AndroidViewView = ((ViewStub)findViewById(2131367271)).inflate();
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new lfp(this));
+      this.jdField_b_of_type_AndroidViewView = ((ViewStub)findViewById(2131367326)).inflate();
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new lff(this));
     }
     if ((paramBoolean) && (paramInt > 0)) {}
-    for (Object localObject = String.format(getResources().getString(2131428434), new Object[] { Integer.valueOf(paramInt) });; localObject = getResources().getString(2131428436))
+    for (Object localObject = String.format(getResources().getString(2131428440), new Object[] { Integer.valueOf(paramInt) });; localObject = getResources().getString(2131428442))
     {
-      ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364081)).setText((CharSequence)localObject);
+      ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364105)).setText((CharSequence)localObject);
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       this.jdField_b_of_type_AndroidViewView.clearAnimation();
       ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -572,7 +572,7 @@ public class ReadInJoyVideoSubChannelActivity
       return;
     }
     this.jdField_e_of_type_AndroidWidgetTextView.setText("关注");
-    this.jdField_e_of_type_AndroidWidgetTextView.setBackgroundResource(2130840758);
+    this.jdField_e_of_type_AndroidWidgetTextView.setBackgroundResource(2130840782);
     this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(-1);
   }
   
@@ -585,7 +585,7 @@ public class ReadInJoyVideoSubChannelActivity
     if (localObject != null) {
       b((ChannelInfo)localObject, false);
     }
-    localObject = new VideoUIManager((FrameLayout)findViewById(2131367093), (ReadInJoyBaseListView)findViewById(2131367398), this);
+    localObject = new VideoUIManager((FrameLayout)findViewById(2131367142), (ReadInJoyBaseListView)findViewById(2131367466), this);
     ((VideoUIManager)localObject).a(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a((VideoUIManager)localObject);
   }
@@ -595,17 +595,17 @@ public class ReadInJoyVideoSubChannelActivity
     if (this.jdField_a_of_type_AndroidViewView != null) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    View localView = findViewById(2131367048);
+    View localView = findViewById(2131367096);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setEmptyView(localView);
     localView.setOnClickListener(null);
   }
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363730));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367396));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367090));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367397));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363753));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367464));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367139));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367465));
     if (this.jdField_a_of_type_Int == 0)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(a());
@@ -618,7 +618,7 @@ public class ReadInJoyVideoSubChannelActivity
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = ((ReadInJoyXListView)findViewById(2131367398));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = ((ReadInJoyXListView)findViewById(2131367466));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setAnimType(0);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setChannelId(a());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setRefreshCallback(this);
@@ -722,7 +722,7 @@ public class ReadInJoyVideoSubChannelActivity
     {
       this.jdField_b_of_type_Boolean = bool;
       ReadInJoyLogicEngine.a().a(this.jdField_b_of_type_Int, b(), paramInt, 0);
-      ThreadManager.executeOnSubThread(new lfj(this));
+      ThreadManager.executeOnSubThread(new lez(this));
       return;
     }
   }
@@ -733,7 +733,7 @@ public class ReadInJoyVideoSubChannelActivity
     for (int i = 1;; i = 3)
     {
       a(true, i);
-      ThreadManager.executeOnSubThread(new lfh(this));
+      ThreadManager.executeOnSubThread(new lex(this));
       return;
     }
   }
@@ -849,13 +849,13 @@ public class ReadInJoyVideoSubChannelActivity
       if (i != 0)
       {
         localQQToast.a(QQToast.a(2));
-        localQQToast.c(2131431555);
+        localQQToast.c(2131431572);
         localQQToast.b(getApplicationContext().getResources().getDimensionPixelSize(2131558448) - (int)DisplayUtils.a(getApplicationContext(), 5.0F));
       }
       else
       {
         localQQToast.a(QQToast.a(1));
-        localQQToast.c(2131431563);
+        localQQToast.c(2131431580);
         localQQToast.b(getApplicationContext().getResources().getDimensionPixelSize(2131558448) - (int)DisplayUtils.a(getApplicationContext(), 5.0F));
         continue;
         if (paramInt1 == 9091) {
@@ -875,8 +875,8 @@ public class ReadInJoyVideoSubChannelActivity
       getWindow().setFlags(16777216, 16777216);
     }
     getWindow().setBackgroundDrawable(null);
-    setContentView(2130969672);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363995));
+    setContentView(2130969686);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364019));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
@@ -989,7 +989,7 @@ public class ReadInJoyVideoSubChannelActivity
           return;
         } while ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int != 0));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.e();
-        ThreadManager.executeOnSubThread(new lfk(this));
+        ThreadManager.executeOnSubThread(new lfa(this));
         return;
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a())
         {
@@ -1006,7 +1006,7 @@ public class ReadInJoyVideoSubChannelActivity
     if (TextUtils.isEmpty(paramView.mChannelName)) {
       paramView.mChannelName = a();
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoTopicShareHelper.a(paramView, a(paramView), new lfl(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoTopicShareHelper.a(paramView, a(paramView), new lfb(this));
   }
 }
 

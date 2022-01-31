@@ -1,94 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.personalize.QZonePersonalizePlugin;
+import cooperation.qlink.IQlinkService.Stub;
+import cooperation.qlink.QlinkServiceProxy;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class amns
-  extends BroadcastReceiver
+  implements ServiceConnection
 {
-  public amns(QZonePersonalizePlugin paramQZonePersonalizePlugin) {}
+  public amns(QlinkServiceProxy paramQlinkServiceProxy) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    Object localObject;
-    if (QLog.isDevelopLevel())
+    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
+    QlinkServiceProxy.a(this.a, IQlinkService.Stub.a(paramIBinder));
+    QlinkServiceProxy.a(this.a, false);
+    QlinkServiceProxy.a(this.a);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
+    try
     {
-      localObject = new StringBuilder().append("intent is: ");
-      if (paramIntent == null)
-      {
-        paramContext = "null";
-        QLog.d("QZonePersonalizePlugin", 4, paramContext);
-      }
-    }
-    else
-    {
-      if ((paramIntent == null) || (!"QZoneCardPreDownload".equals(paramIntent.getAction()))) {
-        break label239;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, "QZoneCardPreDownload js receive setting action" + paramIntent.getAction());
-      }
-      localObject = paramIntent.getExtras();
-      paramIntent = "";
-      paramContext = "";
-      if (localObject != null)
-      {
-        paramIntent = ((Bundle)localObject).getString("result");
-        paramContext = ((Bundle)localObject).getString("cardurl");
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, "QZoneCardPreDownload js receive cardurl:" + paramContext + "\n dowonload result:" + paramIntent);
-      }
-      if (this.a.mRuntime != null) {
-        break label182;
-      }
-    }
-    label182:
-    label239:
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              paramContext = "not null";
-              break;
-            } while (this.a.mRuntime.a() == null);
-            paramIntent = this.a.mRuntime.a();
-          } while (paramIntent == null);
-          paramIntent.c("window.QzFeedDressJSInterface.onReceive({type:\"cardurl\",data:\"" + paramContext + "\"});window.QzFeedDressJSInterface.onReceive({type:\"result\",data:\"success\"});");
-          return;
-        } while ((paramIntent == null) || (!"action_facade_qzone2js".equals(paramIntent.getAction())));
-        paramIntent = paramIntent.getExtras();
-      } while (paramIntent == null);
-      i = paramIntent.getInt("ret");
-      paramContext = paramIntent.getString("imgDir");
-      paramIntent = paramIntent.getString("imgNameList");
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QZonePersonalizePlugin", 4, "receive ret:" + i + "|imgDir:" + paramContext + "|imgNameList:" + paramIntent);
-      }
-    } while ((this.a.mRuntime == null) || (this.a.mRuntime.a() == null));
-    if (i == 0)
-    {
-      this.a.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"success\",imgDir:\"" + paramContext + "\",imgNameList:\"" + paramIntent + "\"});");
+      QlinkServiceProxy.a(this.a).getApplication().unbindService(QlinkServiceProxy.a(this.a));
+      QlinkServiceProxy.a(this.a, null);
+      QlinkServiceProxy.a(this.a, false);
       return;
     }
-    this.a.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"fail\"});");
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        paramComponentName.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amns
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyBaseViewController;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import java.util.List;
 
 public class lcx
-  implements View.OnClickListener
+  extends ReadInJoyObserver
 {
-  public lcx(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public lcx(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   
-  public void onClick(View paramView)
+  public void a(List paramList)
   {
-    if (ReadInJoyChannelActivity.a(this.a))
-    {
-      this.a.a.a(true);
-      return;
-    }
-    this.a.a.a(false);
+    this.a.a(paramList);
   }
 }
 

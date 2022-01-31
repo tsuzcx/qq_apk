@@ -1,43 +1,27 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public class acaa
+class acaa
   implements Runnable
 {
-  public acaa(EnterpriseQQManager paramEnterpriseQQManager) {}
+  acaa(abzz paramabzz, FileMsg paramFileMsg) {}
   
   public void run()
   {
-    if ((EnterpriseQQManager.a(this.a) != null) && (EnterpriseQQManager.a(this.a) != null))
+    if (this.jdField_a_of_type_Abzz.a.a == null)
     {
-      SosoInterface.a(this.a.a);
+      QLog.e("FavroamingManager", 1, "app is null");
       return;
     }
-    synchronized (EnterpriseQQManager.a())
-    {
-      if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-        break label144;
-      }
-      Iterator localIterator = EnterpriseQQManager.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        acac localacac = (acac)localIterator.next();
-        if (localacac != null) {
-          this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localacac.a, localacac.b, false, 0.0D, 0.0D);
-        }
-      }
-    }
-    EnterpriseQQManager.a(this.a).clear();
-    label144:
-    EnterpriseQQManager.a(this.a, null);
-    EnterpriseQQManager.a(this.a, null);
+    ((FavroamingDBManager)this.jdField_a_of_type_Abzz.a.a.getManager(148)).a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acaa
  * JD-Core Version:    0.7.0.1
  */

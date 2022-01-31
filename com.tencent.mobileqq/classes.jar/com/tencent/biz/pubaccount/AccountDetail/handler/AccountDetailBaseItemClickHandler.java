@@ -29,8 +29,8 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kqq;
-import kqr;
+import kqb;
+import kqc;
 
 public class AccountDetailBaseItemClickHandler
 {
@@ -122,19 +122,19 @@ public class AccountDetailBaseItemClickHandler
   
   private void b(String paramString)
   {
-    Dialog localDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext, 2131624515);
-    localDialog.setContentView(2130970286);
-    ((TextView)localDialog.findViewById(2131369910)).setVisibility(8);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131369911);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131369912);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131369913);
+    Dialog localDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext, 2131624516);
+    localDialog.setContentView(2130970302);
+    ((TextView)localDialog.findViewById(2131369987)).setVisibility(8);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131369988);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131369989);
+    TextView localTextView3 = (TextView)localDialog.findViewById(2131369990);
     localTextView1.setText(paramString);
     localTextView1.setGravity(3);
-    localTextView2.setText(2131432998);
-    localTextView3.setText(2131435075);
+    localTextView2.setText(2131433015);
+    localTextView3.setText(2131435092);
     localDialog.setCanceledOnTouchOutside(false);
-    localTextView2.setOnClickListener(new kqq(this, localDialog));
-    localTextView3.setOnClickListener(new kqr(this, paramString));
+    localTextView2.setOnClickListener(new kqb(this, localDialog));
+    localTextView3.setOnClickListener(new kqc(this, paramString));
     try
     {
       localDialog.show();
@@ -147,7 +147,7 @@ public class AccountDetailBaseItemClickHandler
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131428986, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131428992, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
       return;
     }
     if (QLog.isColorLevel()) {

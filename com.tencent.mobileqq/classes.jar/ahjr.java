@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.servlet.CliNotifyPush;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
-public class ahjr
-  implements Runnable
+class ahjr
+  extends AnimatorListenerAdapter
 {
-  public ahjr(CliNotifyPush paramCliNotifyPush) {}
+  ahjr(ahjp paramahjp) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    CliNotifyPush.a(this.a);
+    EffectsCameraCaptureFragment.a(this.a.a).setVisibility(8);
+    EffectsCameraCaptureFragment.j(this.a.a, false);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    EffectsCameraCaptureFragment.j(this.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjr
  * JD-Core Version:    0.7.0.1
  */

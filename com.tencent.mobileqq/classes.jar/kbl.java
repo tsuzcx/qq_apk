@@ -1,110 +1,101 @@
-import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Handler;
-import android.view.View;
-import android.widget.ImageButton;
+import android.text.TextUtils;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.av.app.VideoObserver;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
+import com.tencent.av.ui.VideoInviteFloatBar;
+import com.tencent.av.ui.VideoInviteFloatBarUICtr;
+import com.tencent.av.utils.TraeHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class kbl
-  implements ActionSheet.OnButtonClickListener
+  extends VideoObserver
 {
-  public kbl(VideoInviteActivity paramVideoInviteActivity, ActionSheet paramActionSheet, boolean paramBoolean) {}
+  public kbl(VideoInviteFloatBarUICtr paramVideoInviteFloatBarUICtr) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetImageButton != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(true);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
+    super.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "onServiceConnected uin = " + this.a.c);
     }
-    kbm localkbm;
-    switch (paramInt)
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-    default: 
-      paramView = null;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(true);
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvVideoController != null)
-      {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_Int, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e, paramView, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_i_of_type_Boolean);
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_i_of_type_Boolean) && (QQUtils.a(VideoInviteActivity.d(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity))))
-        {
-          paramView = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-          localkbm = new kbm(this);
-          if (!GesturePWDUtils.getJumpLock(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin())) {
-            break label636;
-          }
-        }
-      }
-      break;
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.jdField_b_of_type_Int, this.a.c, this.a.d);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.A, this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.n);
     }
-    label636:
-    for (long l = 500L;; l = 0L)
+    this.a.c();
+  }
+  
+  protected void a(int paramInt) {}
+  
+  protected void a(int paramInt, String paramString)
+  {
+    QLog.d("VideoInviteFloatBarUICtr", 1, "onClose  reason = " + paramInt + ",peerUin =  " + paramString);
+    if (TextUtils.equals(this.a.c, paramString))
     {
-      paramView.postDelayed(localkbm, l);
+      QLog.d("VideoInviteFloatBarUICtr", 1, "onClose  wrong uin: " + this.a.c + ", " + paramString);
+      this.a.a();
+    }
+    do
+    {
       return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-        for (paramView = "0X80043A0";; paramView = "0X80043B2")
-        {
-          ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_c_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_i_of_type_Int), "");
-          paramView = VideoInviteActivity.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131429143);
-          break;
-        }
+      super.a(paramInt, paramString);
+    } while ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.d()));
+  }
+  
+  protected void a(String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "onGetStrangeFace uin = " + this.a.c);
+    }
+    if ((this.a.jdField_b_of_type_Int == 25) && (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null)) {
+      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a(paramBitmap);
+    }
+    super.a(paramString, paramBitmap);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    super.a(paramString, paramBoolean);
+    QLog.d("VideoInviteFloatBarUICtr", 1, "onDestroyUI  peerUin: " + this.a.c + ", isQuit : " + paramBoolean);
+    if ((this.a.c != null) && (paramString != null) && (this.a.c.equals(paramString)) && (paramBoolean)) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(int paramInt) {}
+  
+  protected void c()
+  {
+    super.c();
+    QLog.d("VideoInviteFloatBarUICtr", 1, "onConnected");
+    this.a.jdField_a_of_type_ComTencentAvVideoController.g();
+    SmallScreenActivityPlugin.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(false);
+    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
+      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c();
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 1000L);
+    if (this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.d == 1) {
+      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
+    }
+    TraeHelper.a().a(this.a.f);
+  }
+  
+  protected void d(String paramString)
+  {
+    super.d(paramString);
+    if (this.a.jdField_b_of_type_Int == 25)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoInviteFloatBarUICtr", 2, "VideoInviteActivity onGetQCallNickName nickName:" + paramString);
       }
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-      for (paramView = "0X80043A6";; paramView = "0X80043AC") {
-        break;
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-        for (paramView = "0X80043A1";; paramView = "0X80043B3")
-        {
-          ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_c_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
-          paramView = VideoInviteActivity.b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131429144);
-          break;
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-      for (paramView = "0X80043A7";; paramView = "0X80043AD") {
-        break;
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-        for (paramView = "0X80043A2";; paramView = "0X80043B4")
-        {
-          ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_c_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
-          paramView = VideoInviteActivity.c(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity).getString(2131429145);
-          break;
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-      for (paramView = "0X80043A8";; paramView = "0X80043AE") {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_i_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-        for (paramView = "0X80043A3";; paramView = "0X80043B5")
-        {
-          ReportController.b(null, "CliOper", "", "", paramView, paramView, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_c_of_type_Int), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
-          paramView = null;
-          break;
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-      for (paramView = "0X80043A9";; paramView = "0X80043AF") {
-        break;
+      this.a.jdField_b_of_type_JavaLangString = paramString;
+      if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.d(this.a.jdField_b_of_type_JavaLangString);
       }
     }
   }

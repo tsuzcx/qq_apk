@@ -28,7 +28,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jus;
+import jud;
 
 public class FaceToolbar
   extends BaseToolbar
@@ -42,7 +42,7 @@ public class FaceToolbar
   View linePendant;
   QAVPtvTemplateAdapter mAdapterFace;
   QAVPtvTemplateAdapter mAdapterPendant;
-  QAVPtvTemplateAdapter.IEffectCallback mFaceClickCallback = new jus(this);
+  QAVPtvTemplateAdapter.IEffectCallback mFaceClickCallback = new jud(this);
   EffectFaceManager mFaceManager;
   ArrayList mFaceTmpList;
   RedTouch mFaceTxRedTouch;
@@ -72,7 +72,7 @@ public class FaceToolbar
     {
       localObject1 = new QavListItemBase.ItemInfo();
       ((QavListItemBase.ItemInfo)localObject1).jdField_a_of_type_JavaLangString = "0";
-      ((QavListItemBase.ItemInfo)localObject1).jdField_b_of_type_JavaLangString = String.valueOf(2130840276);
+      ((QavListItemBase.ItemInfo)localObject1).jdField_b_of_type_JavaLangString = String.valueOf(2130840282);
       if (!bool3) {
         bool1 = true;
       }
@@ -140,7 +140,7 @@ public class FaceToolbar
       bool1 = bool2;
       if (!paramVideoController.a().g)
       {
-        unbaleInfo = paramVideoController.a().getString(2131429247);
+        unbaleInfo = paramVideoController.a().getString(2131429253);
         bool1 = false;
       }
     }
@@ -159,7 +159,7 @@ public class FaceToolbar
       {
         if (!this.mSupportManager.a(3, "SUPPORT_SWITCH_FACE"))
         {
-          i = 2131429590;
+          i = 2131429596;
           paramItemInfo = (AVActivity)this.mActivity.get();
           if ((i != 0) && (paramItemInfo != null)) {
             paramItemInfo.a(79, paramItemInfo.getString(i), 3000L, 1);
@@ -168,7 +168,7 @@ public class FaceToolbar
         }
         m = this.mSupportManager.a(3, "SUPPORT_SWITCH_FACE");
         if (m == -1) {
-          i = 2131429605;
+          i = 2131429611;
         }
       }
       for (;;)
@@ -184,29 +184,29 @@ public class FaceToolbar
         if (j == 0) {
           break;
         }
-        i = 2131429606;
+        i = 2131429612;
         break;
         if (m == 0)
         {
-          i = 2131429604;
+          i = 2131429610;
           continue;
           paramItemInfo = (FaceItem)this.mFaceManager.a(paramItemInfo.jdField_a_of_type_JavaLangString);
           if ((paramItemInfo != null) && (paramItemInfo.isInteract()))
           {
             if (!this.mSupportManager.a(3, "interact"))
             {
-              i = 2131429590;
+              i = 2131429596;
               break;
             }
             i = this.mSupportManager.a(3, "interact");
             if (i == -1)
             {
-              i = 2131429592;
+              i = 2131429598;
               break;
             }
             if (i == 0)
             {
-              i = 2131429591;
+              i = 2131429597;
               break;
             }
           }
@@ -345,10 +345,10 @@ public class FaceToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 2;
-      this.mUIInfo.g = 2130969361;
+      this.mUIInfo.g = 2130969362;
       this.mUIInfo.e = 103412;
-      this.mUIInfo.f = 2130840127;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428735);
+      this.mUIInfo.f = 2130840133;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428741);
     }
     return this.mUIInfo;
   }
@@ -373,10 +373,10 @@ public class FaceToolbar
   {
     switch (paramView.getId())
     {
-    case 2131366257: 
+    case 2131366284: 
     default: 
       return;
-    case 2131366258: 
+    case 2131366285: 
       chooseTab(2);
       this.mApp.f(getRedTouchUIAppid() + "." + 103431 + "");
       updateRedDot();
@@ -393,12 +393,12 @@ public class FaceToolbar
     this.mFaceManager = ((EffectFaceManager)this.mApp.a(3));
     this.mSupportManager = ((EffectSupportManager)this.mApp.a(5));
     this.mSelectTab = 0;
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366248));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366275));
     this.mListView.setStayDisplayOffsetZero(true);
-    this.linePendant = this.toolbarView.findViewById(2131366259);
-    this.lineFace = this.toolbarView.findViewById(2131366257);
-    this.btnPendant = ((RedDotTextView)this.toolbarView.findViewById(2131366258));
-    this.btnFace = ((RedDotTextView)this.toolbarView.findViewById(2131366256));
+    this.linePendant = this.toolbarView.findViewById(2131366286);
+    this.lineFace = this.toolbarView.findViewById(2131366284);
+    this.btnPendant = ((RedDotTextView)this.toolbarView.findViewById(2131366285));
+    this.btnFace = ((RedDotTextView)this.toolbarView.findViewById(2131366283));
     this.btnPendant.setOnClickListener(this);
     this.btnFace.setOnClickListener(this);
     this.mPendantTxRedTouch = new RedTouch(this.mApp.getApplication(), this.btnPendant).a(53).a();

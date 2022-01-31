@@ -17,7 +17,7 @@ import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.ReqBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.AppTipNotify;
 import tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.MsgBody.SubCmd0x1UpdateAppUnreadNum;
-import zld;
+import zoj;
 
 public class TroopHandler$Oidb_0xb36
 {
@@ -207,7 +207,7 @@ public class TroopHandler$Oidb_0xb36
         QLog.d(".troop.survey", 2, new Object[] { "handle_push_msginfo receive TROOP_SURVEY_REDPOINT troopuin: ", paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, " will notify ark com.tencent.groupDragon, data: ", paramSubCmd0x1UpdateAppUnreadNum });
       }
       JSONObject localJSONObject = new JSONObject(paramSubCmd0x1UpdateAppUnreadNum);
-      ArkAppCenter.a().post(new zld(localJSONObject));
+      ArkAppCenter.a().post(new zoj(localJSONObject));
     }
     catch (JSONException localJSONException)
     {

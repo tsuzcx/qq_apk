@@ -1,31 +1,21 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloPanelManager;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloInfo;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
+import com.tencent.mobileqq.data.ApolloGameRoamData;
+import com.tencent.qphone.base.util.QLog;
 
 public class yvr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public yvr(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, Bundle paramBundle) {}
+  public yvr(ApolloDaoManager paramApolloDaoManager, ApolloGameRoamData paramApolloGameRoamData) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new ApolloInfo();
-    paramView.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
-    paramView.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("pkgId");
-    if (ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel) != null) {
-      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, paramView);
-    }
-    ApolloPanel.c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloDaoManager.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloDaoManager", 2, new Object[] { "[saveUserPlayedGameRoamData] game ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRoamData.gameId), " not in local, try update json" });
+      }
+      ApolloContentUpdateHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloDaoManager.a, 2);
     }
   }
 }

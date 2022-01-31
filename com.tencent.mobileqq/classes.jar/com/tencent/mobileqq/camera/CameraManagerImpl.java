@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.camera;
 
-import abid;
+import abpe;
 import android.annotation.TargetApi;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
@@ -11,7 +11,7 @@ import java.io.IOException;
 public class CameraManagerImpl
   implements CameraManager
 {
-  private abid jdField_a_of_type_Abid;
+  private abpe jdField_a_of_type_Abpe;
   private Camera.Parameters jdField_a_of_type_AndroidHardwareCamera$Parameters;
   private Camera jdField_a_of_type_AndroidHardwareCamera;
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
@@ -26,17 +26,17 @@ public class CameraManagerImpl
   
   private void a()
   {
-    if (this.jdField_a_of_type_Abid == null)
+    if (this.jdField_a_of_type_Abpe == null)
     {
       this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("CameraThread");
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_Abid = new abid(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.jdField_a_of_type_Abpe = new abpe(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.camera.CameraManagerImpl
  * JD-Core Version:    0.7.0.1
  */

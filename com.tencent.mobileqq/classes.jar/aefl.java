@@ -1,32 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.LocationDataManager;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.util.LogUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
 
 public class aefl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aefl(SelectLocationFragment paramSelectLocationFragment) {}
+  public aefl(MedalGuideView paramMedalGuideView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    LogUtil.d("SelectLocationFragment", "mNetworkErrorView onClick()");
-    if (SelectLocationFragment.a(this.a) == null)
+    try
     {
-      LogUtil.d("SelectLocationFragment", "mNetworkErrorView getLocation()");
-      SelectLocationFragment.b(this.a);
-    }
-    while (SelectLocationFragment.a(this.a) == null) {
+      ((MedalWallMng)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(249)).a(1, null);
       return;
     }
-    LogUtil.d("SelectLocationFragment", "mNetworkErrorView search()");
-    SelectLocationFragment.a(this.a).a(SelectLocationFragment.a(this.a));
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefl
  * JD-Core Version:    0.7.0.1
  */

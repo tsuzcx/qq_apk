@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.hotpic;
 
-import adfr;
-import adfs;
-import adfu;
-import adfv;
-import adfw;
+import adpq;
+import adpr;
+import adpt;
+import adpu;
+import adpv;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
@@ -142,7 +142,7 @@ public class HotPicMainPanel
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
     localValueAnimator.setDuration(paramInt1);
-    localValueAnimator.addUpdateListener(new adfr(this));
+    localValueAnimator.addUpdateListener(new adpq(this));
     localValueAnimator.start();
   }
   
@@ -172,19 +172,19 @@ public class HotPicMainPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout = paramPanelIconLinearLayout;
     this.jdField_a_of_type_ComTencentWidgetXPanelContainer = paramXPanelContainer;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362709);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131362974);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362727);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131362992);
     this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130968640, null);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131362972));
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131362973));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131362990));
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131362991));
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab.setOnItemClickListener(this);
-    setId(2131362449);
+    setId(2131362452);
   }
   
   public void a(HotPicData paramHotPicData)
   {
-    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131362971);
+    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131362989);
     Object localObject = (ViewGroup.MarginLayoutParams)localImageView.getLayoutParams();
     int j = paramHotPicData.width;
     int k = paramHotPicData.height;
@@ -240,7 +240,7 @@ public class HotPicMainPanel
         i = 2392;
       }
     }
-    ((URLDrawable)localObject).setDownloadListener(new adfs(this, localImageView));
+    ((URLDrawable)localObject).setDownloadListener(new adpr(this, localImageView));
   }
   
   public void a(boolean paramBoolean)
@@ -436,7 +436,7 @@ public class HotPicMainPanel
     {
       paramMotionEvent = ValueAnimator.ofInt(new int[] { XPanelContainer.jdField_a_of_type_Int, j });
       paramMotionEvent.setDuration(150L);
-      paramMotionEvent.addUpdateListener(new adfw(this, j));
+      paramMotionEvent.addUpdateListener(new adpv(this, j));
       paramMotionEvent.start();
       for (;;)
       {
@@ -509,7 +509,7 @@ public class HotPicMainPanel
       bool = true;
       this.jdField_a_of_type_Boolean = bool;
       if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.Panel", 2, "onShow 345599 init panelH " + this.d + " needExtendPanel" + this.jdField_a_of_type_Boolean);
+        QLog.d("HotPicManager.Panel", 2, "onShow 349884 init panelH " + this.d + " needExtendPanel" + this.jdField_a_of_type_Boolean);
       }
       localHotPicManager = HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       localHotPicManager.a(this);
@@ -533,7 +533,7 @@ public class HotPicMainPanel
       if ((i != 0) || (bool))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("HotPicManager.Panel", 2, "onShow 345599 isTempSession is true mSessionInfo.curType is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+          QLog.d("HotPicManager.Panel", 2, "onShow 349884 isTempSession is true mSessionInfo.curType is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
         }
         localObject2 = new ArrayList();
         localObject3 = ((ArrayList)localObject1).iterator();
@@ -620,7 +620,7 @@ public class HotPicMainPanel
   @TargetApi(11)
   public void g()
   {
-    Object localObject = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131362971);
+    Object localObject = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131362989);
     if (b())
     {
       if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing())) {
@@ -638,7 +638,7 @@ public class HotPicMainPanel
     localAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2).with((Animator)localObject);
     localAnimatorSet.setDuration(200L);
     localAnimatorSet.setInterpolator(new LinearInterpolator());
-    localAnimatorSet.addListener(new adfu(this));
+    localAnimatorSet.addListener(new adpt(this));
     localAnimatorSet.start();
   }
   
@@ -648,7 +648,7 @@ public class HotPicMainPanel
       return;
     }
     this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_c_of_type_AndroidViewView.setOnTouchListener(new adfv(this));
+    this.jdField_c_of_type_AndroidViewView.setOnTouchListener(new adpu(this));
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -759,7 +759,7 @@ public class HotPicMainPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicMainPanel
  * JD-Core Version:    0.7.0.1
  */

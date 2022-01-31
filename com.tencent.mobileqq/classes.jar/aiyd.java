@@ -1,33 +1,43 @@
-import android.view.WindowManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.RobotSpriteVideoView;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-class aiyd
-  implements ImageButton.OnClickListener
+public class aiyd
+  extends ClickableSpan
 {
-  aiyd(aiyc paramaiyc) {}
+  public aiyd(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void a(Sprite paramSprite)
+  public void onClick(View paramView)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView != null)
+    if (this.a.a != null)
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView.n();
-      RobotResourcesManager.a(this.a.a).removeView(this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView);
+      if (!this.a.a.a()) {
+        break label42;
+      }
+      this.a.a.b();
     }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView = null;
-    this.a.a.jdField_a_of_type_JavaLangString = null;
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.notifyDataSetChanged();
+    for (;;)
+    {
+      this.a.e(true);
+      return;
+      label42:
+      this.a.a.a();
+      ReportController.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.r, "", "", "");
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyd
  * JD-Core Version:    0.7.0.1
  */

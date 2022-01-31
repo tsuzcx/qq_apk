@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.widget.FadeIconImageView android:gravity="center" android:background="@drawable/top_button_right_selector" android:visibility="gone" android:layout_width="44.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:scaleType="center" android:includeFontPadding="false" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1238" android:layout_centerVertical="true" android:contentDescription="发件箱" tencent:skintype="title_right_view"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq" />
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SurfaceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a30a8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

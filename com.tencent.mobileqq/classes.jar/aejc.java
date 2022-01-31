@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import cooperation.weiyun.WeiyunAIOUtils;
 
 public class aejc
-  implements CsTask.OnCsError
+  implements DialogInterface.OnClickListener
 {
-  public aejc(VideoFeedsUploader paramVideoFeedsUploader, int paramInt) {}
+  public aejc(AIOShareActionSheet paramAIOShareActionSheet) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader).jdField_a_of_type_Int = -1004;
-    VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader).c = paramInt;
-    if (this.jdField_a_of_type_Int < 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoFeedsUploader", 2, "step1_uploadPreparing, retry send " + this.jdField_a_of_type_Int);
-      }
-      VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader, this.jdField_a_of_type_Int + 1);
-      return;
+    if (WeiyunAIOUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, AIOShareActionSheet.a(this.a), AIOShareActionSheet.a(this.a).a(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
+      AIOShareActionSheet.a(this.a).a(false, null, false);
     }
-    VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader, VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejc
  * JD-Core Version:    0.7.0.1
  */

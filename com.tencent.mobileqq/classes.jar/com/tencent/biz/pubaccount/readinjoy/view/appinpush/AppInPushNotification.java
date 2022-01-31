@@ -7,8 +7,8 @@ import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mju;
-import mjv;
+import mlf;
+import mlg;
 
 public abstract class AppInPushNotification
 {
@@ -37,7 +37,7 @@ public abstract class AppInPushNotification
   
   AppInPushNotification(AppInPushNotification.Builder paramBuilder)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new mju(this);
+    this.jdField_a_of_type_JavaLangRunnable = new mlf(this);
     this.jdField_a_of_type_AndroidContentContext = AppInPushNotification.Builder.a(paramBuilder);
     this.jdField_a_of_type_JavaLangString = AppInPushNotification.Builder.a(paramBuilder);
     this.jdField_b_of_type_JavaLangString = AppInPushNotification.Builder.b(paramBuilder);
@@ -110,7 +110,7 @@ public abstract class AppInPushNotification
       if (!paramBoolean1) {
         break label45;
       }
-      a(paramBoolean2, new mjv(this, paramBoolean2));
+      a(paramBoolean2, new mlg(this, paramBoolean2));
     }
     for (;;)
     {

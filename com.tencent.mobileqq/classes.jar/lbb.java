@@ -1,20 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import java.io.File;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView.AnimationEndListener;
+import java.lang.ref.WeakReference;
 
 public class lbb
-  implements Runnable
+  implements RainView.AnimationEndListener
 {
-  public lbb(KanDianViewController paramKanDianViewController) {}
+  private WeakReference a;
   
-  public void run()
+  public lbb(ReadInJoyRainAnimationController paramReadInJoyRainAnimationController)
   {
-    String str = CommonSkinRes.e();
-    if ((str != null) && (new File(str).exists()))
-    {
-      KanDianViewController.a(this.a).removeMessages(2);
-      KanDianViewController.a(this.a).sendEmptyMessage(3);
+    this.a = new WeakReference(paramReadInJoyRainAnimationController);
+  }
+  
+  public void a()
+  {
+    ReadInJoyRainAnimationController localReadInJoyRainAnimationController = (ReadInJoyRainAnimationController)this.a.get();
+    if ((localReadInJoyRainAnimationController == null) || (!localReadInJoyRainAnimationController.b())) {
+      return;
     }
+    ReadInJoyRainAnimationController.a(localReadInJoyRainAnimationController).sendEmptyMessage(1);
   }
 }
 

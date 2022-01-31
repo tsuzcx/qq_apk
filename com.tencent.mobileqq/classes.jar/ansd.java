@@ -1,14 +1,24 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditSyncQzonePart;
 
 public class ansd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ansd(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
+  public ansd(EditSyncQzonePart paramEditSyncQzonePart) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LbsFilterStatusManager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
+    paramView = this.a;
+    if (!EditSyncQzonePart.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      EditSyncQzonePart.a(paramView, bool);
+      EditSyncQzonePart.a(this.a, EditSyncQzonePart.a(this.a));
+      StoryConfigManager.c(EditSyncQzonePart.a(this.a));
+      return;
+    }
   }
 }
 

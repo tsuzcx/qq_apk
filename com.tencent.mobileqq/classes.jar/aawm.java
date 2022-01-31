@@ -1,14 +1,59 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppSSO;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
 
-public class aawm
+class aawm
   implements Runnable
 {
-  public aawm(ShopScanActivity paramShopScanActivity) {}
+  aawm(aawl paramaawl, aawy paramaawy, String paramString) {}
   
   public void run()
   {
-    QQToast.a(this.a.getApplicationContext(), "当前网络不可用，请检查你的网络设置。", 1).b(this.a.getTitleBarHeight());
+    if (ArkMessageServerLogic.a(this.jdField_a_of_type_Aawy.jdField_a_of_type_JavaLangString)) {
+      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, skip text");
+    }
+    for (;;)
+    {
+      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, fail");
+      if (this.jdField_a_of_type_Aawy.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler != null) {
+        this.jdField_a_of_type_Aawy.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler.a(this.jdField_a_of_type_Aawy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aawy.jdField_a_of_type_JavaLangObject, null);
+      }
+      Object localObject;
+      String str;
+      do
+      {
+        return;
+        localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+        if (localObject == null)
+        {
+          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, qq app is null");
+          break;
+        }
+        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(120);
+        if (localObject == null)
+        {
+          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, ark center is null");
+          break;
+        }
+        localObject = ((ArkAppCenter)localObject).a();
+        if (localObject == null)
+        {
+          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, ark sso is null");
+          break;
+        }
+        str = ArkMessageServerLogic.a(this.jdField_a_of_type_Aawy, this.jdField_a_of_type_JavaLangString);
+        if (TextUtils.isEmpty(str))
+        {
+          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, req json is null");
+          break;
+        }
+      } while (((ArkAppSSO)localObject).a("ArkTextSvc.AnalyzeTextIntent", str, 10000, 0, new aawn(this)));
+      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "analyzeTextIntentByServer, fail send sso request");
+    }
   }
 }
 

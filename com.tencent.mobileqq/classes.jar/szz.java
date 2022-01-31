@@ -1,51 +1,38 @@
-import android.app.ProgressDialog;
-import android.content.res.Resources;
+import QQService.SvcDevLoginInfo;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.manager.ServerConfigManager.ConfigType;
-import mqq.manager.TicketManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class szz
   implements View.OnClickListener
 {
-  public szz(NotificationActivity paramNotificationActivity) {}
+  public szz(LoginInfoActivity paramLoginInfoActivity, Button paramButton, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    ProgressDialog localProgressDialog = DialogUtil.a(this.a, this.a.getResources().getDrawable(2130845341), 2131435035);
-    localProgressDialog.setOnDismissListener(new taa(this));
-    ReportLog.a(this.a.app.getAccount());
-    this.a.app.a(ServerConfigManager.ConfigType.app, "log_upload");
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null)
+    if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity))
     {
-      paramView = (TicketManager)((AppRuntime)localObject).getManager(2);
-      localObject = ((AppRuntime)localObject).getAccount();
-      if (paramView == null) {
-        break label161;
-      }
-    }
-    label161:
-    for (paramView = paramView.getSkey((String)localObject);; paramView = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqBaseActivity", 2, new Object[] { " NotificationActivity crash uin=", localObject, ",skey=", paramView });
-      }
-      ReportLog.a(this.a.app.getHttpCommunicatort(), this.a.app.getApp(), localProgressDialog, (String)localObject, paramView);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131433009), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
       return;
     }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetButton.getTag();
+    if (paramView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), new taa(this, paramView));
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131436509), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     szz
  * JD-Core Version:    0.7.0.1
  */

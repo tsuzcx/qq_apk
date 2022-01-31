@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.shareGroup.icon;
 
 import android.support.annotation.NonNull;
-import npy;
-import nqa;
+import nrl;
+import nrn;
 
 public abstract class ShareGroupIconManager$LoadBitmapCallBack
-  implements nqa
+  implements nrn
 {
   public void a(RestrictedBitmap paramRestrictedBitmap) {}
   
   public void a(Error paramError) {}
   
-  public final void a(@NonNull npy paramnpy)
+  public final void a(@NonNull nrl paramnrl)
   {
-    a(new RestrictedBitmap(paramnpy.a()));
+    a(new RestrictedBitmap(paramnrl.a()));
   }
   
-  public final void b(@NonNull npy paramnpy)
+  public final void b(@NonNull nrl paramnrl)
   {
-    a(paramnpy.a());
+    a(paramnrl.a());
   }
 }
 

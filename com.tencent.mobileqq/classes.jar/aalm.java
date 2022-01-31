@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
 
-class aalm
-  extends ArkAppCGI.ArkAppCGICallback
+public class aalm
+  implements Runnable
 {
-  aalm(aall paramaall) {}
+  public aalm(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
   
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
+  public void run()
   {
-    ThreadManager.post(new aaln(this, paramArrayOfByte, paramBoolean), 5, null, true);
+    if ((ARCardCameraRecordFragment.b(this.a)) && (ARCardCameraRecordFragment.c(this.a) != 0)) {
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalm
  * JD-Core Version:    0.7.0.1
  */

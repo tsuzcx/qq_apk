@@ -1,6 +1,6 @@
 package com.tencent.open.base.http;
 
-import akpy;
+import alfo;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
@@ -221,7 +221,7 @@ public class HttpCgiAsyncTask
   protected void a(HashMap paramHashMap)
   {
     if (!isCancelled()) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new akpy(this, paramHashMap));
+      this.jdField_a_of_type_AndroidOsHandler.post(new alfo(this, paramHashMap));
     }
   }
   

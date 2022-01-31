@@ -1,16 +1,40 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class swp
-  implements Runnable
+public class swp
+  extends MqqHandler
 {
-  swp(swo paramswo, boolean paramBoolean) {}
+  public swp(Leba paramLeba) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Swo.a.c.setOnCheckedChangeListener(null);
-    this.jdField_a_of_type_Swo.a.c.setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Swo.a.c.setOnCheckedChangeListener(this.jdField_a_of_type_Swo.a.a);
+    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1134006: 
+      this.a.b();
+      return;
+    case 11340002: 
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
+      }
+      this.a.l();
+      return;
+    case 11340005: 
+      Leba.c(this.a);
+      return;
+    case 1134008: 
+      this.a.a(paramMessage);
+      return;
+    }
+    this.a.r();
   }
 }
 

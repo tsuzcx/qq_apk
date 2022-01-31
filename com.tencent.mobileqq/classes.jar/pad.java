@@ -1,24 +1,53 @@
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class pad
-  implements Runnable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public pad(OfflinePlugin paramOfflinePlugin) {}
+  public pad(TouchWebView paramTouchWebView) {}
   
-  public void run()
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if ((this.a.a == null) || (this.a.a.size() == 0)) {
-      return;
-    }
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext())
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (((this.a.f) && (paramFloat2 < 0.0F)) || ((this.a.g) && (this.a.a != null)))
     {
-      String str = (String)localIterator.next();
-      this.a.b(str);
+      this.a.a.a((int)(paramFloat2 / 1.5D));
+      this.a.g = true;
     }
-    this.a.a.clear();
+    if ((this.a.getParent() instanceof RefreshView))
+    {
+      paramMotionEvent1 = (RefreshView)this.a.getParent();
+      if ((paramMotionEvent1.getScrollY() >= 0) && (this.a.a != null) && (this.a.g))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("CustomWebView", 2, "RefreshView scrollY: " + paramMotionEvent1.getScrollY());
+        }
+        this.a.a.a();
+        this.a.g = false;
+        this.a.f = false;
+      }
+    }
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return true;
   }
 }
 

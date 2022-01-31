@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.TouchableSpan;
 
 class smb
-  implements Runnable
+  extends EditInfoActivity.TouchableSpan
 {
-  smb(sma paramsma) {}
-  
-  public void run()
+  smb(sly paramsly, int paramInt1, int paramInt2, String paramString)
   {
-    this.a.a.c();
-    this.a.a.P();
+    super(paramsly.a, paramInt1, paramInt2);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Sly.a.a != null) {
+      this.jdField_a_of_type_Sly.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

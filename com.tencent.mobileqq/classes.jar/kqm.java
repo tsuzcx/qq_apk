@@ -1,14 +1,28 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class kqm
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public kqm(AccountDetailVideoManager paramAccountDetailVideoManager) {}
   
-  public kqm(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    if (QLog.isColorLevel())
+    {
+      paramTVK_IMediaPlayer = new StringBuilder();
+      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
+      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
+      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
+      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
+      QLog.e("AccountDetailVideoManager", 2, paramTVK_IMediaPlayer.toString());
+    }
+    this.a.a.runOnUiThread(new kqn(this));
+    return false;
+  }
 }
 
 

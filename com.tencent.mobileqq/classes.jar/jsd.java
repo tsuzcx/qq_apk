@@ -1,21 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.utils.TraeHelper;
 
 public class jsd
-  extends BroadcastReceiver
+  implements Runnable
 {
-  jsd(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jsd(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (paramContext.equals("homekey"))) {
-        CallbackWaitingActivityExt.a(this.a);
-      }
+    if ((this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper != null) && (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.b()) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new jse(this));
     }
   }
 }

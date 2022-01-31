@@ -1,55 +1,18 @@
-import com.tencent.component.network.NetworkManager;
+import com.tencent.component.media.image.BitmapReference;
+import com.tencent.component.media.photogif.NewAnimationDrawable;
+import com.tencent.component.media.utils.LruCache;
 
 public class piw
+  extends LruCache
 {
-  public boolean a = false;
-  public boolean b = false;
-  
-  public piw()
+  public piw(NewAnimationDrawable paramNewAnimationDrawable, int paramInt)
   {
-    if (NetworkManager.isWap())
-    {
-      this.a = true;
-      this.b = true;
-      return;
-    }
-    this.a = false;
-    this.b = false;
+    super(paramInt);
   }
   
-  public boolean equals(Object paramObject)
+  protected int a(String paramString, BitmapReference paramBitmapReference)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (!(paramObject instanceof piw))) {
-        return false;
-      }
-      paramObject = (piw)paramObject;
-    } while ((this.a == paramObject.a) && (this.b) && (paramObject.b));
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = 1;
-    int i;
-    if (this.a)
-    {
-      i = 1;
-      if (!this.b) {
-        break label34;
-      }
-    }
-    for (;;)
-    {
-      return (i + 527) * 31 + j;
-      i = 0;
-      break;
-      label34:
-      j = 0;
-    }
+    return paramBitmapReference.getAllocSize();
   }
 }
 

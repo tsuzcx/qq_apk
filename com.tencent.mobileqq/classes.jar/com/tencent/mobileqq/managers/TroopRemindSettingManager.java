@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.managers;
 
-import adse;
+import aefk;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -56,12 +56,12 @@ public class TroopRemindSettingManager
   
   public void b(String paramString, QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.post(new adse(this, paramQQAppInterface, paramString), 8, null, false);
+    ThreadManager.post(new aefk(this, paramQQAppInterface, paramString), 8, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.managers.TroopRemindSettingManager
  * JD-Core Version:    0.7.0.1
  */

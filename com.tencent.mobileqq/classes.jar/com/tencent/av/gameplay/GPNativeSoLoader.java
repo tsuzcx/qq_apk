@@ -3,7 +3,7 @@ package com.tencent.av.gameplay;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import jig;
+import jhr;
 import mqq.os.MqqHandler;
 
 public class GPNativeSoLoader
@@ -68,7 +68,7 @@ public class GPNativeSoLoader
       }
     } while (a("qavgameplayengine") == 0);
     return false;
-    ThreadManager.getUIHandler().post(new jig());
+    ThreadManager.getUIHandler().post(new jhr());
     return false;
   }
 }

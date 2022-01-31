@@ -1,18 +1,29 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 
 public class mrm
-  implements Runnable
+  implements View.OnKeyListener
 {
-  public mrm(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  private mrm(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void run()
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    SubscriptFeedsActivity.a(this.a, SubscriptRecommendController.b(this.a.app));
-    if (PublicAccountUtil.a(this.a.app)) {
-      SubscriptFeedsActivity.a(this.a, true);
+    paramView = ReadInJoyNewSearchActivity.a(this.a).getText().toString().trim();
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0) && (!TextUtils.isEmpty(paramView)))
+    {
+      paramKeyEvent = (InputMethodManager)this.a.getSystemService("input_method");
+      if (paramKeyEvent != null) {
+        paramKeyEvent.hideSoftInputFromWindow(ReadInJoyNewSearchActivity.a(this.a).getWindowToken(), 2);
+      }
+      ReadInJoyNewSearchActivity.a(this.a, paramView);
+      this.a.a(paramView);
     }
+    return false;
   }
 }
 

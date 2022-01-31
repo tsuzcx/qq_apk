@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.util;
 
-import ahiq;
-import ahir;
-import ahis;
+import ahws;
+import ahwt;
+import ahwu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -288,7 +288,7 @@ public class SearchUtils
   
   public static Drawable a(Bitmap paramBitmap)
   {
-    Drawable localDrawable = BaseApplicationImpl.sApplication.getResources().getDrawable(2130839192);
+    Drawable localDrawable = BaseApplicationImpl.sApplication.getResources().getDrawable(2130839196);
     if ((localDrawable instanceof SkinnableBitmapDrawable)) {
       ((SkinnableBitmapDrawable)localDrawable).setGravity(81);
     }
@@ -333,10 +333,10 @@ public class SearchUtils
         return new BitmapDrawable(ImageUtil.b());
       }
       if (paramInt == 102) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130841551);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130841588);
       }
       if (paramInt == 106) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130843784);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130843908);
       }
       if (paramInt == 105)
       {
@@ -347,25 +347,25 @@ public class SearchUtils
         return PublicAccountConfigUtil.a(BaseApplicationImpl.sApplication, 1);
       }
       if (String.valueOf(9999L).equals(paramString)) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839197);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839201);
       }
       if (String.valueOf(9994L).equals(paramString)) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839204);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839208);
       }
       if (String.valueOf(9992L).equals(paramString)) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839202);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839206);
       }
       if (AppConstants.at.equals(paramString)) {
         return ServiceAccountFolderManager.a();
       }
       if (String.valueOf(9980L).equals(paramString)) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839203);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839207);
       }
       if (String.valueOf(9973L).equals(paramString)) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130842116);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130842153);
       }
       if (paramInt == 9889987) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130840579);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130840585);
       }
       if (paramInt == 108)
       {
@@ -377,7 +377,7 @@ public class SearchUtils
       else
       {
         if (String.valueOf(AppConstants.C).equals(paramString)) {
-          return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839196);
+          return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839200);
         }
         if (paramInt == 110)
         {
@@ -842,7 +842,7 @@ public class SearchUtils
           if (j <= 0) {
             break;
           }
-          paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492950)), i, i + j, 17);
+          paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), i, i + j, 17);
           i = paramString2.indexOf((String)localObject, i + j);
         }
         label759:
@@ -864,9 +864,9 @@ public class SearchUtils
     int n = 0;
     if (jdField_a_of_type_AndroidGraphicsPaint == null)
     {
-      jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(paramQQAppInterface.getApp()).inflate(2130971484, null).findViewById(2131363360)).getPaint();
+      jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(paramQQAppInterface.getApp()).inflate(2130971532, null).findViewById(2131363378)).getPaint();
       if (jdField_c_of_type_Int == 0) {
-        jdField_c_of_type_Int = paramQQAppInterface.getApp().getResources().getDimensionPixelOffset(2131559124);
+        jdField_c_of_type_Int = paramQQAppInterface.getApp().getResources().getDimensionPixelOffset(2131559126);
       }
     }
     String str = paramString1.toLowerCase();
@@ -930,7 +930,7 @@ public class SearchUtils
       {
         if (i >= 0)
         {
-          paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492950)), i, i + j, 17);
+          paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), i, i + j, 17);
           i = paramString2.indexOf(paramQQAppInterface, j + i);
           j = paramQQAppInterface.length();
           continue;
@@ -963,9 +963,9 @@ public class SearchUtils
     }
     if (jdField_a_of_type_AndroidGraphicsPaint == null)
     {
-      jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(paramQQAppInterface.getApp()).inflate(2130971484, null).findViewById(2131363360)).getPaint();
+      jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(paramQQAppInterface.getApp()).inflate(2130971532, null).findViewById(2131363378)).getPaint();
       if (jdField_c_of_type_Int == 0) {
-        jdField_c_of_type_Int = paramQQAppInterface.getApp().getResources().getDimensionPixelOffset(2131559124);
+        jdField_c_of_type_Int = paramQQAppInterface.getApp().getResources().getDimensionPixelOffset(2131559126);
       }
     }
     paramQQAppInterface = paramString1.toLowerCase();
@@ -1006,7 +1006,7 @@ public class SearchUtils
     {
       paramQQAppInterface = new SpannableStringBuilder(paramString1);
       if (paramInt + m <= paramString1.length()) {
-        paramQQAppInterface.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492950)), paramInt, paramInt + m, 17);
+        paramQQAppInterface.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), paramInt, paramInt + m, 17);
       }
       return paramQQAppInterface;
       i -= 1;
@@ -1076,7 +1076,7 @@ public class SearchUtils
           i = ((String)localObject2).length();
           while (paramInt >= 0)
           {
-            paramString.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492950)), paramInt, paramInt + i, 17);
+            paramString.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), paramInt, paramInt + i, 17);
             paramInt = ((String)localObject1).toLowerCase().indexOf(((String)localObject2).toLowerCase(), paramInt + i);
           }
         }
@@ -1137,7 +1137,7 @@ public class SearchUtils
       {
         if (i >= 0)
         {
-          paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492950)), i, i + j, 17);
+          paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), i, i + j, 17);
           i = paramString2.indexOf((String)localObject, i + j);
           j = ((String)localObject).length();
           continue;
@@ -1183,7 +1183,7 @@ public class SearchUtils
     }
     for (;;)
     {
-      paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492950)), j, j + i, 17);
+      paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), j, j + i, 17);
       if (k != 0)
       {
         j = str.indexOf(paramString2, j + i);
@@ -1290,7 +1290,7 @@ public class SearchUtils
       label272:
       for (;;)
       {
-        paramString.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492950)), paramInt, paramInt + i, 17);
+        paramString.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), paramInt, paramInt + i, 17);
         break;
         return paramString;
       }
@@ -1692,48 +1692,66 @@ public class SearchUtils
   public static void a(Intent paramIntent, ForwardBaseOption paramForwardBaseOption)
   {
     int j = 1006;
-    boolean bool = false;
-    Object localObject;
+    boolean bool2 = false;
     String str1;
-    int k;
     String str2;
+    int k;
+    String str3;
     int i;
     int m;
+    boolean bool1;
     if ((paramIntent != null) && (paramForwardBaseOption != null))
     {
-      localObject = paramIntent.getStringExtra("contactSearchResultUin");
-      str1 = paramIntent.getStringExtra("contactSearchResultTroopUin");
+      str1 = paramIntent.getStringExtra("contactSearchResultUin");
+      str2 = paramIntent.getStringExtra("contactSearchResultTroopUin");
       k = paramIntent.getIntExtra("contactSearchResultUinType", 0);
-      str2 = paramIntent.getStringExtra("contactSearchResultName");
+      str3 = paramIntent.getStringExtra("contactSearchResultName");
       i = ForwardAbility.ForwardAbilityType.a.intValue();
       m = paramIntent.getIntExtra("chooseFriendFrom", 0);
-      if (k != 56938) {
-        bool = true;
+      if (k == 56938) {
+        break label329;
       }
+      bool1 = true;
       if ((!(paramForwardBaseOption instanceof ForwardShareCardOption)) || (!paramIntent.hasExtra("contactSearchResultPhoneContactMobileCode")) || (k == 1006)) {
-        break label318;
+        break label395;
       }
+      str1 = paramIntent.getStringExtra("contactSearchResultPhoneContactMobileCode");
     }
-    for (paramIntent = paramIntent.getStringExtra("contactSearchResultPhoneContactMobileCode");; paramIntent = (Intent)localObject)
+    for (;;)
     {
       switch (j)
       {
       }
       for (;;)
       {
-        if (!StringUtil.a(paramIntent))
+        if (!StringUtil.a(str1))
         {
-          localObject = new Bundle();
-          ((Bundle)localObject).putString("uin", paramIntent);
-          ((Bundle)localObject).putInt("uintype", j);
-          ((Bundle)localObject).putString("uinname", str2);
-          ((Bundle)localObject).putString("troop_uin", str1);
-          ((Bundle)localObject).putInt("chooseFriendFrom", m);
-          ((Bundle)localObject).putBoolean("bindContact", bool);
-          paramForwardBaseOption.a(i, (Bundle)localObject);
+          Bundle localBundle = new Bundle();
+          localBundle.putString("uin", str1);
+          localBundle.putInt("uintype", j);
+          localBundle.putString("uinname", str3);
+          localBundle.putString("troop_uin", str2);
+          localBundle.putInt("chooseFriendFrom", m);
+          localBundle.putBoolean("bindContact", bool1);
+          bool1 = bool2;
+          if (paramIntent != null) {
+            bool1 = paramIntent.getBooleanExtra("choose_friend_needConfirm", false);
+          }
+          if (bool1)
+          {
+            str1 = paramIntent.getStringExtra("choose_friend_confirmTitle");
+            paramIntent = paramIntent.getStringExtra("choose_friend_confirmContent");
+            localBundle.putBoolean("choose_friend_needConfirm", bool1);
+            localBundle.putString("choose_friend_confirmTitle", str1);
+            localBundle.putString("choose_friend_confirmContent", paramIntent);
+          }
+          paramForwardBaseOption.a(i, localBundle);
           paramForwardBaseOption.e();
         }
         return;
+        label329:
+        bool1 = false;
+        break;
         i = ForwardAbility.ForwardAbilityType.b.intValue();
         continue;
         i = ForwardAbility.ForwardAbilityType.c.intValue();
@@ -1746,7 +1764,7 @@ public class SearchUtils
         continue;
         i = ForwardAbility.ForwardAbilityType.i.intValue();
       }
-      label318:
+      label395:
       j = k;
     }
   }
@@ -1809,7 +1827,7 @@ public class SearchUtils
   
   public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, List paramList, String paramString3, Rect paramRect, SearchUtils.GenerateGifWithTextCallback paramGenerateGifWithTextCallback)
   {
-    ThreadManager.post(new ahis(paramString1, paramString2, paramList, paramString3, paramRect, paramAppInterface, paramGenerateGifWithTextCallback), 8, null, true);
+    ThreadManager.post(new ahwu(paramString1, paramString2, paramList, paramString3, paramRect, paramAppInterface, paramGenerateGifWithTextCallback), 8, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
@@ -1851,12 +1869,12 @@ public class SearchUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    ThreadManager.postImmediately(new ahiq(paramInt, paramString2, paramString3, paramString1, paramQQAppInterface), null, false);
+    ThreadManager.postImmediately(new ahws(paramInt, paramString2, paramString3, paramString1, paramQQAppInterface), null, false);
   }
   
   public static void a(IContactSearchModel paramIContactSearchModel, View paramView)
   {
-    ThreadManager.postImmediately(new ahir(paramView, paramIContactSearchModel), null, true);
+    ThreadManager.postImmediately(new ahwt(paramView, paramIContactSearchModel), null, true);
   }
   
   public static void a(String paramString)
@@ -2384,7 +2402,7 @@ public class SearchUtils
       {
         if (j >= 0)
         {
-          paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492950)), j, j + i, 17);
+          paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), j, j + i, 17);
           j = str.indexOf(paramString2, j + i);
           i = paramString2.length();
           continue;
@@ -2501,10 +2519,10 @@ public class SearchUtils
       for (paramInt = 8;; paramInt = k + 1)
       {
         localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
-        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494258)), 0, ((String)localObject1).length(), 17);
+        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494265)), 0, ((String)localObject1).length(), 17);
         while (paramInt >= 0)
         {
-          ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492950)), paramInt, paramInt + i, 17);
+          ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), paramInt, paramInt + i, 17);
           paramInt = paramString1.indexOf(paramString2, paramInt + i);
           i = paramString2.length();
         }

@@ -1,19 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
 
-public class aasi
-  implements Runnable
+class aasi
+  implements aasr
 {
-  public aasi(ARMapActivity paramARMapActivity) {}
+  aasi(aash paramaash) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.a.b = 1;
-    this.a.a.post(new aasj(this));
-    ARMapEngine.guideToPOI(0.0F);
-    ThreadManager.post(new aask(this), 5, null, false);
+    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Aasp.a }));
+    if (paramBoolean) {
+      ArkAppDataReport.a(this.a.jdField_a_of_type_Aasp.a, 2);
+    }
+    this.a.jdField_a_of_type_Aasr.a(paramBoolean);
   }
 }
 

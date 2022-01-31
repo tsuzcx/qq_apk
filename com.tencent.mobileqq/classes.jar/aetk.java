@@ -1,21 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.location.adapter.SelectableAdapter;
+import com.tencent.mobileqq.nearby.now.widget.CommonViewHolder.ItemClickListener;
+import java.util.List;
 
-class aetk
-  implements DialogInterface.OnClickListener
+public class aetk
+  implements CommonViewHolder.ItemClickListener
 {
-  aetk(aetj paramaetj, QQCustomDialog paramQQCustomDialog) {}
+  public aetk(SelectableAdapter paramSelectableAdapter, CommonViewHolder.ItemClickListener paramItemClickListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Aetj.a.f();
-    new ReportTask(this.jdField_a_of_type_Aetj.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("face_score_vip").d("expert_change_click").a(new String[] { "", "" + (this.jdField_a_of_type_Aetj.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.gender + 1), "2" }).a();
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_Int == paramInt) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_AndroidViewView);
+    }
+    int i = paramInt;
+    if (paramInt > this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_JavaUtilList.size()) {
+      i = this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_JavaUtilList.size() - 1;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonViewHolder$ItemClickListener.a(i, paramView);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_JavaUtilList.get(i);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.a(paramView);
+  }
+  
+  public void b(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonViewHolder$ItemClickListener.b(paramInt, paramView);
   }
 }
 

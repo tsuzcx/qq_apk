@@ -1,29 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
-import com.tencent.mobileqq.profile.diy.VipDiyCardConstants;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
 
-public final class adfe
-  implements HiBoomFont.HiBoomFontDownloader
+public class adfe
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  public String a()
-  {
-    return VipDiyCardConstants.a;
-  }
+  public adfe(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void a(int paramInt)
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((VasQuickUpdateManager)localAppRuntime.getManager(183)).a(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
-    }
+    this.a.a.runOnUiThread(new adff(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class mgz
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public mgz(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public mgz(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    KandianOx210MsgInfo localKandianOx210MsgInfo = ((KandianMergeManager)ReadInJoyUtils.a().getManager(161)).f();
-    ThreadManager.getUIHandler().post(new mha(this, localKandianOx210MsgInfo));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    ReadInJoyBaseAdapter.b(this.a, paramAbsListView);
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

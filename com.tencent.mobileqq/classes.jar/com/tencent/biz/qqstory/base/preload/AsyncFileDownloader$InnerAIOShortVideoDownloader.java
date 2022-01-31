@@ -8,7 +8,7 @@ import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
 import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
 import com.tencent.mobileqq.shortvideo.ShortVideoReq;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import myo;
+import mzz;
 
 public class AsyncFileDownloader$InnerAIOShortVideoDownloader
   implements AsyncFileDownloader.InnerDownloader
@@ -30,7 +30,7 @@ public class AsyncFileDownloader$InnerAIOShortVideoDownloader
     for (;;)
     {
       localShortVideoReq.a(localShortVideoDownloadInfo);
-      localShortVideoReq.a(new myo(this, paramDownloadTask.jdField_a_of_type_JavaLangString));
+      localShortVideoReq.a(new mzz(this, paramDownloadTask.jdField_a_of_type_JavaLangString));
       ShortVideoBusiManager.a(localShortVideoReq, localQQAppInterface);
       SLog.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramDownloadTask }));
       return;

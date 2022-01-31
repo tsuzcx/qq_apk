@@ -1,107 +1,55 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.DeleteCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicData;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
 
-public final class ljb
-  implements BusinessObserver
+public class ljb
+  extends TransProcessorHandler
 {
-  public ljb(ArticleCommentModule.DeleteCommentObserver paramDeleteCommentObserver, ArticleInfo paramArticleInfo, int paramInt, String paramString1, String paramString2) {}
+  public ljb(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    int i1 = 0;
-    int n = 0;
-    int m = -1;
-    String str = "";
-    localObject = str;
-    int k = m;
-    paramInt = n;
-    int i;
-    if (paramBoolean)
-    {
-      i = m;
-      j = i1;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        localObject = str;
-        k = m;
-        paramInt = n;
-        if (paramBundle != null)
-        {
-          i = m;
-          j = i1;
-          localObject = new WebSsoBody.WebSsoResponseBody();
-          i = m;
-          j = i1;
-          ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-          i = m;
-          j = i1;
-          m = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-          i = m;
-          j = i1;
-          paramBundle = ((WebSsoBody.WebSsoResponseBody)localObject).data.get();
-          i = m;
-          j = i1;
-          if (QLog.isColorLevel())
-          {
-            i = m;
-            j = i1;
-            QLog.d(NativeCommentServlet.jdField_a_of_type_JavaLangString, 2, "deleteComment ret=" + paramBundle);
-          }
-          i = m;
-          j = i1;
-          paramBundle = new JSONObject(paramBundle);
-          if (m == 0) {
-            continue;
-          }
-          i = m;
-          j = i1;
-          localObject = paramBundle.optString("msg");
-          paramInt = n;
-          k = m;
-        }
-        i = k;
-      }
-      catch (Exception paramBundle)
-      {
-        localObject = paramBundle.getLocalizedMessage();
-        paramBundle.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d(NativeCommentServlet.jdField_a_of_type_JavaLangString, 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
-        paramInt = j;
-        continue;
-      }
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaLangString, this.b, i, (String)localObject);
-      }
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != 10)) {
       return;
-      localObject = str;
-      k = m;
-      paramInt = n;
-      i = m;
-      j = i1;
-      if (paramBundle.optInt("ret") == 0)
-      {
-        j = 1;
-        paramInt = 1;
-        i = m;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
-        localObject = str;
-        k = m;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1003: 
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send finished!");
       }
+      break;
+    }
+    try
+    {
+      ReadInJoyCommentComponentFragment.a(this.a).c = true;
+      ReadInJoyCommentComponentFragment.a(this.a).f = localFileMsg.i;
+      ReadInJoyCommentComponentFragment.a(this.a).g = localFileMsg.f;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler url=" + ReadInJoyCommentComponentFragment.a(this.a).f + ", md5=" + ReadInJoyCommentComponentFragment.a(this.a).g);
+      }
+      label172:
+      this.a.f();
+      ReadInJoyCommentComponentFragment.a(this.a).setResult(-1, ReadInJoyCommentComponentFragment.a(this.a));
+      ReadInJoyCommentComponentFragment.a(this.a).finish();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send error or cancel!");
+      }
+      this.a.f();
+      this.a.a(1, this.a.getString(2131438884));
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      break label172;
     }
   }
 }

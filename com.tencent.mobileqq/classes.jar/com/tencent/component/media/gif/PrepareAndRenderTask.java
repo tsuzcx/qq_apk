@@ -8,14 +8,14 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
-import peg;
-import peh;
+import pga;
+import pgb;
 
 public class PrepareAndRenderTask
-  extends peh
+  extends pgb
 {
   private long jdField_a_of_type_Long = 0L;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new peg(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new pga(this);
   ScheduledFuture jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
   private ScheduledThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
   private Semaphore jdField_a_of_type_JavaUtilConcurrentSemaphore = new Semaphore(0);

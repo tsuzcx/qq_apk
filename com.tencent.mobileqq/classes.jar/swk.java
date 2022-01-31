@@ -1,19 +1,24 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.KplCard;
+import com.tencent.qphone.base.util.QLog;
 
-class swk
+public class swk
+  extends CardObserver
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  public swk(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  swk(swi paramswi) {}
+  protected void f(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
+    }
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
+    {
+      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
+      this.a.a = ((KplCard)paramObject);
+    }
+  }
 }
 
 

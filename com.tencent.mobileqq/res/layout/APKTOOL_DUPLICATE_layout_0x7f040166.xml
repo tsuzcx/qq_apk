@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dingdong="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09c9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.dingdong.widget.DingdongPromptView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ca" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" dingdong:promptText="@string/APKTOOL_DUPLICATE_string_0x7f0b026b" dingdong:promptIconDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02040a" dingdong:promptIconVisibility="APKTOOL_DUPLICATE_id_0x7f0a0034" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.dingdong.widget.DingdongPromptView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" dingdong:promptText="@string/APKTOOL_DUPLICATE_string_0x7f0b026b" dingdong:promptIconDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02040e" dingdong:promptIconVisibility="APKTOOL_DUPLICATE_id_0x7f0a0034" />
     </RelativeLayout>
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09cb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
+        <ListView android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
     </LinearLayout>
 </RelativeLayout>

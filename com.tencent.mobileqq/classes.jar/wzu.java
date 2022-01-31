@@ -1,35 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 
 public class wzu
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wzu(CommonHbFragment paramCommonHbFragment, View paramView) {}
+  public wzu(PasswdRedBagManager paramPasswdRedBagManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    long l = System.currentTimeMillis();
-    if (CommonHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment) + 1200L > l) {
-      return;
-    }
-    CommonHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment, l);
-    paramView = new ArrayList();
-    try
-    {
-      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_AndroidViewView.getTag();
-      paramView = localArrayList;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a.a(CommonHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment), paramView);
+    PasswdRedBagManager.a(this.a).b();
   }
 }
 

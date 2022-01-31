@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import abpq;
+import abwr;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -58,20 +58,20 @@ public class DatingUtil
     int i = -1;
     int j = 0;
     if (l == paramLong) {
-      i = 2131434623;
+      i = 2131434640;
     }
     while (paramInt == 5) {
       if (i != -1)
       {
         return BaseApplication.getContext().getResources().getString(i);
         if (l == 1L + paramLong) {
-          i = 2131434621;
+          i = 2131434638;
         } else if (l == 2L + paramLong) {
-          i = 2131434622;
+          i = 2131434639;
         } else if (l == paramLong - 1L) {
-          i = 2131434624;
+          i = 2131434641;
         } else if (l == paramLong - 2L) {
-          i = 2131434625;
+          i = 2131434642;
         } else if (localCalendar1.get(1) == ((Calendar)localObject2).get(1)) {
           j = 1;
         } else {
@@ -238,7 +238,7 @@ public class DatingUtil
   
   public static void a(Activity paramActivity, String paramString)
   {
-    paramActivity.runOnUiThread(new abpq(paramActivity, paramString));
+    paramActivity.runOnUiThread(new abwr(paramActivity, paramString));
   }
   
   public static void a(Context paramContext, long paramLong, String paramString1, byte[] paramArrayOfByte, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)

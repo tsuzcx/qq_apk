@@ -1,58 +1,102 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.SearchUtil;
-import com.tencent.mobileqq.search.SearchUtil.ObjectItemInfo;
-import com.tencent.mobileqq.search.model.NetSearchTemplateUniversalItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateUniversalItem.ActionInfo;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.search.report.UniteSearchReportController;
-import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.LogTag;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class ahgr
-  implements View.OnClickListener
+  implements UpCallBack
 {
-  public ahgr(SearchTemplatePresenter paramSearchTemplatePresenter, Context paramContext, NetSearchTemplateUniversalItem paramNetSearchTemplateUniversalItem) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public ahgr(VideoSendTaskManager paramVideoSendTaskManager, QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    SearchUtils.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem.a.jdField_a_of_type_JavaLangString);
-    SearchUtil.ObjectItemInfo localObjectItemInfo;
-    JSONObject localJSONObject;
-    if (SearchUtil.c.containsKey(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem))
-    {
-      localObjectItemInfo = (SearchUtil.ObjectItemInfo)SearchUtil.c.get(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem);
-      localJSONObject = new JSONObject();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PreUploadVideo", 2, "[attachRichText2Msg]id=" + this.jdField_a_of_type_JavaLangString);
     }
-    try
-    {
-      localJSONObject.put("project", UniteSearchReportController.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localObjectItemInfo.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "web");
-      UniteSearchReportController.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localObjectItemInfo.jdField_a_of_type_Long + "").obj2(localObjectItemInfo.b).ver1(localObjectItemInfo.jdField_a_of_type_JavaLangString).ver2(UniteSearchReportController.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem.b)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + SearchUtil.jdField_a_of_type_Long));
-      return;
+    MessageRecord localMessageRecord = ((TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).get(this.jdField_a_of_type_JavaLangString)).a;
+    if ((localMessageRecord instanceof MessageForShortVideo)) {
+      ((MessageForShortVideo)localMessageRecord).richText = paramRichText;
     }
-    catch (JSONException localJSONException)
+    return localMessageRecord;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult)
+  {
+    Object localObject = (TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).get(this.jdField_a_of_type_JavaLangString);
+    if ((((TransferRequest)localObject).a instanceof MessageForShortVideo))
     {
-      for (;;)
-      {
-        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
+      localObject = (MessageForShortVideo)((TransferRequest)localObject).a;
+      if (!TextUtils.isEmpty(paramSendResult.d)) {
+        break label93;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("PreUploadVideo", 2, "[updateMsg]id=" + this.jdField_a_of_type_JavaLangString + ", md5=" + paramSendResult.d);
       }
     }
+    return;
+    label93:
+    LogTag.a();
+    for (;;)
+    {
+      try
+      {
+        ((MessageForShortVideo)localObject).videoFileSize = ((int)paramSendResult.a);
+        ((MessageForShortVideo)localObject).videoFileStatus = 1003;
+        ((MessageForShortVideo)localObject).uuid = paramSendResult.jdField_c_of_type_JavaLangString;
+        ((MessageForShortVideo)localObject).md5 = paramSendResult.d;
+        ((MessageForShortVideo)localObject).thumbFileSize = ((int)paramSendResult.jdField_c_of_type_Long);
+        ((MessageForShortVideo)localObject).serial();
+        LogTag.a("PreUploadVideo", "[updateMsg]");
+        paramSendResult = ShortVideoUtils.a((MessageForShortVideo)localObject, "mp4");
+        if (!TextUtils.isEmpty(((MessageForShortVideo)localObject).videoFileName))
+        {
+          if ((!((MessageForShortVideo)localObject).videoFileName.equals(paramSendResult)) && (FileUtils.c(((MessageForShortVideo)localObject).videoFileName, paramSendResult))) {
+            ((MessageForShortVideo)localObject).videoFileName = paramSendResult;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageForShortVideo)localObject).frienduin, ((MessageForShortVideo)localObject).istroop, ((MessageForShortVideo)localObject).uniseq, ((MessageForShortVideo)localObject).msgData);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localObject);
+          VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).post(new ahgt(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager, this.jdField_a_of_type_JavaLangString));
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("PreUploadVideo", 2, "[updateMsg]id=" + this.jdField_a_of_type_JavaLangString + ", mr=" + ((MessageForShortVideo)localObject).toString());
+          return;
+        }
+      }
+      finally {}
+      if (QLog.isColorLevel()) {
+        QLog.i("PreUploadVideo", 2, "[updateMsg] mr.videoFileName is empty");
+      }
+    }
+  }
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
+    VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).post(new ahgs(this, paramSendResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahgr
  * JD-Core Version:    0.7.0.1
  */

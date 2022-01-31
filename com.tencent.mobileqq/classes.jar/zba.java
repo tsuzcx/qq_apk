@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.CardHandler;
 
 public class zba
   implements Runnable
 {
-  public zba(FriendsManager paramFriendsManager) {}
+  public zba(CardHandler paramCardHandler) {}
   
   public void run()
   {
-    this.a.e();
+    CardHandler.a(this.a);
   }
 }
 

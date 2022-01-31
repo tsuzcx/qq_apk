@@ -1,46 +1,49 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
-import com.tencent.mobileqq.apollo.script.SpriteActionScript;
-import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
 
 public class ywj
   implements Runnable
 {
-  public ywj(ChatApolloViewListener paramChatApolloViewListener, boolean paramBoolean, Object paramObject) {}
+  public ywj(ApolloGameShare paramApolloGameShare, int paramInt) {}
   
   public void run()
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(ApolloConstant.n).append(ApolloGameShare.a(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare)).append("/inviteIcon.png");
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewChatApolloViewListener.a == null) {
-        return;
+      if (new File(((StringBuilder)localObject).toString()).exists()) {
+        localObject = BitmapFactory.decodeFile(((StringBuilder)localObject).toString());
+      } else {
+        localObject = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130838155);
       }
-      Object localObject2 = (BaseChatPie)this.jdField_a_of_type_ComTencentMobileqqApolloViewChatApolloViewListener.a.get();
-      if ((localObject2 != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.a()) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
-      {
-        Object localObject1 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
-        if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
-        {
-          localObject2 = SpriteUtil.a(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (localObject2 != null)
-          {
-            localObject1 = ((ArrayList)localObject1).iterator();
-            while (((Iterator)localObject1).hasNext()) {
-              ((SpriteActionScript)localObject2).a((String)((Iterator)localObject1).next(), true);
-            }
-          }
-        }
-      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("ApolloGameShare", 1, "fail to invite wxFriend, oom happens, errInfo->" + localOutOfMemoryError.getMessage());
       return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("ChatApolloViewListener", 1, localThrowable, new Object[0]);
+      QLog.e("ApolloGameShare", 1, "fail to invite wxFriend, error happens, errInfo->" + localThrowable.getMessage());
+      return;
+    }
+    Bitmap localBitmap;
+    while (localBitmap != null)
+    {
+      localBitmap = TroopShareUtility.a(localThrowable);
+      ApolloGameShare.a(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare, String.valueOf(System.currentTimeMillis()));
+      WXShareHelper.a().a(new ywk(this));
+      WXShareHelper.a().a(ApolloGameShare.a(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), ApolloGameShare.b(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), localBitmap, ApolloGameShare.c(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), ApolloGameShare.d(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), this.jdField_a_of_type_Int);
+      return;
     }
   }
 }

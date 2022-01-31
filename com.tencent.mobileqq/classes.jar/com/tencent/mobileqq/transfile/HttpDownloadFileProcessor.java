@@ -97,9 +97,9 @@ public class HttpDownloadFileProcessor
     return true;
   }
   
-  public void an_()
+  public void ap_()
   {
-    super.an_();
+    super.ap_();
     if ((this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.i == null) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.c == null)) {
       b(null, null);
     }
@@ -155,7 +155,7 @@ public class HttpDownloadFileProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.HttpDownloadFileProcessor
  * JD-Core Version:    0.7.0.1
  */

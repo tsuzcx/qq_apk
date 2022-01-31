@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
-import acsb;
+import adby;
 import com.tencent.biz.ProtoUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -23,8 +23,8 @@ public class TroopFileVideoOnlinePlayManager
     oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
     localReqBody.uint64_group_code.set(paramLong);
     localReqBody.str_app_src.set("android");
-    localReqBody.str_version.set("7.6.0");
-    ProtoUtils.b(paramQQAppInterface, new acsb(paramTroopFileWhiteListCallback), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
+    localReqBody.str_version.set("7.6.3");
+    ProtoUtils.b(paramQQAppInterface, new adby(paramTroopFileWhiteListCallback), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
   }
 }
 

@@ -1,26 +1,21 @@
-import com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
+import com.tencent.qphone.base.util.QLog;
 
-class ogr
-  implements Runnable
+public class ogr
+  implements ProgressPieDrawable.OnProgressListener
 {
-  ogr(ogq paramogq, int paramInt) {}
+  public ogr(EditVideoSave paramEditVideoSave) {}
   
-  public void run()
+  public void a(ProgressPieDrawable paramProgressPieDrawable)
   {
-    String str = "";
-    if (this.jdField_a_of_type_Int == -1) {
-      str = "分享失败";
-    }
-    for (;;)
-    {
-      QQToast.a(this.jdField_a_of_type_Ogq.a.a, 1, str, 0).a();
-      return;
-      if (this.jdField_a_of_type_Int == -2) {
-        str = "你未安装微博客户端，无法分享。";
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
     }
   }
+  
+  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

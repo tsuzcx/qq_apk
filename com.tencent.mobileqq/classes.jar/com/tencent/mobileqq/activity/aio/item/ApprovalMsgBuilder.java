@@ -31,7 +31,7 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.dingdong.DingdongMsgItemTitleImageView;
 import cooperation.dingdong.DingdongPluginHelper;
-import uqx;
+import utz;
 
 public class ApprovalMsgBuilder
   extends BaseBubbleBuilder
@@ -45,7 +45,7 @@ public class ApprovalMsgBuilder
     this.jdField_b_of_type_AndroidOsHandler = new Handler();
   }
   
-  private void a(MessageForApproval paramMessageForApproval, uqx paramuqx)
+  private void a(MessageForApproval paramMessageForApproval, utz paramutz)
   {
     for (;;)
     {
@@ -55,12 +55,12 @@ public class ApprovalMsgBuilder
       Object localObject4;
       try
       {
-        paramuqx.d.setText(paramMessageForApproval.summary);
+        paramutz.d.setText(paramMessageForApproval.summary);
         String[] arrayOfString = paramMessageForApproval.title.split("\002");
         if (arrayOfString.length == 1)
         {
-          paramuqx.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageForApproval.title.substring(3));
-          paramuqx.c.setVisibility(8);
+          paramutz.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageForApproval.title.substring(3));
+          paramutz.c.setVisibility(8);
           return;
         }
         int j = arrayOfString.length;
@@ -110,8 +110,8 @@ public class ApprovalMsgBuilder
           if ("1".equalsIgnoreCase(str1) == true) {
             localObject3 = paramMessageForApproval + "(含周末)";
           }
-          paramuqx.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-          paramuqx.c.setText((String)localObject2 + (String)localObject3);
+          paramutz.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+          paramutz.c.setText((String)localObject2 + (String)localObject3);
           return;
         }
       }
@@ -119,8 +119,8 @@ public class ApprovalMsgBuilder
       {
         if (QLog.isDevelopLevel())
         {
-          paramuqx.jdField_b_of_type_AndroidWidgetTextView.setText("解析出错了，快查!");
-          paramuqx.c.setText("解析出错了，快查!");
+          paramutz.jdField_b_of_type_AndroidWidgetTextView.setText("解析出错了，快查!");
+          paramutz.c.setText("解析出错了，快查!");
         }
         QLog.e("ApprovalMsgBuilder", 1, paramMessageForApproval.toString());
         return;
@@ -132,32 +132,32 @@ public class ApprovalMsgBuilder
     }
   }
   
-  private void a(uqx paramuqx, MessageForApproval paramMessageForApproval, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  private void a(utz paramutz, MessageForApproval paramMessageForApproval, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramuqx.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)paramuqx.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramutz.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)paramutz.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
     int i;
     if (paramMessageForApproval.isSend())
     {
-      i = 2130838170;
+      i = 2130838173;
       localLayoutParams.leftMargin = 0;
       localLayoutParams.rightMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
     }
     for (localLayoutParams1.leftMargin = ((int)(16.0F * this.jdField_a_of_type_Float));; localLayoutParams1.leftMargin = ((int)(24.0F * this.jdField_a_of_type_Float)))
     {
-      paramuqx.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-      paramuqx.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams1);
-      paramuqx.jdField_a_of_type_AndroidWidgetLinearLayout.invalidate();
-      paramuqx.jdField_a_of_type_AndroidWidgetTextView.invalidate();
-      paramuqx.jdField_a_of_type_CooperationDingdongDingdongMsgItemTitleImageView.setBackgroundResource(i);
-      paramuqx.jdField_a_of_type_CooperationDingdongDingdongMsgItemTitleImageView.buildDrawingCache();
-      paramuqx.jdField_a_of_type_CooperationDingdongDingdongMsgItemTitleImageView.setReplaceColor(Color.rgb(38, 209, 166));
-      paramuqx.jdField_a_of_type_CooperationDingdongDingdongMsgItemTitleImageView.invalidate();
+      paramutz.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+      paramutz.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams1);
+      paramutz.jdField_a_of_type_AndroidWidgetLinearLayout.invalidate();
+      paramutz.jdField_a_of_type_AndroidWidgetTextView.invalidate();
+      paramutz.jdField_a_of_type_CooperationDingdongDingdongMsgItemTitleImageView.setBackgroundResource(i);
+      paramutz.jdField_a_of_type_CooperationDingdongDingdongMsgItemTitleImageView.buildDrawingCache();
+      paramutz.jdField_a_of_type_CooperationDingdongDingdongMsgItemTitleImageView.setReplaceColor(Color.rgb(38, 209, 166));
+      paramutz.jdField_a_of_type_CooperationDingdongDingdongMsgItemTitleImageView.invalidate();
       paramView.setOnLongClickListener(paramOnLongClickAndTouchListener);
       paramView.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramView.setOnClickListener(this);
       return;
-      i = 2130838169;
+      i = 2130838172;
       localLayoutParams.leftMargin = ((int)(this.jdField_a_of_type_Float * 6.0F));
       localLayoutParams.rightMargin = 0;
     }
@@ -177,7 +177,7 @@ public class ApprovalMsgBuilder
   public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramChatMessage = (ViewGroup)super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
-    paramView = (uqx)paramChatMessage.getTag();
+    paramView = (utz)paramChatMessage.getTag();
     paramView.jdField_a_of_type_AndroidViewView.getLayoutParams().width = BaseChatItemLayout.d;
     if (jdField_b_of_type_Boolean) {}
     try
@@ -194,19 +194,19 @@ public class ApprovalMsgBuilder
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramViewHolder = (uqx)paramViewHolder;
+    paramViewHolder = (utz)paramViewHolder;
     paramBaseChatItemLayout = (MessageForApproval)paramChatMessage;
     paramBaseChatItemLayout.parse();
     paramChatMessage = paramView;
     if (paramView == null)
     {
       paramChatMessage = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968740, null);
-      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131363506));
-      paramViewHolder.c = ((TextView)paramChatMessage.findViewById(2131363507));
-      paramViewHolder.d = ((TextView)paramChatMessage.findViewById(2131363509));
-      paramViewHolder.jdField_a_of_type_CooperationDingdongDingdongMsgItemTitleImageView = ((DingdongMsgItemTitleImageView)paramChatMessage.findViewById(2131363503));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramChatMessage.findViewById(2131363505));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131363504));
+      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131363524));
+      paramViewHolder.c = ((TextView)paramChatMessage.findViewById(2131363525));
+      paramViewHolder.d = ((TextView)paramChatMessage.findViewById(2131363527));
+      paramViewHolder.jdField_a_of_type_CooperationDingdongDingdongMsgItemTitleImageView = ((DingdongMsgItemTitleImageView)paramChatMessage.findViewById(2131363521));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramChatMessage.findViewById(2131363523));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131363522));
     }
     a(paramViewHolder, paramBaseChatItemLayout, paramChatMessage, paramOnLongClickAndTouchListener);
     a(paramBaseChatItemLayout, paramViewHolder);
@@ -215,7 +215,7 @@ public class ApprovalMsgBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new uqx(this);
+    return new utz(this);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -240,7 +240,7 @@ public class ApprovalMsgBuilder
   
   public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
-    paramView = (uqx)AIOUtils.a(paramView);
+    paramView = (utz)AIOUtils.a(paramView);
     a((MessageForApproval)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, paramView);
   }
   

@@ -1,42 +1,90 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.AppProtocolObserver;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.TimeManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopSearchResultDialog;
+import com.tencent.mobileqq.troop.logic.TroopSearchLogic.SearchResult;
+import com.tencent.mobileqq.util.FaceDrawable;
+import java.util.List;
 
 public class ajbs
-  extends ProtoUtils.AppProtocolObserver
+  extends BaseAdapter
 {
-  public ajbs(TroopGiftManager paramTroopGiftManager, TroopGiftCallback paramTroopGiftCallback) {}
+  List jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ajbs(NewTroopSearchResultDialog paramNewTroopSearchResultDialog, List paramList)
   {
-    paramBundle = new oidb_0x962.RspBody();
-    if (paramArrayOfByte != null) {}
-    try
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    TroopSearchLogic.SearchResult localSearchResult;
+    if (paramView == null)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, paramBundle);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopSearchResultDialog.getContext()).inflate(2130969881, null);
+      paramViewGroup = new ajbt(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopSearchResultDialog);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362754));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364975));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131363201));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365554);
+      paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopSearchResultDialog);
+      paramView.setTag(paramViewGroup);
+      localSearchResult = (TroopSearchLogic.SearchResult)getItem(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localSearchResult.a.getTroopName());
+      if (localSearchResult.a.lastMsgTime == 0L) {
+        break label267;
       }
-      return;
+      paramViewGroup.b.setVisibility(0);
+      paramViewGroup.b.setText("最近活跃：" + TimeManager.a().a(localSearchResult.a.troopuin, localSearchResult.a.lastMsgTime));
+      label188:
+      if (!localSearchResult.a.hasSetTroopHead()) {
+        break label350;
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    label267:
+    label350:
+    for (paramInt = 4;; paramInt = 113)
     {
-      for (;;)
+      FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopSearchResultDialog.a, paramInt, localSearchResult.a.troopuin, 3, FaceDrawable.a(4, 3), FaceDrawable.a(4, 3));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localFaceDrawable);
+      paramViewGroup.jdField_a_of_type_JavaLangString = localSearchResult.a.troopuin;
+      return paramView;
+      paramViewGroup = (ajbt)paramView.getTag();
+      break;
+      if (localSearchResult.a.troopCreateTime != 0L)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_oidb_0x962. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-        }
+        paramViewGroup.b.setVisibility(0);
+        paramViewGroup.b.setText("建群时间：" + TimeManager.a().a(localSearchResult.a.troopuin, localSearchResult.a.troopCreateTime));
+        break label188;
       }
+      paramViewGroup.b.setVisibility(8);
+      break label188;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.plugin.ReadInJoyWebviewPlugin;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lse
-  implements View.OnClickListener
+  implements TroopMemberApiClient.Callback
 {
-  public lse(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, String paramString1, String paramString2) {}
+  public lse(ReadInJoyWebviewPlugin paramReadInJoyWebviewPlugin, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), this.b);
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive notifyLoadSkin callback resp:" + paramBundle.toString());
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId")).put("rate", paramBundle.getInt("rate"));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      QLog.w("ReadInJoyWebviewPlugin", 1, "notifyLoadSkin error " + paramBundle.toString());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+    }
   }
 }
 

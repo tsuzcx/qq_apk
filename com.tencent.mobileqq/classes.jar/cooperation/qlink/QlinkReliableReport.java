@@ -1,7 +1,7 @@
 package cooperation.qlink;
 
-import alxl;
-import alxm;
+import amnp;
+import amnq;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -40,17 +40,17 @@ public class QlinkReliableReport
     }
   }
   
-  private void a(alxm paramalxm)
+  private void a(amnq paramamnq)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("QlinkReliableReport", 2, "addPerformanceReporting:" + paramalxm);
+      QLog.d("QlinkReliableReport", 2, "addPerformanceReporting:" + paramamnq);
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if (this.jdField_a_of_type_JavaUtilList == null) {
         this.jdField_a_of_type_JavaUtilList = new ArrayList();
       }
-      this.jdField_a_of_type_JavaUtilList.add(paramalxm);
+      this.jdField_a_of_type_JavaUtilList.add(paramamnq);
       return;
     }
   }
@@ -62,7 +62,7 @@ public class QlinkReliableReport
     }
     QlinkReliableReport localQlinkReliableReport = a();
     if (localQlinkReliableReport != null) {
-      localQlinkReliableReport.a(new alxm(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap));
+      localQlinkReliableReport.a(new amnq(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap));
     }
   }
   
@@ -105,8 +105,8 @@ public class QlinkReliableReport
           Iterator localIterator = localList.iterator();
           if (localIterator.hasNext())
           {
-            alxm localalxm = (alxm)localIterator.next();
-            ((StatisticCollector)???).a(localalxm.a(), localalxm.b(), localalxm.a(), localalxm.a(), localalxm.b(), localalxm.a(), null);
+            amnq localamnq = (amnq)localIterator.next();
+            ((StatisticCollector)???).a(localamnq.a(), localamnq.b(), localamnq.a(), localamnq.a(), localamnq.b(), localamnq.a(), null);
           }
         }
       }
@@ -135,7 +135,7 @@ public class QlinkReliableReport
       if (this.jdField_a_of_type_JavaUtilTimer == null)
       {
         this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_JavaUtilTimer.schedule(new alxl(this), 60000L);
+        this.jdField_a_of_type_JavaUtilTimer.schedule(new amnp(this), 60000L);
       }
       return;
     }

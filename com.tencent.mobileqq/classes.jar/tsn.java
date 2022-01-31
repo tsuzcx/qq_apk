@@ -1,37 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class tsn
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public tsn(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public tsn(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramMessage = this.a.findViewById(2131375068);
-    if (paramMessage != null) {}
-    try
-    {
-      paramMessage.setBackgroundResource(2130846097);
-      ReportController.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
-      return;
-    }
-    catch (OutOfMemoryError paramMessage)
-    {
-      for (;;)
-      {
-        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
-      }
-    }
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

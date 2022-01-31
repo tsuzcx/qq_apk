@@ -1,19 +1,38 @@
-import com.tencent.biz.pubaccount.assistant.PubAccountTipsManager;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.StringUtil;
 
 public class vvy
   implements Runnable
 {
-  public vvy(PublicAccountChatPie paramPublicAccountChatPie, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
+  public vvy(NearbyChatPie paramNearbyChatPie) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
-      return;
+      Card localCard = ((FriendsManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if (localCard == null)
+      {
+        if (StringUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
+          ((CardHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (byte)1, 0);
+        }
+      }
+      else if ((localCard != null) && (localCard.strCertificationInfo != null) && (!localCard.strCertificationInfo.equals("")))
+      {
+        ChatActivityFacade.f(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+        return;
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.a();
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

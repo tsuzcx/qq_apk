@@ -1,39 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import java.io.File;
-import org.json.JSONArray;
+import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class abel
   implements Runnable
 {
-  public abel(BubbleManager paramBubbleManager) {}
+  public abel(ShopScanActivity paramShopScanActivity) {}
   
   public void run()
   {
-    synchronized (this.a)
-    {
-      Object localObject1 = new File(this.a.a(), "bubble_local.cfg");
-      boolean bool = ((File)localObject1).exists();
-      if (bool) {}
-      try
-      {
-        localObject1 = this.a.a(((File)localObject1).getAbsolutePath());
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          this.a.a = new JSONArray((String)localObject1);
-        }
-        if (this.a.a == null) {
-          this.a.a = new JSONArray();
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
+    QQToast.a(this.a.getApplicationContext(), "当前网络不可用，请检查你的网络设置。", 1).b(this.a.getTitleBarHeight());
   }
 }
 

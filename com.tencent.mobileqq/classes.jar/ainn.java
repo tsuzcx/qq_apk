@@ -1,23 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import android.text.format.Time;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class ainn
-  extends AnimatorListenerAdapter
+  implements FilenameFilter
 {
-  public ainn(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  public ainn(ShareAppLogHelper paramShareAppLogHelper) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean accept(File paramFile, String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
-    }
+    if (!paramString.endsWith(".log")) {}
+    do
+    {
+      return false;
+      paramFile = ShareAppLogHelper.a(this.a, paramString);
+    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ainn
  * JD-Core Version:    0.7.0.1
  */

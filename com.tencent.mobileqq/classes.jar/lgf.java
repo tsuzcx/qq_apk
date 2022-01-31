@@ -1,29 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkCache;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class lgf
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public lgf(ReadInJoyArkCache paramReadInJoyArkCache, BaseArticleInfo paramBaseArticleInfo, ArkAppContainer paramArkAppContainer) {}
+  public lgf(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity, ArrayList paramArrayList) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 1)
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInJoyDeliverBiuActivity.app.getCurrentAccountUin();
+    localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + (String)localObject, 4);
+    if (localObject != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArkCache", 2, "click ArkAppView.");
+      HashSet localHashSet = new HashSet();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localHashSet.add(String.valueOf((Long)localIterator.next()));
       }
-      ReadInJoyArkCache.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyArkReadInJoyArkCache, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      ((SharedPreferences)localObject).edit().putStringSet("readinjoy_deliver_biu_guide_uin", localHashSet);
+      ((SharedPreferences)localObject).edit().commit();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.onTouch(paramView, paramMotionEvent);
-    }
-    return false;
   }
 }
 

@@ -1,21 +1,49 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class mtw
-  implements ClickableColorSpanTextView.SpanClickListener
+  implements Runnable
 {
-  public mtw(PublicAccountH5AbilityForPtt paramPublicAccountH5AbilityForPtt) {}
+  public mtw(TroopBarAssistantManager paramTroopBarAssistantManager, QQAppInterface paramQQAppInterface) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void run()
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    Object localObject1 = new JSONArray();
+    Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountTroopbarassitTroopBarAssistantManager.a.keySet().iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      JSONObject localJSONObject = new JSONObject();
+      String str = (String)((Iterator)localObject2).next();
+      if ((str != null) && (this.jdField_a_of_type_ComTencentBizPubaccountTroopbarassitTroopBarAssistantManager.a.get(str) != null)) {
+        try
+        {
+          localJSONObject.put(str, this.jdField_a_of_type_ComTencentBizPubaccountTroopbarassitTroopBarAssistantManager.a.get(str));
+          ((JSONArray)localObject1).put(localJSONObject);
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
+    localObject1 = ((JSONArray)localObject1).toString();
+    if (ReadInJoyHelper.b()) {
+      QLog.i("TroopBarAssistantManager", 2, "saveNewMsgSet, save newMsgStr into sp:" + (String)localObject1);
+    }
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit();
+    ((SharedPreferences.Editor)localObject2).putString("troopbar_assist_new_unread_list", (String)localObject1);
+    ((SharedPreferences.Editor)localObject2).commit();
   }
 }
 

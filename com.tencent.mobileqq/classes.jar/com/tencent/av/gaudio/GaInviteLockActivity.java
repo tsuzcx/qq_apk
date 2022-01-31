@@ -17,9 +17,9 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import jja;
-import jjb;
-import jjc;
+import jil;
+import jim;
+import jin;
 
 public class GaInviteLockActivity
   extends GaInviteActivity
@@ -50,33 +50,33 @@ public class GaInviteLockActivity
   
   protected void c()
   {
-    this.jdField_a_of_type_ComTencentAvUiQavPanel = ((QavPanel)super.findViewById(2131365908));
+    this.jdField_a_of_type_ComTencentAvUiQavPanel = ((QavPanel)super.findViewById(2131365935));
     this.jdField_a_of_type_ComTencentAvUiQavPanel.a(3);
     this.jdField_a_of_type_ComTencentAvUiQavPanel.setWaveVisibility(8);
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(new jja(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365934));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365935));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365942));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BitmapTools.a(super.getApplicationContext(), 2130840203);
-    View localView = super.findViewById(2131365932);
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(new jil(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365961));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365962));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365969));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BitmapTools.a(super.getApplicationContext(), 2130840209);
+    View localView = super.findViewById(2131365959);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
     for (;;)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365938));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365965));
       if ((!NetworkUtil.h(super.getApplicationContext())) && ((NetworkUtil.c(super.getApplicationContext())) || (NetworkUtil.b(super.getApplicationContext()))))
       {
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429060);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429066);
       }
       super.c();
-      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation = new QavInOutAnimation(this, this.jdField_a_of_type_ComTencentAvVideoController, 1, this.jdField_a_of_type_ComTencentAvUiQavPanel, null, super.findViewById(2131365941), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetTextView, null);
+      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation = new QavInOutAnimation(this, this.jdField_a_of_type_ComTencentAvVideoController, 1, this.jdField_a_of_type_ComTencentAvUiQavPanel, null, super.findViewById(2131365968), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetTextView, null);
       if (this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation != null) {
         this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a();
       }
       return;
-      localView.setBackgroundResource(2130840203);
+      localView.setBackgroundResource(2130840209);
     }
   }
   
@@ -84,7 +84,7 @@ public class GaInviteLockActivity
   {
     if (this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new jjb(this));
+      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new jim(this));
       return;
     }
     super.e();
@@ -97,13 +97,13 @@ public class GaInviteLockActivity
     }
     this.jdField_c_of_type_Int = UITools.a(getApplicationContext());
     this.d = UITools.b(getApplicationContext());
-    super.setContentView(2130969286);
+    super.setContentView(2130969287);
     super.onCreate(paramBundle);
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
     paramBundle.addAction("tencent.notify.cancel.videorequest");
     paramBundle.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new jjc(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new jin(this);
     super.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     super.getWindow().addFlags(524288);
     super.getWindow().addFlags(128);

@@ -1,79 +1,90 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
-import java.util.ArrayList;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.music.MusicDownloadListener;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class anox
-  extends BaseAdapter
+  extends MusicDownloadListener
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public anox(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  public anox(MusicFragmentProviderView paramMusicFragmentProviderView) {}
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
+    this.a.c(paramInt);
   }
   
-  public void a(ArrayList paramArrayList)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    HorizontalStroke localHorizontalStroke = (HorizontalStroke)getItem(paramInt);
-    View localView;
-    if (paramView == null)
+    if ((MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).a().equals(paramString)))
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968952, paramViewGroup, false);
-      paramView = new anoy(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364354));
-      paramView.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131364353));
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localHorizontalStroke.a);
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break;
+      MusicFragmentProviderView.a(this.a).c = -1;
+      if (this.a.a != null) {
+        this.a.a.sendEmptyMessage(3);
       }
-      paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getResources().getDrawable(2130842425));
-      return localView;
-      paramViewGroup = (anoy)paramView.getTag();
-      localView = paramView;
     }
-    paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(null);
-    return localView;
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicFragmentProviderView", 2, "download onCancel");
+    }
+    MusicFragmentProviderView.a(this.a).set(false);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    this.a.a(paramString, paramInt);
+    MusicFragmentProviderView.a(this.a).set(true);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      this.a.b(-115);
+      MusicFragmentProviderView.a(this.a).set(false);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    this.a.b(paramInt);
+    if ((paramBoolean) && (MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).a().equals(paramString)))
+    {
+      MusicFragmentProviderView.a(this.a).e = 0;
+      MusicFragmentProviderView.a(this.a).f = (MusicFragmentProviderView.a(this.a).e + MusicFragmentProviderView.a(this.a));
+      MusicFragmentProviderView.a(this.a).g = ((int)ShortVideoUtils.a(MusicFragmentProviderView.a(this.a).a()));
+      if (MusicFragmentProviderView.a(this.a).f > MusicFragmentProviderView.a(this.a).g) {
+        MusicFragmentProviderView.a(this.a).f = MusicFragmentProviderView.a(this.a).g;
+      }
+      MusicFragmentProviderView.a(this.a, MusicFragmentProviderView.a(this.a).e);
+      MusicFragmentProviderView.b(this.a, MusicFragmentProviderView.a(this.a).f);
+      paramString = (QIMMusicConfigManager)QIMManager.a(2);
+      MusicItemInfo localMusicItemInfo = paramString.a(MusicFragmentProviderView.a(this.a).jdField_a_of_type_Int);
+      if (localMusicItemInfo != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MusicFragmentProviderView", 2, "music exist name =" + localMusicItemInfo.jdField_a_of_type_JavaLangString);
+        }
+        paramString.a(MusicFragmentProviderView.a(this.a), false);
+      }
+      if (this.a.a != null) {
+        this.a.a.sendEmptyMessage(2);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder("onFinish musicStart=").append(MusicFragmentProviderView.a(this.a).e);
+        paramString.append(" musicEnd=").append(MusicFragmentProviderView.a(this.a).f);
+        paramString.append(" musicDuration").append(MusicFragmentProviderView.a(this.a).g);
+        paramString.append(" premusicStart").append(MusicFragmentProviderView.b(this.a));
+        paramString.append(" premusicEnd").append(MusicFragmentProviderView.c(this.a));
+        paramString.append(" musicName").append(MusicFragmentProviderView.a(this.a).jdField_a_of_type_JavaLangString);
+        QLog.d("MusicFragmentProviderView", 2, paramString.toString());
+      }
+    }
+    MusicFragmentProviderView.a(this.a).set(false);
   }
 }
 

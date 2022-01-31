@@ -2,14 +2,14 @@ package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import zny;
+import zre;
 
 public class LoginWelcomeRequest
   extends AsyncStep
 {
   protected int a()
   {
-    ThreadManager.postImmediately(new zny(this), null, false);
+    ThreadManager.postImmediately(new zre(this), null, false);
     return 7;
   }
 }

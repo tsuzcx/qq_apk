@@ -1,40 +1,15 @@
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class ksg
-  extends PublicAccountObserver
+  implements Runnable
 {
-  private AccountDetailGroupListContainer b;
+  public ksg(AccountDetailActivity paramAccountDetailActivity, int paramInt) {}
   
-  public ksg(AccountDetailGroupListContainer paramAccountDetailGroupListContainer1, AccountDetailGroupListContainer paramAccountDetailGroupListContainer2)
+  public void run()
   {
-    this.b = paramAccountDetailGroupListContainer2;
-  }
-  
-  public void a()
-  {
-    this.b = null;
-  }
-  
-  public void a(boolean paramBoolean, PaConfigAttr.PaConfigInfo paramPaConfigInfo)
-  {
-    if ((paramBoolean) && (paramPaConfigInfo != null)) {
-      if (paramPaConfigInfo.e != 3) {}
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.c > 0) {
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.c(this.jdField_a_of_type_Int);
     }
-    while (this.b == null) {
-      for (;;)
-      {
-        PublicAccountUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.jdField_a_of_type_JavaLangString);
-        return;
-        if ((paramPaConfigInfo.e == 6) && (this.b != null)) {
-          AccountDetailGroupListContainer.a(this.b, paramPaConfigInfo);
-        }
-      }
-    }
-    AccountDetailGroupListContainer.a(this.b, 2131430016);
   }
 }
 

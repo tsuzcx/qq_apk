@@ -44,8 +44,8 @@ public class MultiPstnCallbackFinishDialogActivity
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate");
     }
-    super.setTheme(2131624598);
-    super.setContentView(2130969293);
+    super.setTheme(2131624599);
+    super.setContentView(2130969294);
     super.onCreate(paramBundle);
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate");
@@ -70,7 +70,7 @@ public class MultiPstnCallbackFinishDialogActivity
       return;
     }
     int i = (int)(UITools.a(super.getApplicationContext()) * 0.75F);
-    paramBundle = (RelativeLayout)super.findViewById(2131365953);
+    paramBundle = (RelativeLayout)super.findViewById(2131365980);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramBundle.getLayoutParams();
     localLayoutParams.width = i;
     paramBundle.setLayoutParams(localLayoutParams);

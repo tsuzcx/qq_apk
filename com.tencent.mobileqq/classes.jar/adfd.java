@@ -1,29 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
 
-public final class adfd
-  implements HiBoomFont.HiBoomFontDownloader
+class adfd
+  implements Runnable
 {
-  public String a()
-  {
-    return AppConstants.aJ + ".hiboom_font/";
-  }
+  adfd(adfc paramadfc, int paramInt) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((VasQuickUpdateManager)localAppRuntime.getManager(183)).a(5L, "font.hifont.android." + paramInt, "HiBoomDownloader");
+    if (this.jdField_a_of_type_Int == 21) {
+      this.jdField_a_of_type_Adfc.a.a.g(true);
     }
+    while (this.jdField_a_of_type_Int != 22) {
+      return;
+    }
+    this.jdField_a_of_type_Adfc.a.a.g(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfd
  * JD-Core Version:    0.7.0.1
  */

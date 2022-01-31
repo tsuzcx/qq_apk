@@ -1,19 +1,14 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 class ajgq
-  implements Runnable
 {
-  ajgq(ajgp paramajgp) {}
-  
-  public void run()
-  {
-    this.a.a.a.setVisibility(8);
-  }
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.apollo.ai.ApolloAIActivity;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
 
-public class ylb
+public final class ylb
   implements Runnable
 {
-  public ylb(ApolloAIActivity paramApolloAIActivity) {}
+  public ylb(ApolloRender paramApolloRender, View paramView) {}
   
   public void run()
   {
-    ApolloAIActivity.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mShowEditWindow = true;
+    ApolloRender.setVisiblePopEidtor(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender);
   }
 }
 

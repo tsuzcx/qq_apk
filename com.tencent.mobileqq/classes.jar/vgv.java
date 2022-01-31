@@ -1,24 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class vgv
-  extends Handler
+  implements Animator.AnimatorListener
 {
-  boolean jdField_a_of_type_Boolean = true;
+  public vgv(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public vgv(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == TroopGiftMsgItemBuilder.a()) {}
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (paramMessage.what != TroopGiftMsgItemBuilder.b()) {}
-    }
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

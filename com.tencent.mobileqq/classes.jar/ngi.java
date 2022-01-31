@@ -1,26 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest;
-import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.DecryptCallback;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareQQData;
 
-class ngi
-  extends CmdTaskManger.UIThreadCallback
+public class ngi
+  extends AddPollViewJob
 {
-  ngi(ngh paramngh, long paramLong, QQProgressDialog paramQQProgressDialog) {}
-  
-  public void a(@NonNull StoryShareTranslateTokenRequest paramStoryShareTranslateTokenRequest, @Nullable StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse paramStoryShareTranslateTokenResponse, @NonNull ErrorMessage paramErrorMessage)
+  public ngi(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareQQData paramShareQQData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramStoryShareTranslateTokenResponse);
-    }
-    StoryReportor.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_Ngh.a.a(paramStoryShareTranslateTokenResponse, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.a = ((String)a("result"));
+    return true;
   }
 }
 

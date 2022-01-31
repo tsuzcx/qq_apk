@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.data;
 
-import abhf;
+import abog;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -23,7 +23,7 @@ public class BusinessCard
   public static final int CARD_SRC_FX = 2;
   public static final int CARD_SRC_SS = 1;
   public static final int CARD_SRC_ZL = 5;
-  public static final Parcelable.Creator CREATOR = new abhf();
+  public static final Parcelable.Creator CREATOR = new abog();
   public static final int TYPE_CARD_ADD = 2;
   public static final int TYPE_CARD_MINE = 1;
   public static final int TYPE_CARD_MINE_ADD = 3;

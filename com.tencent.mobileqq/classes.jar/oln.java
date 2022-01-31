@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class oln
-  implements View.OnLongClickListener
+public final class oln
+  implements DialogInterface.OnCancelListener
 {
-  public oln(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
-  
-  public boolean onLongClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
-    }
-    return true;
+    com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager.a = true;
   }
 }
 

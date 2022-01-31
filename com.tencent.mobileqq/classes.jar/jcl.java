@@ -1,29 +1,27 @@
-import java.io.InputStream;
-import java.util.zip.GZIPInputStream;
-import org.apache.http.HttpEntity;
-import org.apache.http.entity.HttpEntityWrapper;
+import com.rookery.asyncHttpClient.JsonHttpResponseHandler;
+import com.rookery.translate.microsoft.MicrosoftTranslator;
+import org.apache.http.Header;
+import org.json.JSONObject;
 
 public class jcl
-  extends HttpEntityWrapper
+  extends JsonHttpResponseHandler
 {
-  public jcl(HttpEntity paramHttpEntity)
+  public jcl(MicrosoftTranslator paramMicrosoftTranslator, JsonHttpResponseHandler paramJsonHttpResponseHandler) {}
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    super(paramHttpEntity);
+    this.jdField_a_of_type_ComRookeryAsyncHttpClientJsonHttpResponseHandler.a(paramInt, paramArrayOfHeader, paramJSONObject);
   }
   
-  public InputStream getContent()
+  public void a(Throwable paramThrowable, String paramString)
   {
-    return new GZIPInputStream(this.wrappedEntity.getContent());
-  }
-  
-  public long getContentLength()
-  {
-    return -1L;
+    this.jdField_a_of_type_ComRookeryAsyncHttpClientJsonHttpResponseHandler.a(paramThrowable, paramString);
+    super.a(paramThrowable, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     jcl
  * JD-Core Version:    0.7.0.1
  */

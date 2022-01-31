@@ -1,30 +1,90 @@
-import android.os.Handler;
-import android.os.Message;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopFeedParserHelper;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import com.tencent.mobileqq.transfile.TransferRequest.AppInfo;
+import com.tencent.open.agent.report.ReportCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class aipx
-  implements Runnable
+public class aipx
+  extends aipl
 {
-  aipx(aipw paramaipw, JSONObject paramJSONObject) {}
+  private AtomicInteger a;
+  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
   
-  public void run()
+  public aipx(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
   {
-    Object localObject = TroopFeedParserHelper.a(this.jdField_a_of_type_OrgJsonJSONObject, "" + this.jdField_a_of_type_Aipw.a.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Aipw.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    List localList = (List)localObject[0];
-    localObject = (List)localObject[1];
-    ((List)localObject).addAll(this.jdField_a_of_type_Aipw.a.jdField_a_of_type_JavaUtilList);
-    Message localMessage = this.jdField_a_of_type_Aipw.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-    localMessage.obj = this.jdField_a_of_type_Aipw.a.a(localList, (List)localObject);
-    this.jdField_a_of_type_Aipw.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    super(paramForwardSdkShareProcessor);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_JavaLangString = "UrlExchangeStep";
+  }
+  
+  protected boolean a()
+  {
+    return (ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get()) || (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -1) || (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 2);
+  }
+  
+  protected void d()
+  {
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      f();
+      return;
+    }
+    if ((!TextUtils.isEmpty(ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))) && (ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).length() > 150)) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("targetUrl", ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+    }
+    if (!TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).c)) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("sourceUrl", ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).c);
+    }
+    if (!TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).d)) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("sourceIcon", ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).d);
+    }
+    if ((ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) == 2) && (HttpUtil.a(ForwardSdkShareProcessor.h(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)))) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("audioUrl", ForwardSdkShareProcessor.h(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+    }
+    Bundle localBundle;
+    if (TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)))
+    {
+      ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor, ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).e);
+      ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).set(false);
+      QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|use app icon:" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+      localBundle = new Bundle();
+      localBundle.putString("report_type", "102");
+      localBundle.putString("act_type", "18");
+      if (!TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))) {
+        break label464;
+      }
+    }
+    label464:
+    for (String str = "1";; str = "0")
+    {
+      localBundle.putString("intext_1", str);
+      ReportCenter.a().a(localBundle, "" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor), this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.c(), false);
+      if ((!ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get()) && (HttpUtil.a(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)))) {
+        ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("imageUrl", ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|process|url=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).toString());
+      }
+      if (!ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).isEmpty()) {
+        break;
+      }
+      ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).set(true);
+      b();
+      return;
+    }
+    ThreadManager.post(new aipy(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipx
  * JD-Core Version:    0.7.0.1
  */

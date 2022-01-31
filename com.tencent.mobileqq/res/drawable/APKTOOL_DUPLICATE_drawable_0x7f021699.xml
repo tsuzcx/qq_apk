@@ -1,31 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:left="0.0dip" android:top="0.0dip" android:right="0.0dip" android:bottom="0.0dip">
-        <shape android:shape="oval"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <solid android:color="@android:color/transparent" />
-            <stroke android:width="1.0dip" android:color="#ffffffff" />
-        </shape>
-    </item>
-    <item android:left="10.0dip" android:top="10.0dip" android:right="10.0dip" android:bottom="10.0dip">
-        <rotate android:fromDegrees="45.0"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <shape android:shape="line">
-                <size android:height="200.0dip" android:width="200.0dip" />
-                <stroke android:width="1.0dip" android:color="#ffffffff" />
-                <solid android:color="@android:color/transparent" />
-            </shape>
-        </rotate>
-    </item>
-    <item android:left="10.0dip" android:top="10.0dip" android:right="10.0dip" android:bottom="10.0dip">
-        <rotate android:fromDegrees="-45.0"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <shape android:shape="line">
-                <size android:height="200.0dip" android:width="200.0dip" />
-                <stroke android:width="1.0dip" android:color="#ffffffff" />
-                <solid android:color="@android:color/transparent" />
-            </shape>
-        </rotate>
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@color/APKTOOL_DUPLICATE_color_0x7f0c01e1" />
+    <item android:drawable="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" />
+</selector>

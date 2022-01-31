@@ -1,21 +1,19 @@
-import android.view.View;
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailArgs;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailTaskContext;
 
 public class oks
-  implements ProviderContainerView.ContainerViewListener
+  implements Runnable
 {
-  public oks(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  public oks(MediaCodecThumbnailGenerator.CodecHandler paramCodecHandler, MediaCodecThumbnailGenerator.ThumbnailTaskContext paramThumbnailTaskContext, boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult) {}
   
-  public void a()
+  public void run()
   {
-    StoryLocalPublishPart.a(this.a).setVisibility(0);
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    StoryLocalPublishPart.a(this.a).setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.b != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.b.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailResult);
+    }
   }
 }
 

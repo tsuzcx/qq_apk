@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
+import java.net.URL;
 
 public class kwg
-  implements DialogInterface.OnCancelListener
+  implements PublicAccountImageDownListener
 {
-  public kwg(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
+  public kwg(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ReadInJoyNativeAdFragment.b(this.a, 2);
+    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
+    ReadInJoyNativeAdFragment.a(this.a, null);
+  }
+  
+  public void a(URL paramURL, Throwable paramThrowable)
+  {
+    ReadInJoyNativeAdFragment.b(this.a, 3);
   }
 }
 

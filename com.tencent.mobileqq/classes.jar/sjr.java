@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
-class sjr
-  implements Runnable
+public class sjr
+  implements DialogInterface.OnCancelListener
 {
-  sjr(sjq paramsjq, EmoticonPackage paramEmoticonPackage) {}
+  public sjr(DialogActivity paramDialogActivity) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Sjq.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(this.jdField_a_of_type_Sjq.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
+    this.a.finish();
   }
 }
 

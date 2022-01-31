@@ -1,45 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.HotChatShare;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.DataLineHandler;
 
 public class zce
   implements Runnable
 {
-  public zce(HotChatShare paramHotChatShare) {}
+  public zce(DataLineHandler paramDataLineHandler, long paramLong) {}
   
   public void run()
   {
-    Object localObject = "stranger_" + String.valueOf(200) + "_" + this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin;
-    localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a((String)localObject);
-    if ((localObject != null) && (!TextUtils.isEmpty(((Setting)localObject).url))) {
-      this.a.b = (((Setting)localObject).url + "140");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatShare", 2, "handleShare.fromdb.ownerHeadUrl=" + this.a.b);
-    }
-    if (!TextUtils.isEmpty(this.a.b)) {
-      if (this.a.jdField_a_of_type_Int == 0) {
-        this.a.jdField_a_of_type_Int = 2;
-      }
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_Int == 3) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new zcf(this));
-      }
-      return;
-      if (this.a.jdField_a_of_type_Int == 1)
-      {
-        this.a.jdField_a_of_type_Int = 3;
-        continue;
-        ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin, 200, (byte)1, (byte)3);
-      }
-    }
+    Session localSession = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(this.jdField_a_of_type_Long);
+    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, localSession, null, null, true);
   }
 }
 

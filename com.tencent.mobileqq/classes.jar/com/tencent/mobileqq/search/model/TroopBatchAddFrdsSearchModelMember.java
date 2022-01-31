@@ -27,7 +27,7 @@ public class TroopBatchAddFrdsSearchModelMember
   
   public void a(View paramView)
   {
-    if ((paramView.getId() == 2131368907) && (this.b == 23)) {
+    if ((paramView.getId() == 2131368973) && (this.b == 23)) {
       TroopAddFrdsInnerFrame.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo, this.jdField_a_of_type_JavaLangString, false);
     }
     Intent localIntent;
@@ -41,8 +41,8 @@ public class TroopBatchAddFrdsSearchModelMember
       localIntent.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin);
       localIntent.putExtra("memberUin", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin);
       localIntent.putExtra("fromFlag", 1);
-      localIntent.putExtra("selfSet_leftViewText", paramView.getContext().getString(2131433092));
-      localIntent.putExtra("custom_leftbackbutton_name", paramView.getContext().getString(2131433681));
+      localIntent.putExtra("selfSet_leftViewText", paramView.getContext().getString(2131433109));
+      localIntent.putExtra("custom_leftbackbutton_name", paramView.getContext().getString(2131433698));
       localIntent = TroopMemberCardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localIntent);
     } while (localIntent == null);
     ((Activity)paramView.getContext()).startActivity(localIntent);

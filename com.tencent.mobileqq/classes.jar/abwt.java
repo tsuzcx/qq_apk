@@ -1,24 +1,60 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack.Stub;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.mobileqq.utils.CustomHandler;
+import com.tencent.mobileqq.utils.DESUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class abwt
-  implements View.OnClickListener
+  extends IAIOImageProviderCallBack.Stub
 {
-  public abwt(BigEmotionDownloadedAdapter paramBigEmotionDownloadedAdapter, IPSiteModel.Game paramGame, String paramString1, String paramString2) {}
+  public abwt(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Game.jumpUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_gameclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.hotchat", 4, "notifyImageProgress progress:" + paramInt3);
+    }
+    if ((HotChatFlashPicActivity.a(this.a).g == paramLong1) && (HotChatFlashPicActivity.a(this.a).f == paramInt1)) {
+      HotChatFlashPicActivity.a(this.a, paramInt3 / 100);
+    }
   }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.hotchat", 4, "notifyImageResult type:" + paramInt2 + ",resultStr:" + paramString + ",result:" + paramInt3 + ",isPart:" + paramBoolean);
+    }
+    if ((HotChatFlashPicActivity.a(this.a).g == paramLong) && (HotChatFlashPicActivity.a(this.a).f == paramInt1) && (paramInt2 == 2))
+    {
+      HotChatFlashPicActivity.a(this.a, false);
+      if (paramInt3 != 1) {
+        break label228;
+      }
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_JavaLangString = paramString;
+      HotChatFlashPicActivity.a(this.a).d = paramBoolean;
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = false;
+      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.a(this.a));
+      if ((HotChatFlashPicActivity.b(this.a) == null) || (HotChatFlashPicActivity.b(this.a).equals("I:E"))) {
+        break label242;
+      }
+      DESUtil.b(HotChatFlashPicActivity.b(this.a), HotChatFlashPicActivity.c(this.a));
+      HotChatFlashPicActivity.b(this.a, true);
+      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.b(this.a));
+    }
+    label228:
+    label242:
+    while (HotChatFlashPicActivity.b(this.a) == null)
+    {
+      return;
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = true;
+      break;
+    }
+    HotChatFlashPicActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
 }
 
 

@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.message.DatalineMessageManager;
+import com.tencent.mobileqq.data.DataLineMsgSet;
 
-public final class ztc
+public class ztc
   implements Runnable
 {
-  public ztc(SosoInterface.OnLocationListener paramOnLocationListener, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  public ztc(DatalineMessageManager paramDatalineMessageManager, DataLineMsgSet paramDataLineMsgSet) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
   }
 }
 

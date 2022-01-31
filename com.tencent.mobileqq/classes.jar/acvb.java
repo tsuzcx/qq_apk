@@ -1,38 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class acvb
-  implements Runnable
+  extends FMObserver
 {
-  public acvb(VideoFilePresenter paramVideoFilePresenter) {}
+  public acvb(FileManagerRSCenter paramFileManagerRSCenter) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.d(VideoFilePresenter.a(this.a));
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {}
-    while ((VideoFilePresenter.b(this.a)) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
     }
-    int i = (int)this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-    int j = (int)this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.b(i);
-    float f = i / j;
-    if (f <= 0.001D)
-    {
-      VideoFilePresenter.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 100L);
-      return;
-    }
-    if (i >= VideoFilePresenter.a(this.a)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.b((int)(f * 10000.0F));
-    }
-    VideoFilePresenter.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 100L);
+    this.a.a(paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acvb
  * JD-Core Version:    0.7.0.1
  */

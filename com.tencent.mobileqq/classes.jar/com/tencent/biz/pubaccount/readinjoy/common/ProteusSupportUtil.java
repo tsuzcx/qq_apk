@@ -34,7 +34,7 @@ import cooperation.qzone.util.NetworkState;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import lkl;
+import lkh;
 
 public class ProteusSupportUtil
 {
@@ -67,13 +67,14 @@ public class ProteusSupportUtil
   public static ProteusItemView a(VafContext paramVafContext, int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
     Object localObject = null;
-    paramBaseArticleInfo = a(paramInt, paramBaseArticleInfo);
-    Container localContainer = paramVafContext.a().a(paramVafContext, paramBaseArticleInfo);
+    TemplateBean localTemplateBean = a(paramInt, paramBaseArticleInfo);
+    Container localContainer = paramVafContext.a().a(paramVafContext, localTemplateBean);
     paramBaseArticleInfo = localObject;
     if (localContainer != null)
     {
-      localContainer.setBackgroundDrawable(paramVafContext.a().getResources().getDrawable(2130839717));
+      localContainer.setBackgroundDrawable(paramVafContext.a().getResources().getDrawable(2130839723));
       paramBaseArticleInfo = new ProteusItemView(paramVafContext.a());
+      localContainer.setTag(localTemplateBean);
       paramBaseArticleInfo.a(localContainer);
     }
     return paramBaseArticleInfo;
@@ -84,87 +85,87 @@ public class ProteusSupportUtil
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 136	com/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo:mProteusTemplateBean	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
+    //   1: getfield 140	com/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo:mProteusTemplateBean	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
     //   4: ifnull +184 -> 188
     //   7: aload_1
-    //   8: getfield 136	com/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo:mProteusTemplateBean	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
+    //   8: getfield 140	com/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo:mProteusTemplateBean	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
     //   11: invokevirtual 21	com/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean:a	()Z
     //   14: ifne +174 -> 188
     //   17: aload_1
-    //   18: getfield 136	com/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo:mProteusTemplateBean	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
+    //   18: getfield 140	com/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo:mProteusTemplateBean	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
     //   21: areturn
     //   22: aload_1
-    //   23: invokestatic 141	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_none_img_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   23: invokestatic 145	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_none_img_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   26: astore_2
     //   27: aload_2
-    //   28: invokestatic 146	com/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/parse/ProteusParser:a	(Lorg/json/JSONObject;)Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
+    //   28: invokestatic 150	com/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/parse/ProteusParser:a	(Lorg/json/JSONObject;)Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
     //   31: astore_2
     //   32: aload_1
-    //   33: invokestatic 152	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:isAppAdvertisementInfo	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Z
+    //   33: invokestatic 156	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:isAppAdvertisementInfo	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Z
     //   36: ifne +150 -> 186
     //   39: aload_1
     //   40: aload_2
-    //   41: putfield 136	com/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo:mProteusTemplateBean	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
+    //   41: putfield 140	com/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo:mProteusTemplateBean	Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;
     //   44: aload_2
     //   45: areturn
     //   46: astore_1
     //   47: ldc 67
     //   49: iconst_2
-    //   50: ldc 154
+    //   50: ldc 158
     //   52: aload_1
-    //   53: invokestatic 158	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   53: invokestatic 162	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   56: aload_2
     //   57: areturn
     //   58: aload_1
-    //   59: invokestatic 161	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_large_video_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   59: invokestatic 165	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_large_video_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   62: astore_2
     //   63: goto -36 -> 27
     //   66: aload_1
-    //   67: invokestatic 164	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_small_video_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   67: invokestatic 168	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_small_video_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   70: astore_2
     //   71: goto -44 -> 27
     //   74: aload_1
-    //   75: invokestatic 167	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_large_img_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   75: invokestatic 171	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_large_img_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   78: astore_2
     //   79: goto -52 -> 27
     //   82: aload_1
-    //   83: invokestatic 170	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_small_img_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   83: invokestatic 174	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_small_img_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   86: astore_2
     //   87: goto -60 -> 27
     //   90: aload_1
-    //   91: invokestatic 173	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_triple_img_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   91: invokestatic 177	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_triple_img_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   94: astore_2
     //   95: goto -68 -> 27
     //   98: aload_1
-    //   99: invokestatic 176	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_single_topic_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   99: invokestatic 180	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_single_topic_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   102: astore_2
     //   103: goto -76 -> 27
     //   106: aload_1
-    //   107: invokestatic 179	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInJoy_gallery_big_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   107: invokestatic 183	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInJoy_gallery_big_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   110: astore_2
     //   111: goto -84 -> 27
     //   114: aload_1
-    //   115: invokestatic 182	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_gallery_triple_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   115: invokestatic 186	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_gallery_triple_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   118: astore_2
     //   119: goto -92 -> 27
     //   122: aload_1
-    //   123: invokestatic 185	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_social_small_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   123: invokestatic 189	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_social_small_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   126: astore_2
     //   127: goto -100 -> 27
     //   130: aload_1
-    //   131: invokestatic 188	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_pgc_multi_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   131: invokestatic 192	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_pgc_multi_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   134: astore_2
     //   135: goto -108 -> 27
     //   138: aload_1
-    //   139: invokestatic 191	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_topic_recommend_pgc_multi_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   139: invokestatic 195	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_topic_recommend_pgc_multi_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   142: astore_2
     //   143: goto -116 -> 27
     //   146: aload_1
-    //   147: invokestatic 194	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_topic_recommend_pgc_big_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   147: invokestatic 198	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_topic_recommend_pgc_big_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   150: astore_2
     //   151: goto -124 -> 27
     //   154: aload_1
-    //   155: invokestatic 197	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_topic_recommend_pgc_small_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
+    //   155: invokestatic 201	com/tencent/biz/pubaccount/readinjoy/proteus/data/ReadInjoy_topic_recommend_pgc_small_cell:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;)Lorg/json/JSONObject;
     //   158: astore_2
     //   159: goto -132 -> 27
     //   162: astore_1
@@ -172,9 +173,9 @@ public class ProteusSupportUtil
     //   164: astore_2
     //   165: ldc 67
     //   167: iconst_2
-    //   168: ldc 199
+    //   168: ldc 203
     //   170: aload_1
-    //   171: invokestatic 158	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   171: invokestatic 162	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   174: aload_2
     //   175: areturn
     //   176: astore_1
@@ -331,18 +332,31 @@ public class ProteusSupportUtil
   
   public static void a(ProteusItemView paramProteusItemView, int paramInt, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, FaceDecoder paramFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel)
   {
-    if ((paramProteusItemView == null) || (paramProteusItemView.a() == null)) {
+    if ((paramProteusItemView == null) || (paramProteusItemView.a() == null) || (paramProteusItemView.a().getTag() == null)) {
       return;
     }
-    Container localContainer = paramProteusItemView.a();
-    paramProteusItemView.setModel(paramIReadInJoyModel, paramReadInJoyBaseAdapter.a());
-    paramProteusItemView = a(paramInt, paramBaseArticleInfo);
-    a(paramInt, paramProteusItemView, paramIReadInJoyModel);
-    if (paramProteusItemView != null) {
-      a(localContainer.a(), paramProteusItemView.a());
+    Object localObject = (TemplateBean)paramProteusItemView.a().getTag();
+    TemplateBean localTemplateBean = a(paramInt, paramBaseArticleInfo);
+    if ((localObject != null) && (localTemplateBean.a() != ((TemplateBean)localObject).a()))
+    {
+      localObject = paramVafContext.a().a(paramVafContext, localTemplateBean);
+      if (localObject != null)
+      {
+        ((Container)localObject).setBackgroundDrawable(paramVafContext.a().getResources().getDrawable(2130839723));
+        paramProteusItemView.a();
+        paramProteusItemView.a((Container)localObject);
+      }
+      paramBaseArticleInfo.mProteusTemplateBean = localTemplateBean;
     }
-    a(localContainer, paramVafContext, paramFaceDecoder, paramReadInJoyBaseAdapter, paramIReadInJoyModel, paramBaseArticleInfo);
-    a(localContainer, paramIReadInJoyModel, paramProteusItemView);
+    localObject = paramProteusItemView.a();
+    ((Container)localObject).setTag(localTemplateBean);
+    paramProteusItemView.setModel(paramIReadInJoyModel, paramReadInJoyBaseAdapter.a());
+    a(paramInt, localTemplateBean, paramIReadInJoyModel);
+    if (localTemplateBean != null) {
+      a(((Container)localObject).a(), localTemplateBean.a());
+    }
+    a((Container)localObject, paramVafContext, paramFaceDecoder, paramReadInJoyBaseAdapter, paramIReadInJoyModel, paramBaseArticleInfo);
+    a((Container)localObject, paramIReadInJoyModel, localTemplateBean);
   }
   
   public static void a(ArticleInfo paramArticleInfo)
@@ -428,12 +442,12 @@ public class ProteusSupportUtil
   
   private static void a(Container paramContainer, VafContext paramVafContext, FaceDecoder paramFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel, BaseArticleInfo paramBaseArticleInfo)
   {
-    ViewFactory.a(paramContainer.a(), new lkl(paramVafContext, paramFaceDecoder, paramReadInJoyBaseAdapter, paramIReadInJoyModel, paramContainer, paramBaseArticleInfo));
+    ViewFactory.a(paramContainer.a(), new lkh(paramVafContext, paramFaceDecoder, paramReadInJoyBaseAdapter, paramIReadInJoyModel, paramContainer, paramBaseArticleInfo));
   }
   
   public static void a(VafContext paramVafContext)
   {
-    OfflineUtils.a();
+    OfflineUtils.b();
     paramVafContext.a().a("ReadInJoyLikeButton", new ReadInJoyLikeButton.Builder());
     paramVafContext.a().a("QQAvatarView", new AvatarView.Builder());
     paramVafContext.a().a("ReadInJoyVariableImageContentView", new GridImageView.Builder());

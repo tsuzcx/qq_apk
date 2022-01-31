@@ -1,22 +1,42 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.detail.model.SpannableStringUtils.ClickNickCallback;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity.ProgressView;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
-public final class ntg
-  extends ClickableSpan
+public class ntg
+  implements Runnable
 {
-  public ntg(SpannableStringUtils.ClickNickCallback paramClickNickCallback, String paramString, int paramInt) {}
+  public ntg(QQStoryBaseActivity paramQQStoryBaseActivity, Context paramContext, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean, CharSequence paramCharSequence) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelSpannableStringUtils$ClickNickCallback.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.getColor());
-    paramTextPaint.setUnderlineText(false);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.isFinishing())
+    {
+      SLog.d("Q.qqstory.QQStoryBaseActivity", "Activity has been destroy.");
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog == null)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity$ProgressView = new QQStoryBaseActivity.ProgressView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setContentView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity$ProgressView);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setCancelable(this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity$ProgressView.a(this.jdField_a_of_type_JavaLangCharSequence);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.show();
+      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

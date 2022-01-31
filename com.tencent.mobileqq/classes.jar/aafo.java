@@ -1,36 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.io.File;
+import java.io.FileFilter;
 
-public class aafo
-  implements ActionSheet.OnButtonClickListener
+public final class aafo
+  implements FileFilter
 {
-  public aafo(ARGreetingCardListManager paramARGreetingCardListManager) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public boolean accept(File paramFile)
   {
-    switch (paramInt)
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
     {
-    }
-    for (;;)
-    {
-      if (ARGreetingCardListManager.a(this.a) != null) {
-        ARGreetingCardListManager.a(this.a).dismiss();
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if (!Character.isDigit(paramFile.charAt(i))) {
+          return false;
+        }
+        i += 1;
       }
-      return;
-      ReportController.b(null, "dc00898", "", "", "0X8008F18", "0X8008F18", 2, 0, "", "", "", "");
-      ARGreetingCardListManager.a(this.a, false);
-      continue;
-      ReportController.b(null, "dc00898", "", "", "0X8008F19", "0X8008F19", 2, 0, "", "", "", "");
-      ARGreetingCardListManager.a(this.a, true);
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aafo
  * JD-Core Version:    0.7.0.1
  */

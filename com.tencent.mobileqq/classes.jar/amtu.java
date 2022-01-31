@@ -1,48 +1,36 @@
-import android.graphics.Bitmap;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.util.BitmapManager;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import cooperation.qzone.WatchActivityManager;
 
 public class amtu
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public amtu(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, String paramString1, String paramString2) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  private amtu(WatchActivityManager paramWatchActivityManager) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b)))
-    {
-      QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setText(this.jdField_a_of_type_JavaLangString);
-      QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(0);
+      if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label40;
+      }
+      WatchActivityManager.a(this.jdField_a_of_type_CooperationQzoneWatchActivityManager, true);
     }
-    if (!TextUtils.isEmpty(this.b)) {}
-    try
-    {
-      Bitmap localBitmap = BitmapManager.a(this.b);
-      QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setImageBitmap(localBitmap);
-      QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(0);
+    label40:
+    while (!this.jdField_a_of_type_JavaLangString.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    WatchActivityManager.b(this.jdField_a_of_type_CooperationQzoneWatchActivityManager, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtu
  * JD-Core Version:    0.7.0.1
  */

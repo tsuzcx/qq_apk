@@ -1,15 +1,13 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
 public class vtr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public vtr(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vtr(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void run()
-  {
-    PublicAccountChatPie.a(this.a).removeView(this.a.o);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

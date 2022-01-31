@@ -1,34 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.statistics.ArkAppReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
 public class vfr
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public vfr(TextItemBuilder paramTextItemBuilder, QQCustomDialog paramQQCustomDialog, QQAppInterface paramQQAppInterface, View paramView) {}
+  public vfr(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      ArkRecommendController.a(((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.a).getChatFragment().a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      ArkAppReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "__global__", "ArkAlertDialogNotConfirm", 0L, 0L, 0L, 0L, 0L, "", "");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      ArkRecommendController.a(this.jdField_a_of_type_AndroidViewView.getContext(), "close", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
+    boolean bool = false;
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    SharedPreferences localSharedPreferences = this.a.a.getPreferences();
+    long l1 = localSharedPreferences.getLong("key_check_temp", 0L);
+    long l2 = localCalendar.getTimeInMillis();
+    if (l1 < l2) {
+      bool = true;
     }
-    catch (Exception paramDialogInterface)
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoItemBuilder", 2, "TempCleanTask, lastCheck=" + l1 + ", today:" + l2 + ", needClean : " + bool);
+    }
+    if (bool)
     {
-      ArkAppCenter.b("ArkDialog", String.format("NegativeButton click failed, err=%s", new Object[] { paramDialogInterface.getMessage() }));
+      localSharedPreferences.edit().putLong("key_check_temp", l2).commit();
+      ShortVideoUtils.a("", true);
     }
   }
 }

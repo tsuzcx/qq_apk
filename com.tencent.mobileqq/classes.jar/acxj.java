@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-public final class acxj
-  implements Runnable
+public class acxj
+  extends acxu
 {
-  public acxj(FileManagerEntity paramFileManagerEntity) {}
-  
-  public void run()
+  public acxj(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    FilePicURLDrawlableHelper.a(this.a);
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateAcceptByPC";
   }
 }
 

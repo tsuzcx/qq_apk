@@ -1,42 +1,39 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.widget.ImageView.ScaleType;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.confess.ConfessMsgUtil;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import java.lang.ref.WeakReference;
 
 public class viv
-  implements OnCompositionLoadedListener
+  implements AnimationTextView.OnDoubleClick
 {
-  public viv(PEPanel paramPEPanel, DiniFlyAnimationView paramDiniFlyAnimationView) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference b;
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public viv(TextItemBuilder paramTextItemBuilder, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    if (paramLottieComposition == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo.PEPanel", 2, "composition is null ,return");
-      }
-      return;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramActivity);
+  }
+  
+  public void a(View paramView)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.b.get();
+    if ((localActivity == null) || (localQQAppInterface == null)) {
+      QLog.e("ChatItemBuilder", 1, "TextItemBuilder  onDoubleClick  app null fa null");
     }
-    Rect localRect = paramLottieComposition.getBounds();
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.getResources().getDisplayMetrics().widthPixels;
-    i = XPanelContainer.a;
-    AIOUtils.a(40.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.getResources());
-    float f = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.getResources().getDisplayMetrics().widthPixels / localRect.width();
-    PEPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel, paramLottieComposition.getDuration() * 6L / 10L);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setScale(f);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(PEPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorUpdateListener(PEPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.postDelayed(new viw(this), PEPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel));
+    do
+    {
+      return;
+      AIOUtils.m = true;
+    } while ((TextItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder)) || (ConfessMsgUtil.a(AIOUtils.a(paramView))));
+    ChatActivityUtils.a(localQQAppInterface, paramView, localActivity);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.businessCard.views;
 
-import abhy;
-import abhz;
-import abia;
+import aboz;
+import abpa;
+import abpb;
 import android.content.Context;
 import android.graphics.Rect;
 import android.text.TextPaint;
@@ -88,8 +88,8 @@ public class ClearEllipsisEditText
   
   private void a()
   {
-    addTextChangedListener(new abhy(this));
-    setOnTouchListener(new abhz(this));
+    addTextChangedListener(new aboz(this));
+    setOnTouchListener(new abpa(this));
   }
   
   public String a()
@@ -132,7 +132,7 @@ public class ClearEllipsisEditText
       this.jdField_a_of_type_JavaLangString = a(paramString);
       if (this.jdField_b_of_type_Int <= 0)
       {
-        post(new abia(this, str));
+        post(new abpb(this, str));
         return;
       }
       this.jdField_c_of_type_Boolean = true;

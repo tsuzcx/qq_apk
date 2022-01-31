@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import airp;
-import airr;
+import ajft;
+import ajfv;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -359,7 +359,7 @@ public class TroopEnterEffectManager
   
   public void a(group_effect_commu.TGetMyEffectRsp0x2 paramTGetMyEffectRsp0x2)
   {
-    paramTGetMyEffectRsp0x2 = new airr(this, paramTGetMyEffectRsp0x2);
+    paramTGetMyEffectRsp0x2 = new ajfv(this, paramTGetMyEffectRsp0x2);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
       ThreadManager.post(paramTGetMyEffectRsp0x2, 5, null, true);
@@ -466,7 +466,7 @@ public class TroopEnterEffectManager
       QLog.d("TroopEnterEffect", 2, "notifyEnterTroop troopUin: " + paramString);
     }
     if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      ThreadManager.post(new airp(this, paramString), 8, null, true);
+      ThreadManager.post(new ajft(this, paramString), 8, null, true);
     }
     do
     {
@@ -513,7 +513,7 @@ public class TroopEnterEffectManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager
  * JD-Core Version:    0.7.0.1
  */

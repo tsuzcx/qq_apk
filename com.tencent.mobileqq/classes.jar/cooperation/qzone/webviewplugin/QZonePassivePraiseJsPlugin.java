@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
 import NS_QMALL_COVER.AlbumThemeSkin;
-import amll;
-import amlm;
+import anbq;
+import anbr;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -84,7 +84,7 @@ public class QZonePassivePraiseJsPlugin
   
   private void b(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new amll(this, paramArrayOfString));
+    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new anbq(this, paramArrayOfString));
   }
   
   private void c(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
@@ -130,7 +130,7 @@ public class QZonePassivePraiseJsPlugin
       } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
       this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController = new QzoneGiftFullScreenViewController(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
     } while (!QzoneGiftFullScreenViewController.a());
-    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.a(paramWebViewPlugin, paramArrayOfString, true, new amlm(this, paramPluginRuntime));
+    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.a(paramWebViewPlugin, paramArrayOfString, true, new anbr(this, paramPluginRuntime));
   }
   
   private void d(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)

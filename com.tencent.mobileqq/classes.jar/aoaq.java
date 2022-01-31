@@ -1,25 +1,17 @@
-import com.tencent.image.VideoDrawable;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
 
-public class aoaq
+class aoaq
   implements Runnable
 {
-  public aoaq(ImageViewVideoPlayer paramImageViewVideoPlayer, int paramInt) {}
+  aoaq(aoap paramaoap, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.jdField_a_of_type_ComTencentImageVideoDrawable != null)
-    {
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.jdField_a_of_type_ComTencentImageVideoDrawable.resetAndPlayAudioOnce();
-      if (QLog.isColorLevel()) {
-        QLog.i("ImageViewVideoPlayer", 2, "onPlayRepeat: repeatTimes = " + this.jdField_a_of_type_Int + ", costTime = " + (System.currentTimeMillis() - l));
-      }
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer$IMPlayerEndListener != null) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer$IMPlayerEndListener.at_();
-      }
+    aoap.a(this.jdField_a_of_type_Aoap).setVisibility(0);
+    aoap.a(this.jdField_a_of_type_Aoap).setProgress(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("InformationFaceAdapter", 2, "progress:" + this.jdField_a_of_type_Int);
     }
   }
 }

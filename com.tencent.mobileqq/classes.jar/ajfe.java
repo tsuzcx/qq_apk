@@ -1,24 +1,20 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewHolder;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig.GrayTipsConfig;
+import java.util.Comparator;
 
-class ajfe
-  extends TroopFeedViewFactory.ViewHolder
+public class ajfe
+  implements Comparator
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public ajfe(TroopEnterEffectConfig paramTroopEnterEffectConfig) {}
   
-  ajfe(ajfd paramajfd)
+  public int a(TroopEnterEffectConfig.GrayTipsConfig paramGrayTipsConfig1, TroopEnterEffectConfig.GrayTipsConfig paramGrayTipsConfig2)
   {
-    super(paramajfd.a);
+    return paramGrayTipsConfig2.b - paramGrayTipsConfig1.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajfe
  * JD-Core Version:    0.7.0.1
  */

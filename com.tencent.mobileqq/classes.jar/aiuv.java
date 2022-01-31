@@ -1,24 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.RecommendTroopAdapter;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
 public class aiuv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aiuv(ReciteRecordLayout paramReciteRecordLayout) {}
+  public aiuv(RecommendTroopAdapter paramRecommendTroopAdapter, RecommendTroopItem paramRecommendTroopItem) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(this.a.a, this.a.a.getString(2131433369), 0).a();
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).c();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityRecommendTroopAdapter.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataRecommendTroopItem.uin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiuv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ahxj;
-import ahxk;
-import ahxl;
+import ailm;
+import ailn;
+import ailo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -45,7 +45,7 @@ public class Texture
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     this.jdField_a_of_type_Boolean = true;
-    paramSpriteGLView.b(new ahxj(this));
+    paramSpriteGLView.b(new ailm(this));
   }
   
   /* Error */
@@ -207,7 +207,7 @@ public class Texture
           QLog.d("Texture", 2, "new Texture: decode time = " + i);
         }
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new ahxk(this));
+        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new ailn(this));
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
@@ -226,13 +226,13 @@ public class Texture
   
   public void a(boolean paramBoolean)
   {
-    ahxl localahxl = new ahxl(this);
+    ailo localailo = new ailo(this);
     if (paramBoolean)
     {
-      localahxl.run();
+      localailo.run();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(localahxl);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(localailo);
   }
   
   public void b()
@@ -263,7 +263,7 @@ public class Texture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Texture
  * JD-Core Version:    0.7.0.1
  */

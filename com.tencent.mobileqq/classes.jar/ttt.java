@@ -1,18 +1,23 @@
 import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import mqq.os.MqqHandler;
 
 public class ttt
-  extends TransProcessorHandler
+  extends MqqHandler
 {
-  public ttt(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public ttt(SubAccountBindActivity paramSubAccountBindActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.c();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1981: 
+      this.a.finish();
+      return;
     }
+    this.a.d();
   }
 }
 

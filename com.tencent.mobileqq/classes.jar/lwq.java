@@ -1,16 +1,17 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
 
 public class lwq
-  extends CommonSkinRes
+  implements Animation.AnimationListener
 {
-  public lwq(ReadInJoySkinManager paramReadInJoySkinManager) {}
+  public lwq(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public Drawable a()
-  {
-    return a("readinjoy_diandian_icon_foreground");
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

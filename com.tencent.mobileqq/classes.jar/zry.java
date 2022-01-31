@@ -1,17 +1,20 @@
-import com.dataline.util.WaitEvent;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.lbs.LbsInfoMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class zry
   implements Runnable
 {
-  public zry(DataLineMsgProxy paramDataLineMsgProxy, DataLineMsgRecord paramDataLineMsgRecord, WaitEvent paramWaitEvent) {}
+  public zry(LbsInfoMgr paramLbsInfoMgr) {}
   
   public void run()
   {
-    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, null);
-    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+    LbsInfoMgr.a(this.a).addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver, true);
+    LbsInfoMgr.a(this.a).b();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.troopMemberDistance.LbsInfoMgr", 2, "reportLbsInfoToServer: timeStamp = " + this.a.jdField_a_of_type_Long + ", cost=" + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+    }
   }
 }
 

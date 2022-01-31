@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.HotChatManager;
 
-class vuu
+public class vuu
   implements Runnable
 {
-  vuu(vut paramvut, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
+  public vuu(HotChatPie paramHotChatPie) {}
   
   public void run()
   {
-    AccountDetail localAccountDetail = new AccountDetail(this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
-    EntityManager localEntityManager = this.jdField_a_of_type_Vut.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_Vut.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).createEntityManager();
-    if (localEntityManager != null) {
-      localEntityManager.b(localAccountDetail);
-    }
-    this.jdField_a_of_type_Vut.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(localAccountDetail, 0L);
-    this.jdField_a_of_type_Vut.a.a(this.jdField_a_of_type_Vut.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
   }
 }
 

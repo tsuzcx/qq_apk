@@ -1,43 +1,73 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 public class acaq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acaq(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  private float jdField_a_of_type_Float;
+  protected long a;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private float c;
+  private float d;
+  private float e;
+  private float f;
   
-  public void onClick(View paramView)
+  public acaq(DragSortListView paramDragSortListView, float paramFloat, int paramInt)
   {
-    if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
-    {
-      long l = System.currentTimeMillis();
-      if ((l - this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b < Face2FaceAddFriendActivity.jdField_a_of_type_Long) && (l > this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "click too offen,please try again later ");
-        }
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b = l;
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendDetailView.d();
-      paramView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-      paramView.what = 2;
-      paramView.arg1 = 2;
-      paramView.obj = this.jdField_a_of_type_JavaLangString;
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramView);
-      ReportController.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
+    this.jdField_b_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Float = paramInt;
+    paramFloat = 1.0F / (this.jdField_b_of_type_Float * 2.0F * (1.0F - this.jdField_b_of_type_Float));
+    this.f = paramFloat;
+    this.c = paramFloat;
+    this.d = (this.jdField_b_of_type_Float / ((this.jdField_b_of_type_Float - 1.0F) * 2.0F));
+    this.e = (1.0F / (1.0F - this.jdField_b_of_type_Float));
+  }
+  
+  public float a(float paramFloat)
+  {
+    if (paramFloat < this.jdField_b_of_type_Float) {
+      return this.c * paramFloat * paramFloat;
+    }
+    if (paramFloat < 1.0F - this.jdField_b_of_type_Float) {
+      return this.d + this.e * paramFloat;
+    }
+    return 1.0F - this.f * (paramFloat - 1.0F) * (paramFloat - 1.0F);
+  }
+  
+  public void a() {}
+  
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_Boolean = false;
+    a();
+    this.jdField_b_of_type_ComTencentMobileqqEmosmViewDragSortListView.post(this);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131437903);
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
+    float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
+    if (f1 >= 1.0F)
+    {
+      a(1.0F, 1.0F);
+      b();
+      return;
+    }
+    a(f1, a(f1));
+    this.jdField_b_of_type_ComTencentMobileqqEmosmViewDragSortListView.post(this);
   }
 }
 

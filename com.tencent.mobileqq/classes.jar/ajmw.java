@@ -1,23 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.util.ScreenShotUtil.ScreenshotCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
-public final class ajmw
+class ajmw
   implements Runnable
 {
-  public ajmw(ScreenShotUtil.ScreenshotCallback paramScreenshotCallback, Bitmap paramBitmap) {}
+  ajmw(ajmv paramajmv) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScreenShotUtil", 2, "ScreenShot Finish Callback");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilScreenShotUtil$ScreenshotCallback.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.a.a.a(AIOAnimationControlManager.a(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmw
  * JD-Core Version:    0.7.0.1
  */

@@ -50,11 +50,11 @@ public class AutomatorFinish
           int j = BaseApplicationImpl.sApplication.getSharedPreferences("SecSig", 0).getInt("SecResEntry", -1);
           localSignatureKickData.u32_check_result.set(j & 0x12);
           Resources localResources = BaseApplicationImpl.sApplication.getResources();
-          localSignatureKickData.str_right_button.set(localResources.getString(2131434592));
+          localSignatureKickData.str_right_button.set(localResources.getString(2131434609));
           localSignatureKickData.str_url.set("http://im.qq.com");
           localIntent.putExtra("data", localSignatureKickData.toByteArray());
-          localIntent.putExtra("title", localResources.getString(2131433248));
-          localIntent.putExtra("msg", localResources.getString(2131438776));
+          localIntent.putExtra("title", localResources.getString(2131433265));
+          localIntent.putExtra("msg", localResources.getString(2131438794));
           MsfSdkUtils.updateSimpleAccount(this.a.c(), false);
           BaseApplicationImpl.sApplication.setSortAccountList(MsfSdkUtils.getLoginedAccountList());
           this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.logout(true);

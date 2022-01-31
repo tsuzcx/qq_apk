@@ -1,21 +1,25 @@
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateListener;
-import com.tencent.open.agent.SocialFriendChooser;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 
-class akna
-  implements OpenSdkFriendService.CheckAvatarUpdateListener
+public class akna
+  implements Runnable
 {
-  akna(akmz paramakmz) {}
+  public akna(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI, TextView paramTextView1, TextView paramTextView2, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    ((OpenFrame)this.a.a.a.getCurrentView()).g();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()))
+    {
+      this.b.setText(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akna
  * JD-Core Version:    0.7.0.1
  */

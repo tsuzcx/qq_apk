@@ -32,15 +32,15 @@ public class DetailDoubleTabSegment
   {
     if (paramBoolean)
     {
-      paramTextView.setBackgroundResource(2130843318);
-      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493756));
+      paramTextView.setBackgroundResource(2130843434);
+      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493762));
       return;
     }
     paramTextView.setBackgroundResource(0);
-    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493757));
+    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493763));
   }
   
-  public void E_()
+  public void J_()
   {
     if (((StoryDetailListView)a()).a())
     {
@@ -60,8 +60,8 @@ public class DetailDoubleTabSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramBaseViewHolder.a(2131371524);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371525);
+    paramViewGroup = (TextView)paramBaseViewHolder.a(2131371690);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371691);
     if (this.jdField_a_of_type_Int == 1)
     {
       a(paramViewGroup, true);
@@ -77,9 +77,9 @@ public class DetailDoubleTabSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970654, paramViewGroup, false));
-    paramViewGroup = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371524);
-    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371525);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970700, paramViewGroup, false));
+    paramViewGroup = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371690);
+    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371691);
     paramViewGroup.setOnClickListener(this);
     localTextView.setOnClickListener(this);
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;

@@ -1,13 +1,19 @@
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+
 public class ajms
+  implements Runnable
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
+  public ajms(AIOAnimationControlManager paramAIOAnimationControlManager) {}
+  
+  public void run()
+  {
+    AIOAnimationControlManager.a(this.a);
+    this.a.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajms
  * JD-Core Version:    0.7.0.1
  */

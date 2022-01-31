@@ -1,74 +1,94 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.util.PAVideoStructMsgUtil;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
+import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
+import java.util.Map;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPAccoutRelation;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPClientRsp;
+import tencent.im.oidb.qqshop.qqshop.SQQSHPNewUserRecmd;
 
-public final class lac
-  implements Runnable
+public class lac
+  implements BusinessObserver
 {
-  public lac(MessageRecord paramMessageRecord) {}
+  public lac(EcshopCacheTool paramEcshopCacheTool) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 1;
-    long l1;
-    Object localObject1;
-    if ((this.a.msgtype == -2011) && (!this.a.isSend()))
+    Object localObject = paramBundle.getString("extra_cmd");
+    if (paramBoolean)
     {
-      l1 = System.currentTimeMillis();
-      localStructMsgItemVideo = PAVideoStructMsgUtil.a(this.a);
-      if (localStructMsgItemVideo != null) {
-        localObject1 = "";
+      if (!"SQQShopFolderSvc.GetShopBindUin".equals(localObject)) {
+        break label205;
       }
+      paramBundle = paramBundle.getByteArray("extra_data");
+      localObject = new qqshop.SQQSHPClientRsp();
     }
     for (;;)
     {
+      label205:
       try
       {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("vid", localStructMsgItemVideo.w);
-        ((JSONObject)localObject2).put("os", "1");
-        if (!MsgProxyUtils.c(this.a.istroop)) {
+        ((qqshop.SQQSHPClientRsp)localObject).mergeFrom(paramBundle);
+        paramBundle = ((qqshop.SQQSHPClientRsp)localObject).bindlist.get();
+        paramInt = 0;
+        if (paramInt < paramBundle.size())
+        {
+          localObject = (qqshop.SQQSHPAccoutRelation)paramBundle.get(paramInt);
+          String str = String.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).puin.get());
+          long l = ((qqshop.SQQSHPAccoutRelation)localObject).binduin.get();
+          this.a.c.put(str, Integer.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).distance.get()));
+          this.a.d.put(str, String.valueOf(l));
+          paramInt += 1;
           continue;
         }
-        ((JSONObject)localObject2).put("aiotype", i);
-        localObject2 = ((JSONObject)localObject2).toString();
-        localObject1 = localObject2;
-      }
-      catch (Exception localException)
-      {
-        Object localObject2;
-        long l2;
-        localException.printStackTrace();
-        continue;
-        String str = localStructMsgItemVideo.B;
-        continue;
-      }
-      if (localStructMsgItemVideo.B != null) {
-        continue;
-      }
-      localObject2 = "0";
-      PublicAccountReportUtils.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "2", (String)localObject2, (String)localObject1, false);
-      l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoReporter", 2, "reportVideoStructMsgRecv cost = " + (l2 - l1) + "ms");
-      }
-      return;
-      if (this.a.istroop == 1)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = this.a.istroop;
-        if (i == 3000) {
-          i = 3;
-        } else {
-          i = 4;
+        if ((this.a.a != null) && (this.a.a.a != null) && (this.a.a.b == 1)) {
+          this.a.a.a.notifyDataSetChanged();
         }
+        return;
+      }
+      catch (Exception paramBundle) {}
+      if ("SQQShopFolderSvc.GetFolderInfo".equals(localObject))
+      {
+        paramBundle = paramBundle.getByteArray("extra_data");
+        localObject = new qqshop.SQQSHPClientRsp();
+        try
+        {
+          ((qqshop.SQQSHPClientRsp)localObject).mergeFrom(paramBundle);
+          if (((qqshop.SQQSHPClientRsp)localObject).newusrrecmd.has())
+          {
+            paramBundle = (qqshop.SQQSHPNewUserRecmd)((qqshop.SQQSHPClientRsp)localObject).newusrrecmd.get();
+            if ((paramBundle.recmdflag.has()) && (paramBundle.recmdflag.get() == 1))
+            {
+              paramBundle = paramBundle.recmdurl.get();
+              if ((!TextUtils.isEmpty(paramBundle)) && (this.a.a != null))
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.i("EcshopCacheTool", 2, "newusrrecmd url:" + paramBundle);
+                }
+                localObject = new Intent(this.a.a.getActivity(), QQBrowserActivity.class);
+                ((Intent)localObject).putExtra("url", paramBundle);
+                ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+                this.a.a.startActivity((Intent)localObject);
+                this.a.a.getActivity().overridePendingTransition(2131034123, 0);
+                ReportController.b(null, "CliOper", "", "", "Shop_newuser", "Pv_shopnewuserpage", 0, 0, "", "", "", "");
+                return;
+              }
+            }
+          }
+        }
+        catch (Exception paramBundle) {}
       }
     }
   }

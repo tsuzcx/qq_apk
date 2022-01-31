@@ -1,17 +1,14 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class kyq
-  extends BroadcastReceiver
+public final class kyq
+  implements Runnable
 {
-  public kyq(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
+  public kyq(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    this.a.a.finish();
+    ServiceAccountFolderManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
   }
 }
 

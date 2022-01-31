@@ -198,11 +198,11 @@ public class EditVideoSpeedFilter
     do
     {
       return;
-      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364390));
+      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364414));
     } while (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer != null);
     ViewParent localViewParent = this.jdField_a_of_type_AndroidViewViewStub.getParent();
     if ((localViewParent != null) && ((localViewParent instanceof ViewGroup))) {}
-    for (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)this.jdField_a_of_type_AndroidViewViewStub.inflate());; this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)a(2131362506)))
+    for (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)this.jdField_a_of_type_AndroidViewViewStub.inflate());; this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)a(2131362513)))
     {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer.a(this);
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer.a(2, false);

@@ -2,6 +2,7 @@ package com.tencent.open.base;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -181,6 +182,15 @@ public class MD5
     return "";
   }
   
+  public static String a(String paramString)
+  {
+    paramString = a(paramString);
+    if (paramString == null) {
+      return "";
+    }
+    return a(paramString);
+  }
+  
   public static String a(byte[] paramArrayOfByte)
   {
     int i = 0;
@@ -200,6 +210,37 @@ public class MD5
       return new String(arrayOfChar);
     }
     return "";
+  }
+  
+  public static byte[] a(String paramString)
+  {
+    try
+    {
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      try
+      {
+        paramString = paramString.getBytes("UTF-8");
+        return localMessageDigest.digest(paramString);
+      }
+      catch (UnsupportedEncodingException paramString)
+      {
+        paramString.printStackTrace();
+        LogUtility.e("andygzyu-MD5", "toMD5Byte, source.getBytes crash!");
+      }
+      paramString = paramString;
+      paramString.printStackTrace();
+      LogUtility.e("andygzyu-MD5", "toMD5Byte, MessageDigest.getInstance crash!");
+      return null;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
   }
 }
 

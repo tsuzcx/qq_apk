@@ -1,21 +1,54 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 
-public class ajyn
-  implements ValueAnimation.AnimationUpdateListener
+public final class ajyn
+  implements DownloadParams.DecodeHandler
 {
-  public ajyn(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
-  
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.a.b(paramInteger.intValue());
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    float f2 = DeviceInfoUtil.a();
+    float f1 = f2;
+    if (f2 < 0.01F) {
+      f1 = 1.0F;
+    }
+    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+    paramDownloadParams = ImageUtil.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    paramBitmap = new Canvas(paramDownloadParams);
+    Object localObject = new Paint();
+    ((Paint)localObject).setAntiAlias(true);
+    ((Paint)localObject).setStyle(Paint.Style.STROKE);
+    ((Paint)localObject).setColor(Color.argb(20, 0, 0, 0));
+    ((Paint)localObject).setStrokeWidth(0.5F);
+    f1 = paramDownloadParams.getWidth() * 0.5F;
+    paramBitmap.drawCircle(f1, f1, f1 - 0.5F, (Paint)localObject);
+    return paramDownloadParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyn
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public class TroopFileTransferManager$TaskHttpDownload
   }
   
   /* Error */
-  private java.net.HttpURLConnection a(java.lang.String paramString1, long paramLong1, long paramLong2, java.lang.String paramString2, boolean paramBoolean, ajbg paramajbg)
+  private java.net.HttpURLConnection a(java.lang.String paramString1, long paramLong1, long paramLong2, java.lang.String paramString2, boolean paramBoolean, ajpk paramajpk)
   {
     // Byte code:
     //   0: new 27	java/lang/StringBuilder
@@ -107,7 +107,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   201: aload 8
     //   203: aload 6
     //   205: invokevirtual 114	java/net/HttpURLConnection:getResponseCode	()I
-    //   208: putfield 119	ajbg:jdField_a_of_type_Int	I
+    //   208: putfield 119	ajpk:jdField_a_of_type_Int	I
     //   211: aload 6
     //   213: astore_1
     //   214: aload 6
@@ -130,7 +130,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   253: ifnull +9 -> 262
     //   256: aload 8
     //   258: aload_1
-    //   259: putfield 127	ajbg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   259: putfield 127	ajpk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   262: invokestatic 133	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   265: ifeq +41 -> 306
     //   268: ldc 135
@@ -185,7 +185,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   0	362	4	paramLong2	long
     //   0	362	6	paramString2	java.lang.String
     //   0	362	7	paramBoolean	boolean
-    //   0	362	8	paramajbg	ajbg
+    //   0	362	8	paramajpk	ajpk
     //   49	289	9	str1	java.lang.String
     //   19	158	10	str2	java.lang.String
     // Exception table:
@@ -212,7 +212,7 @@ public class TroopFileTransferManager$TaskHttpDownload
   }
   
   /* Error */
-  private java.net.HttpURLConnection a(java.lang.String paramString1, java.lang.String paramString2, java.lang.String paramString3, long paramLong1, long paramLong2, java.lang.String paramString4, java.lang.String paramString5, boolean paramBoolean, ajbg paramajbg)
+  private java.net.HttpURLConnection a(java.lang.String paramString1, java.lang.String paramString2, java.lang.String paramString3, long paramLong1, long paramLong2, java.lang.String paramString4, java.lang.String paramString5, boolean paramBoolean, ajpk paramajpk)
   {
     // Byte code:
     //   0: new 27	java/lang/StringBuilder
@@ -360,7 +360,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   307: aload 11
     //   309: aload_3
     //   310: invokevirtual 114	java/net/HttpURLConnection:getResponseCode	()I
-    //   313: putfield 119	ajbg:jdField_a_of_type_Int	I
+    //   313: putfield 119	ajpk:jdField_a_of_type_Int	I
     //   316: aload_3
     //   317: astore_2
     //   318: aload_3
@@ -383,7 +383,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   353: ifnull +9 -> 362
     //   356: aload 11
     //   358: aload_2
-    //   359: putfield 127	ajbg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   359: putfield 127	ajpk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   362: invokestatic 133	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   365: ifeq +40 -> 405
     //   368: ldc 135
@@ -430,7 +430,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   0	436	8	paramString4	java.lang.String
     //   0	436	9	paramString5	java.lang.String
     //   0	436	10	paramBoolean	boolean
-    //   0	436	11	paramajbg	ajbg
+    //   0	436	11	paramajpk	ajpk
     //   27	231	12	str	java.lang.String
     // Exception table:
     //   from	to	target	type
@@ -803,11 +803,11 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   773: astore 12
     //   775: aconst_null
     //   776: astore 11
-    //   778: new 116	ajbg
+    //   778: new 116	ajpk
     //   781: dup
     //   782: aload_0
     //   783: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:jdField_b_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
-    //   786: invokespecial 361	ajbg:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
+    //   786: invokespecial 361	ajpk:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
     //   789: astore 14
     //   791: aload 12
     //   793: astore 10
@@ -905,7 +905,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1004: aload 11
     //   1006: iconst_0
     //   1007: aload 14
-    //   1009: invokespecial 422	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/String;ZLajbg;)Ljava/net/HttpURLConnection;
+    //   1009: invokespecial 422	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/String;ZLajpk;)Ljava/net/HttpURLConnection;
     //   1012: astore 11
     //   1014: aload 11
     //   1016: astore 10
@@ -951,7 +951,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1108: getfield 420	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:cookieValue	Ljava/lang/String;
     //   1111: iconst_0
     //   1112: aload 14
-    //   1114: invokespecial 429	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;JJLjava/lang/String;ZLajbg;)Ljava/net/HttpURLConnection;
+    //   1114: invokespecial 429	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;JJLjava/lang/String;ZLajpk;)Ljava/net/HttpURLConnection;
     //   1117: astore 10
     //   1119: aload 10
     //   1121: ifnonnull +223 -> 1344
@@ -991,31 +991,31 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1201: iload_3
     //   1202: istore_2
     //   1203: aload 14
-    //   1205: getfield 119	ajbg:jdField_a_of_type_Int	I
+    //   1205: getfield 119	ajpk:jdField_a_of_type_Int	I
     //   1208: sipush 200
     //   1211: if_icmpeq +22 -> 1233
     //   1214: iload_3
     //   1215: istore_2
     //   1216: aload 14
-    //   1218: getfield 119	ajbg:jdField_a_of_type_Int	I
+    //   1218: getfield 119	ajpk:jdField_a_of_type_Int	I
     //   1221: sipush 206
     //   1224: if_icmpeq +9 -> 1233
     //   1227: aload 14
-    //   1229: getfield 119	ajbg:jdField_a_of_type_Int	I
+    //   1229: getfield 119	ajpk:jdField_a_of_type_Int	I
     //   1232: istore_2
     //   1233: iload_2
     //   1234: istore_3
     //   1235: aload 14
-    //   1237: getfield 127	ajbg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1237: getfield 127	ajpk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1240: ifnull +28 -> 1268
     //   1243: iload_2
     //   1244: istore_3
     //   1245: aload 14
-    //   1247: getfield 127	ajbg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1247: getfield 127	ajpk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1250: invokestatic 284	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   1253: ifne +15 -> 1268
     //   1256: aload 14
-    //   1258: getfield 127	ajbg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1258: getfield 127	ajpk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1261: invokestatic 442	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
     //   1264: invokevirtual 445	java/lang/Integer:intValue	()I
     //   1267: istore_3
@@ -1050,7 +1050,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1330: ldc_w 447
     //   1333: iconst_1
     //   1334: aload 14
-    //   1336: invokespecial 422	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/String;ZLajbg;)Ljava/net/HttpURLConnection;
+    //   1336: invokespecial 422	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/String;ZLajpk;)Ljava/net/HttpURLConnection;
     //   1339: astore 10
     //   1341: goto -222 -> 1119
     //   1344: aload 10
@@ -1524,7 +1524,7 @@ public class TroopFileTransferManager$TaskHttpDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskHttpDownload
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class adfg
-  extends VasQuickUpdateManager.CallBacker
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public adfg(HiBoomPanelView paramHiBoomPanelView) {}
+  public adfg(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((paramLong == 5L) && (paramString1.startsWith("font.hifont.android.")))
-    {
-      paramString1 = paramString1.substring("font.hifont.android.".length(), paramString1.length());
-      if (TextUtils.isDigitsOnly(paramString1))
-      {
-        paramInt2 = Integer.parseInt(paramString1);
-        if (this.a.a != null) {
-          ThreadManager.getUIHandler().post(new adfh(this, paramInt1, paramInt2));
-        }
-      }
+    long l1 = 0L;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.g(false);
+    long l2 = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FileBrowserPresenter<FileAssistant>", 4, "Video Total Time:" + l2);
     }
-  }
-  
-  public void onProgress(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
-  {
-    if ((paramLong1 == 5L) && (paramString1.startsWith("font.hifont.android.")))
+    paramTVK_IMediaPlayer = this.a;
+    if (l2 < 0L) {}
+    for (;;)
     {
-      paramString1 = paramString1.substring("font.hifont.android.".length(), paramString1.length());
-      if (TextUtils.isDigitsOnly(paramString1))
-      {
-        int i = Integer.parseInt(paramString1);
-        if (this.a.a != null) {
-          ThreadManager.getUIHandler().post(new adfi(this, i, paramLong2, paramLong3));
-        }
-      }
+      VideoFilePresenter.a(paramTVK_IMediaPlayer, l1);
+      this.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adfh(this));
+      return;
+      l1 = l2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfg
  * JD-Core Version:    0.7.0.1
  */

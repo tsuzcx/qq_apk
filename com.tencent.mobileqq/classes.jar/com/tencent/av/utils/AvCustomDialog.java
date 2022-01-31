@@ -5,22 +5,22 @@ import android.content.Context;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
-import kgg;
-import kgh;
+import kfr;
+import kfs;
 
 public class AvCustomDialog
   extends Dialog
 {
   public AvCustomDialog(Context paramContext)
   {
-    super(paramContext, 2131624515);
+    super(paramContext, 2131624516);
     a();
   }
   
   void a()
   {
     super.getWindow().setGravity(17);
-    super.setContentView(2130969364);
+    super.setContentView(2130969365);
   }
   
   public void a(View paramView, boolean paramBoolean)
@@ -28,8 +28,8 @@ public class AvCustomDialog
     if (paramBoolean) {
       b();
     }
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131366262);
-    localFrameLayout.setOnClickListener(new kgg(this));
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131366289);
+    localFrameLayout.setOnClickListener(new kfr(this));
     if (paramView != null) {
       localFrameLayout.addView(paramView);
     }
@@ -37,7 +37,7 @@ public class AvCustomDialog
   
   void b()
   {
-    findViewById(2131366261).setOnClickListener(new kgh(this));
+    findViewById(2131366288).setOnClickListener(new kfs(this));
   }
 }
 

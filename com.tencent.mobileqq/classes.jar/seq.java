@@ -1,49 +1,30 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineObserver;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class seq
-  extends DataLineObserver
+  implements View.OnTouchListener
 {
-  public seq(Conversation paramConversation) {}
+  public seq(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, AppConstants.y, 6000);
+    if (paramMotionEvent != null)
+    {
+      paramView = this.a.a[15];
+      if (paramView != null) {
+        if (paramMotionEvent.getAction() != 0) {
+          break label36;
+        }
+      }
     }
-    while (i != 1) {
-      return;
+    label36:
+    for (float f = 0.5F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return false;
     }
-    this.a.a(8, AppConstants.z, 6000);
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0) {
-      this.a.a(9, AppConstants.y, 6003);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6003);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, AppConstants.y, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6003);
   }
 }
 

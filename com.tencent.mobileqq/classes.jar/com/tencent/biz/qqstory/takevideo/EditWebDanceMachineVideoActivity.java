@@ -49,7 +49,7 @@ public class EditWebDanceMachineVideoActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    paramBundle = (RelativeLayout)findViewById(2131371911);
+    paramBundle = (RelativeLayout)findViewById(2131372084);
     paramBundle.removeAllViews();
     paramBundle.getLayoutParams().height = ScreenUtil.a(70.0F);
     GradientDrawable localGradientDrawable = new GradientDrawable();

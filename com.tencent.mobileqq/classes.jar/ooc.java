@@ -1,43 +1,23 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.troop.model.VidToGroupInfoPuller;
 
 public class ooc
-  implements ViewPager.OnPageChangeListener
+  implements BatchHandlerListPuller.IPullResultCallback
 {
-  public ooc(EmptySupportViewPager paramEmptySupportViewPager) {}
+  public ooc(VidToGroupInfoPuller paramVidToGroupInfoPuller) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a != null)
+    StringBuilder localStringBuilder = new StringBuilder().append("StoryId list to group info list finish !");
+    if (paramBoolean) {}
+    for (String str = "Every task success";; str = "Some task error")
     {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (this.a.a != null)
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
+      SLog.d("Q.qqstory.net:VidToGroupInfoPuller", str);
+      this.a.a(this.a.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
+      this.a.jdField_a_of_type_Int = 2;
+      return;
     }
   }
 }

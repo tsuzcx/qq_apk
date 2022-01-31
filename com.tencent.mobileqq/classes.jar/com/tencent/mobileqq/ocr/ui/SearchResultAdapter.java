@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.ui;
 
-import afpz;
+import agdf;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
@@ -17,7 +17,7 @@ import java.util.List;
 public class SearchResultAdapter
   extends BaseAdapter
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afpz(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new agdf(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public SearchResultAdapter.OnResultItemClickedListener a;
   SearchViewBuilderFactory jdField_a_of_type_ComTencentMobileqqOcrUiSearchViewBuilderFactory = new SearchViewBuilderFactory();

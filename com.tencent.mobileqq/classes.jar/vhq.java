@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
+import org.json.JSONObject;
 
-public class vhq
-  implements Runnable
+class vhq
+  implements TroopTopicMgr.DoLikeCallback
 {
-  public vhq(TroopSignItemBuilder.TroopSignVideoItemBuilder paramTroopSignVideoItemBuilder, TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder paramSignVideoItemHolder) {}
+  vhq(vhp paramvhp) {}
   
-  public void run()
+  public void a(int paramInt, JSONObject paramJSONObject)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder.a != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder.a.ac)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.m();
-    }
+    if (paramInt == 0) {}
   }
 }
 

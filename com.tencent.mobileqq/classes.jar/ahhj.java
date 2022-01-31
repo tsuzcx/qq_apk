@@ -1,26 +1,12 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelMessage;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
 
 public class ahhj
-  extends GroupSearchEngine.SearchEngineEntity
 {
-  public ahhj(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
-  
-  public ISearchResultGroupModel a(List paramList, String paramString)
-  {
-    return new GroupSearchModelMessage(paramList, paramString);
-  }
+  private static final CapturePtvTemplateManager a = new CapturePtvTemplateManager(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahhj
  * JD-Core Version:    0.7.0.1
  */

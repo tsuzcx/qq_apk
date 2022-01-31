@@ -1,22 +1,16 @@
-import android.view.View;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.IBatchGetVideoInfoCallback;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.VideoInfoListEvent;
 
 public class nma
-  extends ChildViewClickListener
+  implements BatchGetVideoInfoHandler.IBatchGetVideoInfoCallback
 {
-  public nma(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public nma(VidListPlayMode paramVidListPlayMode) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public void a(BatchGetVideoInfoHandler.VideoInfoListEvent paramVideoInfoListEvent)
   {
-    if ((paramObject instanceof QQUserUIItem))
-    {
-      paramView = (QQUserUIItem)paramObject;
-      StoryApi.a(this.a.a, 10, paramView.uid);
-    }
+    this.a.a.post(new nmb(this, paramVideoInfoListEvent));
   }
 }
 

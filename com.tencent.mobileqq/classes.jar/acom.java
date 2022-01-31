@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-public class acom
-  extends acnx
+class acom
+  implements Runnable
 {
-  public acom(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  acom(acoi paramacoi, int paramInt) {}
   
-  protected String a()
+  public void run()
   {
-    return "StateSenderCancelSend";
+    UniformDownloadActivity.b(this.jdField_a_of_type_Acoi.a).setVisibility(0);
+    UniformDownloadActivity.b(this.jdField_a_of_type_Acoi.a).setText(this.jdField_a_of_type_Acoi.a.getString(2131428582, new Object[] { this.jdField_a_of_type_Int + "%" }));
   }
 }
 

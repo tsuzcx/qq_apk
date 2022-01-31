@@ -6,6 +6,7 @@ public class VidUrl
   public String a;
   public boolean a;
   public String b;
+  public String c;
   
   public boolean a(long paramLong)
   {

@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
 
-public final class anvm
-  implements Parcelable.Creator
+class anvm
+  implements Runnable
 {
-  public FilterCategory a(Parcel paramParcel)
-  {
-    return new FilterCategory(paramParcel);
-  }
+  anvm(anvl paramanvl) {}
   
-  public FilterCategory[] a(int paramInt)
+  public void run()
   {
-    return new FilterCategory[paramInt];
+    this.a.a.c();
+    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).a();
+    this.a.a.finish();
   }
 }
 

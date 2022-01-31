@@ -1,22 +1,29 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import com.dataline.core.DirectForwarder;
-import com.dataline.core.DirectForwarder.CallBack;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
-public final class ajbk
-  extends DirectForwarder.CallBack
+public class ajbk
+  implements AdapterView.OnItemClickListener
 {
-  public ajbk(Context paramContext) {}
+  public ajbk(NewTroopContactView paramNewTroopContactView) {}
   
-  protected void a(AsyncTask paramAsyncTask, int paramInt)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.a(paramAsyncTask, paramInt);
-    DirectForwarder.a(this.a, paramAsyncTask, paramInt, new ajbl(this));
+    paramAdapterView = ((ResultRecord)paramView.getTag()).a;
+    if (this.a.a(paramAdapterView))
+    {
+      NewTroopContactView.a(this.a, paramAdapterView);
+      this.a.a.notifyDataSetChanged();
+      this.a.b(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbk
  * JD-Core Version:    0.7.0.1
  */

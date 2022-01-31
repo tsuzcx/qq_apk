@@ -1,18 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
 
-public final class omy
-  implements DialogInterface.OnClickListener
+class omy
+  implements Animator.AnimatorListener
 {
-  public omy(DownloadInfo paramDownloadInfo) {}
+  omy(omw paramomw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
-    WeishiGuideUtils.a(this.a);
+    if ((StoryMultiFragmentPart.a(this.a.a) != null) && (StoryMultiFragmentPart.b(this.a.a) != null) && (StoryMultiFragmentPart.a(this.a.a) != null))
+    {
+      StoryMultiFragmentPart.a(this.a.a).setVisibility(8);
+      StoryMultiFragmentPart.b(this.a.a).setImageBitmap(this.a.b);
+      StoryMultiFragmentPart.b(this.a.a).setVisibility(0);
+      StoryMultiFragmentPart.a(this.a.a).setText(StoryMultiFragmentPart.a(this.a.a) + "");
+      StoryMultiFragmentPart.a(this.a.a).setVisibility(0);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

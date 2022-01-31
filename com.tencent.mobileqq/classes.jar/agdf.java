@@ -1,29 +1,21 @@
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.avatar.dynamicavatar.VasFaceManager;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import java.util.HashMap;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.ui.SearchResultAdapter;
+import com.tencent.mobileqq.ocr.ui.SearchResultAdapter.ListItem;
+import com.tencent.mobileqq.ocr.ui.SearchResultAdapter.OnResultItemClickedListener;
 
 public class agdf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public agdf(ProfileHeaderView paramProfileHeaderView, ProfileActivity.AllInOne paramAllInOne, int paramInt, String paramString) {}
+  public agdf(SearchResultAdapter paramSearchResultAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = (ImageView)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap.get("map_key_face");
-    if ((localObject instanceof DynamicAvatarView))
+    if ((this.a.a != null) && ((paramView.getTag() instanceof SearchResultAdapter.ListItem)))
     {
-      ((DynamicAvatarView)localObject).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 200, true, true, true, false, 3);
-      localObject = (View)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap.get("map_key_face_stoke");
-      if (localObject != null) {
-        ((View)localObject).setVisibility(VasFaceManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-      }
-      return;
+      paramView = (SearchResultAdapter.ListItem)paramView.getTag();
+      this.a.a.a(paramView);
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

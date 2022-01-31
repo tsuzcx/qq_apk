@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.music.humrecognition.HumUtils;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import java.util.ArrayList;
 
 public class amwh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public amwh(HummingActivity paramHummingActivity) {}
+  public amwh(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (HumUtils.b()) {
-      return;
-    }
-    HummingActivity.a(this.a, 2);
-    HummingActivity.b(this.a);
+    RemoteHandleManager.a().a().a(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwh
  * JD-Core Version:    0.7.0.1
  */

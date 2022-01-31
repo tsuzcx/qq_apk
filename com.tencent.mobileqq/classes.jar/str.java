@@ -1,47 +1,21 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.mobileqq.search.model.SearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class str
-  extends UniteSearchObserver
+  implements DialogInterface.OnClickListener
 {
-  public str(Leba paramLeba) {}
+  public str(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void b(int paramInt1, String paramString, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryError error, resultCode = " + paramInt1 + ",  errorMsg = " + paramString + ", fromType = " + paramInt2);
-    }
-  }
-  
-  public void b(List paramList, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryResult() result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 4) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
-      }
-    }
-    for (;;)
-    {
-      return;
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        SearchEntryDataModel localSearchEntryDataModel = (SearchEntryDataModel)paramList.get(paramInt);
-        if ((localSearchEntryDataModel instanceof HotWordSearchEntryDataModel))
-        {
-          Leba.a(this.a, ((HotWordSearchEntryDataModel)localSearchEntryDataModel).a);
-          return;
-        }
-        paramInt += 1;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
+    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
   }
 }
 

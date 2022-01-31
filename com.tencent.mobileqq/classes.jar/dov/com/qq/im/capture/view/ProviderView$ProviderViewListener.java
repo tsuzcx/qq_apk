@@ -12,7 +12,7 @@ public abstract interface ProviderView$ProviderViewListener
   
   public abstract void a(String paramString, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void aw_();
+  public abstract void ay_();
   
   public abstract void b(int paramInt, boolean paramBoolean);
   

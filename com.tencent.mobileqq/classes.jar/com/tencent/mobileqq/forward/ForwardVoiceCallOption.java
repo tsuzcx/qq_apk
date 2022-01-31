@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import adco;
+import admn;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.biz.eqq.CrmUtils;
@@ -66,20 +66,20 @@ public class ForwardVoiceCallOption
     if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
       return;
     }
-    adco localadco = new adco(this);
+    admn localadmn = new admn(this);
     paramInt = paramBundle.getInt("uintype");
     String str1 = paramBundle.getString("troop_uin");
     String str2 = paramBundle.getString("uin");
     paramBundle = paramBundle.getString("uinname");
     if ((paramInt == 0) || (paramInt == 1004)) {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramInt, str2, paramBundle, "", true, str1, true, true, localadco, "from_internal");
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramInt, str2, paramBundle, "", true, str1, true, true, localadmn, "from_internal");
     }
     for (;;)
     {
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "10", "", "", "");
       return;
       if (paramInt == 1006) {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramInt, "0", paramBundle, str2, true, str1, true, true, localadco, "from_internal");
+        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramInt, "0", paramBundle, str2, true, str1, true, true, localadmn, "from_internal");
       }
     }
   }

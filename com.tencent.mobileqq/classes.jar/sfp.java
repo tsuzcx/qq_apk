@@ -1,21 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.util.Pair;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
-class sfp
-  implements DialogInterface.OnClickListener
+public class sfp
+  implements DialogInterface.OnCancelListener
 {
-  sfp(sfo paramsfo, SubAccountControll paramSubAccountControll, Pair paramPair) {}
+  public sfp(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     sfp
  * JD-Core Version:    0.7.0.1
  */

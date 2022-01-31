@@ -1,21 +1,19 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.mobileqq.text.QQTextBuilder;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public final class ahzp
-  extends Editable.Factory
+public class ahzp
+  implements Runnable
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public ahzp(ShortVideoResourceManager paramShortVideoResourceManager, NetResp paramNetResp) {}
+  
+  public void run()
   {
-    if ((paramCharSequence instanceof QQTextBuilder)) {
-      return (Editable)paramCharSequence;
-    }
-    return new QQTextBuilder(paramCharSequence, 3);
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager, this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzp
  * JD-Core Version:    0.7.0.1
  */

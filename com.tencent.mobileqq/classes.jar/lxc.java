@@ -1,10 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
 import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
 
 public class lxc
-  extends BaseSkinRes
+  extends CommonSkinRes
 {
   public lxc(ReadInJoySkinManager paramReadInJoySkinManager) {}
+  
+  public int a()
+  {
+    return a("tab_select_color");
+  }
 }
 
 

@@ -1,30 +1,26 @@
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.GradientDrawable;
-import android.widget.LinearLayout;
-import com.tencent.biz.troopgift.GridListAdapter;
-import com.tencent.biz.troopgift.GridListAdapter.Holder;
-import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.qphone.base.util.QLog;
 
 public class oxa
-  implements Runnable
+  extends oxo
 {
-  public oxa(GridListAdapter paramGridListAdapter, GridListAdapter.Holder paramHolder) {}
-  
-  public void run()
+  public oxa(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, String paramString)
   {
-    int i = DisplayUtil.a(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a, 5.0F);
-    new Paint().setTextSize(DisplayUtil.a(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a, 11.0F));
-    int j = this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.getWidth();
-    int k = this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.getHeight();
-    if ((j == 0) || (k == 0)) {
-      return;
+    super(paramVideoCombineHelper);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "splitVideoUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a));
+      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a = System.currentTimeMillis();
     }
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadii(new float[] { i, i, i, i, i, i, i, i });
-    localGradientDrawable.setColor(Color.argb(35, 0, 0, 0));
-    this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.setBackgroundDrawable(localGradientDrawable);
+    if (!paramBoolean) {
+      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, false, "splitVideo done.");
+    }
   }
 }
 

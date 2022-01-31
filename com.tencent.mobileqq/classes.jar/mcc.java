@@ -1,21 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class mcc
-  implements Animation.AnimationListener
+public final class mcc
+  implements DialogInterface.OnClickListener
 {
-  public mcc(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoFeedsPlayActivity.b(this.a).startAnimation(this.a.b);
+    paramDialogInterface.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

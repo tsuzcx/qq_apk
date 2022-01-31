@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.Size;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class xmu
-  implements Comparator
+  implements View.OnTouchListener
 {
-  public xmu(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xmu(LoginView paramLoginView) {}
   
-  public int a(Size paramSize1, Size paramSize2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramSize1.a < paramSize2.a) || ((paramSize1.a == paramSize2.a) && (paramSize1.b < paramSize2.b))) {
-      return -1;
+    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
+      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
     }
-    if ((paramSize1.a != paramSize2.a) || (paramSize1.b != paramSize2.b)) {
-      return 1;
-    }
-    return 0;
+    return false;
   }
 }
 

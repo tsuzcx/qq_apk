@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
-import com.tencent.mobileqq.nearby.widget.ButtonInfo;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
 public class xbo
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public xbo(GoldMsgDialog paramGoldMsgDialog, ButtonInfo paramButtonInfo) {}
+  public xbo(SendHbActivity paramSendHbActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDialog.dismiss();
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a.a(paramView);
+    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
+      this.a.finish();
     }
   }
 }

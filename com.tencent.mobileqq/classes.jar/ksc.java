@@ -1,22 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.biz.troopbar.ShareActionSheet;
-import com.tencent.biz.troopbar.ShareActionSheet.Detail;
-import com.tencent.mobileqq.data.AccountDetail;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.PrefetchListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class ksc
-  implements View.OnClickListener
+  implements AccountDetailBaseAdapter.PrefetchListener
 {
-  public ksc(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo) {}
+  public ksc(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ShareActionSheet.b((Activity)this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangRefWeakReference.get(), new ShareActionSheet.Detail(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer));
-    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.jdField_a_of_type_JavaLangString);
+    this.a.a(this.a.a);
   }
 }
 

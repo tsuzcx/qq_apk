@@ -23,13 +23,13 @@ public class ContactSearchResultMobileView
   
   protected void a()
   {
-    this.j = ((TextView)this.d.findViewById(2131362876));
-    this.e = ((ImageView)this.d.findViewById(2131366518));
-    this.k = ((TextView)this.d.findViewById(2131369905));
-    this.m = ((TextView)this.d.findViewById(2131369907));
-    this.a = ((Button)this.d.findViewById(2131368907));
+    this.j = ((TextView)this.d.findViewById(2131362894));
+    this.e = ((ImageView)this.d.findViewById(2131366545));
+    this.k = ((TextView)this.d.findViewById(2131369982));
+    this.m = ((TextView)this.d.findViewById(2131369984));
+    this.a = ((Button)this.d.findViewById(2131368973));
     this.a.setText("添加");
-    this.l = ((TextView)this.d.findViewById(2131368908));
+    this.l = ((TextView)this.d.findViewById(2131368974));
   }
 }
 

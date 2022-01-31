@@ -1,16 +1,38 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.Callback;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class anpm
-  implements CameraExceptionHandler.Callback
+  extends AnimatorListenerAdapter
 {
-  public anpm(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public anpm(QIMCircleProgress paramQIMCircleProgress) {}
   
-  public void a(RuntimeException paramRuntimeException)
+  public void onAnimationCancel(Animator paramAnimator)
   {
+    this.a.a = false;
     if (QLog.isColorLevel()) {
-      QLog.i("FlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+    if ((this.a.c) && (this.a.b != null)) {
+      this.a.b.start();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
     }
   }
 }

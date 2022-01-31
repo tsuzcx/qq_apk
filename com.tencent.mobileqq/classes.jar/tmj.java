@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.ApolloManager.IDrawerGameBoxStatus;
+import com.tencent.mobileqq.apollo.script.SpriteActionScript;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
 
 public class tmj
-  implements DialogInterface.OnClickListener
+  implements ApolloManager.IDrawerGameBoxStatus
 {
-  public tmj(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public tmj(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    RegisterChooseLoginActivity.a(this.a, false);
-    RegisterByNicknameAndPwdActivity.a(this.a.app, this.a, this.a.a, this.a.b, RegisterChooseLoginActivity.a(this.a), true, this.a.c, false);
-    ReportController.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
-    ReportController.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 2, 0, "", "", "", "");
+    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).a() != null)) {
+      QQSettingMe.a(this.a).a().a(paramBoolean);
+    }
   }
 }
 

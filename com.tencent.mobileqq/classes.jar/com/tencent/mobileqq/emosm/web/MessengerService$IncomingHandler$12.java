@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm.web;
 
-import abue;
+import acbg;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$12
   extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$12(abue paramabue, Bundle paramBundle, QQAppInterface paramQQAppInterface, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$12(acbg paramacbg, Bundle paramBundle, QQAppInterface paramQQAppInterface, MessengerService paramMessengerService) {}
   
   public void onDone(List paramList1, List paramList2)
   {

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import aiuh;
-import aiui;
-import aiuj;
-import aiuk;
-import aiul;
-import aium;
-import aiun;
-import aiup;
-import aiuq;
+import ajil;
+import ajim;
+import ajin;
+import ajio;
+import ajip;
+import ajiq;
+import ajir;
+import ajit;
+import ajiu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -107,7 +107,7 @@ public class ReciteFragment
   {
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(200L);
-    localAlphaAnimation.setAnimationListener(new aiuk(this, paramButton));
+    localAlphaAnimation.setAnimationListener(new ajio(this, paramButton));
     paramButton.startAnimation(localAlphaAnimation);
     paramButton = new AlphaAnimation(0.0F, 1.0F);
     paramButton.setDuration(300L);
@@ -246,14 +246,14 @@ public class ReciteFragment
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView$MyArticleAdapter);
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView$MyArticleAdapter.notifyDataSetChanged();
     b("退出背诵", this);
-    b(2131430709, this);
+    b(2131430726, this);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsReplayLyricManager = new ReplayLyricManager(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView$MyArticleAdapter, null);
   }
   
   private void n()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(getActivity(), 230).setMessage(2131430710).setNegativeButton("取消", new aiuq(this)).setPositiveButton("确定", new aiup(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(getActivity(), 230).setMessage(2131430727).setNegativeButton("取消", new ajiu(this)).setPositiveButton("确定", new ajit(this));
     localQQCustomDialog.setCancelable(false);
     localQQCustomDialog.show();
   }
@@ -271,11 +271,11 @@ public class ReciteFragment
   {
     if (this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow = new CalloutPopupWindow.DrawableBuilder(CalloutPopupWindow.a(getActivity()).b(0).a(true).a("如何完成一次背诵作业？").a(17.0F).b(0).c(50).a(-1)).b(getResources().getColor(2131493767)).a(3).a().a();
+      this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow = new CalloutPopupWindow.DrawableBuilder(CalloutPopupWindow.a(getActivity()).b(0).a(true).a("如何完成一次背诵作业？").a(17.0F).b(0).c(50).a(-1)).b(getResources().getColor(2131493773)).a(3).a().a();
       this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.setOutsideTouchable(false);
       this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.setFocusable(false);
       this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.a(82);
-      this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.a(new aiui(this));
+      this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.a(new ajim(this));
     }
     if (!this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow.isShowing())
     {
@@ -295,7 +295,7 @@ public class ReciteFragment
   
   protected int a()
   {
-    return 2130969900;
+    return 2130969914;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -309,7 +309,7 @@ public class ReciteFragment
     localReqReciteScore.remind_times.set(paramInt3);
     localReqReciteScore.total_time.set((int)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.jdField_a_of_type_Long);
     localReqReciteScore.total_word.set(paramInt1);
-    ProtoUtils.a(getActivity().app, new aiun(this, paramInt3, paramInt2), localReqReciteScore.toByteArray(), "HwSvc.get_recite_score");
+    ProtoUtils.a(getActivity().app, new ajir(this, paramInt3, paramInt2), localReqReciteScore.toByteArray(), "HwSvc.get_recite_score");
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
@@ -423,19 +423,19 @@ public class ReciteFragment
   
   protected void b(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView = ((ReciteDisplayView)a(2131368386));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131368389));
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView = ((ReciteDisplayView)a(2131368453));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131368456));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131368388));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131368455));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131368390));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131368457));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     if (!ThemeUtil.isInNightMode(a()))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.a(true);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setBackgroundResource(2130838210);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841365);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aiuh(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setBackgroundResource(2130838214);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841402);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ajil(this));
       if (this.jdField_b_of_type_Int != 3) {
         break label337;
       }
@@ -446,19 +446,19 @@ public class ReciteFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout = ((ReciteRecordLayout)a(2131368391));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout = ((ReciteRecordLayout)a(2131368458));
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.setOnReciteListener(this);
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder = new ReciteEvaluateViewHolder(getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder.a((SpriteVideoView)a(2131368392));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder.a((SpriteVideoView)a(2131368459));
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView.addFooterView(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder.a);
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder.c();
       g();
-      this.g = ((TextView)a(2131368387));
+      this.g = ((TextView)a(2131368454));
       if (this.jdField_b_of_type_Int == 3) {
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder.a(false, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.b, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.jdField_f_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.jdField_d_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.e);
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841366);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841403);
       break;
       label337:
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
@@ -531,7 +531,7 @@ public class ReciteFragment
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.c();
     }
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(getActivity(), 230).setMessage(2131430711).setNegativeButton("退出背诵", new aium(this)).setPositiveButton("重新背诵", new aiul(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(getActivity(), 230).setMessage(2131430728).setNegativeButton("退出背诵", new ajiq(this)).setPositiveButton("重新背诵", new ajip(this));
     localQQCustomDialog.setCancelable(false);
     localQQCustomDialog.show();
   }
@@ -574,7 +574,7 @@ public class ReciteFragment
             {
               if (!SoLibraryChecker.a(getActivity(), "libWXVoice.so"))
               {
-                paramView = DialogUtil.a(getActivity(), 230).setMessage(2131431534).setNegativeButton(2131431535, new aiuj(this));
+                paramView = DialogUtil.a(getActivity(), 230).setMessage(2131431551).setNegativeButton(2131431552, new ajin(this));
                 paramView.setCancelable(false);
                 paramView.show();
               }
@@ -651,7 +651,7 @@ public class ReciteFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment
  * JD-Core Version:    0.7.0.1
  */

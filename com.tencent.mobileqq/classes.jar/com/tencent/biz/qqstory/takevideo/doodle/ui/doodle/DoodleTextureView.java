@@ -8,8 +8,8 @@ import com.tencent.mobileqq.apollo.GLTextureView;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import oiq;
-import oir;
+import oka;
+import okb;
 
 @TargetApi(14)
 public class DoodleTextureView
@@ -53,7 +53,7 @@ public class DoodleTextureView
     if (QLog.isColorLevel()) {
       QLog.d("DoodleTextureView", 2, "onDestroy start");
     }
-    queueEvent(new oir(this));
+    queueEvent(new okb(this));
   }
   
   public void onDrawFrame(GL10 paramGL10)
@@ -94,7 +94,7 @@ public class DoodleTextureView
   {
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController = paramDoodleOpController;
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(this);
-    super.queueEvent(new oiq(this));
+    super.queueEvent(new oka(this));
   }
 }
 

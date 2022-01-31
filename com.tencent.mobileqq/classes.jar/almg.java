@@ -1,60 +1,38 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.GestureSelectGridView;
-import com.tencent.widget.GestureSelectGridView.OnSelectListener;
+import android.view.View;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class almg
-  implements AbsListView.OnScrollListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public almg(GestureSelectGridView paramGestureSelectGridView) {}
+  public almg(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.a(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
+      if (paramInt == 0) {
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+      }
     }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_Boolean)
+    for (;;)
     {
-      int i = paramInt1 + paramInt2;
-      if ((!this.a.jdField_b_of_type_Boolean) || (Math.abs(i - this.a.c) < 3) || (Math.abs(i - this.a.c) > 5)) {
-        break label161;
-      }
-      if (this.a.c + 3 <= paramInt3 - 1) {
-        break label140;
-      }
-      this.a.c = (paramInt3 - 1);
-      this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.a(this.a.jdField_b_of_type_Int, this.a.c);
-    }
-    label140:
-    GestureSelectGridView localGestureSelectGridView;
-    label161:
-    while ((this.a.jdField_b_of_type_Boolean) || (Math.abs(paramInt1 - this.a.c) < 3) || (Math.abs(paramInt1 - this.a.c) > 5)) {
-      for (;;)
+      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
+      return;
+      if (paramInt == 1)
       {
-        if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-          this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
+        continue;
+        if (paramInt == 0) {
+          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
         }
-        return;
-        localGestureSelectGridView = this.a;
-        localGestureSelectGridView.c += 3;
       }
-    }
-    if (this.a.c - 3 < 0) {}
-    for (this.a.c = 0;; localGestureSelectGridView.c -= 3)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.a(this.a.jdField_b_of_type_Int, this.a.c);
-      break;
-      localGestureSelectGridView = this.a;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     almg
  * JD-Core Version:    0.7.0.1
  */

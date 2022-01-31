@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aicd;
-import aice;
+import aiqg;
+import aiqh;
 import android.os.Build.VERSION;
 import android.view.animation.AnimationUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -163,7 +163,7 @@ public class HttpDownloader
       ConnManagerParams.setMaxTotalConnections((HttpParams)localObject2, 10);
       HttpConnectionParams.setSocketBufferSize((HttpParams)localObject2, 8192);
       localObject1 = new HttpDownloader.QQHttpClient(new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1), (HttpParams)localObject2);
-      ((HttpDownloader.QQHttpClient)localObject1).setRedirectHandler(new aice());
+      ((HttpDownloader.QQHttpClient)localObject1).setRedirectHandler(new aiqh());
       return localObject1;
       ((SchemeRegistry)localObject1).register(new Scheme("https", new TlsSniSocketFactory(HttpDownloader.class.getSimpleName()), 443));
     }
@@ -297,7 +297,7 @@ public class HttpDownloader
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.jdField_a_of_type_Boolean = true;
     localHttpNetReq.jdField_e_of_type_Boolean = true;
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aicd(paramURLDrawableHandler, paramString, paramHttpDownloaderParams);
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aiqg(paramURLDrawableHandler, paramString, paramHttpDownloaderParams);
     localHttpNetReq.jdField_a_of_type_JavaLangString = paramString;
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.c = str;
@@ -1360,7 +1360,7 @@ public class HttpDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.HttpDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
-class seo
-  implements Runnable
+public class seo
+  implements DialogInterface.OnClickListener
 {
-  seo(sen paramsen, String paramString) {}
+  public seo(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Sen.a.a != null) {
-      this.jdField_a_of_type_Sen.a.a.a(this.jdField_a_of_type_JavaLangString, 3000);
-    }
+    this.a.B();
   }
 }
 

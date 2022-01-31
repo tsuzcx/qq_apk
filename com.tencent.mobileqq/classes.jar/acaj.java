@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 class acaj
-  implements DialogInterface.OnClickListener
+  extends DataSetObserver
 {
-  acaj(acai paramacai) {}
+  acaj(acai paramacai, DragSortListView paramDragSortListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onChanged()
   {
-    this.a.a.a = false;
-    this.a.a.doOnBackPressed();
+    this.jdField_a_of_type_Acai.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Acai.notifyDataSetInvalidated();
   }
 }
 

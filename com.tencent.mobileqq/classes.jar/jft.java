@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
+import java.lang.ref.WeakReference;
 
-public final class jft
+public class jft
   implements Runnable
 {
-  public jft(String paramString1, String paramString2, String paramString3) {}
+  public jft(MagicfaceBaseDecoder paramMagicfaceBaseDecoder, String paramString) {}
   
   public void run()
   {
-    FileUtils.a(this.a + File.separator, this.b, this.c);
-    if (QLog.isColorLevel())
-    {
-      QLog.i("EffectConfigBase", 2, "save Config to path :" + this.a);
-      QLog.i("EffectConfigBase", 2, "save Config to finish :" + this.c);
+    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a.get();
+    if (localMagicPlayListener != null) {
+      localMagicPlayListener.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

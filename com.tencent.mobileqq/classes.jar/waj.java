@@ -1,16 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.utils.GVideoUpdateUtil.OnGVideoUpdateListener;
-import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
+import mqq.os.MqqHandler;
 
-public class waj
-  implements GVideoUpdateUtil.OnGVideoUpdateListener
+class waj
+  implements Runnable
 {
-  public waj(VideoStatusTipsBar paramVideoStatusTipsBar, Intent paramIntent) {}
+  waj(wai paramwai) {}
   
-  public void a(Context paramContext, String paramString)
+  public void run()
   {
-    paramContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+    if (TroopChatPie.d(this.a.a)) {
+      return;
+    }
+    TroopNotificationHelper.c(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    TroopNotificationHelper.c(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    Message localMessage = TroopChatPie.h(this.a.a).obtainMessage(29);
+    localMessage.arg1 = 2;
+    TroopChatPie.i(this.a.a).sendMessage(localMessage);
   }
 }
 

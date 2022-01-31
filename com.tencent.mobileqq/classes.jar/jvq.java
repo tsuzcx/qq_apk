@@ -1,95 +1,29 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.av.ui.InviteStartAudioDialog;
-import com.tencent.av.ui.InviteStartAudioDialog.ViewHolder;
-import com.tencent.av.utils.InviteBaseData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoObserver;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class jvq
-  extends BaseAdapter
+  extends VideoObserver
 {
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  public jvq(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  private jvq(InviteStartAudioDialog paramInviteStartAudioDialog) {}
-  
-  public void a(List paramList)
+  protected void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    InviteBaseData localInviteBaseData1 = new InviteBaseData();
-    localInviteBaseData1.jdField_a_of_type_Int = 0;
-    localInviteBaseData1.jdField_a_of_type_JavaLangString = InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog).c();
-    localInviteBaseData1.jdField_b_of_type_JavaLangString = InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog).getCurrentNickname();
-    InviteBaseData localInviteBaseData2 = new InviteBaseData();
-    localInviteBaseData2.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_JavaUtilList.add(localInviteBaseData1);
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    this.jdField_a_of_type_JavaUtilList.add(localInviteBaseData2);
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "]");
+    if (TextUtils.equals(this.a.c, paramString))
     {
-      paramView = LayoutInflater.from(InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog)).inflate(2130969311, null);
-      paramViewGroup = new InviteStartAudioDialog.ViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366085));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363444));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131366086));
-      paramView.setTag(paramViewGroup);
+      this.a.b("VideoObserver_onClose");
+      this.a.b(paramInt);
     }
-    InviteBaseData localInviteBaseData;
-    for (;;)
-    {
-      localInviteBaseData = (InviteBaseData)getItem(paramInt);
-      if (localInviteBaseData.jdField_b_of_type_Int != 1) {
-        break;
-      }
-      paramViewGroup.b.setText(2131438351);
-      paramViewGroup.b.setTextColor(InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog).getResources().getColor(2131493321));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840065);
-      return paramView;
-      paramViewGroup = (InviteStartAudioDialog.ViewHolder)paramView.getTag();
-      InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog, paramViewGroup);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
+    if (TextUtils.equals(this.a.c, paramString)) {
+      this.a.b("VideoObserver_onDestroyUI");
     }
-    paramViewGroup.b.setText(localInviteBaseData.jdField_b_of_type_JavaLangString);
-    Bitmap localBitmap = InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog, localInviteBaseData);
-    if (localBitmap != null)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-      return paramView;
-    }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(ContactUtils.c(localInviteBaseData.jdField_b_of_type_JavaLangString));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840183);
-    return paramView;
   }
 }
 

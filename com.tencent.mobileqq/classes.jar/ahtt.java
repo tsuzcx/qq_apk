@@ -1,22 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import mqq.app.AppRuntime;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment;
+import com.tencent.mobileqq.search.presenter.FTSMessageSearchResultPresenter;
+import com.tencent.mobileqq.search.presenter.IPresenter;
+import com.tencent.mobileqq.search.view.FTSMessageSearchResultView;
+import com.tencent.mobileqq.search.view.IView;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.widget.ListView;
 
 public class ahtt
-  implements Runnable
+  extends BaseMvpFaceAdapter
 {
-  public ahtt(StructMsgForGeneralShare paramStructMsgForGeneralShare, AppRuntime paramAppRuntime) {}
-  
-  public void run()
+  public ahtt(FTSEntitySearchFragment paramFTSEntitySearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
   {
-    ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a().a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.frienduin, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.msgtype, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.extStr);
+    super(paramListView, paramFaceDecoder);
+  }
+  
+  protected IPresenter a(int paramInt)
+  {
+    return new FTSMessageSearchResultPresenter(FTSEntitySearchFragment.a(this.a));
+  }
+  
+  protected IView a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new FTSMessageSearchResultView(paramViewGroup, 2130971540);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahtt
  * JD-Core Version:    0.7.0.1
  */

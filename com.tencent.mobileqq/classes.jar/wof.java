@@ -1,19 +1,34 @@
-import android.content.Context;
-import android.view.MotionEvent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
+import android.view.View.OnClickListener;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment.ListAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class wof
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public wof(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
+  public wof(PublicAccountFragment.ListAdapter paramListAdapter) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    switch (paramView.getId())
+    {
+    }
+    String str;
+    do
+    {
+      return;
+      str = (String)paramView.getTag(-1);
+      paramView = (String)paramView.getTag(-2);
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramView))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str + ", name = " + paramView);
+    return;
+    CrmUtils.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, str, "IvrEnterpriseDetailEngineFalse");
   }
 }
 

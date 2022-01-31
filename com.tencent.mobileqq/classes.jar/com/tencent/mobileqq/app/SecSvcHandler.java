@@ -47,7 +47,7 @@ import tencent.im.oidb.cmd0x6df.Oidb_0x6df.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.s2c.msgtype0x210.submsgtype0xc6.SubMsgType0xc6.AccountExceptionAlertBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0xc6.SubMsgType0xc6.MsgBody;
-import zjq;
+import zmw;
 
 public class SecSvcHandler
   extends BusinessHandler
@@ -112,7 +112,7 @@ public class SecSvcHandler
         if (QLog.isColorLevel()) {
           QLog.d("SecSvcHandler", 2, String.format("cmd=%d, args: title=%s, msg=%s, lbtn=%s, rbtn=%s, url=%s,lbip=%d, rbid=%d", new Object[] { Integer.valueOf(paramInt), str1, str2, str3, str4, str5, Integer.valueOf(i), Integer.valueOf(j) }));
         }
-        new Handler(Looper.getMainLooper()).post(new zjq(this, str1, str2, str3, str4, str5, i, j, paramInt));
+        new Handler(Looper.getMainLooper()).post(new zmw(this, str1, str2, str3, str4, str5, i, j, paramInt));
         return;
       }
     }

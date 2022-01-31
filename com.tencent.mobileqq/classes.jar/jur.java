@@ -1,25 +1,24 @@
-import com.tencent.av.ui.EffectToolbar;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class jur
-  implements Observer
+  implements Runnable
 {
-  private WeakReference a;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public jur(EffectToolbar paramEffectToolbar)
+  public jur(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
   {
-    this.a = new WeakReference(paramEffectToolbar);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt2;
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void run()
   {
-    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
-    if (localEffectToolbar == null) {
-      return;
-    }
-    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
+    this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

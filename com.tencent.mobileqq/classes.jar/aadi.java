@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aadi
   implements Runnable
 {
-  public aadi(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
+  public aadi(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
-    }
-    for (;;)
+    if (ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).size() > 0)
     {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalControlInt", true, 0L, 0L, localHashMap, "");
+      ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
       return;
-      localHashMap.put("result", "1");
     }
+    QLog.d("ObjectSurfaceView", 1, "the dataList is null, cancel the jump action.");
   }
 }
 

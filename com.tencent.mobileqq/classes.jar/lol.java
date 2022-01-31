@@ -1,13 +1,16 @@
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyFixPosArticleManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import java.util.List;
 
-class lol
-  implements Comparator
+public class lol
+  implements Runnable
 {
-  lol(loj paramloj) {}
+  public lol(ReadinjoyFixPosArticleManager paramReadinjoyFixPosArticleManager, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, List paramList) {}
   
-  public int a(Integer paramInteger1, Integer paramInteger2)
+  public void run()
   {
-    return paramInteger1.intValue() - paramInteger2.intValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.notifyDataSetChanged();
   }
 }
 

@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class yjt
   implements Runnable
 {
-  public yjt(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  public yjt(ApolloGameManager paramApolloGameManager) {}
   
   public void run()
   {
-    ApolloTextureView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+    if (ApolloGameManager.a(this.a) != null)
+    {
+      ((ApolloManager)ApolloGameManager.a(this.a).getManager(152)).e();
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameManager", 2, "[onGetGameList] change reload");
+      }
+    }
   }
 }
 

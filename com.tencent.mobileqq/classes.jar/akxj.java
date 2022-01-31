@@ -1,28 +1,36 @@
-import com.tencent.image.URLImageView;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
-import com.tencent.qidian.data.PublicAccountItem;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.struct.PushBanner;
+import com.tencent.mobileqq.widget.WorkSpaceView;
 
-class akxj
-  implements Runnable
+public class akxj
+  extends Handler
 {
-  akxj(akxh paramakxh, PublicAccountItem paramPublicAccountItem, URLImageView paramURLImageView) {}
+  public akxj(WorkSpaceView paramWorkSpaceView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int == 1) {}
-    for (String str = this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.c;; str = this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_JavaLangString)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Akxh.a.a.put(this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_JavaLangString, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int, str));
-      this.jdField_a_of_type_Akxh.a.a(this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
       return;
+      int i = ((PushBanner)this.a.getChildAt(this.a.a).getTag()).a;
+      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
+        this.a.a(this.a.a() + 1);
+      }
+      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
+      continue;
+      WorkSpaceView.a(this.a).removeMessages(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.activity.StructMsgObserver;
-import com.tencent.mobileqq.activity.WebAccelerator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
-public class tqs
-  implements Runnable
+class tqs
+  implements Animation.AnimationListener
 {
-  public tqs(StructMsgObserver paramStructMsgObserver, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  tqs(tqr paramtqr) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    WebAccelerator.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.a.a.b.setVisibility(8);
+    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.a.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

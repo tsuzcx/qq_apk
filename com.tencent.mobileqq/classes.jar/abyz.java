@@ -1,63 +1,36 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout.OnClickListener;
-import com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.Client;
 import com.tencent.qphone.base.util.QLog;
 
 public class abyz
-  implements EmoticonPanelLinearLayout.OnClickListener
+  extends Handler
 {
-  public abyz(FavoriteEmotionAdapter paramFavoriteEmotionAdapter) {}
-  
-  public boolean a(View paramView, EmoticonInfo paramEmoticonInfo)
+  public abyz(Client paramClient, Looper paramLooper)
   {
-    if ((paramEmoticonInfo == null) || (paramView == null)) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramEmoticonInfo.a))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131361968);
-      paramView = (URLImageView)paramView.findViewById(2131361969);
-      if ((localURLImageView.getDrawable() instanceof URLDrawable))
-      {
-        URLDrawable localURLDrawable = (URLDrawable)localURLImageView.getDrawable();
-        if ((localURLDrawable.getStatus() == 3) || (localURLDrawable.getStatus() == 2))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading failed, restart download " + paramEmoticonInfo.toString());
-          }
-          localURLImageView.setVisibility(8);
-          paramView.setVisibility(0);
-          localURLDrawable.restartDownload();
-          if (!(paramView.getDrawable() instanceof Animatable))
-          {
-            paramEmoticonInfo = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130838592);
-            paramView.setImageDrawable((Drawable)paramEmoticonInfo);
-            paramEmoticonInfo.start();
-          }
-          for (;;)
-          {
-            return true;
-            ((Animatable)paramView.getDrawable()).start();
-          }
-        }
-        if (localURLDrawable.getStatus() == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("FavoriteEmotionAdapter", 2, "now  favorite EmoticonInfo loading " + paramEmoticonInfo.toString());
-          }
-          return true;
-        }
-      }
+    default: 
+      super.handleMessage(paramMessage);
     }
-    return false;
+    do
+    {
+      do
+      {
+        return;
+        this.a.onRespFromServer(paramMessage.getData());
+      } while (!QLog.isColorLevel());
+      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
+      return;
+      this.a.onPushMsgFromServer(paramMessage.getData());
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
   }
 }
 

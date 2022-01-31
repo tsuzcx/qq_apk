@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import aawb;
+import abdc;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -29,7 +29,7 @@ import mqq.manager.Manager;
 public class ResDownloadManager
   implements INetEngine.INetEngineListener, Manager
 {
-  static INetEngine.IBreakDownFix jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aawb();
+  static INetEngine.IBreakDownFix jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new abdc();
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   ResDownloadHandler jdField_a_of_type_ComTencentMobileqqArmapResDownloadHandler;
   private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
@@ -101,23 +101,23 @@ public class ResDownloadManager
     }
   }
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public void a(NetReq arg1, long paramLong1, long paramLong2)
   {
     int j = 0;
-    if ((paramNetReq == null) || (!(paramNetReq instanceof HttpNetReq))) {}
-    String str;
+    if ((??? == null) || (!(??? instanceof HttpNetReq))) {}
+    String str1;
     do
     {
       return;
-      str = ((HttpNetReq)paramNetReq).jdField_a_of_type_JavaLangString;
-      paramNetReq = paramNetReq.a();
-    } while ((paramNetReq == null) || (!(paramNetReq instanceof ResDownloadManager.DownloadParam)));
-    ??? = (ResDownloadManager.DownloadParam)paramNetReq;
-    paramNetReq = ((ResDownloadManager.DownloadParam)???).jdField_b_of_type_JavaLangString;
+      str1 = ((HttpNetReq)???).jdField_a_of_type_JavaLangString;
+      ??? = ???.a();
+    } while ((??? == null) || (!(??? instanceof ResDownloadManager.DownloadParam)));
+    ResDownloadManager.DownloadParam localDownloadParam = (ResDownloadManager.DownloadParam)???;
+    String str2 = localDownloadParam.jdField_b_of_type_JavaLangString;
     if (QLog.isColorLevel()) {
-      QLog.i("ResDownloadManager", 2, "onUpdateProgeress|curOffset=" + paramLong1 + "|totalLen=" + paramLong2 + "|" + ???);
+      QLog.i("ResDownloadManager", 2, "onUpdateProgeress|curOffset=" + paramLong1 + "|totalLen=" + paramLong2 + "|" + localDownloadParam);
     }
-    if (((ResDownloadManager.DownloadParam)???).jdField_a_of_type_Boolean) {}
+    if (localDownloadParam.jdField_a_of_type_Boolean) {}
     for (int i = 90;; i = 100)
     {
       if (paramLong2 > 0L) {
@@ -131,16 +131,20 @@ public class ResDownloadManager
           {
             ResDownloadManager.IResDownloadListener localIResDownloadListener = (ResDownloadManager.IResDownloadListener)this.jdField_a_of_type_JavaUtilList.get(j);
             if (localIResDownloadListener == null) {
-              break label208;
+              break label232;
             }
-            localIResDownloadListener.a(str, paramNetReq, i);
-            break label208;
+            localIResDownloadListener.a(str1, str2, i);
+            break label232;
           }
+          if (localDownloadParam.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener == null) {
+            break;
+          }
+          localDownloadParam.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener.a(str1, str2, i);
           return;
         }
         i = 0;
         continue;
-        label208:
+        label232:
         j += 1;
       }
     }
@@ -179,10 +183,10 @@ public class ResDownloadManager
         break label447;
       }
       if (!((ResDownloadManager.DownloadParam)localObject2).jdField_b_of_type_Boolean) {
-        break label1143;
+        break label1184;
       }
       if (((ResDownloadHandler.RDHandler)localObject3).b((ResDownloadManager.DownloadParam)localObject2)) {
-        break label1138;
+        break label1179;
       }
       j = -6103066;
       ((File)localObject1).delete();
@@ -198,7 +202,7 @@ public class ResDownloadManager
       label194:
       localObject3 = ((ResDownloadHandler.RDHandler)localObject3).a((ResDownloadManager.DownloadParam)localObject2);
       if ((!bool2) || (!((ResDownloadManager.DownloadParam)localObject2).jdField_a_of_type_Boolean)) {
-        break label1129;
+        break label1170;
       }
       FileUtils.a((String)localObject3);
       a((ResDownloadManager.DownloadParam)localObject2);
@@ -282,10 +286,13 @@ public class ResDownloadManager
         {
           ResDownloadManager.IResDownloadListener localIResDownloadListener = (ResDownloadManager.IResDownloadListener)this.jdField_a_of_type_JavaUtilList.get(j);
           if ((localIResDownloadListener == null) || (localObject1 == null)) {
-            break label1150;
+            break label1191;
           }
           localIResDownloadListener.a(localHttpNetReq.jdField_a_of_type_JavaLangString, (String)localObject2, i, ((File)localObject3).getAbsolutePath(), ((ResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_JavaLangObject);
-          break label1150;
+          break label1191;
+        }
+        if ((localObject1 != null) && (((ResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener != null)) {
+          ((ResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener.a(localHttpNetReq.jdField_a_of_type_JavaLangString, (String)localObject2, i, ((File)localObject3).getAbsolutePath(), ((ResDownloadManager.DownloadParam)localObject1).jdField_a_of_type_JavaLangObject);
         }
         if ((bool1) || (localObject1 == null)) {
           break label431;
@@ -313,17 +320,17 @@ public class ResDownloadManager
       finally {}
       localObject2 = "0";
       continue;
-      label1129:
+      label1170:
       bool1 = bool2;
       j = i;
       break label317;
-      label1138:
+      label1179:
       j = i;
       break;
-      label1143:
+      label1184:
       bool2 = bool1;
       break label194;
-      label1150:
+      label1191:
       j += 1;
     }
   }
@@ -360,7 +367,7 @@ public class ResDownloadManager
         }
         localObject1 = a(paramDownloadParam);
         if (new File((String)localObject1).exists()) {
-          break label559;
+          break label590;
         }
       }
     }
@@ -386,7 +393,10 @@ public class ResDownloadManager
               break;
             }
           }
-          return false;
+          if (paramDownloadParam.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener != null) {
+            paramDownloadParam.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener.a(paramDownloadParam.jdField_a_of_type_JavaLangString, paramDownloadParam.jdField_b_of_type_JavaLangString, i, (String)localObject1, paramDownloadParam.jdField_a_of_type_JavaLangObject);
+          }
+          return true;
         }
         finally {}
       }
@@ -431,12 +441,17 @@ public class ResDownloadManager
         return true;
         localObject1 = ((PrecoverManager)localObject1).a();
       }
-      label559:
+      label590:
       i = 0;
     }
   }
   
   public boolean a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt, Object paramObject)
+  {
+    return a(paramString1, paramString2, paramString3, paramBoolean, paramInt, paramObject, null);
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt, Object paramObject, ResDownloadManager.IResDownloadListener paramIResDownloadListener)
   {
     if (QLog.isColorLevel()) {
       QLog.i("ResDownloadManager", 2, "download|" + paramString1 + "|" + paramString2);
@@ -452,6 +467,7 @@ public class ResDownloadManager
     localDownloadParam.c = str;
     localDownloadParam.jdField_a_of_type_Boolean = paramBoolean;
     localDownloadParam.jdField_a_of_type_JavaLangObject = paramObject;
+    localDownloadParam.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener = paramIResDownloadListener;
     if (TextUtils.isEmpty(paramString2)) {
       localDownloadParam.jdField_b_of_type_JavaLangString = Utils.Crc64String(paramString1);
     }

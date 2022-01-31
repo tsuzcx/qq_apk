@@ -1,40 +1,14 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoAutoPlayController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView.OnDrawCompleteListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView.ScrollEventCallback;
 
 public class mfw
-  implements ReadInJoyBaseListView.OnDrawCompleteListener
+  implements ReadInJoyBaseListView.ScrollEventCallback
 {
-  public mfw(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mfw(VideoUIManager paramVideoUIManager) {}
   
-  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
+  public void a()
   {
-    ReadInJoyBaseAdapter.e(this.a, false);
-    if (!ReadInJoyBaseAdapter.d(this.a)) {
-      return;
-    }
-    ReadInJoyBaseAdapter.b(this.a, false);
-    if ((this.a.a()) && (ReadInJoyBaseAdapter.a(this.a) != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
-      }
-      if (!ReadInJoyBaseAdapter.a(this.a).b()) {
-        break label122;
-      }
-      ReadInJoyBaseAdapter.a(this.a).postDelayed(new mfx(this, paramReadInJoyBaseListView), 1200L);
-    }
-    for (;;)
-    {
-      ReadInJoyBaseAdapter.a(this.a, this.a.a.getLastVisiblePosition() + 1, ReadInJoyBaseAdapter.b());
-      return;
-      label122:
-      ReadInJoyBaseAdapter.a(this.a, paramReadInJoyBaseListView, ReadInJoyBaseAdapter.b);
-    }
+    this.a.b();
   }
 }
 

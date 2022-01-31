@@ -6,8 +6,8 @@ import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodePullVideoBasicInfoSegm
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListPullSegment;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.reactive.Stream;
-import ndj;
-import ndl;
+import net;
+import nev;
 
 public class MsgTabVideoPreloaderDataProvider
 {
@@ -24,7 +24,7 @@ public class MsgTabVideoPreloaderDataProvider
         if (QLog.isColorLevel()) {
           QLog.i("MsgTabVideoPreloaderDataProvider", 2, "下载vidList和VideoInfo");
         }
-        Stream.of(paramMsgTabNodeInfo).map(new MsgTabNodeVidListPullSegment(false)).map(new MsgTabNodePullVideoBasicInfoSegment(null)).subscribe(new ndj(this, paramDataProviderListener, paramMsgTabNodeInfo));
+        Stream.of(paramMsgTabNodeInfo).map(new MsgTabNodeVidListPullSegment(false)).map(new MsgTabNodePullVideoBasicInfoSegment(null)).subscribe(new net(this, paramDataProviderListener, paramMsgTabNodeInfo));
       }
     }
     else {
@@ -33,7 +33,7 @@ public class MsgTabVideoPreloaderDataProvider
     if (QLog.isColorLevel()) {
       QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
     }
-    Stream.of(paramMsgTabNodeInfo).map(new MsgTabNodeVidListPullSegment(false)).subscribe(new ndl(this, paramDataProviderListener, paramMsgTabNodeInfo));
+    Stream.of(paramMsgTabNodeInfo).map(new MsgTabNodeVidListPullSegment(false)).subscribe(new nev(this, paramDataProviderListener, paramMsgTabNodeInfo));
   }
   
   public void a(boolean paramBoolean)

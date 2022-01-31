@@ -1,28 +1,20 @@
-import android.os.FileObserver;
-import com.tencent.mobileqq.statistics.ThreadTraceHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class ahsd
-  extends FileObserver
+  implements View.OnClickListener
 {
-  public ahsd(String paramString, int paramInt)
-  {
-    super(paramString, paramInt);
-  }
+  public ahsd(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public void onEvent(int paramInt, String arg2)
+  public void onClick(View paramView)
   {
-    QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces onEvent " + ???);
-    synchronized (ThreadTraceHelper.a())
-    {
-      notifyAll();
-      return;
-    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahsd
  * JD-Core Version:    0.7.0.1
  */

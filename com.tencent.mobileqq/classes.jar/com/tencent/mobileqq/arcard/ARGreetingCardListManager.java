@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.arcard;
 
-import aafm;
-import aafn;
-import aafo;
-import aafp;
-import aafs;
-import aaft;
-import aafu;
-import aafv;
-import aafw;
-import aafx;
-import aafy;
+import aamn;
+import aamo;
+import aamp;
+import aamq;
+import aamt;
+import aamu;
+import aamv;
+import aamw;
+import aamx;
+import aamy;
+import aamz;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
@@ -66,7 +66,7 @@ public class ARGreetingCardListManager
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aafm(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aamn(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Button jdField_a_of_type_AndroidWidgetButton;
@@ -119,7 +119,7 @@ public class ARGreetingCardListManager
     {
       this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader = new NonMainAppHeadLoader(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, 1);
       this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader.a();
-      this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader.a(new aafn(this));
+      this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader.a(new aamo(this));
     }
     return new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader.a(paramString, true));
   }
@@ -278,7 +278,7 @@ public class ARGreetingCardListManager
   private void b(boolean paramBoolean)
   {
     Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, ARCardCameraRecordActivity.class);
-    localIntent.putExtra("currentNickName", this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.b());
+    localIntent.putExtra("currentNickName", this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.e());
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
@@ -309,7 +309,7 @@ public class ARGreetingCardListManager
   private void g()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqArcardARCardObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqArcardARCardObserver = new aafv(this);
+      this.jdField_a_of_type_ComTencentMobileqqArcardARCardObserver = new aamw(this);
     }
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
       this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqArcardARCardObserver);
@@ -335,7 +335,7 @@ public class ARGreetingCardListManager
       if (this.jdField_b_of_type_Int == this.jdField_a_of_type_JavaUtilList.size() - 1) {
         a(null, -1);
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new aafx(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new aamy(this));
       QLog.d("ARGreetingCardListManager", 2, String.format("swipeLeft mCurrentPos=%s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int) }));
     }
   }
@@ -347,7 +347,7 @@ public class ARGreetingCardListManager
       this.jdField_b_of_type_Int -= 1;
       this.jdField_a_of_type_ComTencentMobileqqArcardARGreetingCardListManager$RenderProxy.a(a());
       this.jdField_a_of_type_ComTencentMobileqqArcardARGreetingCardListManager$RenderProxy.f();
-      this.jdField_a_of_type_AndroidOsHandler.post(new aafy(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new aamz(this));
       QLog.d("ARGreetingCardListManager", 2, String.format("swipeRight mCurrentPos=%s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int) }));
     }
   }
@@ -560,8 +560,8 @@ public class ARGreetingCardListManager
     localIntent.putExtra("param_only_friends", true);
     localIntent.putExtra("param_donot_need_contacts", true);
     localIntent.putExtra("param_max", 20);
-    localIntent.putExtra("param_title", this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.getString(2131438235));
-    localIntent.putExtra("param_done_button_wording", this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.getString(2131432400));
+    localIntent.putExtra("param_title", this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.getString(2131438253));
+    localIntent.putExtra("param_done_button_wording", this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.getString(2131432417));
     localIntent.putExtra("param_exit_animation", 1);
     localIntent.putExtra("aio_msg_title", this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a.h);
     localIntent.putExtra("aio_msg_summary", this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a.i);
@@ -584,7 +584,7 @@ public class ARGreetingCardListManager
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c("送AR文字祝福");
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c("送AR视频祝福");
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c("取消");
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new aafo(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new aamp(this));
     }
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
@@ -768,7 +768,7 @@ public class ARGreetingCardListManager
   {
     QLog.d("ARGreetingCardListManager", 2, "initCardListUI");
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewViewGroup.getChildCount() == 0)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new aafp(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new aamq(this));
     }
   }
   
@@ -776,7 +776,7 @@ public class ARGreetingCardListManager
   {
     QLog.d("ARGreetingCardListManager", 2, "showCardListUI");
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewViewGroup != null)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new aafs(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new aamt(this));
     }
   }
   
@@ -784,7 +784,7 @@ public class ARGreetingCardListManager
   {
     QLog.d("ARGreetingCardListManager", 2, "updateCardListUI");
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewViewGroup != null)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new aaft(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new aamu(this));
     }
   }
   
@@ -792,13 +792,13 @@ public class ARGreetingCardListManager
   {
     QLog.d("ARGreetingCardListManager", 2, "hideCardListUI");
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewViewGroup != null)) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new aafu(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new aamv(this));
     }
   }
   
   public void f()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new aafw(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aamx(this));
   }
   
   public void onClick(View paramView)
@@ -927,7 +927,7 @@ public class ARGreetingCardListManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARGreetingCardListManager
  * JD-Core Version:    0.7.0.1
  */

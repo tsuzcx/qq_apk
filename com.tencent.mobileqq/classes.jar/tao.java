@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.CardHandler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import mqq.os.MqqHandler;
 
 public class tao
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  public tao(NotifyPCActiveActivity paramNotifyPCActiveActivity, CardHandler paramCardHandler) {}
+  public tao(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b(true);
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

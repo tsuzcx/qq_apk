@@ -1,35 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class lxt
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public lxt(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public lxt(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyDeliverUGCActivity.a(this.a, true);
-    ReadInJoyDeliverUGCActivity.b(this.a, ReadInJoyDeliverUGCActivity.b(this.a));
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
-      return;
-      ReadInJoyDeliverUGCActivity.a(this.a);
-      PublicAccountReportUtils.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
-      continue;
-      ReadInJoyDeliverUGCActivity.b(this.a);
-      PublicAccountReportUtils.a(null, "", "0X800823A", "0X800823A", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
-    }
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
+    localEditor.remove("kandian_push_0x210_msg_for_follow");
+    localEditor.remove("kandian_push_0x210_c5_msg_time");
+    ReadInJoyHelper.a(localEditor, true);
   }
 }
 

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.view.View;
 import android.view.View.AccessibilityDelegate;
 import android.view.accessibility.AccessibilityNodeProvider;
-import oqq;
+import osk;
 
 @SuppressLint({"NewApi"})
 public class CustomAccessibilityDelegate
@@ -12,7 +12,7 @@ public class CustomAccessibilityDelegate
 {
   private View jdField_a_of_type_AndroidViewView;
   private CustomAccessibilityDelegate.CallBack jdField_a_of_type_ComTencentBizQrcodeCustomAccessibilityDelegate$CallBack;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new oqq(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new osk(this);
   
   public CustomAccessibilityDelegate(View paramView, CustomAccessibilityDelegate.CallBack paramCallBack)
   {

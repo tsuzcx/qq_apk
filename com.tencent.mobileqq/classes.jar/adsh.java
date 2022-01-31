@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
 
-public class adsh
-  implements DialogInterface.OnDismissListener
+class adsh
+  implements Runnable
 {
-  public adsh(MedalGuideView paramMedalGuideView) {}
+  adsh(adsg paramadsg) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    MedalGuideView.a(this.a);
+    this.a.a.c = 4;
+    if (VideoBaseItem.a(this.a.a) != null) {
+      VideoBaseItem.a(this.a.a).d(VideoBaseItem.a(this.a.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsh
  * JD-Core Version:    0.7.0.1
  */

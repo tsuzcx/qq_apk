@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import com.tencent.mobileqq.nearby.now.view.CustomViewPager;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
 
 public class aerx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aerx(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public aerx(SmallVideoFragment paramSmallVideoFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = ActionSheet.a(this.a.a);
-    paramView.a(2131432509, 1);
-    paramView.c(2131432998);
-    paramView.a(new aery(this, paramView));
-    paramView.show();
+    VideoPlayerPagerAdapter localVideoPlayerPagerAdapter = (VideoPlayerPagerAdapter)this.a.a.getAdapter();
+    if ((localVideoPlayerPagerAdapter.a(this.a.a.getCurrentItem()) instanceof ShortVideoCommentsView)) {
+      ((ShortVideoCommentsView)localVideoPlayerPagerAdapter.a(this.a.a.getCurrentItem())).m();
+    }
   }
 }
 

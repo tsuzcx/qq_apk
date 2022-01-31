@@ -1,23 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 
 public class wjk
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+  extends Handler
 {
-  public wjk(CardViewController paramCardViewController) {}
+  public WeakReference a;
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public wjk(TroopView paramTroopView)
   {
-    paramSharedPreferences = "contact_recommend_config_json_" + CardViewController.a(this.a).getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "mConfigChangelistener CONTACT_RECOMMEND_CONFIG_JSON ");
-    }
-    if (paramSharedPreferences.equals(paramString)) {
-      CardViewController.a(this.a, true, true);
-    }
+    this.a = new WeakReference(paramTroopView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    TroopView localTroopView = (TroopView)this.a.get();
+    if (localTroopView == null) {}
+    do
+    {
+      return;
+      super.handleMessage(paramMessage);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        TroopView.a(localTroopView).springBackOverScrollHeaderView();
+        return;
+      case 1: 
+        TroopView.a(localTroopView).springBackOverScrollHeaderView();
+        TroopView.a(localTroopView, 1, 2131434349);
+        return;
+      }
+    } while ((!TroopView.a(localTroopView)) || (TroopView.b(localTroopView)));
+    TroopView.f(localTroopView, true);
+    TroopView.a(localTroopView, false);
+    return;
+    TroopView.a(localTroopView, true);
+    return;
+    TroopView.b(localTroopView);
+    return;
+    TroopView.c(localTroopView);
   }
 }
 

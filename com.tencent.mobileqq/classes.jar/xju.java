@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
 
-class xju
-  implements DialogInterface.OnClickListener
+public class xju
+  implements View.OnClickListener
 {
-  xju(xjt paramxjt) {}
+  public xju(BannerManager paramBannerManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    paramView = CmGameMainManager.a();
+    if (paramView != null)
+    {
+      paramView.a(BannerManager.a(this.a));
+      paramView.a();
+      CmGameMainManager.f();
+    }
+  }
 }
 
 

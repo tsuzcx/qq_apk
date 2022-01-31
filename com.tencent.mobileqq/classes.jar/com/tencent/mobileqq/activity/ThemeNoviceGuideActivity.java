@@ -18,25 +18,25 @@ import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.vas.IndividuationUrlHelper;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
-import tsn;
+import tvn;
 
 public class ThemeNoviceGuideActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  Handler a = new tsn(this, Looper.getMainLooper());
+  Handler a = new tvn(this, Looper.getMainLooper());
   
   private void a()
   {
-    setLeftButton(2131434920, null);
-    ((Button)findViewById(2131375069)).setOnClickListener(this);
+    setLeftButton(2131434937, null);
+    ((Button)findViewById(2131375255)).setOnClickListener(this);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    super.setContentView(2130971591);
+    super.setContentView(2130971639);
     a();
     setTitle("主题装扮");
     this.a.sendMessageDelayed(Message.obtain(this.a, 0, null), 5L);
@@ -58,7 +58,7 @@ public class ThemeNoviceGuideActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131375069)
+    if (paramView.getId() == 2131375255)
     {
       if (!Utils.a()) {
         break label121;
@@ -78,13 +78,13 @@ public class ThemeNoviceGuideActivity
       }
       return;
       label121:
-      Toast.makeText(getApplicationContext(), getString(2131434753), 0).show();
+      Toast.makeText(getApplicationContext(), getString(2131434770), 0).show();
     }
   }
   
   protected String setLastActivityName()
   {
-    return getString(2131433681);
+    return getString(2131433698);
   }
 }
 

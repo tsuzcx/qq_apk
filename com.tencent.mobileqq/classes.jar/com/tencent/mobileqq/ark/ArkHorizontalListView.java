@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import aang;
+import aauh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -142,7 +142,7 @@ public class ArkHorizontalListView
           invalidate();
           bool1 = true;
         }
-        post(new aang(this));
+        post(new aauh(this));
         return bool1;
         k = localObject.getLeft();
         break;

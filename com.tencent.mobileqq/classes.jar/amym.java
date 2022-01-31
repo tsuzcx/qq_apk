@@ -1,23 +1,44 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.TextUtils;
+import cooperation.qzone.remote.IActionListener.Stub;
+import cooperation.qzone.remote.RecvMsg;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.WebEventListener;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public final class amym
-  implements Runnable
+public class amym
+  extends IActionListener.Stub
 {
-  public amym(File paramFile, String paramString1, String paramString2) {}
+  public amym(RemoteHandleManager paramRemoteHandleManager) {}
   
-  public void run()
+  public void onRecvFromMsg(RecvMsg paramRecvMsg)
   {
-    FileUtils.a(this.jdField_a_of_type_JavaIoFile.getPath() + File.separator, this.jdField_a_of_type_JavaLangString, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMFileUtils", 2, "paster config save to file " + this.jdField_a_of_type_JavaIoFile.getPath() + File.separator + this.jdField_a_of_type_JavaLangString);
+    if (paramRecvMsg == null) {}
+    for (;;)
+    {
+      return;
+      if ((!TextUtils.isEmpty(paramRecvMsg.getServiceCmd())) && (RemoteHandleManager.a(this.a) != null))
+      {
+        Iterator localIterator = RemoteHandleManager.a(this.a).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (WeakReference)localIterator.next();
+          if (localObject != null)
+          {
+            localObject = (WebEventListener)((WeakReference)localObject).get();
+            if (localObject != null) {
+              ((WebEventListener)localObject).onWebEvent(paramRecvMsg.getServiceCmd(), paramRecvMsg.extraData);
+            }
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amym
  * JD-Core Version:    0.7.0.1
  */

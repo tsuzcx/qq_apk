@@ -1,46 +1,46 @@
-import android.os.SystemClock;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-class abyy
-  implements URLDrawable.URLDrawableListener
+public class abyy
+  implements ServiceConnection
 {
-  abyy(abyx paramabyx, long paramLong) {}
+  public abyy(Client paramClient) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadCanceled");
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadFialed");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadProgressed");
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable Successed, is to call showFastImage,queryTime = " + l);
-    }
-    if (l > 2000L) {
+    try
+    {
+      this.a.mIsBound = true;
+      this.a.mService = new Messenger(paramIBinder);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.Client", 2, "ServiceConnection Attached.");
+      }
+      WebIPCOperator.a().a();
+      paramComponentName = Message.obtain(null, 1);
+      paramComponentName.replyTo = this.a.mMessenger;
+      this.a.mService.send(paramComponentName);
       return;
     }
-    this.jdField_a_of_type_Abyx.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.jdField_a_of_type_Abyx.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(32));
+    catch (Exception paramComponentName)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.mService = null;
+    this.a.onDisconnectWithService();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.Client", 2, "Disconnected.");
+    }
   }
 }
 

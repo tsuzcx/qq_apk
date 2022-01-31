@@ -1,28 +1,20 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class wve
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wve(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wve(PhoneMatchActivity paramPhoneMatchActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.a.b.isChecked())
+    int i = this.a.a.c();
+    if ((i == 2) || (i == 3))
     {
-      if (this.a.a() > 0)
-      {
-        QQToast.a(this.a, this.a.getResources().getString(2131435903), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
-        return;
-      }
-      this.a.b.setChecked(true);
+      this.a.a.h();
       return;
     }
-    this.a.b.setChecked(false);
+    this.a.a.g();
   }
 }
 

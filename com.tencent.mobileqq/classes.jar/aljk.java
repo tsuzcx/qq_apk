@@ -1,63 +1,31 @@
-import android.media.AudioManager;
-import com.tencent.av.AVLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import android.text.TextUtils;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.export.js.VipDownloadInterface;
+import com.tencent.smtt.sdk.WebView;
 
 public class aljk
-  extends aljm
+  implements Runnable
 {
-  public aljk(TraeAudioManager paramTraeAudioManager)
-  {
-    super(paramTraeAudioManager);
-  }
+  public aljk(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
   
-  public String a()
+  public void run()
   {
-    return "DEVICE_WIREDHEADSET";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, false);
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.setWiredHeadsetOn(true);
-    e();
-    int i = 0;
-    for (;;)
+    try
     {
-      if (this.jdField_a_of_type_Boolean == true)
-      {
-        if (TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager)) {
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, false);
-        }
-        long l;
-        if (i < 5) {
-          l = 1000L;
-        }
-        try
-        {
-          for (;;)
-          {
-            Thread.sleep(l);
-            i += 1;
-            break;
-            l = 4000L;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            AVLog.e("TraeAudioManager", localInterruptedException.getMessage());
-          }
-        }
+      if ((this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "webview loadUrl>>> ", localException);
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljk
  * JD-Core Version:    0.7.0.1
  */

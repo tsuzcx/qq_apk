@@ -1,112 +1,22 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.ArrayList;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView.OnTrimVDPlayCompelteListener;
 
 public class xwt
-  extends FacePreloadBaseAdapter
+  implements MediaPlayer.OnCompletionListener
 {
-  public xwt(RecentMemberInnerFrame paramRecentMemberInnerFrame)
-  {
-    super(paramRecentMemberInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, paramRecentMemberInnerFrame.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, RecentMemberInnerFrame.a(paramRecentMemberInnerFrame), 1, true);
-  }
+  public xwt(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public int getCount()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (RecentMemberInnerFrame.a(this.a) == null) {
-      return 0;
-    }
-    return RecentMemberInnerFrame.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < RecentMemberInnerFrame.a(this.a).size())) {
-      return RecentMemberInnerFrame.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if ((paramView != null) && (paramView.getTag() != null))
+    if (this.a.a != null)
     {
-      localObject = (xwu)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-    }
-    RecentUser localRecentUser;
-    for (;;)
-    {
-      localRecentUser = (RecentUser)getItem(paramInt);
-      if (localRecentUser != null) {
-        break;
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
       }
-      return paramViewGroup;
-      paramView = new xwu(this.a, null);
-      paramViewGroup = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2130971512, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131363916));
-      paramView.c = ((ImageView)paramViewGroup.findViewById(2131362701));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131362736));
-      paramViewGroup.setTag(paramView);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localRecentUser.uin))
-    {
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      paramView.c.setImageBitmap(a(1, localRecentUser.uin));
-      localObject = RecentMemberInnerFrame.a(this.a).a(localRecentUser.uin);
-      if (localObject != null) {
-        break label320;
-      }
-      localObject = "";
-      label189:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      paramView.jdField_a_of_type_JavaLangString = localRecentUser.uin;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f.contains(localRecentUser.uin))) {
-        break label330;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-      label249:
-      if (AppSetting.b)
-      {
-        if ((!paramView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) || (!paramView.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())) {
-          break label341;
-        }
-        paramViewGroup.setContentDescription((String)localObject + "已选中,双击取消");
-      }
-    }
-    for (;;)
-    {
-      paramViewGroup.setOnClickListener(this.a);
-      return paramViewGroup;
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      break;
-      label320:
-      localObject = ContactUtils.a((Friends)localObject);
-      break label189;
-      label330:
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      break label249;
-      label341:
-      paramViewGroup.setContentDescription((String)localObject + "未选中,双击选中");
+      this.a.a.a(paramMediaPlayer);
     }
   }
 }

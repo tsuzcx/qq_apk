@@ -1,25 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
 
 class airl
-  implements FrameSprite.OnFrameEndListener
+  implements Runnable
 {
-  airl(aird paramaird) {}
+  airl(airj paramairj, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null)
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.n();
-      this.a.a.jdField_a_of_type_AndroidOsHandler.post(new airm(this));
-    }
+    this.jdField_a_of_type_Airj.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airl
  * JD-Core Version:    0.7.0.1
  */

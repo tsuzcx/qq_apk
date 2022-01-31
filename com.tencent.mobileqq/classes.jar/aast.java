@@ -1,16 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
-
 class aast
-  implements DialogInterface.OnDismissListener
 {
-  aast(aasr paramaasr) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    ARMapActivity.a(this.a.a, null);
-  }
+  volatile int jdField_a_of_type_Int = 0;
+  volatile boolean jdField_a_of_type_Boolean = false;
 }
 
 

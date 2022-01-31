@@ -1,26 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
-import com.tencent.mobileqq.arcard.ARCardUtils;
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
-public class aaeo
-  implements Runnable
+public final class aaeo
+  implements Parcelable.Creator
 {
-  public aaeo(ARCardCameraRecordFragment paramARCardCameraRecordFragment, int paramInt, Object paramObject) {}
-  
-  public void run()
+  public ArConfigInfo a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_Int == 1001)
-    {
-      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangObject;
-      ARCardUtils.a(localBitmap, new File("/sdcard/test/123.jpg"), true);
-      localBitmap.recycle();
-    }
+    return new ArConfigInfo(paramParcel);
+  }
+  
+  public ArConfigInfo[] a(int paramInt)
+  {
+    return new ArConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaeo
  * JD-Core Version:    0.7.0.1
  */

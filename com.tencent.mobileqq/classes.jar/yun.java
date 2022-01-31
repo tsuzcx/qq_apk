@@ -1,15 +1,39 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.common.app.AppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
-final class yun
+public class yun
 {
-  ViewGroup[] jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[3];
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
-  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[3];
-  ImageView[] b = new ImageView[3];
+  public String a;
+  public final List a;
+  public String b;
+  
+  public yun()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public JSONObject a(String paramString, AppInterface paramAppInterface)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((yuo)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
+    }
+    return localJSONObject;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mClientId:").append(this.b).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
+    return localStringBuilder.toString();
+  }
 }
 
 

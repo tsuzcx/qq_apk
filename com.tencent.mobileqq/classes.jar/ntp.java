@@ -1,42 +1,17 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.QQStoryHandler;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ntp
-  implements EmoticonCallback
+  implements Runnable
 {
-  public ntp(KeyboardAndEmojiManager paramKeyboardAndEmojiManager) {}
+  public ntp(QQStoryMainController paramQQStoryMainController) {}
   
-  public void a(EmoticonInfo paramEmoticonInfo)
+  public void run()
   {
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (KeyboardAndEmojiManager.a(this.a) != null)) {
-      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).a(PlayModeUtils.a(), KeyboardAndEmojiManager.a(this.a), KeyboardAndEmojiManager.a(this.a), null);
-    }
+    ((QQStoryHandler)QQStoryContext.a().a(98)).a(2001, true, null);
   }
-  
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    if (KeyboardAndEmojiManager.a(this.a) != null) {
-      TextUtils.a(KeyboardAndEmojiManager.a(this.a));
-    }
-  }
-  
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void c() {}
-  
-  public void setting() {}
 }
 
 

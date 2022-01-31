@@ -1,13 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
 
-class mgk
-  implements Runnable
+public class mgk
+  extends AccessibilityDelegateCompat
 {
-  mgk(mga parammga) {}
+  public mgk(BaseTabbar paramBaseTabbar) {}
   
-  public void run()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.a.a.notifyDataSetChanged();
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
+      return;
+    }
+  }
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

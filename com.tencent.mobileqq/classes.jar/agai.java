@@ -1,21 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.now.enter.NowEnterManager;
+import com.tencent.mobileqq.now.enter.NowEnterManager.DownloadListener;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import java.lang.ref.WeakReference;
 
-class agai
-  implements DialogInterface.OnClickListener
+public class agai
+  implements Runnable
 {
-  agai(agad paramagad) {}
+  public agai(NowEnterManager paramNowEnterManager, boolean paramBoolean, HttpNetReq paramHttpNetReq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a != null)
+    {
+      NowEnterManager.DownloadListener localDownloadListener = (NowEnterManager.DownloadListener)this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a.get();
+      if (localDownloadListener != null) {
+        localDownloadListener.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.a);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agai
  * JD-Core Version:    0.7.0.1
  */

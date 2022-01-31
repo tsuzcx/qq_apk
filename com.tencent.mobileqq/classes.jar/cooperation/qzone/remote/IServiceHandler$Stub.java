@@ -1,6 +1,6 @@
 package cooperation.qzone.remote;
 
-import amib;
+import amyg;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -28,7 +28,7 @@ public abstract class IServiceHandler$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IServiceHandler))) {
       return (IServiceHandler)localIInterface;
     }
-    return new amib(paramIBinder);
+    return new amyg(paramIBinder);
   }
   
   public IBinder asBinder()

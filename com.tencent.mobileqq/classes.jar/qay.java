@@ -1,13 +1,21 @@
-import com.tencent.device.qfind.QFindBLEScanMgr;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.device.msg.activities.DeviceTipActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class qay
-  implements Runnable
+  implements View.OnClickListener
 {
-  public qay(QFindBLEScanMgr paramQFindBLEScanMgr) {}
+  public qay(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QFindBLEScanMgr.c(this.a);
+    if (!NetworkUtil.g(this.a)) {
+      QQToast.a(this.a, "当前网络连接不可用，请确认后再使用", 2000).a();
+    }
+    DeviceTipActivity.a(this.a, 2);
+    this.a.finish();
   }
 }
 

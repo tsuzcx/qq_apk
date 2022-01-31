@@ -1,54 +1,30 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
 public class ajhg
-  implements FrameSprite.OnFrameEndListener
+  implements View.OnFocusChangeListener
 {
-  public int a;
-  public long a;
-  public long b;
-  public long c;
+  public ajhg(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public ajhg(TroopGiftAnimationController paramTroopGiftAnimationController)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    this.c = NetConnInfoCenter.getServerTimeMillis();
-    switch (this.jdField_a_of_type_Int)
+    paramView = this.a;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
     {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
+      PublishHomeWorkFragment.b(paramView, bool);
+      if (paramBoolean) {
+        PublishHomeWorkFragment.a(this.a, PublishHomeWorkFragment.a(this.a).a());
       }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
-      continue;
-      long l = this.c - this.b;
-      if (l >= 2000L)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(2000L - l);
-        continue;
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhg
  * JD-Core Version:    0.7.0.1
  */

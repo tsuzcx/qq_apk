@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloRenderRunner;
-import com.tencent.mobileqq.apollo.aioChannel.IRenderRunner;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
 
-public class ylq
-  implements Runnable
+public final class ylq
+  extends ApolloHttpCallBack
 {
-  public ylq(ApolloRenderRunner paramApolloRenderRunner, IRenderRunner paramIRenderRunner, long paramLong, ApolloCmdChannel paramApolloCmdChannel, int paramInt, String paramString1, String paramString2) {}
+  public ylq(View paramView, long paramLong) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner != null) && (this.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner.getRuntimeState()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.callbackEngineWrapper(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner.isJsRuntime(), this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
-      if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_JsRenderRunner", 2, "apolloSurfaceView.queueEvent mNativeSSOReqMgr.callbackEngine cmd:" + this.jdField_a_of_type_JavaLangString);
-      }
+    if ((this.jdField_a_of_type_AndroidViewView instanceof ApolloSurfaceView)) {
+      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new ylr(this, paramArrayOfByte, paramInt));
     }
   }
 }

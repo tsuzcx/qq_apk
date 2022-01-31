@@ -79,30 +79,30 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
 import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
-import yel;
-import yem;
-import yeo;
-import yep;
-import yeq;
-import yer;
-import yet;
-import yev;
+import yhs;
+import yht;
+import yhv;
+import yhw;
+import yhx;
+import yhy;
+import yia;
+import yic;
 
 public class NewFriendMoreSysMsgAdapter
   extends XBaseAdapter
   implements View.OnClickListener, FaceDecoder.DecodeTaskCompletionListener, AbsListView.OnScrollListener, SwipListView.SwipListListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131434024 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 2130838678 };
-  private static final int[] jdField_c_of_type_ArrayOfInt = { 2131369925 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131434041 };
+  private static final int[] jdField_b_of_type_ArrayOfInt = { 2130838682 };
+  private static final int[] jdField_c_of_type_ArrayOfInt = { 2131370002 };
   private final int jdField_a_of_type_Int = 0;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private View jdField_a_of_type_AndroidViewView;
   private FlingHandler jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler;
-  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new yeq(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new yeo(this);
+  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new yhx(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new yhv(this);
   private FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new yep(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new yhw(this);
   private PhoneContactManagerImp jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
   private QIMNewFriendManager jdField_a_of_type_ComTencentMobileqqAppQIMNewFriendManager;
   public QQAppInterface a;
@@ -111,7 +111,7 @@ public class NewFriendMoreSysMsgAdapter
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   private SwipRightMenuBuilder jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Comparator jdField_a_of_type_JavaUtilComparator = new yel(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new yhs(this);
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   public final ConcurrentHashMap a;
   private boolean jdField_a_of_type_Boolean;
@@ -158,12 +158,12 @@ public class NewFriendMoreSysMsgAdapter
   
   private SwipRightMenuBuilder a(Context paramContext)
   {
-    int i = paramContext.getResources().getDimensionPixelSize(2131558954);
-    int j = paramContext.getResources().getDimensionPixelSize(2131558955);
+    int i = paramContext.getResources().getDimensionPixelSize(2131558956);
+    int j = paramContext.getResources().getDimensionPixelSize(2131558957);
     paramContext = jdField_c_of_type_ArrayOfInt;
     int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
     int[] arrayOfInt2 = jdField_b_of_type_ArrayOfInt;
-    return new yev(this, 1, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+    return new yic(this, 1, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
   }
   
   private void a(Context paramContext, View paramView, int paramInt, Object paramObject, SwipRightMenuBuilder.SwipItemBaseHolder paramSwipItemBaseHolder, View.OnClickListener paramOnClickListener)
@@ -285,7 +285,7 @@ public class NewFriendMoreSysMsgAdapter
         if ((TextUtils.isEmpty(str)) || (!Utils.b(str))) {
           break label633;
         }
-        localObject1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839745);
+        localObject1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839751);
         ((Drawable)localObject1).setBounds(0, 0, AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
         paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
         paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, (Drawable)localObject1, null);
@@ -337,11 +337,11 @@ public class NewFriendMoreSysMsgAdapter
         {
           paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setTag(paramMoreSysMsgHolder);
           paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-          paramStructMsg = this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131494230);
+          paramStructMsg = this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131494237);
           if (paramStructMsg != null) {
             paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setTextColor(paramStructMsg);
           }
-          paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838505);
+          paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838509);
           return;
           paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
           break;
@@ -497,7 +497,7 @@ public class NewFriendMoreSysMsgAdapter
     {
       paramMoreSysMsgHolder.e.setVisibility(0);
       paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      paramMoreSysMsgHolder.e.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131433031));
+      paramMoreSysMsgHolder.e.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131433048));
       paramMoreSysMsgHolder.jdField_a_of_type_JavaLangString = paramPhoneContactAdd.unifiedCode;
       paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(11, paramPhoneContactAdd.unifiedCode));
       return;
@@ -521,7 +521,7 @@ public class NewFriendMoreSysMsgAdapter
     switch (paramQIMNotifyAddFriend.gender)
     {
     default: 
-      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843021);
+      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843120);
       j = 0;
       i = 0;
       if (paramQIMNotifyAddFriend.age > 0)
@@ -557,20 +557,20 @@ public class NewFriendMoreSysMsgAdapter
       paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setTag(paramMoreSysMsgHolder);
       paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131494230);
+      localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131494237);
       if (localObject != null) {
         paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setTextColor((ColorStateList)localObject);
       }
-      paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838505);
+      paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838509);
       paramMoreSysMsgHolder.jdField_a_of_type_JavaLangString = String.valueOf(paramQIMNotifyAddFriend.uin);
       paramMoreSysMsgHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(1, String.valueOf(paramQIMNotifyAddFriend.uin)));
       return;
-      j = 2130843020;
-      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843021);
+      j = 2130843119;
+      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843120);
       i = 1;
       break;
-      j = 2130843018;
-      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843019);
+      j = 2130843117;
+      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843118);
       i = 1;
       break;
       paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setText("");
@@ -597,7 +597,7 @@ public class NewFriendMoreSysMsgAdapter
   
   private void a(boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new yem(this, paramBoolean), null, true);
+    ThreadManager.postImmediately(new yht(this, paramBoolean), null, true);
   }
   
   private void b()
@@ -608,7 +608,7 @@ public class NewFriendMoreSysMsgAdapter
   private void b(View paramView)
   {
     if (!NetworkUtil.g(this.jdField_a_of_type_AndroidAppActivity)) {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131432992), 0).b(a());
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433009), 0).b(a());
     }
     do
     {
@@ -647,11 +647,11 @@ public class NewFriendMoreSysMsgAdapter
       }
       if ((paramView instanceof PhoneContactAddMessage))
       {
-        ThreadManager.postImmediately(new yer(this, paramView), null, true);
+        ThreadManager.postImmediately(new yhy(this, paramView), null, true);
         return;
       }
     } while (!(paramView instanceof QIMNotifyAddFriendMsg));
-    ThreadManager.postImmediately(new yet(this, paramView), null, true);
+    ThreadManager.postImmediately(new yia(this, paramView), null, true);
   }
   
   private void b(NewFriendMoreSysMsgAdapter.MoreSysMsgHolder paramMoreSysMsgHolder)
@@ -664,7 +664,7 @@ public class NewFriendMoreSysMsgAdapter
     switch (i)
     {
     default: 
-      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843021);
+      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843120);
       j = 0;
       i = 0;
       k = i;
@@ -686,12 +686,12 @@ public class NewFriendMoreSysMsgAdapter
       paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setPadding(8, 4, 8, 4);
       return;
-      j = 2130843020;
-      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843021);
+      j = 2130843119;
+      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843120);
       i = 1;
       break;
-      j = 2130843018;
-      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843019);
+      j = 2130843117;
+      paramMoreSysMsgHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843118);
       i = 1;
       break;
       label207:
@@ -706,7 +706,7 @@ public class NewFriendMoreSysMsgAdapter
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidAppActivity, a());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131434436));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131434453));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
   
@@ -778,7 +778,7 @@ public class NewFriendMoreSysMsgAdapter
   private void f()
   {
     if (this.jdField_b_of_type_AndroidViewView == null) {
-      this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970594, null);
+      this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970638, null);
     }
     if (this.jdField_b_of_type_AndroidViewView.getParent() == null) {
       this.jdField_a_of_type_ComTencentWidgetSwipListView.addFooterView(this.jdField_b_of_type_AndroidViewView);
@@ -797,7 +797,7 @@ public class NewFriendMoreSysMsgAdapter
         return;
         if (!NetworkUtil.g(BaseApplication.getContext()))
         {
-          QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131432992), 0).b(a());
+          QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433009), 0).b(a());
           return;
         }
         localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(AppConstants.K, 0);
@@ -948,14 +948,14 @@ public class NewFriendMoreSysMsgAdapter
     if (paramView == null)
     {
       paramViewGroup = new NewFriendMoreSysMsgAdapter.MoreSysMsgHolder();
-      paramView = a(this.jdField_a_of_type_AndroidAppActivity, 2130970593, paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366518));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362876));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371369));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131369905));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131369907));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368907));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131368908));
+      paramView = a(this.jdField_a_of_type_AndroidAppActivity, 2130970637, paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366545));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362894));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371532));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131369982));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131369984));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368973));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131368974));
       paramView.setTag(paramViewGroup);
       paramViewGroup.f.setTag(paramViewGroup);
       paramViewGroup.f.setOnClickListener(this);
@@ -964,7 +964,7 @@ public class NewFriendMoreSysMsgAdapter
       if (((NewFriendMessage)localObject).a()) {
         break label236;
       }
-      paramViewGroup.f.setBackgroundResource(2130838585);
+      paramViewGroup.f.setBackgroundResource(2130838589);
       label186:
       if (!(localObject instanceof FriendSystemMessage)) {
         break label249;
@@ -979,7 +979,7 @@ public class NewFriendMoreSysMsgAdapter
       return paramView;
       paramViewGroup = (NewFriendMoreSysMsgAdapter.MoreSysMsgHolder)paramView.getTag();
       break;
-      paramViewGroup.f.setBackgroundResource(2130838581);
+      paramViewGroup.f.setBackgroundResource(2130838585);
       break label186;
       if ((localObject instanceof PhoneContactAddMessage))
       {
@@ -1051,7 +1051,7 @@ public class NewFriendMoreSysMsgAdapter
     } while ((paramView == null) || (!(paramView instanceof NewFriendMoreSysMsgAdapter.MoreSysMsgHolder)));
     if (!NetworkUtil.g(this.jdField_a_of_type_AndroidAppActivity))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131432992), 0).b(a());
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433009), 0).b(a());
       return;
     }
     paramView = (NewFriendMoreSysMsgAdapter.MoreSysMsgHolder)paramView;

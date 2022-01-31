@@ -1,25 +1,24 @@
-import com.tencent.av.business.manager.zimu.ARZimuTask;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
 
 public class jhe
-  implements Observer
 {
-  private WeakReference a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c = 0;
+  public int d = 0;
+  public int e = 0;
+  public int f = 0;
+  public int g = 0;
+  public int h = 0;
   
-  public jhe(ARZimuTask paramARZimuTask)
+  public jhe(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
   {
-    this.a = new WeakReference(paramARZimuTask);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    ARZimuTask localARZimuTask = (ARZimuTask)this.a.get();
-    if (localARZimuTask == null) {
-      return;
-    }
-    ARZimuTask.a(localARZimuTask, paramObservable, paramObject);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
 }
 

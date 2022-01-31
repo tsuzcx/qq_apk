@@ -1,21 +1,13 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class sra
-  implements View.OnClickListener
+  implements Runnable
 {
-  public sra(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
+  public sra(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(paramView, 999);
-    this.a.overridePendingTransition(2131034134, 2131034131);
-    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
+    this.a.c();
   }
 }
 

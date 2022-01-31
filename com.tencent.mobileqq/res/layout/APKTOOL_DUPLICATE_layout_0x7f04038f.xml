@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1305" android:paddingTop="65.0dip" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center_vertical" android:id="@id/relativeItem" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020439" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="26.599976dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c0a" />
-    <TextView android:textSize="15.0sp" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1306" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="定位失败，无法获取你的位置信息" />
-</LinearLayout>
+    <com.tencent.widget.FixSizeImageView android:id="@id/icon" android:paddingTop="6.0dip" android:paddingRight="10.0dip" android:paddingBottom="6.0dip" android:focusable="false" android:clickable="false" android:layout_width="60.0dip" android:layout_height="62.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204bf" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/text1Area" android:paddingRight="15.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true">
+        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:ellipsize="end" android:id="@android:id/text1" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0578" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0584" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

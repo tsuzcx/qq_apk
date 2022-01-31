@@ -28,10 +28,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import nvr;
-import nvs;
-import nvt;
-import nvu;
+import nxe;
+import nxf;
+import nxg;
+import nxh;
 
 public class MemoryDataPuller
   implements IEventReceiver
@@ -39,7 +39,7 @@ public class MemoryDataPuller
   public INetPageLoader a;
   public Map a;
   protected Set a;
-  protected nvu a;
+  protected nxh a;
   protected boolean a;
   public String b;
   public boolean b;
@@ -123,13 +123,13 @@ public class MemoryDataPuller
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader = a();
-    this.jdField_a_of_type_Nvu = new nvu(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nvu);
+    this.jdField_a_of_type_Nxh = new nxh(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nxh);
   }
   
   public void a(VideoCollectionItem paramVideoCollectionItem)
   {
-    Bosses.get().postJob(new nvs(this, paramVideoCollectionItem));
+    Bosses.get().postJob(new nxf(this, paramVideoCollectionItem));
   }
   
   public void a(String paramString)
@@ -203,17 +203,17 @@ public class MemoryDataPuller
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Nvu != null)
+    if (this.jdField_a_of_type_Nxh != null)
     {
-      Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nvu);
-      this.jdField_a_of_type_Nvu = null;
+      Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nxh);
+      this.jdField_a_of_type_Nxh = null;
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
   }
   
   public void b(String paramString)
   {
-    Bosses.get().postJob(new nvt(this, paramString));
+    Bosses.get().postJob(new nxg(this, paramString));
   }
   
   public void b(List paramList, boolean paramBoolean)
@@ -236,7 +236,7 @@ public class MemoryDataPuller
   public void c()
   {
     this.jdField_b_of_type_Boolean = false;
-    Bosses.get().postJob(new nvr(this));
+    Bosses.get().postJob(new nxe(this));
   }
   
   public void d()

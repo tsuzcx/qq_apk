@@ -74,7 +74,7 @@ public class StructMsgItemTag
         paramView.setBackgroundDrawable((Drawable)localObject);
         if (!TextUtils.isEmpty(this.v))
         {
-          localObject = new ColorDrawable(2131492923);
+          localObject = new ColorDrawable(2131492924);
           localObject = URLDrawable.getDrawable(this.v, (Drawable)localObject, (Drawable)localObject);
           if (((URLDrawable)localObject).getStatus() != 1) {
             ((URLDrawable)localObject).restartDownload();
@@ -288,7 +288,7 @@ public class StructMsgItemTag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgItemTag
  * JD-Core Version:    0.7.0.1
  */

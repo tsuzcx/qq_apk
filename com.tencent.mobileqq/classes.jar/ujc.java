@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.GridCallBack;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
 
 public class ujc
-  implements Runnable
+  implements ActivateFriendGrid.GridCallBack
 {
-  public ujc(PlusPanel paramPlusPanel, TroopAppMgr paramTroopAppMgr, TroopAIOAppInfo paramTroopAIOAppInfo) {}
+  public ujc(PositionActivatePage paramPositionActivatePage) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIOAppInfo.appid, 0);
+    if (paramInt > 0) {
+      this.a.a.setEnabled(true);
     }
+    while (paramInt > 1)
+    {
+      this.a.a.setText(2131437241);
+      return;
+      this.a.a.setEnabled(false);
+    }
+    this.a.a.setText(2131437242);
   }
 }
 

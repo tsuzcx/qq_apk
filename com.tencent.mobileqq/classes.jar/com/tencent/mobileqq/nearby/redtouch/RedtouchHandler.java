@@ -263,11 +263,11 @@ public class RedtouchHandler
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("RedtouchHandler", 2, "getRedPointConfigs(), client version : 7.6.0");
+      QLog.i("RedtouchHandler", 2, "getRedPointConfigs(), client version : 7.6.3");
     }
     cmd0x6f5.ReqBody localReqBody = new cmd0x6f5.ReqBody();
     localReqBody.uint32_qq_platform.set(1);
-    localReqBody.str_qq_version.set("7.6.0");
+    localReqBody.str_qq_version.set("7.6.3");
     b(a("OidbSvc.cmd0x6f5", 1781, 0, localReqBody.toByteArray()));
   }
 }

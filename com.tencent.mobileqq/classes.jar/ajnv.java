@@ -1,50 +1,46 @@
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import java.lang.ref.WeakReference;
 
-public final class ajnv
-  implements View.OnClickListener
+public class ajnv
+  extends AsyncTask
 {
-  public ajnv(DialogInterface.OnClickListener paramOnClickListener1, Dialog paramDialog, DialogInterface.OnClickListener paramOnClickListener2) {}
+  private WeakReference a;
   
-  public void onClick(View paramView)
+  public ajnv(RollangleImageView paramRollangleImageView)
   {
-    if (paramView.getId() == 2131369912) {}
-    for (;;)
+    this.a = new WeakReference(paramRollangleImageView);
+  }
+  
+  protected Bitmap a(Boolean... paramVarArgs)
+  {
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null) {
+      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
+    }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null)
     {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
-        }
-        if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-          this.jdField_a_of_type_AndroidAppDialog.dismiss();
-        }
-        return;
-      }
-      catch (Exception paramView) {}
-      if (paramView.getId() == 2131369913)
-      {
-        if (this.b != null) {
-          this.b.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
-        }
-        try
-        {
-          if (this.jdField_a_of_type_AndroidAppDialog.isShowing())
-          {
-            this.jdField_a_of_type_AndroidAppDialog.dismiss();
-            return;
-          }
-        }
-        catch (Exception paramView) {}
+      if (paramBitmap != null) {
+        localRollangleImageView.setImageBitmap(paramBitmap);
       }
     }
+    else {
+      return;
+    }
+    localRollangleImageView.setImageResource(FileManagerUtil.b(localRollangleImageView.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnv
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public class NotifyLightUtil
 {
   public static boolean a(Context paramContext, AppInterface paramAppInterface)
   {
-    if ((SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), paramContext.getString(2131434186), "qqsetting_notify_blncontrol_key", true)) && ((paramAppInterface.isBackground_Pause) || (!ReflectionUtil.a(BaseApplicationImpl.sApplication))))
+    if ((SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), paramContext.getString(2131434203), "qqsetting_notify_blncontrol_key", true)) && ((paramAppInterface.isBackground_Pause) || (!ReflectionUtil.a(BaseApplicationImpl.sApplication))))
     {
       if (SettingCloneUtil.readValue(paramContext, null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", false))
       {
@@ -26,7 +26,7 @@ public class NotifyLightUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.util.NotifyLightUtil
  * JD-Core Version:    0.7.0.1
  */

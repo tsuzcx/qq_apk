@@ -68,11 +68,11 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import puz;
-import pva;
-import pvb;
-import pvc;
-import pvd;
+import pwt;
+import pwu;
+import pwv;
+import pww;
+import pwx;
 import tencent.im.oidb.cmd0xac7.BinderSig;
 import tencent.im.oidb.cmd0xac7.DeviceInfo;
 import tencent.im.oidb.cmd0xac7.ReceiveMessageDevices;
@@ -100,7 +100,7 @@ public class SmartDeviceProxyMgr
   private String jdField_a_of_type_JavaLangString;
   public ArrayList a;
   HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  pvd jdField_a_of_type_Pvd = null;
+  pwx jdField_a_of_type_Pwx = null;
   private boolean jdField_a_of_type_Boolean;
   DeviceInfo[] jdField_a_of_type_ArrayOfComTencentDeviceDatadefDeviceInfo = null;
   public int b;
@@ -121,14 +121,14 @@ public class SmartDeviceProxyMgr
     {
       Object localObject = ThreadManager.newFreeHandlerThread("smartdevice_check_thread", 0);
       ((HandlerThread)localObject).start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(((HandlerThread)localObject).getLooper(), new puz(this));
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(((HandlerThread)localObject).getLooper(), new pwt(this));
       label107:
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new pvc(this, ThreadManager.getSubThreadLooper());
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new pww(this, ThreadManager.getSubThreadLooper());
       b("SmartDeviceProxyMgr create");
       if (this.jdField_a_of_type_AndroidOsHandler != null)
       {
         this.e = SettingCloneUtil.readValueForInt(BaseApplication.getContext(), paramQQAppInterface.getCurrentAccountUin(), null, "qqsetting_deviceplugin_bind_flag", 0);
-        this.jdField_a_of_type_Pvd = new pvd(this);
+        this.jdField_a_of_type_Pwx = new pwx(this);
         localObject = new IntentFilter();
         ((IntentFilter)localObject).addAction("SmartDevice_devListChang");
         ((IntentFilter)localObject).addAction("onDeviceDisconnected");
@@ -141,7 +141,7 @@ public class SmartDeviceProxyMgr
         ((IntentFilter)localObject).addAction("mqq.intent.action.LOGOUT");
         ((IntentFilter)localObject).addAction("mqq.intent.action.ACCOUNT_CHANGED");
         ((IntentFilter)localObject).addAction("SmartDevice_receiveDPMsg");
-        BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_Pvd, (IntentFilter)localObject);
+        BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_Pwx, (IntentFilter)localObject);
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1002, 300000L);
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 30000L);
         this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.a(new Class[] { BDHCommonUploadProcessor.class });
@@ -639,11 +639,11 @@ public class SmartDeviceProxyMgr
   {
     b("SmartDeviceProxyMgr onDestroy");
     super.a();
-    if ((BaseApplicationImpl.getContext() != null) && (this.jdField_a_of_type_Pvd != null)) {}
+    if ((BaseApplicationImpl.getContext() != null) && (this.jdField_a_of_type_Pwx != null)) {}
     try
     {
-      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_Pvd);
-      this.jdField_a_of_type_Pvd = null;
+      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_Pwx);
+      this.jdField_a_of_type_Pwx = null;
       if (this.jdField_a_of_type_AndroidOsHandler != null)
       {
         this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -946,7 +946,7 @@ public class SmartDeviceProxyMgr
     paramBundle = Looper.getMainLooper();
     if (Thread.currentThread() != paramBundle.getThread())
     {
-      new Handler(paramBundle).post(new pvb(this, str1, str2, localBoolean, i, j));
+      new Handler(paramBundle).post(new pwv(this, str1, str2, localBoolean, i, j));
       return;
     }
     a(str1, str2, localBoolean, i, j);
@@ -970,7 +970,7 @@ public class SmartDeviceProxyMgr
   
   public void a(ConfigurationService.Config paramConfig)
   {
-    ThreadManager.getSubThreadHandler().post(new pva(this, paramConfig));
+    ThreadManager.getSubThreadHandler().post(new pwu(this, paramConfig));
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

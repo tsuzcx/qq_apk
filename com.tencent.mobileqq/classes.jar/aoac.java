@@ -1,44 +1,40 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCServer;
-import eipc.EIPCResult;
+import android.util.Log;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.EGLContextFactory;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class aoac
-  extends QIPCModule
+  implements GLTextureView.EGLContextFactory
 {
-  public aoac(VideoPlayIPCServer paramVideoPlayIPCServer, String paramString)
+  private int jdField_a_of_type_Int = 12440;
+  
+  private aoac(GLTextureView paramGLTextureView) {}
+  
+  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    super(paramString);
+    int[] arrayOfInt = new int[3];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[1] = GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView);
+    arrayOfInt[2] = 12344;
+    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
+    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 0) {}
+    for (;;)
+    {
+      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+      arrayOfInt = null;
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoPlayIPCServer", 2, "onCall : action = " + paramString);
-    }
-    if ("CMD_UPDATE_MSG_FOR_VIDEO_FILE_STATUS".equals(paramString))
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
     {
-      paramString = paramBundle.getString("VALUE_MSG_FRIENDUIN");
-      paramInt = paramBundle.getInt("VALUE_MSG_ISTROOP");
-      long l = paramBundle.getLong("VALUE_MSG_UINSEQ");
-      paramString = localQQAppInterface.a().b(paramString, paramInt, l);
-      if ((paramString instanceof MessageForShortVideo))
-      {
-        paramString = (MessageForShortVideo)paramString;
-        paramString.videoFileStatus = 2003;
-        paramString.transferedSize = 0;
-        paramString.videoFileProgress = 100;
-        paramString.serial();
-        localQQAppInterface.a().a(paramString.frienduin, paramInt, paramString.uniseq, paramString.msgData);
-      }
+      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
+      aoae.a("eglDestroyContex", paramEGL10.eglGetError());
     }
-    return null;
   }
 }
 

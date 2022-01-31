@@ -1,41 +1,29 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager.ConfigListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
 
-public class wzm
-  implements BusinessObserver
+class wzm
+  implements View.OnFocusChangeListener
 {
-  public wzm(QWalletConfigManager paramQWalletConfigManager, long paramLong, QWalletConfigManager.ConfigListener paramConfigListener, WeakReference paramWeakReference) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  wzm(wzk paramwzk) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramInt == 10)
-    {
-      if (!paramBoolean) {}
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
-      }
-      QWalletConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager$ConfigListener, (QWalletConfigManager)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      return;
+    if (!paramBoolean) {
+      GoldMsgAioState.a(this.jdField_a_of_type_Wzk.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity.getWindow(), this.jdField_a_of_type_Wzk.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity, paramView);
     }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Wzk.c = true;
+    } while (this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Wzk.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.jdField_a_of_type_Wzk.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Wzk.jdField_a_of_type_AndroidTextTextWatcher);
   }
 }
 

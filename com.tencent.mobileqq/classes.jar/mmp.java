@@ -1,26 +1,26 @@
 import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebContentGetCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.TimeUtil;
 
-class mmp
+public class mmp
   implements FastWebModule.FastWebContentGetCallback
 {
-  mmp(mmo parammmo) {}
+  public mmp(FastWebActivity paramFastWebActivity) {}
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    if ((paramBoolean1) && (paramFastWebArticleInfo != null))
+    if ((paramBoolean1) && (!paramBoolean2) && (paramFastWebArticleInfo != null))
     {
-      this.a.a.b = paramFastWebArticleInfo.b;
-      if (paramFastWebArticleInfo.jdField_a_of_type_Long > this.a.a.jdField_a_of_type_Long) {
-        this.a.a.jdField_a_of_type_Long = paramFastWebArticleInfo.jdField_a_of_type_Long;
-      }
-      this.a.a.jdField_a_of_type_Boolean = false;
-      QLog.d("Q.readinjoy.fast_web", 2, "update fastweb info, rowkey : " + paramFastWebArticleInfo.j + ",  commentCnt : " + paramFastWebArticleInfo.b + ", readCnt :" + paramFastWebArticleInfo.jdField_a_of_type_Long);
+      paramBoolean1 = true;
+      TimeUtil.b("fast_web_show_light_house_2");
     }
-    ThreadManager.getUIHandler().post(new mmq(this));
+    for (;;)
+    {
+      this.a.runOnUiThread(new mmq(this, paramBoolean1, paramFastWebArticleInfo));
+      return;
+      paramBoolean1 = false;
+    }
   }
 }
 

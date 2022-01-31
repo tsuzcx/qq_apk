@@ -61,7 +61,7 @@ public class VipSetFunCallHandler
     VipFunCallAndRing.TSsoReq localTSsoReq = new VipFunCallAndRing.TSsoReq();
     localTSsoReq.i32_implat.set(109);
     localTSsoReq.i32_cmd.set(paramInt);
-    localTSsoReq.str_qq_ver.set("7.6.0");
+    localTSsoReq.str_qq_ver.set("7.6.3");
     if ((paramObject instanceof Bundle)) {}
     for (Bundle localBundle1 = (Bundle)paramObject;; localBundle1 = null)
     {
@@ -382,7 +382,7 @@ public class VipSetFunCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vipav.VipSetFunCallHandler
  * JD-Core Version:    0.7.0.1
  */

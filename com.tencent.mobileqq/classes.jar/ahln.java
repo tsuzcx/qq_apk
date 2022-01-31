@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 
 public class ahln
   implements Runnable
 {
-  public ahln(ShortVideoResourceManager paramShortVideoResourceManager, NetResp paramNetResp) {}
+  public ahln(CameraCaptureView paramCameraCaptureView) {}
   
   public void run()
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager, this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp);
+    this.a.m();
   }
 }
 

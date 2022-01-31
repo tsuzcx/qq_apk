@@ -1,13 +1,16 @@
-import com.tencent.biz.widgets.ScannerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
 
 public class pcg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public pcg(ScannerView paramScannerView) {}
+  public pcg(PubAccountUIPlugin paramPubAccountUIPlugin) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ScannerView.a(this.a);
+    this.a.b.setClickable(false);
   }
 }
 

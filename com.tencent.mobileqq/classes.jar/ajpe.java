@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileError.SimpleErrorInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
-public class ajpe
+class ajpe
   implements Runnable
 {
-  public ajpe(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
+  ajpe(ajpd paramajpd, TroopFileTransferManager.Item paramItem) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog$YYBDownloadListener.a.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
+    TroopFileError.SimpleErrorInfo localSimpleErrorInfo = new TroopFileError.SimpleErrorInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Ajpd.a.f, 3, 210);
+    this.jdField_a_of_type_Ajpd.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localSimpleErrorInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajpe
  * JD-Core Version:    0.7.0.1
  */

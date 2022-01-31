@@ -1,6 +1,5 @@
 package dov.com.qq.im;
 
-import amub;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,6 +8,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import ankg;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -52,14 +52,14 @@ public class QIMStoryEffectCameraCaptureUnit
   
   protected int a()
   {
-    return 2130970076;
+    return 2130970090;
   }
   
   public View a()
   {
     View localView = super.a();
     this.e.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363969));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363993));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     return localView;
   }
@@ -161,9 +161,9 @@ public class QIMStoryEffectCameraCaptureUnit
     }
   }
   
-  protected void g()
+  protected void f()
   {
-    super.g();
+    super.f();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
@@ -193,9 +193,10 @@ public class QIMStoryEffectCameraCaptureUnit
     ((Activity)localObject).startActivity(localIntent);
     ((Activity)localObject).overridePendingTransition(2131034380, 2131034131);
     StoryReportor.a("video_shoot", "clk_slides_entry", 0, 0, new String[0]);
+    StoryReportor.a("video_shoot_slides", "clk_slides_entry", 0, 0, new String[0]);
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new amub(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ankg(this);
       localObject = new IntentFilter();
       ((IntentFilter)localObject).addAction("dov.com.qq.im.finish_capture_action");
     }

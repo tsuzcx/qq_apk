@@ -1,27 +1,38 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class ule
-  extends View
+class ule
+  implements PreloadManager.OnGetPathListener
 {
-  public ule(XBubbleAnimation paramXBubbleAnimation, Context paramContext)
-  {
-    super(paramContext);
-  }
+  ule(uld paramuld) {}
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new ulf(this));
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
+    {
+      paramPathResult = SafeBitmapFactory.decodeFile(paramPathResult, ImageUtil.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 300.0F + 0.5D)));
+      if (paramPathResult != null) {
+        this.a.a.background = paramPathResult;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy info.background=" + this.a.a.background);
+      }
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new ulg(this));
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
     }
-    return true;
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 

@@ -33,8 +33,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kea;
-import keb;
+import kdl;
+import kdm;
 
 public class ZimuToolbar
   extends BaseToolbar
@@ -44,8 +44,8 @@ public class ZimuToolbar
   private static final int ZIMU_CPU_CORE_THRESHOLD = 8;
   private static final int ZIMU_CPU_FREQ_THRESHOLD = 1800000;
   private boolean mARZimuEnable;
-  private keb mAdapter;
-  private kea mItemEvent;
+  private kdm mAdapter;
+  private kdl mItemEvent;
   private HorizontalListView mListView;
   private EffectSupportManager mSupportManager;
   BaseToolbar.UIInfo mUIInfo = null;
@@ -83,7 +83,7 @@ public class ZimuToolbar
       {
         k = i;
         if (i == 0) {
-          k = 2131429676;
+          k = 2131429682;
         }
       }
       paramString = (AVActivity)this.mActivity.get();
@@ -94,9 +94,9 @@ public class ZimuToolbar
       if (j == 1) {
         break;
       }
-      i = 2131429676;
+      i = 2131429682;
       break label70;
-      i = 2131429677;
+      i = 2131429683;
       break label70;
     }
   }
@@ -205,7 +205,7 @@ public class ZimuToolbar
         localItemInfo.c = localZimuItem.getId();
         localItemInfo.d = localZimuItem.getDesc();
         if ((TextUtils.isEmpty(localItemInfo.d)) && (localItemInfo.jdField_a_of_type_JavaLangString.equals("liveshow"))) {
-          localItemInfo.d = this.mApp.getApp().getResources().getString(2131429674);
+          localItemInfo.d = this.mApp.getApp().getResources().getString(2131429680);
         }
         localArrayList.add(localItemInfo);
       }
@@ -219,10 +219,10 @@ public class ZimuToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 6;
-      this.mUIInfo.g = 2130969358;
+      this.mUIInfo.g = 2130969359;
       this.mUIInfo.e = 103417;
-      this.mUIInfo.f = 2130840341;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428740);
+      this.mUIInfo.f = 2130840347;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428746);
     }
     return this.mUIInfo;
   }
@@ -230,7 +230,7 @@ public class ZimuToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131428732);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131428738);
     }
     return "";
   }
@@ -242,7 +242,7 @@ public class ZimuToolbar
     paramArrayList.add(0, localItemInfo);
     localItemInfo = new QavListItemBase.ItemInfo();
     localItemInfo.jdField_a_of_type_JavaLangString = "0";
-    localItemInfo.b = String.valueOf(2130840276);
+    localItemInfo.b = String.valueOf(2130840282);
     localItemInfo.d = "取消字幕";
     paramArrayList.add(1, localItemInfo);
     return paramArrayList;
@@ -268,7 +268,7 @@ public class ZimuToolbar
   {
     super.onCreate(paramAVActivity);
     this.mSupportManager = ((EffectSupportManager)this.mApp.a(5));
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366248));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366275));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mZimuManager = ((EffectZimuManager)this.mApp.a(0));
     ArrayList localArrayList = convertItemInfo(this.mZimuManager.a(null));
@@ -276,11 +276,11 @@ public class ZimuToolbar
     if (localArrayList.size() > 0) {
       localObject = insertEmptyItem(localArrayList);
     }
-    this.mAdapter = new keb(this.mApp, paramAVActivity, (ArrayList)localObject, this.mListView, this);
+    this.mAdapter = new kdm(this.mApp, paramAVActivity, (ArrayList)localObject, this.mListView, this);
     localObject = this.mListView.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).height = (this.mAdapter.jdField_a_of_type_Int + AIOUtils.a(30.0F, paramAVActivity.getResources()));
     this.mListView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.mItemEvent = new kea(this);
+    this.mItemEvent = new kdl(this);
     this.mAdapter.a(this.mItemEvent);
     this.mAdapter.a(this);
     this.mAdapter.b(true);

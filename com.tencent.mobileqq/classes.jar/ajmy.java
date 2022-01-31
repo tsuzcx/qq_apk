@@ -1,32 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.ThreadPriorityManager;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
-public final class ajmy
-  extends Handler
+class ajmy
+  implements Runnable
 {
-  public ajmy(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ajmy(ajmx paramajmx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadPriorityManager.a();
-      return;
+    if (this.a.a.a == 3) {
+      this.a.a.a = 1;
     }
-    ThreadPriorityManager.b();
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmy
  * JD-Core Version:    0.7.0.1
  */

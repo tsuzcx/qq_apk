@@ -1,14 +1,19 @@
-import com.tencent.av.smallscreen.SmallScreenService;
+import com.tencent.av.opengl.glrenderer.GLCanvas;
+import com.tencent.av.switchface.SwitchFaceView;
 
 public class jpf
-  implements Runnable
 {
-  public jpf(SmallScreenService paramSmallScreenService) {}
+  public GLCanvas a;
+  public jpe[] a;
   
-  public void run()
+  public jpf(SwitchFaceView paramSwitchFaceView)
   {
-    if (SmallScreenService.g) {
-      this.a.b(2);
+    this.jdField_a_of_type_ArrayOfJpe = new jpe[2];
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfJpe.length)
+    {
+      this.jdField_a_of_type_ArrayOfJpe[i] = new jpe(paramSwitchFaceView);
+      i += 1;
     }
   }
 }

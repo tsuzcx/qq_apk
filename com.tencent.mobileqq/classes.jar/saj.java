@@ -1,22 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileView;
+import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter.HistoryFileItemHolder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class saj
-  implements Runnable
+public class saj
+  implements View.OnClickListener
 {
-  saj(sai paramsai, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4) {}
+  public saj(ChatHistoryFileView paramChatHistoryFileView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((TroopManager)this.jdField_a_of_type_Sai.a.app.getManager(51)).a(this.jdField_a_of_type_Sai.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c, this.d);
-    this.jdField_a_of_type_Sai.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = this.b;
-    this.jdField_a_of_type_Sai.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-    if (this.jdField_a_of_type_Sai.a.e != null) {
-      this.jdField_a_of_type_Sai.a.a(this.jdField_a_of_type_Sai.a.e);
+    if ((paramView.getTag() instanceof String)) {
+      return;
     }
+    paramView = (FileManagerEntity)((ChatHistoryFileAdapter.HistoryFileItemHolder)paramView.getTag()).a;
+    this.a.a(paramView);
   }
 }
 

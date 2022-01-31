@@ -1,15 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.qidian.QidianManager.OnLbsStateChangedListener;
 
-public final class koh
-  implements Runnable
+public class koh
+  implements QidianManager.OnLbsStateChangedListener
 {
-  public koh(TroopMemberApiClient paramTroopMemberApiClient, Bundle paramBundle, BusinessObserver paramBusinessObserver) {}
+  public koh(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(17, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+    this.a.c = true;
+    this.a.b(paramBoolean);
   }
 }
 

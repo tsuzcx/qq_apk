@@ -1,17 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class sct
-  extends GameCenterObserver
+  implements Runnable
 {
-  public sct(Contacts paramContacts) {}
+  public sct(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (Contacts.a(this.a)) {
-      Contacts.a(this.a);
+    if (this.a.isFinishing()) {
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.chatopttroop", 2, "-->preForward--fetch openid timeout");
+    }
+    this.a.n = true;
+    this.a.s();
   }
 }
 

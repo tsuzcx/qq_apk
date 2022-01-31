@@ -1,31 +1,44 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.util.SurfaceViewUtil;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.mobileqq.video.IMediaPlayer.OnPreparedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class wvc
-  implements IMediaPlayer.OnPreparedListener
+  extends ContactBindObserver
 {
-  public wvc(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wvc(PhoneLaunchActivity paramPhoneLaunchActivity) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer)
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "mMediaPlayer onPrepared: ");
-    }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid()))
+    PhoneLaunchActivity.a(this.a).setEnabled(true);
+    if (this.a.a != null)
     {
-      FMToastUtil.a(2131437385);
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+    }
+    this.a.b();
+    if (paramBoolean)
+    {
+      Object localObject = this.a;
+      if ((PhoneLaunchActivity.a(this.a)) || (PhoneLaunchActivity.b(this.a)))
+      {
+        this.a.setResult(-1);
+        this.a.finish();
+        return;
+      }
+      localObject = new Intent((Context)localObject, SettingActivity2.class);
+      if (PhoneLaunchActivity.c(this.a)) {
+        ((Intent)localObject).putExtra("kSrouce", 7);
+      }
+      this.a.startActivityForResult((Intent)localObject, 2);
+      this.a.setResult(-1);
+      this.a.finish();
       return;
     }
-    SurfaceViewUtil.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.n, this.a.o, this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.d(), this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.e());
-    paramIMediaPlayer.a(localSurfaceHolder);
+    this.a.b("启用失败，请重新尝试！");
   }
 }
 

@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.doutu.DoutuManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class abyb
-  implements Runnable
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public abyb(EmoticonMainPanel paramEmoticonMainPanel, EmoticonPackage paramEmoticonPackage) {}
+  public abyb(DoutuManager paramDoutuManager) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b.contains(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage)) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b.add(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.g = true;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.j = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getVisibility() == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "refresh magic emoji.");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.c(0);
+    if (paramInt == 4097) {
+      ReportController.b(DoutuManager.a(this.a), "dc00898", "", "", "0X8007FAA", "0X8007FAA", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyb
  * JD-Core Version:    0.7.0.1
  */

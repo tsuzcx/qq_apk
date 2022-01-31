@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
-public class xmc
+class xmc
   implements Runnable
 {
-  private SVHwEncoder jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder;
-  
-  public xmc(FlowCameraActivity2 paramFlowCameraActivity2, SVHwEncoder paramSVHwEncoder)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder = paramSVHwEncoder;
-  }
+  xmc(xmb paramxmb, Object paramObject) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "handleQQVideo(): onSendVideoClick mEncoderCache=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder);
+    if (this.jdField_a_of_type_JavaLangObject != null)
+    {
+      this.jdField_a_of_type_Xmb.a.a.a(true, this.jdField_a_of_type_JavaLangObject);
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder.b();
+    if (LoginView.b(this.jdField_a_of_type_Xmb.a))
+    {
+      this.jdField_a_of_type_Xmb.a.a.a(true, null);
+      return;
     }
+    this.jdField_a_of_type_Xmb.a.a.a(false, null);
   }
 }
 

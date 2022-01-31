@@ -1,38 +1,20 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.script.SpriteRscBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
-public final class ytj
-  implements Runnable
+public class ytj
+  implements View.OnClickListener
 {
-  public ytj(String paramString, QQAppInterface paramQQAppInterface, long paramLong) {}
+  public ytj(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      long l = ((JSONObject)localObject).optLong("taskId");
-      localObject = SpriteRscBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (JSONObject)localObject);
-      if (localObject == null) {
-        return;
-      }
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("ret", 0);
-      localJSONObject.put("actionInfo", localObject);
-      localJSONObject.put("taskId", l);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameUtil", 2, new Object[] { "ReqAction,", localJSONObject.toString() });
-      }
-      ApolloCmdChannel.getChannel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).callbackFromRequest(this.jdField_a_of_type_Long, 0, "sc.script_notify_action_ready.local", localJSONObject.toString());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameUtil", 1, localThrowable, new Object[0]);
-    }
+    paramView = new Intent();
+    this.a.setResult(2, paramView);
+    VipUtils.a(this.a.app, "cmshow", "Apollo", "dresscheckai", this.a.d, 0, new String[0]);
+    this.a.finish();
   }
 }
 

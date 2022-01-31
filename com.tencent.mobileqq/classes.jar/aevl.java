@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import com.tencent.mobileqq.nearby.now.send.uploader.WordsCheck.OnResultListener;
 
 public class aevl
-  implements ActionSheet.OnDismissListener
+  implements WordsCheck.OnResultListener
 {
-  public aevl(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public aevl(ImageFeedsUploader paramImageFeedsUploader) {}
   
-  public void onDismiss()
+  public void a(int paramInt)
   {
-    NearbyProfileEditTribePanel.a(this.a, this.a.h, false);
+    if (paramInt == 0)
+    {
+      this.a.a();
+      return;
+    }
+    b(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    VideoFeedsUploader.UploadResult localUploadResult = new VideoFeedsUploader.UploadResult();
+    localUploadResult.i = "文字包含敏感词！";
+    localUploadResult.a = paramInt;
+    ImageFeedsUploader.a(this.a, localUploadResult);
   }
 }
 

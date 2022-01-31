@@ -1,11 +1,15 @@
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.SwipeRefreshTrigger;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.SwipeTrigger;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 
-public abstract class wln
-  implements SwipeRefreshTrigger, SwipeTrigger
+public class wln
+  implements Runnable
 {
-  wln(CommonRefreshLayout paramCommonRefreshLayout) {}
+  public wln(TroopActivity paramTroopActivity, TextView paramTextView) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.sendAccessibilityEvent(8);
+  }
 }
 
 

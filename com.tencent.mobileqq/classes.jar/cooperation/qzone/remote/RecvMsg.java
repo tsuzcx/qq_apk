@@ -1,6 +1,6 @@
 package cooperation.qzone.remote;
 
-import amic;
+import amyh;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new amic();
+  public static final Parcelable.Creator CREATOR = new amyh();
   public static final String SSOSEQ_KEY = "_ssoSeqKey";
   private static final String tag = "RecvMsg";
   public Bundle extraData = new Bundle();

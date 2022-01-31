@@ -19,11 +19,11 @@ import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lbi;
-import lbl;
-import lbn;
-import lbo;
-import lbp;
+import lat;
+import law;
+import lay;
+import laz;
+import lba;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
@@ -42,11 +42,11 @@ public class ReadInJoyNaviController
   
   public ReadInJoyNaviController(ViewGroup paramViewGroup, ReadInJoyNavigationGridview paramReadInJoyNavigationGridview, ImageView paramImageView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lbn(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lay(this);
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview = paramReadInJoyNavigationGridview;
     this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.setChannelButtonListener(new lbp(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.setChannelButtonListener(new lba(this));
     ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
     a();
   }
@@ -139,7 +139,7 @@ public class ReadInJoyNaviController
   
   private void a(long paramLong)
   {
-    ReadInJoyUtils.b().postDelayed(new lbo(this), paramLong);
+    ReadInJoyUtils.b().postDelayed(new laz(this), paramLong);
   }
   
   public void a()
@@ -213,7 +213,7 @@ public class ReadInJoyNaviController
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.setAlpha(0.0F);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview, localLayoutParams);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview.setTag("mReadInJoyNavigation");
-    ReadInJoyUtils.b().postDelayed(new lbi(this), 0L);
+    ReadInJoyUtils.b().postDelayed(new lat(this), 0L);
   }
   
   public void a(ViewGroup paramViewGroup)
@@ -245,7 +245,7 @@ public class ReadInJoyNaviController
       }
       else
       {
-        ReadInJoyUtils.b().postDelayed(new lbl(this, paramChannelCoverInfo), 0L);
+        ReadInJoyUtils.b().postDelayed(new law(this, paramChannelCoverInfo), 0L);
         return;
       }
       i += 1;

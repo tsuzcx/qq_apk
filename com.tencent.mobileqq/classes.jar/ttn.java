@@ -1,70 +1,44 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentTroopAssistantItem;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.view.ApolloGameHotChatController;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import java.util.Comparator;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.SdCardUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class ttn
-  implements Comparator
+  implements Runnable
 {
-  public ttn(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public ttn(SplashActivity paramSplashActivity) {}
   
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
+  public void run()
   {
-    if (((paramRecentBaseData1 instanceof RecentTroopAssistantItem)) && ((paramRecentBaseData2 instanceof RecentTroopAssistantItem)))
+    long l = SpaceLowNoticeActiviy.a(this.a.app, "conf_space_low_shreshold", 104857600L);
+    if (SpaceLowNoticeActiviy.a(SpaceLowNoticeActiviy.a(this.a.app, "conf_space_check_interval", 259200000L)))
     {
-      paramRecentBaseData1 = (RecentTroopAssistantItem)paramRecentBaseData1;
-      paramRecentBaseData2 = (RecentTroopAssistantItem)paramRecentBaseData2;
-      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(51);
-      boolean bool1 = localTroopManager.b(paramRecentBaseData1.a());
-      boolean bool2 = localTroopManager.b(paramRecentBaseData2.a());
-      if ((bool1) && (!bool2)) {
-        return -1;
+      if (SdCardUtil.b(this.a) + SdCardUtil.b() >= l) {
+        break label146;
       }
-      if ((!bool1) && (bool2)) {
-        return 1;
-      }
-      long l2;
-      long l1;
-      if ((!bool1) && (!bool2))
-      {
-        l2 = Math.max(paramRecentBaseData1.a(), paramRecentBaseData1.b());
-        l1 = Math.max(paramRecentBaseData2.a(), paramRecentBaseData2.b());
-        if (l2 <= l1) {
-          break label173;
-        }
-        l1 = 3L;
-      }
-      for (;;)
-      {
-        l1 = (int)(l1 | 0) - (int)(0x2 | 0);
-        if (l1 != 0L) {
-          break label195;
-        }
-        return 0;
-        l2 = paramRecentBaseData1.a;
-        l1 = paramRecentBaseData2.a;
-        break;
-        label173:
-        if (l2 < l1) {
-          l1 = 1L;
-        } else {
-          l1 = 2L;
-        }
-      }
-      label195:
-      if (l1 < 0L) {
-        return 1;
-      }
-      return -1;
+      QLog.i("SplashActivity", 1, "qqclean conf did notice");
+      SpaceLowNoticeActiviy.a(this.a);
+      ReportController.b(this.a.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
     }
-    return 0;
+    for (;;)
+    {
+      ApolloManager localApolloManager = (ApolloManager)this.a.app.getManager(152);
+      if (localApolloManager != null) {
+        localApolloManager.a().a(this.a.app, this.a);
+      }
+      return;
+      label146:
+      QLog.i("SplashActivity", 1, "qqclean conf not need notice");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ttn
  * JD-Core Version:    0.7.0.1
  */

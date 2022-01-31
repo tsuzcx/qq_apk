@@ -524,7 +524,7 @@ public class UITools
                 String str = paramAppInterface.getCurrentAccountUin();
                 bool1 = bool2;
                 if (str != null) {
-                  bool1 = localSharedPreferences.getBoolean(paramAppInterface.getApp().getString(2131433515) + str, true);
+                  bool1 = localSharedPreferences.getBoolean(paramAppInterface.getApp().getString(2131433532) + str, true);
                 }
               }
               bool2 = bool1;

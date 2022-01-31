@@ -1,99 +1,67 @@
-import android.view.View;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.ControlUIObserver;
-import com.tencent.av.ui.ControlUIObserver.CEffectEntrancePreClickInfo;
-import com.tencent.av.ui.ControlUIObserver.CPreChangButtonStyleInfo;
-import com.tencent.av.ui.ControlUIObserver.CPreEventInfo;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.GameSink;
-import com.tencent.av.ui.redbag.OtherBtnController;
-import com.tencent.av.ui.redbag.RedBagReport;
-import com.tencent.av.ui.redbag.ResultData;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.utils.GVideoGrayConfig;
+import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
+import com.tencent.av.utils.GVideoGrayConfig.Record;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.groupvideo.GroupVideoHelper;
 
-public class kfv
-  extends ControlUIObserver
+public final class kfv
+  implements GVideoGrayConfig.GVideoGrayConfigListener
 {
-  String jdField_a_of_type_JavaLangString = "AVRedbag_GameMode";
+  public kfv(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, String paramString) {}
   
-  public kfv(OtherBtnController paramOtherBtnController) {}
-  
-  protected void a(ControlUIObserver.CEffectEntrancePreClickInfo paramCEffectEntrancePreClickInfo)
+  private void a(Context paramContext)
   {
-    AVActivity localAVActivity = this.jdField_a_of_type_ComTencentAvUiRedbagOtherBtnController.a();
-    if (localAVActivity == null) {
-      return;
+    if ((paramContext instanceof JumpActivity)) {
+      ((Activity)paramContext).finish();
     }
-    if (paramCEffectEntrancePreClickInfo.jdField_a_of_type_Int == 1) {
-      localAVActivity.a("正在表情游戏中，不能关闭使用变声。", 3000, null);
-    }
-    for (;;)
+  }
+  
+  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      paramCEffectEntrancePreClickInfo.b = true;
-      paramCEffectEntrancePreClickInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    default: 
+      a(this.jdField_a_of_type_AndroidContentContext);
+    }
+    do
+    {
+      do
+      {
+        return;
+        GroupVideoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, 1);
+        return;
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", paramRecord.jdField_a_of_type_JavaLangString);
+        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+          localIntent.addFlags(268435456);
+        }
+        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+        a(this.jdField_a_of_type_AndroidContentContext);
+        return;
+        ((GroupVideoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, "4", "openRoom");
+        return;
+        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        {
+          GVideoGrayConfig.a(this.jdField_a_of_type_AndroidContentContext, paramRecord.b, paramRecord.c, new kfw(this));
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
       return;
-      if (paramCEffectEntrancePreClickInfo.jdField_a_of_type_Int == 2) {
-        localAVActivity.a("正在表情游戏中，不能使用其他特效互动。", 3000, null);
+      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+      {
+        GVideoGrayConfig.a(this.jdField_a_of_type_AndroidContentContext, paramRecord.b, paramRecord.c, new kfx(this));
+        return;
       }
-    }
-  }
-  
-  protected void a(ControlUIObserver.CPreChangButtonStyleInfo paramCPreChangButtonStyleInfo)
-  {
-    AVRedBagMgr localAVRedBagMgr = this.jdField_a_of_type_ComTencentAvUiRedbagOtherBtnController.a();
-    if (localAVRedBagMgr == null) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while (!localAVRedBagMgr.a());
-      i = paramCPreChangButtonStyleInfo.a().getId();
-    } while ((i != 2131365381) && (i != 2131365369));
-    if (i == 2131365381) {
-      this.jdField_a_of_type_ComTencentAvUiRedbagOtherBtnController.jdField_a_of_type_Int = paramCPreChangButtonStyleInfo.jdField_a_of_type_Int;
-    }
-    paramCPreChangButtonStyleInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramCPreChangButtonStyleInfo.jdField_a_of_type_Boolean = false;
-  }
-  
-  protected void c(ControlUIObserver.CPreEventInfo paramCPreEventInfo)
-  {
-    AVActivity localAVActivity = this.jdField_a_of_type_ComTencentAvUiRedbagOtherBtnController.a();
-    if (localAVActivity == null) {
-      return;
-    }
-    localAVActivity.a("正在表情游戏中，不能邀请成员抢红包。", 3000, null);
-    paramCPreEventInfo.b = true;
-    paramCPreEventInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void d(ControlUIObserver.CPreEventInfo paramCPreEventInfo)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentAvUiRedbagOtherBtnController.a();
-    if (localObject == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((((AVRedBagMgr)localObject).a == null) || (((AVRedBagMgr)localObject).a.a == null) || (((AVRedBagMgr)localObject).a.a.b) || (!this.jdField_a_of_type_ComTencentAvUiRedbagOtherBtnController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().f));
-      localObject = this.jdField_a_of_type_ComTencentAvUiRedbagOtherBtnController.a();
-    } while (localObject == null);
-    ((AVActivity)localObject).a("正在表情游戏中，不能关闭摄像头。", 3000, null);
-    paramCPreEventInfo.b = true;
-    paramCPreEventInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void e(ControlUIObserver.CPreEventInfo paramCPreEventInfo)
-  {
-    paramCPreEventInfo = this.jdField_a_of_type_ComTencentAvUiRedbagOtherBtnController.a();
-    if ((paramCPreEventInfo != null) && (paramCPreEventInfo.a())) {
-      RedBagReport.d();
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
   }
 }
 

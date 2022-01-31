@@ -1,18 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.DownloadResult.Content;
+import com.tencent.component.media.ILog;
+import com.tencent.component.media.ImageManagerEnv;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.StreamDecodeGifTask;
 
-public final class phn
-  implements Parcelable.Creator
+public class phn
+  implements Runnable
 {
-  public DownloadResult.Content a(Parcel paramParcel)
+  private ImageKey jdField_a_of_type_ComTencentComponentMediaImageImageKey = null;
+  String jdField_a_of_type_JavaLangString = null;
+  String b = null;
+  
+  public phn(StreamDecodeGifTask paramStreamDecodeGifTask, ImageKey paramImageKey, String paramString1, String paramString2)
   {
-    return new DownloadResult.Content(paramParcel);
+    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey = paramImageKey;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public DownloadResult.Content[] a(int paramInt)
+  public void run()
   {
-    return new DownloadResult.Content[paramInt];
+    try
+    {
+      if (!this.jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask.isCanceled()) {
+        StreamDecodeGifTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey, this.jdField_a_of_type_JavaLangString, this.b);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ImageManagerEnv.getLogger().e("StreamDecodeGifTask-decoding-thread", new Object[] { "DecodeStreamTask error : " + localThrowable.toString() });
+    }
   }
 }
 

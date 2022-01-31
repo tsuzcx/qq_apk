@@ -1,100 +1,125 @@
-import android.support.v4.app.FragmentManager;
-import android.view.View;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
-public final class lmq
+public class lmq
   implements Runnable
 {
+  public lmq(ReadinjoySPEventReport paramReadinjoySPEventReport, int paramInt) {}
+  
   public void run()
   {
-    ArrayList localArrayList;
-    Object localObject1;
-    if (ReadinjoySPEventReport.b(24))
+    int i;
+    if (ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport) != null)
     {
-      localArrayList = new ArrayList();
-      localObject1 = BaseActivity.sTopActivity;
-      if ((localObject1 == null) || (!(localObject1 instanceof SplashActivity))) {}
+      if (((Integer)ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).second).intValue() == this.jdField_a_of_type_Int) {
+        return;
+      }
+      if (((Integer)ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).second).intValue() < this.jdField_a_of_type_Int) {
+        i = 1;
+      }
     }
     for (;;)
     {
-      try
+      label59:
+      int j = ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size();
+      long l1;
+      if (j > ReadInJoyHelper.b(ReadInJoyUtils.a())) {
+        l1 = j - ReadInJoyHelper.b(ReadInJoyUtils.a());
+      }
+      for (;;)
       {
-        Object localObject2 = (MainFragment)((SplashActivity)localObject1).getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
-        int i = ((View)((MainFragment)localObject2).a().get("消息_num")).getVisibility();
-        Object localObject3 = new oidb_cmd0x80a.AttributeList();
-        ((oidb_cmd0x80a.AttributeList)localObject3).att_id.set(1);
-        ((oidb_cmd0x80a.AttributeList)localObject3).att_name.set("MsgRedStatus");
-        PBStringField localPBStringField = ((oidb_cmd0x80a.AttributeList)localObject3).att_value;
-        if (i != 0) {
-          continue;
-        }
-        localObject1 = String.valueOf(1);
-        localPBStringField.set((String)localObject1);
-        localArrayList.add(localObject3);
-        boolean bool = ((MainFragment)localObject2).a("联系人").a();
-        localObject3 = new oidb_cmd0x80a.AttributeList();
-        ((oidb_cmd0x80a.AttributeList)localObject3).att_id.set(2);
-        ((oidb_cmd0x80a.AttributeList)localObject3).att_name.set("ContactsRedStatus");
-        localPBStringField = ((oidb_cmd0x80a.AttributeList)localObject3).att_value;
-        if (!bool) {
-          continue;
-        }
-        localObject1 = String.valueOf(1);
-        localPBStringField.set((String)localObject1);
-        localArrayList.add(localObject3);
-        bool = ((MainFragment)localObject2).a("动态").a();
-        localObject3 = new oidb_cmd0x80a.AttributeList();
-        ((oidb_cmd0x80a.AttributeList)localObject3).att_id.set(3);
-        ((oidb_cmd0x80a.AttributeList)localObject3).att_name.set("TrendsRedStatus");
-        localPBStringField = ((oidb_cmd0x80a.AttributeList)localObject3).att_value;
-        if (!bool) {
-          continue;
-        }
-        localObject1 = String.valueOf(1);
-        localPBStringField.set((String)localObject1);
-        localArrayList.add(localObject3);
-        if (ReadInJoyHelper.h())
+        long l2 = l1 - 1L;
+        if (l1 > 0L)
         {
-          bool = ((MainFragment)localObject2).a("看点").a();
-          localObject2 = new oidb_cmd0x80a.AttributeList();
-          ((oidb_cmd0x80a.AttributeList)localObject2).att_id.set(4);
-          ((oidb_cmd0x80a.AttributeList)localObject2).att_name.set("KandianRedStatus");
-          localObject3 = ((oidb_cmd0x80a.AttributeList)localObject2).att_value;
-          if (!bool) {
-            continue;
+          if (ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() <= 1) {
+            break label824;
           }
-          localObject1 = String.valueOf(1);
-          ((PBStringField)localObject3).set((String)localObject1);
-          localArrayList.add(localObject2);
+          ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).remove(1);
+          l1 = l2;
+          continue;
+          i = 0;
+          break label59;
         }
+        ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, false);
+        if (j == 0) {
+          ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
+        }
+        ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(0)).first).longValue()), Integer.valueOf(this.jdField_a_of_type_Int)));
+        ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport));
+        QLog.d(ReadinjoySPEventReport.class.getSimpleName(), 2, "update msg tab total red pnt change, cnt : " + this.jdField_a_of_type_Int);
+        j = ReadInJoyUtils.b();
+        if (j < 0) {
+          break;
+        }
+        if (j > this.jdField_a_of_type_Int) {
+          j = this.jdField_a_of_type_Int;
+        }
+        for (;;)
+        {
+          int k = ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size();
+          if (k > ReadInJoyHelper.c(ReadInJoyUtils.a())) {
+            l1 = k - ReadInJoyHelper.c(ReadInJoyUtils.a());
+          }
+          for (;;)
+          {
+            l2 = l1 - 1L;
+            if (l1 > 0L)
+            {
+              if (ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() > 1)
+              {
+                ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).remove(1);
+                l1 = l2;
+              }
+            }
+            else
+            {
+              if ((ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport) != null) && (((Integer)ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).second).intValue() == j)) {
+                break;
+              }
+              if (k == 0) {
+                ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
+              }
+              ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(0)).first).longValue()), Integer.valueOf(j)));
+              ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport));
+              QLog.d(ReadinjoySPEventReport.class.getSimpleName(), 2, "update msg tab first screen red pnt change, cnt : " + j);
+              j = ReadInJoyHelper.a();
+              if ((this.jdField_a_of_type_Int <= j) && (!ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport)) && (i == 0))
+              {
+                if ((ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport) != null) && (ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() > 0))
+                {
+                  i = ((Integer)((Pair)ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() - 1)).second).intValue();
+                  l1 = ((Long)((Pair)ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(0)).first).longValue();
+                  l2 = ((Long)((Pair)ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() - 1)).first).longValue();
+                  if ((System.currentTimeMillis() / 1000L - (l1 + l2) <= 600L) && (i == 1))
+                  {
+                    ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, true);
+                    return;
+                  }
+                }
+                if (ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport) != null) {
+                  break label804;
+                }
+                ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, 0);
+              }
+              for (;;)
+              {
+                ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, false);
+                return;
+                label804:
+                ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport);
+              }
+            }
+            l1 = l2;
+          }
+        }
+        label824:
+        l1 = l2;
       }
-      catch (Exception localException)
-      {
-        AIOUtils.a("reportTabExposure_ERROR", "reportTabExposure_ERROR", localException);
-        continue;
-      }
-      PublicAccountUtil.a(24, "TabExposure", localArrayList);
-      return;
-      localObject1 = String.valueOf(0);
-      continue;
-      localObject1 = String.valueOf(0);
-      continue;
-      localObject1 = String.valueOf(0);
-      continue;
-      localObject1 = String.valueOf(0);
+      i = 1;
     }
   }
 }

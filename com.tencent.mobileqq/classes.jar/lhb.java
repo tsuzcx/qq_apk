@@ -1,27 +1,57 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class lhb
-  implements Runnable
+  implements INetInfoHandler
 {
-  public lhb(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public lhb(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void run()
+  public void onNetMobile2None()
   {
-    Object localObject = this.a.app.getCurrentAccountUin();
-    localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + (String)localObject, 4);
-    if (localObject != null)
-    {
-      int i = ((SharedPreferences)localObject).getInt("readinjoy_deliver_biu_numbers", 0);
-      if (i <= 6)
-      {
-        ((SharedPreferences)localObject).edit().putInt("readinjoy_deliver_biu_numbers", i + 1);
-        ((SharedPreferences)localObject).edit().commit();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetMobile2None()");
+    }
+    if (ReadInJoyCameraCaptureActivity.a(this.a) == 6) {
+      ReadInJoyCameraCaptureActivity.d(this.a);
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "INetInfoHandler onNetWifi2None()");
+    }
+    if (ReadInJoyCameraCaptureActivity.a(this.a) == 6) {
+      ReadInJoyCameraCaptureActivity.d(this.a);
     }
   }
 }

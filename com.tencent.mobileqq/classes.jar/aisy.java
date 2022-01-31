@@ -1,43 +1,49 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
-import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
 public class aisy
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public aisy(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public aisy(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (PublishHomeWorkFragment.a(this.a) != null)
+    try
     {
-      paramContext = paramIntent.getAction();
-      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
-        break label51;
+      Object localObject1 = new File(this.jdField_a_of_type_JavaLangString);
+      Object localObject2 = Environment.getExternalStorageDirectory() + "/tencent/QQfile_recv/" + ((File)localObject1).getName();
+      localObject1 = localObject2;
+      if (((String)localObject2).endsWith("mp4.tmp.mp4")) {
+        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 11) + "_" + System.currentTimeMillis() + ".mp4";
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PublishHomeWorkFragment", 2, "receive action_recv_video_request");
-      }
-      PublishHomeWorkFragment.a(this.a).b(102);
-    }
-    label51:
-    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+      FileUtils.d(this.jdField_a_of_type_JavaLangString, (String)localObject1);
+      localObject2 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      ((Intent)localObject2).setData(Uri.parse("file://" + (String)localObject1));
+      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject2);
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aisz(this));
       return;
     }
-    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
-      QLog.d("PublishHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
+    catch (Exception localException)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aita(this));
+      return;
     }
-    PublishHomeWorkFragment.a(this.a).b(102);
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aitb(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisy
  * JD-Core Version:    0.7.0.1
  */

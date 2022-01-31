@@ -1,18 +1,18 @@
-import android.os.Process;
-import com.tencent.component.network.utils.thread.PriorityThreadFactory;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.component.network.downloader.strategy.DownloadGlobalStrategy.StrategyInfo;
 
-public class pka
-  extends Thread
+public final class pka
+  implements Parcelable.Creator
 {
-  public pka(PriorityThreadFactory paramPriorityThreadFactory, Runnable paramRunnable, String paramString)
+  public DownloadGlobalStrategy.StrategyInfo a(Parcel paramParcel)
   {
-    super(paramRunnable, paramString);
+    return new DownloadGlobalStrategy.StrategyInfo(paramParcel);
   }
   
-  public void run()
+  public DownloadGlobalStrategy.StrategyInfo[] a(int paramInt)
   {
-    Process.setThreadPriority(PriorityThreadFactory.a(this.a));
-    super.run();
+    return new DownloadGlobalStrategy.StrategyInfo[paramInt];
   }
 }
 

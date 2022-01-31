@@ -1,16 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryDesFromVidListStep.ReceiveDataListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
-class nzp
-  implements GetMyStoryDesFromVidListStep.ReceiveDataListener
+public class nzp
+  implements DialogInterface.OnClickListener
 {
-  nzp(nzo paramnzo) {}
+  public nzp(StoryListPresenter paramStoryListPresenter) {}
   
-  public void a(MyStorys paramMyStorys)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NewMyStorySegment.a(this.a.a).sendMessage(NewMyStorySegment.a(this.a.a).obtainMessage(0, paramMyStorys));
+    this.a.a.a(false, true, 12, null);
+    StoryReportor.a("home_page", "guide_open", 0, 0, new String[0]);
   }
 }
 

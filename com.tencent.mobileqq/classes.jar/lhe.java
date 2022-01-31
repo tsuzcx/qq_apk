@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager.VideoDownloadCallback;
 
-class lhe
-  implements DialogInterface.OnClickListener
+public class lhe
+  implements ReadInJoyVideoDownloadManager.VideoDownloadCallback
 {
-  lhe(lhd paramlhd) {}
+  public lhe(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.a.a.d();
+    ReadInJoyCameraCaptureActivity.a(this.a).post(new lhg(this, paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    ReadInJoyCameraCaptureActivity.a(this.a).post(new lhf(this, paramBoolean, paramString2));
   }
 }
 

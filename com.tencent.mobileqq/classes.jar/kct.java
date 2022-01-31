@@ -1,30 +1,60 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.RecvMsg;
-import com.tencent.av.ui.VideoLayerUI;
-import java.util.List;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.av.AVLog;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
 
 public class kct
-  implements Runnable
+  implements ViewPager.OnPageChangeListener
 {
-  private kct(VideoLayerUI paramVideoLayerUI) {}
+  private int jdField_a_of_type_Int;
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener;
   
-  public void run()
+  public kct(EffectCycleViewPager paramEffectCycleViewPager, ViewPager.OnPageChangeListener paramOnPageChangeListener, int paramInt)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    if (VideoLayerUI.a(this.a).size() > 0)
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = paramOnPageChangeListener;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onPageScrollStateChanged(int paramInt)
+  {
+    if (paramInt == 0)
     {
-      this.a.a.a().removeCallbacks(VideoLayerUI.a(this.a));
-      this.a.a.a().removeCallbacks(VideoLayerUI.b(this.a));
-      RecvMsg localRecvMsg = (RecvMsg)VideoLayerUI.a(this.a).remove(0);
-      VideoLayerUI.a(this.a, localRecvMsg);
-      this.a.a.a().postDelayed(VideoLayerUI.a(this.a), 3000L);
-      this.a.a.a().postDelayed(VideoLayerUI.b(this.a), 3000L);
-      return;
+      if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.getCount() - 1) {
+        break label57;
+      }
+      AVLog.c("EffectCycleViewPager", "onPageScrollStateChanged 00:1");
+      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1, false);
     }
-    this.a.a.a().removeCallbacks(VideoLayerUI.a(this.a));
+    for (;;)
+    {
+      if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
+        this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrollStateChanged(paramInt);
+      }
+      return;
+      label57:
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        AVLog.c("EffectCycleViewPager", "onPageScrollStateChanged 11:" + (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.getCount() - 2));
+        this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.getCount() - 2, false);
+      }
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null) {
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    AVLog.c("EffectCycleViewPager", "onPageSelected:" + paramInt);
+    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener != null)
+    {
+      paramInt = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.a(paramInt);
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener.onPageSelected(paramInt);
+    }
   }
 }
 

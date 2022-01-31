@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abdb;
+import abkc;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -771,7 +771,7 @@ public class DynamicUtils
   
   public static void a(AppInterface paramAppInterface, String paramString, int paramInt)
   {
-    ThreadManager.post(new abdb(paramAppInterface, paramString, paramInt), 2, null, true);
+    ThreadManager.post(new abkc(paramAppInterface, paramString, paramInt), 2, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -842,7 +842,7 @@ public class DynamicUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicUtils
  * JD-Core Version:    0.7.0.1
  */

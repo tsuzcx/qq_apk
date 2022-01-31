@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import nef;
+import nfp;
 
 public class GetUserIconHandler
 {
@@ -28,7 +28,7 @@ public class GetUserIconHandler
       if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new nef(this), 5, null, true);
+        ThreadManager.post(new nfp(this), 5, null, true);
       }
       return;
     }

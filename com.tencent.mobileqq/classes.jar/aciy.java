@@ -1,32 +1,26 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class aciy
-  implements View.OnLongClickListener
+  extends RecyclerView.AdapterDataObserver
 {
-  public aciy(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public aciy(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public boolean onLongClick(View paramView)
+  public void onChanged()
   {
-    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
-      return false;
+    if (ExtendFriendSquareFragment.a(this.a).a() == 0)
+    {
+      ExtendFriendSquareFragment.a(this.a).removeItemDecoration(ExtendFriendSquareFragment.a(this.a));
+      return;
     }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131362722, paramView.getContext().getString(2131434024));
-    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localQQCustomMenu);
-    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new aciz(this, paramView), new acjb(this, paramView));
-    return true;
+    ExtendFriendSquareFragment.a(this.a).removeItemDecoration(ExtendFriendSquareFragment.a(this.a));
+    ExtendFriendSquareFragment.a(this.a).addItemDecoration(ExtendFriendSquareFragment.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aciy
  * JD-Core Version:    0.7.0.1
  */

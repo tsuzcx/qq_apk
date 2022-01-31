@@ -21,7 +21,7 @@ public abstract class SegmentView
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void E_() {}
+  public void J_() {}
   
   public abstract int a();
   
@@ -144,18 +144,18 @@ public abstract class SegmentView
   
   public void e_(int paramInt) {}
   
-  public void e_(boolean paramBoolean)
+  public void f_(boolean paramBoolean)
   {
     if (paramBoolean != this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_Boolean = paramBoolean;
     }
   }
   
-  public void i() {}
+  public void g() {}
   
   public void k() {}
   
-  public void l()
+  public void m()
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager == null) {
       return;

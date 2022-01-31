@@ -1,16 +1,15 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
-class vua
-  implements PublicAccountManager.InitDoneObserver
+public class vua
+  implements DialogInterface.OnDismissListener
 {
-  vua(vtz paramvtz) {}
+  public vua(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    PublicAccountChatPie.b(this.a.a, false);
-    this.a.a.a.sendEmptyMessage(1);
+    this.a.b(1);
   }
 }
 

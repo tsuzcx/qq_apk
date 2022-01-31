@@ -1,18 +1,14 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class ryz
-  implements DialogInterface.OnClickListener
+class ryz
+  implements Runnable
 {
-  public ryz(ChatSettingActivity paramChatSettingActivity) {}
+  ryz(ryy paramryy, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
+    if (!this.jdField_a_of_type_Ryy.a.a.isFinishing()) {
+      this.jdField_a_of_type_Ryy.a.a.a(this.jdField_a_of_type_Int);
     }
   }
 }

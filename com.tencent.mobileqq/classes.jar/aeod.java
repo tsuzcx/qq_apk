@@ -1,12 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomUtils;
 
 public class aeod
-  extends RecyclerView.ViewHolder
+  implements DialogInterface.OnClickListener
 {
-  public aeod(View paramView)
+  public aeod(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
+    GameRoomUtils.a(this.a, 10);
+    GameRoomInviteActivity.b(this.a);
   }
 }
 

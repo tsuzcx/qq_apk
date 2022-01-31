@@ -1,44 +1,22 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.AnimationDrawable;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 class aiwt
   implements Runnable
 {
-  aiwt(aiwr paramaiwr) {}
+  aiwt(aiws paramaiws) {}
   
   public void run()
   {
-    AudioItem.AudioViewHolder localAudioViewHolder = (AudioItem.AudioViewHolder)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.c);
-    if (localAudioViewHolder != null)
-    {
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.a) {
-        break label103;
-      }
-      AnimationDrawable localAnimationDrawable = (AnimationDrawable)AudioItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem).getResources().getDrawable(2131034360);
-      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
-      localAnimationDrawable.start();
-    }
-    for (;;)
-    {
-      localAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      localAudioViewHolder.c.setVisibility(0);
+    if (this.a.a.b == null) {
       return;
-      label103:
-      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843779);
     }
+    this.a.a.b.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwt
  * JD-Core Version:    0.7.0.1
  */

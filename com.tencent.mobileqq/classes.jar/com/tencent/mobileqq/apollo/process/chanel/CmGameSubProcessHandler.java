@@ -26,9 +26,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import ynx;
-import yny;
-import ynz;
+import yrd;
+import yre;
+import yrf;
 
 public class CmGameSubProcessHandler
   implements ApolloCmdChannel.IRequestHandler
@@ -49,7 +49,7 @@ public class CmGameSubProcessHandler
   
   private void a(String paramString)
   {
-    ThreadManager.getUIHandler().post(new ynx(this, paramString));
+    ThreadManager.getUIHandler().post(new yrd(this, paramString));
   }
   
   private boolean a(String paramString)
@@ -142,7 +142,7 @@ public class CmGameSubProcessHandler
   
   private void b(String paramString)
   {
-    ThreadManager.getUIHandler().post(new yny(this, paramString));
+    ThreadManager.getUIHandler().post(new yre(this, paramString));
   }
   
   private void c()
@@ -182,7 +182,7 @@ public class CmGameSubProcessHandler
           {
             this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameInvitation.a(localGameMsgInfo1);
             this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameInvitation.a(str);
-            ThreadManager.getUIHandler().post(new ynz(this));
+            ThreadManager.getUIHandler().post(new yrf(this));
             paramString = localCmGameLauncher.a();
             if (paramString != null)
             {

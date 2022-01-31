@@ -11,8 +11,8 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nvx;
-import nvy;
+import nxk;
+import nxl;
 
 public class QQStoryMemoriesPresenter
   implements IEventReceiver
@@ -24,11 +24,11 @@ public class QQStoryMemoriesPresenter
   private QQStoryMemoriesPresenter.DeleteShareGroupMemberEventReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$DeleteShareGroupMemberEventReceiver;
   public String a;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private nvy jdField_a_of_type_Nvy;
+  private nxl jdField_a_of_type_Nxl;
   
   public QQStoryMemoriesPresenter(int paramInt, String paramString, StoryMemoriesFragment paramStoryMemoriesFragment)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nvx(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nxk(this);
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = paramStoryMemoriesFragment;
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -40,15 +40,15 @@ public class QQStoryMemoriesPresenter
     PlayModeUtils.a().addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$DeleteShareGroupMemberEventReceiver = new QQStoryMemoriesPresenter.DeleteShareGroupMemberEventReceiver(this);
     Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$DeleteShareGroupMemberEventReceiver);
-    this.jdField_a_of_type_Nvy = new nvy(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nvy);
+    this.jdField_a_of_type_Nxl = new nxl(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nxl);
   }
   
   public void b()
   {
     PlayModeUtils.a().removeObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$DeleteShareGroupMemberEventReceiver);
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nvy);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nxl);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   

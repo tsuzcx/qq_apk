@@ -1,34 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
+import cooperation.troop_homework.TroopHomeworkHelper;
 
-public final class ajkq
-  implements DownloadParams.DecodeHandler
+public class ajkq
+  implements Runnable
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ajkq(AudioItem paramAudioItem, AudioInfo paramAudioInfo) {}
+  
+  public void run()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
+    String str = TroopHomeworkHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.b);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.b(str);
+    if (!TextUtils.isEmpty(str)) {
+      ((Activity)AudioItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem)).runOnUiThread(new ajkr(this));
     }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return ImageUtil.e(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkq
  * JD-Core Version:    0.7.0.1
  */

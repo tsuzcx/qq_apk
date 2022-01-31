@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.activity.RecommendTroopAdapter;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class aiuw
-  implements Runnable
+  implements BusinessObserver
 {
-  public aiuw(ReciteRecordLayout paramReciteRecordLayout) {}
+  public aiuw(RecommendTroopAdapter paramRecommendTroopAdapter) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ReciteRecordLayout.b(this.a);
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).c();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiuw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,55 @@
-import android.app.Activity;
-import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import java.util.HashMap;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.OfflineEnvHelper;
+import com.tencent.biz.viewplugin.ViewPluginLoader;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class paf
-  implements View.OnClickListener
+  implements AsyncBack
 {
-  public paf(OfflinePlugin paramOfflinePlugin) {}
+  public paf(ViewPluginLoader paramViewPluginLoader, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    paramView = this.a.mRuntime.a();
-    if (paramView == null) {}
-    OfflineUpdateStatus localOfflineUpdateStatus;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
+    }
+    if (paramInt == 0)
     {
-      do
+      String str;
+      try
       {
-        do
+        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
+        str = paramString.optString("url");
+        paramInt = paramString.optInt("filesize");
+        if ((str != null) && (str.endsWith("patch")))
         {
+          FileUtils.a(OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a) + this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a);
+          this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.b();
           return;
-        } while ((OfflinePlugin.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(OfflinePlugin.a(this.a))));
-        localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
-      } while (localOfflineUpdateStatus == null);
-      if (localOfflineUpdateStatus.b() == 3)
-      {
-        localOfflineUpdateStatus.a();
-        this.a.b();
-        localOfflineUpdateStatus.b(4);
-        if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-          this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
         }
-        OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.remove(OfflinePlugin.a(this.a));
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
         return;
       }
-    } while (localOfflineUpdateStatus.b() != 0);
-    HtmlOffline.a(paramView.getApplicationContext(), OfflinePlugin.a(this.a), localOfflineUpdateStatus.f, localOfflineUpdateStatus.a, localOfflineUpdateStatus);
-    localOfflineUpdateStatus.b(1);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
+      {
+        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
+      return;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 2000L);
+    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
   }
 }
 

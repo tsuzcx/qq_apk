@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.text.TextUtils;
@@ -25,7 +24,6 @@ import com.tencent.biz.qqstory.widget.InteractContainerLayout;
 import com.tencent.biz.qqstory.widget.PollContainerLayout;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -34,53 +32,13 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-import onj;
-import onk;
-import onl;
+import opd;
+import ope;
+import opf;
 
 public class FFmpegUtils
 {
   public static final SimpleDateFormat a = new SimpleDateFormat("yyyyMMdd", Locale.CHINESE);
-  
-  public static final Bitmap a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Object localObject = QQStoryConstant.q + paramString + "_download_water.png";
-    FileUtil.c((String)localObject);
-    if (paramInt3 == 2) {
-      paramInt3 = 2130843154;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = BitmapFactory.decodeResource(paramContext.getResources(), paramInt3);
-        Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-        localObject = new Canvas(localBitmap);
-        if (paramInt1 == 750) {
-          break label192;
-        }
-        float f = paramInt1 / 750.0F;
-        paramContext = Bitmap.createScaledBitmap(paramString, (int)(paramString.getWidth() * f), (int)(f * paramString.getHeight()), true);
-        ((Canvas)localObject).drawBitmap(paramContext, 30.0F, paramInt2 - 30 - paramContext.getHeight(), null);
-        ((Canvas)localObject).save(31);
-        paramString.recycle();
-        paramContext.recycle();
-        return localBitmap;
-      }
-      catch (OutOfMemoryError paramContext)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, "FFmpegUtils decodeResource OutOfMemoryError = " + (String)localObject);
-        return null;
-      }
-      paramInt3 = 2130843669;
-      continue;
-      label192:
-      paramContext = paramString;
-    }
-  }
   
   public static Bitmap a(Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
@@ -303,7 +261,12 @@ public class FFmpegUtils
   
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, ExecuteBinResponseCallback paramExecuteBinResponseCallback)
   {
-    a(false, paramContext, paramString1, paramString2, "h264", paramInt1, paramInt2, paramString3, paramExecuteBinResponseCallback);
+    a(false, paramContext, paramString1, paramString2, "h264", paramInt1, paramInt2, paramString3, false, paramExecuteBinResponseCallback);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, boolean paramBoolean, ExecuteBinResponseCallback paramExecuteBinResponseCallback)
+  {
+    a(false, paramContext, paramString1, paramString2, "copy", paramInt1, paramInt2, paramString3, paramBoolean, paramExecuteBinResponseCallback);
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
@@ -328,7 +291,7 @@ public class FFmpegUtils
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.jdField_a_of_type_Int = 15;
     localFFmpegCommandUnit.jdField_a_of_type_JavaUtilArrayList = new FFmpegUtils.9(paramString1, paramString2, paramString3);
-    localFFmpegCommandUnit.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new onj(paramExecuteBinResponseCallback);
+    localFFmpegCommandUnit.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new opd(paramExecuteBinResponseCallback);
     paramString1 = new ArrayList();
     paramString1.add(localFFmpegCommandUnit);
     paramContext = FFmpeg.a(paramContext, true);
@@ -379,7 +342,7 @@ public class FFmpegUtils
   
   public static void a(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, ExecuteBinResponseCallback paramExecuteBinResponseCallback)
   {
-    a(paramBoolean, paramContext, paramString1, paramString2, "copy", paramInt1, paramInt2, paramString3, paramExecuteBinResponseCallback);
+    a(paramBoolean, paramContext, paramString1, paramString2, "copy", paramInt1, paramInt2, paramString3, false, paramExecuteBinResponseCallback);
   }
   
   public static void a(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
@@ -399,7 +362,7 @@ public class FFmpegUtils
     paramContext.a(localArrayList);
   }
   
-  private static void a(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, ExecuteBinResponseCallback paramExecuteBinResponseCallback)
+  private static void a(boolean paramBoolean1, Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, boolean paramBoolean2, ExecuteBinResponseCallback paramExecuteBinResponseCallback)
   {
     Object localObject1 = a(paramString2);
     Object localObject2 = new File(QQStoryConstant.d);
@@ -419,14 +382,14 @@ public class FFmpegUtils
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.jdField_a_of_type_Int = 3;
     localFFmpegCommandUnit.jdField_a_of_type_JavaUtilArrayList = new FFmpegUtils.5(paramString2, (String)localObject2, paramInt1, paramInt2);
-    localFFmpegCommandUnit.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new onk(paramExecuteBinResponseCallback);
+    localFFmpegCommandUnit.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ope(paramExecuteBinResponseCallback);
     ((ArrayList)localObject1).add(localFFmpegCommandUnit);
     paramString2 = new FFmpegCommandUnit();
     paramString2.jdField_a_of_type_Int = 4;
-    paramString2.jdField_a_of_type_JavaUtilArrayList = new FFmpegUtils.7(paramString1, (String)localObject2, paramString3, paramString4);
-    paramString2.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new onl(paramExecuteBinResponseCallback, (String)localObject2);
+    paramString2.jdField_a_of_type_JavaUtilArrayList = new FFmpegUtils.7(paramString1, (String)localObject2, paramString3, paramString4, paramBoolean2, paramInt2);
+    paramString2.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new opf(paramExecuteBinResponseCallback, (String)localObject2);
     ((ArrayList)localObject1).add(paramString2);
-    if (paramBoolean) {}
+    if (paramBoolean1) {}
     for (paramContext = FFmpeg.b(paramContext, true); paramContext.a(); paramContext = FFmpeg.a(paramContext, true))
     {
       paramContext.b((ArrayList)localObject1);
@@ -513,7 +476,7 @@ public class FFmpegUtils
   
   public static void b(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, ExecuteBinResponseCallback paramExecuteBinResponseCallback)
   {
-    a(false, paramContext, paramString1, paramString2, "copy", paramInt1, paramInt2, paramString3, paramExecuteBinResponseCallback);
+    a(paramContext, paramString1, paramString2, paramInt1, paramInt2, paramString3, false, paramExecuteBinResponseCallback);
   }
   
   public static void b(Context paramContext, String paramString1, String paramString2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)

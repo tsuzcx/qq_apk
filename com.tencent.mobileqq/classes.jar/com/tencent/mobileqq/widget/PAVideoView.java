@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.widget;
 
-import akhb;
-import akhc;
-import akhd;
-import akhe;
+import akvi;
+import akvj;
+import akvk;
+import akvl;
 import android.content.Context;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
@@ -258,7 +258,7 @@ public class PAVideoView
     this.jdField_c_of_type_Long = -1L;
     this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840883);
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840920);
     Object localObject = a();
     if (localObject != null)
     {
@@ -440,7 +440,7 @@ public class PAVideoView
           paramString = new LinearInterpolator();
           this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setInterpolator(paramString);
         }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akhb(this, paramQQLiveDrawableParams), 1200L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akvi(this, paramQQLiveDrawableParams), 1200L);
       }
       do
       {
@@ -454,7 +454,7 @@ public class PAVideoView
         paramQQLiveDrawableParams.setVisibility(8);
       } while (this.j != 4);
       b(false);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akhc(this), 5000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akvj(this), 5000L);
       return;
       if (paramInt == 5) {
         if (!(paramObject instanceof QQLiveDrawable.ErrorInfo)) {
@@ -468,10 +468,10 @@ public class PAVideoView
     for (paramString = (QQLiveDrawable.ErrorInfo)paramObject;; paramString = null)
     {
       paramQQLiveDrawableParams.setVisibility(0);
-      paramQQLiveDrawableParams.setImageResource(2130840879);
+      paramQQLiveDrawableParams.setImageResource(2130840916);
       this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$Holder.jdField_a_of_type_AndroidViewView.setVisibility(0);
       b(true);
-      this.jdField_a_of_type_AndroidOsHandler.post(new akhd(this, paramQQLiveDrawableParams));
+      this.jdField_a_of_type_AndroidOsHandler.post(new akvk(this, paramQQLiveDrawableParams));
       if (paramString == null) {
         break;
       }
@@ -543,8 +543,8 @@ public class PAVideoView
                   break;
                 }
                 paramQQLiveDrawableParams.setVisibility(0);
-                paramQQLiveDrawableParams.setImageResource(2130840883);
-                this.jdField_a_of_type_AndroidOsHandler.post(new akhe(this, paramQQLiveDrawableParams));
+                paramQQLiveDrawableParams.setImageResource(2130840920);
+                this.jdField_a_of_type_AndroidOsHandler.post(new akvl(this, paramQQLiveDrawableParams));
                 return;
                 if (!QLog.isColorLevel()) {
                   break;
@@ -591,7 +591,7 @@ public class PAVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAVideoView
  * JD-Core Version:    0.7.0.1
  */

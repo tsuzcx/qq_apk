@@ -1,31 +1,36 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.ImageTaskTracer;
-import com.tencent.component.media.utils.LruCache;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.common.galleryactivity.UrlGalleryAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 
 public class pfi
-  extends LruCache
+  extends URLDrawableDownListener.Adapter
 {
-  public pfi(ImageManager paramImageManager, int paramInt)
+  public pfi(UrlGalleryAdapter paramUrlGalleryAdapter, int paramInt, ViewGroup paramViewGroup) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramInt);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityUrlGalleryAdapter.a(this.jdField_a_of_type_Int, false);
   }
   
-  protected int a(Integer paramInteger, Drawable paramDrawable)
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    return ImageManager.a(paramDrawable);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityUrlGalleryAdapter.b(this.jdField_a_of_type_Int, paramInt / 100);
   }
   
-  protected void a(boolean paramBoolean, Integer paramInteger, Drawable paramDrawable1, Drawable paramDrawable2)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramInteger != null) {
-      ImageTaskTracer.addImageLruCacheEvictedRecord(paramInteger.intValue());
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityUrlGalleryAdapter.a(this.jdField_a_of_type_Int, true);
+    paramView = this.jdField_a_of_type_ComTencentCommonGalleryactivityUrlGalleryAdapter.a(paramURLDrawable.getURL(), this.jdField_a_of_type_AndroidViewViewGroup);
+    if (paramView != null) {
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityUrlGalleryAdapter.a(paramView, paramURLDrawable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pfi
  * JD-Core Version:    0.7.0.1
  */

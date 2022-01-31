@@ -43,7 +43,7 @@ public class ZimuViewFilm
   
   public int a()
   {
-    return (int)getContext().getResources().getDimension(2131560059);
+    return (int)getContext().getResources().getDimension(2131560077);
   }
   
   public String a()

@@ -52,7 +52,7 @@ public class DataReport
     if (paramInt2 == 1)
     {
       paramInt2 = i;
-      if (paramInt1 != 2131365358) {
+      if (paramInt1 != 2131365380) {
         break label75;
       }
       if (paramInt2 == 0) {
@@ -77,7 +77,7 @@ public class DataReport
       str2 = "0X80043C5";
       continue;
       label75:
-      if (paramInt1 == 2131365383)
+      if (paramInt1 == 2131365405)
       {
         if (paramInt2 != 0)
         {
@@ -527,7 +527,7 @@ public class DataReport
   {
     switch (paramInt1)
     {
-    case 2131365810: 
+    case 2131365837: 
     default: 
       return;
     }

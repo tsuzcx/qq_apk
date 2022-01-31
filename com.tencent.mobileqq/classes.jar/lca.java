@@ -1,33 +1,19 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuTextBuilder;
 
 public class lca
-  implements Runnable
+  extends Editable.Factory
 {
-  public lca(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
+  public lca(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void run()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a.setBackgroundColor(-1);
+    if ((paramCharSequence instanceof BiuTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      if (Build.VERSION.SDK_INT >= 14)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.animate().alpha(0.0F).setDuration(200L).setListener(new lcb(this));
-        this.a.jdField_a_of_type_AndroidWidgetImageView.animate().start();
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    return new BiuTextBuilder(paramCharSequence, 3, 20);
   }
 }
 

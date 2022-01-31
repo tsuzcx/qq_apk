@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.now.enter;
 
-import afne;
+import agak;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
@@ -61,7 +61,7 @@ public class NowFestivalWebViewFragment
     localAnimatorSet.setDuration(400L);
     localAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2);
     localAnimatorSet.start();
-    ThreadManager.getUIHandler().postDelayed(new afne(this), 300L);
+    ThreadManager.getUIHandler().postDelayed(new agak(this), 300L);
   }
   
   protected int c(Bundle paramBundle)
@@ -74,8 +74,8 @@ public class NowFestivalWebViewFragment
     }
     if (!this.d)
     {
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362837);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362838);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362855);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362856);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
       if (this.jdField_a_of_type_AndroidAppActivity.getIntent().getBooleanExtra("is_need_zoom_in_anim", true)) {
         h();
@@ -101,10 +101,10 @@ public class NowFestivalWebViewFragment
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.addView(this.jdField_a_of_type_AndroidViewView, new RelativeLayout.LayoutParams(-1, -1));
-      this.jdField_g_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.findViewById(2131366723);
+      this.jdField_g_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.findViewById(2131366766);
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a = 0;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b = this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131492923);
-      this.jdField_g_of_type_AndroidViewView.setBackgroundResource(2130839539);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b = this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131492924);
+      this.jdField_g_of_type_AndroidViewView.setBackgroundResource(2130839544);
     }
     this.jdField_c_of_type_Boolean = true;
     return i;
@@ -211,7 +211,7 @@ public class NowFestivalWebViewFragment
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     if (paramLayoutInflater != null) {
-      paramLayoutInflater.setBackgroundResource(2130839539);
+      paramLayoutInflater.setBackgroundResource(2130839544);
     }
     return paramLayoutInflater;
   }
@@ -223,7 +223,7 @@ public class NowFestivalWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.now.enter.NowFestivalWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

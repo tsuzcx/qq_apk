@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public class aacv
-  implements Runnable
+public final class aacv
+  implements INetEngine.IBreakDownFix
 {
-  public aacv(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
-  
-  public void run()
+  public void a(NetReq paramNetReq, NetResp paramNetResp)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
-    }
-    for (;;)
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalMarkerRecoglinit", true, 0L, 0L, localHashMap, "");
-      return;
-      localHashMap.put("result", "1");
-    }
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
+      paramNetResp.c = 0L;
+      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
+      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.jdField_a_of_type_JavaLangString = (str + "range=" + paramNetReq.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ArConfig_ArResourceDownload", 2, "IBreakDownFix, " + paramNetResp + ", offset=" + paramNetReq.jdField_a_of_type_Long);
   }
 }
 

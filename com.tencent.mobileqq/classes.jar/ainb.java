@@ -1,71 +1,55 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
+import com.tencent.mobileqq.teamwork.spread.BaseTimAIOTipsProcessor.ListResult;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public class ainb
-  implements Comparator
+class ainb
+  implements BaseTimAIOTipsProcessor.ListResult
 {
-  public int a(aimz paramaimz)
-  {
-    if (paramaimz.jdField_a_of_type_Int != -1) {
-      return paramaimz.jdField_a_of_type_Int;
-    }
-    Friends localFriends = paramaimz.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = ContactUtils.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
-    }
-    for (;;)
-    {
-      paramaimz.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
-    }
-  }
+  ainb(aina paramaina, String paramString) {}
   
-  public int a(aimz paramaimz1, aimz paramaimz2)
+  public void a(List paramList)
   {
-    return a(paramaimz1) - a(paramaimz2);
+    if ((paramList == null) || (paramList.size() == 0)) {
+      if (QLog.isDebugVersion())
+      {
+        if (paramList != null) {
+          break label34;
+        }
+        paramList = "lst is null";
+        QLog.i("AIOMessageSpreadManager", 1, paramList);
+      }
+    }
+    label34:
+    float f1;
+    float f2;
+    do
+    {
+      return;
+      while (!paramList.hasNext())
+      {
+        paramList = "lst.size() = 0";
+        break;
+        f1 = AIOMessageSpreadManager.a(this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a();
+        paramList = paramList.iterator();
+      }
+      str = (String)paramList.next();
+      f2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_JavaLangString, str);
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOMessageSpreadManager", 1, "file[" + this.jdField_a_of_type_JavaLangString + "] and [" + str + "], precentage[" + f2 + "]");
+      }
+    } while (f2 - f1 <= 0.0F);
+    String str = AIOMessageSpreadManager.a(this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).b();
+    paramList = AIOMessageSpreadManager.a(this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).c();
+    str = str + "。" + paramList;
+    AIOMessageSpreadManager.a(this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_Aina.jdField_a_of_type_ComTencentMobileqqDataChatMessage, str, paramList, "precent", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ainb
  * JD-Core Version:    0.7.0.1
  */

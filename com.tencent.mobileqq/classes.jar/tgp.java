@@ -1,8 +1,25 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class tgp
+  extends MessageObserver
 {
-  public TextView a;
+  public tgp(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, false);
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, true);
+    }
+  }
 }
 
 

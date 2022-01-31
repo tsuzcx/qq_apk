@@ -1,48 +1,17 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyVideoUtils;
+import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
 
-public class aenf
-  implements GestureDetector.OnDoubleTapListener
+public final class aenf
+  implements NearbyCustomDialog.OnClickListener
 {
-  public aenf(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aenf(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    if (System.currentTimeMillis() - PlayOperationViewModel.a(this.a) >= 500L)
-    {
-      int i = (int)paramMotionEvent.getRawX();
-      int j = (int)paramMotionEvent.getRawY();
-      ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131370438)).a(i, j);
-      if (!PlayOperationViewModel.a(this.a)) {
-        break label73;
-      }
-    }
-    for (;;)
-    {
-      PlayOperationViewModel.a(this.a, System.currentTimeMillis());
-      return true;
-      label73:
-      if ((!PlayOperationViewModel.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131370438).getVisibility() == 0))
-      {
-        PlayOperationViewModel.a(this.a, false);
-        this.a.c(null);
-        new NowVideoReporter().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-    }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
+    NearbyVideoUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
   }
 }
 

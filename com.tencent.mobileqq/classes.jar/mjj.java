@@ -1,20 +1,92 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinHandler.ReadInJoySkinObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.ThreadManager;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.IButtonHandle;
+import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class mjj
-  extends ReadInJoySkinHandler.ReadInJoySkinObserver
+class mjj
+  implements SceneBuilder.IButtonHandle
 {
-  public mjj(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  mjj(mjg parammjg) {}
   
-  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo)
+  public void a(Layer paramLayer, Sprite paramSprite, String paramString)
   {
-    if (paramBoolean) {
-      ThreadManager.post(new mjk(this, paramGuideInfo2, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    if (paramString.equals("close"))
+    {
+      this.a.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView);
+      PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C82", "0X8008C82", 0, 0, this.a.jdField_b_of_type_JavaLangString, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
     }
+    do
+    {
+      return;
+      if (paramString.equals("use_skin"))
+      {
+        this.a.jdField_b_of_type_AndroidViewView$OnClickListener.onClick(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView);
+        SharedPreUtils.r(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+        PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C83", "0X8008C83", 0, 0, this.a.jdField_b_of_type_JavaLangString, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
+        return;
+      }
+      if (paramString.equals("open_sound"))
+      {
+        paramLayer = (Sprite)paramLayer.a("声音红点");
+        if (paramLayer != null) {
+          paramLayer.e = 0.0F;
+        }
+        if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a == null) {
+          this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a = new MediaPlayer();
+        }
+        for (;;)
+        {
+          try
+          {
+            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.setDataSource(this.a.jdField_a_of_type_JavaLangString + "/audio.mp3");
+            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.prepare();
+            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.start();
+            PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C81", "0X8008C81", 0, 0, this.a.jdField_b_of_type_JavaLangString, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
+            return;
+          }
+          catch (Exception paramLayer)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e("ReadInJoySkinGuideView", 2, QLog.getStackTraceString(paramLayer));
+            continue;
+          }
+          try
+          {
+            if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.isPlaying()) {
+              continue;
+            }
+            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.start();
+          }
+          catch (Exception paramLayer) {}
+          if (QLog.isColorLevel()) {
+            QLog.e("ReadInJoySkinGuideView", 2, QLog.getStackTraceString(paramLayer));
+          }
+        }
+      }
+      paramLayer = JumpParser.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramString);
+      if (paramLayer != null)
+      {
+        paramLayer.b();
+        return;
+      }
+    } while ((!paramString.startsWith("https://")) && (!paramString.startsWith("http://")));
+    paramLayer = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramLayer.putExtra("url", paramString);
+    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramLayer);
   }
 }
 

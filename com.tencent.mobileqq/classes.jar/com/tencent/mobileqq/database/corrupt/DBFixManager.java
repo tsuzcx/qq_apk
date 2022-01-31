@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import abpg;
+import abwh;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -91,7 +91,7 @@ public class DBFixManager
   
   public void a(Context paramContext)
   {
-    ThreadManager.postImmediately(new abpg(this), null, true);
+    ThreadManager.postImmediately(new abwh(this), null, true);
   }
   
   public void a(Context paramContext, boolean paramBoolean)
@@ -259,7 +259,7 @@ public class DBFixManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixManager
  * JD-Core Version:    0.7.0.1
  */

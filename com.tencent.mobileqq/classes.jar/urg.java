@@ -1,48 +1,38 @@
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.ark.ArkViewModelBase.AppInfo;
-import com.tencent.ark.ark.Application;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
 
 public class urg
-  implements Runnable
+  implements URLDrawableDownListener
 {
-  public urg(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2) {}
+  public urg(DoodleMsgLayout paramDoodleMsgLayout) {}
   
-  public void run()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    ark.Application localApplication = ark.Application.Create(this.jdField_a_of_type_JavaLangString);
-    int i;
-    if ((TextUtils.isEmpty(localApplication.GetUrlWhiteList())) && (!TextUtils.isEmpty(this.b))) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.b != 1008) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.d) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a(this.b)))
-      {
-        ArkAppDataReport.a(null, ArkAppContainer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer).name, ArkAppContainer.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer).view);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a(this.jdField_a_of_type_JavaLangString, -1, "非法内容，无法正常显示。");
-        i = 0;
-        j = i;
-        if (QLog.isColorLevel()) {
-          Log.d("ArkApp.Cntnr.chkUrl", "onLoadApp curType=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.b);
-        }
-      }
-    }
-    for (int j = i;; j = 1)
+    if (paramView == DoodleMsgLayout.a(this.a))
     {
-      if (j != 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a.a = true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a.b = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.i("ArkApp.ArkAppContainer", 2, String.format("getAppPathByNameFromLocal.in.wrapper: %h", new Object[] { this }));
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a(this.jdField_a_of_type_JavaLangString, 0, null);
-      }
-      localApplication.Release();
-      return;
-      i = 1;
-      break;
+      DoodleMsgLayout.a(this.a, true);
+      DoodleMsgLayout.a(this.a);
     }
+    do
+    {
+      return;
+      if (paramView == DoodleMsgLayout.b(this.a))
+      {
+        ((GifDrawable)paramURLDrawable.getCurrDrawable()).setGIFPlayOnceListener(this.a);
+        return;
+      }
+    } while (paramView != DoodleMsgLayout.c(this.a));
   }
 }
 

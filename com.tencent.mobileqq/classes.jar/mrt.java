@@ -1,15 +1,15 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
 
 public class mrt
+  implements Runnable
 {
-  public ViewGroup a;
-  public ArrayList a;
+  public mrt(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed) {}
   
-  private mrt(SubscriptFeedsAdapter paramSubscriptFeedsAdapter)
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    ServiceAccountFolderManager.a().a(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed, true);
   }
 }
 

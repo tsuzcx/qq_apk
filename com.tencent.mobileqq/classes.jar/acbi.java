@@ -1,39 +1,63 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
-import com.tencent.mobileqq.facetoface.Face2FaceUserData;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import java.util.Iterator;
+import java.util.List;
 
-public class acbi
-  implements Animation.AnimationListener
+class acbi
+  implements Runnable
 {
-  public acbi(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim, Face2FaceUserData paramFace2FaceUserData1, int paramInt1, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, Face2FaceUserData paramFace2FaceUserData2, boolean paramBoolean3, boolean paramBoolean4, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt2) {}
+  acbi(acbg paramacbg, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface, int paramInt, Bundle paramBundle) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.a).b(this.jdField_b_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData, this.c, this.d);
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.setStatusWithAnimation(this.jdField_b_of_type_Int);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation currentUin ( " + this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " ) Animation Start  ");
+    Object localObject2 = LebaShowListManager.a().a();
+    Object localObject1;
+    if (localObject2 != null)
+    {
+      localObject1 = localObject2;
+      if (!((List)localObject2).isEmpty()) {}
     }
-    double d2 = Math.atan(this.jdField_a_of_type_Double) * 180.0D / 3.141592653589793D * this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_b_of_type_Int;
-    double d1 = d2;
-    if (this.jdField_a_of_type_Boolean) {
-      d1 = 180.0D - d2;
+    else
+    {
+      LebaShowListManager.a().a(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject1 = LebaShowListManager.a().a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_b_of_type_Float = ((float)d1);
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation uinToHoleIndex add( " + this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " )");
+    if (localObject1 != null)
+    {
+      localObject1 = ((List)localObject1).iterator();
+      do
+      {
+        if (!((Iterator)localObject1).hasNext()) {
+          break;
+        }
+        localObject2 = (LebaViewItem)((Iterator)localObject1).next();
+      } while ((localObject2 == null) || (((LebaViewItem)localObject2).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo == null) || (((LebaViewItem)localObject2).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId != this.jdField_a_of_type_Int));
     }
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.a(2, this.jdField_b_of_type_Boolean);
+    for (int i = ((LebaViewItem)localObject2).jdField_a_of_type_Byte;; i = -1)
+    {
+      localObject1 = new Bundle();
+      if (i == -1)
+      {
+        ((Bundle)localObject1).putInt("ret", 1);
+        if (i != 0) {
+          break label171;
+        }
+      }
+      label171:
+      for (i = 1;; i = 0)
+      {
+        ((Bundle)localObject1).putInt("type", i);
+        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        return;
+        ((Bundle)localObject1).putInt("ret", 0);
+        break;
+      }
+    }
   }
 }
 

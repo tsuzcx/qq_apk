@@ -1,13 +1,13 @@
-import com.tencent.device.qfind.QFindBLEScanMgr;
+import com.tencent.device.msg.activities.DeviceTipActivity;
 
-class qax
+public class qax
   implements Runnable
 {
-  qax(qaw paramqaw) {}
+  public qax(DeviceTipActivity paramDeviceTipActivity) {}
   
   public void run()
   {
-    QFindBLEScanMgr.a(this.a.a.a, 7);
+    DeviceTipActivity.a(this.a);
   }
 }
 

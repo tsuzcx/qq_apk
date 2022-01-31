@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a311f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021aed" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d090f"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e16" />
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d003f" android:textColor="#ff858585" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a316a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="观看记录" />
-</LinearLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3144" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11f3" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d090d" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d090f" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a3144">
+        <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3145" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        <RelativeLayout android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03c4" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3146" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03a8" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3147" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="仅自己可见" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a3146" />
+            <Button android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0532" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3148" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c28" android:layout_width="75.0dip" android:layout_height="30.0dip" android:layout_marginTop="9.0dip" android:text="查看" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a3147" android:layout_alignParentLeft="true" />
+            <Button android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0532" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3149" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c28" android:layout_width="75.0dip" android:layout_height="30.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="9.0dip" android:text="音乐影集" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a3148" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a3147" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,47 +1,52 @@
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.MessageForTroopTopic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
+import com.tencent.mobileqq.troop.data.TroopTopicDetailInfoManager;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajra
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ajra(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ajra(TroopTopicMgr paramTroopTopicMgr, MessageRecord paramMessageRecord) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.getInputValue();
-    if (TextUtils.isEmpty(paramView)) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo query db");
+    }
+    TroopTopicDetailInfo localTroopTopicDetailInfo = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, true);
+    if (localTroopTopicDetailInfo != null)
     {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-      {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 1);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
-      }
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
-        }
-        return;
-      }
-      catch (Exception paramView) {}
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size() > 0))
-      {
-        int i = 0;
-        while ((i < this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size()) && (!paramView.equals(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.get(i)))) {
-          i += 1;
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b(localTroopTopicDetailInfo);
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForTroopTopic)) {
+        if (((MessageForTroopTopic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).pVersion < localTroopTopicDetailInfo.pVersion)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo fetch network");
+          }
+          TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localTroopTopicDetailInfo);
         }
       }
     }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+      } while (localTroopTopicDetailInfo.pVersion == localTroopTopicDetailInfo.mOldVersion);
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo fetch network 2");
+      }
+      TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localTroopTopicDetailInfo);
+      return;
+    }
+    QLog.e(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo there is no topic info in db.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajra
  * JD-Core Version:    0.7.0.1
  */

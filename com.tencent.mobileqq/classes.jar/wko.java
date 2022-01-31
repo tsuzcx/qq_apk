@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.activity.contacts.adapter.PhoneContactAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.profile.TroopMemberCardUtils;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class wko
-  implements Runnable
+public class wko
+  implements View.OnClickListener
 {
-  wko(wkn paramwkn, boolean paramBoolean) {}
+  public wko(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentWidgetXListView != null)
-    {
-      PhoneContactFragment.a(this.jdField_a_of_type_Wkn.a, this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter == null)
-      {
-        this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter = new PhoneContactAdapter(this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.jdField_a_of_type_Wkn.a);
-        this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter);
-      }
-      this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter.a(this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Wkn.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter.notifyDataSetChanged();
-    }
+    TroopMemberCardUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
   }
 }
 

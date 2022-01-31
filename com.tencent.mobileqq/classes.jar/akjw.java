@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import java.util.List;
 
 public class akjw
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public akjw(MSFIntChkStrike paramMSFIntChkStrike) {}
+  public akjw(PathTraceManager paramPathTraceManager, List paramList) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    MSFIntChkStrike.a(this.a, false);
+    this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjw
  * JD-Core Version:    0.7.0.1
  */

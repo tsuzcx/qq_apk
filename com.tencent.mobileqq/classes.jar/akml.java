@@ -1,25 +1,21 @@
-import android.view.MotionEvent;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.GroupListOpenFrame;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.webview.build.WebViewBaseBuilder;
 
 public class akml
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public akml(GroupListOpenFrame paramGroupListOpenFrame) {}
+  public akml(WebViewBaseBuilder paramWebViewBaseBuilder) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a.c();
-    }
-    return true;
+    this.a.h.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akml
  * JD-Core Version:    0.7.0.1
  */

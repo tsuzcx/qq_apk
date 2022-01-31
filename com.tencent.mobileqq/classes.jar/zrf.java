@@ -1,20 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.UncommonMessageProcessor;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class zrf
-  extends SendMessageHandler.SendMessageRunnable
+public final class zrf
+  implements INetEngine.IBreakDownFix
 {
-  public zrf(UncommonMessageProcessor paramUncommonMessageProcessor, ToServiceMsg paramToServiceMsg) {}
-  
-  public void run()
+  public void a(NetReq paramNetReq, NetResp paramNetResp)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.setTimeout(this.c);
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putInt("retryIndex", this.b);
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putLong("timeOut", this.c);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageUncommonMessageProcessor.a.c(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
+      paramNetResp.c = 0L;
+      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
+      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.jdField_a_of_type_JavaLangString = (str + "range=" + paramNetReq.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("MonitorSocketDownload", 2, "IBreakDownFix, " + paramNetResp);
   }
 }
 

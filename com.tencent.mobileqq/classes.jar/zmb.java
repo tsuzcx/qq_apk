@@ -1,27 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.DataReport;
-import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.troop.data.NotificationRecommendTroopItem;
 
-public class zmb
-  implements DialogInterface.OnClickListener
+public final class zmb
+  implements Runnable
 {
-  public zmb(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2) {}
+  public zmb(AppInterface paramAppInterface, int paramInt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    paramInt = this.jdField_a_of_type_Int;
-    int i = this.jdField_b_of_type_Int;
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    EntityManager localEntityManager;
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof BrowserAppInterface)) {
+      localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(null).createEntityManager();
+    }
+    for (;;)
     {
-      VideoMsgTools.a(localQQAppInterface, paramInt, i, bool, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, null, true, new Object[0]);
-      paramDialogInterface.dismiss();
-      DataReport.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause, this.jdField_a_of_type_Boolean);
-      return;
+      if (localEntityManager == null) {}
+      for (;;)
+      {
+        return;
+        if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+          break label89;
+        }
+        localEntityManager = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getEntityManagerFactory().createEntityManager();
+        break;
+        if (this.jdField_a_of_type_Int == 2) {}
+        for (Entity localEntity = localEntityManager.a(NotificationRecommendTroopItem.class, this.jdField_a_of_type_JavaLangString); localEntity != null; localEntity = null)
+        {
+          localEntityManager.b(localEntity);
+          return;
+        }
+      }
+      label89:
+      localEntityManager = null;
     }
   }
 }

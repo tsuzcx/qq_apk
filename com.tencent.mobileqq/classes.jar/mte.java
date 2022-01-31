@@ -1,37 +1,31 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsNewActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class mte
-  extends DownloadListener
+  implements Runnable
 {
-  public mte(GalleryShareHelper paramGalleryShareHelper, Activity paramActivity, String paramString) {}
+  private WeakReference a;
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public mte(SubscriptFeedsNewActivity paramSubscriptFeedsNewActivity)
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      return;
-    }
-    if (paramDownloadTask.a == 0)
+    this.a = new WeakReference(paramSubscriptFeedsNewActivity);
+  }
+  
+  public void run()
+  {
+    if ((this.a != null) && (this.a.get() != null))
     {
-      paramDownloadTask = new File(AbsDownloader.d(this.jdField_a_of_type_JavaLangString));
-      if (paramDownloadTask.exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GalleryShareHelper", 2, "shareImageToAIO->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mtf(this, paramDownloadTask));
-        return;
+      WebProcessManager localWebProcessManager = (WebProcessManager)((SubscriptFeedsNewActivity)this.a.get()).app.getManager(12);
+      if (localWebProcessManager != null) {
+        localWebProcessManager.a(1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "enter folder preload web process");
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryShareHelper", 2, "shareImageToAIO->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mtg(this));
   }
 }
 

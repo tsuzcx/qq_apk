@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameListener;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class vhx
-  implements CustomFrameAnimationDrawable.FrameListener
+  implements Runnable
 {
-  public vhx(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public vhx(StructingMsgItemBuilder paramStructingMsgItemBuilder, Dialog paramDialog) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
+    if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

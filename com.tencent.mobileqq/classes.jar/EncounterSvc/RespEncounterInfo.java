@@ -348,7 +348,7 @@ public final class RespEncounterInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\acom2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     EncounterSvc.RespEncounterInfo
  * JD-Core Version:    0.7.0.1
  */

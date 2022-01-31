@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
-import nqi;
+import nrv;
 
 public class ShareGroupIconManager$UrlBitmapDownloaderImp
   implements UrlBitmapDownloader
@@ -42,7 +42,7 @@ public class ShareGroupIconManager$UrlBitmapDownloaderImp
     {
       URL localURL = new URL(paramString);
       localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setURLDrawableListener(new nqi(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
+      ((URLDrawable)localObject).setURLDrawableListener(new nrv(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
       ((URLDrawable)localObject).setAutoDownload(true);
       if (((URLDrawable)localObject).getStatus() != 1) {
         break label177;
@@ -57,7 +57,7 @@ public class ShareGroupIconManager$UrlBitmapDownloaderImp
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      SLog.c("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
+      SLog.d("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
       paramListener.a(paramString, new Throwable("getBitmapFromDrawable failed"));
       return;
     }

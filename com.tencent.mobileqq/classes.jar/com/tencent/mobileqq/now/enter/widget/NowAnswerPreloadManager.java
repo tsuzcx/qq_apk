@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.now.enter.widget;
 
-import afnl;
-import afnm;
-import afnn;
+import agar;
+import agas;
+import agat;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.biz.ProtoServlet;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.intervideo.now.NowDataReporter;
 import com.tencent.mobileqq.now.enter.NowEnterManager;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -30,7 +31,7 @@ public class NowAnswerPreloadManager
   
   public static void a()
   {
-    ThreadManager.getUIHandler().post(new afnl());
+    ThreadManager.getUIHandler().post(new agar());
   }
   
   private static void a(long paramLong)
@@ -54,7 +55,7 @@ public class NowAnswerPreloadManager
         QLog.i("NowAnswerPreloadManager", 3, "openAnswerRoom---Mobile Network is not allow auto enter room");
         return;
       }
-      ThreadManager.getUIHandler().post(new afnn(paramLong, localQQAppInterface));
+      ThreadManager.getUIHandler().post(new agat(localQQAppInterface, paramLong));
       return;
     }
     QLog.i("NowAnswerPreloadManager", 3, "openAnswerRoom---NO Allow Auto Enter Room");
@@ -82,7 +83,7 @@ public class NowAnswerPreloadManager
     localWebSsoRequestBody.type.set(0);
     localWebSsoRequestBody.data.set("{\"subcmd\":\"GetHomePage\",\"need_follow\":1,\"frchannel\":8888}");
     localNewIntent.putExtra("data", localWebSsoRequestBody.toByteArray());
-    localNewIntent.setObserver(new afnm());
+    localNewIntent.setObserver(new agas());
     BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
   }
   
@@ -101,6 +102,8 @@ public class NowAnswerPreloadManager
           if ((paramJSONObject != null) && (paramJSONObject.getInt("ret_code") == 0))
           {
             int i = paramJSONObject.getInt("act_status");
+            new NowDataReporter((QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null)).a("10888", "answer_room_status", String.valueOf(i));
+            QLog.i("NowAnswerPreloadManager", 3, "parseResponse----will start Now Room Activity, status = " + i);
             if ((i == 0) || (i == 5))
             {
               jdField_a_of_type_Long = paramJSONObject.getInt("act_room");
@@ -124,7 +127,7 @@ public class NowAnswerPreloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.now.enter.widget.NowAnswerPreloadManager
  * JD-Core Version:    0.7.0.1
  */

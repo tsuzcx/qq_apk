@@ -1,24 +1,14 @@
-import com.tencent.av.gaudio.AVObserver;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.StructMsgObserver;
+import com.tencent.mobileqq.activity.WebAccelerator;
 
 public class tts
-  extends AVObserver
+  implements Runnable
 {
-  public tts(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public tts(StructMsgObserver paramStructMsgObserver, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
-  protected void a(int paramInt, long paramLong)
+  public void run()
   {
-    this.a.c();
-  }
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    this.a.c();
-  }
-  
-  protected void b(int paramInt, long paramLong)
-  {
-    this.a.c();
+    WebAccelerator.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

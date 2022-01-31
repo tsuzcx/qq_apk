@@ -26,14 +26,14 @@ import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import nwr;
+import nye;
 
 public class StoryMessageListActivity$StoryMessageListAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
   LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(BaseApplication.getContext());
-  nwr jdField_a_of_type_Nwr = new nwr();
+  nye jdField_a_of_type_Nye = new nye();
   int[] jdField_a_of_type_ArrayOfInt = URLDrawableDecodeHandler.a(UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getApplicationContext(), 50.0F), UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getApplicationContext(), 70.0F), UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getApplicationContext(), 3.0F));
   
   protected StoryMessageListActivity$StoryMessageListAdapter(StoryMessageListActivity paramStoryMessageListActivity) {}
@@ -89,9 +89,9 @@ public class StoryMessageListActivity$StoryMessageListAdapter
     {
       if (paramView == null)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970730, paramViewGroup, false);
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970778, paramViewGroup, false);
         paramViewGroup = new StoryMessageListActivity.ItemViewHolder(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView);
-        paramView = this.jdField_a_of_type_Nwr.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView, paramViewGroup, -1);
+        paramView = this.jdField_a_of_type_Nye.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView, paramViewGroup, -1);
         paramView.setTag(paramViewGroup);
       }
       MessageData localMessageData;
@@ -153,7 +153,7 @@ public class StoryMessageListActivity$StoryMessageListAdapter
           if (!localMessageData.b().equals(paramViewGroup.jdField_b_of_type_JavaLangString))
           {
             paramViewGroup.jdField_b_of_type_JavaLangString = localMessageData.b();
-            localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getResources().getDrawable(2130843674);
+            localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.getResources().getDrawable(2130843797);
           }
         }
         try
@@ -178,7 +178,7 @@ public class StoryMessageListActivity$StoryMessageListAdapter
             {
               i = 0;
               ((View)localObject1).setVisibility(i);
-              this.jdField_a_of_type_Nwr.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView, paramInt, localMessageData, paramViewGroup, this);
+              this.jdField_a_of_type_Nye.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView, paramInt, localMessageData, paramViewGroup, this);
               paramViewGroup.a(paramInt);
               return paramView;
               label607:
@@ -312,7 +312,7 @@ public class StoryMessageListActivity$StoryMessageListAdapter
               }
               if (localMessageData.jdField_a_of_type_Int == 8)
               {
-                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(2131432092);
+                paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(2131432109);
                 paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
                 paramViewGroup.c.setVisibility(8);
                 paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -387,7 +387,7 @@ public class StoryMessageListActivity$StoryMessageListAdapter
     }
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970731, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970779, paramViewGroup, false);
       paramViewGroup = new StoryMessageListActivity.FooterViewHolder(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity, paramView);
       paramView.setTag(paramViewGroup);
       switch (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Int)
@@ -406,7 +406,7 @@ public class StoryMessageListActivity$StoryMessageListAdapter
         paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(8);
         paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131432103);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131432120);
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.msgList", 2, "list - load more");
         }
@@ -421,13 +421,13 @@ public class StoryMessageListActivity$StoryMessageListAdapter
         bool = ThemeUtil.isInNightMode(QQStoryContext.a());
         localObject1 = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
         if (bool) {}
-        for (i = 2130843349;; i = 2130843348)
+        for (i = 2130843465;; i = 2130843464)
         {
           ((ImageView)localObject1).setImageResource(i);
           break;
         }
         paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131432103);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131432120);
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.msgList", 2, "pull to load more");
         }
@@ -437,7 +437,7 @@ public class StoryMessageListActivity$StoryMessageListAdapter
         {
           this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.jdField_b_of_type_Boolean = false;
           paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131432103);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131432120);
           this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a();
         }
         else
@@ -446,7 +446,7 @@ public class StoryMessageListActivity$StoryMessageListAdapter
           paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText("加载失败，点击重试");
           continue;
           paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131432103);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(2131432120);
         }
       }
     }

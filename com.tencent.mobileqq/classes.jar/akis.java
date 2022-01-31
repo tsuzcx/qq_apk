@@ -1,25 +1,75 @@
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-public class akis
-  implements View.OnClickListener
+class akis
+  implements View.OnTouchListener
 {
-  public akis(TabBarView paramTabBarView, int paramInt) {}
+  akis(akir paramakir) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {
-      return;
+    paramView = this.a.a.e.keySet().iterator();
+    while (paramView.hasNext())
+    {
+      paramMotionEvent = (String)paramView.next();
+      Object localObject = (FrameLayout)this.a.a.e.get(paramMotionEvent);
+      localObject = ((akjh)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetSeekBar;
+      TextView localTextView1 = ((akjh)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_c_of_type_AndroidWidgetTextView;
+      TextView localTextView2 = ((akjh)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_b_of_type_AndroidWidgetTextView;
+      ImageView localImageView1 = ((akjh)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetImageView;
+      ImageView localImageView2 = ((akjh)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_b_of_type_AndroidWidgetImageView;
+      TextView localTextView3 = ((akjh)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetTextView;
+      ImageView localImageView3 = ((akjh)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_c_of_type_AndroidWidgetImageView;
+      if (QLog.isColorLevel()) {
+        QLog.d("HealthBusinessPlugin", 2, "videoplayer section clicked");
+      }
+      if (((SeekBar)localObject).getVisibility() == 4)
+      {
+        ((SeekBar)localObject).setVisibility(0);
+        localTextView1.setVisibility(0);
+        localTextView2.setVisibility(0);
+        localImageView3.setVisibility(0);
+        if (((TVK_IMediaPlayer)this.a.a.d.get(paramMotionEvent)).isPlaying()) {}
+        for (int i = 2130845010;; i = 2130845291)
+        {
+          localImageView1.setImageResource(i);
+          localImageView1.setVisibility(0);
+          this.a.a.jdField_f_of_type_Boolean = true;
+          localImageView2.setVisibility(4);
+          localTextView3.setVisibility(4);
+          this.a.a.c.removeCallbacksAndMessages(null);
+          paramMotionEvent = new akit(this, (SeekBar)localObject, localTextView1, localTextView2, localImageView3, localImageView1, localImageView2, localTextView3);
+          this.a.a.c.postDelayed(paramMotionEvent, 3000L);
+          break;
+        }
+      }
+      ((SeekBar)localObject).setVisibility(4);
+      localTextView1.setVisibility(4);
+      localTextView2.setVisibility(4);
+      localImageView3.setVisibility(4);
+      localImageView1.setVisibility(4);
+      this.a.a.jdField_f_of_type_Boolean = false;
+      localImageView2.setVisibility(0);
+      localTextView3.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akis
  * JD-Core Version:    0.7.0.1
  */

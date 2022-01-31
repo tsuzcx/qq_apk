@@ -1,19 +1,19 @@
-import com.tencent.component.media.image.ImageManager;
-import java.util.HashSet;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class pet
-  extends ThreadLocal
+  implements Runnable
 {
-  public pet(ImageManager paramImageManager) {}
+  public pet(BaseApplicationImpl paramBaseApplicationImpl, Intent paramIntent) {}
   
-  protected HashSet a()
+  public void run()
   {
-    return new HashSet();
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.doSendBroadcast(this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pet
  * JD-Core Version:    0.7.0.1
  */

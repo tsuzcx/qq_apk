@@ -1,76 +1,62 @@
+import android.util.SparseArray;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.TeamWorkAuthorizeUinListAdapter;
+import com.tencent.mobileqq.teamwork.TeamWorkAuthorizeUinListAdapter.Holder;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class aimv
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public aimv(ContactListAdapter paramContactListAdapter) {}
+  public aimv(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, TeamWorkAuthorizeUinListAdapter.Holder paramHolder, SparseArray paramSparseArray, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick");
-    aind localaind = (aind)paramView.getTag();
-    String str;
-    boolean bool;
-    if ((localaind != null) && (localaind.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localaind.jdField_a_of_type_JavaLangObject != null))
+    TimDocSSOMsg.UinRightInfo localUinRightInfo = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter$Holder.a;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
+      paramInt = -1;
+    }
+    switch (paramInt)
     {
-      str = "";
-      if (!(localaind.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label231;
-      }
-      str = ((Friends)localaind.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localaind.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+    default: 
+    case 2131439164: 
+    case 2131439165: 
+      for (;;)
       {
-        if (!localaind.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label257;
+        TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.a.notifyDataSetChanged();
+        if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
+          this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
         }
-        bool = this.a.a.a(localaind.jdField_a_of_type_JavaLangString, str, 4, "-1");
-        label108:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick = " + bool);
-        }
-        localaind.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.b)
-        {
-          if (!localaind.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label280;
-          }
-          paramView.setContentDescription(localaind.d.getText().toString() + "已选中");
-        }
+        return;
+        paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
+        break;
+        localUinRightInfo.uint32_right.set(1);
+        continue;
+        localUinRightInfo.uint32_right.set(2);
       }
     }
-    for (;;)
+    if ((localUinRightInfo.uint32_right.get() == 1) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b == 1)) {}
+    for (paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131439172);; paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131439171))
     {
-      this.a.a();
-      if (AppSetting.b) {
-        paramView.postDelayed(new aimw(this, paramView), 2000L);
-      }
-      return;
-      label231:
-      if (!(localaind.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
+      DialogUtil.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getActivity(), 230, "提示", paramView, 2131433015, 2131434041, new aimw(this, localUinRightInfo), new aimx(this)).show();
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b != 1) {
         break;
       }
-      str = ((PhoneContact)localaind.jdField_a_of_type_JavaLangObject).name;
+      ReportController.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment), "dc00898", "", "", "0x8007CFC", "0x8007CFC", 0, 0, "", "", "", "");
       break;
-      label257:
-      bool = this.a.a.a(localaind.jdField_a_of_type_JavaLangString, str, 0, "-1");
-      break label108;
-      label280:
-      paramView.setContentDescription(localaind.d.getText().toString() + "未选中");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aimv
  * JD-Core Version:    0.7.0.1
  */

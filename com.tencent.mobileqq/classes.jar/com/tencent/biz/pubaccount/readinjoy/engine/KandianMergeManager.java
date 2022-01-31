@@ -18,7 +18,6 @@ import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.OfflineUtils;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
 import com.tencent.biz.pubaccount.subscript.SubscriptionFeed;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
@@ -62,6 +61,11 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+import llh;
+import lli;
+import llj;
+import llk;
+import lll;
 import llm;
 import lln;
 import llo;
@@ -74,13 +78,8 @@ import llu;
 import llv;
 import llw;
 import llx;
-import lly;
 import llz;
 import lma;
-import lmb;
-import lmc;
-import lme;
-import lmf;
 import mqq.app.NewIntent;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
@@ -103,7 +102,7 @@ public class KandianMergeManager
   private KandianOx210MsgInfo.Biu0x210Msg jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo$Biu0x210Msg;
   private KandianOx210MsgInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo;
   private KandianRedDotInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianRedDotInfo;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new lly(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new llt(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Long jdField_a_of_type_JavaLangLong;
   public String a;
@@ -157,8 +156,7 @@ public class KandianMergeManager
     localReadInJoyLogicManager.a().a(70, 20, 9223372036854775807L, true);
     localReadInJoyLogicManager.a().b(0);
     localReadInJoyLogicManager.a().d(0);
-    OfflineUtils.a();
-    ReadinjoySPEventReport.j();
+    ReadinjoySPEventReport.g();
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
   }
   
@@ -626,7 +624,7 @@ public class KandianMergeManager
   
   private void q()
   {
-    ThreadManager.post(new llx(this), 8, null, false);
+    ThreadManager.post(new lls(this), 8, null, false);
   }
   
   private void r()
@@ -748,7 +746,7 @@ public class KandianMergeManager
     {
       return null;
       c(2);
-      QLog.d("KandianMergeManager", 1, "mSubscribePushMsgTitle : " + ReadInJoyUtils.c(this.f) + " mSubscribePushMsgArticleID : " + this.jdField_a_of_type_JavaLangLong + " mInnerUniqId : " + this.g + " seedUIN :  " + this.jdField_e_of_type_JavaLangString + ", isInterestedAccount : " + PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
+      QLog.d("KandianMergeManager", 1, "mSubscribePushMsgTitle : " + ReadInJoyUtils.d(this.f) + " mSubscribePushMsgArticleID : " + this.jdField_a_of_type_JavaLangLong + " mInnerUniqId : " + this.g + " seedUIN :  " + this.jdField_e_of_type_JavaLangString + ", isInterestedAccount : " + PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
     } while ((TextUtils.isEmpty(this.f)) || ((TextUtils.isEmpty(this.g)) && (this.jdField_a_of_type_JavaLangLong.longValue() == -1L)));
     if ((ReadInJoyHelper.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (!TextUtils.isEmpty(this.g))) {
       return new Pair(this.g, this.f);
@@ -845,7 +843,7 @@ public class KandianMergeManager
       if ((localObject1 != null) && (a(paramMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 1) && (((MessageRecord)localObject1).extInt == 2) && (!((MessageRecord)localObject1).isread)) {
         if (QLog.isColorLevel())
         {
-          str = "lastMr_info 【" + "msg: " + ReadInJoyUtils.c(((MessageRecord)localObject1).msg) + ", msguid : " + ((MessageRecord)localObject1).msgUid;
+          str = "lastMr_info 【" + "msg: " + ReadInJoyUtils.d(((MessageRecord)localObject1).msg) + ", msguid : " + ((MessageRecord)localObject1).msgUid;
           localObject2 = str;
           if ((localObject1 instanceof MessageForStructing))
           {
@@ -853,10 +851,10 @@ public class KandianMergeManager
             localMessageForStructing.parse();
             localObject2 = str;
             if (localMessageForStructing.structingMsg != null) {
-              localObject2 = str + ", title : " + ReadInJoyUtils.c(localMessageForStructing.structingMsg.mMsgBrief) + " 】";
+              localObject2 = str + ", title : " + ReadInJoyUtils.d(localMessageForStructing.structingMsg.mMsgBrief) + " 】";
             }
           }
-          str = "newMr_info 【" + "msg: " + ReadInJoyUtils.c(paramMessageRecord.msg) + ", senderUin : " + paramMessageRecord.senderuin + " , msguid : " + paramMessageRecord.msgUid;
+          str = "newMr_info 【" + "msg: " + ReadInJoyUtils.d(paramMessageRecord.msg) + ", senderUin : " + paramMessageRecord.senderuin + " , msguid : " + paramMessageRecord.msgUid;
           if (!(paramMessageRecord instanceof MessageForStructing)) {
             break label896;
           }
@@ -865,7 +863,7 @@ public class KandianMergeManager
           if (localMessageForStructing.structingMsg == null) {
             break label896;
           }
-          str = str + ", title : " + ReadInJoyUtils.c(localMessageForStructing.structingMsg.mMsgBrief) + " 】";
+          str = str + ", title : " + ReadInJoyUtils.d(localMessageForStructing.structingMsg.mMsgBrief) + " 】";
         }
       }
       int i;
@@ -1113,13 +1111,13 @@ public class KandianMergeManager
     label124:
     Object localObject1 = a();
     if (localObject1 == null) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131428458);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131428464);
     }
     for (;;)
     {
       Object localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131428458);
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131428464);
       }
       localObject1 = a((String)localObject2, String.valueOf(l), 0);
       ReadInJoyUtils.a((MessageRecord)localObject1);
@@ -1165,7 +1163,7 @@ public class KandianMergeManager
       QLog.i("KandianMergeManager", 2, "followListLength" + paramInt);
     }
     this.jdField_b_of_type_Int = paramInt;
-    ThreadManager.post(new llm(this, paramInt), 8, null, false);
+    ThreadManager.post(new llh(this, paramInt), 8, null, false);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -1251,7 +1249,7 @@ public class KandianMergeManager
     if ((paramMessageRecord != null) && (!paramMessageRecord.isread))
     {
       paramMessageRecord.isread = true;
-      ThreadManager.post(new lmb(this, paramMessageRecord), 10, null, false);
+      ThreadManager.post(new llw(this, paramMessageRecord), 10, null, false);
     }
   }
   
@@ -1315,7 +1313,7 @@ public class KandianMergeManager
       } while (paramInt == 1);
       localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
     } while (localQQMessageFacade == null);
-    ThreadManager.post(new llz(this, localQQMessageFacade, paramString1, paramString2, paramInt, paramBoolean), 10, null, false);
+    ThreadManager.post(new llu(this, localQQMessageFacade, paramString1, paramString2, paramInt, paramBoolean), 10, null, false);
   }
   
   public void a(boolean paramBoolean)
@@ -1548,7 +1546,7 @@ public class KandianMergeManager
     do
     {
       return false;
-      QLog.d("KandianMergeManager", 1, "SubUnread : " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", SubStatus : " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", mSubTitle : " + ReadInJoyUtils.c(this.f) + ", KDUnread : " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      QLog.d("KandianMergeManager", 1, "SubUnread : " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", SubStatus : " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", mSubTitle : " + ReadInJoyUtils.d(this.f) + ", KDUnread : " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
     } while ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 0) && ((this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 0) || (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 1)) && ((this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) || (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 3) || ((!ReadInJoyHelper.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (PublicAccountUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_e_of_type_JavaLangString)))));
     if ((ReadInJoyHelper.h()) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 0) && (this.jdField_a_of_type_JavaLangLong.longValue() <= 0L) && (TextUtils.isEmpty(this.g)))
     {
@@ -1573,7 +1571,7 @@ public class KandianMergeManager
       if ((paramInt1 != 1) && (paramInt2 == 1))
       {
         if (b(1) > 0) {
-          ThreadManager.getSubThreadHandler().post(new lls(this));
+          ThreadManager.getSubThreadHandler().post(new lln(this));
         }
         d(1);
         return true;
@@ -1581,7 +1579,7 @@ public class KandianMergeManager
       if ((paramInt1 == 1) && (paramInt2 == 1))
       {
         if (b(1) > 0) {
-          ThreadManager.getSubThreadHandler().post(new llt(this));
+          ThreadManager.getSubThreadHandler().post(new llo(this));
         }
         d(1);
         return true;
@@ -1647,7 +1645,7 @@ public class KandianMergeManager
               if ((paramBoolean) || (!ReadInJoyHelper.h())) {
                 d();
               }
-              ThreadManager.getSubThreadHandler().post(new lmc(this, l, str, 1, (String)localObject1, j));
+              ThreadManager.getSubThreadHandler().post(new llx(this, l, str, 1, (String)localObject1, j));
               QLog.d("KandianMergeManager", 1, "subscribe push, title : " + this.f + ", id : " + this.jdField_a_of_type_JavaLangLong + ", msguid : " + paramMessageRecord.msgUid + ", isInterestedAccount : " + bool);
               paramBoolean = true;
               continue;
@@ -1839,7 +1837,7 @@ public class KandianMergeManager
     if ((localMessageRecord != null) && (!localMessageRecord.isread))
     {
       localMessageRecord.isread = true;
-      ThreadManager.post(new lma(this, localMessageRecord), 10, null, false);
+      ThreadManager.post(new llv(this, localMessageRecord), 10, null, false);
     }
   }
   
@@ -2024,7 +2022,7 @@ public class KandianMergeManager
     {
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(l);
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
-      ThreadManager.getSubThreadHandler().post(new lmf(this, paramMessageRecord, l));
+      ThreadManager.getSubThreadHandler().post(new lma(this, paramMessageRecord, l));
       if ((this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) && (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 2))
       {
         c(2);
@@ -2066,7 +2064,7 @@ public class KandianMergeManager
       this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicLong.set(0L);
       this.jdField_e_of_type_JavaLangString = "";
       this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
-      ThreadManager.getSubThreadHandler().post(new lme(this));
+      ThreadManager.getSubThreadHandler().post(new llz(this));
       return;
     }
     finally
@@ -2087,29 +2085,29 @@ public class KandianMergeManager
     //   4: if_icmpne +29 -> 33
     //   7: aload_0
     //   8: getfield 87	com/tencent/biz/pubaccount/readinjoy/engine/KandianMergeManager:jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   11: invokevirtual 563	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   11: invokevirtual 559	java/util/concurrent/atomic/AtomicInteger:get	()I
     //   14: iconst_2
     //   15: if_icmpne +10 -> 25
     //   18: aload_0
-    //   19: invokevirtual 903	com/tencent/biz/pubaccount/readinjoy/engine/KandianMergeManager:c	()V
+    //   19: invokevirtual 899	com/tencent/biz/pubaccount/readinjoy/engine/KandianMergeManager:c	()V
     //   22: aload_0
     //   23: monitorexit
     //   24: return
     //   25: aload_0
     //   26: getfield 79	com/tencent/biz/pubaccount/readinjoy/engine/KandianMergeManager:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
     //   29: iconst_0
-    //   30: invokevirtual 530	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   30: invokevirtual 526	java/util/concurrent/atomic/AtomicInteger:set	(I)V
     //   33: aload_0
     //   34: getfield 87	com/tencent/biz/pubaccount/readinjoy/engine/KandianMergeManager:jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
     //   37: iload_1
-    //   38: invokevirtual 530	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   41: invokestatic 1216	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   44: new 1427	lmd
+    //   38: invokevirtual 526	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   41: invokestatic 1212	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
+    //   44: new 1423	lly
     //   47: dup
     //   48: aload_0
     //   49: iload_1
-    //   50: invokespecial 1428	lmd:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/engine/KandianMergeManager;I)V
-    //   53: invokevirtual 1222	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   50: invokespecial 1424	lly:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/engine/KandianMergeManager;I)V
+    //   53: invokevirtual 1218	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   56: pop
     //   57: goto -35 -> 22
     //   60: astore_2
@@ -2215,7 +2213,7 @@ public class KandianMergeManager
               this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
               this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
             }
-            ThreadManager.getSubThreadHandler().post(new lln(this, (String)localObject, l));
+            ThreadManager.getSubThreadHandler().post(new lli(this, (String)localObject, l));
             if ((this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) && (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 2))
             {
               c(2);
@@ -2274,7 +2272,7 @@ public class KandianMergeManager
       this.jdField_b_of_type_Long = 0L;
       this.jdField_a_of_type_JavaLangString = null;
       this.jdField_b_of_type_JavaUtilArrayList = null;
-      ThreadManager.getSubThreadHandler().post(new llo(this));
+      ThreadManager.getSubThreadHandler().post(new llj(this));
       return;
     }
     finally {}
@@ -2349,7 +2347,7 @@ public class KandianMergeManager
     for (int i = 7220;; i = 1008)
     {
       if ((localConversationFacade != null) && (localConversationFacade.a(str, i) > 0)) {
-        ThreadManager.post(new llp(this, str, i), 8, null, false);
+        ThreadManager.post(new llk(this, str, i), 8, null, false);
       }
       return;
       str = AppConstants.ar;
@@ -2462,7 +2460,7 @@ public class KandianMergeManager
     localGetMessageConfigurationRequest.uin.set(2171946401L);
     localGetMessageConfigurationRequest.versionInfo.set(PublicAccountUtil.a());
     localNewIntent.putExtra("data", localGetMessageConfigurationRequest.toByteArray());
-    localNewIntent.setObserver(new llq(this));
+    localNewIntent.setObserver(new lll(this));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
   }
   
@@ -2479,7 +2477,7 @@ public class KandianMergeManager
   public void h()
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager$KandianSetTopInfo != null) {
-      ThreadManager.executeOnSubThread(new llr(this));
+      ThreadManager.executeOnSubThread(new llm(this));
     }
   }
   
@@ -2558,12 +2556,12 @@ public class KandianMergeManager
   
   public void k()
   {
-    ThreadManager.getUIHandler().post(new llu(this));
+    ThreadManager.getUIHandler().post(new llp(this));
   }
   
   public void l()
   {
-    ThreadManager.getUIHandler().post(new llv(this));
+    ThreadManager.getUIHandler().post(new llq(this));
   }
   
   public void m()
@@ -2584,7 +2582,7 @@ public class KandianMergeManager
   
   public void o()
   {
-    ThreadManager.executeOnSubThread(new llw(this));
+    ThreadManager.executeOnSubThread(new llr(this));
   }
   
   public void onDestroy()

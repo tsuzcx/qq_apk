@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileView;
-import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.av.utils.GVideoGrayConfig;
+import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
+import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
 
-public class rxp
-  extends FMObserver
+public final class rxp
+  implements QQProgressDialog.Callback
 {
-  public rxp(ChatHistoryFileView paramChatHistoryFileView) {}
+  public rxp(GVideoGrayConfig.GVideoGrayConfigListener paramGVideoGrayConfigListener) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void a()
   {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.a.notifyDataSetChanged();
+    GVideoGrayConfig.a().a(this.a);
   }
 }
 

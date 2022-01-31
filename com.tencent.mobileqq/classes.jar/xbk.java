@@ -1,36 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper.GoldMsgFriendSet;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class xbk
-  implements Runnable
+public class xbk
+  extends BroadcastReceiver
 {
-  public void run()
+  public xbk(SendHbActivity paramSendHbActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    if (paramIntent.getAction().equals("com.qwallet.report"))
     {
-      String str = BaseApplicationImpl.getApplication().getFilesDir() + "/QWallet/.tmp/goldmsg_friends";
-      Object localObject = new File(str);
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
+      int i = paramIntent.getIntExtra("type", 0);
+      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
+      if (999 == i) {
+        break label53;
       }
-      if (GoldMsgChatHelper.GoldMsgFriendSet.a().size() <= 0) {
-        return;
-      }
-      localObject = GoldMsgChatHelper.GoldMsgFriendSet.a();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+    }
+    label53:
+    do
+    {
+      do
       {
-        FileUtils.a(((String)localObject).getBytes("utf-8"), str);
         return;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+        paramContext = paramIntent.getBundleExtra("params");
+      } while (paramContext == null);
+      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
+      paramContext = paramContext.getString("from");
+    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
+    this.a.finish();
   }
 }
 

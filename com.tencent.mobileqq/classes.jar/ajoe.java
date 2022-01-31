@@ -1,28 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.mobileqq.troop.utils.TroopAppMgr;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ajoe
   implements Runnable
 {
-  public ajoe(JumpAction paramJumpAction) {}
+  public ajoe(TroopAppMgr paramTroopAppMgr, ArrayList paramArrayList, EntityManager paramEntityManager) {}
   
   public void run()
   {
-    if (JumpAction.a(this.a) == null) {}
-    String str;
-    do
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      str = JumpAction.a(this.a).getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.a(str, "key_reader_click_time");
+      TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)localIterator.next();
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, localTroopAIOAppInfo);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajoe
  * JD-Core Version:    0.7.0.1
  */

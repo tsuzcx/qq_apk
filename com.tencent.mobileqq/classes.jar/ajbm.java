@@ -1,25 +1,38 @@
-import android.content.Context;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView.GridViewAdapter;
 
 public class ajbm
-  implements Runnable
+  implements View.OnKeyListener
 {
-  public ajbm(TroopGagMgr paramTroopGagMgr, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
+  public ajbm(NewTroopContactView paramNewTroopContactView) {}
   
-  public void run()
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (paramInt == 67)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
-      return;
+      if (paramKeyEvent.getAction() != 0) {
+        break label35;
+      }
+      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130838748, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    for (;;)
+    {
+      return false;
+      label35:
+      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView$GridViewAdapter.a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbm
  * JD-Core Version:    0.7.0.1
  */

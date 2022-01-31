@@ -1,8 +1,20 @@
-import com.tencent.mobileqq.activity.qwallet.utils.FontConvert;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class xej
+  implements View.OnFocusChangeListener
 {
-  public static final FontConvert a = new FontConvert(null);
+  public xej(GoldMsgAioState paramGoldMsgAioState, QQCustomDialog paramQQCustomDialog, Context paramContext) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      GoldMsgAioState.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getWindow(), this.jdField_a_of_type_AndroidContentContext, paramView);
+    }
+  }
 }
 
 

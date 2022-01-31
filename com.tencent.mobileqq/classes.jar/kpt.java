@@ -1,15 +1,17 @@
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.data.EqqDetail;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
 
-class kpt
+public class kpt
   implements Runnable
 {
-  kpt(kps paramkps) {}
+  public kpt(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, kpy paramkpy, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2, RelativeLayout.LayoutParams paramLayoutParams3) {}
   
   public void run()
   {
-    this.a.a.a(EqqAccountDetailActivity.g(this.a.a), EqqAccountDetailActivity.d(this.a.a), this.a.a.a.name, ChatActivity.class, true);
+    this.jdField_a_of_type_Kpy.b.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_Kpy.c.setLayoutParams(this.b);
+    this.jdField_a_of_type_Kpy.d.setLayoutParams(this.c);
   }
 }
 

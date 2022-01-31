@@ -4,7 +4,7 @@ import android.annotation.TargetApi;
 import android.os.SystemClock;
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
-import anpc;
+import aofh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.pool.RecyclablePool;
 import com.tencent.mfsdk.reporter.DFObservable;
@@ -33,7 +33,7 @@ public class DropFrameMonitor
   {
     this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(DropFrameMonitor.MonitorItem.class, 4);
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = new anpc(this);
+    this.jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = new aofh(this);
   }
   
   private boolean a()

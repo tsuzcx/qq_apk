@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahle;
-import ahlm;
-import ahln;
-import ahlo;
-import ahlp;
-import ahlr;
-import ahls;
-import ahlt;
-import ahlu;
-import ahlv;
-import ahlw;
-import ahlx;
+import ahzg;
+import ahzo;
+import ahzp;
+import ahzq;
+import ahzr;
+import ahzt;
+import ahzu;
+import ahzv;
+import ahzw;
+import ahzx;
+import ahzy;
+import ahzz;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -56,7 +56,7 @@ public class ShortVideoResourceManager
   private static final Object jdField_a_of_type_JavaLangObject;
   private static ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new ahlm(this);
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new ahzo(this);
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private final Object b = new Object();
   
@@ -80,7 +80,7 @@ public class ShortVideoResourceManager
   private static int a(QQAppInterface paramQQAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
     String str1 = a(paramSVConfigItem.name);
-    if (ahle.a(paramQQAppInterface, paramSVConfigItem))
+    if (ahzg.a(paramQQAppInterface, paramSVConfigItem))
     {
       String str2 = paramSVConfigItem.getSignature();
       VideoEnvironment.a("ShortVideoResourceManager", "doNoNeedDownload: signature=" + str2, null);
@@ -133,7 +133,7 @@ public class ShortVideoResourceManager
   
   private static int a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    boolean bool = ahle.a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt);
+    boolean bool = ahzg.a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt);
     VideoEnvironment.a("ShortVideoResourceManager", "[userUncompressZipResource]needRestore=" + bool + ",keyName=" + paramString1, null);
     if (bool) {}
     for (paramInt = -118;; paramInt = 0)
@@ -587,17 +587,17 @@ public class ShortVideoResourceManager
   
   public static void a(QQAppInterface paramQQAppInterface, List paramList)
   {
-    ThreadManager.post(new ahlp(paramQQAppInterface, paramList), 5, null, false);
+    ThreadManager.post(new ahzr(paramQQAppInterface, paramList), 5, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource)
   {
-    ThreadManager.post(new ahlr(paramQQAppInterface, paramList, paramINet_ShortVideoResource), 5, null, false);
+    ThreadManager.post(new ahzt(paramQQAppInterface, paramList, paramINet_ShortVideoResource), 5, null, false);
   }
   
   public static void a(String paramString)
   {
-    ThreadManager.getUIHandler().post(new ahlo(paramString));
+    ThreadManager.getUIHandler().post(new ahzq(paramString));
   }
   
   private static void a(String paramString, int paramInt)
@@ -612,16 +612,16 @@ public class ShortVideoResourceManager
   
   private void a(List paramList)
   {
-    ThreadManager.post(new ahlv(this, paramList), 5, null, false);
+    ThreadManager.post(new ahzx(this, paramList), 5, null, false);
   }
   
   private static boolean a(QQAppInterface paramQQAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
     String str = a(paramSVConfigItem.name);
     VideoEnvironment.a("ShortVideoResourceManager", "checkResourceItemNeedDownload:name=" + paramSVConfigItem.name, null);
-    ahlx localahlx = ShortVideoResourceStatus.a(paramSVConfigItem.name);
-    VideoEnvironment.a("ShortVideoResourceManager", "checkResourceItemNeedDownload:versionCode=" + paramSVConfigItem.versionCode + " status.version" + localahlx.jdField_a_of_type_Int + ",status.lastErr=" + localahlx.jdField_c_of_type_Int, null);
-    if (!ahle.a(paramQQAppInterface, paramSVConfigItem)) {
+    ahzz localahzz = ShortVideoResourceStatus.a(paramSVConfigItem.name);
+    VideoEnvironment.a("ShortVideoResourceManager", "checkResourceItemNeedDownload:versionCode=" + paramSVConfigItem.versionCode + " status.version" + localahzz.jdField_a_of_type_Int + ",status.lastErr=" + localahzz.jdField_c_of_type_Int, null);
+    if (!ahzg.a(paramQQAppInterface, paramSVConfigItem)) {
       VideoEnvironment.a("ShortVideoResourceManager", "checkResourceItemNeedDownload:userDownload=false", null);
     }
     label236:
@@ -633,10 +633,10 @@ public class ShortVideoResourceManager
         do
         {
           return false;
-          if (paramSVConfigItem.versionCode <= localahlx.jdField_a_of_type_Int) {
+          if (paramSVConfigItem.versionCode <= localahzz.jdField_a_of_type_Int) {
             break label243;
           }
-          if (localahlx.jdField_a_of_type_Int != 0) {
+          if (localahzz.jdField_a_of_type_Int != 0) {
             break label236;
           }
           VideoEnvironment.a("ShortVideoResourceManager", "checkResourceItemNeedDownload:status.version=0", null);
@@ -651,10 +651,10 @@ public class ShortVideoResourceManager
         return true;
         b(str);
         return true;
-      } while (paramSVConfigItem.versionCode != localahlx.jdField_a_of_type_Int);
-      if (localahlx.b != 0)
+      } while (paramSVConfigItem.versionCode != localahzz.jdField_a_of_type_Int);
+      if (localahzz.b != 0)
       {
-        VideoEnvironment.a("ShortVideoResourceManager", "checkResourceItemNeedDownload[No equal]:status=" + localahlx.b + ",version" + localahlx.jdField_a_of_type_Int, null);
+        VideoEnvironment.a("ShortVideoResourceManager", "checkResourceItemNeedDownload[No equal]:status=" + localahzz.b + ",version" + localahzz.jdField_a_of_type_Int, null);
         b(str);
         return true;
       }
@@ -670,15 +670,15 @@ public class ShortVideoResourceManager
         b(str);
         return true;
       }
-    } while (localahlx.jdField_c_of_type_Int == 0);
-    VideoEnvironment.a("ShortVideoResourceManager", "checkResourceItemNeedDownload[equal]:status=" + localahlx.b + ",lastErr" + localahlx.jdField_c_of_type_Int, null);
+    } while (localahzz.jdField_c_of_type_Int == 0);
+    VideoEnvironment.a("ShortVideoResourceManager", "checkResourceItemNeedDownload[equal]:status=" + localahzz.b + ",lastErr" + localahzz.jdField_c_of_type_Int, null);
     return false;
   }
   
   private boolean a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource, boolean[] paramArrayOfBoolean)
   {
     String str = a(paramSVConfigItem.name);
-    boolean bool = ahle.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSVConfigItem.name);
+    boolean bool = ahzg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSVConfigItem.name);
     VideoEnvironment.a("ShortVideoResourceManager", "doRealSendRequest:alreadyExists=" + bool, null);
     paramArrayOfBoolean[0] = bool;
     if (bool)
@@ -748,7 +748,7 @@ public class ShortVideoResourceManager
     int i = 0;
     while (i < paramList.size())
     {
-      j = ahle.a((ShortVideoResourceManager.SVConfigItem)paramList.get(i));
+      j = ahzg.a((ShortVideoResourceManager.SVConfigItem)paramList.get(i));
       if (j != 0) {
         return j;
       }
@@ -837,7 +837,7 @@ public class ShortVideoResourceManager
   
   public static void b(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource)
   {
-    ThreadManager.post(new ahls(paramQQAppInterface, paramList, paramINet_ShortVideoResource), 5, null, false);
+    ThreadManager.post(new ahzu(paramQQAppInterface, paramList, paramINet_ShortVideoResource), 5, null, false);
   }
   
   private static void b(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource, String paramString)
@@ -896,15 +896,15 @@ public class ShortVideoResourceManager
     if (localObject1 == null) {}
     for (;;)
     {
-      ahlw localahlw;
+      ahzy localahzy;
       String str2;
       int k;
       int i;
       synchronized (this.b)
       {
-        localahlw = (ahlw)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
-        str2 = localahlw.jdField_a_of_type_JavaLangString;
-        k = localahlw.jdField_a_of_type_Int;
+        localahzy = (ahzy)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+        str2 = localahzy.jdField_a_of_type_JavaLangString;
+        k = localahzy.jdField_a_of_type_Int;
         ??? = c();
         ??? = (String)??? + (String)localObject1;
         if (???.jdField_a_of_type_Int == 0)
@@ -919,8 +919,8 @@ public class ShortVideoResourceManager
             VideoEnvironment.a("ShortVideoResourceManager", "[onRespAsync]errCode=" + i + ",saveFilePath=" + (String)??? + ",key=" + (String)localObject1, null);
             synchronized (this.b)
             {
-              localahlw.b = 3;
-              k = localahlw.jdField_a_of_type_JavaUtilArrayList.size();
+              localahzy.b = 3;
+              k = localahzy.jdField_a_of_type_JavaUtilArrayList.size();
               if (j >= k) {}
             }
           }
@@ -928,8 +928,8 @@ public class ShortVideoResourceManager
       }
       try
       {
-        if (localahlw.jdField_a_of_type_JavaUtilArrayList.get(j) != null) {
-          ((ShortVideoResourceManager.INet_ShortVideoResource)localahlw.jdField_a_of_type_JavaUtilArrayList.get(j)).a((String)localObject1, i, (String)???);
+        if (localahzy.jdField_a_of_type_JavaUtilArrayList.get(j) != null) {
+          ((ShortVideoResourceManager.INet_ShortVideoResource)localahzy.jdField_a_of_type_JavaUtilArrayList.get(j)).a((String)localObject1, i, (String)???);
         }
         label386:
         j += 1;
@@ -952,7 +952,7 @@ public class ShortVideoResourceManager
         VideoEnvironment.a("ShortVideoResourceManager", "[onResp]filePath=" + str1 + ",resp.mResult=" + ???.jdField_a_of_type_Int + ",mErrDesc=" + ???.jdField_a_of_type_JavaLangString + ",mErrDesc=" + ???.jdField_a_of_type_JavaLangString, null);
         i = -117;
         continue;
-        localahlw.jdField_a_of_type_JavaUtilArrayList.clear();
+        localahzy.jdField_a_of_type_JavaUtilArrayList.clear();
         this.jdField_a_of_type_JavaUtilHashMap.remove(localObject1);
         return;
         localObject2 = finally;
@@ -1021,13 +1021,13 @@ public class ShortVideoResourceManager
       Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
       while (localIterator.hasNext())
       {
-        ahlw localahlw = (ahlw)localIterator.next();
-        if ((localahlw != null) && (localahlw.jdField_a_of_type_JavaUtilArrayList != null))
+        ahzy localahzy = (ahzy)localIterator.next();
+        if ((localahzy != null) && (localahzy.jdField_a_of_type_JavaUtilArrayList != null))
         {
           int i = 0;
-          while (i < localahlw.jdField_a_of_type_JavaUtilArrayList.size())
+          while (i < localahzy.jdField_a_of_type_JavaUtilArrayList.size())
           {
-            ((ShortVideoResourceManager.INet_ShortVideoResource)localahlw.jdField_a_of_type_JavaUtilArrayList.get(i)).y_();
+            ((ShortVideoResourceManager.INet_ShortVideoResource)localahzy.jdField_a_of_type_JavaUtilArrayList.get(i)).C_();
             i += 1;
           }
         }
@@ -1038,7 +1038,7 @@ public class ShortVideoResourceManager
   
   public static void c(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource)
   {
-    ThreadManager.post(new ahlt(paramQQAppInterface, paramList, paramINet_ShortVideoResource), 5, null, false);
+    ThreadManager.post(new ahzv(paramQQAppInterface, paramList, paramINet_ShortVideoResource), 5, null, false);
   }
   
   private static String d()
@@ -1065,7 +1065,7 @@ public class ShortVideoResourceManager
   
   public static void d(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource)
   {
-    ThreadManager.postDownLoadTask(new ahlu(paramQQAppInterface, paramList, paramINet_ShortVideoResource), 5, null, false);
+    ThreadManager.postDownLoadTask(new ahzw(paramQQAppInterface, paramList, paramINet_ShortVideoResource), 5, null, false);
   }
   
   public int a(Context paramContext, String paramString, int paramInt)
@@ -1146,9 +1146,9 @@ public class ShortVideoResourceManager
         Object localObject2 = (String)localIterator.next();
         if ((localObject2 != null) && (((String)localObject2).startsWith(paramString)))
         {
-          localObject2 = (ahlw)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+          localObject2 = (ahzy)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
           if ((localObject2 != null) && (paramINet_ShortVideoResource != null)) {
-            ((ahlw)localObject2).jdField_a_of_type_JavaUtilArrayList.remove(paramINet_ShortVideoResource);
+            ((ahzy)localObject2).jdField_a_of_type_JavaUtilArrayList.remove(paramINet_ShortVideoResource);
           }
         }
       }
@@ -1163,7 +1163,7 @@ public class ShortVideoResourceManager
       boolean bool;
       synchronized (this.b)
       {
-        localObject2 = (ahlw)this.jdField_a_of_type_JavaUtilHashMap.get(paramSVConfigItem.name);
+        localObject2 = (ahzy)this.jdField_a_of_type_JavaUtilHashMap.get(paramSVConfigItem.name);
         if (localObject2 == null)
         {
           localObject2 = new boolean[1];
@@ -1186,43 +1186,43 @@ public class ShortVideoResourceManager
             localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
             localHttpNetReq.n = true;
             localHttpNetReq.a(paramSVConfigItem.name);
-            localObject2 = new ahlw(this, localHttpNetReq);
-            ((ahlw)localObject2).jdField_a_of_type_Int = paramSVConfigItem.versionCode;
-            ((ahlw)localObject2).jdField_a_of_type_JavaLangString = paramSVConfigItem.armv7a_md5;
+            localObject2 = new ahzy(this, localHttpNetReq);
+            ((ahzy)localObject2).jdField_a_of_type_Int = paramSVConfigItem.versionCode;
+            ((ahzy)localObject2).jdField_a_of_type_JavaLangString = paramSVConfigItem.armv7a_md5;
             if (paramINet_ShortVideoResource != null)
             {
-              ((ahlw)localObject2).jdField_a_of_type_JavaUtilArrayList.add(paramINet_ShortVideoResource);
+              ((ahzy)localObject2).jdField_a_of_type_JavaUtilArrayList.add(paramINet_ShortVideoResource);
               VideoEnvironment.a("ShortVideoResourceManager", "sendRequest[session][new]add callBack ok...", null);
             }
             this.jdField_a_of_type_JavaUtilHashMap.put(paramSVConfigItem.name, localObject2);
-            ((ahlw)localObject2).a();
+            ((ahzy)localObject2).a();
           }
           return;
         }
-        if (((ahlw)localObject2).b == 0)
+        if (((ahzy)localObject2).b == 0)
         {
-          ((ahlw)localObject2).jdField_a_of_type_Int = paramSVConfigItem.versionCode;
-          ((ahlw)localObject2).jdField_a_of_type_JavaLangString = paramSVConfigItem.armv7a_md5;
+          ((ahzy)localObject2).jdField_a_of_type_Int = paramSVConfigItem.versionCode;
+          ((ahzy)localObject2).jdField_a_of_type_JavaLangString = paramSVConfigItem.armv7a_md5;
           if (paramINet_ShortVideoResource != null)
           {
-            bool = ((ahlw)localObject2).jdField_a_of_type_JavaUtilArrayList.contains(paramINet_ShortVideoResource);
+            bool = ((ahzy)localObject2).jdField_a_of_type_JavaUtilArrayList.contains(paramINet_ShortVideoResource);
             VideoEnvironment.a("ShortVideoResourceManager", "sendRequest[oldSession][start]contains=" + bool, null);
             if (!bool)
             {
-              ((ahlw)localObject2).jdField_a_of_type_JavaUtilArrayList.add(paramINet_ShortVideoResource);
+              ((ahzy)localObject2).jdField_a_of_type_JavaUtilArrayList.add(paramINet_ShortVideoResource);
               VideoEnvironment.a("ShortVideoResourceManager", "sendRequest[oldSession][start]add callBack ok...", null);
             }
           }
-          ((ahlw)localObject2).a();
+          ((ahzy)localObject2).a();
         }
       }
       if (paramINet_ShortVideoResource != null)
       {
-        bool = ((ahlw)localObject2).jdField_a_of_type_JavaUtilArrayList.contains(paramINet_ShortVideoResource);
+        bool = ((ahzy)localObject2).jdField_a_of_type_JavaUtilArrayList.contains(paramINet_ShortVideoResource);
         VideoEnvironment.a("ShortVideoResourceManager", "sendRequest[oldSession][pending]contains=" + bool, null);
         if (!bool)
         {
-          ((ahlw)localObject2).jdField_a_of_type_JavaUtilArrayList.add(paramINet_ShortVideoResource);
+          ((ahzy)localObject2).jdField_a_of_type_JavaUtilArrayList.add(paramINet_ShortVideoResource);
           VideoEnvironment.a("ShortVideoResourceManager", "sendRequest[oldSession][pending]add callBack ok...", null);
         }
       }
@@ -1239,14 +1239,14 @@ public class ShortVideoResourceManager
       int i;
       synchronized (this.b)
       {
-        ahlw localahlw = (ahlw)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-        localahlw.b = 2;
-        int j = localahlw.jdField_a_of_type_JavaUtilArrayList.size();
+        ahzy localahzy = (ahzy)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+        localahzy.b = 2;
+        int j = localahzy.jdField_a_of_type_JavaUtilArrayList.size();
         i = 0;
         if (i < j)
         {
-          if (localahlw.jdField_a_of_type_JavaUtilArrayList.get(i) != null) {
-            ((ShortVideoResourceManager.INet_ShortVideoResource)localahlw.jdField_a_of_type_JavaUtilArrayList.get(i)).a(str, paramLong1, paramLong2);
+          if (localahzy.jdField_a_of_type_JavaUtilArrayList.get(i) != null) {
+            ((ShortVideoResourceManager.INet_ShortVideoResource)localahzy.jdField_a_of_type_JavaUtilArrayList.get(i)).a(str, paramLong1, paramLong2);
           }
         }
         else
@@ -1263,7 +1263,7 @@ public class ShortVideoResourceManager
   
   public final void a(NetResp paramNetResp)
   {
-    ThreadManager.post(new ahln(this, paramNetResp), 5, null, false);
+    ThreadManager.post(new ahzp(this, paramNetResp), 5, null, false);
   }
   
   public void onDestroy()

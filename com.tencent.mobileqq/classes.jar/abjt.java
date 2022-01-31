@@ -1,20 +1,27 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class abjt
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public abjt(LocationSelectActivity paramLocationSelectActivity) {}
+  public abjt(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.onBackEvent();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.a.a.a("DynamicAvatarRecordActivity");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abjt
  * JD-Core Version:    0.7.0.1
  */

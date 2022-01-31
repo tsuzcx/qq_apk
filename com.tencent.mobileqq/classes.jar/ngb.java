@@ -1,47 +1,34 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.newshare.ui.ActionSheetShareUI;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.widget.ActionSheet;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
+import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader.Listener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.BitmapUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 public class ngb
-  implements AdapterView.OnItemClickListener
+  implements UrlBitmapDownloader.Listener
 {
-  public ngb(ActionSheetShareUI paramActionSheetShareUI) {}
+  public ngb(DownloadPic2FileJob paramDownloadPic2FileJob, String paramString) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    if (ActionSheetShareUI.a(this.a).a().isShowing()) {
-      ActionSheetShareUI.a(this.a).a().dismiss();
-    }
-    int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramView.getTag()).a.c;
-    if ((i == 9) || (i == 10)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131435302;
-      }
-    }
-    for (;;)
+    if (DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob))
     {
-      if (paramInt != -1)
-      {
-        QRUtils.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435303;
-        }
-      }
-      else
-      {
-        this.a.a(i);
-        return;
-      }
-      paramInt = -1;
+      paramString = ImageUtil.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+      paramBitmap.recycle();
+      bool = BitmapUtils.a(paramString, DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob));
+      paramString.recycle();
+      DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob, bool);
+      return;
     }
+    boolean bool = BitmapUtils.a(paramBitmap, DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob));
+    DownloadPic2FileJob.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob, bool);
+  }
+  
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    SLog.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    DownloadPic2FileJob.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob, false);
   }
 }
 

@@ -1,19 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.av.VideoController.GAudioFriends;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
 
-public class jyd
-  implements View.OnClickListener
+class jyd
+  implements Runnable
 {
-  public jyd(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  jyd(jyc paramjyc, jyf paramjyf, VideoController.GAudioFriends paramGAudioFriends) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    QAVGroupConfig.Report.c();
-    ReportController.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.b, "", "", "");
-    this.a.c(10);
+    if ((this.jdField_a_of_type_Jyf.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_Long) && (this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_AndroidGraphicsBitmap == null))
+    {
+      this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Jyc.a(String.valueOf(this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_Long));
+      if (this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+        break label104;
+      }
+      if (this.jdField_a_of_type_Jyc.a.a != null) {
+        this.jdField_a_of_type_Jyc.a.a.a().postDelayed(new jye(this), 1000L);
+      }
+    }
+    return;
+    label104:
+    this.jdField_a_of_type_Jyf.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.util.VersionUtils;
 
 public class sbb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public sbb(ChatSettingForTroop paramChatSettingForTroop, TroopManager paramTroopManager) {}
+  public sbb(ChatHistoryForC2C paramChatHistoryForC2C) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getCurrentAccountUin());
-    if (localObject != null)
+    if (!this.a.a)
     {
-      localObject = ((TroopMemberInfo)localObject).troopnick;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.runOnUiThread(new sbc(this, (String)localObject));
+      if (VersionUtils.e()) {
+        this.a.startActivity(new Intent("android.settings.SETTINGS"));
+      }
     }
+    else {
+      return;
+    }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

@@ -1,14 +1,44 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerManager;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+
 public class anlg
+  implements Runnable
 {
-  public long a;
-  public long b;
-  public long c;
+  public anlg(QIMCaptureBannerManager paramQIMCaptureBannerManager) {}
   
-  public anlg(long paramLong1, long paramLong2, int paramInt)
+  public void run()
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.c = paramInt;
+    QIMCaptureBannerConfig localQIMCaptureBannerConfig = QIMCaptureBannerConfig.getBannerConfigFromFile(this.a.a(), QIMCaptureBannerManager.jdField_a_of_type_JavaLangString);
+    if ((localQIMCaptureBannerConfig != null) && (localQIMCaptureBannerConfig.mBannerList.size() > 0))
+    {
+      ??? = localQIMCaptureBannerConfig.mBannerList.entrySet().iterator();
+      while (((Iterator)???).hasNext())
+      {
+        QIMCaptureBannerConfig.BannerItem localBannerItem = (QIMCaptureBannerConfig.BannerItem)((Map.Entry)((Iterator)???).next()).getValue();
+        long l = NetConnInfoCenter.getServerTimeMillis();
+        if (localBannerItem.mEndTime < l) {
+          ((Iterator)???).remove();
+        }
+      }
+    }
+    synchronized (QIMCaptureBannerManager.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig = localQIMCaptureBannerConfig;
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMCaptureBannerManager", 2, "initBannerFromCache= " + localQIMCaptureBannerConfig);
+      }
+      this.a.a().notifyObservers(CaptureConfigUpdateObserver.class, 6, true, null);
+      return;
+    }
   }
 }
 

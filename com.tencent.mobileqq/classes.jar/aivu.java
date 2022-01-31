@@ -1,65 +1,38 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
-import com.tencent.mobileqq.troop.widget.BgTextSpan;
-import java.util.List;
-import java.util.Set;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class aivu
-  extends BaseAdapter
+  implements ActionSheet.OnButtonClickListener
 {
-  private List jdField_a_of_type_JavaUtilList;
-  private Set jdField_a_of_type_JavaUtilSet;
+  String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
   
-  public aivu(List paramList, Set paramSet)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
-  }
+  public aivu(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, ActionSheet paramActionSheet, URLDrawable paramURLDrawable) {}
   
-  public ParagraphInfo a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return (ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969912, paramViewGroup, false);
+    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131435871).equals(paramView)) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
     }
-    Object localObject1 = (CheckBox)localView.findViewById(2131368425);
-    paramView = (TextView)localView.findViewById(2131361932);
-    ((CheckBox)localObject1).setChecked(this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)));
-    Object localObject2 = a(paramInt);
-    localObject1 = String.format("第%d段", new Object[] { Integer.valueOf(((ParagraphInfo)localObject2).pid + 1) });
-    localObject2 = new SpannableString((String)localObject1 + ((ParagraphInfo)localObject2).content_html);
-    ((SpannableString)localObject2).setSpan(new BgTextSpan(paramViewGroup.getContext(), paramViewGroup.getContext().getResources().getColor(2131494256), 17, 4, 3, 12, Color.parseColor("#777777"), (String)localObject1), 0, ((String)localObject1).length(), 33);
-    paramView.setText((CharSequence)localObject2);
-    return localView;
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131435877).equals(paramView)) {
+        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131435874).equals(paramView)) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.c);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aivu
  * JD-Core Version:    0.7.0.1
  */

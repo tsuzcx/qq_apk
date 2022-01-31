@@ -1,87 +1,185 @@
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.MD5;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.io.File;
-import protocol.KQQConfig.UpgradeInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.webso.HybridWebReporter;
+import com.tencent.mobileqq.webview.webso.HybridWebReporter.HybridWebReportInfo;
+import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneHttpUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.zip.GZIPInputStream;
+import mqq.app.AppRuntime;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class akrd
   implements Runnable
 {
-  public akrd(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
+  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public void run()
+  public akrd(ArrayList paramArrayList)
   {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    {
+      QLog.e("HybridWebReporter", 1, "listToSend is empty.");
+      return;
+    }
+    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+    JSONObject localJSONObject = new JSONObject();
+    JSONArray localJSONArray;
+    Object localObject1;
     try
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_JavaLangString);
-      if (localTMAssistantDownloadTaskInfo != null)
+      localJSONArray = new JSONArray();
+      localObject2 = ((ArrayList)localObject2).iterator();
+      for (;;)
       {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_JavaLangString = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_JavaLangString).mSavePath;
-        if ("com.tencent.mobileqq".equals(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d))
+        if (((Iterator)localObject2).hasNext())
         {
-          File localFile = new File(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_JavaLangString);
-          UpgradeDetailWrapper localUpgradeDetailWrapper = UpgradeController.a().a();
-          if ((localFile.exists()) && (localUpgradeDetailWrapper != null))
-          {
-            String str = MD5.a(localFile);
-            if (!TextUtils.equals(localUpgradeDetailWrapper.a.strNewSoftwareMD5.toUpperCase(), str.toUpperCase()))
-            {
-              this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, -51, "download file md5 check failed(not patche)");
-              localFile.delete();
-              return;
-            }
+          localJSONArray.put(((HybridWebReporter.HybridWebReportInfo)((Iterator)localObject2).next()).a());
+          continue;
+          if (localObject1 == null) {
+            break;
           }
         }
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_Long = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-        LogUtility.b(DownloadManager.a, "onDownload complete, info.filePath = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_JavaLangString);
-        if ((!"com.tencent.mobileqq".equals(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d)) || (!this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.b())) {
-          break label409;
-        }
-        LogUtility.c(DownloadManager.a, "QQ Download complete begin write code ......");
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int == 0) {
-          break label358;
-        }
-        LogUtility.c(DownloadManager.a, "QQ apk write code fail......");
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f = -2;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int, null);
       }
     }
     catch (Exception localException)
     {
-      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
-      for (;;)
-      {
-        StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.m);
-        if (!this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        return;
-        label358:
-        LogUtility.c(DownloadManager.a, "QQ apk code suc......");
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        long l = localException.mTotalDataLen;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
+      QLog.w("HybridWebReporter", 1, localException.toString());
+      localObject1 = null;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaLangString = localObject1.toString();
+      if (QLog.isColorLevel()) {
+        QLog.i("HybridWebReporter", 2, "json : " + this.jdField_a_of_type_JavaLangString);
       }
-      label409:
-      LogUtility.c(DownloadManager.a, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d + " Download complete begin write code ......");
-      DownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      localObject1.put("data", localJSONArray);
+    }
+  }
+  
+  public void run()
+  {
+    Object localObject = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatCgiURL", "https://h5.qzone.qq.com/report/native");
+    String str2 = (String)localObject + "?uin=" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    a();
+    if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("HybridWebReporter", 2, "start report thread.");
+    }
+    label85:
+    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Int <= 1)) {
+      if (this.jdField_a_of_type_Int > 1)
+      {
+        new Handler(ThreadManager.getSubThreadLooper()).postDelayed(this, 300000L);
+        this.jdField_b_of_type_Int += 1;
+        this.jdField_a_of_type_Int = 0;
+        return;
+      }
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        for (;;)
+        {
+          localObject = QZoneHttpUtil.a(BaseApplication.getContext(), str2, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
+          if (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200) {
+            break label416;
+          }
+          this.jdField_a_of_type_JavaUtilArrayList.clear();
+          this.jdField_b_of_type_Boolean = true;
+          QLog.d("HybridWebReporter", 4, "report success.");
+          try
+          {
+            Header[] arrayOfHeader = ((HttpResponse)localObject).getHeaders("Content-Encoding");
+            int k = arrayOfHeader.length;
+            i = 0;
+            int j = 0;
+            if (i < k)
+            {
+              if (!arrayOfHeader[i].getValue().equals("gzip")) {
+                break label466;
+              }
+              j = 1;
+              break label466;
+            }
+            localObject = ((HttpResponse)localObject).getEntity();
+            if (j == 0) {
+              break label406;
+            }
+            localObject = HttpBaseUtil.a(new GZIPInputStream(((HttpEntity)localObject).getContent()));
+            if (QLog.isColorLevel()) {
+              QLog.d("HybridWebReporter", 2, "HybridWeb report response result = " + (String)localObject);
+            }
+            if (TextUtils.isEmpty((CharSequence)localObject)) {
+              break;
+            }
+            localObject = new JSONObject((String)localObject);
+            if (!(((JSONObject)localObject).opt("urlPrefixConfig") instanceof JSONArray)) {
+              break label85;
+            }
+            HybridWebReporter.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).toString();
+            LocalMultiProcConfig.putString("urlPrefixConfig", HybridWebReporter.jdField_a_of_type_JavaLangString);
+          }
+          catch (Throwable localThrowable1)
+          {
+            QLog.w("HybridWebReporter", 1, "save url prefix report err.", localThrowable1);
+          }
+        }
+      }
+      catch (Throwable localThrowable2)
+      {
+        this.jdField_a_of_type_Int += 1;
+        QLog.w("HybridWebReporter", 1, "exception when report", localThrowable2);
+      }
+      break label85;
+      label406:
+      String str1 = EntityUtils.toString(localThrowable2);
+      continue;
+      label416:
+      QLog.e("HybridWebReporter", 1, "HttpStatus error when report : " + str1.getStatusLine().getStatusCode());
+      this.jdField_a_of_type_Int += 1;
+      break label85;
+      break;
+      label466:
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akrd
  * JD-Core Version:    0.7.0.1
  */

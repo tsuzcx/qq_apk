@@ -1,24 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
+import cooperation.readinjoy.ReadInJoyHelper;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.TopicRecommendFeedsInfo;
 
 public class lrf
   implements Runnable
 {
-  public lrf(InterestLabelInfoModule paramInterestLabelInfoModule, List paramList) {}
+  public lrf(FollowCoverInfoModule paramFollowCoverInfoModule, TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo) {}
   
   public void run()
   {
-    InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = ReadInJoyHelper.a(FollowCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFollowCoverInfoModule), true, false);
+    if (localObject != null)
     {
-      InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
-      InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).add(localInterestLabelInfo);
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo != null) {
+          break label66;
+        }
+        ((SharedPreferences.Editor)localObject).remove("follow_tab_topic_update_info");
+      }
     }
-    ReadInJoyLogicEngineEventDispatcher.a().a(InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule));
+    for (;;)
+    {
+      ((SharedPreferences.Editor)localObject).putInt("follow_tab_topic_update_info_exists", FollowCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFollowCoverInfoModule));
+      ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
+      return;
+      label66:
+      ((SharedPreferences.Editor)localObject).putString("follow_tab_topic_update_info", Base64.encodeToString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.a().toByteArray(), 0));
+    }
   }
 }
 

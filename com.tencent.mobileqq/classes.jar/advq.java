@@ -1,23 +1,55 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.javahook.BitmapOOMHooker;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
 
 public class advq
-  implements WXShareHelper.WXShareListener
+  implements HookMethodCallback
 {
-  public advq(AIOShareActionSheet paramAIOShareActionSheet) {}
+  private int a;
   
-  public void a(BaseResp paramBaseResp)
+  public advq(int paramInt)
   {
-    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
-    WXShareHelper.a().b(this);
+    this.a = paramInt;
   }
+  
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  {
+    if (paramMethodHookParam.throwable == null) {
+      return;
+    }
+    Throwable localThrowable;
+    if (paramMethodHookParam.throwable.getCause() != null) {
+      localThrowable = paramMethodHookParam.throwable.getCause();
+    }
+    while ((localThrowable instanceof OutOfMemoryError))
+    {
+      BitmapOOMHooker.b();
+      try
+      {
+        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
+        paramMethodHookParam.throwable = null;
+        BitmapOOMHooker.a(true, this.a);
+        return;
+      }
+      catch (Exception paramMethodHookParam)
+      {
+        BitmapOOMHooker.a(false, this.a);
+        return;
+        localThrowable = paramMethodHookParam.throwable;
+      }
+      catch (Error paramMethodHookParam)
+      {
+        BitmapOOMHooker.a(false, this.a);
+      }
+    }
+  }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advq
  * JD-Core Version:    0.7.0.1
  */

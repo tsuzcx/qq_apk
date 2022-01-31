@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import ngt;
+import nif;
 
 public class PgcSearchResultAdapter
   extends BaseAdapter
@@ -161,15 +161,15 @@ public class PgcSearchResultAdapter
     case 2: 
       localObject = paramView;
       if (paramView == null) {
-        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970779, paramViewGroup, false);
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970827, paramViewGroup, false);
       }
-      paramView = ((View)localObject).findViewById(2131371818);
+      paramView = ((View)localObject).findViewById(2131371988);
       if (paramInt > 0) {
         paramView.setVisibility(0);
       }
       for (;;)
       {
-        paramView = (TextView)((View)localObject).findViewById(2131363360);
+        paramView = (TextView)((View)localObject).findViewById(2131363378);
         if (((PgcSearchResultAdapter.ListItemData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b != 0) {
           break;
         }
@@ -185,8 +185,8 @@ public class PgcSearchResultAdapter
     UserInfo localUserInfo = ((PgcSearchResultAdapter.ListItemData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_ComTencentBizQqstoryPgcModelUserInfo;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970750, null);
-      paramViewGroup = new ngt(this, paramView);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970798, null);
+      paramViewGroup = new nif(this, paramView);
       paramView.setTag(paramViewGroup);
       label186:
       localObject = a(localUserInfo.nick, this.jdField_a_of_type_JavaUtilList);
@@ -232,7 +232,7 @@ public class PgcSearchResultAdapter
       ((URLDrawable)localObject).setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
       return paramView;
-      paramViewGroup = (ngt)paramView.getTag();
+      paramViewGroup = (nif)paramView.getTag();
       break label186;
       label453:
       ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.a(100, 100, 10));

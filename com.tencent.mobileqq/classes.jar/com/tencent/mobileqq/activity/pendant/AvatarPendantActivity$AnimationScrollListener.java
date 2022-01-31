@@ -9,7 +9,7 @@ import com.tencent.mobileqq.vas.PendantInfo;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import wpt;
+import wsy;
 
 public class AvatarPendantActivity$AnimationScrollListener
   implements AbsListView.OnScrollListener
@@ -30,7 +30,7 @@ public class AvatarPendantActivity$AnimationScrollListener
       if (!this.b.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.a) {
         break;
       }
-      this.b.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new wpt(this), 80L);
+      this.b.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new wsy(this), 80L);
       return;
       ((AvatarPendantManager)this.b.app.getManager(45)).a(this.b.jdField_a_of_type_Long).a(true);
     }

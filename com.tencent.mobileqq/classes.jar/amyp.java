@@ -1,32 +1,30 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.report.QzoneOnlineTimeCollectRptService;
+import mqq.os.MqqHandler;
 
 public class amyp
-  implements ValueAnimation.AnimationUpdateListener
+  implements Runnable
 {
-  public amyp(AdvancedProviderView paramAdvancedProviderView, QIMProviderContainerView paramQIMProviderContainerView, View paramView) {}
+  public amyp(QzoneOnlineTimeCollectRptService paramQzoneOnlineTimeCollectRptService) {}
   
-  @TargetApi(11)
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void run()
   {
-    paramFloat = paramFloat1.floatValue();
-    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setBackGroundAlpha(paramFloat);
+    QLog.d("QzoneOnlineTimeCollectRptService", 1, "closeTrace isForeground:" + QzoneOnlineTimeCollectRptService.a(this.a));
+    if (QzoneOnlineTimeCollectRptService.a(this.a))
+    {
+      ThreadManager.getSubThreadHandler().removeCallbacks(QzoneOnlineTimeCollectRptService.a(this.a));
+      this.a.c();
+      QzoneOnlineTimeCollectRptService.b(this.a);
+      LocalMultiProcConfig.putBool("key_sp_qzone_isforeground", false);
+      QzoneOnlineTimeCollectRptService.a(this.a, false);
     }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
-    }
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,32 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import protocol.KQQConfig.GetResourceRespInfo;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.qphone.base.util.QLog;
 
 public class yyp
   implements Runnable
 {
-  public yyp(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public yyp(ApolloPanel paramApolloPanel, ApolloActionPackage paramApolloActionPackage) {}
   
   public void run()
   {
-    File localFile = new File(AppConstants.bG);
-    try
-    {
-      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b, new URL(this.jdField_a_of_type_JavaLangString), localFile))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, true, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, "[checkRedTab] clear new action info");
     }
-    catch (MalformedURLException localMalformedURLException)
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+      ApolloDaoManager localApolloDaoManager = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.getManager(154);
+      if (localApolloDaoManager != null) {
+        localApolloDaoManager.a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPackage);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yyp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.file.DevVideoMsgProcessor;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class voz
-  implements DialogInterface.OnClickListener
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public voz(DeviceMsgChatPie paramDeviceMsgChatPie) {}
+  public voz(PhotoListPanel paramPhotoListPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
-    DevVideoMsgProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.f);
-    this.a.f = "";
+    this.a.k = paramInt;
   }
 }
 

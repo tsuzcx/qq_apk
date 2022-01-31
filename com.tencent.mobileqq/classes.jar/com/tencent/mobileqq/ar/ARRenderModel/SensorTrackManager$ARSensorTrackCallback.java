@@ -2,6 +2,8 @@ package com.tencent.mobileqq.ar.ARRenderModel;
 
 public abstract interface SensorTrackManager$ARSensorTrackCallback
 {
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  
   public abstract void a(float[] paramArrayOfFloat);
 }
 

@@ -1,15 +1,12 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.troop.utils.TroopNativeUtils;
 
 public class ajqg
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  private ajqg(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns) {}
+  public static TroopNativeUtils a = new TroopNativeUtils(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqg
  * JD-Core Version:    0.7.0.1
  */

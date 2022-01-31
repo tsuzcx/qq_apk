@@ -52,8 +52,8 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import uru;
-import urv;
+import uuw;
+import uux;
 
 public class ArkAppShareMultiItemBuilder
   extends BaseBubbleBuilder
@@ -313,7 +313,7 @@ public class ArkAppShareMultiItemBuilder
     switch (paramInt)
     {
     default: 
-    case 2131363499: 
+    case 2131363517: 
       do
       {
         return;
@@ -370,10 +370,10 @@ public class ArkAppShareMultiItemBuilder
     do
     {
       return;
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433618);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433619);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uru(this, paramView), new urv(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uuw(this, paramView), new uux(this)).show();
   }
   
   protected void a(View paramView, ChatMessage paramChatMessage)
@@ -445,7 +445,7 @@ public class ArkAppShareMultiItemBuilder
       }
       for (;;)
       {
-        localViewHolder.a.b.setBackgroundResource(2130842198);
+        localViewHolder.a.b.setBackgroundResource(2130842245);
         localViewHolder.a.b.requestLayout();
         localViewHolder.a.b.setVisibility(0);
         return;
@@ -475,7 +475,7 @@ public class ArkAppShareMultiItemBuilder
     while (((paramChatMessage.istroop != 1) && (paramChatMessage.istroop != 3000)) || (paramChatMessage.senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) || (!paramChatMessage.isSupportReply()) || (!(paramChatMessage instanceof MessageForArkApp)) || (((MessageForArkApp)paramChatMessage).msg == null)) {
       return;
     }
-    paramQQCustomMenu.a(2131375353, this.jdField_a_of_type_AndroidContentContext.getString(2131430723), 2130838312);
+    paramQQCustomMenu.a(2131375584, this.jdField_a_of_type_AndroidContentContext.getString(2131430740), 2130838316);
   }
   
   public QQCustomMenuItem[] a(View paramView)
@@ -515,7 +515,7 @@ public class ArkAppShareMultiItemBuilder
     for (int j = k;; j = 1)
     {
       if ((j != 0) && (i == 0)) {
-        localQQCustomMenu.a(2131363499, this.jdField_a_of_type_AndroidContentContext.getString(2131435066), 2130838309);
+        localQQCustomMenu.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
       }
       ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       if ((paramView.extraflag != 32768) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView)))

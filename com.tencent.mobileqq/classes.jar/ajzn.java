@@ -1,35 +1,71 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.filemanager.app.UniformDownload;
-import com.tencent.mobileqq.webview.swift.WebViewWrapper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.util.FaceDecodeTask;
+import com.tencent.mobileqq.util.FaceDecodeTask.FaceDecodeThreadInfo;
+import java.util.ArrayList;
 
 public class ajzn
-  implements DownloadListener
+  implements Runnable
 {
-  public ajzn(WebViewWrapper paramWebViewWrapper, TouchWebView paramTouchWebView, boolean paramBoolean, Activity paramActivity) {}
+  private boolean a = true;
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, "start UniformDownloadActivity");
+    this.a = false;
+  }
+  
+  public void run()
+  {
+    Object localObject1 = Thread.currentThread();
+    ((Thread)localObject1).setName("FaceDecodeThread" + ((Thread)localObject1).getId());
+    localObject1 = BaseApplicationImpl.processName;
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals("com.tencent.mobileqq"))) {
+      Process.setThreadPriority(-8);
     }
-    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    localBundle.putBoolean("fromArkAppDownload", this.jdField_a_of_type_Boolean);
-    UniformDownload.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, localBundle);
+    for (;;)
+    {
+      localObject1 = null;
+      label57:
+      if (this.a) {
+        synchronized (FaceDecodeTask.a)
+        {
+          int i = FaceDecodeTask.a.size();
+          if (i == 0) {}
+          try
+          {
+            FaceDecodeTask.a.wait();
+            localObject3 = localObject1;
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            for (;;)
+            {
+              Object localObject3;
+              Object localObject4 = localObject2;
+            }
+          }
+          localObject1 = localObject3;
+          if (localObject3 == null) {
+            break label57;
+          }
+          ((FaceDecodeTask)localObject3).a();
+          localObject1 = localObject3;
+          break label57;
+          if (FaceDecodeTask.b().b != -2147483648)
+          {
+            Process.setThreadPriority(FaceDecodeTask.b().b);
+            continue;
+            localObject3 = (FaceDecodeTask)FaceDecodeTask.a.remove(0);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import android.graphics.Point;
 
-public class akgn
+public final class akgn
+  implements akgp
 {
-  private Stack jdField_a_of_type_JavaUtilStack = new Stack();
-  
-  public akgn(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
-  
-  public ChatThumbView a()
+  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
-    }
-    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(ChatThumbView paramChatThumbView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
+    float f1 = paramPoint1.x;
+    float f2 = paramPoint1.y;
+    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akgn
  * JD-Core Version:    0.7.0.1
  */

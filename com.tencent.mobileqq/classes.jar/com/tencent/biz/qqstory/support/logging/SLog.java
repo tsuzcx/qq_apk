@@ -118,7 +118,7 @@ public class SLog
   public static void b(String paramString1, String paramString2, Throwable paramThrowable)
   {
     if (a.a(5)) {
-      a.b(paramString1, paramString2, paramThrowable);
+      a.c(paramString1, paramString2, paramThrowable);
     }
   }
   
@@ -131,7 +131,7 @@ public class SLog
   
   public static void b(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    if (a.a(5)) {
+    if (a.a(4)) {
       a.b(paramString1, a(paramString2, paramVarArgs), paramThrowable);
     }
   }
@@ -146,7 +146,7 @@ public class SLog
   public static void c(String paramString1, String paramString2, Throwable paramThrowable)
   {
     if (a.a(6)) {
-      a.c(paramString1, paramString2, paramThrowable);
+      a.d(paramString1, paramString2, paramThrowable);
     }
   }
   
@@ -159,7 +159,7 @@ public class SLog
   
   public static void c(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    if (a.a(6)) {
+    if (a.a(5)) {
       a.c(paramString1, a(paramString2, paramVarArgs), paramThrowable);
     }
   }
@@ -175,6 +175,13 @@ public class SLog
   {
     if (a.a(5)) {
       a.d(paramString1, a(paramString2, paramVarArgs));
+    }
+  }
+  
+  public static void d(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    if (a.a(6)) {
+      a.d(paramString1, a(paramString2, paramVarArgs), paramThrowable);
     }
   }
   

@@ -1,36 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabCheckActiveRequest;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabCheckActiveRequest.MsgTabCheckActiveResponse;
+import com.tencent.biz.qqstory.model.TroopNickNameManager;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.Dispatchers;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class ndd
-  implements CmdTaskManger.CommandCallback
+class ndd
+  implements Runnable
 {
-  public ndd(MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager, QQStoryHandler paramQQStoryHandler, QQStoryManager paramQQStoryManager) {}
+  ndd(ndc paramndc, ArrayList paramArrayList) {}
   
-  public void a(@NonNull MsgTabCheckActiveRequest paramMsgTabCheckActiveRequest, @Nullable MsgTabCheckActiveRequest.MsgTabCheckActiveResponse paramMsgTabCheckActiveResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void run()
   {
-    if ((paramErrorMessage.isFail()) || (paramMsgTabCheckActiveResponse == null))
+    String str1 = ((TroopMemberCardInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0)).troopuin;
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList.size());
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    if (((Iterator)localObject).hasNext())
     {
-      QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, "get active fail" + paramErrorMessage.getErrorMessage());
+      localTroopMemberCardInfo = (TroopMemberCardInfo)((Iterator)localObject).next();
+      str2 = TroopNickNameManager.a(str1, localTroopMemberCardInfo.memberuin);
+      if ((this.jdField_a_of_type_Ndc.a.a.remove(str2) == null) && (QLog.isColorLevel())) {
+        QLog.d("TroopNickNameManager", 2, "loading not match, return");
+      }
+    }
+    while (localArrayList.size() <= 0)
+    {
+      TroopMemberCardInfo localTroopMemberCardInfo;
+      String str2;
       return;
+      localArrayList.add(localTroopMemberCardInfo.memberuin);
+      break;
     }
-    if (paramMsgTabCheckActiveResponse.b == 1)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a(true);
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.b(2);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a = 2;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active value is " + paramMsgTabCheckActiveResponse.b);
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a(paramMsgTabCheckActiveResponse.a);
+    localObject = new TroopNickNameManager.TroopNickNameUpdateEvent();
+    ((TroopNickNameManager.TroopNickNameUpdateEvent)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
+    ((TroopNickNameManager.TroopNickNameUpdateEvent)localObject).jdField_a_of_type_JavaLangString = str1;
+    Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject);
   }
 }
 

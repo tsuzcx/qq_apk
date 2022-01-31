@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
 
-public class aevj
+class aevj
   implements Runnable
 {
-  public aevj(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, String paramString) {}
+  aevj(aevi paramaevi) {}
   
   public void run()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.app, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.nearby_people_card.", 4, "reportClickEvent " + this.jdField_a_of_type_JavaLangString);
+    if ((ImageFeedsUploader.a(this.a.a) != null) && (ImageFeedsUploader.a(this.a.a).a() != null)) {
+      ImageFeedsUploader.a(this.a.a).a(0, null, 0, 0);
     }
   }
 }

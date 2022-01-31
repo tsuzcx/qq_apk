@@ -1,10 +1,10 @@
 package cooperation.qzone;
 
 import NS_MOBILE_QQ.RES_ITEM_COVER;
-import ambk;
-import ambl;
-import ambm;
-import ambn;
+import amro;
+import amrp;
+import amrq;
+import amrr;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -154,8 +154,8 @@ public class QZoneHelper
   private static Intent a(Context paramContext, Long paramLong, int paramInt)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_left_tab_title", paramContext.getString(2131432684));
-    localIntent.putExtra("key_rihgt_tab_title", paramContext.getString(2131432686));
+    localIntent.putExtra("key_left_tab_title", paramContext.getString(2131432701));
+    localIntent.putExtra("key_rihgt_tab_title", paramContext.getString(2131432703));
     localIntent.putExtra("key_album_owner_uin", paramLong);
     localIntent.putExtra("key_selected_tab", paramInt);
     b(localIntent);
@@ -564,7 +564,7 @@ public class QZoneHelper
   
   public static void a(long paramLong)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new ambn(paramLong));
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new amrr(paramLong));
   }
   
   public static void a(Activity paramActivity, int paramInt1, String paramString1, boolean paramBoolean, String paramString2, String paramString3, int paramInt2, int paramInt3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt4, Bundle paramBundle, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -1146,6 +1146,11 @@ public class QZoneHelper
   
   public static void a(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, Bundle paramBundle)
   {
+    a(paramActivity, paramUserInfo, paramString1, paramString2, paramString3, paramString4, paramInt, paramBundle, true);
+  }
+  
+  public static void a(Activity paramActivity, QZoneHelper.UserInfo paramUserInfo, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, Bundle paramBundle, boolean paramBoolean)
+  {
     Intent localIntent = new Intent();
     a(localIntent, paramUserInfo);
     localIntent.putExtra("startup_sceneid", 4);
@@ -1166,7 +1171,7 @@ public class QZoneHelper
           paramString1.putAll(paramBundle);
         }
         localIntent.putExtras(paramString1);
-        QzonePluginProxyActivity.a(paramActivity, paramUserInfo.jdField_a_of_type_JavaLangString, localIntent, paramInt);
+        QzonePluginProxyActivity.a(paramActivity, paramUserInfo.jdField_a_of_type_JavaLangString, localIntent, paramInt, null, paramBoolean);
         return;
       }
       return;
@@ -1217,7 +1222,7 @@ public class QZoneHelper
     if (WebViewPluginFactory.a.containsKey("Qzone")) {
       paramString1.putExtra("insertPluginsArray", new String[] { "Qzone" });
     }
-    paramString1.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432859));
+    paramString1.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432876));
     paramString1.setData(Uri.parse(paramUserInfo));
     paramActivity.startActivityForResult(paramString1, paramInt);
   }
@@ -1389,7 +1394,7 @@ public class QZoneHelper
     if (WebViewPluginFactory.a.containsKey("Qzone")) {
       localIntent.putExtra("insertPluginsArray", new String[] { "Qzone" });
     }
-    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432859));
+    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432876));
     localIntent.setData(Uri.parse(paramUserInfo));
     localIntent.addFlags(268435456);
     paramContext.startActivity(localIntent);
@@ -1460,7 +1465,7 @@ public class QZoneHelper
   {
     if (TextUtils.isEmpty(paramString1))
     {
-      ToastUtil.a().a(2131434783);
+      ToastUtil.a().a(2131434800);
       QLog.w("QZoneHelper", 1, "browse url fail:" + paramString1);
     }
     Intent localIntent;
@@ -1654,7 +1659,7 @@ public class QZoneHelper
   
   public static void a(QQAppInterface paramQQAppInterface, PreloadProcHitPluginSession paramPreloadProcHitPluginSession)
   {
-    ThreadManager.post(new ambm(paramQQAppInterface, paramPreloadProcHitPluginSession), 8, null, false);
+    ThreadManager.post(new amrq(paramQQAppInterface, paramPreloadProcHitPluginSession), 8, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -1674,7 +1679,7 @@ public class QZoneHelper
     }
     for (;;)
     {
-      ThreadManager.postImmediately(new ambl(paramQQAppInterface), null, false);
+      ThreadManager.postImmediately(new amrp(paramQQAppInterface), null, false);
       try
       {
         localObject = BaseApplicationImpl.getApplication().getSharedPreferences("CrashControl_com.tencent.mobileqq:qzone", 4);
@@ -1774,7 +1779,7 @@ public class QZoneHelper
     ((Intent)localObject).putExtra("plugin_start_time", System.nanoTime());
     ((Intent)localObject).putExtra("click_start_time", System.currentTimeMillis());
     ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-    ((Intent)localObject).putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432859));
+    ((Intent)localObject).putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432876));
     paramContext.startActivity(((Intent)localObject).putExtra("url", paramString));
   }
   
@@ -1912,7 +1917,7 @@ public class QZoneHelper
       paramStartActivity.a(false, true);
       return;
     }
-    ThreadManager.postImmediately(new ambk(paramStartActivity), null, true);
+    ThreadManager.postImmediately(new amro(paramStartActivity), null, true);
   }
   
   public static boolean a()
@@ -2228,7 +2233,7 @@ public class QZoneHelper
     if (WebViewPluginFactory.a.containsKey("Qzone")) {
       localIntent.putExtra("insertPluginsArray", new String[] { "Qzone" });
     }
-    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432859));
+    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432876));
     localIntent.setData(Uri.parse(paramUserInfo));
     localIntent.addFlags(268435456);
     paramActivity.startActivity(localIntent);
@@ -2318,7 +2323,7 @@ public class QZoneHelper
     if (WebViewPluginFactory.a.containsKey("Qzone")) {
       paramString1.putExtra("insertPluginsArray", new String[] { "Qzone" });
     }
-    paramString1.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432859));
+    paramString1.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432876));
     paramString1.setData(Uri.parse(paramUserInfo));
     paramActivity.startActivityForResult(paramString1, paramInt);
   }
@@ -2555,7 +2560,7 @@ public class QZoneHelper
     if (WebViewPluginFactory.a.containsKey("Qzone")) {
       paramString.putExtra("insertPluginsArray", new String[] { "Qzone" });
     }
-    paramString.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432859));
+    paramString.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432876));
     paramString.setData(Uri.parse(paramUserInfo));
     paramActivity.startActivityForResult(paramString, paramInt);
   }

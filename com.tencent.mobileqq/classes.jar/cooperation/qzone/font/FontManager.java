@@ -1,12 +1,12 @@
 package cooperation.qzone.font;
 
-import amdx;
-import amdy;
-import amdz;
-import amea;
-import ameb;
-import amec;
-import amed;
+import amub;
+import amuc;
+import amud;
+import amue;
+import amuf;
+import amug;
+import amuh;
 import android.text.TextUtils;
 import com.etrump.mixlayout.ETEngine;
 import com.etrump.mixlayout.FontSoLoader;
@@ -33,12 +33,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class FontManager
 {
-  private static final Singleton jdField_a_of_type_ComTencentMobileqqLyricUtilSingleton = new amdx();
+  private static final Singleton jdField_a_of_type_ComTencentMobileqqLyricUtilSingleton = new amub();
   private static FileCacheService jdField_a_of_type_CooperationQzoneCacheFileCacheService;
-  private FileFilter jdField_a_of_type_JavaIoFileFilter = new ameb(this);
+  private FileFilter jdField_a_of_type_JavaIoFileFilter = new amuf(this);
   private String jdField_a_of_type_JavaLangString;
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private FileFilter jdField_b_of_type_JavaIoFileFilter = new amec(this);
+  private FileFilter jdField_b_of_type_JavaIoFileFilter = new amug(this);
   private String jdField_b_of_type_JavaLangString;
   private ConcurrentHashMap jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
   private String c;
@@ -138,10 +138,10 @@ public class FontManager
           if (!((Iterator)???).hasNext()) {
             break;
           }
-          localObject2 = (amed)((Iterator)???).next();
-          localFontResult = (FontInterface.FontResult)((amed)localObject2).jdField_a_of_type_JavaLangRefWeakReference.get();
+          localObject2 = (amuh)((Iterator)???).next();
+          localFontResult = (FontInterface.FontResult)((amuh)localObject2).jdField_a_of_type_JavaLangRefWeakReference.get();
         } while (localFontResult == null);
-        localFontResult.a(paramInt, b(paramInt, ((amed)localObject2).b), ((amed)localObject2).jdField_a_of_type_JavaLangString);
+        localFontResult.a(paramInt, b(paramInt, ((amuh)localObject2).b), ((amuh)localObject2).jdField_a_of_type_JavaLangString);
       }
     }
   }
@@ -151,7 +151,7 @@ public class FontManager
     if (paramFontResult == null) {
       return;
     }
-    ThreadManager.post(new amdz(this, paramInt1, paramInt2, paramFontResult, paramString2, paramString1), 8, null, false);
+    ThreadManager.post(new amud(this, paramInt1, paramInt2, paramFontResult, paramString2, paramString1), 8, null, false);
   }
   
   private void a(int paramInt1, String paramString1, int paramInt2, String paramString2, boolean paramBoolean, FontInterface.FontResult paramFontResult)
@@ -506,11 +506,11 @@ public class FontManager
     if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
       this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     }
-    amed localamed = new amed(this, null);
-    localamed.jdField_a_of_type_Int = paramInt1;
-    localamed.b = paramInt2;
-    localamed.jdField_a_of_type_JavaLangString = ???;
-    localamed.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFontResult);
+    amuh localamuh = new amuh(this, null);
+    localamuh.jdField_a_of_type_Int = paramInt1;
+    localamuh.b = paramInt2;
+    localamuh.jdField_a_of_type_JavaLangString = ???;
+    localamuh.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFontResult);
     synchronized (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
       paramFontResult = (ArrayList)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
@@ -520,15 +520,15 @@ public class FontManager
           QLog.d("FontManager", 4, "add new download task. fontId =" + paramInt1);
         }
         paramFontResult = new ArrayList();
-        paramFontResult.add(localamed);
+        paramFontResult.add(localamuh);
         this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), paramFontResult);
-        ThreadManager.post(new amea(this, paramString1, paramInt1), 5, null, false);
+        ThreadManager.post(new amue(this, paramString1, paramInt1), 5, null, false);
         return true;
       }
       if (QLog.isDevelopLevel()) {
         QLog.d("FontManager", 4, "attache download task. fontId =" + paramInt1);
       }
-      paramFontResult.add(localamed);
+      paramFontResult.add(localamuh);
       return true;
     }
   }
@@ -849,7 +849,7 @@ public class FontManager
   
   public void a(EarlyDownloadManager.EarlyDownLoadListener paramEarlyDownLoadListener)
   {
-    paramEarlyDownLoadListener = new amdy(this);
+    paramEarlyDownLoadListener = new amuc(this);
     QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.jdField_a_of_type_JavaLangString, null, paramEarlyDownLoadListener);
   }
   

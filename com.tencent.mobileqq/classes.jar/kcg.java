@@ -1,29 +1,25 @@
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteFull;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.VideoLayerUIBase;
 
-class kcg
-  implements QavInOutAnimation.QavOutAnimationListener
+public class kcg
+  implements Runnable
 {
-  kcg(kcf paramkcf) {}
+  public kcg(VideoLayerUIBase paramVideoLayerUIBase) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.a.a != null)
+    String str;
+    if (this.a.a != null)
     {
-      this.a.a.a.setViewEnable(2131364223, false);
-      this.a.a.a.setViewEnable(2131365392, false);
-      this.a.a.a.setViewEnable(2131365391, false);
-      this.a.a.a.setViewEnable(2131365389, false);
-      this.a.a.a.setViewEnable(2131365387, false);
-      this.a.a.a.setViewEnable(2131364225, false);
+      str = this.a.a.a().c;
+      if ((this.a.a.a().i != 1011) || (this.a.a.a().G == 3)) {}
     }
-  }
-  
-  public void b()
-  {
-    VideoInviteFull.a(this.a.a);
-    VideoInviteFull.a(this.a.a, 0, 2131034269);
+    else
+    {
+      return;
+    }
+    this.a.a.c(str);
   }
 }
 

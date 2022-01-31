@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.util.InputMethodUtil;
 
-public class aitr
-  implements View.OnClickListener
+class aitr
+  implements Runnable
 {
-  public aitr(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, ActionSheet paramActionSheet) {}
+  aitr(aitq paramaitq) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    InputMethodUtil.a(this.a.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitr
  * JD-Core Version:    0.7.0.1
  */

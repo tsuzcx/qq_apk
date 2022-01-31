@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class zzs
-  implements Parcelable.Creator
+public class zzs
+  implements Runnable
 {
-  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
-  {
-    return new ARScanStarFaceConfigInfo(paramParcel);
-  }
+  public zzs(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
-  public ARScanStarFaceConfigInfo[] a(int paramInt)
+  public void run()
   {
-    return new ARScanStarFaceConfigInfo[paramInt];
+    ARWorldCupGlobalSceneRenderable.a(this.a, new zzt(this));
+    QLog.d("ARWorldCupGlobalSceneRenderable", 2, "post mRepeatCheckRunnable ");
   }
 }
 

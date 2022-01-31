@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahfe;
-import ahfg;
-import ahfh;
+import ahtg;
+import ahti;
+import ahtj;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -43,7 +43,7 @@ public class HotWordsForSubBussFragment
   public static final String a;
   protected View a;
   protected TextView a;
-  ReadInJoySearchTipsContainer.OnTipClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer$OnTipClickListener = new ahfh(this);
+  ReadInJoySearchTipsContainer.OnTipClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer$OnTipClickListener = new ahtj(this);
   protected QQAppInterface a;
   public UniteSearchHandler a;
   protected UniteSearchObserver a;
@@ -59,7 +59,7 @@ public class HotWordsForSubBussFragment
   
   public HotWordsForSubBussFragment()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ahfg(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ahti(this);
   }
   
   private void a()
@@ -82,7 +82,7 @@ public class HotWordsForSubBussFragment
           }
           this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler.b();
         }
-        ThreadManager.post(new ahfe(this, bool), 5, null, true);
+        ThreadManager.post(new ahtg(this, bool), 5, null, true);
         return;
       }
     }
@@ -119,10 +119,10 @@ public class HotWordsForSubBussFragment
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.a(paramList, 2130839162, getResources().getColor(2131492953), getResources().getColor(2131492952));
+      this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.a(paramList, 2130839166, getResources().getColor(2131492954), getResources().getColor(2131492953));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.a(paramList, 2130839159, getResources().getColor(2131492970), getResources().getColor(2131492951));
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.a(paramList, 2130839163, getResources().getColor(2131492971), getResources().getColor(2131492952));
   }
   
   private void b(List paramList)
@@ -156,9 +156,9 @@ public class HotWordsForSubBussFragment
             {
               this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
               if (this.jdField_a_of_type_Boolean) {
-                this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.a((List)localObject1, 2130839162, getResources().getColor(2131492953), getResources().getColor(2131492952));
+                this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.a((List)localObject1, 2130839166, getResources().getColor(2131492954), getResources().getColor(2131492953));
               } else {
-                this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.a((List)localObject1, 2130839159, getResources().getColor(2131492970), getResources().getColor(2131492951));
+                this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.a((List)localObject1, 2130839163, getResources().getColor(2131492971), getResources().getColor(2131492952));
               }
             }
           }
@@ -185,22 +185,22 @@ public class HotWordsForSubBussFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130970637, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371469));
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer = ((HotWordForSubTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131362710));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130970682, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371635));
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer = ((HotWordForSubTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131362728));
     this.jdField_a_of_type_ComTencentMobileqqSearchViewHotWordForSubTipsContainer.setOnTipsClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer$OnTipClickListener);
     this.jdField_a_of_type_Boolean = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#44608A"));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838576);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838580);
     }
     for (;;)
     {
       a((List)FunctionModuleConfigManager.a.get(FunctionModuleConfigManager.a(this.jdField_a_of_type_ArrayOfLong)));
       return this.jdField_a_of_type_AndroidViewView;
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#999999"));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838575);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838579);
     }
   }
   

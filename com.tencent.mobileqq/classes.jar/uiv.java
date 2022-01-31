@@ -1,15 +1,18 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class uiv
-  implements Runnable
+  extends ActivateFriendsObserver
 {
-  public uiv(MediaPlayerManager paramMediaPlayerManager) {}
+  public uiv(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void run()
+  public void a()
   {
-    MediaPlayerManager.a(this.a).unregisterListener(MediaPlayerManager.a(this.a));
-    MediaPlayerManager.a(this.a).unregisterListener(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
+    }
+    ActivateFriendActivity.b(this.a);
   }
 }
 

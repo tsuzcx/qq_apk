@@ -1,25 +1,26 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener;
+import com.tencent.mobileqq.util.TroopReportor;
 
 public class ajjq
-  implements Runnable
+  implements SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener
 {
-  public ajjq(SnapshotService paramSnapshotService, Bitmap paramBitmap, ajju paramajju, ajjw paramajjw) {}
+  public ajjq(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(SnapshotService.a(), 2, "ScreenShot Finish Callback");
-    }
-    SnapshotService.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Ajju, this.jdField_a_of_type_Ajjw);
-    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService.a.post(new ajjr(this));
+    paramView = SearchReciteArticleFragment.a(this.a).a(paramInt);
+    SearchReciteArticleFragment.a(this.a).setText(paramView);
+    SearchReciteArticleFragment.a(this.a).setSelection(paramView.length());
+    TroopReportor.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { SearchReciteArticleFragment.a(this.a), paramView });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjq
  * JD-Core Version:    0.7.0.1
  */

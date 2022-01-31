@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.IApolloRenderView;
-import com.tencent.mobileqq.apollo.script.SpriteAioScript;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel.IRequestHandler;
+import java.util.Comparator;
 
 public class yop
-  implements Runnable
+  implements Comparator
 {
-  public yop(SpriteAioScript paramSpriteAioScript, IApolloRenderView paramIApolloRenderView, String paramString) {}
+  public yop(ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public void run()
+  public int a(ApolloCmdChannel.IRequestHandler paramIRequestHandler1, ApolloCmdChannel.IRequestHandler paramIRequestHandler2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker() != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker().a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
-    }
+    return paramIRequestHandler1.a() - paramIRequestHandler2.a();
   }
 }
 

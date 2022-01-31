@@ -1,16 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsScrollLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsScrollLayout.ContentLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
 public class mdj
   implements Runnable
 {
-  public mdj(VideoFeedsScrollLayout paramVideoFeedsScrollLayout) {}
+  public mdj(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
   public void run()
   {
-    if (VideoFeedsScrollLayout.a(this.a) != null) {
-      VideoFeedsScrollLayout.a(this.a).a();
-    }
+    this.a.d();
   }
 }
 

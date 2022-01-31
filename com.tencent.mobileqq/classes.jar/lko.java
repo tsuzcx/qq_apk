@@ -1,16 +1,31 @@
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
 
-class lko
-  implements ViewBase.OnClickListener
+public final class lko
+  implements PopupMenuDialog.OnClickActionListener
 {
-  lko(lkl paramlkl, ViewBase paramViewBase) {}
+  public lko(Activity paramActivity) {}
   
-  public void a(ViewBase paramViewBase)
+  public void a(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    ReadInJoyUtils.a(this.jdField_a_of_type_Lkl.a.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.b());
+    switch (paramMenuItem.a)
+    {
+    default: 
+      return;
+    case 0: 
+      paramMenuItem = new Intent(this.a, ReadInJoyDeliverUGCActivity.class);
+      paramMenuItem.putExtra("is_from_dian_dian", true);
+      this.a.startActivity(paramMenuItem);
+      PublicAccountReportUtils.a(null, "", "0X8008C5D", "0X8008C5D", 0, 0, "", "", "", ReadInJoyUtils.c(1), false);
+      return;
+    }
+    ReadInJoyUtils.b(this.a);
+    PublicAccountReportUtils.a(null, "", "0X8008C5D", "0X8008C5D", 0, 0, "", "", "", ReadInJoyUtils.c(2), false);
   }
 }
 

@@ -15,9 +15,9 @@ import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import wto;
-import wtp;
-import wtq;
+import wwt;
+import wwu;
+import wwv;
 
 public class PhotoCropActivity
   extends BaseActivity
@@ -55,26 +55,26 @@ public class PhotoCropActivity
       return;
     }
     this.jdField_b_of_type_Boolean = true;
-    new wtq(this, null).execute(new Void[0]);
+    new wwv(this, null).execute(new Void[0]);
   }
   
   @SuppressLint({"NewApi"})
   void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362822);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362840);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(true);
     }
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365490));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365487));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131365489));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365512));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365509));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131365511));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
       this.jdField_b_of_type_AndroidWidgetButton.setText(this.jdField_d_of_type_JavaLangString);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview = new PortraitImageview(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.addOnLayoutChangeListener(new wto(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.addOnLayoutChangeListener(new wwt(this));
   }
   
   protected boolean a()
@@ -94,7 +94,7 @@ public class PhotoCropActivity
     this.jdField_a_of_type_Int = localIntent.getIntExtra("BUSINESS_ORIGIN_NEW", 0);
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      QQToast.a(this, 2131435890, 0).a();
+      QQToast.a(this, 2131435907, 0).a();
       return false;
     }
     this.g = localIntent.getIntExtra("PhotoConst.EDIT_MASK_SHAPE_TYPE", 1);
@@ -103,17 +103,27 @@ public class PhotoCropActivity
     return true;
   }
   
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+    if (paramInt1 == 2)
+    {
+      setResult(-1, paramIntent);
+      finish();
+    }
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969174);
+    super.setContentView(2130969173);
     if (!a())
     {
       finish();
       return false;
     }
     a(this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.e, this.f, this.g);
-    new wtp(this, null).execute(new Void[0]);
+    new wwu(this, null).execute(new Void[0]);
     return true;
   }
   
@@ -151,10 +161,10 @@ public class PhotoCropActivity
   {
     switch (paramView.getId())
     {
-    case 2131365488: 
+    case 2131365510: 
     default: 
       return;
-    case 2131365487: 
+    case 2131365509: 
       if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction == null)

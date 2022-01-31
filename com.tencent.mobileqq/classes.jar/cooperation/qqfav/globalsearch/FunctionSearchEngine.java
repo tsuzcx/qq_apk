@@ -1,6 +1,6 @@
 package cooperation.qqfav.globalsearch;
 
-import alzg;
+import ampk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.search.FunctionModuleConfigManager;
@@ -28,7 +28,7 @@ public class FunctionSearchEngine
   public FunctionSearchEngine(QQAppInterface paramQQAppInterface, int paramInt)
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable = new alzg(this);
+    this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable = new ampk(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Int = paramInt;
   }

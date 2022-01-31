@@ -33,9 +33,9 @@ import com.tencent.widget.Switch;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.concurrent.atomic.AtomicInteger;
-import lfr;
-import lfs;
-import lft;
+import lfh;
+import lfi;
+import lfj;
 import mqq.app.NewIntent;
 
 public class ReadinjoyMsgManagerActivity
@@ -43,7 +43,7 @@ public class ReadinjoyMsgManagerActivity
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
   private View jdField_a_of_type_AndroidViewView;
-  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new lfr(this);
+  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new lfh(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
   private Switch jdField_a_of_type_ComTencentWidgetSwitch;
@@ -57,22 +57,22 @@ public class ReadinjoyMsgManagerActivity
       ((FlingGestureHandler)this.mFlingHandler).setTopLayout(new ReadInJoyNewFeedsTopGestureLayout(this));
     }
     setTitle("推送管理");
-    findViewById(2131362822).setOnTouchListener(new lfs(this));
+    findViewById(2131362840).setOnTouchListener(new lfi(this));
     boolean bool = ((KandianMergeManager)this.app.getManager(161)).b();
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131367188));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131367236));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
     if (!bool) {}
     for (bool = true;; bool = false)
     {
       b(bool);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131367190);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131367238);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      findViewById(2131367189).setOnClickListener(this);
+      findViewById(2131367237).setOnClickListener(this);
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a("屏蔽后，将不再收到除互动消息以外的推送提醒");
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a("屏蔽消息推送", 3);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131432998);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new lft(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new lfj(this));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
       this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver);
       return;
@@ -149,7 +149,7 @@ public class ReadinjoyMsgManagerActivity
     {
       this.leftView.setTextColor(-14408926);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130845305);
+      this.leftView.setBackgroundResource(2130845433);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -198,7 +198,7 @@ public class ReadinjoyMsgManagerActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2130969623);
+    setContentView(2130969631);
     b();
     a();
     return true;

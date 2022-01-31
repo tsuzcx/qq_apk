@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.MyTroopObserver;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.IShowExternalTroopDataChangedCallBack;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import java.util.HashMap;
 
 public class wlf
-  implements Runnable
+  implements ShowExternalTroopListActivity.IShowExternalTroopDataChangedCallBack
 {
-  public wlf(TroopFragment.MyTroopObserver paramMyTroopObserver) {}
+  public wlf(TroopActivity paramTroopActivity) {}
   
-  public void run()
+  public void a(String paramString, boolean paramBoolean)
   {
-    this.a.a.h();
+    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
+    {
+      this.a.a.remove(paramString);
+      return;
+    }
+    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
   }
 }
 

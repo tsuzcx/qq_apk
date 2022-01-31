@@ -1,7 +1,7 @@
 package cooperation.weiyun.sdk.download.processor;
 
-import amry;
-import amrz;
+import anid;
+import anie;
 import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.OldHttpEngine;
 import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
@@ -10,9 +10,9 @@ import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 public class WeiyunNetEngine
 {
   private static INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
-  private static IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new amry();
+  private static IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new anid();
   private static INetEngine jdField_b_of_type_ComTencentMobileqqTransfileINetEngine;
-  private static IHttpCommunicatorFlowCount jdField_b_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new amrz();
+  private static IHttpCommunicatorFlowCount jdField_b_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new anie();
   
   public static INetEngine a()
   {

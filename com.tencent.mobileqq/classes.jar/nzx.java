@@ -1,50 +1,36 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
 
 public class nzx
-  extends ChildViewClickListener
+  implements Runnable
 {
-  public nzx(NewMyStorySegment paramNewMyStorySegment) {}
+  int jdField_a_of_type_Int = -1;
   
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public nzx(MystoryListView paramMystoryListView, int[] paramArrayOfInt1, int[] paramArrayOfInt2, float[] paramArrayOfFloat) {}
+  
+  public void run()
   {
-    boolean bool;
-    switch (paramView.getId())
+    int i = 0;
+    if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfInt.length) {}
+    do
     {
-    default: 
-      if (NewMyStorySegment.a(this.a).a().size() <= 0) {
-        break label149;
-      }
-      paramView = this.a;
-      if (!NewMyStorySegment.a(this.a))
+      return;
+      if (this.jdField_a_of_type_Int < 0)
       {
-        bool = true;
-        NewMyStorySegment.a(paramView, bool);
-        NewMyStorySegment.a(this.a);
-        if (!NewMyStorySegment.a(this.a)) {
-          break label143;
+        this.jdField_a_of_type_Int += 1;
+        if (this.jdField_a_of_type_Int >= 0) {
+          i = this.b[this.jdField_a_of_type_Int];
         }
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.postDelayed(this, i);
+        return;
       }
-      break;
-    }
-    label143:
-    for (paramView = "1";; paramView = "2")
-    {
-      StoryReportor.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
-      StoryReportor.a("home_page", "exp_share_day", 0, 0, new String[0]);
-      return;
-      NewMyStorySegment.a(this.a, NewMyStorySegment.a(this.a), paramView);
-      return;
-      bool = false;
-      break;
-    }
-    label149:
-    NewMyStorySegment.a(this.a, NewMyStorySegment.a(this.a), paramView);
+      long l = System.currentTimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int], this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.getWidth() / 2, this.jdField_a_of_type_ArrayOfFloat[this.jdField_a_of_type_Int], 0);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      this.jdField_a_of_type_Int += 1;
+    } while (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfInt.length);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.postDelayed(this, this.b[this.jdField_a_of_type_Int]);
   }
 }
 

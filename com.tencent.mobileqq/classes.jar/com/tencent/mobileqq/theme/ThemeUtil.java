@@ -240,33 +240,44 @@ public class ThemeUtil
   
   public static String getAnimatePathByTag(int paramInt)
   {
+    Object localObject3 = null;
     Object localObject2 = null;
+    Object localObject1;
+    String str;
     if (android.text.TextUtils.isEmpty(mAnimateThemePath))
     {
-      localObject1 = getCurrentThemeInfo().getString("themePath");
-      if (!((String)localObject1).endsWith(File.separator)) {
-        break label184;
+      localObject1 = getCurrentThemeInfo();
+      str = ((Bundle)localObject1).getString("themePath");
+      if (android.text.TextUtils.isEmpty(str))
+      {
+        localObject1 = ((Bundle)localObject1).getString("themeId");
+        QLog.e("Theme.ThemeUtil", 2, "getAnimatePathByTag err ApngImage path = " + null + " id = " + (String)localObject1);
+        return localObject2;
       }
-      mAnimateThemePath = (String)localObject1;
-      if (android.text.TextUtils.isEmpty((CharSequence)localObject1)) {
-        QLog.e("Theme.ThemeUtil", 2, "getAnimatePathByTag err ApngImage path = " + null);
+      if (str.endsWith(File.separator)) {
+        mAnimateThemePath = str;
       }
     }
-    Object localObject1 = localObject2;
-    switch (paramInt)
+    else
     {
-    default: 
-      localObject1 = localObject2;
+      label94:
+      localObject1 = localObject3;
+      switch (paramInt)
+      {
+      default: 
+        localObject1 = localObject3;
+      }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Theme.ThemeUtil", 2, "getAnimatePathByTag ApngImage path = " + (String)localObject1);
+      localObject2 = localObject1;
+      if (!QLog.isColorLevel()) {
+        break;
       }
+      QLog.d("Theme.ThemeUtil", 2, "getAnimatePathByTag ApngImage path = " + (String)localObject1);
       return localObject1;
-      label184:
-      mAnimateThemePath = (String)localObject1 + File.separator;
-      break;
+      mAnimateThemePath = str + File.separator;
+      break label94;
       localObject1 = mAnimateThemePath + "raw/qvip_drawer_bg_animate.png";
       continue;
       localObject1 = mAnimateThemePath + "raw/qvip_conversation_bg_animate.png";
@@ -933,7 +944,7 @@ public class ThemeUtil
       Collections.sort((List)localObject3);
       localObject4 = (String)((List)localObject3).get(((List)localObject3).size() - 1);
       localObject3 = ((SharedPreferences)localObject2).getString("currentThemeVersion", "0");
-      if (IndividuationConfigInfo.a("6.0", "7.6.0"))
+      if (IndividuationConfigInfo.a("6.0", "7.6.3"))
       {
         localObject2 = (String)((Map)localObject1).get(localObject4);
         localObject1 = localObject2;
@@ -1676,7 +1687,7 @@ public class ThemeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeUtil
  * JD-Core Version:    0.7.0.1
  */

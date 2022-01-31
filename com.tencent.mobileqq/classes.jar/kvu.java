@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 
-class kvu
-  implements Runnable
+public class kvu
+  implements DialogInterface.OnCancelListener
 {
-  kvu(kvt paramkvt) {}
+  public kvu(CustomWebChromeClient paramCustomWebChromeClient, JsPromptResult paramJsPromptResult) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    VideoCoverView.a(this.a.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView, this.a.a.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsPromptResult.cancel();
   }
 }
 

@@ -1,14 +1,20 @@
 import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 
 public class anux
   implements Runnable
 {
-  public anux(EditWebDanceMachineVideoActivity paramEditWebDanceMachineVideoActivity) {}
+  public anux(EditVideoSave paramEditVideoSave) {}
   
   public void run()
   {
-    QQToast.a(this.a, 1, "上传失败", 0).a();
+    this.a.j();
+    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a() != 102) {
+      QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "保存成功", 0).a();
+    }
   }
 }
 

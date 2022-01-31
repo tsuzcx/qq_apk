@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import akmm;
+import alcc;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +26,10 @@ public class GroupListOpenFrame$GroupListAdapter
     if (paramView == null)
     {
       paramViewGroup = new GroupListOpenFrame.GroupListAdapter.ViewHolder(this);
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969261, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365783));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131365784));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365782));
+      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969262, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365810));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131365811));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365809));
       paramView.setTag(paramViewGroup);
       str = this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramInt);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
@@ -38,20 +38,20 @@ public class GroupListOpenFrame$GroupListAdapter
       if (paramInt != 0) {
         break label194;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838631);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838635);
     }
     for (;;)
     {
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, 0, i, 0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new akmm(this, paramInt, str));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new alcc(this, paramInt, str));
       return paramView;
       paramViewGroup = (GroupListOpenFrame.GroupListAdapter.ViewHolder)paramView.getTag();
       break;
       label194:
       if (paramInt == getCount() - 1) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838626);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838630);
       } else {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838629);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838633);
       }
     }
   }

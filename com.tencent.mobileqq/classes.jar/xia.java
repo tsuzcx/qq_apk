@@ -1,13 +1,32 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public final class xia
-  implements Runnable
+public class xia
+  implements WtTicketPromise
 {
-  public xia(MessageHandler paramMessageHandler, String paramString, int paramInt) {}
+  public xia(VoiceRedPacketHelper paramVoiceRedPacketHelper, xib paramxib) {}
   
-  public void run()
+  public void Done(Ticket paramTicket)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
+    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
+    {
+      paramTicket = new String(paramTicket._sig);
+      this.jdField_a_of_type_Xib.a(paramTicket);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey is null");
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey failed");
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey time out");
   }
 }
 

@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lon;
+import loq;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -70,7 +70,7 @@ public class SMRMH
     }
     else
     {
-      lon locallon;
+      loq localloq;
       JSONObject localJSONObject;
       for (;;)
       {
@@ -91,11 +91,11 @@ public class SMRMH
           localObject3 = ((List)localObject3).iterator();
           if (((Iterator)localObject3).hasNext())
           {
-            locallon = (lon)((Iterator)localObject3).next();
+            localloq = (loq)((Iterator)localObject3).next();
             localJSONObject = new JSONObject();
-            localJSONObject.put("u", a(locallon.jdField_a_of_type_Long));
-            localJSONObject.put("cn", locallon.jdField_a_of_type_Int);
-            localJSONObject.put("ic", locallon.jdField_b_of_type_Int);
+            localJSONObject.put("u", a(localloq.jdField_a_of_type_Long));
+            localJSONObject.put("cn", localloq.jdField_a_of_type_Int);
+            localJSONObject.put("ic", localloq.jdField_b_of_type_Int);
             ((JSONArray)localObject2).put(localJSONObject);
             continue;
           }
@@ -122,14 +122,14 @@ public class SMRMH
         localObject3 = ((List)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          locallon = (lon)((Iterator)localObject3).next();
+          localloq = (loq)((Iterator)localObject3).next();
           localJSONObject = new JSONObject();
-          localJSONObject.put("u", a(locallon.jdField_a_of_type_Long));
-          localJSONObject.put("cn", locallon.jdField_a_of_type_Int);
-          localJSONObject.put("ic", locallon.jdField_b_of_type_Int);
-          localJSONObject.put("seg", locallon.d);
-          localJSONObject.put("mi", locallon.c);
-          localJSONObject.put("gu", locallon.jdField_b_of_type_Long);
+          localJSONObject.put("u", a(localloq.jdField_a_of_type_Long));
+          localJSONObject.put("cn", localloq.jdField_a_of_type_Int);
+          localJSONObject.put("ic", localloq.jdField_b_of_type_Int);
+          localJSONObject.put("seg", localloq.d);
+          localJSONObject.put("mi", localloq.c);
+          localJSONObject.put("gu", localloq.jdField_b_of_type_Long);
           paramList.put(localJSONObject);
         }
         ((JSONObject)localObject2).put("rc", paramList);
@@ -166,7 +166,7 @@ public class SMRMH
         localObject2 = new JSONArray();
         localObject3 = ((List)localObject3).iterator();
         while (((Iterator)localObject3).hasNext()) {
-          ((JSONArray)localObject2).put(a(((lon)((Iterator)localObject3).next()).jdField_a_of_type_Long));
+          ((JSONArray)localObject2).put(a(((loq)((Iterator)localObject3).next()).jdField_a_of_type_Long));
         }
         ((JSONObject)localObject1).put("us", localObject2);
         if (SMRM.a().a()) {

@@ -1,25 +1,38 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajyt
-  implements Runnable
+public final class ajyt
+  implements DownloadParams.DecodeHandler
 {
-  public ajyt(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI, TextView paramTextView1, TextView paramTextView2, String paramString) {}
-  
-  public void run()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()))
-    {
-      this.b.setText(this.jdField_a_of_type_JavaLangString);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c(this.jdField_a_of_type_JavaLangString);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return ImageUtil.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyt
  * JD-Core Version:    0.7.0.1
  */

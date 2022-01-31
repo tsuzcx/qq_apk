@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.wholepeople;
 
-import aked;
+import aksk;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.ColorFilter;
@@ -55,7 +55,7 @@ public class WholePeoplePlugin
         localImageView.setPadding(localImageView.getPaddingLeft(), localImageView.getPaddingTop(), this.jdField_a_of_type_Int, localImageView.getPaddingBottom());
         return;
       }
-      localImageView.setImageResource(2130842173);
+      localImageView.setImageResource(2130842210);
       int k;
       if (localWebViewFragment.a.b != null)
       {
@@ -91,7 +91,7 @@ public class WholePeoplePlugin
       label388:
       for (;;)
       {
-        localImageView.setOnClickListener(new aked(this, paramString));
+        localImageView.setOnClickListener(new aksk(this, paramString));
         return;
         localImageView.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
         break;
@@ -228,7 +228,7 @@ public class WholePeoplePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.wholepeople.WholePeoplePlugin
  * JD-Core Version:    0.7.0.1
  */

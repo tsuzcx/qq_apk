@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02045c" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0202" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0202" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="46.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1098" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="10.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0048" />
-    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038a" android:textColor="#ff818284" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cad" android:visibility="gone" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="" />
-    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cae" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043d" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1caf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_icon_arrow_right_normal" android:contentDescription="@null" />
-</LinearLayout>
+<com.tencent.mobileqq.widget.QQViewPager android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03f4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

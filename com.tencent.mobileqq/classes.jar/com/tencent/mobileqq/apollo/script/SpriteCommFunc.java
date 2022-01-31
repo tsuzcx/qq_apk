@@ -6,7 +6,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import yow;
+import ysc;
 
 public class SpriteCommFunc
 {
@@ -31,7 +31,7 @@ public class SpriteCommFunc
       QLog.w("cmshow_scripted_SpriteCommFunc", 2, "task NOT exist, msgId:" + paramLong);
       return;
     }
-    ThreadManager.post(new yow(paramQQAppInterface, paramString), 5, null, true);
+    ThreadManager.post(new ysc(paramQQAppInterface, paramString), 5, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)

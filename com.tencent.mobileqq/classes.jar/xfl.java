@@ -1,23 +1,26 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadConfig;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.qphone.base.util.QLog;
 
 public class xfl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xfl(BannerManager paramBannerManager) {}
+  public xfl(PreloadConfig paramPreloadConfig) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(BannerManager.a(this.a), TroopAssisSettingActivity.class);
-    BannerManager.a(this.a).startActivityForResult(paramView, 9001);
-    BannerManager.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-    ReportController.b(BannerManager.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
+    synchronized (this.a.mSaveLock)
+    {
+      if (this.a.isModulesChange(this.a.mLastModules))
+      {
+        QWalletTools.a(this.a, this.a.mSavePath);
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadManager", 2, "really save:" + this.a);
+        }
+        this.a.mLastModules = this.a.getCloneModules();
+      }
+      return;
+    }
   }
 }
 

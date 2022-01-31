@@ -1,25 +1,46 @@
-import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
+import android.text.TextUtils;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.common.AppNotificationManager;
+import com.tencent.open.downloadnew.common.AppNotificationManager.NoticeIdentity;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class alhg
-  extends alhj
+public class alhg
+  implements Runnable
 {
-  public ICloudAVEngine.ResultBundle a;
-  private String jdField_a_of_type_JavaLangString;
+  public alhg(DownloadManager paramDownloadManager) {}
   
-  public alhg(alhe paramalhe, String paramString)
+  public void run()
   {
-    super(null);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle)
-  {
-    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
+    Object localObject1 = AppUtil.b(CommonDataAdapter.a().a());
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
     {
-      this.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$ResultBundle = paramResultBundle;
-      return false;
+      localObject1 = AppNotificationManager.a().a();
+      if (localObject1 != null)
+      {
+        Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          AppNotificationManager.NoticeIdentity localNoticeIdentity = (AppNotificationManager.NoticeIdentity)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
+          if (localNoticeIdentity != null)
+          {
+            Object localObject2 = this.a.a(localNoticeIdentity.b);
+            if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).c)))
+            {
+              localObject2 = this.a.a(((DownloadInfo)localObject2).c);
+              if ((localObject2 != null) && (4 != DownloadManager.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
+                AppNotificationManager.a().a(localNoticeIdentity.a);
+              }
+            }
+          }
+        }
+      }
     }
-    return true;
   }
 }
 

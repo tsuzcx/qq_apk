@@ -1,46 +1,29 @@
-import android.app.Activity;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler.FileUploadInfo;
+import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
 import com.tencent.qphone.base.util.QLog;
 
 public class acwi
-  implements FileVideoManager.FileVideoManagerInitCallback
+  extends FileTransferObserver
 {
-  public acwi(FileModel paramFileModel, Activity paramActivity) {}
+  public acwi(FileVideoManager.VideoControl paramVideoControl) {}
   
-  public void a() {}
-  
-  public void b()
+  protected void b(boolean paramBoolean, FileTransferHandler.FileUploadInfo paramFileUploadInfo, MessageObserver.StatictisInfo paramStatictisInfo)
   {
-    try
+    super.b(paramBoolean, paramFileUploadInfo, paramStatictisInfo);
+    paramStatictisInfo = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramBoolean) && ((paramFileUploadInfo.c == 2) || (paramFileUploadInfo.c == 0)) && (!this.a.a.bSend))
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface == null)
-      {
-        QLog.e("FileModel<FileAssistant>", 1, "Start VideoActivity is not in QQ!");
-        return;
-      }
+      QLog.i("FileVideoManager<FileAssistant>", 1, "=_= v! [SetFileDownloadStatus Replay] onDownloadFileSuc isSuccess[" + paramBoolean + "],retCode[" + paramFileUploadInfo.jdField_a_of_type_Int + "],retMsg[" + paramFileUploadInfo.jdField_a_of_type_JavaLangString + "],retStat[" + paramFileUploadInfo.c + "]. need to send file receipt");
+      paramStatictisInfo.a().a(this.a.a.peerUin, this.a.a.fileName, this.a.a.Uuid, this.a.a.fileSize, 0L);
+      return;
     }
-    catch (Exception localException)
-    {
-      Object localObject;
-      for (;;)
-      {
-        localObject = null;
-      }
-      if (((FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel).status == 0) || (FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel).status == 3)) && (((this.jdField_a_of_type_AndroidAppActivity instanceof ChatActivity)) || ((this.jdField_a_of_type_AndroidAppActivity instanceof SplashActivity))) && (!FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel).bSend))
-      {
-        localObject.a().a(FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel).nSessionId);
-        return;
-      }
-      FileModel.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel, this.jdField_a_of_type_AndroidAppActivity);
-    }
+    QLog.i("FileVideoManager<FileAssistant>", 1, "=_= v! [SetFileDownloadStatus Replay] onDownloadFileSuc isSuccess[" + paramBoolean + "],retCode[" + paramFileUploadInfo.jdField_a_of_type_Int + "],retMsg[" + paramFileUploadInfo.jdField_a_of_type_JavaLangString + "],retStat[" + paramFileUploadInfo.c + "]. don't need to send file receipt");
   }
 }
 

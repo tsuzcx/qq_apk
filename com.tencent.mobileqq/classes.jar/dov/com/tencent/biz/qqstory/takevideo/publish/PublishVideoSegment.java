@@ -53,6 +53,8 @@ public class PublishVideoSegment
     SLog.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish date:%s and time:%d", new Object[] { localPublishVideoEntry.mLocalDate, Long.valueOf(localPublishVideoEntry.createTime) });
     localPublishVideoEntry.publishState = 1;
     localPublishVideoEntry.videoUploadTempDir = paramGenerateContext.jdField_b_of_type_JavaLangString;
+    int i;
+    label708:
     Object localObject2;
     Object localObject1;
     if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
@@ -101,23 +103,27 @@ public class PublishVideoSegment
     else if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
     {
       localPublishVideoEntry.isPicture = false;
-      localPublishVideoEntry.isLocalPublish = true;
-      localObject2 = (EditLocalVideoSource)paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-      paramJobContext = ((EditLocalVideoSource)localObject2).a();
-      if (this.a.a() == 1) {
-        break label2033;
+      if (this.a.a("extra_is_slide_show_video", false))
+      {
+        i = 2;
+        localPublishVideoEntry.putExtra("video_type", Integer.valueOf(i));
+        localPublishVideoEntry.isLocalPublish = true;
+        localObject2 = (EditLocalVideoSource)paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
+        paramJobContext = ((EditLocalVideoSource)localObject2).a();
+        if (this.a.a() == 1) {
+          break label2067;
+        }
+        localObject1 = new File(paramJobContext);
+        localObject1 = AppConstants.aS + localPublishVideoEntry.fakeVid + File.separator + ((File)localObject1).getName();
+        if (!com.tencent.mobileqq.utils.FileUtils.d(paramJobContext, (String)localObject1)) {
+          break label2067;
+        }
+        paramJobContext = (JobContext)localObject1;
       }
-      localObject1 = new File(paramJobContext);
-      localObject1 = AppConstants.aS + localPublishVideoEntry.fakeVid + File.separator + ((File)localObject1).getName();
-      if (!com.tencent.mobileqq.utils.FileUtils.d(paramJobContext, (String)localObject1)) {
-        break label2033;
-      }
-      paramJobContext = (JobContext)localObject1;
     }
-    label1299:
-    label1901:
-    label2030:
-    label2033:
+    label1935:
+    label2064:
+    label2067:
     for (;;)
     {
       localPublishVideoEntry.mLocalRawVideoDir = paramJobContext;
@@ -131,6 +137,8 @@ public class PublishVideoSegment
         localPublishVideoEntry.videoDuration = ((EditLocalVideoSource)localObject2).a.mDuration;
         localPublishVideoEntry.videoCreateTime = ((EditLocalVideoSource)localObject2).a.addedDate;
         break;
+        i = 0;
+        break label708;
         localPublishVideoEntry.videoWidth = ((EditLocalVideoSource)localObject2).a();
       }
       if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
@@ -179,7 +187,7 @@ public class PublishVideoSegment
         for (;;)
         {
           if (localPublishVideoEntry.thumbPath == null) {
-            break label1299;
+            break label1333;
           }
           localPublishVideoEntry.mLocalRawVideoDir = localPublishVideoEntry.thumbPath;
           if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakePhotoSource)) {
@@ -196,8 +204,9 @@ public class PublishVideoSegment
           break;
           localPublishVideoEntry.isLocalPublish = false;
         }
+        label1333:
         if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGeneratePicArgs.jdField_b_of_type_Boolean) || (!paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGeneratePicArgs.jdField_a_of_type_Boolean)) {
-          break label2030;
+          break label2064;
         }
         paramJobContext = paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGeneratePicArgs.jdField_b_of_type_JavaLangString;
       }
@@ -242,7 +251,7 @@ public class PublishVideoSegment
         }
         QQStoryContext.a().a().createEntityManager().b(localPublishVideoEntry);
         SLog.c("Q.qqstory.publish.edit.PublishVideoSegment", "after persist or replace.");
-        int i = 0;
+        i = 0;
         if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode != 0) {
           i = 1;
         }
@@ -290,11 +299,11 @@ public class PublishVideoSegment
           {
             j = 1;
             if (!paramGenerateContext.d) {
-              break label2015;
+              break label2049;
             }
             k = 1;
             if (!localPublishVideoEntry.hwEncodeRecordVideo) {
-              break label2021;
+              break label2055;
             }
           }
           for (int m = 1;; m = 0)
@@ -305,7 +314,7 @@ public class PublishVideoSegment
             j = 0;
             break;
             k = 0;
-            break label1901;
+            break label1935;
           }
         }
       }

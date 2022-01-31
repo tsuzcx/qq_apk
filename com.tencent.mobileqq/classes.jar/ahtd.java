@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
+import android.os.Handler;
+import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
 
-class ahtd
+public class ahtd
   implements Runnable
 {
-  ahtd(ahtc paramahtc, QQAppInterface paramQQAppInterface) {}
+  public ahtd(GroupSearchFragment paramGroupSearchFragment) {}
   
   public void run()
   {
-    ((MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a(2, null);
+    if (!this.a.c)
+    {
+      this.a.a.a();
+      this.a.c = true;
+    }
+    this.a.b.removeMessages(100);
+    this.a.b.sendEmptyMessage(100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahtd
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import jnk;
+import jmv;
 
 public abstract class IQQServiceLocationCallback$Stub
   extends Binder
@@ -25,7 +25,7 @@ public abstract class IQQServiceLocationCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQQServiceLocationCallback))) {
       return (IQQServiceLocationCallback)localIInterface;
     }
-    return new jnk(paramIBinder);
+    return new jmv(paramIBinder);
   }
   
   public IBinder asBinder()

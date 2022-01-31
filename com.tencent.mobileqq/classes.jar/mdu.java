@@ -1,29 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper.MediaPlayListenerAdapter;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.Properties;
+import android.view.animation.Interpolator;
 
 public class mdu
-  implements Runnable
+  implements Interpolator
 {
-  public mdu(VideoPlayerWrapper paramVideoPlayerWrapper, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
-  
-  public void run()
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getStreamDumpInfo();
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = ReadInJoyUtils.a((String)localObject);
-      if (localObject != null)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a = Long.valueOf(((Properties)localObject).getProperty("VideoBitRate")).longValue();
-        if (VideoPlayerWrapper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper) != null) {
-          VideoPlayerWrapper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a);
-        }
-      }
-    }
+    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
+  }
+  
+  public float getInterpolation(float paramFloat)
+  {
+    return a(paramFloat, 0.0F, 1.0F, 1.0F);
   }
 }
 

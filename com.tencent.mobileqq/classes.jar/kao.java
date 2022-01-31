@@ -1,42 +1,56 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class kao
-  implements ValueAnimator.AnimatorUpdateListener
+  extends BroadcastReceiver
 {
-  public kao(QavVideoRecordUICtrl paramQavVideoRecordUICtrl, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7) {}
+  public kao(VideoControlUI paramVideoControlUI) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins((int)((1.0F - f1) * this.jdField_a_of_type_Int), 0, 0, 0);
-    QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
-    QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins(this.b - (int)(this.jdField_a_of_type_Int * f1), 0, 0, 0);
-    QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
-    float f2;
-    if (i <= 220)
-    {
-      f2 = i / 220.0F;
-      QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setAlpha(f2);
+    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
+      return;
     }
-    QavVideoRecordUICtrl.c(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins(this.c + (int)(this.d * f1), 0, 0, 0);
-    QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.c(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
-    if (i <= 160)
-    {
-      f2 = i / 100.0F;
-      QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setAlpha(f2);
+    paramContext = paramIntent.getStringExtra("camera_id");
+    int i = paramIntent.getIntExtra("availability", 1);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.c, 2, "update camera availability status cameraId:" + paramContext + ", value:" + i);
     }
-    QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins((int)((this.e + 0) * f1) + 0, 0, 0, 0);
-    QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).width = (this.f - (int)((this.f - this.g) * f1));
-    QavVideoRecordUICtrl.c(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
-    QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setAlpha(1.0F - f1);
-    QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).requestLayout();
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
+    if (i == 0)
+    {
+      VideoControlUI.b(this.a, false);
+      return;
+    }
+    paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if ((paramContext != null) && (paramContext.size() > 0))
+    {
+      paramContext = paramContext.entrySet().iterator();
+      do
+      {
+        if (!paramContext.hasNext()) {
+          break;
+        }
+      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        VideoControlUI.b(this.a, false);
+        return;
+      }
+      VideoControlUI.b(this.a, true);
+      return;
+    }
   }
 }
 

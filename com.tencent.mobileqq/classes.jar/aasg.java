@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
 
-public class aasg
-  implements Runnable
+class aasg
+  implements aasr
 {
-  public aasg(ARMapActivity paramARMapActivity) {}
+  aasg(aasc paramaasc, aasp paramaasp, aasr paramaasr) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine.updateLocationNative(this.a.jdField_a_of_type_Double, this.a.b, "", 0.0D, 1, "", 0, "");
-    ARMapEngine localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
-    ARMapEngine.nativeRequestPOIList();
-    localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
-    ARMapEngine.nativeRequestLbsPOIListByPid("");
-    ARMapActivity.b(this.a);
+    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Aasp.a }));
+    if (paramBoolean) {
+      ArkAppDataReport.a(this.jdField_a_of_type_Aasp.a, 2);
+    }
+    this.jdField_a_of_type_Aasr.a(paramBoolean);
   }
 }
 

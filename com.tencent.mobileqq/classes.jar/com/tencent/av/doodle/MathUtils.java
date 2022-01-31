@@ -21,7 +21,7 @@ public final class MathUtils
   
   public static final float a(float paramFloat)
   {
-    return jie.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
+    return jhp.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
   }
   
   public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -58,7 +58,7 @@ public final class MathUtils
   
   public static final float b(float paramFloat)
   {
-    return jie.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
+    return jhp.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
   }
   
   public static final float c(float paramFloat)

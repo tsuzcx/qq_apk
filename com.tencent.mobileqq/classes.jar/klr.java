@@ -1,35 +1,18 @@
-import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.AsyncBack;
 
-class klr
-  extends Thread
+public class klr
 {
-  klr(klq paramklq) {}
+  public AsyncBack a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void run()
+  public klr(String paramString1, String paramString2, String paramString3, AsyncBack paramAsyncBack)
   {
-    if (this.a.a.b == 1) {}
-    for (;;)
-    {
-      try
-      {
-        Thread.sleep(5000L);
-        this.a.a.b();
-        return;
-      }
-      catch (InterruptedException localInterruptedException1)
-      {
-        localInterruptedException1.printStackTrace();
-        continue;
-      }
-      try
-      {
-        Thread.sleep(10000L);
-      }
-      catch (InterruptedException localInterruptedException2)
-      {
-        localInterruptedException2.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = paramAsyncBack;
   }
 }
 

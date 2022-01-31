@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import ammp;
-import ammq;
+import ancu;
+import ancv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -195,7 +195,7 @@ public class QzonePhotoWallPlugin
   
   private void a(ArrayList paramArrayList)
   {
-    ThreadManager.post(new ammp(this, paramArrayList), 8, null, false);
+    ThreadManager.post(new ancu(this, paramArrayList), 8, null, false);
   }
   
   private void a(ArrayList paramArrayList, boolean paramBoolean)
@@ -351,7 +351,7 @@ public class QzonePhotoWallPlugin
       if ((a() == 2) && (paramArrayList != null) && (paramArrayList.size() != 0)) {
         jdField_a_of_type_JavaUtilSet.add(paramArrayList.get(0));
       }
-      ThreadManager.post(new ammq(this, paramArrayList), 8, null, false);
+      ThreadManager.post(new ancv(this, paramArrayList), 8, null, false);
       return;
       i = paramArrayList.size();
     }

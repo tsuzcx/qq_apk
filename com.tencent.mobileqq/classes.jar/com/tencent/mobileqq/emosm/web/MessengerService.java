@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.emosm.web;
 
-import abtr;
-import abts;
-import abtt;
-import abtu;
-import abtv;
-import abtw;
-import abtx;
-import abty;
-import abtz;
-import abua;
-import abub;
-import abuc;
-import abue;
-import abvk;
+import acat;
+import acau;
+import acav;
+import acaw;
+import acax;
+import acay;
+import acaz;
+import acba;
+import acbb;
+import acbc;
+import acbd;
+import acbe;
+import acbg;
+import accm;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -57,13 +57,13 @@ public class MessengerService
   extends AppService
   implements IPCConstants
 {
-  private abue jdField_a_of_type_Abue;
-  public abvk a;
+  private acbg jdField_a_of_type_Acbg;
+  public accm a;
   public Bundle a;
   public Handler a;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public Messenger a;
-  GdtAdObserver jdField_a_of_type_ComTencentGdtadNetGdtAdObserver = new abtt(this);
+  GdtAdObserver jdField_a_of_type_ComTencentGdtadNetGdtAdObserver = new acav(this);
   public VipSpecialCareHandler a;
   public CardObserver a;
   public FriendListObserver a;
@@ -84,23 +84,23 @@ public class MessengerService
   public MessengerService()
   {
     this.jdField_a_of_type_AndroidOsMessenger = null;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new abtr(this);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerRecallListener = new abtv(this);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportObserver = new abtw(this);
-    this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallObserver = new abtx(this);
-    this.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener = new abty(this);
-    this.jdField_a_of_type_Abvk = new abvk(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver = new QWalletAuthObserver(this.jdField_a_of_type_Abvk);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new acat(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerRecallListener = new acax(this);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportObserver = new acay(this);
+    this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallObserver = new acaz(this);
+    this.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener = new acba(this);
+    this.jdField_a_of_type_Accm = new accm(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver = new QWalletAuthObserver(this.jdField_a_of_type_Accm);
     this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
     this.jdField_a_of_type_AndroidOsBundle = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new abtz(this);
-    this.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeDownloadListener = new abua(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialCareHandler = new abub(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new acbb(this);
+    this.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeDownloadListener = new acbc(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialCareHandler = new acbd(this);
     this.jdField_b_of_type_AndroidOsBundle = null;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new abuc(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new abts(this);
-    this.jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver = new abtu(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusIStatusListener = new acbe(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new acau(this);
+    this.jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver = new acaw(this);
   }
   
   public static void a(MessengerService paramMessengerService)
@@ -187,8 +187,8 @@ public class MessengerService
     {
       this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MessengerServiceWorkerThread", -2);
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_Abue = new abue(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-      this.jdField_b_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Abue);
+      this.jdField_a_of_type_Acbg = new acbg(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+      this.jdField_b_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Acbg);
       if ((this.app != null) && ((this.app instanceof QQAppInterface)))
       {
         ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialCareHandler);
@@ -210,10 +210,10 @@ public class MessengerService
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Abue != null)
+    if (this.jdField_a_of_type_Acbg != null)
     {
-      this.jdField_a_of_type_Abue.getLooper().quit();
-      this.jdField_a_of_type_Abue = null;
+      this.jdField_a_of_type_Acbg.getLooper().quit();
+      this.jdField_a_of_type_Acbg = null;
     }
     if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
@@ -234,7 +234,7 @@ public class MessengerService
         ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver);
         this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver = null;
       }
-      this.jdField_a_of_type_Abvk = null;
+      this.jdField_a_of_type_Accm = null;
       if (this.jdField_a_of_type_ComTencentMobileqqAppCardObserver != null)
       {
         ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);

@@ -1,13 +1,31 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
 
 public class xyb
-  implements Runnable
+  implements SensorEventListener
 {
-  public xyb(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter) {}
+  public xyb(SensorFrameImageView paramSensorFrameImageView) {}
   
-  public void run()
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    this.a.notifyDataSetChanged();
+    switch (paramSensorEvent.sensor.getType())
+    {
+    }
+    for (;;)
+    {
+      SensorFrameImageView.a(this.a);
+      SensorFrameImageView.b(this.a);
+      return;
+      SensorFrameImageView.a(this.a, paramSensorEvent.values);
+      continue;
+      SensorFrameImageView.b(this.a, paramSensorEvent.values);
+      continue;
+      SensorFrameImageView.c(this.a, paramSensorEvent.values);
+    }
   }
 }
 

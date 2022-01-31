@@ -1,25 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import mqq.os.MqqHandler;
+import com.tencent.litetransfersdk.ProtocolHelper;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class rdm
-  extends MqqHandler
+  implements Runnable
 {
-  public rdm(AccountManageActivity paramAccountManageActivity) {}
+  public rdm(ProtocolHelper paramProtocolHelper) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.e();
+    FMToastUtil.a(2131427563);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rdm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,18 @@
-import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-class aeou
-  implements Runnable
+public class aeou
 {
-  aeou(aeot paramaeot, boolean paramBoolean) {}
+  public int a;
+  public View a;
+  public ImageButton a;
+  public ImageView a;
+  public TextView a;
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Aeot.a, NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Aeot.a), false, false);
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_Aeot.a.getActivity(), 1, "播放失败", 0).b(this.jdField_a_of_type_Aeot.a.getActivity().getTitleBarHeight());
-    NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Aeot.a).setVisibility(0);
-    NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Aeot.a).setVisibility(0);
-    NearbyAuthVideoPlayerFragment.b(this.jdField_a_of_type_Aeot.a).setVisibility(8);
-  }
+  private aeou(GameRoomInviteActivity paramGameRoomInviteActivity) {}
 }
 
 

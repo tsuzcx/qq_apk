@@ -1,39 +1,31 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo;
-import dov.com.tencent.mobileqq.shortvideo.filter.QQEncodeFilterRender;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
 
 public class anxb
-  implements HWEncodeListener
+  implements Animator.AnimatorListener
 {
-  public anxb(MergeEditVideo paramMergeEditVideo, QQEncodeFilterRender paramQQEncodeFilterRender, int paramInt1, int paramInt2) {}
+  public anxb(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender.a(this.jdField_a_of_type_Int, this.b);
-    }
+    this.a.a = false;
   }
   
-  public void a(String arg1)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    synchronized (MergeEditVideo.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecMergeEditVideo))
-    {
-      MergeEditVideo.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecMergeEditVideo, true);
-      MergeEditVideo.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecMergeEditVideo).notifyAll();
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender != null) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender.a();
-      }
-      return;
-    }
+    this.a.a = false;
   }
   
-  public void a_(int paramInt, Throwable paramThrowable)
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    SLog.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + paramThrowable);
+    this.a.a = true;
   }
   
-  public void b() {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
 }
 
 

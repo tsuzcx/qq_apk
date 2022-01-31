@@ -1,52 +1,24 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.content.Context;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
 import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
 
 public class ofh
-  implements Runnable
+  extends AudioPlayer
 {
-  public ofh(EditWebVideoPartManager paramEditWebVideoPartManager, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
-  
-  public void run()
+  public ofh(EditVideoMusic paramEditVideoMusic, Context paramContext, AudioPlayer.AudioPlayerListener paramAudioPlayerListener, QQStoryMusicInfo paramQQStoryMusicInfo)
   {
-    EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_Int = 0;
-    EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_latitude", 0.0D));
-    EditWebVideoPartManager.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_longitude", 0.0D));
-    boolean bool1;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
-    {
-      EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager);
-      bool1 = false;
-    }
-    for (;;)
-    {
-      EncodeVideoTask localEncodeVideoTask = new EncodeVideoTask(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam.b, bool1, EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager));
-      localEncodeVideoTask.a(EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager));
-      localEncodeVideoTask.execute(new Void[0]);
-      return;
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
-      {
-        boolean bool2 = true;
-        int i = EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam);
-        bool1 = bool2;
-        if (i != 0)
-        {
-          EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager).a(i);
-          bool1 = bool2;
-        }
-      }
-      else
-      {
-        EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager).a(-13);
-        bool1 = false;
-      }
+    super(paramContext, paramAudioPlayerListener);
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a == 10) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.g, 0);
     }
   }
 }

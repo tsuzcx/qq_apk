@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
 public class sqs
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public sqs(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, QQCustomDialog paramQQCustomDialog) {}
+  public sqs(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
-    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
+    Object localObject = (LocalRedTouchManager)this.a.app.getManager(159);
+    RedTouchItem localRedTouchItem = ((LocalRedTouchManager)localObject).a(100601);
+    if ((((LocalRedTouchManager)localObject).a(localRedTouchItem, false)) && (localRedTouchItem.passThroughLevel > 0))
+    {
+      localObject = this.a.b.obtainMessage();
+      ((Message)localObject).what = 14;
+      ((Message)localObject).arg1 = 2;
+      this.a.b.sendMessageDelayed((Message)localObject, 300L);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileCardActivity", 2, "update red touch of like ranking list");
+      }
+    }
   }
 }
 

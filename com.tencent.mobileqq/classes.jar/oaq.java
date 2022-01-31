@@ -1,19 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.BaseResponse;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.MonitorValueRequest;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public final class oaq
-  implements CmdTaskManger.CommandCallback
+public class oaq
+  implements INetInfoHandler
 {
-  public void a(@NonNull MonitorValueRequest paramMonitorValueRequest, @Nullable BaseResponse paramBaseResponse, @NonNull ErrorMessage paramErrorMessage)
+  public oaq(FeedSegment paramFeedSegment) {}
+  
+  public void onNetMobile2None()
   {
-    if (paramErrorMessage.isFail()) {
-      SLog.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
-    }
+    FeedSegment.b(this.a, FeedSegment.a(3));
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    FeedSegment.b(this.a, FeedSegment.a(1));
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    FeedSegment.b(this.a, FeedSegment.a(2));
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    FeedSegment.b(this.a, FeedSegment.a(1));
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    FeedSegment.b(this.a, FeedSegment.a(2));
+  }
+  
+  public void onNetWifi2None()
+  {
+    FeedSegment.b(this.a, FeedSegment.a(3));
   }
 }
 

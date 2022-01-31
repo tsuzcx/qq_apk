@@ -1,42 +1,45 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.meta.StoryVideoFileObject;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.transfile.StoryUploadProcessor;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class nba
-  implements EmoticonCallback
+  implements UpCallBack
 {
-  public nba(StoryInputBarView paramStoryInputBarView) {}
+  public nba(StoryVideoFileObject paramStoryVideoFileObject) {}
   
-  public void a(EmoticonInfo paramEmoticonInfo)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
-      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
+    return null;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
+    if (paramSendResult.jdField_b_of_type_Int == 0)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadUploadResult.c = paramSendResult.jdField_b_of_type_JavaLangString;
+      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadUploadResult.a = paramSendResult.c;
+      this.a.b();
+      StoryVideoFileObject.a(this.a, new ErrorMessage());
+      return;
     }
-  }
-  
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
-      TextUtils.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    if ((paramSendResult.jdField_b_of_type_Int == StoryUploadProcessor.a(940010)) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
+    {
+      StoryVideoFileObject.a(this.a);
+      SLog.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "retry load file");
+      return;
     }
+    this.a.b();
+    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
+    StoryVideoFileObject.a(this.a, paramSendResult);
   }
-  
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void c() {}
-  
-  public void setting() {}
 }
 
 

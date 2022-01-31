@@ -1,14 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-class sfl
-  implements DialogInterface.OnClickListener
+public final class sfl
+  implements Comparator
 {
-  sfl(sfj paramsfj) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    paramDialogInterface.dismiss();
+    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
+    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
+    if ((bool1) || (bool2))
+    {
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+      if (bool2) {
+        return -1;
+      }
+      return 1;
+    }
+    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 

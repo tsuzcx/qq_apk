@@ -1,30 +1,20 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
 
-public final class ahrr
-  implements Runnable
+public class ahrr
+  implements View.OnClickListener
 {
-  public ahrr(String paramString1, String paramString2) {}
+  public ahrr(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Intent localIntent = new Intent();
-      localIntent.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      localIntent.putExtra("reporting_tag", this.a);
-      localIntent.putExtra("reporting_detail", this.b);
-      localIntent.putExtra("reporting_count", 1);
-      localIntent.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
-      return;
-    }
-    catch (Exception localException) {}
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahrr
  * JD-Core Version:    0.7.0.1
  */

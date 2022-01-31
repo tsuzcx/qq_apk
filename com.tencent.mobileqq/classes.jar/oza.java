@@ -1,28 +1,14 @@
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.TextView;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-public class oza
-  extends AudioManager
+class oza
+  implements Runnable
 {
-  public oza(Context paramContext)
-  {
-    super(paramContext);
-  }
+  oza(oyz paramoyz, int paramInt) {}
   
-  public int requestAudioFocus(AudioManager.OnAudioFocusChangeListener paramOnAudioFocusChangeListener, int paramInt1, int paramInt2)
+  public void run()
   {
-    try
-    {
-      paramInt1 = super.requestAudioFocus(paramOnAudioFocusChangeListener, paramInt1, paramInt2);
-      return paramInt1;
-    }
-    catch (NullPointerException paramOnAudioFocusChangeListener)
-    {
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "audio_manager_npe", 0, 1, 0, "", "", "", "");
-    }
-    return 0;
+    this.jdField_a_of_type_Oyz.a.b.setText(this.jdField_a_of_type_Int + "");
   }
 }
 

@@ -1,26 +1,17 @@
-import com.tencent.biz.helper.TroopInfoActivityHelper.ISetSameCityCheckTypeInfo;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-public class tur
-  implements TroopInfoActivityHelper.ISetSameCityCheckTypeInfo
+class tur
+  implements Runnable
 {
-  public tur(TroopInfoActivity paramTroopInfoActivity) {}
+  tur(tuq paramtuq) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 4;
+    String str = SubLoginActivity.a(this.a.a).getText().toString();
+    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
+      SubLoginActivity.a(this.a.a).setText("");
     }
-    ReportController.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.j();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
   }
 }
 

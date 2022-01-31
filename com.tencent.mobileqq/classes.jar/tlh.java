@@ -1,29 +1,15 @@
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.IActionListener;
 
 public class tlh
-  implements Runnable
+  implements IActionListener
 {
-  public tlh(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public tlh(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    try
-    {
-      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
-      {
-        RecentLoginDevActivity.a(this.a).dismiss();
-        RecentLoginDevActivity.a(this.a).cancel();
-      }
-      RecentLoginDevActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
+      this.a.B();
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew;
 
-import aktj;
-import aktk;
+import aliz;
+import alja;
 import android.content.Context;
 import android.os.Environment;
 import com.tencent.apkupdate.ApkUpdateListener;
@@ -148,10 +148,10 @@ public class UpdateManager
       DownloadManager.a().c(paramDownloadInfo);
     }
     StaticAnalyz.a("300", paramDownloadInfo.g, paramDownloadInfo.b, paramDownloadInfo.m);
-    ThreadManager.getSubThreadHandler().post(new aktj(this, str1, paramDownloadInfo));
+    ThreadManager.getSubThreadHandler().post(new aliz(this, str1, paramDownloadInfo));
     return;
     label400:
-    ThreadManager.getSubThreadHandler().post(new aktk(this, str1, paramDownloadInfo));
+    ThreadManager.getSubThreadHandler().post(new alja(this, str1, paramDownloadInfo));
     return;
     label418:
     LogUtility.e(jdField_a_of_type_JavaLangString, "patchNewApk>>>>>合成失败 errcode = " + i);

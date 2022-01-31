@@ -1,43 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
 
-public class aetq
-  extends TransProcessorHandler
+public final class aetq
+  implements Parcelable.Creator
 {
-  public aetq(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
-  
-  public void handleMessage(Message paramMessage)
+  public LocationInfo a(Parcel paramParcel)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-        } while (localFileMsg.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.a);
-        }
-      } while (NearbyProfileEditPanel.a(this.a) == null);
-      NearbyProfileEditPanel.a(this.a).a = NearbyPeoplePhotoUploadProcessor.a;
-      NearbyProfileEditPanel.c(this.a);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
-    }
-    this.a.a.a();
-    this.a.a.b("上传失败");
+    return new LocationInfo(paramParcel);
+  }
+  
+  public LocationInfo[] a(int paramInt)
+  {
+    return new LocationInfo[paramInt];
   }
 }
 

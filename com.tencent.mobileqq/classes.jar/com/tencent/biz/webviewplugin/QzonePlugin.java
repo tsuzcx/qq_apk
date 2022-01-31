@@ -11,8 +11,8 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.QQBrowserBaseActivityInterface;
 import com.tencent.smtt.sdk.WebView;
 import java.util.Map;
-import pau;
-import pav;
+import pco;
+import pcp;
 
 public class QzonePlugin
   extends WebViewPlugin
@@ -36,7 +36,7 @@ public class QzonePlugin
   
   private void a()
   {
-    new Handler().post(new pav(this));
+    new Handler().post(new pcp(this));
   }
   
   private void a(byte[] paramArrayOfByte)
@@ -45,7 +45,7 @@ public class QzonePlugin
     while ((this.d != null) && (this.c != null) && (this.c.equals(this.d))) {
       return;
     }
-    new Handler().post(new pau(this, paramArrayOfByte));
+    new Handler().post(new pco(this, paramArrayOfByte));
     this.c = this.d;
   }
   

@@ -1,73 +1,46 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import tencent.im.cs.cmd0x346.cmd0x346.FileInfo;
-import tencent.im.cs.cmd0x346.cmd0x346.FileQueryRsp;
-import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanelAdapter;
+import com.tencent.mobileqq.apollo.view.ApolloViewBinder;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
 
 public class yzi
   implements Runnable
 {
-  public yzi(DataLineHandler paramDataLineHandler, FromServiceMsg paramFromServiceMsg, int paramInt, long paramLong) {}
+  public yzi(ApolloPanel paramApolloPanel, List paramList) {}
   
   public void run()
   {
-    cmd0x346.RspBody localRspBody = new cmd0x346.RspBody();
-    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null) {}
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager != null))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b.a().a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
-      if (localObject != null) {
-        break;
-      }
-      return;
-      localObject = null;
-      if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer() != null)
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.b.clear();
+      int i = 0;
+      int k;
+      for (int j = 0; i < this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_JavaUtilList.size(); j = k)
       {
-        int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer().length - 4;
-        if (i >= 0)
+        k = j;
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.b != null)
         {
-          localObject = new byte[i];
-          PkgTools.a((byte[])localObject, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
+          k = j + ((ApolloViewBinder)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_JavaUtilList.get(i)).a();
+          this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.b.add(Integer.valueOf(k - 1));
         }
+        i += 1;
       }
-      else if (localObject != null)
-      {
-        try
-        {
-          localRspBody.mergeFrom((byte[])localObject);
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          localInvalidProtocolBufferMicroException.printStackTrace();
-        }
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(ApolloPanel.jdField_a_of_type_Int, false);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a(ApolloPanel.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentWidgetHorizontalListView != null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentWidgetHorizontalListView.postDelayed(new yzj(this), 500L);
       }
     }
-    if (localRspBody.msg_file_query_rsp.int32_ret_code.get() == 0)
-    {
-      localRspBody.msg_file_query_rsp.msg_file_info.str_file_name.get();
-      localRspBody.msg_file_query_rsp.msg_file_info.uint64_file_size.get();
-      localInvalidProtocolBufferMicroException.md5 = localRspBody.msg_file_query_rsp.msg_file_info.bytes_10m_md5.get().toByteArray();
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b.a().a(this.jdField_a_of_type_Int).a(localInvalidProtocolBufferMicroException.msgId, localInvalidProtocolBufferMicroException.serverPath, localInvalidProtocolBufferMicroException.md5);
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(localInvalidProtocolBufferMicroException);
-      return;
-    }
-    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, localInvalidProtocolBufferMicroException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yzi
  * JD-Core Version:    0.7.0.1
  */

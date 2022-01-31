@@ -1,26 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Looper;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.javahook.DetectContactDelete;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class advu
-  implements DialogInterface.OnClickListener
+public final class advu
+  implements HookMethodCallback
 {
-  public advu(AIOShareActionSheet paramAIOShareActionSheet) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.a, "CliOper", "", "", "0X80067F7", "0X80067F7", 0, 0, "", "", "", "");
-    if (this.a.c()) {
-      AIOShareActionSheet.a(this.a).a(false, null, false);
+    long l = Thread.currentThread().getId();
+    HashMap localHashMap;
+    if (DetectContactDelete.a().containsKey(Long.valueOf(l)))
+    {
+      l = SystemClock.uptimeMillis() - ((Long)DetectContactDelete.a().remove(Long.valueOf(l))).longValue();
+      localHashMap = new HashMap(10);
+      if (Looper.myLooper() != Looper.getMainLooper()) {
+        break label139;
+      }
+    }
+    label139:
+    for (paramMethodHookParam = "1";; paramMethodHookParam = "0")
+    {
+      localHashMap.put("param_IsMainThread", paramMethodHookParam);
+      localHashMap.put("param_OptType", "connection");
+      localHashMap.put("param_bustag", "Friends");
+      localHashMap.put("param_OptTotalCost", String.valueOf(l));
+      localHashMap.put("param_WalSwitch", String.valueOf(SQLiteOpenHelper.a));
+      StatisticCollector.a(BaseApplicationImpl.getContext()).a(null, "actFriendSqliteOpt", true, l, 0L, localHashMap, null, false);
+      return;
+    }
+  }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam)
+  {
+    long l = Thread.currentThread().getId();
+    if (DetectContactDelete.a().containsKey(Long.valueOf(l))) {
+      DetectContactDelete.a().put(Long.valueOf(l), Long.valueOf(SystemClock.uptimeMillis()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advu
  * JD-Core Version:    0.7.0.1
  */

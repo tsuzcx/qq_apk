@@ -1,24 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lnb
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public lnb(WeishiManager paramWeishiManager, QQMessageFacade paramQQMessageFacade, String paramString, long paramLong) {}
+  public lnb(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment, ActionSheet paramActionSheet, String paramString) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.aH, 1008);
-    if (localMessageRecord != null) {}
-    for (localMessageRecord = WeishiManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineWeishiManager, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);; localMessageRecord = WeishiManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineWeishiManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long))
+    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
+    GalleryShareHelper localGalleryShareHelper = new GalleryShareHelper(ReadInJoyAtlasFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment.getString(2131435871).equals(paramView)) {
+      localGalleryShareHelper.a(ReadInJoyAtlasFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment), this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
     {
-      if (localMessageRecord != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord, WeishiManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineWeishiManager).c());
-      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyAtlasFragment.getString(2131435877).equals(paramView)) {
+        localGalleryShareHelper.a(this.jdField_a_of_type_JavaLangString);
+      }
     }
   }
 }

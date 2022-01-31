@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnCompletionListener;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
 
-public final class aeys
-  implements ImageFeedsUploader.UploadListener
+class aeys
+  implements Runnable
 {
-  public void a(PicFeedUploadInfo paramPicFeedUploadInfo) {}
+  aeys(aeyr paramaeyr) {}
   
-  public void a(PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
+  public void run()
   {
-    ThreadManager.getUIHandler().post(new aeyt(this, paramPicFeedUploadInfo, paramUploadResult));
+    if (this.a.a.a != null) {
+      this.a.a.a.a(this.a.a);
+    }
   }
-  
-  public void b(PicFeedUploadInfo paramPicFeedUploadInfo) {}
 }
 
 

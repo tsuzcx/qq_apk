@@ -35,7 +35,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
-import ydv;
+import yhc;
 
 public class ContactBindedAdapter
   extends CharDividedFacePreloadBaseAdapter
@@ -64,8 +64,8 @@ public class ContactBindedAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)paramQQAppInterface.getManager(50));
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelOffset(2131559381);
-    this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelOffset(2131559382);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelOffset(2131559383);
+    this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelOffset(2131559384);
     a(paramList);
   }
   
@@ -157,7 +157,7 @@ public class ContactBindedAdapter
     localContactBindedData.jdField_a_of_type_ArrayOfInt = new int[localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
     localContactBindedData.jdField_a_of_type_ArrayOfJavaLangString = new String[localContactBindedData.jdField_a_of_type_ArrayOfInt.length];
     paramList = new ArrayList(localContactBindedData.jdField_a_of_type_JavaUtilLinkedHashMap.keySet());
-    Collections.sort(paramList, new ydv());
+    Collections.sort(paramList, new yhc());
     paramArrayList = paramList.iterator();
     if (localContactBindedData.jdField_a_of_type_ArrayOfInt.length == 0) {
       return localContactBindedData;
@@ -217,7 +217,7 @@ public class ContactBindedAdapter
   public int a()
   {
     if (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0) {
-      return 2130969057;
+      return 2130969056;
     }
     return 0;
   }
@@ -353,22 +353,22 @@ public class ContactBindedAdapter
     if (paramView == null)
     {
       paramViewGroup = new ContactBindedAdapter.ConactBindedHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970277, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362876));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366518));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131369905));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369907));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368907));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131368908));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131368425));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131363914));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369895);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970293, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362894));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366545));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131369982));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369984));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368973));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131368974));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131368492));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131363937));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369972);
       paramView.setBackgroundDrawable(null);
       paramView.setTag(paramViewGroup);
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.getVisibility() != 0)) {
         break label687;
       }
-      paramView.findViewById(2131363900).setPadding(0, 0, this.jdField_a_of_type_Int, 0);
+      paramView.findViewById(2131363923).setPadding(0, 0, this.jdField_a_of_type_Int, 0);
       if (i >= 0) {
         break label970;
       }
@@ -378,8 +378,8 @@ public class ContactBindedAdapter
       if ((this.c.isEmpty()) || ("★".equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) || (!localPhoneContact.isNewRecommend)) {
         break label707;
       }
-      paramView.setBackgroundResource(2130838585);
-      b(paramViewGroup.jdField_a_of_type_AndroidViewView, 2130838585);
+      paramView.setBackgroundResource(2130838589);
+      b(paramViewGroup.jdField_a_of_type_AndroidViewView, 2130838589);
       localStringBuilder = new StringBuilder(256);
       if (TextUtils.isEmpty(localPhoneContact.name)) {
         break label728;
@@ -395,7 +395,7 @@ public class ContactBindedAdapter
         break label740;
       }
       paramViewGroup.b.setVisibility(0);
-      localObject = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433295), new Object[] { localPhoneContact.nickName });
+      localObject = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433312), new Object[] { localPhoneContact.nickName });
       paramViewGroup.b.setText((CharSequence)localObject);
       if (AppSetting.b)
       {
@@ -443,10 +443,10 @@ public class ContactBindedAdapter
       return paramView;
       paramViewGroup = (ContactBindedAdapter.ConactBindedHolder)paramView.getTag();
       break;
-      paramView.findViewById(2131363900).setPadding(0, 0, this.jdField_b_of_type_Int, 0);
+      paramView.findViewById(2131363923).setPadding(0, 0, this.jdField_b_of_type_Int, 0);
       break label204;
-      paramView.setBackgroundResource(2130838581);
-      b(paramViewGroup.jdField_a_of_type_AndroidViewView, 2130838581);
+      paramView.setBackgroundResource(2130838585);
+      b(paramViewGroup.jdField_a_of_type_AndroidViewView, 2130838585);
       break label315;
       label728:
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -516,7 +516,7 @@ public class ContactBindedAdapter
     {
     default: 
       return;
-    case 2131368907: 
+    case 2131368973: 
       localObject = (PhoneContact)localObject;
       paramView = (PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
       if (((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getBooleanExtra("from_babyq", false)) {

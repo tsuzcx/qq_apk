@@ -1,27 +1,30 @@
-import com.tencent.mobileqq.werewolves.WerewolvesHandler;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.utils.QAVGroupConfig.GroupInviteFlag;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public class akds
-  implements WerewolvesHandler.Callback
+public final class akds
+  extends TroopObserver
 {
-  public akds(WerewolvesHandler paramWerewolvesHandler, WerewolvesHandler.Callback paramCallback) {}
+  public akds(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (paramInt == 0) {
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WerewolvesHandler", 2, "startAnotherRound, quitFailed: errorCode :" + paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
+    if (paramBoolean) {
+      QAVGroupConfig.GroupInviteFlag.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback.a(-1, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akds
  * JD-Core Version:    0.7.0.1
  */

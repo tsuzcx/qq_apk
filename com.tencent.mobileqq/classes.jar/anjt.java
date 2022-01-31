@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCompleteListener;
 
 public class anjt
-  implements View.OnLayoutChangeListener
+  implements GuideVideoView.OnCompleteListener
 {
-  public anjt(GLTextureView paramGLTextureView) {}
+  public anjt(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a()
   {
-    this.a.a(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    QIMEffectCameraCaptureUnit.e(this.a);
   }
 }
 

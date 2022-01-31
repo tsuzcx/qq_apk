@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 
-public class rkn
+class rkn
   implements Runnable
 {
-  public rkn(AuthDevActivity paramAuthDevActivity) {}
+  rkn(rkm paramrkm) {}
   
   public void run()
   {
-    try
-    {
-      if ((AuthDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
-        AuthDevActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((AuthDevActivity.a(this.a) != null) && (!AuthDevActivity.a(this.a).isShowing())) {
-        AuthDevActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    Card localCard = ((FriendsManager)this.a.a.app.getManager(50)).a(this.a.a.a);
+    if (localCard != null) {
+      this.a.a.runOnUiThread(new rko(this, localCard));
     }
   }
 }

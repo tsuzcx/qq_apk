@@ -1,36 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.activity.aio.item.QQWalletMsgItemBuilder;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletHelper;
 
 public class vdx
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public vdx(SixCombolEffectView paramSixCombolEffectView) {}
+  public vdx(QQWalletMsgItemBuilder paramQQWalletMsgItemBuilder, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_AndroidContentContext == null) {}
+    while (QWalletHelper.isQWalletProcessExist(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_AndroidContentContext)) {
       return;
     }
-    SixCombolEffectView.a(this.a).start();
-    this.a.a();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
-      return;
-      SixCombolEffectView.jdField_a_of_type_Int = 1;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 1 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d(QQWalletMsgItemBuilder.jdField_a_of_type_JavaLangString, 2, "preload qwallet process by qqWalletMsg isTroop=" + this.jdField_a_of_type_Int);
+    }
+    QWalletHelper.preloadQWallet(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, "qwallet_red");
   }
 }
 

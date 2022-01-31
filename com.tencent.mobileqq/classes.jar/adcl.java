@@ -1,28 +1,25 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
 
-class adcl
-  implements Runnable
+public class adcl
+  implements IUploadController
 {
-  adcl(adck paramadck) {}
+  public adcl(C2CFileModel paramC2CFileModel) {}
   
-  public void run()
+  public void a()
   {
-    this.a.jdField_a_of_type_ComTencentImageURLDrawable.setBounds(0, 0, this.a.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicWidth(), this.a.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicHeight());
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.a.jdField_a_of_type_ComTencentImageURLDrawable, true, 0, true);
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.b != 0))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption.a, this.a.jdField_a_of_type_Int), ShortVideoUtils.a(this.a.b * 1000));
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, null, null);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, null, null);
+    this.a.a(true, FileModel.a(this.a.a.a()), this.a.b(), new adcm(this));
+  }
+  
+  public void b()
+  {
+    this.a.d();
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.c());
   }
 }
 

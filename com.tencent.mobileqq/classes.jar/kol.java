@@ -1,92 +1,115 @@
-import android.os.Handler;
-import android.os.Message;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.now.CgiHelper;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.jsp.EventApiPlugin;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.txproxy.HostInterface;
-import java.net.URL;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class kol
-  implements Runnable
+  implements BusinessObserver
 {
-  public kol(CgiHelper paramCgiHelper, long paramLong, HostInterface paramHostInterface) {}
+  public kol(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    String str3 = "http://now.qq.com/cgi-bin/now/web/room/get_room_info_v2?room_id=" + this.jdField_a_of_type_Long;
     if (QLog.isColorLevel()) {
-      QLog.i(CgiHelper.a, 1, " 请求录播cgi URL = " + str3 + " time = " + System.currentTimeMillis());
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "follow isSuccess:" + String.valueOf(paramBoolean));
     }
-    String str1 = "";
-    String str2 = "";
-    Object localObject2 = str1;
-    if (this.jdField_a_of_type_ComTencentTxproxyHostInterface.useIpDirectConnect())
-    {
-      localObject2 = str1;
-      if (CgiHelper.a()) {}
+    if (!paramBoolean) {
+      this.a.d(2131430033);
     }
     for (;;)
     {
+      EqqAccountDetailActivity.e(this.a);
+      if (EqqAccountDetailActivity.f(this.a) == 0) {
+        EqqAccountDetailActivity.d(this.a);
+      }
+      EqqAccountDetailActivity.b(this.a).postDelayed(new kom(this), 1000L);
+      return;
+      Object localObject = new JSONObject();
+      ((FriendListHandler)EqqAccountDetailActivity.j(this.a).a(1)).a(true, false);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null) {}
       try
       {
-        localObject1 = new URL(str3).getHost();
-        localObject2 = localObject1;
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        ((JSONObject)localObject).put("uin", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin);
+        ((JSONObject)localObject).put("name", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.name);
+        ((JSONObject)localObject).put("summary", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.summary);
+        ((JSONObject)localObject).put("certified", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.certifiedGrade);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add("find.mp.qq.com");
+        localArrayList.add("post.mp.qq.com");
+        localArrayList.add("article.mp.qq.com");
+        EventApiPlugin.a("follow", (JSONObject)localObject, localArrayList, null);
+        if (!paramBoolean) {
+          break label555;
+        }
+        try
         {
-          localObject2 = localObject1;
-          if ("now.qq.com".equals(localObject1))
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle == null) {
+            continue;
+          }
+          localObject = new mobileqq_mp.FollowResponse();
+          ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
+          if (paramInt == 0)
           {
-            str1 = this.jdField_a_of_type_ComTencentTxproxyHostInterface.reqDns((String)localObject1);
-            localObject2 = localObject1;
-            if (!TextUtils.isEmpty(str1))
-            {
-              str1 = InnerDns.a(str3, str1);
-              if (QLog.isColorLevel()) {
-                QLog.d(CgiHelper.a, 2, "use ip:" + str1);
-              }
-              bool = true;
-              localObject2 = localObject1;
-              localObject1 = str1;
-              long l = System.currentTimeMillis();
-              QLog.d(CgiHelper.a, 1, "before downloadBuffer, useIpConn=" + bool);
-              if (bool)
-              {
-                localObject2 = CgiHelper.a(this.jdField_a_of_type_ComTencentBizNowCgiHelper, (String)localObject1, true, (String)localObject2);
-                localObject1 = localObject2;
-                if (TextUtils.isEmpty((CharSequence)localObject2))
-                {
-                  QLog.d(CgiHelper.a, 1, "try again");
-                  localObject1 = CgiHelper.a(this.jdField_a_of_type_ComTencentBizNowCgiHelper, str3, false, "");
-                }
-                QLog.d(CgiHelper.a, 1, "end downloadBuffer, timeCost=" + (System.currentTimeMillis() - l) + ", json=" + (String)localObject1);
-                CgiHelper.a(this.jdField_a_of_type_ComTencentBizNowCgiHelper, (String)localObject1);
-                if (CgiHelper.a(this.jdField_a_of_type_ComTencentBizNowCgiHelper) != null)
-                {
-                  localObject1 = new Message();
-                  ((Message)localObject1).what = 1001;
-                  CgiHelper.a(this.jdField_a_of_type_ComTencentBizNowCgiHelper).sendMessage((Message)localObject1);
-                }
-                return;
-              }
+            this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
+            EqqAccountDetailActivity.a(this.a).setEnabled(false);
+            EqqAccountDetailActivity.b(this.a);
+            this.a.i();
+            EqqAccountDetailActivity.c(this.a);
+            AccountDetailActivity.a(EqqAccountDetailActivity.k(this.a), EqqAccountDetailActivity.k(this.a), EqqAccountDetailActivity.a(this.a));
+            if ((TextUtils.isEmpty(this.a.b)) || (TextUtils.isEmpty(this.a.c))) {
+              continue;
             }
+            ReportController.b(EqqAccountDetailActivity.l(this.a), "CliOper", "", "", this.a.b, this.a.c, 0, 0, "", "", EqqAccountDetailActivity.m(this.a).getCurrentAccountUin(), EqqAccountDetailActivity.l(this.a));
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "----[follow report done]----");
           }
         }
+        catch (Exception paramBundle) {}
       }
-      catch (Exception localException)
+      catch (JSONException localJSONException)
       {
-        localObject1 = str1;
-        if (!QLog.isColorLevel()) {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+        if (paramInt == 58)
+        {
+          this.a.d(2131430041);
           continue;
         }
-        QLog.e(CgiHelper.a, 2, "hasRecording exp:" + localException.toString());
-        localObject1 = str1;
-        continue;
-        localObject1 = CgiHelper.a(this.jdField_a_of_type_ComTencentBizNowCgiHelper, str3, false, "");
-        continue;
+        if (paramInt == 65)
+        {
+          this.a.d(2131430042);
+          continue;
+        }
+        if (paramInt == 20)
+        {
+          this.a.d(2131430043);
+          continue;
+        }
+        this.a.d(2131430033);
       }
-      boolean bool = false;
-      Object localObject1 = str2;
+      continue;
+      label555:
+      this.a.d(2131430033);
     }
   }
 }

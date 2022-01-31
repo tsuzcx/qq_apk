@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import anot;
+import aoey;
 import com.tencent.biz.qqstory.takevideo.tag.TagItem;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,15 +65,15 @@ public class QQStoryTagAdapter
   {
     if (paramView == null)
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970804, null);
-      paramView = new anot(paramViewGroup);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970852, null);
+      paramView = new aoey(paramViewGroup);
       paramViewGroup.setTag(paramView);
     }
     for (;;)
     {
       paramView.a((TagItem)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem);
       return paramView.a;
-      paramView = (anot)paramView.getTag();
+      paramView = (aoey)paramView.getTag();
     }
   }
 }

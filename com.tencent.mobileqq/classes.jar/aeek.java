@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import java.util.List;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceCloseListener;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
-class aeek
-  implements Runnable
+public class aeek
+  implements MagicfaceActionManager.MagicfaceCloseListener
 {
-  aeek(aeej paramaeej) {}
+  public aeek(MagicfaceViewController paramMagicfaceViewController, MagicfaceActionManager paramMagicfaceActionManager) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a.a.size() > 0) {
-      this.a.a.a(true, true);
-    }
-    NearbyVisitorListActivity.a(this.a.a, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeek
  * JD-Core Version:    0.7.0.1
  */

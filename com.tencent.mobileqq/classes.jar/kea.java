@@ -1,38 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ARZimuUtil;
-import com.tencent.av.business.manager.zimu.EffectZimuManager.DataReport;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
-import com.tencent.av.ui.QavListItemBase.ItemInfo;
-import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.RedBagReport;
+import com.tencent.av.ui.redbag.ResultData;
 
 public class kea
-  implements QAVPtvTemplateAdapter.IEffectCallback
+  implements Runnable
 {
-  public kea(ZimuToolbar paramZimuToolbar) {}
+  public kea(AVRedBagMgr paramAVRedBagMgr, ResultData paramResultData) {}
   
-  public void a()
+  public void run()
   {
-    EffectSettingUi.a(ZimuToolbar.access$300(this.a));
-  }
-  
-  public void a(QavListItemBase.ItemInfo paramItemInfo)
-  {
-    ZimuToolbar.access$000(this.a, paramItemInfo.a);
-    if ((!TextUtils.isEmpty(paramItemInfo.a)) && (!"0".equalsIgnoreCase(paramItemInfo.a)))
-    {
-      EffectZimuManager.DataReport.a("0X80085CD", paramItemInfo.a);
-      if (ARZimuUtil.a(paramItemInfo.a))
-      {
-        paramItemInfo = ZimuToolbar.access$100(this.a).a().a().c;
-        String str = ZimuToolbar.access$200(this.a).getCurrentAccountUin();
-        EffectZimuManager.DataReport.a("0X8009191", str, paramItemInfo);
-        EffectZimuManager.DataReport.a("0X8009192", str, paramItemInfo);
-      }
+    if (this.jdField_a_of_type_ComTencentAvUiRedbagResultData.b()) {
+      this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a(), this.jdField_a_of_type_ComTencentAvUiRedbagResultData);
     }
+    do
+    {
+      return;
+      AVRedBagMgr.a(AVRedBagMgr.c(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr), this.jdField_a_of_type_ComTencentAvUiRedbagResultData);
+    } while (!this.jdField_a_of_type_ComTencentAvUiRedbagResultData.a());
+    RedBagReport.a(this.jdField_a_of_type_ComTencentAvUiRedbagResultData);
   }
 }
 

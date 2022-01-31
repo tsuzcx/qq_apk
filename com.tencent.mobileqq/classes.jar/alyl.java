@@ -1,22 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
-
-public class alyl
-  implements DialogInterface.OnClickListener
-{
-  public alyl(DatalineRemoteManager paramDatalineRemoteManager) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.b = true;
-    DatalineRemoteManager.a(this.a, 1);
-    DatalineRemoteManager.b(this.a);
-  }
-}
+public class alyl {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alyl
  * JD-Core Version:    0.7.0.1
  */

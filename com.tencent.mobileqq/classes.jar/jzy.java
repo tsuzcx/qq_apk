@@ -1,18 +1,44 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.QavPanel;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
+import com.tencent.qphone.base.util.QLog;
 
 public class jzy
-  extends BroadcastReceiver
+  implements Animator.AnimatorListener
 {
-  public jzy(QavPanel paramQavPanel) {}
+  public jzy(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramIntent.getAction().equals("com.tencent.redpoint.broadcast.push.av")) {
-      this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationCancel");
     }
+    this.a.b(4, false);
+    QavVideoRecordUICtrl.b(this.a).requestLayout();
+    QavVideoRecordUICtrl.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationEnd");
+    }
+    this.a.c(4);
+    QavVideoRecordUICtrl.b(this.a).requestLayout();
+    QavVideoRecordUICtrl.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationStart");
+    }
+    QavVideoRecordUICtrl.d(this.a).setVisibility(0);
+    QavVideoRecordUICtrl.d(this.a).setAlpha(0.0F);
   }
 }
 

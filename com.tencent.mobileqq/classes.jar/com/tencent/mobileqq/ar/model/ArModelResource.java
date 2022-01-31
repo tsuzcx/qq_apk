@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import aadv;
+import aakw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArModelResource
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aadv();
+  public static final Parcelable.Creator CREATOR = new aakw();
   public int a;
   public long a;
   public String a;

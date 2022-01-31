@@ -1,42 +1,17 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager;
+import java.util.List;
 
-class xbx
-  implements NearbyCustomDialog.OnClickListener
+public final class xbx
+  implements DialogInterface.OnClickListener
 {
-  xbx(xbw paramxbw, String paramString) {}
+  public xbx(Activity paramActivity, List paramList1, List paramList2) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (BaseActivity.sTopActivity == null) {
-      return;
-    }
-    try
-    {
-      paramView = new JSONObject();
-      paramView.put("viewTag", "goldmsg_open");
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("skip_confirm", "1");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        ((JSONObject)localObject).put("returl", this.jdField_a_of_type_JavaLangString);
-      }
-      paramView.put("extra_data", ((JSONObject)localObject).toString());
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("json", paramView.toString());
-      ((Bundle)localObject).putString("callbackSn", "0");
-      PayBridgeActivity.a(BaseActivity.sTopActivity, 5, (Bundle)localObject);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-    }
+    TopayManager.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

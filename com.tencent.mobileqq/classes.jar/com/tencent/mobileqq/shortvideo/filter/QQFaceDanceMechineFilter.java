@@ -91,7 +91,7 @@ public class QQFaceDanceMechineFilter
   {
     this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFaceDanceDetectFilter.e();
     GLShaderManager.a();
-    GLFrameImage.ai_();
+    GLFrameImage.ak_();
   }
   
   public void f()

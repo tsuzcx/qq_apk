@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.ChatHistoryViewBase;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class ryv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ryv(ChatHistoryViewBase paramChatHistoryViewBase) {}
+  public ryv(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f = true;
+    this.a.a.setEnabled(true);
+    this.a.c.dismiss();
   }
 }
 

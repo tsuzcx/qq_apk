@@ -1,58 +1,31 @@
-import com.tencent.mobileqq.activity.contacts.base.CardController;
-import com.tencent.mobileqq.activity.contacts.utils.CardUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RedpointHandler;
-import com.tencent.mobileqq.confess.ConfessConfig;
-import com.tencent.mobileqq.confess.ConfessObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.biz.addContactTroopView.AddContactTroopHandler.IGetPopClassAndSearchCB;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 
 public class wji
-  extends ConfessObserver
+  implements AddContactTroopHandler.IGetPopClassAndSearchCB
 {
-  public wji(CardController paramCardController) {}
-  
-  private void c()
-  {
-    int i = 0;
-    if (this.a.jdField_a_of_type_Int == 0) {
-      if (!ConfessConfig.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_contact_show")) {
-        break label65;
-      }
-    }
-    label65:
-    for (i = 1;; i = 0)
-    {
-      i = 0 + i;
-      CardUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i);
-      RedpointHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.C();
-      return;
-    }
-  }
+  public wji(TroopView paramTroopView) {}
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CardController", 2, "onConfessConfigChanged");
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
     }
-    c();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CardController", 2, String.format("onContactCardShowChanged curType=%d oldType=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    }
-    this.a.jdField_a_of_type_Int = paramInt1;
-    c();
+    TroopView.d(this.a, true);
+    TroopView.e(this.a, true);
+    TroopView.a(this.a).sendEmptyMessage(4);
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CardController", 2, "onConfessRedPointChanged");
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
     }
-    c();
+    TroopView.d(this.a, true);
+    TroopView.e(this.a, false);
+    TroopView.a(this.a).sendEmptyMessage(5);
   }
 }
 

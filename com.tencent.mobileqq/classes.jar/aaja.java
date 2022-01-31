@@ -1,40 +1,26 @@
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.ar.config.MainDownAni;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PopupMenuDialog;
+import java.lang.ref.WeakReference;
 
 public class aaja
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aaja(ArkAppModuleReg.ModuleQQ paramModuleQQ, String paramString1, String paramString2, long paramLong, String paramString3) {}
+  public aaja(MainDownAni paramMainDownAni, aaji paramaaji, WorldCupMgr paramWorldCupMgr) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(BaseActivity.sTopActivity, 2131624515);
-    localQQCustomDialog.setContentView(2130968843);
-    localQQCustomDialog.setTitle(BaseActivity.sTopActivity.getString(2131438226, new Object[] { this.jdField_a_of_type_JavaLangString }));
-    ((ImageView)localQQCustomDialog.findViewById(2131364017)).setImageDrawable(BaseActivity.sTopActivity.getResources().getDrawable(2130838196));
-    ((TextView)localQQCustomDialog.findViewById(2131364018)).setText(this.jdField_a_of_type_JavaLangString);
-    ((TextView)localQQCustomDialog.findViewById(2131362758)).setText(BaseActivity.sTopActivity.getString(2131438807));
-    localQQCustomDialog.setCanceledOnTouchOutside(false);
-    ArkAppCenter.a(this.b, new aajb(this, localQQCustomDialog));
-    localQQCustomDialog.setNegativeButton(2131434657, new aajc(this, localQQCustomDialog));
-    localQQCustomDialog.setPositiveButton(2131434655, new aaje(this, localQQCustomDialog));
-    try
+    PopupMenuDialog localPopupMenuDialog = (PopupMenuDialog)this.jdField_a_of_type_Aaji.d.get();
+    if (localPopupMenuDialog != null)
     {
-      localQQCustomDialog.show();
-      label159:
-      if (ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_user_info", this.c) == 0) {
-        ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_user_info", this.c, 2);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label159;
+      localPopupMenuDialog.getContentView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a = true;
+      QLog.w(MainDownAni.a(), 1, "MainDownAni.onGlobalLayout, mTaskStatus[" + this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.a.g + "]");
+      this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a(this.jdField_a_of_type_Aaji);
     }
   }
 }

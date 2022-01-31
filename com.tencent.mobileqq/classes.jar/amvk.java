@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.FilterCategory;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public final class amvk
-  implements Parcelable.Creator
+public class amvk
+  implements Runnable
 {
-  public FilterCategory a(Parcel paramParcel)
-  {
-    return new FilterCategory(paramParcel);
-  }
+  public amvk(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public FilterCategory[] a(int paramInt)
+  public void run()
   {
-    return new FilterCategory[paramInt];
+    RemoteHandleManager.a().a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvk
  * JD-Core Version:    0.7.0.1
  */

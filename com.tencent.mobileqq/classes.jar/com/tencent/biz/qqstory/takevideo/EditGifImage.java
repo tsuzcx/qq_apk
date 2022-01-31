@@ -43,9 +43,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
-import oaz;
-import oba;
-import obb;
+import ocr;
+import ocs;
+import oct;
 
 public class EditGifImage
   extends EditVideoPart
@@ -154,7 +154,7 @@ public class EditGifImage
         this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable = new FastAnimationDrawable(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), localEditLocalGifSource.b, localEditLocalGifSource.jdField_a_of_type_Long, this);
         localEditLocalGifSource.jdField_a_of_type_JavaLangString = null;
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new oba(this));
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new ocs(this));
     }
   }
   
@@ -174,21 +174,21 @@ public class EditGifImage
         this.jdField_b_of_type_CooperationQzoneWidgetFastAnimationDrawable = new FastAnimationDrawable(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), localEditLocalGifSource.jdField_a_of_type_JavaUtilArrayList, localEditLocalGifSource.jdField_a_of_type_Long, this);
         localEditLocalGifSource.jdField_a_of_type_JavaLangString = null;
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new obb(this));
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new oct(this));
     }
   }
   
-  public void H_()
+  public void M_()
   {
-    super.H_();
+    super.M_();
     if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
       this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
     }
   }
   
-  public void I_()
+  public void N_()
   {
-    super.I_();
+    super.N_();
     if (this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
       this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
     }
@@ -229,7 +229,7 @@ public class EditGifImage
   {
     super.a();
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)a(2131364385));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)a(2131364409));
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnTouchListener(this);
     this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     ThreadManager.post(this, 8, null, false);
@@ -253,7 +253,7 @@ public class EditGifImage
       if (this.c) {
         break label36;
       }
-      ThreadManager.post(new oaz(this, paramLruCache), 8, null, false);
+      ThreadManager.post(new ocr(this, paramLruCache), 8, null, false);
     }
     label36:
     do
@@ -328,7 +328,7 @@ public class EditGifImage
             return false;
             if (paramMessage.what == 998)
             {
-              QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getString(2131438704), 0).a();
+              QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getString(2131438722), 0).a();
               this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(0, null, 2131034158, 0);
               return false;
             }

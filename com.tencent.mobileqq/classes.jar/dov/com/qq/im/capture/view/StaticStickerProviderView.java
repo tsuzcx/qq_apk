@@ -1,14 +1,14 @@
 package dov.com.qq.im.capture.view;
 
-import amzx;
-import amzy;
-import amzz;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import anqc;
+import anqd;
+import anqe;
 import com.tencent.biz.qqstory.support.report.VideoEditReport;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -43,7 +43,7 @@ public class StaticStickerProviderView
   implements QIMSlidingTabView.IOnTabCheckListener, AdapterObserver, FaceViewPager.PageChangedObserver
 {
   private IFaceSelectedListener jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener;
-  CaptureConfigUpdateObserver jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver = new amzy(this);
+  CaptureConfigUpdateObserver jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver = new anqd(this);
   public FacePagerAdapter a;
   FacePanelBaseAdapter jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter;
   FaceViewPager jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager;
@@ -91,7 +91,7 @@ public class StaticStickerProviderView
   
   protected int a()
   {
-    return 2130970127;
+    return 2130970141;
   }
   
   public void a()
@@ -129,30 +129,31 @@ public class StaticStickerProviderView
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970127, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970141, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager = ((FaceViewPager)findViewById(2131369136));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager = ((FaceViewPager)findViewById(2131369202));
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter = new FacePagerAdapter(super.getContext());
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setAdapter(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.a(this);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
-    paramBundle = (PasterDataManager)QIMManager.a(4);
-    Object localObject = paramBundle.a();
-    ((EditVideoDoodle.DoodleFacePanelAdapter)localObject).a(paramBundle.a());
+    PasterDataManager localPasterDataManager = (PasterDataManager)QIMManager.a(4);
+    paramBundle = localPasterDataManager.a();
+    paramBundle.a(localPasterDataManager.a());
     j();
-    setAdapter((FacePanelBaseAdapter)localObject);
-    setDownloadListener(new amzx(this));
-    localObject = (Activity)getContext();
-    paramBundle = (DoodleLayout)((Activity)localObject).findViewById(2131362953);
+    setAdapter(paramBundle);
+    setDownloadListener(new anqc(this));
+    Activity localActivity = (Activity)getContext();
+    paramBundle = (DoodleLayout)localActivity.findViewById(2131362971);
     if (paramBundle == null) {
-      paramBundle = (DoodleLayout)((Activity)localObject).findViewById(2131368915);
+      paramBundle = (DoodleLayout)localActivity.findViewById(2131368981);
     }
     for (;;)
     {
       setOnFaceSelectedListener(paramBundle.a());
       this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver);
+      localPasterDataManager.d();
       return;
     }
   }
@@ -170,7 +171,7 @@ public class StaticStickerProviderView
         if (TextUtils.equals((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (CharSequence)localObject))
         {
           a(i);
-          postDelayed(new amzz(this, i, paramZoomItem), 200L);
+          postDelayed(new anqe(this, i, paramZoomItem), 200L);
         }
         i += 1;
       }

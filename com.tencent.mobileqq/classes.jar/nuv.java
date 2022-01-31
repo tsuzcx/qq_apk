@@ -1,25 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
 
 public class nuv
-  implements DialogInterface.OnClickListener
+  implements TextView.OnEditorActionListener
 {
-  public nuv(StoryDiscoverActivity paramStoryDiscoverActivity) {}
+  public nuv(DetailCommentHelper paramDetailCommentHelper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
+    if (paramInt == 4)
     {
-    default: 
-      return;
-    case 0: 
-      StoryReportor.a("content_flow", "cancel_hot", 0, 0, new String[0]);
-      return;
+      this.a.d();
+      return true;
     }
-    this.a.a(false, true, null);
-    StoryReportor.a("content_flow", "sure_hot", 0, 0, new String[0]);
+    return false;
   }
 }
 

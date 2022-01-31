@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -35,13 +36,14 @@ import com.tribe.async.reactive.Stream;
 import com.tribe.async.reactive.UIThreadOffFunction;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditAioSyncToStoryPart;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import obn;
+import odf;
 
 public class EditPicPartManager
   extends EditVideoPartManager
@@ -155,7 +157,7 @@ public class EditPicPartManager
     VideoEditReport.b("0X80076EA");
     SLog.d("EditPicActivity.EditPicPartManager", "PUBLISH start ...");
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a("请稍候", false, 500L);
-    Stream.of(localGenerateContext).map(new GenerateEditPicDoodleSegment((EditDoodleExport)a(EditDoodleExport.class), null)).map(new ThreadOffFunction(2)).map(new MergePicSegment(EditPicConstants.a + "qq_pic_merged_" + System.currentTimeMillis() + ".jpg")).map(new UIThreadOffFunction(this)).subscribe(new obn(this, localGenerateContext));
+    Stream.of(localGenerateContext).map(new GenerateEditPicDoodleSegment((EditDoodleExport)a(EditDoodleExport.class), null)).map(new ThreadOffFunction(2)).map(new MergePicSegment(EditPicConstants.a + "qq_pic_merged_" + System.currentTimeMillis() + ".jpg")).map(new UIThreadOffFunction(this)).subscribe(new odf(this, localGenerateContext));
   }
   
   public void a()
@@ -231,8 +233,8 @@ public class EditPicPartManager
       paramIntent.putExtra("param_type", 9003);
       paramIntent.putExtra("param_only_friends", true);
       paramIntent.putExtra("param_donot_need_contacts", true);
-      paramIntent.putExtra("param_title", paramActivity.getString(2131438235));
-      paramIntent.putExtra("param_done_button_wording", paramActivity.getString(2131432400));
+      paramIntent.putExtra("param_title", paramActivity.getString(2131438253));
+      paramIntent.putExtra("param_done_button_wording", paramActivity.getString(2131432417));
       paramIntent.putExtra("param_exit_animation", 1);
       paramIntent.putExtra("param_entrance", 15);
       paramIntent.putExtra("param_blesstype", 3);
@@ -288,9 +290,30 @@ public class EditPicPartManager
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditJumpToPtu = ((EditJumpToPtu)localObject);
       localArrayList.add(localObject);
     }
-    a(localArrayList);
-    this.e = paramEditVideoParams.jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
+    int i;
+    if (a(paramEditVideoParams.b, 2048))
+    {
+      if (paramEditVideoParams.jdField_a_of_type_AndroidOsBundle != null) {
+        break label333;
+      }
+      i = -1;
+      if (i != -1) {
+        break label348;
+      }
+      SLog.e("EditPicActivity.EditPicPartManager", "pic curType have not set but it use BUSINESS_QQ ID, that is illegal!!");
+    }
+    for (;;)
+    {
+      a(localArrayList);
+      this.e = paramEditVideoParams.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaUtilList = localArrayList;
+      return;
+      label333:
+      i = paramEditVideoParams.jdField_a_of_type_AndroidOsBundle.getInt("uintype", -1);
+      break;
+      label348:
+      localArrayList.add(new EditAioSyncToStoryPart(this, i, false));
+    }
   }
   
   public void b()

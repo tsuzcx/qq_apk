@@ -1,38 +1,33 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.OnUseResListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ocr.OCRHandler;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
 
-class agau
-  implements Runnable
+public class agau
+  implements INetEngine.INetEngineListener
 {
-  agau(agat paramagat, String paramString) {}
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private String jdField_a_of_type_JavaLangString;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public void run()
+  public agau(OCRHandler paramOCRHandler, Intent paramIntent, byte[] paramArrayOfByte, String paramString)
   {
-    if (this.jdField_a_of_type_Agat.a.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      return;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  
+  public void a(NetResp paramNetResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp()");
     }
-    this.jdField_a_of_type_Agat.a.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(false);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QRUtils.a(1, 2131429987);
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    localBundle.putString("forward_filepath", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
-    localBundle.putInt(ForwardBaseOption.e, 1);
-    Intent localIntent = new Intent();
-    localIntent.putExtras(localBundle);
-    ForwardBaseOption.a(this.jdField_a_of_type_Agat.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, 21);
+    ThreadManager.post(new agav(this, paramNetResp), 8, null, true);
   }
 }
 

@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameRankData;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
 
-public final class ytl
+public class ytl
   implements Runnable
 {
-  public ytl(QQAppInterface paramQQAppInterface, ApolloGameRankData paramApolloGameRankData) {}
+  public ytl(ApolloGuestsStateActivity paramApolloGuestsStateActivity, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData != null))
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGuestsStateActivity.a != null)
     {
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData);
-      ((ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), localArrayList);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGuestsStateActivity.a.setText(String.valueOf(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGuestsStateActivity.c = this.jdField_a_of_type_Int;
     }
   }
 }

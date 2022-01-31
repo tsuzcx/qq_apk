@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahgb;
+import ahud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -42,7 +42,7 @@ public class ActiveEntitySearchResultPresenter
   extends SearchResultPresenter
 {
   int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahgb(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahud(this);
   boolean jdField_a_of_type_Boolean = false;
   
   public ActiveEntitySearchResultPresenter(FaceDecoder paramFaceDecoder, int paramInt)
@@ -56,11 +56,11 @@ public class ActiveEntitySearchResultPresenter
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setOrientation(0);
     int i = paramContext.getResources().getDisplayMetrics().widthPixels;
-    float f = paramContext.getResources().getDimension(2131559151);
+    float f = paramContext.getResources().getDimension(2131559153);
     i = (int)(i - f * 2.0F - AIOUtils.a(24.0F, paramContext.getResources()) - 1.0F) / 2;
     TextView localTextView1 = new TextView(paramContext);
     localTextView1.setTextSize(1, 16.0F);
-    localTextView1.setTextColor(paramContext.getResources().getColor(2131494210));
+    localTextView1.setTextColor(paramContext.getResources().getColor(2131494217));
     Object localObject = new LinearLayout.LayoutParams(i, -2);
     ((LinearLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(paramContext, 12.0F);
     localTextView1.setSingleLine(true);
@@ -68,11 +68,11 @@ public class ActiveEntitySearchResultPresenter
     localTextView1.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = new TextView(paramContext);
     ((TextView)localObject).setLayoutParams(new LinearLayout.LayoutParams(1, -1));
-    ((TextView)localObject).setBackgroundColor(paramContext.getResources().getColor(2131493794));
-    ((TextView)localObject).setId(2131363905);
+    ((TextView)localObject).setBackgroundColor(paramContext.getResources().getColor(2131493800));
+    ((TextView)localObject).setId(2131363928);
     TextView localTextView2 = new TextView(paramContext);
     localTextView2.setTextSize(1, 16.0F);
-    localTextView2.setTextColor(paramContext.getResources().getColor(2131494210));
+    localTextView2.setTextColor(paramContext.getResources().getColor(2131494217));
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, -2);
     localLayoutParams.leftMargin = DisplayUtil.a(paramContext, 12.0F);
     localTextView2.setLayoutParams(localLayoutParams);
@@ -89,7 +89,7 @@ public class ActiveEntitySearchResultPresenter
     Drawable localDrawable;
     if (paramInt == 1)
     {
-      localDrawable = paramImageView2.getResources().getDrawable(2130840366);
+      localDrawable = paramImageView2.getResources().getDrawable(2130840372);
       paramImageView1.setColorFilter(-1610612736, PorterDuff.Mode.SRC_OVER);
       paramImageView2.setImageDrawable(localDrawable);
       paramImageView2.setScaleType(ImageView.ScaleType.CENTER);
@@ -98,7 +98,7 @@ public class ActiveEntitySearchResultPresenter
     }
     if (paramInt == 2)
     {
-      localDrawable = paramImageView2.getResources().getDrawable(2130840381);
+      localDrawable = paramImageView2.getResources().getDrawable(2130840387);
       paramImageView1.setColorFilter(-1610612736, PorterDuff.Mode.SRC_OVER);
       paramImageView2.setImageDrawable(localDrawable);
       paramImageView2.setScaleType(ImageView.ScaleType.CENTER);
@@ -124,17 +124,17 @@ public class ActiveEntitySearchResultPresenter
       paramTextView.setCompoundDrawables(null, null, null, null);
       paramTextView.setVisibility(4);
       return;
-      i = 2130839244;
-      paramInt1 = 2130842796;
+      i = 2130839248;
+      paramInt1 = 2130842895;
       continue;
-      i = 2130839239;
-      paramInt1 = 2130842787;
+      i = 2130839243;
+      paramInt1 = 2130842886;
     }
     paramTextView.setVisibility(0);
     paramTextView.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
     paramTextView.setBackgroundResource(paramInt1);
     paramTextView.setText(String.valueOf(paramInt2));
-    paramTextView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131492968));
+    paramTextView.setTextColor(BaseApplicationImpl.getContext().getResources().getColor(2131492969));
   }
   
   public static void a(TextView paramTextView1, TextView paramTextView2, CharSequence paramCharSequence, TextView paramTextView3)
@@ -222,14 +222,14 @@ public class ActiveEntitySearchResultPresenter
       localTextView1.setText(localRelativeWord2.a);
       localTextView1.setTextColor(k);
       localTextView1.setTag(localRelativeWord2.b);
-      localTextView1.setTag(2131371868, localRelativeWord2.a);
+      localTextView1.setTag(2131372038, localRelativeWord2.a);
       localTextView1.setTag(2131362360, localRelativeWord2.b);
       if (localRelativeWord1 != null)
       {
         localTextView3.setText(localRelativeWord1.a);
         localTextView3.setTextColor(k);
         localTextView3.setTag(localRelativeWord1.b);
-        localTextView3.setTag(2131371868, localRelativeWord1.a);
+        localTextView3.setTag(2131372038, localRelativeWord1.a);
         localTextView3.setTag(2131362360, localRelativeWord1.b);
         localTextView1.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         localTextView3.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -239,7 +239,7 @@ public class ActiveEntitySearchResultPresenter
         if (!bool) {
           break label389;
         }
-        localTextView2.setBackgroundColor(paramSearchResultFromNetView.a().getResources().getColor(2131492949));
+        localTextView2.setBackgroundColor(paramSearchResultFromNetView.a().getResources().getColor(2131492950));
       }
       for (;;)
       {
@@ -247,13 +247,13 @@ public class ActiveEntitySearchResultPresenter
         break;
         localTextView3.setVisibility(4);
         break label303;
-        localTextView2.setBackgroundColor(paramSearchResultFromNetView.a().getResources().getColor(2131492948));
+        localTextView2.setBackgroundColor(paramSearchResultFromNetView.a().getResources().getColor(2131492949));
       }
       if (bool)
       {
         paramSearchResultFromNetView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#44608A"));
         paramSearchResultFromNetView.jdField_b_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#040E1C"));
-        paramSearchResultFromNetView.jdField_a_of_type_AndroidViewView.setBackgroundColor(BaseApplicationImpl.getApplication().getResources().getColor(2131492949));
+        paramSearchResultFromNetView.jdField_a_of_type_AndroidViewView.setBackgroundColor(BaseApplicationImpl.getApplication().getResources().getColor(2131492950));
         if ((paramGroupBaseNetSearchModelItem.jdField_d_of_type_Boolean) || (paramGroupBaseNetSearchModelItem.jdField_c_of_type_Boolean))
         {
           paramSearchResultFromNetView.c.setVisibility(8);
@@ -267,7 +267,7 @@ public class ActiveEntitySearchResultPresenter
       }
       paramSearchResultFromNetView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#808080"));
       paramSearchResultFromNetView.jdField_b_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#ECECEC"));
-      paramSearchResultFromNetView.jdField_a_of_type_AndroidViewView.setBackgroundColor(BaseApplicationImpl.getApplication().getResources().getColor(2131492948));
+      paramSearchResultFromNetView.jdField_a_of_type_AndroidViewView.setBackgroundColor(BaseApplicationImpl.getApplication().getResources().getColor(2131492949));
       if (!paramGroupBaseNetSearchModelItem.jdField_d_of_type_Boolean)
       {
         paramSearchResultFromNetView.c.setVisibility(0);
@@ -396,7 +396,7 @@ public class ActiveEntitySearchResultPresenter
           if (localTextView1 != null)
           {
             localTextView1.setCompoundDrawablePadding(AIOUtils.a(4.0F, localResources));
-            localTextView1.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839676, 0);
+            localTextView1.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839682, 0);
             continue;
             a(localTextView1, localTextView3, paramISearchResultModel.a(), null);
             continue;
@@ -447,7 +447,7 @@ public class ActiveEntitySearchResultPresenter
           if ((localGroupBaseNetSearchModelItem.b() == 1001) || (localGroupBaseNetSearchModelItem.b() == 1002)) {
             break label416;
           }
-          int i = paramISearchResultView.a().getResources().getDimensionPixelSize(2131559207);
+          int i = paramISearchResultView.a().getResources().getDimensionPixelSize(2131559209);
           paramISearchResultModel = URLDrawable.URLDrawableOptions.obtain();
           paramISearchResultModel.mRequestWidth = i;
           paramISearchResultModel.mRequestHeight = i;
@@ -488,7 +488,7 @@ public class ActiveEntitySearchResultPresenter
       }
       else if (localGroupBaseNetSearchModelItem.b() != 1024)
       {
-        localLayoutParams.height = ((ImageView)localObject).getResources().getDimensionPixelSize(2131559132);
+        localLayoutParams.height = ((ImageView)localObject).getResources().getDimensionPixelSize(2131559134);
         continue;
         label416:
         super.b(paramISearchResultModel, paramISearchResultView);

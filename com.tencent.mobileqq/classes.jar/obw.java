@@ -1,14 +1,19 @@
-import android.app.Dialog;
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.widget.HorizontalListView.OnItemScrollEventListener;
 
 public class obw
-  implements Runnable
+  implements HorizontalListView.OnItemScrollEventListener
 {
-  public obw(EditPicSave paramEditPicSave) {}
+  public obw(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    EditPicSave.a(this.a).show();
+    if (StoryHomeHorizontalListView.a(this.a) != null) {
+      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
+    }
+    SLog.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
+    this.a.a();
   }
 }
 

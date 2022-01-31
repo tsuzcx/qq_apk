@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleParam;
-import java.util.List;
-import java.util.Map;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 
-public abstract interface upo
+public class upo
+  implements Runnable
 {
-  public abstract void a(String paramString, int paramInt, DoodleParam paramDoodleParam, List paramList, Map paramMap);
+  public upo(CommonRecordSoundPanel paramCommonRecordSoundPanel, int paramInt, double paramDouble) {}
   
-  public abstract boolean a(String paramString);
+  public void run()
+  {
+    int i = AudioPanel.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.c(i);
+    CommonRecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.jdField_a_of_type_Double = this.jdField_a_of_type_Double;
+  }
 }
 
 

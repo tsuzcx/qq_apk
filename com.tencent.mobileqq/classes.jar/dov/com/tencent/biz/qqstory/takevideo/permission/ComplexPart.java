@@ -11,8 +11,8 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anmq;
-import anmr;
+import aocv;
+import aocw;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.UIUtils;
@@ -39,7 +39,7 @@ public class ComplexPart
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private anmr a(int paramInt)
+  private aocw a(int paramInt)
   {
     int i = c();
     if ((paramInt < 0) || (paramInt >= i)) {
@@ -48,8 +48,8 @@ public class ComplexPart
     Object localObject1;
     if (paramInt == 0)
     {
-      localObject1 = new anmr(null);
-      ((anmr)localObject1).jdField_a_of_type_Int = 1;
+      localObject1 = new aocw(null);
+      ((aocw)localObject1).jdField_a_of_type_Int = 1;
       return localObject1;
     }
     Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
@@ -60,9 +60,9 @@ public class ComplexPart
       i += 1;
       if (i == paramInt)
       {
-        localObject2 = new anmr(null);
-        ((anmr)localObject2).jdField_a_of_type_Int = 2;
-        ((anmr)localObject2).jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group = ((ComplexPart.Group)localObject1);
+        localObject2 = new aocw(null);
+        ((aocw)localObject2).jdField_a_of_type_Int = 2;
+        ((aocw)localObject2).jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group = ((ComplexPart.Group)localObject1);
         return localObject2;
       }
       if (!ComplexPart.Group.a((ComplexPart.Group)localObject1)) {
@@ -71,11 +71,11 @@ public class ComplexPart
       if (paramInt <= ((ComplexPart.Group)localObject1).a().size() + i)
       {
         localObject2 = (ComplexPart.Friend)((ComplexPart.Group)localObject1).a().get(paramInt - i - 1);
-        anmr localanmr = new anmr(null);
-        localanmr.jdField_a_of_type_Int = 3;
-        localanmr.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group = ((ComplexPart.Group)localObject1);
-        localanmr.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Friend = ((ComplexPart.Friend)localObject2);
-        return localanmr;
+        aocw localaocw = new aocw(null);
+        localaocw.jdField_a_of_type_Int = 3;
+        localaocw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group = ((ComplexPart.Group)localObject1);
+        localaocw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Friend = ((ComplexPart.Friend)localObject2);
+        return localaocw;
       }
       i = ((ComplexPart.Group)localObject1).a().size() + i;
     }
@@ -89,10 +89,10 @@ public class ComplexPart
   
   private void a(View paramView)
   {
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131371755);
-    Object localObject = (ImageView)paramView.findViewById(2131364365);
-    TextView localTextView = (TextView)paramView.findViewById(2131364366);
-    paramView = paramView.findViewById(2131364368);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131371925);
+    Object localObject = (ImageView)paramView.findViewById(2131364389);
+    TextView localTextView = (TextView)paramView.findViewById(2131364390);
+    paramView = paramView.findViewById(2131364392);
     localTextView.setText(this.jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_Boolean)
     {
@@ -122,10 +122,10 @@ public class ComplexPart
   
   private void a(View paramView, ComplexPart.Group paramGroup)
   {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131363819);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131371759);
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131371760);
-    paramView = (CheckBox)paramView.findViewById(2131371758);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131363842);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131371929);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131371930);
+    paramView = (CheckBox)paramView.findViewById(2131371928);
     localTextView1.setText(paramGroup.a.group_name);
     localTextView2.setText(String.format("(%s/%s)", new Object[] { Integer.valueOf(paramGroup.a()), Integer.valueOf(paramGroup.b()) }));
     if (paramGroup.b() == 0)
@@ -143,7 +143,7 @@ public class ComplexPart
     }
     for (;;)
     {
-      paramView.setOnClickListener(new anmq(this, paramGroup));
+      paramView.setOnClickListener(new aocv(this, paramGroup));
       return;
       paramView.setVisibility(0);
       break;
@@ -157,10 +157,10 @@ public class ComplexPart
   
   private void a(View paramView, ComplexPart.Group paramGroup, ComplexPart.Friend paramFriend)
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131364582);
-    Object localObject1 = (TextView)paramView.findViewById(2131364592);
-    Object localObject2 = (CheckBox)paramView.findViewById(2131371756);
-    paramView = paramView.findViewById(2131371757);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131364606);
+    Object localObject1 = (TextView)paramView.findViewById(2131364616);
+    Object localObject2 = (CheckBox)paramView.findViewById(2131371926);
+    paramView = paramView.findViewById(2131371927);
     ((TextView)localObject1).setText(paramFriend.jdField_a_of_type_ComTencentMobileqqDataFriends.remark);
     if (paramFriend.jdField_a_of_type_Boolean)
     {
@@ -205,7 +205,7 @@ public class ComplexPart
     }
   }
   
-  private void a(anmr paramanmr)
+  private void a(aocw paramaocw)
   {
     boolean bool;
     if (this.jdField_a_of_type_Boolean) {
@@ -222,9 +222,9 @@ public class ComplexPart
     }
   }
   
-  private void b(anmr paramanmr)
+  private void b(aocw paramaocw)
   {
-    paramanmr.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a();
+    paramaocw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a();
   }
   
   private int c()
@@ -252,9 +252,9 @@ public class ComplexPart
     }
   }
   
-  private void c(anmr paramanmr)
+  private void c(aocw paramaocw)
   {
-    paramanmr.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a(paramanmr.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Friend);
+    paramaocw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a(paramaocw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Friend);
   }
   
   public int a()
@@ -274,11 +274,11 @@ public class ComplexPart
     default: 
       return null;
     case 1: 
-      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970745, null);
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970793, null);
     case 2: 
-      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970747, null);
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970795, null);
     }
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970746, null);
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970794, null);
   }
   
   @NonNull
@@ -294,25 +294,25 @@ public class ComplexPart
   
   public void a(int paramInt)
   {
-    anmr localanmr = a(paramInt);
-    switch (localanmr.jdField_a_of_type_Int)
+    aocw localaocw = a(paramInt);
+    switch (localaocw.jdField_a_of_type_Int)
     {
     default: 
       return;
     case 1: 
-      a(localanmr);
+      a(localaocw);
       return;
     case 2: 
-      b(localanmr);
+      b(localaocw);
       return;
     }
-    c(localanmr);
+    c(localaocw);
   }
   
   public void a(int paramInt, View paramView)
   {
-    anmr localanmr = a(paramInt);
-    switch (localanmr.jdField_a_of_type_Int)
+    aocw localaocw = a(paramInt);
+    switch (localaocw.jdField_a_of_type_Int)
     {
     default: 
       return;
@@ -320,10 +320,10 @@ public class ComplexPart
       a(paramView);
       return;
     case 2: 
-      a(paramView, localanmr.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group);
+      a(paramView, localaocw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group);
       return;
     }
-    a(paramView, localanmr.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group, localanmr.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Friend);
+    a(paramView, localaocw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group, localaocw.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Friend);
   }
   
   public void a(List paramList)

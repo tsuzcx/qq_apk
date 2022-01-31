@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
-public final class akjc
-  implements Parcelable.Creator
+public class akjc
+  implements Runnable
 {
-  public Workspace.SavedState a(Parcel paramParcel)
-  {
-    return new Workspace.SavedState(paramParcel, null);
-  }
+  public akjc(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public Workspace.SavedState[] a(int paramInt)
+  public void run()
   {
-    return new Workspace.SavedState[paramInt];
+    TVK_SDKMgr.installPlugin(this.a.mRuntime.a().getApplication(), new akjd(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjc
  * JD-Core Version:    0.7.0.1
  */

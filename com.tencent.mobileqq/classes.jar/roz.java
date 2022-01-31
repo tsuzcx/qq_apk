@@ -1,4 +1,7 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class roz
   implements Runnable
@@ -7,7 +10,8 @@ public class roz
   
   public void run()
   {
-    this.a.aP();
+    ((FriendsManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).b();
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(64));
   }
 }
 

@@ -57,8 +57,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import usw;
-import usy;
+import uvy;
+import uwa;
 
 public class DeviceSingleStructBuilder
   extends AbstractChatItemBuilder
@@ -70,7 +70,7 @@ public class DeviceSingleStructBuilder
   public DeviceSingleStructBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new usw(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new uvy(this);
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     paramQQAppInterface = new Intent();
     paramQQAppInterface.setAction("SmartDevice_clickOnDeviceList");
@@ -148,17 +148,17 @@ public class DeviceSingleStructBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramLinearLayout.setPadding(0, AIOUtils.a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0);
-    paramLinearLayout = (usy)paramViewHolder;
+    paramLinearLayout = (uwa)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968745, null);
-      paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363522));
-      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131363523));
-      paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363525));
-      paramLinearLayout.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363526));
-      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131363527));
-      paramLinearLayout.e = ((TextView)paramViewHolder.findViewById(2131363529));
+      paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363540));
+      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131363541));
+      paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363543));
+      paramLinearLayout.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363544));
+      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131363545));
+      paramLinearLayout.e = ((TextView)paramViewHolder.findViewById(2131363547));
     }
     if ((paramLinearLayout.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForDeviceSingleStruct)) {}
     for (paramMessageRecord = (MessageForDeviceSingleStruct)paramMessageRecord;; paramMessageRecord = null)
@@ -249,7 +249,7 @@ public class DeviceSingleStructBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new usy(this);
+    return new uwa(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -285,8 +285,8 @@ public class DeviceSingleStructBuilder
   
   public void a(View paramView, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct)
   {
-    usy localusy = (usy)AIOUtils.a(paramView);
-    if (localusy == null) {
+    uwa localuwa = (uwa)AIOUtils.a(paramView);
+    if (localuwa == null) {
       if (QLog.isColorLevel()) {
         QLog.d("DeviceSingleStructBuilder", 2, "error get holder in updateview");
       }
@@ -297,20 +297,20 @@ public class DeviceSingleStructBuilder
       {
         return;
         paramView = null;
-        if ((localusy.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForDeviceSingleStruct)) {
-          paramView = (MessageForDeviceSingleStruct)localusy.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        if ((localuwa.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForDeviceSingleStruct)) {
+          paramView = (MessageForDeviceSingleStruct)localuwa.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
         }
       } while (paramView == null);
       if ((paramView.uniseq == paramMessageForDeviceSingleStruct.uniseq) && (paramView.nCoverSessionID == paramMessageForDeviceSingleStruct.nCoverSessionID))
       {
         paramView.strCoverPath = paramMessageForDeviceSingleStruct.strCoverPath;
-        a(paramView, localusy);
+        a(paramView, localuwa);
       }
     } while ((paramView.uniseq != paramMessageForDeviceSingleStruct.uniseq) || (paramView.nMediaSessionID != paramMessageForDeviceSingleStruct.nMediaSessionID));
     paramView.strMediaPath = paramMessageForDeviceSingleStruct.strMediaPath;
   }
   
-  protected void a(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct, usy paramusy)
+  protected void a(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct, uwa paramuwa)
   {
     if ((paramMessageForDeviceSingleStruct.nDataType == 1) && (FileUtils.b(paramMessageForDeviceSingleStruct.strMediaPath))) {}
     for (;;)
@@ -330,13 +330,13 @@ public class DeviceSingleStructBuilder
         if (paramMessageForDeviceSingleStruct != null)
         {
           paramMessageForDeviceSingleStruct = URLDrawable.getDrawable(paramMessageForDeviceSingleStruct);
-          paramusy.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramMessageForDeviceSingleStruct);
+          paramuwa.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramMessageForDeviceSingleStruct);
         }
         return;
       }
       catch (Exception paramMessageForDeviceSingleStruct)
       {
-        paramusy.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837613);
+        paramuwa.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837616);
         return;
       }
       if (FileUtils.b(paramMessageForDeviceSingleStruct.strCoverPath)) {
@@ -352,24 +352,24 @@ public class DeviceSingleStructBuilder
           if (paramMessageForDeviceSingleStruct != null)
           {
             paramMessageForDeviceSingleStruct = URLDrawable.getDrawable(paramMessageForDeviceSingleStruct);
-            paramusy.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramMessageForDeviceSingleStruct);
+            paramuwa.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramMessageForDeviceSingleStruct);
             return;
           }
         }
         catch (Exception paramMessageForDeviceSingleStruct)
         {
-          paramusy.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837613);
+          paramuwa.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837616);
           return;
         }
       }
     }
-    paramusy.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837613);
+    paramuwa.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837616);
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131375336, this.jdField_a_of_type_AndroidContentContext.getString(2131433621), 2130838305);
+    paramView.a(2131375567, this.jdField_a_of_type_AndroidContentContext.getString(2131433638), 2130838309);
     int i = 0;
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000))
     {
@@ -381,7 +381,7 @@ public class DeviceSingleStructBuilder
       i = 1;
     }
     if ((i != 0) && (MultiMsgManager.a().a())) {
-      paramView.a(2131375346, this.jdField_a_of_type_AndroidContentContext.getString(2131433744), 2130838316);
+      paramView.a(2131375577, this.jdField_a_of_type_AndroidContentContext.getString(2131433761), 2130838320);
     }
     return paramView.a();
   }

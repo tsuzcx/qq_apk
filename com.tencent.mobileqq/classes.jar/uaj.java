@@ -1,15 +1,19 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class uaj
   implements View.OnClickListener
 {
-  public uaj(TroopRequestActivity paramTroopRequestActivity) {}
+  public uaj(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.g();
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "http://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(paramView);
   }
 }
 

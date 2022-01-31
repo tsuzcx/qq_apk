@@ -1,16 +1,13 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountManager;
 
-class kyz
-  implements BusinessObserver
+public class kyz
+  implements DialogInterface.OnClickListener
 {
-  kyz(kyy paramkyy) {}
+  public kyz(PublicAccountManager paramPublicAccountManager) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    this.a.a.a();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

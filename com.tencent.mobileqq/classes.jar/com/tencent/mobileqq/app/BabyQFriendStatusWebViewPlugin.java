@@ -26,16 +26,16 @@ import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ywp;
-import ywq;
+import yzv;
+import yzw;
 
 public class BabyQFriendStatusWebViewPlugin
   extends WebViewPlugin
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ywp(this);
+  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new yzv(this);
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new ywq(this);
+  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new yzw(this);
   private String jdField_a_of_type_JavaLangString;
   
   public BabyQFriendStatusWebViewPlugin()

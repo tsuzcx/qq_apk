@@ -1,6 +1,6 @@
 package cooperation.qzone.share;
 
-import amis;
+import amyx;
 import android.content.Context;
 import android.text.Editable;
 import android.text.Editable.Factory;
@@ -98,7 +98,7 @@ public class InputViewPanelControl
   {
     try
     {
-      paramContext = new SystemEmoticonPanel(paramContext, new amis(paramEditText));
+      paramContext = new SystemEmoticonPanel(paramContext, new amyx(paramEditText));
       return paramContext;
     }
     catch (Throwable paramContext)

@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
 
-public final class jph
-  implements Animation.AnimationListener
+public class jph
+  implements DialogInterface.OnDismissListener
 {
-  public jph(View paramView, boolean paramBoolean) {}
+  public jph(AVActivity paramAVActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 8)
+    if (this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null)
     {
-      paramAnimation.setVisibility(i);
-      return;
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().r = false;
+      this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.l(true);
+      this.a.jdField_a_of_type_ComTencentAvUiVoiceChangeChooseDialog = null;
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

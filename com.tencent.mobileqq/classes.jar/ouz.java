@@ -1,48 +1,46 @@
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.biz.qrcode.QRCodeEncodeCallback;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-class ouz
-  implements ShortVideoResourceManager.INet_ShortVideoResource
+public final class ouz
+  implements BusinessObserver
 {
-  ouz(ouy paramouy) {}
+  public ouz(QRCodeEncodeCallback paramQRCodeEncodeCallback) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
     {
-      if (paramInt == 0) {
-        break label146;
+      try
+      {
+        paramBundle = new JSONObject(paramBundle);
+        if (paramBundle.getInt("r") != 0) {
+          continue;
+        }
+        paramBundle = paramBundle.getString("url");
+        if (paramBundle != null)
+        {
+          this.a.a(true, paramBundle);
+          return;
+        }
       }
-      VideoEnvironment.a("TroopMemberApiService", "短视频插件下载失败[" + paramInt + "]", null);
-      ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
-      ShortVideoErrorReport.a(2, paramInt);
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
-    }
-    for (;;)
-    {
-      VideoEnvironment.a("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      this.a.jdField_a_of_type_Ouo.a.a(94, this.a.jdField_a_of_type_AndroidOsBundle);
-      this.a.jdField_a_of_type_Ouo.a.b = false;
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle = null;
+        }
+      }
+      this.a.a(false, null);
       return;
-      label146:
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
     }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2) {}
-  
-  public void y_()
-  {
-    this.a.jdField_a_of_type_Ouo.a.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ouz
  * JD-Core Version:    0.7.0.1
  */

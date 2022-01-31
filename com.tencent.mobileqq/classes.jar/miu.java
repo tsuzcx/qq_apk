@@ -1,19 +1,46 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.XListView.DrawFinishedListener;
+import mqq.os.MqqHandler;
 
-class miu
-  extends AnimateUtils.AnimationAdapter
+public class miu
+  implements XListView.DrawFinishedListener
 {
-  miu(mit parammit) {}
+  public miu(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    ReadinjoyTabFrame.a(this.a.a.a.a.a, true);
-    if ((ReadinjoyTabFrame.b(this.a.a.a.a.a).getDrawable() instanceof BitmapDrawable)) {
-      ReadinjoyTabFrame.a(this.a.a.a.a.a).setImageBitmap(((BitmapDrawable)ReadinjoyTabFrame.b(this.a.a.a.a.a).getDrawable()).getBitmap());
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.b))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.b = false;
+      switch (this.a.jdField_a_of_type_Int)
+      {
+      }
+    }
+    for (;;)
+    {
+      PublicTracker.a("KANDIAN_NEW_FEEDS_LIST_VIEW_GROUP_MEASURE_LAYOUT_DRAW", null);
+      PublicTracker.a("KANDIAN_FEEDS_STAGE_2_COST", null);
+      PublicTracker.a("KANDIAN_FEEDS_COST", null);
+      if (this.a.jdField_a_of_type_Int == 56) {
+        PublicTracker.a("video_tab_cost", null);
+      }
+      if (ReadInJoyListViewGroup.b(this.a))
+      {
+        ReadInJoyListViewGroup.a(this.a);
+        ThreadManager.getUIHandler().postDelayed(new miv(this), 100L);
+      }
+      if (ReadInJoyListViewGroup.c(this.a)) {
+        ReadInJoyListViewGroup.c(this.a);
+      }
+      return;
+      PublicTracker.jdField_a_of_type_Int = 1;
+      continue;
+      PublicTracker.jdField_a_of_type_Int = 2;
+      continue;
+      PublicTracker.jdField_a_of_type_Int = 3;
     }
   }
 }

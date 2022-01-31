@@ -1,41 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.SogouEmoji;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class acdm
-  implements ActionSheet.OnButtonClickListener
+  implements QueryCallback
 {
-  public acdm(LocalFileBrowserActivity paramLocalFileBrowserActivity, ActionSheet paramActionSheet) {}
+  public acdm(SogouEmoji paramSogouEmoji, PicEmoticonInfo paramPicEmoticonInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    switch (paramInt)
+    boolean bool;
+    if (paramEmoticonPackage != null)
     {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f = paramEmoticonPackage.type;
+      PicEmoticonInfo localPicEmoticonInfo = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo;
+      if (paramEmoticonPackage.isAPNG == 2)
+      {
+        bool = true;
+        localPicEmoticonInfo.b = bool;
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.d != -1)
-      {
-        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.d);
-        if ((!FileUtil.a(paramView.c())) || (FileUtil.c(paramView.c())))
-        {
-          FileManagerUtil.d(paramView.c());
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.d);
-          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
-        }
-        else
-        {
-          FMToastUtil.a(2131428144);
-        }
+      SogouEmoji.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func sendEmoji ends, type:" + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f);
       }
+      return;
+      bool = false;
+      break;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f = 3;
     }
   }
 }

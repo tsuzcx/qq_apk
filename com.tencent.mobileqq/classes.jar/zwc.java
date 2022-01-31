@@ -1,19 +1,36 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class zwc
-  implements Runnable
+public final class zwc
+  implements Handler.Callback
 {
-  zwc(zwb paramzwb, float[] paramArrayOfFloat) {}
-  
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    GreetingCardRender.a(this.jdField_a_of_type_Zwb.a).native_setARCardQuaternion(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.i("SOSO.LBS", 2, "msg_stop_location.");
+      }
+      SosoInterface.b();
+      SosoInterface.c();
+      SosoInterface.a(false);
+      return false;
+    } while (!SosoInterface.a().hasMessages(1001));
+    SosoInterface.a().removeMessages(1001);
+    SosoInterface.a().sendEmptyMessageDelayed(1001, 3000L);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zwc
  * JD-Core Version:    0.7.0.1
  */

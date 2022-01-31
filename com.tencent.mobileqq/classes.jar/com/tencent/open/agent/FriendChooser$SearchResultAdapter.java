@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
-import akmi;
-import akmj;
+import alby;
+import albz;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,17 +42,17 @@ public class FriendChooser$SearchResultAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2130971516, paramViewGroup, false);
-      paramViewGroup = new akmj();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364316));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363531));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131363532));
+      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2130971564, paramViewGroup, false);
+      paramViewGroup = new albz();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364340));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363549));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131363550));
       paramView.setTag(paramViewGroup);
     }
     while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
       return paramView;
-      paramViewGroup = (akmj)paramView.getTag();
+      paramViewGroup = (albz)paramView.getTag();
     }
     Friend localFriend = (Friend)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     Object localObject;
@@ -66,16 +66,16 @@ public class FriendChooser$SearchResultAdapter
       if (localObject != null) {
         break label290;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839128);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839132);
       localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      ImageLoader.a().a(localFriend.d, new akmi(this, (ImageView)localObject));
+      ImageLoader.a().a(localFriend.d, new alby(this, (ImageView)localObject));
     }
     for (;;)
     {
       if (!this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a.a(localFriend.a)) {
         break label302;
       }
-      paramViewGroup.b.setText(2131433992);
+      paramViewGroup.b.setText(2131434009);
       return paramView;
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFriend.c);
       break;

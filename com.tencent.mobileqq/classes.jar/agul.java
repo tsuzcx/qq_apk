@@ -1,17 +1,33 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class agul
-  implements Runnable
+class agul
+  implements DialogInterface.OnClickListener
 {
-  public agul(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, String paramString) {}
+  agul(aguk paramaguk, QQCustomDialog paramQQCustomDialog, long paramLong) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite).setText(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
+    boolean bool = true;
+    if (paramInt == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    paramDialogInterface = QCallDetailActivity.a(this.jdField_a_of_type_Aguk.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
+    long l = this.jdField_a_of_type_Long;
+    if (!this.jdField_a_of_type_Aguk.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      paramDialogInterface.a(l, bool);
+      QCallDetailActivity.a(this.jdField_a_of_type_Aguk.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a((byte)0);
+      return;
+      bool = false;
     }
   }
 }

@@ -1,24 +1,47 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
+import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
+import com.tencent.qphone.base.util.QLog;
 
 public class usr
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public usr(DeviceFileItemBuilder paramDeviceFileItemBuilder, MessageForDeviceFile paramMessageForDeviceFile, ActionSheet paramActionSheet) {}
+  private uss jdField_a_of_type_Uss;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public void OnClick(View paramView, int paramInt)
+  public usr(LoadDataJob paramLoadDataJob, byte[] paramArrayOfByte, uss paramuss)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Uss = paramuss;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_Uss == null) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+    if (this.jdField_a_of_type_ArrayOfByte == null)
+    {
+      this.jdField_a_of_type_Uss.a(null);
+      return;
+    }
+    try
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a(this.jdField_a_of_type_ArrayOfByte);
+      if (localObject != null)
+      {
+        localObject = (PathDrawer)PathDrawer.a.a((MyParcel)localObject);
+        this.jdField_a_of_type_Uss.a((PathDrawer)localObject);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UnmarshallJob", 2, "unmarshall  exception:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a);
+      }
+      this.jdField_a_of_type_Uss.a(null);
     }
   }
 }

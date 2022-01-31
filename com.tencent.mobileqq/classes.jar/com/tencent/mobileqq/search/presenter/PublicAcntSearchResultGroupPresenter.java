@@ -49,7 +49,7 @@ public class PublicAcntSearchResultGroupPresenter
           ((ISearchResultView)paramIModel.get(i)).a().setTag(2131362081, Integer.valueOf(paramIModel.size()));
           ((ISearchResultView)paramIModel.get(i)).a().setTag(2131362077, this.a);
           if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-            ((ISearchResultView)paramIModel.get(i)).a().setBackgroundResource(2130838576);
+            ((ISearchResultView)paramIModel.get(i)).a().setBackgroundResource(2130838580);
           }
           for (;;)
           {
@@ -58,7 +58,7 @@ public class PublicAcntSearchResultGroupPresenter
             this.a.a((IModel)((List)localObject).get(i), (IView)paramIModel.get(i));
             i += 1;
             break;
-            ((ISearchResultView)paramIModel.get(i)).a().setBackgroundResource(2130838575);
+            ((ISearchResultView)paramIModel.get(i)).a().setBackgroundResource(2130838579);
           }
         }
         i = Math.min(((List)localObject).size(), j);

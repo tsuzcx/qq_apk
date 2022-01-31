@@ -1,10 +1,12 @@
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopUnreadTipsChatItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.widget.PopupMenuDialog.OnDismissListener;
 
 public class vht
-  extends AbstractChatItemBuilder.ViewHolder
+  implements PopupMenuDialog.OnDismissListener
 {
-  public vht(TroopUnreadTipsChatItemBuilder paramTroopUnreadTipsChatItemBuilder) {}
+  public vht(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  
+  public void a() {}
 }
 
 

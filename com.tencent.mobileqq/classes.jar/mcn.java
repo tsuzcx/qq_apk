@@ -1,45 +1,24 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoStatusListener;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.utils.ContactUtils;
 
-public class mcn
-  extends VideoFeedsPlayManager.VideoStatusListener
+class mcn
+  extends FriendListObserver
 {
-  public mcn(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  mcn(mck parammck, QQAppInterface paramQQAppInterface) {}
   
-  public void a(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "video play completion!, move to next position");
-    }
-    boolean bool = VideoFeedsPlayActivity.f(this.a);
-    if (VideoFeedsPlayActivity.f(this.a)) {
-      VideoFeedsPlayActivity.a(this.a).post(new mco(this));
-    }
-    if (VideoFeedsPlayActivity.a(this.a))
+    if (paramBoolean)
     {
-      if (!bool) {
-        VideoFeedsPlayActivity.d(this.a);
-      }
-      VideoFeedsPlayActivity.a(this.a).b(5);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("VALUE_USER_UIN_TO_GET_NICK_NAME", paramString);
+      localBundle.putString("VALUE_USER_NICK_NAME", ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, true));
+      QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_GET_NICK_NAME_BY_UIN", localBundle, null);
     }
-    while ((this.a.a() == VideoFeedsPlayActivity.a(this.a).size() - 1) || (NetworkUtil.b(VideoFeedsPlayActivity.a(this.a).getApplication().getApplicationContext()))) {
-      return;
-    }
-    if (VideoFeedsPlayActivity.a(this.a).a())
-    {
-      VideoFeedsPlayActivity.d(this.a, true);
-      return;
-    }
-    VideoFeedsPlayActivity.a(this.a).postDelayed(new mcp(this, paramVideoPlayParam), 500L);
   }
 }
 

@@ -1,23 +1,29 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.OnVidoeControlListener;
+import com.tencent.qphone.base.util.QLog;
 
-class adri
-  implements Runnable
+public class adri
+  implements View.OnClickListener
 {
-  adri(adrg paramadrg, String paramString) {}
+  public adri(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      this.jdField_a_of_type_Adrg.a.d.setVisibility(0);
-      this.jdField_a_of_type_Adrg.a.d.setText(this.jdField_a_of_type_JavaLangString);
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if (this.a.a == null) {
+      return;
     }
+    if (HotVideoMongoliaRelativeLayout.a(this.a) != null) {
+      HotVideoMongoliaRelativeLayout.a(this.a).b(HotVideoMongoliaRelativeLayout.a(this.a));
+    }
+    QLog.d("HotVideoRelativeLayout", 2, "click round rect send view");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adri
  * JD-Core Version:    0.7.0.1
  */

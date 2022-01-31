@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import ajzv;
-import ajzx;
-import ajzy;
-import ajzz;
-import akaa;
-import akab;
-import akac;
-import akad;
-import akae;
-import akaf;
+import akoc;
+import akoe;
+import akof;
+import akog;
+import akoh;
+import akoi;
+import akoj;
+import akok;
+import akol;
+import akom;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -54,7 +54,7 @@ import oicq.wlogin_sdk.request.Ticket;
 
 public class SwiftBrowserCookieMonster
 {
-  public static volatile akaf a;
+  public static volatile akom a;
   private static final LruCache jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(8);
   public static volatile String a;
   public static final AtomicInteger a;
@@ -221,7 +221,7 @@ public class SwiftBrowserCookieMonster
   
   static void a(List paramList, SwiftPreloadCookieManager paramSwiftPreloadCookieManager)
   {
-    ThreadManager.post(new akaa(paramList, paramSwiftPreloadCookieManager), 5, null, false);
+    ThreadManager.post(new akoh(paramList, paramSwiftPreloadCookieManager), 5, null, false);
   }
   
   public static void a(AppRuntime arg0)
@@ -364,7 +364,7 @@ public class SwiftBrowserCookieMonster
             if (QLog.isColorLevel()) {
               QLog.i("SwiftBrowserCookieMonster", 2, "now preGetPskey and pt4Token: " + TextUtils.join(",", (Object[])localObject2));
             }
-            localTicketManager.GetPskey(str, 16L, (String[])localObject2, new ajzz());
+            localTicketManager.GetPskey(str, 16L, (String[])localObject2, new akog());
             if (QLog.isColorLevel()) {
               QLog.d("SwiftBrowserCookieMonster", 2, "Batch load pt4_token when process preload");
             }
@@ -441,7 +441,7 @@ public class SwiftBrowserCookieMonster
   {
     if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(1, 2))
     {
-      paramAppRuntime = new ajzy(paramAppRuntime);
+      paramAppRuntime = new akof(paramAppRuntime);
       if (Looper.getMainLooper() == Looper.myLooper()) {
         ThreadManager.postImmediately(paramAppRuntime, null, false);
       }
@@ -483,8 +483,8 @@ public class SwiftBrowserCookieMonster
       long l1 = System.currentTimeMillis();
       String str1 = paramAppRuntime.getAccount();
       String str2 = String.format("(%d)%s", new Object[] { Integer.valueOf(134217728), paramString });
-      akad localakad = new akad(paramString, l1);
-      localObject = ((TicketManager)localObject).GetPskey(str1, 16L, new String[] { str2 }, localakad);
+      akok localakok = new akok(paramString, l1);
+      localObject = ((TicketManager)localObject).GetPskey(str1, 16L, new String[] { str2 }, localakok);
       if (localObject == null) {
         break label257;
       }
@@ -516,7 +516,7 @@ public class SwiftBrowserCookieMonster
   
   public static void b(AppRuntime paramAppRuntime, Intent paramIntent)
   {
-    ThreadManager.postImmediately(new akab(paramAppRuntime, paramIntent), new akac(), false);
+    ThreadManager.postImmediately(new akoi(paramAppRuntime, paramIntent), new akoj(), false);
   }
   
   public static boolean b()
@@ -687,14 +687,14 @@ public class SwiftBrowserCookieMonster
     e = "";
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
     jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
-    jdField_a_of_type_Akaf = null;
+    jdField_a_of_type_Akom = null;
     QLog.i("SwiftBrowserCookieMonster", 1, "resetAllKeyAndCache");
   }
   
   static void e()
   {
-    if (jdField_a_of_type_Akaf == null) {
-      ThreadManager.postImmediately(new akae(), null, false);
+    if (jdField_a_of_type_Akom == null) {
+      ThreadManager.postImmediately(new akol(), null, false);
     }
   }
   
@@ -1011,14 +1011,14 @@ public class SwiftBrowserCookieMonster
       }
     }
     Util.a("Web_qqbrowser_check_and_set_cookies");
-    paramString = new ajzv(this, paramAppRuntime, paramIntent);
+    paramString = new akoc(this, paramAppRuntime, paramIntent);
     if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(1, 2))
     {
       CookieSyncManager.createInstance(BaseApplicationImpl.getApplication().getApplicationContext());
       if (QLog.isColorLevel()) {
         QLog.i("SwiftBrowserCookieMonster", 2, "post thread to set all cookies");
       }
-      ThreadManager.postImmediately(paramString, new ajzx(this), false);
+      ThreadManager.postImmediately(paramString, new akoe(this), false);
     }
     return true;
   }
@@ -1561,7 +1561,7 @@ public class SwiftBrowserCookieMonster
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster
  * JD-Core Version:    0.7.0.1
  */

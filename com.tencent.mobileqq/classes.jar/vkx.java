@@ -1,17 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.activity.aio.item.TroopWantGiftItemBuilder;
 
-class vkx
-  implements DialogInterface.OnClickListener
+public class vkx
+  implements View.OnTouchListener
 {
-  vkx(vkw paramvkw) {}
+  public vkx(TroopWantGiftItemBuilder paramTroopWantGiftItemBuilder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
-    AIOImageListScene.j(this.a.a).setResult(8001);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

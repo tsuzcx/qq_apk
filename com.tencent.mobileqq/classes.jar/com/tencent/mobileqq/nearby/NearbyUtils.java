@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import adzw;
+import aenc;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -163,7 +163,7 @@ public final class NearbyUtils
     if (QLog.isColorLevel()) {
       QLog.d("NearbyUtils", 2, "targetUin:" + paramString + "|type:" + paramInt);
     }
-    ThreadManager.post(new adzw(paramString, paramInt, paramQQAppInterface), 8, null, false);
+    ThreadManager.post(new aenc(paramString, paramInt, paramQQAppInterface), 8, null, false);
   }
   
   public static void a(NearbyAppInterface paramNearbyAppInterface, String paramString, int paramInt)

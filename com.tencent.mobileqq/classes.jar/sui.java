@@ -1,32 +1,23 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.app.LebaUtil;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class sui
-  extends GameCenterObserver
+  extends BroadcastReceiver
 {
-  public sui(Leba paramLeba) {}
+  public sui(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
+    if (paramIntent != null)
     {
-      return;
-      if (Leba.b(this.a))
-      {
-        ArrayList localArrayList = new ArrayList();
-        LebaUtil.a(localArrayList, LebaShowListManager.a().a(this.a.a));
-        this.a.a(new suj(this, localArrayList));
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
       }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
-        return;
-        LebaShowListManager.a |= 0x2;
+      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+        this.a.finish();
       }
     }
   }

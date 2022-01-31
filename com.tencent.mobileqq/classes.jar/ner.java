@@ -1,20 +1,38 @@
-import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarJob;
-import com.tencent.biz.qqstory.shareGroup.icon.RestrictedBitmap;
-import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager.LoadBitmapCallBack;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider.DataProviderListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ner
-  extends ShareGroupIconManager.LoadBitmapCallBack
+  implements MsgTabVideoPreloaderDataProvider.DataProviderListener
 {
-  public ner(ShareGroupAvatarJob paramShareGroupAvatarJob) {}
+  public ner(MsgTabStoryVideoPreloader paramMsgTabStoryVideoPreloader) {}
   
-  protected void a(RestrictedBitmap paramRestrictedBitmap)
+  public void a(@Nullable MsgTabNodeInfo paramMsgTabNodeInfo, Error paramError)
   {
-    this.a.a(paramRestrictedBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.e("MsgTabStoryVideoPreloader", 2, "MsgTabVideoPreloaderDataProvider load video info error", paramError);
+    }
+    this.a.b();
   }
   
-  protected void a(Error paramError)
+  public void a(@Nullable MsgTabNodeInfo paramMsgTabNodeInfo, @NonNull List paramList)
   {
-    this.a.a(paramError);
+    if (!paramList.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "start download video list, list = " + paramList.size() + "\n" + paramList);
+      }
+      MsgTabStoryVideoPreloader.a(this.a, paramList);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("MsgTabStoryVideoPreloader", 2, "can not find first unread video");
+    }
+    this.a.b();
   }
 }
 

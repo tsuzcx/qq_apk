@@ -23,11 +23,11 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import rbf;
-import rbg;
-import rbh;
-import rbi;
-import rbj;
+import rdv;
+import rdw;
+import rdx;
+import rdy;
+import rdz;
 
 public class ReporterMachine
 {
@@ -107,7 +107,7 @@ public class ReporterMachine
     }
     if (jdField_a_of_type_MqqOsMqqHandler != null)
     {
-      paramResultObject = new rbh(paramResultObject);
+      paramResultObject = new rdx(paramResultObject);
       jdField_a_of_type_MqqOsMqqHandler.post(paramResultObject);
       return;
     }
@@ -129,27 +129,27 @@ public class ReporterMachine
       localJSONObject.put("rdmuuid", jdField_a_of_type_JavaLangString);
       localJSONObject.put("deviceid", PhoneUtil.a(BaseApplicationImpl.sApplication));
       if ((jdField_a_of_type_Int & 0x1) > 0) {
-        jdField_a_of_type_ComTencentMfsdkReporterIReporter.a(paramResultObject, new rbf());
+        jdField_a_of_type_ComTencentMfsdkReporterIReporter.a(paramResultObject, new rdv());
       }
     } while ((jdField_a_of_type_Int & 0x2) <= 0);
-    b.a(paramResultObject, new rbg());
+    b.a(paramResultObject, new rdw());
   }
   
   public void a()
   {
     if (!jdField_a_of_type_Boolean)
     {
-      rbi localrbi = new rbi(this, null);
-      rbj localrbj = new rbj();
-      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localrbj, 120000L);
-      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localrbi, 300000L);
+      rdy localrdy = new rdy(this, null);
+      rdz localrdz = new rdz();
+      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localrdz, 120000L);
+      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localrdy, 300000L);
       jdField_a_of_type_Boolean = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mfsdk.reporter.ReporterMachine
  * JD-Core Version:    0.7.0.1
  */

@@ -86,7 +86,7 @@ public class AppleEmojiManager
     //   60: astore 10
     //   62: aconst_null
     //   63: astore 8
-    //   65: new 92	java/util/zip/ZipInputStream
+    //   65: new 92	com/tencent/commonsdk/zip/QZipInputStream
     //   68: dup
     //   69: new 94	java/io/BufferedInputStream
     //   72: dup
@@ -95,7 +95,7 @@ public class AppleEmojiManager
     //   77: aload_0
     //   78: invokespecial 99	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   81: invokespecial 102	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   84: invokespecial 103	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   84: invokespecial 103	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
     //   87: astore 6
     //   89: new 105	java/io/BufferedOutputStream
     //   92: dup
@@ -127,7 +127,7 @@ public class AppleEmojiManager
     //   146: aload_0
     //   147: astore 7
     //   149: aload 6
-    //   151: invokevirtual 132	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   151: invokevirtual 132	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
     //   154: astore 10
     //   156: aload 10
     //   158: ifnull +159 -> 317
@@ -193,7 +193,7 @@ public class AppleEmojiManager
     //   274: astore 7
     //   276: aload 6
     //   278: aload_0
-    //   279: invokevirtual 181	java/util/zip/ZipInputStream:read	([B)I
+    //   279: invokevirtual 181	com/tencent/commonsdk/zip/QZipInputStream:read	([B)I
     //   282: istore_2
     //   283: iload_2
     //   284: iconst_m1
@@ -382,7 +382,7 @@ public class AppleEmojiManager
     //   657: aload_0
     //   658: ifnull +7 -> 665
     //   661: aload_0
-    //   662: invokevirtual 248	java/util/zip/ZipInputStream:close	()V
+    //   662: invokevirtual 248	com/tencent/commonsdk/zip/QZipInputStream:close	()V
     //   665: aload 7
     //   667: ifnull +8 -> 675
     //   670: aload 7
@@ -543,7 +543,7 @@ public class AppleEmojiManager
     //   957: aload 6
     //   959: ifnull +8 -> 967
     //   962: aload 6
-    //   964: invokevirtual 248	java/util/zip/ZipInputStream:close	()V
+    //   964: invokevirtual 248	com/tencent/commonsdk/zip/QZipInputStream:close	()V
     //   967: aload_0
     //   968: ifnull +7 -> 975
     //   971: aload_0
@@ -683,7 +683,7 @@ public class AppleEmojiManager
     //   1264: aload 6
     //   1266: ifnull +8 -> 1274
     //   1269: aload 6
-    //   1271: invokevirtual 248	java/util/zip/ZipInputStream:close	()V
+    //   1271: invokevirtual 248	com/tencent/commonsdk/zip/QZipInputStream:close	()V
     //   1274: aload_0
     //   1275: ifnull +7 -> 1282
     //   1278: aload_0
@@ -724,7 +724,7 @@ public class AppleEmojiManager
     //   1349: aload 6
     //   1351: ifnull +8 -> 1359
     //   1354: aload 6
-    //   1356: invokevirtual 248	java/util/zip/ZipInputStream:close	()V
+    //   1356: invokevirtual 248	com/tencent/commonsdk/zip/QZipInputStream:close	()V
     //   1359: aload 7
     //   1361: ifnull +8 -> 1369
     //   1364: aload 7
@@ -1090,7 +1090,7 @@ public class AppleEmojiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.text.AppleEmojiManager
  * JD-Core Version:    0.7.0.1
  */

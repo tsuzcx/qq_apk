@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
+import aabx;
 import android.content.Context;
 import android.opengl.Matrix;
 import android.text.TextUtils;
@@ -11,7 +12,6 @@ import com.tencent.mobileqq.armap.sensor.ARSensorManager;
 import com.tencent.mobileqq.armap.sensor.SimpleSensorChangeListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.locks.ReentrantLock;
-import zxe;
 
 public class SensorTrackManager
 {
@@ -19,7 +19,7 @@ public class SensorTrackManager
   private Context jdField_a_of_type_AndroidContentContext;
   private SensorTrackManager.ARSensorTrackCallback jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager$ARSensorTrackCallback;
   private ARSensorManager jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager;
-  private SimpleSensorChangeListener jdField_a_of_type_ComTencentMobileqqArmapSensorSimpleSensorChangeListener = new zxe(this);
+  private SimpleSensorChangeListener jdField_a_of_type_ComTencentMobileqqArmapSensorSimpleSensorChangeListener = new aabx(this);
   private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
   private boolean jdField_a_of_type_Boolean;
   private float[] b = new float[16];

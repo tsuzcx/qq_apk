@@ -1,27 +1,21 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.RequestPublicAccountObserver;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.MessageRoamManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class sav
-  extends TroopBindPubAccountProtocol.RequestPublicAccountObserver
+class sav
+  implements Runnable
 {
-  public sav(ChatSettingForTroop paramChatSettingForTroop) {}
+  sav(sau paramsau) {}
   
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  public void run()
   {
-    if (paramBoolean)
+    if (this.a.a.b)
     {
-      Message localMessage = Message.obtain();
-      localMessage.what = 17;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("uinname", paramAccountDetail.name);
-      localBundle.putString("extra_type", paramAccountDetail.summary);
-      localBundle.putLong("uin", paramLong);
-      localMessage.setData(localBundle);
-      this.a.a.sendMessage(localMessage);
+      this.a.a.b = false;
+      MessageRoamManager localMessageRoamManager = (MessageRoamManager)this.a.a.app.getManager(91);
+      if (localMessageRoamManager != null) {
+        localMessageRoamManager.d();
+      }
     }
   }
 }

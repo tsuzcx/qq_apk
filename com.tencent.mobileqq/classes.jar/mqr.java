@@ -1,16 +1,25 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import com.tencent.image.URLDrawableHandler;
 
 public class mqr
-  implements Runnable
+  implements URLDrawableHandler
 {
-  public mqr(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public mqr(RunningJob paramRunningJob) {}
   
-  public void run()
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
+    return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

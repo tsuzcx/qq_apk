@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class addl
-  implements Runnable
+class addl
+  implements FMDialogUtil.FMDialogInterface
 {
-  public addl(NearbyHybridFragment paramNearbyHybridFragment) {}
+  addl(addk paramaddk) {}
   
-  public void run()
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyHybridFragment.webloading", 2, "startWebSoRequest, url=" + this.a.c);
-    }
-    WebSoService.a().a(this.a.c, null);
+    this.a.a.r();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     addl
  * JD-Core Version:    0.7.0.1
  */

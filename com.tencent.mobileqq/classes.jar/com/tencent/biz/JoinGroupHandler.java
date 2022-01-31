@@ -10,8 +10,8 @@ import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToastNotifier;
-import kjj;
-import kjk;
+import kiu;
+import kiv;
 
 public class JoinGroupHandler
 {
@@ -26,7 +26,7 @@ public class JoinGroupHandler
   
   public JoinGroupHandler(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString, JoinGroupHandler.IJoinGroupCB paramIJoinGroupCB)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new kjk(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new kiv(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Int = paramInt;
@@ -48,7 +48,7 @@ public class JoinGroupHandler
       this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.b();
       return;
     }
-    a(2131434414, 1);
+    a(2131434431, 1);
     this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
   }
   
@@ -64,7 +64,7 @@ public class JoinGroupHandler
     catch (Exception localException)
     {
       localException.printStackTrace();
-      a(2131433159, 0);
+      a(2131433176, 0);
       this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
     }
   }
@@ -76,9 +76,9 @@ public class JoinGroupHandler
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435053);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435070);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new kjj(this));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new kiu(this));
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       return;
@@ -113,7 +113,7 @@ public class JoinGroupHandler
   {
     if (!NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext))
     {
-      a(2131433196, 0);
+      a(2131433213, 0);
       this.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
       return;
     }

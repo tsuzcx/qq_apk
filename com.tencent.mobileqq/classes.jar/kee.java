@@ -1,32 +1,19 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.camera.CameraObserver;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.ui.redbag.AVRedBag;
 import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.av.ui.redbag.ResultData;
 
 public class kee
-  extends CameraObserver
+  implements Runnable
 {
-  public kee(AVRedBag paramAVRedBag) {}
+  public kee(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
   
-  protected void a(boolean paramBoolean)
+  public void run()
   {
-    d();
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    d();
-  }
-  
-  void d()
-  {
-    AVRedBagMgr localAVRedBagMgr = this.a.a();
-    if ((localAVRedBagMgr != null) && (localAVRedBagMgr.a())) {
-      ((AVRedPacketManager)this.a.a.a(6)).c(this.a.a.a().a().f);
-    }
+    ResultData localResultData = new ResultData(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a, this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a().getCurrentAccountUin(), this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a());
+    localResultData.c = this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a;
+    localResultData.d = this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.b;
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a(), localResultData, null);
   }
 }
 

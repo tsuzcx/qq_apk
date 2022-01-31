@@ -1,18 +1,35 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.av.ui.BeautySettingUi;
-import com.tencent.av.widget.BidirectionSeekBar;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class jrc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Handler.Callback
 {
-  public jrc(BeautySettingUi paramBeautySettingUi) {}
+  public jrc(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
-  public void onGlobalLayout()
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((this.a.b) && (this.a.a != null) && (this.a.a.getWidth() > 0))
+    switch (paramMessage.what)
     {
-      this.a.b = false;
-      this.a.a(this.a.a.getProgress());
+    }
+    for (;;)
+    {
+      return false;
+      if (!CallbackWaitingActivityExt.a(this.a))
+      {
+        CallbackWaitingActivityExt.a(this.a).a().f = true;
+        paramMessage = CallbackWaitingActivityExt.a(this.a).getApp();
+        Intent localIntent = new Intent(paramMessage, PSTNC2CActivity.class);
+        localIntent.setFlags(268566528);
+        paramMessage.startActivity(localIntent);
+        continue;
+        CallbackWaitingActivityExt.b(this.a);
+        this.a.a();
+      }
     }
   }
 }

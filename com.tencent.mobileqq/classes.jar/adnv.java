@@ -1,54 +1,57 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.troop.TroopManageProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.smtt.sdk.CookieSyncManager;
+import java.util.Map;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adnv
-  implements TroopMemberApiClient.Callback
+  implements WtTicketPromise
 {
-  public adnv(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public adnv(NowLiveFragment paramNowLiveFragment) {}
   
-  public void a(Bundle paramBundle)
+  public void Done(Ticket paramTicket)
   {
-    int i = 12;
-    if (paramBundle != null)
+    if (paramTicket != null)
     {
-      if (paramBundle.getBoolean("isSuccess"))
-      {
-        paramBundle = new Intent();
-        paramBundle.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a() != null) {
-          i = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin, (byte)12);
-        }
-        TroopManageProxyActivity.a("troop_manage_plugin.apk", "管理群", TroopManageProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), paramBundle, TroopManageProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().getAccount(), i);
+      if (QLog.isColorLevel()) {
+        QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService : Done");
       }
+      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
+      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
+      CookieSyncManager.getInstance().sync();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
+      NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
     }
-    else {
-      return;
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new adnw(this));
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
     }
-    paramBundle = new JSONObject();
-    try
-    {
-      paramBundle.put("gc", this.jdField_a_of_type_JavaLangString);
-      paramBundle.put("ret", 1);
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.m, new String[] { paramBundle.toString() });
-      return;
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new adnx(this));
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
     }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new adny(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnv
  * JD-Core Version:    0.7.0.1
  */

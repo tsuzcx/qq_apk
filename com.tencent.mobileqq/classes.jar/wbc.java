@@ -1,14 +1,18 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class wbc
+  implements DialogInterface.OnClickListener
 {
-  public ProgressBar a;
-  public RelativeLayout a;
-  public BubbleImageView a;
-  public WeakReference a;
+  public wbc(TroopChatPie paramTroopChatPie, ChatMessage paramChatMessage) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

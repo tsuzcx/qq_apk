@@ -1,21 +1,37 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.component.media.image.ImageManager;
+import java.io.File;
+import java.util.Comparator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class pgs
-  implements Animation.AnimationListener
+  implements Comparator
 {
-  public pgs(Runnable paramRunnable) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (this.a != null) {
-      this.a.run();
+    String str = paramFile1.getName();
+    Integer localInteger2 = (Integer)ImageManager.b().get(str);
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null)
+    {
+      localInteger1 = Integer.valueOf((int)(paramFile1.lastModified() / 1000L));
+      ImageManager.b().put(str, localInteger1);
     }
+    str = paramFile2.getName();
+    localInteger2 = (Integer)ImageManager.b().get(str);
+    paramFile1 = localInteger2;
+    if (localInteger2 == null)
+    {
+      paramFile1 = Integer.valueOf((int)(paramFile2.lastModified() / 1000L));
+      ImageManager.b().put(str, paramFile1);
+    }
+    if (localInteger1.intValue() > paramFile1.intValue()) {
+      return -1;
+    }
+    if (localInteger1.intValue() < paramFile1.intValue()) {
+      return 1;
+    }
+    return 0;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

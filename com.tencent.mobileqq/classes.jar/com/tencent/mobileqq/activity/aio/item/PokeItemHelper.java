@@ -60,11 +60,11 @@ import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import uzx;
-import uzy;
-import vaa;
-import vab;
-import vac;
+import vcz;
+import vda;
+import vdc;
+import vdd;
+import vde;
 
 public class PokeItemHelper
 {
@@ -94,7 +94,7 @@ public class PokeItemHelper
   public static android.graphics.Bitmap[] d;
   public static int e;
   public static final String e;
-  private static boolean e;
+  public static volatile boolean e;
   public static int f;
   public static final String f;
   private static boolean f;
@@ -109,14 +109,15 @@ public class PokeItemHelper
   private static boolean i;
   public static int j;
   public static String j;
+  private static boolean j;
   public static int k;
   private static String k;
   public static int l;
   private static String l;
   public static int m;
   private static String m;
-  private static int jdField_n_of_type_Int;
-  private static String jdField_n_of_type_JavaLangString;
+  public static int n;
+  private static String n;
   private static int jdField_o_of_type_Int;
   private static String jdField_o_of_type_JavaLangString;
   private static int jdField_p_of_type_Int;
@@ -125,11 +126,12 @@ public class PokeItemHelper
   private static int r;
   private static int s;
   private static int t;
+  private static int u;
   
   static
   {
     jdField_a_of_type_JavaLangString = "PokeItemHelper";
-    jdField_n_of_type_Int = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().densityDpi;
+    jdField_o_of_type_Int = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().densityDpi;
     jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory().getAbsolutePath();
     jdField_c_of_type_JavaLangString = jdField_b_of_type_JavaLangString + "/Tencent/MobileQQ/";
     jdField_d_of_type_JavaLangString = jdField_c_of_type_JavaLangString;
@@ -139,20 +141,21 @@ public class PokeItemHelper
     jdField_b_of_type_JavaUtilVector = new Vector();
     jdField_c_of_type_JavaUtilVector = new Vector();
     jdField_d_of_type_JavaUtilVector = new Vector();
+    jdField_a_of_type_Int = -1;
     jdField_l_of_type_JavaLangString = "";
     jdField_m_of_type_JavaLangString = "";
     jdField_n_of_type_JavaLangString = "";
     jdField_o_of_type_JavaLangString = "";
     jdField_p_of_type_JavaLangString = "";
-    jdField_a_of_type_Int = -1;
     jdField_b_of_type_Int = -1;
-    jdField_c_of_type_Int = 10;
-    jdField_d_of_type_Int = 60;
-    jdField_e_of_type_Int = -1;
+    jdField_c_of_type_Int = -1;
+    jdField_d_of_type_Int = 10;
+    jdField_e_of_type_Int = 60;
     jdField_f_of_type_Int = -1;
-    jdField_g_of_type_Int = 10;
-    jdField_h_of_type_Int = 60;
-    jdField_l_of_type_Int = 50;
+    jdField_g_of_type_Int = -1;
+    jdField_h_of_type_Int = 10;
+    jdField_i_of_type_Int = 60;
+    jdField_m_of_type_Int = 50;
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "chuo_icon", "bixin_icon", "zan_icon", "xinsui_icon", "666_icon", "dazhao_icon", "chuo_motion", "bixin_motion", "zan_motion", "xinsui_motion", "666_motion", "dazhao_motion" };
     jdField_a_of_type_ArrayOfInt = new int[] { 22, 22, 22, 22, 22, 22, 35, 99, 25, 60, 0, 0 };
     jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new android.graphics.Bitmap[6];
@@ -170,25 +173,25 @@ public class PokeItemHelper
   public static int a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     String str = paramQQAppInterface.getAccount();
-    if ((!jdField_g_of_type_Boolean) || (!jdField_n_of_type_JavaLangString.equals(str)))
+    if ((!jdField_h_of_type_Boolean) || (!jdField_n_of_type_JavaLangString.equals(str)))
     {
       paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
       if (paramQQAppInterface.contains(str + "_" + "poke_bar_config_version"))
       {
-        jdField_o_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_unique_poke_show", 0);
-        jdField_p_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_unique_poke_type", 0);
+        jdField_p_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_unique_poke_show", 0);
+        q = paramQQAppInterface.getInt(str + "_" + "aio_unique_poke_type", 0);
       }
       jdField_n_of_type_JavaLangString = str;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("pokeMsg", 2, String.format("uniquepoke show %d type %d", new Object[] { Integer.valueOf(jdField_o_of_type_Int), Integer.valueOf(jdField_p_of_type_Int) }));
+      QLog.d("pokeMsg", 2, String.format("uniquepoke show %d type %d", new Object[] { Integer.valueOf(jdField_p_of_type_Int), Integer.valueOf(q) }));
     }
-    jdField_e_of_type_Boolean = true;
+    jdField_f_of_type_Boolean = true;
     if (paramInt == 1) {
-      return jdField_o_of_type_Int;
+      return jdField_p_of_type_Int;
     }
     if (paramInt == 2) {
-      return jdField_p_of_type_Int;
+      return q;
     }
     return -1;
   }
@@ -226,8 +229,8 @@ public class PokeItemHelper
   
   public static Drawable a(int paramInt, boolean paramBoolean, Resources paramResources)
   {
-    int i3 = 2130842164;
-    int i4 = 2130842163;
+    int i3 = 2130842201;
+    int i4 = 2130842200;
     if ((paramInt < 0) || (paramInt > 6)) {
       paramInt = 1;
     }
@@ -266,25 +269,25 @@ public class PokeItemHelper
               break;
             }
             return BitmapUtil.a(paramResources, jdField_c_of_type_ArrayOfAndroidGraphicsBitmap[i2], jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i2]);
-            paramInt = 2130842145;
-            i1 = 2130842146;
+            paramInt = 2130842182;
+            i1 = 2130842183;
             continue;
-            paramInt = 2130842133;
-            i1 = 2130842134;
+            paramInt = 2130842170;
+            i1 = 2130842171;
             continue;
-            paramInt = 2130842149;
-            i1 = 2130842150;
+            paramInt = 2130842186;
+            i1 = 2130842187;
             continue;
-            paramInt = 2130842147;
-            i1 = 2130842148;
+            paramInt = 2130842184;
+            i1 = 2130842185;
           }
         }
         if (paramBoolean)
         {
-          a(jdField_c_of_type_ArrayOfAndroidGraphicsBitmap, jdField_a_of_type_ArrayOfAndroidGraphicsBitmap, i2 - 1, paramResources, 2130842153, 2130842154);
+          a(jdField_c_of_type_ArrayOfAndroidGraphicsBitmap, jdField_a_of_type_ArrayOfAndroidGraphicsBitmap, i2 - 1, paramResources, 2130842190, 2130842191);
           return BitmapUtil.a(paramResources, jdField_c_of_type_ArrayOfAndroidGraphicsBitmap[(i2 - 1)], jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[(i2 - 1)]);
         }
-        a(jdField_d_of_type_ArrayOfAndroidGraphicsBitmap, jdField_b_of_type_ArrayOfAndroidGraphicsBitmap, i2 - 1, paramResources, 2130842151, 2130842152);
+        a(jdField_d_of_type_ArrayOfAndroidGraphicsBitmap, jdField_b_of_type_ArrayOfAndroidGraphicsBitmap, i2 - 1, paramResources, 2130842188, 2130842189);
         return BitmapUtil.a(paramResources, jdField_d_of_type_ArrayOfAndroidGraphicsBitmap[(i2 - 1)], jdField_b_of_type_ArrayOfAndroidGraphicsBitmap[(i2 - 1)]);
         return BitmapUtil.a(paramResources, jdField_d_of_type_ArrayOfAndroidGraphicsBitmap[i2], jdField_b_of_type_ArrayOfAndroidGraphicsBitmap[i2]);
       }
@@ -304,7 +307,7 @@ public class PokeItemHelper
         Log.d("test", "convertBmp w=" + paramBitmap.getWidth());
       }
       paramBitmap = new BitmapDrawable(paramBitmap);
-      ((BitmapDrawable)paramBitmap).setTargetDensity(jdField_n_of_type_Int);
+      ((BitmapDrawable)paramBitmap).setTargetDensity(jdField_o_of_type_Int);
       return paramBitmap;
     }
     catch (OutOfMemoryError paramBitmap)
@@ -329,7 +332,7 @@ public class PokeItemHelper
     if (paramQQAppInterface != null)
     {
       String str = paramQQAppInterface.getAccount();
-      if ((!jdField_f_of_type_Boolean) || (!jdField_m_of_type_JavaLangString.equals(str)))
+      if ((!jdField_g_of_type_Boolean) || (!jdField_m_of_type_JavaLangString.equals(str)))
       {
         paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
         if (paramQQAppInterface.contains(str + "_" + "poke_bar_config_version"))
@@ -345,7 +348,7 @@ public class PokeItemHelper
     if (QLog.isColorLevel()) {
       QLog.d("pokeMsg", 2, "PokePanelPlaceInfo:" + jdField_k_of_type_JavaLangString);
     }
-    jdField_f_of_type_Boolean = true;
+    jdField_g_of_type_Boolean = true;
     return jdField_k_of_type_JavaLangString;
   }
   
@@ -419,7 +422,7 @@ public class PokeItemHelper
             if (!a(str))
             {
               if (QLog.isColorLevel()) {
-                QLog.d(jdField_a_of_type_JavaLangString, 2, "curr ver: 7.6.0, config qqVer:" + str);
+                QLog.d(jdField_a_of_type_JavaLangString, 2, "curr ver: 7.6.3, config qqVer:" + str);
               }
             }
             else if ((i3 == 1) && (i4 == 1))
@@ -439,8 +442,8 @@ public class PokeItemHelper
                 ((VasQuickUpdateManager)localObject3).a(paramCallBacker);
               }
               localObject4 = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130844062);
-              ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130844062);
+              ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130844186);
+              ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130844186);
               ((URLDrawable.URLDrawableOptions)localObject4).mPlayGifImage = true;
               ((URLDrawable.URLDrawableOptions)localObject4).mGifRoundCorner = 0.0F;
               ((PokePanel.PokeData)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawable.getDrawable(new File(jdField_e_of_type_JavaLangString + ((PokePanel.PokeData)localObject2).jdField_b_of_type_Int + "/" + "effect.gif"), (URLDrawable.URLDrawableOptions)localObject4);
@@ -493,24 +496,24 @@ public class PokeItemHelper
   
   public static void a(int paramInt)
   {
-    jdField_h_of_type_Boolean = true;
-    q = paramInt;
+    jdField_i_of_type_Boolean = true;
+    r = paramInt;
   }
   
   public static void a(int paramInt1, int paramInt2)
   {
-    jdField_g_of_type_Boolean = true;
-    jdField_o_of_type_Int = paramInt1;
-    jdField_p_of_type_Int = paramInt2;
+    jdField_h_of_type_Boolean = true;
+    jdField_p_of_type_Int = paramInt1;
+    q = paramInt2;
   }
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    jdField_e_of_type_Boolean = true;
-    jdField_a_of_type_Int = paramInt1;
-    jdField_b_of_type_Int = paramInt2;
-    jdField_c_of_type_Int = paramInt3;
-    jdField_d_of_type_Int = paramInt4;
+    jdField_f_of_type_Boolean = true;
+    jdField_b_of_type_Int = paramInt1;
+    jdField_c_of_type_Int = paramInt2;
+    jdField_d_of_type_Int = paramInt3;
+    jdField_e_of_type_Int = paramInt4;
   }
   
   public static void a(ImageView paramImageView, int paramInt1, int paramInt2)
@@ -519,8 +522,8 @@ public class PokeItemHelper
     {
       File localFile = new File(jdField_e_of_type_JavaLangString + paramInt2 + "/pressed.png");
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130844062);
-      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130844062);
+      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130844186);
+      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130844186);
       paramImageView.setImageDrawable(URLDrawable.getDrawable(localFile, localURLDrawableOptions));
       return;
     }
@@ -533,39 +536,42 @@ public class PokeItemHelper
     if (paramQQAppInterface != null)
     {
       str = paramQQAppInterface.getAccount();
-      if ((!jdField_e_of_type_Boolean) || (!jdField_l_of_type_JavaLangString.equals(str)))
+      if ((!jdField_f_of_type_Boolean) || (!jdField_l_of_type_JavaLangString.equals(str)))
       {
         paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
         if (!paramQQAppInterface.contains(str + "_" + "poke_bar_config_version")) {
-          break label572;
+          break label607;
         }
-        jdField_a_of_type_Int = paramQQAppInterface.getInt(str + "_" + "poke_bar_switch", jdField_e_of_type_Int);
-        jdField_b_of_type_Int = paramQQAppInterface.getInt(str + "_" + "poke_pad_switch", jdField_f_of_type_Int);
-        jdField_d_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_poke_unittime", jdField_h_of_type_Int);
-        jdField_c_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_poke_unitcount", jdField_g_of_type_Int);
-        jdField_i_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_poke_entry_type", 0);
-        jdField_j_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_pe_view_type", 0);
+        jdField_b_of_type_Int = paramQQAppInterface.getInt(str + "_" + "poke_bar_switch", jdField_f_of_type_Int);
+        jdField_c_of_type_Int = paramQQAppInterface.getInt(str + "_" + "poke_pad_switch", jdField_g_of_type_Int);
+        jdField_e_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_poke_unittime", jdField_i_of_type_Int);
+        jdField_d_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_poke_unitcount", jdField_h_of_type_Int);
+        jdField_j_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_poke_entry_type", 0);
+        jdField_k_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_pe_view_type", 0);
         jdField_g_of_type_JavaLangString = paramQQAppInterface.getString(str + "_" + "poke_emo_res_url", "");
         jdField_h_of_type_JavaLangString = paramQQAppInterface.getString(str + "_" + "poke_emo_res_md5", "");
         jdField_i_of_type_JavaLangString = paramQQAppInterface.getString(str + "_" + "poke_emo_surprice_indexs", "");
         jdField_j_of_type_JavaLangString = paramQQAppInterface.getString(str + "_" + "poke_emo_order", "");
-        jdField_k_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_pe_input_switch", 0);
+        jdField_l_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_pe_input_switch", 0);
+        jdField_m_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_pe_bubble_limit_count", 50);
+        jdField_a_of_type_Int = paramQQAppInterface.getInt(str + "_" + "pe_last_tab_index", -1);
       }
     }
-    for (jdField_l_of_type_Int = paramQQAppInterface.getInt(str + "_" + "aio_pe_bubble_limit_count", 50);; jdField_l_of_type_Int = 50)
+    for (;;)
     {
       jdField_l_of_type_JavaLangString = str;
-      jdField_e_of_type_Boolean = true;
+      jdField_f_of_type_Boolean = true;
       if (QLog.isColorLevel()) {
-        QLog.d("pokeMsg", 2, String.format("getPokeSwitch, first init, bar switch: %d, pad switch: %d, uin: %s ,limited count:%d,limited time:%d", new Object[] { Integer.valueOf(jdField_a_of_type_Int), Integer.valueOf(jdField_b_of_type_Int), jdField_l_of_type_JavaLangString, Integer.valueOf(jdField_c_of_type_Int), Integer.valueOf(jdField_d_of_type_Int) }));
+        QLog.d("pokeMsg", 2, String.format("getPokeSwitch, first init, bar switch: %d, pad switch: %d, uin: %s ,limited count:%d,limited time:%d", new Object[] { Integer.valueOf(jdField_b_of_type_Int), Integer.valueOf(jdField_c_of_type_Int), jdField_l_of_type_JavaLangString, Integer.valueOf(jdField_d_of_type_Int), Integer.valueOf(jdField_e_of_type_Int) }));
       }
       return;
-      label572:
-      jdField_a_of_type_Int = jdField_e_of_type_Int;
+      label607:
       jdField_b_of_type_Int = jdField_f_of_type_Int;
-      jdField_i_of_type_Int = 0;
+      jdField_c_of_type_Int = jdField_g_of_type_Int;
       jdField_j_of_type_Int = 0;
       jdField_k_of_type_Int = 0;
+      jdField_l_of_type_Int = 0;
+      jdField_m_of_type_Int = 50;
     }
   }
   
@@ -576,22 +582,22 @@ public class PokeItemHelper
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, int paramInt3, int paramInt4)
   {
-    jdField_i_of_type_Int = paramInt1;
-    jdField_j_of_type_Int = paramInt4;
+    jdField_j_of_type_Int = paramInt1;
+    jdField_k_of_type_Int = paramInt4;
     jdField_g_of_type_JavaLangString = paramString1;
     jdField_h_of_type_JavaLangString = paramString2;
     jdField_i_of_type_JavaLangString = paramString3;
     jdField_j_of_type_JavaLangString = paramString4;
-    jdField_k_of_type_Int = paramInt2;
-    jdField_l_of_type_Int = paramInt3;
+    jdField_l_of_type_Int = paramInt2;
+    jdField_m_of_type_Int = paramInt3;
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setPokeEmoPanelConfig|entryType: " + jdField_i_of_type_Int + ",peSurpriseIndexs: " + jdField_i_of_type_JavaLangString + ",peOders: " + paramString4);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "setPokeEmoPanelConfig|entryType: " + jdField_j_of_type_Int + ",peSurpriseIndexs: " + jdField_i_of_type_JavaLangString + ",peOders: " + paramString4);
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    paramQQAppInterface = new vaa(paramQQAppInterface, paramInt2, paramActivity, paramInt1);
+    paramQQAppInterface = new vdc(paramQQAppInterface, paramInt2, paramActivity, paramInt1);
     paramQQAppInterface = DialogUtil.a(paramActivity, 0, "温馨提示", paramString1, "取消", paramString2, paramQQAppInterface, paramQQAppInterface);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.show();
@@ -601,13 +607,13 @@ public class PokeItemHelper
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, @NonNull DiniFlyAnimationView paramDiniFlyAnimationView, @Nullable GivingHeartItemBuilder.Holder paramHolder, int paramInt, String paramString)
   {
     if (a()) {
-      ThreadManager.postImmediately(new uzx(paramInt), null, true);
+      ThreadManager.postImmediately(new vcz(paramInt), null, true);
     }
     paramQQAppInterface = jdField_e_of_type_JavaLangString + paramInt + "/" + paramString + "/";
     paramQQAppInterface = new File(paramQQAppInterface + paramString + ".json");
     try
     {
-      paramDiniFlyAnimationView = new uzy(paramDiniFlyAnimationView, paramHolder, paramString);
+      paramDiniFlyAnimationView = new vda(paramDiniFlyAnimationView, paramHolder, paramString);
       paramHolder = new Bundle();
       paramHolder.putString("key", "lottie_vaspoke_" + String.valueOf(paramInt) + paramString);
       paramHolder.putString("path", jdField_e_of_type_JavaLangString + paramInt + "/" + paramString + "/images/");
@@ -642,7 +648,7 @@ public class PokeItemHelper
       } while (!QLog.isColorLevel());
       QLog.d("PokeEmo", 2, "other request is downloading ");
       return;
-      if (jdField_m_of_type_Int <= 15) {
+      if (jdField_n_of_type_Int <= 15) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -650,7 +656,7 @@ public class PokeItemHelper
     return;
     jdField_c_of_type_Boolean = true;
     String str = paramString3 + "pe.zip";
-    paramString2 = new vac(paramString3, paramString2);
+    paramString2 = new vde(paramString3, paramString2);
     paramQQAppInterface = paramQQAppInterface.getNetEngine(0);
     paramString3 = new HttpNetReq();
     paramString3.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = paramString2;
@@ -663,27 +669,34 @@ public class PokeItemHelper
   
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (((paramBoolean == true) && (s != 2)) || ((!paramBoolean) && (s != 1)))
+    if (((paramBoolean == true) && (t != 2)) || ((!paramBoolean) && (t != 1)))
     {
       paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
       if (paramQQAppInterface != null) {
         paramQQAppInterface.edit().putBoolean("sp_aio_panel_unique_clicked", true).commit();
       }
       if (paramBoolean) {
-        s = 2;
+        t = 2;
       }
     }
     else
     {
       return;
     }
-    s = 1;
+    t = 1;
   }
   
   public static void a(String paramString)
   {
-    jdField_f_of_type_Boolean = true;
+    jdField_g_of_type_Boolean = true;
     jdField_k_of_type_JavaLangString = paramString;
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit();
+    localEditor.putInt(paramString + "_" + "pe_last_tab_index", paramInt);
+    localEditor.apply();
   }
   
   private static void a(String paramString1, String paramString2)
@@ -707,12 +720,16 @@ public class PokeItemHelper
       {
         if (jdField_a_of_type_ArrayOfJavaLangString[i1].equals(paramString2))
         {
-          File localFile = new File(paramString1 + paramString2);
-          if ((localFile.isDirectory()) && (localFile.list().length == jdField_a_of_type_ArrayOfInt[i1]))
+          Object localObject = new File(paramString1 + paramString2);
+          if (((File)localObject).isDirectory())
           {
-            jdField_a_of_type_JavaUtilBitSet.set(i1, true);
-            if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "[res checked]" + paramString2);
+            localObject = ((File)localObject).list();
+            if ((localObject != null) && (localObject.length == jdField_a_of_type_ArrayOfInt[i1]))
+            {
+              jdField_a_of_type_JavaUtilBitSet.set(i1, true);
+              if (QLog.isColorLevel()) {
+                QLog.d(jdField_a_of_type_JavaLangString, 2, "[res checked]" + paramString2);
+              }
             }
           }
         }
@@ -830,15 +847,15 @@ public class PokeItemHelper
   
   public static boolean a(SharedPreferences paramSharedPreferences)
   {
-    if (s == 0) {
+    if (t == 0) {
       if (paramSharedPreferences.getBoolean("sp_aio_panel_unique_clicked", false)) {
-        s = 1;
+        t = 1;
       }
     }
-    while ((s == 1) || (s != 2))
+    while ((t == 1) || (t != 2))
     {
       return false;
-      s = 2;
+      t = 2;
       return true;
     }
     return true;
@@ -896,10 +913,10 @@ public class PokeItemHelper
   
   public static boolean a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || ("7.6.0".compareTo(paramString.substring(0, "7.6.0".length())) < 0))
+    if ((TextUtils.isEmpty(paramString)) || ("7.6.3".compareTo(paramString.substring(0, "7.6.3".length())) < 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "curr ver: 7.6.0, config qqVer:" + paramString);
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "curr ver: 7.6.3, config qqVer:" + paramString);
       }
       return false;
     }
@@ -928,21 +945,21 @@ public class PokeItemHelper
     default: 
       return -1;
     case 1: 
-      return jdField_a_of_type_Int;
-    case 0: 
       return jdField_b_of_type_Int;
-    case 2: 
+    case 0: 
       return jdField_c_of_type_Int;
-    case 3: 
+    case 2: 
       return jdField_d_of_type_Int;
+    case 3: 
+      return jdField_e_of_type_Int;
     case 4: 
-      return jdField_i_of_type_Int;
-    case 11: 
       return jdField_j_of_type_Int;
-    case 9: 
+    case 11: 
       return jdField_k_of_type_Int;
+    case 9: 
+      return jdField_l_of_type_Int;
     }
-    return jdField_l_of_type_Int;
+    return jdField_m_of_type_Int;
   }
   
   public static int b(String paramString)
@@ -977,27 +994,27 @@ public class PokeItemHelper
   
   public static void b(int paramInt)
   {
-    jdField_i_of_type_Boolean = true;
-    r = paramInt;
+    jdField_j_of_type_Boolean = true;
+    s = paramInt;
   }
   
   public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (((paramBoolean == true) && (t != 2)) || ((!paramBoolean) && (t != 1)))
+    if (((paramBoolean == true) && (u != 2)) || ((!paramBoolean) && (u != 1)))
     {
       paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
       if (paramQQAppInterface != null) {
         paramQQAppInterface.edit().putBoolean("sp_aio_panel_poke_clicked", true).commit();
       }
       if (paramBoolean) {
-        t = 2;
+        u = 2;
       }
     }
     else
     {
       return;
     }
-    t = 1;
+    u = 1;
   }
   
   public static void b(String paramString)
@@ -1039,7 +1056,7 @@ public class PokeItemHelper
       if ((jdField_b_of_type_Boolean) && (!PEPanelHelper.jdField_b_of_type_Boolean))
       {
         PEPanelHelper.jdField_b_of_type_Boolean = true;
-        ThreadManager.executeOnSubThread(new vab());
+        ThreadManager.executeOnSubThread(new vdd());
       }
       return bool;
       if (!jdField_d_of_type_Boolean)
@@ -1065,7 +1082,19 @@ public class PokeItemHelper
           bool = false;
         }
       }
-      else {
+      else
+      {
+        if (!jdField_e_of_type_Boolean)
+        {
+          jdField_e_of_type_Boolean = true;
+          if (!new File(PEPanelHelper.jdField_a_of_type_JavaLangString).exists())
+          {
+            jdField_b_of_type_Boolean = false;
+            SharedPreUtils.a(false);
+          }
+          bool = false;
+          continue;
+        }
         jdField_b_of_type_Boolean = true;
       }
       bool = false;
@@ -1085,20 +1114,20 @@ public class PokeItemHelper
   
   public static boolean b(SharedPreferences paramSharedPreferences)
   {
-    if (t == 0) {
+    if (u == 0) {
       if (paramSharedPreferences.getBoolean("sp_aio_panel_poke_clicked", false)) {
-        t = 2;
+        u = 2;
       }
     }
     do
     {
       return true;
-      t = 1;
+      u = 1;
       return false;
-      if (t == 1) {
+      if (u == 1) {
         return false;
       }
-    } while (t == 2);
+    } while (u == 2);
     return false;
   }
   
@@ -1108,7 +1137,7 @@ public class PokeItemHelper
     while ((b(paramQQAppInterface, 4) == 0) && (b(paramQQAppInterface, 11) == 1)) {
       return false;
     }
-    return true;
+    return jdField_b_of_type_Boolean;
   }
   
   public static int c(QQAppInterface paramQQAppInterface)
@@ -1117,19 +1146,19 @@ public class PokeItemHelper
       return 0;
     }
     String str = paramQQAppInterface.getAccount();
-    if ((!jdField_h_of_type_Boolean) || (!jdField_o_of_type_JavaLangString.equals(str)))
+    if ((!jdField_i_of_type_Boolean) || (!jdField_o_of_type_JavaLangString.equals(str)))
     {
       paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
       if (paramQQAppInterface.contains(str + "_" + "poke_bar_config_version")) {
-        q = paramQQAppInterface.getInt(str + "_" + "aio_poke_touch_effect", 0);
+        r = paramQQAppInterface.getInt(str + "_" + "aio_poke_touch_effect", 0);
       }
       jdField_o_of_type_JavaLangString = str;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("pokeMsg", 2, String.format("touchEffect apply:%d", new Object[] { Integer.valueOf(q) }));
+      QLog.d("pokeMsg", 2, String.format("touchEffect apply:%d", new Object[] { Integer.valueOf(r) }));
     }
-    jdField_h_of_type_Boolean = true;
-    return q;
+    jdField_i_of_type_Boolean = true;
+    return r;
   }
   
   public static int c(String paramString)

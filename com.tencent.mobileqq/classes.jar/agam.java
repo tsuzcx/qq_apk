@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.now.enter.NowHongbaoPushManager;
 
-public final class agam
+public class agam
   implements Runnable
 {
-  public agam(String paramString, QQAppInterface paramQQAppInterface, ProfileCardInfo paramProfileCardInfo, byte[] paramArrayOfByte) {}
+  public agam(NowHongbaoPushManager paramNowHongbaoPushManager) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.vPersonalityLabelV2 = this.jdField_a_of_type_ArrayOfByte;
-    }
+    NowHongbaoPushManager.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agam
  * JD-Core Version:    0.7.0.1
  */

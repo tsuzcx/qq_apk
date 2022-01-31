@@ -19,7 +19,7 @@ import com.tencent.mobileqq.structmsg.StructMsgItemLive;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.util.HashMap;
-import koo;
+import knz;
 
 public class NowVideoLayout
   extends RelativeLayout
@@ -42,12 +42,12 @@ public class NowVideoLayout
     this.jdField_a_of_type_ComTencentBizNowNowVideoView.setId(2131362178);
     this.jdField_a_of_type_ComTencentBizNowNowVideoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     this.jdField_a_of_type_ComTencentBizNowNowVideoView.setUseRadiusRound(true, getContext().getResources().getDimensionPixelSize(2131558689));
-    this.jdField_a_of_type_ComTencentBizNowNowVideoView.setContentDescription(getContext().getResources().getText(2131436998));
+    this.jdField_a_of_type_ComTencentBizNowNowVideoView.setContentDescription(getContext().getResources().getText(2131437015));
     localObject = new RelativeLayout.LayoutParams(AIOUtils.a(156.0F, (Resources)localObject), AIOUtils.a(209.0F, (Resources)localObject));
     addView(this.jdField_a_of_type_ComTencentBizNowNowVideoView, (ViewGroup.LayoutParams)localObject);
     localObject = new ImageView(getContext());
-    ((ImageView)localObject).setImageResource(2130840883);
-    ((ImageView)localObject).setId(2131365202);
+    ((ImageView)localObject).setImageResource(2130840920);
+    ((ImageView)localObject).setId(2131365224);
     ((ImageView)localObject).setVisibility(8);
     int i = AIOUtils.a(60.0F, getResources());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
@@ -71,7 +71,7 @@ public class NowVideoLayout
       ((RelativeLayout.LayoutParams)localObject).addRule(9);
       ((RelativeLayout.LayoutParams)localObject).addRule(10);
       ((RelativeLayout.LayoutParams)localObject).setMargins(AIOUtils.a(10.0F, getResources()), AIOUtils.a(10.0F, getResources()), 0, 0);
-      localImageView.setImageResource(2130841429);
+      localImageView.setImageResource(2130841466);
       addView(localImageView, (ViewGroup.LayoutParams)localObject);
       localObject = getParent();
       str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
@@ -107,7 +107,7 @@ public class NowVideoLayout
         if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgItemLive == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgItemLive.y))) {
           break label435;
         }
-        paramString = (String)localObject + getContext().getText(2131430814).toString();
+        paramString = (String)localObject + getContext().getText(2131430831).toString();
         label283:
         bool = ((NowLiveManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(170)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
         switch (paramInt)
@@ -139,22 +139,22 @@ public class NowVideoLayout
         str1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgItemLive.z;
         break label169;
         label435:
-        paramString = (String)localObject + getContext().getText(2131430813).toString();
+        paramString = (String)localObject + getContext().getText(2131430830).toString();
         break label283;
         localImageView.setVisibility(4);
         if (!bool) {
           break label350;
         }
-        paramString = (String)localObject + getContext().getText(2131430811);
+        paramString = (String)localObject + getContext().getText(2131430828);
         break label350;
         localImageView.setVisibility(0);
-        paramString = (String)localObject + getContext().getText(2131430811);
+        paramString = (String)localObject + getContext().getText(2131430828);
         break label350;
         localImageView.setVisibility(0);
-        paramString = (String)localObject + getContext().getText(2131430813).toString();
+        paramString = (String)localObject + getContext().getText(2131430830).toString();
         break label350;
         localImageView.setVisibility(0);
-        paramString = (String)localObject + getContext().getText(2131430814).toString();
+        paramString = (String)localObject + getContext().getText(2131430831).toString();
         break label350;
         label633:
         localTextView1.setVisibility(8);

@@ -1,128 +1,179 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.vipav.VipFunCallObserver;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class aklj
-  implements HttpWebCgiAsyncTask.Callback
+  extends VipFunCallObserver
 {
-  public aklj(BindGroupActivity paramBindGroupActivity) {}
+  public aklj(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     switch (paramInt)
     {
-    }
-    do
-    {
+    case 1: 
+    case 2: 
+    default: 
       return;
-    } while (paramJSONObject == null);
+    }
+    Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList);
+    this.a.d = this.a.jdField_a_of_type_JavaUtilArrayList.toString();
+    this.a.a(false, 0);
+    this.a.jdField_a_of_type_Boolean = paramBoolean;
+    Object localObject1;
+    int i;
+    int j;
+    String str;
+    Object localObject2;
+    Object localObject3;
+    if (!paramBoolean)
+    {
+      localObject1 = (Bundle)paramObject;
+      i = ((Bundle)localObject1).getInt("result");
+      j = ((Bundle)localObject1).getInt("callId", this.a.jdField_a_of_type_Int);
+      paramObject = ((Bundle)localObject1).getString("message");
+      str = ((Bundle)localObject1).getString("svr_url");
+      localObject2 = ((Bundle)localObject1).getString("svr_actStr");
+      if (i != 9002) {
+        break label278;
+      }
+      paramInt = 11;
+      localObject3 = paramObject;
+      if (TextUtils.isEmpty(paramObject)) {
+        localObject3 = "你选择的来电动画为年费会员专享，开通即可使用此来电动画";
+      }
+      paramObject = localObject3;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        break label554;
+      }
+      localObject2 = null;
+      localObject1 = "立即开通";
+      paramInt = 11;
+      paramObject = localObject3;
+    }
     for (;;)
     {
-      try
-      {
-        paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
-        paramJSONObject = (JSONObject)paramJSONObject.get("result");
-        if ((paramInt != 0) || (paramJSONObject == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("BindGroupActivity", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
-        }
-        paramBundle = (JSONObject)paramJSONObject.get("basics");
-        Object localObject2;
-        if (paramBundle != null)
+      if (TextUtils.isEmpty(paramObject)) {
+        if ((i == 22001) || (i == 6002))
         {
-          paramBundle = (JSONArray)paramBundle.get("datas");
-          if (paramBundle != null)
+          paramObject = "未参加活动";
+          label213:
+          VipFunCallPreviewActivity localVipFunCallPreviewActivity = this.a;
+          localObject3 = localObject1;
+          if (!TextUtils.isEmpty(str))
           {
-            paramInt = 0;
-            if (paramInt < paramBundle.length())
-            {
-              localObject2 = (JSONObject)paramBundle.get(paramInt);
-              str = (String)((JSONObject)localObject2).get("name");
-              i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-              localObject1 = (String)((JSONObject)localObject2).get("api");
-              localObject2 = (String)((JSONObject)localObject2).get("msg");
-              if (!QLog.isColorLevel()) {
-                break label717;
-              }
-              QLog.i("BindGroupActivity", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
-              break label717;
+            localObject3 = localObject1;
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {
+              localObject3 = "了解详情";
             }
           }
-        }
-        paramBundle = (JSONObject)paramJSONObject.get("friendlink");
-        if (paramBundle != null)
-        {
-          paramBundle = (JSONArray)paramBundle.get("datas");
-          if (paramBundle != null)
+          localVipFunCallPreviewActivity.a(paramInt, j, null, paramObject, (String)localObject2, (String)localObject3, str);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(50);
+          return;
+          label278:
+          if (i == 9003)
           {
-            paramInt = 0;
-            if (paramInt < paramBundle.length())
-            {
-              localObject2 = (JSONObject)paramBundle.get(paramInt);
-              str = (String)((JSONObject)localObject2).get("name");
-              i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-              localObject1 = (String)((JSONObject)localObject2).get("api");
-              localObject2 = (String)((JSONObject)localObject2).get("msg");
-              if (("bind_group".equals(localObject1)) && (i != 1)) {
-                this.a.runOnUiThread(new aklk(this));
-              }
-              if (!QLog.isColorLevel()) {
-                break label724;
-              }
-              QLog.i("BindGroupActivity", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
-              break label724;
+            paramInt = 12;
+            localObject1 = paramObject;
+            if (TextUtils.isEmpty(paramObject)) {
+              localObject1 = "你选择的来电动画为年费超级会员专享，开通即可使用此来电动画";
+            }
+            paramObject = localObject1;
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label554;
+            }
+            localObject2 = null;
+            localObject3 = "立即开通";
+            paramInt = 12;
+            paramObject = localObject1;
+            localObject1 = localObject3;
+            continue;
+          }
+          if ((i == 1005011) || (i == 5002))
+          {
+            paramInt = 2;
+            localObject1 = paramObject;
+            if (TextUtils.isEmpty(paramObject)) {
+              localObject1 = "你选择的来电动画为超级会员专享，开通即可使用此来电动画";
+            }
+            paramObject = localObject1;
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label554;
+            }
+            localObject2 = null;
+            localObject3 = "立即开通";
+            paramInt = 2;
+            paramObject = localObject1;
+            localObject1 = localObject3;
+            continue;
+          }
+          if ((i == 1005012) || (i == 4002))
+          {
+            paramInt = 1;
+            localObject1 = paramObject;
+            if (TextUtils.isEmpty(paramObject)) {
+              localObject1 = "你选择的来电动画为QQ会员专享，开通即可使用此来电动画";
+            }
+            paramObject = localObject1;
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label554;
+            }
+            localObject2 = null;
+            localObject3 = "立即开通";
+            paramInt = 1;
+            paramObject = localObject1;
+            localObject1 = localObject3;
+            continue;
+          }
+          if (i == 461001) {
+            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label548;
             }
           }
-        }
-        paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
-        if (QLog.isColorLevel()) {
-          QLog.i("BindGroupActivity", 2, "checkApiState onResult, appid =" + paramInt + "\n");
-        }
-        paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
-        if (paramJSONObject == null) {
-          break;
-        }
-        paramJSONObject = (JSONArray)paramJSONObject.get("datas");
-        if (paramJSONObject == null) {
-          break;
-        }
-        paramInt = 0;
-        if (paramInt >= paramJSONObject.length()) {
-          break;
-        }
-        Object localObject1 = (JSONObject)paramJSONObject.get(paramInt);
-        paramBundle = (String)((JSONObject)localObject1).get("name");
-        int i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
-        String str = (String)((JSONObject)localObject1).get("api");
-        localObject1 = (String)((JSONObject)localObject1).get("msg");
-        if (QLog.isColorLevel()) {
-          QLog.i("BindGroupActivity", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
-        }
-        paramInt += 1;
-        continue;
-        if (!QLog.isColorLevel()) {
-          break;
         }
       }
-      catch (Exception paramJSONObject) {}
-      QLog.d("BindGroupActivity", 2, "checkApiState onResult " + paramJSONObject.toString());
-      return;
-      label717:
-      paramInt += 1;
-      continue;
-      label724:
-      paramInt += 1;
+      label548:
+      for (paramObject = "立即开通";; paramObject = localObject2)
+      {
+        localObject2 = "确定";
+        str = IndividuationUrlHelper.a("funCallMine");
+        paramInt = 6;
+        localObject3 = "指定来电群组已达上限（5个）请在“我的来电”里删除其他来电群组后再添加新的分组。";
+        localObject1 = paramObject;
+        paramObject = localObject3;
+        break;
+        localObject3 = null;
+        localObject1 = localObject2;
+        paramInt = 4;
+        localObject2 = localObject3;
+        break;
+        if (i == 3002)
+        {
+          paramObject = "已过试用期";
+          break label213;
+        }
+        if (i == 8002)
+        {
+          paramObject = "未开通专区会员";
+          break label213;
+        }
+        break label213;
+      }
+      label554:
+      localObject3 = null;
+      localObject1 = localObject2;
+      localObject2 = localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aklj
  * JD-Core Version:    0.7.0.1
  */

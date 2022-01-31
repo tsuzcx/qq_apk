@@ -12,8 +12,8 @@ import com.tribe.async.async.Bosses;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import nyz;
-import nza;
+import oar;
+import oas;
 
 public class FeedVideoPreloader
 {
@@ -23,7 +23,7 @@ public class FeedVideoPreloader
   public FeedVideoPreloader.OnVideoDownloadListener a;
   private Object a;
   public List a;
-  public nza a;
+  public oas a;
   protected List b = new ArrayList();
   
   public FeedVideoPreloader()
@@ -31,9 +31,9 @@ public class FeedVideoPreloader
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader = new VideoPreloader();
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Nza = new nza(this);
+    this.jdField_a_of_type_Oas = new oas(this);
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(1);
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_Nza);
+    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_Oas);
   }
   
   private void a(StoryVideoItem paramStoryVideoItem, List paramList, boolean paramBoolean)
@@ -71,7 +71,7 @@ public class FeedVideoPreloader
       return;
     }
     paramList = new ArrayList(paramList);
-    Bosses.get().postJob(new nyz(this, paramStoryVideoItem, paramList));
+    Bosses.get().postJob(new oar(this, paramStoryVideoItem, paramList));
   }
   
   public void a(FeedVideoPreloader.OnVideoDownloadListener paramOnVideoDownloadListener)

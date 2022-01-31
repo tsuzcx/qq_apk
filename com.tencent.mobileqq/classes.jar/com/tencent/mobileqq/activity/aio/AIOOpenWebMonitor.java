@@ -20,7 +20,7 @@ import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.net.URLEncoder;
 import java.util.HashMap;
-import ugk;
+import ujk;
 
 public class AIOOpenWebMonitor
 {
@@ -158,7 +158,7 @@ public class AIOOpenWebMonitor
       if (TextUtils.isEmpty(paramIntent)) {
         break;
       }
-      ThreadManager.post(new ugk(paramQQAppInterface, i, paramIntent, l), 2, null, false);
+      ThreadManager.post(new ujk(paramQQAppInterface, i, paramIntent, l), 2, null, false);
       return;
     }
   }

@@ -1,42 +1,25 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.ConfigInfo;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class xfn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xfn(BannerManager paramBannerManager) {}
+  public xfn(PreloadManager paramPreloadManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = QQPlayerService.a();
-    int i;
-    if (paramView != null)
-    {
-      BannerManager.a(this.a).startActivity(paramView);
-      paramView = paramView.getComponent().getClassName();
-      if (!paramView.equals(MusicPlayerActivity.class.getName())) {
-        break label92;
-      }
-      i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "synDataFromMoggy");
     }
-    for (;;)
+    Object localObject = (QWalletConfigManager)this.a.a.getManager(244);
+    if (localObject != null)
     {
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
-      return;
-      label92:
-      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
-      }
+      ((QWalletConfigManager)localObject).a("preload", this.a);
+      localObject = ((QWalletConfigManager)localObject).a("preload");
+      this.a.a((QWalletConfig.ConfigInfo)localObject);
     }
   }
 }

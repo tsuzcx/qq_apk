@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aixs
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aixs(TroopNoticeJsHandler paramTroopNoticeJsHandler, WebView paramWebView, String paramString1, String paramString2) {}
+  public aixs(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + this.b + ")");
-    }
+    QQToast.a(this.a.a, "视频处理中", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixs
  * JD-Core Version:    0.7.0.1
  */

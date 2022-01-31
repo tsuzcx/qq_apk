@@ -1,19 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.PSTNC2CActivity;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.av.ui.QAVPtvTemplateAdapter;
+import com.tencent.av.ui.QavListItemBase;
+import com.tencent.av.ui.QavListItemBase.IClickCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class jyz
-  implements DialogInterface.OnClickListener
+  implements QavListItemBase.IClickCallback
 {
-  public jyz(PSTNC2CActivity paramPSTNC2CActivity) {}
+  public jyz(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, QavListItemBase paramQavListItemBase)
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.a.app, this.a, 2, 12);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 5, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVPtvTemplateAdapter", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
+    }
+    if ((System.currentTimeMillis() - this.a.a < 500L) && (paramInt > 0)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVPtvTemplateAdapter", 2, "PtvTemplateAdapter onItemClicked position yes : " + paramInt);
+    }
+    this.a.a = System.currentTimeMillis();
+    int i = this.a.c;
+    this.a.c = paramInt;
+    this.a.a(i, this.a.c);
+    this.a.a(this.a.c);
+    this.a.c(this.a.c);
   }
 }
 

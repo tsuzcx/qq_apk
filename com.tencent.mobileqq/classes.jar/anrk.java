@@ -1,15 +1,34 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.os.Message;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.io.File;
+import mqq.os.MqqHandler;
 
-public class anrk
-  implements Runnable
+public final class anrk
+  extends MqqHandler
 {
-  public anrk(RMVideoStateMgr paramRMVideoStateMgr, String paramString) {}
+  final String a;
+  final String b;
   
-  public void run()
+  public anrk(String paramString1, String paramString2)
   {
-    Toast.makeText(VideoEnvironment.a(), "" + this.jdField_a_of_type_JavaLangString, 0).show();
+    super(ThreadManager.getSubThreadLooper());
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1001: 
+      FileUtils.a(QQStoryContext.a().a(), this.a, this.b);
+      return;
+    }
+    FileUtils.b(QQStoryContext.a().a(), new File(this.b));
   }
 }
 

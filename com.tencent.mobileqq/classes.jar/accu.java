@@ -1,31 +1,52 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FilePreviewDataReporter;
-import java.util.Random;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.EPRecommendTask;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.util.WeakReference;
+import org.json.JSONObject;
 
 public class accu
-  implements View.OnClickListener
+  implements Runnable
 {
-  public accu(FilePreviewActivity paramFilePreviewActivity) {}
+  public accu(EPRecommendTask paramEPRecommendTask) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.startTitleProgress();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131436113);
-    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
-    {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter;
-      paramView.a += 1;
+    long l1 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("EPRecommendTask", 2, "url:" + this.a.jdField_a_of_type_JavaLangString + ",type:" + this.a.b);
     }
-    int i = new Random(System.currentTimeMillis()).nextInt(1500);
-    new Handler().postDelayed(new accv(this), i % 1001 + 500);
+    try
+    {
+      Object localObject = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (localObject == null) {
+        return;
+      }
+      localObject = VasQuickUpdateManager.a((AppRuntime)localObject, "emoji_app_vip_emoji_aio_android_config.json", true, this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+      this.a.a((JSONObject)localObject);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        long l2;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.emoji.EmoDown", 2, localException.getMessage());
+        }
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label103:
+      break label103;
+    }
+    l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
+    {
+      QLog.d("EPRecommendTask", 2, "costTime:" + (l2 - l1) + ",type:" + this.a.b);
+      return;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.ipc;
 
-import aedy;
+import aere;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class BasicTypeDataParcel
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aedy();
+  public static final Parcelable.Creator CREATOR = new aere();
   public int a;
   public Object[] a;
   

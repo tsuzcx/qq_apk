@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import ainl;
-import ainm;
-import ainn;
+import ajbp;
+import ajbq;
+import ajbr;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -47,8 +47,8 @@ public class NewTroopCreateActivity
   
   public NewTroopCreateActivity()
   {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new ainm(this);
-    this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter = new ainn(this);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new ajbq(this);
+    this.jdField_a_of_type_AndroidAnimationAnimatorListenerAdapter = new ajbr(this);
   }
   
   private void a(AbsNewTroopBaseView paramAbsNewTroopBaseView)
@@ -108,7 +108,7 @@ public class NewTroopCreateActivity
     this.jdField_a_of_type_AndroidContentIntent = getIntent();
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("param_title");
     if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = getString(2131436210);
+      this.jdField_a_of_type_JavaLangString = getString(2131436227);
     }
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("param_default_tab", 0);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("param_exit_animation", 0);
@@ -138,8 +138,8 @@ public class NewTroopCreateActivity
   @TargetApi(14)
   protected void b()
   {
-    super.setContentView(2130969138);
-    View localView = findViewById(2131362822);
+    super.setContentView(2130969137);
+    View localView = findViewById(2131362840);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       if (Build.VERSION.SDK_INT >= 14) {
@@ -147,17 +147,17 @@ public class NewTroopCreateActivity
       }
       localView.setPadding(0, ImmersiveUtils.a(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362577);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363363));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363227));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363455));
-    this.d = ((TextView)findViewById(2131363410));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131365304));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131365305));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, getString(2131433090));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(getString(2131433090));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, getString(2131433091));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(getString(2131433091));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362594);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363381));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363473));
+    this.d = ((TextView)findViewById(2131363428));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131365326));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131365327));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, getString(2131433107));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setContentDescription(getString(2131433107));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, getString(2131433108));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).setContentDescription(getString(2131433108));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this);
   }
   
@@ -166,16 +166,16 @@ public class NewTroopCreateActivity
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131435973);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131435990);
     this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, 0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     if (AppSetting.b)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangString);
-      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131435973));
+      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131435990));
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ainl(this));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ajbp(this));
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -190,7 +190,7 @@ public class NewTroopCreateActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    setTheme(2131624736);
+    setTheme(2131624738);
     super.doOnCreate(paramBundle);
     this.jdField_c_of_type_Int = UIUtils.a(this, 40.0F);
     a();
@@ -294,7 +294,7 @@ public class NewTroopCreateActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity
  * JD-Core Version:    0.7.0.1
  */

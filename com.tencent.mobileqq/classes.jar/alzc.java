@@ -1,55 +1,119 @@
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
-import mqq.app.MobileQQ;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.AudioDeviceInterface;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.DeviceConfigManager;
+import java.util.HashMap;
 
-public class alzc
-  implements Runnable
+public abstract class alzc
+  extends Thread
 {
-  public int a;
-  public long a;
-  public Cursor a;
-  public String a;
-  public boolean a;
+  long jdField_a_of_type_Long = 0L;
+  HashMap jdField_a_of_type_JavaUtilHashMap = null;
+  boolean jdField_a_of_type_Boolean = true;
+  boolean[] jdField_a_of_type_ArrayOfBoolean = { false };
   
-  private alzc(FavoriteSearchEngine paramFavoriteSearchEngine) {}
+  alzc(TraeAudioManager paramTraeAudioManager)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TRAE", 2, " ++switchThread:" + a());
+    }
+  }
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  void a(int paramInt)
+  {
+    this.b.b();
+    AudioDeviceInterface.LogTraceEntry(a() + " err:" + paramInt + " ConnectedDevice: " + this.b.a.d());
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.b.a();
+    }
+    do
+    {
+      return;
+      this.b.b = this.b.a.d();
+      localObject = (Long)this.jdField_a_of_type_JavaUtilHashMap.get("PARAM_SESSIONID");
+      if (QLog.isColorLevel()) {
+        QLog.w("TRAE", 2, " sessonID:" + localObject + "sessionConnectedDev: " + this.b.b);
+      }
+      if ((localObject != null) && (((Long)localObject).longValue() != -9223372036854775808L)) {
+        break;
+      }
+      this.b.a();
+    } while (!QLog.isColorLevel());
+    QLog.w("TRAE", 2, "processDeviceConnectRes sid null,don't send res");
+    return;
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("CONNECTDEVICE_RESULT_DEVICENAME", (String)this.jdField_a_of_type_JavaUtilHashMap.get("PARAM_DEVICE"));
+    if (this.b.a((Intent)localObject, this.jdField_a_of_type_JavaUtilHashMap, paramInt) == 0) {
+      this.b.a();
+    }
+    AudioDeviceInterface.LogTraceExit();
+  }
+  
+  public void a(HashMap paramHashMap)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+  }
+  
+  public abstract void b();
+  
+  void e()
+  {
+    this.b.a.d(a());
+    a(0);
+  }
+  
+  public void f()
+  {
+    AudioDeviceInterface.LogTraceEntry(a());
+    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.w("TRAE", 2, " quit:" + a() + " _running:" + this.jdField_a_of_type_Boolean);
+    }
+    interrupt();
+    b();
+    synchronized (this.jdField_a_of_type_ArrayOfBoolean)
+    {
+      int i = this.jdField_a_of_type_ArrayOfBoolean[0];
+      if (i != 0) {}
+    }
+    try
+    {
+      this.jdField_a_of_type_ArrayOfBoolean.wait();
+      label91:
+      AudioDeviceInterface.LogTraceExit();
+      return;
+      localObject = finally;
+      throw localObject;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      break label91;
+    }
+  }
   
   public void run()
   {
-    Object localObject1 = FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine).getApplication().getContentResolver();
-    ??? = Uri.parse("content://qq.favorites/global_search/" + FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine).getAccount());
-    try
+    AudioDeviceInterface.LogTraceEntry(a());
+    this.b.a.c(a());
+    this.b.b();
+    a();
+    synchronized (this.jdField_a_of_type_ArrayOfBoolean)
     {
-      localObject1 = ((ContentResolver)localObject1).query((Uri)???, null, null, new String[] { this.jdField_a_of_type_JavaLangString, "" + this.jdField_a_of_type_Int, "" + this.jdField_a_of_type_Long, "" + this.jdField_a_of_type_Boolean }, null);
-    }
-    catch (Exception localException)
-    {
-      synchronized (FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine))
-      {
-        if (FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine) == Thread.currentThread())
-        {
-          this.jdField_a_of_type_AndroidDatabaseCursor = ((Cursor)localObject1);
-          FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine).notify();
-        }
-        Object localObject2;
-        while (localObject2 == null)
-        {
-          return;
-          localException = localException;
-          localException.printStackTrace();
-          localObject2 = null;
-          break;
-        }
-        localObject2.close();
-      }
+      this.jdField_a_of_type_ArrayOfBoolean[0] = true;
+      this.jdField_a_of_type_ArrayOfBoolean.notify();
+      AudioDeviceInterface.LogTraceExit();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alzc
  * JD-Core Version:    0.7.0.1
  */

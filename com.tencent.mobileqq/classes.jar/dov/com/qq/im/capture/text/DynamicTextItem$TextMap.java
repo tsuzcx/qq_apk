@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.text;
 
-import amxt;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import anny;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,7 +17,7 @@ import java.util.Set;
 public class DynamicTextItem$TextMap
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amxt();
+  public static final Parcelable.Creator CREATOR = new anny();
   private Map a = new HashMap();
   
   public DynamicTextItem$TextMap() {}

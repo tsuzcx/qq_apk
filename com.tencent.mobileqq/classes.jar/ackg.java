@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.data.OnlineFileSessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class ackg
-  implements Runnable
+class ackg
+  implements DialogInterface.OnClickListener
 {
-  public ackg(FileTransferHandler paramFileTransferHandler, int paramInt1, String paramString1, String paramString2, long paramLong1, short paramShort, boolean paramBoolean, int paramInt2, String paramString3, OnlineFileSessionInfo paramOnlineFileSessionInfo, long paramLong2, int paramInt3) {}
+  ackg(ackf paramackf) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Short, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataOnlineFileSessionInfo, this.jdField_b_of_type_Long, this.jdField_c_of_type_Int);
+    this.a.a.a = false;
+    this.a.a.doOnBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ackg
  * JD-Core Version:    0.7.0.1
  */

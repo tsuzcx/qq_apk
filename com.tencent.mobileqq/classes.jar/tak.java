@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import mqq.os.MqqHandler;
 
 public class tak
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  public tak(NotificationActivity paramNotificationActivity) {}
+  public tak(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 2014: 
+      this.a.finish();
+      return;
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tak
  * JD-Core Version:    0.7.0.1
  */

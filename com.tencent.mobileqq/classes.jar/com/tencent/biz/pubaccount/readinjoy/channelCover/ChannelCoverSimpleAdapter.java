@@ -23,8 +23,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import lin;
-import lio;
+import lii;
+import lij;
 import org.json.JSONObject;
 
 public class ChannelCoverSimpleAdapter
@@ -119,35 +119,35 @@ public class ChannelCoverSimpleAdapter
       if (paramView != null) {
         break;
       }
-      localObject = new lio(this);
+      localObject = new lij(this);
       paramView = new ReadInJoyVideoTopicTextView(this.jdField_a_of_type_AndroidContentContext);
       paramView.setId(2131362203);
       paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 21.0F)));
-      ((lio)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView = paramView;
+      ((lij)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView = paramView;
       paramView.setTag(localObject);
       localChannelCoverInfo = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
       paramViewGroup = paramView;
     } while (localChannelCoverInfo == null);
     if (localChannelCoverInfo.mColumnType == 1)
     {
-      ((lio)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setTopicText(localChannelCoverInfo.mChannelCoverName);
+      ((lij)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setTopicText(localChannelCoverInfo.mChannelCoverName);
       label169:
       if (this.jdField_a_of_type_Int != 56) {
         break label377;
       }
-      ((lio)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setTextColor(-5789786);
+      ((lij)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setTextColor(-5789786);
       label188:
       if (TextUtils.isEmpty(localChannelCoverInfo.mIconUrl)) {
         break label393;
       }
       paramInt = ViewUtils.a(21.0F);
-      paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839226);
+      paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839230);
       paramViewGroup = URLDrawable.getDrawable(localChannelCoverInfo.mIconUrl, paramInt, paramInt, paramViewGroup, paramViewGroup);
       if ((paramViewGroup != null) && (paramViewGroup.getStatus() == 2)) {
         paramViewGroup.restartDownload();
       }
       paramViewGroup.setBounds(0, 0, paramInt, paramInt);
-      ((lio)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setCompoundDrawables(paramViewGroup, null, null, null);
+      ((lij)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setCompoundDrawables(paramViewGroup, null, null, null);
       label267:
       if (!localChannelCoverInfo.isReport)
       {
@@ -167,17 +167,17 @@ public class ChannelCoverSimpleAdapter
     {
       ChannelCoverView.a(paramViewGroup, "1", "", "", localChannelCoverInfo);
       ChannelCoverView.a("0X8007F01", localChannelCoverInfo, ChannelCoverView.b);
-      ((lio)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setOnClickListener(this);
-      ((lio)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = localChannelCoverInfo;
+      ((lij)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setOnClickListener(this);
+      ((lij)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = localChannelCoverInfo;
       return paramView;
-      localObject = (lio)paramView.getTag();
+      localObject = (lij)paramView.getTag();
       break;
-      ((lio)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setSubChannelText(localChannelCoverInfo.mChannelCoverName);
+      ((lij)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setSubChannelText(localChannelCoverInfo.mChannelCoverName);
       break label169;
       label377:
-      ((lio)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setTextColor(localChannelCoverInfo.mFontColor);
+      ((lij)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setTextColor(localChannelCoverInfo.mFontColor);
       break label188;
-      ((lio)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setCompoundDrawables(null, null, null, null);
+      ((lij)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView.setCompoundDrawables(null, null, null, null);
       break label267;
     }
   }
@@ -198,7 +198,7 @@ public class ChannelCoverSimpleAdapter
       if (QLog.isColorLevel()) {
         QLog.d("READINJOYChannelCoverSimpleAdapter", 2, "click readinjoy_feeds_video_label_textview");
       }
-      paramView = ((lio)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
+      paramView = ((lij)paramView.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
     } while (paramView == null);
     Object localObject;
     if (TextUtils.isEmpty(paramView.mChannelJumpUrl))
@@ -214,7 +214,7 @@ public class ChannelCoverSimpleAdapter
           QLog.d("READINJOYChannelCoverSimpleAdapter", 2, "launchChannelActivity info.mArticleId:" + paramView.mArticleId + " info.mChannelCoverStyle: " + paramView.mChannelCoverStyle + " info.mChannelCoverId:" + paramView.mChannelCoverId + " info.mChannelCoverName:" + paramView.mChannelCoverName + " info.mChannelType: " + paramView.mChannelType);
         }
         if (this.jdField_a_of_type_Int == 56) {
-          ThreadManager.executeOnSubThread(new lin(this, paramView));
+          ThreadManager.executeOnSubThread(new lii(this, paramView));
         }
       }
     }

@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.portal.PortalManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.RequestPublicAccountObserver;
 
 public class sdt
-  implements View.OnClickListener
+  extends TroopBindPubAccountProtocol.RequestPublicAccountObserver
 {
-  public sdt(Conversation paramConversation, PortalManager paramPortalManager) {}
+  public sdt(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).removeView(Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation));
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), true);
+    if (paramBoolean)
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = 17;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("uinname", paramAccountDetail.name);
+      localBundle.putString("extra_type", paramAccountDetail.summary);
+      localBundle.putLong("uin", paramLong);
+      localMessage.setData(localBundle);
+      this.a.a.sendMessage(localMessage);
     }
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
   }
 }
 

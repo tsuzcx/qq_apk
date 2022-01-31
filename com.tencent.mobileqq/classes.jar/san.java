@@ -1,46 +1,25 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.mobileqq.activity.ChatHistoryFileView;
+import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
 
-class san
-  implements Runnable
+public class san
+  extends FMObserver
 {
-  san(sam paramsam) {}
+  public san(ChatHistoryFileView paramChatHistoryFileView) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    TroopMemberInfo localTroopMemberInfo;
-    if (this.a.a.app != null)
-    {
-      localObject1 = localObject2;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null)
-      {
-        localObject1 = DBUtils.a().a(this.a.a.app, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.a.app.getCurrentAccountUin());
-        if (localObject1 != null) {
-          break label171;
-        }
-        localTroopMemberInfo = DBUtils.a().a(this.a.a.app, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.a.app.getCurrentAccountUin());
-        localObject1 = localObject2;
-        if (localTroopMemberInfo == null) {}
-      }
-    }
-    label171:
-    for (localObject1 = localTroopMemberInfo.troopnick;; localObject1 = ((TroopMemberCardInfo)localObject1).name)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = ((String)localObject1);
-        this.a.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-      }
-      return;
-    }
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.a.notifyDataSetChanged();
   }
 }
 

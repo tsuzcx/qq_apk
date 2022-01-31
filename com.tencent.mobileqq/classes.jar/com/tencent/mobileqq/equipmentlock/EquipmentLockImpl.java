@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.equipmentlock;
 
-import acag;
+import achi;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -41,7 +41,7 @@ public class EquipmentLockImpl
   public static boolean a;
   private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
   private int jdField_a_of_type_Int = -1;
-  Runnable jdField_a_of_type_JavaLangRunnable = new acag(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new achi(this);
   String jdField_a_of_type_JavaLangString = null;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
@@ -278,10 +278,10 @@ public class EquipmentLockImpl
         break label426;
       }
       paramQQAppInterface = BaseApplicationImpl.getContext();
-      localObject2 = paramQQAppInterface.getString(2131436575);
-      String str1 = paramQQAppInterface.getString(2131436575);
+      localObject2 = paramQQAppInterface.getString(2131436592);
+      String str1 = paramQQAppInterface.getString(2131436592);
       String str2 = paramString2 + "\n" + paramString3;
-      localObject1 = BitmapManager.a(paramQQAppInterface.getResources(), 2130841551);
+      localObject1 = BitmapManager.a(paramQQAppInterface.getResources(), 2130841588);
       localObject2 = new NotificationCompat.Builder(paramQQAppInterface).setContentTitle(str1).setContentText(str2).setAutoCancel(true).setSmallIcon(BaseApplicationImpl.appnewmsgicon).setTicker((CharSequence)localObject2).setWhen(System.currentTimeMillis());
       if (localObject1 == null) {
         break label407;
@@ -291,7 +291,7 @@ public class EquipmentLockImpl
     for (;;)
     {
       if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject2).setSmallIcon(2130841551);
+        ((NotificationCompat.Builder)localObject2).setSmallIcon(2130841588);
       }
       localObject1 = new Intent(paramQQAppInterface, DevlockQuickLoginActivity.class);
       ((Intent)localObject1).addFlags(268435456);
@@ -319,7 +319,7 @@ public class EquipmentLockImpl
       bool = false;
       break label22;
       label407:
-      ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapManager.a(paramQQAppInterface.getResources(), 2130841551));
+      ((NotificationCompat.Builder)localObject2).setLargeIcon(BitmapManager.a(paramQQAppInterface.getResources(), 2130841588));
     }
     label426:
     paramQQAppInterface = new Intent(BaseApplicationImpl.getContext(), DevlockQuickLoginActivity.class);

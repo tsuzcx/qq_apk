@@ -34,6 +34,7 @@ public final class qqstory_struct$UserInfo
   public final PBRepeatMessageField usr_icon_list = PBField.initRepeatMessage(qqstory_struct.UsrIcon.class);
   public final PBUInt64Field vip_id = PBField.initUInt64(0L);
   public qqstory_struct.WatcherExt watcher = new qqstory_struct.WatcherExt();
+  public final PBBytesField ws_schema = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static
   {
@@ -46,7 +47,8 @@ public final class qqstory_struct$UserInfo
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58, 66, 74, 80, 88, 96, 104, 114, 122, 128, 136, 146, 152, 162, 170 }, new String[] { "uid", "nick", "head_url", "remark", "ext", "is_vip", "union_id", "symbol", "watcher", "is_subscribe", "friend_type", "fans_count", "subscribe_count", "signature", "background_url", "fans_incr_count", "gid_in_group", "usr_icon_list", "vip_id", "phone", "nick_postfix" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro6, localByteStringMicro7, Integer.valueOf(0), Long.valueOf(0L), null, Long.valueOf(0L), localByteStringMicro8, localByteStringMicro9 }, UserInfo.class);
+    ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58, 66, 74, 80, 88, 96, 104, 114, 122, 128, 136, 146, 152, 162, 170, 178 }, new String[] { "uid", "nick", "head_url", "remark", "ext", "is_vip", "union_id", "symbol", "watcher", "is_subscribe", "friend_type", "fans_count", "subscribe_count", "signature", "background_url", "fans_incr_count", "gid_in_group", "usr_icon_list", "vip_id", "phone", "nick_postfix", "ws_schema" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro6, localByteStringMicro7, Integer.valueOf(0), Long.valueOf(0L), null, Long.valueOf(0L), localByteStringMicro8, localByteStringMicro9, localByteStringMicro10 }, UserInfo.class);
   }
 }
 

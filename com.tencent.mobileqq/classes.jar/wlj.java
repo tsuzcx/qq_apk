@@ -1,31 +1,27 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public class wlj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public wlj(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  public wlj(TroopActivity paramTroopActivity) {}
   
-  @SuppressLint({"NewApi"})
-  public void onGlobalLayout()
+  public void run()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
+    if (this.a.e)
     {
-      SimpleSlidingIndicator.a(this.a, SimpleSlidingIndicator.a(this.a));
-      SimpleSlidingIndicator.b(this.a, SimpleSlidingIndicator.a(this.a));
-      View localView = SimpleSlidingIndicator.a(this.a).getChildAt(SimpleSlidingIndicator.a(this.a));
-      SimpleSlidingIndicator.a(this.a, localView.getLeft());
-      this.a.invalidate();
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      int i = this.a.app.a().b();
+      TextView localTextView = (TextView)this.a.findViewById(2131363995);
+      ImageView localImageView = (ImageView)this.a.findViewById(2131363994);
+      localTextView.setVisibility(0);
+      localImageView.setVisibility(0);
+      localTextView.setText("" + i);
+      if (i <= 0) {
+        localTextView.setVisibility(4);
+      }
     }
   }
 }

@@ -1,29 +1,25 @@
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
 
-public class nkt
-  extends IPlayVideoStatusChangeListener
+class nkt
+  extends OnPlayModeShareListener
 {
-  public nkt(VidListPlayMode paramVidListPlayMode) {}
-  
-  public void c(int paramInt)
+  nkt(nks paramnks, VideoPlayModeBase paramVideoPlayModeBase)
   {
-    if (paramInt < this.a.a.a.size() - 1) {
-      StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
+    super(paramVideoPlayModeBase);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    if (this.a.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      StoryReportor.a("play_video", "guest_share_suc", i, paramInt, new String[] { "", String.valueOf(StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
     }
-  }
-  
-  public void d(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
-  }
-  
-  public void e(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
   }
 }
 

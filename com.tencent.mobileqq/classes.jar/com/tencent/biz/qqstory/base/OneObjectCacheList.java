@@ -6,7 +6,7 @@ import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import myd;
+import mzk;
 
 public class OneObjectCacheList
 {
@@ -17,7 +17,7 @@ public class OneObjectCacheList
   public OneObjectCacheList(int paramInt)
   {
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(50);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new myd(this, paramInt);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new mzk(this, paramInt);
     this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
   }
   

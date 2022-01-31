@@ -127,7 +127,7 @@ public class EcshopWebActivity
     int i = paramMotionEvent.getAction();
     if (this.jdField_a_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366726));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366769));
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
         this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362369));
       }
@@ -135,7 +135,7 @@ public class EcshopWebActivity
         return super.dispatchTouchEvent(paramMotionEvent);
       }
     }
-    View localView = findViewById(2131363226);
+    View localView = findViewById(2131363244);
     if (localView == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }

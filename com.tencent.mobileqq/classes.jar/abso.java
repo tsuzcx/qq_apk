@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
-import java.util.List;
+import com.tencent.mobileqq.config.ConfigManager;
 
-class abso
-  implements Runnable
+public class abso
 {
-  abso(absn paramabsn, List paramList) {}
+  public byte a;
+  public String a;
+  public byte b;
+  public String b = "";
   
-  public void run()
+  public abso(ConfigManager paramConfigManager)
   {
-    this.jdField_a_of_type_Absn.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abso
  * JD-Core Version:    0.7.0.1
  */

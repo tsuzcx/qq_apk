@@ -11,12 +11,12 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.portal.StrokeTextView;
-import jmi;
-import jml;
+import jlt;
+import jlw;
 
 public class RedPacketRollNumberView
   extends LinearLayout
-  implements jml
+  implements jlw
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -54,7 +54,7 @@ public class RedPacketRollNumberView
   
   public void a()
   {
-    post(new jmi(this));
+    post(new jlt(this));
   }
   
   public void a(double paramDouble)

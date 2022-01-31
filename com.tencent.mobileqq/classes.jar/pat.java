@@ -1,176 +1,115 @@
-import com.tencent.biz.webviewplugin.PubAccountWebViewHttpBridge;
+import android.os.Bundle;
+import android.support.v4.util.ArrayMap;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
+import com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 
-public class pat
-  extends InputStream
+public final class pat
+  extends ProxyWebViewClientExtension
 {
-  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
-  HttpURLConnection jdField_a_of_type_JavaNetHttpURLConnection;
-  BufferedInputStream b;
+  private ArrayMap jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+  private final TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
   
-  public pat(PubAccountWebViewHttpBridge paramPubAccountWebViewHttpBridge, BufferedInputStream paramBufferedInputStream1, BufferedInputStream paramBufferedInputStream2, ByteArrayOutputStream paramByteArrayOutputStream, HttpURLConnection paramHttpURLConnection)
+  public pat(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView)
   {
-    this.jdField_a_of_type_JavaIoBufferedInputStream = paramBufferedInputStream1;
-    this.b = paramBufferedInputStream2;
-    if (paramByteArrayOutputStream != null) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaIoByteArrayOutputStream = paramByteArrayOutputStream;
-      this.jdField_a_of_type_JavaNetHttpURLConnection = paramHttpURLConnection;
-      return;
-      paramByteArrayOutputStream = new ByteArrayOutputStream();
-    }
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
   }
   
-  public void close()
+  private void a(Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountWebViewHttpBridge", 2, "now close memory stream and socket stream!");
-    }
-    try
+    WebViewPluginEngine localWebViewPluginEngine = this.jdField_a_of_type_ComTencentBizUiTouchWebView.a();
+    if (localWebViewPluginEngine != null)
     {
-      if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
-      {
-        this.jdField_a_of_type_JavaIoBufferedInputStream.close();
-        this.jdField_a_of_type_JavaIoBufferedInputStream = null;
+      if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap == null) {
+        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap(4);
       }
-      if (this.b != null)
-      {
-        this.b.close();
-        this.b = null;
-      }
-      if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
-        this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
-      }
-      this.jdField_a_of_type_ComTencentBizWebviewpluginPubAccountWebViewHttpBridge.a = null;
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("performanceData", paramObject1);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("requestData", paramObject2);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
+      localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    QLog.i("WebCoreDump", 2, "No JS plugin engine to web core dump");
   }
   
-  public int read()
+  public void computeScroll(View paramView)
   {
-    int j;
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
-    {
-      j = -1;
-      return j;
-    }
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
-    for (int i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();; i = -1)
-    {
-      j = i;
-      if (i != -1) {
-        break;
-      }
-      j = i;
-      if (this.b == null) {
-        break;
-      }
-      return this.b.read();
-    }
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.computeScroll(paramView);
   }
   
-  public int read(byte[] paramArrayOfByte)
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    int i;
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
-    {
-      i = -1;
-      return i;
-    }
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
-    {
-      i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(paramArrayOfByte);
-      j = i;
-      if (QLog.isColorLevel()) {
-        QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from memory buffer second: " + i);
-      }
-    }
-    for (int j = i;; j = -1)
-    {
-      i = j;
-      if (j != -1) {
-        break;
-      }
-      i = j;
-      if (this.b == null) {
-        break;
-      }
-      j = this.b.read(paramArrayOfByte);
-      i = j;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from socket stream second: " + j);
-      return j;
-    }
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.dispatchTouchEvent(paramMotionEvent, paramView);
   }
   
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null)) {
-      return -1;
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onInterceptTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public Object onMiscCallBack(String paramString, Bundle paramBundle)
+  {
+    SwiftBrowserTBSHandler localSwiftBrowserTBSHandler = (SwiftBrowserTBSHandler)this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.a.a(16);
+    if (localSwiftBrowserTBSHandler != null) {
+      return localSwiftBrowserTBSHandler.a(paramString, paramBundle);
     }
-    int i = paramArrayOfByte.length;
-    if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountWebViewHttpBridge", 2, "buffer three, error");
-      }
-      throw new ArrayIndexOutOfBoundsException();
+    return null;
+  }
+  
+  public Object onMiscCallBack(String paramString, Bundle paramBundle, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  {
+    if ((paramString.equalsIgnoreCase("onReportResourceInfo")) || (paramString.equalsIgnoreCase("onResourcesPerformance"))) {
+      a(paramObject1, paramObject2, paramObject3, paramObject4);
     }
-    int j = 0;
-    label65:
-    if (j < paramInt2) {}
-    for (;;)
-    {
-      int k;
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoBufferedInputStream == null) {
-          break label162;
-        }
-        i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();
-        k = i;
-        if (i == -1)
-        {
-          k = i;
-          if (this.b != null) {
-            k = this.b.read();
-          }
-        }
-        if (k == -1)
-        {
-          if (j == 0) {
-            break;
-          }
-          return j;
-        }
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        if (j != 0) {
-          return j;
-        }
-        throw paramArrayOfByte;
-      }
-      paramArrayOfByte[(paramInt1 + j)] = ((byte)k);
-      j += 1;
-      break label65;
-      return paramInt2;
-      label162:
-      i = -1;
-    }
+    return null;
+  }
+  
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
+  }
+  
+  public void onPrefetchResourceHit(boolean paramBoolean)
+  {
+    QLog.i("WebLog_WebViewBase", 1, "now prefetchResource is hit: " + paramBoolean);
+  }
+  
+  public void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
+  {
+    a(null, paramWebResourceRequest, paramWebResourceResponse, Integer.valueOf(paramInt));
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.onTouchEvent(paramMotionEvent, paramView);
+  }
+  
+  public void onUrlChange(String paramString1, String paramString2)
+  {
+    SwiftBrowserCookieMonster.d();
+    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.a(paramString1, paramString2);
+  }
+  
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizUiTouchWebView.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
   }
 }
 

@@ -1,31 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.utils.DBUtils;
-import java.util.List;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
-public class txn
-  implements Runnable
+class txn
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public txn(TroopMemberListActivity paramTroopMemberListActivity, FriendsManager paramFriendsManager) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void run()
-  {
-    Object localObject1 = DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.v);
-    DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.v);
-    if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.v);
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity)
-      {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a((TroopMemberInfo)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_JavaUtilList.add(localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-        return;
-      }
-    }
-  }
+  private txn(txm paramtxm) {}
 }
 
 

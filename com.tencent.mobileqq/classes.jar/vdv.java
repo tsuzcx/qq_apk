@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.QQStoryMsgHolder;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.StoryChatVideoView;
 
-public class vdv
-  implements ValueAnimator.AnimatorUpdateListener
+class vdv
+  implements Runnable
 {
-  public vdv(SixCombolEffectView paramSixCombolEffectView, vee paramvee) {}
+  vdv(vdu paramvdu) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_Vee.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
+    Long localLong = (Long)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.a.getTag();
+    if ((localLong == null) || (localLong.longValue() != this.a.jdField_a_of_type_Long)) {
+      return;
+    }
+    QQStoryItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.a, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.c, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a);
   }
 }
 

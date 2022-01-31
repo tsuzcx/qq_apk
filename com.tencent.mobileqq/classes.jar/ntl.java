@@ -1,14 +1,14 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import android.app.Dialog;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
 
 public class ntl
   implements Runnable
 {
-  public ntl(DetailCommentHelper paramDetailCommentHelper, CommentEntry paramCommentEntry, int paramInt) {}
+  public ntl(QQStoryBaseFragment paramQQStoryBaseFragment) {}
   
   public void run()
   {
-    DetailCommentHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
+    this.a.a.dismiss();
   }
 }
 

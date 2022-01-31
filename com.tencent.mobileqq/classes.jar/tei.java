@@ -1,17 +1,81 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
+import com.tencent.biz.qqstory.utils.AssertUtils;
+import com.tencent.mobileqq.activity.Now;
 
 public class tei
-  implements View.OnClickListener
+  implements QQStoryMainController.QQStoryMainView
 {
-  public tei(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public tei(Now paramNow) {}
   
-  public void onClick(View paramView)
+  public View a()
   {
-    this.a.a.dismiss();
+    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
   }
+  
+  public ImageView a()
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      AssertUtils.a(bool);
+      return this.a.jdField_a_of_type_AndroidWidgetImageView;
+    }
+  }
+  
+  public TextView a()
+  {
+    if (this.a.c != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      AssertUtils.a(bool);
+      return this.a.c;
+    }
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      Now.a(this.a);
+      return;
+    }
+    Now.b(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.b(false);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    this.a.b(true);
+  }
+  
+  public void d() {}
 }
 
 

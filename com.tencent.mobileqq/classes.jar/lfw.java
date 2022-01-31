@@ -1,14 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkUtil;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.qphone.base.util.QLog;
 
-class lfw
+public final class lfw
   implements Runnable
 {
-  lfw(lfv paramlfv, ArrayList paramArrayList) {}
+  public lfw(ArkAppMessage paramArkAppMessage, int paramInt) {}
   
   public void run()
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lfv.a, this.jdField_a_of_type_JavaUtilArrayList);
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appName)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appMinVersion))) {
+      if (ReadInJoyArkUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage)) {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyArkUtil", 2, "arkApp exists, no need to download again.");
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      ArkLocalAppMgr localArkLocalAppMgr;
+      do
+      {
+        return;
+        localArkLocalAppMgr = ReadInJoyArkUtil.a();
+      } while (localArkLocalAppMgr == null);
+      localArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appName, this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appMinVersion, "", new lfx(this));
+      return;
+    }
+    QLog.d("ReadInJoyArkUtil", 2, "ArkAppMessage is invalid, preDownloadArkApp do not begin.");
   }
 }
 

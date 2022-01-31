@@ -1,24 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.ShieldOperationItem;
+import com.tencent.mobileqq.app.PrinterStatusHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public final class zjr
-  implements Parcelable.Creator
+public class zjr
+  extends TimerTask
 {
-  public ShieldOperationItem a(Parcel paramParcel)
-  {
-    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
-    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localShieldOperationItem.b = paramParcel.readInt();
-    localShieldOperationItem.c = paramParcel.readInt();
-    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
-    localShieldOperationItem.d = paramParcel.readInt();
-    return localShieldOperationItem;
-  }
+  public zjr(PrinterStatusHandler paramPrinterStatusHandler) {}
   
-  public ShieldOperationItem[] a(int paramInt)
+  public void run()
   {
-    return null;
+    ReportController.b(this.a.b, "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
+    if (PrinterStatusHandler.a(this.a) != null)
+    {
+      PrinterStatusHandler.a(this.a).cancel();
+      PrinterStatusHandler.a(this.a, null);
+    }
   }
 }
 

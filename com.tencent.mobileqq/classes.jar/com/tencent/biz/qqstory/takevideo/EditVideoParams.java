@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import odr;
+import ofk;
 
 public class EditVideoParams
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new odr();
+  public static final Parcelable.Creator CREATOR = new ofk();
   public int a;
   public final Bundle a;
   public EditVideoParams.EditSource a;
@@ -20,6 +20,11 @@ public class EditVideoParams
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditSource;
+    if (paramBundle == null)
+    {
+      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+      return;
+    }
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
@@ -223,6 +228,22 @@ public class EditVideoParams
       return false;
     }
     return this.jdField_a_of_type_AndroidOsBundle.getBoolean("enable_hw_encode");
+  }
+  
+  public boolean h()
+  {
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      return true;
+    }
+    return this.jdField_a_of_type_AndroidOsBundle.getBoolean("extra_enable_revert", true);
+  }
+  
+  public boolean i()
+  {
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      return true;
+    }
+    return this.jdField_a_of_type_AndroidOsBundle.getBoolean("extra_enable_slow", true);
   }
   
   public String toString()

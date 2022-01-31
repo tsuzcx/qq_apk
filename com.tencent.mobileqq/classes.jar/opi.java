@@ -1,40 +1,116 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.annotation.TargetApi;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
+@TargetApi(14)
 public class opi
-  extends Handler
 {
-  public opi(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
+  static String a(InputStream paramInputStream)
   {
-    super(paramLooper);
+    try
+    {
+      paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
+      StringBuilder localStringBuilder = new StringBuilder();
+      for (;;)
+      {
+        String str = paramInputStream.readLine();
+        if (str == null) {
+          break;
+        }
+        localStringBuilder.append(str);
+      }
+      paramInputStream = localStringBuilder.toString();
+    }
+    catch (IOException paramInputStream)
+    {
+      SLog.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
+      return null;
+    }
+    return paramInputStream;
   }
   
-  public void handleMessage(Message paramMessage)
+  static void a(Process paramProcess)
   {
-    switch (paramMessage.what)
+    if (paramProcess != null) {
+      paramProcess.destroy();
+    }
+  }
+  
+  public static void a(opb paramopb)
+  {
+    if ((paramopb != null) && (!paramopb.a()))
     {
-    default: 
-      return;
+      if (paramopb.jdField_a_of_type_JavaLangProcess != null)
+      {
+        paramopb.jdField_a_of_type_JavaLangProcess.destroy();
+        paramopb.jdField_a_of_type_JavaLangProcess = null;
+      }
+      if (!paramopb.isCancelled()) {
+        paramopb.cancel(true);
+      }
+      SLog.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramopb.jdField_a_of_type_ArrayOfJavaLangString) });
     }
-    Object localObject = paramMessage.obj;
-    String str;
-    if (paramMessage.what == 8) {
-      str = "GONE";
+  }
+  
+  public static boolean a(File paramFile)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramFile == null) || (!paramFile.exists())) {
+      bool1 = false;
     }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (paramFile.canExecute());
+      bool1 = bool2;
+    } while (paramFile.setExecutable(true));
+    return false;
+  }
+  
+  static boolean a(Process paramProcess)
+  {
+    if (paramProcess == null) {}
     for (;;)
     {
-      SLog.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
-      this.a.setVisibility(paramMessage.what);
-      return;
-      if (paramMessage.what == 0) {
-        str = "VISIBLE";
-      } else {
-        str = "INVISIBLE";
+      return true;
+      try
+      {
+        paramProcess.exitValue();
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "isProcessCompleted: true  in  process.exitValue()");
+          return true;
+        }
+      }
+      catch (IllegalThreadStateException paramProcess)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "IllegalThreadStateException e, ", paramProcess);
+        }
       }
     }
+    return false;
+  }
+  
+  public static Object[] a(Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  {
+    int i = paramArrayOfObject1.length;
+    int j = paramArrayOfObject2.length;
+    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfObject1.getClass().getComponentType(), i + j);
+    System.arraycopy(paramArrayOfObject1, 0, arrayOfObject, 0, i);
+    System.arraycopy(paramArrayOfObject2, 0, arrayOfObject, i, j);
+    return arrayOfObject;
   }
 }
 

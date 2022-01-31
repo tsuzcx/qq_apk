@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.VideoInfo.VideoRemark;
 
-public class amux
-  implements DialogInterface.OnClickListener
+public final class amux
+  implements Parcelable.Creator
 {
-  public amux(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
+  public VideoInfo.VideoRemark a(Parcel paramParcel)
+  {
+    VideoInfo.VideoRemark localVideoRemark = new VideoInfo.VideoRemark();
+    localVideoRemark.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localVideoRemark.c = paramParcel.readString();
+    localVideoRemark.jdField_a_of_type_Int = paramParcel.readInt();
+    localVideoRemark.d = paramParcel.readString();
+    localVideoRemark.jdField_b_of_type_Int = paramParcel.readInt();
+    return localVideoRemark;
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public VideoInfo.VideoRemark[] a(int paramInt)
+  {
+    return new VideoInfo.VideoRemark[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amux
  * JD-Core Version:    0.7.0.1
  */

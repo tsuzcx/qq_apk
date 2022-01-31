@@ -34,8 +34,8 @@ public class StorySimpleLoadView
   {
     ProgressBar localProgressBar = new ProgressBar(getContext());
     localProgressBar.setIndeterminate(true);
-    localProgressBar.setIndeterminateDrawable(getContext().getResources().getDrawable(2130843693));
-    localProgressBar.setId(2131365203);
+    localProgressBar.setIndeterminateDrawable(getContext().getResources().getDrawable(2130843817));
+    localProgressBar.setId(2131365225);
     int i = UIUtils.a(getContext(), 24.0F);
     Object localObject = new RelativeLayout.LayoutParams(i, i);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);

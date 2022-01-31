@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import kqs;
+import kqd;
 import mqq.app.NewIntent;
 
 public class AccountDetailBaseInfoModel
@@ -54,7 +54,7 @@ public class AccountDetailBaseInfoModel
     localSetFunctionFlagRequset.value.set(paramInt);
     localSetFunctionFlagRequset.account_type.set(1);
     localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
-    localNewIntent.setObserver(new kqs(paramQQAppInterface, paramPaConfigInfo, paramInt, paramString));
+    localNewIntent.setObserver(new kqd(paramQQAppInterface, paramPaConfigInfo, paramInt, paramString));
     paramQQAppInterface.startServlet(localNewIntent);
   }
 }

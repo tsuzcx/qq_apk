@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import aixg;
-import aixh;
+import ajlk;
+import ajll;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
@@ -38,7 +38,7 @@ public class VideoItem
   
   public VideoItem.VideoViewHolder a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = new VideoItem.VideoViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969889, paramViewGroup, false));
+    paramViewGroup = new VideoItem.VideoViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969903, paramViewGroup, false));
     if (QLog.isColorLevel()) {
       QLog.d("VideoItem", 2, new Object[] { "Video onCreateViewHolder. vh hash=", Integer.valueOf(paramViewGroup.hashCode()) });
     }
@@ -51,12 +51,12 @@ public class VideoItem
   
   protected SimpleObserver a(ImageInfo paramImageInfo)
   {
-    return new aixg(this, paramImageInfo);
+    return new ajlk(this, paramImageInfo);
   }
   
   protected SimpleObserver a(VideoInfo paramVideoInfo)
   {
-    return new aixh(this, paramVideoInfo);
+    return new ajll(this, paramVideoInfo);
   }
   
   public void a()
@@ -125,10 +125,10 @@ public class VideoItem
     VideoInfo localVideoInfo = (VideoInfo)paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase;
     switch (paramView.getId())
     {
-    case 2131368353: 
+    case 2131368420: 
     default: 
-    case 2131368354: 
-    case 2131368355: 
+    case 2131368421: 
+    case 2131368422: 
       do
       {
         return;
@@ -249,7 +249,7 @@ public class VideoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem
  * JD-Core Version:    0.7.0.1
  */

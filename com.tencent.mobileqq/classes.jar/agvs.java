@@ -1,22 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
+import com.tencent.mobileqq.qzonealbumreddot.QzonePhotoGuideNotifyService;
+import com.tencent.qphone.base.util.QLog;
 
-class agvs
-  implements ProviderContainerView.ContainerViewListener
+public class agvs
+  implements Runnable
 {
-  agvs(agvq paramagvq) {}
+  public agvs(QzonePhotoGuideNotifyService paramQzonePhotoGuideNotifyService) {}
   
-  public void a() {}
-  
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    EffectsCameraCaptureFragment.e(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("QzonePhotoGuideNotifyServlet", 2, "sendRedRunnable");
+    }
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agvs
  * JD-Core Version:    0.7.0.1
  */

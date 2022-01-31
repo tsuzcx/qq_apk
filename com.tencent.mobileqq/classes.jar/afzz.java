@@ -1,40 +1,35 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import java.util.HashSet;
+import com.tencent.mobileqq.app.NowHandler;
+import com.tencent.mobileqq.now.ChannelResponse;
+import com.tencent.mobileqq.now.NowAppHelper;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-public class afzz
-  implements Animator.AnimatorListener
+class afzz
+  extends DownloadListener
 {
-  public afzz(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, agac paramagac, View paramView) {}
+  afzz(afzy paramafzy) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Agac.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+    super.onDone(paramDownloadTask);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppNowHandler.a("downloadApk", "", "", "", "", paramDownloadTask.a());
+    if (QLog.isColorLevel()) {
+      QLog.d(NowAppHelper.a, 2, "doShortCutAction download onDone,task=" + paramDownloadTask);
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onStart(DownloadTask paramDownloadTask)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Agac.a));
-    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimator.height = -2;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+    if (QLog.isColorLevel()) {
+      QLog.d(NowAppHelper.a, 2, "doShortCutAction download onStart,apkUrl=" + this.a.jdField_a_of_type_ComTencentMobileqqNowChannelResponse.downloadLink);
+    }
+    return super.onStart(paramDownloadTask);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afzz
  * JD-Core Version:    0.7.0.1
  */

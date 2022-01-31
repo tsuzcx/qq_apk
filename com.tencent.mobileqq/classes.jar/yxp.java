@@ -1,104 +1,44 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.WebpSoLoader;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.TbsListener;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-public class yxp
-  implements TbsListener
+class yxp
+  implements View.OnClickListener
 {
-  public yxp(BrowserAppInterface paramBrowserAppInterface, SharedPreferences paramSharedPreferences, long paramLong) {}
+  yxp(yxn paramyxn) {}
   
-  public void onDownloadFinish(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt != 100) && (paramInt != 120))
+    if ((!TextUtils.isEmpty(yxn.a(this.a))) && (!yxn.a(this.a).equals("0")))
     {
-      if (BrowserAppInterface.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+      int i = this.a.a.jdField_a_of_type_Int;
+      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null) {}
+      for (paramView = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);; paramView = "")
       {
-        QbSdk.setTbsListener(null);
-        int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-        long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
-        long l2 = System.currentTimeMillis();
-        long l3 = this.jdField_a_of_type_Long;
-        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        localEditor.putInt("tbs_download_count", i + 1);
-        localEditor.putLong("tbs_download_cost", l1 + (l2 - l3));
-        localEditor.commit();
-        ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_download_error", 0, 1, paramInt, "", "", "", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("TBS_update", 2, "tbs download aborted:" + paramInt);
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_Boolean) {
-        BrowserAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_AndroidContentIntent);
+        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { paramView });
+        paramView = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
+        paramView.putExtra("uin", yxn.a(this.a));
+        paramView.putExtra("uintype", 1008);
+        this.a.a.getActivity().startActivity(paramView);
+        return;
       }
     }
-    do
-    {
-      return;
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_download_ok", 0, 1, paramInt, "", "", "", "");
-    } while (!QLog.isColorLevel());
-    QLog.d("TBS_update", 2, "tbs download finished");
-  }
-  
-  public void onDownloadProgress(int paramInt) {}
-  
-  public void onInstallFinish(int paramInt)
-  {
-    int i;
-    long l1;
-    long l2;
-    long l3;
-    SharedPreferences.Editor localEditor;
-    if (BrowserAppInterface.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
-    {
-      QbSdk.setTbsListener(null);
-      if ((paramInt == 200) || (paramInt == 220)) {
-        break label197;
-      }
-      i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
-      l2 = System.currentTimeMillis();
-      l3 = this.jdField_a_of_type_Long;
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.putInt("tbs_download_count", i + 1);
-      localEditor.putLong("tbs_download_cost", l1 + (l2 - l3));
-      localEditor.commit();
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_install_error", 0, 1, paramInt, "", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("TBS_update", 2, "tbs install error:" + paramInt);
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_Boolean) {
-        BrowserAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.jdField_a_of_type_AndroidContentIntent);
-      }
-      return;
-      label197:
-      i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("tbs_download_count", 0);
-      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("tbs_download_cost", 0L);
-      l2 = System.currentTimeMillis();
-      l3 = this.jdField_a_of_type_Long;
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.remove("tbs_download_count");
-      localEditor.remove("tbs_download_cost");
-      localEditor.commit();
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "tbs_install_ok", 0, 1, paramInt, Long.toString(l1 + (l2 - l3)), Integer.toString(i + 1), "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("TBS_update", 2, "tbs install finished:" + paramInt);
-      }
-      WebpSoLoader.a(false);
-    }
+    QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yxp
  * JD-Core Version:    0.7.0.1
  */

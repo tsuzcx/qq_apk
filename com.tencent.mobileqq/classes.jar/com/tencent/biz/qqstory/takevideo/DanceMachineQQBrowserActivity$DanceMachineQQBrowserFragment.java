@@ -22,7 +22,7 @@ import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.util.WeakReferenceHandler;
-import oav;
+import ocn;
 
 public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
@@ -37,13 +37,13 @@ public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
   private void a(RelativeLayout paramRelativeLayout)
   {
     FadedButton localFadedButton = new FadedButton(getActivity());
-    localFadedButton.setBackgroundResource(2130843080);
+    localFadedButton.setBackgroundResource(2130843179);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(ScreenUtil.a(40.0F), ScreenUtil.a(40.0F));
     localLayoutParams.addRule(12, -1);
     localLayoutParams.addRule(14, -1);
     localLayoutParams.bottomMargin = ScreenUtil.a(35.0F);
     localFadedButton.setLayoutParams(localLayoutParams);
-    localFadedButton.setOnClickListener(new oav(this));
+    localFadedButton.setOnClickListener(new ocn(this));
     paramRelativeLayout.addView(localFadedButton);
   }
   

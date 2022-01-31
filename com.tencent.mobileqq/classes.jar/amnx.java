@@ -1,18 +1,21 @@
-import cooperation.qzone.widget.QzoneGuideBubbleHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
 public class amnx
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public amnx(QzoneGuideBubbleHelper paramQzoneGuideBubbleHelper) {}
+  public amnx(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amnx
  * JD-Core Version:    0.7.0.1
  */

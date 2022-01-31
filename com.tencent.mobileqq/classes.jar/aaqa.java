@@ -1,25 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 
-public final class aaqa
-  implements View.OnClickListener
+class aaqa
+  implements Runnable
 {
-  public aaqa(boolean paramBoolean, String paramString) {}
+  aaqa(aapz paramaapz) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent();
-    paramView.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserDelegationActivity");
-    paramView.putExtra("param_force_internal_browser", this.jdField_a_of_type_Boolean);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("injectrecommend", false);
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity != null) {
-      localBaseActivity.startActivity(paramView);
-    }
+    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, 16L, this.a.a.b, 1);
   }
 }
 

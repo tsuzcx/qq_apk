@@ -1,12 +1,22 @@
-import android.graphics.Path;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
 
-public class uqa
+class uqa
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public Path a;
-  public List a;
-  public boolean a;
+  uqa(upz paramupz, ViewGroup paramViewGroup) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+  }
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import akay;
-import akba;
-import akbb;
+import akpf;
+import akph;
+import akpi;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
@@ -134,7 +134,7 @@ public class SwiftBrowserOfflineHandler
   public void a()
   {
     this.b.compareAndSet(2, 3);
-    new Handler(Looper.getMainLooper()).post(new akbb(this));
+    new Handler(Looper.getMainLooper()).post(new akpi(this));
   }
   
   public void a(SwiftBrowserOfflineHandler.CheckOfflineCallback paramCheckOfflineCallback, String paramString)
@@ -152,12 +152,12 @@ public class SwiftBrowserOfflineHandler
       if ((paramCheckOfflineCallback != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramCheckOfflineCallback))) {
         this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramCheckOfflineCallback);
       }
-      paramCheckOfflineCallback = new akay(this, paramString);
+      paramCheckOfflineCallback = new akpf(this, paramString);
     } while (!this.b.compareAndSet(1, 2));
     if (QLog.isColorLevel()) {
       QLog.i("SwiftBrowserOfflineHandler", 2, "post thread to check offline, bid = " + this.jdField_a_of_type_JavaLangString);
     }
-    ThreadManager.postImmediately(paramCheckOfflineCallback, new akba(this), false);
+    ThreadManager.postImmediately(paramCheckOfflineCallback, new akph(this), false);
   }
   
   public boolean a()
@@ -216,7 +216,7 @@ public class SwiftBrowserOfflineHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler
  * JD-Core Version:    0.7.0.1
  */

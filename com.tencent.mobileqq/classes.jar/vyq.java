@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationItem;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
-import java.util.HashMap;
-import java.util.Queue;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
 
-public class vyq
-  implements Runnable
+class vyq
+  implements WebProcessManager.WebProcessStartListener
 {
-  public vyq(StickerBubbleAnimationView paramStickerBubbleAnimationView, StickerBubbleAnimationItem paramStickerBubbleAnimationItem) {}
+  vyq(vyp paramvyp) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    Queue localQueue = (Queue)StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).get(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem.a());
-    if ((localQueue == null) || (!localQueue.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem))) {
-      ((Queue)StickerBubbleAnimationView.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).get(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem.a())).remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem);
+    if (paramBoolean) {
+      this.a.a.a.a();
     }
   }
 }

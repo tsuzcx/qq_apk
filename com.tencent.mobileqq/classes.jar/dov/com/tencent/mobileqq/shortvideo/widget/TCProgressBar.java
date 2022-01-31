@@ -12,10 +12,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.TouchDelegate;
 import android.view.View;
-import aoas;
-import aoat;
-import aoav;
-import aoaw;
+import aoqx;
+import aoqy;
+import aora;
+import aorb;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.util.ArrayList;
@@ -31,9 +31,9 @@ public class TCProgressBar
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
   public Handler a;
   TouchDelegate jdField_a_of_type_AndroidViewTouchDelegate = new TouchDelegate(this.jdField_a_of_type_AndroidGraphicsRect, this);
-  public aoas a;
-  aoat jdField_a_of_type_Aoat = new aoat(this);
-  aoav jdField_a_of_type_Aoav = new aoav(this, true);
+  public aoqx a;
+  aoqy jdField_a_of_type_Aoqy = new aoqy(this);
+  aora jdField_a_of_type_Aora = new aora(this, true);
   public TCProgressBar.DelEvent a;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
   boolean jdField_a_of_type_Boolean;
@@ -62,16 +62,16 @@ public class TCProgressBar
     this.jdField_f_of_type_Int = 0;
     this.jdField_g_of_type_Int = 1310991405;
     this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_Aoas = new aoas(this);
+    this.jdField_a_of_type_Aoqx = new aoqx(this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_Int = 3;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130843156);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130843155);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130843255);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130843254);
       this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aoaw(this), this.d);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aorb(this), this.d);
       return;
     }
     catch (OutOfMemoryError paramContext)
@@ -88,7 +88,7 @@ public class TCProgressBar
   {
     int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
     if (i1 > 0) {
-      return ((aoav)this.jdField_a_of_type_JavaUtilArrayList.get(i1 - 1)).jdField_b_of_type_Int;
+      return ((aora)this.jdField_a_of_type_JavaUtilArrayList.get(i1 - 1)).jdField_b_of_type_Int;
     }
     return -1;
   }
@@ -121,20 +121,20 @@ public class TCProgressBar
     {
       invalidate();
       return;
-      this.jdField_a_of_type_Aoas.jdField_e_of_type_Boolean = true;
-      this.jdField_a_of_type_Aoat.jdField_e_of_type_Boolean = false;
+      this.jdField_a_of_type_Aoqx.jdField_e_of_type_Boolean = true;
+      this.jdField_a_of_type_Aoqy.jdField_e_of_type_Boolean = false;
       continue;
-      this.jdField_a_of_type_Aoas.jdField_e_of_type_Boolean = false;
-      this.jdField_a_of_type_Aoat.jdField_e_of_type_Boolean = true;
-      this.jdField_a_of_type_Aoat.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Aoqx.jdField_e_of_type_Boolean = false;
+      this.jdField_a_of_type_Aoqy.jdField_e_of_type_Boolean = true;
+      this.jdField_a_of_type_Aoqy.jdField_a_of_type_Boolean = true;
       continue;
-      this.jdField_a_of_type_Aoas.jdField_e_of_type_Boolean = true;
-      this.jdField_a_of_type_Aoat.jdField_e_of_type_Boolean = false;
-      aoav localaoav = new aoav(this, false);
-      localaoav.jdField_b_of_type_Boolean = false;
-      localaoav.jdField_c_of_type_Int = 0;
-      localaoav.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localaoav);
+      this.jdField_a_of_type_Aoqx.jdField_e_of_type_Boolean = true;
+      this.jdField_a_of_type_Aoqy.jdField_e_of_type_Boolean = false;
+      aora localaora = new aora(this, false);
+      localaora.jdField_b_of_type_Boolean = false;
+      localaora.jdField_c_of_type_Int = 0;
+      localaora.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localaora);
       continue;
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_b_of_type_JavaUtilArrayList.clear();
@@ -174,12 +174,12 @@ public class TCProgressBar
     int i1 = 0;
     while (i1 < i5 - 1)
     {
-      localaoav = (aoav)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if (localaoav.d)
+      localaora = (aora)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+      if (localaora.d)
       {
-        localaoav.jdField_f_of_type_Int = a(localaoav.jdField_c_of_type_Int - localaoav.jdField_b_of_type_Int, i4);
-        localaoav.jdField_g_of_type_Int = a(localaoav.jdField_b_of_type_Int, i4);
-        localaoav.jdField_a_of_type_Boolean = false;
+        localaora.jdField_f_of_type_Int = a(localaora.jdField_c_of_type_Int - localaora.jdField_b_of_type_Int, i4);
+        localaora.jdField_g_of_type_Int = a(localaora.jdField_b_of_type_Int, i4);
+        localaora.jdField_a_of_type_Boolean = false;
       }
       i1 += 1;
     }
@@ -187,29 +187,29 @@ public class TCProgressBar
     i1 = 0;
     while (i1 < i8)
     {
-      localaoav = (aoav)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
-      if (localaoav.d)
+      localaora = (aora)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
+      if (localaora.d)
       {
-        localaoav.jdField_f_of_type_Int = a(localaoav.jdField_c_of_type_Int - localaoav.jdField_b_of_type_Int, i4);
-        localaoav.jdField_g_of_type_Int = a(localaoav.jdField_b_of_type_Int, i4);
-        localaoav.jdField_a_of_type_Boolean = false;
+        localaora.jdField_f_of_type_Int = a(localaora.jdField_c_of_type_Int - localaora.jdField_b_of_type_Int, i4);
+        localaora.jdField_g_of_type_Int = a(localaora.jdField_b_of_type_Int, i4);
+        localaora.jdField_a_of_type_Boolean = false;
       }
       i1 += 1;
     }
     if (i5 > 0)
     {
-      localaoav = (aoav)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
-      localaoav.jdField_f_of_type_Boolean = true;
-      localaoav.jdField_a_of_type_Boolean = false;
-      if (!localaoav.jdField_g_of_type_Boolean)
+      localaora = (aora)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
+      localaora.jdField_f_of_type_Boolean = true;
+      localaora.jdField_a_of_type_Boolean = false;
+      if (!localaora.jdField_g_of_type_Boolean)
       {
-        localaoav.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-        localaoav.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - this.o);
+        localaora.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
+        localaora.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - this.o);
       }
-      if (localaoav.d)
+      if (localaora.d)
       {
-        localaoav.jdField_f_of_type_Int = a(localaoav.jdField_c_of_type_Int - localaoav.jdField_b_of_type_Int, i4);
-        localaoav.jdField_g_of_type_Int = a(localaoav.jdField_b_of_type_Int, i4);
+        localaora.jdField_f_of_type_Int = a(localaora.jdField_c_of_type_Int - localaora.jdField_b_of_type_Int, i4);
+        localaora.jdField_g_of_type_Int = a(localaora.jdField_b_of_type_Int, i4);
       }
     }
     int i2;
@@ -219,113 +219,113 @@ public class TCProgressBar
     {
       i2 = i4;
       i1 = 0;
-      if ((this.jdField_a_of_type_Aoas.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Aoas.d))
+      if ((this.jdField_a_of_type_Aoqx.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Aoqx.d))
       {
-        this.jdField_a_of_type_Aoas.jdField_f_of_type_Int = i1;
-        this.jdField_a_of_type_Aoas.jdField_g_of_type_Int = this.n;
+        this.jdField_a_of_type_Aoqx.jdField_f_of_type_Int = i1;
+        this.jdField_a_of_type_Aoqx.jdField_g_of_type_Int = this.n;
       }
-      i9 = this.jdField_a_of_type_Aoat.a();
+      i9 = this.jdField_a_of_type_Aoqy.a();
       i3 = i5;
-      if (this.jdField_a_of_type_Aoat.jdField_e_of_type_Boolean)
+      if (this.jdField_a_of_type_Aoqy.jdField_e_of_type_Boolean)
       {
         i3 = i5;
-        if (this.jdField_a_of_type_Aoat.d)
+        if (this.jdField_a_of_type_Aoqy.d)
         {
-          this.jdField_a_of_type_Aoat.jdField_g_of_type_Int = this.jdField_e_of_type_Int;
-          if (!this.jdField_a_of_type_Aoat.jdField_c_of_type_Boolean) {
+          this.jdField_a_of_type_Aoqy.jdField_g_of_type_Int = this.jdField_e_of_type_Int;
+          if (!this.jdField_a_of_type_Aoqy.jdField_c_of_type_Boolean) {
             break label879;
           }
-          this.jdField_a_of_type_Aoat.jdField_f_of_type_Int = (i1 - 3);
+          this.jdField_a_of_type_Aoqy.jdField_f_of_type_Int = (i1 - 3);
         }
       }
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Aoat.jdField_f_of_type_Int < 0) && (this.jdField_a_of_type_Aoat.jdField_c_of_type_Boolean)) {
-        this.jdField_a_of_type_Aoat.jdField_f_of_type_Int = 0;
+      if ((this.jdField_a_of_type_Aoqy.jdField_f_of_type_Int < 0) && (this.jdField_a_of_type_Aoqy.jdField_c_of_type_Boolean)) {
+        this.jdField_a_of_type_Aoqy.jdField_f_of_type_Int = 0;
       }
-      if (this.jdField_a_of_type_Aoat.jdField_f_of_type_Int + this.jdField_a_of_type_Aoat.jdField_g_of_type_Int + 1 >= i7) {
-        this.jdField_a_of_type_Aoat.jdField_f_of_type_Int = (i7 - this.jdField_a_of_type_Aoat.jdField_g_of_type_Int);
+      if (this.jdField_a_of_type_Aoqy.jdField_f_of_type_Int + this.jdField_a_of_type_Aoqy.jdField_g_of_type_Int + 1 >= i7) {
+        this.jdField_a_of_type_Aoqy.jdField_f_of_type_Int = (i7 - this.jdField_a_of_type_Aoqy.jdField_g_of_type_Int);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("TCProgressBar", 2, "layout:delete.requestLayout" + this.jdField_a_of_type_Aoat.jdField_c_of_type_Boolean);
+        QLog.d("TCProgressBar", 2, "layout:delete.requestLayout" + this.jdField_a_of_type_Aoqy.jdField_c_of_type_Boolean);
       }
       i3 = i5;
-      if (!this.jdField_a_of_type_Aoat.jdField_c_of_type_Boolean)
+      if (!this.jdField_a_of_type_Aoqy.jdField_c_of_type_Boolean)
       {
         i5 = this.jdField_a_of_type_JavaUtilArrayList.size();
         if (i5 > 0)
         {
-          localaoav = (aoav)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
-          localaoav.jdField_f_of_type_Boolean = false;
-          if (localaoav.a(i9))
+          localaora = (aora)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
+          localaora.jdField_f_of_type_Boolean = false;
+          if (localaora.a(i9))
           {
             if (QLog.isColorLevel()) {
               QLog.d("TCProgressBar", 2, "layout:progress.checkBounds=true");
             }
-            localaoav.jdField_a_of_type_Int = (this.jdField_a_of_type_Aoat.jdField_f_of_type_Int + 3);
-            localaoav.jdField_a_of_type_Boolean = true;
+            localaora.jdField_a_of_type_Int = (this.jdField_a_of_type_Aoqy.jdField_f_of_type_Int + 3);
+            localaora.jdField_a_of_type_Boolean = true;
           }
         }
         i3 = i5;
         if (i8 > 0)
         {
-          localaoav = (aoav)this.jdField_b_of_type_JavaUtilArrayList.get(i8 - 1);
+          localaora = (aora)this.jdField_b_of_type_JavaUtilArrayList.get(i8 - 1);
           i3 = i5;
-          if (localaoav.a(i9))
+          if (localaora.a(i9))
           {
             if (QLog.isColorLevel()) {
               QLog.d("TCProgressBar", 2, "layout:deletedList.checkBounds=true");
             }
-            localaoav.jdField_a_of_type_Int = (this.jdField_a_of_type_Aoat.jdField_f_of_type_Int + 3);
-            localaoav.jdField_a_of_type_Boolean = true;
+            localaora.jdField_a_of_type_Int = (this.jdField_a_of_type_Aoqy.jdField_f_of_type_Int + 3);
+            localaora.jdField_a_of_type_Boolean = true;
             i3 = i5;
           }
         }
       }
       if (i3 > 0)
       {
-        localaoav = (aoav)this.jdField_a_of_type_JavaUtilArrayList.get(i3 - 1);
-        if (localaoav.h) {
-          localaoav.jdField_g_of_type_Int = (i4 - localaoav.jdField_f_of_type_Int);
+        localaora = (aora)this.jdField_a_of_type_JavaUtilArrayList.get(i3 - 1);
+        if (localaora.h) {
+          localaora.jdField_g_of_type_Int = (i4 - localaora.jdField_f_of_type_Int);
         }
       }
       if (i8 > 0)
       {
-        localaoav = (aoav)this.jdField_b_of_type_JavaUtilArrayList.get(0);
-        if (localaoav.h) {
-          localaoav.jdField_g_of_type_Int = (i7 - localaoav.jdField_f_of_type_Int);
+        localaora = (aora)this.jdField_b_of_type_JavaUtilArrayList.get(0);
+        if (localaora.h) {
+          localaora.jdField_g_of_type_Int = (i7 - localaora.jdField_f_of_type_Int);
         }
-        i1 = localaoav.jdField_f_of_type_Int + localaoav.jdField_g_of_type_Int;
+        i1 = localaora.jdField_f_of_type_Int + localaora.jdField_g_of_type_Int;
         i2 = i4 - i1;
       }
-      if (this.jdField_a_of_type_Aoav.d)
+      if (this.jdField_a_of_type_Aora.d)
       {
-        this.jdField_a_of_type_Aoav.jdField_f_of_type_Int = i1;
-        this.jdField_a_of_type_Aoav.jdField_g_of_type_Int = i2;
-        if (this.jdField_a_of_type_Aoav.jdField_g_of_type_Int > 1) {
+        this.jdField_a_of_type_Aora.jdField_f_of_type_Int = i1;
+        this.jdField_a_of_type_Aora.jdField_g_of_type_Int = i2;
+        if (this.jdField_a_of_type_Aora.jdField_g_of_type_Int > 1) {
           break label919;
         }
-        this.jdField_a_of_type_Aoav.jdField_e_of_type_Boolean = false;
+        this.jdField_a_of_type_Aora.jdField_e_of_type_Boolean = false;
       }
       return;
-      localaoav = (aoav)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
-      i2 = localaoav.jdField_f_of_type_Int + localaoav.jdField_g_of_type_Int;
+      localaora = (aora)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1);
+      i2 = localaora.jdField_f_of_type_Int + localaora.jdField_g_of_type_Int;
       i1 = i2;
       i2 = i4 - i2;
       break;
       label879:
       if ((i8 == 0) && (i9 > i1))
       {
-        this.jdField_a_of_type_Aoat.jdField_f_of_type_Int = (i1 - 3);
-        this.jdField_a_of_type_Aoat.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Aoat.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_Aoqy.jdField_f_of_type_Int = (i1 - 3);
+        this.jdField_a_of_type_Aoqy.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Aoqy.jdField_c_of_type_Boolean = true;
       }
     }
     label919:
-    this.jdField_a_of_type_Aoav.jdField_e_of_type_Boolean = true;
-    aoav localaoav = this.jdField_a_of_type_Aoav;
-    localaoav.jdField_g_of_type_Int += i6;
+    this.jdField_a_of_type_Aora.jdField_e_of_type_Boolean = true;
+    aora localaora = this.jdField_a_of_type_Aora;
+    localaora.jdField_g_of_type_Int += i6;
   }
   
   public int c()
@@ -333,7 +333,7 @@ public class TCProgressBar
     int i1 = 0;
     int i2 = this.jdField_a_of_type_JavaUtilArrayList.size();
     if (i2 > 0) {
-      i1 = ((aoav)this.jdField_a_of_type_JavaUtilArrayList.get(i2 - 1)).jdField_c_of_type_Int;
+      i1 = ((aora)this.jdField_a_of_type_JavaUtilArrayList.get(i2 - 1)).jdField_c_of_type_Int;
     }
     return i1;
   }
@@ -343,16 +343,16 @@ public class TCProgressBar
     int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
     if (i1 > 0)
     {
-      aoav localaoav = (aoav)this.jdField_a_of_type_JavaUtilArrayList.get(i1 - 1);
+      aora localaora = (aora)this.jdField_a_of_type_JavaUtilArrayList.get(i1 - 1);
       if (this.jdField_a_of_type_Boolean)
       {
-        localaoav.h = true;
+        localaora.h = true;
         this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
       }
-      localaoav.jdField_b_of_type_Boolean = false;
-      localaoav.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-      localaoav.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - this.o);
-      localaoav.jdField_g_of_type_Boolean = true;
+      localaora.jdField_b_of_type_Boolean = false;
+      localaora.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
+      localaora.jdField_b_of_type_Int = (this.jdField_c_of_type_Int - this.o);
+      localaora.jdField_g_of_type_Boolean = true;
       this.o = this.jdField_c_of_type_Int;
     }
   }
@@ -385,7 +385,7 @@ public class TCProgressBar
       int i4 = i3 / 7;
       int i5 = i4 * 3;
       b();
-      this.jdField_a_of_type_Aoat.jdField_e_of_type_Int = i3;
+      this.jdField_a_of_type_Aoqy.jdField_e_of_type_Int = i3;
       this.jdField_b_of_type_AndroidGraphicsRect.left = 0;
       this.jdField_b_of_type_AndroidGraphicsRect.right = i1;
       this.jdField_b_of_type_AndroidGraphicsRect.top = 0;
@@ -400,12 +400,12 @@ public class TCProgressBar
       this.jdField_b_of_type_AndroidGraphicsRect.bottom = (i5 + i4);
       i3 = this.jdField_a_of_type_JavaUtilArrayList.size();
       i1 = 0;
-      aoav localaoav;
+      aora localaora;
       while (i1 < i3)
       {
-        localaoav = (aoav)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if ((localaoav.d) && (localaoav.jdField_e_of_type_Boolean)) {
-          localaoav.a(paramCanvas);
+        localaora = (aora)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+        if ((localaora.d) && (localaora.jdField_e_of_type_Boolean)) {
+          localaora.a(paramCanvas);
         }
         i1 += 1;
       }
@@ -413,20 +413,20 @@ public class TCProgressBar
       i1 = i2;
       while (i1 < i3)
       {
-        localaoav = (aoav)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
-        if ((localaoav.d) && (localaoav.jdField_e_of_type_Boolean)) {
-          localaoav.a(paramCanvas);
+        localaora = (aora)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
+        if ((localaora.d) && (localaora.jdField_e_of_type_Boolean)) {
+          localaora.a(paramCanvas);
         }
         i1 += 1;
       }
-      if ((this.jdField_a_of_type_Aoav.d) && (this.jdField_a_of_type_Aoav.jdField_e_of_type_Boolean)) {
-        this.jdField_a_of_type_Aoav.a(paramCanvas);
+      if ((this.jdField_a_of_type_Aora.d) && (this.jdField_a_of_type_Aora.jdField_e_of_type_Boolean)) {
+        this.jdField_a_of_type_Aora.a(paramCanvas);
       }
-      if ((this.jdField_a_of_type_Aoas.d) && (this.jdField_a_of_type_Aoas.jdField_e_of_type_Boolean)) {
-        this.jdField_a_of_type_Aoas.a(paramCanvas);
+      if ((this.jdField_a_of_type_Aoqx.d) && (this.jdField_a_of_type_Aoqx.jdField_e_of_type_Boolean)) {
+        this.jdField_a_of_type_Aoqx.a(paramCanvas);
       }
-    } while ((!this.jdField_a_of_type_Aoat.d) || (!this.jdField_a_of_type_Aoat.jdField_e_of_type_Boolean));
-    this.jdField_a_of_type_Aoat.a(paramCanvas);
+    } while ((!this.jdField_a_of_type_Aoqy.d) || (!this.jdField_a_of_type_Aoqy.jdField_e_of_type_Boolean));
+    this.jdField_a_of_type_Aoqy.a(paramCanvas);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -463,25 +463,25 @@ public class TCProgressBar
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
       this.jdField_f_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.size();
       this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Aoat.a(f1))
+      if (this.jdField_a_of_type_Aoqy.a(f1))
       {
-        this.jdField_a_of_type_Aoat.a(paramMotionEvent);
+        this.jdField_a_of_type_Aoqy.a(paramMotionEvent);
         continue;
         if (QLog.isColorLevel()) {
           QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_MOVE count=" + i1 + " X=" + f1);
         }
-        if (this.jdField_a_of_type_Aoat.jdField_b_of_type_Boolean)
+        if (this.jdField_a_of_type_Aoqy.jdField_b_of_type_Boolean)
         {
-          this.jdField_a_of_type_Aoat.a(paramMotionEvent);
-          if (this.jdField_a_of_type_Aoat.a())
+          this.jdField_a_of_type_Aoqy.a(paramMotionEvent);
+          if (this.jdField_a_of_type_Aoqy.a())
           {
-            i2 = this.jdField_a_of_type_Aoat.a();
-            if (this.jdField_a_of_type_Aoat.jdField_c_of_type_Int < 0)
+            i2 = this.jdField_a_of_type_Aoqy.a();
+            if (this.jdField_a_of_type_Aoqy.jdField_c_of_type_Int < 0)
             {
               i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
               while (i1 >= 0)
               {
-                paramMotionEvent = (aoav)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+                paramMotionEvent = (aora)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
                 if (!paramMotionEvent.b(i2)) {
                   break;
                 }
@@ -497,7 +497,7 @@ public class TCProgressBar
             i1 = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
             while (i1 >= 0)
             {
-              paramMotionEvent = (aoav)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
+              paramMotionEvent = (aora)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
               if (!paramMotionEvent.c(i2)) {
                 break;
               }
@@ -514,10 +514,10 @@ public class TCProgressBar
             if (QLog.isColorLevel()) {
               QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_UP count=" + i1 + " X=" + f1);
             }
-            if (this.jdField_a_of_type_Aoat.jdField_b_of_type_Boolean)
+            if (this.jdField_a_of_type_Aoqy.jdField_b_of_type_Boolean)
             {
-              this.jdField_a_of_type_Aoat.a(paramMotionEvent);
-              if (this.jdField_a_of_type_Aoat.a(f1))
+              this.jdField_a_of_type_Aoqy.a(paramMotionEvent);
+              if (this.jdField_a_of_type_Aoqy.a(f1))
               {
                 if (QLog.isColorLevel()) {
                   QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_UP[checkBounds:true] count=" + i1 + " X=" + f1);
@@ -527,7 +527,7 @@ public class TCProgressBar
                   i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
                   if (i1 > 0)
                   {
-                    paramMotionEvent = (aoav)this.jdField_a_of_type_JavaUtilArrayList.remove(i1 - 1);
+                    paramMotionEvent = (aora)this.jdField_a_of_type_JavaUtilArrayList.remove(i1 - 1);
                     paramMotionEvent.jdField_b_of_type_Boolean = true;
                     this.jdField_b_of_type_JavaUtilArrayList.add(paramMotionEvent);
                     if (QLog.isColorLevel()) {
@@ -537,11 +537,11 @@ public class TCProgressBar
                 }
               }
               if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0) {}
-              for (this.jdField_a_of_type_Aoat.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_Aoat.jdField_a_of_type_Boolean = true)
+              for (this.jdField_a_of_type_Aoqy.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_Aoqy.jdField_a_of_type_Boolean = true)
               {
                 invalidate();
                 if (QLog.isColorLevel()) {
-                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_Aoat.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_Aoat.d);
+                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_Aoqy.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_Aoqy.d);
                 }
                 i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
                 if (this.jdField_f_of_type_Int - i1 > 0) {
@@ -556,12 +556,12 @@ public class TCProgressBar
               if (QLog.isColorLevel()) {
                 QLog.d("TCProgressBar", 2, "onTouchEvent:action=ACTION_CANCEL count=" + i1 + " X=" + f1);
               }
-              if (this.jdField_a_of_type_Aoat.jdField_b_of_type_Boolean)
+              if (this.jdField_a_of_type_Aoqy.jdField_b_of_type_Boolean)
               {
-                this.jdField_a_of_type_Aoat.a(paramMotionEvent);
+                this.jdField_a_of_type_Aoqy.a(paramMotionEvent);
                 invalidate();
                 if (QLog.isColorLevel()) {
-                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_Aoat.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_Aoat.d);
+                  QLog.d("TCProgressBar", 2, "[@] [...]delete.enabled=" + this.jdField_a_of_type_Aoqy.jdField_e_of_type_Boolean + "delete.changed=" + this.jdField_a_of_type_Aoqy.d);
                 }
                 i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
                 if (this.jdField_f_of_type_Int - i1 > 0) {

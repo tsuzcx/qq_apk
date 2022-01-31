@@ -1,26 +1,31 @@
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.PoiItemAdapter;
-import com.tencent.biz.PoiMapActivity.PoiTab;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.ImageView;
+import com.tencent.biz.addContactTroopView.TroopCardBanner;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import tencent.im.troop_search_popclassifc.popclassifc.BannerCard;
 
 public class kkj
-  implements AbsListView.OnScrollListener
+  implements ViewPager.OnPageChangeListener
 {
-  public kkj(PoiMapActivity.PoiTab paramPoiTab, PoiMapActivity paramPoiMapActivity) {}
+  public kkj(TroopCardBanner paramTroopCardBanner) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter.b))
+    if ((this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard != null) && (this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.size() > 1))
     {
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.b(false);
-      if (!PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity)) {
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "turn_page", this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.f, this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.e, "", "");
+      if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837575);
       }
+      paramInt %= this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$BannerCard.rpt_banner_items.size();
+      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).setImageResource(2130837574);
+      this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
     }
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

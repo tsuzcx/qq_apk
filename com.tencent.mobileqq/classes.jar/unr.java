@@ -1,29 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
 
 public class unr
-  extends Handler
+  implements Runnable
 {
-  public unr(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public unr(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.f(1);
     this.a.b();
-    QQToast.a(this.a.a.a(), this.a.a.a().getString(2131433368), 1).a();
   }
 }
 

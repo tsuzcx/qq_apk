@@ -1,14 +1,50 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
-import com.tencent.mobileqq.data.MessageForFile;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.UnlimitedState;
 
 public class vlf
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public vlf(AIOImageProviderService paramAIOImageProviderService, MessageForFile paramMessageForFile, long paramLong, int paramInt1, int paramInt2) {}
+  private vlf(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
+    if (UnlimitedBladeWorks.a(this.a).a)
+    {
+      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
+        break label55;
+      }
+      UnlimitedBladeWorks.a(this.a);
+      UnlimitedBladeWorks.a(this.a, 5);
+    }
+    for (;;)
+    {
+      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
+      return;
+      label55:
+      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a(new vlg(this));
+      UnlimitedBladeWorks.a(this.a).c();
+      UnlimitedBladeWorks.a(this.a, 1);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (UnlimitedBladeWorks.a(this.a))
+    {
+      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      return;
+    }
+    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
   }
 }
 

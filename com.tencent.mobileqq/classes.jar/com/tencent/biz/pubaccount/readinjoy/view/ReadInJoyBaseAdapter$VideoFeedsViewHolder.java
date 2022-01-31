@@ -8,7 +8,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.image.URLImageView;
 
 public class ReadInJoyBaseAdapter$VideoFeedsViewHolder
   extends ReadInJoyBaseAdapter.ViewHolder
@@ -22,9 +21,10 @@ public class ReadInJoyBaseAdapter$VideoFeedsViewHolder
   public TextView a;
   public VideoPlayManager.VideoPlayParam a;
   public KandianUrlImageView a;
+  public ReadInJoyHeadImageView a;
+  public ReadInJoyNickNameTextView a;
   public ReadInJoyVideoInfoViewGroup a;
   public VideoViewGroup a;
-  public URLImageView a;
   public View b;
   public ViewGroup b;
   public ImageView b;
@@ -43,7 +43,6 @@ public class ReadInJoyBaseAdapter$VideoFeedsViewHolder
   public TextView g;
   public TextView h;
   public TextView i;
-  public TextView j;
 }
 
 

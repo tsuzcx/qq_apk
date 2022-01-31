@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
 
 public class aepl
-  implements ConditionSearchManager.IConfigListener
+  implements View.OnClickListener
 {
-  public aepl(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public aepl(RecentUserInvitePanel paramRecentUserInvitePanel) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.a();
-    if (!paramBoolean) {
-      this.a.b(this.a.getString(2131437281));
+    if (this.a.a != null) {
+      this.a.a.a(paramView);
     }
-    while ((this.a.e != 1) || (paramInt != 2)) {
-      return;
-    }
-    NearbyPeopleProfileActivity.a(this.a).c();
   }
 }
 

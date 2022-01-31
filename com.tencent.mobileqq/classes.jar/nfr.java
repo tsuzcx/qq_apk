@@ -1,20 +1,23 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.network.handler.OfficialRecommendListPageLoader;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nfr
-  extends AddPollViewJob
+  implements LbsManager.LbsUpdateListener
 {
-  public nfr(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareWeChatData paramShareWeChatData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public nfr(OfficialRecommendListPageLoader paramOfficialRecommendListPageLoader) {}
   
-  public boolean b()
+  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.e = ((String)a("result"));
-    return true;
+    SLog.b(":OfficialRecommendListPageLoader", "GetOfficialRecommendStoryListRequest onLbsUpdate.");
+    if (!paramBoolean) {
+      SLog.e(":OfficialRecommendListPageLoader", "GetOfficialRecommendStoryListRequest failed.");
+    }
+    this.a.a(paramBasicLocation);
+    ((LbsManager)SuperManager.a(9)).b(OfficialRecommendListPageLoader.a(this.a));
   }
 }
 

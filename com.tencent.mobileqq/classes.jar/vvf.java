@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
 
 public class vvf
   implements Runnable
 {
-  public vvf(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vvf(HotChatPie paramHotChatPie, boolean paramBoolean) {}
   
   public void run()
   {
-    TroopBarAssistantManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.x()) {
+      return;
+    }
+    HotChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,11 +1,11 @@
 package cooperation.weiyun;
 
-import amrb;
-import amrc;
-import amrd;
-import amre;
 import android.app.Activity;
 import android.os.Looper;
+import anhg;
+import anhh;
+import anhi;
+import anhj;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FlashPicHelper;
 import com.tencent.mobileqq.app.HotChatHelper;
@@ -116,7 +116,7 @@ public class WeiyunAIOUtils
         return false;
       }
       if (i != 0) {
-        FMDialogUtil.a(BaseActivity.sTopActivity, 2131428241, 2131428237, new amrb(paramActivity, paramQQAppInterface, localArrayList1, localArrayList2, localArrayList3, paramMqqHandler, paramInt));
+        FMDialogUtil.a(BaseActivity.sTopActivity, 2131428241, 2131428237, new anhg(paramActivity, paramQQAppInterface, localArrayList1, localArrayList2, localArrayList3, paramMqqHandler, paramInt));
       }
     }
     while (bool)
@@ -138,13 +138,13 @@ public class WeiyunAIOUtils
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80067F8", "0X80067F8", 0, 0, "", "", "", "");
     if (!NetworkUtil.d(paramActivity))
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131432992, 0).b(paramInt);
+      QQToast.a(paramQQAppInterface.getApp(), 2131433009, 0).b(paramInt);
       return false;
     }
     List localList = MultiMsgManager.a().a();
     if (localList.size() == 0)
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131433406, 0).b(paramInt);
+      QQToast.a(paramQQAppInterface.getApp(), 2131433423, 0).b(paramInt);
       return false;
     }
     if (localList.size() == 1) {
@@ -203,7 +203,7 @@ public class WeiyunAIOUtils
       if ((localArrayList.size() == 0) && ((paramArrayList2 == null) || (paramArrayList2.size() == 0))) {
         return false;
       }
-      paramQQAppInterface.a().a().a(localArrayList, paramArrayList2, new amre(paramMqqHandler));
+      paramQQAppInterface.a().a().a(localArrayList, paramArrayList2, new anhj(paramMqqHandler));
       return true;
     }
     return false;
@@ -238,7 +238,7 @@ public class WeiyunAIOUtils
           return false;
         }
         if (FileModel.a((MessageForFile)paramList).a(false)) {
-          FMDialogUtil.a(BaseActivity.sTopActivity, 2131428241, 2131428238, new amrc(paramQQAppInterface, paramList));
+          FMDialogUtil.a(BaseActivity.sTopActivity, 2131428241, 2131428238, new anhh(paramQQAppInterface, paramList));
         } else {
           FileManagerUtil.a(paramQQAppInterface, paramList, BaseActivity.sTopActivity);
         }
@@ -250,9 +250,9 @@ public class WeiyunAIOUtils
           FMToastUtil.a(2131428332);
           return false;
         }
-        paramQQAppInterface.a().a().a(paramList, new amre(paramMqqHandler));
+        paramQQAppInterface.a().a().a(paramList, new anhj(paramMqqHandler));
         if (Looper.myLooper() != Looper.getMainLooper()) {
-          ThreadManager.getUIHandler().post(new amrd(paramQQAppInterface, paramInt));
+          ThreadManager.getUIHandler().post(new anhi(paramQQAppInterface, paramInt));
         } else {
           QQToast.a(paramQQAppInterface.getApp(), 2131428195, 0).b(paramInt);
         }

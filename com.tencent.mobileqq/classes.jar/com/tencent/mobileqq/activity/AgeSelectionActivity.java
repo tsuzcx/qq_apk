@@ -17,8 +17,8 @@ import com.tencent.widget.ActionSheet;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import rhs;
-import rht;
+import rkp;
+import rkq;
 
 public class AgeSelectionActivity
   extends IphoneTitleBarActivity
@@ -64,12 +64,12 @@ public class AgeSelectionActivity
   {
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getLayoutInflater().inflate(2130970344, null));
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new rht(this, null));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getLayoutInflater().inflate(2130970373, null));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new rkq(this, null));
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.c(this);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(true);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
-      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131362787);
+      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131362805);
       ((DispatchActionMoveScrollView)localObject).a = true;
       ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
       if (Build.VERSION.SDK_INT >= 11)
@@ -79,7 +79,7 @@ public class AgeSelectionActivity
           ((Window)localObject).setFlags(16777216, 16777216);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new rhs(this));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new rkp(this));
     }
     if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
     {
@@ -98,13 +98,13 @@ public class AgeSelectionActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970165);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369367));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369369));
-    findViewById(2131369366).setOnClickListener(this);
-    findViewById(2131369368).setOnClickListener(this);
+    super.setContentView(2130970179);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369433));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369435));
+    findViewById(2131369432).setOnClickListener(this);
+    findViewById(2131369434).setOnClickListener(this);
     setTitle("选择出生日期");
-    setLeftViewName(2131432397);
+    setLeftViewName(2131432414);
     paramBundle = Calendar.getInstance();
     paramBundle.setTimeInMillis(System.currentTimeMillis());
     this.jdField_a_of_type_Int = paramBundle.get(1);
@@ -147,7 +147,7 @@ public class AgeSelectionActivity
   {
     switch (paramView.getId())
     {
-    case 2131369367: 
+    case 2131369433: 
     default: 
       return;
     }

@@ -1,47 +1,26 @@
-import android.media.ExifInterface;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
-import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import java.io.File;
-import java.lang.reflect.Field;
-import java.util.HashMap;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
+import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
 
 public class anpy
-  implements CameraCover.PictureCallback
+  extends CaptureConfigUpdateObserver
 {
-  public anpy(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
+  public anpy(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
   
-  public void a_(String paramString)
+  public void d()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("FlowCameraActivity", 2, "onPictureToken path " + paramString);
+      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
     }
-    ImageUtil.a(paramString, this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a, this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_Double);
-    if (QLog.isColorLevel()) {}
-    try
-    {
-      Object localObject = Class.forName("android.media.ExifInterface").getDeclaredField("mAttributes");
-      ((Field)localObject).setAccessible(true);
-      localObject = (HashMap)((Field)localObject).get(new ExifInterface(paramString));
-      QLog.i("FlowCameraActivity", 2, "exif " + localObject);
-      if (paramString != null)
-      {
-        this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(this.jdField_a_of_type_JavaIoFile);
-        return;
-      }
+    this.a.d();
+  }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setOnLongClickListener(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.c.setEnabled(true);
-    }
+    this.a.a(false);
   }
 }
 

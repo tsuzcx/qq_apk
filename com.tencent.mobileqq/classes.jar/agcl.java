@@ -1,20 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
-public class agcl
-  implements Animation.AnimationListener
+class agcl
+  implements Runnable
 {
-  public agcl(BreatheEffectView paramBreatheEffectView) {}
+  agcl(agck paramagck) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a();
+    ScanOcrActivity.a(this.a.a.a).a(0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

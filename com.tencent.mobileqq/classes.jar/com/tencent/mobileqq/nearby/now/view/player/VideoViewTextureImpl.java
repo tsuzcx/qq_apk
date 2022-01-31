@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.now.view.player;
 
-import aelx;
-import aely;
-import aelz;
-import aema;
+import aezd;
+import aeze;
+import aezf;
+import aezg;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
@@ -51,26 +51,26 @@ public class VideoViewTextureImpl
   
   public void a(IVideoView.OnCompletionListener paramOnCompletionListener)
   {
-    this.a.setOnCompletionListener(new aelx(this, paramOnCompletionListener));
+    this.a.setOnCompletionListener(new aezd(this, paramOnCompletionListener));
   }
   
   public void a(IVideoView.OnDownloadListener paramOnDownloadListener) {}
   
   public void a(IVideoView.OnErrorListener paramOnErrorListener)
   {
-    this.a.setOnErrorListener(new aely(this, paramOnErrorListener, null));
+    this.a.setOnErrorListener(new aeze(this, paramOnErrorListener, null));
   }
   
   public void a(IVideoView.OnInfoListener paramOnInfoListener)
   {
-    this.a.setOnInfoListener(new aelz(this, paramOnInfoListener));
+    this.a.setOnInfoListener(new aezf(this, paramOnInfoListener));
   }
   
   public void a(IVideoView.OnPreparedListener paramOnPreparedListener)
   {
     TextureVideoView localTextureVideoView = this.a;
     if (paramOnPreparedListener == null) {}
-    for (paramOnPreparedListener = null;; paramOnPreparedListener = new aema(this, paramOnPreparedListener))
+    for (paramOnPreparedListener = null;; paramOnPreparedListener = new aezg(this, paramOnPreparedListener))
     {
       localTextureVideoView.setOnPreparedListener(paramOnPreparedListener);
       return;

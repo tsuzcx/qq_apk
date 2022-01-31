@@ -1,7 +1,7 @@
 package common.config.service;
 
-import alsg;
-import alsh;
+import amik;
+import amil;
 import android.content.ContentResolver;
 import android.database.ContentObserver;
 import android.graphics.Rect;
@@ -187,6 +187,7 @@ public class QzoneConfig
   public static final String MAIN_KEY_VIDEO_SVRLIST = "VideoSvrList";
   public static final String MAIN_KEY_VOICE_MOOD = "VoiceMood";
   public static final String MAIN_KEY_WEBSO = "QzUrlCache";
+  public static final String MAIN_KEY_WEISHI_SETTING = "WeishiSetting";
   public static final String MAIN_KEY_WIDGET_AI = "WidgetAI";
   public static final String MAIN_KEY_WNSSETTINGS = "WNSSettting";
   public static final String MAIN_QZONE_LOG = "TraceLog";
@@ -1518,6 +1519,9 @@ public class QzoneConfig
   public static final String SECONDARY_WEBSO_REPORT_DEFAULT_SAMPLING = "QzhwStatDefaultSampling";
   public static final String SECONDARY_WEBSO_REPORT_URL = "QzhwStatCgiURL";
   public static final String SECONDARY_WEBSO_REPORT_URL_DEFAULT = "https://h5.qzone.qq.com/report/native";
+  public static final String SECONDARY_WEISHI_CAN_PRELOAD_FEED = "weishiCanPreloadFeed";
+  public static final String SECONDARY_WEISHI_CAN_PRELOAD_PLUGIN = "weishiCanPreloadPlugin";
+  public static final String SECONDARY_WEISHI_MAXCACHE_COUNT = "weishiCacheCount";
   public static final String SECONDARY_WEIXIN_DOWNLOAD = "WeiXinDownload";
   public static final String SECONDARY_WHISPER_EGG = "WhisperEgg";
   public static final String SECONDARY_WIDGET_AI_OPEN = "OpenWidgetAI";
@@ -1571,7 +1575,7 @@ public class QzoneConfig
   private void initConfigUpdateObserver()
   {
     if (this.configUpdateObserver == null) {
-      this.configUpdateObserver = new alsh(this, null);
+      this.configUpdateObserver = new amil(this, null);
     }
   }
   
@@ -1712,7 +1716,7 @@ public class QzoneConfig
         paramString1 = (String)paramString1.get(str2);
         if ((paramString1 == null) && (2 != this.loadstatus) && (1 != this.loadstatus))
         {
-          QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new alsg(this));
+          QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new amik(this));
           QLog.d("QzoneConfig", 4, "key: notready");
         }
         return paramString1;
@@ -1861,30 +1865,30 @@ public class QzoneConfig
     //   7: monitorexit
     //   8: return
     //   9: aload_0
-    //   10: getfield 4400	common/config/service/QzoneConfig:mCallback	Ljava/util/ArrayList;
-    //   13: invokevirtual 4480	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   10: getfield 4412	common/config/service/QzoneConfig:mCallback	Ljava/util/ArrayList;
+    //   13: invokevirtual 4492	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   16: astore_2
     //   17: aload_2
-    //   18: invokeinterface 4485 1 0
+    //   18: invokeinterface 4497 1 0
     //   23: ifeq -17 -> 6
     //   26: aload_2
-    //   27: invokeinterface 4489 1 0
-    //   32: checkcast 4491	java/lang/ref/WeakReference
+    //   27: invokeinterface 4501 1 0
+    //   32: checkcast 4503	java/lang/ref/WeakReference
     //   35: astore_3
     //   36: aload_3
     //   37: ifnull -20 -> 17
     //   40: aload_3
-    //   41: invokevirtual 4494	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   44: checkcast 4496	common/config/service/QzoneConfig$QzoneConfigChangeListener
+    //   41: invokevirtual 4506	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   44: checkcast 4508	common/config/service/QzoneConfig$QzoneConfigChangeListener
     //   47: astore_3
     //   48: aload_3
     //   49: ifnull +11 -> 60
     //   52: aload_1
     //   53: aload_3
-    //   54: invokevirtual 4503	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   54: invokevirtual 4515	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   57: ifeq -40 -> 17
     //   60: aload_2
-    //   61: invokeinterface 4499 1 0
+    //   61: invokeinterface 4511 1 0
     //   66: goto -49 -> 17
     //   69: astore_1
     //   70: aload_0

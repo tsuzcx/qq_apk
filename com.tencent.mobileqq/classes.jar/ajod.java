@@ -1,28 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.mobileqq.troop.utils.TroopAppMgr;
 
 public class ajod
   implements Runnable
 {
-  public ajod(JumpAction paramJumpAction) {}
+  public ajod(TroopAppMgr paramTroopAppMgr, EntityManager paramEntityManager, TroopAIOAppInfo paramTroopAIOAppInfo) {}
   
   public void run()
   {
-    if (JumpAction.a(this.a) == null) {}
-    String str;
-    do
-    {
-      return;
-      str = JumpAction.a(this.a).getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.c(str, System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIOAppInfo);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajod
  * JD-Core Version:    0.7.0.1
  */

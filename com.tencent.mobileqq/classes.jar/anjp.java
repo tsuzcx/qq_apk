@@ -1,22 +1,21 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anjp
   implements Runnable
 {
-  public anjp(DoodleTextureView paramDoodleTextureView) {}
+  public anjp(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
   public void run()
   {
-    PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
-    if (localPersonalityOperator != null)
-    {
-      localPersonalityOperator.a();
-      localPersonalityOperator.a(this.a.jdField_a_of_type_Int, this.a.b);
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.h();
-      this.a.a();
-    }
+    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(8);
+    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(false);
+    QIMEffectCameraCaptureUnit.a(this.a, 0);
+    QIMEffectCameraCaptureUnit.a(this.a, QIMEffectCameraCaptureUnit.a(this.a));
+    QIMEffectCameraCaptureUnit.f(this.a).setVisibility(0);
+    this.a.a.postDelayed(QIMEffectCameraCaptureUnit.a(this.a), 500L);
   }
 }
 

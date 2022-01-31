@@ -1,14 +1,17 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletCameraInterface;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.util.List;
 
-class xqn
-  implements Runnable
+public class xqn
+  implements QWalletCameraInterface
 {
-  xqn(xqm paramxqm) {}
+  public xqn(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List paramList)
   {
-    QzDynamicVideoPreviewActivity.a(this.a.a).setVisibility(0);
+    if ((this.a.F) && (paramInt1 > 0)) {
+      NewFlowCameraActivity.d = true;
+    }
   }
 }
 

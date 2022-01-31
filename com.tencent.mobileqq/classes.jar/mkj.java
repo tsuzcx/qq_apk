@@ -1,31 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebArticleRichReqCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
 public class mkj
-  extends FastWebModule.FastWebArticleRichReqCallback
+  implements Runnable
 {
-  public mkj(FastWebActivity paramFastWebActivity) {}
+  public mkj(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void a(boolean paramBoolean, int paramInt, FastWebShareInfo paramFastWebShareInfo)
+  public void run()
   {
-    super.a(paramBoolean, paramInt, paramFastWebShareInfo);
-    if ((paramBoolean) && (paramFastWebShareInfo != null) && (!TextUtils.isEmpty(paramFastWebShareInfo.a(paramInt)))) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ThreadManager.getUIHandler().post(new mkk(this, paramBoolean, paramInt, paramFastWebShareInfo));
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString, FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    super.a(paramBoolean, paramString, paramFastWebArticleInfo);
-    this.a.runOnUiThread(new mkl(this, paramFastWebArticleInfo, paramString, paramBoolean));
+    ReadinjoyTabFrame.a(this.a);
   }
 }
 

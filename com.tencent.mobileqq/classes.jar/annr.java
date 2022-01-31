@@ -1,27 +1,33 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.text.CaptureComboText;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.IDynamicTextResDownloadCallback;
 
 public class annr
-  extends Property
+  implements DynamicTextConfigManager.IDynamicTextResDownloadCallback
 {
-  public annr(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
+  public annr(CaptureComboText paramCaptureComboText) {}
+  
+  public void a(float paramFloat, String paramString, int paramInt)
   {
-    super(paramClass, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
+    }
+    CaptureComboText.a(this.a, paramFloat);
   }
   
-  public Integer a(GroundDrawable paramGroundDrawable)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.b(paramGroundDrawable));
+    if (QLog.isColorLevel()) {
+      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.b(paramGroundDrawable, paramInteger.intValue());
+    if (paramBoolean)
+    {
+      CaptureComboText.a(this.a, 3);
+      this.a.b();
+      return;
     }
+    CaptureComboText.a(this.a, 2);
+    this.a.a(1);
   }
 }
 

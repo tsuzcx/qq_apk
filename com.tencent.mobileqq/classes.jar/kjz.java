@@ -1,19 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler;
 
 public class kjz
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public kjz(PoiMapActivity paramPoiMapActivity) {}
+  public kjz(TroopRedTouchHandler paramTroopRedTouchHandler) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.b();
-    }
-    return true;
+    TroopRedTouchHandler.a(this.a);
   }
 }
 

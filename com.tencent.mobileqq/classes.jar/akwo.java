@@ -1,18 +1,14 @@
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
-
-class akwo
-  implements BubblePopupWindow.OnDismissListener
+public class akwo
 {
-  akwo(akwm paramakwm) {}
-  
-  public void a()
-  {
-    this.a.a = null;
-  }
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akwo
  * JD-Core Version:    0.7.0.1
  */

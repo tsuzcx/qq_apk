@@ -1,33 +1,88 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajqz
-  implements View.OnClickListener
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public ajqz(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ajqz(TroopTopicMgr paramTroopTopicMgr, TroopTopicMgr.DoLikeCallback paramDoLikeCallback) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    if (paramArrayOfByte == null)
     {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 0);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.e(".troop.troop_topic.TroopTopicMgr", 2, "getSharePostInfo failed, data == null");
       }
       return;
     }
-    catch (Exception paramView) {}
+    int k = 0;
+    int j = 0;
+    paramBundle = null;
+    paramInt = j;
+    i = k;
+    try
+    {
+      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+      paramInt = j;
+      i = k;
+      localWebSsoResponseBody.mergeFrom(paramArrayOfByte);
+      paramInt = j;
+      i = k;
+      j = localWebSsoResponseBody.ret.get();
+      if (j != 0) {
+        break label220;
+      }
+      paramInt = j;
+      i = j;
+      paramArrayOfByte = new JSONObject(localWebSsoResponseBody.data.get());
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        i = paramInt;
+        paramInt = i;
+        paramArrayOfByte = paramBundle;
+        if (QLog.isColorLevel())
+        {
+          QLog.e(".troop.troop_topic.TroopTopicMgr", 2, "getSharePostInfo got InvalidProtocolBufferMicroException exception:" + localInvalidProtocolBufferMicroException.getMessage());
+          paramInt = i;
+          paramArrayOfByte = paramBundle;
+        }
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        paramInt = i;
+        paramArrayOfByte = paramBundle;
+        if (QLog.isColorLevel())
+        {
+          QLog.e(".troop.troop_topic.TroopTopicMgr", 2, "getSharePostInfo got JSONException exception:" + localJSONException.getMessage());
+          paramInt = i;
+          paramArrayOfByte = paramBundle;
+          continue;
+          paramArrayOfByte = null;
+        }
+      }
+    }
+    paramInt = j;
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr$DoLikeCallback.a(paramInt, paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqz
  * JD-Core Version:    0.7.0.1
  */

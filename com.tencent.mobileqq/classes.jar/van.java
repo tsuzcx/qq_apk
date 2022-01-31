@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
 
 public class van
-  implements DialogInterface.OnClickListener
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public van(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  public ImageView a;
+  public TextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public van(LocationItemBuilder paramLocationItemBuilder) {}
 }
 
 

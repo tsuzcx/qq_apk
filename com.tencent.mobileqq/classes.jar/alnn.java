@@ -1,49 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.ProgressPieView;
+import com.tencent.qidian.controller.QidianPubAccountBigDataHandler;
+import com.tencent.qidian.data.PubAccountNavigationMenu;
+import java.util.Map;
 
 public class alnn
-  extends Handler
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
+  public alnn(QidianPubAccountBigDataHandler paramQidianPubAccountBigDataHandler, long paramLong1, long paramLong2) {}
   
-  public alnn(ProgressPieView paramProgressPieView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b > this.jdField_a_of_type_Int)
+    this.jdField_a_of_type_ComTencentQidianControllerQidianPubAccountBigDataHandler.a(this.jdField_a_of_type_Long);
+    PubAccountNavigationMenu localPubAccountNavigationMenu = (PubAccountNavigationMenu)this.jdField_a_of_type_ComTencentQidianControllerQidianPubAccountBigDataHandler.a.get(Long.valueOf(this.jdField_a_of_type_Long));
+    if (localPubAccountNavigationMenu == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
+      localPubAccountNavigationMenu = new PubAccountNavigationMenu();
+      localPubAccountNavigationMenu.version = 0;
+      localPubAccountNavigationMenu.puin = this.jdField_a_of_type_Long;
+      localPubAccountNavigationMenu.xml = "";
     }
-    do
+    for (;;)
     {
+      QidianPubAccountBigDataHandler.a(this.jdField_a_of_type_ComTencentQidianControllerQidianPubAccountBigDataHandler, this.jdField_a_of_type_Long, localPubAccountNavigationMenu, this.b);
       return;
-      if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b < this.jdField_a_of_type_Int)
-      {
-        int i = this.jdField_a_of_type_ComTencentWidgetProgressPieView.b + this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Int;
-        if (i <= this.jdField_a_of_type_Int) {
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-        }
-        for (;;)
-        {
-          sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
-          return;
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_Int);
-        }
-      }
-      removeMessages(0);
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setShowImage(false);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alnn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipViewManager;
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ulm
-  implements ImageButton.OnClickListener
+public final class ulm
+  implements Runnable
 {
-  public ulm(FriendShipViewManager paramFriendShipViewManager) {}
+  public ulm(String paramString, SessionInfo paramSessionInfo, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public void a(Sprite paramSprite)
+  public void run()
   {
-    this.a.f();
-    this.a.a.postDelayed(new uln(this), 300L);
+    String str = this.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+    int j = this.jdField_a_of_type_Int;
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    StatisticConstants.a(new String[] { str }, i, false, true, j, localQQAppInterface);
   }
 }
 

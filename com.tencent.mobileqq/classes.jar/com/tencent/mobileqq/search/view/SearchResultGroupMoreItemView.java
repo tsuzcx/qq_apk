@@ -24,8 +24,8 @@ public class SearchResultGroupMoreItemView
     if ((paramViewGroup != null) && (paramInt2 > 0)) {
       paramViewGroup.setImageResource(paramInt2);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369846));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365632));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369923));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365659));
     if (paramInt3 == 12) {
       this.b.setText("相关" + PublicAccountConfigUtil.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext()) + "、文章等");
     }

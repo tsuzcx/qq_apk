@@ -1,23 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.medalwall.MedalID;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
 
-public final class adsp
-  implements Parcelable.Creator
+public class adsp
+  implements Cloneable
 {
-  public MedalID a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public String a;
+  public String b = "";
+  
+  public adsp(VideoBaseItem paramVideoBaseItem, int paramInt, long paramLong)
   {
-    return new MedalID(paramParcel);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public MedalID[] a(int paramInt)
+  protected adsp a()
   {
-    return new MedalID[paramInt];
+    return (adsp)super.clone();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsp
  * JD-Core Version:    0.7.0.1
  */

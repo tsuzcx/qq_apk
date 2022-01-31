@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
@@ -14,12 +15,15 @@ import com.tencent.biz.pubaccount.readinjoy.common.ProteusSupportUtil;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -115,7 +119,7 @@ public class UtilsForComponent
       QLog.d("UtilsForComponent", 1, "configDividerHeight failed, articleInfo is null.");
       return;
     }
-    paramLayoutParams.height = paramContext.getResources().getDimensionPixelSize(2131559659);
+    paramLayoutParams.height = paramContext.getResources().getDimensionPixelSize(2131559677);
     int i = paramIReadInJoyModel.a();
     int j = paramIReadInJoyModel.b();
     if (localArticleInfo.mChannelID == 70L)
@@ -188,6 +192,24 @@ public class UtilsForComponent
       paramKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       return;
     }
+  }
+  
+  public static void a(IReadInJoyModel paramIReadInJoyModel, RingAvatarView paramRingAvatarView, ImageView paramImageView)
+  {
+    if ((paramRingAvatarView == null) || (paramImageView == null) || (paramIReadInJoyModel == null)) {}
+    do
+    {
+      return;
+      paramIReadInJoyModel = paramIReadInJoyModel.a();
+    } while ((paramIReadInJoyModel == null) || (paramIReadInJoyModel.mSocialFeedInfo == null) || (paramIReadInJoyModel.mSocialFeedInfo.a == null));
+    if (paramIReadInJoyModel.mSocialFeedInfo.a.a())
+    {
+      paramRingAvatarView.a();
+      paramImageView.setVisibility(0);
+      return;
+    }
+    paramRingAvatarView.b();
+    paramImageView.setVisibility(8);
   }
   
   public static void a(SocializeFeedsInfo.UGCFeedsInfo paramUGCFeedsInfo, ReadInJoyYAFolderTextView paramReadInJoyYAFolderTextView, CmpCtxt paramCmpCtxt, SpannableStringBuilder paramSpannableStringBuilder)
@@ -303,7 +325,7 @@ public class UtilsForComponent
   public static Pair b()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.a(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131559668)));
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.a(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131559686)));
   }
   
   public static boolean b(int paramInt)

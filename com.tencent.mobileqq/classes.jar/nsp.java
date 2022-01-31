@@ -1,20 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.ChangeVideoSortEvent;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.YearCollectionViewHolder;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
 public class nsp
-  extends SimpleJob
+  implements View.OnClickListener
 {
-  public nsp(StoryTransitionActivity paramStoryTransitionActivity) {}
+  public nsp(ShareGroupsListAdapter.YearCollectionViewHolder paramYearCollectionViewHolder) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    SLog.d("StoryTransitionActivity", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(StoryVideoUploadManager.a()) });
-    return null;
+    paramView = new ShareGroupsListAdapter.ChangeVideoSortEvent();
+    if (this.a.a.a) {
+      this.a.a.a = false;
+    }
+    for (paramView.a = 0;; paramView.a = 1)
+    {
+      Dispatchers.get().dispatch(paramView);
+      return;
+      this.a.a.a = true;
+    }
   }
 }
 

@@ -1,17 +1,22 @@
-import android.util.Pair;
-import java.net.URL;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
-public class kqo
+public final class kqo
+  implements Runnable
 {
-  public Pair a;
-  public URL a;
-  
-  public static kqo a(URL paramURL, Pair paramPair)
+  public void run()
   {
-    kqo localkqo = new kqo();
-    localkqo.jdField_a_of_type_JavaNetURL = paramURL;
-    localkqo.jdField_a_of_type_AndroidUtilPair = paramPair;
-    return localkqo;
+    try
+    {
+      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new kqp(this));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("AccountDetailVideoManager", 2, "installSDK t==" + localThrowable.toString());
+    }
   }
 }
 

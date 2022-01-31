@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import advp;
+import aeiv;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -955,7 +955,7 @@ public class TroopInfoManager
   
   protected void b()
   {
-    ThreadManager.post(new advp(this), 8, null, false);
+    ThreadManager.post(new aeiv(this), 8, null, false);
   }
   
   public void b(String paramString)
@@ -1017,7 +1017,7 @@ public class TroopInfoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.model.TroopInfoManager
  * JD-Core Version:    0.7.0.1
  */

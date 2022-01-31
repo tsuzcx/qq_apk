@@ -1,6 +1,6 @@
 package cooperation.comic.ui;
 
-import alug;
+import amkk;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -98,8 +98,8 @@ public class QQComicTitleBarView
       if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.d & 0x20) != 0L)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-        a("", this.c.getResources().getString(2131434920), "", false, 0, 0, null, null);
-        this.c.setOnClickListener(new alug(this));
+        a("", this.c.getResources().getString(2131434937), "", false, 0, 0, null, null);
+        this.c.setOnClickListener(new amkk(this));
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.d & 0x40) != 0L)
       {
@@ -156,8 +156,8 @@ public class QQComicTitleBarView
       }
       if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(2130846224, 2130846228, 2130846232);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(2131494314);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(2130846352, 2130846356, 2130846360);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(2131494321);
         this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setLeftAndRightPaddingByDp(10);
       }
     }
@@ -171,8 +171,8 @@ public class QQComicTitleBarView
         d(-16777216);
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView == null);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(2130846243, 2130846247, 2130846251);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(2131494316);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(2130846371, 2130846375, 2130846379);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(2131494323);
     this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setLeftAndRightPaddingByDp(10);
   }
 }

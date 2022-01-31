@@ -1,29 +1,22 @@
+import android.app.Activity;
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailBaseInfoModel;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
 import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.troopbar.ShareActionSheet;
+import com.tencent.biz.troopbar.ShareActionSheet.Detail;
+import com.tencent.mobileqq.data.AccountDetail;
+import java.lang.ref.WeakReference;
 
 public class krn
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public krn(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo, ActionSheet paramActionSheet) {}
+  public krn(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.e) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.e = true;
-    if (paramInt + 1 == 1) {}
-    for (paramInt = i;; paramInt = 3)
-    {
-      AccountDetailBaseInfoModel.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, paramInt);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    }
+    ShareActionSheet.b((Activity)this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangRefWeakReference.get(), new ShareActionSheet.Detail(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer));
+    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.jdField_a_of_type_JavaLangString);
   }
 }
 

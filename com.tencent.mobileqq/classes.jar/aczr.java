@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 
 public class aczr
-  implements FMDialogUtil.FMDialogInterface
+  implements Runnable
 {
-  public aczr(SendBottomBar paramSendBottomBar) {}
+  public aczr(UniformDownloadMgr paramUniformDownloadMgr) {}
   
-  public void a()
+  public void run()
   {
-    SendBottomBar.c(this.a);
+    UniformDownloadMgr.b(this.a, null);
+    UniformDownloadMgr.b(this.a);
   }
-  
-  public void b() {}
 }
 
 

@@ -52,9 +52,9 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.util.List;
-import jkf;
-import jkg;
-import jkh;
+import jjq;
+import jjr;
+import jjs;
 
 @TargetApi(17)
 public class FilterProcessRender
@@ -70,7 +70,7 @@ public class FilterProcessRender
   ByteBuffer jdField_a_of_type_JavaNioByteBuffer = null;
   private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
   List jdField_a_of_type_JavaUtilList;
-  private jkh jdField_a_of_type_Jkh = new jkh();
+  private jjs jdField_a_of_type_Jjs = new jjs();
   public boolean a;
   byte[] jdField_a_of_type_ArrayOfByte;
   float[] jdField_a_of_type_ArrayOfFloat;
@@ -101,7 +101,7 @@ public class FilterProcessRender
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager = ((AVRedPacketManager)paramVideoAppInterface.a(6));
     VideoModule.init(paramContext);
-    this.jdField_a_of_type_Jkh.a = paramEffectPendantTips;
+    this.jdField_a_of_type_Jjs.a = paramEffectPendantTips;
     this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.setFaceDetectMode(FaceDetector.FACE_DETECT_MODE.SINGLE);
     VideoPrefsUtil.setMaterialMute(true);
     VideoMaterialUtil.SCALE_FACE_DETECT = 0.25D;
@@ -145,7 +145,7 @@ public class FilterProcessRender
       boolean bool = this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.needDetectFace();
       if (bool)
       {
-        this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.postJob(new jkf(this, paramInt, j));
+        this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.postJob(new jjq(this, paramInt, j));
         this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.getAllPoints(0);
         this.jdField_a_of_type_ArrayOfFloat = this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.getFaceAngles(0);
         this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.getFaceCount();
@@ -420,20 +420,20 @@ public class FilterProcessRender
       paramTempTime.b = AudioHelper.b();
     }
     a(paramCameraFrame);
-    jkg localjkg = a(this.jdField_a_of_type_Int, this.jdField_c_of_type_ArrayOfInt[0]);
-    localjkg = a(localjkg.jdField_a_of_type_Int, localjkg.jdField_b_of_type_Int, paramCameraFrame.jdField_a_of_type_Boolean);
+    jjr localjjr = a(this.jdField_a_of_type_Int, this.jdField_c_of_type_ArrayOfInt[0]);
+    localjjr = a(localjjr.jdField_a_of_type_Int, localjjr.jdField_b_of_type_Int, paramCameraFrame.jdField_a_of_type_Boolean);
     GraphicRenderMgr.getInstance().setLowlightAndVideoDenoiseInfo(this.jdField_a_of_type_ArrayOfInt);
     if (paramTempTime.jdField_a_of_type_Boolean) {
       paramTempTime.c = AudioHelper.b();
     }
-    localjkg = a(localjkg.jdField_a_of_type_Int, localjkg.jdField_b_of_type_Int, paramFilterRender);
+    localjjr = a(localjjr.jdField_a_of_type_Int, localjjr.jdField_b_of_type_Int, paramFilterRender);
     if (paramTempTime.jdField_a_of_type_Boolean) {
       paramTempTime.d = AudioHelper.b();
     }
     int m;
     if (paramBoolean1)
     {
-      paramPendantItem = a(paramVideoFilterList, arrayOfByte, i3, localjkg.jdField_a_of_type_Int, localjkg.jdField_b_of_type_Int, paramPendantItem, paramInt);
+      paramPendantItem = a(paramVideoFilterList, arrayOfByte, i3, localjjr.jdField_a_of_type_Int, localjjr.jdField_b_of_type_Int, paramPendantItem, paramInt);
       paramFilterRender = a(paramFilterRender, paramPendantItem.jdField_a_of_type_Int, paramPendantItem.jdField_b_of_type_Int);
       m = paramFilterRender.jdField_b_of_type_Int;
     }
@@ -453,7 +453,7 @@ public class FilterProcessRender
         if (paramBoolean2)
         {
           j = a(arrayOfByte, i3);
-          this.jdField_a_of_type_Jkh.a(paramInt, j, this.jdField_c_of_type_Boolean, paramBoolean2, null, null);
+          this.jdField_a_of_type_Jjs.a(paramInt, j, this.jdField_c_of_type_Boolean, paramBoolean2, null, null);
           n = 1;
         }
       }
@@ -478,7 +478,7 @@ public class FilterProcessRender
         paramTempTime.f = AudioHelper.b();
       }
       return a(paramCameraFrame, m, k, paramFilterRender, paramVideoFilterList);
-      paramFilterRender = a(paramFilterRender, localjkg.jdField_a_of_type_Int, localjkg.jdField_b_of_type_Int);
+      paramFilterRender = a(paramFilterRender, localjjr.jdField_a_of_type_Int, localjjr.jdField_b_of_type_Int);
       paramFilterRender = a(paramVideoFilterList, arrayOfByte, i3, paramFilterRender.jdField_a_of_type_Int, paramFilterRender.jdField_b_of_type_Int, paramPendantItem, paramInt);
       m = paramFilterRender.jdField_b_of_type_Int;
     }
@@ -539,17 +539,17 @@ public class FilterProcessRender
     return this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender;
   }
   
-  jkg a(int paramInt1, int paramInt2)
+  jjr a(int paramInt1, int paramInt2)
   {
     if (!LowlightAndDenoiseTools.b())
     {
       this.jdField_a_of_type_ArrayOfInt[3] = 0;
-      return new jkg(this, paramInt1, paramInt2);
+      return new jjr(this, paramInt1, paramInt2);
     }
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ArrayOfInt[3] = 0;
-      return new jkg(this, paramInt1, paramInt2);
+      return new jjr(this, paramInt1, paramInt2);
     }
     Object localObject = a();
     int k = paramInt1;
@@ -563,16 +563,16 @@ public class FilterProcessRender
       localObject = this.jdField_a_of_type_ArrayOfInt;
       localObject[5] += 1;
     }
-    return new jkg(this, k, j);
+    return new jjr(this, k, j);
   }
   
-  jkg a(int paramInt1, int paramInt2, FilterRender paramFilterRender)
+  jjr a(int paramInt1, int paramInt2, FilterRender paramFilterRender)
   {
     if (!EffectBeautyTools.a()) {
-      return new jkg(this, paramInt1, paramInt2);
+      return new jjr(this, paramInt1, paramInt2);
     }
     if ((paramFilterRender != null) && (paramFilterRender.getFilterType() == 3)) {
-      return new jkg(this, paramInt1, paramInt2);
+      return new jjr(this, paramInt1, paramInt2);
     }
     BeautyRender localBeautyRender = a();
     int k = paramInt1;
@@ -589,23 +589,23 @@ public class FilterProcessRender
       paramFilterRender = localBeautyRender.process(paramInt2, paramInt1, this.g, this.h);
       j = paramFilterRender.getTextureId();
       k = paramFilterRender.getFbo();
-      return new jkg(this, k, j);
+      return new jjr(this, k, j);
       label124:
       localBeautyRender.setNeedSkinColor(true);
     }
   }
   
-  jkg a(int paramInt1, int paramInt2, boolean paramBoolean)
+  jjr a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (!LowlightAndDenoiseTools.a())
     {
       this.jdField_a_of_type_ArrayOfInt[0] = 0;
-      return new jkg(this, paramInt1, paramInt2);
+      return new jjr(this, paramInt1, paramInt2);
     }
     if ((!this.jdField_a_of_type_Boolean) || (paramBoolean))
     {
       this.jdField_a_of_type_ArrayOfInt[0] = 0;
-      return new jkg(this, paramInt1, paramInt2);
+      return new jjr(this, paramInt1, paramInt2);
     }
     Object localObject = a();
     int k = paramInt1;
@@ -619,31 +619,31 @@ public class FilterProcessRender
       localObject = this.jdField_a_of_type_ArrayOfInt;
       localObject[2] += 1;
     }
-    return new jkg(this, k, j);
+    return new jjr(this, k, j);
   }
   
-  jkg a(FilterRender paramFilterRender, int paramInt1, int paramInt2)
+  jjr a(FilterRender paramFilterRender, int paramInt1, int paramInt2)
   {
     if (paramFilterRender != null)
     {
       paramFilterRender = paramFilterRender.process(paramInt2, paramInt1, this.g, this.h);
-      return new jkg(this, paramFilterRender.getFbo(), paramFilterRender.getTextureId());
+      return new jjr(this, paramFilterRender.getFbo(), paramFilterRender.getTextureId());
     }
-    return new jkg(this, paramInt1, paramInt2);
+    return new jjr(this, paramInt1, paramInt2);
   }
   
-  jkg a(VideoFilterList paramVideoFilterList, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, PendantItem paramPendantItem, int paramInt4)
+  jjr a(VideoFilterList paramVideoFilterList, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, PendantItem paramPendantItem, int paramInt4)
   {
     if (this.h * this.g * 3 / 2 != paramArrayOfByte.length)
     {
       AVLog.d("FilterProcessRender", "renderPendant (mHeight * mWidth * 3 / 2) != yuvData.length error");
-      return new jkg(this, paramInt2, paramInt3);
+      return new jjr(this, paramInt2, paramInt3);
     }
     if (!GraphicRenderMgr.soloadedPTV) {
-      return new jkg(this, paramInt2, paramInt3);
+      return new jjr(this, paramInt2, paramInt3);
     }
     if (paramVideoFilterList == null) {
-      return new jkg(this, paramInt2, paramInt3);
+      return new jjr(this, paramInt2, paramInt3);
     }
     boolean bool1 = false;
     boolean bool2 = false;
@@ -658,10 +658,10 @@ public class FilterProcessRender
     }
     a(paramInt3, paramPendantItem, bool1);
     paramInt1 = a(paramArrayOfByte, paramInt1);
-    this.jdField_a_of_type_Jkh.a(paramInt4, paramInt1, this.jdField_c_of_type_Boolean, bool2, str1, str2);
+    this.jdField_a_of_type_Jjs.a(paramInt4, paramInt1, this.jdField_c_of_type_Boolean, bool2, str1, str2);
     paramVideoFilterList.b(this.g, this.h, 0.25D);
     paramVideoFilterList = paramVideoFilterList.a(paramInt2, paramInt3, this.g, this.h, VideoMaterialUtil.SCALE_FACE_DETECT, this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector, System.currentTimeMillis());
-    return new jkg(this, paramVideoFilterList.getFBO(), paramVideoFilterList.getTextureId());
+    return new jjr(this, paramVideoFilterList.getFBO(), paramVideoFilterList.getTextureId());
   }
   
   public void a()
@@ -742,7 +742,7 @@ public class FilterProcessRender
       }
       GestureFilterManager.jdField_a_of_type_JavaLangString = paramPendantItem.getGestureType();
       a(paramInt);
-      this.jdField_a_of_type_Jkh.a(paramPendantItem.getGestureType());
+      this.jdField_a_of_type_Jjs.a(paramPendantItem.getGestureType());
       return;
     }
     if (this.jdField_c_of_type_Boolean)
@@ -846,7 +846,7 @@ public class FilterProcessRender
   
   void b()
   {
-    this.jdField_a_of_type_Jkh.a();
+    this.jdField_a_of_type_Jjs.a();
     if (this.jdField_c_of_type_Boolean)
     {
       GestureMgrRecognize.a().b();
@@ -959,7 +959,7 @@ public class FilterProcessRender
     this.jdField_c_of_type_Boolean = false;
     GestureFilterManager.jdField_d_of_type_Int = GestureFilterManager.jdField_a_of_type_Int;
     GestureFilterManager.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Jkh.a();
+    this.jdField_a_of_type_Jjs.a();
   }
 }
 

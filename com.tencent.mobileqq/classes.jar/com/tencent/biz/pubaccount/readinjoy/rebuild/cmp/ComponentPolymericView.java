@@ -23,7 +23,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
 import java.util.List;
-import lwd;
+import lwm;
 import org.json.JSONObject;
 
 public class ComponentPolymericView
@@ -34,7 +34,7 @@ public class ComponentPolymericView
   private Context jdField_a_of_type_AndroidContentContext;
   private CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private lwd jdField_a_of_type_Lwd;
+  private lwm jdField_a_of_type_Lwm;
   private float b;
   private boolean e;
   
@@ -60,8 +60,8 @@ public class ComponentPolymericView
   {
     setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     setOverScrollMode(2);
-    this.jdField_a_of_type_Lwd = new lwd(this, null);
-    setAdapter(this.jdField_a_of_type_Lwd);
+    this.jdField_a_of_type_Lwm = new lwm(this, null);
+    setAdapter(this.jdField_a_of_type_Lwm);
     setDividerWidth(AIOUtils.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     setOnItemClickListener(this);
     setOnItemLongClickListener(this);
@@ -80,7 +80,7 @@ public class ComponentPolymericView
     for (;;)
     {
       this.jdField_a_of_type_JavaUtilList = paramObject;
-      this.jdField_a_of_type_Lwd.notifyDataSetChanged();
+      this.jdField_a_of_type_Lwm.notifyDataSetChanged();
       return;
       setOverScrollMode(2);
     }
@@ -139,7 +139,7 @@ public class ComponentPolymericView
       {
         paramView.put("rowkey", paramAdapterView.innerUniqueID);
         i = 0;
-        switch (this.jdField_a_of_type_Lwd.getItemViewType(paramInt))
+        switch (this.jdField_a_of_type_Lwm.getItemViewType(paramInt))
         {
         }
       }

@@ -1,75 +1,25 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
 
 public class abwj
-  implements Runnable
+  extends FriendListObserver
 {
-  public abwj(SogouEmoji paramSogouEmoji, List paramList) {}
+  public abwj(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public void run()
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey begins, allPackId:" + this.jdField_a_of_type_JavaUtilList);
-    }
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey ends, param packid is null.");
-      }
-    }
-    for (;;)
-    {
+    if (!this.a.a) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey,size:" + this.jdField_a_of_type_JavaUtilList.size());
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      ArrayList localArrayList = null;
-      label360:
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(str);
-        if (localObject == null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(str, EmojiManager.b);
-          if (QLog.isColorLevel()) {
-            QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey, packId=" + str + ",fail to search 【the pack】 from db, try get json from svr.");
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey, packId=" + str + ",type:" + ((EmoticonPackage)localObject).type + ",json exists in local db.");
-          }
-          localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(str, true);
-          if ((localObject instanceof ArrayList))
-          {
-            localArrayList = (ArrayList)localObject;
-            localArrayList = this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(localArrayList);
-          }
-          for (;;)
-          {
-            if (localArrayList == null) {
-              break label360;
-            }
-            if (localArrayList.size() == 0) {
-              break;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(str, localArrayList);
-            if (QLog.isColorLevel()) {
-              QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey ends, packId=" + str + ", try get keys from svr.");
-            }
-            break;
-          }
-        }
-      }
     }
+    this.a.runOnUiThread(new abwl(this, paramBoolean, paramString1, paramString2));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.a) {
+      return;
+    }
+    this.a.runOnUiThread(new abwk(this, paramBoolean, paramString));
   }
 }
 

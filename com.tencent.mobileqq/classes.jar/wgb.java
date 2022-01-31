@@ -1,34 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class wgb
-  implements OverScrollViewListener
+  implements Runnable
 {
-  public wgb(TroopView paramTroopView) {}
+  public wgb(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void run()
   {
-    TroopView.a(this.a).c(0L);
+    List localList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, 1, 9223372036854775807L, 20);
+    if (localList != null) {
+      ThreadManager.getUIHandler().post(new wgc(this, localList));
+    }
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    TroopView.a(this.a).a(0L);
-    TroopView.a(this.a, false);
-    TroopView.a(this.a);
-    TroopView.a(this.a, true);
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    TroopView.a(this.a).b(0L);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

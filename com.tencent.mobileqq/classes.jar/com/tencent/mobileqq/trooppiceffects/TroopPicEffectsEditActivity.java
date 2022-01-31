@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import ajit;
-import ajiu;
-import ajix;
+import ajwx;
+import ajwy;
+import ajxb;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -131,7 +131,7 @@ public class TroopPicEffectsEditActivity
     }
     for (;;)
     {
-      return paramString.replace("$GCODE$", this.b).replace("$CLIENTVER$", "android7.6.0").replace("$UIN$", this.app.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$ROLE$", (CharSequence)localObject);
+      return paramString.replace("$GCODE$", this.b).replace("$CLIENTVER$", "android7.6.3").replace("$UIN$", this.app.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$ROLE$", (CharSequence)localObject);
       if (((TroopInfo)localObject).isAdmin())
       {
         localObject = "1";
@@ -151,7 +151,7 @@ public class TroopPicEffectsEditActivity
     this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData = this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData[0];
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemListAdapter);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
-    a(new ajit(this));
+    a(new ajwx(this));
   }
   
   public void a(int paramInt, String paramString)
@@ -244,7 +244,7 @@ public class TroopPicEffectsEditActivity
   
   protected void a(PicReq paramPicReq)
   {
-    ThreadManager.post(new ajix(this, paramPicReq.a), 8, null, true);
+    ThreadManager.post(new ajxb(this, paramPicReq.a), 8, null, true);
   }
   
   protected void a(TroopGiftCallback paramTroopGiftCallback)
@@ -260,7 +260,7 @@ public class TroopPicEffectsEditActivity
     long l = Long.parseLong(this.b);
     localUser.uint64_group.set(l);
     localUser.uint32_client.set(1);
-    localUser.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.0.3525".getBytes()), true);
+    localUser.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3560".getBytes()), true);
     localUser.uint32_portal.set(600);
     oidb_cmd0x991.LoginSig localLoginSig = new oidb_cmd0x991.LoginSig();
     localLoginSig.uint32_type.set(1);
@@ -316,11 +316,11 @@ public class TroopPicEffectsEditActivity
   {
     if (this.jdField_a_of_type_AndroidAppProgressDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624515);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-      ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381)).setText("正在发送");
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+      ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399)).setText("正在发送");
       return;
     }
     this.jdField_a_of_type_AndroidAppProgressDialog.show();
@@ -336,12 +336,12 @@ public class TroopPicEffectsEditActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130971639);
+    setContentView(2130971687);
     setTitle("秀图");
     this.leftView.setText("相册");
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131375171));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375173));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131375172));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131375357));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375359));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131375358));
     this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemListAdapter = new TroopPicEffectsEditActivity.ItemListAdapter(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(DisplayUtil.a(this, 5.0F));
@@ -376,7 +376,7 @@ public class TroopPicEffectsEditActivity
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
-      a(new ajiu(this));
+      a(new ajwy(this));
       b();
       TroopPicEffectsController.a("send_pic", "clk_send");
     }
@@ -442,7 +442,7 @@ public class TroopPicEffectsEditActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity
  * JD-Core Version:    0.7.0.1
  */

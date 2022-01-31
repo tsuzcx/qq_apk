@@ -13,6 +13,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pic.Logger;
 import com.tencent.mobileqq.pic.UpCallBack.SendResult;
 import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.service.message.MessageConstants;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData;
 import com.tencent.qphone.base.util.QLog;
@@ -242,13 +243,14 @@ public class AioShortVideoOperator
       localMessageForShortVideo.subBusiType = 1;
       localMessageForShortVideo.videoFileName = paramShortVideoUploadInfo.jdField_h_of_type_JavaLangString;
     }
-    label898:
+    label281:
+    label932:
     for (;;)
     {
       localMessageForShortVideo.specialVideoType = paramShortVideoUploadInfo.jdField_j_of_type_Int;
       localMessageForShortVideo.msgTailType = paramShortVideoUploadInfo.jdField_k_of_type_Int;
       localMessageForShortVideo.redBagType = paramShortVideoUploadInfo.jdField_l_of_type_Int;
-      localMessageForShortVideo.shortVideoId = paramShortVideoUploadInfo.s;
+      localMessageForShortVideo.shortVideoId = paramShortVideoUploadInfo.jdField_r_of_type_JavaLangString;
       if (paramShortVideoUploadInfo.jdField_a_of_type_JavaLangString == null) {
         paramShortVideoUploadInfo.jdField_a_of_type_JavaLangString = "";
       }
@@ -274,14 +276,15 @@ public class AioShortVideoOperator
       localMessageForShortVideo.fileSource = paramShortVideoUploadInfo.jdField_l_of_type_JavaLangString;
       localMessageForShortVideo.lastModified = 0L;
       localMessageForShortVideo.mediacodecEncode = paramShortVideoUploadInfo.jdField_c_of_type_Boolean;
-      label281:
       label299:
+      Object localObject;
+      String str;
       int i;
       if (localMessageForShortVideo.istroop == 0)
       {
         localMessageForShortVideo.fileType = 6;
         if (paramShortVideoUploadInfo.jdField_b_of_type_Int != 1008) {
-          break label839;
+          break label866;
         }
         localMessageForShortVideo.busiType = 1007;
         if (paramShortVideoUploadInfo.jdField_b_of_type_Int == 0) {
@@ -294,11 +297,16 @@ public class AioShortVideoOperator
         localMessageForShortVideo.fileWidth = paramShortVideoUploadInfo.jdField_h_of_type_Int;
         localMessageForShortVideo.fileHeight = paramShortVideoUploadInfo.jdField_i_of_type_Int;
         localMessageForShortVideo.syncToStory = paramShortVideoUploadInfo.jdField_g_of_type_Boolean;
+        localObject = MessageConstants.jdField_o_of_type_JavaLangString;
+        if (!localMessageForShortVideo.syncToStory) {
+          break label909;
+        }
+        str = "1";
+        localMessageForShortVideo.saveExtInfoToExtStr((String)localObject, str);
         if (paramShortVideoUploadInfo.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo$RetryInfo == null) {
-          break label882;
+          break label916;
         }
         i = 1;
-        label382:
         if (i != 0)
         {
           localMessageForShortVideo.msgseq = paramShortVideoUploadInfo.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo$RetryInfo.jdField_a_of_type_Long;
@@ -306,12 +314,9 @@ public class AioShortVideoOperator
           localMessageForShortVideo.msgUid = paramShortVideoUploadInfo.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo$RetryInfo.jdField_c_of_type_Long;
         }
         if (localMessageForShortVideo.busiType != 2) {
-          break label887;
+          break label921;
         }
       }
-      label839:
-      label882:
-      label887:
       for (localMessageForShortVideo.msg = "[视频对讲]";; localMessageForShortVideo.msg = "[视频]")
       {
         localMessageForShortVideo.serial();
@@ -330,11 +335,11 @@ public class AioShortVideoOperator
           localMessageForShortVideo.videoFileName = paramShortVideoUploadInfo.jdField_q_of_type_JavaLangString;
           localMessageForShortVideo.videoAttr = 0;
           if ((localMessageForShortVideo.videoFileName != null) && (localMessageForShortVideo.videoFileName.length() != 0)) {
-            break label898;
+            break label932;
           }
-          StringBuilder localStringBuilder = new StringBuilder();
+          localObject = new StringBuilder();
           if ((paramShortVideoUploadInfo.jdField_e_of_type_JavaLangString == null) || (paramShortVideoUploadInfo.jdField_e_of_type_JavaLangString.length() == 0)) {}
-          for (String str = "HotVideo";; str = paramShortVideoUploadInfo.jdField_e_of_type_JavaLangString)
+          for (str = "HotVideo";; str = paramShortVideoUploadInfo.jdField_e_of_type_JavaLangString)
           {
             localMessageForShortVideo.videoFileName = (str + ".mp4");
             break;
@@ -361,6 +366,7 @@ public class AioShortVideoOperator
         }
         localMessageForShortVideo.fileType = 9;
         break label281;
+        label866:
         if (2 == paramShortVideoUploadInfo.jdField_a_of_type_Int)
         {
           localMessageForShortVideo.busiType = 1;
@@ -373,8 +379,10 @@ public class AioShortVideoOperator
         }
         localMessageForShortVideo.busiType = 0;
         break label299;
+        str = "0";
+        break label391;
         i = 0;
-        break label382;
+        break label409;
       }
     }
   }
@@ -979,7 +987,7 @@ public class AioShortVideoOperator
       ((ShortVideoUploadInfo)localObject10).jdField_q_of_type_JavaLangString = ((String)localObject3);
       ((ShortVideoUploadInfo)localObject10).jdField_k_of_type_Int = j;
       ((ShortVideoUploadInfo)localObject10).jdField_l_of_type_Int = i;
-      ((ShortVideoUploadInfo)localObject10).s = ((String)localObject1);
+      ((ShortVideoUploadInfo)localObject10).jdField_r_of_type_JavaLangString = ((String)localObject1);
       Logger.a(this.jdField_g_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, "createShortVideoUploadInfo", "");
       return localObject10;
       if ((paramObject instanceof MessageForShortVideo))

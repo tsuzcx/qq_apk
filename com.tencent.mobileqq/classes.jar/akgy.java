@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
 public class akgy
-  implements Runnable
+  implements HostnameVerifier
 {
-  public akgy(NewStyleDropdownView paramNewStyleDropdownView) {}
+  public akgy(HttpCommunicator paramHttpCommunicator, String paramString, HttpMsg paramHttpMsg) {}
   
-  public void run()
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewStyleDropdownView", 2, "onDismiss arrow postDelayed 500 run and set isLastDropDown false");
-    }
-    this.a.a = false;
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaLangString, paramSSLSession);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, "httpsSSLProcess,HostnameVerifier", "reqhost = " + this.jdField_a_of_type_JavaLangString + ",address = " + paramSSLSession.getPeerHost() + "result:isverify = " + bool);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akgy
  * JD-Core Version:    0.7.0.1
  */

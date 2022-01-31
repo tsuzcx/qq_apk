@@ -1,14 +1,17 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInsertLocalVideoInfoSegment;
+import com.tencent.biz.qqstory.msgTabNode.util.MsgTabStoryUtil;
+import com.tencent.biz.qqstory.playmode.util.MsgTabVideoData;
+import java.util.Comparator;
 
-public final class nea
-  implements Runnable
+public class nea
+  implements Comparator
 {
-  public nea(MsgTabNodeInfo paramMsgTabNodeInfo) {}
+  public nea(MsgTabNodeInsertLocalVideoInfoSegment paramMsgTabNodeInsertLocalVideoInfoSegment) {}
   
-  public void run()
+  public int a(MsgTabVideoData paramMsgTabVideoData1, MsgTabVideoData paramMsgTabVideoData2)
   {
-    MsgTabStoryManager.c(this.a);
+    return MsgTabStoryUtil.a(paramMsgTabVideoData1.a.mCreateTime, paramMsgTabVideoData2.a.mCreateTime);
   }
 }
 

@@ -34,8 +34,8 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
-import pcy;
-import pcz;
+import pes;
+import pet;
 
 public class BaseApplicationImpl
   extends MobileQQ
@@ -73,6 +73,7 @@ public class BaseApplicationImpl
   public static boolean sIsBgStartup;
   public static long sLaunchTime;
   public static int sProcessId;
+  public static String sPublicFragmentEscapedMsg;
   public static String sQQAppInterfaceEscapedMsg = "";
   public static long sShowTime;
   public static String sSplashActivityEscapedMsg = "";
@@ -87,6 +88,7 @@ public class BaseApplicationImpl
   static
   {
     sImmersiveUtilsEscapedMsg = "";
+    sPublicFragmentEscapedMsg = "";
     sFooVersion = "";
     sFoo2Version = "";
     IS_SUPPORT_THEME = true;
@@ -95,9 +97,9 @@ public class BaseApplicationImpl
   
   public BaseApplicationImpl()
   {
-    buildNum = "3525";
-    channelId = "10000665";
-    reportVersionName = "7.6.0.3525";
+    buildNum = "3560";
+    channelId = "2017";
+    reportVersionName = "7.6.3.3560";
     APP_ID = AppSetting.a;
   }
   
@@ -180,10 +182,10 @@ public class BaseApplicationImpl
       sProcessId = 1;
       com.tencent.qphone.base.util.BaseApplication.processName = paramContext;
       if (sProcessId != 1) {
-        break label261;
+        break label262;
       }
       l = 3000L;
-      QLog.init("com.tencent.mobileqq", paramContext, "V 7.6.0.3525", l);
+      QLog.init("com.tencent.mobileqq", paramContext, "V 7.6.3.3560", l);
       j = TOOL_PROCS.length;
       i = 0;
     }
@@ -247,7 +249,7 @@ public class BaseApplicationImpl
         }
         sProcessId = -1;
         break;
-        label261:
+        label262:
         l = 0L;
         break label39;
       }
@@ -286,7 +288,7 @@ public class BaseApplicationImpl
     while (!"channel_id".equals(paramString)) {
       return null;
     }
-    return "10000665";
+    return "2017";
   }
   
   public int getAppId(String paramString)
@@ -431,7 +433,7 @@ public class BaseApplicationImpl
     localHashMap.put("param_retryIndex", Integer.toString(paramInt));
     localHashMap.put("param_uin", paramString);
     StatisticCollector.a(getApplication()).a(paramString, "PcActiveSucc", true, 0L, 0L, localHashMap, "", true);
-    sUiHandler.postDelayed(new pcy(this, paramInt, paramString), 10000L);
+    sUiHandler.postDelayed(new pes(this, paramInt, paramString), 10000L);
     ReportController.b(null, "CliOper", "", "", "0X8004974", "0X8004974", 0, 0, "", "", "", "");
   }
   
@@ -459,7 +461,7 @@ public class BaseApplicationImpl
         else
         {
           i = 1;
-          ThreadManager.getSubThreadHandler().post(new pcz(this, paramIntent));
+          ThreadManager.getSubThreadHandler().post(new pet(this, paramIntent));
         }
       }
     }

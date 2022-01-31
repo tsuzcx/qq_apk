@@ -1,21 +1,12 @@
-import com.tencent.plato.PlatoLoadEvent;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.view.View;
 
-public final class akuk
-  implements Runnable
+public class akuk
 {
-  public akuk(String paramString1, String paramString2) {}
-  
-  public void run()
-  {
-    PlatoLoadEvent localPlatoLoadEvent = PlatoLoadEvent.a(0, this.a, this.b);
-    Dispatchers.get().dispatch(localPlatoLoadEvent);
-  }
+  public View[] a = new View[12];
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akuk
  * JD-Core Version:    0.7.0.1
  */

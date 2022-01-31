@@ -1,44 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
 
 public class wpu
-  implements Runnable
+  implements NewFriendManager.INewFriendListener
 {
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference b;
+  public wpu(MainAssistObserver paramMainAssistObserver) {}
   
-  public wpu(AvatarPendantActivity paramAvatarPendantActivity, DownloadListener paramDownloadListener, QQAppInterface paramQQAppInterface)
+  public void Q_() {}
+  
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDownloadListener);
-    this.b = new WeakReference(paramQQAppInterface);
+    this.a.f();
   }
   
-  public void run()
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantActivity", 2, "checkAvatarPendantMarketIcon start...");
+    if ((this.a.a == null) || (this.a.a.app == null)) {
+      return;
     }
-    if ((this.b.get() != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      DownloaderInterface localDownloaderInterface = ((DownloaderFactory)((QQAppInterface)this.b.get()).getManager(46)).a(1);
-      if (localDownloaderInterface.a(AvatarPendantUtil.a) == null)
-      {
-        Object localObject = new File(AvatarPendantUtil.b + "/icon.zip");
-        localObject = new DownloadTask(AvatarPendantUtil.a, (File)localObject);
-        ((DownloadTask)localObject).n = false;
-        Bundle localBundle = new Bundle();
-        localDownloaderInterface.a((DownloadTask)localObject, (DownloadListener)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localBundle);
-      }
-    }
+    ((NewFriendManager)this.a.a.app.getManager(33)).b();
   }
 }
 

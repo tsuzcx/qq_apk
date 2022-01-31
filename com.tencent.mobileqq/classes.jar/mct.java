@@ -1,24 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoStatusListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
-class mct
-  implements Runnable
+public class mct
+  implements View.OnClickListener
 {
-  mct(mcr parammcr) {}
+  public mct(VideoFeedsListView paramVideoFeedsListView) {}
   
-  public void run()
-  {
-    if (VideoFeedsPlayManager.a(this.a.a) != null)
-    {
-      Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
-      while (localIterator.hasNext()) {
-        ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).a(VideoFeedsPlayManager.a(this.a.a));
-      }
-    }
-    this.a.a.b(0);
-  }
+  public void onClick(View paramView) {}
 }
 
 

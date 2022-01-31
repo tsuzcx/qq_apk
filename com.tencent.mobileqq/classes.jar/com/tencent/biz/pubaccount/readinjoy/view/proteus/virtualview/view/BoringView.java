@@ -3,17 +3,17 @@ package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view;
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import mpt;
+import mra;
 
 public class BoringView
   extends ViewBase
 {
-  private mpt a;
+  private mra a;
   
   public BoringView(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.a = new mpt(paramVafContext.a());
+    this.a = new mra(paramVafContext.a());
   }
   
   public int a()

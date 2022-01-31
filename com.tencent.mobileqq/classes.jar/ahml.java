@@ -1,38 +1,28 @@
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.OnProviderContainerTriggerLisener;
 
 public class ahml
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public HashMap a = new HashMap();
-  public int b;
-  public HashMap b;
-  public int c;
-  public int d;
-  public int e = 0;
+  public ahml(ProviderContainerView paramProviderContainerView) {}
   
-  public ahml()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.a.c.setVisibility(0);
   }
   
-  public int a()
-  {
-    return this.jdField_b_of_type_Int + this.c + this.d + this.e;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public int b()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public int c()
-  {
-    return this.jdField_b_of_type_Int + this.c;
-  }
-  
-  public int d()
-  {
-    return this.jdField_b_of_type_Int + this.c + this.d;
+    if (ProviderContainerView.a(this.a) != null) {
+      ProviderContainerView.a(this.a).a();
+    }
   }
 }
 

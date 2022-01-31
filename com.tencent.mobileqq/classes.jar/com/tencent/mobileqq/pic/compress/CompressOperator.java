@@ -19,7 +19,7 @@ import java.util.List;
 
 public class CompressOperator
 {
-  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getString(2131436911);
+  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getString(2131436928);
   private static List jdField_a_of_type_JavaUtilList;
   
   public static int a(int paramInt)

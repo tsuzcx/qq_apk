@@ -1,23 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class tnr
-  implements Handler.Callback
+  implements Runnable
 {
-  public tnr(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public tnr(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      paramMessage = new tns(this);
-      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
-    }
+    ReportController.b(this.a.app, "dc00898", "", "", "0X8008122", "0X8008122", 0, 0, "", "", "", "");
   }
 }
 

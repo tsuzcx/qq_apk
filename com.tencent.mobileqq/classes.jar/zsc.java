@@ -1,39 +1,19 @@
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.app.proxy.FTSDBManager;
-import com.tencent.mobileqq.app.proxy.fts.FTSSyncHandler;
-import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
+import android.os.Handler;
+import com.tencent.mobileqq.app.message.BaseMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
 
 public class zsc
   implements Runnable
 {
-  public zsc(FTSDBManager paramFTSDBManager) {}
+  public zsc(BaseMessageManager paramBaseMessageManager, String paramString1, int paramInt1, int paramInt2, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, String paramString2) {}
   
   public void run()
   {
-    if (this.a.a()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (SQLiteFTSUtils.g(FTSDBManager.a(this.a)))
-          {
-            FTSDBManager.a(this.a);
-            return;
-          }
-        } while ((!SQLiteFTSUtils.h(FTSDBManager.a(this.a))) || (this.a.b));
-        FTSDBManager.a(this.a);
-        ThreadRegulator.a().b();
-      } while (FTSDBManager.a(this.a));
-      if ((FTSDBManager.b(this.a) > 10) || (FTSDBManager.c(this.a) == 1))
-      {
-        FTSDBManager.a(this.a);
-        return;
-      }
-    } while (FTSDBManager.c(this.a) != -1);
-    this.a.a.postDelayed(this, 5000L);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.a("refreshMessageListHead uin = " + this.jdField_a_of_type_JavaLangString + ", type = " + this.jdField_a_of_type_Int + ", count = " + this.jdField_b_of_type_Int + ", context = " + this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext, ", timestamp = " + System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.a.post(new zsd(this));
   }
 }
 

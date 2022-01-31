@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aiyo;
-import aiyp;
-import aiyq;
-import aiyr;
-import aiyt;
-import aiyv;
-import aiyw;
-import aiyy;
-import aiyz;
-import aizc;
-import aizf;
-import aizg;
+import ajms;
+import ajmt;
+import ajmu;
+import ajmv;
+import ajmx;
+import ajmz;
+import ajna;
+import ajnc;
+import ajnd;
+import ajng;
+import ajnj;
+import ajnk;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -91,13 +91,13 @@ public class AIOAnimationControlManager
   public Handler a;
   public AppInterface a;
   public BaseChatPie a;
-  FrameSprite.OnFrameEndListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener = new aiyr(this);
+  FrameSprite.OnFrameEndListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener = new ajmv(this);
   public AIOAnimationControlManager.OnAnimationPlayEndListener a;
-  TroopGiftAnimationController.OnCleanAnimationListener jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$OnCleanAnimationListener = new aiyq(this);
+  TroopGiftAnimationController.OnCleanAnimationListener jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$OnCleanAnimationListener = new ajmu(this);
   public TroopGiftAnimationController a;
   public TroopInteractGiftAnimationController a;
   TroopPicEffectsController jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new aiyw(this);
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ajna(this);
   public Comparator a;
   public HashMap a;
   public String b;
@@ -121,7 +121,7 @@ public class AIOAnimationControlManager
     this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilComparator = new aiyv(this);
+    this.jdField_a_of_type_JavaUtilComparator = new ajmz(this);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     a(paramAppInterface);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
@@ -134,7 +134,7 @@ public class AIOAnimationControlManager
       i();
       return;
     }
-    ThreadManager.post(new aiyo(this), 8, null, true);
+    ThreadManager.post(new ajms(this), 8, null, true);
   }
   
   private void a(String paramString, MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
@@ -549,7 +549,7 @@ public class AIOAnimationControlManager
               }
               if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a.a()))
               {
-                this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiyy(this, paramBoolean), 500L);
+                this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ajnc(this, paramBoolean), 500L);
                 return;
                 if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {}
                 for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;; localObject1 = this.jdField_b_of_type_JavaLangString) {
@@ -557,7 +557,7 @@ public class AIOAnimationControlManager
                 }
               }
             } while (((MessageForDeliverGiftTips)localObject5).interactState == 2);
-            ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(112)).a(((MessageForDeliverGiftTips)localObject5).frienduin, ((MessageForDeliverGiftTips)localObject5).interactId, ((MessageForDeliverGiftTips)localObject5).giftId, new aiyz(this, (MessageForDeliverGiftTips)localObject5, (List)localObject3, paramBoolean, (List)localObject4, (String)localObject6));
+            ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(112)).a(((MessageForDeliverGiftTips)localObject5).frienduin, ((MessageForDeliverGiftTips)localObject5).interactId, ((MessageForDeliverGiftTips)localObject5).giftId, new ajnd(this, (MessageForDeliverGiftTips)localObject5, (List)localObject3, paramBoolean, (List)localObject4, (String)localObject6));
             return;
             if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject6)) && (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject6)).intValue() == 4))
             {
@@ -577,7 +577,7 @@ public class AIOAnimationControlManager
           localObject5 = (MessageForDeliverGiftTips)localObject3;
           if ((((MessageForDeliverGiftTips)localObject5).isToAll()) && (!((MessageForDeliverGiftTips)localObject5).hasFetchButFailed))
           {
-            localObject3 = ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(112)).a((String)localObject1, ((MessageForDeliverGiftTips)localObject5).bagId, new aizc(this, (MessageForDeliverGiftTips)localObject5, (String)localObject1, paramBoolean));
+            localObject3 = ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(112)).a((String)localObject1, ((MessageForDeliverGiftTips)localObject5).bagId, new ajng(this, (MessageForDeliverGiftTips)localObject5, (String)localObject1, paramBoolean));
             if (localObject3 == null)
             {
               this.jdField_a_of_type_Int = 1;
@@ -606,7 +606,7 @@ public class AIOAnimationControlManager
             if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a.a())) {
               break;
             }
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aizf(this, paramBoolean), 500L);
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ajnj(this, paramBoolean), 500L);
             return;
             if (((TroopGiftBagInfo)localObject3).myGrabResult != null)
             {
@@ -627,7 +627,7 @@ public class AIOAnimationControlManager
           }
           ((List)localObject4).remove(localObject5);
         } while (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController == null);
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a((MessageForDeliverGiftTips)localObject5, (String)localObject6, false, new aizg(this, paramBoolean));
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a((MessageForDeliverGiftTips)localObject5, (String)localObject6, false, new ajnk(this, paramBoolean));
         return;
         if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
         {
@@ -752,7 +752,7 @@ public class AIOAnimationControlManager
           break label1773;
         }
         localObject3 = (TroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController.a(((MessageForTroopEffectPic)localObject5).effectId, (Bitmap)localObject1, ((TroopChatPie)localObject3).o, new aiyp(this, paramBoolean));
+        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController.a(((MessageForTroopEffectPic)localObject5).effectId, (Bitmap)localObject1, ((TroopChatPie)localObject3).o, new ajmt(this, paramBoolean));
         ((List)localObject4).remove(localObject5);
         return;
         i = 90;
@@ -826,7 +826,7 @@ public class AIOAnimationControlManager
         }
       }
       finally {}
-      ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(112)).a(paramMessageForDeliverGiftTips.frienduin, paramMessageForDeliverGiftTips.interactId, paramMessageForDeliverGiftTips.giftId, new aiyt(this, paramMessageForDeliverGiftTips, paramBoolean));
+      ((TroopGiftManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(112)).a(paramMessageForDeliverGiftTips.frienduin, paramMessageForDeliverGiftTips.interactId, paramMessageForDeliverGiftTips.giftId, new ajmx(this, paramMessageForDeliverGiftTips, paramBoolean));
     }
   }
   
@@ -1177,7 +1177,7 @@ public class AIOAnimationControlManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.AIOAnimationControlManager
  * JD-Core Version:    0.7.0.1
  */

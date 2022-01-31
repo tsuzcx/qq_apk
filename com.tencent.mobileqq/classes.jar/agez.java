@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.olympic.view.ScannerAnimView.OnScanAnimEndListener;
 
 public class agez
-  implements Runnable
+  implements ScannerAnimView.OnScanAnimEndListener
 {
-  public agez(LSRecordPanel paramLSRecordPanel) {}
+  public agez(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    LSRecordPanel.b(this.a, false);
-    LSRecordPanel.a(this.a, "亲们，QQ没有使用麦克风权限呢");
-    LSRecordPanel.b(this.a, false);
+    ViewGroup localViewGroup = ScanTorchActivity.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
+    {
+      localViewGroup.setVisibility(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agez
  * JD-Core Version:    0.7.0.1
  */

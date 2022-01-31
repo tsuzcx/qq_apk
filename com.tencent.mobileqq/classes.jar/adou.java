@@ -1,42 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import java.util.Comparator;
 
 public class adou
-  implements Animator.AnimatorListener
+  implements Comparator
 {
-  public adou(LightReplyMenuManager paramLightReplyMenuManager) {}
+  public adou(MessageForUniteGrayTip paramMessageForUniteGrayTip) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public int a(MessageForGrayTips.HightlightItem paramHightlightItem1, MessageForGrayTips.HightlightItem paramHightlightItem2)
   {
-    this.a.b = false;
-    this.a.c = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.a.a != null)
-    {
-      this.a.a.setVisibility(8);
-      LightReplyMenuManager.a(this.a, null);
-      this.a.a = null;
-      LightReplyMenuManager.a(this.a, false);
-    }
-    this.a.b = false;
-    this.a.c = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b = true;
+    return paramHightlightItem1.start - paramHightlightItem2.start;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adou
  * JD-Core Version:    0.7.0.1
  */

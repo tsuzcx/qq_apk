@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aaqo
+class aaqo
   implements Runnable
 {
-  public aaqo(ArkRecommendController paramArkRecommendController, RecommendCommonMessage paramRecommendCommonMessage) {}
+  aaqo(aaqn paramaaqn, int paramInt) {}
   
   public void run()
   {
-    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) != null)
+    Iterator localIterator = ArkAppMusicModule.a.iterator();
+    while (localIterator.hasNext())
     {
-      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, 0);
-      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, 1);
+      ArkAppMusicModule localArkAppMusicModule = (ArkAppMusicModule)((WeakReference)localIterator.next()).get();
+      if (localArkAppMusicModule != null) {
+        localArkAppMusicModule.a(this.jdField_a_of_type_Int);
+      }
     }
   }
 }

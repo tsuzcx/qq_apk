@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vas;
 
-import ajsz;
-import ajta;
-import ajtc;
-import ajtd;
-import ajte;
-import ajtf;
-import ajtg;
-import ajth;
+import akhg;
+import akhh;
+import akhj;
+import akhk;
+import akhl;
+import akhm;
+import akhn;
+import akho;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -50,7 +50,7 @@ public class ColorRingPlayer
   implements View.OnClickListener
 {
   public int a;
-  public ajth a;
+  public akho a;
   public AudioManager.OnAudioFocusChangeListener a;
   public MediaPlayer a;
   public Handler a;
@@ -74,27 +74,27 @@ public class ColorRingPlayer
   
   public ColorRingPlayer(QQBrowserActivity paramQQBrowserActivity, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Ajth = new ajth(this);
+    this.jdField_a_of_type_Akho = new akho(this);
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable = null;
-    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new ajsz(this);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new ajtf(this);
+    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new akhg(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new akhm(this);
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
     this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
     WebIPCOperator.a().a(this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131364453));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131371399));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372125));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131362987));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372126));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369816));
-    this.d = ((TextView)paramViewGroup.findViewById(2131372127));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372124));
-    this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131372128));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372123));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131364477));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131371562));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372298));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131363005));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372299));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369893));
+    this.d = ((TextView)paramViewGroup.findViewById(2131372300));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372297));
+    this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131372301));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372296));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
@@ -127,9 +127,9 @@ public class ColorRingPlayer
       {
         this.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
         this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843809));
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843933));
       }
-      this.jdField_a_of_type_Ajth.jdField_a_of_type_Int = 5;
+      this.jdField_a_of_type_Akho.jdField_a_of_type_Int = 5;
       return;
     }
   }
@@ -140,12 +140,12 @@ public class ColorRingPlayer
     ((Bundle)???).putLong("id", paramLong);
     ((Bundle)???).putInt("resourceType", 3);
     a(DataFactory.a("stopDownloadColorRing", "", this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver.key, (Bundle)???));
-    synchronized (this.jdField_a_of_type_Ajth)
+    synchronized (this.jdField_a_of_type_Akho)
     {
-      this.jdField_a_of_type_Ajth.jdField_a_of_type_Int = 2;
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843807));
+      this.jdField_a_of_type_Akho.jdField_a_of_type_Int = 2;
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843931));
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436172));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436189));
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
       return;
     }
@@ -192,15 +192,15 @@ public class ColorRingPlayer
     //   70: invokespecial 246	android/media/MediaPlayer:<init>	()V
     //   73: putfield 41	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   76: aload_0
-    //   77: getfield 37	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_Ajth	Lajth;
-    //   80: astore 6
-    //   82: aload 6
+    //   77: getfield 37	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_Akho	Lakho;
+    //   80: astore 4
+    //   82: aload 4
     //   84: monitorenter
     //   85: aload_0
-    //   86: getfield 37	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_Ajth	Lajth;
+    //   86: getfield 37	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_Akho	Lakho;
     //   89: iconst_4
-    //   90: putfield 178	ajth:jdField_a_of_type_Int	I
-    //   93: aload 6
+    //   90: putfield 178	akho:jdField_a_of_type_Int	I
+    //   93: aload 4
     //   95: monitorexit
     //   96: lload_1
     //   97: lconst_0
@@ -243,10 +243,10 @@ public class ColorRingPlayer
     //   174: monitorexit
     //   175: aload 5
     //   177: athrow
-    //   178: astore 4
-    //   180: aload 6
+    //   178: astore 6
+    //   180: aload 4
     //   182: monitorexit
-    //   183: aload 4
+    //   183: aload 6
     //   185: athrow
     //   186: astore 5
     //   188: aconst_null
@@ -334,11 +334,11 @@ public class ColorRingPlayer
     //   366: invokevirtual 214	android/widget/ImageView:setVisibility	(I)V
     //   369: aload_0
     //   370: getfield 41	com/tencent/mobileqq/vas/ColorRingPlayer:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   373: new 309	ajsy
+    //   373: new 309	akhf
     //   376: dup
     //   377: aload_0
     //   378: aload 4
-    //   380: invokespecial 312	ajsy:<init>	(Lcom/tencent/mobileqq/vas/ColorRingPlayer;Landroid/media/AudioManager;)V
+    //   380: invokespecial 312	akhf:<init>	(Lcom/tencent/mobileqq/vas/ColorRingPlayer;Landroid/media/AudioManager;)V
     //   383: invokevirtual 316	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   386: aload_0
     //   387: ldc_w 318
@@ -416,26 +416,25 @@ public class ColorRingPlayer
     //   0	534	0	this	ColorRingPlayer
     //   0	534	1	paramLong	long
     //   0	534	3	paramInt	int
-    //   38	135	4	localObject1	Object
-    //   178	6	4	localObject2	Object
-    //   189	13	4	localObject3	Object
+    //   38	164	4	localObject1	Object
     //   207	3	4	localException1	Exception
     //   228	31	4	localException2	Exception
     //   283	96	4	localAudioManager	AudioManager
     //   410	3	4	localException3	Exception
-    //   475	36	4	localObject5	Object
-    //   516	14	4	localObject6	Object
-    //   1	1	5	localObject7	Object
-    //   170	6	5	localObject8	Object
+    //   475	36	4	localObject3	Object
+    //   516	14	4	localObject4	Object
+    //   1	1	5	localObject5	Object
+    //   170	6	5	localObject6	Object
     //   186	6	5	localIOException1	java.io.IOException
-    //   215	6	5	localObject9	Object
+    //   215	6	5	localObject7	Object
     //   223	260	5	localIOException2	java.io.IOException
     //   498	3	5	localException4	Exception
-    //   512	14	5	localObject10	Object
-    //   80	138	6	localObject11	Object
-    //   490	6	6	localObject12	Object
-    //   508	7	6	localObject13	Object
-    //   521	7	6	localObject14	Object
+    //   512	14	5	localObject8	Object
+    //   125	18	6	localObject9	Object
+    //   178	40	6	localObject10	Object
+    //   490	6	6	localObject11	Object
+    //   508	7	6	localObject12	Object
+    //   521	7	6	localObject13	Object
     // Exception table:
     //   from	to	target	type
     //   43	62	170	finally
@@ -492,13 +491,13 @@ public class ColorRingPlayer
     }
     if (AppNetConnInfo.isMobileConn())
     {
-      localObject = new ajtc(this, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getActivity(), 2131624515);
+      localObject = new akhj(this, this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getActivity(), 2131624516);
       ((QQCustomDialog)localObject).setContentView(2130968851);
       ((QQCustomDialog)localObject).setTitle("温馨提示");
-      ((QQCustomDialog)localObject).setMessage(2131434075);
+      ((QQCustomDialog)localObject).setMessage(2131434092);
       ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
-      ((QQCustomDialog)localObject).setNegativeButton(2131432998, new ajtd(this));
-      ((QQCustomDialog)localObject).setPositiveButton(2131432999, new ajte(this, paramLong, paramInt, paramString));
+      ((QQCustomDialog)localObject).setNegativeButton(2131433015, new akhk(this));
+      ((QQCustomDialog)localObject).setPositiveButton(2131433016, new akhl(this, paramLong, paramInt, paramString));
       ((QQCustomDialog)localObject).show();
       return;
     }
@@ -508,7 +507,7 @@ public class ColorRingPlayer
   void a(long paramLong, String paramString)
   {
     if ("colorring".equals(paramString)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436184);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436201);
     }
     for (;;)
     {
@@ -521,27 +520,27 @@ public class ColorRingPlayer
       if (!a(paramLong, paramString)) {
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436177));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436194));
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843808));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843806));
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843932));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843930));
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436178));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436195));
       this.jdField_b_of_type_AndroidWidgetTextView.setText("");
       return;
       if ("comering".equals(paramString)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436185);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436202);
       }
     }
     if (paramString.equals("colorring")) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436173));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436190));
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       break;
       if (paramString.equals("comering")) {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436174));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436191));
       }
     }
     label261:
@@ -550,18 +549,18 @@ public class ColorRingPlayer
     }
     if (!new File(ColorRingManager.a(paramLong, 3)).exists())
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843807));
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843931));
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
       if (paramString.equals("colorring"))
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436173));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436190));
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
         a(paramLong, 3, paramString);
         label368:
         if (new File(ColorRingManager.a(paramLong, 1)).exists()) {
           break label610;
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843805));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843929));
         a(paramLong, 1, paramString);
       }
     }
@@ -577,24 +576,24 @@ public class ColorRingPlayer
       if (!paramString.equals("comering")) {
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436174));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436191));
       break;
       a(paramLong, 0);
       if (a(paramLong, paramString))
       {
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436177));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436194));
         break label368;
       }
       if (paramString.equals("colorring")) {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436173));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436190));
       }
       for (;;)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
         break;
         if (paramString.equals("comering")) {
-          this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436174));
+          this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436191));
         }
       }
       label610:
@@ -612,14 +611,14 @@ public class ColorRingPlayer
     int i = 0;
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_Ajth)
+      synchronized (this.jdField_a_of_type_Akho)
       {
-        if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Long == paramLong)
+        if (this.jdField_a_of_type_Akho.jdField_a_of_type_Long == paramLong)
         {
           if (paramInt != 0) {
             break label205;
           }
-          this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436177));
+          this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436194));
           this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
           if (!paramString1.equals("colorring")) {
             continue;
@@ -661,21 +660,21 @@ public class ColorRingPlayer
   
   public void a(long paramLong, String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_Ajth.jdField_a_of_type_Long == paramLong) && (this.jdField_a_of_type_Ajth.jdField_a_of_type_JavaLangString.equals(paramString1)))
+    if ((this.jdField_a_of_type_Akho.jdField_a_of_type_Long == paramLong) && (this.jdField_a_of_type_Akho.jdField_a_of_type_JavaLangString.equals(paramString1)))
     {
-      if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 6) {
+      if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 6) {
         a(paramLong, 0);
       }
       return;
     }
-    if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 1) {
-      a(this.jdField_a_of_type_Ajth.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 1) {
+      a(this.jdField_a_of_type_Akho.jdField_a_of_type_Long);
     }
     b();
-    this.jdField_a_of_type_Ajth.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Ajth.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Ajth.b = paramString2;
-    this.jdField_a_of_type_Ajth.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Akho.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Akho.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Akho.b = paramString2;
+    this.jdField_a_of_type_Akho.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(8);
     a(paramLong, paramString1);
   }
@@ -698,11 +697,11 @@ public class ColorRingPlayer
       this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
       this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
       this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843809));
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843933));
     }
-    synchronized (this.jdField_a_of_type_Ajth)
+    synchronized (this.jdField_a_of_type_Akho)
     {
-      this.jdField_a_of_type_Ajth.jdField_a_of_type_Int = 6;
+      this.jdField_a_of_type_Akho.jdField_a_of_type_Int = 6;
       this.jdField_b_of_type_Boolean = false;
       if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewViewGroup.getVisibility() == 0)) {
         this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
@@ -713,7 +712,7 @@ public class ColorRingPlayer
   
   void a(String paramString1, String paramString2, long paramLong, int paramInt)
   {
-    new Handler(Looper.getMainLooper()).post(new ajtg(this, paramString1, paramString2, paramLong, paramInt));
+    new Handler(Looper.getMainLooper()).post(new akhn(this, paramString1, paramString2, paramLong, paramInt));
   }
   
   public void a(JSONObject paramJSONObject)
@@ -774,15 +773,15 @@ public class ColorRingPlayer
     ((Bundle)localObject1).putInt("resourceType", paramInt);
     ((Bundle)localObject1).putString("colorType", ???);
     a(DataFactory.a("startDownloadColorRing", "", this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver.key, (Bundle)localObject1));
-    synchronized (this.jdField_a_of_type_Ajth)
+    synchronized (this.jdField_a_of_type_Akho)
     {
-      this.jdField_a_of_type_Ajth.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_Akho.jdField_a_of_type_Int = 1;
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       ??? = null;
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable == null) {}
       try
       {
-        localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources(), 2130844849);
+        localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources(), 2130844974);
         ??? = (String)localObject1;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -802,7 +801,7 @@ public class ColorRingPlayer
       this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.setLevel(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.invalidateSelf();
       this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436171));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getString(2131436188));
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
       return;
     }
@@ -815,18 +814,18 @@ public class ColorRingPlayer
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
-          synchronized (this.jdField_a_of_type_Ajth)
+          synchronized (this.jdField_a_of_type_Akho)
           {
-            long l = this.jdField_a_of_type_Ajth.jdField_a_of_type_Long;
+            long l = this.jdField_a_of_type_Akho.jdField_a_of_type_Long;
             a(l, this.jdField_a_of_type_Int);
             d();
-            this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843808));
+            this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843932));
           }
         }
       }
-      synchronized (this.jdField_a_of_type_Ajth)
+      synchronized (this.jdField_a_of_type_Akho)
       {
-        this.jdField_a_of_type_Ajth.jdField_a_of_type_Int = 4;
+        this.jdField_a_of_type_Akho.jdField_a_of_type_Int = 4;
         return;
         localObject4 = finally;
         throw localObject4;
@@ -840,7 +839,7 @@ public class ColorRingPlayer
   
   void d()
   {
-    ThreadManager.post(new ajta(this), 8, null, true);
+    ThreadManager.post(new akhh(this), 8, null, true);
   }
   
   public void e()
@@ -872,11 +871,11 @@ public class ColorRingPlayer
         this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
         this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
         this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843809));
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843933));
       }
-      synchronized (this.jdField_a_of_type_Ajth)
+      synchronized (this.jdField_a_of_type_Akho)
       {
-        this.jdField_a_of_type_Ajth.jdField_a_of_type_Int = 6;
+        this.jdField_a_of_type_Akho.jdField_a_of_type_Int = 6;
         this.jdField_b_of_type_Boolean = true;
         this.jdField_a_of_type_Boolean = false;
         return;
@@ -907,67 +906,67 @@ public class ColorRingPlayer
     {
     default: 
       return;
-    case 2131372125: 
+    case 2131372298: 
       for (;;)
       {
-        synchronized (this.jdField_a_of_type_Ajth)
+        synchronized (this.jdField_a_of_type_Akho)
         {
-          if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 4)
+          if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 4)
           {
             a();
             return;
           }
         }
-        if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 5)
+        if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 5)
         {
           c();
         }
-        else if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 6)
+        else if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 6)
         {
-          a(this.jdField_a_of_type_Ajth.jdField_a_of_type_Long, 0);
+          a(this.jdField_a_of_type_Akho.jdField_a_of_type_Long, 0);
         }
-        else if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 1)
+        else if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 1)
         {
-          a(this.jdField_a_of_type_Ajth.jdField_a_of_type_Long);
-          this.jdField_a_of_type_Ajth.jdField_a_of_type_Int = 2;
+          a(this.jdField_a_of_type_Akho.jdField_a_of_type_Long);
+          this.jdField_a_of_type_Akho.jdField_a_of_type_Int = 2;
         }
-        else if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 2)
+        else if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 2)
         {
-          a(this.jdField_a_of_type_Ajth.jdField_a_of_type_Long, 3, str2);
+          a(this.jdField_a_of_type_Akho.jdField_a_of_type_Long, 3, str2);
         }
-        else if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 0)
+        else if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 0)
         {
-          a(this.jdField_a_of_type_Ajth.jdField_a_of_type_Long, 3, str2);
+          a(this.jdField_a_of_type_Akho.jdField_a_of_type_Long, 3, str2);
         }
-        else if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 3)
+        else if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 3)
         {
-          a(this.jdField_a_of_type_Ajth.jdField_a_of_type_Long, 0);
+          a(this.jdField_a_of_type_Akho.jdField_a_of_type_Long, 0);
         }
       }
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_Ajth)
+      synchronized (this.jdField_a_of_type_Akho)
       {
-        if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 1)
+        if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 1)
         {
-          a(this.jdField_a_of_type_Ajth.jdField_a_of_type_Long);
+          a(this.jdField_a_of_type_Akho.jdField_a_of_type_Long);
           return;
         }
       }
-      if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 2)
+      if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 2)
       {
-        a(this.jdField_a_of_type_Ajth.jdField_a_of_type_Long, 3, str3);
+        a(this.jdField_a_of_type_Akho.jdField_a_of_type_Long, 3, str3);
       }
-      else if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int == 0)
+      else if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int == 0)
       {
-        a(this.jdField_a_of_type_Ajth.jdField_a_of_type_Long, 3, str3);
+        a(this.jdField_a_of_type_Akho.jdField_a_of_type_Long, 3, str3);
       }
-      else if (this.jdField_a_of_type_Ajth.jdField_a_of_type_Int >= 3)
+      else if (this.jdField_a_of_type_Akho.jdField_a_of_type_Int >= 3)
       {
         WebViewFragment localWebViewFragment = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b();
         if (localWebViewFragment != null) {
-          localWebViewFragment.a().a(this.jdField_a_of_type_Ajth.b, new String[] { "{'result':0,'message':'OK'}" });
+          localWebViewFragment.a().a(this.jdField_a_of_type_Akho.b, new String[] { "{'result':0,'message':'OK'}" });
         }
         this.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(0);
       }
@@ -976,7 +975,7 @@ public class ColorRingPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorRingPlayer
  * JD-Core Version:    0.7.0.1
  */

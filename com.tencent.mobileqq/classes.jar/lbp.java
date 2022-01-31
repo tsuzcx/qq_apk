@@ -1,29 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationAdapter.ChannelButtonListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
 
 public class lbp
-  implements ReadInJoyNavigationAdapter.ChannelButtonListener
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  public lbp(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
   
-  public lbp(ReadInJoyNaviController paramReadInJoyNaviController)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramReadInJoyNaviController);
-  }
-  
-  public void a(ChannelCoverInfo paramChannelCoverInfo)
-  {
-    ReadInJoyNaviController localReadInJoyNaviController = (ReadInJoyNaviController)this.a.get();
-    if (((localReadInJoyNaviController == null) || (ReadInJoyNaviController.a(localReadInJoyNaviController).a())) && (QLog.isColorLevel()))
-    {
-      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
-      return;
-    }
-    localReadInJoyNaviController.a(paramChannelCoverInfo);
+    this.a.onBackEvent();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import ahpy;
+import aiea;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
@@ -12,7 +12,7 @@ public class SimpleAudioPlayer
   implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener
 {
   public static int a;
-  private ahpy jdField_a_of_type_Ahpy;
+  private aiea jdField_a_of_type_Aiea;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   private String jdField_a_of_type_JavaLangString;
   private volatile int b = jdField_a_of_type_Int;
@@ -30,7 +30,7 @@ public class SimpleAudioPlayer
       if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying())
       {
         this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-        this.jdField_a_of_type_Ahpy = null;
+        this.jdField_a_of_type_Aiea = null;
       }
       this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
       this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
@@ -68,10 +68,10 @@ public class SimpleAudioPlayer
           this.c = i;
           this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(this);
           this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
-          if (this.jdField_a_of_type_Ahpy == null)
+          if (this.jdField_a_of_type_Aiea == null)
           {
-            this.jdField_a_of_type_Ahpy = new ahpy(this, null);
-            this.jdField_a_of_type_Ahpy.start();
+            this.jdField_a_of_type_Aiea = new aiea(this, null);
+            this.jdField_a_of_type_Aiea.start();
           }
           if (!SdkContext.a().a().a()) {
             break label261;
@@ -101,7 +101,7 @@ public class SimpleAudioPlayer
         if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying())
         {
           this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-          this.jdField_a_of_type_Ahpy = null;
+          this.jdField_a_of_type_Aiea = null;
         }
         this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
         this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
@@ -147,13 +147,13 @@ public class SimpleAudioPlayer
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_Ahpy = null;
+    this.jdField_a_of_type_Aiea = null;
     a();
   }
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Ahpy = null;
+    this.jdField_a_of_type_Aiea = null;
     a();
     SdkContext.a().a().a("SimpleAudioPlayer", "playSimpleAudio " + this.jdField_a_of_type_JavaLangString + "onError: " + paramInt1 + "," + paramInt2);
     return true;

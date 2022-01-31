@@ -72,11 +72,11 @@ import org.json.JSONObject;
 import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype18;
 import tencent.im.msg.im_msg_body.CommonElem;
 import tencent.im.msg.im_msg_body.Elem;
-import xbf;
-import xbg;
-import xbh;
-import xbi;
-import xbj;
+import xek;
+import xel;
+import xem;
+import xen;
+import xeo;
 
 public class GoldMsgChatHelper
 {
@@ -101,11 +101,11 @@ public class GoldMsgChatHelper
   
   static
   {
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2131375342));
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2131375336));
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2131375352));
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2131375340));
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2131375346));
+    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2131375573));
+    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2131375567));
+    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2131375583));
+    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2131375571));
+    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2131375577));
     i = Color.parseColor("#FFE6AB");
     j = Color.parseColor("#E19565");
     DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
@@ -123,7 +123,7 @@ public class GoldMsgChatHelper
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new xbf(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new xek(this);
   }
   
   public static BaseBubbleBuilder.ViewHolder a(ListView paramListView, String paramString)
@@ -273,7 +273,7 @@ public class GoldMsgChatHelper
     if ((paramInt == paramSessionInfo.jdField_a_of_type_Int) && (paramSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString2)) && (paramLong2 > 0L) && (paramLong1 > 0L) && (paramLong2 <= paramLong1)) {}
     try
     {
-      jdField_a_of_type_AndroidOsHandler.postDelayed(new xbj(paramInt, paramSessionInfo, paramString2, paramListView, paramString1, paramLong1, paramLong2, paramBoolean, paramGoldMsgAnimatorCtr), 500L);
+      jdField_a_of_type_AndroidOsHandler.postDelayed(new xeo(paramInt, paramSessionInfo, paramString2, paramListView, paramString1, paramLong1, paramLong2, paramBoolean, paramGoldMsgAnimatorCtr), 500L);
       return;
     }
     catch (Exception paramSessionInfo)
@@ -355,7 +355,7 @@ public class GoldMsgChatHelper
     paramTextView2.setVisibility(8);
     paramGoldMsgQueueView.setVisibility(8);
     paramGoldMsgQueueView.a(null, 0);
-    Object localObject1 = localResources.getDrawable(2130843980);
+    Object localObject1 = localResources.getDrawable(2130844104);
     if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000))
     {
       paramTextView1.setText(a(paramMessageRecord.getExtInfoFromExtStr("goldmsg_current_amount")));
@@ -437,7 +437,7 @@ public class GoldMsgChatHelper
       }
     }
     label564:
-    for (paramQQAppInterface = localResources.getDrawable(2130843986);; paramQQAppInterface = (QQAppInterface)localObject1)
+    for (paramQQAppInterface = localResources.getDrawable(2130844110);; paramQQAppInterface = (QQAppInterface)localObject1)
     {
       localObject1 = paramQQAppInterface;
       paramQQAppInterface = paramGoldMsgQueueView;
@@ -496,7 +496,7 @@ public class GoldMsgChatHelper
     String str;
     if (paramInt == 1)
     {
-      str = BaseApplicationImpl.getApplication().getResources().getString(2131432286);
+      str = BaseApplicationImpl.getApplication().getResources().getString(2131432303);
       paramInt = 8;
       k = str.length();
       localBundle = new Bundle();
@@ -509,7 +509,7 @@ public class GoldMsgChatHelper
       return;
       if (paramInt == 2)
       {
-        str = BaseApplicationImpl.getApplication().getResources().getString(2131432287);
+        str = BaseApplicationImpl.getApplication().getResources().getString(2131432304);
         paramInt = 15;
         k = str.length();
         localBundle = new Bundle();
@@ -528,12 +528,12 @@ public class GoldMsgChatHelper
     if ((paramMessageRecord == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    ThreadManager.post(new xbi(paramMessageRecord, paramString, paramInt3, paramInt1, paramInt2, paramBundle), 10, null, false);
+    ThreadManager.post(new xen(paramMessageRecord, paramString, paramInt3, paramInt1, paramInt2, paramBundle), 10, null, false);
   }
   
   public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    ThreadManager.post(new xbh(paramMessageRecord, paramBoolean), 10, null, false);
+    ThreadManager.post(new xem(paramMessageRecord, paramBoolean), 10, null, false);
   }
   
   public static void a(im_msg_body.Elem paramElem, MessageRecord paramMessageRecord)
@@ -701,7 +701,7 @@ public class GoldMsgChatHelper
         if ((2 != paramInt) || (!paramBoolean)) {
           break;
         }
-        paramViewHolder = ((TextView)localObject).getResources().getDrawable(2130843986);
+        paramViewHolder = ((TextView)localObject).getResources().getDrawable(2130844110);
         paramViewHolder.setBounds(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int);
         ((TextView)localObject).setCompoundDrawables(paramViewHolder, null, null, null);
         return;
@@ -982,7 +982,7 @@ public class GoldMsgChatHelper
               k = m;
             }
             this.jdField_b_of_type_JavaUtilHashMap.put(str2, Long.valueOf(paramMessageRecord.uniseq));
-            ThreadManager.post(new xbg(this, paramMessageRecord, str1, str2, str3), 10, null, false);
+            ThreadManager.post(new xel(this, paramMessageRecord, str1, str2, str3), 10, null, false);
           }
         }
       }

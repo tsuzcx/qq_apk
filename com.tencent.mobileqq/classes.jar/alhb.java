@@ -1,24 +1,22 @@
 import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.qqprotect.qsec.ICSProcessor.ICSProcessorListener;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.ApkGetCodeListener;
+import com.tencent.open.downloadnew.DownloadManager;
 
 public class alhb
-  extends ProtoUtils.TroopProtocolObserver
+  implements ApkGetCodeListener
 {
-  protected ICSProcessor.ICSProcessorListener a;
-  protected byte[] a;
+  public alhb(DownloadManager paramDownloadManager) {}
   
-  public alhb(byte[] paramArrayOfByte, ICSProcessor.ICSProcessorListener paramICSProcessorListener)
+  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener = paramICSProcessorListener;
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener != null) {
-      this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
-    }
+    LogUtility.c(DownloadManager.a, "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
+    paramBundle = new Bundle();
+    paramBundle.putString("PackageName", paramString1);
+    paramBundle.putString("Code", paramString2);
+    paramBundle.putInt("VersionCode", paramInt);
+    paramBundle.putBoolean("IsSuccess", paramBoolean);
+    DownloadManager.a(this.a, paramBundle);
   }
 }
 

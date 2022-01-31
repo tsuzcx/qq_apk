@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
 
 public class aeut
-  implements ActionSheet.OnDismissListener
+  implements View.OnClickListener
 {
-  public aeut(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public aeut(SmallVideoSendFragment paramSmallVideoSendFragment) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    NearbyProfileEditTribePanel.a(this.a, this.a.b, false);
+    ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).hideSoftInputFromWindow(SmallVideoSendFragment.a(this.a).getWindowToken(), 0);
   }
 }
 

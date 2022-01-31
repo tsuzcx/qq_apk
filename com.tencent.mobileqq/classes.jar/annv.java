@@ -1,26 +1,21 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.view.View;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
 
 public class annv
-  extends Property
+  implements Runnable
 {
-  public annv(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public annv(DynamicTextItem paramDynamicTextItem, View paramView) {}
   
-  public Float a(GroundDrawable paramGroundDrawable)
+  public void run()
   {
-    if (paramGroundDrawable != null) {
-      return Float.valueOf(GroundDrawable.d(paramGroundDrawable));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.c(paramGroundDrawable, paramFloat.floatValue());
+    DynamicTextItem.Pair localPair = DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
+    if (!((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localPair.b = Boolean.valueOf(bool);
+      this.jdField_a_of_type_AndroidViewView.invalidate();
+      return;
     }
   }
 }

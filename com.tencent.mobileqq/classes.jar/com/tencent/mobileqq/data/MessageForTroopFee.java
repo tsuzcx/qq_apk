@@ -51,9 +51,9 @@ public class MessageForTroopFee
     //   57: invokevirtual 70	java/lang/String:getBytes	()[B
     //   60: invokespecial 73	java/io/ByteArrayInputStream:<init>	([B)V
     //   63: astore_0
-    //   64: new 75	abnv
+    //   64: new 75	abuw
     //   67: dup
-    //   68: invokespecial 76	abnv:<init>	()V
+    //   68: invokespecial 76	abuw:<init>	()V
     //   71: astore 4
     //   73: invokestatic 82	javax/xml/parsers/SAXParserFactory:newInstance	()Ljavax/xml/parsers/SAXParserFactory;
     //   76: astore 6
@@ -65,7 +65,7 @@ public class MessageForTroopFee
     //   89: aload_0
     //   90: invokevirtual 97	java/io/InputStream:close	()V
     //   93: aload 4
-    //   95: invokevirtual 100	abnv:a	()Lcom/tencent/mobileqq/data/MessageForTroopFee;
+    //   95: invokevirtual 100	abuw:a	()Lcom/tencent/mobileqq/data/MessageForTroopFee;
     //   98: astore 4
     //   100: aload 4
     //   102: astore_0

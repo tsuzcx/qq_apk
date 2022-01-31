@@ -1,24 +1,32 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.sonic.SonicJsPlugin;
+import android.content.Context;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sonic.sdk.SonicDiffDataCallback;
+import java.util.Queue;
 
 public class ajyf
-  implements SonicDiffDataCallback
+  implements Runnable
 {
-  public ajyf(SonicJsPlugin paramSonicJsPlugin, CustomWebView paramCustomWebView, String paramString) {}
+  public ajyf(UnifiedDebugManager paramUnifiedDebugManager, long paramLong1, Context paramContext, String paramString1, int paramInt, long paramLong2, String paramString2) {}
   
-  public void callback(String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "getDiffData callback updated data: " + paramString.toString());
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a)
+    {
+      ajyh localajyh = (ajyh)this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a.peek();
+      if ((localajyh != null) && (localajyh.jdField_b_of_type_Long == this.jdField_a_of_type_Long))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Long, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaLangString);
+        if (QLog.isColorLevel()) {
+          QLog.d("UnifiedDebugManager", 2, "start debug(retry): seq=" + this.jdField_a_of_type_Long);
+        }
+      }
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.jdField_a_of_type_JavaLangString, new String[] { paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyf
  * JD-Core Version:    0.7.0.1
  */

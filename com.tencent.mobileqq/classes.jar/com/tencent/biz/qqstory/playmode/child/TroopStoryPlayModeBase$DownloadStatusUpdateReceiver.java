@@ -1,6 +1,7 @@
 package com.tencent.biz.qqstory.playmode.child;
 
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.boundaries.StoryApi;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
@@ -22,7 +23,8 @@ public class TroopStoryPlayModeBase$DownloadStatusUpdateReceiver
   
   public void a(@NonNull TroopStoryPlayModeBase paramTroopStoryPlayModeBase, @NonNull PlayModeUtils.DownloadStatusChangeEvent paramDownloadStatusChangeEvent)
   {
-    if ((paramTroopStoryPlayModeBase.a.a == null) || (paramTroopStoryPlayModeBase.a.a.isEmpty())) {
+    if (!TextUtils.equals(paramDownloadStatusChangeEvent.jdField_a_of_type_JavaLangString, String.valueOf(paramTroopStoryPlayModeBase.hashCode()))) {}
+    while ((paramTroopStoryPlayModeBase.a.a == null) || (paramTroopStoryPlayModeBase.a.a.isEmpty())) {
       return;
     }
     int i = paramDownloadStatusChangeEvent.jdField_a_of_type_Int;
@@ -37,7 +39,7 @@ public class TroopStoryPlayModeBase$DownloadStatusUpdateReceiver
       QQToast.a(VideoPlayModeBase.a(), 1, "已有其他下载任务在执行，请稍候", 0).a();
       return;
     case 2: 
-      QQToast.a(VideoPlayModeBase.a(), 2, StoryApi.a(2131432083), 0).a();
+      QQToast.a(VideoPlayModeBase.a(), 2, StoryApi.a(2131432100), 0).a();
       if (bool) {}
       for (paramTroopStoryPlayModeBase = "2";; paramTroopStoryPlayModeBase = "1")
       {

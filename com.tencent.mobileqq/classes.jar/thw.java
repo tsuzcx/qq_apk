@@ -1,28 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.util.Utils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-class thw
-  implements Runnable
+public class thw
+  implements View.OnClickListener
 {
-  thw(thv paramthv, String paramString) {}
+  public thw(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Thv.a.a.getTop() > QQSettingMe.a(this.jdField_a_of_type_Thv.a).getBottom()) {
-      this.jdField_a_of_type_Thv.a.a.setMaxWidth(QQSettingMe.a(this.jdField_a_of_type_Thv.a) - QQSettingMe.a(this.jdField_a_of_type_Thv.a).getWidth());
-    }
-    for (;;)
-    {
-      if (!Utils.a(this.jdField_a_of_type_JavaLangString, QQSettingMe.a(this.jdField_a_of_type_Thv.a)))
-      {
-        QQSettingMe.a(this.jdField_a_of_type_Thv.a, this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Thv.a.a.setText(QQSettingMe.a(this.jdField_a_of_type_Thv.a));
-      }
-      return;
-      this.jdField_a_of_type_Thv.a.a.setMaxWidth(QQSettingMe.a(this.jdField_a_of_type_Thv.a));
-    }
+    this.a.a.setText("");
   }
 }
 

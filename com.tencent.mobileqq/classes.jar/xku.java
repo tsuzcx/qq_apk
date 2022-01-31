@@ -1,36 +1,64 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.earlydownload.EarlyDownloadManager.EarlyDownLoadListener;
+import com.tencent.mobileqq.earlydownload.handler.ArNativeSoDownloadHandler;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
-class xku
-  implements Runnable
+public class xku
+  implements EarlyDownloadManager.EarlyDownLoadListener
 {
-  xku(xkt paramxkt, int paramInt, String paramString) {}
+  public xku(RecentOptPopBar paramRecentOptPopBar, ArNativeSoDownloadHandler paramArNativeSoDownloadHandler) {}
   
-  public void run()
+  public void a(XmlData paramXmlData)
   {
-    if ((this.jdField_a_of_type_Int == 0) && (EditLocalVideoActivity.a(this.jdField_a_of_type_Xkt.a) != null))
-    {
-      QLog.d("EditLocalVideoActivity", 2, "ret = " + this.jdField_a_of_type_Int);
-      EditLocalVideoActivity.a(this.jdField_a_of_type_Xkt.a).setVideoPath(this.jdField_a_of_type_JavaLangString);
-      EditLocalVideoActivity.a(this.jdField_a_of_type_Xkt.a).seekTo(EditLocalVideoActivity.a(this.jdField_a_of_type_Xkt.a));
-      EditLocalVideoActivity.a(this.jdField_a_of_type_Xkt.a).start();
-      if ((!TextUtils.equals(EditLocalVideoActivity.f(this.jdField_a_of_type_Xkt.a), EditLocalVideoActivity.h())) && (!TextUtils.equals(EditLocalVideoActivity.f(this.jdField_a_of_type_Xkt.a), EditLocalVideoActivity.a(this.jdField_a_of_type_Xkt.a)))) {
-        QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new xkv(this));
-      }
-      for (;;)
-      {
-        EditLocalVideoActivity.d(this.jdField_a_of_type_Xkt.a, true);
-        return;
-        EditLocalVideoActivity.f(this.jdField_a_of_type_Xkt.a, this.jdField_a_of_type_JavaLangString);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, onDownloadBegin, data=" + paramXmlData);
     }
-    QQToast.a(this.jdField_a_of_type_Xkt.a, "音乐合成失败，请稍后重试", 1).a();
-    QLog.d("EditLocalVideoActivity", 2, "mixMusicToLocalVideo error ret = " + this.jdField_a_of_type_Int);
+  }
+  
+  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentOptPopBar", 2, "ArMap, onDownloadProgress, onDownloadBegin, data=" + paramXmlData + ", cur=" + paramLong1 + ", total=" + paramLong2);
+    }
+  }
+  
+  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, onDownloadFinish, data=" + paramXmlData + ", result=" + paramBoolean1 + ", errCode=" + paramInt + ", delRes=" + paramBoolean2 + ", filePath=" + paramString);
+    }
+    if (!paramBoolean1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xkv(this));
+      this.jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerArNativeSoDownloadHandler.b(this);
+      return;
+    }
+    if (!ARNativeBridge.loadNativeLibrary())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xkw(this));
+      QLog.d("RecentOptPopBar", 1, "ArMap, ArNativeSoDownloadHandler, onDownloadFinish, loadNativeLibrary failed");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xkx(this));
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, load so success");
+      }
+      RecentOptPopBar.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar);
+    }
+  }
+  
+  public void b(XmlData paramXmlData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, onDownloadCancel, data=" + paramXmlData);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerArNativeSoDownloadHandler.b(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xky(this));
   }
 }
 

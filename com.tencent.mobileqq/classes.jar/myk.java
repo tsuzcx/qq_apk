@@ -1,17 +1,17 @@
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public class myk
-  implements INetEventHandler
+class myk
+  implements Runnable
 {
-  private myk(VideoServerInfoManager paramVideoServerInfoManager) {}
+  myk(mye parammye) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void run()
   {
-    SLog.d("Q.qqstory.publish:VideoServerInfoManager", "network change");
-    this.a.b.set(true);
+    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null))
+    {
+      PublicAccountImageCollectionMainActivity.a(this.a.a).a(true);
+      PublicAccountImageCollectionMainActivity.a(this.a.a).notifyDataSetChanged();
+    }
   }
 }
 

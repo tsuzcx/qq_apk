@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abyr;
+import acft;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -125,7 +125,7 @@ public class EmotionPanelDataBuilder
     if (paramEmotionPanelDataCallback == null) {
       return;
     }
-    ThreadManager.post(new abyr(this, paramQQAppInterface, paramInt1, paramEmoticonPackage, paramInt2, paramInt3, paramBoolean, paramEmotionPanelDataCallback), 5, null, true);
+    ThreadManager.post(new acft(this, paramQQAppInterface, paramInt1, paramEmoticonPackage, paramInt2, paramInt3, paramBoolean, paramEmotionPanelDataCallback), 5, null, true);
   }
 }
 

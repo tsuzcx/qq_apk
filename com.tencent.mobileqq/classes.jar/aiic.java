@@ -1,26 +1,35 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class aiic
-  implements Animation.AnimationListener
+  extends QIPCModule
 {
-  public aiic(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public aiic(StructMsgForGeneralShare.GeneralClickHandler paramGeneralClickHandler, String paramString)
   {
-    this.a.l = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
+    super(paramString);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("receipt_set_read".equals(paramString)) {
+      StructMsgForGeneralShare.GeneralClickHandler.a(this.a, paramBundle);
+    }
+    for (;;)
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.d(StructMsgForGeneralShare.access$000(), 2, "unknown action");
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiic
  * JD-Core Version:    0.7.0.1
  */

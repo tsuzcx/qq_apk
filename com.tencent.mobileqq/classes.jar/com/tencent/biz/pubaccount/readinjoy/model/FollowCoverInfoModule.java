@@ -11,9 +11,9 @@ import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import lra;
-import lrb;
-import lrc;
+import lre;
+import lrf;
+import lrg;
 
 public class FollowCoverInfoModule
 {
@@ -32,7 +32,7 @@ public class FollowCoverInfoModule
   private void b()
   {
     if (this.jdField_a_of_type_Int == -1) {
-      ThreadManager.executeOnFileThread(new lra(this));
+      ThreadManager.executeOnFileThread(new lre(this));
     }
   }
   
@@ -44,6 +44,15 @@ public class FollowCoverInfoModule
       i = localSharedPreferences.getInt("follow_tab_enter_topic_reddot_time", 0);
     }
     return i;
+  }
+  
+  public String a()
+  {
+    SharedPreferences localSharedPreferences = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString("follow_tab_last_refresh_cookie", "");
+    }
+    return "";
   }
   
   public HashMap a()
@@ -68,7 +77,7 @@ public class FollowCoverInfoModule
       if (QLog.isColorLevel()) {
         QLog.d("FollowCoverInfoModule", 2, "topic update exp clear");
       }
-      ThreadManager.executeOnFileThread(new lrc(this));
+      ThreadManager.executeOnFileThread(new lrg(this));
       return;
     }
     finally {}
@@ -82,9 +91,9 @@ public class FollowCoverInfoModule
       localObject = ((SharedPreferences)localObject).edit();
       if (localObject != null)
       {
-        ((SharedPreferences.Editor)localObject).putInt("follow_tab_enter_topic_reddot_time", paramInt);
+        ((SharedPreferences.Editor)localObject).putInt("follow_tab_user_topic_reddot_update_num", paramInt);
         ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
-        QLog.d("FollowCoverInfoModule", 2, "update FOLLOW_TAB_ENTER_TOPIC_REDDOT_TIME : " + paramInt);
+        QLog.d("FollowCoverInfoModule", 2, "update user topic reddot update num : " + paramInt);
       }
     }
   }
@@ -125,7 +134,22 @@ public class FollowCoverInfoModule
     label141:
     QLog.d("FollowCoverInfoModule", 2, localStringBuilder.toString());
     label151:
-    ThreadManager.executeOnFileThread(new lrb(this, paramTopicRecommendFeedsInfo));
+    ThreadManager.executeOnFileThread(new lrf(this, paramTopicRecommendFeedsInfo));
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        ((SharedPreferences.Editor)localObject).putString("follow_tab_last_refresh_cookie", paramString);
+        ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
+        QLog.d("FollowCoverInfoModule", 2, "updateLastRefreshCookie cookie : " + paramString);
+      }
+    }
   }
   
   public void a(boolean paramBoolean)
@@ -139,41 +163,6 @@ public class FollowCoverInfoModule
         ((SharedPreferences.Editor)localObject).putBoolean("follow_tab_user_topic_follow_state", paramBoolean);
         ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
         QLog.d("FollowCoverInfoModule", 2, "update user follow state : " + paramBoolean);
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("follow_tab_user_topic_follow_state", false);
-    }
-    return bool;
-  }
-  
-  public int b()
-  {
-    int i = 0;
-    SharedPreferences localSharedPreferences = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
-    if (localSharedPreferences != null) {
-      i = localSharedPreferences.getInt("follow_tab_user_topic_reddot_update_num", 0);
-    }
-    return i;
-  }
-  
-  public void b(int paramInt)
-  {
-    Object localObject = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, true, false);
-    if (localObject != null)
-    {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putInt("follow_tab_user_topic_reddot_update_num", paramInt);
-        ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
-        QLog.d("FollowCoverInfoModule", 2, "update user topic reddot update num : " + paramInt);
       }
     }
   }

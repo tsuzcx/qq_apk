@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.EditActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.util.Pair;
 
-public class sin
-  implements Runnable
+class sin
+  implements DialogInterface.OnClickListener
 {
-  public sin(EditActivity paramEditActivity) {}
+  sin(sim paramsim, SubAccountControll paramSubAccountControll, Pair paramPair) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
   }
 }
 

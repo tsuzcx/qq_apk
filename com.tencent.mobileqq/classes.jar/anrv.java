@@ -1,14 +1,28 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView.CaptureListener;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import dov.com.qq.im.capture.poi.FacePoiUI;
+import dov.com.qq.im.capture.poi.FacePoiUI.FacePoiUIListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
 
 public class anrv
-  implements Runnable
+  implements FacePoiUI.FacePoiUIListener
 {
-  public anrv(CameraGLSurfaceView paramCameraGLSurfaceView, CameraGLSurfaceView.CaptureListener paramCaptureListener) {}
+  public anrv(EditProviderPart paramEditProviderPart) {}
   
-  public void run()
+  public void aC_()
   {
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener;
+    EditProviderPart.a(this.a).d();
+  }
+  
+  public void b()
+  {
+    EditProviderPart.a(this.a).d();
+    EditProviderPart.a(this.a).a();
+    EditProviderPart.a(this.a).a(EditProviderPart.a(this.a));
+  }
+  
+  public void c()
+  {
+    EditProviderPart.a(this.a).d();
   }
 }
 

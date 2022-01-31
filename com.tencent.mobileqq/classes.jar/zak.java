@@ -1,44 +1,69 @@
-import android.content.res.Resources;
-import android.os.Vibrator;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity.HeadViewLongClick;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class zak
-  implements View.OnLongClickListener
+  extends BroadcastReceiver
 {
-  public zak(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public boolean onLongClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!SubAccountControll.c(this.a.getActivity().app, false)) {}
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.b())) {
-      return true;
+    int j = 0;
+    int i = 0;
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, paramIntent.getAction());
+      }
     }
-    if ((paramView == this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqSubaccountAssociatedAccountOptPopBar != null))
+    for (;;)
     {
-      if ((this.a.getActivity().app != null) && (this.a.getActivity().app.getApp() != null))
+      return;
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
       {
-        paramView = (Vibrator)this.a.getActivity().app.getApp().getSystemService("vibrator");
-        if (paramView != null) {
-          paramView.vibrate(new long[] { 0L, 1L, 20L, 21L }, -1);
+        if ((localBaseActivity.mStopFlag == 0) && (localBaseActivity.mCanLock) && (GesturePWDUtils.getGesturePWDState(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 2) && (GesturePWDUtils.getGesturePWDMode(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 21) && (!(localBaseActivity instanceof GesturePWDUnlockActivity)) && (!(localBaseActivity instanceof LoginActivity)) && (!GesturePWDUtils.getGestureLocking(localBaseActivity)))
+        {
+          localBaseActivity.startUnlockActivity();
+          BaseActivity.isUnLockSuccess = false;
+          if (BaseActivity.access$300() == null) {
+            continue;
+          }
+          if (SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131433581), "qqsetting_screenshot_key", false)) {
+            break label163;
+          }
+        }
+        for (;;)
+        {
+          if (i == 0) {
+            break label166;
+          }
+          localBaseActivity.turnOffShake();
+          return;
+          localBaseActivity.receiveScreenOff();
+          break;
+          label163:
+          i = 1;
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqSubaccountAssociatedAccountOptPopBar.a(this.a.b, this.a.getResources().getDimensionPixelSize(2131558951), this.a.getResources().getDimensionPixelSize(2131558952));
+      else
+      {
+        label166:
+        if ((paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) && (BaseActivity.access$300() == null))
+        {
+          if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131433581), "qqsetting_screenshot_key", false)) {}
+          for (i = j; i != 0; i = 1)
+          {
+            localBaseActivity.turnOnShake();
+            return;
+          }
+        }
+      }
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$HeadViewLongClick != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$HeadViewLongClick.a();
-    }
-    ReportController.b(this.a.getActivity().app, "CliOper", "", "", "0X80072D1", "0X80072D1", 0, 0, "", "", "", "");
-    return true;
   }
 }
 

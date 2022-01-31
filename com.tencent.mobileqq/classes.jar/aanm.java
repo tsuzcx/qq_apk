@@ -1,19 +1,35 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.mobileqq.arcard.ARcardSound;
 
-class aanm
-  implements Runnable
+public class aanm
 {
-  aanm(aank paramaank, String paramString) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void run()
+  public aanm(ARcardSound paramARcardSound, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Aank.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    this.b = paramInt1;
+    this.c = paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return this.c == 1;
+  }
+  
+  public boolean b()
+  {
+    return this.c == 2;
+  }
+  
+  public boolean c()
+  {
+    return this.c == 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aanm
  * JD-Core Version:    0.7.0.1
  */

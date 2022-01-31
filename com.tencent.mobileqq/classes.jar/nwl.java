@@ -1,13 +1,18 @@
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter.OnHolderItemClickListener;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter.StoryDiscoverViewHolder;
 
-class nwl
-  implements Runnable
+public class nwl
+  implements View.OnClickListener
 {
-  nwl(nwj paramnwj) {}
+  public nwl(StoryDiscoverAdapter.StoryDiscoverViewHolder paramStoryDiscoverViewHolder, View paramView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.b();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_Int);
+    }
   }
 }
 

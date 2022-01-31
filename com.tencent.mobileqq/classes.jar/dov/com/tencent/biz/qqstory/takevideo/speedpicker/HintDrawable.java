@@ -12,10 +12,10 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Property;
-import annz;
-import anoa;
-import anob;
-import anoc;
+import aoee;
+import aoef;
+import aoeg;
+import aoeh;
 import com.tencent.qphone.base.util.QLog;
 
 public class HintDrawable
@@ -28,12 +28,12 @@ public class HintDrawable
   private Context jdField_a_of_type_AndroidContentContext;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Property jdField_a_of_type_AndroidUtilProperty = new annz(this, Float.class, "backScale");
+  Property jdField_a_of_type_AndroidUtilProperty = new aoee(this, Float.class, "backScale");
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 0;
-  Property jdField_b_of_type_AndroidUtilProperty = new anoa(this, Integer.class, "backAlpha");
+  Property jdField_b_of_type_AndroidUtilProperty = new aoef(this, Integer.class, "backAlpha");
   private boolean jdField_b_of_type_Boolean;
   private float c;
   private float d;
@@ -52,23 +52,23 @@ public class HintDrawable
       try
       {
         if ("1/4".equals(paramString)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839559);
+          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839564);
         }
         if ("1/2".equals(paramString)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839558);
+          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839563);
         }
         if ("1x".equals(paramString)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839560);
+          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839565);
         }
         if ("2x".equals(paramString)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839561);
+          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839566);
         }
         if ("4x".equals(paramString)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839562);
+          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839567);
         }
         if ("倒播".equals(paramString))
         {
-          paramString = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839563);
+          paramString = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839568);
           return paramString;
         }
       }
@@ -116,8 +116,8 @@ public class HintDrawable
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anob(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new anoc(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aoeg(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aoeh(this));
         this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       }
       return;

@@ -1,20 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter.ItemHolder;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnCheckBoxClickListener;
+import android.support.annotation.NonNull;
+import java.lang.ref.WeakReference;
 
-public class nro
-  implements View.OnClickListener
+class nro
+  implements nrn
 {
-  public nro(StoryPickerHorizontalListAdapter.ItemHolder paramItemHolder) {}
+  private final int jdField_a_of_type_Int;
+  @NonNull
+  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public nro(@NonNull nrn paramnrn)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (this.a.a.a != null) {
-      this.a.a.a.a(paramView, this.a.a.a(i));
+    this.jdField_a_of_type_Int = System.identityHashCode(paramnrn);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramnrn);
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
+  }
+  
+  public void a(@NonNull nrl paramnrl)
+  {
+    nrn localnrn = (nrn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localnrn != null) {
+      localnrn.a(paramnrl);
     }
+  }
+  
+  public void b(@NonNull nrl paramnrl)
+  {
+    nrn localnrn = (nrn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localnrn != null) {
+      localnrn.b(paramnrl);
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof nro)) && (((nro)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

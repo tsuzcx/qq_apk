@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.shortvideo.ml.decisiontree.ID3.ImpurityFunction;
+import android.os.Handler;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeWrapper.FlowListener;
 
-public final class ahom
-  extends ID3.ImpurityFunction
+public class ahom
+  implements VideoFlowDecodeWrapper.FlowListener
 {
-  public double a(int paramInt1, int paramInt2)
+  public ahom(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  
+  public void a()
   {
-    if (paramInt1 > paramInt2) {
-      return paramInt2 / (paramInt1 + paramInt2);
-    }
-    return paramInt1 / (paramInt1 + paramInt2);
+    NeoVideoFilterPlayView.a(this.a).sendEmptyMessage(1);
   }
 }
 

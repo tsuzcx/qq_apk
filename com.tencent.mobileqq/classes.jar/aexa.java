@@ -1,33 +1,49 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.PublishableMomentInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexa
-  implements NearbyMomentManager.GetLocalUnPiblishListCallback
+  implements AdapterView.OnItemClickListener
 {
-  public aexa(NearbyMomentFailedFragment paramNearbyMomentFailedFragment) {}
+  public aexa(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(List paramList)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (NearbyMomentFailedFragment.a(this.a).isFinishing()) {
+    ShortVideoCommentsView.a(this.a, (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt));
+    if (ShortVideoCommentsView.a(this.a) == null) {
       return;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    paramLong = this.a.a.getLongAccountUin();
+    if (ShortVideoCommentsView.a(this.a).c == paramLong)
     {
-      PublishableMomentInfo localPublishableMomentInfo = (PublishableMomentInfo)paramList.next();
-      if ((localPublishableMomentInfo.a != null) && (localPublishableMomentInfo.a.publishState == 2)) {
-        localArrayList.add(localPublishableMomentInfo);
-      }
+      this.a.a("不能回复自己的评论");
+      ShortVideoCommentsView.a(this.a, null);
+      return;
     }
-    NearbyMomentFailedFragment.a(this.a).a(localArrayList);
+    paramAdapterView = new StringBuilder();
+    paramAdapterView.append("回复 ");
+    if (ShortVideoCommentsView.a(this.a).b.length() >= 6)
+    {
+      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b.substring(0, 5));
+      paramAdapterView.append("...");
+    }
+    for (;;)
+    {
+      ShortVideoCommentsView.a(this.a).setText("");
+      ShortVideoCommentsView.a(this.a).setHint(paramAdapterView);
+      if (!ShortVideoCommentsView.f(this.a)) {
+        break;
+      }
+      this.a.l();
+      return;
+      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b);
+    }
+    ShortVideoCommentsView.a(this.a, 1);
   }
 }
 

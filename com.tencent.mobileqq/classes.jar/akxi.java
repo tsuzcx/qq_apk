@@ -1,24 +1,37 @@
-import com.tencent.image.URLImageView;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
-import com.tencent.qidian.data.GroupItem;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.WebViewProgressBarController;
+import mqq.util.WeakReference;
 
-class akxi
-  implements Runnable
+public class akxi
+  extends Handler
 {
-  akxi(akxh paramakxh, GroupItem paramGroupItem, URLImageView paramURLImageView) {}
+  final WeakReference a;
   
-  public void run()
+  public akxi(WebViewProgressBarController paramWebViewProgressBarController)
   {
-    String str = String.valueOf(this.jdField_a_of_type_ComTencentQidianDataGroupItem.a);
-    this.jdField_a_of_type_Akxh.a.a.put(str, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, 3, str));
-    this.jdField_a_of_type_Akxh.a.a(3, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(paramWebViewProgressBarController);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    WebViewProgressBarController localWebViewProgressBarController = (WebViewProgressBarController)this.a.get();
+    if (localWebViewProgressBarController == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localWebViewProgressBarController.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxi
  * JD-Core Version:    0.7.0.1
  */

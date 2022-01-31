@@ -36,7 +36,7 @@ public class ReadInJoySubChannelFragment
   
   private void b()
   {
-    Object localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131367167);
+    Object localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131367215);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController = new ReadInJoyChannelViewController(getActivity());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.b(this.jdField_b_of_type_Int);
@@ -91,7 +91,7 @@ public class ReadInJoySubChannelFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969616, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969624, paramViewGroup, false);
     paramLayoutInflater = getArguments();
     this.jdField_a_of_type_Int = paramLayoutInflater.getInt("channel_id");
     this.jdField_b_of_type_Int = paramLayoutInflater.getInt("channel_type");

@@ -1,26 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateAdapter;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyEffectsCameraCaptureFragment;
 
 public class lic
   implements Runnable
 {
-  public lic(ReadInJoyCameraTemplateAdapter paramReadInJoyCameraTemplateAdapter, ArrayList paramArrayList) {}
+  public lic(ReadInJoyEffectsCameraCaptureFragment paramReadInJoyEffectsCameraCaptureFragment) {}
   
   public void run()
   {
-    ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateAdapter).clear();
-    ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateAdapter).addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)localIterator.next();
-      if (localPtvTemplateInfo.isSelected) {
-        ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateAdapter, localPtvTemplateInfo);
-      }
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateAdapter.notifyDataSetChanged();
+    this.a.a.setVisibility(8);
   }
 }
 

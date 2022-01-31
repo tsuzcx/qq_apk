@@ -1,27 +1,13 @@
-import android.annotation.TargetApi;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.av.camera.VcCamera;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
 public class jho
-  implements Runnable
+  implements FileFilter
 {
-  public jho(CameraUtils paramCameraUtils) {}
-  
-  @TargetApi(14)
-  public void run()
+  public boolean accept(File paramFile)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraUtils", 2, "switchCamera begin.");
-    }
-    CameraUtils.a(this.a).a(new Object[] { Integer.valueOf(5) });
-    if (this.a.jdField_a_of_type_ComTencentAvCameraVcCamera != null) {
-      this.a.jdField_a_of_type_ComTencentAvCameraVcCamera.b(this.a.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    }
-    CameraUtils.a(this.a).a(new Object[] { Integer.valueOf(6), Boolean.valueOf(true) });
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraUtils", 2, "switchCamera end.");
-    }
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
 }
 

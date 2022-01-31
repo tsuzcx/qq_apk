@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewStub;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.main.CommonLoadingView;
 
 public class swo
   implements Runnable
 {
-  public swo(LikeSettingActivity paramLikeSettingActivity) {}
+  public swo(Leba paramLeba) {}
   
   public void run()
   {
-    boolean bool = this.a.app.p();
-    this.a.runOnUiThread(new swp(this, bool));
+    ViewStub localViewStub = (ViewStub)this.a.a(2131364872);
+    ((CommonLoadingView)this.a.a(2131363809)).setVisibility(8);
+    localViewStub.setVisibility(0);
   }
 }
 

@@ -1,16 +1,43 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.data.Card;
+import android.content.IntentFilter;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class tir
+public class tir
   implements Runnable
 {
-  tir(tio paramtio, Card paramCard) {}
+  public tir(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    if (QQSettingMe.a(this.jdField_a_of_type_Tio.a) != null) {
-      QQSettingMe.a(this.jdField_a_of_type_Tio.a).a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    try
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
+      if (QQLSActivity.a(this.a) == 0)
+      {
+        BaseApplicationImpl.getContext().registerReceiver(this.a.a, localIntentFilter);
+        QQLSActivity.a(this.a, 1);
+      }
+      QQLSActivity.a(this.a, AnimationUtils.loadAnimation(this.a, 2131034321));
+      QQLSActivity.a(this.a).setFillAfter(true);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, "registerScreenListener");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.e("QQLSActivity", 2, "registerScreenListener:" + localException.toString());
     }
   }
 }

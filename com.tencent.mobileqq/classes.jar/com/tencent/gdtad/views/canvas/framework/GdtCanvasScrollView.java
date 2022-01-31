@@ -5,11 +5,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.mobileqq.utils.ViewUtils;
-import qjr;
-import qjs;
-import qjt;
-import qju;
+import qmf;
+import qmg;
+import qmh;
+import qmi;
 
 public class GdtCanvasScrollView
   extends ScrollView
@@ -46,8 +47,8 @@ public class GdtCanvasScrollView
   {
     setVerticalScrollBarEnabled(false);
     setVerticalFadingEdgeEnabled(false);
-    this.jdField_a_of_type_JavaLangRunnable = new qjr(this);
-    setOnTouchListener(new qjs(this));
+    this.jdField_a_of_type_JavaLangRunnable = new qmf(this);
+    setOnTouchListener(new qmg(this));
   }
   
   private boolean a(MotionEvent paramMotionEvent)
@@ -62,7 +63,7 @@ public class GdtCanvasScrollView
       if ((this.c - i > this.jdField_a_of_type_Int) && (paramMotionEvent != null) && (paramMotionEvent.getMeasuredHeight() <= this.d + getHeight() + (this.e - i)) && (!this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_Boolean = true;
-        post(new qjt(this));
+        post(new qmh(this));
         if (this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener != null) {
           this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener.a();
         }
@@ -74,7 +75,7 @@ public class GdtCanvasScrollView
           break;
         }
         this.jdField_a_of_type_Boolean = true;
-        post(new qju(this));
+        post(new qmi(this));
       } while (this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener == null);
       this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener.b();
       return true;
@@ -89,25 +90,37 @@ public class GdtCanvasScrollView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int j = (int)paramMotionEvent.getX();
-    int i = (int)paramMotionEvent.getY();
-    super.onInterceptTouchEvent(paramMotionEvent);
-    switch (paramMotionEvent.getAction())
+    try
     {
-    }
-    do
-    {
-      for (;;)
+      super.onInterceptTouchEvent(paramMotionEvent);
+      j = (int)paramMotionEvent.getX();
+      i = (int)paramMotionEvent.getY();
+      switch (paramMotionEvent.getAction())
       {
+      case 1: 
+      default: 
         return false;
-        this.e = i;
-        this.jdField_b_of_type_Int = j;
-        this.c = i;
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_b_of_type_Boolean = true;
       }
-      j = Math.abs(j - this.jdField_b_of_type_Int);
-    } while (Math.atan2(Math.abs(i - this.c), j) <= 0.7853981633974483D);
+    }
+    catch (Throwable localThrowable)
+    {
+      int j;
+      int i;
+      do
+      {
+        for (;;)
+        {
+          GdtLog.d(jdField_a_of_type_JavaLangString, "onInterceptTouchEvent", localThrowable);
+          continue;
+          this.e = i;
+          this.jdField_b_of_type_Int = j;
+          this.c = i;
+          this.jdField_a_of_type_Boolean = false;
+          this.jdField_b_of_type_Boolean = true;
+        }
+        j = Math.abs(j - this.jdField_b_of_type_Int);
+      } while (Math.atan2(Math.abs(i - this.c), j) <= 0.7853981633974483D);
+    }
     return true;
   }
   
@@ -125,8 +138,17 @@ public class GdtCanvasScrollView
     }
     for (;;)
     {
-      return super.onTouchEvent(paramMotionEvent);
-      boolean bool = a(paramMotionEvent);
+      try
+      {
+        bool = super.onTouchEvent(paramMotionEvent);
+        return bool;
+      }
+      catch (Throwable paramMotionEvent)
+      {
+        boolean bool;
+        GdtLog.d(jdField_a_of_type_JavaLangString, "onTouchEvent error", paramMotionEvent);
+      }
+      bool = a(paramMotionEvent);
       this.e = ((int)paramMotionEvent.getY());
       if (bool)
       {
@@ -137,11 +159,12 @@ public class GdtCanvasScrollView
         postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.framework.GdtCanvasScrollView
  * JD-Core Version:    0.7.0.1
  */

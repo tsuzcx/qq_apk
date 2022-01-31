@@ -1,35 +1,17 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.doutu.DoutuManager;
 
-public class abyq
-  extends EmoticonPackageDownloadListener
+public final class abyq
+  implements Runnable
 {
-  public abyq(EmotionNeedDownloadAdapter paramEmotionNeedDownloadAdapter) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void run()
   {
-    this.a.b(paramEmoticonPackage);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
-  {
-    this.a.a(paramEmoticonPackage, paramInt);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage);
-  }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
+    DoutuManager.a(BaseApplicationImpl.getApplication().getBaseContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyq
  * JD-Core Version:    0.7.0.1
  */

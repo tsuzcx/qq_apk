@@ -1,14 +1,33 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class roi
   implements Runnable
 {
-  public roi(BaseChatPie paramBaseChatPie) {}
+  public roi(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
   public void run()
   {
-    this.a.a.setSelectionFromBottom(this.a.a.getCount() - 1, 0);
+    try
+    {
+      if ((AuthDevVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      {
+        AuthDevVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
+        AuthDevVerifyCodeActivity.a(this.a).c(2131435070);
+        AuthDevVerifyCodeActivity.a(this.a).c(true);
+      }
+      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (!AuthDevVerifyCodeActivity.a(this.a).isShowing())) {
+        AuthDevVerifyCodeActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

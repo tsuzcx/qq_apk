@@ -2,12 +2,12 @@ package com.tencent.mobileqq.activity.aio;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import uio;
+import ulo;
 
 public final class ForwardUtils$Section_Pic
   extends ForwardUtils.SectionBase
 {
-  public static final Parcelable.Creator CREATOR = new uio();
+  public static final Parcelable.Creator CREATOR = new ulo();
   public String a;
   public String b;
   

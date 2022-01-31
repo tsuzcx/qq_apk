@@ -1,27 +1,61 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
+import com.tencent.mobileqq.adapter.SigCommentSessionListAdapter;
+import com.tencent.mobileqq.app.SignatureManager.SigComments;
+import com.tencent.mobileqq.app.SignatureObserver;
+import java.util.List;
 
 public class tsp
-  extends Handler
+  extends SignatureObserver
 {
-  public tsp(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public tsp(SigCommentListActivity paramSigCommentListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void d(boolean paramBoolean, Object paramObject)
   {
-    switch (paramMessage.what)
+    List localList;
+    if (this.a.isResume())
     {
-    default: 
-      return;
+      this.a.stopTitleProgress();
+      if (!paramBoolean) {
+        break label175;
+      }
+      if ((paramObject instanceof Bundle))
+      {
+        paramObject = (SignatureManager.SigComments)((Bundle)paramObject).getSerializable("data");
+        paramBoolean = paramObject.isOver;
+        paramObject = paramObject.mlist;
+        localList = this.a.a.a();
+        if (paramObject.size() <= 0) {
+          break label128;
+        }
+        if (localList == null) {
+          break label113;
+        }
+        localList.addAll(localList.size(), paramObject);
+        this.a.a.a(localList, paramBoolean);
+        this.a.a.notifyDataSetChanged();
+      }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
-    this.a.b();
+    label113:
+    do
+    {
+      return;
+      this.a.a.a(paramObject, paramBoolean);
+      break;
+      if ((localList != null) && (localList.size() > 0)) {
+        this.a.a.a(localList, paramBoolean);
+      }
+      for (;;)
+      {
+        this.a.a.notifyDataSetChanged();
+        return;
+        SigCommentListActivity.a(this.a, 3);
+      }
+      paramObject = this.a.a.a();
+    } while ((paramObject != null) && (paramObject.size() > 0));
+    label128:
+    label175:
+    SigCommentListActivity.a(this.a, 2);
   }
 }
 

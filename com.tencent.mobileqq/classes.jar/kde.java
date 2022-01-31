@@ -1,52 +1,20 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.AVLog;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.VoiceChangeAdapter.ICallback;
-import com.tencent.av.ui.VoiceChangeChooseDialog;
-import com.tencent.av.ui.VoiceChangeDataReport;
-
 public class kde
-  implements VoiceChangeAdapter.ICallback
 {
-  public kde(VoiceChangeChooseDialog paramVoiceChangeChooseDialog) {}
+  public String a;
+  public byte[] a;
   
-  public void a(int paramInt)
+  public kde(String paramString, byte[] paramArrayOfByte)
   {
-    AVLog.d("VoiceChangeChooseDialog", "onItemSelected| voiceType=" + paramInt);
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null)
-    {
-      AVLog.e("VoiceChangeChooseDialog", "onItemSelected mVideoController is null!!");
-      return;
+    byte[] arrayOfByte = paramArrayOfByte;
+    if (paramArrayOfByte == null) {
+      arrayOfByte = new byte[0];
     }
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429597);
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      VoiceChangeChooseDialog.a(this.a, 0);
+    this.jdField_a_of_type_ArrayOfByte = arrayOfByte;
+    paramArrayOfByte = paramString;
+    if (paramString == null) {
+      paramArrayOfByte = "";
     }
-    while (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)
-    {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().S = paramInt;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().T = 0;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.K();
-      VoiceChangeDataReport.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a(), paramInt);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429598);
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)
-      {
-        if ((!this.a.jdField_a_of_type_ComTencentAvVideoController.a().aB) && (VoiceChangeChooseDialog.a(this.a) == 0) && (!this.a.jdField_a_of_type_Boolean))
-        {
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 5000L);
-          VoiceChangeChooseDialog.a(this.a, 1);
-        }
-      }
-      else {
-        AVLog.e("VoiceChangeChooseDialog", "mVideoController.getSessionInfo() == null");
-      }
-    }
-    AVLog.e("VoiceChangeChooseDialog", "mVideoController.getSessionInfo() == null");
+    this.jdField_a_of_type_JavaLangString = paramArrayOfByte;
   }
 }
 

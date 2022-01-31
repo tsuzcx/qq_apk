@@ -1,11 +1,13 @@
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
 
-class uwc
-  implements ActionSheet.OnDismissListener
+public class uwc
+  implements DialogInterface.OnClickListener
 {
-  uwc(uvz paramuvz) {}
+  public uwc(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
   
-  public void onDismiss() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

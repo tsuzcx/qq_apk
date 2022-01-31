@@ -1,22 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
 
 public class ljr
-  implements ArticleCommentModule.FetchCommentObserver
+  implements Runnable
 {
-  public ljr(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter) {}
+  public ljr(ReadInJoyCommentTopGestureLayout paramReadInJoyCommentTopGestureLayout, View paramView) {}
   
-  public void a(ArticleInfo paramArticleInfo)
+  public void run()
   {
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentListAdapter", 2, "fetch first level comment failed ,err code =" + paramInt + "err msg =" + paramString);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setScrollY(0);
     }
   }
 }

@@ -1,34 +1,26 @@
-import com.tencent.av.core.VcSystemInfo;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWLog;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.hwcodec.HwEnvData;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import com.tencent.qphone.base.util.QLog;
 
 public class okb
-  extends Thread
+  implements Runnable
 {
-  public okb(RMWService paramRMWService) {}
+  public okb(DoodleTextureView paramDoodleTextureView) {}
   
   public void run()
   {
-    RMWLog.a("RMWService", "preload AVCodec - start -");
-    VideoEnvironment.a("AVCodec", null, true);
-    RMWLog.a("RMWService", "preload AVCodec - end -");
-    RMWLog.a("RMWService", "preload PtvFilterSoLoad - start -");
-    PtvFilterSoLoad.a(VideoEnvironment.a(), false);
-    RMWLog.a("RMWService", "preload PtvFilterSoLoad - end -");
-    RMWLog.a("RMWService", "preInit DoodleEmojiManager - start -");
-    ((DoodleEmojiManager)SuperManager.a(8)).a(this.a);
-    RMWLog.a("RMWService", "preInit DoodleEmojiManager - end -");
-    RMWLog.a("RMWService", "preInit HwEnvData.supportHardWareCodec - start -");
-    HwEnvData.a();
-    RMWLog.a("RMWService", "preInit HwEnvData.supportHardWareCodec - end -");
-    RMWLog.a("RMWService", "preInit VcSystemInfo.getCpuInfo - start -");
-    VcSystemInfo.a();
-    RMWLog.a("RMWService", "preInit VcSystemInfo.getCpuInfo - end -");
+    if (this.a.a != null)
+    {
+      this.a.a.g();
+      PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.a.a(102);
+      if (localPersonalityOperator != null) {
+        localPersonalityOperator.b();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DoodleTextureView", 2, "onDestroy end");
+    }
   }
 }
 

@@ -1,58 +1,26 @@
-import android.animation.ValueAnimator;
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
-public class xoz
-  implements Runnable
+class xoz
+  implements DialogInterface.OnClickListener
 {
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Bitmap b;
+  xoz(xoy paramxoy) {}
   
-  public xoz(NewFlowCameraActivity paramNewFlowCameraActivity, @NonNull Bitmap paramBitmap1, @NonNull Bitmap paramBitmap2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap1;
-    this.b = paramBitmap2;
-  }
-  
-  private void a()
-  {
-    if ((NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) == null) || (NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) == null) || (NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) == null))
-    {
-      SLog.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. mFragmentAnimThumbView == null or mFragmentThumbView == null or mFragmentNumView == null.");
-      return;
+    paramDialogInterface = this.a.a.getIntent();
+    paramDialogInterface.putExtra("flow_back", 0);
+    this.a.a.setResult(1001, paramDialogInterface);
+    paramDialogInterface = null;
+    if (this.a.a.g) {
+      paramDialogInterface = this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoClipSpec;
     }
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).setVisibility(0);
-    NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).setVisibility(8);
-    int i = ScreenUtil.a;
-    int j = ScreenUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getApplicationContext());
-    int k = AIOUtils.a(47.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
-    int m = AIOUtils.a(75.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
-    int n = AIOUtils.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
-    int i1 = AIOUtils.a(20.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
-    SLog.c("PTV.NewFlowCameraActivity", "startScaleAnim. sWidth:" + i + " sHeight:" + j + " dWidth:" + k + " dHeight:" + m + " sMarginLeft:" + 0 + " sMarginBottom:" + 0 + " dMarginLeft:" + n + " dMarginBottom:" + i1);
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    localValueAnimator.setDuration(300L);
-    localValueAnimator.setInterpolator(new LinearInterpolator());
-    localValueAnimator.addUpdateListener(new xpa(this, k, i, m, j, n, i1));
-    localValueAnimator.addListener(new xpb(this));
-    localValueAnimator.start();
-  }
-  
-  public void run()
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.k)
-    {
-      SLog.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. enableMultiFragment = %s.", new Object[] { Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.k) });
-      return;
-    }
-    a();
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a(this.a.a.d, this.a.a.e, this.a.a.n, this.a.a.g, paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

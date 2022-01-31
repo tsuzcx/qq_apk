@@ -1,26 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class aepp
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public aepp(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ActionSheet paramActionSheet) {}
+  public aepp(WerewolvesDataManager paramWerewolvesDataManager, RecentInviteUser paramRecentInviteUser) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentInviteUser.getStatus() == 1000)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentInviteUser);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e();
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.f();
     }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentInviteUser);
   }
 }
 

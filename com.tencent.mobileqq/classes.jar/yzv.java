@@ -1,99 +1,44 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.FaceDownloader;
-import com.tencent.mobileqq.app.FaceDownloader.FaceDownloadThreadInfo;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
 
 public class yzv
-  implements Runnable
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
+  public yzv(BabyQFriendStatusWebViewPlugin paramBabyQFriendStatusWebViewPlugin) {}
   
-  public yzv(FaceDownloader paramFaceDownloader, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void run()
-  {
-    Thread.currentThread().setName("FaceDownloadThread" + this.jdField_a_of_type_Int);
-    if (FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader).b != -2147483648) {
-      Process.setThreadPriority(FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader).b);
-    }
-    int j = 0;
-    for (;;)
+    if (!TextUtils.isEmpty(BabyQFriendStatusWebViewPlugin.a(this.a)))
     {
-      int i;
-      Object localObject1;
-      if (((j < FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader)) || (this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList.size() > 0)) && (this.jdField_a_of_type_Boolean)) {
-        synchronized (this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList)
-        {
-          i = this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList.size();
-          if (i == 0)
-          {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader;
-            ((FaceDownloader)localObject1).b += 1;
-          }
-        }
+      int i = paramIntent.getIntExtra("result", -1);
+      paramContext = "{ \"ret\": " + i + " }";
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
       }
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList.wait(30000L);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader;
-        ((FaceDownloader)localObject1).b -= 1;
-        i = j + 1;
-        localObject1 = null;
-        j = i;
-        if (localObject1 == null) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.b((FaceInfo)localObject1);
-        synchronized (this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilHashSet)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilHashSet.remove(((FaceInfo)localObject1).c());
-          Thread.yield();
-          j = i;
-          continue;
-          if (i > FaceDownloader.b(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader))
-          {
-            localObject1 = (FaceInfo)this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList.remove(i - 1);
-            break label398;
-          }
-          localObject1 = (FaceInfo)this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader.jdField_a_of_type_JavaUtilArrayList.remove(0);
-          break label398;
-          localObject2 = finally;
-          throw localObject2;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqhead.FaceDownloader", 2, "FaceDownloadThread thread exit. isRunning=" + this.jdField_a_of_type_Boolean + ", id=" + this.jdField_a_of_type_Int);
-        }
-        if ((FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader) != null) && (this.jdField_a_of_type_Int < FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader).length))
-        {
-          FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader)[this.jdField_a_of_type_Int] = null;
-          FaceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader)[this.jdField_a_of_type_Int] = null;
-        }
-        FaceDownloader localFaceDownloader = this.jdField_a_of_type_ComTencentMobileqqAppFaceDownloader;
-        localFaceDownloader.c -= 1;
-        return;
+      if (i != 0) {
+        break label176;
       }
-      catch (InterruptedException localInterruptedException)
+      if (BabyQFriendStatusWebViewPlugin.a(this.a) != null)
       {
-        for (;;)
-        {
-          continue;
-          label398:
-          i = 0;
-        }
+        paramContext = new Intent(BabyQFriendStatusWebViewPlugin.a(this.a), ChatActivity.class);
+        paramContext.putExtra("uin", AppConstants.au);
+        paramContext.putExtra("uintype", 0);
+        paramContext.putExtra("uinname", "babyQ");
+        paramContext.putExtra("selfSet_leftViewText", BabyQFriendStatusWebViewPlugin.a(this.a).getString(2131433698));
+        BabyQFriendStatusWebViewPlugin.a(this.a).startActivity(paramContext);
+        BabyQFriendStatusWebViewPlugin.a(this.a).finish();
       }
     }
+    return;
+    label176:
+    this.a.callJs(BabyQFriendStatusWebViewPlugin.a(this.a) + "(" + paramContext + ");");
   }
 }
 

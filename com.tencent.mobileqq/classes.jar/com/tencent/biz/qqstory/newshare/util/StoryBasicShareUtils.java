@@ -28,8 +28,8 @@ import com.tencent.mobileqq.wxapi.WXShareHelper;
 import cooperation.qzone.QZoneShareManager;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import nge;
-import ngf;
+import nhq;
+import nhr;
 
 public class StoryBasicShareUtils
 {
@@ -157,7 +157,7 @@ public class StoryBasicShareUtils
     PackageManager localPackageManager = paramContext.getPackageManager();
     try
     {
-      ThreadManager.executeOnSubThread(new ngf(paramShareSinaData, localPackageManager.getApplicationInfo("com.sina.weibo", 8192), paramContext, paramStoryShareCallback));
+      ThreadManager.executeOnSubThread(new nhr(paramShareSinaData, localPackageManager.getApplicationInfo("com.sina.weibo", 8192), paramContext, paramStoryShareCallback));
       return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -198,7 +198,7 @@ public class StoryBasicShareUtils
   private static void a(ShareWeChatData paramShareWeChatData, boolean paramBoolean, StoryShareCallback paramStoryShareCallback)
   {
     String str1 = String.valueOf(System.currentTimeMillis());
-    paramStoryShareCallback = new nge(str1, paramStoryShareCallback, paramShareWeChatData);
+    paramStoryShareCallback = new nhq(str1, paramStoryShareCallback, paramShareWeChatData);
     WXShareHelper.a().a(paramStoryShareCallback);
     paramStoryShareCallback = WXShareHelper.a();
     String str2 = paramShareWeChatData.jdField_a_of_type_JavaLangString;

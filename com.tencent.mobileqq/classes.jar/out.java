@@ -1,20 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
+import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import mqq.app.AppActivity;
 
 class out
-  implements TroopTopicMgr.DoLikeCallback
+  extends ScannerActivity.QQDialogCancelListener
 {
-  out(ouo paramouo, int paramInt1, int paramInt2) {}
+  out(ous paramous) {}
   
-  public void a(int paramInt, JSONObject paramJSONObject)
+  public void a()
   {
-    paramJSONObject = new Bundle();
-    paramJSONObject.putInt("reqType", this.jdField_a_of_type_Int);
-    paramJSONObject.putInt("seq", this.b);
-    paramJSONObject.putInt("errorCode", paramInt);
-    this.jdField_a_of_type_Ouo.a.a(60, paramJSONObject);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.a();
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
+    {
+      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.b();
   }
 }
 

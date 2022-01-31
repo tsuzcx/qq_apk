@@ -1,23 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView.OnTrimVDPlayCompelteListener;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.main.P2VEffectConvertor;
+import com.tencent.qphone.base.util.QLog;
 
 public class xto
-  implements MediaPlayer.OnCompletionListener
+  implements Runnable
 {
-  public xto(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public xto(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
-    }
+    QLog.d("QzDynamicVideoPreviewActivity", 2, "[run] in resumeRunnable, mIsMusicEnabled = " + QzDynamicVideoPreviewActivity.c(this.a));
+    QzDynamicVideoPreviewActivity.a(this.a).requestDraw();
   }
 }
 

@@ -1,17 +1,16 @@
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import cooperation.qzone.cache.FileCacheService;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkBridgeActivity;
 
-public final class amnm
-  implements ThreadPool.Job
+public class amnm
+  implements DialogInterface.OnClickListener
 {
-  public amnm(String paramString1, String paramString2) {}
+  public amnm(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$000(this.a, this.b)), true);
-    return null;
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

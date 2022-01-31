@@ -1,14 +1,17 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.mobileqq.activity.Now;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 public class tbh
   implements Runnable
 {
-  public tbh(Now paramNow) {}
+  public tbh(MainFragment paramMainFragment) {}
   
   public void run()
   {
-    this.a.a.a(null);
+    if (BaseApplicationImpl.getContext() != null) {
+      SharedPreUtils.a(BaseApplicationImpl.getContext(), "");
+    }
   }
 }
 

@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityActivity;
+import android.content.Context;
+import android.hardware.SensorManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vashealth.SportManager;
 
 public class akkd
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public akkd(AuthorityActivity paramAuthorityActivity) {}
+  public akkd(SportManager paramSportManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    if (SportManager.a == null) {
+      SportManager.a = (SensorManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("sensor");
+    }
+    SportManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akkd
  * JD-Core Version:    0.7.0.1
  */

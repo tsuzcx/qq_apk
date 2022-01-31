@@ -1,21 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
 
 public class aetb
-  implements TextWatcher
+  implements View.OnFocusChangeListener
 {
-  public aetb(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public aetb(SelectLocationFragment paramSelectLocationFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    NearbyUtils.a(this.a.a, 30);
+    if (!paramBoolean) {
+      SelectLocationFragment.a(this.a);
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

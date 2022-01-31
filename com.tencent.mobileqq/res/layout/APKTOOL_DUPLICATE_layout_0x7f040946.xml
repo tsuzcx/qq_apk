@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c001e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="10.0dip" android:paddingEnd="10.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.ADView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2914" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="1.0dip" android:layout_weight="1.0">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a291d" android:padding="22.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:cropToPadding="true" />
+        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a291e" android:clickable="false" android:layout_margin="4.0dip" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a291d" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a291d" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02f9" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a291f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020652" android:clickable="false" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="4.0dip" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a291d" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a291d" />
+    </RelativeLayout>
+    <RelativeLayout android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="1.0dip" android:layout_weight="1.0">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2920" android:padding="22.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:cropToPadding="true" />
+        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2921" android:clickable="false" android:layout_margin="4.0dip" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a2920" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a2920" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02f9" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2922" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020652" android:clickable="false" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="4.0dip" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a2920" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a2920" />
+    </RelativeLayout>
+    <RelativeLayout android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="1.0dip" android:layout_weight="1.0">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2923" android:padding="22.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:cropToPadding="true" />
+        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2924" android:clickable="false" android:layout_margin="4.0dip" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a2923" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a2923" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02f9" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2925" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020652" android:clickable="false" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="4.0dip" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a2923" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a2923" />
+    </RelativeLayout>
 </LinearLayout>

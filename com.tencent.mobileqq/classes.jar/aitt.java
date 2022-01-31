@@ -1,30 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.util.InputMethodUtil;
 
 public class aitt
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public aitt(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public aitt(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    InputMethodUtil.a(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitt
  * JD-Core Version:    0.7.0.1
  */

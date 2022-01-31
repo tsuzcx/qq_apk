@@ -906,7 +906,7 @@ public class MessageCache
           continue;
         }
         paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "confess_sig", 0).edit();
-        if ((paramString1 == null) || (paramArrayOfByte.length == 0))
+        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
         {
           this.T.remove(paramString1);
           paramString2.remove(paramString1);

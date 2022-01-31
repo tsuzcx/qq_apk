@@ -1,20 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-class adgs
-  implements Runnable
+public final class adgs
+  implements DialogInterface.OnClickListener
 {
-  adgs(adgr paramadgr, RecyclerView.ViewHolder paramViewHolder) {}
+  public adgs(FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131362989).setVisibility(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131362988).setVisibility(8);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgs
  * JD-Core Version:    0.7.0.1
  */

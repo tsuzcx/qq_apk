@@ -1,25 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.view.QIMSlidingTabView;
 
 public class anqa
-  implements Runnable
+  implements View.OnClickListener
 {
-  private SVHwEncoder jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder;
+  public anqa(QIMSlidingTabView paramQIMSlidingTabView, int paramInt) {}
   
-  public anqa(FlowCameraActivity2 paramFlowCameraActivity2, SVHwEncoder paramSVHwEncoder)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder = paramSVHwEncoder;
-  }
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "handleQQVideo(): onSendVideoClick mEncoderCache=" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder);
-    }
-    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder.b();
-    }
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,19 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousStatusListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class vxo
-  implements AnonymousChatHelper.AnonymousStatusListener
+  implements View.OnClickListener
 {
-  public vxo(TroopChatPie paramTroopChatPie) {}
+  public vxo(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.a.a))) {
-      TroopChatPie.m(this.a).post(new vxp(this, paramString2));
-    }
+    paramView.setVisibility(8);
   }
 }
 

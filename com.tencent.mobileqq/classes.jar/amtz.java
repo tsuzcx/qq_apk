@@ -1,24 +1,25 @@
-import android.os.Handler;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import java.io.File;
+import java.util.Comparator;
 
-public class amtz
-  implements Runnable
+public final class amtz
+  implements Comparator
 {
-  private amtz(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    QIMEffectCameraCaptureUnit.b(this.a);
-    if (QIMEffectCameraCaptureUnit.a(this.a) >= 3) {
-      QIMEffectCameraCaptureUnit.a(this.a, 0);
+    long l1 = paramFile1.lastModified();
+    long l2 = paramFile2.lastModified();
+    if (l1 > l2) {
+      return -1;
     }
-    QIMEffectCameraCaptureUnit.a(this.a, QIMEffectCameraCaptureUnit.a(this.a));
-    this.a.a.postDelayed(QIMEffectCameraCaptureUnit.a(this.a), 500L);
+    if (l1 < l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtz
  * JD-Core Version:    0.7.0.1
  */

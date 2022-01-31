@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.DeleteFeedCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
 
-public final class aeym
-  implements CsTask.OnCsError
+public class aeym
+  implements IVideoView.OnErrorListener
 {
-  public aeym(NearbyMomentProtocol.DeleteFeedCallback paramDeleteFeedCallback, String paramString) {}
+  public aeym(VideoPlayerView paramVideoPlayerView, VideoData paramVideoData) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public boolean a(IVideoView paramIVideoView, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$DeleteFeedCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$DeleteFeedCallback.a(false, this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
     }
+    return true;
   }
 }
 

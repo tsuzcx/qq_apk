@@ -1,14 +1,22 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.os.AsyncTask;
+import com.tencent.biz.pubaccount.AccountDetailActivity.FriendAvatarWeakReference;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
 
 public class ksz
-  implements Runnable
+  extends AsyncTask
 {
-  public ksz(AccountDetailActivity paramAccountDetailActivity) {}
+  public ksz(AccountDetailActivity.FriendAvatarWeakReference paramFriendAvatarWeakReference, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    this.a.a.setEnabled(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$FriendAvatarWeakReference.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$FriendAvatarWeakReference.a.a(-1);
   }
 }
 

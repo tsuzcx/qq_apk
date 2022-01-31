@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import adoe;
+import adyf;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class WebRecordApiPlugin
   extends WebViewPlugin
 {
-  private adoe jdField_a_of_type_Adoe;
+  private adyf jdField_a_of_type_Adyf;
   private String jdField_a_of_type_JavaLangString;
   private String b;
   private String c;
@@ -27,8 +27,8 @@ public class WebRecordApiPlugin
     if (!"webRecord".equals(paramString2)) {
       return false;
     }
-    if (this.jdField_a_of_type_Adoe == null) {
-      this.jdField_a_of_type_Adoe = new adoe(this, this.mRuntime.a(), (BaseActivity)this.mRuntime.a());
+    if (this.jdField_a_of_type_Adyf == null) {
+      this.jdField_a_of_type_Adyf = new adyf(this, this.mRuntime.a(), (BaseActivity)this.mRuntime.a());
     }
     if ("startRecord".equals(paramString3)) {
       try
@@ -37,7 +37,7 @@ public class WebRecordApiPlugin
         this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback", "");
         int i = paramJsBridgeListener.optInt("format", 0);
         int j = paramJsBridgeListener.optInt("maxTime", 0);
-        this.jdField_a_of_type_Adoe.a(i, j);
+        this.jdField_a_of_type_Adyf.a(i, j);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -52,7 +52,7 @@ public class WebRecordApiPlugin
     }
     if ("stopRecord".equals(paramString3))
     {
-      this.jdField_a_of_type_Adoe.b(0);
+      this.jdField_a_of_type_Adyf.b(0);
       return true;
     }
     if ("play".equals(paramString3)) {
@@ -61,7 +61,7 @@ public class WebRecordApiPlugin
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
         this.b = paramJsBridgeListener.optString("callback", "");
         paramJsBridgeListener = paramJsBridgeListener.optString("recordID", "");
-        this.jdField_a_of_type_Adoe.b(paramJsBridgeListener);
+        this.jdField_a_of_type_Adyf.b(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -78,7 +78,7 @@ public class WebRecordApiPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("recordID", "");
-        this.jdField_a_of_type_Adoe.d(paramJsBridgeListener);
+        this.jdField_a_of_type_Adyf.d(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -95,7 +95,7 @@ public class WebRecordApiPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("recordID", "");
-        this.jdField_a_of_type_Adoe.c(paramJsBridgeListener);
+        this.jdField_a_of_type_Adyf.c(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -116,7 +116,7 @@ public class WebRecordApiPlugin
         paramJsBridgeListener = paramString2.optJSONArray("recordIDs");
         paramString1 = paramString2.optString("cgi", "");
         paramString2 = paramString2.optString("cookie", "");
-        this.jdField_a_of_type_Adoe.a(paramJsBridgeListener, paramString1, paramString2);
+        this.jdField_a_of_type_Adyf.a(paramJsBridgeListener, paramString1, paramString2);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -134,18 +134,18 @@ public class WebRecordApiPlugin
   
   public void onDestroy()
   {
-    boolean bool = this.jdField_a_of_type_Adoe.a();
+    boolean bool = this.jdField_a_of_type_Adyf.a();
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "RecordSoundPanel.onDestroy() is called,isRecording is:" + bool);
     }
     if (bool) {
-      this.jdField_a_of_type_Adoe.b(1);
+      this.jdField_a_of_type_Adyf.b(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.WebRecordApiPlugin
  * JD-Core Version:    0.7.0.1
  */

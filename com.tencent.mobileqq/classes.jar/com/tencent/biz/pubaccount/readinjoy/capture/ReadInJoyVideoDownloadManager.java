@@ -10,16 +10,16 @@ import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import java.io.File;
 import java.io.IOException;
-import lik;
-import lil;
-import lim;
+import lif;
+import lig;
+import lih;
 
 public class ReadInJoyVideoDownloadManager
 {
   private ReadInJoyVideoDownloadManager.VideoDownloadCallback jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoDownloadManager$VideoDownloadCallback;
   private HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = new HttpNetReq();
   private OldHttpEngine jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine;
-  private IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new lik(this);
+  private IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new lif(this);
   private String jdField_a_of_type_JavaLangString;
   private String b;
   private String c;
@@ -43,7 +43,7 @@ public class ReadInJoyVideoDownloadManager
   private void a(String paramString)
   {
     this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = new HttpNetReq();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new lim(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new lih(this);
     this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.c = this.c;
@@ -62,7 +62,7 @@ public class ReadInJoyVideoDownloadManager
       }
       return;
     }
-    ThirdVideoManager.a().a(this.jdField_a_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new lil(this));
+    ThirdVideoManager.a().a(this.jdField_a_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new lig(this));
   }
   
   public boolean a()

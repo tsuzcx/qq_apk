@@ -1,23 +1,44 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class ycs
-  extends ydc
+  implements ycu
 {
-  public ycs(SpecailCareListActivity paramSpecailCareListActivity)
+  public ycs(EncodeVideoTask paramEncodeVideoTask) {}
+  
+  public void a(int paramInt)
   {
-    super(paramSpecailCareListActivity, null);
+    if (EncodeVideoTask.a(this.a) != null) {
+      EncodeVideoTask.a(this.a).a(paramInt);
+    }
   }
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
   {
-    if (this.a.d != 0) {
-      this.a.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
     }
-    while ((paramInt2 != 200) || (paramBitmap == null)) {
+    if (EncodeVideoTask.a(this.a))
+    {
+      b(paramPublishVideoEntry, paramString);
       return;
     }
-    this.a.a.notifyDataSetChanged();
+    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (FileUtils.b(paramPublishVideoEntry.doodlePath)))
+    {
+      EncodeVideoTask.a(paramString, paramPublishVideoEntry, EncodeVideoTask.a(this.a));
+      return;
+    }
+    b(paramPublishVideoEntry, paramString);
+  }
+  
+  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    ThreadManager.postImmediately(new yct(this, paramPublishVideoEntry, paramString), null, true);
   }
 }
 

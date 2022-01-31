@@ -1,31 +1,15 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
 
 public class kpn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public kpn(EqqAccountDetailActivity paramEqqAccountDetailActivity, EqqDetail paramEqqDetail, boolean paramBoolean) {}
+  public kpn(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "updateDetailInfo");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-      if (this.jdField_a_of_type_Boolean) {
-        EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).sendEmptyMessage(1);
-      }
-    }
-    else
-    {
-      return;
-    }
-    EqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, new kpo(this));
+    this.a.d(this.a.b());
   }
 }
 

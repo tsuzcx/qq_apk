@@ -1,28 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.av.app.AVServiceProxy;
+import com.tencent.av.service.IAVServiceForQQ.Stub;
+import com.tencent.qphone.base.util.QLog;
 
 public class jeb
-  implements DialogInterface.OnClickListener
+  implements ServiceConnection
 {
-  public jeb(VideoController paramVideoController, boolean paramBoolean1, boolean paramBoolean2) {}
+  public jeb(AVServiceProxy paramAVServiceProxy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoController.a("onHowling_click", this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Long, true, false);
-      if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(AVServiceProxy.a(), 2, "AVServiceForQQ onServiceConnected");
     }
-    if (this.b) {
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvUtilsTraeHelper.e();
+    this.a.a = IAVServiceForQQ.Stub.a(paramIBinder);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(AVServiceProxy.a(), 2, "AVServiceForQQ onServiceDisconnected");
     }
-    ReportController.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
+    this.a.a = null;
   }
 }
 

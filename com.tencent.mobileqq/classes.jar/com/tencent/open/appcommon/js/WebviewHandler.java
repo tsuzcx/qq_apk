@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.js;
 
-import akoz;
+import alep;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.smtt.sdk.WebView;
@@ -16,7 +16,7 @@ public class WebviewHandler
     do
     {
       return;
-      paramMessage = (akoz)paramMessage.obj;
+      paramMessage = (alep)paramMessage.obj;
     } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView == null) || (paramMessage.jdField_a_of_type_JavaLangString == null));
     try
     {

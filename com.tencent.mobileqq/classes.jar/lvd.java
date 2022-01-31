@@ -1,15 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeUgcVideoSocial;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
 public class lvd
   implements View.OnClickListener
 {
-  public lvd(ComponentHeaderFriendRecommend paramComponentHeaderFriendRecommend, long paramLong) {}
+  public lvd(FeedItemCellTypeUgcVideoSocial paramFeedItemCellTypeUgcVideoSocial) {}
   
   public void onClick(View paramView)
   {
-    ComponentHeaderFriendRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend, this.jdField_a_of_type_Long);
+    ReadInJoyUtils.a(this.a.jdField_a_of_type_AndroidContentContext, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
+    ReadInJoyBaseAdapter.a(((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).e());
   }
 }
 

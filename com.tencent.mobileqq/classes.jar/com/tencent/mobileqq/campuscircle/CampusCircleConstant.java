@@ -10,13 +10,13 @@ public class CampusCircleConstant
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130842310, 2130842309, 2130842308 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130842357, 2130842356, 2130842355 };
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "一年级", "二年级", "三年级", "四年级", "五年级", "六年级" };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCircleConstant
  * JD-Core Version:    0.7.0.1
  */

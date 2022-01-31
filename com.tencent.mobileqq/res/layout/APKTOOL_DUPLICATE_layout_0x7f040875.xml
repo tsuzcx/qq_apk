@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217d2" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_marginTop="5.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2648" android:paddingBottom="100.0dip" android:focusable="false" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" />
-    <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2687" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:layout_width="85.0dip" android:layout_height="85.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217f3" android:scaleType="centerInside" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:onClick="onClick" android:contentDescription="按住拍" />
-</RelativeLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb2" android:background="#ffdedede" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0585" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2708" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217d2" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="创建圈子" android:layout_weight="1.0" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2709" android:background="#ffdedede" android:visibility="gone" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0585" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a270a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217d2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2c74" android:layout_weight="1.0" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a270b" android:background="#ffdedede" android:visibility="gone" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0585" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a270c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217d2" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="分享我的一天" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

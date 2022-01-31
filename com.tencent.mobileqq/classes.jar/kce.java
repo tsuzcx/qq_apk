@@ -1,38 +1,30 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.av.ui.VideoInviteFull;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.service.RecvMsg;
+import com.tencent.av.ui.VideoLayerUI;
+import java.util.List;
 
 public class kce
   implements Runnable
 {
-  public kce(VideoInviteFull paramVideoInviteFull) {}
+  private kce(VideoLayerUI paramVideoLayerUI) {}
   
   public void run()
   {
-    if (this.a.a == null) {}
-    do
-    {
-      do
-      {
-        return;
-        this.a.a.setVisibility(8);
-        this.a.c.setVisibility(8);
-        if ((NetworkUtil.h(VideoInviteFull.a(this.a))) || (NetworkUtil.f(VideoInviteFull.b(this.a)))) {
-          break;
-        }
-        if (NetworkUtil.b(VideoInviteFull.c(this.a)))
-        {
-          this.a.c.setVisibility(0);
-          this.a.c.setText(2131429061);
-        }
-      } while (!NetworkUtil.c(VideoInviteFull.d(this.a)));
-      this.a.c.setVisibility(0);
-      this.a.c.setText(2131429060);
+    if (this.a.a == null) {
       return;
-    } while (!this.a.b);
-    this.a.c.setVisibility(0);
-    this.a.c.setText("");
+    }
+    if (VideoLayerUI.a(this.a).size() > 0)
+    {
+      this.a.a.a().removeCallbacks(VideoLayerUI.a(this.a));
+      this.a.a.a().removeCallbacks(VideoLayerUI.b(this.a));
+      RecvMsg localRecvMsg = (RecvMsg)VideoLayerUI.a(this.a).remove(0);
+      VideoLayerUI.a(this.a, localRecvMsg);
+      this.a.a.a().postDelayed(VideoLayerUI.a(this.a), 3000L);
+      this.a.a.a().postDelayed(VideoLayerUI.b(this.a), 3000L);
+      return;
+    }
+    this.a.a.a().removeCallbacks(VideoLayerUI.a(this.a));
   }
 }
 

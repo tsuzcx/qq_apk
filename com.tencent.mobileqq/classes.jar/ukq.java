@@ -1,68 +1,34 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.FloorJumper;
-import com.tencent.mobileqq.activity.aio.anim.FloorJumperSet;
-import com.tencent.mobileqq.activity.aio.anim.IAioAnimListener;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.AnimConfig;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ukq
   implements Runnable
 {
-  private ukq(FloorJumperSet paramFloorJumperSet) {}
+  public ukq(CustomizeStrategyFactory paramCustomizeStrategyFactory, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-    long l1 = -1L;
-    if (localIterator.hasNext())
+    try
     {
-      Object localObject = (FloorJumper)localIterator.next();
-      long l2 = ((FloorJumper)localObject).a();
-      if (l2 >= 0L)
-      {
-        if (l1 < 0L) {}
-        for (l1 = l2;; l1 = Math.min(l1, l2)) {
-          break;
-        }
-      }
-      localIterator.remove();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = QWalletTools.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig.a);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.c = true;
       if (QLog.isColorLevel()) {
-        QLog.d("FloorJumperSet", 2, "removed businessId:" + ((FloorJumper)localObject).c);
+        QLog.d("CustomizeStrategyFactory", 2, "preProcessAnim-preProcess finished");
       }
-      if (((FloorJumper)localObject).c == 1)
-      {
-        localObject = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-        } while (((FloorJumper)((Iterator)localObject).next()).c != 1);
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a.b();
-      }
-      break;
-      if (l1 >= 0L)
-      {
-        if (FloorJumperSet.a(this.a) == 0L) {
-          this.a.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this, l1);
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
-      }
-      do
-      {
-        return;
-        this.a.d();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a == null);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a.b();
+      CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
       return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("CustomizeStrategyFactory", 2, "preProcessAnim-throw:" + localThrowable);
+        }
+      }
     }
   }
 }

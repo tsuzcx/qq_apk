@@ -1,16 +1,36 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 
 public class lzh
-  implements Runnable
+  extends lzi
 {
-  public lzh(TopicShareHelper paramTopicShareHelper, String paramString) {}
-  
-  public void run()
+  public lzh(@NonNull Context paramContext, int paramInt)
   {
-    PublicAccountReportUtils.a(null, "", "0X80088B4", "0X80088B4", 0, 0, "", this.jdField_a_of_type_JavaLangString, "", VideoReporter.a(TopicShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoTopicShareHelper).mChannelID, null), false);
+    super(paramContext, paramInt);
+  }
+  
+  public boolean a()
+  {
+    return getCount() == 5;
+  }
+  
+  public boolean a(@NonNull TagInfo paramTagInfo)
+  {
+    int i = getCount();
+    super.a(paramTagInfo);
+    return i != getCount();
+  }
+  
+  @NonNull
+  public View getView(int paramInt, @Nullable View paramView, @NonNull ViewGroup paramViewGroup)
+  {
+    paramView = super.getView(paramInt, paramView, paramViewGroup);
+    paramView.setSelected(true);
+    return paramView;
   }
 }
 

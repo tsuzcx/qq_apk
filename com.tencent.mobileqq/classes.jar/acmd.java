@@ -1,17 +1,32 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class acmd
-  implements DialogInterface.OnClickListener
+  extends TeamWorkFileImportObserver
 {
-  public acmd(FileVideoManager paramFileVideoManager, Context paramContext, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
+  public acmd(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    FileVideoManager.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback);
+    super.a(paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
+    if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d)) {
+      QQToast.a(this.a.app.getApp(), 1, 2131439134, 0).a();
+    }
+  }
+  
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    super.a(paramString, paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
   }
 }
 

@@ -25,8 +25,8 @@ import java.nio.IntBuffer;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import xug;
-import xuh;
+import xxm;
+import xxn;
 
 public class CameraGLSurfaceView
   extends GLSurfaceView
@@ -236,7 +236,7 @@ public class CameraGLSurfaceView
           long l = SystemClock.elapsedRealtime();
           a("handleMessage:requestRender  renderTime=" + l);
           if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame)) {
-            post(new xuh(this));
+            post(new xxn(this));
           }
           if (paramMessage.arg1 != 1) {
             break;
@@ -331,7 +331,7 @@ public class CameraGLSurfaceView
   
   public void setCaptureListener(CameraGLSurfaceView.CaptureListener paramCaptureListener)
   {
-    queueEvent(new xug(this, paramCaptureListener));
+    queueEvent(new xxm(this, paramCaptureListener));
   }
   
   public void setPreviewSize(int paramInt1, int paramInt2, RMVideoClipSpec paramRMVideoClipSpec)

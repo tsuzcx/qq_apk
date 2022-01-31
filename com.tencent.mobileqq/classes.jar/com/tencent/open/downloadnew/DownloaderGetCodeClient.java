@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew;
 
-import akrz;
+import alhp;
 import android.os.Bundle;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.open.base.LogUtility;
@@ -10,7 +10,7 @@ public class DownloaderGetCodeClient
 {
   private static DownloaderGetCodeClient jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeClient;
   private ApkGetCodeListener jdField_a_of_type_ComTencentOpenDownloadnewApkGetCodeListener;
-  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new akrz(this);
+  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new alhp(this);
   
   public static DownloaderGetCodeClient a()
   {

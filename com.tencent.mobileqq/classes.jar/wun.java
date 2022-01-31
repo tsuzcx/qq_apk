@@ -1,27 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.util.QZLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wun
-  implements EncodeVideoTask.ResultListener
+  implements DialogInterface.OnClickListener
 {
-  public wun(PhotoListActivity paramPhotoListActivity) {}
+  public wun(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 2;
-    localMessage.obj = Integer.valueOf(paramInt);
-    this.a.a.sendMessage(localMessage);
-  }
-  
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
-  {
-    QZLog.d("PhotoListActivity", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.a.g) });
-    ThreadManager.postImmediately(new wuo(this, paramString1, paramString2, paramInt3), null, true);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
+      paramDialogInterface.putExtra("main_tab_id", 1);
+      paramDialogInterface.setFlags(603979776);
+      BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
   }
 }
 

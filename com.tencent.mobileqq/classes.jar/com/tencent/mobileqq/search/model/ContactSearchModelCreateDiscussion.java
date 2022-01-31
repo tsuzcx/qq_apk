@@ -118,8 +118,8 @@ public class ContactSearchModelCreateDiscussion
         localObject = "-1";
         i = 0;
         continue;
-        localIntent.putExtra("param_done_button_wording", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435947));
-        localIntent.putExtra("param_done_button_highlight_wording", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435948));
+        localIntent.putExtra("param_done_button_wording", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435964));
+        localIntent.putExtra("param_done_button_highlight_wording", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435965));
         localIntent.putExtra("param_title", "发起群聊");
         localIntent.putExtra("param_selected_records_for_create_discussion", localArrayList);
         ((Activity)paramView.getContext()).startActivityForResult(localIntent, 1300);

@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import com.tencent.av.utils.SensorReport;
 
 public class kgx
-  implements DialogInterface.OnClickListener
 {
-  public kgx(PopupDialog paramPopupDialog) {}
+  public int a;
+  public long a;
+  public long b = 0L;
+  public long c = this.jdField_a_of_type_ComTencentAvUtilsSensorReport.jdField_a_of_type_Int;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public kgx(SensorReport paramSensorReport)
   {
-    if (PopupDialog.a.b != null) {
-      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
-    }
-    paramDialogInterface.dismiss();
-    PopupDialog.a();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

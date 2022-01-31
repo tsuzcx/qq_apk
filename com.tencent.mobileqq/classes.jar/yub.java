@@ -1,85 +1,85 @@
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloGameHotChatController;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.HotChatUtil;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.IRenderCallback;
+import com.tencent.mobileqq.apollo.barrage.BarrageView;
+import com.tencent.mobileqq.apollo.store.ApolloViewController;
+import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import java.util.HashMap;
 
 public class yub
-  extends HotChatObserver
+  implements IRenderCallback
 {
-  public yub(ApolloGameHotChatController paramApolloGameHotChatController) {}
+  public yub(ApolloViewController paramApolloViewController) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    super.a(paramString1, paramBoolean, paramString2);
-    if ((paramBoolean) && (ApolloGameHotChatController.a(this.a) != null))
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewController", 2, new Object[] { "[onCompleteRender] taskId=", Integer.valueOf(paramInt1), ", roleName=", paramString, ", errCode=", Integer.valueOf(paramInt2) });
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName null");
+    }
+    do
     {
-      paramString2 = (HotChatPie)ApolloGameHotChatController.a(this.a).get();
-      if ((paramString2 != null) && (paramString2.a != null))
+      do
       {
-        paramString2 = (HotChatManager)paramString2.a.getManager(59);
-        if (paramString2 != null)
+        do
         {
-          paramString1 = paramString2.a(paramString1);
-          if ((paramString1 != null) && (paramString1.apolloGameId > 0)) {
-            VipUtils.a(null, "cmshow", "Apollo", "delete_reliao_room", 0, 0, new String[] { String.valueOf(paramString1.apolloGameId) });
+          return;
+          if (!ApolloViewController.a(this.a).containsKey(paramString))
+          {
+            QLog.e("ApolloViewController", 1, "[onCompleteRender] roleName not showing");
+            return;
           }
+          if ((ApolloViewController.a(this.a) == null) || (TextUtils.isEmpty(ApolloViewController.a(this.a).apolloId)) || (!ApolloViewController.a(this.a).apolloId.equals(paramString))) {
+            break;
+          }
+          ApolloViewController.b(this.a);
+          if (this.a.c != 5) {
+            this.a.jdField_a_of_type_Int = 1;
+          }
+          paramString = ApolloViewController.a(this.a).obtainMessage(18, 1, 0);
+          ApolloViewController.a(this.a).sendMessage(paramString);
+          this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
+        } while (TextUtils.isEmpty(ApolloViewController.a(this.a)));
+        if (!ApolloViewController.a(this.a)) {
+          break;
         }
+      } while ((ApolloViewController.a(this.a) != 1) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null));
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.b();
+      return;
+      if (ApolloViewController.a(this.a) != 1) {
+        break;
       }
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageView.a(true);
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a(1, ApolloViewController.a(this.a).apolloId, "Bubble");
+    return;
+    synchronized (ApolloViewController.a(this.a))
+    {
+      if (ApolloViewController.a(this.a).containsKey(paramString))
+      {
+        Message localMessage = ApolloViewController.a(this.a).obtainMessage(28);
+        localMessage.obj = paramString;
+        ApolloViewController.a(this.a).sendMessage(localMessage);
+        this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.stopLoopDelayed(15000L);
+      }
+      return;
     }
   }
   
-  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
+  public void a(int paramInt, String paramString)
   {
-    paramWifiPOIInfo = paramString;
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramWifiPOIInfo = paramString;
-      if (paramHotChatInfo != null) {
-        paramWifiPOIInfo = paramHotChatInfo.name;
-      }
-    }
-    if ((paramWifiPOIInfo == null) || (!paramWifiPOIInfo.equals(ApolloGameHotChatController.a(this.a))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameHotChatController", 2, "onQuickJoinHotChat, hotcode.equals(mCurrentHotChatCode)");
-      }
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameHotChatController", 2, "onQuickJoinHotChat, hotcode:" + paramWifiPOIInfo);
+      QLog.d("ApolloViewController", 2, new Object[] { "[onStartRender] taskId=", Integer.valueOf(paramInt), ", roleName=", paramString });
     }
-    paramWifiPOIInfo = Message.obtain();
-    if (paramBoolean) {
-      if ((paramHotChatInfo != null) && ((paramInt == 1) || (paramInt == 2)))
-      {
-        paramWifiPOIInfo.what = 3;
-        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name };
-        if (paramHotChatInfo.apolloGameId > 0) {
-          VipUtils.a(null, "cmshow", "Apollo", "join_reliao", 0, 0, new String[] { String.valueOf(paramHotChatInfo.apolloGameId) });
-        }
-      }
-    }
-    for (;;)
-    {
-      ApolloGameHotChatController.a(this.a).sendMessage(paramWifiPOIInfo);
-      return;
-      paramWifiPOIInfo.what = 1;
-      paramWifiPOIInfo.arg1 = 5;
-      paramWifiPOIInfo.obj = "加入热聊失败，请稍后再试。";
-      continue;
-      paramWifiPOIInfo.what = 1;
-      paramWifiPOIInfo.arg1 = (paramInt + 100);
-      paramWifiPOIInfo.obj = HotChatUtil.a(paramInt);
+    if ((ApolloViewController.a(this.a) != null) && (!TextUtils.isEmpty(ApolloViewController.a(this.a).apolloId)) && (ApolloViewController.a(this.a).apolloId.equals(paramString))) {
+      ApolloViewController.a(this.a);
     }
   }
 }

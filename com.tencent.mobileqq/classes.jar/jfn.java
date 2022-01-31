@@ -1,14 +1,13 @@
-import android.os.IBinder.DeathRecipient;
-import com.tencent.av.AVLog;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
 
 class jfn
-  implements IBinder.DeathRecipient
+  implements Runnable
 {
   jfn(jfm paramjfm) {}
   
-  public void binderDied()
+  public void run()
   {
-    AVLog.d("QQServiceProxy", "QQServiceForAV mobileQQ process exited!");
+    MagicFaceDataEntity.a(this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

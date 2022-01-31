@@ -1,43 +1,34 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.FlowSendTask;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
 public class xme
-  implements Runnable
+  implements TextWatcher
 {
-  public xme(FlowSendTask paramFlowSendTask) {}
+  public xme(LoginView paramLoginView) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_k_of_type_JavaLangString, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
+    if (paramCharSequence.length() > 0) {
+      if (this.a.b != null) {
+        this.a.b.setVisibility(0);
       }
-      RecordManager.a().a().recordSubmit();
+    }
+    while (paramCharSequence.length() > 4)
+    {
+      this.a.b(paramCharSequence.toString());
       return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        this.a.jdField_k_of_type_Int = -6;
-        synchronized (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.set(true);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(this.a.jdField_k_of_type_JavaLangString, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
-        }
+      if ((this.a.b != null) && (this.a.b.isShown())) {
+        this.a.b.setVisibility(8);
       }
     }
+    this.a.a.a(false, null);
   }
 }
 

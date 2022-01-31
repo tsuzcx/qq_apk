@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aadn;
-import aado;
+import aaiq;
+import aair;
 import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -67,7 +67,7 @@ public class ARResourceManagerTools
       if (((ARResourceDownload.DownloadInfo)paramArrayList.get(i)).jdField_a_of_type_Int == 4) {
         break label158;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload.a((ARResourceDownload.DownloadInfo)paramArrayList.get(i), new aadn(this, paramARResourceCallback, paramArrayList, (ArrayList)localObject));
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload.a((ARResourceDownload.DownloadInfo)paramArrayList.get(i), new aaiq(this, paramARResourceCallback, paramArrayList, (ArrayList)localObject));
     }
     for (;;)
     {
@@ -79,7 +79,7 @@ public class ARResourceManagerTools
       {
         HtmlOffline.a();
         localDownloadInfo = (ARResourceDownload.DownloadInfo)paramArrayList.get(i);
-        HtmlOffline.a(((ARResourceDownload.DownloadInfo)paramArrayList.get(i)).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new aado(this, paramARResourceCallback, (ArrayList)localObject, localDownloadInfo), true, 0, true);
+        HtmlOffline.a(((ARResourceDownload.DownloadInfo)paramArrayList.get(i)).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new aair(this, paramARResourceCallback, (ArrayList)localObject, localDownloadInfo), true, 0, true);
       }
     }
   }

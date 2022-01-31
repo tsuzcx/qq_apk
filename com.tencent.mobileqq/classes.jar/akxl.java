@@ -1,54 +1,23 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qidian.QidianProfileCardActivity;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.widget.Workspace.SavedState;
 
-public class akxl
-  extends URLDrawableDownListener.Adapter
+public final class akxl
+  implements Parcelable.Creator
 {
-  String jdField_a_of_type_JavaLangString = "";
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
-  boolean jdField_a_of_type_Boolean = true;
-  WeakReference b = null;
-  WeakReference c = null;
-  WeakReference d = null;
-  
-  public akxl(QidianProfileCardActivity paramQidianProfileCardActivity, QQAppInterface paramQQAppInterface, URLImageView paramURLImageView, String paramString, Drawable paramDrawable, boolean paramBoolean)
+  public Workspace.SavedState a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramURLImageView);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = new WeakReference(paramQQAppInterface);
-    this.c = new WeakReference(paramDrawable);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.d = new WeakReference(paramQidianProfileCardActivity);
+    return new Workspace.SavedState(paramParcel, null);
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public Workspace.SavedState[] a(int paramInt)
   {
-    super.onLoadSuccessed(paramView, paramURLDrawable);
-    paramView = (URLImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    QidianProfileCardActivity localQidianProfileCardActivity = (QidianProfileCardActivity)this.d.get();
-    if ((paramView != null) && (localQQAppInterface != null) && (localQidianProfileCardActivity != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      paramURLDrawable = new BitmapDrawable(QidianProfileCardActivity.a(localQQAppInterface, paramURLDrawable, this.jdField_a_of_type_Boolean));
-      if (this.jdField_a_of_type_Boolean) {
-        localQidianProfileCardActivity.b.put(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
-      }
-      paramView.setImageDrawable(paramURLDrawable);
-    }
+    return new Workspace.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 public class kvq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public kvq(VideoCoverView paramVideoCoverView) {}
+  public kvq(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoCoverView.a(this.a, true);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 

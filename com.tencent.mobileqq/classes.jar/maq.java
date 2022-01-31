@@ -1,23 +1,22 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
 public class maq
-  implements Animation.AnimationListener
+  implements DialogInterface.OnShowListener
 {
-  public maq(VideoFeedsCommentManager paramVideoFeedsCommentManager) {}
+  public maq(VideoFeedsAdapter paramVideoFeedsAdapter, ActionSheet paramActionSheet) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (VideoFeedsCommentManager.a(this.a) != null) {
-      VideoFeedsCommentManager.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mShareActionSheet onShow()");
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.getWindow().clearFlags(8);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

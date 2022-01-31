@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import adly;
-import admc;
+import advx;
+import adwb;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -49,7 +49,7 @@ public class DataApiPlugin
   
   public DataApiPlugin()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new adly(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new advx(this);
     this.mPluginNameSpace = "data";
   }
   
@@ -330,7 +330,7 @@ public class DataApiPlugin
       {
         localObject1 = new WtloginHelper(this.mRuntime.a().getApplication());
         ((WtloginHelper)localObject1).setCallSource(30);
-        ((WtloginHelper)localObject1).SetListener(new admc(this, str4, str2, str1, paramString));
+        ((WtloginHelper)localObject1).SetListener(new adwb(this, str4, str2, str1, paramString));
         ((WtloginHelper)localObject1).GetStWithoutPasswd(str3, 16L, 16L, 1L, i, (WUserSigInfo)localObject2);
         return;
       }
@@ -1022,13 +1022,13 @@ public class DataApiPlugin
     //   1165: aload 4
     //   1167: invokevirtual 346	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1170: ifeq +25 -> 1195
-    //   1173: new 637	adlz
+    //   1173: new 637	advy
     //   1176: dup
     //   1177: aload_0
     //   1178: aload 5
     //   1180: iconst_0
     //   1181: aaload
-    //   1182: invokespecial 640	adlz:<init>	(Lcom/tencent/mobileqq/jsp/DataApiPlugin;Ljava/lang/String;)V
+    //   1182: invokespecial 640	advy:<init>	(Lcom/tencent/mobileqq/jsp/DataApiPlugin;Ljava/lang/String;)V
     //   1185: bipush 8
     //   1187: aconst_null
     //   1188: iconst_1
@@ -1364,7 +1364,7 @@ public class DataApiPlugin
     //   1904: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1907: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1910: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1913: new 773	adma
+    //   1913: new 773	advz
     //   1916: dup
     //   1917: aload_0
     //   1918: aload_3
@@ -1372,7 +1372,7 @@ public class DataApiPlugin
     //   1920: aload_1
     //   1921: aload 5
     //   1923: aload 4
-    //   1925: invokespecial 776	adma:<init>	(Lcom/tencent/mobileqq/jsp/DataApiPlugin;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;Ljava/lang/String;)V
+    //   1925: invokespecial 776	advz:<init>	(Lcom/tencent/mobileqq/jsp/DataApiPlugin;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;Ljava/lang/String;)V
     //   1928: iconst_5
     //   1929: aconst_null
     //   1930: iconst_1
@@ -3082,7 +3082,7 @@ public class DataApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DataApiPlugin
  * JD-Core Version:    0.7.0.1
  */

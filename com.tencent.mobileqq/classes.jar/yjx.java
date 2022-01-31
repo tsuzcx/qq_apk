@@ -1,38 +1,19 @@
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class yjx
   implements Runnable
 {
-  private final long jdField_a_of_type_Long;
-  public final ApolloSurfaceView a;
-  private final long b;
-  
-  yjx(ApolloTicker paramApolloTicker, ApolloSurfaceView paramApolloSurfaceView, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = paramApolloSurfaceView;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.b = paramLong1;
-  }
+  public yjx(ApolloGameNormalStartHandler paramApolloGameNormalStartHandler, int paramInt1, int paramInt2, int paramInt3, QQAppInterface paramQQAppInterface, String paramString1, int paramInt4, String paramString2, Activity paramActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView == null) {}
-    while ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mIsDestroy == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mIsDestroy.get()) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mRenderMode != 0)) {
-      return;
-    }
-    long l = System.currentTimeMillis();
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker.nativeCallbackTicker(this.b, l, 0.01666666666666667D * this.jdField_a_of_type_Long);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloTicker", 1, "[onDrawFrame]");
-    }
+    CmGameStartChecker.StartCheckParam localStartCheckParam = new CmGameStartChecker.StartCheckParam(this.jdField_a_of_type_Int, true, "normalStart", 0L, 7, this.jdField_b_of_type_Int, this.c, ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaLangString, this.d);
+    localStartCheckParam.extendJson = this.jdField_b_of_type_JavaLangString;
+    ApolloGameUtil.a(this.jdField_a_of_type_AndroidAppActivity, localStartCheckParam);
   }
 }
 

@@ -1,47 +1,24 @@
-import com.tencent.biz.pubaccount.util.PAReportInfo;
-import com.tencent.biz.pubaccount.util.PAReportManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAccountInfo;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendItem;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class mti
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mti(PAReportManager paramPAReportManager, PAReportInfo paramPAReportInfo) {}
+  public mti(SubscriptRecommendAdapter.RecommendItem paramRecommendItem, SubscriptRecommendAdapter paramSubscriptRecommendAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportInfo == null) {}
-    SQLiteDatabase localSQLiteDatabase;
-    do
-    {
-      return;
-      if (PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager) == -1) {
-        PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager, PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager).b().a(PAReportInfo.class.getSimpleName()));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PAReport", 2, "before insert into db mCount = " + PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager));
-      }
-      if (PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager) < 80) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PAReport", 2, "databases message records is out of 80 delete the first _id ");
-      }
-      ??? = String.format("delete from %s where _id = (select min(_id) from %s)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportInfo.getTableName(), this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportInfo.getTableName() });
-      localSQLiteDatabase = PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager).a();
-    } while (localSQLiteDatabase == null);
-    if (localSQLiteDatabase.a((String)???)) {}
-    synchronized (PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager))
-    {
-      PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager).clear();
-      PAReportManager.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager);
-      PAReportManager.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager);
-      PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager).a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportInfo);
+    ReportController.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.a, "P_CliOper", "Pb_account_lifeservice", "", "0X8005731", "0X8005731", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.a, "CliOper", "", "", "0X800642E", "0X800642E", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo.a), "", "", "");
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo == null) || (TextUtils.isEmpty(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo.a)))) {
       return;
     }
+    SubscriptRecommendAdapter.RecommendItem.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem);
   }
 }
 

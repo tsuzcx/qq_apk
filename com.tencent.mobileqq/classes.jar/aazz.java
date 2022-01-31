@@ -1,39 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.Base64;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.URLUtil;
+import android.graphics.Point;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.tencentmap.mapsdk.map.MapView;
+import com.tencent.tencentmap.mapsdk.map.Projection;
+import com.tencent.tencentmap.mapsdk.map.TencentMap;
+import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapLoadedListener;
 
 public class aazz
-  implements View.OnClickListener
+  implements TencentMap.OnMapLoadedListener
 {
-  public aazz(ARMapPOIStarDialog paramARMapPOIStarDialog, long paramLong) {}
+  public aazz(ARMapActivity paramARMapActivity) {}
   
-  public void onClick(View paramView)
+  public void onMapLoaded()
   {
-    ReportController.b(null, "dc01440", "", "", "0X8007AB2", "0X8007AB2", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_Long, "" + this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.b, "" + this.jdField_a_of_type_Long, "");
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_JavaLangString))
+    this.a.e = true;
+    if (this.a.a != null)
     {
-      String str = new String(Base64.encode(this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_JavaLangString.getBytes(), 0));
-      str = URLUtil.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.d, "stid", str);
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapPOIStarDialog", 2, "jumpURL=" + str + "--- busiName=" + this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_JavaLangString);
+      Projection localProjection = this.a.a.getProjection();
+      TencentMap localTencentMap = this.a.a.getMap();
+      if ((localProjection != null) && (localTencentMap != null))
+      {
+        Point localPoint = localProjection.toScreenLocation(localTencentMap.getMapCenter());
+        localPoint.offset(0, AIOUtils.a(60.0F, this.a.getResources()) * -1);
+        localTencentMap.setCenter(localProjection.fromScreenLocation(localPoint));
       }
-      paramView.putExtra("url", str);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.a();
-      return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_AndroidContentContext, "数据异常，请稍候再试", 1).b(this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
   }
 }
 

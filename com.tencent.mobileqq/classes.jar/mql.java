@@ -1,57 +1,64 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.mobileqq.troop.utils.TroopBindPublicAccountMgr;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Releaser;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Utils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.List;
 
-public class mql
-  implements BusinessObserver
+class mql
+  implements Releaser
 {
-  public mql(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed) {}
+  mql(mqj parammqj) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.a + ", success:" + String.valueOf(paramBoolean));
+    if (paramBitmap == null) {
+      return;
     }
-    if ((ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter) != null) && (ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).isResume())) {
-      ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).b(false);
-    }
-    if (!paramBoolean) {
-      ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter);
+    Utils.a(mqj.a, "recycle:" + paramBitmap);
+    if (!Utils.a())
+    {
+      paramBitmap.recycle();
+      return;
     }
     for (;;)
     {
-      return;
-      try
+      synchronized (this.a.b)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        ArrayList localArrayList = new ArrayList();
+        i = 0;
+        if (i >= this.a.b.size()) {
+          break label226;
+        }
+        Bitmap localBitmap = (Bitmap)((SoftReference)this.a.b.get(i)).get();
+        if (localBitmap != null)
         {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
-            }
-            ServiceAccountFolderFeedAdapter.b(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter, this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
-            StructLongMessageDownloadProcessor.a(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.a);
-            ((TroopBindPublicAccountMgr)ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).getManager(131)).a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.a);
-            return;
+          if (localBitmap != paramBitmap) {
+            break label231;
           }
-          ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter);
-          return;
+          i = 1;
+          if (!localArrayList.isEmpty()) {
+            this.a.b.removeAll(localArrayList);
+          }
+          if (i == 0)
+          {
+            paramBitmap = new SoftReference(paramBitmap);
+            this.a.b.add(paramBitmap);
+          }
+        }
+        else
+        {
+          localArrayList.add(this.a.b.get(i));
         }
       }
-      catch (Exception paramBundle) {}
+      QLog.e(mqj.a, 1, "reuse same bitmap " + paramBitmap);
+      return;
+      label226:
+      int i = 0;
+      continue;
+      label231:
+      i += 1;
     }
   }
 }

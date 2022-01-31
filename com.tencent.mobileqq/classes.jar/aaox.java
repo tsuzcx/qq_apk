@@ -1,46 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetLocalAppPath;
+import android.hardware.SensorEvent;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.MotionCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public final class aaox
+public class aaox
   implements Runnable
 {
-  public ArkLocalAppMgr.IGetLocalAppPath a;
-  public String a;
-  public WeakReference a;
-  public String b;
-  
-  public aaox(ArkLocalAppMgr paramArkLocalAppMgr, String paramString1, String paramString2, ArkLocalAppMgr.IGetLocalAppPath paramIGetLocalAppPath)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramArkLocalAppMgr);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetLocalAppPath = paramIGetLocalAppPath;
-  }
+  public aaox(ArkAppEventObserverManager paramArkAppEventObserverManager, SensorEvent paramSensorEvent, long paramLong) {}
   
   public void run()
   {
-    Object localObject = (ArkLocalAppMgr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkApp.ArkLocalAppMgr", 2, "ArkLocalAppMgr.GetAppPathTask.object.null");
-      }
-    }
-    do
+    int i = 0;
+    while (i < 3)
     {
-      return;
-      localObject = ((ArkLocalAppMgr)localObject).a(this.jdField_a_of_type_JavaLangString, this.b);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ArkApp.ArkLocalAppMgr", 2, "ArkLocalAppMgr.GetAppPathTask.path.null");
-    return;
-    ArkAppCenter.a().postToMainThread(new aaoy(this, (String)localObject));
+      ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[i] = ((float)(0.1D * this.jdField_a_of_type_AndroidHardwareSensorEvent.values[i] + 0.9D * ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[i]));
+      ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[i] = (this.jdField_a_of_type_AndroidHardwareSensorEvent.values[i] - ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[i]);
+      i += 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onMotionSensorChange curTime=" + this.jdField_a_of_type_Long + ", mMotionX=" + ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[0] + ", mMotionY=" + ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[1] + ", mMotionZ=" + ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[2]);
+    }
+    if (ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) != null) {
+      ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager).a(true, ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[0], ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[1], ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[2]);
+    }
   }
 }
 

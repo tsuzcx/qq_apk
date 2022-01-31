@@ -28,13 +28,13 @@ public class QQCustomDialogDevLock
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365315));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372066));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363873));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372068));
-    this.c = ((TextView)findViewById(2131363878));
-    this.d = ((TextView)findViewById(2131364013));
-    this.e = ((TextView)findViewById(2131364014));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365337));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372239));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363896));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372241));
+    this.c = ((TextView)findViewById(2131363901));
+    this.d = ((TextView)findViewById(2131364037));
+    this.e = ((TextView)findViewById(2131364038));
   }
 }
 

@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class vjr
-  implements DialogInterface.OnClickListener
+public class vjr
+  implements Runnable
 {
-  vjr(vjp paramvjp) {}
+  public vjr(TroopFileItemBuilder paramTroopFileItemBuilder, ChatMessage paramChatMessage) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.b.post(new vjs(this));
+  }
 }
 
 

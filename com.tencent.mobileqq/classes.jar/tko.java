@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity.IProgressCallback;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
-public class tko
-  extends CardObserver
+class tko
+  implements QQSettingCleanActivity.IProgressCallback
 {
-  public tko(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  tko(tkn paramtkn) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void a(int paramInt)
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
-      QQSettingSettingActivity.a(this.a, (Card)paramObject);
-    }
+    this.a.a.a.setPercent(paramInt);
   }
 }
 

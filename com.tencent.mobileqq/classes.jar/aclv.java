@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
 public class aclv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aclv(FileUploader paramFileUploader) {}
+  public aclv(FMActivity paramFMActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileUploader.a(this.a, 0L);
-    this.a.a(0L);
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
+    this.a.finish();
   }
 }
 

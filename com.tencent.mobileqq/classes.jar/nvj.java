@@ -1,15 +1,36 @@
+import android.os.Bundle;
+import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.PostCommentCallback;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.CommentManager;
 import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class nvj
-  implements Runnable
+public class nvj
+  extends FeedCommentEventHandler.PostCommentCallback
 {
-  nvj(nvi paramnvi, MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
+  public nvj(StoryDetailPresenter paramStoryDetailPresenter) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    ((UserManager)SuperManager.a(2)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a);
+    SLog.a("Q.qqstory.detail.StoryDetailPresenter", "post comment result is %s.", Boolean.valueOf(paramBoolean));
+    if (!StoryDetailPresenter.a(this.a).get()) {
+      StoryDetailPresenter.a(this.a).c();
+    }
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  {
+    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
+    localCommentManager.b(paramCommentEntry);
+    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
+    paramCommentEntry.status = 0;
+    localCommentManager.a(paramCommentEntry);
+    return true;
   }
 }
 

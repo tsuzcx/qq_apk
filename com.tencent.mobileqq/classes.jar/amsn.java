@@ -1,21 +1,42 @@
-import android.app.Activity;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneVipInfoManager;
+import mqq.app.AppRuntime;
 
 public class amsn
-  implements Runnable
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  public amsn(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public amsn(QZoneVipInfoManager paramQZoneVipInfoManager) {}
   
-  public void run()
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
   {
-    QIMCameraCaptureUnit.a(this.a, false);
-    this.a.a.a().runOnUiThread(new amso(this));
+    paramSharedPreferences = BaseApplicationImpl.getApplication().getRuntime();
+    if (paramSharedPreferences != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged key = " + paramString);
+      }
+      if ((!QZoneVipInfoManager.a(this.a)) && (QZoneVipInfoManager.a(this.a) != null))
+      {
+        if (QZoneVipInfoManager.a(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
+          QZoneVipInfoManager.a(this.a, QZoneVipInfoManager.a(this.a).getInt(paramString, 0));
+        }
+        if (QZoneVipInfoManager.b(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
+          QZoneVipInfoManager.c(this.a, QZoneVipInfoManager.a(this.a).getString(paramString, null));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged value = " + QZoneVipInfoManager.a(this.a) + " personlizedYellowVipUrl = " + QZoneVipInfoManager.a(this.a));
+        }
+      }
+      QZoneVipInfoManager.a(this.a, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsn
  * JD-Core Version:    0.7.0.1
  */

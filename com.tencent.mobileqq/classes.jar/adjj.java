@@ -1,54 +1,73 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.intervideo.LoginKeyHelper;
-import com.tencent.mobileqq.intervideo.LoginKeyHelper.GetLoginKeyListener;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
-import mqq.observer.BusinessObserver;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.IBaseTabViewEvent;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.statistics.storage.StorageReport;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Iterator;
+import java.util.List;
 
-public class adjj
-  implements BusinessObserver
+class adjj
+  extends AsyncTask
 {
-  public adjj(LoginKeyHelper paramLoginKeyHelper, LoginKeyHelper.GetLoginKeyListener paramGetLoginKeyListener, String paramString) {}
+  adjj(adji paramadji) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected Integer a(Object... paramVarArgs)
   {
-    new Bundle();
-    paramBundle = paramBundle.getByteArray("data");
-    if (paramBundle == null) {}
+    paramVarArgs = FMDataCache.b().iterator();
+    int i = 0;
+    File localFile;
     for (;;)
     {
-      return;
-      FastAuthorize.AuthorizeResponse localAuthorizeResponse = new FastAuthorize.AuthorizeResponse();
-      try
-      {
-        localAuthorizeResponse.mergeFrom(paramBundle);
-        if ((localAuthorizeResponse.ret.get().equals("0")) && (localAuthorizeResponse.apk_name.has()))
+      if (!paramVarArgs.hasNext()) {
+        break label150;
+      }
+      FileInfo localFileInfo = (FileInfo)paramVarArgs.next();
+      if (!SendBottomBar.a(this.a.a).a().a(localFileInfo.c())) {
+        try
         {
-          if (localAuthorizeResponse.access_token.has()) {
-            this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper.a.jdField_a_of_type_JavaLangString = localAuthorizeResponse.access_token.get();
+          localFile = new File(localFileInfo.c());
+          if (!localFile.exists()) {
+            QLog.e("delDownloadFiles<FileAssistant>", 1, "local file can scan, is not existed? file:" + localFileInfo.c());
           }
-          if (localAuthorizeResponse.openid.has()) {
-            this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper.a.b = localAuthorizeResponse.openid.get();
-          }
-          if (localAuthorizeResponse.pay_token.has()) {
-            this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper.a.c = localAuthorizeResponse.pay_token.get();
-          }
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper.a.jdField_a_of_type_Long = System.currentTimeMillis();
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper$GetLoginKeyListener.a(this.jdField_a_of_type_JavaLangString, true, 0);
-          return;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("delDownloadFiles<FileAssistant>", 1, "del file error:" + localException.toString());
         }
       }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
     }
+    for (;;)
+    {
+      break;
+      localFile.delete();
+      i += 1;
+    }
+    label150:
+    StorageReport.a().a(true);
+    return Integer.valueOf(i);
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    super.onPostExecute(paramInteger);
+    this.a.a.d();
+    if (paramInteger.intValue() != FMDataCache.a()) {
+      FMToastUtil.a(2131428145);
+    }
+    FMDataCache.b();
+    this.a.a.a();
+    SendBottomBar.a(this.a.a).n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adjj
  * JD-Core Version:    0.7.0.1
  */

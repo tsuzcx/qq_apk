@@ -1,47 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardChooseFriendOption;
 
-public final class adkn
-  implements Runnable
+public class adkn
+  implements DialogInterface.OnClickListener
 {
-  public adkn(String paramString) {}
+  public adkn(ForwardChooseFriendOption paramForwardChooseFriendOption) {}
   
-  public void run()
-  {
-    try
-    {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.a).openConnection();
-      if (localHttpURLConnection != null)
-      {
-        localHttpURLConnection.setDoOutput(true);
-        localHttpURLConnection.setRequestMethod("POST");
-        localHttpURLConnection.setRequestProperty("Accept-Charset", "utf-8");
-        localHttpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        if (localHttpURLConnection.getResponseCode() == 200)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Monitor", 2, " report to monitor success,URL = " + this.a);
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.i("Monitor", 2, " report to monitor failed,URL = " + this.a);
-          return;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Monitor", 2, localException, new Object[0]);
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adkn
  * JD-Core Version:    0.7.0.1
  */

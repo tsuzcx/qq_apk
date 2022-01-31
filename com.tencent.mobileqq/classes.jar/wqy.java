@@ -1,78 +1,31 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.adapter.ContactBindedAdapter;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimTipsInfo;
-import java.lang.ref.WeakReference;
-import java.util.List;
-import mqq.app.TicketManagerImpl;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
-public class wqy
-  extends MqqHandler
+class wqy
+  implements Runnable
 {
-  private WeakReference a;
+  wqy(wqx paramwqx) {}
   
-  public wqy(ContactListView paramContactListView)
+  public void run()
   {
-    this.a = new WeakReference(paramContactListView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ContactListView localContactListView = (ContactListView)this.a.get();
-    if (localContactListView == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ContactListView", 2, "UiHandler() handleMessage a == null");
-      }
+    SplashActivity localSplashActivity = this.a.a.a;
+    if ((localSplashActivity == null) || (localSplashActivity.app == null)) {
+      return;
     }
-    do
+    QQAppInterface localQQAppInterface = localSplashActivity.app;
+    int i = 0;
+    int j = QCallFacade.a(localQQAppInterface);
+    QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
+    if (localQQMessageFacade != null)
     {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        case 3: 
-        case 7: 
-        default: 
-          throw new RuntimeException("Unknown message: " + paramMessage.what);
-        case 1: 
-          if ((ContactListView.a(localContactListView)) && (!localContactListView.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e()))
-          {
-            localContactListView.g();
-            ContactListView.a(localContactListView, false);
-          }
-          localContactListView.j();
-          return;
-        case 2: 
-          localContactListView.j();
-        }
-      } while (NetworkUtil.d(localContactListView.getContext()));
-      localContactListView.i();
-      localContactListView.a("网络不可用，请稍候重试.");
-      return;
-      localContactListView.b = ((List)paramMessage.obj);
-      localContactListView.jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter.a(localContactListView.b);
-      localContactListView.jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter.notifyDataSetChanged();
-      return;
-      paramMessage = ContactListView.a(localContactListView).getAccount();
-      localObject = (TicketManagerImpl)ContactListView.a(localContactListView).getManager(2);
-    } while (localObject == null);
-    Object localObject = ((TicketManagerImpl)localObject).getA2(paramMessage);
-    if (QLog.isColorLevel()) {
-      QLog.i("ContactListView", 2, "a2 = " + (String)localObject);
+      ServiceAccountFolderManager.a().a(localQQAppInterface);
+      i = localQQMessageFacade.b();
     }
-    QQPimGetTipsInfoIPC.a().a(ContactListView.a(localContactListView), ContactListView.a(localContactListView), paramMessage, (String)localObject);
-    return;
-    ContactListView.a(localContactListView, (QQPimTipsInfo)paramMessage.obj);
-    return;
-    localContactListView.i();
-    localContactListView.l();
+    localSplashActivity.runOnUiThread(new wqz(this, i + j));
   }
 }
 

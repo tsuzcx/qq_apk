@@ -1,17 +1,25 @@
-import com.tencent.biz.troopgift.AIOGiftPanelContainer;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.qphone.base.util.QLog;
 
-class owz
-  implements Runnable
+public class owz
+  extends oxo
 {
-  owz(owy paramowy) {}
-  
-  public void run()
+  public owz(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, String paramString)
   {
-    if (this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel != null)
+    super(paramVideoCombineHelper);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
     {
-      this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData(this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData, true);
-      this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.a.a.a.b);
+      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a));
+      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a = System.currentTimeMillis();
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
     }
   }
 }

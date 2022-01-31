@@ -1,15 +1,15 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import com.tencent.biz.qqstory.playmode.child.TroopStoryForAIOPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
 public class nlt
-  implements TabBarView.OnTabChangeListener
+  implements Runnable
 {
-  public nlt(MyVideoVisibilityDialog paramMyVideoVisibilityDialog) {}
+  public nlt(TroopStoryForAIOPlayMode paramTroopStoryForAIOPlayMode) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void run()
   {
-    this.a.a.setCurrentItem(paramInt2);
+    this.a.h = false;
+    this.a.a.setCurrentItem(this.a.b, false);
   }
 }
 

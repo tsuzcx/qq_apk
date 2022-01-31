@@ -1,32 +1,29 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.widget.CircleProgressView;
 
 public class aksx
-  implements TicketUtils.TicketCallback
+  implements Runnable
 {
-  public aksx(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
+  private aksx(CircleProgressView paramCircleProgressView) {}
   
-  public void a()
+  public void run()
   {
-    ThreadManager.getSubThreadHandler().post(new akta(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.c("TIME-STATISTIC", "onGetA1");
-    ThreadManager.getSubThreadHandler().post(new aksy(this, paramArrayOfByte, paramString));
+    if (CircleProgressView.a(this.a)) {
+      CircleProgressView.a(this.a, CircleProgressView.a(this.a) + CircleProgressView.b(this.a));
+    }
+    for (;;)
+    {
+      CircleProgressView.a(this.a, CircleProgressView.a(this.a) % 360);
+      CircleProgressView.a(this.a).postDelayed(this, 16L);
+      this.a.invalidate();
+      return;
+      CircleProgressView.a(this.a, CircleProgressView.a(this.a) + 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksx
  * JD-Core Version:    0.7.0.1
  */

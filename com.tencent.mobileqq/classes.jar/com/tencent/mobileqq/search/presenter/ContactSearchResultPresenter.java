@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahgd;
-import ahge;
+import ahuf;
+import ahug;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -61,7 +61,7 @@ public class ContactSearchResultPresenter
         ((TextView)localObject).setText(paramISearchResultModel.a());
       }
       if ((SearchUtils.a) && (paramISearchResultView.a() != null) && ((paramISearchResultModel instanceof IContactSearchModel))) {
-        paramISearchResultView.a().setOnLongClickListener(new ahgd(this, paramISearchResultModel));
+        paramISearchResultView.a().setOnLongClickListener(new ahuf(this, paramISearchResultModel));
       }
       return;
     }
@@ -82,7 +82,7 @@ public class ContactSearchResultPresenter
         if ((TextUtils.isEmpty((CharSequence)localObject)) || (!Utils.b((String)localObject))) {
           break label385;
         }
-        localObject = paramISearchResultView.f().getContext().getResources().getDrawable(2130839745);
+        localObject = paramISearchResultView.f().getContext().getResources().getDrawable(2130839751);
         ((Drawable)localObject).setBounds(0, 0, AIOUtils.a(15.0F, paramISearchResultView.f().getContext().getResources()), AIOUtils.a(15.0F, paramISearchResultView.f().getContext().getResources()));
         paramISearchResultView.f().setCompoundDrawables(null, null, (Drawable)localObject, null);
       }
@@ -125,7 +125,7 @@ public class ContactSearchResultPresenter
     if (this.a != null)
     {
       if (paramISearchResultView.a() != null) {
-        paramISearchResultView.a().setOnClickListener(new ahge(this));
+        paramISearchResultView.a().setOnClickListener(new ahug(this));
       }
       return;
     }

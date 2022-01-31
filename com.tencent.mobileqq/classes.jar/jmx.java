@@ -1,18 +1,22 @@
-import com.tencent.av.report.VideoConnRateReport;
+import android.graphics.Bitmap;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.av.service.QavWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class jmx
-  implements Runnable
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public jmx(VideoConnRateReport paramVideoConnRateReport) {}
+  public jmx(QQServiceForAV paramQQServiceForAV) {}
   
-  public void run()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    synchronized (this.a.a)
-    {
-      VideoConnRateReport.a(this.a);
-      VideoConnRateReport.b(this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onDecodeTaskCompleted");
     }
+    new QavWrapper(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new jmy(this, paramString, paramBitmap));
   }
 }
 

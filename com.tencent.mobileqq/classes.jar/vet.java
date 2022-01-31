@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.Holder;
+import com.tencent.mobileqq.activity.aio.item.SignatureView;
 
 public class vet
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public vet(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  public vet(RichStatItemBuilder paramRichStatItemBuilder, RichStatItemBuilder.Holder paramHolder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
+    if (((SignatureView)paramView).a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+    {
+      switch (paramMotionEvent.getAction())
+      {
+      }
+      for (;;)
+      {
+        return true;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder);
+      }
+    }
+    return false;
   }
 }
 

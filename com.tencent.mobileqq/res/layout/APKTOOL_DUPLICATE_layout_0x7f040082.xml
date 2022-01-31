@@ -2,7 +2,7 @@
 <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/tips_popup_win_bg" android:layout_width="120.0dip" android:layout_height="100.0dip">
-        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0562" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/common_loading2" />
-        <TextView android:textColor="@android:color/white" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05e6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a1" />
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0574" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/common_loading2" />
+        <TextView android:textColor="@android:color/white" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05f8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07b3" />
     </LinearLayout>
 </FrameLayout>

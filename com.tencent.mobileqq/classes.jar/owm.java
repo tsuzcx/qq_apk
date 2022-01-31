@@ -1,38 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.biz.troop.file.TroopFileProtocol;
-import com.tencent.biz.widgets.InputDialog;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.TroopHandler;
+import cooperation.troop.TroopPluginManager.TroopPluginCallback;
 
-public class owm
-  implements DialogInterface.OnClickListener
+class owm
+  implements TroopPluginManager.TroopPluginCallback
 {
-  public owm(MoveFileActivity paramMoveFileActivity) {}
+  owm(owi paramowi, String paramString1, int paramInt, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface = (InputDialog)paramDialogInterface;
-    this.a.jdField_a_of_type_JavaLangString = paramDialogInterface.getInputValue().trim();
-    if (this.a.jdField_a_of_type_JavaLangString.length() > TroopFileUtils.a)
-    {
-      paramDialogInterface.a(this.a.getString(2131429710), -65536);
-      ReportController.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "over_num", 0, 0, this.a.jdField_a_of_type_Long + "", "", "", "");
+    if ((paramInt == 0) && (this.jdField_a_of_type_Owi.a.a != null)) {
+      this.jdField_a_of_type_Owi.a.a.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, 0, this.jdField_a_of_type_Int, this.b);
     }
-    do
-    {
-      return;
-      if (TroopFileUtils.a(this.a.jdField_a_of_type_JavaLangString))
-      {
-        paramDialogInterface.a(this.a.getString(2131429712), -65536);
-        ReportController.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "0", "", "");
-        return;
-      }
-      paramDialogInterface.dismiss();
-    } while (TroopFileUtils.a(this.a.app, this.a, this.a.jdField_a_of_type_Long) == 0);
-    TroopFileProtocol.a(this.a.app, this.a.jdField_a_of_type_Long, "/", this.a.jdField_a_of_type_JavaLangString, MoveFileActivity.a(this.a));
-    this.a.a(2131429703);
   }
 }
 

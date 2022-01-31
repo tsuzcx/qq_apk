@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 
-public final class ahlp
+public class ahlp
   implements Runnable
 {
-  public ahlp(QQAppInterface paramQQAppInterface, List paramList) {}
+  public ahlp(CameraCaptureView paramCameraCaptureView) {}
   
   public void run()
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, new ahlq(this), "msf_quic_lib");
+    CameraCaptureView.a(this.a, false);
   }
 }
 

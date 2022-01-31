@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class acht
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public acht(QfileLocalFileAppTabView paramQfileLocalFileAppTabView, FileInfo paramFileInfo) {}
+  public acht(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QfileLocalFileAppTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileAppTabView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acht
  * JD-Core Version:    0.7.0.1
  */

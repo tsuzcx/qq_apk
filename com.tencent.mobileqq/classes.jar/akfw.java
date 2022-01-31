@@ -1,40 +1,95 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.mobileqq.utils.RandomAccessFileManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class akfw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akfw(DropdownView paramDropdownView) {}
+  public akfw(RandomAccessFileManager paramRandomAccessFileManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_Akfz.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Akfz.getWindowToken(), 0);
-    if ((this.a.jdField_a_of_type_Akfz.getAdapter() != null) && (this.a.jdField_a_of_type_Akfz.getAdapter().getCount() > 0))
+    try
     {
-      if ((((ImageView)paramView).getDrawable() != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
-        break label160;
-      }
-      DropdownView.a(this.a).postDelayed(new akfx(this, paramView), 250L);
-      paramView = paramView.getContext();
-      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
-        ReportController.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
+      for (;;)
+      {
+        Thread.sleep(1000L);
+        synchronized (RandomAccessFileManager.a(this.a))
+        {
+          if (!RandomAccessFileManager.a(this.a).isEmpty()) {}
+        }
+        Object localObject3;
+        synchronized (RandomAccessFileManager.b(this.a))
+        {
+          RandomAccessFileManager.a(this.a, null);
+          return;
+          String[] arrayOfString = new String[RandomAccessFileManager.a(this.a).size()];
+          ??? = RandomAccessFileManager.a(this.a).keySet().iterator();
+          int i = 0;
+          while (((Iterator)???).hasNext())
+          {
+            arrayOfString[i] = ((String)((Iterator)???).next());
+            i += 1;
+          }
+          if (j < i)
+          {
+            localakfx2 = (akfx)RandomAccessFileManager.a(this.a).get(arrayOfString[j]);
+            akfx localakfx1;
+            for (??? = localakfx2.jdField_b_of_type_Akfx;; localObject3 = localakfx1)
+            {
+              localakfx1 = ((akfx)???).jdField_b_of_type_Akfx;
+              if (((akfx)???).jdField_a_of_type_Int != 0) {
+                break;
+              }
+              long l1 = System.currentTimeMillis();
+              long l2 = ((akfx)???).jdField_b_of_type_Long;
+              if (l1 - l2 <= 1000L) {
+                break;
+              }
+              try
+              {
+                ((akfx)???).jdField_a_of_type_JavaIoRandomAccessFile.close();
+                if (QLog.isColorLevel()) {
+                  QLog.d("AppleMojiHandler", 2, "file " + arrayOfString[j] + "[" + ((akfx)???).jdField_a_of_type_Long + "]" + " close by Thread:" + Thread.currentThread().getId());
+                }
+                RandomAccessFileManager.a(this.a, localakfx2, (akfx)???, arrayOfString[j], RandomAccessFileManager.a(this.a));
+              }
+              catch (IOException localIOException)
+              {
+                for (;;)
+                {
+                  localIOException.printStackTrace();
+                }
+              }
+              localObject2 = finally;
+              throw localObject2;
+            }
+          }
+        }
       }
     }
-    return;
-    label160:
-    this.a.jdField_a_of_type_Akfz.dismissDropDown();
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        akfx localakfx2;
+        continue;
+        int j = 0;
+        continue;
+        if (localakfx2 == localInterruptedException) {
+          j += 1;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akfw
  * JD-Core Version:    0.7.0.1
  */

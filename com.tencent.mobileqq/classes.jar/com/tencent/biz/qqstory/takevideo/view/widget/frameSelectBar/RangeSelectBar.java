@@ -207,8 +207,8 @@ public class RangeSelectBar
     this.d = paramInt1;
     this.e = paramInt2;
     this.f = ((int)(paramInt2 / (paramInt3 / 1000.0F)));
-    Bitmap localBitmap1 = UIUtils.a(getContext().getResources(), 2130845151, this.l / 2, paramInt1 / 2);
-    Bitmap localBitmap2 = UIUtils.a(getContext().getResources(), 2130845153, this.l / 2, paramInt1 / 2);
+    Bitmap localBitmap1 = UIUtils.a(getContext().getResources(), 2130845276, this.l / 2, paramInt1 / 2);
+    Bitmap localBitmap2 = UIUtils.a(getContext().getResources(), 2130845278, this.l / 2, paramInt1 / 2);
     ColorDrawable localColorDrawable = new ColorDrawable(this.m);
     localColorDrawable.setBounds(0, 0, this.l, paramInt1);
     this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.l, paramInt1, Bitmap.Config.RGB_565);

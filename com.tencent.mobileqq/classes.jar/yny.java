@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler;
-import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class yny
-  implements Runnable
+  extends MessageObserver
 {
-  public yny(CmGameSubProcessHandler paramCmGameSubProcessHandler, String paramString) {}
+  public yny(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (CmGameSubProcessHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameSubProcessHandler) != null) {
-      CmGameSubProcessHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameSubProcessHandler).a(this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.c();
   }
+  
+  protected void b() {}
 }
 
 

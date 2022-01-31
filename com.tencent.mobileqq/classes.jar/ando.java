@@ -1,27 +1,19 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.VideoFragmentInfo;
+import cooperation.qzone.webviewplugin.QzoneWidgetAIJsPlugin;
+import org.json.JSONObject;
 
 public class ando
-  extends VideoFragmentInfo
+  implements Runnable
 {
-  public Bitmap a;
-  public Bitmap b;
+  public ando(QzoneWidgetAIJsPlugin paramQzoneWidgetAIJsPlugin, JSONObject paramJSONObject) {}
   
-  public ando(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public void run()
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
-  }
-  
-  public ando(VideoFragmentInfo paramVideoFragmentInfo, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    this(paramVideoFragmentInfo.jdField_c_of_type_Int, paramVideoFragmentInfo.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    QzoneWidgetAIJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ando
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAccountHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
 public class ymy
-  extends FriendListObserver
+  implements Runnable
 {
-  public ymy(CmGameAccountHandler paramCmGameAccountHandler) {}
+  public ymy(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
-    }
-    if ((CmGameAccountHandler.a(this.a) != null) && (CmGameAccountHandler.a(this.a).get(paramString + "nick") != null))
-    {
-      int i = ((Integer)CmGameAccountHandler.a(this.a).remove(paramString + "nick")).intValue();
-      this.a.a(i, paramString, 1);
-    }
+    ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
   }
 }
 

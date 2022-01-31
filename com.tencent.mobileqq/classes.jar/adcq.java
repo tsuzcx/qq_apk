@@ -1,28 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
 
 public class adcq
-  implements View.OnClickListener
+  implements IDownloadController
 {
-  public adcq(CommonTabFragment paramCommonTabFragment) {}
+  public adcq(DatalineFileModel paramDatalineFileModel) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.a.a == null) || (this.a.a.a == null)) {}
-    do
-    {
-      return;
-      paramView = this.a.a.a.a();
-    } while (paramView == null);
-    paramView.a(this.a.a.a.getUrl(), 8589934606L, null);
+    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new adcr(this));
+  }
+  
+  public void b()
+  {
+    DatalineFileModel.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adcq
  * JD-Core Version:    0.7.0.1
  */

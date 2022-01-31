@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.PhoneContactHelper;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class aguz
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public aguz(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, boolean paramBoolean) {}
+  public aguz(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    DanceLog.a("EffectsFragment", "closeEvent begin exe isReady=" + this.jdField_a_of_type_Boolean);
-    if ((this.jdField_a_of_type_Boolean) && (EffectsCameraCaptureFragment.e(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_Boolean = true;
-      EffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.k();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect("");
-    DanceLog.a("EffectsFragment", "closeEvent end  exe...");
+    paramAdapterView = PhoneContactHelper.a(((TextView)paramView.findViewById(2131369901)).getText().toString());
+    this.a.a(this.a.getActivity(), paramAdapterView);
   }
 }
 

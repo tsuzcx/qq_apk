@@ -1,25 +1,33 @@
-import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.MayknowRecommendManager;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer.OnPlayStateListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class yex
-  extends FriendListObserver
+  implements IMediaPlayer.OnPlayStateListener
 {
-  public yex(RecommendFriendAdapter paramRecommendFriendAdapter) {}
+  public yex(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  protected void onMayknowStateChanged(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onStatesChanged ");
+    if (paramInt == 1)
+    {
+      this.a.a.setVisibility(8);
+      this.a.b.setImageResource(2130843336);
     }
-    RecommendFriendAdapter.a(this.a, RecommendFriendAdapter.a(this.a).a());
-    this.a.notifyDataSetChanged();
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
+      }
+      return;
+      this.a.b.setImageResource(2130843335);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yex
  * JD-Core Version:    0.7.0.1
  */

@@ -26,6 +26,9 @@ public class ReadInJoyConstants
   public static String l;
   public static String m;
   public static String n;
+  public static String o;
+  public static String p = "https://post.mp.qq.com/mkandian/follow?_wv=7";
+  public static String q = "https://post.mp.qq.com/mkandian/fan?_wv=7";
   
   static
   {
@@ -44,6 +47,7 @@ public class ReadInJoyConstants
     l = "https://post.mp.qq.com/mkandian/history";
     m = "https://post.mp.qq.com/mkandian/topic?_wv=3";
     n = "https://kandian.qq.com/mqq/html/collectBox.html?_wv=3&_bid=2378&x5PreFetch=1";
+    o = "https://post.mp.qq.com/mkandian/notify?_wv=3";
     jdField_a_of_type_Int = 100;
     jdField_b_of_type_Int = 100;
     jdField_c_of_type_Int = 819200;

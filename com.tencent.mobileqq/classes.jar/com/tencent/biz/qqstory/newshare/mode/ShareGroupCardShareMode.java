@@ -7,7 +7,7 @@ import com.tencent.biz.qqstory.newshare.mode.base.CardShareModeBase;
 import com.tencent.biz.qqstory.newshare.model.JobExecutor;
 import com.tencent.biz.qqstory.newshare.model.JobExecutor.OnDataInitBeforePrepareCallBack;
 import com.tencent.mobileqq.app.AppConstants;
-import nev;
+import ngh;
 
 public class ShareGroupCardShareMode
   extends CardShareModeBase
@@ -20,7 +20,7 @@ public class ShareGroupCardShareMode
   
   static
   {
-    jdField_a_of_type_JavaLangString = "src_type=app&version=1&unionid=%s&fromId=%s&storysharefrom=%s&fromuid=%s&one_page=0" + StoryApi.a(2131432069);
+    jdField_a_of_type_JavaLangString = "src_type=app&version=1&unionid=%s&fromId=%s&storysharefrom=%s&fromuid=%s&one_page=0" + StoryApi.a(2131432086);
   }
   
   protected String a(int paramInt)
@@ -36,7 +36,7 @@ public class ShareGroupCardShareMode
     if (TextUtils.isEmpty(this.j))
     {
       String str = AppConstants.aX + ".storytmp/" + this.d + ".png";
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareGroupAvatarSaveFileJob(this.d, str)).a(new nev(this, str)).a(new JobExecutor.OnDataInitBeforePrepareCallBack(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareGroupAvatarSaveFileJob(this.d, str)).a(new ngh(this, str)).a(new JobExecutor.OnDataInitBeforePrepareCallBack(this));
       return;
     }
     super.a();

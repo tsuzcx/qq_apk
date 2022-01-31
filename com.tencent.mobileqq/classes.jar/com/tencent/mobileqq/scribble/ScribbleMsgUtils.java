@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.scribble;
 
-import ahbz;
-import ahca;
+import ahqb;
+import ahqc;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.AppConstants;
@@ -71,7 +71,7 @@ public class ScribbleMsgUtils
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, ScribbleMsgUtils.CombineCallback paramCombineCallback)
   {
     a();
-    new ahca(paramQQAppInterface, paramString, paramInt1, paramBitmap, paramInt2, paramCombineCallback).execute(new Void[0]);
+    new ahqc(paramQQAppInterface, paramString, paramInt1, paramBitmap, paramInt2, paramCombineCallback).execute(new Void[0]);
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, MessageForScribble paramMessageForScribble)
@@ -88,7 +88,7 @@ public class ScribbleMsgUtils
       localScribbleBaseOperator = new ScribbleBaseOperator(paramQQAppInterface);
       localMessageForScribble = localScribbleBaseOperator.a(paramMessageForScribble);
     } while (localMessageForScribble == null);
-    ThreadManager.post(new ahbz(paramQQAppInterface, paramMessageForScribble), 5, null, false);
+    ThreadManager.post(new ahqb(paramQQAppInterface, paramMessageForScribble), 5, null, false);
     localScribbleBaseOperator.a(localMessageForScribble);
     return true;
   }
@@ -144,7 +144,7 @@ public class ScribbleMsgUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleMsgUtils
  * JD-Core Version:    0.7.0.1
  */

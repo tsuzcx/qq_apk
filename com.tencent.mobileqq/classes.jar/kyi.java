@@ -1,26 +1,14 @@
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONObject;
 
-class kyi
+public class kyi
   implements Runnable
 {
-  kyi(kyh paramkyh) {}
+  public kyi(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject, String paramString3) {}
   
   public void run()
   {
-    try
-    {
-      boolean bool = SubscriptRecommendController.a(this.a.a.a, false, this.a.a.g);
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject, this.c);
   }
 }
 

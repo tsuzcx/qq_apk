@@ -4,13 +4,13 @@ import android.support.v4.util.LruCache;
 import android.widget.ImageView;
 import com.tencent.biz.qqstory.view.asyncImageLoader.ImageLoader;
 import com.tencent.biz.qqstory.view.asyncImageLoader.Task;
-import nxr;
-import nxs;
+import nzc;
+import nzd;
 
 public class URLImageLoader
   extends ImageLoader
 {
-  private LruCache a = new nxr(this, 5242880);
+  private LruCache a = new nzc(this, 5242880);
   
   public LruCache a()
   {
@@ -38,7 +38,7 @@ public class URLImageLoader
     }
     catch (Exception localException)
     {
-      this.a = new nxs(this, 5242880);
+      this.a = new nzd(this, 5242880);
     }
   }
 }

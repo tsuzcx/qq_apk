@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
-import java.util.Comparator;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.utils.DingdongPluginBizObserver.ScheduleMoreSummaryData;
+import cooperation.dingdong.DingdongCalendarSyncUtil;
 
 public final class amkq
-  implements Comparator
+  extends AsyncTask
 {
-  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
+  public amkq(int paramInt) {}
+  
+  protected Void a(DingdongPluginBizObserver.ScheduleMoreSummaryData... paramVarArgs)
   {
-    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
+    paramVarArgs = paramVarArgs[0];
+    DingdongCalendarSyncUtil.b(this.a, paramVarArgs);
+    return null;
   }
 }
 

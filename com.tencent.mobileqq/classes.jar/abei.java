@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 
 public class abei
-  implements ThreadExcutor.IThreadListener
+  implements Runnable
 {
-  public abei(BubbleManager paramBubbleManager, int paramInt) {}
+  public abei(ShopScanActivity paramShopScanActivity, String paramString) {}
   
-  public void a() {}
-  
-  public void b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int);
+    ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

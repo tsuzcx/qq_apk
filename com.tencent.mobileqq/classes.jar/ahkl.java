@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.capture.gesture.CameraFocusGesture;
 
 public class ahkl
-  implements Runnable
+  extends Handler
 {
-  public ahkl(PtvTemplateManager paramPtvTemplateManager) {}
+  public ahkl(CameraFocusGesture paramCameraFocusGesture) {}
   
-  public void run()
-  {
-    this.a.a();
-  }
+  public void handleMessage(Message paramMessage) {}
 }
 
 

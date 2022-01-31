@@ -1,14 +1,24 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
 
-class rqy
+public class rqy
   implements Runnable
 {
-  rqy(rqx paramrqx, ChatMessage paramChatMessage) {}
+  public rqy(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Rqx.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_Rqx.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Rqx.b, this.jdField_a_of_type_Rqx.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyEmojs);
+    if (this.a.a.e)
+    {
+      if (this.a.a.g)
+      {
+        this.a.b(131078);
+        return;
+      }
+      this.a.b(131077);
+      return;
+    }
+    this.a.b(131075);
   }
 }
 

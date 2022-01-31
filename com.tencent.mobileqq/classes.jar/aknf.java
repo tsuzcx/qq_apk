@@ -1,45 +1,51 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.agent.datamodel.FriendGroup;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
-public final class aknf
-  implements DbCacheData.DbCreator
+public class aknf
+  implements View.OnLayoutChangeListener
 {
-  public int a()
-  {
-    return 0;
-  }
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private Rect b = new Rect();
   
-  public FriendGroup a(Cursor paramCursor)
+  public aknf(WebViewFragment paramWebViewFragment) {}
+  
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    if (localObject == null) {
-      return null;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(this.b);
+    paramView.getWindowVisibleDisplayFrame(this.b);
+    if (this.jdField_a_of_type_AndroidGraphicsRect.width() == this.b.width())
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a == null) {
+        break label100;
+      }
+      paramView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.a();
+      if (paramView != null)
+      {
+        paramInt1 = this.jdField_a_of_type_AndroidGraphicsRect.height() - this.b.height();
+        if (paramInt1 >= -100) {
+          break label105;
+        }
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.g, 8589934614L, null);
+      }
     }
-    paramCursor = Parcel.obtain();
-    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-    paramCursor.setDataPosition(0);
-    localObject = new FriendGroup();
-    ((FriendGroup)localObject).a(paramCursor);
-    paramCursor.recycle();
-    return localObject;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("groupId", "INTEGER UNIQUE"), new DbCacheData.Structure("data", "BLOB") };
+    label100:
+    label105:
+    while (paramInt1 <= 100)
+    {
+      return;
+      paramView = null;
+      break;
+    }
+    paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.g, 8589934613L, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aknf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.DebugInfo;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.util.URLUtil;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public class nok
-  extends SimpleJob
+class nok
+  implements Runnable
 {
-  public nok(VideoViewTVKImpl paramVideoViewTVKImpl, VideoServerInfoManager paramVideoServerInfoManager, PlayModeUtils.DebugInfo paramDebugInfo, String paramString, DownloadUrlManager paramDownloadUrlManager, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  nok(noj paramnoj, TVKPreloader.PreloadItem paramPreloadItem) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c)) {
-      return null;
+    Iterator localIterator = TVKPreloader.a().iterator();
+    while (localIterator.hasNext()) {
+      ((TVKPreloader.PreloadListener)localIterator.next()).b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem);
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c.contains("qqstocdnd"))
-    {
-      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager.a();
-      SLog.a("VideoViewTVKImpl", "get url key:%s", paramJobContext);
-      if (TextUtils.isEmpty(paramJobContext)) {
-        break label90;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c = URLUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c, "authkey", paramJobContext);
-    }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new nom(this));
-      return null;
-      label90:
-      ThreadManager.getUIHandler().post(new nol(this));
-    }
+    TVKPreloader.a(true);
   }
 }
 

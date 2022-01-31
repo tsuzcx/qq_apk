@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork;
 
-import ahyi;
+import aiml;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -20,7 +20,7 @@ public class TeamWorkFileImportJobForDisc
   public TeamWorkFileImportJobForDisc(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
     super(paramTeamWorkFileImportInfo, paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new ahyi(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new aiml(this);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -55,7 +55,7 @@ public class TeamWorkFileImportJobForDisc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForDisc
  * JD-Core Version:    0.7.0.1
  */

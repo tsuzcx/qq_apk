@@ -16,7 +16,7 @@ public class AllStoryViewHolder
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setText("全部");
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843448);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843568);
   }
 }
 

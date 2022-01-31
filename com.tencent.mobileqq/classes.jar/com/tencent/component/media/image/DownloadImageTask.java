@@ -7,11 +7,11 @@ import com.tencent.component.media.utils.ImageManagerLog;
 import com.tencent.sharpP.SharpPUtils;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
-import peq;
-import pfn;
+import pgk;
+import phh;
 
 public class DownloadImageTask
-  extends pfn
+  extends phh
 {
   private static int jdField_a_of_type_Int;
   private static IDownloader jdField_a_of_type_ComTencentComponentMediaIDownloader = null;
@@ -23,7 +23,7 @@ public class DownloadImageTask
   
   static
   {
-    jdField_a_of_type_ComTencentComponentMediaImageManagerEnv$ImageDownloaderListener = new peq();
+    jdField_a_of_type_ComTencentComponentMediaImageManagerEnv$ImageDownloaderListener = new pgk();
     a();
     jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask = null;
     jdField_a_of_type_JavaLangObject = new Object();
@@ -36,9 +36,9 @@ public class DownloadImageTask
     super(paramImageKey);
   }
   
-  private DownloadImageTask(pfn parampfn)
+  private DownloadImageTask(phh paramphh)
   {
-    super(parampfn);
+    super(paramphh);
   }
   
   private static void a()
@@ -87,7 +87,7 @@ public class DownloadImageTask
     }
   }
   
-  public static DownloadImageTask obtain(pfn parampfn)
+  public static DownloadImageTask obtain(phh paramphh)
   {
     if (needRecycle) {}
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -98,10 +98,10 @@ public class DownloadImageTask
         jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask = jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask.b;
         localDownloadImageTask.b = null;
         jdField_a_of_type_Int -= 1;
-        localDownloadImageTask.setImageTask(parampfn);
+        localDownloadImageTask.setImageTask(paramphh);
         return localDownloadImageTask;
       }
-      return new DownloadImageTask(parampfn);
+      return new DownloadImageTask(paramphh);
     }
   }
   

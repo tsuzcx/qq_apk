@@ -1,53 +1,40 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import cooperation.qzone.util.AlbumLibDownloaderUtil;
+import cooperation.qzone.util.FileUtils;
+import java.io.File;
 
 public class anan
-  implements FFmpegExecuteResponseCallback
+  implements ModuleDownloadListener
 {
-  public anan(CropVideoActivity paramCropVideoActivity) {}
+  public anan(AlbumLibDownloaderUtil paramAlbumLibDownloaderUtil) {}
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
-    }
-  }
+  public void onDownloadCanceled(String paramString) {}
   
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
-    }
-  }
+  public void onDownloadFailed(String paramString) {}
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
-    }
-    this.a.a.sendEmptyMessage(3);
-  }
+  public void onDownloadProgress(String paramString, float paramFloat) {}
   
-  public void b(String paramString)
+  public void onDownloadSucceed(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
+    if (!paramString.equals("pictureMarkerSo.so")) {
+      return;
     }
-    this.a.a.sendEmptyMessage(4);
-  }
-  
-  public void c(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
+    String str = AlbumLibDownloaderUtil.a.getPath();
+    paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
+    if (paramString.exists()) {
+      paramString.renameTo(new File(AlbumLibDownloaderUtil.a.getPath() + "/photoQulatitySo.zip"));
     }
+    paramString = new File(str);
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
+    FileUtils.b(new File(AlbumLibDownloaderUtil.a.getPath() + "/photoQulatitySo.zip"), paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anan
  * JD-Core Version:    0.7.0.1
  */

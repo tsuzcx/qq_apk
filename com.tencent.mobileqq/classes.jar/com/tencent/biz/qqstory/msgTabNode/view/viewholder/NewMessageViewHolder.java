@@ -7,7 +7,7 @@ import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
 public class NewMessageViewHolder
   extends BaseViewHolder
 {
-  protected TextView c = (TextView)a(2131371742);
+  protected TextView c = (TextView)a(2131371912);
   
   public NewMessageViewHolder(ViewGroup paramViewGroup, int paramInt)
   {

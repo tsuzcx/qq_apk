@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import java.io.File;
-import ztu;
+import zxa;
 
 public class PokeBigResHandler
   extends BusinessHandler
@@ -295,9 +295,9 @@ public class PokeBigResHandler
         }
         if (!jdField_b_of_type_Boolean)
         {
-          ztu localztu = new ztu(this);
+          zxa localzxa = new zxa(this);
           if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-            ThreadManager.post(localztu, 10, null, false);
+            ThreadManager.post(localzxa, 10, null, false);
           } else {
             localObject.run();
           }

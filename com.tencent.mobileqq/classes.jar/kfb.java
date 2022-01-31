@@ -1,20 +1,29 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.redbag.GuideTip2;
+import com.tencent.qphone.base.util.QLog;
 
 public class kfb
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnTouchListener
 {
-  public kfb(AVRedBagMgr.TestFlag paramTestFlag) {}
+  public kfb(GuideTip2 paramGuideTip2) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramMenuItem = this.a;
-    if (!this.a.a) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      paramMenuItem.a = bool;
+      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
+      this.a.a(false, 3);
       return true;
+    }
+    catch (Exception paramMotionEvent)
+    {
+      for (;;)
+      {
+        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
+      }
     }
   }
 }

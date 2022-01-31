@@ -10,7 +10,7 @@ import com.tencent.mobileqq.confess.ConfessConfig;
 import com.tencent.mobileqq.confess.ConfessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
-import wjt;
+import wmy;
 
 public class HonestSayController
   extends BaseViewController
@@ -42,25 +42,25 @@ public class HonestSayController
         if (localConfessConfig != null) {
           break;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(0)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(0, null);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(1)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(1, null);
         }
       } while (!QLog.isColorLevel());
       QLog.i("HonestSayController", 2, String.format(Locale.getDefault(), "checkShowEntry config: %s, entry: %s", new Object[] { localConfessConfig, this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry }));
       return;
       String str = localConfessConfig.a();
       if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry = new CommonCardEntry(0, 2130842340, a().getResources().getString(2131439151), localConfessConfig.a(paramQQAppInterface), str, localConfessConfig.d);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry = new CommonCardEntry(1, 2130842387, a().getResources().getString(2131439179), localConfessConfig.a(paramQQAppInterface), str, localConfessConfig.d);
       }
       for (;;)
       {
         if (localConfessConfig.a()) {
           break label259;
         }
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(0)) {
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(1)) {
           break;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(0, null);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(1, null);
         return;
         if (!TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry.d, localConfessConfig.d))
         {
@@ -84,13 +84,13 @@ public class HonestSayController
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry.c = paramQQAppInterface;
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry.jdField_a_of_type_Boolean = true;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(0)))
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(1)))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(0, this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry);
       }
     } while (this.jdField_a_of_type_Boolean);
-    ThreadManager.post(new wjt(this), 5, null, true);
+    ThreadManager.post(new wmy(this), 5, null, true);
   }
   
   public void a() {}

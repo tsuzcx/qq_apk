@@ -1,15 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpFilterHelper;
 
-public final class zbs
-  implements View.OnClickListener
+public class zbs
+  implements Runnable
 {
-  public zbs(Dialog paramDialog) {}
+  public zbs(ConfigHandler paramConfigHandler) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.dismiss();
+    JumpFilterHelper.a().a(this.a.b.getApplication());
   }
 }
 

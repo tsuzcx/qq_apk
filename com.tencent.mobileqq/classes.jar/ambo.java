@@ -1,22 +1,21 @@
-import android.net.Proxy;
-import cooperation.qzone.QZoneHttpUtil.HttpProxy;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.FitSystemWindowsRelativeLayout;
 
-public final class ambo
-  extends QZoneHttpUtil.HttpProxy
+public class ambo
+  implements View.OnTouchListener
 {
-  public int a()
-  {
-    return Proxy.getDefaultPort();
-  }
+  public ambo(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
   
-  public String a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return Proxy.getDefaultHost();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambo
  * JD-Core Version:    0.7.0.1
  */

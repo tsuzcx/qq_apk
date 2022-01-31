@@ -20,7 +20,7 @@ public class SanHuaView
   Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130842510, 2130842511, 2130842512, 2130842513, 2130842514, 2130842515, 2130842516, 2130842517 };
+  private int[] jdField_a_of_type_ArrayOfInt = { 2130842602, 2130842603, 2130842604, 2130842605, 2130842606, 2130842607, 2130842608, 2130842609 };
   private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[this.jdField_a_of_type_ArrayOfInt.length];
   float jdField_b_of_type_Float;
   int jdField_b_of_type_Int;
@@ -166,7 +166,7 @@ public class SanHuaView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.portal.SanHuaView
  * JD-Core Version:    0.7.0.1
  */

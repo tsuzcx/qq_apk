@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
 
-public class adev
-  implements Comparator
+class adev
+  implements DialogInterface.OnClickListener
 {
-  public adev(MessageForUniteGrayTip paramMessageForUniteGrayTip) {}
+  adev(adeu paramadeu) {}
   
-  public int a(MessageForGrayTips.HightlightItem paramHightlightItem1, MessageForGrayTips.HightlightItem paramHightlightItem2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramHightlightItem1.start - paramHightlightItem2.start;
+    this.a.a.ae_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adev
  * JD-Core Version:    0.7.0.1
  */

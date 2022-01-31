@@ -1,53 +1,46 @@
+import android.content.Context;
 import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView.OnPagerChangedListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class ktz
-  implements VerticalPagerView.OnPagerChangedListener
+  extends URLDrawableDownListener.Adapter
 {
-  public ktz(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public ktz(VideoCoverFragment paramVideoCoverFragment) {}
   
-  public void a(VerticalPagerView paramVerticalPagerView, View paramView, int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    paramVerticalPagerView = this.a;
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.c(paramVerticalPagerView, bool);
-      if (!PublicAccountAdvertisementActivity.c(this.a)) {
-        break;
-      }
-      PublicAccountAdvertisementActivity.a(this.a).b(true);
-      PublicAccountAdvertisementActivity.a(this.a).onResume();
-      PublicAccountAdvertisementActivity.e(this.a);
-      PublicAccountAdvertisementActivity.a(this.a, System.currentTimeMillis());
-      if (PublicAccountAdvertisementActivity.a(this.a) > PublicAccountAdvertisementActivity.b(this.a)) {
-        PublicAccountAdvertisementActivity.b(this.a, PublicAccountAdvertisementActivity.c(this.a) + (PublicAccountAdvertisementActivity.a(this.a) - PublicAccountAdvertisementActivity.b(this.a)));
-      }
-      paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.a(this.a);
-      paramVerticalPagerView.setMode(1);
-      PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
-      PublicAccountAdvertisementActivity.a(this.a).a(false);
-      return;
-    }
-    PublicAccountAdvertisementActivity.c(this.a);
-    PublicAccountAdvertisementActivity.a(this.a).b(false);
-    PublicAccountAdvertisementActivity.a(this.a).onPause();
-    PublicAccountAdvertisementActivity.a(this.a).b();
-    paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
-    PublicAccountAdvertisementActivity.a(this.a);
-    paramVerticalPagerView.setMode(2);
-    PublicAccountAdvertisementActivity.a(this.a).setVisibility(0);
-    PublicAccountAdvertisementActivity.c(this.a, System.currentTimeMillis());
+    super.onLoadCancelled(paramView, paramURLDrawable);
   }
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    PublicAccountAdvertisementActivity.b(this.a, paramBoolean);
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    while (!(paramView instanceof ImageView)) {
+      return;
+    }
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    int i = paramURLDrawable.getIntrinsicWidth();
+    int j = paramURLDrawable.getIntrinsicHeight();
+    localLayoutParams.width = (i * AIOUtils.a(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
+    paramView.setLayoutParams(localLayoutParams);
+    ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+    paramView.requestLayout();
   }
 }
 

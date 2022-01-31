@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import ahab;
+import ahod;
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.opengl.EGLContext;
@@ -70,11 +70,11 @@ public final class FlowDecodeOffScreenSurface
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
   }
   
-  public void a(@NonNull ahab paramahab, boolean paramBoolean)
+  public void a(@NonNull ahod paramahod, boolean paramBoolean)
   {
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-    paramahab.jdField_a_of_type_ArrayOfFloat = ((float[])this.jdField_a_of_type_ArrayOfFloat.clone());
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFrameBuffer.a(paramahab.a());
+    paramahod.jdField_a_of_type_ArrayOfFloat = ((float[])this.jdField_a_of_type_ArrayOfFloat.clone());
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFrameBuffer.a(paramahod.a());
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(36197, this.c, null, null);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFrameBuffer.a();
   }

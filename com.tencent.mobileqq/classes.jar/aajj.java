@@ -1,18 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ar.config.MainEntryAni;
+import java.lang.ref.WeakReference;
 
 public class aajj
   implements Runnable
 {
-  public aajj(ArkAppMusicModule paramArkAppMusicModule) {}
+  public aajj(MainEntryAni paramMainEntryAni, WeakReference paramWeakReference) {}
   
   public void run()
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof FragmentActivity)) {
-      QQPlayerService.c(localBaseActivity);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    {
+      ((ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
+      ((ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setImageDrawable(null);
     }
   }
 }

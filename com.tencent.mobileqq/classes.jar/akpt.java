@@ -1,28 +1,37 @@
-import android.widget.Toast;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.ToastUtil;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class akpt
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  public akpt(ToastUtil paramToastUtil, String paramString, int paramInt) {}
+  public akpt(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a == null)
-    {
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a = Toast.makeText(CommonDataAdapter.a().a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
-      return;
+    int i = paramBundle.getInt("readinjoy_to_wx_config");
+    if (QLog.isColorLevel()) {
+      QLog.d("SwiftBrowserScreenShotHandler", 2, "config = " + i);
     }
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setDuration(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
+    if (i == 0) {
+      WxShareHelperFromReadInjoy.a().a(this.a.g, this.a.b, 0, false);
+    }
+    for (;;)
+    {
+      this.a.b.recycle();
+      this.a.b = null;
+      return;
+      WXShareHelper.a().a(this.a.g, this.a.b, 0, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akpt
  * JD-Core Version:    0.7.0.1
  */

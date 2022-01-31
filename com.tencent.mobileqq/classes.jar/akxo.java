@@ -1,46 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akxo
-  implements Parcelable.Creator
+public class akxo
+  extends Handler
 {
-  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
-    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.c = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
-      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label103;
-      }
-    }
-    label103:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
-      localQidianCompoundProfileItem.d = paramParcel.readString();
-      localQidianCompoundProfileItem.e = paramParcel.readString();
-      return localQidianCompoundProfileItem;
-      bool1 = false;
-      break;
-    }
-  }
+  public akxo(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
   
-  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.a.jdField_a_of_type_Float < 0.0F);
+    QLog.i(ARWorldCupGameLogicManager.jdField_a_of_type_JavaLangString, 1, "OnLoopPlayTick handleMessage begin." + this.a.jdField_a_of_type_Float);
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Float += 0.1F;
+    ARWorldCupGameLogicManager.a(this.a, this.a.jdField_a_of_type_Float);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxo
  * JD-Core Version:    0.7.0.1
  */

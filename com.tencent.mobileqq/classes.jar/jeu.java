@@ -1,35 +1,34 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.av.app.DeviceCapabilityExamination;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.GVipFunCallMonitor;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.mediacodec.VideoDecTest.PlayerCallback;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class jeu
-  implements VideoDecTest.PlayerCallback
+  extends BroadcastReceiver
 {
-  public jeu(DeviceCapabilityExamination paramDeviceCapabilityExamination) {}
+  public jeu(GVipFunCallMonitor paramGVipFunCallMonitor) {}
   
-  public void a(int paramInt1, String paramString, int paramInt2, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        paramContext = GVipFunCallMonitor.a(this.a).a();
+      } while (paramContext == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("GVipFunCallMonitor", 2, "recv vipfuncall msg broadcast: " + paramIntent.getAction());
+      }
+    } while (!paramIntent.getAction().equals("tencent.video.q2v.AnnimateDownloadFinish"));
     if (QLog.isColorLevel()) {
-      QLog.w("DeviceCapabilityExamination", 2, "onFinish resultCode: " + paramInt1 + ", codecName: " + paramString + ", colorFormat: " + paramInt2 + "(0x" + Integer.toHexString(paramInt2).toUpperCase() + "), delay: " + paramLong);
+      QLog.d("GVipFunCallMonitor", 2, "ACTION_ANNIMATE_DOWNLOAD_FINISH");
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpu", Build.HARDWARE);
-    localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-    localHashMap.put("manufacturer", Build.MANUFACTURER);
-    localHashMap.put("model", Build.MODEL);
-    localHashMap.put("product", Build.PRODUCT);
-    localHashMap.put("fingerprint", Build.FINGERPRINT);
-    localHashMap.put("codec_name", paramString);
-    localHashMap.put("support_format", String.valueOf(paramInt2));
-    localHashMap.put("delayms", String.valueOf(paramLong));
-    localHashMap.put("result", String.valueOf(paramInt1));
-    StatisticCollector.a(BaseApplication.getContext()).a(this.a.a.getCurrentAccountUin(), "AV_HWCODEC_AVC_DEC", true, 0L, 0L, localHashMap, "", true);
+    paramContext.e(paramIntent.getIntExtra("fun_call_id", 0));
   }
 }
 

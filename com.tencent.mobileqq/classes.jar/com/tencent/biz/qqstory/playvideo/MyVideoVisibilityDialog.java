@@ -20,9 +20,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import nlt;
-import nlu;
-import nlv;
+import nnf;
+import nng;
+import nnh;
 
 public class MyVideoVisibilityDialog
   extends Dialog
@@ -44,7 +44,7 @@ public class MyVideoVisibilityDialog
   {
     super(paramContext, 16973841);
     super.requestWindowFeature(1);
-    super.setContentView(LayoutInflater.from(paramContext).inflate(2130970849, null));
+    super.setContentView(LayoutInflater.from(paramContext).inflate(2130970897, null));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = PlayModeUtils.a();
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -56,9 +56,9 @@ public class MyVideoVisibilityDialog
   
   void a()
   {
-    ((ElasticImageView)findViewById(2131370490)).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131362786));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView = ((LeftTabBarView)findViewById(2131371984));
+    ((ElasticImageView)findViewById(2131370631)).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131362804));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView = ((LeftTabBarView)findViewById(2131372157));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setUnselectColor(-1);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectColor(-1);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setBackgroundDrawable(null);
@@ -93,9 +93,9 @@ public class MyVideoVisibilityDialog
         localArrayList1.add(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoMyVideoVisibleTroopPageView);
       }
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(0, false);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setOnTabChangeListener(new nlt(this));
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new nlv(this, localArrayList1));
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new nlu(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setOnTabChangeListener(new nnf(this));
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new nnh(this, localArrayList1));
+      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new nng(this));
       return;
     }
   }
@@ -123,7 +123,7 @@ public class MyVideoVisibilityDialog
     super.onCreate(paramBundle);
     paramBundle = super.getWindow();
     paramBundle.setGravity(80);
-    paramBundle.setWindowAnimations(2131624587);
+    paramBundle.setWindowAnimations(2131624588);
     a();
   }
 }

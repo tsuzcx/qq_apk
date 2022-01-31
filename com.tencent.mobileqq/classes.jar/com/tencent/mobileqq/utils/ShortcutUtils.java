@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import ajsa;
+import akgh;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -188,15 +188,15 @@ public class ShortcutUtils
     localIntent.addFlags(2097152);
     paramString = new Intent();
     paramString.putExtra("android.intent.extra.shortcut.INTENT", localIntent);
-    paramString.putExtra("android.intent.extra.shortcut.NAME", paramActivity.getResources().getString(2131432987));
-    paramString.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(paramActivity.getApplicationContext(), 2130839189));
+    paramString.putExtra("android.intent.extra.shortcut.NAME", paramActivity.getResources().getString(2131433004));
+    paramString.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(paramActivity.getApplicationContext(), 2130839193));
     paramString.setAction("com.android.launcher.action.UNINSTALL_SHORTCUT");
     paramActivity.sendOrderedBroadcast(paramString, null);
   }
   
   public static void a(Context paramContext, String paramString)
   {
-    paramContext = new ajsa(paramContext, paramString);
+    paramContext = new akgh(paramContext, paramString);
     ThreadManager.getSubThreadHandler().post(paramContext);
   }
   

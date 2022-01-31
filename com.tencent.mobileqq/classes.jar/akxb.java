@@ -1,33 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class akxb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akxb(QidianProfileCardActivity paramQidianProfileCardActivity, byte[] paramArrayOfByte) {}
+  public akxb(TabBarView paramTabBarView, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentNickname();
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentNickname();
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {
+      return;
     }
-    localObject2 = QZoneHelper.UserInfo.a();
-    ((QZoneHelper.UserInfo)localObject2).a = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentAccountUin();
-    ((QZoneHelper.UserInfo)localObject2).b = ((String)localObject1);
-    QZoneHelper.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (QZoneHelper.UserInfo)localObject2, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.g, -1, 5, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession, this.jdField_a_of_type_ArrayOfByte);
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxb
  * JD-Core Version:    0.7.0.1
  */

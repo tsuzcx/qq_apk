@@ -1,36 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class zkw
-  extends ProtoUtils.TroopProtocolObserver
+  implements Runnable
 {
-  public zkw(TroopHandler paramTroopHandler) {}
+  public zkw(QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if (paramInt == 0)
+    try
     {
-      paramBundle = new oidb_0x496.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        TroopHandler.a(this.a, paramBundle);
-        TroopHandler.b(this.a, paramBundle);
-        TroopHandler.c(this.a, paramBundle);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
-        return;
-      }
+      QQAppInterface.k(this.a).unregisterReceiver(QQAppInterface.a(this.a));
+      return;
     }
-    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
+    catch (Exception localException) {}
   }
 }
 

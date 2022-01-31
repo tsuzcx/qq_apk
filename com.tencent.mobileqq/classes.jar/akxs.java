@@ -1,58 +1,34 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
-import java.util.List;
+import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class akxs
-  extends Handler
+  implements Runnable
 {
-  public akxs(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public akxs(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    boolean bool = true;
+    if ((ARWorldCupGameLogicManager.a(this.a) != null) && (ARWorldCupGameLogicManager.a(this.a).isShowing()))
     {
+      QLog.d(ARWorldCupGameLogicManager.a, 2, "TryDismissDialog success");
+      ARWorldCupGameLogicManager.a(this.a).dismiss();
+      return;
     }
+    String str = ARWorldCupGameLogicManager.a;
+    if ("TryDismissDialog failed " + ARWorldCupGameLogicManager.a(this.a) != null) {}
     for (;;)
     {
-      super.handleMessage(paramMessage);
+      QLog.d(str, 2, new Object[] { Boolean.valueOf(bool) });
       return;
-      try
-      {
-        BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.getResources(), this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localBitmapDrawable);
-      }
-      catch (Exception localException) {}
-      continue;
-      Object localObject = (QidianProfileCardActivity.QidianSimpleProfileItem)paramMessage.getData().getParcelable("data");
-      localObject = this.a.a((QidianProfileCardActivity.QidianSimpleProfileItem)localObject);
-      if (localObject != null)
-      {
-        this.a.b.addView((View)localObject);
-        continue;
-        localObject = paramMessage.getData().getParcelableArrayList("data");
-        localObject = this.a.a((List)localObject);
-        if (localObject != null)
-        {
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-          localLayoutParams.leftMargin = this.a.d;
-          ((View)localObject).setPadding(0, this.a.e, this.a.d, this.a.e);
-          this.a.b.addView((View)localObject, localLayoutParams);
-        }
-      }
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxs
  * JD-Core Version:    0.7.0.1
  */

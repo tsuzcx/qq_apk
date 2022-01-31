@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.os.SystemClock;
-import ansb;
+import aoig;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
@@ -30,7 +30,7 @@ public class GLVideoClipUtil
   private static final int jdField_c_of_type_Int;
   private static int q = -1;
   public int a;
-  private ansb jdField_a_of_type_Ansb = new ansb(this, null);
+  private aoig jdField_a_of_type_Aoig = new aoig(this, null);
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private int[] jdField_a_of_type_ArrayOfInt = new int[1];
   private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer = new ByteBuffer[2];
@@ -162,16 +162,16 @@ public class GLVideoClipUtil
       long l1 = this.r * this.s * 3 / 2;
       if (l1 != paramInt)
       {
-        ansb localansb = this.jdField_a_of_type_Ansb;
-        localansb.jdField_a_of_type_Int += 1;
+        aoig localaoig = this.jdField_a_of_type_Aoig;
+        localaoig.jdField_a_of_type_Int += 1;
         bool = true;
-        if (this.jdField_a_of_type_Ansb.jdField_a_of_type_Int >= 3) {
+        if (this.jdField_a_of_type_Aoig.jdField_a_of_type_Int >= 3) {
           throw new GLVideoClipUtil.GLClipOldLibException("checkDataLength: dataSize=" + l1 + " length=" + paramInt + "prev*preh=" + this.r + " * " + this.s);
         }
       }
       else
       {
-        this.jdField_a_of_type_Ansb.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_Aoig.jdField_a_of_type_Int = 0;
       }
     }
     return bool;

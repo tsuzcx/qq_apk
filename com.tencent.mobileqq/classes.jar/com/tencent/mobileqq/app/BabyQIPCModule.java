@@ -24,13 +24,13 @@ import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import ywt;
+import yzz;
 
 public class BabyQIPCModule
   extends QIPCModule
 {
   private static volatile BabyQIPCModule jdField_a_of_type_ComTencentMobileqqAppBabyQIPCModule;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ywt(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new yzz(this);
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
   private ProfileCardInfo jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo = new ProfileCardInfo();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);

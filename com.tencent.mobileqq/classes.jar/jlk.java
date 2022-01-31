@@ -1,41 +1,30 @@
-import org.json.JSONObject;
+import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
+import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.av.service.IAVRedPacketCallback;
+import com.tencent.mobileqq.armap.ResDownloadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class jlk
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  int b;
-  int c = 7000;
-  int d = 1000;
-  public int e = 0;
+  public jlk(AVRedPacketConfigManager paramAVRedPacketConfigManager, IAVRedPacketCallback paramIAVRedPacketCallback) {}
   
-  void a(String paramString)
+  public void run()
   {
-    try
+    StringBuilder localStringBuilder = new StringBuilder().append("downloadRes, threadName[").append(Thread.currentThread().getName()).append("], threadId[").append(Thread.currentThread().getId()).append("], resDownloadManager[");
+    if (this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramString = new JSONObject(paramString).optJSONObject("result");
-      this.jdField_a_of_type_Int = paramString.optInt("rsptype", 0);
-      this.b = paramString.optInt("retcode", -1);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("errmsg");
-      this.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("rspbody");
-      paramString = paramString.optString("remain");
-      try
+      QLog.w("AVRedPacketConfigManger", 1, bool + "]");
+      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback = this.jdField_a_of_type_ComTencentAvServiceIAVRedPacketCallback;
+      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.c = false;
+      if (this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager != null)
       {
-        this.e = Integer.valueOf(paramString).intValue();
-        return;
-      }
-      catch (NumberFormatException paramString)
-      {
-        paramString.printStackTrace();
-        return;
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resMD5, ".zip", true, 4, Integer.valueOf(1));
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResMd5, ".zip", true, 4, Integer.valueOf(2));
       }
       return;
-    }
-    catch (Exception paramString)
-    {
-      this.b = 14;
-      paramString.printStackTrace();
     }
   }
 }

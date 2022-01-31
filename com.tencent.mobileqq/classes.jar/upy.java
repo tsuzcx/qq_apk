@@ -1,30 +1,23 @@
+import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
+
 public class upy
+  extends AccessibilityDelegateCompat
 {
-  public float a;
-  public long a;
-  public float b = 0.0F;
-  public float c = 0.0F;
+  public upy(ListenPanel paramListenPanel) {}
   
-  upy()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  void a(upy paramupy)
-  {
-    this.jdField_a_of_type_Float = paramupy.jdField_a_of_type_Float;
-    this.b = paramupy.b;
-    this.c = paramupy.c;
-    this.jdField_a_of_type_Long = paramupy.jdField_a_of_type_Long;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (ListenPanel.a(this.a) < 1000.0D) {}
+    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
+    {
+      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131427473));
+      return;
+    }
   }
 }
 

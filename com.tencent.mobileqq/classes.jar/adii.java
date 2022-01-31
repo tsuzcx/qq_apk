@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-class adii
+public class adii
   implements Runnable
 {
-  adii(adih paramadih) {}
+  public adii(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
   
   public void run()
   {
-    this.a.a.c = 4;
-    if (VideoBaseItem.a(this.a.a) != null) {
-      VideoBaseItem.a(this.a.a).d(VideoBaseItem.a(this.a.a));
-    }
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 1);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adii
  * JD-Core Version:    0.7.0.1
  */

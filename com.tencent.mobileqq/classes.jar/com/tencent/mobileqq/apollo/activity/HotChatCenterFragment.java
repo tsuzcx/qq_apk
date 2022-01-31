@@ -78,17 +78,17 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import ykn;
-import ykp;
-import ykq;
-import ykr;
-import yks;
-import ykt;
-import ykv;
-import ykx;
-import yky;
-import ykz;
-import yla;
+import ynt;
+import ynv;
+import ynw;
+import ynx;
+import yny;
+import ynz;
+import yob;
+import yod;
+import yoe;
+import yof;
+import yog;
 
 public class HotChatCenterFragment
   extends IphoneTitleBarFragment
@@ -97,9 +97,9 @@ public class HotChatCenterFragment
   private Handler jdField_a_of_type_AndroidOsHandler;
   private RecentAdapter jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
   private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ykn(this);
-  private HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new ykr(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new yks(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ynt(this);
+  private HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new ynx(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new yny(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   protected TransProcessorHandler a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
@@ -110,7 +110,7 @@ public class HotChatCenterFragment
   
   public HotChatCenterFragment()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ykq(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ynw(this);
   }
   
   public static AioPushData a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -164,7 +164,7 @@ public class HotChatCenterFragment
     do
     {
       return;
-      ThreadManager.post(new ykz(paramAioPushData, paramQQAppInterface), 8, null, true);
+      ThreadManager.post(new yof(paramAioPushData, paramQQAppInterface), 8, null, true);
       paramQQAppInterface = paramAioPushData.url;
       if (TextUtils.isEmpty(paramQQAppInterface)) {
         break;
@@ -205,8 +205,8 @@ public class HotChatCenterFragment
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.e.findViewById(2131364762));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = new yla(this, getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, this, 10);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.e.findViewById(2131364784));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = new yog(this, getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, this, 10);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
   }
@@ -257,7 +257,7 @@ public class HotChatCenterFragment
   
   protected int a()
   {
-    return 2130969027;
+    return 2130969026;
   }
   
   protected void a(int paramInt, RecentBaseData paramRecentBaseData, boolean paramBoolean)
@@ -406,7 +406,7 @@ public class HotChatCenterFragment
       {
       default: 
         QLog.e("HotchatActivity", 1, "[onRecentBaseDataClick]");
-      case 2131363182: 
+      case 2131363200: 
         for (;;)
         {
           localObject1 = paramRecentBaseData.a();
@@ -549,7 +549,7 @@ public class HotChatCenterFragment
       if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1)) {
         this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, paramView);
       }
-      ThreadManager.postImmediately(new ykx(this, paramView, i), null, true);
+      ThreadManager.postImmediately(new yod(this, paramView, i), null, true);
       QLog.e("HotchatActivity", 1, String.format("[onRecentBaseDataClick] info is null and re join code:%s id:%s", new Object[] { paramView, Integer.valueOf(i) }));
       return;
       label1001:
@@ -662,7 +662,7 @@ public class HotChatCenterFragment
       }
       for (localObject = this.f; localObject != null; localObject = this.jdField_b_of_type_AndroidWidgetTextView)
       {
-        ThreadManager.post(new ykt(this, i, (TextView)localObject), 8, null, true);
+        ThreadManager.post(new ynz(this, i, (TextView)localObject), 8, null, true);
         return;
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -681,13 +681,13 @@ public class HotChatCenterFragment
       if (localObject == null) {
         break label63;
       }
-      HotChatHelper.a((HotChatInfo)localObject, new yky(this, (HotChatInfo)localObject, paramString1, paramRecentBaseData, paramString2));
+      HotChatHelper.a((HotChatInfo)localObject, new yoe(this, (HotChatInfo)localObject, paramString1, paramRecentBaseData, paramString2));
     }
     label63:
     do
     {
       return;
-      ((yla)this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter).b(paramRecentBaseData, paramString2);
+      ((yog)this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter).b(paramRecentBaseData, paramString2);
       QLog.e("HotchatActivity", 1, "[exitHotChat] uin null");
     } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
     if (QLog.isColorLevel()) {
@@ -698,7 +698,7 @@ public class HotChatCenterFragment
   
   public void c()
   {
-    ThreadManager.post(new ykv(this), 8, null, true);
+    ThreadManager.post(new yob(this), 8, null, true);
   }
   
   public boolean d()
@@ -846,7 +846,7 @@ public class HotChatCenterFragment
     {
       paramObservable = (MessageRecord)paramObject;
       if ((!paramObservable.isSendFromLocal()) && (isAdded())) {
-        getActivity().runOnUiThread(new ykp(this));
+        getActivity().runOnUiThread(new ynv(this));
       }
       if ((paramObservable.isSendFromLocal()) && (paramObservable.msgtype == -2002)) {
         return;

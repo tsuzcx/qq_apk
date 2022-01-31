@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import omv;
+import oop;
 
 public class TranslucentTitleBarHelper
 {
@@ -61,23 +61,23 @@ public class TranslucentTitleBarHelper
     }
     if (paramFloat > 0.5D)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839143);
-      this.b.setBackgroundResource(2130846136);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839147);
+      this.b.setBackgroundResource(2130846264);
       this.b.setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841265);
-    this.b.setBackgroundResource(2130841264);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841302);
+    this.b.setBackgroundResource(2130841301);
     this.b.setTextColor(-1);
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363362));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363363));
-    this.b = ((TextView)paramView.findViewById(2131363227));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363456));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131363361));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363380));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363381));
+    this.b = ((TextView)paramView.findViewById(2131363245));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363474));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131363379));
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
@@ -117,7 +117,7 @@ public class TranslucentTitleBarHelper
     {
       ValueAnimator localValueAnimator = new ValueAnimator();
       localValueAnimator.setFloatValues(new float[] { this.jdField_a_of_type_Float, f });
-      localValueAnimator.addUpdateListener(new omv(this));
+      localValueAnimator.addUpdateListener(new oop(this));
       localValueAnimator.setDuration(500L);
       localValueAnimator.start();
     }

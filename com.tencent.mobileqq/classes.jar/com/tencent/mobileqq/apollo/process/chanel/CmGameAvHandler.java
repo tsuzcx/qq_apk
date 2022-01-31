@@ -22,31 +22,31 @@ import com.tencent.qqavopensdk.AVEngineEventHandler;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import ymz;
-import yna;
-import ynb;
-import ynd;
-import ynf;
-import yng;
-import ynh;
-import ynj;
-import ynk;
-import ynl;
-import ynm;
-import ynn;
-import yno;
-import ynp;
-import ynq;
-import ynr;
-import yns;
-import ynt;
+import yqf;
+import yqg;
+import yqh;
+import yqj;
+import yql;
+import yqm;
+import yqn;
+import yqp;
+import yqq;
+import yqr;
+import yqs;
+import yqt;
+import yqu;
+import yqv;
+import yqw;
+import yqx;
+import yqy;
+import yqz;
 
 public class CmGameAvHandler
   implements ApolloCmdChannel.IRequestHandler
 {
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long;
-  private AVVideoCtrl.EnableCameraCompleteCallback jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$EnableCameraCompleteCallback = new ynj(this);
+  private AVVideoCtrl.EnableCameraCompleteCallback jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$EnableCameraCompleteCallback = new yqp(this);
   public AVCameraCaptureModel a;
   public AVEngineEventHandler a;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -59,7 +59,7 @@ public class CmGameAvHandler
   
   public CmGameAvHandler(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler = new ynh(this);
+    this.jdField_a_of_type_ComTencentQqavopensdkAVEngineEventHandler = new yqn(this);
     this.jdField_b_of_type_Int = paramInt;
   }
   
@@ -92,7 +92,7 @@ public class CmGameAvHandler
         i += 1;
       }
     }
-    paramArrayOfString = new ynk(this);
+    paramArrayOfString = new yqq(this);
     if (QLog.isColorLevel())
     {
       i = j;
@@ -163,7 +163,7 @@ public class CmGameAvHandler
         i = paramString1.optInt("avRoomId");
         paramLong = paramString1.optLong("gameRoomId");
         paramString1 = paramString1.optString("avRoleName", "lmxtest");
-        ThreadManager.getUIHandler().post(new ymz(this, paramString1, paramLong, i));
+        ThreadManager.getUIHandler().post(new yqf(this, paramString1, paramLong, i));
         return null;
       }
       catch (Exception paramString1)
@@ -173,7 +173,7 @@ public class CmGameAvHandler
       }
       if ("cs.audioRoom_exit.local".equals(paramString1))
       {
-        ThreadManager.getUIHandler().post(new ynm(this));
+        ThreadManager.getUIHandler().post(new yqs(this));
         return null;
       }
       if ("cs.audioRoom_camera_enable.local".equals(paramString1)) {}
@@ -183,10 +183,10 @@ public class CmGameAvHandler
         this.jdField_a_of_type_Boolean = bool;
         if (bool)
         {
-          ThreadManager.getUIHandler().post(new ynn(this));
+          ThreadManager.getUIHandler().post(new yqt(this));
           return null;
         }
-        ThreadManager.getUIHandler().post(new yno(this));
+        ThreadManager.getUIHandler().post(new yqu(this));
         return null;
       }
       catch (Exception paramString1)
@@ -202,7 +202,7 @@ public class CmGameAvHandler
         try
         {
           bool = new JSONObject(paramString2).optBoolean("switch");
-          ThreadManager.getUIHandler().post(new ynp(this, bool));
+          ThreadManager.getUIHandler().post(new yqv(this, bool));
           return null;
         }
         catch (Exception paramString1)
@@ -218,7 +218,7 @@ public class CmGameAvHandler
         try
         {
           bool = new JSONObject(paramString2).optBoolean("switch");
-          ThreadManager.getUIHandler().post(new ynq(this, bool));
+          ThreadManager.getUIHandler().post(new yqw(this, bool));
           return null;
         }
         catch (Exception paramString1)
@@ -248,10 +248,10 @@ public class CmGameAvHandler
         this.jdField_a_of_type_Boolean = bool;
         if (bool)
         {
-          ThreadManager.getUIHandler().post(new ynr(this));
+          ThreadManager.getUIHandler().post(new yqx(this));
           return null;
         }
-        ThreadManager.getUIHandler().post(new yns(this));
+        ThreadManager.getUIHandler().post(new yqy(this));
         return null;
       }
       catch (Exception paramString1)
@@ -270,7 +270,7 @@ public class CmGameAvHandler
           QLog.d("CmGameAvHandler", 2, "switch carmera but carma close");
           return null;
         }
-        ThreadManager.getUIHandler().post(new ynt(this, i, paramLong));
+        ThreadManager.getUIHandler().post(new yqz(this, i, paramLong));
         return null;
       }
       catch (Exception paramString1) {}
@@ -278,7 +278,7 @@ public class CmGameAvHandler
         try
         {
           paramString1 = new JSONObject(paramString2).optString("role", "user");
-          ThreadManager.getUIHandler().post(new yna(this, paramString1, paramLong));
+          ThreadManager.getUIHandler().post(new yqg(this, paramString1, paramLong));
           return null;
         }
         catch (Exception paramString1)
@@ -291,7 +291,7 @@ public class CmGameAvHandler
         {
           paramString1 = Boolean.valueOf(new JSONObject(paramString2).optBoolean("switch"));
           this.d = paramString1.booleanValue();
-          ThreadManager.getUIHandler().post(new ynb(this, paramString1));
+          ThreadManager.getUIHandler().post(new yqh(this, paramString1));
           return null;
         }
         catch (Exception paramString1)
@@ -306,7 +306,7 @@ public class CmGameAvHandler
           if (paramString1 == null) {
             continue;
           }
-          ThreadManager.getUIHandler().post(new ynd(this, paramString1));
+          ThreadManager.getUIHandler().post(new yqj(this, paramString1));
           return null;
         }
         catch (Exception paramString1)
@@ -317,7 +317,7 @@ public class CmGameAvHandler
         try
         {
           float f = (float)new JSONObject(paramString2).optDouble("beauty");
-          ThreadManager.getUIHandler().post(new ynf(this, f));
+          ThreadManager.getUIHandler().post(new yql(this, f));
           return null;
         }
         catch (Exception paramString1)
@@ -345,7 +345,7 @@ public class CmGameAvHandler
           if (paramString.has("accountType")) {
             j = paramString.optInt("accountType");
           }
-          ThreadManager.getUIHandler().post(new yng(this, i, j));
+          ThreadManager.getUIHandler().post(new yqm(this, i, j));
           return;
         }
       }
@@ -408,7 +408,7 @@ public class CmGameAvHandler
       } while ((AVManager.a(BaseApplicationImpl.getContext()).a() == null) || (AVManager.a(BaseApplicationImpl.getContext()).a().getRoom() == null));
       label130:
       label140:
-      AVManager.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new ynl(this));
+      AVManager.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new yqr(this));
     }
   }
   

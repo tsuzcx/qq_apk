@@ -1,52 +1,56 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
 
 public class ycc
+  implements Comparator
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  private ycc(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
   
-  public static ycc a(JSONObject paramJSONObject)
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    if (paramJSONObject == null) {
-      return new ycc();
-    }
-    ycc localycc = new ycc();
-    try
+    int k = 0;
+    int j = 0;
+    int i;
+    if (this.a.f == TroopAddFrdsInnerFrame.e)
     {
-      localycc.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localycc.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
-      localycc.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localycc.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
-      localycc.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
-      localycc.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
-      localycc.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
-      localycc.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
-      localycc.g = paramJSONObject.getString("classifyName");
-      localycc.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
-      localycc.f = String.valueOf(paramJSONObject.getInt("vip_type"));
-      localycc.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
-      localycc.h = paramJSONObject.getString("trialstartday");
-      localycc.i = paramJSONObject.getString("trialendday");
-      return localycc;
+      i = paramTroopMemberInfo1.addState - paramTroopMemberInfo2.addState;
+      if (i == 0) {
+        if (paramTroopMemberInfo1.commonFrdCnt == -2147483648)
+        {
+          i = 0;
+          if (paramTroopMemberInfo2.commonFrdCnt != -2147483648) {
+            break label68;
+          }
+          label53:
+          i = j - i;
+        }
+      }
     }
-    catch (JSONException paramJSONObject)
+    label68:
+    do
     {
-      paramJSONObject.printStackTrace();
-    }
-    return localycc;
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+            i = paramTroopMemberInfo1.commonFrdCnt;
+            break;
+            j = paramTroopMemberInfo2.commonFrdCnt;
+            break label53;
+            return i;
+            i = k;
+          } while (this.a.f != TroopAddFrdsInnerFrame.d);
+          i = k;
+        } while (paramTroopMemberInfo1 == null);
+        i = k;
+      } while (paramTroopMemberInfo1.displayedNamePinyinFirst == null);
+      i = k;
+    } while (paramTroopMemberInfo2 == null);
+    return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
   }
 }
 

@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-class aahm
-  implements Runnable
+public class aahm
 {
-  aahm(aahl paramaahl) {}
-  
-  public void run()
-  {
-    aahn localaahn = new aahn(this);
-    this.a.a.jdField_a_of_type_Aagv.a.a.a(localaahn, this.a.a.jdField_a_of_type_Long);
-  }
+  public ArCloudConfigInfo a;
+  public String a = "";
+  public boolean a;
+  public String b = "";
+  public boolean b;
 }
 
 

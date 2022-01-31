@@ -1,17 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abbr
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public abbr(ARMapSplashEntryView paramARMapSplashEntryView) {}
+  public abbr(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    ARMapSplashEntryView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    ARMapSplashEntryView.a(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

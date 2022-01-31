@@ -1,28 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
 public class aeet
-  extends Handler
+  implements Runnable
 {
-  public aeet(StoryPlayController paramStoryPlayController) {}
+  public aeet(MagicfaceViewController paramMagicfaceViewController) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      StoryPlayController.a(this.a, this.a.a);
-    }
+    this.a.a.R();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeet
  * JD-Core Version:    0.7.0.1
  */

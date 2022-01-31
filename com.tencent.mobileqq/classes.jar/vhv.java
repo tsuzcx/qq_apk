@@ -1,18 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.item.TroopWantGiftItemBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class vhv
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public vhv(TroopWantGiftItemBuilder paramTroopWantGiftItemBuilder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  public vhv(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 

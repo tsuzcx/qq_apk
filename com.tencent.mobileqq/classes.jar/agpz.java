@@ -1,52 +1,42 @@
 import android.os.Handler;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.os.Message;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class agpz
-  extends MessageObserver
+  implements Runnable
 {
-  public agpz(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public agpz(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, int paramInt, String paramString) {}
   
-  public void a(long paramLong1, int paramInt, long paramLong2)
+  public void run()
   {
-    if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
+    Object localObject = new agqa(this);
+    int i = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (DownloadListener)localObject);
+    if ((i == 19) || (i == 0))
     {
-      if (paramInt != 0) {
-        break label109;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(20);
+      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("style download success , url : %s, position : %d ", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
       }
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c succs with readtime: " + paramLong2);
-      if (paramLong2 > 0L) {
-        ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
-      }
-      if (this.a.isAdded())
-      {
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.a;
-        if (paramLong2 <= 0L) {
-          break label104;
-        }
-        paramInt = 1;
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, true);
-      }
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.b.remove(this.jdField_a_of_type_JavaLangString);
     }
-    label104:
-    label109:
     do
     {
       return;
-      paramInt = 0;
-      break;
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c fail with reply code: " + paramInt);
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
-    } while (!this.a.isAdded());
-    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(21);
+      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
+    } while (!QLog.isColorLevel());
+    QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("styles download fail , url : %s, position : %d ", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agpz
  * JD-Core Version:    0.7.0.1
  */

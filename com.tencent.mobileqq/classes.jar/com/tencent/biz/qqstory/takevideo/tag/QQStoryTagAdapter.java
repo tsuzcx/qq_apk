@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
-import okh;
+import omb;
 
 public class QQStoryTagAdapter
   extends BaseAdapter
@@ -64,15 +64,15 @@ public class QQStoryTagAdapter
   {
     if (paramView == null)
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970804, null);
-      paramView = new okh(paramViewGroup);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970852, null);
+      paramView = new omb(paramViewGroup);
       paramViewGroup.setTag(paramView);
     }
     for (;;)
     {
       paramView.a((TagItem)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem);
       return paramView.a;
-      paramView = (okh)paramView.getTag();
+      paramView = (omb)paramView.getTag();
     }
   }
 }

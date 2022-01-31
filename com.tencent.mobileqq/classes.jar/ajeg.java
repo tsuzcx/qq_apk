@@ -1,29 +1,24 @@
-import android.graphics.Bitmap;
-import android.util.Pair;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-class ajeg
-  implements Runnable
+public class ajeg
+  implements DialogInterface.OnClickListener
 {
-  ajeg(ajef paramajef, Pair paramPair) {}
+  public ajeg(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Ajef.a.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String))
-    {
-      String str = (String)this.jdField_a_of_type_Ajef.a.jdField_a_of_type_AndroidWidgetImageView.getTag();
-      if ((this.jdField_a_of_type_AndroidUtilPair != null) && (str.endsWith(this.jdField_a_of_type_Ajef.a.jdField_a_of_type_JavaLangString)))
-      {
-        this.jdField_a_of_type_Ajef.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)this.jdField_a_of_type_AndroidUtilPair.first);
-        HotChatPostItemView.a(this.jdField_a_of_type_Ajef.a.jdField_a_of_type_JavaLangString, (Bitmap)this.jdField_a_of_type_AndroidUtilPair.first);
-      }
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(this.jdField_a_of_type_JavaUtilUUID);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajeg
  * JD-Core Version:    0.7.0.1
  */

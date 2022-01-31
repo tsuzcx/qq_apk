@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import abrn;
+import abyo;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorSet;
@@ -140,7 +140,7 @@ public class ComboMasterView
     localObjectAnimator4.setDuration(200L);
     Object localObject = a();
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, ((PathMeasure)localObject).getLength() });
-    localValueAnimator.addUpdateListener(new abrn(this, (PathMeasure)localObject, new float[2]));
+    localValueAnimator.addUpdateListener(new abyo(this, (PathMeasure)localObject, new float[2]));
     localValueAnimator.setDuration(400L);
     localObject = ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F });
     ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this, "scaleX", new float[] { 1.0F, 0.27F });
@@ -175,9 +175,9 @@ public class ComboMasterView
   
   public void a(ComboUIManager paramComboUIManager)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362947));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362948));
-    this.c = ((ImageView)findViewById(2131362949));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362965));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362966));
+    this.c = ((ImageView)findViewById(2131362967));
     this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboUIManager = paramComboUIManager;
   }
   
@@ -253,7 +253,7 @@ public class ComboMasterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboMasterView
  * JD-Core Version:    0.7.0.1
  */

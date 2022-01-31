@@ -1,40 +1,57 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
+import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
+import com.tencent.mobileqq.activity.messagesearch.MessageItem;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.Set;
 
 public class wrl
-  extends Handler
+  implements AdapterView.OnItemClickListener
 {
-  private WeakReference a;
+  public wrl(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
   
-  public wrl(DialogBaseActivity paramDialogBaseActivity)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramDialogBaseActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
-    if (localDialogBaseActivity == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
     }
-    switch (paramMessage.what)
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.getCount() <= 0) || (paramInt <= 0)) {}
+    do
     {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localDialogBaseActivity.a(i, bool);
-        return;
-        bool = false;
+      return;
+      paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (QLog.isColorLevel()) {
+      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+    }
+    boolean bool1;
+    boolean bool2;
+    if (this.a.b)
+    {
+      bool1 = C2CMessageSearchDialog.a(this.a).contains(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq));
+      bool2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a.contains(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq));
+      if ((!bool1) || (!bool2)) {
+        break label256;
+      }
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005FC5", "0X8005FC5", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      this.a.a(true);
+      this.a.dismiss();
+      return;
+      label256:
+      if (bool1) {
+        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005FC4", "0X8005FC4", 0, 0, "", "", "", "");
+      } else if (bool2) {
+        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005FC3", "0X8005FC3", 0, 0, "", "", "", "");
       }
     }
-    localDialogBaseActivity.finish();
   }
 }
 

@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.av.random.RandomWebProtocol;
 
-class jkx
-  implements DialogInterface.OnClickListener
+public class jkx
+  extends jkv
 {
-  jkx(jkw paramjkw) {}
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  jkx(RandomWebProtocol paramRandomWebProtocol)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RandomController", 2, " [random room owner] kick member fail because of network bad");
-    }
-    this.a.a.c = false;
+    this.a = -100;
   }
 }
 

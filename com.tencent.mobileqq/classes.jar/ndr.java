@@ -1,18 +1,22 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeAdapter;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.biz.qqstory.model.WeatherDataProvider;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class ndr
-  extends RecyclerView.AdapterDataObserver
+  implements LbsManager.LbsUpdateListener
 {
-  public ndr(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  public ndr(WeatherDataProvider paramWeatherDataProvider) {}
   
-  public void onChanged()
+  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    if (this.a.a.getItemCount() > 0) {
+    SLog.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramBasicLocation != null))
+    {
+      this.a.a(paramBasicLocation.b, paramBasicLocation.a);
       return;
     }
-    this.a.b();
+    this.a.a(false, null);
   }
 }
 

@@ -1,24 +1,16 @@
-import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.UIEventListenerImpl;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
 
 public class nqu
-  extends OnSimpleShareListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public nqu(QQStoryShareGroupProfileActivity.UIEventListenerImpl paramUIEventListenerImpl) {}
+  public nqu(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnCompletionListener paramOnCompletionListener) {}
   
-  public void a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    super.a();
-    QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    StoryReportor.a("share_story", "day_suc", 0, paramInt, new String[] { QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper);
   }
 }
 

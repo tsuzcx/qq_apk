@@ -1,16 +1,29 @@
-import android.content.Context;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Rect;
+import android.view.TouchDelegate;
+import android.view.View;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class abxk
+public class abxk
   implements Runnable
 {
-  abxk(abxj paramabxj) {}
+  public abxk(MsgBoxListActivity paramMsgBoxListActivity, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      QQToast.a(this.a.a.a, this.a.a.a.getString(2131438011), 1).b(this.a.a.g);
+    Object localObject = new Rect();
+    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
+    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
+    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
+    ((Rect)localObject).bottom += this.b;
+    ((Rect)localObject).left -= this.c;
+    ((Rect)localObject).right += this.d;
+    if (QLog.isColorLevel()) {
+      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
+    }
+    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
+    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
+      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
     }
   }
 }

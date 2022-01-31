@@ -11,6 +11,7 @@ public final class cell_recomm_action
   extends JceStruct
 {
   static Map cache_extend_info;
+  static s_button cache_left_bottom_button = new s_button();
   static ArrayList cache_relation_chain;
   static s_rank cache_s_app_rank = new s_rank();
   static ArrayList cache_userlist = new ArrayList();
@@ -32,6 +33,7 @@ public final class cell_recomm_action
   public String interact_left_text = "";
   public int is_hide_action_area;
   public int is_report;
+  public s_button left_bottom_button;
   public int multi_adv_offset;
   public ArrayList relation_chain;
   public int relation_total_number;
@@ -54,7 +56,7 @@ public final class cell_recomm_action
   
   public cell_recomm_action() {}
   
-  public cell_recomm_action(s_rank params_rank, String paramString1, ArrayList paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, String paramString4, int paramInt7, String paramString5, int paramInt8, String paramString6, String paramString7, int paramInt9, int paramInt10, String paramString8, String paramString9, String paramString10, ArrayList paramArrayList2, int paramInt11, int paramInt12, Map paramMap)
+  public cell_recomm_action(s_rank params_rank, String paramString1, ArrayList paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, String paramString4, int paramInt7, String paramString5, int paramInt8, String paramString6, String paramString7, int paramInt9, int paramInt10, String paramString8, String paramString9, String paramString10, ArrayList paramArrayList2, int paramInt11, int paramInt12, Map paramMap, s_button params_button)
   {
     this.s_app_rank = params_rank;
     this.remark = paramString1;
@@ -82,6 +84,7 @@ public final class cell_recomm_action
     this.relation_total_number = paramInt11;
     this.count_down_timer = paramInt12;
     this.extend_info = paramMap;
+    this.left_bottom_button = params_button;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -112,6 +115,7 @@ public final class cell_recomm_action
     this.relation_total_number = paramJceInputStream.read(this.relation_total_number, 24, false);
     this.count_down_timer = paramJceInputStream.read(this.count_down_timer, 25, false);
     this.extend_info = ((Map)paramJceInputStream.read(cache_extend_info, 26, false));
+    this.left_bottom_button = ((s_button)paramJceInputStream.read(cache_left_bottom_button, 28, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -169,6 +173,9 @@ public final class cell_recomm_action
     paramJceOutputStream.write(this.count_down_timer, 25);
     if (this.extend_info != null) {
       paramJceOutputStream.write(this.extend_info, 26);
+    }
+    if (this.left_bottom_button != null) {
+      paramJceOutputStream.write(this.left_bottom_button, 28);
     }
   }
 }

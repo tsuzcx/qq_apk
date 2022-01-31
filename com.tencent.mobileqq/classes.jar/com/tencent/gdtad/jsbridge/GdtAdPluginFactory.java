@@ -1,13 +1,13 @@
 package com.tencent.gdtad.jsbridge;
 
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import qja;
-import qjb;
-import qjc;
-import qje;
-import qjf;
-import qjg;
-import qjh;
+import qks;
+import qkt;
+import qku;
+import qkw;
+import qkx;
+import qky;
+import qkz;
 
 public class GdtAdPluginFactory
   extends VasWebviewJsPlugin
@@ -17,13 +17,13 @@ public class GdtAdPluginFactory
   GdtAppJumpJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtAppJumpJsCallHandler;
   GdtLoadAdJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtLoadAdJsCallHandler;
   GdtLocationJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtLocationJsCallHandler;
-  qja jdField_a_of_type_Qja;
-  qjb jdField_a_of_type_Qjb;
-  qjc jdField_a_of_type_Qjc;
-  qje jdField_a_of_type_Qje;
-  qjf jdField_a_of_type_Qjf;
-  qjg jdField_a_of_type_Qjg;
-  qjh jdField_a_of_type_Qjh;
+  qks jdField_a_of_type_Qks;
+  qkt jdField_a_of_type_Qkt;
+  qku jdField_a_of_type_Qku;
+  qkw jdField_a_of_type_Qkw;
+  qkx jdField_a_of_type_Qkx;
+  qky jdField_a_of_type_Qky;
+  qkz jdField_a_of_type_Qkz;
   
   public static GdtAdPluginFactory a()
   {
@@ -50,10 +50,10 @@ public class GdtAdPluginFactory
       }
       return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtAppJumpJsCallHandler;
     case 2: 
-      if (this.jdField_a_of_type_Qjh == null) {
-        this.jdField_a_of_type_Qjh = new qjh();
+      if (this.jdField_a_of_type_Qkz == null) {
+        this.jdField_a_of_type_Qkz = new qkz();
       }
-      return this.jdField_a_of_type_Qjh;
+      return this.jdField_a_of_type_Qkz;
     case 3: 
       if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdReportJsCallHandler == null) {
         this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdReportJsCallHandler = new GdtAdReportJsCallHandler();
@@ -70,40 +70,40 @@ public class GdtAdPluginFactory
       }
       return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLoadAdJsCallHandler;
     case 6: 
-      if (this.jdField_a_of_type_Qja == null) {
-        this.jdField_a_of_type_Qja = new qja();
+      if (this.jdField_a_of_type_Qks == null) {
+        this.jdField_a_of_type_Qks = new qks();
       }
-      return this.jdField_a_of_type_Qja;
+      return this.jdField_a_of_type_Qks;
     case 7: 
-      if (this.jdField_a_of_type_Qjc == null) {
-        this.jdField_a_of_type_Qjc = new qjc();
+      if (this.jdField_a_of_type_Qku == null) {
+        this.jdField_a_of_type_Qku = new qku();
       }
-      return this.jdField_a_of_type_Qjc;
+      return this.jdField_a_of_type_Qku;
     case 8: 
-      if (this.jdField_a_of_type_Qje == null) {
-        this.jdField_a_of_type_Qje = new qje();
+      if (this.jdField_a_of_type_Qkw == null) {
+        this.jdField_a_of_type_Qkw = new qkw();
       }
-      return this.jdField_a_of_type_Qje;
+      return this.jdField_a_of_type_Qkw;
     case 9: 
-      if (this.jdField_a_of_type_Qjb == null) {
-        this.jdField_a_of_type_Qjb = new qjb();
+      if (this.jdField_a_of_type_Qkt == null) {
+        this.jdField_a_of_type_Qkt = new qkt();
       }
-      return this.jdField_a_of_type_Qjb;
+      return this.jdField_a_of_type_Qkt;
     case 10: 
-      if (this.jdField_a_of_type_Qjf == null) {
-        this.jdField_a_of_type_Qjf = new qjf();
+      if (this.jdField_a_of_type_Qkx == null) {
+        this.jdField_a_of_type_Qkx = new qkx();
       }
-      return this.jdField_a_of_type_Qjf;
+      return this.jdField_a_of_type_Qkx;
     }
-    if (this.jdField_a_of_type_Qjg == null) {
-      this.jdField_a_of_type_Qjg = new qjg();
+    if (this.jdField_a_of_type_Qky == null) {
+      this.jdField_a_of_type_Qky = new qky();
     }
-    return this.jdField_a_of_type_Qjg;
+    return this.jdField_a_of_type_Qky;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtAdPluginFactory
  * JD-Core Version:    0.7.0.1
  */

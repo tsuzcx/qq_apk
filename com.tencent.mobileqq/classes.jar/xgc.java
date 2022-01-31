@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import java.util.TimerTask;
 
-class xgc
-  implements Runnable
+public abstract class xgc
+  extends TimerTask
 {
-  xgc(xgb paramxgb) {}
+  private boolean a;
+  
+  public abstract void a();
+  
+  public boolean a()
+  {
+    return this.a;
+  }
   
   public void run()
   {
-    BannerManager.a(this.a.a, true);
+    a();
+    this.a = true;
   }
 }
 

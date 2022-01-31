@@ -1,18 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
 public class mor
-  extends ReadInJoyObserver
+  implements View.OnClickListener
 {
-  public mor(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  public mor(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
   
-  public void a(boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
-  {
-    if ((paramInt == 70) && (paramBoolean1)) {
-      ReadInJoyDiandianHeaderController.a(this.a);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

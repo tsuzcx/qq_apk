@@ -1,51 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.qrcode.CodeMaskManager;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.qqstory.view.segment.SegmentManager;
+import com.tencent.widget.SwipListView.RightIconMenuListener;
 
 public class oql
-  extends Thread
+  implements SwipListView.RightIconMenuListener
 {
-  public oql(CodeMaskManager paramCodeMaskManager, SharedPreferences paramSharedPreferences, int paramInt1, int paramInt2, int paramInt3) {}
+  public oql(SegmentList paramSegmentList) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putLong("updateTemplate2", System.currentTimeMillis());
-    Object localObject = "http://qm.qq.com/cgi-bin/tpl?v=1&os=a&resx=" + this.jdField_a_of_type_Int + "&resy=" + this.b + "&t=" + this.c + "&" + "mType" + "=" + "qb_qrcode";
-    try
-    {
-      String str = HttpUtil.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidAppActivity, (String)localObject, "GET", null, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRHttpUtil", 2, "open :" + (String)localObject + ", result: " + str);
-      }
-      localObject = new JSONObject(str);
-      if (((JSONObject)localObject).getInt("r") == 0)
-      {
-        localObject = ((JSONObject)localObject).getJSONArray("tpls");
-        if (((JSONArray)localObject).length() > 0)
-        {
-          this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidOsHandler.post(new oqm(this, (JSONArray)localObject));
-          localEditor.putString("tpl_json", str);
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QRHttpUtil", 2, localException.getMessage());
-        }
-        localEditor.putLong("updateTemplate2", 0L);
-      }
-    }
-    localEditor.commit();
-    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_JavaLangThread = null;
+    this.a.a.b(paramView);
+  }
+  
+  public void b(View paramView)
+  {
+    this.a.a.c(paramView);
   }
 }
 

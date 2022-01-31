@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadConfig;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class xcg
-  implements Runnable
+  implements OnCompositionLoadedListener
 {
-  public xcg(PreloadConfig paramPreloadConfig) {}
+  public xcg(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void run()
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    synchronized (this.a.mSaveLock)
-    {
-      if (this.a.isModulesChange(this.a.mLastModules))
-      {
-        QWalletTools.a(this.a, this.a.mSavePath);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadManager", 2, "really save:" + this.a);
-        }
-        this.a.mLastModules = this.a.getCloneModules();
-      }
-      return;
-    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    TroopUnAccalimedRedPacketList.a(this.a).setImageDrawable(localLottieDrawable);
   }
 }
 

@@ -1,24 +1,19 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.JumpAction;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ajoj
-  implements View.OnClickListener
+public final class ajoj
+  implements Runnable
 {
-  public ajoj(JumpAction paramJumpAction) {}
+  public ajoj(Context paramContext, int paramInt1, String paramString, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((JumpAction.a(this.a) != null) && (JumpAction.a(this.a).isShowing())) {
-      JumpAction.a(this.a).dismiss();
-    }
-    JumpAction.a(this.a);
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajoj
  * JD-Core Version:    0.7.0.1
  */

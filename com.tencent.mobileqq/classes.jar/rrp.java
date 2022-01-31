@@ -1,54 +1,21 @@
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.C2CCallToGroupCall;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class rrp
-  extends DiscussionObserver
+  implements ClickableColorSpanTextView.SpanClickListener
 {
-  public rrp(C2CCallToGroupCall paramC2CCallToGroupCall) {}
+  public rrp(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    if (paramBoolean)
-    {
-      localArrayList = new ArrayList();
-      localResultRecord = new ResultRecord();
-      localResultRecord.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_JavaLangString;
-      localResultRecord.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-      localResultRecord.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
-      localResultRecord.c = this.a.c;
-      localResultRecord.d = this.a.d;
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", String.valueOf(paramLong));
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("discussName", paramString);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("qqPhoneUserList", localArrayList);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("audioType", 2);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("callType", 2);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("reportType", C2CCallToGroupCall.a(this.a));
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("from", this.a.jdField_b_of_type_Int);
-      this.a.a(String.valueOf(paramLong), paramString);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(C2CCallToGroupCall.a(this.a));
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-      }
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-    while (!QLog.isColorLevel())
-    {
-      ArrayList localArrayList;
-      ResultRecord localResultRecord;
-      return;
-    }
-    QLog.d("C2CCallToGroupCall", 2, "create discussion fail");
+    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

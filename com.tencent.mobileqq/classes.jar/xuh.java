@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class xuh
   implements Runnable
 {
-  public xuh(CameraGLSurfaceView paramCameraGLSurfaceView) {}
+  public xuh(VideoFilterViewPager paramVideoFilterViewPager) {}
   
   public void run()
   {
-    CameraGLSurfaceView.a(this.a).sendFirstFrameMsg();
+    VideoFilterViewPager.a(this.a).onPageSelected(this.a.getCurrentItem());
   }
 }
 

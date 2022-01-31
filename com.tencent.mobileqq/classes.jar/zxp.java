@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.ar.ARMusicController;
+import com.tencent.qphone.base.util.QLog;
 
-class zxp
-  implements Runnable
+public class zxp
+  implements MediaPlayer.OnErrorListener
 {
-  zxp(zxm paramzxm) {}
+  public zxp(ARMusicController paramARMusicController) {}
   
-  public void run()
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    ArConfigService.e(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
+    }
+    return false;
   }
 }
 

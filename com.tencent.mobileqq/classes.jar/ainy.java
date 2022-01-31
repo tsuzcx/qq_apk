@@ -1,50 +1,53 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.theme.NightModeLogic;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class ainy
-  extends MessageObserver
+  implements View.OnClickListener
 {
-  public ainy(TroopAioKeywordTipBar paramTroopAioKeywordTipBar) {}
+  public ainy(NightModeLogic paramNightModeLogic) {}
   
-  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if ((!TroopAioKeywordTipBar.a(this.a)) || (TroopAioKeywordTipBar.a(this.a) == null)) {}
-    for (;;)
+    ReportController.b((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "Setting_tab", "Night_mode_dl", 0, 0, "", "", "", "");
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-      return;
-      if (paramList == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopAioKeywordTipBar", 2, "msgList == null is true");
-        }
-      }
-      else
-      {
-        paramList = paramList.iterator();
-        do
-        {
-          if (!paramList.hasNext()) {
-            break;
-          }
-        } while (((MessageRecord)paramList.next()).uniseq != TroopAioKeywordTipBar.a(this.a).uniseq);
-        for (int i = 1; i != 0; i = 0)
-        {
-          ThreadManager.getUIHandler().post(new ainz(this));
-          return;
-        }
-      }
+      paramView = new Bundle();
+      paramView.putInt("start_status", 1);
+      this.a.a(0, paramView);
     }
+    boolean bool = this.a.b();
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
+    }
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      if (bool) {}
+      for (paramView = "0";; paramView = "1")
+      {
+        localHashMap.put("param_FailCode", paramView);
+        StatisticCollector.a(this.a.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext()).a(((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime).getAccount(), "VipNightThemeDialogClick", true, 1L, 0L, localHashMap, "", false);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ainy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
 
-class mkg
+public class mkg
   implements Runnable
 {
-  mkg(mkf parammkf) {}
+  public mkg(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
   public void run()
   {
-    Kandian210Msg0xeeInfo localKandian210Msg0xeeInfo = KandianAppInPush.a(this.a.a);
-    KandianAppInPush.b(this.a.a, null);
-    this.a.a.a(localKandian210Msg0xeeInfo);
+    ReadInJoyGlobalReporter.a().b(this.a.a);
   }
 }
 

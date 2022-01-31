@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
-class tvd
-  implements Runnable
+public class tvd
+  implements View.OnClickListener
 {
-  tvd(tvc paramtvc, TroopInfo paramTroopInfo) {}
+  public tvd(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((TroopManager)this.jdField_a_of_type_Tvc.a.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    this.a.b(this.a.e());
+    paramView.setEnabled(false);
   }
 }
 

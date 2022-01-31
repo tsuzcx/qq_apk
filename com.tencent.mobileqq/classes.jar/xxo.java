@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
 
-public class xxo
-  implements Runnable
+public final class xxo
+  implements ExtendEditText.LengthConvertor
 {
-  public xxo(SelectMemberActivity paramSelectMemberActivity, String paramString) {}
-  
-  public void run()
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_add", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a().size()), "", "");
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
+  }
+  
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
   }
 }
 

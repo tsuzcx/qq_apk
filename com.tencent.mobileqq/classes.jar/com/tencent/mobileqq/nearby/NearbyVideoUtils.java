@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
-import adzy;
-import adzz;
-import aeaa;
-import aeab;
+import aene;
+import aenf;
+import aeng;
+import aenh;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -343,7 +343,7 @@ public class NearbyVideoUtils
     }
     if (QavCameraUsage.b(BaseApplicationImpl.getContext()))
     {
-      QQToast.a(BaseApplication.getContext(), 2131434776, 0).a();
+      QQToast.a(BaseApplication.getContext(), 2131434793, 0).a();
       return;
     }
     if (AudioHelper.b(0))
@@ -358,10 +358,10 @@ public class NearbyVideoUtils
     }
     if (AudioHelper.a(0))
     {
-      DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131433394), paramActivity.getResources().getString(2131433396), new adzy(), null).show();
+      DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131433411), paramActivity.getResources().getString(2131433413), new aene(), null).show();
       return;
     }
-    boolean bool2 = PtvFilterSoLoad.b(BaseApplicationImpl.getContext());
+    boolean bool2 = PtvFilterSoLoad.a(BaseApplicationImpl.getContext());
     boolean bool1;
     if ((VideoEnvironment.e(paramAppInterface)) && ((bool2) || (PtvFilterSoLoad.b())))
     {
@@ -421,14 +421,14 @@ public class NearbyVideoUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface.a(new aeab(paramString, paramQQAppInterface));
+    paramQQAppInterface.a(new aenh(paramString, paramQQAppInterface));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, TransProcessorHandler paramTransProcessorHandler)
   {
     paramTransProcessorHandler.a(new Class[] { NearbyPeoplePhotoUploadProcessor.class });
     paramQQAppInterface.a().a(paramTransProcessorHandler);
-    ThreadManager.post(new aeaa(paramQQAppInterface, paramString, (int)(System.currentTimeMillis() / 1000L)), 8, null, true);
+    ThreadManager.post(new aeng(paramQQAppInterface, paramString, (int)(System.currentTimeMillis() / 1000L)), 8, null, true);
   }
   
   public static void a(String paramString)
@@ -479,7 +479,7 @@ public class NearbyVideoUtils
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     localImageView.setImageDrawable(URLDrawable.getDrawable("http://pub.idqqimg.com/pc/misc/files/20170807/f2f569d65bc74317bb9a6bfe482dcd2c.png?_t=1502087876532"));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.a(150.0F, paramActivity.getResources()));
-    new NearbyCustomDialog(paramActivity).a(localImageView, localLayoutParams).b("真实视频认证享受优先展示，获得更多被关注，收到礼物的机会").a(new BlueButtonInfo("上传自拍视频", new adzz(paramActivity, paramQQAppInterface))).show();
+    new NearbyCustomDialog(paramActivity).a(localImageView, localLayoutParams).b("真实视频认证享受优先展示，获得更多被关注，收到礼物的机会").a(new BlueButtonInfo("上传自拍视频", new aenf(paramActivity, paramQQAppInterface))).show();
     a(paramQQAppInterface);
     return true;
   }

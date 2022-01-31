@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.av.AVLog;
-import kdb;
+import kcm;
 
 public class VoiceChangeAdapter
   extends BaseAdapter
@@ -15,7 +15,7 @@ public class VoiceChangeAdapter
   private int jdField_a_of_type_Int = -16777216;
   private Context jdField_a_of_type_AndroidContentContext;
   private VoiceChangeAdapter.ICallback jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter$ICallback;
-  VoiceChangeItemView1.ICallback jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1$ICallback = new kdb(this);
+  VoiceChangeItemView1.ICallback jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1$ICallback = new kcm(this);
   private VoiceChangeItemView1 jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1;
   private int jdField_b_of_type_Int;
   private VoiceChangeItemView1 jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;

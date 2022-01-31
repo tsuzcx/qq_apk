@@ -1,92 +1,88 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.troopbar.ShareActionSheet;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.qidian.QidianManager;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class ktd
-  implements AdapterView.OnItemClickListener
+  extends Handler
 {
-  public ktd(AccountDetailActivity paramAccountDetailActivity) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public ktd(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Looper paramLooper)
   {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.b();
-    }
-    paramInt = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.c;
-    int i = PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    if (paramInt == 11)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    switch (paramMessage.what)
     {
-      this.a.C();
-      paramInt = 7;
-      paramView = this.a.d;
-      if (!this.a.d()) {
-        break label437;
-      }
     }
-    label437:
-    for (paramAdapterView = "02";; paramAdapterView = "01")
+    do
     {
-      PublicAccountReportUtils.a(null, paramView, "0X8007CA6", "0X8007CA6", 0, 0, paramAdapterView, paramInt + "", i + "", null);
-      return;
-      if (paramInt == 2)
+      do
       {
-        ShareActionSheet.b(this.a, this.a.a(), this.a.a(), this.a.b());
-        paramInt = 1;
-        break;
-      }
-      if (paramInt == 3)
-      {
-        ShareActionSheet.a(this.a, this.a.a(), this.a.a(), this.a.b());
-        paramInt = 2;
-        break;
-      }
-      if ((paramInt == 9) || (paramInt == 10))
-      {
-        ShareActionSheet.a(this.a, this.a.a(), this.a.a(), this.a.b(), paramInt);
-        if (paramInt == 9)
+        do
         {
-          paramInt = 3;
-          break;
-        }
-        paramInt = 4;
-        break;
-      }
-      if (paramInt == 31)
-      {
-        this.a.B();
-        paramInt = 6;
-        break;
-      }
-      if (paramInt == 30)
-      {
-        this.a.f();
-        paramInt = 5;
-        break;
-      }
-      if (paramInt == 32)
-      {
-        this.a.E();
-        paramInt = 8;
-        break;
-      }
-      if (paramInt == 19) {
-        QidianManager.a(this.a, 6, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary, this.a.h, "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, i, true);
-      }
-      paramInt = 0;
-      break;
-    }
+          do
+          {
+            int i;
+            do
+            {
+              do
+              {
+                return;
+                i = paramMessage.arg1;
+              } while (PublicAccountAdvertisementActivity.a(this.a) == null);
+              PublicAccountAdvertisementActivity.a(this.a).a(i);
+              if ((i > 0) && (i < 100))
+              {
+                PublicAccountAdvertisementActivity.a(this.a).c(true);
+                return;
+              }
+            } while (i != 100);
+            PublicAccountAdvertisementActivity.a(this.a).c(false);
+            return;
+            switch (paramMessage.arg1)
+            {
+            case 201: 
+            case 202: 
+            case 203: 
+            default: 
+              this.a.a(2131438964);
+              return;
+            case -24: 
+              this.a.b(this.a.getString(2131438965));
+              return;
+            }
+            this.a.a(2131438962);
+            return;
+            this.a.b(this.a.getString(2131438966));
+            return;
+          } while (PublicAccountAdvertisementActivity.a(this.a) == null);
+          VideoCoverFragment localVideoCoverFragment = PublicAccountAdvertisementActivity.a(this.a);
+          if (paramMessage.arg1 == 1) {}
+          for (;;)
+          {
+            localVideoCoverFragment.c(bool);
+            return;
+            bool = false;
+          }
+        } while (!this.a.isResume());
+        paramMessage = this.a.getSupportFragmentManager().beginTransaction();
+        PublicAccountAdvertisementActivity.a(this.a, WebpageFragment.a(this.a.getIntent()));
+        PublicAccountAdvertisementActivity.a(this.a).a(PublicAccountAdvertisementActivity.a(this.a));
+        paramMessage.add(2131365598, PublicAccountAdvertisementActivity.a(this.a));
+        paramMessage.commit();
+      } while (!ThemeUtil.isInNightMode(this.a.getAppRuntime()));
+      paramMessage = this.a.findViewById(2131366983);
+    } while (paramMessage == null);
+    paramMessage.setVisibility(0);
   }
 }
 

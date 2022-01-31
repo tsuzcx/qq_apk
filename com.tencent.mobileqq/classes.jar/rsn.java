@@ -1,23 +1,32 @@
+import com.tencent.biz.anonymous.AnonymousChatHelper;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.ImageCountChangedListener;
 
-public final class rsn
-  implements Runnable
+public class rsn
+  implements PhotoListPanel.ImageCountChangedListener
 {
-  public rsn(String paramString, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
+  public rsn(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public boolean a(int paramInt)
   {
-    try
+    PanelIconLinearLayout localPanelIconLinearLayout;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!this.a.G))
     {
-      String str = this.jdField_a_of_type_JavaLangString;
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      StatisticConstants.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
-      return;
+      boolean bool = AnonymousChatHelper.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      localPanelIconLinearLayout = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
+      if (!bool) {
+        break label63;
+      }
     }
-    catch (Exception localException) {}
+    label63:
+    for (int[] arrayOfInt = AIOPanelUtiles.h;; arrayOfInt = AIOPanelUtiles.g)
+    {
+      localPanelIconLinearLayout.a(arrayOfInt, paramInt);
+      return false;
+    }
   }
 }
 

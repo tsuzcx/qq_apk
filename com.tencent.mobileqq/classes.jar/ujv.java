@@ -1,19 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public final class ujv
-  implements Parcelable.Creator
+public class ujv
 {
-  public SessionInfo a(Parcel paramParcel)
-  {
-    return new SessionInfo(paramParcel);
-  }
-  
-  public SessionInfo[] a(int paramInt)
-  {
-    return new SessionInfo[paramInt];
-  }
+  public int a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ImageView b;
 }
 
 

@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ar.ARMusicController;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
 
 public class aabd
   implements Runnable
 {
-  public aabd(AREngine paramAREngine) {}
+  public aabd(Interactive3DRenderable paramInteractive3DRenderable, String paramString) {}
   
   public void run()
   {
-    QLog.i("AREngine_AREngine", 1, "processCloudSceneRecogResult. download resource timeout.");
-    AREngine.a(this.a).a();
-    this.a.d(false, null);
+    if ((Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).a(Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable) + this.jdField_a_of_type_JavaLangString, true);
+    }
   }
 }
 

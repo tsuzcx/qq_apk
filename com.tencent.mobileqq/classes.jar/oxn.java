@@ -1,36 +1,83 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import java.io.PrintStream;
+import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
+import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
-public class oxn
-  implements InputFilter
+class oxn
+  extends DownloadListener
 {
-  protected int a;
+  oxn(oxm paramoxm, VideoCombineHelper.CombineParams paramCombineParams, ArrayList paramArrayList, long paramLong) {}
   
-  public oxn(TroopGiftPanel paramTroopGiftPanel, int paramInt)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    System.out.println("filter() source = " + paramCharSequence + ", dest = " + paramSpanned + ", start = " + paramInt1 + ", dstart = " + paramInt3 + ", dend = " + paramInt4);
-    if (paramCharSequence.length() != 1) {
-      return "";
+    if (paramDownloadTask.a == 0)
+    {
+      paramDownloadTask = this.jdField_a_of_type_Oxm.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (paramDownloadTask.hasNext()) {
+        if (!((File)paramDownloadTask.next()).exists())
+        {
+          this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Oxm);
+          return;
+        }
+      }
+      try
+      {
+        paramDownloadTask = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b.iterator();
+        int i = 1;
+        while (paramDownloadTask.hasNext())
+        {
+          String str = (String)paramDownloadTask.next();
+          File localFile = new File(this.jdField_a_of_type_Oxm.a() + File.separator + "v_" + i + ".mp4");
+          this.jdField_a_of_type_JavaUtilArrayList.add(localFile.getAbsolutePath());
+          if (localFile.exists())
+          {
+            i += 1;
+          }
+          else
+          {
+            if (!localFile.exists()) {
+              localFile.createNewFile();
+            }
+            FileUtils.a(new File(str), localFile);
+            i += 1;
+          }
+        }
+        this.jdField_a_of_type_Oxm.b();
+      }
+      catch (IOException paramDownloadTask)
+      {
+        QLog.e(".troop.VideoCombineHelper", 1, paramDownloadTask, new Object[0]);
+        this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Oxm);
+        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b = this.jdField_a_of_type_JavaUtilArrayList;
+        this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_Oxm);
+        this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new oxe(this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener, this.jdField_a_of_type_Oxm.c, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.d, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.c);
+        if (!VideoEnvironment.e((AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web"))) {}
+      }
+      for (;;)
+      {
+        QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+        return;
+        if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a) {
+          this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
+        } else {
+          this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
+        }
+      }
     }
-    paramInt1 = paramCharSequence.charAt(0);
-    if ((paramInt1 < 48) || (paramInt1 > 57)) {
-      return "";
-    }
-    if ((paramInt3 == 0) && (paramInt1 == 48)) {
-      return "";
-    }
-    if ((this.jdField_a_of_type_Int > 0) && (paramSpanned.length() >= this.jdField_a_of_type_Int)) {
-      return "";
-    }
-    return null;
+    this.jdField_a_of_type_Oxm.d = ("donwload failed!code = " + paramDownloadTask.a + "errmsg = " + paramDownloadTask.b);
+    this.jdField_a_of_type_Oxm.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Oxm);
   }
 }
 

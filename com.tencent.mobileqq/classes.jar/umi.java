@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.transfile.PttInfoCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public class umi
-  implements Runnable
+public final class umi
+  implements ActionSheet.OnDismissListener
 {
-  public umi(AudioPanel paramAudioPanel, int paramInt) {}
+  public umi(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onDismiss()
   {
-    PttInfoCollector.c(this.jdField_a_of_type_Int);
+    ReportController.b(this.a, "CliOper", "", "", "0X8004864", "0X8004864", 0, 0, "", "", "", "");
   }
 }
 

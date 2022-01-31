@@ -1,17 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.activity.aio.anim.SigTlpAnimation;
 
-public class unw
+class unw
   implements Runnable
 {
-  public unw(RecordSoundPanel paramRecordSoundPanel, int paramInt, double paramDouble) {}
+  unw(unv paramunv) {}
   
   public void run()
   {
-    int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.b(i);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.b.setText(AudioPanel.a(this.jdField_a_of_type_Double));
+    this.a.a.a(true);
   }
 }
 

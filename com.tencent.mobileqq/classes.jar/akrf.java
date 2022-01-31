@@ -1,35 +1,59 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.webso.HttpResponsePackage;
+import com.tencent.mobileqq.webview.webso.SHA1Util;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import com.tencent.mobileqq.webview.webso.WebSoUtils;
+import mqq.app.AppRuntime;
 
 public class akrf
   implements Runnable
 {
-  public akrf(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  public akrf(WebSoService paramWebSoService, HttpResponsePackage paramHttpResponsePackage, Uri paramUri, String paramString, WebSoService.WebSoState paramWebSoState) {}
   
   public void run()
   {
-    try
+    long l = System.currentTimeMillis();
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage != null)
     {
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h) != null)
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage.d != null)
       {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.h).mSavePath;
-        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        WebSoUtils.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage.d.getBytes(), WebSoUtils.b(this.jdField_a_of_type_AndroidNetUri));
+        localObject1 = SHA1Util.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHttpResponsePackage.d);
       }
-      return;
     }
-    catch (Exception localException)
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidNetUri != null))
     {
-      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+      localObject2 = WebSoService.a().edit();
+      String str1 = String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+      String str2 = WebSoUtils.a(this.jdField_a_of_type_AndroidNetUri);
+      ((SharedPreferences.Editor)localObject2).putString("eTag_" + str1 + str2, this.jdField_a_of_type_JavaLangString);
+      ((SharedPreferences.Editor)localObject2).putString("htmlSha1_" + str1 + str2, (String)localObject1);
+      if (Build.VERSION.SDK_INT >= 9) {
+        break label217;
+      }
+      ((SharedPreferences.Editor)localObject2).commit();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a.d = ((int)(System.currentTimeMillis() - l));
+      return;
+      label217:
+      ((SharedPreferences.Editor)localObject2).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akrf
  * JD-Core Version:    0.7.0.1
  */

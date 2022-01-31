@@ -1,18 +1,26 @@
-import com.tencent.component.media.image.BitmapReference;
-import com.tencent.component.media.photogif.NewAnimationDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.image.ImageTaskTracer;
 import com.tencent.component.media.utils.LruCache;
 
 public class phc
   extends LruCache
 {
-  public phc(NewAnimationDrawable paramNewAnimationDrawable, int paramInt)
+  public phc(ImageManager paramImageManager, int paramInt)
   {
     super(paramInt);
   }
   
-  protected int a(String paramString, BitmapReference paramBitmapReference)
+  protected int a(Integer paramInteger, Drawable paramDrawable)
   {
-    return paramBitmapReference.getAllocSize();
+    return ImageManager.a(paramDrawable);
+  }
+  
+  protected void a(boolean paramBoolean, Integer paramInteger, Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    if (paramInteger != null) {
+      ImageTaskTracer.addImageLruCacheEvictedRecord(paramInteger.intValue());
+    }
   }
 }
 

@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.activity.qwallet.QWalletCameraInterface;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class xnh
-  implements QWalletCameraInterface
+  implements View.OnClickListener
 {
-  public xnh(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xnh(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List paramList)
+  public void onClick(View paramView)
   {
-    if ((this.a.F) && (paramInt1 > 0)) {
-      NewFlowCameraActivity.d = true;
+    if (EditLocalVideoActivity.a(this.a).isPlaying())
+    {
+      EditLocalVideoActivity.c(this.a, false);
+      EditLocalVideoActivity.a(this.a).pause();
+      EditLocalVideoActivity.b(this.a).setVisibility(0);
+      return;
     }
+    EditLocalVideoActivity.c(this.a, true);
+    EditLocalVideoActivity.a(this.a).setVisibility(8);
+    EditLocalVideoActivity.a(this.a).start();
+    EditLocalVideoActivity.b(this.a).setVisibility(4);
   }
 }
 

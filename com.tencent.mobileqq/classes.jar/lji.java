@@ -1,88 +1,96 @@
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuTextBuilder;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.hotpic.PublicAccountHotPicPanel;
-import com.tencent.widget.XPanelContainer.PanelCallback;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import mqq.os.MqqHandler;
 
 public class lji
-  implements XPanelContainer.PanelCallback
+  implements TextWatcher
 {
   public lji(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public View a(int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    EmoticonMainPanel localEmoticonMainPanel = null;
-    if (paramInt == 3)
+    int i;
+    label51:
+    label86:
+    ZhituManager localZhituManager;
+    if ((paramEditable instanceof BiuTextBuilder))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel == null)
+      i = ((BiuTextBuilder)paramEditable).a();
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = ((EmoticonMainPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2130968963, null));
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.setCallBack(ReadInJoyCommentComponentFragment.a(this.a));
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b = true;
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a(ReadInJoyCommentComponentFragment.a(this.a).app, 1008, ReadInJoyCommentComponentFragment.a(this.a), ReadInJoyCommentComponentFragment.a(this.a).getTitleBarHeight(), null, null);
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.l();
-      }
-      localEmoticonMainPanel = this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel;
-    }
-    while (paramInt != 24) {
-      return localEmoticonMainPanel;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel == null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel = ((PublicAccountHotPicPanel)View.inflate(ReadInJoyCommentComponentFragment.a(this.a), 2130969209, null));
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.a(ReadInJoyCommentComponentFragment.a(this.a).app, ReadInJoyCommentComponentFragment.a(this.a), null, this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer);
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.setPublicAccountGifListener(ReadInJoyCommentComponentFragment.a(this.a));
-    }
-    return this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    boolean bool;
-    if ((paramInt1 == 24) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel != null)) {
-      if (paramInt2 == 1)
-      {
-        bool = true;
-        this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.a(bool);
-        label34:
-        if (paramInt2 != 1) {
-          break label82;
+        if (this.a.jdField_c_of_type_Int - i >= -99) {
+          break label236;
         }
-        ReadInJoyCommentComponentFragment.a(this.a, 1);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("-99");
+      }
+      if (i - this.a.jdField_c_of_type_Int <= 0) {
+        break label261;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF4222"));
+      this.a.jdField_c_of_type_Boolean = true;
+      ReadInJoyCommentComponentFragment.a(this.a);
+      localZhituManager = ReadInJoyCommentComponentFragment.a(this.a);
+      if (localZhituManager != null)
+      {
+        i = paramEditable.toString().trim().length();
+        if (i > 0) {
+          break label294;
+        }
+        this.a.f.setVisibility(8);
       }
     }
-    label82:
-    do
+    for (;;)
     {
+      if ((i <= 0) || (paramEditable.length() > 24) || (!localZhituManager.a(paramEditable))) {
+        break label308;
+      }
+      if (ReadInJoyCommentComponentFragment.a(this.a))
+      {
+        localZhituManager.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramEditable, null, 7220, false);
+        this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(85);
+        this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(85, 10000L);
+      }
+      this.a.f.setImageResource(2130840750);
       return;
-      bool = false;
+      i = paramEditable.length();
       break;
-      if ((paramInt2 != 24) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel == null)) {
-        break label34;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountHotPicPanel.f();
-      break label34;
-      if (paramInt2 == 3)
-      {
-        ReadInJoyCommentComponentFragment.a(this.a, 2);
-        return;
-      }
-      if (paramInt2 == 0)
-      {
-        ReadInJoyCommentComponentFragment.a(this.a, 0);
-        return;
-      }
-    } while (paramInt2 != 24);
-    ReadInJoyCommentComponentFragment.a(this.a, 3);
+      label236:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.jdField_c_of_type_Int - i));
+      break label51;
+      label261:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131493501));
+      this.a.jdField_c_of_type_Boolean = false;
+      break label86;
+      label294:
+      this.a.f.setVisibility(0);
+    }
+    label308:
+    localZhituManager.c();
+    ReadInJoyCommentComponentFragment.a(this.a, false);
+    this.a.f.setSelected(false);
+    this.a.f.setImageResource(2130840898);
   }
   
-  public boolean a(int paramInt)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    return false;
+    if (ReadInJoyCommentComponentFragment.b(this.a)) {
+      ReadInJoyCommentComponentFragment.c(this.a, false);
+    }
+    while ((!ReadInJoyCommentComponentFragment.c(this.a)) || (paramInt3 != 1) || (paramInt2 != 0) || (!paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@"))) {
+      return;
+    }
+    this.a.b("2");
   }
-  
-  public void q() {}
 }
 
 

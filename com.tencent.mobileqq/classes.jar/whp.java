@@ -1,47 +1,25 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.util.MqqWeakReferenceHandler;
-import mqq.observer.BusinessObserver;
-import tencent.im.nearbygroup.ext.NearbyGroupExt.RspBody;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
-class whp
-  implements BusinessObserver
+public class whp
+  implements View.OnTouchListener
 {
-  whp(who paramwho) {}
+  public whp(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject;
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localObject = new NearbyGroupExt.RspBody();
-      }
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent.isActive()) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-    try
-    {
-      ((NearbyGroupExt.RspBody)localObject).mergeFrom(paramBundle);
-      paramBundle = "";
-      paramInt = 0;
-      if (((NearbyGroupExt.RspBody)localObject).str_wording.has()) {
-        paramBundle = ((NearbyGroupExt.RspBody)localObject).str_wording.get();
-      }
-      if (((NearbyGroupExt.RspBody)localObject).uint32_total_num.has()) {
-        paramInt = ((NearbyGroupExt.RspBody)localObject).uint32_total_num.get();
-      }
-      localObject = this.a.a.a.a().obtainMessage();
-      ((Message)localObject).what = 106;
-      ((Message)localObject).obj = paramBundle;
-      ((Message)localObject).arg1 = paramInt;
-      this.a.a.a.a().sendMessage((Message)localObject);
-      return;
-    }
-    catch (Exception paramBundle) {}
+    this.a.a.clearFocus();
+    paramView = this.a.a.getText().toString();
+    this.a.a.setSelection(paramView.length());
+    return false;
   }
 }
 

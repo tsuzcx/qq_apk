@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
-import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem;
-import java.util.Comparator;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
 
-public class xtg
-  implements Comparator
+class xtg
+  implements Runnable
 {
-  public xtg(SubtitleDataManager paramSubtitleDataManager) {}
+  xtg(xtf paramxtf, int paramInt, String paramString) {}
   
-  public int a(SubtitleItem paramSubtitleItem1, SubtitleItem paramSubtitleItem2)
+  public void run()
   {
-    if ((paramSubtitleItem1 != null) && (paramSubtitleItem2 != null)) {
-      return paramSubtitleItem1.b - paramSubtitleItem2.b;
-    }
-    return -1;
+    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_Xtf.a).setProgress(this.jdField_a_of_type_Int);
+    QzDynamicVideoPreviewActivity.c(this.jdField_a_of_type_Xtf.a).setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

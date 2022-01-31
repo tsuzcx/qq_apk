@@ -1,28 +1,44 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class slw
-  extends ContactBindObserver
+  implements View.OnClickListener
 {
-  public slw(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public slw(EditInfoActivity paramEditInfoActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.H();
-    if (paramBoolean) {
+    paramView = this.a;
+    if (!this.a.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.a.d();
+      if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837627);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("键盘");
+      if ((!this.a.b) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
+        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      }
       return;
     }
-    QQToast.a(this.a, 1, "当前网络不可用", 1000).a();
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    super.a(paramBoolean, paramInt);
-    if ((this.a.j) && (paramBoolean)) {
-      this.a.a(0L, null, null, false);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     }
-    this.a.j = false;
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844545);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("表情");
+    this.a.a();
   }
 }
 

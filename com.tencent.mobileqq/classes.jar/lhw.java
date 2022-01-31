@@ -1,18 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraProgressView;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraStatusLayout;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateAdapter;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateItemView;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.util.ArrayList;
 
-public class lhw
+class lhw
   implements Runnable
 {
-  public lhw(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  lhw(lhu paramlhu, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt) {}
   
   public void run()
   {
-    ReadInJoyCameraCaptureActivity.b(this.a, 3);
-    ReadInJoyCameraCaptureActivity.a(this.a).a(ReadInJoyCameraCaptureActivity.a(this.a), ReadInJoyCameraCaptureActivity.b(this.a));
-    ReadInJoyCameraCaptureActivity.a(this.a).setStatus(3);
-    ReadInJoyCameraCaptureActivity.a(this.a);
+    int j = ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).getFirstVisiblePosition();
+    int k = ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).getLastVisiblePosition();
+    int i = j;
+    Object localObject;
+    if (i <= k)
+    {
+      if (i < 0) {}
+      do
+      {
+        i += 1;
+        break;
+        localObject = (PtvTemplateManager.PtvTemplateInfo)ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).get(i);
+      } while ((localObject == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraTemplateAdapter", 2, "onProgressUpdate index: " + i + " progress: " + this.jdField_a_of_type_Int);
+      }
+      ((PtvTemplateManager.PtvTemplateInfo)localObject).downloading = true;
+      localObject = ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).getChildAt(i - j);
+      if ((localObject instanceof ReadInJoyCameraTemplateItemView))
+      {
+        localObject = (ReadInJoyCameraTemplateItemView)localObject;
+        if (this.jdField_a_of_type_Int != 100) {
+          break label189;
+        }
+      }
+    }
+    label189:
+    for (i = 99;; i = this.jdField_a_of_type_Int)
+    {
+      ((ReadInJoyCameraTemplateItemView)localObject).b(i);
+      return;
+    }
   }
 }
 

@@ -1,18 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
 public class rmz
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public rmz(BaseChatPie paramBaseChatPie) {}
+  public rmz(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.a, "CliOper", "", "", AIOShareActionSheet.b, AIOShareActionSheet.b, 0, 0, "", "", "", "");
+    if (paramView.getParent() == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramView = (View)paramView.getParent().getParent();
+      } while ((paramView == null) || (paramView.getTag() == null));
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
+    } while (!(paramView.getTag() instanceof SimpleAccount));
+    this.a.a((SimpleAccount)paramView.getTag());
   }
 }
 

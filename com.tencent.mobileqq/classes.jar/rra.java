@@ -1,15 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-class rra
-  implements View.OnTouchListener
+public class rra
+  implements Runnable
 {
-  rra(rqz paramrqz) {}
+  public rra(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return true;
+    this.a.a.showOverScrollHeader();
   }
 }
 

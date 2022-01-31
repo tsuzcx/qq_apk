@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
 import android.annotation.TargetApi;
-import anru;
+import aohz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,7 +25,7 @@ public class VideoFramesRetriever
         QLog.d("VideoFramesRetriever", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    anru localanru2;
+    aohz localaohz2;
     do
     {
       return null;
@@ -33,10 +33,10 @@ public class VideoFramesRetriever
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          anru localanru1 = (anru)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          aohz localaohz1 = (aohz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localanru1.jdField_a_of_type_Long = l;
+          localaohz1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -47,9 +47,9 @@ public class VideoFramesRetriever
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localanru2 = new anru(this, l, paramInt, paramInt + this.b);
+      localaohz2 = new aohz(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localanru2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localaohz2);
     return null;
   }
   

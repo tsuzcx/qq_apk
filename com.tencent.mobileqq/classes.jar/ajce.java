@@ -1,30 +1,35 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.webkit.URLUtil;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.mtt.MttBrowerWrapper;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
 
-public final class ajce
-  extends ClickableSpan
+public class ajce
+  implements Animation.AnimationListener
 {
-  public ajce(String paramString, MessageRecord paramMessageRecord) {}
+  public ajce(TroopAioKeywordTipBar paramTroopAioKeywordTipBar) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-    MttBrowerWrapper.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    if (TroopAioKeywordTipBar.a(this.a) != null) {
+      TroopAioKeywordTipBar.a(this.a).a.clearAnimation();
+    }
+    TroopAioKeywordTipBar.a(this.a);
+    if ((TroopAioKeywordTipBar.a(this.a) != null) && (!TroopAioKeywordTipBar.a(this.a).isSend())) {
+      ((TroopAioKeywordTipManager)this.a.a.getManager(224)).a(this.a.a.getCurrentAccountUin(), TroopAioKeywordTipBar.a(this.a).getExtInfoFromExtStr("key_aio_keyword"), Integer.valueOf(TroopAioKeywordTipBar.a(this.a).ruleId));
+    }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajce
  * JD-Core Version:    0.7.0.1
  */

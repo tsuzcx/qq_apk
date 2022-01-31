@@ -1,7 +1,7 @@
 package cooperation.qqfav.globalsearch;
 
-import alzc;
-import alzd;
+import ampg;
+import amph;
 import android.database.Cursor;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,8 +20,8 @@ public class FavoriteSearchEngine
   private static boolean jdField_a_of_type_Boolean;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private final alzc jdField_a_of_type_Alzc = new alzc(this, null);
-  private final alzd jdField_a_of_type_Alzd = new alzd(this, null);
+  private final ampg jdField_a_of_type_Ampg = new ampg(this, null);
+  private final amph jdField_a_of_type_Amph = new amph(this, null);
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
   private Thread jdField_a_of_type_JavaLangThread;
@@ -53,7 +53,7 @@ public class FavoriteSearchEngine
           paramSearchRequest = null;
           return paramSearchRequest;
         }
-        this.jdField_a_of_type_Alzd.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = paramSearchRequest;
+        this.jdField_a_of_type_Amph.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = paramSearchRequest;
         if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle == null) {
           break label1094;
         }
@@ -101,21 +101,21 @@ public class FavoriteSearchEngine
       l = Math.min(l, this.jdField_a_of_type_Long);
       this.jdField_a_of_type_Int = 0;
       this.jdField_a_of_type_JavaLangThread = Thread.currentThread();
-      this.jdField_a_of_type_Alzc.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Alzc.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Alzc.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Alzc.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_Alzc.jdField_a_of_type_AndroidDatabaseCursor = null;
+      this.jdField_a_of_type_Ampg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Ampg.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Ampg.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Ampg.jdField_a_of_type_Boolean = bool1;
+      this.jdField_a_of_type_Ampg.jdField_a_of_type_AndroidDatabaseCursor = null;
       for (;;)
       {
-        synchronized (this.jdField_a_of_type_Alzc)
+        synchronized (this.jdField_a_of_type_Ampg)
         {
-          this.b = new Thread(this.jdField_a_of_type_Alzc);
+          this.b = new Thread(this.jdField_a_of_type_Ampg);
           this.b.start();
           try
           {
-            this.jdField_a_of_type_Alzc.wait();
-            localObject1 = this.jdField_a_of_type_Alzc.jdField_a_of_type_AndroidDatabaseCursor;
+            this.jdField_a_of_type_Ampg.wait();
+            localObject1 = this.jdField_a_of_type_Ampg.jdField_a_of_type_AndroidDatabaseCursor;
             if (localObject1 == null) {
               break label1078;
             }
@@ -276,23 +276,23 @@ public class FavoriteSearchEngine
     if ((paramSearchRequest == null) || (paramSearchRequest.jdField_a_of_type_JavaLangString == null) || (paramSearchRequest.jdField_a_of_type_JavaLangString.trim().length() == 0)) {
       return;
     }
-    synchronized (this.jdField_a_of_type_Alzd)
+    synchronized (this.jdField_a_of_type_Amph)
     {
-      this.jdField_a_of_type_Alzd.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = paramSearchRequest;
-      this.jdField_a_of_type_Alzd.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = paramISearchListener;
-      ThreadManager.remove(this.jdField_a_of_type_Alzd);
-      ThreadManager.postImmediately(this.jdField_a_of_type_Alzd, null, false);
+      this.jdField_a_of_type_Amph.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = paramSearchRequest;
+      this.jdField_a_of_type_Amph.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = paramISearchListener;
+      ThreadManager.remove(this.jdField_a_of_type_Amph);
+      ThreadManager.postImmediately(this.jdField_a_of_type_Amph, null, false);
       return;
     }
   }
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_Alzd)
+    synchronized (this.jdField_a_of_type_Amph)
     {
-      this.jdField_a_of_type_Alzd.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = null;
-      this.jdField_a_of_type_Alzd.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = null;
-      ThreadManager.remove(this.jdField_a_of_type_Alzd);
+      this.jdField_a_of_type_Amph.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = null;
+      this.jdField_a_of_type_Amph.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = null;
+      ThreadManager.remove(this.jdField_a_of_type_Amph);
       if (this.jdField_a_of_type_JavaLangThread != null) {
         this.jdField_a_of_type_JavaLangThread.interrupt();
       }

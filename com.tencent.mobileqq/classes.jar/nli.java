@@ -1,16 +1,24 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.util.PlayModeInteractViewUtils;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
+import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
+import com.tencent.biz.qqstory.playvideo.ProgressControler;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import java.util.ArrayList;
 
-public final class nli
+class nli
   implements Runnable
 {
-  public nli(VideoPlayModeBase paramVideoPlayModeBase, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, StoryVideoItem paramStoryVideoItem) {}
+  nli(nlh paramnlh) {}
   
   public void run()
   {
-    PlayModeInteractViewUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase, this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, true);
+    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.a.a.a.b, false);
+    if ((this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a != null) && (this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() > 0))
+    {
+      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a);
+      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(this.a.a.a.b());
+    }
+    this.a.a.a.jdField_a_of_type_Boolean = true;
   }
 }
 

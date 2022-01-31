@@ -1,25 +1,18 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.vas.VipGrayConfigHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class tmo
   implements Runnable
 {
-  public tmo(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  public tmo(QQSettingMe paramQQSettingMe) {}
   
   public void run()
   {
-    try
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = null;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "init parse config json");
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    VipGrayConfigHelper.a().a(this.a.a);
   }
 }
 

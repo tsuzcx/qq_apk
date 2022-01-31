@@ -13,10 +13,10 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Timer;
 import java.util.TimerTask;
-import mpg;
-import mph;
-import mpi;
-import mpj;
+import mqn;
+import mqo;
+import mqp;
+import mqq;
 import org.json.JSONObject;
 
 public class ReadInJoyGlobalReporter
@@ -32,7 +32,7 @@ public class ReadInJoyGlobalReporter
   final Object jdField_a_of_type_JavaLangObject = new Object();
   Timer jdField_a_of_type_JavaUtilTimer = null;
   TimerTask jdField_a_of_type_JavaUtilTimerTask = null;
-  public mpj a;
+  public mqq a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = -1L;
@@ -54,7 +54,7 @@ public class ReadInJoyGlobalReporter
   
   public ReadInJoyGlobalReporter()
   {
-    this.jdField_a_of_type_Mpj = null;
+    this.jdField_a_of_type_Mqq = null;
   }
   
   public static ReadInJoyGlobalReporter a()
@@ -137,7 +137,7 @@ public class ReadInJoyGlobalReporter
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if (this.jdField_a_of_type_JavaUtilTimerTask == null) {
-        this.jdField_a_of_type_JavaUtilTimerTask = new mpg(this);
+        this.jdField_a_of_type_JavaUtilTimerTask = new mqn(this);
       }
       if (this.jdField_a_of_type_JavaUtilTimer == null)
       {
@@ -272,27 +272,27 @@ public class ReadInJoyGlobalReporter
   
   public void d()
   {
-    if (this.jdField_a_of_type_Mpj == null) {
-      this.jdField_a_of_type_Mpj = new mpj(this, null);
+    if (this.jdField_a_of_type_Mqq == null) {
+      this.jdField_a_of_type_Mqq = new mqq(this, null);
     }
-    mph localmph = new mph(this);
+    mqo localmqo = new mqo(this);
     if (AppSetting.d)
     {
-      ThreadManager.executeOnSubThread(localmph, true);
+      ThreadManager.executeOnSubThread(localmqo, true);
       return;
     }
-    localmph.run();
+    localmqo.run();
   }
   
   public void e()
   {
-    mpi localmpi = new mpi(this);
+    mqp localmqp = new mqp(this);
     if (AppSetting.d)
     {
-      ThreadManager.executeOnSubThread(localmpi, true);
+      ThreadManager.executeOnSubThread(localmqp, true);
       return;
     }
-    localmpi.run();
+    localmqp.run();
   }
 }
 

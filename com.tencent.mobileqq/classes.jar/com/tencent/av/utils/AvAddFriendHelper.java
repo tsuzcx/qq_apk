@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import kgf;
+import kfq;
 
 public class AvAddFriendHelper
 {
@@ -15,7 +15,7 @@ public class AvAddFriendHelper
   public AvAddFriendHelper(VideoAppInterface paramVideoAppInterface, AvAddFriendHelper.IAvAddFriendCallBack paramIAvAddFriendCallBack)
   {
     this.jdField_a_of_type_ComTencentAvUtilsAvAddFriendHelper$IAvAddFriendCallBack = null;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new kgf(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new kfq(this);
     IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.AddfrindMsg");
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_ComTencentAvUtilsAvAddFriendHelper$IAvAddFriendCallBack = paramIAvAddFriendCallBack;

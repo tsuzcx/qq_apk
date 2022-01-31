@@ -9,7 +9,7 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.UUID;
 import mqq.os.MqqHandler;
-import raz;
+import rdp;
 
 public class LeakInspector
 {
@@ -108,13 +108,13 @@ public class LeakInspector
     while (!MemoryReporter.a().jdField_a_of_type_Boolean) {
       return;
     }
-    paramObject = new raz(this, a(paramObject, paramString), 0);
+    paramObject = new rdp(this, a(paramObject, paramString), 0);
     this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(paramObject, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mfsdk.LeakInspector.LeakInspector
  * JD-Core Version:    0.7.0.1
  */

@@ -104,7 +104,7 @@ public final class MOBILE_LIST_ITEM
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     SecurityAccountServer.MOBILE_LIST_ITEM
  * JD-Core Version:    0.7.0.1
  */

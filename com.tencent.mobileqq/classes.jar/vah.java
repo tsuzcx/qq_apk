@@ -1,35 +1,21 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.HiBoomItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
 
 public class vah
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new vai(this));
-  View jdField_a_of_type_AndroidViewView = null;
-  final OnLongClickAndTouchListener jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener;
+  public vah(HiBoomItemBuilder paramHiBoomItemBuilder) {}
   
-  public vah(QQStoryCommentItemBuilder paramQQStoryCommentItemBuilder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener = paramOnLongClickAndTouchListener;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
+    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
+    if (localMessageRecord != null) {
+      ((FlashChatManager)this.a.a.getManager(216)).a(paramView.getContext(), localMessageRecord);
     }
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-      return true;
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
-    return false;
   }
 }
 

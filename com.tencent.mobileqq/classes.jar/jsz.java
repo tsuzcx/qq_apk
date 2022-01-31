@@ -1,7 +1,5 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.utils.TipsManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class jsz
@@ -11,18 +9,15 @@ public class jsz
   
   public void run()
   {
-    SessionInfo localSessionInfo = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-    QLog.w(this.a.c, 1, "CheckRemoteCameraRunnable, 5s has past, 对方视频数据没来, mRecvVideoData[" + this.a.g + "], SessionType[" + localSessionInfo.d + "], shutCameraAnswer[" + localSessionInfo.i + "], cameraPermission[" + localSessionInfo.j + "]");
-    if ((!this.a.g) && (localSessionInfo.d == 2))
+    try
     {
-      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.b(14, true);
-      this.a.jdField_a_of_type_ComTencentAvVideoController.l(localSessionInfo.c);
-      if ((localSessionInfo.i) || (!localSessionInfo.j))
-      {
-        localSessionInfo.d = 1;
-        this.a.a("CheckRemoteCameraRunnable", 1);
-      }
-      this.a.ad();
+      this.a.a.a(new Object[] { Integer.valueOf(102) });
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(this.a.c, 2, "mRootView.post(new Runnable()-->exception=" + localException.getMessage());
     }
   }
 }

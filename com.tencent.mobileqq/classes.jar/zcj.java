@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.app.IndividualRedPacketManager;
-import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader;
-import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader.RedPacketTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class zcj
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public zcj(IndividualRedPacketManager paramIndividualRedPacketManager) {}
+  public zcj(DataLineHandler paramDataLineHandler, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a(true);
-    if (QLog.isColorLevel()) {
-      QLog.d(IndividualRedPacketManager.b(), 2, "AIO_BG_WIDTH:" + this.a.b);
-    }
-    this.a.a().e();
-    this.a.a().d();
-    this.a.a().c();
-    this.a.a();
-    if (this.a.j > 0)
+    if (paramIntent != null)
     {
-      IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo = this.a.a().a(String.valueOf(this.a.j), true);
-      if ((localRedPacketTemplateInfo == null) || (localRedPacketTemplateInfo.a == null) || (localRedPacketTemplateInfo.b == null) || (localRedPacketTemplateInfo.c == null)) {
-        this.a.a().a(16L, String.valueOf(this.a.j), null);
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")))) {
+        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b();
       }
     }
   }

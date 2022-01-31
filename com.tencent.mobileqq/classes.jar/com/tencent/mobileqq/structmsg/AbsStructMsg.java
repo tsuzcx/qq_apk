@@ -143,7 +143,7 @@ public abstract class AbsStructMsg
       int i = AIOUtils.a(15.0F, paramOnLongClickAndTouchListener);
       int j = AIOUtils.a(7.5F, paramOnLongClickAndTouchListener);
       paramContext = new RelativeLayout(paramContext);
-      paramContext.setBackgroundResource(2130837913);
+      paramContext.setBackgroundResource(2130837916);
       paramContext.setPadding(i, j, i, j);
       paramContext.addView(paramBundle);
       paramContext.setId(2131362099);
@@ -169,7 +169,7 @@ public abstract class AbsStructMsg
       paramContext.setTextColor(Color.parseColor("#000000"));
       int i = BaseChatItemLayout.n;
       int j = BaseChatItemLayout.o;
-      paramView.setBackgroundResource(2130837913);
+      paramView.setBackgroundResource(2130837916);
       paramContext.setPadding(i, BaseChatItemLayout.l, j, BaseChatItemLayout.m);
       paramView.addView(paramContext, new RelativeLayout.LayoutParams(-1, -1));
       return paramView;
@@ -179,7 +179,7 @@ public abstract class AbsStructMsg
   
   public static View getVersionExceptionView(Context paramContext, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, Bundle paramBundle)
   {
-    return getExceptionView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle, 2131433409);
+    return getExceptionView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle, 2131433426);
   }
   
   public boolean LayoutEquals(Object paramObject)
@@ -446,7 +446,7 @@ public abstract class AbsStructMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsg
  * JD-Core Version:    0.7.0.1
  */

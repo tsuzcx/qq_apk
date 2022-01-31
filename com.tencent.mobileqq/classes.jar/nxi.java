@@ -1,31 +1,44 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.GeneralHomeFeed;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedData;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.HomeFeedPresenterListener;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.MemoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest;
+import com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest.GetProfileYearNodeListResponse;
+import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter;
+import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter.GetYearNodeListEvent;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class nxi
-  implements Runnable
+  implements CmdTaskManger.CommandCallback
 {
-  public nxi(HomeFeedPresenter paramHomeFeedPresenter, HomeFeedData paramHomeFeedData) {}
+  public nxi(ProfileFeedPresenter paramProfileFeedPresenter, boolean paramBoolean) {}
   
-  public void run()
+  public void a(@NonNull GetProfileYearNodeListRequest paramGetProfileYearNodeListRequest, @Nullable GetProfileYearNodeListRequest.GetProfileYearNodeListResponse arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.c) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())) {
-      HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).clear();
+    if (ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter).get())
+    {
+      SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
+      return;
     }
-    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).addAll(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.b);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a(HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter));
-    Collections.sort(HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter), GeneralHomeFeed.a);
-    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.b = HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter);
-    SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "had load feed size:%d, take time:%d", Integer.valueOf(HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).size()), Long.valueOf(System.currentTimeMillis() - l));
-    if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter) != null) {
-      HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
+    SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
+    paramGetProfileYearNodeListRequest = new ProfileFeedPresenter.GetYearNodeListEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter, paramErrorMessage);
+    paramGetProfileYearNodeListRequest.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    if ((??? == null) || (paramErrorMessage.isFail()))
+    {
+      Dispatchers.get().dispatch(paramGetProfileYearNodeListRequest);
+      return;
+    }
+    paramGetProfileYearNodeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
+    ((MemoryManager)SuperManager.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
+    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter)
+    {
+      Dispatchers.get().dispatch(paramGetProfileYearNodeListRequest);
+      return;
     }
   }
 }

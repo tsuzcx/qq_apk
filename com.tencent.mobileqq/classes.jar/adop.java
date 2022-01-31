@@ -1,115 +1,107 @@
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gameparty.GamePartyManager;
+import com.tencent.mobileqq.gameparty.GamePartyManager.AsyncRequestCallback;
+import com.tencent.mobileqq.gameparty.PromptDialogActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.agent.report.ReportCenter;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0xaa.SubMsgType0xaa.GameTeam_StartGameMessage;
 
 public class adop
-  implements Runnable
+  implements GamePartyManager.AsyncRequestCallback
 {
-  public adop(LightReplyMenuManager paramLightReplyMenuManager, String paramString) {}
+  public adop(GamePartyManager paramGamePartyManager, long paramLong1, SubMsgType0xaa.GameTeam_StartGameMessage paramGameTeam_StartGameMessage, long paramLong2, boolean paramBoolean) {}
   
-  /* Error */
-  public void run()
+  public void a(String paramString)
   {
-    // Byte code:
-    //   0: invokestatic 27	com/tencent/mobileqq/lightReply/LightReplyMenuManager:a	()Ljava/lang/Object;
-    //   3: astore_1
-    //   4: aload_1
-    //   5: monitorenter
-    //   6: aload_0
-    //   7: getfield 13	adop:jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager	Lcom/tencent/mobileqq/lightReply/LightReplyMenuManager;
-    //   10: getfield 30	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   13: invokevirtual 35	java/util/HashMap:clear	()V
-    //   16: aload_0
-    //   17: getfield 13	adop:jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager	Lcom/tencent/mobileqq/lightReply/LightReplyMenuManager;
-    //   20: getfield 38	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   23: invokeinterface 41 1 0
-    //   28: aload_0
-    //   29: getfield 13	adop:jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager	Lcom/tencent/mobileqq/lightReply/LightReplyMenuManager;
-    //   32: getfield 44	com/tencent/mobileqq/lightReply/LightReplyMenuManager:b	Ljava/util/List;
-    //   35: invokeinterface 41 1 0
-    //   40: aload_0
-    //   41: getfield 13	adop:jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager	Lcom/tencent/mobileqq/lightReply/LightReplyMenuManager;
-    //   44: iconst_0
-    //   45: putfield 47	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_Int	I
-    //   48: aload_1
-    //   49: monitorexit
-    //   50: new 49	java/io/File
-    //   53: dup
-    //   54: aload_0
-    //   55: getfield 15	adop:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   58: invokespecial 52	java/io/File:<init>	(Ljava/lang/String;)V
-    //   61: astore_2
-    //   62: aload_2
-    //   63: invokevirtual 56	java/io/File:exists	()Z
-    //   66: ifeq +62 -> 128
-    //   69: invokestatic 27	com/tencent/mobileqq/lightReply/LightReplyMenuManager:a	()Ljava/lang/Object;
-    //   72: astore_1
-    //   73: aload_1
-    //   74: monitorenter
-    //   75: aload_2
-    //   76: invokestatic 61	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;)Ljava/lang/String;
-    //   79: astore_2
-    //   80: aload_1
-    //   81: monitorexit
-    //   82: aload_0
-    //   83: getfield 13	adop:jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager	Lcom/tencent/mobileqq/lightReply/LightReplyMenuManager;
-    //   86: aload_2
-    //   87: iconst_0
-    //   88: invokevirtual 64	com/tencent/mobileqq/lightReply/LightReplyMenuManager:a	(Ljava/lang/String;Z)Z
-    //   91: pop
-    //   92: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   95: ifeq +11 -> 106
-    //   98: ldc 71
-    //   100: iconst_2
-    //   101: ldc 73
-    //   103: invokestatic 77	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   106: return
-    //   107: astore_2
-    //   108: aload_1
-    //   109: monitorexit
-    //   110: aload_2
-    //   111: athrow
-    //   112: astore_1
-    //   113: ldc 71
-    //   115: iconst_1
-    //   116: ldc 79
-    //   118: aload_1
-    //   119: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   122: return
-    //   123: astore_2
-    //   124: aload_1
-    //   125: monitorexit
-    //   126: aload_2
-    //   127: athrow
-    //   128: invokestatic 69	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   131: ifeq -25 -> 106
-    //   134: ldc 71
-    //   136: iconst_2
-    //   137: ldc 85
-    //   139: invokestatic 77	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   142: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	143	0	this	adop
-    //   112	13	1	localException	java.lang.Exception
-    //   61	26	2	localObject2	Object
-    //   107	4	2	localObject3	Object
-    //   123	4	2	localObject4	Object
-    // Exception table:
-    //   from	to	target	type
-    //   6	50	107	finally
-    //   108	110	107	finally
-    //   0	6	112	java/lang/Exception
-    //   50	75	112	java/lang/Exception
-    //   82	106	112	java/lang/Exception
-    //   110	112	112	java/lang/Exception
-    //   126	128	112	java/lang/Exception
-    //   128	142	112	java/lang/Exception
-    //   75	82	123	finally
-    //   124	126	123	finally
+    QQAppInterface localQQAppInterface = (QQAppInterface)GamePartyManager.a(this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyManager).get();
+    if (localQQAppInterface == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new JSONObject(paramString).getJSONObject("result").getJSONArray("team_list");
+        if (paramString.length() <= 0) {
+          continue;
+        }
+        paramString = paramString.getJSONObject(0);
+        int i;
+        int j;
+        boolean bool;
+        label426:
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        try
+        {
+          i = paramString.getInt("expire");
+          j = i;
+          if (i <= 0) {
+            j = GamePartyManager.a;
+          }
+          i = paramString.getInt("status");
+          if (QLog.isColorLevel()) {
+            QLog.d("GamePartyManager", 2, "handlePushMsg_StartGame, getTeamContext finished, deltaTime = " + this.jdField_a_of_type_Long + ", expire = " + j + ", status = " + i);
+          }
+          if (this.jdField_a_of_type_Long < j)
+          {
+            paramString = paramString.getJSONObject("leader");
+            bool = localQQAppInterface.getCurrentAccountUin().equals(paramString.getString("uin"));
+            if ((i > 0) && (i < 5))
+            {
+              paramString = new Intent(localQQAppInterface.getApp().getApplicationContext(), PromptDialogActivity.class);
+              paramString.addFlags(268435456);
+              paramString.putExtra("title", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_title.get());
+              paramString.putExtra("summary", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_summary.get());
+              paramString.putExtra("picUrl", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_picUrl.get());
+              paramString.putExtra("appid", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_appid.get());
+              paramString.putExtra("packageName", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_packageName.get());
+              paramString.putExtra("gamedata", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_gamedata.get());
+              paramString.putExtra("leader", bool);
+              paramString.putExtra("createMsgTime", this.b);
+              localQQAppInterface.getApp().startActivity(paramString);
+              if (!this.jdField_a_of_type_Boolean) {
+                break label426;
+              }
+              ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2044", "0", false);
+              return;
+              paramString = paramString;
+              if (QLog.isColorLevel()) {
+                QLog.d("GamePartyManager", 2, "handlePushMsg_StartGame, getTeamContext finished, parse json error e = " + paramString);
+              }
+            }
+          }
+          if (this.jdField_a_of_type_Boolean)
+          {
+            ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2044", "1", false);
+            return;
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            i = 0;
+          }
+          ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2043", "0", false);
+          return;
+        }
+        ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2043", "1", false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adop
  * JD-Core Version:    0.7.0.1
  */

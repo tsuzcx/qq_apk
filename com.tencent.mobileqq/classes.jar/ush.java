@@ -1,20 +1,8 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder;
-
-public class ush
-  implements View.OnClickListener
+public abstract interface ush
 {
-  public ush(CommonHobbyForAIOShowItemBuilder paramCommonHobbyForAIOShowItemBuilder) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    paramView = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(paramView)) {
-      CommonHobbyForAIOShowItemBuilder.a(this.a, paramView);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

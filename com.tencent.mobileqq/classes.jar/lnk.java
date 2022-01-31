@@ -1,20 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySwipeView.OnSlidingFinishListener;
 
 public class lnk
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ReadInJoySwipeView.OnSlidingFinishListener
 {
   public lnk(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    if ((paramValueAnimator.getAnimatedFraction() == 1.0F) && (ReadInJoyAtlasFragment.a(this.a) != null))
-    {
-      ReadInJoyAtlasFragment.a(this.a, true);
-      ReadInJoyAtlasFragment.a(this.a).finish();
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("exitType", 2);
+    localBundle.putSerializable("lastShowImageModel", this.a.a.a());
+    ReadInJoyAtlasFragment.a(this.a).a(-2, localBundle);
+    ReadInJoyAtlasFragment.b(this.a, true);
+    ReadInJoyAtlasFragment.a(this.a).finish();
   }
 }
 

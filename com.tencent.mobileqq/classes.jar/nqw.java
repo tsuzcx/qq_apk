@@ -1,23 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader;
-import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader.CacheContext;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
 
 public class nqw
-  extends SimpleJob
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public nqw(ShareGroupDateListPageLoader paramShareGroupDateListPageLoader) {}
+  public nqw(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    if (this.a.a == null) {
-      this.a.a = new ShareGroupDateListPageLoader.CacheContext(this.a, this.a.c);
-    }
-    this.a.d = "";
-    ShareGroupDateListPageLoader.a(this.a);
-    return null;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper);
   }
 }
 

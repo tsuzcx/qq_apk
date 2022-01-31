@@ -1,23 +1,18 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import com.tencent.mobileqq.search.HotWordSearchEntryModel;
 
-public class ahrf
-  extends SQLiteOpenHelper
+class ahrf
+  implements Runnable
 {
-  public ahrf(MigrateSubscribeDB paramMigrateSubscribeDB, Context paramContext, String paramString, int paramInt)
+  ahrf(ahre paramahre) {}
+  
+  public void run()
   {
-    super(paramContext, paramString, null, paramInt);
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.b(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel);
   }
-  
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahrf
  * JD-Core Version:    0.7.0.1
  */

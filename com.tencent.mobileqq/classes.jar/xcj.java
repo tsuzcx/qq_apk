@@ -1,35 +1,36 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.ResUtil;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import java.util.List;
 
 public class xcj
-  extends DownloadListener
+  implements IRedPacket.OnGetAvailableListListener
 {
-  public xcj(PreloadManager paramPreloadManager, WeakReference paramWeakReference, boolean paramBoolean, PreloadManager.OnGetPathListener paramOnGetPathListener) {}
+  public xcj(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onDoneFile(DownloadTask paramDownloadTask)
+  public void OnGetAvailableList(List paramList)
   {
-    super.onDoneFile(paramDownloadTask);
-    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!PreloadManager.a((PreloadManager)localObject)) {
-      return;
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
     }
-    if (paramDownloadTask.jdField_a_of_type_Int == 0)
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      localObject = ResUtil.a(paramDownloadTask.jdField_a_of_type_JavaLangString, (PreloadManager)localObject, this.jdField_a_of_type_Boolean, 0);
-      PreloadManager.PathResult localPathResult = new PreloadManager.PathResult();
-      localPathResult.url = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      localPathResult.filePath = ((ResourceInfo)localObject).filePath;
-      localPathResult.folderPath = ((ResourceInfo)localObject).folderPath;
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(0, localPathResult);
-      return;
+      TroopUnAccalimedRedPacketList.a().setVisibility(8);
+      TroopUnAccalimedRedPacketList.a().setVisibility(0);
+      TroopUnAccalimedRedPacketList.a().setText("暂无未领红包");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(1, PreloadManager.PathResult.getFailRes(paramDownloadTask.jdField_a_of_type_JavaLangString));
+    do
+    {
+      return;
+      TroopUnAccalimedRedPacketList.a().setVisibility(0);
+      TroopUnAccalimedRedPacketList.a().setVisibility(8);
+      TroopUnAccalimedRedPacketList.a().a(paramList);
+    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+    TroopUnAccalimedRedPacketList.a(this.a).start();
   }
 }
 

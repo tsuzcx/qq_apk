@@ -1,41 +1,38 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.log.VipWebViewReportLog;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public final class akqv
+public class akqv
   implements Runnable
 {
-  public akqv(String paramString, DownloadQueryListener paramDownloadQueryListener) {}
+  public akqv(SwiftWebAccelerator paramSwiftWebAccelerator, long paramLong) {}
   
   public void run()
   {
-    LogUtility.a(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia enter");
-    try
+    long l = System.currentTimeMillis();
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers.run cost " + (l - this.jdField_a_of_type_Long) + "ms.");
+    l = System.currentTimeMillis();
+    if (!VipWebViewReportLog.a())
     {
-      new ArrayList();
-      List localList = DownloadManager.a().b(this.jdField_a_of_type_JavaLangString);
-      LogUtility.a(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia result = " + localList);
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.b_(localList);
-      }
-      return;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().waitAppRuntime(null);
+      VipWebViewReportLog.a(BaseApplicationImpl.sApplication.getApplicationContext(), localAppRuntime);
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        LogUtility.c(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
-      } while (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
-    }
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load http core data config, cost " + (System.currentTimeMillis() - l) + "ms.");
+    l = System.currentTimeMillis();
+    SwiftWebViewUtils.a();
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load cdn cache config, cost " + (System.currentTimeMillis() - l) + "ms.");
+    l = System.currentTimeMillis();
+    IndividuationUrlHelper.a(BaseApplicationImpl.sApplication.getRuntime());
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_FireOthers:load Individuation url config, cost " + (System.currentTimeMillis() - l) + "ms.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akqv
  * JD-Core Version:    0.7.0.1
  */

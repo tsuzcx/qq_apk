@@ -24,7 +24,7 @@ public class AlbumBackupProxyActivity
     localIntent.putExtra("weiyun_backup_source", paramString2);
     paramString2 = new IPluginManager.PluginParams(0);
     paramString2.jdField_b_of_type_JavaLangString = "WeiyunPlugin.apk";
-    paramString2.d = paramActivity.getResources().getString(2131439302);
+    paramString2.d = paramActivity.getResources().getString(2131439340);
     paramString2.jdField_a_of_type_JavaLangString = paramString1;
     paramString2.e = "com.weiyun.plugin.cloudalbum.activity.CloudAlbumActivity";
     paramString2.jdField_a_of_type_JavaLangClass = AlbumBackupProxyActivity.class;

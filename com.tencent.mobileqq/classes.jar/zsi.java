@@ -1,42 +1,24 @@
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.BaseMessageManagerForTroopAndDisc;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.troop.data.TroopMessageManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
 
 public class zsi
   implements Runnable
 {
-  public zsi(ProxyManager paramProxyManager) {}
+  public zsi(BaseMessageManagerForTroopAndDisc paramBaseMessageManagerForTroopAndDisc, long paramLong1, long paramLong2, int paramInt, long paramLong3, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
-    ProxyManager.a(this.a, System.currentTimeMillis());
-    while (!this.a.jdField_a_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaLangObject)
-      {
-        try
-        {
-          this.a.c();
-          this.a.jdField_a_of_type_JavaLangObject.wait(ProxyManager.a());
-          ThreadRegulator.a().b();
-          if (((!ProxyManager.a(this.a).isEmpty()) || (ProxyManager.a(this.a).a().size() > 0)) && (ProxyManager.a(this.a)))
-          {
-            this.a.d();
-            ProxyManager.a(this.a).c();
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("Q.msg.MsgProxy", 2, "writeRunable Exception:", localException);
-            }
-          }
-        }
-      }
+    long l = Math.min(this.jdField_a_of_type_Long, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageManager.trooptroop_pull_msg.troop_parallel_pull_msg.trooptroop_pull_msg", 2, "--->>pkgIndex : " + this.jdField_a_of_type_Int + " beginSeq:" + this.c + " fixEndSeq:" + l);
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a().a(this.jdField_a_of_type_JavaLangString, this.c, l);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.c, l, true, this.jdField_a_of_type_AndroidOsBundle, 0);
   }
 }
 

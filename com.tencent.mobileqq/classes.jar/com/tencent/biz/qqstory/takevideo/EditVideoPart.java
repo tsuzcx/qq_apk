@@ -30,12 +30,12 @@ public abstract class EditVideoPart
     }
   }
   
-  public void H_()
+  public void M_()
   {
     e();
   }
   
-  public void I_()
+  public void N_()
   {
     e();
   }

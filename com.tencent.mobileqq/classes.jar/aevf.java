@@ -1,36 +1,13 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
 
 public class aevf
-  implements IphonePickerView.PickerViewAdapter
+  implements Runnable
 {
-  public aevf(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public aevf(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
-  public int getColumnCount()
+  public void run()
   {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
-    {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
-    }
-    else
-    {
-      paramInt1 = 0;
-    }
-    if (paramInt1 == 0) {
-      return "男";
-    }
-    return "女";
+    this.a.d();
   }
 }
 

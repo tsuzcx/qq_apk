@@ -72,11 +72,11 @@ public abstract class ProviderView
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)BaseApplicationImpl.getApplication().getRuntime());
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2130970063, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2130970077, this, false);
       addView(paramBundle);
-      this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131368876));
-      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131368879));
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131368878));
+      this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131368943));
+      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131368946));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131368945));
     }
     paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
     paramBundle.height = UIUtils.a(getContext(), this.e);
@@ -91,7 +91,7 @@ public abstract class ProviderView
         if (this.jdField_d_of_type_Int != 1) {
           break label176;
         }
-        findViewById(2131368877).setVisibility(0);
+        findViewById(2131368944).setVisibility(0);
       }
     }
     for (;;)
@@ -135,14 +135,14 @@ public abstract class ProviderView
     if (this.jdField_a_of_type_AndroidViewView == null) {}
     try
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2130970063, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2130970077, this, false);
       addView(paramBundle);
       if (this.jdField_b_of_type_AndroidViewView == null)
       {
         this.jdField_b_of_type_AndroidViewView = paramBundle;
-        this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368876));
-        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368879));
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131368878));
+        this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368943));
+        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368946));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131368945));
       }
       paramBundle = LayoutInflater.from(getContext()).inflate(a(), this, false);
       if (this.jdField_a_of_type_AndroidViewView == null) {

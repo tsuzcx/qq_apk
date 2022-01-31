@@ -1,26 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class sta
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public sta(JumpActivity paramJumpActivity) {}
+  public sta(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, String paramString, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.finish();
-      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
-    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.app, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     sta
  * JD-Core Version:    0.7.0.1
  */

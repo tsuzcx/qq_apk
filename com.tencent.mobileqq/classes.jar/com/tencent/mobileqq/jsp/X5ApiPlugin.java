@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import adoi;
+import adyj;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -64,7 +64,7 @@ public class X5ApiPlugin
   private void a(WebView paramWebView, X5ApiPlugin.PreloadTask paramPreloadTask)
   {
     this.a.put(paramPreloadTask.jdField_a_of_type_JavaLangString, paramPreloadTask);
-    ThreadManager.post(new adoi(this, paramPreloadTask, paramWebView), 5, null, true);
+    ThreadManager.post(new adyj(this, paramPreloadTask, paramWebView), 5, null, true);
   }
   
   private void a(boolean paramBoolean)
@@ -170,7 +170,7 @@ public class X5ApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.X5ApiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,33 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils.TroopPrivilegeCallback;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import java.util.ArrayList;
 
 public class uad
-  implements TroopNotificationUtils.TroopPrivilegeCallback
+  implements View.OnClickListener
 {
-  public uad(TroopRequestActivity paramTroopRequestActivity) {}
+  public uad(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
+  public void onClick(View paramView)
   {
-    int i;
-    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
+    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
     {
-      i = 1;
-      if (i == 0) {
-        break label126;
+      paramView = new Intent();
+      paramView.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
+      this.a.setResult(-1, paramView);
+      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
+        break label159;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.TroopRequestActivity", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
-      }
-      TroopNotificationUtils.a(this.a, paramString);
-      TroopNotificationUtils.a(this.a.app);
-      this.a.i();
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "pay_troop", "", "", "");
     }
-    label126:
-    do
+    label159:
+    for (int i = 0;; i = 1)
     {
-      do
-      {
-        do
-        {
-          return;
-          i = 0;
-          break;
-          if (((this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 11) || (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() != 3)) && (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 7)) {
-            break label250;
-          }
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler == null);
-        try
-        {
-          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
-          this.a.h();
-          this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(l, 8390784);
-          return;
-        }
-        catch (Exception paramString) {}
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, paramString.toString());
+      ReportController.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
+      this.a.finish();
       return;
-      this.a.h();
-      TroopRequestActivity.a(this.a, 1);
-    } while (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 2);
-    label250:
-    ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
-    ReportController.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
-  }
-  
-  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.i();
-    ReportController.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.systemmsg.TroopRequestActivity", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
     }
   }
 }

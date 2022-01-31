@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.fragment.MineFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public final class adcx
-  implements Runnable
+public class adcx
+  implements View.OnClickListener
 {
-  public adcx(NearbyAppInterface paramNearbyAppInterface) {}
+  public adcx(DefaultFileModel paramDefaultFileModel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MineFragment.b(this.a);
+    FileManagerUtil.b(this.a.a, this.a.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adcx
  * JD-Core Version:    0.7.0.1
  */

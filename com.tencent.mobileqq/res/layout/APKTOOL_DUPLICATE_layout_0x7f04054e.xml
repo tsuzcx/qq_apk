@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="40.0dip" android:typeface="serif" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a15" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="“" android:layout_alignParentLeft="true" />
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03b0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginTop="15.0dip" android:text="hellen 上午11:00" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1a15" />
-    <com.etrump.mixlayout.ETTextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12da" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text   Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1a15" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a03b0" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e9c" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="22.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="22.0dip" android:layout_marginBottom="8.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a12da" />
-</RelativeLayout>
+<TextView android:textSize="19.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c056f" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="80.0dip" android:minHeight="36.0dip" android:maxLines="2" android:singleLine="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

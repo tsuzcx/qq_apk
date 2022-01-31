@@ -1,26 +1,89 @@
-import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Parcelable;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import com.tencent.biz.qrcode.CodeMaskManager.Callback;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class osi
-  implements Runnable
+public class osi
+  extends Thread
 {
-  osi(osh paramosh, boolean paramBoolean, String paramString) {}
+  Bundle jdField_a_of_type_AndroidOsBundle;
+  CodeMaskManager.Callback jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  
+  public osi(CodeMaskManager paramCodeMaskManager, CodeMaskManager.Callback paramCallback, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback = paramCallback;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  Bundle a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrsz"))
+      {
+        Object localObject1 = ((QRDisplayActivity)this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidAppActivity).a();
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
+        if (!bool) {
+          try
+          {
+            localObject1 = QRUtils.a((String)localObject1, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
+            if (localObject1 == null) {
+              return null;
+            }
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              localObject2 = null;
+            }
+          }
+        }
+      }
+      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("bkgUrl"))
+      {
+        localObject2 = CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager, this.jdField_a_of_type_AndroidOsBundle.getString("bkgUrl"));
+        this.jdField_a_of_type_AndroidOsBundle.putParcelable("bkg", (Parcelable)localObject2);
+        this.jdField_a_of_type_AndroidOsBundle.remove("bkgUrl");
+      }
+      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrbkgUrl"))
+      {
+        localObject2 = CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager, this.jdField_a_of_type_AndroidOsBundle.getString("qrbkgUrl"));
+        this.jdField_a_of_type_AndroidOsBundle.putParcelable("qrbkg", (Parcelable)localObject2);
+        this.jdField_a_of_type_AndroidOsBundle.remove("qrbkgUrl");
+      }
+      Object localObject2 = this.jdField_a_of_type_AndroidOsBundle;
+      return localObject2;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CodeMaskManager", 2, localOutOfMemoryError.getMessage());
+      }
+      System.gc();
+      return null;
+    }
+    catch (IOException localIOException)
+    {
+      label184:
+      break label184;
+    }
+  }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_Osh.a.sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_Osh.a.getString(2131429984, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_Osh.a.getTitleBarHeight());
-      return;
+    Bundle localBundle = a();
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+      this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidOsHandler.post(new osj(this, localBundle));
     }
-    QRUtils.a(1, 2131429985);
   }
 }
 

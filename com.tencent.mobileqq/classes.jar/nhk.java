@@ -1,24 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.qqstory.newshare.model.Job;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor;
 
 public class nhk
-  implements View.OnClickListener
+  implements Runnable
 {
-  public nhk(VideoPlayModeBase paramVideoPlayModeBase) {}
+  public nhk(JobExecutor paramJobExecutor, Job paramJob) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer.a();
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.b());
   }
 }
 

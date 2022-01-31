@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
 
 public class lck
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lck(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public lck(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.k = true;
-    ReadInJoyBaseDeliverActivity.a(this.a);
-    this.a.a();
+    ReadInJoyGlobalReporter.a().a();
+    ReadInJoyGlobalReporter.a().b(this.a.app);
   }
 }
 

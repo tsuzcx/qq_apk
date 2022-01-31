@@ -10,7 +10,7 @@ import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.utils.ImageUtil;
 import java.io.File;
 import java.net.URL;
-import pdo;
+import pfi;
 
 @Deprecated
 public class UrlGalleryAdapter
@@ -125,7 +125,7 @@ public class UrlGalleryAdapter
       if ((localURLDrawable != null) && (localURLDrawable.getStatus() != 1) && (localURLDrawable.getStatus() != 4) && (localURLDrawable.getStatus() != 2))
       {
         int i = localURLDrawable.getProgress();
-        localURLImageView.setURLDrawableDownListener(new pdo(this, paramInt, paramViewGroup));
+        localURLImageView.setURLDrawableDownListener(new pfi(this, paramInt, paramViewGroup));
         a(paramInt, i / 100);
         return localURLImageView;
       }

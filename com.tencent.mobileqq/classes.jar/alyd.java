@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qlink.SendMsg;
+import com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask;
 
-public final class alyd
-  implements Parcelable.Creator
+public class alyd
+  implements Runnable
 {
-  public SendMsg a(Parcel paramParcel)
-  {
-    return new SendMsg(paramParcel);
-  }
+  public alyd(QPTxVerifyApkTimerTask paramQPTxVerifyApkTimerTask) {}
   
-  public SendMsg[] a(int paramInt)
+  public void run()
   {
-    return new SendMsg[paramInt];
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alyd
  * JD-Core Version:    0.7.0.1
  */

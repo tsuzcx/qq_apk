@@ -1,6 +1,6 @@
 package cooperation.dingdong;
 
-import alup;
+import amkt;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -195,7 +195,7 @@ public class DingdongPluginHelper
   
   public static void a(int paramInt, Intent paramIntent)
   {
-    new alup(paramIntent, paramInt).execute(new Void[] { null, null, null });
+    new amkt(paramIntent, paramInt).execute(new Void[] { null, null, null });
   }
   
   public static void a(int paramInt, String paramString)

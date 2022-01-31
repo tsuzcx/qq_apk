@@ -3,7 +3,7 @@ package photo_share.cnst;
 public abstract interface kShareKeyOutUrl {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     photo_share.cnst.kShareKeyOutUrl
  * JD-Core Version:    0.7.0.1
  */

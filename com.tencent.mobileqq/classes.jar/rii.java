@@ -1,31 +1,38 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import android.os.Handler;
+import com.tencent.biz.common.util.OpenIdObserver;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class rii
-  implements CompoundButton.OnCheckedChangeListener
+  extends OpenIdObserver
 {
-  public rii(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rii(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    paramCompoundButton = (ArkAppCenter)this.a.app.getManager(120);
-    if (paramCompoundButton != null)
+    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Boolean)) {}
+    do
     {
-      paramCompoundButton.a().a(this.a.app, paramBoolean);
-      if (!paramBoolean) {
-        ArkAppDataReport.a();
-      }
-    }
-    else
-    {
+      do
+      {
+        return;
+        AddFriendLogicActivity.a(this.a).hide();
+        if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("qqBaseActivity", 2, "openIdObserver success");
+        }
+      } while (paramOpenID.openID.equals(AddFriendLogicActivity.jdField_a_of_type_JavaLangString));
+      this.a.a();
       return;
-    }
-    ArkAppDataReport.b();
+    } while (!QLog.isColorLevel());
+    QLog.d("qqBaseActivity", 2, "openIdObserver fail");
   }
 }
 

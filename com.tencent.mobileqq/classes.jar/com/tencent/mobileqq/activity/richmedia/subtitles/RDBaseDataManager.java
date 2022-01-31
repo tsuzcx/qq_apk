@@ -22,12 +22,12 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import xsq;
-import xsw;
-import xsx;
-import xsy;
-import xsz;
-import xta;
+import xvw;
+import xwc;
+import xwd;
+import xwe;
+import xwf;
+import xwg;
 
 public abstract class RDBaseDataManager
   implements INetEngine.INetEngineListener
@@ -148,7 +148,7 @@ public abstract class RDBaseDataManager
       if (QLog.isColorLevel()) {
         QLog.i("RDBaseDataManager", 2, "local sp config version is : " + this.jdField_a_of_type_Int);
       }
-      boolean bool = RDConfigServletProxy.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.b, this.jdField_a_of_type_JavaLangString, new xta(this));
+      boolean bool = RDConfigServletProxy.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.b, this.jdField_a_of_type_JavaLangString, new xwg(this));
       if (!bool)
       {
         this.jdField_c_of_type_Int = 0;
@@ -202,30 +202,30 @@ public abstract class RDBaseDataManager
       return -1;
     }
     a(paramString2);
-    xsq localxsq = new xsq();
-    localxsq.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    localxsq.b = paramString4;
-    localxsq.jdField_a_of_type_JavaLangString = paramString3;
+    xvw localxvw = new xvw();
+    localxvw.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    localxvw.b = paramString4;
+    localxvw.jdField_a_of_type_JavaLangString = paramString3;
     try
     {
       paramString3 = new HttpNetReq();
       paramString3.jdField_a_of_type_JavaLangString = paramString1;
       paramString3.jdField_a_of_type_Int = 0;
       paramString3.jdField_c_of_type_JavaLangString = paramString2;
-      paramString3.a(localxsq);
+      paramString3.a(localxvw);
       paramString3.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
       paramString3.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
       AVNetEngine.a().a(paramString3);
       if (QLog.isColorLevel()) {
         QLog.i("RDBaseDataManager", 2, "startDownload, url: " + paramString1 + " ; path:" + paramString2);
       }
-      return localxsq.jdField_a_of_type_Int;
+      return localxvw.jdField_a_of_type_Int;
     }
     catch (Exception paramString3)
     {
       for (;;)
       {
-        localxsq.jdField_a_of_type_Int = -1;
+        localxvw.jdField_a_of_type_Int = -1;
         QLog.e("RDBaseDataManager", 2, "startDownload, url: " + paramString1 + " ; path:" + paramString2);
         QLog.i("RDBaseDataManager", 2, "exception: " + paramString3.toString());
       }
@@ -257,8 +257,8 @@ public abstract class RDBaseDataManager
     if (paramNetReq == null) {
       return;
     }
-    paramNetReq = (xsq)paramNetReq.a();
-    ThreadManager.getUIHandler().post(new xsz(this, paramNetReq, paramLong1, paramLong2));
+    paramNetReq = (xvw)paramNetReq.a();
+    ThreadManager.getUIHandler().post(new xwf(this, paramNetReq, paramLong1, paramLong2));
   }
   
   public void a(NetResp paramNetResp)
@@ -269,37 +269,37 @@ public abstract class RDBaseDataManager
       QLog.e("RDBaseDataManager", 2, "onResp  param error!");
       return;
     }
-    xsq localxsq = (xsq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
+    xvw localxvw = (xvw)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
     if (QLog.isColorLevel()) {
-      QLog.i("RDBaseDataManager", 2, "onResp  ID:" + localxsq.jdField_a_of_type_Int + "  result:" + paramNetResp.jdField_a_of_type_Int);
+      QLog.i("RDBaseDataManager", 2, "onResp  ID:" + localxvw.jdField_a_of_type_Int + "  result:" + paramNetResp.jdField_a_of_type_Int);
     }
     if (paramNetResp.jdField_a_of_type_Int != 0)
     {
-      ThreadManager.getUIHandler().post(new xsx(this, localxsq));
+      ThreadManager.getUIHandler().post(new xwd(this, localxvw));
       return;
     }
     int i;
     if (!TextUtils.isEmpty(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.jdField_c_of_type_JavaLangString))
     {
       i = j;
-      if (!TextUtils.isEmpty(localxsq.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localxvw.jdField_a_of_type_JavaLangString))
       {
         String str = FileUtils.b(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.jdField_c_of_type_JavaLangString);
-        if (localxsq.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str)) {
+        if (localxvw.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str)) {
           i = j;
         }
       }
       else
       {
         j = i;
-        if (TextUtils.isEmpty(localxsq.b)) {}
+        if (TextUtils.isEmpty(localxvw.b)) {}
       }
     }
     for (;;)
     {
       try
       {
-        FileUtils.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.jdField_c_of_type_JavaLangString, localxsq.b, false);
+        FileUtils.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.jdField_c_of_type_JavaLangString, localxvw.b, false);
         j = i;
       }
       catch (Exception localException)
@@ -309,7 +309,7 @@ public abstract class RDBaseDataManager
         j = i;
         continue;
       }
-      ThreadManager.getUIHandler().post(new xsy(this, localxsq, j, paramNetResp));
+      ThreadManager.getUIHandler().post(new xwe(this, localxvw, j, paramNetResp));
       return;
       i = 1;
       break;
@@ -330,7 +330,7 @@ public abstract class RDBaseDataManager
       if (this.jdField_a_of_type_AndroidOsHandler == null) {
         this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new xsw(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new xwc(this));
       return;
     }
     d();

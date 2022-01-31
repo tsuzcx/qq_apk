@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import acye;
-import acyf;
-import acyg;
+import adib;
+import adic;
+import adid;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -976,17 +976,17 @@ public class UniformDownloadUtil
   
   public static void a(String paramString)
   {
-    a(paramString, new acyg(paramString));
+    a(paramString, new adid(paramString));
   }
   
   public static void a(String paramString, UniformDownloadUtil.GetApkNameCallback paramGetApkNameCallback)
   {
-    FileManagerUtil.FileExecutor.a().execute(new acyf(paramString, paramGetApkNameCallback));
+    FileManagerUtil.FileExecutor.a().execute(new adic(paramString, paramGetApkNameCallback));
   }
   
   public static void a(String paramString, UniformDownloadUtil.GetFileInfoCallBack paramGetFileInfoCallBack)
   {
-    ThreadManager.getSubThreadHandler().post(new acye(paramString, paramGetFileInfoCallBack));
+    ThreadManager.getSubThreadHandler().post(new adib(paramString, paramGetFileInfoCallBack));
   }
   
   public static boolean a(String paramString)

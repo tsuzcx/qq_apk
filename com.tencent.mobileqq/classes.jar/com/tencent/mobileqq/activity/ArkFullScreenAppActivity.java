@@ -44,13 +44,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
-import rhu;
-import rhv;
-import rhw;
-import rhx;
-import rhy;
-import rhz;
-import ria;
+import rkr;
+import rks;
+import rkt;
+import rku;
+import rkv;
+import rkw;
+import rkx;
 
 public class ArkFullScreenAppActivity
   extends IphoneTitleBarActivity
@@ -58,7 +58,7 @@ public class ArkFullScreenAppActivity
   private static ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private int jdField_a_of_type_Int = 0;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ArkAppContainer.ArkAppModuleCallback jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer$ArkAppModuleCallback = new rhu(this);
+  private ArkAppContainer.ArkAppModuleCallback jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer$ArkAppModuleCallback = new rkr(this);
   ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
   protected ArkTopGestureLayout a;
   private QQCustomArkDialog.AppInfo jdField_a_of_type_ComTencentMobileqqUtilsQQCustomArkDialog$AppInfo;
@@ -369,9 +369,9 @@ public class ArkFullScreenAppActivity
   public void a()
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.a(getString(2131438227), 0);
-    localActionSheet.a(new ria(this, localActionSheet));
-    localActionSheet.c(2131432998);
+    localActionSheet.a(getString(2131438245), 0);
+    localActionSheet.a(new rkx(this, localActionSheet));
+    localActionSheet.c(2131433015);
     localActionSheet.show();
   }
   
@@ -454,37 +454,37 @@ public class ArkFullScreenAppActivity
     setContentView(2130968704);
     Object localObject = (FrameLayout)findViewById(16908290);
     if (this.titleRoot != null) {
-      this.titleRoot.setBackgroundColor(getResources().getColor(2131493851));
+      this.titleRoot.setBackgroundColor(getResources().getColor(2131493857));
     }
     ((NavBarCommon)this.vg).a(true);
     this.leftView.setText("");
     this.leftView.setMinWidth(AIOUtils.a(35.0F, getResources()));
-    localObject = (RelativeLayout)findViewById(2131363226);
+    localObject = (RelativeLayout)findViewById(2131363244);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839142);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839146);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(15);
-    localLayoutParams.addRule(1, 2131363227);
+    localLayoutParams.addRule(1, 2131363245);
     ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new rhv(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new rks(this));
     int i = AIOUtils.a(6.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding(i, 0, i, 0);
-    this.rightViewImg = ((ImageView)findViewById(2131363456));
+    this.rightViewImg = ((ImageView)findViewById(2131363474));
     this.rightViewImg.setBackgroundDrawable(null);
     setLayerType(this.rightViewImg);
     this.rightViewImg.setVisibility(4);
-    this.rightViewImg.setImageResource(2130839144);
+    this.rightViewImg.setImageResource(2130839148);
     this.rightViewImg.setContentDescription("分享");
-    this.rightViewImg.setOnClickListener(new rhw(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)findViewById(2131363291));
+    this.rightViewImg.setOnClickListener(new rkt(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)findViewById(2131363309));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setBorderType(0);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new rhx(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.post(new rhy(this, paramBundle));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new rku(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.post(new rkv(this, paramBundle));
     if (QLog.isColorLevel()) {
       QLog.d("ArkFullScreenAppActivity", 2, "doOnCreate:" + paramBundle);
     }
-    findViewById(2131363226);
+    findViewById(2131363244);
     ArkAppDataReport.d(this.app, paramBundle.getString("appName"), ArkAppDataReport.h, 0);
     ArkViewAdjustFromKeyboard.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler)))
@@ -494,19 +494,19 @@ public class ArkFullScreenAppActivity
     }
     if (ThemeUtil.isInNightMode(this.app))
     {
-      paramBundle = (RelativeLayout)findViewById(2131363995);
-      LayoutInflater.from(this).inflate(2130969633, paramBundle);
+      paramBundle = (RelativeLayout)findViewById(2131364019);
+      LayoutInflater.from(this).inflate(2130969641, paramBundle);
     }
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("show_as_card", false);
     this.b = getIntent().getIntExtra("card_height", 0);
     if ((this.jdField_a_of_type_Boolean) && (this.b > 0))
     {
-      findViewById(2131363226).setVisibility(8);
+      findViewById(2131363244).setVisibility(8);
       paramBundle = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLayoutParams();
       paramBundle.addRule(12);
       paramBundle.height = this.b;
       this.titleRoot.setBackgroundResource(0);
-      this.titleRoot.setOnClickListener(new rhz(this));
+      this.titleRoot.setOnClickListener(new rkw(this));
     }
     return true;
   }

@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
-import com.tencent.mobileqq.util.AccessibilityUtil;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
-class sus
-  implements Runnable
+public class sus
+  implements DialogInterface.OnClickListener
 {
-  sus(sur paramsur, ArrayList paramArrayList) {}
+  public sus(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void run()
-  {
-    if ((Leba.a(this.jdField_a_of_type_Sur.a) != null) && (Leba.a(this.jdField_a_of_type_Sur.a) != null)) {
-      Leba.a(this.jdField_a_of_type_Sur.a).a(this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    if (Leba.a(this.jdField_a_of_type_Sur.a) != null) {
-      AccessibilityUtil.a(Leba.a(this.jdField_a_of_type_Sur.a), "好友动态 有更新");
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

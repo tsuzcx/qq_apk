@@ -1,16 +1,14 @@
 import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
 
 public class lpj
   implements Runnable
 {
-  public lpj(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
+  public lpj(ArticleInfoModule paramArticleInfoModule, ChannelTopCookie paramChannelTopCookie) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelTopCookie);
   }
 }
 

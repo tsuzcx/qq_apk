@@ -1,23 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.managers.LoadingStateManager;
 
-public class sgb
-  implements Handler.Callback
+class sgb
+  implements Runnable
 {
-  public sgb(Conversation paramConversation) {}
+  sgb(sga paramsga, MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    LoadingStateManager.a().a(paramMessage.what);
-    if (paramMessage.what == 4)
-    {
-      this.a.a(1134013, 0L, false);
-      return true;
+    Conversation.a(this.jdField_a_of_type_Sga.a.a, true);
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a) && (this.jdField_a_of_type_Sga.a.a.a != null)) {
+      this.jdField_a_of_type_Sga.a.a.a.d();
     }
-    this.a.d(true);
-    return true;
   }
 }
 

@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
 
-class jdj
-  implements DialogInterface.OnClickListener
+public class jdj
+  implements Runnable
 {
-  jdj(jdi paramjdi) {}
+  public jdj(VideoController paramVideoController, String paramString1, int paramInt, String paramString2, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.h(true);
+    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, null, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_Boolean, 0);
   }
 }
 

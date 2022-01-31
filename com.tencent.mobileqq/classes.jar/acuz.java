@@ -1,26 +1,39 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class acuz
-  implements Runnable
+  extends MqqHandler
 {
-  public acuz(VideoFilePresenter paramVideoFilePresenter) {}
-  
-  public void run()
+  public acuz(FileManagerNotifyCenter paramFileManagerNotifyCenter, Looper paramLooper)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      VideoFilePresenter.a(this.a, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration());
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(VideoFilePresenter.a(this.a));
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.b(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.f(true);
+    default: 
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
+    }
+    this.a.a.a().a(true);
+    this.a.a.a().b(-1);
+    FileVideoManager.a(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acuz
  * JD-Core Version:    0.7.0.1
  */

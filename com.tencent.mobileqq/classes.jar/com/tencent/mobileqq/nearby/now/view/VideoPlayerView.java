@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import aelb;
-import aelc;
-import aeld;
-import aele;
-import aelf;
-import aelg;
-import aelh;
-import aeli;
+import aeyh;
+import aeyi;
+import aeyj;
+import aeyk;
+import aeyl;
+import aeym;
+import aeyn;
+import aeyo;
 import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
@@ -112,7 +112,7 @@ public class VideoPlayerView
   
   public static void a(Context paramContext)
   {
-    TVK_SDKMgr.setOnLogListener(new aeli(null));
+    TVK_SDKMgr.setOnLogListener(new aeyo(null));
     TVK_SDKMgr.initSdk(paramContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
   }
   
@@ -136,7 +136,7 @@ public class VideoPlayerView
     localObject = VideoViewTVKImpl.a(DownloadTask.a("vid_" + a(paramString), 0), (String)localObject + ".tmp", 0L);
     ((TVK_PlayerVideoInfo)localObject).setConfigMap("cache_duration", "5");
     paramString = InnerDns.b(paramString.replace("https://", "http://"), 1012);
-    localTVK_ICacheMgr.setPreloadCallback(new aelb());
+    localTVK_ICacheMgr.setPreloadCallback(new aeyh());
     localTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, (TVK_PlayerVideoInfo)localObject);
   }
   
@@ -170,14 +170,14 @@ public class VideoPlayerView
   public void a(RelativeLayout paramRelativeLayout)
   {
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366351));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370501));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366378));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370642));
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2026);
     }
-    this.jdField_a_of_type_AndroidOsHandler = new aelc(this, this.jdField_a_of_type_AndroidContentContext.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aeyi(this, this.jdField_a_of_type_AndroidContentContext.getMainLooper());
   }
   
   public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, PlayResultListener paramPlayResultListener)
@@ -243,10 +243,10 @@ public class VideoPlayerView
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new aeld(this));
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new aele(this));
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new aelf(this));
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new aelg(this, paramVideoData));
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new aeyj(this));
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new aeyk(this));
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new aeyl(this));
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new aeym(this, paramVideoData));
         localObject = AppConstants.aJ + ".now_video/" + "vid_" + a(str) + ".mp4";
         localFile = new File((String)localObject);
         if (localFile.exists())
@@ -257,7 +257,7 @@ public class VideoPlayerView
           this.jdField_a_of_type_Long = localFile.length();
           this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
           this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a("vid_" + a(str), (String)localObject, str, paramVideoData.jdField_d_of_type_Long);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new aelh(this, paramVideoData, bool2));
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.a(new aeyn(this, paramVideoData, bool2));
           if (QLog.isColorLevel()) {
             QLog.i("VideoPlayerView", 2, "player start!");
           }

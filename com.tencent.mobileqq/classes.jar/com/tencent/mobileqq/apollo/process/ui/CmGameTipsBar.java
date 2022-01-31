@@ -52,7 +52,7 @@ public class CmGameTipsBar
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setText("等待好友加入");
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    paramOnClickListener = a(2130838074);
+    paramOnClickListener = a(2130838077);
     paramOnClickListener.setBounds(0, 0, paramOnClickListener.getIntrinsicWidth(), paramOnClickListener.getIntrinsicHeight());
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramOnClickListener, null, null, null);
     paramContext = new RelativeLayout.LayoutParams(-2, AIOUtils.a(44.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
@@ -66,8 +66,8 @@ public class CmGameTipsBar
     localLayoutParams.addRule(11);
     localLayoutParams.rightMargin = AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     paramContext = new StateListDrawable();
-    Drawable localDrawable1 = a(2130838158);
-    Drawable localDrawable2 = a(2130838159);
+    Drawable localDrawable1 = a(2130838161);
+    Drawable localDrawable2 = a(2130838162);
     paramContext.addState(new int[] { 16842919, 16842910 }, localDrawable2);
     paramContext.addState(new int[0], localDrawable1);
     ((ImageView)localObject).setImageDrawable(paramContext);

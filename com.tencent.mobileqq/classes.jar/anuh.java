@@ -1,13 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.view.View;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class anuh
-  implements DialogInterface.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public anuh(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public anuh(EditVideoPartManager paramEditVideoPartManager, ActionSheet paramActionSheet) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b();
+    }
+  }
 }
 
 

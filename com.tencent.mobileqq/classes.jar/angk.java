@@ -1,25 +1,20 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import com.tencent.open.wadl.WLog;
+import cooperation.wadl.ipc.WadlProxyServiceManager;
 
 public class angk
-  implements IMediaPlayer.OnPreparedListener
+  implements Runnable
 {
-  public angk(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public angk(WadlProxyServiceManager paramWadlProxyServiceManager) {}
   
-  public void a_(IMediaPlayer paramIMediaPlayer)
+  public void run()
   {
-    SLog.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).b();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new angl(this), 300L);
+    WLog.b("WadlProxyServiceManager", "##@failed to lauch servie: reset mServiceConnecting status.");
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angk
  * JD-Core Version:    0.7.0.1
  */

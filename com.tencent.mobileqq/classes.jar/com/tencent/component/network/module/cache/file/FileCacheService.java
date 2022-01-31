@@ -12,13 +12,13 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicInteger;
-import pik;
-import pil;
-import pim;
+import pke;
+import pkf;
+import pkg;
 
 public class FileCacheService
 {
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new pil();
+  private static Comparator jdField_a_of_type_JavaUtilComparator = new pkf();
   private final Context jdField_a_of_type_AndroidContentContext;
   private final FileCache jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCache;
   private FileCacheService.StorageHandler jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService$StorageHandler;
@@ -73,7 +73,7 @@ public class FileCacheService
     for (;;)
     {
       String str;
-      pim[] arrayOfpim;
+      pkg[] arrayOfpkg;
       int i;
       int k;
       try
@@ -88,16 +88,16 @@ public class FileCacheService
         if ((arrayOfString == null) || (arrayOfString.length == 0)) {
           continue;
         }
-        arrayOfpim = new pim[arrayOfString.length];
+        arrayOfpkg = new pkg[arrayOfString.length];
         i = 0;
-        if (i < arrayOfpim.length)
+        if (i < arrayOfpkg.length)
         {
-          arrayOfpim[i] = new pim(str, arrayOfString[i]);
+          arrayOfpkg[i] = new pkg(str, arrayOfString[i]);
           i += 1;
           continue;
         }
-        Arrays.sort(arrayOfpim, jdField_a_of_type_JavaUtilComparator);
-        k = arrayOfpim.length;
+        Arrays.sort(arrayOfpkg, jdField_a_of_type_JavaUtilComparator);
+        k = arrayOfpkg.length;
         i = j;
       }
       finally {}
@@ -111,7 +111,7 @@ public class FileCacheService
         if (i >= k) {
           break label182;
         }
-        str = arrayOfpim[i];
+        str = arrayOfpkg[i];
         if (str != null) {
           break;
         }
@@ -167,7 +167,7 @@ public class FileCacheService
   
   private void b()
   {
-    PriorityThreadPool.getDefault().submit(new pik(this));
+    PriorityThreadPool.getDefault().submit(new pke(this));
   }
   
   private void b(boolean paramBoolean)

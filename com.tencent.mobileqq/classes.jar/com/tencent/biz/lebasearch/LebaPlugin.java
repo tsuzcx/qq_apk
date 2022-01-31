@@ -10,7 +10,7 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import kns;
+import knd;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,7 +26,7 @@ public class LebaPlugin
   public LebaPlugin()
   {
     this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new kns(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new knd(this);
     this.mPluginNameSpace = "lebaPlugin";
   }
   

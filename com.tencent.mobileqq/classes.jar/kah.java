@@ -1,15 +1,20 @@
-import android.content.res.Resources;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class kah
   implements Runnable
 {
-  public kah(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  public kah(VideoControlUI paramVideoControlUI) {}
   
   public void run()
   {
-    QavVideoRecordUICtrl.a(this.a, 1004, QavVideoRecordUICtrl.a(this.a).getResources().getString(2131429638), 2000L, 0);
+    if (this.a.i)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w(this.a.c, 1, "HideToolbarRunnable");
+      }
+      this.a.i(0);
+    }
   }
 }
 

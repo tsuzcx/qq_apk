@@ -1,92 +1,77 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import com.tencent.mobileqq.music.IQQPlayerCallback;
+import android.app.Activity;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class adwj
-  implements IQQPlayerCallback
+  extends Thread
 {
-  private IBinder a;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int c;
+  int d;
   
-  public adwj(IBinder paramIBinder)
+  public adwj(MediaApiPlugin paramMediaApiPlugin, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public void a(int paramInt)
+  public void run()
   {
-    Parcel localParcel = Parcel.obtain();
     try
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerCallback");
-      localParcel.writeInt(paramInt);
-      this.a.transact(1, localParcel, null, 1);
+      JSONObject localJSONObject = MediaApiPlugin.a(this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      if (isInterrupted()) {
+        throw new InterruptedException();
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      System.gc();
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "3", "{}" });
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", localOutOfMemoryError.toString() });
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "{}" });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "{}" });
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.mRuntime.a();
+      if ((localActivity != null) && (!localActivity.isFinishing())) {
+        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "1", "{}" });
+      }
       return;
     }
     finally
     {
-      localParcel.recycle();
+      if ((this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a != null) && (this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing())) {
+        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
+      }
     }
-  }
-  
-  /* Error */
-  public void a(com.tencent.mobileqq.music.SongInfo paramSongInfo)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 32	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 48	com/tencent/mobileqq/music/SongInfo:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	adwj:a	Landroid/os/IBinder;
-    //   29: iconst_2
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 38 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 41	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 32	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 41	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	adwj
-    //   0	59	1	paramSongInfo	com.tencent.mobileqq.music.SongInfo
-    //   3	51	2	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adwj
  * JD-Core Version:    0.7.0.1
  */

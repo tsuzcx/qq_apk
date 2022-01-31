@@ -1,17 +1,51 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class tmw
-  implements View.OnCreateContextMenuListener
+  extends FriendListObserver
 {
-  public tmw(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public tmw(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map paramMap)
   {
-    paramContextMenu.clear();
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
+    }
+    this.a.e();
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.getApplicationContext(), 2, 2131434994, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if (QQSettingMsgHistoryActivity.a(this.a) != null)
+    {
+      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(null);
+      paramMap = QQSettingMsgHistoryActivity.a(this.a);
+      if (this.a.app.e() != 1) {
+        break label159;
+      }
+    }
+    label159:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      paramMap.setChecked(paramBoolean);
+      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      QQToast.a(this.a.getApplicationContext(), 2131434995, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+  }
+  
+  protected void onSetMessageRaoam(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      QQSettingMsgHistoryActivity.b(this.a);
+    }
   }
 }
 

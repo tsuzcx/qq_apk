@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:drawable="@drawable/skin_common_btn_disabled" />
+    <item>
+        <shape>
+            <solid android:color="#ff89d043" />
+            <corners android:radius="2.0dip" />
+        </shape>
+    </item>
+</selector>

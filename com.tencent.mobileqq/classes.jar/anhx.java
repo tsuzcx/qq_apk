@@ -1,19 +1,23 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import cooperation.weiyun.sdk.download.WyDownloader;
 
 public class anhx
-  implements Runnable
+  implements ThreadPool.Job
 {
-  public anhx(EditTextDialog paramEditTextDialog) {}
+  public anhx(WyDownloader paramWyDownloader, HttpNetReq paramHttpNetReq) {}
   
-  public void run()
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    this.a.a.a();
+    WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhx
  * JD-Core Version:    0.7.0.1
  */

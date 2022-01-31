@@ -1,18 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
 public class vpa
-  implements DialogInterface.OnClickListener
+  implements View.OnTouchListener
 {
-  public vpa(DeviceMsgChatPie paramDeviceMsgChatPie, ArrayList paramArrayList, String paramString) {}
+  public vpa(PhotoListPanel paramPhotoListPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
-    DeviceMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDeviceMsgChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDeviceMsgChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString);
+    paramView = paramView.getParent();
+    if (paramView != null) {
+      paramView.requestDisallowInterceptTouchEvent(true);
+    }
+    return false;
   }
 }
 

@@ -80,7 +80,7 @@ public class cy
         DatalineFilesAdapter.b(this.a, (DatalineFilesAdapter.ItemHolder)localObject, paramView);
         return;
       }
-      FMToastUtil.a(2131434596);
+      FMToastUtil.a(2131434613);
       return;
     case 5: 
       DatalineFilesAdapter.a(this.a, paramView);

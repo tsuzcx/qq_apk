@@ -1,15 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.picbrowser.GalleryItemVideo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.component.network.utils.NetworkUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aeoe
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aeoe(GalleryItemVideo paramGalleryItemVideo, URLImageView paramURLImageView, URLDrawable paramURLDrawable) {}
+  public aeoe(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    if (!NetworkUtils.isNetworkAvailable(this.a))
+    {
+      QQToast.a(this.a, 1, 2131434811, 1).a();
+      return;
+    }
+    this.a.d();
+    this.a.a("invite_page", "clk_exit");
   }
 }
 

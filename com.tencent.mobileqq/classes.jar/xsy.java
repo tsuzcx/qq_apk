@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
 public class xsy
-  implements Runnable
+  implements PtvTemplateManager.IPtvTemplateDownloadListener
 {
-  public xsy(RDBaseDataManager paramRDBaseDataManager, xsq paramxsq, int paramInt, NetResp paramNetResp) {}
+  public xsy(PtvTemplateAdapter paramPtvTemplateAdapter) {}
   
-  public void run()
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesRDBaseDataManager.a(this.jdField_a_of_type_Xsq.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.a.c, this.jdField_a_of_type_Xsq.b);
+    this.a.a.post(new xta(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    this.a.a.post(new xsz(this, paramPtvTemplateInfo, paramBoolean));
+    if (!paramBoolean) {
+      FlowCameraMqqAction.a("", "0X80075BB", "", "", "", "");
+    }
   }
 }
 

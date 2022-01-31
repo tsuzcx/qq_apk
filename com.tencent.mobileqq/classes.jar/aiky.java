@@ -1,21 +1,23 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class aiky
   implements Runnable
 {
-  public aiky(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public aiky(SceneBuilder paramSceneBuilder, SpriteGLView paramSpriteGLView, SceneBuilder.OnBuiltListener paramOnBuiltListener) {}
   
   public void run()
   {
-    TroopBarReplyActivity.a(this.a, 3);
-    this.a.a.setSelected(false);
-    this.a.c.setSelected(true);
+    String str = SceneBuilder.a(SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder) + "/scene.json");
+    new Handler(Looper.getMainLooper()).post(new aikz(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiky
  * JD-Core Version:    0.7.0.1
  */

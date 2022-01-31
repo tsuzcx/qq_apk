@@ -1,14 +1,21 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import java.lang.ref.WeakReference;
 
 public class kyu
   implements Runnable
 {
-  public kyu(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  public kyu(PublicAccountManager paramPublicAccountManager) {}
   
   public void run()
   {
-    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.get();
+    String str = this.a.jdField_b_of_type_JavaLangString;
+    boolean bool = this.a.jdField_b_of_type_Boolean;
+    if ((this.a.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (localQQAppInterface != null)) {
+      SosoInterface.a(new kyv(this, 1, true, true, 0L, true, false, "PublicAccountManager", str, bool));
+    }
   }
 }
 

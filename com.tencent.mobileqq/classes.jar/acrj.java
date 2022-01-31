@@ -1,48 +1,30 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
-public final class acrj
+public class acrj
   implements View.OnClickListener
 {
-  public acrj(String paramString, IFileBrowser paramIFileBrowser) {}
+  public acrj(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
   public void onClick(View paramView)
   {
-    try
+    paramView = (QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)paramView.getTag();
+    FileInfo localFileInfo = (FileInfo)paramView.a;
+    switch (paramView.c)
     {
-      paramView = new acrk(this);
-      FileModel localFileModel = FileModel.a(this.jdField_a_of_type_JavaLangString);
-      if (localFileModel == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("FileOperaterUtils", 2, "error. get filemodel null, filepath[ " + this.jdField_a_of_type_JavaLangString + "]");
-        }
-      }
-      else
-      {
-        if (localFileModel.a(false))
-        {
-          if (!NetworkUtil.e(BaseApplicationImpl.getContext()))
-          {
-            FMToastUtil.a(2131437295);
-            return;
-          }
-          FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 2131428241, 2131428238, paramView);
-          return;
-        }
-        paramView.a();
-      }
-      return;
     }
-    catch (Exception paramView) {}
+    for (;;)
+    {
+      this.a.i();
+      return;
+      this.a.a.a().ab();
+      this.a.c(localFileInfo);
+    }
   }
 }
 

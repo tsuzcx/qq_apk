@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajbi;
+import ajpm;
 import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -12,7 +12,7 @@ public class TroopFileUploadingManager
   
   public TroopFileUploadingManager()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new ajbi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new ajpm(this);
   }
   
   public static TroopFileUploadingManager a(QQAppInterface paramQQAppInterface)
@@ -51,7 +51,7 @@ public class TroopFileUploadingManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileUploadingManager
  * JD-Core Version:    0.7.0.1
  */

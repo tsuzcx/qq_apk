@@ -1,26 +1,38 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.search.ContentRecommendModel.ContentRecommendListAdapter;
+import com.tencent.mobileqq.search.model.ContentRecommendDataModel.ContentRecommendItem;
 
-class ahqs
-  implements Runnable
+public class ahqs
 {
-  ahqs(ahqq paramahqq, String paramString1, boolean paramBoolean, String paramString2) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public URLImageView a;
+  public ContentRecommendDataModel.ContentRecommendItem a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public URLImageView b;
+  public View c;
+  public ImageView c;
+  public TextView c;
+  public URLImageView c;
+  public View d;
+  public TextView d;
+  public View e;
+  public TextView e;
+  public View f;
+  public TextView f;
+  public TextView g;
   
-  public void run()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "成功，文件路径为" + this.b;; str = "失败")
-    {
-      QQToast.a(localBaseApplicationImpl, str, 2000).a();
-      return;
-    }
-  }
+  public ahqs(ContentRecommendModel.ContentRecommendListAdapter paramContentRecommendListAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahqs
  * JD-Core Version:    0.7.0.1
  */

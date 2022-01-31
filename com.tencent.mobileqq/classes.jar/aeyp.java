@@ -1,85 +1,75 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.UnLikeCallback;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeRsp;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.model.BasePlayListDataModel;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter.VideoViewHolder;
+import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.List;
 
-public final class aeyp
-  implements NowShortVideoProtoManager.Callback
+public class aeyp
+  implements Runnable
 {
-  public aeyp(NearbyMomentProtocol.UnLikeCallback paramUnLikeCallback) {}
+  public aeyp(VideoInfoListenerImpl paramVideoInfoListenerImpl) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
-    int k = 0;
-    i = 0;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    for (;;)
+    if (((VideoInfoListenerImpl.a(this.a).jdField_a_of_type_AndroidContentContext instanceof Activity)) && (((Activity)VideoInfoListenerImpl.a(this.a).jdField_a_of_type_AndroidContentContext).isFinishing())) {}
+    label35:
+    label246:
+    do
     {
-      try
+      do
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (paramBundle.busi_buf.has())
+        do
         {
-          paramArrayOfByte = new ilive_feeds_like.FeedsUnLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (paramArrayOfByte.ret.has())
+          do
           {
-            paramInt = paramArrayOfByte.ret.get();
-            if (paramInt == 0) {
-              i = k;
+            break label35;
+            break label35;
+            do
+            {
+              return;
+            } while ((VideoInfoListenerImpl.a(this.a).jdField_a_of_type_Int < 0) || (VideoInfoListenerImpl.a(this.a).jdField_a_of_type_Int >= VideoInfoListenerImpl.a(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.size()));
+            if (VideoInfoListenerImpl.a(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a == null) {
+              break label246;
             }
+            if (!VideoInfoListenerImpl.a(this.a).b) {
+              break;
+            }
+            VideoInfoListenerImpl.a(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.b();
+          } while (!QLog.isColorLevel());
+          QLog.i("VideoInfoListener", 2, "discovery page repeat mode and repeat the Vidoe!");
+          return;
+          if (VideoInfoListenerImpl.a(this.a).b()) {
+            break;
           }
+          VideoInfoListenerImpl.a(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.b();
+        } while (!QLog.isColorLevel());
+        QLog.i("VideoInfoListener", 2, "repeat in Video Page!");
+        return;
+        if (VideoInfoListenerImpl.a(this.a).jdField_a_of_type_Int != VideoInfoListenerImpl.a(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.size() - 1) {
+          break;
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      } while (!(VideoInfoListenerImpl.a(this.a).a() instanceof Activity));
+      ((Activity)VideoInfoListenerImpl.a(this.a).a()).finish();
+      return;
+      Object localObject = (VideoData)VideoInfoListenerImpl.a(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.get(VideoInfoListenerImpl.a(this.a).jdField_a_of_type_Int);
+      ((VideoData)localObject).f = 0;
+      ((VideoData)localObject).c = false;
+      localObject = VideoInfoListenerImpl.a(this.a);
+      ((StoryPlayController)localObject).jdField_a_of_type_Int += 1;
+      if (VideoInfoListenerImpl.a(this.a).jdField_a_of_type_Int < VideoInfoListenerImpl.a(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a.size())
       {
-        bool1 = false;
-        paramInt = j;
-      }
-      try
-      {
-        j = paramArrayOfByte.total.get();
-        paramInt = j;
-        bool1 = bool2;
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("NearbyMomentProtocol", 2, "unlike success, total:   " + j);
-          bool1 = bool2;
-          paramInt = j;
-        }
-        if (this.a != null) {
-          this.a.a(bool1, paramInt);
-        }
+        VideoInfoListenerImpl.a(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setCurrentItem(VideoInfoListenerImpl.a(this.a).jdField_a_of_type_Int, true);
         return;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramInt = i;
-          bool1 = bool3;
-        }
-      }
-      QLog.i("NearbyMomentProtocol", 1, "unlike error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
-      bool1 = false;
-      paramInt = i;
-      continue;
-      paramArrayOfByte.printStackTrace();
-    }
+    } while (!VideoInfoListenerImpl.a(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a());
+    VideoInfoListenerImpl.a(this.a).jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.d();
   }
 }
 

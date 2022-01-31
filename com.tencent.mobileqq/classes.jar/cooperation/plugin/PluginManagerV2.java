@@ -1,9 +1,9 @@
 package cooperation.plugin;
 
-import alwg;
-import alwh;
-import alwi;
-import alwj;
+import ammk;
+import amml;
+import ammm;
+import ammn;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Application;
@@ -109,7 +109,7 @@ public final class PluginManagerV2
     paramContext.setTitle(paramString);
     paramContext.setMessage("下载中...");
     paramContext.setCancelable(false);
-    paramContext.setButton(-2, "取消", new alwg(paramOnClickListener));
+    paramContext.setButton(-2, "取消", new ammk(paramOnClickListener));
     return paramContext;
   }
   
@@ -157,7 +157,7 @@ public final class PluginManagerV2
         ((PluginManagerV2.LaunchState)localObject2).jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
         ((PluginManagerV2.LaunchState)localObject2).jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
         ((PluginManagerV2.LaunchState)localObject2).jdField_a_of_type_Boolean = true;
-        a((String)localObject1, new alwj(this, (PluginManagerV2.LaunchState)localObject2));
+        a((String)localObject1, new ammn(this, (PluginManagerV2.LaunchState)localObject2));
         return;
       }
       if (paramInt == 1)
@@ -172,8 +172,8 @@ public final class PluginManagerV2
           localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
           localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
           localLaunchState.jdField_a_of_type_Boolean = false;
-          localLaunchState.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject1, new alwh(this, paramPluginParams.b, null));
-          a((String)localObject2, paramBoolean, new alwj(this, localLaunchState));
+          localLaunchState.jdField_a_of_type_AndroidAppProgressDialog = a(paramContext, (String)localObject1, new amml(this, paramPluginParams.b, null));
+          a((String)localObject2, paramBoolean, new ammn(this, localLaunchState));
           return;
         }
       }
@@ -184,7 +184,7 @@ public final class PluginManagerV2
     ((PluginManagerV2.LaunchState)localObject2).jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
     ((PluginManagerV2.LaunchState)localObject2).jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
     ((PluginManagerV2.LaunchState)localObject2).jdField_a_of_type_Boolean = true;
-    a((String)localObject1, paramBoolean, new alwj(this, (PluginManagerV2.LaunchState)localObject2));
+    a((String)localObject1, paramBoolean, new ammn(this, (PluginManagerV2.LaunchState)localObject2));
   }
   
   private void a(String paramString, IPluginManager.OnQueryPluginListener paramOnQueryPluginListener)
@@ -414,7 +414,7 @@ public final class PluginManagerV2
     if (localObject != null) {}
     for (Object localObject = ((PluginInfo)localObject).mFingerPrint;; localObject = null)
     {
-      paramPluginParams = new alwi(this, paramOnPluginReadyListener, bool1, paramContext, paramPluginParams, bool4, (String)localObject, null);
+      paramPluginParams = new ammm(this, paramOnPluginReadyListener, bool1, paramContext, paramPluginParams, bool4, (String)localObject, null);
       a(paramContext, localPluginInfo2.mName, localPluginInfo2.mLength, paramPluginParams, paramPluginParams, bool1).show();
       return;
     }

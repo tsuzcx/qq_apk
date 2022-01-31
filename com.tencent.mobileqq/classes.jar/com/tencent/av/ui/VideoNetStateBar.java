@@ -21,8 +21,8 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import kcz;
-import kda;
+import kck;
+import kcl;
 
 public class VideoNetStateBar
 {
@@ -32,7 +32,7 @@ public class VideoNetStateBar
   ImageView jdField_a_of_type_AndroidWidgetImageView = null;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   public VideoController a;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new kcz(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new kck(this);
   public VideoAppInterface a;
   public Runnable a;
   String jdField_a_of_type_JavaLangString = null;
@@ -214,11 +214,11 @@ public class VideoNetStateBar
   {
     if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365344));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365356));
-      this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365349);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365350));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365351));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365366));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365378));
+      this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365371);
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365372));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365373));
     }
   }
   
@@ -333,7 +333,7 @@ public class VideoNetStateBar
             break label177;
           }
         }
-        for (localView = null;; localView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365911))
+        for (localView = null;; localView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365938))
         {
           if (localView == null) {
             break label195;
@@ -412,7 +412,7 @@ public class VideoNetStateBar
       {
         this.f = paramBoolean;
         return;
-        localView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365911);
+        localView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365938);
         break;
       }
     }
@@ -470,7 +470,7 @@ public class VideoNetStateBar
     {
       return;
       if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        this.jdField_a_of_type_JavaLangRunnable = new kda(this);
+        this.jdField_a_of_type_JavaLangRunnable = new kcl(this);
       }
     } while ((this.jdField_a_of_type_JavaLangRunnable == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null));
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -518,10 +518,10 @@ public class VideoNetStateBar
           if (!this.jdField_d_of_type_Boolean) {
             break label452;
           }
-          str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429430);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840285);
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840285);
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840286);
+          str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429436);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840291);
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840291);
+          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840292);
           this.jdField_b_of_type_JavaLangString = null;
           if ((!this.jdField_d_of_type_Boolean) && (i != 1)) {
             break label612;
@@ -552,63 +552,63 @@ public class VideoNetStateBar
           {
           default: 
             if (j == 2) {
-              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429427);
+              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429433);
             }
             break;
           case 1: 
             if (j == 2)
             {
-              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429429);
+              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429435);
               break;
             }
             if (j == 1)
             {
-              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429426);
+              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429432);
               break;
             }
-            str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429423);
+            str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429429);
             break;
           case 2: 
             if (j == 2)
             {
-              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429428);
+              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429434);
               break;
             }
             if (j == 1)
             {
-              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429425);
+              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429431);
               break;
             }
-            str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429422);
+            str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429428);
             break;
             if (j == 1)
             {
-              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429424);
+              str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429430);
               break;
             }
-            str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429421);
+            str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429427);
             break;
             switch (i)
             {
             default: 
-              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840281);
-              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840281);
-              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840282);
+              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840287);
+              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840287);
+              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840288);
               break;
             case 1: 
-              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840279);
-              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840279);
-              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840280);
+              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840285);
+              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840285);
+              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840286);
               break;
             case 2: 
-              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840283);
-              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840283);
-              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840284);
+              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840289);
+              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840289);
+              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840290);
               break;
             case 3: 
-              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840281);
-              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840281);
-              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840282);
+              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840287);
+              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840287);
+              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840288);
               break;
               if ((this.jdField_c_of_type_JavaLangRefWeakReference != null) && (this.jdField_c_of_type_JavaLangRefWeakReference.get() != null))
               {

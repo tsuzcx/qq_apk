@@ -1,14 +1,19 @@
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
 
 public class ldv
   implements Runnable
 {
-  public ldv(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public ldv(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, GuideData paramGuideData) {}
   
   public void run()
   {
-    ReadInJoyGlobalReporter.a().b(this.a.app);
+    if ("operation_guide".equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.business))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a(270, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.business, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a(260, "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
   }
 }
 

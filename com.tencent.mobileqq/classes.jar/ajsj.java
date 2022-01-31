@@ -1,59 +1,42 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.VasResourceCheckUtil;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import org.json.JSONObject;
+import android.util.Pair;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader;
+import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
+import java.util.HashMap;
+import java.util.Queue;
+import mqq.os.MqqHandler;
 
-public final class ajsj
-  extends DownloadListener
+class ajsj
+  implements Runnable
 {
-  public ajsj(QQAppInterface paramQQAppInterface) {}
+  ajsj(ajsi paramajsi) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void run()
   {
-    super.onDone(paramDownloadTask);
-    paramDownloadTask = new File(VasResourceCheckUtil.jdField_a_of_type_JavaLangString);
-    if (paramDownloadTask.exists())
+    if (((this.a.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String)) && (!((String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag()).endsWith(this.a.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    try
     {
-      paramDownloadTask = FileUtils.a(paramDownloadTask, -1);
-      if (!TextUtils.isEmpty(paramDownloadTask)) {}
-      try
+      Pair localPair1 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable), 1);
+      ThreadManager.getUIHandler().post(new ajsk(this, localPair1));
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
       {
-        paramDownloadTask = Base64.decode(paramDownloadTask, 0);
-        SecretKeySpec localSecretKeySpec = new SecretKeySpec("xydata3456789012xydata3456789012".getBytes(), "AES");
-        IvParameterSpec localIvParameterSpec = new IvParameterSpec("xydata3456789012".getBytes());
-        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
-        localCipher.init(2, localSecretKeySpec, localIvParameterSpec);
-        paramDownloadTask = new JSONObject(new String(localCipher.doFinal(paramDownloadTask)));
-        if (QLog.isColorLevel()) {
-          QLog.d("VasResourceCheckUtil", 2, "decode json success, content = " + paramDownloadTask.toString());
-        }
-        VasResourceCheckUtil.a(this.a);
-        VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(257));
-        return;
-      }
-      catch (Exception paramDownloadTask)
-      {
-        QLog.e("VasResourceCheckUtil", 1, "decode json fail: " + paramDownloadTask.getMessage());
-        VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(259));
-        return;
+        HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
+        HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
+        Pair localPair2 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable), 1);
       }
     }
-    VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(258));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsj
  * JD-Core Version:    0.7.0.1
  */

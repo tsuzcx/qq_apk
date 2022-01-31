@@ -13,7 +13,7 @@ public class MemoriesFeedEmptySegment
     super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
   }
   
-  protected void F_()
+  protected void K_()
   {
     SegmentView localSegmentView = a().a("FeedSegment");
     if ((localSegmentView != null) && (localSegmentView.a() == 0))

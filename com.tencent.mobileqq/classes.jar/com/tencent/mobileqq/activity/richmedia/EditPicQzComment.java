@@ -28,7 +28,7 @@ import cooperation.qzone.font.FontManager.DefaultFontInfo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import xlf;
+import xol;
 
 public class EditPicQzComment
   extends EditVideoPart
@@ -286,11 +286,11 @@ public class EditPicQzComment
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131373348));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131373351));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText = ((ExtendEditText)a(2131373349));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131373350));
-    this.jdField_a_of_type_AndroidViewView = a(2131373352);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131373529));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131373532));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText = ((ExtendEditText)a(2131373530));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131373531));
+    this.jdField_a_of_type_AndroidViewView = a(2131373533);
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText.setEditableFactory(QzoneTextBuilder.b);
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -301,7 +301,7 @@ public class EditPicQzComment
     {
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new xlf(this));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new xol(this));
       this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
     }
     if (a(QQStoryContext.a().a())) {
@@ -467,7 +467,7 @@ public class EditPicQzComment
     {
       return;
       i = paramView.getId();
-      if (i == 2131373350)
+      if (i == 2131373531)
       {
         paramView = QzoneConfig.getInstance().getConfig("H5Url", "UgcPermitSetting", "https://h5.qzone.qq.com/ugc/setting?_wv=3&type=mood&uin={uin}&qua={qua}&_proxy=1").replace("{uin}", QQStoryContext.a().a()).replace("{qua}", QUA.a());
         QzEditVideoPartManager.b("608", "6", "0", true);
@@ -489,7 +489,7 @@ public class EditPicQzComment
         QZoneHelper.a((BaseActivity)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi, paramView, 1, localBundle, "");
         return;
       }
-    } while (i != 2131373349);
+    } while (i != 2131373530);
     QzEditVideoPartManager.b("608", "5", "0", true);
     paramView = QZoneHelper.UserInfo.a();
     Bundle localBundle = new Bundle();

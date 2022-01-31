@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
-public class zzk
+class zzk
   implements Runnable
 {
-  public zzk(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData1, ScanningData paramScanningData2) {}
+  zzk(zzi paramzzi) {}
   
   public void run()
   {
-    ScanningData localScanningData = this.jdField_a_of_type_ComTencentMobileqqArScanningData;
-    if ((this.b != null) && (this.b.a) && (this.b.f) && (!this.b.e)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localScanningData.a(bool);
-      return;
-    }
+    ARWorldCupGameLogicManager.a().h();
   }
 }
 

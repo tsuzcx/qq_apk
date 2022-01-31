@@ -1,40 +1,43 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
+import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.qphone.base.util.QLog;
 
-public class uuh
-  implements ActionSheet.OnButtonClickListener
+public final class uuh
+  implements ark.ApplicationCallback
 {
-  public uuh(FileVideoItemBuilder paramFileVideoItemBuilder, MessageForFile paramMessageForFile, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void AppCreate(String paramString, ark.Application paramApplication)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b.post(new uui(this));
+    ArkAppCenterEvent.a(0, paramString, null);
+  }
+  
+  public void AppDestroy(String paramString, ark.Application paramApplication)
+  {
+    ArkAppCenterEvent.a(1, paramString, null);
+  }
+  
+  public void OutputScriptError(String paramString1, String paramString2)
+  {
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
-      paramView = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
-      if (paramView.status == 16)
-      {
-        FMToastUtil.a(2131428188);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkAppContainer", 1, String.format("%s.script error: %s", new Object[] { str, paramString1 }));
+    }
+    ArkAppDataReport.c(null, str, paramString1);
+  }
+  
+  public void RegisterModules(ark.ModuleRegister paramModuleRegister, String paramString)
+  {
+    ArkAppModuleReg.a(paramModuleRegister, paramString);
   }
 }
 

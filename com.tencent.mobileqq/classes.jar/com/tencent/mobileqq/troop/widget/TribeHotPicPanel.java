@@ -42,12 +42,12 @@ public class TribeHotPicPanel
     this.jdField_a_of_type_AndroidContentContext = paramBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$OnHotPicItemClickListener = paramOnHotPicItemClickListener;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362709);
-    this.c = findViewById(2131362974);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362727);
+    this.c = findViewById(2131362992);
     this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramBaseActivity).inflate(2130968640, null);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131362972));
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131362973));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131362990));
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131362991));
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab.setOnItemClickListener(this);
   }
   
@@ -68,7 +68,7 @@ public class TribeHotPicPanel
     {
       this.jdField_a_of_type_Boolean = bool;
       if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.Panel", 2, "onShow 345599 init panelH " + this.d + " needExtendPanel" + this.jdField_a_of_type_Boolean);
+        QLog.d("HotPicManager.Panel", 2, "onShow 349884 init panelH " + this.d + " needExtendPanel" + this.jdField_a_of_type_Boolean);
       }
       localHotPicManager = HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       localHotPicManager.a(this);
@@ -152,7 +152,7 @@ public class TribeHotPicPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TribeHotPicPanel
  * JD-Core Version:    0.7.0.1
  */

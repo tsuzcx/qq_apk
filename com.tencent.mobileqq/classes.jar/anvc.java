@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.statistics.QIMReportController;
-import com.tencent.mobileqq.statistics.reportitem.QIMReadWriteReportItem;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
 
 public class anvc
-  extends EditVideoPartManager
+  implements ProgressPieDrawable.OnProgressListener
 {
-  public anvc(EditWebDanceMachineVideoActivity paramEditWebDanceMachineVideoActivity) {}
+  public anvc(EditVideoSave paramEditVideoSave) {}
   
-  protected void b()
+  public void a(ProgressPieDrawable paramProgressPieDrawable)
   {
-    super.b();
-    if ((EditWebDanceMachineVideoActivity.a(this.a)) || (EditWebDanceMachineVideoActivity.b(this.a)))
-    {
-      QIMReadWriteReportItem localQIMReadWriteReportItem = new QIMReadWriteReportItem();
-      localQIMReadWriteReportItem.d = "0X800903D";
-      QIMReportController.b(null, localQIMReadWriteReportItem);
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
     }
   }
+  
+  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

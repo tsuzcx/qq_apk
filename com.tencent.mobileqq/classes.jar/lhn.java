@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import android.widget.TextView;
 
-public class lhn
-  implements DialogInterface.OnClickListener
+public final class lhn
+  implements Runnable
 {
-  public lhn(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lhn(TextView paramTextView, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

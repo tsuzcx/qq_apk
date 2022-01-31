@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class thv
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public thv(QQSettingMe paramQQSettingMe, String paramString) {}
+  public thv(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str2 = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    String str1;
-    if (str2 != null)
-    {
-      str1 = str2;
-      if (!"".equals(str2.trim())) {}
-    }
-    else
-    {
-      str1 = this.jdField_a_of_type_JavaLangString;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new thw(this, str1));
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

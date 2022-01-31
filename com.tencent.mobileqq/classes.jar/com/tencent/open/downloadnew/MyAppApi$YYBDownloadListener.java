@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew;
 
-import aktd;
-import aktf;
+import alit;
+import aliv;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.upgrade.UpgradeController;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
@@ -121,7 +121,7 @@ public class MyAppApi$YYBDownloadListener
         if (!this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean) {
           break label369;
         }
-        ThreadManager.getSubThreadHandler().postDelayed(new aktd(this, paramDownloadInfo), 500L);
+        ThreadManager.getSubThreadHandler().postDelayed(new alit(this, paramDownloadInfo), 500L);
         this.a.jdField_a_of_type_Boolean = true;
         this.a.jdField_b_of_type_Boolean = false;
         l2 = 0L;
@@ -148,7 +148,7 @@ public class MyAppApi$YYBDownloadListener
       if ((AppUtil.a() != 1) || (!ControlPolicyUtil.c())) {
         break label213;
       }
-      ThreadManager.getSubThreadHandler().postDelayed(new aktf(this, paramDownloadInfo), 500L);
+      ThreadManager.getSubThreadHandler().postDelayed(new aliv(this, paramDownloadInfo), 500L);
       this.a.jdField_a_of_type_Boolean = true;
       this.a.jdField_b_of_type_Boolean = false;
       break label213;

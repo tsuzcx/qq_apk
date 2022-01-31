@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class abni
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public abni(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
+  public abni(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    paramView = (abnn)paramView.getTag();
+    if (!((FriendsManager)this.a.app.getManager(50)).b(paramView.a)) {}
+    for (int i = 35;; i = 1)
+    {
+      paramView = new ProfileActivity.AllInOne(paramView.a, i);
+      ProfileActivity.a(this.a, paramView, 1016);
+      return;
+    }
   }
 }
 

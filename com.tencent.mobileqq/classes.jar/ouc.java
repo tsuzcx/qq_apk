@@ -1,25 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.biz.troop.TroopMemberApiPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ouc
-  implements TroopMemberApiClient.Callback
+class ouc
+  implements Runnable
 {
-  public ouc(TroopMemberApiPlugin paramTroopMemberApiPlugin, String paramString) {}
+  ouc(oub paramoub, boolean paramBoolean, String paramString) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    boolean bool = paramBundle.getBoolean("isSuccess", false);
-    if (bool)
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramBundle = paramBundle.getString("data");
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    }
-    while (!QLog.isColorLevel()) {
+      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_Oub.a.sendBroadcast(localIntent);
+      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_Oub.a.getString(2131430001, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_Oub.a.getTitleBarHeight());
       return;
     }
-    QLog.d(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
+    QRUtils.a(1, 2131430002);
   }
 }
 

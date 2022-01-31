@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.PacmanParcelItem;
+import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
 
-public final class xst
-  implements Parcelable.Creator
+public class xst
+  implements Runnable
 {
-  public PacmanParcelItem a(Parcel paramParcel)
-  {
-    return new PacmanParcelItem(paramParcel);
-  }
+  public xst(NewPreFlowCamera paramNewPreFlowCamera) {}
   
-  public PacmanParcelItem[] a(int paramInt)
+  public void run()
   {
-    return new PacmanParcelItem[paramInt];
+    GestureMgr.a().b();
   }
 }
 

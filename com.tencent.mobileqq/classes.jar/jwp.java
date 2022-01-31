@@ -1,22 +1,21 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import com.tencent.av.VideoController;
 import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.qphone.base.util.QLog;
 
 public class jwp
-  extends ClickableSpan
+  implements Runnable
 {
-  public jwp(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  jwp(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.y();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.c, 2, "AutoCheckVideoRunnable");
+    }
+    if (this.a.a != null) {
+      this.a.a.a().an = true;
+    }
+    this.a.Q();
   }
 }
 

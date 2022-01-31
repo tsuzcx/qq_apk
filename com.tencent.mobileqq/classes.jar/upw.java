@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.activity.aio.doodle.PlayLastLogic;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
 public class upw
-  implements Runnable
+  extends VasQuickUpdateManager.CallBacker
 {
-  public upw(PlayLastLogic paramPlayLastLogic) {}
+  public upw(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
-  public void run()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (this.a.a == 0) {
-      PlayLastLogic.a(this.a, true);
-    }
+    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
+    do
+    {
+      return;
+      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
+        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
+      }
+      if (paramInt1 == 0) {
+        this.a.a(true);
+      }
+    } while (paramVasQuickUpdateManager == null);
+    paramVasQuickUpdateManager.b(this.a.a);
   }
 }
 

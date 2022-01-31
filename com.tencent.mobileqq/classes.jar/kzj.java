@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class kzj
-  implements Runnable
+public final class kzj
+  implements Parcelable.Creator
 {
-  public kzj(PublicAccountManager paramPublicAccountManager) {}
-  
-  public void run()
+  public VideoInfo a(Parcel paramParcel)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.get();
-    String str = this.a.jdField_b_of_type_JavaLangString;
-    boolean bool = this.a.jdField_b_of_type_Boolean;
-    if ((this.a.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (localQQAppInterface != null)) {
-      SosoInterface.a(new kzk(this, 1, true, true, 0L, true, false, "PublicAccountManager", str, bool));
-    }
+    return new VideoInfo(paramParcel);
+  }
+  
+  public VideoInfo[] a(int paramInt)
+  {
+    return new VideoInfo[paramInt];
   }
 }
 

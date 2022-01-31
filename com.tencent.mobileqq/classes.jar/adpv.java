@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
 public class adpv
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adpv(LyricViewController paramLyricViewController, int paramInt1, int paramInt2) {}
+  public adpv(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.a.a(this.jdField_a_of_type_Int, this.b);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i == this.jdField_a_of_type_Int) {
+      AbstractGifImage.resumeAll();
+    }
+    XPanelContainer.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpv
  * JD-Core Version:    0.7.0.1
  */

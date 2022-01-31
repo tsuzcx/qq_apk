@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.builder;
 
-import ahwv;
-import ahwx;
-import ahwy;
+import aiky;
+import aila;
+import ailb;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -80,7 +80,7 @@ public class SceneBuilder
           ((Action)localObject1).e = 0;
         }
         if ((paramJSONObject.optBoolean("autoClose", false)) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null)) {
-          ((Action)localObject1).a(new ahwy(this));
+          ((Action)localObject1).a(new ailb(this));
         }
       }
       return localObject1;
@@ -255,7 +255,7 @@ public class SceneBuilder
         QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError));
       }
       localObject2 = new ImageButton(paramSpriteGLView, true);
-      ((ImageButton)localObject2).a(new ahwx(this, paramLayer, (String)localObject5));
+      ((ImageButton)localObject2).a(new aila(this, paramLayer, (String)localObject5));
       break label93;
       label294:
       Object localObject4 = localObject1;
@@ -709,12 +709,12 @@ public class SceneBuilder
   
   public void a(SpriteGLView paramSpriteGLView, SceneBuilder.OnBuiltListener paramOnBuiltListener)
   {
-    ThreadManager.post(new ahwv(this, paramSpriteGLView, paramOnBuiltListener), 8, null, true);
+    ThreadManager.post(new aiky(this, paramSpriteGLView, paramOnBuiltListener), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder
  * JD-Core Version:    0.7.0.1
  */

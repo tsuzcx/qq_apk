@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.DataLineHandler;
 
 public class zcp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public zcp(IphoneTitleBarActivity paramIphoneTitleBarActivity) {}
+  public zcp(DataLineHandler paramDataLineHandler, long paramLong, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.onBackEvent();
+    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

@@ -121,7 +121,7 @@ public class RedPacketGameSmallScreenView
   
   public void a(Context paramContext)
   {
-    setId(2131362517);
+    setId(2131362538);
   }
   
   public void a(Canvas paramCanvas, long paramLong)

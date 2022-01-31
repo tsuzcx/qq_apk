@@ -3,11 +3,8 @@ package com.tencent.av.app;
 import android.app.Notification;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Debug;
 import android.os.Handler;
@@ -15,7 +12,6 @@ import android.os.Looper;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.ResultReceiver;
-import android.util.DisplayMetrics;
 import com.tencent.av.AVLog;
 import com.tencent.av.VideoController;
 import com.tencent.av.VideoServlet;
@@ -26,7 +22,6 @@ import com.tencent.av.business.manager.BusinessManagerFactory;
 import com.tencent.av.business.manager.BusinessMessageCenter;
 import com.tencent.av.business.manager.report.VideoNodeManager;
 import com.tencent.av.business.manager.report.VideoNodeReporter;
-import com.tencent.av.core.VcSystemInfo;
 import com.tencent.av.redpacket.AVRedPacketManager;
 import com.tencent.av.report.AVReport;
 import com.tencent.av.service.IAVRedPacketCallback;
@@ -64,10 +59,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observer;
 import java.util.Vector;
-import jey;
-import jfb;
-import jfo;
-import jfp;
+import jej;
+import jem;
+import jez;
+import jfa;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 
@@ -97,10 +92,10 @@ public class VideoAppInterface
   protected BusinessMessageCenter a;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new jfo(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new jez(this);
   protected List a;
-  jey jdField_a_of_type_Jey;
-  jfb jdField_a_of_type_Jfb;
+  jej jdField_a_of_type_Jej;
+  jem jdField_a_of_type_Jem;
   protected boolean a;
   public boolean b;
   public boolean c;
@@ -125,8 +120,8 @@ public class VideoAppInterface
   
   private void d()
   {
-    this.jdField_a_of_type_Jey.b();
-    this.jdField_a_of_type_Jfb.b();
+    this.jdField_a_of_type_Jej.b();
+    this.jdField_a_of_type_Jem.b();
     this.jdField_a_of_type_ComTencentAvAppGKillProcessMonitor.a();
     this.jdField_a_of_type_ComTencentAvAppGVipFunCallMonitor.a();
     this.jdField_a_of_type_ComTencentAvAppGAudioExitMonitor.a();
@@ -177,12 +172,6 @@ public class VideoAppInterface
       QLog.d(jdField_a_of_type_JavaLangString, 1, "onCreate, 音视频进程在等待调试器连接(界面会无响应)");
       Debug.waitForDebugger();
     }
-  }
-  
-  private void i()
-  {
-    DisplayMetrics localDisplayMetrics = getApp().getResources().getDisplayMetrics();
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "onCreate, time[" + System.currentTimeMillis() + "], UIN[" + getAccount() + "], isPublicVersion[" + true + "], isGrayVersion[" + false + "], isDebugVersion[" + false + "], logLevel[" + QLog.getUIN_REPORTLOG_LEVEL() + "], isDevelopLevel[" + QLog.isDevelopLevel() + "], isColorLevel[" + QLog.isColorLevel() + "], aboutSubVersionLog[" + "7.6.0.3525.2018-05-05.r345599.BanBenPuJi" + "], getQUA[" + AudioHelper.a(AppSetting.b()) + "], devicesInfo[" + AppSetting.b + "], displayMetrics[" + localDisplayMetrics + "], devVersion[" + Build.VERSION.INCREMENTAL + "], sdkVersion[" + Build.VERSION.SDK_INT + "], CpuArchitecture[" + VcSystemInfo.f() + "], CPU_ABI[" + Build.CPU_ABI + "], CPU_ABI2[" + Build.CPU_ABI2 + "], sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
   }
   
   public int a()
@@ -258,7 +247,7 @@ public class VideoAppInterface
   
   public String a()
   {
-    String str2 = getApp().getString(2131428692);
+    String str2 = getApp().getString(2131428698);
     Object localObject = a();
     String str1 = str2;
     if (localObject != null)
@@ -268,7 +257,7 @@ public class VideoAppInterface
       localObject = ((VideoController)localObject).a().e;
       str1 = str2;
       if (i == 9500) {
-        str1 = getDisplayName(i, str3, (String)localObject) + getApp().getString(2131428693);
+        str1 = getDisplayName(i, str3, (String)localObject) + getApp().getString(2131428699);
       }
     }
     return str1;
@@ -524,7 +513,7 @@ public class VideoAppInterface
       this.b = false;
       SmallScreenUtils.a(getApplication());
       AVLog.d(jdField_a_of_type_JavaLangString, "exit video process clearNotification");
-      new QNotificationManager(getApplication().getApplicationContext()).cancel(jdField_a_of_type_JavaLangString, 2130840347);
+      new QNotificationManager(getApplication().getApplicationContext()).cancel(jdField_a_of_type_JavaLangString, 2130840353);
       Object localObject = (AudioManager)getApplication().getApplicationContext().getSystemService("audio");
       if (localObject != null)
       {
@@ -752,7 +741,8 @@ public class VideoAppInterface
     long l1 = System.currentTimeMillis();
     super.onCreate(paramBundle);
     h();
-    i();
+    AudioHelper.b("VideoAppInterface.onCreate.begin1");
+    AudioHelper.a(this);
     f();
     new InitMemoryCache().c();
     new InitUrlDrawable().c();
@@ -763,8 +753,8 @@ public class VideoAppInterface
     AudioHelper.a(this.app, getLongAccountUin());
     AudioHelper.a(this.app.getApplicationContext());
     this.jdField_a_of_type_ComTencentAvAppDeviceCapabilityExamination = new DeviceCapabilityExamination(this);
-    this.jdField_a_of_type_Jfb = new jfb(this);
-    this.jdField_a_of_type_Jey = new jey(this);
+    this.jdField_a_of_type_Jem = new jem(this);
+    this.jdField_a_of_type_Jej = new jej(this);
     this.jdField_a_of_type_ComTencentAvAppGKillProcessMonitor = new GKillProcessMonitor(this);
     this.jdField_a_of_type_ComTencentAvAppGVipFunCallMonitor = new GVipFunCallMonitor(this);
     this.jdField_a_of_type_ComTencentAvAppGAudioExitMonitor = new GAudioExitMonitor(this);
@@ -779,7 +769,7 @@ public class VideoAppInterface
     this.jdField_a_of_type_ComTencentAvAppAVServiceProxy.a();
     AVReport.a().a();
     c();
-    ThreadManager.post(new jfp(this), 5, null, true);
+    ThreadManager.post(new jfa(this), 5, null, true);
     this.jdField_a_of_type_JavaUtilList = new Vector();
     g();
     this.jdField_a_of_type_ComTencentAvBusinessMsfServletProxy = new MsfServletProxy(this);
@@ -811,8 +801,8 @@ public class VideoAppInterface
       AVRedPacketManager.b();
       this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor.b();
       this.jdField_a_of_type_ComTencentAvAppGMemoryMonitor.a();
-      this.jdField_a_of_type_Jfb.a();
-      this.jdField_a_of_type_Jey.a();
+      this.jdField_a_of_type_Jem.a();
+      this.jdField_a_of_type_Jej.a();
       this.jdField_a_of_type_ComTencentAvAppGKillProcessMonitor.b();
       this.jdField_a_of_type_ComTencentAvAppGVipFunCallMonitor.b();
       this.jdField_a_of_type_ComTencentAvAppGAudioExitMonitor.b();

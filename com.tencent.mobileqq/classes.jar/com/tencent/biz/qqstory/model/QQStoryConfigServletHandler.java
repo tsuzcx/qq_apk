@@ -18,6 +18,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
+import dov.com.tencent.biz.qqstory.takevideo.EditAioSyncToStoryPart;
 import java.util.HashMap;
 import java.util.List;
 import org.json.JSONArray;
@@ -32,41 +33,28 @@ public abstract class QQStoryConfigServletHandler
     if (paramList.isEmpty())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQStoryConfigServletHandler", 2, "handleStoryEditVideoConfig data is null!!!");
+        QLog.d("QQStoryConfigServletHandler", 2, "handledAIOSyncToStory data is null!!!");
       }
       return false;
     }
-    SLog.a("QQStoryConfigServletHandler", "handleStorySync2QzoneConfig config=%s", paramList);
     paramList = (String)paramList.get(0);
+    SLog.a("QQStoryConfigServletHandler", "handledAIOSyncToStory config=%s", paramList);
+    if (TextUtils.isEmpty(paramList))
+    {
+      SLog.e("QQStoryConfigServletHandler", "handledAIOSyncToStory content is null!!");
+      return false;
+    }
     try
     {
-      paramList = new JSONObject(paramList);
-      int i = paramList.optInt("show_sync_btn");
-      int j = paramList.optInt("default_status");
-      SLog.a("QQStoryConfigServletHandler", "handleStorySync2QzoneConfig showSyncBtn = %d,defaultStatus=%d", Integer.valueOf(i), Integer.valueOf(j));
-      if (i == 1)
-      {
-        bool = true;
-        StoryConfigManager.b(bool);
-        if (j != 1) {
-          break label116;
-        }
-      }
-      label116:
-      for (boolean bool = true;; bool = false)
-      {
-        StoryConfigManager.d(bool);
-        return true;
-        bool = false;
-        break;
-      }
+      EditAioSyncToStoryPart.a(paramList);
       return false;
     }
     catch (JSONException paramList)
     {
-      AssertUtils.a("handleStorySync2QzoneConfig:" + paramList.toString(), new Object[0]);
       paramList.printStackTrace();
+      AssertUtils.a("handledAIOSyncToStory error:" + paramList.toString(), new Object[0]);
     }
+    return false;
   }
   
   private boolean a(List paramList, int paramInt)
@@ -130,7 +118,7 @@ public abstract class QQStoryConfigServletHandler
     try
     {
       if (Integer.valueOf(str11).intValue() != 0) {
-        break label996;
+        break label986;
       }
       bool = true;
     }
@@ -146,7 +134,7 @@ public abstract class QQStoryConfigServletHandler
         try
         {
           if (Integer.valueOf(str11).intValue() != 1) {
-            break label1086;
+            break label1075;
           }
           bool = true;
           paramList.b("boolean_need_high_profile", Boolean.valueOf(bool));
@@ -291,6 +279,64 @@ public abstract class QQStoryConfigServletHandler
   
   private boolean b(List paramList)
   {
+    if (paramList.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryConfigServletHandler", 2, "handleStoryEditVideoConfig data is null!!!");
+      }
+      return false;
+    }
+    SLog.a("QQStoryConfigServletHandler", "handleStorySync2QzoneConfig config=%s", paramList);
+    paramList = (String)paramList.get(0);
+    try
+    {
+      paramList = new JSONObject(paramList);
+      int i = paramList.optInt("show_sync_btn");
+      int j = paramList.optInt("default_status");
+      SLog.a("QQStoryConfigServletHandler", "handleStorySync2QzoneConfig showSyncBtn = %d,defaultStatus=%d", Integer.valueOf(i), Integer.valueOf(j));
+      if (i == 1)
+      {
+        bool = true;
+        StoryConfigManager.b(bool);
+        if (j != 1) {
+          break label121;
+        }
+      }
+      label121:
+      for (boolean bool = true;; bool = false)
+      {
+        StoryConfigManager.d(bool);
+        return true;
+        bool = false;
+        break;
+      }
+      return false;
+    }
+    catch (JSONException paramList)
+    {
+      AssertUtils.a("handleStorySync2QzoneConfig:" + paramList.toString(), new Object[0]);
+      paramList.printStackTrace();
+    }
+  }
+  
+  private boolean b(List paramList, int paramInt)
+  {
+    if (paramList.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.videoCache", 2, "handleStoryCacheConfigCmd, configList is empty");
+      }
+      return false;
+    }
+    paramList = (String)paramList.get(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.videoCache", 2, "handleStoryCacheConfigCmd, version = " + paramInt + ", json = " + paramList);
+    }
+    return ((StoryManager)SuperManager.a(5)).a(paramList);
+  }
+  
+  private boolean c(List paramList)
+  {
     int j = 4;
     if (paramList.isEmpty())
     {
@@ -328,7 +374,7 @@ public abstract class QQStoryConfigServletHandler
           if (i < k)
           {
             if (!arrayOfDevice[i].a()) {
-              break label727;
+              break label728;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "use flow decode first");
             localStoryConfigManager.b("boolean_use_flow_decode_first", Boolean.valueOf(true));
@@ -342,7 +388,7 @@ public abstract class QQStoryConfigServletHandler
           if (i < k)
           {
             if (!arrayOfDevice[i].a()) {
-              break label734;
+              break label735;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "disable revert play mode");
             localStoryConfigManager.b("boolean_enable_revert_play_mode", Boolean.valueOf(false));
@@ -356,7 +402,7 @@ public abstract class QQStoryConfigServletHandler
           if (i < k)
           {
             if (!arrayOfDevice[i].a()) {
-              break label741;
+              break label742;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "disable fast play mode");
             localStoryConfigManager.b("boolean_enable_fast_play_mode", Boolean.valueOf(false));
@@ -370,7 +416,7 @@ public abstract class QQStoryConfigServletHandler
           if (i < k)
           {
             if (!arrayOfDevice[i].a()) {
-              break label748;
+              break label749;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "disable slow play mode");
             localStoryConfigManager.b("boolean_enable_slow_play_mode", Boolean.valueOf(false));
@@ -384,7 +430,7 @@ public abstract class QQStoryConfigServletHandler
           if (i < k)
           {
             if (!arrayOfDevice[i].a()) {
-              break label755;
+              break label756;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "disable hw encode picToVideo");
             localStoryConfigManager.b("boolean_enable_hw_encode_pic_to_video", Boolean.valueOf(false));
@@ -398,7 +444,7 @@ public abstract class QQStoryConfigServletHandler
           if (i < k)
           {
             if (!arrayOfDevice[i].a()) {
-              break label762;
+              break label763;
             }
             QLog.i("Q.qqstory.editVideoConfig", 2, "disable flow decode");
             localStoryConfigManager.b("boolean_enable_flow_decode", Boolean.valueOf(false));
@@ -434,7 +480,7 @@ public abstract class QQStoryConfigServletHandler
       if ((paramList.jdField_b_of_type_Int > 0) && (paramList.jdField_b_of_type_Int < 10))
       {
         localStoryConfigManager.b("key_story_video_preload_duration", Integer.valueOf(paramList.jdField_b_of_type_Int));
-        break label725;
+        break label726;
         i = j;
         if ("INFO".contains(paramList.jdField_a_of_type_JavaLangString)) {
           continue;
@@ -446,45 +492,29 @@ public abstract class QQStoryConfigServletHandler
           continue;
         }
       }
-      label725:
+      label726:
       return true;
-      label727:
+      label728:
       i += 1;
       continue;
-      label734:
+      label735:
       i += 1;
       continue;
-      label741:
+      label742:
       i += 1;
       continue;
-      label748:
+      label749:
       i += 1;
       continue;
-      label755:
+      label756:
       i += 1;
       continue;
-      label762:
+      label763:
       i += 1;
     }
   }
   
-  private boolean b(List paramList, int paramInt)
-  {
-    if (paramList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.videoCache", 2, "handleStoryCacheConfigCmd, configList is empty");
-      }
-      return false;
-    }
-    paramList = (String)paramList.get(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.videoCache", 2, "handleStoryCacheConfigCmd, version = " + paramInt + ", json = " + paramList);
-    }
-    return ((StoryManager)SuperManager.a(5)).a(paramList);
-  }
-  
-  private boolean c(List paramList)
+  private boolean d(List paramList)
   {
     if (paramList.isEmpty())
     {
@@ -509,7 +539,7 @@ public abstract class QQStoryConfigServletHandler
     }
   }
   
-  private boolean d(List paramList)
+  private boolean e(List paramList)
   {
     if (paramList.isEmpty()) {
       return false;
@@ -549,7 +579,7 @@ public abstract class QQStoryConfigServletHandler
     return true;
   }
   
-  private boolean e(List paramList)
+  private boolean f(List paramList)
   {
     if (paramList.isEmpty()) {
       return false;
@@ -678,7 +708,7 @@ public abstract class QQStoryConfigServletHandler
     }
   }
   
-  private boolean f(List paramList)
+  private boolean g(List paramList)
   {
     if (paramList.isEmpty()) {
       return false;
@@ -742,23 +772,25 @@ public abstract class QQStoryConfigServletHandler
         break;
       }
       return a(paramInt, paramIntent, paramConfig, (List)localObject);
-      bool1 = c((List)localObject);
+      bool1 = d((List)localObject);
       continue;
       bool1 = a((List)localObject, j);
       continue;
       bool1 = b((List)localObject, j);
       continue;
+      bool1 = f((List)localObject);
+      continue;
       bool1 = e((List)localObject);
       continue;
-      bool1 = d((List)localObject);
+      bool1 = g((List)localObject);
       continue;
-      bool1 = f((List)localObject);
+      bool1 = c((List)localObject);
       continue;
       bool1 = b((List)localObject);
       continue;
-      bool1 = a((List)localObject);
-      continue;
       bool1 = a((List)localObject, str);
+      continue;
+      bool1 = a((List)localObject);
     }
   }
   

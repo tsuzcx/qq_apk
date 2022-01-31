@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-public class war
+class war
   implements Runnable
 {
-  public war(ZhituManager paramZhituManager, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
+  war(waq paramwaq, String paramString) {}
   
   public void run()
   {
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_Int);
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager));
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager).clear();
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b.trim(), null, 0);
+    TroopChatPie.c(this.jdField_a_of_type_Waq.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+    TroopChatPie.d(this.jdField_a_of_type_Waq.a).setText(this.jdField_a_of_type_Waq.a.a.getResources().getString(2131430452) + this.jdField_a_of_type_JavaLangString);
+    TroopChatPie.a(this.jdField_a_of_type_Waq.a).setOnClickListener(null);
   }
 }
 

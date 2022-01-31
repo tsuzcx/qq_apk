@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.util.DrawerCoverUtil;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
 
-class zaf
+public class zaf
   implements Runnable
 {
-  zaf(zae paramzae, Card paramCard) {}
+  public zaf(BaseActivity paramBaseActivity) {}
   
   public void run()
   {
-    if (FrameHelperActivity.a(this.jdField_a_of_type_Zae.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) >= 0)
-    {
-      DrawerCoverUtil.a(this.jdField_a_of_type_Zae.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard);
-      FrameHelperActivity.b(this.jdField_a_of_type_Zae.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity);
-    }
+    ActivityLifecycle.onResume(this.a.getActivity());
   }
 }
 

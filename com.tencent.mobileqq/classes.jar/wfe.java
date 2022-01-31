@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.XListView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class wfe
-  extends PublicAccountObserver
+  implements Runnable
 {
-  public wfe(PublicView paramPublicView) {}
+  public wfe(BlessResultActivity paramBlessResultActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (true == paramBoolean)
-    {
-      PublicView.a(this.a).a(0);
-      PublicView.a(this.a).sendEmptyMessage(1);
-      PublicView.a(this.a).sendEmptyMessage(3);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "VideoRedbag, BlessResultActivity doOnResume, sendRealNameCheckReq");
     }
-    PublicView.a(this.a).springBackOverScrollHeaderView();
-    PublicView.a(this.a, 1, 2131434332);
-    PublicView.a(this.a);
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      RedBagVideoManager.a((QQAppInterface)localAppRuntime);
+    }
   }
 }
 

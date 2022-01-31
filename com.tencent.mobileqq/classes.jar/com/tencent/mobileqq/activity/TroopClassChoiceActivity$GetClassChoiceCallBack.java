@@ -4,7 +4,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
 import com.tencent.mobileqq.troopinfo.GroupCatalogTool.GetChoiceListCallback;
 import com.tencent.qphone.base.util.QLog;
-import ttv;
+import twv;
 
 public class TroopClassChoiceActivity$GetClassChoiceCallBack
   implements GroupCatalogTool.GetChoiceListCallback
@@ -16,7 +16,7 @@ public class TroopClassChoiceActivity$GetClassChoiceCallBack
     if (paramBoolean)
     {
       this.a.a = GroupCatalogTool.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
-      this.a.runOnUiThread(new ttv(this));
+      this.a.runOnUiThread(new twv(this));
       return;
     }
     QLog.e("IphoneTitleBarActivity", 1, "getClassChoiceFromServer failed!");

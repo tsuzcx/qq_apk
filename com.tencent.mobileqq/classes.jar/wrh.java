@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
 
 public class wrh
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public wrh(DialogBaseActivity paramDialogBaseActivity) {}
+  public wrh(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.a = null;
+    this.a.dismiss();
   }
 }
 

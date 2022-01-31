@@ -1,6 +1,6 @@
 package cooperation.qqfav.globalsearch;
 
-import alzf;
+import ampj;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,11 +41,11 @@ public class FavoriteSearchResultGroupPresenter
     label194:
     for (paramISearchResultGroupModel = String.valueOf(i);; paramISearchResultGroupModel = "10+")
     {
-      ((TextView)paramISearchResultView.a().findViewById(2131366378)).setText(String.format("%s条与\"", new Object[] { paramISearchResultGroupModel }));
-      ((TextView)paramISearchResultView.a().findViewById(2131366379)).setText(localGroupSearchModelFavorite.b());
-      ((TextView)paramISearchResultView.a().findViewById(2131366380)).setText("\"相关收藏");
+      ((TextView)paramISearchResultView.a().findViewById(2131366405)).setText(String.format("%s条与\"", new Object[] { paramISearchResultGroupModel }));
+      ((TextView)paramISearchResultView.a().findViewById(2131366406)).setText(localGroupSearchModelFavorite.b());
+      ((TextView)paramISearchResultView.a().findViewById(2131366407)).setText("\"相关收藏");
       paramISearchResultView.b().setVisibility(8);
-      paramISearchResultView.a().setOnClickListener(new alzf(this, localGroupSearchModelFavorite));
+      paramISearchResultView.a().setOnClickListener(new ampj(this, localGroupSearchModelFavorite));
       return;
       i = localGroupSearchModelFavorite.a().size();
       break;

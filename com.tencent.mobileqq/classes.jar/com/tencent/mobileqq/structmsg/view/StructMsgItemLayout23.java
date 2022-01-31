@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahva;
+import aijd;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -36,9 +36,9 @@ public class StructMsgItemLayout23
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
     Object localObject2;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof ahva)))
+    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof aijd)))
     {
-      localahva = (ahva)paramView.getTag();
+      localaijd = (aijd)paramView.getTag();
       localIterator = this.a.iterator();
       for (;;)
       {
@@ -49,7 +49,7 @@ public class StructMsgItemLayout23
         localObject1 = (AbsStructMsgElement)localIterator.next();
         if ("button".equals(((AbsStructMsgElement)localObject1).a))
         {
-          localObject2 = (TextView)((AbsStructMsgElement)localObject1).a(paramContext, localahva.a, paramBundle);
+          localObject2 = (TextView)((AbsStructMsgElement)localObject1).a(paramContext, localaijd.a, paramBundle);
           if (TextUtils.isEmpty(((StructMsgItemButton)localObject1).c())) {
             ((TextView)localObject2).setTextSize(16.0F);
           }
@@ -60,7 +60,7 @@ public class StructMsgItemLayout23
       }
     }
     Object localObject1 = a(paramContext);
-    ahva localahva = new ahva();
+    aijd localaijd = new aijd();
     Iterator localIterator = this.a.iterator();
     paramView = null;
     while (localIterator.hasNext())
@@ -81,9 +81,9 @@ public class StructMsgItemLayout23
       }
     }
     if (paramView != null) {
-      localahva.a = paramView;
+      localaijd.a = paramView;
     }
-    ((LinearLayout)localObject1).setTag(localahva);
+    ((LinearLayout)localObject1).setTag(localaijd);
     return localObject1;
   }
   
@@ -94,7 +94,7 @@ public class StructMsgItemLayout23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout23
  * JD-Core Version:    0.7.0.1
  */

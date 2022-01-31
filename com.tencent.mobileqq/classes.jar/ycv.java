@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ycv
-  implements Runnable
+public final class ycv
+  implements DialogInterface.OnClickListener
 {
-  ycv(ycu paramycu) {}
+  public ycv(Context paramContext) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.e();
+    ((Activity)this.a).finish();
   }
 }
 

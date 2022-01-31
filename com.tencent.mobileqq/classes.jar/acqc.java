@@ -1,35 +1,16 @@
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.SucDownloadInfo;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadPkgInstallReceiver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
-public class acqc
-  implements Runnable
+class acqc
+  implements View.OnClickListener
 {
-  public acqc(UniformDownloadPkgInstallReceiver paramUniformDownloadPkgInstallReceiver, String paramString1, String paramString2) {}
+  acqc(acqb paramacqb) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (("android.intent.action.PACKAGE_ADDED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || ("android.intent.action.PACKAGE_REPLACED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)))
-    {
-      Object localObject = UniformDownloadMgr.a().a(this.b, true);
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          UniformDownloadMgr.SucDownloadInfo localSucDownloadInfo = (UniformDownloadMgr.SucDownloadInfo)((Iterator)localObject).next();
-          if (localSucDownloadInfo != null)
-          {
-            QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] send cancel notification.pkgName:" + this.b + " notificationId:" + localSucDownloadInfo.a);
-            UniformDownloadNfn.a().c(localSucDownloadInfo.a, null);
-          }
-        }
-      }
-    }
+    QfileCloudFileTabView.a(this.a.a, false);
+    this.a.a.h();
   }
 }
 

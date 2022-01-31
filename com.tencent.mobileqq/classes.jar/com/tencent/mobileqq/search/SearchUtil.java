@@ -353,7 +353,7 @@ public class SearchUtil
   
   public static void a(TextView paramTextView)
   {
-    float f = paramTextView.getResources().getDimensionPixelSize(2131559124) / paramTextView.getResources().getDisplayMetrics().densityDpi * FontSettingManager.a.densityDpi;
+    float f = paramTextView.getResources().getDimensionPixelSize(2131559126) / paramTextView.getResources().getDisplayMetrics().densityDpi * FontSettingManager.a.densityDpi;
     if (f > 0.0F) {
       paramTextView.setMaxWidth((int)f);
     }

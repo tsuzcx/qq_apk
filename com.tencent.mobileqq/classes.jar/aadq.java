@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ARRelationShip;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public final class aadq
-  implements Parcelable.Creator
+public class aadq
+  implements Runnable
 {
-  public ARRelationShip a(Parcel paramParcel)
-  {
-    return new ARRelationShip(paramParcel);
-  }
+  public aadq(ScanEntranceReport paramScanEntranceReport, String paramString, int paramInt1, int paramInt2) {}
   
-  public ARRelationShip[] a(int paramInt)
+  public void run()
   {
-    return new ARRelationShip[paramInt];
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_name", this.jdField_a_of_type_JavaLangString);
+    localHashMap.put("memory_size", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_average_fps", true, this.b, 0L, localHashMap, "");
   }
 }
 

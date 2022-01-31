@@ -1,6 +1,6 @@
 package cooperation.qzone.plugin;
 
-import amgu;
+import amwz;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -24,7 +24,7 @@ public abstract class OnQZoneLiveSoDownloadListener$Stub
     if ((localIInterface != null) && ((localIInterface instanceof OnQZoneLiveSoDownloadListener))) {
       return (OnQZoneLiveSoDownloadListener)localIInterface;
     }
-    return new amgu(paramIBinder);
+    return new amwz(paramIBinder);
   }
   
   public IBinder asBinder()

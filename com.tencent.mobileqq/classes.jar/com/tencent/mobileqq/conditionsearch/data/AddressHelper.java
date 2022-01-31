@@ -65,15 +65,15 @@ public class AddressHelper
     //   114: invokestatic 29	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   117: aload_0
     //   118: areturn
-    //   119: astore_0
+    //   119: astore_1
     //   120: aconst_null
-    //   121: astore_1
+    //   121: astore_0
     //   122: invokestatic 21	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   125: ifeq +12 -> 137
     //   128: ldc 23
     //   130: iconst_2
     //   131: ldc 66
-    //   133: aload_0
+    //   133: aload_1
     //   134: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   137: new 71	java/lang/NullPointerException
     //   140: dup
@@ -133,9 +133,9 @@ public class AddressHelper
     //   240: aload_1
     //   241: invokevirtual 75	java/lang/Exception:printStackTrace	()V
     //   244: goto -7 -> 237
-    //   247: astore_0
+    //   247: astore_1
     //   248: aload_2
-    //   249: astore_1
+    //   249: astore_0
     //   250: goto -128 -> 122
     //   253: goto -185 -> 68
     //   256: aload_1

@@ -1,20 +1,51 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.multimsg.LongTextMsgManager;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-class rvj
-  implements DialogInterface.OnCancelListener
+public final class rvj
+  implements UpCallBack
 {
-  rvj(rvi paramrvi) {}
+  public rvj(MessageForArkBabyqReply paramMessageForArkBabyqReply, QQAppInterface paramQQAppInterface) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    return null;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
+    try
+    {
+      if (paramSendResult.jdField_a_of_type_Int == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ChatActivityFacade", 2, "step3: sendArkBabyQReplyLongMessage pack upload mResid=" + paramSendResult.c);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkBabyqReply.resIDForLongMsg = paramSendResult.c;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkBabyqReply, null, false);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivityFacade", 2, "sendArkBabyQReplyLongMessage upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
+      }
+      LongTextMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkBabyqReply);
+      return;
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    catch (Exception paramSendResult)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatActivityFacade", 2, "sendArkBabyQReplyLongMessage upload multi msg pack failed, catch exception", paramSendResult);
+      }
+      LongTextMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkBabyqReply);
+    }
   }
 }
 

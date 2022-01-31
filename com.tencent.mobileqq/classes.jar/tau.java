@@ -1,20 +1,47 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.util.Utils;
 
 public class tau
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tau(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tau(LoginVerifyCodeActivity paramLoginVerifyCodeActivity, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
+    int k = 0;
+    String str = Utils.b(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() == 6) && (LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity) != null) && (!str.equals(LoginVerifyCodeActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity))))
+    {
+      LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity, str);
+      int m = 1;
+      int i = 0;
+      for (;;)
+      {
+        int j = m;
+        if (i < 6)
+        {
+          Editable localEditable = LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity)[i].getText();
+          if ((localEditable != null) && (localEditable.toString().length() > 0)) {
+            j = 0;
+          }
+        }
+        else
+        {
+          if (j == 0) {
+            break;
+          }
+          i = k;
+          while (i < 6)
+          {
+            LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity)[i].setText(str.substring(i, i + 1));
+            i += 1;
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 

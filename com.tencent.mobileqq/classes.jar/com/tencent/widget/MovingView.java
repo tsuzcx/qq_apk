@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alna;
+import amcq;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -53,21 +53,21 @@ public class MovingView
   public MovingView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new alna(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new amcq(this, Looper.getMainLooper());
     c();
   }
   
   public MovingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new alna(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new amcq(this, Looper.getMainLooper());
     c();
   }
   
   public MovingView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidOsHandler = new alna(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new amcq(this, Looper.getMainLooper());
     c();
   }
   
@@ -424,7 +424,7 @@ public class MovingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.MovingView
  * JD-Core Version:    0.7.0.1
  */

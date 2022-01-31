@@ -1,25 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class lqm
   implements Runnable
 {
-  public lqm(ChannelCoverInfoModule paramChannelCoverInfoModule, int paramInt, List paramList) {}
+  public lqm(ArticleReadInfoModule paramArticleReadInfoModule, ArticleReadInfo paramArticleReadInfo) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChannelCoverInfoModule", 2, "notifyUIToRefresh channelId=" + this.jdField_a_of_type_Int + " ;size = " + this.jdField_a_of_type_JavaUtilList.size());
-    }
-    if (this.jdField_a_of_type_Int == 0) {
-      ReadInJoyLogicEngineEventDispatcher.a().d(true, this.jdField_a_of_type_JavaUtilList);
-    }
-    while (this.jdField_a_of_type_Int != 56) {
-      return;
-    }
-    ReadInJoyLogicEngineEventDispatcher.a().e(true, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleReadInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleReadInfo);
   }
 }
 

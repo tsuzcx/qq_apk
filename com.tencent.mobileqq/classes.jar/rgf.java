@@ -1,28 +1,27 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rgf
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public rgf(AddFriendVerifyActivity paramAddFriendVerifyActivity, ActionSheet paramActionSheet) {}
+  public rgf(AccountManageActivity paramAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    paramView = (View)paramView.getParent().getParent();
+    if ((paramView == null) || (paramView.getTag() == null)) {}
+    int i;
+    do
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1001));
-      continue;
-      AvatarWallAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1);
-    }
+      i = ((Integer)paramView.getTag()).intValue();
+    } while ((i == 0) && (!PhoneNumLoginImpl.a().a(this.a.app, this.a)));
+    this.a.a(i);
+    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
   }
 }
 

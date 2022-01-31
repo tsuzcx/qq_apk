@@ -1,52 +1,26 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
-import java.util.LinkedList;
+import android.os.Handler;
+import com.tencent.mobileqq.secspy.SecSpyFileManager;
+import com.tencent.mobileqq.secspy.SecSpyFileManager.UploadProgressInfo;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
 
-class ahxa
+public class ahxa
   implements Runnable
 {
-  ahxa(ahwz paramahwz) {}
+  public ahxa(SecSpyFileManager paramSecSpyFileManager, SecSpyFileManager.UploadProgressInfo paramUploadProgressInfo, long paramLong) {}
   
   public void run()
   {
-    for (;;)
-    {
-      int j;
-      synchronized (this.a.a)
-      {
-        Texture[] arrayOfTexture = FrameSprite.a(this.a.a);
-        if ((arrayOfTexture == null) || (FrameSprite.a(this.a.a))) {
-          return;
-        }
-        FrameSprite.a(this.a.a, new Texture[FrameSprite.a(this.a.a).length / 2]);
-        j = 0;
-        int i = 0;
-        if (j < FrameSprite.a(this.a.a).length)
-        {
-          if (j % 2 == 0)
-          {
-            FrameSprite localFrameSprite2 = this.a.a;
-            int k = i + 1;
-            FrameSprite.a(localFrameSprite2, i, arrayOfTexture[j]);
-            i = k;
-          }
-          else
-          {
-            FrameSprite.a(this.a.a).remove(arrayOfTexture[j]);
-            arrayOfTexture[j].c();
-          }
-        }
-        else {
-          return;
-        }
-      }
-      j += 1;
+    if (SecSpyFileManager.UploadProgressInfo.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo)) {
+      return;
     }
+    float f = SecSpyFileManager.UploadProgressInfo.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo) / SecSpyFileManager.UploadProgressInfo.b(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo);
+    this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager.a(this.jdField_a_of_type_Long, 3, new Object[] { Integer.valueOf((int)(f * 100.0F)) });
+    this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager.a.a().postDelayed(this, 20000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,35 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.buscard.BuscardPluginRemoteCommand;
 
 public class amjd
-  implements Runnable
+  extends PublicAccountObserver
 {
-  public amjd(QZoneShareActivity paramQZoneShareActivity) {}
+  public amjd(BuscardPluginRemoteCommand paramBuscardPluginRemoteCommand, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    if ((QZoneShareActivity.a(this.a) != null) && (QZoneShareActivity.a(this.a).isShowing())) {}
-    try
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("isSuccess", paramBoolean);
+    ((Bundle)localObject).putString("uin", paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putAll((Bundle)localObject);
+    if (QLog.isColorLevel())
     {
-      QZoneShareActivity.a(this.a).dismiss();
-      return;
+      localObject = new StringBuilder().append("publicAccount.followUin, isSuccess=").append(paramBoolean).append("; result=");
+      if (this.jdField_a_of_type_AndroidOsBundle == null) {
+        break label108;
+      }
     }
-    catch (Exception localException)
+    label108:
+    for (paramString = this.jdField_a_of_type_AndroidOsBundle.toString();; paramString = "null")
     {
-      QLog.e("QZoneShare", 1, localException.getMessage());
+      QLog.d("BuscardPluginRemoteCommand", 2, paramString);
+      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
+      }
+      return;
     }
   }
 }

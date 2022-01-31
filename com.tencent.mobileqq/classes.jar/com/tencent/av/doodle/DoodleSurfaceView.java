@@ -64,7 +64,7 @@ public class DoodleSurfaceView
   @TargetApi(11)
   private void a(Context paramContext)
   {
-    setId(2131362514);
+    setId(2131362535);
     setClickable(false);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
@@ -370,7 +370,7 @@ public class DoodleSurfaceView
       paramMotionEvent = getContext();
       if ((paramMotionEvent instanceof AVActivity))
       {
-        localObject = ((View)localObject).findViewById(2131362513);
+        localObject = ((View)localObject).findViewById(2131362534);
         if (localObject != null)
         {
           paramMotionEvent = ((AVActivity)paramMotionEvent).a;
@@ -387,7 +387,7 @@ public class DoodleSurfaceView
       Object localObject = getContext();
       if ((localObject instanceof AVActivity))
       {
-        paramMotionEvent = ((View)getParent()).findViewById(2131362513);
+        paramMotionEvent = ((View)getParent()).findViewById(2131362534);
         if (paramMotionEvent != null)
         {
           localObject = ((AVActivity)localObject).a;

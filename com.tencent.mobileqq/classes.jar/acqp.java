@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
+import com.tencent.widget.XListView;
 
-public final class acqp
-  implements Parcelable.Creator
+class acqp
+  implements Runnable
 {
-  public FileInfo a(Parcel paramParcel)
-  {
-    return new FileInfo(paramParcel, null);
-  }
+  acqp(acqo paramacqo) {}
   
-  public FileInfo[] a(int paramInt)
+  public void run()
   {
-    return new FileInfo[paramInt];
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.a(2130970030, 2130842666, 4, this.a.jdField_a_of_type_JavaLangString, 0, false, 0, "other", 1, false, false);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.a(2130970030, 2130842666, 4, this.a.jdField_a_of_type_JavaLangString, 0, true, 21, "other", 1, false, false);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollToPosition(0);
   }
 }
 

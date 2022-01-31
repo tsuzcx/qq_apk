@@ -152,7 +152,7 @@ public class PttVoiceChangePreSender
     a();
     if (this.d != -1)
     {
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800608D", "0X800608D", this.h + 10, 0, this.d + "", paramInt + "", "", "7.6.0");
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800608D", "0X800608D", this.h + 10, 0, this.d + "", paramInt + "", "", "7.6.3");
       if (this.h == 2)
       {
         if (this.d != paramInt) {
@@ -177,7 +177,7 @@ public class PttVoiceChangePreSender
       this.jdField_a_of_type_Float = f1;
       b();
       if (this.e != -1) {
-        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800608D", "0X800608D", this.i + 20, 0, this.e + "", paramInt + "", "", "7.6.0");
+        ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800608D", "0X800608D", this.i + 20, 0, this.e + "", paramInt + "", "", "7.6.3");
       }
       if (paramInt >= 0) {
         break label274;
@@ -250,7 +250,7 @@ public class PttVoiceChangePreSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.PttVoiceChangePreSender
  * JD-Core Version:    0.7.0.1
  */

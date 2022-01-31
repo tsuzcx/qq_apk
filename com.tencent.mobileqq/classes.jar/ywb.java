@@ -1,58 +1,17 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloTabAdapter;
-import com.tencent.mobileqq.data.ApolloActionPackage;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.HorizontalListView;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.apollo.data.ApolloDress;
+import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyDressReady;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ywb
-  implements Runnable
+public final class ywb
+  implements ApolloResDownloader.OnApolloDownLoadListener
 {
-  public ywb(ApolloPanel paramApolloPanel, List paramList) {}
+  public ywb(ApolloGameBasicEventUtil.NotifyDressReady paramNotifyDressReady, long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ApolloDress paramApolloDress, int[] paramArrayOfInt) {}
   
-  public void run()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqApolloViewApolloTabAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentWidgetHorizontalListView != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqApolloViewApolloTabAdapter.a(this.jdField_a_of_type_JavaUtilList);
-      if (!ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel)) {
-        break label111;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqApolloViewApolloTabAdapter.notifyDataSetChanged();
-      if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null)) {
-        break;
-      }
-      return;
-      label111:
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    label135:
-    ApolloActionPackage localApolloActionPackage;
-    while (localIterator.hasNext())
-    {
-      localApolloActionPackage = (ApolloActionPackage)localIterator.next();
-      if ((localApolloActionPackage != null) && (localApolloActionPackage.isUpdate)) {
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a != 3000) {
-          break label215;
-        }
-      }
-    }
-    label215:
-    for (int i = 2;; i = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a)
-    {
-      VipUtils.a(null, "cmshow", "Apollo", "tabreddot", i, 0, new String[] { String.valueOf(localApolloActionPackage.packageId) });
-      break label135;
-      break;
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameBasicEventUtil$NotifyDressReady != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameBasicEventUtil$NotifyDressReady.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqApolloDataApolloDress.a, this.jdField_a_of_type_ArrayOfInt, 22);
     }
   }
 }

@@ -1,21 +1,42 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import javax.net.ssl.HandshakeCompletedEvent;
-import javax.net.ssl.HandshakeCompletedListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.Switch;
+import java.util.HashMap;
 
-public final class yim
-  implements HandshakeCompletedListener
+public class yim
+  extends TroopObserver
 {
-  public yim(View paramView, long paramLong) {}
+  public yim(TroopListAdapter2 paramTroopListAdapter2, TroopActivity paramTroopActivity) {}
   
-  public void handshakeCompleted(HandshakeCompletedEvent paramHandshakeCompletedEvent)
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new yin(this));
+    if (!paramBoolean)
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.getString(2131430391), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.getTitleBarHeight());
+      if ((this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))
+      {
+        Switch localSwitch = (Switch)this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_ComTencentMobileqqAppTroopManager != null) {
+          localSwitch.setChecked(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_ComTencentMobileqqAppTroopManager.d(paramString));
+        }
+      }
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
+      ((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_AndroidContentContext).runOnUiThread(new yin(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yim
  * JD-Core Version:    0.7.0.1
  */

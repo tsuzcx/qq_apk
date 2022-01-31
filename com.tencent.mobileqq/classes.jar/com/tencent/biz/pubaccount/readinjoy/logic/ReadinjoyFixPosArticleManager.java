@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import loi;
-import loj;
+import lol;
+import lom;
 import mqq.os.MqqHandler;
 
 public class ReadinjoyFixPosArticleManager
 {
   private static volatile ReadinjoyFixPosArticleManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadinjoyFixPosArticleManager;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private loj jdField_a_of_type_Loj = new loj(this, 1);
+  private lom jdField_a_of_type_Lom = new lom(this, 1);
   
   private int a(int paramInt1, List paramList, int paramInt2)
   {
@@ -99,12 +99,12 @@ public class ReadinjoyFixPosArticleManager
       }
       localObject = a(paramInt, localArrayList, localArrayList, 3);
     } while (localObject == localArrayList);
-    ThreadManager.getUIHandler().post(new loi(this, localReadInJoyBaseAdapter, (List)localObject));
+    ThreadManager.getUIHandler().post(new lol(this, localReadInJoyBaseAdapter, (List)localObject));
   }
   
   public ArticleInfo a(int paramInt, long paramLong)
   {
-    return (ArticleInfo)this.jdField_a_of_type_Loj.a(paramInt, a(paramLong));
+    return (ArticleInfo)this.jdField_a_of_type_Lom.a(paramInt, a(paramLong));
   }
   
   public List a(int paramInt1, List paramList1, List paramList2, int paramInt2)
@@ -113,9 +113,9 @@ public class ReadinjoyFixPosArticleManager
       return null;
     }
     if (paramInt2 != 2) {
-      this.jdField_a_of_type_Loj.a(paramInt1);
+      this.jdField_a_of_type_Lom.a(paramInt1);
     }
-    if (!this.jdField_a_of_type_Loj.a(paramInt1))
+    if (!this.jdField_a_of_type_Lom.a(paramInt1))
     {
       QLog.d("ReadinjoyFixPosArticleManager", 1, "has no fix article , give up insert !");
       return paramList1;
@@ -135,8 +135,8 @@ public class ReadinjoyFixPosArticleManager
           break;
           i = a(l);
           j = paramInt2 - i;
-          localArrayList1 = (ArrayList)this.jdField_a_of_type_Loj.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
-          localArrayList2 = (ArrayList)this.jdField_a_of_type_Loj.b.get(Integer.valueOf(paramInt1));
+          localArrayList1 = (ArrayList)this.jdField_a_of_type_Lom.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+          localArrayList2 = (ArrayList)this.jdField_a_of_type_Lom.b.get(Integer.valueOf(paramInt1));
           if ((localArrayList1 != null) && (localArrayList2 != null))
           {
             int k = localArrayList1.indexOf(Integer.valueOf(i));
@@ -149,9 +149,9 @@ public class ReadinjoyFixPosArticleManager
         }
       }
     }
-    paramList2 = (ArrayList)this.jdField_a_of_type_Loj.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
-    ArrayList localArrayList1 = (ArrayList)this.jdField_a_of_type_Loj.b.get(Integer.valueOf(paramInt1));
-    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_Loj.c.get(Integer.valueOf(paramInt1));
+    paramList2 = (ArrayList)this.jdField_a_of_type_Lom.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    ArrayList localArrayList1 = (ArrayList)this.jdField_a_of_type_Lom.b.get(Integer.valueOf(paramInt1));
+    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_Lom.c.get(Integer.valueOf(paramInt1));
     if ((paramList2 == null) || (localArrayList1 == null) || (localArrayList2 == null))
     {
       QLog.d("ReadinjoyFixPosArticleManager", 1, "ad article or positions is empty ! return ori data ");
@@ -189,7 +189,7 @@ public class ReadinjoyFixPosArticleManager
   public void a(int paramInt)
   {
     this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_Loj.d(paramInt);
+    this.jdField_a_of_type_Lom.d(paramInt);
   }
   
   public void a(int paramInt, long paramLong)
@@ -198,13 +198,13 @@ public class ReadinjoyFixPosArticleManager
       return;
     }
     int i = a(paramLong);
-    this.jdField_a_of_type_Loj.a(paramInt, i);
+    this.jdField_a_of_type_Lom.a(paramInt, i);
   }
   
   public void a(int paramInt, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramReadInJoyBaseAdapter);
-    this.jdField_a_of_type_Loj.c(paramInt);
+    this.jdField_a_of_type_Lom.c(paramInt);
   }
 }
 

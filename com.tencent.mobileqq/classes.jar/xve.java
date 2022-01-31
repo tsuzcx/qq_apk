@@ -1,29 +1,44 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.qphone.base.util.QLog;
 
 public class xve
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public xve(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public xve(RMVideoRecordState paramRMVideoRecordState) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0.0F);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
-    paramAnimation = (FrameLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    paramAnimation.setMargins(0, 0, 0, this.a.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight());
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramAnimation);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风读取数据错误...");
+    }
+    localRMVideoStateMgr.h = true;
+    localRMVideoStateMgr.e = false;
+    if (localRMVideoStateMgr.a != null)
+    {
+      if (localRMVideoStateMgr.a.i != -1) {
+        break label92;
+      }
+      localRMVideoStateMgr.b(0, "麦克风被禁用", false);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风被禁用,音频录制失败 errorcode=" + localRMVideoStateMgr.a.i);
+      }
+      return;
+      label92:
+      if (localRMVideoStateMgr.a.i == -2) {
+        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
+      } else if (localRMVideoStateMgr.a.i == -3) {
+        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
+      } else {
+        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

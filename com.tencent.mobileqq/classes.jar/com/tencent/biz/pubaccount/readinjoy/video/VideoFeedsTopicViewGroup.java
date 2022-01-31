@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -20,7 +21,7 @@ import com.tencent.biz.pubaccount.VideoReporter;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
 import java.util.Set;
-import mdk;
+import mep;
 import org.json.JSONObject;
 
 public class VideoFeedsTopicViewGroup
@@ -62,25 +63,25 @@ public class VideoFeedsTopicViewGroup
     int j;
     int i;
     label71:
+    VideoInfo.ChannelInfo localChannelInfo;
     Object localObject1;
-    String str;
     if ((this.jdField_a_of_type_Int != 0) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null))
     {
       removeAllViews();
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a == null) || (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.size() == 0))
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaUtilArrayList.size() == 0))
       {
         setVisibility(8);
         j = this.jdField_a_of_type_Int;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a == null) {
-          break label551;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaUtilArrayList == null) {
+          break label563;
         }
         i = 0;
-        if (i >= this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.size()) {
-          break label551;
+        if (i >= this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaUtilArrayList.size()) {
+          break label563;
         }
-        localObject1 = (VideoInfo.ChannelInfo)this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.get(i);
-        str = ((VideoInfo.ChannelInfo)localObject1).a;
-        if (!TextUtils.isEmpty(str)) {
+        localChannelInfo = (VideoInfo.ChannelInfo)this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject1 = localChannelInfo.jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           break label131;
         }
       }
@@ -95,7 +96,7 @@ public class VideoFeedsTopicViewGroup
       Object localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
       ((TextView)localObject2).setTextSize(2, 12.0F);
       Object localObject3 = new Rect();
-      ((TextView)localObject2).getPaint().getTextBounds("#" + str, 0, str.length() + 1, (Rect)localObject3);
+      ((TextView)localObject2).getPaint().getTextBounds("# " + (String)localObject1, 0, ((String)localObject1).length() + 1, (Rect)localObject3);
       int m = ((Rect)localObject3).width();
       int k;
       if (i == 0)
@@ -104,30 +105,31 @@ public class VideoFeedsTopicViewGroup
         label220:
         k += m;
         if (j < k) {
-          break label551;
+          break label563;
         }
         localObject2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
         localObject3 = new LinearLayout.LayoutParams(-2, -1);
         if (i != 0) {
-          break label524;
+          break label536;
         }
         ((LinearLayout.LayoutParams)localObject3).setMargins(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F), 0, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
         label283:
         TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-        localTextView.setText("#");
+        localTextView.setText("# ");
         localTextView.setTextColor(Color.parseColor("#07D0B0"));
         localTextView.setTextSize(2, 12.0F);
         localTextView.setId(2131362203);
         ((LinearLayout)localObject2).addView(localTextView);
         localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-        localTextView.setText(str);
-        localTextView.setTextColor(Color.argb(255, 167, 167, 166));
+        localTextView.getPaint().setFakeBoldText(true);
+        localTextView.setText((CharSequence)localObject1);
+        localTextView.setTextColor(Color.parseColor("#FFFFFF"));
         localTextView.setTextSize(2, 12.0F);
         localTextView.setId(2131362203);
         ((LinearLayout)localObject2).addView(localTextView);
         ((LinearLayout)localObject2).setId(2131362202);
-        ((LinearLayout)localObject2).setTag(localObject1);
-        ((LinearLayout)localObject2).setOnClickListener(new mdk(this, (VideoInfo.ChannelInfo)localObject1));
+        ((LinearLayout)localObject2).setTag(localChannelInfo);
+        ((LinearLayout)localObject2).setOnClickListener(new mep(this, localChannelInfo));
         addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
         if (!this.jdField_a_of_type_JavaUtilSet.contains(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g)) {
           localObject1 = new JSONObject();
@@ -135,24 +137,24 @@ public class VideoFeedsTopicViewGroup
       }
       try
       {
-        ((JSONObject)localObject1).put("channel_id", 409409);
-        label472:
-        PublicAccountReportUtils.a(null, "", "0X80088BA", "0X80088BA", 0, 0, "3", "", "", VideoReporter.a("", "", "", "", (JSONObject)localObject1), false);
+        ((JSONObject)localObject1).put("topic_id", localChannelInfo.jdField_a_of_type_Int);
+        label474:
+        PublicAccountReportUtils.a(null, "", "0X80092F8", "0X80092F8", 0, 0, "3", "", "", VideoReporter.a("", "", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g, (JSONObject)localObject1), false);
         j -= k;
         continue;
         k = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
         break label220;
-        label524:
+        label536:
         ((LinearLayout.LayoutParams)localObject3).setMargins(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
         break label283;
-        label551:
+        label563:
         this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g);
         this.jdField_a_of_type_Boolean = true;
         return;
       }
       catch (Exception localException)
       {
-        break label472;
+        break label474;
       }
     }
   }

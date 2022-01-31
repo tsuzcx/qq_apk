@@ -51,7 +51,7 @@ public class StoryProfileListViewConfig
   {
     this.jdField_a_of_type_JavaUtilList.add(new MemoriesProfileSegment(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
     this.jdField_a_of_type_JavaUtilList.add(new MemoriesFeedSegment(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidAppActivity, 12, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView, false));
-    this.jdField_a_of_type_JavaUtilList.add(new MemoriesFeedEmptySegment(this.jdField_a_of_type_AndroidAppActivity, "FeedSegment", "暂无日迹\n拍摄一段小视频，分享眼前的世界", 2130843432, 2130843433));
+    this.jdField_a_of_type_JavaUtilList.add(new MemoriesFeedEmptySegment(this.jdField_a_of_type_AndroidAppActivity, "FeedSegment", "暂无日迹\n拍摄一段小视频，分享眼前的世界", 2130843552, 2130843553));
   }
   
   private void b()

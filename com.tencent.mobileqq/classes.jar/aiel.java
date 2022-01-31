@@ -1,21 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowComponentInterface;
-import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
 
 public class aiel
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aiel(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
+  public aiel(TCProgressBar paramTCProgressBar) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a(this.a.getActivity());
+    aieh localaieh;
+    if (this.a.jdField_a_of_type_Int == 3)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiel(this.a), this.a.d);
+      localaieh = this.a.jdField_a_of_type_Aieh;
+      if (this.a.jdField_a_of_type_Aieh.e) {
+        break label77;
+      }
+    }
+    label77:
+    for (boolean bool = true;; bool = false)
+    {
+      localaieh.e = bool;
+      this.a.invalidate();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiel
  * JD-Core Version:    0.7.0.1
  */

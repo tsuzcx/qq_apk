@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 class adgn
   implements Runnable
 {
-  adgn(adgm paramadgm) {}
+  adgn(adgl paramadgl) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder, this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
+    FMSettings.a(4, "-------onMoveFail-------");
+    FMSettings.a(4, FileManagerUtil.a());
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettingInterface$MoveFileCallback.a();
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgn
  * JD-Core Version:    0.7.0.1
  */

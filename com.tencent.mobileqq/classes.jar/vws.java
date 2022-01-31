@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-class vws
-  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
+public class vws
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  vws(vwq paramvwq) {}
+  public vws(PublicAccountChatPie paramPublicAccountChatPie, View paramView, int paramInt1, int paramInt2) {}
   
-  public void a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.c(HWTroopUtils.b(paramInt));
-    }
+    float f1 = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
+    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    float f2 = this.jdField_a_of_type_Int;
+    paramValueAnimator.height = ((int)(f1 * (this.b - this.jdField_a_of_type_Int) + f2));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
 }
 

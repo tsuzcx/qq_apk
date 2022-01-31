@@ -34,8 +34,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-import mdu;
-import mdv;
+import mez;
+import mfa;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -251,9 +251,9 @@ public class VideoPlayerWrapper
     if (this.jdField_a_of_type_AndroidContentContext != null) {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayer(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo, paramString, (String)localObject, paramLong, 0L);
     }
-    this.f = 0L;
     this.e = 0L;
     this.d = 0L;
+    this.f = paramLong;
     this.jdField_a_of_type_Int = paramInt;
   }
   
@@ -293,18 +293,18 @@ public class VideoPlayerWrapper
     if (this.jdField_a_of_type_AndroidContentContext != null)
     {
       if (!paramBoolean2) {
-        break label280;
+        break label281;
       }
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_AndroidContentContext, ThirdVideoManager.a(paramString2), paramLong1, 0L, paramString1, null);
     }
     for (;;)
     {
-      this.f = 0L;
       this.e = 0L;
       this.d = 0L;
+      this.f = paramLong1;
       this.jdField_a_of_type_Int = paramInt1;
       return;
-      label280:
+      label281:
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_AndroidContentContext, paramString2, paramLong1, 0L, paramString1);
     }
   }
@@ -337,9 +337,9 @@ public class VideoPlayerWrapper
     if (this.jdField_a_of_type_AndroidContentContext != null) {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_AndroidContentContext, paramArrayOfString, paramLong, 0L, localTVK_PlayerVideoInfo, null);
     }
-    this.f = 0L;
     this.e = 0L;
     this.d = 0L;
+    this.f = paramLong;
   }
   
   public boolean a()
@@ -505,7 +505,7 @@ public class VideoPlayerWrapper
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(8);
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      ThreadManager.executeOnSubThread(new mdv(this, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer));
+      ThreadManager.executeOnSubThread(new mfa(this, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer));
     }
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() != null))
     {
@@ -526,6 +526,12 @@ public class VideoPlayerWrapper
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "VideoPlayerWrapper: destory ");
     }
+  }
+  
+  public void i()
+  {
+    this.e = 0L;
+    this.f = 0L;
   }
   
   public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
@@ -642,7 +648,7 @@ public class VideoPlayerWrapper
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
       this.d = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
     }
-    ThreadManager.post(new mdu(this, paramTVK_IMediaPlayer), 5, null, false);
+    ThreadManager.post(new mez(this, paramTVK_IMediaPlayer), 5, null, false);
   }
 }
 

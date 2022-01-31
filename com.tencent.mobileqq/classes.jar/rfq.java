@@ -1,47 +1,65 @@
-import android.text.TextUtils;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper.NewApkInfo;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
+import com.tencent.mobileqq.utils.SPSettings;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.qphone.base.util.BaseApplication;
+import protocol.KQQConfig.UpgradeInfo;
 
 public class rfq
   implements View.OnClickListener
 {
-  public rfq(AddFriendVerifyActivity paramAddFriendVerifyActivity, StringBuffer paramStringBuffer, int paramInt1, int paramInt2) {}
+  public rfq(AboutActivity paramAboutActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_JavaLangStringBuffer.toString();
-    int i = 0;
-    String str;
-    if (i < AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).size())
+    int i = 2;
+    if (MyAppApi.a().b())
     {
-      str = ((EditText)AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).get(i)).getText().toString().trim();
-      if (!"".equals(str)) {}
-    }
-    for (i = 1;; i = 0)
-    {
-      if (i != 0) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131434456), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
+      if (SPSettings.a()) {
+        i = 1;
       }
-      for (;;)
+      ReportController.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+      paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+      paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+      paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+      paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+      paramView.putExtra("activity_type", 4096);
+      if (BaseActivity.sTopActivity != null) {
+        BaseActivity.sTopActivity.startActivity(paramView);
+      }
+    }
+    do
+    {
+      do
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, "", "", "", "");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.f)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.b);
         return;
-        paramView = paramView.replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str));
-        i += 1;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(paramView, null);
-      }
-    }
+        if ((AboutActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper$NewApkInfo == null) || (!SPSettings.a(AboutActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper$NewApkInfo.a))) {
+          break;
+        }
+        if (SPSettings.a()) {
+          i = 1;
+        }
+        ReportController.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+        paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+        paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+        paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+        paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+        paramView.putExtra("activity_type", 4096);
+      } while (BaseActivity.sTopActivity == null);
+      BaseActivity.sTopActivity.startActivity(paramView);
+      return;
+    } while ((AboutActivity.a(this.a) == null) || (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null));
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", UpgradeController.a(), "");
+    UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
   }
 }
 

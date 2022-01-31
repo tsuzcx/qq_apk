@@ -1,24 +1,45 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.ARTipsVisibleListener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agex
-  extends LSRecordAnimations.LSRecordAnimationCallback
+  implements ARTipsManager.ARTipsVisibleListener
 {
-  public agex(LSRecordPanel paramLSRecordPanel) {}
+  public agex(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startRecordingBarAnimation onAnimationEnd");
+    int j = 4;
+    RelativeLayout localRelativeLayout;
+    if (ScanTorchActivity.a(this.a) != null)
+    {
+      localRelativeLayout = ScanTorchActivity.a(this.a);
+      if (paramBoolean)
+      {
+        i = 4;
+        localRelativeLayout.setVisibility(i);
+      }
     }
-    this.a.c = null;
+    else if (this.a.b != null)
+    {
+      localRelativeLayout = this.a.b;
+      if (!paramBoolean) {
+        break label70;
+      }
+    }
+    label70:
+    for (int i = j;; i = 0)
+    {
+      localRelativeLayout.setVisibility(i);
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agex
  * JD-Core Version:    0.7.0.1
  */

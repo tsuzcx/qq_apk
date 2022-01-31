@@ -1,44 +1,17 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.biz.anonymous.QQAnonymousDialog;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.offline.util.IOfflineDownloader;
+import java.util.HashMap;
 
-public class klk
-  implements Handler.Callback
+public final class klk
+  implements Runnable
 {
-  public klk(QQAnonymousDialog paramQQAnonymousDialog) {}
+  public klk(Context paramContext, String paramString1, String paramString2, String paramString3, long paramLong, AsyncBack paramAsyncBack, HashMap paramHashMap) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    int i;
-    if (paramMessage.what == 291) {
-      switch (this.a.jdField_a_of_type_Int)
-      {
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(i));
-      paramMessage = this.a;
-      paramMessage.jdField_a_of_type_Int += 1;
-      if (this.a.jdField_a_of_type_Int == 4) {
-        this.a.jdField_a_of_type_Int = 0;
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
-      return false;
-      i = 2131430441;
-      continue;
-      i = 2131430442;
-      continue;
-      i = 2131430443;
-      continue;
-      i = 2131430444;
-    }
+    HtmlOffline.a.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.c, new kll(this), this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 

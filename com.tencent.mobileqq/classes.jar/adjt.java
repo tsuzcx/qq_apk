@@ -1,27 +1,21 @@
-import com.tencent.av.utils.GVideoGrayConfig;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoPreDownloadListener;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
 public class adjt
-  implements GVideoGrayConfig.GVideoPreDownloadListener
+  implements ArkAppView.Callback
 {
-  public adjt(GroupVideoManager paramGroupVideoManager) {}
+  public adjt(FlashChatPanel paramFlashChatPanel, MessageForArkFlashChat paramMessageForArkFlashChat1, MessageForArkFlashChat paramMessageForArkFlashChat2) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
-    }
-    GVideoGrayConfig.a().a();
-    if (paramInt == 1) {
-      GroupVideoManager.a("group_video", new adju(this));
-    }
+    ArkDispatchTask.getInstance().post(new adju(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjt
  * JD-Core Version:    0.7.0.1
  */

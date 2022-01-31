@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LebaEnabledPluginsActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
 
 public class sym
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public sym(MainFragment paramMainFragment) {}
+  public sym(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.e();
+    paramView = new Intent(this.a, LebaEnabledPluginsActivity.class);
+    this.a.startActivityForResult(paramView, 1);
   }
 }
 

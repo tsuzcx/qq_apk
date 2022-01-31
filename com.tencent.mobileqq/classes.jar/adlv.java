@@ -1,53 +1,35 @@
-import android.os.Looper;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.SQLiteOpenHelper;
-import com.tencent.mobileqq.javahook.DetectContactDelete;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adlv
-  implements HookMethodCallback
+public class adlv
+  implements Runnable
 {
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
-  {
-    long l = Thread.currentThread().getId();
-    HashMap localHashMap;
-    if (DetectContactDelete.a().containsKey(Long.valueOf(l)))
-    {
-      l = SystemClock.uptimeMillis() - ((Long)DetectContactDelete.a().remove(Long.valueOf(l))).longValue();
-      localHashMap = new HashMap(10);
-      if (Looper.myLooper() != Looper.getMainLooper()) {
-        break label139;
-      }
-    }
-    label139:
-    for (paramMethodHookParam = "1";; paramMethodHookParam = "0")
-    {
-      localHashMap.put("param_IsMainThread", paramMethodHookParam);
-      localHashMap.put("param_OptType", "connection");
-      localHashMap.put("param_bustag", "Friends");
-      localHashMap.put("param_OptTotalCost", String.valueOf(l));
-      localHashMap.put("param_WalSwitch", String.valueOf(SQLiteOpenHelper.a));
-      StatisticCollector.a(BaseApplicationImpl.getContext()).a(null, "actFriendSqliteOpt", true, l, 0L, localHashMap, null, false);
-      return;
-    }
-  }
+  public adlv(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam)
+  public void run()
   {
-    long l = Thread.currentThread().getId();
-    if (DetectContactDelete.a().containsKey(Long.valueOf(l))) {
-      DetectContactDelete.a().put(Long.valueOf(l), Long.valueOf(SystemClock.uptimeMillis()));
-    }
+    if (this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->preForward--fetch openid timeout");
+      }
+      this.a.h = true;
+      this.a.t();
+    } while (!ForwardSdkShareOption.a(this.a));
+    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adlv
  * JD-Core Version:    0.7.0.1
  */

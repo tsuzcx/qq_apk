@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.portal;
 
-import afyj;
-import afyk;
+import agml;
+import agmm;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -60,14 +60,14 @@ public class HongbaoCaidanRainView
     }
     int i = 0;
     label16:
-    afyk localafyk;
+    agmm localagmm;
     float f1;
     float f2;
     if (i < paramInt)
     {
-      localafyk = new afyk(null);
-      localafyk.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int);
-      localafyk.jdField_a_of_type_Float = this.jdField_a_of_type_JavaUtilRandom.nextInt(360);
+      localagmm = new agmm(null);
+      localagmm.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int);
+      localagmm.jdField_a_of_type_Float = this.jdField_a_of_type_JavaUtilRandom.nextInt(360);
       f1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
       f2 = this.jdField_b_of_type_Float;
       if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() <= 0.5D) {
@@ -75,10 +75,10 @@ public class HongbaoCaidanRainView
       }
       j = 1;
       label95:
-      localafyk.d = (j * (f2 * f1));
-      localafyk.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_c_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_JavaUtilList.size())));
-      localafyk.e = (this.jdField_b_of_type_Int * 1.0F / localafyk.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.jdField_a_of_type_Float + 1.0F));
-      localafyk.jdField_c_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e + this.jdField_c_of_type_Float);
+      localagmm.d = (j * (f2 * f1));
+      localagmm.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_c_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_JavaUtilList.size())));
+      localagmm.e = (this.jdField_b_of_type_Int * 1.0F / localagmm.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.jdField_a_of_type_Float + 1.0F));
+      localagmm.jdField_c_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e + this.jdField_c_of_type_Float);
       f1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
       f2 = this.d;
       if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() <= 0.5D) {
@@ -89,9 +89,9 @@ public class HongbaoCaidanRainView
     label291:
     for (int j = 1;; j = -1)
     {
-      localafyk.jdField_b_of_type_Float = (j * (f2 * f1));
-      localafyk.jdField_b_of_type_Int = ((int)(-localafyk.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * localafyk.e));
-      this.jdField_a_of_type_JavaUtilList.add(localafyk);
+      localagmm.jdField_b_of_type_Float = (j * (f2 * f1));
+      localagmm.jdField_b_of_type_Int = ((int)(-localagmm.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * localagmm.e));
+      this.jdField_a_of_type_JavaUtilList.add(localagmm);
       i += 1;
       break label16;
       break;
@@ -121,7 +121,7 @@ public class HongbaoCaidanRainView
     if (QLog.isColorLevel()) {
       QLog.d("HongbaoCaidanRainView", 2, "start(), paths=" + paramVarArgs);
     }
-    ThreadManager.postImmediately(new afyj(this, paramVarArgs), null, true);
+    ThreadManager.postImmediately(new agml(this, paramVarArgs), null, true);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -141,20 +141,20 @@ public class HongbaoCaidanRainView
     this.jdField_c_of_type_Long = l;
     int k = this.jdField_a_of_type_JavaUtilList.size();
     int i = 0;
-    afyk localafyk;
+    agmm localagmm;
     if (i < k)
     {
-      localafyk = (afyk)this.jdField_a_of_type_JavaUtilList.get(i);
-      localafyk.jdField_b_of_type_Int = ((int)(localafyk.jdField_b_of_type_Int + localafyk.jdField_c_of_type_Float * f));
-      if (localafyk.jdField_b_of_type_Int > this.jdField_c_of_type_Int) {
-        this.jdField_b_of_type_JavaUtilList.add(localafyk);
+      localagmm = (agmm)this.jdField_a_of_type_JavaUtilList.get(i);
+      localagmm.jdField_b_of_type_Int = ((int)(localagmm.jdField_b_of_type_Int + localagmm.jdField_c_of_type_Float * f));
+      if (localagmm.jdField_b_of_type_Int > this.jdField_c_of_type_Int) {
+        this.jdField_b_of_type_JavaUtilList.add(localagmm);
       }
       for (;;)
       {
         i += 1;
         break;
-        localafyk.jdField_a_of_type_Int = ((int)(localafyk.jdField_a_of_type_Int + localafyk.jdField_b_of_type_Float * f));
-        localafyk.jdField_a_of_type_Float += localafyk.d * f;
+        localagmm.jdField_a_of_type_Int = ((int)(localagmm.jdField_a_of_type_Int + localagmm.jdField_b_of_type_Float * f));
+        localagmm.jdField_a_of_type_Float += localagmm.d * f;
       }
     }
     this.jdField_a_of_type_JavaUtilList.removeAll(this.jdField_b_of_type_JavaUtilList);
@@ -168,13 +168,13 @@ public class HongbaoCaidanRainView
     }
     while (i < k)
     {
-      localafyk = (afyk)this.jdField_a_of_type_JavaUtilList.get(i);
+      localagmm = (agmm)this.jdField_a_of_type_JavaUtilList.get(i);
       this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localafyk.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, -localafyk.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localafyk.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localafyk.e, localafyk.e);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localafyk.jdField_a_of_type_Int, localafyk.jdField_b_of_type_Int);
-      paramCanvas.drawBitmap(localafyk.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localagmm.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, -localagmm.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localagmm.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localagmm.e, localagmm.e);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localagmm.jdField_a_of_type_Int, localagmm.jdField_b_of_type_Int);
+      paramCanvas.drawBitmap(localagmm.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
       i += 1;
     }
     invalidate();
@@ -190,7 +190,7 @@ public class HongbaoCaidanRainView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.portal.HongbaoCaidanRainView
  * JD-Core Version:    0.7.0.1
  */

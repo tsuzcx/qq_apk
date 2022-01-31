@@ -1,23 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
+import com.tencent.widget.ActionSheet;
 
 public class ahmu
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public ahmu(DanceReadyFilter paramDanceReadyFilter) {}
+  public ahmu(ShareActionSheet paramShareActionSheet) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    DanceReadyFilter.d(this.a).h_(false);
-    DanceReadyFilter.f(this.a).a(DanceReadyFilter.d(this.a));
-    DanceReadyFilter.f(this.a).h_(true);
+    if (this.a.a.isShowing())
+    {
+      this.a.a.cancel();
+      this.a.a.dismiss();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

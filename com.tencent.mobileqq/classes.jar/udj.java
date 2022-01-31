@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class udj
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public udj(UpgradeActivity paramUpgradeActivity) {}
+  public udj(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.g();
   }
 }
 

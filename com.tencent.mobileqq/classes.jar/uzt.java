@@ -1,33 +1,38 @@
-import android.os.SystemClock;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.PokeEmoItemBuilder;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class uzt
-  implements ActionSheet.OnButtonClickListener
+  extends ClickableSpan
 {
-  public uzt(PokeEmoItemBuilder paramPokeEmoItemBuilder, MessageForPokeEmo paramMessageForPokeEmo, ActionSheet paramActionSheet) {}
+  public uzt(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
+    try
     {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
     }
-    for (;;)
+    catch (ActivityNotFoundException paramView)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      long l;
-      do
-      {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.c < 500L);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.c = l;
-      ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+      paramView.printStackTrace();
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-16732929);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

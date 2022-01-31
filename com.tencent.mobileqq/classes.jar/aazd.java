@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog.POIExtarData;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.armap.ARGLSurfaceView;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.config.POICheckHander.Listener;
+import com.tencent.mobileqq.armap.config.POIModelConfig;
 
 public class aazd
-  extends ArMapObserver
+  implements POICheckHander.Listener
 {
-  public aazd(ARGridMapViewDialog paramARGridMapViewDialog) {}
+  public aazd(ARMapActivity paramARMapActivity) {}
   
-  public void onQueryPOI(boolean paramBoolean, POIInfo paramPOIInfo, List paramList, int paramInt1, int paramInt2, long paramLong)
+  public void a(POIModelConfig paramPOIModelConfig, long paramLong)
   {
-    if ((this.a.a instanceof ARGridMapViewDialog.POIExtarData))
-    {
-      ARGridMapViewDialog.POIExtarData localPOIExtarData = (ARGridMapViewDialog.POIExtarData)this.a.a;
-      if (paramLong == localPOIExtarData.a) {
-        ThreadManager.getUIHandler().post(new aaze(this, paramBoolean, paramPOIInfo, paramList, localPOIExtarData, paramInt1, paramInt2));
-      }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine != null) && (paramPOIModelConfig.isVaild())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aaze(this, paramLong, paramPOIModelConfig));
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aazf(this, paramString3, paramLong, paramString1, paramString2));
     }
   }
 }

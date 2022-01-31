@@ -1,40 +1,33 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
+import com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import java.util.Map;
+import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ahyf
-  implements WtTicketPromise
+public final class ahyf
+  implements Runnable
 {
-  public ahyf(TeamWorkFileImportHandler paramTeamWorkFileImportHandler, Runnable paramRunnable) {}
+  public ahyf(QQAppInterface paramQQAppInterface, ShortVideoReq paramShortVideoReq) {}
   
-  public void Done(Ticket paramTicket)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeamWorkFileImportHandler", 2, "--- pskey invalid retry ---  ");
-    }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    ShortVideoPreDownloader localShortVideoPreDownloader = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue.contains(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq))
+    {
+      localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue.remove(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq);
+      localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+      localShortVideoPreDownloader.a.remove(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_JavaLangString);
+      Logger.a("PIC_TAG_PRELOAD", "onDownload", "uniseq:" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_Long + ",curHandingNum:" + localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahyf
  * JD-Core Version:    0.7.0.1
  */

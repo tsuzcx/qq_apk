@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class adhw
-  implements Runnable
+public final class adhw
+  implements ActionSheet.OnButtonClickListener
 {
-  adhw(adhv paramadhv) {}
+  public adhw(ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    PresenceInterfaceImpl.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-    PresenceInterfaceImpl.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl, true);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a(0, this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a);
-    QLog.d("PresenceInterfaceImpl", 2, "saveUserPermission true");
+    this.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhw
  * JD-Core Version:    0.7.0.1
  */

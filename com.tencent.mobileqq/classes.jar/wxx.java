@@ -1,24 +1,23 @@
 import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.OvershootInterpolator;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.NumberCheckBox;
 
 public class wxx
-  implements Runnable
 {
-  public wxx(RedPacketRecordFragment paramRedPacketRecordFragment) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  public NumberCheckBox a;
+  wxu jdField_a_of_type_Wxu;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public ImageView c;
+  ImageView d;
   
-  public void run()
-  {
-    this.a.a.setAlpha(0.3F);
-    this.a.a.animate().alpha(1.0F).setDuration(200L);
-    this.a.b.setAlpha(0.3F);
-    this.a.b.setPivotX(this.a.b.getWidth() / 2);
-    this.a.b.setPivotY(this.a.b.getHeight() / 2);
-    this.a.b.setScaleX(0.5F);
-    this.a.b.setScaleY(0.5F);
-    this.a.b.animate().alpha(1.0F).scaleX(1.0F).scaleY(1.0F).setDuration(300L).setInterpolator(new OvershootInterpolator(1.6F));
-  }
+  wxx(wxw paramwxw) {}
 }
 
 

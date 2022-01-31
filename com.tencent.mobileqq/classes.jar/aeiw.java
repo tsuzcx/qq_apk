@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
 
-class aeiw
-  implements Runnable
+public class aeiw
+  implements WXShareHelper.WXShareListener
 {
-  aeiw(aeiv paramaeiv, String paramString) {}
+  public aeiw(AIOShareActionSheet paramAIOShareActionSheet) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_Aeiv.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.c = this.jdField_a_of_type_JavaLangString;
-    if ((-1 == this.jdField_a_of_type_Aeiv.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager.a(this.jdField_a_of_type_Aeiv.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo)) && (QLog.isColorLevel())) {
-      QLog.i("VideoFeedsManager", 2, "uploader is working, upload fail!");
-    }
+    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
+    WXShareHelper.a().b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeiw
  * JD-Core Version:    0.7.0.1
  */

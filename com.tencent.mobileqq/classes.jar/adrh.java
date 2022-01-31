@@ -1,33 +1,40 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.InnerOnClickListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.PresenceInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class adrh
-  implements Runnable
+public class adrh
+  implements HotVideoMongoliaRelativeLayout.InnerOnClickListener
 {
-  adrh(adrg paramadrg, String paramString) {}
+  public adrh(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    if (this.jdField_a_of_type_Adrg.jdField_a_of_type_Int == 1)
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if ((this.a.jdField_a_of_type_Int == 2) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface != null))
     {
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label48;
-      }
-      this.jdField_a_of_type_Adrg.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface.a(0, paramView);
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Int == 3) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface.a(4, paramView);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Adrg.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      QLog.d("HotVideoRelativeLayout", 2, "click base view");
       return;
-      label48:
-      this.jdField_a_of_type_Adrg.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(0);
+      if ((this.a.jdField_a_of_type_Int == 4) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface.a(1, paramView);
+      } else if ((this.a.jdField_a_of_type_Int == 6) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface.a(2, paramView);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrh
  * JD-Core Version:    0.7.0.1
  */

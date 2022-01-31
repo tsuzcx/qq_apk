@@ -1,45 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.ProtoUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.AlertReport.ButtonAction;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qqprotect.common.QPMiscUtils;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class szy
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public szy(NotificationActivity paramNotificationActivity, int paramInt, String paramString) {}
+  public szy(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
     try
     {
-      paramDialogInterface = new AlertReport.ButtonAction();
-      paramDialogInterface.uint32_cmd.set(1);
-      paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
-      paramDialogInterface.str_package_name.set(QPMiscUtils.c());
-      paramDialogInterface.uint32_app_id.set(AppSetting.jdField_a_of_type_Int);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
-      ReportController.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      if ((LoginInfoActivity.a(this.a) != null) && (LoginInfoActivity.a(this.a).isShowing()))
+      {
+        LoginInfoActivity.a(this.a).dismiss();
+        LoginInfoActivity.a(this.a).cancel();
+      }
+      LoginInfoActivity.a(this.a, null);
       return;
     }
-    catch (Exception paramDialogInterface)
+    catch (Throwable localThrowable)
     {
       for (;;)
       {
-        paramDialogInterface.printStackTrace();
+        localThrowable.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     szy
  * JD-Core Version:    0.7.0.1
  */

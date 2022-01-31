@@ -1,33 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.arengine.ARCamera;
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
 public class aaaf
-  extends Handler
+  implements Runnable
 {
-  public aaaf(ARCamera paramARCamera, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aaaf(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      AREngine.c(new aaag(this));
-      removeMessages(100);
-      sendEmptyMessageDelayed(100, 3000L);
-      return;
-    case 101: 
-      AREngine.c(new aaah(this));
-      return;
-    }
-    AREngine.c(new aaai(this));
+    ARWorldCupGameLogicManager.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.b);
   }
 }
 

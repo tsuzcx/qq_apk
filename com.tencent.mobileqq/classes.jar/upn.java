@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 
 public class upn
-  implements upq
+  implements Runnable
 {
-  public upn(LoadDataJob paramLoadDataJob, List paramList) {}
+  public upn(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public void a(PathDrawer paramPathDrawer)
+  public void run()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramPathDrawer);
-      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
-        this.jdField_a_of_type_JavaUtilList.notifyAll();
-      }
-      return;
-    }
+    this.a.onClick(CommonRecordSoundPanel.a(this.a));
   }
 }
 

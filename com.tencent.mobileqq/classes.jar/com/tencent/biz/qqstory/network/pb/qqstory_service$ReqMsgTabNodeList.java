@@ -14,12 +14,13 @@ public final class qqstory_service$ReqMsgTabNodeList
   public final PBBytesField current_seq = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field source = PBField.initUInt32(0);
   public final PBBytesField start_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBUInt32Field version = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24 }, new String[] { "current_seq", "start_cookie", "source" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, ReqMsgTabNodeList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "current_seq", "start_cookie", "source", "version" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0) }, ReqMsgTabNodeList.class);
   }
 }
 

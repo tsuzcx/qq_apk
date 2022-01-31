@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-class sqx
+public class sqx
   implements Runnable
 {
-  sqx(sqv paramsqv) {}
+  public sqx(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
   public void run()
   {
-    this.a.a.a.a();
+    FriendProfileCardActivity.a(this.a.app, this.a.a);
+    FriendProfileCardActivity.b(this.a.a);
   }
 }
 

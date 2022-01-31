@@ -1,16 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.data.QCallRecord;
+import com.tencent.mobileqq.qcall.QCallProxy;
+import java.util.Comparator;
 
 public class agvk
-  extends AnimatorListenerAdapter
+  implements Comparator
 {
-  public agvk(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agvk(QCallProxy paramQCallProxy) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
   {
-    EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
   }
 }
 

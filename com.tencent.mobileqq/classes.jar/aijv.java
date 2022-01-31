@@ -1,170 +1,49 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.activity.ExtendGridView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.data.TroopBarMyBar;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.mobileqq.utils.TroopBarShareUtils;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
 
 public class aijv
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public aijv(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aijv(StructMsgItemVideo paramStructMsgItemVideo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.a.c(false);
-    this.a.rightViewText.setEnabled(true);
-    TroopBarPublishActivity localTroopBarPublishActivity = this.a;
-    this.a.getString(2131430291);
-    if (paramBoolean)
+    Context localContext = paramView.getContext();
+    if (NetworkUtil.a(localContext) == 1)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label807;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramInt == 0) {
-          break label266;
-        }
-        localObject = paramBundle.optString("msg");
-        paramBundle = (Bundle)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramBundle = this.a.getString(2131430292, new Object[] { Integer.valueOf(paramInt) });
-        }
-        if (this.a.jdField_d_of_type_Int == 2) {
-          ReportController.b(null, "dc00899", "Grp_talk", "", "pub_talk", "pub_fail", 0, 0, "", "" + paramInt, TroopBarPublishActivity.a(this.a), "");
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          Object localObject;
-          label224:
-          StringBuffer localStringBuffer;
-          label266:
-          paramBundle = this.a.getString(2131430292, new Object[] { Integer.valueOf(9992) });
-          continue;
-          localStringBuffer.append("7");
-          continue;
-          localStringBuffer.append("8");
-          continue;
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.c;
-          continue;
-          paramBundle = this.a.E;
-        }
-      }
-      QQToast.a(localTroopBarPublishActivity, 1, paramBundle, 0).b(this.a.getTitleBarHeight());
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
-        break label859;
-      }
-      paramBundle = "0";
-      TroopBarUtils.a("pub_page", "fail", paramBundle, "4", TroopBarPublishActivity.a(this.a), "");
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
-      return;
-      localObject = paramBundle.getJSONObject("result");
-      localStringBuffer = new StringBuffer();
-      if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        localStringBuffer.append("0");
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI != null) {
-        localStringBuffer.append("1");
-      }
-      if (!TextUtils.isEmpty(TroopBarUtils.a(this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText))) {
-        localStringBuffer.append("2");
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null) {
-        localStringBuffer.append("5");
-      }
-      if (this.a.h) {
-        if (!TextUtils.isEmpty(TroopBarUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText)))
-        {
-          localStringBuffer.append("6");
-          if (!TextUtils.isEmpty(this.a.E)) {
-            break label772;
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null) {
-            break label758;
-          }
-          paramBundle = "0";
-          if ((this.a.jdField_b_of_type_AndroidWidgetTextView == null) || (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
-            break label879;
-          }
-        }
+      StructMsgItemVideo.a(this.a, localContext, paramView);
+      if ((localContext instanceof BaseActivity)) {
+        ReportController.b(((BaseActivity)localContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
       }
     }
-    label772:
-    label783:
-    label807:
-    label859:
-    label879:
-    for (paramInt = 2;; paramInt = 1)
+    for (;;)
     {
-      ReportController.b(null, "P_CliOper", "Grp_tribe", "", "pub_page", "suc", paramInt, 0, paramBundle, this.a.c, localStringBuffer.toString(), "");
-      this.a.e = true;
-      ((JSONObject)localObject).optString("pid");
-      paramBundle = ((JSONObject)localObject).optString("bid");
-      if ((this.a.jdField_d_of_type_Boolean) && (this.a.jdField_a_of_type_OrgJsonJSONObject != null))
+      ReportController.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+      return;
+      if (!NetworkUtil.g(localContext))
       {
-        this.a.getIntent().getStringExtra("pkg_name");
-        this.a.jdField_a_of_type_OrgJsonJSONObject.optString("share_app_name");
-        this.a.jdField_a_of_type_OrgJsonJSONObject.optLong("share_app_id");
-        if (TextUtils.isEmpty(paramBundle)) {
-          break label783;
-        }
+        QQToast.a(localContext, 2131433009, 0).a();
       }
-      for (;;)
+      else
       {
-        TroopBarShareUtils.a(this.a.app, "share_suc", paramBundle);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo != null) {
-          this.a.t();
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem != null) && (!TroopBarPublishActivity.b(this.a).equals("###...^_^###"))) {
-          ReportController.b(null, "dc00899", "Grp_tribe", "", "pub_page", "sus_prefixpub", 0, 0, this.a.r, "", "", "");
-        }
-        paramBundle = new Intent();
-        paramBundle.putExtra("result", ((JSONObject)localObject).toString());
-        this.a.setResult(-1, paramBundle);
-        this.a.finish();
-        return;
-        label758:
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar != null)
-        {
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.c;
-          continue;
-          paramBundle = this.a.getString(2131430292, new Object[] { Integer.valueOf(9991) });
-          break;
-          paramBundle = this.a.getString(2131430292, new Object[] { Integer.valueOf(9992) });
-          break;
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarMyBar.c;
-          break label224;
-        }
-        paramBundle = "";
+        Resources localResources = localContext.getResources();
+        DialogUtil.a(localContext, 232, "", "当前是非wifi网络，是否使用移动网络播放视频？", localResources.getString(2131433015), localResources.getString(2131433016), new aijw(this, localContext, paramView), new aijx(this)).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijv
  * JD-Core Version:    0.7.0.1
  */

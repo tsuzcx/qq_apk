@@ -1,10 +1,10 @@
 package cooperation.qzone.thread;
 
-import amjz;
-import amka;
-import amkb;
-import amkc;
-import amkd;
+import anae;
+import anaf;
+import anag;
+import anah;
+import anai;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
@@ -18,16 +18,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BaseHandler
   extends Handler
 {
-  public static ThreadLocal InitalPriority = new amka();
+  public static ThreadLocal InitalPriority = new anaf();
   private static final String TAG = "BaseHandler";
   private static final long Time_Lv1 = 20L;
   private static final long Time_Lv2 = 100L;
   private static final long Time_Lv3 = 500L;
   public static volatile boolean isBusy;
-  public static ThreadLocal isRegulated = new amkb();
+  public static ThreadLocal isRegulated = new anag();
   public static AtomicInteger regulalteCount = new AtomicInteger(0);
-  static Runnable regultorPriority = new amkc();
-  static Runnable resetPriority = new amkd();
+  static Runnable regultorPriority = new anah();
+  static Runnable resetPriority = new anai();
   private Handler.Callback mCallbackEx;
   
   public BaseHandler() {}
@@ -36,7 +36,7 @@ public class BaseHandler
   {
     super(paramLooper);
     if (Looper.getMainLooper() != paramLooper) {
-      paramLooper.setMessageLogging(new amjz(this));
+      paramLooper.setMessageLogging(new anae(this));
     }
   }
   

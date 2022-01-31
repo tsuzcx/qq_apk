@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acmw;
-import acmx;
-import acmy;
+import acwt;
+import acwu;
+import acwv;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -30,7 +30,7 @@ public class OfflineSendWorker
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new acmy(this);
+  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new acwv(this);
   private FileUploader jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader;
   private final FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
   private File jdField_a_of_type_JavaIoFile;
@@ -88,7 +88,7 @@ public class OfflineSendWorker
     if (QLog.isColorLevel()) {
       QLog.i("OfflineSendWorker<FileAssistant>", 1, "start OfflineFileHitReq:" + MessageCache.a());
     }
-    FileManagerUtil.FileExecutor.a().execute(new acmx(this, paramString, paramLong, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte2, paramArrayOfByte1));
+    FileManagerUtil.FileExecutor.a().execute(new acwu(this, paramString, paramLong, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte2, paramArrayOfByte1));
   }
   
   private void a(String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong, FileTransferObserver paramFileTransferObserver, FileManagerEntity paramFileManagerEntity)
@@ -432,7 +432,7 @@ public class OfflineSendWorker
   public void g()
   {
     this.jdField_b_of_type_Boolean = false;
-    ThreadManager.post(new Thread(new acmw(this)), 5, null, true);
+    ThreadManager.post(new Thread(new acwt(this)), 5, null, true);
   }
   
   public void h()

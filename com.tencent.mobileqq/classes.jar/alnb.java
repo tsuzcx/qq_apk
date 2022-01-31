@@ -1,35 +1,54 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
-import com.tencent.widget.MultiImageTextView;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qidian.QidianProfileCardActivity;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class alnb
-  extends ImageSpan
+  extends URLDrawableDownListener.Adapter
 {
-  public alnb(MultiImageTextView paramMultiImageTextView, Drawable paramDrawable, int paramInt)
+  String jdField_a_of_type_JavaLangString = "";
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
+  boolean jdField_a_of_type_Boolean = true;
+  WeakReference b = null;
+  WeakReference c = null;
+  WeakReference d = null;
+  
+  public alnb(QidianProfileCardActivity paramQidianProfileCardActivity, QQAppInterface paramQQAppInterface, URLImageView paramURLImageView, String paramString, Drawable paramDrawable, boolean paramBoolean)
   {
-    super(paramDrawable, paramInt);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramURLImageView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = new WeakReference(paramQQAppInterface);
+    this.c = new WeakReference(paramDrawable);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = new WeakReference(paramQidianProfileCardActivity);
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    super.onLoadSuccessed(paramView, paramURLDrawable);
+    paramView = (URLImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    QidianProfileCardActivity localQidianProfileCardActivity = (QidianProfileCardActivity)this.d.get();
+    if ((paramView != null) && (localQQAppInterface != null) && (localQidianProfileCardActivity != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      paramURLDrawable = new BitmapDrawable(QidianProfileCardActivity.a(localQQAppInterface, paramURLDrawable, this.jdField_a_of_type_Boolean));
+      if (this.jdField_a_of_type_Boolean) {
+        localQidianProfileCardActivity.b.put(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
+      }
+      paramView.setImageDrawable(paramURLDrawable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alnb
  * JD-Core Version:    0.7.0.1
  */

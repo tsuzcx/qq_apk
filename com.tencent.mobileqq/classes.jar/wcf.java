@@ -1,37 +1,16 @@
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
-import com.tencent.util.MqqWeakReferenceHandler;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.stickerbubble.PEItemData;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleTouchDelegateCallbackForAIO;
 
 public class wcf
-  implements EncodeVideoTask.ResultListener
+  implements Runnable
 {
-  public wcf(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  public wcf(StickerBubbleTouchDelegateCallbackForAIO paramStickerBubbleTouchDelegateCallbackForAIO, PEItemData paramPEItemData, int paramInt) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.a.runOnUiThread(new wcg(this));
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    }
-    synchronized (BlessSelectMemberActivity.a())
-    {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      this.a.finish();
-      return;
-    }
-  }
-  
-  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
-  {
-    BlessSelectMemberActivity.a = ???;
-    synchronized (BlessSelectMemberActivity.a())
-    {
-      BlessSelectMemberActivity.a().set(true);
-      BlessSelectMemberActivity.a().notifyAll();
-      return;
-    }
+    ChatActivityFacade.a(StickerBubbleTouchDelegateCallbackForAIO.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegateCallbackForAIO).a(), StickerBubbleTouchDelegateCallbackForAIO.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegateCallbackForAIO).a(), StickerBubbleTouchDelegateCallbackForAIO.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegateCallbackForAIO).a, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePEItemData.jdField_a_of_type_Int, this.jdField_a_of_type_Int, "test");
   }
 }
 

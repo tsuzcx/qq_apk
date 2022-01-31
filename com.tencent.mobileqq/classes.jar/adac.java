@@ -1,32 +1,44 @@
-import com.tencent.mobileqq.floatscr.ColorScreenConfig;
-import com.tencent.mobileqq.floatscr.ColorScreenManager;
-import com.tencent.mobileqq.vas.VasManager.CompleteListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp;
+import cooperation.weiyun.sdk.api.IWeiyunCallback;
+import cooperation.weiyun.sdk.api.WeiyunApi;
+import cooperation.weiyun.utils.StringUtils;
+import mqq.app.MobileQQ;
 
 public class adac
-  implements Runnable
+  implements IWeiyunCallback
 {
-  public adac(ColorScreenManager paramColorScreenManager, int paramInt, VasManager.CompleteListener paramCompleteListener) {}
+  public adac(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void run()
+  public void a(int paramInt, String paramString, WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
   {
-    String str = "colorScreen.android." + this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.b(str, this.jdField_a_of_type_ComTencentMobileqqVasVasManager$CompleteListener, null);
-    ColorScreenConfig localColorScreenConfig = this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(this.jdField_a_of_type_Int);
-    if (localColorScreenConfig == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorScreenManager", 1, "getLocalConfig return null, go to download");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(this.jdField_a_of_type_Int);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(str, localColorScreenConfig);
+    WeiYunLogicCenter.a(this.a).a().a(false, 45, new Object[] { Integer.valueOf(paramInt), paramString, null });
+  }
+  
+  public void a(WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
+    }
+    String str = StringUtils.a(paramPwdVerifyMsgRsp.cs_sig.get());
+    if (!TextUtils.isEmpty(str)) {
+      WeiyunApi.a(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), str);
+    }
+    WeiyunApi.c(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
+    WeiYunLogicCenter.a(this.a).a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramPwdVerifyMsgRsp.cs_sig.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adac
  * JD-Core Version:    0.7.0.1
  */

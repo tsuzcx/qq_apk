@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.graytip;
 
-import adew;
-import adey;
-import adez;
+import adov;
+import adox;
+import adoy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -59,7 +59,7 @@ public class UniteGrayTipItemBuilder
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968785, null);
-      localHolder.b = ((TextView)paramViewHolder.findViewById(2131363766));
+      localHolder.b = ((TextView)paramViewHolder.findViewById(2131363789));
       paramView = localHolder.b.getLayoutParams();
       localObject = paramViewHolder;
       if ((paramView instanceof ViewGroup.MarginLayoutParams))
@@ -206,10 +206,10 @@ public class UniteGrayTipItemBuilder
                   else if ((paramView instanceof MessageForPic))
                   {
                     paramViewHolder = PicItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, (MessageForPic)paramView);
-                    ThreadManager.post(new adew(this, paramView), 5, null, true);
+                    ThreadManager.post(new adov(this, paramView), 5, null, true);
                     paramView = "";
                     continue;
-                    ((StickerGrayTipLayout)localObject).a = new adey(this);
+                    ((StickerGrayTipLayout)localObject).a = new adox(this);
                     StartupTracker.a("AIO_Handle_Sticker_Cost", null);
                     if (!(paramMessageRecord instanceof MessageForUniteGrayTip)) {
                       localHolder.b.setText(paramMessageRecord.msg);
@@ -249,7 +249,7 @@ public class UniteGrayTipItemBuilder
                         localHolder.b.setFocusable(true);
                         localHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
                         if (AppSetting.b) {
-                          localHolder.b.setAccessibilityDelegate(new adez(this, l1, l2, paramView, paramMessageRecord));
+                          localHolder.b.setAccessibilityDelegate(new adoy(this, l1, l2, paramView, paramMessageRecord));
                         }
                       }
                       for (;;)
@@ -331,7 +331,7 @@ public class UniteGrayTipItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder
  * JD-Core Version:    0.7.0.1
  */

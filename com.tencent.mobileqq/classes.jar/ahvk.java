@@ -1,36 +1,26 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemPAAudio;
+import com.tencent.mobileqq.search.ftsmsg.FTSGroupSearchModelMessage;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import java.util.List;
 
 public class ahvk
-  extends URLDrawableDownListener.Adapter
+  extends GroupSearchEngine.SearchEngineEntity
 {
-  public ahvk(StructMsgItemPAAudio paramStructMsgItemPAAudio) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public ahvk(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
+    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public ISearchResultGroupModel a(List paramList, String paramString)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView.setBackgroundDrawable(paramURLDrawable);
+    return new FTSGroupSearchModelMessage(paramList, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahvk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,26 @@
-import android.app.Dialog;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebContentGetCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class mnv
-  implements Runnable
+class mnv
+  implements FastWebModule.FastWebContentGetCallback
 {
-  public mnv(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  mnv(mnu parammnu) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).isShowing()))
+    if ((paramBoolean1) && (paramFastWebArticleInfo != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "showMobileNetHint() mNetworkDialog.isShowing()=true, RETURN");
+      this.a.a.b = paramFastWebArticleInfo.b;
+      if (paramFastWebArticleInfo.jdField_a_of_type_Long > this.a.a.jdField_a_of_type_Long) {
+        this.a.a.jdField_a_of_type_Long = paramFastWebArticleInfo.jdField_a_of_type_Long;
       }
-      return;
+      this.a.a.jdField_a_of_type_Boolean = false;
+      QLog.d("Q.readinjoy.fast_web", 2, "update fastweb info, rowkey : " + paramFastWebArticleInfo.j + ",  commentCnt : " + paramFastWebArticleInfo.b + ", readCnt :" + paramFastWebArticleInfo.jdField_a_of_type_Long);
     }
-    FastWebVideoFeedsPlayManager.a(this.a, ReadInJoyUtils.a(FastWebVideoFeedsPlayManager.a(this.a), new mnw(this), new mnx(this)));
+    ThreadManager.getUIHandler().post(new mnw(this));
   }
 }
 

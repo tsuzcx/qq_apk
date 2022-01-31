@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahet;
-import aheu;
+import ahsv;
+import ahsw;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -279,7 +279,7 @@ public abstract class BaseSearchFragment
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131371100)).setText(this.jdField_b_of_type_JavaLangString);
+      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131371264)).setText(this.jdField_b_of_type_JavaLangString);
       this.jdField_d_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       b(false);
@@ -350,10 +350,10 @@ public abstract class BaseSearchFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2130970551, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramViewGroup.findViewById(2131364021));
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahet(this));
-    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131367646);
+    paramViewGroup = paramLayoutInflater.inflate(2130970595, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramViewGroup.findViewById(2131364045));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahsv(this));
+    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131367714);
     paramBundle = this.jdField_b_of_type_AndroidViewView;
     int i;
     boolean bool;
@@ -361,20 +361,20 @@ public abstract class BaseSearchFragment
     {
       i = 0;
       paramBundle.setVisibility(i);
-      paramBundle = (TextView)paramViewGroup.findViewById(2131364953);
+      paramBundle = (TextView)paramViewGroup.findViewById(2131364975);
       paramBundle.setText(a());
-      View localView = paramViewGroup.findViewById(2131366774);
+      View localView = paramViewGroup.findViewById(2131366817);
       bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
       if (!bool) {
         break label461;
       }
       paramBundle.setTextColor(Color.parseColor("#425E88"));
       localView.setBackgroundColor(Color.parseColor("#040E1C"));
-      paramBundle.setBackgroundColor(getResources().getColor(2131492947));
+      paramBundle.setBackgroundColor(getResources().getColor(2131492948));
       label150:
-      this.jdField_d_of_type_AndroidViewView = paramViewGroup.findViewById(2131371097);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131371098));
-      paramBundle = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131371101);
+      this.jdField_d_of_type_AndroidViewView = paramViewGroup.findViewById(2131371261);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131371262));
+      paramBundle = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131371265);
       if (!(paramLayoutInflater.getContext() instanceof ContactSearchActivity)) {
         break label478;
       }
@@ -382,27 +382,27 @@ public abstract class BaseSearchFragment
     }
     for (;;)
     {
-      paramBundle = paramLayoutInflater.inflate(2130970374, null, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131364963));
+      paramBundle = paramLayoutInflater.inflate(2130970415, null, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131364985));
       this.jdField_a_of_type_AndroidWidgetTextView.setText("正在加载…");
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131370307));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131370448));
       if (bool)
       {
         this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#717D86"));
         paramViewGroup.setBackgroundColor(Color.parseColor("#051020"));
       }
       this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(paramBundle);
-      paramBundle = paramLayoutInflater.inflate(2130969704, null, false);
-      this.jdField_c_of_type_AndroidViewView = paramBundle.findViewById(2131364963);
+      paramBundle = paramLayoutInflater.inflate(2130969718, null, false);
+      this.jdField_c_of_type_AndroidViewView = paramBundle.findViewById(2131364985);
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
       this.jdField_c_of_type_AndroidViewView.setPadding(0, AIOUtils.a(42.0F, getResources()), 0, AIOUtils.a(42.0F, getResources()));
       this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(paramBundle);
-      paramLayoutInflater = paramLayoutInflater.inflate(2130970374, null, false);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364963));
+      paramLayoutInflater = paramLayoutInflater.inflate(2130970415, null, false);
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364985));
       this.jdField_b_of_type_AndroidWidgetTextView.setText("网络异常，请重试");
       this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getActivity().getResources().getColor(2131494262));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getActivity().getResources().getColor(2131494269));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(paramLayoutInflater);
       this.jdField_a_of_type_AndroidViewView = paramViewGroup;
@@ -410,7 +410,7 @@ public abstract class BaseSearchFragment
       i = 8;
       break;
       label461:
-      paramBundle.setBackgroundColor(getResources().getColor(2131492968));
+      paramBundle.setBackgroundColor(getResources().getColor(2131492969));
       break label150;
       label478:
       if (((paramLayoutInflater.getContext() instanceof MessageSearchActivity)) || ((paramLayoutInflater.getContext() instanceof FTSEntitySearchActivity))) {
@@ -453,7 +453,7 @@ public abstract class BaseSearchFragment
     if ((super.getActivity() instanceof BaseSearchActivity)) {}
     for (boolean bool = ((BaseSearchActivity)super.getActivity()).b;; bool = false)
     {
-      ThreadManager.postImmediately(new aheu(this, bool), null, true);
+      ThreadManager.postImmediately(new ahsw(this, bool), null, true);
       return;
     }
   }

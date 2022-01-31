@@ -1,36 +1,19 @@
-import android.graphics.Bitmap;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
 
 public class ahxl
   implements Runnable
 {
-  public ahxl(Texture paramTexture) {}
+  public ahxl(MessagePBElemDecoder paramMessagePBElemDecoder) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_Int != 0)
-    {
-      int[] arrayOfInt = new int[1];
-      arrayOfInt[0] = this.a.jdField_a_of_type_Int;
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-      GLES20.glFlush();
-      if (QLog.isColorLevel()) {
-        QLog.d("Texture", 2, "Texture->release real: textureId = " + this.a.jdField_a_of_type_Int + ", filePath = " + Texture.a(this.a));
-      }
-      this.a.jdField_a_of_type_Int = 0;
-    }
-    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-    {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
+    PublicAccountManager.a().a(MessagePBElemDecoder.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxl
  * JD-Core Version:    0.7.0.1
  */

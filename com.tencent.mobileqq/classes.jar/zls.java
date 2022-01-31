@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
+import com.tencent.av.service.QavWrapper;
+import com.tencent.av.service.QavWrapper.OnReadyListener;
+import com.tencent.mobileqq.app.QQGAudioMsgHandler;
 
-class zls
-  implements Runnable
+public class zls
+  implements QavWrapper.OnReadyListener
 {
-  zls(zlr paramzlr, String paramString) {}
+  public zls(QQGAudioMsgHandler paramQQGAudioMsgHandler, byte[] paramArrayOfByte) {}
   
-  public void run()
+  public void a(QavWrapper paramQavWrapper)
   {
-    this.jdField_a_of_type_Zlr.a.a(this.jdField_a_of_type_JavaLangString);
+    paramQavWrapper.a(this.jdField_a_of_type_ArrayOfByte);
+    paramQavWrapper.a();
   }
 }
 

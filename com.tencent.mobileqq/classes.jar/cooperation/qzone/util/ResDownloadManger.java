@@ -1,7 +1,7 @@
 package cooperation.qzone.util;
 
-import amkv;
-import amkw;
+import anba;
+import anbb;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
@@ -35,7 +35,7 @@ public class ResDownloadManger
   private static String b;
   private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
   private LruCache jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  private Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new amkw(this);
+  private Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new anbb(this);
   private QzonePreDownloadManager jdField_a_of_type_CooperationQzoneQzonePreDownloadManager;
   private final MultiHashMap jdField_a_of_type_CooperationQzoneUtilMultiHashMap = new MultiHashMap();
   
@@ -553,7 +553,7 @@ public class ResDownloadManger
       localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramInt + " " + paramString);
       localObject = localBitmap;
     } while (localBitmap != null);
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new amkv(this, paramInt, paramString, paramResLoadListener, paramOptions));
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new anba(this, paramInt, paramString, paramResLoadListener, paramOptions));
     return localBitmap;
   }
   

@@ -1,14 +1,18 @@
-import com.tencent.widget.XListView;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.paster.PasterParcelData;
 
-public class anmy
-  implements Runnable
+public final class anmy
+  implements Parcelable.Creator
 {
-  public anmy(PoiListLayout paramPoiListLayout) {}
-  
-  public void run()
+  public PasterParcelData a(Parcel paramParcel)
   {
-    PoiListLayout.a(this.a).springBackOverScrollHeaderView();
+    return new PasterParcelData(paramParcel);
+  }
+  
+  public PasterParcelData[] a(int paramInt)
+  {
+    return new PasterParcelData[paramInt];
   }
 }
 

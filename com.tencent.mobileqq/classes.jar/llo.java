@@ -1,6 +1,3 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import cooperation.readinjoy.ReadInJoyHelper;
 
@@ -11,10 +8,7 @@ public class llo
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.a), 1).edit();
-    localEditor.remove("kandian_push_msg_xml").remove("kandian_push_msg_time");
-    ReadInJoyHelper.a(localEditor, true);
-    ReadInJoyUtils.a("kandian_lock_screen_push_info", true);
+    ReadInJoyHelper.l(KandianMergeManager.a(this.a), true);
   }
 }
 

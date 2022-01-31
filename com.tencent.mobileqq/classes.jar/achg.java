@@ -1,15 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class achg
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public achg(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public achg(EquipLockWebImpl paramEquipLockWebImpl) {}
   
-  public void onClick(View paramView)
+  protected void onGetRecommendDeviceList(boolean paramBoolean, ArrayList paramArrayList)
   {
-    this.a.f();
+    if (paramBoolean) {
+      EquipmentLockImpl.a().a(paramArrayList);
+    }
+    for (;;)
+    {
+      EquipLockWebImpl.a(this.a, false);
+      EquipLockWebImpl.b(this.a, false);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
+      }
+    }
   }
 }
 

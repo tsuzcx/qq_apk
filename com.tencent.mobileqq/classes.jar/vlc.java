@@ -1,17 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class vlc
-  implements View.OnClickListener
+  implements CustomFrameAnimationDrawable.AnimationEndListener
 {
-  public vlc(AIOImageListScene paramAIOImageListScene) {}
+  public vlc(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a(((TextView)paramView).getText().toString());
-    this.a.t();
+    UnlimitedBladeWorks.a(this.a).b = true;
+    UnlimitedBladeWorks.a(this.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a) != null)
+    {
+      UnlimitedBladeWorks.a(this.a).a();
+      if (UnlimitedBladeWorks.b(this.a))
+      {
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
+        UnlimitedBladeWorks.a(this.a, 0);
+      }
+    }
   }
 }
 

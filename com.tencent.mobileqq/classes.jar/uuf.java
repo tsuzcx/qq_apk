@@ -1,21 +1,28 @@
-import android.graphics.drawable.ColorDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQNoResultBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
 
-class uuf
-  implements Runnable
+public class uuf
+  implements DialogInterface.OnClickListener
 {
-  uuf(uue paramuue) {}
+  public uuf(ArkAppBabyQNoResultBuilder paramArkAppBabyQNoResultBuilder, MessageForArkBabyqReply paramMessageForArkBabyqReply) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(-16777216);
-    URLDrawable.getDrawable(new File(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath), localURLDrawableOptions);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b();
+    paramDialogInterface = (MessageForArkBabyqReply)MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkBabyqReply);
+    if (paramDialogInterface.msgData == null) {
+      paramDialogInterface.msgData = paramDialogInterface.toBytes();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkBabyqReply.uniseq);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
+    }
   }
 }
 

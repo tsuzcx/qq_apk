@@ -1,18 +1,14 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
 
-public final class ansq
-  implements DialogInterface.OnClickListener
+public class ansq
+  implements Runnable
 {
-  public ansq(boolean paramBoolean, Context paramContext) {}
+  public ansq(EditVideoButton paramEditVideoButton, DynamicTextConfigManager paramDynamicTextConfigManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
-    }
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.c();
   }
 }
 

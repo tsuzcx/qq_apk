@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.widget.QwScrollView.OnQwScrollListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.InputMethodUtil;
+import com.tencent.widget.ScrollView;
 
-public final class xdm
-  implements Parcelable.Creator
+public class xdm
+  implements QwScrollView.OnQwScrollListener
 {
-  public RedPacketInfoBase a(Parcel paramParcel)
-  {
-    return new RedPacketInfoBase(paramParcel);
-  }
+  public xdm(CommonHbFragment paramCommonHbFragment) {}
   
-  public RedPacketInfoBase[] a(int paramInt)
+  public void onScrollChanged(Boolean paramBoolean, ScrollView paramScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public void onTouch(ScrollView paramScrollView, MotionEvent paramMotionEvent)
   {
-    return new RedPacketInfoBase[paramInt];
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("CommonHbFragment", 2, "onScrollChanged...");
+      }
+      InputMethodUtil.a(this.a.a);
+    }
   }
 }
 

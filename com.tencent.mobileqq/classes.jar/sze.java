@@ -1,77 +1,22 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.mobileqq.fragment.NearbyBaseFragment;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.widget.PullToZoomListView;
+import com.tencent.widget.UpSideDownDrawable;
 
 public class sze
-  extends FragmentPagerAdapter
+  implements Runnable
 {
-  public HotChatFragment a;
-  public NearbyHybridFragment a;
-  public NowLiveFragment a;
+  public sze(LikeRankingListActivity paramLikeRankingListActivity, Bitmap paramBitmap) {}
   
-  public sze(NearbyActivity paramNearbyActivity, FragmentManager paramFragmentManager)
+  public void run()
   {
-    super(paramFragmentManager);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(paramInt);
-    Object localObject2 = localObject1;
-    NearbyActivity.TabInfo localTabInfo;
-    if (localObject1 == null)
-    {
-      localTabInfo = (NearbyActivity.TabInfo)this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.get(paramInt);
-      if (localTabInfo.b != 2) {
-        break label82;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment = new NowLiveFragment();
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment;
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 != null)
-      {
-        ((NearbyBaseFragment)localObject1).a(localTabInfo);
-        localObject2 = localObject1;
-      }
-      return localObject2;
-      label82:
-      if (localTabInfo.b == 3)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment = new HotChatFragment();
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment;
-      }
-      else if (localTabInfo.b == 4)
-      {
-        localObject1 = new CommonTabFragment();
-      }
-      else if (localTabInfo.b == 5)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment = new NearbyHybridFragment();
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment;
-      }
-    }
+    UpSideDownDrawable localUpSideDownDrawable = new UpSideDownDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.getWidth(), this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.getHeight());
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.setImageDrawable(localUpSideDownDrawable);
+    localUpSideDownDrawable.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a.a(false);
   }
 }
 

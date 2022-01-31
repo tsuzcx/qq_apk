@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ywm
-  extends DownloadListener
+public final class ywm
+  implements BusinessObserver
 {
-  public ywm(QQFrameZipDecoder paramQQFrameZipDecoder, String paramString1, String paramString2, String paramString3) {}
+  public ywm(SharedPreferences paramSharedPreferences, AppInterface paramAppInterface) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.onDone(paramDownloadTask);
-    if (3 == paramDownloadTask.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameUtil", 2, "checkApolloGameRedDot onReceive isSuccess:" + paramBoolean + ",ret:" + paramInt);
     }
-    for (;;)
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + paramDownloadTask.a());
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a = 2;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("apollo_game_reddot_checkTime", System.currentTimeMillis()).commit();
+      ThreadManager.post(new ywn(this, paramBundle), 5, null, true);
     }
   }
 }

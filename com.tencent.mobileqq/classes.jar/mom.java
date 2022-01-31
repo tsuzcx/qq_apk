@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
-public final class mom
-  implements Parcelable.Creator
+public class mom
+  implements Runnable
 {
-  public FastWebVideoInfo.ChannelInfo a(Parcel paramParcel)
-  {
-    return new FastWebVideoInfo.ChannelInfo(paramParcel);
-  }
+  public mom(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, int paramInt1, int paramInt2) {}
   
-  public FastWebVideoInfo.ChannelInfo[] a(int paramInt)
+  public void run()
   {
-    return new FastWebVideoInfo.ChannelInfo[paramInt];
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.smoothScrollBy(this.jdField_a_of_type_Int, this.b);
   }
 }
 

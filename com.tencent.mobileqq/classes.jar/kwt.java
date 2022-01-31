@@ -1,17 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import android.content.Context;
+import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
 
 public class kwt
-  implements View.OnClickListener
+  implements Runnable
 {
-  public kwt(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public kwt(AdModuleBase paramAdModuleBase) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
-    ReadInJoyNativeAdFragment.b(this.a);
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton != null)
+    {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130838508);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.a.jdField_a_of_type_AndroidContentContext.getText(2131438694));
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-1);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(0);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(true);
+    }
+    this.a.c = 2;
   }
 }
 

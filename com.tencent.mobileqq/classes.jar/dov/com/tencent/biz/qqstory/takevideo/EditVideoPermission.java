@@ -240,25 +240,25 @@ public class EditVideoPermission
     switch (this.b)
     {
     default: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843506);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843627);
       return;
     case 10004: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843509);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843630);
       return;
     case 10000: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843506);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843627);
       return;
     case 10001: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843513);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843634);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843514);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843635);
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131364419));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131364443));
     this.jdField_a_of_type_Int = a();
     this.b = this.jdField_a_of_type_Int;
     j();

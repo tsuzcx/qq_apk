@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class ufr
-  implements Comparator
+  implements DialogInterface.OnKeyListener
 {
-  public ufr(ActivateFriendActivity paramActivateFriendActivity) {}
+  public ufr(UpgradeActivity paramUpgradeActivity) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
+    if (paramInt == 4) {
+      this.a.a();
     }
-    if (l1 > 0L) {
-      return -1;
-    }
-    if (l1 < 0L) {
-      return 1;
-    }
-    return 0;
+    return false;
   }
 }
 

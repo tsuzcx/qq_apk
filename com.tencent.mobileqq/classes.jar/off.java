@@ -1,16 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-class off
-  implements Runnable
+public class off
+  implements DialogInterface.OnDismissListener
 {
-  off(ofe paramofe) {}
+  public off(EditVideoMusic paramEditVideoMusic) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.c();
-    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).a();
-    this.a.a.finish();
+    this.a.a.a(0);
+    VideoEditReport.a("0X80076DD");
   }
 }
 

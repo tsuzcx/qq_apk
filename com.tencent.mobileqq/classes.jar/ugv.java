@@ -1,14 +1,16 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class ugv
+  implements Runnable
 {
-  public int a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public ImageView b;
+  public ugv(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  
+  public void run()
+  {
+    ((PhoneContactManager)this.a.app.getManager(10)).g();
+  }
 }
 
 

@@ -1,21 +1,27 @@
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.OnTabRedNumsChangeListenner;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class llu
   implements Runnable
 {
-  public llu(KandianMergeManager paramKandianMergeManager) {}
+  public llu(KandianMergeManager paramKandianMergeManager, QQMessageFacade paramQQMessageFacade, String paramString1, String paramString2, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if (KandianMergeManager.a(this.a) != null)
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.as, 7220);
+    if (localMessageRecord != null) {}
+    for (localMessageRecord = KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);; localMessageRecord = KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int))
     {
-      Iterator localIterator = KandianMergeManager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((KandianMergeManager.OnTabRedNumsChangeListenner)localIterator.next()).b();
+      if (localMessageRecord != null)
+      {
+        ReadInJoyUtils.a(localMessageRecord);
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord, KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).c());
       }
+      return;
     }
   }
 }

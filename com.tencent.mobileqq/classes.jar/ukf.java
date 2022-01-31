@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 
-public class ukf
+class ukf
   implements Runnable
 {
-  public ukf(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
+  ukf(uke paramuke, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(1, 200, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) });
+    this.jdField_a_of_type_Uke.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTag(2131361863, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Uke.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnLongClickListener(this.jdField_a_of_type_Uke.jdField_a_of_type_AndroidViewView$OnLongClickListener);
   }
 }
 

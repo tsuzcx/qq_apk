@@ -1,33 +1,27 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.activity.messagesearch.SearchHistoryAdapter;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.mobileqq.app.AutomatorObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class woj
-  implements TextWatcher
+  extends AutomatorObserver
 {
-  public woj(MessageSearchDialog paramMessageSearchDialog) {}
+  public woj(TroopFragment paramTroopFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void a(int paramInt)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (this.a.b) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter.a(paramEditable);
-    }
-    this.a.b = true;
-    if (paramEditable.length() == 0)
+    switch (paramInt)
     {
-      this.a.findViewById(2131368256).setVisibility(8);
-      return;
     }
-    this.a.findViewById(2131368256).setVisibility(0);
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.d();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

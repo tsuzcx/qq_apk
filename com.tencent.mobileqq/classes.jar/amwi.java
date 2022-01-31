@@ -1,38 +1,21 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QimMusicPlayer;
-import dov.com.qq.im.capture.music.humrecognition.HumUtils;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import java.util.ArrayList;
 
 public class amwi
-  implements View.OnClickListener
+  implements Runnable
 {
-  public amwi(HummingActivity paramHummingActivity) {}
+  public amwi(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (HumUtils.b()) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("HUM_HummingActivity", 2, "onClick: play mHumMusicItemInfo = " + HummingActivity.a(this.a));
-    }
-    if (HummingActivity.a(this.a).b(HummingActivity.a(this.a)))
-    {
-      paramView = new Intent();
-      paramView.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
-      this.a.setResult(-1, paramView);
-      this.a.finish();
-      return;
-    }
-    HummingActivity.a(this.a).a(HummingActivity.a(this.a), this.a.a);
+    RemoteHandleManager.a().a().a(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import ambb;
+import amrf;
 import android.content.Context;
 import android.os.Environment;
 import android.os.Handler;
@@ -89,7 +89,7 @@ public class CrashGuard
     this.mHandler = paramHandler;
     this.crashListener = paramCrashListener;
     if (this.clearTimestamp == null) {
-      this.clearTimestamp = new ambb(this, paramLong);
+      this.clearTimestamp = new amrf(this, paramLong);
     }
     if (crashBetweenLaunch < 0) {
       crashBetweenLaunch = getCrashDurationAfterLaunch();

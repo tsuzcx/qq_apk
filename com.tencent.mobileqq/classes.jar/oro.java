@@ -1,21 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewHeaderViewAdapter;
 
 public class oro
-  implements DialogInterface.OnCancelListener
+  extends RecyclerView.ViewHolder
 {
-  public oro(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public oro(RecyclerViewHeaderViewAdapter paramRecyclerViewHeaderViewAdapter, View paramView)
   {
-    if (this.a.d) {
-      return;
-    }
-    this.a.h = -1;
-    this.a.d = true;
-    QRDisplayActivity.a(this.a).b();
+    super(paramView);
   }
 }
 

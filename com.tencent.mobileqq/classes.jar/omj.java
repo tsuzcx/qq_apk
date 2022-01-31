@@ -1,13 +1,12 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-
-public abstract interface omj
+public class omj
 {
-  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
+  public static void a(String paramString1, String paramString2) {}
   
-  public abstract boolean a();
+  public static void b(String paramString1, String paramString2) {}
   
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public static void c(String paramString1, String paramString2) {}
+  
+  public static void d(String paramString1, String paramString2) {}
 }
 
 

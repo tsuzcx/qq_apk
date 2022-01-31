@@ -1,23 +1,15 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
-import com.tencent.biz.qqstory.model.WeatherDataProvider.WeatherInfo;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
+import com.tencent.biz.qqstory.takevideo.EditJumpToPtu;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class ocw
-  implements DataProvider.DataUpdateListener
+  implements Runnable
 {
-  public ocw(EditVideoFilterNeo paramEditVideoFilterNeo) {}
+  public ocw(EditJumpToPtu paramEditJumpToPtu, String paramString) {}
   
-  public void a(boolean paramBoolean, WeatherDataProvider.WeatherInfo paramWeatherInfo)
+  public void run()
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramWeatherInfo != null))
-    {
-      SLog.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramWeatherInfo.a));
-      int i = paramWeatherInfo.a;
-      EditVideoFilterNeo.a(this.a).post(new ocx(this, i));
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditJumpToPtu.a(this.jdField_a_of_type_JavaLangString);
+    FileUtils.d(this.jdField_a_of_type_JavaLangString);
   }
 }
 

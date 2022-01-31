@@ -1,53 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
 
 public class mxu
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public mxu(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, List paramList) {}
+  public mxu(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (;;)
+    if (PublicAccountImageCollectionMainActivity.a(this.a))
     {
-      if (localIterator.hasNext())
-      {
-        Object localObject1 = (String)localIterator.next();
-        if (localObject1 != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(PublicAccountImageCollectionPreloadManager.a(), 2, "preloadImage url= " + (String)localObject1);
-          }
-          try
-          {
-            localObject1 = new URL((String)localObject1);
-            if (localObject1 != null)
-            {
-              ImageRequest localImageRequest = new ImageRequest();
-              localImageRequest.a = ((URL)localObject1);
-              ImageManager.a().a(localImageRequest, null);
-            }
-          }
-          catch (MalformedURLException localMalformedURLException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d(PublicAccountImageCollectionPreloadManager.a(), 2, "getURLPath ERROR e = " + localMalformedURLException.getMessage());
-              }
-              Object localObject2 = null;
-            }
-          }
-        }
+      this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, "current operation is" + paramMotionEvent.getAction());
       }
+      if ((paramMotionEvent.getAction() == 1) && (this.a.b[0] < this.a.jdField_a_of_type_ArrayOfFloat[0]))
+      {
+        PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.c);
+        PublicAccountImageCollectionMainActivity.a(this.a).setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      return true;
     }
+    this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 

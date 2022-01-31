@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.adapter;
 
-import acfc;
+import acoz;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,13 +68,13 @@ public abstract class QfileBaseExpandableListAdapter
   
   public void a(View paramView, int paramInt)
   {
-    Object localObject = (acfc)paramView.getTag();
+    Object localObject = (acoz)paramView.getTag();
     if (localObject == null)
     {
-      localObject = new acfc();
-      paramView.findViewById(2131363817).setVisibility(0);
-      ((acfc)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363819));
-      ((acfc)localObject).b = ((TextView)paramView.findViewById(2131363820));
+      localObject = new acoz();
+      paramView.findViewById(2131363840).setVisibility(0);
+      ((acoz)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363842));
+      ((acoz)localObject).b = ((TextView)paramView.findViewById(2131363843));
       paramView.setTag(localObject);
     }
     for (paramView = (View)localObject;; paramView = (View)localObject)
@@ -133,7 +133,7 @@ public abstract class QfileBaseExpandableListAdapter
     Object localObject;
     if (paramView != null)
     {
-      localObject = (acfc)paramView.getTag();
+      localObject = (acoz)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
       localObject = (String)getGroup(paramInt);
@@ -150,9 +150,9 @@ public abstract class QfileBaseExpandableListAdapter
       paramViewGroup.setFocusableInTouchMode(true);
       return paramViewGroup;
       paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968807, paramViewGroup, false);
-      paramView = new acfc();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363819));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131363820));
+      paramView = new acoz();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363842));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131363843));
       paramViewGroup.setTag(paramView);
       break;
       label149:

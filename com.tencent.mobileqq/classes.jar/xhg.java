@@ -1,45 +1,15 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.2;
 
 public class xhg
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xhg(RecentAdapter paramRecentAdapter) {}
+  public xhg(RedPacketProxy.2 param2, RedPacketInfoBase paramRedPacketInfoBase) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (paramView == null) {}
-    Object localObject1;
-    RecentBaseData localRecentBaseData;
-    do
-    {
-      do
-      {
-        int i;
-        do
-        {
-          return;
-          i = paramView.getId();
-        } while ((i < 0) || (i >= this.a.getCount()));
-        localObject1 = this.a.getItem(i);
-      } while ((localObject1 == null) || (!(localObject1 instanceof RecentBaseData)));
-      localRecentBaseData = (RecentBaseData)localObject1;
-      Object localObject2 = null;
-      localObject1 = localObject2;
-      if ((paramView instanceof TextView))
-      {
-        paramView = ((TextView)paramView).getText();
-        localObject1 = localObject2;
-        if (paramView != null) {
-          localObject1 = paramView.toString();
-        }
-      }
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    this.a.a(localRecentBaseData, (String)localObject1, "1");
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketProxy$2.a.onGetSkin(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase);
   }
 }
 

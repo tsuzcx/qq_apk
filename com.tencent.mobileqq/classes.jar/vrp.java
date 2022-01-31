@@ -1,34 +1,69 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.HotchatSCHelper;
-import com.tencent.mobileqq.app.HotchatSCHelper.OnShowNoteListener;
-import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
+import android.os.Bundle;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.app.EnterpriseQQHandler;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class vrp
-  implements HotchatSCHelper.OnShowNoteListener
+  implements BusinessObserver
 {
-  public vrp(HotChatPie paramHotChatPie) {}
+  public vrp(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public boolean a(HotchatSCMng.HotchatNote paramHotchatNote)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isDevelopLevel()) {
-      NearbyUtils.a("Q.aio.BaseTroopChatPie", "onShowHotchatNote", new Object[] { paramHotchatNote });
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
     }
-    if (paramHotchatNote == null)
+    if (!paramBoolean) {
+      this.a.v(2131430033);
+    }
+    for (;;)
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.b) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
+      ChatActivityUtils.b();
+      return;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+          localFollowResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
+          {
+            ((FriendListHandler)this.a.a.a(1)).a(true, false);
+            paramBundle = (EnterpriseQQHandler)this.a.a.a(21);
+            if (paramBundle != null) {
+              paramBundle.a(SystemClock.uptimeMillis());
+            }
+          }
+          else if (paramInt == 58)
+          {
+            this.a.v(2131430041);
+          }
+          else if (paramInt == 65)
+          {
+            this.a.v(2131430042);
+          }
+          else if (paramInt == 20)
+          {
+            this.a.v(2131430043);
+          }
+          else
+          {
+            this.a.v(2131430033);
+          }
+        }
       }
-      return false;
+      catch (Exception paramBundle) {}
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic = new TroopFeedsCenterLogic(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, HotChatPie.a(this.a), HotChatPie.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips, this.a.Q, null);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramHotchatNote.a, paramHotchatNote.b);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.b = true;
-    return true;
   }
 }
 

@@ -27,8 +27,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import nby;
-import nbz;
+import ndj;
+import ndk;
 
 public class UserManager
   implements IManager
@@ -88,6 +88,32 @@ public class UserManager
       SLog.d("Q.qqstory.user.UserManager", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { paramString.toString() });
     }
     return paramString;
+  }
+  
+  public QQUserUIItem a(@NonNull String paramString, boolean paramBoolean)
+  {
+    String str = paramString;
+    if ("0_1000".equals(paramString)) {
+      str = (String)((StoryConfigManager)SuperManager.a(10)).b("qqstory_my_union_id", paramString);
+    }
+    QQUserUIItem localQQUserUIItem = (QQUserUIItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(a(str));
+    paramString = localQQUserUIItem;
+    if (localQQUserUIItem == null)
+    {
+      if (paramBoolean) {
+        break label62;
+      }
+      paramString = localQQUserUIItem;
+    }
+    label62:
+    do
+    {
+      return paramString;
+      localQQUserUIItem = d(str);
+      paramString = localQQUserUIItem;
+    } while (localQQUserUIItem != null);
+    SLog.d("Q.qqstory.user.UserManager", "%s get userItem is null", new Object[] { str });
+    return localQQUserUIItem;
   }
   
   public String a(String paramString, boolean paramBoolean)
@@ -151,7 +177,7 @@ public class UserManager
       ((ConvertUinAndUnionIdRequest)localObject).c = paramInt;
       ((ConvertUinAndUnionIdRequest)localObject).jdField_a_of_type_JavaUtilList.add(paramUserID);
       boolean bool = paramUserID.a();
-      CmdTaskManger.a().a((NetworkRequest)localObject, new nbz(this, paramUserID, bool, l));
+      CmdTaskManger.a().a((NetworkRequest)localObject, new ndk(this, paramUserID, bool, l));
       return;
     }
   }
@@ -174,21 +200,7 @@ public class UserManager
   
   public QQUserUIItem b(@NonNull String paramString)
   {
-    String str = paramString;
-    if ("0_1000".equals(paramString)) {
-      str = (String)((StoryConfigManager)SuperManager.a(10)).b("qqstory_my_union_id", paramString);
-    }
-    paramString = (QQUserUIItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(a(str));
-    if (paramString != null) {}
-    QQUserUIItem localQQUserUIItem;
-    do
-    {
-      return paramString;
-      localQQUserUIItem = d(str);
-      paramString = localQQUserUIItem;
-    } while (localQQUserUIItem != null);
-    SLog.d("Q.qqstory.user.UserManager", "%s get userItem is null", new Object[] { str });
-    return localQQUserUIItem;
+    return a(paramString, true);
   }
   
   public String b(String paramString, boolean paramBoolean)
@@ -277,7 +289,7 @@ public class UserManager
       if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
-        new Handler().postDelayed(new nby(this), 600L);
+        new Handler().postDelayed(new ndj(this), 600L);
       }
     }
     return localQQUserUIItem;

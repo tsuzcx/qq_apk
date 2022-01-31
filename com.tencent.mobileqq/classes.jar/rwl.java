@@ -1,52 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.Editable;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class rwl
-  implements DialogInterface.OnDismissListener
+public final class rwl
+  implements DialogInterface.OnCancelListener
 {
-  public rwl(ChatHistory paramChatHistory, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
+  public rwl(boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    paramDialogInterface = (MessageSearchDialog)paramDialogInterface;
-    int i = paramDialogInterface.a() + this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.l;
-    boolean bool = paramDialogInterface.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistory", 2, "onDismiss, recordCount : " + i);
+    if (this.jdField_a_of_type_Boolean) {
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
-    if (i <= 0) {}
-    int j;
-    do
-    {
-      return;
-      j = (i - 1) / 8 + 1;
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatHistory", 2, "onDismiss, pageIndex = " + j);
-      }
-    } while (j < 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.c = ((i - 1) % 8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(j));
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-    if (bool)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131433681));
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getIntent().getExtras().getString("leftViewText");
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.leftView.setText(paramDialogInterface);
+    paramDialogInterface.dismiss();
   }
 }
 

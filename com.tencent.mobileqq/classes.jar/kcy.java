@@ -1,26 +1,32 @@
-import com.tencent.av.ui.VideoLayerUIBase;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.AVLog;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
 import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
 
 public class kcy
-  implements Observer
+  implements Animation.AnimationListener
 {
-  private WeakReference a;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public kcy(VideoLayerUIBase paramVideoLayerUIBase)
+  public kcy(EffectFilterPanel paramEffectFilterPanel, View paramView)
   {
-    this.a = new WeakReference(paramVideoLayerUIBase);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
   }
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    VideoLayerUIBase localVideoLayerUIBase = (VideoLayerUIBase)this.a.get();
-    if (localVideoLayerUIBase == null) {
-      return;
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    AVLog.c("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(8);
     }
-    VideoLayerUIBase.a(localVideoLayerUIBase, paramObservable, paramObject);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

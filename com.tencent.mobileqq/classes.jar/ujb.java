@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.GridCallBack;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
 public class ujb
-  extends DialogUtil.DialogOnClickAdapter
+  implements ActivateFriendGrid.GridCallBack
 {
-  public ujb(PlusPanel paramPlusPanel) {}
+  public ujb(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (paramInt > 0)
+    {
+      this.a.a.setEnabled(true);
+      return;
+    }
+    this.a.a.setEnabled(false);
   }
 }
 

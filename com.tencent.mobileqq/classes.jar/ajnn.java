@@ -1,18 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.troop.utils.ChangeMachineManager;
 
-public final class ajnn
-  implements MediaPlayer.OnCompletionListener
+public class ajnn
+  implements Runnable
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public ajnn(ChangeMachineManager paramChangeMachineManager) {}
+  
+  public void run()
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    ChangeMachineManager.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnn
  * JD-Core Version:    0.7.0.1
  */

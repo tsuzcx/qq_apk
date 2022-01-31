@@ -1,28 +1,55 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TroopPobingItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TroopPobingItemBuilder.ConfigableWordingSetter;
+import com.tencent.mobileqq.activity.aio.item.TroopPobingItemBuilder.TroopPobingViewHolder;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import java.io.File;
-import mqq.os.MqqHandler;
 
 public class vkm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vkm(AIOGalleryScene paramAIOGalleryScene, File paramFile, ActionSheet paramActionSheet) {}
+  public vkm(TroopPobingItemBuilder paramTroopPobingItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    TroopPobingItemBuilder.TroopPobingViewHolder localTroopPobingViewHolder = (TroopPobingItemBuilder.TroopPobingViewHolder)AIOUtils.a(paramView);
+    TroopPobingItemBuilder.a(localTroopPobingViewHolder.a.senderuin);
+    if (paramView == localTroopPobingViewHolder.b)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h != null) && (this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h.equals(this.jdField_a_of_type_JavaIoFile.getPath())) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(this.jdField_a_of_type_JavaIoFile).booleanValue()) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-        ThreadManager.getUIHandler().post(new vkn(this));
+      paramView = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment();
+      if ((paramView != null) && (paramView.a() != null))
+      {
+        paramView = (TroopChatPie)paramView.a();
+        TroopPobingItemBuilder.a(this.a).a(paramView.a);
+        TroopPobingItemBuilder.a(this.a).a(0, localTroopPobingViewHolder.a);
       }
+      new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_welcome").a(new String[] { localTroopPobingViewHolder.a.frienduin }).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopPobingItemBuilder", 2, "点击欢迎");
+      }
+      TroopPobingItemBuilder.a(1);
+    }
+    while (paramView != localTroopPobingViewHolder.c) {
       return;
     }
-    catch (Exception localException)
+    paramView = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment();
+    if ((paramView != null) && (paramView.a() != null))
     {
-      QLog.i("AIOGalleryScene", 1, "add qr action sheet error: " + localException.getMessage());
+      paramView = (TroopChatPie)paramView.a();
+      TroopPobingItemBuilder.a(this.a).a(paramView.a);
+      TroopPobingItemBuilder.a(this.a).a(1, localTroopPobingViewHolder.a);
     }
+    new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_play").a(new String[] { localTroopPobingViewHolder.a.frienduin }).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPobingItemBuilder", 2, "点击撩一下");
+    }
+    TroopPobingItemBuilder.a(2);
   }
 }
 

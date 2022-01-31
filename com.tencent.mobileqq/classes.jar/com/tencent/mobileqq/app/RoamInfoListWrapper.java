@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
-import ziz;
+import zmf;
 
 public class RoamInfoListWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ziz();
+  public static final Parcelable.Creator CREATOR = new zmf();
   public ArrayList a;
   
   public int describeContents()

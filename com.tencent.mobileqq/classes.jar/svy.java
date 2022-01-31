@@ -1,33 +1,33 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class svy
-  implements Animation.AnimationListener
+  extends WtloginObserver
 {
-  public svy(LebaQZoneFacePlayHelper paramLebaQZoneFacePlayHelper) {}
+  public svy(JumpActivity paramJumpActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if ((LebaQZoneFacePlayHelper.a(this.a) != null) && (LebaQZoneFacePlayHelper.a(this.a).size() >= 2)) {
-      LebaQZoneFacePlayHelper.a(this.a).sendEmptyMessageDelayed(1688002, 1000L);
+    if (paramDevlockInfo != null) {
+      DevlockPhoneStatus.a().a(paramDevlockInfo.TransferInfo);
     }
-    if (LebaQZoneFacePlayHelper.a(this.a) != null)
+    paramWUserSigInfo = this.a;
+    if (paramInt == 0) {}
+    for (;;)
     {
-      LebaQZoneFacePlayHelper.a(this.a).a();
-      LebaQZoneFacePlayHelper.a(this.a, null);
+      paramWUserSigInfo.a(paramDevlockInfo);
+      return;
+      paramDevlockInfo = null;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     svy
  * JD-Core Version:    0.7.0.1
  */

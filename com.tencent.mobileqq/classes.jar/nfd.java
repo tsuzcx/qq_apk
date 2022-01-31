@@ -1,19 +1,17 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.widget.ListView;
 
 public class nfd
-  extends EncryptUrlJob
+  extends DataSetObserver
 {
-  public nfd(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareSinaData paramShareSinaData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public nfd(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
-  public boolean b()
+  public void onChanged()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.c = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    if (this.a.c == 0) {
+      this.a.a.post(new nfe(this));
+    }
   }
 }
 

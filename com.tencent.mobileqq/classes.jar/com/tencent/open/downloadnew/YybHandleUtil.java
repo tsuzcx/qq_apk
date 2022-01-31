@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew;
 
-import aktm;
+import aljc;
 import android.content.Context;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.adapter.CommonDataAdapter;
@@ -58,7 +58,7 @@ public class YybHandleUtil
   public static void a()
   {
     LogUtility.c(a, "---deleteYYBApkPackage--");
-    ThreadManager.getSubThreadHandler().post(new aktm());
+    ThreadManager.getSubThreadHandler().post(new aljc());
   }
   
   public static boolean a()

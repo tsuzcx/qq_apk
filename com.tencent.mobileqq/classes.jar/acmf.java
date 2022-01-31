@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import java.lang.ref.WeakReference;
+import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
 
 public class acmf
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements Runnable
 {
-  public acmf(FileVideoManager.VideoControl paramVideoControl) {}
+  public acmf(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void run()
   {
-    QLog.e("FileVideoManager<FileAssistant>", 1, "mediaPlayer onError:errorType[" + paramInt1 + "], errorCode[" + paramInt2 + "],extra[" + paramInt3 + "],detailInfo[" + paramString + "]");
-    paramTVK_IMediaPlayer = (FileVideoManager.FileVideoManagerCallback)this.a.a.get();
-    if (paramTVK_IMediaPlayer != null) {
-      paramTVK_IMediaPlayer.a(paramInt2, "视频文件不存在或已损坏");
+    if (this.a.d) {
+      return;
     }
-    return false;
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - this.a.jdField_a_of_type_AndroidViewViewGroup.getHeight());
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.a.jdField_a_of_type_AndroidViewViewGroup);
+    }
+    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
+    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
+    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
+    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.b;
+    localFilePreviewAnim.b = 250;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
+    this.a.d = true;
   }
 }
 

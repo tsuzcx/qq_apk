@@ -1,19 +1,22 @@
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.takevideo.TakeVideoButtonMainPart.OnTakeVideoButtonClickListener;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.detail.model.SpannableStringUtils.ClickNickCallback;
 
-public class nuu
-  implements TakeVideoButtonMainPart.OnTakeVideoButtonClickListener
+public final class nuu
+  extends ClickableSpan
 {
-  public nuu(StoryDiscoverActivity paramStoryDiscoverActivity) {}
+  public nuu(SpannableStringUtils.ClickNickCallback paramClickNickCallback, String paramString, int paramInt) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.a())
-    {
-      this.a.a();
-      return;
-    }
-    this.a.a(false, true, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelSpannableStringUtils$ClickNickCallback.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.getColor());
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

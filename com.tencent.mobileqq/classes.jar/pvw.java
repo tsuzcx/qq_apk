@@ -1,20 +1,17 @@
-import com.tencent.device.file.DeviceAVFileMsgObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.bind.DevicePluginDownloadActivity;
+import cooperation.smartdevice.SmartDevicePluginLoader;
 
 public class pvw
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  public pvw(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
   
-  public pvw(DeviceAVFileMsgObserver paramDeviceAVFileMsgObserver, String paramString1, long paramLong1, int paramInt, String paramString2, long paramLong2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Long = paramLong2;
+    paramDialogInterface.dismiss();
+    SmartDevicePluginLoader.a().a();
   }
 }
 

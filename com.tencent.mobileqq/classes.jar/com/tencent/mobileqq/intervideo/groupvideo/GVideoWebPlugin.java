@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import adjk;
-import adjl;
+import adtj;
+import adtk;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -27,7 +27,7 @@ public class GVideoWebPlugin
   
   public GVideoWebPlugin()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adjl(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adtk(this);
     this.mPluginNameSpace = "groupVideo";
   }
   
@@ -77,7 +77,7 @@ public class GVideoWebPlugin
         paramVarArgs = ((JSONObject)localObject).optString("openType");
         localObject = ((JSONObject)localObject).optString("extra");
         this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramJsBridgeListener, i, paramString3, paramString1, paramString2, paramVarArgs, (String)localObject);
-        GroupVideoManager.a("group_video", new adjk(this, paramString3));
+        GroupVideoManager.a("group_video", new adtj(this, paramString3));
       }
     }
     catch (Exception paramJsBridgeListener)
@@ -123,7 +123,7 @@ public class GVideoWebPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GVideoWebPlugin
  * JD-Core Version:    0.7.0.1
  */

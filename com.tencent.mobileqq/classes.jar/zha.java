@@ -1,11 +1,8 @@
-import java.util.List;
-
 public class zha
 {
   public int a;
   public long a;
-  public List a;
-  public boolean a;
+  public short a;
 }
 
 

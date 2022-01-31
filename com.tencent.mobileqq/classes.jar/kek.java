@@ -1,17 +1,19 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.app.VideoObserver;
-import com.tencent.av.ui.redbag.AVRedBagConfig;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class kek
-  extends VideoObserver
+  implements MenuItem.OnMenuItemClickListener
 {
-  public kek(AVRedBagConfig paramAVRedBagConfig) {}
+  public kek(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
   
-  protected void a()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    ThreadManager.post(new kel(this), 10, null, true);
-    this.a.a.b(this);
+    AudioHelper.a("让入口可用");
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a.a = 1;
+    return true;
   }
 }
 

@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-public class xnt
+class xnt
   implements Runnable
 {
-  public xnt(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
+  xnt(xns paramxns) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.b(this.jdField_a_of_type_Int + 1, 0, 0);
+    EditLocalVideoActivity.b(this.a.a, false);
   }
 }
 

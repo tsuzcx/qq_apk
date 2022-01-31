@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now.send.uploader;
 
-import aejl;
-import aejm;
+import aewr;
+import aews;
 import android.text.TextUtils;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -34,7 +34,7 @@ public class WordsCheck
     } while (paramOnResultListener == null);
     paramOnResultListener.a(0);
     return;
-    new CsTask(paramQQAppInterface).a(24585).b(2).a(new aejm(paramOnResultListener)).a(new aejl(paramOnResultListener)).a(localSecurityReq.toByteArray());
+    new CsTask(paramQQAppInterface).a(24585).b(2).a(new aews(paramOnResultListener)).a(new aewr(paramOnResultListener)).a(localSecurityReq.toByteArray());
   }
 }
 

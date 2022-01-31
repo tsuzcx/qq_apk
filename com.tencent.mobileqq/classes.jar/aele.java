@@ -1,24 +1,35 @@
-import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
+import MyCarrier.Carrier;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import com.tencent.mobileqq.mybusiness.MyBusinessObserver;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aele
-  implements IVideoView.OnInfoListener
+  extends MyBusinessObserver
 {
-  public aele(VideoPlayerView paramVideoPlayerView) {}
+  public aele(MyBusinessManager paramMyBusinessManager) {}
   
-  public boolean a(IVideoView paramIVideoView, int paramInt, Object paramObject)
+  public void a(boolean paramBoolean, Carrier paramCarrier, int paramInt)
   {
-    if (paramInt == 21) {
-      QualityReporter.f();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MyBusinessManager", 4, "onCarrierQuery refreshTimeSpan = " + paramInt);
     }
-    return false;
+    this.a.a = paramInt;
+    if (this.a.a > 86400) {
+      this.a.a = 86400;
+    }
+    if (!paramBoolean)
+    {
+      this.a.b = false;
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new aelf(this, paramCarrier));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aele
  * JD-Core Version:    0.7.0.1
  */

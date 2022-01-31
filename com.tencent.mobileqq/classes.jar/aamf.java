@@ -1,30 +1,90 @@
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.arcard.ARCardShareHelper;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
 public class aamf
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public aamf(ArkAppCGI paramArkAppCGI, QQAppInterface paramQQAppInterface, aamh paramaamh, HttpNetReq paramHttpNetReq) {}
+  public aamf(ARCardShareHelper paramARCardShareHelper) {}
   
-  public void run()
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI) == null) || (!NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
+    paramAdapterView = paramView.getTag();
+    if (QLog.isColorLevel())
     {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", "runTask_retry, network not available");
-      ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI, this.jdField_a_of_type_Aamh, false, null);
+      paramView = new StringBuilder().append("onItemClick, tag = ");
+      if (paramAdapterView == null) {
+        break label80;
+      }
+    }
+    label80:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("ARCardShareHelper", 2, bool);
+      if (this.a.a.a().isShowing()) {
+        this.a.a.a().dismiss();
+      }
+      if (paramAdapterView != null) {
+        break;
+      }
       return;
     }
-    ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.c;
+    if (!this.a.a())
+    {
+      QRUtils.a(1, 2131433135);
+      return;
+    }
+    switch (i)
+    {
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+    default: 
+      return;
+    case 2: 
+      ThreadManager.postImmediately(new aamg(this, i), null, true);
+      return;
+    case 3: 
+      ThreadManager.postImmediately(new aami(this), null, true);
+      return;
+    }
+    if (!WXShareHelper.a().a()) {
+      paramInt = 2131435319;
+    }
+    for (;;)
+    {
+      if (paramInt != -1)
+      {
+        QRUtils.a(1, paramInt);
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131435320;
+        }
+      }
+      else
+      {
+        ThreadManager.postImmediately(new aamk(this, i), null, true);
+        return;
+      }
+      paramInt = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamf
  * JD-Core Version:    0.7.0.1
  */

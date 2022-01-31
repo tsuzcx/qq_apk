@@ -1,19 +1,42 @@
-import android.content.Context;
-import android.content.SharedPreferences;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.smallscreen.SmallScreenVideoController;
+import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
+import java.util.Timer;
+import java.util.TimerTask;
 
-class jou
-  implements Runnable
+public class jou
+  extends TimerTask
 {
-  jou(jot paramjot, long paramLong) {}
+  public jou(SmallScreenVideoController paramSmallScreenVideoController) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Jot.a.a() == this.jdField_a_of_type_Long) && (!this.jdField_a_of_type_Jot.a.a.getApp().getApplicationContext().getSharedPreferences("qav_SP", 0).getBoolean("kick_out_self", false))) {
-      this.jdField_a_of_type_Jot.a.f(true);
-    }
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {}
+    long l1;
+    long l2;
+    do
+    {
+      do
+      {
+        SessionInfo localSessionInfo;
+        do
+        {
+          return;
+          localSessionInfo = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+        } while (localSessionInfo == null);
+        if (localSessionInfo.Q > 0) {
+          break;
+        }
+      } while (this.a.jdField_a_of_type_JavaUtilTimer == null);
+      this.a.jdField_a_of_type_JavaUtilTimer.cancel();
+      this.a.jdField_a_of_type_JavaUtilTimer = null;
+      return;
+      l1 = this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c);
+      l2 = System.currentTimeMillis();
+    } while ((l1 == 0L) || (l2 - l1 <= this.a.jdField_a_of_type_ComTencentAvVideoController.a().Q * 1000));
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new jov(this, l2, l1));
   }
 }
 

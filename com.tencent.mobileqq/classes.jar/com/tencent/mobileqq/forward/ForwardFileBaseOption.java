@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.forward;
 
-import adap;
-import adaq;
-import adar;
-import adas;
-import adat;
+import adko;
+import adkp;
+import adkq;
+import adkr;
+import adks;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -139,7 +139,7 @@ public abstract class ForwardFileBaseOption
     }
     for (;;)
     {
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131435610) + paramString + "\n" + this.jdField_a_of_type_AndroidContentContext.getString(2131435611) + (String)localObject;
+      return this.jdField_a_of_type_AndroidContentContext.getString(2131435627) + paramString + "\n" + this.jdField_a_of_type_AndroidContentContext.getString(2131435628) + (String)localObject;
       if (paramLong < 1048576L)
       {
         localObject = paramLong / 1024L + " KB";
@@ -155,11 +155,11 @@ public abstract class ForwardFileBaseOption
   private void a(Uri paramUri, String paramString, InputStream paramInputStream, long paramLong)
   {
     this.g = true;
-    ThreadManager.post(new adar(this, paramString, paramInputStream, paramLong, paramUri), 5, null, true);
+    ThreadManager.post(new adkq(this, paramString, paramInputStream, paramLong, paramUri), 5, null, true);
     if (this.b == null)
     {
-      this.b = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext.getString(2131436278), "取消", new adas(this));
-      this.b.setOnDismissListener(new adat(this));
+      this.b = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext.getString(2131436295), "取消", new adkr(this));
+      this.b.setOnDismissListener(new adks(this));
     }
     this.b.show();
   }
@@ -361,11 +361,11 @@ public abstract class ForwardFileBaseOption
     //   420: getfield 137	com/tencent/mobileqq/forward/ForwardFileBaseOption:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   423: ldc_w 332
     //   426: invokevirtual 139	android/content/Context:getString	(I)Ljava/lang/String;
-    //   429: new 334	adau
+    //   429: new 334	adkt
     //   432: dup
     //   433: aload_0
     //   434: aload 8
-    //   436: invokespecial 337	adau:<init>	(Lcom/tencent/mobileqq/forward/ForwardFileBaseOption;Ljava/io/InputStream;)V
+    //   436: invokespecial 337	adkt:<init>	(Lcom/tencent/mobileqq/forward/ForwardFileBaseOption;Ljava/io/InputStream;)V
     //   439: invokevirtual 341	com/tencent/mobileqq/utils/QQCustomDialog:setNegativeButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   442: pop
     //   443: aload 9
@@ -373,14 +373,14 @@ public abstract class ForwardFileBaseOption
     //   446: getfield 137	com/tencent/mobileqq/forward/ForwardFileBaseOption:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   449: ldc_w 342
     //   452: invokevirtual 139	android/content/Context:getString	(I)Ljava/lang/String;
-    //   455: new 344	adav
+    //   455: new 344	adku
     //   458: dup
     //   459: aload_0
     //   460: aload_1
     //   461: aload 7
     //   463: aload 8
     //   465: lload 4
-    //   467: invokespecial 346	adav:<init>	(Lcom/tencent/mobileqq/forward/ForwardFileBaseOption;Landroid/net/Uri;Ljava/lang/String;Ljava/io/InputStream;J)V
+    //   467: invokespecial 346	adku:<init>	(Lcom/tencent/mobileqq/forward/ForwardFileBaseOption;Landroid/net/Uri;Ljava/lang/String;Ljava/io/InputStream;J)V
     //   470: invokevirtual 349	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   473: pop
     //   474: aload 9
@@ -483,13 +483,13 @@ public abstract class ForwardFileBaseOption
   
   private void d(String paramString)
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624515);
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624516);
     localQQCustomDialog.setContentView(2130968851);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131434764));
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131434781));
     localQQCustomDialog.setMessage(paramString);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131433681), new adap(this));
+    localQQCustomDialog.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131433698), new adko(this));
     if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
       localQQCustomDialog.show();
     }
@@ -528,7 +528,7 @@ public abstract class ForwardFileBaseOption
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardFileBaseOption", 2, "uri= " + paramUri);
     }
-    if ((VersionUtils.i()) && ("com.android.fileexplorer.fileprovider".equalsIgnoreCase(paramUri.getAuthority())))
+    if ((VersionUtils.j()) && ("com.android.fileexplorer.fileprovider".equalsIgnoreCase(paramUri.getAuthority())))
     {
       localObject1 = paramUri.getPathSegments();
       if ((((List)localObject1).size() >= 2) && ("external_files".equalsIgnoreCase((String)((List)localObject1).get(0))))
@@ -540,7 +540,7 @@ public abstract class ForwardFileBaseOption
         return paramUri;
       }
     }
-    else if (VersionUtils.h())
+    else if (VersionUtils.i())
     {
       localObject1 = paramUri.getPathSegments();
       if ((((List)localObject1).size() < 2) || (!"document".equals(((List)localObject1).get(0)))) {
@@ -693,21 +693,21 @@ public abstract class ForwardFileBaseOption
     {
       if (paramUri.toString().contains("mms/part"))
       {
-        d(this.jdField_a_of_type_AndroidContentContext.getString(2131436271));
+        d(this.jdField_a_of_type_AndroidContentContext.getString(2131436288));
         return false;
       }
-      d(this.jdField_a_of_type_AndroidContentContext.getString(2131436270));
+      d(this.jdField_a_of_type_AndroidContentContext.getString(2131436287));
       return false;
     }
     if ((true == this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_from_jump")) && (true == this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromShare")) && (b(str)))
     {
-      paramUri = new QQCustomDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624515);
+      paramUri = new QQCustomDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624516);
       paramUri.setContentView(2130968851);
-      paramUri.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131434764));
-      paramUri.setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131436272));
+      paramUri.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131434781));
+      paramUri.setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131436289));
       paramUri.setCanceledOnTouchOutside(false);
       paramUri.setCancelable(false);
-      paramUri.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131433681), new adaq(this));
+      paramUri.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131433698), new adkp(this));
       paramUri.show();
       return false;
     }
@@ -763,7 +763,7 @@ public abstract class ForwardFileBaseOption
   {
     super.b();
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.adjustMessageBottomMargin(17.0F);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextColor(2131493794);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextColor(2131493800);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextSize(14.0F);
   }
   
@@ -808,7 +808,7 @@ public abstract class ForwardFileBaseOption
   public String d()
   {
     if (jdField_f_of_type_JavaLangString == null) {
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131436269);
+      return this.jdField_a_of_type_AndroidContentContext.getString(2131436286);
     }
     return jdField_f_of_type_JavaLangString;
   }

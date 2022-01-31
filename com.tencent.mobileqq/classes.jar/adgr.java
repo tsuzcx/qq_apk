@@ -1,78 +1,49 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicFooterInterface;
-import com.tencent.mobileqq.hotpic.HotPicManager;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class adgr
-  implements HotPicFooterInterface
 {
-  int jdField_a_of_type_Int = 1;
-  adgp jdField_a_of_type_Adgp;
+  public long a;
+  public String a;
   public boolean a;
+  public String b;
+  public String c;
   
-  public adgr(HotPicPageView paramHotPicPageView, adgp paramadgp)
-  {
-    this.jdField_a_of_type_Adgp = paramadgp;
-  }
+  private adgr(FMSettings paramFMSettings) {}
   
-  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new adgz(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_AndroidContentContext).inflate(2130968645, paramViewGroup, false), null);
-  }
+  public void a() {}
   
-  public void a(int paramInt)
+  public void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    StaggeredGridLayoutManager.LayoutParams localLayoutParams1 = null;
-    if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
-      localLayoutParams1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
-    }
-    StaggeredGridLayoutManager.LayoutParams localLayoutParams2 = localLayoutParams1;
-    if (localLayoutParams1 == null)
+    paramContext.getSharedPreferences("FMSETTING_59", 0).edit().putString("DefaultRootPath", this.b).commit();
+    paramContext = FMSettings.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings, this.b + this.c);
+    Object localObject = FMSettings.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings, this.b + this.c);
+    String str = FMSettings.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings, this.b + this.c);
+    FMSettings.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings, paramContext);
+    FMSettings.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings, str);
+    FMSettings.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings, (String)localObject);
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a.keySet().iterator();
+    while (paramContext.hasNext())
     {
-      localLayoutParams2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
-      paramViewHolder.itemView.setLayoutParams(localLayoutParams2);
+      localObject = (String)paramContext.next();
+      localObject = (adgr)this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a.get(localObject);
+      if ((((adgr)localObject).jdField_a_of_type_Boolean) && (localObject != this))
+      {
+        FMSettings.a(2, "getDefaultStorage[" + ((adgr)localObject).b + "]");
+        ((adgr)localObject).jdField_a_of_type_Boolean = false;
+      }
     }
-    localLayoutParams2.setFullSpan(true);
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_Int;
-    if ((!this.jdField_a_of_type_Boolean) && (paramInt != -20) && (this.jdField_a_of_type_Int == 1))
-    {
-      HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramInt);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      paramViewHolder.itemView.findViewById(2131362988).setVisibility(0);
-      paramViewHolder.itemView.findViewById(2131362989).setVisibility(4);
-      return;
-    }
-    if (HotPicPageView.b())
-    {
-      paramViewHolder.itemView.findViewById(2131362989).setVisibility(0);
-      paramViewHolder.itemView.findViewById(2131362988).setVisibility(8);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new adgs(this, paramViewHolder));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgr
  * JD-Core Version:    0.7.0.1
  */

@@ -21,8 +21,8 @@ import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import ymr;
-import yms;
+import ypx;
+import ypy;
 
 public class ApolloWebViewFragment
   extends ApolloFragment
@@ -161,7 +161,7 @@ public class ApolloWebViewFragment
     if (paramBundle != null)
     {
       this.jdField_a_of_type_Int = paramBundle.getInt("id");
-      ThreadManager.post(new yms(this, paramBundle.getString("url")), 8, null, false);
+      ThreadManager.post(new ypy(this, paramBundle.getString("url")), 8, null, false);
     }
     super.c(paramBundle);
   }
@@ -209,7 +209,7 @@ public class ApolloWebViewFragment
       if (i != 0) {
         a(2L, null);
       }
-      ThreadManager.executeOnSubThread(new ymr(this, (Activity)localObject));
+      ThreadManager.executeOnSubThread(new ypx(this, (Activity)localObject));
       Util.b("Web_qqbrowser_doonresume");
       super.onResume();
       return;

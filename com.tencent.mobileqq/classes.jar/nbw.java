@@ -1,50 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller;
-import com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller.StoryVidListReceiver;
-import com.tencent.biz.qqstory.network.handler.TroopUidToVidListHandler;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.comment.FeedCommentLego;
+import com.tencent.biz.qqstory.comment.lego.LegoResponseCallBack;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.CommentManager;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class nbw
-  extends SimpleJob
+  implements LegoResponseCallBack
 {
-  public nbw(TroopVidToVideoInfoPuller paramTroopVidToVideoInfoPuller) {}
+  public nbw(FeedCommentLego paramFeedCommentLego, int paramInt, CommentEntry paramCommentEntry) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    paramJobContext = (StoryManager)SuperManager.a(5);
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Int == 3)) {}
-    for (paramJobContext = paramJobContext.f(this.a.jdField_a_of_type_JavaLangString);; paramJobContext = null)
-    {
-      paramVarArgs = paramJobContext;
-      if (paramJobContext == null) {
-        paramVarArgs = new ArrayList();
-      }
-      if (paramVarArgs.size() > 0)
-      {
-        this.a.a(paramVarArgs);
-        SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", String.format("Found %s vid list from local , pullType is %d , %s", new Object[] { this.a.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int), paramVarArgs }));
-        return null;
-      }
-      SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", String.format("Cannot found %s vid list from local , pullType is %d , request from net", new Object[] { this.a.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller$StoryVidListReceiver == null)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller$StoryVidListReceiver = new TroopVidToVideoInfoPuller.StoryVidListReceiver(this.a);
-        Dispatchers.get().registerSubscriber(this.a.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller$StoryVidListReceiver);
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerTroopUidToVidListHandler = new TroopUidToVidListHandler(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerTroopUidToVidListHandler.a();
-      return null;
+    a(-1, "网络错误");
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QQToast.a(BaseApplication.getContext(), 1, "删除失败" + paramInt, 0).a();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.e();
+    if (QLog.isColorLevel()) {
+      QLog.e("FeedCommentLego", 2, new Object[] { "ReqGetLikeList ErrorCode:", Integer.valueOf(paramInt), " | ErrorMsg: ", paramString });
     }
   }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.e();
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_ComTencentBizQqstoryModelCommentManager.e(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(false, null);
+    QQToast.a(BaseApplication.getContext(), 2, "已删除", 0).a();
+    FeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_Int, 2, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

@@ -1,61 +1,24 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.EGLConfigChooser;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-public abstract class anjv
-  implements GLTextureView.EGLConfigChooser
+public class anjv
+  implements Runnable
 {
-  protected int[] a;
+  public anjv(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public anjv(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
+  public void run()
   {
-    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
+    QIMEffectCameraCaptureUnit.g(this.a, false);
+    if (QIMEffectCameraCaptureUnit.a(this.a) == null) {
+      return;
+    }
+    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView).removeView(QIMEffectCameraCaptureUnit.a(this.a));
+    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(0);
+    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(true);
+    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.a(null);
   }
-  
-  private int[] a(int[] paramArrayOfInt)
-  {
-    if ((GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 2) && (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 3)) {
-      return paramArrayOfInt;
-    }
-    int i = paramArrayOfInt.length;
-    int[] arrayOfInt = new int[i + 2];
-    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
-    arrayOfInt[(i - 1)] = 12352;
-    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) == 2) {
-      arrayOfInt[i] = 4;
-    }
-    for (;;)
-    {
-      arrayOfInt[(i + 1)] = 12344;
-      return arrayOfInt;
-      arrayOfInt[i] = 64;
-    }
-  }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int[] arrayOfInt = new int[1];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig failed");
-    }
-    int i = arrayOfInt[0];
-    if (i <= 0) {
-      throw new IllegalArgumentException("No configs match configSpec");
-    }
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig#2 failed");
-    }
-    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-    if (paramEGL10 == null) {
-      throw new IllegalArgumentException("No config chosen");
-    }
-    return paramEGL10;
-  }
-  
-  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aizi;
-import aizj;
+import ajnm;
+import ajnn;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,7 +36,7 @@ public class ChangeMachineManager
   public int a;
   protected Handler a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  Runnable jdField_a_of_type_JavaLangRunnable = new aizj(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new ajnn(this);
   public String a;
   public String b;
   public String c;
@@ -72,7 +72,7 @@ public class ChangeMachineManager
         ((RecentUser)localObject1).msg = ((JSONObject)localObject2).toString();
         ((RecentUser)localObject1).msgData = ((JSONObject)localObject2).toString().getBytes();
         ((RecentUser)localObject1).msgType = 1;
-        localObject2 = BaseApplicationImpl.getContext().getResources().getString(2131430828);
+        localObject2 = BaseApplicationImpl.getContext().getResources().getString(2131430845);
         if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
           localObject2 = this.jdField_a_of_type_JavaLangString;
         }
@@ -127,13 +127,13 @@ public class ChangeMachineManager
     switch (this.jdField_a_of_type_Int)
     {
     default: 
-      return 2130841378;
+      return 2130841415;
     case 2: 
-      return 2130841379;
+      return 2130841416;
     case 3: 
-      return 2130841380;
+      return 2130841417;
     }
-    return 2130841381;
+    return 2130841418;
   }
   
   protected String a()
@@ -165,7 +165,7 @@ public class ChangeMachineManager
     localBundle.putString("id", "13");
     localHashMap.put("BUNDLE", localBundle);
     localHashMap.put("CONTEXT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
-    new HttpWebCgiAsyncTask2("http://innovate.qq.com/GetNewMachine", "GET", new aizi(this), 10001, null).a(localHashMap);
+    new HttpWebCgiAsyncTask2("http://innovate.qq.com/GetNewMachine", "GET", new ajnm(this), 10001, null).a(localHashMap);
   }
   
   public void a(Context paramContext)
@@ -234,7 +234,7 @@ public class ChangeMachineManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.ChangeMachineManager
  * JD-Core Version:    0.7.0.1
  */

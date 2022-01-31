@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
 
 public class acns
-  extends acnx
+  implements ActionMode.Callback
 {
-  public acns(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  public acns(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    super(paramOnlineFileSessionWorker);
+    return false;
   }
   
-  protected String a()
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    return "StateCancelUploadWhenRecv";
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

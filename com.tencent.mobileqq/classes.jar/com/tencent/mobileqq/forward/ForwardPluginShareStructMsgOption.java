@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
-import adaz;
-import adba;
+import adky;
+import adkz;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -69,7 +69,7 @@ import java.util.Set;
 public class ForwardPluginShareStructMsgOption
   extends ForwardBaseOption
 {
-  private URLDrawableDownListener.Adapter jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new adaz(this);
+  private URLDrawableDownListener.Adapter jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new adky(this);
   AbsShareMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
   int b;
   int c;
@@ -134,7 +134,7 @@ public class ForwardPluginShareStructMsgOption
     ((URLImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     ((URLImageView)localObject1).setBackgroundColor(Color.parseColor("#dcdfe4"));
     Object localObject3 = ChatHistoryStructAdapter.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg, "cover");
-    Drawable localDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130845965);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130846093);
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
       localObject3 = URLDrawable.getDrawable((String)localObject3, -1, AIOUtils.a(165.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), localDrawable, localDrawable, true);
@@ -181,7 +181,7 @@ public class ForwardPluginShareStructMsgOption
   
   private void c(String paramString)
   {
-    ThreadManager.post(new adba(this, paramString), 5, null, true);
+    ThreadManager.post(new adkz(this, paramString), 5, null, true);
   }
   
   public List a(List paramList)
@@ -483,7 +483,7 @@ public class ForwardPluginShareStructMsgOption
       localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
       if (((TroopGagMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()))
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131430256, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131430273, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
         return;
       }
     }

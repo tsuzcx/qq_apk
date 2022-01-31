@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView.OnUIClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.HotSortCardHolder;
+import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class nrb
-  implements View.OnClickListener
+  extends QQStoryObserver
 {
-  public nrb(ShareGroupsListAdapter.HotSortCardHolder paramHotSortCardHolder, String paramString) {}
+  public nrb(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate) {}
   
-  public void onClick(View paramView)
+  public void c(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener.a(null, 0, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
-    }
+    QQStoryManager localQQStoryManager = (QQStoryManager)this.a.a.app.getManager(180);
+    this.a.a(2, localQQStoryManager.a());
+    this.a.a(3, localQQStoryManager.b());
   }
 }
 

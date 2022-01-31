@@ -34,10 +34,10 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import mmw;
-import mmx;
-import mmy;
-import mmz;
+import moc;
+import mod;
+import moe;
+import mof;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
@@ -53,7 +53,7 @@ public class FastWebShareUtils
     if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new mmw(this);
+    this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new moc(this);
     WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
   }
   
@@ -119,7 +119,7 @@ public class FastWebShareUtils
       localIntent.putExtra("req_share_id", paramJSONObject.optLong("appid", -1L));
       localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
       localIntent.putExtra("image_url_remote", paramString4);
-      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430100, new Object[] { str }));
+      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430117, new Object[] { str }));
       localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
       if (paramJSONObject.has("contentAction")) {
         localIntent.putExtra("struct_share_key_content_action", paramJSONObject.getString("contentAction"));
@@ -172,11 +172,11 @@ public class FastWebShareUtils
         a(paramActivity);
         if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435466);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435483);
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         }
         localIntent.putExtra("struct_share_key_source_name", Long.toString(l));
-        Share.a(paramJSONObject, paramActivity, paramJSONObject.getAccount(), l, 3000L, new mmx(this, localIntent, paramActivity));
+        Share.a(paramJSONObject, paramActivity, paramJSONObject.getAccount(), l, 3000L, new mod(this, localIntent, paramActivity));
       }
       return;
       localIntent.putExtra("isWebCompShare", true);
@@ -244,9 +244,9 @@ public class FastWebShareUtils
         for (;;)
         {
           label991:
-          if (paramString2.equalsIgnoreCase(paramActivity.getString(2131432057)))
+          if (paramString2.equalsIgnoreCase(paramActivity.getString(2131432074)))
           {
-            bool = paramString2.equalsIgnoreCase(paramActivity.getString(2131432057));
+            bool = paramString2.equalsIgnoreCase(paramActivity.getString(2131432074));
             if (bool)
             {
               paramJSONObject = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
@@ -356,7 +356,7 @@ public class FastWebShareUtils
             }
             else
             {
-              localIntent.putExtra("app_name", paramActivity.getString(2131430099));
+              localIntent.putExtra("app_name", paramActivity.getString(2131430116));
             }
           }
           localIntent.putExtra("stuctmsg_bytes", paramJSONObject.getBytes());
@@ -412,7 +412,7 @@ public class FastWebShareUtils
       ((Bundle)localObject3).putLong("share_begin_time", SwiftBrowserShareMenuHandler.b);
       if (!QZoneShareManager.a((QQAppInterface)paramString1, paramActivity.getApplicationContext(), (Bundle)localObject3, null, 1))
       {
-        QRUtils.a(1, 2131435463);
+        QRUtils.a(1, 2131435480);
         return;
       }
     }
@@ -428,27 +428,27 @@ public class FastWebShareUtils
       localObject2 = new HashMap(1);
       paramInt = -1;
       if (!WXShareHelper.a().a()) {
-        paramInt = 2131435302;
+        paramInt = 2131435319;
       }
       while (paramInt != -1)
       {
         QRUtils.a(0, paramInt);
         return;
         if (!WXShareHelper.a().b()) {
-          paramInt = 2131435303;
+          paramInt = 2131435320;
         }
       }
       a();
-      paramArticleInfo = new mmy(this, (Map)localObject2, str1, str2, (String)localObject1, (String)localObject3, paramString1, paramString2, paramArticleInfo);
+      paramArticleInfo = new moe(this, (Map)localObject2, str1, str2, (String)localObject1, (String)localObject3, paramString1, paramString2, paramArticleInfo);
       if (TextUtils.isEmpty(paramString3))
       {
         paramArticleInfo.run();
         return;
       }
       a(paramActivity);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435466);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435483);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      ThreadManager.post(new mmz(this, paramString3, (Map)localObject2, paramString1, paramArticleInfo), 8, null, false);
+      ThreadManager.post(new mof(this, paramString3, (Map)localObject2, paramString1, paramArticleInfo), 8, null, false);
       return;
       label826:
       do
@@ -463,7 +463,7 @@ public class FastWebShareUtils
             if (QLog.isColorLevel()) {
               QLog.d(this.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina empty title or share_url");
             }
-            QQToast.a(BaseApplication.getContext(), 0, 2131435286, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+            QQToast.a(BaseApplication.getContext(), 0, 2131435303, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
             return;
           }
           if (QLog.isColorLevel()) {
@@ -491,7 +491,7 @@ public class FastWebShareUtils
             for (;;)
             {
               paramArticleInfo = paramArticleInfo;
-              QQToast.a(BaseApplication.getContext(), 0, 2131435286, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+              QQToast.a(BaseApplication.getContext(), 0, 2131435303, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
               paramArticleInfo.printStackTrace();
             }
           }

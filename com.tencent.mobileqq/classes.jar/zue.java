@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ar.ARLBSPOIDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
 public class zue
-  implements View.OnClickListener
+  implements BaseMessageProcessor.RequestBuilder
 {
-  public zue(ARLBSPOIDialog paramARLBSPOIDialog) {}
+  public zue(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
   
-  public void onClick(View paramView)
+  public ToServiceMsg a()
   {
-    this.a.b();
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageSystemMessageProcessor.a.a("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zue
  * JD-Core Version:    0.7.0.1
  */

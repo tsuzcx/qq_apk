@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wmw
-  implements Runnable
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public wmw(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
+  public wmw(ContactsViewController paramContactsViewController) {}
   
-  public void run()
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      QCallFacade localQCallFacade = (QCallFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
-      if (localQCallFacade != null)
-      {
-        int i = localQCallFacade.a();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wmx(this, i));
-      }
+    if (paramInt == 1) {
+      ContactsViewController.a(this.a, ContactsViewController.a(this.a).getCurrentItem());
     }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    ContactsViewController.a(this.a, paramInt);
+    if (!ContactsViewController.a(this.a)) {
+      ReportController.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
+    }
+    ContactsViewController.a(this.a, false);
   }
 }
 

@@ -1,99 +1,48 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.open.pcpush.OpenFileUtil;
+import com.tencent.mobileqq.app.EmoticonObserver;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emoticon.SogouEmoji;
+import com.tencent.mobileqq.emoticon.SogouEmojiTaskController;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class acdi
-  extends AsyncTask
+  extends EmoticonObserver
 {
-  public acdi(LocalFileBrowserActivity paramLocalFileBrowserActivity, boolean paramBoolean) {}
+  public acdi(SogouEmoji paramSogouEmoji) {}
   
-  protected List a(String... paramVarArgs)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e == 6) {
-      if (FileManagerUtil.b().equalsIgnoreCase(paramVarArgs[0])) {
-        paramVarArgs = FileManagerUtil.a(false, 0);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func onEmosmBack begins, isSuccess:" + paramBoolean + ",type:" + paramInt);
     }
-    for (;;)
+    if ((!paramBoolean) || (paramObject == null) || (paramInt != 3)) {}
+    do
     {
-      String[] arrayOfString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.getIntent().getStringArrayExtra("STRING_Show_Within_Suffixs");
-      if ((arrayOfString == null) || (paramVarArgs == null)) {
-        break;
-      }
-      while (i < paramVarArgs.size())
+      do
       {
-        FileInfo localFileInfo = (FileInfo)paramVarArgs.get(i);
-        int j = i;
-        if (!localFileInfo.a()) {
-          if (localFileInfo.a() != 0L)
+        do
+        {
+          do
           {
-            j = i;
-            if (OpenFileUtil.a(localFileInfo.d().toLowerCase(), arrayOfString)) {}
-          }
-          else
-          {
-            paramVarArgs.remove(i);
-            j = i - 1;
-          }
+            return;
+            paramObject = (EmoticonResp)paramObject;
+          } while (paramObject.data == null);
+          paramObject = (ArrayList)paramObject.data;
+        } while (paramObject.size() == 0);
+        paramBoolean = this.a.a.a(this.a.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiKeyBack begins, isTaskExist:" + paramBoolean);
         }
-        i = j + 1;
-      }
-      paramVarArgs = FileUtil.a(paramVarArgs[0], false, 0);
-      continue;
-      paramVarArgs = FileUtil.a(paramVarArgs[0], false, 1);
-    }
-    return paramVarArgs;
-  }
-  
-  protected void a(List paramList)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.clear();
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.addAll(paramList);
-      paramList.clear();
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.getCount() != 0)
-      {
-        if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.isStackFromBottom()) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setStackFromBottom(true);
+        if (paramBoolean) {
+          break;
         }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setStackFromBottom(false);
-      }
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
-    }
-    for (;;)
-    {
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.centerView);
+      } while (!QLog.isColorLevel());
+      QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, task CANCELLED by user.");
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_JavaUtilMap.containsKey(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.f))
-      {
-        int i = ((Integer)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.f)).intValue();
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.getCount() > i) {
-          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity, i);
-        }
-      }
-    }
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setVisible();
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.centerView);
+      this.a.a((Emoticon)paramObject.get(0));
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, Ready to send.");
   }
 }
 

@@ -1,31 +1,19 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class trn
-  implements InputMethodRelativeLayout.onSizeChangedListenner
+  implements DialogInterface.OnClickListener
 {
-  public trn(SubLoginActivity paramSubLoginActivity) {}
+  public trn(SendMultiPictureHelper paramSendMultiPictureHelper) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      int[] arrayOfInt = new int[2];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = arrayOfInt[1];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
-      if (paramInt1 > 0) {
-        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
-      }
-      SubLoginActivity.b(this.a).setVisibility(8);
-      return;
-    }
-    SubLoginActivity.b(this.a).setVisibility(0);
-    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
+    this.a.b = true;
+    SendMultiPictureHelper.b(this.a);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

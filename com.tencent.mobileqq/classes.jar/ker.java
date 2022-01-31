@@ -1,13 +1,20 @@
-import com.tencent.av.ui.redbag.AVRedBagMgr;
+import android.content.Intent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.mobileqq.debug.PstnCardTestActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ker
-  implements Runnable
+  implements MenuItem.OnMenuItemClickListener
 {
-  public ker(AVRedBagMgr paramAVRedBagMgr) {}
+  public ker(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
   
-  public void run()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.a.c("onGameStart_from_GameSink");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().startActivity(new Intent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp(), PstnCardTestActivity.class));
+    return true;
   }
 }
 

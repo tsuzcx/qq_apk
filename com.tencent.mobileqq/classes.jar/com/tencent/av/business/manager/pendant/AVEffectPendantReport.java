@@ -16,8 +16,8 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
-import jgn;
-import jgo;
+import jfy;
+import jfz;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -130,13 +130,13 @@ public class AVEffectPendantReport
   
   public static void c()
   {
-    ThreadManager.getFileThreadHandler().post(new jgn());
+    ThreadManager.getFileThreadHandler().post(new jfy());
   }
   
   public static void d()
   {
     AVLog.c("AVEffectPendantReport", "parseAndSetDownloadInfo()  ");
-    ThreadManager.getFileThreadHandler().post(new jgo());
+    ThreadManager.getFileThreadHandler().post(new jfz());
   }
   
   private static int e()

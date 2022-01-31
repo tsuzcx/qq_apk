@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahgl;
+import ahun;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -63,9 +63,9 @@ public class SearchResultPresenter
       }
       try
       {
-        Object localObject = (ImageView)paramISearchResultView.a().findViewById(2131371092);
-        ImageView localImageView = (ImageView)paramISearchResultView.a().findViewById(2131364453);
-        TextView localTextView = (TextView)paramISearchResultView.a().findViewById(2131371093);
+        Object localObject = (ImageView)paramISearchResultView.a().findViewById(2131371256);
+        ImageView localImageView = (ImageView)paramISearchResultView.a().findViewById(2131364477);
+        TextView localTextView = (TextView)paramISearchResultView.a().findViewById(2131371257);
         if ((localObject != null) && (localImageView != null) && (localTextView != null))
         {
           ((ImageView)localObject).setVisibility(4);
@@ -73,7 +73,7 @@ public class SearchResultPresenter
           localTextView.setVisibility(4);
         }
         GroupNetSearchModelArticleItem localGroupNetSearchModelArticleItem = (GroupNetSearchModelArticleItem)paramISearchResultModel;
-        int i = paramISearchResultView.a().getResources().getDimensionPixelSize(2131559207);
+        int i = paramISearchResultView.a().getResources().getDimensionPixelSize(2131559209);
         URLDrawable localURLDrawable = URLDrawable.getDrawable(localGroupNetSearchModelArticleItem.c(), i, i);
         paramISearchResultView.a().setImageDrawable(localURLDrawable);
         if ((localGroupNetSearchModelArticleItem.a() != null) && (localGroupNetSearchModelArticleItem.a().video_article.has()) && (localGroupNetSearchModelArticleItem.a().video_article.get() == SearchUtils.a) && (localObject != null) && (localImageView != null))
@@ -144,34 +144,34 @@ public class SearchResultPresenter
       }
     }
     SearchViewUtils.a(paramISearchResultModel.c(), paramISearchResultModel.d(), paramISearchResultView);
-    paramISearchResultModel = paramISearchResultView.findViewById(2131365658);
+    paramISearchResultModel = paramISearchResultView.findViewById(2131365685);
     boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
     Object localObject = paramISearchResultView.getResources();
     if (paramISearchResultModel != null)
     {
       if (bool)
       {
-        paramISearchResultView.setBackgroundColor(((Resources)localObject).getColor(2131492947));
-        paramISearchResultModel.setBackgroundResource(2130838576);
+        paramISearchResultView.setBackgroundColor(((Resources)localObject).getColor(2131492948));
+        paramISearchResultModel.setBackgroundResource(2130838580);
         return;
       }
-      paramISearchResultView.setBackgroundColor(((Resources)localObject).getColor(2131492968));
-      paramISearchResultModel.setBackgroundResource(2130838575);
+      paramISearchResultView.setBackgroundColor(((Resources)localObject).getColor(2131492969));
+      paramISearchResultModel.setBackgroundResource(2130838579);
       return;
     }
     if (bool)
     {
-      paramISearchResultView.setBackgroundResource(2130838576);
+      paramISearchResultView.setBackgroundResource(2130838580);
       return;
     }
-    paramISearchResultView.setBackgroundResource(2130838575);
+    paramISearchResultView.setBackgroundResource(2130838579);
   }
   
   protected void d(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     paramISearchResultView = paramISearchResultView.a();
     if (paramISearchResultView != null) {
-      paramISearchResultView.setOnClickListener(new ahgl(this, paramISearchResultModel));
+      paramISearchResultView.setOnClickListener(new ahun(this, paramISearchResultModel));
     }
   }
 }

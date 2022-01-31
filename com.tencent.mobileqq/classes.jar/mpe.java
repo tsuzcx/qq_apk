@@ -1,65 +1,58 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Releaser;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.ArrayList;
-import java.util.List;
 
-class mpe
-  implements Releaser
+public class mpe
+  implements INetInfoHandler
 {
-  mpe(mpc parammpc) {}
+  public mpe(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onNetMobile2None()
   {
-    if (paramBitmap == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetMobile2None()");
     }
-    Utils.a(mpc.a, "recycle:" + paramBitmap);
-    if (!Utils.a())
-    {
-      paramBitmap.recycle();
-      return;
+    FastWebVideoFeedsPlayManager.d(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
     }
-    for (;;)
-    {
-      synchronized (this.a.b)
-      {
-        ArrayList localArrayList = new ArrayList();
-        i = 0;
-        if (i >= this.a.b.size()) {
-          break label226;
-        }
-        Bitmap localBitmap = (Bitmap)((SoftReference)this.a.b.get(i)).get();
-        if (localBitmap != null)
-        {
-          if (localBitmap != paramBitmap) {
-            break label231;
-          }
-          i = 1;
-          if (!localArrayList.isEmpty()) {
-            this.a.b.removeAll(localArrayList);
-          }
-          if (i == 0)
-          {
-            paramBitmap = new SoftReference(paramBitmap);
-            this.a.b.add(paramBitmap);
-          }
-        }
-        else
-        {
-          localArrayList.add(this.a.b.get(i));
-        }
-      }
-      QLog.e(mpc.a, 1, "reuse same bitmap " + paramBitmap);
-      return;
-      label226:
-      int i = 0;
-      continue;
-      label231:
-      i += 1;
+    FastWebVideoFeedsPlayManager.a(this.a, true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
     }
+    FastWebVideoFeedsPlayManager.a(this.a, false);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
+    }
+    FastWebVideoFeedsPlayManager.a(this.a, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
+    }
+    FastWebVideoFeedsPlayManager.a(this.a, false);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetWifi2None()");
+    }
+    FastWebVideoFeedsPlayManager.d(this.a);
   }
 }
 

@@ -1,41 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.widget.QQTabWidget.onTabWidgetTouchMoveListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class tbe
-  implements CompoundButton.OnCheckedChangeListener
+  implements QQTabWidget.onTabWidgetTouchMoveListener
 {
-  public tbe(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tbe(MainFragment paramMainFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    if (AppSetting.b) {
-      NotifyPushSettingActivity.f(this.a).setContentDescription("退出后仍接收消息通知");
-    }
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131435386), "qqsetting_receivemsg_whenexit_key", paramBoolean);
-    SyncService.a(this.a, paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
+    int i = GesturePWDUtils.getGesturePWDState(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
+    int j = GesturePWDUtils.getGesturePWDMode(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
+    if ((i == 2) && (j == 20))
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label104;
+      if (QLog.isColorLevel()) {
+        QLog.d("mainactivity", 2, "gesturepwd manual move.");
       }
-    }
-    label104:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, paramCompoundButton, "", "", "");
-      return;
-      i = 0;
-      break;
+      ((SplashActivity)this.a.getActivity()).startUnlockActivity();
+      this.a.getActivity().overridePendingTransition(2131034134, 2131034131);
     }
   }
 }

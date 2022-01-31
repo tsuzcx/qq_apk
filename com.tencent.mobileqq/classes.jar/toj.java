@@ -1,22 +1,15 @@
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SecurityProtectActivity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
 
 public class toj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public toj(SecurityProtectActivity paramSecurityProtectActivity) {}
+  public toj(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SecurityProtectActivity.a(this.a, false);
-    SecurityProtectActivity.a(this.a).setText(2131436646);
-    SecurityProtectActivity.b(this.a).setVisibility(0);
-    SecurityProtectActivity.a(this.a).setVisibility(0);
-    ((LinearLayout)this.a.findViewById(2131371134)).setVisibility(8);
-    FMToastUtil.a(2131434596);
+    this.a.finish();
   }
 }
 

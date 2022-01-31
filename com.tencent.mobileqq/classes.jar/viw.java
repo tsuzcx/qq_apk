@@ -1,19 +1,18 @@
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.widget.ListView;
-import com.tencent.widget.XPanelContainer;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 
-class viw
-  implements Runnable
+public class viw
+  implements AnimationTextView.OnDoubleClick
 {
-  viw(viv paramviv) {}
+  public viw(TextTranslationItemBuilder paramTextTranslationItemBuilder) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    PEPanel.a(this.a.a).setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
-    localTranslateAnimation.setDuration(200L);
-    PEPanel.a(this.a.a).startAnimation(localTranslateAnimation);
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

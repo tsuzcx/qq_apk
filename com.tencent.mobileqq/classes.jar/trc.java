@@ -1,17 +1,34 @@
-import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class trc
-  implements Runnable
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  trc(trb paramtrb, Drawable paramDrawable) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
   
-  public void run()
+  public trc(trb paramtrb, View paramView, ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
   {
-    ((ImageView)SubAccountBindActivity.a(this.jdField_a_of_type_Trb.jdField_a_of_type_Tra.a).getChildAt(this.jdField_a_of_type_Trb.jdField_a_of_type_Int).findViewById(2131362701)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131366251));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener.a(paramView, getPosition());
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
   }
 }
 

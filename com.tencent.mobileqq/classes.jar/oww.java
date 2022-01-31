@@ -1,48 +1,41 @@
-import com.tencent.biz.troopgift.AIOGiftPanelContainer;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
+import com.tencent.biz.troop.VideoCombineHelper.Task;
+import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class oww
-  implements Runnable
+class oww
+  extends VideoCombineHelper.TaskListener
 {
-  public oww(AIOGiftPanelContainer paramAIOGiftPanelContainer, int paramInt1, int paramInt2) {}
-  
-  public void run()
+  oww(owv paramowv)
   {
-    int j = 4;
-    long l = System.currentTimeMillis();
-    AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(222);
-    TroopGiftManager localTroopGiftManager = (TroopGiftManager)this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(112);
-    int i;
-    if (this.jdField_a_of_type_Int == 4)
-    {
-      i = 6;
-      if (!(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a instanceof FriendChatPie)) {
-        break label123;
-      }
-      j = 11;
-      i = 8;
+    super(paramowv.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper);
+  }
+  
+  public void a(VideoCombineHelper.Task paramTask)
+  {
+    if ((paramTask instanceof oxm)) {
+      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "download failed! msg = " + paramTask.d);
     }
-    for (;;)
+    do
     {
-      localTroopGiftManager.a("OidbSvc.0x6c3", 1731, 1, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, 2, i, j, new owx(this, l, localTroopGiftManager, localAIOAnimationControlManager));
       return;
-      i = 1;
-      break;
-      label123:
-      if ((this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a instanceof DiscussChatPie)) {
-        i = 9;
-      } else if ((this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a instanceof StrangerChatPie)) {
-        i = 10;
-      } else {
-        j = 0;
+      if ((paramTask instanceof oxe))
+      {
+        this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "combine failed! msg = " + paramTask.d);
+        return;
       }
+    } while (!(paramTask instanceof oxp));
+    this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "sending failed! msg = " + paramTask.d);
+  }
+  
+  public void b(VideoCombineHelper.Task paramTask)
+  {
+    if ((paramTask instanceof oxp))
+    {
+      paramTask = paramTask.a();
+      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(paramTask.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
     }
   }
 }

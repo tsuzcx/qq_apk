@@ -1,35 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.qqstory.view.widget.DragFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea9" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCustomRelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ee9" android:background="#ff1a1a1a" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14b0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-            <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14b1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
-                <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cf3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="11.0dip" />
-            </LinearLayout>
-            <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1587" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d17" android:layout_width="89.0dip" android:layout_height="16.0dip" android:layout_centerInParent="true" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
-                <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1588" android:paddingRight="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:gravity="center" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cfe" android:layout_width="62.0dip" android:layout_height="24.0dip" android:text="前往看点" />
-                </RelativeLayout>
-                <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1589" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d08" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="11.0dip" />
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14b5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a158a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_alignParentTop="true">
-            <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a158b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" tencent:mask_mode="8" />
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_alignParentBottom="true">
-                <View android:background="#33ffffff" android:layout_width="fill_parent" android:layout_height="0.5px" android:layout_alignParentTop="true" />
-                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a158c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d16" android:layout_width="69.0dip" android:layout_height="32.0dip" android:layout_marginLeft="12.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a158d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d15" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:text="打开微视" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            </RelativeLayout>
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a158e" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0efa" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-            <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0efb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d04" />
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eba" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d04" />
-        </LinearLayout>
-    </com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCustomRelativeLayout>
-</com.tencent.biz.qqstory.view.widget.DragFrameLayout>
+<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15ab" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="16.0sp" android:textColor="#ff12b7f5" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15ac" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ce1" android:paddingLeft="33.0dip" android:paddingRight="33.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="44.0dip" android:text="运动" android:layout_alignParentBottom="true" />
+    <Button android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15ad" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ce2" android:paddingLeft="33.0dip" android:paddingRight="33.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="44.0dip" android:layout_marginLeft="15.0dip" android:text="二次元" android:layout_alignParentBottom="true" />
+    <Button android:textSize="16.0sp" android:textColor="#ff12b7f5" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15ae" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ce1" android:paddingLeft="33.0dip" android:paddingRight="33.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="44.0dip" android:layout_marginLeft="15.0dip" android:text="吃货" android:layout_alignParentBottom="true" />
+</LinearLayout>

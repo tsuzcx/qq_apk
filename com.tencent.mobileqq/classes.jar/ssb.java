@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.mobileqq.app.ShakeListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class ssb
-  extends ShakeListener
+  implements AdapterView.OnItemSelectedListener
 {
-  public ssb(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public ssb(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void a()
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
+    if (paramView == null) {
+      return;
     }
+    this.a.jdField_a_of_type_AndroidViewView = paramView;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(paramInt);
+    this.a.a(paramAdapterView, paramInt);
   }
 }
 

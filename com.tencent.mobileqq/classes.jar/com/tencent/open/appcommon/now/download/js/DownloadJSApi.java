@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.now.download.js;
 
-import akpe;
-import akpf;
+import aleu;
+import alev;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -111,12 +111,12 @@ public class DownloadJSApi
   
   public static void a(Activity paramActivity, Bundle paramBundle, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2)
   {
-    ThreadManager.getSubThreadHandler().post(new akpe(paramBundle, paramInt1, paramInt2, paramActivity, paramApkUpdateDetail));
+    ThreadManager.getSubThreadHandler().post(new aleu(paramBundle, paramInt1, paramInt2, paramActivity, paramApkUpdateDetail));
   }
   
   private static void c(Activity paramActivity, Bundle paramBundle, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2)
   {
-    new Handler(Looper.getMainLooper()).post(new akpf(paramBundle, paramActivity, paramInt1, paramApkUpdateDetail, paramInt2));
+    new Handler(Looper.getMainLooper()).post(new alev(paramBundle, paramActivity, paramInt1, paramApkUpdateDetail, paramInt2));
   }
 }
 

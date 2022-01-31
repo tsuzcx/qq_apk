@@ -32,7 +32,7 @@ import com.tencent.mobileqq.redtouch.RedTouchManager;
 import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.widget.SingleLineTextView;
-import yfn;
+import yiu;
 
 public class BuddyListDevices
   extends BuddyListFriends
@@ -44,7 +44,7 @@ public class BuddyListDevices
     super(paramQQAppInterface, paramContext, paramEntity);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130842321);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130842368);
       label20:
       this.jdField_a_of_type_Int = 0;
       return;
@@ -68,7 +68,7 @@ public class BuddyListDevices
     ((FrameLayout.LayoutParams)localObject).topMargin = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 11.0F));
     paramImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     paramImageView.setVisibility(0);
-    paramImageView.setBackgroundResource(2130845923);
+    paramImageView.setBackgroundResource(2130846051);
     BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4).edit().putBoolean("enable_public_device_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true).commit();
   }
   
@@ -108,7 +108,7 @@ public class BuddyListDevices
       if (paramInt1 == 0) {
         break label671;
       }
-      paramInt2 = 2131436009;
+      paramInt2 = 2131436026;
       label239:
       paramViewGroup = paramView.getString(paramInt2);
       ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setText("[" + paramViewGroup + "]");
@@ -125,7 +125,7 @@ public class BuddyListDevices
       ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(8);
       ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494212));
+      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494219));
     }
     for (;;)
     {
@@ -182,7 +182,7 @@ public class BuddyListDevices
         paramInt1 = 0;
         break label227;
         label671:
-        paramInt2 = 2131436007;
+        paramInt2 = 2131436024;
         break label239;
         label678:
         paramView = null;
@@ -199,7 +199,7 @@ public class BuddyListDevices
             if (paramInt1 == 0) {
               break label881;
             }
-            paramInt2 = 2131436009;
+            paramInt2 = 2131436026;
             label732:
             paramViewGroup = paramView.getString(paramInt2);
             ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setText("[" + paramViewGroup + "]");
@@ -219,11 +219,11 @@ public class BuddyListDevices
             ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(8);
             ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
             ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
-            ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494212));
+            ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494219));
             break;
             paramInt1 = 0;
             break label720;
-            paramInt2 = 2131436007;
+            paramInt2 = 2131436024;
             break label732;
           }
         }
@@ -257,7 +257,7 @@ public class BuddyListDevices
             ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(8);
             ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
             ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
-            ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494212));
+            ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494219));
             break;
             paramInt1 = 0;
             break label921;
@@ -271,7 +271,7 @@ public class BuddyListDevices
             ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setVisibility(0);
             paramView = this.jdField_a_of_type_AndroidContentContext;
             if (paramInt1 != 0) {}
-            for (paramInt2 = 2131436009;; paramInt2 = 2131436007)
+            for (paramInt2 = 2131436026;; paramInt2 = 2131436024)
             {
               paramViewGroup = paramView.getString(paramInt2);
               ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setText("[" + paramViewGroup + "]");
@@ -290,7 +290,7 @@ public class BuddyListDevices
           ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(8);
           ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
           ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494212));
+          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494219));
           break label379;
         }
         if (!AppConstants.x.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin)) {
@@ -305,14 +305,14 @@ public class BuddyListDevices
         ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
         ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
         ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(8);
-        ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494212));
+        ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494219));
         a(((BuddyListFriends.BuddyChildTag)localObject1).d);
         break label379;
         label1475:
         ((StringBuilder)localObject1).delete(0, ((StringBuilder)localObject1).length());
       }
       label1490:
-      paramOnClickListener.setBackgroundResource(2130838730);
+      paramOnClickListener.setBackgroundResource(2130838734);
       paramViewGroup = new ScaleAnimation(0.8F, 1.2F, 0.8F, 1.2F, 1, 0.5F, 1, 0.5F);
       paramViewGroup.setDuration(1000L);
       paramViewGroup.setRepeatCount(3);
@@ -320,11 +320,11 @@ public class BuddyListDevices
       paramViewGroup.setRepeatMode(2);
       paramViewGroup.setFillAfter(false);
       paramViewGroup.startNow();
-      paramViewGroup.setAnimationListener(new yfn(this, paramView, paramOnClickListener));
+      paramViewGroup.setAnimationListener(new yiu(this, paramView, paramOnClickListener));
       paramOnClickListener.setAnimation(paramViewGroup);
       return paramOnClickListener;
       label1596:
-      paramOnClickListener.setBackgroundResource(2130838583);
+      paramOnClickListener.setBackgroundResource(2130838587);
       paramOnClickListener.setAnimation(null);
       return paramOnClickListener;
       label1613:

@@ -48,12 +48,16 @@ public class PEPanelHelper
   
   public static Drawable a(int paramInt)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
     String str = b(paramInt);
-    localURLDrawableOptions.mPlayGifImage = true;
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839549);
-    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839549);
-    return URLDrawable.getDrawable(new File(str), localURLDrawableOptions);
+    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839554);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839554);
+    localObject = URLDrawable.getDrawable(new File(str), (URLDrawable.URLDrawableOptions)localObject);
+    if (((URLDrawable)localObject).getStatus() == 2) {
+      ((URLDrawable)localObject).restartDownload();
+    }
+    return localObject;
   }
   
   public static PEItemData a(int paramInt)

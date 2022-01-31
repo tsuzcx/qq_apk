@@ -384,30 +384,30 @@ public class PrinterOptionActivity
     setContentView(2130968886);
     setTitle(2131427674);
     super.getWindow().setBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131364130));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131364154));
     this.jdField_a_of_type_AndroidViewViewGroup.setTag(2131362036, "n/a");
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364131);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364155);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364134));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364106));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364158));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364130));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364095));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364135));
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131364136);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364119));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364159));
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131364160);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131364137);
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131364161);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364141));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131364138));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox = ((MyCheckBox)super.findViewById(2131364140));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364165));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131364162));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox = ((MyCheckBox)super.findViewById(2131364164));
     this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMyCheckBox.setOnCheckedChangeListener(new cn(this));
     if ("1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId")))
     {
       this.jdField_c_of_type_Boolean = true;
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130839623);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839622);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839625);
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130839628);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130839627);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839630);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager.a = null;
     this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager.a(this.jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver);

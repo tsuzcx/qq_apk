@@ -25,7 +25,7 @@ import com.tencent.widget.SimpleTextView;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import mqq.os.MqqHandler;
-import vrl;
+import vun;
 
 public class HotChatDemoChatPie
   extends HotChatPie
@@ -92,7 +92,7 @@ public class HotChatDemoChatPie
         this.jdField_n_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
         this.jdField_n_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
         paramDrawable = new SimpleTextView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-        paramDrawable.setText(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getText(2131438060));
+        paramDrawable.setText(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getText(2131438077));
         localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.bottomMargin = this.jdField_n_of_type_Int;
         localLayoutParams.gravity = 1;
@@ -109,7 +109,7 @@ public class HotChatDemoChatPie
         paramDrawable.addRule(15);
         paramDrawable.rightMargin = this.o;
         this.d.setLayoutParams(paramDrawable);
-        this.d.setBackgroundResource(2130842688);
+        this.d.setBackgroundResource(2130842787);
       } while (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.d);
       return;
@@ -125,7 +125,7 @@ public class HotChatDemoChatPie
       if (TextUtils.isEmpty(this.h)) {
         this.h = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
       }
-      ThreadManager.getFileThreadHandler().post(new vrl(this.h, this.jdField_a_of_type_MqqOsMqqHandler, this.m));
+      ThreadManager.getFileThreadHandler().post(new vun(this.h, this.jdField_a_of_type_MqqOsMqqHandler, this.m));
     }
   }
   
@@ -154,8 +154,8 @@ public class HotChatDemoChatPie
   {
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438058);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131438058));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438075);
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131438075));
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
     }
   }

@@ -1,28 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.utils.AvAddFriendHelper;
-import com.tencent.av.utils.AvAddFriendHelper.IAvAddFriendCallBack;
+import com.tencent.av.utils.PhoneStatusMonitor;
+import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusListener;
+import com.tencent.av.utils.PhoneStatusTools;
+import com.tencent.qphone.base.util.QLog;
 
-public class kgf
-  extends BroadcastReceiver
+class kgf
+  implements Runnable
 {
-  public kgf(AvAddFriendHelper paramAvAddFriendHelper) {}
+  kgf(kge paramkge, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent.getAction().equals("tencent.video.q2v.AddfrindMsg"))
+    boolean bool = PhoneStatusTools.d(this.jdField_a_of_type_Kge.a.jdField_a_of_type_AndroidContentContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneStatusMonitor", 2, String.format("PhoneStatusReceiver, isCallingRunnable end, action[%s], mIsCalling[%s], isCalling[%s]", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(this.jdField_a_of_type_Kge.a.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
+    }
+    if ((this.jdField_a_of_type_Kge.a.jdField_a_of_type_Boolean) && (!bool))
     {
-      paramContext = paramIntent.getStringExtra("peerUin");
-      if (this.a.a != null) {
-        this.a.a.a(paramContext);
+      this.jdField_a_of_type_Kge.a.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Kge.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener != null) {
+        this.jdField_a_of_type_Kge.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(false);
       }
     }
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_Kge.a.jdField_a_of_type_Boolean) || (!bool));
+      this.jdField_a_of_type_Kge.a.jdField_a_of_type_Boolean = true;
+    } while (this.jdField_a_of_type_Kge.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener == null);
+    this.jdField_a_of_type_Kge.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     kgf
  * JD-Core Version:    0.7.0.1
  */

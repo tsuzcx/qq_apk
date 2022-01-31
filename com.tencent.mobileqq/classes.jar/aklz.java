@@ -1,27 +1,30 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
+import android.os.SystemClock;
+import com.tencent.mobileqq.webview.AbsWebView;
 import com.tencent.qphone.base.util.QLog;
 
 public class aklz
-  extends URLDrawableDownListener.Adapter
+  implements Runnable
 {
-  public aklz(CardContainer paramCardContainer) {}
+  public aklz(AbsWebView paramAbsWebView) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
+    long l1 = SystemClock.uptimeMillis();
+    if (this.a.a == null)
+    {
+      this.a.z();
+      if (QLog.isColorLevel())
+      {
+        long l2 = SystemClock.uptimeMillis();
+        QLog.d("AbsWebView", 2, "initPluginEngine cost= " + (l2 - l1));
+      }
     }
-    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
-    this.a.a.setVisibility(8);
+    Thread.yield();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aklz
  * JD-Core Version:    0.7.0.1
  */

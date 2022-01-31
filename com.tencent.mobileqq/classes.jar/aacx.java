@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ArResourceDownload;
+import com.tencent.mobileqq.ar.ArResourceManager;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
 public class aacx
   implements Runnable
 {
-  public aacx(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
+  public aacx(ArResourceManager paramArResourceManager, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
-    }
-    for (;;)
-    {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARNativeBridgeSo", true, 0L, 0L, localHashMap, "");
-      return;
-      localHashMap.put("result", "1");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArArResourceManager.a.a(this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

@@ -1,27 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 
 public class wpk
-  implements Animator.AnimatorListener
+  implements ViewPager.OnPageChangeListener
 {
-  public wpk(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public wpk(PicSelectAdapter paramPicSelectAdapter) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    this.a.e = AvatarPendantActivity.c;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.e = AvatarPendantActivity.a;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.e = AvatarPendantActivity.d;
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = PicSelectAdapter.a(this.a).a(paramInt);
+    if (localEmoticonFromGroupEntity != null)
+    {
+      PicSelectAdapter.a(this.a, localEmoticonFromGroupEntity);
+      PicSelectAdapter.b(this.a, localEmoticonFromGroupEntity);
+    }
   }
 }
 

@@ -1,31 +1,18 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopFilePicItemBuilder;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class vgt
-  extends BaseBubbleBuilder.ViewHolder
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public long a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public int e;
-  public int f;
+  public vgt(SixCombolEffectView paramSixCombolEffectView, vhg paramvhg) {}
   
-  public vgt(TroopFilePicItemBuilder paramTroopFilePicItemBuilder)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Vhg.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Vhg.b) && (this.jdField_a_of_type_Vhg.a < 0.52F)) {
+      this.jdField_a_of_type_Vhg.b = true;
+    }
   }
 }
 

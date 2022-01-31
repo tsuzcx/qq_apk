@@ -1,21 +1,40 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
-import com.tencent.mobileqq.activity.aio.tips.TipsBarTask;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import java.util.Observer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class wac
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public wac(TipsManager paramTipsManager, TipsBarTask paramTipsBarTask, Object[] paramArrayOfObject) {}
+  public wac(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
-    TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager).a(localView);
-    TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask);
-    if (TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager) != null) {
-      TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager).update(null, null);
+    paramDialogInterface = (TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if ((NetworkUtil.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null)) {
+      if (((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        paramDialogInterface.j(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      }
+    }
+    for (;;)
+    {
+      new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
+      return;
+      paramDialogInterface.i(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      continue;
+      if (paramDialogInterface != null) {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131434613, 0).a();
+      } else {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131435287, 0).a();
+      }
     }
   }
 }

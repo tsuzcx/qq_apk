@@ -26,13 +26,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
-import yjq;
-import yjr;
-import yjs;
-import yjt;
-import yju;
-import yjv;
-import ykj;
+import ymw;
+import ymx;
+import ymy;
+import ymz;
+import yna;
+import ynb;
+import ynp;
 
 public class ApolloTextureView
   extends GLTextureView
@@ -61,7 +61,7 @@ public class ApolloTextureView
   private int mNode;
   private float mPX;
   private float mPY;
-  private yjv mPendingCheckForLongPress = new yjv(this);
+  private ynb mPendingCheckForLongPress = new ynb(this);
   public ApolloRender mRender;
   protected ApolloRenderInterfaceImpl mRenderImpl;
   private boolean mSendEventToNatived;
@@ -122,7 +122,7 @@ public class ApolloTextureView
         arrayOfInt2[i] = this.events.jdField_b_of_type_ArrayOfInt[i];
         i += 1;
       }
-      queueEvent(new yjt(this, (float[])localObject, arrayOfFloat, arrayOfInt1, arrayOfInt2));
+      queueEvent(new ymz(this, (float[])localObject, arrayOfFloat, arrayOfInt1, arrayOfInt2));
       paramMotionEvent.recycle();
       return;
     }
@@ -168,7 +168,7 @@ public class ApolloTextureView
       arrayOfInt2[i] = this.events.jdField_b_of_type_ArrayOfInt[i];
       i += 1;
     }
-    queueEvent(new yjr(this, arrayOfFloat1, arrayOfFloat2, arrayOfInt1, arrayOfInt2));
+    queueEvent(new ymx(this, arrayOfFloat1, arrayOfFloat2, arrayOfInt1, arrayOfInt2));
     paramMotionEvent.recycle();
   }
   
@@ -231,7 +231,7 @@ public class ApolloTextureView
           j += 1;
           continue;
         }
-        queueEvent(new yjs(this, arrayOfFloat1, arrayOfFloat2, arrayOfInt1, arrayOfInt2));
+        queueEvent(new ymy(this, arrayOfFloat1, arrayOfFloat2, arrayOfInt1, arrayOfInt2));
         if (i == -1)
         {
           this.events.jdField_a_of_type_Int = 0;
@@ -399,7 +399,7 @@ public class ApolloTextureView
       }
       this.mCallback = paramOnApolloViewListener;
       this.mRender = new ApolloRender(this.mDensity, this.mCallback, paramInt);
-      super.setEGLContextFactory(new yju(this, null));
+      super.setEGLContextFactory(new yna(this, null));
       super.setRenderer(this.mRender);
       super.setRenderMode(0);
       this.mApolloWorker = new ApolloRenderDriver(this, this.mRender.getSavaWrapper());
@@ -536,7 +536,7 @@ public class ApolloTextureView
   
   public void onRender()
   {
-    queueEvent(new yjq(this));
+    queueEvent(new ymw(this));
   }
   
   public void onResume()
@@ -598,7 +598,7 @@ public class ApolloTextureView
           this.mDetectTouchMoved = false;
           this.mHasPerformedLongPress = false;
           if (this.mPendingCheckForLongPress == null) {
-            this.mPendingCheckForLongPress = new yjv(this);
+            this.mPendingCheckForLongPress = new ynb(this);
           }
           if (!this.mIsDrawerView)
           {

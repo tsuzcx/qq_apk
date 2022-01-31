@@ -1,15 +1,13 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
 
-public final class uya
+class uya
   implements Runnable
 {
-  public uya(Context paramContext, String paramString) {}
+  uya(uxz paramuxz) {}
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+    GivingHeartItemBuilder.a(this.a.a);
   }
 }
 

@@ -97,21 +97,21 @@ public class PrinterSubOptionActivity
     setTitle(2131427675);
     getWindow().setBackgroundDrawable(null);
     this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity$PrinterItemAdapter = new PrinterSubOptionActivity.PrinterItemAdapter(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131364142));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131364166));
     this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131362036, "n/a");
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity$PrinterItemAdapter);
     if (!this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager.a())
     {
-      paramBundle = findViewById(2131364143);
+      paramBundle = findViewById(2131364167);
       paramBundle.setVisibility(0);
       paramBundle.setContentDescription("请先在电脑端登录QQ，文件会传到电脑打印机打印。");
-      ((TextView)findViewById(2131364144)).setText(getString(2131427684));
-      ((TextView)findViewById(2131364145)).setText(getString(2131427685));
+      ((TextView)findViewById(2131364168)).setText(getString(2131427684));
+      ((TextView)findViewById(2131364169)).setText(getString(2131427685));
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)
     {
-      setLeftViewName(2131433681);
+      setLeftViewName(2131433698);
       this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131362036, "n/a");
       return true;
       a();

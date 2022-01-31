@@ -1,49 +1,48 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hiboom.HiBoomPanelView;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import mqq.os.MqqHandler;
 
 public class adpf
-  extends CardObserver
+  extends VasQuickUpdateManager.CallBacker
 {
-  public adpf(LoginWelcomeManager paramLoginWelcomeManager) {}
+  public adpf(HiBoomPanelView paramHiBoomPanelView) {}
   
-  protected void b(boolean paramBoolean, String paramString)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    int i = 1;
-    if (QLog.isColorLevel())
+    if ((paramLong == 5L) && (paramString1.startsWith("font.hifont.android.")))
     {
-      QLog.d("LoginWelcomeManager", 2, String.format("mCardObserver.onUpdateAvatar isSuccess=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
-      if (TextUtils.equals(LoginWelcomeManager.a(this.a).getCurrentAccountUin(), paramString)) {
-        if (LoginWelcomeManager.a(this.a) != null)
-        {
-          paramString = LoginWelcomeManager.a(this.a).getBundle("request");
-          if (paramString != null) {
-            if (!paramBoolean) {
-              break label136;
-            }
-          }
+      paramString1 = paramString1.substring("font.hifont.android.".length(), paramString1.length());
+      if (TextUtils.isDigitsOnly(paramString1))
+      {
+        paramInt2 = Integer.parseInt(paramString1);
+        if (this.a.a != null) {
+          ThreadManager.getUIHandler().post(new adpg(this, paramInt1, paramInt2));
         }
       }
     }
-    for (;;)
+  }
+  
+  public void onProgress(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  {
+    if ((paramLong1 == 5L) && (paramString1.startsWith("font.hifont.android.")))
     {
-      paramString.putInt("result", i);
-      paramString.putString("path", LoginWelcomeManager.a(this.a));
-      LoginWelcomeManager.a(this.a, null);
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
-      return;
-      label136:
-      i = 0;
+      paramString1 = paramString1.substring("font.hifont.android.".length(), paramString1.length());
+      if (TextUtils.isDigitsOnly(paramString1))
+      {
+        int i = Integer.parseInt(paramString1);
+        if (this.a.a != null) {
+          ThreadManager.getUIHandler().post(new adph(this, i, paramLong2, paramLong3));
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpf
  * JD-Core Version:    0.7.0.1
  */

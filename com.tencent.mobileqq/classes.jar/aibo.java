@@ -1,45 +1,91 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.io.File;
 
-public class aibo
-  extends aibi
+class aibo
+  implements INetEngine.INetEngineListener
 {
-  private int a;
+  aibo(aibn paramaibn, String paramString, DownloadInfo paramDownloadInfo, int paramInt1, int paramInt2) {}
   
-  public aibo(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    super(paramForwardSdkShareProcessor);
-    this.jdField_a_of_type_JavaLangString = "ImageUploadStep";
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      GestureMgrAppDownload.a(i / this.jdField_a_of_type_Aibn.jdField_a_of_type_Int + this.jdField_a_of_type_Aibn.b);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
+    }
   }
   
-  protected boolean a()
+  public void a(NetResp paramNetResp)
   {
-    return ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get();
-  }
-  
-  protected void d()
-  {
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
+    if (this.jdField_a_of_type_Aibn.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
+      this.jdField_a_of_type_Aibn.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|process|ready=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + ",remoteUrl=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + " ,localUrl=" + ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+      QLog.i("QavGesture", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.jdField_a_of_type_JavaLangString, Integer.valueOf(paramNetResp.jdField_a_of_type_Int), Integer.valueOf(paramNetResp.c), this.jdField_a_of_type_JavaLangString }));
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    int i;
+    if (paramNetResp.jdField_a_of_type_Int == 0)
     {
-      f();
-      return;
+      paramNetResp = new File(localHttpNetReq.c);
+      if (paramNetResp.exists())
+      {
+        try
+        {
+          String str = paramNetResp.getParent();
+          FileUtils.a(localHttpNetReq.c, str, false);
+          GestureMgrAppDownload.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.jdField_a_of_type_Int);
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            i = 0;
+          }
+          GestureMgrAppDownload.a(-1);
+          this.jdField_a_of_type_Aibn.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        paramNetResp.delete();
+      }
     }
-    if (ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get())
+    for (;;)
     {
-      b();
-      return;
+      if (i != 0)
+      {
+        GestureMgrAppDownload.a(100 / this.jdField_a_of_type_Aibn.jdField_a_of_type_Int + this.jdField_a_of_type_Aibn.b);
+        paramNetResp = this.jdField_a_of_type_Aibn;
+        paramNetResp.b += 100 / this.jdField_a_of_type_Aibn.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_Aibn.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.b - 1)) {
+          this.jdField_a_of_type_Aibn.jdField_a_of_type_Boolean = false;
+        }
+        return;
+      }
+      i = 0;
     }
-    ThreadManager.post(new aibp(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aibo
  * JD-Core Version:    0.7.0.1
  */

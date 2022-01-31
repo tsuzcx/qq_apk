@@ -1,83 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelAllMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
+import com.tencent.biz.qqstory.takevideo.TakeVideoButtonMainPart.OnTakeVideoButtonClickListener;
 
 public class nwh
-  extends ProtoUtils.StoryProtocolObserver
+  implements TakeVideoButtonMainPart.OnTakeVideoButtonClickListener
 {
-  public nwh(StoryMessageListActivity paramStoryMessageListActivity) {}
+  public nwh(StoryDiscoverActivity paramStoryDiscoverActivity) {}
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    int j = -1;
-    paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_del_message.RspDelAllMessage localRspDelAllMessage;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      localRspDelAllMessage = new qqstory_710_del_message.RspDelAllMessage();
-    }
-    for (;;)
+    if (this.a.a())
     {
-      int m;
-      int k;
-      try
-      {
-        localRspDelAllMessage.mergeFrom(paramArrayOfByte);
-        if (!localRspDelAllMessage.errinfo.error_code.has()) {
-          break label236;
-        }
-        i = localRspDelAllMessage.errinfo.error_code.get();
-        j = i;
-        if (j == 0) {
-          i = 1;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        m = 0;
-        k = j;
-      }
-      try
-      {
-        paramBundle.error_code.set(localRspDelAllMessage.errinfo.error_code.get());
-        paramBundle.error_desc.set(localRspDelAllMessage.errinfo.error_desc.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.msgList", 2, "receive delete all msg, code=" + paramInt + " bizCode=" + j);
-        }
-        if (i == 0) {
-          QQToast.a(this.a.getApplicationContext(), 1, "清空失败，请重试", 0).a();
-        }
-        return paramBundle;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          k = j;
-          m = i;
-        }
-      }
-      int i = 0;
-      continue;
-      j = k;
-      i = m;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelAllMessage", paramArrayOfByte);
-        j = k;
-        i = m;
-        continue;
-        label236:
-        i = 0;
-      }
+      this.a.a();
+      return;
     }
+    this.a.a(false, true, null);
   }
 }
 

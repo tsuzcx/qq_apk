@@ -50,7 +50,7 @@ public class MessageSearchResultDetailModel
     }
     label60:
     SessionInfo localSessionInfo;
-    for (this.b = (BaseApplicationImpl.sApplication.getString(2131430270) + AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).b);; this.b = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin))
+    for (this.b = (BaseApplicationImpl.sApplication.getString(2131430287) + AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).b);; this.b = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin))
     {
       return this.b;
       localSessionInfo = new SessionInfo();

@@ -1,35 +1,22 @@
-import android.net.Uri;
-import android.text.TextUtils;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.SkinEngine;
-import java.io.File;
+import mqq.os.MqqHandler;
 
 public class zhm
   implements Runnable
 {
-  public zhm(QQAppInterface paramQQAppInterface, int paramInt) {}
+  public zhm(MessageRoamManager paramMessageRoamManager) {}
   
   public void run()
   {
-    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.g();
-    if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.h()) && (bool2) && (!bool1) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.k()) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.l()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.m()) && (QQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+    MqqHandler localMqqHandler = this.a.a.getHandler(ChatHistoryForC2C.class);
+    if (MessageRoamManager.a(this.a)) {}
+    for (Message localMessage = localMqqHandler.obtainMessage(19);; localMessage = localMqqHandler.obtainMessage(20))
     {
-      Object localObject = SkinEngine.getInstances().getSkinRootPath();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = new StringBuilder((String)localObject);
-        ((StringBuilder)localObject).append(File.separatorChar).append("voice").append(File.separatorChar).append("tab").append(this.jdField_a_of_type_Int).append(".mp3");
-        File localFile = new File(((StringBuilder)localObject).toString());
-        if (QLog.isColorLevel()) {
-          QLog.d("playThemeVoice", 2, "Uri:" + ((StringBuilder)localObject).toString());
-        }
-        if (localFile.exists()) {
-          AudioUtil.a(Uri.fromFile(localFile), false, false);
-        }
-      }
+      localMqqHandler.sendMessage(localMessage);
+      return;
     }
   }
 }

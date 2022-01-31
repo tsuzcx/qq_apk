@@ -1,23 +1,48 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.MotionCallback;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.mobileqq.ar.config.WorldCupMgr.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
 
-class aagw
-  implements ArkAppEventObserverManager.MotionCallback
+public class aagw
+  implements WorldCupMgr.DownloadListener
 {
-  aagw(aagv paramaagv, long paramLong) {}
+  public aagw(AREngine paramAREngine) {}
   
-  public void a(long paramLong)
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aagv.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (paramInt2 < 0)
+    {
+      QLog.i("AREngine_AREngine", 2, "downloadWorldCupIdx1Res. download failed. error code = " + paramInt2);
+      WorldCupMgr.a(AREngine.a(this.a)).b(this);
+      AREngine.a(this.a, this.a.b);
+      if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null)) {
+        AREngine.b(this.a, 7);
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    ArkAppDeviceModule.a(this.jdField_a_of_type_Aagv.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
+    do
+    {
+      do
+      {
+        return;
+        if ((paramInt2 < 0) || (paramInt2 > 99)) {
+          break;
+        }
+        QLog.i("AREngine_AREngine", 2, "downloadWorldCupIdx1Res. download... progress = " + paramInt2);
+      } while ((!AREngine.e(this.a)) || (AREngine.e(this.a) != 2) || (AREngine.a(this.a) == null));
+      AREngine.a(this.a, 8, paramInt2);
+      return;
+    } while (paramInt2 != 100);
+    QLog.i("AREngine_AREngine", 2, "downloadWorldCupIdx1Res. download successfully.");
+    WorldCupMgr.a(AREngine.a(this.a)).b(this);
+    AREngine.a(this.a, this.a.b);
+    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null))
+    {
+      AREngine.b(this.a, 6);
+      AREngine.b(this.a, 5);
+    }
+    AREngine.a(new aagx(this), 100L);
   }
 }
 

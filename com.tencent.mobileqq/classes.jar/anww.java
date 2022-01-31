@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ActionSheet;
-import dov.com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
+import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
 
 public class anww
-  implements View.OnClickListener
+  implements Runnable
 {
-  public anww(ShareActionSheet paramShareActionSheet) {}
+  public anww(ArtFilterItemView paramArtFilterItemView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
+    this.a.a();
   }
 }
 

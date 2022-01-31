@@ -47,11 +47,11 @@ public class UploadImageSegment
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 4
     //   3: aconst_null
     //   4: astore 6
     //   6: aconst_null
-    //   7: astore 4
+    //   7: astore 5
     //   9: aload 6
     //   11: astore_3
     //   12: new 62	java/io/File
@@ -172,7 +172,7 @@ public class UploadImageSegment
     //   241: invokevirtual 108	java/io/IOException:printStackTrace	()V
     //   244: goto -31 -> 213
     //   247: astore_2
-    //   248: aload 4
+    //   248: aload 5
     //   250: astore_1
     //   251: aload_1
     //   252: astore_3
@@ -212,7 +212,7 @@ public class UploadImageSegment
     //   322: iconst_0
     //   323: ireturn
     //   324: astore_2
-    //   325: aload 5
+    //   325: aload 4
     //   327: astore_1
     //   328: aload_1
     //   329: astore_3
@@ -294,8 +294,8 @@ public class UploadImageSegment
     //   11	438	3	localObject1	java.lang.Object
     //   452	4	3	localIOException	java.io.IOException
     //   460	4	3	localFileNotFoundException	java.io.FileNotFoundException
-    //   7	242	4	localObject2	java.lang.Object
-    //   1	325	5	localObject3	java.lang.Object
+    //   1	325	4	localObject2	java.lang.Object
+    //   7	242	5	localObject3	java.lang.Object
     //   4	172	6	localObject4	java.lang.Object
     // Exception table:
     //   from	to	target	type
@@ -377,7 +377,7 @@ public class UploadImageSegment
         ArithResult.Item localItem;
         try
         {
-          localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130843254);
+          localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130843353);
           int i = 0;
           if (i >= this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticDataArithResult.a()) {
             break;
@@ -431,7 +431,7 @@ public class UploadImageSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.stream.UploadImageSegment
  * JD-Core Version:    0.7.0.1
  */

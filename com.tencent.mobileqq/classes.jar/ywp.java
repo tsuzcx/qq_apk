@@ -1,49 +1,43 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.script.SpriteRscBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class ywp
-  extends BroadcastReceiver
+public final class ywp
+  implements Runnable
 {
-  public ywp(BabyQFriendStatusWebViewPlugin paramBabyQFriendStatusWebViewPlugin) {}
+  public ywp(String paramString, QQAppInterface paramQQAppInterface, long paramLong) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (!TextUtils.isEmpty(BabyQFriendStatusWebViewPlugin.a(this.a)))
+    try
     {
-      int i = paramIntent.getIntExtra("result", -1);
-      paramContext = "{ \"ret\": " + i + " }";
+      Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      long l = ((JSONObject)localObject).optLong("taskId");
+      localObject = SpriteRscBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (JSONObject)localObject);
+      if (localObject == null) {
+        return;
+      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("ret", 0);
+      localJSONObject.put("actionInfo", localObject);
+      localJSONObject.put("taskId", l);
       if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
+        QLog.d("ApolloGameUtil", 2, new Object[] { "ReqAction,", localJSONObject.toString() });
       }
-      if (i != 0) {
-        break label176;
-      }
-      if (BabyQFriendStatusWebViewPlugin.a(this.a) != null)
-      {
-        paramContext = new Intent(BabyQFriendStatusWebViewPlugin.a(this.a), ChatActivity.class);
-        paramContext.putExtra("uin", AppConstants.au);
-        paramContext.putExtra("uintype", 0);
-        paramContext.putExtra("uinname", "babyQ");
-        paramContext.putExtra("selfSet_leftViewText", BabyQFriendStatusWebViewPlugin.a(this.a).getString(2131433681));
-        BabyQFriendStatusWebViewPlugin.a(this.a).startActivity(paramContext);
-        BabyQFriendStatusWebViewPlugin.a(this.a).finish();
-      }
+      ApolloCmdChannel.getChannel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).callbackFromRequest(this.jdField_a_of_type_Long, 0, "sc.script_notify_action_ready.local", localJSONObject.toString());
+      return;
     }
-    return;
-    label176:
-    this.a.callJs(BabyQFriendStatusWebViewPlugin.a(this.a) + "(" + paramContext + ");");
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloGameUtil", 1, localThrowable, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ywp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,25 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.PackageInstallReceiver;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
 
-public class aktq
-  implements Runnable
+public final class aktq
+  implements AnyScaleTypeImageView.DisplayRuleDef
 {
-  public aktq(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
-  
-  public void run()
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_REPLACED >> " + this.jdField_a_of_type_JavaLangString);
-    DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    DownloadManager.a().a(13, localDownloadInfo);
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
+    }
+    paramInt2 = paramDrawable.getIntrinsicWidth();
+    float f = paramInt1 / paramInt2;
+    localMatrix.setScale(f, f);
+    return localMatrix;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aktq
  * JD-Core Version:    0.7.0.1
  */

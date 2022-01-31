@@ -1,47 +1,35 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.DragShadowBuilder;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.intervideo.now.NowProxy;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
 
-@TargetApi(11)
 public class aeuh
-  extends View.DragShadowBuilder
+  implements View.OnClickListener
 {
-  public int a;
+  public aeuh(SmallVideoCameraCaptureFragment paramSmallVideoCameraCaptureFragment) {}
   
-  public aeuh(NearbyProfileEditPanel paramNearbyProfileEditPanel, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.f * 1.4D));
-  }
-  
-  public void onDrawShadow(Canvas paramCanvas)
-  {
-    getView().setDrawingCacheEnabled(false);
-    getView().setDrawingCacheEnabled(true);
-    Object localObject = new Paint();
-    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
-    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
-    localObject = getView().getDrawingCache();
-    Matrix localMatrix = new Matrix();
-    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
-    localMatrix.postScale(f, f);
-    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
-  }
-  
-  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
-  {
-    int i = this.jdField_a_of_type_Int + 20;
-    int j = this.jdField_a_of_type_Int + 20;
-    paramPoint1.set(i, j);
-    paramPoint2.set(i / 2, j / 2);
+    paramView = new NowProxy();
+    if (paramView.a())
+    {
+      paramView.a(null);
+      return;
+    }
+    Object localObject = this.a.getActivity().getSharedPreferences("NearbyActivity.nearByTabUrl", 4).getString("menuCell_startLive", "");
+    paramView = (View)localObject;
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      paramView = "https://now.qq.com/qq/nearby/live.html?_wv=16777219&_bid=2452&from=50036";
+    }
+    localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramView);
+    ((Intent)localObject).putExtra("reqType", 1);
+    this.a.startActivity((Intent)localObject);
   }
 }
 

@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c046d" />
-    <stroke android:width="1.0dip" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c046e" />
-    <corners android:radius="2.0dip" />
-</shape>
+    <item android:state_enabled="true">
+        <shape android:shape="rectangle"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c03d1" />
+            <corners android:radius="1.0dip" />
+        </shape>
+    </item>
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c03d1" />
+            <corners android:radius="1.0dip" />
+        </shape>
+    </item>
+</selector>

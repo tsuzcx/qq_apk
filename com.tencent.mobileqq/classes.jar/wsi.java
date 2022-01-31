@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class wsi
-  extends ContactBindObserver
+  extends VasQuickUpdateManager.CallBacker
 {
-  public wsi(SettingActivity2 paramSettingActivity2) {}
+  public wsi(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (this.a.c != null)
-    {
-      this.a.app.unRegistObserver(this.a.c);
-      this.a.c = null;
-    }
-    this.a.b();
-    if (paramBoolean)
-    {
-      if (this.a.c != null)
-      {
-        this.a.app.unRegistObserver(this.a.c);
-        this.a.c = null;
-      }
-      this.a.a();
+    if ((paramLong == 1000L) && (paramString1.equals("pendant_market_json.android.v2")) && (paramInt1 == 0)) {
+      this.a.a(false);
     }
   }
 }

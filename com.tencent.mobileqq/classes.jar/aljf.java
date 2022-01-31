@@ -1,24 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeMediaPlayer.OnCompletionListener;
+import android.text.TextUtils;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.common.PackageInstallReceiver;
 
-class aljf
-  implements TraeMediaPlayer.OnCompletionListener
+public class aljf
+  implements Runnable
 {
-  aljf(alje paramalje) {}
+  public aljf(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "_ringPlayer onCompletion _activeMode:" + this.a.jdField_b_of_type_ComTencentSharpJniTraeAudioManager.a + " _preRingMode:" + this.a.jdField_b_of_type_Int);
+    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_REMOVED >> " + this.jdField_a_of_type_JavaLangString);
+    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(DownloadConstants.p)))
+    {
+      DownloadManager.a().a(true);
+      MyAppApi.a().f();
     }
-    TraeAudioManager.a("TraeMediaPlayer_OnCompletionListener", null, -1L, true);
-    this.a.h();
+    DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
+    DownloadManager.a().a(9, localDownloadInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljf
  * JD-Core Version:    0.7.0.1
  */

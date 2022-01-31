@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.utils.StartupTracker;
+import com.tencent.mobileqq.ar.ARScanFragment;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 
 public class abek
   implements Runnable
 {
-  public abek(BubbleManager paramBubbleManager, int paramInt) {}
+  public abek(ShopScanActivity paramShopScanActivity) {}
   
   public void run()
   {
-    StartupTracker.a(null, "AIO_bubble_craete_bubble_info");
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int, true);
-    StartupTracker.a("AIO_bubble_craete_bubble_info", null);
+    ShopScanActivity.c(this.a);
+    ShopScanActivity.d(this.a);
+    this.a.a.a(false);
   }
 }
 

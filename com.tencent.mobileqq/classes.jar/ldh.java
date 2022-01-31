@@ -1,18 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.mobileqq.util.SystemUtil;
 
-class ldh
+public class ldh
   implements Runnable
 {
-  ldh(ldg paramldg) {}
+  public ldh(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
   
   public void run()
   {
-    KandianMergeManager localKandianMergeManager = (KandianMergeManager)this.a.a.app.getManager(161);
-    if (localKandianMergeManager != null) {
-      localKandianMergeManager.g();
-    }
+    SystemUtil.b();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.runOnUiThread(new ldi(this));
   }
 }
 

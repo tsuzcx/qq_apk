@@ -1,19 +1,22 @@
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-import mqq.os.MqqHandler;
 
 public class lcg
-  implements ActionSheet.OnDismissListener
+  implements TextWatcher
 {
   public lcg(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onDismiss()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((!this.a.a) && (this.a.h != -1)) {
-      ThreadManager.getUIHandler().postDelayed(new lch(this), 300L);
-    }
-    this.a.a = false;
+    this.a.a(paramEditable);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
   }
 }
 

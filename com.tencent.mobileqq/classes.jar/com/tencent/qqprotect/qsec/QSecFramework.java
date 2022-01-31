@@ -1,11 +1,11 @@
 package com.tencent.qqprotect.qsec;
 
-import alhv;
-import alhw;
-import alhx;
-import alhy;
-import alhz;
-import alia;
+import alxl;
+import alxm;
+import alxn;
+import alxo;
+import alxp;
+import alxq;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -32,7 +32,7 @@ public final class QSecFramework
   
   static
   {
-    new CrashProtector("QSec", 86400000L).a(new alhv());
+    new CrashProtector("QSec", 86400000L).a(new alxl());
     jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("QSecMain", 10);
     jdField_a_of_type_AndroidOsHandlerThread.start();
   }
@@ -42,12 +42,12 @@ public final class QSecFramework
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecRuntimeImpl.a(CloudAVEngineImpl.a());
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecRuntimeImpl.a(RptImpl.a());
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecRuntimeImpl.a(CSProcessorImpl.a());
-    new CrashProtector("QSec", 86400000L).a(new alhw(this));
+    new CrashProtector("QSec", 86400000L).a(new alxm(this));
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr = new QSecCbMgr();
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr = new QSecLibMgr(this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr);
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecPushServiceMgr = new QSecPushServiceMgr(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr, this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr);
-    this.jdField_b_of_type_AndroidOsHandler = new alhx(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    a(2, new alhy(this));
+    this.jdField_b_of_type_AndroidOsHandler = new alxn(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    a(2, new alxo(this));
   }
   
   public static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
@@ -157,9 +157,9 @@ public final class QSecFramework
       this.c = true;
     }
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr.a(false);
-    this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a(new alhz(this));
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a(new alxp(this));
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.b();
-    jdField_a_of_type_AndroidOsHandler.postDelayed(new alia(this), 0L);
+    jdField_a_of_type_AndroidOsHandler.postDelayed(new alxq(this), 0L);
   }
   
   public void a(byte[] paramArrayOfByte)

@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ysz;
+import ywf;
 
 public class ApolloGameMusicPlayer
 {
@@ -177,7 +177,7 @@ public class ApolloGameMusicPlayer
                   paramString.setLooping(bool);
                   if (paramInt3 != 2147483647)
                   {
-                    paramString.setOnCompletionListener(new ysz(this, paramInt3, paramInt1, paramIRenderRunner, paramLong));
+                    paramString.setOnCompletionListener(new ywf(this, paramInt3, paramInt1, paramIRenderRunner, paramLong));
                     if (QLog.isColorLevel()) {
                       QLog.d(jdField_a_of_type_JavaLangString, 2, "create player, audio_sessionID: " + paramString.getAudioSessionId());
                     }
@@ -641,18 +641,28 @@ public class ApolloGameMusicPlayer
         while (localIterator.hasNext())
         {
           MediaPlayer localMediaPlayer = (MediaPlayer)localIterator.next();
-          if (localMediaPlayer != null) {
+          if (localMediaPlayer != null)
+          {
+            localMediaPlayer.stop();
             localMediaPlayer.release();
           }
         }
-        localObject2.clear();
+        if (!QLog.isColorLevel()) {
+          break label153;
+        }
       }
       finally {}
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "stop front music.");
+      label153:
+      localObject2.clear();
       this.b.remove(Integer.valueOf(paramInt));
     }
     localObject1 = (MediaPlayer)this.c.get(Integer.valueOf(paramInt));
     if (localObject1 != null)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "stop back music.");
+      }
       ((MediaPlayer)localObject1).stop();
       ((MediaPlayer)localObject1).release();
       this.c.remove(Integer.valueOf(paramInt));
@@ -671,7 +681,7 @@ public class ApolloGameMusicPlayer
     //   11: anewarray 4	java/lang/Object
     //   14: dup
     //   15: iconst_0
-    //   16: ldc_w 366
+    //   16: ldc_w 370
     //   19: aastore
     //   20: dup
     //   21: iconst_1
@@ -709,7 +719,7 @@ public class ApolloGameMusicPlayer
     //   83: ifle +56 -> 139
     //   86: aload 4
     //   88: iconst_0
-    //   89: invokeinterface 369 2 0
+    //   89: invokeinterface 373 2 0
     //   94: checkcast 233	android/media/MediaPlayer
     //   97: astore 5
     //   99: aload 5
@@ -728,7 +738,7 @@ public class ApolloGameMusicPlayer
     //   128: athrow
     //   129: astore 6
     //   131: aload 6
-    //   133: invokevirtual 372	java/lang/IllegalStateException:printStackTrace	()V
+    //   133: invokevirtual 376	java/lang/IllegalStateException:printStackTrace	()V
     //   136: goto -32 -> 104
     //   139: aload_3
     //   140: monitorexit
@@ -787,7 +797,7 @@ public class ApolloGameMusicPlayer
     //   258: getfield 38	com/tencent/mobileqq/apollo/utils/ApolloGameMusicPlayer:c	Ljava/util/Map;
     //   261: iload_1
     //   262: invokestatic 69	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   265: invokeinterface 362 2 0
+    //   265: invokeinterface 364 2 0
     //   270: pop
     //   271: return
     // Local variable table:

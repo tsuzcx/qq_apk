@@ -1,27 +1,28 @@
-import android.hardware.SensorEvent;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.OrientationCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aahx
   implements Runnable
 {
-  public aahx(ArkAppEventObserverManager paramArkAppEventObserverManager, long paramLong, SensorEvent paramSensorEvent) {}
+  public aahx(ARReport paramARReport, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onOrientationSensorChange curTime=" + this.jdField_a_of_type_Long + ", event[0]=" + this.jdField_a_of_type_AndroidHardwareSensorEvent.values[0] + ", event[1]=" + this.jdField_a_of_type_AndroidHardwareSensorEvent.values[1] + ", event[2]=" + this.jdField_a_of_type_AndroidHardwareSensorEvent.values[2]);
+    HashMap localHashMap = new HashMap();
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_a_of_type_Long)) {
+      localHashMap.put("total_render_all_time", String.valueOf(this.jdField_a_of_type_Long));
     }
-    ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager, 360.0F - this.jdField_a_of_type_AndroidHardwareSensorEvent.values[0]);
-    ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager, -this.jdField_a_of_type_AndroidHardwareSensorEvent.values[1]);
-    ArkAppEventObserverManager.c(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager, -this.jdField_a_of_type_AndroidHardwareSensorEvent.values[2]);
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onOrientationSensorChange update alpha=" + ArkAppEventObserverManager.c(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) + ", update beta=" + ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) + ", update gamma=" + ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager));
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.b)) {
+      localHashMap.put("total_render_success_time", String.valueOf(this.b));
     }
-    if (ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) != null) {
-      ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager).a(true, ArkAppEventObserverManager.c(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager), ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager), ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager));
-    }
+    localHashMap.put("buildmodel", Build.MODEL);
+    localHashMap.put("cpuNumber", String.valueOf(ARReport.a()));
+    localHashMap.put("totalram", ARReport.a(BaseApplication.getContext()));
+    localHashMap.put("cpuname", this.jdField_a_of_type_ComTencentMobileqqArArengineARReport.a());
+    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARTotal", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

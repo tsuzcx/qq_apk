@@ -1,31 +1,26 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.app.ShakeListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 
-public class yxf
-  extends ShakeListener
+class yxf
+  implements Animation.AnimationListener
 {
-  public void a()
+  yxf(yxe paramyxe) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity == null)
-    {
-      ScreenShot.a("MyShakeListener - top activity is null");
-      return;
-    }
-    if (!localBaseActivity.mCurrentActivityShakeFlag)
-    {
-      ScreenShot.a("MyShakeListener - shake flag is false");
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new yxg(this, localBaseActivity));
+    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.a = null;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yxf
  * JD-Core Version:    0.7.0.1
  */

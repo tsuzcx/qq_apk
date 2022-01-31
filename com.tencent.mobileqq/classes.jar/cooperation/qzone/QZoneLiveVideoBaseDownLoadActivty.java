@@ -1,9 +1,9 @@
 package cooperation.qzone;
 
-import ambp;
-import ambq;
-import ambr;
-import ambs;
+import amrt;
+import amru;
+import amrv;
+import amrw;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +39,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   protected long a;
   protected BroadcastReceiver a;
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ambr(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new amrv(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -51,7 +51,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   public volatile boolean a;
   protected int b;
   private long jdField_b_of_type_Long;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new ambs(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new amrw(this);
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   protected String b;
@@ -78,7 +78,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   
   public QZoneLiveVideoBaseDownLoadActivty()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new ambp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new amrt(this);
   }
   
   protected abstract PluginBaseInfo a(String paramString);
@@ -97,18 +97,18 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   {
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373650));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373651));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363957));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362821));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373648));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373831));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373832));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363981));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362839));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373829));
     try
     {
       this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable("http://qzonestyle.gtimg.cn/qzone/phone/n/QQ-Qzone-Android/qzone_live_video_download_bg.png", null);
       if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
         this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
       }
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new ambq(this));
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new amru(this));
     }
     catch (Exception localException)
     {
@@ -465,9 +465,9 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if (this.mSystemBarComp != null) {
       this.mSystemBarComp.mDrawStatus = false;
     }
-    setContentView(2130971194);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131373647));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131373646);
+    setContentView(2130971242);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131373828));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131373827);
   }
   
   protected void onDestroy()

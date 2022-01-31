@@ -1,46 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 class abun
-  implements BusinessObserver
+  implements Runnable
 {
-  abun(abue paramabue, Bundle paramBundle1, MessengerService paramMessengerService, Bundle paramBundle2) {}
+  abun(abul paramabul, QQAppInterface paramQQAppInterface) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if ((paramBoolean) && (paramObject != null)) {}
-    try
-    {
-      if ((paramObject instanceof List))
-      {
-        paramObject = (List)paramObject;
-        if (!paramObject.isEmpty())
-        {
-          this.jdField_a_of_type_AndroidOsBundle.putString("diyText", ((BubbleDiyEntity)paramObject.get(0)).diyText);
-          this.jdField_a_of_type_AndroidOsBundle.putString("isDiy", "1");
-          this.jdField_a_of_type_AndroidOsBundle.putString("tl", ((BubbleDiyEntity)paramObject.get(0)).topLeftId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("tr", ((BubbleDiyEntity)paramObject.get(0)).topRightId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("bl", ((BubbleDiyEntity)paramObject.get(0)).bottomLeftId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-        return;
-        this.jdField_a_of_type_AndroidOsBundle.putString("diyText", "");
-      }
-      return;
+    Object localObject = (NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(105);
+    abul.a(this.jdField_a_of_type_Abul, ((NearbyCardManager)localObject).b());
+    String str = this.jdField_a_of_type_Abul.a(abul.a(this.jdField_a_of_type_Abul), false);
+    localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = this.jdField_a_of_type_Abul.a(abul.a(this.jdField_a_of_type_Abul), true);
     }
-    catch (Exception paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.emoji.web.MessengerService", 2, paramObject.getMessage());
-      }
+    this.jdField_a_of_type_Abul.c((String)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE  faceScoreWording=" + (String)localObject);
     }
   }
 }

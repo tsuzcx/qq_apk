@@ -1,27 +1,18 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
 
-class mfz
+public class mfz
   implements Runnable
 {
-  mfz(mfy parammfy, int paramInt) {}
+  public mfz(VideoUIManager paramVideoUIManager) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseAdapter", 2, "scroll " + this.jdField_a_of_type_Int + " to top");
-    }
-    View localView = this.jdField_a_of_type_Mfy.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(this.jdField_a_of_type_Int - this.jdField_a_of_type_Mfy.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getFirstVisiblePosition());
-    if (localView != null)
-    {
-      ReadInJoyBaseAdapter.a(this.jdField_a_of_type_Mfy.a).removeMessages(1001);
-      this.jdField_a_of_type_Mfy.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.smoothScrollBy(localView.getBottom() - AIOUtils.a(175.0F, this.jdField_a_of_type_Mfy.a.jdField_a_of_type_AndroidAppActivity.getResources()), 800);
-      ReadInJoyBaseAdapter.d(this.jdField_a_of_type_Mfy.a, true);
+    if ((VideoUIManager.a(this.a) != null) && (VideoUIManager.a(this.a).a != null)) {
+      PublicAccountReportUtils.a(null, "", "0X8008ACF", "0X8008ACF", 0, 0, "", "", "", VideoReporter.a(VideoUIManager.a(this.a).a.mVideoVid, VideoUIManager.a(this.a).a.innerUniqueID, (int)VideoUIManager.a(this.a).a.mChannelID, null), false);
     }
   }
 }

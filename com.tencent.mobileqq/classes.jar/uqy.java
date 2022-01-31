@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQItemBubbleBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 
 public class uqy
   implements Runnable
 {
-  public uqy(ArkAppBabyQItemBubbleBuilder paramArkAppBabyQItemBubbleBuilder, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
+  public uqy(RecordSoundPanel paramRecordSoundPanel, int paramInt, double paramDouble) {}
   
   public void run()
   {
-    ArkAppBabyQItemBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQItemBubbleBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
+    int i = AudioPanel.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.b(i);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.b.setText(AudioPanel.a(this.jdField_a_of_type_Double));
   }
 }
 

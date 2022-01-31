@@ -1,21 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
 
 public class anck
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public anck(EditVideoButton paramEditVideoButton, int paramInt) {}
+  public anck(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.a.a(this.jdField_a_of_type_Int);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneDynamicAlbumPlugin", 2, paramContext);
+    }
+    paramIntent = paramIntent.getStringExtra("runningProcessName");
+    if ((("com.tencent.process.stopping".equals(paramContext)) && (!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("com.tencent.mobileqq:tool"))) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
+    {
+      QzoneDynamicAlbumPlugin.a(this.a, true);
+      this.a.b();
+    }
+    while (((!"com.tencent.process.starting".equals(paramContext)) || (TextUtils.isEmpty(paramIntent)) || (!paramIntent.equals("com.tencent.mobileqq:tool")) || (!QzoneDynamicAlbumPlugin.a(this.a))) && (!"tencent.av.v2q.StopVideoChat".equals(paramContext))) {
+      return;
+    }
+    QzoneDynamicAlbumPlugin.a(this.a, false);
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anck
  * JD-Core Version:    0.7.0.1
  */

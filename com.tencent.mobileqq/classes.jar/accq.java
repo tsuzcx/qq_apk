@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 
-class accq
-  implements DialogInterface.OnClickListener
+public class accq
+  implements Runnable
 {
-  accq(accm paramaccm) {}
+  public accq(WebIPCOperator paramWebIPCOperator, Bundle paramBundle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    FileManagerReporter.a("0X80052CF");
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator.e(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

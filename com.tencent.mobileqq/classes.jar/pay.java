@@ -1,24 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
+import android.os.Bundle;
+import com.tencent.biz.webviewbase.WebAIOController;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class pay
-  extends Handler
+  extends Client.onRemoteRespObserver
 {
-  public pay(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, Looper paramLooper)
+  public pay(WebAIOController paramWebAIOController) {}
+  
+  public void onBindedToClient()
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOBanner", 2, "-->onBindedToClient");
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onDisconnectWithService()
   {
-    if (!(paramMessage.obj instanceof WebSoCgiService.WebSoCgiState)) {}
-    while (paramMessage.what != 204) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOBanner", 2, "-->onDisconnectWithService");
     }
-    this.a.a((WebSoCgiService.WebSoCgiState)paramMessage.obj);
+  }
+  
+  public void onPushMsg(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOBanner", 2, "-->onPushMsg");
+    }
+  }
+  
+  public void onResponse(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOBanner", 2, "-->onResponse");
+    }
   }
 }
 

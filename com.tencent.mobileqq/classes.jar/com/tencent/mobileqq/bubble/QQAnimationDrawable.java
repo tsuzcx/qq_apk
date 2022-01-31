@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bubble;
 
-import abey;
-import abfb;
+import ablz;
+import abmc;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -36,12 +36,12 @@ public class QQAnimationDrawable
   extends Drawable
   implements Animatable, Runnable
 {
-  private static volatile abey jdField_a_of_type_Abey;
+  private static volatile ablz jdField_a_of_type_Ablz;
   public static final ExecutorService a;
   public static byte[] a;
   protected int a;
   private long jdField_a_of_type_Long;
-  private abfb jdField_a_of_type_Abfb;
+  private abmc jdField_a_of_type_Abmc;
   private Context jdField_a_of_type_AndroidContentContext;
   public Bitmap a;
   private BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options;
@@ -73,7 +73,7 @@ public class QQAnimationDrawable
   static
   {
     jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
-    jdField_a_of_type_Abey = new abey(null);
+    jdField_a_of_type_Ablz = new ablz(null);
     jdField_a_of_type_ArrayOfByte = new byte[24576];
   }
   
@@ -298,8 +298,8 @@ public class QQAnimationDrawable
       label188:
       for (long l = 0L;; l = SystemClock.uptimeMillis() + this.jdField_a_of_type_Long)
       {
-        this.jdField_a_of_type_Abfb = new abfb(this, i, l);
-        jdField_a_of_type_Abey.execute(this.jdField_a_of_type_Abfb);
+        this.jdField_a_of_type_Abmc = new abmc(this, i, l);
+        jdField_a_of_type_Ablz.execute(this.jdField_a_of_type_Abmc);
         if (paramBoolean2)
         {
           stop();
@@ -753,8 +753,8 @@ public class QQAnimationDrawable
   
   public void b()
   {
-    if (jdField_a_of_type_Abey != null) {
-      jdField_a_of_type_Abey.b();
+    if (jdField_a_of_type_Ablz != null) {
+      jdField_a_of_type_Ablz.b();
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentFutureTask != null) {
       this.jdField_a_of_type_JavaUtilConcurrentFutureTask.cancel(true);

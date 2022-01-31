@@ -1,19 +1,8 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class aawe
-  implements Runnable
+public class aawe
 {
-  aawe(aawd paramaawd, Bitmap paramBitmap) {}
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SdCardImageAnimView", 2, "defaultImgRunnable set image bitmap");
-    }
-    this.jdField_a_of_type_Aawd.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-  }
+  public ArrayList a;
 }
 
 

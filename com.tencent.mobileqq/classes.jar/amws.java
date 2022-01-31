@@ -1,32 +1,20 @@
-import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import dov.com.qq.im.capture.paster.PasterDataManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
-public class amws
-  extends LbsManager.OnLocationListener
+public final class amws
+  implements Runnable
 {
-  public amws(PasterDataManager paramPasterDataManager, String paramString)
-  {
-    super(paramString);
-  }
+  public amws(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    super.a(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      SLog.b("PasterDataManager", "onLocationUpdate() latitude=" + paramSosoLbsInfo.a.a + " longitude=" + paramSosoLbsInfo.a.b);
-      this.a.e();
-      return;
-    }
-    SLog.b("PasterDataManager", "onLocationUpdate() error");
+    StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amws
  * JD-Core Version:    0.7.0.1
  */

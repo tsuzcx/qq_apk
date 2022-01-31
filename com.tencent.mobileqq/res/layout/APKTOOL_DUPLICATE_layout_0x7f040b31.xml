@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3283" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218ad" android:paddingLeft="1.0dip" android:paddingTop="1.0dip" android:paddingRight="1.0dip" android:paddingBottom="1.0dip" android:focusable="false" android:clickable="false" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="34.0dip" android:layout_marginTop="33.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:contentDescription="@null" />
-</RelativeLayout>
+<com.qzone.module.feedcomponent.ui.canvasui.CanvasAttachView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a323c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08ad" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08ae"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

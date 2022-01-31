@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class zdt
   implements Runnable
 {
-  public zdt(MessageHandler paramMessageHandler, QNotificationManager paramQNotificationManager) {}
+  public zdt(FrameHelperActivity paramFrameHelperActivity) {}
   
   public void run()
   {
-    try
+    if ((!ThemeUtil.isNowThemeIsDIY()) && (!ThemeUtil.isNowThemeIsAnimate())) {}
+    for (boolean bool = true;; bool = false)
     {
-      Thread.sleep(5000L);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.msg.MessageHandler", 4, "PConline time expired cancel now");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel("Q.msg.MessageHandler_PcOnlineNotifition", MessageHandler.g);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, false);
+      this.a.a.removeMessages(16);
+      this.a.a.sendMessage(this.a.a.obtainMessage(16, Boolean.valueOf(bool)));
       return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "PConline thread Interrupt");
-      }
-      localException.printStackTrace();
     }
   }
 }

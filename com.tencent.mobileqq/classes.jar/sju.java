@@ -1,20 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class sju
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  public sju(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public sju(DialogActivity paramDialogActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ("com.tencent.mobileqq.action.update.emotiom".equals(paramIntent.getAction())) {
-      ((FavroamingDBManager)this.a.app.getManager(148)).a(new sjv(this));
-    }
+    this.a.finish();
   }
 }
 

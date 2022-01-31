@@ -1,49 +1,23 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.PublicAccountUnfollowTask.UnFollowPublicAccountListenner;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class lfn
-  implements Runnable
+  implements PublicAccountUnfollowTask.UnFollowPublicAccountListenner
 {
-  public lfn(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo, boolean paramBoolean) {}
+  public lfn(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, Context paramContext) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    String str1 = "3";
-    if ((ReadInJoyVideoSubChannelActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity) == 4) || (ReadInJoyVideoSubChannelActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity) == 6))
+    if (paramBoolean)
     {
-      str1 = "0";
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo.mIsTopic) {
-        break label119;
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label113;
-      }
-    }
-    label113:
-    for (String str2 = "1";; str2 = "2")
-    {
-      PublicAccountReportUtils.a(null, "", "0X80088BC", "0X80088BC", 0, 0, str2, str1, "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity), null), false);
-      return;
-      if (ReadInJoyVideoSubChannelActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity) == 8)
-      {
-        str1 = "1";
-        break;
-      }
-      if (ReadInJoyVideoSubChannelActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity) != 4) {
-        break;
-      }
-      str1 = "2";
-      break;
-    }
-    label119:
-    if (this.jdField_a_of_type_Boolean) {}
-    for (str2 = "1";; str2 = "2")
-    {
-      PublicAccountReportUtils.a(null, "", "0X8007BFE", "0X8007BFE", 0, 0, str2, str1, "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity), null), false);
+      new Handler(Looper.getMainLooper()).postDelayed(new lfo(this), 500L);
       return;
     }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, "取消关注失败，请检查网络设置！", 0).a();
   }
 }
 

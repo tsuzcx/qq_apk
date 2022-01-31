@@ -1,65 +1,46 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AttachedAdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.JumpAdUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo.NotifyInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class mls
-  extends BaseItemViewHolder
-  implements View.OnClickListener
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private TextView b;
+  public mls(KandianAppInPush paramKandianAppInPush, Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo) {}
   
-  public mls(View paramView, BaseData paramBaseData)
+  public void run()
   {
-    super(paramView, paramBaseData);
-    paramView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367055));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361926));
-    this.b = ((TextView)paramView.findViewById(2131367056));
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    switch (paramBaseData2.d)
+    if ((KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush) != null) && (!KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush).a()))
     {
-    default: 
-      throw new IllegalArgumentException();
+      if ((KandianAppInPush.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush) != null) && (KandianAppInPush.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush).msgSeq != this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo.msgSeq))
+      {
+        KandianAppInPush.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo);
+        QLog.d("KandianAppInPush", 2, "app in push is showing, lazy show !");
+      }
+      return;
     }
-    paramBaseData1 = (AttachedAdData)paramBaseData2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.b);
-    this.b.setText(paramBaseData1.c);
-    paramBaseData2 = URLDrawable.URLDrawableOptions.obtain();
-    paramBaseData2.mRequestWidth = AIOUtils.a(85.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
-    paramBaseData2.mRequestHeight = AIOUtils.a(72.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
-    paramBaseData2.mLoadingDrawable = new ColorDrawable(-2565414);
-    paramBaseData2.mPlayGifImage = true;
-    paramBaseData2.mMemoryCacheKeySuffix = "fast_web";
-    paramBaseData1 = URLDrawable.getDrawable(ReadInJoyUtils.a(paramBaseData1.d), paramBaseData2);
-    if ((paramBaseData1 != null) && (paramBaseData1.getStatus() == 2)) {
-      paramBaseData1.restartDownload();
+    try
+    {
+      KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo);
+      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+      if (((!ReadInJoyHelper.f()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo.styleType == 1)) || ((localBaseActivity.isInMultiWindow()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo.styleType == 2)) || ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo.styleType == 1) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo.isArticleAppInPush()) && (ReadInJoyHelper.g()))) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo.styleType = 0;
+      }
+      KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush, KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush, localBaseActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo, KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush)));
+      KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush).a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush.a("0X8008458", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo.bid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo);
+      QLog.d("KandianAppInPush", 2, "app in push ready to show! info : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo + ", clz : " + localBaseActivity.getClass().getSimpleName());
+      return;
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBaseData1);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(new mlt(this));
-  }
-  
-  public void onClick(View paramView)
-  {
-    JumpAdUtils.a((Activity)paramView.getContext(), (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush, null);
+      QLog.e("KandianAppInPush", 2, "app in push show happen error  : " + localException + ", info : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo);
+    }
   }
 }
 

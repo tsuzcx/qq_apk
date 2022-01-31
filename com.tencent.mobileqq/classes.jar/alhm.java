@@ -1,42 +1,52 @@
-import com.tencent.qqprotect.qsec.ICloudAVEngine.DetectBundle;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.IAVEngineEventListener;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
-public final class alhm
-  implements ICloudAVEngine.IAVEngineEventListener
+public class alhm
+  implements Runnable
 {
-  private int a;
+  public alhm(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public alhm(int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, ICloudAVEngine.DetectBundle paramDetectBundle, ICloudAVEngine.ResultBundle paramResultBundle)
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_Int != 0)
+    try
     {
-      if ((paramInt != 1) && (paramInt != 2) && (paramInt != 4)) {
-        break label41;
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_JavaLangString);
+      if (localTMAssistantDownloadTaskInfo != null)
+      {
+        LogUtility.c(DownloadManager.a, "onDownloadError taskInfo != null！info.writeCodeState = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_JavaLangString = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_JavaLangString).mSavePath;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_c_of_type_Long = localTMAssistantDownloadTaskInfo.mTotalDataLen;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int != 0) {
+          break label201;
+        }
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+        if (!this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b.equals("1101070898"))
+        {
+          long l = localTMAssistantDownloadTaskInfo.mTotalDataLen;
+          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
+        }
       }
-      QSecFramework.a(5, this.jdField_a_of_type_Int, paramInt, 0, null, null, null, null);
     }
-    label41:
-    while (paramInt != 3) {
-      return;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        label201:
+        LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
+      }
     }
-    int j = paramResultBundle.jdField_a_of_type_Int;
-    int k = paramResultBundle.b;
-    int m = paramResultBundle.c;
-    int n = paramResultBundle.d;
-    paramDetectBundle = paramResultBundle.jdField_a_of_type_ArrayOfByte;
-    int i1 = this.jdField_a_of_type_Int;
-    if (paramResultBundle.jdField_a_of_type_Boolean) {
-      i = 1;
+    StaticAnalyz.a("300", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.m);
+    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a) {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
     }
-    QSecFramework.a(5, i1, paramInt, i, null, null, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), paramDetectBundle }, null);
+    return;
+    LogUtility.c(DownloadManager.a, "onDownloadError taskInfo == null");
+    DownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
   }
 }
 

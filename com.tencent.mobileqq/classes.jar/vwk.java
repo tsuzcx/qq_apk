@@ -1,63 +1,29 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class vwk
-  extends CardObserver
+  implements View.OnClickListener
 {
-  public vwk(StrangerChatPie paramStrangerChatPie) {}
+  public vwk(NearbyChatPie paramNearbyChatPie) {}
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    Object localObject = null;
-    String str1;
-    if ((paramBoolean) && ((paramObject instanceof Card)))
-    {
-      paramObject = (Card)paramObject;
-      str1 = paramObject.uin;
-      localObject = paramObject.strCampusName;
-      paramObject = paramObject.tempChatSig;
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002)) {
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800514F", "0X800514F", 0, 0, "", "", "", "");
     }
     for (;;)
     {
-      Locale localLocale;
-      String str3;
-      String str4;
-      if (QLog.isColorLevel())
-      {
-        localLocale = Locale.getDefault();
-        str3 = Utils.b(str1);
-        str4 = Utils.b((String)localObject);
-        if (paramObject != null) {
-          break label201;
-        }
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+      PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+      return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1010) {
+        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049C6", "0X80049C6", 0, 0, "", "", "", "");
       }
-      label201:
-      for (String str2 = "sig is null";; str2 = "sig is not null")
-      {
-        QLog.d("StrangerChatPie", 2, String.format(localLocale, "onGetCampusInfo [%s, %s, %s]", new Object[] { str3, str4, str2 }));
-        if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1029) && (Utils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str1)) && (!TextUtils.isEmpty((CharSequence)localObject)))
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = ((String)localObject);
-          if (paramObject != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().l(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramObject);
-          }
-          this.a.a().runOnUiThread(new vwl(this));
-        }
-        return;
-      }
-      str2 = null;
-      str1 = null;
-      paramObject = localObject;
-      localObject = str2;
     }
   }
 }

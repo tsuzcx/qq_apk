@@ -1,19 +1,67 @@
-import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import com.tencent.mobileqq.ark.ArkAppCGI.ActionAppUpdateInfo;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ArkPassiveSearchInfo;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
-public class aaqy
-  implements ArkMessageServerLogic.IPassiveSearchIntentByServerHandler
+class aaqy
+  implements Runnable
 {
-  public aaqy(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference1, WeakReference paramWeakReference2, RecommendCommonMessage paramRecommendCommonMessage) {}
+  aaqy(aaqx paramaaqx, ArrayList paramArrayList) {}
   
-  public void a(String paramString, Object paramObject, ArkMessageServerLogic.ArkPassiveSearchInfo paramArkPassiveSearchInfo)
+  public void run()
   {
-    ArkAppCenter.a().post(new aaqz(this, paramArkPassiveSearchInfo));
+    aard localaard2 = null;
+    if ((ArkActionAppMgr)this.jdField_a_of_type_Aaqx.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    aard localaard1 = null;
+    ArkAppCGI.ActionAppUpdateInfo localActionAppUpdateInfo;
+    while (localIterator.hasNext())
+    {
+      localActionAppUpdateInfo = (ArkAppCGI.ActionAppUpdateInfo)localIterator.next();
+      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_checkActionNeedUpdate, action=%s.%s, gray-appid=%d, appid=%d, need-update=%s", new Object[] { localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString, Long.valueOf(localActionAppUpdateInfo.jdField_b_of_type_Long), Long.valueOf(localActionAppUpdateInfo.jdField_a_of_type_Long), Boolean.toString(localActionAppUpdateInfo.jdField_a_of_type_Boolean) }));
+      if (localActionAppUpdateInfo.jdField_a_of_type_Boolean)
+      {
+        ArkActionAppMgr.a(this.jdField_a_of_type_Aaqx.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr, localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_Long, localActionAppUpdateInfo.jdField_a_of_type_Long);
+      }
+      else
+      {
+        label151:
+        if (localaard1 != null) {
+          break label269;
+        }
+        localaard1 = new aard();
+        localaard1.a(this.jdField_a_of_type_Aaqx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), 2);
+      }
+    }
+    label269:
+    for (;;)
+    {
+      if (localaard2 == null)
+      {
+        localaard2 = new aard();
+        localaard2.a(this.jdField_a_of_type_Aaqx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), 1);
+      }
+      for (;;)
+      {
+        localaard1.a(localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString);
+        localaard2.a(localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString);
+        break label151;
+        if (localaard1 != null) {
+          localaard1.a();
+        }
+        if (localaard2 == null) {
+          break;
+        }
+        localaard2.a();
+        return;
+      }
+    }
   }
 }
 

@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.search.util.HighlightModel;
-import java.util.Comparator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahip
-  implements Comparator
+  implements Runnable
 {
-  public ahip(HighlightModel paramHighlightModel) {}
+  public ahip(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, boolean paramBoolean, int paramInt) {}
   
-  public int a(String paramString1, String paramString2)
+  public void run()
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "onStatusChanged: " + this.jdField_a_of_type_Boolean + " error:" + this.jdField_a_of_type_Int);
     }
-    return paramString2.length() - paramString1.length();
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), 2131432978, 0).a();
+      CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, -1);
+      return;
+    }
+    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, 101);
+    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, "onStatusChanged");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahip
  * JD-Core Version:    0.7.0.1
  */

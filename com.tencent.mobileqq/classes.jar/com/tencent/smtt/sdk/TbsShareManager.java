@@ -694,8 +694,8 @@ public class TbsShareManager
     //   6: aload_0
     //   7: ldc_w 358
     //   10: invokestatic 360	com/tencent/smtt/sdk/TbsShareManager:getTbsShareFile	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-    //   13: astore 7
-    //   15: aload 7
+    //   13: astore 8
+    //   15: aload 8
     //   17: ifnonnull +28 -> 45
     //   20: iconst_0
     //   21: ifeq +11 -> 32
@@ -714,7 +714,7 @@ public class TbsShareManager
     //   48: dup
     //   49: new 367	java/io/FileInputStream
     //   52: dup
-    //   53: aload 7
+    //   53: aload 8
     //   55: invokespecial 370	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   58: invokespecial 373	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   61: astore_3
@@ -741,13 +741,13 @@ public class TbsShareManager
     //   105: aload_0
     //   106: invokevirtual 350	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   109: invokevirtual 356	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   112: astore 8
+    //   112: astore 7
     //   114: aload_0
     //   115: invokestatic 418	com/tencent/smtt/utils/AppUtil:getAppVersionCode	(Landroid/content/Context;)I
     //   118: istore_2
     //   119: aload 6
     //   121: ldc 16
-    //   123: aload 8
+    //   123: aload 7
     //   125: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   128: pop
     //   129: aload 6
@@ -765,7 +765,7 @@ public class TbsShareManager
     //   154: dup
     //   155: new 424	java/io/FileOutputStream
     //   158: dup
-    //   159: aload 7
+    //   159: aload 8
     //   161: invokespecial 425	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   164: invokespecial 428	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   167: astore_0
@@ -876,8 +876,8 @@ public class TbsShareManager
     //   270	6	5	localObject7	Object
     //   284	32	5	localObject8	Object
     //   69	100	6	localProperties	java.util.Properties
-    //   13	147	7	localFile	File
-    //   112	12	8	str1	String
+    //   112	12	7	str1	String
+    //   13	147	8	localFile	File
     //   103	31	9	str2	String
     // Exception table:
     //   from	to	target	type
@@ -1553,7 +1553,7 @@ public class TbsShareManager
     //   3: aconst_null
     //   4: astore 8
     //   6: iconst_0
-    //   7: istore 5
+    //   7: istore 6
     //   9: ldc 25
     //   11: new 133	java/lang/StringBuilder
     //   14: dup
@@ -1612,160 +1612,160 @@ public class TbsShareManager
     //   133: invokevirtual 379	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   136: aload_1
     //   137: invokestatic 386	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   140: istore 6
-    //   142: iload 6
-    //   144: istore 5
-    //   146: iload 5
-    //   148: ifeq +116 -> 264
-    //   151: aload 10
-    //   153: ldc 22
-    //   155: aload_1
-    //   156: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
-    //   159: pop
-    //   160: aload 10
-    //   162: ldc 13
-    //   164: iconst_0
-    //   165: invokestatic 407	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   168: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
-    //   171: pop
-    //   172: aload 10
-    //   174: ldc 16
-    //   176: aload_2
-    //   177: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
-    //   180: pop
-    //   181: aload 10
-    //   183: ldc 19
-    //   185: aload_3
-    //   186: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
-    //   189: pop
-    //   190: aload 10
-    //   192: ldc 10
-    //   194: aload 4
-    //   196: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
-    //   199: pop
-    //   200: new 422	java/io/BufferedOutputStream
+    //   140: istore 5
+    //   142: iload 5
+    //   144: ifeq +116 -> 260
+    //   147: aload 10
+    //   149: ldc 22
+    //   151: aload_1
+    //   152: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   155: pop
+    //   156: aload 10
+    //   158: ldc 13
+    //   160: iconst_0
+    //   161: invokestatic 407	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   164: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   167: pop
+    //   168: aload 10
+    //   170: ldc 16
+    //   172: aload_2
+    //   173: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   176: pop
+    //   177: aload 10
+    //   179: ldc 19
+    //   181: aload_3
+    //   182: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   185: pop
+    //   186: aload 10
+    //   188: ldc 10
+    //   190: aload 4
+    //   192: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   195: pop
+    //   196: new 422	java/io/BufferedOutputStream
+    //   199: dup
+    //   200: new 424	java/io/FileOutputStream
     //   203: dup
-    //   204: new 424	java/io/FileOutputStream
-    //   207: dup
-    //   208: aload_0
-    //   209: invokespecial 425	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   212: invokespecial 428	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   215: astore_0
-    //   216: aload 10
-    //   218: aload_0
-    //   219: aconst_null
-    //   220: invokevirtual 432	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
-    //   223: iconst_0
-    //   224: putstatic 68	com/tencent/smtt/sdk/TbsShareManager:core_info_already_read	Z
-    //   227: getstatic 346	com/tencent/smtt/sdk/TbsShareManager:sAppContext	Landroid/content/Context;
-    //   230: invokestatic 497	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
-    //   233: sipush -406
-    //   236: invokevirtual 501	com/tencent/smtt/sdk/TbsDownloadConfig:setDownloadInterruptCode	(I)V
-    //   239: aload 7
-    //   241: ifnull +8 -> 249
-    //   244: aload 7
-    //   246: invokevirtual 402	java/io/BufferedInputStream:close	()V
+    //   204: aload_0
+    //   205: invokespecial 425	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   208: invokespecial 428	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   211: astore_0
+    //   212: aload 10
+    //   214: aload_0
+    //   215: aconst_null
+    //   216: invokevirtual 432	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   219: iconst_0
+    //   220: putstatic 68	com/tencent/smtt/sdk/TbsShareManager:core_info_already_read	Z
+    //   223: getstatic 346	com/tencent/smtt/sdk/TbsShareManager:sAppContext	Landroid/content/Context;
+    //   226: invokestatic 497	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
+    //   229: sipush -406
+    //   232: invokevirtual 501	com/tencent/smtt/sdk/TbsDownloadConfig:setDownloadInterruptCode	(I)V
+    //   235: aload 7
+    //   237: ifnull +8 -> 245
+    //   240: aload 7
+    //   242: invokevirtual 402	java/io/BufferedInputStream:close	()V
+    //   245: aload_0
+    //   246: ifnull -144 -> 102
     //   249: aload_0
-    //   250: ifnull -148 -> 102
-    //   253: aload_0
-    //   254: invokevirtual 433	java/io/BufferedOutputStream:close	()V
-    //   257: return
-    //   258: astore_0
-    //   259: aload_0
-    //   260: invokevirtual 253	java/lang/Exception:printStackTrace	()V
-    //   263: return
-    //   264: aload 10
-    //   266: ldc 13
-    //   268: iconst_1
-    //   269: invokestatic 407	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   272: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
-    //   275: pop
-    //   276: goto -76 -> 200
-    //   279: astore_2
-    //   280: aload 7
-    //   282: astore_0
-    //   283: aload 8
-    //   285: astore_1
-    //   286: aload_2
-    //   287: invokevirtual 343	java/lang/Throwable:printStackTrace	()V
+    //   250: invokevirtual 433	java/io/BufferedOutputStream:close	()V
+    //   253: return
+    //   254: astore_0
+    //   255: aload_0
+    //   256: invokevirtual 253	java/lang/Exception:printStackTrace	()V
+    //   259: return
+    //   260: aload 10
+    //   262: ldc 13
+    //   264: iconst_1
+    //   265: invokestatic 407	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   268: invokevirtual 411	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   271: pop
+    //   272: goto -76 -> 196
+    //   275: astore_2
+    //   276: aload 7
+    //   278: astore_0
+    //   279: aload 8
+    //   281: astore_1
+    //   282: aload_2
+    //   283: invokevirtual 343	java/lang/Throwable:printStackTrace	()V
+    //   286: aload_0
+    //   287: ifnull +7 -> 294
     //   290: aload_0
-    //   291: ifnull +7 -> 298
-    //   294: aload_0
-    //   295: invokevirtual 402	java/io/BufferedInputStream:close	()V
+    //   291: invokevirtual 402	java/io/BufferedInputStream:close	()V
+    //   294: aload_1
+    //   295: ifnull -193 -> 102
     //   298: aload_1
-    //   299: ifnull -197 -> 102
-    //   302: aload_1
-    //   303: invokevirtual 433	java/io/BufferedOutputStream:close	()V
-    //   306: return
+    //   299: invokevirtual 433	java/io/BufferedOutputStream:close	()V
+    //   302: return
+    //   303: astore_0
+    //   304: goto -49 -> 255
     //   307: astore_0
-    //   308: goto -49 -> 259
-    //   311: astore_0
-    //   312: aconst_null
-    //   313: astore 7
-    //   315: aload 9
-    //   317: astore_1
-    //   318: aload 7
-    //   320: ifnull +8 -> 328
-    //   323: aload 7
-    //   325: invokevirtual 402	java/io/BufferedInputStream:close	()V
+    //   308: aconst_null
+    //   309: astore 7
+    //   311: aload 9
+    //   313: astore_1
+    //   314: aload 7
+    //   316: ifnull +8 -> 324
+    //   319: aload 7
+    //   321: invokevirtual 402	java/io/BufferedInputStream:close	()V
+    //   324: aload_1
+    //   325: ifnull +7 -> 332
     //   328: aload_1
-    //   329: ifnull +7 -> 336
-    //   332: aload_1
-    //   333: invokevirtual 433	java/io/BufferedOutputStream:close	()V
-    //   336: aload_0
-    //   337: athrow
-    //   338: astore 11
-    //   340: goto -194 -> 146
+    //   329: invokevirtual 433	java/io/BufferedOutputStream:close	()V
+    //   332: aload_0
+    //   333: athrow
+    //   334: astore 11
+    //   336: iload 6
+    //   338: istore 5
+    //   340: goto -198 -> 142
     //   343: astore_2
     //   344: aload_2
     //   345: invokevirtual 253	java/lang/Exception:printStackTrace	()V
-    //   348: goto -20 -> 328
+    //   348: goto -24 -> 324
     //   351: astore_1
     //   352: aload_1
     //   353: invokevirtual 253	java/lang/Exception:printStackTrace	()V
-    //   356: goto -20 -> 336
+    //   356: goto -24 -> 332
     //   359: astore_0
     //   360: aload_0
     //   361: invokevirtual 253	java/lang/Exception:printStackTrace	()V
-    //   364: goto -66 -> 298
+    //   364: goto -70 -> 294
     //   367: astore_0
     //   368: aload_0
     //   369: invokevirtual 253	java/lang/Exception:printStackTrace	()V
     //   372: goto -282 -> 90
     //   375: astore_0
-    //   376: goto -117 -> 259
+    //   376: goto -121 -> 255
     //   379: astore_1
     //   380: aload_1
     //   381: invokevirtual 253	java/lang/Exception:printStackTrace	()V
-    //   384: goto -135 -> 249
+    //   384: goto -139 -> 245
     //   387: astore_0
     //   388: aload 9
     //   390: astore_1
-    //   391: goto -73 -> 318
+    //   391: goto -77 -> 314
     //   394: astore_2
     //   395: aload_0
     //   396: astore_1
     //   397: aload_2
     //   398: astore_0
-    //   399: goto -81 -> 318
+    //   399: goto -85 -> 314
     //   402: astore_2
     //   403: aload_0
     //   404: astore 7
     //   406: aload_2
     //   407: astore_0
-    //   408: goto -90 -> 318
+    //   408: goto -94 -> 314
     //   411: astore_2
     //   412: aconst_null
     //   413: astore_0
     //   414: aload 8
     //   416: astore_1
-    //   417: goto -131 -> 286
+    //   417: goto -135 -> 282
     //   420: astore_2
     //   421: aload_0
     //   422: astore_1
     //   423: aload 7
     //   425: astore_0
-    //   426: goto -140 -> 286
+    //   426: goto -144 -> 282
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	429	0	paramContext	Context
@@ -1773,43 +1773,43 @@ public class TbsShareManager
     //   0	429	2	paramString2	String
     //   0	429	3	paramString3	String
     //   0	429	4	paramString4	String
-    //   7	140	5	i	int
-    //   140	3	6	j	int
+    //   140	199	5	i	int
+    //   7	330	6	j	int
     //   118	306	7	localObject1	Object
     //   4	411	8	localObject2	Object
     //   1	388	9	localObject3	Object
-    //   127	138	10	localProperties	java.util.Properties
-    //   338	1	11	localException	Exception
+    //   127	134	10	localProperties	java.util.Properties
+    //   334	1	11	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   253	257	258	java/lang/Exception
-    //   120	136	279	java/lang/Throwable
-    //   136	142	279	java/lang/Throwable
-    //   151	200	279	java/lang/Throwable
-    //   200	216	279	java/lang/Throwable
-    //   264	276	279	java/lang/Throwable
-    //   302	306	307	java/lang/Exception
-    //   54	62	311	finally
-    //   66	78	311	finally
-    //   103	120	311	finally
-    //   136	142	338	java/lang/Exception
-    //   323	328	343	java/lang/Exception
-    //   332	336	351	java/lang/Exception
-    //   294	298	359	java/lang/Exception
+    //   249	253	254	java/lang/Exception
+    //   120	136	275	java/lang/Throwable
+    //   136	142	275	java/lang/Throwable
+    //   147	196	275	java/lang/Throwable
+    //   196	212	275	java/lang/Throwable
+    //   260	272	275	java/lang/Throwable
+    //   298	302	303	java/lang/Exception
+    //   54	62	307	finally
+    //   66	78	307	finally
+    //   103	120	307	finally
+    //   136	142	334	java/lang/Exception
+    //   319	324	343	java/lang/Exception
+    //   328	332	351	java/lang/Exception
+    //   290	294	359	java/lang/Exception
     //   82	90	367	java/lang/Exception
     //   94	102	375	java/lang/Exception
-    //   244	249	379	java/lang/Exception
+    //   240	245	379	java/lang/Exception
     //   120	136	387	finally
     //   136	142	387	finally
-    //   151	200	387	finally
-    //   200	216	387	finally
-    //   264	276	387	finally
-    //   216	239	394	finally
-    //   286	290	402	finally
+    //   147	196	387	finally
+    //   196	212	387	finally
+    //   260	272	387	finally
+    //   212	235	394	finally
+    //   282	286	402	finally
     //   54	62	411	java/lang/Throwable
     //   66	78	411	java/lang/Throwable
     //   103	120	411	java/lang/Throwable
-    //   216	239	420	java/lang/Throwable
+    //   212	235	420	java/lang/Throwable
   }
 }
 

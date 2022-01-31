@@ -7,6 +7,8 @@ import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 public abstract interface QQStoryAutoPlayView$StoryCoverClickListener
 {
   public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
+  
+  public abstract void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
 }
 
 

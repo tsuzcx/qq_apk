@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import adko;
+import adun;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -223,7 +223,7 @@ public class MonitorConfig
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    ThreadManager.post(new adko(paramAppRuntime), 5, null, false);
+    ThreadManager.post(new adun(paramAppRuntime), 5, null, false);
   }
   
   public String toString()
@@ -233,7 +233,7 @@ public class MonitorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.MonitorConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,30 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class ovi
-  extends ovu
+class ovi
+  implements TVK_SDKMgr.InstallListener
 {
-  public ovi(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, String paramString1, String paramString2)
+  ovi(ovh paramovh) {}
+  
+  public void onInstallProgress(float paramFloat)
   {
-    super(paramVideoCombineHelper);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
+    }
   }
   
-  public void b(boolean paramBoolean)
+  public void onInstalledFailed(int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a));
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, "plugin fail errorCode = " + paramInt);
     }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
-      return;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, "plugin success");
     }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.b, false, "cmobine auido video done.");
   }
 }
 

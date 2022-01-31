@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abij;
+import abpk;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -38,9 +38,9 @@ public class CampusCirclePicBrowserActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     getWindow().setFlags(1024, 1024);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new abij(this);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new abpk(this);
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369831));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369908));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
@@ -95,7 +95,7 @@ public class CampusCirclePicBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCirclePicBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

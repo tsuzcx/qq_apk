@@ -28,7 +28,7 @@ public class BubbleTextView
     this.jdField_a_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 11.0F);
     this.jdField_b_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 3.0F);
     this.jdField_c_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131493767);
+    this.jdField_a_of_type_Int = getResources().getColor(2131493773);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -40,7 +40,7 @@ public class BubbleTextView
     this.jdField_a_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 11.0F);
     this.jdField_b_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 3.0F);
     this.jdField_c_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131493767);
+    this.jdField_a_of_type_Int = getResources().getColor(2131493773);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;
@@ -53,7 +53,7 @@ public class BubbleTextView
     this.jdField_a_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 11.0F);
     this.jdField_b_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 3.0F);
     this.jdField_c_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131493767);
+    this.jdField_a_of_type_Int = getResources().getColor(2131493773);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = 0;

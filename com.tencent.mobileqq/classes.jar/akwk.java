@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-
-public class akwk
+class akwk
   implements Runnable
 {
-  public akwk(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  akwk(akwj paramakwj) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.app.a(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a, true);
-    this.a.c();
+    this.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akwk
  * JD-Core Version:    0.7.0.1
  */

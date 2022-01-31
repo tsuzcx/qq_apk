@@ -1,31 +1,32 @@
-import android.content.Context;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
-import cooperation.weiyun.utils.SoHelper.SoListener;
-import java.io.File;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
 
-public final class amsb
-  implements WyDownloader.IDownloadListener
+public class amsb
+  extends OnQZonePluginInstallListner.Stub
 {
-  public amsb(String paramString1, String paramString2, SoHelper.SoListener paramSoListener, Context paramContext, File paramFile1, File paramFile2) {}
+  public amsb(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
   
-  public void a(String paramString, long paramLong, float paramFloat)
-  {
-    if (this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener != null) {
-      this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener.a(paramLong, paramFloat);
-    }
-  }
+  public void a(String paramString) {}
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  public void a(String paramString, float paramFloat, long paramLong) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    if (paramBoolean) {
-      WyDownloader.a().a("http://dldir1.qq.com/weiyun/android/qq/librarySize1002.txt", this.jdField_a_of_type_JavaLangString, "SoHelper", new amsc(this));
-    }
-    while (this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener == null) {
+    QLog.w("QZoneLiveVideoDownLoadActivtyV2", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
+    paramString = this.a.a.obtainMessage();
+    paramString.what = 1010;
+    if (8 == paramInt) {}
+    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
+    {
+      this.a.a.sendMessage(paramString);
       return;
     }
-    this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener.a(paramString3);
   }
+  
+  public void b(String paramString) {}
 }
 
 

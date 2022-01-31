@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import ahps;
-import ahpt;
-import ahpu;
+import aidu;
+import aidv;
+import aidw;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -236,7 +236,7 @@ public class RecentDanceConfigMgr
     if (!c)
     {
       c = true;
-      ThreadManager.post(new ahpu(), 5, null, true);
+      ThreadManager.post(new aidw(), 5, null, true);
     }
   }
   
@@ -287,7 +287,7 @@ public class RecentDanceConfigMgr
   
   public static boolean a(Context paramContext)
   {
-    if (!PtvFilterSoLoad.b(paramContext)) {}
+    if (!PtvFilterSoLoad.a(paramContext)) {}
     do
     {
       do
@@ -615,7 +615,7 @@ public class RecentDanceConfigMgr
   
   private static void b(String paramString)
   {
-    ThreadManager.post(new ahps(paramString), 5, null, true);
+    ThreadManager.post(new aidu(paramString), 5, null, true);
   }
   
   public static boolean b()
@@ -693,7 +693,7 @@ public class RecentDanceConfigMgr
   private static void d(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
   {
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahpt(paramDItemInfo, paramString);
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aidv(paramDItemInfo, paramString);
     localHttpNetReq.jdField_a_of_type_JavaLangString = paramDItemInfo.icon_url;
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.jdField_c_of_type_JavaLangString = (paramString + "_temp");

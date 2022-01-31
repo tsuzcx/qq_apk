@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamwork;
 
-import ahyk;
-import ahyl;
+import aimn;
+import aimo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
@@ -52,7 +52,7 @@ public class TeamWorkHandler
     TicketManager localTicketManager = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
     if (localTicketManager != null)
     {
-      paramReSendCmd = localTicketManager.GetSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 16L, new ahyl(this, localTicketManager, paramReSendCmd));
+      paramReSendCmd = localTicketManager.GetSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 16L, new aimo(this, localTicketManager, paramReSendCmd));
       if ((paramReSendCmd != null) && (paramReSendCmd._sig != null))
       {
         paramReSendCmd = new String(paramReSendCmd._sig);
@@ -74,8 +74,8 @@ public class TeamWorkHandler
     if (localObject != null)
     {
       String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      ahyk localahyk = new ahyk(this, (TicketManager)localObject, paramReSendCmd);
-      localObject = ((TicketManager)localObject).GetPskey(str, 16L, new String[] { "docs.qq.com" }, localahyk);
+      aimn localaimn = new aimn(this, (TicketManager)localObject, paramReSendCmd);
+      localObject = ((TicketManager)localObject).GetPskey(str, 16L, new String[] { "docs.qq.com" }, localaimn);
       if ((localObject != null) && (((Ticket)localObject)._pskey_map != null) && (((Ticket)localObject)._pskey_map.get("docs.qq.com") != null))
       {
         QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey with promise success! isImediately Resend: " + paramBoolean);
@@ -391,7 +391,7 @@ public class TeamWorkHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkHandler
  * JD-Core Version:    0.7.0.1
  */

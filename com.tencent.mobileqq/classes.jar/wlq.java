@@ -1,79 +1,25 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.discussion.LinkShareActionSheetBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
 
-public class wlq
-  extends BaseAdapter
+class wlq
+  implements Runnable
 {
-  private wlq(LinkShareActionSheetBuilder paramLinkShareActionSheetBuilder) {}
+  wlq(wlp paramwlp, boolean paramBoolean) {}
   
-  public int getCount()
+  public void run()
   {
-    return 6;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2130971620, null);
-    }
-    int j;
-    int i;
-    switch (paramInt)
+    if ((this.jdField_a_of_type_Wlp.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b == 0) || (this.jdField_a_of_type_Wlp.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b == 2))
     {
-    case 4: 
-    default: 
-      j = 2130838328;
-      i = 2131435292;
-      paramInt = 2131435316;
-    }
-    for (;;)
-    {
-      paramView = (ImageView)paramViewGroup.findViewById(2131366708);
-      TextView localTextView = (TextView)paramViewGroup.findViewById(2131364292);
-      paramView.setImageResource(j);
-      localTextView.setText(i);
-      if (AppSetting.b) {
-        paramViewGroup.setContentDescription(LinkShareActionSheetBuilder.a(this.a).getString(paramInt));
+      if ((!this.jdField_a_of_type_Wlp.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.a()) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Wlp.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.a.a(1).a(true);
       }
-      return paramViewGroup;
-      i = 2131435284;
-      j = 2130838332;
-      paramInt = 2131435314;
-      continue;
-      i = 2131435291;
-      j = 2130838333;
-      paramInt = 2131435315;
-      continue;
-      i = 2131435282;
-      j = 2130838336;
-      paramInt = 2131435313;
-      continue;
-      i = 2131435281;
-      j = 2130838330;
-      paramInt = 2131435312;
-      continue;
-      paramInt = 2131429982;
-      i = 2131429982;
-      j = 2130840502;
     }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Wlp.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.a.a(1).a(false);
   }
 }
 

@@ -1,29 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
 
-public final class kxo
-  implements BusinessObserver
+public class kxo
+  extends ContentObserver
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public kxo(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, "doAdReport success!");
-        }
-      }
-      return;
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
+      ReadInJoyNativeAdAppVideoView.a(this.a).post(new kxp(this));
     }
-    catch (Exception paramBundle) {}
   }
 }
 

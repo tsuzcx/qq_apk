@@ -1,17 +1,32 @@
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class tqf
+  implements Runnable
 {
-  public int a;
-  public String a;
-  public boolean a;
+  public tqf(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public tqf(SoundAndVibrateActivity paramSoundAndVibrateActivity, int paramInt, String paramString, boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    try
+    {
+      if ((RegisterQQNumberActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      {
+        RegisterQQNumberActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
+        RegisterQQNumberActivity.a(this.a).c(2131435070);
+      }
+      if ((RegisterQQNumberActivity.a(this.a) != null) && (!RegisterQQNumberActivity.a(this.a).isShowing())) {
+        RegisterQQNumberActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

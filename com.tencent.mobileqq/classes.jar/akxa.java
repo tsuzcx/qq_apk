@@ -1,21 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class akxa
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public akxa(QidianProfileCardActivity paramQidianProfileCardActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public akxa(TabBarView paramTabBarView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      TabBarView.a(this.a, 0.0F);
+      TabBarView.a(this.a, (float)(TabBarView.a(this.a) + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (TabBarView.a(this.a) < 1.0F)
+      {
+        TabBarView.a(this.a, (float)(TabBarView.a(this.a) + 0.1D));
+        this.a.invalidate();
+        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    TabBarView.a(this.a, this.a.h, TabBarView.a(this.a));
+    TabBarView.a(this.a, 1.0F);
+    TabBarView.b(this.a, this.a.h, TabBarView.a(this.a));
+    this.a.h = TabBarView.a(this.a);
+    this.a.invalidate();
+    TabBarView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxa
  * JD-Core Version:    0.7.0.1
  */

@@ -172,64 +172,76 @@ public class StoryListUtils
     }
   }
   
-  public static String a(int paramInt)
+  public static String a(int paramInt, boolean paramBoolean)
   {
+    Object localObject1 = null;
+    Object localObject2;
     switch (paramInt)
     {
     default: 
-      return "未知时区";
-    case -12: 
-      return "时区·东西十二区";
-    case -11: 
-      return "时区·西十一区";
-    case -10: 
-      return "时区·西十区";
-    case -9: 
-      return "时区·西九区";
-    case -8: 
-      return "时区·西八区";
-    case -7: 
-      return "时区·西七区";
-    case -6: 
-      return "时区·西六区";
-    case -5: 
-      return "时区·西五区";
-    case -4: 
-      return "时区·西四区";
-    case -3: 
-      return "时区·西三区";
-    case -2: 
-      return "时区·西二区";
-    case -1: 
-      return "时区·西一区";
-    case 0: 
-      return "时区·零时区";
-    case 1: 
-      return "时区·东一区";
-    case 2: 
-      return "时区·东二区";
-    case 3: 
-      return "时区·东三区";
-    case 4: 
-      return "时区·东四区";
-    case 5: 
-      return "时区·东五区";
-    case 6: 
-      return "时区·东六区";
-    case 7: 
-      return "时区·东七区";
-    case 8: 
-      return "时区·东八区";
-    case 9: 
-      return "时区·东九区";
-    case 10: 
-      return "时区·东十区";
-    case 11: 
-      return "时区·东十一区";
-    case 12: 
-      return "时区·东西十二区";
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject2 = "未知时区";
+      }
+      break;
     }
-    return "时区·西十一区";
+    do
+    {
+      return localObject2;
+      localObject1 = "东西十二区";
+      break;
+      localObject1 = "西十一区";
+      break;
+      localObject1 = "西十区";
+      break;
+      localObject1 = "西九区";
+      break;
+      localObject1 = "西八区";
+      break;
+      localObject1 = "西七区";
+      break;
+      localObject1 = "西六区";
+      break;
+      localObject1 = "西五区";
+      break;
+      localObject1 = "西四区";
+      break;
+      localObject1 = "西三区";
+      break;
+      localObject1 = "西二区";
+      break;
+      localObject1 = "西一区";
+      break;
+      localObject1 = "零时区";
+      break;
+      localObject1 = "东一区";
+      break;
+      localObject1 = "东二区";
+      break;
+      localObject1 = "东三区";
+      break;
+      localObject1 = "东四区";
+      break;
+      localObject1 = "东五区";
+      break;
+      localObject1 = "东六区";
+      break;
+      localObject1 = "东七区";
+      break;
+      localObject1 = "东八区";
+      break;
+      localObject1 = "东九区";
+      break;
+      localObject1 = "东十区";
+      break;
+      localObject1 = "东十一区";
+      break;
+      localObject1 = "东西十二区";
+      break;
+      localObject1 = "西十一区";
+      break;
+      localObject2 = localObject1;
+    } while (!paramBoolean);
+    return "时区·" + (String)localObject1;
   }
   
   public static String a(long paramLong)
@@ -329,8 +341,12 @@ public class StoryListUtils
     Object localObject = ((QQStoryManager)paramQQAppInterface.getManager(180)).a(false);
     paramQQAppInterface = new ArrayList();
     localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramQQAppInterface.add(((QQStoryUserInfo)((Iterator)localObject).next()).uin);
+    while (((Iterator)localObject).hasNext())
+    {
+      QQStoryUserInfo localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
+      if (localQQStoryUserInfo != null) {
+        paramQQAppInterface.add(localQQStoryUserInfo.uin);
+      }
     }
     a(paramQQAppInterface);
   }

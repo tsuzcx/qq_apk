@@ -13,7 +13,7 @@ import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.manager.Manager;
-import mti;
+import mup;
 
 public class PAReportManager
   implements Handler.Callback, Manager
@@ -55,7 +55,7 @@ public class PAReportManager
   
   public void a(PAReportInfo paramPAReportInfo)
   {
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.post(new mti(this, paramPAReportInfo));
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.post(new mup(this, paramPAReportInfo));
   }
   
   public void b()

@@ -1,11 +1,20 @@
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class uvu
-  implements ActionSheet.OnDismissListener
+public class uvu
+  implements ActionSheet.OnButtonClickListener
 {
-  uvu(uvt paramuvt) {}
+  public uvu(DeviceFileItemBuilder paramDeviceFileItemBuilder, MessageForDeviceFile paramMessageForDeviceFile, ActionSheet paramActionSheet) {}
   
-  public void onDismiss() {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceFileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceFileItemBuilder.b();
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+  }
 }
 
 

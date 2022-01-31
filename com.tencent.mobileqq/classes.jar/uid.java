@@ -1,34 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-class uid
-  implements Runnable
+public class uid
+  extends AnimateUtils.AnimationAdapter
 {
-  uid(uic paramuic, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public uid(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
+    if (this.a.c > 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy");
-      }
-      if ((uic.a(this.jdField_a_of_type_Uic) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId)))
-      {
-        CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
-        return;
-      }
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId + ".png";
-      uic.a(this.jdField_a_of_type_Uic).b(str, new uie(this));
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    this.a.f.setVisibility(4);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = this.a;
+    paramAnimation.c -= 1;
+    this.a.f.setVisibility(0);
   }
 }
 

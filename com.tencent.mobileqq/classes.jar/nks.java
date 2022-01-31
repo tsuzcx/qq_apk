@@ -1,20 +1,38 @@
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.boundaries.StoryDepends.InviteCode;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.StoryShare;
+import com.tencent.biz.qqstory.newshare.mode.BigVContentShareMode;
+import com.tencent.biz.qqstory.newshare.mode.OpenStoryShareMode;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class nks
   implements Runnable
 {
-  public nks(VidListPlayMode paramVidListPlayMode, boolean paramBoolean) {}
+  public nks(NewFriendsPlayMode paramNewFriendsPlayMode, boolean paramBoolean, StoryVideoItem paramStoryVideoItem, String paramString, VideoListFeedItem paramVideoListFeedItem) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.e = false;
+    
+    Object localObject;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.g();
-      return;
+      localObject = new BigVContentShareMode(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a().a(2131433100).a(new nkt(this, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode)).a((ShareModeBase)localObject).a();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label138;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.a.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.b, false);
+    label138:
+    for (int i = 1;; i = 2)
+    {
+      StoryReportor.a("play_video", "guest_share", i, 0, new String[] { "", String.valueOf(StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
+      localObject = new OpenStoryShareMode(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
+      break;
+    }
   }
 }
 

@@ -1,50 +1,61 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.square.GetSquareBannerRequest;
-import com.tencent.biz.qqstory.network.request.square.GetSquareBannerRequest.GetSquareBannerResponse;
-import com.tencent.biz.qqstory.storyHome.square.SquareFeedListPageLoader;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMultiRcmdDisLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendHomeFeed;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
 import java.util.List;
 
-public class oaf
-  implements CmdTaskManger.CommandCallback
+class oaf
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public oaf(SquareFeedListPageLoader paramSquareFeedListPageLoader) {}
+  oaf(oae paramoae) {}
   
-  public void a(@NonNull GetSquareBannerRequest arg1, @Nullable GetSquareBannerRequest.GetSquareBannerResponse paramGetSquareBannerResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    ??? = (DiscoverManager)SuperManager.a(22);
-    if ((paramErrorMessage.isSuccess()) && (paramGetSquareBannerResponse != null))
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      ???.b(paramGetSquareBannerResponse.a, true);
-      SLog.a("Q.qqstory.discover.SquareFeedListPageLoader", "refresh banner :%s", paramGetSquareBannerResponse.a);
-      synchronized (this.a)
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.home:FeedSegment", 2, "ReqMultiRcmdDisLike,onResult error=" + paramInt + " data=" + paramArrayOfByte);
+      }
+      return;
+    }
+    try
+    {
+      paramBundle = new qqstory_service.RspMultiRcmdDisLike();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = ((qqstory_struct.ErrorInfo)paramBundle.result.get()).error_code.get();
+      if (paramInt != 0) {
+        break label253;
+      }
+      QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, dislike success");
+      paramArrayOfByte = (HotRecommendHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+      paramArrayOfByte.a(this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      if (paramArrayOfByte.a().isEmpty())
       {
-        SquareFeedListPageLoader.a(this.a, paramGetSquareBannerResponse);
-        SquareFeedListPageLoader.a(this.a);
+        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a.a().remove(paramArrayOfByte);
+        paramArrayOfByte = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId;
+        Bosses.get().postJob(new oag(this, paramArrayOfByte));
+        FeedSegment.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment);
         return;
       }
     }
-    SLog.b("Q.qqstory.discover.SquareFeedListPageLoader", "refresh banner fail:%s", paramErrorMessage);
-    paramGetSquareBannerResponse = ???.b();
-    for (;;)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      synchronized (this.a)
-      {
-        if (paramGetSquareBannerResponse.size() > 0)
-        {
-          SquareFeedListPageLoader.a(this.a, new GetSquareBannerRequest.GetSquareBannerResponse(new ErrorMessage()));
-          SquareFeedListPageLoader.a(this.a).a = paramGetSquareBannerResponse;
-          SquareFeedListPageLoader.a(this.a);
-          return;
-        }
-      }
-      SquareFeedListPageLoader.a(this.a, new GetSquareBannerRequest.GetSquareBannerResponse(paramErrorMessage));
+      QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, error protobuf content" + paramArrayOfByte.getStackTrace());
+      return;
     }
+    FeedSegment.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+    return;
+    label253:
+    QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, errorcode:" + paramInt);
   }
 }
 

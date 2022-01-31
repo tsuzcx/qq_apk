@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import akbx;
-import akby;
-import akbz;
-import akca;
-import akcb;
-import akcc;
-import akcd;
-import akce;
-import akcf;
+import akqe;
+import akqf;
+import akqg;
+import akqh;
+import akqi;
+import akqj;
+import akqk;
+import akql;
+import akqm;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -206,7 +206,7 @@ public class SwiftBrowserTBSHandler
     if (TextUtils.isEmpty(paramString2)) {}
     for (localObject = "";; localObject = SHA1Util.a(paramString2))
     {
-      ThreadManager.getUIHandler().post(new akbx(paramString2, paramString1, paramWebView, i, j, (String)localObject));
+      ThreadManager.getUIHandler().post(new akqe(paramString2, paramString1, paramWebView, i, j, (String)localObject));
       return;
     }
   }
@@ -217,7 +217,7 @@ public class SwiftBrowserTBSHandler
     {
       String str = a();
       if ((!TextUtils.isEmpty(str)) && (SwiftWebViewUtils.a(str)) && (!str.contains("asyncMode=3")) && (!str.contains("sonic=1"))) {
-        ThreadManager.post(new akcf(this, str), 5, null, true);
+        ThreadManager.post(new akqm(this, str), 5, null, true);
       }
     }
   }
@@ -268,7 +268,7 @@ public class SwiftBrowserTBSHandler
       DownloadApi.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, (Bundle)localObject, 0, null, 0);
       return paramBundle;
     }
-    ThreadManager.post(new akbz(this, paramBundle, str), 8, null, true);
+    ThreadManager.post(new akqg(this, paramBundle, str), 8, null, true);
     return paramBundle;
     if ("cancelDownloadTask".equals(paramString))
     {
@@ -355,7 +355,7 @@ public class SwiftBrowserTBSHandler
               if (!this.jdField_a_of_type_JavaUtilHashSet.contains(str))
               {
                 this.jdField_a_of_type_JavaUtilHashSet.add(str);
-                ThreadManager.getUIHandler().postDelayed(new akca(this, paramString), 5000L);
+                ThreadManager.getUIHandler().postDelayed(new akqh(this, paramString), 5000L);
               }
             }
           }
@@ -705,14 +705,14 @@ public class SwiftBrowserTBSHandler
         this.jdField_a_of_type_JavaLangString = ((DownloadInfo)localObject).c;
         if (paramBoolean)
         {
-          paramString = BaseApplicationImpl.getApplication().getResources().getString(2131435459);
+          paramString = BaseApplicationImpl.getApplication().getResources().getString(2131435476);
           QQToast.a(BaseApplicationImpl.getApplication(), 2, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
           this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102));
           return;
         }
       }
       finally {}
-      paramString = BaseApplicationImpl.getApplication().getResources().getString(2131435455);
+      paramString = BaseApplicationImpl.getApplication().getResources().getString(2131435472);
     }
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -720,9 +720,9 @@ public class SwiftBrowserTBSHandler
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.isFinishing())
     {
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      ThreadManager.post(new akcb(this), 8, null, true);
-      paramString = new akcc(this);
-      localObject = new akcd(this);
+      ThreadManager.post(new akqi(this), 8, null, true);
+      paramString = new akqj(this);
+      localObject = new akqk(this);
       if (!NetworkUtil.h(BaseApplicationImpl.getApplication())) {
         break label351;
       }
@@ -732,7 +732,7 @@ public class SwiftBrowserTBSHandler
       }
     }
     label335:
-    for (paramString = BaseApplicationImpl.getApplication().getResources().getString(2131435459);; paramString = BaseApplicationImpl.getApplication().getResources().getString(2131435455))
+    for (paramString = BaseApplicationImpl.getApplication().getResources().getString(2131435476);; paramString = BaseApplicationImpl.getApplication().getResources().getString(2131435472))
     {
       QQToast.a(BaseApplicationImpl.getApplication(), 2, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
@@ -743,8 +743,8 @@ public class SwiftBrowserTBSHandler
     label351:
     if (paramBoolean)
     {
-      Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841630);
-      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, localDrawable, BaseApplicationImpl.getApplication().getResources().getString(2131435460), " ", BaseApplicationImpl.getApplication().getResources().getString(2131433682), BaseApplicationImpl.getApplication().getResources().getString(2131435452), paramString, (View.OnClickListener)localObject);
+      Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841667);
+      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, localDrawable, BaseApplicationImpl.getApplication().getResources().getString(2131435477), " ", BaseApplicationImpl.getApplication().getResources().getString(2131433699), BaseApplicationImpl.getApplication().getResources().getString(2131435469), paramString, (View.OnClickListener)localObject);
       this.jdField_a_of_type_AndroidAppDialog.show();
       paramString = BaseApplicationImpl.getApplication().getSharedPreferences("qb_info", 0);
       if (paramString == null) {
@@ -754,7 +754,7 @@ public class SwiftBrowserTBSHandler
     label567:
     for (paramString = paramString.getString("icon_url", null);; paramString = null)
     {
-      localObject = new akce(this);
+      localObject = new akql(this);
       if (paramString != null)
       {
         paramString = URLDrawable.getDrawable(paramString);
@@ -763,7 +763,7 @@ public class SwiftBrowserTBSHandler
       }
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       return;
-      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, BaseApplicationImpl.getApplication().getResources().getString(2131435454), 2131433682, 2131435452, paramString, (View.OnClickListener)localObject);
+      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, BaseApplicationImpl.getApplication().getResources().getString(2131435471), 2131433699, 2131435469, paramString, (View.OnClickListener)localObject);
       this.jdField_a_of_type_AndroidAppDialog.show();
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       return;
@@ -839,23 +839,23 @@ public class SwiftBrowserTBSHandler
         }
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
         return true;
-        ThreadManager.post(new akby(this), 8, null, true);
+        ThreadManager.post(new akqf(this), 8, null, true);
         return true;
         paramMessage = (Drawable)paramMessage.obj;
       } while ((this.jdField_a_of_type_AndroidAppDialog == null) || (!this.jdField_a_of_type_AndroidAppDialog.isShowing()) || (paramMessage == null));
-      Object localObject1 = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364070);
+      Object localObject1 = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364094);
       ((ImageView)localObject1).setImageDrawable(null);
       ((ImageView)localObject1).setImageDrawable(paramMessage);
       return true;
       paramMessage = (String)paramMessage.obj;
     } while ((this.jdField_a_of_type_AndroidAppDialog == null) || (!this.jdField_a_of_type_AndroidAppDialog.isShowing()) || (paramMessage == null));
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364073)).setText(paramMessage);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364097)).setText(paramMessage);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler
  * JD-Core Version:    0.7.0.1
  */

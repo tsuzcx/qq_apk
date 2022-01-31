@@ -1,165 +1,70 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.TroopFeedParserHelper;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.transfile.TransferRequest.AppInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedHashMap;
-import java.util.List;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aipw
-  implements HttpWebCgiAsyncTask.Callback
+  extends aipl
 {
-  public aipw(TroopFeedsDataManager paramTroopFeedsDataManager) {}
+  private boolean a;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public aipw(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
   {
-    if (paramJSONObject != null) {}
-    for (;;)
-    {
-      try
-      {
-        if (paramJSONObject.optInt("retcode") == 0) {
-          break label687;
-        }
-        i = paramJSONObject.optInt("ec");
-        if (i == 0) {
-          break label687;
-        }
-        i = 0;
-        if (i == 0)
-        {
-          if ((paramInt == 1000) || (paramInt == 1002))
-          {
-            TroopFeedsDataManager.e(this.a);
-            this.a.notifyObservers(Integer.valueOf(103));
-            if (paramInt == 1002) {
-              this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopFeedsDataManager", 2, "cgi end(failed): " + System.currentTimeMillis());
-          }
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle = paramBundle;
-        paramBundle.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopFeedsDataManager", 2, "cgi end(suc): " + System.currentTimeMillis());
-        }
-        if (paramInt == 1000)
-        {
-          ThreadManager.getSubThreadHandler().post(new aipx(this, paramJSONObject));
-          return;
-        }
-      }
-      finally {}
-      if (paramInt == 1002)
-      {
-        ThreadManager.getSubThreadHandler().post(new aipy(this, paramJSONObject));
-        return;
-      }
-      if (paramInt == 1003)
-      {
-        TroopFeedsDataManager.f(this.a);
-        paramBundle = paramJSONObject.optJSONArray("inst");
-        if ((paramBundle != null) && (paramBundle.length() > 0))
-        {
-          this.a.jdField_a_of_type_OrgJsonJSONObject = paramBundle.optJSONObject(0);
-          this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-        }
-        this.a.notifyObservers(Integer.valueOf(106));
-        return;
-      }
-      Object localObject;
-      JSONObject localJSONObject;
-      if (paramInt == 1004)
-      {
-        localObject = paramJSONObject.optJSONArray("feeds");
-        paramBundle = paramJSONObject.optJSONArray("inst");
-        if ((localObject != null) && (((JSONArray)localObject).length() == 1))
-        {
-          localJSONObject = ((JSONArray)localObject).optJSONObject(0);
-          this.a.b = localJSONObject;
-          this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-          paramInt = 1;
-        }
-      }
-      for (;;)
-      {
-        i = paramInt;
-        if (paramBundle != null)
-        {
-          i = paramInt;
-          if (paramBundle.length() > 0)
-          {
-            paramBundle = paramBundle.optJSONObject(0);
-            long l2 = paramBundle.optLong("pubt");
-            long l1 = 0L;
-            if (this.a.b != null) {
-              l1 = this.a.b.optLong("pubt");
-            }
-            i = paramInt;
-            if (l2 > l1)
-            {
-              this.a.b = paramBundle;
-              this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");
-              i = 1;
-            }
-          }
-        }
-        if (i == 0) {
-          break;
-        }
-        TroopFeedsDataManager.g(this.a);
-        this.a.notifyObservers(Integer.valueOf(1007));
-        return;
-        if ((localObject != null) && (((JSONArray)localObject).length() == 2))
-        {
-          localJSONObject = ((JSONArray)localObject).optJSONObject(0);
-          localObject = ((JSONArray)localObject).optJSONObject(1);
-          if (localJSONObject.optLong("pubt") >= ((JSONObject)localObject).optLong("pubt")) {
-            this.a.b = localJSONObject;
-          }
-          for (this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad");; this.a.jdField_a_of_type_Int = paramJSONObject.optInt("ad"))
-          {
-            paramInt = 1;
-            break;
-            this.a.b = ((JSONObject)localObject);
-          }
-          if ((paramInt != 1005) && (paramInt != 1006)) {
-            break;
-          }
-          paramJSONObject = TroopFeedParserHelper.a(paramJSONObject, "" + this.a.jdField_a_of_type_JavaLangLong, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          paramBundle = (List)paramJSONObject[0];
-          paramJSONObject = (List)paramJSONObject[1];
-          this.a.jdField_a_of_type_JavaUtilList = paramJSONObject;
-          TroopFeedsDataManager.h(this.a);
-          if (paramInt == 1005)
-          {
-            this.a.notifyObservers(Integer.valueOf(1008));
-            return;
-          }
-          this.a.notifyObservers(Integer.valueOf(1009));
-          return;
-        }
-        paramInt = 0;
-      }
-      label687:
-      int i = 1;
+    super(paramForwardSdkShareProcessor);
+    this.jdField_a_of_type_JavaLangString = "SendMsgStep";
+  }
+  
+  protected boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "SendMsgStep|process");
     }
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      f();
+      return;
+    }
+    if (!NetworkUtil.g(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_AndroidContentContext))
+    {
+      QLog.w("Q.share.ForwardSdkShareProcessor", 1, "SendMsgStep|no network");
+      if ((ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) > 0) || (!ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get()) || (!ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get()) || (ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).jdField_a_of_type_Int != 1))
+      {
+        this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.b(9004, "no network");
+        c();
+        return;
+      }
+    }
+    Object localObject = this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.c, this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int, this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long);
+    if (localObject != null) {
+      this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((MessageRecord)localObject, null);
+    }
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("report_type", "102");
+    ((Bundle)localObject).putString("act_type", "14");
+    ((Bundle)localObject).putString("intext_2", "" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+    ((Bundle)localObject).putString("stringext_1", "" + ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+    ((Bundle)localObject).putString("intext_3", "0");
+    ReportCenter.a().a((Bundle)localObject, "", this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+    this.jdField_a_of_type_Boolean = true;
+    b();
+    this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipw
  * JD-Core Version:    0.7.0.1
  */

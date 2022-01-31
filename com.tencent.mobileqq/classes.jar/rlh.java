@@ -1,47 +1,58 @@
-import android.os.Handler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class rlh
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rlh(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public rlh(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    TextView localTextView;
-    if (AuthDevVerifyCodeActivity.b <= 1)
+    int i;
+    label83:
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      if (AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        localTextView = (TextView)AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localTextView != null)
-        {
-          localTextView.setText(2131434260);
-          localTextView.setEnabled(true);
-          localTextView.setClickable(true);
-          return;
-        }
+      i = 1;
+      ReadInJoyHelper.a("local_kd_tab_switch", Integer.valueOf(i));
+      ReadInJoyHelper.a(this.a.app, "local_kd_tab_switch", Boolean.valueOf(paramBoolean));
+      ReadInJoyHelper.a(this.a.app, "local_kd_tab_has_set", Boolean.valueOf(true));
+      if (!paramBoolean) {
+        break label138;
       }
-      AuthDevVerifyCodeActivity.a(this.a).setText(2131434260);
-      AuthDevVerifyCodeActivity.a(this.a).setEnabled(true);
-      AuthDevVerifyCodeActivity.a(this.a).setClickable(true);
+      AssistantSettingActivity.a(this.a).setText(2131433554);
+      QQToast.a(this.a.getBaseContext(), 2, 2131439096, 2000).a();
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label173;
+      }
+      paramCompoundButton = "0X8008236";
+      label99:
+      if (!paramBoolean) {
+        break label179;
+      }
+    }
+    label138:
+    label173:
+    label179:
+    for (String str = "0X8008236";; str = "0X8008235")
+    {
+      PublicAccountReportUtils.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
       return;
+      i = 0;
+      break;
+      AssistantSettingActivity.a(this.a).setText(2131433553);
+      QQToast.a(this.a.getBaseContext(), 2, 2131439097, 2000).a();
+      break label83;
+      paramCompoundButton = "0X8008235";
+      break label99;
     }
-    AuthDevVerifyCodeActivity.b -= 1;
-    if (AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      localTextView = (TextView)AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localTextView != null)
-      {
-        localTextView.setText(this.a.getString(2131434260) + "(" + AuthDevVerifyCodeActivity.b + ")");
-        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1000L);
-        return;
-      }
-    }
-    AuthDevVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434260) + "(" + AuthDevVerifyCodeActivity.b + ")");
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1000L);
   }
 }
 

@@ -1,47 +1,34 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.vashealth.SSOHttpUtils;
-import com.tencent.mobileqq.vashealth.SportManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
 
-public class ajvx
-  implements SensorEventListener
+class ajvx
+  implements View.OnClickListener
 {
-  public ajvx(SportManager paramSportManager, long paramLong, int paramInt1, int paramInt2) {}
+  ajvx(ajvw paramajvw) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void onClick(View paramView)
   {
-    if ((paramSensorEvent.values[0] > 1.0E+008F) || (NetConnInfoCenter.getServerTimeMillis() > this.jdField_a_of_type_Long))
+    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.b();
+    paramView = this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController;
+    paramView.jdField_a_of_type_Int += 1;
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_Boolean)
     {
-      QLog.e("SportManager", 1, "unregister listener:" + paramSensorEvent.values[0]);
-      if (SportManager.a != null) {
-        SportManager.a.unregisterListener(this);
-      }
+      this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_Boolean = false;
+      this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_Int, false);
     }
-    long l1;
-    long l2;
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while ((SSOHttpUtils.jdField_a_of_type_Long == 0L) || (SSOHttpUtils.jdField_a_of_type_Int == 0));
-      l1 = NetConnInfoCenter.getServerTimeMillis();
-      l2 = SSOHttpUtils.jdField_a_of_type_Long;
-      i = (int)(paramSensorEvent.values[0] - SSOHttpUtils.jdField_a_of_type_Int);
-    } while ((l1 - l2 <= this.jdField_a_of_type_Int) || (i <= this.b));
-    this.jdField_a_of_type_ComTencentMobileqqVashealthSportManager.a("timer1 report");
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_Int % 5 == 0) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId + "");
+    }
+    ReportController.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvx
  * JD-Core Version:    0.7.0.1
  */

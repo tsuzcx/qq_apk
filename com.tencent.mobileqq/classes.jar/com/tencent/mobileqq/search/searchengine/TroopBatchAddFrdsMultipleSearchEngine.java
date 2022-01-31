@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ahin;
+import ahwp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Comparator;
 import java.util.Set;
@@ -8,7 +8,7 @@ import java.util.Set;
 public class TroopBatchAddFrdsMultipleSearchEngine
   extends ContactSearchEngine
 {
-  private Comparator a = new ahin(this);
+  private Comparator a = new ahwp(this);
   
   public TroopBatchAddFrdsMultipleSearchEngine(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set paramSet)
   {

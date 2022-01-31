@@ -1,27 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.funchat.record.QavRecordButtonView;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.app.VideoObserver;
+import com.tencent.av.ui.redbag.AVRedBagConfig;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class kdv
-  implements View.OnTouchListener
+  extends VideoObserver
 {
-  public kdv(QavRecordButtonView paramQavRecordButtonView) {}
+  public kdv(AVRedBagConfig paramAVRedBagConfig) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a()
   {
-    if (QavRecordButtonView.a(this.a) != 1) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    ThreadManager.post(new kdw(this), 10, null, true);
+    this.a.a.b(this);
   }
 }
 

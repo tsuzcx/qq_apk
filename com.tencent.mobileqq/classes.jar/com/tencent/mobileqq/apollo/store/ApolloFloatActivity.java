@@ -21,7 +21,7 @@ import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.SystemBarCompact;
-import ypn;
+import yst;
 
 public class ApolloFloatActivity
   extends ApolloBaseActivity
@@ -107,12 +107,12 @@ public class ApolloFloatActivity
       localObject = super.getResources();
       if (this.mSystemBarComp != null)
       {
-        i = ((Resources)localObject).getColor(2131492923);
+        i = ((Resources)localObject).getColor(2131492924);
         this.mSystemBarComp.setStatusColor(i);
         this.mSystemBarComp.setStatusBarColor(i);
       }
       if (super.getIntent().getBooleanExtra("extra_key_close_btn", false)) {
-        paramBundle.postDelayed(new ypn(this, (Resources)localObject, paramBundle), this.d);
+        paramBundle.postDelayed(new yst(this, (Resources)localObject, paramBundle), this.d);
       }
       super.setContentView(paramBundle);
       if (!this.jdField_a_of_type_Boolean) {

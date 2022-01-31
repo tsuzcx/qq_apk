@@ -31,14 +31,14 @@ import com.tencent.mobileqq.vipav.VipFunCallManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import jix;
-import jiy;
+import jii;
+import jij;
 
 public class GaInviteActivity
   extends BaseGaInvite
 {
   AudioManager jdField_a_of_type_AndroidMediaAudioManager = null;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jix(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jii(this);
   SessionInfo jdField_a_of_type_ComTencentAvAppSessionInfo = null;
   QAVNotification jdField_a_of_type_ComTencentAvUtilsQAVNotification = null;
   VExtensionInfoManager jdField_a_of_type_ComTencentAvUtilsVExtensionInfoManager = null;
@@ -127,9 +127,9 @@ public class GaInviteActivity
   public void f()
   {
     QLog.w(this.jdField_b_of_type_JavaLangString, 1, "quitGAudioDialog");
-    jiy localjiy1 = new jiy(this, 0);
-    jiy localjiy2 = new jiy(this, 1);
-    DialogUtil.b(this, 230, null, getString(2131428977), 2131428669, 2131429047, localjiy1, localjiy2).show();
+    jij localjij1 = new jij(this, 0);
+    jij localjij2 = new jij(this, 1);
+    DialogUtil.b(this, 230, null, getString(2131428983), 2131428675, 2131429053, localjij1, localjij2).show();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -365,19 +365,19 @@ public class GaInviteActivity
       if (!(this instanceof GaInviteLockActivity)) {
         break label176;
       }
-      float f1 = super.getResources().getDimensionPixelSize(2131559815);
+      float f1 = super.getResources().getDimensionPixelSize(2131559833);
       str = UITools.a(super.getApplicationContext(), str, this.jdField_a_of_type_AndroidWidgetTextView, f1);
-      str = str + super.getApplicationContext().getString(2131428901);
+      str = str + super.getApplicationContext().getString(2131428907);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
     }
     for (;;)
     {
       QLog.w(this.jdField_b_of_type_JavaLangString, 1, "onWindowFocusChanged, uinType_Invite[" + i + "], inviteFriendName[" + str + "]");
-      findViewById(2131365932).setContentDescription(str);
+      findViewById(2131365959).setContentDescription(str);
       return;
       label176:
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      str = str + super.getApplicationContext().getString(2131428901);
+      str = str + super.getApplicationContext().getString(2131428907);
     }
   }
 }

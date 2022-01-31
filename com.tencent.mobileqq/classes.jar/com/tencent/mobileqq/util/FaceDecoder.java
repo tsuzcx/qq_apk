@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import ajlj;
+import ajzo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.common.app.AppInterface;
@@ -36,7 +36,7 @@ public class FaceDecoder
     if ((paramQQAppInterface == null) || (paramFaceInfo == null)) {
       return;
     }
-    ThreadManager.post(new ajlj(paramFaceInfo, paramQQAppInterface), 10, null, true);
+    ThreadManager.post(new ajzo(paramFaceInfo, paramQQAppInterface), 10, null, true);
   }
   
   public Bitmap a(int paramInt, String paramString)

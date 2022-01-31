@@ -1,21 +1,34 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class aixm
-  implements Runnable
+  implements VideoCompositeHelper.VideoCompositeCallBack
 {
   aixm(aixk paramaixk) {}
   
-  public void run()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.getAdapter().notifyItemChanged(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c);
+    if (paramInt != 0)
+    {
+      new VideoFeedsUploader.UploadResult().a = -1010;
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.a.jdField_a_of_type_Long);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.b = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.a = ((int)this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(paramString2, this.a.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixm
  * JD-Core Version:    0.7.0.1
  */

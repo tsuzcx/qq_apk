@@ -1,21 +1,32 @@
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 class acvi
   implements Runnable
 {
-  acvi(acvh paramacvh) {}
+  acvi(acve paramacve, String paramString) {}
   
   public void run()
   {
-    if ((this.a.a.b == true) && (this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)) {
-      this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+    try
+    {
+      if (this.jdField_a_of_type_Acve.a.jdField_a_of_type_JavaIoOutputStream == null) {
+        this.jdField_a_of_type_Acve.a.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.jdField_a_of_type_Acve.a.d, true);
+      }
+      this.jdField_a_of_type_Acve.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Acve.a.c, 2002);
+      this.jdField_a_of_type_Acve.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+      this.jdField_a_of_type_Acve.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_Acve.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.jdField_a_of_type_Acve.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
+      this.jdField_a_of_type_Acve.a.h = this.jdField_a_of_type_JavaLangString;
+      FileManagerRSWorker.a(this.jdField_a_of_type_Acve.a, this.jdField_a_of_type_Acve.a.jdField_a_of_type_Long, this.jdField_a_of_type_Acve.a.h);
+      return;
     }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.d(VideoFilePresenter.a(this.a.a));
-    if (VideoFilePresenter.a(this.a.a) != null) {
-      VideoFilePresenter.a(this.a.a).postDelayed(this.a.a.jdField_a_of_type_JavaLangRunnable, 100L);
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      localFileNotFoundException.printStackTrace();
     }
   }
 }

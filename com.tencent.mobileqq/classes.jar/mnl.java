@@ -1,13 +1,42 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import android.view.View.OnLongClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.TextData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.OnItemClickListener;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
 public class mnl
-  implements View.OnClickListener
+  extends BaseItemViewHolder
+  implements View.OnLongClickListener
 {
-  public mnl(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
+  private TextView a;
   
-  public void onClick(View paramView) {}
+  public mnl(View paramView, BaseData paramBaseData)
+  {
+    super(paramView, paramBaseData);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367129));
+    paramView.setOnLongClickListener(this);
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    switch (paramBaseData2.d)
+    {
+    default: 
+      return;
+    }
+    paramBaseData1 = (TextData)paramBaseData2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.a);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    new QQCustomMenu().a(0, "复制");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemOnItemClickListener.a(this);
+    return true;
+  }
 }
 
 

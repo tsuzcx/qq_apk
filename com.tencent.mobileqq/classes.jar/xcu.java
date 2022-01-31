@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
 
 public class xcu
-  extends xcx
+  implements View.OnClickListener
 {
-  public xcu(PreloadResource paramPreloadResource, WeakReference paramWeakReference, PreloadModule paramPreloadModule) {}
+  public xcu(CommonHbFragment paramCommonHbFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((PreloadManager.a(localPreloadManager)) && (localPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource))) {
-      localPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, null);
-    }
+    CommonHbFragment.a(this.a);
   }
 }
 

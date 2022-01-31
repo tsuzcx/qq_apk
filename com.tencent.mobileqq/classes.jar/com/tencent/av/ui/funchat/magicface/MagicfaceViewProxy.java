@@ -60,12 +60,12 @@ public class MagicfaceViewProxy
       AVLog.e("MagicfaceViewProxy", bool);
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
       {
-        localObject = View.inflate(BaseApplicationImpl.getContext(), 2130969318, null);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131366100));
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = ((MagicfaceViewForAV)((View)localObject).findViewById(2131366101));
+        localObject = View.inflate(BaseApplicationImpl.getContext(), 2130969319, null);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131366127));
+        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = ((MagicfaceViewForAV)((View)localObject).findViewById(2131366128));
         this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.setZOrderMediaOverlay(true);
         this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.getHolder().setFormat(-2);
-        localObject = paramViewGroup.findViewById(2131362516);
+        localObject = paramViewGroup.findViewById(2131362537);
         int i = -1;
         if (localObject != null) {
           i = paramViewGroup.indexOfChild((View)localObject);

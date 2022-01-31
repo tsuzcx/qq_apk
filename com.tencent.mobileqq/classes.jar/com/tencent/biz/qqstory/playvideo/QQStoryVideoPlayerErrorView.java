@@ -35,8 +35,8 @@ public class QQStoryVideoPlayerErrorView
     if (paramInt == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTipsText(StoryApi.a(2131432082));
-      setTipsIcon(2130843288);
+      setTipsText(StoryApi.a(2131432099));
+      setTipsIcon(2130843404);
       setTipsTextSize(16.0F);
     }
     do
@@ -46,7 +46,7 @@ public class QQStoryVideoPlayerErrorView
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         setTipsText("加载失败，点击重试");
-        setTipsIcon(2130843396);
+        setTipsIcon(2130843516);
         setTipsTextSize(14.0F);
         return;
       }
@@ -56,9 +56,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130970844, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362710));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131363197));
+    paramContext = LayoutInflater.from(paramContext).inflate(2130970892, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362728));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131363215));
   }
   
   public void setCloseViewVisibility(boolean paramBoolean)

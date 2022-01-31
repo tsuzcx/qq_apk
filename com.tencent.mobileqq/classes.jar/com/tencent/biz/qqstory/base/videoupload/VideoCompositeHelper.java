@@ -58,9 +58,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
-import mzi;
-import mzj;
-import mzk;
+import nat;
+import nau;
+import nav;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -200,7 +200,7 @@ public class VideoCompositeHelper
         if (j == 0)
         {
           k = i;
-          if (com.tencent.biz.qqstory.utils.FileUtils.f(paramString))
+          if (com.tencent.biz.qqstory.utils.FileUtils.g(paramString))
           {
             CodecParam.K = 1;
             i = CodecParam.r;
@@ -283,7 +283,7 @@ public class VideoCompositeHelper
     {
       try
       {
-        FFmpegUtils.a(paramString, str, paramInt, new mzj(localObject1, localAtomicInteger, 1));
+        FFmpegUtils.a(paramString, str, paramInt, new nau(localObject1, localAtomicInteger, 1));
       }
       catch (IOException localIOException)
       {
@@ -373,7 +373,7 @@ public class VideoCompositeHelper
     SLog.d(a, "Set time stamp to video. ");
     try
     {
-      FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramString2, new mzj(localObject, localAtomicInteger, 3));
+      FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramString2, new nau(localObject, localAtomicInteger, 3));
       try
       {
         localObject.wait(180000L);
@@ -567,38 +567,6 @@ public class VideoCompositeHelper
     }
   }
   
-  private void a(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
-  {
-    if (TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath))
-    {
-      com.tencent.biz.qqstory.utils.FileUtils.b(paramString1, paramString2);
-      paramVideoCompositeCallBack.a(0, "", paramString2);
-      return;
-    }
-    long l = a(paramString1);
-    if (l > 0L)
-    {
-      SLog.b(a, "modify video duration from %d to %d", Integer.valueOf(paramPublishVideoEntry.backgroundMusicDuration), Long.valueOf(l));
-      paramPublishVideoEntry.backgroundMusicDuration = ((int)Math.min(paramPublishVideoEntry.backgroundMusicDuration, l));
-    }
-    try
-    {
-      if ((paramPublishVideoEntry.isLocalPublish) && (paramPublishVideoEntry.isPicture))
-      {
-        FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, new mzk(paramString1, paramString2, paramVideoCompositeCallBack));
-        return;
-      }
-    }
-    catch (Exception paramPublishVideoEntry)
-    {
-      SLog.b(a, "combine audio throw exception:", paramPublishVideoEntry);
-      com.tencent.biz.qqstory.utils.FileUtils.f(paramString1);
-      paramVideoCompositeCallBack.a(941000, "combine audio exception", "");
-      return;
-    }
-    FFmpegUtils.b(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, new mzk(paramString1, paramString2, paramVideoCompositeCallBack));
-  }
-  
   public static boolean a(String paramString, int paramInt)
   {
     EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
@@ -650,7 +618,7 @@ public class VideoCompositeHelper
       if (a(paramString2, paramString3) != 0) {
         break label203;
       }
-      com.tencent.biz.qqstory.utils.FileUtils.f(paramString2);
+      com.tencent.biz.qqstory.utils.FileUtils.g(paramString2);
     }
     for (;;)
     {
@@ -665,7 +633,7 @@ public class VideoCompositeHelper
     paramString2 = new AtomicInteger(-1);
     try
     {
-      FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramInt1, paramInt2 - paramInt1, paramInt3, paramBoolean, paramString3, new mzj(paramPublishVideoEntry, paramString2, 1));
+      FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramInt1, paramInt2 - paramInt1, paramInt3, paramBoolean, paramString3, new nau(paramPublishVideoEntry, paramString2, 1));
       try
       {
         paramPublishVideoEntry.wait(180000L);
@@ -796,7 +764,7 @@ public class VideoCompositeHelper
           }
           SLog.d(a, "video audio mp4");
           l2 = SystemClock.elapsedRealtime();
-          com.tencent.biz.qqstory.utils.FileUtils.f(str3);
+          com.tencent.biz.qqstory.utils.FileUtils.g(str3);
           i = HwVideoMerge.a(str2, str1, str3, 0);
           SLog.d(a, "[HwVideoMerge.merge]cost=%s", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - l2) });
           if (i != 0)
@@ -831,29 +799,29 @@ public class VideoCompositeHelper
     //   19: invokespecial 297	java/util/concurrent/atomic/AtomicInteger:<init>	(I)V
     //   22: astore 7
     //   24: aload_1
-    //   25: invokestatic 995	com/tencent/biz/qqstory/utils/VideoUtils:a	(Ljava/lang/String;)I
+    //   25: invokestatic 956	com/tencent/biz/qqstory/utils/VideoUtils:a	(Ljava/lang/String;)I
     //   28: istore_3
     //   29: iload_3
     //   30: iconst_m1
     //   31: if_icmpne +7 -> 38
-    //   34: ldc_w 996
+    //   34: ldc_w 957
     //   37: ireturn
     //   38: getstatic 17	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:a	Ljava/lang/String;
-    //   41: ldc_w 998
+    //   41: ldc_w 959
     //   44: invokestatic 46	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   47: invokestatic 443	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   50: invokevirtual 1002	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   50: invokevirtual 963	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
     //   53: aload_1
     //   54: iload_3
     //   55: invokestatic 350	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   58: aload_2
-    //   59: new 301	mzj
+    //   59: new 301	nau
     //   62: dup
     //   63: aload 6
     //   65: aload 7
     //   67: iconst_4
-    //   68: invokespecial 304	mzj:<init>	(Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicInteger;I)V
-    //   71: invokestatic 1005	com/tencent/biz/qqstory/utils/ffmpeg/FFmpegUtils:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/biz/qqstory/utils/ffmpeg/FFmpegExecuteResponseCallback;)V
+    //   68: invokespecial 304	nau:<init>	(Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicInteger;I)V
+    //   71: invokestatic 966	com/tencent/biz/qqstory/utils/ffmpeg/FFmpegUtils:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/biz/qqstory/utils/ffmpeg/FFmpegExecuteResponseCallback;)V
     //   74: aload 6
     //   76: monitorenter
     //   77: aload 6
@@ -863,7 +831,7 @@ public class VideoCompositeHelper
     //   88: new 19	java/lang/StringBuilder
     //   91: dup
     //   92: invokespecial 22	java/lang/StringBuilder:<init>	()V
-    //   95: ldc_w 1007
+    //   95: ldc_w 968
     //   98: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   101: invokestatic 292	java/lang/System:currentTimeMillis	()J
     //   104: lload 4
@@ -888,20 +856,20 @@ public class VideoCompositeHelper
     //   137: new 19	java/lang/StringBuilder
     //   140: dup
     //   141: invokespecial 22	java/lang/StringBuilder:<init>	()V
-    //   144: ldc_w 1009
+    //   144: ldc_w 970
     //   147: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   150: aload_1
     //   151: invokevirtual 363	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   154: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   157: invokestatic 202	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   160: ldc_w 1010
+    //   160: ldc_w 971
     //   163: ireturn
     //   164: astore_1
     //   165: getstatic 17	com/tencent/biz/qqstory/base/videoupload/VideoCompositeHelper:a	Ljava/lang/String;
     //   168: new 19	java/lang/StringBuilder
     //   171: dup
     //   172: invokespecial 22	java/lang/StringBuilder:<init>	()V
-    //   175: ldc_w 1012
+    //   175: ldc_w 973
     //   178: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   181: aload_1
     //   182: invokevirtual 363	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -909,7 +877,7 @@ public class VideoCompositeHelper
     //   188: invokestatic 202	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   191: aload 6
     //   193: monitorexit
-    //   194: ldc_w 1013
+    //   194: ldc_w 974
     //   197: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1012,7 +980,7 @@ public class VideoCompositeHelper
       localAtomicInteger = new AtomicInteger(942010);
       try
       {
-        FFmpegUtils.b(BaseApplicationImpl.getApplication(), paramString1, paramString2, new mzj(localObject, localAtomicInteger, 2));
+        FFmpegUtils.b(BaseApplicationImpl.getApplication(), paramString1, paramString2, new nau(localObject, localAtomicInteger, 2));
         try
         {
           localObject.wait(300000L);
@@ -1050,7 +1018,7 @@ public class VideoCompositeHelper
     }
     try
     {
-      FFmpegUtils.b(BaseApplicationImpl.getApplication(), str, paramString2, new mzj(localObject, localAtomicInteger, 2));
+      FFmpegUtils.b(BaseApplicationImpl.getApplication(), str, paramString2, new nau(localObject, localAtomicInteger, 2));
       try
       {
         localObject.wait(300000L);
@@ -1130,22 +1098,54 @@ public class VideoCompositeHelper
   {
     if (paramPublishVideoEntry.businessId == 1)
     {
-      a(paramPublishVideoEntry, paramString, false, paramVideoCompositeCallBack);
+      a(paramPublishVideoEntry, paramString, false, false, paramVideoCompositeCallBack);
       return;
     }
-    a(paramPublishVideoEntry, paramString, true, paramVideoCompositeCallBack);
+    a(paramPublishVideoEntry, paramString, true, false, paramVideoCompositeCallBack);
   }
   
-  public void a(@NonNull PublishVideoEntry paramPublishVideoEntry, @NonNull String paramString, boolean paramBoolean, @NonNull VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, boolean paramBoolean, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
+  {
+    if (TextUtils.isEmpty(paramPublishVideoEntry.backgroundMusicPath))
+    {
+      com.tencent.biz.qqstory.utils.FileUtils.b(paramString1, paramString2);
+      paramVideoCompositeCallBack.a(0, "", paramString2);
+      return;
+    }
+    long l = a(paramString1);
+    if (l > 0L)
+    {
+      SLog.b(a, "modify video duration from %d to %d", Integer.valueOf(paramPublishVideoEntry.backgroundMusicDuration), Long.valueOf(l));
+      paramPublishVideoEntry.backgroundMusicDuration = ((int)Math.min(paramPublishVideoEntry.backgroundMusicDuration, l));
+    }
+    try
+    {
+      if ((paramPublishVideoEntry.isLocalPublish) && (paramPublishVideoEntry.isPicture))
+      {
+        FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, new nav(paramString1, paramString2, paramVideoCompositeCallBack));
+        return;
+      }
+    }
+    catch (Exception paramPublishVideoEntry)
+    {
+      SLog.b(a, "combine audio throw exception:", paramPublishVideoEntry);
+      com.tencent.biz.qqstory.utils.FileUtils.g(paramString1);
+      paramVideoCompositeCallBack.a(941000, "combine audio exception", "");
+      return;
+    }
+    FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, paramBoolean, new nav(paramString1, paramString2, paramVideoCompositeCallBack));
+  }
+  
+  public void a(@NonNull PublishVideoEntry paramPublishVideoEntry, @NonNull String paramString, boolean paramBoolean1, boolean paramBoolean2, @NonNull VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
     AssertUtils.a(paramPublishVideoEntry);
     AssertUtils.a(paramString);
     AssertUtils.a(paramVideoCompositeCallBack);
     SLog.d(a, "composite create thread");
-    ThreadManager.newFreeThread(new mzi(this, paramPublishVideoEntry, paramString, paramBoolean, paramVideoCompositeCallBack), "StoryVideoComposite", 5).start();
+    ThreadManager.newFreeThread(new nat(this, paramPublishVideoEntry, paramString, paramBoolean1, paramBoolean2, paramVideoCompositeCallBack), "StoryVideoComposite", 5).start();
   }
   
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
+  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
     SLog.d(a, "doComposite from:" + paramPublishVideoEntry.businessId);
     Object localObject = new File(QQStoryConstant.e);
@@ -1156,7 +1156,7 @@ public class VideoCompositeHelper
     {
       i = b(paramPublishVideoEntry, str);
       if ((i != 942014) && (i != 942007)) {
-        break label571;
+        break label573;
       }
       localObject = "outOfMemory file info:" + BitmapUtils.a(paramPublishVideoEntry.mLocalRawVideoDir);
       SLog.d(a, "memory info:%s", new Object[] { a() });
@@ -1181,7 +1181,7 @@ public class VideoCompositeHelper
           k = VideoUtils.c(str);
           SLog.d(a, "[improve_video_clear] encode video file size:" + l + " bitrate=" + k + " and upload limit=" + StoryConfigManager.c());
           if (paramPublishVideoEntry.businessId != 1) {
-            break label563;
+            break label565;
           }
           if (!StoryConfigManager.b()) {
             break label546;
@@ -1192,14 +1192,14 @@ public class VideoCompositeHelper
         {
           StoryReportor.b("video_improve", "encode_video", j, i, new String[] { String.valueOf(k), String.valueOf(paramPublishVideoEntry.videoDuration), String.valueOf(l) });
           if ((i != 0) || (paramPublishVideoEntry.videoDuration <= 0L) || (l <= StoryConfigManager.c() / 10000 * paramPublishVideoEntry.videoDuration)) {
-            break label563;
+            break label565;
           }
           i = a(str, StoryConfigManager.d());
           localObject = "";
           break;
           if (paramPublishVideoEntry.hwEncodeRecordVideo)
           {
-            i = a(paramPublishVideoEntry, str, paramBoolean);
+            i = a(paramPublishVideoEntry, str, paramBoolean1);
             SLog.d(a, "hwEncodeRecordVideo end, errorCode:%d", new Object[] { Integer.valueOf(i) });
             break label317;
           }
@@ -1209,13 +1209,13 @@ public class VideoCompositeHelper
       }
       else
       {
-        a(paramPublishVideoEntry, str, paramString, paramVideoCompositeCallBack);
+        a(paramPublishVideoEntry, str, paramString, paramBoolean2, paramVideoCompositeCallBack);
         return;
       }
-      label563:
+      label565:
       localObject = "";
       continue;
-      label571:
+      label573:
       localObject = "";
     }
   }

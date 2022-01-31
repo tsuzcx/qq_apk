@@ -1,13 +1,15 @@
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareData;
 
-class ngy
+public class ngy
   implements Runnable
 {
-  ngy(ngw paramngw, String paramString1, String paramString2) {}
+  public ngy(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ngw.a.a(this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.a.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
   }
 }
 

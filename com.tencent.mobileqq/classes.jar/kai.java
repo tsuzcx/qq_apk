@@ -1,26 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import com.tencent.av.ui.VideoControlUI;
 
 public class kai
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  public kai(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  public kai(VideoControlUI paramVideoControlUI) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.a.a.clearAnimation();
+    this.a.c.clearAnimation();
+    this.a.b.clearAnimation();
+    this.a.e.clearAnimation();
+    this.a.l(true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

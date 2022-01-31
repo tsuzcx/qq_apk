@@ -3,6 +3,8 @@ package com.tencent.mobileqq.nativememorymonitor.library;
 public class ClassToFindJniOffset
 {
   public static native void mark();
+  
+  public static void mark2() {}
 }
 
 

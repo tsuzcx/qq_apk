@@ -1,47 +1,58 @@
-import android.os.Handler;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.mobileqq.armap.config.ConfigCheckHander;
-import com.tencent.mobileqq.armap.config.ConfigCheckHander.Listener;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
+import com.tencent.mobileqq.armap.wealthgod.WealthGodInfo;
 
-public class abbg
-  implements ConfigCheckHander.Listener
+class abbg
+  implements Runnable
 {
-  public abbg(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  abbg(abbf paramabbf) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, String.format("handleCheckAndDownloadResMsg onUpdate progress=%s", new Object[] { Integer.valueOf(paramInt) }));
+    int i = 0;
+    int j = 0;
+    if (ARMapActivity.a(this.a.a) != null)
+    {
+      ARMapActivity.k(this.a.a, true);
+      ARMapActivity.a(this.a.a).setLoadStatus(0);
+      if (ARMapActivity.a(this.a.a) != null) {
+        ARMapActivity.a(this.a.a).b = System.currentTimeMillis();
+      }
+      ARMapActivity.o(this.a.a);
+      if (ARMapActivity.c(this.a.a) == 3)
+      {
+        ARMapActivity.a(this.a.a).b();
+        ARMapActivity.p(this.a.a);
+        if (j == 0) {
+          break label302;
+        }
+        this.a.a.n();
+      }
     }
-  }
-  
-  public void a(int paramInt, List paramList)
-  {
-    ARMapLoadingActivity.a(this.a).h = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, String.format("handleCheckAndDownloadResMsg onResult errCode=%s", new Object[] { Integer.valueOf(paramInt) }));
+    else
+    {
+      return;
     }
-    if ((paramInt == 0) && (paramList != null)) {
-      ARMapLoadingActivity.a(this.a).sendEmptyMessage(110);
+    if ((ARMapActivity.c(this.a.a) == 1) || (ARMapActivity.c(this.a.a) == 7) || ((ARMapActivity.c(this.a.a) == 4) && (ARMapActivity.a(this.a.a).a == 1))) {
+      i = 1;
     }
     for (;;)
     {
-      if (ARMapLoadingActivity.a(this.a) != null)
-      {
-        paramList = ARMapLoadingActivity.a(this.a).a();
-        if (paramList != null) {
-          paramList.a(null);
-        }
+      j = i;
+      if (!this.a.a.f) {
+        break;
       }
-      return;
-      paramList = ARMapLoadingActivity.a(this.a).obtainMessage(104);
-      paramList.arg1 = 3;
-      paramList.arg2 = paramInt;
-      ARMapLoadingActivity.a(this.a).sendMessage(paramList);
+      ARMapActivity.p(this.a.a);
+      j = i;
+      break;
+      if ((ARMapActivity.c(this.a.a) == 2) || ((ARMapActivity.c(this.a.a) == 4) && (ARMapActivity.a(this.a.a).a == 0))) {
+        ARMapActivity.a(this.a.a).b();
+      } else {
+        ARMapActivity.a(this.a.a).a();
+      }
     }
+    label302:
+    ARMapActivity.a(this.a.a).d();
   }
 }
 

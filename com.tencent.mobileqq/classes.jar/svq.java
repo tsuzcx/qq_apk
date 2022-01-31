@@ -1,35 +1,30 @@
-import android.database.DataSetObserver;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
 
 public class svq
-  extends DataSetObserver
+  extends FriendListObserver
 {
-  public svq(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public svq(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void onChanged()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    int j = 0;
-    Object localObject = LebaListMgrActivity.a(this.a);
-    if (LebaListMgrActivity.a(this.a).getCount() > 0)
+    if (paramBoolean)
     {
-      i = 0;
-      ((TextView)localObject).setVisibility(i);
-      localObject = LebaListMgrActivity.a(this.a);
-      if (LebaListMgrActivity.a(this.a).a() <= 0) {
-        break label65;
+      paramString = ((FriendsManager)this.a.app.getManager(50)).c(this.a.a + "");
+      if (paramString != null)
+      {
+        this.a.e = paramString.name;
+        JoinDiscussionActivity.a(this.a);
       }
     }
-    label65:
-    for (int i = j;; i = 8)
-    {
-      ((View)localObject).setVisibility(i);
+    while (!QLog.isColorLevel()) {
       return;
-      i = 8;
-      break;
     }
+    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
   }
 }
 

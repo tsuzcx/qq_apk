@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wft
-  implements View.OnClickListener
+public final class wft
+  implements DialogInterface.OnClickListener
 {
-  public wft(SearchContactsActivity paramSearchContactsActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.setResult(0);
-    this.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

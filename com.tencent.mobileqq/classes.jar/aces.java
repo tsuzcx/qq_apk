@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
 
-public class aces
-  implements View.OnClickListener
+class aces
+  implements WebProcessManager.WebProcessStartListener
 {
-  public aces(UniformDownloadActivity paramUniformDownloadActivity) {}
+  aces(acer paramacer) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    if (paramBoolean) {
+      this.a.a.a.a();
+    }
   }
 }
 

@@ -1,25 +1,16 @@
-import android.view.View;
-import com.tencent.widget.AbsListView;
+import com.tencent.plato.core.utils.Ev.IApp;
 
-public class aljx
-  implements Runnable
+public final class aljx
+  implements Ev.IApp
 {
-  public aljx(AbsListView paramAbsListView, View paramView, alki paramalki) {}
-  
-  public void run()
+  public String version()
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.mTouchMode = -1;
-    this.jdField_a_of_type_AndroidViewView.setPressed(false);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setPressed(false);
-    if (!this.jdField_a_of_type_ComTencentWidgetAbsListView.mDataChanged) {
-      this.jdField_a_of_type_Alki.run();
-    }
-    AbsListView.access$1002(this.jdField_a_of_type_ComTencentWidgetAbsListView, null);
+    return "1.0";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aljx
  * JD-Core Version:    0.7.0.1
  */

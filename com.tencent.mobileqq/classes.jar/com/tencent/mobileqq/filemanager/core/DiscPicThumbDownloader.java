@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acks;
-import ackt;
-import acku;
-import ackv;
-import ackw;
+import acup;
+import acuq;
+import acur;
+import acus;
+import acut;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -28,7 +28,7 @@ public class DiscPicThumbDownloader
   public DiscPicThumbDownloader(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new ackw(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new acut(this);
   }
   
   private DiscPicThumbDownloader.PicSession a(long paramLong, boolean paramBoolean)
@@ -99,7 +99,7 @@ public class DiscPicThumbDownloader
         {
           paramFileManagerEntity.strLargeThumPath = str;
           if (FilePicURLDrawlableHelper.b(paramFileManagerEntity)) {
-            ThreadManager.post(new acks(this, paramFileManagerEntity), 8, null, false);
+            ThreadManager.post(new acup(this, paramFileManagerEntity), 8, null, false);
           }
         }
         for (;;)
@@ -113,7 +113,7 @@ public class DiscPicThumbDownloader
           {
             paramFileManagerEntity.strMiddleThumPath = str;
             if (FilePicURLDrawlableHelper.b(paramFileManagerEntity)) {
-              ThreadManager.post(new ackt(this, paramFileManagerEntity), 8, null, false);
+              ThreadManager.post(new acuq(this, paramFileManagerEntity), 8, null, false);
             }
           }
           else
@@ -226,7 +226,7 @@ public class DiscPicThumbDownloader
       {
         localPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
         FileManagerUtil.e(localPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-        ThreadManager.post(new acku(this, localPicSession), 8, null, false);
+        ThreadManager.post(new acur(this, localPicSession), 8, null, false);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       }
     }
@@ -242,7 +242,7 @@ public class DiscPicThumbDownloader
         if (!FilePicURLDrawlableHelper.b(localPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity)) {
           break;
         }
-        ThreadManager.post(new ackv(this, localPicSession), 8, null, false);
+        ThreadManager.post(new acus(this, localPicSession), 8, null, false);
         break;
       }
       localPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strThumbPath = paramString;

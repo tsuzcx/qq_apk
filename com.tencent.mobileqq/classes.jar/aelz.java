@@ -1,33 +1,33 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.nearby.NearbyIconDecoder;
+import com.tencent.mobileqq.util.IIconDecoder.IIconListener;
+import java.util.Iterator;
+import java.util.List;
 
 public class aelz
-  implements IMediaPlayer.OnInfoListener
+  implements Runnable
 {
-  public aelz(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnInfoListener paramOnInfoListener) {}
+  public aelz(NearbyIconDecoder paramNearbyIconDecoder, String paramString, Bitmap paramBitmap) {}
   
-  public boolean a_(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
+    try
     {
-      return this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnInfoListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
+      String[] arrayOfString = this.jdField_a_of_type_JavaLangString.split("_s_");
+      if ((arrayOfString.length == 3) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyIconDecoder.a != null))
       {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
+        int i = Integer.parseInt(arrayOfString[0]);
+        int j = Integer.parseInt(arrayOfString[2]);
+        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyIconDecoder.a.iterator();
+        while (localIterator.hasNext()) {
+          ((IIconDecoder.IIconListener)localIterator.next()).a(i, arrayOfString[1], j, this.jdField_a_of_type_AndroidGraphicsBitmap);
         }
       }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }

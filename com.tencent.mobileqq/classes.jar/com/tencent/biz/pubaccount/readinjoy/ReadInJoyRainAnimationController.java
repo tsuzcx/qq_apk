@@ -5,22 +5,22 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.RainView;
 import com.tencent.qphone.base.util.QLog;
-import lbq;
-import lbr;
+import lbb;
+import lbc;
 
 public class ReadInJoyRainAnimationController
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private RainView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView;
-  private lbr jdField_a_of_type_Lbr;
+  private lbc jdField_a_of_type_Lbc;
   private boolean jdField_a_of_type_Boolean = true;
   
   public ReadInJoyRainAnimationController(ViewGroup paramViewGroup, Context paramContext)
   {
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Lbr = new lbr(this);
+    this.jdField_a_of_type_Lbc = new lbc(this);
   }
   
   public void a()
@@ -41,7 +41,7 @@ public class ReadInJoyRainAnimationController
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView, localLayoutParams);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.setTag("ReadInJoyRainAnimationController");
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.setAnimationEndListener(new lbq(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.setAnimationEndListener(new lbb(this));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.a(this.jdField_a_of_type_AndroidViewViewGroup.getWidth(), this.jdField_a_of_type_AndroidViewViewGroup.getTop(), this.jdField_a_of_type_AndroidViewViewGroup.getBottom(), paramString);
   }
   

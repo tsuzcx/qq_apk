@@ -34,7 +34,6 @@ public class ShortVideoUploadInfo
   public String p = "";
   public String q = "";
   public String r;
-  public String s;
   
   public String a()
   {

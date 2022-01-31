@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
 
 public class actn
-  implements IDownloadController
+  extends FMObserver
 {
-  public actn(MPcFileModel paramMPcFileModel) {}
+  public actn(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public void a()
+  protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new acto(this));
-  }
-  
-  public void b()
-  {
-    this.a.s();
+    super.a(paramThumbnailInfo);
+    if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0)) {
+      this.a.i();
+    }
   }
 }
 

@@ -1,25 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.ui.CallbackWaitingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
 
-public class jrj
-  extends Handler
+class jrj
+  implements DialogInterface.OnClickListener
 {
-  public jrj(CallbackWaitingActivity paramCallbackWaitingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  jrj(jre paramjre) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 

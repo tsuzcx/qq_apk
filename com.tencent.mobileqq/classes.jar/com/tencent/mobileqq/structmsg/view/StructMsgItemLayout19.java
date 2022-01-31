@@ -23,6 +23,8 @@ import com.tencent.mobileqq.structmsg.StructMsgNode;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.xmlpull.v1.XmlSerializer;
@@ -41,27 +43,33 @@ public class StructMsgItemLayout19
     if (TextUtils.isEmpty(paramAbsStructMsgElement.u)) {
       return;
     }
-    paramBundle = paramContext.getResources();
-    int i = AIOUtils.a(44.0F, paramBundle);
-    paramContext = new URLImageView(paramContext);
-    paramContext.setAdjustViewBounds(true);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, AIOUtils.a(16.0F, paramBundle), AIOUtils.a(18.0F, paramBundle), AIOUtils.a(14.0F, paramBundle));
-    localLayoutParams.addRule(11);
-    localLayoutParams.width = i;
-    localLayoutParams.height = i;
-    paramContext.setLayoutParams(localLayoutParams);
-    paramBundle = URLDrawable.URLDrawableOptions.obtain();
-    paramBundle.mRequestWidth = i;
-    paramBundle.mRequestHeight = i;
-    paramAbsStructMsgElement = URLDrawable.getDrawable(paramAbsStructMsgElement.u, paramBundle);
-    paramAbsStructMsgElement.setAutoDownload(true);
-    if (paramAbsStructMsgElement.getStatus() == 2) {
-      paramAbsStructMsgElement.restartDownload();
+    try
+    {
+      new URL(paramAbsStructMsgElement.u);
+      paramBundle = paramContext.getResources();
+      int i = AIOUtils.a(44.0F, paramBundle);
+      paramContext = new URLImageView(paramContext);
+      paramContext.setAdjustViewBounds(true);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.setMargins(0, AIOUtils.a(16.0F, paramBundle), AIOUtils.a(18.0F, paramBundle), AIOUtils.a(14.0F, paramBundle));
+      localLayoutParams.addRule(11);
+      localLayoutParams.width = i;
+      localLayoutParams.height = i;
+      paramContext.setLayoutParams(localLayoutParams);
+      paramBundle = URLDrawable.URLDrawableOptions.obtain();
+      paramBundle.mRequestWidth = i;
+      paramBundle.mRequestHeight = i;
+      paramAbsStructMsgElement = URLDrawable.getDrawable(paramAbsStructMsgElement.u, paramBundle);
+      paramAbsStructMsgElement.setAutoDownload(true);
+      if (paramAbsStructMsgElement.getStatus() == 2) {
+        paramAbsStructMsgElement.restartDownload();
+      }
+      paramContext.setImageDrawable(paramAbsStructMsgElement);
+      paramContext.setId(2131362111);
+      paramViewGroup.addView(paramContext);
+      return;
     }
-    paramContext.setImageDrawable(paramAbsStructMsgElement);
-    paramContext.setId(2131362111);
-    paramViewGroup.addView(paramContext);
+    catch (MalformedURLException paramContext) {}
   }
   
   private void a(Context paramContext, AbsStructMsgElement paramAbsStructMsgElement, Bundle paramBundle, ViewGroup paramViewGroup, boolean paramBoolean)
@@ -86,7 +94,7 @@ public class StructMsgItemLayout19
     try
     {
       i = Color.parseColor(((StructMsgItemRemark)paramAbsStructMsgElement).g());
-      paramQQWalletTransferBubbleView.setBubbleBackground(2130843928, i, true);
+      paramQQWalletTransferBubbleView.setBubbleBackground(2130844052, i, true);
       Resources localResources = paramContext.getResources();
       paramContext = (TextView)paramAbsStructMsgElement.a(paramContext, null, paramBundle);
       paramAbsStructMsgElement = new RelativeLayout.LayoutParams(-2, -2);
@@ -186,7 +194,7 @@ public class StructMsgItemLayout19
       try
       {
         i = Color.parseColor(this.u);
-        ((QQWalletTransferBubbleView)localObject2).setBubbleBackground(2130843927, i, true);
+        ((QQWalletTransferBubbleView)localObject2).setBubbleBackground(2130844051, i, true);
         paramView.addView((View)localObject2);
         QQWalletTransferBubbleView localQQWalletTransferBubbleView = new QQWalletTransferBubbleView(paramContext);
         localQQWalletTransferBubbleView.setLayoutParams(new LinearLayout.LayoutParams(-1, AIOUtils.a(25.0F, (Resources)localObject1)));
@@ -252,7 +260,7 @@ public class StructMsgItemLayout19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout19
  * JD-Core Version:    0.7.0.1
  */

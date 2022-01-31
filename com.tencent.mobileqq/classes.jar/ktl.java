@@ -1,29 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView.OnInterceptTouchListener;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class ktl
-  implements DialogInterface.OnClickListener
+  implements VerticalPagerView.OnInterceptTouchListener
 {
-  public ktl(AccountDetailActivity paramAccountDetailActivity, Activity paramActivity) {}
+  public ktl(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.k = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.doOnBackPressed();
-      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.f();
-    paramDialogInterface.dismiss();
+    return (PublicAccountAdvertisementActivity.d(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return (PublicAccountAdvertisementActivity.d(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).a() != null) && (PublicAccountAdvertisementActivity.a(this.a).a().getWebScrollY() == 0);
   }
 }
 

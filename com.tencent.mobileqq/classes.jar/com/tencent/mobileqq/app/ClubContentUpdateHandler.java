@@ -41,15 +41,15 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yxz;
-import yya;
-import yyb;
+import zbf;
+import zbg;
+import zbh;
 
 public class ClubContentUpdateHandler
   extends BusinessHandler
 {
   public QQAppInterface a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new yyb(this);
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new zbh(this);
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory;
   
   ClubContentUpdateHandler(QQAppInterface paramQQAppInterface)
@@ -96,7 +96,7 @@ public class ClubContentUpdateHandler
       Object localObject1 = paramQQAppInterface.getCurrentAccountUin();
       localReqBody.int_protocolver.set(1);
       localReqBody.uint_clientplatid.set(109);
-      localReqBody.str_clientver.set("7.6.0.3525");
+      localReqBody.str_clientver.set("7.6.3.3560");
       localReqBody.uint_uin.set(Long.parseLong((String)localObject1));
       ArrayList localArrayList1 = new ArrayList();
       int i = paramQQAppInterface.getApp().getSharedPreferences("sigResUpt", 0).getInt("sigTplCfgVer", 0);
@@ -1021,7 +1021,7 @@ public class ClubContentUpdateHandler
   
   public void a(String paramString, int paramInt)
   {
-    ThreadManager.getFileThreadHandler().post(new yxz(this, paramInt, paramString));
+    ThreadManager.getFileThreadHandler().post(new zbf(this, paramInt, paramString));
   }
   
   protected ClubContentUpdateInfoPb.ReqAppInfo b()
@@ -1094,7 +1094,7 @@ public class ClubContentUpdateHandler
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("7.6.0.3525");
+    localReqBody.str_clientver.set("7.6.3.3560");
     localReqBody.uint_uin.set(Long.parseLong((String)localObject));
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(b());
@@ -1209,7 +1209,7 @@ public class ClubContentUpdateHandler
   
   public void b(String paramString, int paramInt)
   {
-    ThreadManager.getFileThreadHandler().post(new yya(this, paramInt, paramString));
+    ThreadManager.getFileThreadHandler().post(new zbg(this, paramInt, paramString));
   }
   
   protected ClubContentUpdateInfoPb.ReqAppInfo c()

@@ -1,20 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class szc
-  extends Handler
+  implements Runnable
 {
-  public szc(NearbyActivity paramNearbyActivity) {}
+  public szc(LikeRankingListActivity paramLikeRankingListActivity, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (!this.a.c)
-    {
-      this.a.f();
-      this.a.b.removeMessages(this.a.d);
-      sendEmptyMessageDelayed(this.a.d, this.a.n);
+    Card localCard = this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString);
+    if (localCard != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a(localCard);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("LikeRankingListActivity", 2, "update cover card = null");
+    }
+    byte b = (byte)SharedPreUtils.al(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.getApplication(), this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.app.getCurrentAccountUin());
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1, 0L, (byte)1, 0L, 0L, null, "", 0L | 1L | 0x20 | 0x2000, 3022, null, b);
   }
 }
 

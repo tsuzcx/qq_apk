@@ -1,18 +1,14 @@
-import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class ypc
+public final class ypc
   implements Runnable
 {
-  public ypc(SpriteUIHandler paramSpriteUIHandler, String paramString) {}
+  public ypc(int paramInt) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 1).a();
-    }
+    QQToast.a(BaseApplicationImpl.getApplication(), "角色: " + this.a + " 装扮不足7件", 1).a();
   }
 }
 

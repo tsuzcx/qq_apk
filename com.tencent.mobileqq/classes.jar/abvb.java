@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteQuery;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 
-class abvb
-  extends DownloadListener
+public class abvb
+  implements SQLiteDatabase.CursorFactory
 {
-  abvb(abue paramabue) {}
+  private abvb(QQEntityManagerFactory paramQQEntityManagerFactory) {}
   
-  public void onCancel(DownloadTask paramDownloadTask) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public Cursor newCursor(SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
   {
-    super.onDone(paramDownloadTask);
+    return new abvc(this, paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
   }
-  
-  public void onDoneFile(DownloadTask paramDownloadTask) {}
-  
-  public void onPause(DownloadTask paramDownloadTask) {}
-  
-  public void onProgress(DownloadTask paramDownloadTask) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abvb
  * JD-Core Version:    0.7.0.1
  */

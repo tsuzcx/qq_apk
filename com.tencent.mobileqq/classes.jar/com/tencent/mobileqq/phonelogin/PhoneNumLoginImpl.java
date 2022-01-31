@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.phonelogin;
 
-import afwh;
-import afwi;
+import agkj;
+import agkk;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -190,12 +190,12 @@ public class PhoneNumLoginImpl
       return true;
     }
     QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
-    localQQCustomDialog.setTitle(2131434307);
-    localQQCustomDialog.setMessage(2131434308);
-    paramQQAppInterface = new afwh(this, str, paramActivity, paramQQAppInterface);
-    paramActivity = new afwi(this);
-    localQQCustomDialog.setPositiveButton(2131434309, paramQQAppInterface);
-    localQQCustomDialog.setNegativeButton(2131432998, paramActivity);
+    localQQCustomDialog.setTitle(2131434324);
+    localQQCustomDialog.setMessage(2131434325);
+    paramQQAppInterface = new agkj(this, str, paramActivity, paramQQAppInterface);
+    paramActivity = new agkk(this);
+    localQQCustomDialog.setPositiveButton(2131434326, paramQQAppInterface);
+    localQQCustomDialog.setNegativeButton(2131433015, paramActivity);
     localQQCustomDialog.show();
     return false;
   }
@@ -247,7 +247,7 @@ public class PhoneNumLoginImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl
  * JD-Core Version:    0.7.0.1
  */

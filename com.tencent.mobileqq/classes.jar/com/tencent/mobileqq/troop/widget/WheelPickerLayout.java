@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajgi;
-import ajgj;
-import ajgk;
-import ajgl;
+import ajum;
+import ajun;
+import ajuo;
+import ajup;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -20,9 +20,9 @@ public class WheelPickerLayout
   private WheelPickerLayout.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$PickerViewAdapter;
   private WheelPickerLayout.ViewStyle jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$ViewStyle;
   private WheelPickerLayout.WheelPickListener jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$WheelPickListener;
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new ajgi(this);
-  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new ajgj(this);
-  private ajgl[] jdField_a_of_type_ArrayOfAjgl;
+  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new ajum(this);
+  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new ajun(this);
+  private ajup[] jdField_a_of_type_ArrayOfAjup;
   private WheelView[] jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
   
   public WheelPickerLayout(Context paramContext)
@@ -64,13 +64,13 @@ public class WheelPickerLayout
   private void a(WheelView paramWheelView, int paramInt)
   {
     paramWheelView.setTag(Integer.valueOf(paramInt));
-    ajgl localajgl = new ajgl(this, paramInt, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$ViewStyle.jdField_a_of_type_Int);
+    ajup localajup = new ajup(this, paramInt, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout$ViewStyle.jdField_a_of_type_Int);
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[paramInt] = paramWheelView;
-    this.jdField_a_of_type_ArrayOfAjgl[paramInt] = localajgl;
-    paramWheelView.setAdapter(localajgl);
+    this.jdField_a_of_type_ArrayOfAjup[paramInt] = localajup;
+    paramWheelView.setAdapter(localajup);
     paramWheelView.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
     paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener);
-    paramWheelView.setOnEndMovementListener(new ajgk(this, paramInt));
+    paramWheelView.setOnEndMovementListener(new ajuo(this, paramInt));
   }
   
   public int a(int paramInt)
@@ -83,10 +83,10 @@ public class WheelPickerLayout
   
   public void a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAjgl.length)) {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAjup.length)) {
       throw new IllegalArgumentException("Error column index " + paramInt);
     }
-    this.jdField_a_of_type_ArrayOfAjgl[paramInt].notifyDataSetChanged();
+    this.jdField_a_of_type_ArrayOfAjup[paramInt].notifyDataSetChanged();
   }
   
   public void a(WheelPickerLayout.PickerViewAdapter paramPickerViewAdapter, WheelPickerLayout.ViewStyle paramViewStyle)
@@ -101,7 +101,7 @@ public class WheelPickerLayout
       throw new RuntimeException("Unsupportted column count " + this.jdField_a_of_type_Int);
     }
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[this.jdField_a_of_type_Int];
-    this.jdField_a_of_type_ArrayOfAjgl = new ajgl[this.jdField_a_of_type_Int];
+    this.jdField_a_of_type_ArrayOfAjup = new ajup[this.jdField_a_of_type_Int];
     int i = 0;
     while (i < this.jdField_a_of_type_Int)
     {
@@ -125,7 +125,7 @@ public class WheelPickerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.WheelPickerLayout
  * JD-Core Version:    0.7.0.1
  */

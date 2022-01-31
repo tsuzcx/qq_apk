@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import allg;
+import amaw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -20,7 +20,7 @@ public class CountDownProgressBar
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler = new allg(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new amaw(this);
   private CountDownProgressBar.OnCountDownLinstener jdField_a_of_type_ComTencentWidgetCountDownProgressBar$OnCountDownLinstener;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -47,11 +47,11 @@ public class CountDownProgressBar
   public CountDownProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131493262);
-    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131493263);
-    this.c = paramContext.getResources().getColor(2131493261);
+    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131493263);
+    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131493264);
+    this.c = paramContext.getResources().getColor(2131493262);
     this.e = paramContext.getResources().getColor(2131492894);
-    this.l = paramContext.getResources().getColor(2131493265);
+    this.l = paramContext.getResources().getColor(2131493266);
     float f1 = paramContext.getResources().getDisplayMetrics().density;
     this.f = ((int)(21.0F * f1 + 0.5F));
     this.d = ((int)(2.0F * f1 + 0.5F));
@@ -145,7 +145,7 @@ public class CountDownProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.CountDownProgressBar
  * JD-Core Version:    0.7.0.1
  */

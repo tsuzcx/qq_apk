@@ -1,27 +1,16 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.FoldOverTextItem;
 
 public class anoa
-  extends Property
+  implements annx
 {
-  public anoa(HintDrawable paramHintDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public anoa(FoldOverTextItem paramFoldOverTextItem) {}
   
-  public Integer a(HintDrawable paramHintDrawable)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    if (paramHintDrawable != null) {
-      return Integer.valueOf(HintDrawable.a(paramHintDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(HintDrawable paramHintDrawable, Integer paramInteger)
-  {
-    if (paramHintDrawable != null) {
-      HintDrawable.a(paramHintDrawable, paramInteger.intValue());
-    }
+    return TroopFileUtils.b(paramString);
   }
 }
 

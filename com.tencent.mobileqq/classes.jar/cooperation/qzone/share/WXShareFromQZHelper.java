@@ -1,10 +1,10 @@
 package cooperation.qzone.share;
 
-import amjr;
-import amjs;
-import amjt;
-import amju;
-import amjv;
+import amzw;
+import amzx;
+import amzy;
+import amzz;
+import anaa;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -147,7 +147,7 @@ public class WXShareFromQZHelper
     ((SendMessageToWX.Req)localObject).message = paramString;
     ((SendMessageToWX.Req)localObject).scene = paramInt;
     if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq((BaseReq)localObject)) {
-      ThreadManager.getUIHandler().post(new amjt(this));
+      ThreadManager.getUIHandler().post(new amzy(this));
     }
   }
   
@@ -162,7 +162,7 @@ public class WXShareFromQZHelper
     paramString1.message = paramString3;
     paramString1.scene = paramInt;
     if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramString1)) {
-      ThreadManager.getUIHandler().post(new amjr(this));
+      ThreadManager.getUIHandler().post(new amzw(this));
     }
   }
   
@@ -203,7 +203,7 @@ public class WXShareFromQZHelper
       catch (Throwable paramString1)
       {
         QZLog.e(jdField_a_of_type_JavaLangString, "excetion:" + paramString1.getMessage());
-        ThreadManager.getUIHandler().post(new amju(this));
+        ThreadManager.getUIHandler().post(new amzz(this));
       }
     }
     for (;;)
@@ -215,7 +215,7 @@ public class WXShareFromQZHelper
       if (!bool)
       {
         QZLog.e(jdField_a_of_type_JavaLangString, "wxshare failed ,ret:" + bool);
-        ThreadManager.getUIHandler().post(new amjv(this));
+        ThreadManager.getUIHandler().post(new anaa(this));
       }
       return;
       paramString1.recycle();
@@ -243,7 +243,7 @@ public class WXShareFromQZHelper
     paramArrayOfByte.message = paramString;
     paramArrayOfByte.scene = paramInt;
     if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramArrayOfByte)) {
-      ThreadManager.getUIHandler().post(new amjs(this));
+      ThreadManager.getUIHandler().post(new amzx(this));
     }
   }
   

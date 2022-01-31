@@ -1,24 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
 
 public class vts
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  public vts(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vts(GameRoomChatPie paramGameRoomChatPie, boolean paramBoolean, WerewolvesPluginInterface paramWerewolvesPluginInterface) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.removeHeaderView(PublicAccountChatPie.a(this.a));
-    PublicAccountChatPie.a(this.a, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.W = true;
+    GameRoomChatPie.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.V = true;
+    if ((this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.a()) && (!this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.b())) {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

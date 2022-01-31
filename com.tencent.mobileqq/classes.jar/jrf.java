@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenUtils;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.BeautySettingUi;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.av.ui.BaseCallbackUI;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class jrf
-  implements DialogInterface.OnClickListener
+class jrf
+  implements Runnable
 {
-  public jrf(BeautySettingUi paramBeautySettingUi, AVActivity paramAVActivity) {}
+  jrf(jre paramjre) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentAvUiAVActivity.getIntent().getBooleanExtra("is_video", false);
-    String str = this.jdField_a_of_type_ComTencentAvUiBeautySettingUi.a.getCurrentAccountUin();
-    SmallScreenUtils.a(str, SmallScreenUtils.a(str, bool) + 1, bool);
-    paramDialogInterface.dismiss();
+    this.a.a.a.a.removeCallbacksAndMessages(null);
+    DialogUtil.b(this.a.a, 230, this.a.a.getResources().getString(2131429577), this.a.a.getResources().getString(2131429578), 2131428676, 2131428676, null, new jrg(this)).show();
   }
 }
 

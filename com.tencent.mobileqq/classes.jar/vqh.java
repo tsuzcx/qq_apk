@@ -1,24 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
+import com.tencent.mobileqq.activity.aio.qim.QIMUserManager.QIMUserIcon;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.theme.SkinEngine;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.os.MqqHandler;
 
 public class vqh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vqh(FriendChatPie paramFriendChatPie) {}
+  public vqh(QIMUserManager paramQIMUserManager, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (FriendChatPie.a(this.a).getVisibility() == 0) {
-      ThreadManager.post(new vqi(this), 5, null, false);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      QIMUserManager.QIMUserIcon localQIMUserIcon = (QIMUserManager.QIMUserIcon)localIterator.next();
+      if ((this.b != null) && (this.b.size() > localQIMUserIcon.jdField_a_of_type_Int))
+      {
+        int i;
+        if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length >= 7)
+        {
+          i = 5;
+          label73:
+          if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length < 7) {
+            break label251;
+          }
+        }
+        label251:
+        for (int j = 6;; j = 5)
+        {
+          StateListDrawable localStateListDrawable = new StateListDrawable();
+          Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
+          localStateListDrawable.addState(new int[] { 16842913, 16842910 }, localDrawable);
+          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
+          localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable);
+          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[i]);
+          localStateListDrawable.addState(new int[] { 16842910 }, localDrawable);
+          localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
+          break;
+          i = 4;
+          break label73;
+        }
+      }
     }
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+    if (this.b != null) {
+      this.b.clear();
+    }
+    ThreadManager.getUIHandler().post(new vqi(this));
   }
 }
 

@@ -1,29 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
 public class rne
-  implements ActionSheet.OnButtonClickListener
+  extends SubAccountBindObserver
 {
-  public rne(BaseChatPie paramBaseChatPie, List paramList, ActionSheet paramActionSheet) {}
+  public rne(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
-      return;
-      BaseChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_JavaUtilList);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_JavaUtilList, 0);
-    }
+    this.a.c();
+    AssociatedAccountManageActivity.b(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    this.a.c();
+    AssociatedAccountManageActivity.b(this.a);
+  }
+  
+  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    this.a.c();
+    AssociatedAccountManageActivity.b(this.a);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.businessCard.helpers;
 
-import abhj;
-import abhk;
-import abhl;
+import abok;
+import abol;
+import abom;
 import android.graphics.Rect;
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
@@ -24,8 +24,8 @@ public class CameraHelper
   static CameraHelper jdField_a_of_type_ComTencentMobileqqBusinessCardHelpersCameraHelper;
   public static String a;
   int jdField_a_of_type_Int = 0;
-  abhl jdField_a_of_type_Abhl;
-  Camera.AutoFocusCallback jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback = new abhk(this);
+  abom jdField_a_of_type_Abom;
+  Camera.AutoFocusCallback jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback = new abol(this);
   public Camera a;
   public boolean a;
   int jdField_b_of_type_Int = 0;
@@ -128,7 +128,7 @@ public class CameraHelper
       Rect localRect = new Rect(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       try
       {
-        this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, null, new abhj(this, paramFile, localRect, paramRect, paramCameraHelperCallback));
+        this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, null, new abok(this, paramFile, localRect, paramRect, paramCameraHelperCallback));
         return;
       }
       catch (RuntimeException paramFile) {}
@@ -487,11 +487,11 @@ public class CameraHelper
   
   public void c()
   {
-    if ((this.jdField_a_of_type_Abhl != null) && (this.jdField_a_of_type_Abhl.isAlive())) {
-      this.jdField_a_of_type_Abhl.interrupt();
+    if ((this.jdField_a_of_type_Abom != null) && (this.jdField_a_of_type_Abom.isAlive())) {
+      this.jdField_a_of_type_Abom.interrupt();
     }
-    this.jdField_a_of_type_Abhl = new abhl(this);
-    this.jdField_a_of_type_Abhl.start();
+    this.jdField_a_of_type_Abom = new abom(this);
+    this.jdField_a_of_type_Abom.start();
   }
   
   public boolean c()
@@ -511,10 +511,10 @@ public class CameraHelper
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Abhl != null) && (this.jdField_a_of_type_Abhl.isAlive()))
+    if ((this.jdField_a_of_type_Abom != null) && (this.jdField_a_of_type_Abom.isAlive()))
     {
-      this.jdField_a_of_type_Abhl.interrupt();
-      this.jdField_a_of_type_Abhl = null;
+      this.jdField_a_of_type_Abom.interrupt();
+      this.jdField_a_of_type_Abom = null;
     }
   }
   

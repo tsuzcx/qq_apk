@@ -1,28 +1,24 @@
-import android.annotation.TargetApi;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.widget.PhotoProgressDrawable;
 
-public class uri
-  implements ArkViewImplement.LoadCallback
+class uri
+  implements Runnable
 {
-  public uri(ArkAppItemBubbleBuilder paramArkAppItemBubbleBuilder, ArkAppItemBubbleBuilder.Holder paramHolder, MessageForArkApp paramMessageForArkApp) {}
+  uri(urh paramurh, Bitmap paramBitmap) {}
   
-  @TargetApi(14)
-  public void onLoadFinish(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "attachArkView onLoadFinish MessageForArkApp state=" + paramInt);
-    }
-    if (paramInt == 1)
+    if (DoodleMsgLayout.a(this.jdField_a_of_type_Urh.a) != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      return;
+      PhotoProgressDrawable localPhotoProgressDrawable = new PhotoProgressDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
+      localPhotoProgressDrawable.setBounds(new Rect(0, 0, AIOUtils.a(19.0F, this.jdField_a_of_type_Urh.a.getResources()), AIOUtils.a(19.0F, this.jdField_a_of_type_Urh.a.getResources())));
+      DoodleMsgLayout.a(this.jdField_a_of_type_Urh.a).setImageDrawable(localPhotoProgressDrawable);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder.a.setVisibility(8);
+    DoodleMsgLayout.b(this.jdField_a_of_type_Urh.a, false);
   }
 }
 

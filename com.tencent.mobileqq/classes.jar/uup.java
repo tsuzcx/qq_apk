@@ -1,18 +1,21 @@
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FoldMsgGrayTipsItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
 
-public class uup
-  extends AbstractChatItemBuilder.ViewHolder
+class uup
+  implements Runnable
 {
-  public ImageView a;
-  public LinearLayout a;
-  public ImageView b;
-  public TextView b;
+  uup(uuo paramuuo, String paramString) {}
   
-  public uup(FoldMsgGrayTipsItemBuilder paramFoldMsgGrayTipsItemBuilder) {}
+  public void run()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      this.jdField_a_of_type_Uuo.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_a_of_type_Uuo.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_Uuo.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    }
+  }
 }
 
 

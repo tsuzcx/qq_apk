@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import acuq;
-import acur;
-import acus;
-import acut;
+import aden;
+import adeo;
+import adep;
+import adeq;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.text.SpannableString;
@@ -32,10 +32,10 @@ public class SimpleFilePresenter
   implements FileBrowserModelBase.OnTransEventListener
 {
   private SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acut(this);
-  private LocalTbsViewManager.LocalTbsViewManagerCallback jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback = new acus(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adeq(this);
+  private LocalTbsViewManager.LocalTbsViewManagerCallback jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback = new adep(this);
   public SimpleFileViewer a;
-  private TeamWorkFileImportObserver jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportObserver = new acuq(this);
+  private TeamWorkFileImportObserver jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportObserver = new aden(this);
   public boolean c = true;
   
   public SimpleFilePresenter(FileBrowserModelBase paramFileBrowserModelBase, Activity paramActivity)
@@ -163,7 +163,7 @@ public class SimpleFilePresenter
       return;
       if (QbSdk.isSuportOpenFile(FileManagerUtil.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a()), 2))
       {
-        this.jdField_a_of_type_AndroidTextSpannableString = FileManagerUtil.a(BaseApplicationImpl.getContext().getString(2131428223), BaseApplicationImpl.getContext().getString(2131435083), new acur(this));
+        this.jdField_a_of_type_AndroidTextSpannableString = FileManagerUtil.a(BaseApplicationImpl.getContext().getString(2131428223), BaseApplicationImpl.getContext().getString(2131435100), new adeo(this));
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.jdField_a_of_type_AndroidTextSpannableString);
       }
       else
@@ -182,7 +182,7 @@ public class SimpleFilePresenter
     int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.e();
     if (i == 5)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(2130841564);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(2130841601);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d());
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.e())) && (16 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b())) {
         break label182;

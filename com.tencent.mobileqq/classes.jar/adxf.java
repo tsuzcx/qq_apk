@@ -1,55 +1,107 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class adxf
-  extends Handler
+  implements PopupMenuDialog.OnClickActionListener
 {
-  public adxf(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adxf(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject, Activity paramActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    Object localObject = paramMessage.getData();
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
+    int i = paramMenuItem.a - 1;
+    Object localObject1 = null;
+    paramMenuItem = null;
+    for (;;)
     {
-      paramMessage = (Bitmap)paramMessage.obj;
-      if ((paramMessage != null) && (localObject != null))
-      {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-      }
+      JSONArray localJSONArray;
+      int j;
       try
       {
-        localObject = new FileOutputStream((File)localObject);
-        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
-        ((FileOutputStream)localObject).flush();
-        ((FileOutputStream)localObject).close();
+        String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+        localJSONArray = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("list");
+        if (localJSONArray == null) {
+          break;
+        }
+        if (i >= localJSONArray.length()) {
+          return;
+        }
+        if (TextUtils.isEmpty(str)) {
+          break label169;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { String.valueOf(i + 1) });
         return;
       }
-      catch (Exception paramMessage)
+      catch (Exception localException1)
       {
-        paramMessage.printStackTrace();
+        i = 0;
+        localObject1 = paramMenuItem;
+        j = i;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("UiApiPlugin", 2, "showPopupMenu Exception: " + localException1.getMessage());
+          j = i;
+          localObject1 = paramMenuItem;
+        }
+        switch (j)
+        {
+        default: 
+          return;
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().loadUrl((String)localObject1);
+      return;
+      label169:
+      Object localObject2 = localJSONArray.optJSONObject(i);
+      i = ((JSONObject)localObject2).optInt("target");
+      paramMenuItem = (PopupMenuDialog.MenuItem)localObject1;
+      try
+      {
+        localObject1 = ((JSONObject)localObject2).optString("jumpUrl");
+        paramMenuItem = (PopupMenuDialog.MenuItem)localObject1;
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
+        j = i;
+        if (!bool) {
+          continue;
+        }
         return;
       }
+      catch (Exception localException2) {}
+      paramMenuItem = new Bundle();
+      if ((this.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity))
+      {
+        localObject2 = new Intent(((BasePluginActivity)this.jdField_a_of_type_AndroidAppActivity).getOutActivity(), QQBrowserActivity.class);
+        ((Intent)localObject2).putExtras(paramMenuItem);
+        ((Intent)localObject2).putExtra("url", (String)localObject1);
+        ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
+        ((Intent)localObject2).setFlags(0);
+        this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject2);
+        return;
+      }
+      localObject2 = new Intent(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getClass());
+      ((Intent)localObject2).putExtras(paramMenuItem);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
+      ((Intent)localObject2).setFlags(0);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject2);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxf
  * JD-Core Version:    0.7.0.1
  */

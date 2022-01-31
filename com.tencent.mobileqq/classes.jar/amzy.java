@@ -1,23 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.share.WXShareFromQZHelper;
 
 public class amzy
-  extends CaptureConfigUpdateObserver
+  implements Runnable
 {
-  public amzy(StaticStickerProviderView paramStaticStickerProviderView) {}
+  public amzy(WXShareFromQZHelper paramWXShareFromQZHelper) {}
   
-  public void e()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StaticStickerProviderView", 2, "paster config get notify");
-    }
-    this.a.d();
+    QQToast.a(BaseApplication.getContext(), 2131432726, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzy
  * JD-Core Version:    0.7.0.1
  */

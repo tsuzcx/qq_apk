@@ -1,24 +1,22 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class anru
-  implements Comparable
+  implements EditVideoPoiPickerCallback
 {
-  public int a;
-  public long a;
-  public int b;
+  public anru(EditProviderPart paramEditProviderPart) {}
   
-  public anru(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
-  }
+  public void a() {}
   
-  public int a(anru paramanru)
+  public void a(TroopBarPOI paramTroopBarPOI)
   {
-    return -(int)(this.jdField_a_of_type_Long - paramanru.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d("EditProviderPart", 2, "onSelectLocation " + paramTroopBarPOI);
+    }
+    EditProviderPart.a(this.a).setLocation(paramTroopBarPOI);
   }
 }
 

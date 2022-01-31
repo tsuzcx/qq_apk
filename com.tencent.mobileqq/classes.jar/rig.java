@@ -1,16 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.qcall.PstnManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class rig
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnDismissListener
 {
-  public rig(AssistantSettingActivity paramAssistantSettingActivity, PstnManager paramPstnManager) {}
+  public rig(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.a(paramBoolean);
+    this.a.finish();
   }
 }
 

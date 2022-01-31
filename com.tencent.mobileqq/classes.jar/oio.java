@@ -1,15 +1,15 @@
-import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class oio
-  implements Runnable
+public class oio
+  implements FilenameFilter
 {
-  oio(oin paramoin) {}
+  public oio(DoodleEmojiManager paramDoodleEmojiManager) {}
   
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    TakeVideoUtils.b(this.a.a.b, false);
-    this.a.a.d(4);
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
   }
 }
 

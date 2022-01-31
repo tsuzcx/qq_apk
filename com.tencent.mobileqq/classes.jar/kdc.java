@@ -1,28 +1,32 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.VoiceChangeChooseDialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.AVLog;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import java.lang.ref.WeakReference;
 
 public class kdc
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public kdc(VoiceChangeChooseDialog paramVoiceChangeChooseDialog) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  public kdc(EffectFilterTextPager paramEffectFilterTextPager, View paramView)
   {
-    if ((VoiceChangeChooseDialog.a(this.a) == 1) && (!this.a.jdField_a_of_type_Boolean))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429599);
-      VoiceChangeChooseDialog.a(this.a, 2);
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().aB = true;
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
-    }
-    while (VoiceChangeChooseDialog.a(this.a) != 2) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429598);
-    VoiceChangeChooseDialog.a(this.a, 0);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    AVLog.c("EffectFilterTextPager", "onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(4);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

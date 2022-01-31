@@ -1,26 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebContentGetCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.TimeUtil;
+import android.view.ViewGroup.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
 
 public class mle
-  implements FastWebModule.FastWebContentGetCallback
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public mle(FastWebActivity paramFastWebActivity) {}
+  public mle(VariableSizeTextView paramVariableSizeTextView, ViewGroup.LayoutParams paramLayoutParams) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramBoolean1) && (!paramBoolean2) && (paramFastWebArticleInfo != null))
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.b)
     {
-      paramBoolean1 = true;
-      TimeUtil.b("fast_web_show_light_house_2");
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setFocusable(true);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setClickable(true);
     }
-    for (;;)
-    {
-      this.a.runOnUiThread(new mlf(this, paramBoolean1, paramFastWebArticleInfo));
-      return;
-      paramBoolean1 = false;
-    }
+    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((int)(f + 0.5F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
   }
 }
 

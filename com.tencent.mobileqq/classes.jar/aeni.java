@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.OldBigDataChannelManager;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class aeni
-  implements View.OnClickListener
+  extends AccountObserver
 {
-  public aeni(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aeni(OldBigDataChannelManager paramOldBigDataChannelManager) {}
   
-  public void onClick(View paramView)
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    this.a.g(paramView);
+    ThreadManager.getFileThreadHandler().post(new aenj(this));
   }
 }
 

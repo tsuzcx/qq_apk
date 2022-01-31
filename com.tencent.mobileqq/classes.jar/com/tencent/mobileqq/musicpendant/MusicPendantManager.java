@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.musicpendant;
 
-import adxu;
-import adxv;
-import adxw;
+import aela;
+import aelb;
+import aelc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -34,7 +34,7 @@ public class MusicPendantManager
   private static List jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private static WeakReference jdField_b_of_type_JavaLangRefWeakReference;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MusicPendantManager");
-  private QQPlayerService.QQPlayerCallback jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback = new adxu(this);
+  private QQPlayerService.QQPlayerCallback jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback = new aela(this);
   public WeakReference a;
   private boolean jdField_a_of_type_Boolean;
   private SongInfo[] jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo;
@@ -487,7 +487,7 @@ public class MusicPendantManager
         this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
         a(paramString);
         f();
-        ThreadManager.post(new adxw(this), 8, null, true);
+        ThreadManager.post(new aelc(this), 8, null, true);
         return;
       }
       catch (Exception paramString)
@@ -527,7 +527,7 @@ public class MusicPendantManager
         this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo = paramArrayOfSongInfo;
         if (i != 0)
         {
-          ThreadManager.post(new adxv(this), 8, null, true);
+          ThreadManager.post(new aelb(this), 8, null, true);
           return;
         }
         QLog.i("MusicPendantManager", 1, "setMusicPendantSongList(SongInfo) isPlayListChanged:false.");
@@ -806,7 +806,7 @@ public class MusicPendantManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.musicpendant.MusicPendantManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,26 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import mqq.os.MqqHandler;
 
 public class tng
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public tng(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public tng(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    try
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity.app, "CliOper", "", "", "Setting_tab", "Clean_chat_log", 0, 0, "0", "0", "", "");
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity.isFinishing())
     {
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (RegisterQQNumberActivity.a(this.a).isShowing()))
-      {
-        RegisterQQNumberActivity.a(this.a).dismiss();
-        RegisterQQNumberActivity.a(this.a).cancel();
-      }
-      RegisterQQNumberActivity.a(this.a, null);
-      return;
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity.showDialog(1);
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    paramView = new tnh(this);
+    ThreadManager.getSubThreadHandler().post(paramView);
   }
 }
 

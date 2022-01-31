@@ -1,68 +1,62 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class aemn
-  implements NowShortVideoProtoManager.Callback
+public final class aemn
+  implements Runnable
 {
-  public aemn(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aemn(QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    Object localObject2 = (FriendsManager)this.a.getManager(50);
+    Object localObject1 = ((FriendsManager)localObject2).b(this.a.getCurrentAccountUin());
+    if ((localObject1 != null) && (((Card)localObject1).iVoteIncrement > 0))
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + PlayOperationViewModel.c(this.a));
-        }
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + PlayOperationViewModel.c(this.a));
-          }
-          if (paramArrayOfByte.ret.get() == 0)
-          {
-            PlayOperationViewModel.c(this.a, true);
-            if (PlayOperationViewModel.d(this.a))
-            {
-              ThreadManager.getUIHandler().post(new aemo(this));
-              PlayOperationViewModel.d(this.a, false);
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a = true;
-            new NowVideoReporter().h("video").i("playpage_focus").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            return;
-          }
-          if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
-          {
-            QQToast.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      ((Card)localObject1).iVoteIncrement = 0;
+      ((FriendsManager)localObject2).a((Card)localObject1);
     }
+    localObject2 = this.a.getEntityManagerFactory().createEntityManager();
+    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)((EntityManager)localObject2).a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
+    if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.likeCountInc > 0))
+    {
+      localNearbyPeopleCard.likeCountInc = 0;
+      ((EntityManager)localObject2).a(localNearbyPeopleCard);
+    }
+    ((EntityManager)localObject2).a();
+    localObject2 = this.a.getAccount();
+    long l;
+    if (localObject1 == null)
+    {
+      l = 0L;
+      NearbySPUtil.a((String)localObject2, l, 0);
+      this.a.getApp().getSharedPreferences(this.a.getCurrentAccountUin(), 0).edit().putInt("profilecard_host_last_newvote_animation_num", 0).commit();
+      if (!ConnectNearbyProcService.a()) {
+        break label211;
+      }
+      NearbyProxy.a(this.a.a(), 4117);
+    }
+    label211:
+    do
+    {
+      return;
+      l = ((Card)localObject1).lVoteCount;
+      break;
+      localObject1 = NearbyMineHelper.a(this.a);
+    } while (localObject1 == null);
+    ((NearbyMyTabCard)localObject1).newLikeNum = 0;
+    NearbyMineHelper.a(this.a, (NearbyMyTabCard)localObject1);
   }
 }
 

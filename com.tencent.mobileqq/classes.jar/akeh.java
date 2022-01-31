@@ -1,28 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.AnimationTextView.OnSingleClick;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class akeh
-  implements Runnable
 {
-  public akeh(AnimationTextView paramAnimationTextView) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void run()
-  {
-    if (this.a.getTag(2131362292) != null) {}
-    for (boolean bool = ((Boolean)this.a.getTag(2131362292)).booleanValue();; bool = false)
-    {
-      if ((this.a.j) && (this.a.a != null) && (!bool)) {
-        this.a.a.a(this.a);
-      }
-      this.a.setTag(2131362292, Boolean.valueOf(false));
-      return;
-    }
-  }
+  private akeh(QQCustomDialog paramQQCustomDialog) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akeh
  * JD-Core Version:    0.7.0.1
  */

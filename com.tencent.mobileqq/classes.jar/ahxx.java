@@ -1,25 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahxx
+class ahxx
   implements Runnable
 {
-  public ahxx(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  ahxx(ahxw paramahxw) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("group_system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
+    long l = QZoneManagerImp.a(this.a.a);
+    QZoneManagerImp.a(this.a.a);
+    QZoneManagerImp.a(this.a.a, QZoneManagerImp.b(this.a.a));
+    this.a.a.a(l | QZoneManagerImp.a(this.a.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.QZoneManagerImp.", 2, "onChange notifyQQTab type:" + Long.toBinaryString(QZoneManagerImp.a(this.a.a)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxx
  * JD-Core Version:    0.7.0.1
  */

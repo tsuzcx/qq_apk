@@ -37,7 +37,7 @@ public class FlowPlusPanel
     localPanelIconLinearLayout.setPanelIconListener(this);
     int i = (int)(40.0F * paramViewGroup.getResources().getDisplayMetrics().density + 0.5F);
     Object localObject = new RelativeLayout.LayoutParams(-1, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131362825);
+    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131362843);
     paramViewGroup.addView(localPanelIconLinearLayout, (ViewGroup.LayoutParams)localObject);
     localPanelIconLinearLayout.setCustomHeight(i);
     paramViewGroup = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowActivity.getIntent().getExtras();

@@ -21,7 +21,7 @@ public class NearbyActivity$TabInfo
   
   public String a()
   {
-    return "android:switcher:" + 2131365206 + ":" + this.jdField_a_of_type_Int;
+    return "android:switcher:" + 2131365228 + ":" + this.jdField_a_of_type_Int;
   }
   
   public void a(String paramString)

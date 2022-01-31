@@ -33,8 +33,8 @@ import com.tencent.theme.SkinnableActivityProcesser.Callback;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import mqq.app.BaseActivity;
-import yxh;
-import yxi;
+import zan;
+import zao;
 
 public class BaseActivity2
   extends BaseActivity
@@ -81,7 +81,7 @@ public class BaseActivity2
   {
     if (paramBoolean) {
       if (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
-        ThreadManager.post(new yxh(this), 5, null, true);
+        ThreadManager.post(new zan(this), 5, null, true);
       }
     }
     while (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
@@ -225,11 +225,11 @@ public class BaseActivity2
             getWindow().addFlags(67108864);
             if (this.V)
             {
-              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131494247));
+              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131494254));
               if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
                 break;
               }
-              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130843245));
+              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130843344));
             }
           }
           return;
@@ -280,14 +280,14 @@ public class BaseActivity2
     {
       if (!jdField_a_of_type_Boolean)
       {
-        if (SettingCloneUtil.readValue(this, null, getString(2131433564), "qqsetting_screenshot_key", false)) {
+        if (SettingCloneUtil.readValue(this, null, getString(2131433581), "qqsetting_screenshot_key", false)) {
           a(true);
         }
         jdField_a_of_type_Boolean = true;
       }
       paramBundle = new IntentFilter();
       paramBundle.addAction("android.intent.action.SCREEN_OFF");
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new yxi(this, null);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new zao(this, null);
     }
     label373:
   }

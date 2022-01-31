@@ -1,17 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.util.UiThreadUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
 
-public class mov
+class mov
   implements Runnable
 {
-  public mov(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController, QQAppInterface paramQQAppInterface) {}
+  mov(mot parammot) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.a.a();
-    UiThreadUtil.a(new mow(this));
+    FastWebVideoFeedsPlayActivity.a(this.a.a).a(true);
   }
 }
 

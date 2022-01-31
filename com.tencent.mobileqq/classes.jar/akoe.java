@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 
 public class akoe
-  implements DialogInterface.OnClickListener
+  implements ThreadExcutor.IThreadListener
 {
-  public akoe(BaseJsCallBack paramBaseJsCallBack) {}
+  public akoe(SwiftBrowserCookieMonster paramSwiftBrowserCookieMonster) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a() {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akoe
  * JD-Core Version:    0.7.0.1
  */

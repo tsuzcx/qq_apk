@@ -39,15 +39,15 @@ import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ysj;
-import ysk;
-import ysl;
-import ysn;
-import yso;
-import ysp;
-import ysq;
-import ysr;
-import yss;
+import yvp;
+import yvq;
+import yvr;
+import yvt;
+import yvu;
+import yvv;
+import yvw;
+import yvx;
+import yvy;
 
 public class ApolloDaoManager
   implements Manager
@@ -55,7 +55,7 @@ public class ApolloDaoManager
   private volatile int jdField_a_of_type_Int = 1;
   public QQAppInterface a;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ysj(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new yvp(this);
   public List a;
   public ConcurrentHashMap a;
   private boolean jdField_a_of_type_Boolean = true;
@@ -633,7 +633,7 @@ public class ApolloDaoManager
       QLog.d("ApolloDaoManager", 2, "getFavPanelActionPairInfo");
     }
     List localList = d();
-    Collections.sort(localList, new ysn(this));
+    Collections.sort(localList, new yvt(this));
     ArrayList localArrayList = new ArrayList(localList.size());
     int i2 = localList.size();
     int i1 = 0;
@@ -1106,11 +1106,11 @@ public class ApolloDaoManager
         }
       }
     }
-    Collections.sort(paramBaseChatPie, new ysp(this));
-    Collections.sort(localArrayList1, new ysq(this));
-    Collections.sort((List)localObject, new ysr(this));
-    Collections.sort(localArrayList2, new yss(this));
-    Collections.sort(localArrayList3, new ysk(this));
+    Collections.sort(paramBaseChatPie, new yvv(this));
+    Collections.sort(localArrayList1, new yvw(this));
+    Collections.sort((List)localObject, new yvx(this));
+    Collections.sort(localArrayList2, new yvy(this));
+    Collections.sort(localArrayList3, new yvq(this));
     paramList.clear();
     paramList.addAll(paramBaseChatPie);
     paramList.addAll(localArrayList1);
@@ -2462,7 +2462,7 @@ public class ApolloDaoManager
       if ((n != 0) || (a((ApolloGameRoamData)localObject1))) {
         break label758;
       }
-      ThreadManager.post(new ysl(this, (ApolloGameRoamData)localObject1), 5, null, true);
+      ThreadManager.post(new yvr(this, (ApolloGameRoamData)localObject1), 5, null, true);
       n = 1;
       label156:
       i1 += 1;
@@ -2665,7 +2665,7 @@ public class ApolloDaoManager
         return true;
       }
       localConcurrentHashMap.remove(Integer.valueOf(paramInt));
-      ThreadManager.post(new yso(this, paramInt), 5, null, true);
+      ThreadManager.post(new yvu(this, paramInt), 5, null, true);
     }
     return false;
   }
@@ -2950,10 +2950,10 @@ public class ApolloDaoManager
     //   89: checkcast 173	com/tencent/mobileqq/data/ApolloGameRoamData
     //   92: invokespecial 802	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:a	(Lcom/tencent/mobileqq/data/ApolloGameRoamData;)Z
     //   95: ifne -22 -> 73
-    //   98: new 874	ysm
+    //   98: new 874	yvs
     //   101: dup
     //   102: aload_0
-    //   103: invokespecial 875	ysm:<init>	(Lcom/tencent/mobileqq/apollo/utils/ApolloDaoManager;)V
+    //   103: invokespecial 875	yvs:<init>	(Lcom/tencent/mobileqq/apollo/utils/ApolloDaoManager;)V
     //   106: iconst_5
     //   107: aconst_null
     //   108: iconst_1
@@ -4137,7 +4137,7 @@ public class ApolloDaoManager
       if (localIterator.hasNext())
       {
         ApolloGameData localApolloGameData = (ApolloGameData)localIterator.next();
-        if ((localApolloGameData == null) || (localApolloGameRoamData == null) || (localApolloGameData.gameId != localApolloGameRoamData.gameId) || (localApolloGameData.isShow == 0) || (localApolloGameData.gameId == 1) || (localApolloGameData.gameId == 2) || (!ApolloConfigUtils.a("7.6.0", localApolloGameData.minVer, localApolloGameData.maxVer))) {
+        if ((localApolloGameData == null) || (localApolloGameRoamData == null) || (localApolloGameData.gameId != localApolloGameRoamData.gameId) || (localApolloGameData.isShow == 0) || (localApolloGameData.gameId == 1) || (localApolloGameData.gameId == 2) || (!ApolloConfigUtils.a("7.6.3", localApolloGameData.minVer, localApolloGameData.maxVer))) {
           break;
         }
         localApolloGameData.type = localApolloGameRoamData.type;

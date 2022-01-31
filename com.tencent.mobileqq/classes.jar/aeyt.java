@@ -1,43 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import mqq.os.MqqHandler;
 
-class aeyt
-  implements Runnable
+public class aeyt
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  aeyt(aeys paramaeys, PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult) {}
+  public aeyt(VideoViewTVKImpl paramVideoViewTVKImpl) {}
   
-  public void run()
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a != 0))
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "发表失败，请重试", 1).a();
-      QLog.i("PicMomentItemBuilder", 1, "upload failed, errMsg=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.i + "code=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a);
-      i = 0;
-      localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label170;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoViewTVKImpl", 2, "onError called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "], model = [" + paramInt1 + "], what = [" + paramInt2 + "], position = [" + paramInt3 + "], extra = [" + paramString + "], Info = [" + paramObject + "]");
     }
-    label170:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      NowVideoReporter localNowVideoReporter = new NowVideoReporter().h("video_public").i("re_republic").d("2").c("2");
-      if (i != 0) {}
-      for (String str = "1";; str = "2")
-      {
-        localNowVideoReporter.e(str).b((QQAppInterface)localObject);
-        return;
-        QQToast.a(BaseApplicationImpl.getContext(), 2, "发表成功", 1).a();
-        i = 1;
-        break;
-      }
-    }
+    ThreadManager.getUIHandler().post(new aeyu(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
+    return false;
   }
 }
 

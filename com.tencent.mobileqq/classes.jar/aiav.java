@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
 
 public class aiav
-  implements ITransCallbackForReport
+  implements Animation.AnimationListener
 {
-  public aiav(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  public aiav(DanceReadyFilter paramDanceReadyFilter) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    DanceReadyFilter.f(this.a).h_(false);
+    this.a.a.a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
 
 public class uth
-  implements FMDialogUtil.FMDialogInterface
+  implements View.OnClickListener
 {
-  public uth(FileItemBuilder paramFileItemBuilder, FileManagerEntity paramFileManagerEntity) {}
+  public uth(ColorView paramColorView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
+    if (ColorView.a(this.a) != null) {
+      ColorView.a(this.a).a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
-  
-  public void b() {}
 }
 
 

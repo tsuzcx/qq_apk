@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 public class kvo
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public kvo(VideoCoverView paramVideoCoverView) {}
+  public kvo(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.g();
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 

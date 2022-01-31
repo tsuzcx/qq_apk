@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.OldBigDataChannelManager;
 
-public class aenj
-  implements View.OnClickListener
+class aenj
+  implements Runnable
 {
-  public aenj(PlayOperationViewModel paramPlayOperationViewModel) {}
+  aenj(aeni paramaeni) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.j(paramView);
+    OldBigDataChannelManager.a(this.a.a);
+    OldBigDataChannelManager.b(this.a.a);
   }
 }
 

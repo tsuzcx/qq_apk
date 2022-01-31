@@ -3,8 +3,10 @@ package com.tencent.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import android.widget.RelativeLayout.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.util.Utils;
 
 public class CustomWidgetUtil
@@ -24,7 +26,7 @@ public class CustomWidgetUtil
     }
     for (;;)
     {
-      paramContext = (RelativeLayout.LayoutParams)paramTextView.getLayoutParams();
+      paramContext = (ViewGroup.MarginLayoutParams)paramTextView.getLayoutParams();
       if ((paramContext == null) || ((paramContext.leftMargin == i) && (paramContext.bottomMargin == paramInt))) {
         break;
       }
@@ -86,11 +88,11 @@ public class CustomWidgetUtil
           break;
         }
         paramString = "";
-        paramInt1 = 2130845923;
+        paramInt1 = 2130846051;
         paramInt2 = 0;
         break;
         if (paramInt3 > 0) {}
-        for (paramInt2 = paramInt3;; paramInt2 = 2130845927)
+        for (paramInt2 = paramInt3;; paramInt2 = 2130846055)
         {
           paramString = "NEW";
           paramInt1 = 0;
@@ -104,7 +106,7 @@ public class CustomWidgetUtil
           break;
         }
         paramString = "";
-        paramInt1 = 2130845926;
+        paramInt1 = 2130846054;
         paramInt2 = 0;
         break;
         if (paramInt3 > 0) {}
@@ -117,7 +119,7 @@ public class CustomWidgetUtil
           paramInt1 = 0;
           paramInt2 = paramInt3;
           break;
-          paramInt3 = 2130845927;
+          paramInt3 = 2130846055;
         }
         label207:
         paramString = String.valueOf(paramInt2);
@@ -134,7 +136,7 @@ public class CustomWidgetUtil
           paramInt1 = 0;
           paramInt2 = paramInt3;
           break;
-          paramInt3 = 2130845927;
+          paramInt3 = 2130846055;
         }
         label247:
         paramString = String.valueOf(paramInt2);
@@ -142,7 +144,7 @@ public class CustomWidgetUtil
         paramInt2 = paramInt3;
         break;
         if (paramInt3 > 0) {}
-        for (paramInt2 = paramInt3;; paramInt2 = 2130845927)
+        for (paramInt2 = paramInt3;; paramInt2 = 2130846055)
         {
           if (!TextUtils.isEmpty(paramString)) {
             break label289;
@@ -155,7 +157,7 @@ public class CustomWidgetUtil
         paramInt1 = 0;
         break;
       }
-      Object localObject = paramTextView.getTag(2131363189);
+      Object localObject = paramTextView.getTag(2131363207);
       if (((localObject == null) && (paramInt1 == 0)) || (((localObject instanceof Integer)) && (((Integer)localObject).intValue() == paramInt1))) {}
       for (;;)
       {
@@ -168,16 +170,64 @@ public class CustomWidgetUtil
         paramTextView.setVisibility(0);
         return;
         paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt1, 0, 0, 0);
-        paramTextView.setTag(2131363189, Integer.valueOf(paramInt1));
+        paramTextView.setTag(2131363207, Integer.valueOf(paramInt1));
         paramTextView.setText(paramString);
         paramTextView.setPadding(0, 0, 0, 0);
       }
     }
   }
+  
+  public static void b(Context paramContext, TextView paramTextView, int paramInt)
+  {
+    if ((paramTextView == null) || (paramInt == 0)) {}
+    do
+    {
+      return;
+      switch (paramInt)
+      {
+      case 4: 
+      default: 
+        return;
+      case 1: 
+        paramContext = (ViewGroup.MarginLayoutParams)paramTextView.getLayoutParams();
+        if ((paramContext instanceof FrameLayout.LayoutParams))
+        {
+          ((FrameLayout.LayoutParams)paramContext).gravity = 53;
+          paramTextView.setGravity(53);
+        }
+        paramContext.width = ScreenUtil.a(9.0F);
+        paramContext.height = ScreenUtil.a(9.0F);
+        return;
+      case 3: 
+        paramTextView.setGravity(17);
+        paramContext = (ViewGroup.MarginLayoutParams)paramTextView.getLayoutParams();
+        if ((paramContext instanceof FrameLayout.LayoutParams)) {
+          ((FrameLayout.LayoutParams)paramContext).gravity = 21;
+        }
+        paramContext.width = -2;
+        paramContext.height = -2;
+        return;
+      case 2: 
+        paramTextView.setGravity(17);
+        paramContext = (ViewGroup.MarginLayoutParams)paramTextView.getLayoutParams();
+        if ((paramContext instanceof FrameLayout.LayoutParams)) {
+          ((FrameLayout.LayoutParams)paramContext).gravity = 21;
+        }
+        paramContext.width = -2;
+        paramContext.height = -2;
+        return;
+      }
+      paramTextView.setGravity(17);
+      paramContext = (ViewGroup.MarginLayoutParams)paramTextView.getLayoutParams();
+      paramContext.width = -2;
+      paramContext.height = -2;
+    } while (!(paramContext instanceof FrameLayout.LayoutParams));
+    ((FrameLayout.LayoutParams)paramContext).gravity = 21;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.CustomWidgetUtil
  * JD-Core Version:    0.7.0.1
  */

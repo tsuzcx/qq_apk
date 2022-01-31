@@ -1,24 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
+import java.util.HashMap;
 
-public class vjm
-  implements VideoDrawable.OnPlayRepeatListener
+public final class vjm
+  implements Runnable
 {
-  AIOGalleryAdapter a;
+  public vjm(Context paramContext, TroopFileStatusInfo paramTroopFileStatusInfo, MessageForTroopFile paramMessageForTroopFile, String paramString, QQAppInterface paramQQAppInterface) {}
   
-  public vjm(AIOGalleryAdapter paramAIOGalleryAdapter)
+  public void run()
   {
-    this.a = paramAIOGalleryAdapter;
-  }
-  
-  public void onPlayRepeat(int paramInt)
-  {
-    if (paramInt != 1) {
-      return;
+    TroopFileItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
+    long l1 = 0L;
+    if (TroopFileItemBuilder.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
+      l1 = ((Long)TroopFileItemBuilder.a.get(this.jdField_a_of_type_JavaLangString)).longValue();
     }
-    new Handler(Looper.getMainLooper()).post(new vjn(this));
+    long l2 = System.currentTimeMillis();
+    if (l2 - l1 > 10000L)
+    {
+      BizTroopHandler localBizTroopHandler = (BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).runOnUiThread(new vjn(this, localBizTroopHandler));
+      TroopFileItemBuilder.a.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(l2));
+    }
   }
 }
 

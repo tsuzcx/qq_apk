@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import akmo;
+import alce;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -126,7 +126,7 @@ public class OpenSdkFriendService$GetFriendListCallback
           {
             paramJSONObject = (ArrayList)FriendGroup.c(paramJSONObject);
             localFriendResponseInfo.jdField_a_of_type_JavaUtilArrayList = paramJSONObject;
-            ThreadManager.executeOnSubThread(new akmo(this, paramJSONObject, (String)localObject));
+            ThreadManager.executeOnSubThread(new alce(this, paramJSONObject, (String)localObject));
             paramJSONObject = (OpenSdkFriendService.GetFriendInfoListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
             if (paramJSONObject == null) {
               break label558;

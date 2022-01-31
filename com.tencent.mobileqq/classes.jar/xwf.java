@@ -1,32 +1,13 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
 
 public class xwf
-  implements View.OnFocusChangeListener
+  implements Runnable
 {
-  public xwf(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
+  public xwf(RDBaseDataManager paramRDBaseDataManager, xvw paramxvw, long paramLong1, long paramLong2) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    if ((paramBoolean) && ((this.a.l == 0) || (this.a.l == 1) || (this.a.l == 2) || (this.a.l == 3) || (this.a.l != this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a())))
-    {
-      paramView = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
-      if (paramView != null)
-      {
-        FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
-        }
-        localFragmentTransaction.add(2131363900, paramView);
-        localFragmentTransaction.commit();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesRDBaseDataManager.c(this.jdField_a_of_type_Xvw.a, (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b));
   }
 }
 

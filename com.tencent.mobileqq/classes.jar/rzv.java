@@ -1,21 +1,30 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public class rzv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rzv(ChatSettingForTroop paramChatSettingForTroop) {}
+  public rzv(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, PicEmoticonInfo paramPicEmoticonInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.isFinishing()) {
-      return;
+    if ((paramView != null) && ((paramView instanceof ImageView)))
+    {
+      View localView = (View)paramView.getParent();
+      paramView = paramView.getTag();
+      String str = EmoticonUtils.o.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.eId);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.a(1, localView, paramView, str);
     }
-    if (QLog.isColorLevel()) {
-      QLog.w("Q.chatopttroop", 2, "-->preForward--fetch openid timeout");
-    }
-    this.a.n = true;
-    this.a.s();
   }
 }
 

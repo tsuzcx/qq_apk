@@ -1,20 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class aepy
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aepy(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public aepy(NearbyGuideActivity paramNearbyGuideActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
-    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.app, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
   }
 }
 

@@ -10,7 +10,7 @@ public class kev
   
   public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.b(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr);
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr, 2);
     return true;
   }
 }

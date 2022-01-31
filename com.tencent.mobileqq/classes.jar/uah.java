@@ -1,24 +1,33 @@
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.biz.qqstory.utils.AssertUtils;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class uah
   implements View.OnClickListener
 {
-  public uah(TroopRequestActivity paramTroopRequestActivity) {}
+  public uah(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, AccountDetailActivity.class);
-    paramView.putExtra("uin", this.a.a.req_uin.get() + "");
-    paramView.putExtra("source", 112);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
+    AssertUtils.a(this.a.a);
+    AssertUtils.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
+    {
+      paramView.add(((TroopMemberListActivity.ATroopMember)this.a.a.a.get(i)).a);
+      i += 1;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 

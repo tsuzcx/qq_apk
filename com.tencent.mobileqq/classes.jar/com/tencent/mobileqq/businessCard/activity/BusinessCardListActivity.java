@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import abgo;
-import abgp;
-import abgq;
+import abnp;
+import abnq;
+import abnr;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -49,9 +49,9 @@ public class BusinessCardListActivity
   implements View.OnClickListener, BusinessCardView.Callback, IndexView.OnIndexChangedListener
 {
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new abgo(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new abnp(this);
   public BusinessCardManager a;
-  BusinessCardObserver jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardObserver = new abgq(this);
+  BusinessCardObserver jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardObserver = new abnr(this);
   BusinessCardGroupLogic jdField_a_of_type_ComTencentMobileqqBusinessCardUtilitiesBusinessCardGroupLogic;
   public BusinessCardView a;
   ForwardBaseOption jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption = null;
@@ -203,23 +203,23 @@ public class BusinessCardListActivity
   @TargetApi(14)
   protected void a()
   {
-    super.setContentView(2130970239);
-    Object localObject = findViewById(2131362693);
-    ((View)localObject).setBackgroundColor(super.getResources().getColor(2131494228));
+    super.setContentView(2130970255);
+    Object localObject = findViewById(2131362711);
+    ((View)localObject).setBackgroundColor(super.getResources().getColor(2131494235));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       ((View)localObject).setFitsSystemWindows(true);
       if (this.mSystemBarComp != null)
       {
         this.mSystemBarComp.setStatusDrawable(null);
-        this.mSystemBarComp.setStatusColor(super.getResources().getColor(2131494228));
+        this.mSystemBarComp.setStatusColor(super.getResources().getColor(2131494235));
       }
     }
-    ((LinearLayout)findViewById(2131363938)).setBackgroundColor(super.getResources().getColor(2131494228));
-    localObject = (TextView)findViewById(2131363410);
-    ImageView localImageView = (ImageView)findViewById(2131369787);
-    TextView localTextView1 = (TextView)findViewById(2131363227);
-    TextView localTextView2 = (TextView)findViewById(2131363363);
+    ((LinearLayout)findViewById(2131363961)).setBackgroundColor(super.getResources().getColor(2131494235));
+    localObject = (TextView)findViewById(2131363428);
+    ImageView localImageView = (ImageView)findViewById(2131369864);
+    TextView localTextView1 = (TextView)findViewById(2131363245);
+    TextView localTextView2 = (TextView)findViewById(2131363381);
     ((TextView)localObject).setVisibility(0);
     ((TextView)localObject).setOnClickListener(this);
     localTextView1.setOnClickListener(this);
@@ -232,17 +232,17 @@ public class BusinessCardListActivity
     }
     for (this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.b();; this.jdField_a_of_type_Int = 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardView = ((BusinessCardView)findViewById(2131369786));
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardView = ((BusinessCardView)findViewById(2131369863));
       this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardView.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131363807));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131363830));
       this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" });
       this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
       return;
       ((TextView)localObject).setVisibility(0);
       localImageView.setVisibility(8);
-      ((TextView)localObject).setText(2131432998);
+      ((TextView)localObject).setText(2131433015);
       localTextView1.setVisibility(8);
-      localTextView2.setText(2131434956);
+      localTextView2.setText(2131434973);
     }
   }
   
@@ -318,7 +318,7 @@ public class BusinessCardListActivity
   {
     if (paramWeakReference.get() != null) {
       if (paramBusinessCard.cardType == 1) {
-        ((BusinessCardChildView)paramWeakReference.get()).a(paramBusinessCard, getString(2131433883), null, null, null, true);
+        ((BusinessCardChildView)paramWeakReference.get()).a(paramBusinessCard, getString(2131433900), null, null, null, true);
       }
     }
     while (!QLog.isColorLevel())
@@ -410,7 +410,7 @@ public class BusinessCardListActivity
       if (localArrayList.size() == 0)
       {
         localObject1 = new BusinessCard();
-        ((BusinessCard)localObject1).cardName = getString(2131437056);
+        ((BusinessCard)localObject1).cardName = getString(2131437073);
         ((BusinessCard)localObject1).cardType = 2;
         localArrayList.add(localObject1);
       }
@@ -427,14 +427,14 @@ public class BusinessCardListActivity
       this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramArrayList, paramLong);
       return;
       localObject1 = new BusinessCard();
-      ((BusinessCard)localObject1).cardName = getString(2131437097);
+      ((BusinessCard)localObject1).cardName = getString(2131437114);
       ((BusinessCard)localObject1).cardType = 3;
       localArrayList.add(0, localObject1);
       continue;
       if ((this.b == 3) && (localObject2 != null) && (((BusinessCard)localObject2).OCRInfo != null) && (!TextUtils.isEmpty(((BusinessCard)localObject2).OCRInfo.b))) {
         localArrayList.add(localObject2);
       }
-      localObject1 = (TextView)findViewById(2131366651);
+      localObject1 = (TextView)findViewById(2131366675);
       if (localArrayList.size() == 0) {
         ((TextView)localObject1).setVisibility(0);
       } else {
@@ -447,10 +447,10 @@ public class BusinessCardListActivity
   {
     ReportController.b(this.app, "CliOper", "", "", "0X80064DD", "0X80064DD", 0, 0, "", "", "", "");
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.b(2131437061);
-    localActionSheet.b(2131437064);
-    localActionSheet.a(new abgp(this, localActionSheet));
-    localActionSheet.c(2131432998);
+    localActionSheet.b(2131437078);
+    localActionSheet.b(2131437081);
+    localActionSheet.a(new abnq(this, localActionSheet));
+    localActionSheet.c(2131433015);
     localActionSheet.show();
   }
   
@@ -530,9 +530,9 @@ public class BusinessCardListActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131368255: 
-    case 2131363410: 
-    case 2131369787: 
+    case 2131368322: 
+    case 2131363428: 
+    case 2131369864: 
       do
       {
         return;

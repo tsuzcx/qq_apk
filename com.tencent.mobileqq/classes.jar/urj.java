@@ -1,34 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class urj
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public urj(ArkAppItemBubbleBuilder paramArkAppItemBubbleBuilder, MessageForArkApp paramMessageForArkApp) {}
+  public urj(DoodleMsgLayout paramDoodleMsgLayout, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = (MessageForArkApp)MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-    if (paramDialogInterface.msgData == null) {
-      if (paramDialogInterface.ark_app_message == null) {
-        ArkAppCenter.b("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
-      }
+    QLog.d("DoodleMsgLayout", 2, "setDoodleContent start create drawable:" + this.jdField_a_of_type_Int);
+    if (!DoodleResHelper.a().b(1, this.jdField_a_of_type_Int)) {
+      DoodleResHelper.a().b(1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)
+    Drawable localDrawable;
+    do
     {
       return;
-      paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
+      localDrawable = DoodleResHelper.a().a(2, this.jdField_a_of_type_Int, true);
+      if (localDrawable != null) {
+        ((URLDrawable)localDrawable).startDownload();
+      }
+    } while (this.jdField_a_of_type_Int != DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout));
+    new Handler(Looper.getMainLooper()).post(new urk(this, localDrawable));
+    QLog.d("DoodleMsgLayout", 2, "setDoodleContent finish create drawable:" + this.jdField_a_of_type_Int);
   }
 }
 

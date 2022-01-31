@@ -1,22 +1,28 @@
-import android.text.TextUtils;
-import com.squareup.okhttp.Response;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.DownloadResult.Content;
-import com.tencent.component.network.downloader.handler.ContentHandler;
-import com.tencent.component.network.utils.StringUtil;
-import org.apache.http.HttpResponse;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.component.media.image.drawable.ScaleDrawable;
 
-public final class pib
-  implements ContentHandler
+public class pib
+  extends phv
 {
-  public boolean a(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse, Response paramResponse)
+  public pib(Drawable paramDrawable, ScaleDrawable paramScaleDrawable)
   {
-    paramDownloadResult = paramDownloadResult.getContent().type;
-    if (TextUtils.isEmpty(paramDownloadResult)) {}
-    while (!StringUtil.a(paramDownloadResult, "image")) {
-      return false;
-    }
-    return true;
+    super(paramDrawable, paramScaleDrawable);
+  }
+  
+  public pib(pib parampib, ScaleDrawable paramScaleDrawable, Resources paramResources)
+  {
+    super(parampib, paramScaleDrawable, paramResources);
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new ScaleDrawable(this, null, null);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    return new ScaleDrawable(this, paramResources, null);
   }
 }
 

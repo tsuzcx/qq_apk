@@ -1,23 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.biz.pubaccount.util.ProfileParams.Builder;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
 
-public final class mtp
-  implements Parcelable.Creator
+public class mtp
+  implements View.OnClickListener
 {
-  public ProfileParams a(Parcel paramParcel)
-  {
-    ProfileParams.Builder localBuilder = new ProfileParams.Builder();
-    localBuilder.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
-    return localBuilder.a();
-  }
+  public mtp(SubscriptRecommendController paramSubscriptRecommendController) {}
   
-  public ProfileParams[] a(int paramInt)
-  {
-    return new ProfileParams[paramInt];
-  }
+  public void onClick(View paramView) {}
 }
 
 

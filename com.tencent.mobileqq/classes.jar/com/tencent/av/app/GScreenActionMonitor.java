@@ -2,13 +2,13 @@ package com.tencent.av.app;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import jfi;
+import jet;
 import mqq.app.MobileQQ;
 
 public class GScreenActionMonitor
 {
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private jfi jdField_a_of_type_Jfi;
+  private jet jdField_a_of_type_Jet;
   
   public GScreenActionMonitor(VideoAppInterface paramVideoAppInterface)
   {
@@ -24,9 +24,9 @@ public class GScreenActionMonitor
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.USER_PRESENT");
       localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.jdField_a_of_type_Jfi = new jfi();
+      this.jdField_a_of_type_Jet = new jet();
       if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().registerReceiver(this.jdField_a_of_type_Jfi, localIntentFilter);
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().registerReceiver(this.jdField_a_of_type_Jet, localIntentFilter);
       }
       return;
     }
@@ -40,8 +40,8 @@ public class GScreenActionMonitor
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_Jfi != null)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_Jfi);
+      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_Jet != null)) {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_Jet);
       }
       return;
     }

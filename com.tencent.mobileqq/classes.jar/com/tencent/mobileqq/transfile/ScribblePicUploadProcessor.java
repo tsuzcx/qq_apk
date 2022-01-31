@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aics;
-import aict;
+import aiqv;
+import aiqw;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
@@ -28,7 +28,7 @@ import java.util.HashMap;
 public class ScribblePicUploadProcessor
   extends BaseUploadProcessor
 {
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aict(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aiqw(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
   private Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction;
   private String jdField_a_of_type_JavaLangString = "";
@@ -172,13 +172,13 @@ public class ScribblePicUploadProcessor
     return super.a(paramInt1, paramInt2);
   }
   
-  public void al_()
+  public void an_()
   {
     if (QLog.isColorLevel()) {
       QLog.i("ScribblePicUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.sendFile()");
     }
     this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
-    Object localObject = new aics(this, SystemClock.uptimeMillis());
+    Object localObject = new aiqv(this, SystemClock.uptimeMillis());
     this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_Int = 41;
     this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte, (ITransactionCallback)localObject, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_ArrayOfByte);
     int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
@@ -194,10 +194,10 @@ public class ScribblePicUploadProcessor
     }
   }
   
-  public void an_()
+  public void ap_()
   {
     this.jdField_a_of_type_JavaLangString = "";
-    super.an_();
+    super.ap_();
     if (QLog.isColorLevel()) {
       QLog.i("ScribblePicUploadProcessor", 2, "ScriblePicUploadProcessor.start()");
     }
@@ -215,7 +215,7 @@ public class ScribblePicUploadProcessor
     }
     if (this.jdField_b_of_type_ArrayOfByte != null)
     {
-      al_();
+      an_();
       return;
     }
     QLog.e("ScribblePicUploadProcessor", 2, "ScribblePicUploadProcessor get null BDHsession key.");
@@ -227,7 +227,7 @@ public class ScribblePicUploadProcessor
       QLog.i("ScribblePicUploadProcessor", 2, "ScribblePicUploadProcessor.resume()");
     }
     f();
-    al_();
+    an_();
     return 0;
   }
   
@@ -321,7 +321,7 @@ public class ScribblePicUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ScribblePicUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

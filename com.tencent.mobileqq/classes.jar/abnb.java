@@ -1,32 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-public final class abnb
-  implements Parcelable.Creator
+public class abnb
+  implements Runnable
 {
-  public IPSiteModel.Video a(Parcel paramParcel)
-  {
-    IPSiteModel.Video localVideo = new IPSiteModel.Video();
-    localVideo.id = paramParcel.readString();
-    localVideo.buttonDesc = paramParcel.readString();
-    localVideo.content = paramParcel.readString();
-    localVideo.cover = paramParcel.readString();
-    localVideo.desc = paramParcel.readString();
-    localVideo.name = paramParcel.readString();
-    localVideo.endTime = paramParcel.readString();
-    localVideo.isShow = paramParcel.readInt();
-    localVideo.newStartTime = paramParcel.readLong();
-    localVideo.newEndTime = paramParcel.readLong();
-    localVideo.redirectUrl = paramParcel.readString();
-    localVideo.videoSource = paramParcel.readString();
-    localVideo.showDate = paramParcel.readString();
-    return localVideo;
-  }
+  public abnb(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public IPSiteModel.Video[] a(int paramInt)
+  public void run()
   {
-    return new IPSiteModel.Video[paramInt];
+    this.a.a(2131437107, 1);
   }
 }
 

@@ -1,43 +1,74 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
 
 public class sxq
-  extends WtloginObserver
+  implements Runnable
 {
-  public sxq(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
+  public sxq(Leba paramLeba) {}
   
-  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  public void run()
   {
-    if (QLog.isColorLevel())
+    QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.a.a.getManager(9);
+    int j;
+    ArrayList localArrayList;
+    label40:
+    int i;
+    if (localQZoneManagerImp != null)
     {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      j = localQZoneManagerImp.a(1);
+      if (localQZoneManagerImp == null) {
+        break label132;
       }
+      localArrayList = localQZoneManagerImp.a();
+      if (j > 0) {
+        break label207;
+      }
+      if (localQZoneManagerImp == null) {
+        break label137;
+      }
+      i = localQZoneManagerImp.a(2);
+      label56:
+      if ((i <= 0) || (localArrayList == null) || (localArrayList.size() <= 0)) {
+        break label142;
+      }
+      if ((!QLog.isColorLevel()) || (QLog.isColorLevel())) {
+        QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_ACTIVE_FEED updateQZoneFlag.mQzoneFeedSubIcon setImageDrawable");
+      }
+      this.a.a(new sxr(this, localArrayList));
+      i = 1;
     }
-    this.a.c();
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramInt3 == 0)
+    for (;;)
     {
-      this.a.a();
+      this.a.a(new sxu(this, i, j));
       return;
+      j = 0;
+      break;
+      label132:
+      localArrayList = null;
+      break label40;
+      label137:
+      i = 0;
+      break label56;
+      label142:
+      if (QLog.isColorLevel()) {
+        QLog.d("UndealCount.Q.lebatab.leba", 2, "updateQZoneFlag.noflag count=" + i);
+      }
+      this.a.a(new sxs(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("UndealCount.ZebraAlbum.Q.lebatab.leba", 2, "freshEntryItemUI set style NOTETXT_STYLE_DEFAULT and mQzoneFeedSubIcon GONE");
+      }
+      i = 0;
+      continue;
+      label207:
+      if (QLog.isColorLevel()) {
+        QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_PASSIVE_FEED freshEntryItemUI num=" + j);
+      }
+      i = 3;
+      this.a.a(new sxt(this));
     }
-    paramString1 = null;
-    if (paramErrMsg != null) {
-      paramString1 = paramErrMsg.getMessage();
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.a.a(null, paramString1);
-      return;
-    }
-    this.a.b();
   }
 }
 

@@ -1,14 +1,29 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.activity.Conversation;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import java.util.ArrayList;
 
-public class sdn
+class sdn
   implements Runnable
 {
-  public sdn(Conversation paramConversation) {}
+  sdn(sdm paramsdm, ArrayList paramArrayList) {}
   
   public void run()
   {
-    PublicAccountManager.a().a(this.a.a);
+    View localView = this.jdField_a_of_type_Sdm.a.a.a[33];
+    if (localView != null)
+    {
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)) {
+        break label67;
+      }
+      localView.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Sdm.a.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
+      return;
+      label67:
+      localView.setVisibility(0);
+    }
   }
 }
 

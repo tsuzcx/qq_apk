@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.TroopStoryPlayModeBase;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.IBatchGetVideoInfoCallback;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.VideoInfoListEvent;
 
 public class nkm
-  implements DialogInterface.OnDismissListener
+  implements BatchGetVideoInfoHandler.IBatchGetVideoInfoCallback
 {
-  public nkm(TroopStoryPlayModeBase paramTroopStoryPlayModeBase) {}
+  public nkm(NewFriendsPlayMode paramNewFriendsPlayMode) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(BatchGetVideoInfoHandler.VideoInfoListEvent paramVideoInfoListEvent)
   {
-    this.a.s();
+    this.a.a.post(new nkn(this, paramVideoInfoListEvent));
   }
 }
 

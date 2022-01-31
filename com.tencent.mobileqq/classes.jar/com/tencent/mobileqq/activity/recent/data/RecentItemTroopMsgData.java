@@ -103,7 +103,7 @@ public class RecentItemTroopMsgData
           if (((QCallFacade.CallUnreadCountInfo)localObject1).a() > 0)
           {
             this.jdField_d_of_type_JavaLangCharSequence = ((QCallFacade.CallUnreadCountInfo)localObject1).a();
-            this.e = paramContext.getResources().getColor(2131494281);
+            this.e = paramContext.getResources().getColor(2131494288);
           }
         }
       }
@@ -154,12 +154,12 @@ public class RecentItemTroopMsgData
           paramQQAppInterface = localHotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
           if ((paramQQAppInterface != null) && (!android.text.TextUtils.isEmpty(paramQQAppInterface.memo)) && (!paramQQAppInterface.memoShowed))
           {
-            this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131433490);
-            this.e = paramContext.getResources().getColor(2131494281);
+            this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131433507);
+            this.e = paramContext.getResources().getColor(2131494288);
           }
         }
         if ((android.text.TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) && (localMessage != null) && (localObject3 != null) && (AnonymousChatHelper.a(localMessage))) {
-          this.jdField_c_of_type_JavaLangCharSequence = ((MsgSummary)localObject3).a(paramContext, paramContext.getResources().getString(2131430270), -1);
+          this.jdField_c_of_type_JavaLangCharSequence = ((MsgSummary)localObject3).a(paramContext, paramContext.getResources().getString(2131430287), -1);
         }
         paramQQAppInterface = a();
         if ((paramQQAppInterface != null) && (paramQQAppInterface.msg == null)) {
@@ -196,7 +196,7 @@ public class RecentItemTroopMsgData
         if ((localMessage != null) && (localMessage.msgtype == -5021))
         {
           paramQQAppInterface = this.jdField_c_of_type_JavaLangCharSequence.toString();
-          paramContext = paramContext.getString(2131433084);
+          paramContext = paramContext.getString(2131433101);
           if (paramQQAppInterface.endsWith(paramContext)) {
             this.jdField_c_of_type_JavaLangCharSequence = paramQQAppInterface.subSequence(0, paramQQAppInterface.length() - paramContext.length() - 1);
           }
@@ -318,9 +318,9 @@ public class RecentItemTroopMsgData
           paramQQAppInterface = (MessageForQQWalletMsg)localObject1;
           if ((paramQQAppInterface.messageType == 7) || (paramQQAppInterface.messageType == 8))
           {
-            this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131437887);
-            this.jdField_d_of_type_JavaLangString = paramContext.getString(2131437887);
-            i = 2131494281;
+            this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131437904);
+            this.jdField_d_of_type_JavaLangString = paramContext.getString(2131437904);
+            i = 2131494288;
           }
         }
       }
@@ -331,8 +331,8 @@ public class RecentItemTroopMsgData
         }
         this.e = paramContext.getResources().getColor(i);
         return;
-        this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131437890);
-        this.jdField_d_of_type_JavaLangString = paramContext.getString(2131437890);
+        this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131437907);
+        this.jdField_d_of_type_JavaLangString = paramContext.getString(2131437907);
         break;
         if ((localObject2 instanceof TroopAtAllMsg))
         {
@@ -344,7 +344,7 @@ public class RecentItemTroopMsgData
         }
         if (((TroopNotificationMsg)a().msg).jdField_c_of_type_Int == 1)
         {
-          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131433493);
+          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131433510);
           break;
         }
         if ((TroopNotificationHelper.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)) || (TroopNotificationHelper.c(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)))
@@ -355,9 +355,9 @@ public class RecentItemTroopMsgData
         this.jdField_d_of_type_JavaLangCharSequence = "";
         break;
         if (this.jdField_b_of_type_Boolean) {
-          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131430810);
+          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131430827);
         }
-        for (int j = 2131494281;; j = 0)
+        for (int j = 2131494288;; j = 0)
         {
           int k = ((TroopInfoManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
           if (QLog.isColorLevel()) {
@@ -380,9 +380,9 @@ public class RecentItemTroopMsgData
           if (paramQQAppInterface.size() == 0) {
             break;
           }
-          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131433142);
+          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131433159);
           this.jdField_d_of_type_JavaLangString = this.jdField_d_of_type_JavaLangCharSequence.toString();
-          i = 2131494281;
+          i = 2131494288;
           break;
           this.jdField_d_of_type_JavaLangCharSequence = "";
           this.jdField_d_of_type_JavaLangString = "";

@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.armap.ArMapHandler;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog.POIExtarData;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.RedPackRainCloudView;
 
-public class aazq
+class aazq
   implements Runnable
 {
-  public aazq(ARGridMapViewDialog paramARGridMapViewDialog, ARGridMapViewDialog.POIExtarData paramPOIExtarData) {}
+  aazq(aazo paramaazo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a.addObserver(ARGridMapViewDialog.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog));
-    ((ArMapHandler)this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$POIExtarData.b, this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$POIExtarData.a, null);
+    if ((!this.a.a.isFinishing()) && (this.a.a.a.getVisibility() == 0))
+    {
+      this.a.a.a.setVisibility(8);
+      ARMapActivity.d(this.a.a, false);
+      ARMapActivity.c(this.a.a);
+    }
   }
 }
 

@@ -1,20 +1,48 @@
+import android.content.Context;
+import android.os.Handler;
 import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.utils.QQRecorder;
+import cooperation.troop_homework.jsp.TroopHWVoiceController;
+import cooperation.troop_homework.jsp.TroopHWVoiceController.RecordCallback;
+import java.lang.ref.WeakReference;
 
 public class ange
-  implements Runnable
+  extends Handler
 {
-  public ange(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, long paramLong) {}
+  public ange(TroopHWVoiceController paramTroopHWVoiceController) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 13, Long.valueOf(this.jdField_a_of_type_Long / 1000000L)));
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (TroopHWVoiceController.a(this.a) != null) {
+            TroopHWVoiceController.a(this.a).a(1, TroopHWVoiceController.a(this.a));
+          }
+        } while (!(paramMessage.obj instanceof String));
+        paramMessage = (String)paramMessage.obj;
+        this.a.d(paramMessage);
+        this.a.c(paramMessage);
+        return;
+        TroopHWVoiceController.a(this.a).c();
+        AudioUtil.b(2131230743, false);
+      } while (this.a.a == null);
+      paramMessage = (Context)this.a.a.get();
+    } while (paramMessage == null);
+    AudioUtil.a(paramMessage, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ange
  * JD-Core Version:    0.7.0.1
  */

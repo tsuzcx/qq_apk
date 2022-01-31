@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.model;
 
-import ahfz;
+import ahub;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.view.View;
@@ -90,15 +90,15 @@ public class ContactSearchModelGlobalTroop
       j = 0;
       while (j < ((List)paramList.get(i)).size())
       {
-        localObject = ((ahfz)((List)paramList.get(i)).get(j)).jdField_a_of_type_ComTencentMobileqqSearchModelContactSearchModelGlobalTroop$TroopSearchMemberInfo;
+        localObject = ((ahub)((List)paramList.get(i)).get(j)).jdField_a_of_type_ComTencentMobileqqSearchModelContactSearchModelGlobalTroop$TroopSearchMemberInfo;
         if (!localHashMap3.containsKey(localObject))
         {
           localHashMap3.put(localObject, Integer.valueOf(-1));
           localHashMap1.put(localObject, Long.valueOf(0L));
         }
         l2 = l1;
-        if (((ahfz)((List)paramList.get(i)).get(j)).jdField_a_of_type_Long > l1) {
-          l2 = ((ahfz)((List)paramList.get(i)).get(j)).jdField_a_of_type_Long;
+        if (((ahub)((List)paramList.get(i)).get(j)).jdField_a_of_type_Long > l1) {
+          l2 = ((ahub)((List)paramList.get(i)).get(j)).jdField_a_of_type_Long;
         }
         j += 1;
         l1 = l2;
@@ -174,13 +174,13 @@ public class ContactSearchModelGlobalTroop
       if (i >= paramList.size()) {
         break;
       }
-      long l3 = ((ahfz)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_Long;
+      long l3 = ((ahub)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_Long;
       l2 = l1;
       if (l3 > l1) {
         l2 = l3;
       }
-      this.jdField_a_of_type_JavaUtilSet.add(((ahfz)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_ComTencentMobileqqSearchModelContactSearchModelGlobalTroop$TroopSearchMemberInfo);
-      this.jdField_b_of_type_JavaUtilList.add(((ahfz)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilSet.add(((ahub)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_ComTencentMobileqqSearchModelContactSearchModelGlobalTroop$TroopSearchMemberInfo);
+      this.jdField_b_of_type_JavaUtilList.add(((ahub)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_JavaLangString);
       i += 1;
       l1 = l2;
     }
@@ -192,13 +192,13 @@ public class ContactSearchModelGlobalTroop
     int i = 0;
     if (i < ((List)paramList.get(paramInt)).size())
     {
-      ContactSearchModelGlobalTroop.TroopSearchMemberInfo localTroopSearchMemberInfo = ((ahfz)((List)paramList.get(paramInt)).get(i)).jdField_a_of_type_ComTencentMobileqqSearchModelContactSearchModelGlobalTroop$TroopSearchMemberInfo;
+      ContactSearchModelGlobalTroop.TroopSearchMemberInfo localTroopSearchMemberInfo = ((ahub)((List)paramList.get(paramInt)).get(i)).jdField_a_of_type_ComTencentMobileqqSearchModelContactSearchModelGlobalTroop$TroopSearchMemberInfo;
       if (paramSet.contains(localTroopSearchMemberInfo)) {}
       for (;;)
       {
         i += 1;
         break;
-        long l = paramArrayOfLong[paramInt] + ((Long)paramMap1.get(localTroopSearchMemberInfo)).longValue() - ((ahfz)((List)paramList.get(paramInt)).get(i)).jdField_a_of_type_Long;
+        long l = paramArrayOfLong[paramInt] + ((Long)paramMap1.get(localTroopSearchMemberInfo)).longValue() - ((ahub)((List)paramList.get(paramInt)).get(i)).jdField_a_of_type_Long;
         if (l == 0L)
         {
           paramSet.add(localTroopSearchMemberInfo);
@@ -291,10 +291,10 @@ public class ContactSearchModelGlobalTroop
           }
           if (l != -9223372036854775808L)
           {
-            localObject = new ahfz();
-            ((ahfz)localObject).jdField_a_of_type_Long = l;
-            ((ahfz)localObject).jdField_a_of_type_JavaLangString = ((String)arrayOfObject[1]);
-            ((ahfz)localObject).jdField_a_of_type_ComTencentMobileqqSearchModelContactSearchModelGlobalTroop$TroopSearchMemberInfo = ((ContactSearchModelGlobalTroop.TroopSearchMemberInfo)this.jdField_a_of_type_JavaUtilList.get(j));
+            localObject = new ahub();
+            ((ahub)localObject).jdField_a_of_type_Long = l;
+            ((ahub)localObject).jdField_a_of_type_JavaLangString = ((String)arrayOfObject[1]);
+            ((ahub)localObject).jdField_a_of_type_ComTencentMobileqqSearchModelContactSearchModelGlobalTroop$TroopSearchMemberInfo = ((ContactSearchModelGlobalTroop.TroopSearchMemberInfo)this.jdField_a_of_type_JavaUtilList.get(j));
             localArrayList2.add(localObject);
           }
           j += 1;

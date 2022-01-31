@@ -29,7 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.ToastInfo;
-import vzr;
+import wcw;
 
 public class HomeworkTroopSurveyBar
   implements View.OnClickListener, TipsBarTask
@@ -59,13 +59,13 @@ public class HomeworkTroopSurveyBar
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130969840, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramVarArgs.findViewById(2131366736));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs.findViewById(2131362701));
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130969854, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramVarArgs.findViewById(2131366779));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs.findViewById(2131362719));
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add((ImageView)paramVarArgs.findViewById(2131368217));
-    localArrayList.add((ImageView)paramVarArgs.findViewById(2131368218));
-    localArrayList.add((ImageView)paramVarArgs.findViewById(2131368219));
+    localArrayList.add((ImageView)paramVarArgs.findViewById(2131368284));
+    localArrayList.add((ImageView)paramVarArgs.findViewById(2131368285));
+    localArrayList.add((ImageView)paramVarArgs.findViewById(2131368286));
     this.jdField_a_of_type_JavaUtilList = localArrayList;
     paramVarArgs.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView = paramVarArgs;
@@ -77,7 +77,7 @@ public class HomeworkTroopSurveyBar
   public void a(TipsManager paramTipsManager)
   {
     TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    localTroopManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), new vzr(this, localTroopManager, paramTipsManager));
+    localTroopManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), new wcw(this, localTroopManager, paramTipsManager));
   }
   
   public void a(TroopManager paramTroopManager, TipsManager paramTipsManager, TroopMemberInfo paramTroopMemberInfo)

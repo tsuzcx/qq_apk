@@ -1,80 +1,94 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.Parcelable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.open.base.ShareProcessorUtil;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
 
-public class adbj
-  implements Runnable
+public final class adbj
+  implements View.OnClickListener
 {
-  public adbj(ForwardSdkBaseOption paramForwardSdkBaseOption, String paramString) {}
+  public adbj(FileManagerEntity paramFileManagerEntity, Activity paramActivity, IFileBrowser paramIFileBrowser) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    Object localObject = ShareProcessorUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    int i = ((Integer)localObject[0]).intValue();
-    boolean bool = ((Boolean)localObject[1]).booleanValue();
-    String str = (String)localObject[2];
-    l = System.currentTimeMillis() - l;
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardSdkBaseOption", 2, "changeRemoteUrl|ret=" + i + ",needRich=" + bool + ",url=" + str + ",cost=" + l);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("report_type", "102");
-    localBundle.putString("act_type", "19");
-    localBundle.putString("intext_1", "" + i);
-    if (bool)
+    try
     {
-      localObject = "1";
-      localBundle.putString("intext_2", (String)localObject);
-      localBundle.putString("intext_3", "0");
-      localBundle.putString("intext_5", "" + l);
-      localBundle.putString("stringext_2", this.jdField_a_of_type_JavaLangString);
-      ReportCenter.a().a(localBundle, "" + this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false);
-      if ((!bool) || (this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.l)) {
-        break label359;
+      Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      paramView = new FileManagerEntity();
+      paramView.copyFrom(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      paramView.nSessionId = FileManagerUtil.a().longValue();
+      paramView.status = 2;
+      ((QQAppInterface)localObject1).a().d(paramView);
+      Object localObject2 = new FileManagerReporter.fileAssistantReportData();
+      ((FileManagerReporter.fileAssistantReportData)localObject2).b = "file_forward";
+      ((FileManagerReporter.fileAssistantReportData)localObject2).jdField_a_of_type_Int = 71;
+      ((FileManagerReporter.fileAssistantReportData)localObject2).jdField_a_of_type_Long = paramView.fileSize;
+      ((FileManagerReporter.fileAssistantReportData)localObject2).c = FileUtil.a(paramView.fileName);
+      ((FileManagerReporter.fileAssistantReportData)localObject2).d = FileManagerUtil.a(paramView.getCloudType(), paramView.peerType);
+      FileManagerReporter.a(((QQAppInterface)localObject1).getCurrentAccountUin(), (FileManagerReporter.fileAssistantReportData)localObject2);
+      int i = ForwardFileOption.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      localObject2 = ForwardFileOption.a(paramView);
+      ((ForwardFileInfo)localObject2).b(i);
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putInt("forward_type", 0);
+      ((Bundle)localObject1).putParcelable("fileinfo", (Parcelable)localObject2);
+      ((Bundle)localObject1).putBoolean("not_forward", true);
+      localObject2 = new Intent();
+      ((Intent)localObject2).putExtras((Bundle)localObject1);
+      ((Intent)localObject2).putExtra("destroy_last_activity", true);
+      ((Intent)localObject2).putExtra("forward_type", 0);
+      ((Intent)localObject2).putExtra("forward_filepath", paramView.getFilePath());
+      ((Intent)localObject2).putExtra("forward_text", "已选择" + FileManagerUtil.d(paramView.fileName) + "，大小" + FileUtil.a(paramView.fileSize) + "。");
+      ((Intent)localObject2).putExtra("k_favorites", FileManagerUtil.c(paramView));
+      if ((!FileUtil.b(paramView.getFilePath())) && ((paramView.getCloudType() == 6) || (paramView.getCloudType() == 7)) && (paramView.nFileType == 0)) {
+        ((Intent)localObject2).putExtra("forward_type", 1);
       }
-      QLog.d("ForwardSdkBaseOption", 1, "changeRemoteUrl|need rich since invalid url=" + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidOsBundle.putString("image_url_remote", "");
-      ForwardSdkBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption).sendEmptyMessage(0);
-    }
-    for (;;)
-    {
-      return;
-      localObject = "0";
-      break;
-      label359:
-      if (i != -1) {}
-      try
+      if ((paramView.getCloudType() == 8) && (paramView.nFileType == 0)) {
+        ((Intent)localObject2).putExtra("forward_type", 1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("forward", 2, "ActionBarUtil getFileForwardClick forwardType=" + i + "newEntity.nFileType=" + paramView.nFileType);
+      }
+      if ((((this.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity)) || ((this.jdField_a_of_type_AndroidAppActivity instanceof TroopFileDetailBrowserActivity))) && (((FileBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).b())) {
+        ((Intent)localObject2).putExtra("direct_send_if_dataline_forward", true);
+      }
+      if (!NetworkUtil.d(BaseApplication.getContext())) {
+        FMToastUtil.a(2131428327);
+      }
+      while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidOsBundle.putByte("struct_share_key_image_url_status", (byte)3);
-        if ((i != 0) || (TextUtils.isEmpty(str))) {
-          continue;
-        }
-        ShareProcessorUtil.a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, str);
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidOsBundle.putString("image_url_remote", str);
-        if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.updateCover(str);
-        ForwardSdkBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption).sendEmptyMessage(2);
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(2);
         return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ForwardOption.ForwardSdkBaseOption", 2, localException, new Object[0]);
-          }
+        if (FileModel.a(paramView).a(false)) {
+          FMDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131428241, 2131428237, new adbk(this, (Intent)localObject2));
+        } else {
+          ForwardBaseOption.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject2, 103);
         }
       }
+      return;
     }
+    catch (Exception paramView) {}
   }
 }
 

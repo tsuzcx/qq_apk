@@ -1,38 +1,87 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentObserver;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet;
+import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CreateCommentObserver;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class liv
-  implements NativeCommentServlet.CommentObserver
+public final class liv
+  implements BusinessObserver
 {
-  public liv(ArticleCommentModule paramArticleCommentModule) {}
+  public liv(NativeCommentServlet.CreateCommentObserver paramCreateCommentObserver, ArticleInfo paramArticleInfo, int paramInt1, String paramString1, String paramString2, JSONArray paramJSONArray, int paramInt2) {}
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (ArticleCommentModule.access$000(this.a) != null) {
-      ArticleCommentModule.access$000(this.a).a(paramArticleInfo, paramInt, paramString);
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, JSONObject paramJSONObject, String paramString)
-  {
-    if (this.a.dealwithRawComment(paramJSONObject)) {
-      if (ArticleCommentModule.access$000(this.a) != null)
+    int i = 0;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TRACE_COMMENT_LIST", 2, "element size=" + ArticleCommentModule.access$100(this.a).size());
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label240;
         }
-        ArticleCommentModule.access$000(this.a).a(paramArticleInfo);
+        localObject = new WebSsoBody.WebSsoResponseBody();
+        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+        localObject = paramBundle.getLocalizedMessage();
       }
+      catch (Exception paramBundle)
+      {
+        try
+        {
+          paramBundle = ((WebSsoBody.WebSsoResponseBody)localObject).data.get();
+          if (QLog.isColorLevel()) {
+            QLog.d(NativeCommentServlet.jdField_a_of_type_JavaLangString, 2, "createComment ret=" + paramBundle);
+          }
+          paramBundle = new JSONObject(paramBundle);
+          if (paramInt != 0)
+          {
+            paramBundle = paramBundle.optString("msg");
+            i = 0;
+            if (i == 0) {
+              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentNativeCommentServlet$CreateCommentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaLangString, paramInt, paramBundle);
+            }
+            return;
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          Object localObject;
+          break label178;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentNativeCommentServlet$CreateCommentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.jdField_b_of_type_Int);
+          paramBundle = "";
+          i = 1;
+        }
+        catch (Exception paramBundle)
+        {
+          i = 1;
+          break label178;
+        }
+        paramBundle = paramBundle;
+        paramInt = -1;
+      }
+      label178:
+      paramBundle.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d(NativeCommentServlet.jdField_a_of_type_JavaLangString, 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
+      }
+      paramBundle = (Bundle)localObject;
+      continue;
+      label240:
+      i = 0;
+      paramInt = -1;
+      paramBundle = "";
     }
-    while (ArticleCommentModule.access$000(this.a) == null) {
-      return;
-    }
-    ArticleCommentModule.access$000(this.a).a(paramArticleInfo, -1, " json formate error");
   }
 }
 

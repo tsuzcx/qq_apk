@@ -1,6 +1,6 @@
 package cooperation.comic;
 
-import altd;
+import amjh;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -210,7 +210,7 @@ public class VipComicHelper
       }
       return;
     }
-    ThreadManager.post(new altd(paramInt, paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new amjh(paramInt, paramQQAppInterface), 5, null, false);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt)

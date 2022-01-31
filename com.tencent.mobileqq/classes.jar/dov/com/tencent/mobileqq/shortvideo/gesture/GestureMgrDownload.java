@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo.gesture;
 
 import android.content.IntentFilter;
-import anzo;
+import aopt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class GestureMgrDownload
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.video.gesturemgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new anzo(this), localIntentFilter) != null;
+    return paramBaseApplicationImpl.registerReceiver(new aopt(this), localIntentFilter) != null;
   }
   
   boolean b()

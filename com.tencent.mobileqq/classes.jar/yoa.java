@@ -1,18 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
-public final class yoa
-  implements EIPCResultCallback
+class yoa
+  implements Runnable
 {
-  public yoa(long paramLong) {}
+  yoa(ynz paramynz, String paramString) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    CmGameUtil.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
+    if ((this.jdField_a_of_type_Ynz.jdField_a_of_type_Int < 0) && (HotChatCenterFragment.a(this.jdField_a_of_type_Ynz.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment))) {
+      this.jdField_a_of_type_Ynz.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    }
+    this.jdField_a_of_type_Ynz.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

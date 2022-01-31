@@ -1,28 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class sls
-  implements DialogInterface.OnClickListener
+public class sls
+  implements View.OnClickListener
 {
-  sls(slr paramslr) {}
+  public sls(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (NetworkUtil.g(this.a.jdField_a_of_type_Sln.a))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.c(this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_Sln.a.I();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.j();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.a.jdField_a_of_type_Sln.a.a.a.jdField_a_of_type_JavaLangString, "");
-    this.a.jdField_a_of_type_Sln.a.a("请确认网络状态后重试", 0);
-    this.a.jdField_a_of_type_Sln.a.H();
+    this.a.l();
   }
 }
 

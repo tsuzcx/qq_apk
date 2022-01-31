@@ -259,14 +259,14 @@ public class SendVideoActivity$SendVideoTaskV2
     //   438: astore 9
     //   440: aload 12
     //   442: invokevirtual 288	java/io/File:length	()J
-    //   445: lstore 4
+    //   445: lstore 5
     //   447: aload 7
     //   449: astore 10
     //   451: aload 8
     //   453: astore 9
     //   455: aload_0
     //   456: aload 8
-    //   458: lload 4
+    //   458: lload 5
     //   460: invokestatic 294	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   463: invokestatic 300	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   466: putfield 302	com/tencent/mobileqq/activity/shortvideo/SendVideoActivity$SendVideoTaskV2:g	Ljava/lang/String;
@@ -339,8 +339,8 @@ public class SendVideoActivity$SendVideoTaskV2
     //   608: aload_0
     //   609: getfield 316	com/tencent/mobileqq/activity/shortvideo/SendVideoActivity$SendVideoTaskV2:jdField_f_of_type_JavaLangString	Ljava/lang/String;
     //   612: invokestatic 319	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   615: istore 6
-    //   617: iload 6
+    //   615: istore 4
+    //   617: iload 4
     //   619: ifne +42 -> 661
     //   622: iconst_0
     //   623: ifeq +11 -> 634
@@ -368,7 +368,7 @@ public class SendVideoActivity$SendVideoTaskV2
     //   665: aload 8
     //   667: astore 9
     //   669: aload_1
-    //   670: lload 4
+    //   670: lload 5
     //   672: invokestatic 325	android/text/format/Formatter:formatFileSize	(Landroid/content/Context;J)Ljava/lang/String;
     //   675: astore_1
     //   676: aload 7
@@ -648,8 +648,8 @@ public class SendVideoActivity$SendVideoTaskV2
     //   0	1212	1	paramContext	android.content.Context
     //   7	967	2	i	int
     //   1	918	3	j	int
-    //   445	226	4	l	long
-    //   615	3	6	bool	boolean
+    //   615	3	4	bool	boolean
+    //   445	226	5	l	long
     //   24	64	7	localObject1	java.lang.Object
     //   203	14	7	localNumberFormatException	java.lang.NumberFormatException
     //   339	697	7	localObject2	java.lang.Object

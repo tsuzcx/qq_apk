@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f15" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f16" android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_marginRight="-1.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b260e" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0285" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f17" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f33" android:background="@drawable/skin_setting_strip_top_unpressed" android:paddingLeft="28.0dip" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d031b" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b260f" android:singleLine="true" android:inputType="number" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0286" />
-        </LinearLayout>
-    </LinearLayout>
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f34" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2610" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1f15" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0287" />
-    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212af" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1f34" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f1a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0321" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1f34">
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f1b" android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_marginRight="-1.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2611" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0285" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f1c" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f35" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d031f" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040682" />
-        </LinearLayout>
-    </LinearLayout>
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f36" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2613" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1f1a" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0287" />
-    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212af" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1f36" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f1f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0321" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1f36">
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f20" android:background="@drawable/skin_setting_strip_top_unpressed" android:layout_marginRight="-1.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2614" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0285" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f21" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f37" android:background="@drawable/skin_setting_strip_top_unpressed" android:paddingLeft="28.0dip" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d031c" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d031b" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d031d" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d031f" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b2615" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0286" />
-        </LinearLayout>
-    </LinearLayout>
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f38" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2616" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1f1f" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0287" />
-    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212af" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1f38" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d071f" android:textStyle="bold" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f2c" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d071e" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d071e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:includeFontPadding="false" android:lineSpacingExtra="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0720" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d071f" android:textStyle="bold" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f2d" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d071e" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d071e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:includeFontPadding="false" android:lineSpacingExtra="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0720" />
+</merge>

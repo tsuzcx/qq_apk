@@ -13,12 +13,11 @@ public class EffectsListenerController
   static
   {
     jdField_a_of_type_JavaLangString = "sv_beauty_level";
-    int[] arrayOfInt1 = { 0 };
-    int[] arrayOfInt2 = { 43 };
-    int[] arrayOfInt3 = { 60 };
-    int[] arrayOfInt4 = { 78 };
-    int[] arrayOfInt5 = { 95 };
-    jdField_a_of_type_Array2dOfInt = new int[][] { arrayOfInt1, { 25 }, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5 };
+    int[] arrayOfInt1 = { 25 };
+    int[] arrayOfInt2 = { 60 };
+    int[] arrayOfInt3 = { 78 };
+    int[] arrayOfInt4 = { 95 };
+    jdField_a_of_type_Array2dOfInt = new int[][] { { 0 }, arrayOfInt1, { 43 }, arrayOfInt2, arrayOfInt3, arrayOfInt4 };
   }
   
   public void onDismiss(DialogInterface paramDialogInterface) {}

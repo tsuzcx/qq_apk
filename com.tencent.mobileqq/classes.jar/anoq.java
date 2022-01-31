@@ -1,13 +1,27 @@
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.qphone.base.util.QLog;
 
-class anoq
-  implements Runnable
+public final class anoq
+  implements ValueAnimation.AnimationUpdateListener
 {
-  anoq(anop paramanop) {}
+  public anoq(View paramView) {}
   
-  public void run()
+  @TargetApi(11)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
+    if (QLog.isColorLevel()) {
+      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
+    }
+    paramFloat = paramFloat1.floatValue();
+    if (this.a != null)
+    {
+      this.a.setAlpha(paramFloat);
+      this.a.invalidate();
+    }
   }
 }
 

@@ -1,14 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.SimpleStepResultCallback;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
 
-public class obj
-  implements Runnable
+class obj
+  implements SimpleStep.SimpleStepResultCallback
 {
-  public obj(EditLocalVideoPlayer paramEditLocalVideoPlayer) {}
+  obj(obi paramobi, String paramString) {}
   
-  public void run()
+  public void a(GetMyStoryVideoListStep.Result paramResult)
   {
-    this.a.a.setVisibility(8);
+    if ((paramResult.a != null) && (TextUtils.equals(paramResult.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    {
+      NewMyStorySegment.a(this.jdField_a_of_type_Obi.a).a = paramResult.a;
+      NewMyStorySegment.a(this.jdField_a_of_type_Obi.a).sendMessage(NewMyStorySegment.a(this.jdField_a_of_type_Obi.a).obtainMessage(0, NewMyStorySegment.a(this.jdField_a_of_type_Obi.a)));
+    }
   }
 }
 

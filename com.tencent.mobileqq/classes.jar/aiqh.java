@@ -1,23 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.http.HttpResponse;
+import org.apache.http.impl.client.DefaultRedirectHandler;
+import org.apache.http.protocol.HttpContext;
 
-public class aiqh
-  implements DialogInterface.OnClickListener
+public final class aiqh
+  extends DefaultRedirectHandler
 {
-  public aiqh(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public URI getLocationURI(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    URI localURI = super.getLocationURI(paramHttpResponse, paramHttpContext);
+    paramHttpResponse = paramHttpContext.getAttribute("mobileqq_report_flag");
+    if ((paramHttpResponse != null) && ((paramHttpResponse instanceof Integer)) && (((Integer)paramHttpResponse).intValue() > 0))
+    {
+      Object localObject = paramHttpContext.getAttribute("mobileqq_direct_uri");
+      paramHttpResponse = localObject;
+      if (localObject == null)
+      {
+        paramHttpResponse = new ArrayList();
+        paramHttpContext.setAttribute("mobileqq_direct_uri", paramHttpResponse);
+      }
+      if ((paramHttpResponse != null) && ((paramHttpResponse instanceof List))) {
+        ((List)paramHttpResponse).add(localURI);
+      }
     }
+    return localURI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiqh
  * JD-Core Version:    0.7.0.1
  */

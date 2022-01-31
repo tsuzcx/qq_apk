@@ -28,7 +28,7 @@ public class DatingBaseActivity
     this.b = getIntent().getBooleanExtra("abp_flag", false);
     this.c = getIntent().getBooleanExtra("is_from_web", false);
     if ((this.c) && (!this.b)) {
-      setLeftViewName(2131432397);
+      setLeftViewName(2131432414);
     }
     return true;
   }

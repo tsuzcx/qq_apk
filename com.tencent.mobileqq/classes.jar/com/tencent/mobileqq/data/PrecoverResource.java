@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abny;
+import abuz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -13,7 +13,7 @@ public class PrecoverResource
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abny();
+  public static final Parcelable.Creator CREATOR = new abuz();
   @notColumn
   public int arg1;
   @notColumn

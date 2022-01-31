@@ -1,28 +1,28 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class algs
-  implements Handler.Callback
+  implements Runnable
 {
-  public algs(Login paramLogin) {}
+  public algs(DownloadManager paramDownloadManager, String paramString) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    try
     {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    for (;;)
+    catch (Exception localException)
     {
-      return true;
-      this.a.setResult(0);
-      this.a.finish();
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     algs
  * JD-Core Version:    0.7.0.1
  */

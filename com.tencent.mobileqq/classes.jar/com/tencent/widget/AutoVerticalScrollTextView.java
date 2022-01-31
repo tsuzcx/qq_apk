@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alla;
+import amaq;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
@@ -21,12 +21,12 @@ public class AutoVerticalScrollTextView
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 1000L;
-  private alla jdField_a_of_type_Alla;
+  private amaq jdField_a_of_type_Amaq;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 800L;
-  private alla jdField_b_of_type_Alla;
+  private amaq jdField_b_of_type_Amaq;
   
   public AutoVerticalScrollTextView(Context paramContext)
   {
@@ -40,32 +40,32 @@ public class AutoVerticalScrollTextView
     c();
   }
   
-  private alla a(boolean paramBoolean1, boolean paramBoolean2)
+  private amaq a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    alla localalla = new alla(this, paramBoolean1, paramBoolean2);
-    localalla.setDuration(this.jdField_b_of_type_Long);
-    localalla.setFillAfter(false);
-    localalla.setInterpolator(new AccelerateInterpolator());
-    return localalla;
+    amaq localamaq = new amaq(this, paramBoolean1, paramBoolean2);
+    localamaq.setDuration(this.jdField_b_of_type_Long);
+    localamaq.setFillAfter(false);
+    localamaq.setInterpolator(new AccelerateInterpolator());
+    return localamaq;
   }
   
   private void c()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     setFactory(this);
-    this.jdField_a_of_type_Alla = a(true, true);
-    this.jdField_b_of_type_Alla = a(false, true);
-    setInAnimation(this.jdField_a_of_type_Alla);
-    setOutAnimation(this.jdField_b_of_type_Alla);
+    this.jdField_a_of_type_Amaq = a(true, true);
+    this.jdField_b_of_type_Amaq = a(false, true);
+    setInAnimation(this.jdField_a_of_type_Amaq);
+    setOutAnimation(this.jdField_b_of_type_Amaq);
   }
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Alla) {
-      setInAnimation(this.jdField_a_of_type_Alla);
+    if (getInAnimation() != this.jdField_a_of_type_Amaq) {
+      setInAnimation(this.jdField_a_of_type_Amaq);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Alla) {
-      setOutAnimation(this.jdField_b_of_type_Alla);
+    if (getOutAnimation() != this.jdField_b_of_type_Amaq) {
+      setOutAnimation(this.jdField_b_of_type_Amaq);
     }
   }
   
@@ -135,7 +135,7 @@ public class AutoVerticalScrollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.AutoVerticalScrollTextView
  * JD-Core Version:    0.7.0.1
  */

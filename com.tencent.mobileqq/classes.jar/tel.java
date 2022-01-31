@@ -1,17 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
 public class tel
-  extends GameCenterObserver
+  implements DialogInterface.OnClickListener
 {
-  public tel(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public tel(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PublicAccountListActivity.a(this.a)) {
-      PublicAccountListActivity.a(this.a);
-    }
+    this.a.finish();
   }
 }
 

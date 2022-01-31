@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
 class acsl
   implements Runnable
 {
-  acsl(acsk paramacsk) {}
+  acsl(acsi paramacsi) {}
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.f();
-    }
+    this.a.a.e();
   }
 }
 

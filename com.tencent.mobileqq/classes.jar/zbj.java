@@ -1,36 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.conditionsearch.data.AddressHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class zbj
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public zbj(GuardManager paramGuardManager) {}
+  public zbj(ConditionSearchManager paramConditionSearchManager, File paramFile) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    long l = System.currentTimeMillis();
+    try
     {
-      if (this.a.jdField_a_of_type_Long > 0L) {
-        this.a.a(false);
+      ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager, AddressHelper.a(ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager), this.jdField_a_of_type_JavaIoFile));
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearch.Manager", 2, "updateLocal | doParse cost " + (float)(System.currentTimeMillis() - l) / 1000.0F + " seconds");
       }
-      ArkMediaPlayer.b();
-    }
-    while (!"android.intent.action.SCREEN_ON".equals(paramContext)) {
+      ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager).runOnUiThread(new zbk(this));
       return;
     }
-    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null)) {
-      this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ConditionSearch.Manager", 2, "", localOutOfMemoryError);
     }
-    ArkMediaPlayer.a();
   }
 }
 

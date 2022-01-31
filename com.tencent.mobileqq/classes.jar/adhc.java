@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.hotpic.HotPicTab;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class adhc
+public final class adhc
   implements Runnable
 {
-  public adhc(HotPicTab paramHotPicTab) {}
+  public adhc(int paramInt1, String paramString, int paramInt2) {}
   
   public void run()
   {
-    this.a.requestLayout();
+    QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b).b(FMToastUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhc
  * JD-Core Version:    0.7.0.1
  */

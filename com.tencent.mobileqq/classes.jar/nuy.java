@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter.OnHolderItemClickListener;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter.StoryDiscoverViewHolder;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.storyHome.atvideo.model.AtVideoTextWatcher;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
 
-public class nuy
-  implements View.OnClickListener
+class nuy
+  implements Runnable
 {
-  public nuy(StoryDiscoverAdapter.StoryDiscoverViewHolder paramStoryDiscoverViewHolder, View paramView) {}
+  nuy(nux paramnux) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_Int);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(this.a.a), DetailCommentHelper.a(this.a.a), this.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a.a).a);
+    DetailCommentHelper localDetailCommentHelper = this.a.a;
+    if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      DetailCommentHelper.a(localDetailCommentHelper, bool);
+      return;
     }
   }
 }

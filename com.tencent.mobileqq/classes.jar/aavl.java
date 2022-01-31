@@ -1,37 +1,76 @@
-import com.tencent.mobileqq.armap.ConversationARMap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ARMapHongBaoListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.ark.ArkAppCGI.AppNameVersion;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class aavl
   implements Runnable
 {
-  public aavl(ConversationARMap paramConversationARMap) {}
+  public aavl(ArkLocalAppMgr paramArkLocalAppMgr, ArrayList paramArrayList, Object paramObject, aawd paramaawd, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConversationARMap", 2, "mTouchReleaseRunnable mState:" + this.a.jdField_a_of_type_Int + "  mResume:" + this.a.c + " mTitleIsVisible:" + this.a.j);
+    HashMap localHashMap = new HashMap();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    String str;
+    if (localIterator.hasNext()) {
+      str = (String)localIterator.next();
     }
-    if ((this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.getScrollY() != 0))
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setSpringbackOffset(0);
-      this.a.c(0);
-    }
-    if (this.a.c) {
-      this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setEnableTouch(true);
-    }
-    if (!this.a.j)
-    {
-      if (this.a.c) {
-        break label159;
+      synchronized (ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr))
+      {
+        ??? = ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr).iterator();
+        if (!((Iterator)???).hasNext()) {
+          break label366;
+        }
+        localUpdateAppByNameTask = (ArkLocalAppMgr.UpdateAppByNameTask)((Iterator)???).next();
+        if (!localUpdateAppByNameTask.jdField_b_of_type_JavaLangString.equalsIgnoreCase(str)) {
+          continue;
+        }
+        localUpdateAppByNameTask.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangObject);
+        localUpdateAppByNameTask.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Aawd);
+        i = 1;
+        if (i != 0) {
+          ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("updateAppByNameBatch, request merged, appname=%s", new Object[] { str }));
+        }
       }
-      this.a.b(true);
-    }
-    label159:
-    while (this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.m) {
+      ??? = ArkLocalAppMgr.a(str);
+      ArkLocalAppMgr.UpdateAppByNameTask localUpdateAppByNameTask = new ArkLocalAppMgr.UpdateAppByNameTask(null);
+      localUpdateAppByNameTask.jdField_b_of_type_JavaLangString = str;
+      localUpdateAppByNameTask.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = ((ArkLocalAppMgr.AppPathInfo)???);
+      localUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
+      localUpdateAppByNameTask.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangObject);
+      localUpdateAppByNameTask.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Aawd);
+      for (;;)
+      {
+        synchronized (ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr))
+        {
+          ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr).add(localUpdateAppByNameTask);
+          localObject1.put(str, localUpdateAppByNameTask);
+          ??? = new ArkAppCGI.AppNameVersion();
+          ((ArkAppCGI.AppNameVersion)???).a = str;
+          if ((??? != null) && (((ArkLocalAppMgr.AppPathInfo)???).a != null))
+          {
+            ((ArkAppCGI.AppNameVersion)???).jdField_b_of_type_JavaLangString = ((ArkLocalAppMgr.AppPathInfo)???).a.jdField_b_of_type_JavaLangString;
+            localArrayList.add(???);
+          }
+        }
+        ((ArkAppCGI.AppNameVersion)???).jdField_b_of_type_JavaLangString = "0.0.0.0";
+      }
+      ((ArkAppCenter)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(120)).a().a(localArrayList, localObject2, new aavm(this));
       return;
+      label366:
+      int i = 0;
     }
-    this.a.b(false);
   }
 }
 

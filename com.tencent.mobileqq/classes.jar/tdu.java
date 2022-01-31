@@ -1,45 +1,20 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class tdu
-  extends CardObserver
+  implements View.OnClickListener
 {
-  public tdu(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public tdu(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (!this.a.a.a.equals(paramString)) {
-      return;
-    }
-    this.a.e();
-    if (paramBoolean)
-    {
-      this.a.a(2131433453, 2);
-      return;
-    }
-    this.a.a(2131433452, 1);
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.c.a()))
-    {
-      this.a.c.setOnCheckedChangeListener(null);
-      this.a.c.setChecked(paramBoolean2);
-      this.a.c.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.c.a()))
-    {
-      this.a.c.setOnCheckedChangeListener(null);
-      this.a.c.setChecked(paramBoolean2);
-      this.a.c.setOnCheckedChangeListener(this.a);
-    }
+    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
   }
 }
 

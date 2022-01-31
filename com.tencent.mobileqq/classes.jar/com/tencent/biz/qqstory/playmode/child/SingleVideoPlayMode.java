@@ -200,10 +200,10 @@ public class SingleVideoPlayMode
   {
     if (paramStoryVideoItem.isUploadFail())
     {
-      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371959)).setVisibility(0);
-      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371961)).setVisibility(8);
-      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371960)).setVisibility(0);
-      ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371962)).setText(2131432077);
+      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372132)).setVisibility(0);
+      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372134)).setVisibility(8);
+      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372133)).setVisibility(0);
+      ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372135)).setText(2131432094);
       paramVideoViewHolder.d.setVisibility(0);
       paramVideoViewHolder.b.setVisibility(8);
       paramVideoViewHolder.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -219,10 +219,10 @@ public class SingleVideoPlayMode
       if (!paramStoryVideoItem.isUploading()) {
         break;
       }
-      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371959)).setVisibility(0);
-      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371961)).setVisibility(0);
-      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371960)).setVisibility(8);
-      ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371962)).setText("上传中，请稍候");
+      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372132)).setVisibility(0);
+      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372134)).setVisibility(0);
+      ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372133)).setVisibility(8);
+      ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372135)).setText("上传中，请稍候");
       paramVideoViewHolder.d.setVisibility(0);
       paramVideoViewHolder.b.setVisibility(8);
       paramVideoViewHolder.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -230,7 +230,7 @@ public class SingleVideoPlayMode
     StoryReportor.a("play_video", "exp_pub_fail", 0, 0, new String[] { b() });
     this.jdField_g_of_type_Boolean = true;
     return;
-    ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371959)).setVisibility(8);
+    ((View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372132)).setVisibility(8);
     paramVideoViewHolder.d.setVisibility(0);
     paramStoryVideoItem = paramVideoViewHolder.b;
     if (PlayModeUtils.a(this.k)) {}

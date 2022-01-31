@@ -1,19 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class abvn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abvn(WebIPCOperator paramWebIPCOperator, Bundle paramBundle) {}
+  public abvn(DBFixConfigActivity paramDBFixConfigActivity, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator.e(this.jdField_a_of_type_AndroidOsBundle);
+    boolean bool = FileUtils.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db"), new File(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getExternalCacheDir(), this.jdField_a_of_type_JavaLangString + System.currentTimeMillis() + ".db"));
+    QLog.e(DBFixConfigActivity.jdField_a_of_type_JavaLangString, 2, "copy " + bool + this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvn
  * JD-Core Version:    0.7.0.1
  */

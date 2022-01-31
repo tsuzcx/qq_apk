@@ -44,17 +44,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
-import nxh;
-import nxi;
-import nxj;
-import nxk;
-import nxl;
+import nyt;
+import nyu;
+import nyv;
+import nyw;
+import nyx;
 
 public class HomeFeedPresenter
   implements FeedListPageLoaderBase.OnFeedItemPageLoadListener, IEventReceiver
 {
   private int jdField_a_of_type_Int;
-  private final QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nxk(this);
+  private final QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nyw(this);
   private FeedListPageLoaderBase jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase;
   private HomeFeedPresenter.FeedCommentRec jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedCommentRec;
   private HomeFeedPresenter.FeedInteractiveRec jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedInteractiveRec;
@@ -71,7 +71,7 @@ public class HomeFeedPresenter
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private List jdField_a_of_type_JavaUtilList;
   public AtomicBoolean a;
-  private nxl jdField_a_of_type_Nxl;
+  private nyx jdField_a_of_type_Nyx;
   private boolean jdField_a_of_type_Boolean = true;
   
   public HomeFeedPresenter(int paramInt, @NonNull HomeFeedPresenter.HomeFeedPresenterListener paramHomeFeedPresenterListener, boolean paramBoolean)
@@ -247,7 +247,7 @@ public class HomeFeedPresenter
       if (QLog.isDebugVersion()) {
         SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "order before:%s", paramHomeFeedData.jdField_b_of_type_JavaUtilList);
       }
-      Collections.sort(paramHomeFeedData.jdField_b_of_type_JavaUtilList, GeneralHomeFeed.jdField_a_of_type_Nxp);
+      Collections.sort(paramHomeFeedData.jdField_b_of_type_JavaUtilList, GeneralHomeFeed.jdField_a_of_type_Nzb);
       if (!QLog.isDebugVersion()) {
         break;
       }
@@ -258,7 +258,7 @@ public class HomeFeedPresenter
   
   private void a(ArrayList paramArrayList)
   {
-    Bosses.get().postLightWeightJob(new nxj(this, paramArrayList), 10);
+    Bosses.get().postLightWeightJob(new nyv(this, paramArrayList), 10);
   }
   
   public static boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
@@ -476,6 +476,7 @@ public class HomeFeedPresenter
   
   public void a()
   {
+    SLog.b("Q.qqstory.home.data.HomeFeedPresenter", "HomeFeedPresenter create");
     if (this.jdField_a_of_type_Int == 10) {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase = new HomeFeedListPageLoader(this);
     }
@@ -485,8 +486,8 @@ public class HomeFeedPresenter
       Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$UploadStatusRec);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedCommentRec = new HomeFeedPresenter.FeedCommentRec(this);
       Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedCommentRec);
-      this.jdField_a_of_type_Nxl = new nxl(this);
-      Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nxl);
+      this.jdField_a_of_type_Nyx = new nyx(this);
+      Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nyx);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedVideoRec = new HomeFeedPresenter.FeedVideoRec(this);
       Dispatchers.get().registerSubscriber("HomeFeedPresenter", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedVideoRec);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedVideoCookieRec = new HomeFeedPresenter.FeedVideoCookieRec(this);
@@ -521,7 +522,7 @@ public class HomeFeedPresenter
     SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "on feed back:%s", new Object[] { paramHomeFeedData.b() });
     e(paramHomeFeedData);
     a(new ArrayList(paramHomeFeedData.jdField_b_of_type_JavaUtilList));
-    ThreadManager.getUIHandler().post(new nxi(this, paramHomeFeedData));
+    ThreadManager.getUIHandler().post(new nyu(this, paramHomeFeedData));
   }
   
   public void a(String paramString)
@@ -598,7 +599,7 @@ public class HomeFeedPresenter
       }
     }
     Object localObject = (LbsManager)SuperManager.a(9);
-    ((LbsManager)localObject).a(new nxh(this, (LbsManager)localObject));
+    ((LbsManager)localObject).a(new nyt(this, (LbsManager)localObject));
     ((LbsManager)localObject).a(1000);
     SLog.b("Q.qqstory.home.data.HomeFeedPresenter", "refresh network feed");
   }
@@ -620,17 +621,10 @@ public class HomeFeedPresenter
   
   public void b()
   {
-    if (this.jdField_a_of_type_Int == 10)
-    {
-      FeedManager localFeedManager = (FeedManager)SuperManager.a(11);
-      localFeedManager.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-      localFeedManager.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache = new FeedListPageLoaderBase.FeedIdListCache(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase.a());
-      localFeedManager.jdField_a_of_type_Boolean = a();
-    }
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$UploadStatusRec);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedCommentRec);
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nxl);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nyx);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedVideoRec);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedVideoCookieRec);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$FeedInteractiveRec);
@@ -641,6 +635,7 @@ public class HomeFeedPresenter
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter$OnTagListUpdateRec);
     QQStoryContext.a();
     QQStoryContext.a().removeObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
+    ((FeedManager)SuperManager.a(11)).b = null;
   }
   
   public void b(String paramString)
@@ -653,6 +648,18 @@ public class HomeFeedPresenter
   }
   
   public void c()
+  {
+    if (this.jdField_a_of_type_Int == 10)
+    {
+      FeedManager localFeedManager = (FeedManager)SuperManager.a(11);
+      localFeedManager.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
+      localFeedManager.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache = new FeedListPageLoaderBase.FeedIdListCache(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase.a());
+      localFeedManager.jdField_a_of_type_Boolean = a();
+      SLog.b("Q.qqstory.home.data.HomeFeedPresenter", "HomeFeedPresenter pause, set feedList cache");
+    }
+  }
+  
+  public void d()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase.c();
     SLog.b("Q.qqstory.home.data.HomeFeedPresenter", "load network next feed");

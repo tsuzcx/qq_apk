@@ -1,13 +1,17 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
 
-public class xzk
-  extends TroopMemberListActivity.ViewHolder
+class xzk
+  implements DialogInterface.OnClickListener
 {
-  public CheckBox a;
+  xzk(xzg paramxzg) {}
   
-  private xzk(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.setResult(0, this.a.a.a);
+    this.a.a.finish();
+  }
 }
 
 

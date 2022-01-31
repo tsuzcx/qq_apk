@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.hotpic;
 
-import adhi;
-import adhj;
-import adhk;
-import adhl;
+import adrh;
+import adri;
+import adrj;
+import adrk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -140,7 +140,7 @@ public class HotVideoMongoliaRelativeLayout
     }
     for (;;)
     {
-      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131364765);
+      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131364787);
       localFrameLayout.removeAllViews();
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$VideoInfo.jdField_a_of_type_Int, -1);
       localFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
@@ -154,20 +154,20 @@ public class HotVideoMongoliaRelativeLayout
   private void g()
   {
     QLog.d("HotVideoRelativeLayout", 2, "mVideoTitle is" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$VideoInfo.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364767));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364768));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131364766);
-    this.jdField_a_of_type_ComTencentMobileqqHotpicCircleProgressView = ((CircleProgressView)findViewById(2131364772));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131364769));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364789));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364790));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131364788);
+    this.jdField_a_of_type_ComTencentMobileqqHotpicCircleProgressView = ((CircleProgressView)findViewById(2131364794));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131364791));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(10000);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364770));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364771));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364792));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364793));
     f();
     b(2);
     setOnTouchListener(this);
-    setOnClickListener(new adhi(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new adhj(this));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new adhk(this));
+    setOnClickListener(new adrh(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new adri(this));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new adrj(this));
   }
   
   public void a()
@@ -216,7 +216,7 @@ public class HotVideoMongoliaRelativeLayout
       if (!paramBoolean) {
         break label70;
       }
-      i = 2130837598;
+      i = 2130837601;
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getContext().getResources().getDrawable(i));
       localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
       if (!paramBoolean) {
@@ -232,7 +232,7 @@ public class HotVideoMongoliaRelativeLayout
         this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface.a(paramBoolean);
       }
       return;
-      i = 2130837599;
+      i = 2130837602;
       break;
     }
   }
@@ -265,7 +265,7 @@ public class HotVideoMongoliaRelativeLayout
     }
     if (!a())
     {
-      ThreadManager.getUIHandler().post(new adhl(this, paramInt));
+      ThreadManager.getUIHandler().post(new adrk(this, paramInt));
       return;
     }
     a(this.jdField_a_of_type_Int, paramInt);
@@ -385,7 +385,7 @@ public class HotVideoMongoliaRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

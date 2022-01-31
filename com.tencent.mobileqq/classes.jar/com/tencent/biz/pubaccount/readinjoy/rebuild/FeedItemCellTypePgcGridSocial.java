@@ -21,8 +21,8 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.List;
-import lty;
-import ltz;
+import luh;
+import lui;
 
 public class FeedItemCellTypePgcGridSocial
   extends FeedItemCell
@@ -56,7 +56,7 @@ public class FeedItemCellTypePgcGridSocial
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     localLinearLayout2.setBackgroundColor(Color.parseColor("#F8F8F8"));
     localLinearLayout2.setLayoutParams(localLayoutParams);
-    ApiCompatibilityUtils.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839718));
+    ApiCompatibilityUtils.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839724));
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary);
     }
@@ -66,11 +66,11 @@ public class FeedItemCellTypePgcGridSocial
       localLayoutParams.setMargins(AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView).setLayoutParams(localLayoutParams);
       ((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView).setDuplicateParentStateEnabled(true);
-      ApiCompatibilityUtils.a((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839718));
-      ((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView).setOnNoItemClickListener(new lty(this));
+      ApiCompatibilityUtils.a((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839724));
+      ((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView).setOnNoItemClickListener(new luh(this));
       localLinearLayout2.addView((ComponentContentGridImage)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView);
     }
-    localLinearLayout2.setOnClickListener(new ltz(this));
+    localLinearLayout2.setOnClickListener(new lui(this));
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
     }

@@ -91,7 +91,7 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
       l(true);
       super.a().setVisibility(4);
       return;
-      super.getActivity().getWindow().setBackgroundDrawableResource(2131492923);
+      super.getActivity().getWindow().setBackgroundDrawableResource(2131492924);
       break;
       label195:
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(0);
@@ -117,7 +117,7 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.a(paramWebView, paramInt, paramString1, paramString2);
-    QRUtils.a(1, 2131430018);
+    QRUtils.a(1, 2131430035);
     super.getActivity().finish();
   }
   

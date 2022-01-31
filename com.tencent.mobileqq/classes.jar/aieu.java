@@ -1,23 +1,26 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aieu
-  implements View.OnClickListener
+class aieu
+  implements Runnable
 {
-  public aieu(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
+  aieu(aies paramaies, String paramString1, boolean paramBoolean, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "成功，文件路径为" + this.b;; str = "失败")
+    {
+      QQToast.a(localBaseApplicationImpl, str, 2000).a();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aieu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class xzd
+class xzd
   implements Runnable
 {
-  public xzd(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  xzd(xzc paramxzc, View paramView) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListInnerFrame", 2, "read troop members from database before updating data from server");
-    }
-    TroopMemberListInnerFrame.a(this.a, this.a.b, null);
+    this.jdField_a_of_type_AndroidViewView.sendAccessibilityEvent(8);
   }
 }
 

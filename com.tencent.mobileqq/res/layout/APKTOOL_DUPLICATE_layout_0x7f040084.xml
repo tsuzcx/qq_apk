@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HorizontalScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05ea" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always"
+<HorizontalScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05fc" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="right" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05eb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:layout_gravity="right" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05fd" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 </HorizontalScrollView>

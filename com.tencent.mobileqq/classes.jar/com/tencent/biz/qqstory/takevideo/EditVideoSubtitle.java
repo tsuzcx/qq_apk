@@ -47,7 +47,7 @@ public class EditVideoSubtitle
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131371905));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131372075));
     QQStoryContext.a();
     QQStoryContext.a();
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout == null)
@@ -59,7 +59,7 @@ public class EditVideoSubtitle
       }
     }
     label95:
-    for (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());; this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)a(2131362436)))
+    for (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());; this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)a(2131362439)))
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.a(1);
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.a(this.jdField_a_of_type_ArrayOfByte);

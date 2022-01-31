@@ -1,38 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
 
-public class abwk
-  implements QueryCallback
+class abwk
+  implements Runnable
 {
-  public abwk(SogouEmoji paramSogouEmoji, PicEmoticonInfo paramPicEmoticonInfo) {}
+  abwk(abwj paramabwj, boolean paramBoolean, String paramString) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void run()
   {
-    boolean bool;
-    if (paramEmoticonPackage != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f = paramEmoticonPackage.type;
-      PicEmoticonInfo localPicEmoticonInfo = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo;
-      if (paramEmoticonPackage.isAPNG == 2)
-      {
-        bool = true;
-        localPicEmoticonInfo.b = bool;
-      }
-    }
-    for (;;)
-    {
-      SogouEmoji.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func sendEmoji ends, type:" + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f);
-      }
-      return;
-      bool = false;
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f = 3;
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Abwj.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null)) {
+      this.jdField_a_of_type_Abwj.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abwj.a.jdField_a_of_type_Int);
     }
   }
 }

@@ -1,31 +1,42 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class tjg
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public tjg(QQSettingMe paramQQSettingMe) {}
+  public tjg(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    QQSettingMe.a(this.a).setVisibility(8);
-    QQSettingMe.b(this.a).setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "drawer", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
-    if (QQSettingMe.a(this.a) == null)
+    ChatActivityFacade.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    paramView = ChatActivityFacade.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    if (paramView != null) {}
+    try
     {
-      PropertyValuesHolder localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat("alpha", new float[] { 1.0F, 0.0F });
-      PropertyValuesHolder localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, 0.0F });
-      PropertyValuesHolder localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, 0.0F });
-      QQSettingMe.a(this.a, ObjectAnimator.ofPropertyValuesHolder(QQSettingMe.a(this.a), new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder2, localPropertyValuesHolder3 }));
-      QQSettingMe.a(this.a).setDuration(200L);
-      QQSettingMe.a(this.a).addListener(new tjh(this));
+      ((MessageForPtt)paramView).c2cViaOffline = true;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
+      ChatActivityFacade.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.d();
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
     }
-    QQSettingMe.b(this.a, true);
-    QQSettingMe.a(this.a).start();
+    catch (RuntimeException paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
+      }
+    }
   }
 }
 

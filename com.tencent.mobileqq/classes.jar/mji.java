@@ -1,44 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 class mji
-  implements View.OnClickListener
+  implements Runnable
 {
-  mji(mjg parammjg, FrameLayout paramFrameLayout) {}
+  mji(mjh parammjh, Layer paramLayer) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (ReadInJoyRefreshManager)this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getManager(269);
-    if (paramView.a() == 1)
-    {
-      paramView.a(false);
-      paramView = paramView.a(this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a());
-      if (paramView != null)
-      {
-        paramView.isShown = false;
-        SharedPreUtils.v(this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getCurrentAccountUin(), paramView.toJson().toString());
-      }
-    }
-    ((ReadInJoySkinManager)this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getManager(260)).a(1, this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.id);
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(ReadinjoyTabFrame.a(this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame));
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, null);
-    SharedPreUtils.u(this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getCurrentAccountUin(), this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.toJson().toString());
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabFrame", 2, "set skin ：id = " + this.jdField_a_of_type_Mjg.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.id);
-    }
+    this.jdField_a_of_type_Mjh.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLayer);
+    PublicAccountReportUtils.a(this.jdField_a_of_type_Mjh.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C80", "0X8008C80", 0, 0, this.jdField_a_of_type_Mjh.a.b, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.jdField_a_of_type_Mjh.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
   }
 }
 

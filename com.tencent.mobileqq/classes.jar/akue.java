@@ -1,49 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.wadl.WLog;
-import com.tencent.open.wadl.WadlJsBridgeService;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.DropdownView;
 
-public final class akue
-  extends Handler
+class akue
+  implements Runnable
 {
-  public akue(WadlJsBridgeService paramWadlJsBridgeService, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  akue(akud paramakud, View paramView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    String str = (String)paramMessage.obj;
-    WLog.b(WadlJsBridgeService.a(), "The obj field of msg:" + paramMessage.what + "," + paramMessage.obj);
-    switch (paramMessage.what)
-    {
-    case 2: 
-    case 3: 
-    default: 
-    case 0: 
-    case 4: 
-      for (;;)
-      {
-        this.a.stopSelf(paramMessage.arg1);
-        return;
-        WadlProxyServiceUtil.a().b(4, str);
-      }
-    case 5: 
-      WadlProxyServiceUtil.a().a(4, str);
-      return;
-    }
-    paramMessage = new WadlParams(str, "");
-    paramMessage.c = 4;
-    WadlProxyServiceUtil.a().c(paramMessage);
+    this.jdField_a_of_type_Akud.a.jdField_a_of_type_Akug.showDropDown();
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Akud.a.b);
+    this.jdField_a_of_type_Akud.a.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akue
  * JD-Core Version:    0.7.0.1
  */

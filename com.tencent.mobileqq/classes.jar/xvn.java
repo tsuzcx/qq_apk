@@ -1,13 +1,19 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
 
-public class xvn
-  extends TroopMemberListActivity.ViewHolder
+public final class xvn
+  implements Parcelable.Creator
 {
-  public CheckBox a;
+  public BarrageParcelItem a(Parcel paramParcel)
+  {
+    return new BarrageParcelItem(paramParcel);
+  }
   
-  private xvn(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public BarrageParcelItem[] a(int paramInt)
+  {
+    return new BarrageParcelItem[paramInt];
+  }
 }
 
 

@@ -1,8 +1,14 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 
-public abstract interface upr
+public class upr
+  implements Runnable
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
+  public upr(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  
+  public void run()
+  {
+    this.a.f();
+  }
 }
 
 

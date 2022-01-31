@@ -1,27 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.widget.DynamicGridView;
+import android.view.View;
+import com.tencent.qidian.PhotoWallViewForQiDianProfile;
+import com.tencent.qidian.PhotoWallViewForQiDianProfile.PhotoWallCallback;
+import com.tencent.qidian.data.CompanyShowCaseInfo;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.List;
 
 public class alll
-  extends AnimatorListenerAdapter
+  implements AdapterView.OnItemClickListener
 {
-  public alll(DynamicGridView paramDynamicGridView) {}
+  public alll(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    DynamicGridView.b(this.a, false);
-    DynamicGridView.a(this.a);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    DynamicGridView.b(this.a, true);
-    DynamicGridView.a(this.a);
+    paramAdapterView = (CompanyShowCaseInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.a.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile$PhotoWallCallback == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile$PhotoWallCallback.a(paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alll
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,59 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.extendfriend.utils.ProfileGuideDialogUtils;
 
-class acjg
-  implements FMDialogUtil.FMDialogInterface
+public class acjg
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  acjg(acje paramacje, FileManagerEntity paramFileManagerEntity) {}
+  private acjk jdField_a_of_type_Acjk;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a()
+  public acjg(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView, acjk paramacjk)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      QfileBaseRecentFileTabView.y(this.jdField_a_of_type_Acje.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    DataLineHandler localDataLineHandler;
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localDataLineHandler = (DataLineHandler)QfileBaseRecentFileTabView.z(this.jdField_a_of_type_Acje.a).a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localDataLineHandler.a(localArrayList));
-    FMToastUtil.a(2131428328);
-    return;
-    QfileBaseRecentFileTabView.A(this.jdField_a_of_type_Acje.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    super(paramView);
+    this.jdField_a_of_type_Acjk = paramacjk;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362832));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(ProfileGuideDialogUtils.a);
   }
   
-  public void b() {}
+  public void a(acjg paramacjg, acjj paramacjj)
+  {
+    String str = "";
+    boolean bool = false;
+    switch (paramacjj.f)
+    {
+    default: 
+      paramacjj = str;
+    }
+    for (;;)
+    {
+      paramacjg.jdField_a_of_type_AndroidWidgetTextView.setText(paramacjj);
+      paramacjg.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
+      return;
+      paramacjj = "载入中，请稍候...";
+      continue;
+      paramacjj = "加载失败，点击重试";
+      bool = true;
+      continue;
+      paramacjj = "暂无更多的人啦~";
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Acjk != null) {
+      this.jdField_a_of_type_Acjk.a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acjg
  * JD-Core Version:    0.7.0.1
  */

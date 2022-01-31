@@ -1,30 +1,25 @@
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.startup.step.NewRuntime;
 
 public class aifl
   implements Runnable
 {
-  public aifl(AbsPublishActivity paramAbsPublishActivity) {}
+  public aifl(NewRuntime paramNewRuntime) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.a(5, 0);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130844422);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.a.getString(2131430325));
-    if (this.a.b != null) {
-      this.a.b.requestLayout();
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_hack_dvm", 4);
+    if (NewRuntime.b == 15) {
+      localSharedPreferences.edit().putInt("key_continuous_crash_count", 0);
     }
+    localSharedPreferences.edit().putLong("key_last_hack_verify_time", 0L).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aifl
  * JD-Core Version:    0.7.0.1
  */

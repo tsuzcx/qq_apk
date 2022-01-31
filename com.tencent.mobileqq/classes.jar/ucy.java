@@ -1,13 +1,28 @@
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.StrangerObserver;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ucy
-  implements Runnable
+public class ucy
+  extends StrangerObserver
 {
-  ucy(ucx paramucx) {}
+  public ucy(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, PBRepeatMessageField paramPBRepeatMessageField)
   {
-    this.a.a.finish();
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131436918), 0).a();
+      this.a.c.setVisibility(8);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131436917), 0).a();
   }
 }
 

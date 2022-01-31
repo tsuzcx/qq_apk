@@ -1,74 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.utils.Utils;
-import cooperation.weiyun.WeiyunHelper;
-import cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgRsp;
-import cooperation.weiyun.sdk.api.IWeiyunCallback;
-import cooperation.weiyun.utils.StringUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 class amra
-  implements IWeiyunCallback
+  implements AsyncBack
 {
-  amra(amqy paramamqy, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
+  amra(amqz paramamqz) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
-  {
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
-  }
+  public void a(int paramInt) {}
   
-  public void a(WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
+  public void a(String paramString, int paramInt)
   {
-    if (paramQqSdkFileUploadMsgRsp == null)
-    {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, "服务器回包为空!");
-      return;
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.e("QReaderHelper", 2, "Load offline package finish, code = " + paramInt);
     }
-    Object localObject1 = paramQqSdkFileUploadMsgRsp.pdir_key.get();
-    Object localObject3 = paramQqSdkFileUploadMsgRsp.ppdir_key.get();
-    Object localObject2;
-    label54:
-    boolean bool;
-    String str;
-    if (localObject1 == null)
+    switch (paramInt)
     {
-      localObject1 = null;
-      if (localObject3 != null) {
-        break label237;
-      }
-      localObject2 = null;
-      if ((localObject1 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey))) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = ((String)localObject1);
-      }
-      if ((localObject3 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey))) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = ((String)localObject2);
-      }
-      WeiyunHelper.a((String)localObject2, (String)localObject1);
-      localObject2 = this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile;
-      bool = paramQqSdkFileUploadMsgRsp.file_exist.get();
-      localObject3 = paramQqSdkFileUploadMsgRsp.file_id.get();
-      str = paramQqSdkFileUploadMsgRsp.server_name.get();
-      if (!WeiyunTransmissionGlobal.getInstance().isNativeUpload()) {
-        break label247;
-      }
     }
-    label237:
-    label247:
-    for (localObject1 = paramQqSdkFileUploadMsgRsp.inside_upload_ip.get();; localObject1 = paramQqSdkFileUploadMsgRsp.outside_upload_ip.get())
+    for (int i = 0;; i = 1)
     {
-      ((UploadFile)localObject2).setServerInfo(bool, (String)localObject3, str, (String)localObject1, paramQqSdkFileUploadMsgRsp.server_port.get(), Utils.bytes2HexStr(paramQqSdkFileUploadMsgRsp.check_key.get().toByteArray()).toLowerCase(), paramQqSdkFileUploadMsgRsp.channel_count.get(), Integer.toString(paramQqSdkFileUploadMsgRsp.file_version.get()));
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
+      paramString = this.a.a.getApplication().getSharedPreferences("qr_offline_fail", 0);
+      int k = paramString.getInt("offlinePkgDownloadFailCount", 0);
+      if (i != 0) {
+        j = k + 1;
+      }
+      if (j != k) {
+        paramString.edit().putInt("offlinePkgDownloadFailCount", j).commit();
+      }
+      if ((i != 0) && (QLog.isColorLevel())) {
+        QLog.e("QReaderHelper", 2, "offline package update failed:" + paramInt);
+      }
       return;
-      localObject1 = StringUtils.a((ByteStringMicro)localObject1);
-      break;
-      localObject2 = StringUtils.a((ByteStringMicro)localObject3);
-      break label54;
     }
   }
 }

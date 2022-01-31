@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0351" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0414" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ee9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0414">
-        <com.tenpay.sdk.i.l android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a173a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="25.0dip" />
-        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1754" android:visibility="gone" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06ed" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06ec" android:layout_centerInParent="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040498" />
-        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1755" android:visibility="gone" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06ed" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d06ec" android:layout_centerInParent="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04049a" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1752" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="金  额" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentStart="true" />
+    <TextView android:gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1753" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="7.00元" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" />
+</merge>

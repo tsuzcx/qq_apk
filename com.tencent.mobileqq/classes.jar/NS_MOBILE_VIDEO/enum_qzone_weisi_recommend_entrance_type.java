@@ -6,7 +6,11 @@ public final class enum_qzone_weisi_recommend_entrance_type
   implements Serializable
 {
   public static final int _enum_container_floatview = 1;
+  public static final int _enum_container_friend_floatview = 7;
+  public static final int _enum_detail = 5;
+  public static final int _enum_mainpage = 4;
   public static final int _enum_normal_floatview = 2;
+  public static final int _enum_photo_tab = 6;
   public static final int _enum_weisi_tab = 3;
 }
 

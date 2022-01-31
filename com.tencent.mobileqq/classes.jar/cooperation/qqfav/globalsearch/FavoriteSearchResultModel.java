@@ -16,7 +16,7 @@ import mqq.app.AppRuntime;
 public class FavoriteSearchResultModel
   extends ISearchResultPositionModel
 {
-  private static ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492950));
+  private static ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951));
   public int a;
   public long a;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;

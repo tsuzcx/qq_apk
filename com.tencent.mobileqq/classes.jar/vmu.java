@@ -1,96 +1,44 @@
-import android.content.Context;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.MyAdapter.Holder;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pic.Logger;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.OnAdapterNotify;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 
 public class vmu
+  implements AIOGalleryAdapter.OnAdapterNotify
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  View jdField_a_of_type_AndroidViewView;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  int jdField_b_of_type_Int;
-  AlphaAnimation jdField_b_of_type_AndroidViewAnimationAlphaAnimation;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  Runnable jdField_b_of_type_JavaLangRunnable;
-  int[] jdField_b_of_type_ArrayOfInt;
-  RelativeLayout.LayoutParams jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
-  int[] jdField_c_of_type_ArrayOfInt;
-  RelativeLayout.LayoutParams d;
+  public vmu(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public vmu(PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener, Context paramContext, ViewGroup paramViewGroup)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_b_of_type_ArrayOfInt = new int[2];
-    this.jdField_c_of_type_ArrayOfInt = new int[2];
-    paramViewGroup.getLocationInWindow(this.jdField_b_of_type_ArrayOfInt);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(17170445);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new vmv(this, paramSwipeUpAndDragListener));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = paramSwipeUpAndDragListener.a;
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(paramContext);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(637534208);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
-    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new vmw(this, paramSwipeUpAndDragListener);
-    this.jdField_a_of_type_JavaLangRunnable = new vmx(this, paramSwipeUpAndDragListener);
-    this.jdField_b_of_type_JavaLangRunnable = new vmy(this, paramSwipeUpAndDragListener);
-  }
-  
-  public void a()
-  {
-    Logger.a("PhotoListPanel", "clear", "handler = " + this);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    if (this.jdField_c_of_type_AndroidWidgetRelativeLayout != null)
+    View localView;
+    if (paramInt == 0)
     {
-      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 50L);
-      return;
+      localView = this.a.a().findViewById(2131370997);
+      if (localView != null) {}
     }
-    ThreadManager.getUIHandler().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 100L);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
-  
-  public boolean a(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_b_of_type_Int = paramInt;
-    paramView.getLocationInWindow(this.jdField_c_of_type_ArrayOfInt);
-    paramView = ((PhotoListPanel.MyAdapter.Holder)this.jdField_a_of_type_AndroidViewView.getTag()).a.getDrawable();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    return true;
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
+    do
+    {
+      do
+      {
+        return;
+        localView.setVisibility(0);
+        AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+        localAlphaAnimation.setDuration(300L);
+        localView.startAnimation(localAlphaAnimation);
+        localView.postDelayed(new vmv(this, localView), 8000L);
+        return;
+        if (1 != paramInt) {
+          break;
+        }
+      } while ((this.a.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager == null) || (((AIOGalleryScene.av(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)AIOGalleryScene.aw(this.a)).b)) || (!this.a.c));
+      return;
+    } while ((2 != paramInt) || (this.a.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager == null) || (((AIOGalleryScene.ax(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)AIOGalleryScene.ay(this.a)).b)) || (this.a.c));
+    this.a.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a);
   }
 }
 

@@ -45,7 +45,7 @@ public class GameRankFormItem
         if (this.jdField_a_of_type_Int >= 4)
         {
           this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setText(this.jdField_c_of_type_JavaLangCharSequence + String.valueOf(this.jdField_a_of_type_Int));
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextColor(a(getResources(), this.g));
+          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextColor(b(getResources(), this.g));
           this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setContentDescription(this.jdField_c_of_type_JavaLangCharSequence + String.valueOf(this.jdField_a_of_type_Int));
           this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setMaxWidth(this.h);
           if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (!this.jdField_a_of_type_Boolean)) {
@@ -72,7 +72,7 @@ public class GameRankFormItem
           int k;
           if (this.jdField_a_of_type_Int == 1)
           {
-            i = 2130841310;
+            i = 2130841347;
             localObject = ((Resources)localObject).getDrawable(i);
             localCharSequence = this.jdField_c_of_type_JavaLangCharSequence;
             localTextPaint = this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.getPaint();
@@ -93,10 +93,10 @@ public class GameRankFormItem
             break;
             if (this.jdField_a_of_type_Int == 2)
             {
-              i = 2130841311;
+              i = 2130841348;
               break label282;
             }
-            i = 2130841312;
+            i = 2130841349;
             break label282;
             i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
             break label319;
@@ -175,7 +175,7 @@ public class GameRankFormItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.GameRankFormItem
  * JD-Core Version:    0.7.0.1
  */

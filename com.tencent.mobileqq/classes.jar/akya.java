@@ -1,34 +1,28 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.qidian.plugin.QidianWpaWebviewPlugin;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.graphics.PointF;
+import com.tencent.mobileqq.worldcup.TouchSliceView;
+import java.util.Deque;
 
-class akya
-  implements ActionSheet.OnButtonClickListener
+public class akya
+  implements Runnable
 {
-  akya(akxz paramakxz, Intent paramIntent, ActionSheet paramActionSheet) {}
+  public akya(TouchSliceView paramTouchSliceView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    if ((PointF)TouchSliceView.a(this.a).pollFirst() != null)
     {
+      this.a.postInvalidate();
+      this.a.postDelayed(this.a.a, 50);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    while (!TouchSliceView.a(this.a)) {
       return;
-      paramView = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-      if ((paramView.containsKey("request_type")) && (paramView.containsKey("uin")) && (paramView.containsKey("sigt")) && (paramView.containsKey("nickname"))) {
-        QidianWpaWebviewPlugin.a(this.jdField_a_of_type_Akxz.a, paramView);
-      }
     }
+    this.a.postDelayed(this.a.a, 50);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akya
  * JD-Core Version:    0.7.0.1
  */

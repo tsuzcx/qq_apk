@@ -1,27 +1,35 @@
-import android.util.Log;
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
-import com.tencent.mobileqq.lyric.widget.LyricViewScroll.LyricViewScrollListener;
+import com.tencent.mobileqq.hotpic.DiskStorageManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class adpp
-  implements LyricViewScroll.LyricViewScrollListener
+  implements Runnable
 {
-  public adpp(LyricViewController paramLyricViewController) {}
+  private final File jdField_a_of_type_JavaIoFile;
   
-  public void a(int paramInt)
+  public adpp(DiskStorageManager paramDiskStorageManager, File paramFile)
   {
-    this.a.a = true;
-    this.a.c(paramInt);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
   
-  public void b(int paramInt)
+  public void run()
   {
-    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
-    this.a.b(paramInt);
+    try
+    {
+      DiskStorageManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicDiskStorageManager, this.jdField_a_of_type_JavaIoFile);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+      QLog.d("DiskStorageManager", 2, "IO exception run error in background", localIOException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpp
  * JD-Core Version:    0.7.0.1
  */

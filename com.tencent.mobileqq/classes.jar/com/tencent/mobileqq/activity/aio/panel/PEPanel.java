@@ -24,9 +24,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import com.tencent.widget.XPanelContainer;
 import java.io.FileInputStream;
-import viu;
-import viv;
-import vix;
+import vlw;
+import vlx;
+import vlz;
 
 public class PEPanel
   extends FrameLayout
@@ -38,7 +38,7 @@ public class PEPanel
   private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
-  private vix jdField_a_of_type_Vix;
+  private vlz jdField_a_of_type_Vlz;
   private boolean jdField_a_of_type_Boolean;
   private boolean b = true;
   
@@ -62,6 +62,9 @@ public class PEPanel
     int j = 1;
     String str = this.jdField_a_of_type_JavaLangString;
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim isAlreadyAnimating = %b,mIsLottieJsonLoaded = %b", new Object[] { Boolean.valueOf(((DiniFlyAnimationView)localObject).isAnimating()), Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+    }
     if (((DiniFlyAnimationView)localObject).isAnimating()) {
       return;
     }
@@ -71,11 +74,11 @@ public class PEPanel
     if (this.jdField_a_of_type_Boolean)
     {
       ((DiniFlyAnimationView)localObject).playAnimation();
-      postDelayed(new viu(this), this.jdField_a_of_type_Long);
+      postDelayed(new vlw(this), this.jdField_a_of_type_Long);
       k = PokeItemHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), 4);
       m = PokeItemHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), 1);
       if ((k != 1) || (m <= 0)) {
-        break label169;
+        break label249;
       }
       i = j;
     }
@@ -87,17 +90,21 @@ public class PEPanel
         return;
         try
         {
-          localObject = new viv(this, (DiniFlyAnimationView)localObject);
+          localObject = new vlx(this, (DiniFlyAnimationView)localObject);
           LottieComposition.Factory.fromInputStream(getContext(), new FileInputStream(str), (OnCompositionLoadedListener)localObject);
           this.jdField_a_of_type_Boolean = true;
         }
         catch (Exception localException)
         {
-          localException.printStackTrace();
+          this.jdField_a_of_type_ComTencentWidgetListView.setVisibility(0);
         }
       }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("PokeEmo.PEPanel", 2, "load lottie exception ,msg = " + localException.getMessage());
       break;
-      label169:
+      label249:
       if ((k == 0) && (m > 0))
       {
         i = 2;
@@ -136,10 +143,9 @@ public class PEPanel
     this.jdField_a_of_type_ComTencentWidgetListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetListView.setScrollbarFadingEnabled(true);
     this.jdField_a_of_type_ComTencentWidgetListView.setVerticalFadingEdgeEnabled(true);
-    this.jdField_a_of_type_ComTencentWidgetListView.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetListView.setSelector(new ColorDrawable(0));
     addView(this.jdField_a_of_type_ComTencentWidgetListView, paramBaseChatPie);
-    this.jdField_a_of_type_Vix = new vix(this);
+    this.jdField_a_of_type_Vlz = new vlz(this);
     this.jdField_a_of_type_JavaLangString = (PEPanelHelper.c + "aio_panel_pe_ani.json");
   }
   

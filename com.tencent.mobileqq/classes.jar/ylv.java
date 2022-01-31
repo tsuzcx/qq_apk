@@ -1,49 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.cmgame.OnGameStartCheckListener;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public class ylv
-  extends DownloadListener
+public final class ylv
+  implements View.OnClickListener
 {
-  public ylv(CmGameStartChecker paramCmGameStartChecker) {}
+  public ylv(ApolloRender paramApolloRender, ApolloSurfaceView paramApolloSurfaceView) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(View paramView)
   {
-    super.onDone(paramDownloadTask);
-  }
-  
-  public void onDoneFile(DownloadTask paramDownloadTask)
-  {
-    if (paramDownloadTask == null) {
-      return;
-    }
-    CmGameStartChecker.StartCheckParam localStartCheckParam = (CmGameStartChecker.StartCheckParam)paramDownloadTask.a().getSerializable("download_param");
-    if (paramDownloadTask.a() != 3)
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null))
     {
-      CmGameStartChecker.a(this.a, localStartCheckParam);
-      QLog.e("apollo_cmGame_CmGameStartChecker", 1, "downLoad game res fail retCode: " + paramDownloadTask.a());
-      return;
-    }
-    this.a.c(localStartCheckParam);
-  }
-  
-  public void onProgress(DownloadTask paramDownloadTask)
-  {
-    CmGameStartChecker.StartCheckParam localStartCheckParam = (CmGameStartChecker.StartCheckParam)paramDownloadTask.a().getSerializable("download_param");
-    int i = (int)paramDownloadTask.a;
-    if (CmGameStartChecker.a(this.a) != null)
-    {
-      paramDownloadTask = (OnGameStartCheckListener)CmGameStartChecker.a(this.a).get();
-      if (paramDownloadTask != null)
-      {
-        QLog.d("apollo_cmGame_CmGameStartChecker", 2, "gameCheckListener.onDownloadGameResProgress startCheckParam:" + localStartCheckParam);
-        paramDownloadTask.onDownloadGameResProgress(localStartCheckParam, i);
-      }
+      paramView = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.getText().toString();
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setText("");
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.queueEvent(new ylw(this, paramView));
     }
   }
 }

@@ -10,6 +10,7 @@ import com.tencent.widget.XListView;
 public class FPSXListView
   extends XListView
 {
+  private int jdField_a_of_type_Int;
   private FPSCalculator jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator;
   private String jdField_a_of_type_JavaLangString;
   
@@ -49,13 +50,20 @@ public class FPSXListView
     if (this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator != null) {
       this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.a(paramInt);
     }
-    if ("actFPSLeba".equals(this.jdField_a_of_type_JavaLangString))
-    {
+    if (this.jdField_a_of_type_Int == 1) {
       if (paramInt == 0) {
-        DropFrameMonitor.a().a("list_leba", false);
+        DropFrameMonitor.a().a("list_leba_new", false);
       }
     }
-    else {
+    while (this.jdField_a_of_type_Int != 2)
+    {
+      return;
+      DropFrameMonitor.a().a("list_leba_new");
+      return;
+    }
+    if (paramInt == 0)
+    {
+      DropFrameMonitor.a().a("list_leba", false);
       return;
     }
     DropFrameMonitor.a().a("list_leba");
@@ -67,10 +75,15 @@ public class FPSXListView
     this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator = new FPSCalculator();
     this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.a(paramString);
   }
+  
+  public void setReportType(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.fpsreport.FPSXListView
  * JD-Core Version:    0.7.0.1
  */

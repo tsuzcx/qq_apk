@@ -34,29 +34,29 @@ import tencent.im.troop_search_popclassifc.popclassifc.BannerCard;
 import tencent.im.troop_search_popclassifc.popclassifc.PopCard;
 import tencent.im.troop_search_searchtab.searchtab.RspBody;
 import tencent.im.troop_view.troopviewInfo.RspBody;
-import wga;
-import wgb;
-import wgc;
-import wgd;
-import wge;
-import wgf;
+import wjf;
+import wjg;
+import wjh;
+import wji;
+import wjj;
+import wjk;
 
 public class TroopView
   extends ContactBaseView
 {
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AddContactTroopHandler.IGetPopClassAndSearchCB jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB = new wgc(this);
+  private AddContactTroopHandler.IGetPopClassAndSearchCB jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB = new wjh(this);
   private TroopCardBanner jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardBanner;
   private TroopCardPopClassfic jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardPopClassfic;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
-  private OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new wgb(this);
+  private OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new wjg(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private wge jdField_a_of_type_Wge;
-  private wgf jdField_a_of_type_Wgf;
+  private wjj jdField_a_of_type_Wjj;
+  private wjk jdField_a_of_type_Wjk;
   private boolean jdField_a_of_type_Boolean;
-  private AddContactTroopHandler.IGetPopClassAndSearchCB jdField_b_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB = new wgd(this);
+  private AddContactTroopHandler.IGetPopClassAndSearchCB jdField_b_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB = new wji(this);
   private boolean jdField_b_of_type_Boolean;
   private boolean c;
   private boolean d;
@@ -95,9 +95,9 @@ public class TroopView
   
   private void a(List paramList)
   {
-    this.jdField_a_of_type_Wge = new wge(this, null);
-    this.jdField_a_of_type_Wge.a(paramList);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Wge);
+    this.jdField_a_of_type_Wjj = new wjj(this, null);
+    this.jdField_a_of_type_Wjj.a(paramList);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Wjj);
   }
   
   private void a(popclassifc.BannerCard paramBannerCard)
@@ -146,7 +146,7 @@ public class TroopView
     if (paramBoolean)
     {
       if (!this.f) {
-        this.jdField_a_of_type_Wgf.sendEmptyMessageDelayed(2, 5000L);
+        this.jdField_a_of_type_Wjk.sendEmptyMessageDelayed(2, 5000L);
       }
       localAddContactTroopHandler.a(this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB, this.jdField_b_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB);
       return;
@@ -165,33 +165,33 @@ public class TroopView
     if (this.jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardBanner != null) {
       this.jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardBanner.e();
     }
-    if (this.jdField_a_of_type_Wge != null) {
-      this.jdField_a_of_type_Wge.a();
+    if (this.jdField_a_of_type_Wjj != null) {
+      this.jdField_a_of_type_Wjj.a();
     }
   }
   
   private void h()
   {
-    this.jdField_a_of_type_Wgf = new wgf(this);
+    this.jdField_a_of_type_Wjk = new wjk(this);
   }
   
   private void i()
   {
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363031));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366381));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838210);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363049));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366408));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838214);
     Object localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity);
-    View localView = ((LayoutInflater)localObject).inflate(2130969411, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366382));
+    View localView = ((LayoutInflater)localObject).inflate(2130969412, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366409));
     this.jdField_a_of_type_AndroidWidgetTextView.setPadding(getResources().getDimensionPixelSize(2131558912), 0, 0, 0);
-    Drawable localDrawable = getResources().getDrawable(2130845864);
+    Drawable localDrawable = getResources().getDrawable(2130845992);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
     this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setCursorVisible(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new wga(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new wjf(this));
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(localView, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)((LayoutInflater)localObject).inflate(2130969238, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)((LayoutInflater)localObject).inflate(2130969239, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener);
     localObject = new LinearLayout(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a());
@@ -203,7 +203,7 @@ public class TroopView
   private void j()
   {
     this.e = true;
-    this.jdField_a_of_type_Wgf.sendEmptyMessage(3);
+    this.jdField_a_of_type_Wjk.sendEmptyMessage(3);
   }
   
   private void k()
@@ -257,10 +257,10 @@ public class TroopView
       if (this.jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardPopClassfic != null) {
         this.jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardPopClassfic.setData(localAddContactTroopManage.a());
       }
-      if ((this.jdField_a_of_type_Wge != null) && (localAddContactTroopManage.a() != null))
+      if ((this.jdField_a_of_type_Wjj != null) && (localAddContactTroopManage.a() != null))
       {
-        this.jdField_a_of_type_Wge.a(localAddContactTroopManage.a().searchRsb.rpt_card.get());
-        this.jdField_a_of_type_Wge.notifyDataSetChanged();
+        this.jdField_a_of_type_Wjj.a(localAddContactTroopManage.a().searchRsb.rpt_card.get());
+        this.jdField_a_of_type_Wjj.notifyDataSetChanged();
       }
       return;
     }
@@ -277,14 +277,14 @@ public class TroopView
     if ((this.d) || (this.c))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-      this.jdField_a_of_type_Wgf.sendEmptyMessageDelayed(0, 800L);
+      this.jdField_a_of_type_Wjk.sendEmptyMessageDelayed(0, 800L);
     }
     do
     {
       return;
-      this.jdField_a_of_type_Wgf.sendEmptyMessageDelayed(0, 800L);
+      this.jdField_a_of_type_Wjk.sendEmptyMessageDelayed(0, 800L);
     } while (this.e);
-    a(1, 2131434332);
+    a(1, 2131434349);
   }
   
   private void r()
@@ -292,8 +292,8 @@ public class TroopView
     t();
     if (!this.e)
     {
-      a(1, 2131434794);
-      this.jdField_a_of_type_Wgf.sendEmptyMessageDelayed(1, 800L);
+      a(1, 2131434811);
+      this.jdField_a_of_type_Wjk.sendEmptyMessageDelayed(1, 800L);
     }
   }
   
@@ -310,8 +310,8 @@ public class TroopView
   protected void a()
   {
     super.a();
-    super.a(2130969410);
-    setBackgroundResource(2130838586);
+    super.a(2130969411);
+    setBackgroundResource(2130838590);
     h();
     i();
     k();

@@ -1,29 +1,26 @@
-import android.content.res.Resources;
-import com.tencent.av.ui.BeautySettingUi;
+import android.content.IntentFilter;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
 import com.tencent.qphone.base.util.QLog;
 
 public class jrb
   implements Runnable
 {
-  public jrb(BeautySettingUi paramBeautySettingUi) {}
+  public jrb(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
   public void run()
   {
     try
     {
-      if (this.a.jdField_a_of_type_AndroidContentResResources != null)
-      {
-        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840087);
-        this.a.b = this.a.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840089);
-        this.a.c = this.a.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840090);
-        this.a.d = this.a.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840088);
-      }
+      this.a.a = new jro(this.a);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.a.registerReceiver(this.a.a, localIntentFilter);
       return;
     }
     catch (Exception localException)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.d("BeautySettingUi", 2, "initUI e = " + localException);
+      QLog.d(CallbackWaitingActivityExt.a(), 2, "Exception", localException);
     }
   }
 }

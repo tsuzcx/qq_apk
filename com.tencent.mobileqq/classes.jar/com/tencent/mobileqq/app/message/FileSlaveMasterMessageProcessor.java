@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.service.message.MessageProtoCodec;
-import zqm;
+import zts;
 
 public class FileSlaveMasterMessageProcessor
   extends BaseMessageProcessor
@@ -30,7 +30,7 @@ public class FileSlaveMasterMessageProcessor
     return false;
   }
   
-  public zqm a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public zts a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     boolean bool = false;
     switch (paramInt)
@@ -38,7 +38,7 @@ public class FileSlaveMasterMessageProcessor
     }
     for (;;)
     {
-      return new zqm(null, bool);
+      return new zts(null, bool);
       if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
         bool = a(paramMsgInfo);
       } else {

@@ -1,8 +1,26 @@
-import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ymx
+  implements Runnable
 {
-  private static CmGameServerQIPCModule a = new CmGameServerQIPCModule("cm_game_module");
+  public ymx(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  
+  public void run()
+  {
+    try
+    {
+      ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloTextureView", 1, "send touch event err e=" + localThrowable.toString());
+    }
+  }
 }
 
 

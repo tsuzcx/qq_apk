@@ -1,18 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.SubscriptionViewController;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySubscriptionListViewGroup;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
-public class lbs
-  extends ReadInJoyObserver
+class lbs
+  implements Runnable
 {
-  public lbs(SubscriptionViewController paramSubscriptionViewController) {}
+  lbs(lbr paramlbr) {}
   
-  public void a(List paramList)
+  public void run()
   {
-    if ((SubscriptionViewController.a(this.a) != null) && ((SubscriptionViewController.a(this.a) instanceof ReadInJoySubscriptionListViewGroup))) {
-      ((ReadInJoySubscriptionListViewGroup)SubscriptionViewController.a(this.a)).a(paramList);
-    }
+    this.a.a.b(this.a.a.h);
   }
 }
 

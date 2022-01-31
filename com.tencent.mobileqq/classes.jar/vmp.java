@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.OnAdapterNotify;
 
-public class vmp
+class vmp
   implements Runnable
 {
-  public vmp(PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
+  vmp(vmo paramvmo) {}
   
   public void run()
   {
-    this.a.a.set(true);
+    if (this.a.a.a != null) {
+      this.a.a.a.a(0);
+    }
   }
 }
 

@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalItem;
 
-class aets
-  implements Runnable
+public final class aets
+  implements Parcelable.Creator
 {
-  aets(aetr paramaetr) {}
-  
-  public void run()
+  public MedalItem a(Parcel paramParcel)
   {
-    NearbyProfileEditPanel.c(this.a.a);
+    return new MedalItem(paramParcel);
+  }
+  
+  public MedalItem[] a(int paramInt)
+  {
+    return new MedalItem[paramInt];
   }
 }
 

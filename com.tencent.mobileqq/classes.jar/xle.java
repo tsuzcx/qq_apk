@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.recent.RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder;
 
 public class xle
-  implements DialogInterface.OnClickListener
+  extends RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder
 {
-  public xle(EditLocalVideoActivity paramEditLocalVideoActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a("608", "7", "2", true);
-    EditLocalVideoActivity.b(this.a, "an_yuanshipin");
-  }
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

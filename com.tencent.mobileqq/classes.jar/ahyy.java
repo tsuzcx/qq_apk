@@ -1,55 +1,41 @@
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
-import com.tencent.mobileqq.teamwork.spread.BaseTimAIOTipsProcessor.ListResult;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
 
-class ahyy
-  implements BaseTimAIOTipsProcessor.ListResult
+public class ahyy
+  implements Runnable
 {
-  ahyy(ahyx paramahyx, String paramString) {}
+  public ahyy(PtvTemplateManager paramPtvTemplateManager, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, AppInterface paramAppInterface) {}
   
-  public void a(List paramList)
+  public void run()
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      if (QLog.isDebugVersion())
-      {
-        if (paramList != null) {
-          break label34;
-        }
-        paramList = "lst is null";
-        QLog.i("AIOMessageSpreadManager", 1, paramList);
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo)) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = true;
     }
-    label34:
-    float f1;
-    float f2;
     do
     {
       return;
-      while (!paramList.hasNext())
-      {
-        paramList = "lst.size() = 0";
-        break;
-        f1 = AIOMessageSpreadManager.a(this.jdField_a_of_type_Ahyx.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a();
-        paramList = paramList.iterator();
-      }
-      str = (String)paramList.next();
-      f2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_Ahyx.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_JavaLangString, str);
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMessageSpreadManager", 1, "file[" + this.jdField_a_of_type_JavaLangString + "] and [" + str + "], precentage[" + f2 + "]");
-      }
-    } while (f2 - f1 <= 0.0F);
-    String str = AIOMessageSpreadManager.a(this.jdField_a_of_type_Ahyx.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).b();
-    paramList = AIOMessageSpreadManager.a(this.jdField_a_of_type_Ahyx.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).c();
-    str = str + "。" + paramList;
-    AIOMessageSpreadManager.a(this.jdField_a_of_type_Ahyx.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_Ahyx.jdField_a_of_type_ComTencentMobileqqDataChatMessage, str, paramList, "precent", null);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = false;
+      HttpNetReq localHttpNetReq = new HttpNetReq();
+      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahyz(this);
+      localHttpNetReq.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl;
+      localHttpNetReq.jdField_a_of_type_Int = 0;
+      localHttpNetReq.jdField_c_of_type_JavaLangString = new File(PtvTemplateManager.a, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name).getPath();
+      localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).a(localHttpNetReq);
+    } while (!QLog.isColorLevel());
+    QLog.i("PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahyy
  * JD-Core Version:    0.7.0.1
  */

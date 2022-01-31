@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.app.ShakeListener;
 
 public class sva
-  implements Runnable
+  extends ShakeListener
 {
-  public sva(Leba paramLeba, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  public sva(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(new svb(this));
+    if (this.a.jdField_a_of_type_Boolean) {
+      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
+    }
   }
 }
 

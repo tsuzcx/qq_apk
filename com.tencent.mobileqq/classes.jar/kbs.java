@@ -1,30 +1,38 @@
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.Intent;
+import com.tencent.av.ui.QavPanel.SlideAcceptListener;
+import com.tencent.av.ui.VideoInviteLock;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class kbs
-  implements QavInOutAnimation.QavOutAnimationListener
+public class kbs
+  implements QavPanel.SlideAcceptListener
 {
-  kbs(kbq paramkbq) {}
+  public kbs(VideoInviteLock paramVideoInviteLock) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a.a != null)
+    if (paramBoolean)
     {
-      this.a.a.a.setViewEnable(2131364223, false);
-      this.a.a.a.setViewEnable(2131365392, false);
-      this.a.a.a.setViewEnable(2131365391, false);
-      this.a.a.a.setViewEnable(2131365389, false);
-      this.a.a.a.setViewEnable(2131365387, false);
-      this.a.a.a.setViewEnable(2131364225, false);
+      if (this.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
+        ReportController.b(null, "CliOper", "", "", "0X80051FE", "0X80051FE", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+      }
+      for (;;)
+      {
+        this.a.d = true;
+        VideoInviteLock.a(this.a);
+        return;
+        if (this.a.b) {
+          ReportController.b(null, "CliOper", "", "", "0X8004201", "0X8004201", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+        } else {
+          ReportController.b(null, "CliOper", "", "", "0X8004205", "0X8004205", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+        }
+      }
     }
-  }
-  
-  public void b()
-  {
-    this.a.a.e = true;
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2131034269);
+    if (this.a.b)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X800439E", "0X800439E", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+      return;
+    }
+    ReportController.b(null, "CliOper", "", "", "0X80043FD", "0X80043FD", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
   }
 }
 

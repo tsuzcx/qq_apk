@@ -1,51 +1,18 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.stickerbubble.PEPanelHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public final class rsi
+public class rsi
   implements Runnable
 {
-  public rsi(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  public rsi(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    long l2 = 0L;
-    Object localObject = (MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249);
-    if ((localObject == null) || (((MedalWallMng)localObject).a())) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatActivityFacade", 2, "insertFriendMedalNewsIfNeeded strongRemindOff");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie", 2, "checkPESourceDowned onShow First");
     }
-    label119:
-    label126:
-    for (;;)
-    {
-      return;
-      localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      long l1;
-      if (localObject == null)
-      {
-        l1 = 0L;
-        if (localObject != null) {
-          break label119;
-        }
-      }
-      for (;;)
-      {
-        if (l1 <= l2) {
-          break label126;
-        }
-        ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2);
-        return;
-        l1 = ((ExtensionInfo)localObject).medalUpdateTimestamp;
-        break;
-        l2 = ((ExtensionInfo)localObject).lastMedalTimestamp;
-      }
-    }
+    PEPanelHelper.a();
   }
 }
 

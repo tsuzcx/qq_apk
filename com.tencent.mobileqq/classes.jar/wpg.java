@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class wpg
-  implements Runnable
+  implements URLDrawable.URLDrawableListener
 {
-  public wpg(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public wpg(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    RedTouchManager localRedTouchManager = (RedTouchManager)this.a.app.getManager(35);
-    this.a.a = localRedTouchManager.a("100100.100125.100127");
-    this.a.runOnUiThread(new wph(this));
+    EmoticonGroupStoreFragment.a(this.a).invalidate();
   }
 }
 

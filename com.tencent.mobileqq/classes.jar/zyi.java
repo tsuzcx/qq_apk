@@ -1,39 +1,15 @@
-import com.tencent.mobileqq.ar.FramePerformanceMonitor;
-import com.tencent.mobileqq.ar.FramePerformanceMonitor.FrameRefreshListener;
-import com.tencent.mobileqq.ar.GapDataCollector;
-import com.tencent.mobileqq.ar.GapDataCollector.RefreshData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class zyi
   implements Runnable
 {
-  private boolean jdField_a_of_type_Boolean;
-  
-  private zyi(FramePerformanceMonitor paramFramePerformanceMonitor) {}
+  public zyi(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
   
   public void run()
   {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a() == 0) {
-            Thread.sleep(FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor));
-          }
-        }
-        else {
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      GapDataCollector.RefreshData localRefreshData = FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a();
-      FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a(localRefreshData);
-      Thread.sleep(FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor));
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "AR视频保存失败，请重新录制。", 1).a();
   }
 }
 

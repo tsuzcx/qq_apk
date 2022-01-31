@@ -1,15 +1,47 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings.System;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class mcv
-  implements Runnable
+  extends ContentObserver
 {
-  public mcv(VideoFeedsPlayManager paramVideoFeedsPlayManager, TextView paramTextView) {}
+  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
   
-  public void run()
+  public mcv(VideoFeedsListView paramVideoFeedsListView, Handler paramHandler)
   {
-    VideoFeedsHelper.a(this.jdField_a_of_type_AndroidWidgetTextView, 8);
+    super(paramHandler);
+    this.jdField_a_of_type_AndroidContentContentResolver = VideoFeedsListView.a(paramVideoFeedsListView).getContentResolver();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    int i = Settings.System.getInt(VideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView).getContentResolver(), "accelerometer_rotation", -1);
+    if (i == 1) {
+      VideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView, true);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.pubaccount.video.feeds.VideoFeedsListView", 2, "RotationObserver.onChange() : rotateState=" + i);
+      }
+      return;
+      VideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView, false);
+    }
   }
 }
 

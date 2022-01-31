@@ -1,18 +1,21 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.util.WeakReferenceHandler;
+import java.lang.ref.WeakReference;
 
 public class aavq
-  extends AnimateUtils.AnimationAdapter
+  implements Runnable
 {
-  public aavq(ConversationPullDownActiveBase paramConversationPullDownActiveBase) {}
+  public aavq(ArkLocalAppMgr paramArkLocalAppMgr, aavu paramaavu, aawb paramaawb) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    this.jdField_a_of_type_Aavu.a = NetworkUtil.g(BaseApplication.getContext());
+    ArkLocalAppMgr localArkLocalAppMgr = (ArkLocalAppMgr)ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr).get();
+    if (localArkLocalAppMgr != null) {
+      ArkLocalAppMgr.a(localArkLocalAppMgr).post(new aavr(this));
+    }
   }
 }
 

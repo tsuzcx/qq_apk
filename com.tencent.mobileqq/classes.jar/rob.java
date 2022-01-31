@@ -1,14 +1,32 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class rob
   implements Runnable
 {
-  public rob(BaseChatPie paramBaseChatPie) {}
+  public rob(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
   public void run()
   {
-    this.a.a.d();
+    try
+    {
+      if ((AuthDevRenameActivity.a(this.a) == null) && (!this.a.isFinishing())) {
+        AuthDevRenameActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
+      }
+      if ((AuthDevRenameActivity.a(this.a) != null) && (!AuthDevRenameActivity.a(this.a).isShowing()))
+      {
+        AuthDevRenameActivity.a(this.a).a(this.a.getString(2131436618));
+        AuthDevRenameActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

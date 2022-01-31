@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
+import com.tencent.sveffects.Reporter;
+import com.tencent.sveffects.SdkContext;
 
-class aibq
-  implements Runnable
+public final class aibq
+  implements AVGestureWrapper.AVUploadReport
 {
-  aibq(aibp paramaibp) {}
-  
-  public void run()
+  public void avGestureUploadReport(String paramString1, String paramString2)
   {
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep|changeImgUrl,need rich since invalid url=" + ForwardSdkShareProcessor.a(this.a.a.b));
-    ForwardSdkShareProcessor.c(this.a.a.b, null);
-    ForwardSdkShareProcessor.a(this.a.a.b).g();
-    ForwardSdkShareProcessor.a(this.a.a.b).a();
+    SdkContext.a().a().a("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aibq
  * JD-Core Version:    0.7.0.1
  */

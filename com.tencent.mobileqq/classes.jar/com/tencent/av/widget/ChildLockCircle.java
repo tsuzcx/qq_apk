@@ -26,7 +26,7 @@ import com.tencent.av.ui.DoubleVideoCtrlUI;
 import com.tencent.av.utils.TipsManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import kil;
+import khw;
 
 public class ChildLockCircle
   extends View
@@ -40,7 +40,7 @@ public class ChildLockCircle
   public Handler a;
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private String jdField_a_of_type_JavaLangString;
-  private kil jdField_a_of_type_Kil;
+  private khw jdField_a_of_type_Khw;
   private boolean jdField_a_of_type_Boolean = true;
   private final int jdField_b_of_type_Int = 100;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
@@ -75,17 +75,17 @@ public class ChildLockCircle
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131362512);
-    setBackgroundResource(2130840174);
+    setId(2131362533);
+    setBackgroundResource(2130840180);
     paramAttributeSet = getResources();
-    this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(2131429436);
-    this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2131429437);
-    this.jdField_c_of_type_JavaLangString = paramAttributeSet.getString(2131429438);
-    this.jdField_d_of_type_JavaLangString = paramAttributeSet.getString(2131429439);
+    this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(2131429442);
+    this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2131429443);
+    this.jdField_c_of_type_JavaLangString = paramAttributeSet.getString(2131429444);
+    this.jdField_d_of_type_JavaLangString = paramAttributeSet.getString(2131429445);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130840175);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130840176);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130840181);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130840182);
       this.jdField_a_of_type_AndroidGraphicsRectF.left = 22.0F;
       this.jdField_a_of_type_AndroidGraphicsRectF.top = 22.0F;
       this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
@@ -105,17 +105,17 @@ public class ChildLockCircle
   private void c()
   {
     d();
-    this.jdField_a_of_type_Kil = new kil(this);
-    this.jdField_a_of_type_Kil.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Kil.start();
+    this.jdField_a_of_type_Khw = new khw(this);
+    this.jdField_a_of_type_Khw.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Khw.start();
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Kil != null)
+    if (this.jdField_a_of_type_Khw != null)
     {
-      this.jdField_a_of_type_Kil.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Kil = null;
+      this.jdField_a_of_type_Khw.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Khw = null;
     }
   }
   

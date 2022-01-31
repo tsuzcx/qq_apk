@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
 import com.tencent.qphone.base.util.QLog;
 
 public class aclg
-  implements FileVideoManager.FileVideoManagerInitCallback
+  implements Animation.AnimationListener
 {
-  public aclg(FileManagerRSCenter paramFileManagerRSCenter, FileManagerEntity paramFileManagerEntity) {}
+  public aclg(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init cancel!");
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendDisappearAnimation disappear ( disappearCount: " + this.a.h + ", disappearSize: " + this.a.i + " )");
+    }
   }
   
-  public void b()
-  {
-    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init success, start video download");
-    FileVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aclg
  * JD-Core Version:    0.7.0.1
  */

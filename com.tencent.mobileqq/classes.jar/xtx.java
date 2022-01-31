@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
 
-class xtx
-  implements Runnable
+public class xtx
+  implements DialogInterface.OnDismissListener
 {
-  xtx(xtw paramxtw, File paramFile) {}
+  public xtx(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ShortVideoCaptureController.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    QzDynamicVideoPreviewActivity.e(this.a);
   }
 }
 

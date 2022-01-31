@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
 
-public final class anvn
-  implements Parcelable.Creator
+public class anvn
+  implements Runnable
 {
-  public FilterCategoryItem a(Parcel paramParcel)
-  {
-    return new FilterCategoryItem(paramParcel);
-  }
+  public anvn(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public FilterCategoryItem[] a(int paramInt)
+  public void run()
   {
-    return new FilterCategoryItem[paramInt];
+    Runnable localRunnable = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.jdField_a_of_type_JavaLangRunnable;
+    if (localRunnable != null) {
+      localRunnable.run();
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.sApplication, "上传失败", 0).a();
   }
 }
 

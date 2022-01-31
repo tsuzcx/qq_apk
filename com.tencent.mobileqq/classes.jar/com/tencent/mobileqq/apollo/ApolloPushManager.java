@@ -42,9 +42,9 @@ import tencent.im.apollo_push_msgInfo.STPushMsgElem;
 import tencent.im.apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x1;
 import tencent.im.apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x2;
 import tencent.im.apollo_push_msgInfo.STPushMsgElem.STPushMsgElem0x3;
-import yho;
-import yhp;
-import yhq;
+import ykv;
+import ykw;
+import ykx;
 
 public class ApolloPushManager
   implements Manager
@@ -57,7 +57,7 @@ public class ApolloPushManager
   
   public ApolloPushManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager$OnActionPushListener = new yho(this);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager$OnActionPushListener = new ykv(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
@@ -117,7 +117,7 @@ public class ApolloPushManager
         break;
       }
       ((ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).a(paramSTPushMsgElem);
-      ThreadManager.post(new yhp(this, paramInt, paramSTPushMsgElem), 5, null, true);
+      ThreadManager.post(new ykw(this, paramInt, paramSTPushMsgElem), 5, null, true);
       if (paramInt == 0) {
         break;
       }
@@ -216,7 +216,7 @@ public class ApolloPushManager
       if (localObject1 != null) {
         ((SpriteScriptManager)localObject1).a().a(localSpriteTaskParam);
       }
-      ThreadManager.post(new yhq(this, paramApolloActionPush, localSpriteTaskParam), 5, null, true);
+      ThreadManager.post(new ykx(this, paramApolloActionPush, localSpriteTaskParam), 5, null, true);
       return;
       localSpriteTaskParam.jdField_b_of_type_Boolean = false;
       break;

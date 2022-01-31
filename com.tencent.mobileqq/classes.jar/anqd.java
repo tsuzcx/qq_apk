@@ -1,13 +1,18 @@
-import dov.com.tencent.mobileqq.activity.richmedia.FlowSendTask;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
 
 public class anqd
-  implements Runnable
+  extends CaptureConfigUpdateObserver
 {
-  public anqd(FlowSendTask paramFlowSendTask) {}
+  public anqd(StaticStickerProviderView paramStaticStickerProviderView) {}
   
-  public void run()
+  public void e()
   {
-    this.a.a(this.a.a, 2131436128);
+    if (QLog.isColorLevel()) {
+      QLog.i("StaticStickerProviderView", 2, "paster config get notify");
+    }
+    this.a.d();
   }
 }
 

@@ -1,42 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmotionJsonDownloadListener;
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.emoticon.SogouEmojiTaskController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.database.corrupt.DBFixLoadingDialog;
 
 public class abwf
-  extends EmotionJsonDownloadListener
+  implements DialogInterface.OnKeyListener
 {
-  public abwf(SogouEmoji paramSogouEmoji) {}
+  public abwf(DBFixLoadingDialog paramDBFixLoadingDialog) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    super.a(paramEmoticonPackage, paramInt, paramBundle);
-    if ((paramEmoticonPackage != null) && (paramInt == 0))
-    {
-      paramBundle = paramBundle.getBundle("jsonReqParams");
-      if (paramBundle != null)
-      {
-        paramInt = paramBundle.getInt(SogouEmoji.jdField_a_of_type_JavaLangString);
-        paramBundle = paramBundle.getString(SogouEmoji.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
-        }
-        boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController.a(paramInt);
-        if (bool) {
-          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
-        }
-      }
-    }
+    return (paramInt == 84) || (paramInt == 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwf
  * JD-Core Version:    0.7.0.1
  */

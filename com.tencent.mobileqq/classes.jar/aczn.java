@@ -1,116 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FMConfig;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.troop.utils.TroopFileError;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class aczn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aczn(SendBottomBar paramSendBottomBar) {}
+  public aczn(UniformDownloadMgr paramUniformDownloadMgr) {}
   
-  private void a()
+  public void run()
   {
-    int i = TroopFileUtils.a(SendBottomBar.a(this.a));
-    if (i == 0)
+    try
     {
-      TroopFileError.a(SendBottomBar.a(this.a), SendBottomBar.a(this.a).getString(2131429782));
-      this.a.c();
-      return;
-    }
-    if (1 == i)
-    {
-      aczq localaczq = new aczq(this);
-      DialogUtil.b(SendBottomBar.a(this.a), 230, SendBottomBar.a(this.a).getString(2131429763), SendBottomBar.a(this.a).getString(2131429768), 2131432998, 2131429726, localaczq, localaczq).show();
-      return;
-    }
-    this.a.c();
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = 1;
-    if (SendBottomBar.a(this.a)) {
-      return;
-    }
-    SendBottomBar.a(this.a, true);
-    new Handler().postDelayed(new aczo(this), 800L);
-    int j;
-    switch (SendBottomBar.a(this.a).b())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 6: 
-    default: 
-      j = SendBottomBar.a(this.a).a();
-      if (j != 1) {
-        break;
-      }
-    }
-    for (;;)
-    {
-      if (j != 5) {
-        break label374;
-      }
-      this.a.c();
-      return;
-      if (SendBottomBar.a(this.a).c())
+      if (UniformDownloadMgr.a(this.a) != null)
       {
-        paramView = new Intent();
-        paramView.putParcelableArrayListExtra("reslut_select_file_info_list", FMDataCache.b());
-        paramView.putExtra("approval_attachment_customid", SendBottomBar.a(this.a).e());
-        SendBottomBar.a(this.a).setResult(-1, paramView);
-      }
-      SendBottomBar.a(this.a).finish();
-      return;
-      SendBottomBar.b(this.a);
-      return;
-      if ((FileManagerUtil.a()) && (FMDataCache.b() > FMConfig.a()))
-      {
-        FMDialogUtil.a(SplashActivity.sTopActivity, 2131428241, 2131428237, new aczp(this));
+        BaseApplicationImpl.getApplication().unregisterReceiver(UniformDownloadMgr.a(this.a));
+        UniformDownloadMgr.a(this.a, null);
+        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr unRegister UNIDOWNLOAD_BORDCAST");
         return;
       }
-      paramView = FMDataCache.b();
-      Intent localIntent = new Intent();
-      localIntent.putParcelableArrayListExtra("sFilesSelected", paramView);
-      SendBottomBar.a(this.a).setResult(-1, localIntent);
-      SendBottomBar.a(this.a).finish();
+      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr unRegister UNIDOWNLOAD_BORDCAST, had unRegister");
       return;
-      paramView = SendBottomBar.a(this.a).getIntent();
-      if (paramView == null) {
-        break;
-      }
-      if (paramView.getStringExtra("posturl") != null)
-      {
-        paramView.putParcelableArrayListExtra("fileinfo", FMDataCache.b());
-        SendBottomBar.a(this.a).setResult(-1, paramView);
-        SendBottomBar.a(this.a).finish();
-        return;
-      }
-      SendBottomBar.a(this.a).setResult(-1, paramView);
-      SendBottomBar.a(this.a).finish();
-      return;
-      i = 0;
     }
-    label374:
-    if (i != 0)
+    catch (Exception localException)
     {
-      a();
-      return;
+      localException.printStackTrace();
     }
-    this.a.b();
   }
 }
 

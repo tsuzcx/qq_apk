@@ -1,19 +1,18 @@
-import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
 
-class achk
-  implements BubblePopupWindow.OnDismissListener
+public class achk
+  implements Runnable
 {
-  achk(achh paramachh, View paramView) {}
+  public achk(ExtendFriendManager paramExtendFriendManager) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    ExtendFriendManager.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achk
  * JD-Core Version:    0.7.0.1
  */

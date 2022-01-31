@@ -1,24 +1,20 @@
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playmode.child.MyMemoryPlayMode;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
 import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-class njy
-  implements Runnable
+public class njy
+  implements View.OnClickListener
 {
-  njy(njx paramnjx) {}
+  public njy(MyMemoryPlayMode paramMyMemoryPlayMode) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.a.a.a.b, false);
-    if ((this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a != null) && (this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() > 0))
-    {
-      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a);
-      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(this.a.a.a.b());
-    }
-    this.a.a.a.jdField_a_of_type_Boolean = true;
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
   }
 }
 

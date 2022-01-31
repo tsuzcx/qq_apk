@@ -1,18 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class abnn
-  implements Runnable
+public class abnn
 {
-  abnn(abnk paramabnk) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void run()
-  {
-    String str = this.a.a(abnk.a(this.a), true);
-    this.a.c(str);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE. from file. FaceScoreWording=" + str);
-    }
-  }
+  public abnn(BusinessCardEditActivity paramBusinessCardEditActivity) {}
 }
 
 

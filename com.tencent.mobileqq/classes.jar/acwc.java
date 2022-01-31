@@ -1,16 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import java.lang.ref.WeakReference;
 
 public class acwc
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public acwc(VideoFileViewer paramVideoFileViewer) {}
+  public acwc(FileVideoManager.VideoControl paramVideoControl) {}
   
-  public void onClick(View paramView)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this.a.a.finish();
+    QLog.e("FileVideoManager<FileAssistant>", 1, "mediaPlayer onError:errorType[" + paramInt1 + "], errorCode[" + paramInt2 + "],extra[" + paramInt3 + "],detailInfo[" + paramString + "]");
+    paramTVK_IMediaPlayer = (FileVideoManager.FileVideoManagerCallback)this.a.a.get();
+    if (paramTVK_IMediaPlayer != null) {
+      paramTVK_IMediaPlayer.a(paramInt2, "视频文件不存在或已损坏");
+    }
+    return false;
   }
 }
 

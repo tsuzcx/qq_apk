@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1225" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.troop.widget.BorderURLImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03bd" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0035" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:progress="0" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e99" style="?android:attr/progressBarStyleHorizontal" />
-    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1226" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f7b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1227" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040356" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <ImageView android:layout_width="39.0dip" android:layout_height="39.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f4b" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff7e7e7e" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="添加群头像" />
+</LinearLayout>

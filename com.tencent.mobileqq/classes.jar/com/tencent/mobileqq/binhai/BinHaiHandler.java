@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.binhai;
 
-import abdr;
+import abks;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -450,7 +450,7 @@ public class BinHaiHandler
       QLog.d("BinHaiHandler", 2, "reqJoinActivity, picId=" + paramString);
     }
     jdField_a_of_type_TencentImOidbCmd0x98bOidb_0x98b$LBSInfo = null;
-    SosoInterface.a(new abdr(this, 3, true, true, 1000L, true, false, "binhai", paramString));
+    SosoInterface.a(new abks(this, 3, true, true, 1000L, true, false, "binhai", paramString));
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -540,7 +540,7 @@ public class BinHaiHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.binhai.BinHaiHandler
  * JD-Core Version:    0.7.0.1
  */

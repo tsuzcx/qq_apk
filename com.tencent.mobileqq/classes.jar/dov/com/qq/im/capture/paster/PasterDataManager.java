@@ -1,14 +1,14 @@
 package dov.com.qq.im.capture.paster;
 
-import amwq;
-import amwr;
-import amws;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import anmv;
+import anmw;
+import anmx;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.model.lbs.LbsManager;
 import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestCallback;
@@ -68,8 +68,8 @@ public class PasterDataManager
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession = null;
-    this.jdField_a_of_type_JavaLangRunnable = new amwq(this);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback = new amwr(this);
+    this.jdField_a_of_type_JavaLangRunnable = new anmv(this);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback = new anmw(this);
   }
   
   private void a(String paramString, boolean paramBoolean)
@@ -129,7 +129,7 @@ public class PasterDataManager
       }
       return;
       label112:
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843430);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843550);
     }
   }
   
@@ -181,7 +181,7 @@ public class PasterDataManager
           ((NormalFacePackage)localObject4).jdField_a_of_type_Int = ((DoodleEmojiItem)localObject3).hide;
           ((NormalFacePackage)localObject4).jdField_b_of_type_Int = ((DoodleEmojiItem)localObject3).mask;
           if (("1".equals(((NormalFacePackage)localObject4).jdField_a_of_type_JavaLangString)) && (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))) {
-            ((NormalFacePackage)localObject4).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843310);
+            ((NormalFacePackage)localObject4).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843426);
           }
           this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject4);
           continue;
@@ -209,7 +209,7 @@ public class PasterDataManager
           localItem.g = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_b_of_type_JavaLangString;
           localItem.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.f;
         }
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843430);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843550);
       }
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_Boolean = "1".equals(((DoodleEmojiItem)localObject3).random_position);
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_Int = ((DoodleEmojiItem)localObject3).hide;
@@ -262,7 +262,6 @@ public class PasterDataManager
     PasterDataManager.DoodleEmojiDownloadEventReceiver localDoodleEmojiDownloadEventReceiver = new PasterDataManager.DoodleEmojiDownloadEventReceiver(this);
     this.jdField_a_of_type_DovComQqImCapturePasterPasterDataManager$DoodleEmojiDownloadEventReceiver = localDoodleEmojiDownloadEventReceiver;
     localDispatcher.registerSubscriber(localDoodleEmojiDownloadEventReceiver);
-    d();
   }
   
   public void a(int paramInt)
@@ -318,7 +317,7 @@ public class PasterDataManager
   
   public void d()
   {
-    SosoInterface.a(new amws(this, "NewStoryTakeVideoActivity"));
+    SosoInterface.a(new anmx(this, "NewStoryTakeVideoActivity"));
   }
   
   public void e()

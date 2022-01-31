@@ -1,23 +1,67 @@
-import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.gameplay.QAVGamePlaySoConfigInfo;
+import com.tencent.av.gameplay.QavGPDownloadManager.IGPDownloadStatusListener;
+import com.tencent.av.gameplay.QavGPDownloadObserver;
+import com.tencent.av.gameplay.QavGamePlayUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class jhs
+  extends BroadcastReceiver
 {
-  public byte a;
-  public byte b = 0;
-  public byte c = 0;
-  public byte d = 0;
-  public byte e = 0;
-  public byte f = 0;
-  public byte g = 0;
-  public byte h = 0;
-  public byte i = 0;
-  public byte j = 0;
-  public byte k = 0;
-  public byte l = 0;
+  public jhs(QavGPDownloadObserver paramQavGPDownloadObserver) {}
   
-  public jhs(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    this.jdField_a_of_type_Byte = 0;
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    for (;;)
+    {
+      return;
+      if (!"tencent.video.qavgameplaysomgr.notify".equals(paramIntent.getAction())) {
+        continue;
+      }
+      int i = paramIntent.getIntExtra("Event_Progress", 0);
+      if ((i == 100) || (i < 0))
+      {
+        this.a.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo = QAVGamePlaySoConfigInfo.a();
+        int j = this.a.jdField_a_of_type_Int;
+        this.a.jdField_a_of_type_Int = QavGamePlayUtil.a(this.a.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo);
+        boolean bool;
+        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
+        {
+          bool = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("QavGPDownloadManager", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGameplay[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo }));
+          }
+          paramIntent = new ArrayList();
+        }
+        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+        {
+          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+          ??? = paramIntent.iterator();
+          while (???.hasNext()) {
+            ((QavGPDownloadManager.IGPDownloadStatusListener)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
+          }
+          bool = false;
+        }
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGPDownloadManager", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
+      }
+      paramIntent = new ArrayList();
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      {
+        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        ??? = paramIntent.iterator();
+        if (!???.hasNext()) {
+          continue;
+        }
+        ((QavGPDownloadManager.IGPDownloadStatusListener)???.next()).a(i);
+      }
+    }
   }
 }
 

@@ -39,11 +39,11 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import xpl;
-import xpm;
-import xpn;
-import xpo;
-import xpp;
+import xsr;
+import xss;
+import xst;
+import xsu;
+import xsv;
 
 public class NewPreFlowCamera
   extends BaseActivity
@@ -69,7 +69,7 @@ public class NewPreFlowCamera
   private void a(String paramString)
   {
     e();
-    ThreadManager.getUIHandler().post(new xpl(this, paramString));
+    ThreadManager.getUIHandler().post(new xsr(this, paramString));
   }
   
   private boolean a()
@@ -79,7 +79,7 @@ public class NewPreFlowCamera
   
   private void b(String paramString)
   {
-    ThreadManager.getUIHandler().post(new xpm(this, paramString));
+    ThreadManager.getUIHandler().post(new xss(this, paramString));
   }
   
   private void d()
@@ -117,6 +117,13 @@ public class NewPreFlowCamera
       return;
     }
     a();
+  }
+  
+  public void C_()
+  {
+    b("网络已断,请连接网络后继续下载");
+    VideoEnvironment.a("NewPreFlowCamera", "网络已断,请连接网络后继续下载", null);
+    ShortVideoErrorReport.a(3, -1500);
   }
   
   public void a()
@@ -197,7 +204,7 @@ public class NewPreFlowCamera
   
   public void a(int paramInt)
   {
-    ThreadManager.getUIHandler().post(new xpp(this, paramInt));
+    ThreadManager.getUIHandler().post(new xsv(this, paramInt));
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -311,7 +318,7 @@ public class NewPreFlowCamera
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new xpo(this, paramBoolean1, paramInt));
+    ThreadManager.getUIHandler().post(new xsu(this, paramBoolean1, paramInt));
   }
   
   public void c()
@@ -324,7 +331,7 @@ public class NewPreFlowCamera
     }
     if (!bool)
     {
-      ThreadManager.getUIHandler().post(new xpn(this));
+      ThreadManager.getUIHandler().post(new xst(this));
       return;
     }
     this.jdField_d_of_type_Int = 101;
@@ -363,15 +370,15 @@ public class NewPreFlowCamera
     this.jdField_c_of_type_Boolean = getIntent().getBooleanExtra("flow_key_from_guide", false);
     this.e = getIntent().getIntExtra("edit_video_type", 10000);
     this.f = getIntent().getIntExtra("entrance_type", 99);
-    setContentView(2130970319);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362822));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370040));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131368942));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492968), 100, getResources().getColor(2131493307));
+    setContentView(2130970348);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362840));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370151));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131369008));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492969), 100, getResources().getColor(2131493308));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(6.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369444));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369521));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (!VideoEnvironment.c(this.app))
     {
@@ -457,13 +464,6 @@ public class NewPreFlowCamera
       return;
     }
     finish();
-  }
-  
-  public void y_()
-  {
-    b("网络已断,请连接网络后继续下载");
-    VideoEnvironment.a("NewPreFlowCamera", "网络已断,请连接网络后继续下载", null);
-    ShortVideoErrorReport.a(3, -1500);
   }
 }
 

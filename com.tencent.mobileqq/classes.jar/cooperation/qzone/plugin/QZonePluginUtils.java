@@ -1,7 +1,7 @@
 package cooperation.qzone.plugin;
 
-import amhp;
-import amhx;
+import amxu;
+import amyc;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -346,7 +346,7 @@ public class QZonePluginUtils
     }
   }
   
-  public static void a(Context paramContext, Map paramMap, amhp paramamhp)
+  public static void a(Context paramContext, Map paramMap, amxu paramamxu)
   {
     paramContext = a(paramContext.getDir("qzone_installed_plugin", 0));
     if (paramContext != null)
@@ -362,8 +362,8 @@ public class QZonePluginUtils
           if (localPluginRecord != null)
           {
             boolean bool = true;
-            if (paramamhp != null) {
-              bool = paramamhp.a(localPluginRecord, localFile);
+            if (paramamxu != null) {
+              bool = paramamxu.a(localPluginRecord, localFile);
             }
             if (!bool) {
               break label98;
@@ -592,7 +592,7 @@ public class QZonePluginUtils
   
   public static File[] a(File paramFile)
   {
-    return paramFile.listFiles(new amhx());
+    return paramFile.listFiles(new amyc());
   }
   
   public static File b(Context paramContext, String paramString)

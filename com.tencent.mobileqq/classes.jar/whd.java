@@ -1,30 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
 public class whd
-  implements View.OnClickListener
+  implements TabBarView.OnTabChangeListener
 {
-  public whd(NotificationAdapter paramNotificationAdapter) {}
+  public whd(AddContactsActivity paramAddContactsActivity) {}
   
-  public void onClick(View paramView)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    NotificationAdapter.ViewHolder localViewHolder = (NotificationAdapter.ViewHolder)paramView.getTag();
-    if ((localViewHolder == null) || (!(localViewHolder instanceof NotificationAdapter.ViewHolder))) {
+    switch (paramInt2)
+    {
+    default: 
+      return;
+    case 0: 
+      AddContactsActivity.a(this.a);
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
+      return;
+    case 1: 
+      AddContactsActivity.b(this.a);
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
+      ReportController.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-    paramView = (View)paramView.getParent();
-    if ((paramView instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)paramView).d();
-    }
-    NotificationAdapter.a(this.a, localViewHolder.a);
-    this.a.jdField_a_of_type_JavaUtilList.add(NotificationAdapter.a(this.a).remove(this.a.getCount() - localViewHolder.b - 1));
-    this.a.notifyDataSetChanged();
+    AddContactsActivity.c(this.a);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
   }
 }
 

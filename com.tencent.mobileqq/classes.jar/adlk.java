@@ -1,23 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.intervideo.od.LoadingUI;
-import com.tencent.mobileqq.intervideo.od.LoadingUI.Event;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
-public class adlk
-  implements View.OnClickListener
+class adlk
+  implements DialogInterface.OnClickListener
 {
-  public adlk(LoadingUI paramLoadingUI) {}
+  adlk(adlj paramadlj) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (LoadingUI.a(this.a) != null) {
-      LoadingUI.a(this.a).a();
-    }
+    this.a.a.a(false);
+    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
+    this.a.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adlk
  * JD-Core Version:    0.7.0.1
  */

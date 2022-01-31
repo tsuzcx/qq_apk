@@ -1,34 +1,22 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlCallBack;
-import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlResult;
-import com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader;
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class adhm
-  implements HotVideoData.HotVideoGetUrlCallBack
+public final class adhm
+  implements Runnable
 {
-  public adhm(HotVideoPreviewDownloader paramHotVideoPreviewDownloader, HotVideoData paramHotVideoData, File paramFile, URLDrawableHandler paramURLDrawableHandler) {}
+  public adhm(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(HotVideoData.HotVideoGetUrlResult paramHotVideoGetUrlResult)
+  public void run()
   {
-    if (paramHotVideoGetUrlResult.a)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramHotVideoGetUrlResult.a();
-      HotVideoPreviewDownloader.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoPreviewDownloader, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_JavaIoFile.delete();
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
-    } while (this.jdField_a_of_type_ComTencentImageURLDrawableHandler == null);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, -3014, BaseApplicationImpl.getContext().getString(2131428339));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,34 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.ThumbTask;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class acza
-  implements FMDialogUtil.FMDialogInterface
+  implements Runnable
 {
-  public acza(QfileEditBottomBar paramQfileEditBottomBar) {}
+  public acza(ThumbDownloadManager paramThumbDownloadManager) {}
   
-  public void a()
+  public void run()
   {
-    QfileEditBottomBar.a(this.a);
+    if (ThumbDownloadManager.a(this.a).size() >= 8) {}
+    while (ThumbDownloadManager.a(this.a).size() == 0) {
+      return;
+    }
+    ThumbDownloadManager.ThumbTask localThumbTask = (ThumbDownloadManager.ThumbTask)ThumbDownloadManager.a(this.a).get(0);
+    if (localThumbTask == null)
+    {
+      ThumbDownloadManager.a(this.a).remove(0);
+      ThumbDownloadManager.a(this.a);
+      return;
+    }
+    ThumbDownloadManager.a(this.a).remove(localThumbTask);
+    ThumbDownloadManager.a(this.a, localThumbTask);
+    ThumbDownloadManager.b(this.a, localThumbTask);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acza
  * JD-Core Version:    0.7.0.1
  */

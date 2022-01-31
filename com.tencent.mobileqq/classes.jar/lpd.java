@@ -1,7 +1,5 @@
 import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
 
 public class lpd
   implements Runnable
@@ -10,9 +8,7 @@ public class lpd
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      QLog.d("ArticleInfoModule", 2, "delete article fail ! title : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTitle + " , articleID : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

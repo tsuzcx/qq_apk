@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class teq
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public teq(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public teq(PayBridgeActivity paramPayBridgeActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.e();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.qwallet.payPayBridgeActivity", 4, "finish dialog dismiss...");
+    }
   }
 }
 

@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
 
 class svu
   implements Runnable
 {
-  svu(svt paramsvt, List paramList) {}
+  svu(svt paramsvt, Bitmap paramBitmap) {}
   
   public void run()
   {
-    if (LebaListMgrActivity.a(this.jdField_a_of_type_Svt.a) != null) {
-      LebaListMgrActivity.a(this.jdField_a_of_type_Svt.a).a(this.jdField_a_of_type_JavaUtilList);
-    }
+    this.jdField_a_of_type_Svt.a.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

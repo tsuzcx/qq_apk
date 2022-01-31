@@ -1,38 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class yrh
+public final class yrh
+  implements EIPCResultCallback
 {
-  public String a;
-  public final List a;
-  public String b;
+  public yrh(long paramLong) {}
   
-  public yrh()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public JSONObject a(String paramString, AppInterface paramAppInterface)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((yri)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
-    }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mClientId:").append(this.b).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
-    return localStringBuilder.toString();
+    paramEIPCResult = paramEIPCResult.data.getString("respData");
+    CmGameUtil.a().callbackFromRequest(this.a, 0, "cs.on_get_open_key.local", paramEIPCResult);
   }
 }
 

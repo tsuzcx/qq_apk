@@ -1,29 +1,20 @@
-import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailInteractSegment;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nud
-  extends OnSimpleShareListener
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public nud(DetailInteractSegment paramDetailInteractSegment) {}
+  public nud(VideoEncodeActivity paramVideoEncodeActivity) {}
   
-  public void a()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    super.a();
-    DetailInteractSegment.a(this.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    StoryReportor.a("home_page", "suc_share", 2, paramInt, new String[] { StoryReportor.b(DetailInteractSegment.a(this.a).a) + "", StoryReportor.a(DetailInteractSegment.a(this.a).a) + "", DetailInteractSegment.a(this.a).a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    StoryReportor.a("home_page", "share_chanel", 2, paramInt, new String[] { StoryReportor.b(DetailInteractSegment.a(this.a).a) + "", StoryReportor.a(DetailInteractSegment.a(this.a).a) + "", DetailInteractSegment.a(this.a).a.feedId });
+    paramRadioGroup = (RadioButton)paramRadioGroup.findViewById(paramInt);
+    VideoEncodeActivity.a(this.a, (String)paramRadioGroup.getTag());
+    SLog.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
+    VideoEncodeActivity.a(this.a);
   }
 }
 

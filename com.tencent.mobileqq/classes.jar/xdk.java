@@ -1,27 +1,35 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.ConfigInfo;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
-import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class xdk
   implements Runnable
 {
-  public xdk(QWalletRedManager paramQWalletRedManager) {}
+  public xdk(CommonHbFragment paramCommonHbFragment) {}
   
   public void run()
   {
-    Object localObject = (QWalletConfigManager)QWalletRedManager.a(this.a).getManager(244);
-    if (localObject != null)
+    if ((CommonHbFragment.b(this.a) == null) || (CommonHbFragment.b(this.a).size() <= 0)) {}
+    View localView;
+    do
     {
-      ((QWalletConfigManager)localObject).a("redPoint", this.a);
-      localObject = ((QWalletConfigManager)localObject).a("redPoint");
-      QWalletRedManager.a(this.a).parseConfig((QWalletConfig.ConfigInfo)localObject);
-    }
+      do
+      {
+        return;
+        localView = ((View)CommonHbFragment.b(this.a).get(CommonHbFragment.a(this.a).getCurrentItem())).findViewById(2131368025);
+        if (localView != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("CommonHbFragment", 2, "tempView is null");
+      return;
+    } while ((localView.getVisibility() != 0) || (!"1".equals(CommonHbFragment.g(this.a))));
     if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "synDataFromMoggy" + QWalletRedManager.a(this.a));
+      QLog.i("CommonHbFragment", 2, "start perform click sub type");
     }
+    localView.performClick();
   }
 }
 

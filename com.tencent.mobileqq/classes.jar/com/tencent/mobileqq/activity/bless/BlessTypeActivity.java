@@ -33,7 +33,7 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import wcq;
+import wfv;
 
 public class BlessTypeActivity
   extends BaseActivity
@@ -326,13 +326,13 @@ public class BlessTypeActivity
     {
     default: 
       return;
-    case 2131363227: 
+    case 2131363245: 
       onBackEvent();
       return;
-    case 2131363356: 
+    case 2131363374: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.f() <= 0)
       {
-        QQToast.a(this, String.format(getString(2131438238), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.e()) }), 0).a();
+        QQToast.a(this, String.format(getString(2131438256), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.e()) }), 0).a();
         return;
       }
       paramView = new Intent(this, BlessSendTextActivity.class);
@@ -345,7 +345,7 @@ public class BlessTypeActivity
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.f() <= 0)
     {
-      QQToast.a(this, String.format(getString(2131438238), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.e()) }), 0).a();
+      QQToast.a(this, String.format(getString(2131438256), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.e()) }), 0).a();
       return;
     }
     if (!this.jdField_a_of_type_Boolean)
@@ -355,7 +355,7 @@ public class BlessTypeActivity
     }
     if (this.app.c())
     {
-      QQToast.a(BaseApplication.getContext(), 2131433771, 0).a();
+      QQToast.a(BaseApplication.getContext(), 2131433788, 0).a();
       return;
     }
     if (AudioHelper.b(0))
@@ -370,7 +370,7 @@ public class BlessTypeActivity
     }
     if (AudioHelper.a(0))
     {
-      DialogUtil.a(this, 230, getString(2131433394), getString(2131433396), new wcq(this), null).show();
+      DialogUtil.a(this, 230, getString(2131433411), getString(2131433413), new wfv(this), null).show();
       return;
     }
     boolean bool2 = PtvFilterSoLoad.a(this.app, BaseApplicationImpl.getContext());

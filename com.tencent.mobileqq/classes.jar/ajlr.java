@@ -1,25 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.os.Message;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.util.WeakReferenceHandler;
+import cooperation.troop_homework.TroopHomeworkHelper;
+import java.lang.ref.WeakReference;
 
-public final class ajlr
-  implements Parcelable.Creator
+public class ajlr
+  implements Runnable
 {
-  public FaceInfo a(Parcel paramParcel)
+  private final WeakReference a;
+  private final WeakReference b;
+  
+  public ajlr(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo)
   {
-    FaceInfo localFaceInfo = new FaceInfo();
-    localFaceInfo.a(paramParcel);
-    return localFaceInfo;
+    this.a = new WeakReference(paramHWReciteItem);
+    this.b = new WeakReference(paramHWReciteInfo);
   }
   
-  public FaceInfo[] a(int paramInt)
+  public void run()
   {
-    return new FaceInfo[paramInt];
+    HWReciteInfo localHWReciteInfo = (HWReciteInfo)this.b.get();
+    if (localHWReciteInfo != null)
+    {
+      localHWReciteInfo.d = TroopHomeworkHelper.a(localHWReciteInfo.e);
+      Object localObject = (HWReciteItem)this.a.get();
+      if ((localObject != null) && (HWReciteItem.a((HWReciteItem)localObject) != null))
+      {
+        localObject = HWReciteItem.a((HWReciteItem)localObject).obtainMessage();
+        ((Message)localObject).what = 233;
+        ((Message)localObject).obj = localHWReciteInfo;
+        ((Message)localObject).sendToTarget();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlr
  * JD-Core Version:    0.7.0.1
  */

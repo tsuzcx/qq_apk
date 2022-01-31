@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207fe" />
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0006" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0571" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e58" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="asdfasdf" android:lineSpacingExtra="5.0dip" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e59" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:text="确定" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e5a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="取消" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01d8" />
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e6a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="18.0dip" android:textColor="#ff4a4a4a" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e71" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="90.0dip" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e72" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="45.5dip" android:layout_marginTop="32.0dip" android:layout_marginRight="45.5dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0e71" android:layout_centerHorizontal="true">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="31.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02132b" android:scaleType="fitCenter" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0180" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="手机通讯录" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="31.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02132c" android:scaleType="fitCenter" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0180" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="手机号码登录" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="31.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02132a" android:scaleType="fitCenter" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0180" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="设备锁" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="31.0dip" android:layout_height="31.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021324" android:scaleType="fitCenter" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0180" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="手机营业厅" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e73" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="75.0dip" android:layout_marginRight="10.0dip" android:text="更换手机号码" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0e72" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01d8" />
+    <TextView android:textSize="12.0dip" android:textColor="#ffbbbbbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="*目前QQ仅在部分地区支持手机营业厅功能。" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0e73" android:layout_centerInParent="true" />
+</RelativeLayout>

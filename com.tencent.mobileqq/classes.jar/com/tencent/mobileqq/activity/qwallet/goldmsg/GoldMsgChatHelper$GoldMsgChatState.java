@@ -37,7 +37,7 @@ public class GoldMsgChatHelper$GoldMsgChatState
   {
     Object localObject = paramContext.getResources();
     if (paramInt == 0) {}
-    for (localObject = ((Resources)localObject).getString(2131432285);; localObject = ((Resources)localObject).getString(2131432311)) {
+    for (localObject = ((Resources)localObject).getString(2131432302);; localObject = ((Resources)localObject).getString(2131432328)) {
       return new PriceSettingDialog.PriceTextWater(paramContext, 1L, 9223372036854775807L, (String)localObject, null);
     }
   }
@@ -85,7 +85,7 @@ public class GoldMsgChatHelper$GoldMsgChatState
   {
     Object localObject = paramContext.getResources();
     if ((paramInt == 1) || (paramInt == 3000)) {}
-    for (localObject = ((Resources)localObject).getString(2131432313);; localObject = null) {
+    for (localObject = ((Resources)localObject).getString(2131432330);; localObject = null) {
       return new PriceSettingDialog.PriceTextWater(paramContext, 1L, 9223372036854775807L, (String)localObject, null);
     }
   }

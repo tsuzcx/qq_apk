@@ -1,61 +1,53 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
+import android.text.SpannableString;
 import android.text.TextUtils;
-import android.widget.RelativeLayout;
-import android.widget.VideoView;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.mobileqq.vipav.VipFunCallManager;
-import com.tencent.mobileqq.vipav.VipFunCallMediaListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.style.StrikethroughSpan;
+import android.util.SparseArray;
+import android.widget.Button;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.troop.utils.TroopGiftManager.ShowPicPrice;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
 
-public final class ajwx
-  implements MediaPlayer.OnErrorListener
+public class ajwx
+  extends TroopGiftCallback
 {
-  public ajwx(int paramInt, VipFunCallMediaListener paramVipFunCallMediaListener, VideoView paramVideoView, boolean paramBoolean) {}
+  public ajwx(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a(SparseArray paramSparseArray)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipFunCallManager", 2, "playing onError what=" + paramInt1 + ", extra=" + paramInt2 + ", funcallid=" + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallMediaListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallMediaListener.a(paramInt1, paramInt2, this.jdField_a_of_type_Int);
-    }
-    paramMediaPlayer = VipFunCallManager.a(null, this.jdField_a_of_type_Int, 7, null);
-    if (TextUtils.isEmpty(paramMediaPlayer)) {}
-    label159:
-    RelativeLayout localRelativeLayout;
-    do
+    int j = 0;
+    this.a.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
+    Object localObject = (TroopGiftManager.ShowPicPrice)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
+    if (localObject != null)
     {
-      for (;;)
-      {
-        return true;
-        if (new File(paramMediaPlayer).exists())
-        {
-          paramMediaPlayer = BitmapManager.a(paramMediaPlayer);
-          if (paramMediaPlayer != null) {}
-          for (paramMediaPlayer = new BitmapDrawable(paramMediaPlayer); (paramMediaPlayer != null) && (this.jdField_a_of_type_AndroidWidgetVideoView != null); paramMediaPlayer = null)
-          {
-            if (this.jdField_a_of_type_Boolean != true) {
-              break label159;
-            }
-            this.jdField_a_of_type_AndroidWidgetVideoView.setBackgroundDrawable(paramMediaPlayer);
-            return true;
-          }
-        }
+      paramSparseArray = ((TroopGiftManager.ShowPicPrice)localObject).a;
+      if (localObject == null) {
+        break label120;
       }
-      this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(8);
-      localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetVideoView.getParent();
-    } while (localRelativeLayout == null);
-    localRelativeLayout.setBackgroundDrawable(paramMediaPlayer);
-    return true;
+      localObject = ((TroopGiftManager.ShowPicPrice)localObject).b;
+      label55:
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label126;
+      }
+      j = paramSparseArray.indexOf((String)localObject);
+    }
+    label120:
+    label126:
+    for (int i = ((String)localObject).length() + j;; i = 0)
+    {
+      paramSparseArray = new SpannableString(paramSparseArray);
+      paramSparseArray.setSpan(new StrikethroughSpan(), j, i, 18);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(paramSparseArray);
+      return;
+      paramSparseArray = "30金豆秀一下";
+      break;
+      localObject = null;
+      break label55;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwx
  * JD-Core Version:    0.7.0.1
  */

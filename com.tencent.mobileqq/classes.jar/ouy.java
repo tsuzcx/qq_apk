@@ -1,47 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceStatus.ISVConfig;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.qrcode.ipc.VoiceScan;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 class ouy
-  implements ShortVideoResourceStatus.ISVConfig
+  implements ClickableColorSpanTextView.SpanClickListener
 {
-  ouy(ouo paramouo, AppRuntime paramAppRuntime, Bundle paramBundle) {}
+  ouy(oux paramoux) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    VideoEnvironment.a("TroopMemberApiService", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a("TroopMemberApiService", "短视频配置解压失败[" + paramInt2 + "]", null);
-        ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
-        ShortVideoErrorReport.a(1, paramInt2);
-        this.jdField_a_of_type_Ouo.a.b = false;
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a("TroopMemberApiService", "配置下载成功,插件资源下载中...", null);
-        ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList, new ouz(this));
-        return;
-      }
-      VideoEnvironment.a("TroopMemberApiService", "短视频配置校验失败[" + paramInt1 + "]", null);
-      ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
-      ShortVideoErrorReport.a(1, paramInt1);
-      return;
-    }
-    VideoEnvironment.a("TroopMemberApiService", "短视频配置下载失败[" + paramInt2 + "]", null);
-    ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
-    ShortVideoErrorReport.a(1, paramInt2);
-    this.jdField_a_of_type_Ouo.a.b = false;
+    paramClickableColorSpanTextView = new Intent(VoiceScan.a(this.a.a), QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    VoiceScan.a(this.a.a).startActivity(paramClickableColorSpanTextView);
   }
 }
 

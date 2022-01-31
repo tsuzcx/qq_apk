@@ -1,23 +1,27 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.aio.item.ClickedWaveView;
 
 public class uvh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public uvh(GrayTipsItemBuilder paramGrayTipsItemBuilder, long paramLong) {}
+  public uvh(ClickedWaveView paramClickedWaveView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("uinType", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a.a);
-    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
-    PublicFragmentActivity.Launcher.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
+    if ((this.a.a.computeScrollOffset()) || (this.a.d > 0))
+    {
+      this.a.c = this.a.a.getCurrX();
+      if (this.a.d > 0)
+      {
+        ClickedWaveView localClickedWaveView = this.a;
+        localClickedWaveView.d -= 3;
+      }
+      if (this.a.d < 0) {
+        this.a.d = 0;
+      }
+      this.a.postInvalidate();
+      this.a.postDelayed(this, 20L);
+    }
   }
 }
 

@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import java.util.Comparator;
+import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class absd
-  implements Comparator
+  implements Runnable
 {
-  public absd(EmoticonFromGroupManager paramEmoticonFromGroupManager) {}
+  public absd(ConfessPlugin paramConfessPlugin) {}
   
-  public int a(String paramString1, String paramString2)
+  public void run()
   {
-    return paramString2.compareTo(paramString1);
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessPlugin", 4, "mProcessShareRunable mLastShareData:" + this.a.jdField_a_of_type_OrgJsonJSONObject + " mHeaderLoader:" + this.a.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader);
+    }
+    if ((this.a.jdField_a_of_type_OrgJsonJSONObject == null) || (this.a.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader == null)) {
+      return;
+    }
+    ConfessPlugin.a(this.a, this.a.jdField_a_of_type_OrgJsonJSONObject);
+    this.a.jdField_a_of_type_OrgJsonJSONObject = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absd
  * JD-Core Version:    0.7.0.1
  */

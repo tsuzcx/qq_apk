@@ -1,34 +1,21 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView.ScaleType;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-public class mwn
-  implements View.OnTouchListener
+public final class mwn
+  implements BusinessObserver
 {
-  public mwn(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public mwn(QQAppInterface paramQQAppInterface) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (PublicAccountImageCollectionMainActivity.a(this.a))
-    {
-      this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
-      if (QLog.isColorLevel()) {
-        QLog.d("qqBaseActivity", 2, "current operation is" + paramMotionEvent.getAction());
-      }
-      if ((paramMotionEvent.getAction() == 1) && (this.a.b[0] < this.a.jdField_a_of_type_ArrayOfFloat[0]))
-      {
-        PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.c);
-        PublicAccountImageCollectionMainActivity.a(this.a).setScaleType(ImageView.ScaleType.FIT_CENTER);
-      }
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
     }
-    this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
-    return false;
+    ThreadManager.getSubThreadHandler().postDelayed(new mwo(this, paramBoolean, paramBundle), 10L);
   }
 }
 

@@ -1,17 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-class mob
+public final class mob
   implements Runnable
 {
-  mob(moa parammoa, VideoPlayerWrapper paramVideoPlayerWrapper) {}
-  
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.h();
-    }
-    FastWebVideoFeedsPlayManager.b(this.jdField_a_of_type_Moa.a);
+    ReadInJoyLogicEngineEventDispatcher.a().c();
   }
 }
 

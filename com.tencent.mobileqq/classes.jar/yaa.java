@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
-class yaa
-  implements DialogInterface.OnClickListener
+public class yaa
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  yaa(xzz paramxzz) {}
+  public CheckBox a;
+  public TextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.s();
-  }
+  private yaa(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
 }
 
 

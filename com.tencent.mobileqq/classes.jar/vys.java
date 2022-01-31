@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView.StickerBubbleAnimationCallback;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.widget.XListView.DrawFinishedListener;
 
 public class vys
-  implements StickerBubbleAnimationView.StickerBubbleAnimationCallback
+  implements XListView.DrawFinishedListener
 {
-  public vys(StickerBubbleAnimationViewHolder paramStickerBubbleAnimationViewHolder) {}
+  public vys(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void a()
   {
-    StickerBubbleAnimationViewHolder.a(this.a, StickerBubbleAnimationViewHolder.a(this.a));
-    ThreadManager.getUIHandler().post(new vyt(this));
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleAnimationViewHolder", 2, "onSurfaceDestroyed");
+    if ((!this.a.ag) && (this.a.ah))
+    {
+      this.a.ag = true;
+      PublicTracker.a("SUBSCRIPT_AIO_COST", null);
     }
-    StickerBubbleAnimationViewHolder.b(this.a, StickerBubbleAnimationViewHolder.a(this.a));
   }
 }
 

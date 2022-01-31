@@ -45,10 +45,10 @@ public class ReadInJoyView
   
   private void e()
   {
-    this.jdField_e_of_type_AndroidViewView = this.n.findViewById(2131366836);
-    this.jdField_f_of_type_AndroidViewView = this.n.findViewById(2131366835);
-    this.g = this.n.findViewById(2131362736);
-    this.l = this.n.findViewById(2131366808);
+    this.jdField_e_of_type_AndroidViewView = this.n.findViewById(2131366879);
+    this.jdField_f_of_type_AndroidViewView = this.n.findViewById(2131366878);
+    this.g = this.n.findViewById(2131362754);
+    this.l = this.n.findViewById(2131366851);
   }
   
   public View a()
@@ -61,18 +61,18 @@ public class ReadInJoyView
     if (this.jdField_a_of_type_AndroidViewView != null) {
       return;
     }
-    this.jdField_b_of_type_AndroidViewView = ((ViewStub)this.n.findViewById(2131366833)).inflate();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131366814);
-    this.jdField_c_of_type_AndroidViewView = this.n.findViewById(2131366815);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.n.findViewById(2131366816));
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[0] = ((FixSizeImageView)this.n.findViewById(2131366817));
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[1] = ((FixSizeImageView)this.n.findViewById(2131366818));
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[2] = ((FixSizeImageView)this.n.findViewById(2131366819));
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[3] = ((FixSizeImageView)this.n.findViewById(2131366820));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366822));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366823));
-    this.jdField_d_of_type_AndroidViewView = this.n.findViewById(2131366821);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend = ((ComponentHeaderFriendRecommend)this.n.findViewById(2131366824));
+    this.jdField_b_of_type_AndroidViewView = ((ViewStub)this.n.findViewById(2131366876)).inflate();
+    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131366857);
+    this.jdField_c_of_type_AndroidViewView = this.n.findViewById(2131366858);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)this.n.findViewById(2131366859));
+    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[0] = ((FixSizeImageView)this.n.findViewById(2131366860));
+    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[1] = ((FixSizeImageView)this.n.findViewById(2131366861));
+    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[2] = ((FixSizeImageView)this.n.findViewById(2131366862));
+    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[3] = ((FixSizeImageView)this.n.findViewById(2131366863));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366865));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366866));
+    this.jdField_d_of_type_AndroidViewView = this.n.findViewById(2131366864);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend = ((ComponentHeaderFriendRecommend)this.n.findViewById(2131366867));
   }
   
   public boolean a()
@@ -80,12 +80,12 @@ public class ReadInJoyView
     if (this.m != null) {
       return true;
     }
-    ViewStub localViewStub = (ViewStub)this.n.findViewById(2131366812);
+    ViewStub localViewStub = (ViewStub)this.n.findViewById(2131366855);
     if (localViewStub == null) {
       return false;
     }
     this.m = localViewStub.inflate();
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366831));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366874));
     return true;
   }
   
@@ -94,13 +94,13 @@ public class ReadInJoyView
     if (this.h != null) {
       return;
     }
-    this.h = ((ViewStub)this.n.findViewById(2131366811)).inflate();
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)this.n.findViewById(2131366825));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)this.n.findViewById(2131366827));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)this.n.findViewById(2131366829));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)this.n.findViewById(2131366830));
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.n.findViewById(2131366826);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.n.findViewById(2131366828);
+    this.h = ((ViewStub)this.n.findViewById(2131366854)).inflate();
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)this.n.findViewById(2131366868));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)this.n.findViewById(2131366870));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)this.n.findViewById(2131366872));
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)this.n.findViewById(2131366873));
+    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.n.findViewById(2131366869);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.n.findViewById(2131366871);
   }
   
   public void c()
@@ -108,8 +108,8 @@ public class ReadInJoyView
     if (this.i != null) {
       return;
     }
-    this.i = ((ViewStub)this.n.findViewById(2131366810)).inflate();
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366813));
+    this.i = ((ViewStub)this.n.findViewById(2131366853)).inflate();
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366856));
   }
   
   public void d()
@@ -117,10 +117,10 @@ public class ReadInJoyView
     if (this.j != null) {
       return;
     }
-    this.j = ((ViewStub)this.n.findViewById(2131366809)).inflate();
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366807));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366806));
-    this.k = this.n.findViewById(2131366805);
+    this.j = ((ViewStub)this.n.findViewById(2131366852)).inflate();
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366850));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.n.findViewById(2131366849));
+    this.k = this.n.findViewById(2131366848);
   }
 }
 

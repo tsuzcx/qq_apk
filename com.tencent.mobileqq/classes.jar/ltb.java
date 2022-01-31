@@ -1,30 +1,12 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
-import java.util.ArrayList;
+import android.view.animation.Interpolator;
 
 public class ltb
-  implements Animation.AnimationListener
+  implements Interpolator
 {
-  public ltb(FeedItemCell paramFeedItemCell, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public float getInterpolation(float paramFloat)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell.a().post(new ltc(this));
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      paramAnimation.printStackTrace();
-    }
+    return 12.9184F * paramFloat * paramFloat * paramFloat - 22.5776F * paramFloat * paramFloat + 9.65921F * paramFloat + 1.0F;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

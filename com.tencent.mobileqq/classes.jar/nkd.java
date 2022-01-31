@@ -1,27 +1,14 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.TagStoryVidListPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
+import com.tencent.biz.qqstory.playmode.util.NewDiscoverBannerDataProvider;
 
-public class nkd
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+class nkd
+  implements Runnable
 {
-  public nkd(TagStoryVidListPlayMode paramTagStoryVidListPlayMode, BatchGetVideoInfo paramBatchGetVideoInfo, Bundle paramBundle) {}
+  nkd(nkc paramnkc) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    ThreadManager.getUIHandler().post(new nkg(this));
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTagStoryVidListPlayMode.a.post(new nke(this, paramArrayList));
+    this.a.a.a.a(true);
   }
 }
 

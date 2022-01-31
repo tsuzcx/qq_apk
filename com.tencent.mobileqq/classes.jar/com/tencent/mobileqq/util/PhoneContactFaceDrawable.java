@@ -25,7 +25,7 @@ public class PhoneContactFaceDrawable
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapManager.b(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130840183);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapManager.b(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130840189);
     this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
     this.jdField_a_of_type_Int = Math.min(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
@@ -84,7 +84,7 @@ public class PhoneContactFaceDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneContactFaceDrawable
  * JD-Core Version:    0.7.0.1
  */

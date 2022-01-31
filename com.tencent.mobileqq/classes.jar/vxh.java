@@ -1,24 +1,25 @@
-import android.os.Message;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.troop.utils.TroopBindPublicAccountMgr;
+import org.json.JSONObject;
 
-class vxh
-  implements Runnable
+public class vxh
+  implements HttpWebCgiAsyncTask.Callback
 {
-  vxh(vxg paramvxg) {}
+  public vxh(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (TroopChatPie.d(this.a.a)) {
+    if (paramJSONObject == null) {}
+    while (paramJSONObject.optInt("retcode", -1) != 0) {
       return;
     }
-    TroopNotificationHelper.c(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    TroopNotificationHelper.c(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    Message localMessage = TroopChatPie.h(this.a.a).obtainMessage(29);
-    localMessage.arg1 = 2;
-    TroopChatPie.i(this.a.a).sendMessage(localMessage);
+    paramJSONObject = (TroopBindPublicAccountMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(131);
+    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
   }
 }
 

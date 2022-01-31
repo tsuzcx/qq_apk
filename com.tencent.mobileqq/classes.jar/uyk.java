@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.IMagicCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class uyk
-  implements PngFrameManager.IMagicCallback
+public class uyk
+  implements FileManagerUtil.TipsClickedInterface
 {
-  uyk(uyj paramuyj) {}
+  public uyk(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void a(MarketFaceItemBuilder.Holder paramHolder)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarketFaceItemBuilder", 2, "func downloadVideoDetails, 【callback】 try to download video details.");
-    }
-    MarketFaceItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder, paramHolder);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      MarketFaceItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder);
-    }
+    paramView = DialogUtil.a(this.a.a, 230);
+    paramView.setTitle(2131437827);
+    paramView.setMessage(2131437845);
+    paramView.setNegativeButton(2131433015, new uyl(this, paramView));
+    paramView.setPositiveButton(2131433016, new uym(this));
+    paramView.show();
   }
 }
 

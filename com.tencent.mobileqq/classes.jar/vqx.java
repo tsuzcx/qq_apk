@@ -1,16 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
+import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
 
 public class vqx
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public vqx(GameRoomChatPie paramGameRoomChatPie) {}
+  public vqx(BaseTroopChatPie paramBaseTroopChatPie, TroopTipsMsgMgr paramTroopTipsMsgMgr) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTipsMsgMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

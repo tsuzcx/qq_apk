@@ -60,19 +60,19 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.MobileQQ;
-import pym;
-import pyn;
-import pyo;
-import pyp;
-import pyq;
-import pyr;
-import pys;
+import qag;
+import qah;
+import qai;
+import qaj;
+import qak;
+import qal;
+import qam;
 
 public class DevLittleVideoItemBuilder
   extends ShortVideoRealItemBuilder
   implements DeviceAVFileMsgObserver.DevMsgViewCallback
 {
-  private EncodeVideoTask.ResultListener jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener = new pyn(this);
+  private EncodeVideoTask.ResultListener jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener = new qah(this);
   private MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
   
   public DevLittleVideoItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
@@ -234,7 +234,7 @@ public class DevLittleVideoItemBuilder
           }
           a(paramOnLongClickAndTouchListener, paramChatMessage);
           a((MessageForShortVideo)localObject, paramBaseChatItemLayout, ((MessageForDevLittleVideo)localObject).videoFileProgress, false);
-          ThreadManager.postImmediately(new pym(this, (MessageForDevLittleVideo)localObject), null, true);
+          ThreadManager.postImmediately(new qag(this, (MessageForDevLittleVideo)localObject), null, true);
         }
       }
     }
@@ -345,16 +345,16 @@ public class DevLittleVideoItemBuilder
     if (localMessageForDevLittleVideo.isSendFromLocal())
     {
       localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-      localActionSheet.a(2131433618, 5);
-      localActionSheet.c(2131432998);
-      localActionSheet.a(new pyo(this, localMessageForDevLittleVideo, paramView, localActionSheet));
+      localActionSheet.a(2131433635, 5);
+      localActionSheet.c(2131433015);
+      localActionSheet.a(new qai(this, localMessageForDevLittleVideo, paramView, localActionSheet));
       localActionSheet.show();
       return;
     }
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-    localActionSheet.a(2131433616, 5);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new pyp(this, localMessageForDevLittleVideo, paramView, localActionSheet));
+    localActionSheet.a(2131433633, 5);
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new qaj(this, localMessageForDevLittleVideo, paramView, localActionSheet));
     localActionSheet.show();
   }
   
@@ -455,7 +455,7 @@ public class DevLittleVideoItemBuilder
   
   public void a(MessageForDevLittleVideo paramMessageForDevLittleVideo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new pyq(this, paramMessageForDevLittleVideo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qak(this, paramMessageForDevLittleVideo));
   }
   
   protected boolean a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout)
@@ -476,7 +476,7 @@ public class DevLittleVideoItemBuilder
     if (paramMessageForDevLittleVideo.isSendFromLocal()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new pyr(this, paramMessageForDevLittleVideo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qal(this, paramMessageForDevLittleVideo));
   }
   
   public void c(MessageForDevLittleVideo paramMessageForDevLittleVideo)
@@ -484,7 +484,7 @@ public class DevLittleVideoItemBuilder
     if (paramMessageForDevLittleVideo.isSendFromLocal()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new pys(this, paramMessageForDevLittleVideo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qam(this, paramMessageForDevLittleVideo));
   }
   
   public void onClick(View paramView)
@@ -496,7 +496,7 @@ public class DevLittleVideoItemBuilder
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131428986, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131428992, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
       return;
     }
     if (paramView.getId() == 2131361877)

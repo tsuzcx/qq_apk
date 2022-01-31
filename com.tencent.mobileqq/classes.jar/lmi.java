@@ -1,49 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderStateMachineScheduler.StateMachine;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
-public class lmi
-  implements ReadInJoyWebRenderStateMachineScheduler.StateMachine
+public final class lmi
+  implements Runnable
 {
-  public lmi(ReadInJoyWebRenderEngine paramReadInJoyWebRenderEngine) {}
+  public lmi(long paramLong) {}
   
-  public int a(Bundle paramBundle)
+  public void run()
   {
-    int j = this.a.a;
-    int i = -1;
-    long l = System.currentTimeMillis();
-    switch (this.a.a)
+    if (ReadinjoySPEventReport.b(23))
     {
+      oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
+      localAttributeList.att_id.set(1);
+      localAttributeList.att_name.set("time");
+      localAttributeList.att_value.set(String.valueOf(this.a / 1000L));
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localAttributeList);
+      PublicAccountUtil.a(23, "LeaveQQ", localArrayList);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost[" + (System.currentTimeMillis() - l) + "ms]" + " timestamps[" + System.currentTimeMillis() + "]");
-      }
-      ReadInJoyUtils.a(ReadInJoyUtils.a(), true, j, System.currentTimeMillis() - l);
-      return i;
-      i = this.a.b(paramBundle);
-      continue;
-      i = this.a.c(paramBundle);
-      continue;
-      i = this.a.d(paramBundle);
-      continue;
-      i = this.a.e(paramBundle);
-      continue;
-      i = this.a.f(paramBundle);
-      continue;
-      i = this.a.g(paramBundle);
-      continue;
-      i = this.a.h(paramBundle);
-      continue;
-      i = this.a.i(paramBundle);
-      continue;
-      i = this.a.j(paramBundle);
-      continue;
-      i = this.a.k(paramBundle);
-    }
+    ThreadManager.executeOnSubThread(new lmj(this));
   }
 }
 

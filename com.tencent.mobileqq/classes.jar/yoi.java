@@ -1,23 +1,33 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.ai.ApolloAIActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import java.io.File;
 
 public class yoi
   implements Runnable
 {
-  public yoi(CmGameLauncher paramCmGameLauncher) {}
+  public yoi(ApolloAIActivity paramApolloAIActivity) {}
   
   public void run()
   {
-    if ((CmGameLauncher.a(this.a) != null) && (CmGameLauncher.a(this.a).getRender() != null) && (CmGameLauncher.a(this.a).getRender().mApolloTicker != null))
+    try
     {
-      ApolloRender.tickerResume(CmGameLauncher.a(this.a).getRender().mApolloTicker.ticker);
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameLauncher", 2, "mResumeTickerTask");
+      File[] arrayOfFile = new File(ApolloConstant.m).listFiles();
+      if (arrayOfFile != null)
+      {
+        int j = arrayOfFile.length;
+        int i = 0;
+        while (i < j)
+        {
+          File localFile = arrayOfFile[i];
+          if (localFile.exists()) {
+            localFile.delete();
+          }
+          i += 1;
+        }
       }
+      return;
     }
+    catch (Exception localException) {}
   }
 }
 

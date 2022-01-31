@@ -1,16 +1,15 @@
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
 
 public class kqx
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements DialogInterface.OnDismissListener
 {
-  public kqx(AccountDetailVideoManager paramAccountDetailVideoManager) {}
+  public kqx(AccountDetailGroupListContainer paramAccountDetailGroupListContainer) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.start();
-    new Thread(new kqy(this)).start();
+    this.a.e = false;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.immersion.stickersampleapp;
 
+import amm;
+import amn;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
-import ang;
-import anh;
 import com.immersion.touchsensesdk.HapticMediaPlayer;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
@@ -51,14 +51,14 @@ public class HapticManager
     this.jdField_a_of_type_ComImmersionStickersampleappImmerIConnectionProxy = new ImmerIConnectionProxy();
   }
   
-  private anh a(String paramString)
+  private amn a(String paramString)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      anh localanh = (anh)localIterator.next();
-      if (anh.a(localanh).equals(paramString)) {
-        return localanh;
+      amn localamn = (amn)localIterator.next();
+      if (amn.a(localamn).equals(paramString)) {
+        return localamn;
       }
     }
     return null;
@@ -85,7 +85,7 @@ public class HapticManager
             if (!c)
             {
               c = true;
-              localObject1 = new ang();
+              localObject1 = new amm();
               if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
                 ThreadManager.post((Runnable)localObject1, 10, null, false);
               }
@@ -369,7 +369,7 @@ public class HapticManager
     {
       String str = a(arrayOfInt[i], arrayOfString[i]);
       int j = this.jdField_a_of_type_ComImmersionTouchsensesdkHapticMediaPlayer.addResource(str, 1);
-      this.jdField_a_of_type_JavaUtilList.add(new anh(this, arrayOfString[i], j));
+      this.jdField_a_of_type_JavaUtilList.add(new amn(this, arrayOfString[i], j));
       i += 1;
     }
   }
@@ -417,8 +417,8 @@ public class HapticManager
       return -1;
     }
     a();
-    anh localanh = a(paramString);
-    if (localanh == null)
+    amn localamn = a(paramString);
+    if (localamn == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("HapticManager", 2, "No effect added with name " + paramString);
@@ -426,7 +426,7 @@ public class HapticManager
       return -1;
     }
     b();
-    int i = anh.a(localanh);
+    int i = amn.a(localamn);
     if (i < 0)
     {
       if (QLog.isColorLevel()) {
@@ -446,9 +446,9 @@ public class HapticManager
     for (;;)
     {
       return paramInt;
-      anh.a(localanh, paramInt);
+      amn.a(localamn, paramInt);
       if (QLog.isColorLevel()) {
-        QLog.d("TouchEffect", 2, "effect id:" + anh.b(localanh));
+        QLog.d("TouchEffect", 2, "effect id:" + amn.b(localamn));
       }
     }
   }
@@ -498,14 +498,14 @@ public class HapticManager
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      if (anh.a((anh)localIterator.next()).equals(paramString1)) {
+      if (amn.a((amn)localIterator.next()).equals(paramString1)) {
         return;
       }
     }
     if (this.jdField_a_of_type_ComImmersionTouchsensesdkHapticMediaPlayer != null)
     {
       int i = this.jdField_a_of_type_ComImmersionTouchsensesdkHapticMediaPlayer.addResource(paramString2, 1);
-      this.jdField_a_of_type_JavaUtilList.add(new anh(this, paramString1, i));
+      this.jdField_a_of_type_JavaUtilList.add(new amn(this, paramString1, i));
       QLog.i("HapticManager", 1, "vas poke shock file " + paramString1 + " load success.");
       return;
     }
@@ -713,7 +713,7 @@ public class HapticManager
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        int i = anh.b((anh)localIterator.next());
+        int i = amn.b((amn)localIterator.next());
         if ((i > 0) && (a(i))) {
           c(i);
         }
@@ -747,7 +747,7 @@ public class HapticManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.immersion.stickersampleapp.HapticManager
  * JD-Core Version:    0.7.0.1
  */

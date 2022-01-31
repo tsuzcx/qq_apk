@@ -1,19 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.utils.DBUtils;
+import mqq.os.MqqHandler;
 
-public class ubr
-  implements View.OnTouchListener
+class ubr
+  implements Runnable
 {
-  public ubr(TroopTransferActivity paramTroopTransferActivity) {}
+  ubr(ubp paramubp, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.b();
+    Object localObject = (FriendsManager)this.jdField_a_of_type_Ubp.a.app.getManager(50);
+    TroopMemberInfo localTroopMemberInfo = DBUtils.a().a(this.jdField_a_of_type_Ubp.a.app, this.jdField_a_of_type_Ubp.a.b, this.jdField_a_of_type_JavaLangString);
+    if ((localTroopMemberInfo != null) && (localObject != null))
+    {
+      localObject = this.jdField_a_of_type_Ubp.a.a(localTroopMemberInfo, (FriendsManager)localObject);
+      ThreadManager.getUIHandler().post(new ubs(this, (TroopMemberListActivity.ATroopMember)localObject));
     }
-    return true;
   }
 }
 

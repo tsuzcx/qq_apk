@@ -1,37 +1,37 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-class tna
-  implements Runnable
+public class tna
+  extends DownloadListener
 {
-  tna(tmz paramtmz, String paramString) {}
+  public tna(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  public void run()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
-      return;
+    super.onDone(paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "onDone status: " + paramDownloadTask.e + ", url: " + paramDownloadTask.a);
     }
-    Object localObject1 = localObject2;
-    if (!((String)localObject2).startsWith("http://"))
+    int i = paramDownloadTask.a.indexOf("?");
+    String str;
+    if (i == -1)
     {
-      localObject1 = localObject2;
-      if (!((String)localObject2).startsWith("https://")) {
-        localObject1 = "http://" + (String)localObject2;
+      str = paramDownloadTask.a;
+      if (!"http://imgcache.qq.com/qqshow/admindata/comdata/chatHistoryEvent/xydata.json".contains(str)) {
+        break label104;
       }
+      QQSettingMsgHistoryActivity.a(this.a, paramDownloadTask);
     }
-    localObject2 = new Intent(this.jdField_a_of_type_Tmz.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("is_register_uin", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("register_uin_msg", 104);
-    ((Intent)localObject2).putExtra("register_uin_class", RegisterPhoneNumActivity.class.getName());
-    this.jdField_a_of_type_Tmz.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
-    ((Intent)localObject2).putExtra("selfSet_leftViewText", "返回");
-    ReportController.b(this.jdField_a_of_type_Tmz.a.app, "CliOper", "", "", "0X800665A", "0X800665A", 0, 0, "", "", "", "");
+    label104:
+    while (!QLog.isColorLevel())
+    {
+      return;
+      str = paramDownloadTask.a.substring(0, i - 1);
+      break;
+    }
+    QLog.e("IphoneTitleBarActivity", 2, "onDone unkonw url: " + paramDownloadTask.a);
   }
 }
 

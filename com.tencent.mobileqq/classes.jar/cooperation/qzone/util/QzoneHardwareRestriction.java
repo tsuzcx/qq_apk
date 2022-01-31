@@ -1,6 +1,6 @@
 package cooperation.qzone.util;
 
-import amku;
+import anaz;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
@@ -116,7 +116,7 @@ public class QzoneHardwareRestriction
   {
     try
     {
-      int i = new File("/sys/devices/system/cpu/").listFiles(new amku()).length;
+      int i = new File("/sys/devices/system/cpu/").listFiles(new anaz()).length;
       return i;
     }
     catch (Exception localException) {}

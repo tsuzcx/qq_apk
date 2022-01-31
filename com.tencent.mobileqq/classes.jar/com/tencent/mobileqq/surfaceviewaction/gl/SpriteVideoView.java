@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ahxi;
+import aill;
 import android.content.Context;
 import android.util.AttributeSet;
 
@@ -41,7 +41,7 @@ public class SpriteVideoView
   
   protected void a(boolean paramBoolean)
   {
-    this.a = new ahxi(this, this, getContext(), paramBoolean);
+    this.a = new aill(this, this, getContext(), paramBoolean);
     this.a.a = true;
     this.a.c = true;
     a(this.a);
@@ -74,7 +74,7 @@ public class SpriteVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView
  * JD-Core Version:    0.7.0.1
  */

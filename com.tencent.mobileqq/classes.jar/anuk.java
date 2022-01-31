@@ -1,30 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class anuk
-  implements DialogInterface.OnClickListener
+  extends SimpleJob
 {
-  public anuk(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public anuk(EditVideoPartManager paramEditVideoPartManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    Object localObject = ShortVideoPreviewActivity.a(this.a);
-    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
-    Intent localIntent = new Intent();
-    localIntent.setClassName((String)localObject, paramDialogInterface);
-    localIntent.addFlags(603979776);
-    localIntent.putExtra("file_send_path", this.a.d);
-    localIntent.putExtra("file_send_size", this.a.a);
-    localIntent.putExtra("file_send_duration", this.a.b);
-    localIntent.putExtra("file_source", this.a.c);
-    this.a.startActivity(localIntent);
-    ShortVideoPreviewActivity.a(this.a);
-    localObject = new Intent("key_video_select_confirm_ok_click");
-    ((Intent)localObject).putExtra("className", paramDialogInterface);
-    this.a.sendBroadcast((Intent)localObject);
+    VideoEditReport.a("0X80076BC");
+    return null;
   }
 }
 

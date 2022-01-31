@@ -1,14 +1,29 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class riw
-  extends QQStoryObserver
+  implements View.OnTouchListener
 {
-  public riw(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public riw(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void e(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AssistantSettingActivity.a(this.a);
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    do
+    {
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

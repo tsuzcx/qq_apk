@@ -1,90 +1,39 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.IBinder;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneClickReport;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.TroopWantGiftItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 public class vkw
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public vkw(AIOImageListScene paramAIOImageListScene, ActionSheet paramActionSheet) {}
+  public vkw(TroopWantGiftItemBuilder paramTroopWantGiftItemBuilder, ChatMessage paramChatMessage, MessageForWantGiftMsg paramMessageForWantGiftMsg) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramView != null)
+    if (paramView.getId() == 2131362152)
     {
-      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
-      if (paramView == null) {
-        return;
-      }
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if (!paramView.equals(AIOImageListScene.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131436681))) {
-          break label195;
-        }
-        paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a();
-        if (paramInt != 1) {
-          break label94;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.o();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a("Multi_Forward_Contacts", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaUtilArrayList.size());
+      new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + "", "29" }).a();
+      paramView = SharedPreUtils.j(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_AndroidContentContext, "url");
+      if (TextUtils.isEmpty(paramView)) {
+        break label216;
       }
     }
-    label195:
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      paramView = paramView.replace("{troopUin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin).replace("{uin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin).replace("{from}", "29");
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopWantGiftItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
       return;
-      label94:
-      if ((paramInt == 2) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.asBinder().pingBinder()))
-      {
-        paramView = (AIOShortVideoData)((AIORichMediaInfo)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaUtilArrayList.get(0)).a;
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(paramView.g, paramView.f, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.c);
-        ForwardBaseOption.a(AIOImageListScene.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene), paramView);
-        continue;
-        if (paramView.equals(AIOImageListScene.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131435873)))
-        {
-          if (LocalMultiProcConfig.getInt4Uin(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaLangString + "__qzone_pic_permission__" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.b, -1, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaLangString).longValue()) == 0)
-          {
-            paramView = new QQCustomDialog(AIOImageListScene.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene), 2131624515);
-            paramView.setContentView(2130968851);
-            paramView.setTitle(AIOImageListScene.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getString(2131429880));
-            paramView.setMessage(AIOImageListScene.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getString(2131429882));
-            paramView.setNegativeButton(AIOImageListScene.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getString(2131429883), new vkx(this));
-            paramView.setCanceledOnTouchOutside(false);
-            paramView.setCancelable(false);
-            paramView.show();
-            QZoneClickReport.startReportImediately(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaLangString, "40", "1");
-          }
-          else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaUtilArrayList.size() > 20)
-          {
-            QQToast.a(AIOImageListScene.k(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene), 2131435874, 0).a();
-          }
-          else
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.p();
-          }
-        }
-        else if (paramView.equals(AIOImageListScene.l(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131435863))) {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaUtilArrayList.size() > 20) {
-            QQToast.a(AIOImageListScene.m(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene), 2131435874, 0).a();
-          } else {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.q();
-          }
-        }
-      }
+      label216:
+      paramView = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
     }
   }
 }

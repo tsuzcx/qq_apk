@@ -1,7 +1,7 @@
 package com.tencent.plato;
 
-import akuf;
-import akug;
+import aljv;
+import aljw;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
 import com.tencent.mobileqq.widget.QQToast;
@@ -37,6 +36,7 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
 public class PlatoAppFragment
   extends IphoneTitleBarFragment
@@ -48,13 +48,13 @@ public class PlatoAppFragment
   public Handler a;
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  public QQAppInterface a;
   private IPlatoManager jdField_a_of_type_ComTencentPlatoIPlatoManager;
   private JSONWritableMap jdField_a_of_type_ComTencentPlatoJSONWritableMap;
   private PlatoAppFragment.PlatoLoadReceiver jdField_a_of_type_ComTencentPlatoPlatoAppFragment$PlatoLoadReceiver;
   public PlatoAppJson a;
   private PlatoRootView jdField_a_of_type_ComTencentPlatoSdkRenderPlatoRootView;
   public String a;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   private boolean jdField_a_of_type_Boolean;
   public int b;
   private NavBarCommon jdField_b_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon;
@@ -68,7 +68,7 @@ public class PlatoAppFragment
   {
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new akug(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new aljw(this));
   }
   
   private void d()
@@ -85,48 +85,41 @@ public class PlatoAppFragment
   {
     super.a(paramBundle);
     FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity == null) {}
-    for (Object localObject = null; (localObject instanceof QQAppInterface); localObject = localFragmentActivity.getAppInterface())
+    this.jdField_a_of_type_MqqAppAppRuntime = localFragmentActivity.getAppRuntime();
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("bid");
+    this.jdField_a_of_type_ComTencentPlatoPlatoAppJson = new PlatoAppJson(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentPlatoJSONWritableMap = new JSONWritableMap();
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localObject);
-      this.jdField_a_of_type_JavaLangString = paramBundle.getString("bid");
-      this.jdField_a_of_type_ComTencentPlatoPlatoAppJson = new PlatoAppJson(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentPlatoJSONWritableMap = new JSONWritableMap();
-      localObject = paramBundle.keySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        this.jdField_a_of_type_ComTencentPlatoJSONWritableMap.put(str, paramBundle.get(str));
+      String str = (String)localIterator.next();
+      this.jdField_a_of_type_ComTencentPlatoJSONWritableMap.put(str, paramBundle.get(str));
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (PlatoAppManager.a(localFragmentActivity.getApplicationContext()))
+    {
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentPlatoPlatoAppFragment$PlatoLoadReceiver = new PlatoAppFragment.PlatoLoadReceiver(this);
+      Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentPlatoPlatoAppFragment$PlatoLoadReceiver);
+      if (!paramBundle.getBoolean("singledog", false)) {
+        break label214;
       }
+      if (!PlatoAppManager.jdField_a_of_type_Boolean) {
+        PlatoAppManager.a(localFragmentActivity.getApplicationContext(), this.jdField_a_of_type_MqqAppAppRuntime);
+      }
+      PlatoAppManager.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaLangString);
+      if (PlatoAppManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+        break label214;
+      }
+      c();
     }
-    QLog.e("PlatoAppActivity", 1, "app is null");
-    if (localFragmentActivity != null) {
-      localFragmentActivity.finish();
-    }
+    label214:
     do
     {
       return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (PlatoAppManager.a(localFragmentActivity.getApplicationContext())) {
-        this.jdField_a_of_type_Int = 0;
-      }
-      for (this.jdField_b_of_type_Boolean = true;; this.jdField_b_of_type_Boolean = false)
-      {
-        this.jdField_a_of_type_ComTencentPlatoPlatoAppFragment$PlatoLoadReceiver = new PlatoAppFragment.PlatoLoadReceiver(this);
-        Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentPlatoPlatoAppFragment$PlatoLoadReceiver);
-        if (!paramBundle.getBoolean("singledog", false)) {
-          break;
-        }
-        if (!PlatoAppManager.jdField_a_of_type_Boolean) {
-          PlatoAppManager.a(localFragmentActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        PlatoAppManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-        if (PlatoAppManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          break;
-        }
-        c();
-        return;
-      }
+      this.jdField_b_of_type_Boolean = false;
+      break;
       this.jdField_a_of_type_AndroidContentSharedPreferences = localFragmentActivity.getSharedPreferences("config", 0);
     } while (!this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("fps_switch", false));
     BlockDetectByChoreographer.start();
@@ -135,11 +128,11 @@ public class PlatoAppFragment
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentPlatoSdkRenderPlatoRootView = ((PlatoRootView)this.e.findViewById(2131362841));
-    this.jdField_a_of_type_AndroidViewView = this.e.findViewById(2131362839);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.e.findViewById(2131362840));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.e.findViewById(2131362842));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.e.findViewById(2131363226));
+    this.jdField_a_of_type_ComTencentPlatoSdkRenderPlatoRootView = ((PlatoRootView)this.e.findViewById(2131362859));
+    this.jdField_a_of_type_AndroidViewView = this.e.findViewById(2131362857);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.e.findViewById(2131362858));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.e.findViewById(2131362860));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.e.findViewById(2131363244));
     d();
     this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2131034388);
     paramLayoutInflater = (AnimationDrawable)this.jdField_c_of_type_AndroidWidgetImageView.getDrawable();
@@ -175,7 +168,7 @@ public class PlatoAppFragment
     this.jdField_a_of_type_ComTencentPlatoIPlatoManager = new PlatoManagerBuilder().setApplication(getActivity()).setExceptionHandler(this).setNativesBlobPath(paramString1).setSnapshotBlobPath(str).setBundlePath(paramString2).build();
     this.jdField_a_of_type_ComTencentPlatoIPlatoManager.init();
     TroopTechReportUtils.a("plato_v1", "bundle_init", String.valueOf(System.currentTimeMillis() - l), "", "", "");
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentPlatoIPlatoManager.loadPage(this.jdField_a_of_type_ComTencentPlatoSdkRenderPlatoRootView, this.jdField_a_of_type_ComTencentPlatoPlatoAppJson.a(), this.jdField_a_of_type_ComTencentPlatoJSONWritableMap, new akuf(this));
+    this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentPlatoIPlatoManager.loadPage(this.jdField_a_of_type_ComTencentPlatoSdkRenderPlatoRootView, this.jdField_a_of_type_ComTencentPlatoPlatoAppJson.a(), this.jdField_a_of_type_ComTencentPlatoJSONWritableMap, new aljv(this));
     this.jdField_a_of_type_ComTencentPlatoPlatoAppJson.a(this.jdField_c_of_type_Int);
     PlatoAppManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentPlatoPlatoAppJson);
     PlatoAppManager.a(String.valueOf(this.jdField_c_of_type_Int), this);
@@ -256,7 +249,7 @@ public class PlatoAppFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.plato.PlatoAppFragment
  * JD-Core Version:    0.7.0.1
  */

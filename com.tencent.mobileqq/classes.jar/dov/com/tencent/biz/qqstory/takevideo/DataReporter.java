@@ -1,6 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anat;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import anqy;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -833,7 +833,7 @@ public class DataReporter
         localArrayList.add(new QIMMsgReportItem((QIMMsgReportItem)paramList.next()));
       }
     }
-    ThreadManager.post(new anat(this, localArrayList, paramQQAppInterface), 5, null, true);
+    ThreadManager.post(new anqy(this, localArrayList, paramQQAppInterface), 5, null, true);
   }
   
   public void a(QQAppInterface paramQQAppInterface, @NonNull List paramList, @Nullable String paramString, @Nullable DataReporter.Destination paramDestination)

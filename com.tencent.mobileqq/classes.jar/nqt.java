@@ -1,49 +1,16 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.GetUserGroupUnionIDHandler.GetUserGroupUnionIDEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.GroupID;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
 
 public class nqt
-  extends QQUIEventReceiver
+  implements MediaPlayer.OnPreparedListener
 {
-  public nqt(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  public nqt(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnPreparedListener paramOnPreparedListener) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetUserGroupUnionIDHandler.GetUserGroupUnionIDEvent paramGetUserGroupUnionIDEvent)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramGetUserGroupUnionIDEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramGetUserGroupUnionIDEvent.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      paramGetUserGroupUnionIDEvent = paramGetUserGroupUnionIDEvent.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramGetUserGroupUnionIDEvent.hasNext())
-      {
-        GroupID localGroupID = (GroupID)paramGetUserGroupUnionIDEvent.next();
-        if (paramQQStoryShareGroupProfileActivity.c.equals(localGroupID.a))
-        {
-          paramQQStoryShareGroupProfileActivity.b = localGroupID.b;
-          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
-            break label111;
-          }
-        }
-      }
-    }
-    label111:
-    for (boolean bool = true;; bool = false)
-    {
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
-      return;
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserGroupUnionIDHandler.GetUserGroupUnionIDEvent.class;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener.a_(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper);
   }
 }
 

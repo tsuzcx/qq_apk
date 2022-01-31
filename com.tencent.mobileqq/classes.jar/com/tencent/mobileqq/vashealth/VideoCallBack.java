@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vashealth;
 
-import ajwd;
-import ajwe;
+import akkk;
+import akkl;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
@@ -107,22 +107,22 @@ public class VideoCallBack
     String str = paramIntent.getStringExtra("file_video_source_dir");
     Object localObject = paramIntent.getStringExtra("thumbfile_send_path");
     QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramActivity);
-    localObject = new ajwd(this, localQQProgressDialog, (String)localObject, paramActivity);
-    paramActivity.runOnUiThread(new ajwe(this, localQQProgressDialog));
+    localObject = new akkk(this, localQQProgressDialog, (String)localObject, paramActivity);
+    paramActivity.runOnUiThread(new akkl(this, localQQProgressDialog));
     a(paramIntent);
     paramActivity = new EncodeThread(paramActivity, (Handler)localObject, str, null, null);
     paramActivity.a(false);
     ThreadManager.post(paramActivity, 5, null, false);
   }
   
-  public void b(String paramString)
+  public void c_(String paramString)
   {
     this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.VideoCallBack
  * JD-Core Version:    0.7.0.1
  */

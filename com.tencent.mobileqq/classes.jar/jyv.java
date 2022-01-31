@@ -1,32 +1,21 @@
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.av.ui.PSTNC2CActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.PstnCallbackWaitingUi;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class jyv
-  implements Handler.Callback
+  implements Runnable
 {
-  public jyv(PSTNC2CActivity paramPSTNC2CActivity) {}
+  public jyv(PstnCallbackWaitingUi paramPstnCallbackWaitingUi) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (!PSTNC2CActivity.a(this.a))
-      {
-        this.a.a.a().f = true;
-        paramMessage = this.a.a.getApp();
-        Intent localIntent = new Intent(paramMessage, PSTNC2CActivity.class);
-        localIntent.setFlags(268566528);
-        paramMessage.startActivity(localIntent);
-      }
-    }
+    BaseApplication localBaseApplication = this.a.a.getApp();
+    Intent localIntent = new Intent(localBaseApplication, AVActivity.class);
+    localIntent.setFlags(268566528);
+    localBaseApplication.startActivity(localIntent);
   }
 }
 

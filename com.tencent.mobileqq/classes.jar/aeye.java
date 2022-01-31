@@ -1,37 +1,28 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
 
-class aeye
-  implements Runnable
+public class aeye
+  implements View.OnLayoutChangeListener
 {
-  aeye(aeyd paramaeyd, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  public aeye(StuffContainerView paramStuffContainerView) {}
   
-  public void run()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    List localList = NearbyMomentManager.a(this.jdField_a_of_type_Aeyd.a, this.jdField_a_of_type_JavaUtilList);
-    Object localObject;
-    if (localList == null)
+    long l1 = System.currentTimeMillis();
+    long l2 = StuffContainerView.a(this.a);
+    if ((StuffContainerView.a(this.a) > 0L) && (l1 - l2 < 500L)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyMomentManager", 2, "momentFeedInfoList is null");
-      }
-      localObject = new ArrayList();
-    }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new aeyf(this, (List)localObject));
       return;
-      localObject = localList;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("NearbyMomentManager", 2, "momentFeedInfoList, size=" + this.jdField_a_of_type_JavaUtilList.size());
-        localObject = localList;
+      StuffContainerView.a(this.a, l1);
+      if (QLog.isColorLevel()) {
+        QLog.d("StuffContainerView", 2, "VideoInfoListenerImpl onLayoutChange");
       }
-    }
+    } while (this.a.a == null);
+    this.a.a.l();
   }
 }
 

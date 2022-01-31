@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadOptimizer;
-import com.tencent.mobileqq.startup.director.StartupDirector;
+import com.tencent.mobileqq.search.BusinessSearchEntryModel;
+import com.tencent.mobileqq.search.model.BusinessSearchEntryDataModel;
+import com.tencent.util.UiThreadUtil;
 
 public class ahql
   implements Runnable
 {
-  public ahql(StartupDirector paramStartupDirector) {}
+  public ahql(BusinessSearchEntryModel paramBusinessSearchEntryModel, BusinessSearchEntryDataModel paramBusinessSearchEntryDataModel) {}
   
   public void run()
   {
-    ThreadManager.initDPC();
-    ThreadOptimizer.a().a();
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelBusinessSearchEntryDataModel.a();
+    UiThreadUtil.a(new ahqm(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahql
  * JD-Core Version:    0.7.0.1
  */

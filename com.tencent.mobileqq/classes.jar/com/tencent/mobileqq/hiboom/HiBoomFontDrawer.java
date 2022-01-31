@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.hiboom;
 
-import adfa;
-import adfb;
-import adfc;
+import adoz;
+import adpa;
+import adpb;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapShader;
@@ -193,7 +193,7 @@ public class HiBoomFontDrawer
   
   private void a()
   {
-    ThreadManager.getUIHandler().post(new adfc(this));
+    ThreadManager.getUIHandler().post(new adpb(this));
   }
   
   private void a(Canvas paramCanvas, String paramString, int paramInt1, int paramInt2, HiBoomInfo.HiBoomInfoStyle paramHiBoomInfoStyle, HiBoomInfo.HiBoomInfoStyleWord paramHiBoomInfoStyleWord, float paramFloat)
@@ -382,7 +382,7 @@ public class HiBoomFontDrawer
   
   private void a(List paramList)
   {
-    ThreadManager.post(new adfb(this, paramList), 8, null, true);
+    ThreadManager.post(new adpa(this, paramList), 8, null, true);
   }
   
   private boolean a(String paramString)
@@ -612,7 +612,7 @@ public class HiBoomFontDrawer
       return;
     }
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    ThreadManager.getFileThreadHandler().post(new adfa(this, paramBoolean));
+    ThreadManager.getFileThreadHandler().post(new adoz(this, paramBoolean));
   }
   
   boolean a(int paramInt)
@@ -687,7 +687,7 @@ public class HiBoomFontDrawer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomFontDrawer
  * JD-Core Version:    0.7.0.1
  */

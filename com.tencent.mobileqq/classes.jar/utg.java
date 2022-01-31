@@ -1,20 +1,15 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker.ViewHolder;
 
 public class utg
-  implements FMDialogUtil.FMDialogInterface
+  implements uti
 {
-  public utg(FileItemBuilder paramFileItemBuilder, MessageForFile paramMessageForFile, Context paramContext) {}
+  public utg(ColorPicker paramColorPicker, ColorPicker.ViewHolder paramViewHolder) {}
   
   public void a()
   {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker$ViewHolder.a);
   }
-  
-  public void b() {}
 }
 
 

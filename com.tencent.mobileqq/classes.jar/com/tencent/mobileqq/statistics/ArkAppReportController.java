@@ -1,42 +1,42 @@
 package com.tencent.mobileqq.statistics;
 
-import ahrn;
-import ahro;
+import aifq;
+import aifr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppReportController
 {
-  private static String a(ahro paramahro)
+  private static String a(aifr paramaifr)
   {
-    return paramahro.a();
+    return paramaifr.a();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
   {
-    ahro localahro = new ahro();
-    localahro.jdField_a_of_type_JavaLangString = paramString1;
-    localahro.jdField_b_of_type_JavaLangString = paramString2;
-    localahro.jdField_c_of_type_JavaLangString = paramString3;
-    localahro.jdField_a_of_type_Long = paramLong1;
-    localahro.jdField_b_of_type_Long = paramLong2;
-    localahro.jdField_d_of_type_Long = paramLong3;
-    localahro.f = paramLong4;
-    localahro.g = paramLong5;
-    localahro.jdField_d_of_type_JavaLangString = paramString4;
-    localahro.e = paramString5;
-    localahro.jdField_c_of_type_Long = 1L;
+    aifr localaifr = new aifr();
+    localaifr.jdField_a_of_type_JavaLangString = paramString1;
+    localaifr.jdField_b_of_type_JavaLangString = paramString2;
+    localaifr.jdField_c_of_type_JavaLangString = paramString3;
+    localaifr.jdField_a_of_type_Long = paramLong1;
+    localaifr.jdField_b_of_type_Long = paramLong2;
+    localaifr.jdField_d_of_type_Long = paramLong3;
+    localaifr.f = paramLong4;
+    localaifr.g = paramLong5;
+    localaifr.jdField_d_of_type_JavaLangString = paramString4;
+    localaifr.e = paramString5;
+    localaifr.jdField_c_of_type_Long = 1L;
     if (paramQQAppInterface == null)
     {
-      paramQQAppInterface = a(localahro);
+      paramQQAppInterface = a(localaifr);
       if (QLog.isColorLevel()) {
         QLog.i("ArkAppReportController", 1, "POST getReportingDetail=" + paramQQAppInterface);
       }
-      ThreadManager.executeOnSubThread(new ahrn(paramQQAppInterface));
+      ThreadManager.executeOnSubThread(new aifq(paramQQAppInterface));
       return;
     }
-    paramString1 = a(localahro);
+    paramString1 = a(localaifr);
     if (QLog.isColorLevel()) {
       QLog.i("ArkAppReportController", 1, "getReportingDetail=" + paramString1);
     }
@@ -45,7 +45,7 @@ public class ArkAppReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ArkAppReportController
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig.StarInfo;
+import com.tencent.mobileqq.ark.ArkAiDictMgr;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic;
 
 public final class aaxv
-  implements Parcelable.Creator
+  implements Runnable
 {
-  public ARMapConfig.StarInfo a(Parcel paramParcel)
+  public void run()
   {
-    return new ARMapConfig.StarInfo(paramParcel);
-  }
-  
-  public ARMapConfig.StarInfo[] a(int paramInt)
-  {
-    return new ARMapConfig.StarInfo[paramInt];
+    ArkAiDictMgr.a();
+    ArkMessageServerLogic.a();
   }
 }
 

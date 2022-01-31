@@ -45,28 +45,28 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
-import sju;
-import sjw;
-import sjx;
-import sjy;
-import sjz;
-import ska;
-import skb;
+import sms;
+import smu;
+import smv;
+import smw;
+import smx;
+import smy;
+import smz;
 
 public class FavEmosmManageActivity
   extends IphoneTitleBarActivity
   implements Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener
 {
   int jdField_a_of_type_Int;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new sju(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new sms(this);
   public Handler a;
   Button jdField_a_of_type_AndroidWidgetButton;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   FavEmosmManageActivity.FavEmoAdapter jdField_a_of_type_ComTencentMobileqqActivityFavEmosmManageActivity$FavEmoAdapter;
-  FavEmoRoamingObserver jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingObserver = new sjz(this);
+  FavEmoRoamingObserver jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingObserver = new smx(this);
   public FavroamingDBManager a;
-  SyncListener jdField_a_of_type_ComTencentMobileqqEmosmFavroamingSyncListener = new sjx(this);
+  SyncListener jdField_a_of_type_ComTencentMobileqqEmosmFavroamingSyncListener = new smv(this);
   GridView jdField_a_of_type_ComTencentWidgetGridView;
   ArrayList jdField_a_of_type_JavaUtilArrayList;
   public List a;
@@ -95,13 +95,13 @@ public class FavEmosmManageActivity
     this.jdField_a_of_type_Int = ((i - j * 2 - k * 3) / 4);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131438006);
+    this.rightViewText.setText(2131438023);
     this.rightViewText.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364490));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364491));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364493));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364492));
-    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)super.findViewById(2131364494));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364514));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364515));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364517));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364516));
+    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)super.findViewById(2131364518));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetGridView.setScrollBarStyle(0);
@@ -136,7 +136,7 @@ public class FavEmosmManageActivity
           i += 1;
         }
       }
-      this.rightViewText.setText(2131434920);
+      this.rightViewText.setText(2131434937);
       if (this.leftView != null) {
         this.leftView.setVisibility(8);
       }
@@ -145,7 +145,7 @@ public class FavEmosmManageActivity
         QQToast.a(this, j + "个下载失败", 0).a();
       }
     }
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131364489));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131364513));
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -208,7 +208,7 @@ public class FavEmosmManageActivity
   
   void b()
   {
-    ((FavroamingDBManager)this.app.getManager(148)).a(new sjw(this));
+    ((FavroamingDBManager)this.app.getManager(148)).a(new smu(this));
   }
   
   public void b(List paramList)
@@ -236,7 +236,7 @@ public class FavEmosmManageActivity
   
   public void c()
   {
-    ((FavroamingDBManager)this.app.getManager(148)).a(new sjy(this));
+    ((FavroamingDBManager)this.app.getManager(148)).a(new smw(this));
   }
   
   void d()
@@ -302,7 +302,7 @@ public class FavEmosmManageActivity
           ((List)localObject2).add(localObject3);
           i += 1;
           continue;
-          ThreadManager.post(new ska(this, (List)localObject2), 5, null, true);
+          ThreadManager.post(new smy(this, (List)localObject2), 5, null, true);
           ReportController.b(this.app, "CliOper", "", "", "0X8005C79", "0X8005C79", 0, 0, String.valueOf(i), "", "", "");
           this.jdField_a_of_type_Boolean = false;
           localObject1 = this.app.getHandler(ChatActivity.class);
@@ -321,7 +321,7 @@ public class FavEmosmManageActivity
               break;
               localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFavEmosmManageActivity$FavEmoAdapter.getItem(i);
             } while (localObject2 == null);
-            ThreadManager.post(new skb(this, localObject2, (VipComicMqqManager)localObject1, i), 5, null, false);
+            ThreadManager.post(new smz(this, localObject2, (VipComicMqqManager)localObject1, i), 5, null, false);
             return;
           }
           localObject1 = this.app.getHandler(ChatActivity.class);
@@ -339,7 +339,7 @@ public class FavEmosmManageActivity
   {
     super.doOnCreate(paramBundle);
     super.setContentView(2130968966);
-    super.setTitle(2131438010);
+    super.setTitle(2131438027);
     this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager = ((FavroamingDBManager)this.app.getManager(148));
@@ -408,9 +408,9 @@ public class FavEmosmManageActivity
     }
     for (;;)
     {
-      localObject = String.format(getString(2131438008), new Object[] { Integer.valueOf(i) });
+      localObject = String.format(getString(2131438025), new Object[] { Integer.valueOf(i) });
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131438005));
+      this.jdField_b_of_type_AndroidWidgetButton.setText(getString(2131438022));
       return;
       this.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
     }
@@ -451,9 +451,9 @@ public class FavEmosmManageActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131363410: 
-    case 2131364491: 
-    case 2131364493: 
+    case 2131363428: 
+    case 2131364515: 
+    case 2131364517: 
       do
       {
         do
@@ -471,7 +471,7 @@ public class FavEmosmManageActivity
           if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
           {
             this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-            this.rightViewText.setText(2131438006);
+            this.rightViewText.setText(2131438023);
             this.jdField_c_of_type_Int = 0;
             this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
             i = 0;
@@ -486,7 +486,7 @@ public class FavEmosmManageActivity
             return;
           }
           this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-          this.rightViewText.setText(2131438007);
+          this.rightViewText.setText(2131438024);
           this.jdField_c_of_type_Int = 1;
           this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
           this.jdField_a_of_type_ComTencentMobileqqActivityFavEmosmManageActivity$FavEmoAdapter.notifyDataSetChanged();
@@ -508,7 +508,7 @@ public class FavEmosmManageActivity
       ReportController.b(this.app, "CliOper", "", "", "ep_mall", "0X80057D7", 0, 0, "", "", "", "");
       return;
     }
-    VasH5PayUtil.a(this.app, this, "mvip.n.a.bqsc_edit", 3, "1450000516", "CJCLUBT", getString(2131436926), "");
+    VasH5PayUtil.a(this.app, this, "mvip.n.a.bqsc_edit", 3, "1450000516", "CJCLUBT", getString(2131436943), "");
   }
 }
 

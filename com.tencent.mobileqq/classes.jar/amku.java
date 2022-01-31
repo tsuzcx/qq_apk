@@ -1,14 +1,12 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import com.tencent.mobileqq.app.FriendListObserver;
+import cooperation.dingdong.DingdongPluginManager;
 
 public class amku
-  implements FileFilter
+  extends FriendListObserver
 {
-  public boolean accept(File paramFile)
-  {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
-  }
+  public amku(DingdongPluginManager paramDingdongPluginManager) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean) {}
 }
 
 

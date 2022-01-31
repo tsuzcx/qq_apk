@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.PublicQuickPayManager;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
 
 public class wxj
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public wxj(PublicQuickPayManager paramPublicQuickPayManager) {}
+  public wxj(PhotoListActivity paramPhotoListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    if (this.a.a == null)
+    {
+      this.a.a = new PhotoListActivity.QueryPhotoTask(this.a);
+      this.a.a.execute(new Object[0]);
+    }
+  }
 }
 
 

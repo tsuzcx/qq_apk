@@ -1,77 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.addContactTroopView.TroopCardSameCity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.statistics.ReportController;
 import java.util.List;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import tencent.im.troop_search_searchtab.searchtab.Item2;
 
 public class kkp
-  implements BusinessObserver
+  implements AdapterView.OnItemClickListener
 {
-  public kkp(TroopRedTouchHandler paramTroopRedTouchHandler, List paramList) {}
+  public kkp(TroopCardSameCity paramTroopCardSameCity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopRedTouchHandler", 2, "getRedPointInfo onReceive :" + paramBoolean);
-    }
-    int i;
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if ((!this.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(46))) || (!TeamWorkUtils.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.b))) {
-        break label272;
-      }
-      i = 1;
-      if (i == 0) {
-        break label306;
-      }
-      oidb_0x791.RedDotInfo localRedDotInfo = ((TroopRedTouchManager)this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.b.getManager(69)).a(46, false);
-      if ((localRedDotInfo == null) || (!localRedDotInfo.uint32_last_time.has())) {
-        break label278;
-      }
-      paramInt = localRedDotInfo.uint32_last_time.get();
-    }
-    for (;;)
-    {
-      label132:
-      if ((paramBundle != null) && (TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.b, new ArrayList(this.jdField_a_of_type_JavaUtilList), paramBundle)))
-      {
-        this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.a = 1;
-        if (QLog.isColorLevel()) {
-          QLog.i("storyRedDotDebug", 2, "getRedPointAsync");
-        }
-        this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.a(105, true, null);
-        if (i != 0)
-        {
-          paramBundle = ((TroopRedTouchManager)this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.b.getManager(69)).a(46, false);
-          if ((paramBundle != null) && (QLog.isColorLevel())) {
-            QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "getRedPointInfoAsync enableTencentDocsAssistant:" + TroopRedTouchManager.a(paramBundle));
-          }
-          TroopRedTouchHandler.a(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.b, paramBundle, paramInt);
-        }
-      }
-      label272:
-      label278:
-      do
-      {
-        return;
-        i = 0;
-        break;
-        paramInt = 0;
-        break label132;
-        this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler.a = 2;
-      } while (!QLog.isColorLevel());
-      QLog.e("TroopRedTouchHandler", 2, "getRedPointInfo success data is null");
-      return;
-      label306:
-      paramInt = -1;
-    }
+    paramAdapterView = (searchtab.Item2)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.a.a(paramAdapterView.str_transfer_url.get());
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_localac", 0, 0, "", "", "", "");
   }
 }
 

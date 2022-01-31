@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.GetTextDraftJob;
+import com.tencent.mobileqq.data.DraftTextInfo;
+import java.lang.ref.WeakReference;
 
 public class vum
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vum(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vum(GetTextDraftJob paramGetTextDraftJob, DraftTextInfo paramDraftTextInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView.setVisibility(8);
+    BaseChatPie localBaseChatPie = (BaseChatPie)GetTextDraftJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGetTextDraftJob).get();
+    if (localBaseChatPie == null) {
+      return;
+    }
+    localBaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
   }
 }
 

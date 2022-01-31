@@ -1,19 +1,15 @@
-import java.util.concurrent.atomic.AtomicBoolean;
-import msf.msgcomm.msg_comm.Msg;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class zin
+  implements Comparator
 {
-  public long a;
-  public AtomicBoolean a;
-  public msg_comm.Msg a;
-  public long b;
+  public zin(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public zin(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 

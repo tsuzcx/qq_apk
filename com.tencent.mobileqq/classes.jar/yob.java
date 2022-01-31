@@ -1,18 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public final class yob
-  implements EIPCResultCallback
+public class yob
+  implements Runnable
 {
-  public yob(long paramLong) {}
+  public yob(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    CmGameUtil.a().callbackFromRequest(this.a, 0, "cs.on_get_open_key.local", paramEIPCResult);
+    try
+    {
+      HotChatCenterFragment.a(this.a);
+      if (this.a.isAdded()) {
+        this.a.getActivity().runOnUiThread(new yoc(this));
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("HotchatActivity", 1, localThrowable, new Object[] { "[update] failed" });
+    }
   }
 }
 

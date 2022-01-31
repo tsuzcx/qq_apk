@@ -1,22 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.mobileqq.webview.webso.WebSoService;
 
 public class par
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public par(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  public par(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    WebSoService.a().a(this.jdField_a_of_type_JavaLangString, null);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

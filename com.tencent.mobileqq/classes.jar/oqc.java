@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.StoryImageDialog;
 
 public class oqc
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public oqc(RotateCircleImageView paramRotateCircleImageView) {}
+  public oqc(StoryImageDialog paramStoryImageDialog) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    this.a.dismiss();
   }
 }
 

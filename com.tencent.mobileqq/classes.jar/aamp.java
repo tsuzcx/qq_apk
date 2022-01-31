@@ -1,30 +1,36 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenter.ApplicationInformation;
-import java.util.Map;
+import android.view.View;
+import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class aamp
-  implements Runnable
+public class aamp
+  implements ActionSheet.OnButtonClickListener
 {
-  public aamp(String paramString) {}
+  public aamp(ARGreetingCardListManager paramARGreetingCardListManager) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ArkAppCenter.ApplicationInformation localApplicationInformation = new ArkAppCenter.ApplicationInformation();
-    ark.Application localApplication = ark.Application.Create(this.jdField_a_of_type_JavaLangString);
-    localApplicationInformation.jdField_a_of_type_JavaLangString = localApplication.GetActionSet();
-    localApplicationInformation.b = localApplication.GetDescription();
-    localApplicationInformation.c = localApplication.GetVersion();
-    localApplicationInformation.jdField_a_of_type_Int = localApplication.CheckVersion();
-    localApplicationInformation.d = localApplication.GetPermissions();
-    localApplicationInformation.e = localApplication.GetLauncher();
-    localApplication.Release();
-    ArkAppCenter.a.put(this.jdField_a_of_type_JavaLangString, localApplicationInformation);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (ARGreetingCardListManager.a(this.a) != null) {
+        ARGreetingCardListManager.a(this.a).dismiss();
+      }
+      return;
+      ReportController.b(null, "dc00898", "", "", "0X8008F18", "0X8008F18", 2, 0, "", "", "", "");
+      ARGreetingCardListManager.a(this.a, false);
+      continue;
+      ReportController.b(null, "dc00898", "", "", "0X8008F19", "0X8008F19", 2, 0, "", "", "", "");
+      ARGreetingCardListManager.a(this.a, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamp
  * JD-Core Version:    0.7.0.1
  */

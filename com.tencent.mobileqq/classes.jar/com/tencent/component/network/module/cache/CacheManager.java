@@ -10,12 +10,12 @@ import com.tencent.component.network.utils.AssertUtil;
 import com.tencent.component.network.utils.FileUtils;
 import java.io.File;
 import java.util.HashMap;
-import pii;
-import pij;
+import pkc;
+import pkd;
 
 public class CacheManager
 {
-  private static final FileStorageHandler jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileStorageHandler = new FileStorageHandler(new pii());
+  private static final FileStorageHandler jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileStorageHandler = new FileStorageHandler(new pkc());
   private static final HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
   public static FileCacheService a(Context paramContext)
@@ -125,7 +125,7 @@ public class CacheManager
     {
       return null;
       if (!paramBoolean) {}
-      for (paramContext = pij.a(paramContext, false); paramContext != null; paramContext = pij.a(paramContext, "cache", false)) {
+      for (paramContext = pkd.a(paramContext, false); paramContext != null; paramContext = pkd.a(paramContext, "cache", false)) {
         return paramContext.getAbsolutePath();
       }
     }

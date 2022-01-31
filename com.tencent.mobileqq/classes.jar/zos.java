@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.app.BizTroopHandler;
+import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.lbs.LbsInfoMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class zos
   implements Runnable
 {
-  public zos(LbsInfoMgr paramLbsInfoMgr) {}
+  public zos(TroopManager paramTroopManager, TroopMemberInfo paramTroopMemberInfo, Handler paramHandler, String paramString1, String paramString2) {}
   
   public void run()
   {
-    LbsInfoMgr.a(this.a).addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver, true);
-    LbsInfoMgr.a(this.a).b();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.troopMemberDistance.LbsInfoMgr", 2, "reportLbsInfoToServer: timeStamp = " + this.a.jdField_a_of_type_Long + ", cost=" + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.getEntityManagerFactory().createEntityManager();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
+      localEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+    }
+    for (;;)
+    {
+      localEntityManager.a();
+      this.jdField_a_of_type_AndroidOsHandler.post(new zot(this));
+      return;
+      localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
   }
 }

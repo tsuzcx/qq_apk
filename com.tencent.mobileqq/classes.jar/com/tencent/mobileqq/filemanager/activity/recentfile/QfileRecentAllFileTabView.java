@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import acjh;
-import acji;
+import acte;
+import actf;
 import android.content.Context;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
@@ -46,7 +46,7 @@ public class QfileRecentAllFileTabView
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().M();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new acjh(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new acte(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
   }
   
@@ -87,7 +87,7 @@ public class QfileRecentAllFileTabView
       this.jdField_a_of_type_JavaUtilList.add(paramFileManagerEntity);
       Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
     }
-    a(new acji(this, paramFileManagerEntity));
+    a(new actf(this, paramFileManagerEntity));
   }
   
   protected boolean b(FileManagerEntity paramFileManagerEntity)

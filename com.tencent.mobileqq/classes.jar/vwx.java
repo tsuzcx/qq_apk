@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-class vwx
-  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
+public class vwx
+  implements Animation.AnimationListener
 {
-  vwx(vwq paramvwq) {}
+  public vwx(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.c(HWTroopUtils.b(paramInt));
-    }
+    this.a.R = false;
+    this.a.aa = false;
+    this.a.c(this.a.jdField_o_of_type_AndroidViewView);
+    this.a.jdField_o_of_type_Int = 1;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

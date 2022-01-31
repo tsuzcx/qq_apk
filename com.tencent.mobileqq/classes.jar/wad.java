@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.statistics.ReportTask;
 
 public class wad
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public wad(TipsManager paramTipsManager) {}
+  public wad(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TipsManager.a(this.a) != null) {
-      TipsManager.a(this.a).a();
-    }
-    TipsManager.a(this.a, null);
-    if (this.a.a != null) {
-      this.a.a.clear();
-    }
+    new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_cancel").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
+    this.a.A();
   }
 }
 

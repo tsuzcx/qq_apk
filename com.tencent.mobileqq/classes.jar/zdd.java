@@ -1,89 +1,100 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.Base64Util;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.OutputStream;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import com.tencent.mobileqq.statistics.StatisticHitRateCollector;
+import com.tencent.mobileqq.statistics.battery.BatteryStats;
 
 public class zdd
+  extends zeq
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
+  protected long a;
+  private String a;
+  protected long b;
   
-  public void a()
+  protected void a()
   {
-    long l = DeviceInfoUtil.e();
-    try
+    boolean bool2 = true;
+    super.a();
+    this.jdField_a_of_type_Long += 1L;
+    this.b += 1L;
+    MemoryManager.a().a(0, 0, this.c, this.d, 0L, 0L, 3);
+    if (this.d >= 3L)
     {
-      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).getString("LowMemoryStat", null);
-      if (localObject == null) {
-        return;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
+        break label217;
       }
-      if (((String)localObject).length() == 0) {
-        return;
+      bool1 = true;
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", this.jdField_a_of_type_JavaLangString });
+      this.d = 0L;
+      if (!bool1) {
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
       }
-      localObject = new DataInputStream(new ByteArrayInputStream(Base64Util.decode((String)localObject, 0)));
-      this.jdField_a_of_type_Long = ((DataInputStream)localObject).readLong();
-      this.jdField_b_of_type_Long = ((DataInputStream)localObject).readLong();
-      this.jdField_a_of_type_Int = ((DataInputStream)localObject).readInt();
-      this.c = ((DataInputStream)localObject).readLong();
-      this.d = ((DataInputStream)localObject).readLong();
-      this.jdField_b_of_type_Int = ((DataInputStream)localObject).readInt();
-      this.e = ((DataInputStream)localObject).readLong();
     }
-    catch (Exception localException)
+    if ((this.jdField_a_of_type_Long >= 15L) && (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_qzone_kill.name())))
     {
-      for (;;)
+      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null)
       {
-        b();
+        bool1 = true;
+        label153:
+        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:qzone");
+        StatisticHitRateCollector.a().d(StatisticHitRateCollector.a());
+        this.jdField_a_of_type_Long = 0L;
       }
     }
-    if ((l < this.jdField_a_of_type_Long) || (l < this.jdField_b_of_type_Long) || (l < this.c) || (l < this.d))
+    else if (this.b >= GuardManager.d) {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
+        break label227;
+      }
+    }
+    label217:
+    label227:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      b();
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:tool");
+      this.b = 0L;
       return;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label153;
     }
   }
   
-  public void b()
+  protected void a(String paramString)
   {
+    if (!"com.tencent.mobileqq".equals(paramString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
+      ArkMediaPlayer.a();
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    QQAppInterface.a().d();
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.c = 0L;
-    this.d = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.e = 0L;
+    this.b = 0L;
+    CoreService.startCoreService(zeo.a().a);
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
   }
   
-  public void c()
+  protected void c(String paramString)
   {
-    try
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void d(String paramString)
+  {
+    if ("com.tencent.mobileqq".equals(paramString))
     {
-      Object localObject = new ByteArrayOutputStream();
-      DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-      localDataOutputStream.writeLong(this.jdField_a_of_type_Long);
-      localDataOutputStream.writeLong(this.jdField_b_of_type_Long);
-      localDataOutputStream.writeInt(this.jdField_a_of_type_Int);
-      localDataOutputStream.writeLong(this.c);
-      localDataOutputStream.writeLong(this.d);
-      localDataOutputStream.writeInt(this.jdField_b_of_type_Int);
-      localDataOutputStream.writeLong(this.e);
-      localDataOutputStream.flush();
-      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString("LowMemoryStat", Base64Util.encodeToString((byte[])localObject, 0)).commit();
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
+      ArkMediaPlayer.b();
     }
-    catch (Exception localException) {}
   }
 }
 

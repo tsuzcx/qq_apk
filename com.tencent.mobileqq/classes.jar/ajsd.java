@@ -1,16 +1,19 @@
-public final class ajsd
-  implements ajsi
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.ExpandableTextView;
+
+public class ajsd
+  implements Runnable
 {
-  public Integer a(float paramFloat, Integer paramInteger1, Integer paramInteger2)
+  public ajsd(ExpandableTextView paramExpandableTextView) {}
+  
+  public void run()
   {
-    int i = paramInteger1.intValue();
-    float f = i;
-    return Integer.valueOf((int)((paramInteger2.intValue() - i) * paramFloat + f));
+    ExpandableTextView.a(this.a, this.a.getHeight() - this.a.a.getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsd
  * JD-Core Version:    0.7.0.1
  */

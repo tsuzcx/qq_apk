@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.logic;
 
-import aixu;
-import aixv;
+import ajly;
+import ajlz;
 import android.app.Activity;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -40,8 +40,8 @@ public class HomeworkTroopController
     this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotAnimateView = new RedDotAnimateView(paramBaseActivity.getActivity());
     paramQQAppInterface = new RelativeLayout.LayoutParams(AIOUtils.a(9.0F, paramBaseActivity.getActivity().getResources()), AIOUtils.a(9.0F, paramBaseActivity.getActivity().getResources()));
-    paramQQAppInterface.addRule(7, 2131363977);
-    paramQQAppInterface.addRule(6, 2131363977);
+    paramQQAppInterface.addRule(7, 2131364001);
+    paramQQAppInterface.addRule(6, 2131364001);
     paramQQAppInterface.rightMargin = AIOUtils.a(4.0F, paramBaseActivity.getActivity().getResources());
     paramQQAppInterface.topMargin = AIOUtils.a(11.0F, paramBaseActivity.getActivity().getResources());
     paramRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotAnimateView, paramQQAppInterface);
@@ -51,7 +51,7 @@ public class HomeworkTroopController
   
   private void a(int paramInt, long paramLong)
   {
-    ThreadManager.getUIHandler().postDelayed(new aixv(this, paramInt), paramLong);
+    ThreadManager.getUIHandler().postDelayed(new ajlz(this, paramInt), paramLong);
   }
   
   public void a()
@@ -68,8 +68,8 @@ public class HomeworkTroopController
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aixu(this));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841325);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ajly(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841362);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       TroopReportor.a("Grp_edu", "homework", "AioSee_Show", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), "", TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) });
       return;
@@ -172,7 +172,7 @@ public class HomeworkTroopController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.logic.HomeworkTroopController
  * JD-Core Version:    0.7.0.1
  */

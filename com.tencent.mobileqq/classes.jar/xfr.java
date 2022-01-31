@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import java.util.TimerTask;
 
-class xfr
-  implements Runnable
+public class xfr
+  extends TimerTask
 {
-  xfr(xfq paramxfq) {}
+  public xfr(PreloadManager paramPreloadManager, WeakReference paramWeakReference, List paramList, DownloadListener paramDownloadListener) {}
   
   public void run()
   {
-    BannerManager.a(this.a.a, true);
+    PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (PreloadManager.a(localPreloadManager)) {
+      PreloadManager.a(localPreloadManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+    }
   }
 }
 

@@ -1,30 +1,16 @@
-import android.app.Dialog;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.POI;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.List;
 
 public class kjo
-  implements AdapterView.OnItemClickListener
+  implements View.OnClickListener
 {
-  public kjo(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
+  public kjo(PoiMapActivity paramPoiMapActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PoiMapActivity", 2, "setOnItemClickListener" + paramInt);
-    }
-    paramAdapterView = (PoiMapActivity.POI)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
-    if (paramAdapterView != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.h = true;
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(paramAdapterView);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "", "");
-    }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.a.setText("");
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.view.helper;
 
-import ageq;
-import ager;
+import agss;
+import agst;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -16,13 +16,13 @@ public class HeartRiseLayerDrawable
 {
   public HeartRiseLayerDrawable(int paramInt, Resources paramResources)
   {
-    super(ager.a(paramInt, paramResources, a(paramResources)));
+    super(agst.a(paramInt, paramResources, a(paramResources)));
   }
   
   public static Bitmap a(Resources paramResources)
   {
     Paint localPaint = new Paint();
-    localPaint.setColor(paramResources.getColor(2131493142));
+    localPaint.setColor(paramResources.getColor(2131493143));
     Bitmap localBitmap = Bitmap.createBitmap(126, 126, Bitmap.Config.ARGB_4444);
     localBitmap.setDensity(paramResources.getDisplayMetrics().densityDpi);
     paramResources = new Canvas(localBitmap);
@@ -39,11 +39,11 @@ public class HeartRiseLayerDrawable
     int i = 0;
     if (i < getNumberOfLayers())
     {
-      ageq localageq = new ageq(this, i, paramInt1, paramInt2);
+      agss localagss = new agss(this, i, paramInt1, paramInt2);
       if (i % 2 == 0) {}
       for (long l = i * 200;; l = i * 130)
       {
-        paramHandler.postDelayed(localageq, l);
+        paramHandler.postDelayed(localagss, l);
         i += 1;
         break;
       }

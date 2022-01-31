@@ -1,33 +1,24 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
 public class niw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public niw(NewFriendsPlayMode paramNewFriendsPlayMode, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, StoryVideoItem paramStoryVideoItem) {}
+  public niw(VideoPlayModeBase paramVideoPlayModeBase) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    VideoListFeedItem localVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c);
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (localVideoListFeedItem != null)
-    {
-      localObject1 = localObject2;
-      if (localVideoListFeedItem.getOwner() != null)
-      {
-        localObject1 = localObject2;
-        if ((localVideoListFeedItem.getOwner() instanceof QQUserUIItem)) {
-          localObject1 = ((QQUserUIItem)localVideoListFeedItem.getOwner()).qq;
-        }
-      }
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer.a();
     }
-    ThreadManager.getUIHandler().post(new nix(this, (String)localObject1));
+    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(0);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
   }
 }
 

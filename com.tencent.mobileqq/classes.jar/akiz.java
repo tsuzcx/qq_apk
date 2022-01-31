@@ -1,37 +1,43 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.WebViewProgressBarController;
-import mqq.util.WeakReference;
+import android.media.MediaMetadataRetriever;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import java.io.File;
+import org.json.JSONObject;
 
 public class akiz
-  extends Handler
+  implements Runnable
 {
-  final WeakReference a;
+  public akiz(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString1, String paramString2) {}
   
-  public akiz(WebViewProgressBarController paramWebViewProgressBarController)
+  public void run()
   {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(paramWebViewProgressBarController);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    WebViewProgressBarController localWebViewProgressBarController = (WebViewProgressBarController)this.a.get();
-    if (localWebViewProgressBarController == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-    default: 
+      Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      String str = ((JSONObject)localObject).getString("video_dir");
+      localObject = ((JSONObject)localObject).optString("thumb_dir");
+      File localFile = new File(str);
+      if ((localFile.exists()) && (localFile.isFile())) {
+        localJSONObject.put("videoSize", localFile.length() / 1024L);
+      }
+      localJSONObject.put("thumbData", localObject);
+      localJSONObject.put("videoID", str);
+      if (Build.VERSION.SDK_INT >= 10)
+      {
+        localObject = new MediaMetadataRetriever();
+        ((MediaMetadataRetriever)localObject).setDataSource(str);
+        localJSONObject.put("videoDuration", String.valueOf(Long.parseLong(((MediaMetadataRetriever)localObject).extractMetadata(9)) / 1000L));
+      }
+      HealthBusinessPlugin.b(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin, this.b, new String[] { localJSONObject.toString() });
       return;
     }
-    localWebViewProgressBarController.e();
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akiz
  * JD-Core Version:    0.7.0.1
  */

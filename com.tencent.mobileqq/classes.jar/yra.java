@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper;
+import com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import org.json.JSONObject;
 
-public class yra
-  implements Runnable
+class yra
+  extends AVVideoCtrl.SwitchCameraCompleteCallback
 {
-  public yra(ApolloVoiceDIYHelper paramApolloVoiceDIYHelper, ApolloTextureView paramApolloTextureView, double paramDouble) {}
+  yra(yqz paramyqz) {}
   
-  public void run()
+  public void onComplete(int paramInt1, int paramInt2)
   {
-    ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender();
-    if ((localApolloRender != null) && (localApolloRender.getSavaWrapper() != null)) {
-      localApolloRender.getSavaWrapper().a(this.jdField_a_of_type_Double);
+    int i = 0;
+    if (paramInt2 == 0) {}
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", i);
+        localJSONObject.put("cameraPos", paramInt1);
+        localJSONObject.put("errCode", paramInt2);
+        CmGameUtil.a().callbackFromRequest(this.a.a, 0, "cs.audioRoom_camera_switch.local", localJSONObject.toString());
+        return;
+      }
+      catch (Exception localException) {}
+      i = -1;
     }
   }
 }

@@ -1,44 +1,49 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.util.URLUtil;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.AppProtocolObserver;
+import com.tencent.mobileqq.nearby.FaceScoreCallBack;
+import com.tencent.mobileqq.nearby.NearbyFaceScoreManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.oidb_0x8da.oidb_0x8da.RspBody;
+import tencent.im.oidb.oidb_0x8da.oidb_0x8da.TinyInfo;
 
 public class aelu
-  extends SimpleJob
+  extends ProtoUtils.AppProtocolObserver
 {
-  public aelu(VideoViewTVKImpl paramVideoViewTVKImpl, String paramString, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  public aelu(NearbyFaceScoreManager paramNearbyFaceScoreManager, FaceScoreCallBack paramFaceScoreCallBack) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
-    if (this.jdField_a_of_type_JavaLangString.contains("qqstocdnd"))
-    {
-      paramJobContext = ((VideoServerInfoManager)SuperManager.a(4)).a();
-      SLog.a("VideoViewTVKImpl", "get url key:%s", paramJobContext);
-      if (TextUtils.isEmpty(paramJobContext)) {
-        break label111;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.c = URLUtil.a(this.jdField_a_of_type_JavaLangString, "authkey", paramJobContext);
-    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.c = InnerDns.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.c.replace("https://", "http://"), 1012);
-      ThreadManager.getUIHandler().post(new aelw(this));
-      return null;
-      label111:
-      ThreadManager.getUIHandler().post(new aelv(this));
+      try
+      {
+        paramBundle = new oidb_0x8da.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = paramBundle.rpt_msg_tiny_info.get().iterator();
+        if (paramArrayOfByte.hasNext())
+        {
+          paramBundle = (oidb_0x8da.TinyInfo)paramArrayOfByte.next();
+          if (paramBundle.uint32_result.get() == 0) {
+            this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(paramBundle.uint64_uin.get(), paramBundle.uint64_tinyid.get());
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+      QLog.e("Q..troop.faceScore", 2, "getTinyIdByUin oidb_0x8da onResult  uin=" + paramBundle.uint64_uin.get() + " tinyid=" + paramBundle.uint64_tinyid.get() + " result=" + paramBundle.uint32_result.get());
     }
   }
 }

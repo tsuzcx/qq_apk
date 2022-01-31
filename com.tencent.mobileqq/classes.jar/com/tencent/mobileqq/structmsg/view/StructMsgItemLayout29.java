@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahve;
+import aijh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -26,21 +26,21 @@ import java.util.Iterator;
 public class StructMsgItemLayout29
   extends AbsStructMsgItem
 {
-  private void a(Context paramContext, RelativeLayout paramRelativeLayout, Resources paramResources, ahve paramahve)
+  private void a(Context paramContext, RelativeLayout paramRelativeLayout, Resources paramResources, aijh paramaijh)
   {
     paramContext = new ImageView(paramContext);
-    paramContext.setImageResource(2130845924);
+    paramContext.setImageResource(2130846052);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(10);
     localLayoutParams.addRule(9);
     localLayoutParams.leftMargin = AIOUtils.a(239.0F, paramResources);
     localLayoutParams.topMargin = AIOUtils.a(10.0F, paramResources);
-    paramahve.jdField_a_of_type_AndroidWidgetImageView = paramContext;
+    paramaijh.jdField_a_of_type_AndroidWidgetImageView = paramContext;
     paramContext.setVisibility(4);
     paramRelativeLayout.addView(paramContext, localLayoutParams);
   }
   
-  private void b(Context paramContext, RelativeLayout paramRelativeLayout, Resources paramResources, ahve paramahve)
+  private void b(Context paramContext, RelativeLayout paramRelativeLayout, Resources paramResources, aijh paramaijh)
   {
     paramContext = new TextView(paramContext);
     paramContext.setId(2131361954);
@@ -50,22 +50,22 @@ public class StructMsgItemLayout29
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, AIOUtils.a(25.0F, paramResources));
     localLayoutParams.topMargin = AIOUtils.a(83.0F, paramResources);
     localLayoutParams.leftMargin = AIOUtils.a(30.0F, paramResources);
-    paramahve.b = paramContext;
+    paramaijh.b = paramContext;
     paramRelativeLayout.addView(paramContext, localLayoutParams);
   }
   
-  private void c(Context paramContext, RelativeLayout paramRelativeLayout, Resources paramResources, ahve paramahve)
+  private void c(Context paramContext, RelativeLayout paramRelativeLayout, Resources paramResources, aijh paramaijh)
   {
     paramContext = new TextView(paramContext);
     paramContext.setId(2131361952);
-    paramContext.setText(2131438951);
+    paramContext.setText(2131438979);
     paramContext.setTextSize(1, 22.0F);
     paramContext.setTextColor(-1);
     paramContext.setGravity(16);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, AIOUtils.a(75.0F, paramResources));
     localLayoutParams.leftMargin = AIOUtils.a(60.0F, paramResources);
     localLayoutParams.topMargin = AIOUtils.a(8.0F, paramResources);
-    paramahve.jdField_a_of_type_AndroidWidgetTextView = paramContext;
+    paramaijh.jdField_a_of_type_AndroidWidgetTextView = paramContext;
     paramRelativeLayout.addView(paramContext, localLayoutParams);
   }
   
@@ -82,7 +82,7 @@ public class StructMsgItemLayout29
     if (paramView == null)
     {
       paramBundle = new RelativeLayout(paramContext);
-      paramView = new ahve(null);
+      paramView = new aijh(null);
       paramBundle.setTag(-1, paramView);
       paramBundle.setId(2131361955);
       paramView.jdField_a_of_type_AndroidViewView = paramBundle;
@@ -110,7 +110,7 @@ public class StructMsgItemLayout29
     {
       throw new IllegalStateException(String.format("getView but parentMsg or message is null, %s / %s", new Object[] { paramView, paramContext }));
       paramContext = (RelativeLayout)paramView;
-      paramView = (ahve)paramContext.getTag(-1);
+      paramView = (aijh)paramContext.getTag(-1);
       break;
     }
     label190:
@@ -138,7 +138,7 @@ public class StructMsgItemLayout29
       }
       if (bool)
       {
-        paramView.b.setText(2131438956);
+        paramView.b.setText(2131438984);
         paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       }
       for (;;)
@@ -151,12 +151,12 @@ public class StructMsgItemLayout29
         return paramContext;
         if ("1".equals(ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message)))
         {
-          paramView.b.setText(2131438957);
+          paramView.b.setText(2131438985);
           paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
         }
         else
         {
-          paramView.b.setText(2131438958);
+          paramView.b.setText(2131438986);
           paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         }
       }
@@ -170,7 +170,7 @@ public class StructMsgItemLayout29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout29
  * JD-Core Version:    0.7.0.1
  */

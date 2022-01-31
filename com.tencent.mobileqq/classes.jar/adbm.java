@@ -1,26 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qqfav.QfavBuilder;
 
 class adbm
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  adbm(adbk paramadbk) {}
+  adbm(adbl paramadbl, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
-    paramDialogInterface = new Intent(this.a.a.a, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.a);
-    paramDialogInterface.putExtra("fragment_id", 1);
-    paramDialogInterface.setFlags(67108864);
-    paramDialogInterface.setFlags(268435456);
-    this.a.a.a.startActivity(paramDialogInterface);
-    this.a.a.a.finish();
+    new QfavBuilder(3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseActivity.sTopActivity, this.jdField_a_of_type_Adbl.a, null, false);
   }
 }
 

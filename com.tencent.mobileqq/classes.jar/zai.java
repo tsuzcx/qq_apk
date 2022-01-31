@@ -1,21 +1,24 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.content.Context;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class zai
   implements Runnable
 {
-  public zai(FrameHelperActivity paramFrameHelperActivity) {}
+  public zai(BaseActivity paramBaseActivity) {}
   
   public void run()
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().app == null)) {}
-    do
+    try
     {
+      if (BaseActivity.access$300() != null)
+      {
+        ((SensorManager)this.a.getApplicationContext().getSystemService("sensor")).unregisterListener(BaseActivity.access$300());
+        BaseActivity.access$302(null);
+      }
       return;
-      this.a.l();
-    } while (this.a.a == null);
-    this.a.a.sendEmptyMessage(9);
+    }
+    finally {}
   }
 }
 

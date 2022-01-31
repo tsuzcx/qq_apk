@@ -1,54 +1,47 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.pubaccount.PublicAccountManager.refuseAcceptDone;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetRefuseFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo.VideoExtraRepoerData;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-public class kzl
-  implements BusinessObserver
+public final class kzl
+  implements Runnable
 {
-  public kzl(PublicAccountManager paramPublicAccountManager, NewIntent paramNewIntent, PublicAccountManager.refuseAcceptDone paramrefuseAcceptDone) {}
+  public kzl(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, ReportInfo.VideoExtraRepoerData paramVideoExtraRepoerData) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountManager", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    bool = paramBoolean;
-    if (paramBoolean) {}
-    try
+    ArrayList localArrayList = new ArrayList();
+    ReportInfo localReportInfo = new ReportInfo();
+    localReportInfo.mUin = ReadInJoyUtils.a();
+    localReportInfo.mSource = 0;
+    localReportInfo.mOpSource = 5;
+    localReportInfo.mSourceArticleId = -1L;
+    localReportInfo.mInnerId = this.jdField_a_of_type_JavaLangString;
+    localReportInfo.mChannelId = this.jdField_a_of_type_Int;
+    localReportInfo.mAlgorithmId = this.b;
+    localReportInfo.mStrategyId = this.c;
+    localReportInfo.mOperation = this.d;
+    localReportInfo.mPlayTimeLength = this.e;
+    localReportInfo.mVideoExtraRepoerData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReportInfo$VideoExtraRepoerData;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      paramBundle = paramBundle.getByteArray("data");
-      mobileqq_mp.SetRefuseFollowResponse localSetRefuseFollowResponse = new mobileqq_mp.SetRefuseFollowResponse();
-      localSetRefuseFollowResponse.mergeFrom(paramBundle);
-      bool = paramBoolean;
-      if (localSetRefuseFollowResponse.ret_info.has())
-      {
-        bool = paramBoolean;
-        if (localSetRefuseFollowResponse.ret_info.ret_code.has())
-        {
-          paramInt = localSetRefuseFollowResponse.ret_info.ret_code.get();
-          bool = paramBoolean;
-          if (paramInt != 0L) {
-            bool = false;
-          }
-        }
+      localStringBuilder = new StringBuilder().append("reportVideoUserOperationByOidbOfMutilmUin:").append(localReportInfo.mUin).append("; mSource:").append(localReportInfo.mSource).append("; mOpSource:").append(localReportInfo.mOpSource).append("; mInnerId:").append(localReportInfo.mInnerId).append("; mChannelId:").append(localReportInfo.mChannelId).append("; mAlgorithmId:").append(localReportInfo.mAlgorithmId).append("; mStrategyId:").append(localReportInfo.mStrategyId).append("; mOperation:").append(localReportInfo.mOperation).append("; mPlayTimeLength:").append(localReportInfo.mPlayTimeLength).append("; videoExtraRepoerData:");
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReportInfo$VideoExtraRepoerData == null) {
+        break label280;
       }
     }
-    catch (Exception paramBundle)
+    label280:
+    for (String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReportInfo$VideoExtraRepoerData.toString();; str = "null")
     {
-      for (;;)
-      {
-        bool = false;
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$refuseAcceptDone != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$refuseAcceptDone.a(bool);
+      QLog.d("VideoReporter", 2, str);
+      localArrayList.add(localReportInfo);
+      new UserOperationModule(null, null, ReadInJoyMSFService.a(), null).a(localArrayList);
+      return;
     }
   }
 }

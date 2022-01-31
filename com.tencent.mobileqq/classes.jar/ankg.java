@@ -1,46 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMStoryEffectCameraCaptureUnit;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
 public class ankg
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public ankg(FaceListPage paramFaceListPage) {}
+  public ankg(QIMStoryEffectCameraCaptureUnit paramQIMStoryEffectCameraCaptureUnit) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool2 = true;
-    Object localObject = FaceListPage.a(this.a);
-    if (localObject == null) {}
-    while (!(localObject instanceof NormalFacePackage)) {
-      return;
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMStoryEffectCameraCaptureUnit", 2, new Object[] { "onReceive action=", paramContext });
     }
-    NormalFacePackage localNormalFacePackage = (NormalFacePackage)localObject;
-    if ((localNormalFacePackage.a != null) && (!localNormalFacePackage.a.isEmpty())) {
-      SLog.b("FaceListPage", "FaceUriList is not empty,load bitmap directly.");
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if ((!bool1) && (!TextUtils.isEmpty(localNormalFacePackage.g)))
-      {
-        SLog.b("FaceListPage", "FacePkgPath is not empty,try to load uriList from it.");
-        localObject = localNormalFacePackage.a();
-        if ((localObject != null) && (!((List)localObject).isEmpty())) {
-          bool1 = bool2;
-        }
-      }
-      for (;;)
-      {
-        ThreadManager.getUIHandler().post(new ankh(this, localNormalFacePackage, (List)localObject, bool1));
-        return;
-        bool1 = false;
-        continue;
-        localObject = null;
-      }
+    if ("dov.com.qq.im.finish_capture_action".equals(paramContext)) {
+      this.a.a.a().finish();
     }
   }
 }

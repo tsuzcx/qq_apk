@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.ark.ArkAppManagerPanel;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
+import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-public class aanf
-  implements Runnable
+class aanf
+  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
 {
-  public aanf(ArkAppManagerPanel paramArkAppManagerPanel, ArrayList paramArrayList) {}
+  aanf(aanc paramaanc) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.a.a.a(1, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    ARVideoPreviewActivity.a(this.a.a).post(new aang(this));
+  }
+  
+  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp) {}
+  
+  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo)
+  {
+    paramString = paramUploadPicExtInfo.bytes_download_url.get().toStringUtf8();
+    this.a.a.a(1, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aanf
  * JD-Core Version:    0.7.0.1
  */

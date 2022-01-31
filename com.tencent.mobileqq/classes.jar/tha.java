@@ -1,27 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import java.util.List;
 
-public class tha
-  implements View.OnClickListener
+class tha
+  implements Runnable
 {
-  public tha(QQMapActivity paramQQMapActivity) {}
+  tha(tgz paramtgz, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.l)
-    {
-      this.a.w();
-      return;
-    }
-    if ("group_activity".equals(this.a.o))
-    {
-      this.a.k();
-      return;
-    }
-    this.a.setResult(-1, this.a.a());
-    this.a.finish();
-    this.a.d();
+    ProfileLabelEditorActivity.a(this.jdField_a_of_type_Tgz.a, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -139,7 +139,7 @@ public class QQDanceGameFilter
     this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQPoseDetectFilter.e();
     GLShaderManager.a();
     DanceLog.b("GLFrameImage", "onSurfaceDestroy:clearShaderManager");
-    GLFrameImage.ai_();
+    GLFrameImage.ak_();
     DanceLog.b("GLFrameImage", "onSurfaceDestroy:clearTextureCache");
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.e();
   }

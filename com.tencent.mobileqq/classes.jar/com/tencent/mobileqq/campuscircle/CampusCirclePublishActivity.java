@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abik;
-import abil;
-import abim;
-import abin;
-import abio;
-import abip;
-import abiq;
-import abir;
-import abis;
-import abit;
+import abpl;
+import abpm;
+import abpn;
+import abpo;
+import abpp;
+import abpq;
+import abpr;
+import abps;
+import abpt;
+import abpu;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -88,18 +88,18 @@ public class CampusCirclePublishActivity
   implements Handler.Callback, TextWatcher, View.OnClickListener, AdapterView.OnItemClickListener, CompoundButton.OnCheckedChangeListener, EmoticonCallback, ActionSheet.OnButtonClickListener, ScrollView.OnScrollStateChangedListener, XPanelContainer.PanelCallback
 {
   int jdField_a_of_type_Int = 0;
-  abit jdField_a_of_type_Abit;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new abil(this);
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new abim(this);
+  abpu jdField_a_of_type_Abpu;
+  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new abpm(this);
+  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new abpn(this);
   ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new abiq(this);
+  DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new abpr(this);
   public ViewGroup a;
   CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   ImageButton jdField_a_of_type_AndroidWidgetImageButton;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public CampusCircleHandler a;
   public CampusCircleManager a;
-  CampusCircleObserver jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver = new abir(this);
+  CampusCircleObserver jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver = new abps(this);
   CampusCirclePublishActivity.PublicityTopic jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCirclePublishActivity$PublicityTopic = null;
   CampusTopic jdField_a_of_type_ComTencentMobileqqCampuscircleCampusTopic = null;
   TopicAdapter jdField_a_of_type_ComTencentMobileqqCampuscircleTopicAdapter;
@@ -144,20 +144,20 @@ public class CampusCirclePublishActivity
     this.jdField_a_of_type_Int = paramInt;
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130842304);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130842351);
       if ((this.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) && (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 1)) {
         this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(1);
       }
-      this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getString(2131433379));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getString(2131433396));
     }
     while (paramInt != 1) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130842305);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130842352);
     if ((this.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) && (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 3)) {
       this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(3);
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getString(2131433378));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(getString(2131433395));
   }
   
   @TargetApi(14)
@@ -268,9 +268,9 @@ public class CampusCirclePublishActivity
         return;
         paramView = new ArrayList();
         int i = 0;
-        while (i < this.jdField_a_of_type_Abit.a())
+        while (i < this.jdField_a_of_type_Abpu.a())
         {
-          localObject = (String)this.jdField_a_of_type_Abit.getItem(i);
+          localObject = (String)this.jdField_a_of_type_Abpu.getItem(i);
           if (!android.text.TextUtils.isEmpty((CharSequence)localObject)) {
             paramView.add(localObject);
           }
@@ -290,7 +290,7 @@ public class CampusCirclePublishActivity
         a("0X800809B");
       }
     }
-    if (this.jdField_a_of_type_Abit.a() < 9) {}
+    if (this.jdField_a_of_type_Abpu.a() < 9) {}
     for (;;)
     {
       try
@@ -317,7 +317,7 @@ public class CampusCirclePublishActivity
       if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel = new SystemAndEmojiEmoticonPanel(this, this);
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setBackgroundColor(getResources().getColor(2131493378));
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setBackgroundColor(getResources().getColor(2131493381));
       }
       return this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel;
     }
@@ -329,7 +329,7 @@ public class CampusCirclePublishActivity
     if (QLog.isDevelopLevel()) {
       QLog.i("CampusCircle", 4, "initAsync");
     }
-    ThreadManager.post(new abin(this), 5, null, true);
+    ThreadManager.post(new abpo(this), 5, null, true);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -364,40 +364,40 @@ public class CampusCirclePublishActivity
   {
     Resources localResources = getResources();
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-    this.jdField_e_of_type_Int = localResources.getDimensionPixelSize(2131559410);
+    this.jdField_e_of_type_Int = localResources.getDimensionPixelSize(2131559412);
     this.f = (this.jdField_e_of_type_Int * 2 + 1);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)findViewById(2131364050));
-    this.jdField_a_of_type_ComTencentWidgetScrollView = ((ScrollView)findViewById(2131363746));
-    this.jdField_a_of_type_ComTencentWidgetPrefixXEditText = ((PrefixXEditText)findViewById(2131368265));
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView = ((DynamicGridView)findViewById(2131368763));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131364051));
-    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131369842));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131369843));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369844));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131369836));
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369837));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369833));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369832));
-    this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369841));
-    this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131366621).setOnClickListener(this);
-    ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369834)).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)findViewById(2131364074));
+    this.jdField_a_of_type_ComTencentWidgetScrollView = ((ScrollView)findViewById(2131363769));
+    this.jdField_a_of_type_ComTencentWidgetPrefixXEditText = ((PrefixXEditText)findViewById(2131368332));
+    this.jdField_a_of_type_ComTencentWidgetDynamicGridView = ((DynamicGridView)findViewById(2131368830));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131364075));
+    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131369919));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131369920));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369921));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131369913));
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369914));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369910));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369909));
+    this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369918));
+    this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131366645).setOnClickListener(this);
+    ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369911)).setOnClickListener(this);
     h();
-    int i = localResources.getColor(2131493379);
-    getTitleBarView().setBackgroundDrawable(localResources.getDrawable(2130842313));
+    int i = localResources.getColor(2131493382);
+    getTitleBarView().setBackgroundDrawable(localResources.getDrawable(2130842360));
     if (this.mSystemBarComp == null) {
       setImmersiveStatus(i);
     }
     for (;;)
     {
       setTitle("");
-      setLeftButton(2131432998, this);
+      setLeftButton(2131433015, this);
       this.leftViewNotBack.setBackgroundDrawable(null);
       this.leftViewNotBack.setTextSize(1, 17.0F);
-      this.leftViewNotBack.setTextColor(localResources.getColorStateList(2131494120));
-      setRightButton(2131438278, this);
+      this.leftViewNotBack.setTextColor(localResources.getColorStateList(2131494127));
+      setRightButton(2131438296, this);
       this.rightViewText.setBackgroundDrawable(null);
       this.rightViewText.setTextSize(1, 17.0F);
-      this.rightViewText.setTextColor(localResources.getColorStateList(2131494120));
+      this.rightViewText.setTextColor(localResources.getColorStateList(2131494127));
       this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(3);
       try
       {
@@ -429,27 +429,27 @@ public class CampusCirclePublishActivity
       }
       this.jdField_a_of_type_ComTencentWidgetPrefixXEditText.addTextChangedListener(this);
       this.jdField_a_of_type_ComTencentWidgetPrefixXEditText.setMovementMethod(ScrollingMovementMethod.getInstance());
-      this.jdField_a_of_type_ComTencentWidgetPrefixXEditText.setOnTouchListener(new abik(this));
+      this.jdField_a_of_type_ComTencentWidgetPrefixXEditText.setOnTouchListener(new abpl(this));
       this.jdField_a_of_type_ComTencentWidgetXPanelContainer.setOnPanelChangeListener(this);
       this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetPrefixXEditText);
       a(0);
       localObject = localResources.getDisplayMetrics();
-      i = localResources.getDimensionPixelSize(2131559403);
-      j = localResources.getDimensionPixelSize(2131559402);
+      i = localResources.getDimensionPixelSize(2131559405);
+      j = localResources.getDimensionPixelSize(2131559404);
       k = ((DisplayMetrics)localObject).widthPixels - j * 2 - this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getListPaddingLeft() - this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getListPaddingRight();
       m = (k - i * 2) / 3;
       if (QLog.isDevelopLevel()) {
         QLog.i("CampusCircle", 4, String.format(Locale.getDefault(), "verticalSpace: %d marginLR: %d availableSpace: %d widthPixels: %d mColumn: %d density: %f left: %d right: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(((DisplayMetrics)localObject).widthPixels), Integer.valueOf(3), Float.valueOf(((DisplayMetrics)localObject).density), Integer.valueOf(this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getListPaddingLeft()), Integer.valueOf(this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getListPaddingRight()) }));
       }
-      this.jdField_a_of_type_Abit = new abit(this, this, 3, m);
+      this.jdField_a_of_type_Abpu = new abpu(this, this, 3, m);
       this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setColumnWidth(m);
       this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setExpendable(true);
-      this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setAdapter(this.jdField_a_of_type_Abit);
-      this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setOnDragListener(this.jdField_a_of_type_Abit);
-      this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setOnDropListener(this.jdField_a_of_type_Abit);
-      this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setOnItemClickListener(this.jdField_a_of_type_Abit);
-      this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setOnItemLongClickListener(this.jdField_a_of_type_Abit);
-      this.jdField_a_of_type_Abit.a();
+      this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setAdapter(this.jdField_a_of_type_Abpu);
+      this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setOnDragListener(this.jdField_a_of_type_Abpu);
+      this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setOnDropListener(this.jdField_a_of_type_Abpu);
+      this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setOnItemClickListener(this.jdField_a_of_type_Abpu);
+      this.jdField_a_of_type_ComTencentWidgetDynamicGridView.setOnItemLongClickListener(this.jdField_a_of_type_Abpu);
+      this.jdField_a_of_type_Abpu.a();
       this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
@@ -460,7 +460,7 @@ public class CampusCirclePublishActivity
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(this);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c("从相册选择");
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c("拍照");
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131432998);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(this);
       this.jdField_a_of_type_ComTencentWidgetScrollView.setOnScrollStateChangedListener(this);
       b(paramCampusTopic);
@@ -489,7 +489,7 @@ public class CampusCirclePublishActivity
   
   public void a(String paramString)
   {
-    ThreadManager.post(new abis(this, paramString), 5, null, false);
+    ThreadManager.post(new abpt(this, paramString), 5, null, false);
   }
   
   public void a(List paramList)
@@ -530,7 +530,7 @@ public class CampusCirclePublishActivity
   public boolean a()
   {
     if (this.jdField_a_of_type_ComTencentWidgetPrefixXEditText.getText().toString().length() > this.g) {}
-    while (this.jdField_a_of_type_Abit.a() > 0) {
+    while (this.jdField_a_of_type_Abpu.a() > 0) {
       return false;
     }
     return true;
@@ -587,7 +587,7 @@ public class CampusCirclePublishActivity
       if (a()) {
         Message.obtain(this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler, 8, 0, 0, null).sendToTarget();
       } else {
-        DialogUtil.a(this, getString(2131438908), 2131432998, 2131437709, new abio(this), new abip(this)).show();
+        DialogUtil.a(this, getString(2131438936), 2131433015, 2131437726, new abpp(this), new abpq(this)).show();
       }
     }
   }
@@ -606,7 +606,7 @@ public class CampusCirclePublishActivity
         QLog.i("CampusCircle", 4, String.format(Locale.getDefault(), "doOnActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
       }
       return;
-      if ((!android.text.TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Abit.a() < 9))
+      if ((!android.text.TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Abpu.a() < 9))
       {
         this.jdField_b_of_type_Boolean = true;
         Message.obtain(this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler, 1, 1, 0, this.jdField_a_of_type_JavaLangString).sendToTarget();
@@ -1013,7 +1013,7 @@ public class CampusCirclePublishActivity
       str = localArrayList.toString();
       break label39;
       paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-      if ((!android.text.TextUtils.isEmpty(paramIntent)) && (this.jdField_a_of_type_Abit.a() < 9))
+      if ((!android.text.TextUtils.isEmpty(paramIntent)) && (this.jdField_a_of_type_Abpu.a() < 9))
       {
         this.jdField_b_of_type_Boolean = true;
         Message.obtain(this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler, 1, 1, 0, paramIntent).sendToTarget();
@@ -1108,9 +1108,9 @@ public class CampusCirclePublishActivity
         ((CampusCircleManager.CampusTopicReq)localObject1).publicityTopicId = this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCirclePublishActivity$PublicityTopic.jdField_a_of_type_Int;
       }
       i = 0;
-      while (i < this.jdField_a_of_type_Abit.a())
+      while (i < this.jdField_a_of_type_Abpu.a())
       {
-        localObject2 = (String)this.jdField_a_of_type_Abit.getItem(i);
+        localObject2 = (String)this.jdField_a_of_type_Abpu.getItem(i);
         if ((localObject2 != null) && (!android.text.TextUtils.isEmpty((CharSequence)localObject2)))
         {
           localObject3 = new CampusCircleManager.PicInfo();
@@ -1138,14 +1138,14 @@ public class CampusCirclePublishActivity
   protected void f()
   {
     if (QavCameraUsage.b(BaseApplicationImpl.getContext())) {
-      a(true, 1, getString(2131434776), 0);
+      a(true, 1, getString(2131434793), 0);
     }
     for (;;)
     {
       return;
       if (!Utils.a())
       {
-        a(true, 1, getString(2131434753), 0);
+        a(true, 1, getString(2131434770), 0);
         return;
       }
       Object localObject = new File(AppConstants.aV);
@@ -1186,7 +1186,7 @@ public class CampusCirclePublishActivity
         catch (Exception localException)
         {
           localException.printStackTrace();
-          a(true, 1, getString(2131434776), 0);
+          a(true, 1, getString(2131434793), 0);
         }
       }
     }
@@ -1209,13 +1209,13 @@ public class CampusCirclePublishActivity
   
   protected void h()
   {
-    TextView localTextView = (TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369834);
+    TextView localTextView = (TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369911);
     if (this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleHandler.a().jdField_c_of_type_Int == 1)
     {
-      localTextView.setText(String.format(Locale.getDefault(), "%s(必选)", new Object[] { getString(2131438924) }));
+      localTextView.setText(String.format(Locale.getDefault(), "%s(必选)", new Object[] { getString(2131438952) }));
       return;
     }
-    localTextView.setText(2131438924);
+    localTextView.setText(2131438952);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -1249,32 +1249,32 @@ public class CampusCirclePublishActivity
               default: 
                 return true;
               }
-            } while ((!(paramMessage.obj instanceof String)) || (this.jdField_a_of_type_Abit.a() >= 9));
-            this.jdField_a_of_type_Abit.a(this.jdField_a_of_type_Abit.a(), paramMessage.obj);
-            this.jdField_a_of_type_Abit.a();
+            } while ((!(paramMessage.obj instanceof String)) || (this.jdField_a_of_type_Abpu.a() >= 9));
+            this.jdField_a_of_type_Abpu.a(this.jdField_a_of_type_Abpu.a(), paramMessage.obj);
+            this.jdField_a_of_type_Abpu.a();
             return true;
           } while (!(paramMessage.obj instanceof ArrayList));
           paramMessage = (ArrayList)paramMessage.obj;
-          this.jdField_a_of_type_Abit.d();
+          this.jdField_a_of_type_Abpu.d();
           int i = 0;
-          while ((i < paramMessage.size()) && (this.jdField_a_of_type_Abit.a() < 9))
+          while ((i < paramMessage.size()) && (this.jdField_a_of_type_Abpu.a() < 9))
           {
             localObject = (String)paramMessage.get(i);
             if (!android.text.TextUtils.isEmpty((CharSequence)localObject)) {
-              this.jdField_a_of_type_Abit.a(this.jdField_a_of_type_Abit.a(), localObject);
+              this.jdField_a_of_type_Abpu.a(this.jdField_a_of_type_Abpu.a(), localObject);
             }
             i += 1;
           }
-          this.jdField_a_of_type_Abit.a();
+          this.jdField_a_of_type_Abpu.a();
           return true;
         } while (!(paramMessage.obj instanceof ArrayList));
         paramMessage = ((ArrayList)paramMessage.obj).iterator();
         while (paramMessage.hasNext())
         {
           localObject = (String)paramMessage.next();
-          this.jdField_a_of_type_Abit.d(localObject);
+          this.jdField_a_of_type_Abpu.d(localObject);
         }
-        this.jdField_a_of_type_Abit.a();
+        this.jdField_a_of_type_Abpu.a();
         return true;
         b((CampusTopic)paramMessage.obj);
         return true;
@@ -1370,7 +1370,7 @@ public class CampusCirclePublishActivity
       }
     }
     label43:
-    for (paramCompoundButton = paramCompoundButton.getColorStateList(2131493372);; paramCompoundButton = paramCompoundButton.getColorStateList(2131493370))
+    for (paramCompoundButton = paramCompoundButton.getColorStateList(2131493375);; paramCompoundButton = paramCompoundButton.getColorStateList(2131493373))
     {
       localTextView.setTextColor(paramCompoundButton);
       a("0X800809D");
@@ -1409,7 +1409,7 @@ public class CampusCirclePublishActivity
         a("0X800809A");
         return;
       }
-      if (paramView.getId() == 2131366621)
+      if (paramView.getId() == 2131366645)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusTopic != null) {
           this.jdField_a_of_type_ComTencentMobileqqCampuscircleTopicAdapter.a(this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusTopic);
@@ -1417,7 +1417,7 @@ public class CampusCirclePublishActivity
         Message.obtain(this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler, 11, 0, 0, null).sendToTarget();
         return;
       }
-    } while (paramView.getId() != 2131369834);
+    } while (paramView.getId() != 2131369911);
     g();
   }
   
@@ -1456,7 +1456,7 @@ public class CampusCirclePublishActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity
  * JD-Core Version:    0.7.0.1
  */

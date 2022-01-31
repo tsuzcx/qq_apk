@@ -1,34 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class vwg
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vwg(StrangerChatPie paramStrangerChatPie) {}
+  public vwg(NearbyChatPie paramNearbyChatPie) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    int i;
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
-    {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
-      PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
+    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a });
+    if (localNearbyPeopleCard != null) {
+      this.a.n = localNearbyPeopleCard.gender;
     }
   }
 }

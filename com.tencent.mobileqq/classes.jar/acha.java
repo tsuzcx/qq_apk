@@ -1,19 +1,43 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
 
-public final class acha
-  implements FMDialogUtil.FMDialogInterface
+public class acha
+  implements Animator.AnimatorListener
 {
-  public acha(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
+  private acha(StickerGestureDetector paramStickerGestureDetector) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    FileManagerUtil.c(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new achb(this));
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aN();
+      this.a.jdField_b_of_type_Double = 1.0D;
+      this.a.jdField_a_of_type_Double = 0.0D;
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
+      {
+        this.a.a(this.a.jdField_a_of_type_AndroidViewView, false);
+        this.a.c = null;
+      }
+      if ((this.a.jdField_b_of_type_AndroidViewView != null) && ((this.a.jdField_b_of_type_AndroidViewView instanceof BaseChatItemLayout)))
+      {
+        ((BaseChatItemLayout)this.a.jdField_b_of_type_AndroidViewView).setStickerPressStatus(false);
+        this.a.jdField_b_of_type_AndroidViewView = null;
+      }
+      com.tencent.mobileqq.emoticon.EmojiStickerManager.b = false;
+    }
   }
   
-  public void b() {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

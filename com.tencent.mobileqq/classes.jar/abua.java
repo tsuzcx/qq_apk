@@ -1,49 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.theme.ThemeDownloader;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeDownloadListener;
-import com.tencent.mobileqq.vip.IPCDownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
 
-public class abua
-  implements ThemeDownloader.ThemeDownloadListener
+public final class abua
+  implements Parcelable.Creator
 {
-  public abua(MessengerService paramMessengerService) {}
-  
-  public void onDownloadCallback(Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, ThemeDownloader paramThemeDownloader)
+  public IPSiteModel.Goods a(Parcel paramParcel)
   {
-    if (paramInt1 == 4) {}
-    do
-    {
-      return;
-      if ((QLog.isColorLevel()) || (paramInt1 < 0)) {
-        QLog.d("Q.emoji.web.MessengerService", 2, "mThemeDownloadListener onDownloadCallback stateCode:" + paramInt1 + ", errCode=" + paramInt2 + ", httpCode=" + paramInt3);
-      }
-      Bundle localBundle = paramBundle;
-      if (paramBundle == null) {
-        localBundle = new Bundle();
-      }
-      localBundle.putString("status", "onDone");
-      localBundle.putInt("result", paramInt1);
-      localBundle.putInt("errCode", paramInt2);
-      this.a.a.a(localBundle);
-    } while (paramThemeDownloader == null);
-    paramThemeDownloader.a();
+    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
+    localGoods.cover = paramParcel.readString();
+    localGoods.goodsTags = paramParcel.readString();
+    localGoods.id = paramParcel.readString();
+    localGoods.name = paramParcel.readString();
+    localGoods.price = paramParcel.readString();
+    localGoods.saleTags = paramParcel.readString();
+    localGoods.svipPrice = paramParcel.readString();
+    localGoods.url = paramParcel.readString();
+    localGoods.moreUrl = paramParcel.readString();
+    localGoods.saleNum = paramParcel.readString();
+    return localGoods;
   }
   
-  public void onDownloadProgress(Bundle paramBundle, int paramInt, long paramLong1, long paramLong2)
+  public IPSiteModel.Goods[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.emoji.web.MessengerService", 2, "mThemeDownloadListener onDownloadProgress readSize:" + paramLong1 + ", dwProgressMax" + paramLong2);
-    }
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putString("status", "onProgress");
-    localBundle.putLong("readSize", paramLong1);
-    localBundle.putLong("size", paramLong2);
-    this.a.a.a(localBundle);
+    return new IPSiteModel.Goods[paramInt];
   }
 }
 

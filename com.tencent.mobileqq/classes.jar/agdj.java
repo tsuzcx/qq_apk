@@ -1,43 +1,36 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Set;
+import java.net.URL;
 
 public class agdj
-  implements BusinessObserver
+  implements URLDrawable.URLDrawableListener
 {
-  private WeakReference a;
+  public agdj(SearchSougouResultItemBuilder paramSearchSougouResultItemBuilder) {}
   
-  public agdj(ProfileHeaderView paramProfileHeaderView)
-  {
-    this.a = new WeakReference(paramProfileHeaderView);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((paramBoolean) && (paramInt == 66) && ((paramObject instanceof Set)))
+    if ((this.a.a == null) || (paramURLDrawable == null) || (paramURLDrawable.getURL() == null)) {}
+    do
     {
-      paramObject = (Set)paramObject;
-      ProfileHeaderView localProfileHeaderView = (ProfileHeaderView)this.a.get();
-      if (localProfileHeaderView == null) {
-        break label80;
-      }
-      if (paramObject.contains(localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString))
-      {
-        localProfileHeaderView.c(localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, false);
-        localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      }
-    }
-    label80:
-    while (!QLog.isColorLevel()) {
       return;
-    }
-    QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "Can't get reference to ProfileHeadView.");
+      paramThrowable = this.a.a.findViewWithTag(paramURLDrawable.getURL().toString());
+      if ((paramThrowable != null) && ((paramThrowable instanceof ImageView))) {
+        paramThrowable.post(new agdk(this, paramThrowable));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "UrlDownloadListener image fail," + paramURLDrawable.getURL());
   }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

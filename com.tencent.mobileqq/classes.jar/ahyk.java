@@ -1,61 +1,89 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
-import com.tencent.mobileqq.teamwork.TeamWorkHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.shortvideo.PendantVersionManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import java.io.File;
 
-public class ahyk
-  implements WtTicketPromise
+public final class ahyk
+  implements Runnable
 {
-  public ahyk(TeamWorkHandler paramTeamWorkHandler, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
-  
-  public void Done(Ticket paramTicket)
+  public void run()
   {
-    int i;
-    if (paramTicket == null) {
-      i = 1;
+    String str1 = PtvFilterSoLoad.a(VideoEnvironment.a());
+    String str2 = PendantVersionManager.a();
+    File[] arrayOfFile = new File(str1).listFiles();
+    int i = PendantVersionManager.a().length;
+    int j;
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    int m;
+    if ((arrayOfFile != null) && (arrayOfFile.length > i + 2))
+    {
+      j = 2147483647;
+      localObject1 = "unknown";
+      int k = 0;
+      i = 0;
+      if (k < arrayOfFile.length)
+      {
+        if (arrayOfFile[k] == null) {}
+        for (;;)
+        {
+          k += 1;
+          break;
+          localObject2 = arrayOfFile[k].getName();
+          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!PendantVersionManager.a((String)localObject2)))
+          {
+            localObject3 = aiaa.a((String)localObject2);
+            m = ((aiab)localObject3).a();
+            if (m == 0) {
+              break label218;
+            }
+            VideoEnvironment.a("[executeClearHistoryPendantCache] errorCodec=" + m + " filename=" + (String)localObject2, null);
+            localObject2 = new File(str1 + (String)localObject2);
+            if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
+              ((File)localObject2).delete();
+            }
+          }
+        }
+        label218:
+        localObject3 = ((aiab)localObject3).b();
+      }
     }
+    label418:
     for (;;)
     {
-      QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
-      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler.a.getCurrentAccountUin(), "docs.qq.com");
-      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
+      try
       {
-        TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, 0);
-        QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server success!");
+        m = Integer.parseInt((String)localObject3);
+        if (m >= j) {
+          break label418;
+        }
+        j = m;
+        localObject1 = localObject2;
+        i += 1;
       }
-      TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+      catch (NumberFormatException localNumberFormatException)
+      {
+        VideoEnvironment.a("[executeClearHistorySOLibFile] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
+      }
+      break;
+      VideoEnvironment.a("[executeClearHistoryPendantCache] deleteName=" + (String)localObject1 + "  validNumPendantCache=" + i + " leastVersion=" + j, null);
+      if (i >= 2)
+      {
+        localObject1 = new File(str1 + (String)localObject1);
+        if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
+        {
+          VideoEnvironment.a("[executeClearHistoryPendantCache] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
+          ((File)localObject1).delete();
+        }
+      }
       return;
-      if ((paramTicket != null) && (paramTicket._pskey_map == null)) {
-        i = 2;
-      } else if ((paramTicket != null) && (paramTicket._pskey_map != null) && (paramTicket._pskey_map.get("docs.qq.com") == null)) {
-        i = 3;
-      } else {
-        i = 0;
-      }
     }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
-    TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
-    TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahyk
  * JD-Core Version:    0.7.0.1
  */

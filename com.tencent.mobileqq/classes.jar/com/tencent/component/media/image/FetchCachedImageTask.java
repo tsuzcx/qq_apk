@@ -1,10 +1,10 @@
 package com.tencent.component.media.image;
 
 import android.graphics.drawable.Drawable;
-import pfn;
+import phh;
 
 public class FetchCachedImageTask
-  extends pfn
+  extends phh
 {
   private static int jdField_a_of_type_Int;
   private static FetchCachedImageTask jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask = null;
@@ -17,9 +17,9 @@ public class FetchCachedImageTask
     clearAndInitSize();
   }
   
-  private FetchCachedImageTask(pfn parampfn)
+  private FetchCachedImageTask(phh paramphh)
   {
-    super(parampfn);
+    super(paramphh);
   }
   
   public static void clearAndInitSize()
@@ -40,7 +40,7 @@ public class FetchCachedImageTask
     }
   }
   
-  public static FetchCachedImageTask obtain(pfn parampfn)
+  public static FetchCachedImageTask obtain(phh paramphh)
   {
     if (needRecycle) {}
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -51,10 +51,10 @@ public class FetchCachedImageTask
         jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask = jdField_a_of_type_ComTencentComponentMediaImageFetchCachedImageTask.b;
         localFetchCachedImageTask.b = null;
         jdField_a_of_type_Int -= 1;
-        localFetchCachedImageTask.setImageTask(parampfn);
+        localFetchCachedImageTask.setImageTask(paramphh);
         return localFetchCachedImageTask;
       }
-      return new FetchCachedImageTask(parampfn);
+      return new FetchCachedImageTask(paramphh);
     }
   }
   

@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.view.ViewStub.OnInflateListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
 public class msh
-  implements ViewStub.OnInflateListener
+  implements Runnable
 {
-  public msh(SubscriptRecommendController paramSubscriptRecommendController) {}
+  public msh(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void onInflate(ViewStub paramViewStub, View paramView)
+  public void run()
   {
-    this.a.a = paramView;
-    this.a.e();
+    this.a.c();
   }
 }
 

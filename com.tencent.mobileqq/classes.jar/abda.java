@@ -1,45 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.VideoDrawable;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.util.DynamicFaceDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.POIInfo;
 
-public class abda
-  implements VideoDrawable.OnPlayRepeatListener
+public final class abda
+  implements Parcelable.Creator
 {
-  public abda(DynamicAvatarView paramDynamicAvatarView) {}
-  
-  public void onPlayRepeat(int paramInt)
+  public POIInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
-    }
-    if ((this.a.b) || (paramInt < 1)) {}
-    while (this.a.a == null) {
-      return;
-    }
-    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
-    if ((localObject instanceof URLDrawable))
-    {
-      localObject = ((URLDrawable)localObject).getCurrDrawable();
-      if ((localObject instanceof VideoDrawable))
-      {
-        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
-        this.a.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(this.a.a, true);
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
-        }
-      }
-    }
-    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
-    this.a.a();
+    return new POIInfo(paramParcel);
+  }
+  
+  public POIInfo[] a(int paramInt)
+  {
+    return new POIInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abda
  * JD-Core Version:    0.7.0.1
  */

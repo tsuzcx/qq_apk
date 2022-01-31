@@ -39,11 +39,11 @@ public class SubtitleProviderGridAdapter
     do
     {
       return;
-      paramView = (ImageView)paramView.findViewById(2131363385);
+      paramView = (ImageView)paramView.findViewById(2131363403);
     } while (paramView == null);
     if ((paramSubtitleItem != null) && (paramSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem != null) && (paramSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.d != 2) && (!paramSubtitleItem.jdField_b_of_type_Boolean))
     {
-      paramView.setImageResource(2130843157);
+      paramView.setImageResource(2130843256);
       paramView.setVisibility(0);
       return;
     }
@@ -64,8 +64,8 @@ public class SubtitleProviderGridAdapter
     do
     {
       return;
-      CircleProgress localCircleProgress = (CircleProgress)paramView.findViewById(2131369858);
-      paramView = (ImageView)paramView.findViewById(2131369854);
+      CircleProgress localCircleProgress = (CircleProgress)paramView.findViewById(2131369935);
+      paramView = (ImageView)paramView.findViewById(2131369931);
       if (paramSubtitleItem.jdField_b_of_type_Boolean)
       {
         localCircleProgress.setVisibility(0);
@@ -99,16 +99,16 @@ public class SubtitleProviderGridAdapter
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970263, paramViewGroup, false);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970279, paramViewGroup, false);
     }
-    paramView = (TextView)localView.findViewById(2131369855);
-    Object localObject2 = (ImageView)localView.findViewById(2131369854);
-    paramViewGroup = (ImageView)localView.findViewById(2131362701);
-    ImageView localImageView = (ImageView)localView.findViewById(2131363385);
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131369857);
-    Object localObject1 = (CircleProgress)localView.findViewById(2131369858);
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494207);
-    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493307);
+    paramView = (TextView)localView.findViewById(2131369932);
+    Object localObject2 = (ImageView)localView.findViewById(2131369931);
+    paramViewGroup = (ImageView)localView.findViewById(2131362719);
+    ImageView localImageView = (ImageView)localView.findViewById(2131363403);
+    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131369934);
+    Object localObject1 = (CircleProgress)localView.findViewById(2131369935);
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494214);
+    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493308);
     ((CircleProgress)localObject1).setStrokeWidth(2.0F);
     ((CircleProgress)localObject1).setBgAndProgressColor(30, i, 100, j);
     localObject1 = (SubtitleItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
@@ -126,7 +126,7 @@ public class SubtitleProviderGridAdapter
       if (paramInt == 0) {
         break label268;
       }
-      paramViewGroup.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843092));
+      paramViewGroup.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843191));
     }
     for (;;)
     {
@@ -138,20 +138,20 @@ public class SubtitleProviderGridAdapter
       paramInt = 0;
       break;
       label268:
-      paramViewGroup.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843093));
+      paramViewGroup.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843192));
     }
     label287:
     if (paramInt != 0)
     {
       ((ImageView)localObject2).setVisibility(0);
-      paramView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492975));
+      paramView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492976));
       localRelativeLayout.setVisibility(8);
     }
     for (;;)
     {
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843083);
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843083);
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843182);
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843182);
       b((SubtitleItem)localObject1, localView);
       localObject2 = URLDrawable.getDrawable(((SubtitleItem)localObject1).jdField_a_of_type_JavaLangString, URLDrawable.URLDrawableOptions.obtain());
       ((URLDrawable)localObject2).startDownload();
@@ -162,7 +162,7 @@ public class SubtitleProviderGridAdapter
       a((SubtitleItem)localObject1, localView);
       return localView;
       ((ImageView)localObject2).setVisibility(8);
-      paramView.setShadowLayer(3.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492975));
+      paramView.setShadowLayer(3.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492976));
       localRelativeLayout.setVisibility(8);
     }
   }

@@ -1,17 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoStatusListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class mot
-  extends ReadInJoyObserver
+  extends FastWebVideoFeedsPlayManager.VideoStatusListener
 {
-  public mot(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController) {}
+  public mot(FastWebVideoFeedsPlayActivity paramFastWebVideoFeedsPlayActivity) {}
   
-  public void a(boolean paramBoolean, List paramList)
+  public void a(FastWebVideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
-    if (paramBoolean) {
-      ReadInJoyFeedsHeaderViewController.a(this.a, ReadInJoyFeedsHeaderViewController.a(this.a, paramList));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayActivity", 2, "video play completion!, move to next position");
     }
+    boolean bool = FastWebVideoFeedsPlayActivity.a(this.a);
+    if (FastWebVideoFeedsPlayActivity.a(this.a)) {
+      FastWebVideoFeedsPlayActivity.a(this.a).post(new mou(this));
+    }
+    if (FastWebVideoFeedsPlayActivity.b(this.a))
+    {
+      if (!bool) {
+        FastWebVideoFeedsPlayActivity.a(this.a);
+      }
+      FastWebVideoFeedsPlayActivity.a(this.a).a(5);
+    }
+    while (this.a.a() == FastWebVideoFeedsPlayActivity.a(this.a).size() - 1) {
+      return;
+    }
+    FastWebVideoFeedsPlayActivity.a(this.a).postDelayed(new mov(this), 600L);
   }
 }
 

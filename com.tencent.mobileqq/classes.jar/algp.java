@@ -1,37 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class algp
-  implements TextWatcher
+  implements Runnable
 {
-  public algp(Login paramLogin) {}
+  public algp(DownloadManager paramDownloadManager) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    if (paramCharSequence.length() == 0) {
-      this.a.a.setVisibility(4);
-    }
-    for (;;)
+    if (!this.a.a)
     {
-      this.a.jdField_b_of_type_Boolean = false;
-      this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
-      return;
-      if (paramInt3 < 2) {
-        this.a.a.setVisibility(0);
+      if (!MyAppApi.a().b()) {
+        this.a.a(true);
       }
+      this.a.a = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     algp
  * JD-Core Version:    0.7.0.1
  */

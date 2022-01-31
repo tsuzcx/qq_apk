@@ -1,39 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.emosm.view.DragSortController;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 public class acaf
-  extends WtloginObserver
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public acaf(EquipLockWebImpl paramEquipLockWebImpl) {}
+  public acaf(DragSortController paramDragSortController) {}
   
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) && (this.a.d != -1)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setTapPos(this.a.d);
     }
-    if (paramInt == 0)
-    {
-      EquipLockWebImpl.c(this.a, true);
-      if (EquipLockWebImpl.a(this.a) != null)
-      {
-        paramWUserSigInfo = (QQAppInterface)EquipLockWebImpl.a(this.a).get();
-        if ((paramWUserSigInfo != null) && (EquipmentLockImpl.a().a(paramWUserSigInfo))) {}
-      }
-      else
-      {
-        EquipLockWebImpl.a(this.a, false);
-        EquipLockWebImpl.b(this.a, false);
-      }
-      return;
+    return false;
+  }
+  
+  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.b()) || (Math.abs(paramFloat1) <= Math.abs(paramFloat2)) || (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c()) || (this.a.c) || (Math.abs(paramFloat1) <= this.a.jdField_a_of_type_Float) || ((paramFloat1 < 0.0F) && (this.a.jdField_a_of_type_Int == 2))) {}
+    while ((paramFloat1 > 0.0F) && (this.a.jdField_a_of_type_Int == 1)) {
+      return false;
     }
-    EquipLockWebImpl.a(this.a, false);
-    EquipLockWebImpl.c(this.a, false);
+    int i = this.a.d;
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSrcPos(i);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c();
+    return false;
   }
 }
 

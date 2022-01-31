@@ -1,35 +1,54 @@
-import android.os.Handler;
-import com.tencent.mobileqq.util.FPSCalculator;
-import com.tencent.mobileqq.util.FPSCalculator.GetFPSListener;
-import java.util.Vector;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
 
 public class ajlg
-  implements Runnable
+  implements TextView.OnEditorActionListener
 {
-  public ajlg(FPSCalculator paramFPSCalculator) {}
+  public ajlg(TextItem paramTextItem, TextItem.TextViewHolder paramTextViewHolder) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    Object localObject1 = FPSCalculator.a(this.a);
-    int i = 0;
-    try
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramInt != 4) && (paramInt != 6))
     {
-      while (i < FPSCalculator.a(this.a).size())
+      bool1 = bool2;
+      if (paramKeyEvent != null)
       {
-        FPSCalculator.GetFPSListener localGetFPSListener = (FPSCalculator.GetFPSListener)FPSCalculator.a(this.a).get(i);
-        FPSCalculator.a(this.a, System.currentTimeMillis());
-        localGetFPSListener.a(FPSCalculator.a(this.a), 60.0D);
-        i += 1;
+        bool1 = bool2;
+        if (66 == paramKeyEvent.getKeyCode())
+        {
+          bool1 = bool2;
+          if (paramKeyEvent.getAction() != 0) {}
+        }
       }
-      FPSCalculator.a(this.a).postDelayed(FPSCalculator.b(this.a), 500L);
-      return;
     }
-    finally {}
+    else
+    {
+      paramTextView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getEditableText().toString();
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getSelectionStart();
+      paramTextView = paramTextView.substring(0, paramInt);
+      paramTextView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a(paramTextView);
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramTextView))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getEditableText().replace(paramInt, paramInt, "\n" + paramTextView);
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(paramTextView.length() + paramInt + 1);
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlg
  * JD-Core Version:    0.7.0.1
  */

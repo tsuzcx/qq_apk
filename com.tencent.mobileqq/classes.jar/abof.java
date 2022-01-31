@@ -1,41 +1,20 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.GetAppPathByActionResult;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
-import com.tencent.mobileqq.data.RecommendCommonMessage.IGetAppInfosByContextListCallback;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public final class abof
-  implements ArkLocalAppMgr.IGetAppPathByActionCallback
+class abof
+  implements Runnable
 {
-  public abof(String paramString1, boolean paramBoolean, String paramString2) {}
+  abof(abod paramabod) {}
   
-  public void a(Object paramObject, ArrayList paramArrayList)
+  public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      ArkLocalAppMgr.GetAppPathByActionResult localGetAppPathByActionResult = (ArkLocalAppMgr.GetAppPathByActionResult)paramArrayList.next();
-      if ((localGetAppPathByActionResult.a == 0) && (localGetAppPathByActionResult.c != null))
-      {
-        RecommendCommonMessage.ArkMsgAppInfo localArkMsgAppInfo = new RecommendCommonMessage.ArkMsgAppInfo();
-        localArkMsgAppInfo.appName = localGetAppPathByActionResult.b;
-        localArkMsgAppInfo.appPath = localGetAppPathByActionResult.c;
-        localArkMsgAppInfo.appView = localGetAppPathByActionResult.d;
-        localArkMsgAppInfo.keyword = this.jdField_a_of_type_JavaLangString;
-        localArkMsgAppInfo.equalInputText = this.jdField_a_of_type_Boolean;
-        localArkMsgAppInfo.meta = this.b;
-        localArrayList.add(localArkMsgAppInfo);
-      }
+    if ((QLog.isColorLevel()) && (this.a.a.a != null)) {
+      QLog.w("BusinessCard_FlowCameraPhotoActivity", 2, "onSend error " + this.a.a.a.toString() + "errorCode=" + this.a.a.a.a);
     }
-    paramObject = (RecommendCommonMessage.IGetAppInfosByContextListCallback)paramObject;
-    paramObject.mAppList.addAll(localArrayList);
-    int i = paramObject.mCount - 1;
-    paramObject.mCount = i;
-    if (i == 0) {
-      paramObject.onGetAppInfos(paramObject.mAppList);
-    }
+    this.a.a.e();
+    QQToast.a(this.a.a, 2131437079, 1).a();
   }
 }
 

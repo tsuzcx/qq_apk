@@ -1,42 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.activity.aio.stickerbubble.ManualDecodeGifImage;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class vyr
   implements Runnable
 {
-  public vyr(StickerBubbleAnimationView paramStickerBubbleAnimationView, BitmapDrawable[] paramArrayOfBitmapDrawable, ManualDecodeGifImage paramManualDecodeGifImage, String paramString, int paramInt) {}
+  public vyr(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    int j = 0;
-    int i = 1;
-    if (i < this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length)
+    Object localObject = (PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
+    if (localObject != null) {}
+    for (localObject = ((PublicAccountDataManager)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.a();
-      Object localObject = StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.a(), 0.7D);
-      BitmapDrawable[] arrayOfBitmapDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-      if (localObject != null) {}
-      for (localObject = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.getResources(), (Bitmap)localObject);; localObject = null)
-      {
-        arrayOfBitmapDrawable[i] = localObject;
-        QLog.d("StickerAnimationView", 2, "decode gif: " + i + " / " + this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.c() + " / " + this.jdField_a_of_type_JavaLangString);
-        if (i != this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.c())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("StickerAnimationView", 2, "index is not matched, " + i + " / " + this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length + " / " + this.jdField_a_of_type_JavaLangString);
-          }
-          j = 1;
-        }
-        i += 1;
-        break;
+      if (localObject != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
       }
-    }
-    if (j == 0) {
-      StickerBubbleAnimationHelper.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable, this.jdField_a_of_type_Int);
+      return;
     }
   }
 }

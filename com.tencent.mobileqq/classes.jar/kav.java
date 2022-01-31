@@ -1,35 +1,33 @@
-import android.os.Build;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.utils.QQAnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageButton;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class kav
-  extends QQAnimationListener
+  implements ActionSheet.OnDismissListener
 {
-  public kav(VideoControlUI paramVideoControlUI) {}
+  public kav(VideoInviteActivity paramVideoInviteActivity, boolean paramBoolean) {}
   
-  public void a()
+  public void onDismiss()
   {
-    this.a.t();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    if (!this.a.i) {
-      this.a.i(0);
-    }
-    if ("GT-I9100G".equals(Build.MODEL))
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.c, 2, "Model is 9100G, don't do animation");
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (str = "0X80043A4";; str = "0X80043B6")
+      {
+        ReportController.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+        if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
+        {
+          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setEnabled(true);
+          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
+        }
+        return;
       }
-      return;
     }
-    this.a.ab();
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+    for (String str = "0X80043AA";; str = "0X80043B0") {
+      break;
+    }
   }
 }
 

@@ -141,8 +141,8 @@ public class QZoneFamousUserHomeJsPlugin
       long l = new JSONObject(paramVarArgs[0]).getLong("uin");
       paramVarArgs = new Intent();
       QzonePluginProxyActivity.a(paramVarArgs, "com.qzone.album.ui.activity.QZonePersonalAlbumActivity");
-      paramVarArgs.putExtra("key_left_tab_title", this.mRuntime.a().getString(2131432684));
-      paramVarArgs.putExtra("key_right_tab_title", this.mRuntime.a().getString(2131432686));
+      paramVarArgs.putExtra("key_left_tab_title", this.mRuntime.a().getString(2131432701));
+      paramVarArgs.putExtra("key_right_tab_title", this.mRuntime.a().getString(2131432703));
       paramVarArgs.putExtra("key_album_owner_uin", l);
       paramVarArgs.putExtra("key_selected_tab", 0);
       paramVarArgs.putExtra("refer", f);

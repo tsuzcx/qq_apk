@@ -1,44 +1,36 @@
-import com.tencent.av.switchface.SwitchFaceProcessorItem;
+import android.text.TextUtils;
+import com.tencent.open.wadl.WLog;
+import com.tencent.open.wadl.WadlJsBridge;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.module_switchface.SwitchFaceProcessor;
-import java.util.List;
+import com.tencent.smtt.sdk.WebView;
 
 public class aljo
   implements Runnable
 {
-  public aljo(SwitchFaceProcessor paramSwitchFaceProcessor, List paramList1, int paramInt1, int paramInt2, List paramList2, int paramInt3, int paramInt4) {}
+  public aljo(WadlJsBridge paramWadlJsBridge, String paramString) {}
   
   public void run()
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("SwitchFaceProcessor", 2, "WL_DEBUG process run start");
-    }
-    SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor)[0].a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor)[1].a(this.jdField_b_of_type_JavaUtilList, this.c, this.d);
-    int i = 0;
-    while (i < SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor).length)
+    try
     {
-      SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor)[i].a();
-      i += 1;
-    }
-    SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor);
-    if (QLog.isColorLevel())
-    {
-      i = j;
-      while (i < SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor).length)
+      if ((this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.getWebview() != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
       {
-        QLog.d("SwitchFaceProcessor", 2, "WL_DEBUG process run mSwitchFaceItem[" + i + "].mUser = (" + SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor)[i].a + ", " + SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor)[i].b + ", " + SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor)[i].c + ")");
-        QLog.d("SwitchFaceProcessor", 2, "WL_DEBUG process run mSwitchFaceItem[" + i + "].mDiff = (" + SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor)[i].d + ", " + SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor)[i].e + ", " + SwitchFaceProcessor.a(this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor)[i].f + ")");
-        i += 1;
+        if (QLog.isColorLevel()) {
+          WLog.b("WadlJsBridge", "##@WadlJavaScript:" + this.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.getWebview().loadUrl(this.jdField_a_of_type_JavaLangString);
       }
-      QLog.d("SwitchFaceProcessor", 2, "WL_DEBUG process run end");
+      return;
+    }
+    catch (Exception localException)
+    {
+      WLog.a("WadlJsBridge", "webview loadUrl jsCallBack()>>> ", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljo
  * JD-Core Version:    0.7.0.1
  */

@@ -312,7 +312,7 @@ public final class Photo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_PHOTO.Photo
  * JD-Core Version:    0.7.0.1
  */

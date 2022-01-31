@@ -1,83 +1,23 @@
-import com.tencent.mobileqq.ar.arengine.ARCamera;
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 
-public class aaek
-  implements Runnable
+public final class aaek
+  implements Parcelable.Creator
 {
-  public aaek(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
-  
-  public void run()
+  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCamera == null)
-    {
-      QLog.i("ARCardCameraRecordFragment", 2, "cancel to open camera. next mCurCameraState = ");
-      return;
-    }
-    int i;
-    label255:
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          QLog.i("ARCardCameraRecordFragment", 2, "openCameraAync.");
-          i = -3;
-          if (ARCardCameraRecordFragment.a(this.a) >= 10) {
-            break label255;
-          }
-          ARCardCameraRecordFragment.b(this.a);
-          i = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.a(this.a.jdField_a_of_type_Int);
-          QLog.i("ARCardCameraRecordFragment", 2, "try to open camera. mCurOpenCameraTryTimes = " + ARCardCameraRecordFragment.a(this.a) + ", MAX_OPEN_CAMERA_TRY_TIMES = " + 10);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null)
-          {
-            if (ARCardCameraRecordFragment.c(this.a) == 1) {
-              break;
-            }
-            QLog.i("ARCardCameraRecordFragment", 2, "cancel to open camera. next mCurCameraState = " + ARCardCameraRecordFragment.c(this.a));
-            return;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          localInterruptedException.printStackTrace();
-          QLog.i("ARCardCameraRecordFragment", 1, "InterruptedException = " + localInterruptedException.getMessage());
-          ARCardCameraRecordFragment.a(this.a, 0);
-          QLog.i("ARCardCameraRecordFragment", 2, "openCameraAync failed. mCurCameraState = " + ARCardCameraRecordFragment.c(this.a));
-          return;
-        }
-        i = -3;
-      }
-      if (i == 0)
-      {
-        ARCardCameraRecordFragment.a(this.a, true);
-        if (i != 0) {
-          break label384;
-        }
-        ARCardCameraRecordFragment.a(this.a, 2);
-        QLog.i("ARCardCameraRecordFragment", 2, "openCameraAync successfully. mCurCameraState = " + ARCardCameraRecordFragment.c(this.a));
-        if (!ARCardCameraRecordFragment.a(this.a)) {
-          break;
-        }
-        ARCardCameraRecordFragment.a(this.a);
-        return;
-      }
-      Thread.currentThread();
-      Thread.sleep(ARCardCameraRecordFragment.d(this.a));
-    } while (ARCardCameraRecordFragment.c(this.a) == 1);
-    QLog.i("ARCardCameraRecordFragment", 2, "cancel to open camera. next mCurCameraState = " + ARCardCameraRecordFragment.c(this.a));
-    return;
-    QLog.i("ARCardCameraRecordFragment", 2, "wait SurfaceCreated to continue to start preview.");
-    return;
-    label384:
-    ARCardCameraRecordFragment.a(this.a, 0);
-    QLog.i("ARCardCameraRecordFragment", 2, "openCameraAync failed. retCode = " + i + ", mCurCameraState = " + ARCardCameraRecordFragment.c(this.a));
+    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
+  }
+  
+  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo.NativeSoRes[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaek
  * JD-Core Version:    0.7.0.1
  */

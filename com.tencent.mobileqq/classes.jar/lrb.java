@@ -1,37 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Base64;
-import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
-import cooperation.readinjoy.ReadInJoyHelper;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.TopicRecommendFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.HashMap;
+import java.util.List;
 
 public class lrb
   implements Runnable
 {
-  public lrb(FollowCoverInfoModule paramFollowCoverInfoModule, TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo) {}
+  public lrb(FastWebModule paramFastWebModule, List paramList) {}
   
   public void run()
   {
-    Object localObject = ReadInJoyHelper.a(FollowCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFollowCoverInfoModule), true, false);
-    if (localObject != null)
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
+      ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (ReadInJoyUtils.a(localArticleInfo)) {}
+      for (;;)
       {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo != null) {
-          break label66;
+        i += 1;
+        break;
+        lrd locallrd = (lrd)FastWebModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFastWebModule).get(localArticleInfo.mChannelID + "_" + localArticleInfo.mArticleID);
+        if ((locallrd == null) || (locallrd.a())) {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFastWebModule.a(localArticleInfo.mArticleContentUrl, localArticleInfo.innerUniqueID, localArticleInfo.mSubscribeID, 3, null);
         }
-        ((SharedPreferences.Editor)localObject).remove("follow_tab_topic_update_info");
       }
-    }
-    for (;;)
-    {
-      ((SharedPreferences.Editor)localObject).putInt("follow_tab_topic_update_info_exists", FollowCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFollowCoverInfoModule));
-      ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
-      return;
-      label66:
-      ((SharedPreferences.Editor)localObject).putString("follow_tab_topic_update_info", Base64.encodeToString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.a().toByteArray(), 0));
     }
   }
 }

@@ -1,50 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugReporter;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.TextInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
+import mqq.os.MqqHandler;
 
 public class ajke
-  implements BusinessObserver
+  implements Runnable
 {
-  public ajke(UnifiedDebugReporter paramUnifiedDebugReporter) {}
+  public ajke(XMediaEditor paramXMediaEditor, TextItem.TextViewHolder paramTextViewHolder) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("extra_data");
-      if (paramBundle == null) {}
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
-        localRemoteLogRsp.mergeFrom(paramBundle);
-        if (localRemoteLogRsp.i32_ret.has())
-        {
-          paramInt = localRemoteLogRsp.i32_ret.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
-          }
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
-        return;
-      }
-    }
-    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.requestFocus();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.findFocus();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(XMediaEditor.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor).a);
+    ThreadManager.getUIHandler().post(new ajkf(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajke
  * JD-Core Version:    0.7.0.1
  */

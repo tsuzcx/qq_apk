@@ -131,13 +131,13 @@ import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
-import xhy;
-import xhz;
-import xia;
-import xib;
-import xic;
-import xid;
-import xie;
+import xlf;
+import xlg;
+import xlh;
+import xli;
+import xlj;
+import xlk;
+import xll;
 
 public final class RecentUtil
 {
@@ -359,7 +359,7 @@ public final class RecentUtil
           paramRecentBaseData.putExtra("hide_more_button", true);
           paramRecentBaseData.putExtra("webStyle", "noBottomBar");
           paramRecentBaseData.putExtra("isScreenOrientationPortrait", true);
-          paramRecentBaseData.putExtra("title", paramQQAppInterface.getApp().getString(2131439167));
+          paramRecentBaseData.putExtra("title", paramQQAppInterface.getApp().getString(2131439195));
           paramRecentBaseData.addFlags(603979776);
           paramActivity.startActivity(paramRecentBaseData);
           paramInt = i;
@@ -707,7 +707,7 @@ public final class RecentUtil
     localIntent.putExtra("is_first_open_imax_ad", c);
     c = false;
     paramContext.startActivity(localIntent);
-    ThreadManager.post(new xie(paramQQAppInterface, paramString, paramInt, paramAdvertisementItem), 5, null, false);
+    ThreadManager.post(new xll(paramQQAppInterface, paramString, paramInt, paramAdvertisementItem), 5, null, false);
     AdvertisementRecentUserManager.a().a(paramQQAppInterface, 2, paramAdvertisementItem);
     if (QLog.isColorLevel()) {
       QLog.d("RecentUtil", 2, "openAdvertisement start, uin:" + paramString);
@@ -842,7 +842,7 @@ public final class RecentUtil
                 }
                 localObject1 = paramRecentUser.uin;
                 i = paramRecentUser.type;
-                ThreadManager.post(new xib((MessageHandler)paramQQAppInterface.a(0), (String)localObject1, i), 8, null, false);
+                ThreadManager.post(new xli((MessageHandler)paramQQAppInterface.a(0), (String)localObject1, i), 8, null, false);
                 paramQQAppInterface.a().a(paramRecentUser.uin, paramRecentUser.type, true, true);
                 if (paramRecentUser.type == 1) {
                   HotChatUtil.a(paramQQAppInterface, paramRecentUser.uin);
@@ -955,7 +955,7 @@ public final class RecentUtil
               if (paramRecentUser.type == 7210)
               {
                 TroopBarAssistantManager.a().a(paramQQAppInterface, true);
-                ThreadManager.post(new xic(paramQQAppInterface), 8, null, false);
+                ThreadManager.post(new xlj(paramQQAppInterface), 8, null, false);
                 TroopBarAssistantManager.a().h(paramQQAppInterface);
                 return;
               }
@@ -1079,7 +1079,7 @@ public final class RecentUtil
                               localObject1 = paramRecentUser.uin;
                               i = paramRecentUser.type;
                               paramQQAppInterface.a().d((String)localObject1, i);
-                              ThreadManager.post(new xia((MessageHandler)paramQQAppInterface.a(0), (String)localObject1, i), 8, null, false);
+                              ThreadManager.post(new xlh((MessageHandler)paramQQAppInterface.a(0), (String)localObject1, i), 8, null, false);
                               if (paramRecentUser.type != 5000) {
                                 break label422;
                               }
@@ -1247,7 +1247,7 @@ public final class RecentUtil
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    ThreadManager.post(new xid(paramQQAppInterface, paramString, paramInt), 2, null, false);
+    ThreadManager.post(new xlk(paramQQAppInterface, paramString, paramInt), 2, null, false);
     if ("2290230341".equals(paramString))
     {
       if (paramInt != 1) {
@@ -1419,7 +1419,7 @@ public final class RecentUtil
     label4280:
     for (paramInt = 1;; paramInt = 0)
     {
-      ThreadManager.post(new xhy(paramQQAppInterface, paramInt), 8, null, false);
+      ThreadManager.post(new xlf(paramQQAppInterface, paramInt), 8, null, false);
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800623E", "0X800623E", 0, 0, "", "", "", "");
       ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_tribe", "", "Msglist", "Clk_tribeHelper", 0, 0, "", "", "", "");
       if (ReadInJoyHelper.a(paramQQAppInterface))
@@ -1537,8 +1537,8 @@ public final class RecentUtil
             break label4268;
           }
           paramRecentUser = paramRecentBaseData.structingMsg.mAlgorithmIds.split("\\|")[0];
-          PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F4", "0X80066F4", 0, 0, String.valueOf(paramInt + 1), "", paramQQAppInterface, ReadInJoyUtils.b(paramRecentUser), false);
-          PublicAccountReportUtils.a("0X80066F4", "", String.valueOf(paramInt + 1), "", paramQQAppInterface, ReadInJoyUtils.b(paramRecentUser));
+          PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F4", "0X80066F4", 0, 0, String.valueOf(paramInt + 1), "", paramQQAppInterface, ReadInJoyUtils.c(paramRecentUser), false);
+          PublicAccountReportUtils.a("0X80066F4", "", String.valueOf(paramInt + 1), "", paramQQAppInterface, ReadInJoyUtils.c(paramRecentUser));
         }
         catch (Exception paramQQAppInterface)
         {
@@ -1917,7 +1917,7 @@ public final class RecentUtil
                     break label4015;
                   }
                   paramRecentUser = paramRecentBaseData.jdField_c_of_type_JavaLangCharSequence.toString();
-                  paramRecentUser = new StringBuilder().append("enter kandianMergeBox, brief : ").append(ReadInJoyUtils.c(paramRecentUser)).append(",isUnRead : ");
+                  paramRecentUser = new StringBuilder().append("enter kandianMergeBox, brief : ").append(ReadInJoyUtils.d(paramRecentUser)).append(",isUnRead : ");
                   if ((paramRecentBaseData == null) || (paramRecentBaseData.jdField_c_of_type_Int == 0)) {
                     break label4027;
                   }
@@ -2036,8 +2036,8 @@ public final class RecentUtil
                 if (paramRecentBaseData != null) {}
                 for (i = paramRecentBaseData.i;; i = -1)
                 {
-                  PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F4", "0X80066F4", 0, 0, String.valueOf(i + 1), "", "", ReadInJoyUtils.b(""), false);
-                  PublicAccountReportUtils.a("0X80066F4", "", String.valueOf(i + 1), "", "", ReadInJoyUtils.b(""));
+                  PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F4", "0X80066F4", 0, 0, String.valueOf(i + 1), "", "", ReadInJoyUtils.c(""), false);
+                  PublicAccountReportUtils.a("0X80066F4", "", String.valueOf(i + 1), "", "", ReadInJoyUtils.c(""));
                   break;
                 }
                 paramRecentUser = "";
@@ -2062,7 +2062,7 @@ public final class RecentUtil
                   if (paramRecentBaseData == null) {}
                   for (paramInt = -1;; paramInt = paramRecentBaseData.i)
                   {
-                    ThreadManager.executeOnSubThread(new xhz(paramQQAppInterface, paramInt));
+                    ThreadManager.executeOnSubThread(new xlg(paramQQAppInterface, paramInt));
                     PublicTracker.a(null, "SERVICE_FOLDER_COST");
                     return true;
                   }

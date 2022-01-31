@@ -1,27 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class tuw
-  implements ActionSheet.OnButtonClickListener
+  implements TextWatcher
 {
-  public tuw(TroopInfoActivity paramTroopInfoActivity, ActionSheet paramActionSheet) {}
+  public tuw(SubLoginActivity paramSubLoginActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, 13);
+    if (paramCharSequence.length() > 0) {
+      if (SubLoginActivity.a(this.a) != null) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
+    }
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
       return;
     }
-    AvatarWallAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, 8);
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 

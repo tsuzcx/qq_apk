@@ -1,62 +1,49 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import mqq.app.MobileQQ;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class jtb
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public jtb(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, VideoActionSheet paramVideoActionSheet, String paramString, Context paramContext, Intent paramIntent) {}
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  final int jdField_b_of_type_Int;
+  final String jdField_b_of_type_JavaLangString;
+  WeakReference jdField_b_of_type_JavaLangRefWeakReference;
   
-  public void OnClick(View paramView, int paramInt)
+  public jtb(String paramString1, VideoAppInterface paramVideoAppInterface, QavPanel paramQavPanel, String paramString2, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (paramInt)
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQavPanel);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoAppInterface);
+  }
+  
+  public void run()
+  {
+    boolean bool2 = false;
+    QavPanel localQavPanel = (QavPanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    VideoAppInterface localVideoAppInterface = (VideoAppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    String str = this.jdField_b_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder().append("ShowEffectOperateRunnable, mQavPanel[");
+    if (localQavPanel != null) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-    default: 
-      return;
-    case 0: 
-      if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().w == 1) || (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().w == 2))
-      {
-        paramView = new Intent();
-        paramView.setPackage(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName());
-        paramView.setAction("tencent.av.v2q.ip2Pstn");
-        paramView.putExtra("uinType", this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().i);
-        paramView.putExtra("toUin", this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().c);
-        paramView.putExtra("nickName", this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().d);
-        paramView.putExtra("peerPhone", this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().g);
-        this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 0);
-        this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(234);
-        this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_JavaLangString, 0);
-        TraeHelper.a().a("DoubleVideoCtrlUI.pstncall");
-        this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramView);
-        return;
+      localStringBuilder = localStringBuilder.append(bool1).append("], mApp[");
+      bool1 = bool2;
+      if (localVideoAppInterface != null) {
+        bool1 = true;
       }
-      PstnUtils.a(null, this.jdField_a_of_type_AndroidContentContext, 1, 4);
+      QLog.w(str, 1, bool1 + "]");
+      if ((localQavPanel != null) && (localVideoAppInterface != null)) {
+        localQavPanel.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      }
       return;
     }
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_AndroidContentContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-      paramView = new Intent("tencent.video.v2q.insertSystemCall");
-      paramView.putExtra("phoneNumber", this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().g);
-      paramView.setPackage(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramView);
-    }
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(235);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_JavaLangString, 0);
   }
 }
 

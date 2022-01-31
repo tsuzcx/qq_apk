@@ -1,19 +1,30 @@
-import android.net.Uri;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.util.PreloadManager;
+import java.util.Iterator;
+import java.util.List;
 
-public final class muu
+public class muu
   implements Runnable
 {
-  public muu(Uri paramUri, String paramString) {}
+  public muu(PreloadManager paramPreloadManager) {}
   
   public void run()
   {
-    try
+    ??? = PreloadManager.a(this.a).iterator();
+    while (((Iterator)???).hasNext())
     {
-      ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A68", "0X8006A68", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_JavaLangString, "", "");
-      return;
+      String str = (String)((Iterator)???).next();
+      PreloadManager.a(this.a, str);
     }
-    catch (Exception localException) {}
+    synchronized (this.a.b)
+    {
+      PreloadManager.a(this.a).clear();
+      if (PreloadManager.b(this.a).size() > 0)
+      {
+        this.a.a();
+        return;
+      }
+      this.a.a = false;
+    }
   }
 }
 

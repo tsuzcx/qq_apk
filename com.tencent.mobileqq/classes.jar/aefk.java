@@ -1,24 +1,29 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopRemindSettingData;
+import com.tencent.mobileqq.managers.TroopRemindSettingManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class aefk
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aefk(SelectLocationFragment paramSelectLocationFragment) {}
+  public aefk(TroopRemindSettingManager paramTroopRemindSettingManager, QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b();
-    new NowVideoReporter().h("video_public").i("search_poi").d(SmallVideoCameraCaptureFragment.a).a(SelectLocationFragment.a(this.a)).b(this.a.getActivity().app);
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if ((TroopRemindSettingData)localEntityManager.a(TroopRemindSettingData.class, this.jdField_a_of_type_JavaLangString) == null)
+    {
+      TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
+      localTroopRemindSettingData.troopUin = this.jdField_a_of_type_JavaLangString;
+      localTroopRemindSettingData.isOpenState = 0;
+      localEntityManager.b(localTroopRemindSettingData);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefk
  * JD-Core Version:    0.7.0.1
  */

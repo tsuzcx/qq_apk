@@ -1,13 +1,11 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import java.util.Comparator;
 
-class zxt
-  implements Runnable
+public final class zxt
+  implements Comparator
 {
-  zxt(zxq paramzxq) {}
-  
-  public void run()
+  public int a(zxu paramzxu1, zxu paramzxu2)
   {
-    ArConfigService.e(this.a.a);
+    return paramzxu1.a - paramzxu2.a;
   }
 }
 

@@ -263,7 +263,7 @@ public class StructMsgItemLayout5
           paramView.setEllipsize(TextUtils.TruncateAt.END);
           paramView.setTextColor(-1);
           paramView.setTextSize(2, 18.0F);
-          paramView.setBackgroundColor(paramContext.getResources().getColor(2131493053));
+          paramView.setBackgroundColor(paramContext.getResources().getColor(2131493054));
           n = AIOUtils.a(10.0F, (Resources)localObject5);
           int i1 = AIOUtils.a(4.0F, (Resources)localObject5);
           int i2 = AIOUtils.a(5.0F, (Resources)localObject5);
@@ -404,7 +404,7 @@ public class StructMsgItemLayout5
                       ((TitledImageView)localObject3).setTitle(paramBundle);
                       ((TitledImageView)localObject3).setTextColor(-1);
                       ((TitledImageView)localObject3).setTextSize(AIOUtils.a(2, 18, (Resources)localObject5));
-                      ((TitledImageView)localObject3).setTextBackground(paramContext.getResources().getColor(2131493053));
+                      ((TitledImageView)localObject3).setTextBackground(paramContext.getResources().getColor(2131493054));
                       ((TitledImageView)localObject3).setTextPadding(AIOUtils.a(10.0F, (Resources)localObject5));
                       ((TitledImageView)localObject3).settextBgRadius(AIOUtils.a(12.0F, (Resources)localObject5));
                     }
@@ -466,7 +466,7 @@ public class StructMsgItemLayout5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout5
  * JD-Core Version:    0.7.0.1
  */

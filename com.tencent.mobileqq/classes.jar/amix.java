@@ -1,31 +1,38 @@
-import android.text.Editable;
-import android.widget.EditText;
-import cooperation.qzone.share.QZoneShareActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.buscard.BuscardPluginInstallActivity;
+import cooperation.plugin.IPluginManager;
+import mqq.os.MqqHandler;
 
 public class amix
   implements Runnable
 {
-  public amix(QZoneShareActivity paramQZoneShareActivity) {}
+  public amix(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
   
   public void run()
   {
-    Editable localEditable;
-    if (this.a.a != null)
+    long l1 = System.currentTimeMillis();
+    if ((BuscardPluginInstallActivity.a(this.a).a("BuscardPlugin.apk") == null) || (!BuscardPluginInstallActivity.a(this.a).isReady()))
     {
-      localEditable = this.a.a.getText();
-      if (localEditable == null) {
-        break label71;
+      if (QLog.isDevelopLevel()) {
+        QLog.e("BuscardPluginInstallActivity", 4, "mPluginManager.queryPlugin->pluginInfo is null");
       }
-    }
-    label71:
-    for (int i = localEditable.length();; i = 0)
-    {
-      this.a.a.setSelection(i);
-      if ((!this.a.isFinishing()) && (!this.a.d)) {
-        this.a.h();
+      if (!BuscardPluginInstallActivity.a(this.a))
+      {
+        ThreadManager.getSubThreadHandler().postDelayed(this, 3000L);
+        BuscardPluginInstallActivity.a(this.a, true);
+        return;
       }
+      QQToast.a(this.a.getApplicationContext(), 2131438295, 0);
+      BuscardPluginInstallActivity.a(this.a, false);
+      this.a.finish();
       return;
     }
+    long l2 = System.currentTimeMillis();
+    BuscardPluginInstallActivity.a(this.a).append(" ==step4:initPluginManager queryPlugin cost=" + (l2 - l1) + ";start time=" + l1);
+    ThreadManager.getUIHandler().post(new amiy(this));
+    BuscardPluginInstallActivity.a(this.a).append(" ==step5:initPluginManager UIHandler().post cost=" + (System.currentTimeMillis() - l2));
   }
 }
 

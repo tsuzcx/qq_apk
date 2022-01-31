@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a22d7" android:background="@drawable/skin_setting_strip_middle_unpressed" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="122.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.nearby.profilecard.SavorTagImg android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2239" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" />
-</RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a223f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b19d2" android:includeFontPadding="false" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2240" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+        <ImageView android:id="@id/image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021483" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff12b7f5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2241" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/image" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

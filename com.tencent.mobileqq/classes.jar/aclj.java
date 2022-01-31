@@ -1,34 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import android.view.animation.Interpolator;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
 
-class aclj
-  implements Runnable
+public class aclj
+  implements Interpolator
 {
-  aclj(aclh paramaclh) {}
+  public aclj(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
   
-  public void run()
+  public float getInterpolation(float paramFloat)
   {
-    try
-    {
-      if (this.a.a.jdField_a_of_type_JavaIoOutputStream == null) {
-        this.a.a.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.a.a.d, true);
-      }
-      if (this.a.a.b == 1) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.a.c, 2002);
-      }
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-      this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      FileManagerRSWorker.a(this.a.a, this.a.a.jdField_a_of_type_Long, this.a.a.h);
-      return;
+    if (paramFloat == 0.0F) {
+      return 0.0F;
     }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      localFileNotFoundException.printStackTrace();
+    float f = paramFloat * 2.0F;
+    if (f >= 2.0F) {
+      return 1.0F;
     }
+    paramFloat = 0.45F / 4.0F;
+    if (f < 1.0F)
+    {
+      f -= 1.0F;
+      d = Math.pow(2.0D, 10.0F * f);
+      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
+    }
+    f -= 1.0F;
+    double d = Math.pow(2.0D, -10.0F * f);
+    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
   }
 }
 

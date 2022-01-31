@@ -1,26 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.VipProfileSimpleView;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
 
 public class agek
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public agek(VipProfileSimpleView paramVipProfileSimpleView, ProfileCardInfo paramProfileCardInfo) {}
+  public agek(ARTipsManager paramARTipsManager, aget paramaget) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.c = true;
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileSimpleView.h(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
+    if (this.jdField_a_of_type_Aget.a != null) {
+      this.jdField_a_of_type_Aget.a.a();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agek
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.PublicAccountArticleObserver;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class mdm
-  implements Runnable
+public class mdm
+  extends PublicAccountArticleObserver
 {
-  mdm(mdl parammdl) {}
+  public mdm(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a.a.b(6);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
+    }
   }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onQueryArticleLikeCount isSuccess=" + paramBoolean + ", articleID=" + paramString + ", likeCount=" + paramInt);
+    }
+    if ((paramBoolean) && (paramString != null))
+    {
+      Iterator localIterator = VideoFeedsPlayActivity.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
+        String str = localVideoInfo.a();
+        if ((str != null) && (str.equals(paramString))) {
+          localVideoInfo.l = paramInt;
+        }
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
 }
 
 

@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
-class sqd
-  implements Runnable
+public class sqd
+  implements IIconListener
 {
-  sqd(sqc paramsqc, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4) {}
+  public sqd(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    ((TroopManager)this.jdField_a_of_type_Sqc.a.app.getManager(51)).a(this.jdField_a_of_type_Sqc.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c, this.d);
-    ThreadManager.getUIHandler().post(new sqe(this));
+    if ((this.a.a.a != null) && (this.a.a.a.actionId == paramInt1) && (paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.a.a(this.a.a.a);
+    }
   }
 }
 

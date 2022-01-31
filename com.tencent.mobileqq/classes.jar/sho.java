@@ -1,44 +1,49 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.DataLineObserver;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class sho
-  implements CompoundButton.OnCheckedChangeListener
+  extends DataLineObserver
 {
-  public sho(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public sho(Conversation paramConversation) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    if (AppSetting.b)
-    {
-      paramCompoundButton = this.a.getString(2131435371);
-      DiscussionInfoCardActivity.b(this.a).setContentDescription(paramCompoundButton);
+    super.a(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, AppConstants.y, 6000);
     }
-    boolean bool = DiscussionInfoCardActivity.a(this.a).a(this.a.a);
-    paramCompoundButton = DiscussionInfoCardActivity.a(this.a);
-    Object localObject = this.a.a;
-    if (!bool)
-    {
-      paramBoolean = true;
-      paramCompoundButton.a((DiscussionInfo)localObject, paramBoolean);
-      localObject = new ReportTask(this.a.app).a("dc00899").b("Grp_Dis_set").c("Dis_info");
-      if (!bool) {
-        break label128;
-      }
-    }
-    label128:
-    for (paramCompoundButton = "Clk_unstick";; paramCompoundButton = "Clk_stick")
-    {
-      ((ReportTask)localObject).d(paramCompoundButton).a();
+    while (i != 1) {
       return;
-      paramBoolean = false;
-      break;
     }
+    this.a.a(8, AppConstants.z, 6000);
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  {
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
+    if (i == 0) {
+      this.a.a(9, AppConstants.y, 6003);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, AppConstants.z, 6003);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, AppConstants.y, 6000);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, AppConstants.z, 6003);
   }
 }
 

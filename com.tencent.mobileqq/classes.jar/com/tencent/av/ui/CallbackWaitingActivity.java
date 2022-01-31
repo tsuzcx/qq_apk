@@ -16,18 +16,18 @@ import com.tencent.mobileqq.utils.AudioUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import jrj;
-import jrk;
-import jrm;
+import jqu;
+import jqv;
+import jqx;
 
 public class CallbackWaitingActivity
   extends BaseActivity
 {
   private static String f = "CallbackWaitingActivity";
   int jdField_a_of_type_Int = 1001;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jrm(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jqx(this);
   AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new jrj(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new jqu(this, Looper.getMainLooper());
   public BaseCallbackUI a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public String a;
@@ -83,7 +83,7 @@ public class CallbackWaitingActivity
     this.mActNeedImmersive = false;
     super.requestWindowFeature(1);
     super.doOnCreate(paramBundle);
-    setContentView(2130969264);
+    setContentView(2130969265);
     if (QLog.isColorLevel()) {
       QLog.d(f, 2, "onCreate");
     }
@@ -107,7 +107,7 @@ public class CallbackWaitingActivity
     this.jdField_b_of_type_Int = paramBundle.getIntExtra("uinType", 0);
     this.jdField_a_of_type_ComTencentAvUiBaseCallbackUI = new BaseCallbackUI(this, 1001);
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("android.intent.action.PHONE_STATE"));
-    this.jdField_a_of_type_ComTencentAvUiBaseCallbackUI.jdField_a_of_type_AndroidOsHandler.postDelayed(new jrk(this), 30000L);
+    this.jdField_a_of_type_ComTencentAvUiBaseCallbackUI.jdField_a_of_type_AndroidOsHandler.postDelayed(new jqv(this), 30000L);
     this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)getSystemService("audio"));
     this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidMediaAudioManager.getMode();
     return true;

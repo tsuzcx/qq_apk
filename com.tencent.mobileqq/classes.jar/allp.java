@@ -1,26 +1,21 @@
-import android.view.ViewTreeObserver;
-import com.tencent.widget.DynamicGridView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qidian.QidianManager;
+import com.tencent.qidian.data.BmqqAccountType;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class allp
-  implements alls
+public final class allp
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public allp(QidianManager paramQidianManager, QQAppInterface paramQQAppInterface, BmqqAccountType paramBmqqAccountType) {}
   
-  public allp(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new allq(this, paramInt1, paramInt2));
+    this.jdField_a_of_type_ComTencentQidianQidianManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentQidianDataBmqqAccountType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     allp
  * JD-Core Version:    0.7.0.1
  */

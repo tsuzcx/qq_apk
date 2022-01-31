@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 
 public class wzy
   implements Runnable
 {
-  public wzy(CommonHbFragment paramCommonHbFragment) {}
+  public wzy(PasswdRedBagManager paramPasswdRedBagManager, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
-    CommonHbFragment.a(this.a, CommonHbFragment.e(this.a));
+    PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager).a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
   }
 }
 

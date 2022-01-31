@@ -1,17 +1,27 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.util.TroopReportor;
 
 public class sel
-  implements Runnable
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public sel(Conversation paramConversation, ApolloSurfaceView paramApolloSurfaceView, int paramInt1, int paramInt2, Intent paramIntent) {}
+  public sel(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onPageSelected(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    super.onPageSelected(paramInt);
+    if ((this.a.d == 1) || (this.a.a.isMember))
+    {
+      TroopReportor.a("Grp_set_new", "grpData_admin", "slide_head", 0, 0, new String[] { this.a.a.troopUin, TroopReportor.a(this.a.a) });
+      return;
+    }
+    String str2 = this.a.a.troopUin;
+    if (this.a.a.isMember) {}
+    for (String str1 = "1";; str1 = "0")
+    {
+      TroopReportor.a("Grp_set_new", "grpData_visitor", "slide_head", 0, 0, new String[] { str2, str1 });
+      return;
     }
   }
 }

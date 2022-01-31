@@ -1,36 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
 public final class mux
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public mux(QQMessageFacade paramQQMessageFacade, String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.ar, -3006);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      localObject = this.b;
-      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForStructing))) {
-        break label108;
-      }
-    }
-    label108:
-    for (Object localObject = PublicAccountUtil.a((MessageForStructing)localMessageRecord, (String)localObject, null, null, this.c);; localObject = PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, null, null, this.c))
-    {
-      if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a((MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      }
-      return;
-      localObject = this.jdField_a_of_type_JavaLangString + ": " + this.b;
-      break;
-    }
+    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
+  }
+  
+  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  {
+    return new ProfileParams.CurLoginUsr[paramInt];
   }
 }
 

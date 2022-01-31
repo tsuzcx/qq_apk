@@ -1,200 +1,145 @@
-import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoBehaviorsReporter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.mobileqq.activity.recent.RecentFaceDecoder;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import java.util.List;
 
 public class lfq
-  extends ReadInJoyObserver
+  extends BaseAdapter
+  implements AdapterView.OnItemClickListener
 {
-  public lfq(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  private List jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt, List paramList)
-  {
-    if ((paramInt != ReadInJoyVideoSubChannelActivity.a(this.a)) || (ReadInJoyVideoSubChannelActivity.a(this.a) == null)) {
-      return;
-    }
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      this.a.a(paramList, 1);
-      Object localObject1 = (Long)paramList.get(0);
-      Object localObject2 = ReadInJoyLogicEngine.a().a(ReadInJoyVideoSubChannelActivity.a(this.a), ((Long)localObject1).longValue());
-      StringBuilder localStringBuilder = new StringBuilder().append("load history successful ! first article title : ");
-      if (localObject2 != null)
-      {
-        localObject1 = ((ArticleInfo)localObject2).mTitle;
-        localObject1 = ReadInJoyUtils.c((String)localObject1);
-        localStringBuilder = new StringBuilder().append((String)localObject1).append(" articleID : ");
-        if (localObject2 == null) {
-          break label252;
-        }
-      }
-      label252:
-      for (localObject1 = Long.valueOf(((ArticleInfo)localObject2).mArticleID);; localObject1 = "-1")
-      {
-        QLog.d("Q.readinjoy.video.SubChannelActivity", 1, localObject1);
-        if (!QLog.isColorLevel()) {
-          break label270;
-        }
-        localObject1 = new StringBuilder("onChannelArticleLoaded ");
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localObject2 = (Long)paramList.next();
-          ((StringBuilder)localObject1).append("recommendSeq = " + localObject2 + ",\n ");
-        }
-        localObject1 = "";
-        break;
-      }
-      QLog.d("Q.readinjoy.video.SubChannelActivity", 1, ((StringBuilder)localObject1).toString());
-    }
-    label270:
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyPageItemCache.b = 0L;
-    paramList = this.a;
-    if (!ReadInJoyVideoSubChannelActivity.b(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bool = ReadInJoyVideoSubChannelActivity.b(paramList, bool);
-      if (!ReadInJoyVideoSubChannelActivity.b(this.a)) {
-        ReadInJoyVideoSubChannelActivity.c(this.a, true);
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("Q.readinjoy.video.SubChannelActivity", 2, "onChannelArticleLoaded: hasRefresh" + bool);
-      return;
-    }
-  }
+  private lfq(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, SparseArray paramSparseArray)
+  private void a(lfu paramlfu, int paramInt, View paramView)
   {
-    if (paramInt == 56)
+    lft locallft = (lft)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    lfu.a(paramlfu).setText(lft.b(locallft));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)lfu.a(paramlfu).getLayoutParams();
+    Object localObject = localLayoutParams;
+    if (localLayoutParams == null) {
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+    }
+    lfu.a(paramlfu).setImageDrawable(ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity).a(1008, lft.c(locallft)));
+    int i;
+    if (ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.readinjoy.video.SubChannelActivity", 2, "onGetChannelStatusUpdate(): success == " + paramBoolean);
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
+      localObject = lfu.a(paramlfu);
+      if (!ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity)) {
+        break label238;
       }
-      if ((paramBoolean) && (paramSparseArray != null) && (paramSparseArray.size() > 0))
-      {
-        paramSparseArray = (ChannelInfo)paramSparseArray.get(ReadInJoyVideoSubChannelActivity.b(this.a));
-        if (paramSparseArray != null) {
-          ReadInJoyVideoSubChannelActivity.b(this.a, paramSparseArray, true);
-        }
+      i = 0;
+      label121:
+      ((View)localObject).setVisibility(i);
+      lfu.a(paramlfu).setOnClickListener(new lfr(this, paramView));
+      if (paramInt != getCount() - 1) {
+        break label245;
       }
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
-  {
-    if ((paramInt != ReadInJoyVideoSubChannelActivity.a(this.a)) || (ReadInJoyVideoSubChannelActivity.a(this.a) == null)) {
-      return;
-    }
-    paramInt = ReadInJoyLogicEngine.a().a(Integer.valueOf(paramInt));
-    if (paramBoolean1) {
-      if ((paramList != null) && (paramInt > 0))
-      {
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder("onChannelRefreshed ");
-          Iterator localIterator = paramList.iterator();
-          while (localIterator.hasNext())
-          {
-            Long localLong = (Long)localIterator.next();
-            localStringBuilder.append("recommendSeq = " + localLong + ",\n ");
-          }
-          QLog.d("Q.readinjoy.video.SubChannelActivity", 1, localStringBuilder.toString());
-        }
-        VideoBehaviorsReporter.a().c(true);
-        this.a.a(paramList, 1);
-        ReadInJoyVideoSubChannelActivity.a(this.a).a(0);
+      lfu.b(paramlfu).setVisibility(8);
+      label163:
+      lfu.a(paramlfu).setOnClickListener(new lfs(this, locallft));
+      lfu.a(paramlfu, lft.c(locallft));
+      if (!ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity)) {
+        break label256;
       }
+      lfu.c(paramlfu).setBackgroundResource(2131493470);
     }
     for (;;)
     {
-      ReadInJoyVideoSubChannelActivity.a(this.a, paramBoolean1, paramInt);
-      this.a.a(paramList);
+      lfu.c(paramlfu).setPressed(false);
       return;
-      if (ReadInJoyVideoSubChannelActivity.a(this.a).isEmpty())
-      {
-        ReadInJoyVideoSubChannelActivity.a(this.a, this.a.getResources().getString(2131428441));
-        continue;
-        if (ReadInJoyVideoSubChannelActivity.a(this.a).isEmpty()) {
-          ReadInJoyVideoSubChannelActivity.a(this.a, this.a.getResources().getString(2131428440));
-        }
-      }
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt == 97)
-    {
-      QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a), "请添加更多频道，再取消", 0).a();
-      ReadInJoyVideoSubChannelActivity.a(this.a, true);
-    }
-    while (paramInt != 98) {
-      return;
-    }
-    QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a), "添加频道已达上限", 0).a();
-    ReadInJoyVideoSubChannelActivity.a(this.a, false);
-  }
-  
-  public void b(int paramInt, List paramList)
-  {
-    if ((paramInt != ReadInJoyVideoSubChannelActivity.a(this.a)) || (paramList == null) || (ReadInJoyVideoSubChannelActivity.a(this.a) == null)) {
-      return;
-    }
-    ReadInJoyVideoSubChannelActivity.a(this.a).b(ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyVideoSubChannelActivity.a(this.a)), paramList));
-    ReadInJoyVideoSubChannelActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
-  {
-    paramBoolean2 = true;
-    if ((paramInt != ReadInJoyVideoSubChannelActivity.a(this.a)) || (ReadInJoyVideoSubChannelActivity.a(this.a) == null))
-    {
-      ReadInJoyVideoSubChannelActivity.d(this.a, false);
-      return;
-    }
-    if ((paramBoolean1) && (paramList != null)) {
-      this.a.a(paramList, 2);
-    }
-    if ((paramBoolean1) && (paramList == null))
-    {
-      paramBoolean1 = true;
-      paramList = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView;
-      if (paramBoolean1) {
-        break label218;
-      }
-    }
-    for (;;)
-    {
-      paramList.a(paramBoolean2);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video.SubChannelActivity", 2, "autoLoad:" + ReadInJoyVideoSubChannelActivity.c(this.a) + " noMoreData:" + paramBoolean1 + " fore:" + GesturePWDUtils.isAppOnForeground(ReadInJoyVideoSubChannelActivity.a(this.a)));
-      }
-      if ((!ReadInJoyVideoSubChannelActivity.c(this.a)) && (paramBoolean1) && (GesturePWDUtils.isAppOnForeground(ReadInJoyVideoSubChannelActivity.a(this.a))))
-      {
-        paramList = this.a.getResources().getString(2131428436);
-        QQToast.a(ReadInJoyVideoSubChannelActivity.a(this.a).getApplicationContext(), paramList, 0).a();
-      }
-      ReadInJoyVideoSubChannelActivity.d(this.a, false);
-      return;
-      paramBoolean1 = false;
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getResources().getDimensionPixelSize(2131560140);
       break;
-      label218:
-      paramBoolean2 = false;
+      label238:
+      i = 8;
+      break label121;
+      label245:
+      lfu.b(paramlfu).setVisibility(0);
+      break label163;
+      label256:
+      lfu.c(paramlfu).setBackgroundResource(2130839723);
+    }
+  }
+  
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = (lft)getItem((int)paramLong);
+    if ((paramAdapterView == null) || (ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity))) {
+      return;
+    }
+    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity, AccountDetailActivity.class);
+    paramView.putExtra("uin", lft.c(paramAdapterView));
+    paramView.putExtra("report_src_param_type", "");
+    paramView.putExtra("report_src_param_name", "");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.startActivity(paramView);
+  }
+  
+  public void a(List paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      paramView = new lfu(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity, null);
+      localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getLayoutInflater().inflate(2130969655, paramViewGroup, false);
+      lfu.a(paramView, localView.findViewById(2131362841));
+      lfu.b(paramView, localView.findViewById(2131362740));
+      lfu.a(paramView, (ImageView)localView.findViewById(2131367343));
+      lfu.a(paramView, (TextView)localView.findViewById(2131367344));
+      lfu.a(paramView, (Button)localView.findViewById(2131367345));
+      lfu.c(paramView, localView.findViewById(2131363630));
+      localView.setTag(paramView);
+      localView.setTag(-3, Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getResources().getDimensionPixelSize(2131560141)));
+      paramViewGroup = paramView;
+    }
+    for (;;)
+    {
+      a(paramViewGroup, paramInt, localView);
+      return localView;
+      paramViewGroup = (lfu)paramView.getTag();
+      localView = paramView;
     }
   }
 }

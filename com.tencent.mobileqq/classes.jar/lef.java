@@ -1,16 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class lef
-  implements Runnable
+  extends ReadInJoyObserver
 {
-  public lef(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public lef(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    ReadInJoyGlobalReporter.a().a(this.a.app, NetConnInfoCenter.getServerTimeMillis(), ReadInJoyUtils.e(), ReadInJoyUtils.d);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.self.ReadInJoySelfActivity", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden = " + paramBoolean);
+    }
+    if (paramInt1 == 0) {
+      ReadInJoySelfActivity.b(this.a);
+    }
   }
 }
 

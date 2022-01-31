@@ -1,44 +1,43 @@
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
-import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.biz.anonymous.QQAnonymousDialog;
 
 public class kkv
-  implements Runnable
+  implements Handler.Callback
 {
-  public kkv(TroopRedTouchManager paramTroopRedTouchManager, oidb_0x791.GetRedDotRes paramGetRedDotRes) {}
+  public kkv(QQAnonymousDialog paramQQAnonymousDialog) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = 0;
-    Object localObject1 = new File(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchManager.a.getApplication().getFilesDir(), "TroopRedTouchManager2_" + this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchManager.a.getCurrentAccountUin()).getAbsolutePath();
-    synchronized (this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchManager)
-    {
-      try
+    int i;
+    if (paramMessage.what == 291) {
+      switch (this.a.jdField_a_of_type_Int)
       {
-        FileUtils.a((String)localObject1, this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.toByteArray(), false);
-        localObject1 = new StringBuilder("saveLocalFile==>");
-        while (i < this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size())
-        {
-          ((StringBuilder)localObject1).append(TroopRedTouchManager.a((oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i)));
-          i += 1;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
+      default: 
+        i = 0;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchManager.b + "Q.qqstory.redPoint", 2, localObject2.toString());
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(i));
+      paramMessage = this.a;
+      paramMessage.jdField_a_of_type_Int += 1;
+      if (this.a.jdField_a_of_type_Int == 4) {
+        this.a.jdField_a_of_type_Int = 0;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
+      return false;
+      i = 2131430458;
+      continue;
+      i = 2131430459;
+      continue;
+      i = 2131430460;
+      continue;
+      i = 2131430461;
     }
   }
 }

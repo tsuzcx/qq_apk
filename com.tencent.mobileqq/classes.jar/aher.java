@@ -1,53 +1,31 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateWordClickCallback;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMsgManager;
+import java.util.ArrayList;
 
 public class aher
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aher(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
+  public aher(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    FragmentActivity localFragmentActivity;
-    Object localObject;
-    if (paramView.getTag() != null)
-    {
-      localFragmentActivity = this.a.getActivity();
-      localObject = (Integer)paramView.getTag(2131362080);
-      paramView = (AssociateSearchWordsFragment.AssociateItem)paramView.getTag(2131362079);
-      switch (paramView.jdField_a_of_type_Int)
-      {
-      }
+    MessageRecord localMessageRecord = ReceiptMessageReadMemberListContainerFragment.a(this.a).a().b(ReceiptMessageReadMemberListContainerFragment.a(this.a).jdField_a_of_type_JavaLangString, ReceiptMessageReadMemberListContainerFragment.a(this.a).jdField_a_of_type_Int, ReceiptMessageReadMemberListContainerFragment.c(this.a));
+    if (ReceiptMessageReadMemberListContainerFragment.a(this.a).size() == 0) {
+      ReceiptMsgManager.a(ReceiptMessageReadMemberListContainerFragment.a(this.a), localMessageRecord, "3");
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localFragmentActivity instanceof AssociateSearchWordsFragment.AssociateWordClickCallback));
-      Intent localIntent = new Intent(localFragmentActivity, QQBrowserActivity.class);
-      localObject = paramView.e;
-      paramView = (View)localObject;
-      if (!((String)localObject).startsWith("http")) {
-        paramView = "http://" + (String)localObject;
-      }
-      localIntent.putExtra("url", paramView);
-      localFragmentActivity.startActivity(localIntent);
-      localFragmentActivity.finish();
+    while (ReceiptMessageReadMemberListContainerFragment.b(this.a).size() <= 0) {
       return;
-    } while (!(localFragmentActivity instanceof AssociateSearchWordsFragment.AssociateWordClickCallback));
-    ((AssociateSearchWordsFragment.AssociateWordClickCallback)localFragmentActivity).a(paramView.jdField_a_of_type_JavaLangString, paramView.d);
+    }
+    ReceiptMsgManager.a(ReceiptMessageReadMemberListContainerFragment.a(this.a), localMessageRecord, "4");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aher
  * JD-Core Version:    0.7.0.1
  */

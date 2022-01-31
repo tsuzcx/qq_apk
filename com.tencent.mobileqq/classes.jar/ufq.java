@@ -1,23 +1,20 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class ufq
-  extends ClickableSpan
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public ufq(ActivateFriendActivity paramActivateFriendActivity) {}
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  int jdField_b_of_type_Int;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
   
-  public void onClick(View paramView)
-  {
-    this.a.b();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(0, 165, 224));
-  }
+  private ufq(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
 }
 
 

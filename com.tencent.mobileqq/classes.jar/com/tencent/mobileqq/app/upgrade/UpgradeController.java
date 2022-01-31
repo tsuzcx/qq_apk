@@ -52,8 +52,8 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
 import protocol.KQQConfig.UpgradeInfo;
-import ztg;
-import zth;
+import zwm;
+import zwn;
 
 public final class UpgradeController
   implements Handler.Callback, AuthCodeWriter.ICheckCodeListener, DownloadListener, DownloadQueryListener, UpdateManager.OnCheckUpdateListener
@@ -541,7 +541,7 @@ public final class UpgradeController
     String str = ConfigHandler.a(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl);
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if ((localBaseActivity != null) && (str != null) && (!str.startsWith("com.tencent.av.")) && (!str.equals("com.tencent.mobileqq.activity.UserguideActivity")) && (!str.equals("com.tencent.mobileqq.activity.UpgradeDetailActivity"))) {
-      localBaseActivity.runOnUiThread(new zth(this, paramBoolean, paramQQAppInterface));
+      localBaseActivity.runOnUiThread(new zwn(this, paramBoolean, paramQQAppInterface));
     }
   }
   
@@ -1291,7 +1291,7 @@ public final class UpgradeController
         }
       } while ((this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k)));
       this.e = true;
-      ThreadManager.executeOnFileThread(new ztg(this));
+      ThreadManager.executeOnFileThread(new zwm(this));
       return;
       localSharedPreferences = localQQAppInterface.getPreferences();
       if (!ConfigHandler.b(localQQAppInterface))
@@ -1339,7 +1339,7 @@ public final class UpgradeController
         if (!this.e) {
           continue;
         }
-        i = 2131428514;
+        i = 2131428520;
         Toast.makeText(paramMessage, i, 0).show();
         paramMessage = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime()).getHandler(Conversation.class);
         if ((paramMessage != null) && (a().a() == 4)) {
@@ -1352,7 +1352,7 @@ public final class UpgradeController
         continue;
       }
       return true;
-      i = 2131428513;
+      i = 2131428519;
     }
   }
 }

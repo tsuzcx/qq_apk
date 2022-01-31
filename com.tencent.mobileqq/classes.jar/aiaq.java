@@ -1,20 +1,32 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView.StatusListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DancePlayFilter;
 
 public class aiaq
-  implements Runnable
+  implements GLRecognizeRegionView.StatusListener
 {
-  public aiaq(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  public aiaq(DancePlayFilter paramDancePlayFilter) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    QQToast.a(BaseApplicationImpl.sApplication, "WebP格式的图片不支持原图发送，请使用标清质量来发送。", 1).a();
+    if (paramInt == 2)
+    {
+      DancePlayFilter.a(this.a, DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a), 75, 1));
+      DancePlayFilter.a(this.a).e();
+      DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a));
+    }
+    if (paramInt == 3)
+    {
+      DancePlayFilter.b(this.a, DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a), 75, 2));
+      DancePlayFilter.a(this.a).e();
+      DancePlayFilter.a(this.a).a(DancePlayFilter.b(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiaq
  * JD-Core Version:    0.7.0.1
  */

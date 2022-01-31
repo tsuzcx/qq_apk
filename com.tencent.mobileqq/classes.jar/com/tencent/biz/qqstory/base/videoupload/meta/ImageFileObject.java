@@ -9,7 +9,7 @@ import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import java.io.File;
 import java.io.IOException;
-import mzo;
+import naz;
 
 @TargetApi(14)
 public class ImageFileObject
@@ -30,7 +30,7 @@ public class ImageFileObject
   private void c()
   {
     TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new mzo(this);
+    localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new naz(this);
     localTransferRequest.i = this.jdField_a_of_type_JavaLangString;
     localTransferRequest.jdField_a_of_type_Boolean = true;
     localTransferRequest.jdField_b_of_type_Int = 196610;

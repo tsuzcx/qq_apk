@@ -1,25 +1,13 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class tpx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tpx(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public tpx(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a(1);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
-    if (this.a.a().booleanValue())
-    {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
-    }
+    RegisterPhoneNumActivity.a(this.a, true);
   }
 }
 

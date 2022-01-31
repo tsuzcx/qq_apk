@@ -1,17 +1,18 @@
-import com.tencent.biz.webviewplugin.NearbyTroopsPlugin;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.OnAnimationPlayEndListener;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.ui.CustomAnimationAdapter;
 
 public class ozq
-  implements AIOAnimationControlManager.OnAnimationPlayEndListener
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public ozq(NearbyTroopsPlugin paramNearbyTroopsPlugin, String paramString) {}
+  public ozq(CustomAnimationAdapter paramCustomAnimationAdapter, View paramView) {}
   
-  public void a(String paramString1, String paramString2)
+  public boolean onPreDraw()
   {
-    if (AIOAnimationControlManager.jdField_a_of_type_JavaLangString.equals(paramString2)) {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNearbyTroopsPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
-    }
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    CustomAnimationAdapter.a(this.jdField_a_of_type_ComTencentBizUiCustomAnimationAdapter, this.jdField_a_of_type_AndroidViewView);
+    return false;
   }
 }
 

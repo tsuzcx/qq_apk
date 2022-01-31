@@ -1,26 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog;
-import com.tencent.biz.troopgift.TroopGiftPanel.OnShowOrHideListerner;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.biz.troop.VideoCombineHelper;
 
-public class oxq
-  implements View.OnClickListener
+class oxq
+  implements TroopMemberApiClient.Callback
 {
-  public oxq(TroopGiftPanel.GiftNumInputDialog paramGiftNumInputDialog, TroopGiftPanel paramTroopGiftPanel) {}
+  oxq(oxp paramoxp) {}
   
-  public void onClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.c();
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.b();
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.a();
-      return;
-    }
-    ((BaseChatPie)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).aH();
+    this.a.a.a.b();
   }
 }
 

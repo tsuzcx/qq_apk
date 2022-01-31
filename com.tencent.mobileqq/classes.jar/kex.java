@@ -1,15 +1,16 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.GetRedBag;
+import com.tencent.qphone.base.util.QLog;
 
-class kex
+public class kex
   implements Runnable
 {
-  kex(kew paramkew) {}
+  public kex(GetRedBag paramGetRedBag, int paramInt) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.b(false);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(8002) });
+    this.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag.a = null;
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag.i, 1, "getRedBag还没回包，超时结束, resultCode[" + this.jdField_a_of_type_Int + "]");
+    GetRedBag.a(this.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag, this.jdField_a_of_type_Int, null);
   }
 }
 

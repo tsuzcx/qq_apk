@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 
 public class akcl
   implements Runnable
 {
-  public akcl(SwiftWebAccelerator paramSwiftWebAccelerator, SwiftReuseTouchWebView paramSwiftReuseTouchWebView) {}
+  public akcl(JumpAction paramJumpAction) {}
   
   public void run()
   {
-    try
+    if (JumpAction.a(this.a) == null) {}
+    String str;
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView.destroy();
       return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("WebLog_SwiftWebAccelerator", 1, "doMainStep_WarnUpWebView error:" + localException.toString());
-    }
+      str = JumpAction.a(this.a).getCurrentAccountUin();
+    } while (TextUtils.isEmpty(str));
+    WebProcessManager.a(str, "key_reader_click_time");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akcl
  * JD-Core Version:    0.7.0.1
  */

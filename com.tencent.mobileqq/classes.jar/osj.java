@@ -1,25 +1,26 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import com.tencent.biz.qrcode.CodeMaskManager.Callback;
 
-public class osj
-  implements Comparator
+class osj
+  implements Runnable
 {
-  public osj(QRDisplayActivity paramQRDisplayActivity) {}
+  osj(osi paramosi, Bundle paramBundle) {}
   
-  public int a(String paramString1, String paramString2)
+  public void run()
   {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+    if (this.jdField_a_of_type_Osi.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a) {
+      return;
     }
-    while (paramString1 != null) {
-      return i;
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      this.jdField_a_of_type_Osi.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.jdField_a_of_type_Osi.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager));
     }
-    if (paramString2 != null) {
-      return -1;
+    for (;;)
+    {
+      CodeMaskManager.a(this.jdField_a_of_type_Osi.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager);
+      return;
+      this.jdField_a_of_type_Osi.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a((Bundle)this.jdField_a_of_type_AndroidOsBundle.clone());
     }
-    return 0;
   }
 }
 

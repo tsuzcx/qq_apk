@@ -1,22 +1,27 @@
-import com.tencent.biz.qqstory.playmode.child.TagStoryVidListPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-class nkg
-  implements Runnable
+public class nkg
+  extends OnPlayModeShareListener
 {
-  nkg(nkd paramnkd) {}
-  
-  public void run()
+  public nkg(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode, VideoPlayModeBase paramVideoPlayModeBase, boolean paramBoolean, VideoListFeedItem paramVideoListFeedItem, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-    StoryReportor.b("play_video", "play_done", 0, 0, new String[] { "1", String.valueOf(111) });
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
-    this.a.a.a.jdField_a_of_type_Int = 1;
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nkh(this));
+    super(paramVideoPlayModeBase);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      StoryReportor.a("play_video", "guest_share_suc", i, paramInt, new String[] { "", String.valueOf(StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
+    }
   }
 }
 

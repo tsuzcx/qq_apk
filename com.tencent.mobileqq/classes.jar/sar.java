@@ -1,125 +1,34 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class sar
-  extends TroopObserver
+  implements ActionSheet.OnButtonClickListener
 {
-  public sar(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sar(ChatHistoryForC2C paramChatHistoryForC2C, ActionSheet paramActionSheet) {}
   
-  protected void a(String paramString, boolean paramBoolean, List paramList)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)) {
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
     }
-    TroopInfo localTroopInfo = ((TroopManager)this.a.app.getManager(51)).a(paramString);
-    paramString = new Message();
-    paramString.what = 10;
-    Bundle localBundle = paramString.getData();
-    if (localTroopInfo != null)
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C, 230);
+    localQQCustomDialog.setTitle("温馨提示");
+    if (paramInt == 0) {}
+    for (paramView = "删除本地的聊天记录和对应的云端聊天记录，无法恢复";; paramView = "删除本地聊天记录，再次进入聊天记录可从云端重新获取聊天记录")
     {
-      localBundle.putStringArrayList("AVATAR_WALL_LIST", (ArrayList)localTroopInfo.mTroopPicList);
-      paramList = localTroopInfo.mTroopVerifyingPics;
-      if (paramList != null) {
-        localBundle.putStringArray("VERIFYING_PICTURE_LIST", (String[])paramList.toArray(new String[paramList.size()]));
-      }
+      localQQCustomDialog.setMessage(paramView);
+      localQQCustomDialog.setNegativeButton(2131433015, new sas(this));
+      localQQCustomDialog.setPositiveButton(2131433016, new sat(this, paramInt));
+      localQQCustomDialog.show();
+      break;
     }
-    for (;;)
-    {
-      localBundle.putBoolean("IS_DEFAULT_AVATAR", paramBoolean);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
-      return;
-      localBundle.putStringArrayList("AVATAR_WALL_LIST", (ArrayList)paramList);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List paramList)
-  {
-    boolean bool = true;
-    if (this.a.f) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (!paramBoolean) || (!Utils.a(paramString1, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)));
-      if (paramInt1 == 0)
-      {
-        if (paramInt2 == 0) {}
-        for (paramBoolean = bool;; paramBoolean = false)
-        {
-          a(paramString1, paramBoolean, paramList);
-          return;
-        }
-      }
-      if (paramString2 != null)
-      {
-        QQToast.a(this.a, paramString2, 1).b(this.a.getTitleBarHeight());
-        return;
-      }
-      if ((paramInt1 == 1) || (paramInt1 == 2))
-      {
-        QQToast.a(this.a, this.a.getString(2131430208), 1).b(this.a.getTitleBarHeight());
-        return;
-      }
-      if (paramInt1 == 19)
-      {
-        QQToast.a(this.a, this.a.getString(2131430209), 1).b(this.a.getTitleBarHeight());
-        return;
-      }
-    } while (paramInt1 != 65);
-    QQToast.a(this.a, this.a.getString(2131430210), 1).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List paramList)
-  {
-    if (this.a.f) {}
-    while ((!paramBoolean) || (!Utils.a(paramString1, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
-      return;
-    }
-    if (paramInt1 == 0)
-    {
-      a(paramString1, false, paramList);
-      return;
-    }
-    a(paramString1, false, paramList);
-    if (paramString2 != null)
-    {
-      QQToast.a(this.a, paramString2, 1).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (paramInt1 == 1)
-    {
-      QQToast.a(this.a, this.a.getString(2131430208), 1).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (paramInt1 == 2)
-    {
-      QQToast.a(this.a, this.a.getString(2131430209), 1).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (paramInt1 == 3)
-    {
-      QQToast.a(this.a, this.a.getString(2131430212), 1).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (paramInt1 == 4)
-    {
-      QQToast.a(this.a, this.a.getString(2131430213), 1).b(this.a.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a, this.a.getString(2131430214), 1).b(this.a.getTitleBarHeight());
   }
 }
 

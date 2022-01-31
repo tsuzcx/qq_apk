@@ -1,52 +1,27 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 
 public class abjv
-  implements IphonePickerView.PickerViewAdapter
+  implements Runnable
 {
-  public abjv(LocationSelectActivity paramLocationSelectActivity) {}
+  public abjv(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public int getColumnCount()
+  public void run()
   {
-    return this.a.jdField_a_of_type_Int;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt] != null) {
-      return ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt]).size();
-    }
-    return 0;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1] != null)
-      {
-        if (((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).code.equals("0")) {
-          return "----";
-        }
-        String str = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).name;
-        return str;
-      }
-    }
-    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("LocationSelectActivity", 2, "", localIndexOutOfBoundsException);
-      }
-    }
-    return "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.c.setVisibility(4);
+    this.a.d.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.a.b.setVisibility(4);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(4);
+    this.a.e.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abjv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.activity.bless.CountDownView;
-import com.tencent.mobileqq.activity.bless.CountDownView.CountDownFinishedListener;
+import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
 
-public class wcr
+class wcr
   implements Runnable
 {
-  public wcr(CountDownView paramCountDownView) {}
+  wcr(wcq paramwcq) {}
   
   public void run()
   {
-    if ((CountDownView.a(this.a)) && (CountDownView.a(this.a) >= CountDownView.a().length))
-    {
-      this.a.a();
-      if (CountDownView.a(this.a) != null) {
-        CountDownView.a(this.a).a();
-      }
-    }
-    while (CountDownView.a(this.a) >= CountDownView.a().length) {
-      return;
-    }
-    CountDownView.a(this.a);
-    this.a.setImageResource(CountDownView.a()[CountDownView.a(this.a)]);
-    this.a.postDelayed(CountDownView.a(this.a), 1000L);
-    CountDownView.b(this.a);
+    FraudTipsBar.a(this.a.a, 2);
+    FraudTipsBar.a(this.a.a).a();
   }
 }
 

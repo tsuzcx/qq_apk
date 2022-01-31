@@ -1,23 +1,26 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class vso
-  implements Runnable
+class vso
+  implements DialogInterface.OnClickListener
 {
-  public vso(MultiForwardChatPie paramMultiForwardChatPie, CharSequence paramCharSequence) {}
+  vso(vsn paramvsn, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(8);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.d.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.g);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.b, this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.y();
+    ((DiscussionManager)this.jdField_a_of_type_Vsn.a.a.getManager(52)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Vsn.a.a.a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
+    }
+    this.jdField_a_of_type_Vsn.a.A();
   }
 }
 

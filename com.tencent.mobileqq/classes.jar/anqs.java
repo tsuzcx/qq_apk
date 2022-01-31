@@ -1,20 +1,49 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-class anqs
-  implements Animation.AnimationListener
+public class anqs
+  implements FFmpegExecuteResponseCallback
 {
-  anqs(anqr paramanqr) {}
+  public anqs(CropVideoActivity paramCropVideoActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.a.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
+    }
+    this.a.a.sendEmptyMessage(3);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
+    }
+    this.a.a.sendEmptyMessage(4);
+  }
+  
+  public void c(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
+    }
+  }
 }
 
 

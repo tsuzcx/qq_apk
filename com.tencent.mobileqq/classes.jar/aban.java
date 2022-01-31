@@ -1,29 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.armap.ArMapUtil;
-import com.tencent.mobileqq.armap.map.MapEngineCallback;
-import com.tencent.mobileqq.armap.test.ARMainActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.armap.ARGLSurfaceView;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.test.joystick.JoystickListener;
 
 public class aban
-  implements View.OnLongClickListener
+  implements JoystickListener
 {
-  public aban(ARMainActivity paramARMainActivity) {}
+  public aban(ARMapActivity paramARMapActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void a()
   {
-    FileUtils.a(MapEngineCallback.getRootPath());
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMainActivity", 2, "clear map cache");
-    }
-    QQToast.a(this.a, "map cache deleted", 0).a();
-    ArMapUtil.a(this.a.a).edit().clear().commit();
-    ArMapUtil.b(this.a.a).edit().clear().commit();
-    return false;
+    ARMapActivity.h(this.a, true);
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new abao(this));
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    ARMapActivity.b(this.a, paramFloat1);
+    ARMapActivity.c(this.a, paramFloat2);
+  }
+  
+  public void b()
+  {
+    ARMapActivity.h(this.a, false);
+    this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abap(this));
   }
 }
 

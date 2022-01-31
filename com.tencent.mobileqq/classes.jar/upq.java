@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
+import android.view.Window;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface upq
+public class upq
+  implements Runnable
 {
-  public abstract void a(PathDrawer paramPathDrawer);
+  public upq(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  
+  public void run()
+  {
+    this.a.setRequestedOrientation4Recording(true);
+    this.a.a.getWindow().clearFlags(128);
+    QQToast.a(this.a.a, 2131433787, 1).b(this.a.a.getTitleBarHeight());
+  }
 }
 
 

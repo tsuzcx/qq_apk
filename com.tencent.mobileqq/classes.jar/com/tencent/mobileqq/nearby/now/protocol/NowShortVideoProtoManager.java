@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.now.protocol;
 
-import aegq;
-import aegr;
-import aegs;
-import aegt;
-import aegu;
-import aegv;
-import aegw;
+import aetw;
+import aetx;
+import aety;
+import aetz;
+import aeua;
+import aeub;
+import aeuc;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.ProtoUtils;
@@ -48,7 +48,7 @@ public class NowShortVideoProtoManager
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("7.6.0");
+      paramReqBody.version.set("7.6.3");
       paramReqBody.original_id.set(this.a.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
@@ -80,7 +80,7 @@ public class NowShortVideoProtoManager
     {
       localPBUInt32Field.set(paramInt);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localFollowActionReq.toByteArray()));
-      ProtoUtils.a(this.a, new aegu(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.a, new aeua(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
       return;
     }
   }
@@ -98,7 +98,7 @@ public class NowShortVideoProtoManager
       }
       localGetShortVideoVideoLabelReq.uid.set(paramLong);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetShortVideoVideoLabelReq.toByteArray()));
-      ProtoUtils.a(this.a, new aegv(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.a, new aeub(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
   }
   
@@ -110,7 +110,7 @@ public class NowShortVideoProtoManager
       localReqBody.cmd.set(21296);
       localReqBody.subcmd.set(1);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(paramLocationReq.toByteArray()));
-      ProtoUtils.a(this.a, new aegw(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.a, new aeuc(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
   }
   
@@ -125,7 +125,7 @@ public class NowShortVideoProtoManager
       localCollectFeedsDataReq.client_type.set(2);
       localCollectFeedsDataReq.feeds_id.set(ByteStringMicro.copyFromUtf8(paramString));
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localCollectFeedsDataReq.toByteArray()));
-      ProtoUtils.a(this.a, new aegr(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.a, new aetx(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
   }
   
@@ -139,7 +139,7 @@ public class NowShortVideoProtoManager
       ilive_feeds_like.FeedsLikeReq localFeedsLikeReq = new ilive_feeds_like.FeedsLikeReq();
       localFeedsLikeReq.id.set(ByteStringMicro.copyFromUtf8(paramString));
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localFeedsLikeReq.toByteArray()));
-      ProtoUtils.a(this.a, new aegq(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, paramBundle, 0L);
+      ProtoUtils.a(this.a, new aetw(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, paramBundle, 0L);
     }
   }
   
@@ -156,7 +156,7 @@ public class NowShortVideoProtoManager
       FeedsProtocol.GetMediaDetailReq localGetMediaDetailReq = new FeedsProtocol.GetMediaDetailReq();
       localGetMediaDetailReq.querystring.set(ByteStringMicro.copyFrom(paramString.getBytes()));
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetMediaDetailReq.toByteArray()));
-      ProtoUtils.a(this.a, new aegt(this, paramString, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.a, new aetz(this, paramString, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
   }
   
@@ -170,7 +170,7 @@ public class NowShortVideoProtoManager
       ilive_feeds_like.FeedsUnLikeReq localFeedsUnLikeReq = new ilive_feeds_like.FeedsUnLikeReq();
       localFeedsUnLikeReq.id.set(ByteStringMicro.copyFromUtf8(paramString));
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localFeedsUnLikeReq.toByteArray()));
-      ProtoUtils.a(this.a, new aegs(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, paramBundle, 0L);
+      ProtoUtils.a(this.a, new aety(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, paramBundle, 0L);
     }
   }
 }

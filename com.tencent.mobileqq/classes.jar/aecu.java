@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.lyric.data.Sentence;
+import java.util.Comparator;
 
-class aecu
-  implements Runnable
+public class aecu
+  implements Comparator
 {
-  aecu(aect paramaect, boolean paramBoolean) {}
-  
-  public void run()
+  public int a(Sentence paramSentence1, Sentence paramSentence2)
   {
-    this.jdField_a_of_type_Aect.a.l();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Aect.a.a(2, "编辑资料成功");
-      this.jdField_a_of_type_Aect.a.a(true);
-      this.jdField_a_of_type_Aect.a.finish();
-      NearbySPUtil.a(this.jdField_a_of_type_Aect.a.app.getAccount(), "nearby_need_show_guide", Boolean.valueOf(false));
-      return;
+    if (paramSentence1.a >= paramSentence2.a) {
+      return 1;
     }
-    this.jdField_a_of_type_Aect.a.a(1, "更新交友资料失败，请重试。");
+    return -1;
   }
 }
 

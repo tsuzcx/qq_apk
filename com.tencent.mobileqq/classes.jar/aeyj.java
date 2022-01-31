@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerView.VideoInfoListener;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnCompletionListener;
 
 public class aeyj
-  implements Runnable
+  implements IVideoView.OnCompletionListener
 {
-  public aeyj(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
+  public aeyj(VideoPlayerView paramVideoPlayerView) {}
   
-  public void run()
+  public void a(IVideoView paramIVideoView)
   {
-    Iterator localIterator = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager).iterator();
-    while (localIterator.hasNext()) {
-      ((NearbyMomentManager.MomentDataChangeObserver)localIterator.next()).b(this.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.a();
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+    paramIVideoView = VideoPlayerView.a(this.a).a;
+    if (this.a.c()) {}
+    for (int i = 1;; i = 2)
+    {
+      QualityReporter.a(paramIVideoView, i);
+      return;
     }
   }
 }

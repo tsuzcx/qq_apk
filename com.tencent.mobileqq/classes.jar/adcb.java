@@ -1,18 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
 
 public class adcb
-  implements DialogInterface.OnDismissListener
+  extends BroadcastReceiver
 {
-  public adcb(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  public adcb(FileViewMusicService paramFileViewMusicService) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.a.a instanceof DirectForwardActivity)) {
-      this.a.a.finish();
+    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
+      this.a.a();
     }
   }
 }

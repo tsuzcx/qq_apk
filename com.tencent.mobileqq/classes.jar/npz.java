@@ -1,37 +1,26 @@
-import android.graphics.Bitmap;
 import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
-import com.tribe.async.reactive.SimpleObserver;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 class npz
-  extends SimpleObserver
+  implements Runnable
 {
-  npz(npy paramnpy) {}
+  npz(npx paramnpx) {}
   
-  public void a(Bitmap paramBitmap)
+  public void run()
   {
-    super.onNext(paramBitmap);
-    IconLog.b(npy.a(this.a), "onNext, oldResult=%s, newResult=%s", npy.a(this.a), paramBitmap);
-    npy.a(this.a, paramBitmap);
-    npy.a(this.a, true);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    IconLog.a(npy.a(this.a), "onCancel");
-    onError(new ErrorMessage(-1, "onCancel"));
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    IconLog.c(npy.a(this.a), "onError, oldError=%s, newError=%s", npy.a(this.a), paramError);
-    npy.a(this.a, paramError);
-    npy.a(this.a, SystemClock.uptimeMillis());
-    npy.a(this.a, false);
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c)))
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$DebugInfo.f = SystemClock.uptimeMillis();
+      SLog.d("VideoViewTVKImpl", "TVK_IMediaPlayer.openMediaPlayerByUrl, 1, vid=%s", new Object[] { this.a.jdField_a_of_type_JavaLangString });
+      TVKPreloader.a();
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c.replace("https://", "http://")), 0L, 0L, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, null);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_Int = 1;
+    }
   }
 }
 

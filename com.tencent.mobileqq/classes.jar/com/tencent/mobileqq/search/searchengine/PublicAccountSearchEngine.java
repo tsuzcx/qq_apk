@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ahik;
-import ahil;
-import ahim;
+import ahwm;
+import ahwn;
+import ahwo;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 import com.tencent.biz.pubaccount.util.PublicAccountUtil;
@@ -26,8 +26,8 @@ import java.util.List;
 public class PublicAccountSearchEngine
   implements ISearchEngine, Runnable
 {
-  private static final Comparator jdField_a_of_type_JavaUtilComparator = new ahil();
-  private static final Comparator b = new ahim();
+  private static final Comparator jdField_a_of_type_JavaUtilComparator = new ahwn();
+  private static final Comparator b = new ahwo();
   private int jdField_a_of_type_Int = -1;
   private PublicAccountDataManager jdField_a_of_type_ComTencentMobileqqAppPublicAccountDataManager;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -149,7 +149,7 @@ public class PublicAccountSearchEngine
   
   public void a(SearchRequest paramSearchRequest, ISearchListener paramISearchListener)
   {
-    ThreadManager.postImmediately(new ahik(this, paramSearchRequest, paramISearchListener), null, true);
+    ThreadManager.postImmediately(new ahwm(this, paramSearchRequest, paramISearchListener), null, true);
     if (!TextUtils.isEmpty(paramSearchRequest.a)) {
       PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1D", "0X8005D1D", 0, 0, "", "", paramSearchRequest.a, "", false);
     }

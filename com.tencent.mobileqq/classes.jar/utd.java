@@ -1,22 +1,6 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
-
-public class utd
-  implements AnimationTextView.OnDoubleClick
+public abstract interface utd
 {
-  public utd(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
-  
-  public void a(View paramView)
-  {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    if (DeviceTextItemBuilder.a(this.a)) {
-      return;
-    }
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
 }
 
 

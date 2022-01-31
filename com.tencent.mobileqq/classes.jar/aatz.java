@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.ark.ArkEnvironmentManager.Log;
+import com.tencent.qphone.base.util.QLog;
 
-public class aatz
-  implements Runnable
+public final class aatz
+  implements ArkEnvironmentManager.Log
 {
-  public aatz(ARMapActivity paramARMapActivity) {}
-  
-  public void run()
+  public void d(String paramString1, String paramString2)
   {
-    ARMapActivity.l(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
   }
 }
 

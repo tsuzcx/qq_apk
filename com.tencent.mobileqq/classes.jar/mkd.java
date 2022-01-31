@@ -1,21 +1,13 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DropDownAppInPushNotification;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
 public class mkd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public mkd(DropDownAppInPushNotification paramDropDownAppInPushNotification) {}
+  public mkd(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    AppInPushNotification.a(8);
-    this.a.a(true, false);
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushNotification$OnClickListener != null) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new mke(this), 200L);
-    }
+    ReadinjoyTabFrame.a(this.a);
   }
 }
 

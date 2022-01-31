@@ -37,19 +37,19 @@ import java.util.List;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sjf;
-import sjg;
-import sjh;
-import sji;
-import sjj;
-import sjk;
-import sjl;
-import sjm;
-import sjn;
-import sjo;
-import sjp;
-import sjq;
-import sjt;
+import smd;
+import sme;
+import smf;
+import smg;
+import smh;
+import smi;
+import smj;
+import smk;
+import sml;
+import smm;
+import smn;
+import smo;
+import smr;
 
 public class EmosmActivity
   extends IphoneTitleBarActivity
@@ -58,16 +58,16 @@ public class EmosmActivity
   public int a;
   public Button a;
   public TextView a;
-  EmoticonObserver jdField_a_of_type_ComTencentMobileqqAppEmoticonObserver = new sjf(this);
+  EmoticonObserver jdField_a_of_type_ComTencentMobileqqAppEmoticonObserver = new smd(this);
   public DragSortAdapter a;
-  DragSortListView.DropListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener = new sjh(this);
-  DragSortListView.RemoveListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener = new sji(this);
+  DragSortListView.DropListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener = new smf(this);
+  DragSortListView.RemoveListener jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener = new smg(this);
   public DragSortListView a;
   EmoticonPackageChangedListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageChangedListener;
   EmoticonPackageDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener;
   public EmoticonManager a;
   public QQProgressDialog a;
-  TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new sjj(this);
+  TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new smh(this);
   TabBarView jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   public Runnable a;
   public WeakReference a;
@@ -100,7 +100,7 @@ public class EmosmActivity
   public void a()
   {
     QQToast localQQToast = new QQToast(this);
-    localQQToast.a(2130838710);
+    localQQToast.a(2130838714);
     localQQToast.d(1500);
     localQQToast.a("鉴权错误，删除失败");
     localQQToast.b(0);
@@ -121,7 +121,7 @@ public class EmosmActivity
         this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(localEmoticonPackage);
         String str = localEmoticonPackage.epId;
         if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
-          ThreadManager.getFileThreadHandler().post(new sjk(this, str));
+          ThreadManager.getFileThreadHandler().post(new smi(this, str));
         }
         if (3 == localEmoticonPackage.jobType) {
           ReportController.b(this.app, "CliOper", "", "", "MbGuanli", "MbDianjiShanchu", 0, 0, "", "", "", "");
@@ -148,10 +148,10 @@ public class EmosmActivity
     {
       if (TextUtils.isEmpty(str))
       {
-        this.leftView.setText(2131436237);
+        this.leftView.setText(2131436254);
         return;
       }
-      str = new JSONObject(str).optString("leftText", getString(2131436237));
+      str = new JSONObject(str).optString("leftText", getString(2131436254));
       this.leftView.setText(str);
       return;
     }
@@ -168,7 +168,7 @@ public class EmosmActivity
     if ((this.jdField_a_of_type_AndroidWidgetButton != null) && (this.jdField_a_of_type_AndroidWidgetButton.getVisibility() == 0)) {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(0, new sjt(this));
+    this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(0, new smr(this));
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -176,20 +176,20 @@ public class EmosmActivity
     boolean bool = false;
     super.doOnCreate(paramBundle);
     super.setContentView(2130968987);
-    super.setContentBackgroundResource(2130838210);
-    super.setTitle(2131436051);
+    super.setContentBackgroundResource(2130838214);
+    super.setTitle(2131436068);
     c();
     this.jdField_a_of_type_AndroidWidgetTextView = this.rightViewText;
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436053);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new sjl(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364568));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436070);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new smj(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364592));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364570));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new sjm(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)super.findViewById(2131364569));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, getString(2131436237));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, getString(2131436238));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364594));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new smk(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)super.findViewById(2131364593));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, getString(2131436254));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, getString(2131436255));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener);
     try
     {
@@ -202,25 +202,25 @@ public class EmosmActivity
       this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager = ((EmoticonManager)this.app.getManager(13));
       paramBundle = super.getIntent();
       this.jdField_b_of_type_Int = paramBundle.getIntExtra("extra_launch_mode", 1);
-      this.jdField_a_of_type_JavaLangRunnable = new sjn(this);
+      this.jdField_a_of_type_JavaLangRunnable = new sml(this);
       this.jdField_a_of_type_JavaLangRunnable.run();
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter = new DragSortAdapter(this, this.jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.jdField_a_of_type_Int = -16745986;
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter);
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDropListener(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DropListener);
       this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setRemoveListener(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$RemoveListener);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new sjo(this));
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new smm(this));
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageChangedListener = new sjp(this);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageChangedListener = new smn(this);
       EmojiListenerManager.a().a(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageChangedListener);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new sjq(this);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new smo(this);
       EmojiListenerManager.a().a(this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener);
       this.jdField_a_of_type_Int = paramBundle.getIntExtra("extra_launch_source", 2);
       if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 1))
       {
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436053);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436070);
         this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
         this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(false);
         this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
@@ -272,7 +272,7 @@ public class EmosmActivity
   public void e()
   {
     if (this.c) {
-      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(0, new sjg(this));
+      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(0, new sme(this));
     }
   }
   
@@ -295,13 +295,13 @@ public class EmosmActivity
       if (!NetworkUtil.d(this))
       {
         paramView = new QQToast(this);
-        paramView.a(2130838710);
+        paramView.a(2130838714);
         paramView.d(1500);
         paramView.a("无网络连接，删除失败");
         paramView.b(0);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131436075));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131436092));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a();
     } while (((List)localObject).size() <= 0);

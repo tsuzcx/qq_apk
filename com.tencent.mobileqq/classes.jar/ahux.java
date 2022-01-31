@@ -1,25 +1,21 @@
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout20;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.model.ISearchResultModel;
+import com.tencent.mobileqq.search.presenter.TroopAddFrdsSrchResultPresenter;
 
 public class ahux
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahux(StructMsgItemLayout20 paramStructMsgItemLayout20, int paramInt, ahuy paramahuy) {}
+  public ahux(TroopAddFrdsSrchResultPresenter paramTroopAddFrdsSrchResultPresenter, ISearchResultModel paramISearchResultModel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Ahuy.jdField_a_of_type_AndroidWidgetTextView.getWidth();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Ahuy.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
-    localLayoutParams.rightMargin = (j + i);
-    this.jdField_a_of_type_Ahuy.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahux
  * JD-Core Version:    0.7.0.1
  */

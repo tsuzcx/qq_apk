@@ -1,19 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
+import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
 
-public final class ajkt
-  implements DownloadParams.DecodeHandler
+public class ajkt
+  implements VoicePlayer.VoicePlayerListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ajkt(AudioItem paramAudioItem) {}
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    return URLDrawableDecodeHandler.a(paramBitmap);
+    this.a.b(AudioItem.a(this.a));
   }
+  
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkt
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import nbb;
+import ncm;
 
 public class LegoNetworkRequester
 {
@@ -36,7 +36,7 @@ public class LegoNetworkRequester
     byte[] arrayOfByte = paramLegoRequestBase.a();
     String str = paramLegoRequestBase.a();
     long l = System.currentTimeMillis();
-    a(paramLegoRequestBase.a(), arrayOfByte, new nbb(this, l, paramLegoRequestBase, str, paramLegoResponseBase));
+    a(paramLegoRequestBase.a(), arrayOfByte, new ncm(this, l, paramLegoRequestBase, str, paramLegoResponseBase));
   }
 }
 

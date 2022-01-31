@@ -6,14 +6,14 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
-import anyo;
-import anyp;
-import anyq;
-import anyr;
-import anyt;
-import anyu;
-import anyv;
-import anyw;
+import aoot;
+import aoou;
+import aoov;
+import aoow;
+import aooy;
+import aooz;
+import aopa;
+import aopb;
 import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -460,7 +460,7 @@ public class QIMPtvTemplateManager
   
   private void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString, long paramLong1, long paramLong2)
   {
-    paramString = (anyw)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (aopb)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     if (paramString != null)
     {
       paramString.jdField_a_of_type_Long = paramLong1;
@@ -472,7 +472,7 @@ public class QIMPtvTemplateManager
       long l1 = paramLong2;
       if (!paramPtvTemplateInfo.dgStageUsable)
       {
-        paramString = (anyw)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgStageName);
+        paramString = (aopb)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgStageName);
         paramLong1 = l2;
         l1 = paramLong2;
         if (paramString != null)
@@ -488,7 +488,7 @@ public class QIMPtvTemplateManager
       l2 = l1;
       if (!paramPtvTemplateInfo.dgModelUsable)
       {
-        paramString = (anyw)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgModelName);
+        paramString = (aopb)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgModelName);
         paramLong2 = paramLong1;
         l2 = l1;
         if (paramString != null)
@@ -505,7 +505,7 @@ public class QIMPtvTemplateManager
       l1 = l2;
       if (!paramPtvTemplateInfo.usable)
       {
-        paramString = (anyw)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.name);
+        paramString = (aopb)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.name);
         paramLong1 = paramLong2;
         l1 = l2;
         if (paramString != null)
@@ -541,17 +541,16 @@ public class QIMPtvTemplateManager
   
   static void a(String paramString1, String paramString2)
   {
-    ThreadManager.getFileThreadHandler().post(new anyp(paramString2, paramString1));
+    ThreadManager.getFileThreadHandler().post(new aoou(paramString2, paramString1));
   }
   
   public static boolean a()
   {
-    boolean bool1 = new File(jdField_a_of_type_JavaIoFile, "ptv_template_new.cfg").exists();
-    boolean bool2 = new File(jdField_a_of_type_JavaIoFile, "temp_faceu_zip").exists();
+    boolean bool = new File(jdField_a_of_type_JavaIoFile, "ptv_template_new.cfg").exists();
     if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "isStickerConfigFileExist" + bool1 + " " + bool2);
+      QLog.i("QIMPtvTemplateManager", 2, "QIMPtvTemplateManager isStickerConfigFileExist" + bool);
     }
-    return (bool1) && (bool2);
+    return bool;
   }
   
   private TemplateGroupItem b(TemplateGroupItem paramTemplateGroupItem)
@@ -658,14 +657,14 @@ public class QIMPtvTemplateManager
     //   25: ifeq -18 -> 7
     //   28: aload_3
     //   29: invokevirtual 94	java/io/File:getPath	()Ljava/lang/String;
-    //   32: invokestatic 638	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: invokestatic 634	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Ljava/lang/String;
     //   35: astore_3
     //   36: aload_3
     //   37: invokestatic 245	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   40: ifne -33 -> 7
     //   43: aload_3
     //   44: aload_1
-    //   45: invokevirtual 641	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   45: invokevirtual 637	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   48: ifeq -41 -> 7
     //   51: new 90	java/lang/StringBuilder
     //   54: dup
@@ -681,14 +680,14 @@ public class QIMPtvTemplateManager
     //   78: new 73	java/io/File
     //   81: dup
     //   82: aload_3
-    //   83: ldc_w 643
-    //   86: invokespecial 644	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   83: ldc_w 639
+    //   86: invokespecial 640	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   89: astore_1
     //   90: new 73	java/io/File
     //   93: dup
     //   94: aload_3
-    //   95: ldc_w 646
-    //   98: invokespecial 644	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   95: ldc_w 642
+    //   98: invokespecial 640	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   101: astore_3
     //   102: aload_1
     //   103: invokevirtual 558	java/io/File:exists	()Z
@@ -704,14 +703,14 @@ public class QIMPtvTemplateManager
     //   127: aload_0
     //   128: invokespecial 86	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   131: getstatic 42	dov/com/tencent/mobileqq/shortvideo/QIMPtvTemplateManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   134: invokestatic 650	com/tencent/biz/common/util/ZipUtils:a	(Ljava/io/File;Ljava/lang/String;)V
+    //   134: invokestatic 646	com/tencent/biz/common/util/ZipUtils:a	(Ljava/io/File;Ljava/lang/String;)V
     //   137: iconst_1
     //   138: ireturn
     //   139: astore_0
     //   140: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   143: ifeq -136 -> 7
     //   146: aload_0
-    //   147: invokevirtual 651	java/lang/UnsatisfiedLinkError:printStackTrace	()V
+    //   147: invokevirtual 647	java/lang/UnsatisfiedLinkError:printStackTrace	()V
     //   150: iconst_0
     //   151: ireturn
     //   152: astore_0
@@ -1090,11 +1089,11 @@ public class QIMPtvTemplateManager
     for (;;)
     {
       return;
-      Object localObject = new anyw(this);
+      Object localObject = new aopb(this);
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localObject);
       this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
       localObject = new HttpNetReq();
-      ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new anyv(this, paramString1, paramString2, paramString3);
+      ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aopa(this, paramString1, paramString2, paramString3);
       ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = paramString2;
       ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
       ((HttpNetReq)localObject).jdField_c_of_type_JavaLangString = new File(jdField_a_of_type_JavaIoFile, paramString1).getPath();
@@ -1260,7 +1259,7 @@ public class QIMPtvTemplateManager
   
   void a(List paramList)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new anyq(this, paramList), jdField_a_of_type_JavaLangLong.longValue());
+    ThreadManager.getSubThreadHandler().postDelayed(new aoov(this, paramList), jdField_a_of_type_JavaLangLong.longValue());
   }
   
   public void a(List paramList, int paramInt)
@@ -1315,7 +1314,7 @@ public class QIMPtvTemplateManager
   
   public void a(boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new anyo(this, paramBoolean), null, false);
+    ThreadManager.postImmediately(new aoot(this, paramBoolean), null, false);
   }
   
   public boolean a(int paramInt1, int paramInt2, String paramString)
@@ -1399,7 +1398,7 @@ public class QIMPtvTemplateManager
     {
       return;
       HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new anyu(this, paramPtvTemplateInfo, paramIPtvTemplateDownloadListener);
+      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aooz(this, paramPtvTemplateInfo, paramIPtvTemplateDownloadListener);
       localHttpNetReq.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.resurl;
       localHttpNetReq.jdField_a_of_type_Int = 0;
       localHttpNetReq.jdField_c_of_type_JavaLangString = new File(jdField_a_of_type_JavaIoFile, paramPtvTemplateInfo.name).getPath();
@@ -1455,7 +1454,7 @@ public class QIMPtvTemplateManager
       break label52;
       break;
       label105:
-      ThreadManager.getFileThreadHandler().post(new anyr(this, localPtvTemplateInfo));
+      ThreadManager.getFileThreadHandler().post(new aoow(this, localPtvTemplateInfo));
     }
   }
   
@@ -1488,7 +1487,7 @@ public class QIMPtvTemplateManager
     if (QLog.isDevelopLevel()) {
       QLog.d("QIMPtvTemplateManager", 4, String.format("rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
     }
-    ThreadManager.getFileThreadHandler().post(new anyt(this, localFile));
+    ThreadManager.getFileThreadHandler().post(new aooy(this, localFile));
   }
   
   public void c(AppInterface paramAppInterface, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, PtvTemplateManager.IPtvTemplateDownloadListener paramIPtvTemplateDownloadListener)

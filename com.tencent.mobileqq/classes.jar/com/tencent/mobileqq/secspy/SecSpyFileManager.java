@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.secspy;
 
-import ahiw;
-import ahix;
+import ahwy;
+import ahwz;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Environment;
@@ -49,7 +49,7 @@ public class SecSpyFileManager
   {
     this.jdField_a_of_type_JavaLangString = "http://logic.content.qq.com/public/file_upload2?";
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangRunnable = new ahiw(this);
+    this.jdField_a_of_type_JavaLangRunnable = new ahwy(this);
     if (paramQQAppInterface.getApplication().getSharedPreferences("x5_proxy_setting", 4).getBoolean("is_in_proxy", false)) {
       ThreadManager.getFileThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
     }
@@ -777,7 +777,7 @@ public class SecSpyFileManager
     if (this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter == null) {
       this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter = new UnifiedDebugReporter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahix(this, paramMsgBody, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahwz(this, paramMsgBody, paramInt));
   }
   
   /* Error */
@@ -791,9 +791,9 @@ public class SecSpyFileManager
     //   6: iconst_0
     //   7: istore_3
     //   8: iconst_0
-    //   9: istore 5
+    //   9: istore 4
     //   11: iconst_0
-    //   12: istore 4
+    //   12: istore 5
     //   14: new 258	java/io/FileInputStream
     //   17: dup
     //   18: aload_1
@@ -822,7 +822,7 @@ public class SecSpyFileManager
     //   69: ifnull +8 -> 77
     //   72: aload 6
     //   74: invokevirtual 273	java/io/FileInputStream:close	()V
-    //   77: iload 4
+    //   77: iload 5
     //   79: istore_3
     //   80: iconst_0
     //   81: ifeq +11 -> 92
@@ -880,7 +880,7 @@ public class SecSpyFileManager
     //   187: iload 4
     //   189: ireturn
     //   190: astore_1
-    //   191: iload 4
+    //   191: iload 5
     //   193: istore_3
     //   194: invokestatic 338	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   197: ifeq -105 -> 92
@@ -899,12 +899,12 @@ public class SecSpyFileManager
     //   221: invokespecial 562	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   224: invokespecial 565	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   227: astore_1
-    //   228: iload 5
+    //   228: iload 4
     //   230: istore_3
     //   231: sipush 10240
     //   234: newarray byte
     //   236: astore 7
-    //   238: iload 5
+    //   238: iload 4
     //   240: istore_3
     //   241: aload 6
     //   243: aload 7
@@ -915,7 +915,7 @@ public class SecSpyFileManager
     //   253: iload_2
     //   254: iconst_m1
     //   255: if_icmpeq +17 -> 272
-    //   258: iload 5
+    //   258: iload 4
     //   260: istore_3
     //   261: aload_1
     //   262: aload 7
@@ -1017,8 +1017,8 @@ public class SecSpyFileManager
     //   0	440	1	paramFile	File
     //   252	14	2	i	int
     //   7	422	3	bool1	boolean
-    //   12	418	4	bool2	boolean
-    //   9	250	5	bool3	boolean
+    //   9	421	4	bool2	boolean
+    //   12	180	5	bool3	boolean
     //   22	314	6	localObject1	Object
     //   352	46	6	localException	Exception
     //   403	30	6	localObject2	Object
@@ -1181,10 +1181,10 @@ public class SecSpyFileManager
     //   222: iconst_1
     //   223: if_icmpne +186 -> 409
     //   226: ldc2_w 586
-    //   229: lstore 9
+    //   229: lstore 8
     //   231: aload 16
     //   233: invokevirtual 108	java/io/File:length	()J
-    //   236: lload 9
+    //   236: lload 8
     //   238: lcmp
     //   239: ifle +178 -> 417
     //   242: aload_0
@@ -1270,7 +1270,7 @@ public class SecSpyFileManager
     //   407: iconst_0
     //   408: ireturn
     //   409: ldc2_w 592
-    //   412: lstore 9
+    //   412: lstore 8
     //   414: goto -183 -> 231
     //   417: aload_1
     //   418: aload_1
@@ -1655,48 +1655,48 @@ public class SecSpyFileManager
     //   1292: astore 12
     //   1294: aload 12
     //   1296: invokevirtual 674	java/io/FileInputStream:available	()I
-    //   1299: istore 6
-    //   1301: iload 6
+    //   1299: istore 7
+    //   1301: iload 7
     //   1303: ldc_w 675
     //   1306: invokestatic 681	java/lang/Math:min	(II)I
-    //   1309: istore 7
-    //   1311: iload 7
+    //   1309: istore 6
+    //   1311: iload 6
     //   1313: newarray byte
     //   1315: astore 13
     //   1317: aload 18
-    //   1319: iload 6
+    //   1319: iload 7
     //   1321: i2f
     //   1322: invokestatic 684	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;F)F
     //   1325: pop
     //   1326: aload_0
     //   1327: getfield 87	com/tencent/mobileqq/secspy/SecSpyFileManager:jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager	Lcom/tencent/mobileqq/unifiedebug/UnifiedDebugManager;
     //   1330: invokevirtual 687	com/tencent/mobileqq/unifiedebug/UnifiedDebugManager:a	()Landroid/os/Handler;
-    //   1333: new 689	ahiy
+    //   1333: new 689	ahxa
     //   1336: dup
     //   1337: aload_0
     //   1338: aload 18
     //   1340: lload_2
-    //   1341: invokespecial 692	ahiy:<init>	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager;Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;J)V
+    //   1341: invokespecial 692	ahxa:<init>	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager;Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;J)V
     //   1344: ldc2_w 693
     //   1347: invokevirtual 698	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   1350: pop
     //   1351: aload 12
     //   1353: aload 13
     //   1355: iconst_0
-    //   1356: iload 7
+    //   1356: iload 6
     //   1358: invokevirtual 265	java/io/FileInputStream:read	([BII)I
-    //   1361: istore 6
-    //   1363: iload 6
+    //   1361: istore 7
+    //   1363: iload 7
     //   1365: ifle +56 -> 1421
     //   1368: aload 11
     //   1370: aload 13
     //   1372: iconst_0
-    //   1373: iload 7
+    //   1373: iload 6
     //   1375: invokevirtual 699	java/io/DataOutputStream:write	([BII)V
     //   1378: aload 18
     //   1380: aload 18
     //   1382: invokestatic 702	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;)F
-    //   1385: iload 6
+    //   1385: iload 7
     //   1387: i2f
     //   1388: fadd
     //   1389: invokestatic 704	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:b	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;F)F
@@ -1705,13 +1705,13 @@ public class SecSpyFileManager
     //   1395: invokevirtual 674	java/io/FileInputStream:available	()I
     //   1398: ldc_w 675
     //   1401: invokestatic 681	java/lang/Math:min	(II)I
-    //   1404: istore 7
+    //   1404: istore 6
     //   1406: aload 12
     //   1408: aload 13
     //   1410: iconst_0
-    //   1411: iload 7
+    //   1411: iload 6
     //   1413: invokevirtual 265	java/io/FileInputStream:read	([BII)I
-    //   1416: istore 6
+    //   1416: istore 7
     //   1418: goto -55 -> 1363
     //   1421: aload 11
     //   1423: ldc_w 664
@@ -1763,7 +1763,7 @@ public class SecSpyFileManager
     //   1542: sipush 200
     //   1545: if_icmpne +539 -> 2084
     //   1548: iconst_1
-    //   1549: istore 8
+    //   1549: istore 10
     //   1551: aload 11
     //   1553: ifnull +8 -> 1561
     //   1556: aload 11
@@ -1804,7 +1804,7 @@ public class SecSpyFileManager
     //   1632: iconst_1
     //   1633: invokestatic 579	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
     //   1636: pop
-    //   1637: iload 8
+    //   1637: iload 10
     //   1639: ireturn
     //   1640: astore_1
     //   1641: invokestatic 338	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1816,7 +1816,7 @@ public class SecSpyFileManager
     //   1654: invokestatic 238	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1657: aload_1
     //   1658: invokevirtual 341	java/lang/Exception:printStackTrace	()V
-    //   1661: iload 8
+    //   1661: iload 10
     //   1663: ireturn
     //   1664: astore 13
     //   1666: aconst_null
@@ -2022,7 +2022,7 @@ public class SecSpyFileManager
     //   2079: astore 12
     //   2081: goto -406 -> 1675
     //   2084: iconst_0
-    //   2085: istore 8
+    //   2085: istore 10
     //   2087: goto -536 -> 1551
     //   2090: goto -1088 -> 1002
     // Local variable table:
@@ -2032,10 +2032,10 @@ public class SecSpyFileManager
     //   0	2093	2	paramLong	long
     //   0	2093	4	paramString2	String
     //   0	2093	5	paramBoolean	boolean
-    //   1299	247	6	i	int
-    //   1309	103	7	j	int
-    //   1549	537	8	bool	boolean
-    //   229	184	9	l	long
+    //   1309	237	6	i	int
+    //   1299	118	7	j	int
+    //   229	184	8	l	long
+    //   1549	537	10	bool	boolean
     //   10	2033	11	localObject1	Object
     //   437	1398	12	localObject2	Object
     //   1940	7	12	localObject3	Object
@@ -2158,7 +2158,7 @@ public class SecSpyFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.secspy.SecSpyFileManager
  * JD-Core Version:    0.7.0.1
  */

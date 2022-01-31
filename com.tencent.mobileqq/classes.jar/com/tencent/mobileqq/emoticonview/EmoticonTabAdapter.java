@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abyi;
+import acfk;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -53,7 +53,7 @@ public class EmoticonTabAdapter
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837580);
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130837581);
-    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131494029);
+    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131494035);
     this.jdField_b_of_type_Int = paramInt;
   }
   
@@ -171,9 +171,9 @@ public class EmoticonTabAdapter
     label535:
     for (;;)
     {
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363235));
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363834));
-      localViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362934);
+      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363253));
+      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363857));
+      localViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362952);
       localViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_Int);
       paramView.setTag(localViewHolder);
       Object localObject;
@@ -212,7 +212,7 @@ public class EmoticonTabAdapter
         return paramViewGroup;
         paramInt = 4;
         break label171;
-        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843865);
+        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843989);
         if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
         {
           localObject = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
@@ -225,9 +225,9 @@ public class EmoticonTabAdapter
           else
           {
             continue;
-            paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843858);
+            paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843982);
             continue;
-            paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843857);
+            paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843981);
             continue;
             paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837579);
             continue;
@@ -239,7 +239,7 @@ public class EmoticonTabAdapter
               paramView.addState(new int[] { 16842913 }, localDrawable);
               localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
               paramView.addState(new int[0], localDrawable);
-              ThreadManager.post(new abyi(this, (EmoticonTabAdapter.EmoticonTabItem)localObject), 5, null, false);
+              ThreadManager.post(new acfk(this, (EmoticonTabAdapter.EmoticonTabItem)localObject), 5, null, false);
             }
             else {}
           }

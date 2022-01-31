@@ -1,13 +1,16 @@
 package com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
 import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.OnPlayRecycleListener;
 import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
@@ -15,8 +18,10 @@ import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer
 import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.tribe.TribeFlowComponentInterface;
 import com.tencent.widget.HorizontalListView;
-import oko;
+import cooperation.readinjoy.ReadInJoyHelper;
+import omi;
 
 public class ScrollFrameSelectBar
   extends FrameLayout
@@ -69,13 +74,16 @@ public class ScrollFrameSelectBar
     this.d = UIUtils.a(getContext());
     this.e = UIUtils.a(getContext(), jdField_a_of_type_Int);
     this.f = UIUtils.a(getContext(), b);
-    LayoutInflater.from(getContext()).inflate(2130971468, this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131374817));
+    LayoutInflater.from(getContext()).inflate(2130971516, this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131375003));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar = ((RangeSelectBar)findViewById(2131374819));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarProgressPointer = ((ProgressPointer)findViewById(2131374818));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar = ((RangeSelectBar)findViewById(2131375005));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarProgressPointer = ((ProgressPointer)findViewById(2131375004));
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar.setRangeChangeListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new oko(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new omi(this));
+    if ("tribe".equals(((Activity)getContext()).getIntent().getStringExtra("video_refer"))) {
+      this.g = (TribeFlowComponentInterface.jdField_a_of_type_Int / 10);
+    }
   }
   
   public int a()
@@ -106,31 +114,36 @@ public class ScrollFrameSelectBar
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameAdapter.a(paramLocalMediaInfo);
   }
   
-  @TargetApi(10)
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, int paramInt4)
   {
-    int m = getResources().getDisplayMetrics().widthPixels;
-    int k = getResources().getDisplayMetrics().heightPixels;
+    int k = getResources().getDisplayMetrics().widthPixels;
+    int m = getResources().getDisplayMetrics().heightPixels;
     this.j = paramInt1;
     float f1;
-    if (paramBoolean2) {
+    switch (paramInt4)
+    {
+    default: 
+      if (!paramBoolean2) {
+        break label467;
+      }
       if (this.j > 60000)
       {
         this.g = 6000;
-        k = (int)Math.ceil(this.j * 1.0F / this.g);
+        paramInt4 = (int)Math.ceil(this.j * 1.0F / this.g);
         f1 = this.j * 1.0F / this.g;
       }
+      break;
     }
     for (;;)
     {
-      this.c = ((m - this.e * 2 - this.f) / 10);
+      this.c = ((k - this.e * 2 - this.f) / 10);
       paramInt2 = (int)(paramInt3 / paramInt2 * this.c);
       paramInt3 = (int)(this.c * TakeVideoUtils.a(getResources()));
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameAdapter = new FrameAdapter(getContext(), k, this.c, paramInt3);
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameAdapter = new FrameAdapter(getContext(), paramInt4, this.c, paramInt3);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader = new FrameLoader("frame_loader", this.c, paramInt2, paramBoolean1);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader.a(paramString, paramInt1, this.g);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader);
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setPadding(this.e, 0, m - this.c * 10 - this.e, 0);
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setPadding(this.e, 0, k - this.c * 10 - this.e, 0);
       this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameAdapter);
       float f2 = f1;
       if (f1 > 10.0F) {
@@ -141,14 +154,34 @@ public class ScrollFrameSelectBar
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar.setVisibility(0);
       b();
       return;
-      this.g = ((int)Math.ceil(this.j * 1.0F / 10.0F));
-      k = 10;
-      f1 = 10;
-      this.f = 0;
-      continue;
-      this.g = 1000;
-      k = (int)Math.ceil(this.j * 1.0F / this.g);
+      paramInt4 = ReadInJoyHelper.g(ReadInJoyUtils.a());
+      if (this.j > paramInt4 * 1000)
+      {
+        this.g = (paramInt4 * 100);
+        paramInt4 = (int)Math.ceil(this.j * 1.0F / this.g);
+        f1 = this.j * 1.0F / this.g;
+        this.f = 0;
+      }
+      else
+      {
+        this.g = ((int)Math.ceil(this.j * 1.0F / 10.0F));
+        paramInt4 = 10;
+        f1 = 10;
+        this.f = 0;
+        continue;
+        this.g = ((int)Math.ceil(this.j * 1.0F / 10.0F));
+        paramInt4 = 10;
+        f1 = 10;
+        this.f = 0;
+      }
+    }
+    label467:
+    if ("tribe".equals(((Activity)getContext()).getIntent().getStringExtra("video_refer"))) {}
+    for (this.g = (TribeFlowComponentInterface.jdField_a_of_type_Int / 10);; this.g = 1000)
+    {
+      paramInt4 = (int)Math.ceil(this.j * 1.0F / this.g);
       f1 = this.j * 1.0F / this.g;
+      break;
     }
   }
   

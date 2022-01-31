@@ -44,7 +44,7 @@ public class CUKingCardDialog
   
   public CUKingCardDialog(Activity paramActivity, CustomWebView paramCustomWebView, String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    super(paramActivity, 2131624515);
+    super(paramActivity, 2131624516);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = paramCustomWebView;
     this.jdField_a_of_type_JavaLangString = paramString1;
@@ -56,7 +56,7 @@ public class CUKingCardDialog
   
   public CUKingCardDialog(Activity paramActivity, CUKingCardHelper.CUKingDialogListener paramCUKingDialogListener, int paramInt1, String paramString, int paramInt2)
   {
-    super(paramActivity, 2131624515);
+    super(paramActivity, 2131624516);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentMobileqqVipCUKingCardHelper$CUKingDialogListener = paramCUKingDialogListener;
     this.jdField_b_of_type_JavaLangString = paramString;
@@ -68,17 +68,17 @@ public class CUKingCardDialog
   private void a()
   {
     setContentView(2130968831);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363965));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363966));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363967));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363968));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363969));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363989));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363990));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363991));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363992));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363993));
     this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
     Object localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("guidePopupImgUrl_v2", "");
     if (QLog.isColorLevel()) {
       QLog.i("CUKingCardDialog", 2, "SP_KEY_GUIDE_POPUP_IMG_URL: " + (String)localObject1);
     }
-    Object localObject2 = new ColorDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493397));
+    Object localObject2 = new ColorDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131493400));
     Object localObject3;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
@@ -148,8 +148,8 @@ public class CUKingCardDialog
     switch (paramView.getId())
     {
     default: 
-    case 2131363967: 
-    case 2131363968: 
+    case 2131363991: 
+    case 2131363992: 
       label106:
       do
       {
@@ -235,7 +235,7 @@ public class CUKingCardDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vip.CUKingCardDialog
  * JD-Core Version:    0.7.0.1
  */

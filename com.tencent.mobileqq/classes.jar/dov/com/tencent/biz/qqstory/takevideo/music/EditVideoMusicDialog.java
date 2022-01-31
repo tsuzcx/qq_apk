@@ -20,10 +20,10 @@ import android.widget.GridView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import anml;
-import anmm;
-import anmn;
-import anmo;
+import aocq;
+import aocr;
+import aocs;
+import aoct;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.base.download.DownloadProgressListener;
 import com.tencent.biz.qqstory.base.download.DownloaderImp;
@@ -102,9 +102,9 @@ public class EditVideoMusicDialog
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_Long = 1000L;
-    this.jdField_a_of_type_AndroidOsHandler = new anml(this);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new anmn(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelDataProvider$DataUpdateListener = new anmo(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aocq(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aocs(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelDataProvider$DataUpdateListener = new aoct(this);
     super.requestWindowFeature(1);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoMusic = paramEditVideoMusic;
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -161,7 +161,7 @@ public class EditVideoMusicDialog
   public void a()
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoMusic.aq_();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoMusic.as_();
     }
   }
   
@@ -192,7 +192,7 @@ public class EditVideoMusicDialog
   
   public void a(Context paramContext)
   {
-    Object localObject = LayoutInflater.from(paramContext).inflate(2130970737, null);
+    Object localObject = LayoutInflater.from(paramContext).inflate(2130970785, null);
     super.setContentView((View)localObject);
     long l;
     label362:
@@ -201,21 +201,21 @@ public class EditVideoMusicDialog
     {
       l = this.jdField_a_of_type_Int / 6;
       this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)((View)localObject).findViewById(2131368980));
-      this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131368984);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView = ((MusicHorizontalSeekView)((View)localObject).findViewById(2131368985));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)((View)localObject).findViewById(2131369046));
+      this.jdField_b_of_type_AndroidViewView = ((View)localObject).findViewById(2131369050);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView = ((MusicHorizontalSeekView)((View)localObject).findViewById(2131369051));
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setOnSeekListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371745));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368986));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368987));
-      this.e = ((TextView)super.findViewById(2131371748));
-      this.f = ((TextView)super.findViewById(2131371749));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371915));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369052));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369053));
+      this.e = ((TextView)super.findViewById(2131371918));
+      this.f = ((TextView)super.findViewById(2131371919));
       this.e.setOnClickListener(this);
       this.f.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371744));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131371914));
       this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131368981);
-      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)((View)localObject).findViewById(2131371747));
+      this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131369047);
+      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)((View)localObject).findViewById(2131371917));
       this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(-1);
       this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
       if (Build.VERSION.SDK_INT >= 9) {
@@ -402,7 +402,7 @@ public class EditVideoMusicDialog
     if (!NetworkUtil.g(BaseApplication.getContext()))
     {
       f();
-      QQToast.a(BaseApplication.getContext(), 2131430016, 0).a();
+      QQToast.a(BaseApplication.getContext(), 2131430033, 0).a();
       return;
     }
     this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
@@ -412,7 +412,7 @@ public class EditVideoMusicDialog
       com.tencent.mobileqq.utils.FileUtils.d(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloaderImp.a());
       this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloaderImp.a();
     }
-    ThreadManager.post(new anmm(this, paramString, (String)localObject2), 5, null, true);
+    ThreadManager.post(new aocr(this, paramString, (String)localObject2), 5, null, true);
   }
   
   public void a(String paramString, int paramInt)
@@ -610,7 +610,7 @@ public class EditVideoMusicDialog
     {
     default: 
       return;
-    case 2131371748: 
+    case 2131371918: 
       g();
       VideoEditReport.a("0X80076DB");
       dismiss();
@@ -672,7 +672,7 @@ public class EditVideoMusicDialog
       if (!NetworkUtil.g(BaseApplication.getContext()))
       {
         f();
-        QQToast.a(BaseApplication.getContext(), 2131430016, 0).a();
+        QQToast.a(BaseApplication.getContext(), 2131430033, 0).a();
         return;
       }
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoMusic.a(QQStoryMusicInfo.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo);

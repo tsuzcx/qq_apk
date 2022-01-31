@@ -1,15 +1,31 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import java.util.Comparator;
 
 public class lfk
-  implements Runnable
+  implements Comparator
 {
-  public lfk(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  public lfk(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
-  public void run()
+  public int a(lft paramlft1, lft paramlft2)
   {
-    PublicAccountReportUtils.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.b(this.a), null), false);
+    int j = 2147483647;
+    int i;
+    if (TextUtils.isEmpty(lft.a(paramlft1)))
+    {
+      i = 2147483647;
+      if (!TextUtils.isEmpty(lft.a(paramlft2))) {
+        break label44;
+      }
+    }
+    for (;;)
+    {
+      return i - j;
+      i = lft.a(paramlft1).codePointAt(0);
+      break;
+      label44:
+      j = lft.a(paramlft2).codePointAt(0);
+    }
   }
 }
 

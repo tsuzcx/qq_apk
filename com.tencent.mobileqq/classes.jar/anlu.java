@@ -1,24 +1,14 @@
-import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import dov.com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import dov.com.qq.im.capture.music.MusicPlayerScene;
 
 public class anlu
-  implements TextView.OnEditorActionListener
+  implements Runnable
 {
-  public anlu(QQStoryAddVideoLabelViewPart paramQQStoryAddVideoLabelViewPart) {}
+  public anlu(MusicPlayerScene paramMusicPlayerScene, String paramString, int paramInt) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 6)
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
-      if (paramTextView != null) {
-        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
-      }
-    }
-    return false;
+    this.jdField_a_of_type_DovComQqImCaptureMusicMusicPlayerScene.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

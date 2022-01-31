@@ -1,39 +1,42 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.BaseResponse;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.troop.homework.arithmetic.stream.SendArithHomeResultSegment;
+import com.tencent.mobileqq.troop.homework.arithmetic.stream.SendArithHomeResultSegment.ReqInfo;
+import com.tencent.mobileqq.troop.homework.arithmetic.stream.SendArithHomeResultSegment.Request;
+import com.tencent.mobileqq.troop.homework.arithmetic.stream.SendArithHomeResultSegment.RspInfo;
 
 public class ajfz
-  implements Runnable
+  implements CmdTaskManger.CommandCallback
 {
-  private final WeakReference a;
+  public ajfz(SendArithHomeResultSegment paramSendArithHomeResultSegment) {}
   
-  public ajfz(TroopMoreDetailView paramTroopMoreDetailView)
+  public void a(@NonNull SendArithHomeResultSegment.Request paramRequest, @Nullable BaseResponse paramBaseResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a = new WeakReference(paramTroopMoreDetailView);
-  }
-  
-  public void run()
-  {
-    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
-    if (localTroopMoreDetailView == null) {}
-    ArrayList localArrayList;
-    do
+    if (paramErrorMessage.isFail())
     {
-      do
-      {
-        return;
-      } while (localTroopMoreDetailView.getContext() == null);
-      localArrayList = TroopInfoActivity.a(localTroopMoreDetailView.getContext(), localTroopMoreDetailView.a);
-    } while (localArrayList == null);
-    ThreadManager.getUIHandler().post(new ajga(this, localTroopMoreDetailView, localArrayList));
+      SLog.e("QQ.Troop.homework.SendArithHomeResultSegment", "onCmdRespond failed :" + paramErrorMessage);
+      SendArithHomeResultSegment.a(this.a, paramErrorMessage);
+      return;
+    }
+    if (paramBaseResponse.a == 0)
+    {
+      paramRequest = new SendArithHomeResultSegment.RspInfo();
+      paramRequest.a = SendArithHomeResultSegment.a(this.a);
+      paramRequest.b = SendArithHomeResultSegment.a(this.a).b;
+      SendArithHomeResultSegment.a(this.a, paramRequest);
+      return;
+    }
+    SLog.e("QQ.Troop.homework.SendArithHomeResultSegment", "baseResponse failed :" + paramBaseResponse.b);
+    SendArithHomeResultSegment.b(this.a, new ErrorMessage(paramBaseResponse.a, paramBaseResponse.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajfz
  * JD-Core Version:    0.7.0.1
  */

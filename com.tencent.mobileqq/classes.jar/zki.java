@@ -1,30 +1,14 @@
-import com.tencent.mobileqq.app.Job;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mobileqq.app.PushBroadcastReceiver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class zki
-  extends zkt
+  implements Runnable
 {
-  public zki(BlockingQueue paramBlockingQueue, zgp paramzgp)
-  {
-    super(5, 64, 2L, paramBlockingQueue, paramzgp);
-  }
+  public zki(PushBroadcastReceiver paramPushBroadcastReceiver, QQAppInterface paramQQAppInterface) {}
   
-  protected String a()
+  public void run()
   {
-    return "ThreadHeavyPool";
-  }
-  
-  protected ConcurrentLinkedQueue a()
-  {
-    return Job.a;
-  }
-  
-  protected void beforeExecute(Thread paramThread, Runnable paramRunnable)
-  {
-    ThreadRegulator.a().b();
-    super.beforeExecute(paramThread, paramRunnable);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.i();
   }
 }
 

@@ -1,33 +1,18 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.CameraRendererable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.qim.QIMNewFriend;
 
-public class zvt
-  implements Runnable
+public final class zvt
+  implements DialogInterface.OnDismissListener
 {
-  public zvt(CameraRendererable paramCameraRendererable) {}
-  
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (CameraRendererable.a(this.a) != null) {}
-    try
-    {
-      CameraRendererable.a(this.a).f();
-      return;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.d(CameraRendererable.a(), 2, "requestRender", localException);
-    }
+    QIMNewFriend.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zvt
  * JD-Core Version:    0.7.0.1
  */

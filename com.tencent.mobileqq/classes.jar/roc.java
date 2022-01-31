@@ -1,14 +1,30 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class roc
   implements Runnable
 {
-  public roc(BaseChatPie paramBaseChatPie) {}
+  public roc(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
   public void run()
   {
-    this.a.a.showOverScrollHeader();
+    try
+    {
+      if ((AuthDevRenameActivity.a(this.a) != null) && (AuthDevRenameActivity.a(this.a).isShowing()))
+      {
+        AuthDevRenameActivity.a(this.a).dismiss();
+        AuthDevRenameActivity.a(this.a).cancel();
+      }
+      AuthDevRenameActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

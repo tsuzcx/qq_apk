@@ -1,16 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-class ssu
-  implements Runnable
+public class ssu
+  implements ActionSheet.OnDismissListener
 {
-  ssu(sst paramsst) {}
+  public ssu(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void onDismiss()
   {
-    Bitmap localBitmap = this.a.a.a.a(this.a.a.f);
-    this.a.a.runOnUiThread(new ssv(this, localBitmap));
+    this.a.a("0X80081E5", 4);
   }
 }
 

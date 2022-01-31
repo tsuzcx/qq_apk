@@ -1,28 +1,13 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserManager.IModelCreater;
-import com.tencent.mobileqq.filemanager.fileviewer.TroopFileViewerParamParser;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
-public class acsj
-  implements FileBrowserManager.IModelCreater
+class acsj
+  implements Runnable
 {
-  public acsj(TroopFileViewerParamParser paramTroopFileViewerParamParser, BaseActivity paramBaseActivity) {}
+  acsj(acsi paramacsi) {}
   
-  public FileBrowserModelBase a()
+  public void run()
   {
-    Object localObject2 = null;
-    List localList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerTroopFileViewerParamParser.a();
-    Object localObject1 = localObject2;
-    if (localList != null)
-    {
-      localObject1 = localObject2;
-      if (localList.size() > 0) {
-        localObject1 = new TroopFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, TroopFileViewerParamParser.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerTroopFileViewerParamParser));
-      }
-    }
-    return localObject1;
+    this.a.a.e();
   }
 }
 

@@ -141,7 +141,7 @@ public final class SysUtil
     //   84: invokespecial 119	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   87: astore_3
     //   88: aconst_null
-    //   89: astore_2
+    //   89: astore_0
     //   90: aload_3
     //   91: invokevirtual 123	java/io/RandomAccessFile:getFD	()Ljava/io/FileDescriptor;
     //   94: invokevirtual 128	java/io/FileDescriptor:sync	()V
@@ -160,36 +160,37 @@ public final class SysUtil
     //   119: aload_3
     //   120: invokevirtual 131	java/io/RandomAccessFile:close	()V
     //   123: return
-    //   124: astore_2
-    //   125: aload_2
+    //   124: astore_0
+    //   125: aload_0
     //   126: athrow
-    //   127: astore_0
+    //   127: astore_2
     //   128: aload_3
     //   129: ifnull +11 -> 140
-    //   132: aload_2
+    //   132: aload_0
     //   133: ifnull +18 -> 151
     //   136: aload_3
     //   137: invokevirtual 131	java/io/RandomAccessFile:close	()V
-    //   140: aload_0
+    //   140: aload_2
     //   141: athrow
     //   142: astore_3
-    //   143: aload_2
+    //   143: aload_0
     //   144: aload_3
     //   145: invokevirtual 138	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   148: goto -8 -> 140
     //   151: aload_3
     //   152: invokevirtual 131	java/io/RandomAccessFile:close	()V
     //   155: goto -15 -> 140
-    //   158: astore_0
+    //   158: astore_2
     //   159: goto -31 -> 128
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	162	0	paramFile	File
     //   44	17	1	i	int
-    //   11	79	2	arrayOfFile	File[]
-    //   124	20	2	localThrowable1	java.lang.Throwable
+    //   11	41	2	arrayOfFile	File[]
+    //   127	14	2	localObject1	Object
+    //   158	1	2	localObject2	Object
     //   87	50	3	localRandomAccessFile	RandomAccessFile
-    //   142	10	3	localThrowable2	java.lang.Throwable
+    //   142	10	3	localThrowable	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
     //   105	109	110	java/lang/Throwable

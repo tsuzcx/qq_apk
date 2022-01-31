@@ -1,33 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.utils.SecUtil;
 
-public class akbi
+class akbi
   implements Runnable
 {
-  public akbi(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler, int paramInt) {}
+  akbi(akbh paramakbh, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.e = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_AndroidGraphicsBitmap, "ShotCache_");
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "onDetectScreenshot->save file time:" + System.currentTimeMillis());
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.b)
+    this.jdField_a_of_type_Akbh.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    String str = SecUtil.getFileMd5(this.jdField_a_of_type_Akbh.a.a(this.jdField_a_of_type_JavaLangString));
+    if (!this.b.equalsIgnoreCase(str))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.b = false;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    }
-    while (this.jdField_a_of_type_Int != 2) {
+      this.jdField_a_of_type_Akbh.a.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    this.jdField_a_of_type_Akbh.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akbi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,32 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class acvx
+public final class acvx
   implements Runnable
 {
-  public acvx(SimpleFileViewer paramSimpleFileViewer, String paramString) {}
+  public acvx(long paramLong) {}
   
   public void run()
   {
-    SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer).setText(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString, false, SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer).getMeasuredWidth(), SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer).getPaint(), 2));
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]FreeVideoControl");
+    }
+    if ((FileVideoManager.a == null) || (FileVideoManager.a(FileVideoManager.a) == null) || (!FileVideoManager.a(FileVideoManager.a).containsKey(Long.valueOf(this.a)))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]queue is zero return");
+      }
+    }
+    do
+    {
+      return;
+      FileVideoManager.VideoControl localVideoControl = (FileVideoManager.VideoControl)FileVideoManager.a(FileVideoManager.a).get(Long.valueOf(this.a));
+      localVideoControl.a();
+      FileVideoManager.a(localVideoControl);
+      FileVideoManager.a(FileVideoManager.a).remove(Long.valueOf(this.a));
+    } while (!QLog.isDevelopLevel());
+    QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]removed");
   }
 }
 

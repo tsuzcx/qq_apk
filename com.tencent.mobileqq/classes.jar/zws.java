@@ -1,20 +1,56 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 
-public class zws
-  implements Runnable
+public final class zws
+  implements Parcelable.Creator
 {
-  public zws(Interactive3DRenderable paramInteractive3DRenderable, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void run()
+  public UpgradeTIMWrapper a(Parcel paramParcel)
   {
-    Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).native_setBinHaiState(BaseActivity.sTopActivity, Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    Object localObject = null;
+    String str2 = paramParcel.readString();
+    String str3 = paramParcel.readString();
+    String str4 = paramParcel.readString();
+    String str5 = paramParcel.readString();
+    String str6 = paramParcel.readString();
+    int j = 0;
+    for (;;)
+    {
+      try
+      {
+        int i = paramParcel.readInt();
+        j = i;
+        String str1 = paramParcel.readString();
+        paramParcel.printStackTrace();
+      }
+      catch (Exception paramParcel)
+      {
+        try
+        {
+          paramParcel = paramParcel.readString();
+          return new UpgradeTIMWrapper(str2, str3, str4, str5, str6, i, str1, paramParcel);
+        }
+        catch (Exception paramParcel)
+        {
+          break label81;
+        }
+        paramParcel = paramParcel;
+        str1 = null;
+        i = j;
+      }
+      label81:
+      paramParcel = localObject;
+    }
+  }
+  
+  public UpgradeTIMWrapper[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zws
  * JD-Core Version:    0.7.0.1
  */

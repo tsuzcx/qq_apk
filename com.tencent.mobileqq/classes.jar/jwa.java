@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
 
 public class jwa
-  implements DialogInterface.OnCancelListener
+  extends ClickableSpan
 {
-  public jwa(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public jwa(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a("onClickCancel", true, null, -1);
-    this.a.b("onClickCancel");
-    QAVGroupConfig.Report.a(false);
+    this.a.y();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

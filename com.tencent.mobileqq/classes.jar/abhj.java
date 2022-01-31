@@ -1,26 +1,34 @@
-import android.graphics.Rect;
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
-import com.tencent.mobileqq.businessCard.helpers.CameraHelper;
-import com.tencent.mobileqq.businessCard.helpers.CameraHelper.CameraHelperCallback;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.util.Base64;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.util.URLUtil;
 
 public class abhj
-  implements Camera.PictureCallback
+  implements Runnable
 {
-  public abhj(CameraHelper paramCameraHelper, File paramFile, Rect paramRect1, Rect paramRect2, CameraHelper.CameraHelperCallback paramCameraHelperCallback) {}
+  public abhj(ARMapPOIStarDialog paramARMapPOIStarDialog) {}
   
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  public void run()
   {
-    if (paramArrayOfByte == null)
+    if (this.a.isShowing())
     {
+      String str = new String(Base64.encode(this.a.jdField_a_of_type_JavaLangString.getBytes(), 0));
+      str = URLUtil.a(this.a.d, "stid", str);
       if (QLog.isColorLevel()) {
-        QLog.w(CameraHelper.a, 2, "onPictureTaken data is null");
+        QLog.d("ARMapPOIStarDialog", 2, "jumpURL=" + str + "--- busiName=" + this.a.jdField_a_of_type_JavaLangString);
       }
+      Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      this.a.a();
       return;
     }
-    new abhm(this.jdField_a_of_type_ComTencentMobileqqBusinessCardHelpersCameraHelper, paramArrayOfByte, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_ComTencentMobileqqBusinessCardHelpersCameraHelper$CameraHelperCallback).execute(new Void[0]);
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2131438772, 1).b(this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
   }
 }
 

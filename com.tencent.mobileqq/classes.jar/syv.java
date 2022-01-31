@@ -1,27 +1,40 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter.ViewHolder;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.widget.XListView;
 
-public class syv
-  extends FriendListObserver
+class syv
+  implements Runnable
 {
-  public syv(MoveToGroupActivity paramMoveToGroupActivity) {}
+  syv(syu paramsyu, String paramString) {}
   
-  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  public void run()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      QQToast.a(this.a, this.a.getString(2131434500), 0).b(this.a.getTitleBarHeight());
+    int j;
+    int i;
+    if ((LebaListMgrActivity.a(this.jdField_a_of_type_Syu.a) != null) && (LebaListMgrActivity.a(this.jdField_a_of_type_Syu.a) != null))
+    {
+      j = LebaListMgrActivity.a(this.jdField_a_of_type_Syu.a).getChildCount();
+      i = 0;
     }
     for (;;)
     {
-      MoveToGroupActivity.b(this.a);
-      this.a.removeObserver(MoveToGroupActivity.a(this.a));
-      return;
-      QQToast.a(this.a, 2, this.a.getString(2131434498), 0).b(this.a.getTitleBarHeight());
+      if (i < j)
+      {
+        LebaListMgrAdapter.ViewHolder localViewHolder = (LebaListMgrAdapter.ViewHolder)LebaListMgrActivity.a(this.jdField_a_of_type_Syu.a).getChildAt(i).getTag();
+        if ((localViewHolder != null) && (localViewHolder.a != null) && (localViewHolder.a.a != null) && (Utils.a(localViewHolder.a.a.strPkgName, this.jdField_a_of_type_JavaLangString))) {
+          LebaListMgrActivity.a(this.jdField_a_of_type_Syu.a).a(localViewHolder);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
     }
   }
 }

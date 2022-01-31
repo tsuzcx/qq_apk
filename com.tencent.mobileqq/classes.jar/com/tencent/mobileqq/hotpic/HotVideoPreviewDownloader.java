@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adhm;
+import adrl;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -237,7 +237,7 @@ public class HotVideoPreviewDownloader
     }
     if (paramDownloadParams.url.isEmpty())
     {
-      paramDownloadParams.GetPreviewURLAsync((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 0, "0", new adhm(this, paramDownloadParams, localFile, paramURLDrawableHandler));
+      paramDownloadParams.GetPreviewURLAsync((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 0, "0", new adrl(this, paramDownloadParams, localFile, paramURLDrawableHandler));
       return localFile;
     }
     a(localFile, paramDownloadParams, paramURLDrawableHandler);
@@ -246,7 +246,7 @@ public class HotVideoPreviewDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader
  * JD-Core Version:    0.7.0.1
  */

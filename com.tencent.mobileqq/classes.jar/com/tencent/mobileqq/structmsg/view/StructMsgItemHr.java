@@ -43,7 +43,7 @@ public class StructMsgItemHr
         {
           return paramBundle;
         } while (this.e != 1);
-        paramBundle.setBackgroundResource(2130844113);
+        paramBundle.setBackgroundResource(2130844237);
       } while (Build.VERSION.SDK_INT < 11);
       paramBundle.setLayerType(1, null);
       return paramBundle;
@@ -143,7 +143,7 @@ public class StructMsgItemHr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemHr
  * JD-Core Version:    0.7.0.1
  */

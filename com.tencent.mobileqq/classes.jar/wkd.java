@@ -1,15 +1,51 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendBaseBuilder;
+import com.tencent.mobileqq.activity.contact.newfriend.PushRecommendBuilder;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class wkd
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public wkd(FriendFragment paramFriendFragment) {}
+  public wkd(SystemMsgListView paramSystemMsgListView) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    ((QzoneContactsFeedManager)this.a.a.getManager(90)).a();
+    if (SystemMsgListView.a(this.a) != null)
+    {
+      if ((paramInt != 0) && (paramInt != 1)) {
+        SystemMsgListView.a(this.a).f();
+      }
+    }
+    else {
+      return;
+    }
+    SystemMsgListView.a(this.a).g();
+    SystemMsgListView.a(this.a).e();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.newfriendSystemMsgListView", 2, "onScroll firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
+    }
+    SystemMsgListView.a(this.a, paramInt1);
+    if (paramInt1 >= 1)
+    {
+      paramAbsListView = (NewFriendBaseBuilder)SystemMsgListView.a(this.a).getItem(paramInt1 - 1);
+      if ((paramAbsListView instanceof PushRecommendBuilder)) {
+        ((PushRecommendBuilder)paramAbsListView).c();
+      }
+    }
+    if (paramInt1 + paramInt2 < paramInt3)
+    {
+      paramAbsListView = (NewFriendBaseBuilder)SystemMsgListView.a(this.a).getItem(paramInt1 + paramInt2);
+      if ((paramAbsListView instanceof PushRecommendBuilder)) {
+        ((PushRecommendBuilder)paramAbsListView).c();
+      }
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qappcenter.remote;
 
-import alwq;
+import ammu;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -25,7 +25,7 @@ public abstract class IServiceHandler$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IServiceHandler))) {
       return (IServiceHandler)localIInterface;
     }
-    return new alwq(paramIBinder);
+    return new ammu(paramIBinder);
   }
   
   public IBinder asBinder()

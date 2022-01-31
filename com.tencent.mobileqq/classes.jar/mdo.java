@@ -1,29 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoStatusListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
 
-class mdo
+public class mdo
   implements Runnable
 {
-  mdo(mdl parammdl) {}
+  public mdo(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
   public void run()
   {
-    if (VideoPlayManager.a(this.a.a) != null) {
-      VideoPlayManager.a(this.a.a).a(VideoPlayManager.a(this.a.a));
-    }
-    VideoPlayManager.a(this.a.a, VideoPlayManager.a(this.a.a), VideoPlayManager.a(this.a.a), 7, null);
-    if (VideoPlayManager.a(this.a.a) != null)
-    {
-      VideoPlayManager.a(this.a.a).d = -1;
-      VideoPlayManager.a(this.a.a).b = 0L;
-      VideoPlayManager.a(this.a.a, null);
-    }
-    if (VideoPlayManager.a(this.a.a) != null)
-    {
-      VideoPlayManager.a(this.a.a).h();
-      VideoPlayManager.a(this.a.a, null);
-    }
+    VideoFeedsPlayActivity.a(this.a).a(300, new mdu(null));
   }
 }
 

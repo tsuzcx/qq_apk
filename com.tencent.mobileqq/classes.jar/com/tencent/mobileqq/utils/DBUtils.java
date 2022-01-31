@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
 import GeneralSettings.Setting;
-import ajnt;
-import ajnu;
+import akca;
+import akcb;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -45,7 +45,7 @@ public class DBUtils
   
   public static DBUtils a()
   {
-    return ajnu.a;
+    return akcb.a;
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, int paramInt)
@@ -560,7 +560,7 @@ public class DBUtils
             break label223;
             if (Looper.getMainLooper().getThread() == Thread.currentThread())
             {
-              ThreadManager.post(new ajnt(this, localRoamSettingManager, localArrayList), 5, null, false);
+              ThreadManager.post(new akca(this, localRoamSettingManager, localArrayList), 5, null, false);
               if (localObject == null) {}
             }
             try

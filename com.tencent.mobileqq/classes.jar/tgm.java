@@ -1,14 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class tgm
+  implements Runnable
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  TextView b;
-  TextView c;
+  public tgm(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  
+  public void run()
+  {
+    this.a.f();
+  }
 }
 
 

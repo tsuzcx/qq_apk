@@ -1,26 +1,27 @@
-import com.tencent.av.business.manager.report.VideoNodeReporter;
+import android.annotation.TargetApi;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.camera.VcCamera;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class jgz
   implements Runnable
 {
-  public jgz(VideoNodeReporter paramVideoNodeReporter, int paramInt, long paramLong) {}
+  public jgz(CameraUtils paramCameraUtils) {}
   
+  @TargetApi(14)
   public void run()
   {
-    QLog.d("VideoNodeReporter", 1, "in runnabe report ,node = " + this.jdField_a_of_type_Int + ",value = " + this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a.iterator();
-      while (localIterator.hasNext())
-      {
-        jhd localjhd = (jhd)localIterator.next();
-        this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a(localjhd.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraUtils", 2, "switchCamera begin.");
     }
-    QLog.d("VideoNodeReporter", 1, " report ,node = " + this.jdField_a_of_type_Int + ",value = " + this.jdField_a_of_type_Long + ",seesionRecordList is empty");
+    CameraUtils.a(this.a).a(new Object[] { Integer.valueOf(5) });
+    if (this.a.jdField_a_of_type_ComTencentAvCameraVcCamera != null) {
+      this.a.jdField_a_of_type_ComTencentAvCameraVcCamera.b(this.a.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    }
+    CameraUtils.a(this.a).a(new Object[] { Integer.valueOf(6), Boolean.valueOf(true) });
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraUtils", 2, "switchCamera end.");
+    }
   }
 }
 

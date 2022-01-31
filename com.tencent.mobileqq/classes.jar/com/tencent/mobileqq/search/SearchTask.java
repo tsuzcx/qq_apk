@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search;
 
-import ahdh;
-import ahdi;
-import ahdj;
-import ahdk;
+import ahrj;
+import ahrk;
+import ahrl;
+import ahrm;
 import android.annotation.TargetApi;
 import android.os.AsyncTask;
 import com.tencent.qphone.base.util.QLog;
@@ -23,9 +23,9 @@ import java.util.concurrent.TimeUnit;
 public class SearchTask
   extends AsyncTask
 {
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new ahdj();
-  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(0, 3, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new ahdh());
-  private static Comparator jdField_b_of_type_JavaUtilComparator = new ahdk();
+  private static Comparator jdField_a_of_type_JavaUtilComparator = new ahrl();
+  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(0, 3, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new ahrj());
+  private static Comparator jdField_b_of_type_JavaUtilComparator = new ahrm();
   private final int jdField_a_of_type_Int = 300;
   private SearchTask.SearchTaskCallBack jdField_a_of_type_ComTencentMobileqqSearchSearchTask$SearchTaskCallBack;
   private String jdField_a_of_type_JavaLangString;
@@ -107,7 +107,7 @@ public class SearchTask
             j = n + 300;
             break label91;
             label178:
-            paramVarArgs = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new ahdi(this, n, j));
+            paramVarArgs = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new ahrk(this, n, j));
             this.jdField_b_of_type_JavaUtilList.add(paramVarArgs);
             i += 1;
             break;

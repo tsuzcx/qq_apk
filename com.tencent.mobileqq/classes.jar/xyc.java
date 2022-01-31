@@ -1,12 +1,23 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import mqq.os.MqqHandler;
 
 public class xyc
-  implements BubblePopupWindow.OnDismissListener
+  extends MqqHandler
 {
-  public xyc(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter) {}
+  public xyc(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public void a() {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    ContactsInnerFrame.a(this.a);
+  }
 }
 
 

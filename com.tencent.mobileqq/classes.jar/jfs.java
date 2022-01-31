@@ -1,71 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder;
+import com.tencent.av.business.manager.magicface.MagicfaceData;
 
 public class jfs
-  implements INetEngine.INetEngineListener
+  implements Runnable
 {
-  public jfs(EffectConfigBase paramEffectConfigBase, EffectConfigBase.ItemBase paramItemBase) {}
+  public jfs(MagicfaceBaseDecoder paramMagicfaceBaseDecoder) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.a.obtainMessage(2, (int)(100L * paramLong1 / paramLong2), 0, this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase).sendToTarget();
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    EffectConfigBase.ItemBase localItemBase = (EffectConfigBase.ItemBase)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    AVLog.c("EffectConfigBase", "download file call back. file = " + localItemBase.getResurl());
-    int i;
-    if (paramNetResp.jdField_a_of_type_Int != 0)
-    {
-      AVLog.c("EffectConfigBase", "download file faild. errcode = " + paramNetResp.b + "|" + paramNetResp.jdField_a_of_type_JavaLangString);
-      i = 0;
-      paramNetResp = this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.a;
-      if (i == 0) {
-        break label227;
-      }
-    }
-    label227:
-    for (int j = 1;; j = 0)
-    {
-      for (;;)
-      {
-        paramNetResp.obtainMessage(1, j, 0, this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase).sendToTarget();
-        if (i != 0) {
-          this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.b(this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase);
-        }
-        return;
-        if (!localItemBase.getMd5().equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c)))
-        {
-          AVLog.c("EffectConfigBase", "download file faild : md5 is not match.");
-          FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
-          i = 0;
-          break;
-        }
-        AVLog.c("EffectConfigBase", "download file successed.");
-        try
-        {
-          FileUtils.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c, this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.b(this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase), false);
-          i = 1;
-        }
-        catch (IOException paramNetResp)
-        {
-          paramNetResp.printStackTrace();
-          AVLog.c("EffectConfigBase", "unzip file faild.");
-          i = 0;
-        }
-      }
-      break;
-    }
+    int i = Thread.currentThread().getPriority();
+    Thread.currentThread().setPriority(10);
+    String str = this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.b();
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.b(str);
+    int j = this.a.a();
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.b();
+    this.a.a(str, j);
+    Thread.currentThread().setPriority(i);
   }
 }
 

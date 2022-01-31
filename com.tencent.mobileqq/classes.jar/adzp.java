@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.leba.LebaGridHandler;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.leba.view.LebaGridIndicator.onPageSeletedListener;
 
 public class adzp
-  implements Runnable
+  implements LebaGridIndicator.onPageSeletedListener
 {
-  public adzp(NearbyProxy paramNearbyProxy, NearbyProxyObserver paramNearbyProxyObserver, int paramInt, Object[] paramArrayOfObject) {}
+  public adzp(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProxyObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    LebaWithFeeds.a(this.a, 1);
+  }
+  
+  public void b(int paramInt)
+  {
+    ((LebaGridHandler)this.a.a.a(106)).a(2, true, Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzp
  * JD-Core Version:    0.7.0.1
  */

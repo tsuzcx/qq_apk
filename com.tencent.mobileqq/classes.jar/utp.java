@@ -1,20 +1,28 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.item.ApolloGameItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class utp
-  extends BaseBubbleBuilder.ViewHolder
+  implements ActionSheet.OnButtonClickListener
 {
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public int e;
+  public utp(ApolloGameItemBuilder paramApolloGameItemBuilder, ArkAppItemBubbleBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
   
-  public utp(FileItemBuilder paramFileItemBuilder) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      return;
+      ChatActivityFacade.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloGameItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloGameItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloGameItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder.a.uniseq);
+    }
+  }
 }
 
 

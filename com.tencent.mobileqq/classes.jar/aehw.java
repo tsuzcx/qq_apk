@@ -1,32 +1,28 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo2.GetFirstMediaThumbnailFunction;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.mobileqq.data.EmoticonTab;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class aehw
-  extends SimpleJob
+  implements Runnable
 {
-  public aehw(StoryLocalPublishPart paramStoryLocalPublishPart, View paramView) {}
+  public aehw(EmoticonManager paramEmoticonManager, String paramString) {}
   
-  protected Bitmap a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    return new GetFirstMediaThumbnailFunction(this.jdField_a_of_type_AndroidViewView.getContext()).a();
-  }
-  
-  protected void a(@Nullable Bitmap paramBitmap)
-  {
-    new Handler(Looper.getMainLooper()).post(new aehx(this, paramBitmap));
+    EmoticonTab localEmoticonTab = (EmoticonTab)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a(EmoticonTab.class, this.jdField_a_of_type_JavaLangString);
+    if (localEmoticonTab != null) {}
+    for (localEmoticonTab.aioHave = true;; localEmoticonTab.aioHave = true)
+    {
+      EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localEmoticonTab);
+      return;
+      localEmoticonTab = new EmoticonTab();
+      localEmoticonTab.epId = this.jdField_a_of_type_JavaLangString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehw
  * JD-Core Version:    0.7.0.1
  */

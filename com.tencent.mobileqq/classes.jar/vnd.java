@@ -1,23 +1,56 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
+import android.app.Activity;
+import android.os.MessageQueue.IdleHandler;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.utils.MsgUtils;
+import java.util.Locale;
 
-public final class vnd
-  implements Runnable
+public class vnd
+  implements MessageQueue.IdleHandler
 {
-  public vnd(TextView paramTextView) {}
+  public vnd(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845753);
-    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845755);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
-    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);
-    ThreadManager.getUIHandler().post(new vne(this, localStateListDrawable));
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a();
+    if ((localObject != null) && (AIOImageData.class.isInstance(((AIORichMediaInfo)localObject).a)))
+    {
+      AIOImageData localAIOImageData = (AIOImageData)((AIORichMediaInfo)localObject).a;
+      if ((localAIOImageData != null) && (localAIOImageData.a(4)) && (localAIOImageData.a(4) == null)) {
+        this.a.c(true);
+      }
+    }
+    if ((localObject != null) && (AIOFilePicData.class.isInstance(((AIORichMediaInfo)localObject).a)))
+    {
+      localObject = (AIOFilePicData)((AIORichMediaInfo)localObject).a;
+      if ((localObject != null) && (((AIOFilePicData)localObject).a(20)) && (((AIOFilePicData)localObject).a(20) == null))
+      {
+        if ((!((AIOFilePicData)localObject).d) || (!MsgUtils.a(((AIOFilePicData)localObject).b))) {
+          break label204;
+        }
+        this.a.c(true);
+        this.a.a(false);
+        this.a.jdField_a_of_type_Vnq = null;
+      }
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, AIOGalleryScene.c(this.a).getString(2131436112), new Object[] { FileUtil.a(((AIOFilePicData)localObject).a) }));
+      }
+      return false;
+      label204:
+      if (((AIOFilePicData)localObject).e) {
+        this.a.c(false);
+      } else {
+        this.a.c(true);
+      }
+    }
   }
 }
 

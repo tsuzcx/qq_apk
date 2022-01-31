@@ -1,20 +1,29 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQQData;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class new
-  extends AddPollViewJob
+  extends QQStoryObserver
 {
-  public new(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareQQData paramShareQQData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public new(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate) {}
   
-  public boolean b()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.a = ((String)a("result"));
-    return true;
+    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      QQToast.a(this.a.a.a, 2, "已关注，可随时查看对方的最新视频", 0).a();
+    }
+    do
+    {
+      return;
+      if ((!paramBoolean1) && (paramBoolean2))
+      {
+        QQToast.a(this.a.a.a, 1, "关注失败，请稍后重试", 0).a();
+        return;
+      }
+    } while ((paramBoolean1) || (paramBoolean2));
+    QQToast.a(this.a.a.a, 1, "取消关注失败，请稍后重试", 0).a();
   }
 }
 

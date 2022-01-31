@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class xnr
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xnr(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xnr(EditLocalVideoActivity paramEditLocalVideoActivity, float paramFloat) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    StoryReportor.a("video_shoot", "cancel_now", 0, 0, new String[0]);
-    paramDialogInterface.dismiss();
+    if (EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EditLocalVideoActivity", 2, "onCurrentRangeTimeChanged, time=" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.b((int)this.jdField_a_of_type_Float));
+      }
+      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.b((int)this.jdField_a_of_type_Float));
+    }
   }
 }
 

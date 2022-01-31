@@ -1,28 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
-public class sox
-  implements View.OnClickListener
+class sox
+  implements Runnable
 {
-  public sox(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  sox(sov paramsov, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (paramView.getId() == 2131362722)
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.FrdProfileCard", 2, "onUpdateAddFriend, uin: " + this.jdField_a_of_type_JavaLangString + ", mobileNum = " + this.b);
+    }
+    Object localObject1 = (FriendsManager)this.jdField_a_of_type_Sov.a.app.getManager(50);
+    if (localObject1 == null) {}
+    for (localObject1 = null;; localObject1 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_Sov.a.a.a.jdField_a_of_type_JavaLangString))
     {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
-      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
-      {
-        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
-        localActionSheet.a(2131435868, 3);
-        localActionSheet.c(2131432998);
-        localActionSheet.a(new soy(this, paramView, localActionSheet));
-        localActionSheet.show();
+      Message localMessage = Message.obtain();
+      localMessage.what = 3;
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = this.jdField_a_of_type_JavaLangString;
       }
+      localMessage.obj = localObject2;
+      this.jdField_a_of_type_Sov.a.b.sendMessage(localMessage);
+      return;
     }
   }
 }

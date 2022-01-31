@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
 
 public class aemu
-  implements ActionSheet.OnDismissListener
+  implements Runnable
 {
-  public aemu(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aemu(NearbyProxy paramNearbyProxy, NearbyProxyObserver paramNearbyProxyObserver, int paramInt, Object[] paramArrayOfObject) {}
   
-  public void onDismiss()
+  public void run()
   {
-    this.a.b = false;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProxyObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

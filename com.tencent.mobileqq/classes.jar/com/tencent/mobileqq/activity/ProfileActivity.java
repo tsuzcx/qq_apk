@@ -25,8 +25,8 @@ public abstract class ProfileActivity
   extends BaseActivity
   implements AppConstants
 {
-  public static final int[][] a = { { 2130846012, 2131493001 }, { 2130846015, 2131493002 }, { 2130846018, 2131493003 } };
-  protected boolean q;
+  public static final int[][] a = { { 2130846140, 2131493002 }, { 2130846143, 2131493003 }, { 2130846146, 2131493004 } };
+  protected boolean p;
   
   public static int a(int paramInt)
   {
@@ -198,6 +198,25 @@ public abstract class ProfileActivity
   public static boolean a(long paramLong1, long paramLong2)
   {
     return Math.abs(paramLong2 - paramLong1) > 1500L;
+  }
+  
+  public static void b(Activity paramActivity, ProfileActivity.AllInOne paramAllInOne, int paramInt)
+  {
+    if (paramActivity != null) {}
+    try
+    {
+      Intent localIntent = a(paramActivity, paramAllInOne);
+      localIntent.putExtra("AllInOne", paramAllInOne);
+      localIntent.putExtra("requestCode", paramInt);
+      localIntent.putExtra("key_from_extends_friend", true);
+      localIntent.addFlags(536870912);
+      paramActivity.startActivityForResult(localIntent, paramInt);
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      QLog.e("Q.profilecard.FrdProfileCard", 1, "openProfileCardForResultFromExtendFriend fail.", paramActivity);
+    }
   }
   
   public static void b(Context paramContext, ProfileActivity.AllInOne paramAllInOne)

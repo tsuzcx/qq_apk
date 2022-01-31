@@ -1,22 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class uxb
-  extends AnimatorListenerAdapter
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public uxb(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public FrameLayout a;
+  public RelativeLayout a;
+  public URLDrawable a;
+  public PicProgressView a;
+  public BubbleImageView a;
+  public boolean a;
+  public int e;
+  public int f;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public uxb(FilePicItemBuilder paramFilePicItemBuilder)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setVisibility(8);
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

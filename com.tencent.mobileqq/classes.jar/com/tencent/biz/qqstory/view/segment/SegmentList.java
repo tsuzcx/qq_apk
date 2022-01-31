@@ -26,13 +26,13 @@ import com.tencent.widget.AbsListView.RecyclerListener;
 import com.tencent.widget.ListView;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import oop;
-import ooq;
-import oor;
-import oos;
-import oot;
-import oou;
-import oov;
+import oqj;
+import oqk;
+import oql;
+import oqm;
+import oqn;
+import oqo;
+import oqp;
 
 public abstract class SegmentList
   extends QQStoryPullToRefreshListView
@@ -90,11 +90,11 @@ public abstract class SegmentList
   private void b()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager = new SegmentManager(this, this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new oop(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new oqj(this));
     super.setRecyclerListener(this);
     super.setDragEnable(true);
-    super.setSwipListListener(new ooq(this));
-    super.setRightIconMenuListener(new oor(this));
+    super.setSwipListListener(new oqk(this));
+    super.setRightIconMenuListener(new oql(this));
   }
   
   public SegmentView a(String paramString)
@@ -116,7 +116,7 @@ public abstract class SegmentList
       if (this.jdField_b_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
       {
         this.jdField_b_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-        super.postDelayed(new oou(this), 800L);
+        super.postDelayed(new oqo(this), 800L);
       }
       b(true, jdField_c_of_type_Int);
       return;
@@ -141,7 +141,7 @@ public abstract class SegmentList
       if (this.jdField_b_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
       {
         this.jdField_b_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
-        super.postDelayed(new oov(this), 800L);
+        super.postDelayed(new oqp(this), 800L);
       }
       b(false, paramInt2);
       return;
@@ -238,10 +238,10 @@ public abstract class SegmentList
   
   public void k()
   {
-    setPullToRefreshListener(new oos(this));
+    setPullToRefreshListener(new oqm(this));
     a();
     this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a();
-    Bosses.get().postJob(new oot(this));
+    Bosses.get().postJob(new oqn(this));
   }
   
   public void l()

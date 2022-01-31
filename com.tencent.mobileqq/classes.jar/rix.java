@@ -1,36 +1,55 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.drawable.Animatable;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
+import java.net.MalformedURLException;
 
 public class rix
-  implements CompoundButton.OnCheckedChangeListener
+  extends Handler
 {
-  public rix(AssistantSettingActivity paramAssistantSettingActivity, MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
+  public rix(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a(paramBoolean);
-    paramCompoundButton = (QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app.a(98);
-    int i;
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      i = 2;
-      paramCompoundButton.b(i);
-      if (!paramBoolean) {
-        break label70;
-      }
     }
-    label70:
-    for (paramCompoundButton = "1";; paramCompoundButton = "2")
+    for (;;)
     {
-      StoryReportor.a("msg_tab", "turn_story", 0, 0, new String[] { "2", paramCompoundButton });
       return;
-      i = 1;
-      break;
+      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
+        continue;
+      }
+      AddFriendVerifyActivity.a(this.a).setVisibility(0);
+      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
+      return;
+      if (this.a.isFinishing()) {
+        continue;
+      }
+      if (!TextUtils.isEmpty(AddFriendVerifyActivity.d(this.a))) {}
+      try
+      {
+        paramMessage = new File(AddFriendVerifyActivity.e(this.a)).toURL();
+        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
+        label142:
+        if (AddFriendVerifyActivity.a(this.a) == null) {
+          continue;
+        }
+        AddFriendVerifyActivity.a(this.a).setVisibility(8);
+        return;
+        QQToast.a(this.a.getApplicationContext(), 1, 2131434562, 0).b(this.a.getTitleBarHeight());
+        return;
+      }
+      catch (MalformedURLException paramMessage)
+      {
+        break label142;
+      }
     }
   }
 }

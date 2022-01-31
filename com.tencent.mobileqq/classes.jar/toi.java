@@ -1,14 +1,32 @@
-import com.tencent.mobileqq.activity.SecurityProtectActivity;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class toi
-  implements Runnable
+  extends FriendListObserver
 {
-  public toi(SecurityProtectActivity paramSecurityProtectActivity) {}
+  public toi(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void run()
+  protected void onGetMayKnowRecommend(boolean paramBoolean)
   {
-    HttpDownloadUtil.a(this.a.a, this.a);
+    if (paramBoolean)
+    {
+      ArrayList localArrayList = RecommendFriendActivity.a(this.a).a();
+      if ((localArrayList != null) && (localArrayList.size() > 0))
+      {
+        RecommendFriendActivity.a(this.a).a(localArrayList);
+        RecommendFriendActivity.a(this.a).setVisibility(8);
+      }
+    }
+    else
+    {
+      return;
+    }
+    RecommendFriendActivity.a(this.a).setVisibility(0);
   }
 }
 

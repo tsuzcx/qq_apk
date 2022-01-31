@@ -8,7 +8,7 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.nearby.NearbyUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
-import zch;
+import zfn;
 
 public class HotchatSCHelper
   implements Handler.Callback, HotchatSCMng.HCSCObserver
@@ -90,7 +90,7 @@ public class HotchatSCHelper
     {
       this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCMng.a(this);
       return;
-      ThreadManager.post(new zch(this, paramLong, System.currentTimeMillis()), 8, null, true);
+      ThreadManager.post(new zfn(this, paramLong, System.currentTimeMillis()), 8, null, true);
     }
   }
   

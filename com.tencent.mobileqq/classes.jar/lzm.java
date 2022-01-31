@@ -1,25 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.FileUploadController.FileUploadListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.NormalVideoDeliverController;
 
 public class lzm
-  implements DialogInterface.OnDismissListener
+  implements FileUploadController.FileUploadListener
 {
-  public lzm(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public lzm(NormalVideoDeliverController paramNormalVideoDeliverController) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a() {}
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      NormalVideoDeliverController.a(this.a, paramString1);
+      NormalVideoDeliverController.b(this.a, paramString2);
+      NormalVideoDeliverController.a(this.a, 4);
+      return;
+    case 1001: 
+      NormalVideoDeliverController.b(this.a, 10);
+      return;
+    case 1002: 
+      NormalVideoDeliverController.b(this.a, 9);
+      return;
+    case 1003: 
+      NormalVideoDeliverController.b(this.a, 11);
+      return;
     }
-    if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).b()) && (VideoFeedsAdapter.g(this.a)) && (VideoFeedsAdapter.h(this.a))) {
-      VideoFeedsAdapter.a(this.a).d();
-    }
-    VideoFeedsAdapter.a(this.a).setNeedDetectScreenOrientation(true);
-    VideoFeedsAdapter.e(this.a, false);
+    NormalVideoDeliverController.b(this.a, 13);
+    NormalVideoDeliverController.c(this.a, 1002);
   }
 }
 

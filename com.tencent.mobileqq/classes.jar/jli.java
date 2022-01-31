@@ -1,47 +1,25 @@
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import org.json.JSONObject;
+import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
+import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.mobileqq.armap.ResDownloadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class jli
-  extends jlf
+  implements Runnable
 {
-  long jdField_b_of_type_Long;
-  int c;
-  int d;
-  int e;
-  String f;
+  public jli(AVRedPacketConfigManager paramAVRedPacketConfigManager) {}
   
-  public jli(RandomWebProtocol paramRandomWebProtocol, jlf paramjlf, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, long paramLong)
+  public void run()
   {
-    super(paramRandomWebProtocol, paramjlf);
-    this.a = 3;
-    this.c = paramString1;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.f = paramString2;
-    this.e = paramInt3;
-    this.jdField_b_of_type_Long = paramLong;
-    this.d = ("[p]" + paramInt1 + paramInt2 + paramString2 + paramInt3 + paramLong);
-  }
-  
-  String a()
-  {
-    this.a = null;
-    try
-    {
-      this.a = new JSONObject().put("session_type", this.c).put("reqtype", this.d).put("groupid", this.jdField_b_of_type_Long);
-      if (2 == this.d) {
-        this.a.put("peer_enuin", ChatActivityUtils.b(RandomWebProtocol.a(), this.f)).put("peer_gender", this.e);
-      }
-      return super.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketConfigManger", 2, "picPreDownloadTask called");
     }
-    catch (Exception localException)
+    if (this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      QLog.d("AVRedPacketConfigManger", 1, "picPreDownloadTask, redPacketConfig is null");
+      return;
     }
+    this.a.b = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resMD5, ".zip", true, 4, Integer.valueOf(1));
   }
 }
 

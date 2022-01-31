@@ -1,21 +1,13 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
 
 class vmv
-  implements View.OnTouchListener
+  implements Runnable
 {
-  vmv(vmu paramvmu, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
+  vmv(vmu paramvmu, View paramView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    paramView = paramView.getParent();
-    if (paramView != null) {
-      paramView.requestDisallowInterceptTouchEvent(true);
-    }
-    return false;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 

@@ -1,20 +1,14 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import dov.com.qq.im.capture.view.share.FilterComboSharePlugin;
-
-public class anaf
-  implements Runnable
+public final class anaf
+  extends ThreadLocal
 {
-  public anaf(FilterComboSharePlugin paramFilterComboSharePlugin) {}
-  
-  public void run()
+  protected Integer a()
   {
-    this.a.mRuntime.a().finish();
+    return Integer.valueOf(-100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anaf
  * JD-Core Version:    0.7.0.1
  */

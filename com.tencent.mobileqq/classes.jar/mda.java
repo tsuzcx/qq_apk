@@ -1,21 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
 class mda
-  implements FileTransferManager.Callback
+  implements Runnable
 {
-  mda(mcz parammcz, MessageForShortVideo paramMessageForShortVideo) {}
+  mda(mcz parammcz) {}
   
-  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((paramFileMsg == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (paramFileMsg.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)) {}
-    while ((paramFileMsg.jdField_b_of_type_Int != 6) && (paramFileMsg.jdField_b_of_type_Int != 17) && (paramFileMsg.jdField_b_of_type_Int != 9) && (paramFileMsg.jdField_b_of_type_Int != 20)) {
-      return;
-    }
-    VideoFeedsPlayManager.a(this.jdField_a_of_type_Mcz.a, paramFileMsg.u, paramFileMsg.c, paramFileMsg.d, paramFileMsg.jdField_b_of_type_Long);
+    VideoFeedsPlayActivity.a(this.a.a).a(true);
   }
 }
 

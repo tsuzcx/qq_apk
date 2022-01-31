@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.DBUtils;
 
 public class sef
-  extends TroopQZoneUploadAlbumObserver
+  implements Runnable
 {
-  public sef(Conversation paramConversation) {}
+  public sef(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (!(paramObject instanceof String)) {
-      return;
+    TroopMemberInfo localTroopMemberInfo = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.app.getCurrentAccountUin());
+    if (localTroopMemberInfo != null)
+    {
+      String str = localTroopMemberInfo.troopnick;
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = localTroopMemberInfo.troopnick;
     }
-    paramObject = (String)paramObject;
-    this.a.a(8, paramObject, -2147483648);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
   }
 }
 

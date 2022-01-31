@@ -1,25 +1,28 @@
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.ar.arengine.ARFaceDataCollector;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.CameraRendererable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaam
   implements Runnable
 {
-  public aaam(ARCloudControl paramARCloudControl, byte[] paramArrayOfByte) {}
+  public aaam(CameraRendererable paramCameraRendererable) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null)
+    if (CameraRendererable.a(this.a) != null) {}
+    try
     {
-      ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl, true);
-      ARCloudControl.b(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl, true);
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.a.recognitions == null) {
+      CameraRendererable.a(this.a).f();
       return;
     }
-    ARFaceDataCollector.a().a();
-    ARFaceDataCollector.a().a = System.currentTimeMillis();
-    ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.a.recognitions);
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.d(CameraRendererable.a(), 2, "requestRender", localException);
+    }
   }
 }
 

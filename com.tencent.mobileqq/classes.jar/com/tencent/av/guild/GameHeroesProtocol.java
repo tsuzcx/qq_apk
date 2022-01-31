@@ -12,8 +12,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import jjg;
-import jjh;
+import jir;
+import jis;
 import mqq.manager.TicketManager;
 
 public class GameHeroesProtocol
@@ -21,18 +21,18 @@ public class GameHeroesProtocol
   public VideoAppInterface a;
   public String a;
   public Map a;
-  public jjg a;
+  public jir a;
   public String b;
   public String c;
   
   GameHeroesProtocol(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_Jjg = null;
+    this.jdField_a_of_type_Jir = null;
     this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount();
-    this.b = "7.6.0";
+    this.b = "7.6.3";
     this.c = ((TicketManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_JavaLangString);
   }
   
@@ -89,10 +89,10 @@ public class GameHeroesProtocol
         if ((l == -1L) || (paramLong == -1L))
         {
           paramHeroDetail.a -= 1;
-          if (this.jdField_a_of_type_Jjg == null) {
+          if (this.jdField_a_of_type_Jir == null) {
             break;
           }
-          this.jdField_a_of_type_Jjg.a();
+          this.jdField_a_of_type_Jir.a();
           return;
         }
       }
@@ -102,13 +102,13 @@ public class GameHeroesProtocol
         continue;
         str = "" + l + paramLong;
       }
-      if ((jjh)this.jdField_a_of_type_JavaUtilMap.get(str) != null) {
+      if ((jis)this.jdField_a_of_type_JavaUtilMap.get(str) != null) {
         break;
       }
       if (QLog.isColorLevel()) {
         QLog.d("GameHeroesProtocol", 2, "[GameHeroesProtocol] ====== pull info ====== uin(" + paramString + "), groupId(" + paramLong + ")");
       }
-      paramString = new jjh(this, l, paramLong, paramHeroDetail);
+      paramString = new jis(this, l, paramLong, paramHeroDetail);
       this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
       paramString.start();
       return;
@@ -116,9 +116,9 @@ public class GameHeroesProtocol
     }
   }
   
-  void a(jjg paramjjg)
+  void a(jir paramjir)
   {
-    this.jdField_a_of_type_Jjg = paramjjg;
+    this.jdField_a_of_type_Jir = paramjir;
   }
 }
 

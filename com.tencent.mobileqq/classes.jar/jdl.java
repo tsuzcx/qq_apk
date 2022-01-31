@@ -1,31 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.av.AVLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jdl
-  implements MediaPlayer.OnCompletionListener
+  implements DialogInterface.OnClickListener
 {
   public jdl(VideoController paramVideoController) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AVLog.d(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onCloseDoubleVideoMeeting");
-    if (this.a.a().H)
-    {
-      if (paramMediaPlayer != null) {
-        paramMediaPlayer.release();
-      }
-      long l = this.a.a().f;
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
-      this.a.a(3, l, 85);
-      this.a.a().H = false;
-      this.a.a().G = false;
-      return;
-    }
-    AVLog.e(VideoController.jdField_a_of_type_JavaLangString, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
+    ReportController.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
   }
 }
 

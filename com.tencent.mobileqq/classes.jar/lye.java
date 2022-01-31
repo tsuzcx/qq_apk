@@ -1,28 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import java.io.File;
 
 public class lye
-  implements PublicAccountImageDownListener
+  implements Runnable
 {
-  public lye(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public lye(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
+    if ((!TextUtils.isEmpty(ReadInJoyDeliverUGCActivity.a(this.a))) && (!TextUtils.isEmpty(ReadInJoyDeliverUGCActivity.b(this.a))) && (!ReadInJoyDeliverUGCActivity.a(this.a).equals(ReadInJoyDeliverUGCActivity.b(this.a))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverUGCActivity", 2, "clearTempFile(image), origin:" + ReadInJoyDeliverUGCActivity.a(this.a) + ", compress:" + ReadInJoyDeliverUGCActivity.b(this.a));
+      }
+      File localFile = new File(ReadInJoyDeliverUGCActivity.b(this.a));
+      if (localFile.exists()) {
+        localFile.delete();
+      }
     }
-    ReadInJoyDeliverVideoActivity.b(this.a, ShortVideoPreviewActivity.a(paramCloseableBitmap.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.b(this.a));
-    }
-    this.a.setRightViewTextDisable(1);
   }
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
 }
 
 

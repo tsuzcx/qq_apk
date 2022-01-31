@@ -1,65 +1,40 @@
-import com.tencent.av.gaudio.AVObserver;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.biz.common.util.OpenIdObserver;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class ses
-  extends AVObserver
+  extends OpenIdObserver
 {
-  public ses(Conversation paramConversation) {}
+  public ses(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(int paramInt, long paramLong)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    paramInt = UITools.b(paramInt);
-    this.a.a(8, Long.toString(paramLong), paramInt);
-  }
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    paramInt = UITools.b(paramInt);
-    this.a.a(8, Long.toString(paramLong1), paramInt);
-    this.a.b(paramLong1);
-    this.a.a(new set(this, paramLong1));
-  }
-  
-  protected void a(int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(8, paramString1, paramInt);
-    this.a.a(new sew(this));
-  }
-  
-  protected void a(String paramString)
-  {
-    super.a(paramString);
-    this.a.a(new sey(this));
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    super.a(paramString1, paramString2);
-    this.a.a(new sex(this));
-  }
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void b(int paramInt, long paramLong)
-  {
-    paramInt = UITools.b(paramInt);
-    this.a.a(8, Long.toString(paramLong), paramInt);
-  }
-  
-  protected void b(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
-      this.a.a(new seu(this, paramLong1));
-    }
-  }
-  
-  protected void c(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
-      this.a.a(new sev(this, paramLong1));
-    }
+    if ((this.a.isFinishing()) || (this.a.n)) {}
+    do
+    {
+      do
+      {
+        return;
+        this.a.s();
+        if (this.a.b != null) {
+          this.a.b.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
+        }
+      } while (paramOpenID.openID.equals(this.a.d));
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
+      }
+      this.a.C();
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
   }
 }
 

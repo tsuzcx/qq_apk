@@ -1,27 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
 public class mft
-  implements AbsListView.OnScrollListener
+  implements DialogInterface.OnShowListener
 {
-  public mft(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mft(VideoShareHelper paramVideoShareHelper) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
     }
-    this.a.f();
-    ReadInJoyBaseAdapter.c(this.a);
-    this.a.g();
+    VideoShareHelper.b(this.a).getWindow().clearFlags(8);
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

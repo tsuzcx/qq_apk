@@ -1,30 +1,19 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils.ExtractAudioListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
-
 public class anfw
-  implements FFmpegUtils.ExtractAudioListener
 {
-  public anfw(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(String paramString)
+  public anfw(String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.record.HWEditImportVideoPlayer", 2, "extractAudioFromMp4 success");
-    }
-    this.a.a(new anfx(this), 0L);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.record.HWEditImportVideoPlayer", 2, "extractAudioFromMp4 fail " + paramString);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfw
  * JD-Core Version:    0.7.0.1
  */

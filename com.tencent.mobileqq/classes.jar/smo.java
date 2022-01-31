@@ -1,14 +1,29 @@
-import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
 
-class smo
-  implements BubblePopupWindow.OnDismissListener
+public class smo
+  extends EmoticonPackageDownloadListener
 {
-  smo(smn paramsmn, View paramView) {}
+  public smo(EmosmActivity paramEmosmActivity) {}
   
-  public void a()
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a.runOnUiThread(new smq(this, paramEmoticonPackage, paramInt));
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
+    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
+      return;
+    }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.runOnUiThread(new smp(this, paramEmoticonPackage));
   }
 }
 

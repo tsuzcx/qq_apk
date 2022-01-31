@@ -1,52 +1,30 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-class achz
-  implements Runnable
+public class achz
+  implements View.OnTouchListener
 {
-  achz(achy paramachy, ArrayList paramArrayList, HashMap paramHashMap1, HashMap paramHashMap2, LinkedHashMap paramLinkedHashMap) {}
+  public achz(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    if ((QfileLocalFileMediaTabView.a(this.jdField_a_of_type_Achy.a) & 0x2) > 0) {
-      this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("Camera", new ArrayList());
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    String str;
-    while (localIterator.hasNext())
+    switch (paramMotionEvent.getAction())
     {
-      str = (String)localIterator.next();
-      if (!this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey("已下载的视频")) {
-        this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("已下载的视频", new ArrayList());
-      }
-      ((List)this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilLinkedHashMap.get("已下载的视频")).addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(str));
     }
-    localIterator = this.b.keySet().iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      str = (String)localIterator.next();
-      if (!this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey("已下载的音乐")) {
-        this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("已下载的音乐", new ArrayList());
-      }
-      ((List)this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilLinkedHashMap.get("已下载的音乐")).addAll((Collection)this.b.get(str));
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
-    this.jdField_a_of_type_Achy.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
-    this.jdField_a_of_type_Achy.a.i();
-    this.jdField_a_of_type_Achy.a.setSelect(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achz
  * JD-Core Version:    0.7.0.1
  */

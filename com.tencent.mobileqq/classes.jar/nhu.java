@@ -1,14 +1,26 @@
-import com.tencent.biz.qqstory.playmode.child.CommentPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
+import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest;
+import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.DecryptCallback;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public class nhu
-  implements Runnable
+class nhu
+  extends CmdTaskManger.UIThreadCallback
 {
-  public nhu(CommentPlayMode paramCommentPlayMode) {}
+  nhu(nht paramnht, long paramLong, QQProgressDialog paramQQProgressDialog) {}
   
-  public void run()
+  public void a(@NonNull StoryShareTranslateTokenRequest paramStoryShareTranslateTokenRequest, @Nullable StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse paramStoryShareTranslateTokenResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a.a.setCurrentItem(this.a.b, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramStoryShareTranslateTokenResponse);
+    }
+    StoryReportor.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+    this.jdField_a_of_type_Nht.a.a(paramStoryShareTranslateTokenResponse, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
   }
 }
 

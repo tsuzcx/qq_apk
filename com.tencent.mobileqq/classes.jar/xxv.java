@@ -1,14 +1,14 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import java.util.ArrayList;
 
 public class xxv
   implements Runnable
 {
-  public xxv(SelectMemberActivity paramSelectMemberActivity) {}
+  public xxv(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
   
   public void run()
   {
-    this.a.c.sendAccessibilityEvent(8);
+    LbsFilterStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

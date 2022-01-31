@@ -421,7 +421,7 @@ public class GdtAdHandler
       localQQAdReport.msg_floor.set(paramReportInfo.jdField_f_of_type_Int);
       localQQAdReport.puin.set(paramReportInfo.jdField_a_of_type_Long);
       localQQAdReport.ad_puin.set(paramReportInfo.jdField_b_of_type_Long);
-      localQQAdReport.version.set("7.6.0");
+      localQQAdReport.version.set("7.6.3");
       localObject2 = localQQAdReport.ad_id;
       if (paramReportInfo.k != null) {
         break label713;
@@ -569,7 +569,7 @@ public class GdtAdHandler
       str = "";
       label146:
       localPBStringField.set(str);
-      localPhone.qq_ver.set("7.6.0");
+      localPhone.qq_ver.set("7.6.3");
       localPhone.os_type.set(2);
       localQQAdGet.net_info.set(localPhone);
       if (paramList1 != null) {
@@ -627,7 +627,7 @@ public class GdtAdHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.net.GdtAdHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,18 @@
-import android.content.res.Resources;
 import android.view.View;
-import com.tencent.biz.TroopMemberLbs.TroopMemberLbsHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ujf
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public ujf(PlusPanel paramPlusPanel, boolean paramBoolean, ActionSheet paramActionSheet) {}
+  public ujf(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
-        PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().setCanLock(false);
-        }
-      }
-    }
-    if (!NetworkUtil.d(BaseApplicationImpl.getContext()))
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131432992, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
-      return;
-    }
-    paramView = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      TroopMemberLbsHelper.a(paramView, bool, this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel.getContext());
-      break;
-    }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

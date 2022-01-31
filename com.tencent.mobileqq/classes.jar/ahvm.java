@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemPAAudio;
+import com.tencent.mobileqq.search.model.GroupSearchModelPublicAcnt;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import java.util.List;
 
 public class ahvm
-  implements DialogInterface.OnClickListener
+  extends GroupSearchEngine.SearchEngineEntity
 {
-  public ahvm(StructMsgItemPAAudio paramStructMsgItemPAAudio) {}
+  public ahvm(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
+  {
+    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ISearchResultGroupModel a(List paramList, String paramString)
+  {
+    return new GroupSearchModelPublicAcnt(paramList, paramString, GroupSearchEngine.a(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahvm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amdk;
+import amto;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,7 +24,7 @@ public class TranslucentActivity
     {
       localQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131558448));
       localQQProgressDialog.a("正在加载...");
-      localQQProgressDialog.setOnDismissListener(new amdk(this));
+      localQQProgressDialog.setOnDismissListener(new amto(this));
     }
     for (;;)
     {

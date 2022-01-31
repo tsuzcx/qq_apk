@@ -22,11 +22,11 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
 import java.util.List;
-import oxy;
-import oxz;
-import oya;
-import oyb;
-import oyc;
+import ozs;
+import ozt;
+import ozu;
+import ozv;
+import ozw;
 
 public class CustomMenuBar
   extends LinearLayout
@@ -56,16 +56,16 @@ public class CustomMenuBar
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_JavaLangRunnable = new oyc(this);
+    this.jdField_a_of_type_JavaLangRunnable = new ozw(this);
     super.setFocusable(true);
     super.setOrientation(0);
     super.setGravity(16);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845513);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845641);
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getText(2131430029));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getText(2131430046));
     if (a()) {
-      setBackgroundColor(paramContext.getResources().getColor(2131493278));
+      setBackgroundColor(paramContext.getResources().getColor(2131493279));
     }
     paramAttributeSet = new LinearLayout.LayoutParams(-2, -2);
     paramAttributeSet.leftMargin = 0;
@@ -79,7 +79,7 @@ public class CustomMenuBar
     }
     paramContext.setLayoutParams(new LinearLayout.LayoutParams(-1, -1, 1.0F));
     super.addView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131364548));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131364572));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(16);
   }
   
@@ -99,10 +99,10 @@ public class CustomMenuBar
     ImageView localImageView1;
     if (a())
     {
-      localView.setBackgroundResource(2130839744);
-      localImageView2 = (ImageView)localView.findViewById(2131364550);
-      localTextView = (TextView)localView.findViewById(2131364551);
-      localImageView1 = (ImageView)localView.findViewById(2131364552);
+      localView.setBackgroundResource(2130839750);
+      localImageView2 = (ImageView)localView.findViewById(2131364574);
+      localTextView = (TextView)localView.findViewById(2131364575);
+      localImageView1 = (ImageView)localView.findViewById(2131364576);
       if (localObject == null) {
         break label216;
       }
@@ -126,7 +126,7 @@ public class CustomMenuBar
         break label342;
       }
       localImageView1.setVisibility(0);
-      localImageView1.setImageResource(2130840892);
+      localImageView1.setImageResource(2130840929);
       localObject = new PopupMenu(super.getContext());
       i = 0;
       while (i < paramMenuItem.b())
@@ -134,8 +134,8 @@ public class CustomMenuBar
         ((PopupMenu)localObject).a(paramMenuItem.a(i));
         i += 1;
       }
-      localView.setBackgroundResource(2130838908);
-      localView.findViewById(2131364549).setVisibility(8);
+      localView.setBackgroundResource(2130838912);
+      localView.findViewById(2131364573).setVisibility(8);
       break;
       label216:
       localImageView2.setVisibility(8);
@@ -146,20 +146,20 @@ public class CustomMenuBar
       label236:
       localTextView.setVisibility(8);
     }
-    ((PopupMenu)localObject).a(new oxy(this, localImageView1, localTextView));
+    ((PopupMenu)localObject).a(new ozs(this, localImageView1, localTextView));
     ((PopupMenu)localObject).a(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar$OnMenuItemClickListener);
-    localView.setOnTouchListener(new oxz(this, localImageView1));
-    localView.setOnClickListener(new oya(this, localImageView1, localTextView, (PopupMenu)localObject, paramString, j, str));
+    localView.setOnTouchListener(new ozt(this, localImageView1));
+    localView.setOnClickListener(new ozu(this, localImageView1, localTextView, (PopupMenu)localObject, paramString, j, str));
     for (;;)
     {
       i = this.b;
       this.b = (i + 1);
       if (i == 0) {
-        localView.findViewById(2131364549).setVisibility(8);
+        localView.findViewById(2131364573).setVisibility(8);
       }
       return localView;
       label342:
-      localView.setOnClickListener(new oyb(this, (String)localObject, j));
+      localView.setOnClickListener(new ozv(this, (String)localObject, j));
     }
   }
   

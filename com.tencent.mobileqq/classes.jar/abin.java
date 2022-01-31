@@ -1,50 +1,26 @@
-import com.tencent.mobileqq.campuscircle.CampusCircleHandler;
-import com.tencent.mobileqq.campuscircle.CampusCircleManager;
-import com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Locale;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.armap.wealthgod.ARMapSplashBgView;
 
 public class abin
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abin(CampusCirclePublishActivity paramCampusCirclePublishActivity) {}
+  public abin(ARMapSplashBgView paramARMapSplashBgView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    boolean bool1 = true;
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager.a(1, null);
-    if ((localObject != null) && (((List)localObject).size() > 0)) {
-      this.a.a((List)localObject);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleHandler.a(1);
-    try
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    if (ARMapSplashBgView.a(this.a) != null)
     {
-      boolean bool2 = PtvFilterSoLoad.a(VideoEnvironment.a(), false);
-      localObject = this.a;
-      if ((VideoEnvironment.b()) && (bool2)) {}
-      for (;;)
-      {
-        ((CampusCirclePublishActivity)localObject).c = bool1;
-        if (QLog.isColorLevel()) {
-          QLog.i("CampusCircle", 2, String.format(Locale.getDefault(), "initAsync hasFilterSoLib:%b isSurpportFilter:%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(this.a.c) }));
-        }
-        return;
-        bool1 = false;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      ARMapSplashBgView.a(this.a).setPivotY(ARMapSplashBgView.a(this.a).getHeight() * 0.7F);
+      ARMapSplashBgView.a(this.a).setRotation(paramValueAnimator.floatValue() * ARMapSplashBgView.b(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,61 @@
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import java.io.File;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutNew2;
+import com.tencent.qphone.base.util.QLog;
 
 public class aijj
-  implements Runnable
+  extends URLDrawableDownListener.Adapter
 {
-  public aijj(TroopBarPublishActivity paramTroopBarPublishActivity, String paramString) {}
+  public aijj(StructMsgItemLayoutNew2 paramStructMsgItemLayoutNew2) {}
   
-  public void run()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_JavaLangString == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.s();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.s = false;
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.g.setText("视频合成失败");
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.g.setTextColor(-65536);
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.setOnClickListener(new aijk(this));
-      return;
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.u, 2, "onLoadCancelled");
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.s = false;
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.g.setText("");
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.g.setCompoundDrawablesWithIntrinsicBounds(2130844679, 0, 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.I = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a.a = new File(this.jdField_a_of_type_JavaLangString).length();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.setOnClickListener(new aijl(this));
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(TroopBarPublishActivity.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity), true);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.u, 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.u, 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    do
+    {
+      return;
+      paramView.setBackgroundDrawable(null);
+      if ((paramView instanceof ImageView))
+      {
+        ((URLImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.a.u, 2, "onLoadSuccessed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijj
  * JD-Core Version:    0.7.0.1
  */

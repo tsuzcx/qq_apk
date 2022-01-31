@@ -1,24 +1,57 @@
-import android.os.Handler;
-import android.os.Message;
+import Wallet.WalletSkinRsp;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.qphone.base.util.QLog;
 
 public class xay
-  extends Handler
+  implements Runnable
 {
-  public xay(ThemeHbFragment paramThemeHbFragment) {}
+  public xay(QWalletSkinHandler paramQWalletSkinHandler, WalletSkinRsp paramWalletSkinRsp, QWalletSkinHandler.SkinListener paramSkinListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if ((this.jdField_a_of_type_WalletWalletSkinRsp == null) || (TextUtils.isEmpty(this.jdField_a_of_type_WalletWalletSkinRsp.zipUrl)))
     {
-    }
-    do
-    {
+      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletSkinHandler", 2, "setWalletSkin fail:" + this.jdField_a_of_type_WalletWalletSkinRsp);
+      }
       return;
-    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
-    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
+    }
+    if (this.jdField_a_of_type_WalletWalletSkinRsp.skinID == 0)
+    {
+      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, 0);
+      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
+      return;
+    }
+    String str1 = QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_WalletWalletSkinRsp.skinID + "", 0);
+    String str2 = QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, str1);
+    String str3 = QWalletSkinHandler.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, str1);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_WalletWalletSkinRsp.zipUrl)) && (QWalletTools.c(str3, this.jdField_a_of_type_WalletWalletSkinRsp.zipUrl)) && (QWalletTools.c(str2, this.jdField_a_of_type_WalletWalletSkinRsp.zipMd5)) && (QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler).c(this.jdField_a_of_type_WalletWalletSkinRsp.zipUrl) != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletSkinHandler", 2, "setWalletSkin res exist" + this.jdField_a_of_type_WalletWalletSkinRsp);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler.a() != this.jdField_a_of_type_WalletWalletSkinRsp.skinID) {
+        QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, null);
+      }
+      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_WalletWalletSkinRsp.skinID);
+      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
+      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletSkinHandler", 2, "setWalletSkin res not exist" + this.jdField_a_of_type_WalletWalletSkinRsp);
+    }
+    QWalletTools.a(QWalletSkinHandler.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, str1));
+    if (!TextUtils.isEmpty(str3)) {
+      QWalletTools.a(QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler).d(str3));
+    }
+    QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, null);
+    QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler).a(this.jdField_a_of_type_WalletWalletSkinRsp.zipUrl, this.jdField_a_of_type_WalletWalletSkinRsp.zipMd5, new xaz(this, str1), true);
   }
 }
 

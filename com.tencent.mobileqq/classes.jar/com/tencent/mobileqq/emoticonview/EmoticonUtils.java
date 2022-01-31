@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abyj;
+import acfl;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.common.app.AppInterface;
@@ -255,7 +255,7 @@ public class EmoticonUtils
     } while (!paramBoolean1);
     if (((TreeSet)localObject1).size() == 1)
     {
-      ((EmoticonManager)paramQQAppInterface.getManager(13)).b(String.valueOf(i2), 0, new abyj(paramSessionInfo, paramQQAppInterface, i2, paramActivity));
+      ((EmoticonManager)paramQQAppInterface.getManager(13)).b(String.valueOf(i2), 0, new acfl(paramSessionInfo, paramQQAppInterface, i2, paramActivity));
       return;
     }
     paramSessionInfo = ((TreeSet)localObject1).iterator();
@@ -320,7 +320,7 @@ public class EmoticonUtils
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
     int i1 = NetworkUtil.a(localBaseApplication);
-    boolean bool = SettingCloneUtil.readValue(localBaseApplication, null, localBaseApplication.getString(2131433555), "qqsetting_auto_receive_magic_face_key", true);
+    boolean bool = SettingCloneUtil.readValue(localBaseApplication, null, localBaseApplication.getString(2131433572), "qqsetting_auto_receive_magic_face_key", true);
     return ((i1 == 3) || (i1 == 4)) && (!bool);
   }
   

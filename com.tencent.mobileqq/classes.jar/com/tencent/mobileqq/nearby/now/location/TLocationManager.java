@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.now.location;
 
-import aefx;
-import aefz;
-import aega;
-import aegc;
+import aetd;
+import aetf;
+import aetg;
+import aeti;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Handler;
@@ -65,15 +65,15 @@ public class TLocationManager
     do
     {
       return;
-      localObject = new aegc(this, paramLocationListener);
+      localObject = new aeti(this, paramLocationListener);
       if (Build.VERSION.SDK_INT >= 23) {}
       localTencentLocationRequest = TencentLocationRequest.create();
       localTencentLocationRequest.setRequestLevel(3);
-      ((aegc)localObject).a();
+      ((aeti)localObject).a();
     } while ((this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager != null) && (this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.requestLocationUpdates(localTencentLocationRequest, (TencentLocationListener)localObject) == 0));
     LogUtil.i("TLocationManager", "getLocation: fail, cause sdk is null, or request return is not 0");
-    ((aegc)localObject).b();
-    a((aegc)localObject, paramLocationListener);
+    ((aeti)localObject).b();
+    a((aeti)localObject, paramLocationListener);
   }
   
   private void a(@Nullable LocationListener paramLocationListener, LocationInfo paramLocationInfo)
@@ -82,7 +82,7 @@ public class TLocationManager
     if (paramLocationListener != null)
     {
       LogUtil.i("TLocationManager", "notifyLocationSuccess() not null");
-      ThreadManager.getUIHandler().post(new aefz(this, paramLocationInfo, paramLocationListener));
+      ThreadManager.getUIHandler().post(new aetf(this, paramLocationInfo, paramLocationListener));
     }
   }
   
@@ -92,7 +92,7 @@ public class TLocationManager
     if (paramLocationListener != null)
     {
       Log.i("TLocationManager", "notifyLocationFail: not null");
-      ThreadManager.getUIHandler().post(new aega(this, paramLocationListener, paramLocationInfo));
+      ThreadManager.getUIHandler().post(new aetg(this, paramLocationListener, paramLocationInfo));
     }
   }
   
@@ -126,49 +126,49 @@ public class TLocationManager
     }
   }
   
-  public void a(aegc paramaegc, LocationListener paramLocationListener)
+  public void a(aeti paramaeti, LocationListener paramLocationListener)
   {
     LogUtil.i("TLocationManager", "into locationFail");
     if (this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager != null) {
-      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.removeUpdates(paramaegc);
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.removeUpdates(paramaeti);
     }
-    paramaegc = new LocationInfo();
-    paramaegc.lng = "";
-    paramaegc.lat = "";
-    paramaegc.city = "";
-    b(paramLocationListener, paramaegc);
+    paramaeti = new LocationInfo();
+    paramaeti.lng = "";
+    paramaeti.lat = "";
+    paramaeti.city = "";
+    b(paramLocationListener, paramaeti);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
   
-  public void a(TencentLocation paramTencentLocation, aegc paramaegc, @Nullable LocationListener paramLocationListener)
+  public void a(TencentLocation paramTencentLocation, aeti paramaeti, @Nullable LocationListener paramLocationListener)
   {
     LogUtil.i("TLocationManager", "into locationSuccess");
     if (this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager != null) {
-      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.removeUpdates(paramaegc);
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.removeUpdates(paramaeti);
     }
-    paramaegc = paramTencentLocation.getProvince();
+    paramaeti = paramTencentLocation.getProvince();
     String str = paramTencentLocation.getCity();
     double d1 = paramTencentLocation.getLongitude();
     double d2 = paramTencentLocation.getLatitude();
     LogUtil.i("TLocationManager", "locationSucc city is " + str);
     if (TextUtils.isEmpty(str)) {
-      if (TextUtils.isEmpty(paramaegc)) {}
+      if (TextUtils.isEmpty(paramaeti)) {}
     }
-    for (paramTencentLocation = paramaegc;; paramTencentLocation = str)
+    for (paramTencentLocation = paramaeti;; paramTencentLocation = str)
     {
-      paramaegc = new LocationInfo();
-      paramaegc.lng = String.valueOf(d1);
-      paramaegc.lat = String.valueOf(d2);
-      paramaegc.city = paramTencentLocation;
-      a(paramLocationListener, paramaegc);
+      paramaeti = new LocationInfo();
+      paramaeti.lng = String.valueOf(d1);
+      paramaeti.lat = String.valueOf(d2);
+      paramaeti.city = paramTencentLocation;
+      a(paramLocationListener, paramaeti);
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.c = paramaegc.getCity();
-      this.jdField_a_of_type_JavaLangString = paramaegc.getLng();
-      this.b = paramaegc.getLat();
+      this.c = paramaeti.getCity();
+      this.jdField_a_of_type_JavaLangString = paramaeti.getLng();
+      this.b = paramaeti.getLat();
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
       return;
       LogUtil.i("TLocationManager", "locationSuccess: city & prov is null!");
-      LocationHelper.a(d2, d1, new aefx(this, d1, d2, paramLocationListener));
+      LocationHelper.a(d2, d1, new aetd(this, d1, d2, paramLocationListener));
       return;
     }
   }

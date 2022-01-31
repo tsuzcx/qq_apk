@@ -1,47 +1,23 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem.UserID;
-import com.tencent.biz.qqstory.network.request.ConvertUinAndUnionIdRequest;
-import com.tencent.biz.qqstory.network.response.ConvertUinAndUnionIdResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.List;
+import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
+import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
-public class nbz
-  implements CmdTaskManger.CommandCallback
+class nbz
+  extends OnSimpleShareListener
 {
-  public nbz(UserManager paramUserManager, QQUserUIItem.UserID paramUserID, boolean paramBoolean, long paramLong) {}
+  nbz(nbx paramnbx) {}
   
-  public void a(ConvertUinAndUnionIdRequest arg1, ConvertUinAndUnionIdResponse paramConvertUinAndUnionIdResponse, ErrorMessage paramErrorMessage)
+  public void a()
   {
-    long l = System.currentTimeMillis();
-    if (paramErrorMessage.isSuccess())
-    {
-      ??? = paramConvertUinAndUnionIdResponse.a;
-      if (???.size() > 0)
-      {
-        ??? = (QQUserUIItem)???.get(0);
-        ??? = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.a(???);
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.a = ???.qq;
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.b = ???.uid;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          ??? = (StoryConfigManager)SuperManager.a(10);
-          ???.b("qqstory_my_uin", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.a);
-          ???.b("qqstory_my_union_id", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.b);
-        }
-      }
-      SLog.d("Q.qqstory.user.UserManager", "get server inf success ,%s , time :%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID, Long.valueOf(l - this.jdField_a_of_type_Long) });
-    }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.notifyAll();
-      return;
-      SLog.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.jdField_a_of_type_Long) });
-    }
+    super.a();
+    FeedCommentLikeLego.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    StoryReportor.a("home_page", "suc_share", 1, paramInt, new String[] { StoryReportor.b(this.a.a.a) + "", StoryReportor.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

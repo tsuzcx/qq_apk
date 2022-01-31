@@ -1,27 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
+import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
+import com.tencent.mobileqq.ocr.data.OcrDpc;
+import com.tencent.qphone.base.util.QLog;
 
-public class agcu
-  implements Runnable
+public final class agcu
+  implements DeviceProfileManager.DPCObserver
 {
-  public agcu(PhotoViewForShopping paramPhotoViewForShopping, ProfileCardInfo paramProfileCardInfo) {}
-  
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null))
-    {
-      ProfileShoppingPhotoInfo localProfileShoppingPhotoInfo = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-      if ((localProfileShoppingPhotoInfo != null) && (PhotoViewForShopping.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping) != null))
-      {
-        Message localMessage = Message.obtain();
-        localMessage.what = 200;
-        localMessage.obj = localProfileShoppingPhotoInfo;
-        PhotoViewForShopping.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping).sendMessage(localMessage);
-      }
+    if (paramBoolean) {
+      OcrDpc.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
     }
   }
 }

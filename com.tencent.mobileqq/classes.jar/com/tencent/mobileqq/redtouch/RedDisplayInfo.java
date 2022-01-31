@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.redtouch;
 
-import agrk;
+import ahfm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.List;
 public class RedDisplayInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new agrk();
+  public static final Parcelable.Creator CREATOR = new ahfm();
   private RedTypeInfo a;
   public ArrayList a;
   

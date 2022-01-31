@@ -31,8 +31,9 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
 import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyVideoReportData;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoAutoPlayController;
@@ -63,10 +64,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import mna;
-import mnb;
-import mnc;
-import mnd;
+import mog;
+import moh;
+import moi;
+import moj;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -80,7 +81,7 @@ public class FastWebVideoFeedsAdapter
   private Context jdField_a_of_type_AndroidContentContext;
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new mna(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new mog(this, Looper.getMainLooper());
   private VideoAutoPlayController jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoAutoPlayController;
   private VideoFeedsIPCClient jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient;
   private VideoPreDownloadMgr jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr;
@@ -109,7 +110,7 @@ public class FastWebVideoFeedsAdapter
   
   FastWebVideoFeedsAdapter(Context paramContext, Activity paramActivity, FastWebVideoFeedsListView paramFastWebVideoFeedsListView, VideoFeedsIPCClient paramVideoFeedsIPCClient, QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView$ListViewEventListener = new mnb(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView$ListViewEventListener = new moh(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView = paramFastWebVideoFeedsListView;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
@@ -117,7 +118,7 @@ public class FastWebVideoFeedsAdapter
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView$ListViewEventListener);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ImageUtil.b();
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492970));
+    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492971));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoAutoPlayController = VideoAutoPlayController.a(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNonMainAppListViewFaceLoader = new NonMainAppListViewFaceLoader(paramContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView, 1);
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNonMainAppListViewFaceLoader.a(24, 24);
@@ -164,7 +165,7 @@ public class FastWebVideoFeedsAdapter
           break label685;
         }
         paramBaseItemHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        paramBaseItemHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a(2130839645));
+        paramBaseItemHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a(2130839651));
         paramBaseItemHolder.jdField_a_of_type_AndroidWidgetButton.setText("查看详情");
         paramBaseItemHolder.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#00FFFFFF"));
         paramBaseItemHolder.jdField_a_of_type_AndroidWidgetButton.setPadding(AIOUtils.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
@@ -231,7 +232,7 @@ public class FastWebVideoFeedsAdapter
       label627:
       paramBaseItemHolder.jdField_b_of_type_AndroidWidgetTextView.setText("关注");
       paramBaseItemHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#00ffffff"));
-      paramBaseItemHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(2130840838));
+      paramBaseItemHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(2130840871));
       paramBaseItemHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       paramBaseItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       break label175;
@@ -262,7 +263,7 @@ public class FastWebVideoFeedsAdapter
       paramFastWebVideoInfo.height = (i / 2 - paramInt / 2);
       paramFastWebVideoInfo.width = -1;
       paramVideoItemHolder.jdField_e_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramFastWebVideoInfo);
-      paramVideoItemHolder.jdField_e_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new mnc(this));
+      paramVideoItemHolder.jdField_e_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new moi(this));
       return;
       if (this.jdField_a_of_type_Int == 2)
       {
@@ -322,13 +323,13 @@ public class FastWebVideoFeedsAdapter
         if (!paramFastWebVideoInfo1.a()) {
           break label1190;
         }
-        paramVideoItemHolder.jdField_k_of_type_AndroidWidgetImageView.setImageDrawable(a(2130840822));
+        paramVideoItemHolder.jdField_k_of_type_AndroidWidgetImageView.setImageDrawable(a(2130840851));
         paramVideoItemHolder.jdField_j_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492889));
         paramVideoItemHolder.jdField_i_of_type_AndroidWidgetRelativeLayout.setTag(paramVideoItemHolder);
         paramVideoItemHolder.jdField_i_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
         paramVideoItemHolder.jdField_i_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
         paramVideoItemHolder.jdField_i_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        paramVideoItemHolder.jdField_j_of_type_AndroidWidgetImageView.setImageDrawable(a(2130840840));
+        paramVideoItemHolder.jdField_j_of_type_AndroidWidgetImageView.setImageDrawable(a(2130840873));
         paramVideoItemHolder.jdField_j_of_type_AndroidWidgetLinearLayout.setTag(paramVideoItemHolder);
         paramVideoItemHolder.jdField_j_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
       }
@@ -401,7 +402,7 @@ public class FastWebVideoFeedsAdapter
       if (!FastWebVideoVolumeControl.a().a()) {
         break label1425;
       }
-      paramVideoItemHolder.jdField_h_of_type_AndroidWidgetImageView.setImageDrawable(b(2130840851));
+      paramVideoItemHolder.jdField_h_of_type_AndroidWidgetImageView.setImageDrawable(b(2130840887));
     }
     for (;;)
     {
@@ -447,11 +448,11 @@ public class FastWebVideoFeedsAdapter
       label1141:
       paramVideoItemHolder.jdField_l_of_type_AndroidWidgetTextView.setText("关注");
       paramVideoItemHolder.jdField_l_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
-      paramVideoItemHolder.jdField_m_of_type_AndroidWidgetImageView.setImageDrawable(a(2130840838));
+      paramVideoItemHolder.jdField_m_of_type_AndroidWidgetImageView.setImageDrawable(a(2130840871));
       paramVideoItemHolder.jdField_j_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       break label146;
       label1190:
-      paramVideoItemHolder.jdField_i_of_type_AndroidWidgetImageView.setImageDrawable(a(2130840846));
+      paramVideoItemHolder.jdField_i_of_type_AndroidWidgetImageView.setImageDrawable(a(2130840879));
       paramVideoItemHolder.jdField_i_of_type_AndroidWidgetLinearLayout.setTag(paramVideoItemHolder);
       paramVideoItemHolder.jdField_i_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
       paramVideoItemHolder.jdField_i_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -488,7 +489,7 @@ public class FastWebVideoFeedsAdapter
       paramVideoItemHolder.jdField_b_of_type_AndroidViewView.setVisibility(0);
       break label842;
       label1425:
-      paramVideoItemHolder.jdField_h_of_type_AndroidWidgetImageView.setImageDrawable(b(2130840852));
+      paramVideoItemHolder.jdField_h_of_type_AndroidWidgetImageView.setImageDrawable(b(2130840888));
     }
   }
   
@@ -544,7 +545,7 @@ public class FastWebVideoFeedsAdapter
         if (paramFastWebVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.l.length() >= 3) {
           break label250;
         }
-        paramImageItemHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a(2130840838));
+        paramImageItemHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a(2130840871));
       }
     }
     for (;;)
@@ -560,9 +561,9 @@ public class FastWebVideoFeedsAdapter
       break;
       label250:
       if (paramFastWebVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.l.length() < 5) {
-        paramImageItemHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a(2130839645));
+        paramImageItemHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a(2130839651));
       } else {
-        paramImageItemHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a(2130839646));
+        paramImageItemHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(a(2130839652));
       }
     }
   }
@@ -645,10 +646,16 @@ public class FastWebVideoFeedsAdapter
     if ((paramFastWebVideoInfo == null) || (TextUtils.isEmpty(paramFastWebVideoInfo.jdField_f_of_type_JavaLangString))) {
       return;
     }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramFastWebVideoInfo.jdField_f_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    VideoReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, paramFastWebVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, null);
+    Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramFastWebVideoInfo.jdField_f_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+    localObject = NativeAdUtils.a(paramFastWebVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
+    if (paramFastWebVideoInfo.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidAppActivity))
+    {
+      NativeAdUtils.a(null, this.jdField_a_of_type_AndroidContentContext, NativeAdUtils.jdField_a_of_type_Int, NativeAdUtils.n, (AdvertisementInfo)localObject, paramFastWebVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, 0L);
+      return;
+    }
+    NativeAdUtils.a(null, this.jdField_a_of_type_AndroidContentContext, NativeAdUtils.jdField_a_of_type_Int, NativeAdUtils.m, (AdvertisementInfo)localObject, paramFastWebVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, 0L);
   }
   
   private Drawable b(int paramInt)
@@ -679,7 +686,7 @@ public class FastWebVideoFeedsAdapter
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new mnd(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new moj(this));
   }
   
   public void a(int paramInt)
@@ -861,28 +868,28 @@ public class FastWebVideoFeedsAdapter
       {
       default: 
         paramViewGroup = null;
-        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(2131365541));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367137));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367139));
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367138));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367141));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367140));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367142));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367136));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367134));
-        paramViewGroup.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367160));
-        paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367161));
-        paramViewGroup.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367156));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367157));
-        paramViewGroup.jdField_e_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367158));
-        paramViewGroup.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367159));
-        paramViewGroup.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367149));
-        paramViewGroup.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGradientMaskView = ((VideoFeedsGradientMaskView)paramView.findViewById(2131367150));
-        paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367154));
-        paramViewGroup.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367153));
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367155));
-        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367145));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131367164));
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(2131365568));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367185));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367187));
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367186));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367189));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367188));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367190));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367184));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367182));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367208));
+        paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367209));
+        paramViewGroup.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367204));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367205));
+        paramViewGroup.jdField_e_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367206));
+        paramViewGroup.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367207));
+        paramViewGroup.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367197));
+        paramViewGroup.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGradientMaskView = ((VideoFeedsGradientMaskView)paramView.findViewById(2131367198));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367202));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367201));
+        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367203));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367193));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131367212));
       }
     }
     for (;;)
@@ -900,61 +907,61 @@ public class FastWebVideoFeedsAdapter
           break label1246;
         }
         return paramView;
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969612, paramViewGroup, false);
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969620, paramViewGroup, false);
         paramViewGroup = new FastWebVideoFeedsAdapter.VideoItemHolder();
-        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout = ((VideoFeedsGestureLayout)paramView.findViewById(2131367094));
-        paramViewGroup.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367096));
-        paramViewGroup.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365609));
-        paramViewGroup.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367132));
-        paramViewGroup.jdField_g_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367100));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131367110));
-        paramViewGroup.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367109));
-        paramViewGroup.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367111));
-        paramViewGroup.jdField_f_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367103));
-        paramViewGroup.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367105));
-        paramViewGroup.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367090));
-        paramViewGroup.jdField_f_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367131));
-        paramViewGroup.jdField_h_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367104));
-        paramViewGroup.jdField_g_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363362));
-        paramViewGroup.jdField_i_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367107));
-        paramViewGroup.jdField_h_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367133));
-        paramViewGroup.jdField_h_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367108));
-        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGradientMaskView = ((VideoFeedsGradientMaskView)paramView.findViewById(2131367135));
-        paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367102);
-        paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131367101);
-        paramViewGroup.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367106));
-        paramViewGroup.jdField_k_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367095));
-        paramViewGroup.p = ((LinearLayout)paramView.findViewById(2131367112));
-        paramViewGroup.jdField_n_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367113));
-        paramViewGroup.jdField_m_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367115));
-        paramViewGroup.jdField_k_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367117));
-        paramViewGroup.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367116));
-        paramViewGroup.jdField_m_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367119));
-        paramViewGroup.jdField_j_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367118));
-        paramViewGroup.jdField_l_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367120));
-        paramViewGroup.jdField_n_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367114));
-        paramViewGroup.jdField_c_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGradientMaskView = ((VideoFeedsGradientMaskView)paramView.findViewById(2131367098));
-        paramViewGroup.jdField_j_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367129));
-        paramViewGroup.jdField_j_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367130));
-        paramViewGroup.jdField_i_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367127));
-        paramViewGroup.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367128));
-        paramViewGroup.jdField_k_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367125));
-        paramViewGroup.jdField_l_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367126));
-        paramViewGroup.jdField_l_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367121));
-        paramViewGroup.d = ((VideoFeedsGradientMaskView)paramView.findViewById(2131367099));
-        paramViewGroup.jdField_i_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367122));
-        paramViewGroup.jdField_k_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367123));
-        paramViewGroup.jdField_j_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367124));
-        paramViewGroup.o = ((LinearLayout)paramView.findViewById(2131365203));
-        paramViewGroup.jdField_m_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367097));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131363434));
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout = ((VideoFeedsGestureLayout)paramView.findViewById(2131366707));
+        paramViewGroup.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367144));
+        paramViewGroup.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365636));
+        paramViewGroup.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367180));
+        paramViewGroup.jdField_g_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367148));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131367158));
+        paramViewGroup.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367157));
+        paramViewGroup.jdField_g_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367159));
+        paramViewGroup.jdField_f_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367151));
+        paramViewGroup.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367153));
+        paramViewGroup.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367139));
+        paramViewGroup.jdField_f_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367179));
+        paramViewGroup.jdField_h_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367152));
+        paramViewGroup.jdField_g_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363380));
+        paramViewGroup.jdField_i_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367155));
+        paramViewGroup.jdField_h_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367181));
+        paramViewGroup.jdField_h_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367156));
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGradientMaskView = ((VideoFeedsGradientMaskView)paramView.findViewById(2131367183));
+        paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367150);
+        paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131367149);
+        paramViewGroup.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367154));
+        paramViewGroup.jdField_k_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367143));
+        paramViewGroup.p = ((LinearLayout)paramView.findViewById(2131367160));
+        paramViewGroup.jdField_n_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367161));
+        paramViewGroup.jdField_m_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367163));
+        paramViewGroup.jdField_k_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367165));
+        paramViewGroup.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367164));
+        paramViewGroup.jdField_m_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367167));
+        paramViewGroup.jdField_j_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367166));
+        paramViewGroup.jdField_l_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367168));
+        paramViewGroup.jdField_n_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367162));
+        paramViewGroup.jdField_c_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGradientMaskView = ((VideoFeedsGradientMaskView)paramView.findViewById(2131367146));
+        paramViewGroup.jdField_j_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367177));
+        paramViewGroup.jdField_j_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367178));
+        paramViewGroup.jdField_i_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367175));
+        paramViewGroup.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367176));
+        paramViewGroup.jdField_k_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367173));
+        paramViewGroup.jdField_l_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367174));
+        paramViewGroup.jdField_l_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367169));
+        paramViewGroup.d = ((VideoFeedsGradientMaskView)paramView.findViewById(2131367147));
+        paramViewGroup.jdField_i_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367170));
+        paramViewGroup.jdField_k_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367171));
+        paramViewGroup.jdField_j_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367172));
+        paramViewGroup.o = ((LinearLayout)paramView.findViewById(2131365225));
+        paramViewGroup.jdField_m_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367145));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131363452));
         paramView.setTag(paramViewGroup);
         break;
         paramView = new FastWebVideoFeedsAdapter.ImageItemHolder();
-        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969660, paramViewGroup, false);
-        paramView.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131365609));
-        paramView.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)((View)localObject).findViewById(2131367336));
-        paramView.jdField_b_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131367104));
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969673, paramViewGroup, false);
+        paramView.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131365636));
+        paramView.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)((View)localObject).findViewById(2131367399));
+        paramView.jdField_b_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131367152));
         ((View)localObject).setTag(paramView);
         paramViewGroup = paramView;
         paramView = (View)localObject;

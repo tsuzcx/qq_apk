@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.shortvideo.gesture;
 
-import ahnn;
-import android.content.Context;
-import android.content.Intent;
+import aibp;
 import android.content.IntentFilter;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -59,7 +57,7 @@ public class GestureMgrDownload
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.video.gesturemgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new ahnn(this), localIntentFilter) != null;
+    return paramBaseApplicationImpl.registerReceiver(new aibp(this), localIntentFilter) != null;
   }
   
   public boolean b()
@@ -89,12 +87,7 @@ public class GestureMgrDownload
     if (this.jdField_a_of_type_Int == 11)
     {
       this.jdField_a_of_type_Int = 12;
-      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      Intent localIntent = new Intent();
-      localIntent.setAction("from_gesturemgr_download");
-      localIntent.setClass(localBaseApplicationImpl.getApplicationContext(), JumpActivity.class);
-      localIntent.addFlags(268435456);
-      localBaseApplicationImpl.getBaseContext().startActivity(localIntent);
+      BusinessCommonConfig.a(1, 0);
     }
     for (boolean bool = true;; bool = false)
     {

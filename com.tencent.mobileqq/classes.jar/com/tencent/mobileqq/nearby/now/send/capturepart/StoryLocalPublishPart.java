@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.nearby.now.send.capturepart;
 
-import aehv;
-import aehw;
-import aehy;
-import aehz;
-import aeia;
-import aeib;
+import aevb;
+import aevc;
+import aeve;
+import aevf;
+import aevg;
+import aevh;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -28,7 +28,7 @@ public class StoryLocalPublishPart
 {
   public final int a;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aeib(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aevh(this);
   private View jdField_a_of_type_AndroidViewView;
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
   private StoryLocalPublishPart.ICapturePartVisiableChangeListener jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLocalPublishPart$ICapturePartVisiableChangeListener;
@@ -45,13 +45,13 @@ public class StoryLocalPublishPart
   public void a()
   {
     super.a();
-    a(new aehz(this));
+    a(new aevf(this));
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    a(new aeia(this));
+    a(new aevg(this));
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -68,14 +68,14 @@ public class StoryLocalPublishPart
   public void a(View paramView, Bundle paramBundle)
   {
     super.a(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131370473));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370474);
-    this.b = paramView.findViewById(2131370475);
-    this.c = paramView.findViewById(2131370476);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131370614));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370615);
+    this.b = paramView.findViewById(2131370616);
+    this.c = paramView.findViewById(2131370617);
     this.jdField_a_of_type_AndroidWidgetImageButton.setImageDrawable(new ColorDrawable(0));
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoCameraCaptureFragment.a().setContainerViewListener(new aehv(this));
-    Bosses.get().postJob(new aehw(this, paramView));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoCameraCaptureFragment.a().setContainerViewListener(new aevb(this));
+    Bosses.get().postJob(new aevc(this, paramView));
   }
   
   public void a(StoryLocalPublishPart.ICapturePartVisiableChangeListener paramICapturePartVisiableChangeListener)
@@ -111,7 +111,7 @@ public class StoryLocalPublishPart
   public void b()
   {
     super.b();
-    a(new aehy(this));
+    a(new aeve(this));
   }
   
   public void c()

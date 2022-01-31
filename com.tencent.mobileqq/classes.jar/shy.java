@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.mobileqq.activity.Conversation;
 
-class shy
-  implements Runnable
+public class shy
+  extends QQStoryObserver
 {
-  shy(shx paramshx) {}
+  public shy(Conversation paramConversation) {}
   
-  public void run()
+  public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(-this.a.jdField_a_of_type_Int);
-    DiscussionMemberActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getWindow().peekDecorView().getWindowToken(), 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.a.a(1057, 0L, false);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.a(1055, 0L, false);
+      return;
+    }
+    Conversation.a(this.a, false);
   }
 }
 

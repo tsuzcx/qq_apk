@@ -2,9 +2,9 @@ package com.tencent.mobileqq.filemanager.fileviewer;
 
 public abstract interface IFileViewMusicEvent
 {
-  public abstract void Z_();
-  
   public abstract void a(String paramString);
+  
+  public abstract void ab_();
 }
 
 

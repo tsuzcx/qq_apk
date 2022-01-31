@@ -1,16 +1,46 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import QQService.DiscussMemberInfo;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class svs
-  implements Runnable
+public class svs
+  extends FriendListObserver
 {
-  svs(svr paramsvr, List paramList) {}
+  private svs(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (LebaListMgrActivity.a(this.jdField_a_of_type_Svr.a) != null) {
-      LebaListMgrActivity.a(this.jdField_a_of_type_Svr.a).a(this.jdField_a_of_type_JavaUtilList);
+    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.app.getCurrentAccountUin().equals(paramString))) {}
+    label192:
+    for (;;)
+    {
+      return;
+      Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+      } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) || (this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
+          break label192;
+        }
+        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        localObject = new StringBuilder();
+        JoinDiscussionActivity localJoinDiscussionActivity = this.a;
+        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
+        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != this.a.b) {
+          break;
+        }
+        ThreadManager.post(new svt(this), 8, null, true);
+        return;
+      }
     }
   }
 }

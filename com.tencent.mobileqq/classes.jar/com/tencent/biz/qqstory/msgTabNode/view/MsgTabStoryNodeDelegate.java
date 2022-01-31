@@ -30,18 +30,18 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ndm;
-import ndn;
-import ndo;
-import ndp;
-import ndq;
+import new;
+import nex;
+import ney;
+import nez;
+import nfa;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MsgTabStoryNodeDelegate
   implements MsgTabNodeListLoader.OnMsgTabNodeListLoadListener, IEventReceiver
 {
-  private final QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new ndm(this);
+  private final QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new new(this);
   protected MsgTabNodeListLoader a;
   MsgTabStoryVideoPreloader jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader;
   protected MsgTabStoryNodeAdapter a;
@@ -106,7 +106,7 @@ public class MsgTabStoryNodeDelegate
     this.jdField_a_of_type_JavaUtilList.add(new MsgTabStoryNodeDelegate.GetGroupInfoEventReceiver(this));
     this.jdField_a_of_type_JavaUtilList.add(new MsgTabStoryNodeDelegate.PlayModeSwitchNodeReceiver(this));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a(new ndn(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a(new nex(this));
     localObject = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -180,7 +180,7 @@ public class MsgTabStoryNodeDelegate
       if ((paramInt1 == 1) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a())) {
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a(false);
       }
-      ThreadManager.getUIHandler().post(new ndp(this, paramBoolean, paramInt1));
+      ThreadManager.getUIHandler().post(new nez(this, paramBoolean, paramInt1));
       if (QLog.isDevelopLevel()) {
         QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", 2, "singleDataChange, data=" + paramMsgTabNodeInfo + ", type=" + paramInt1);
       }
@@ -214,7 +214,7 @@ public class MsgTabStoryNodeDelegate
     if (!MsgTabStoryUtil.a()) {
       return;
     }
-    ThreadManager.getUIHandler().post(new ndq(this, paramString));
+    ThreadManager.getUIHandler().post(new nfa(this, paramString));
   }
   
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -358,7 +358,7 @@ public class MsgTabStoryNodeDelegate
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a(true);
       }
     }
-    ThreadManager.getUIHandler().post(new ndo(this, paramBoolean1, paramBoolean3));
+    ThreadManager.getUIHandler().post(new ney(this, paramBoolean1, paramBoolean3));
     if (QLog.isDevelopLevel()) {
       QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", 2, new Object[] { "dataSetChange dataList = ", paramArrayList });
     }

@@ -1,27 +1,39 @@
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
+import com.tencent.mobileqq.activity.bless.BlessManager;
+import com.tencent.mobileqq.activity.bless.BlessTask;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class wey
-  implements Runnable
+  extends DownloadListener
 {
-  public wey(ClassificationSearchFragment paramClassificationSearchFragment, SearchResult paramSearchResult) {}
+  public wey(BlessManager paramBlessManager, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onCancel(DownloadTask paramDownloadTask)
   {
-    ClassificationSearchFragment localClassificationSearchFragment;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult != null)
+    BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
+    if (paramDownloadTask.a() == 3)
     {
-      localClassificationSearchFragment = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.a) {
-        break label30;
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessManager", 2, "download finished " + this.b);
+      }
+      if ((this.b != null) && (BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager) != null) && (this.b.equals(BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).starVideo))) {
+        BlessManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
       }
     }
-    label30:
-    for (int i = 1;; i = 0)
+    while (!QLog.isColorLevel())
     {
-      ClassificationSearchFragment.a(localClassificationSearchFragment, i);
+      return;
+      BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
       return;
     }
+    QLog.d("BlessManager", 2, "downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
   }
 }
 

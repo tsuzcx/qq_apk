@@ -1,37 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.GKillProcessMonitor;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.qphone.base.util.QLog;
 
 public class jfg
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public jfg(GKillProcessMonitor paramGKillProcessMonitor) {}
+  final HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public jfg(EffectConfigBase paramEffectConfigBase, HttpNetReq paramHttpNetReq)
   {
-    if ((paramIntent != null) && ("com.tencent.process.exit".equals(paramIntent.getAction())))
+    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
+  }
+  
+  public void run()
+  {
+    try
     {
-      paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
-      paramIntent = paramIntent.getExtras().getString("verify");
-      if ((GKillProcessMonitor.a(this.a, paramIntent, paramContext)) && (GKillProcessMonitor.a(this.a, paramContext)))
-      {
-        paramContext = GKillProcessMonitor.a(this.a).a();
-        if ((paramContext == null) || (paramContext.a().a()))
-        {
-          if (paramContext != null) {
-            paramContext.L();
-          }
-          QLog.d("GKillProcessMonitor", 1, "qqExitBroadcastReceiver");
-          Process.killProcess(Process.myPid());
-        }
+      if ((this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null)) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase.a.getNetEngine(0).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      localException.printStackTrace();
     }
   }
 }

@@ -1,20 +1,15 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.GridCallBack;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class ugb
-  implements ActivateFriendGrid.GridCallBack
+  implements DialogInterface.OnDismissListener
 {
-  public ugb(BirthdayActivatePage paramBirthdayActivatePage) {}
+  public ugb(UpgradeActivity paramUpgradeActivity) {}
   
-  public void a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt > 0)
-    {
-      this.a.a.setEnabled(true);
-      return;
-    }
-    this.a.a.setEnabled(false);
+    this.a.finish();
   }
 }
 

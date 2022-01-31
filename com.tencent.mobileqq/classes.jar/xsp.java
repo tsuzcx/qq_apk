@@ -1,8 +1,19 @@
-import java.nio.ByteBuffer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
 
-public abstract interface xsp
+public class xsp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(long paramLong, ByteBuffer paramByteBuffer);
+  public xsp(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    NewFlowEditVideoActivity.b(this.a, true);
+    NewFlowEditVideoActivity.b(this.a).setSelected(true);
+  }
 }
 
 

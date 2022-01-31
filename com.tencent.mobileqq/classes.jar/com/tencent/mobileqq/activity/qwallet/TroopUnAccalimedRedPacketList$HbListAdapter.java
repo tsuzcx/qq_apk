@@ -9,9 +9,9 @@ import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.item.QQWalletTroopHbItem;
 import java.util.ArrayList;
 import java.util.List;
-import wzf;
-import wzg;
-import wzh;
+import xck;
+import xcl;
+import xcm;
 
 public class TroopUnAccalimedRedPacketList$HbListAdapter
   extends RecyclerView.Adapter
@@ -25,9 +25,9 @@ public class TroopUnAccalimedRedPacketList$HbListAdapter
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public wzg a(ViewGroup paramViewGroup, int paramInt)
+  public xcl a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new wzg(this, new wzh(this.jdField_a_of_type_AndroidContentContext, new QQWalletTroopHbItem(TroopUnAccalimedRedPacketList.a(), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a())));
+    return new xcl(this, new xcm(this.jdField_a_of_type_AndroidContentContext, new QQWalletTroopHbItem(TroopUnAccalimedRedPacketList.a(), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a())));
   }
   
   void a(String paramString)
@@ -63,7 +63,7 @@ public class TroopUnAccalimedRedPacketList$HbListAdapter
         i += 1;
         break label22;
       }
-      TroopUnAccalimedRedPacketList.a().postDelayed(new wzf(this), 300L);
+      TroopUnAccalimedRedPacketList.a().postDelayed(new xck(this), 300L);
       return;
       i = 0;
     }
@@ -78,14 +78,14 @@ public class TroopUnAccalimedRedPacketList$HbListAdapter
     notifyDataSetChanged();
   }
   
-  public void a(wzg paramwzg, int paramInt)
+  public void a(xcl paramxcl, int paramInt)
   {
-    wzh localwzh = paramwzg.a;
-    paramwzg = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramwzg.getPosition());
-    if (paramwzg == null) {
+    xcm localxcm = paramxcl.a;
+    paramxcl = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramxcl.getPosition());
+    if (paramxcl == null) {
       return;
     }
-    localwzh.a(paramwzg);
+    localxcm.a(paramxcl);
   }
   
   public int getItemCount()

@@ -1,22 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
-import com.tencent.image.URLImageView;
+import android.os.SystemClock;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class pap
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public pap(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  public pap(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    SystemClock.uptimeMillis();
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+        this.a.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine == null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a, null, null);
+        WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a);
+        SystemClock.uptimeMillis();
+      }
+      return;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

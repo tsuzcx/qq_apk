@@ -1,21 +1,46 @@
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class acte
-  implements IDownloadController
+  extends IClickListener_Ver51
 {
-  public acte(DeviceFileModel paramDeviceFileModel) {}
+  public acte(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
   
   public void a()
   {
-    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new actf(this));
+    this.a.a.a().b();
   }
   
   public void b()
   {
-    DeviceFileModel.b(this.a);
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

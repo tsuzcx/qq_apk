@@ -1,25 +1,18 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
-import com.tencent.biz.qqstory.storyHome.model.VideoListHomeFeed;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView.OnInnerListRefreshListener;
+import com.tencent.biz.qqstory.storyHome.memory.view.adapter.MemoriesInnerListAdapter;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class nxp
-  implements Comparator
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public int a(StoryHomeFeed paramStoryHomeFeed1, StoryHomeFeed paramStoryHomeFeed2)
+  public nxp(MemoriesInnerListView paramMemoriesInnerListView) {}
+  
+  public void a(int paramInt)
   {
-    if (paramStoryHomeFeed1.a.dateTimeMillis == paramStoryHomeFeed2.a.dateTimeMillis) {
-      if ((!(paramStoryHomeFeed1 instanceof VideoListHomeFeed)) || (!VideoListHomeFeed.a((VideoListHomeFeed)paramStoryHomeFeed1))) {}
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(MemoriesInnerListView.a(this.a).a);
     }
-    while (paramStoryHomeFeed1.a.dateTimeMillis > paramStoryHomeFeed2.a.dateTimeMillis)
-    {
-      return -1;
-      if (((paramStoryHomeFeed2 instanceof VideoListHomeFeed)) && (VideoListHomeFeed.a((VideoListHomeFeed)paramStoryHomeFeed2))) {
-        return 1;
-      }
-      return 0;
-    }
-    return 1;
   }
 }
 

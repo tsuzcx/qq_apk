@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flashchat;
 
-import aczv;
+import adjs;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +14,7 @@ import android.util.SparseArray;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.zip.QZipFile;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -72,7 +73,7 @@ public class FlashChatManager
   
   static
   {
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new aczv());
+    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new adjs());
   }
   
   public FlashChatManager(QQAppInterface paramQQAppInterface)
@@ -204,17 +205,17 @@ public class FlashChatManager
     //   97: astore 8
     //   99: aload 10
     //   101: astore 7
-    //   103: new 195	java/util/zip/ZipFile
+    //   103: new 195	com/tencent/commonsdk/zip/QZipFile
     //   106: dup
     //   107: aload_1
-    //   108: invokespecial 196	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   108: invokespecial 196	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
     //   111: astore 12
     //   113: aload 11
     //   115: astore 8
     //   117: aload 10
     //   119: astore 7
     //   121: aload 12
-    //   123: invokevirtual 200	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   123: invokevirtual 202	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
     //   126: astore 13
     //   128: aload 11
     //   130: astore 8
@@ -230,22 +231,22 @@ public class FlashChatManager
     //   150: aload_1
     //   151: astore 7
     //   153: aload 13
-    //   155: invokeinterface 205 1 0
+    //   155: invokeinterface 207 1 0
     //   160: ifeq +518 -> 678
     //   163: aload 6
     //   165: astore 8
     //   167: aload_1
     //   168: astore 7
     //   170: aload 13
-    //   172: invokeinterface 209 1 0
-    //   177: checkcast 211	java/util/zip/ZipEntry
+    //   172: invokeinterface 211 1 0
+    //   177: checkcast 213	java/util/zip/ZipEntry
     //   180: astore 14
     //   182: aload 6
     //   184: astore 8
     //   186: aload_1
     //   187: astore 7
     //   189: aload 14
-    //   191: invokevirtual 214	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   191: invokevirtual 216	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   194: astore 9
     //   196: aload 9
     //   198: ifnull -52 -> 146
@@ -254,8 +255,8 @@ public class FlashChatManager
     //   205: aload_1
     //   206: astore 7
     //   208: aload 9
-    //   210: ldc 216
-    //   212: invokevirtual 222	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   210: ldc 218
+    //   212: invokevirtual 224	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   215: ifne -69 -> 146
     //   218: aload 6
     //   220: astore 8
@@ -277,7 +278,7 @@ public class FlashChatManager
     //   256: aload_1
     //   257: astore 7
     //   259: aload 14
-    //   261: invokevirtual 225	java/util/zip/ZipEntry:isDirectory	()Z
+    //   261: invokevirtual 227	java/util/zip/ZipEntry:isDirectory	()Z
     //   264: ifeq +52 -> 316
     //   267: aload 6
     //   269: astore 8
@@ -300,7 +301,7 @@ public class FlashChatManager
     //   304: aload_1
     //   305: astore 7
     //   307: aload 9
-    //   309: invokevirtual 228	java/io/File:mkdir	()Z
+    //   309: invokevirtual 230	java/io/File:mkdir	()Z
     //   312: pop
     //   313: goto +418 -> 731
     //   316: aload 6
@@ -309,7 +310,7 @@ public class FlashChatManager
     //   321: astore 7
     //   323: aload 11
     //   325: getstatic 184	java/io/File:separator	Ljava/lang/String;
-    //   328: invokevirtual 232	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   328: invokevirtual 234	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   331: istore_3
     //   332: aload 6
     //   334: astore 8
@@ -318,7 +319,7 @@ public class FlashChatManager
     //   339: aload 11
     //   341: iconst_0
     //   342: iload_3
-    //   343: invokevirtual 236	java/lang/String:substring	(II)Ljava/lang/String;
+    //   343: invokevirtual 238	java/lang/String:substring	(II)Ljava/lang/String;
     //   346: astore 9
     //   348: aload 6
     //   350: astore 8
@@ -328,9 +329,9 @@ public class FlashChatManager
     //   357: iload_3
     //   358: iconst_1
     //   359: iadd
-    //   360: invokevirtual 239	java/lang/String:substring	(I)Ljava/lang/String;
-    //   363: ldc 241
-    //   365: invokevirtual 245	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   360: invokevirtual 241	java/lang/String:substring	(I)Ljava/lang/String;
+    //   363: ldc 243
+    //   365: invokevirtual 247	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   368: ifne -222 -> 146
     //   371: aload 6
     //   373: astore 8
@@ -353,7 +354,7 @@ public class FlashChatManager
     //   408: aload_1
     //   409: astore 7
     //   411: aload 9
-    //   413: invokevirtual 228	java/io/File:mkdir	()Z
+    //   413: invokevirtual 230	java/io/File:mkdir	()Z
     //   416: pop
     //   417: aload 6
     //   419: astore 8
@@ -366,7 +367,7 @@ public class FlashChatManager
     //   432: invokespecial 82	java/lang/StringBuilder:<init>	()V
     //   435: aload 11
     //   437: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   440: ldc 247
+    //   440: ldc 249
     //   442: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   445: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   448: invokespecial 187	java/io/File:<init>	(Ljava/lang/String;)V
@@ -392,20 +393,20 @@ public class FlashChatManager
     //   490: aload_1
     //   491: astore 7
     //   493: aload 9
-    //   495: invokevirtual 250	java/io/File:delete	()Z
+    //   495: invokevirtual 252	java/io/File:delete	()Z
     //   498: pop
     //   499: aload 6
     //   501: astore 8
     //   503: aload_1
     //   504: astore 7
-    //   506: new 252	java/io/FileOutputStream
+    //   506: new 254	java/io/FileOutputStream
     //   509: dup
     //   510: aload 9
-    //   512: invokespecial 255	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   512: invokespecial 257	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   515: astore 6
     //   517: aload 12
     //   519: aload 14
-    //   521: invokevirtual 259	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   521: invokevirtual 261	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   524: astore 7
     //   526: lconst_0
     //   527: lstore 4
@@ -416,7 +417,7 @@ public class FlashChatManager
     //   536: iconst_0
     //   537: aload 10
     //   539: arraylength
-    //   540: invokevirtual 265	java/io/InputStream:read	([BII)I
+    //   540: invokevirtual 267	java/io/InputStream:read	([BII)I
     //   543: istore_3
     //   544: iload_3
     //   545: iconst_m1
@@ -432,7 +433,7 @@ public class FlashChatManager
     //   561: aload 10
     //   563: iconst_0
     //   564: iload_3
-    //   565: invokevirtual 269	java/io/FileOutputStream:write	([BII)V
+    //   565: invokevirtual 271	java/io/FileOutputStream:write	([BII)V
     //   568: goto -39 -> 529
     //   571: astore_2
     //   572: aload 6
@@ -444,25 +445,25 @@ public class FlashChatManager
     //   581: aload 8
     //   583: ifnull +8 -> 591
     //   586: aload 8
-    //   588: invokevirtual 272	java/io/FileOutputStream:close	()V
+    //   588: invokevirtual 274	java/io/FileOutputStream:close	()V
     //   591: aload 7
     //   593: ifnull +8 -> 601
     //   596: aload 7
-    //   598: invokevirtual 273	java/io/InputStream:close	()V
+    //   598: invokevirtual 275	java/io/InputStream:close	()V
     //   601: aload_1
     //   602: athrow
     //   603: aload 7
     //   605: astore_1
     //   606: aload 6
-    //   608: invokevirtual 276	java/io/FileOutputStream:flush	()V
+    //   608: invokevirtual 278	java/io/FileOutputStream:flush	()V
     //   611: aload 7
     //   613: astore_1
     //   614: aload 6
-    //   616: invokevirtual 272	java/io/FileOutputStream:close	()V
+    //   616: invokevirtual 274	java/io/FileOutputStream:close	()V
     //   619: aload 7
     //   621: astore_1
     //   622: aload 7
-    //   624: invokevirtual 273	java/io/InputStream:close	()V
+    //   624: invokevirtual 275	java/io/InputStream:close	()V
     //   627: aconst_null
     //   628: astore 7
     //   630: aconst_null
@@ -473,11 +474,11 @@ public class FlashChatManager
     //   638: astore 6
     //   640: aload 9
     //   642: aload 11
-    //   644: invokestatic 281	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   644: invokestatic 283	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
     //   647: ifne +94 -> 741
     //   650: aload 9
     //   652: aload 11
-    //   654: invokestatic 283	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/io/File;Ljava/io/File;)Z
+    //   654: invokestatic 285	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/io/File;Ljava/io/File;)Z
     //   657: pop
     //   658: aload 7
     //   660: astore_1
@@ -493,27 +494,27 @@ public class FlashChatManager
     //   678: aload 6
     //   680: ifnull +8 -> 688
     //   683: aload 6
-    //   685: invokevirtual 272	java/io/FileOutputStream:close	()V
+    //   685: invokevirtual 274	java/io/FileOutputStream:close	()V
     //   688: aload_1
     //   689: ifnull +7 -> 696
     //   692: aload_1
-    //   693: invokevirtual 273	java/io/InputStream:close	()V
+    //   693: invokevirtual 275	java/io/InputStream:close	()V
     //   696: return
     //   697: astore_2
     //   698: aload_2
-    //   699: invokevirtual 286	java/io/IOException:printStackTrace	()V
+    //   699: invokevirtual 288	java/io/IOException:printStackTrace	()V
     //   702: goto -14 -> 688
     //   705: astore_1
     //   706: aload_1
-    //   707: invokevirtual 286	java/io/IOException:printStackTrace	()V
+    //   707: invokevirtual 288	java/io/IOException:printStackTrace	()V
     //   710: return
     //   711: astore_2
     //   712: aload_2
-    //   713: invokevirtual 286	java/io/IOException:printStackTrace	()V
+    //   713: invokevirtual 288	java/io/IOException:printStackTrace	()V
     //   716: goto -125 -> 591
     //   719: astore_2
     //   720: aload_2
-    //   721: invokevirtual 286	java/io/IOException:printStackTrace	()V
+    //   721: invokevirtual 288	java/io/IOException:printStackTrace	()V
     //   724: goto -123 -> 601
     //   727: astore_1
     //   728: goto -147 -> 581
@@ -543,7 +544,7 @@ public class FlashChatManager
     //   4	647	9	localObject4	Object
     //   1	561	10	arrayOfByte	byte[]
     //   7	646	11	localObject5	Object
-    //   111	407	12	localZipFile	ZipFile
+    //   111	407	12	localQZipFile	QZipFile
     //   126	45	13	localEnumeration	java.util.Enumeration
     //   180	340	14	localZipEntry	java.util.zip.ZipEntry
     // Exception table:
@@ -616,15 +617,15 @@ public class FlashChatManager
     //   9: new 81	java/lang/StringBuilder
     //   12: dup
     //   13: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 353
+    //   16: ldc_w 355
     //   19: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: aload_1
     //   23: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: ldc_w 355
+    //   26: ldc_w 357
     //   29: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: aload_2
     //   33: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: ldc_w 357
+    //   36: ldc_w 359
     //   39: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: aload_3
     //   43: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -632,96 +633,96 @@ public class FlashChatManager
     //   49: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   52: aload_2
     //   53: aload_3
-    //   54: invokestatic 360	com/tencent/mobileqq/flashchat/FlashChatManager:a	(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
+    //   54: invokestatic 362	com/tencent/mobileqq/flashchat/FlashChatManager:a	(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
     //   57: astore_1
     //   58: aload_0
-    //   59: invokevirtual 364	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   59: invokevirtual 366	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
     //   62: astore_2
     //   63: aload_2
     //   64: aload_1
     //   65: iconst_0
     //   66: aaload
     //   67: iconst_1
-    //   68: invokevirtual 370	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    //   68: invokevirtual 372	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
     //   71: ifnull +171 -> 242
     //   74: aload_2
     //   75: aload_1
     //   76: iconst_0
     //   77: aaload
-    //   78: invokevirtual 374	android/content/pm/PackageManager:getLaunchIntentForPackage	(Ljava/lang/String;)Landroid/content/Intent;
+    //   78: invokevirtual 376	android/content/pm/PackageManager:getLaunchIntentForPackage	(Ljava/lang/String;)Landroid/content/Intent;
     //   81: astore_2
     //   82: aload_2
     //   83: ifnonnull +5 -> 88
     //   86: iconst_0
     //   87: ireturn
     //   88: aload_2
-    //   89: ldc_w 375
-    //   92: invokevirtual 379	android/content/Intent:addFlags	(I)Landroid/content/Intent;
+    //   89: ldc_w 377
+    //   92: invokevirtual 381	android/content/Intent:addFlags	(I)Landroid/content/Intent;
     //   95: pop
     //   96: aload_1
     //   97: iconst_1
     //   98: aaload
-    //   99: invokestatic 294	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   99: invokestatic 296	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   102: ifne +14 -> 116
     //   105: aload_2
     //   106: aload_1
     //   107: iconst_1
     //   108: aaload
-    //   109: invokestatic 385	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   112: invokevirtual 389	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
+    //   109: invokestatic 387	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   112: invokevirtual 391	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
     //   115: pop
     //   116: aload 4
     //   118: bipush 23
     //   120: invokevirtual 132	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   123: checkcast 391	com/tencent/mobileqq/app/StartAppCheckHandler
+    //   123: checkcast 393	com/tencent/mobileqq/app/StartAppCheckHandler
     //   126: astore_3
     //   127: aload_2
-    //   128: ldc_w 393
-    //   131: ldc_w 395
-    //   134: invokevirtual 316	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   128: ldc_w 395
+    //   131: ldc_w 397
+    //   134: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   137: pop
     //   138: aload_2
-    //   139: ldc_w 397
-    //   142: ldc_w 335
-    //   145: invokevirtual 316	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   139: ldc_w 399
+    //   142: ldc_w 337
+    //   145: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   148: pop
     //   149: aload_2
-    //   150: ldc_w 399
-    //   153: ldc_w 401
-    //   156: invokevirtual 316	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   150: ldc_w 401
+    //   153: ldc_w 403
+    //   156: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   159: pop
     //   160: aload_2
-    //   161: ldc_w 403
-    //   164: ldc_w 405
-    //   167: invokevirtual 316	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   161: ldc_w 405
+    //   164: ldc_w 407
+    //   167: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   170: pop
     //   171: aload_2
-    //   172: ldc_w 407
+    //   172: ldc_w 409
     //   175: aload_0
-    //   176: invokevirtual 411	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   179: invokevirtual 414	java/lang/Class:getName	()Ljava/lang/String;
-    //   182: invokevirtual 316	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   176: invokevirtual 413	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   179: invokevirtual 416	java/lang/Class:getName	()Ljava/lang/String;
+    //   182: invokevirtual 318	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   185: pop
     //   186: aload_3
     //   187: aload_1
     //   188: iconst_0
     //   189: aaload
-    //   190: invokevirtual 417	java/lang/String:trim	()Ljava/lang/String;
+    //   190: invokevirtual 419	java/lang/String:trim	()Ljava/lang/String;
     //   193: aload_0
     //   194: aload_2
-    //   195: invokevirtual 420	com/tencent/mobileqq/app/StartAppCheckHandler:b	(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;)V
+    //   195: invokevirtual 422	com/tencent/mobileqq/app/StartAppCheckHandler:b	(Ljava/lang/String;Landroid/content/Context;Landroid/content/Intent;)V
     //   198: iconst_1
     //   199: ireturn
     //   200: astore_1
     //   201: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   204: ifeq +13 -> 217
-    //   207: ldc_w 422
+    //   207: ldc_w 424
     //   210: iconst_2
-    //   211: ldc_w 424
+    //   211: ldc_w 426
     //   214: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   217: aload_0
     //   218: aload_2
-    //   219: invokevirtual 324	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   219: invokevirtual 326	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   222: goto -24 -> 198
     //   225: astore_0
     //   226: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -729,7 +730,7 @@ public class FlashChatManager
     //   232: ldc 172
     //   234: iconst_2
     //   235: aload_0
-    //   236: invokevirtual 427	android/content/pm/PackageManager$NameNotFoundException:getMessage	()Ljava/lang/String;
+    //   236: invokevirtual 429	android/content/pm/PackageManager$NameNotFoundException:getMessage	()Ljava/lang/String;
     //   239: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   242: iconst_0
     //   243: ireturn
@@ -739,7 +740,7 @@ public class FlashChatManager
     //   251: ldc 172
     //   253: iconst_2
     //   254: aload_0
-    //   255: invokevirtual 428	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
+    //   255: invokevirtual 430	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
     //   258: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   261: goto -19 -> 242
     // Local variable table:
@@ -933,7 +934,7 @@ public class FlashChatManager
       }
       try
       {
-        new ZipFile(paramString1).close();
+        new QZipFile(paramString1).close();
         paramString2 = paramString1.getAbsolutePath();
         paramString1 = paramString2;
       }
@@ -1294,18 +1295,18 @@ public class FlashChatManager
     while (!paramString.endsWith(".zip")) {
       return;
     }
-    String str2 = a(paramString);
+    String str3 = a(paramString);
     ??? = b(paramString);
-    String str3 = a() + ??? + File.separator;
+    String str2 = a() + ??? + File.separator;
     new StringBuilder().append(a()).append(???).append("tmp").append(File.separator).toString();
     File localFile;
-    synchronized (str3.intern())
+    synchronized (str2.intern())
     {
-      localFile = new File(str3);
+      localFile = new File(str2);
     }
     try
     {
-      a(str2, str3);
+      a(str3, str2);
       int i = Integer.valueOf((String)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue();
       paramString = new Bundle();
       paramString.putInt("resourceId", i);
@@ -1505,7 +1506,7 @@ public class FlashChatManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatManager
  * JD-Core Version:    0.7.0.1
  */

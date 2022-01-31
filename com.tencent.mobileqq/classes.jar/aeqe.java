@@ -1,15 +1,25 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.view.View;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class aeqe
-  implements Runnable
+public class aeqe
+  implements ActionSheet.OnButtonClickListener
 {
-  aeqe(aeqd paramaeqd, Card paramCard) {}
+  public aeqe(NearbyGuideActivity paramNearbyGuideActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    NearbyProfileDisplayPanel.a(this.jdField_a_of_type_Aeqd.a).setOnClickListener(new aeqf(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
   }
 }
 

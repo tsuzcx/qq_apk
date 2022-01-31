@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ServerCheckCallback;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class aaqx
-  implements ArkMessageServerLogic.ServerCheckCallback
+  extends ArkAppCGI.ArkAppCGICallback
 {
-  public aaqx(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference) {}
+  public aaqx(ArkActionAppMgr paramArkActionAppMgr, WeakReference paramWeakReference, QQAppInterface paramQQAppInterface) {}
   
-  public void a(ArrayList paramArrayList)
+  public void a(boolean paramBoolean, Object paramObject, ArrayList paramArrayList)
   {
-    if (paramArrayList != null) {
-      ArkRecommendLogic.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendLogic, paramArrayList, null, this.jdField_a_of_type_JavaLangRefWeakReference, 4);
-    }
+    ThreadManager.post(new aaqy(this, paramArrayList), 5, null, true);
   }
 }
 

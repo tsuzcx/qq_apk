@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.jsp.QQApiPlugin;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class adwo
+class adwo
   implements Runnable
 {
-  public adwo(QQPlayerService paramQQPlayerService) {}
+  adwo(adwn paramadwn) {}
   
   public void run()
   {
-    if (QQPlayerService.h() == 2) {
-      QQPlayerService.b(this.a);
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
+      this.a.a.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adwo
  * JD-Core Version:    0.7.0.1
  */

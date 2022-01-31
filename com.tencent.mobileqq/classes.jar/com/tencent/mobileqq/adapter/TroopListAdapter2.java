@@ -38,11 +38,11 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import yff;
-import yfh;
-import yfj;
-import yfk;
-import yfl;
+import yim;
+import yio;
+import yiq;
+import yir;
+import yis;
 
 public class TroopListAdapter2
   extends FacePreloadBaseAdapter
@@ -78,8 +78,8 @@ public class TroopListAdapter2
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new yfj(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new yfk(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new yiq(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new yir(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener = paramOnTroopListClickListener;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
@@ -93,7 +93,7 @@ public class TroopListAdapter2
     if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidContentContext instanceof TroopActivity)))
     {
       this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new yff(this, (TroopActivity)this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new yim(this, (TroopActivity)this.jdField_a_of_type_AndroidContentContext);
     }
   }
   
@@ -317,10 +317,10 @@ public class TroopListAdapter2
     Object localObject2;
     if (paramView == null)
     {
-      localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969448, paramViewGroup, false);
+      localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969449, paramViewGroup, false);
       localObject2 = new TroopListAdapter2.TroopListViewItemTag((View)localObject1);
       ((View)localObject1).setTag(localObject2);
-      ((Button)((View)localObject1).findViewById(2131366516)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      ((Button)((View)localObject1).findViewById(2131366543)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       ((View)localObject1).setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       paramViewGroup = (ViewGroup)localObject2;
       paramView = (View)localObject1;
@@ -352,7 +352,7 @@ public class TroopListAdapter2
       }
       paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
       paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429832, new Object[] { String.valueOf(this.e) }));
+      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429838, new Object[] { String.valueOf(this.e) }));
     }
     label687:
     label711:
@@ -371,25 +371,25 @@ public class TroopListAdapter2
       {
         paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
         paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429826, new Object[] { String.valueOf(this.d) }));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429832, new Object[] { String.valueOf(this.d) }));
       }
       else if (((TroopListAdapter2.TroopListItem)localObject3).jdField_a_of_type_Int == 4)
       {
         paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
         paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429824, new Object[] { String.valueOf(this.jdField_b_of_type_Int) }));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429830, new Object[] { String.valueOf(this.jdField_b_of_type_Int) }));
       }
       else if (((TroopListAdapter2.TroopListItem)localObject3).jdField_a_of_type_Int == 6)
       {
         paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
         paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429825, new Object[] { String.valueOf(this.jdField_c_of_type_Int) }));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429831, new Object[] { String.valueOf(this.jdField_c_of_type_Int) }));
       }
       else if (((TroopListAdapter2.TroopListItem)localObject3).jdField_a_of_type_Int == 8)
       {
         paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
         paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429827, new Object[] { String.valueOf(this.f) }));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131429833, new Object[] { String.valueOf(this.f) }));
       }
       else if (((TroopListAdapter2.TroopListItem)localObject3).jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
       {
@@ -419,7 +419,7 @@ public class TroopListAdapter2
             break label915;
           }
           paramViewGroup.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130841393);
+          paramViewGroup.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130841430);
         }
         for (;;)
         {
@@ -428,10 +428,10 @@ public class TroopListAdapter2
           }
           paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
           paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845953);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846081);
           break;
           paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845948);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846076);
           break label687;
           label893:
           localObject1 = ((TroopInfo)localObject2).troopuin;
@@ -441,7 +441,7 @@ public class TroopListAdapter2
           if (((TroopInfo)localObject2).dwAuthGroupType == 1L)
           {
             paramViewGroup.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramViewGroup.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130841393);
+            paramViewGroup.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130841430);
           }
           else
           {
@@ -454,7 +454,7 @@ public class TroopListAdapter2
         {
           paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
           paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845951);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846079);
         }
         else
         {
@@ -481,7 +481,7 @@ public class TroopListAdapter2
   
   public void notifyDataSetChanged()
   {
-    ThreadManager.post(new yfh(this), 8, null, true);
+    ThreadManager.post(new yio(this), 8, null, true);
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -504,7 +504,7 @@ public class TroopListAdapter2
     TroopManager localTroopManager = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager;
     if (TextUtils.isEmpty(str1))
     {
-      ThreadManager.post(new yfl(this, localTroopManager, str2, paramCompoundButton, paramBoolean), 8, null, true);
+      ThreadManager.post(new yis(this, localTroopManager, str2, paramCompoundButton, paramBoolean), 8, null, true);
       return;
     }
     a(paramCompoundButton, str1, paramBoolean);

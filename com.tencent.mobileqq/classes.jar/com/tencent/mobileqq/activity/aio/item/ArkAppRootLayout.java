@@ -6,7 +6,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
-import urt;
+import uuv;
 
 public class ArkAppRootLayout
   extends RelativeLayout
@@ -35,7 +35,7 @@ public class ArkAppRootLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new urt(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new uuv(this));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)

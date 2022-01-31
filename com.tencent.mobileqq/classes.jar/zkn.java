@@ -1,24 +1,12 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
 
-public final class zkn
-  extends MqqHandler
+public class zkn
+  implements Runnable
 {
-  public zkn(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public zkn(QQAppInterface paramQQAppInterface) {}
   
-  public void removeCallbacksAndMessages(Object paramObject)
-  {
-    if (paramObject == null)
-    {
-      QLog.e("ThreadManager", 1, "global SubHandler cannot excute removeCallbacksAndMessages");
-      return;
-    }
-    super.removeCallbacksAndMessages(paramObject);
-  }
+  public void run() {}
 }
 
 

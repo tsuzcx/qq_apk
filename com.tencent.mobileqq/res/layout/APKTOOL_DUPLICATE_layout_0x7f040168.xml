@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09cd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout android:layout_width="fill_parent" android:layout_height="100.0dip">
         <TextView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="该页面仅在测试版本中出现" />
     </FrameLayout>
-    <Spinner android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ce" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.dingdong.widget.DingdongListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09cf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="1.0dip" android:listSelector="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204e8" android:divider="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204f0" android:dividerHeight="0.5dip" />
-    <Button android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0751" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="9.0dip" android:text="Btn2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
-    <Button android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09d0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="9.0dip" android:text="Btn3" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
-    <Button android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09d1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="9.0dip" android:text="Btn4" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
+    <Spinner android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.dingdong.widget.DingdongListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="1.0dip" android:listSelector="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204ec" android:divider="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204f4" android:dividerHeight="0.5dip" />
+    <Button android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0768" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="9.0dip" android:text="Btn2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
+    <Button android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="9.0dip" android:text="Btn3" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
+    <Button android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="9.0dip" android:text="Btn4" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
 </LinearLayout>

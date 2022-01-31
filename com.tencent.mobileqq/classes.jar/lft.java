@@ -1,28 +1,12 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
 public class lft
-  implements ActionSheet.OnButtonClickListener
 {
-  public lft(ReadinjoyMsgManagerActivity paramReadinjoyMsgManagerActivity) {}
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadinjoyMsgManagerActivity.a(this.a).dismiss();
-      return;
-      ReadinjoyMsgManagerActivity.a(this.a).a("正在设置");
-      ReadinjoyMsgManagerActivity.a(this.a).show();
-      ReadinjoyMsgManagerActivity.b(this.a, true);
-    }
-  }
+  private lft(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
 }
 
 

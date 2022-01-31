@@ -1,56 +1,38 @@
-import com.tencent.av.AVLog;
+import android.os.Handler;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.gaudio.VideoViewInfo;
-import com.tencent.av.ui.ControlUIObserver;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class jxh
-  implements QavInOutAnimation.QavOutAnimationListener
+  implements Runnable
 {
-  public jxh(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
+  jxh(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void a()
+  public void run()
   {
-    this.a.l = true;
-    this.a.ah();
-  }
-  
-  public void b()
-  {
-    ReportController.b(null, "CliOper", "", "", "0X800592D", "0X800592D", 0, 0, "", "", "", "");
-    if (((this.a.e == 90) || (this.a.e == 270)) && (this.a.a.a().a() != -1) && (((VideoViewInfo)this.a.a.a().c.get(0)).a == 1))
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController.i())
     {
-      ReportController.b(null, "CliOper", "", "", "0X800594D", "0X800594D", 0, 0, "", "", "", "");
-      SessionInfo localSessionInfo = this.a.a.a();
-      if (localSessionInfo != null)
-      {
-        AVLog.d(this.a.c, " TYPE_NOTIFY_CAMERA_CLOSE: " + localSessionInfo.f + "|" + localSessionInfo.d);
-        if (localSessionInfo.f) {
-          this.a.jdField_b_of_type_ComTencentAvUiControlUIObserver.update(null, new Object[] { Integer.valueOf(106) });
-        }
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a(0L, false, 0L);
+      if (QLog.isColorLevel()) {
+        QLog.e(this.a.c, 2, "RefreshNoiseStateRunnable refreshUserNoiseState return true");
       }
-      MultiVideoCtrlLayerUI4NewGroupChat.b(this.a);
-      MultiVideoCtrlLayerUI4NewGroupChat.a(this.a, true);
-      if (!this.a.a.e) {
-        break label371;
-      }
-      this.a.a.a(this.a.a.c, this.a.a.a, 100);
     }
-    for (;;)
+    Handler localHandler;
+    Runnable localRunnable;
+    if (this.a.e != null)
     {
-      this.a.l = false;
-      return;
-      if (((this.a.e != 90) && (this.a.e != 270)) || (this.a.a.a().a() == -1) || (((VideoViewInfo)this.a.a.a().c.get(0)).a != 2)) {
-        break;
+      localHandler = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      localRunnable = this.a.e;
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController.c >= 2000L) {
+        break label105;
       }
-      ReportController.b(null, "CliOper", "", "", "0X800594E", "0X800594E", 0, 0, "", "", "", "");
-      break;
-      label371:
-      this.a.a.a(this.a.d, this.a.jdField_b_of_type_Long, 101);
+    }
+    label105:
+    for (long l = 2000L;; l = this.a.jdField_a_of_type_ComTencentAvVideoController.c)
+    {
+      localHandler.postDelayed(localRunnable, l);
+      return;
     }
   }
 }

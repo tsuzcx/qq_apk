@@ -1,19 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.widget.Switch;
 
 public class lek
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  public lek(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, GuideData paramGuideData) {}
+  public lek(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onDismiss()
   {
-    if ("operation_guide".equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.business))
+    boolean bool = true;
+    ReadInJoySettingActivity.a(this.a, true);
+    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
+    if (!ReadInJoySettingActivity.a(this.a)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a(270, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.business, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
+      localSwitch.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
       return;
+      bool = false;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a(260, "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
   }
 }
 

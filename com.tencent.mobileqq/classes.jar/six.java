@@ -1,23 +1,28 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class six
-  implements Runnable
+public class six
+  implements DragFrameLayout.OnDragModeChangedListener
 {
-  six(siv paramsiv, int paramInt) {}
+  private final int jdField_a_of_type_Int = -2147483648;
   
-  public void run()
+  private six(Conversation paramConversation) {}
+  
+  public void a(int paramInt, List paramList) {}
+  
+  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    this.jdField_a_of_type_Siv.a.a.setText(this.jdField_a_of_type_Siv.a.jdField_c_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Siv.a.jdField_c_of_type_Int)
+    if (paramDragFrameLayout.a() == -1)
     {
-      this.jdField_a_of_type_Siv.a.a.setTextColor(-65536);
-      this.jdField_a_of_type_Siv.a.rightViewText.setEnabled(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
+      FrameHelperActivity.b(true);
       return;
     }
-    this.jdField_a_of_type_Siv.a.a.setTextColor(Color.rgb(119, 119, 119));
-    this.jdField_a_of_type_Siv.a.rightViewText.setEnabled(true);
+    FrameHelperActivity.b(false);
   }
 }
 

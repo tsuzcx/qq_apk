@@ -1,16 +1,20 @@
-import com.tencent.biz.qqstory.base.download.DownloaderImp;
-import dov.com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.music.humrecognition.HumUtils;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
 public class anmm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anmm(EditVideoMusicDialog paramEditVideoMusicDialog, String paramString1, String paramString2) {}
+  public anmm(HummingActivity paramHummingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a = new DownloaderImp();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
+    if (HumUtils.b()) {
+      return;
+    }
+    HummingActivity.a(this.a, 2);
+    HummingActivity.b(this.a);
   }
 }
 

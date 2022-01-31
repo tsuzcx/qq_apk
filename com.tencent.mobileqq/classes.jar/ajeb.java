@@ -1,35 +1,30 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.text.TextPaint;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.TroopFeedParserHelper;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
+import java.util.List;
+import org.json.JSONObject;
 
-public class ajeb
-  extends TextView
+class ajeb
+  implements Runnable
 {
-  public ajeb(FollowImageTextView paramFollowImageTextView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  ajeb(ajea paramajea, JSONObject paramJSONObject) {}
   
-  protected void onDraw(Canvas paramCanvas)
+  public void run()
   {
-    if (FollowImageTextView.a(this.a))
-    {
-      super.onDraw(paramCanvas);
-      return;
-    }
-    Object localObject = getPaint();
-    ((TextPaint)localObject).setColor(getCurrentTextColor());
-    ((TextPaint)localObject).drawableState = getDrawableState();
-    localObject = FollowImageTextView.a(this.a);
-    ((ajed)localObject).a(FollowImageTextView.a(this.a) - 1);
-    ((ajed)localObject).a(paramCanvas);
+    Object localObject = TroopFeedParserHelper.a(this.jdField_a_of_type_OrgJsonJSONObject, "" + this.jdField_a_of_type_Ajea.a.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Ajea.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    List localList = (List)localObject[0];
+    localObject = (List)localObject[1];
+    ((List)localObject).addAll(this.jdField_a_of_type_Ajea.a.jdField_a_of_type_JavaUtilList);
+    Message localMessage = this.jdField_a_of_type_Ajea.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
+    localMessage.obj = this.jdField_a_of_type_Ajea.a.a(localList, (List)localObject);
+    this.jdField_a_of_type_Ajea.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajeb
  * JD-Core Version:    0.7.0.1
  */

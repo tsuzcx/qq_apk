@@ -1,45 +1,41 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
 
 public class adnp
-  extends DownloadListener
+  implements UniformDownloader.IUniformDownloaderListener
 {
-  public adnp(UiApiPlugin paramUiApiPlugin, String paramString, JSONObject paramJSONObject) {}
+  public adnp(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
-    }
-    if (paramDownloadTask.a == 0)
-    {
-      paramDownloadTask = AbsDownloader.d(this.jdField_a_of_type_JavaLangString);
-      if (new File(paramDownloadTask).exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, paramDownloadTask, 0);
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("UiApiPlugin", 2, "mergeTextToImage->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_OrgJsonJSONObject, null, -2);
+    QLog.i("NearbyHybridFragment", 2, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
+    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
+    paramBundle.edit().putInt("state", 1);
+    paramBundle.edit().putString("filePath", paramString);
   }
+  
+  public void b(int paramInt, Bundle paramBundle)
+  {
+    QLog.i("NearbyHybridFragment", 2, "onDownloadProgress() called with: progress = [" + paramInt + "], extData = [" + paramBundle + "]");
+  }
+  
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnp
  * JD-Core Version:    0.7.0.1
  */

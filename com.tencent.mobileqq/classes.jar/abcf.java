@@ -1,21 +1,36 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import java.util.concurrent.Executor;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.armap.ArMapInterface;
 
 public class abcf
   implements Runnable
 {
-  public abcf(DynamicAvatarManager paramDynamicAvatarManager, Runnable paramRunnable) {}
+  public abcf(ArMapInterface paramArMapInterface) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+    synchronized (ArMapInterface.a(this.a))
+    {
+      boolean bool = ArMapInterface.a(this.a);
+      if (!bool) {}
+      try
+      {
+        DeviceProfileManager.a(this.a, 213).a(this.a);
+        ArMapInterface.a(this.a, true);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abcf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,23 @@
-import android.app.Dialog;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class tmd
   implements Runnable
 {
-  public tmd(RegisterBaseActivity paramRegisterBaseActivity, int paramInt) {}
+  public tmd(QQSettingMe paramQQSettingMe, int paramInt, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 2131624515);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.setContentView(2130968595);
-    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.findViewById(2131362758)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.getString(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.show();
+    if (this.jdField_a_of_type_Int == 33) {
+      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setBackgroundResource(2130838038);
+    }
+    for (;;)
+    {
+      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setVisibility(0);
+      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setText(this.jdField_a_of_type_JavaLangString);
+      return;
+      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setBackgroundResource(2130838037);
+    }
   }
 }
 

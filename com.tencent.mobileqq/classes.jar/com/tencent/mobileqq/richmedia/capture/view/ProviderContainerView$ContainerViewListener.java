@@ -4,9 +4,9 @@ import android.view.View;
 
 public abstract interface ProviderContainerView$ContainerViewListener
 {
-  public abstract void a();
-  
   public abstract void a(View paramView, int paramInt);
+  
+  public abstract void y_();
 }
 
 

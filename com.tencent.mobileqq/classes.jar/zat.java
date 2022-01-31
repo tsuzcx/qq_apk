@@ -1,8 +1,14 @@
+import com.tencent.mobileqq.app.BrowserAppInterface;
+
 public class zat
+  implements Runnable
 {
-  public long a;
-  public long b;
-  public long c;
+  public zat(BrowserAppInterface paramBrowserAppInterface, String paramString) {}
+  
+  public void run()
+  {
+    BrowserAppInterface.a(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

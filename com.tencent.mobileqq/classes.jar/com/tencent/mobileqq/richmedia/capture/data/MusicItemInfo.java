@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import agts;
+import ahhu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class MusicItemInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new agts();
+  public static final Parcelable.Creator CREATOR = new ahhu();
   public float a;
   public int a;
   public long a;
@@ -31,8 +31,9 @@ public class MusicItemInfo
   public int e;
   public String e;
   public int f;
-  private String f;
-  public int g = 0;
+  public String f;
+  public int g;
+  private String g;
   
   public MusicItemInfo()
   {
@@ -41,6 +42,7 @@ public class MusicItemInfo
     this.jdField_d_of_type_Int = 1;
     this.jdField_e_of_type_Int = 0;
     this.jdField_f_of_type_Int = 0;
+    this.jdField_g_of_type_Int = 0;
     this.jdField_a_of_type_Long = 0L;
   }
   
@@ -51,6 +53,7 @@ public class MusicItemInfo
     this.jdField_d_of_type_Int = 1;
     this.jdField_e_of_type_Int = 0;
     this.jdField_f_of_type_Int = 0;
+    this.jdField_g_of_type_Int = 0;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
@@ -60,7 +63,7 @@ public class MusicItemInfo
     this.jdField_d_of_type_Int = paramParcel.readInt();
     this.jdField_e_of_type_Int = paramParcel.readInt();
     this.jdField_f_of_type_Int = paramParcel.readInt();
-    this.g = paramParcel.readInt();
+    this.jdField_g_of_type_Int = paramParcel.readInt();
     this.jdField_e_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Float = paramParcel.readFloat();
     if (paramParcel.readByte() != 0) {}
@@ -68,6 +71,7 @@ public class MusicItemInfo
     {
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_b_of_type_Int = paramParcel.readInt();
+      this.jdField_f_of_type_JavaLangString = paramParcel.readString();
       return;
       bool = false;
     }
@@ -80,18 +84,19 @@ public class MusicItemInfo
     this.jdField_d_of_type_Int = 1;
     this.jdField_e_of_type_Int = 0;
     this.jdField_f_of_type_Int = 0;
+    this.jdField_g_of_type_Int = 0;
     this.jdField_a_of_type_Long = 0L;
     paramString = new JSONObject(paramString);
     this.jdField_a_of_type_JavaLangString = paramString.optString("title");
     this.jdField_c_of_type_JavaLangString = paramString.optString("audio_url");
     this.jdField_b_of_type_JavaLangString = paramString.optString("author");
     this.jdField_a_of_type_Int = paramString.optInt("item_id");
-    if (paramString.has("type"))
+    if (paramString.has("type")) {}
+    for (this.jdField_d_of_type_Int = paramString.optInt("type");; this.jdField_d_of_type_Int = 1)
     {
-      this.jdField_d_of_type_Int = paramString.optInt("type");
+      this.jdField_f_of_type_JavaLangString = paramString.optString("jump_ws");
       return;
     }
-    this.jdField_d_of_type_Int = 1;
   }
   
   public MusicItemInfo(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
@@ -101,6 +106,7 @@ public class MusicItemInfo
     this.jdField_d_of_type_Int = 1;
     this.jdField_e_of_type_Int = 0;
     this.jdField_f_of_type_Int = 0;
+    this.jdField_g_of_type_Int = 0;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_d_of_type_Int = 5;
     this.jdField_a_of_type_JavaLangString = paramString1;
@@ -110,7 +116,7 @@ public class MusicItemInfo
     this.jdField_e_of_type_JavaLangString = paramString4;
     this.jdField_e_of_type_Int = paramInt2;
     this.jdField_f_of_type_Int = paramInt3;
-    this.g = paramInt4;
+    this.jdField_g_of_type_Int = paramInt4;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
@@ -168,37 +174,38 @@ public class MusicItemInfo
     localMusicItemInfo.jdField_d_of_type_Int = this.jdField_d_of_type_Int;
     localMusicItemInfo.jdField_e_of_type_Int = this.jdField_e_of_type_Int;
     localMusicItemInfo.jdField_f_of_type_Int = this.jdField_f_of_type_Int;
-    localMusicItemInfo.g = this.g;
+    localMusicItemInfo.jdField_g_of_type_Int = this.jdField_g_of_type_Int;
     localMusicItemInfo.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-    localMusicItemInfo.jdField_f_of_type_JavaLangString = this.jdField_f_of_type_JavaLangString;
+    localMusicItemInfo.jdField_g_of_type_JavaLangString = this.jdField_g_of_type_JavaLangString;
     localMusicItemInfo.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
     localMusicItemInfo.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
     localMusicItemInfo.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    localMusicItemInfo.jdField_f_of_type_JavaLangString = this.jdField_f_of_type_JavaLangString;
     return localMusicItemInfo;
   }
   
   public String a()
   {
-    if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString))
     {
       StringBuilder localStringBuilder = new StringBuilder(SdkContext.a().a().a().a());
       if ((this.jdField_d_of_type_Int == 5) && (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)))
       {
-        this.jdField_f_of_type_JavaLangString = null;
-        return this.jdField_f_of_type_JavaLangString;
+        this.jdField_g_of_type_JavaLangString = null;
+        return this.jdField_g_of_type_JavaLangString;
       }
       if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
         localStringBuilder.append(Utils.a(this.jdField_c_of_type_JavaLangString)).append("_").append(this.jdField_a_of_type_JavaLangString.hashCode()).append(b());
       }
-      this.jdField_f_of_type_JavaLangString = localStringBuilder.toString();
+      this.jdField_g_of_type_JavaLangString = localStringBuilder.toString();
     }
-    return this.jdField_f_of_type_JavaLangString;
+    return this.jdField_g_of_type_JavaLangString;
   }
   
   public void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_f_of_type_JavaLangString = paramString;
+      this.jdField_g_of_type_JavaLangString = paramString;
     }
   }
   
@@ -275,7 +282,7 @@ public class MusicItemInfo
     paramParcel.writeInt(this.jdField_d_of_type_Int);
     paramParcel.writeInt(this.jdField_e_of_type_Int);
     paramParcel.writeInt(this.jdField_f_of_type_Int);
-    paramParcel.writeInt(this.g);
+    paramParcel.writeInt(this.jdField_g_of_type_Int);
     paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
     paramParcel.writeFloat(this.jdField_a_of_type_Float);
     if (this.jdField_a_of_type_Boolean) {}
@@ -283,6 +290,7 @@ public class MusicItemInfo
     {
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.jdField_b_of_type_Int);
+      paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
       return;
     }
   }

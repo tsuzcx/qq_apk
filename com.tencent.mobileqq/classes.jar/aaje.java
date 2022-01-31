@@ -1,30 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ar.config.MainDownAni;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class aaje
-  implements DialogInterface.OnClickListener
+public class aaje
+  implements OnCompositionLoadedListener
 {
-  aaje(aaja paramaaja, QQCustomDialog paramQQCustomDialog) {}
+  public aaje(MainDownAni paramMainDownAni, aaji paramaaji, aajp paramaajp, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    ArkAppCenter.a().post(new aajf(this));
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_Aaji.e.get();
+    Object localObject = MainDownAni.a();
+    StringBuilder localStringBuilder = new StringBuilder().append("onCompositionLoaded, downAniView[");
+    if (localImageView != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label38:
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaja.a, "ark_authority_api_user_info", this.jdField_a_of_type_Aaja.c, 1);
+      QLog.w((String)localObject, 1, bool + "]");
+      if (localImageView != null) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a();
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label38;
-    }
+    localObject = new LottieDrawable();
+    ((LottieDrawable)localObject).setImageAssetDelegate(new aajf(this));
+    ((LottieDrawable)localObject).addAnimatorListener(new aajg(this));
+    ((LottieDrawable)localObject).setImagesAssetsFolder(this.jdField_a_of_type_JavaLangString);
+    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+    ((LottieDrawable)localObject).loop(false);
+    ((LottieDrawable)localObject).playAnimation();
+    localImageView.setImageDrawable((Drawable)localObject);
   }
 }
 

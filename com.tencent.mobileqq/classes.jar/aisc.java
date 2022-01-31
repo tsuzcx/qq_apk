@@ -1,22 +1,36 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.transfile.VideoThumbDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class aisc
-  implements View.OnClickListener
+  implements BitmapDecoder
 {
-  public aisc(HomeworkGuideFragment paramHomeworkGuideFragment) {}
+  public aisc(VideoThumbDownloader paramVideoThumbDownloader) {}
   
-  public void onClick(View paramView)
+  public Bitmap a(URL paramURL)
   {
-    this.a.getActivity().setResult(1000);
-    this.a.getActivity().finish();
+    String str = paramURL.getPath();
+    try
+    {
+      Bitmap localBitmap = VideoThumbDownloader.a(this.a, str);
+      paramURL = localBitmap;
+      if (localBitmap == null) {
+        paramURL = VideoThumbDownloader.b(this.a, str);
+      }
+      return paramURL;
+    }
+    catch (Throwable paramURL)
+    {
+      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,31 @@
-import android.os.Bundle;
-import com.tencent.av.redpacket.AVRedPacketHandler;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.ResPreLoadObserver;
-import com.tencent.av.ui.redbag.RedBagUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import com.tencent.av.redpacket.ui.RedPacketGameView;
 
 public class jls
-  implements AVRedPacketManager.ResPreLoadObserver
+  implements Runnable
 {
-  public jls(AVRedPacketManager paramAVRedPacketManager) {}
+  public jls(RedPacketGameView paramRedPacketGameView, ViewGroup paramViewGroup) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "onLoadFinish, isSucc=" + paramBoolean + ",type=" + paramInt);
-    }
-    if (!AVRedPacketManager.a(this.a, true)) {}
-    do
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidViewView = null;
+    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c != null)
     {
-      do
-      {
-        return;
-      } while (paramInt != 1);
-      if ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode == 1) && (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState == 1))
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putString("key", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.key);
-        localBundle.putInt("gameState", 1);
-        localBundle.putInt("fromWho", 1);
-        localBundle.putInt("musicId", this.a.g);
-        localBundle.putInt("enterType", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.enterType);
-        this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketHandler.b();
-        this.a.a(1, localBundle);
-        this.a.a(false, 1011, AVRedPacketManager.jdField_a_of_type_Long, null);
-        this.a.a(false, 1021, AVRedPacketManager.c, null);
-        return;
-      }
-    } while ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 2) || (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState != 1));
-    long l = Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.mRedPacketComeStartTime);
-    paramBoolean = RedBagUtil.b(AVRedPacketManager.a(this.a));
-    if (l >= AVRedPacketManager.f)
-    {
-      if (paramBoolean)
-      {
-        this.a.d();
-        return;
-      }
-      this.a.f();
-      return;
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c.recycle();
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c = null;
     }
-    if (paramBoolean)
+    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b != null)
     {
-      this.a.a(false, 1028, AVRedPacketManager.f - l, null);
-      return;
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b.recycle();
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b = null;
     }
-    this.a.a(false, 1026, AVRedPacketManager.f - l, null);
+    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
   }
 }
 

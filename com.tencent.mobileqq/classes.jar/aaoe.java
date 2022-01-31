@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
 
-public class aaoe
+class aaoe
   implements Runnable
 {
-  public aaoe(ArkLocalAppMgr paramArkLocalAppMgr, aaov paramaaov) {}
+  aaoe(aaod paramaaod) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aaov.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback != null) {
-      this.jdField_a_of_type_Aaov.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback.a(this.jdField_a_of_type_Aaov.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aaov.c);
-    }
+    aaof localaaof = new aaof(this);
+    this.a.a.jdField_a_of_type_Aanw.a.a.a(localaaof, this.a.a.jdField_a_of_type_Long);
   }
 }
 

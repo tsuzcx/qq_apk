@@ -26,11 +26,11 @@ import com.tencent.av.utils.UITools;
 import com.tencent.av.widget.stageview.MemberEffect;
 import com.tencent.av.widget.stageview.StageEffectView.StageMember;
 import com.tencent.qphone.base.util.QLog;
-import jjg;
-import jji;
+import jir;
+import jit;
 
 public class GameHeroesUi
-  implements jjg
+  implements jir
 {
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
@@ -97,7 +97,7 @@ public class GameHeroesUi
     BitmapDrawable localBitmapDrawable = null;
     Object localObject1 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
-    BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130840288, (BitmapFactory.Options)localObject1);
+    BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130840294, (BitmapFactory.Options)localObject1);
     int i1 = ((BitmapFactory.Options)localObject1).outWidth / UITools.a(this.jdField_a_of_type_AndroidContentContext);
     int i2 = ((BitmapFactory.Options)localObject1).outHeight / UITools.b(this.jdField_a_of_type_AndroidContentContext);
     if (i1 < i2) {
@@ -111,7 +111,7 @@ public class GameHeroesUi
       ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
       try
       {
-        localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130840288, (BitmapFactory.Options)localObject1);
+        localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, 2130840294, (BitmapFactory.Options)localObject1);
         if (localObject1 != null) {
           localBitmapDrawable = BitmapTools.a((Bitmap)localObject1, 20);
         }
@@ -134,7 +134,7 @@ public class GameHeroesUi
   public void a()
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new jji(this));
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new jit(this));
     }
   }
   
@@ -147,13 +147,13 @@ public class GameHeroesUi
     if (this.jdField_a_of_type_AndroidViewViewGroup.getBackground() == null) {
       this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(a());
     }
-    localObject1 = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366007);
+    localObject1 = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366034);
     Object localObject2 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject1).getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject2).topMargin = (paramInt - 54);
     ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366011)).setImageDrawable(this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable());
-    ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366010)).setContentDescription(this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_AndroidContentResResources.getString(2131429332));
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366012);
+    ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366038)).setImageDrawable(this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable());
+    ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366037)).setContentDescription(this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_AndroidContentResResources.getString(2131429338));
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366039);
     localObject2 = this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_b_of_type_JavaLangString;
     if (this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect != null)
     {
@@ -194,9 +194,9 @@ public class GameHeroesUi
       {
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_c_of_type_AndroidWidgetButton.setEnabled(true);
-        this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559900);
-        this.jdField_c_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429334));
-        this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429334));
+        this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559918);
+        this.jdField_c_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429340));
+        this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429340));
       }
     }
     else
@@ -205,10 +205,10 @@ public class GameHeroesUi
     }
     this.jdField_c_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429341));
-    this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429341));
-    this.jdField_c_of_type_AndroidWidgetButton.setText(2131429333);
-    this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429334));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429347));
+    this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429347));
+    this.jdField_c_of_type_AndroidWidgetButton.setText(2131429339);
+    this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429340));
   }
   
   void a(StageEffectView.StageMember paramStageMember, long paramLong1, SessionInfo.HeroDetail paramHeroDetail, int paramInt1, long paramLong2, int paramInt2)
@@ -296,42 +296,42 @@ public class GameHeroesUi
       QLog.d("GameHeroesUi", 2, "initUI");
     }
     this.jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366014));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366041));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetButton.getLayoutParams());
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366009));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366015));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366004));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366036));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366042));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366031));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetButton.getLayoutParams());
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365975));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366005));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366013));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365979));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365982));
-    this.g = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365981));
-    this.h = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365984));
-    this.i = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365983));
-    this.j = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365986));
-    this.k = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365985));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365989));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365991));
-    this.l = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365992));
-    this.m = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365993));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365994));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365996));
-    this.n = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365997));
-    this.o = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365998));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365999));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366001));
-    this.p = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366002));
-    this.q = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366003));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366002));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366032));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366040));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366006));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366009));
+    this.g = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366008));
+    this.h = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366011));
+    this.i = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366010));
+    this.j = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366013));
+    this.k = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366012));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366016));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366018));
+    this.l = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366019));
+    this.m = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366020));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366021));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366023));
+    this.n = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366024));
+    this.o = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366025));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366026));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366028));
+    this.p = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366029));
+    this.q = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366030));
   }
   
   public void e()
   {
-    ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365977)).setImageDrawable(this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable());
+    ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366004)).setImageDrawable(this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable());
     String str2 = this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_b_of_type_JavaLangString;
-    ((RelativeLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365976)).setContentDescription(str2 + this.jdField_a_of_type_AndroidContentResResources.getString(2131429332));
-    TextView localTextView = (TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365978);
+    ((RelativeLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366003)).setContentDescription(str2 + this.jdField_a_of_type_AndroidContentResResources.getString(2131429338));
+    TextView localTextView = (TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366005);
     String str1;
     if (this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect != null)
     {
@@ -375,7 +375,7 @@ public class GameHeroesUi
           this.l.setText(this.jdField_a_of_type_ComTencentAvAppSessionInfo$HeroDetail.jdField_a_of_type_ArrayOfJavaLangString[0]);
           this.m.setText(this.jdField_a_of_type_ComTencentAvAppSessionInfo$HeroDetail.jdField_b_of_type_ArrayOfJavaLangString[0]);
           this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365987).setVisibility(0);
+          this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366014).setVisibility(0);
           if ((i1 <= 1) || (this.jdField_a_of_type_ComTencentAvAppSessionInfo$HeroDetail.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[1] == null)) {
             break label685;
           }
@@ -399,7 +399,7 @@ public class GameHeroesUi
           label619:
           str1 = String.format(this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect.jdField_a_of_type_JavaLangString, new Object[] { str2 });
           break;
-          this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365987).setVisibility(4);
+          this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366014).setVisibility(4);
           this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(4);
           this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
           this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(4);
@@ -447,28 +447,28 @@ public class GameHeroesUi
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
       return;
-      localObject1 = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840059);
+      localObject1 = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840065);
       this.jdField_c_of_type_AndroidWidgetButton.setEnabled(true);
       this.jdField_c_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559901);
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559919);
       this.jdField_c_of_type_AndroidWidgetButton.setLayoutParams(this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-      this.jdField_c_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429339));
-      this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429339));
+      this.jdField_c_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429345));
+      this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429345));
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429338));
-      this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429338));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429344));
+      this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429344));
       continue;
-      localObject1 = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840063);
+      localObject1 = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840069);
       this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429337));
-      this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429337));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429343));
+      this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429343));
       continue;
-      localObject1 = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840061);
+      localObject1 = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840067);
       this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429340));
-      this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429340));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429346));
+      this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429346));
       continue;
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_c_of_type_AndroidWidgetButton.setVisibility(0);
@@ -476,21 +476,21 @@ public class GameHeroesUi
       {
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_c_of_type_AndroidWidgetButton.setEnabled(true);
-        this.jdField_c_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429334));
-        this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429334));
+        this.jdField_c_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429340));
+        this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429340));
       }
       for (;;)
       {
-        this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559900);
+        this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559918);
         this.jdField_c_of_type_AndroidWidgetButton.setLayoutParams(this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams);
         localObject1 = localObject2;
         break;
         this.jdField_c_of_type_AndroidWidgetButton.setEnabled(false);
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429341));
-        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429341));
-        this.jdField_c_of_type_AndroidWidgetButton.setText(2131429333);
-        this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429334));
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131429347));
+        this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429347));
+        this.jdField_c_of_type_AndroidWidgetButton.setText(2131429339);
+        this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentResResources.getString(2131429340));
       }
     }
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);

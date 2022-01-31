@@ -16,7 +16,7 @@ import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl.CustomSize;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
 import com.tencent.qphone.base.util.QLog;
-import xjt;
+import xmz;
 
 public class CameraPreviewNew
   extends SurfaceView
@@ -40,7 +40,7 @@ public class CameraPreviewNew
   
   public void a(int paramInt, String paramString, boolean paramBoolean)
   {
-    post(new xjt(this, paramString, paramInt, getContext()));
+    post(new xmz(this, paramString, paramInt, getContext()));
   }
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera) {}

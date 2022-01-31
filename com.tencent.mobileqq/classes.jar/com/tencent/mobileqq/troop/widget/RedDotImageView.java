@@ -48,7 +48,7 @@ public class RedDotImageView
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845923);
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846051);
       }
       postInvalidate();
     }
@@ -146,7 +146,7 @@ public class RedDotImageView
       Paint.FontMetrics localFontMetrics = new Paint.FontMetrics();
       this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics(localFontMetrics);
       this.jdField_a_of_type_Float = (localFontMetrics.descent - localFontMetrics.ascent);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845480);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845608);
     }
     this.jdField_b_of_type_Int = paramInt;
     postInvalidate();
@@ -154,7 +154,7 @@ public class RedDotImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RedDotImageView
  * JD-Core Version:    0.7.0.1
  */

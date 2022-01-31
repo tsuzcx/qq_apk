@@ -8,8 +8,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import uqf;
-import uqg;
+import uth;
+import uti;
 
 public class ColorView
   extends View
@@ -17,7 +17,7 @@ public class ColorView
   private int jdField_a_of_type_Int;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private uqg jdField_a_of_type_Uqg;
+  private uti jdField_a_of_type_Uti;
   private int b = AIOUtils.a(4.0F, getResources());
   
   public ColorView(Context paramContext, AttributeSet paramAttributeSet)
@@ -65,10 +65,10 @@ public class ColorView
     invalidate();
   }
   
-  public void setListener(uqg paramuqg)
+  public void setListener(uti paramuti)
   {
-    this.jdField_a_of_type_Uqg = paramuqg;
-    setOnClickListener(new uqf(this));
+    this.jdField_a_of_type_Uti = paramuti;
+    setOnClickListener(new uth(this));
   }
 }
 

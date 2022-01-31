@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.apollo.game.ApolloJSContext;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.apollo.ApolloResponseManager;
 
 public class ymm
-  implements Runnable
 {
-  public ymm(ApolloJSContext paramApolloJSContext, String paramString, ValueCallback paramValueCallback) {}
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void run()
-  {
-    if (ApolloJSContext.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext) != null) {
-      ApolloJSContext.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext).evaluateJavascript(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSmttSdkValueCallback);
-    }
-  }
+  ymm(ApolloResponseManager paramApolloResponseManager) {}
 }
 
 

@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
+import android.view.View;
 
 public class acpb
-  implements Runnable
 {
-  public acpb(ThumbDownloadManager paramThumbDownloadManager, long paramLong, String paramString1, String paramString2) {}
-  
-  public void run()
-  {
-    if (ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
-      ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager);
-    }
-  }
+  public View[] a = new View[12];
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acpb
  * JD-Core Version:    0.7.0.1
  */

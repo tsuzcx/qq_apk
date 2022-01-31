@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class yuk
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public yuk(ApolloGameViewBinder paramApolloGameViewBinder) {}
+  public yuk(ApolloSSOConfig paramApolloSSOConfig, AppInterface paramAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (ApolloGameViewBinder.a(this.a) != null)
-    {
-      paramView = (ApolloGameManager)ApolloGameViewBinder.a(this.a).getManager(210);
-      if (paramView != null) {
-        paramView.e();
-      }
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloSSOConfig.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramBoolean, paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloSSOConfig", 2, "checkRequestSendSSO, type:" + paramInt + "isSuccess:" + paramBoolean + "onReceive use:" + (System.currentTimeMillis() - l));
     }
   }
 }

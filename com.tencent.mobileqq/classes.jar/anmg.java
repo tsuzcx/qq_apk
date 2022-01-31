@@ -1,44 +1,49 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import dov.com.qq.im.capture.music.humrecognition.recognize.RecognitionManager;
+import java.io.File;
 
-public class anmg
-  implements Runnable
+public final class anmg
+  implements FFmpegExecuteResponseCallback
 {
-  public anmg(VideoFrameLoader paramVideoFrameLoader) {}
+  public anmg(String paramString, RecognitionManager paramRecognitionManager) {}
   
-  public void run()
+  public void a()
   {
-    if (VideoFrameLoader.a(this.a) != VideoFrameLoader.a(this.a).size())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + VideoFrameLoader.a(this.a) + "-" + VideoFrameLoader.a(this.a).size());
-      }
-      if ((!VideoFrameLoader.a(this.a)) && (VideoFrameLoader.a(this.a).size() == 0))
-      {
-        VideoFrameLoader.a(this.a, true);
-        this.a.b();
-        VideoFrameLoader.a(this.a, new anmb(VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), VideoFrameLoader.c(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.d(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), this.a));
-        ThreadManager.post(VideoFrameLoader.a(this.a), 10, null, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
-        }
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (VideoFrameLoader.a(this.a) != null) {}
-      for (VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.a).get(); localVideoFrameLoaderListener != null; localVideoFrameLoaderListener = null)
-      {
-        localVideoFrameLoaderListener.c();
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onStart: invoked. info: ");
     }
   }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onSuccess: invoked. info: message = " + paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager != null) && (localFile.exists()))
+    {
+      this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.a(localFile);
+      this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.c();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("HumUtils", 2, "onFinish: audioFile not exist. audioFile = " + localFile);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed to convert sample rate. message = " + paramString);
+    }
+  }
+  
+  public void c(String paramString) {}
 }
 
 

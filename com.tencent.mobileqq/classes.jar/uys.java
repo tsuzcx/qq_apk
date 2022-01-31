@@ -1,15 +1,34 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
-import com.tencent.mobileqq.data.MessageForMedalNews;
+import android.app.Activity;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
 
-class uys
-  implements Runnable
+public class uys
+  extends ClickableSpan
 {
-  uys(uyr paramuyr) {}
+  public uys(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MedalNewsItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMedalNewsItemBuilder, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMedalNewsItemBuilder.a.d, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.level, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.id, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.ts, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.seq);
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = ActionSheet.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131433828);
+      paramView.c(2131433015);
+      paramView.a(new uyt(this));
+      paramView.a(new uyu(this, paramView));
+      paramView.show();
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

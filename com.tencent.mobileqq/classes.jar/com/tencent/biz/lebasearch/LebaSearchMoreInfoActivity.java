@@ -16,15 +16,15 @@ import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.smtt.sdk.WebView;
-import knt;
-import knu;
-import knv;
+import kne;
+import knf;
+import kng;
 
 public class LebaSearchMoreInfoActivity
   extends AbsBaseWebViewActivity
 {
   long jdField_a_of_type_Long;
-  Handler jdField_a_of_type_AndroidOsHandler = new knt(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new kne(this);
   View jdField_a_of_type_AndroidViewView;
   public FrameLayout a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -39,7 +39,7 @@ public class LebaSearchMoreInfoActivity
   public LebaSearchMoreInfoActivity()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new knv(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new kng(this);
   }
   
   private void a()
@@ -62,16 +62,16 @@ public class LebaSearchMoreInfoActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366330);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366357);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369893));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369970));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369894);
-    ((ImageView)localObject).setImageResource(2130844094);
+    Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369971);
+    ((ImageView)localObject).setImageResource(2130844218);
     ((ImageView)localObject).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131366331));
-    this.jdField_a_of_type_AndroidOsHandler.post(new knu(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131366358));
+    this.jdField_a_of_type_AndroidOsHandler.post(new knf(this));
     if (this.jdField_a_of_type_Long != -1L)
     {
       localObject = new Bundle();
@@ -103,7 +103,7 @@ public class LebaSearchMoreInfoActivity
           break label232;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.b);
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.b + ";" + getString(2131430514));
+        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.b + ";" + getString(2131430531));
         long l = localSharedPreferences.getLong("time_" + str + "_" + this.jdField_a_of_type_Long, 0L);
         if (System.currentTimeMillis() - l <= 86400000L) {
           break label244;
@@ -133,7 +133,7 @@ public class LebaSearchMoreInfoActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130969391);
+    setContentView(2130969392);
     a();
     b();
     return true;
@@ -156,8 +156,8 @@ public class LebaSearchMoreInfoActivity
     {
     default: 
       return;
-    case 2131363959: 
-    case 2131366330: 
+    case 2131363983: 
+    case 2131366357: 
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = Utils.createPluginSetDialogForWeb(this, this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, 1, this.jdField_a_of_type_Long, this.c, null);

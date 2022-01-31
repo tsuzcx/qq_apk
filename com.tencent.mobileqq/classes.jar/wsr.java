@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
-public class wsr
+class wsr
   implements Runnable
 {
-  public wsr(AlbumListAdapter paramAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo) {}
+  wsr(wsq paramwsq) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.c(this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
+    this.a.a.c();
   }
 }
 

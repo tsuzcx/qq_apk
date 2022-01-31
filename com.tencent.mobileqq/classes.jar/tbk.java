@@ -1,17 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.activity.Now;
+import android.content.SharedPreferences;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class tbk
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tbk(Now paramNow) {}
+  public tbk(MainFragment paramMainFragment, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (Now.a(this.a) != null) {
-      Now.a(this.a).n();
+    String str2 = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment);
+    if (("消息".equals(str2)) || ("联系人".equals(str2))) {
+      if (!"消息".equals(str2)) {
+        break label197;
+      }
+    }
+    label197:
+    for (String str1 = "Msg_tab";; str1 = "Contacts_tab")
+    {
+      ReportController.b(MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment), "CliOper", "", "", str1, str1, 0, 0, "", "", "", "");
+      if ((MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment) != null) && (MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getBoolean("theme_voice_setting_" + MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), true))) {
+        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).b(this.jdField_a_of_type_Int + 1);
+      }
+      if ((str2 != null) && (AppSetting.b))
+      {
+        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "消息", str2);
+        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "联系人", str2);
+        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "动态", str2);
+        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "电话", str2);
+        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "NOW", str2);
+      }
+      return;
     }
   }
 }

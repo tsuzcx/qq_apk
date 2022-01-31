@@ -1,18 +1,28 @@
-import android.graphics.Bitmap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.utils.QAVNotification;
+import com.tencent.av.utils.TraeHelper;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jdm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public jdm(VideoController paramVideoController, String paramString1, String paramString2, String paramString3) {}
+  public jdm(VideoController paramVideoController, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentAvVideoController.a.a(3000, this.jdField_a_of_type_JavaLangString, null, true, true);
-    String str = this.jdField_a_of_type_ComTencentAvVideoController.a.getDisplayName(1004, this.b, this.jdField_a_of_type_JavaLangString);
-    QAVNotification.a(this.jdField_a_of_type_ComTencentAvVideoController.a).a(this.c, str, localBitmap, this.jdField_a_of_type_JavaLangString, 57, 3000, 3);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvVideoController.a("onHowling_click", this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Long, true, false);
+      if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
+      }
+    }
+    if (this.b) {
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvUtilsTraeHelper.e();
+    }
+    ReportController.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
   }
 }
 

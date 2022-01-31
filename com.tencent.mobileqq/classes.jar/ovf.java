@@ -1,25 +1,26 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import android.view.SurfaceHolder;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 public class ovf
-  extends ovu
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  public ovf(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, String paramString)
+  public ovf(TribeVideoPlugin paramTribeVideoPlugin) {}
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    super(paramVideoCombineHelper);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
+    }
   }
   
-  public void b(boolean paramBoolean)
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a));
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a = System.currentTimeMillis();
-    }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
     }
   }
 }

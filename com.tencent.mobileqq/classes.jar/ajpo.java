@@ -1,19 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.QQCustomArkDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import com.dataline.core.DirectForwarder;
+import com.dataline.core.DirectForwarder.CallBack;
 
-public class ajpo
-  implements Runnable
+public final class ajpo
+  extends DirectForwarder.CallBack
 {
-  public ajpo(QQCustomArkDialog paramQQCustomArkDialog, Bundle paramBundle) {}
+  public ajpo(Context paramContext) {}
   
-  public void run()
+  protected void a(AsyncTask paramAsyncTask, int paramInt)
   {
-    QQCustomArkDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomArkDialog, this.jdField_a_of_type_AndroidOsBundle);
+    super.a(paramAsyncTask, paramInt);
+    DirectForwarder.a(this.a, paramAsyncTask, paramInt, new ajpp(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajpo
  * JD-Core Version:    0.7.0.1
  */

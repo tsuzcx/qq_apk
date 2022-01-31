@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.music;
 
-import amvp;
+import anlu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
@@ -119,7 +119,7 @@ public class MusicPlayerScene
   
   protected void a(String paramString, int paramInt)
   {
-    ThreadManager.postImmediately(new amvp(this, paramString, paramInt), null, true);
+    ThreadManager.postImmediately(new anlu(this, paramString, paramInt), null, true);
     this.jdField_a_of_type_Long = 0L;
   }
   

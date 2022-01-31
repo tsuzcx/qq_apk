@@ -89,12 +89,12 @@ public class PrinterActivity
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
     {
       LayoutInflater.from(this).inflate(2130968888, this.jdField_a_of_type_AndroidViewViewGroup, true);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364146));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364147));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364148));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364149));
-      this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364088));
-      Drawable localDrawable = super.getResources().getDrawable(2130839165);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364170));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364171));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364172));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364173));
+      this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364112));
+      Drawable localDrawable = super.getResources().getDrawable(2130839169);
       this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageDrawable(localDrawable);
     }
     paramObject = (Object[])paramObject;
@@ -235,19 +235,19 @@ public class PrinterActivity
     super.setContentView(2130968883);
     super.setTitle(2131427533);
     super.getWindow().setBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)super.findViewById(2131364122));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)super.findViewById(2131364146));
     this.jdField_a_of_type_AndroidViewViewGroup.setTag(2131362036, "n/a");
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364125));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364149));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364126));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364150));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler = ((DataLineHandler)this.app.a(8));
     this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a = new PrinterSessionAdapter(this, this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131364086));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131364110));
     this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = new ScrollerRunnable(this.jdField_a_of_type_ComTencentWidgetXListView);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a);
     paramBundle = LayoutInflater.from(this).inflate(2130968796, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(super.getResources().getDrawable(2130842159));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(super.getResources().getDrawable(2130842196));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(paramBundle);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new cj(this));
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
@@ -319,7 +319,7 @@ public class PrinterActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131364125)
+    if (i == 2131364149)
     {
       paramView = new Intent(super.getApplicationContext(), FMLocalFileActivity.class);
       paramView.putExtra("category", 6);
@@ -341,7 +341,7 @@ public class PrinterActivity
     do
     {
       return;
-      if (i == 2131364126)
+      if (i == 2131364150)
       {
         paramView = new Intent(this, PhotoListActivity.class);
         paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", PrinterActivity.class.getName());
@@ -361,7 +361,7 @@ public class PrinterActivity
         ReportController.b(this.app, "CliOper", "", "", "0X8004019", "0X8004019", 0, 0, "", "", "", "");
         return;
       }
-    } while (i != 2131364146);
+    } while (i != 2131364170);
     paramView = new Intent();
     if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
     {

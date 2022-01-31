@@ -8,7 +8,7 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
-import jnj;
+import jmu;
 
 public abstract class IQQServiceForAV$Stub
   extends Binder
@@ -28,7 +28,7 @@ public abstract class IQQServiceForAV$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQQServiceForAV))) {
       return (IQQServiceForAV)localIInterface;
     }
-    return new jnj(paramIBinder);
+    return new jmu(paramIBinder);
   }
   
   public IBinder asBinder()

@@ -37,8 +37,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import jls;
-import jlt;
+import jld;
+import jle;
 
 public class AVRedPacketManager
   extends BusinessManager
@@ -102,7 +102,7 @@ public class AVRedPacketManager
   public AVRedPacketManager(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$ResPreLoadObserver = new jls(this);
+    this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$ResPreLoadObserver = new jld(this);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     paramVideoAppInterface = QavRecordDpc.a();
     VideoAppInterface localVideoAppInterface = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
@@ -384,7 +384,7 @@ public class AVRedPacketManager
   private void h()
   {
     QLog.d("AVRedPacketManager", 1, "preloadCountDownRes");
-    ThreadManager.post(new jlt(this), 8, null, true);
+    ThreadManager.post(new jle(this), 8, null, true);
   }
   
   private void i()

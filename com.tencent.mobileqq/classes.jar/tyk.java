@@ -1,18 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-public class tyk
-  implements View.OnClickListener
+class tyk
+  implements Runnable
 {
-  public tyk(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
+  tyk(tyj paramtyj) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    this.a.a.o();
+    this.a.a.a(2131435603, 1);
   }
 }
 

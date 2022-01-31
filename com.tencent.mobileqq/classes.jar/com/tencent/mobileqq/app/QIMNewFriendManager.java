@@ -17,8 +17,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.manager.Manager;
-import zhd;
-import zhe;
+import zkj;
+import zkk;
 
 public class QIMNewFriendManager
   implements Manager
@@ -37,7 +37,7 @@ public class QIMNewFriendManager
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    ThreadManager.postImmediately(new zhd(this, paramQQAppInterface), null, true);
+    ThreadManager.postImmediately(new zkj(this, paramQQAppInterface), null, true);
   }
   
   public String a(long paramLong1, long paramLong2)
@@ -424,7 +424,7 @@ public class QIMNewFriendManager
           }
         }
       }
-      Collections.sort(localList, new zhe(this));
+      Collections.sort(localList, new zkk(this));
     }
     while (!QLog.isColorLevel())
     {

@@ -1,75 +1,23 @@
-import SummaryCard.TPraiseInfo;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
-import com.tencent.mobileqq.profile.like.PraiseConfigHelper;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-public class aeox
-  extends Handler
+class aeox
+  implements DialogInterface.OnClickListener
 {
-  public aeox(NearbyCardVoteView paramNearbyCardVoteView) {}
+  aeox(aeow paramaeow, oidb_0x8e4.RspBody paramRspBody) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    int j;
-    if (paramMessage.what == NearbyCardVoteView.c)
-    {
-      j = paramMessage.arg1;
-      if (paramMessage.arg2 > 0)
-      {
-        i = 2;
-        this.a.a(j, i);
-      }
-    }
-    while (paramMessage.what != NearbyCardVoteView.d) {
-      for (;;)
-      {
-        return;
-        i = 0;
-      }
-    }
-    int m = paramMessage.arg1;
-    int n = paramMessage.arg2;
-    Object localObject = (List)paramMessage.obj;
-    paramMessage = (Message)localObject;
-    if (localObject != null)
-    {
-      paramMessage = (Message)localObject;
-      if (n < ((List)localObject).size()) {
-        paramMessage = ((List)localObject).subList(0, n);
-      }
-    }
-    paramMessage = PraiseConfigHelper.a(paramMessage);
-    int i = 0;
-    int k;
-    if ((i < n) && (i < 20))
-    {
-      if ((paramMessage == null) || (i >= paramMessage.size())) {
-        break label267;
-      }
-      k = (int)((TPraiseInfo)paramMessage.get(i)).uCustomId;
-      j = ((TPraiseInfo)paramMessage.get(i)).iIsPayed;
-    }
-    for (;;)
-    {
-      localObject = this.a.a.obtainMessage(NearbyCardVoteView.c, k, j);
-      this.a.a.sendMessageDelayed((Message)localObject, (i + 2) * 500);
-      i += 1;
-      break;
-      paramMessage = this.a.getContext().getSharedPreferences("nearby_card_reddot_num", 0).edit();
-      paramMessage.putInt("voteNum", m);
-      paramMessage.putInt("increaseNum", n);
-      paramMessage.commit();
-      return;
-      label267:
-      j = 0;
-      k = 0;
-    }
+    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
+    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
+    GameRoomUtils.a(this.jdField_a_of_type_Aeow.a, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
   }
 }
 

@@ -1,22 +1,32 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
-import java.util.Observable;
-import java.util.Observer;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class ahhz
-  implements Observer
+public class ahhz
+  extends BroadcastReceiver
 {
-  ahhz(ahhy paramahhy) {}
+  public ahhz(CameraCaptureFragment paramCameraCaptureFragment) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(MessageSearchEngine.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine, this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a, (FullMessageSearchResult)paramObject));
+    paramContext = this.a.getActivity();
+    if ((paramContext == null) || (paramContext.isFinishing()) || (CameraCaptureFragment.a(this.a))) {}
+    while (!"tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureFragment", 2, "receive ACTION_START_VIDEO_CHAT.");
+    }
+    CameraCaptureFragment.a(this.a, true);
+    paramContext.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahhz
  * JD-Core Version:    0.7.0.1
  */

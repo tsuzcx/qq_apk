@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MimeHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-public final class wtg
-  extends MediaFileFilter
+public class wtg
+  implements View.OnClickListener
 {
-  public boolean a(String paramString)
-  {
-    paramString = MimeHelper.a(paramString);
-    return (paramString == null) || (!"image".equals(paramString[0])) || (!MimeHelper.a(paramString[1]));
-  }
+  public wtg(BindNumberActivity paramBindNumberActivity) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    return false;
+    this.a.doOnBackPressed();
   }
 }
 

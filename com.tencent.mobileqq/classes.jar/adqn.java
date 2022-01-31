@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import java.util.TimerTask;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
 
 public class adqn
-  extends TimerTask
+  implements Runnable
 {
-  public adqn(Action paramAction) {}
+  public adqn(HotPicPageView paramHotPicPageView) {}
   
   public void run()
   {
-    this.a.c();
-    this.a.d();
+    this.a.n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqn
  * JD-Core Version:    0.7.0.1
  */

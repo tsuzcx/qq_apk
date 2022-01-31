@@ -1,35 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public final class zsx
-  extends BroadcastReceiver
+public class zsx
+  implements Comparator
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public zsx(C2CMessageProcessor paramC2CMessageProcessor) {}
+  
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
-            break;
-          }
-          SosoInterface.b(true);
-        } while (!QLog.isColorLevel());
-        QLog.i("SOSO.LBS", 2, "onReceive action is screen on.");
-        return;
-      } while (!paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"));
-      SosoInterface.b(false);
-      SosoInterface.a().sendEmptyMessage(1002);
-    } while (!QLog.isColorLevel());
-    QLog.i("SOSO.LBS", 2, "onReceive action is screen off.");
+    return (int)(paramMessageRecord2.time - paramMessageRecord1.time);
   }
 }
 

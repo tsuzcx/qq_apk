@@ -1,5 +1,7 @@
+import android.content.Context;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
+import com.tencent.av.utils.PopupDialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class jdu
@@ -9,15 +11,19 @@ public class jdu
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.a, 2, "connectingRunnable");
-    }
-    if (!this.a.a().f())
+    try
     {
-      this.a.a(this.a.a().c, 0);
-      this.a.b(216);
-      this.a.c(this.a.a().c, 5);
+      if (!this.a.a().f())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(VideoController.a, 2, "AnyChatReqTimeoutRunnable show dialog!");
+        }
+        Context localContext = this.a.a();
+        PopupDialog.b(localContext, 230, null, localContext.getString(2131428687), 0, 2131428674, new jdv(this), null);
+      }
+      return;
     }
+    catch (Exception localException) {}
   }
 }
 

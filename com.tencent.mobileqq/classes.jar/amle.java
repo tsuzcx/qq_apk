@@ -1,35 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.dingdong.DingdongPluginDataFactory.ScheduleSummaryData;
+import cooperation.dingdong.DingdongPluginHelper;
+import cooperation.dingdong.data.ScheduleReminderMgr;
+import cooperation.dingdong.data.ScheduleTipsDialog;
 
 public class amle
-  implements Runnable
+  extends AsyncTask
 {
-  public amle(QZoneDNSAnalyzeJsPlugin paramQZoneDNSAnalyzeJsPlugin, String paramString1, String paramString2) {}
+  public amle(ScheduleReminderMgr paramScheduleReminderMgr, DingdongPluginDataFactory.ScheduleSummaryData paramScheduleSummaryData) {}
   
-  public void run()
+  protected Boolean a(Void... paramVarArgs)
   {
-    Object localObject = "";
-    try
-    {
-      String str = InetAddress.getByName(this.jdField_a_of_type_JavaLangString).getHostAddress();
-      localObject = str;
-      if (!TextUtils.isEmpty(str))
-      {
-        localObject = str;
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "Analyze " + this.jdField_a_of_type_JavaLangString + " ip address : " + str);
-        localObject = str;
-        QZoneDNSAnalyzeJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneDNSAnalyzeJsPlugin, this.b, 0, str);
-      }
-      return;
-    }
-    catch (UnknownHostException localUnknownHostException)
-    {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "UnknownHostException:Analyze " + this.jdField_a_of_type_JavaLangString + " ip address failed");
-      QZoneDNSAnalyzeJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneDNSAnalyzeJsPlugin, this.b, -1, (String)localObject);
-    }
+    return Boolean.valueOf(DingdongPluginHelper.b(ScheduleReminderMgr.a(this.jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr).getApp().getApplicationContext()));
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    Intent localIntent = new Intent(ScheduleReminderMgr.a(this.jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr).getApp().getApplicationContext(), ScheduleTipsDialog.class);
+    localIntent.setFlags(268435456);
+    localIntent.putExtra("isforeground", paramBoolean);
+    localIntent.putExtra("summaryinfo", this.jdField_a_of_type_CooperationDingdongDingdongPluginDataFactory$ScheduleSummaryData);
+    ScheduleReminderMgr.a(this.jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr).getApp().getApplicationContext().startActivity(localIntent);
   }
 }
 

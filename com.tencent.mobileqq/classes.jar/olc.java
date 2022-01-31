@@ -1,56 +1,25 @@
-import android.animation.ValueAnimator;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.model.AddressDataProvider;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
+import com.tencent.biz.qqstory.model.DataProviderManager;
+import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.takevideo.music.MusicGridAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class olc
+class olc
   implements Runnable
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Bitmap b;
-  
-  public olc(StoryMultiFragmentPart paramStoryMultiFragmentPart, @NonNull Bitmap paramBitmap1, @NonNull Bitmap paramBitmap2, Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap1;
-    this.b = paramBitmap2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a()
-  {
-    if ((StoryMultiFragmentPart.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryMultiFragmentPart) == null) || (StoryMultiFragmentPart.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryMultiFragmentPart) == null) || (StoryMultiFragmentPart.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryMultiFragmentPart) == null))
-    {
-      SLog.e("story.publish.StoryMultiFragmentPart", "RunnableUpdateThumb error. mFragmentAnimThumbView == null or mFragmentThumbView == null or mFragmentNumView == null.");
-      return;
-    }
-    StoryMultiFragmentPart.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryMultiFragmentPart).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    StoryMultiFragmentPart.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryMultiFragmentPart).setVisibility(0);
-    StoryMultiFragmentPart.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryMultiFragmentPart).setVisibility(8);
-    int i = ScreenUtil.a;
-    int j = ScreenUtil.a(this.jdField_a_of_type_AndroidContentContext);
-    int k = AIOUtils.a(47.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int m = AIOUtils.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int n = AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int i1 = AIOUtils.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    SLog.c("story.publish.StoryMultiFragmentPart", "startScaleAnim. sWidth:" + i + " sHeight:" + j + " dWidth:" + k + " dHeight:" + m + " sMarginLeft:" + 0 + " sMarginBottom:" + 0 + " dMarginLeft:" + n + " dMarginBottom:" + i1);
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    localValueAnimator.setDuration(300L);
-    localValueAnimator.setInterpolator(new LinearInterpolator());
-    localValueAnimator.addUpdateListener(new old(this, k, i, m, j, n, i1));
-    localValueAnimator.addListener(new ole(this));
-    localValueAnimator.start();
-  }
+  olc(olb paramolb, AddressDataProvider.AddressInfo paramAddressInfo) {}
   
   public void run()
   {
-    a();
+    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "address update, refresh ui.");
+    if (((AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo))
+    {
+      QLog.d("zivonchen", 2, "isInternationalUser --------------------2");
+      this.jdField_a_of_type_Olb.a.a.a();
+    }
   }
 }
 

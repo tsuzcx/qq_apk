@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import agtt;
+import ahhv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class SegmentKeeper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new agtt();
+  public static final Parcelable.Creator CREATOR = new ahhv();
   private static long jdField_b_of_type_Long = 0L;
   private int jdField_a_of_type_Int = 1;
   private long jdField_a_of_type_Long = 9223372036854775807L;

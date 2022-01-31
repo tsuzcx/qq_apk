@@ -1,50 +1,31 @@
+import android.app.Activity;
+import com.tencent.biz.addContactTroopView.AddContactTroopHandler.IGetPopClassAndSearchCB;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+
 public class wjh
+  implements AddContactTroopHandler.IGetPopClassAndSearchCB
 {
-  private static int jdField_b_of_type_Int;
-  private static final Object jdField_b_of_type_JavaLangObject = new Object();
-  private static wjh jdField_b_of_type_Wjh;
-  public int a;
-  public Object a;
-  private wjh a;
-  
-  public wjh(int paramInt, Object paramObject)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public static wjh a(int paramInt, Object paramObject)
-  {
-    synchronized (jdField_b_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Wjh != null)
-      {
-        wjh localwjh = jdField_b_of_type_Wjh;
-        jdField_b_of_type_Wjh = localwjh.jdField_a_of_type_Wjh;
-        localwjh.jdField_a_of_type_Wjh = null;
-        jdField_b_of_type_Int -= 1;
-        localwjh.jdField_a_of_type_Int = paramInt;
-        localwjh.jdField_a_of_type_JavaLangObject = paramObject;
-        return localwjh;
-      }
-      return new wjh(paramInt, paramObject);
-    }
-  }
+  public wjh(TroopView paramTroopView) {}
   
   public void a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangObject = null;
-    synchronized (jdField_b_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Int < 50)
-      {
-        this.jdField_a_of_type_Wjh = jdField_b_of_type_Wjh;
-        jdField_b_of_type_Wjh = this;
-        jdField_b_of_type_Int += 1;
-      }
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
       return;
     }
+    TroopView.b(this.a, true);
+    TroopView.c(this.a, true);
+    TroopView.a(this.a).sendEmptyMessage(4);
+  }
+  
+  public void b()
+  {
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
+    }
+    TroopView.b(this.a, true);
+    TroopView.c(this.a, false);
+    TroopView.a(this.a).sendEmptyMessage(5);
   }
 }
 

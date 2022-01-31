@@ -1,17 +1,17 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
 public class anip
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public anip(DoodleLayout paramDoodleLayout, LineLayer paramLineLayer, int paramInt, int[] paramArrayOfInt) {}
+  public anip(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ((PersonalityOperator)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerLineLayer.a.a(102)).b(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ArrayOfInt[0] = 1;
+    super.onAnimationEnd(paramAnimator);
+    this.a.f();
+    this.a.e();
   }
 }
 

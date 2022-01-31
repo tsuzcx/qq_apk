@@ -1,45 +1,32 @@
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView.OnEndScrollListener;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicListModel;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class kqh
-  implements AccountDetailXListView.OnEndScrollListener
+public final class kqh
+  implements BusinessObserver
 {
-  public kqh(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public kqh(QQAppInterface paramQQAppInterface, boolean paramBoolean, PublicAccountObserver paramPublicAccountObserver) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    float f;
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
-    {
-      paramInt = -this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
-      }
-      f = 150.0F * this.a.jdField_a_of_type_Float;
-      if (paramInt != 0)
-      {
-        if (!this.a.e) {
-          break label127;
-        }
-        if (paramInt <= f) {
-          break label119;
-        }
-        this.a.d(paramInt);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
     }
-    return;
-    label119:
-    this.a.e();
-    return;
-    label127:
-    if (paramInt > this.a.o - f)
+    paramBundle = paramBundle.getByteArray("data");
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramInt = AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
     {
-      this.a.d(paramInt);
+      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.a(paramBoolean, paramInt);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
+      }
       return;
     }
-    this.a.e();
   }
 }
 

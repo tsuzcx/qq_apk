@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qzone.feed.ui.component.canvasad.CanvasPanoramaScrollView android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ce2" android:scrollbars="none" android:fadingEdgeLength="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c38" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="15.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ce3" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</com.qzone.feed.ui.component.canvasad.CanvasPanoramaScrollView>
+    <com.qzone.commoncode.module.videorecommend.widget.VideoYYTagView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c39" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.qzone.commoncode.module.videorecommend.widget.VideoYYTagView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c3a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+    <com.qzone.commoncode.module.videorecommend.widget.VideoYYTagView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c3b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+</LinearLayout>

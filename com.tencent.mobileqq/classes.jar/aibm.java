@@ -1,73 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.open.data.SharedPrefs;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.TicketManager;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.filter.Frame;
+import com.tencent.mobileqq.shortvideo.filter.QQPtvVideoFilter;
+import com.tencent.sveffects.SLog;
+import com.tencent.ttpic.gles.SegmentDataPipe;
+import com.tencent.ttpic.thread.SegmentGLThread;
+import com.tencent.ttpic.util.OnSegmentReadyListener;
 
 public class aibm
-  extends aibi
+  implements OnSegmentReadyListener
 {
-  private SSOAccountObserver a;
-  private AtomicBoolean c = new AtomicBoolean(false);
+  public aibm(QQPtvVideoFilter paramQQPtvVideoFilter) {}
   
-  public aibm(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
+  public SegmentDataPipe getReadyData()
   {
-    super(paramForwardSdkShareProcessor);
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new aibn(this);
-    this.jdField_a_of_type_JavaLangString = "GetSKeyStep";
+    return QQPtvVideoFilter.a(this.a).getCurrentDataPipe();
   }
   
-  protected boolean a()
+  public boolean needWait()
   {
-    return (this.c.get()) && (!TextUtils.isEmpty(ForwardSdkShareProcessor.f(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)));
+    return QQPtvVideoFilter.a(this.a).needWait();
   }
   
-  protected void d()
+  public void onTextureReady(Frame paramFrame)
   {
-    String str = this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|process|account=" + str + ",refresh=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+    if (QQPtvVideoFilter.a(this.a) != null) {
+      QQPtvVideoFilter.a(this.a).postSegJob(paramFrame);
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      f();
-    }
-    for (;;)
+  }
+  
+  public void reset()
+  {
+    if (QQPtvVideoFilter.a(this.a) != null)
     {
-      return;
-      if (!this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.c())
-      {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "illegal app = " + this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a);
-        this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.b(9366, "illegal app");
-        c();
-        return;
-      }
-      int i;
-      if ((!ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)) && (!SharedPrefs.a(str)))
-      {
-        str = ((TicketManager)this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.getManager(2)).getSkey(str);
-        if (!TextUtils.isEmpty(str))
-        {
-          i = 0;
-          ForwardSdkShareProcessor.d(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor, str);
-          this.c.set(true);
-          b();
-        }
-      }
-      while (i != 0)
-      {
-        this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.ssoGetTicketNoPasswd(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.getCurrentAccountUin(), 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
-        return;
-        i = 1;
+      QQPtvVideoFilter.a(this.a).reset();
+      if (SLog.a()) {
+        SLog.d("QQPtvVideoFilter", "initSegmentGLThread reset!");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aibm
  * JD-Core Version:    0.7.0.1
  */

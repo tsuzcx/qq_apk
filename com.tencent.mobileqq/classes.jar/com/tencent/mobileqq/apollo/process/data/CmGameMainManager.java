@@ -42,7 +42,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import mqq.manager.WtloginManager;
 import org.json.JSONObject;
-import yok;
+import yrq;
 
 public class CmGameMainManager
   implements OnApolloGameListener
@@ -54,7 +54,7 @@ public class CmGameMainManager
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
   public WeakReference a;
   public Set a;
-  yok jdField_a_of_type_Yok = new yok(this);
+  yrq jdField_a_of_type_Yrq = new yrq(this);
   public boolean a;
   private WeakReference b;
   
@@ -427,9 +427,9 @@ public class CmGameMainManager
         }
         localObject2 = ((QQAppInterface)localObject1).getCurrentAccountUin();
         localObject1 = (WtloginManager)((QQAppInterface)localObject1).getManager(1);
-        this.jdField_a_of_type_Yok.jdField_a_of_type_Int = paramString.gameId;
-        this.jdField_a_of_type_Yok.b = paramInt;
-        ((WtloginManager)localObject1).GetOpenKeyWithoutPasswd((String)localObject2, 16L, paramString.appId, this.jdField_a_of_type_Yok);
+        this.jdField_a_of_type_Yrq.jdField_a_of_type_Int = paramString.gameId;
+        this.jdField_a_of_type_Yrq.b = paramInt;
+        ((WtloginManager)localObject1).GetOpenKeyWithoutPasswd((String)localObject2, 16L, paramString.appId, this.jdField_a_of_type_Yrq);
         paramString.lastRequestOpenKey = System.currentTimeMillis();
       } while (!QLog.isColorLevel());
       QLog.d("cmgame_process.CmGameMainManager", 2, "do get open key.");

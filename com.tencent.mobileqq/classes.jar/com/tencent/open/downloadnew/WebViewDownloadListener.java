@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew;
 
-import aktl;
+import aljb;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -117,7 +117,7 @@ public class WebViewDownloadListener
             {
               localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
               LogUtility.a(jdField_a_of_type_JavaLangString, " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new aktl(this, localWebView, (String)localObject));
+              this.jdField_a_of_type_AndroidOsHandler.post(new aljb(this, localWebView, (String)localObject));
             }
             else
             {

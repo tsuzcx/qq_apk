@@ -93,8 +93,8 @@ public class EffectFilterTextPager$FilterTextAdapter
     Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localContext != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2130969365, null);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131366264);
+      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2130969366, null);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131366291);
       if (this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools != null)
       {
         localObject2 = this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools.a((FilterItem)localObject1);
@@ -112,7 +112,7 @@ public class EffectFilterTextPager$FilterTextAdapter
         if (this.jdField_a_of_type_Boolean)
         {
           localObject1 = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
-          float f = localContext.getResources().getDimension(2131560052);
+          float f = localContext.getResources().getDimension(2131560070);
           ((LinearLayout.LayoutParams)localObject1).setMargins(((LinearLayout.LayoutParams)localObject1).leftMargin, (int)f, ((LinearLayout.LayoutParams)localObject1).rightMargin, ((LinearLayout.LayoutParams)localObject1).bottomMargin);
           localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           localImageView.setScaleX(0.6F);

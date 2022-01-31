@@ -1,32 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.plugin.ReadInJoyWebviewPlugin;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.activity.recent.RecentUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public class lrw
-  implements TroopMemberApiClient.Callback
+  implements Runnable
 {
-  public lrw(ReadInJoyWebviewPlugin paramReadInJoyWebviewPlugin, String paramString) {}
+  public lrw(SubscriptionInfoModule paramSubscriptionInfoModule, String paramString, Context paramContext) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive cancelLoadSkin callback resp:" + paramBundle.toString());
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
-    }
+    TroopBarAssistantManager.a().a(this.jdField_a_of_type_JavaLangString, (QQAppInterface)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSubscriptionInfoModule.a, this.jdField_a_of_type_AndroidContentContext, SubscriptionInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSubscriptionInfoModule));
+    int i = PublicAccountUtil.b((QQAppInterface)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSubscriptionInfoModule.a, this.jdField_a_of_type_JavaLangString);
+    RecentUtil.b((QQAppInterface)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSubscriptionInfoModule.a, this.jdField_a_of_type_JavaLangString, i);
+    ((QQAppInterface)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSubscriptionInfoModule.a).a().c(this.jdField_a_of_type_JavaLangString, 1008);
   }
 }
 

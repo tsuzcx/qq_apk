@@ -1,37 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
 public class adeo
-  extends Handler
+  implements FileManagerUtil.TipsClickedInterface
 {
-  public adeo(GamePartyManager paramGamePartyManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adeo(SimpleFilePresenter paramSimpleFilePresenter) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)GamePartyManager.a(this.a).get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = "http://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
-    this.a.a(paramMessage, null);
-    this.a.b();
+    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adeo
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ public class GetStoryFeedIdListRequest
       localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation.a);
       localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation.b);
     }
-    localReqStoryFeedIdList.client_version.set(3);
+    localReqStoryFeedIdList.client_version.set(6);
     return localReqStoryFeedIdList.toByteArray();
   }
 }

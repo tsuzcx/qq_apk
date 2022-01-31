@@ -1,21 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload.Listener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
 
 public class anfl
   implements Runnable
 {
-  public anfl(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload) {}
+  public anfl(TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
   
   public void run()
   {
-    if (EditWebVideoHallowenUpload.a(this.a) != null) {
-      EditWebVideoHallowenUpload.a(this.a).a();
-    }
+    QQToast.a(BaseApplicationImpl.getApplication(), "上传的语音、图片、视频数量达到了今日上限。", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfl
  * JD-Core Version:    0.7.0.1
  */

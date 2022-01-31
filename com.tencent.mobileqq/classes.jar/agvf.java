@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
 public class agvf
-  implements View.OnClickListener
+  implements Runnable
 {
-  public agvf(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agvf(QCallFacade paramQCallFacade) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.e();
+    QCallFacade.a(this.a).x();
   }
 }
 

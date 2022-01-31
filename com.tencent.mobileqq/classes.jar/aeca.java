@@ -1,30 +1,42 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
 
-public final class aeca
-  implements DialogInterface.OnClickListener
+public class aeca
+  implements Animator.AnimatorListener
 {
-  public aeca(Activity paramActivity, String paramString, int paramInt, long paramLong) {}
+  public aeca(LightReplyMenuManager paramLightReplyMenuManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, GameRoomInviteActivity.class);
-    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Long > 0L)
+    this.a.b = false;
+    this.a.c = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.a.a != null)
     {
-      paramDialogInterface.putExtra("gc", this.jdField_a_of_type_Long);
-      paramDialogInterface.putExtra("isInviteTroop", false);
+      this.a.a.setVisibility(8);
+      LightReplyMenuManager.a(this.a, null);
+      this.a.a = null;
+      LightReplyMenuManager.a(this.a, false);
     }
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+    this.a.b = false;
+    this.a.c = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeca
  * JD-Core Version:    0.7.0.1
  */

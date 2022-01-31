@@ -1,17 +1,34 @@
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView.ListViewEventListener;
 import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 class mxd
-  implements Runnable
+  implements PublicAccountImageCollectionListView.ListViewEventListener
 {
-  mxd(mwx parammwx) {}
+  mxd(mxc parammxc) {}
   
-  public void run()
+  public void a(Object paramObject)
   {
-    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null))
+    if ((paramObject instanceof mxi))
     {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).a(true);
-      PublicAccountImageCollectionMainActivity.a(this.a.a).notifyDataSetChanged();
+      if (!this.a.b) {
+        ((PublicAccountImageCollectionMainActivity)mxc.a(this.a)).h();
+      }
+      this.a.b = true;
     }
+    while ((paramObject instanceof mxj)) {
+      if (mxc.a(this.a))
+      {
+        this.a.d(true);
+        return;
+        ((PublicAccountImageCollectionMainActivity)mxc.a(this.a)).g();
+      }
+      else
+      {
+        this.a.d(false);
+        return;
+      }
+    }
+    this.a.d(true);
   }
 }
 

@@ -33,14 +33,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import mxq;
-import mxr;
-import mxs;
-import mxt;
-import mxu;
-import mxv;
-import mxw;
-import mxx;
+import myx;
+import myy;
+import myz;
+import mza;
+import mzb;
+import mzc;
+import mzd;
+import mze;
 
 public class PublicAccountImageCollectionPreloadManager
 {
@@ -130,12 +130,12 @@ public class PublicAccountImageCollectionPreloadManager
   
   private void a(String paramString, byte[] paramArrayOfByte)
   {
-    ThreadManager.postImmediately(new mxt(this, paramString, paramArrayOfByte), null, true);
+    ThreadManager.postImmediately(new mza(this, paramString, paramArrayOfByte), null, true);
   }
   
   private void a(List paramList)
   {
-    ThreadManager.post(new mxu(this, paramList), 5, null, true);
+    ThreadManager.post(new mzb(this, paramList), 5, null, true);
   }
   
   private void b(String paramString)
@@ -189,7 +189,7 @@ public class PublicAccountImageCollectionPreloadManager
   
   private void c(String paramString)
   {
-    ThreadManager.executeOnFileThread(new mxx(this, paramString));
+    ThreadManager.executeOnFileThread(new mze(this, paramString));
   }
   
   private void d(String paramString)
@@ -203,10 +203,10 @@ public class PublicAccountImageCollectionPreloadManager
       PublicAccountArticleHandler localPublicAccountArticleHandler = (PublicAccountArticleHandler)((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(93);
       if (this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver == null)
       {
-        this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver = new mxr(this, l);
+        this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver = new myy(this, l);
         localPublicAccountArticleHandler.a(this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver);
       }
-      ThreadManager.executeOnSubThread(new mxs(this, localPublicAccountArticleHandler, paramString));
+      ThreadManager.executeOnSubThread(new myz(this, localPublicAccountArticleHandler, paramString));
     }
   }
   
@@ -240,7 +240,7 @@ public class PublicAccountImageCollectionPreloadManager
   
   public void a()
   {
-    ThreadManager.executeOnSubThread(new mxw(this));
+    ThreadManager.executeOnSubThread(new mzd(this));
   }
   
   public void a(PublicAccountArticleObserver paramPublicAccountArticleObserver)
@@ -250,7 +250,7 @@ public class PublicAccountImageCollectionPreloadManager
   
   public void a(PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new mxq(this, paramPhotoCollectionInfo));
+    this.jdField_a_of_type_AndroidOsHandler.post(new myx(this, paramPhotoCollectionInfo));
   }
   
   public void a(PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo, byte[] paramArrayOfByte)
@@ -403,7 +403,7 @@ public class PublicAccountImageCollectionPreloadManager
   
   public void d()
   {
-    ThreadManager.post(new mxv(this), 5, null, false);
+    ThreadManager.post(new mzc(this), 5, null, false);
   }
 }
 

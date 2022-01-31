@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class wmg
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public wmg(PicSelectAdapter paramPicSelectAdapter) {}
+  public wmg(ContactsTroopAdapter paramContactsTroopAdapter, TroopManager paramTroopManager, RecentUserProxy paramRecentUserProxy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1) {
-      VasH5PayUtil.a(PicSelectAdapter.a(this.a), PicSelectAdapter.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", PicSelectAdapter.a(this.a).getApp().getString(2131436926), "");
-    }
+    ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a();
+    ArrayList localArrayList2 = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a.getManager(52)).a();
+    ThreadManager.getUIHandler().post(new wmh(this, localArrayList1, localArrayList2));
   }
 }
 

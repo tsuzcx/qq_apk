@@ -1,12 +1,12 @@
 package cooperation.qzone.plugin;
 
-import amhn;
-import amho;
-import amhq;
-import amhr;
-import amhs;
-import amhu;
-import amhy;
+import amxs;
+import amxt;
+import amxv;
+import amxw;
+import amxx;
+import amxz;
+import amyd;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -32,9 +32,9 @@ import mqq.manager.Manager;
 
 public class QZonePluginManager
   extends IQZonePluginManager
-  implements amhn, amho, Handler.Callback, QZoneLiveSoDownloader.OnSoDownloadListener, QZonePluginDownloader.OnPluginDownloadListner, QZonePluginUpdater.OnUpdateListner, Manager
+  implements amxs, amxt, Handler.Callback, QZoneLiveSoDownloader.OnSoDownloadListener, QZonePluginDownloader.OnPluginDownloadListner, QZonePluginUpdater.OnUpdateListner, Manager
 {
-  private amhu jdField_a_of_type_Amhu;
+  private amxz jdField_a_of_type_Amxz;
   Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   private QZoneLiveSoDownloader jdField_a_of_type_CooperationQzonePluginQZoneLiveSoDownloader;
@@ -62,7 +62,7 @@ public class QZonePluginManager
     this.jdField_a_of_type_CooperationQzonePluginQZoneLiveSoDownloader = new QZoneLiveSoDownloader(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_CooperationQzonePluginQZonePluginInstaller = new QZonePluginInstaller(this.jdField_a_of_type_AndroidContentContext);
     this.c = false;
-    amhy.a().a(paramQQAppInterface);
+    amyd.a().a(paramQQAppInterface);
   }
   
   private void a(int paramInt, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams, IQZonePluginManager.OnPluginReadyListener paramOnPluginReadyListener)
@@ -115,7 +115,7 @@ public class QZonePluginManager
           ((QZonePluginManager.LaunchState)localObject2).jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
           try
           {
-            a((String)localObject1, new amhs(this, (QZonePluginManager.LaunchState)localObject2), 0);
+            a((String)localObject1, new amxx(this, (QZonePluginManager.LaunchState)localObject2), 0);
             return;
           }
           catch (RemoteException paramContext)
@@ -134,7 +134,7 @@ public class QZonePluginManager
     ((QZonePluginManager.LaunchState)localObject2).jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
     try
     {
-      a((String)localObject1, new amhs(this, (QZonePluginManager.LaunchState)localObject2), 0);
+      a((String)localObject1, new amxx(this, (QZonePluginManager.LaunchState)localObject2), 0);
       return;
     }
     catch (RemoteException paramContext)
@@ -145,7 +145,7 @@ public class QZonePluginManager
   
   private void a(String paramString, int paramInt)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amhq(this, paramString, paramInt));
+    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amxv(this, paramString, paramInt));
   }
   
   private boolean a(int paramInt)
@@ -364,7 +364,7 @@ public class QZonePluginManager
     if (QLog.isColorLevel()) {
       QLog.d("QZonePluginManger", 1, "triggerQQDownloadPtuFilter");
     }
-    QQAppInterface localQQAppInterface = amhy.a().a();
+    QQAppInterface localQQAppInterface = amyd.a().a();
     if (localQQAppInterface == null) {
       QLog.w("QZonePluginManger", 1, "triggerQQDownloadPtuFilter, app is null");
     }
@@ -375,7 +375,7 @@ public class QZonePluginManager
         return;
       } while (!PtvFilterSoLoad.b());
       QLog.w("QZonePluginManger", 1, "triggerQQDownloadPtuFilter");
-    } while (PtvFilterSoLoad.b(BaseApplicationImpl.getContext()));
+    } while (PtvFilterSoLoad.a(BaseApplicationImpl.getContext()));
     PtvFilterSoLoad.a(localQQAppInterface, BaseApplicationImpl.getContext());
   }
   
@@ -426,7 +426,7 @@ public class QZonePluginManager
     if (QLog.isColorLevel()) {
       QLog.d("QZonePluginManger", 1, "installPituSo");
     }
-    if (amhy.a().a() == null) {
+    if (amyd.a().a() == null) {
       QLog.w("QZonePluginManger", 1, "installPituSo, app is null");
     }
     do
@@ -539,8 +539,8 @@ public class QZonePluginManager
     QLog.i("QZonePluginManger", 1, "onUpdatefinish success:" + paramBoolean);
     this.d = paramBoolean;
     this.jdField_b_of_type_Boolean = true;
-    if ((paramBoolean) && (this.jdField_a_of_type_Amhu != null)) {
-      this.jdField_a_of_type_Amhu.a();
+    if ((paramBoolean) && (this.jdField_a_of_type_Amxz != null)) {
+      this.jdField_a_of_type_Amxz.a();
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -550,7 +550,7 @@ public class QZonePluginManager
         QZonePluginManager.LaunchState localLaunchState = this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState;
         b(localLaunchState.jdField_a_of_type_AndroidContentContext, localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams, localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener);
         this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState = null;
-        this.jdField_a_of_type_AndroidOsHandler.post(new amhr(this));
+        this.jdField_a_of_type_AndroidOsHandler.post(new amxw(this));
         return;
       }
       QLog.i("QZonePluginManger", 1, "mPendingLaunchState is null");
@@ -658,8 +658,8 @@ public class QZonePluginManager
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Amhu == null) {
-        this.jdField_a_of_type_Amhu = new amhu(this, this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater);
+      if (this.jdField_a_of_type_Amxz == null) {
+        this.jdField_a_of_type_Amxz = new amxz(this, this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater);
       }
       return true;
       QLog.i("QZonePluginManger", 1, "installPlugin " + paramString + " 未安装,开始下载");
@@ -991,10 +991,10 @@ public class QZonePluginManager
     }
     this.jdField_a_of_type_CooperationQzonePluginQZoneLiveSoDownloader = null;
     this.jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader = null;
-    if (this.jdField_a_of_type_Amhu != null) {
-      this.jdField_a_of_type_Amhu.b();
+    if (this.jdField_a_of_type_Amxz != null) {
+      this.jdField_a_of_type_Amxz.b();
     }
-    this.jdField_a_of_type_Amhu = null;
+    this.jdField_a_of_type_Amxz = null;
     this.c = true;
   }
 }

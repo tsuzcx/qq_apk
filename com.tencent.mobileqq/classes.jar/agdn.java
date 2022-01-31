@@ -1,47 +1,40 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class agdn
-  extends GestureDetector.SimpleOnGestureListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agdn(ProfileTagView paramProfileTagView) {}
+  public agdn(ScanOcrView paramScanOcrView) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int j = (int)(this.a.a.a * f);
+    int i = (int)(f * this.a.a.jdField_b_of_type_Int);
+    int m = j - this.a.a.a;
+    int k = i - this.a.a.jdField_b_of_type_Int;
+    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
+    i = j;
+    if (j > 255) {
+      i = 255;
     }
-    this.a.f = true;
-    paramFloat1 = paramFloat2;
-    if (paramMotionEvent1 != null)
-    {
-      paramFloat1 = paramFloat2;
-      if (paramMotionEvent2 != null) {
-        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
-      }
+    j = i;
+    if (i < 0) {
+      j = 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
-    }
-    if (Math.abs(paramFloat1) > ProfileTagView.a(this.a))
-    {
-      if ((paramFloat1 > 0.0F) && (this.a.c)) {
-        if (this.a.a())
-        {
-          this.a.f();
-          this.a.a.b(null);
-        }
-      }
-      while ((paramFloat1 >= 0.0F) || (this.a.c)) {
-        return true;
-      }
-      this.a.a();
-      return true;
-    }
-    return false;
+    i = this.a.a.jdField_b_of_type_AndroidGraphicsRect.left;
+    int n = m / 2;
+    int i1 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.top;
+    int i2 = k / 2;
+    int i3 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.right;
+    m /= 2;
+    int i4 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    k /= 2;
+    this.a.a.e = j;
+    this.a.a.c.set(i - n, i1 - i2, m + i3, k + i4);
+    this.a.invalidate();
   }
 }
 

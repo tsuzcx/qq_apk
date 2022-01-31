@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import acce;
-import accf;
+import acmb;
+import acmc;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -35,7 +35,7 @@ public class FMLocalFileActivity
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new accf(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new acmc(this);
   }
   
   private void b(int paramInt)
@@ -148,39 +148,39 @@ public class FMLocalFileActivity
     for (;;)
     {
       if (bool4) {
-        a(2130970000, 2130842574, 2, null, 0, false, 0, 1);
+        a(2130970014, 2130842666, 2, null, 0, false, 0, 1);
       }
       if (bool2) {
-        a(2130969998, 2130841597, 0, str1, FileCategoryUtil.a(this), true, 10, 2);
+        a(2130970012, 2130841634, 0, str1, FileCategoryUtil.a(this), true, 10, 2);
       }
       if (bool8) {
-        a(2130969998, 2130841595, 0, str2, FileCategoryUtil.b(this), true, 1, 3);
+        a(2130970012, 2130841632, 0, str2, FileCategoryUtil.b(this), true, 1, 3);
       }
       if (bool7) {
-        a(2130969998, 2130841601, 0, str3, FileCategoryUtil.c(this), true, 2, 3);
+        a(2130970012, 2130841638, 0, str3, FileCategoryUtil.c(this), true, 2, 3);
       }
       if (bool6) {
-        a(2130969998, 2130841590, 0, str4, 0, true, 4, 4);
+        a(2130970012, 2130841627, 0, str4, 0, true, 4, 4);
       }
       if (bool3) {
-        a(2130969998, 2130841593, 0, str9, 0, false, 20, 2);
+        a(2130970012, 2130841630, 0, str9, 0, false, 20, 2);
       }
       if (bool1) {
-        a(2130969991, 2130842574, 1, null, 0, false, 0, 1);
+        a(2130970005, 2130842666, 1, null, 0, false, 0, 1);
       }
       if (bool5) {
-        a(2130969998, 2130841592, 0, str5, 0, false, 6, 2);
+        a(2130970012, 2130841629, 0, str5, 0, false, 6, 2);
       }
-      a(2130969998, 2130841598, 0, str6, 0, false, 7, 3);
+      a(2130970012, 2130841635, 0, str6, 0, false, 7, 3);
       if (FileManagerUtil.a(this).containsKey("externalSdCard"))
       {
-        a(2130969998, 2130841599, 0, str7, 0, false, 8, 3);
-        a(2130969998, 2130841599, 0, str8, 0, false, 11, 4);
+        a(2130970012, 2130841636, 0, str7, 0, false, 8, 3);
+        a(2130970012, 2130841636, 0, str8, 0, false, 11, 4);
       }
       while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter == null)
       {
         return;
-        a(2130969998, 2130841599, 0, str7, 0, false, 8, 4);
+        a(2130970012, 2130841636, 0, str7, 0, false, 8, 4);
       }
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
       l();
@@ -226,8 +226,8 @@ public class FMLocalFileActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970002);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131368723));
+    setContentView(2130970016);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131368790));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter = new FileCategoryAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter);
     m();
@@ -272,7 +272,7 @@ public class FMLocalFileActivity
     if (this.jdField_a_of_type_AndroidOsAsyncTask != null) {
       this.jdField_a_of_type_AndroidOsAsyncTask.cancel(true);
     }
-    this.jdField_a_of_type_AndroidOsAsyncTask = new acce(this).execute(new Void[0]);
+    this.jdField_a_of_type_AndroidOsAsyncTask = new acmb(this).execute(new Void[0]);
   }
 }
 

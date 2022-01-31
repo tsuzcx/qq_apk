@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.os.Build.VERSION;
-import aoam;
+import aoqr;
 import java.io.File;
 
 public class VideoConverter
@@ -11,7 +11,7 @@ public class VideoConverter
   public VideoConverter()
   {
     if (Build.VERSION.SDK_INT >= 18) {
-      this.a = new aoam();
+      this.a = new aoqr();
     }
   }
   

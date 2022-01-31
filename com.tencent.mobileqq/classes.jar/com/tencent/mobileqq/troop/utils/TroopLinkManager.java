@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajbv;
-import ajbw;
+import ajpz;
+import ajqa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -41,7 +41,7 @@ public class TroopLinkManager
   {
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_Boolean = false;
-    ThreadManager.post(new ajbv(this, BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "troop_link_config.json"), 5, null, false);
+    ThreadManager.post(new ajpz(this, BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath() + File.separator + "troop_link_config.json"), 5, null, false);
   }
   
   public static TroopLinkManager a()
@@ -156,13 +156,13 @@ public class TroopLinkManager
     if (((File)localObject2).exists()) {
       ((File)localObject2).delete();
     }
-    ThreadManager.post(new ajbw(this, (String)???, paramString), 5, null, false);
+    ThreadManager.post(new ajqa(this, (String)???, paramString), 5, null, false);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopLinkManager
  * JD-Core Version:    0.7.0.1
  */

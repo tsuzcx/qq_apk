@@ -1,64 +1,53 @@
+import android.graphics.drawable.Animatable;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnArticleWrapperClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnBiuClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnCommentClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnJumpWrapperClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnLikeClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-import com.tencent.mobileqq.util.FaceDecoder;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasAdapter;
+import com.tencent.biz.pubaccount.readinjoy.model.AtlasModelImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
-public final class lkl
-  implements ViewFactory.FoundClickableViewListener
+public class lkl
+  implements URLDrawableDownListener
 {
-  public lkl(VafContext paramVafContext, FaceDecoder paramFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel, Container paramContainer, BaseArticleInfo paramBaseArticleInfo) {}
+  public lkl(ReadInJoyAtlasAdapter paramReadInJoyAtlasAdapter, ImageView paramImageView, AtlasModelImage paramAtlasModelImage, URLImageView paramURLImageView) {}
   
-  public void a(ViewBase paramViewBase)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    if (paramViewBase.a() == null) {
-      return;
-    }
-    switch (StringCommon.a(paramViewBase.a()))
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)
     {
-    case 1009: 
-    default: 
-      paramViewBase.a(new lko(this, paramViewBase));
-      return;
-    case 1001: 
-      paramViewBase.a(new lkm(this, paramViewBase));
-      return;
-    case 1002: 
-      paramViewBase.a(new OnLikeClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1003: 
-      paramViewBase.a(new OnCommentClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1004: 
-      paramViewBase.a(new OnBiuClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1005: 
-      paramViewBase.a(new OnTopicRecommendHeaderClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1006: 
-      paramViewBase.a(new OnTopicRecommendHeaderFollowClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1007: 
-      paramViewBase.a().setOnClickListener(new lkn(this));
-      return;
-    case 1008: 
-      paramViewBase.a(new OnArticleWrapperClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter));
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramView = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
+      if ((paramView instanceof Animatable))
+      {
+        paramView = (Animatable)paramView;
+        if (!paramView.isRunning()) {
+          paramView.start();
+        }
+      }
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    int i = paramURLDrawable.getIntrinsicWidth();
+    int j = paramURLDrawable.getIntrinsicHeight();
+    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAtlasModelImage;
+    if (j / i >= 3) {}
+    for (i = 1;; i = 0)
+    {
+      paramView.picType = i;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasAdapter.a(this.jdField_a_of_type_AndroidWidgetImageView);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAtlasModelImage.modelImageShowTime = System.currentTimeMillis();
       return;
     }
-    paramViewBase.a(new OnJumpWrapperClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a(), (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
   }
 }
 

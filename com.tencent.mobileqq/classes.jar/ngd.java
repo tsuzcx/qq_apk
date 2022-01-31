@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qqstory.newshare.ui.ActionSheetShareUI;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarJob;
+import com.tencent.biz.qqstory.shareGroup.icon.RestrictedBitmap;
+import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager.LoadBitmapCallBack;
 
 public class ngd
-  implements DialogInterface.OnCancelListener
+  extends ShareGroupIconManager.LoadBitmapCallBack
 {
-  public ngd(ActionSheetShareUI paramActionSheetShareUI) {}
+  public ngd(ShareGroupAvatarJob paramShareGroupAvatarJob) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  protected void a(RestrictedBitmap paramRestrictedBitmap)
   {
-    this.a.f();
+    this.a.a(paramRestrictedBitmap);
+  }
+  
+  protected void a(Error paramError)
+  {
+    this.a.a(paramError);
   }
 }
 

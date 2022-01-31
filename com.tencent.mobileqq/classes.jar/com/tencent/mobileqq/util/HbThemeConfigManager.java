@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
-import ajlx;
-import ajly;
+import akac;
+import akad;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
@@ -125,7 +125,7 @@ public class HbThemeConfigManager
       }
       return;
     }
-    ThreadManager.post(new ajly(this, paramString, paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new akad(this, paramString, paramQQAppInterface), 5, null, false);
   }
   
   public void a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject)
@@ -140,7 +140,7 @@ public class HbThemeConfigManager
     if (QLog.isColorLevel()) {
       QLog.d("HbThemeConfigManager", 2, "updateFaceConfig config = " + paramJSONObject.toString());
     }
-    paramQQAppInterface = new ajlx(this, paramQQAppInterface.getApp(), paramJSONObject, paramQQAppInterface);
+    paramQQAppInterface = new akac(this, paramQQAppInterface.getApp(), paramJSONObject, paramQQAppInterface);
     ThreadManager.getFileThreadHandler().post(paramQQAppInterface);
   }
   
@@ -151,7 +151,7 @@ public class HbThemeConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.util.HbThemeConfigManager
  * JD-Core Version:    0.7.0.1
  */

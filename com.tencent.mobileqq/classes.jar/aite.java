@@ -1,19 +1,34 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tribe.view.TribeEditVideoButton;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class aite
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aite(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public aite(TribeEditVideoButton paramTribeEditVideoButton) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PublishHomeWorkFragment.a(this.a).a();
+    if (TribeEditVideoButton.a(this.a) == -1) {
+      if (!"barindex".equals(TribeEditVideoButton.a(this.a))) {
+        break label76;
+      }
+    }
+    label76:
+    for (int i = 1;; i = 2)
+    {
+      ReportController.b(null, "dc00899", "Grp_tribe", "", "video_edit", "Clk_add_topic", i, 0, "", "", "", "");
+      TroopBarPublishUtils.a((Activity)this.a.a(), 1001, TribeEditVideoButton.a(this.a));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aite
  * JD-Core Version:    0.7.0.1
  */

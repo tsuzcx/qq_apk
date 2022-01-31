@@ -1,8 +1,8 @@
 package cooperation.qzone.util;
 
-import amkp;
-import amkq;
-import amkr;
+import anau;
+import anav;
+import anaw;
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -421,8 +421,8 @@ public class QZoneAppCtrlUploadFileLogic
       {
         return;
       } while ((paramLong1 <= 0L) || (paramLong2 <= paramLong1));
-      localObject1 = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace").listFiles(new amkp(paramLong1, paramLong2));
-      localObject2 = new amkq();
+      localObject1 = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace").listFiles(new anau(paramLong1, paramLong2));
+      localObject2 = new anav();
       paramContext = new ArrayList();
       if ((localObject1 != null) && (localObject1.length > 0))
       {
@@ -639,12 +639,12 @@ public class QZoneAppCtrlUploadFileLogic
   public static void b(Context paramContext, String paramString, long paramLong1, long paramLong2)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    amkr localamkr;
+    anaw localanaw;
     do
     {
       return;
       paramContext = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "mobileqq" + File.separator + "log" + File.separator + "avsdk");
-      localamkr = new amkr(paramLong1, paramLong2);
+      localanaw = new anaw(paramLong1, paramLong2);
     } while ((!paramContext.isDirectory()) || (paramContext.listFiles() == null));
     Object localObject = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + b + File.separator + "avsdk";
     String str = (String)localObject + File.separator + "upload.log.zip";
@@ -652,7 +652,7 @@ public class QZoneAppCtrlUploadFileLogic
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    a(paramContext, localamkr, str, paramString);
+    a(paramContext, localanaw, str, paramString);
   }
   
   /* Error */

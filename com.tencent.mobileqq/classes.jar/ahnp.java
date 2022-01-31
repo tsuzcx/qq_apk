@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
+import com.tencent.mobileqq.richmedia.dc.DCShortVideo;
+import com.tencent.mobileqq.richmedia.dc.DataReport;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahnp
+  implements Runnable
 {
-  public int a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
+  public ahnp(DCShortVideo paramDCShortVideo, int paramInt, boolean paramBoolean) {}
   
-  public ahnp(GestureMgrRecognize paramGestureMgrRecognize, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void run()
   {
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_ArrayOfByte = ((byte[])paramArrayOfByte.clone());
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    ahnx localahnx = new ahnx();
+    localahnx.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localahnx.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    ahnz localahnz = new ahnz("RealShortVideo.Record", localahnx.a("RealShortVideo.Record"));
+    DataReport.a().a(localahnz);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("DCShortVideo", 4, "cameraID=" + localahnx.jdField_a_of_type_Int + ",hasMultiSegments=" + localahnx.jdField_a_of_type_Boolean);
+    }
   }
 }
 

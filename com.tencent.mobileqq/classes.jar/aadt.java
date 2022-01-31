@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public final class aadt
-  implements Parcelable.Creator
+public class aadt
+  implements Runnable
 {
-  public ArFeatureInfo a(Parcel paramParcel)
-  {
-    return new ArFeatureInfo(paramParcel);
-  }
+  public aadt(ScanEntranceReport paramScanEntranceReport, boolean paramBoolean1, long paramLong1, long paramLong2, boolean paramBoolean2, long paramLong3) {}
   
-  public ArFeatureInfo[] a(int paramInt)
+  public void run()
   {
-    return new ArFeatureInfo[paramInt];
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("first_init", String.valueOf(this.jdField_a_of_type_Boolean));
+    localHashMap.put("init_delay", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("init_time", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("download_resource", String.valueOf(this.jdField_b_of_type_Boolean));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_init", true, this.c, 0L, localHashMap, "");
   }
 }
 

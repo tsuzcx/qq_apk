@@ -1,31 +1,30 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel.DispatchKeyEventListener;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.mtt.MttBrowerWrapper;
 
-public class ajqi
-  implements SystemEmoticonPanel.DispatchKeyEventListener
+public final class ajqi
+  extends ClickableSpan
 {
-  public ajqi(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
+  public ajqi(String paramString, MessageRecord paramMessageRecord) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
-    {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-      this.a.b = false;
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      return true;
-    }
-    return false;
+    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
+    MttBrowerWrapper.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqi
  * JD-Core Version:    0.7.0.1
  */

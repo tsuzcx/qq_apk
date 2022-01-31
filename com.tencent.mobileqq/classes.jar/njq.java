@@ -1,14 +1,14 @@
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader.GetVideoListEvent;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase.FeedInfoUpdateReceiver;
 
-class njq
+public class njq
   implements Runnable
 {
-  njq(njo paramnjo, NewFriendsPlayMode paramNewFriendsPlayMode, VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent) {}
+  public njq(FeedsPlayModeBase.FeedInfoUpdateReceiver paramFeedInfoUpdateReceiver, FeedsPlayModeBase paramFeedsPlayModeBase) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader$GetVideoListEvent);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.v();
   }
 }
 

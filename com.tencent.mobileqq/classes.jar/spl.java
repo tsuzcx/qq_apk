@@ -1,57 +1,36 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.profile.DataTag;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
 public class spl
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public spl(FriendProfileImageAvatar paramFriendProfileImageAvatar, String paramString) {}
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new spn(this);
+  DataTag jdField_a_of_type_ComTencentMobileqqProfileDataTag;
   
-  public void run()
+  public spl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    if (FileUtil.a(ProfileCardUtil.a(String.valueOf(this.jdField_a_of_type_JavaLangString)))) {
-      if (NearbyUtils.a()) {
-        NearbyUtils.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 1", new Object[0]);
-      }
+    if ((paramView == null) || (!(paramView.getTag() instanceof DataTag))) {
+      return false;
     }
-    do
+    Object localObject = (DataTag)paramView.getTag();
+    switch (((DataTag)localObject).a)
     {
-      return;
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.c) {
-        break;
-      }
-    } while (!NearbyUtils.a());
-    NearbyUtils.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 2", new Object[0]);
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.c = true;
-    Setting localSetting = (Setting)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(Setting.class, this.jdField_a_of_type_JavaLangString);
-    if ((localSetting != null) && (!TextUtils.isEmpty(localSetting.url)))
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 5;
-      localMessage.obj = localSetting;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.jdField_a_of_type_MqqOsMqqHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.c = false;
-      if (!NearbyUtils.a()) {
-        break;
-      }
-      NearbyUtils.a("Q.profilecard.Avatar", "downloadHDAvatar end of makingHDUrl", new Object[0]);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.e(this.jdField_a_of_type_JavaLangString);
+      return true;
+      paramView.setSelected(true);
+      this.jdField_a_of_type_ComTencentMobileqqProfileDataTag = ((DataTag)localObject);
+      localObject = new QQCustomMenu();
+      ((QQCustomMenu)localObject).a(2131375573, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getString(2131435093), 2130838305);
+      BubbleContextMenu.a(paramView, (QQCustomMenu)localObject, this.jdField_a_of_type_AndroidViewView$OnClickListener, new spm(this, paramView));
     }
   }
 }

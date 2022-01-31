@@ -4,6 +4,8 @@ import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class TagItem
 {
@@ -42,6 +44,30 @@ public class TagItem
     localTagItemEntry.joinCount = this.jdField_a_of_type_Int;
     localTagItemEntry.wording = this.jdField_a_of_type_JavaLangString;
     return localTagItemEntry;
+  }
+  
+  public String a()
+  {
+    Object localObject = new JSONObject();
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase == null) {
+        return null;
+      }
+      ((JSONObject)localObject).put("tag_id", this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("tag_name", this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("tag_desc", this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.b);
+      ((JSONObject)localObject).put("tag_type", this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("join_count", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("wording", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("one_page", 1);
+      ((JSONObject)localObject).put("src_type", "web");
+      ((JSONObject)localObject).put("version", 1);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException) {}
+    return null;
   }
   
   public boolean equals(Object paramObject)

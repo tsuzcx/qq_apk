@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.receipt.ReceiptMsgManager;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class agrg
+class agrg
   implements Runnable
 {
-  public agrg(ReceiptMsgManager paramReceiptMsgManager, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  agrg(agrf paramagrf, Bitmap paramBitmap) {}
   
   public void run()
   {
-    ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_Agrf.a.a.get("map_key_face");
+    if ((localImageView != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    {
+      QLog.d("Q.qqhead.freq", 1, "ProfileHeaderView updateAvatar, bitmap: " + this.jdField_a_of_type_AndroidGraphicsBitmap);
+      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agrg
  * JD-Core Version:    0.7.0.1
  */

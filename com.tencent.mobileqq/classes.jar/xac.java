@@ -1,23 +1,24 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
-import cooperation.qwallet.plugin.TenUtils;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
 
-class xac
-  implements DialogInterface.OnClickListener
+public class xac
+  implements View.OnClickListener
 {
-  xac(xaa paramxaa, HbSkinInfo paramHbSkinInfo) {}
+  public xac(PayCodeEntryActivity paramPayCodeEntryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentHbSkinInfo.a.pop_dialog.right_url;
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      TenUtils.startQQBrowser(this.jdField_a_of_type_Xaa.a.getActivity(), paramDialogInterface);
-    }
+    this.a.a("payCodeEntry.contractLink", "actQQWlxclick", "0004");
+    paramView = new Intent();
+    paramView.setClass(this.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://wlx.tenpay.com/traffic/protocol/protocol_list.html?_wv=3");
+    paramView.putExtra("hide_operation_bar", true);
+    paramView.putExtra("hide_more_button", true);
+    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
+    this.a.startActivity(paramView);
   }
 }
 

@@ -1,123 +1,98 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendConstants;
-import com.tencent.mobileqq.facetoface.Face2FaceUserData;
-import com.tencent.mobileqq.facetoface.NearbyUser;
+import android.os.Bundle;
+import android.util.Pair;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class acbb
-  extends LBSObserver
+  extends CardObserver
 {
-  public acbb(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public acbb(MessengerService paramMessengerService) {}
   
-  protected void a(NearbyUser paramNearbyUser, boolean paramBoolean, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    super.a(paramNearbyUser, paramBoolean, paramInt);
+    long l2 = 0L;
     if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, pushTime=" + paramInt + "from_type=" + this.a.jdField_b_of_type_Int);
+      QLog.d("MessengerService.onCardDownload", 2, "received onCardDownload");
     }
-    if (paramNearbyUser == null)
+    Object localObject;
+    long l1;
+    int i;
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, nearbyUser=null!!");
-      }
-      if ((this.a.jdField_b_of_type_Int == 0) && (paramNearbyUser != null) && (!this.a.a(paramNearbyUser, this.a.jdField_a_of_type_JavaUtilList)))
-      {
-        this.a.jdField_a_of_type_JavaUtilList.add(paramNearbyUser);
-        if (QLog.isColorLevel()) {
-          QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, mhasShowList=" + this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() + "mNeedShowList.size()" + this.a.d.size());
+      paramObject = (Card)paramObject;
+      localObject = (QQAppInterface)MessengerService.h(this.a);
+      if ((localObject != null) && (Utils.a(((QQAppInterface)localObject).getCurrentAccountUin(), paramObject.uin))) {
+        if ((paramObject.templateRet == 0) || (paramObject.templateRet == 101107) || (paramObject.templateRet == 101108))
+        {
+          l1 = paramObject.lCurrentBgId;
+          l2 = paramObject.lCurrentStyleId;
+          i = 0;
         }
-        if (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != this.a.d.size()) {
-          break label267;
-        }
-        Face2FaceAddFriendActivity.a(this.a, paramNearbyUser);
       }
     }
     for (;;)
     {
-      paramNearbyUser = this.a;
-      paramNearbyUser.j += 1;
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
+      paramObject = new Bundle();
+      paramObject.putLong("currentId", l1);
+      paramObject.putLong("styleId", l2);
+      paramObject.putInt("result", i);
+      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+      {
+        localObject = (Bundle)this.a.jdField_a_of_type_JavaUtilList.remove(0);
+        ((Bundle)localObject).putBundle("response", paramObject);
+        this.a.a((Bundle)localObject);
       }
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, nearbyUser=" + paramNearbyUser.e);
-      break;
-      label267:
-      Message localMessage = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
-      localMessage.what = 10;
-      localMessage.obj = paramNearbyUser;
-      Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(10, this.a.a());
+      return;
+      i = -1;
+      l1 = 0L;
+      continue;
+      i = -1;
+      l1 = 0L;
+      continue;
+      QLog.e("Q.emoji.web.MessengerService", 1, "onCardDownload fail isSuccess = " + paramBoolean + "data = " + paramObject);
+      i = -1;
+      l1 = 0L;
     }
   }
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt1, int paramInt2)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    super.a(paramBoolean, paramList, paramInt1, paramInt2);
-    if (paramBoolean)
-    {
-      this.a.e = 1;
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList heartBeatTime=" + paramInt2 + "from_type=" + this.a.jdField_b_of_type_Int + "reqInterval=" + paramInt1 + "好友列表返回isSuccess=" + paramBoolean);
-      }
-      if (paramList == null) {
-        break label241;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList size=" + paramList.size());
+    int i = -1;
+    String str = "";
+    if ((paramBoolean) && (paramObject != null)) {
+      if ((paramObject instanceof Card)) {
+        i = 0;
       }
     }
     for (;;)
     {
-      int i = paramInt1;
-      if (paramInt1 < 0) {
-        i = 2;
-      }
-      long l = System.currentTimeMillis() - Face2FaceAddFriendConstants.c;
       if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList interval=" + l + "leaveFaceTofaceTime=" + Face2FaceAddFriendConstants.c);
+        QLog.d("Q.emoji.web.MessengerService", 2, "onSetCardTemplateReturn...resultCode=" + i);
       }
-      if ((l > i * 1000) || (Face2FaceAddFriendConstants.c == 0L)) {
-        break label259;
+      if (this.a.jdField_a_of_type_AndroidOsBundle != null)
+      {
+        paramObject = new Bundle();
+        this.a.jdField_a_of_type_AndroidOsBundle.putString("cmd", "card_setSummaryCard");
+        paramObject.putInt("result", i);
+        paramObject.putString("message", str);
+        this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
+        this.a.a(this.a.jdField_a_of_type_AndroidOsBundle);
+        this.a.jdField_a_of_type_AndroidOsBundle = null;
       }
-      Face2FaceAddFriendActivity.a(this.a, i * 1000 - l);
       return;
-      this.a.e = 2;
-      break;
-      label241:
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList is null");
-      }
-    }
-    label259:
-    if (paramInt2 > 0) {
-      Face2FaceAddFriendActivity.h = paramInt2 * 1000;
-    }
-    if (!this.a.jdField_b_of_type_Boolean) {
-      Face2FaceAddFriendActivity.c(this.a);
-    }
-    this.a.jdField_b_of_type_Boolean = true;
-    if ((this.a.jdField_b_of_type_Int == 0) && (paramList != null) && (paramList.size() > 0)) {
-      paramList = paramList.iterator();
-    }
-    for (;;)
-    {
-      Face2FaceUserData localFace2FaceUserData;
-      if (paramList.hasNext())
+      if ((paramObject instanceof Pair))
       {
-        localFace2FaceUserData = (Face2FaceUserData)paramList.next();
-        if (!this.a.jdField_a_of_type_JavaUtilList.contains(localFace2FaceUserData)) {}
+        paramObject = (Pair)paramObject;
+        i = ((Integer)paramObject.first).intValue();
+        str = (String)paramObject.second;
+        continue;
+        QLog.e("Q.emoji.web.MessengerService", 1, "onSetCardTemplateReturn fail isSuccess = " + paramBoolean + "obj = " + paramObject);
       }
-      else
-      {
-        Face2FaceAddFriendActivity.d(this.a);
-        return;
-      }
-      this.a.jdField_a_of_type_JavaUtilList.add(localFace2FaceUserData);
     }
   }
 }

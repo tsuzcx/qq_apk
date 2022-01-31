@@ -1,21 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
-import java.io.File;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicManager;
+import com.tencent.mobileqq.app.BrowserAppInterface;
 
 public class lbe
   implements Runnable
 {
-  public lbe(KanDianViewController.PullRefreshCompleteListener paramPullRefreshCompleteListener) {}
+  public lbe(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
   public void run()
   {
-    String str = RefreshRes.e();
-    if ((str != null) && (new File(str).exists()))
-    {
-      KanDianViewController.a(this.a.a, str);
-      KanDianViewController.a(this.a.a).removeMessages(3);
-      KanDianViewController.a(this.a.a).sendEmptyMessage(2);
+    if (this.a.a != null) {
+      this.a.a.a().a();
     }
   }
 }

@@ -1,13 +1,35 @@
-import com.tencent.av.ui.QavVideoRecordUICtrl;
+import android.os.Build;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.utils.QQAnimationListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class kag
-  implements Runnable
+  extends QQAnimationListener
 {
-  public kag(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  public kag(VideoControlUI paramVideoControlUI) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a(8, true);
+    this.a.t();
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    if (!this.a.i) {
+      this.a.i(0);
+    }
+    if ("GT-I9100G".equals(Build.MODEL))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.c, 2, "Model is 9100G, don't do animation");
+      }
+      return;
+    }
+    this.a.ab();
   }
 }
 

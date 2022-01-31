@@ -28,9 +28,9 @@ public class ScreenLayoutSmallUIOrigin
   
   public void a(SessionInfo paramSessionInfo, GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
   {
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559730);
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559748);
     if (paramInt4 != 0) {}
-    for (paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559731);; paramInt3 = i)
+    for (paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559749);; paramInt3 = i)
     {
       int k = (paramInt1 - i * 2) / 4;
       int j = paramInt2 - k - paramInt3 - paramInt4;
@@ -100,20 +100,20 @@ public class ScreenLayoutSmallUIOrigin
       }
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559728);
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559729);
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559730);
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559731);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559746);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559747);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559748);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559749);
     int m;
     int k;
     int i;
     int j;
     if (this.jdField_a_of_type_AndroidViewDisplay.getRotation() % 2 == 0)
     {
-      m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559925);
-      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559926);
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559927);
-      j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559928);
+      m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559943);
+      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559944);
+      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559945);
+      j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559946);
       if (paramInt5 != 0) {
         break label450;
       }
@@ -135,10 +135,10 @@ public class ScreenLayoutSmallUIOrigin
         paramArrayOfGLVideoView[1].b(i, paramInt3, paramInt2, paramInt1);
         ARZimuTask.a("setSmallVideoViewLayout " + m + "|" + k);
         return;
-        m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559926);
-        k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559925);
-        i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559928);
-        j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559927);
+        m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559944);
+        k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559943);
+        i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559946);
+        j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559945);
         break;
         paramInt2 = i + m;
         paramInt3 = j + paramInt4;

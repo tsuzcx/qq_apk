@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm.web;
 
-import abue;
+import acbg;
 import android.os.Bundle;
 import android.os.Message;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$14
   extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$14(abue paramabue, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, FavroamingDBManager paramFavroamingDBManager, EntityManager paramEntityManager, VipComicMqqManager paramVipComicMqqManager, QQAppInterface paramQQAppInterface) {}
+  public MessengerService$IncomingHandler$14(acbg paramacbg, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, FavroamingDBManager paramFavroamingDBManager, EntityManager paramEntityManager, VipComicMqqManager paramVipComicMqqManager, QQAppInterface paramQQAppInterface) {}
   
   public void onDone(List paramList1, List paramList2)
   {

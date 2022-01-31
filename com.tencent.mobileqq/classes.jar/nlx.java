@@ -1,17 +1,14 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.biz.qqstory.playmode.child.TroopStorySinglePlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
 public class nlx
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public nlx(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public nlx(TroopStorySinglePlayMode paramTroopStorySinglePlayMode) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    this.a.a.setCurrentItem(0, false);
   }
 }
 

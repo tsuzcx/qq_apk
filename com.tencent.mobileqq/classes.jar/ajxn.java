@@ -1,37 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BabyQHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajxn
-  extends BroadcastReceiver
+  implements ajxs
 {
-  public ajxn(WebProcessManager paramWebProcessManager) {}
+  public ajxn(TroopShareUtility paramTroopShareUtility) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    int i = paramIntent.getIntExtra("user_type", 0);
-    int j = paramIntent.getIntExtra("from_type", 0);
-    paramContext = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramContext instanceof QQAppInterface))
+    if (paramBoolean)
     {
-      paramContext = (BabyQHandler)((QQAppInterface)paramContext).a(53);
-      if (paramContext != null) {
-        paramContext.a(i, j);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
-      }
+      this.a.d = paramString;
+      TroopShareUtility.e(this.a);
+      return;
     }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "分享群聊失败!", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxn
  * JD-Core Version:    0.7.0.1
  */

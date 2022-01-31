@@ -1,35 +1,26 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ClubContentUpdateHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 
-public class yya
+class yya
   implements Runnable
 {
-  public yya(ClubContentUpdateHandler paramClubContentUpdateHandler, int paramInt, String paramString) {}
+  yya(yxz paramyxz) {}
   
   public void run()
   {
-    try
-    {
-      ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppClubContentUpdateHandler.a.getManager(152);
-      int i = ApolloUtil.a(2);
-      if (i != this.jdField_a_of_type_Int) {
-        localApolloManager.a(2);
-      }
-      QLog.i("ClubContentUpdateHandler", 1, "handleApolloGameRealTimeUpdate name: " + this.jdField_a_of_type_JavaLangString + ", ver: " + this.jdField_a_of_type_Int + ", locver: " + i);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ClubContentUpdateHandler", 1, "handleApolloGameRealTimeUpdate failed, errInfo" + localException);
-    }
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
+    localTranslateAnimation.setDuration(400L);
+    localTranslateAnimation.setRepeatCount(1);
+    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+    localTranslateAnimation.setAnimationListener(new yyb(this));
+    this.a.a.a.setVisibility(0);
+    this.a.a.a.startAnimation(localTranslateAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yya
  * JD-Core Version:    0.7.0.1
  */

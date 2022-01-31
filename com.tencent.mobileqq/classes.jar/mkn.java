@@ -1,15 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
 public class mkn
   implements Runnable
 {
-  public mkn(FastWebActivity paramFastWebActivity, List paramList) {}
+  public mkn(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
   public void run()
   {
-    ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaUtilList);
+    ReadinjoyTabFrame.a(this.a);
   }
 }
 

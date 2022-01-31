@@ -1,20 +1,31 @@
-import android.opengl.GLES20;
-import com.tencent.av.opengl.filter.qqavimage.specialeffects.QQAVImageWrongEraseFilter;
-import java.nio.FloatBuffer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jkl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public jkl(QQAVImageWrongEraseFilter paramQQAVImageWrongEraseFilter, int paramInt1, int paramInt2, float[] paramArrayOfFloat) {}
+  public jkl(RandomController paramRandomController) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GLES20.glUniform4fv(this.jdField_a_of_type_Int, this.b, FloatBuffer.wrap(this.jdField_a_of_type_ArrayOfFloat));
+    if (RandomController.a(this.a) == 2) {
+      ReportController.b(null, "CliOper", "", "", "0X8005729", "0X8005729", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      this.a.c();
+      return;
+      if (RandomController.a(this.a) == 1) {
+        ReportController.b(null, "CliOper", "", "", "0X8005727", "0X8005727", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     jkl
  * JD-Core Version:    0.7.0.1
  */

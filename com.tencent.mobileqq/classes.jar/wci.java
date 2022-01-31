@@ -1,16 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.theme.SkinEngine;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
-public class wci
-  implements DialogInterface.OnClickListener
+public final class wci
+  implements Runnable
 {
-  public wci(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  public wci(LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    BlessSelectMemberActivity.a(this.a, null);
+    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845635);
+    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845636);
+    Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845677);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845778);
+    localStateListDrawable.addState(new int[] { -16842910 }, localDrawable4);
+    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845781);
+    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable4);
+    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845782);
+    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable4);
+    ThreadManager.getUIHandler().post(new wcj(this, localDrawable1, localDrawable2, localDrawable3, localStateListDrawable));
   }
 }
 

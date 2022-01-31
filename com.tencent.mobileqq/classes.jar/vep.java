@@ -1,51 +1,19 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.PublicAccountServlet;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
+import mqq.os.MqqHandler;
 
-public class vep
-  implements PopupMenuDialog.OnClickActionListener
+public final class vep
+  implements Runnable
 {
-  public vep(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
+  public vep(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, TextView paramTextView, String paramString2) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void run()
   {
-    if (StructingMsgItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
-      return;
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, PublicAccountServlet.class);
-    localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
-    mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
-    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
-    localSubscribeRequest.index.set(paramMenuItem.a);
-    long l1 = 0L;
-    try
-    {
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
-      l1 = l2;
-    }
-    catch (Exception paramMenuItem)
-    {
-      label108:
-      break label108;
-    }
-    localSubscribeRequest.template_id.set(str);
-    localSubscribeRequest.puin.set(l1);
-    localNewIntent.setObserver(new veq(this, str));
-    localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
-    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
+    String str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgSenderUin + "");
+    ThreadManager.getUIHandler().post(new veq(this, str));
   }
 }
 

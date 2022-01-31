@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
+import android.util.AttributeSet;
 import android.view.View;
 
 public class ARCardLoadingProgressView
@@ -32,6 +33,12 @@ public class ARCardLoadingProgressView
   public ARCardLoadingProgressView(Context paramContext)
   {
     super(paramContext);
+    a();
+  }
+  
+  public ARCardLoadingProgressView(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
     a();
   }
   
@@ -117,7 +124,7 @@ public class ARCardLoadingProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARCardLoadingProgressView
  * JD-Core Version:    0.7.0.1
  */

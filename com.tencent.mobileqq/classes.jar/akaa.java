@@ -1,35 +1,19 @@
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.mobileqq.webview.swift.component.SwiftPreloadCookieManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.util.FaceManager;
 
-public final class akaa
-  implements Runnable
+public class akaa
+  extends TroopObserver
 {
-  public akaa(List paramList, SwiftPreloadCookieManager paramSwiftPreloadCookieManager) {}
+  private akaa(FaceManager paramFaceManager) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    Set localSet = AuthorizeConfig.a().a("pskey");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (!localSet.contains(str))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("SwiftBrowserCookieMonster", 2, str + " doesn't need pskey any more,so delete! ");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftPreloadCookieManager.b(str, "p_skey");
-      }
-    }
+    this.a.c(103, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akaa
  * JD-Core Version:    0.7.0.1
  */

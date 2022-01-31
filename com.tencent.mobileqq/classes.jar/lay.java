@@ -1,61 +1,88 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 
 public class lay
-  extends BroadcastReceiver
+  extends ReadInJoyObserver
 {
-  public lay(ShopWebViewFragment paramShopWebViewFragment) {}
+  public lay(ReadInJoyNaviController paramReadInJoyNaviController) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean, List paramList)
   {
-    if (paramIntent == null) {}
-    do
+    if ((paramBoolean) && (paramList != null))
     {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return;
-          paramContext = paramIntent.getAction();
-          localObject = paramIntent.getStringExtra("uin");
-          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-          if (!"action_decode_finish".equals(paramContext)) {
-            break;
-          }
-          if ((this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
-            this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a((String)localObject, localBitmap);
-          }
-        } while (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter == null);
-        this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a((String)localObject);
-        return;
-      } while (!"action_on_shop_msg_receive".equals(paramContext));
-      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
-      paramContext = this.a.getActivity();
-      if ((paramContext instanceof EcshopWebActivity)) {
-        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
+      if ((paramList != null) && (paramList.size() > 0)) {
+        this.a.a(paramList);
       }
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext())
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        localObject = (RecentShopParcel)paramIntent.next();
-        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
-          ((RecentShopParcel)localObject).b += 1;
+        Object localObject = (ChannelCoverInfo)localIterator.next();
+        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
+          for (;;)
+          {
+            int i;
+            try
+            {
+              for (;;)
+              {
+                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
+                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
+                  break;
+                }
+                localObject = ((URL)localObject).getQuery().split("[&]");
+                int j = localObject.length;
+                i = 0;
+                if (i >= j) {
+                  break;
+                }
+                String[] arrayOfString = localObject[i].split("[=]");
+                if (arrayOfString.length <= 1) {
+                  break label272;
+                }
+                boolean bool = "topicid".equals(arrayOfString[0]);
+                if (!bool) {
+                  break label272;
+                }
+                try
+                {
+                  Integer.valueOf(arrayOfString[1]).intValue();
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
+                }
+                catch (Exception localException) {}
+              }
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topic is illegal");
+            }
+            catch (MalformedURLException localMalformedURLException) {}
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
+            break;
+            label272:
+            i += 1;
+          }
         }
       }
-    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter == null));
-    this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a(this.a.jdField_a_of_type_JavaUtilList);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate infos size" + paramList.size());
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate" + paramBoolean);
+    }
   }
 }
 

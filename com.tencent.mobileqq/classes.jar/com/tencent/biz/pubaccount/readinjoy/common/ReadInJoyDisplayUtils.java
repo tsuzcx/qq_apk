@@ -46,7 +46,7 @@ public class ReadInJoyDisplayUtils
   public static Pair a()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.a(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131559668)));
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.a(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131559686)));
   }
   
   public static Pair a(int paramInt1, int paramInt2)
@@ -116,6 +116,15 @@ public class ReadInJoyDisplayUtils
     return String.format("%s:%s", new Object[] { str1, str2 });
   }
   
+  public static String a(String paramString, int paramInt)
+  {
+    String str = paramString;
+    if (paramString.length() > paramInt) {
+      str = paramString.substring(0, paramInt - 1) + "…";
+    }
+    return str;
+  }
+  
   public static void a()
   {
     if (BaseApplicationImpl.sProcessId == 1)
@@ -138,7 +147,7 @@ public class ReadInJoyDisplayUtils
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
       }
-      paramKandianUrlImageView.setImageResource(2130839715);
+      paramKandianUrlImageView.setImageResource(2130839721);
       return;
     }
     if ((paramContext instanceof BaseActivity)) {}
@@ -151,24 +160,24 @@ public class ReadInJoyDisplayUtils
         {
           if (!paramBoolean)
           {
-            paramKandianUrlImageView.setImageResource(2130839715);
+            paramKandianUrlImageView.setImageResource(2130839721);
             return;
           }
-          paramKandianUrlImageView.setImageDrawable(new ColorDrawable(paramContext.getResources().getColor(2131492970)));
+          paramKandianUrlImageView.setImageDrawable(new ColorDrawable(paramContext.getResources().getColor(2131492971)));
           return;
         }
         if (!paramBoolean)
         {
           if (paramKandianUrlImageView.a())
           {
-            paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130839226)).a(paramURL);
+            paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130839230)).a(paramURL);
             return;
           }
-          paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130839715)).a(paramURL);
+          paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130839721)).a(paramURL);
           return;
         }
-        paramKandianUrlImageView.setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131492970)));
-        paramKandianUrlImageView.a(new ColorDrawable(paramContext.getResources().getColor(2131492970))).a(paramURL);
+        paramKandianUrlImageView.setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131492971)));
+        paramKandianUrlImageView.a(new ColorDrawable(paramContext.getResources().getColor(2131492971))).a(paramURL);
         return;
       }
     }

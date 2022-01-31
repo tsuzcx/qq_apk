@@ -38,13 +38,13 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.IEventReceiver;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import ons;
-import ont;
-import onu;
-import onv;
-import onw;
-import onx;
-import onz;
+import opm;
+import opn;
+import opo;
+import opp;
+import opq;
+import opr;
+import opt;
 
 public class StoryVideoPlayer
   extends RelativeLayout
@@ -66,6 +66,7 @@ public class StoryVideoPlayer
   public int b;
   public boolean b;
   public boolean c;
+  public boolean d;
   
   public StoryVideoPlayer(Context paramContext)
   {
@@ -89,10 +90,10 @@ public class StoryVideoPlayer
     PlayModeUtils.a(System.identityHashCode(this.jdField_a_of_type_AndroidAppActivity)).c = SystemClock.uptimeMillis();
     SLog.d("Q.qqstory.player.StoryVideoPlayer", "[3/8] trulyStart %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
     VideoPlayModeBase.TopViewHolder localTopViewHolder = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$TopViewHolder;
-    localTopViewHolder.a = ((LinearLayout)findViewById(2131371979));
-    localTopViewHolder.b = ((LinearLayout)findViewById(2131371980));
-    localTopViewHolder.c = ((LinearLayout)findViewById(2131371981));
-    localTopViewHolder.d = ((LinearLayout)findViewById(2131371982));
+    localTopViewHolder.a = ((LinearLayout)findViewById(2131372152));
+    localTopViewHolder.b = ((LinearLayout)findViewById(2131372153));
+    localTopViewHolder.c = ((LinearLayout)findViewById(2131372154));
+    localTopViewHolder.d = ((LinearLayout)findViewById(2131372155));
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity));
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase);
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(paramBundle);
@@ -127,24 +128,24 @@ public class StoryVideoPlayer
   
   public void a(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2130970846, this, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager = ((CustomViewPager)localView.findViewById(2131370498));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = ((SplitedProgressBar)localView.findViewById(2131364788));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)super.findViewById(2131362985));
+    View localView = LayoutInflater.from(paramContext).inflate(2130970894, this, true);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager = ((CustomViewPager)localView.findViewById(2131370639));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = ((SplitedProgressBar)localView.findViewById(2131364810));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)super.findViewById(2131363003));
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnClickListener(new ons(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = ((QQStoryLoadingView)super.findViewById(2131368932));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370490));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnClickListener(new opm(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = ((QQStoryLoadingView)super.findViewById(2131368998));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370631));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoProgressControler = new ProgressControler(this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar);
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter = new VideoPlayerPagerAdapter(paramContext);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.setPageMargin(10);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.setGestureListener(new onz(this, null));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.setGestureListener(new opt(this, null));
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.a.a(50);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.setClickable(true);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.setOnTouchListener(new ont(this));
-    new Handler(Looper.getMainLooper()).postDelayed(new onu(this), 300L);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.setOnTouchListener(new opn(this));
+    new Handler(Looper.getMainLooper()).postDelayed(new opo(this), 300L);
   }
   
   public void a(Bundle paramBundle)
@@ -161,7 +162,7 @@ public class StoryVideoPlayer
       if ((this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.e == -1) || (this.b)) {
         break label149;
       }
-      ThreadManager.getUIHandler().post(new onv(this, paramBundle));
+      ThreadManager.getUIHandler().post(new opp(this, paramBundle));
     }
     label149:
     do
@@ -171,12 +172,12 @@ public class StoryVideoPlayer
       break;
       if ((!this.c) && (!this.b))
       {
-        ThreadManager.getUIHandler().post(new onw(this, paramBundle));
+        ThreadManager.getUIHandler().post(new opq(this, paramBundle));
         return;
       }
     } while (!this.b);
     String str2 = paramBundle.getString("EXTRA_USER_UIN");
-    PlayModeUtils.a(str1, str2, new onx(this, str1, str2, paramBundle), false);
+    PlayModeUtils.a(str1, str2, new opr(this, str1, str2, paramBundle), false);
   }
   
   public boolean a()

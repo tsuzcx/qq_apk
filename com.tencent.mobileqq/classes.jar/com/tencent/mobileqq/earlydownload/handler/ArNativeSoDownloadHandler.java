@@ -20,7 +20,7 @@ public class ArNativeSoDownloadHandler
 {
   public ArNativeSoDownloadHandler(QQAppInterface paramQQAppInterface)
   {
-    super("qq.android.ar.native.so_v7.3.8", paramQQAppInterface);
+    super("qq.android.ar.native.so_v7.6.5.1", paramQQAppInterface);
   }
   
   public int a()
@@ -44,9 +44,9 @@ public class ArNativeSoDownloadHandler
     try
     {
       Object localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("ArNativeSoDownloadHandler", 4);
-      if (((SharedPreferences)localObject1).getBoolean("qq.android.ar.native.so_v7.3.8", true))
+      if (((SharedPreferences)localObject1).getBoolean("qq.android.ar.native.so_v7.6.5.1", true))
       {
-        ((SharedPreferences)localObject1).edit().putBoolean("qq.android.ar.native.so_v7.3.8", false).commit();
+        ((SharedPreferences)localObject1).edit().putBoolean("qq.android.ar.native.so_v7.6.5.1", false).commit();
         localObject1 = new File(ArNativeSoLoader.a() + File.separator).listFiles();
         int j = localObject1.length;
         while (i < j)
@@ -55,7 +55,7 @@ public class ArNativeSoDownloadHandler
           if (QLog.isColorLevel()) {
             QLog.d("ArConfig_NativeSoDownloadHandler", 2, "File name=" + localObject2.getAbsolutePath());
           }
-          if ((localObject2.isFile()) && (localObject2.getName().startsWith("libArMapEngine")) && (!localObject2.getName().contains("ArMapEngine738")))
+          if ((localObject2.isFile()) && (localObject2.getName().startsWith("libArMapEngine")) && (!localObject2.getName().contains("ArMapEngine7651")))
           {
             localObject2.delete();
             if (QLog.isColorLevel()) {
@@ -91,7 +91,7 @@ public class ArNativeSoDownloadHandler
     {
       try
       {
-        str = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("ar_native_ArMapEngine738", "");
+        str = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("ar_native_ArMapEngine7651", "");
         if (!TextUtils.isEmpty(str))
         {
           QQAppInterface localQQAppInterface = this.a;
@@ -100,11 +100,11 @@ public class ArNativeSoDownloadHandler
             continue;
           }
           localObject = "0";
-          ReportController.b(localQQAppInterface, "dc01440", "", "", "0X8007A3D", "0X8007A3D", 0, 0, "", String.valueOf(i), (String)localObject, "qq.android.ar.native.so_v7.3.8");
+          ReportController.b(localQQAppInterface, "dc01440", "", "", "0X8007A3D", "0X8007A3D", 0, 0, "", String.valueOf(i), (String)localObject, "qq.android.ar.native.so_v7.6.5.1");
           localObject = new HashMap();
           ((HashMap)localObject).put("config_version", String.valueOf(a().Version));
           ((HashMap)localObject).put("md5", str);
-          ((HashMap)localObject).put("res_name", "qq.android.ar.native.so_v7.3.8");
+          ((HashMap)localObject).put("res_name", "qq.android.ar.native.so_v7.6.5.1");
           StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.a.getCurrentAccountUin(), "armap_so_update_rate", true, 0L, 0L, (HashMap)localObject, "", false);
         }
       }

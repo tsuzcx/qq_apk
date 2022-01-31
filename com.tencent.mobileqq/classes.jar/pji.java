@@ -1,58 +1,18 @@
-import com.tencent.component.network.utils.http.pool.PoolEntry;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.logging.Log;
-import org.apache.http.conn.OperatedClientConnection;
-import org.apache.http.conn.routing.HttpRoute;
-import org.apache.http.conn.routing.RouteTracker;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.component.network.downloader.DownloadResult.Process;
 
-public class pji
-  extends PoolEntry
+public final class pji
+  implements Parcelable.Creator
 {
-  HttpRoute jdField_a_of_type_OrgApacheHttpConnRoutingHttpRoute;
-  private RouteTracker jdField_a_of_type_OrgApacheHttpConnRoutingRouteTracker;
-  
-  public pji(Log paramLog, String paramString, HttpRoute paramHttpRoute, OperatedClientConnection paramOperatedClientConnection, long paramLong, TimeUnit paramTimeUnit)
+  public DownloadResult.Process a(Parcel paramParcel)
   {
-    super(paramString, paramHttpRoute, paramOperatedClientConnection, paramLong, paramTimeUnit);
-    this.jdField_a_of_type_OrgApacheHttpConnRoutingHttpRoute = paramHttpRoute;
-    this.jdField_a_of_type_OrgApacheHttpConnRoutingRouteTracker = new RouteTracker(paramHttpRoute);
+    return new DownloadResult.Process(paramParcel);
   }
   
-  HttpRoute a()
+  public DownloadResult.Process[] a(int paramInt)
   {
-    return this.jdField_a_of_type_OrgApacheHttpConnRoutingRouteTracker.toRoute();
-  }
-  
-  RouteTracker a()
-  {
-    return this.jdField_a_of_type_OrgApacheHttpConnRoutingRouteTracker;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_OrgApacheHttpConnRoutingRouteTracker = new RouteTracker(this.jdField_a_of_type_OrgApacheHttpConnRoutingHttpRoute);
-  }
-  
-  public boolean a()
-  {
-    return !((OperatedClientConnection)b()).isOpen();
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return super.a(paramLong);
-  }
-  
-  public void b()
-  {
-    OperatedClientConnection localOperatedClientConnection = (OperatedClientConnection)b();
-    try
-    {
-      localOperatedClientConnection.close();
-      return;
-    }
-    catch (IOException localIOException) {}
+    return new DownloadResult.Process[paramInt];
   }
 }
 

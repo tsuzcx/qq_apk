@@ -1,16 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import dov.com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
 public class anws
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public anws(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
+  public anws(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.b);
+    QQStoryTakeVideoCloseAnimationActivity localQQStoryTakeVideoCloseAnimationActivity = this.a;
+    Intent localIntent = new Intent(localQQStoryTakeVideoCloseAnimationActivity, SplashActivity.class);
+    localIntent.putExtra("fragment_id", 1);
+    localIntent.putExtra("main_tab_id", 6);
+    localIntent.putExtra("open_now_tab_fragment", true);
+    localIntent.putExtra("extra_from_share", true);
+    localIntent.putExtra("new_video_extra_info", "need_publish_animation");
+    localIntent.setFlags(335544320);
+    localQQStoryTakeVideoCloseAnimationActivity.startActivity(localIntent);
+    localQQStoryTakeVideoCloseAnimationActivity.overridePendingTransition(2131034125, 2131034126);
   }
 }
 

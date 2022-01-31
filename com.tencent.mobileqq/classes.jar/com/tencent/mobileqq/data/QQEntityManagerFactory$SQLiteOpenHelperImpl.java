@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import aboa;
-import aboc;
+import abvb;
+import abvd;
 import android.annotation.TargetApi;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -28,14 +28,14 @@ public class QQEntityManagerFactory$SQLiteOpenHelperImpl
   
   public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
   {
-    super(BaseApplication.getContext(), paramString, new aboa(paramQQEntityManagerFactory, null), paramInt);
+    super(BaseApplication.getContext(), paramString, new abvb(paramQQEntityManagerFactory, null), paramInt);
     this.databaseName = paramString;
   }
   
   @TargetApi(11)
-  public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt, aboc paramaboc)
+  public QQEntityManagerFactory$SQLiteOpenHelperImpl(QQEntityManagerFactory paramQQEntityManagerFactory, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt, abvd paramabvd)
   {
-    super(BaseApplication.getContext(), paramString, new aboa(paramQQEntityManagerFactory, null), paramInt, paramaboc);
+    super(BaseApplication.getContext(), paramString, new abvb(paramQQEntityManagerFactory, null), paramInt, paramabvd);
     this.databaseName = paramString;
   }
   

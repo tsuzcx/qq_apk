@@ -1,22 +1,21 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.utils.PhoneStatusMonitor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.av.gaudio.GaInviteDialogActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils.OnDownloadAsyncTaskListener;
 
 public class jik
-  implements Runnable
+  implements ChatActivityUtils.OnDownloadAsyncTaskListener
 {
-  public jik(AVNotifyCenter paramAVNotifyCenter) {}
+  public jik(GaInviteDialogActivity paramGaInviteDialogActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor = new PhoneStatusMonitor(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), null);
-    }
+    this.a.k = paramInt1;
+    this.a.l = paramInt2;
+    GaInviteDialogActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     jik
  * JD-Core Version:    0.7.0.1
  */

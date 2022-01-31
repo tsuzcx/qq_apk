@@ -1,13 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.image.URLDrawable;
 
 public class muj
   implements DialogInterface.OnClickListener
 {
-  public muj(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
+  public muj(GalleryShareHelper paramGalleryShareHelper, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

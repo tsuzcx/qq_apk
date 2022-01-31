@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f31" android:background="#fff2f2f2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="45.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f32" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ProgressBar android:layout_gravity="center_horizontal" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateBehavior="repeat" />
-        <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="正在获取新内容..." />
-    </LinearLayout>
-    <View android:background="#ffdbdbdb" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.open.appcircle.widget.AppNewsTitleBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f49" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04029c" />
+    <include android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04022d" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f4a" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f4b" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

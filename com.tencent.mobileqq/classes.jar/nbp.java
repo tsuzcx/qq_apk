@@ -1,53 +1,22 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.TagManager;
-import com.tencent.biz.qqstory.model.TagManager.FeedTagListUpdateEvent;
-import com.tencent.biz.qqstory.network.request.GetFeedTagInfoListRequest;
-import com.tencent.biz.qqstory.network.request.GetFeedTagInfoListRequest.FeedTagInfoList;
-import com.tencent.biz.qqstory.network.request.GetFeedTagInfoListRequest.GetFeedTagInfoListResponse;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
+import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
-public class nbp
-  implements CmdTaskManger.CommandCallback
+class nbp
+  extends Job
 {
-  public nbp(TagManager paramTagManager) {}
+  nbp(nbo paramnbo, QQStoryCmdHandler.IllegalUinException paramIllegalUinException) {}
   
-  public void a(@NonNull GetFeedTagInfoListRequest paramGetFeedTagInfoListRequest, @Nullable GetFeedTagInfoListRequest.GetFeedTagInfoListResponse paramGetFeedTagInfoListResponse, @NonNull ErrorMessage paramErrorMessage)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    paramGetFeedTagInfoListRequest = paramGetFeedTagInfoListRequest.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramGetFeedTagInfoListRequest.hasNext())
-    {
-      localObject = (String)paramGetFeedTagInfoListRequest.next();
-      TagManager.a(this.a).remove(localObject);
-    }
-    paramGetFeedTagInfoListRequest = new TagManager.FeedTagListUpdateEvent();
-    paramGetFeedTagInfoListRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((paramErrorMessage.isFail()) || (paramGetFeedTagInfoListResponse == null))
-    {
-      SLog.d("Q.qqstory:TagManager", "request fail for get tag request");
-      Dispatchers.get().dispatch(paramGetFeedTagInfoListRequest);
-      return;
-    }
-    paramErrorMessage = paramGetFeedTagInfoListRequest.jdField_a_of_type_JavaUtilMap;
-    Object localObject = (TagManager)SuperManager.a(27);
-    paramGetFeedTagInfoListResponse = paramGetFeedTagInfoListResponse.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramGetFeedTagInfoListResponse.hasNext())
-    {
-      GetFeedTagInfoListRequest.FeedTagInfoList localFeedTagInfoList = (GetFeedTagInfoListRequest.FeedTagInfoList)paramGetFeedTagInfoListResponse.next();
-      ((TagManager)localObject).a(localFeedTagInfoList.jdField_a_of_type_JavaLangString, localFeedTagInfoList.jdField_a_of_type_JavaUtilList);
-      paramErrorMessage.put(localFeedTagInfoList.jdField_a_of_type_JavaLangString, localFeedTagInfoList);
-      SLog.a("Q.qqstory:TagManager", "save feedId :%s , %s", localFeedTagInfoList.jdField_a_of_type_JavaLangString, localFeedTagInfoList.jdField_a_of_type_JavaUtilList);
-    }
-    Dispatchers.get().dispatch(paramGetFeedTagInfoListRequest);
+    SLog.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
+    this.jdField_a_of_type_Nbo.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
+    return null;
   }
 }
 

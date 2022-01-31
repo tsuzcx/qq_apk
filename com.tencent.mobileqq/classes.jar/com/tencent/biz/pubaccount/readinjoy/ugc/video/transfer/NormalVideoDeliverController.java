@@ -6,10 +6,11 @@ import com.tencent.biz.pubaccount.readinjoy.ugc.video.VideoCompressTask.VideoCom
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import lym;
-import lyn;
+import lzm;
+import lzn;
 
 public class NormalVideoDeliverController
   implements VideoCompressTask.VideoCompressTaskListener, VideoDeliverController
@@ -17,14 +18,14 @@ public class NormalVideoDeliverController
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private VideoCompressTask jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoVideoCompressTask;
-  private FileUploadController.FileUploadListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener = new lym(this);
+  private FileUploadController.FileUploadListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener = new lzm(this);
   private FileUploadController jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
-  private FileUploadController.FileUploadListener jdField_b_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener = new lyn(this);
+  private FileUploadController.FileUploadListener jdField_b_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener = new lzn(this);
   private FileUploadController jdField_b_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController;
   private String jdField_b_of_type_JavaLangString;
   private WeakReference jdField_b_of_type_JavaLangRefWeakReference;
@@ -54,6 +55,7 @@ public class NormalVideoDeliverController
   
   private void a(int paramInt)
   {
+    QLog.d("VideoDeliverController", 2, "transitState: from " + this.jdField_a_of_type_Int + " to " + paramInt);
     switch (paramInt)
     {
     }

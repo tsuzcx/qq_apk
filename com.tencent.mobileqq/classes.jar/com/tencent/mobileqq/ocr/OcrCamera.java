@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr;
 
-import afoc;
-import afod;
-import afoe;
-import afof;
-import afog;
-import afoh;
-import afoi;
+import agbi;
+import agbj;
+import agbk;
+import agbl;
+import agbm;
+import agbn;
+import agbo;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
@@ -50,7 +50,7 @@ public class OcrCamera
   public int a;
   private long jdField_a_of_type_Long;
   public RectF a;
-  Camera.PreviewCallback jdField_a_of_type_AndroidHardwareCamera$PreviewCallback = new afog(this);
+  Camera.PreviewCallback jdField_a_of_type_AndroidHardwareCamera$PreviewCallback = new agbm(this);
   private Camera jdField_a_of_type_AndroidHardwareCamera;
   OrientationEventListener jdField_a_of_type_AndroidViewOrientationEventListener;
   SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
@@ -88,7 +88,7 @@ public class OcrCamera
     this.jdField_a_of_type_AndroidViewSurfaceHolder = paramSurfaceHolder;
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
     this.jdField_a_of_type_ComTencentMobileqqCameraCameraHolder = CameraHolder.a();
-    this.jdField_a_of_type_AndroidViewOrientationEventListener = new afoc(this, paramContext);
+    this.jdField_a_of_type_AndroidViewOrientationEventListener = new agbi(this, paramContext);
     paramContext = OcrDpc.a();
     if (paramContext != null)
     {
@@ -231,7 +231,7 @@ public class OcrCamera
       return new Point(localSize1.width, localSize1.height);
     }
     localObject = new ArrayList(paramCamera);
-    Collections.sort((List)localObject, new afod(this));
+    Collections.sort((List)localObject, new agbj(this));
     paramCamera = null;
     float f3 = paramInt1 / paramInt2;
     float f1 = (1.0F / 1.0F);
@@ -313,7 +313,7 @@ public class OcrCamera
         {
           this.jdField_b_of_type_Boolean = false;
           if (QLog.isDebugVersion()) {
-            ThreadManager.getUIHandler().post(new afoe(this));
+            ThreadManager.getUIHandler().post(new agbk(this));
           }
           ReportController.b(null, "dc00898", "", "", "0X80082C1", "0X80082C1", 0, 0, "", "", "", "");
           this.jdField_b_of_type_Long = System.currentTimeMillis();
@@ -347,12 +347,12 @@ public class OcrCamera
           QLog.d("Q.ocr.camera", 4, "select image isBest:" + bool + ",costTime:" + l1);
           ReportController.b(null, "dc00898", "", "", "0X80082C3", "0X80082C3", 0, 0, "", "", "", "");
           ReportController.b(null, "dc00898", "", "", "0X80082C5", "0X80082C5", 0, 0, String.valueOf(l1), "", "", "");
-          ThreadManager.post(new afof(this, l1), 5, null, false);
+          ThreadManager.post(new agbl(this, l1), 5, null, false);
           if (NetworkUtil.d(BaseApplicationImpl.getContext())) {
             break label352;
           }
           QLog.d("Q.ocr.camera", 1, "selectImage best but error!");
-          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439015, 0).a();
+          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439043, 0).a();
         }
         catch (Throwable paramArrayOfByte)
         {
@@ -747,7 +747,7 @@ public class OcrCamera
         break label122;
       }
       QLog.d("Q.ocr.camera", 1, "takePicture but net error!");
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439015, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439043, 0).a();
     }
     label122:
     while ((!this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean) || ((!this.jdField_a_of_type_Boolean) && (this.jdField_e_of_type_Int != 1)) || (this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_e_of_type_Boolean) || (this.jdField_a_of_type_AndroidHardwareCamera == null))
@@ -758,7 +758,7 @@ public class OcrCamera
     }
     this.jdField_e_of_type_Boolean = true;
     if ((this.jdField_e_of_type_Int == 1) && (this.jdField_f_of_type_Boolean) && (this.i * this.j >= this.g * this.h)) {
-      this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, null, new afoh(this));
+      this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, null, new agbn(this));
     }
     for (;;)
     {
@@ -792,7 +792,7 @@ public class OcrCamera
     if ((paramArrayOfByte == null) || (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler == null) || (this.jdField_a_of_type_AndroidHardwareCamera == null)) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new afoi(this, paramBoolean, paramArrayOfByte));
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new agbo(this, paramBoolean, paramArrayOfByte));
     return true;
   }
   

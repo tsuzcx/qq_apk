@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
 
 public class kwc
-  implements DialogInterface.OnCancelListener
+  implements ViewPager.PageTransformer
 {
-  public kwc(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
+  private kwc(VerticleViewPager paramVerticleViewPager) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void transformPage(View paramView, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (paramFloat < -1.0F)
+    {
+      paramView.setAlpha(0.0F);
+      return;
+    }
+    if (paramFloat <= 1.0F)
+    {
+      paramView.setAlpha(1.0F);
+      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
+      paramView.setTranslationY(paramView.getHeight() * paramFloat);
+      return;
+    }
+    paramView.setAlpha(0.0F);
   }
 }
 

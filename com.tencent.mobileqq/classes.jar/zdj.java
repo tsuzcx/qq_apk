@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.flashchat.FlashChatObserver;
 
 public class zdj
-  implements Runnable
+  extends FlashChatObserver
 {
-  public zdj(MessageHandler paramMessageHandler) {}
+  public zdj(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void run()
+  public void b()
   {
-    this.a.a(4004, false, null);
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
+    }
+    this.a.a.sendEmptyMessage(17);
   }
 }
 

@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadFlowControlConfig;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.qwallet.ScrollPlayer;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 public class xch
-  implements Runnable
+  extends RecyclerView.OnScrollListener
 {
-  public xch(PreloadFlowControlConfig paramPreloadFlowControlConfig) {}
+  public xch(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void run()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    QWalletTools.a(this.a, PreloadFlowControlConfig.access$000(this.a));
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ScrollPlayer.a(bool);
+      return;
+    }
   }
 }
 

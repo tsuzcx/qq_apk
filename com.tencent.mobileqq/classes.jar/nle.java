@@ -1,35 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoDataProvider;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.List;
+import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
+import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
+import com.tencent.biz.qqstory.playvideo.ProgressControler;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import java.util.ArrayList;
 
-public class nle
-  extends SimpleObserver
+class nle
+  implements Runnable
 {
-  public nle(MsgTabVideoDataProvider paramMsgTabVideoDataProvider, MsgTabNodeInfo paramMsgTabNodeInfo1, MsgTabNodeInfo paramMsgTabNodeInfo2, int paramInt, long paramLong) {}
+  nle(nld paramnld) {}
   
-  public void a(List paramList)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabVideoDataProvider", 2, new Object[] { "requestVideoList first db then network-----onNext(). nodeId=", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.a });
-    }
-    MsgTabVideoDataProvider.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, this.b, this.jdField_a_of_type_Int, paramList, true, 0, false, this.jdField_a_of_type_Long);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if ((paramError instanceof ErrorMessage)) {}
-    for (int i = ((ErrorMessage)paramError).errorCode;; i = 0)
+    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.a.a.a.b, false);
+    if ((this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a != null) && (this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabVideoDataProvider", 2, new Object[] { "requestVideoList first db then network-----onError(). nodeId=", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.a, ", errCode=", Integer.valueOf(i) });
-      }
-      MsgTabVideoDataProvider.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, this.b, this.jdField_a_of_type_Int, null, false, i, false, this.jdField_a_of_type_Long);
-      return;
+      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a);
+      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(1);
     }
+    this.a.a.a.jdField_a_of_type_Boolean = true;
   }
 }
 

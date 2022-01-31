@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.qcall.PstnCardInfo;
 
-public class agub
-  implements Runnable
+public final class agub
+  implements Parcelable.Creator
 {
-  public agub(CameraCaptureFragment paramCameraCaptureFragment) {}
-  
-  public void run()
+  public PstnCardInfo a(Parcel paramParcel)
   {
-    QLog.d("CameraCaptureFragment", 2, "onVideoCaptured. mDanceRestartToRecord = true  restart to record.");
-    this.a.K_();
+    return new PstnCardInfo(paramParcel);
+  }
+  
+  public PstnCardInfo[] a(int paramInt)
+  {
+    return new PstnCardInfo[paramInt];
   }
 }
 

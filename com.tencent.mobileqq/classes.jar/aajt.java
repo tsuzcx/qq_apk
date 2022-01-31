@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppInfo.Context;
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aajt
-  implements Comparator
+class aajt
+  implements ImageAssetDelegate
 {
-  public aajt(ArkActionAppMgr paramArkActionAppMgr) {}
+  aajt(aajs paramaajs) {}
   
-  public int a(ArkAppInfo.Context paramContext1, ArkAppInfo.Context paramContext2)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    int i = paramContext1.a.compareTo(paramContext2.a);
-    if (i != 0) {
-      return i;
+    String str = paramLottieImageAsset.getFileName();
+    Bitmap localBitmap = (Bitmap)this.a.a.b.get(str);
+    paramLottieImageAsset = localBitmap;
+    if (localBitmap == null)
+    {
+      QLog.w("WorldCupMgr", 1, "loadBtnAnimation, 加载图片失败, image[" + str + "]");
+      paramLottieImageAsset = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
     }
-    return paramContext1.b.compareTo(paramContext2.b);
+    return paramLottieImageAsset;
   }
 }
 

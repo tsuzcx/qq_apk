@@ -20,8 +20,8 @@ import java.util.Queue;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yec;
-import yed;
+import yhj;
+import yhk;
 
 public class HotChatPostListAdapter
   extends BaseAdapter
@@ -240,7 +240,7 @@ public class HotChatPostListAdapter
       }
       paramView = (JSONObject)getItem(paramInt);
       if (paramView != null) {
-        paramViewGroup.setOnClickListener(new yed(this, paramView.optString("bid"), paramView.optString("pid")));
+        paramViewGroup.setOnClickListener(new yhk(this, paramView.optString("bid"), paramView.optString("pid")));
       }
       try
       {
@@ -275,7 +275,7 @@ public class HotChatPostListAdapter
   
   public void notifyDataSetChanged()
   {
-    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new yec(this));
+    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, new yhj(this));
     super.notifyDataSetChanged();
   }
 }

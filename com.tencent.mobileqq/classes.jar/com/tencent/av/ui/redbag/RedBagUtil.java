@@ -3,12 +3,14 @@ package com.tencent.av.ui.redbag;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
@@ -19,6 +21,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
 import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -42,6 +46,30 @@ public class RedBagUtil
     }
     catch (Exception paramVideoAppInterface) {}
     return 0L;
+  }
+  
+  public static Bitmap a(Resources paramResources, String paramString)
+  {
+    return a(paramString, 320, paramResources.getDisplayMetrics().densityDpi);
+  }
+  
+  public static Bitmap a(String paramString, int paramInt1, int paramInt2)
+  {
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inDensity = paramInt1;
+    if (paramInt2 >= 0) {
+      localOptions.inTargetDensity = paramInt2;
+    }
+    localOptions.inScaled = true;
+    Bitmap localBitmap = BitmapManager.a(paramString, localOptions);
+    if (localBitmap == null) {
+      QLog.w("AVRedBag", 1, "decodeFileWithxhdpi, 加载失败, path[" + paramString + "]");
+    }
+    while (!AudioHelper.d()) {
+      return localBitmap;
+    }
+    QLog.w("AVRedBag", 1, "decodeFileWithxhdpi, bitmap[" + localBitmap.getWidth() + ", " + localBitmap.getHeight() + "], Density[" + localBitmap.getDensity() + "], path[" + paramString + "], _density[" + paramInt1 + "], _inTargetDensity[" + paramInt2 + "], outWidth[" + localOptions.outWidth + "], outHeight[" + localOptions.outHeight + "], inDensity[" + localOptions.inDensity + "], inSampleSize[" + localOptions.inSampleSize + "], inScreenDensity[" + localOptions.inScreenDensity + "], inTargetDensity[" + localOptions.inTargetDensity + "], bitmapSize[" + localBitmap.getWidth() + ", " + localBitmap.getHeight() + "]");
+    return localBitmap;
   }
   
   public static Bitmap a(String paramString, boolean paramBoolean)

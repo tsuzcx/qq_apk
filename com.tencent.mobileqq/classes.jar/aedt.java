@@ -1,20 +1,20 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.widget.MonitorSizeChangeHSV.IOnSizeChangeCallback;
+import com.tencent.mobileqq.magicface.magicfaceaction.Action;
+import java.util.TimerTask;
 
 public class aedt
-  implements MonitorSizeChangeHSV.IOnSizeChangeCallback
+  extends TimerTask
 {
-  public aedt(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public aedt(Action paramAction) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void run()
   {
-    ChooseInterestTagActivity.a(this.a).post(new aedu(this, paramInt1));
+    this.a.c();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aedt
  * JD-Core Version:    0.7.0.1
  */

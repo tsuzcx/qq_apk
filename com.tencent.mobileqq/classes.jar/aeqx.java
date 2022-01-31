@@ -1,54 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.nearby.profilecard.ProfileQiqiLiveController;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ProgressButton;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.util.InputMethodUtil;
 
 public class aeqx
-  extends Handler
+  implements AbsListView.OnScrollListener
 {
-  public aeqx(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public aeqx(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    if (paramInt == 1) {
+      InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131438080);
-            return;
-          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
-        return;
-      } while ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController == null) || (NearbyProfileDisplayPanel.a(this.a) == null));
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131438076);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a(NearbyProfileDisplayPanel.a(this.a).uRoomid);
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, NearbyProfileDisplayPanel.a(this.a).uin, "", "yes", "android");
-      return;
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131438081, 0).a();
-      return;
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a();
   }
 }
 

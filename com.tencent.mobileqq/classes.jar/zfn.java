@@ -1,34 +1,33 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.mobileqq.app.HotchatSCHelper;
+import com.tencent.mobileqq.app.HotchatSCMng;
 
 public class zfn
-  implements Comparator
+  implements Runnable
 {
-  public zfn(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zfn(HotchatSCHelper paramHotchatSCHelper, long paramLong1, long paramLong2) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void run()
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_Boolean) {
+      return;
     }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
+    this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_ComTencentMobileqqAppHotchatSCMng.a();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long - Math.abs(l1 - this.b);
+    if (l2 < 0L) {
+      l1 = 100L;
     }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, l1);
+      return;
+      l1 = l2;
+      if (l2 > this.jdField_a_of_type_Long) {
+        l1 = this.jdField_a_of_type_Long;
+      }
     }
-    j = i;
-    if (i == 0) {
-      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-    }
-    return j;
   }
 }
 

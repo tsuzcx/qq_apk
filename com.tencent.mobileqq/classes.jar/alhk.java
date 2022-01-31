@@ -1,35 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qqprotect.qsec.CloudAVEngineImpl;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class alhk
-  extends Handler
+class alhk
+  implements Runnable
 {
-  public alhk(CloudAVEngineImpl paramCloudAVEngineImpl, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  alhk(alhi paramalhi, long paramLong1, long paramLong2, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      CloudAVEngineImpl.a(this.a, CloudAVEngineImpl.a(this.a, paramMessage.obj));
-      return;
-    case 2: 
-      CloudAVEngineImpl.a(this.a, true);
-      CloudAVEngineImpl.a(this.a);
-      CloudAVEngineImpl.a(this.a, false);
-      return;
-    case 3: 
-      CloudAVEngineImpl.a(this.a, paramMessage.obj);
-      return;
+    int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
+    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Alhi.a.c(this.jdField_a_of_type_JavaLangString, i);
+    if (localDownloadInfo == null) {
+      LogUtility.d(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info == null");
     }
-    CloudAVEngineImpl.b(this.a, paramMessage.obj);
+    for (;;)
+    {
+      this.jdField_a_of_type_Alhi.a.a(2, localDownloadInfo);
+      return;
+      LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.g);
+    }
   }
 }
 

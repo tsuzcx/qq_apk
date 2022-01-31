@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahfo;
-import ahfp;
+import ahtq;
+import ahtr;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -25,7 +25,7 @@ public class SelectMemberContactSearchFragment
   
   protected BaseMvpAdapter a()
   {
-    return new ahfp(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new ahtr(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
   }
   
   protected ISearchEngine a()
@@ -46,14 +46,14 @@ public class SelectMemberContactSearchFragment
       if (TextUtils.isEmpty(paramString))
       {
         this.e = false;
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493240);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493241);
       }
     }
     else {
       return;
     }
     this.e = true;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838210);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838214);
   }
   
   protected boolean b()
@@ -77,9 +77,9 @@ public class SelectMemberContactSearchFragment
     super.onViewCreated(paramView, paramBundle);
     if (!SearchUtils.a(this.c))
     {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493240);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493241);
       this.e = false;
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahfo(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahtq(this));
     }
   }
 }

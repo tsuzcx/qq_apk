@@ -6,10 +6,8 @@ import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,6 +37,7 @@ public class MsgTabStoryManager
     localMsgTabNodeVidListEntity.unionId = paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
     localMsgTabNodeVidListEntity.reqTimeStamp = paramMsgTabNodeInfo.jdField_c_of_type_Long;
     localMsgTabNodeVidListEntity.rspData = paramArrayOfByte;
+    localMsgTabNodeVidListEntity.requestSource = paramMsgTabNodeInfo.e;
     localEntityManager.b(localMsgTabNodeVidListEntity);
   }
   
@@ -183,30 +182,95 @@ public class MsgTabStoryManager
     QQStoryContext.a().a().createEntityManager().b(paramMsgTabNodeInfo.a());
   }
   
+  /* Error */
   public void a(List paramList, boolean paramBoolean)
   {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    localEntityManager.a().a();
-    if (paramBoolean) {}
-    try
-    {
-      Object localObject = new MsgTabNodeEntity();
-      ((MsgTabNodeEntity)localObject).setStatus(1001);
-      localEntityManager.a((Entity)localObject, null, null);
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        localObject = (MsgTabNodeInfo)paramList.next();
-        if ((((MsgTabNodeInfo)localObject).jdField_a_of_type_Int != 1) && (((MsgTabNodeInfo)localObject).jdField_a_of_type_Int != 2)) {
-          localEntityManager.b(((MsgTabNodeInfo)localObject).a());
-        }
-      }
-    }
-    finally
-    {
-      localEntityManager.a().b();
-    }
-    localEntityManager.a().b();
+    // Byte code:
+    //   0: invokestatic 26	com/tencent/biz/qqstory/app/QQStoryContext:a	()Lcom/tencent/biz/qqstory/app/QQStoryContext;
+    //   3: invokevirtual 29	com/tencent/biz/qqstory/app/QQStoryContext:a	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   6: invokevirtual 35	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   9: astore_3
+    //   10: aload_3
+    //   11: invokevirtual 253	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   14: invokevirtual 257	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
+    //   17: iload_2
+    //   18: ifeq +29 -> 47
+    //   21: new 225	com/tencent/biz/qqstory/msgTabNode/model/MsgTabNodeEntity
+    //   24: dup
+    //   25: invokespecial 258	com/tencent/biz/qqstory/msgTabNode/model/MsgTabNodeEntity:<init>	()V
+    //   28: astore 4
+    //   30: aload 4
+    //   32: sipush 1001
+    //   35: invokevirtual 259	com/tencent/biz/qqstory/msgTabNode/model/MsgTabNodeEntity:setStatus	(I)V
+    //   38: aload_3
+    //   39: aload 4
+    //   41: aconst_null
+    //   42: aconst_null
+    //   43: invokevirtual 87	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;Ljava/lang/String;[Ljava/lang/String;)Z
+    //   46: pop
+    //   47: aload_1
+    //   48: invokeinterface 191 1 0
+    //   53: astore_1
+    //   54: aload_1
+    //   55: invokeinterface 196 1 0
+    //   60: ifeq +63 -> 123
+    //   63: aload_1
+    //   64: invokeinterface 200 1 0
+    //   69: checkcast 40	com/tencent/biz/qqstory/msgTabNode/model/MsgTabNodeInfo
+    //   72: astore 4
+    //   74: aload 4
+    //   76: getfield 42	com/tencent/biz/qqstory/msgTabNode/model/MsgTabNodeInfo:jdField_a_of_type_Int	I
+    //   79: iconst_1
+    //   80: if_icmpeq -26 -> 54
+    //   83: aload 4
+    //   85: getfield 42	com/tencent/biz/qqstory/msgTabNode/model/MsgTabNodeInfo:jdField_a_of_type_Int	I
+    //   88: iconst_2
+    //   89: if_icmpeq -35 -> 54
+    //   92: aload_3
+    //   93: aload 4
+    //   95: invokevirtual 247	com/tencent/biz/qqstory/msgTabNode/model/MsgTabNodeInfo:a	()Lcom/tencent/biz/qqstory/msgTabNode/model/MsgTabNodeEntity;
+    //   98: invokevirtual 73	com/tencent/mobileqq/persistence/EntityManager:b	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   101: goto -47 -> 54
+    //   104: astore_1
+    //   105: aload_1
+    //   106: ldc_w 261
+    //   109: ldc_w 263
+    //   112: invokestatic 269	com/tencent/mobileqq/statistics/QQCatchedExceptionReporter:reportQQCatchedException	(Ljava/lang/Throwable;Ljava/lang/String;Ljava/lang/String;)V
+    //   115: aload_3
+    //   116: invokevirtual 253	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   119: invokevirtual 271	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   122: return
+    //   123: aload_3
+    //   124: invokevirtual 253	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   127: invokevirtual 273	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
+    //   130: aload_3
+    //   131: invokevirtual 253	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   134: invokevirtual 271	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   137: return
+    //   138: astore_1
+    //   139: aload_3
+    //   140: invokevirtual 253	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   143: invokevirtual 271	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   146: aload_1
+    //   147: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	148	0	this	MsgTabStoryManager
+    //   0	148	1	paramList	List
+    //   0	148	2	paramBoolean	boolean
+    //   9	131	3	localEntityManager	EntityManager
+    //   28	66	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   21	47	104	java/lang/NullPointerException
+    //   47	54	104	java/lang/NullPointerException
+    //   54	101	104	java/lang/NullPointerException
+    //   123	130	104	java/lang/NullPointerException
+    //   21	47	138	finally
+    //   47	54	138	finally
+    //   54	101	138	finally
+    //   105	115	138	finally
+    //   123	130	138	finally
   }
   
   public void b(MsgTabNodeInfo paramMsgTabNodeInfo)

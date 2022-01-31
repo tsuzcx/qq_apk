@@ -1,14 +1,36 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.view.View;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 public class ves
-  implements PopupWindow.OnDismissListener
 {
-  public ves(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  private Map a = new HashMap();
   
-  public void onDismiss()
+  public View a(int paramInt)
   {
-    StructingMsgItemBuilder.b(this.a, false);
+    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
+    if (localLinkedList == null) {
+      return null;
+    }
+    return (View)localLinkedList.poll();
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
+    LinkedList localLinkedList1 = localLinkedList2;
+    if (localLinkedList2 == null)
+    {
+      localLinkedList1 = new LinkedList();
+      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
+    }
+    localLinkedList1.add(paramView);
   }
 }
 

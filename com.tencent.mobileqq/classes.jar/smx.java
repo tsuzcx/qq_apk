@@ -1,14 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.app.FavEmoRoamingObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public final class smx
-  implements DialogInterface.OnClickListener
+public class smx
+  extends FavEmoRoamingObserver
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public smx(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    this.a.app.removeObserver(this);
+    this.a.b.clear();
   }
 }
 

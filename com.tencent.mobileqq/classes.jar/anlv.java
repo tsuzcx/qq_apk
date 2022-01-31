@@ -1,19 +1,16 @@
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailArgs;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailTaskContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
 public class anlv
   implements Runnable
 {
-  public anlv(MediaCodecThumbnailGenerator.CodecHandler paramCodecHandler, MediaCodecThumbnailGenerator.ThumbnailTaskContext paramThumbnailTaskContext, boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult) {}
+  public anlv(QIMMusicConfigManager paramQIMMusicConfigManager) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.b != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.b.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailResult);
-    }
+    this.a.a();
+    this.a.a().notifyObservers(CaptureConfigUpdateObserver.class, 1, true, null);
   }
 }
 

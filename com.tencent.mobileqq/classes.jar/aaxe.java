@@ -1,21 +1,59 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.qphone.base.util.QLog;
 
-class aaxe
-  implements Runnable
+public class aaxe
+  implements ArkViewImplement.LoadCallback
 {
-  aaxe(aaxc paramaaxc) {}
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void run()
+  public aaxe(ArkRecommendController paramArkRecommendController, boolean paramBoolean, View paramView1, BaseChatItemLayout paramBaseChatItemLayout, View paramView2) {}
+  
+  @TargetApi(11)
+  public void onLoadFinish(int paramInt)
   {
-    if ((!ShopScanActivity.a(this.a.a)) && (this.a.a.d.getVisibility() == 0))
-    {
-      this.a.a.d.setVisibility(8);
-      this.a.a.a.setVisibility(0);
-      ShopScanActivity.b(this.a.a);
-      ShopScanActivity.a(this.a.a, true);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController.a();
+    if ((paramInt != 1) || (localObject == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkRecommendController", 2, "getAttachArkView.loadFinish.chatPie == null!");
+      }
     }
+    do
+    {
+      return;
+      if ((!this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {
+        break;
+      }
+      paramInt = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+      if ((((BaseChatPie)localObject).f() != 0) && (((BaseChatPie)localObject).a.getHeight() < this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getMeasuredHeight() + paramInt))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkRecommendController", 2, "listView.getHeight() < height, hide panel!");
+        }
+        ((BaseChatPie)localObject).ai();
+      }
+      localObject = new ValueAnimation(Integer.valueOf(0), Integer.valueOf(paramInt), new aaxf(this, paramInt));
+      ((ValueAnimation)localObject).setInterpolator(new AccelerateInterpolator());
+      ((ValueAnimation)localObject).setDuration(200L);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.startAnimation((Animation)localObject);
+      this.jdField_a_of_type_Boolean = false;
+    } while (!QLog.isColorLevel());
+    QLog.d("ArkRecommendController", 2, "getAttachArkView.do animation..");
+    return;
+    if (Build.VERSION.SDK_INT >= 11) {
+      this.jdField_b_of_type_AndroidViewView.setAlpha(1.0F);
+    }
+    this.jdField_b_of_type_AndroidViewView.requestLayout();
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

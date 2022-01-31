@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
+import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener;
+import java.lang.ref.WeakReference;
 
 public class yxa
   implements Runnable
 {
-  public yxa(BaseActivity paramBaseActivity) {}
+  public yxa(ApolloDrawerInfoViewListener paramApolloDrawerInfoViewListener) {}
   
   public void run()
   {
-    ActivityLifecycle.onPause(this.a.getActivity());
+    if (ApolloDrawerInfoViewListener.a(this.a).get() != null) {
+      ((SpriteDrawerInfoManager)ApolloDrawerInfoViewListener.a(this.a).get()).a(ApolloDrawerInfoViewListener.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yxa
  * JD-Core Version:    0.7.0.1
  */

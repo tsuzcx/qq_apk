@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.floatscr;
 
-import adac;
+import adjz;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -141,7 +141,7 @@ public class ColorScreenManager
   
   public void a(int paramInt, VasManager.CompleteListener paramCompleteListener)
   {
-    ThreadManager.post(new adac(this, paramInt, paramCompleteListener), 5, null, false);
+    ThreadManager.post(new adjz(this, paramInt, paramCompleteListener), 5, null, false);
   }
   
   public void a(String paramString)
@@ -208,7 +208,7 @@ public class ColorScreenManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.floatscr.ColorScreenManager
  * JD-Core Version:    0.7.0.1
  */

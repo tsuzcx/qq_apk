@@ -1,25 +1,28 @@
-import java.io.File;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.widget.TCWNumberPicker;
 
-public final class amdv
-  implements Comparator
+public class amdv
+  implements Runnable
 {
-  public int a(File paramFile1, File paramFile2)
+  public amdv(TCWNumberPicker paramTCWNumberPicker) {}
+  
+  public void run()
   {
-    long l1 = paramFile1.lastModified();
-    long l2 = paramFile2.lastModified();
-    if (l1 > l2) {
-      return -1;
+    if (TCWNumberPicker.a(this.a))
+    {
+      TCWNumberPicker.a(this.a, TCWNumberPicker.a(this.a) + 1);
+      TCWNumberPicker.a(this.a).postDelayed(this, TCWNumberPicker.a(this.a));
     }
-    if (l1 < l2) {
-      return 1;
+    while (!TCWNumberPicker.b(this.a)) {
+      return;
     }
-    return 0;
+    TCWNumberPicker.a(this.a, TCWNumberPicker.a(this.a) - 1);
+    TCWNumberPicker.a(this.a).postDelayed(this, TCWNumberPicker.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amdv
  * JD-Core Version:    0.7.0.1
  */

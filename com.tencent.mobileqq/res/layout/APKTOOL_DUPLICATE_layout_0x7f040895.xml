@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a271f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216ee" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2720" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="12.0dip" android:scaleType="fitStart" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a2721" />
-    <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2721" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginBottom="12.0dip" android:lines="1" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesReloadListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a277b" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:divider="@null" />
+</LinearLayout>

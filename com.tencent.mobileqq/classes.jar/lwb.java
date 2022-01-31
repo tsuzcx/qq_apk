@@ -1,18 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class lwb
+class lwb
   implements Runnable
 {
-  public lwb(ComponentLastRead paramComponentLastRead) {}
+  lwb(lwa paramlwa) {}
   
   public void run()
   {
-    if (this.a.a.a.e() == 0) {
-      ReadInJoyLogicEngineEventDispatcher.a().a(this.a);
-    }
+    ReadInJoyLogicEngine.a().a((int)ComponentHeaderTopicRecommend.a(this.a.a).businessId, 1);
   }
 }
 

@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleParam;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
 
-public class usc
-  implements View.OnClickListener
+public final class usc
+  implements MyParcelable.Creator
 {
-  public usc(ArkFlashChatItemBubbleBuilder paramArkFlashChatItemBubbleBuilder) {}
-  
-  public void onClick(View paramView)
+  public DoodleParam a(MyParcel paramMyParcel)
   {
-    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
-    if (localMessageRecord != null) {
-      ((FlashChatManager)this.a.a.getManager(216)).a(paramView.getContext(), localMessageRecord);
-    }
+    return new DoodleParam(paramMyParcel);
   }
 }
 

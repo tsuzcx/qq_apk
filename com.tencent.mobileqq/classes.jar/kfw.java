@@ -1,25 +1,17 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.OtherBtnController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
 
-public class kfw
-  implements Runnable
+class kfw
+  implements DialogInterface.OnClickListener
 {
-  public kfw(OtherBtnController paramOtherBtnController) {}
+  kfw(kfv paramkfv) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.a()) {}
-    do
-    {
-      return;
-      this.a.a();
-    } while (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null);
-    if (this.a.jdField_a_of_type_ComTencentAvUiControlUIObserver != null)
-    {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.jdField_a_of_type_ComTencentAvUiControlUIObserver);
-      this.a.jdField_a_of_type_ComTencentAvUiControlUIObserver = null;
-    }
-    this.a.a(true);
+    paramDialogInterface.dismiss();
+    ((GroupVideoManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString, "4", "openRoom");
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.redtouch;
 
-import agrw;
+import ahfy;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.recent.BannerManager;
@@ -40,7 +40,7 @@ public class VipBannerInfo
       } while (localMqqHandler == null);
       localRedTouchManager = (RedTouchManager)paramConversation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(35);
     } while (localRedTouchManager == null);
-    ThreadManager.getFileThreadHandler().post(new agrw(localRedTouchManager, localSharedPreferences, paramConversation, localMqqHandler));
+    ThreadManager.getFileThreadHandler().post(new ahfy(localRedTouchManager, localSharedPreferences, paramConversation, localMqqHandler));
   }
   
   public static void b(Conversation paramConversation)

@@ -1,35 +1,15 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView.JustLogPlayProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import java.util.TimerTask;
 
 public class ofj
-  extends NeoVideoFilterPlayView.JustLogPlayProgressListener
+  extends TimerTask
 {
-  public ofj(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  private ofj(EditVideoMusic paramEditVideoMusic) {}
   
-  public void a()
+  public void run()
   {
-    super.a();
-    this.a.l();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
-    }
-    super.a(paramLong);
-    try
-    {
-      this.a.a(1000L * paramLong);
-      return;
-    }
-    catch (InterruptedException localInterruptedException) {}
+    this.a.a.sendEmptyMessage(1001);
   }
 }
 

@@ -1,26 +1,72 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.common.app.AppInterface;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class kyp
-  implements Runnable
+  implements BusinessObserver
 {
-  public kyp(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, AppInterface paramAppInterface, String paramString1, JSONObject paramJSONObject, String paramString2) {}
+  public kyp(PublicAccountManager paramPublicAccountManager, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    boolean bool = PublicAccountUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString);
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("follow", bool);
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:0, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+    Object localObject1 = null;
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (!paramBoolean) {
       return;
     }
-    catch (JSONException localJSONException)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-2, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+      try
+      {
+        localObject2 = paramBundle.getByteArray("data");
+        paramBundle = new mobileqq_mp.SendMenuEventResponse();
+      }
+      catch (Exception paramBundle)
+      {
+        try
+        {
+          paramBundle.mergeFrom((byte[])localObject2);
+          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
+          localObject1 = paramBundle;
+          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
+          {
+            localObject1 = paramBundle;
+            if (paramBundle.seqno.has())
+            {
+              localObject1 = paramBundle;
+              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
+              {
+                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
+                  this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
+                }
+                localObject1 = ((SharedPreferences)localObject2).edit();
+                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
+                ((SharedPreferences.Editor)localObject1).commit();
+                localObject1 = paramBundle;
+              }
+            }
+          }
+          if (localObject1 != null) {
+            break;
+          }
+          return;
+        }
+        catch (Exception localException)
+        {
+          break label187;
+        }
+        paramBundle = paramBundle;
+        paramBundle = (Bundle)localObject1;
+      }
+      label187:
+      localObject1 = paramBundle;
     }
   }
 }

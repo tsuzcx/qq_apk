@@ -7,14 +7,14 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager.Stub;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppService;
-import zub;
+import zxh;
 
 public class ARGlobalConfigService
   extends AppService
 {
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   public ARGlobalConfigManager a;
-  private IArGlobalConfigManager.Stub jdField_a_of_type_ComTencentMobileqqArAidlIArGlobalConfigManager$Stub = new zub(this);
+  private IArGlobalConfigManager.Stub jdField_a_of_type_ComTencentMobileqqArAidlIArGlobalConfigManager$Stub = new zxh(this);
   
   public void onAccountChanged()
   {

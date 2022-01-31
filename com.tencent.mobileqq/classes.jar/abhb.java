@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
 
 public class abhb
   implements Runnable
 {
-  public abhb(FlowCameraPhotoActivity paramFlowCameraPhotoActivity) {}
+  public abhb(ARMapPOIStarDialog paramARMapPOIStarDialog) {}
   
   public void run()
   {
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      this.a.e();
-      QQToast.a(this.a, "扫描超时", 1).a();
-    } while (!QLog.isColorLevel());
-    QLog.d("BusinessCard_FlowCameraPhotoActivity", 2, "request ocr time out!");
+    if (!this.a.jdField_a_of_type_Boolean) {
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    }
   }
 }
 

@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class tiq
+public class tiq
   implements Runnable
 {
-  tiq(tio paramtio) {}
+  public tiq(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    if (QQSettingMe.a(this.a.a) != null) {
-      QQSettingMe.a(this.a.a).a(this.a.a.a);
+    try
+    {
+      PowerManager localPowerManager = (PowerManager)this.a.getSystemService("power");
+      this.a.a = localPowerManager.newWakeLock(268435462, "QQLSActivity");
+      this.a.a.acquire(10000L);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQLSActivity", 2, "acquireBrightWakeLock:" + localException.toString());
     }
   }
 }

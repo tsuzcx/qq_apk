@@ -1,16 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils.ExtractAudioListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
 
 public class anwb
-  implements ValueAnimator.AnimatorUpdateListener
+  implements FFmpegUtils.ExtractAudioListener
 {
-  public anwb(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public anwb(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(String paramString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    CameraCaptureButtonLayout.a(this.a, f);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.record.HWEditImportVideoPlayer", 2, "extractAudioFromMp4 success");
+    }
+    this.a.a(new anwc(this), 0L);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.record.HWEditImportVideoPlayer", 2, "extractAudioFromMp4 fail " + paramString);
+    }
   }
 }
 

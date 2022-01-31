@@ -9,9 +9,9 @@ import com.tencent.av.core.VcSystemInfo;
 import com.tencent.av.report.TraeConfigUpdate;
 import com.tencent.av.utils.PhoneStatusTools;
 import com.tencent.qphone.base.util.QLog;
-import jhs;
-import jhu;
-import jhw;
+import jhd;
+import jhf;
+import jhh;
 
 public class ConfigSystemImpl
 {
@@ -342,18 +342,18 @@ public class ConfigSystemImpl
           } while (((ConfigPBProtocol)localObject).a(paramContext) != 0);
           paramContext = ((ConfigPBProtocol)localObject).a();
         } while (paramContext == null);
-        jdField_a_of_type_Byte = paramContext.jdField_a_of_type_Jhs.jdField_a_of_type_Byte;
-        jdField_b_of_type_Byte = paramContext.jdField_a_of_type_Jhs.jdField_a_of_type_Byte;
-        jdField_c_of_type_Byte = paramContext.jdField_a_of_type_Jhs.jdField_c_of_type_Byte;
-        jdField_d_of_type_Byte = paramContext.jdField_a_of_type_Jhs.e;
-        e = paramContext.jdField_a_of_type_Jhs.g;
-        f = paramContext.jdField_a_of_type_Jhs.i;
-        g = paramContext.jdField_a_of_type_Jhs.jdField_d_of_type_Byte;
-        h = paramContext.jdField_a_of_type_Jhs.f;
-        i = paramContext.jdField_a_of_type_Jhs.h;
-        j = paramContext.jdField_a_of_type_Jhs.j;
-        w = paramContext.jdField_a_of_type_Jhs.k;
-        x = paramContext.jdField_a_of_type_Jhs.l;
+        jdField_a_of_type_Byte = paramContext.jdField_a_of_type_Jhd.jdField_a_of_type_Byte;
+        jdField_b_of_type_Byte = paramContext.jdField_a_of_type_Jhd.jdField_a_of_type_Byte;
+        jdField_c_of_type_Byte = paramContext.jdField_a_of_type_Jhd.jdField_c_of_type_Byte;
+        jdField_d_of_type_Byte = paramContext.jdField_a_of_type_Jhd.e;
+        e = paramContext.jdField_a_of_type_Jhd.g;
+        f = paramContext.jdField_a_of_type_Jhd.i;
+        g = paramContext.jdField_a_of_type_Jhd.jdField_d_of_type_Byte;
+        h = paramContext.jdField_a_of_type_Jhd.f;
+        i = paramContext.jdField_a_of_type_Jhd.h;
+        j = paramContext.jdField_a_of_type_Jhd.j;
+        w = paramContext.jdField_a_of_type_Jhd.k;
+        x = paramContext.jdField_a_of_type_Jhd.l;
       } while (!QLog.isColorLevel());
       QLog.d("ConfigSystem", 2, "angle_local_front: " + jdField_a_of_type_Byte + ", angle_local_background: " + jdField_b_of_type_Byte + ", angle_remote_front_0: " + jdField_c_of_type_Byte + ", angle_remote_front_90: " + jdField_d_of_type_Byte + ", angle_remote_front_180: " + e + ", angle_remote_front_270: " + f + ", angle_remote_background_0: " + g + ", angle_remote_background_90: " + h + ", angle_remote_background_180: " + i + ", angle_remote_background_270: " + j);
       return;
@@ -412,7 +412,7 @@ public class ConfigSystemImpl
       if (paramArrayOfByte == null) {
         break;
       }
-      paramContext = paramArrayOfByte.jdField_a_of_type_Jhw;
+      paramContext = paramArrayOfByte.jdField_a_of_type_Jhh;
       break;
     }
     QLog.d("ConfigSystem", 2, "updateAVSwitchTypeTLV info == null");
@@ -472,8 +472,8 @@ public class ConfigSystemImpl
       QLog.d("ConfigSystem", 2, "unPack PB err");
       return null;
       paramArrayOfByte = localConfigPBProtocol.a();
-    } while ((paramArrayOfByte == null) || (!paramArrayOfByte.jdField_a_of_type_Jhu.jdField_a_of_type_Boolean));
-    return new int[] { paramArrayOfByte.jdField_a_of_type_Jhu.jdField_a_of_type_Int, paramArrayOfByte.jdField_a_of_type_Jhu.jdField_b_of_type_Int, paramArrayOfByte.jdField_a_of_type_Jhu.jdField_c_of_type_Int, paramArrayOfByte.jdField_a_of_type_Jhu.jdField_d_of_type_Int, paramArrayOfByte.jdField_a_of_type_Jhu.jdField_e_of_type_Int, paramArrayOfByte.jdField_a_of_type_Jhu.f, paramArrayOfByte.jdField_a_of_type_Jhu.g, paramArrayOfByte.jdField_a_of_type_Jhu.h, paramArrayOfByte.jdField_a_of_type_Jhu.i, paramArrayOfByte.jdField_a_of_type_Jhu.j, paramArrayOfByte.jdField_a_of_type_Jhu.k, paramArrayOfByte.jdField_a_of_type_Jhu.l };
+    } while ((paramArrayOfByte == null) || (!paramArrayOfByte.jdField_a_of_type_Jhf.jdField_a_of_type_Boolean));
+    return new int[] { paramArrayOfByte.jdField_a_of_type_Jhf.jdField_a_of_type_Int, paramArrayOfByte.jdField_a_of_type_Jhf.jdField_b_of_type_Int, paramArrayOfByte.jdField_a_of_type_Jhf.jdField_c_of_type_Int, paramArrayOfByte.jdField_a_of_type_Jhf.jdField_d_of_type_Int, paramArrayOfByte.jdField_a_of_type_Jhf.jdField_e_of_type_Int, paramArrayOfByte.jdField_a_of_type_Jhf.f, paramArrayOfByte.jdField_a_of_type_Jhf.g, paramArrayOfByte.jdField_a_of_type_Jhf.h, paramArrayOfByte.jdField_a_of_type_Jhf.i, paramArrayOfByte.jdField_a_of_type_Jhf.j, paramArrayOfByte.jdField_a_of_type_Jhf.k, paramArrayOfByte.jdField_a_of_type_Jhf.l };
   }
   
   public static int b(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, byte paramByte, boolean paramBoolean3)

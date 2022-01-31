@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.ar.ArConfigService;
 
-public class aacr
-  implements INetEngine.INetEngineListener
+class aacr
+  implements Runnable
 {
-  public aacr(ARPreSoResourceDownload paramARPreSoResourceDownload) {}
+  aacr(aacp paramaacp, ArConfigService paramArConfigService) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp) {}
+  public void run()
+  {
+    ArConfigService.d(this.jdField_a_of_type_ComTencentMobileqqArArConfigService);
+  }
 }
 
 

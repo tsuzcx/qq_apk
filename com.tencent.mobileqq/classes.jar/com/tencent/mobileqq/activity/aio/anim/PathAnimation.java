@@ -7,13 +7,13 @@ import android.view.animation.AnimationUtils;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
-import ukt;
+import unt;
 
 public class PathAnimation
   extends AIOAnimationConatiner.AIOAnimator
 {
   public ArrayList a;
-  private ukt a;
+  private unt a;
   
   public PathAnimation(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
@@ -115,10 +115,10 @@ public class PathAnimation
         localView.setTag(localValues);
       }
       label305:
-      if (this.jdField_a_of_type_Ukt == null)
+      if (this.jdField_a_of_type_Unt == null)
       {
-        this.jdField_a_of_type_Ukt = new ukt(this, null);
-        this.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this.jdField_a_of_type_Ukt, 16L);
+        this.jdField_a_of_type_Unt = new unt(this, null);
+        this.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this.jdField_a_of_type_Unt, 16L);
       }
       return true;
     }
@@ -128,10 +128,10 @@ public class PathAnimation
   
   protected void c()
   {
-    if (this.jdField_a_of_type_Ukt != null)
+    if (this.jdField_a_of_type_Unt != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this.jdField_a_of_type_Ukt);
-      this.jdField_a_of_type_Ukt = null;
+      this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this.jdField_a_of_type_Unt);
+      this.jdField_a_of_type_Unt = null;
     }
   }
 }

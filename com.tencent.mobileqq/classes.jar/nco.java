@@ -1,21 +1,19 @@
-import com.tencent.biz.qqstory.base.download.DownloadProgressListener;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Input;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Progress;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.common.recyclerview.BaseAdapter.OnItemLongClickListener;
+import com.tencent.biz.qqstory.common.recyclerview.BaseViewHolder;
+import com.tencent.biz.qqstory.common.recyclerview.HeaderAndFooterAdapter;
 
 public class nco
-  implements DownloadProgressListener
+  implements View.OnLongClickListener
 {
-  public nco(FileDownloadTask paramFileDownloadTask, FileDownloadTask.Input paramInput) {}
+  public nco(HeaderAndFooterAdapter paramHeaderAndFooterAdapter, BaseViewHolder paramBaseViewHolder) {}
   
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public boolean onLongClick(View paramView)
   {
-    FileDownloadTask.a(this.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask, new FileDownloadTask.Progress[] { new FileDownloadTask.Progress(this.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input, paramLong1, paramLong2) });
+    this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewHeaderAndFooterAdapter.a.b(this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.itemView, this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.getPosition());
+    return true;
   }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

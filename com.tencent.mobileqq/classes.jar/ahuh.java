@@ -1,29 +1,21 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemButton;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.model.SearchResultModelForEntrance;
+import com.tencent.mobileqq.search.presenter.EntranceResultPresenter;
 
 public class ahuh
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
-  public ahuh(StructMsgItemButton paramStructMsgItemButton) {}
+  public ahuh(EntranceResultPresenter paramEntranceResultPresenter, SearchResultModelForEntrance paramSearchResultModelForEntrance) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null)
-    {
-      OnLongClickAndTouchListener localOnLongClickAndTouchListener = (OnLongClickAndTouchListener)this.a.a.get();
-      if (localOnLongClickAndTouchListener != null) {
-        return localOnLongClickAndTouchListener.onLongClick(paramView);
-      }
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelSearchResultModelForEntrance.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahuh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,14 @@
-import com.tencent.device.msg.data.DevSingleStructMsgProcessor;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.activity.aio.item.DeviceSingleStructBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
+import com.tencent.mobileqq.activity.aio.doodle.PathDrawer.PathSegment;
 
-class usx
-  implements FMDialogUtil.FMDialogInterface
+public final class usx
+  implements MyParcelable.Creator
 {
-  usx(usw paramusw, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
-  
-  public void a()
+  public PathDrawer.PathSegment a(MyParcel paramMyParcel)
   {
-    ((DeviceMsgHandle)this.jdField_a_of_type_Usw.a.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
-    DeviceSingleStructBuilder.a(this.jdField_a_of_type_Usw.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    return new PathDrawer.PathSegment(paramMyParcel);
   }
-  
-  public void b() {}
 }
 
 

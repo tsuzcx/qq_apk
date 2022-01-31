@@ -1,36 +1,14 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import java.util.List;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
 
 public class aeri
-  extends FragmentPagerAdapter
+  implements Runnable
 {
-  private List jdField_a_of_type_JavaUtilList;
+  public aeri(NearbyProcManager paramNearbyProcManager, NearbyProcObserver paramNearbyProcObserver, int paramInt, Object[] paramArrayOfObject) {}
   
-  public aeri(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, FragmentManager paramFragmentManager, List paramList)
+  public void run()
   {
-    super(paramFragmentManager);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public Fragment a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

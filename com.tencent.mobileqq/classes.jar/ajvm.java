@@ -1,50 +1,31 @@
-import android.net.Uri;
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.Options;
 
 public class ajvm
-  extends DownloadListener
+  implements Action.OnActionEndListener
 {
-  public ajvm(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
+  public ajvm(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a()
   {
-    super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("PathTraceManager", 1, "voice down");
+    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
+      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
     }
-    paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
-    try
+    for (;;)
     {
-      ZipUtils.a(paramDownloadTask, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
-      i = 1;
-    }
-    catch (IOException paramDownloadTask)
-    {
-      for (;;)
-      {
-        QLog.i("PathTraceManager", 1, "unzip fail");
-        int i = 0;
+      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
+        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).b(TroopGiftToAllSurfaceView.a(this.a));
       }
-    }
-    if (i != 0)
-    {
-      QLog.d("PathTraceManager", 1, "unzip success");
-      if (this.b != null) {
-        AudioUtil.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
-      }
+      return;
+      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvm
  * JD-Core Version:    0.7.0.1
  */

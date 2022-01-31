@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-
 public class aibh
-  implements Runnable
 {
-  public aibh(ForwardSdkShareProcessor paramForwardSdkShareProcessor) {}
-  
-  public void run()
-  {
-    this.a.an_();
-  }
+  public int a;
+  public byte[] a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aibh
  * JD-Core Version:    0.7.0.1
  */

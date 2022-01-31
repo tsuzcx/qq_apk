@@ -29,9 +29,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONObject;
-import yqa;
-import yqb;
-import yqc;
+import ytg;
+import yth;
+import yti;
 
 public class ApolloGuestsPresenter
   implements OnDressDoneListener
@@ -40,10 +40,10 @@ public class ApolloGuestsPresenter
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private ApolloTextureView jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView;
-  private ApolloResDownloader.OnApolloDownLoadListener jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnApolloDownLoadListener = new yqb(this);
+  private ApolloResDownloader.OnApolloDownLoadListener jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnApolloDownLoadListener = new yth(this);
   private IApolloGuestsView jdField_a_of_type_ComTencentMobileqqApolloStoreIApolloGuestsView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new yqa(this);
+  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new ytg(this);
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   
@@ -165,7 +165,7 @@ public class ApolloGuestsPresenter
         label638:
         if (localArrayList.size() > 4)
         {
-          Collections.sort(localArrayList, new yqc(this));
+          Collections.sort(localArrayList, new yti(this));
           i = localArrayList.size() - 1;
           while (i >= 4)
           {

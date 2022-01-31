@@ -1,38 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import android.support.v4.app.FragmentActivity;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
 
 public class aeuu
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aeuu(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public aeuu(SmallVideoSendFragment paramSmallVideoSendFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131437707);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
-      return;
-    }
-    this.a.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131437707);
-      return;
-    }
-    if (this.a.a())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131437708);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
+    ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(this.a.a, 1);
   }
 }
 

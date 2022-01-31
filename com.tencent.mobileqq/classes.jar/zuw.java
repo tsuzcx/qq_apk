@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
 
 public class zuw
   implements Runnable
 {
-  public zuw(ARVideoRecordButtonView paramARVideoRecordButtonView, float paramFloat) {}
+  public zuw(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView.clearAnimation();
-    ARVideoRecordButtonView.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView, ARVideoRecordButtonView.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView), this.jdField_a_of_type_Float);
-    ARVideoRecordButtonView.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView, this.jdField_a_of_type_Float);
+    DataLineMsgProxy.b(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zuw
  * JD-Core Version:    0.7.0.1
  */

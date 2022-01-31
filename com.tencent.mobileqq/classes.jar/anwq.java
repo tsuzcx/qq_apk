@@ -1,16 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.widget.ImageView;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
-public class anwq
-  implements View.OnTouchListener
+class anwq
+  implements Runnable
 {
-  public anwq(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  anwq(anwp paramanwp) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return this.a.a(paramView, paramMotionEvent);
+    LocalVideoSelectActivity.a(this.a.a).setVisibility(8);
   }
 }
 

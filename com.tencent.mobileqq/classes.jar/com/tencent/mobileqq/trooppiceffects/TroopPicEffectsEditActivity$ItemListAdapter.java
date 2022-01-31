@@ -39,10 +39,10 @@ public class TroopPicEffectsEditActivity$ItemListAdapter
     if (paramView == null)
     {
       paramView = new TroopPicEffectsEditActivity.ViewHolder();
-      Object localObject = LayoutInflater.from(this.a).inflate(2130971638, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131375169));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131375106));
-      paramView.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131375170);
+      Object localObject = LayoutInflater.from(this.a).inflate(2130971686, paramViewGroup, false);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131375355));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131375292));
+      paramView.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131375356);
       ((View)localObject).setTag(paramView);
       paramViewGroup = paramView;
       paramView = (View)localObject;
@@ -77,7 +77,7 @@ public class TroopPicEffectsEditActivity$ItemListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.ItemListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 public class noc
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public noc(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  public noc(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public boolean onPreDraw()
   {
-    ThreadManager.getUIHandler().post(new nod(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
+    this.a.a(this.a.a, this.a.g, this.a.h);
+    this.a.a.getViewTreeObserver().removeOnPreDrawListener(this);
     return false;
   }
 }

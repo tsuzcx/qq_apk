@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.QvipSpecialCareObserver;
 
 public class sbz
-  extends VasExtensionObserver
+  extends QvipSpecialCareObserver
 {
-  public sbz(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sbz(ChatSettingActivity paramChatSettingActivity) {}
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public void a(Object paramObject)
   {
-    if (paramBoolean) {
-      this.a.a(true);
+    if (paramObject != null) {
+      ((Integer)paramObject).intValue();
     }
   }
 }

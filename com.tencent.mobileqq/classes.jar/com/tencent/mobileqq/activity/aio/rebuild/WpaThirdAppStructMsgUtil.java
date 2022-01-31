@@ -19,7 +19,7 @@ import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.ShareMsgHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import vyn;
+import wbp;
 
 public class WpaThirdAppStructMsgUtil
 {
@@ -52,13 +52,13 @@ public class WpaThirdAppStructMsgUtil
       throw new NullPointerException();
     }
     ShareAioResultDialog localShareAioResultDialog = new ShareAioResultDialog(paramFragmentActivity);
-    String str = paramFragmentActivity.getString(2131430135);
+    String str = paramFragmentActivity.getString(2131430152);
     if (paramString != null) {}
     for (paramString = str + paramString;; paramString = str)
     {
-      paramAbsShareMsg = new vyn(paramAbsShareMsg, paramFragmentActivity, paramFragmentActivity, paramQQAppInterface, paramSessionInfo);
+      paramAbsShareMsg = new wbp(paramAbsShareMsg, paramFragmentActivity, paramFragmentActivity, paramQQAppInterface, paramSessionInfo);
       localShareAioResultDialog.a(paramString, paramAbsShareMsg);
-      localShareAioResultDialog.a(paramFragmentActivity.getResources().getString(2131430134));
+      localShareAioResultDialog.a(paramFragmentActivity.getResources().getString(2131430151));
       localShareAioResultDialog.a(paramAbsShareMsg);
       localShareAioResultDialog.a(false);
       localShareAioResultDialog.show();

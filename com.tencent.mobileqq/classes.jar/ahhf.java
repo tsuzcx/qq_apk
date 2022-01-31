@@ -1,31 +1,50 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import java.util.Comparator;
-import java.util.Map;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.CapturePtvTemplateRefreshListener;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public final class ahhf
-  implements Comparator
+public class ahhf
+  implements INetEngine.INetEngineListener
 {
-  public int a(GroupSearchEngine.SearchEngineEntity paramSearchEngineEntity1, GroupSearchEngine.SearchEngineEntity paramSearchEngineEntity2)
+  public ahhf(CapturePtvTemplateManager paramCapturePtvTemplateManager, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  
+  public void a(NetResp paramNetResp)
   {
-    paramSearchEngineEntity2 = (Integer)SearchConfigManager.searchEngineOrder.get(paramSearchEngineEntity2.a);
-    if (paramSearchEngineEntity2 == null) {
-      paramSearchEngineEntity2 = Integer.valueOf(0);
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.c);
     }
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
+    try
     {
-      Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramSearchEngineEntity1.a);
-      paramSearchEngineEntity1 = localInteger;
-      if (localInteger == null) {
-        paramSearchEngineEntity1 = Integer.valueOf(0);
+      ZipUtils.a(new File(CapturePtvTemplateManager.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a.a();
       }
-      return Integer.signum(paramSearchEngineEntity2.intValue() - paramSearchEngineEntity1.intValue());
+      return;
+    }
+    catch (IOException paramNetResp)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          paramNetResp.printStackTrace();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahhf
  * JD-Core Version:    0.7.0.1
  */

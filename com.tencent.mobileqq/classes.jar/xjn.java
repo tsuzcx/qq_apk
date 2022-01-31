@@ -1,22 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.Config;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.os.MqqHandler;
 
 public class xjn
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public xjn(LoginView paramLoginView) {}
+  public xjn(BannerManager paramBannerManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
-      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
+    try
+    {
+      Object localObject = BannerManager.a(this.a).app;
+      Config localConfig = ((QQAppInterface)localObject).a(((QQAppInterface)localObject).getCurrentAccountUin(), true);
+      if (QLog.isColorLevel()) {
+        QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "initConfig config: %s", new Object[] { localConfig }));
+      }
+      if (localConfig != null)
+      {
+        localObject = ((QQAppInterface)localObject).getHandler(Conversation.class);
+        if (localObject != null) {
+          ((MqqHandler)localObject).sendEmptyMessage(1010);
+        }
+      }
+      return;
     }
-    return false;
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

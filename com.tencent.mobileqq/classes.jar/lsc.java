@@ -1,35 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
 
 public class lsc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lsc(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, ArticleInfo paramArticleInfo) {}
+  public lsc(UserOperationModule paramUserOperationModule, UserOperationModule.Ox978RespCallBack paramOx978RespCallBack, String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = 0;
-    ReadInJoyActivityHelper.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
-    }
-    try
-    {
-      paramView = new JSONObject();
-      paramView.put("feeds_channel_entrance", i);
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelUserOperationModule$Ox978RespCallBack.a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

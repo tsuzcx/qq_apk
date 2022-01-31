@@ -1,15 +1,19 @@
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
 
 public class ngp
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
+  extends EncryptUrlJob
 {
-  public ngp(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
-  
-  public void a()
+  public ngp(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareSinaData paramShareSinaData)
   {
-    this.a.a = 1;
-    this.a.a(null);
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.c = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

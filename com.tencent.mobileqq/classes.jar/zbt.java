@@ -1,19 +1,30 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.activity.weather.WeatherManager;
+import com.tencent.mobileqq.app.ConfigHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
-public final class zbt
-  implements DialogInterface.OnClickListener
+public class zbt
+  implements Runnable
 {
-  public zbt(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public zbt(ConfigHandler paramConfigHandler, String paramString, WeatherManager paramWeatherManager, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
+    boolean bool = false;
+    File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b.getApplication().getFilesDir(), "WeatherResource.zip");
+    String str = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
+    int i = HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b, str, localFile);
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "handleWeatherResources download: " + i + ",downloadpath" + localFile.getAbsolutePath());
+    }
+    if (i == 0) {
+      bool = this.jdField_a_of_type_ComTencentMobileqqActivityWeatherWeatherManager.a(this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(9, bool, null);
   }
 }
 

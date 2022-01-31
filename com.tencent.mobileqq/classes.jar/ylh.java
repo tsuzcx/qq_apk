@@ -1,85 +1,48 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.apollo.ai.ApolloAIPresenter;
-import com.tencent.mobileqq.apollo.ai.IApolloAIView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyDownloadRsp;
-import tencent.im.cs.cmd0x346.cmd0x346.DownloadInfo;
-import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
+import java.io.File;
 
-public class ylh
-  extends TransProcessorHandler
+public final class ylh
+  implements Runnable
 {
-  public ylh(ApolloAIPresenter paramApolloAIPresenter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ylh(long paramLong, int paramInt, View paramView, ApolloRender paramApolloRender) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.jdField_c_of_type_Int != 36)) {}
-    do
+    try
     {
-      do
+      ApolloRender.access$002(this.jdField_a_of_type_Long);
+      Intent localIntent;
+      if (this.jdField_a_of_type_Int == 0)
       {
-        return;
-        switch (paramMessage.what)
-        {
-        case 1002: 
-        default: 
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloAIPresenter", 2, "start upload cmshow record");
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloAIPresenter", 2, "finish upload cmshow record" + localFileMsg.g);
-      }
-      try
-      {
-        paramMessage = new cmd0x346.RspBody();
-        paramMessage.mergeFrom(localFileMsg.a);
-        paramMessage = (cmd0x346.ApplyDownloadRsp)paramMessage.msg_apply_download_rsp.get();
-        if (paramMessage.int32_ret_code.get() != 0) {
-          break;
-        }
-        paramMessage = (cmd0x346.DownloadInfo)paramMessage.msg_download_info.get();
-        if ((paramMessage != null) && (paramMessage.str_download_url.has())) {}
-        paramMessage = paramMessage.str_download_url.get();
-        ((VasExtensionHandler)ApolloAIPresenter.a(this.a).a(71)).a(1, paramMessage, "cmshowAI");
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloAIPresenter", 2, "download record url =" + paramMessage);
-        }
-        FileUtil.c(localFileMsg.jdField_c_of_type_JavaLangString);
-        VipUtils.a(null, "cmshow", "Apollo", "voice_sent_rst", 0, 0, new String[0]);
+        localIntent = new Intent("android.intent.action.PICK");
+        localIntent.setType("image/*");
+        ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).startActivityForResult(localIntent, 14006);
         return;
       }
-      catch (Exception paramMessage) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("ApolloAIPresenter", 2, "upload cmshow record response error e=" + paramMessage.toString());
-    return;
-    VipUtils.a(null, "cmshow", "Apollo", "voice_sent_rst", 0, 1, new String[0]);
-    return;
-    VipUtils.a(null, "cmshow", "Apollo", "voice_sent_rst", 0, 1, new String[0]);
-    if (ApolloAIPresenter.a(this.a) != null)
-    {
-      ApolloAIPresenter.a(this.a).h();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloAIPresenter", 2, "apollo ai record upload fail");
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        localIntent = new Intent();
+        localIntent.setAction("android.media.action.IMAGE_CAPTURE");
+        localIntent.addCategory("android.intent.category.DEFAULT");
+        ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
+        ApolloRender.access$102(new File(ApolloRender.CMSHOW_FILE_PATH));
+        localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
+        ApolloRender.access$100().createNewFile();
+        localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
+        localIntent.putExtra("output", Uri.fromFile(ApolloRender.access$100()));
+        ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).startActivityForResult(localIntent, 14005);
+        return;
       }
     }
-    QLog.i("ApolloAIPresenter", 1, "upload cmshow error:" + localFileMsg.g);
-    return;
-    QLog.i("ApolloAIPresenter", 1, "upload cmshow cancel:" + localFileMsg.g);
+    catch (Exception localException)
+    {
+      QLog.e("ApolloRender", 2, "imageselector  fail e=" + localException.toString());
+    }
   }
 }
 

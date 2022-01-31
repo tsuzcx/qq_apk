@@ -1,6 +1,6 @@
 package cooperation.qqreader;
 
-import amat;
+import amqx;
 import android.os.Handler.Callback;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -71,7 +71,7 @@ public class QRBridgeUtil
     WtloginManager localWtloginManager = (WtloginManager)mApp.getManager(1);
     if (!localWtloginManager.IsNeedLoginWithPasswd(paramString, 16))
     {
-      localWtloginManager.GetStWithoutPasswd(paramString, 16L, 16L, new amat(paramCallback));
+      localWtloginManager.GetStWithoutPasswd(paramString, 16L, 16L, new amqx(paramCallback));
       return true;
     }
     return false;

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.magicface.model;
 
-import adqq;
+import aedw;
 import com.tencent.qphone.base.util.QLog;
 
 public abstract class MagicfaceDecoder
@@ -49,7 +49,7 @@ public abstract class MagicfaceDecoder
     if (!this.jdField_a_of_type_Boolean) {}
     try
     {
-      new Thread(new adqq(this)).start();
+      new Thread(new aedw(this)).start();
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -73,7 +73,7 @@ public abstract class MagicfaceDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.MagicfaceDecoder
  * JD-Core Version:    0.7.0.1
  */

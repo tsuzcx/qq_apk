@@ -1,24 +1,19 @@
-import com.tencent.biz.qqstory.model.AddressDataProvider;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
+import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
+import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class nbf
-  implements LbsManager.LbsUpdateListener
+  implements UploadObject.UploadFinishListener
 {
-  public nbf(AddressDataProvider paramAddressDataProvider) {}
+  public nbf(StoryVideoUploadTask paramStoryVideoUploadTask, StoryVideoTaskInfo paramStoryVideoTaskInfo) {}
   
-  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
+  public void a(UploadObject paramUploadObject)
   {
-    SLog.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramBasicLocation != null))
-    {
-      SLog.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramBasicLocation.b), Integer.valueOf(paramBasicLocation.a));
-      this.a.a(paramBasicLocation.b, paramBasicLocation.a);
-      return;
-    }
-    SLog.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
-    this.a.a(false, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.l = ((ImageFileObject)paramUploadObject).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
 }
 

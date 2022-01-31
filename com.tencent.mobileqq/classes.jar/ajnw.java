@@ -1,22 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan;
 
-public final class ajnw
+public class ajnw
   implements View.OnClickListener
 {
-  public ajnw(QQCustomDialog paramQQCustomDialog) {}
+  public ajnw(SchoolTroopKeywordManager.SchoolTroopHighlightSpan paramSchoolTroopHighlightSpan) {}
   
-  public void onClick(View paramView)
-  {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnw
  * JD-Core Version:    0.7.0.1
  */

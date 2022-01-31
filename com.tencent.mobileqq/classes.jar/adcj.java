@@ -1,56 +1,33 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
 
 public class adcj
-  extends DiscussionObserver
+  implements IDownloadController
 {
-  public adcj(ForwardShareCardOption paramForwardShareCardOption) {}
+  public adcj(C2CFileModel paramC2CFileModel) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onGetFlyTicket: " + paramBoolean + " sigUrl=" + paramString1);
-    }
-    if (!paramBoolean)
-    {
-      this.a.t();
-      switch (paramInt)
-      {
-      default: 
-        paramString1 = "获取多人聊天链接失败";
-        ForwardShareCardOption.c(this.a, null);
-        ForwardShareCardOption.a(this.a, false);
-        QQToast.a(this.a.a, 1, paramString1, 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
-      }
-    }
-    while ((ForwardShareCardOption.c(this.a) == null) || (Long.parseLong(ForwardShareCardOption.c(this.a)) != paramLong2)) {
-      for (;;)
-      {
-        return;
-        paramString1 = "多人聊天不存在";
-        continue;
-        paramString1 = "你已不在此多人聊天";
-      }
-    }
-    if (ForwardShareCardOption.a(this.a))
-    {
-      ForwardShareCardOption.c(this.a, paramString1);
-      ForwardShareCardOption.a(this.a, ForwardShareCardOption.c(this.a), true);
-    }
-    ForwardShareCardOption.a(this.a, false);
+    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new adck(this));
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ForwardOption.ForwardShareCardOption", 2, "onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramString + "]");
+    this.a.d();
+    int i = this.a.d();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (i == 0)
+    {
+      localQQAppInterface.a().a(this.a.c());
+      return;
     }
-    if ((ForwardShareCardOption.c(this.a) != null) && (ForwardShareCardOption.c(this.a).equals(paramString))) {
-      ForwardShareCardOption.a(this.a, ForwardShareCardOption.c(this.a), false);
-    }
+    localQQAppInterface.a().a(this.a.a.a());
   }
 }
 

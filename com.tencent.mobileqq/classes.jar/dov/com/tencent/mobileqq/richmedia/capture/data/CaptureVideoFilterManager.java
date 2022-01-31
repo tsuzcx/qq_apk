@@ -6,10 +6,10 @@ import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import anvi;
-import anvj;
-import anvk;
-import anvl;
+import aoln;
+import aolo;
+import aolp;
+import aolq;
 import com.tencent.av.AVLog;
 import com.tencent.av.AVNetEngine;
 import com.tencent.av.opengl.GraphicRenderMgr;
@@ -87,7 +87,7 @@ public class CaptureVideoFilterManager
   
   public static final CaptureVideoFilterManager a()
   {
-    return anvj.a();
+    return aolo.a();
   }
   
   public static String a(Context paramContext)
@@ -249,7 +249,7 @@ public class CaptureVideoFilterManager
           else
           {
             this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
-            this.jdField_a_of_type_AndroidOsHandler.post(new anvi(this));
+            this.jdField_a_of_type_AndroidOsHandler.post(new aoln(this));
           }
         }
         else {
@@ -306,7 +306,7 @@ public class CaptureVideoFilterManager
                   if (!((File)localObject3).exists())
                   {
                     localObject3 = new HttpNetReq();
-                    ((HttpNetReq)localObject3).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new anvl(this);
+                    ((HttpNetReq)localObject3).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aolq(this);
                     ((HttpNetReq)localObject3).jdField_a_of_type_JavaLangString = localFilterDesc.jdField_c_of_type_JavaLangString;
                     ((HttpNetReq)localObject3).jdField_a_of_type_Int = 0;
                     ((HttpNetReq)localObject3).jdField_c_of_type_JavaLangString = ((String)localObject2);
@@ -323,7 +323,7 @@ public class CaptureVideoFilterManager
                   if (!((File)localObject3).exists())
                   {
                     localObject2 = new HttpNetReq();
-                    ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new anvk(this);
+                    ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aolp(this);
                     ((HttpNetReq)localObject2).jdField_a_of_type_JavaLangString = localFilterDesc.jdField_a_of_type_JavaLangString;
                     ((HttpNetReq)localObject2).jdField_a_of_type_Int = 0;
                     ((HttpNetReq)localObject2).jdField_c_of_type_JavaLangString = (jdField_b_of_type_JavaLangString + localFilterDesc.e + ".zip");

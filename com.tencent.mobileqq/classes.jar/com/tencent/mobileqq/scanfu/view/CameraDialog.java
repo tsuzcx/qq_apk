@@ -12,9 +12,9 @@ public class CameraDialog
   
   public CameraDialog(Context paramContext)
   {
-    super(paramContext, 2131624515);
-    setContentView(2130970214);
-    this.a = ((Button)findViewById(2131369662));
+    super(paramContext, 2131624516);
+    setContentView(2130970230);
+    this.a = ((Button)findViewById(2131369739));
   }
   
   public void a(View.OnClickListener paramOnClickListener)
@@ -24,7 +24,7 @@ public class CameraDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.scanfu.view.CameraDialog
  * JD-Core Version:    0.7.0.1
  */

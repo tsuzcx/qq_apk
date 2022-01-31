@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.troop.utils.TroopFileError.SimpleErrorInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import android.view.View;
 
 class ajba
   implements Runnable
 {
-  ajba(ajaz paramajaz, TroopFileTransferManager.Item paramItem) {}
+  ajba(ajaz paramajaz, View paramView) {}
   
   public void run()
   {
-    TroopFileError.SimpleErrorInfo localSimpleErrorInfo = new TroopFileError.SimpleErrorInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Ajaz.a.f, 3, 210);
-    this.jdField_a_of_type_Ajaz.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localSimpleErrorInfo);
+    this.jdField_a_of_type_AndroidViewView.sendAccessibilityEvent(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajba
  * JD-Core Version:    0.7.0.1
  */

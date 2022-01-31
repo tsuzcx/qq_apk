@@ -1,56 +1,74 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.MusicPlayerSceneListener;
-import dov.com.qq.im.capture.music.QimMusicPlayer;
-import dov.com.qq.im.capture.view.MusicProviderView;
-import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
 
-public class amyx
-  implements MusicPlayerSceneListener
+public final class amyx
+  implements EmoticonCallback
 {
-  public amyx(MusicProviderView paramMusicProviderView) {}
+  public amyx(EditText paramEditText) {}
   
-  public void a()
+  public void a(EmoticonInfo paramEmoticonInfo)
   {
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+    if ((paramEmoticonInfo == null) || (this.a == null)) {}
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramEmoticonInfo instanceof SystemEmoticonInfo));
+      i = this.a.getSelectionStart();
+      j = this.a.getSelectionEnd();
+    } while ((i < 0) || (j < 0) || (j < i) || (this.a == null) || (this.a.getEditableText() == null));
+    this.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.c(((SystemEmoticonInfo)paramEmoticonInfo).a));
   }
   
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo) {}
+  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
   
-  public void a(MusicItemInfo paramMusicItemInfo)
+  public boolean a(EmoticonInfo paramEmoticonInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "requestMusicSuccess mListener= " + this.a.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener);
-    }
-    if (this.a.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener != null)
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a == null) {}
+    for (;;)
     {
-      if (paramMusicItemInfo.d == 2) {
-        this.a.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.c(true);
+      return;
+      if (this.a.getSelectionStart() != 0) {
+        try
+        {
+          Editable localEditable = this.a.getText();
+          int i = this.a.getSelectionStart();
+          int j = android.text.TextUtils.getOffsetBefore(this.a.getText(), i);
+          if (i != j)
+          {
+            localEditable.delete(Math.min(i, j), Math.max(i, j));
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
       }
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.c(false);
   }
   
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if ((paramInt != -1) && (MusicProviderView.a(this.a) != null)) {
-      MusicProviderView.a(this.a).f();
-    }
-  }
+  public void b(EmoticonInfo paramEmoticonInfo) {}
   
-  public void b(MusicItemInfo paramMusicItemInfo) {}
+  public void c() {}
   
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo) {}
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyx
  * JD-Core Version:    0.7.0.1
  */

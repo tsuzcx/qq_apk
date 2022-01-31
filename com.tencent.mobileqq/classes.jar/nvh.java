@@ -1,28 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.ProfilePresenterListener;
-import com.tencent.mobileqq.app.FriendListObserver;
-import friendlist.GetOnlineInfoResp;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
 
 public class nvh
-  extends FriendListObserver
+  extends LoadingMoreHelper.OnLoadMoreSimpleListener
 {
-  public nvh(MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
+  public nvh(StoryDetailFragment paramStoryDetailFragment) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public boolean a(boolean paramBoolean)
   {
-    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
-    while (MemoriesProfilePresenter.a(this.a) == null) {
-      return;
-    }
-    paramString = MemoriesProfilePresenter.a(this.a);
-    if (paramGetOnlineInfoResp.eIconType == 11) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramString.b(paramBoolean);
-      return;
-    }
+    this.a.d();
+    return true;
   }
 }
 

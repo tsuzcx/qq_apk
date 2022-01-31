@@ -1,66 +1,50 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.util.Utils;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class tio
-  extends CardObserver
+  implements View.OnTouchListener
 {
-  public tio(QQSettingMe paramQQSettingMe) {}
+  public tio(QQLSActivity paramQQLSActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean)
-    {
-      QQSettingMe.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onSetMedal");
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      return;
-      if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ((paramObject instanceof Card)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)))
+    if (paramMotionEvent.getAction() == 0) {
+      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new tip(this));
-        ThreadManager.post(new tiq(this), 5, null, true);
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "singlelist  click doble");
+        }
+        if (QQLSActivity.a(this.a) != null)
+        {
+          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
+          QQLSActivity.a(this.a, true);
+        }
+        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
       }
-    } while ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!(paramObject instanceof Card)) || (this.a.c) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)));
-    ThreadManager.post(new tir(this, (Card)paramObject), 5, null, true);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.a(paramString);
     }
-  }
-  
-  protected void e(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new tis(this));
-    }
-  }
-  
-  protected void m(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    for (;;)
     {
-      QQSettingMe.a(this.a, false);
+      return false;
       if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onGetMedal medalSwitchDisable= " + paramBoolean2);
+        QLog.e("QQLSActivity", 2, "singlelist  click once");
+      }
+      if (QQLSActivity.a(this.a)) {
+        QQLSActivity.b(this.a).setText(2131437349);
+      }
+      for (;;)
+      {
+        paramView = QQLSActivity.a(this.a).obtainMessage(5);
+        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
+        break;
+        QQLSActivity.b(this.a).setText(2131437348);
+      }
+      if (paramMotionEvent.getAction() == 1) {
+        QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
       }
     }
   }

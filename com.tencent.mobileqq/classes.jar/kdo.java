@@ -1,22 +1,14 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.funchat.zimu.ZimuViewPacMan;
 
 public class kdo
-  implements Runnable
 {
-  public kdo(EffectFilterTextPager paramEffectFilterTextPager) {}
+  public int a;
+  public int b;
   
-  public void run()
+  public kdo(ZimuViewPacMan paramZimuViewPacMan, int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(1), Float.valueOf(this.a.jdField_a_of_type_Float), Float.valueOf(this.a.b) });
-      if (QLog.isColorLevel()) {
-        QLog.e("EffectFilterTextPager", 2, "[childLock] trigger animation");
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

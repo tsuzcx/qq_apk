@@ -1,24 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLViewContext;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.StartResource;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
 
 public class ahms
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public ahms(DanceReadyFilter paramDanceReadyFilter) {}
+  public ahms(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.a().a(DanceReadyFilter.a(this.a).a.b);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

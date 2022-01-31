@@ -1,25 +1,22 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
 
-public class ahju
-  extends ContentObserver
+class ahju
+  implements ProviderContainerView.ContainerViewListener
 {
-  public ahju(QZoneManagerImp paramQZoneManagerImp, Handler paramHandler)
+  ahju(ahjs paramahjs) {}
+  
+  public void a(View paramView, int paramInt)
   {
-    super(paramHandler);
+    EffectsCameraCaptureFragment.e(this.a.a);
   }
   
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    ThreadManager.post(new ahjv(this), 8, null, true);
-  }
+  public void y_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahju
  * JD-Core Version:    0.7.0.1
  */

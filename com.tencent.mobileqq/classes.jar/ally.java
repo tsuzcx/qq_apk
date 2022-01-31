@@ -1,21 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.FitSystemWindowsRelativeLayout;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class ally
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ally(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
+  public ally(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return true;
+    FriendProfileCardActivity.a(this.a.app, this.a.a);
+    FriendProfileCardActivity.b(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ally
  * JD-Core Version:    0.7.0.1
  */

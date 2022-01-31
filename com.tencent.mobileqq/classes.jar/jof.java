@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvGVideoLevelInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class jof
-  implements Parcelable.Creator
+class jof
+  implements Runnable
 {
-  public RecvGVideoLevelInfo a(Parcel paramParcel)
-  {
-    return new RecvGVideoLevelInfo(paramParcel);
-  }
+  jof(joe paramjoe, long paramLong) {}
   
-  public RecvGVideoLevelInfo[] a(int paramInt)
+  public void run()
   {
-    return new RecvGVideoLevelInfo[paramInt];
+    if ((this.jdField_a_of_type_Joe.a.a() == this.jdField_a_of_type_Long) && (!this.jdField_a_of_type_Joe.a.a.getApp().getApplicationContext().getSharedPreferences("qav_SP", 0).getBoolean("kick_out_self", false))) {
+      this.jdField_a_of_type_Joe.a.f(true);
+    }
   }
 }
 

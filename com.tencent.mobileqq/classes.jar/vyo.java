@@ -1,24 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-public final class vyo
-  implements Animation.AnimationListener
+public class vyo
+  implements Runnable
 {
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
-    }
-  }
+  public vyo(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
+    try
+    {
+      ark.arkNotify("com.tencent.weather", "pubaccountPendantRefresh", "", "json");
+      return;
     }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
   }
 }
 

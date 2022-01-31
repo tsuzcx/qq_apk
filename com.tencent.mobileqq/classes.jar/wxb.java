@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class wxb
+  implements FMDialogUtil.FMDialogInterface
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  public wxb(PhotoListActivity paramPhotoListActivity) {}
   
-  private wxb(PayCodeEntryActivity paramPayCodeEntryActivity) {}
+  public void a()
+  {
+    this.a.i();
+  }
+  
+  public void b()
+  {
+    this.a.c.setClickable(true);
+  }
 }
 
 

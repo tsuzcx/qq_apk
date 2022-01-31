@@ -1,25 +1,24 @@
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityLoginView;
-import com.tencent.open.agent.CardContainer;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-class akku
-  implements Runnable
+public class akku
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  akku(akko paramakko) {}
+  public akku(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void run()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AuthorityActivity", 2, "--> handler message UPDATE_DROP_DOWN_VIEWS");
+      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
     }
-    this.a.a.a.a.b();
-    this.a.a.runOnUiThread(new akkv(this));
+    this.a.runOnUiThread(new akkv(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akku
  * JD-Core Version:    0.7.0.1
  */

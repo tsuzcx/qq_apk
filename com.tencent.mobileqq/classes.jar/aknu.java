@@ -1,44 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.open.appcommon.Common;
-import com.tencent.open.base.FileUtils;
-import com.tencent.open.base.LogUtility;
-import java.io.File;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.filemanager.app.UniformDownload;
+import com.tencent.mobileqq.webview.swift.WebViewWrapper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.DownloadListener;
 
-public final class aknu
-  implements Runnable
+public class aknu
+  implements DownloadListener
 {
-  public void run()
+  public aknu(WebViewWrapper paramWebViewWrapper, TouchWebView paramTouchWebView, boolean paramBoolean, Activity paramActivity) {}
+  
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    File localFile1 = new File(Common.c());
-    if (localFile1.exists())
-    {
-      File[] arrayOfFile = localFile1.listFiles();
-      int j = arrayOfFile.length;
-      int i = 0;
-      if (i < j)
-      {
-        File localFile2 = arrayOfFile[i];
-        if ((localFile2.getName().startsWith("system_old_")) || ((localFile2.isDirectory()) && (!localFile2.getName().equals("tmp")) && (!TextUtils.isEmpty(Common.q())) && (!localFile2.getName().equals(Common.q()))))
-        {
-          if (!FileUtils.a(new File(localFile1 + File.separator + localFile2.getName()))) {
-            break label179;
-          }
-          LogUtility.b("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> successful");
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label179:
-          LogUtility.c("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> failed");
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, "start UniformDownloadActivity");
     }
+    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("_filesize", paramLong);
+    localBundle.putString("param_user_agent", paramString2);
+    localBundle.putString("param_content_des", paramString3);
+    localBundle.putString("param_mime_type", paramString4);
+    localBundle.putString("param_refer_url", str);
+    localBundle.putBoolean("fromArkAppDownload", this.jdField_a_of_type_Boolean);
+    UniformDownload.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aknu
  * JD-Core Version:    0.7.0.1
  */

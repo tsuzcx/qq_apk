@@ -1,26 +1,25 @@
-import android.animation.ValueAnimator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 
 public class uxe
+  implements Runnable
 {
-  public float a;
-  public int a;
-  public ValueAnimator a;
-  public Scroller a;
-  public boolean a;
-  public float b;
-  public int b;
-  public Scroller b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public uxe(FileVideoItemBuilder paramFileVideoItemBuilder, FileManagerEntity paramFileManagerEntity) {}
   
-  public uxe(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public void run()
+  {
+    FileManagerUtil.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    if (FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b.post(new uxf(this));
+    }
+  }
 }
 
 

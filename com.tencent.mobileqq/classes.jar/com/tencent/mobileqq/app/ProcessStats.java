@@ -19,7 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import zgr;
+import zjx;
 
 public class ProcessStats
 {
@@ -104,7 +104,7 @@ public class ProcessStats
     //   5: bipush 110
     //   7: imul
     //   8: invokespecial 137	java/lang/StringBuilder:<init>	(I)V
-    //   11: astore_1
+    //   11: astore_2
     //   12: ldc 105
     //   14: getstatic 30	com/tencent/mobileqq/app/ProcessStats:jdField_a_of_type_ComTencentMobileqqAppProcessStats$Stats	Lcom/tencent/mobileqq/app/ProcessStats$Stats;
     //   17: iconst_0
@@ -145,14 +145,14 @@ public class ProcessStats
     //   103: invokevirtual 177	java/lang/Process:getInputStream	()Ljava/io/InputStream;
     //   106: invokespecial 180	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   109: invokespecial 183	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   112: astore_2
-    //   113: aload_2
+    //   112: astore_3
+    //   113: aload_3
     //   114: invokevirtual 186	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   117: astore_3
-    //   118: aload_3
+    //   117: astore_1
+    //   118: aload_1
     //   119: ifnull +46 -> 165
-    //   122: aload_1
-    //   123: aload_3
+    //   122: aload_2
+    //   123: aload_1
     //   124: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: ldc 188
     //   129: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -196,7 +196,7 @@ public class ProcessStats
     //   211: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   214: invokestatic 159	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   217: pop
-    //   218: aload_1
+    //   218: aload_2
     //   219: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   222: astore_1
     //   223: iconst_0
@@ -244,18 +244,18 @@ public class ProcessStats
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	299	0	paramInt	int
-    //   11	112	1	localStringBuilder	StringBuilder
-    //   136	83	1	localException1	Exception
-    //   222	29	1	str1	String
+    //   117	7	1	str1	String
+    //   136	1	1	localException1	Exception
+    //   222	29	1	str2	String
     //   252	26	1	localObject1	Object
     //   283	1	1	localException2	Exception
     //   287	1	1	localException3	Exception
-    //   112	125	2	localObject2	Object
+    //   11	226	2	localObject2	Object
     //   249	1	2	localException4	Exception
     //   279	1	2	localException5	Exception
     //   291	1	2	localException6	Exception
     //   295	1	2	localException7	Exception
-    //   117	7	3	str2	String
+    //   112	2	3	localBufferedReader	java.io.BufferedReader
     // Exception table:
     //   from	to	target	type
     //   0	113	136	java/lang/Exception
@@ -904,7 +904,7 @@ public class ProcessStats
   {
     try
     {
-      int i = new File("/sys/devices/system/cpu/").listFiles(new zgr()).length;
+      int i = new File("/sys/devices/system/cpu/").listFiles(new zjx()).length;
       return i;
     }
     catch (Exception localException) {}

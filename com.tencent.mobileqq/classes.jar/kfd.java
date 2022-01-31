@@ -1,17 +1,25 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import android.graphics.Bitmap;
+import android.widget.RelativeLayout;
+import com.tencent.av.ui.redbag.GuideTip2;
 
 public class kfd
-  implements MenuItem.OnMenuItemClickListener
+  implements Runnable
 {
-  public kfd(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
+  public kfd(GuideTip2 paramGuideTip2, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(112) });
-    return false;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.b);
+    if (this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.a != null)
+    {
+      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.a.recycle();
+      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.a = null;
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.b != null)
+    {
+      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.b.recycle();
+      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.b = null;
+    }
   }
 }
 

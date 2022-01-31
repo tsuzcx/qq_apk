@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg;
 
-import ahtf;
+import aihi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -166,7 +166,7 @@ public abstract class AbsStructMsgElement
       }
       ReadinjoySPEventReport.a().a(localAbsStructMsgElement.t, localAbsStructMsgElement);
       if (localAbsStructMsgElement.jdField_a_of_type_Long > 0L) {
-        ThreadManager.getSubThreadHandler().postDelayed(new ahtf(this, localAbsStructMsgElement, localQQAppInterface), 0L);
+        ThreadManager.getSubThreadHandler().postDelayed(new aihi(this, localAbsStructMsgElement, localQQAppInterface), 0L);
       }
       try
       {
@@ -350,7 +350,7 @@ public abstract class AbsStructMsgElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsgElement
  * JD-Core Version:    0.7.0.1
  */

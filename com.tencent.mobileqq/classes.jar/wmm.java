@@ -1,44 +1,49 @@
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.qphone.base.util.QLog;
-
 public class wmm
-  implements Runnable
 {
-  public wmm(LebaShowListManager paramLebaShowListManager, RedTouchManager paramRedTouchManager, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3) {}
+  private static int jdField_b_of_type_Int;
+  private static final Object jdField_b_of_type_JavaLangObject = new Object();
+  private static wmm jdField_b_of_type_Wmm;
+  public int a;
+  public Object a;
+  private wmm a;
   
-  public void run()
+  public wmm(int paramInt, Object paramObject)
   {
-    for (;;)
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public static wmm a(int paramInt, Object paramObject)
+  {
+    synchronized (jdField_b_of_type_JavaLangObject)
     {
-      try
+      if (jdField_b_of_type_Wmm != null)
       {
-        RedTouchManager localRedTouchManager = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager;
-        i = (int)this.jdField_a_of_type_Long;
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (this.b != -9223372036854775808L) {
-          continue;
-        }
-        l = this.c;
-        i = localRedTouchManager.a(i, bool, l);
+        wmm localwmm = jdField_b_of_type_Wmm;
+        jdField_b_of_type_Wmm = localwmm.jdField_a_of_type_Wmm;
+        localwmm.jdField_a_of_type_Wmm = null;
+        jdField_b_of_type_Int -= 1;
+        localwmm.jdField_a_of_type_Int = paramInt;
+        localwmm.jdField_a_of_type_JavaLangObject = paramObject;
+        return localwmm;
       }
-      catch (Exception localException)
+      return new wmm(paramInt, paramObject);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangObject = null;
+    synchronized (jdField_b_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Int < 50)
       {
-        long l;
-        int j = -2;
-        int i = j;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("Q.lebatab.mgr", 2, localException.toString());
-        i = j;
-        continue;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, result = " + i);
+        this.jdField_a_of_type_Wmm = jdField_b_of_type_Wmm;
+        jdField_b_of_type_Wmm = this;
+        jdField_b_of_type_Int += 1;
       }
       return;
-      l = this.b;
     }
   }
 }

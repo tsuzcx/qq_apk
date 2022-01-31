@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f5d" android:insetTop="0.0dip" android:insetBottom="0.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0222d9" />
+    <item android:state_selected="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0222d9" />
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0222d9" />
+</selector>

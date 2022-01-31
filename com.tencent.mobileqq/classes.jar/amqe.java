@@ -1,20 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlParams;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ConfigObserver;
+import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
 
-public final class amqe
-  implements Parcelable.Creator
+public class amqe
+  extends ConfigObserver
 {
-  public WadlParams a(Parcel paramParcel)
-  {
-    WadlParams localWadlParams = new WadlParams("");
-    localWadlParams.a(paramParcel);
-    return localWadlParams;
-  }
+  public amqe(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
   
-  public WadlParams[] a(int paramInt)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    return new WadlParams[paramInt];
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putInt("result", paramInt);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 3, localBundle);
   }
 }
 

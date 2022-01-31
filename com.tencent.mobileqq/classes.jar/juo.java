@@ -1,21 +1,15 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.GAudioMemberListCtrl;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
-public class juo
-  implements Animation.AnimationListener
+class juo
+  implements Runnable
 {
-  public juo(EffectSettingUi paramEffectSettingUi) {}
+  juo(jul paramjul, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.setVisibility(8);
+    this.jdField_a_of_type_Jul.a.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

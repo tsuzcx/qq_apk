@@ -3,11 +3,11 @@ package com.tencent.gdtad.views.freeflip;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.image.URLImageView;
-import qkd;
+import qmr;
 
 abstract class GdtFreeFlipContentView
   extends URLImageView
-  implements qkd
+  implements qmr
 {
   private boolean a;
   
@@ -28,7 +28,7 @@ abstract class GdtFreeFlipContentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.freeflip.GdtFreeFlipContentView
  * JD-Core Version:    0.7.0.1
  */

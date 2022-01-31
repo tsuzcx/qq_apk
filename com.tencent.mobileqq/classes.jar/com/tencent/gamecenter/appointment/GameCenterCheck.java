@@ -13,8 +13,8 @@ import com.tencent.open.wadl.WadlJsBridge;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import qhl;
-import qhm;
+import qjf;
+import qjg;
 
 public class GameCenterCheck
   extends AsyncStep
@@ -25,13 +25,13 @@ public class GameCenterCheck
   
   static
   {
-    jdField_a_of_type_JavaLangString = "http://info.gamecenter.qq.com/cgi-bin/gc_pre_download_async_fcgi?param={\"key\":{\"param\":{\"qq_version\":\"7.6.0.3525\"},\"module\":\"gc_pre_download\",\"method\":\"get_pre_download\"}}";
+    jdField_a_of_type_JavaLangString = "http://info.gamecenter.qq.com/cgi-bin/gc_pre_download_async_fcgi?param={\"key\":{\"param\":{\"qq_version\":\"7.6.3.3560\"},\"module\":\"gc_pre_download\",\"method\":\"get_pre_download\"}}";
   }
   
   public GameCenterCheck()
   {
     this.jdField_a_of_type_Long = 86400L;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new qhl(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new qjf(this);
   }
   
   public static void b()
@@ -47,7 +47,7 @@ public class GameCenterCheck
       GameCenterBroadcastReceiver.b();
       return;
     }
-    ThreadManager.post(new qhm(str3, str2), 5, null, false);
+    ThreadManager.post(new qjg(str3, str2), 5, null, false);
   }
   
   protected int a()

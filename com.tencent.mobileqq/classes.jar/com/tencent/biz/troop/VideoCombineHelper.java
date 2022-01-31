@@ -16,13 +16,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
-import ova;
-import ovb;
-import ovd;
-import ovf;
-import ovg;
-import ovh;
-import ovi;
+import owu;
+import owv;
+import owx;
+import owz;
+import oxa;
+import oxb;
+import oxc;
 
 public class VideoCombineHelper
 {
@@ -70,11 +70,11 @@ public class VideoCombineHelper
       {
         ((VideoCombineHelper.CombineParams)this.jdField_a_of_type_JavaUtilHashMap.get(str2)).b = true;
         Looper.prepare();
-        new Handler().postDelayed(new ova(this, paramCombineParams, paramCallback), 300L);
+        new Handler().postDelayed(new owu(this, paramCombineParams, paramCallback), 300L);
         return str1;
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramCombineParams);
-      ThreadManager.post(new ovb(this, paramCallback, System.currentTimeMillis(), str1), 8, null, false);
+      ThreadManager.post(new owv(this, paramCallback, System.currentTimeMillis(), str1), 8, null, false);
       return str1;
     }
   }
@@ -90,7 +90,7 @@ public class VideoCombineHelper
         return;
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(str, paramCombineParams);
-      ThreadManager.post(new ovd(this, paramCallback, System.currentTimeMillis(), str), 8, null, false);
+      ThreadManager.post(new owx(this, paramCallback, System.currentTimeMillis(), str), 8, null, false);
       return;
     }
   }
@@ -116,7 +116,7 @@ public class VideoCombineHelper
     ((ArrayList)localObject4).add("-vn");
     ((ArrayList)localObject4).add(localObject3);
     ((FFmpegCommandUnit)localObject2).jdField_a_of_type_ArrayOfJavaLangString = ((String[])((ArrayList)localObject4).toArray(new String[0]));
-    ((FFmpegCommandUnit)localObject2).jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ovf(this, paramCallback, paramString1);
+    ((FFmpegCommandUnit)localObject2).jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new owz(this, paramCallback, paramString1);
     localArrayList1.add(localObject2);
     ((ArrayList)localObject4).clear();
     localObject4 = new FFmpegCommandUnit();
@@ -130,7 +130,7 @@ public class VideoCombineHelper
     ((ArrayList)localObject5).add("-an");
     ((ArrayList)localObject5).add(localObject2);
     ((FFmpegCommandUnit)localObject4).jdField_a_of_type_ArrayOfJavaLangString = ((String[])((ArrayList)localObject5).toArray(new String[0]));
-    ((FFmpegCommandUnit)localObject4).jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ovg(this, paramCallback, paramString1);
+    ((FFmpegCommandUnit)localObject4).jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new oxa(this, paramCallback, paramString1);
     localArrayList1.add(localObject4);
     localObject5 = new FFmpegCommandUnit();
     localObject4 = ((File)localObject1).getAbsolutePath() + File.separator + "mixed.m4a";
@@ -144,7 +144,7 @@ public class VideoCombineHelper
     localArrayList2.add("amix=inputs=2:duration=first:dropout_transition=2");
     localArrayList2.add(localObject4);
     ((FFmpegCommandUnit)localObject5).jdField_a_of_type_ArrayOfJavaLangString = ((String[])localArrayList2.toArray(new String[0]));
-    ((FFmpegCommandUnit)localObject5).jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ovh(this, paramCallback, paramString1);
+    ((FFmpegCommandUnit)localObject5).jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new oxb(this, paramCallback, paramString1);
     localArrayList1.add(localObject5);
     paramString2 = new FFmpegCommandUnit();
     localObject1 = ((File)localObject1).getAbsolutePath() + File.separator + "combine.mp4";
@@ -162,7 +162,7 @@ public class VideoCombineHelper
     ((ArrayList)localObject3).add("aac");
     ((ArrayList)localObject3).add(localObject1);
     paramString2.jdField_a_of_type_ArrayOfJavaLangString = ((String[])((ArrayList)localObject3).toArray(new String[0]));
-    paramString2.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ovi(this, paramCallback, (String)localObject1, paramString1);
+    paramString2.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new oxc(this, paramCallback, (String)localObject1, paramString1);
     localArrayList1.add(paramString2);
     ((ArrayList)localObject3).clear();
     if (this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.a()) {

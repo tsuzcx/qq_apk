@@ -1,47 +1,40 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.MagicDataReport;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.FaceToolbar;
-import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
-import com.tencent.av.ui.QavListItemBase.ItemInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class jus
-  implements QAVPtvTemplateAdapter.IEffectCallback
+  extends BroadcastReceiver
 {
-  public jus(FaceToolbar paramFaceToolbar) {}
+  public jus(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    EffectSettingUi.a(this.a.mApp);
-  }
-  
-  public void a(QavListItemBase.ItemInfo paramItemInfo)
-  {
-    AVLog.c(FaceToolbar.TAG, "onEffectClick id: " + paramItemInfo.jdField_a_of_type_JavaLangString);
-    EffectSettingUi.a(this.a.mApp);
-    Object localObject = this.a.mApp.a();
-    if (localObject == null) {
-      AVLog.e(FaceToolbar.TAG, "videoController == null");
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("GAudioMembersCtrlActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
+      }
     }
-    while (this.a.checkDimmStatus(paramItemInfo)) {
-      return;
-    }
-    localObject = ((VideoController)localObject).a(this.a.mApp.a().a().c) + "";
-    if (paramItemInfo.jdField_a_of_type_JavaLangString.equals("0"))
+    int i;
+    long l;
+    do
     {
-      this.a.notifyEvent(Integer.valueOf(6101), null, Boolean.valueOf(true));
-      MagicDataReport.a(2, (String)localObject);
-      MagicDataReport.a(2);
-      return;
+      do
+      {
+        return;
+      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
+      i = paramIntent.getIntExtra("stopReason3rd", -1);
+      l = paramIntent.getLongExtra("groupId", -1L);
+    } while ((i != 1) || (this.a.jdField_a_of_type_Long != l));
+    if (QLog.isColorLevel()) {
+      QLog.d("GAudioMembersCtrlActivity", 2, "ACTION_STOP_VIDEO_CHAT");
     }
-    AudioHelper.a(paramItemInfo.jdField_a_of_type_JavaLangString, false);
-    this.a.notifyEvent(Integer.valueOf(6100), paramItemInfo.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
-    MagicDataReport.a(paramItemInfo.jdField_a_of_type_JavaLangString, paramItemInfo.jdField_a_of_type_Int, (String)localObject);
-    MagicDataReport.a(paramItemInfo.jdField_a_of_type_JavaLangString, paramItemInfo.jdField_a_of_type_Int);
+    this.a.finish();
   }
 }
 

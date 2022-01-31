@@ -1,21 +1,14 @@
-import OnlinePushPack.MsgInfo;
-import android.util.Pair;
-import com.tencent.mobileqq.app.message.DiscMessageProcessor;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.automator.step.CheckAuthCode;
 
 public class zpz
-  implements Runnable
+  extends ConfigObserver
 {
-  public zpz(DiscMessageProcessor paramDiscMessageProcessor, long paramLong1, long paramLong2, Pair paramPair1, MsgInfo paramMsgInfo, long paramLong3, long paramLong4, byte paramByte, long paramLong5, Pair paramPair2, ArrayList paramArrayList) {}
+  private zpz(CheckAuthCode paramCheckAuthCode) {}
   
-  public void run()
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_Long != this.jdField_b_of_type_Long)
-    {
-      DiscMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageDiscMessageProcessor, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_b_of_type_Long, this.c, this.d, this.jdField_a_of_type_Byte, this.e, this.jdField_b_of_type_AndroidUtilPair);
-      return;
-    }
-    DiscMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageDiscMessageProcessor, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Long, String.valueOf(this.c), this.jdField_a_of_type_Byte, this.e, false);
+    this.a.a(7);
   }
 }
 

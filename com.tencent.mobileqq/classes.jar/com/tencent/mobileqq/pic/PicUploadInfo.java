@@ -26,6 +26,7 @@ public class PicUploadInfo
   public boolean f;
   public int g;
   public String g;
+  public boolean g;
   public int h;
   public String h;
   public int i;

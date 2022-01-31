@@ -1,24 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiBasicInfo;
 
-public class amuz
-  implements Runnable
+public final class amuz
+  implements Parcelable.Creator
 {
-  public amuz(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
-  
-  public void run()
+  public WeishiBasicInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMPtvTemplateManager", 2, "start download template runnable");
-    }
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(), this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, QIMPtvTemplateAdapter.a(this.a));
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.downloading = true;
+    return new WeishiBasicInfo(paramParcel);
+  }
+  
+  public WeishiBasicInfo[] a(int paramInt)
+  {
+    return new WeishiBasicInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
 
-public class adda
+class adda
   implements Runnable
 {
-  public adda(NearbyHybridFragment paramNearbyHybridFragment) {}
+  adda(adcz paramadcz) {}
   
   public void run()
   {
-    this.a.j();
+    if (this.a.a.a != null) {
+      this.a.a.a.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adda
  * JD-Core Version:    0.7.0.1
  */

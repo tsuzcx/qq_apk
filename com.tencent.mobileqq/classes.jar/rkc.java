@@ -1,28 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
-public class rkc
-  implements View.OnClickListener
+class rkc
+  implements Runnable
 {
-  public rkc(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  rkc(rkb paramrkb) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (paramView.getParent() == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramView = (View)paramView.getParent().getParent();
-      } while ((paramView == null) || (paramView.getTag() == null));
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SimpleAccount));
-    this.a.a((SimpleAccount)paramView.getTag());
+    this.a.a.d();
   }
 }
 

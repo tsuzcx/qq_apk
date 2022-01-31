@@ -62,11 +62,11 @@ import java.io.Serializable;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Observable;
-import vwg;
-import vwh;
-import vwi;
-import vwj;
-import vwk;
+import vzi;
+import vzj;
+import vzk;
+import vzl;
+import vzm;
 
 public class StrangerChatPie
   extends BaseChatPie
@@ -75,17 +75,17 @@ public class StrangerChatPie
   private boolean P;
   private boolean Q;
   private boolean R;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new vwk(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new vzm(this);
   protected MessageObserver a;
-  private ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new vwh(this);
+  private ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new vzj(this);
   public QidianManager a;
-  private QidianBusinessObserver jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver = new vwj(this);
+  private QidianBusinessObserver jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver = new vzl(this);
   private String f;
   
   public StrangerChatPie(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, FragmentActivity paramFragmentActivity, Context paramContext)
   {
     super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new vwi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new vzk(this);
   }
   
   public static Serializable a(Context paramContext, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -545,13 +545,13 @@ public class StrangerChatPie
   
   protected void p()
   {
-    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new vwg(this));
+    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new vzi(this));
     if ((ChatActivityUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || (CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1))
     {
       if (AIOTopRightButtonConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
       {
         this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131433364));
+        this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131433381));
         return;
       }
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);

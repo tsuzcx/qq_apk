@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
+import java.util.List;
 
-public class abxb
+class abxb
   implements Runnable
 {
-  public abxb(EmoticonLinearLayout paramEmoticonLinearLayout) {}
+  abxb(abxa paramabxa, List paramList) {}
   
   public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.b();
-      this.a.postDelayed(this, 100L);
-    }
+    this.jdField_a_of_type_Abxa.a.a.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

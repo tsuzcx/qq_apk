@@ -16,8 +16,8 @@ import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import yop;
-import yoq;
+import yrv;
+import yrw;
 
 public class SpriteAioScript
   implements ApolloCmdChannel.IRequestHandler
@@ -94,7 +94,7 @@ public class SpriteAioScript
       return;
       localIApolloRenderView = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
     } while (localIApolloRenderView == null);
-    localIApolloRenderView.onRunInRenderThread(new yop(this, localIApolloRenderView, paramString));
+    localIApolloRenderView.onRunInRenderThread(new yrv(this, localIApolloRenderView, paramString));
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -136,7 +136,7 @@ public class SpriteAioScript
     } while (!paramBoolean);
     a(localQQAppInterface, paramString, i, (int[])localObject, 0);
     return;
-    SpriteRscBuilder.a(localQQAppInterface, paramString, i, (int[])localObject, new yoq(this, paramBoolean));
+    SpriteRscBuilder.a(localQQAppInterface, paramString, i, (int[])localObject, new yrw(this, paramBoolean));
   }
   
   public boolean a()

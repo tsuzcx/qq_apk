@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiManager;
 
-class acda
+public class acda
   implements Runnable
 {
-  acda(accy paramaccy) {}
+  public acda(EmojiManager paramEmojiManager, EmoticonPackage paramEmoticonPackage, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
   public void run()
   {
-    this.a.a.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType != 2) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.c, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Int);
+    }
   }
 }
 

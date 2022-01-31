@@ -93,8 +93,8 @@ import tencent.im.msg.im_msg_body.MsgBody;
 import tencent.im.msg.im_msg_body.Ptt;
 import tencent.im.msg.im_msg_body.PubGroup;
 import tencent.im.msg.im_msg_body.RichText;
-import zpi;
-import zpj;
+import zso;
+import zsp;
 
 public class BaseMessageProcessorForTroopAndDisc
   extends BaseMessageProcessor
@@ -104,7 +104,7 @@ public class BaseMessageProcessorForTroopAndDisc
   public BaseMessageProcessorForTroopAndDisc(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
     super(paramQQAppInterface, paramMessageHandler);
-    this.jdField_a_of_type_JavaUtilComparator = new zpj(this);
+    this.jdField_a_of_type_JavaUtilComparator = new zsp(this);
   }
   
   private boolean a(MessageRecord paramMessageRecord)
@@ -374,7 +374,7 @@ public class BaseMessageProcessorForTroopAndDisc
                 localObject6 = ((BaseMessageManager.AddMessageContext)localObject8).jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
                 localObject8 = ((BaseMessageManager.AddMessageContext)localObject8).jdField_a_of_type_JavaUtilMap;
                 localObject6 = ((RecentUserProxy)localObject6).a((String)localObject4, 1);
-                TroopManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord.frienduin, StructMsgForGeneralShare.eventId, localMessageRecord.shmsgseq, new zpi(this, false, localMessageInfo, l3, l5, (RecentUser)localObject6, (String)localObject4, localMessageRecord, (Map)localObject8));
+                TroopManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord.frienduin, StructMsgForGeneralShare.eventId, localMessageRecord.shmsgseq, new zso(this, false, localMessageInfo, l3, l5, (RecentUser)localObject6, (String)localObject4, localMessageRecord, (Map)localObject8));
               }
             }
             if ((localMessageRecord instanceof MessageForTroopFile)) {

@@ -2,8 +2,8 @@ package com.tencent.av.ui.redbag;
 
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.service.IAVRedPacketCallback;
-import kej;
-import kek;
+import kdu;
+import kdv;
 
 public class AVRedBagConfig
   extends SubHandleBase
@@ -14,13 +14,13 @@ public class AVRedBagConfig
   AVRedBagConfig(AVRedBagMgr paramAVRedBagMgr)
   {
     super(paramAVRedBagMgr);
-    this.jdField_a_of_type_ComTencentAvServiceIAVRedPacketCallback = new kej(this);
+    this.jdField_a_of_type_ComTencentAvServiceIAVRedPacketCallback = new kdu(this);
   }
   
   void a()
   {
-    kek localkek = new kek(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localkek);
+    kdv localkdv = new kdv(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localkdv);
   }
   
   public void a(AVRedBagConfig.Info paramInfo)

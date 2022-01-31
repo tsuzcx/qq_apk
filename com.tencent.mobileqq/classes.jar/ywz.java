@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
+import java.io.File;
+import java.util.Comparator;
 
-public class ywz
-  implements Runnable
+public final class ywz
+  implements Comparator
 {
-  public ywz(BaseActivity paramBaseActivity) {}
-  
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    ActivityLifecycle.onResume(this.a.getActivity());
+    if ((paramFile1.exists()) && (paramFile2.exists()))
+    {
+      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
+        return 1;
+      }
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ywz
  * JD-Core Version:    0.7.0.1
  */

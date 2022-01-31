@@ -1,5 +1,9 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
+import aabm;
+import aabn;
+import aabo;
+import aabp;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -19,10 +23,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 import mqq.os.MqqHandler;
-import zwt;
-import zwu;
-import zwv;
-import zww;
 
 public class MultiFragmentAnimRenderable
   implements Handler.Callback, ARBaseRender, ARRenderMangerInnerCallback
@@ -102,7 +102,7 @@ public class MultiFragmentAnimRenderable
     localArCloudConfigInfo.jdField_d_of_type_Int = paramArVideoResourceInfo.jdField_d_of_type_Int;
     if ((QLog.isDebugVersion()) && (paramArVideoResourceInfo.jdField_d_of_type_Int != 2) && (paramArVideoResourceInfo.jdField_d_of_type_Int != 3) && (paramArVideoResourceInfo.jdField_d_of_type_Int != 4))
     {
-      ThreadManager.getUIHandler().post(new zwt(this));
+      ThreadManager.getUIHandler().post(new aabm(this));
       QLog.i("AREngine_MultiFragmentAnimRenderable", 2, "buildARRenderResourceInfoForFragmentAnim animInfo.type=" + paramArVideoResourceInfo.jdField_d_of_type_Int);
     }
     Object localObject = new ArrayList();
@@ -136,7 +136,7 @@ public class MultiFragmentAnimRenderable
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = localARBaseRender;
     this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo = localArVideoResourceInfo;
     this.jdField_a_of_type_Int += 1;
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zwu(this, localARBaseRender));
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aabn(this, localARBaseRender));
   }
   
   public int a()
@@ -250,7 +250,7 @@ public class MultiFragmentAnimRenderable
       return;
     }
     if (this.jdField_b_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zwv(this));
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aabo(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a(paramDrawFrameParements);
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager$DrawFrameParements = paramDrawFrameParements;
@@ -365,7 +365,7 @@ public class MultiFragmentAnimRenderable
     {
       return false;
       if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zww(this));
+        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aabp(this));
       }
     }
   }

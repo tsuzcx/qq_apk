@@ -1,37 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmotionJsonDownloadListener;
+import com.tencent.mobileqq.emoticon.SogouEmoji;
+import com.tencent.mobileqq.emoticon.SogouEmojiTaskController;
+import com.tencent.qphone.base.util.QLog;
 
 public class acdh
-  implements AdapterView.OnItemClickListener
+  extends EmotionJsonDownloadListener
 {
-  public acdh(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public acdh(SogouEmoji paramSogouEmoji) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
-    if (paramAdapterView.a()) {
-      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
-    }
-    while (!this.a.f()) {
-      return;
-    }
-    if (FMDataCache.a(paramAdapterView)) {
-      FMDataCache.b(paramAdapterView);
-    }
-    for (;;)
+    super.a(paramEmoticonPackage, paramInt, paramBundle);
+    if ((paramEmoticonPackage != null) && (paramInt == 0))
     {
-      this.a.k();
-      LocalFileBrowserActivity.a(this.a);
-      return;
-      if (this.a.e) {
-        FMDataCache.b();
+      paramBundle = paramBundle.getBundle("jsonReqParams");
+      if (paramBundle != null)
+      {
+        paramInt = paramBundle.getInt(SogouEmoji.jdField_a_of_type_JavaLangString);
+        paramBundle = paramBundle.getString(SogouEmoji.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
+        }
+        boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController.a(paramInt);
+        if (bool) {
+          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
+        }
       }
-      FMDataCache.a(paramAdapterView);
     }
   }
 }

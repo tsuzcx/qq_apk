@@ -1,37 +1,27 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class jyj
-  implements Runnable
+  implements ChatActivityUtils.StartVideoListener
 {
-  public jyj(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public jyj(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public void run()
+  public void a()
   {
-    Object localObject = "QQ电话";
-    if (this.a.jdField_c_of_type_Int == 2) {
-      localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(3000, String.valueOf(this.a.jdField_a_of_type_Long), null);
-    }
-    for (;;)
-    {
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      localObject = this.a;
-      ((MultiVideoEnterPageActivity)localObject).g += 1;
-      if (this.a.jdField_c_of_type_JavaLangRunnable != null)
-      {
-        if (this.a.g >= 3) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
-      }
-      return;
-      if (this.a.jdField_c_of_type_Int == 1) {
-        localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(1, String.valueOf(this.a.jdField_a_of_type_Long), null);
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.jdField_c_of_type_JavaLangRunnable);
+    this.a.a.a().a().b = -1;
+    PSTNC2CActivity.a(this.a);
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.a.a().a().b = -1;
+    PSTNC2CActivity.a(this.a);
+    this.a.finish();
   }
 }
 

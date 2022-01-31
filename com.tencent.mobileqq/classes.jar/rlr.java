@@ -1,21 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class rlr
-  implements Runnable
+  extends Handler
 {
-  public rlr(AutoRemarkActivity paramAutoRemarkActivity) {}
+  public rlr(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (TextUtils.isEmpty(this.a.a)) {}
-    while (((FriendsManager)this.a.app.getManager(50)).a(this.a.a) != null) {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        return;
+        if (!this.a.isFinishing())
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131434046));
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130845523);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
+        }
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+        return;
+      } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131434045));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
       return;
     }
-    ((FriendListHandler)this.a.app.a(1)).b(this.a.a);
+    AssistantSettingActivity.a(this.a).setOnCheckedChangeListener(null);
+    FormSwitchItem localFormSwitchItem = AssistantSettingActivity.a(this.a);
+    if (!((Boolean)paramMessage.obj).booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localFormSwitchItem.setChecked(bool);
+      AssistantSettingActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
+    }
   }
 }
 

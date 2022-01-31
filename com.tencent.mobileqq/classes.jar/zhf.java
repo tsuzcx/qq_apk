@@ -1,25 +1,43 @@
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.app.MessageRoamConstants;
+import com.tencent.mobileqq.app.MessageRoamManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class zhf
-  implements Runnable
+  extends DownloadListener
 {
-  public zhf(QQAppInterface paramQQAppInterface) {}
+  public zhf(MessageRoamManager paramMessageRoamManager) {}
   
-  public void run()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    QQAppInterface.H();
-    QQAppInterface.a(this.a);
-    IntentFilter localIntentFilter = new IntentFilter("com.tencent.qzone.cleanunreadcount");
-    localIntentFilter.addAction("com.tecent.qzone.clearAlbumRedTouch");
-    QQAppInterface.c(this.a).registerReceiver(QQAppInterface.a(this.a), localIntentFilter);
-    VideoBroadcastReceiver.a(this.a);
-    if (this.a.e()) {
-      PtvTemplateManager.a(this.a);
+    super.onDone(paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + paramDownloadTask.e + ", url: " + paramDownloadTask.a);
     }
+    int i = paramDownloadTask.a.indexOf("?");
+    String str;
+    if (i == -1)
+    {
+      str = paramDownloadTask.a;
+      if (!MessageRoamConstants.a.contains(str)) {
+        break label105;
+      }
+      this.a.a(paramDownloadTask);
+    }
+    label105:
+    do
+    {
+      return;
+      str = paramDownloadTask.a.substring(0, i - 1);
+      break;
+      if ("http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
+      {
+        this.a.b(paramDownloadTask);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + paramDownloadTask.a);
   }
 }
 

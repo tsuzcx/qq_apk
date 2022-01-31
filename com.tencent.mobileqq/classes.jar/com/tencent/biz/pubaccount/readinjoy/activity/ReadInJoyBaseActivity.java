@@ -28,7 +28,7 @@ import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
 import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import lce;
+import lbp;
 
 public class ReadInJoyBaseActivity
   extends FragmentActivity
@@ -52,7 +52,7 @@ public class ReadInJoyBaseActivity
   public ReadInJoyBaseActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new lce(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new lbp(this);
   }
   
   @TargetApi(11)
@@ -67,13 +67,13 @@ public class ReadInJoyBaseActivity
   
   private View c()
   {
-    this.c = ((TextView)findViewById(2131363363));
+    this.c = ((TextView)findViewById(2131363381));
     return this.c;
   }
   
   protected View a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363227));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     a(this.jdField_a_of_type_AndroidWidgetTextView);
     if (AppSetting.b) {
@@ -84,10 +84,10 @@ public class ReadInJoyBaseActivity
   
   protected ViewGroup a()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131367176));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLeftRedDotRadioButton = ((LeftRedDotRadioButton)findViewById(2131367177));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131367224));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLeftRedDotRadioButton = ((LeftRedDotRadioButton)findViewById(2131367225));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLeftRedDotRadioButton.setFocusable(true);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton = ((RedDotRadioButton)findViewById(2131367178));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton = ((RedDotRadioButton)findViewById(2131367226));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.setFocusable(true);
     a(this.jdField_a_of_type_AndroidWidgetRadioGroup);
     return this.jdField_a_of_type_AndroidWidgetRadioGroup;
@@ -95,10 +95,10 @@ public class ReadInJoyBaseActivity
   
   protected void a(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130845746));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130845874));
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131367043));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131367091));
       a(this.jdField_a_of_type_AndroidViewViewGroup);
       c();
       a();
@@ -110,7 +110,7 @@ public class ReadInJoyBaseActivity
   
   protected View b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363456));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363474));
     a(this.jdField_a_of_type_AndroidWidgetImageView);
     return this.d;
   }
@@ -138,14 +138,14 @@ public class ReadInJoyBaseActivity
           {
             paramIntent = (Intent)localObject;
             if (((String)localObject).contains("消息")) {
-              paramIntent = getString(2131433681);
+              paramIntent = getString(2131433698);
             }
           }
         }
       }
       localObject = paramIntent;
       if (paramIntent == null) {
-        localObject = getString(2131433681);
+        localObject = getString(2131433698);
       }
       localTextView.setText((CharSequence)localObject);
       localTextView.setVisibility(0);
@@ -153,8 +153,8 @@ public class ReadInJoyBaseActivity
       {
         localObject = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
         paramIntent = (Intent)localObject;
-        if (!((String)localObject).contains(getString(2131433681))) {
-          paramIntent = getString(2131433681) + (String)localObject;
+        if (!((String)localObject).contains(getString(2131433698))) {
+          paramIntent = getString(2131433698) + (String)localObject;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramIntent);
       }
@@ -196,18 +196,18 @@ public class ReadInJoyBaseActivity
       a(getIntent());
       return;
       Object localObject2 = LayoutInflater.from(this);
-      Object localObject1 = ((LayoutInflater)localObject2).inflate(2130969619, null);
+      Object localObject1 = ((LayoutInflater)localObject2).inflate(2130969627, null);
       try
       {
         localObject2 = ((LayoutInflater)localObject2).inflate(paramInt, (ViewGroup)localObject1, false);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject1).findViewById(2131363995));
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject1).findViewById(2131364019));
         if (ImmersiveUtils.isSupporImmersive() == 1)
         {
           this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
           this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, ImmersiveUtils.a(this), 0, 0);
         }
         localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-        ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131367043);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131367091);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
         this.jdField_a_of_type_AndroidViewView = ((View)localObject2);
         super.setContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qzonestatus;
 
 import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import agps;
+import ahdu;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -138,7 +138,7 @@ public class QzoneContactsFeedManager
     while (!NetworkUtil.g(BaseApplication.getContext())) {
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new agps(this));
+    ThreadManager.getSubThreadHandler().post(new ahdu(this));
   }
   
   public void a(long paramLong)
@@ -269,7 +269,7 @@ public class QzoneContactsFeedManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager
  * JD-Core Version:    0.7.0.1
  */

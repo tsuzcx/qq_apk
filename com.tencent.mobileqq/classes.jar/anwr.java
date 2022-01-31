@@ -1,20 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
 public class anwr
-  extends Handler
+  implements IMediaPlayer.OnErrorListener
 {
-  public anwr(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public anwr(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    LocalVideoSelectActivity.a(this.a).a();
+    LocalVideoSelectActivity.a(this.a).a(true);
+    return true;
   }
 }
 

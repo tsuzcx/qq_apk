@@ -8,15 +8,15 @@ import com.tencent.av.opengl.glrenderer.GLCanvas;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import jko;
-import jkp;
+import jjz;
+import jka;
 
 public class GLViewGroup
   extends GLView
 {
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new jkp(this);
-  private GLView.OnZOrderChangedListener jdField_b_of_type_ComTencentAvOpenglUiGLView$OnZOrderChangedListener = new jko(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new jka(this);
+  private GLView.OnZOrderChangedListener jdField_b_of_type_ComTencentAvOpenglUiGLView$OnZOrderChangedListener = new jjz(this);
   private GLView jdField_b_of_type_ComTencentAvOpenglUiGLView;
   protected final Rect c = new Rect();
   protected final Rect d = new Rect();

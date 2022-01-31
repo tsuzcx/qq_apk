@@ -1,66 +1,28 @@
+import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class nrz
-  implements QQStoryMainController.QQStoryMainView
+  implements ActionSheet.OnButtonClickListener
 {
-  public nrz(QQStoryMainActivity paramQQStoryMainActivity) {}
+  public nrz(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, ActionSheet paramActionSheet) {}
   
-  public View a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return QQStoryMainActivity.a(this.a);
-  }
-  
-  public ImageView a()
-  {
-    return this.a.rightViewImg;
-  }
-  
-  public TextView a()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public void a()
-  {
-    this.a.onBackEvent();
-  }
-  
-  public void a(String paramString)
-  {
-    QQStoryMainActivity.a(this.a, paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (UIUtils.b()) {}
+    do
     {
-      this.a.startTitleProgress();
       return;
-    }
-    this.a.stopTitleProgress();
-  }
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      QQStoryMainActivity.a(this.a, "日迹", "轻触回顶部");
-      return;
-    }
-    a("日迹");
-  }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    QQStoryMainActivity.a(this.a);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+    } while (!"查看群资料卡".equals(this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt)));
+    paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c, 0);
+    paramView.putInt("extra_last_open_from", this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a);
+    ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramView, 2);
   }
 }
 

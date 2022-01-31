@@ -1,16 +1,16 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class ubz
   implements View.OnClickListener
 {
-  public ubz(TroopTransferActivity paramTroopTransferActivity) {}
+  public ubz(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.cancel();
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

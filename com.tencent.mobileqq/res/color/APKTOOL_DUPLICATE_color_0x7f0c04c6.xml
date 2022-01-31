@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:color="#ffdb6766" />
-    <item android:color="#ffdf8274" />
+    <item android:state_enabled="false" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c027c" />
+    <item android:state_pressed="true" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c027b" />
+    <item android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c027a" />
 </selector>

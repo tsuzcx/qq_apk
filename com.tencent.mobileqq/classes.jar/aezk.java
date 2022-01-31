@@ -1,20 +1,19 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.widget.ButtonInfo;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
 
 public class aezk
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public aezk(NearbyCustomDialog paramNearbyCustomDialog, ButtonInfo paramButtonInfo) {}
+  public aezk(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyCustomDialog.dismiss();
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a.a(paramView);
-    }
+    this.a.c();
+    PlayOperationViewModel.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

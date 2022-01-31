@@ -1,37 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class aage
-  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
+  implements Runnable
 {
-  aage(aagb paramaagb) {}
+  aage(aagd paramaagd) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.a.a.a(1, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    ARVideoPreviewActivity.a(this.a.a).post(new aagf(this));
-  }
-  
-  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp) {}
-  
-  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo)
-  {
-    paramString = paramUploadPicExtInfo.bytes_download_url.get().toStringUtf8();
-    this.a.a.a(1, paramString);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "下载资源失败,请重试！", 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aage
  * JD-Core Version:    0.7.0.1
  */

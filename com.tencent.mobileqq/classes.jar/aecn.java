@@ -1,68 +1,35 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troopgift.TroopGiftAioPanelData;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
+import java.util.concurrent.ScheduledFuture;
 
-class aecn
-  extends DownloadListener
+public class aecn
 {
-  aecn(aecm paramaecm, int paramInt) {}
+  private long jdField_a_of_type_Long = -9223372036854775808L;
+  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aeco(this);
+  private String jdField_a_of_type_JavaLangString;
+  private ScheduledFuture jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public static aecn a(TimerTaskManager.TimerTaskRunnable paramTimerTaskRunnable)
   {
-    if (paramDownloadTask.jdField_a_of_type_Int == 0) {
-      localObject = paramDownloadTask.a().getString("filePath");
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        Object localObject;
-        paramDownloadTask = new File((String)localObject);
-        String str = FileUtils.b(paramDownloadTask);
-        if (QLog.isColorLevel()) {
-          QLog.d(NearbyGiftPanelDialog.a(), 2, "onDone() content =  " + str + ", filePath = " + (String)localObject);
-        }
-        if (!TextUtils.isEmpty(str))
-        {
-          localObject = new TroopGiftAioPanelData(new JSONObject(str));
-          ((TroopGiftAioPanelData)localObject).a(NearbyGiftPanelDialog.a(this.jdField_a_of_type_Aecm.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog), NearbyGiftPanelDialog.a(this.jdField_a_of_type_Aecm.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog));
-          this.jdField_a_of_type_Aecm.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(this.jdField_a_of_type_Int, NearbyGiftPanelDialog.a(this.jdField_a_of_type_Aecm.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog));
-          if (NearbyGiftPanelDialog.a(this.jdField_a_of_type_Aecm.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog) != null) {
-            NearbyGiftPanelDialog.a(this.jdField_a_of_type_Aecm.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog).post(new aeco(this, (TroopGiftAioPanelData)localObject));
-          }
-          paramDownloadTask.deleteOnExit();
-        }
-        return;
-      }
-      catch (IOException paramDownloadTask)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(NearbyGiftPanelDialog.a(), 2, QLog.getStackTraceString(paramDownloadTask));
-        return;
-      }
-      catch (JSONException paramDownloadTask)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d(NearbyGiftPanelDialog.a(), 2, QLog.getStackTraceString(paramDownloadTask));
-        return;
-      }
-    }
-    QLog.d(NearbyGiftPanelDialog.a(), 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Aecm.jdField_a_of_type_Long) + ", errorCode = " + paramDownloadTask.jdField_a_of_type_Int);
+    aecn localaecn = new aecn();
+    TimerTaskManager.TimerTaskRunnable.a(paramTimerTaskRunnable, true);
+    localaecn.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = paramTimerTaskRunnable;
+    return localaecn;
   }
   
-  public boolean onStart(DownloadTask paramDownloadTask)
+  public String toString()
   {
-    return super.onStart(paramDownloadTask);
+    boolean bool2 = false;
+    long l = this.jdField_a_of_type_Long;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable != null)
+    {
+      bool1 = bool2;
+      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable)) {
+        bool1 = true;
+      }
+    }
+    return String.format("Period = %d; IsValid = %b;", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
   }
 }
 

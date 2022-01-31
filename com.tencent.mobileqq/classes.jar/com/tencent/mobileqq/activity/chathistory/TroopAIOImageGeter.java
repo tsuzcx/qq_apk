@@ -35,7 +35,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import wdl;
+import wgq;
 
 public class TroopAIOImageGeter
 {
@@ -321,7 +321,7 @@ public class TroopAIOImageGeter
       default: 
         return;
       case 0: 
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new wdl(this));
+        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new wgq(this));
         return;
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataCallBack == null);
@@ -349,7 +349,7 @@ public class TroopAIOImageGeter
       ??? = (AIORichMediaData[])localObject2.toArray(new AIORichMediaData[localObject2.size()]);
       this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataCallBack.a((AIORichMediaData[])???, -1);
       return;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new wdl(this));
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new wgq(this));
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataListener == null) {
         break;
@@ -362,7 +362,7 @@ public class TroopAIOImageGeter
           return;
         }
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new wdl(this));
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new wgq(this));
       return;
       label344:
       paramInt += 1;

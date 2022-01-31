@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.search.model.PublicAccountSearchResultModel;
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
 
-public final class ahil
-  implements Comparator
+public class ahil
+  implements Runnable
 {
-  public int a(PublicAccountSearchResultModel paramPublicAccountSearchResultModel1, PublicAccountSearchResultModel paramPublicAccountSearchResultModel2)
+  public ahil(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite) {}
+  
+  public void run()
   {
-    int j = Long.signum(paramPublicAccountSearchResultModel2.b() - paramPublicAccountSearchResultModel1.b());
-    int i = j;
-    if (j == 0) {
-      i = PublicAccountSearchEngine.a(paramPublicAccountSearchResultModel1, paramPublicAccountSearchResultModel2);
-    }
-    return i;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahil
  * JD-Core Version:    0.7.0.1
  */

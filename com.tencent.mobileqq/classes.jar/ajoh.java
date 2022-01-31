@@ -1,28 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import android.text.Spanned;
+import java.util.Comparator;
 
-public class ajoh
-  implements Runnable
+public final class ajoh
+  implements Comparator
 {
-  public ajoh(JumpAction paramJumpAction) {}
+  public ajoh(Spanned paramSpanned) {}
   
-  public void run()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (JumpAction.a(this.a) == null) {}
-    String str;
-    do
-    {
-      return;
-      str = JumpAction.a(this.a).getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.a(str, System.currentTimeMillis());
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajoh
  * JD-Core Version:    0.7.0.1
  */

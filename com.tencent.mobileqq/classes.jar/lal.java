@@ -1,20 +1,19 @@
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper;
+import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityManagerFactory;
 
 public class lal
   implements Runnable
 {
-  public lal(EcShopAssistantManager paramEcShopAssistantManager, String paramString) {}
+  public lal(PublicAccountEntityHelper paramPublicAccountEntityHelper, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager.a.getEntityManagerFactory().createEntityManager();
-    if (EcShopAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager, localEntityManager, this.jdField_a_of_type_JavaLangString)) {
-      EcShopAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager, this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory.verifyAuthentication();
+      return;
     }
-    localEntityManager.a();
+    catch (Exception localException) {}
   }
 }
 

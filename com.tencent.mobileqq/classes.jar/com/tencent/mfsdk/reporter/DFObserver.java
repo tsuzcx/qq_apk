@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import rbe;
+import rdu;
 
 public class DFObserver
   implements Observer
@@ -48,7 +48,7 @@ public class DFObserver
       }
       paramObject = new DropResultObject(Long.parseLong((String)paramObservable.get("dropCount")), Long.parseLong((String)paramObservable.get("totalMs")), paramObject);
       paramObject.a = Integer.parseInt(MagnifierSDK.a());
-      paramObservable = new rbe(MagnifierSDK.a, (String)paramObservable.get("scene"), paramObject);
+      paramObservable = new rdu(MagnifierSDK.a, (String)paramObservable.get("scene"), paramObject);
       a.post(paramObservable);
       return;
     }
@@ -61,7 +61,7 @@ public class DFObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mfsdk.reporter.DFObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,28 @@
-import com.tencent.mobileqq.intervideo.now.NowDataReporter;
-import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
-import com.tencent.mobileqq.intervideo.now.NowPlugin;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
+import com.tencent.mobileqq.utils.ImageUtil;
 
-public class adkx
-  implements Runnable
+class adkx
+  implements URLDrawable.URLDrawableListener
 {
-  public adkx(NowLoadingActivity paramNowLoadingActivity, NowProxy paramNowProxy) {}
+  adkx(adkw paramadkw) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowProxy.a.a.b();
-    NowLoadingActivity.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity);
+    paramURLDrawable.setBounds(ImageUtil.a(paramURLDrawable, 36, 100, this.a.a.a));
+    this.a.a.a(paramURLDrawable, false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adkx
  * JD-Core Version:    0.7.0.1
  */

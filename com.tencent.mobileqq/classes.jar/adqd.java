@@ -1,64 +1,49 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
-import com.tencent.mobileqq.magicface.drawable.PngFrameUtil;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import java.io.File;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
 
 public class adqd
-  implements Runnable
+  extends Handler
 {
-  public adqd(PngFrameManager paramPngFrameManager, PngFrameManager.RandomDrawableParam paramRandomDrawableParam) {}
+  public adqd(HotPicPageView paramHotPicPageView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    File localFile = new File(EmoticonUtils.r.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString));
-    EmoticonManager localEmoticonManager = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-    ??? = localEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString);
-    Object localObject1 = ???;
-    if (??? == null)
+    switch (paramMessage.what)
     {
-      localObject1 = new EmoticonPackage();
-      ((EmoticonPackage)localObject1).epId = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString;
-      ((EmoticonPackage)localObject1).aio = true;
     }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager)
+    int i;
+    do
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler != null)
-      {
-        if (!localFile.exists()) {
-          break label165;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(localFile);
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-        ((EmoticonPackage)localObject1).rscType = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int;
-        localEmoticonManager.a((EmoticonPackage)localObject1);
-      }
-      label165:
-      DownloadTask localDownloadTask;
       do
       {
-        return;
-        localDownloadTask = new DownloadTask(EmosmUtils.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString), localFile);
-        localDownloadTask.h = true;
-      } while ((DownloaderFactory.a(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil == null) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler == null));
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(localFile);
-      ((EmoticonPackage)localObject1).rscType = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int;
-      localEmoticonManager.a((EmoticonPackage)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
+        do
+        {
+          do
+          {
+            return;
+          } while (HotPicPageView.b);
+          this.a.i();
+          return;
+        } while ((HotPicPageView.b) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() != 0) || (this.a.jdField_a_of_type_Adqo == null) || (this.a.jdField_a_of_type_Adqo.getItemCount() == 0));
+        i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
+      } while (i < 0);
+      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
+    } while ((paramMessage == null) || (!(paramMessage instanceof HotPicPageView.MyVideoViewHolder)));
+    paramMessage = (HotPicPageView.MyVideoViewHolder)paramMessage;
+    if (paramMessage.jdField_a_of_type_Int == 0)
+    {
+      this.a.b(paramMessage, i);
+      return;
     }
+    paramMessage.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqd
  * JD-Core Version:    0.7.0.1
  */

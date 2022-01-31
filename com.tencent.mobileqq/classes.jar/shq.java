@@ -1,35 +1,64 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.av.gaudio.AVObserver;
+import com.tencent.av.utils.UITools;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class shq
-  implements ActionSheet.OnButtonClickListener
+  extends AVObserver
 {
-  public shq(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, ActionSheet paramActionSheet) {}
+  public shq(Conversation paramConversation) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(int paramInt, long paramLong)
   {
-    switch (paramInt)
-    {
+    paramInt = UITools.b(paramInt);
+    this.a.a(8, Long.toString(paramLong), paramInt);
+  }
+  
+  protected void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    paramInt = UITools.b(paramInt);
+    this.a.a(8, Long.toString(paramLong1), paramInt);
+    this.a.b(paramLong1);
+    this.a.a(new shr(this, paramLong1));
+  }
+  
+  protected void a(int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(8, paramString1, paramInt);
+    this.a.a(new shu(this));
+  }
+  
+  protected void a(String paramString)
+  {
+    super.a(paramString);
+    this.a.a(new shw(this));
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    this.a.a(new shv(this));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void b(int paramInt, long paramLong)
+  {
+    paramInt = UITools.b(paramInt);
+    this.a.a(8, Long.toString(paramLong), paramInt);
+  }
+  
+  protected void b(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
+      this.a.a(new shs(this, paramLong1));
     }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.c();
-      continue;
-      ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), null, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 1014, null);
-      TroopReportor.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
-      continue;
-      DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
+  }
+  
+  protected void c(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
+      this.a.a(new sht(this, paramLong1));
     }
   }
 }

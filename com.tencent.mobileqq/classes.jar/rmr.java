@@ -1,21 +1,13 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SelectLimitListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 
 public class rmr
-  implements PhotoListPanel.SelectLimitListener
+  implements Runnable
 {
-  public rmr(BaseChatPie paramBaseChatPie) {}
+  public rmr(AssociatedAccountActivity paramAssociatedAccountActivity, boolean paramBoolean) {}
   
-  public boolean a(int paramInt)
+  public void run()
   {
-    String str = String.format(this.a.a().getString(2131438972), new Object[] { Integer.valueOf(paramInt) });
-    QQToast.a(this.a.a(), str, 0).b(this.a.a().getResources().getDimensionPixelSize(2131558448));
-    ReportController.b(this.a.a, "CliOper", "", "", "0x80083EC", "0x80083EC", 0, 0, "", "", "", "");
-    return true;
+    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity, this.jdField_a_of_type_Boolean);
   }
 }
 

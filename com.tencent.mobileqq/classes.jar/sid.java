@@ -1,18 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class sid
-  implements AdapterView.OnItemClickListener
+class sid
+  implements Runnable
 {
-  public sid(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  sid(sic paramsic) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.a.a.a(16, 0);
+    this.a.a.a.a(-1, null);
   }
 }
 

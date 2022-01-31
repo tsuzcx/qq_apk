@@ -1,18 +1,18 @@
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.biz.troopgift.AIOGiftPanelContainer;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-public class oyt
-  extends ozb
+class oyt
+  implements Runnable
 {
-  public oyt(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
-  {
-    super(paramAbsBaseWebViewActivity, null);
-  }
+  oyt(oys paramoys) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  public void run()
   {
-    return a(paramWebView, paramString);
+    if (this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel != null)
+    {
+      this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData(this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData, true);
+      this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.a.a.a.b);
+    }
   }
 }
 

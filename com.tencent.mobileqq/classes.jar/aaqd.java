@@ -1,59 +1,39 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aaqd
-  implements ArkViewImplement.LoadCallback
+class aaqd
+  implements DialogInterface.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = true;
+  aaqd(aaqb paramaaqb, QQCustomDialog paramQQCustomDialog) {}
   
-  public aaqd(ArkRecommendController paramArkRecommendController, boolean paramBoolean, View paramView1, BaseChatItemLayout paramBaseChatItemLayout, View paramView2) {}
-  
-  @TargetApi(11)
-  public void onLoadFinish(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController.a();
-    if ((paramInt != 1) || (localObject == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkRecommendController", 2, "getAttachArkView.loadFinish.chatPie == null!");
-      }
-    }
-    do
+    ArkAppCenter.a().post(new aaqe(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      return;
-      if ((!this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      paramInt = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-      if ((((BaseChatPie)localObject).f() != 0) && (((BaseChatPie)localObject).a.getHeight() < this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getMeasuredHeight() + paramInt))
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaqb.a, "ark_authority_api_user_info", this.jdField_a_of_type_Aaqb.c, 2);
+      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438819), 2131435269, 2131435269, new DialogUtil.DialogOnClickAdapter(), null);
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkRecommendController", 2, "listView.getHeight() < height, hide panel!");
-        }
-        ((BaseChatPie)localObject).ai();
+        paramDialogInterface.show();
+        return;
       }
-      localObject = new ValueAnimation(Integer.valueOf(0), Integer.valueOf(paramInt), new aaqe(this, paramInt));
-      ((ValueAnimation)localObject).setInterpolator(new AccelerateInterpolator());
-      ((ValueAnimation)localObject).setDuration(200L);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.startAnimation((Animation)localObject);
-      this.jdField_a_of_type_Boolean = false;
-    } while (!QLog.isColorLevel());
-    QLog.d("ArkRecommendController", 2, "getAttachArkView.do animation..");
-    return;
-    if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_b_of_type_AndroidViewView.setAlpha(1.0F);
+      catch (Exception paramDialogInterface) {}
     }
-    this.jdField_b_of_type_AndroidViewView.requestLayout();
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    catch (Exception paramDialogInterface)
+    {
+      break label38;
+    }
   }
 }
 

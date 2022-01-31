@@ -1,44 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase.VideoOnErrorListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.player.IVideoView;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewFactory;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
+import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.io.File;
+import mqq.os.MqqHandler;
 
-public class nhr
-  implements View.OnClickListener
+public final class nhr
+  implements Runnable
 {
-  public nhr(VideoPlayModeBase.VideoOnErrorListener paramVideoOnErrorListener) {}
+  public nhr(ShareSinaData paramShareSinaData, ApplicationInfo paramApplicationInfo, Context paramContext, StoryShareCallback paramStoryShareCallback) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!NetworkUtil.a(VideoPlayModeBase.a()))
-    {
-      QQToast.a(VideoPlayModeBase.a(), 1, 2131430281, 0).a();
-      return;
+    Intent localIntent = new Intent("android.intent.action.SEND");
+    localIntent.setFlags(268435456);
+    localIntent.setType("image/*");
+    localIntent.putExtra("android.intent.extra.TEXT", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.a + this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.c);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d)) {
+      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d)));
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    if (VideoViewFactory.a(BaseApplicationImpl.getContext()).a())
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.e = 0L;
-      this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.d();
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      return;
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-    }
+    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    ThreadManager.getUIHandler().post(new nhs(this));
   }
 }
 

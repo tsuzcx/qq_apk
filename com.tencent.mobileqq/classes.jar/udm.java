@@ -1,60 +1,31 @@
-import android.graphics.Bitmap;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.jsbridge.JsBridge;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.graphics.Color;
+import android.text.Editable;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestRefuseActivity;
 
 public class udm
-  extends WebViewClient
+  implements Runnable
 {
-  private udm(UpgradeDetailActivity paramUpgradeDetailActivity) {}
+  public udm(TroopRequestRefuseActivity paramTroopRequestRefuseActivity, Editable paramEditable) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
-    }
-    if (this.a.a(paramString)) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    }
-    try
+    if (this.jdField_a_of_type_AndroidTextEditable.length() > 25)
     {
-      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(-65536);
+      TroopRequestRefuseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, false);
     }
-    catch (Exception paramWebView) {}
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    return;
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(true);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
-    }
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
     for (;;)
     {
-      return true;
-      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
-        this.a.a(paramString);
+      String str2 = "" + (25 - this.jdField_a_of_type_AndroidTextEditable.length());
+      String str1 = str2;
+      if (str2.length() > 4) {
+        str1 = str2.substring(0, 2) + "…";
       }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setText(str1);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(Color.rgb(119, 119, 119));
+      TroopRequestRefuseActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, true);
     }
   }
 }

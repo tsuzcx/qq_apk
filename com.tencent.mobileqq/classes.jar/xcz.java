@@ -1,43 +1,35 @@
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCConnector;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import java.util.ArrayList;
 
 public class xcz
-  implements EIPClientConnectListener
+  implements View.OnClickListener
 {
-  public xcz(QWalletIPCConnector paramQWalletIPCConnector, long paramLong) {}
+  public xcz(CommonHbFragment paramCommonHbFragment, View paramView) {}
   
-  public void connectFailed()
-  {
-    QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, false);
-    QWalletIPCConnector.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, false);
-    synchronized (QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector))
-    {
-      QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector));
-      }
-      return;
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection arg1)
+  public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (??? != null) {
-      QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, ???.procName);
-    }
-    QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, true);
-    QWalletIPCConnector.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, false);
-    synchronized (QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector))
-    {
-      QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector) + "|" + (l - this.jdField_a_of_type_Long));
-      }
+    if (CommonHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment) + 1200L > l) {
       return;
     }
+    CommonHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment, l);
+    paramView = new ArrayList();
+    try
+    {
+      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_AndroidViewView.getTag();
+      paramView = localArrayList;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a.a(CommonHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment), paramView);
   }
 }
 

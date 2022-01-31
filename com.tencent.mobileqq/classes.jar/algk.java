@@ -1,20 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadApi;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.DownloadQueryListener;
+import java.util.ArrayList;
+import java.util.List;
 
-public class algk
-  implements DialogInterface.OnDismissListener
+public final class algk
+  implements Runnable
 {
-  public algk(Login paramLogin) {}
+  public algk(List paramList, DownloadQueryListener paramDownloadQueryListener) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    Login.a(this.a, false);
+    LogUtility.a(DownloadApi.a, "getQueryDownloadAction enter");
+    DownloadManager.a().a();
+    for (;;)
+    {
+      int i;
+      try
+      {
+        ArrayList localArrayList = new ArrayList();
+        int j = this.jdField_a_of_type_JavaUtilList.size();
+        i = 0;
+        if (i < j)
+        {
+          DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+          if (DownloadManager.a().a(localDownloadInfo))
+          {
+            LogUtility.a(DownloadApi.a, "refreshDownloadInfo true " + localDownloadInfo);
+            localArrayList.add(localDownloadInfo);
+          }
+        }
+        else
+        {
+          if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
+            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.b_(localArrayList);
+          }
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        LogUtility.c(DownloadApi.a, "Exception>>>", localException);
+        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null) {
+          continue;
+        }
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
+        return;
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     algk
  * JD-Core Version:    0.7.0.1
  */

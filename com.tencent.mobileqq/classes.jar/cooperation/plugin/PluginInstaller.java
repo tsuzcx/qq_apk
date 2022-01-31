@@ -1,7 +1,7 @@
 package cooperation.plugin;
 
-import alwd;
-import alwe;
+import ammh;
+import ammi;
 import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
@@ -278,16 +278,16 @@ public class PluginInstaller
     //   250: aload_1
     //   251: invokevirtual 213	com/tencent/commonsdk/soload/DexReleasor:getEntryCrcCode	(Ljava/lang/String;)J
     //   254: lstore 6
-    //   256: new 231	java/util/zip/ZipFile
+    //   256: new 231	com/tencent/commonsdk/zip/QZipFile
     //   259: dup
     //   260: aload 19
-    //   262: invokespecial 234	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   262: invokespecial 234	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   265: astore_1
     //   266: aload_1
     //   267: astore 16
     //   269: aload_1
     //   270: ldc 236
-    //   272: invokevirtual 240	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   272: invokevirtual 240	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
     //   275: astore 17
     //   277: lload 10
     //   279: lstore 8
@@ -313,7 +313,7 @@ public class PluginInstaller
     //   321: aload_1
     //   322: ifnull +19 -> 341
     //   325: aload_1
-    //   326: invokevirtual 249	java/util/zip/ZipFile:close	()V
+    //   326: invokevirtual 249	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   329: iload 4
     //   331: istore 5
     //   333: lload 8
@@ -405,7 +405,7 @@ public class PluginInstaller
     //   498: aload_1
     //   499: ifnull -158 -> 341
     //   502: aload_1
-    //   503: invokevirtual 249	java/util/zip/ZipFile:close	()V
+    //   503: invokevirtual 249	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   506: lload 6
     //   508: lstore 12
     //   510: lload 10
@@ -429,7 +429,7 @@ public class PluginInstaller
     //   545: aload 16
     //   547: ifnull +8 -> 555
     //   550: aload 16
-    //   552: invokevirtual 249	java/util/zip/ZipFile:close	()V
+    //   552: invokevirtual 249	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   555: aload_0
     //   556: athrow
     //   557: astore_1
@@ -510,7 +510,7 @@ public class PluginInstaller
     do
     {
       return false;
-      paramString = new File(this.b).list(new alwd(this, paramString));
+      paramString = new File(this.b).list(new ammh(this, paramString));
     } while ((paramString == null) || (paramString.length <= 0));
     return true;
   }
@@ -640,7 +640,7 @@ public class PluginInstaller
         {
           File localFile = new File(PluginUtils.getOptimizedDexPath(this.jdField_a_of_type_AndroidContentContext).getCanonicalPath());
           long l = System.currentTimeMillis();
-          boolean bool = Dex2Oat.a(localArrayList, localFile, true, paramFile, new alwe(this));
+          boolean bool = Dex2Oat.a(localArrayList, localFile, true, paramFile, new ammi(this));
           l = System.currentTimeMillis() - l;
           paramFile = new StringBuilder("dex2Oat ");
           paramFile.append(l);

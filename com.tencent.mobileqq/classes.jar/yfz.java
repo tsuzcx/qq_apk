@@ -1,49 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.antiphing.AntiphishingUrlConfig;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class yfz
-  extends Handler
+  extends ygj
 {
-  public yfz(AntiphishingUrlConfig paramAntiphishingUrlConfig, Looper paramLooper)
+  public yfz(SpecailCareListActivity paramSpecailCareListActivity)
   {
-    super(paramLooper);
+    super(paramSpecailCareListActivity, null);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (paramMessage.what == AntiphishingUrlConfig.a(this.a))
-    {
-      QLog.d(AntiphishingUrlConfig.a(this.a), 4, "Receive Message!");
-      this.a.a();
+    if (this.a.d != 0) {
+      this.a.b = true;
     }
-    for (;;)
-    {
-      try
-      {
-        ReportController.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
-        return;
-      }
-      catch (Exception paramMessage) {}
-      if (paramMessage.what == AntiphishingUrlConfig.b(this.a))
-      {
-        QLog.d(AntiphishingUrlConfig.a(this.a), 4, "Receive Message!");
-        try
-        {
-          ReportController.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
-          return;
-        }
-        catch (Exception paramMessage) {}
-      }
+    while ((paramInt2 != 200) || (paramBitmap == null)) {
+      return;
     }
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yfz
  * JD-Core Version:    0.7.0.1
  */

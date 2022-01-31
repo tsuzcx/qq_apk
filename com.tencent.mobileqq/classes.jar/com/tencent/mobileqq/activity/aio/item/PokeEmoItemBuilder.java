@@ -36,8 +36,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import mqq.os.MqqHandler;
-import uzs;
-import uzt;
+import vcu;
+import vcv;
 
 public class PokeEmoItemBuilder
   extends BaseBubbleBuilder
@@ -79,7 +79,7 @@ public class PokeEmoItemBuilder
       do
       {
         return;
-        paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839549);
+        paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839554);
         paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePETextView.setText("x" + paramMessageForPokeEmo.pokeemoPressCount);
         break;
         if ((!bool) || (paramMessageForPokeEmo.isSend()) || (!paramMessageForPokeEmo.isNeedPlayed) || ((this.jdField_a_of_type_AndroidContentContext instanceof ChatHistoryForC2C)) || (GesturePWDUnlockActivity.c)) {
@@ -90,7 +90,7 @@ public class PokeEmoItemBuilder
         }
         AIOUtils.b += 1;
         paramMessageForPokeEmo.setIsNeedPlayed(false);
-        paramHolder = ((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363473);
+        paramHolder = ((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363491);
       } while (paramHolder == null);
       paramMessageForPokeEmo = PEPanelHelper.b(i);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleReceiverAnimationRunnable = new StickerBubbleReceiverAnimationRunnable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j, paramHolder, paramMessageForPokeEmo);
@@ -120,9 +120,9 @@ public class PokeEmoItemBuilder
         QLog.d("PokeEmoItemBuilder", 2, "[getBubbleView]:content is null");
       }
       paramViewHolder = new RelativeLayout((Context)localObject);
-      paramViewHolder.setId(2131362822);
+      paramViewHolder.setId(2131362840);
       paramView = new ImageView((Context)localObject);
-      paramView.setId(2131362453);
+      paramView.setId(2131362456);
       paramViewHolder.addView(paramView, new RelativeLayout.LayoutParams(AIOUtils.a(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
       localHolder.jdField_a_of_type_AndroidWidgetImageView = paramView;
       paramView = new PETextView((Context)localObject);
@@ -137,7 +137,7 @@ public class PokeEmoItemBuilder
       paramView.setText("x3");
       localObject = new RelativeLayout.LayoutParams(AIOUtils.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(35.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((RelativeLayout.LayoutParams)localObject).setMargins(AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0, 0);
-      ((RelativeLayout.LayoutParams)localObject).addRule(8, 2131362453);
+      ((RelativeLayout.LayoutParams)localObject).addRule(8, 2131362456);
       paramViewHolder.addView(paramView, (ViewGroup.LayoutParams)localObject);
       localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePETextView = paramView;
       if ((!localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePETextView.a()) && (PEPanelHelper.a != null)) {
@@ -159,7 +159,7 @@ public class PokeEmoItemBuilder
       if ((PokeItemHelper.b) && (!PEPanelHelper.b))
       {
         PEPanelHelper.b = true;
-        ThreadManager.executeOnSubThread(new uzs(this));
+        ThreadManager.executeOnSubThread(new vcu(this));
       }
     }
   }
@@ -182,7 +182,7 @@ public class PokeEmoItemBuilder
     for (;;)
     {
       return localStringBuilder.toString();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d + String.format("发出%d个轻互动表情%s", new Object[] { Integer.valueOf(localMessageForPokeEmo.pokeemoPressCount), localMessageForPokeEmo.summary }));
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d + String.format("发来%d个轻互动表情%s", new Object[] { Integer.valueOf(localMessageForPokeEmo.pokeemoPressCount), localMessageForPokeEmo.summary }));
     }
   }
   
@@ -198,7 +198,7 @@ public class PokeEmoItemBuilder
     {
     default: 
       return;
-    case 2131375336: 
+    case 2131375567: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
@@ -215,9 +215,9 @@ public class PokeEmoItemBuilder
       paramView = (MessageForPokeEmo)AIOUtils.a(paramView);
     } while (!paramView.isSendFromLocal());
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-    localActionSheet.a(2131433618, 5);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new uzt(this, paramView, localActionSheet));
+    localActionSheet.a(2131433635, 5);
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new vcv(this, paramView, localActionSheet));
     localActionSheet.show();
   }
   

@@ -1,14 +1,28 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 
-class mrh
-  implements Runnable
+public class mrh
+  implements TextWatcher
 {
-  mrh(mrb parammrb) {}
+  public mrh(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    SubscriptFeedsActivity.b(this.a.a, true);
+    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
+    {
+      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
+      return;
+    }
+    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

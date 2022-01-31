@@ -1,30 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.annotation.TargetApi;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class abts
-  extends FriendListObserver
+  implements ArkViewImplement.LoadCallback
 {
-  public abts(MessengerService paramMessengerService) {}
+  public abts(ArkBabyqCardInfo paramArkBabyqCardInfo, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt) {}
   
-  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
+  @TargetApi(14)
+  public void onLoadFinish(int paramInt)
   {
-    if (this.a.b != null)
-    {
-      this.a.b.putString("cmd", "ipc_signature_setlike");
-      paramObject = new Bundle();
-      if (!paramBoolean) {
-        break label81;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
     }
-    label81:
-    for (int i = 0;; i = 101)
+    if (paramInt == 1)
     {
-      paramObject.putInt("result", i);
-      this.a.b.putBundle("response", paramObject);
-      this.a.a(this.a.b);
-      this.a.b = null;
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
       return;
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
     }
   }
 }

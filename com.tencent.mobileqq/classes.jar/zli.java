@@ -1,30 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.sdk.QNotificationManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class zli
   implements Runnable
 {
-  public zli(TroopManager paramTroopManager, TroopMemberInfo paramTroopMemberInfo, String paramString) {}
+  public zli(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.getEntityManagerFactory().createEntityManager();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      ((EntityManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
-    }
-    for (;;)
+    try
     {
-      ((EntityManager)localObject).a();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_JavaLangString);
-      new Handler(Looper.getMainLooper()).post(new zlj(this, (ArrayList)localObject));
+      QNotificationManager localQNotificationManager = new QNotificationManager(QQAppInterface.e(this.a));
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 121);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 122);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 123);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 129);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 135);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 140);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 144);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 193);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 211);
+      if (QLog.isColorLevel()) {
+        QLog.d("notification", 2, "removeNotification");
+      }
       return;
-      ((EntityManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("notification", 2, "removeNotification", localException);
     }
   }
 }

@@ -34,6 +34,18 @@ public class CommentManager
     return paramEntityManager.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
+  public List a()
+  {
+    Object localObject = QQStoryContext.a().b();
+    List localList = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "status<>? and authorUnionId=?", new String[] { String.valueOf(0), localObject });
+    localObject = localList;
+    if (localList == null) {
+      localObject = new ArrayList();
+    }
+    SLog.a("Q.qqstory:CommentManager", "query fail comment's size = %d", Integer.valueOf(((List)localObject).size()));
+    return localObject;
+  }
+  
   public List a(String paramString, boolean paramBoolean)
   {
     if (paramBoolean) {}

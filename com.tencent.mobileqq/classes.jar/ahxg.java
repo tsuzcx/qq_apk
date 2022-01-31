@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.Node;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
 
-public class ahxg
-  implements Runnable
+public final class ahxg
+  implements Parcelable.Creator
 {
-  public ahxg(SpriteGLView paramSpriteGLView) {}
-  
-  public void run()
+  public FriendSingleInfo a(Parcel paramParcel)
   {
-    this.a.o();
-    int i = 0;
-    while (i < SpriteGLView.a(this.a).size())
-    {
-      ((Node)SpriteGLView.a(this.a).get(i)).b();
-      i += 1;
-    }
-    SpriteGLView.a(this.a).clear();
+    return new FriendSingleInfo(paramParcel);
+  }
+  
+  public FriendSingleInfo[] a(int paramInt)
+  {
+    return new FriendSingleInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxg
  * JD-Core Version:    0.7.0.1
  */

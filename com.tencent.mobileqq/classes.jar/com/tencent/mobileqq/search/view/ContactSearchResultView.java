@@ -27,7 +27,7 @@ public class ContactSearchResultView
   protected void a()
   {
     super.a();
-    this.a = ((TextView)this.d.findViewById(2131363522));
+    this.a = ((TextView)this.d.findViewById(2131363540));
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import acsk;
-import acsm;
-import acso;
+import adch;
+import adcj;
+import adcl;
 import android.app.Activity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -67,7 +67,7 @@ public class C2CFileModel
   public IDownloadController a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController = new acsm(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController = new adcj(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController;
   }
@@ -75,7 +75,7 @@ public class C2CFileModel
   public IUploadController a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController = new acso(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController = new adcl(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController;
   }
@@ -93,7 +93,7 @@ public class C2CFileModel
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acsk(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new adch(this);
     if (QLog.isDevelopLevel()) {
       QLog.i("fobserver<FileAssistant>", 1, "add fmObserver");
     }

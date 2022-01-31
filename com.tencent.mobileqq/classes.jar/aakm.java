@@ -1,15 +1,8 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
+import java.util.ArrayList;
 
-public class aakm
-  implements Runnable
+public abstract interface aakm
 {
-  public aakm(ArkAiAppCenter paramArkAiAppCenter, String[] paramArrayOfString) {}
-  
-  public void run()
-  {
-    ark.Application.SetUrlCheckingList(this.jdField_a_of_type_ArrayOfJavaLangString, 1);
-  }
+  public abstract void a(boolean paramBoolean, ArrayList paramArrayList);
 }
 
 

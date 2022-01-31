@@ -1,34 +1,18 @@
-import android.os.MessageQueue.IdleHandler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class xlw
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
-  public xlw(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xlw(LoginView paramLoginView) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    if (CameraCompatibleList.d(CameraCompatibleList.b)) {
-      this.a.b(true);
-    }
-    for (;;)
-    {
-      if ((this.a.g) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      this.a.c.setEnabled(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      return false;
-      this.a.i();
-    }
+    int[] arrayOfInt = new int[2];
+    this.a.b.getLocationInWindow(arrayOfInt);
+    LoginView localLoginView = this.a;
+    int i = this.a.b.getHeight();
+    LoginView.a(localLoginView, arrayOfInt[1] + i);
   }
 }
 

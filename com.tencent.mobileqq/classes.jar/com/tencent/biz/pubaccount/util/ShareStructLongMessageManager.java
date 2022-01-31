@@ -15,9 +15,10 @@ import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import mvo;
+import mwv;
 
 public class ShareStructLongMessageManager
 {
@@ -160,10 +161,19 @@ public class ShareStructLongMessageManager
         return true;
       }
     }
-    else if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgActionData))
+    try
     {
+      boolean bool = PublicAccountConfigUtil.c(new URL(paramAbsStructMsg.mMsgUrl).getHost());
+      if (!bool) {
+        break label207;
+      }
+      return true;
+    }
+    catch (Exception paramAbsStructMsg) {}
+    if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgActionData)) {
       return b(paramAbsStructMsg);
     }
+    label207:
     return false;
   }
   
@@ -239,7 +249,7 @@ public class ShareStructLongMessageManager
         ((MessageHandler)paramQQAppInterface.a(0)).a(MessageHandler.c(paramMessageRecord.istroop), false, new Object[] { paramMessageObserver, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
         return;
       }
-      paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.selfuin, paramMessageRecord.istroop, paramMessageRecord.uniseq + 1L, 1035, new mvo(this, paramMessageRecord, paramQQAppInterface, paramMessageObserver, paramBoolean));
+      paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.selfuin, paramMessageRecord.istroop, paramMessageRecord.uniseq + 1L, 1035, new mwv(this, paramMessageRecord, paramQQAppInterface, paramMessageObserver, paramBoolean));
       if (!paramBoolean) {
         break;
       }

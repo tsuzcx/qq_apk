@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amex;
+import amvb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,9 +8,10 @@ import android.os.Parcelable.Creator;
 public class WeishiFeedInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amex();
+  public static final Parcelable.Creator CREATOR = new amvb();
   public WeishiBasicInfo basicInfo;
   public WeishiFeedCommInfo feedCommInfo;
+  public WeishiOperationInfo operationInfo;
   public WeishiUserInfo userInfo;
   public VideoInfo videoInfo;
   
@@ -22,6 +23,7 @@ public class WeishiFeedInfo
     this.videoInfo = ((VideoInfo)paramParcel.readParcelable(VideoInfo.class.getClassLoader()));
     this.basicInfo = ((WeishiBasicInfo)paramParcel.readParcelable(WeishiBasicInfo.class.getClassLoader()));
     this.feedCommInfo = ((WeishiFeedCommInfo)paramParcel.readParcelable(WeishiFeedCommInfo.class.getClassLoader()));
+    this.operationInfo = ((WeishiOperationInfo)paramParcel.readParcelable(WeishiOperationInfo.class.getClassLoader()));
   }
   
   public int describeContents()
@@ -35,6 +37,7 @@ public class WeishiFeedInfo
     paramParcel.writeParcelable(this.videoInfo, paramInt);
     paramParcel.writeParcelable(this.basicInfo, paramInt);
     paramParcel.writeParcelable(this.feedCommInfo, paramInt);
+    paramParcel.writeParcelable(this.operationInfo, paramInt);
   }
 }
 

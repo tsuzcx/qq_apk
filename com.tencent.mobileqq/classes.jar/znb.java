@@ -1,17 +1,22 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.vas.SignatureTemplateConfig;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class znb
-  implements Comparator
+public class znb
+  implements Runnable
 {
-  znb(zmz paramzmz) {}
+  public znb(SignatureManager paramSignatureManager, int paramInt) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void run()
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(this.jdField_a_of_type_Int);
+    SignatureTemplateInfo localSignatureTemplateInfo = SignatureTemplateConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
+    if (localSignatureTemplateInfo != null) {
+      SignatureManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localSignatureTemplateInfo);
     }
-    return 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
   }
 }
 

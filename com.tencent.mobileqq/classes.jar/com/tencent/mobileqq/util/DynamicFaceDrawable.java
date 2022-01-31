@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import ajld;
+import ajzi;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -240,7 +240,7 @@ public class DynamicFaceDrawable
       jdField_a_of_type_ComTencentMobileqqUtilIdleGetDynamic.a(this, paramDynamicAvatar);
       return;
     }
-    ThreadManager.post(new ajld(this, paramDynamicAvatar), 5, null, true);
+    ThreadManager.post(new ajzi(this, paramDynamicAvatar), 5, null, true);
   }
   
   public void a(DynamicAvatar paramDynamicAvatar)
@@ -389,7 +389,7 @@ public class DynamicFaceDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.util.DynamicFaceDrawable
  * JD-Core Version:    0.7.0.1
  */

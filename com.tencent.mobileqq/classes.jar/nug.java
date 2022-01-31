@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import java.util.List;
 
-public final class nug
-  implements Parcelable.Creator
+public class nug
 {
-  public CardItem.CardVideoInfo a(Parcel paramParcel)
-  {
-    return new CardItem.CardVideoInfo(paramParcel);
-  }
+  int jdField_a_of_type_Int;
+  List jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public CardItem.CardVideoInfo[] a(int paramInt)
+  public nug(boolean paramBoolean, List paramList, int paramInt1, int paramInt2)
   {
-    return new CardItem.CardVideoInfo[paramInt];
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

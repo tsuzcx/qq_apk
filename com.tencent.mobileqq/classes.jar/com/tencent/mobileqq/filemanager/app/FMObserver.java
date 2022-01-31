@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import acjv;
-import acjw;
+import acts;
+import actt;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -335,7 +335,7 @@ public class FMObserver
         paramObject.jdField_a_of_type_JavaLangObject = localObject1[1];
         localObject1 = new Handler();
         QLog.i("FMObserver<FileAssistant>", 1, "OnThumbDownLoadSuccess(faild),fileId[" + paramObject.jdField_a_of_type_JavaLangString + "],delay 1000ms");
-        ((Handler)localObject1).postDelayed(new acjw(this, paramObject), 1000L);
+        ((Handler)localObject1).postDelayed(new actt(this, paramObject), 1000L);
         return;
         if (((Boolean)paramObject[1]).booleanValue())
         {
@@ -640,7 +640,7 @@ public class FMObserver
     paramObservable = Looper.getMainLooper();
     if (Thread.currentThread() != paramObservable.getThread())
     {
-      new Handler(paramObservable).post(new acjv(this, paramObject));
+      new Handler(paramObservable).post(new acts(this, paramObject));
       return;
     }
     a(paramObject);

@@ -1,28 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import com.tencent.mobileqq.emosm.favroaming.SyncListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class abzu
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public abzu(StickerGestureDetector paramStickerGestureDetector) {}
+  public abzu(FavroamingManager paramFavroamingManager) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    if (this.a.a != null)
+    int i = 0;
+    while (i < this.a.a.size())
     {
-      float f = this.a.a.getTranslationX();
-      this.a.a.setTranslationX(0.0F);
-      this.a.a((int)(this.a.a.getLeft() + f), this.a.a.getTop(), (int)(f + this.a.a.getLeft() + this.a.a.getWidth()), this.a.a.getBottom());
+      if (this.a.a.get(i) != null)
+      {
+        SyncListener localSyncListener = (SyncListener)((WeakReference)this.a.a.get(i)).get();
+        if (localSyncListener != null)
+        {
+          localSyncListener.a(null, FavroamingManager.a(), FavroamingManager.a().get());
+          if (QLog.isColorLevel()) {
+            QLog.i("FavroamingManager", 2, "now notify listener on file done!");
+          }
+        }
+      }
+      i += 1;
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

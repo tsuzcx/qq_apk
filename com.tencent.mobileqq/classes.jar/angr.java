@@ -1,18 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.os.Bundle;
+import cooperation.wadl.ipc.WadlProxyServiceManager;
 
-public class angr
+class angr
   implements Runnable
 {
-  public angr(ArtFilterItemView paramArtFilterItemView) {}
+  angr(angp paramangp, Bundle paramBundle) {}
   
   public void run()
   {
-    this.a.a();
+    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    this.jdField_a_of_type_Angp.a.a(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angr
  * JD-Core Version:    0.7.0.1
  */

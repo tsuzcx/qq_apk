@@ -1,16 +1,15 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-public class xnx
+class xnx
   implements Runnable
 {
-  public xnx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xnx(xnu paramxnu) {}
   
   public void run()
   {
-    if ((this.a.a != null) && (!this.a.a.isEnabled())) {
-      this.a.a.setEnabled(true);
-    }
+    EditLocalVideoActivity.a(this.a.a.a).setVisibility(8);
+    EditLocalVideoActivity.b(this.a.a.a, false);
   }
 }
 

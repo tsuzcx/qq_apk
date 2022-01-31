@@ -34,8 +34,8 @@ public class NewTroopCateView
   
   private void g()
   {
-    a(2130969860);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131368267));
+    a(2130969874);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131368334));
     this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter = new CateListAdapter(this);
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter);
     this.jdField_a_of_type_AndroidWidgetListView.setDivider(null);
@@ -113,7 +113,7 @@ public class NewTroopCateView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.sonic.SonicPreloadData;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
 
-public final class ajyh
-  implements Parcelable.Creator
+public class ajyh
 {
-  public SonicPreloadData a(Parcel paramParcel)
-  {
-    return new SonicPreloadData(paramParcel);
-  }
+  public final int a;
+  public final long a;
+  public final String a;
+  public final long b;
+  public final String b;
   
-  public SonicPreloadData[] a(int paramInt)
+  public ajyh(UnifiedDebugManager paramUnifiedDebugManager, String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
   {
-    return new SonicPreloadData[paramInt];
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyh
  * JD-Core Version:    0.7.0.1
  */

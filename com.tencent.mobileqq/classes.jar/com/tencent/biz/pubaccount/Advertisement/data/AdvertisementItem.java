@@ -16,7 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kuh;
+import kts;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
@@ -254,17 +254,20 @@ public class AdvertisementItem
   
   public void a()
   {
-    kuh localkuh = new kuh(this);
+    kts localkts = new kts(this);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      ThreadManager.post(localkuh, 2, null, false);
+      ThreadManager.post(localkts, 2, null, false);
       return;
     }
-    localkuh.run();
+    localkts.run();
   }
   
   public boolean a()
   {
+    if (this.jdField_b_of_type_Int == 0) {
+      return true;
+    }
     if (this.jdField_c_of_type_Int >= this.jdField_b_of_type_Int) {
       return false;
     }

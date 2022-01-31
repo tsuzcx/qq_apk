@@ -1,37 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.OnGetUserInfoCallback;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.OnFetchUserInfoCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
-public final class nll
-  implements GetUserInfoHandler.OnGetUserInfoCallback
+public class nll
+  extends OnPlayModeShareListener
 {
-  public nll(PlayModeUtils.OnFetchUserInfoCallback paramOnFetchUserInfoCallback, String paramString1, String paramString2) {}
-  
-  public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public nll(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode, VideoPlayModeBase paramVideoPlayModeBase, ShareGroupItem paramShareGroupItem)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$OnFetchUserInfoCallback != null)
-    {
-      boolean bool = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess();
-      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      if ((bool) && (paramUpdateUserInfoEvent != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals(paramUpdateUserInfoEvent.uid)))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "[az]PlayModeUtils.fetchUserInfo: ohhh! bad guy!!! require " + this.jdField_a_of_type_JavaLangString + " and the return uid is " + paramUpdateUserInfoEvent.uid);
-        }
-        paramUpdateUserInfoEvent.uid = this.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(this.b)) {
-          paramUpdateUserInfoEvent.qq = this.b;
-        }
-        ((UserManager)SuperManager.a(2)).a(paramUpdateUserInfoEvent);
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$OnFetchUserInfoCallback.a(bool, paramUpdateUserInfoEvent, true);
-    }
+    super(paramVideoPlayModeBase);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    StoryReportor.a("share_story", "single_suc", 0, paramInt, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
 }
 

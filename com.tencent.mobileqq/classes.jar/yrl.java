@@ -1,47 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor;
-import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import com.tencent.mobileqq.apollo.utils.ApolloSoLoader;
+import com.tencent.mobileqq.apollo.utils.ApolloSoLoader.OnCmSoLoadCompleteCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class yrl
-  implements Runnable
+  implements ApolloSoLoader.OnCmSoLoadCompleteCallback
 {
-  public yrl(ApolloUrlInterceptor paramApolloUrlInterceptor, ByteArrayOutputStream paramByteArrayOutputStream) {}
+  public yrl(CmGameLauncher paramCmGameLauncher) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloUrlInterceptor", 1, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose:cachedStream size:" + this.jdField_a_of_type_JavaIoByteArrayOutputStream.size());
-    }
-    try
-    {
-      str = this.jdField_a_of_type_JavaIoByteArrayOutputStream.toString("UTF-8");
-      this.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-      if ((!TextUtils.isEmpty(str)) && (!ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor)))
+    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
+    ApolloSoLoader.b(CmGameLauncher.a(this.a));
+    Activity localActivity = this.a.a();
+    if (paramInt == 0) {
+      if ((localActivity != null) && (!CmGameLauncher.b(this.a)))
       {
-        long l = System.currentTimeMillis();
-        ApolloWebDataHandler.a().b(ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor), str);
-        ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloUrlInterceptor", 4, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose:save bridgeStream " + (System.currentTimeMillis() - l) + " ms. htmlString.length:" + str.length());
-        }
+        CmGameLauncher.a(this.a, true);
+        this.a.a(localActivity, CmGameLauncher.a(this.a));
       }
-      ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor).set(false);
-      if ((ApolloUrlInterceptor.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor)) && (QLog.isColorLevel())) {
-        QLog.d("apollo_client_ApolloUrlInterceptor", 4, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose: postForceDestroyIfNeed send destroy message.");
-      }
+    }
+    while (localActivity == null) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        String str = null;
-        QLog.e("apollo_client_ApolloUrlInterceptor", 1, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose error:" + localThrowable.getMessage());
-      }
-    }
+    localActivity.finish();
   }
 }
 

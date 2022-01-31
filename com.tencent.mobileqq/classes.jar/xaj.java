@@ -1,65 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.app.IndividualRedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.vip.DownloadTask;
+import java.util.List;
 
 class xaj
   implements Runnable
 {
-  xaj(xai paramxai, JSONObject paramJSONObject) {}
+  xaj(xai paramxai, DownloadTask paramDownloadTask) {}
   
   public void run()
   {
-    if (CommonHbFragment.a(this.jdField_a_of_type_Xai.a) == null) {}
-    do
+    int j = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a.size();
+    Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a();
+    int i = 0;
+    while (i < j)
     {
-      return;
-      if (!"512".equals(CommonHbFragment.h(this.jdField_a_of_type_Xai.a))) {
-        break;
-      }
-    } while (CommonHbFragment.d(this.jdField_a_of_type_Xai.a));
-    CommonHbFragment.a(this.jdField_a_of_type_Xai.a).setVisibility(0);
-    return;
-    if ("4096".equals(CommonHbFragment.h(this.jdField_a_of_type_Xai.a)))
-    {
-      CommonHbFragment.a(this.jdField_a_of_type_Xai.a).setVisibility(8);
-      return;
-    }
-    JSONObject localJSONObject;
-    if ((!"5".equals(CommonHbFragment.h(this.jdField_a_of_type_Xai.a))) && (!"16".equals(CommonHbFragment.h(this.jdField_a_of_type_Xai.a))) && (!"2048".equals(CommonHbFragment.h(this.jdField_a_of_type_Xai.a))))
-    {
-      if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-        break label304;
-      }
-      localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject("hb_vip");
-      if (localJSONObject == null) {
-        break label304;
-      }
-    }
-    label304:
-    for (int i = localJSONObject.optInt("enable_shop_enter");; i = 1)
-    {
-      if (i == 1)
-      {
-        CommonHbFragment.b(this.jdField_a_of_type_Xai.a, IndividualRedPacketManager.a(3, (QQAppInterface)this.jdField_a_of_type_Xai.a.getActivity().getAppRuntime()));
-        if (TextUtils.isEmpty(CommonHbFragment.i(this.jdField_a_of_type_Xai.a)))
-        {
-          CommonHbFragment.a(this.jdField_a_of_type_Xai.a).setVisibility(8);
-          return;
-        }
-        if (CommonHbFragment.d(this.jdField_a_of_type_Xai.a)) {
-          break;
-        }
-        CommonHbFragment.a(this.jdField_a_of_type_Xai.a).setVisibility(0);
-        return;
-      }
-      CommonHbFragment.a(this.jdField_a_of_type_Xai.a).setVisibility(8);
-      return;
-      CommonHbFragment.a(this.jdField_a_of_type_Xai.a).setVisibility(8);
-      return;
+      String str = (String)this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a.get(i);
+      PreloadImgManager.a(this.jdField_a_of_type_Xai.a, BaseApplication.getContext(), localBundle.getString(str), str);
+      i += 1;
     }
   }
 }

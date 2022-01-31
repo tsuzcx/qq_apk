@@ -1,33 +1,20 @@
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
 
-class aeiz
-  implements Runnable
+public class aeiz
+  implements DialogInterface.OnClickListener
 {
-  aeiz(aeiy paramaeiy, String paramString) {}
+  public aeiz(AIOShareActionSheet paramAIOShareActionSheet) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.isEmpty()))
-    {
-      VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a).a = -102;
-      VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a, VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a));
-      return;
-    }
-    if ((VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a).c == null) || (this.jdField_a_of_type_JavaLangString.compareTo(VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a).c) != 0))
-    {
-      VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a).a = -103;
-      VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a, VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a));
-      return;
-    }
-    VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a).c = this.jdField_a_of_type_JavaLangString;
-    VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a).b = this.jdField_a_of_type_JavaLangString;
-    VideoFeedsUploader.a(this.jdField_a_of_type_Aeiy.a, 0);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeiz
  * JD-Core Version:    0.7.0.1
  */

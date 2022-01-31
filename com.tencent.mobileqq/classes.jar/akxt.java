@@ -1,25 +1,34 @@
-import com.tencent.qidian.controller.BigDataHandler;
-import com.tencent.qidian.controller.QidianBusinessObserver;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog;
+import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog.IBackConfirmDialogCallBack;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
 public class akxt
-  extends QidianBusinessObserver
+  implements ARWorldCupBackConfirmDialog.IBackConfirmDialogCallBack
 {
-  public akxt(BigDataHandler paramBigDataHandler) {}
+  public akxt(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
   
-  protected void a(boolean paramBoolean)
+  public void a()
   {
-    super.a(paramBoolean);
-    if (paramBoolean)
-    {
-      BigDataHandler.a(this.a);
-      return;
-    }
-    BigDataHandler.b(this.a);
+    ReportController.b(null, "dc00898", "", "", "0X8009321", "0X8009321", 1, 0, "1", "", "", "");
+    ARWorldCupGameLogicManager.a(this.a);
+  }
+  
+  public void b()
+  {
+    ReportController.b(null, "dc00898", "", "", "0X8009322", "0X8009322", 1, 0, "1", "", "", "");
+    ARWorldCupGameLogicManager.a(this.a).dismiss();
+  }
+  
+  public void c()
+  {
+    ReportController.b(null, "dc00898", "", "", "0X8009323", "0X8009323", 1, 0, "1", "", "", "");
+    ARWorldCupGameLogicManager.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,25 @@
-import android.widget.ScrollView;
-import com.tencent.mobileqq.forward.ForwardQQStoryMsgOption;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
 
 public class adbd
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public adbd(ForwardQQStoryMsgOption paramForwardQQStoryMsgOption) {}
+  public adbd(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public void run()
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.fullScroll(130);
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
+      return;
+    }
+    FileBrowserActivity.a(this.a).b();
+    ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.a.onClick(paramView);
   }
 }
 

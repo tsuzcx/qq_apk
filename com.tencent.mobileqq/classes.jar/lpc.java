@@ -1,15 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import java.util.List;
 
-public class lpc
+class lpc
   implements Runnable
 {
-  public lpc(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
+  lpc(lpa paramlpa, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_Lpa.a, this.jdField_a_of_type_JavaUtilList, false);
   }
 }
 

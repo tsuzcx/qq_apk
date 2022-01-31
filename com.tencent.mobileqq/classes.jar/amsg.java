@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneStartupMonitor;
 
-public class amsg
-  implements MediaScanner.OnMediaInfoScannerListener
+class amsg
+  implements Runnable
 {
-  public amsg(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  amsg(amsf paramamsf, int paramInt) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void run()
   {
-    if (!paramBoolean)
+    QZoneStartupMonitor.a(this.jdField_a_of_type_Amsf.a);
+    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "atuoRecoveryQzoneCount", 1) > this.jdField_a_of_type_Int)
     {
-      this.a.a(101);
-      return;
+      QLog.i("QZoneStartupMonitor", 1, "oat 不合法，并且wns配置要自动修复，重新安装qzone=");
+      QZoneStartupMonitor.b(this.jdField_a_of_type_Amsf.a);
+      LocalMultiProcConfig.putInt("key_recovery_count", this.jdField_a_of_type_Int + 1);
     }
-    this.a.a(this.a.a, paramLocalMediaInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsg
  * JD-Core Version:    0.7.0.1
  */

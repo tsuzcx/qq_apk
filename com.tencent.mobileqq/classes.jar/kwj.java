@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class kwj
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public kwj(CustomWebChromeClient paramCustomWebChromeClient, JsPromptResult paramJsPromptResult) {}
+  public kwj(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsPromptResult.cancel();
+    ReadInJoyNativeAdFragment.a(this.a).setBackgroundResource(2130838508);
+    ReadInJoyNativeAdFragment.a(this.a).setText(this.a.getText(2131438694));
+    ReadInJoyNativeAdFragment.a(this.a).setTextColor(-1);
+    ReadInJoyNativeAdFragment.a(this.a).setProgress(0);
+    ReadInJoyNativeAdFragment.a(this.a).setClickable(true);
+    ReadInJoyNativeAdFragment.c(this.a, 2);
   }
 }
 

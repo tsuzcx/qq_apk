@@ -1,15 +1,35 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.addContactTroopView.TroopCardBanner;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.authorize.JsonConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-class kla
-  implements Runnable
+public class kla
+  extends Handler
 {
-  kla(kkz paramkkz) {}
-  
-  public void run()
+  public kla(JsonConfig paramJsonConfig, Looper paramLooper)
   {
-    int i = this.a.a.a.getCurrentItem();
-    this.a.a.a.setCurrentItem(i + 1);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+      }
+      this.a.a.clear();
+    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
+    }
+    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
 }
 

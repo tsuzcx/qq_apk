@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.antiphing.UinFraudInfo;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public class ygc
+class ygc
+  implements Runnable
 {
-  public int a;
-  public long a;
+  ygc(ygb paramygb) {}
   
-  public ygc(UinFraudInfo paramUinFraudInfo) {}
+  public void run()
+  {
+    this.a.a.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ygc
  * JD-Core Version:    0.7.0.1
  */

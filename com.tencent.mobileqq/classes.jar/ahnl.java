@@ -1,170 +1,184 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Environment;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload;
-import com.tencent.mobileqq.shortvideo.gesture.GestureUtil;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.richmedia.dc.DCShortVideo;
+import com.tencent.mobileqq.richmedia.dc.DataReport;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment.ShortVideoConfig;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.Locale;
 
 public class ahnl
+  implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c;
+  public ahnl(DCShortVideo paramDCShortVideo, String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString2, long paramLong, String paramString3, boolean paramBoolean1, int paramInt3, String paramString4, boolean paramBoolean2) {}
   
-  public ahnl()
+  public void run()
   {
-    this.jdField_c_of_type_Int = 0;
-  }
-  
-  public boolean a(DownloadInfo paramDownloadInfo)
-  {
-    boolean bool;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == paramDownloadInfo) || (((TextUtils.isEmpty(paramDownloadInfo.d)) || (paramDownloadInfo.d.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo.d))) && ((TextUtils.isEmpty(paramDownloadInfo.b)) || (paramDownloadInfo.b.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo.b))))) {
-        break label388;
-      }
-      bool = true;
-    }
+    ahnv localahnv = new ahnv();
+    Object localObject3 = new File(this.jdField_a_of_type_JavaLangString);
+    if (!((File)localObject3).exists()) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavGesture", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
+      return;
+      localahnv.jdField_a_of_type_Long = ((File)localObject3).length();
+      if (localahnv.jdField_a_of_type_Long <= 0L) {
+        continue;
       }
-      if (!bool)
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCShortVideo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, localahnv);
+      localahnv.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+      localahnv.jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+      try
       {
-        return this.jdField_a_of_type_Boolean;
-        bool = true;
-      }
-      else
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null)
+        Object localObject2 = this.jdField_a_of_type_JavaLangString;
+        String str = Environment.getExternalStorageDirectory().toString();
+        Object localObject1 = localObject2;
+        if (str != null)
         {
-          Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-          if ((localObject instanceof AppInterface))
+          localObject1 = localObject2;
+          if (this.jdField_a_of_type_JavaLangString.contains(str)) {
+            localObject1 = this.jdField_a_of_type_JavaLangString.replace(str, "");
+          }
+        }
+        int i = ((String)localObject1).lastIndexOf("/");
+        localObject2 = localObject1;
+        if (i != -1) {
+          localObject2 = ((String)localObject1).substring(0, i);
+        }
+        localahnv.jdField_a_of_type_JavaLangString = ((String)localObject2).replace("/", "//");
+        localObject2 = FileUtil.b(this.jdField_a_of_type_JavaLangString);
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          localObject1 = ((String)localObject2).toLowerCase(Locale.US);
+        }
+        localObject2 = null;
+        label918:
+        try
+        {
+          localObject3 = ((File)localObject3).getParentFile().getName().toLowerCase(Locale.US);
+          localObject2 = localObject3;
+        }
+        catch (Exception localException2)
+        {
+          label217:
+          break label217;
+        }
+        if ((localObject1 == null) || (localObject2 == null)) {
+          continue;
+        }
+        if (((String)localObject1).contains("/tencent/")) {
+          if (((String)localObject1).contains("/mobileqq/shortvideo/"))
           {
-            localObject = ((AppInterface)localObject).getNetEngine(0);
-            if (localObject != null)
+            localahnv.j = 1002;
+            localahnv.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+            if (this.jdField_a_of_type_Boolean)
             {
-              QLog.d("QavGesture", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.a() }));
-              ((INetEngine)localObject).b(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+              if (this.jdField_c_of_type_Int != 0) {
+                break label918;
+              }
+              localahnv.jdField_a_of_type_Int = 0;
             }
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = paramDownloadInfo;
-        this.jdField_c_of_type_Int = 0;
-        this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-        this.jdField_a_of_type_Int = 0;
-        this.b = 0;
-        if (!GestureUtil.d(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))
+        for (;;)
         {
-          this.jdField_c_of_type_Int |= 0x1;
-          this.jdField_a_of_type_Int += 1;
-        }
-        if (!GestureUtil.c(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))
-        {
-          this.jdField_c_of_type_Int |= 0x2;
-          this.jdField_a_of_type_Int += 1;
-        }
-        if ((GestureUtil.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo)) && (!GestureUtil.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo)))
-        {
-          this.jdField_c_of_type_Int |= 0x3;
-          this.jdField_a_of_type_Int += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QavGesture", 2, String.format("DownloadContrl, mResFlag[%s], mInfo[%s]", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
-        }
-        if (this.jdField_a_of_type_Int == 0) {
-          return this.jdField_a_of_type_Boolean;
-        }
-        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, 3);
-        return this.jdField_a_of_type_Boolean;
-        label388:
-        bool = false;
-      }
-    }
-  }
-  
-  boolean a(DownloadInfo paramDownloadInfo, int paramInt)
-  {
-    String str2;
-    String str1;
-    int i;
-    if (!GestureUtil.d(paramDownloadInfo))
-    {
-      str2 = paramDownloadInfo.jdField_a_of_type_JavaLangString;
-      str1 = paramDownloadInfo.b;
-      i = 1;
-    }
-    String str3;
-    boolean bool2;
-    for (;;)
-    {
-      str3 = GestureUtil.b() + str1;
-      if (paramInt >= 0) {
-        break label154;
-      }
-      QLog.d("QavGesture", 1, String.format("downloadRes, 下载死循环了. res_flag[%s], info[%s]", new Object[] { Integer.valueOf(i), paramDownloadInfo }));
-      GestureMgrAppDownload.a(-3);
-      bool2 = false;
-      return bool2;
-      if ((paramDownloadInfo.jdField_a_of_type_Boolean) && (!GestureUtil.c(paramDownloadInfo)))
-      {
-        str2 = paramDownloadInfo.jdField_c_of_type_JavaLangString;
-        str1 = paramDownloadInfo.d;
-        i = 2;
-      }
-      else
-      {
-        if ((!GestureUtil.a(paramDownloadInfo)) || (GestureUtil.b(paramDownloadInfo))) {
+          localahnv.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+          localahnv.k = ((int)((System.currentTimeMillis() - new File(this.jdField_a_of_type_JavaLangString).lastModified()) / 60000L));
+          if (localahnv.k == 0) {
+            localahnv.k = 1;
+          }
+          localahnv.m = VideoEnvironment.jdField_a_of_type_Int;
+          localahnv.l = (VideoEnvironment.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoConfig.jdField_a_of_type_Int + 2000);
+          if (QLog.isDevelopLevel()) {
+            QLog.d("DCShortVideo", 4, "[reportSend]url=" + localahnv.jdField_a_of_type_JavaLangString + ",shortVideoType=" + localahnv.f + ",shortVideoSourceType = " + localahnv.j + ",uinType = " + localahnv.jdField_b_of_type_Int + ",groupMemCount = " + localahnv.jdField_c_of_type_Int + ",isForward = " + localahnv.jdField_a_of_type_Boolean + ",isExsit = " + localahnv.jdField_b_of_type_Boolean + ",age = " + localahnv.d + ",gender = " + localahnv.e + ",userType = " + localahnv.l + ",reprotHour = " + localahnv.g + ",fileInterval = " + localahnv.k + ",netType = " + localahnv.h + ",forwardSourceGroupMemCount = " + localahnv.i + ",forwardSourceUinType = " + localahnv.jdField_a_of_type_Int + ",duration = " + localahnv.jdField_b_of_type_Long + ",fileSize = " + localahnv.jdField_a_of_type_Long + ",md5 = " + localahnv.jdField_b_of_type_JavaLangString + ", status=" + localahnv.m);
+          }
+          localObject1 = new ahnz("ShortVideo.Send", localahnv.a("ShortVideo.Send"));
+          DataReport.a().a((ahnz)localObject1);
+          return;
+          if (((String)localObject1).contains("/qq_collection/"))
+          {
+            localahnv.j = 1001;
+            break;
+          }
+          if (((String)localObject1).contains("/qqfile_recv/"))
+          {
+            localahnv.j = 1003;
+            break;
+          }
+          if ((((String)localObject1).contains("/weixin/")) || (((String)localObject1).contains("/wechat/")) || (((String)localObject1).contains("/micromsg/")))
+          {
+            localahnv.j = 1004;
+            break;
+          }
+          if (StatisticConstants.a((String)localObject1))
+          {
+            localahnv.j = 1005;
+            break;
+          }
+          localahnv.j = 1006;
           break;
+          if (((String)localObject1).equalsIgnoreCase(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getAbsolutePath() + File.separator))
+          {
+            localahnv.j = 1002;
+            break;
+          }
+          if ((((String)localObject2).contains("camera")) || (((String)localObject2).equals("dcim")) || (((String)localObject2).equals("100MEDIA")) || (((String)localObject2).equals("100ANDRO")) || (((String)localObject2).contains("相机")) || (((String)localObject2).contains("照片")) || (((String)localObject2).contains("相片")))
+          {
+            localahnv.j = 1007;
+            break;
+          }
+          if (StatisticConstants.a((String)localObject1))
+          {
+            localahnv.j = 1005;
+            break;
+          }
+          localahnv.j = 1006;
+          break;
+          if (this.jdField_c_of_type_Int == 3000)
+          {
+            localahnv.jdField_a_of_type_Int = 3000;
+          }
+          else
+          {
+            if (this.jdField_c_of_type_Int == 1)
+            {
+              switch (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.d))
+              {
+              default: 
+                localahnv.jdField_a_of_type_Int = 1;
+              }
+              for (;;)
+              {
+                localahnv.i = 0;
+                localObject1 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+                if (localObject1 == null) {
+                  break;
+                }
+                localObject1 = ((TroopManager)localObject1).b(this.d);
+                if (localObject1 == null) {
+                  break;
+                }
+                localahnv.i = ((TroopInfo)localObject1).wMemberNum;
+                break;
+                localahnv.jdField_a_of_type_Int = 1;
+                continue;
+                localahnv.jdField_a_of_type_Int = 3;
+                continue;
+                localahnv.jdField_a_of_type_Int = 4;
+                continue;
+                localahnv.jdField_a_of_type_Int = 2;
+              }
+            }
+            localahnv.jdField_a_of_type_Int = 9999;
+          }
         }
-        str2 = paramDownloadInfo.i;
-        str1 = paramDownloadInfo.j;
-        i = 3;
+        return;
       }
-    }
-    GestureMgrAppDownload.a(100);
-    return false;
-    label154:
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahnm(this, str1, paramDownloadInfo, i, paramInt);
-    localHttpNetReq.a(i + "_" + str1);
-    localHttpNetReq.jdField_a_of_type_JavaLangString = str2;
-    localHttpNetReq.jdField_a_of_type_Int = 0;
-    localHttpNetReq.jdField_c_of_type_JavaLangString = new File(str3).getPath();
-    localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
-    paramDownloadInfo = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramDownloadInfo instanceof QQAppInterface))
-    {
-      paramDownloadInfo = ((QQAppInterface)paramDownloadInfo).getNetEngine(0);
-      if (paramDownloadInfo != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
-        paramDownloadInfo.a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-      }
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (!bool1) {
-        GestureMgrAppDownload.a(-2);
-      }
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("QavGesture", 2, String.format("downloadRes, res_flag[%s], md5[%s], etr[%s]", new Object[] { Integer.valueOf(i), str1, Boolean.valueOf(bool1) }));
-      return bool1;
+      catch (Exception localException1) {}
     }
   }
 }

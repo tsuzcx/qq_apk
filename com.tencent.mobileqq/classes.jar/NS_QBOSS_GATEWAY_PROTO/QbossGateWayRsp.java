@@ -48,7 +48,7 @@ public final class QbossGateWayRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_QBOSS_GATEWAY_PROTO.QbossGateWayRsp
  * JD-Core Version:    0.7.0.1
  */

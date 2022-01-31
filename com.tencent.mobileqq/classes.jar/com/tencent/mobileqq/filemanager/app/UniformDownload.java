@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import ackp;
+import acum;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
@@ -34,7 +34,7 @@ public class UniformDownload
   
   public void a(String paramString, Bundle paramBundle)
   {
-    UniformDownloadUtil.a(paramString, new ackp(this, paramBundle, paramString, paramBundle.getLong("_filesize"), paramBundle.getLong("_buttontype", 0L)));
+    UniformDownloadUtil.a(paramString, new acum(this, paramBundle, paramString, paramBundle.getLong("_filesize"), paramBundle.getLong("_buttontype", 0L)));
   }
 }
 

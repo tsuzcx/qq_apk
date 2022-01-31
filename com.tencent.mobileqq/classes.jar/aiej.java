@@ -1,23 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiej
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aiej(TribePostTitlePrefixPanelController paramTribePostTitlePrefixPanelController) {}
+  public boolean d = true;
+  public boolean e = true;
+  public int f;
+  public boolean f;
+  public int g;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  aiej(TCProgressBar paramTCProgressBar)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), i, 0, 0);
+    this.jdField_f_of_type_Boolean = false;
+  }
+  
+  void a(Canvas paramCanvas)
+  {
+    this.jdField_f_of_type_Boolean = false;
+  }
+  
+  boolean a(float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    }
+    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiej
  * JD-Core Version:    0.7.0.1
  */

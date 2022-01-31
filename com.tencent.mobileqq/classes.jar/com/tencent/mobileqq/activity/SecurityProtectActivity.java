@@ -17,8 +17,8 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.HttpDownloadUtil.DownloadInfoListener;
 import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import toi;
-import toj;
+import tri;
+import trj;
 
 public class SecurityProtectActivity
   extends IphoneTitleBarActivity
@@ -60,22 +60,22 @@ public class SecurityProtectActivity
     {
       this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
     }
-    new Handler(Looper.getMainLooper()).post(new toj(this));
+    new Handler(Looper.getMainLooper()).post(new trj(this));
     return true;
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130971500);
-    setTitle(2131436639);
+    super.setContentView(2130971548);
+    setTitle(2131436656);
     this.rightViewText.setVisibility(8);
-    this.leftView.setText(2131436627);
+    this.leftView.setText(2131436644);
     this.leftView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374848));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369980));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369989));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369981));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375034));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370057));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370066));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370058));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetButton.setFocusable(true);
@@ -95,10 +95,10 @@ public class SecurityProtectActivity
     String str;
     if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845368);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436640);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845496);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436657);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436642);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436659);
       if (!this.jdField_b_of_type_Boolean) {
         break label192;
       }
@@ -110,16 +110,16 @@ public class SecurityProtectActivity
       return;
       if (!this.jdField_b_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845369);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436644);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845497);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436661);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131436645);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131436662);
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845367);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436646);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845495);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436663);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436648);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436665);
       break;
       label192:
       if (this.jdField_a_of_type_Boolean) {
@@ -144,15 +144,15 @@ public class SecurityProtectActivity
     {
     default: 
       return;
-    case 2131369981: 
+    case 2131370058: 
       if (!this.jdField_a_of_type_Boolean)
       {
-        ThreadManager.executeOnNetWorkThread(new toi(this));
+        ThreadManager.executeOnNetWorkThread(new tri(this));
         this.c = true;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436641);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436658);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        ((LinearLayout)findViewById(2131371134)).setVisibility(0);
+        ((LinearLayout)findViewById(2131371297)).setVisibility(0);
         ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn download qqpimsecure", 0, 0, "", "", "", "");
         return;
       }

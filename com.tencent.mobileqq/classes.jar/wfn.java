@@ -1,16 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class wfn
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public wfn(SearchBaseActivity paramSearchBaseActivity) {}
+  public wfn(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.clearFocus();
+    paramDialogInterface.dismiss();
+    BlessSelectMemberActivity.a(this.a, null);
   }
 }
 

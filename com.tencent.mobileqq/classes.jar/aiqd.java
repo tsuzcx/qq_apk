@@ -1,29 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
 
 public class aiqd
-  implements DialogInterface.OnClickListener
+  implements ITransCallbackForReport
 {
-  public aiqd(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
+  public aiqd(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (TroopFileItemOperation.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) == 0);
-    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.b).e(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
+    this.a.a(false, this.a.j, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiqd
  * JD-Core Version:    0.7.0.1
  */

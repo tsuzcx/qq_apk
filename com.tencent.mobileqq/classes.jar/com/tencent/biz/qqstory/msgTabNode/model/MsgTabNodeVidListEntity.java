@@ -1,29 +1,31 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
+import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.persistence.uniqueConstraints;
 
+@uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="unionId,nodeType,requestSource")
 public class MsgTabNodeVidListEntity
   extends Entity
 {
   public int nodeType;
   public long reqTimeStamp;
+  public int requestSource;
   public byte[] rspData;
-  @unique
   public String unionId;
   
   public static String[] getArgs(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     int i = paramMsgTabNodeInfo.jdField_a_of_type_Int;
     if (paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString == null) {}
-    for (paramMsgTabNodeInfo = "";; paramMsgTabNodeInfo = paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString) {
-      return new String[] { String.valueOf(i), paramMsgTabNodeInfo };
+    for (String str = "";; str = paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString) {
+      return new String[] { String.valueOf(i), str, String.valueOf(paramMsgTabNodeInfo.e) };
     }
   }
   
   public static String getSelection()
   {
-    return "nodeType=? and unionId=?";
+    return "nodeType=? and unionId=? and requestSource=?";
   }
 }
 

@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SecurityProtectActivity;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class trj
   implements Runnable
 {
-  public trj(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public trj(SecurityProtectActivity paramSecurityProtectActivity) {}
   
   public void run()
   {
-    this.a.b();
+    SecurityProtectActivity.a(this.a, false);
+    SecurityProtectActivity.a(this.a).setText(2131436663);
+    SecurityProtectActivity.b(this.a).setVisibility(0);
+    SecurityProtectActivity.a(this.a).setVisibility(0);
+    ((LinearLayout)this.a.findViewById(2131371297)).setVisibility(8);
+    FMToastUtil.a(2131434613);
   }
 }
 

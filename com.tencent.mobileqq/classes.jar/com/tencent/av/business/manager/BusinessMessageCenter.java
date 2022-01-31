@@ -13,18 +13,18 @@ import com.tencent.av.business.manager.zimu.ZimuItem;
 import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Observable;
-import jfr;
+import jfc;
 
 public class BusinessMessageCenter
 {
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private jfr jdField_a_of_type_Jfr;
+  private jfc jdField_a_of_type_Jfc;
   
   public BusinessMessageCenter(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Jfr = new jfr(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Jfr);
+    this.jdField_a_of_type_Jfc = new jfc(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Jfc);
   }
   
   private void a(String paramString, boolean paramBoolean)

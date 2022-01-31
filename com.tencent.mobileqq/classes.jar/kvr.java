@@ -1,16 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 public class kvr
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnCancelListener
 {
-  public kvr(VideoCoverView paramVideoCoverView) {}
+  public kvr(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super.onAnimationEnd(paramAnimator);
-    VideoCoverView.a(this.a, true);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 

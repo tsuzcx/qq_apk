@@ -1,15 +1,15 @@
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.model.KingShareReadInjoyModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.KingMomentInfo;
 
 public class lrm
   implements Runnable
 {
-  public lrm(SubscriptionInfoModule paramSubscriptionInfoModule, List paramList) {}
+  public lrm(KingShareReadInjoyModule paramKingShareReadInjoyModule, int paramInt, KingMomentInfo paramKingMomentInfo) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_JavaUtilList);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKingMomentInfo);
   }
 }
 

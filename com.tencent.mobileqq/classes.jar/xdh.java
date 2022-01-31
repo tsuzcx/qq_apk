@@ -1,20 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
-import eipc.EIPCResult;
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
+import cooperation.qwallet.plugin.TenUtils;
 
-public class xdh
-  implements PreloadManager.OnGetPathListener
+class xdh
+  implements DialogInterface.OnClickListener
 {
-  public xdh(QWalletIPCModule paramQWalletIPCModule, int paramInt) {}
+  xdh(xdf paramxdf, HbSkinInfo paramHbSkinInfo) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramPathResult);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentHbSkinInfo.a.pop_dialog.right_url;
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      TenUtils.startQQBrowser(this.jdField_a_of_type_Xdf.a.getActivity(), paramDialogInterface);
+    }
   }
 }
 

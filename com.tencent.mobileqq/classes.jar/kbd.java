@@ -1,56 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class kbd
-  extends BroadcastReceiver
+class kbd
+  implements QavInOutAnimation.QavOutAnimationListener
 {
-  public kbd(VideoControlUI paramVideoControlUI) {}
+  kbd(kbb paramkbb) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
-      return;
-    }
-    paramContext = paramIntent.getStringExtra("camera_id");
-    int i = paramIntent.getIntExtra("availability", 1);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.c, 2, "update camera availability status cameraId:" + paramContext + ", value:" + i);
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
-    if (i == 0)
+    if (this.a.a.a != null)
     {
-      VideoControlUI.b(this.a, false);
-      return;
+      this.a.a.a.setViewEnable(2131364247, false);
+      this.a.a.a.setViewEnable(2131365414, false);
+      this.a.a.a.setViewEnable(2131365413, false);
+      this.a.a.a.setViewEnable(2131365411, false);
+      this.a.a.a.setViewEnable(2131365409, false);
+      this.a.a.a.setViewEnable(2131364249, false);
     }
-    paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    if ((paramContext != null) && (paramContext.size() > 0))
-    {
-      paramContext = paramContext.entrySet().iterator();
-      do
-      {
-        if (!paramContext.hasNext()) {
-          break;
-        }
-      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
-    }
-    for (i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        VideoControlUI.b(this.a, false);
-        return;
-      }
-      VideoControlUI.b(this.a, true);
-      return;
-    }
+  }
+  
+  public void b()
+  {
+    this.a.a.e = true;
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2131034269);
   }
 }
 

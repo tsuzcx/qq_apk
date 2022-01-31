@@ -203,12 +203,12 @@ public class YellowTipsLayout
   
   private void init(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969833, this, true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969847, this, true);
     paramContext.setClickable(true);
     paramContext.setOnClickListener(this);
-    this.mWariningView = ((ImageView)findViewById(2131368207));
-    this.mText = ((TextView)findViewById(2131368208));
-    this.mArrowView = ((ImageView)findViewById(2131368209));
+    this.mWariningView = ((ImageView)findViewById(2131368274));
+    this.mText = ((TextView)findViewById(2131368275));
+    this.mArrowView = ((ImageView)findViewById(2131368276));
   }
   
   public void onClick(View paramView)

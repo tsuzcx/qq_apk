@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
 
-public final class anbx
-  implements Parcelable.Creator
+public class anbx
+  implements Runnable
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
-  {
-    return new EditRecordVideoSource(paramParcel);
-  }
+  public anbx(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime) {}
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public void run()
   {
-    return new EditRecordVideoSource[paramInt];
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin$PluginRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbx
  * JD-Core Version:    0.7.0.1
  */

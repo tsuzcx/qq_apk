@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchResultGroupPresenter;
-import com.tencent.mobileqq.filemanager.data.search.GroupSearchModelFileEntity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
 
 public class acrb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acrb(FileSearchResultGroupPresenter paramFileSearchResultGroupPresenter, GroupSearchModelFileEntity paramGroupSearchModelFileEntity) {}
+  public acrb(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchGroupSearchModelFileEntity.a(paramView);
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.a != null) && (QfileBaseLocalFileTabView.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView))) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.a.a(this.jdField_a_of_type_Int);
+    }
   }
 }
 

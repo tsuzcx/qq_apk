@@ -1,49 +1,38 @@
-import android.os.Bundle;
-import com.tencent.biz.helper.TroopCardAppInfoHelper;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.lebasearch.SearchProtocol;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class kno
-  implements BusinessObserver
+public final class kno
+  extends SosoInterface.OnLocationListener
 {
-  public kno(TroopCardAppInfoHelper paramTroopCardAppInfoHelper) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public kno(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, SharedPreferences paramSharedPreferences)
   {
-    if (this.a.a) {
-      return;
-    }
-    if ((!paramBoolean) || (paramBundle == null))
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    SharedPreferences.Editor localEditor = this.a.edit();
+    if (paramInt == 0)
     {
-      TroopCardAppInfoHelper.a(this.a);
-      return;
+      SearchProtocol.a = (float)paramSosoLbsInfo.a.a;
+      SearchProtocol.b = (float)paramSosoLbsInfo.a.b;
+      localEditor.putFloat("search_lbs_latitude", SearchProtocol.a);
+      localEditor.putFloat("search_lbs_logitude", SearchProtocol.b);
     }
-    do
+    if ((paramInt == 0) || (paramInt == 1)) {
+      localEditor.remove("search_lbs_delay");
+    }
+    for (;;)
     {
-      oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-        localOIDBSSOPkg.mergeFrom(paramBundle);
-        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
-        {
-          TroopCardAppInfoHelper.a(this.a);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        TroopCardAppInfoHelper.a(this.a);
-        return;
-      }
-      paramBundle = TroopCardAppInfoHelper.b(this.a, localOIDBSSOPkg);
-    } while ((paramBundle == null) || (paramBundle.size() <= 0));
-    TroopCardAppInfoHelper.a(this.a, paramBundle);
+      localEditor.putLong("search_lbs_timestamp", System.currentTimeMillis());
+      localEditor.commit();
+      return;
+      localEditor.putInt("search_lbs_delay", 48);
+    }
   }
 }
 

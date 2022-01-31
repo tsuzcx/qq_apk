@@ -1,18 +1,10 @@
-import cooperation.qzone.LocalMultiProcConfig;
-
-public final class ambi
-  implements Runnable
+public abstract interface ambi
 {
-  public ambi(String paramString1, String paramString2, boolean paramBoolean) {}
-  
-  public void run()
-  {
-    LocalMultiProcConfig.putBool(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambi
  * JD-Core Version:    0.7.0.1
  */

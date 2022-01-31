@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import alnn;
-import alno;
+import amdd;
+import amde;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -25,8 +25,8 @@ public class ProgressPieView
   static LruCache jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(8);
   public float a;
   public int a;
-  alnn jdField_a_of_type_Alnn = new alnn(this);
-  alno jdField_a_of_type_Alno = new alno(this);
+  amdd jdField_a_of_type_Amdd = new amdd(this);
+  amde jdField_a_of_type_Amde = new amde(this);
   public Paint a;
   Rect jdField_a_of_type_AndroidGraphicsRect;
   RectF jdField_a_of_type_AndroidGraphicsRectF;
@@ -868,7 +868,7 @@ public class ProgressPieView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.ProgressPieView
  * JD-Core Version:    0.7.0.1
  */

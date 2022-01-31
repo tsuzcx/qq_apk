@@ -683,7 +683,7 @@ public class TroopInfo
   public String getAdminShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.adminNameShow)) {
-      return paramContext.getString(2131433140);
+      return paramContext.getString(2131433157);
     }
     return this.adminNameShow;
   }
@@ -692,12 +692,12 @@ public class TroopInfo
   {
     String str = "";
     if ((this.troopPrivilegeFlag & 0x6100000) == 0L) {
-      str = paramResources.getString(2131430152);
+      str = paramResources.getString(2131430169);
     }
     while (((this.troopPrivilegeFlag & 0x2000000) != 33554432L) && ((this.troopPrivilegeFlag & 0x4000000) != 67108864L) && ((this.troopPrivilegeFlag & 0x100000) != 1048576L)) {
       return str;
     }
-    return paramResources.getString(2131430151);
+    return paramResources.getString(2131430168);
   }
   
   public String getInviteModeWording(Resources paramResources)
@@ -710,7 +710,7 @@ public class TroopInfo
       if (((i != 1) && (i != 6)) || (isOnlyTroopMemberInviteOption())) {
         break label69;
       }
-      str = paramResources.getString(2131430146);
+      str = paramResources.getString(2131430163);
     }
     label69:
     do
@@ -719,13 +719,13 @@ public class TroopInfo
       i = this.cGroupOption;
       break;
       if ((this.troopPrivilegeFlag & 0x6100000) == 0L) {
-        return paramResources.getString(2131430147);
+        return paramResources.getString(2131430164);
       }
       if ((this.troopPrivilegeFlag & 0x100000) == 1048576L) {
-        return paramResources.getString(2131430146);
+        return paramResources.getString(2131430163);
       }
     } while (((this.troopPrivilegeFlag & 0x4000000) != 67108864L) && ((this.troopPrivilegeFlag & 0x2000000) != 33554432L));
-    return paramResources.getString(2131430149);
+    return paramResources.getString(2131430166);
   }
   
   public int getMemNumForAutoInviteIntoGroup(QQAppInterface paramQQAppInterface)
@@ -782,7 +782,7 @@ public class TroopInfo
   public String getOwnerShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.ownerNameShow)) {
-      return paramContext.getString(2131433139);
+      return paramContext.getString(2131433156);
     }
     return this.ownerNameShow;
   }

@@ -1,15 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.WebViewTitleStyleHelper;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class tfj
-  implements Runnable
+  implements IStatusListener
 {
-  public tfj(QQBrowserActivity paramQQBrowserActivity) {}
+  public tfj(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void run()
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    WebViewTitleStyleHelper.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
+    PermisionPrivacyActivity.a(this.a, this.a.g.a(), paramBoolean);
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == -1) {
+      PermisionPrivacyActivity.a(this.a, 2131436066);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.g.a(), PermisionPrivacyActivity.a(this.a).b());
   }
 }
 

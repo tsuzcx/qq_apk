@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
 
 public class nzy
-  implements View.OnClickListener
+  implements Runnable
 {
-  public nzy(GuideInfoDialog paramGuideInfoDialog) {}
+  public nzy(MystoryListView paramMystoryListView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.dismiss();
+    if (this.a.a != null)
+    {
+      this.a.postDelayed(this.a.a, 100L);
+      this.a.a = null;
+    }
   }
 }
 

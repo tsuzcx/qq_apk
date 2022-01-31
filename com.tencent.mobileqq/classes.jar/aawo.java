@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
 
-public class aawo
-  implements Runnable
+public final class aawo
+  implements ArkAppLocationManager.ArkGetLocationCallback
 {
-  public aawo(ShopScanActivity paramShopScanActivity) {}
+  public aawo(String paramString, Object paramObject, ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler paramIAnalyzeArkBabyQReplyByServerHandler) {}
   
-  public void run()
+  public void a(String paramString, double paramDouble1, double paramDouble2)
   {
-    ShopScanActivity.a(this.a, true);
-    ShopScanActivity.d(this.a);
+    aawy localaawy = new aawy(null);
+    localaawy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localaawy.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
+    localaawy.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler;
+    ThreadManager.post(new aawp(this, localaawy, paramString, paramDouble1, paramDouble2), 5, null, true);
   }
 }
 

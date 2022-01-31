@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
 public class ahkb
   implements Runnable
 {
-  public ahkb(QZoneNotifyServlet paramQZoneNotifyServlet) {}
+  public ahkb(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(QZoneNotifyServlet.a(), 2, "QZone scheduled QZoneFeedTimeTask run. currentTime:" + System.currentTimeMillis());
+    if ((EffectsCameraCaptureFragment.a(this.a) != null) && (EffectsCameraCaptureFragment.a(this.a).a())) {
+      EffectsCameraCaptureFragment.a(this.a).b();
     }
-    AppRuntime localAppRuntime = this.a.getAppRuntime();
-    if (localAppRuntime == null) {
-      return;
-    }
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), QZoneNotifyServlet.class);
-    localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
-    localNewIntent.putExtra("bNotWorkInBackGround", true);
-    localNewIntent.putExtra("qzone_send_by_time", 4);
-    localAppRuntime.startServlet(localNewIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahkb
  * JD-Core Version:    0.7.0.1
  */

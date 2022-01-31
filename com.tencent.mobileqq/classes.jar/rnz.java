@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class rnz
-  implements Runnable
+  extends SecSvcObserver
 {
-  public rnz(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage, SessionInfo paramSessionInfo) {}
+  public rnz(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    AuthDevRenameActivity.a(this.a);
+    if (!paramBoolean)
+    {
+      QQToast.a(this.a, this.a.getString(2131436619), 0).b(this.a.getTitleBarHeight());
+      return;
     }
+    this.a.finish();
   }
 }
 

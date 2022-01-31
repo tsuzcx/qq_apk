@@ -1,16 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.im.oidb.cmd0x978.oidb_cmd0x978.OneFollowOperationResult;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.SelfInfoModule;
 
 public class lrs
   implements Runnable
 {
-  public lrs(UserOperationModule paramUserOperationModule, UserOperationModule.Ox978RespCallBack paramOx978RespCallBack, String paramString, oidb_cmd0x978.OneFollowOperationResult paramOneFollowOperationResult) {}
+  public lrs(SelfInfoModule paramSelfInfoModule, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelUserOperationModule$Ox978RespCallBack.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_TencentImOidbCmd0x978Oidb_cmd0x978$OneFollowOperationResult.enum_follow_status.get());
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
   }
 }
 

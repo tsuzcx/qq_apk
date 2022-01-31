@@ -204,7 +204,7 @@ public class VideoComponentCallback
     if ("cover_mall_record_video".equals(a()))
     {
       int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448);
-      localObject1 = paramActivity.getString(2131432786);
+      localObject1 = paramActivity.getString(2131432803);
       QQToast.a(paramActivity, (CharSequence)localObject1, 0).b(i);
       QLog.i(jdField_a_of_type_JavaLangString, 2, "video cover,not support trim," + (String)localObject1);
       return;
@@ -332,7 +332,7 @@ public class VideoComponentCallback
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentQzoneEffectsCameraCaptureFragment = paramQzoneEffectsCameraCaptureFragment;
   }
   
-  public void b(String paramString)
+  public void c_(String paramString)
   {
     this.b = paramString;
   }

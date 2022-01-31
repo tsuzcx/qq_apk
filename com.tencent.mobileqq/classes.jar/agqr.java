@@ -1,31 +1,23 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
 public class agqr
-  implements ViewPager.OnPageChangeListener
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public agqr(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public agqr(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Rect paramRect, Transformation paramTransformation)
   {
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
-    if (paramInt == 0)
-    {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
-      return;
-    }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqr
  * JD-Core Version:    0.7.0.1
  */

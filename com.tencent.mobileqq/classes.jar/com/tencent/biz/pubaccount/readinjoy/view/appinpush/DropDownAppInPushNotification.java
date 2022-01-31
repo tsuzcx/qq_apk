@@ -3,7 +3,6 @@ package com.tencent.biz.pubaccount.readinjoy.view.appinpush;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -18,18 +17,19 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
-import mkc;
-import mkd;
+import mln;
+import mlo;
 
 public class DropDownAppInPushNotification
   extends AppInPushNotification
 {
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new mkc(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new mln(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
@@ -61,51 +61,47 @@ public class DropDownAppInPushNotification
   private void d()
   {
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getRootView());
-    ImageView localImageView2;
-    ImageView localImageView1;
-    TextView localTextView1;
+    Object localObject;
+    TextView localTextView;
+    ImageView localImageView;
+    ReadInJoyHeadImageView localReadInJoyHeadImageView;
+    ReadInJoyNickNameTextView localReadInJoyNickNameTextView;
     if (TextUtils.isEmpty(this.c))
     {
-      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969596, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131363805);
+      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969604, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131363828);
       this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), this.jdField_a_of_type_AndroidViewView.getPaddingTop() + ViewUtils.a(this.jdField_a_of_type_AndroidContentContext), this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
       this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow((View)localObject, -1, -2);
-      localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366896);
-      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367042);
-      localImageView2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366898);
-      localImageView1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366893);
-      localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366894);
+      localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366938);
+      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367090);
+      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366940);
+      localReadInJoyHeadImageView = (ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366935);
+      localReadInJoyNickNameTextView = (ReadInJoyNickNameTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366936);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label304;
+        break label288;
       }
-      localImageView2.setVisibility(8);
-      label203:
-      ((TextView)localObject).setText(this.b);
-      if (localTextView2 != null) {
-        localTextView2.setText(this.c);
-      }
-      if (TextUtils.isEmpty(this.d)) {
-        break label416;
-      }
+      localImageView.setVisibility(8);
     }
-    label416:
-    for (Object localObject = URLDrawable.getDrawable(this.d);; localObject = PublicAccountConfigUtil.a(this.jdField_a_of_type_AndroidContentContext, 3))
+    for (;;)
     {
-      localImageView1.setImageDrawable((Drawable)localObject);
-      localTextView1.setText(this.e);
+      ((TextView)localObject).setText(this.b);
+      if (localTextView != null) {
+        localTextView.setText(this.c);
+      }
+      localReadInJoyHeadImageView.setHeadImgByUin(this.f);
+      localReadInJoyNickNameTextView.setText(this.e);
       this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new mkd(this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new mlo(this));
       return;
-      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969595, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969603, this.jdField_a_of_type_AndroidViewViewGroup, false);
       break;
-      label304:
-      localImageView2.setVisibility(0);
+      label288:
+      localImageView.setVisibility(0);
       this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = new ColorDrawable(-1513241);
       this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mFailedDrawable = new ColorDrawable(-1513241);
       this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestWidth = AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestHeight = AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localImageView2.setImageDrawable(URLDrawable.getDrawable(ReadInJoyUtils.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestWidth, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestHeight), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions));
-      break label203;
+      localImageView.setImageDrawable(URLDrawable.getDrawable(ReadInJoyUtils.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestWidth, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestHeight), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions));
     }
   }
   

@@ -2,19 +2,19 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import vfh;
+import vij;
 
 class StructingMsgItemBuilder$CacheMap
   extends HashMap
 {
   private static final long serialVersionUID = -7873031099646660622L;
   
-  public void add(vfh paramvfh)
+  public void add(vij paramvij)
   {
-    if (paramvfh == null) {
+    if (paramvij == null) {
       return;
     }
-    get(paramvfh.a).add(paramvfh);
+    get(paramvij.a).add(paramvij);
   }
   
   public ArrayList get(String paramString)
@@ -29,17 +29,17 @@ class StructingMsgItemBuilder$CacheMap
     return localArrayList1;
   }
   
-  public void remove(vfh paramvfh)
+  public void remove(vij paramvij)
   {
-    if ((paramvfh == null) || (paramvfh.a == null)) {}
+    if ((paramvij == null) || (paramvij.a == null)) {}
     ArrayList localArrayList;
     do
     {
       return;
-      localArrayList = get(paramvfh.a);
-      localArrayList.remove(paramvfh);
+      localArrayList = get(paramvij.a);
+      localArrayList.remove(paramvij);
     } while (!localArrayList.isEmpty());
-    remove(paramvfh.a);
+    remove(paramvij.a);
   }
 }
 

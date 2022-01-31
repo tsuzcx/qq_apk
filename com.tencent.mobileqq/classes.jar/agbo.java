@@ -1,13 +1,28 @@
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.ocr.OcrCamera;
+import com.tencent.mobileqq.ocr.OcrCamera.CameraCallback;
+import com.tencent.mobileqq.ocr.OcrImageUtil;
 
 public class agbo
   implements Runnable
 {
-  public agbo(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public agbo(OcrCamera paramOcrCamera, boolean paramBoolean, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    this.a.b();
+    this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_b_of_type_Boolean = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback.a();
+    }
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = OcrImageUtil.a(this.jdField_a_of_type_ArrayOfByte, OcrCamera.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera), OcrCamera.b(this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera), OcrCamera.c(this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera), this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_a_of_type_AndroidGraphicsRectF, true);; str = OcrImageUtil.a(this.jdField_a_of_type_ArrayOfByte, OcrCamera.d(this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera), OcrCamera.e(this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera), OcrCamera.c(this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera), this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_b_of_type_Int))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback.a(str);
+      }
+      OcrCamera.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera, false);
+      return;
+    }
   }
 }
 

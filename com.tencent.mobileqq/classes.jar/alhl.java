@@ -1,25 +1,32 @@
-import com.tencent.qqprotect.qsec.ICloudAVEngine.DetectBundle;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.IAVEngineEventListener;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
-public final class alhl
+public class alhl
+  implements Runnable
 {
-  public int a;
-  public ICloudAVEngine.DetectBundle a;
-  public ICloudAVEngine.IAVEngineEventListener a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  public alhl(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  private alhl()
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.toString() + "]";
+    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c) != null) {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_JavaLangString = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c).mSavePath;
+    }
+    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int != 0)
+    {
+      LogUtility.a(DownloadManager.a, "onDownloadError ###重新写码失败..........");
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f = -2;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g = 100;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int, null);
+      return;
+    }
+    LogUtility.a(DownloadManager.a, "onDownloadError ###重新写码成功..........");
+    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f = 4;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g = 100;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
   }
 }
 

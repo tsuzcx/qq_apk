@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm.vipcomic;
 
-import abtp;
+import acar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.os.Handler;
@@ -258,7 +258,7 @@ public class VipComicMqqManager
           localDownloadTask.n = true;
           localDownloadTask.f = "comic_emoticon";
           localDownloadTask.b = 3;
-          paramContext.a(localDownloadTask, new abtp(this, localFile, localCustomEmotionData, localFavroamingDBManager, localArrayList1, paramIPicDownloadListener, localArrayList2, localEntityManager, (VipComicFavorEmoStructMsgInfo)localObject, localAtomicInteger2, localAtomicInteger1), null);
+          paramContext.a(localDownloadTask, new acar(this, localFile, localCustomEmotionData, localFavroamingDBManager, localArrayList1, paramIPicDownloadListener, localArrayList2, localEntityManager, (VipComicFavorEmoStructMsgInfo)localObject, localAtomicInteger2, localAtomicInteger1), null);
         }
       }
     } while (paramIPicDownloadListener == null);

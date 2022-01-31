@@ -1,28 +1,12 @@
-import Wallet.GetSkinListRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
+import java.util.Comparator;
 
-public class xdp
-  implements BusinessObserver
+public final class xdp
+  implements Comparator
 {
-  public xdp(RedPacketManager paramRedPacketManager, QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int a(HbSkinInfo paramHbSkinInfo1, HbSkinInfo paramHbSkinInfo2)
   {
-    GetSkinListRsp localGetSkinListRsp = (GetSkinListRsp)paramBundle.getSerializable("rsp");
-    paramBundle.putBoolean("isCache", false);
-    if (RedPacketManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager) == null) {}
-    do
-    {
-      return;
-      RedPacketManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager).onReceive(paramInt, paramBoolean, paramBundle);
-      ThreadManager.post(new xdq(this, localGetSkinListRsp), 5, null, false);
-    } while (!QLog.isColorLevel());
-    QLog.d("RedPacketManager", 2, "requestRedPacketSkinList onReceive isSuccess:" + paramBoolean);
+    return paramHbSkinInfo1.a - paramHbSkinInfo2.a;
   }
 }
 

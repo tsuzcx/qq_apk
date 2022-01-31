@@ -8,8 +8,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.VideoView;
-import xtn;
-import xto;
+import xwt;
+import xwu;
 
 public class FixedSizeVideoView
   extends VideoView
@@ -24,13 +24,13 @@ public class FixedSizeVideoView
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new xtn(this));
+    super.setOnCompletionListener(new xwt(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new xto(this));
+    super.setOnCompletionListener(new xwu(this));
   }
   
   public int a()

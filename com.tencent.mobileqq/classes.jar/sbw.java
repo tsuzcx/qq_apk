@@ -1,35 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-class sbw
-  implements DialogInterface.OnClickListener
+public class sbw
+  implements IIconListener
 {
-  sbw(sbv paramsbv) {}
+  public sbw(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (paramInt == 1)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.cancel();
-      return;
-    }
-    try
-    {
-      ForwardSdkShareOption.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, true, "action_game_join_group", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c).longValue(), -1, this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.cancel();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
+    if ((this.a.f != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      ChatSettingActivity.a(this.a, this.a.a, this.a.f);
     }
   }
 }

@@ -1,56 +1,52 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.NearbyDataManager;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.nearby.widget.NearbyFacePowerDialog;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.im.oidb.cmd0xac5.cmd0xac5.MasterState;
-import tencent.im.oidb.cmd0xac5.cmd0xac5.NearbyNowData;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aevw
-  implements View.OnClickListener
+  implements VideoFeedsUploader.UploadListener
 {
-  public aevw(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public aevw(VideoFeedsManager paramVideoFeedsManager) {}
   
-  public void onClick(View paramView)
+  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo)
   {
-    int i;
-    if ((NearbyProfileFragment.a(this.a).nearbyNowData.get() != null) && (((cmd0xac5.NearbyNowData)NearbyProfileFragment.a(this.a).nearbyNowData.get()).master_state.get() != null))
-    {
-      i = ((cmd0xac5.MasterState)((cmd0xac5.NearbyNowData)NearbyProfileFragment.a(this.a).nearbyNowData.get()).master_state.get()).uint32_state.get();
-      paramView = ((cmd0xac5.MasterState)((cmd0xac5.NearbyNowData)NearbyProfileFragment.a(this.a).nearbyNowData.get()).master_state.get()).bytes_jump_url.get().toStringUtf8();
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a("上传中", true);
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoFeedsManager:UploadVideo", 2, "onStart:" + paramUploadInfo);
     }
-    for (;;)
-    {
-      if ((i == 1) || (!NearbyDataManager.a(this.a.a.app)))
-      {
-        paramView = new Intent(this.a.a, NearbyVisitorListActivity.class);
-        paramView.putExtra("charmlevel", NearbyProfileFragment.a(this.a).charmLevel);
-        paramView.putExtra("download_tribe_app_url", NearbyProfileFragment.a(this.a).tribeAppDownloadPageUrl);
-        paramView.putExtra("is_show_tribeapp_download_layout", NearbyProfileFragment.a(this.a).isAddPicBtnDownloadAppOpen());
-        this.a.a.startActivity(paramView);
-        NearbyProfileFragment.a(this.a, null);
-        ThreadManager.post(new aevx(this), 5, null, false);
-      }
-      for (;;)
-      {
-        ReportController.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
-        return;
-        NearbyFacePowerDialog localNearbyFacePowerDialog = new NearbyFacePowerDialog(this.a.a);
-        localNearbyFacePowerDialog.a(new aevy(this, paramView, localNearbyFacePowerDialog));
-        localNearbyFacePowerDialog.show();
-      }
-      paramView = "";
-      i = 0;
+  }
+  
+  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoFeedsManager:UploadVideo", 2, "onProcessing:" + paramInt);
     }
+  }
+  
+  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
+  {
+    this.a.jdField_a_of_type_Boolean = false;
+    if (paramUploadInfo == null) {
+      QLog.i("VideoFeedsManager", 1, "onResult UploadInfo == null");
+    }
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramUploadResult.a, VideoFeedsManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramUploadInfo, paramUploadResult));
+      ThreadManager.getUIHandler().post(new aevy(this, paramUploadInfo, paramUploadResult));
+    } while (paramUploadInfo != null);
+    QLog.i("VideoFeedsManager:UploadVideo", 1, "onResult:" + paramUploadInfo);
+  }
+  
+  public void b(VideoFeedsUploader.UploadInfo paramUploadInfo)
+  {
+    ThreadManager.getUIHandler().post(new aevx(this));
   }
 }
 

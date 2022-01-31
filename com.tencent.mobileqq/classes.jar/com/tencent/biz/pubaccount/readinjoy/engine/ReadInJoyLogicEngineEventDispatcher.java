@@ -245,7 +245,7 @@ public class ReadInJoyLogicEngineEventDispatcher
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       if (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).X_();
+        ((ReadInJoyObserver)localIterator.next()).Z_();
       }
     }
   }
@@ -369,6 +369,17 @@ public class ReadInJoyLogicEngineEventDispatcher
     }
   }
   
+  public void c(List paramList)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        ((ReadInJoyObserver)localIterator.next()).c(paramList);
+      }
+    }
+  }
+  
   public void c(boolean paramBoolean, List paramList)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
@@ -397,12 +408,23 @@ public class ReadInJoyLogicEngineEventDispatcher
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       if (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramList);
+        ((ReadInJoyObserver)localIterator.next()).f(paramBoolean, paramList);
       }
     }
   }
   
   public void e(boolean paramBoolean, List paramList)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (localIterator.hasNext()) {
+        ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramList);
+      }
+    }
+  }
+  
+  public void f(boolean paramBoolean, List paramList)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {

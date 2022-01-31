@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import afzg;
-import afzl;
-import afzm;
-import afzn;
-import afzo;
-import afzp;
-import afzq;
-import afzs;
-import afzw;
-import afzx;
-import afzy;
-import afzz;
-import agaa;
-import agac;
-import agad;
-import agal;
+import agni;
+import agnn;
+import agno;
+import agnp;
+import agnq;
+import agnr;
+import agns;
+import agnu;
+import agny;
+import agnz;
+import agoa;
+import agob;
+import agoc;
+import agoe;
+import agof;
+import agon;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.BroadcastReceiver;
@@ -84,8 +84,8 @@ public class PersonalityLabelGalleryActivity
   private float jdField_a_of_type_Float;
   public int a;
   private long jdField_a_of_type_Long;
-  private agad jdField_a_of_type_Agad;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new afzw(this);
+  private agof jdField_a_of_type_Agof;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new agny(this);
   public Drawable a;
   public Handler a;
   public TextPaint a;
@@ -96,11 +96,11 @@ public class PersonalityLabelGalleryActivity
   public AccountDetailTopGestureLayout a;
   private ProfileActivity.AllInOne jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne;
   FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new afzo(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new agnq(this);
   public PLUploadManager a;
   private PersonalityLabel jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel;
-  private PersonalityLabelObserver jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelObserver = new afzx(this);
-  QQProgressDialog.Callback jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog$Callback = new afzp(this);
+  private PersonalityLabelObserver jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelObserver = new agnz(this);
+  QQProgressDialog.Callback jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog$Callback = new agnr(this);
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   public QQToast a;
   public ActionSheet a;
@@ -168,9 +168,9 @@ public class PersonalityLabelGalleryActivity
     {
       if (i < this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount())
       {
-        agac localagac = (agac)this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i).getTag();
-        if ((localagac != null) && (localagac.jdField_a_of_type_Long == paramLong)) {
-          localagac.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getAdapter().notifyDataSetChanged();
+        agoe localagoe = (agoe)this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i).getTag();
+        if ((localagoe != null) && (localagoe.jdField_a_of_type_Long == paramLong)) {
+          localagoe.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getAdapter().notifyDataSetChanged();
         }
       }
       else
@@ -187,25 +187,25 @@ public class PersonalityLabelGalleryActivity
     int i = 0;
     for (;;)
     {
-      agac localagac;
+      agoe localagoe;
       label71:
       GlowCountRecyclerView localGlowCountRecyclerView;
       if (i < this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount())
       {
-        localagac = (agac)this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i).getTag();
-        if ((localagac == null) || (localagac.jdField_a_of_type_Long != paramLong)) {
+        localagoe = (agoe)this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i).getTag();
+        if ((localagoe == null) || (localagoe.jdField_a_of_type_Long != paramLong)) {
           break label170;
         }
         if (paramPersonalityLabelInfo.getSize() <= 0) {
           break label151;
         }
         i = 1;
-        if (localagac.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getVisibility() != 0) {
+        if (localagoe.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getVisibility() != 0) {
           break label157;
         }
         if (j != i)
         {
-          localGlowCountRecyclerView = localagac.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView;
+          localGlowCountRecyclerView = localagoe.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView;
           if (i == 0) {
             break label163;
           }
@@ -217,9 +217,9 @@ public class PersonalityLabelGalleryActivity
       for (i = 0;; i = 8)
       {
         localGlowCountRecyclerView.setVisibility(i);
-        localagac.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.setText(paramPersonalityLabelInfo.photoCount + "张");
-        localagac.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getAdapter().notifyDataSetChanged();
-        localagac.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.smoothScrollToPosition(0);
+        localagoe.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.setText(paramPersonalityLabelInfo.photoCount + "张");
+        localagoe.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getAdapter().notifyDataSetChanged();
+        localagoe.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.smoothScrollToPosition(0);
         return;
         i = 0;
         break;
@@ -276,14 +276,14 @@ public class PersonalityLabelGalleryActivity
           this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
           if (this.jdField_b_of_type_AndroidViewView != null)
           {
-            View localView1 = this.jdField_b_of_type_AndroidViewView.findViewById(2131363098);
-            localTextView1 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370797);
-            localTextView2 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370798);
-            localView2 = this.jdField_b_of_type_AndroidViewView.findViewById(2131370799);
+            View localView1 = this.jdField_b_of_type_AndroidViewView.findViewById(2131363116);
+            localTextView1 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370946);
+            localTextView2 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370947);
+            localView2 = this.jdField_b_of_type_AndroidViewView.findViewById(2131370948);
             if (this.f)
             {
-              localTextView1.setText(2131439066);
-              localTextView2.setText(getString(2131439058));
+              localTextView1.setText(2131439094);
+              localTextView2.setText(getString(2131439086));
               localView2.setOnClickListener(this);
               return;
             }
@@ -308,7 +308,7 @@ public class PersonalityLabelGalleryActivity
           }
           if ((paramPersonalityLabel != null) && (paramPersonalityLabel.isCloseByUser == 1))
           {
-            localTextView1.setText(2131439065);
+            localTextView1.setText(2131439093);
             localView2.setVisibility(8);
             localTextView2.setVisibility(8);
             if (localOutOfMemoryError2.getPaddingBottom() <= 0) {
@@ -317,9 +317,9 @@ public class PersonalityLabelGalleryActivity
           }
           else
           {
-            localTextView1.setText(2131439066);
+            localTextView1.setText(2131439094);
             localView2.setVisibility(8);
-            localTextView2.setText(getString(2131439064));
+            localTextView2.setText(getString(2131439092));
           }
         }
       }
@@ -353,7 +353,7 @@ public class PersonalityLabelGalleryActivity
     {
       if (!NetworkUtil.d(this))
       {
-        a(getResources().getString(2131433196));
+        a(getResources().getString(2131433213));
         return;
       }
       if (isTitleProgressShowing())
@@ -441,7 +441,7 @@ public class PersonalityLabelGalleryActivity
   private void g()
   {
     a("正在处理...", this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog$Callback);
-    ThreadManager.postImmediately(new afzs(this), null, true);
+    ThreadManager.postImmediately(new agnu(this), null, true);
   }
   
   private void h()
@@ -458,13 +458,13 @@ public class PersonalityLabelGalleryActivity
   
   void a()
   {
-    setLeftViewName(2131432397);
-    getTitleBarView().setBackgroundResource(2130838210);
+    setLeftViewName(2131432414);
+    getTitleBarView().setBackgroundResource(2130838214);
     if (ThemeUtil.isInNightMode(this.app))
     {
-      this.rightViewText.setTextColor(getResources().getColorStateList(2131494207));
-      this.leftView.setTextColor(getResources().getColorStateList(2131494207));
-      this.leftView.setBackgroundDrawable(getResources().getDrawable(2130842846));
+      this.rightViewText.setTextColor(getResources().getColorStateList(2131494214));
+      this.leftView.setTextColor(getResources().getColorStateList(2131494214));
+      this.leftView.setBackgroundDrawable(getResources().getDrawable(2130842945));
     }
     for (;;)
     {
@@ -479,16 +479,16 @@ public class PersonalityLabelGalleryActivity
         this.mSystemBarComp.setStatusBarColor(-16777216);
       }
       return;
-      this.rightViewText.setTextColor(getResources().getColorStateList(2130842857));
-      this.leftView.setTextColor(getResources().getColorStateList(2130842857));
-      this.leftView.setBackgroundDrawable(getResources().getDrawable(2130844055));
+      this.rightViewText.setTextColor(getResources().getColorStateList(2130842956));
+      this.leftView.setTextColor(getResources().getColorStateList(2130842956));
+      this.leftView.setBackgroundDrawable(getResources().getDrawable(2130844179));
     }
   }
   
   public void a(int paramInt, String paramString, boolean paramBoolean)
   {
     if (this.jdField_c_of_type_AndroidWidgetTextView == null) {
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362709));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362727));
     }
     if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(this.jdField_c_of_type_AndroidWidgetTextView.getText()))) {
       this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString);
@@ -507,21 +507,21 @@ public class PersonalityLabelGalleryActivity
     stopTitleProgress();
   }
   
-  public void a(long paramLong, afzg paramafzg)
+  public void a(long paramLong, agni paramagni)
   {
-    PersonalityLabelPhoto localPersonalityLabelPhoto = paramafzg.a;
+    PersonalityLabelPhoto localPersonalityLabelPhoto = paramagni.a;
     if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label onUpdateState:" + localPersonalityLabelPhoto.uniseq + " state:" + paramafzg.jdField_b_of_type_Int + " progress:" + paramafzg.jdField_c_of_type_Int);
+      QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label onUpdateState:" + localPersonalityLabelPhoto.uniseq + " state:" + paramagni.jdField_b_of_type_Int + " progress:" + paramagni.jdField_c_of_type_Int);
     }
-    if (paramafzg.jdField_b_of_type_Int == 4) {
+    if (paramagni.jdField_b_of_type_Int == 4) {
       a(paramLong, true);
     }
     int i = 0;
     Object localObject1;
     if (i < this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount())
     {
-      localObject1 = (agac)this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i).getTag();
-      if ((localObject1 == null) || (((agac)localObject1).jdField_a_of_type_Long != paramLong)) {}
+      localObject1 = (agoe)this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i).getTag();
+      if ((localObject1 == null) || (((agoe)localObject1).jdField_a_of_type_Long != paramLong)) {}
     }
     for (;;)
     {
@@ -538,21 +538,21 @@ public class PersonalityLabelGalleryActivity
         i = 0;
         label164:
         Object localObject2;
-        agal localagal;
-        if (i < ((agac)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getChildCount())
+        agon localagon;
+        if (i < ((agoe)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getChildCount())
         {
-          localObject2 = ((agac)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getChildAt(i);
-          localagal = (agal)((agac)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getChildViewHolder((View)localObject2);
-          if (localagal == null)
+          localObject2 = ((agoe)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getChildAt(i);
+          localagon = (agon)((agoe)localObject1).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelGlowCountRecyclerView.getChildViewHolder((View)localObject2);
+          if (localagon == null)
           {
             localObject2 = null;
             label212:
-            if ((localObject2 == null) || (!(localObject2 instanceof afzg)) || (((afzg)localObject2).a.uniseq != localPersonalityLabelPhoto.uniseq)) {
+            if ((localObject2 == null) || (!(localObject2 instanceof agni)) || (((agni)localObject2).a.uniseq != localPersonalityLabelPhoto.uniseq)) {
               break label365;
             }
           }
         }
-        for (localObject1 = localagal;; localObject1 = null)
+        for (localObject1 = localagon;; localObject1 = null)
         {
           if (localObject1 == null) {
             break label400;
@@ -560,24 +560,24 @@ public class PersonalityLabelGalleryActivity
           if (QLog.isColorLevel()) {
             QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label onUpdateState find childHolder");
           }
-          a(paramafzg, localPersonalityLabelPhoto, (agal)localObject1);
-          if (paramafzg.jdField_b_of_type_Int == 4)
+          a(paramagni, localPersonalityLabelPhoto, (agon)localObject1);
+          if (paramagni.jdField_b_of_type_Int == 4)
           {
             this.g = true;
-            ((agal)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2131370810, null);
+            ((agon)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2131370959, null);
             if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
               this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
             }
-            paramafzg = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel);
-            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramafzg, 200L);
+            paramagni = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel);
+            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramagni, 200L);
             return;
-            localObject2 = localagal.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag(2131370810);
+            localObject2 = localagon.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag(2131370959);
             break label212;
             label365:
             i += 1;
             break label164;
           }
-          if (paramafzg.jdField_b_of_type_Int != 3) {
+          if (paramagni.jdField_b_of_type_Int != 3) {
             break;
           }
           QQToast.a(this, 0, "上传图片失败", 0).a();
@@ -643,49 +643,49 @@ public class PersonalityLabelGalleryActivity
     }
   }
   
-  public void a(afzg paramafzg, PersonalityLabelPhoto paramPersonalityLabelPhoto, agal paramagal)
+  public void a(agni paramagni, PersonalityLabelPhoto paramPersonalityLabelPhoto, agon paramagon)
   {
     int j = 1;
     int k = 0;
     if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label bindProgressState id:" + paramPersonalityLabelPhoto.fileId + " key:" + paramPersonalityLabelPhoto.uniseq + " item:" + paramafzg);
+      QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label bindProgressState id:" + paramPersonalityLabelPhoto.fileId + " key:" + paramPersonalityLabelPhoto.uniseq + " item:" + paramagni);
     }
     if (!paramPersonalityLabelPhoto.local)
     {
-      if (paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView != null)
+      if (paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView != null)
       {
-        paramagal.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView);
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = null;
+        paramagon.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView);
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = null;
       }
-      if (paramagal.b.getVisibility() != 8) {
-        paramagal.b.setVisibility(8);
+      if (paramagon.b.getVisibility() != 8) {
+        paramagon.b.setVisibility(8);
       }
     }
     do
     {
       return;
       paramPersonalityLabelPhoto = Long.toString(paramPersonalityLabelPhoto.uniseq);
-      if (paramafzg != null) {
+      if (paramagni != null) {
         break;
       }
-      if (paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView != null)
+      if (paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView != null)
       {
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(paramPersonalityLabelPhoto);
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.b(paramPersonalityLabelPhoto);
-        paramagal.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView);
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = null;
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(paramPersonalityLabelPhoto);
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.b(paramPersonalityLabelPhoto);
+        paramagon.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView);
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = null;
       }
-    } while (paramagal.b.getVisibility() == 8);
-    paramagal.b.setVisibility(8);
+    } while (paramagon.b.getVisibility() == 8);
+    paramagon.b.setVisibility(8);
     return;
-    switch (paramafzg.jdField_b_of_type_Int)
+    switch (paramagni.jdField_b_of_type_Int)
     {
     default: 
       return;
     case 0: 
     case 1: 
     case 2: 
-      if (paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView == null)
+      if (paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView == null)
       {
         MessageProgressView localMessageProgressView = new MessageProgressView(this);
         localMessageProgressView.setRadius(this.jdField_a_of_type_Float * 2.0F, false);
@@ -693,49 +693,49 @@ public class PersonalityLabelGalleryActivity
         localMessageProgressView.setShowCorner(false);
         localMessageProgressView.setProgressBackgroudColor(2130706432);
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 120.0F), (int)(this.jdField_a_of_type_Float * 120.0F));
-        paramagal.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localMessageProgressView, localLayoutParams);
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = localMessageProgressView;
+        paramagon.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localMessageProgressView, localLayoutParams);
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = localMessageProgressView;
       }
-      paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(paramPersonalityLabelPhoto);
-      if (paramafzg.jdField_b_of_type_Int != 2)
+      paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(paramPersonalityLabelPhoto);
+      if (paramagni.jdField_b_of_type_Int != 2)
       {
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(0, paramPersonalityLabelPhoto);
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(0, paramPersonalityLabelPhoto);
       }
-      while (paramagal.b.getVisibility() != 8)
+      while (paramagon.b.getVisibility() != 8)
       {
-        paramagal.b.setVisibility(8);
+        paramagon.b.setVisibility(8);
         return;
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramafzg.jdField_c_of_type_Int, paramPersonalityLabelPhoto);
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramagni.jdField_c_of_type_Int, paramPersonalityLabelPhoto);
       }
     }
-    if (paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView != null)
+    if (paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView != null)
     {
-      paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(paramPersonalityLabelPhoto);
-      if ((paramafzg.jdField_b_of_type_Int == 3) || (!paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(paramPersonalityLabelPhoto)))
+      paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(paramPersonalityLabelPhoto);
+      if ((paramagni.jdField_b_of_type_Int == 3) || (!paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.a(paramPersonalityLabelPhoto)))
       {
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.b(paramPersonalityLabelPhoto);
-        paramagal.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView);
-        paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = null;
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.b(paramPersonalityLabelPhoto);
+        paramagon.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView);
+        paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = null;
       }
     }
     else
     {
       label458:
-      if (paramafzg.jdField_b_of_type_Int != 3) {
+      if (paramagni.jdField_b_of_type_Int != 3) {
         break label536;
       }
       i = 1;
       label469:
-      if (paramagal.b.getVisibility() != 0) {
+      if (paramagon.b.getVisibility() != 0) {
         break label542;
       }
       label479:
       if (i == j) {
         break label546;
       }
-      paramafzg = paramagal.b;
+      paramagni = paramagon.b;
       if (i == 0) {
         break label548;
       }
@@ -746,13 +746,13 @@ public class PersonalityLabelGalleryActivity
     label548:
     for (int i = k;; i = 8)
     {
-      paramafzg.setVisibility(i);
+      paramagni.setVisibility(i);
       return;
-      if (paramafzg.jdField_b_of_type_Int != 4) {
+      if (paramagni.jdField_b_of_type_Int != 4) {
         break label458;
       }
-      paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-      paramagal.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(100, paramPersonalityLabelPhoto);
+      paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+      paramagon.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(100, paramPersonalityLabelPhoto);
       break label458;
       i = 0;
       break label469;
@@ -766,8 +766,8 @@ public class PersonalityLabelGalleryActivity
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramView.getHeight(), 0 });
     localValueAnimator.setDuration(300L);
-    localValueAnimator.addUpdateListener(new agaa(this, localValueAnimator, paramView));
-    localValueAnimator.addListener(new afzm(this, paramLong));
+    localValueAnimator.addUpdateListener(new agoc(this, localValueAnimator, paramView));
+    localValueAnimator.addListener(new agno(this, paramLong));
     localValueAnimator.start();
   }
   
@@ -792,7 +792,7 @@ public class PersonalityLabelGalleryActivity
       }
       this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel = paramPersonalityLabel;
       b(paramPersonalityLabel);
-      this.jdField_a_of_type_Agad.notifyDataSetChanged();
+      this.jdField_a_of_type_Agof.notifyDataSetChanged();
       a(paramPersonalityLabel);
       if (this.jdField_b_of_type_AndroidViewView != null) {
         this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.jdField_b_of_type_AndroidViewView);
@@ -813,7 +813,7 @@ public class PersonalityLabelGalleryActivity
     if (paramPersonalityLabel.unreadCount > 0)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(Constants.jdField_b_of_type_JavaLangString, new Object[] { Integer.valueOf(paramPersonalityLabel.unreadCount) }));
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new afzq(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new agns(this));
       a(0);
       i = 0;
       if (i < this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel.getSize())
@@ -874,7 +874,7 @@ public class PersonalityLabelGalleryActivity
       if (this.jdField_b_of_type_Boolean) {
         break label67;
       }
-      setRightButton(2131434535, this);
+      setRightButton(2131434552, this);
       this.leftView.setVisibility(0);
       localTextView = this.rightViewText;
       if (!a()) {
@@ -887,10 +887,10 @@ public class PersonalityLabelGalleryActivity
       if (!this.jdField_b_of_type_Boolean) {
         break label93;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131439060);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131439088);
       return;
       label67:
-      setRightButton(2131434517, this);
+      setRightButton(2131434534, this);
       this.leftView.setVisibility(8);
       break;
       label87:
@@ -899,7 +899,7 @@ public class PersonalityLabelGalleryActivity
     label93:
     TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
     if (this.f) {}
-    for (i = 2131439058;; i = 2131439059)
+    for (i = 2131439086;; i = 2131439087)
     {
       localTextView.setText(i);
       return;
@@ -919,11 +919,11 @@ public class PersonalityLabelGalleryActivity
     if (j >= 0)
     {
       localObject1 = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(j).getTag();
-      if ((localObject1 == null) || (!(localObject1 instanceof agac))) {
+      if ((localObject1 == null) || (!(localObject1 instanceof agoe))) {
         break label224;
       }
-      localObject1 = (agac)localObject1;
-      localView = ((agac)localObject1).d;
+      localObject1 = (agoe)localObject1;
+      localView = ((agoe)localObject1).d;
       localObject2 = localView.getTag();
       if (localObject2 == null)
       {
@@ -944,12 +944,12 @@ public class PersonalityLabelGalleryActivity
       label114:
       localObject2 = ValueAnimator.ofInt(new int[] { 0, k });
       ((ValueAnimator)localObject2).setInterpolator(new DecelerateInterpolator(1.0F));
-      ((ValueAnimator)localObject2).addUpdateListener(new afzy(this, (ValueAnimator)localObject2, localView));
-      ((ValueAnimator)localObject2).addListener(new afzz(this, (agac)localObject1, localView));
+      ((ValueAnimator)localObject2).addUpdateListener(new agoa(this, (ValueAnimator)localObject2, localView));
+      ((ValueAnimator)localObject2).addListener(new agob(this, (agoe)localObject1, localView));
       ((ValueAnimator)localObject2).setDuration(200L);
       ((ValueAnimator)localObject2).setStartDelay(i);
       ((ValueAnimator)localObject2).start();
-      this.jdField_a_of_type_JavaUtilHashSet.remove(Long.valueOf(((agac)localObject1).jdField_a_of_type_Long));
+      this.jdField_a_of_type_JavaUtilHashSet.remove(Long.valueOf(((agoe)localObject1).jdField_a_of_type_Long));
       i += 150;
       continue;
       return;
@@ -967,24 +967,24 @@ public class PersonalityLabelGalleryActivity
       {
         localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i);
         localObject = localView.getTag();
-        if ((localObject == null) || (!(localObject instanceof agac))) {
+        if ((localObject == null) || (!(localObject instanceof agoe))) {
           break label129;
         }
-        localImageView = ((agac)localObject).b;
+        localImageView = ((agoe)localObject).b;
         if (localImageView != null) {}
       }
       else
       {
         return;
       }
-      ObjectAnimator localObjectAnimator = (ObjectAnimator)localView.getTag(2131370802);
+      ObjectAnimator localObjectAnimator = (ObjectAnimator)localView.getTag(2131370951);
       Object localObject = localObjectAnimator;
       if (localObjectAnimator == null)
       {
         localObject = ObjectAnimator.ofFloat(localImageView, "rotation", new float[] { 0.0F, 45.0F });
         ((ObjectAnimator)localObject).setDuration(100L);
-        ((ObjectAnimator)localObject).addListener(new afzn(this, (ObjectAnimator)localObject));
-        localView.setTag(2131370802, localObject);
+        ((ObjectAnimator)localObject).addListener(new agnp(this, (ObjectAnimator)localObject));
+        localView.setTag(2131370951, localObject);
       }
       ((ObjectAnimator)localObject).start();
       label129:
@@ -1020,7 +1020,7 @@ public class PersonalityLabelGalleryActivity
       g();
       return;
     }
-    QQToast.a(getApplicationContext(), 0, 2131433196, 0).a();
+    QQToast.a(getApplicationContext(), 0, 2131433213, 0).a();
   }
   
   public void doOnBackPressed()
@@ -1031,7 +1031,7 @@ public class PersonalityLabelGalleryActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970470);
+    setContentView(2130970511);
     a(getIntent());
     this.f = this.app.getCurrentAccountUin().equals(this.jdField_a_of_type_JavaLangString);
     paramBundle = new IntentFilter();
@@ -1039,22 +1039,22 @@ public class PersonalityLabelGalleryActivity
     paramBundle.setPriority(2147483647);
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131364160));
-    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130970471, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131364184));
+    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130970512, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131370807));
-    this.jdField_a_of_type_Agad = new agad(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Agad);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131363091);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131366947));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370808));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131370956));
+    this.jdField_a_of_type_Agof = new agof(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Agof);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131363109);
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131366989));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370957));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelObserver);
     e();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369637));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370809));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369714));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370958));
     if (this.f) {
       if (getSharedPreferences("personality_label" + this.jdField_a_of_type_JavaLangString, 0).getBoolean("tips_displayed", false)) {
         break label428;
@@ -1115,7 +1115,7 @@ public class PersonalityLabelGalleryActivity
     }
     return;
     label126:
-    QQToast.a(getApplicationContext(), 0, 2131433196, 0).a();
+    QQToast.a(getApplicationContext(), 0, 2131433213, 0).a();
   }
   
   protected void doOnPause()
@@ -1177,9 +1177,9 @@ public class PersonalityLabelGalleryActivity
           paramMessage.unreadCount = 0;
         }
       }
-      runOnUiThread(new afzl(this, paramMessage));
+      runOnUiThread(new agnn(this, paramMessage));
       return false;
-      this.jdField_a_of_type_Agad.notifyDataSetChanged();
+      this.jdField_a_of_type_Agof.notifyDataSetChanged();
     } while (paramMessage.arg1 != 1);
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
     return false;
@@ -1233,7 +1233,7 @@ public class PersonalityLabelGalleryActivity
         startActivity(paramView);
         ReportController.b(this.app, "dc00898", "", "", "0X8007FD4", "0X8007FD4", 0, 0, "0", "0", "", "");
         return;
-        if ((paramView != this.jdField_a_of_type_AndroidWidgetButton) && (2131370799 != paramView.getId())) {
+        if ((paramView != this.jdField_a_of_type_AndroidWidgetButton) && (2131370948 != paramView.getId())) {
           break label219;
         }
         ReportController.b(this.app, "dc00898", "", "", "0X8007FD3", "0X8007FD3", 0, 0, "0", "0", "", "");

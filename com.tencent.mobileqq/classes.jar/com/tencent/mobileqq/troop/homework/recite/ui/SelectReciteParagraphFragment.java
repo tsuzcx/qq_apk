@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import aivs;
-import aivt;
-import aivu;
+import ajjw;
+import ajjx;
+import ajjy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +31,7 @@ public class SelectReciteParagraphFragment
   extends AbsHomeWorkFragment
   implements HttpWebCgiAsyncTask.Callback
 {
-  private aivu jdField_a_of_type_Aivu;
+  private ajjy jdField_a_of_type_Ajjy;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ArticleInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo;
   private TroopReciteCgiHandler jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsTroopReciteCgiHandler;
@@ -60,15 +60,15 @@ public class SelectReciteParagraphFragment
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131368383));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131368385));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131368450));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131368452));
   }
   
   private void d()
   {
     a("选择背诵的段落");
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new aivs(this));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aivt(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new ajjw(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ajjx(this));
     f();
   }
   
@@ -87,11 +87,11 @@ public class SelectReciteParagraphFragment
       this.jdField_a_of_type_AndroidWidgetButton.setText("背诵选中段落");
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     }
-    while (this.jdField_a_of_type_Aivu == null) {
+    while (this.jdField_a_of_type_Ajjy == null) {
       return;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    if (this.jdField_a_of_type_JavaUtilSet.size() == this.jdField_a_of_type_Aivu.getCount())
+    if (this.jdField_a_of_type_JavaUtilSet.size() == this.jdField_a_of_type_Ajjy.getCount())
     {
       this.jdField_a_of_type_AndroidWidgetButton.setText("背诵全文");
       return;
@@ -101,7 +101,7 @@ public class SelectReciteParagraphFragment
     if (localIterator.hasNext())
     {
       int j = ((Integer)localIterator.next()).intValue();
-      String str = this.jdField_a_of_type_Aivu.a(j).content_html;
+      String str = this.jdField_a_of_type_Ajjy.a(j).content_html;
       if (str == null) {
         break label178;
       }
@@ -123,7 +123,7 @@ public class SelectReciteParagraphFragment
   
   protected int a()
   {
-    return 2130969897;
+    return 2130969911;
   }
   
   protected void a(Bundle paramBundle)
@@ -156,8 +156,8 @@ public class SelectReciteParagraphFragment
       g();
       return;
     }
-    this.jdField_a_of_type_Aivu = new aivu(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_JavaUtilSet);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aivu);
+    this.jdField_a_of_type_Ajjy = new ajjy(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_JavaUtilSet);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ajjy);
     f();
   }
   
@@ -179,7 +179,7 @@ public class SelectReciteParagraphFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment
  * JD-Core Version:    0.7.0.1
  */

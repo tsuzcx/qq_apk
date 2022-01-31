@@ -1,22 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class rtn
-  implements DialogInterface.OnCancelListener
+class rtn
+  implements Runnable
 {
-  public rtn(boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  rtn(rtm paramrtm) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
-    }
-    paramDialogInterface.dismiss();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
   }
 }
 

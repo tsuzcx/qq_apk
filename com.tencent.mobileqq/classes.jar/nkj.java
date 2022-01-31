@@ -1,15 +1,17 @@
-import com.tencent.biz.qqstory.playmode.child.TroopStoryForAIOPlayMode;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
 import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
 
-public class nkj
+class nkj
   implements Runnable
 {
-  public nkj(TroopStoryForAIOPlayMode paramTroopStoryForAIOPlayMode) {}
+  nkj(nki paramnki, String paramString) {}
   
   public void run()
   {
-    this.a.h = false;
-    this.a.a.setCurrentItem(this.a.b, false);
+    PlayModeUtils.a(this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a, this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
+    PlayModeUtils.a(this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a, this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c), this.jdField_a_of_type_Nki.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
   }
 }
 

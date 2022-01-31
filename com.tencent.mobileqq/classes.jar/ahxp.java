@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.message.MessageProtoCodec;
+import tencent.im.s2c.msgtype0x210.submsgtype0xb1.submsgtype0xb1.MsgBody;
 
-public class ahxp
+public final class ahxp
   implements Runnable
 {
-  public ahxp(VideoSprite paramVideoSprite) {}
+  public ahxp(QQAppInterface paramQQAppInterface, submsgtype0xb1.MsgBody paramMsgBody, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.i();
-    VideoSprite.a(this.a);
-    VideoSprite.b(this.a);
+    MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xb1Submsgtype0xb1$MsgBody.invite_info, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxp
  * JD-Core Version:    0.7.0.1
  */

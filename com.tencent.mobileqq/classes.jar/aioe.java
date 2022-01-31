@@ -1,32 +1,31 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.theme.ThemeSwitchManager;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class aioe
-  extends TroopAioKeywordTipManager.Callback
+public class aioe
+  implements Runnable
 {
-  aioe(aiod paramaiod) {}
+  public aioe(ThemeSwitchManager paramThemeSwitchManager) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public void run()
   {
-    if (!this.a.a.a.a) {}
-    do
+    ViewGroup localViewGroup = (ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent();
+    if (localViewGroup != null)
     {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
-    return;
-    TroopAioKeywordTipBar.a(this.a.a.a, paramMessageRecord, paramTroopAioKeywordTipInfo);
+      localViewGroup.removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
+      localViewGroup.clearDisappearingChildren();
+    }
+    this.a.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.a.b.set(false);
+    this.a.jdField_a_of_type_AndroidWidgetImageView = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aioe
  * JD-Core Version:    0.7.0.1
  */

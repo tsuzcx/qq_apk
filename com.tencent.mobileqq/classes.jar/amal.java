@@ -1,37 +1,24 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
-import cooperation.qqpim.QQPimTipsInfo;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-class amal
-  implements EIPCResultCallback
+public class amal
+  implements View.OnClickListener
 {
-  amal(amak paramamak) {}
+  public amal(ActionSheet paramActionSheet) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.a).hashCode());
-    }
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
-    {
-      paramEIPCResult = paramEIPCResult.data.getParcelable(QQPimDefineList.n);
-      if (paramEIPCResult != null)
-      {
-        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
-        this.a.a.a = paramEIPCResult;
-        QQPimGetTipsInfoIPC.a(this.a.a).a(paramEIPCResult);
-      }
+    this.a.dismiss();
+    if (ActionSheet.a(this.a) != null) {
+      ActionSheet.a(this.a).onDismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amal
  * JD-Core Version:    0.7.0.1
  */

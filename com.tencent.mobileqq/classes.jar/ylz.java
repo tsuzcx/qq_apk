@@ -1,11 +1,20 @@
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public final class ylz
   implements Runnable
 {
+  public ylz(ApolloRender paramApolloRender, RelativeLayout paramRelativeLayout) {}
+  
   public void run()
   {
-    ApolloGameUtil.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null) {
+      return;
+    }
+    int i = (int)(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredWidth() - 80.0F * DeviceInfoUtil.a);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setWidth(i);
   }
 }
 

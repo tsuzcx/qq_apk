@@ -1,52 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QQProxyForQlink;
-import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.qqprotect.qsec.QSecLibMgr;
+import com.tencent.qqprotect.qsec.QSecLibMgr.LibEventListener;
+import com.tencent.qqprotect.qsec.QSecPushServiceMgr;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class alya
-  implements DialogInterface.OnClickListener
+  implements QSecLibMgr.LibEventListener
 {
-  public alya(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  public alya(QSecPushServiceMgr paramQSecPushServiceMgr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.app.a().a("0X8004750", 1);
-    this.a.app.a().a(new QlAndQQInterface.DailogClickInfo(9));
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder().append("topAct:");
-      if (QlinkStandardDialogActivity.a(this.a) == null) {
-        break label150;
+    if (paramInt1 == 1) {
+      synchronized (QSecPushServiceMgr.a(this.a))
+      {
+        Object localObject2 = (List)QSecPushServiceMgr.a(this.a).get(Integer.valueOf(paramInt2));
+        if (localObject2 != null)
+        {
+          QSecPushServiceMgr.a(this.a).remove(Integer.valueOf(paramInt2));
+          QSecPushServiceMgr.a(this.a);
+        }
+        if (localObject2 != null)
+        {
+          ??? = ((List)localObject2).iterator();
+          if (((Iterator)???).hasNext())
+          {
+            localObject2 = (alyb)((Iterator)???).next();
+            QSecPushServiceMgr.a(this.a).a(((alyb)localObject2).jdField_a_of_type_Int, ((alyb)localObject2).b, ((alyb)localObject2).c, new Object[] { ((alyb)localObject2).jdField_a_of_type_ArrayOfByte }, null);
+          }
+        }
       }
     }
-    label150:
-    for (paramDialogInterface = QlinkStandardDialogActivity.a(this.a).getLocalClassName();; paramDialogInterface = "null")
-    {
-      QLog.d("QlinkStandardDialogActivity", 2, paramDialogInterface);
-      if ((QlinkStandardDialogActivity.a(this.a) == null) || (!(QlinkStandardDialogActivity.a(this.a) instanceof FMActivity))) {
-        break;
-      }
-      paramDialogInterface = (FMActivity)QlinkStandardDialogActivity.a(this.a);
-      if ((paramDialogInterface.d() != 0) && (7 != paramDialogInterface.d())) {
-        break;
-      }
-      this.a.finish();
-      return;
-    }
-    FileManagerUtil.a(this.a, false);
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alya
  * JD-Core Version:    0.7.0.1
  */

@@ -192,7 +192,7 @@ public class QIMCameraCaptureActivity
   {
     super.onResume();
     this.jdField_a_of_type_DovComQqImSettingIQIMCameraLifeCallback.e(true);
-    this.jdField_a_of_type_DovComQqImSettingIQIMCameraLifeCallback.d();
+    this.jdField_a_of_type_DovComQqImSettingIQIMCameraLifeCallback.a();
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)

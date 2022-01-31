@@ -4,14 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import mlx;
+import mng;
 
 public class WebFastImageViewCreator
   implements ItemCreator
 {
-  private static int a = 2;
-  private static int b;
-  
   public int a(BaseData paramBaseData)
   {
     return 1;
@@ -19,7 +16,7 @@ public class WebFastImageViewCreator
   
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new mlx(LayoutInflater.from(paramContext).inflate(2130969604, null), paramBaseData);
+    return new mng(LayoutInflater.from(paramContext).inflate(2130969612, null), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

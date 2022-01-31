@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-public class tlw
-  implements DialogInterface.OnClickListener
+class tlw
+  implements Runnable
 {
-  public tlw(RegisterActivity paramRegisterActivity) {}
+  tlw(tlt paramtlt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.sendEmptyMessage(1);
+    this.a.a.B();
   }
 }
 

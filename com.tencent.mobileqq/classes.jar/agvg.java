@@ -1,37 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
 public class agvg
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public agvg(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agvg(QCallFacade paramQCallFacade) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 0)
-      {
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(0.5F);
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(0.5F);
-        EffectsCameraCaptureFragment.f(this.a).setAlpha(0.5F);
-      }
-      else if (paramMotionEvent.getAction() == 1)
-      {
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
-        EffectsCameraCaptureFragment.f(this.a).setAlpha(1.0F);
-      }
-    }
+    QCallFacade.a(this.a).x();
   }
 }
 

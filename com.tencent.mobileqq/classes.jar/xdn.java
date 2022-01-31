@@ -1,36 +1,22 @@
-import Wallet.GetSkinListRsp;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.widget.YellowTipsLayout;
+import org.json.JSONObject;
 
 public class xdn
   implements Runnable
 {
-  public xdn(RedPacketManager paramRedPacketManager, QQAppInterface paramQQAppInterface) {}
+  public xdn(CommonHbFragment paramCommonHbFragment, String paramString) {}
   
   public void run()
   {
-    try
-    {
-      Object localObject = FileUtils.a(BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        localObject = new JceInputStream((byte[])localObject);
-        ((JceInputStream)localObject).setServerEncoding("utf-8");
-        GetSkinListRsp localGetSkinListRsp = new GetSkinListRsp();
-        localGetSkinListRsp.readFrom((JceInputStream)localObject);
-        if (localGetSkinListRsp != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new xdo(this, localGetSkinListRsp));
-        }
-      }
+    JSONObject localJSONObject = YellowTipsLayout.getYellowTipsConfig(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
+    Handler localHandler = CommonHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment);
+    if (localHandler == null) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    localHandler.post(new xdo(this, localJSONObject));
   }
 }
 

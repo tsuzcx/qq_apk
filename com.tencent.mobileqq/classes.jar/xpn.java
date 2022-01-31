@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.LBSDetetor;
+import com.tencent.qphone.base.util.QLog;
 
 public class xpn
-  implements Runnable
+  implements Handler.Callback
 {
-  public xpn(NewPreFlowCamera paramNewPreFlowCamera) {}
+  public xpn(LBSDetetor paramLBSDetetor) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    GestureMgr.a().b();
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
+    }
+    LBSDetetor.a(this.a, false, null, paramMessage.what);
+    return false;
   }
 }
 

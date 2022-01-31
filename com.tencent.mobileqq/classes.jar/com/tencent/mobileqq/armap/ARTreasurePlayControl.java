@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import aavc;
+import abcd;
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
@@ -45,7 +45,7 @@ public class ARTreasurePlayControl
         if (QLog.isColorLevel()) {
           QLog.i("ARTreasurePlayControl", 2, "switchMode to : " + paramInt);
         }
-        this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.runOnGlThread(new aavc(this, paramInt));
+        this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.runOnGlThread(new abcd(this, paramInt));
         return;
       }
     } while (!QLog.isColorLevel());

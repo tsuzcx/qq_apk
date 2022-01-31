@@ -17,12 +17,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
-import jii;
+import jht;
 
 public class QavGPDownloader
 {
   QAVGamePlaySoConfigInfo jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo = null;
-  jii jdField_a_of_type_Jii = null;
+  jht jdField_a_of_type_Jht = null;
   boolean jdField_a_of_type_Boolean = false;
   
   QavGPDownloader()
@@ -30,7 +30,7 @@ public class QavGPDownloader
     if (QLog.isDevelopLevel()) {
       QLog.d("QavGPDownloadManager", 4, "QavGPDownloader in QQAppInterface");
     }
-    this.jdField_a_of_type_Jii = new jii();
+    this.jdField_a_of_type_Jht = new jht();
   }
   
   public static void a(int paramInt)
@@ -119,7 +119,7 @@ public class QavGPDownloader
       if (bool)
       {
         QLog.d("QavGPDownloadManager", 2, "downloadTask.start");
-        return this.jdField_a_of_type_Jii.a((QAVGamePlaySoConfigInfo)localObject);
+        return this.jdField_a_of_type_Jht.a((QAVGamePlaySoConfigInfo)localObject);
       }
       QLog.d("QavGPDownloadManager", 2, "bDownloading = false");
       return bool;

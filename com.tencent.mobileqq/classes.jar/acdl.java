@@ -1,29 +1,75 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.SogouEmoji;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class acdl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acdl(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public acdl(SogouEmoji paramSogouEmoji, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey begins, allPackId:" + this.jdField_a_of_type_JavaUtilList);
     }
-    paramView = (Button)paramView.findViewById(2131364578);
-    if (paramView.getTag() != null)
-    {
-      this.a.d = ((Integer)paramView.getTag()).intValue();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey ends, param packid is null.");
       }
     }
-    this.a.l();
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey,size:" + this.jdField_a_of_type_JavaUtilList.size());
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      ArrayList localArrayList = null;
+      label360:
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(str);
+        if (localObject == null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(str, EmojiManager.b);
+          if (QLog.isColorLevel()) {
+            QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey, packId=" + str + ",fail to search 【the pack】 from db, try get json from svr.");
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey, packId=" + str + ",type:" + ((EmoticonPackage)localObject).type + ",json exists in local db.");
+          }
+          localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(str, true);
+          if ((localObject instanceof ArrayList))
+          {
+            localArrayList = (ArrayList)localObject;
+            localArrayList = this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(localArrayList);
+          }
+          for (;;)
+          {
+            if (localArrayList == null) {
+              break label360;
+            }
+            if (localArrayList.size() == 0) {
+              break;
+            }
+            this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(str, localArrayList);
+            if (QLog.isColorLevel()) {
+              QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey ends, packId=" + str + ", try get keys from svr.");
+            }
+            break;
+          }
+        }
+      }
+    }
   }
 }
 

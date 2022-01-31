@@ -1,31 +1,42 @@
-import android.graphics.Canvas;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.vas.VasApngUtil;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import java.lang.ref.WeakReference;
 
-public class aoau
+class aoau
+  implements Runnable
 {
-  public boolean d = true;
-  public boolean e = true;
-  public int f;
-  public boolean f;
-  public int g;
+  aoau(aoat paramaoat, boolean paramBoolean) {}
   
-  aoau(TCProgressBar paramTCProgressBar)
+  public void run()
   {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  void a(Canvas paramCanvas)
-  {
-    this.jdField_f_of_type_Boolean = false;
-  }
-  
-  boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
+    ((QIMCommonLoadingView)this.jdField_a_of_type_Aoat.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
+    ((ImageView)this.jdField_a_of_type_Aoat.b.get()).setVisibility(0);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      URLDrawable localURLDrawable = VasApngUtil.a(BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_Aoat.jdField_a_of_type_JavaLangString, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
+      if (localURLDrawable != null)
+      {
+        ((ImageView)this.jdField_a_of_type_Aoat.b.get()).setImageDrawable(localURLDrawable);
+        ((ImageView)this.jdField_a_of_type_Aoat.b.get()).setTag(2131362361, Boolean.valueOf(true));
+        if (localURLDrawable != null)
+        {
+          if (localURLDrawable.getStatus() != 1) {
+            localURLDrawable.restartDownload();
+          }
+          if (localURLDrawable.getStatus() == 1) {
+            this.jdField_a_of_type_Aoat.jdField_a_of_type_Aoaw.onLoadSuccessed((View)this.jdField_a_of_type_Aoat.b.get(), localURLDrawable);
+          }
+          ((ImageView)this.jdField_a_of_type_Aoat.b.get()).setImageDrawable(localURLDrawable);
+        }
+      }
+      return;
     }
-    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
+    ((ImageView)this.jdField_a_of_type_Aoat.b.get()).setImageDrawable(URLDrawableHelper.a());
   }
 }
 

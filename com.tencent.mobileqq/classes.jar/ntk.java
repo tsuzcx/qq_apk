@@ -1,22 +1,15 @@
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.atvideo.model.AtVideoTextWatcher;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
 
-class ntk
+public class ntk
   implements Runnable
 {
-  ntk(ntj paramntj) {}
+  public ntk(QQStoryBaseFragment paramQQStoryBaseFragment) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(this.a.a), DetailCommentHelper.a(this.a.a), this.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a.a).a);
-    DetailCommentHelper localDetailCommentHelper = this.a.a;
-    if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      DetailCommentHelper.a(localDetailCommentHelper, bool);
-      return;
-    }
+    ((UserManager)SuperManager.a(2)).c();
   }
 }
 

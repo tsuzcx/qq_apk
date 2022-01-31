@@ -1,18 +1,42 @@
-import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public final class akqw
   implements Runnable
 {
-  public akqw(String paramString1, String paramString2, boolean paramBoolean) {}
+  public akqw(long paramLong) {}
   
   public void run()
   {
-    DownloadManager.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    long l = System.currentTimeMillis();
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_InitEngine.run cost " + (l - this.a) + "ms.");
+    l = System.currentTimeMillis();
+    synchronized (SwiftWebAccelerator.a)
+    {
+      if (WebViewPluginEngine.a == null)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.waitAppRuntime(null);
+        if (localAppRuntime != null)
+        {
+          localAppRuntime = localAppRuntime.getAppRuntime("modular_web");
+          if ((localAppRuntime instanceof AppInterface)) {
+            WebViewPluginEngine.a = WebAccelerateHelper.getInstance().createWebViewPluginEngine((AppInterface)localAppRuntime, null, null, null);
+          }
+        }
+      }
+      QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_InitEngine:init plugin engine, cost " + (System.currentTimeMillis() - l) + "ms.");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akqw
  * JD-Core Version:    0.7.0.1
  */

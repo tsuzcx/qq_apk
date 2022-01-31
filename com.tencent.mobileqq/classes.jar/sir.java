@@ -1,10 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class sir
-  extends Handler
+  implements Runnable
 {
-  public sir(EditInfoActivity paramEditInfoActivity) {}
+  public sir(Conversation paramConversation) {}
+  
+  public void run()
+  {
+    this.a.a.q();
+  }
 }
 
 

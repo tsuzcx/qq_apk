@@ -1,18 +1,15 @@
+import android.content.DialogInterface;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
 public class rpj
-  implements Runnable
+  extends DialogUtil.DialogOnClickAdapter
 {
   public rpj(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "checkPESourceDowned onShow First");
-    }
-    PokeItemHelper.b();
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,36 +1,41 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage.FacePackagePageEventListener;
 
 public class oed
-  extends SimpleObserver
+  implements FaceListPage.FacePackagePageEventListener
 {
-  public oed(EditVideoPlayer paramEditVideoPlayer) {}
+  public oed(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void a(Bitmap paramBitmap)
+  public void a()
   {
-    super.onNext(paramBitmap);
-    if (paramBitmap != null)
-    {
-      if (this.a.b)
-      {
-        this.a.a.setImageBitmap(paramBitmap);
-        SLog.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
-      }
-    }
-    else {
-      return;
-    }
-    SLog.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
+    EditVideoDoodle.a(this.a);
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a(String paramString)
   {
-    super.onError(paramError);
-    SLog.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
+    EditVideoPartManager localEditVideoPartManager = this.a.a;
+    if (this.a.a.a()) {}
+    for (String str = "2";; str = "1")
+    {
+      localEditVideoPartManager.a("download_face", 0, 0, new String[] { str, paramString });
+      VideoEditReport.b("0X80075DD");
+      if (!((DoodleEmojiManager)SuperManager.a(8)).a(paramString, true)) {
+        SLog.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
+      }
+      return;
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
   }
 }
 

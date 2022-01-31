@@ -1,37 +1,42 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener;
 
 public class aink
-  implements View.OnTouchListener
+  extends Handler
 {
-  float jdField_a_of_type_Float = 0.0F;
-  float b = 0.0F;
-  
-  public aink(NewTroopContactView paramNewTroopContactView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aink(ShareAppLogHelper paramShareAppLogHelper, Looper paramLooper)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.b = paramMotionEvent.getRawY();
     }
-    for (;;)
+    do
     {
-      return false;
-      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a.clearFocus();
-      }
-    }
+      do
+      {
+        do
+        {
+          return;
+        } while (ShareAppLogHelper.a(this.a) == null);
+        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
+        return;
+      } while (ShareAppLogHelper.a(this.a) == null);
+      ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
+      return;
+    } while (ShareAppLogHelper.a(this.a) == null);
+    ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aink
  * JD-Core Version:    0.7.0.1
  */

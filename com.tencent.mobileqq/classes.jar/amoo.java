@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import cooperation.thirdpay.NFCPayPluginProxyActivity;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
 
 public class amoo
   implements DialogInterface.OnClickListener
 {
-  public amoo(NFCPayPluginProxyActivity paramNFCPayPluginProxyActivity) {}
+  public amoo(DatalineRemoteManager paramDatalineRemoteManager) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.b = true;
+    DatalineRemoteManager.a(this.a, 2);
+    DatalineRemoteManager.b(this.a);
   }
 }
 

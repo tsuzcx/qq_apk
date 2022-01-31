@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.mediacodec.widget;
 
-import ahaw;
-import ahax;
+import ahoy;
+import ahoz;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
@@ -51,7 +51,7 @@ public class VideoFilterPlayView
     GPUBaseFilter localGPUBaseFilter = FilterFactory.a(101);
     this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = localGPUBaseFilter;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = localGPUBaseFilter;
-    a(new ahaw(this));
+    a(new ahoy(this));
   }
   
   public void a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
@@ -158,7 +158,7 @@ public class VideoFilterPlayView
     if (this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter == null)
     {
       this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = FilterFactory.a(106);
-      a(new ahax(this));
+      a(new ahoz(this));
     }
     ((GPUImagePixelationFilter)this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter).a(paramBitmap, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Int);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;

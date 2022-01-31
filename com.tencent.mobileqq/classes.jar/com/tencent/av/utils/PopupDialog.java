@@ -14,21 +14,21 @@ import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import kgw;
-import kgx;
-import kgy;
+import kgh;
+import kgi;
+import kgj;
 import mqq.app.BaseActivity;
 
 public class PopupDialog
   extends BaseActivity
 {
-  public static kgy a;
+  public static kgj a;
   QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
   boolean jdField_a_of_type_Boolean = true;
   
   static
   {
-    jdField_a_of_type_Kgy = new kgy();
+    jdField_a_of_type_Kgj = new kgj();
   }
   
   public static QQCustomDialog a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -66,14 +66,14 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "hideCustomDialog");
     }
-    jdField_a_of_type_Kgy.jdField_a_of_type_Boolean = false;
-    kgy localkgy = jdField_a_of_type_Kgy;
-    if (kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    jdField_a_of_type_Kgj.jdField_a_of_type_Boolean = false;
+    kgj localkgj = jdField_a_of_type_Kgj;
+    if (kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      localkgy = jdField_a_of_type_Kgy;
-      kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
-      localkgy = jdField_a_of_type_Kgy;
-      kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
+      localkgj = jdField_a_of_type_Kgj;
+      kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+      localkgj = jdField_a_of_type_Kgj;
+      kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
     }
   }
   
@@ -82,14 +82,14 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "showAgain");
     }
-    Object localObject = jdField_a_of_type_Kgy;
-    if (kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null) {
+    Object localObject = jdField_a_of_type_Kgj;
+    if (kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null) {
       return;
     }
     localObject = new Intent(paramContext, PopupDialog.class);
     ((Intent)localObject).putExtra("invoke_type", "reshow");
     ((Intent)localObject).addFlags(268435456);
-    jdField_a_of_type_Kgy.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Kgj.jdField_a_of_type_Boolean = true;
     paramContext.startActivity((Intent)localObject);
   }
   
@@ -112,18 +112,18 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "changeDialogText");
     }
-    Object localObject = jdField_a_of_type_Kgy;
-    if (kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    Object localObject = jdField_a_of_type_Kgj;
+    if (kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramContext = jdField_a_of_type_Kgy;
-      kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog.a(paramString1, paramString2);
+      paramContext = jdField_a_of_type_Kgj;
+      kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog.a(paramString1, paramString2);
       return;
     }
     localObject = new Intent(paramContext, PopupDialog.class);
     ((Intent)localObject).putExtra("invoke_type", "changeText");
     ((Intent)localObject).addFlags(268435456);
-    jdField_a_of_type_Kgy.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Kgy.jdField_b_of_type_JavaLangString = paramString2;
+    jdField_a_of_type_Kgj.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Kgj.jdField_b_of_type_JavaLangString = paramString2;
     paramContext.startActivity((Intent)localObject);
   }
   
@@ -139,7 +139,7 @@ public class PopupDialog
   
   public static boolean a()
   {
-    return jdField_a_of_type_Kgy.jdField_a_of_type_Boolean;
+    return jdField_a_of_type_Kgj.jdField_a_of_type_Boolean;
   }
   
   public static QQCustomDialog b(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -181,21 +181,21 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "showCustomDialog");
     }
-    jdField_a_of_type_Kgy.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_Kgy.jdField_a_of_type_Int = paramInt1;
-    jdField_a_of_type_Kgy.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Kgy.jdField_b_of_type_JavaLangString = paramString2;
-    jdField_a_of_type_Kgy.jdField_b_of_type_Int = paramInt2;
-    jdField_a_of_type_Kgy.c = paramInt3;
-    jdField_a_of_type_Kgy.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener2;
-    jdField_a_of_type_Kgy.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener1;
+    jdField_a_of_type_Kgj.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Kgj.jdField_a_of_type_Int = paramInt1;
+    jdField_a_of_type_Kgj.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Kgj.jdField_b_of_type_JavaLangString = paramString2;
+    jdField_a_of_type_Kgj.jdField_b_of_type_Int = paramInt2;
+    jdField_a_of_type_Kgj.c = paramInt3;
+    jdField_a_of_type_Kgj.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener2;
+    jdField_a_of_type_Kgj.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener1;
     paramContext.startActivity(localIntent);
   }
   
   void a(String paramString1, String paramString2)
   {
-    jdField_a_of_type_Kgy.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Kgy.jdField_b_of_type_JavaLangString = paramString2;
+    jdField_a_of_type_Kgj.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Kgj.jdField_b_of_type_JavaLangString = paramString2;
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(paramString1);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString2);
     if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
@@ -217,34 +217,34 @@ public class PopupDialog
       if ((!TextUtils.equals((CharSequence)localObject1, "changeText")) || (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)) {
         break;
       }
-      localObject1 = jdField_a_of_type_Kgy.jdField_a_of_type_JavaLangString;
-      localObject2 = jdField_a_of_type_Kgy.jdField_b_of_type_JavaLangString;
+      localObject1 = jdField_a_of_type_Kgj.jdField_a_of_type_JavaLangString;
+      localObject2 = jdField_a_of_type_Kgj.jdField_b_of_type_JavaLangString;
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle((String)localObject1);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage((CharSequence)localObject2);
     } while (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing());
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
     return;
-    int k = jdField_a_of_type_Kgy.jdField_a_of_type_Int;
-    String str1 = jdField_a_of_type_Kgy.jdField_a_of_type_JavaLangString;
-    String str2 = jdField_a_of_type_Kgy.jdField_b_of_type_JavaLangString;
-    int i = jdField_a_of_type_Kgy.jdField_b_of_type_Int;
-    int j = jdField_a_of_type_Kgy.c;
+    int k = jdField_a_of_type_Kgj.jdField_a_of_type_Int;
+    String str1 = jdField_a_of_type_Kgj.jdField_a_of_type_JavaLangString;
+    String str2 = jdField_a_of_type_Kgj.jdField_b_of_type_JavaLangString;
+    int i = jdField_a_of_type_Kgj.jdField_b_of_type_Int;
+    int j = jdField_a_of_type_Kgj.c;
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    localObject1 = new kgw(this);
-    Object localObject2 = new kgx(this);
-    if ((i == 0) || (jdField_a_of_type_Kgy.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null))
+    localObject1 = new kgh(this);
+    Object localObject2 = new kgi(this);
+    if ((i == 0) || (jdField_a_of_type_Kgj.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null))
     {
       localObject1 = null;
-      i = 2131428668;
+      i = 2131428674;
     }
-    if ((j == 0) || (jdField_a_of_type_Kgy.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null))
+    if ((j == 0) || (jdField_a_of_type_Kgj.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null))
     {
       localObject2 = null;
-      j = 2131428668;
+      j = 2131428674;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this, k, str1, str2, i, j, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
@@ -259,19 +259,19 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onCreate");
     }
-    getWindow().setBackgroundDrawableResource(2130846313);
-    paramBundle = jdField_a_of_type_Kgy;
-    if (kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    getWindow().setBackgroundDrawableResource(2130846443);
+    paramBundle = jdField_a_of_type_Kgj;
+    if (kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramBundle = jdField_a_of_type_Kgy;
-      if (kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      paramBundle = jdField_a_of_type_Kgj;
+      if (kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        paramBundle = jdField_a_of_type_Kgy;
-        kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        paramBundle = jdField_a_of_type_Kgj;
+        kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    paramBundle = jdField_a_of_type_Kgy;
-    kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+    paramBundle = jdField_a_of_type_Kgj;
+    kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
   }
   
   protected void onDestroy()
@@ -284,8 +284,8 @@ public class PopupDialog
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    kgy localkgy = jdField_a_of_type_Kgy;
-    kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
+    kgj localkgj = jdField_a_of_type_Kgj;
+    kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
     super.onDestroy();
   }
   
@@ -306,18 +306,18 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onNewIntent");
     }
-    paramIntent = jdField_a_of_type_Kgy;
-    if (kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    paramIntent = jdField_a_of_type_Kgj;
+    if (kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramIntent = jdField_a_of_type_Kgy;
-      if (kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      paramIntent = jdField_a_of_type_Kgj;
+      if (kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        paramIntent = jdField_a_of_type_Kgy;
-        kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        paramIntent = jdField_a_of_type_Kgj;
+        kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    paramIntent = jdField_a_of_type_Kgy;
-    kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+    paramIntent = jdField_a_of_type_Kgj;
+    kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
   }
   
   protected void onPause()
@@ -330,21 +330,21 @@ public class PopupDialog
   {
     super.onResume();
     b();
-    kgy localkgy = jdField_a_of_type_Kgy;
-    if (kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    kgj localkgj = jdField_a_of_type_Kgj;
+    if (kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      localkgy = jdField_a_of_type_Kgy;
-      if (kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      localkgj = jdField_a_of_type_Kgj;
+      if (kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        localkgy = jdField_a_of_type_Kgy;
-        kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        localkgj = jdField_a_of_type_Kgj;
+        kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    localkgy = jdField_a_of_type_Kgy;
-    if (kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+    localkgj = jdField_a_of_type_Kgj;
+    if (kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
     {
-      localkgy = jdField_a_of_type_Kgy;
-      kgy.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+      localkgj = jdField_a_of_type_Kgj;
+      kgj.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
     }
     a(true);
   }

@@ -154,7 +154,7 @@ public class Util
     {
       paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo.mAdExt).optString("pkg_name");
       if (PackageUtil.a(BaseApplicationImpl.getContext(), paramBaseArticleInfo)) {}
-      for (str1 = BaseApplicationImpl.getContext().getResources().getString(2131438668);; str1 = BaseApplicationImpl.getContext().getResources().getString(2131438667))
+      for (str1 = BaseApplicationImpl.getContext().getResources().getString(2131438686);; str1 = BaseApplicationImpl.getContext().getResources().getString(2131438685))
       {
         if (!TextUtils.isEmpty(str1))
         {
@@ -188,7 +188,7 @@ public class Util
   static void f(BaseArticleInfo paramBaseArticleInfo, JSONObject paramJSONObject)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("nickname_text", ReadInJoyUtils.d(paramBaseArticleInfo.mSubscribeName));
+    localJSONObject.put("nickname_text", ReadInJoyUtils.e(paramBaseArticleInfo.mSubscribeName));
     paramJSONObject.put("id_nickname", localJSONObject);
   }
   
@@ -196,7 +196,7 @@ public class Util
   {
     paramBaseArticleInfo = ContactUtils.b((QQAppInterface)ReadInJoyUtils.a(), String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.a), true);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("nickname_text", ReadInJoyUtils.d(paramBaseArticleInfo));
+    localJSONObject.put("nickname_text", ReadInJoyUtils.e(paramBaseArticleInfo));
     paramJSONObject.put("id_nickname", localJSONObject);
   }
   

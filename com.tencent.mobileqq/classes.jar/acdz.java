@@ -1,16 +1,13 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
 
 public class acdz
   implements Runnable
 {
-  public acdz(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  public acdz(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
   
   public void run()
   {
-    MPFileVerifyPwdView.b(this.a).setEnabled(true);
-    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
+    this.a.b();
   }
 }
 

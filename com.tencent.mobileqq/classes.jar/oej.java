@@ -1,25 +1,60 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePanelBaseAdapter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class oej
-  implements AbsListView.OnScrollListener
+  extends FacePanelBaseAdapter
 {
-  int jdField_a_of_type_Int = 0;
+  private final List a = new ArrayList();
   
-  public oej(EditVideoPoi paramEditVideoPoi) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public int a()
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a.size() - 1)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.e();
+    return this.a.size();
+  }
+  
+  public FacePackage a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (FacePackage)this.a.get(paramInt);
+    }
+    return null;
+  }
+  
+  public FacePackage a(String paramString)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      FacePackage localFacePackage = (FacePackage)localIterator.next();
+      if (TextUtils.equals(paramString, localFacePackage.a)) {
+        return localFacePackage;
+      }
+    }
+    return null;
+  }
+  
+  public void a(FacePackage paramFacePackage)
+  {
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramFacePackage);
+    int i = this.a.indexOf(paramFacePackage);
+    if (i >= 0)
+    {
+      this.a.set(i, paramFacePackage);
+      a(i);
     }
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(Collection paramCollection)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
+    this.a.clear();
+    this.a.addAll(paramCollection);
+    a();
   }
 }
 

@@ -1,67 +1,41 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.flashchat.FlashChatItem;
-import com.tencent.mobileqq.flashchat.FlashChatPanel.PluginData;
-import com.tencent.mobileqq.flashchat.OnHolderItemClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.PwdQueryMsgRsp;
+import cooperation.weiyun.sdk.api.IWeiyunCallback;
+import cooperation.weiyun.sdk.api.WeiyunApi;
+import mqq.app.MobileQQ;
 
 public class adab
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, View.OnLongClickListener
+  implements IWeiyunCallback
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public TextView a;
-  public FlashChatItem a;
-  public FlashChatPanel.PluginData a;
-  OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
-  public int b;
-  public ImageView b;
-  int c;
-  public ImageView c;
-  public ImageView d;
+  public adab(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public adab(View paramView, OnHolderItemClickListener paramOnHolderItemClickListener, int paramInt)
+  public void a(int paramInt, String paramString, WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
   {
-    super(paramView);
-    if (paramOnHolderItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
     }
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363679));
-    this.b = ((ImageView)paramView.findViewById(2131363678));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362943));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362727));
-    this.d = ((ImageView)paramView.findViewById(2131369995));
-    this.itemView.setOnClickListener(this);
-    this.itemView.setOnLongClickListener(this);
-    this.itemView.setOnTouchListener(paramOnHolderItemClickListener);
+    WeiYunLogicCenter.a(this.a).a().a(false, 44, new Object[] { Integer.valueOf(paramInt), paramString, null });
   }
   
-  public void onClick(View paramView)
+  public void a(WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener.a(paramView, getPosition(), this.jdField_c_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onSucceed  need pwd[" + paramPwdQueryMsgRsp.pwd_open.get() + "]");
     }
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener.b(paramView, getPosition(), this.jdField_c_of_type_Int);
-      bool = true;
+    WeiyunApi.a(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
+    if (paramPwdQueryMsgRsp.pwd_open.get()) {
+      WeiyunApi.b(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
     }
-    return bool;
+    WeiYunLogicCenter.a(this.a).a().a(true, 44, new Object[] { Integer.valueOf(0), null, Boolean.valueOf(paramPwdQueryMsgRsp.pwd_open.get()) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adab
  * JD-Core Version:    0.7.0.1
  */

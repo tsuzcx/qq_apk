@@ -213,13 +213,13 @@ public class ArResourceConfigUtils
     //   91: aload 4
     //   93: invokevirtual 112	java/io/File:mkdirs	()Z
     //   96: pop
-    //   97: new 114	java/util/zip/ZipFile
+    //   97: new 114	com/tencent/commonsdk/zip/QZipFile
     //   100: dup
     //   101: aload_0
-    //   102: invokespecial 115	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   102: invokespecial 115	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
     //   105: astore_0
     //   106: aload_0
-    //   107: invokevirtual 119	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   107: invokevirtual 119	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   110: astore 6
     //   112: sipush 8192
     //   115: newarray byte
@@ -326,7 +326,7 @@ public class ArResourceConfigUtils
     //   340: astore_3
     //   341: aload_0
     //   342: aload 4
-    //   344: invokevirtual 177	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   344: invokevirtual 177	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   347: astore 4
     //   349: aload 4
     //   351: aload 5
@@ -360,7 +360,7 @@ public class ArResourceConfigUtils
     //   402: aload_1
     //   403: ifnull +7 -> 410
     //   406: aload_1
-    //   407: invokevirtual 190	java/util/zip/ZipFile:close	()V
+    //   407: invokevirtual 190	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   410: aload_0
     //   411: athrow
     //   412: aload_3
@@ -403,7 +403,7 @@ public class ArResourceConfigUtils
     //   485: aload_0
     //   486: ifnull +7 -> 493
     //   489: aload_0
-    //   490: invokevirtual 190	java/util/zip/ZipFile:close	()V
+    //   490: invokevirtual 190	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   493: return
     //   494: astore_1
     //   495: aload_1

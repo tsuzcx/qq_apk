@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import acsf;
+import adcc;
 import android.content.Intent;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -368,7 +368,7 @@ public class FileViewerParamParser
   
   public FileBrowserManager.IModelCreater a(BaseActivity paramBaseActivity)
   {
-    return new acsf(this, paramBaseActivity);
+    return new adcc(this, paramBaseActivity);
   }
   
   public IFileViewerAdapter a()

@@ -1,19 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.ChangeNewPath;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.List;
 
-public class acvf
-  implements TVK_IMediaPlayer.OnInfoListener
+class acvf
+  implements FileManagerRSWorker.ChangeNewPath
 {
-  public acvf(VideoFilePresenter paramVideoFilePresenter) {}
-  
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
-  {
-    new Handler(Looper.getMainLooper()).post(new acvg(this, paramInt));
-    return false;
-  }
+  acvf(acve paramacve, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, long paramLong2) {}
 }
 
 

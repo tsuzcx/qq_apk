@@ -18,8 +18,8 @@ import com.tencent.av.opengl.config.EffectFaceDeviceConfig;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import jhg;
-import jhr;
+import jgr;
+import jhc;
 
 public class VcCamera
   extends AndroidCamera
@@ -45,7 +45,7 @@ public class VcCamera
   public VcCamera(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback = new jhr(this);
+    this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback = new jhc(this);
   }
   
   @TargetApi(9)

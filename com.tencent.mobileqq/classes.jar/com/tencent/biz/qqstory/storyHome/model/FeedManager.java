@@ -11,6 +11,7 @@ import com.tencent.biz.qqstory.model.IManager;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.StoryManager;
 import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.biz.qqstory.utils.FeedUtils;
@@ -29,8 +30,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import nwz;
-import nxa;
+import nym;
+import nyn;
 
 public class FeedManager
   implements IManager
@@ -39,6 +40,7 @@ public class FeedManager
   public int a;
   private long jdField_a_of_type_Long;
   private OneObjectCacheList jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList = new OneObjectCacheList(300);
+  public BasicLocation a;
   private FeedCommentBackgroundSyncer jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer = new FeedCommentBackgroundSyncer();
   public FeedListPageLoaderBase.FeedIdListCache a;
   public ArrayList a;
@@ -46,6 +48,7 @@ public class FeedManager
   public Map a;
   public boolean a;
   public int b;
+  public FeedListPageLoaderBase.FeedIdListCache b;
   private boolean b;
   
   static
@@ -150,7 +153,7 @@ public class FeedManager
   
   public static void b(String paramString)
   {
-    Bosses.get().postLightWeightJob(new nwz(paramString), 10);
+    Bosses.get().postLightWeightJob(new nym(paramString), 10);
   }
   
   public FeedCommentBackgroundSyncer a()
@@ -451,7 +454,7 @@ public class FeedManager
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     long l = ((Long)((StoryConfigManager)SuperManager.a(10)).b("key_disable_auto_refresh_time", Long.valueOf(60000L))).longValue();
-    ThreadManager.getUIHandler().postDelayed(new nxa(this), l);
+    ThreadManager.getUIHandler().postDelayed(new nyn(this), l);
   }
   
   public void c(List paramList, boolean paramBoolean)

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.scribble;
 
-import ahbx;
-import ahby;
+import ahpz;
+import ahqa;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
@@ -18,7 +18,7 @@ import mqq.manager.Manager;
 public class ScribbleDownloader
   implements Handler.Callback, Manager
 {
-  public ahby a;
+  public ahqa a;
   protected Handler a;
   public QQAppInterface a;
   public String a;
@@ -28,14 +28,14 @@ public class ScribbleDownloader
   {
     this.jdField_a_of_type_JavaLangString = "ScribbleDownloader";
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-    this.jdField_a_of_type_Ahby = new ahby(this);
+    this.jdField_a_of_type_Ahqa = new ahqa(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   }
   
   private void a(ScribbleDownloadInfo paramScribbleDownloadInfo)
   {
-    int i = this.jdField_a_of_type_Ahby.a(paramScribbleDownloadInfo);
+    int i = this.jdField_a_of_type_Ahqa.a(paramScribbleDownloadInfo);
     a("addDownload", "result is " + i);
     d();
   }
@@ -66,14 +66,14 @@ public class ScribbleDownloader
   
   private void b(ScribbleDownloadInfo paramScribbleDownloadInfo)
   {
-    ThreadManager.post(new ahbx(this, paramScribbleDownloadInfo), 5, null, false);
+    ThreadManager.post(new ahpz(this, paramScribbleDownloadInfo), 5, null, false);
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Ahby.a() < 2)
+    if (this.jdField_a_of_type_Ahqa.a() < 2)
     {
-      ScribbleDownloadInfo localScribbleDownloadInfo = this.jdField_a_of_type_Ahby.a();
+      ScribbleDownloadInfo localScribbleDownloadInfo = this.jdField_a_of_type_Ahqa.a();
       if (localScribbleDownloadInfo == null)
       {
         a("consumeDownload", "removeOneFromWaitToDowning is null");
@@ -87,7 +87,7 @@ public class ScribbleDownloader
   
   public int a(MessageForScribble paramMessageForScribble)
   {
-    int i = this.jdField_a_of_type_Ahby.a(paramMessageForScribble);
+    int i = this.jdField_a_of_type_Ahqa.a(paramMessageForScribble);
     a("removeDownloadedMsg", " result is " + i);
     d();
     return i;
@@ -161,7 +161,7 @@ public class ScribbleDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleDownloader
  * JD-Core Version:    0.7.0.1
  */

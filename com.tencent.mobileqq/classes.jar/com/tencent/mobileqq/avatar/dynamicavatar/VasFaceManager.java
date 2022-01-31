@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abdk;
+import abkl;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -351,7 +351,7 @@ public class VasFaceManager
     {
       str = "face." + paramInt1 + str;
       b(str, paramCompleteListener, paramObject);
-      ThreadManager.post(new abdk(this, a(paramInt1, paramInt2), str), 5, null, true);
+      ThreadManager.post(new abkl(this, a(paramInt1, paramInt2), str), 5, null, true);
       return;
       str = ".large";
       continue;
@@ -505,7 +505,7 @@ public class VasFaceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.VasFaceManager
  * JD-Core Version:    0.7.0.1
  */

@@ -138,12 +138,12 @@ public class QzoneSearchResultView
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362851));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369358));
-    this.b = ((TextView)findViewById(2131374142));
-    this.c = ((TextView)findViewById(2131363360));
-    this.d = ((TextView)findViewById(2131363509));
-    this.jdField_a_of_type_CooperationQzoneWidgetQzoneImagesContainer = ((QzoneImagesContainer)findViewById(2131366928));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362869));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369424));
+    this.b = ((TextView)findViewById(2131374323));
+    this.c = ((TextView)findViewById(2131363378));
+    this.d = ((TextView)findViewById(2131363527));
+    this.jdField_a_of_type_CooperationQzoneWidgetQzoneImagesContainer = ((QzoneImagesContainer)findViewById(2131366970));
   }
   
   public void setAvartaView(Bitmap paramBitmap)

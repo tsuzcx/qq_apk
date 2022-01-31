@@ -30,14 +30,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
-import pbu;
-import pbv;
+import pdo;
+import pdp;
 
 public class WebSoPlugin
   extends WebViewPlugin
 {
   private static int jdField_a_of_type_Int = -1;
-  private Handler jdField_a_of_type_AndroidOsHandler = new pbu(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new pdo(this, Looper.getMainLooper());
   private WebSoPlugin.WebSoJavaScriptObj jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj;
   public String a;
   private boolean jdField_a_of_type_Boolean;
@@ -385,7 +385,7 @@ public class WebSoPlugin
   
   void a(String paramString)
   {
-    ThreadManager.post(new pbv(this, paramString), 5, null, false);
+    ThreadManager.post(new pdp(this, paramString), 5, null, false);
   }
   
   protected boolean handleEvent(String paramString, long paramLong, Map paramMap)

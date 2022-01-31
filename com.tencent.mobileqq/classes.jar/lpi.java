@@ -1,17 +1,23 @@
 import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
+import java.util.Iterator;
+import java.util.List;
 
 public class lpi
   implements Runnable
 {
-  public lpi(ArticleInfoModule paramArticleInfoModule) {}
+  public lpi(ArticleInfoModule paramArticleInfoModule, List paramList) {}
   
   public void run()
   {
-    SosoInterface.a(ArticleInfoModule.a(), "PublicAccountManager");
-    if (QLog.isColorLevel()) {
-      QLog.d("ArticleInfoModule", 2, "0x68b lbs info start location");
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        ChannelTopCookie localChannelTopCookie = (ChannelTopCookie)localIterator.next();
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(localChannelTopCookie);
+      }
     }
   }
 }

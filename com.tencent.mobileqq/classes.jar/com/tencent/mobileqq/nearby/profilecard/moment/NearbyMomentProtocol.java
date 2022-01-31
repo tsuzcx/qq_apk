@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import aeyk;
-import aeyl;
-import aeym;
-import aeyn;
-import aeyo;
-import aeyp;
-import aeyq;
-import aeyr;
+import aflq;
+import aflr;
+import afls;
+import aflt;
+import aflu;
+import aflv;
+import aflw;
+import aflx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
@@ -48,7 +48,7 @@ public class NearbyMomentProtocol
           QLog.i("NearbyMomentProtocol", 2, "getMomentList, req.lat=" + paramString.a + ",req.lng=" + paramString.b);
         }
       }
-      new CsTask(paramQQAppInterface).a(24624).b(10).a(new aeyl(paramInt1, paramGetMomentListCallback)).a(new aeyk(paramGetMomentListCallback, paramInt1)).a(localReadNearUserFeedsReq.toByteArray());
+      new CsTask(paramQQAppInterface).a(24624).b(10).a(new aflr(paramInt1, paramGetMomentListCallback)).a(new aflq(paramGetMomentListCallback, paramInt1)).a(localReadNearUserFeedsReq.toByteArray());
       return;
     }
     catch (NumberFormatException paramQQAppInterface)
@@ -68,17 +68,17 @@ public class NearbyMomentProtocol
     localDelFeedReq.select_all.set(0);
     localDelFeedReq.del_st.get().add(localDelFeedStuct);
     localDelFeedReq.uid.set(Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
-    new CsTask(paramQQAppInterface).a(22528).b(5).a(new aeyn(paramDeleteFeedCallback, paramString)).a(new aeym(paramDeleteFeedCallback, paramString)).a(localDelFeedReq.toByteArray());
+    new CsTask(paramQQAppInterface).a(22528).b(5).a(new aflt(paramDeleteFeedCallback, paramString)).a(new afls(paramDeleteFeedCallback, paramString)).a(localDelFeedReq.toByteArray());
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, NearbyMomentProtocol.LikeCallback paramLikeCallback)
   {
-    new NowShortVideoProtoManager(paramQQAppInterface).a(paramString, new aeyo(paramLikeCallback), null);
+    new NowShortVideoProtoManager(paramQQAppInterface).a(paramString, new aflu(paramLikeCallback), null);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, NearbyMomentProtocol.UnLikeCallback paramUnLikeCallback)
   {
-    new NowShortVideoProtoManager(paramQQAppInterface).b(paramString, new aeyp(paramUnLikeCallback), null);
+    new NowShortVideoProtoManager(paramQQAppInterface).b(paramString, new aflv(paramUnLikeCallback), null);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, NearbyMomentProtocol.ReportCallback paramReportCallback)
@@ -89,7 +89,7 @@ public class NearbyMomentProtocol
     localReportReq.feedid.set(paramString1);
     localReportReq.client.set(8);
     localReportReq.text.set(paramString2);
-    new CsTask(paramQQAppInterface).a(24661).b(1).a(new aeyr(paramReportCallback)).a(new aeyq(paramReportCallback)).a(localReportReq.toByteArray());
+    new CsTask(paramQQAppInterface).a(24661).b(1).a(new aflx(paramReportCallback)).a(new aflw(paramReportCallback)).a(localReportReq.toByteArray());
   }
 }
 

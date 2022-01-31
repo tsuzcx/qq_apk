@@ -1,32 +1,67 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import java.util.Locale;
 
 public class spx
-  implements sqp
+  implements Runnable
 {
-  public spx(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public spx(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    switch (paramInt)
+    LocalRedTouchManager localLocalRedTouchManager;
+    Object localObject1;
+    if (this.a.a.a.a == 0)
     {
+      localLocalRedTouchManager = (LocalRedTouchManager)this.a.app.getManager(159);
+      i = localLocalRedTouchManager.a();
+      localObject1 = null;
     }
-    String str;
-    do
+    Object localObject2;
+    switch (i)
     {
-      return;
-      str = FriendProfileMoreInfoActivity.a(this.a).getText().toString();
-    } while ((paramString == null) || (paramString.equals(str)));
-    this.a.k = true;
-    this.a.d(paramString);
-    if (CampusCircleHelper.b(this.a.a.lCampusSchoolID) == 4)
-    {
-      this.a.a("0X80081E9", 0);
-      return;
+    default: 
+      localObject2 = null;
+      if (localObject1 != null)
+      {
+        ReportController.b(this.a.app, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
+        ReportController.b(this.a.app, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
+      }
+      localLocalRedTouchManager.a(true);
+      if (ProfileCardUtil.b())
+      {
+        localObject2 = Locale.getDefault().getCountry();
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        localObject2 = this.a.app;
+        if (this.a.a.a.a != 0) {
+          break label235;
+        }
+      }
+      break;
     }
-    this.a.a("0X80081EB", 1);
+    label235:
+    for (int i = 1;; i = 2)
+    {
+      ReportController.b((QQAppInterface)localObject2, "dc00898", "", "", "0X8008CA2", "0X8008CA2", i, 0, "", "", (String)localObject1, "");
+      return;
+      localObject1 = "0X8007394";
+      localObject2 = "0X8007393";
+      break;
+      localObject1 = "0X8007399";
+      localObject2 = "0X8007398";
+      break;
+      localObject1 = "0X80073B9";
+      localObject2 = "0X80073BA";
+      break;
+    }
   }
 }
 

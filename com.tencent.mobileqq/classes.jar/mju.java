@@ -1,14 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
 public class mju
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public mju(AppInPushNotification paramAppInPushNotification) {}
+  public mju(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppInPushNotification.a(6);
-    this.a.a(true, true);
+    ReadinjoySlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

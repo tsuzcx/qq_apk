@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.myapp.net;
 
-import adxx;
+import aeld;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
@@ -39,10 +39,10 @@ public class Http
     jdField_a_of_type_AndroidNetUri = Uri.parse("content://telephony/carriers/preferapn");
   }
   
-  private static adxx a()
+  private static aeld a()
   {
     Object localObject1 = BaseApplication.getContext();
-    adxx localadxx = new adxx();
+    aeld localaeld = new aeld();
     try
     {
       String str1;
@@ -65,50 +65,50 @@ public class Http
         if ((str3 != null) && (str3.startsWith("ctwap"))) {
           if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
           {
-            localadxx.jdField_a_of_type_JavaLangString = str1;
-            localadxx.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+            localaeld.jdField_a_of_type_JavaLangString = str1;
+            localaeld.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
           }
           else
           {
-            localadxx.jdField_a_of_type_JavaLangString = "10.0.0.200";
-            localadxx.jdField_a_of_type_Int = 80;
+            localaeld.jdField_a_of_type_JavaLangString = "10.0.0.200";
+            localaeld.jdField_a_of_type_Int = 80;
           }
         }
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        return localadxx;
+        return localaeld;
       }
       if ((str3 != null) && (str3.startsWith("cmwap")))
       {
         if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
         {
-          localadxx.jdField_a_of_type_JavaLangString = str1;
-          localadxx.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+          localaeld.jdField_a_of_type_JavaLangString = str1;
+          localaeld.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
         }
         else
         {
-          localadxx.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localadxx.jdField_a_of_type_Int = 80;
+          localaeld.jdField_a_of_type_JavaLangString = "10.0.0.172";
+          localaeld.jdField_a_of_type_Int = 80;
         }
       }
       else if ((str3 != null) && (str3.startsWith("uniwap"))) {
         if ((str1 != null) && (str1.length() > 0) && (Integer.valueOf(str2).intValue() < 0))
         {
-          localadxx.jdField_a_of_type_JavaLangString = str1;
-          localadxx.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
+          localaeld.jdField_a_of_type_JavaLangString = str1;
+          localaeld.jdField_a_of_type_Int = Integer.valueOf(str2).intValue();
         }
         else
         {
-          localadxx.jdField_a_of_type_JavaLangString = "10.0.0.172";
-          localadxx.jdField_a_of_type_Int = 80;
+          localaeld.jdField_a_of_type_JavaLangString = "10.0.0.172";
+          localaeld.jdField_a_of_type_Int = 80;
         }
       }
-      return localadxx;
+      return localaeld;
     }
     finally {}
-    return localadxx;
+    return localaeld;
   }
   
   public static InetSocketAddress a()
@@ -156,8 +156,8 @@ public class Http
         else
         {
           localObject1 = a();
-          str = ((adxx)localObject1).jdField_a_of_type_JavaLangString;
-          i = ((adxx)localObject1).jdField_a_of_type_Int;
+          str = ((aeld)localObject1).jdField_a_of_type_JavaLangString;
+          i = ((aeld)localObject1).jdField_a_of_type_Int;
         }
       }
     }
@@ -259,7 +259,7 @@ public class Http
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.myapp.net.Http
  * JD-Core Version:    0.7.0.1
  */

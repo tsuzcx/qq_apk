@@ -1,12 +1,14 @@
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+
 public class yqp
+  extends AVVideoCtrl.EnableCameraCompleteCallback
 {
-  public int a;
-  public int b;
+  public yqp(CmGameAvHandler paramCmGameAvHandler) {}
   
-  public yqp(int paramInt1, int paramInt2)
+  protected void onComplete(boolean paramBoolean, int paramInt)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    if (paramInt == 0) {}
   }
 }
 

@@ -1,20 +1,23 @@
-import android.content.Context;
-import cooperation.qzone.PlatformInfor;
-import cooperation.qzone.SharpPDec;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
 
-public class ambj
-  implements Runnable
+public final class ambj
+  implements Parcelable.Creator
 {
-  public ambj(PlatformInfor paramPlatformInfor, Context paramContext) {}
-  
-  public void run()
+  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
   {
-    PlatformInfor.a(this.jdField_a_of_type_CooperationQzonePlatformInfor, SharpPDec.a(this.jdField_a_of_type_AndroidContentContext));
+    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
+  }
+  
+  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  {
+    return new ExpandableListConnector.GroupMetadata[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambj
  * JD-Core Version:    0.7.0.1
  */

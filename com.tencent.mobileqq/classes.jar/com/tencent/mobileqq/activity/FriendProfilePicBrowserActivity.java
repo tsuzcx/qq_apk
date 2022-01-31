@@ -29,10 +29,10 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import java.io.File;
 import java.util.ArrayList;
-import sqq;
-import sqr;
-import sqs;
-import sqt;
+import stp;
+import stq;
+import str;
+import sts;
 
 public class FriendProfilePicBrowserActivity
   extends PicBrowserActivity
@@ -184,9 +184,9 @@ public class FriendProfilePicBrowserActivity
       QLog.d("FriendProfilePicBrowserActivity", 2, "deletePic");
     }
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 0);
-    localQQCustomDialog.setMessage(getString(2131435916)).setCancelable(true);
-    localQQCustomDialog.setNegativeButton(2131432998, new sqr(this, localQQCustomDialog));
-    localQQCustomDialog.setPositiveButton(2131433680, new sqs(this, localQQCustomDialog));
+    localQQCustomDialog.setMessage(getString(2131435933)).setCancelable(true);
+    localQQCustomDialog.setNegativeButton(2131433015, new stq(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(2131433697, new str(this, localQQCustomDialog));
     if (!isFinishing()) {
       localQQCustomDialog.show();
     }
@@ -241,7 +241,7 @@ public class FriendProfilePicBrowserActivity
       localActionSheet.a("删除照片", 3);
     }
     localActionSheet.d("取消");
-    localActionSheet.a(new sqq(this, localActionSheet));
+    localActionSheet.a(new stp(this, localActionSheet));
     localActionSheet.show();
     ReportController.b(this.app, "dc00898", "", "", "0X8007C13", "0X8007C13", 0, 0, "", "", "", "");
   }
@@ -260,12 +260,12 @@ public class FriendProfilePicBrowserActivity
       return false;
     }
     getWindow().setFlags(1024, 1024);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new sqt(this);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new sts(this);
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371035));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371199));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369052));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369118));
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("更多");
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.mNeedStatusTrans = true;
@@ -337,7 +337,7 @@ public class FriendProfilePicBrowserActivity
     {
     default: 
       return;
-    case 2131371035: 
+    case 2131371199: 
       paramView = getIntent();
       paramView.putExtra("setHead_fileid", a());
       setResult(-1, paramView);

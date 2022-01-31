@@ -1,16 +1,16 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
 
 public class ocn
-  extends PtvTemplateManager.DoodleInfoLoadObserver
+  implements View.OnClickListener
 {
-  public ocn(EditVideoDoodle paramEditVideoDoodle) {}
+  public ocn(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.J_();
+    this.a.getActivity().finish();
   }
 }
 

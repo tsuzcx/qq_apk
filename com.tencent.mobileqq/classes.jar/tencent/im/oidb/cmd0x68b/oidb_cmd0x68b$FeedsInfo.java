@@ -16,6 +16,7 @@ public final class oidb_cmd0x68b$FeedsInfo
   public final PBBytesField bytes_business_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_business_name_prefix = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_business_url = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_feeds_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField enum_ugc_src = PBField.initEnum(0);
   public final PBEnumField feeds_type = PBField.initEnum(0);
   public oidb_cmd0x68b.ArkAppFeedsInfo msg_ark_app_feeds_info = new oidb_cmd0x68b.ArkAppFeedsInfo();
@@ -32,7 +33,8 @@ public final class oidb_cmd0x68b$FeedsInfo
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 90, 98, 106, 114, 122, 160, 1600, 1608 }, new String[] { "feeds_type", "uint32_business_id", "bytes_business_name", "bytes_business_url", "bytes_business_name_prefix", "msg_social_feeds_info", "msg_pos_ad_info", "msg_follow_recommend_feeds_info", "msg_topic_recommend_feeds_info", "msg_ark_app_feeds_info", "enum_ugc_src", "uint64_feeds_index", "uint64_feeds_time" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, null, null, null, null, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L) }, FeedsInfo.class);
+    ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 90, 98, 106, 114, 122, 160, 1600, 1608, 1618 }, new String[] { "feeds_type", "uint32_business_id", "bytes_business_name", "bytes_business_url", "bytes_business_name_prefix", "msg_social_feeds_info", "msg_pos_ad_info", "msg_follow_recommend_feeds_info", "msg_topic_recommend_feeds_info", "msg_ark_app_feeds_info", "enum_ugc_src", "uint64_feeds_index", "uint64_feeds_time", "bytes_feeds_cookie" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, null, null, null, null, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro4 }, FeedsInfo.class);
   }
 }
 

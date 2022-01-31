@@ -1,38 +1,40 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.graphics.Point;
+import com.tencent.mobileqq.arcard.ARCardCameraRecordActivity;
+import com.tencent.mobileqq.arcard.ARCardCameraRecordActivity.VideoRecordResult;
+import com.tencent.mobileqq.arcard.ARCardUtils;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class aalj
-  implements aalp
+public class aalj
+  implements Runnable
 {
-  aalj(aalb paramaalb, aalo paramaalo, String paramString, aalq paramaalq) {}
+  public aalj(ARCardCameraRecordActivity paramARCardCameraRecordActivity, ARCardCameraRecordActivity.VideoRecordResult paramVideoRecordResult) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void run()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aalo.b }));
-    }
-    for (;;)
+    ARCardCameraRecordActivity.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity, this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity$VideoRecordResult);
+    Point localPoint = ARCardUtils.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity$VideoRecordResult.b);
+    ARCardCameraRecordActivity.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity).b = this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity$VideoRecordResult.b;
+    ARCardCameraRecordActivity.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity, 2);
+    ARVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity, 1, this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity$VideoRecordResult.b, localPoint.x, localPoint.y, ARCardCameraRecordActivity.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity), ARCardCameraRecordActivity.b(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity), ARCardCameraRecordActivity.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity), ARCardCameraRecordActivity.d(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity), ARCardCameraRecordActivity.e(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity), ARCardCameraRecordActivity.f(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity), ARCardCameraRecordActivity.g(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity));
+    try
     {
-      this.jdField_a_of_type_Aalq.a(false);
+      i = Integer.parseInt(ARCardCameraRecordActivity.g(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordActivity));
+      ReportController.b(null, "dc00898", "", "", "0X8008F20", "0X8008F20", i, 0, "", "", "", "");
       return;
-      if (!aalb.b(paramArrayOfByte, this.jdField_a_of_type_Aalo.d))
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aalo.b, this.jdField_a_of_type_Aalo.d }));
-      }
-      else
-      {
-        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString });
-        if (aalb.a(paramArrayOfByte, str)) {
-          break;
-        }
-        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aalo.b, str }));
+        int i = 0;
       }
     }
-    this.jdField_a_of_type_Aalq.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalj
  * JD-Core Version:    0.7.0.1
  */

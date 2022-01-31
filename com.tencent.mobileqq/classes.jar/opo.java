@@ -1,17 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.view.widget.StoryAddDescribeGuideDialog;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.view.SplitedProgressBar;
 
 public class opo
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public opo(StoryAddDescribeGuideDialog paramStoryAddDescribeGuideDialog) {}
+  public opo(StoryVideoPlayer paramStoryVideoPlayer) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    StoryAddDescribeGuideDialog.a(this.a);
-    return true;
+    if (!this.a.d)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
   }
 }
 

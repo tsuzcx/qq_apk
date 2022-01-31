@@ -1,35 +1,33 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahpj
-  extends AsyncTask
+  implements TextWatcher
 {
-  ahpj(RedBagVideoManager paramRedBagVideoManager) {}
+  public ahpj(EditActivity paramEditActivity) {}
   
-  protected Boolean a(String... paramVarArgs)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (RedBagVideoManager.a(this.a) != null)
-    {
-      RedBagVideoManager.a(this.a).g = 1;
-      long l = RedBagVideoManager.a(this.a).a;
-      paramVarArgs = RedBagVideoManager.a(this.a).e;
-      int i = RedBagVideoManager.a(this.a).h;
-      Bundle localBundle = new Bundle();
-      localBundle.putLong("VALUE_MSG_UINSEQ", l);
-      localBundle.putString("VALUE_MSG_FRIENDUIN", paramVarArgs);
-      localBundle.putInt("VALUE_MSG_ISTROOP", i);
-      localBundle.putString("VALUE_MSG_VIDEO_ID", RedBagVideoManager.a(this.a).c);
-      VideoPlayIPCClient.a().a("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", localBundle);
+    EditActivity.a = true;
+    ReportController.b(this.a.app, "CliOper", "", "", "signiture", "set_clk_mdf", 0, 0, "", "", "", "");
+    if ((EditActivity.a(this.a).getSelectionStart() == 7) && (EditActivity.a(this.a).getText().toString().trim().length() == 7)) {
+      EditActivity.a(this.a).setSelection(paramEditable.length());
     }
-    return Boolean.valueOf(true);
+    EditActivity.a(this.a);
   }
   
-  protected void a(Boolean paramBoolean)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.b(RedBagVideoManager.a(this.a));
+    QLog.d("EditActivity", 2, "beforeTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt2 + ", after = " + paramInt3);
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.d("EditActivity", 2, "onTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt3);
   }
 }
 

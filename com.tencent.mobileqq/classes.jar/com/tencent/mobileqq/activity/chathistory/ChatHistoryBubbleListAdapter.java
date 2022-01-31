@@ -22,14 +22,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import wcv;
+import wga;
 
 public class ChatHistoryBubbleListAdapter
   extends ChatAdapter1
 {
   public ChatHistoryBubbleListAdapter.HistoryDeleteOperator a;
   public final String a;
-  protected wcv a;
+  protected wga a;
   public boolean a;
   public SessionInfo b;
   public QQAppInterface b;
@@ -40,7 +40,7 @@ public class ChatHistoryBubbleListAdapter
     super(paramQQAppInterface, paramContext, paramSessionInfo, null, null);
     this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Wcv = new wcv(this, null);
+    this.jdField_a_of_type_Wga = new wga(this, null);
     this.jdField_b_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
   }
   
@@ -151,7 +151,7 @@ public class ChatHistoryBubbleListAdapter
   {
     ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     ChatItemBuilder localChatItemBuilder = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemItemBuilderFactory.a(localChatMessage, this);
-    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage, paramView, paramViewGroup, this.jdField_a_of_type_Wcv);
+    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage, paramView, paramViewGroup, this.jdField_a_of_type_Wga);
     if (paramView != null) {
       paramView.setTag(2131361859, localChatMessage);
     }

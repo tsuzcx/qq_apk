@@ -1,22 +1,13 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
 public class mcu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mcu(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  public mcu(VideoFeedsListView paramVideoFeedsListView) {}
   
-  public void run()
-  {
-    if (VideoFeedsPlayManager.a(this.a) == null) {
-      return;
-    }
-    VideoFeedsPlayManager.a(this.a).removeMessages(-2);
-    new WeakReference(VideoFeedsPlayManager.a(this.a));
-    new WeakReference(VideoFeedsPlayManager.a(this.a));
-    VideoFeedsPlayManager.a(this.a).sendEmptyMessage(-2);
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,88 +1,70 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.qphone.base.util.QLog;
 
 public class kts
-  extends Handler
+  implements Runnable
 {
-  public kts(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public kts(AdvertisementItem paramAdvertisementItem) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    boolean bool = true;
-    switch (paramMessage.what)
+    try
     {
-    }
-    do
-    {
-      do
+      String str = MD5Utils.b(DeviceInfoUtil.a());
+      if ((this.a.a == null) || (TextUtils.isEmpty(this.a.a.m)))
       {
-        do
+        if (QLog.isColorLevel()) {
+          QLog.w("AdvertisementRecentUserManager", 2, "exporsure failed");
+        }
+      }
+      else
+      {
+        Object localObject2 = this.a.a.m;
+        Object localObject1 = localObject2;
+        if (((String)localObject2).contains("__OS__")) {
+          localObject1 = ((String)localObject2).replace("__OS__", "0");
+        }
+        localObject2 = localObject1;
+        if (((String)localObject1).contains("__IMEI__")) {
+          localObject2 = ((String)localObject1).replace("__IMEI__", str);
+        }
+        localObject1 = localObject2;
+        if (((String)localObject2).contains("__APP__")) {
+          localObject1 = ((String)localObject2).replace("__APP__", MD5Utils.b("android_qq"));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementRecentUserManager", 2, "exporsure url :" + ((String)localObject1).toString());
+        }
+        localObject2 = new HttpNetReq();
+        ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = AdvertisementItem.a(this.a);
+        ((HttpNetReq)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
+        ((HttpNetReq)localObject2).jdField_a_of_type_Int = 0;
+        localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface)))
         {
-          do
-          {
-            int i;
-            do
-            {
-              do
-              {
-                return;
-                i = paramMessage.arg1;
-              } while (PublicAccountAdvertisementActivity.a(this.a) == null);
-              PublicAccountAdvertisementActivity.a(this.a).a(i);
-              if ((i > 0) && (i < 100))
-              {
-                PublicAccountAdvertisementActivity.a(this.a).c(true);
-                return;
-              }
-            } while (i != 100);
-            PublicAccountAdvertisementActivity.a(this.a).c(false);
-            return;
-            switch (paramMessage.arg1)
-            {
-            case 201: 
-            case 202: 
-            case 203: 
-            default: 
-              this.a.a(2131438936);
-              return;
-            case -24: 
-              this.a.b(this.a.getString(2131438937));
-              return;
-            }
-            this.a.a(2131438934);
-            return;
-            this.a.b(this.a.getString(2131438938));
-            return;
-          } while (PublicAccountAdvertisementActivity.a(this.a) == null);
-          VideoCoverFragment localVideoCoverFragment = PublicAccountAdvertisementActivity.a(this.a);
-          if (paramMessage.arg1 == 1) {}
-          for (;;)
-          {
-            localVideoCoverFragment.c(bool);
-            return;
-            bool = false;
-          }
-        } while (!this.a.isResume());
-        paramMessage = this.a.getSupportFragmentManager().beginTransaction();
-        PublicAccountAdvertisementActivity.a(this.a, WebpageFragment.a(this.a.getIntent()));
-        PublicAccountAdvertisementActivity.a(this.a).a(PublicAccountAdvertisementActivity.a(this.a));
-        paramMessage.add(2131365571, PublicAccountAdvertisementActivity.a(this.a));
-        paramMessage.commit();
-      } while (!ThemeUtil.isInNightMode(this.a.getAppRuntime()));
-      paramMessage = this.a.findViewById(2131366941);
-    } while (paramMessage == null);
-    paramMessage.setVisibility(0);
+          localObject1 = (QQAppInterface)localObject1;
+          ((OldHttpEngine)((QQAppInterface)localObject1).getNetEngine(0)).a((NetReq)localObject2);
+          ReportController.a((QQAppInterface)localObject1, "dc00898", "", "", "0X8008FA0", "0X8008FA0", 0, 0, "", "", "", "");
+          return;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("AdvertisementRecentUserManager", 2, localException.toString());
+      }
+    }
   }
 }
 

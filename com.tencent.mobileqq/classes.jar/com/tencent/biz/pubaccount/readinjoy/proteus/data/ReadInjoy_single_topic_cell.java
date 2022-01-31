@@ -22,7 +22,7 @@ public class ReadInjoy_single_topic_cell
       localObject2 = BaseApplicationImpl.getApplication().getResources();
       str = ((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject1).d;
     }
-    for (Object localObject1 = String.format(((Resources)localObject2).getString(2131438901), new Object[] { ReadInJoyHelper.a(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject1).b) });; localObject1 = null)
+    for (Object localObject1 = String.format(((Resources)localObject2).getString(2131438929), new Object[] { ReadInJoyHelper.a(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject1).b) });; localObject1 = null)
     {
       localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("participant_title_text", localObject1);

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahgv;
+import ahux;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.TextView;
@@ -51,7 +51,7 @@ public class TroopAddFrdsSrchResultPresenter
   protected void d(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     super.d(paramISearchResultModel, paramISearchResultView);
-    ((TroopAddFrdsSrchResultView)paramISearchResultView).a().setOnClickListener(new ahgv(this, paramISearchResultModel));
+    ((TroopAddFrdsSrchResultView)paramISearchResultView).a().setOnClickListener(new ahux(this, paramISearchResultModel));
   }
 }
 

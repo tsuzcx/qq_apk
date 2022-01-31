@@ -1,16 +1,28 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
 public class sia
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public sia(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public sia(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    if ("login".equals(paramIntent.getStringExtra("status")))
+    {
+      this.a.a.a(9, 2);
+      this.a.a.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("loginInfo");
+      this.a.a.c = paramIntent.getStringExtra("loginAppId");
+      this.a.a.jdField_b_of_type_Int = paramIntent.getIntExtra("appType", -1);
+      this.a.a.d = paramIntent.getStringExtra("bannerTips");
+      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
+      this.a.a.a(-1, null);
+      return;
+    }
+    this.a.a.b();
   }
 }
 

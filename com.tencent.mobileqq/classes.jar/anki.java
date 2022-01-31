@@ -1,19 +1,28 @@
-import android.view.ViewGroup;
-import android.widget.ListView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class anki
-  implements Runnable
+public class anki
+  implements EditVideoPoiPickerCallback
 {
-  anki(ankh paramankh) {}
+  public anki(QIMCaptureController paramQIMCaptureController) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
   {
-    FaceListPage.a(this.a.a.a).setVisibility(4);
-    FaceListPage.b(this.a.a.a).setVisibility(4);
-    FaceListPage.a(this.a.a.a).setVisibility(0);
-    FaceListPage.a(this.a.a.a).notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureController", 2, "onSelectLocation " + paramTroopBarPOI);
+    }
+    this.a.a.setLocation(paramTroopBarPOI);
+    if (paramTroopBarPOI != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.b = bool;
+      return;
+    }
   }
 }
 

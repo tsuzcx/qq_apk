@@ -1,49 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
-class mky
-  implements Runnable
+public class mky
+  implements Animation.AnimationListener
 {
-  mky(mkx parammkx, long paramLong, List paramList) {}
+  public mky(ReadinjoyTabFrame paramReadinjoyTabFrame, View paramView, Context paramContext) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FastWebActivity localFastWebActivity = this.jdField_a_of_type_Mkx.a;
-    ArticleInfo localArticleInfo = FastWebActivity.a(this.jdField_a_of_type_Mkx.a);
-    Object localObject;
-    if (FastWebActivity.a(this.jdField_a_of_type_Mkx.a).c()) {
-      localObject = "2";
+    paramAnimation = new ScaleAnimation(0.8F, 1.0F, 0.8F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(150L);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
     }
-    for (;;)
-    {
-      localObject = ReadInJoyUtils.a(localFastWebActivity, localArticleInfo, 0, (String)localObject);
-      try
-      {
-        ((JSONObject)localObject).put("open_speed", this.jdField_a_of_type_Long);
-        ReportUtil.a(FastWebActivity.a(this.jdField_a_of_type_Mkx.a), "0X8008997", ((JSONObject)localObject).toString());
-        FastWebActivity.f(this.jdField_a_of_type_Mkx.a);
-        FastWebActivity.a(this.jdField_a_of_type_Mkx.a, FastWebActivity.a(this.jdField_a_of_type_Mkx.a), FastWebActivity.a(this.jdField_a_of_type_Mkx.a));
-        ReportUtil.a(FastWebActivity.a(this.jdField_a_of_type_Mkx.a), this.jdField_a_of_type_JavaUtilList);
-        FastWebRequestUtil.a(FastWebActivity.a(this.jdField_a_of_type_Mkx.a).mArticleContentUrl, FastWebActivity.a(this.jdField_a_of_type_Mkx.a));
-        return;
-        localObject = "1";
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
-    }
+    paramAnimation.setAnimationListener(new mkz(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

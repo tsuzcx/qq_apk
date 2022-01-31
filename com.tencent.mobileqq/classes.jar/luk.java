@@ -1,35 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicMulti;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendFeedsTitle;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypePgcSmall;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class luk
   implements View.OnClickListener
 {
-  public luk(FeedItemCellTypeTopicMulti paramFeedItemCellTypeTopicMulti, ArticleInfo paramArticleInfo, TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo) {}
+  public luk(FeedItemCellTypePgcSmall paramFeedItemCellTypePgcSmall) {}
   
   public void onClick(View paramView)
   {
-    ReadInJoyUtils.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCellTypeTopicMulti.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.b.b);
-    try
-    {
-      paramView = new JSONObject();
-      paramView.put("folder_status", ReadInJoyUtils.d);
-      paramView.put("kandian_mode", "" + ReadInJoyUtils.e());
-      paramView.put("tab_source", "" + ReadInJoyUtils.d());
-      PublicAccountReportUtils.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", paramView.toString(), false);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
+    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (paramView != null) {
+      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
   }
 }

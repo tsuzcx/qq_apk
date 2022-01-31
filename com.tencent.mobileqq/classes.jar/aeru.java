@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.FaceScoreCallBack;
-import com.tencent.mobileqq.nearby.FaceScoreConfig;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import android.view.View;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class aeru
-  extends FaceScoreCallBack
+  implements OverScrollViewListener
 {
-  public aeru(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public aeru(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
   
-  public void a(FaceScoreConfig paramFaceScoreConfig)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    ThreadManager.post(new aerv(this, paramFaceScoreConfig), 8, null, false);
-    this.a.a = paramFaceScoreConfig;
-    this.a.a(paramFaceScoreConfig);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(this.a.jdField_a_of_type_Long);
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(this.a.jdField_a_of_type_Long);
+    NearbyVisitorListActivity.a(this.a, true, false);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(this.a.jdField_a_of_type_Long);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

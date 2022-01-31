@@ -1,31 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.PopupMenuDialog;
 
 public class amdb
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  public amdb(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public amdb(PopupMenuDialog paramPopupMenuDialog) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QzoneVerticalVideoDownloadActivity.a(this.a).setImageDrawable(paramURLDrawable);
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amdb
  * JD-Core Version:    0.7.0.1
  */

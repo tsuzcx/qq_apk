@@ -1,22 +1,29 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.recent.RecentUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class lrn
   implements Runnable
 {
-  public lrn(SubscriptionInfoModule paramSubscriptionInfoModule, String paramString, Context paramContext) {}
+  public lrn(ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    TroopBarAssistantManager.a().a(this.jdField_a_of_type_JavaLangString, (QQAppInterface)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSubscriptionInfoModule.a, this.jdField_a_of_type_AndroidContentContext, SubscriptionInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSubscriptionInfoModule));
-    int i = PublicAccountUtil.b((QQAppInterface)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSubscriptionInfoModule.a, this.jdField_a_of_type_JavaLangString);
-    RecentUtil.b((QQAppInterface)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSubscriptionInfoModule.a, this.jdField_a_of_type_JavaLangString, i);
-    ((QQAppInterface)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSubscriptionInfoModule.a).a().c(this.jdField_a_of_type_JavaLangString, 1008);
+    if (ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule).get(this.jdField_a_of_type_JavaLangString) != null) {
+      QLog.d("ReadInJoyUserInfoModule", 2, "getSingleReadInJoyUserInfoWithParams return ahead of time, do not load db or network request, because the userInfo is loading.");
+    }
+    do
+    {
+      return;
+      ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+      localObject = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule).a(this.jdField_a_of_type_JavaLangString);
+    } while ((localObject != null) && (((List)localObject).size() > 0));
+    Object localObject = new ArrayList();
+    ((List)localObject).add(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule.a((List)localObject, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

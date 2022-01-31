@@ -1,78 +1,67 @@
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.utils.ImageUtil.ScalingLogic;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.TouchDelegate;
 
 public class aijh
-  implements VideoCompositeHelper.VideoCompositeCallBack
+  implements BaseBubbleBuilder.TouchDelegate
 {
-  public aijh(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public boolean a;
+  public TextView b;
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  private void a(boolean paramBoolean)
   {
-    if (paramInt != 0)
-    {
-      new VideoFeedsUploader.UploadResult().a = -1010;
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
+    Drawable localDrawable = this.a.getBackground();
+    if (localDrawable != null) {
+      if (!paramBoolean) {
+        break label28;
       }
-      this.a.b(null);
+    }
+    label28:
+    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
+    {
+      localDrawable.setColorFilter(localColorFilter);
+      localDrawable.invalidateSelf();
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.b = this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.c = this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.a = ((int)this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isLocalPublish)
+  }
+  
+  public void a(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
     {
-      paramString1 = new MediaMetadataRetriever();
-      paramString1.setDataSource(paramString2);
-      Bitmap localBitmap = paramString1.getFrameAtTime();
-      paramInt = localBitmap.getWidth();
-      int i = localBitmap.getHeight();
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.b = paramInt;
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.c = i;
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.a = (this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd - this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart);
-      paramString1.release();
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath != null) {
-        try
-        {
-          ImageUtil.a(ImageUtil.a(ImageUtil.a(this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath, null), paramInt, i, ImageUtil.ScalingLogic.SCALE_CROP), new File(this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath));
-          FFmpegUtils.a(this.a, paramString2, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath, paramString2 + ".doodle.mp4", new aiji(this, paramString2));
-          return;
-        }
-        catch (Exception paramString1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopBarPublishActivity", 2, "compositeVideo: " + QLog.getStackTraceString(paramString1));
-          }
-          this.a.b(null);
-          return;
-        }
-        catch (OutOfMemoryError paramString1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopBarPublishActivity", 2, "compositeVideo: " + QLog.getStackTraceString(paramString1));
-          }
-          this.a.b(null);
-          return;
-        }
-      }
-      this.a.b(paramString2);
+    case 2: 
+    default: 
+    case 1: 
+    case 3: 
+      do
+      {
+        return;
+        paramView = this.a.getBackground();
+      } while (paramView == null);
+      paramView.setColorFilter(null);
+      paramView.invalidateSelf();
       return;
     }
-    this.a.b(paramString2);
+    a(false);
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijh
  * JD-Core Version:    0.7.0.1
  */

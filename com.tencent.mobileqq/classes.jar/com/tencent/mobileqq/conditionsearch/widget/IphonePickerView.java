@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.conditionsearch.widget;
 
-import abkh;
-import abki;
-import abkj;
-import abkk;
-import abkl;
+import abri;
+import abrj;
+import abrk;
+import abrl;
+import abrm;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -26,9 +26,9 @@ public class IphonePickerView
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private IphonePickerView.IphonePickListener jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$IphonePickListener;
   private IphonePickerView.PickerViewAdapter jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter;
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new abki(this);
-  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new abkj(this);
-  private abkl[] jdField_a_of_type_ArrayOfAbkl;
+  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new abrj(this);
+  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new abrk(this);
+  private abrm[] jdField_a_of_type_ArrayOfAbrm;
   private WheelView[] jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
   private int c;
   
@@ -76,13 +76,13 @@ public class IphonePickerView
   private void a(WheelView paramWheelView, int paramInt)
   {
     paramWheelView.setTag(Integer.valueOf(paramInt));
-    abkl localabkl = new abkl(this, paramInt, 25);
+    abrm localabrm = new abrm(this, paramInt, 25);
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[paramInt] = paramWheelView;
-    this.jdField_a_of_type_ArrayOfAbkl[paramInt] = localabkl;
-    paramWheelView.setAdapter(localabkl);
+    this.jdField_a_of_type_ArrayOfAbrm[paramInt] = localabrm;
+    paramWheelView.setAdapter(localabrm);
     paramWheelView.setOnItemSelectedListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
     paramWheelView.setOnSelectViewDataUpdateListener(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener);
-    paramWheelView.setOnEndMovementListener(new abkk(this, paramInt));
+    paramWheelView.setOnEndMovementListener(new abrl(this, paramInt));
   }
   
   public int a(int paramInt)
@@ -95,33 +95,33 @@ public class IphonePickerView
   
   public void a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAbkl.length)) {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfAbrm.length)) {
       throw new IllegalArgumentException("Error column index " + paramInt);
     }
-    this.jdField_a_of_type_ArrayOfAbkl[paramInt].notifyDataSetChanged();
+    this.jdField_a_of_type_ArrayOfAbrm[paramInt].notifyDataSetChanged();
   }
   
   public void a(IphonePickerView.PickerViewAdapter paramPickerViewAdapter)
   {
     Object localObject1 = getContext().getResources();
-    jdField_a_of_type_Int = ((Resources)localObject1).getColor(2131494266);
-    b = ((Resources)localObject1).getColor(2131494241);
-    setBackgroundColor(((Resources)localObject1).getColor(2131494243));
-    Object localObject2 = findViewById(2131368442);
+    jdField_a_of_type_Int = ((Resources)localObject1).getColor(2131494273);
+    b = ((Resources)localObject1).getColor(2131494248);
+    setBackgroundColor(((Resources)localObject1).getColor(2131494250));
+    Object localObject2 = findViewById(2131368509);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494277));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494284));
     }
-    localObject2 = findViewById(2131368443);
+    localObject2 = findViewById(2131368510);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494277));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494284));
     }
-    localObject2 = findViewById(2131365848);
+    localObject2 = findViewById(2131365875);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494276));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494283));
     }
-    localObject2 = findViewById(2131365849);
+    localObject2 = findViewById(2131365876);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494276));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131494283));
     }
     this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter = paramPickerViewAdapter;
     this.c = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter.getColumnCount();
@@ -129,14 +129,14 @@ public class IphonePickerView
       throw new RuntimeException("Unsupportted column count " + this.c);
     }
     this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[this.c];
-    this.jdField_a_of_type_ArrayOfAbkl = new abkl[this.c];
-    paramPickerViewAdapter = (WheelView)findViewById(2131365845);
-    localObject1 = (WheelView)findViewById(2131365846);
-    localObject2 = (WheelView)findViewById(2131365847);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370162));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370163));
+    this.jdField_a_of_type_ArrayOfAbrm = new abrm[this.c];
+    paramPickerViewAdapter = (WheelView)findViewById(2131365872);
+    localObject1 = (WheelView)findViewById(2131365873);
+    localObject2 = (WheelView)findViewById(2131365874);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370272));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370273));
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new abkh(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new abri(this));
     }
     a(paramPickerViewAdapter, 0);
     if (this.c < 2) {

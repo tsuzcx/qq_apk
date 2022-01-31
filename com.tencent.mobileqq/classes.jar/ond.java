@@ -1,50 +1,45 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import java.io.File;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoForward;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class ond
-  extends ExecuteBinResponseCallback
+  extends ProtoUtils.StoryProtocolObserver
 {
-  public ond(FFmpeg paramFFmpeg, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback, File paramFile) {}
+  public ond(TroopStoryForwardTask paramTroopStoryForwardTask) {}
   
-  public void a()
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {
-      this.jdField_a_of_type_JavaIoFile.delete();
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.b.size())
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      File localFile = new File((String)this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.b.get(i));
-      if (localFile.exists()) {
-        localFile.delete();
+      paramBundle = new qqstory_group.RspGroupVideoForward();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
+        if ((paramArrayOfByte.error_code.has()) && (paramArrayOfByte.error_code.get() == 0))
+        {
+          ThreadManager.executeOnSubThread(new one(this, paramBundle.story_id.get().toStringUtf8()));
+          return paramArrayOfByte;
+        }
       }
-      i += 1;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.qqstory.troopstory.share", 2, "parse RspGroupVideoForward error", paramArrayOfByte);
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.b = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a(paramBoolean);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.b(paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.c(paramString);
+    this.a.a.sendEmptyMessage(5);
+    return null;
   }
 }
 

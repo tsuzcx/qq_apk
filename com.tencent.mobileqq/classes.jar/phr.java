@@ -1,27 +1,16 @@
-import com.tencent.component.network.downloader.UrlKeyGenerator;
+import android.graphics.drawable.Drawable;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import com.tencent.component.media.image.UICallbackTask;
 
 public class phr
-  extends UrlKeyGenerator
+  implements Runnable
 {
-  public String b(String paramString)
+  public phr(UICallbackTask paramUICallbackTask, ImageKey paramImageKey, Drawable paramDrawable) {}
+  
+  public void run()
   {
-    String str = null;
-    int i;
-    if (UrlKeyGenerator.a(paramString, "http://")) {
-      i = paramString.indexOf("/", "http://".length());
-    }
-    for (;;)
-    {
-      if (i != -1) {
-        str = paramString.substring(i);
-      }
-      return str;
-      if (UrlKeyGenerator.a(paramString, "https://")) {
-        i = paramString.indexOf("/", "https://".length());
-      } else {
-        i = paramString.indexOf("/");
-      }
-    }
+    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener.onImageLoaded(UICallbackTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
   }
 }
 

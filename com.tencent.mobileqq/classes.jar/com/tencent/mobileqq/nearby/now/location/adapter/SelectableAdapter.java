@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.location.adapter;
 
-import aege;
+import aetk;
 import android.content.Context;
 import android.view.View;
 import com.tencent.mobileqq.nearby.now.widget.CommonAdapter;
@@ -26,7 +26,7 @@ public abstract class SelectableAdapter
   
   public void a(CommonViewHolder.ItemClickListener paramItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonViewHolder$ItemClickListener = new aege(this, paramItemClickListener);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonViewHolder$ItemClickListener = new aetk(this, paramItemClickListener);
   }
   
   public void a(CommonViewHolder paramCommonViewHolder, Object paramObject) {}

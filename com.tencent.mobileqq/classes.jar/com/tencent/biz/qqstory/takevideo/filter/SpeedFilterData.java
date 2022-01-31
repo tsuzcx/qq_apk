@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.takevideo.filter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
-import ojd;
+import okn;
 
 public class SpeedFilterData
   extends FilterData
@@ -13,13 +13,13 @@ public class SpeedFilterData
   @NonNull
   public FilterData.FilterPageItem a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return new ojd(this, paramContext, paramViewGroup);
+    return new okn(this, paramContext, paramViewGroup);
   }
   
   @NonNull
   public Class a()
   {
-    return ojd.class;
+    return okn.class;
   }
   
   public boolean a()

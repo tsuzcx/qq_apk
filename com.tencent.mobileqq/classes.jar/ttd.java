@@ -1,30 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ttd
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ttd(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public ttd(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c = false;
-    if (this.a.a != null)
+    int i = 1;
+    if (paramBoolean)
     {
-      this.a.a.a(4);
-      this.a.d();
-      this.a.c();
+      this.a.app.d(1);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label68;
+      }
     }
-    if (TroopAssistantManager.a().c()) {
-      TroopAssistantManager.a().f(this.a.app);
+    for (;;)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
+      return;
+      this.a.app.d(0);
+      break;
+      label68:
+      i = 0;
     }
-    TroopAssistantActivity.b(this.a);
   }
 }
 

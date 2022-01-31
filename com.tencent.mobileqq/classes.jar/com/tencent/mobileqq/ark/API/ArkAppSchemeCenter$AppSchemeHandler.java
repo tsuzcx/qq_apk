@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.API;
 
-import aajp;
+import aaqq;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -174,7 +174,7 @@ public class ArkAppSchemeCenter$AppSchemeHandler
       a(paramString1, paramString2, str);
       return true;
     }
-    ((ArkAppCenter)a().getManager(120)).a(paramString1, this, new aajp(this, paramString2));
+    ((ArkAppCenter)a().getManager(120)).a(paramString1, this, new aaqq(this, paramString2));
     return true;
   }
 }

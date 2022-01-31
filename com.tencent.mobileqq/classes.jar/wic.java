@@ -1,46 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class wic
-  implements View.OnClickListener
+  extends ReadInJoyObserver
 {
-  public wic(TroopActivity paramTroopActivity) {}
+  public wic(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onClick(View paramView)
+  public void e(boolean paramBoolean, List paramList)
   {
-    boolean bool = false;
-    switch (paramView.getId())
+    if (paramBoolean)
     {
-    default: 
-      this.a.b();
-      return;
-    case 2131363227: 
-    case 2131363970: 
-    case 2131363971: 
-      if (this.a.a != null)
+      if ((paramList != null) && (!paramList.isEmpty()))
       {
-        paramView = new Intent();
-        if (!this.a.a.isEmpty()) {
-          bool = true;
-        }
-        paramView.putExtra("isDataChanged", bool);
-        this.a.setResult(-1, paramView);
+        this.a.c.clear();
+        this.a.c.addAll(paramList);
       }
-      this.a.onBackPressed();
-      return;
+      ClassificationSearchActivity.b(this.a, true);
     }
-    ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
-    if (this.a.a())
-    {
-      this.a.b();
-      return;
-    }
-    ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Clk_grplist_plus", 0, 0, "", "", "", "");
-    this.a.a();
   }
 }
 

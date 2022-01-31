@@ -1,34 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloBoxData;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel.IRequestHandler;
+import java.util.Comparator;
 
 public class yrb
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Comparator
 {
-  public yrb(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
+  public yrb(CmGameCmdChannel paramCmGameCmdChannel) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(CmGameCmdChannel.IRequestHandler paramIRequestHandler1, CmGameCmdChannel.IRequestHandler paramIRequestHandler2)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
-        break label42;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ApolloBoxData.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-    }
-    label42:
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ApolloBoxData.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ApolloBoxData.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+    return paramIRequestHandler1.a() - paramIRequestHandler2.a();
   }
 }
 

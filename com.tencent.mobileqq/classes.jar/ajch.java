@@ -1,25 +1,33 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
+import java.util.List;
 
-public class ajch
-  implements TroopRobotManager.Callback
+class ajch
+  extends TroopAioKeywordTipManager.Callback
 {
-  public ajch(TroopRobotManager paramTroopRobotManager, String paramString) {}
+  ajch(ajcg paramajcg, List paramList, TroopAioKeywordTipManager paramTroopAioKeywordTipManager) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    if (paramInt == 0) {
+    if (!this.jdField_a_of_type_Ajcg.a.a) {}
+    do
+    {
       return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager.a.getApp(), 1, "操作失败" + "", 0).a();
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (TroopAioKeywordTipBar.a(this.jdField_a_of_type_Ajcg.a)));
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.a(this.jdField_a_of_type_JavaUtilList, null, 2, new ajci(this));
+    return;
+    TroopAioKeywordTipBar.a(this.jdField_a_of_type_Ajcg.a, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajch
  * JD-Core Version:    0.7.0.1
  */

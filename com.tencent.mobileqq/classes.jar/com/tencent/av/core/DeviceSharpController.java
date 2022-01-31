@@ -6,14 +6,14 @@ import android.os.Bundle;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import jhy;
+import jhj;
 
 public class DeviceSharpController
 {
   public static String a;
   public VideoAppInterface a;
   public AbstractNetChannel a;
-  jhy a;
+  jhj a;
   
   static
   {
@@ -24,15 +24,15 @@ public class DeviceSharpController
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
     this.jdField_a_of_type_ComTencentAvCoreAbstractNetChannel = null;
-    this.jdField_a_of_type_Jhy = null;
+    this.jdField_a_of_type_Jhj = null;
     this.jdField_a_of_type_ComTencentAvCoreAbstractNetChannel = paramAbstractNetChannel;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Jhy = new jhy(this);
+    this.jdField_a_of_type_Jhj = new jhj(this);
     paramAbstractNetChannel = new IntentFilter();
     paramAbstractNetChannel.addAction("SmartDevice_ReceiveSharpMsg");
     paramAbstractNetChannel.addAction("SmartDevice_ReceiveSharpAckMsg");
     paramAbstractNetChannel.addAction("SmartDevice_DeviceUnBindRst");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Jhy, paramAbstractNetChannel, "com.tencent.smartdevice.permission.broadcast", null);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Jhj, paramAbstractNetChannel, "com.tencent.smartdevice.permission.broadcast", null);
   }
   
   void a(byte[] paramArrayOfByte, long paramLong)

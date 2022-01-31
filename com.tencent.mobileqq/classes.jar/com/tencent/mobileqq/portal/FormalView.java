@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.portal;
 
-import afyd;
-import afye;
-import afyf;
-import afyg;
-import afyh;
+import agmf;
+import agmg;
+import agmh;
+import agmi;
+import agmj;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -112,68 +112,68 @@ public class FormalView
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    LayoutInflater.from(paramContext).inflate(2130970329, this, true);
+    LayoutInflater.from(paramContext).inflate(2130970358, this, true);
     paramContext = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getAssets(), "fonts/HuNan-CC.ttf");
-    this.jdField_d_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370099));
+    this.jdField_d_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370210));
     this.jdField_d_of_type_ComTencentMobileqqPortalStrokeTextView.setTypeface(paramContext);
     this.jdField_d_of_type_ComTencentMobileqqPortalStrokeTextView.setInnerTextColor(-13490398);
     this.jdField_d_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeColor(-1);
     this.jdField_d_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeSize(AIOUtils.a(4.0F, getResources()));
     this.jdField_d_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeEnable(true);
     this.jdField_d_of_type_ComTencentMobileqqPortalStrokeTextView.setShadow(AIOUtils.a(2.0F, getResources()), 0.0F, AIOUtils.a(1.0F, getResources()), 1073741824);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370097));
-    this.jdField_e_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370101));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370208));
+    this.jdField_e_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370212));
     this.jdField_e_of_type_ComTencentMobileqqPortalStrokeTextView.setTypeface(paramContext);
     this.jdField_e_of_type_ComTencentMobileqqPortalStrokeTextView.setInnerTextColor(-13490398);
     this.jdField_e_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeColor(-1);
     this.jdField_e_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeSize(AIOUtils.a(4.0F, getResources()));
     this.jdField_e_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeEnable(true);
     this.jdField_e_of_type_ComTencentMobileqqPortalStrokeTextView.setShadowLayer(AIOUtils.a(2.0F, getResources()), 0.0F, AIOUtils.a(1.0F, getResources()), 1711276032);
-    this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370100));
+    this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370211));
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setInnerTextColor(-6413557);
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeEnable(false);
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setShadow(AIOUtils.a(4.0F, getResources()), 0.0F, 0.0F, -135991);
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
-    this.jdField_f_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370102));
+    this.jdField_f_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370213));
     this.jdField_f_of_type_ComTencentMobileqqPortalStrokeTextView.setInnerTextColor(-6413557);
     this.jdField_f_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeEnable(false);
     this.jdField_f_of_type_ComTencentMobileqqPortalStrokeTextView.setShadow(AIOUtils.a(4.0F, getResources()), 0.0F, 0.0F, -135991);
     this.jdField_f_of_type_ComTencentMobileqqPortalStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
     this.jdField_f_of_type_ComTencentMobileqqPortalStrokeTextView.setText("连刷更容易得红包！");
-    this.jdField_b_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370095));
+    this.jdField_b_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370206));
     this.jdField_b_of_type_ComTencentMobileqqPortalStrokeTextView.setInnerTextColor(Color.parseColor("#9E230B"));
     this.jdField_b_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeColor(Color.parseColor("#FBEACD"));
     this.jdField_b_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeSize(AIOUtils.a(2.0F, getResources()));
     this.jdField_b_of_type_ComTencentMobileqqPortalStrokeTextView.setTextSize(1, 24.0F);
     this.jdField_b_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeEnable(true);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370103));
-    this.jdField_c_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370096));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370214));
+    this.jdField_c_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131370207));
     this.jdField_c_of_type_ComTencentMobileqqPortalStrokeTextView.setInnerTextColor(Color.parseColor("#9E230B"));
     this.jdField_c_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeColor(Color.parseColor("#FBEACD"));
     this.jdField_c_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeSize(AIOUtils.a(2.0F, getResources()));
     this.jdField_c_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeEnable(true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370098));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370085));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370084);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370083));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370086));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370209));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370196));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370195);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370194));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370197));
     paramContext = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getAssets(), "fonts/DS-DIGIB.TTF");
     this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(paramContext);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     this.jdField_c_of_type_Int = AIOUtils.a(70.0F, getResources());
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370081));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370082));
-    this.jdField_d_of_type_Int = getResources().getDimensionPixelSize(2131559587);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370090);
-    this.jdField_a_of_type_ComTencentMobileqqPortalProgressViewYellow = ((ProgressViewYellow)findViewById(2131363544));
-    this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView = ((ImageAlphaSwitchView)findViewById(2131370094));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370192));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370193));
+    this.jdField_d_of_type_Int = getResources().getDimensionPixelSize(2131559601);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370201);
+    this.jdField_a_of_type_ComTencentMobileqqPortalProgressViewYellow = ((ProgressViewYellow)findViewById(2131363562));
+    this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView = ((ImageAlphaSwitchView)findViewById(2131370205));
     this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.setGravity(17);
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370093));
-    this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView = ((ImageSwitchAnimView)findViewById(2131370092));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131370091);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131370087);
-    this.g = ((ImageView)findViewById(2131370088));
-    this.h = ((ImageView)findViewById(2131370089));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370204));
+    this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView = ((ImageSwitchAnimView)findViewById(2131370203));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131370202);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131370198);
+    this.g = ((ImageView)findViewById(2131370199));
+    this.h = ((ImageView)findViewById(2131370200));
     int i = AIOUtils.a(342.0F, getResources());
     AIOUtils.a(164.0F, getResources());
     this.jdField_b_of_type_Int = AIOUtils.a(40.0F, getResources());
@@ -437,7 +437,7 @@ public class FormalView
       this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoCaidanRainView.a(getResources().getDisplayMetrics().widthPixels, AIOUtils.a(40.0F, getResources()), 0.5F, 150.0F, AIOUtils.a(250.0F, getResources()), AIOUtils.a(3.0F, getResources()), AIOUtils.a(150.0F, getResources()), getResources().getDisplayMetrics().heightPixels);
     }
     Object localObject1 = paramViewGroup;
-    if (((ViewGroup)localObject1).getId() == 2131364912) {
+    if (((ViewGroup)localObject1).getId() == 2131364934) {
       localObject2 = localObject1;
     }
     label130:
@@ -521,7 +521,7 @@ public class FormalView
     if ((paramBoolean) && (QLog.isColorLevel())) {
       QLog.d("FormalView", 2, "readyGo, show=" + paramBoolean);
     }
-    View localView = findViewById(2131370101);
+    View localView = findViewById(2131370212);
     if (paramBoolean)
     {
       if (this.jdField_b_of_type_AndroidViewAnimationAnimationSet == null)
@@ -534,7 +534,7 @@ public class FormalView
         localAnimationSet.addAnimation(localScaleAnimation);
         localAnimationSet.setDuration(400L);
         localAnimationSet.setFillAfter(true);
-        localAnimationSet.setAnimationListener(new afyd(this, localView));
+        localAnimationSet.setAnimationListener(new agmf(this, localView));
         this.jdField_b_of_type_AndroidViewAnimationAnimationSet = localAnimationSet;
       }
       localView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimationSet);
@@ -557,8 +557,8 @@ public class FormalView
   public void d()
   {
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new afye(this));
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addListener(new afyf(this));
+    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new agmg(this));
+    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addListener(new agmh(this));
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.start();
@@ -659,7 +659,7 @@ public class FormalView
     if ((paramList == null) || (paramList.size() == 0)) {
       return;
     }
-    Collections.sort(paramList, new afyh(null));
+    Collections.sort(paramList, new agmj(null));
     int i = 0;
     while (i < paramList.size())
     {
@@ -674,7 +674,7 @@ public class FormalView
       }
       i += 1;
     }
-    ThreadManager.postImmediately(new afyg(this, paramList), null, true);
+    ThreadManager.postImmediately(new agmi(this, paramList), null, true);
   }
   
   public void setHBSpeed(int paramInt)
@@ -721,7 +721,7 @@ public class FormalView
       return;
     }
     if (this.jdField_a_of_type_Int == 1) {
-      paramBitmap = getResources().getDrawable(2130842545);
+      paramBitmap = getResources().getDrawable(2130842637);
     }
     for (;;)
     {
@@ -741,7 +741,7 @@ public class FormalView
         if ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3)) {
           break label213;
         }
-        paramBitmap = getResources().getDrawable(2130842493);
+        paramBitmap = getResources().getDrawable(2130842585);
         break;
         if ((paramBitmap instanceof BitmapDrawable)) {
           localBitmap = ((BitmapDrawable)paramBitmap).getBitmap();
@@ -789,7 +789,7 @@ public class FormalView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.portal.FormalView
  * JD-Core Version:    0.7.0.1
  */

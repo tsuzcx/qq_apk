@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.QavPanel.SlideAcceptListener;
-import com.tencent.av.ui.QavPanelSlideTouchListener;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
 
 public class jzw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public jzw(QavPanel paramQavPanel) {}
+  public jzw(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.a.a(true);
-    }
+    QavVideoRecordUICtrl.a(this.a, 1);
   }
 }
 

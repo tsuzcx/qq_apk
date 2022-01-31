@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
-import ajpc;
-import ajpd;
-import ajpe;
-import ajpf;
-import ajpg;
+import akdj;
+import akdk;
+import akdl;
+import akdm;
+import akdn;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.appcircle.st.AppCircleReportManager;
 import com.tencent.open.appcircle.st.STUtils;
@@ -43,7 +43,7 @@ public class NewUpgradeDialog$YYBDownloadListener
     {
       return;
     }
-    ThreadManager.getUIHandler().post(new ajpf(this, paramDownloadInfo));
+    ThreadManager.getUIHandler().post(new akdm(this, paramDownloadInfo));
   }
   
   public void a(String paramString1, String paramString2)
@@ -75,7 +75,7 @@ public class NewUpgradeDialog$YYBDownloadListener
         if (localDownloadInfo.b.equals("1101070898"))
         {
           LogUtility.c("NewUpgradeDialog", "onDownloadUpdate STATE = " + localDownloadInfo.a());
-          ThreadManager.getUIHandler().post(new ajpe(this, localDownloadInfo));
+          ThreadManager.getUIHandler().post(new akdl(this, localDownloadInfo));
         }
       }
     }
@@ -88,7 +88,7 @@ public class NewUpgradeDialog$YYBDownloadListener
       LogUtility.c("NewUpgradeDialog", "onDownloadPause");
       LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 3, 600));
       AppCircleReportManager.a().a(19, STUtils.a(10010, NewUpgradeDialog.a(), 3, 600));
-      ThreadManager.getUIHandler().post(new ajpc(this, paramDownloadInfo));
+      ThreadManager.getUIHandler().post(new akdj(this, paramDownloadInfo));
     }
   }
   
@@ -97,7 +97,7 @@ public class NewUpgradeDialog$YYBDownloadListener
     if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
     {
       NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog, new YYBDownloadListener(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog));
-      ThreadManager.getUIHandler().post(new ajpg(this));
+      ThreadManager.getUIHandler().post(new akdn(this));
     }
   }
   
@@ -117,7 +117,7 @@ public class NewUpgradeDialog$YYBDownloadListener
     this.jdField_a_of_type_Long = l;
     LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 3, 700));
     AppCircleReportManager.a().a(20, STUtils.a(10010, NewUpgradeDialog.a(), 3, 700));
-    ThreadManager.getUIHandler().post(new ajpd(this, paramDownloadInfo));
+    ThreadManager.getUIHandler().post(new akdk(this, paramDownloadInfo));
     if (NewUpgradeDialog.b(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog))
     {
       NewUpgradeDialog.b(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog);

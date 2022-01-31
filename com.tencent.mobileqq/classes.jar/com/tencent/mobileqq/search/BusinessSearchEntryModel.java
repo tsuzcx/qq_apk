@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search;
 
-import ahci;
-import ahcj;
+import ahqk;
+import ahql;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -65,15 +65,15 @@ public class BusinessSearchEntryModel
       if (paramBundle == null) {
         return new View(paramContext);
       }
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130971650, null);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375204));
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130971698, null);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375390));
       if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838576);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838580);
       }
       for (;;)
       {
         return this.jdField_a_of_type_AndroidViewView;
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838575);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838579);
       }
     }
   }
@@ -81,24 +81,24 @@ public class BusinessSearchEntryModel
   public List a()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(2131375198));
-    localArrayList.add(Integer.valueOf(2131375199));
-    localArrayList.add(Integer.valueOf(2131375200));
-    localArrayList.add(Integer.valueOf(2131375201));
-    localArrayList.add(Integer.valueOf(2131375202));
-    localArrayList.add(Integer.valueOf(2131375203));
-    localArrayList.add(Integer.valueOf(2131375205));
-    localArrayList.add(Integer.valueOf(2131375206));
-    localArrayList.add(Integer.valueOf(2131375207));
-    localArrayList.add(Integer.valueOf(2131375208));
-    localArrayList.add(Integer.valueOf(2131375209));
-    localArrayList.add(Integer.valueOf(2131375210));
+    localArrayList.add(Integer.valueOf(2131375384));
+    localArrayList.add(Integer.valueOf(2131375385));
+    localArrayList.add(Integer.valueOf(2131375386));
+    localArrayList.add(Integer.valueOf(2131375387));
+    localArrayList.add(Integer.valueOf(2131375388));
+    localArrayList.add(Integer.valueOf(2131375389));
+    localArrayList.add(Integer.valueOf(2131375391));
+    localArrayList.add(Integer.valueOf(2131375392));
+    localArrayList.add(Integer.valueOf(2131375393));
+    localArrayList.add(Integer.valueOf(2131375394));
+    localArrayList.add(Integer.valueOf(2131375395));
+    localArrayList.add(Integer.valueOf(2131375396));
     return localArrayList;
   }
   
   public void a()
   {
-    ThreadManager.post(new ahcj(this, new BusinessSearchEntryDataModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 3, this.jdField_a_of_type_Int)), 5, null, true);
+    ThreadManager.post(new ahql(this, new BusinessSearchEntryDataModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 3, this.jdField_a_of_type_Int)), 5, null, true);
   }
   
   public void a(SearchEntryDataModel paramSearchEntryDataModel)
@@ -109,16 +109,16 @@ public class BusinessSearchEntryModel
   public List b()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(2131375198));
-    localArrayList.add(Integer.valueOf(2131375199));
-    localArrayList.add(Integer.valueOf(2131375200));
-    localArrayList.add(Integer.valueOf(2131375201));
-    localArrayList.add(Integer.valueOf(2131375202));
-    localArrayList.add(Integer.valueOf(2131375205));
-    localArrayList.add(Integer.valueOf(2131375206));
-    localArrayList.add(Integer.valueOf(2131375207));
-    localArrayList.add(Integer.valueOf(2131375208));
-    localArrayList.add(Integer.valueOf(2131375209));
+    localArrayList.add(Integer.valueOf(2131375384));
+    localArrayList.add(Integer.valueOf(2131375385));
+    localArrayList.add(Integer.valueOf(2131375386));
+    localArrayList.add(Integer.valueOf(2131375387));
+    localArrayList.add(Integer.valueOf(2131375388));
+    localArrayList.add(Integer.valueOf(2131375391));
+    localArrayList.add(Integer.valueOf(2131375392));
+    localArrayList.add(Integer.valueOf(2131375393));
+    localArrayList.add(Integer.valueOf(2131375394));
+    localArrayList.add(Integer.valueOf(2131375395));
     return localArrayList;
   }
   
@@ -156,15 +156,15 @@ public class BusinessSearchEntryModel
         }
         localSearchEntry = (BusinessSearchEntryDataModel.SearchEntry)localList.get(i);
         localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(((Integer)paramSearchEntryDataModel.get(i)).intValue());
-        localView2 = localView1.findViewById(2131363980);
-        TextView localTextView = (TextView)localView1.findViewById(2131374821);
-        URLImageView localURLImageView = (URLImageView)localView1.findViewById(2131374820);
+        localView2 = localView1.findViewById(2131364004);
+        TextView localTextView = (TextView)localView1.findViewById(2131375007);
+        URLImageView localURLImageView = (URLImageView)localView1.findViewById(2131375006);
         localView1.setVisibility(0);
         localObject2 = new ColorDrawable();
         if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
           break label432;
         }
-        ((ColorDrawable)localObject2).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492955));
+        ((ColorDrawable)localObject2).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492956));
         if (!TextUtils.isEmpty(localSearchEntry.jdField_b_of_type_JavaLangString))
         {
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
@@ -188,25 +188,25 @@ public class BusinessSearchEntryModel
       for (;;)
       {
         SharedPreUtils.a(localSearchEntry.c, localSearchEntry.jdField_b_of_type_Int, (String)localObject1);
-        localView1.setOnClickListener(new ahci(this, localView1, localSearchEntry, localView2, (String)localObject1, localList));
+        localView1.setOnClickListener(new ahqk(this, localView1, localSearchEntry, localView2, (String)localObject1, localList));
         i += 1;
         break label80;
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         break;
         paramSearchEntryDataModel = a();
         break label78;
-        ((ColorDrawable)localObject2).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492954));
+        ((ColorDrawable)localObject2).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492955));
         break label209;
         localView2.setVisibility(8);
       }
       if (localList.size() == 6)
       {
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131375205).setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131375206).setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131375207).setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131375208).setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131375209).setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131375210).setVisibility(8);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131375391).setVisibility(8);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131375392).setVisibility(8);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131375393).setVisibility(8);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131375394).setVisibility(8);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131375395).setVisibility(8);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131375396).setVisibility(8);
         paramSearchEntryDataModel = new StringBuilder("");
         i = 0;
         if (i >= localList.size()) {
@@ -224,8 +224,8 @@ public class BusinessSearchEntryModel
         if (localList.size() != 10) {
           break;
         }
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131375203).setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131375210).setVisibility(8);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131375389).setVisibility(8);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131375396).setVisibility(8);
         break;
         paramSearchEntryDataModel.append(((BusinessSearchEntryDataModel.SearchEntry)localList.get(i)).jdField_a_of_type_JavaLangString).append("::");
       }

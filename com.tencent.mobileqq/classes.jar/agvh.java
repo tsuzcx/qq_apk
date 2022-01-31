@@ -1,29 +1,14 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.qcall.QCallProxy;
 
 public class agvh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public agvh(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agvh(QCallProxy paramQCallProxy) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = CapturePtvTemplateManager.a().a();
-    if ((paramView != null) && (!TextUtils.isEmpty(paramView.advertiseWebUrl)))
-    {
-      Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView.advertiseWebUrl);
-      this.a.getActivity().startActivity(localIntent);
-      CaptureReportUtil.l();
-    }
+    this.a.d();
+    QCallProxy.a(this.a, true);
   }
 }
 

@@ -1,29 +1,21 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.util.LruCache;
+import com.tencent.mobileqq.apollo.game.ApolloGameResManager;
+import com.tencent.mobileqq.apollo.game.ApolloGameResManager.ApolloGameRes;
 
 public class ypj
-  implements Runnable
+  extends LruCache
 {
-  public ypj(ApolloBoxEnterView paramApolloBoxEnterView) {}
-  
-  public void run()
+  public ypj(ApolloGameResManager paramApolloGameResManager, int paramInt)
   {
-    if (ApolloBoxEnterView.a(this.a) == null) {}
-    do
-    {
-      do
-      {
-        return;
-        localObject = (QQAppInterface)ApolloBoxEnterView.a(this.a).get();
-      } while ((ApolloBoxEnterView.a(this.a) == null) || (localObject == null));
-      Object localObject = (ApolloManager)((QQAppInterface)localObject).getManager(152);
-      ApolloBoxEnterView.a(this.a).hadStolen = 1;
-      ((ApolloManager)localObject).a(ApolloBoxEnterView.a(this.a));
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloBoxEnterView", 2, "updateApolloPandora");
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, ApolloGameResManager.ApolloGameRes paramApolloGameRes)
+  {
+    if ((paramApolloGameRes == null) || (paramApolloGameRes.a == null)) {
+      return 0;
+    }
+    return paramApolloGameRes.a.length;
   }
 }
 

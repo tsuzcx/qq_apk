@@ -1,55 +1,59 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.content.ComponentName;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
+import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class tgb
-  implements Runnable
+  extends SecSvcObserver
 {
-  public tgb(QQLSActivity paramQQLSActivity) {}
+  public tgb(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    Object localObject1 = (ActivityManager)this.a.getSystemService("activity");
-    try
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
     {
-      Object localObject2 = ((ActivityManager)localObject1).getRunningTasks(1);
-      localObject1 = AppSetting.b;
-      if ((localObject2 != null) && (((List)localObject2).size() > 0))
-      {
-        localObject2 = ((ActivityManager.RunningTaskInfo)((List)localObject2).get(0)).topActivity.getClassName();
-        boolean bool = QQLSActivity.e(this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "qqlsActivity onpause by :" + (String)localObject2);
-        }
-        if ((((String)localObject2).equals("com.tencent.mobileqq.activity.GesturePWDUnlockActivity")) && (bool))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQLSActivity", 2, "qqlsActivity onpause by locking activity need to front");
-          }
-          if (QQLSActivity.a(this.a).hasMessages(10)) {
-            QQLSActivity.a(this.a).removeMessages(10);
-          }
-          localObject2 = QQLSActivity.a(this.a).obtainMessage(10);
-          if (((String)localObject1).equalsIgnoreCase("Xiaomi-2013022"))
-          {
-            QQLSActivity.a(this.a).sendMessageDelayed((Message)localObject2, 600L);
-            return;
-          }
-          QQLSActivity.a(this.a).sendMessage((Message)localObject2);
-          return;
-        }
-      }
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
     }
-    catch (Exception localException)
+    if (paramInt == 39)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "qqlsActivity MSG_SETTO_FRONT by locking activity not to front e=" + localException);
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
+      DialogUtil.a(this.a, 230, this.a.getString(2131436856), this.a.getString(2131436857), null, this.a.getString(2131436628), new tgc(this), null).show();
+      return;
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = this.a.getString(2131436851);
+    }
+    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
+    {
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
+    }
+    String str;
+    if (paramInt == 36) {
+      str = this.a.getString(2131436853);
+    }
+    for (;;)
+    {
+      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+      return;
+      str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131436852);
       }
     }
   }

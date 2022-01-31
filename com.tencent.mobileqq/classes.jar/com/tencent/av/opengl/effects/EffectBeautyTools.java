@@ -15,7 +15,7 @@ import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
-import jkc;
+import jjn;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -162,7 +162,7 @@ public class EffectBeautyTools
         if (!((File)localObject).exists())
         {
           localObject = new HttpNetReq();
-          ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jkc();
+          ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jjn();
           ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
           ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
           ((HttpNetReq)localObject).c = (b + "skin_color.zip");

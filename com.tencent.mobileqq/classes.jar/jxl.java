@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
 import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class jxl
-  implements View.OnClickListener
+  implements Runnable
 {
+  public String a;
+  
   public jxl(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.j();
-    paramView = this.a.j.getText().toString();
-    if ((paramView != null) && (paramView.equals("自我静音")))
-    {
-      ReportController.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.c, 2, "StartRecvAllVideoRunnable-->FunctionName=" + this.jdField_a_of_type_JavaLangString);
     }
-    ReportController.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.e();
   }
 }
 

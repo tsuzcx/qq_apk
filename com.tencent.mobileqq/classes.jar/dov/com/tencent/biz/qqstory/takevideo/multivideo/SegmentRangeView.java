@@ -13,7 +13,7 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
-import anmd;
+import aoci;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -253,9 +253,9 @@ public class SegmentRangeView
     invalidate();
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, anmd paramanmd)
+  public void a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, aoci paramaoci)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramanmd);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaoci);
     this.jdField_a_of_type_Long = (paramLong2 - paramLong1);
     this.jdField_b_of_type_Long = paramLong1;
     this.jdField_d_of_type_Boolean = paramBoolean;
@@ -277,8 +277,8 @@ public class SegmentRangeView
       this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-15550475);
       this.f = this.jdField_b_of_type_Float;
       this.g = this.f;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130841979);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130841981);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130842016);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130842018);
       return;
       if (paramInt1 % 180 > 0)
       {
@@ -297,9 +297,9 @@ public class SegmentRangeView
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      anmd localanmd = (anmd)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localanmd != null) {
-        localanmd.a(paramList);
+      aoci localaoci = (aoci)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localaoci != null) {
+        localaoci.a(paramList);
       }
     }
   }
@@ -431,7 +431,7 @@ public class SegmentRangeView
     }
     label455:
     label457:
-    for (paramMotionEvent = (anmd)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
+    for (paramMotionEvent = (aoci)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
     {
       if (paramMotionEvent != null)
       {
@@ -459,7 +459,7 @@ public class SegmentRangeView
             this.g = (this.f + getWidth() * 0.1F);
           }
           if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-          for (paramMotionEvent = (anmd)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
+          for (paramMotionEvent = (aoci)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramMotionEvent = null)
           {
             if (paramMotionEvent == null) {
               break label455;

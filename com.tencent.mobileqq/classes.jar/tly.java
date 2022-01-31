@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
+import com.tencent.mobileqq.apollo.drawer.ApolloDrawerStatus;
+import com.tencent.mobileqq.apollo.drawer.ApolloStepInfo;
+import com.tencent.mobileqq.apollo.drawer.StepDrawerStatus;
+import com.tencent.mobileqq.vashealth.SSOHttpUtils;
 
-public class tly
-  extends TimerTask
+class tly
+  implements Runnable
 {
-  public tly(RegisterActivity paramRegisterActivity, long paramLong) {}
+  tly(tlx paramtlx) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "reQuerySms schedule");
+    Object localObject = new ApolloStepInfo(SSOHttpUtils.a());
+    localObject = new StepDrawerStatus(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ApolloStepInfo)localObject);
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext != null) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a((ApolloDrawerStatus)localObject);
     }
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
-    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, this.jdField_a_of_type_Long);
   }
 }
 

@@ -1,22 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class paq
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public paq(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  public paq(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, boolean paramBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "start request: " + this.jdField_a_of_type_Boolean);
+    }
+    WebProcessManager.a(true);
+    SwiftWebViewUtils.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

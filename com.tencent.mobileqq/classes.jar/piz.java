@@ -1,9 +1,4 @@
-public class piz
-{
-  public long a;
-  public long b;
-  public long c;
-}
+public class piz {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

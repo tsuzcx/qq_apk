@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ahxf;
+import aili;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -36,7 +36,7 @@ public class RobotSpriteVideoView
   public RobotSpriteVideoView(Context paramContext, boolean paramBoolean, String paramString1, String paramString2, ImageButton.OnClickListener paramOnClickListener)
   {
     super(paramContext, 1);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite = new ahxf(this, this, getContext(), paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite = new aili(this, this, getContext(), paramBoolean);
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c = true;
     a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite);
     this.jdField_a_of_type_JavaLangString = paramString1;
@@ -49,7 +49,7 @@ public class RobotSpriteVideoView
     this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.b = 0;
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, BitmapFactory.decodeResource(paramContext.getResources(), 2130843874), true);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, BitmapFactory.decodeResource(paramContext.getResources(), 2130843998), true);
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOnClickListener);
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.e = 0.75F;
       a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton);
@@ -161,7 +161,7 @@ public class RobotSpriteVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.RobotSpriteVideoView
  * JD-Core Version:    0.7.0.1
  */

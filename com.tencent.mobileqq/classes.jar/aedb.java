@@ -1,30 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.lyric.widget.LyricViewController;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
 
 public class aedb
   implements Runnable
 {
-  public aedb(NearbyGuideActivity paramNearbyGuideActivity, ArrayList paramArrayList, NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle) {}
+  public aedb(LyricViewController paramLyricViewController, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        PicInfo localPicInfo = new PicInfo();
-        localPicInfo.a = localInteger.intValue();
-        localArrayList.add(localPicInfo);
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.a.a(this.jdField_a_of_type_Int, this.b);
   }
 }
 

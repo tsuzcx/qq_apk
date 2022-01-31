@@ -1,21 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.FullScreenTopContainerHolder;
+import android.util.Pair;
+import java.net.URL;
 
 public class kpz
-  implements Animation.AnimationListener
 {
-  public kpz(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public Pair a;
+  public URL a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static kpz a(URL paramURL, Pair paramPair)
   {
-    AccountDetailBaseAdapter.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
+    kpz localkpz = new kpz();
+    localkpz.jdField_a_of_type_JavaNetURL = paramURL;
+    localkpz.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localkpz;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

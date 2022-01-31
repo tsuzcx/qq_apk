@@ -1,14 +1,13 @@
-import cooperation.qzone.util.QZoneDistributedAppCtrl;
-import cooperation.qzone.util.QZoneDistributedAppCtrl.Control;
+import cooperation.dingdong.DingdongPluginBridgeActivity;
 
 public class amks
   implements Runnable
 {
-  public amks(QZoneDistributedAppCtrl paramQZoneDistributedAppCtrl, QZoneDistributedAppCtrl.Control paramControl) {}
+  public amks(DingdongPluginBridgeActivity paramDingdongPluginBridgeActivity) {}
   
   public void run()
   {
-    QZoneDistributedAppCtrl.a(this.jdField_a_of_type_CooperationQzoneUtilQZoneDistributedAppCtrl, this.jdField_a_of_type_CooperationQzoneUtilQZoneDistributedAppCtrl$Control);
+    this.a.a();
   }
 }
 

@@ -1,14 +1,46 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.os.SystemClock;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class acga
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class acga
+  implements URLDrawable.URLDrawableListener
 {
-  public acga(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  acga(acfz paramacfz, long paramLong) {}
   
-  public void onGlobalLayout()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.a.e();
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadCanceled");
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable onLoadProgressed");
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d(FastImagePreviewLayout.jdField_a_of_type_JavaLangString, 2, "queryFastImage Load URLDrawable Successed, is to call showFastImage,queryTime = " + l);
+    }
+    if (l > 2000L) {
+      return;
+    }
+    this.jdField_a_of_type_Acfz.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.jdField_a_of_type_Acfz.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(32));
   }
 }
 

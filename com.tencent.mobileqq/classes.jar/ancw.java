@@ -1,22 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
 
 public class ancw
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public ancw(EditVideoDoodle paramEditVideoDoodle) {}
+  public ancw(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.a.a.a(paramMotionEvent);
+    if (paramIntent.getAction().equals("com.tencent.qq.syncQunMsg"))
+    {
+      int i = paramIntent.getIntExtra("com.tencent.qq.unreadcount", 0);
+      QzoneQunFeedJsPlugin.a(this.a, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancw
  * JD-Core Version:    0.7.0.1
  */

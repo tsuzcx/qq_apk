@@ -6,7 +6,7 @@ import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.PhoneCodeUtils;
 import com.tencent.qphone.base.util.QLog;
-import wfc;
+import wih;
 
 public class ContactSearchFacade
 {
@@ -20,7 +20,7 @@ public class ContactSearchFacade
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private ContactSearchFacade.ISearchListener jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wfc(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wih(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private int jdField_b_of_type_Int;
   public String b;

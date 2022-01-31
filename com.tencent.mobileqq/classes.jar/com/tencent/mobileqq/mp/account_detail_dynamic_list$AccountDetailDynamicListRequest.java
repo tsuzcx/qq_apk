@@ -18,7 +18,7 @@ public final class account_detail_dynamic_list$AccountDetailDynamicListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.mp.account_detail_dynamic_list.AccountDetailDynamicListRequest
  * JD-Core Version:    0.7.0.1
  */

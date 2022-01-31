@@ -1,17 +1,18 @@
-import com.tencent.av.report.VideoConnRateReport;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.LBSInfo;
 
-public class jmw
-  implements Runnable
+public final class jmw
+  implements Parcelable.Creator
 {
-  public jmw(VideoConnRateReport paramVideoConnRateReport) {}
-  
-  public void run()
+  public LBSInfo a(Parcel paramParcel)
   {
-    synchronized (this.a.a)
-    {
-      VideoConnRateReport.a(this.a);
-      return;
-    }
+    return new LBSInfo(paramParcel);
+  }
+  
+  public LBSInfo[] a(int paramInt)
+  {
+    return new LBSInfo[paramInt];
   }
 }
 

@@ -1,19 +1,20 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
 
-public class ajux
-  implements Runnable
+class ajux
+  implements Action.OnActionEndListener
 {
-  public ajux(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  ajux(ajuw paramajuw) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.setVisibility(8);
+    this.a.a.a.post(new ajuy(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajux
  * JD-Core Version:    0.7.0.1
  */

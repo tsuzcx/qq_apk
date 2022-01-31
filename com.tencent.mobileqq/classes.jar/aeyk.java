@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.GetMomentListCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
 
-public final class aeyk
-  implements CsTask.OnCsError
+public class aeyk
+  implements IVideoView.OnInfoListener
 {
-  public aeyk(NearbyMomentProtocol.GetMomentListCallback paramGetMomentListCallback, int paramInt) {}
+  public aeyk(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public boolean a(IVideoView paramIVideoView, int paramInt, Object paramObject)
   {
-    QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$GetMomentListCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$GetMomentListCallback.a(false, null, true, this.jdField_a_of_type_Int);
+    if (paramInt == 21) {
+      QualityReporter.f();
     }
+    return false;
   }
 }
 

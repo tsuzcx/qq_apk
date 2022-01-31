@@ -1,26 +1,26 @@
-import com.tencent.component.media.image.ImageDefaultConfig;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.common.galleryactivity.GalleryPageView;
 
 public class pfg
-  implements PoolParams
+  implements Animation.AnimationListener
 {
-  public pfg(ImageManager paramImageManager) {}
+  public pfg(GalleryPageView paramGalleryPageView) {}
   
-  public PoolParams.BucketParams getBucketParams(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return ImageDefaultConfig.getArtBitmapBucketParams(ImageManager.a(this.a), paramInt);
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(4);
   }
   
-  public int getBucketPoolSize()
-  {
-    return ImageDefaultConfig.getArtBitmapPoolSize(ImageManager.a(this.a));
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pfg
  * JD-Core Version:    0.7.0.1
  */

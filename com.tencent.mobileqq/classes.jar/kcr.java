@@ -1,21 +1,35 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.av.widget.RotateLayout;
+import android.content.res.Resources;
+import com.tencent.av.AVLog;
+import com.tencent.av.ui.VoiceChangeData;
+import com.tencent.av.ui.VoiceChangeData.GetDrawableCallack;
+import com.tencent.av.ui.VoiceChangeData.VoiceInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class kcr
-  implements Animation.AnimationListener
+  implements URLDrawable.URLDrawableListener
 {
-  private kcr(VideoLayerUI paramVideoLayerUI) {}
+  public kcr(VoiceChangeData paramVoiceChangeData, VoiceChangeData.GetDrawableCallack paramGetDrawableCallack, URLDrawable paramURLDrawable, Resources paramResources, VoiceChangeData.VoiceInfo paramVoiceInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    VideoLayerUI.a(this.a).setVisibility(4);
+    AVLog.e(VoiceChangeData.b, "getDrawable|urldrawable load failed. url = " + this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$VoiceInfo.b);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    AVLog.e(VoiceChangeData.b, "getDrawable|urldrawable load failed. url = " + this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$VoiceInfo.b);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    AVLog.a(VoiceChangeData.b, "getDrawable|urldrawable load successed.");
+    if (this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$GetDrawableCallack != null) {
+      this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$GetDrawableCallack.a(this.jdField_a_of_type_ComTencentAvUiVoiceChangeData.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_AndroidContentResResources));
+    }
+  }
 }
 
 

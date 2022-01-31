@@ -1,18 +1,31 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragment;
-import com.tencent.mobileqq.widget.CircleProgress;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.vipav.VipFunCallObserver;
 
 public class aguh
-  implements Runnable
+  extends VipFunCallObserver
 {
-  public aguh(CaptureSoDownloadFragment paramCaptureSoDownloadFragment, String paramString) {}
+  public aguh(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    CaptureSoDownloadFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragment).setProgress(CaptureSoDownloadFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragment));
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragment", 2, "" + this.jdField_a_of_type_JavaLangString + " setProgress=" + CaptureSoDownloadFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragment));
+    switch (paramInt)
+    {
     }
+    do
+    {
+      do
+      {
+        return;
+        paramObject = (Bundle)paramObject;
+      } while ((paramObject == null) || (TextUtils.isEmpty(QCallDetailActivity.a(this.a))) || (!QCallDetailActivity.a(this.a).equals(paramObject.getString("uin"))));
+      if (this.a.app != null) {
+        this.a.app.removeObserver(this);
+      }
+    } while (!paramBoolean);
+    this.a.runOnUiThread(new agui(this));
   }
 }
 

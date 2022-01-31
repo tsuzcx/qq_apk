@@ -40,8 +40,8 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
-import ytc;
-import ytd;
+import ywi;
+import ywj;
 
 public class ApolloGameShare
   implements DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, ActionSheet.OnButtonClickListener
@@ -148,7 +148,7 @@ public class ApolloGameShare
   
   private void a(int paramInt)
   {
-    ThreadManager.post(new ytd(this, paramInt), 5, null, true);
+    ThreadManager.post(new ywj(this, paramInt), 5, null, true);
   }
   
   private void b()
@@ -323,7 +323,7 @@ public class ApolloGameShare
         if (QLog.isColorLevel()) {
           QLog.d("ApolloGameShare", 2, new Object[] { "share pic:", paramString });
         }
-        this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheetAdapter.a(localActivity, localActionSheetAdapter, new ytc(this, paramString), this, this, false);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheetAdapter.a(localActivity, localActionSheetAdapter, new ywi(this, paramString), this, this, false);
       }
       if ((this.jdField_a_of_type_ComTencentWidgetActionSheet == null) || (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
         break;

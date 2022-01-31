@@ -1,34 +1,24 @@
 import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import cooperation.smartdevice.SmartDevicePluginLoader;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
-class uyo
-  implements Runnable
+public class uyo
+  implements FileManagerUtil.TipsClickedInterface
 {
-  uyo(uyn paramuyn) {}
+  public uyo(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    Object localObject = (EmoticonManager)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getManager(13);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a != null) {
-      ((EmoticonManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a != null) {
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getAccount(), 12, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId), false, false);
-    }
-    QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a == null) {}
-    for (localObject = "";; localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId)
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007188", 0, 0, (String)localObject, "", "", "");
-      return;
-    }
+    paramView = new Intent();
+    paramView.putExtra("device_info", ((SmartDeviceProxyMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+    SmartDevicePluginLoader.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceUnBindActivity", -1, null, SmartDevicePluginProxyActivity.class);
   }
 }
 

@@ -1,39 +1,58 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class abuw
-  implements Runnable
+public class abuw
+  extends DefaultHandler
 {
-  abuw(abue paramabue, String paramString, Bundle paramBundle, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
+  MessageForTroopFee a;
+  public String a;
   
-  public void run()
+  public abuw()
   {
-    try
-    {
-      Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString).getJSONArray("gameList");
-      ArrayList localArrayList = new ArrayList();
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-      {
-        int i = 0;
-        while (i < ((JSONArray)localObject).length())
-        {
-          localArrayList.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
-          i += 1;
-        }
-        localObject = new abux(this);
-        ApolloGameManager localApolloGameManager = (ApolloGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(210);
-        localApolloGameManager.a = new WeakReference(localObject);
-        localApolloGameManager.a("android.web", "apollo_aio_game.del_games_from_user_gamepanel", localArrayList);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee = new MessageForTroopFee();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public MessageForTroopFee a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_JavaLangString.equals("title")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.title = paramArrayOfChar;
+    }
+    while (!this.jdField_a_of_type_JavaLangString.equals("summary")) {
       return;
     }
-    catch (Exception localException) {}
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.summary = paramArrayOfChar;
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    if (paramString3.equals("msg"))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.actionUrl = paramAttributes.getValue("url");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.brief = paramAttributes.getValue("brief");
+    }
+    do
+    {
+      return;
+      if (paramString3.equals("title"))
+      {
+        this.jdField_a_of_type_JavaLangString = "title";
+        return;
+      }
+      if (paramString3.equals("summary"))
+      {
+        this.jdField_a_of_type_JavaLangString = "summary";
+        return;
+      }
+    } while (!paramString3.equals("source"));
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFee.source = paramAttributes.getValue("name");
   }
 }
 

@@ -1,17 +1,27 @@
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.MaskView;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
-public class agck
-  implements ValueAnimation.AnimationUpdateListener
+class agck
+  implements Runnable
 {
-  public agck(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  agck(agch paramagch) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
+    ScanOcrActivity.a(this.a.a).setVisibility(0);
+    ScanOcrActivity.a(this.a.a).setText(ScanOcrActivity.a(this.a.a));
+    if (this.a.a.jdField_a_of_type_Int != 1)
+    {
+      if (!ScanOcrActivity.a(this.a.a).a())
+      {
+        ScanOcrActivity.a(this.a.a).setVisibility(0);
+        ScanOcrActivity.a(this.a.a).postDelayed(new agcl(this), 500L);
+      }
+      return;
+    }
+    this.a.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setVisibility(0);
   }
 }
 

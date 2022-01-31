@@ -1,23 +1,36 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
+import android.content.Context;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import com.tencent.mobileqq.ar.arengine.ARFacePreviewResample;
+import com.tencent.mobileqq.ar.arengine.ARLocalControl;
+import com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog;
+import com.tencent.qphone.base.util.QLog;
 
-class aahf
-  implements ArkAppEventObserverManager.PositionCallback
+public class aahf
+  implements Runnable
 {
-  aahf(aagv paramaagv, long paramLong) {}
+  public aahf(ARLocalControl paramARLocalControl, int paramInt1, int paramInt2, Context paramContext, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo, long paramLong) {}
   
-  public void a(long paramLong)
+  public void run()
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aagv.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if ((ARLocalControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl) & 0x4) != 0L)
+    {
+      ??? = new ARFacePreviewResample();
+      ((ARFacePreviewResample)???).a(this.jdField_a_of_type_Int, this.b, 17);
+      int i = ((ARFacePreviewResample)???).a();
+      int j = ((ARFacePreviewResample)???).b();
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a = new ARLocalFaceRecog();
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a.a((ARFacePreviewResample)???);
+      if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a.a(this.jdField_a_of_type_AndroidContentContext, i, j, this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo, this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl)) {
+        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a = null;
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    ArkAppDeviceModule.a(this.jdField_a_of_type_Aagv.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    synchronized (ARLocalControl.a())
+    {
+      ARLocalControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl, true);
+      ARLocalControl.a().notifyAll();
+      QLog.i("AREngine_ARLocalControl", 1, String.format("initFaceRecogAsync end. time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
+      return;
+    }
   }
 }
 

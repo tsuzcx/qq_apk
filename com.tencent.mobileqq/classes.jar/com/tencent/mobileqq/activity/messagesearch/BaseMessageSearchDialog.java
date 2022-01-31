@@ -47,7 +47,7 @@ public class BaseMessageSearchDialog
     requestWindowFeature(1);
     getWindow().setSoftInputMode(36);
     getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2130969070);
+    setContentView(2130969069);
     paramContext = getWindow().getAttributes();
     paramContext.x = 0;
     paramContext.y = 0;

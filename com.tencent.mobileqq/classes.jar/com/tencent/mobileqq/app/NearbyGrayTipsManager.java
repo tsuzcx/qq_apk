@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import mqq.manager.Manager;
-import zem;
+import zhs;
 
 public class NearbyGrayTipsManager
   implements Manager
@@ -3093,7 +3093,7 @@ public class NearbyGrayTipsManager
             localList.remove(paramInt1);
           }
         }
-        Collections.sort(localList, new zem(this));
+        Collections.sort(localList, new zhs(this));
         localObject4 = (QQMessageFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(19);
         paramInt1 = 0;
         Object localObject2 = localList.iterator();

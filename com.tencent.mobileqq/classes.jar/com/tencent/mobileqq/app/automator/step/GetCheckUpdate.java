@@ -21,12 +21,12 @@ import com.tencent.mobileqq.qcall.PstnInfoCheckUpdateItem;
 import com.tencent.mobileqq.service.message.GetBlackListItem;
 import com.tencent.mobileqq.service.profile.GetSimpleInfoCheckUpdateItem;
 import com.tencent.mobileqq.util.QQSettingUtil.UserBitFlagCheckUpdate;
-import znl;
+import zqr;
 
 public class GetCheckUpdate
   extends AsyncStep
 {
-  znl a;
+  zqr a;
   
   protected int a()
   {
@@ -69,19 +69,19 @@ public class GetCheckUpdate
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(128, new PstnInfoCheckUpdateItem(localQQAppInterface, 128));
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(129, new PstnInfoCheckUpdateItem(localQQAppInterface, 129));
     }
-    if (this.jdField_a_of_type_Znl == null)
+    if (this.jdField_a_of_type_Zqr == null)
     {
-      this.jdField_a_of_type_Znl = new znl(this, null);
-      localQQAppInterface.addObserver(this.jdField_a_of_type_Znl);
+      this.jdField_a_of_type_Zqr = new zqr(this, null);
+      localQQAppInterface.addObserver(this.jdField_a_of_type_Zqr);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Znl != null)
+    if (this.jdField_a_of_type_Zqr != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_Znl);
-      this.jdField_a_of_type_Znl = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_Zqr);
+      this.jdField_a_of_type_Zqr = null;
     }
   }
 }

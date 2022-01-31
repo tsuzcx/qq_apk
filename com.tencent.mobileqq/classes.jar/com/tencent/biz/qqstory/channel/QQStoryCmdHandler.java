@@ -14,11 +14,11 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
-import nab;
-import nac;
-import nad;
-import naf;
-import nag;
+import nbm;
+import nbn;
+import nbo;
+import nbq;
+import nbr;
 import org.json.JSONArray;
 
 public class QQStoryCmdHandler
@@ -30,7 +30,7 @@ public class QQStoryCmdHandler
   public QQStoryCmdHandler()
   {
     this.jdField_a_of_type_JavaUtilSet = new CopyOnWriteArraySet();
-    Bosses.get().postJob(new nab(this));
+    Bosses.get().postJob(new nbm(this));
   }
   
   private void a(NetworkRequest paramNetworkRequest, int paramInt, String paramString, long paramLong)
@@ -51,7 +51,7 @@ public class QQStoryCmdHandler
         SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramNetworkRequest.a() + " channel error:%d, msg:%s, take time:%d ,retry time:%d , retry now", new Object[] { Integer.valueOf(i), paramArrayOfByte, Long.valueOf(l), Integer.valueOf(paramNetworkRequest.b) });
         paramNetworkRequest.b += 1;
         paramArrayOfByte = Bosses.get();
-        paramNetworkRequest = new nag(this, paramNetworkRequest);
+        paramNetworkRequest = new nbr(this, paramNetworkRequest);
         if (i == 2901) {}
         for (i = 500;; i = 2000)
         {
@@ -100,7 +100,7 @@ public class QQStoryCmdHandler
   
   public void a(Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    Bosses.get().postJob(new naf(this, paramBundle, paramArrayOfByte));
+    Bosses.get().postJob(new nbq(this, paramBundle, paramArrayOfByte));
   }
   
   public void a(NetworkRequest paramNetworkRequest)
@@ -109,10 +109,10 @@ public class QQStoryCmdHandler
     {
       if (!NetworkUtils.a(QQStoryContext.a().a()))
       {
-        Bosses.get().scheduleJobDelayed(new nac(this, paramNetworkRequest), 100);
+        Bosses.get().scheduleJobDelayed(new nbn(this, paramNetworkRequest), 100);
         return;
       }
-      Bosses.get().postJob(new nad(this, paramNetworkRequest));
+      Bosses.get().postJob(new nbo(this, paramNetworkRequest));
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)

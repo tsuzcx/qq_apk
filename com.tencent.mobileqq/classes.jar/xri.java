@@ -1,25 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class xri
-  implements DataProvider.DataUpdateListener
+  implements Animation.AnimationListener
 {
-  public xri(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  public xri(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
-    if ((paramBoolean) && (paramAddressInfo != null))
-    {
-      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
-      this.a.a.post(new xrj(this, paramAddressInfo));
-      return;
+    if (NewFlowCameraActivity.b(this.a) != null) {
+      NewFlowCameraActivity.b(this.a).setVisibility(4);
     }
-    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

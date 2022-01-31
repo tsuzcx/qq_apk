@@ -1,27 +1,16 @@
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
 public class orw
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public orw(QRDisplayActivity paramQRDisplayActivity, boolean paramBoolean) {}
+  public orw(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.getLeft();
-    int j = this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.getRight();
-    Rect localRect = new Rect(i, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.getTop(), j, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.getBottom());
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setOnClickListener(null);
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setClickable(false);
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setTouchDelegate(new orx(this, localRect, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setClickable(true);
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setOnClickListener(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.d.setTouchDelegate(null);
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

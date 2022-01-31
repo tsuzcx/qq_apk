@@ -38,8 +38,8 @@ public class EdgeEffect
   public EdgeEffect(Context paramContext)
   {
     paramContext = paramContext.getResources();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130839547);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130839548);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130839552);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130839553);
     this.jdField_d_of_type_Int = ((int)(paramContext.getDisplayMetrics().density * 300.0F + 0.5F));
     this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
   }

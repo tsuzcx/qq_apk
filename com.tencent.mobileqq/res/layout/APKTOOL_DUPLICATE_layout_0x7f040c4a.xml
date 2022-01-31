@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a355d" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c22" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0916" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_bar_height" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a2c22" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14e7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_bar_height" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a2c22" />
+    <FrameLayout android:id="@id/title_container" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" />
+    <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1372" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignTop="@id/webview" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04e9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-25.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a355e" android:background="#ffffffff" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a2c22" android:layout_below="@id/title_container" />
+</RelativeLayout>

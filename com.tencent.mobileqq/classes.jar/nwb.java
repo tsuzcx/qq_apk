@@ -1,15 +1,33 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter;
-import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter.StoryQQ2UidCallback;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
+import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader.GetDiscoverCardsEvent;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
 
 public class nwb
-  implements Runnable
+  extends UIBaseEventReceiver
 {
-  public nwb(StoryQQ2UidConverter paramStoryQQ2UidConverter, String paramString) {}
-  
-  public void run()
+  public nwb(DiscoverPresenter paramDiscoverPresenter)
   {
-    if (StoryQQ2UidConverter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelStoryQQ2UidConverter) != null) {
-      StoryQQ2UidConverter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelStoryQQ2UidConverter).a(this.jdField_a_of_type_JavaLangString, true);
+    super(paramDiscoverPresenter);
+  }
+  
+  public void a(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent)
+  {
+    if ((paramGetDiscoverCardsEvent.jdField_a_of_type_Int == DiscoverPresenter.a(paramDiscoverPresenter)) && (paramGetDiscoverCardsEvent.jdField_a_of_type_Long == DiscoverPresenter.a(paramDiscoverPresenter))) {
+      DiscoverPresenter.a(paramDiscoverPresenter).a(DiscoverPresenter.a(paramDiscoverPresenter, paramGetDiscoverCardsEvent.jdField_a_of_type_JavaUtilList, paramGetDiscoverCardsEvent.c), paramGetDiscoverCardsEvent);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DiscoverPagerLoader.GetDiscoverCardsEvent.class;
+  }
+  
+  public void b(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent)
+  {
+    if ((paramGetDiscoverCardsEvent.jdField_a_of_type_Int == DiscoverPresenter.a(paramDiscoverPresenter)) && (paramGetDiscoverCardsEvent.jdField_a_of_type_Long == DiscoverPresenter.a(paramDiscoverPresenter))) {
+      DiscoverPresenter.a(paramDiscoverPresenter).a(null, paramGetDiscoverCardsEvent);
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic.compress;
 
-import afxn;
-import afxo;
+import aglp;
+import aglq;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -51,7 +51,7 @@ public class Utils
     return new File(paramString).length();
   }
   
-  private static afxo a(int paramInt1, int paramInt2, int paramInt3)
+  private static aglq a(int paramInt1, int paramInt2, int paramInt3)
   {
     int k = 1;
     int m = 0;
@@ -72,11 +72,11 @@ public class Utils
     }
     for (;;)
     {
-      afxo localafxo = new afxo(null);
-      localafxo.a = paramInt2;
-      localafxo.b = paramInt1;
-      Logger.a("compress.Utils", "getType()", " type=" + localafxo);
-      return localafxo;
+      aglq localaglq = new aglq(null);
+      localaglq.a = paramInt2;
+      localaglq.b = paramInt1;
+      Logger.a("compress.Utils", "getType()", " type=" + localaglq);
+      return localaglq;
       if (paramInt3 != 2) {
         break;
       }
@@ -287,17 +287,17 @@ public class Utils
       m = 0;
       j = 0;
       localObject1 = "";
-      str2 = BaseApplication.getContext().getString(2131436903);
-      str3 = BaseApplication.getContext().getString(2131436904);
-      str4 = BaseApplication.getContext().getString(2131436905);
-      str5 = BaseApplication.getContext().getString(2131436906);
+      str2 = BaseApplication.getContext().getString(2131436920);
+      str3 = BaseApplication.getContext().getString(2131436921);
+      str4 = BaseApplication.getContext().getString(2131436922);
+      str5 = BaseApplication.getContext().getString(2131436923);
       i1 = 0;
       i = 0;
       str1 = "";
-      str6 = BaseApplication.getContext().getString(2131436907);
-      str7 = BaseApplication.getContext().getString(2131436908);
-      localObject3 = BaseApplication.getContext().getString(2131436909);
-      localObject2 = BaseApplication.getContext().getString(2131436910);
+      str6 = BaseApplication.getContext().getString(2131436924);
+      str7 = BaseApplication.getContext().getString(2131436925);
+      localObject3 = BaseApplication.getContext().getString(2131436926);
+      localObject2 = BaseApplication.getContext().getString(2131436927);
       localObject4 = paramList.iterator();
       for (;;)
       {
@@ -482,7 +482,7 @@ public class Utils
     return false;
   }
   
-  public static boolean a(Bitmap paramBitmap, afxo paramafxo, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  public static boolean a(Bitmap paramBitmap, aglq paramaglq, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
     int n = paramBitmap.getWidth();
     int i2 = paramBitmap.getHeight();
@@ -502,7 +502,7 @@ public class Utils
       int k;
       Object localObject;
       int i4;
-      switch (paramafxo.b)
+      switch (paramaglq.b)
       {
       case 2: 
       case 4: 
@@ -521,14 +521,14 @@ public class Utils
       }
       for (boolean bool2 = true;; bool2 = false)
       {
-        Logger.a("compress.Utils", paramString3, paramString4 + " sample after W:" + k + " H:" + j + " isLongImg:" + a(0, 0, paramInt) + " type:" + paramafxo + " needRotate:" + bool2);
+        Logger.a("compress.Utils", paramString3, paramString4 + " sample after W:" + k + " H:" + j + " isLongImg:" + a(0, 0, paramInt) + " type:" + paramaglq + " needRotate:" + bool2);
         int i3;
         if (i1 > n) {
           i3 = i1;
         }
         boolean bool1;
         for (i2 = n;; i2 = i1) {
-          switch (paramafxo.a)
+          switch (paramaglq.a)
           {
           default: 
             bool1 = false;
@@ -592,7 +592,7 @@ public class Utils
                   label600:
                   paramBitmap.recycle();
                   paramString1.printStackTrace();
-                  Logger.b("compress.Utils", paramString3, paramString4 + " cut 3:1 createBitmap OutOfMemoryError, type:" + paramafxo);
+                  Logger.b("compress.Utils", paramString3, paramString4 + " cut 3:1 createBitmap OutOfMemoryError, type:" + paramaglq);
                   return false;
                 }
               }
@@ -655,13 +655,13 @@ public class Utils
               {
                 paramString1.recycle();
                 paramBitmap.printStackTrace();
-                Logger.b("compress.Utils", paramString3, paramString4 + " case 1: cut createBitmap OutOfMemoryError, type:" + paramafxo);
+                Logger.b("compress.Utils", paramString3, paramString4 + " case 1: cut createBitmap OutOfMemoryError, type:" + paramaglq);
                 return false;
               }
               paramString1 = paramString1;
               paramBitmap.recycle();
               paramString1.printStackTrace();
-              Logger.b("compress.Utils", paramString3, paramString4 + " case 1: scale or rotate createBitmap OutOfMemoryError, type:" + paramafxo);
+              Logger.b("compress.Utils", paramString3, paramString4 + " case 1: scale or rotate createBitmap OutOfMemoryError, type:" + paramaglq);
               return false;
             }
             j = i;
@@ -701,7 +701,7 @@ public class Utils
                 {
                   paramBitmap.recycle();
                   paramString1.printStackTrace();
-                  Logger.b("compress.Utils", paramString3, paramString4 + " case 2: scale or rotate createBitmap OutOfMemoryError, type:" + paramafxo);
+                  Logger.b("compress.Utils", paramString3, paramString4 + " case 2: scale or rotate createBitmap OutOfMemoryError, type:" + paramaglq);
                   return false;
                 }
               }
@@ -731,7 +731,7 @@ public class Utils
             {
               paramBitmap.recycle();
               paramString1.printStackTrace();
-              Logger.b("compress.Utils", paramString3, paramString4 + " case 3: rotate createBitmap OutOfMemoryError, type:" + paramafxo);
+              Logger.b("compress.Utils", paramString3, paramString4 + " case 3: rotate createBitmap OutOfMemoryError, type:" + paramaglq);
               return false;
             }
           }
@@ -789,13 +789,13 @@ public class Utils
                 }
                 paramBitmap.recycle();
                 paramString1.printStackTrace();
-                Logger.b("compress.Utils", paramString3, paramString4 + " case 4: cut createBitmap OutOfMemoryError, type:" + paramafxo);
+                Logger.b("compress.Utils", paramString3, paramString4 + " case 4: cut createBitmap OutOfMemoryError, type:" + paramaglq);
                 return false;
               }
               paramString1 = paramString1;
               paramBitmap.recycle();
               paramString1.printStackTrace();
-              Logger.b("compress.Utils", paramString3, paramString4 + " case 4: rotate createBitmap OutOfMemoryError, type:" + paramafxo);
+              Logger.b("compress.Utils", paramString3, paramString4 + " case 4: rotate createBitmap OutOfMemoryError, type:" + paramaglq);
               return false;
             }
             i = i2 * 3;
@@ -981,12 +981,12 @@ public class Utils
     ImageUtil.a(paramString1, localOptions);
     int j;
     int i;
-    afxo localafxo;
+    aglq localaglq;
     if (localOptions.outWidth > localOptions.outHeight)
     {
       j = localOptions.outWidth;
       i = localOptions.outHeight;
-      localafxo = a(i, j, paramInt);
+      localaglq = a(i, j, paramInt);
       i = URLDrawableHelper.a(false);
       URLDrawableHelper.b(false);
       if (paramInt != 1) {
@@ -1034,7 +1034,7 @@ public class Utils
         i = localBitmap2.getWidth();
         j = localBitmap2.getHeight();
         Logger.a("compress.Utils", "compressAIOThumbnail", paramString3 + " sample after W:" + i + " H:" + j);
-        return a(localBitmap2, localafxo, paramBoolean, paramString1, paramString2, "compressAIOThumbnail", paramString3, paramInt);
+        return a(localBitmap2, localaglq, paramBoolean, paramString1, paramString2, "compressAIOThumbnail", paramString3, paramInt);
       }
       catch (OutOfMemoryError paramString1)
       {
@@ -1110,7 +1110,7 @@ public class Utils
     try
     {
       ((File)localObject).createNewFile();
-      localObject = new JpegCompressor(new afxn((File)localObject, paramCompressInfo));
+      localObject = new JpegCompressor(new aglp((File)localObject, paramCompressInfo));
       ((JpegCompressor)localObject).setParams(paramInt, true, true, false);
       try
       {
@@ -1155,12 +1155,12 @@ public class Utils
     JpegDecompressor.decodeFile(paramString1, localJpegOptions);
     int j;
     int i;
-    afxo localafxo;
+    aglq localaglq;
     if (localJpegOptions.outWidth > localJpegOptions.outHeight)
     {
       j = localJpegOptions.outWidth;
       i = localJpegOptions.outHeight;
-      localafxo = a(i, j, paramInt);
+      localaglq = a(i, j, paramInt);
       i = URLDrawableHelper.a(false);
       URLDrawableHelper.b(false);
       if (paramInt != 1) {
@@ -1208,7 +1208,7 @@ public class Utils
         i = localBitmap2.getWidth();
         j = localBitmap2.getHeight();
         Logger.a("compress.Utils", "compressAIOThumbnailWithTrubo", paramString3 + " sample after W:" + i + " H:" + j);
-        return a(localBitmap2, localafxo, paramBoolean, paramString1, paramString2, "compressAIOThumbnailWithTrubo", paramString3, paramInt);
+        return a(localBitmap2, localaglq, paramBoolean, paramString1, paramString2, "compressAIOThumbnailWithTrubo", paramString3, paramInt);
       }
       catch (OutOfMemoryError paramString1)
       {

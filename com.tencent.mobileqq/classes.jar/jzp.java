@@ -1,19 +1,23 @@
-import com.tencent.av.ui.QAVPtvTemplateAdapter;
-import com.tencent.av.ui.QavListItemBase.IDownloadCallback;
+import android.os.Handler;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
+import com.tencent.av.ui.funchat.record.FileSwapHelper;
 
 public class jzp
-  implements QavListItemBase.IDownloadCallback
+  implements Runnable
 {
-  public jzp(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter) {}
+  public jzp(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    this.a.a(paramString, paramInt);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.a(paramString, paramBoolean);
+    QavVideoRecordUICtrl.a(this.a, this.a.a());
+    QavVideoRecordUICtrl.b(this.a, FileSwapHelper.a());
+    if (QavVideoRecordUICtrl.a(this.a) < 31457280L) {
+      QavVideoRecordUICtrl.a(this.a).post(new jzq(this));
+    }
+    while (!QavVideoRecordUICtrl.b) {
+      return;
+    }
+    QavVideoRecordUICtrl.a(this.a).sendEmptyMessageDelayed(11, 500L);
   }
 }
 

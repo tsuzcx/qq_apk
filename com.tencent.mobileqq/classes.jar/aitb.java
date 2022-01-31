@@ -1,33 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
-import org.json.JSONException;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aitb
-  implements View.OnClickListener
+class aitb
+  implements Runnable
 {
-  public aitb(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  aitb(aisy paramaisy) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    InputMethodUtil.b(paramView);
-    try
-    {
-      PublishHomeWorkFragment.c(this.a);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
-    }
+    QQToast.a(this.a.a.getActivity(), 1, "保存至本地相册失败，请重试", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,36 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader.GetVideoListEvent;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class nky
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+  extends UIBaseEventReceiver
 {
-  public nky(BatchGetVideoInfoHandler paramBatchGetVideoInfoHandler, BatchGetVideoInfo paramBatchGetVideoInfo) {}
-  
-  public void a()
+  public nky(NewFriendsPlayMode paramNewFriendsPlayMode)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b(1);
+    super(paramNewFriendsPlayMode);
   }
   
-  public void a(ArrayList paramArrayList)
+  public void a(@NonNull NewFriendsPlayMode paramNewFriendsPlayMode, @NonNull VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(1, paramArrayList);
+    SLog.c(this.TAG, "FeedVideoListReceiver onSuccess, event:" + paramGetVideoListEvent.toString());
+    paramNewFriendsPlayMode.a.post(new nkz(this, paramNewFriendsPlayMode, paramGetVideoListEvent));
+  }
+  
+  public Class acceptEventClass()
+  {
+    return VideoListPageLoader.GetVideoListEvent.class;
+  }
+  
+  public void b(NewFriendsPlayMode paramNewFriendsPlayMode, VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(this.TAG, 2, "FeedVideoListReceiver onError:" + paramGetVideoListEvent.a());
+    }
+    paramNewFriendsPlayMode.a.post(new nla(this, paramNewFriendsPlayMode, paramGetVideoListEvent));
   }
 }
 

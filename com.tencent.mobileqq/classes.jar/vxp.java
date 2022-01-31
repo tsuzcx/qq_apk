@@ -1,19 +1,16 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-class vxp
-  implements Runnable
+public class vxp
+  implements CustomMenuBar.OnMenuItemClickListener
 {
-  vxp(vxo paramvxo, String paramString) {}
+  public vxp(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    TroopChatPie.c(this.jdField_a_of_type_Vxo.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-    TroopChatPie.d(this.jdField_a_of_type_Vxo.a).setText(this.jdField_a_of_type_Vxo.a.a.getResources().getString(2131430435) + this.jdField_a_of_type_JavaLangString);
-    TroopChatPie.a(this.jdField_a_of_type_Vxo.a).setOnClickListener(null);
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(paramString, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), paramInt1, PublicAccountChatPie.a(this.a), PublicAccountChatPie.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

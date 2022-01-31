@@ -1,31 +1,33 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoState;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class xuv
-  implements SensorEventListener
+  extends RMVideoState
 {
-  public xuv(SensorFrameImageView paramSensorFrameImageView) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void a()
   {
-    switch (paramSensorEvent.sensor.getType())
-    {
+    RMVideoStateMgr.a().a.p();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] initState end");
     }
-    for (;;)
-    {
-      SensorFrameImageView.a(this.a);
-      SensorFrameImageView.b(this.a);
-      return;
-      SensorFrameImageView.a(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.b(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.c(this.a, paramSensorEvent.values);
+  }
+  
+  public boolean a()
+  {
+    RMVideoStateMgr.a().a("RMVideoIdleState");
+    return true;
+  }
+  
+  public void b()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
     }
+    localRMVideoStateMgr.a.a(100);
+    localRMVideoStateMgr.a(3);
   }
 }
 

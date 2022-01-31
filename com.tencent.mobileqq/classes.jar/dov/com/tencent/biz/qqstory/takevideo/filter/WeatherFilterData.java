@@ -3,7 +3,7 @@ package dov.com.tencent.biz.qqstory.takevideo.filter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
-import anlq;
+import aobv;
 
 public class WeatherFilterData
   extends FilterData
@@ -19,13 +19,13 @@ public class WeatherFilterData
   @NonNull
   public FilterData.FilterPageItem a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return new anlq(this, paramContext, paramViewGroup);
+    return new aobv(this, paramContext, paramViewGroup);
   }
   
   @NonNull
   public Class a()
   {
-    return anlq.class;
+    return aobv.class;
   }
   
   public boolean a()

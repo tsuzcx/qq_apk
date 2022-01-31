@@ -10,8 +10,8 @@ import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import java.util.HashMap;
-import mew;
-import mex;
+import mgb;
+import mgc;
 import mqq.manager.Manager;
 
 public class VideoUploadManager
@@ -53,12 +53,12 @@ public class VideoUploadManager
     if ((TextUtils.isEmpty(paramString)) || (!FileUtils.b(paramString))) {}
     for (;;)
     {
-      mew localmew = new mew(this);
+      mgb localmgb = new mgb(this);
       TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new mex(this);
+      localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new mgc(this);
       TransFileController localTransFileController = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      localmew.a(new Class[] { BDHCommonUploadProcessor.class });
-      localTransFileController.a(localmew);
+      localmgb.a(new Class[] { BDHCommonUploadProcessor.class });
+      localTransFileController.a(localmgb);
       localTransferRequest.i = paramString;
       localTransferRequest.jdField_a_of_type_Boolean = true;
       localTransferRequest.jdField_b_of_type_Int = 24;

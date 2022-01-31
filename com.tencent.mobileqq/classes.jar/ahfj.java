@@ -1,34 +1,33 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.presenter.SearchResultPresenter;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.SearchResultView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import java.lang.ref.WeakReference;
 
-public class ahfj
-  extends BaseMvpFaceAdapter
+abstract class ahfj
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public ahfj(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
+  protected Object a;
+  private WeakReference a;
+  
+  ahfj(Object paramObject)
   {
-    super(paramListView, paramFaceDecoder);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramObject);
   }
   
-  protected IPresenter a(int paramInt)
+  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return new SearchResultPresenter(this.a.a);
+    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return;
+    }
+    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_JavaLangObject = null;
   }
   
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new SearchResultView(paramViewGroup, 2130971491);
-  }
+  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfj
  * JD-Core Version:    0.7.0.1
  */

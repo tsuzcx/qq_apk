@@ -1,17 +1,11 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class vkj
-  implements DialogInterface.OnClickListener
+public class vkj
+  extends vkh
 {
-  vkj(vki paramvki) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vkj(QQAppInterface paramQQAppInterface)
   {
-    paramDialogInterface.dismiss();
-    AIOGalleryScene.v(this.a.a).setResult(8001);
+    super(paramQQAppInterface);
   }
 }
 

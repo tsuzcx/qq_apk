@@ -1,26 +1,20 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class ljo
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public ljo(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter, CommentInfo paramCommentInfo, ActionSheet paramActionSheet) {}
+  public ljo(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    default: 
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter.a.deleteComment(ReadInJoyCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter), 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorUin, null, ReadInJoyCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter), new ljp(this));
     }
+    this.a.a(true, null);
   }
 }
 

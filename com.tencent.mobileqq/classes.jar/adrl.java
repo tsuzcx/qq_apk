@@ -1,37 +1,34 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlCallBack;
+import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlResult;
+import com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader;
+import java.io.File;
 
-class adrl
-  implements Runnable
+public class adrl
+  implements HotVideoData.HotVideoGetUrlCallBack
 {
-  adrl(adrk paramadrk, ActionGlobalData paramActionGlobalData) {}
+  public adrl(HotVideoPreviewDownloader paramHotVideoPreviewDownloader, HotVideoData paramHotVideoData, File paramFile, URLDrawableHandler paramURLDrawableHandler) {}
   
-  public void run()
+  public void a(HotVideoData.HotVideoGetUrlResult paramHotVideoGetUrlResult)
   {
-    
-    if (this.jdField_a_of_type_Adrk.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Adrk.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.c();
-    }
-    for (;;)
+    if (paramHotVideoGetUrlResult.a)
     {
-      this.jdField_a_of_type_Adrk.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_a_of_type_Adrk.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.c))) {
-        this.jdField_a_of_type_Adrk.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aA();
-      }
-      return;
-      ((View)this.jdField_a_of_type_Adrk.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Adrk.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.d();
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramHotVideoGetUrlResult.a();
+      HotVideoPreviewDownloader.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoPreviewDownloader, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
     }
+    do
+    {
+      return;
+      this.jdField_a_of_type_JavaIoFile.delete();
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
+    } while (this.jdField_a_of_type_ComTencentImageURLDrawableHandler == null);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrl
  * JD-Core Version:    0.7.0.1
  */

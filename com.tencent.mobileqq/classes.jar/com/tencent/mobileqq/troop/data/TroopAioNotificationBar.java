@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.data;
 
-import aiox;
-import aioy;
+import ajdb;
+import ajdc;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -81,7 +81,7 @@ public class TroopAioNotificationBar
     if (QLog.isColorLevel()) {
       QLog.d("TroopAioNotificationBar", 2, "notifyItem : " + paramTroopAIONotifyItem.toString());
     }
-    Object localObject1 = (URLImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368211);
+    Object localObject1 = (URLImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368278);
     for (;;)
     {
       try
@@ -96,18 +96,18 @@ public class TroopAioNotificationBar
           ((URLDrawable)localObject2).restartDownload();
         }
         ((URLImageView)localObject1).setImageDrawable((Drawable)localObject2);
-        ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368214)).setText(paramTroopAIONotifyItem.title);
-        localObject1 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368215);
+        ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368281)).setText(paramTroopAIONotifyItem.title);
+        localObject1 = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368282);
         ((TextView)localObject1).setText(paramTroopAIONotifyItem.summary);
         if (!TextUtils.isEmpty(paramTroopAIONotifyItem.summary)) {
           break label223;
         }
         ((TextView)localObject1).setVisibility(8);
-        ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368213)).setBackgroundResource(2130846146);
+        ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368280)).setBackgroundResource(2130846274);
         if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
           break label231;
         }
-        this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130846144);
+        this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130846272);
         return;
       }
       catch (MalformedURLException paramTroopAIONotifyItem) {}
@@ -120,14 +120,14 @@ public class TroopAioNotificationBar
       ((TextView)localObject1).setVisibility(0);
     }
     label231:
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130846145);
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130846273);
   }
   
   private void f()
   {
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new aiox(this));
+      new Handler(Looper.getMainLooper()).post(new ajdb(this));
       return;
     }
     a(-1);
@@ -179,7 +179,7 @@ public class TroopAioNotificationBar
       this.jdField_a_of_type_JavaUtilList = paramList;
     } while (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null);
     if (this.jdField_c_of_type_AndroidViewView == null) {
-      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969838, null);
+      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969852, null);
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_c_of_type_AndroidViewView) == -1)
     {
@@ -189,24 +189,24 @@ public class TroopAioNotificationBar
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView, paramList);
     }
     paramList = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams();
-    int i = TroopAioMsgNavigateBar.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new int[] { 2131362419, 2131363490, 2131362153, 2131362130 });
+    int i = TroopAioMsgNavigateBar.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new int[] { 2131362422, 2131363508, 2131362153, 2131362130 });
     if (i > 0) {
       paramList.addRule(3, i);
     }
     if (this.jdField_b_of_type_AndroidViewView == null) {
-      this.jdField_b_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131368210);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131368277);
     }
     this.jdField_c_of_type_AndroidViewView.setBackgroundResource(17170445);
     this.jdField_c_of_type_AndroidViewView.setVisibility(8);
     a((TroopAIONotifyItem)this.jdField_a_of_type_JavaUtilList.get(0));
     if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841426);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841463);
     }
     for (;;)
     {
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
       return;
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841427);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841464);
     }
   }
   
@@ -260,7 +260,7 @@ public class TroopAioNotificationBar
   {
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new aioy(this));
+      new Handler(Looper.getMainLooper()).post(new ajdc(this));
       return;
     }
     g();
@@ -340,7 +340,7 @@ public class TroopAioNotificationBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioNotificationBar
  * JD-Core Version:    0.7.0.1
  */

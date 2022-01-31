@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class xbv
-  implements Runnable
+class xbv
+  implements DialogInterface.OnClickListener
 {
-  public xbv(GoldMsgPayManager paramGoldMsgPayManager) {}
+  xbv(xbu paramxbu) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

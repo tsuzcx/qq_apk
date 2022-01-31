@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3199" android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="45.0dip">
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a319a" android:paddingLeft="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a319b" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ac0" android:rotation="90.0" />
-            <TextView android:textSize="14.0dip" android:textColor="#ffa4a4a4" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a319c" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="-5.0dip" android:text="返回" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a319b" />
-        </RelativeLayout>
-        <TextView android:textSize="16.0dip" android:textColor="#ffa4a4a4" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a319d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="评论" android:layout_centerInParent="true" />
-        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2099" android:paddingLeft="8.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ac0" />
-        </FrameLayout>
-    </RelativeLayout>
-    <View android:background="#ff514e4d" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d18" android:background="#0cffffff" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-            <RelativeLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021abb" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:baselineAligned="false" android:layout_centerHorizontal="true">
-                <TextView android:textColor="#ff666666" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d1b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:hint="评论" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2d19" android:layout_centerVertical="true" />
-            </RelativeLayout>
-        </LinearLayout>
-        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14fe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a2d18">
-            <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d20" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2cf5" android:paddingTop="8.0dip" android:paddingBottom="14.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
-            <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a319e" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="100.0dip">
-                <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1243" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="10.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
-                <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0088" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1244" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在加载评论..." android:singleLine="true" />
-            </LinearLayout>
-        </FrameLayout>
-        <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d20" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a319f" android:paddingTop="8.0dip" android:paddingBottom="14.0dip" android:visibility="gone" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
-    </RelativeLayout>
-</LinearLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e86" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c00a2" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1523" />
+</merge>

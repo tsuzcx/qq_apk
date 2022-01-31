@@ -1,17 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWLog;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWProto;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
 
 public class oka
-  extends Handler
+  implements Runnable
 {
-  public oka(RMWService paramRMWService) {}
+  public oka(DoodleTextureView paramDoodleTextureView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    RMWLog.a("RMWService", "service.handle : " + RMWProto.a(paramMessage));
+    PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
+    if (localPersonalityOperator != null)
+    {
+      localPersonalityOperator.a();
+      localPersonalityOperator.a(this.a.jdField_a_of_type_Int, this.a.b);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.h();
+      this.a.a();
+    }
   }
 }
 

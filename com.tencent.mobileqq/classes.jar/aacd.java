@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.ArConfigService;
 
-public class aacd
+class aacd
   implements Runnable
 {
-  public aacd(AREngine paramAREngine) {}
+  aacd(aacb paramaacb) {}
   
   public void run()
   {
-    AREngine.a(this.a, true);
+    ArConfigService.d(this.a.a);
   }
 }
 

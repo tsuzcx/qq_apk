@@ -1,41 +1,22 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import cooperation.qzone.QzoneGiftFullScreenViewController;
 
-public class amss
+class amss
   implements Runnable
 {
-  public amss(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, String paramString) {}
+  amss(amsr paramamsr, ActionGlobalData paramActionGlobalData) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.a.a();
-    if (localObject == null) {}
-    do
-    {
-      return;
-      QLog.e("VERSION_CODES", 2, "onCameraStarted error = " + this.jdField_a_of_type_JavaLangString);
-      String str = ((Activity)localObject).getString(2131428347);
-      localObject = DialogUtil.a((Context)localObject, 230).setMessage(str).setPositiveButton(((Activity)localObject).getString(2131428346), new amst(this));
-      try
-      {
-        ((QQCustomDialog)localObject).setCancelable(false);
-        ((QQCustomDialog)localObject).show();
-        return;
-      }
-      catch (WindowManager.BadTokenException localBadTokenException) {}
-    } while (!QLog.isColorLevel());
-    QLog.i("VERSION_CODES", 2, "", localBadTokenException);
+    URLDrawable.pause();
+    ((View)this.jdField_a_of_type_Amsr.a.a).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amss
  * JD-Core Version:    0.7.0.1
  */

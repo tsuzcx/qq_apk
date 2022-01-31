@@ -1,31 +1,48 @@
-import android.content.Intent;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.richmedia.CompoundProcessor;
-import com.tencent.mobileqq.richmedia.RichmediaClient;
-import com.tencent.mobileqq.richmedia.VideoCompoundController;
+import android.media.MediaPlayer;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView.OnTrimVDPlayCompelteListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class xni
-  implements Runnable
+  implements FixedSizeVideoView.OnTrimVDPlayCompelteListener
 {
-  public xni(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xni(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void run()
+  public void a(MediaPlayer paramMediaPlayer)
   {
-    Object localObject = RichmediaClient.a().a().a(this.a.d);
-    if (localObject != null) {
-      ((CompoundProcessor)localObject).a(103);
-    }
-    for (;;)
+    if (EditLocalVideoActivity.a(this.a))
     {
-      localObject = this.a.getIntent();
-      ((Intent)localObject).putExtra("flow_back", 0);
-      this.a.setResult(1001, (Intent)localObject);
-      this.a.a.b();
-      this.a.finish();
+      QLog.e("EditLocalVideoActivity", 2, "onComplete() ---------------1   mStartTime=" + EditLocalVideoActivity.a(this.a) + " mEndTime=" + EditLocalVideoActivity.b(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
+      EditLocalVideoActivity.a(this.a).pause();
+      paramMediaPlayer.seekTo(EditLocalVideoActivity.e(this.a));
+      EditLocalVideoActivity.c(this.a, false);
+      EditLocalVideoActivity.b(this.a).setVisibility(0);
       return;
-      this.a.j();
     }
+    QLog.e("EditLocalVideoActivity", 2, "onComplete() ---------------2   mStartTime=" + EditLocalVideoActivity.a(this.a) + " mEndTime=" + EditLocalVideoActivity.b(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
+    paramMediaPlayer.seekTo(EditLocalVideoActivity.a(this.a));
+    EditLocalVideoActivity.a(this.a).start();
+  }
+  
+  public void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2)
+  {
+    if (EditLocalVideoActivity.a(this.a))
+    {
+      QLog.e("EditLocalVideoActivity", 2, "onArriveTrimEnd() ---------------3   mStartTime=" + EditLocalVideoActivity.a(this.a) + " mEndTime=" + EditLocalVideoActivity.b(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
+      paramFixedSizeVideoView.pause();
+      paramFixedSizeVideoView.seekTo(EditLocalVideoActivity.e(this.a));
+      EditLocalVideoActivity.c(this.a, false);
+      EditLocalVideoActivity.b(this.a).setVisibility(0);
+    }
+    while (EditLocalVideoActivity.b(this.a) == 0) {
+      return;
+    }
+    QLog.e("EditLocalVideoActivity", 2, "onArriveTrimEnd() ---------------4   mStartTime=" + EditLocalVideoActivity.a(this.a) + " mEndTime=" + EditLocalVideoActivity.b(this.a) + "   mCurrentStartTime=" + EditLocalVideoActivity.e(this.a));
+    paramFixedSizeVideoView.setPlayDuration(EditLocalVideoActivity.a(this.a), EditLocalVideoActivity.b(this.a) - EditLocalVideoActivity.a(this.a));
+    paramFixedSizeVideoView.seekTo(EditLocalVideoActivity.a(this.a));
+    paramFixedSizeVideoView.start();
   }
 }
 

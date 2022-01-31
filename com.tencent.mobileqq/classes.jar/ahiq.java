@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SearchHistoryManager;
-import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ahiq
+public class ahiq
   implements Runnable
 {
-  public ahiq(int paramInt, String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
+  public ahiq(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, int paramInt) {}
   
   public void run()
   {
-    SearchHistory localSearchHistory = new SearchHistory();
-    localSearchHistory.type = this.jdField_a_of_type_Int;
-    localSearchHistory.uin = this.jdField_a_of_type_JavaLangString;
-    localSearchHistory.troopUin = this.b;
-    localSearchHistory.displayName = this.c;
-    SearchHistoryManager localSearchHistoryManager = (SearchHistoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(54);
-    if (localSearchHistoryManager == null) {
-      return;
+    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "onDownloadProgress mGestureState=" + CaptureSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + " mVideoState=" + CaptureSoDownloadFragmentAllWaite.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + ",mFilterSoState=" + CaptureSoDownloadFragmentAllWaite.d(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + ",mQmcfState=" + CaptureSoDownloadFragmentAllWaite.e(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite));
     }
-    localSearchHistoryManager.a(localSearchHistory);
-    com.tencent.mobileqq.search.activity.UniteSearchActivity.b = true;
+    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, "GestureDownloadProgress");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahiq
  * JD-Core Version:    0.7.0.1
  */

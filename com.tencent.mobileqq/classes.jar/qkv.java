@@ -1,41 +1,37 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
+import com.tencent.gdtad.aditem.GdtAdLoader.Listener;
+import com.tencent.gdtad.aditem.GdtAdLoader.Session;
+import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
+import com.tencent.gdtad.jsbridge.GdtLoadAdJsCallHandler;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class qkv
-  implements ViewPager.PageTransformer
+  implements GdtAdLoader.Listener
 {
-  @TargetApi(11)
-  public void transformPage(View paramView, float paramFloat)
+  public qkv(GdtLoadAdJsCallHandler paramGdtLoadAdJsCallHandler) {}
+  
+  public void a(GdtAdLoader.Session paramSession)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      if (paramFloat < -1.0F) {
-        paramView.setAlpha(0.0F);
-      }
-    }
-    else {
+    if ((paramSession == null) || (GdtLoadAdJsCallHandler.a(this.a) == null) || (GdtLoadAdJsCallHandler.a(this.a).get() == null)) {
       return;
     }
-    if (paramFloat <= 1.0F)
+    String str = (String)GdtLoadAdJsCallHandler.a(this.a).get(paramSession);
+    GdtLoadAdJsCallHandler.a(this.a).remove(paramSession);
+    Object localObject = GdtJsonPbUtil.a(paramSession.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
+    GdtJsonPbUtil.a(paramSession.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
+    if ((localObject != null) && (localObject != JSONObject.NULL)) {}
+    for (paramSession = localObject.toString();; paramSession = null)
     {
-      paramView.setAlpha(1.0F);
-      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
-      if (paramFloat > 0.0F) {}
-      for (int i = 1;; i = -1)
-      {
-        paramFloat = (float)(Math.cos((Math.abs(paramFloat) + 1.0F) * 3.141592653589793D) / 2.0D);
-        paramView.setTranslationY(i * (paramFloat + 0.5F) * paramView.getHeight());
-        return;
-      }
+      ((GdtAdWebPlugin)GdtLoadAdJsCallHandler.a(this.a).get()).callJs(str, new String[] { paramSession });
+      return;
     }
-    paramView.setAlpha(0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     qkv
  * JD-Core Version:    0.7.0.1
  */

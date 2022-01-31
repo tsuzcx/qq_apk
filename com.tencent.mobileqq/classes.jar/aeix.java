@@ -1,36 +1,20 @@
-import com.tencent.mobileqq.nearby.now.model.NowPublishParam;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.now.send.uploader.WordsCheck.OnResultListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
 
 public class aeix
-  implements WordsCheck.OnResultListener
+  implements DialogInterface.OnClickListener
 {
-  public aeix(VideoFeedsManager paramVideoFeedsManager, NowPublishParam paramNowPublishParam) {}
+  public aeix(AIOShareActionSheet paramAIOShareActionSheet) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelNowPublishParam);
-      return;
-    }
-    b(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    VideoFeedsUploader.UploadResult localUploadResult = new VideoFeedsUploader.UploadResult();
-    localUploadResult.i = "文字包含敏感词！";
-    localUploadResult.a = -109;
-    VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager).a(new VideoFeedsUploader.UploadInfo(), localUploadResult);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeix
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.component.network.utils.thread.AsyncTask;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.component.network.downloader.impl.ipc.Const.SimpleRequest;
 
-public class pjw
-  extends Handler
+public final class pjw
+  implements Parcelable.Creator
 {
-  public pjw(Looper paramLooper)
+  public Const.SimpleRequest a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new Const.SimpleRequest(paramParcel);
   }
   
-  public void handleMessage(Message paramMessage)
+  public Const.SimpleRequest[] a(int paramInt)
   {
-    pju localpju = (pju)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      AsyncTask.b(localpju.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask, localpju.jdField_a_of_type_ArrayOfJavaLangObject[0]);
-      return;
-    }
-    localpju.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask.a(localpju.jdField_a_of_type_ArrayOfJavaLangObject);
+    return new Const.SimpleRequest[paramInt];
   }
 }
 

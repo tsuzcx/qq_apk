@@ -1,41 +1,23 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.GBatteryMonitor;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.core.VcSystemInfo;
+import com.tencent.av.business.manager.report.VideoNodeManager;
+import com.tencent.av.business.manager.report.VideoNodeReporter;
 
 public class jep
-  implements Runnable
+  extends BroadcastReceiver
 {
-  String jdField_a_of_type_JavaLangString;
+  public jep(GBatteryMonitor paramGBatteryMonitor) {}
   
-  public jep(VideoController paramVideoController, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().n < 0)
+    int i = paramIntent.getIntExtra("level", 0);
+    if ((GBatteryMonitor.a(this.a) != null) && (GBatteryMonitor.a(this.a).a != null))
     {
-      VcSystemInfo.a();
-      long l = VcSystemInfo.c();
-      int i = VcSystemInfo.f();
-      int j = Build.VERSION.SDK_INT;
-      if ((i < 4) || (l / 1000L < 800L) || (j < 9)) {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().n = 0;
-      }
-    }
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.a() != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a().c == 1L) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvVideoController.a().m))) {
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(30), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvVideoController.a().m });
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoController.e();
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Jep = null;
-      return;
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(30), this.jdField_a_of_type_JavaLangString });
+      ((VideoNodeReporter)GBatteryMonitor.a(this.a).a(4)).a(i);
+      VideoNodeManager.a(18, i);
     }
   }
 }

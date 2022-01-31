@@ -1,13 +1,22 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
-class jwz
-  implements Runnable
+public class jwz
+  implements DialogInterface.OnClickListener
 {
-  jwz(jwy paramjwy) {}
+  public jwz(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.h("onUpdatePstnInfo");
+    if ((this.a.a != null) && (this.a.c()))
+    {
+      this.a.e();
+      this.a.L();
+      this.a.a.a().as = true;
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

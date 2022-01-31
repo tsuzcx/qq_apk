@@ -1,8 +1,16 @@
-import com.tencent.component.network.module.statistics.SpeedStatistics;
+import android.graphics.Bitmap;
+import com.tencent.component.media.image.BitmapReference;
 
 public class piy
 {
-  public static final SpeedStatistics a = new SpeedStatistics(null);
+  public int a;
+  public BitmapReference a;
+  
+  public piy(BitmapReference paramBitmapReference)
+  {
+    this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference = paramBitmapReference;
+    this.jdField_a_of_type_Int = paramBitmapReference.getBitmap().getGenerationId();
+  }
 }
 
 

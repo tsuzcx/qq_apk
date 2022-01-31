@@ -14,14 +14,14 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
-import lxg;
-import lxh;
-import lxi;
-import lxj;
-import lxk;
-import lxl;
-import lxm;
-import lxn;
+import lxp;
+import lxq;
+import lxr;
+import lxs;
+import lxt;
+import lxu;
+import lxv;
+import lxw;
 import mqq.os.MqqHandler;
 import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.BBInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.MsgBody;
@@ -56,6 +56,7 @@ public class KandianOx210MsgInfo
   public int f;
   public String f;
   public int g;
+  public String g;
   public int h;
   
   public KandianOx210MsgInfo()
@@ -155,26 +156,29 @@ public class KandianOx210MsgInfo
         }
         localKandianOx210MsgInfo.jdField_a_of_type_Long = localMsgBody.uint64_article_id.get();
         localKandianOx210MsgInfo.jdField_b_of_type_Long = localMsgBody.uint64_seq.get();
+        if (localMsgBody.bytes_diandian_cookie.has()) {
+          localKandianOx210MsgInfo.jdField_c_of_type_JavaLangString = localMsgBody.bytes_diandian_cookie.get().toStringUtf8();
+        }
         if ((localMsgBody.msg_notify_infos.has()) && (localMsgBody.msg_notify_infos.get() != null) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get() != null))
         {
           submsgtype0xc5.StyleSheet localStyleSheet = (submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get();
           if (!localStyleSheet.uint32_show_folder.has()) {
-            break label879;
+            break label906;
           }
           paramInt = localStyleSheet.uint32_show_folder.get();
           localKandianOx210MsgInfo.jdField_d_of_type_Int = paramInt;
           if (!localStyleSheet.folder_red_type.has()) {
-            break label884;
+            break label911;
           }
           paramInt = localStyleSheet.folder_red_type.get();
           localKandianOx210MsgInfo.jdField_f_of_type_Int = paramInt;
           if (!localStyleSheet.bytes_orange_word.has()) {
-            break label889;
+            break label916;
           }
           paramArrayOfByte = localStyleSheet.bytes_orange_word.get().toStringUtf8();
           localKandianOx210MsgInfo.jdField_a_of_type_JavaLangString = paramArrayOfByte;
           if (!localStyleSheet.bytes_summary.has()) {
-            break label894;
+            break label921;
           }
           paramArrayOfByte = localStyleSheet.bytes_summary.get().toStringUtf8();
           localKandianOx210MsgInfo.jdField_b_of_type_JavaLangString = paramArrayOfByte;
@@ -189,7 +193,7 @@ public class KandianOx210MsgInfo
               if (localTipsBody.tips_ui_type.has()) {
                 paramInt = localStyleSheet.msg_tip_body.tips_ui_type.get();
               }
-              localKandianOx210MsgInfo.g = paramInt;
+              localKandianOx210MsgInfo.jdField_g_of_type_Int = paramInt;
               if (localTipsBody.uint64_uin.has())
               {
                 l1 = localStyleSheet.msg_tip_body.uint64_uin.get();
@@ -198,22 +202,22 @@ public class KandianOx210MsgInfo
                   continue;
                 }
                 paramArrayOfByte = localStyleSheet.msg_tip_body.bytes_icon_url.get().toStringUtf8();
-                localKandianOx210MsgInfo.jdField_d_of_type_JavaLangString = paramArrayOfByte;
+                localKandianOx210MsgInfo.jdField_e_of_type_JavaLangString = paramArrayOfByte;
                 if (!localTipsBody.bytes_content.has()) {
                   continue;
                 }
                 paramArrayOfByte = localStyleSheet.msg_tip_body.bytes_content.get().toStringUtf8();
-                localKandianOx210MsgInfo.jdField_c_of_type_JavaLangString = paramArrayOfByte;
+                localKandianOx210MsgInfo.jdField_d_of_type_JavaLangString = paramArrayOfByte;
                 if (!localTipsBody.bytes_schema.has()) {
                   continue;
                 }
                 paramArrayOfByte = localStyleSheet.msg_tip_body.bytes_schema.get().toStringUtf8();
-                localKandianOx210MsgInfo.jdField_e_of_type_JavaLangString = paramArrayOfByte;
+                localKandianOx210MsgInfo.jdField_f_of_type_JavaLangString = paramArrayOfByte;
                 if (!localTipsBody.bytes_business_info.has()) {
                   continue;
                 }
                 paramArrayOfByte = localStyleSheet.msg_tip_body.bytes_business_info.get().toStringUtf8();
-                localKandianOx210MsgInfo.jdField_f_of_type_JavaLangString = paramArrayOfByte;
+                localKandianOx210MsgInfo.jdField_g_of_type_JavaLangString = paramArrayOfByte;
                 if ((localMsgBody.msg_notify_infos.has()) && (localMsgBody.msg_notify_infos.get() != null) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get() != null) && (((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.has())) {
                   localKandianOx210MsgInfo.h = ((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.get();
                 }
@@ -253,16 +257,16 @@ public class KandianOx210MsgInfo
         return null;
       }
       return null;
-      label879:
+      label906:
       paramInt = 0;
       continue;
-      label884:
+      label911:
       paramInt = 0;
       continue;
-      label889:
+      label916:
       paramArrayOfByte = null;
       continue;
-      label894:
+      label921:
       paramArrayOfByte = null;
     }
   }
@@ -363,42 +367,42 @@ public class KandianOx210MsgInfo
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxg(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new lxp(this, paramQQAppInterface));
   }
   
   public void b(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxh(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new lxq(this, paramQQAppInterface));
   }
   
   public void c(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxi(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new lxr(this, paramQQAppInterface));
   }
   
   public void d(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxj(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new lxs(this, paramQQAppInterface));
   }
   
   public void e(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxk(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new lxt(this, paramQQAppInterface));
   }
   
   public void f(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxl(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new lxu(this, paramQQAppInterface));
   }
   
   public void g(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxm(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new lxv(this, paramQQAppInterface));
   }
   
   public void h(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxn(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new lxw(this, paramQQAppInterface));
   }
 }
 

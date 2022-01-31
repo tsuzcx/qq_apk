@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import ajpp;
-import ajpq;
-import ajpr;
-import ajps;
-import ajpt;
-import ajpu;
-import ajpv;
-import ajpw;
-import ajpx;
-import ajpy;
+import akdw;
+import akdx;
+import akdy;
+import akdz;
+import akea;
+import akeb;
+import akec;
+import aked;
+import akee;
+import akef;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
@@ -50,7 +50,7 @@ public class QQCustomDialog
 {
   public static final int WHICH_NEGATIVE = 0;
   public static final int WHICH_POSITIVE = 1;
-  private BaseAdapter adapter = new ajpp(this);
+  private BaseAdapter adapter = new akdw(this);
   public LinearLayout bodyLayout;
   CheckBox checkBox;
   TextView checkTxt;
@@ -63,7 +63,7 @@ public class QQCustomDialog
   public String[] items;
   public TextView lBtn;
   ListView list;
-  private ajpy mBrandColorManager = new ajpy(null);
+  private akef mBrandColorManager = new akef(null);
   FormSwitchItem mSwitch;
   private ImageView mVideoIcon;
   private TextView mVideoSize;
@@ -81,7 +81,7 @@ public class QQCustomDialog
   public QQCustomDialog(Context paramContext)
   {
     super(paramContext);
-    super.getWindow().setWindowAnimations(2131624571);
+    super.getWindow().setWindowAnimations(2131624572);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -91,7 +91,7 @@ public class QQCustomDialog
   public QQCustomDialog(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    super.getWindow().setWindowAnimations(2131624571);
+    super.getWindow().setWindowAnimations(2131624572);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -101,7 +101,7 @@ public class QQCustomDialog
   public QQCustomDialog(Context paramContext, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     super(paramContext, paramBoolean, paramOnCancelListener);
-    super.getWindow().setWindowAnimations(2131624571);
+    super.getWindow().setWindowAnimations(2131624572);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -238,7 +238,7 @@ public class QQCustomDialog
   
   public TextView getMessageTextView_Plain_Text()
   {
-    return (TextView)findViewById(2131364037);
+    return (TextView)findViewById(2131364061);
   }
   
   public boolean getSwitchState()
@@ -268,10 +268,10 @@ public class QQCustomDialog
   
   public QQCustomDialog setCheckBox(String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
-    findViewById(2131364029).setVisibility(0);
+    findViewById(2131364053).setVisibility(0);
     this.checkTxt.setText(paramString);
     if (this.checkBox != null) {
-      this.checkBox.setOnCheckedChangeListener(new ajpr(this, paramOnClickListener));
+      this.checkBox.setOnCheckedChangeListener(new akdy(this, paramOnClickListener));
     }
     setSeperatorState();
     return this;
@@ -280,32 +280,32 @@ public class QQCustomDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.title = ((TextView)findViewById(2131364010));
-    this.text = ((TextView)findViewById(2131362758));
-    this.countText = ((TextView)findViewById(2131364027));
-    this.dummyFirstPreviewImage = ((TextView)findViewById(2131364023));
-    this.previewImage = ((TextView)findViewById(2131364024));
-    this.operateImage = ((ImageView)findViewById(2131364045));
-    this.framePreviewImage = ((ImageView)findViewById(2131364026));
-    this.framePreview = findViewById(2131364025);
-    this.mVideoIcon = ((ImageView)findViewById(2131363526));
-    this.mVideoSize = ((TextView)findViewById(2131364039));
-    this.mVideoTime = ((TextView)findViewById(2131364040));
-    this.lBtn = ((TextView)findViewById(2131364013));
-    this.rBtn = ((TextView)findViewById(2131364014));
-    this.editPicTag = ((TextView)findViewById(2131364038));
-    this.progressBar = ((ProgressBar)findViewById(2131364036));
+    this.title = ((TextView)findViewById(2131364034));
+    this.text = ((TextView)findViewById(2131362776));
+    this.countText = ((TextView)findViewById(2131364051));
+    this.dummyFirstPreviewImage = ((TextView)findViewById(2131364047));
+    this.previewImage = ((TextView)findViewById(2131364048));
+    this.operateImage = ((ImageView)findViewById(2131364069));
+    this.framePreviewImage = ((ImageView)findViewById(2131364050));
+    this.framePreview = findViewById(2131364049);
+    this.mVideoIcon = ((ImageView)findViewById(2131363544));
+    this.mVideoSize = ((TextView)findViewById(2131364063));
+    this.mVideoTime = ((TextView)findViewById(2131364064));
+    this.lBtn = ((TextView)findViewById(2131364037));
+    this.rBtn = ((TextView)findViewById(2131364038));
+    this.editPicTag = ((TextView)findViewById(2131364062));
+    this.progressBar = ((ProgressBar)findViewById(2131364060));
     this.lBtn.setVisibility(8);
     this.rBtn.setVisibility(8);
-    this.bodyLayout = ((LinearLayout)findViewById(2131363771));
-    this.checkBox = ((CheckBox)findViewById(2131364041));
-    this.mSwitch = ((FormSwitchItem)findViewById(2131364042));
-    this.checkTxt = ((TextView)findViewById(2131364030));
-    this.list = ((ListView)findViewById(2131364021));
+    this.bodyLayout = ((LinearLayout)findViewById(2131363794));
+    this.checkBox = ((CheckBox)findViewById(2131364065));
+    this.mSwitch = ((FormSwitchItem)findViewById(2131364066));
+    this.checkTxt = ((TextView)findViewById(2131364054));
+    this.list = ((ListView)findViewById(2131364045));
     if ((this.list != null) && (Build.VERSION.SDK_INT >= 9)) {
       this.list.setOverScrollMode(2);
     }
-    this.mBrandColorManager.a(findViewById(2131364009));
+    this.mBrandColorManager.a(findViewById(2131364033));
   }
   
   public QQCustomDialog setFirstDummyPreviewImage(Drawable paramDrawable)
@@ -447,7 +447,7 @@ public class QQCustomDialog
       this.text.setMovementMethod(LinkMovementMethod.getInstance());
       this.text.setText(paramString);
       this.text.setContentDescription(paramString);
-      this.text.setLinkTextColor(getContext().getResources().getColor(2131493044));
+      this.text.setLinkTextColor(getContext().getResources().getColor(2131493045));
       this.text.setVisibility(0);
       return this;
     }
@@ -474,7 +474,7 @@ public class QQCustomDialog
     if (this.text != null)
     {
       this.text.setMaxLines(paramInt);
-      this.text.getViewTreeObserver().addOnGlobalLayoutListener(new ajpq(this, paramInt, paramString));
+      this.text.getViewTreeObserver().addOnGlobalLayoutListener(new akdx(this, paramInt, paramString));
     }
     return this;
   }
@@ -489,7 +489,7 @@ public class QQCustomDialog
     this.lBtn.setText(paramInt);
     this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131427457));
     this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new ajpw(this, paramOnClickListener));
+    this.lBtn.setOnClickListener(new aked(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -504,7 +504,7 @@ public class QQCustomDialog
     this.lBtn.setText(paramString);
     this.lBtn.setContentDescription(paramString + getContext().getString(2131427457));
     this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new ajpt(this, paramOnClickListener));
+    this.lBtn.setOnClickListener(new akea(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -547,7 +547,7 @@ public class QQCustomDialog
     this.rBtn.setText(paramInt);
     this.rBtn.setContentDescription(getContext().getString(paramInt));
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new ajpx(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new akee(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -562,7 +562,7 @@ public class QQCustomDialog
     this.rBtn.setText(paramInt);
     this.rBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131427457));
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new ajpv(this, paramOnClickListener, paramBoolean));
+    this.rBtn.setOnClickListener(new akec(this, paramOnClickListener, paramBoolean));
     setSeperatorState();
     return this;
   }
@@ -588,7 +588,7 @@ public class QQCustomDialog
     this.rBtn.setText(paramString);
     this.rBtn.setContentDescription(paramString + getContext().getString(2131427457));
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new ajpu(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new akeb(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -636,10 +636,10 @@ public class QQCustomDialog
       }
       if (paramInt == 2)
       {
-        this.framePreview.setBackgroundResource(2130839086);
+        this.framePreview.setBackgroundResource(2130839090);
         return this;
       }
-      this.framePreview.setBackgroundResource(2130839087);
+      this.framePreview.setBackgroundResource(2130839091);
       return this;
     }
     this.framePreview.setVisibility(8);
@@ -690,7 +690,7 @@ public class QQCustomDialog
       this.mSwitch.setText(paramString);
       this.mSwitch.setChecked(paramBoolean);
       if (paramOnClickListener != null) {
-        this.mSwitch.setOnCheckedChangeListener(new ajps(this, paramOnClickListener));
+        this.mSwitch.setOnCheckedChangeListener(new akdz(this, paramOnClickListener));
       }
     }
     return this;

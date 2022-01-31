@@ -1,29 +1,20 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.FilterProviderPagerAdapter;
-import dov.com.qq.im.capture.view.QIMFilterProviderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class amzl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public amzl(QIMFilterProviderView paramQIMFilterProviderView, int paramInt) {}
+  public amzl(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewQIMFilterProviderView.a.a.get(this.jdField_a_of_type_DovComQqImCaptureViewQIMFilterProviderView.b());
-    if (localGridView != null) {
-      localGridView.setSelection(this.jdField_a_of_type_Int);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("FilterProviderView", 2, "gridView is null ");
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzl
  * JD-Core Version:    0.7.0.1
  */

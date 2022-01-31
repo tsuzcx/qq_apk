@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abyd;
+import acff;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.view.ViewPager;
@@ -41,12 +41,12 @@ public class EmoticonPagerRadioGroup
   {
     float f1 = 13.0F;
     float f2 = 10.0F;
-    abyd localabyd = new abyd(this, getContext());
+    acff localacff = new acff(this, getContext());
     Resources localResources;
     if (paramInt == 2)
     {
-      localabyd.setButtonDrawable(2130843855);
-      localabyd.setGravity(17);
+      localacff.setButtonDrawable(2130843979);
+      localacff.setGravity(17);
       localResources = super.getContext().getResources();
       if (paramInt != 2) {
         break label209;
@@ -61,25 +61,25 @@ public class EmoticonPagerRadioGroup
       int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
       localLayoutParams.leftMargin = i;
       localLayoutParams.rightMargin = i;
-      localabyd.setLayoutParams(localLayoutParams);
-      localabyd.setClickable(true);
+      localacff.setLayoutParams(localLayoutParams);
+      localacff.setClickable(true);
       if ((AppSetting.b) && (paramInt != 3) && (paramInt != 2))
       {
-        localabyd.setClickable(false);
-        localabyd.setFocusable(false);
+        localacff.setClickable(false);
+        localacff.setFocusable(false);
       }
-      return localabyd;
+      return localacff;
       if (paramInt == 3)
       {
-        localabyd.setButtonDrawable(2130843856);
+        localacff.setButtonDrawable(2130843980);
         break;
       }
       if (paramInt == 4)
       {
-        localabyd.setButtonDrawable(2130838149);
+        localacff.setButtonDrawable(2130838152);
         break;
       }
-      localabyd.setButtonDrawable(2130838897);
+      localacff.setButtonDrawable(2130838901);
       break;
       label209:
       if (paramInt == 3) {
@@ -160,7 +160,7 @@ public class EmoticonPagerRadioGroup
       {
         localRadioButton = (RadioButton)super.getChildAt(0);
         if (!paramBoolean2) {
-          localRadioButton.setButtonDrawable(2130838897);
+          localRadioButton.setButtonDrawable(2130838901);
         }
         localRadioButton = (RadioButton)super.getChildAt(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
         if (localRadioButton != null) {

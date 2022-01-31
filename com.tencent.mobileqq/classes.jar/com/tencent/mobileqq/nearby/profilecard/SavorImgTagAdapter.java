@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aewi;
+import afjo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -42,7 +42,7 @@ public class SavorImgTagAdapter
     this.jdField_a_of_type_JavaUtilList = new ArrayList(2);
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559115);
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559117);
     this.d = paramInt1;
     this.c = (i + paramInt2);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
@@ -142,18 +142,18 @@ public class SavorImgTagAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int i = getItemViewType(paramInt);
-    aewi localaewi;
+    afjo localafjo;
     Object localObject;
     if (i == 0)
     {
       InterestTagInfo localInterestTagInfo = (InterestTagInfo)getItem(paramInt);
       if (paramView == null)
       {
-        paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970445, null);
-        localaewi = new aewi();
-        localaewi.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131363610));
-        localaewi.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363360));
-        paramViewGroup.setTag(localaewi);
+        paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970486, null);
+        localafjo = new afjo();
+        localafjo.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131363628));
+        localafjo.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363378));
+        paramViewGroup.setTag(localafjo);
         paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(this.d, this.c));
       }
       for (;;)
@@ -162,23 +162,23 @@ public class SavorImgTagAdapter
         if (localInterestTagInfo != null)
         {
           localObject = paramViewGroup;
-          if (localaewi != null)
+          if (localafjo != null)
           {
             paramView = localInterestTagInfo.tagIconUrl;
             if ((paramView == null) || (!paramView.equals("icon_more_url"))) {
               break;
             }
-            localaewi.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839499);
+            localafjo.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839504);
             if ((localInterestTagInfo.tagType == 10) || (localInterestTagInfo.tagType == 11) || (localInterestTagInfo.tagType == 9)) {
-              localaewi.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839500);
+              localafjo.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839505);
             }
-            localaewi.jdField_a_of_type_AndroidWidgetTextView.setText(localInterestTagInfo.tagName);
+            localafjo.jdField_a_of_type_AndroidWidgetTextView.setText(localInterestTagInfo.tagName);
             localObject = paramViewGroup;
           }
         }
         label203:
         return localObject;
-        localaewi = (aewi)paramView.getTag();
+        localafjo = (afjo)paramView.getTag();
         paramViewGroup = paramView;
       }
     }
@@ -220,7 +220,7 @@ public class SavorImgTagAdapter
           {
             ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = null;
             ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = null;
-            localURLImageView = localaewi.jdField_a_of_type_ComTencentImageURLImageView;
+            localURLImageView = localafjo.jdField_a_of_type_ComTencentImageURLImageView;
             localObject = paramView;
             if (paramView == null) {
               localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;

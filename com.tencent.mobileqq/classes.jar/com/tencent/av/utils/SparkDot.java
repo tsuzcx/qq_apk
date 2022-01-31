@@ -17,7 +17,7 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import khq;
+import khb;
 
 public class SparkDot
   extends LinearLayout
@@ -49,7 +49,7 @@ public class SparkDot
     this.jdField_a_of_type_Int = 400;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_JavaLangRunnable = new khq(this);
+    this.jdField_a_of_type_JavaLangRunnable = new khb(this);
     setOrientation(0);
   }
   

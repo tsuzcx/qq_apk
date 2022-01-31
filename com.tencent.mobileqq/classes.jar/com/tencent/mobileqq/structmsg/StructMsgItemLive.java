@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
-import ahuf;
-import ahug;
+import aiii;
+import aiij;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -34,7 +34,7 @@ public class StructMsgItemLive
   
   public StructMsgItemLive()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahug(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiij(this);
     this.jdField_a_of_type_JavaLangString = "live";
   }
   
@@ -71,11 +71,11 @@ public class StructMsgItemLive
         ((LinearLayout.LayoutParams)localObject).setMargins(0, 0, 0, 0);
         paramView.setPadding(AIOUtils.a(7.0F, localResources), AIOUtils.a(8.0F, localResources), AIOUtils.a(7.0F, localResources), AIOUtils.a(8.0F, localResources));
         paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        paramView.setBackgroundResource(2130841249);
+        paramView.setBackgroundResource(2130841286);
         localLinearLayout.addView(paramView);
         localObject = new TextView(paramContext);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        ((TextView)localObject).setBackgroundColor(localResources.getColor(2131492923));
+        ((TextView)localObject).setBackgroundColor(localResources.getColor(2131492924));
         ((TextView)localObject).setPadding(0, 0, 0, 0);
         ((TextView)localObject).setTextColor(-16777216);
         ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
@@ -87,7 +87,7 @@ public class StructMsgItemLive
         paramView.addView((View)localObject, localLayoutParams);
         paramContext = new TextView(paramContext);
         localObject = new LinearLayout.LayoutParams(-1, -2);
-        paramContext.setBackgroundColor(localResources.getColor(2131492923));
+        paramContext.setBackgroundColor(localResources.getColor(2131492924));
         paramContext.setPadding(0, AIOUtils.a(3.0F, localResources), 0, 0);
         paramContext.setTextColor(-16777216);
         paramContext.setEllipsize(TextUtils.TruncateAt.END);
@@ -100,7 +100,7 @@ public class StructMsgItemLive
       }
       localLinearLayout.setTag(paramBundle);
       paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout.setOnLongClickListener(new ahuf(this));
+      paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout.setOnLongClickListener(new aiii(this));
       return localLinearLayout;
     }
   }
@@ -338,7 +338,7 @@ public class StructMsgItemLive
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgItemLive
  * JD-Core Version:    0.7.0.1
  */

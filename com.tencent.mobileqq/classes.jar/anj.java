@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.qq.im.poi.LbsPackInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.qq.im.poi.LbsPackPoiListActivity;
 
-public final class anj
-  implements Parcelable.Creator
+public class anj
+  implements View.OnClickListener
 {
-  public LbsPackInfo a(Parcel paramParcel)
-  {
-    return new LbsPackInfo(paramParcel);
-  }
+  public anj(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
   
-  public LbsPackInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new LbsPackInfo[paramInt];
+    LbsPackPoiListActivity.a(this.a).dismiss();
   }
 }
 

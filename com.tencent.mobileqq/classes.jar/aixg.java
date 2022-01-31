@@ -1,94 +1,65 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase.OnEditItemListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Map;
+import android.text.Editable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.tribe.view.TEditText.OnSelectionChangedListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class aixg
-  extends SimpleObserver
+  implements TEditText.OnSelectionChangedListener
 {
-  public aixg(VideoItem paramVideoItem, ImageInfo paramImageInfo) {}
+  public aixg(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void a(ImageInfo paramImageInfo)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem onNext. info position=", Integer.valueOf(paramImageInfo.c), ", old status=", Integer.valueOf(paramImageInfo.g), ", result=", paramImageInfo });
-    }
-    paramImageInfo.g = 3;
-    paramImageInfo.e = 100;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_JavaUtilMap.remove(paramImageInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
+    int k = 1;
+    if (this.a.b.getText().length() <= 0) {}
+    for (;;)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(paramImageInfo.c);
-      if ((localObject instanceof VideoItem.VideoViewHolder))
+      return;
+      if (paramInt1 < 0)
       {
-        localObject = (VideoItem.VideoViewHolder)localObject;
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoItem", 2, new Object[] { "video onNext. info hash=", Integer.valueOf(paramImageInfo.hashCode()), ", result hash=", Integer.valueOf(paramImageInfo.hashCode()), ", info position=", Integer.valueOf(paramImageInfo.c), ", result position=", Integer.valueOf(paramImageInfo.c), ", vh position=", Integer.valueOf(((VideoItem.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase.c), ",vh hash=", Integer.valueOf(localObject.hashCode()) });
-        }
-        if (paramImageInfo.d.equals(((VideoItem.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag()))
+        if (paramInt2 > this.a.H.length() + 1) {}
+        for (;;)
         {
-          ((VideoItem.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
-          ((VideoItem.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-          ((VideoItem.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramImageInfo.e, paramImageInfo.d);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a((RecyclerView.ViewHolder)localObject, true);
-      }
-    }
-    TroopTechReportUtils.a("hw_entry_upload", "upload_video", "1", "", String.valueOf(System.currentTimeMillis() - paramImageInfo.a), "");
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.a(0, false);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem onError. info position=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.c), ", info old status=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.g) });
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.g = 2;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo);
-    QLog.d("VideoItem", 1, paramError, new Object[0]);
-    paramError = paramError.getMessage();
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.c);
-      if ((localObject instanceof VideoItem.VideoViewHolder))
-      {
-        localObject = (VideoItem.VideoViewHolder)localObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.d.equals(((VideoItem.VideoViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag()))
-        {
-          ((VideoItem)((XMediaEditorAdapter)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo, 0);
-          if ("200".equals(paramError))
-          {
-            QLog.d("VideoItem", 1, "VideoItem onError. upload size exceed.");
-            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext(), "上传的视频太大，请重新选择其他视频", 0).a();
-            this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a((RecyclerView.ViewHolder)localObject);
-          }
+          this.a.b.setSelection(paramInt2);
+          return;
+          paramInt2 = this.a.H.length() + 1;
         }
       }
-    }
-    if (!paramError.startsWith("c_")) {
-      TroopTechReportUtils.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.a), "");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.d.equals(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.a(0, false);
+      if (paramInt2 < 0)
+      {
+        if (paramInt1 > this.a.H.length() + 1) {}
+        for (;;)
+        {
+          this.a.b.setSelection(paramInt1);
+          return;
+          paramInt1 = this.a.H.length() + 1;
+        }
+      }
+      if (!TextUtils.isEmpty(this.a.H))
+      {
+        int i = 0;
+        int j = paramInt1;
+        if (paramInt1 < this.a.H.length() + 1)
+        {
+          j = this.a.H.length() + 1;
+          i = 1;
+        }
+        if (paramInt2 < this.a.H.length() + 1) {
+          paramInt2 = this.a.H.length() + 1;
+        }
+        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
+        {
+          this.a.b.setSelection(j, paramInt2);
+          return;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,39 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.av.widget.ShareActionSheetBuilder;
-import com.tencent.common.config.AppSetting;
-import mqq.app.BaseActivity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.SystemClock;
+import com.tencent.biz.AuthorizeConfig;
+import com.tencent.biz.authorize.FlatBuffersConfig;
+import com.tencent.biz.authorize.JsonConfig;
+import com.tencent.biz.flatbuffers.FlatBuffersParser;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class kio
-  extends BaseAdapter
+  implements Runnable
 {
-  private kio(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
+  public kio(AuthorizeConfig paramAuthorizeConfig) {}
   
-  public int getCount()
+  public void run()
   {
-    return 5;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(ShareActionSheetBuilder.a(this.a)).inflate(2130971620, null);
-    }
-    int i;
-    int j;
-    switch (paramInt)
+    long l = SystemClock.currentThreadTimeMillis();
+    if (l > AuthorizeConfig.jdField_a_of_type_Long + 10000L)
     {
-    default: 
-      i = 2131435292;
-      j = 2130838328;
-      paramInt = 2131435316;
+      this.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("domainCmdRight", 4);
+      AuthorizeConfig.jdField_a_of_type_Long = l;
     }
-    for (;;)
+    FlatBuffersParser.b();
+    l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("lastUpdate", 0L);
+    if (l != AuthorizeConfig.jdField_b_of_type_Long)
     {
-      paramView = (ImageView)paramViewGroup.findViewById(2131366708);
-      TextView localTextView = (TextView)paramViewGroup.findViewById(2131364292);
-      paramView.setImageResource(j);
-      localTextView.setText(i);
-      if (AppSetting.b) {
-        paramViewGroup.setContentDescription(ShareActionSheetBuilder.a(this.a).getString(paramInt));
-      }
-      return paramViewGroup;
-      i = 2131435284;
-      j = 2130838332;
-      paramInt = 2131435314;
-      continue;
-      i = 2131435291;
-      j = 2130838333;
-      paramInt = 2131435315;
-      continue;
-      i = 2131435282;
-      j = 2130838336;
-      paramInt = 2131435313;
-      continue;
-      i = 2131435281;
-      j = 2130838330;
-      paramInt = 2131435312;
+      AuthorizeConfig.jdField_b_of_type_Long = l;
+      this.a.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.b();
+      this.a.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a();
+      this.a.i = null;
+      this.a.jdField_b_of_type_OrgJsonJSONObject = null;
+      this.a.jdField_c_of_type_OrgJsonJSONObject = null;
+      this.a.jdField_a_of_type_OrgJsonJSONObject = null;
+      this.a.jdField_c_of_type_OrgJsonJSONArray = null;
+      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.a.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
   }
 }

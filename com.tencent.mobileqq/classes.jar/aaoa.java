@@ -1,41 +1,17 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class aaoa
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  implements ArkAppCenter.OnGetAppIcon
 {
-  static
-  {
-    if (!ArkLocalAppMgr.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  aaoa(aanz paramaanz, QQCustomDialog paramQQCustomDialog) {}
   
-  aaoa(aanz paramaanz, String paramString) {}
-  
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    if ((paramInt == 0) && (paramAppPathInfo != null))
-    {
-      ArkLocalAppMgr.a(this.jdField_a_of_type_Aanz.a.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aanz.a.jdField_a_of_type_Aaov, paramInt, paramString, paramAppPathInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    if (paramInt == 0)
-    {
-      if (!jdField_a_of_type_Boolean) {
-        throw new AssertionError();
-      }
-      paramInt = -1;
-      paramString = "ret is 0 but path is null";
-    }
-    for (;;)
-    {
-      ArkLocalAppMgr.a(this.jdField_a_of_type_Aanz.a.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aanz.a.jdField_a_of_type_Aaov, paramInt, paramString, null, this.jdField_a_of_type_JavaLangString);
-      return;
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364041)).setImageBitmap(paramBitmap);
     }
   }
 }

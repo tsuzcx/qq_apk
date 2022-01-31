@@ -1,23 +1,37 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
-import java.util.HashMap;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
 
 public class nfc
-  extends EncryptUrlJob
+  extends RecyclerView.OnScrollListener
 {
-  public nfc(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareCopyLinkData paramShareCopyLinkData)
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public nfc(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super(paramString1, paramString2, paramBoolean);
+    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
+    {
+      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.c();
+      }
+      return;
+    }
+    MsgTabStoryNodeListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager);
   }
   
-  public boolean b()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)a("EncryptUrlJob_encryptedUrl"));
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a);
-    a("ShortenUrlJob_shortenedUrls", localHashMap);
-    return true;
+    if (paramInt1 > 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

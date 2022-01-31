@@ -1,22 +1,34 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
 
 public class aeln
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements Runnable
 {
-  public aeln(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  public aeln(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoViewTVKImpl", 2, "onError called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "], model = [" + paramInt1 + "], what = [" + paramInt2 + "], position = [" + paramInt3 + "], extra = [" + paramString + "], Info = [" + paramObject + "]");
+    synchronized (this.a.a)
+    {
+      boolean bool = this.a.d;
+      if (!bool) {}
+      try
+      {
+        DeviceProfileManager.a(this.a, 214).a(this.a);
+        this.a.d = true;
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("NearbyAppInterface", 2, "onDestroy: ", localException);
+          }
+        }
+      }
     }
-    ThreadManager.getUIHandler().post(new aelo(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
-    return false;
   }
 }
 

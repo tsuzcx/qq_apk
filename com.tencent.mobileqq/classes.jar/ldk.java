@@ -1,24 +1,24 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyBaseViewController;
-import java.lang.ref.WeakReference;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 
 public class ldk
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  private WeakReference a;
+  public ldk(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
   
-  public ldk(ReadInJoyBaseViewController paramReadInJoyBaseViewController)
+  public void run()
   {
-    this.a = new WeakReference(paramReadInJoyBaseViewController);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ReadInJoyBaseViewController)this.a.get()).a(true);
+    if (this.jdField_a_of_type_Int <= 0)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(2131433297);
+      return;
     }
-    return false;
+    if (this.jdField_a_of_type_Int > 99)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getString(2131433297), Integer.valueOf(99) }));
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getString(2131433297), Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
 }
 

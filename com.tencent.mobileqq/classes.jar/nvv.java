@@ -1,44 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.MemoryManager;
+import com.tencent.biz.qqstory.model.DiscoverManager;
 import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest;
-import com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest.GetProfileYearNodeListResponse;
-import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter.GetYearNodeListEvent;
+import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
+import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader.GetDiscoverCardsEvent;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.List;
 
 public class nvv
-  implements CmdTaskManger.CommandCallback
+  implements Runnable
 {
-  public nvv(ProfileFeedPresenter paramProfileFeedPresenter, boolean paramBoolean) {}
+  public nvv(DiscoverPagerLoader paramDiscoverPagerLoader) {}
   
-  public void a(@NonNull GetProfileYearNodeListRequest paramGetProfileYearNodeListRequest, @Nullable GetProfileYearNodeListRequest.GetProfileYearNodeListResponse arg2, @NonNull ErrorMessage paramErrorMessage)
+  public void run()
   {
-    if (ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter).get())
+    ??? = ((DiscoverManager)SuperManager.a(22)).a(DiscoverPagerLoader.a(this.a), DiscoverPagerLoader.a(this.a));
+    DiscoverPagerLoader.GetDiscoverCardsEvent localGetDiscoverCardsEvent = new DiscoverPagerLoader.GetDiscoverCardsEvent(new ErrorMessage(), DiscoverPagerLoader.a(this.a), DiscoverPagerLoader.a(this.a));
+    localGetDiscoverCardsEvent.b = true;
+    localGetDiscoverCardsEvent.jdField_a_of_type_JavaUtilList = ((List)???);
+    localGetDiscoverCardsEvent.jdField_a_of_type_Boolean = true;
+    synchronized (this.a)
     {
-      SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
-      return;
-    }
-    SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
-    paramGetProfileYearNodeListRequest = new ProfileFeedPresenter.GetYearNodeListEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter, paramErrorMessage);
-    paramGetProfileYearNodeListRequest.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if ((??? == null) || (paramErrorMessage.isFail()))
-    {
-      Dispatchers.get().dispatch(paramGetProfileYearNodeListRequest);
-      return;
-    }
-    paramGetProfileYearNodeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    ((MemoryManager)SuperManager.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter)
-    {
-      Dispatchers.get().dispatch(paramGetProfileYearNodeListRequest);
-      return;
+      if (!this.a.b)
+      {
+        Dispatchers.get().dispatch(localGetDiscoverCardsEvent);
+        SLog.a("Q.qqstory.discover:DiscoverPagerLoader", "dispatch video list return from cache: %s", localGetDiscoverCardsEvent);
+        return;
+      }
+      SLog.d("Q.qqstory.discover:DiscoverPagerLoader", "load cache data later than load from network");
     }
   }
 }

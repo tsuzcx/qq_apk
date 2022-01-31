@@ -1,22 +1,22 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
-public class ajvf
+class ajvf
   implements Runnable
 {
-  public ajvf(HealthStepCounterPlugin paramHealthStepCounterPlugin) {}
+  ajvf(ajve paramajve, Bitmap paramBitmap) {}
   
   public void run()
   {
-    QQToast localQQToast = new QQToast(this.a.mRuntime.a().getContext());
-    QQToast.a(this.a.mRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).b((int)(localQQToast.b() * 2.5D));
+    if ((this.jdField_a_of_type_Ajve.a.a.a instanceof TroopGiftToPersonalSurfaceView)) {
+      ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_Ajve.a.a.a).setSendHeadBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvf
  * JD-Core Version:    0.7.0.1
  */

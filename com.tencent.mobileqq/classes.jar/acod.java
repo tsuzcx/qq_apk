@@ -1,93 +1,97 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class acod
-  extends acnp
+  implements DownloadListener
 {
-  public acod(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  public acod(UniformDownloadActivity paramUniformDownloadActivity) {}
+  
+  public void a(DownloadInfo paramDownloadInfo)
   {
-    super(paramOnlineFileSessionWorker);
+    this.a.runOnUiThread(new acoe(this));
   }
   
-  protected String a()
+  public void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    return "StateLocalFailedWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadError " + paramDownloadInfo.d);
+    }
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
     }
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 9, 14);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Acnp.a() + "->StateUploadingWhenRecv)");
-    this.jdField_a_of_type_Acnp = new acor(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a(true, 0L);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public void a(String paramString1, String paramString2)
   {
-    b(paramInt1, paramInt2);
-  }
-  
-  protected void a(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if ("1101070898".equals(paramString1))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      paramString1 = UniformDownloadActivity.a(this.a);
+      UniformDownloadActivity.a(this.a, paramString1);
+      paramString1 = UniformDownloadActivity.a(this.a, paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d(UniformDownloadActivity.a, 2, "tmastUrl=" + paramString1);
+      }
+      UniformDownloadActivity.a(this.a, paramString1);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
     }
-    OnlineFileSessionWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 10, 12, true);
-    a("StateExcepInvalidWhenPause");
-    this.jdField_a_of_type_Acnp = new acnz(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
   
-  protected void a(long paramLong)
+  public void a(List paramList)
   {
-    b(paramLong);
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (localFileManagerEntity == null)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
+      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+      if (QLog.isColorLevel()) {
+        QLog.d(UniformDownloadActivity.a, 2, "onDownloadUpdate " + localDownloadInfo.d);
+      }
+      if ((localDownloadInfo != null) && (localDownloadInfo.b.equals("1101070898"))) {
+        this.a.runOnUiThread(new acof(this, localDownloadInfo));
+      }
     }
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((FileManagerUtil.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.a(paramLong, localFileManagerEntity.peerUin);
-    localFileManagerEntity.setCloudType(1);
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 1, 3);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 1, 3);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Acnp.a() + "->StateGotoOffFileProcess)");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Acnp = new acob(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
-    return true;
   }
   
-  protected void b()
+  public void b(DownloadInfo paramDownloadInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadPause " + paramDownloadInfo.d);
     }
-    OnlineFileSessionWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 10, 9, true);
-    a("StateCancelUploadWhenPause");
-    this.jdField_a_of_type_Acnp = new acnr(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898"))) {
+      this.a.runOnUiThread(new acog(this));
+    }
+  }
+  
+  public void b(String paramString1, String paramString2) {}
+  
+  public void c(DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadFinish " + paramDownloadInfo.d);
+    }
+    ReportController.b(null, "dc00898", "", "", "0X8008F88", "0X8008F88", 1, 0, "", "", "", "");
+    this.a.runOnUiThread(new acoh(this));
+  }
+  
+  public void c(String paramString1, String paramString2) {}
+  
+  public void d(DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadCancel " + paramDownloadInfo.d);
+    }
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
   }
 }
 

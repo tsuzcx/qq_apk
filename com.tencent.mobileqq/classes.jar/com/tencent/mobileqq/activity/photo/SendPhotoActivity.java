@@ -25,8 +25,8 @@ import com.tencent.util.BinderWarpper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import wvo;
-import wvp;
+import wyt;
+import wyu;
 
 public class SendPhotoActivity
   extends BaseActivity
@@ -48,8 +48,8 @@ public class SendPhotoActivity
   public SendPhotoActivity()
   {
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new wvo(this);
-    this.jdField_a_of_type_AndroidOsHandler = new wvp(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new wyt(this);
+    this.jdField_a_of_type_AndroidOsHandler = new wyu(this);
   }
   
   public static void a()

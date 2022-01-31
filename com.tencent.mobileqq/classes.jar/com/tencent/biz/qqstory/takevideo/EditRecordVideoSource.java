@@ -5,12 +5,12 @@ import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import java.io.File;
-import obz;
+import odr;
 
 public class EditRecordVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new obz();
+  public static final Parcelable.Creator CREATOR = new odr();
   public final float a;
   public final int a;
   public final long a;

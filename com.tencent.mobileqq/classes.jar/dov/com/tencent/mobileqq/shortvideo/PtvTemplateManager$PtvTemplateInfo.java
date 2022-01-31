@@ -61,6 +61,7 @@ public class PtvTemplateManager$PtvTemplateInfo
   public String id;
   public boolean isSelected;
   public boolean isshow = true;
+  public String jump_ws;
   public int kind = 0;
   public String md5;
   public boolean multivideosupport = true;

@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.emosm.view.DragSortListView.LeftEventListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class srq
-  implements DragSortListView.LeftEventListener
+  implements Animation.AnimationListener
 {
-  public srq(GroupManagerActivity paramGroupManagerActivity) {}
+  public srq(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
   
-  public void a(int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+  }
   
-  public void b(int paramInt) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+  }
 }
 
 

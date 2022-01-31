@@ -9,7 +9,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.AbsListView.LayoutParams;
-import luo;
+import lux;
 
 public class FeedItemCellTypeTopicRecommendUgcVideo
   extends FeedItemCellTypeTopicRecommendUgcImage
@@ -47,7 +47,7 @@ public class FeedItemCellTypeTopicRecommendUgcVideo
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
         localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
       }
-      localLinearLayout2.setOnClickListener(new luo(this));
+      localLinearLayout2.setOnClickListener(new lux(this));
       localLinearLayout1.addView(localLinearLayout2);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {

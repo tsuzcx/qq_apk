@@ -17,10 +17,10 @@ public class StoryMessageListActivity$FooterViewHolder
   
   public StoryMessageListActivity$FooterViewHolder(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362709);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362690));
-    this.b = paramView.findViewById(2131371736);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364786));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362727);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362708));
+    this.b = paramView.findViewById(2131371906);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364808));
     paramView.setOnClickListener(this);
     paramView.setOnLongClickListener(this);
   }

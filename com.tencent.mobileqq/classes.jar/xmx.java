@@ -1,26 +1,29 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.VideoProcessListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import java.util.List;
 
-public class xmx
-  implements NewFlowCameraActivity.VideoProcessListener
+class xmx
+  extends Filter
 {
-  public xmx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xmx(xmw paramxmw) {}
   
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
-    if (this.a.r == 10011)
+    paramCharSequence = new Filter.FilterResults();
+    paramCharSequence.values = this.a.a.a;
+    paramCharSequence.count = this.a.a.a.size();
+    return paramCharSequence;
+  }
+  
+  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
+  {
+    if (paramFilterResults.count > 0)
     {
-      NewFlowCameraActivity.a(this.a, paramString1);
+      this.a.notifyDataSetChanged();
       return;
     }
-    if (paramBoolean)
-    {
-      NewFlowCameraActivity.b(this.a, paramString1);
-      return;
-    }
-    this.a.i(true);
-    QQToast.a(this.a, "对不起，GIF处理异常...", 0).a();
+    this.a.notifyDataSetInvalidated();
   }
 }
 

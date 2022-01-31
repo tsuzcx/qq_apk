@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexs
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aexs(NearbyMomentManager paramNearbyMomentManager, String paramString, boolean paramBoolean) {}
+  public aexs(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Iterator localIterator = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager).iterator();
-    while (localIterator.hasNext())
-    {
-      ((NearbyMomentManager.MomentDataChangeObserver)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-      NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager, null);
-    }
+    this.a.j();
+    ShortVideoCommentsView.a(this.a).setVisibility(8);
+    ShortVideoCommentsView.a(this.a, 2);
   }
 }
 

@@ -50,29 +50,29 @@ public class SearchResultView
     View localView = a(this.b);
     if (bool) {
       if (!b(this.b)) {
-        localView.setBackgroundColor(localResources.getColor(2131492947));
+        localView.setBackgroundColor(localResources.getColor(2131492948));
       }
     }
     for (;;)
     {
-      localView = paramView.findViewById(2131363937);
+      localView = paramView.findViewById(2131363960);
       if (localView != null)
       {
         if (!bool) {
           break;
         }
-        localView.setBackgroundColor(localResources.getColor(2131492949));
+        localView.setBackgroundColor(localResources.getColor(2131492950));
       }
       return paramView;
-      localView.setBackgroundResource(2130838576);
+      localView.setBackgroundResource(2130838580);
       continue;
       if (!b(this.b)) {
-        localView.setBackgroundColor(localResources.getColor(2131492968));
+        localView.setBackgroundColor(localResources.getColor(2131492969));
       } else {
-        localView.setBackgroundResource(2130838575);
+        localView.setBackgroundResource(2130838579);
       }
     }
-    localView.setBackgroundColor(localResources.getColor(2131492948));
+    localView.setBackgroundColor(localResources.getColor(2131492949));
     return paramView;
   }
   
@@ -88,7 +88,7 @@ public class SearchResultView
     default: 
       return this.d;
     }
-    return this.d.findViewById(2131366301);
+    return this.d.findViewById(2131366328);
   }
   
   public ImageView a()
@@ -98,21 +98,21 @@ public class SearchResultView
   
   protected void a()
   {
-    View localView = this.d.findViewById(2131363360);
+    View localView = this.d.findViewById(2131363378);
     if (localView != null)
     {
       this.j = ((TextView)localView);
       this.j.setEditableFactory(QQTextBuilder.a);
     }
-    localView = this.d.findViewById(2131363520);
+    localView = this.d.findViewById(2131363538);
     if (localView != null) {
       this.k = ((TextView)localView);
     }
-    localView = this.d.findViewById(2131365632);
+    localView = this.d.findViewById(2131365659);
     if (localView != null) {
       this.l = ((TextView)localView);
     }
-    localView = this.d.findViewById(2131366376);
+    localView = this.d.findViewById(2131366403);
     if (localView != null) {
       this.m = ((TextView)localView);
     }
@@ -120,11 +120,11 @@ public class SearchResultView
     if (localView != null) {
       this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)localView);
     }
-    localView = this.d.findViewById(2131365659);
+    localView = this.d.findViewById(2131365686);
     if (localView != null) {
       this.f = ((ImageView)localView);
     }
-    this.jdField_e_of_type_AndroidViewView = this.d.findViewById(2131363905);
+    this.jdField_e_of_type_AndroidViewView = this.d.findViewById(2131363928);
     b();
   }
   
@@ -159,8 +159,8 @@ public class SearchResultView
   {
     switch (paramInt)
     {
-    case 2130969385: 
     case 2130969386: 
+    case 2130969387: 
     default: 
       return true;
     }

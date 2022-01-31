@@ -1,74 +1,39 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.LayerEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
-import java.util.List;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class oic
-  implements FaceLayer.LayerEventListener
+class oic
+  implements WXShareHelper.WXShareListener
 {
-  public oic(DoodleLayout paramDoodleLayout) {}
+  oic(oia paramoia, Bitmap paramBitmap) {}
   
-  public void a(int paramInt)
+  public void a(BaseResp paramBaseResp)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.b(1, paramInt);
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
-  }
-  
-  public void a(FaceLayer.FaceAndTextItem paramFaceAndTextItem)
-  {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$FaceAndTextItem = paramFaceAndTextItem;
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceMachinePKVideoSharer", 2, "[DanceMachine Share]  shareToWechat errorCode : " + paramBaseResp.errCode + "   errorStr : " + paramBaseResp.errCode + "  transaction : " + paramBaseResp.transaction + "  openId : " + paramBaseResp.openId + " type : " + paramBaseResp.getType());
+    }
+    if ((paramBaseResp.errCode != 0) && (paramBaseResp.errCode != -2)) {
+      this.jdField_a_of_type_Oia.a.a.runOnUiThread(new oid(this));
+    }
+    if (paramBaseResp.errCode == 0)
     {
-      SLog.b("DoodleLayout", "selectLocation: clickItem-->" + paramFaceAndTextItem.toString());
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$FaceAndTextItem.a());
-    }
-  }
-  
-  public boolean a(FaceLayer.FaceItem paramFaceItem)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
-      Object localObject;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
-        ((GestureHelper.ZoomItem)localObject).d = false;
-        if (!(localObject instanceof FaceLayer.FaceItem)) {
-          break label120;
-        }
-        FaceLayer localFaceLayer = this.a.a();
-        if (localFaceLayer != null) {
-          localFaceLayer.a.add((FaceLayer.FaceItem)localObject);
-        }
+      if (VideoSharer.a(this.jdField_a_of_type_Oia.a) != 2) {
+        break label180;
       }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramFaceItem);
-        paramFaceItem.d = true;
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
-        return true;
-        label120:
-        if ((localObject instanceof TextLayer.TextItem))
-        {
-          localObject = this.a.a();
-          if (localObject != null) {
-            ((TextLayer)localObject).d();
-          }
-        }
-      }
+      CaptureReportUtil.a("wechat_moments", VideoSharer.a(this.jdField_a_of_type_Oia.a));
     }
-    return false;
+    label180:
+    while (VideoSharer.a(this.jdField_a_of_type_Oia.a) != 1) {
+      return;
+    }
+    CaptureReportUtil.a("wechat_friends", VideoSharer.a(this.jdField_a_of_type_Oia.a));
   }
 }
 

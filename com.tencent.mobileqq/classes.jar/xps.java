@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public class xps
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+class xps
+  implements Runnable
 {
-  public xps(PtvTemplateAdapter paramPtvTemplateAdapter) {}
+  xps(xpr paramxpr) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void run()
   {
-    this.a.a.post(new xpu(this, paramPtvTemplateInfo, paramInt));
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    this.a.a.post(new xpt(this, paramPtvTemplateInfo, paramBoolean));
-    if (!paramBoolean) {
-      FlowCameraMqqAction.a("", "0X80075BB", "", "", "", "");
-    }
+    this.a.a.e.setVisibility(4);
+    this.a.a.e.setAlpha(255);
   }
 }
 

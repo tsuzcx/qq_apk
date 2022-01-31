@@ -1,39 +1,15 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.util.ILog;
-import com.tencent.biz.common.util.NetworkUtil;
+import android.view.View;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class kma
-  implements AsyncBack
+public final class kma
+  implements Runnable
 {
-  kma(klz paramklz) {}
+  public kma(QQAppInterface paramQQAppInterface, View paramView, String paramString) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(paramInt);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
-    if (HtmlOffline.a.a()) {
-      HtmlOffline.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
-    }
-    if (paramInt == 0) {
-      if (HtmlOffline.b(this.a.b)) {
-        this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(null, 0);
-      }
-    }
-    for (;;)
-    {
-      BidDownloader.b(this.a.b);
-      HtmlOffline.a(this.a.b, paramInt, l, NetworkUtil.a(this.a.jdField_a_of_type_AndroidContentContext));
-      return;
-      this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(null, 6);
-      continue;
-      this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(null, 2);
-    }
+    CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_JavaLangString, CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
   }
 }
 

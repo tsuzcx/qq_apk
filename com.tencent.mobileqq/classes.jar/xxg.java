@@ -1,166 +1,134 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView.CameraGlFilterListener;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import com.tencent.mobileqq.shortvideo.ptvfilter.FilterProcessRender;
+import com.tencent.mobileqq.shortvideo.ptvfilter.VideoFilterList;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQVideoMaterial;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class xxg
-  extends DiscussionObserver
+  implements Runnable
 {
-  public xxg(SelectMemberActivity paramSelectMemberActivity) {}
+  public xxg(CameraFilterGLView paramCameraFilterGLView, VideoFilterList paramVideoFilterList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, QQVideoMaterial paramQQVideoMaterial, boolean paramBoolean4, int paramInt, boolean paramBoolean5) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
+  public void run()
   {
-    if (!paramBoolean) {
-      SelectMemberActivity.jdField_f_of_type_Boolean = false;
-    }
-    ArrayList localArrayList;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    long l = SystemClock.elapsedRealtime();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView.a.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView.a.c = this.b;
+    label92:
+    Object localObject;
+    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList != null) && (this.c))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      if (!paramBoolean) {
-        break label486;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView.a.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.c);
+      if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList == null) || (!this.d)) {
+        break label441;
       }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView.a.b(true);
+      l = (SystemClock.elapsedRealtime() - l) / 1000L;
       if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "create discussion success: roomId: " + paramLong + ", mSubType: " + this.a.d + ", mEntrance: " + this.a.jdField_f_of_type_Int);
+        QLog.d("PtvFilterUtils", 2, "PtvFilterUtils_onDrawFrame[setVideoFilter_changeFilter=" + l / 1000.0D + "ms]");
       }
-      localArrayList = new ArrayList();
-      Iterator localIterator = this.a.i.iterator();
-      while (localIterator.hasNext())
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList == null) {
+        break label537;
+      }
+      if (!CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).jdField_a_of_type_Boolean)
       {
-        ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-        if (localResultRecord.jdField_a_of_type_Int == 5)
+        CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).jdField_a_of_type_Boolean = true;
+        if ((CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView) != null) && (this.c))
         {
-          if (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("pstn")) {
-            localResultRecord.jdField_a_of_type_JavaLangString = localResultRecord.jdField_a_of_type_JavaLangString.substring("pstn".length());
+          CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView.a.b, 0);
+          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView;
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView.a.b) {
+            break label455;
           }
-          localArrayList.add(localResultRecord.jdField_a_of_type_JavaLangString);
-        }
-        else if ((localResultRecord.jdField_a_of_type_Int == 4) && (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("+")))
-        {
-          localArrayList.add(localResultRecord.jdField_a_of_type_JavaLangString);
+          bool = true;
+          label236:
+          CameraFilterGLView.a((CameraFilterGLView)localObject, bool);
         }
       }
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", String.valueOf(paramLong));
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("discussName", paramString);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("qqPhoneUserList", localArrayList);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("audioType", 2);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("callType", 2);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("reportType", SelectMemberActivity.a(this.a));
-      if (this.a.jdField_f_of_type_Int != 18) {
-        break label456;
-      }
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("from", 3);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_f_of_type_Int == 12) {
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("select_memeber_discussion_memeber_count", this.a.i.size() + 1);
-      }
-      if (13 == this.a.jdField_f_of_type_Int) {}
-      this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-      if ((this.a.jdField_a_of_type_AndroidContentIntent != null) && (this.a.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendToVideo", false))) {
-        this.a.b(paramBoolean, paramLong, localArrayList);
-      }
-      this.a.finish();
-      return;
-      label456:
-      if (this.a.jdField_f_of_type_Int == 10) {
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("from", 6);
-      }
-    }
-    label486:
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "create discussion fail, errCode=" + paramInt);
-    }
-    if (paramInt == 1000)
-    {
-      QQToast.a(this.a, this.a.getString(2131430279), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
-      ReportController.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
-      return;
-    }
-    QQToast.a(this.a, this.a.getString(2131433964), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      if (!paramBoolean) {
-        break label328;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "add discussion member success: roomId: " + paramLong);
-      }
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.a.i.iterator();
-      while (localIterator.hasNext())
+      if (!CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).jdField_a_of_type_Boolean)
       {
-        ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-        if (localResultRecord.jdField_a_of_type_Int == 5)
+        CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).jdField_a_of_type_Boolean = true;
+        if ((CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView) != null) && (!CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView)) && (this.d))
         {
-          if (localResultRecord.jdField_a_of_type_JavaLangString.startsWith("pstn")) {
-            localResultRecord.jdField_a_of_type_JavaLangString = localResultRecord.jdField_a_of_type_JavaLangString.substring("pstn".length());
+          CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView.a.f, 1);
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView.a.f == true) {
+            CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView, false);
           }
-          localArrayList.add(localResultRecord.jdField_a_of_type_JavaLangString);
         }
       }
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", String.valueOf(paramLong));
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("qqPhoneUserList", localArrayList);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("audioType", 2);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("callType", 2);
-      if (this.a.jdField_f_of_type_Int != 18) {
-        break label298;
+      localObject = CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView, this.jdField_a_of_type_Int);
+      if (localObject != null) {
+        break label668;
       }
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("from", 3);
     }
-    for (;;)
+    label397:
+    label537:
+    label668:
+    for (boolean bool = false;; bool = true)
     {
-      this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-      if ((this.a.jdField_a_of_type_AndroidContentIntent != null) && (this.a.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendToVideo", false))) {
-        this.a.a(paramBoolean, paramLong, paramArrayList);
+      int i;
+      if (CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView) != null)
+      {
+        String str = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.a;
+        if ((!this.b) || (FlowCameraConstant.jdField_a_of_type_Int == 2)) {
+          break label461;
+        }
+        i = 1;
+        if ((str == null) || (str.length() == 0)) {
+          break label466;
+        }
+        CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).a(true, str, 2);
       }
-      this.a.finish();
-      return;
-      label298:
-      if (this.a.jdField_f_of_type_Int == 10) {
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("from", 6);
+      for (;;)
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView.a.a(false);
+        break;
+        label441:
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView.a.b(false);
+        break label92;
+        label455:
+        bool = false;
+        break label236;
+        label461:
+        i = 0;
+        break label397;
+        label466:
+        if ((i != 0) && (!this.e))
+        {
+          CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).a(true, "切换后置摄像头试试", 0);
+          return;
+        }
+        if (this.e)
+        {
+          CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).a(true, LbsFilterStatusManager.a(), 3);
+          return;
+        }
+        CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).a(bool, (String)localObject, 1);
+        return;
+        CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).jdField_a_of_type_Boolean = false;
+        CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).jdField_a_of_type_Boolean = false;
+        if ((CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView) != null) && (this.c))
+        {
+          CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).a(true, 0);
+          CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView, false);
+        }
+        while (CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView) != null)
+        {
+          CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).a(false, null, -1);
+          return;
+          if ((CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView) != null) && (this.d))
+          {
+            CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView).a(true, 1);
+            CameraFilterGLView.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraFilterGLView, false);
+          }
+        }
       }
     }
-    label328:
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add discussion member fail");
-    }
-    if (paramInt == 1000) {
-      ReportController.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
-    }
-    QQToast.a(this.a, this.a.getString(2131433971), 2000).b(this.a.jdField_c_of_type_AndroidViewView.getHeight());
-  }
-  
-  protected void a(Object[] paramArrayOfObject)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if (paramArrayOfObject == null) {}
-    String str;
-    do
-    {
-      return;
-      str = (String)paramArrayOfObject[0];
-    } while (!this.a.jdField_c_of_type_JavaLangString.equals(str));
-    int i = ((Integer)paramArrayOfObject[1]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add discussion member failed, error code: " + i);
-    }
-    QQToast.a(this.a, this.a.getString(2131433971), 0).b(this.a.getTitleBarHeight());
   }
 }
 

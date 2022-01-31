@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.ark.ArkMediaPlayer;
 
 public class aawh
   implements Runnable
 {
-  public aawh(ShopScanActivity paramShopScanActivity) {}
+  public aawh(ArkMediaPlayer paramArkMediaPlayer) {}
   
   public void run()
   {
-    ShopScanActivity.d(this.a);
-    ShopScanActivity.a(this.a, null);
+    ArkMediaPlayer.a(this.a, false);
+    if (this.a.Pause()) {
+      ArkMediaPlayer.a(this.a, ArkMediaPlayer.d(this.a));
+    }
   }
 }
 

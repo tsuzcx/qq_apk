@@ -1,35 +1,29 @@
-import QQService.SvcDevLoginInfo;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
-class sxb
-  extends SubAccountObserver
+public class sxb
+  implements Runnable
 {
-  sxb(sxa paramsxa, SvcDevLoginInfo paramSvcDevLoginInfo) {}
+  public sxb(Leba paramLeba, String paramString, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetKeyBack mainAccount=" + paramString1 + " subAccount=" + paramString2 + " key=" + paramString3);
-    }
-    if ((paramString3 == null) || (paramString3.length() > 0))
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4);
+    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+    int i = localSharedPreferences.getInt("key_web_plugin_click_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getCurrentAccountUin(), 0);
+    localEditor.putInt("key_web_plugin_click_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getCurrentAccountUin(), i + 1);
+    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetKeyBack begin to kickOutDev");
-      }
-      if (EquipmentLockImpl.a().a(this.jdField_a_of_type_Sxa.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, this.jdField_a_of_type_QQServiceSvcDevLoginInfo.iAppId, (byte)1, HexUtil.a(paramString3), this.jdField_a_of_type_Sxa.jdField_a_of_type_Int))
-      {
-        LoginInfoActivity.a(this.jdField_a_of_type_Sxa.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, 1);
-        return;
-      }
-      LoginInfoActivity.a(this.jdField_a_of_type_Sxa.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new sxc(this));
-      return;
+      i = localSharedPreferences.getInt("key_web_plugin_click_red_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getCurrentAccountUin(), 0);
+      localEditor.putInt("key_web_plugin_click_red_num" + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getCurrentAccountUin(), i + 1);
     }
-    LoginInfoActivity.a(this.jdField_a_of_type_Sxa.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).post(new sxd(this));
+    localEditor.putLong("key_come_webview_time" + this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getCurrentAccountUin(), System.currentTimeMillis());
+    localEditor.commit();
   }
 }
 

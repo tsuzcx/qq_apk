@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.qcall.PstnCardInfo;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public final class agfz
-  implements Parcelable.Creator
+public class agfz
+  implements Runnable
 {
-  public PstnCardInfo a(Parcel paramParcel)
-  {
-    return new PstnCardInfo(paramParcel);
-  }
+  public agfz(ScanTorchActivity paramScanTorchActivity) {}
   
-  public PstnCardInfo[] a(int paramInt)
+  public void run()
   {
-    return new PstnCardInfo[paramInt];
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfz
  * JD-Core Version:    0.7.0.1
  */

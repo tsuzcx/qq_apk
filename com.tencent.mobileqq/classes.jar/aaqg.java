@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 
-public class aaqg
+class aaqg
   implements Runnable
 {
-  public aaqg(ArkRecommendController paramArkRecommendController) {}
+  aaqg(aaqf paramaaqf) {}
   
   public void run()
   {
-    if (ArkRecommendController.a(this.a) != null)
-    {
-      ArkAppCenter.b("ArkRecommendController", "mArkBabyqDisappearBubbleTask, destroy scroll bar");
-      ArkRecommendController.a(this.a).d();
-    }
+    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, true, 1);
   }
 }
 

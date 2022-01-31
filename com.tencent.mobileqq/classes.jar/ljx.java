@@ -1,18 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ljx
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public ljx(ReadInJoyCommentTopGestureLayout paramReadInJoyCommentTopGestureLayout, ViewGroup.LayoutParams paramLayoutParams) {}
+  public ljx(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter, CommentInfo paramCommentInfo, ActionSheet paramActionSheet) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    ReadInJoyCommentTopGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentTopGestureLayout).setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.deleteComment(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter).commentId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorUin, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId, ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter), new ljy(this));
+    }
   }
 }
 

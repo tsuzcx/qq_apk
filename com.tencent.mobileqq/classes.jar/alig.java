@@ -1,39 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qqprotect.qsec.QSecLibMgr;
-import com.tencent.qqprotect.qsec.QSecLibMgr.LibEventListener;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class alig
-  extends Handler
+  extends BroadcastReceiver
 {
-  public alig(QSecLibMgr paramQSecLibMgr, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public alig(MyAppApi paramMyAppApi) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
-    {
+    LogUtility.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
+    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
+      this.a.f();
     }
-    do
-    {
-      do
-      {
-        return;
-        QSecLibMgr.a(this.a);
-        return;
-      } while (paramMessage.obj == null);
-      QSecLibMgr.a(this.a, (List)paramMessage.obj);
-      return;
-      QSecLibMgr.b(this.a);
-      return;
-      QSecLibMgr.c(this.a);
-      return;
-    } while (paramMessage.obj == null);
-    QSecLibMgr.a(this.a, (QSecLibMgr.LibEventListener)paramMessage.obj);
   }
 }
 

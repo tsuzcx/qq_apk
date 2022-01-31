@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.music;
 
-import amvx;
 import android.text.TextUtils;
+import anmc;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +35,7 @@ public class QQMusicDownloader
   
   public static void a(DownloadTask paramDownloadTask, MusicDownloadListener paramMusicDownloadListener)
   {
-    ThreadManager.post(new amvx(paramDownloadTask, paramMusicDownloadListener), 5, null, false);
+    ThreadManager.post(new anmc(paramDownloadTask, paramMusicDownloadListener), 5, null, false);
   }
 }
 

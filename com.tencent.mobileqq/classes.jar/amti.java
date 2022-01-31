@@ -1,23 +1,31 @@
-import android.widget.ImageView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import cooperation.qzone.plugin.IQZonePluginManager;
 
 public class amti
   implements Runnable
 {
-  public amti(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public amti(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity, PluginBaseInfo paramPluginBaseInfo) {}
   
   public void run()
   {
-    this.a.d = false;
-    this.a.s();
-    QIMEffectCameraCaptureUnit.f(this.a, true);
-    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(0);
-    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(true);
+    try
+    {
+      if (QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity) != null) {
+        QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.mID, null, QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity));
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzoneVerticalVideoDownloadActivity", 1, localException, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amti
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.app.Dialog;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
 
 class adqh
-  extends DownloadListener
+  implements Runnable
 {
-  adqh(adqg paramadqg, String paramString) {}
+  adqh(adqe paramadqe) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func onDone.【pngZip】");
-    }
-    for (;;)
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a, 232, null, "腾讯视频插件加载失败", new adqi(this), null);
+    try
     {
-      synchronized (this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager)
-      {
-        if (this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a != null)
-        {
-          if (paramDownloadTask.a() != 3) {
-            this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.obtainMessage(226, this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-          }
-        }
-        else {
-          return;
-        }
+      localQQCustomDialog.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManagerHotPicPageView", 2, "show dialog fail");
       }
-      try
-      {
-        FileUtils.a(this.jdField_a_of_type_JavaLangString, EmoticonUtils.z.replace("[epId]", this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString), false);
-        new File(this.jdField_a_of_type_JavaLangString).delete();
-        this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.b(this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId);
-        this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.obtainMessage(225, this.jdField_a_of_type_Adqg.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-        continue;
-        paramDownloadTask = finally;
-        throw paramDownloadTask;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a == 1) {
+        this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(0);
       }
-      catch (IOException paramDownloadTask)
-      {
-        for (;;)
-        {
-          paramDownloadTask.printStackTrace();
-        }
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqh
  * JD-Core Version:    0.7.0.1
  */

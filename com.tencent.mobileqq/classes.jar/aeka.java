@@ -1,29 +1,38 @@
-import android.view.View;
-import android.widget.ListView;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.utils.MusicCacheManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
 public class aeka
   implements Runnable
 {
-  public aeka(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aeka(QQPlayerService paramQQPlayerService) {}
   
   public void run()
   {
-    int i = UITools.b(this.a.getContext());
-    if (ShortVideoCommentsView.a() * this.a.a.a.size() + ShortVideoCommentsView.b(this.a).getMeasuredHeight() >= i)
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    SharedPreferences localSharedPreferences = this.a.getSharedPreferences("QQPlayerService.sp", 0);
+    long l1 = localSharedPreferences.getLong("del_timestamp", 0L);
+    long l2 = localCalendar.getTimeInMillis();
+    if (l1 < l2)
     {
-      ShortVideoCommentsView.a(this.a).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.a).getMeasuredHeight());
-      return;
+      localSharedPreferences.edit().putLong("del_timestamp", l2).commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCacheManager", 2, "lastDel<today =====>> delCacheByTimeAndSpace");
+      }
+      MusicCacheManager.b();
     }
-    ShortVideoCommentsView.a(this.a).setSelection(this.a.a.a.size() + 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeka
  * JD-Core Version:    0.7.0.1
  */

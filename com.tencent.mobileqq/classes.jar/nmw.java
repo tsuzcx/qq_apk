@@ -1,22 +1,19 @@
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
 
 public final class nmw
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+  implements DialogInterface.OnClickListener
 {
-  public void onComplete(String arg1, String paramString2)
+  public nmw(StoryVideoItem paramStoryVideoItem, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo onComplete, %s", paramString2);
-    synchronized (TVKPreloader.a())
-    {
-      SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo onComplete, preloadItem = %s, downloadString = %s,  cost %d ms", TVKPreloader.a(), paramString2, Long.valueOf(SystemClock.uptimeMillis() - TVKPreloader.a()));
-      paramString2 = TVKPreloader.a();
-      TVKPreloader.a().post(new nmx(this, paramString2));
-      return;
-    }
+    SLog.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
+    StoryVideoUploadManager.a(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,23 +1,21 @@
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.biz.widgets.ElasticHorScrView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public class msx
   implements Runnable
 {
-  public msx(GalleryShareHelper paramGalleryShareHelper, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
+  public msx(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-    }
-    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
+    QQMessageFacade localQQMessageFacade = this.a.app.a();
+    if (localQQMessageFacade != null)
     {
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-      return;
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+      int i = localQQMessageFacade.b();
+      this.a.leftView.post(new msy(this, i));
     }
-    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
   }
 }
 

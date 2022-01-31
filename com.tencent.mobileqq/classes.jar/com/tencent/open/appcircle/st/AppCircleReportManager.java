@@ -1,6 +1,6 @@
 package com.tencent.open.appcircle.st;
 
-import akno;
+import alde;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
@@ -61,7 +61,7 @@ public class AppCircleReportManager
   {
     HandlerThread localHandlerThread = new HandlerThread("thread_report");
     localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new akno(this, localHandlerThread.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new alde(this, localHandlerThread.getLooper());
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
   }
   

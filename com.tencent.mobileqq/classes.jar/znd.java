@@ -1,17 +1,28 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.StartAppCheckHandler;
+import java.util.Queue;
 
-class znd
-  implements Comparator
+public class znd
+  extends Handler
 {
-  znd(zmz paramzmz) {}
-  
-  public int a(File paramFile1, File paramFile2)
+  public znd(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    return 0;
+    paramMessage = (zng)paramMessage.obj;
+    this.a.a.remove(paramMessage);
+    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

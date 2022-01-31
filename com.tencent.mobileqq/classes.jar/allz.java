@@ -1,42 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
-import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.FitSystemWindowsRelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
+import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class allz
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public allz(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
+  public allz(QidianProfileCardActivity paramQidianProfileCardActivity, QidianProfileCardActivity.QidianCompoundProfileItem paramQidianCompoundProfileItem, URLImageView paramURLImageView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    int i = 1;
-    super.onAnimationEnd(paramAnimator);
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int == 1) {}
+    for (String str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.d;; str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_JavaLangString)
     {
-      if (SpriteUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c == 1) {
-        i = 0;
-      }
-      if (i != 0)
-      {
-        SpriteCommFunc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "vas_poke", false);
-        if (QLog.isColorLevel()) {
-          QLog.i("placeholder.sprite", 2, "show sprite (normal) in fullscreen.");
-        }
-      }
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-      this.a.removeView(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
+      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a.put(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_JavaLangString, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int, str));
+      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     allz
  * JD-Core Version:    0.7.0.1
  */

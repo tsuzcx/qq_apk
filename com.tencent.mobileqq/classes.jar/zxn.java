@@ -1,13 +1,34 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.mobileqq.ar.ARMusicController;
+import com.tencent.qphone.base.util.QLog;
 
-class zxn
-  implements Runnable
+public class zxn
+  implements SoundPool.OnLoadCompleteListener
 {
-  zxn(zxm paramzxm, int paramInt) {}
+  public zxn(ARMusicController paramARMusicController) {}
   
-  public void run()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    ArConfigService.a(this.jdField_a_of_type_Zxm.a, this.jdField_a_of_type_Int);
+    if (paramInt2 != 0) {}
+    try
+    {
+      QLog.e("ARMusicController", 2, "load fire music failed. " + ARMusicController.a(this.a));
+      return;
+    }
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. : " + ARMusicController.a(this.a));
+    }
+    ARMusicController.a(this.a, true);
+    if (ARMusicController.a(this.a))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
+    }
   }
 }
 

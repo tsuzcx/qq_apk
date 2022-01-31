@@ -1,47 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.SelfGagInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class vwy
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public vwy(TroopChatPie paramTroopChatPie, Looper paramLooper)
+  public vwy(PublicAccountChatPie paramPublicAccountChatPie) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLooper);
+    this.a.R = false;
+    this.a.jdField_o_of_type_Int = 0;
+    this.a.S = false;
+    this.a.ab = false;
+    this.a.aa = false;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    case 3: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a(null, false);
-          return;
-          paramMessage = paramMessage.obj;
-        } while (!(paramMessage instanceof TroopGagMgr.SelfGagInfo));
-        this.a.a((TroopGagMgr.SelfGagInfo)paramMessage);
-        return;
-      } while (TroopChatPie.i(this.a) == null);
-      TroopChatPie.j(this.a).a();
-      return;
-    }
-    String str = (String)paramMessage.obj;
-    int i = paramMessage.arg1;
-    QQToast.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
+    this.a.a(this.a.jdField_o_of_type_AndroidViewView, PublicAccountChatPie.a(this.a));
   }
 }
 

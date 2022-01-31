@@ -23,21 +23,21 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ndg;
-import ndh;
-import ndi;
+import neq;
+import ner;
+import nes;
 
 public class MsgTabStoryVideoPreloader
 {
   protected int a;
   public IVideoPreloader a;
   private MsgTabStoryVideoPreloader.OnPreloaderListener jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader$OnPreloaderListener;
-  private MsgTabVideoPreloaderDataProvider.DataProviderListener jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener = new ndh(this);
+  private MsgTabVideoPreloaderDataProvider.DataProviderListener jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener = new ner(this);
   protected MsgTabVideoPreloaderDataProvider a;
   protected final Queue a;
   protected final Set a;
   protected AtomicBoolean a;
-  protected ndi a;
+  protected nes a;
   protected boolean a;
   protected final Set b = new CopyOnWriteArraySet();
   
@@ -196,10 +196,10 @@ public class MsgTabStoryVideoPreloader
   {
     try
     {
-      if (this.jdField_a_of_type_Ndi == null)
+      if (this.jdField_a_of_type_Nes == null)
       {
-        this.jdField_a_of_type_Ndi = new ndi(this);
-        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_Ndi);
+        this.jdField_a_of_type_Nes = new nes(this);
+        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_Nes);
       }
       PreloadDownloaderManager localPreloadDownloaderManager = (PreloadDownloaderManager)SuperManager.a(6);
       if (!localPreloadDownloaderManager.a()) {
@@ -222,7 +222,7 @@ public class MsgTabStoryVideoPreloader
     //   7: invokevirtual 274	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   10: aload_0
     //   11: aconst_null
-    //   12: putfield 260	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_Ndi	Lndi;
+    //   12: putfield 260	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_Nes	Lnes;
     //   15: aload_0
     //   16: getfield 25	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader	Lcom/tencent/biz/qqstory/base/preload/IVideoPreloader;
     //   19: ifnull +12 -> 31
@@ -282,7 +282,7 @@ public class MsgTabStoryVideoPreloader
       QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
     }
     paramContext = new ArrayList(paramList);
-    Bosses.get().postJob(new ndg(this, paramContext));
+    Bosses.get().postJob(new neq(this, paramContext));
   }
   
   public void a(MsgTabStoryVideoPreloader.OnPreloaderListener paramOnPreloaderListener)

@@ -1,27 +1,27 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
 public class mff
-  extends AccessibilityDelegateCompat
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public mff(BaseTabbar paramBaseTabbar) {}
+  public mff(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (BaseTabbar.a(this.a, paramView) == BaseTabbar.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " ERROR code: " + paramInt);
     }
+    ThreadManager.post(new mfi(this.a, false), 5, null, true);
   }
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
+    }
+    ThreadManager.post(new mfi(this.a, true), 5, null, true);
   }
 }
 

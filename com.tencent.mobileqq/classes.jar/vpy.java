@@ -1,72 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatActivityConstants;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.controller.QidianBusinessObserver;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
 
-public class vpy
-  extends QidianBusinessObserver
+class vpy
+  implements Animation.AnimationListener
 {
-  public vpy(FriendChatPie paramFriendChatPie) {}
+  vpy(vpw paramvpw, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
   
-  protected void c(boolean paramBoolean, HashMap paramHashMap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131438710), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131438711), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+    this.jdField_a_of_type_Vpw.a();
   }
   
-  protected void d(boolean paramBoolean, HashMap paramHashMap)
-  {
-    if ((paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
-    {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramHashMap.uin)))
-      {
-        paramHashMap = this.a.b.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        if (paramHashMap != null)
-        {
-          FriendChatPie.a(this.a, true);
-          FriendChatPie.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-          FriendChatPie.a(this.a).setOnClickListener(null);
-          if (!this.a.P)
-          {
-            this.a.g = paramHashMap;
-            FriendChatPie.b(this.a).setText(paramHashMap);
-            if (ChatActivityConstants.N) {
-              FriendChatPie.c(this.a).setContentDescription(paramHashMap);
-            }
-          }
-          FriendChatPie.b(this.a, true);
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-        FriendChatPie.b(this.a, false);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("FriendChatPie", 2, "onGetQidianUserDetailInfo not current curFriendUin");
-      return;
-    }
-    QLog.d("FriendChatPie", 2, "onGetQidianUserDetailInfo fail");
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

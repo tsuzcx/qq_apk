@@ -1,42 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.activity.PublicCommentWindow;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiup
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public aiup(ReciteFragment paramReciteFragment) {}
+  public aiup(PublicCommentWindow paramPublicCommentWindow) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ReciteFragment.a(this.a, false);
-    ReciteFragment.d(this.a);
-    paramDialogInterface = ReciteFragment.a(this.a);
-    String str1;
-    String str2;
-    if (paramDialogInterface != null)
+    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
     {
-      str1 = ReciteFragment.a(this.a).f;
-      str2 = TroopReportor.a(paramDialogInterface, ReciteFragment.a(this.a).f, paramDialogInterface.getCurrentAccountUin());
-      if (ReciteFragment.a(this.a) == null) {
-        break label108;
+      this.a.a = true;
+      this.a.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
       }
-    }
-    label108:
-    for (paramDialogInterface = ReciteFragment.a(this.a).title;; paramDialogInterface = "")
-    {
-      TroopReportor.a("Grp_edu", "Grp_recite", "Out_Recite_Clk", 0, 0, new String[] { str1, str2, paramDialogInterface });
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiup
  * JD-Core Version:    0.7.0.1
  */

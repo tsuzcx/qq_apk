@@ -1,27 +1,18 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
-import com.tencent.widget.FixSizeImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeArticleCommentSummaryView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
-public class lkj
+class lkj
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public FixSizeImageView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
+  lkj(lkh paramlkh) {}
   
-  public lkj(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter) {}
+  public void onClick(View paramView)
+  {
+    NativeArticleCommentSummaryView.a((ArticleInfo)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a());
+  }
 }
 
 

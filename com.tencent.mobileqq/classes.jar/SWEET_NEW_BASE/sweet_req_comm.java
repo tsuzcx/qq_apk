@@ -52,7 +52,7 @@ public final class sweet_req_comm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     SWEET_NEW_BASE.sweet_req_comm
  * JD-Core Version:    0.7.0.1
  */

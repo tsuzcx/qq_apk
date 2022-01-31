@@ -1,42 +1,67 @@
-import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageUploader.OnResultListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
+import mqq.app.MobileQQ;
 
 public class aeij
-  implements ImageUploader.OnResultListener
+  implements Runnable
 {
-  public aeij(ImageFeedsUploader paramImageFeedsUploader) {}
+  public aeij(EmoticonManager paramEmoticonManager, int paramInt) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    QLog.i("ImageFeedsUploader", 1, String.format("upload pic image: result=%d, url=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    ImageFeedsUploader.a(this.a).a = paramInt;
-    ImageFeedsUploader.a(this.a).d = paramInt;
-    ImageFeedsUploader.a(this.a).e = paramString;
-    if (paramInt == 0)
+    Object localObject = new File(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir(), "recommemd_emotion_file__" + this.jdField_a_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    if (!((File)localObject).exists()) {}
+    for (;;)
     {
-      ((LocalMediaInfo)ImageFeedsUploader.a(this.a).photoInfo.get(0)).d = paramString;
-      ((LocalMediaInfo)ImageFeedsUploader.a(this.a).photoInfo.get(0)).a = true;
-      ImageFeedsUploader.a(this.a).b = 2;
-      if (VideoFeedsUploader.a == 2)
+      try
       {
-        ImageFeedsUploader.a(this.a).a = -1005;
-        ImageFeedsUploader.a(this.a, ImageFeedsUploader.a(this.a));
+        if (!((File)localObject).createNewFile())
+        {
+          QLog.e("EmoticonManager", 1, "writeRecommendInfoFromFileToCache, create file fail");
+          return;
+        }
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+      }
+      byte[] arrayOfByte = FileUtils.a((File)localObject);
+      localObject = new EmosmPb.SubCmd0x5RspBQRecommend();
+      if (arrayOfByte == null) {
+        continue;
+      }
+      try
+      {
+        ((EmosmPb.SubCmd0x5RspBQRecommend)localObject).mergeFrom(arrayOfByte);
+        if (localObject == null) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonManager", 2, "writeRecommendInfoFromFileToCache post to uithread");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.jdField_a_of_type_AndroidOsHandler.post(new aeik(this, (EmosmPb.SubCmd0x5RspBQRecommend)localObject));
         return;
       }
-      this.a.a(ImageFeedsUploader.a(this.a), 3, null);
-      return;
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localObject = null;
+          localException.printStackTrace();
+        }
+      }
     }
-    ImageFeedsUploader.a(this.a, ImageFeedsUploader.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeij
  * JD-Core Version:    0.7.0.1
  */

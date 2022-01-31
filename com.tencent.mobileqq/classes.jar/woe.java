@@ -1,85 +1,33 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class woe
-  implements AbsListView.OnScrollListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b;
-  int c = 0;
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public woe(C2CMessageSearchDialog paramC2CMessageSearchDialog)
+  public woe(PublicAccountInfo paramPublicAccountInfo)
   {
-    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.d + ", requesting:" + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_a_of_type_JavaLangString);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    if (this.jdField_b_of_type_Int == 0) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
-      if ((this.c != 0) && (!this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_Boolean))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_Boolean = true;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_b_of_type_Int == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("C2CMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.d);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_a_of_type_JavaLangString, 2);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_a_of_type_AndroidContentContext.getString(2131433845));
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131368861).setVisibility(0);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("C2CMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.d);
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.d)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetTextView.setText("已展示全部搜索结果");
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131368861).setVisibility(8);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_a_of_type_AndroidContentContext.getString(2131433841));
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131368861).setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.b(2);
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatSearch", "Slip_resultup", 0, 0, new String[0]);
-        return;
-      }
-    } while ((this.c != 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.d) || (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_b_of_type_Int != 1));
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetTextView.setText("已展示全部搜索结果");
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131368861).setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_JavaLangString = str;
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void b(String paramString)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.jdField_b_of_type_Int = paramInt3;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

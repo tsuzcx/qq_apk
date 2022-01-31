@@ -1,31 +1,70 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import dov.com.qq.im.capture.poi.FacePoiManager;
-import dov.com.qq.im.capture.poi.FacePoiUI;
-import java.util.ArrayList;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
-public class amxe
-  implements AbsListView.OnScrollListener
+class amxe
+  implements ServiceConnection
 {
-  int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
   
-  public amxe(FacePoiUI paramFacePoiUI) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public amxe(amxc paramamxc, ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
   {
-    if ((paramInt == 0) && (FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI).a() != null) && (this.jdField_a_of_type_Int == FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI).a().size() - 1)) {
-      FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI).a();
-    }
+    this.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    do
+    {
+      try
+      {
+        this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unbindService(this);
+        if (QLog.isColorLevel()) {
+          QLog.i("QZonePluginManger", 2, "onServiceConnected, " + this);
+        }
+        this.jdField_a_of_type_AndroidContentServiceConnection.onServiceConnected(???, paramIBinder);
+      }
+      catch (Exception localException)
+      {
+        synchronized (amxc.a(this.jdField_a_of_type_Amxc))
+        {
+          do
+          {
+            paramIBinder = (amxe)amxc.a(this.jdField_a_of_type_Amxc).poll();
+            if (paramIBinder == null) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("QZonePluginManger", 2, "continue process");
+            }
+            amxc.a(this.jdField_a_of_type_Amxc, paramIBinder, 300);
+            return;
+            localException = localException;
+          } while (!QLog.isColorLevel());
+          QLog.i("QZonePluginManger", 2, "unbindService, " + this);
+        }
+      }
+      amxc.a(this.jdField_a_of_type_Amxc, false);
+    } while (!QLog.isColorLevel());
+    QLog.i("QZonePluginManger", 2, "queue empty");
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceDisconnected, " + this);
+    }
+    this.jdField_a_of_type_AndroidContentServiceConnection.onServiceDisconnected(paramComponentName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxe
  * JD-Core Version:    0.7.0.1
  */

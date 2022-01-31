@@ -10,9 +10,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ark.ArkAdapterItemInterface;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import url;
-import urm;
-import uro;
+import uun;
+import uuo;
+import uuq;
 
 public class ArkAppItemBubbleBuilder$Holder
   extends BaseBubbleBuilder.ViewHolder
@@ -31,15 +31,15 @@ public class ArkAppItemBubbleBuilder$Holder
     localObject = localObject[1];
     if (localObject != null)
     {
-      ArkAppCenter.a((String)localObject, new url(this, paramHolder));
-      ArkAppCenter.a().post(new urm(this, (String)localObject, paramHolder));
+      ArkAppCenter.a((String)localObject, new uun(this, paramHolder));
+      ArkAppCenter.a().post(new uuo(this, (String)localObject, paramHolder));
     }
     do
     {
       return;
       localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
     } while (localObject == null);
-    ((ArkAppCenter)((QQAppInterface)localObject).getManager(120)).a().a(paramArkAdapterItemInterface, "0.0.0.1", null, new uro(this, paramHolder));
+    ((ArkAppCenter)((QQAppInterface)localObject).getManager(120)).a().a(paramArkAdapterItemInterface, "0.0.0.1", null, new uuq(this, paramHolder));
   }
 }
 

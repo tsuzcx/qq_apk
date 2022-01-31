@@ -1,11 +1,11 @@
 package com.tencent.component.media.image;
 
 import android.util.Log;
-import pfn;
-import pfo;
+import phh;
+import phi;
 
 public class RecycleResourceTask
-  extends pfn
+  extends phh
 {
   private static double jdField_a_of_type_Double;
   private static int jdField_a_of_type_Int;
@@ -24,9 +24,9 @@ public class RecycleResourceTask
     clearAndInitSize();
   }
   
-  private RecycleResourceTask(pfn parampfn)
+  private RecycleResourceTask(phh paramphh)
   {
-    super(parampfn);
+    super(paramphh);
   }
   
   public static void clearAndInitSize()
@@ -47,7 +47,7 @@ public class RecycleResourceTask
     }
   }
   
-  public static RecycleResourceTask obtain(pfn parampfn)
+  public static RecycleResourceTask obtain(phh paramphh)
   {
     if (needRecycle) {}
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -58,10 +58,10 @@ public class RecycleResourceTask
         jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask = jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask.jdField_b_of_type_ComTencentComponentMediaImageRecycleResourceTask;
         localRecycleResourceTask.jdField_b_of_type_ComTencentComponentMediaImageRecycleResourceTask = null;
         jdField_a_of_type_Int -= 1;
-        localRecycleResourceTask.setImageTask(parampfn);
+        localRecycleResourceTask.setImageTask(paramphh);
         return localRecycleResourceTask;
       }
-      return new RecycleResourceTask(parampfn);
+      return new RecycleResourceTask(paramphh);
     }
   }
   
@@ -70,7 +70,7 @@ public class RecycleResourceTask
     if (this.mNextTask != null)
     {
       ImageTaskTracer.addImageTaskLifeCycleRecord(this.mImageKey.hashCodeEx());
-      pfo.a(this);
+      phi.a(this);
       this.mNextTask.excuteTask();
     }
   }
@@ -79,11 +79,11 @@ public class RecycleResourceTask
   {
     ImageTaskTracer.removeImageTaskLifeCycleRecord(this.mImageKey.hashCodeEx());
     Log.d("RecycleResourceTask", "onResult type:" + paramInt + " hashcode:" + this.mImageKey.hashCodeEx() + " url:" + getImageKey().url);
-    pfo.a(getImageKey());
-    pfn localpfn;
-    for (paramVarArgs = this.mNextTask; paramVarArgs != null; paramVarArgs = localpfn)
+    phi.a(getImageKey());
+    phh localphh;
+    for (paramVarArgs = this.mNextTask; paramVarArgs != null; paramVarArgs = localphh)
     {
-      localpfn = paramVarArgs.getNextTask();
+      localphh = paramVarArgs.getNextTask();
       paramVarArgs.recycle();
     }
     recycle();

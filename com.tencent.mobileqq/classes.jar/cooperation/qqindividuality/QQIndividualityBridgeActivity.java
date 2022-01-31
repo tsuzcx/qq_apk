@@ -1,10 +1,10 @@
 package cooperation.qqindividuality;
 
-import alzt;
-import alzu;
-import alzv;
-import alzw;
-import alzx;
+import ampx;
+import ampy;
+import ampz;
+import amqa;
+import amqb;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -27,8 +27,8 @@ public class QQIndividualityBridgeActivity
   public static int d = 1;
   public static int e = 2;
   int jdField_a_of_type_Int;
-  public alzw a;
-  public alzx a;
+  public amqa a;
+  public amqb a;
   String jdField_a_of_type_JavaLangString = null;
   public boolean a;
   public int b;
@@ -61,7 +61,7 @@ public class QQIndividualityBridgeActivity
         return;
       }
       c();
-      this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("qqindividuality_plugin.apk", new alzv(this));
+      this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("qqindividuality_plugin.apk", new ampz(this));
       return;
     }
     if (QLog.isColorLevel()) {
@@ -83,7 +83,7 @@ public class QQIndividualityBridgeActivity
         this.jdField_a_of_type_Boolean = false;
         if (this.jdField_b_of_type_Int == c)
         {
-          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualityActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Alzw, this.jdField_a_of_type_Int);
+          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualityActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Amqa, this.jdField_a_of_type_Int);
           overridePendingTransition(2131034210, 0);
         }
       }
@@ -95,12 +95,12 @@ public class QQIndividualityBridgeActivity
         {
           localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
           localIntent.putExtra("is_first_open", true);
-          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualitySignatureActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Alzx, this.jdField_a_of_type_Int);
+          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualitySignatureActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Amqb, this.jdField_a_of_type_Int);
           overridePendingTransition(2131034210, 0);
         }
         else if (this.jdField_b_of_type_Int == e)
         {
-          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualityStatusHistoryActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Alzx, this.jdField_a_of_type_Int);
+          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualityStatusHistoryActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Amqb, this.jdField_a_of_type_Int);
           overridePendingTransition(2131034210, 0);
           continue;
           if (this.jdField_b_of_type_Int == c)
@@ -129,26 +129,26 @@ public class QQIndividualityBridgeActivity
       if (this.jdField_b_of_type_Int != c) {
         break label25;
       }
-      this.jdField_a_of_type_Alzw.show();
+      this.jdField_a_of_type_Amqa.show();
     }
     label25:
     while ((this.jdField_b_of_type_Int != e) && (this.jdField_b_of_type_Int != d)) {
       return;
     }
-    this.jdField_a_of_type_Alzx.show();
+    this.jdField_a_of_type_Amqb.show();
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if (this.jdField_b_of_type_Int == c) {
-      if (this.jdField_a_of_type_Alzw != null)
+      if (this.jdField_a_of_type_Amqa != null)
       {
-        if (this.jdField_a_of_type_Alzw.isShowing()) {
-          this.jdField_a_of_type_Alzw.dismiss();
+        if (this.jdField_a_of_type_Amqa.isShowing()) {
+          this.jdField_a_of_type_Amqa.dismiss();
         }
-        this.jdField_a_of_type_Alzw.setOnDismissListener(null);
-        this.jdField_a_of_type_Alzw = null;
+        this.jdField_a_of_type_Amqa.setOnDismissListener(null);
+        this.jdField_a_of_type_Amqa = null;
       }
     }
     for (;;)
@@ -156,13 +156,13 @@ public class QQIndividualityBridgeActivity
       setResult(paramInt2, paramIntent);
       super.finish();
       return;
-      if (((this.jdField_b_of_type_Int == d) || (this.jdField_b_of_type_Int == e)) && (this.jdField_a_of_type_Alzx != null))
+      if (((this.jdField_b_of_type_Int == d) || (this.jdField_b_of_type_Int == e)) && (this.jdField_a_of_type_Amqb != null))
       {
-        if (this.jdField_a_of_type_Alzx.isShowing()) {
-          this.jdField_a_of_type_Alzx.dismiss();
+        if (this.jdField_a_of_type_Amqb.isShowing()) {
+          this.jdField_a_of_type_Amqb.dismiss();
         }
-        this.jdField_a_of_type_Alzx.setOnDismissListener(null);
-        this.jdField_a_of_type_Alzx = null;
+        this.jdField_a_of_type_Amqb.setOnDismissListener(null);
+        this.jdField_a_of_type_Amqb = null;
       }
     }
   }
@@ -170,7 +170,7 @@ public class QQIndividualityBridgeActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131492923);
+    getWindow().setBackgroundDrawableResource(2131492924);
     if (Math.abs(System.currentTimeMillis() - jdField_a_of_type_Long) < 800L)
     {
       setResult(1001);
@@ -201,37 +201,37 @@ public class QQIndividualityBridgeActivity
         this.jdField_a_of_type_Int = getIntent().getIntExtra(QQIndividualityUtils.i, -1);
         if ((this.jdField_b_of_type_Int == d) || (this.jdField_b_of_type_Int == e))
         {
-          this.jdField_a_of_type_Alzx = new alzx(this, this);
-          this.jdField_a_of_type_Alzx.setCanceledOnTouchOutside(false);
-          this.jdField_a_of_type_Alzx.setOnDismissListener(new alzt(this));
+          this.jdField_a_of_type_Amqb = new amqb(this, this);
+          this.jdField_a_of_type_Amqb.setCanceledOnTouchOutside(false);
+          this.jdField_a_of_type_Amqb.setOnDismissListener(new ampx(this));
         }
       } while (this.jdField_b_of_type_Int != c);
-      this.jdField_a_of_type_Alzw = new alzw(this, this, i);
-      this.jdField_a_of_type_Alzw.a("正在加载，请稍候...");
-      this.jdField_a_of_type_Alzw.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Amqa = new amqa(this, this, i);
+      this.jdField_a_of_type_Amqa.a("正在加载，请稍候...");
+      this.jdField_a_of_type_Amqa.setCanceledOnTouchOutside(false);
     } while (this.jdField_a_of_type_Int == -1);
-    this.jdField_a_of_type_Alzw.setOnDismissListener(new alzu(this));
+    this.jdField_a_of_type_Amqa.setOnDismissListener(new ampy(this));
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Alzw != null)
+    if (this.jdField_a_of_type_Amqa != null)
     {
-      if (this.jdField_a_of_type_Alzw.isShowing()) {
-        this.jdField_a_of_type_Alzw.dismiss();
+      if (this.jdField_a_of_type_Amqa.isShowing()) {
+        this.jdField_a_of_type_Amqa.dismiss();
       }
-      this.jdField_a_of_type_Alzw.setOnDismissListener(null);
-      this.jdField_a_of_type_Alzw = null;
+      this.jdField_a_of_type_Amqa.setOnDismissListener(null);
+      this.jdField_a_of_type_Amqa = null;
     }
-    if (this.jdField_a_of_type_Alzx != null)
+    if (this.jdField_a_of_type_Amqb != null)
     {
-      if (this.jdField_a_of_type_Alzx.isShowing()) {
-        this.jdField_a_of_type_Alzx.dismiss();
+      if (this.jdField_a_of_type_Amqb.isShowing()) {
+        this.jdField_a_of_type_Amqb.dismiss();
       }
-      this.jdField_a_of_type_Alzx.setOnDismissListener(null);
-      this.jdField_a_of_type_Alzx = null;
+      this.jdField_a_of_type_Amqb.setOnDismissListener(null);
+      this.jdField_a_of_type_Amqb = null;
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQIndividuality", 2, "destroy.....");

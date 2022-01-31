@@ -42,12 +42,12 @@ public class SearchAdapter
           if (localObject2 == null) {
             localObject4 = paramLocationInfo.getName();
           }
-          paramCommonViewHolder.a(2131365279, (CharSequence)localObject4);
+          paramCommonViewHolder.a(2131365301, (CharSequence)localObject4);
           if (localObject1 != null) {
             break label134;
           }
           paramLocationInfo = paramLocationInfo.getAddress();
-          paramCommonViewHolder.a(2131365280, paramLocationInfo);
+          paramCommonViewHolder.a(2131365302, paramLocationInfo);
           return;
         }
         catch (Exception localException2)

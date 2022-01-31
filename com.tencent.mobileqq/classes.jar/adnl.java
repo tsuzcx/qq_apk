@@ -1,44 +1,42 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.photo.PeakService;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class adnl
-  extends DownloadListener
+  implements Runnable
 {
-  public adnl(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public adnl(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void run()
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyHybridFragment", 2, "start preload peak process");
     }
-    if (paramDownloadTask.a == 0)
+    Intent localIntent;
+    if (this.a.getActivity() != null)
     {
-      paramDownloadTask = new File(AbsDownloader.d(this.jdField_a_of_type_JavaLangString));
-      if (paramDownloadTask.exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UiApiPlugin", 2, "shareImageToAIO->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
-        }
-        localActivity.runOnUiThread(new adnm(this, paramDownloadTask));
-        return;
+      localIntent = new Intent(this.a.getActivity(), PeakService.class);
+      if (VideoEnvironment.d(this.a.a)) {
+        localIntent.putExtra("ServiceAction", 2);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("UiApiPlugin", 2, "shareImageToAIO->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      this.a.getActivity().startService(localIntent);
+      return;
     }
-    localActivity.runOnUiThread(new adnn(this));
+    catch (Exception localException)
+    {
+      QLog.e("NearbyHybridFragment", 1, "preLoadPeak startService ", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnl
  * JD-Core Version:    0.7.0.1
  */

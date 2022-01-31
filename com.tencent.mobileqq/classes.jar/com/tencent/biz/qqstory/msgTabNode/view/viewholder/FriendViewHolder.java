@@ -12,7 +12,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.util.FaceDrawable;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import ndz;
+import nfj;
 
 public class FriendViewHolder
   extends BaseViewHolder
@@ -37,7 +37,7 @@ public class FriendViewHolder
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDrawable);
       String str2 = ContactUtils.n((QQAppInterface)localObject, str1);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-      ThreadManager.post(new ndz(this, (QQAppInterface)localObject, str1), 8, null, true);
+      ThreadManager.post(new nfj(this, (QQAppInterface)localObject, str1), 8, null, true);
       if (QLog.isColorLevel()) {
         QLog.e("zivonchen", 2, "FriendViewHolder userItem = " + paramMsgTabNodeInfo.b + ", name = " + str2 + ", faceDrawable = " + this.jdField_a_of_type_ComTencentMobileqqUtilFaceDrawable);
       }

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3456" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1334" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/icon" />
-    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09c4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1f1c" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03c6" android:layout_marginTop="11.0dip">
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07e3" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0579" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2374" android:includeFontPadding="false" />
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07e3" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0579" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2375" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+    </LinearLayout>
+    <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a08e9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="4.0dip" />
 </LinearLayout>

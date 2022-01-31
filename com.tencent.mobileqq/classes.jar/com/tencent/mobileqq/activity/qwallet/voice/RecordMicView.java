@@ -21,8 +21,8 @@ import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import xeo;
-import xep;
+import xht;
+import xhu;
 
 public class RecordMicView
   extends View
@@ -70,7 +70,7 @@ public class RecordMicView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xeo(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new xht(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -102,7 +102,7 @@ public class RecordMicView
   public void b()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new xep(this), this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new xhu(this), this.jdField_a_of_type_Int);
   }
   
   public void c()
@@ -162,7 +162,7 @@ public class RecordMicView
       }
       paramCanvas.save();
       paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
-      localObject = getResources().getDrawable(2130844019);
+      localObject = getResources().getDrawable(2130844143);
       ((Drawable)localObject).setBounds(0, 0, a(), b());
       ((Drawable)localObject).setAlpha(127);
       ((Drawable)localObject).draw(paramCanvas);
@@ -194,7 +194,7 @@ public class RecordMicView
       this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
       this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Float * 0.5F, this.jdField_b_of_type_Float * 0.5F, a() - this.jdField_b_of_type_Float * 0.5F, b() - this.jdField_b_of_type_Float * 0.5F);
       paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-      localObject = getResources().getDrawable(2130844019);
+      localObject = getResources().getDrawable(2130844143);
       ((Drawable)localObject).setBounds(0, 0, a(), b());
       ((Drawable)localObject).setAlpha(i);
       ((Drawable)localObject).draw(paramCanvas);

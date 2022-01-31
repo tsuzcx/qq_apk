@@ -1,9 +1,9 @@
 package cooperation.qzone.video;
 
-import amky;
-import amkz;
-import amla;
-import amlb;
+import anbd;
+import anbe;
+import anbf;
+import anbg;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Notification;
@@ -122,7 +122,7 @@ public class QzoneLiveVideoInterface
   {
     paramIntent = paramIntent.getExtras();
     RemoteHandleManager.a().a("cmd.uploadCommentVideo", paramIntent, true);
-    paramIntent = new amkz(paramHandler);
+    paramIntent = new anbe(paramHandler);
     RemoteHandleManager.a().a(paramIntent);
   }
   
@@ -333,9 +333,9 @@ public class QzoneLiveVideoInterface
   public static Notification generationNotification(PendingIntent paramPendingIntent, Context paramContext, Bitmap paramBitmap, String paramString1, String paramString2)
   {
     if ("oppo".equalsIgnoreCase(DeviceInfoUtil.l())) {
-      return QZoneNotificationAdapter.a().b(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130844715);
+      return QZoneNotificationAdapter.a().b(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130844840);
     }
-    return QZoneNotificationAdapter.a().c(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130844715);
+    return QZoneNotificationAdapter.a().c(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130844840);
   }
   
   public static int getAppId()
@@ -355,7 +355,7 @@ public class QzoneLiveVideoInterface
   
   public static String getBuildNumber()
   {
-    return "3525";
+    return "3560";
   }
   
   public static String getBuilderNumber()
@@ -435,7 +435,7 @@ public class QzoneLiveVideoInterface
       Class localClass = ((ClassLoader)localObject2).loadClass("com.qzone.module.vipcomponent.ui.QzoneHuangzuanVipIconShow");
       localObject2 = ((ClassLoader)localObject2).loadClass("com.qzone.proxy.vipcomponent.adapter.VipResourcesListener");
       ClassLoader localClassLoader = localClass.getClassLoader();
-      paramLiveVideoFeedVipIconListner = new amlb(paramLiveVideoFeedVipIconListner);
+      paramLiveVideoFeedVipIconListner = new anbg(paramLiveVideoFeedVipIconListner);
       paramLiveVideoFeedVipIconListner = Proxy.newProxyInstance(localClassLoader, new Class[] { localObject2 }, paramLiveVideoFeedVipIconListner);
       if (localClass == null)
       {
@@ -798,12 +798,12 @@ public class QzoneLiveVideoInterface
   {
     String str = QZonePluginUtils.a();
     if (!str.equals("qzone_live_video_plugin.apk")) {
-      QZonePluginMangerHelper.a(getContext(), new amky(str));
+      QZonePluginMangerHelper.a(getContext(), new anbd(str));
     }
     for (;;)
     {
       return version;
-      version = "2013 7.6.0";
+      version = "2013 7.6.3";
     }
   }
   
@@ -1020,7 +1020,7 @@ public class QzoneLiveVideoInterface
   
   public static void preInitWebview(IWebviewOnClassLoaded paramIWebviewOnClassLoaded)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new amla(paramIWebviewOnClassLoaded));
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new anbf(paramIWebviewOnClassLoaded));
   }
   
   public static void preloadWebProcess()

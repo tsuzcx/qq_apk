@@ -1,23 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class pcy
+class pcy
   implements Runnable
 {
-  public pcy(BaseApplicationImpl paramBaseApplicationImpl, int paramInt, String paramString) {}
+  pcy(pcx parampcx, SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter paramSwiftBrowserComponentProviderSupporter) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_retryIndex", Integer.toString(this.jdField_a_of_type_Int));
-    localHashMap.put("param_uin", this.jdField_a_of_type_JavaLangString);
-    StatisticCollector.a(BaseApplicationImpl.getApplication()).a(this.jdField_a_of_type_JavaLangString, "PcActiveSuccB", true, 0L, 0L, localHashMap, "", true);
+    if (QLog.isColorLevel()) {
+      QLog.e("shareWebPage", 2, "WebView screenshot START. shareUrl=" + this.jdField_a_of_type_Pcx.a);
+    }
+    ((SwiftBrowserMiscHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentProviderSupporter.b().a(32)).a(270, 270, new pcz(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pcy
  * JD-Core Version:    0.7.0.1
  */

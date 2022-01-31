@@ -1,30 +1,14 @@
-import com.tencent.mobileqq.app.IndividualRedPacketManager;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.DataLineHandler;
+import java.util.TimerTask;
 
 public class zcl
-  implements Comparator
+  extends TimerTask
 {
-  public zcl(IndividualRedPacketManager paramIndividualRedPacketManager) {}
+  public zcl(DataLineHandler paramDataLineHandler) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void run()
   {
-    long l2 = 0L;
-    if (paramFile1 != null) {}
-    for (long l1 = paramFile1.lastModified();; l1 = 0L)
-    {
-      if (paramFile2 != null) {
-        l2 = paramFile2.lastModified();
-      }
-      if (l2 >= l1) {
-        break;
-      }
-      return -1;
-    }
-    if (l2 > l1) {
-      return 1;
-    }
-    return 0;
+    this.a.e();
   }
 }
 

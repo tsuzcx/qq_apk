@@ -21,9 +21,9 @@ import java.util.Set;
 import msf.msgcomm.msg_comm.Msg;
 import msf.msgcomm.msg_comm.MsgHead;
 import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
-import zpg;
-import zph;
-import zqm;
+import zsm;
+import zsn;
+import zts;
 
 public abstract class BaseMessageProcessor
 {
@@ -86,7 +86,7 @@ public abstract class BaseMessageProcessor
     return String.valueOf(paramMsg.hashCode());
   }
   
-  public zqm a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public zts a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     return null;
   }
@@ -174,7 +174,7 @@ public abstract class BaseMessageProcessor
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.BaseMessageProcessor", 2, "sendMsgReadConfirm");
     }
-    a(true, true, false, 0L, new zph(this, paramPbMsgReadedReportReq));
+    a(true, true, false, 0L, new zsn(this, paramPbMsgReadedReportReq));
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong, BaseMessageProcessor.RequestBuilder paramRequestBuilder)
@@ -206,7 +206,7 @@ public abstract class BaseMessageProcessor
       i = 0;
       while (i < 9)
       {
-        localSendMessageHandler.a(new zpg(this, paramRequestBuilder, paramLong, l, paramBoolean2, paramBoolean3));
+        localSendMessageHandler.a(new zsm(this, paramRequestBuilder, paramLong, l, paramBoolean2, paramBoolean3));
         i += 1;
       }
       i = 0;

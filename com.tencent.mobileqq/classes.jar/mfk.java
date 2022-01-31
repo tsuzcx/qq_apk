@@ -1,26 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.view.RainView;
-import com.tencent.biz.pubaccount.readinjoy.view.RainView.AnimationEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoRecommendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class mfk
-  implements Action.OnActionEndListener
+  implements Runnable
 {
-  public mfk(RainView paramRainView, Sprite paramSprite) {}
+  public mfk(VideoRecommendManager paramVideoRecommendManager) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
-    if ((RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).get()) && (RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView) != null))
-    {
-      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
-      RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
-      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("SpriteGLView", 2, "rain animation end");
-      }
+    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
+    VideoRecommendManager.a(this.a, ReadInJoyHelper.G(localQQAppInterface));
+    VideoRecommendManager.b(this.a, ReadInJoyHelper.H(localQQAppInterface));
+    VideoRecommendManager.a(this.a, ReadInJoyHelper.b(localQQAppInterface));
+    VideoRecommendManager.c(this.a, ReadInJoyHelper.I(localQQAppInterface));
+    if ((VideoRecommendManager.a(this.a) < 0.0F) || (VideoRecommendManager.a(this.a) > 1.0D)) {
+      VideoRecommendManager.a(this.a, 0.8F);
+    }
+    if (VideoRecommendManager.a(this.a) < 1000) {
+      VideoRecommendManager.b(this.a, 40000);
+    }
+    if (VideoRecommendManager.b(this.a) == 1) {
+      VideoRecommendManager.a(this.a, true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "init() 开关配置，mIsOpened = " + VideoRecommendManager.a(this.a) + ", mStrategyID = " + VideoRecommendManager.b(this.a) + ", mStrategyDurationLimit = " + VideoRecommendManager.a(this.a) + ", mStrategyDurationPercent = " + VideoRecommendManager.a(this.a) + ", mOperator = " + VideoRecommendManager.c(this.a));
     }
   }
 }

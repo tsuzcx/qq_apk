@@ -1,16 +1,32 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
-import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.plugin.ReadInJoyWebviewPlugin;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class lsg
-  implements KandianPopupWindow.OnUninterestConfirmListener
+public class lsg
+  implements TroopMemberApiClient.Callback
 {
-  lsg(lsf paramlsf) {}
+  public lsg(ReadInJoyWebviewPlugin paramReadInJoyWebviewPlugin, String paramString) {}
   
-  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
+  public void a(Bundle paramBundle)
   {
-    ReadInJoyHeaderPresenter.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel, paramInt, paramArrayList, paramObject);
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive setSkinAndSound callback resp:" + paramBundle.toString());
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+    }
   }
 }
 

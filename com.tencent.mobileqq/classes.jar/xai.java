@@ -1,22 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.widget.YellowTipsLayout;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import mqq.os.MqqHandler;
 
 public class xai
-  implements Runnable
+  extends DownloadListener
 {
-  public xai(CommonHbFragment paramCommonHbFragment, String paramString) {}
+  public xai(PreloadImgManager paramPreloadImgManager) {}
   
-  public void run()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    JSONObject localJSONObject = YellowTipsLayout.getYellowTipsConfig(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
-    Handler localHandler = CommonHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment);
-    if (localHandler == null) {
-      return;
-    }
-    localHandler.post(new xaj(this, localJSONObject));
+    super.onDone(paramDownloadTask);
+    ThreadManager.getFileThreadHandler().post(new xaj(this, paramDownloadTask));
   }
 }
 

@@ -1,26 +1,15 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
 public class ohf
-  extends ohl
+  implements Runnable
 {
-  public ohf(DoodleEmojiManager paramDoodleEmojiManager, DoodleEmojiItem paramDoodleEmojiItem)
-  {
-    super(paramDoodleEmojiItem);
-  }
+  public ohf(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, int paramInt) {}
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
+  public void run()
   {
-    super.onResult(???);
-    SLog.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.c();
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 8, 1, this.jdField_a_of_type_Int));
   }
 }
 

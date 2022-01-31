@@ -1,43 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
-public final class xyt
-  implements Runnable
+public class xyt
+  extends TroopMemberListActivity.ViewHolder
 {
-  public xyt(boolean paramBoolean, QQAppInterface paramQQAppInterface, TroopMemberInfo paramTroopMemberInfo) {}
+  public CheckBox a;
   
-  public void run()
-  {
-    String str2;
-    QQAppInterface localQQAppInterface;
-    String str3;
-    String str1;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      str2 = "multiMode_add";
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str3 = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label63;
-      }
-      str1 = "1";
-    }
-    for (;;)
-    {
-      ReportController.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str2, 0, 0, str3, str1, "", "");
-      return;
-      str2 = "singleMode_add";
-      break;
-      label63:
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.recommendRemark)) {
-        str1 = "0";
-      } else {
-        str1 = "1";
-      }
-    }
-  }
+  private xyt(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 

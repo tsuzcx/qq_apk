@@ -1,26 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class rli
-  extends Handler
+  implements View.OnClickListener
 {
-  public rli(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public rli(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131434824);
-    }
-    this.a.a(paramMessage, 1);
+    paramView = new Intent(this.a, FontSettingActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

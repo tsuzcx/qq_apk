@@ -1,25 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter;
 
-public class aivb
-  implements DialogInterface.OnClickListener
+class aivb
+  implements Runnable
 {
-  public aivb(ReciteRecordLayout paramReciteRecordLayout) {}
+  aivb(aiva paramaiva) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.c();
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).d();
+    if (this.a.a.a != null) {
+      this.a.a.a.notifyDataSetChanged();
     }
-    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aivb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.VideoFeedsWeiShiUtils;
-import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.mobileqq.app.FontSettingManager;
 
-public final class mvs
+class mvs
   implements DialogInterface.OnClickListener
 {
+  mvs(mvr parammvr) {}
+  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    DownloadManager.a().a(VideoFeedsWeiShiUtils.a());
+    FontSettingManager.a();
+    this.a.a.a.finish();
   }
 }
 

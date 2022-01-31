@@ -1,6 +1,6 @@
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
-import com.tencent.av.utils.TraeHelper;
+import com.tencent.av.core.VcControllerImpl;
 
 public class jdr
   implements Runnable
@@ -9,10 +9,11 @@ public class jdr
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.a("startTerminalSwitchTimeOutCheck");
-    TraeHelper localTraeHelper = this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper;
-    TraeHelper.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    this.a.c(this.a.a().c, 50);
+    if ((this.a.a().a) && (this.a.a().i) && (this.a.a().d == 2))
+    {
+      this.a.a().f = false;
+      this.a.a.pauseVideo(this.a.a().c);
+    }
   }
 }
 

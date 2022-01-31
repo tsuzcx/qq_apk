@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class adzo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adzo(NearbyProxy paramNearbyProxy, NearbyProxyObserver paramNearbyProxyObserver, int paramInt, Object[] paramArrayOfObject) {}
+  public adzo(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProxyObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.a.a.a(LebaWithFeeds.a(this.a), paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
-import com.tencent.component.network.module.common.dns.HostCacheManager;
-import java.net.InetAddress;
+import android.view.animation.Animation;
+import com.tencent.component.media.image.view.ExtendImageView;
 
 public class pis
+  implements Runnable
 {
-  public long a;
-  public String a;
-  public InetAddress[] a;
+  public pis(ExtendImageView paramExtendImageView, int paramInt, Animation paramAnimation) {}
   
-  private pis(HostCacheManager paramHostCacheManager)
+  public void run()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ArrayOfJavaNetInetAddress = null;
-    this.jdField_a_of_type_JavaLangString = null;
+    ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_AndroidViewAnimationAnimation != null) {
+      ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_AndroidViewAnimationAnimation, null);
+    }
   }
 }
 

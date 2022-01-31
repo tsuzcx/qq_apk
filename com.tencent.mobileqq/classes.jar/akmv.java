@@ -1,20 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class akmv
-  implements Runnable
+  implements TouchWebView.OnScrollChangedListener
 {
-  public akmv(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Bitmap paramBitmap) {}
+  public akmv(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentQuickLoginAuthorityActivity.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentQuickLoginAuthorityActivity.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_AndroidGraphicsBitmap, true);
+    this.a.b = paramInt2;
+    this.a.a(this.a.b, this.a.f);
+    paramView = this.a.a.a();
+    if ((paramView != null) && (!TextUtils.isEmpty(this.a.d))) {
+      paramView.a(this.a.d, new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2), String.valueOf(paramInt3), String.valueOf(paramInt4) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmv
  * JD-Core Version:    0.7.0.1
  */

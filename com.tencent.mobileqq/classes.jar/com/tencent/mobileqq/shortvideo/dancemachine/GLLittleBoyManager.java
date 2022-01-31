@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import ahmh;
-import ahmi;
-import ahmj;
-import ahmk;
+import aiaj;
+import aiak;
+import aial;
+import aiam;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -31,7 +31,7 @@ public class GLLittleBoyManager
   private GLViewContext jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Comparator jdField_a_of_type_JavaUtilComparator = new ahmk(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new aiam(this);
   private TreeSet jdField_a_of_type_JavaUtilTreeSet;
   private boolean jdField_a_of_type_Boolean;
   private RectF[] jdField_a_of_type_ArrayOfAndroidGraphicsRectF = new RectF[2];
@@ -64,7 +64,7 @@ public class GLLittleBoyManager
     paramGLLittleBoy.setFillEnabled(true);
     paramGLLittleBoy.setFillAfter(true);
     paramGLLittleBoy.setInterpolator(new LinearInterpolator());
-    paramGLLittleBoy.setAnimationListener(new ahmh(this));
+    paramGLLittleBoy.setAnimationListener(new aiaj(this));
     return paramGLLittleBoy;
   }
   
@@ -154,7 +154,7 @@ public class GLLittleBoyManager
     localAnimationSet.setFillAfter(true);
     localAnimationSet.setDuration(160L);
     localAnimationSet.setInterpolator(new LinearInterpolator());
-    localAnimationSet.setAnimationListener(new ahmi(this));
+    localAnimationSet.setAnimationListener(new aiak(this));
     return localAnimationSet;
   }
   
@@ -310,7 +310,7 @@ public class GLLittleBoyManager
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillEnabled(true);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new ahmj(this));
+    localAnimationSet.setAnimationListener(new aial(this));
     return localAnimationSet;
   }
   

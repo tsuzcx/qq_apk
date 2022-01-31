@@ -1,15 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import android.telephony.PhoneStateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
+import com.tencent.qphone.base.util.QLog;
 
 public class mpu
-  implements View.OnClickListener
+  extends PhoneStateListener
 {
-  public mpu(NativeText paramNativeText) {}
+  public mpu(FastWebVideoVolumeControl paramFastWebVideoVolumeControl) {}
   
-  public void onClick(View paramView)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    this.a.a(0, 0, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.FastWebVideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.b(true);
+      return;
+    }
+    this.a.b(true);
   }
 }
 

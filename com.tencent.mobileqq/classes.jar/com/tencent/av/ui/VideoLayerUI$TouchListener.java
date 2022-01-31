@@ -12,7 +12,7 @@ import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector;
 import com.tencent.av.opengl.ui.GLView;
 import com.tencent.av.opengl.ui.GLView.OnTouchListener;
 import com.tencent.qphone.base.util.QLog;
-import kcu;
+import kcf;
 
 public class VideoLayerUI$TouchListener
   implements GLView.OnTouchListener
@@ -20,7 +20,7 @@ public class VideoLayerUI$TouchListener
   private float jdField_a_of_type_Float;
   private final int jdField_a_of_type_Int = 1000;
   private long jdField_a_of_type_Long;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new kcu(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new kcf(this);
   private boolean jdField_a_of_type_Boolean;
   private float b;
   

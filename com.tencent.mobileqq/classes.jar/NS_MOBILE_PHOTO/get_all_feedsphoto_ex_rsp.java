@@ -87,7 +87,7 @@ public final class get_all_feedsphoto_ex_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_all_feedsphoto_ex_rsp
  * JD-Core Version:    0.7.0.1
  */

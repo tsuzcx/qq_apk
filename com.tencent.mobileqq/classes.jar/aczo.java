@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.qphone.base.util.QLog;
 
-class aczo
+public class aczo
   implements Runnable
 {
-  aczo(aczn paramaczn) {}
+  public aczo(UniformDownloadMgr paramUniformDownloadMgr) {}
   
   public void run()
   {
-    SendBottomBar.a(this.a.a, false);
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onQQProcessExit releaseABSdkClient...");
+    UniformDownloaderAppBabySdk.a().a();
   }
 }
 

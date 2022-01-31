@@ -1,27 +1,17 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.newfriend.PhoneContactAddMessage;
 
 public class wjr
-  extends ViewPager.SimpleOnPageChangeListener
+  implements Runnable
 {
-  public wjr(ContactsViewController paramContactsViewController) {}
+  public wjr(PhoneContactAddBuilder paramPhoneContactAddBuilder) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void run()
   {
-    if (paramInt == 1) {
-      ContactsViewController.a(this.a, ContactsViewController.a(this.a).getCurrentItem());
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    ContactsViewController.a(this.a, paramInt);
-    if (!ContactsViewController.a(this.a)) {
-      ReportController.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
-    }
-    ContactsViewController.a(this.a, false);
+    ((PhoneContactManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).a(((PhoneContactAddMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wjs(this));
   }
 }
 

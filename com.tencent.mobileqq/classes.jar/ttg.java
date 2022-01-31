@@ -1,17 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class ttg
-  implements Runnable
+public class ttg
+  implements DialogInterface.OnClickListener
 {
-  ttg(ttf paramttf, int paramInt, String paramString) {}
+  public ttg(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Int <= 0) && (this.jdField_a_of_type_Ttf.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.e)) {
-      this.jdField_a_of_type_Ttf.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    }
-    this.jdField_a_of_type_Ttf.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    ReportController.b(this.a.app, "dc00898", "", "", "0X8007547", "0X8007547", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 

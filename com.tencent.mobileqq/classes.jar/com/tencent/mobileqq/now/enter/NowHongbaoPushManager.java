@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.now.enter;
 
-import afnf;
-import afng;
-import afnh;
-import afni;
-import afnj;
-import afnk;
+import agal;
+import agam;
+import agan;
+import agao;
+import agap;
+import agaq;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler.Callback;
@@ -38,7 +38,7 @@ public class NowHongbaoPushManager
   private static HashMap c = new HashMap(5);
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long = 1000L;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new afnf(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new agal(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public NowEnterManager a;
   private volatile NowHongbaoPushManager.Callback jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Callback;
@@ -191,7 +191,7 @@ public class NowHongbaoPushManager
   
   private void a(int paramInt1, int paramInt2)
   {
-    ThreadManager.getUIHandler().post(new afni(this, paramInt1, paramInt2));
+    ThreadManager.getUIHandler().post(new agao(this, paramInt1, paramInt2));
   }
   
   private void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean)
@@ -240,12 +240,12 @@ public class NowHongbaoPushManager
   
   private void a(NowHongbaoPushManager.Entity paramEntity)
   {
-    ThreadManager.getUIHandler().post(new afnj(this, paramEntity));
+    ThreadManager.getUIHandler().post(new agap(this, paramEntity));
   }
   
   private void a(NowHongbaoPushManager.Entity paramEntity, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new afnh(this, paramEntity, paramInt));
+    ThreadManager.getUIHandler().post(new agan(this, paramEntity, paramInt));
   }
   
   private boolean a()
@@ -603,7 +603,7 @@ public class NowHongbaoPushManager
   
   private void l()
   {
-    ThreadManager.getUIHandler().post(new afnk(this));
+    ThreadManager.getUIHandler().post(new agaq(this));
   }
   
   public long a(int paramInt)
@@ -724,7 +724,7 @@ public class NowHongbaoPushManager
       a(1, 6);
       a(3, 6);
       a(2, 6);
-      ThreadManager.getUIHandler().post(new afng(this));
+      ThreadManager.getUIHandler().post(new agam(this));
       return;
     }
     finally
@@ -772,7 +772,7 @@ public class NowHongbaoPushManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.now.enter.NowHongbaoPushManager
  * JD-Core Version:    0.7.0.1
  */

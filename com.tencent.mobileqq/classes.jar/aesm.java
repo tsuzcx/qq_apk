@@ -1,16 +1,67 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.now.location.LocationDataManager;
+import com.tencent.mobileqq.nearby.now.location.LocationDataManager.UiUpdate;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LogUtil;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 public class aesm
-  implements Runnable
+  implements NowShortVideoProtoManager.Callback
 {
-  public aesm(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel, int paramInt) {}
+  public aesm(LocationDataManager paramLocationDataManager, String paramString) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app, "CliOper", "", "", NearbyProfileDisplayTribePanel.b[(this.jdField_a_of_type_Int - 1)], NearbyProfileDisplayTribePanel.b[(this.jdField_a_of_type_Int - 1)], 0, 0, "", "", "", "");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramInt == 0) {
+      if (paramArrayOfByte != null) {
+        paramBundle = new oidb_0xada.RspBody();
+      }
+    }
+    do
+    {
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.i("LocationDataManager", 1, "err_msg:   " + paramBundle.err_msg.get());
+        }
+        if (paramBundle.busi_buf.has()) {
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationLocationDataManager.a(paramBundle.busi_buf.get().toByteArray(), this.jdField_a_of_type_JavaLangString);
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        do
+        {
+          LogUtil.e("LocationDataManager", "InvalidProtocolBufferMicroException", paramArrayOfByte);
+        } while (LocationDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationLocationDataManager) == null);
+        paramArrayOfByte = LocationDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationLocationDataManager);
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+      }
+      for (;;)
+      {
+        paramArrayOfByte.a(bool1);
+        return;
+        bool1 = false;
+      }
+      LogUtil.i("LocationDataManager", "sendCsTask onError: " + paramInt);
+    } while (LocationDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationLocationDataManager) == null);
+    paramArrayOfByte = LocationDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationLocationDataManager);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    for (bool1 = bool2;; bool1 = false)
+    {
+      paramArrayOfByte.a(bool1);
+      return;
+    }
   }
 }
 

@@ -1,63 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.av.utils.TroopMemberUtil;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
-import com.tencent.mobileqq.app.NearbyFlowerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopGift;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 import com.tencent.qphone.base.util.QLog;
 
 public class vgz
-  implements URLDrawable.DownloadListener
+  implements Animator.AnimatorListener
 {
-  public vgz(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder, URLDrawable paramURLDrawable, MessageForTroopGift paramMessageForTroopGift, vhf paramvhf) {}
+  public vgz(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isFromNearby)
-    {
-      NearbyFlowerManager.a("gift_aio", "fail_obj", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
       return;
     }
-    if (AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift)) {}
-    for (paramInt = 2;; paramInt = 1)
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_flower", "", "grp_aio", "objicon_fail", paramInt, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "0", "" + TroopMemberUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-      return;
-    }
+    SixCombolEffectView.a(this.a).start();
+    this.a.a();
   }
   
-  public void onFileDownloadStarted() {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onFileDownloadSucceed(long paramLong)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    int i;
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable))
+    if (SixCombolEffectView.a(this.a)) {}
+    do
     {
-      i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.objColor;
-      if (i != 0) {
-        break label136;
-      }
-      i = -2138570752;
-    }
-    label136:
-    for (;;)
-    {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.interactId)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.a(((RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getBitmap(), i, this.jdField_a_of_type_Vhf.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.giftPicId + "");
-      }
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.e("TroopGiftMsgItemBuilder", 2, "drawable.getCurrDrawable() instanceof  RegionDrawable = " + (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable));
       return;
-    }
+      SixCombolEffectView.jdField_a_of_type_Int = 1;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 1 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

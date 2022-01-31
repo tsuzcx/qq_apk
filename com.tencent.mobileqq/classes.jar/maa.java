@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import org.json.JSONObject;
 
-public class maa
-  implements DialogInterface.OnShowListener
+class maa
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public maa(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  maa(lzz paramlzz) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
+    if (paramJSONObject != null) {}
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
+        }
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
+        return;
+      }
     }
-    VideoFeedsAdapter.b(this.a).getWindow().clearFlags(8);
+    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
   }
 }
 

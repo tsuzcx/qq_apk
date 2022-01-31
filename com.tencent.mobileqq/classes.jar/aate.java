@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import com.tencent.mobileqq.ark.ArkAppCGI;
 
-class aate
-  implements Runnable
+public class aate
+  implements aath
 {
-  aate(aatd paramaatd) {}
+  public aate(ArkAppCGI paramArkAppCGI) {}
   
-  public void run()
+  public void a(aati paramaati, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    if (this.a.a.a != null)
-    {
-      ARMapEngine localARMapEngine = this.a.a.a;
-      ARMapEngine.nativeOnShowRedPackRainPoi();
-    }
+    this.a.a((aatl)paramaati, paramBoolean, paramArrayOfByte);
   }
 }
 

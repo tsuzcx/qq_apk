@@ -5,7 +5,7 @@ import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.CodecProfileLevel;
-import anzp;
+import aopu;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import java.nio.ByteBuffer;
@@ -21,7 +21,7 @@ public class SVHwEncoder
   private double jdField_a_of_type_Double;
   private volatile float jdField_a_of_type_Float = 30.0F;
   public int a;
-  private anzp jdField_a_of_type_Anzp;
+  private aopu jdField_a_of_type_Aopu;
   private SVHwOutputNotify jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwOutputNotify;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
@@ -448,8 +448,8 @@ public class SVHwEncoder
   public void a(SVHwOutputNotify paramSVHwOutputNotify, SVHwDataSource paramSVHwDataSource, boolean paramBoolean)
   {
     this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwOutputNotify = paramSVHwOutputNotify;
-    this.jdField_a_of_type_Anzp = new anzp(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 99000);
-    new Thread(this.jdField_a_of_type_Anzp, "encode_qq" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement()).start();
+    this.jdField_a_of_type_Aopu = new aopu(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 99000);
+    new Thread(this.jdField_a_of_type_Aopu, "encode_qq" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement()).start();
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -571,8 +571,8 @@ public class SVHwEncoder
   public void b(SVHwOutputNotify paramSVHwOutputNotify, SVHwDataSource paramSVHwDataSource, boolean paramBoolean)
   {
     this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwOutputNotify = paramSVHwOutputNotify;
-    this.jdField_a_of_type_Anzp = new anzp(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 0);
-    this.jdField_a_of_type_Anzp.run();
+    this.jdField_a_of_type_Aopu = new aopu(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 0);
+    this.jdField_a_of_type_Aopu.run();
   }
   
   public void b(ArrayList paramArrayList)
@@ -623,7 +623,7 @@ public class SVHwEncoder
   public void e()
   {
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Anzp.f();
+    this.jdField_a_of_type_Aopu.f();
   }
   
   public void f()

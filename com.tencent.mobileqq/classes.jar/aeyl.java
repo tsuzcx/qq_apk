@@ -1,93 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.GetMomentListCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsRsp;
+import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnDownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
 
-public final class aeyl
-  implements CsTask.Callback
+public class aeyl
+  implements IVideoView.OnDownloadListener
 {
-  public aeyl(int paramInt, NearbyMomentProtocol.GetMomentListCallback paramGetMomentListCallback) {}
+  public aeyl(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    boolean bool3 = false;
-    bool2 = false;
-    bool1 = true;
-    paramBundle = new ArrayList();
-    int i = this.jdField_a_of_type_Int;
-    ilive_feeds_read.ReadNearUserFeedsRsp localReadNearUserFeedsRsp;
-    if (paramInt == 0) {
-      localReadNearUserFeedsRsp = new ilive_feeds_read.ReadNearUserFeedsRsp();
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
     }
-    for (;;)
-    {
-      try
-      {
-        localReadNearUserFeedsRsp.mergeFrom(paramArrayOfByte);
-        if (!localReadNearUserFeedsRsp.result.has())
-        {
-          QLog.i("NearbyMomentProtocol", 1, "getMomentList, don't has result");
-          paramInt = i;
-          if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$GetMomentListCallback != null) {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$GetMomentListCallback.a(bool2, paramBundle, bool1, paramInt);
-          }
-          return;
-        }
-        if (localReadNearUserFeedsRsp.result.get() == 0) {
-          if (QLog.isColorLevel()) {
-            QLog.i("NearbyMomentProtocol", 2, "endFlag=" + localReadNearUserFeedsRsp.end_flag.get() + ",size=" + localReadNearUserFeedsRsp.infos.size() + ",total=" + localReadNearUserFeedsRsp.total.get());
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool2 = false;
-        bool1 = true;
-      }
-      try
-      {
-        paramBundle.addAll(localReadNearUserFeedsRsp.infos.get());
-        paramInt = localReadNearUserFeedsRsp.end_flag.get();
-        bool1 = bool3;
-        if (paramInt == 1) {
-          bool1 = true;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          bool2 = true;
-          bool1 = true;
-        }
-      }
-      try
-      {
-        paramInt = localReadNearUserFeedsRsp.pos.get();
-        bool2 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool2 = true;
-        break label281;
-      }
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList error, result =" + localReadNearUserFeedsRsp.result.get() + ",errMsg=" + localReadNearUserFeedsRsp.err_msg.get());
-      paramInt = i;
-      continue;
-      label281:
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList, e=" + paramArrayOfByte.toString());
-      paramInt = i;
-      continue;
-      QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
-      paramInt = i;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener.a(paramString1, 199, paramInt, "use sdk download error");
     }
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong)
+  {
+    this.a.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
+    }
+    this.a.jdField_a_of_type_Long = paramLong1;
+    if (paramLong2 > this.a.b) {
+      this.a.b = paramLong2;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, File paramFile)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
+    }
+    VideoPlayerView.a(paramFile);
   }
 }
 

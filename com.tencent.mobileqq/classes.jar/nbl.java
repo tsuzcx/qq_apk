@@ -1,15 +1,16 @@
-import com.tencent.biz.qqstory.database.StoryEntry;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.BaseResponse;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
 
 public class nbl
   implements Runnable
 {
-  public nbl(StoryManager paramStoryManager, EntityManager paramEntityManager, StoryEntry paramStoryEntry, String paramString, int paramInt) {}
+  public nbl(CmdTaskManger.UIThreadCallback paramUIThreadCallback, NetworkRequest paramNetworkRequest, BaseResponse paramBaseResponse, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseStoryEntry, StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(this.jdField_a_of_type_JavaLangString), String.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$UIThreadCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest, this.jdField_a_of_type_ComTencentBizQqstoryChannelBaseResponse, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

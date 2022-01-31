@@ -1,19 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import com.tencent.mobileqq.hotpic.PublicAccountGifListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.DeleteCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class ljk
-  implements PublicAccountGifListener
+class ljk
+  implements ArticleCommentModule.DeleteCommentObserver
 {
-  public ljk(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  ljk(ljj paramljj) {}
   
-  public void a(HotPicData paramHotPicData)
+  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString1, String paramString2)
   {
-    this.a.a = paramHotPicData;
-    ReadInJoyCommentComponentFragment.a(this.a, null);
-    ThreadManager.getUIHandler().post(new ljl(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentListAdapter", 2, "delete first comment success");
+    }
+    QQToast.a(BaseApplication.getContext(), 0, "删除成功", 0).a();
+    this.a.a.notifyDataSetChanged();
+    paramArticleInfo = this.a.a;
+    paramArticleInfo.a -= 1;
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentListAdapter", 2, "delete first comment failed ,comment id = " + paramString1 + "sub comment id = " + paramString2 + "err code =" + paramInt + "err Msg = " + paramString3);
+    }
+    QQToast.a(BaseApplication.getContext(), 1, "删除失败", 0).a();
   }
 }
 

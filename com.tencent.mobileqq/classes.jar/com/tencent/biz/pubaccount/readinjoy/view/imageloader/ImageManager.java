@@ -14,7 +14,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mpc;
+import mqj;
 
 public class ImageManager
 {
@@ -23,7 +23,7 @@ public class ImageManager
   HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  mpc jdField_a_of_type_Mpc;
+  mqj jdField_a_of_type_Mqj;
   HashMap b = new HashMap();
   
   static
@@ -44,7 +44,7 @@ public class ImageManager
       if (QLog.isColorLevel()) {
         Utils.a(jdField_a_of_type_JavaLangString, "start memLimit:" + i);
       }
-      this.jdField_a_of_type_Mpc = new mpc(i);
+      this.jdField_a_of_type_Mqj = new mqj(i);
       ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
       localThreadPoolParams.jdField_a_of_type_JavaLangString = "image-manager";
       localThreadPoolParams.b = 4;
@@ -83,7 +83,7 @@ public class ImageManager
       return paramImageRequest;
       try
       {
-        paramImageRequest = this.jdField_a_of_type_Mpc.a(paramImageRequest);
+        paramImageRequest = this.jdField_a_of_type_Mqj.a(paramImageRequest);
       }
       finally {}
     }
@@ -96,7 +96,7 @@ public class ImageManager
       if (QLog.isColorLevel()) {
         Utils.a(jdField_a_of_type_JavaLangString, "clean");
       }
-      this.jdField_a_of_type_Mpc.a();
+      this.jdField_a_of_type_Mqj.a();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
       while (localIterator.hasNext()) {
         ((RunningJob)((Map.Entry)localIterator.next()).getValue()).a();
@@ -129,7 +129,7 @@ public class ImageManager
       return;
       try
       {
-        localObject = this.jdField_a_of_type_Mpc.a(paramImageRequest);
+        localObject = this.jdField_a_of_type_Mqj.a(paramImageRequest);
         if (localObject != null)
         {
           ((CloseableBitmap)localObject).a();

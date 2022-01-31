@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.mobileqq.businessCard.helpers.CameraHelper;
 
 public class abol
-  implements View.OnClickListener
+  implements Camera.AutoFocusCallback
 {
-  public abol(DBFixConfigActivity paramDBFixConfigActivity) {}
+  public abol(CameraHelper paramCameraHelper) {}
   
-  public void onClick(View paramView)
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    ThreadManager.post(this.a.a, 8, null, true);
+    paramCamera = this.a.a();
+    this.a.a(paramCamera);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abol
  * JD-Core Version:    0.7.0.1
  */

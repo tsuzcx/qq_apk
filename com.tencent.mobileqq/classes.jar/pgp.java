@@ -1,14 +1,27 @@
-import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
-import com.tencent.component.media.image.view.AsyncImageable.AsyncOptions;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.utils.BaseHandler;
+import java.util.HashMap;
 
 public class pgp
-  extends AsyncImageable.AsyncOptions
+  extends BroadcastReceiver
 {
-  public pgp(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl) {}
+  public pgp(ImageManager paramImageManager) {}
   
-  protected void onClipSizeChanged(int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AsyncImageable.AsyncImageableImpl.a(this.a);
+    if (paramIntent.getAction() == null) {
+      return;
+    }
+    ImageManager.b(null);
+    ImageManager.b().clear();
+    ImageManager.a(false);
+    ImageManager.c().clear();
+    ImageManager.a(this.a);
+    ImageManager.getCachePath(paramContext);
+    ImageManager.a(this.a).post(new pgq(this));
   }
 }
 

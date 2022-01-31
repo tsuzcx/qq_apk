@@ -1,25 +1,18 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.lightReply.LightReplyEmojs;
+import com.tencent.mobileqq.lightReply.LightReplyMenuManager.LightReplyEmotionClickListener;
+import java.util.HashMap;
 
-class vnc
-  implements Runnable
+public class vnc
+  implements LightReplyMenuManager.LightReplyEmotionClickListener
 {
-  vnc(vnb paramvnb, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, StateListDrawable paramStateListDrawable) {}
+  public vnc(AIOGalleryScene paramAIOGalleryScene, TroopMemberApiClient paramTroopMemberApiClient) {}
   
-  public void run()
+  public void a(int paramInt1, String paramString, long paramLong, int paramInt2, LightReplyEmojs paramLightReplyEmojs)
   {
-    this.jdField_a_of_type_Vnb.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (this.jdField_a_of_type_Vnb.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
-    {
-      this.jdField_a_of_type_Vnb.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundDrawable(this.b);
-      this.jdField_a_of_type_Vnb.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTextColor(-16777216);
-    }
-    this.jdField_a_of_type_Vnb.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setBackgroundDrawable(this.c);
-    this.jdField_a_of_type_Vnb.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a.put(paramInt1 + paramString + paramLong, paramLightReplyEmojs);
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramInt1, paramString, paramLong, paramInt2, paramLightReplyEmojs);
   }
 }
 

@@ -1,27 +1,35 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
+import cooperation.qzone.util.QZLog;
 
-public class spq
-  implements IphonePickerView.PickerViewAdapter
+class spq
+  implements Runnable
 {
-  public spq(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  spq(spp paramspp) {}
   
-  public int getColumnCount()
+  public void run()
   {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return this.a.getString(2131433924);
+    try
+    {
+      if (!TextUtils.isEmpty(this.a.a.a.a.a))
+      {
+        Object localObject = this.a.a.a.a.a;
+        if (this.a.a.a.a.a.startsWith("+")) {
+          localObject = this.a.a.a.a.a.substring(1);
+        }
+        localObject = new LpReportInfo_pf00064(699, 3, Long.valueOf((String)localObject).longValue());
+        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
+      }
+      return;
     }
-    return this.a.getString(2131433925);
+    catch (Exception localException)
+    {
+      QZLog.e("QzoneReport", "makeOrRefreshQZone", localException);
+    }
   }
 }
 

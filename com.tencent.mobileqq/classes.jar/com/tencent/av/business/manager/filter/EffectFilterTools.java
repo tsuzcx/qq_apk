@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
-import jga;
+import jfl;
 
 public class EffectFilterTools
   extends EffectConfigBase
@@ -225,7 +225,7 @@ public class EffectFilterTools
             if (!((File)localObject).exists())
             {
               localObject = new HttpNetReq();
-              ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jga(this);
+              ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jfl(this);
               ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = localFilterItem.getIconurl();
               ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
               ((HttpNetReq)localObject).c = str;

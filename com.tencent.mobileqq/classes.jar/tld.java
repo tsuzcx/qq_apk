@@ -1,21 +1,30 @@
-import QQService.SvcDevLoginInfo;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class tld
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public tld(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public tld(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, paramView.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.a.a.setAlpha(0.5F);
+      this.a.a.invalidate();
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.a.a.setAlpha(1.0F);
+        this.a.a.invalidate();
+      }
+    }
   }
 }
 

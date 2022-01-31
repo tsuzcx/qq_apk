@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.arcard;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
 import com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
 
@@ -13,6 +14,11 @@ public class ARCardVideoPreview
   public ARCardVideoPreview(Context paramContext)
   {
     super(paramContext);
+  }
+  
+  public ARCardVideoPreview(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
   }
   
   protected void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
@@ -28,7 +34,7 @@ public class ARCardVideoPreview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARCardVideoPreview
  * JD-Core Version:    0.7.0.1
  */

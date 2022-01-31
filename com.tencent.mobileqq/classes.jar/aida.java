@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
 
 public class aida
-  implements ITransCallbackForReport
+  implements Runnable
 {
-  public aida(ShortVideoForwardProcessor paramShortVideoForwardProcessor) {}
+  public aida(RedBagVideoManager paramRedBagVideoManager) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void run()
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    if (RedBagVideoManager.a(this.a) != null)
+    {
+      RedBagVideoManager.a(this.a).g = 1;
+      long l = RedBagVideoManager.a(this.a).a;
+      String str = RedBagVideoManager.a(this.a).e;
+      int i = RedBagVideoManager.a(this.a).h;
+      Bundle localBundle = new Bundle();
+      localBundle.putLong("VALUE_MSG_UINSEQ", l);
+      localBundle.putString("VALUE_MSG_FRIENDUIN", str);
+      localBundle.putInt("VALUE_MSG_ISTROOP", i);
+      localBundle.putString("VALUE_MSG_VIDEO_ID", RedBagVideoManager.a(this.a).c);
+      VideoPlayIPCClient.a().a("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", localBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aida
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.DeleteCommentCallback;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.CommentsView;
-import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aemd
-  implements CommentsDataSource.DeleteCommentCallback
+class aemd
+  implements DialogInterface.OnClickListener
 {
-  public aemd(CommentsPresenterImpl paramCommentsPresenterImpl) {}
+  aemd(aemc paramaemc) {}
   
-  public void a(Comments.Comment paramComment, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (CommentsPresenterImpl.a(this.a) != null)
-    {
-      if (paramInt == 0)
-      {
-        CommentsPresenterImpl.a(this.a).b(paramComment);
-        CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430818));
-      }
-    }
-    else {
-      return;
-    }
-    CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430819));
+    paramDialogInterface.dismiss();
   }
 }
 

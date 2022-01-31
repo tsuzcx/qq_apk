@@ -1,39 +1,31 @@
-import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerBaseDownloader;
-import com.tencent.biz.qqstory.base.preload.DownloadTask;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.PublicAccountArticleHandler;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.PhotoCollectionInfo;
+import java.util.ArrayList;
 
 public class myq
-  implements INetEngine.IBreakDownFix
+  implements Runnable
 {
-  public myq(AsyncFileDownloader.InnerBaseDownloader paramInnerBaseDownloader) {}
+  public myq(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public void run()
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    while (!(paramNetReq instanceof HttpNetReq)) {
+    PublicAccountImageCollectionMainActivity.a(this.a).c(this.a.b);
+    PublicAccountImageCollectionMainActivity.a(this.a).e(this.a.b);
+    PublicAccountImageCollectionMainActivity.a(this.a).b(this.a.b);
+    PublicAccountImageCollectionMainActivity.a(this.a).d(this.a.b);
+    if (PublicAccountImageCollectionMainActivity.c(this.a))
+    {
+      PublicAccountImageCollectionMainActivity.a(this.a).a(this.a.b, PublicAccountImageCollectionMainActivity.a(this.a), PublicAccountImageCollectionMainActivity.e(this.a), PublicAccountImageCollectionMainActivity.f(this.a));
       return;
     }
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
-    localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
-    paramNetResp.c = 0L;
-    paramNetResp = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
-    localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-    String str1 = localHttpNetReq.jdField_a_of_type_JavaLangString;
-    if (str1.contains("range="))
+    if ((PublicAccountImageCollectionMainActivity.a(this.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a).a != null)) {}
+    for (int i = PublicAccountImageCollectionMainActivity.a(this.a).a.size();; i = 0)
     {
-      String str2 = str1.substring(0, str1.lastIndexOf("range="));
-      localHttpNetReq.jdField_a_of_type_JavaLangString = (str2 + "range=" + localHttpNetReq.jdField_a_of_type_Long);
+      PublicAccountReportUtils.a(null, this.a.a, "0X8007B8A", "0X8007B8A", 0, 0, this.a.b, this.a.c, "" + PublicAccountImageCollectionMainActivity.b(this.a, PublicAccountImageCollectionMainActivity.a(this.a)), "" + i, false);
+      return;
     }
-    paramNetReq = paramNetReq.a();
-    if ((paramNetReq != null) && ((paramNetReq instanceof DownloadTask))) {
-      ((DownloadTask)paramNetReq).b = true;
-    }
-    SLog.b("AsyncFileDownloader", String.format("breakDown , range = %s , url = %s", new Object[] { paramNetResp, str1 }));
   }
 }
 

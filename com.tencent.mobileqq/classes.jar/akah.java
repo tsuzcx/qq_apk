@@ -1,25 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.ClipboardManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentContext;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
 
-public class akah
-  implements DialogInterface.OnClickListener
+public final class akah
+  implements Runnable
 {
-  public akah(SwiftBrowserDebugHelper paramSwiftBrowserDebugHelper, String paramString) {}
+  public akah(NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserDebugHelper.a.a().getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-    Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserDebugHelper.a.a().getApplicationContext(), "复制成功", 0).show();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, null, null, false, false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akah
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import mqq.app.AppActivity;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.util.TroopReportor;
 
-class ota
-  implements DialogInterface.OnClickListener
+public class ota
+  implements Runnable
 {
-  ota(osy paramosy, String paramString) {}
+  public ota(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
-    if (paramDialogInterface.startsWith("www.")) {
-      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
+    String str = "temp_qrcode_share_" + this.a.jdField_c_of_type_JavaLangString + ".png";
+    try
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_Osy.jdField_a_of_type_MqqAppAppActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("param_force_internal_browser", true);
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("fromQrcode", true);
-      localIntent.putExtra("injectrecommend", false);
-      this.jdField_a_of_type_Osy.jdField_a_of_type_MqqAppAppActivity.startActivity(localIntent);
-      if (this.jdField_a_of_type_Osy.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e) {
-        this.jdField_a_of_type_Osy.jdField_a_of_type_MqqAppAppActivity.finish();
-      }
-      if (this.jdField_a_of_type_Osy.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.b) {
-        this.jdField_a_of_type_Osy.jdField_a_of_type_MqqAppAppActivity.finish();
-      }
+      str = QRUtils.a(this.a.getApplicationContext(), str, this.a.b);
+      this.a.runOnUiThread(new otc(this, str));
       return;
-      if (paramDialogInterface.startsWith("https:")) {
-        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
-      } else if (paramDialogInterface.startsWith("http:")) {
-        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
-      } else {
-        paramDialogInterface = this.jdField_a_of_type_JavaLangString;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (this.a.jdField_c_of_type_Int == 2) {
+        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
       }
+      this.a.runOnUiThread(new otb(this));
     }
   }
 }

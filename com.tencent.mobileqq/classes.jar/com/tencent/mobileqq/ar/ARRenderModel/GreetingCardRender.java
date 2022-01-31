@@ -1,5 +1,16 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
+import aaaq;
+import aaar;
+import aaas;
+import aaat;
+import aaau;
+import aaaw;
+import aaax;
+import aaay;
+import aaaz;
+import aaba;
+import aabb;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
@@ -39,17 +50,6 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.HashMap;
 import java.util.Map;
-import zvx;
-import zvy;
-import zvz;
-import zwa;
-import zwb;
-import zwd;
-import zwe;
-import zwf;
-import zwg;
-import zwh;
-import zwi;
 
 public class GreetingCardRender
   implements SurfaceTexture.OnFrameAvailableListener, ARNativeBridge.ARCardAnimationCallback, ARBaseRender, AROnlineVideoView.DrawCallback, ARGreetingCardListManager.RenderProxy, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener
@@ -66,11 +66,11 @@ public class GreetingCardRender
   private ARGreetingCardListManager.GreetingCardItem jdField_a_of_type_ComTencentMobileqqArcardARGreetingCardListManager$GreetingCardItem;
   private ARcardSound jdField_a_of_type_ComTencentMobileqqArcardARcardSound;
   private ARSensorManager jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager;
-  private SimpleSensorChangeListener jdField_a_of_type_ComTencentMobileqqArmapSensorSimpleSensorChangeListener = new zwb(this);
+  private SimpleSensorChangeListener jdField_a_of_type_ComTencentMobileqqArmapSensorSimpleSensorChangeListener = new aaau(this);
   private RenderBuffer jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
   private TextureRender jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new zvx(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aaaq(this);
   private final String jdField_a_of_type_JavaLangString = "bgmusic.mp3";
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
@@ -131,7 +131,7 @@ public class GreetingCardRender
       l();
       return;
     case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zwi(this));
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aabb(this));
       return;
     case 4: 
       this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativePause(this.jdField_a_of_type_Int);
@@ -257,7 +257,7 @@ public class GreetingCardRender
   {
     QLog.d("GreetingCardRender", 2, String.format("setARCardVideoYUVTexture textureId=%s", new Object[] { Integer.valueOf(paramInt) }));
     if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zvz(this, paramInt));
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aaas(this, paramInt));
     }
   }
   
@@ -265,7 +265,7 @@ public class GreetingCardRender
   {
     QLog.d("GreetingCardRender", 2, String.format("setARCardVideoCover videoCoverPath=%s", new Object[] { paramString }));
     if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zvy(this, paramString));
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aaar(this, paramString));
     }
   }
   
@@ -273,7 +273,7 @@ public class GreetingCardRender
   {
     QLog.d("GreetingCardRender", 2, String.format("playARCardAnimation animationType=%s", new Object[] { Integer.valueOf(paramInt) }));
     if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zwa(this, paramInt));
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aaat(this, paramInt));
     }
   }
   
@@ -302,7 +302,7 @@ public class GreetingCardRender
   private void i()
   {
     QLog.d("GreetingCardRender", 2, "stopVideo");
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zwh(this));
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aaba(this));
   }
   
   private void j()
@@ -441,7 +441,7 @@ public class GreetingCardRender
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) && (this.jdField_a_of_type_Long > 2L))
     {
-      paramArrayOfByte1 = new zwd(this, paramInt1, paramInt2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
+      paramArrayOfByte1 = new aaaw(this, paramInt1, paramInt2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
       this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(paramArrayOfByte1);
     }
   }
@@ -499,7 +499,7 @@ public class GreetingCardRender
   
   public boolean c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zwg(this));
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aaaz(this));
     return true;
   }
   
@@ -569,7 +569,7 @@ public class GreetingCardRender
         return;
       } while (paramInt2 != 2);
       ARGreetingCardListManager.a().a(true);
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zwe(this));
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aaax(this));
       return;
     }
     if (ARGreetingCardListManager.a().a() != -1)
@@ -577,7 +577,7 @@ public class GreetingCardRender
       ARGreetingCardListManager.a().a(true);
       ARGreetingCardListManager.a().d();
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new zwf(this));
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aaay(this));
   }
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)

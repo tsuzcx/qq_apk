@@ -1,24 +1,15 @@
-import android.widget.PopupWindow;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
-public final class ops
+class ops
   implements Runnable
 {
-  public ops(PopupWindow paramPopupWindow) {}
+  ops(opr paramopr) {}
   
   public void run()
   {
-    try
-    {
-      if (this.a.isShowing()) {
-        this.a.dismiss();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("View", 2, QLog.getStackTraceString(localException));
+    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.b = false;
+    if (!this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.c) {
+      StoryVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer, this.a.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }

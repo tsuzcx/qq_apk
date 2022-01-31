@@ -1,34 +1,41 @@
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.troop.TroopStoryManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+
 public class ona
-  implements Cloneable
+  extends ProtoUtils.StoryProtocolObserver
 {
-  public double a;
-  public int a;
-  public String a;
-  public int b = -1;
-  public String b;
-  public int c = -1;
-  public String c;
-  public int d;
-  public String d;
-  public int e = -1;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 1;
+  public ona(TroopStoryManager paramTroopStoryManager) {}
   
-  public ona(String paramString)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_a_of_type_Double = -1.0D;
-    this.jdField_f_of_type_JavaLangString = "0";
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public ona a()
-  {
-    return (ona)super.clone();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "troop story revoke result, code=" + paramInt);
+    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
+      {
+        paramBundle = new qqstory_group.RspGroupVideoDelete();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
+        if (paramArrayOfByte.error_code.has()) {
+          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "revoke rsp.result.error_code=" + paramArrayOfByte.error_code.get());
+        }
+        return paramArrayOfByte;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
+        }
+      }
+    }
+    return null;
   }
 }
 

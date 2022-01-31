@@ -1,18 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class ryy
-  implements IIconListener
+class ryy
+  implements Runnable
 {
-  public ryy(ChatSettingActivity paramChatSettingActivity) {}
+  ryy(ryx paramryx) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((this.a.f != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      ChatSettingActivity.a(this.a, this.a.a, this.a.f);
-    }
+    MessageRecord localMessageRecord = new MessageRecord();
+    localMessageRecord.shmsgseq = this.a.a.jdField_a_of_type_Long;
+    int i = this.a.a.app.a().a(this.a.a.b, this.a.a.jdField_a_of_type_Int, localMessageRecord);
+    this.a.a.runOnUiThread(new ryz(this, i));
   }
 }
 

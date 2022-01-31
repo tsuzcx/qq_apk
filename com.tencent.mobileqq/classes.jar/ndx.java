@@ -1,16 +1,16 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.widget.ListView;
+import com.tencent.biz.qqstory.model.lbs.LbsManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class ndx
   implements Runnable
 {
-  public ndx(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  public ndx(LbsManager paramLbsManager, int paramInt) {}
   
   public void run()
   {
-    if (this.a.a.getFirstVisiblePosition() != this.a.a.getHeaderViewsCount()) {
-      this.a.a.setSelection(this.a.a.getHeaderViewsCount());
-    }
+    SLog.d("LbsManager", "onLocation Timeout  %d ms", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.a(false, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b);
+    LbsManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager, true);
   }
 }
 

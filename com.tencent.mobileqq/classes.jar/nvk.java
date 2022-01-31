@@ -1,37 +1,38 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.ShareGroupPageLoader.GetShareGroupListEvent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.comment.lego.LegoResponseCallBack;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class nvk
-  extends QQUIEventReceiver
+  implements LegoResponseCallBack
 {
-  public nvk(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter)
+  public nvk(StoryDetailPresenter paramStoryDetailPresenter, CommentEntry paramCommentEntry, boolean paramBoolean) {}
+  
+  public void a(int paramInt, Bundle paramBundle)
   {
-    super(paramMemoriesProfilePresenter);
+    a(-1, "网络错误");
   }
   
-  public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull ShareGroupPageLoader.GetShareGroupListEvent paramGetShareGroupListEvent)
+  public void a(int paramInt, String paramString)
   {
-    if (paramGetShareGroupListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramGetShareGroupListEvent.jdField_a_of_type_Int));
-      MemoriesProfilePresenter.b(paramMemoriesProfilePresenter, paramGetShareGroupListEvent.jdField_a_of_type_Int);
-      if (paramMemoriesProfilePresenter.a != null)
-      {
-        paramMemoriesProfilePresenter.a.shareGroupCount = MemoriesProfilePresenter.b(paramMemoriesProfilePresenter);
-        ThreadManager.post(new nvl(this, paramMemoriesProfilePresenter), 5, null, false);
-      }
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    QQToast.a(BaseApplication.getContext(), 1, "删除失败", 0).a();
+    SLog.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+  }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    if (!StoryDetailPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter).get()) {
+      StoryDetailPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
     }
   }
   
-  public Class acceptEventClass()
-  {
-    return ShareGroupPageLoader.GetShareGroupListEvent.class;
-  }
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

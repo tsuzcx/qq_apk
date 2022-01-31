@@ -1,13 +1,14 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
 
 public class aoak
-  implements FileFilter
+  implements Runnable
 {
-  public boolean accept(File paramFile)
+  public aoak(FaceListPage paramFaceListPage, FacePackage paramFacePackage) {}
+  
+  public void run()
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage);
   }
 }
 

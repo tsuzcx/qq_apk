@@ -1,39 +1,36 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import Wallet.GoldMsgGetReq;
+import Wallet.GoldMsgGetRsp;
+import Wallet.GoldMsgSetReq;
+import Wallet.GoldMsgSetRsp;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
 
-public class wzn
-  implements BusinessObserver
+public abstract class wzn
 {
-  public wzn(QWalletConfigManager paramQWalletConfigManager) {}
+  final int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  final String c;
+  final String d;
+  final String e;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  wzn(GoldMsgSettingActivity paramGoldMsgSettingActivity, Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    if (paramInt == 17)
-    {
-      if (!paramBoolean) {}
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
-        return;
-      }
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public abstract void a(View paramView);
+  
+  void a(boolean paramBoolean, GoldMsgGetReq paramGoldMsgGetReq, GoldMsgGetRsp paramGoldMsgGetRsp) {}
+  
+  void a(boolean paramBoolean, GoldMsgSetReq paramGoldMsgSetReq, GoldMsgSetRsp paramGoldMsgSetRsp) {}
+  
+  abstract boolean a();
 }
 
 

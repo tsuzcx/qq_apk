@@ -1,9 +1,5 @@
 package dov.com.qq.im.capture.view.share;
 
-import anac;
-import anad;
-import anae;
-import anaf;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -16,6 +12,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import anqh;
+import anqi;
+import anqj;
+import anqk;
 import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -54,7 +54,7 @@ public class FilterComboSharePlugin
   public FilterComboSharePlugin()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new anac(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new anqh(this);
     this.mPluginNameSpace = "FilterComboShare";
   }
   
@@ -70,13 +70,13 @@ public class FilterComboSharePlugin
       if (QLog.isColorLevel()) {
         QLog.d("FilterComboShare", 2, "shareMsgToSina installSinaWeibo:true");
       }
-      ThreadManager.executeOnSubThread(new anad(this, paramString, (ApplicationInfo)localObject));
+      ThreadManager.executeOnSubThread(new anqi(this, paramString, (ApplicationInfo)localObject));
     }
     catch (PackageManager.NameNotFoundException paramString)
     {
       for (;;)
       {
-        QRUtils.a(0, 2131439289);
+        QRUtils.a(0, 2131439317);
       }
     }
     if (QLog.isColorLevel()) {
@@ -113,7 +113,7 @@ public class FilterComboSharePlugin
   
   public void a()
   {
-    ThreadManager.getUIHandler().postDelayed(new anaf(this), 250L);
+    ThreadManager.getUIHandler().postDelayed(new anqk(this), 250L);
   }
   
   public void a(int paramInt, String paramString)
@@ -152,7 +152,7 @@ public class FilterComboSharePlugin
     if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
     {
       this.jdField_b_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new anae(this, paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new anqj(this, paramInt);
     }
     WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
     WXShareHelper.a().a(paramString, localObject, paramInt, true, this.jdField_b_of_type_JavaLangString);
@@ -187,24 +187,24 @@ public class FilterComboSharePlugin
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this.mRuntime.a());
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(BaseApplicationImpl.getApplication().getString(2131433083));
+        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(BaseApplicationImpl.getApplication().getString(2131433100));
         paramJsBridgeListener = new ArrayList();
         paramString1 = new ShareActionSheetBuilder.ActionSheetItem();
-        paramString1.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430109);
-        paramString1.jdField_b_of_type_Int = 2130838336;
+        paramString1.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430126);
+        paramString1.jdField_b_of_type_Int = 2130838340;
         paramString1.c = 9;
         paramString1.jdField_b_of_type_JavaLangString = "";
         paramJsBridgeListener.add(paramString1);
         paramString1 = new ShareActionSheetBuilder.ActionSheetItem();
-        paramString1.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430110);
-        paramString1.jdField_b_of_type_Int = 2130838330;
+        paramString1.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430127);
+        paramString1.jdField_b_of_type_Int = 2130838334;
         paramString1.c = 10;
         paramString1.jdField_b_of_type_JavaLangString = "";
         paramJsBridgeListener.add(paramString1);
         paramString1 = new ShareActionSheetBuilder.ActionSheetItem();
-        paramString1.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430115);
+        paramString1.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430132);
         paramString1.jdField_a_of_type_Boolean = true;
-        paramString1.jdField_b_of_type_Int = 2130838335;
+        paramString1.jdField_b_of_type_Int = 2130838339;
         paramString1.c = 12;
         paramString1.jdField_b_of_type_JavaLangString = "";
         paramJsBridgeListener.add(paramString1);
@@ -276,7 +276,7 @@ public class FilterComboSharePlugin
     this.jdField_a_of_type_Int = j;
     if ((j == 10) || (j == 9)) {
       if (!WXShareHelper.a().a()) {
-        paramInt = 2131439288;
+        paramInt = 2131439316;
       }
     }
     for (;;)
@@ -286,7 +286,7 @@ public class FilterComboSharePlugin
         QRUtils.a(0, paramInt);
         return;
         if (!WXShareHelper.a().b()) {
-          paramInt = 2131435303;
+          paramInt = 2131435320;
         }
       }
       else

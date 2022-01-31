@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqfav.widget.FavoriteActionSheet;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.util.BinderWarpper;
 
-public class alzh
-  implements DialogInterface.OnDismissListener
+public final class alzh
+  implements Parcelable.Creator
 {
-  public alzh(FavoriteActionSheet paramFavoriteActionSheet) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public BinderWarpper a(Parcel paramParcel)
   {
-    this.a.a = false;
+    return new BinderWarpper(paramParcel.readStrongBinder());
+  }
+  
+  public BinderWarpper[] a(int paramInt)
+  {
+    return new BinderWarpper[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alzh
  * JD-Core Version:    0.7.0.1
  */

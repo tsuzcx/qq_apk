@@ -1,5 +1,17 @@
 package com.tencent.mobileqq.ar;
 
+import aadp;
+import aadq;
+import aadr;
+import aads;
+import aadt;
+import aadu;
+import aadv;
+import aadw;
+import aadx;
+import aady;
+import aadz;
+import aaea;
 import android.os.Build;
 import android.os.Process;
 import android.text.TextUtils;
@@ -9,18 +21,6 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import zyv;
-import zyw;
-import zyx;
-import zyy;
-import zyz;
-import zza;
-import zzb;
-import zzc;
-import zzd;
-import zze;
-import zzf;
-import zzg;
 
 public class ScanEntranceReport
 {
@@ -63,7 +63,7 @@ public class ScanEntranceReport
         break;
       }
       QLog.d("ScanEntranceReport", 2, String.format("reportAverageFPS deviceName=%s fps=%s memorySize=%s", new Object[] { str, Integer.valueOf(paramInt), Integer.valueOf(i) }));
-      ThreadManager.post(new zyw(this, str, i, paramInt), 5, null, false);
+      ThreadManager.post(new aadq(this, str, i, paramInt), 5, null, false);
       return;
       l1 = l2;
     }
@@ -76,7 +76,7 @@ public class ScanEntranceReport
       return;
     }
     QLog.d("ScanEntranceReport", 2, String.format("reportARCloudUploadCount uploadCount=%s selectImageAvgTime=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
-    ThreadManager.post(new zze(this, paramLong, paramInt), 5, null, false);
+    ThreadManager.post(new aady(this, paramLong, paramInt), 5, null, false);
   }
   
   public void a(long paramLong, int paramInt)
@@ -88,7 +88,7 @@ public class ScanEntranceReport
       paramLong = System.currentTimeMillis() - paramLong;
     } while (!a(paramLong));
     QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstSuccess totalTime=%s", new Object[] { Long.valueOf(paramLong) }));
-    ThreadManager.post(new zzd(this, paramInt, paramLong), 5, null, false);
+    ThreadManager.post(new aadx(this, paramInt, paramLong), 5, null, false);
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2)
@@ -100,7 +100,7 @@ public class ScanEntranceReport
       paramLong = System.currentTimeMillis() - paramLong;
     } while (!a(paramLong));
     QLog.d("ScanEntranceReport", 2, String.format("reportQRSuccess totalTime=%s uploadCount=%s zoomCount=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    ThreadManager.post(new zzf(this, paramInt1, paramInt2, paramLong), 5, null, false);
+    ThreadManager.post(new aadz(this, paramInt1, paramInt2, paramLong), 5, null, false);
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt, String paramString)
@@ -114,7 +114,7 @@ public class ScanEntranceReport
       paramLong2 = l - paramLong2;
     } while ((!a(paramLong1)) || (!a(paramLong2)));
     QLog.d("ScanEntranceReport", 2, String.format("reportFirstOCRTips totalTime=%s lastTotalTime=%s uploadCount=%s sessionIds=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt), paramString }));
-    ThreadManager.post(new zyx(this, paramLong2, paramInt, paramString, paramLong1), 5, null, false);
+    ThreadManager.post(new aadr(this, paramLong2, paramInt, paramString, paramLong1), 5, null, false);
   }
   
   public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
@@ -134,7 +134,7 @@ public class ScanEntranceReport
         break;
       }
       QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstUpload firstInit=%s startDelay=%s firstSelectTime=%s firstUploadDelay=%s totalTime=%s", new Object[] { Boolean.valueOf(bool), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(l) }));
-      ThreadManager.post(new zzb(this, bool, paramLong1, paramLong2, paramLong3, paramInt, l), 5, null, false);
+      ThreadManager.post(new aadv(this, bool, paramLong1, paramLong2, paramLong3, paramInt, l), 5, null, false);
       return;
     }
   }
@@ -156,7 +156,7 @@ public class ScanEntranceReport
         break;
       }
       QLog.d("ScanEntranceReport", 2, String.format("reportARInitPreTime bindTime=%s gotConfigTime=%s resourceCheckTime=%s dependenceWaitTime=%s totalTime=%s", new Object[] { Long.valueOf(l), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong1) }));
-      ThreadManager.post(new zza(this, bool, l, paramLong2, paramLong3, paramLong4, paramLong1), 5, null, false);
+      ThreadManager.post(new aadu(this, bool, l, paramLong2, paramLong3, paramLong4, paramLong1), 5, null, false);
       return;
     }
   }
@@ -177,7 +177,7 @@ public class ScanEntranceReport
         break;
       }
       QLog.d("ScanEntranceReport", 2, String.format("reportARInitTime firstInit=%s initDelay=%s initTime=%s totalTime=%s downloadResource=%s", new Object[] { Boolean.valueOf(bool), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l), Boolean.valueOf(paramBoolean) }));
-      ThreadManager.post(new zyz(this, bool, paramLong1, paramLong2, paramBoolean, l), 5, null, false);
+      ThreadManager.post(new aadt(this, bool, paramLong1, paramLong2, paramBoolean, l), 5, null, false);
       return;
     }
   }
@@ -198,7 +198,7 @@ public class ScanEntranceReport
       paramLong = System.currentTimeMillis() - paramLong;
     } while (!a(paramLong));
     QLog.d("ScanEntranceReport", 2, String.format("reportARCloudFirstResult success=%s totalTime=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) }));
-    ThreadManager.post(new zzc(this, paramBoolean, paramLong), 5, null, false);
+    ThreadManager.post(new aadw(this, paramBoolean, paramLong), 5, null, false);
   }
   
   public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString)
@@ -219,7 +219,7 @@ public class ScanEntranceReport
     {
       this.b = paramBoolean;
       QLog.d("ScanEntranceReport", 2, String.format("reportActivityLaunchTime procExist=%s procRestart=%s procLoadTimeCost=%s activityLaunchTimeCost=%s totalTimeCost=%s source=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l), paramString }));
-      ThreadManager.post(new zyv(this, paramLong1, paramLong2, paramString, l), 5, null, false);
+      ThreadManager.post(new aadp(this, paramLong1, paramLong2, paramString, l), 5, null, false);
       return;
     }
   }
@@ -227,7 +227,7 @@ public class ScanEntranceReport
   public void b()
   {
     QLog.d("ScanEntranceReport", 2, "reportZoomCamera");
-    ThreadManager.post(new zzg(this), 5, null, false);
+    ThreadManager.post(new aaea(this), 5, null, false);
   }
   
   public void b(long paramLong1, long paramLong2, int paramInt, String paramString)
@@ -241,7 +241,7 @@ public class ScanEntranceReport
       paramLong2 = l - paramLong2;
     } while ((!a(paramLong1)) || (!a(paramLong2)));
     QLog.d("ScanEntranceReport", 2, String.format("reportFirstARRecog totalTime=%s lastTotalTime=%s uploadCount=%s sessionIds=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt), paramString }));
-    ThreadManager.post(new zyy(this, paramLong2, paramInt, paramString, paramLong1), 5, null, false);
+    ThreadManager.post(new aads(this, paramLong2, paramInt, paramString, paramLong1), 5, null, false);
   }
 }
 

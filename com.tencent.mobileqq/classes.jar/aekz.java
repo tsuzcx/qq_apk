@@ -1,60 +1,27 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView.GestureListener;
-
 public class aekz
-  extends GestureDetector.SimpleOnGestureListener
 {
-  private aekz(StuffContainerView paramStuffContainerView) {}
+  public final long a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public aekz(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    if (this.a.a == null) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f2;
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
-    {
-      float f1 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
-      f2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-      if (Math.abs(f1) <= Math.abs(f2)) {
-        break label143;
-      }
-      if (Math.abs(Math.asin(Math.abs(f2) / Math.sqrt(f2 * f2 + f1 * f1))) < 0.5235987755982988D)
-      {
-        if (f1 >= 0.0F) {
-          break label128;
-        }
-        this.a.a.g();
-      }
-    }
-    for (;;)
-    {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label128:
-      this.a.a.j();
-      continue;
-      label143:
-      if (f2 > 0.0F) {
-        this.a.a.h();
-      } else {
-        this.a.a.i();
-      }
-    }
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      this.a.a.f();
-    }
-    return false;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aekz
  * JD-Core Version:    0.7.0.1
  */

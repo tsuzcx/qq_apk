@@ -1,70 +1,43 @@
-import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public class zbk
+class zbk
+  implements Runnable
 {
-  public static final String[] a;
-  private static final String[] b = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
-  public int a;
-  public GuardManager a;
-  protected long c;
-  protected long d;
+  zbk(zbj paramzbj) {}
   
-  static
+  public void run()
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
-  }
-  
-  public void a()
-  {
-    this.c += 1L;
-    this.d += 1L;
-  }
-  
-  public final void a(int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] + " onEvent " + b[paramInt] + ", " + paramObject + ", " + this.c + ", " + this.d);
-    }
-    switch (paramInt)
+    ConditionSearchManager.a(this.a.a, false);
+    if (this.a.a.c)
     {
-    default: 
-      return;
-    case 2: 
-      a();
-      return;
-    case 0: 
-      b();
-      return;
-    case 3: 
-      a((String)paramObject);
-      return;
-    case 4: 
-      d((String)paramObject);
-      return;
-    case 5: 
-      b((String)paramObject);
-      return;
-    case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
+      if (this.a.a.jdField_a_of_type_JavaUtilLinkedList != null)
+      {
+        Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        if (localIterator.hasNext())
+        {
+          ConditionSearchManager.IConfigListener localIConfigListener = (ConditionSearchManager.IConfigListener)localIterator.next();
+          if (ConditionSearchManager.a(this.a.a) != null) {}
+          for (boolean bool = true;; bool = false)
+          {
+            localIConfigListener.a(2, bool);
+            break;
+          }
+        }
+      }
+      if (this.a.a.d) {
+        this.a.a.a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard);
+      }
       return;
     }
-    c((String)paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
+    }
+    ConditionSearchManager.a(this.a.a, null);
   }
-  
-  protected void a(String paramString) {}
-  
-  protected void b() {}
-  
-  protected void b(String paramString)
-  {
-    this.d = 0L;
-    this.c = 0L;
-  }
-  
-  protected void c(String paramString) {}
-  
-  protected void d(String paramString) {}
 }
 
 

@@ -1,27 +1,18 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class zkz
-  extends SosoInterface.OnLocationListener
+  implements Runnable
 {
-  public zkz(TroopHandler paramTroopHandler, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, boolean paramBoolean3, boolean paramBoolean4, String paramString1, long paramLong2, String paramString2)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong1, paramBoolean3, paramBoolean4, paramString1);
-  }
+  public zkz(QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopHandler", 2, "onLocationFinish, time=" + (l - this.jdField_a_of_type_Long) + "ms");
+    AdvertisementVideoPreloadManager localAdvertisementVideoPreloadManager = (AdvertisementVideoPreloadManager)this.a.getManager(237);
+    if (localAdvertisementVideoPreloadManager != null) {
+      localAdvertisementVideoPreloadManager.a(1);
     }
-    if (paramInt != 0) {
-      QLog.i("TroopHandler", 1, "getDetailOnlineMemberList, startLocation, errorCode=" + paramInt);
-    }
-    TroopHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler, this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
+    this.a.D();
   }
 }
 

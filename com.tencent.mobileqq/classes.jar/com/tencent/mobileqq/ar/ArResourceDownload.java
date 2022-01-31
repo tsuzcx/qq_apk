@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.ar;
 
+import aacv;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -27,7 +28,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import zyb;
 
 public class ArResourceDownload
   implements INetEngine.INetEngineListener
@@ -46,7 +46,7 @@ public class ArResourceDownload
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new zyb();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aacv();
   }
   
   public ArResourceDownload(AppInterface paramAppInterface, ArResourceManager paramArResourceManager)

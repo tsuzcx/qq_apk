@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <ImageView android:layout_width="45.0dip" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021930" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eab" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="隐藏此条消息" />
+    </LinearLayout>
+    <View android:background="#ffe0e0e0" android:layout_width="wrap_content" android:layout_height="1.0px" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <ImageView android:layout_width="45.0dip" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021931" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eac" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="减少此类消息" />
+    </LinearLayout>
+</LinearLayout>

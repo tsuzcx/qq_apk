@@ -84,7 +84,7 @@ public class MyStorys
       {
         return str;
         if (j == 0) {
-          return StoryApi.a(2131432076);
+          return StoryApi.a(2131432093);
         }
         localStringBuilder.append(UIUtils.a(j)).append("个小视频");
         if (j > 0) {
@@ -96,7 +96,7 @@ public class MyStorys
           localStringBuilder.append(UIUtils.a(j)).append("个小视频");
           return localStringBuilder.toString();
         }
-        localStringBuilder.append(StoryApi.a(2131432101, new Object[] { Integer.valueOf(this.g) }));
+        localStringBuilder.append(StoryApi.a(2131432118, new Object[] { Integer.valueOf(this.g) }));
         return localStringBuilder.toString();
         if (this.jdField_a_of_type_Boolean)
         {

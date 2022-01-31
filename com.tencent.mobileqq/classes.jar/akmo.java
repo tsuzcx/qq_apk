@@ -1,24 +1,23 @@
-import com.tencent.open.agent.OpenSdkFriendService;
-import com.tencent.open.agent.OpenSdkFriendService.GetFriendListCallback;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.webview.sonic.SonicPreloadData;
 
-public class akmo
-  implements Runnable
+public final class akmo
+  implements Parcelable.Creator
 {
-  public akmo(OpenSdkFriendService.GetFriendListCallback paramGetFriendListCallback, ArrayList paramArrayList, String paramString) {}
-  
-  public void run()
+  public SonicPreloadData a(Parcel paramParcel)
   {
-    if ("action_invite".equals(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.d))
-    {
-      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$GetFriendListCallback.a.a(this.jdField_a_of_type_JavaLangString);
-    }
+    return new SonicPreloadData(paramParcel);
+  }
+  
+  public SonicPreloadData[] a(int paramInt)
+  {
+    return new SonicPreloadData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,19 @@
-import android.content.Intent;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import java.lang.ref.WeakReference;
 
 public class xfz
-  implements View.OnClickListener
+  extends xgc
 {
-  public xfz(BannerManager paramBannerManager, String paramString) {}
+  public xfz(PreloadResource paramPreloadResource, WeakReference paramWeakReference, PreloadModule paramPreloadModule) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), QQBrowserActivity.class);
-    paramView.putExtra("individuation_url_type", 40100);
-    VasWebviewUtil.openQQBrowserWithoutAD(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), IndividuationUrlHelper.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), "themeDetail", this.jdField_a_of_type_JavaLangString, ""), 32L, paramView, true, -1);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(12).sendToTarget();
-    ReportController.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).app, "CliOper", "", "", "0X8005B9F", "0X8005B9F", 0, 0, "", "", "", "");
+    PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((PreloadManager.a(localPreloadManager)) && (localPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource))) {
+      localPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, null);
+    }
   }
 }
 

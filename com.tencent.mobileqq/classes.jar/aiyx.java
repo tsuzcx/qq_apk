@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.util.InputMethodUtil;
 
-class aiyx
+public class aiyx
   implements Runnable
 {
-  aiyx(aiyw paramaiyw) {}
+  public aiyx(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
   public void run()
   {
-    if (this.a.a.a == 3) {
-      this.a.a.a = 1;
-    }
-    this.a.a.g();
+    InputMethodUtil.b(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyx
  * JD-Core Version:    0.7.0.1
  */

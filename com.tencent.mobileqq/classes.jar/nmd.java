@@ -1,17 +1,29 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
+import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import java.util.ArrayList;
 
 public class nmd
-  implements AbsListView.OnScrollListener
+  extends IPlayVideoStatusChangeListener
 {
-  public nmd(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  public nmd(VidListPlayMode paramVidListPlayMode) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void c(int paramInt)
   {
-    this.a.a = paramInt1;
+    if (paramInt < this.a.a.a.size() - 1) {
+      StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
+    }
+  }
+  
+  public void d(int paramInt)
+  {
+    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
+  }
+  
+  public void e(int paramInt)
+  {
+    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
   }
 }
 

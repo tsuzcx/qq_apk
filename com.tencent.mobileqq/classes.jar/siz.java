@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.managers.LoadingStateManager;
 
 public class siz
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public siz(EditInfoActivity paramEditInfoActivity) {}
+  public siz(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844421);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("表情");
-    this.a.jdField_a_of_type_Boolean = false;
+    LoadingStateManager.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
+    {
+      this.a.a(1134013, 0L, false);
+      return true;
+    }
+    this.a.d(true);
+    return true;
   }
 }
 

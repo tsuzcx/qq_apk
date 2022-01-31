@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.common.util.FileChooserHelper;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class kmk
-  implements DialogInterface.OnCancelListener
+  extends Handler
 {
-  public kmk(FileChooserHelper paramFileChooserHelper) {}
+  public kmk(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void handleMessage(Message paramMessage)
   {
-    FileChooserHelper.a(this.a);
+    if (paramMessage.what == 5) {
+      this.a.a((String)paramMessage.obj);
+    }
+    while (paramMessage.what != 291) {
+      return;
+    }
+    this.a.updateMicStatus((String)paramMessage.obj);
   }
 }
 

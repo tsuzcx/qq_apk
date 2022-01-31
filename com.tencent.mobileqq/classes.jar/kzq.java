@@ -1,58 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
-public final class kzq
-  implements Runnable
+public class kzq
+  implements TouchWebView.OnScrollChangedListener
 {
-  public kzq(String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, boolean paramBoolean) {}
+  public kzq(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject = str;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
-    try
+    paramInt1 = paramInt2 - paramInt4;
+    if (paramInt1 > 0)
     {
-      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
+      if (this.a.jdField_b_of_type_Int < 0) {
+        this.a.jdField_b_of_type_Int = 0;
+      }
+      paramView = this.a;
+      paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      if ((this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int) && (this.a.jdField_c_of_type_Boolean))
       {
-        localObject = (QQAppInterface)localObject;
-        if (localObject != null) {
-          if (!((PublicAccountDataManager)((AppInterface)localObject).getManager(55)).a(Long.valueOf(this.jdField_b_of_type_JavaLangString))) {
-            break label135;
-          }
-        }
-        label135:
-        for (localObject = "1";; localObject = "0")
+        this.a.jdField_c_of_type_Boolean = false;
+        if (this.a.jdField_a_of_type_AndroidViewView != null)
         {
-          localJSONObject.put("fans", localObject);
-          localObject = localJSONObject.toString();
-          PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.e, this.f, this.g, (String)localObject, this.jdField_a_of_type_Boolean);
-          return;
+          this.a.a(this.a.jdField_b_of_type_AndroidViewView, 0);
+          this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+          this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
         }
       }
     }
-    catch (Exception localException)
+    do
     {
-      for (;;)
+      do
       {
-        localObject = str;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("PublicAccountReportUtils", 2, "doVideoDataReportWithFansInfoInR5() error exception = " + localException.getMessage());
-          localObject = str;
-          continue;
-          localObject = null;
+        return;
+        if (this.a.jdField_b_of_type_Int > 0) {
+          this.a.jdField_b_of_type_Int = 0;
         }
-      }
-    }
+        paramView = this.a;
+        paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      } while ((-this.a.jdField_b_of_type_Int <= this.a.jdField_c_of_type_Int) || (this.a.jdField_c_of_type_Boolean));
+      this.a.jdField_c_of_type_Boolean = true;
+    } while (this.a.jdField_a_of_type_AndroidViewView == null);
+    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 

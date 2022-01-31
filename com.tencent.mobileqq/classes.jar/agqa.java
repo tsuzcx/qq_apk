@@ -1,119 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-public class agqa
-  extends Handler
+class agqa
+  extends DownloadListener
 {
-  private WeakReference a;
+  agqa(agpz paramagpz) {}
   
-  public agqa(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style end download, url : %s, resultCode : %d ", new Object[] { paramDownloadTask.jdField_a_of_type_JavaLangString, Integer.valueOf(paramDownloadTask.jdField_a_of_type_Int) }));
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onProgress(DownloadTask paramDownloadTask)
   {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
-    if ((localReceiptMessageDetailFragment == null) || (!localReceiptMessageDetailFragment.isAdded())) {}
-    label124:
-    int i;
-    label126:
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      case 8: 
-      case 9: 
-      case 12: 
-      case 13: 
-      case 14: 
-      case 15: 
-      case 16: 
-      case 17: 
-      case 18: 
-      case 19: 
-      default: 
-        i = 0;
-      }
-    } while (i == 0);
-    localReceiptMessageDetailFragment.h();
-    ReceiptMessageDetailFragment.m(localReceiptMessageDetailFragment);
-    if ((ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a == 0) && (!ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment)))
-    {
-      if (!ReceiptMessageDetailFragment.b(localReceiptMessageDetailFragment)) {
-        break label399;
-      }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 1, true);
+    int i = (int)paramDownloadTask.jdField_a_of_type_Float;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style progress, url : %s, progress : %d", new Object[] { paramDownloadTask.jdField_a_of_type_JavaLangString, Integer.valueOf(i) }));
     }
-    while (ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment))
-    {
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      return;
-      if (!(paramMessage.obj instanceof MessageForText)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 1);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForText)paramMessage.obj);
-      i = 1;
-      break label126;
-      if (!(paramMessage.obj instanceof MessageForPic)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 2);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPic)paramMessage.obj);
-      i = 1;
-      break label126;
-      if (!(paramMessage.obj instanceof MessageForPtt)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 3);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPtt)paramMessage.obj);
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      i = 1;
-      break label126;
-      ReceiptMessageDetailFragment.i(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      QQToast.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getApp(), 1, 2131438975, 0).a(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      i = PttItemBuilder.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment));
-      localReceiptMessageDetailFragment.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), i, false);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.k(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ThreadManager.post(new agqb(this, localReceiptMessageDetailFragment), 8, null, false);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.l(localReceiptMessageDetailFragment);
-      break label124;
-      label399:
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 0, true);
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style start download, url : %s, position : %s ", new Object[] { paramDownloadTask.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqa
  * JD-Core Version:    0.7.0.1
  */

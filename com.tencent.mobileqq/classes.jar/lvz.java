@@ -1,18 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lvz
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public lvz(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
+  public lvz(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ComponentHeaderTopicRecommend.a(this.a).dismiss();
+      return;
+      ComponentHeaderTopicRecommend.a(this.a, false);
+    }
   }
 }
 

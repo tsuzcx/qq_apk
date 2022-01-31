@@ -1,21 +1,27 @@
-import android.os.Build;
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.FaceUIController;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aada
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aada(ARReport paramARReport, int paramInt, long paramLong) {}
+  public aada(FaceUIController paramFaceUIController) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("ar_model", Build.MODEL);
-    localHashMap.put("result", this.jdField_a_of_type_Int + "");
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "AREngine_openCamera", true, 0L, 0L, localHashMap, "", true);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      QQToast.a(this.a.a, 2, 2131430548, 0).a();
+      paramDialogInterface.dismiss();
+      ReportController.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
+      return;
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

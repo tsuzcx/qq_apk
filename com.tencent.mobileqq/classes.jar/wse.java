@@ -1,19 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wse
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnClickListener
 {
-  public wse(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
+  public wse(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, "停用手机通讯录匹配", "停用后，你将无法使用QQ跟手机通讯录中的朋友联系。服务器上属于你的通讯录加密数据也将被删除。", "停用", "取消", new wsf(this), new wsg(this)).show();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
   }
 }
 

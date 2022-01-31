@@ -195,7 +195,7 @@ public class ImmersiveUtils
   
   public static boolean a()
   {
-    return (VersionUtils.h()) && (((jdField_d_of_type_Boolean) && (SystemUtil.b())) || (SystemUtil.d()));
+    return (VersionUtils.i()) && (((jdField_d_of_type_Boolean) && (SystemUtil.b())) || (SystemUtil.d()));
   }
   
   public static boolean a(Window paramWindow)
@@ -225,7 +225,7 @@ public class ImmersiveUtils
   
   public static boolean a(Window paramWindow, boolean paramBoolean)
   {
-    if (!VersionUtils.h()) {}
+    if (!VersionUtils.i()) {}
     do
     {
       return false;

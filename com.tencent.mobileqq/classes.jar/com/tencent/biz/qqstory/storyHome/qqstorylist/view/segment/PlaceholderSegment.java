@@ -33,20 +33,20 @@ public class PlaceholderSegment
     this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public void E_()
+  public void J_()
   {
-    F_();
+    K_();
   }
   
-  public void F_()
+  public void K_()
   {
     SegmentView localSegmentView = a().a(this.jdField_b_of_type_JavaLangString);
     if ((localSegmentView == null) || (localSegmentView.a() == 0))
     {
-      e_(true);
+      f_(true);
       return;
     }
-    e_(false);
+    f_(false);
   }
   
   public int a()
@@ -56,8 +56,8 @@ public class PlaceholderSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramBaseViewHolder.a(2131369059);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131369058);
+    paramViewGroup = (TextView)paramBaseViewHolder.a(2131369125);
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131369124);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       paramViewGroup.setText("还没有好友更新日迹\n拍摄一段小视频，分享眼前的世界");
@@ -79,7 +79,7 @@ public class PlaceholderSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970671, paramViewGroup, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970717, paramViewGroup, false));
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
   }
   
@@ -100,7 +100,7 @@ public class PlaceholderSegment
   
   protected void c()
   {
-    F_();
+    K_();
   }
   
   public void e()
@@ -111,7 +111,7 @@ public class PlaceholderSegment
     do
     {
       return;
-      localImageView = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131369058);
+      localImageView = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131369124);
     } while (localImageView == null);
     QQStoryContext.a();
     if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))

@@ -1,35 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
 
 public class yqr
-  implements DialogInterface.OnClickListener
+  implements AVCallback
 {
-  public yqr(ApolloStoreActivity paramApolloStoreActivity) {}
+  public yqr(CmGameAvHandler paramCmGameAvHandler) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!TextUtils.isEmpty(ApolloConstant.X)) {}
-    for (String str = ApolloConstant.X;; str = ApolloConstant.M)
-    {
-      long l1 = DeviceInfoUtil.k();
-      long l2 = DeviceInfoUtil.j();
-      str = str + "&screenWidth=" + (int)((float)l2 / ApolloStoreActivity.a(this.a)) + "&screenHeight=" + (int)((float)l1 / ApolloStoreActivity.a(this.a)) + "&tab=mall&view=role";
-      WebViewFragment localWebViewFragment = this.a.b();
-      if ((localWebViewFragment != null) && (localWebViewFragment.a != null)) {
-        localWebViewFragment.a.loadUrl(str);
-      }
-      paramDialogInterface.dismiss();
-      VipUtils.a(null, "cmshow", "Apollo", "AI_alert_mall", 0, 0, new String[0]);
-      return;
-    }
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 

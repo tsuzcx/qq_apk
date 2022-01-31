@@ -1,30 +1,35 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import android.view.View;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-class yge
-  extends AVVideoCtrl.LocalVideoPreviewCallback
+public class yge
+  implements Animation.AnimationListener
 {
-  yge(ygd paramygd) {}
+  public yge(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = CmGameUtil.a(AVCameraCaptureModel.a(this.a.a));
-    if (localObject == null) {}
-    do
+    this.a.c.clearAnimation();
+    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
+    this.a.c = null;
+    if (this.a.a != null)
     {
-      return;
-      localObject = ((CmGameLauncher)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new ygf(this, (ApolloSurfaceView)localObject, paramVideoFrame));
+      this.a.a.a();
+      this.a.a = null;
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yge
  * JD-Core Version:    0.7.0.1
  */

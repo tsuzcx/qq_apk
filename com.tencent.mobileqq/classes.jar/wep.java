@@ -1,26 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
 public class wep
-  extends Handler
+  implements Runnable
 {
-  public wep(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public wep(BlessActivity paramBlessActivity, Bitmap paramBitmap) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (List)paramMessage.obj;
-      this.a.a(paramMessage, true);
-      return;
-    }
-    paramMessage = (List)paramMessage.obj;
-    this.a.a(paramMessage, false);
+    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity).setVisibility(0);
   }
 }
 

@@ -1,21 +1,31 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.content.SharedPreferences;
+import cooperation.readinjoy.ReadInJoyHelper;
+import mqq.app.AppRuntime;
 
-public class anej
+public final class anej
   implements Runnable
 {
-  public anej(EditVideoPartManager paramEditVideoPartManager) {}
+  public anej(AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    Bitmap localBitmap = this.a.a();
-    this.a.a.a(localBitmap);
+    int i = 1;
+    SharedPreferences localSharedPreferences = ReadInJoyHelper.a(this.a, true, true);
+    if (localSharedPreferences == null) {
+      return;
+    }
+    if (localSharedPreferences.getBoolean("free_time_refresh_push", true)) {}
+    for (;;)
+    {
+      ReadInJoyHelper.a(i);
+      return;
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anej
  * JD-Core Version:    0.7.0.1
  */

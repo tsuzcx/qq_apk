@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.qphone.base.util.QLog;
 
 public class xpi
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xpi(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  private SVHwEncoder jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xpi(FlowCameraActivity2 paramFlowCameraActivity2, SVHwEncoder paramSVHwEncoder)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder = paramSVHwEncoder;
+  }
+  
+  public void run()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "handleQQVideo(): onSendVideoClick mEncoderCache=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder.b();
+    }
   }
 }
 

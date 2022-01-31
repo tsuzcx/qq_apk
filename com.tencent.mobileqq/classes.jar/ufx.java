@@ -1,34 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.GridCallBack;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.open.appcircle.st.AppCircleReportManager;
+import com.tencent.open.appcircle.st.STUtils;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.ToastUtil;
+import com.tencent.open.downloadnew.MyAppApi;
+import mqq.os.MqqHandler;
 
 public class ufx
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ufx(ActivateFriendGrid paramActivateFriendGrid) {}
+  public ufx(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (ActivateFriendGridItem)paramView;
-    if (paramView.a)
-    {
-      ActivateFriendGrid.a(this.a);
-      if (paramView.a) {
-        break label75;
-      }
+    LogUtility.b("qqBaseActivity", STUtils.a(10010, 1, 3, 200));
+    AppCircleReportManager.a().a(17, STUtils.a(10010, 1, 3, 200));
+    if (!MyAppApi.a().b()) {
+      ToastUtil.a().a("应用宝未安装，请重新安装应用宝");
     }
-    label75:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      paramView.setChecked(bool);
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
-      }
+      ThreadManager.getSubThreadHandler().postDelayed(new ufy(this), 500L);
       return;
-      ActivateFriendGrid.b(this.a);
-      break;
+      NewUpgradeDialog.a(this.a);
     }
   }
 }

@@ -49,8 +49,8 @@ import java.net.URLEncoder;
 import java.util.HashSet;
 import java.util.Set;
 import org.json.JSONObject;
-import vkp;
-import vkq;
+import vnr;
+import vns;
 
 public class AIOGallerySceneWithBusiness
   extends AIOGalleryScene
@@ -194,12 +194,12 @@ public class AIOGallerySceneWithBusiness
         }
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624515);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppProgressDialog.getWindow().setDimAmount(0.0F);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-        this.e = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+        this.e = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
       }
       return;
     }
@@ -331,19 +331,19 @@ public class AIOGallerySceneWithBusiness
   {
     super.a(paramViewGroup);
     paramViewGroup = (RelativeLayout)a();
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130971667, null);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130971715, null);
     this.jdField_b_of_type_AndroidViewView.setClickable(true);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)TypedValue.applyDimension(1, 72.0F, this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics()));
     localLayoutParams.addRule(12, -1);
     paramViewGroup.addView(this.jdField_b_of_type_AndroidViewView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131375240));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131375426));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131375241));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131375427));
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131375242));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375238));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131375428));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131375424));
     this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    paramViewGroup = new vkp(this);
+    paramViewGroup = new vnr(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramViewGroup);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(paramViewGroup);
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(paramViewGroup);
@@ -526,7 +526,7 @@ public class AIOGallerySceneWithBusiness
           for (;;)
           {
             this.jdField_d_of_type_AndroidWidgetButton = new Button(paramActivity);
-            this.jdField_d_of_type_AndroidWidgetButton.setBackgroundResource(2130845421);
+            this.jdField_d_of_type_AndroidWidgetButton.setBackgroundResource(2130845549);
             this.jdField_d_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
             this.jdField_d_of_type_AndroidWidgetButton.setTextColor(-1);
             this.jdField_d_of_type_AndroidWidgetButton.setTextSize(18.0F);
@@ -536,7 +536,7 @@ public class AIOGallerySceneWithBusiness
             paramActivity.addRule(12);
             paramActivity.bottomMargin = 56;
             paramViewGroup.addView(this.jdField_d_of_type_AndroidWidgetButton, paramActivity);
-            this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(new vkq(this, localAIOShortVideoData));
+            this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(new vns(this, localAIOShortVideoData));
             return true;
             if (1 == localAIOShortVideoData.h)
             {
@@ -760,16 +760,16 @@ public class AIOGallerySceneWithBusiness
       return false;
       if (paramAIOImageData.c == 1)
       {
-        paramActionSheet.b(2131435854);
-        paramActionSheet.b(2131435858);
+        paramActionSheet.b(2131435871);
         paramActionSheet.b(2131435875);
-        paramActionSheet.b(2131435876);
+        paramActionSheet.b(2131435892);
+        paramActionSheet.b(2131435893);
         return true;
       }
     } while (paramAIOImageData.c != 2);
-    paramActionSheet.b(2131435858);
-    paramActionSheet.b(2131435854);
-    paramActionSheet.b(2131435877);
+    paramActionSheet.b(2131435875);
+    paramActionSheet.b(2131435871);
+    paramActionSheet.b(2131435894);
     Object localObject = b(((StructMsgForImageShare)StructMsgFactory.a((byte[])paramAIOImageData.a)).mMsgActionData);
     if ((localObject != null) && (localObject.length > 2))
     {
@@ -816,7 +816,7 @@ public class AIOGallerySceneWithBusiness
     do
     {
       return false;
-      if (!paramString.equals(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131435854))) {
+      if (!paramString.equals(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131435871))) {
         break;
       }
     } while ((paramAIOImageData.c != 1) && (paramAIOImageData.c != 2));
@@ -867,7 +867,7 @@ public class AIOGallerySceneWithBusiness
     boolean bool;
     label284:
     String str1;
-    if (paramString.equals(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131435858))) {
+    if (paramString.equals(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131435875))) {
       if (paramAIOImageData.c == 1)
       {
         StructMsgForImageShare localStructMsgForImageShare = (StructMsgForImageShare)StructMsgFactory.a((byte[])paramAIOImageData.a);
@@ -981,7 +981,7 @@ public class AIOGallerySceneWithBusiness
         for (bool = true;; bool = false)
         {
           return bool;
-          if (paramString.equals(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131435875)))
+          if (paramString.equals(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131435892)))
           {
             if (paramAIOImageData.c != 1) {
               break;
@@ -989,7 +989,7 @@ public class AIOGallerySceneWithBusiness
             b((StructMsgForImageShare)StructMsgFactory.a((byte[])paramAIOImageData.a), "6");
             return true;
           }
-          if (paramString.equals(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131435876)))
+          if (paramString.equals(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131435893)))
           {
             if (paramAIOImageData.c != 1) {
               break;
@@ -997,7 +997,7 @@ public class AIOGallerySceneWithBusiness
             a((StructMsgForImageShare)StructMsgFactory.a((byte[])paramAIOImageData.a), "6");
             return true;
           }
-          if ((!paramString.equals(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131435877))) || (paramAIOImageData.c != 2)) {
+          if ((!paramString.equals(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131435894))) || (paramAIOImageData.c != 2)) {
             break;
           }
           paramString = (StructMsgForImageShare)StructMsgFactory.a((byte[])paramAIOImageData.a);

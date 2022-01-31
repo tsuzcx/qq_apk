@@ -26,7 +26,7 @@ public class QZoneEntryReporterInLeba
     }
     QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
     localReportInfo.c = "637";
-    localReportInfo.d = "12";
+    localReportInfo.d = "11";
     localReportInfo.e = "1";
     localReportInfo.a = new ArrayList();
     localReportInfo.a.add(String.valueOf(paramInt));
@@ -40,7 +40,7 @@ public class QZoneEntryReporterInLeba
     }
     QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
     localReportInfo.c = "637";
-    localReportInfo.d = "12";
+    localReportInfo.d = "11";
     localReportInfo.e = "2";
     localReportInfo.a = new ArrayList();
     localReportInfo.a.add(String.valueOf(paramInt2));
@@ -64,7 +64,7 @@ public class QZoneEntryReporterInLeba
     }
     QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
     localReportInfo.c = "637";
-    localReportInfo.d = "11";
+    localReportInfo.d = "12";
     localReportInfo.e = "1";
     localReportInfo.a = new ArrayList();
     localReportInfo.a.add(String.valueOf(paramInt));
@@ -87,7 +87,7 @@ public class QZoneEntryReporterInLeba
     }
     QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
     localReportInfo.c = "637";
-    localReportInfo.d = "11";
+    localReportInfo.d = "12";
     localReportInfo.e = "2";
     localReportInfo.a = new ArrayList();
     localReportInfo.a.add(String.valueOf(paramInt));

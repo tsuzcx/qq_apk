@@ -1,30 +1,34 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.Iterator;
+import java.util.List;
 
-public class mrl
-  implements View.OnFocusChangeListener
+class mrl
+  implements Runnable
 {
-  public mrl(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  mrl(mrk parammrk) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      SubscriptFeedsActivity.a(this.a);
-      long l = System.currentTimeMillis();
-      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
-      {
-        SubscriptFeedsActivity.a(this.a, l);
-        UniteSearchActivity.a(this.a, null, 12);
-        if (QLog.isColorLevel()) {
-          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
-        }
-      }
+    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
+    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class);
+    if (localList == null) {
+      return;
     }
+    Object localObject = localList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localEntityManager.b((ReadInJoySearchHistoryEntity)((Iterator)localObject).next());
+    }
+    localList.clear();
+    localObject = this.a.a.a.obtainMessage(1);
+    ((Message)localObject).obj = localList;
+    this.a.a.a.sendMessage((Message)localObject);
+    localEntityManager.a();
   }
 }
 

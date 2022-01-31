@@ -1,32 +1,17 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-import java.util.List;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.QQComicStep;
+import cooperation.comic.VipComicNavConfigHelper;
+import cooperation.comic.VipComicSoHelper;
 
-public class zri
-  implements Comparator
+class zri
+  implements Runnable
 {
-  private zri(MsgLruCache paramMsgLruCache) {}
+  zri(zrh paramzrh) {}
   
-  public int a(String paramString1, String paramString2)
+  public void run()
   {
-    paramString1 = this.a.getOriginal(paramString1);
-    paramString2 = this.a.getOriginal(paramString2);
-    if ((paramString1 == null) || (paramString1.isEmpty())) {
-      return 1;
-    }
-    if ((paramString2 == null) || (paramString2.isEmpty())) {
-      return -1;
-    }
-    long l1 = ((MessageRecord)paramString1.get(paramString1.size() - 1)).time;
-    long l2 = ((MessageRecord)paramString2.get(paramString2.size() - 1)).time;
-    if (l1 > l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    VipComicNavConfigHelper.a(QQComicStep.b(this.a.a).b);
+    VipComicSoHelper.a(QQComicStep.c(this.a.a).b);
   }
 }
 

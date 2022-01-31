@@ -1,13 +1,28 @@
-import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
+import android.os.Handler;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import dov.com.qq.im.capture.paster.PasterDataManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import java.util.Collections;
+import java.util.List;
 
-class anmw
-  implements Runnable
+public class anmw
+  implements DoodleEmojiManager.POIPostersRequestCallback
 {
-  anmw(anmv paramanmv) {}
+  public anmw(PasterDataManager paramPasterDataManager) {}
   
-  public void run()
+  public void a(int paramInt, List paramList)
   {
-    PoiListLayout.a(this.a.a, 0);
+    SLog.b("PasterDataManager", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    List localList = paramList;
+    if (paramList == null) {
+      localList = Collections.EMPTY_LIST;
+    }
+    Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent(paramInt, localList));
   }
 }
 

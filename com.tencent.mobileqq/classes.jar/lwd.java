@@ -1,90 +1,29 @@
-import android.content.Context;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyModelImpl;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.CellFactory;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class lwd
-  extends BaseAdapter
+  extends ClickableSpan
 {
-  private lwd(ComponentPolymericView paramComponentPolymericView) {}
+  public lwd(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    return ComponentPolymericView.a(this.a).size();
+    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.a(), 4, false, 7, false);
+    ReadInJoyBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.e());
   }
   
-  public Object getItem(int paramInt)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return ComponentPolymericView.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return ((BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt)).mRecommendSeq;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
-    if (localBaseArticleInfo.mPolymericInfo != null) {}
-    switch (localBaseArticleInfo.mPolymericInfo.a)
-    {
-    default: 
-      if (ReadInJoyUtils.a(localBaseArticleInfo)) {
-        return 51;
-      }
-      break;
-    case 9: 
-      return 67;
-    case 11: 
-      return 69;
-    case 10: 
-      return 68;
-    }
-    if (ReadInJoyUtils.b(localBaseArticleInfo)) {
-      return 52;
-    }
-    if (localBaseArticleInfo.mSinglePicture != null) {
-      return 50;
-    }
-    return 50;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
-    Object localObject = ComponentPolymericView.a(this.a);
-    ArticleInfo localArticleInfo = (ArticleInfo)paramViewGroup;
-    int j = getItemViewType(paramInt);
-    int k = (int)paramViewGroup.mChannelID;
-    if (paramViewGroup.mChannelID == 3L) {}
-    for (int i = 1;; i = 0)
-    {
-      localObject = new ReadInJoyModelImpl((Context)localObject, localArticleInfo, j, k, i, paramInt, false, getCount(), null, ComponentPolymericView.a(this.a).a.a());
-      paramView = CellFactory.a(paramInt, localObject, getItemViewType(paramInt), paramView, ComponentPolymericView.a(this.a), ComponentPolymericView.a(this.a).a.a(), ComponentPolymericView.a(this.a).a.a().a());
-      if (paramView != null)
-      {
-        paramView.setTag(2131362079, localObject);
-        ComponentPolymericView.a(this.a).a.a().a(paramViewGroup, (IReadInJoyModel)localObject, System.currentTimeMillis(), paramInt);
-      }
-      return paramView;
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 6;
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
   }
 }
 

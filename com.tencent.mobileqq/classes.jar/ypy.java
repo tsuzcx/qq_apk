@@ -1,24 +1,16 @@
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 
-class ypy
+public class ypy
   implements Runnable
 {
-  ypy(ypw paramypw, long paramLong, CmGameStartChecker.ICmGameConfirmListener paramICmGameConfirmListener, CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  public ypy(ApolloWebViewFragment paramApolloWebViewFragment, String paramString) {}
   
   public void run()
   {
-    String str = String.format("当前需要更新%.1fM，马上开始?", new Object[] { Float.valueOf((float)this.jdField_a_of_type_Long * 1.0F / 1024.0F / 1024.0F) });
-    ApolloGameActivity.a(this.jdField_a_of_type_Ypw.a).setVisibility(4);
-    ApolloGameActivity.b(this.jdField_a_of_type_Ypw.a).setVisibility(8);
-    ApolloGameActivity.c(this.jdField_a_of_type_Ypw.a).setText(str);
-    ApolloGameActivity.c(this.jdField_a_of_type_Ypw.a).setVisibility(0);
-    ApolloGameActivity.a(this.jdField_a_of_type_Ypw.a).setVisibility(0);
-    ApolloGameActivity.a(this.jdField_a_of_type_Ypw.a).setOnClickListener(new ypz(this));
+    WebAccelerateHelper.getInstance().preGetKey(this.jdField_a_of_type_JavaLangString, ApolloWebViewFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloWebViewFragment), null);
+    WebAccelerateHelper.getInstance().preCheckOffline(this.jdField_a_of_type_JavaLangString);
+    WebAccelerateHelper.getInstance().preFetchResource(this.jdField_a_of_type_JavaLangString);
   }
 }
 

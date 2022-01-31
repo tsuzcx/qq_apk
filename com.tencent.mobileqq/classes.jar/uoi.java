@@ -1,34 +1,14 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
 
 class uoi
   implements Runnable
 {
-  uoi(uoh paramuoh, Drawable paramDrawable) {}
+  uoi(uoh paramuoh) {}
   
   public void run()
   {
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent start update drawable:" + this.jdField_a_of_type_Uoh.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Uoh.jdField_a_of_type_Int != DoodleMsgLayout.a(this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout)) {
-      return;
-    }
-    if (DoodleMsgLayout.b(this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
-      DoodleMsgLayout.b(this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).setImageDrawable(null);
-    }
-    if (DoodleMsgLayout.c(this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
-      DoodleMsgLayout.c(this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).setImageDrawable(null);
-    }
-    if (DoodleMsgLayout.a(this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
-      DoodleMsgLayout.a(this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    DoodleMsgLayout.a(this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, 0);
-    if (DoodleMsgLayout.a(this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
-      this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(DoodleMsgLayout.a(this.jdField_a_of_type_Uoh.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).a());
-    }
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent finish update drawable:" + this.jdField_a_of_type_Uoh.jdField_a_of_type_Int);
+    this.a.a.a(false, this.a.a.b.b);
   }
 }
 

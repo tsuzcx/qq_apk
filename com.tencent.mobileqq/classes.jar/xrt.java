@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 class xrt
   implements Runnable
 {
-  xrt(xrq paramxrq) {}
+  xrt(xrs paramxrs) {}
   
   public void run()
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.r();
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e(this.a.jdField_a_of_type_Int);
   }
 }
 

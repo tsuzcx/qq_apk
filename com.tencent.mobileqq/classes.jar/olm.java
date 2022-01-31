@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWServiceProxy;
 
-public final class olm
-  implements Parcelable.Creator
+public class olm
+  extends Handler
 {
-  public TroopStoryItemInfo a(Parcel paramParcel)
+  private RMWServiceProxy a;
+  
+  public olm(RMWServiceProxy paramRMWServiceProxy)
   {
-    return new TroopStoryItemInfo(paramParcel);
+    super(Looper.getMainLooper());
+    this.a = paramRMWServiceProxy;
   }
   
-  public TroopStoryItemInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new TroopStoryItemInfo[paramInt];
+    RMWServiceProxy localRMWServiceProxy = this.a;
+    if (localRMWServiceProxy != null) {
+      localRMWServiceProxy.a(Message.obtain(paramMessage));
+    }
   }
 }
 

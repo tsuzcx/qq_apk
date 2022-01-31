@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
 
 class vmj
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  vmj(vmh paramvmh) {}
+  vmj(vmi paramvmi, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.a.a.a, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "0", "", "", "");
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_Vmi.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Vmi.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Vmi.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct, false);
+      if (AIOGalleryAdapter.a(this.jdField_a_of_type_Vmi.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter) != null) {
+        AIOGalleryAdapter.a(this.jdField_a_of_type_Vmi.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter).a(this.jdField_a_of_type_Vmi.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Vmi.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a());
+      }
+    }
   }
 }
 

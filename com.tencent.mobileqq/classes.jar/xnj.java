@@ -1,37 +1,66 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import android.os.Build;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
 public class xnj
-  extends SosoInterface.OnLocationListener
+  implements MediaPlayer.OnErrorListener
 {
-  public xnj(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public xnj(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  
+  private String[] a()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    String str = QzoneConfig.getInstance().getConfig("VideoEdit", "VideoLoadErrorReturnCode");
+    if (str == null) {
+      return null;
+    }
+    return str.split(",");
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    QLog.e("EditLocalVideoActivity", 2, "VideoView onError, what:" + paramInt1 + ", extra:" + paramInt2);
+    for (;;)
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
+      try
+      {
+        Toast.makeText(this.a.getApplicationContext(), "加载视频失败", 1).show();
+        paramMediaPlayer = a();
+        if (paramMediaPlayer == null)
+        {
+          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
+          this.a.setResult(0);
+          return true;
+        }
+        int k = paramMediaPlayer.length;
+        int i = 0;
+        int j = 1;
+        if (i < k)
+        {
+          if (TextUtils.equals(paramMediaPlayer[i], paramInt1 + "-" + paramInt2)) {
+            j = 0;
+          }
+        }
+        else
+        {
+          if (j == 0) {
+            continue;
+          }
+          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
+          continue;
+        }
+        i += 1;
       }
-      if (NewFlowCameraActivity.a(this.a) != null) {
-        NewFlowCameraActivity.d(this.a);
+      catch (Exception paramMediaPlayer)
+      {
+        QLog.e("EditLocalVideoActivity", 2, "VideoView onError", paramMediaPlayer);
+        return true;
       }
     }
-    do
-    {
-      return;
-      this.a.a = 0.0D;
-      this.a.b = 0.0D;
-    } while (!QLog.isColorLevel());
-    QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() error");
   }
 }
 

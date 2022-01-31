@@ -1,22 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.EditMusicExport;
-import com.tencent.biz.qqstory.takevideo.EditSubtitleExport;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class ofp
-  implements Runnable
+  extends SimpleJob
 {
-  public ofp(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public ofp(EditVideoPartManager paramEditVideoPartManager, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    Object localObject = (EditMusicExport)this.a.a(EditMusicExport.class);
-    if (localObject != null) {
-      ((EditMusicExport)localObject).b();
-    }
-    localObject = (EditSubtitleExport)this.a.a(EditSubtitleExport.class);
-    if (localObject != null) {
-      ((EditSubtitleExport)localObject).b();
-    }
+    StoryReportor.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

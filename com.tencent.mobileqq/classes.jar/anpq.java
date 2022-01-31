@@ -1,32 +1,24 @@
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.util.SparseArray;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.widget.GridView;
+import dov.com.qq.im.capture.adapter.FilterProviderPagerAdapter;
+import dov.com.qq.im.capture.view.QIMFilterProviderView;
 
 public class anpq
   implements Runnable
 {
-  public anpq(FlowCameraActivity2 paramFlowCameraActivity2, String paramString, int paramInt) {}
+  public anpq(QIMFilterProviderView paramQIMFilterProviderView, int paramInt) {}
   
   public void run()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 2002) {
-      str = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.getString(2131428347);
+    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewQIMFilterProviderView.a.a.get(this.jdField_a_of_type_DovComQqImCaptureViewQIMFilterProviderView.b());
+    if (localGridView != null) {
+      localGridView.setSelection(this.jdField_a_of_type_Int);
     }
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a = DialogUtil.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.getString(2131428346), new anpr(this));
-    try
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.setCancelable(false);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.show();
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("FlowCameraActivity", 2, "", localBadTokenException);
-    }
+    QLog.d("FilterProviderView", 2, "gridView is null ");
   }
 }
 

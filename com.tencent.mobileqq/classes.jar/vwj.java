@@ -1,73 +1,100 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatActivityConstants;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.controller.QidianBusinessObserver;
-import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class vwj
-  extends QidianBusinessObserver
+class vwj
+  implements BusinessObserver
 {
-  public vwj(StrangerChatPie paramStrangerChatPie) {}
+  vwj(vwi paramvwi) {}
   
-  protected void c(boolean paramBoolean, HashMap paramHashMap)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBoolean)
+    if (paramBoolean) {}
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131438710), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131438711), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-  }
-  
-  protected void d(boolean paramBoolean, HashMap paramHashMap)
-  {
-    if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1025) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024)) && (paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
-    {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
+      try
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1025;
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label500;
         }
-        paramHashMap = this.a.jdField_a_of_type_ComTencentQidianQidianManager.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if (paramHashMap != null)
+        localObject = new WebSsoBody.WebSsoResponseBody();
+        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+        if (paramInt != 0)
         {
-          StrangerChatPie.a(this.a, true);
-          StrangerChatPie.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-          StrangerChatPie.a(this.a).setOnClickListener(null);
-          StrangerChatPie.b(this.a).setText(paramHashMap);
-          if (ChatActivityConstants.N) {
-            StrangerChatPie.c(this.a).setContentDescription(paramHashMap);
+          paramBundle = paramBundle.optString("msg");
+          if (!TextUtils.isEmpty(paramBundle))
+          {
+            QQToast.a(this.a.a.jdField_a_of_type_AndroidContentContext, 1, paramBundle, 0).b(this.a.a.a());
+            QLog.d(this.a.a.f + "Q.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a + ", op:" + "1" + ", errMsg:" + paramBundle);
+            return;
           }
-          StrangerChatPie.a(this.a, true);
-          this.a.k();
+          paramBoolean = false;
+          if (!paramBoolean) {
+            QQToast.a(this.a.a.jdField_a_of_type_AndroidContentContext, 1, this.a.a.jdField_a_of_type_AndroidContentContext.getString(2131438488), 0).b(this.a.a.a());
+          }
+          if (this.a.a.U == paramBoolean) {
+            continue;
+          }
+          this.a.a.U = paramBoolean;
+          this.a.a.k();
+          return;
+        }
+        localObject = paramBundle.getJSONObject("result");
+        paramInt = paramBundle.optInt("retcode");
+        if (paramInt != 0) {
+          continue;
         }
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
+      catch (Exception paramBundle)
       {
-        for (;;)
+        Object localObject;
+        boolean bool = false;
+        continue;
+        bool = false;
+        continue;
+      }
+      try
+      {
+        QQToast.a(this.a.a.jdField_a_of_type_AndroidContentContext, 2, this.a.a.jdField_a_of_type_AndroidContentContext.getString(2131438487), 0).b(this.a.a.a());
+        bool = true;
+        paramBoolean = bool;
+        try
         {
-          return;
-          StrangerChatPie.b(this.a, false);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d(this.a.a.f + "Q.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a + "result:" + ((JSONObject)localObject).toString());
+          paramBoolean = bool;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("StrangerChatPie", 2, "onGetQidianUserDetailInfo not current curFriendUin");
-      return;
+        catch (Exception paramBundle) {}
+      }
+      catch (Exception paramBundle)
+      {
+        bool = true;
+        continue;
+      }
+      paramBoolean = bool;
+      if (QLog.isColorLevel())
+      {
+        QLog.d(this.a.a.f + "Q.nearby.follow", 2, "sendOperateFollowUser Exception");
+        paramBoolean = bool;
+        continue;
+        label500:
+        paramBoolean = false;
+      }
     }
-    QLog.d("StrangerChatPie", 2, "onGetQidianUserDetailInfo fail");
   }
 }
 

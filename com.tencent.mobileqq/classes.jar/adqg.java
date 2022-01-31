@@ -1,61 +1,27 @@
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.widget.QQToastNotifier;
 
-public class adqg
+class adqg
   implements Runnable
 {
-  public adqg(PngFrameManager paramPngFrameManager, PngFrameManager.RandomDrawableParam paramRandomDrawableParam) {}
+  adqg(adqf paramadqf) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func showPngFrame, zip NOT exist, download from Server.");
-    }
-    Object localObject3 = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-    Object localObject2 = ((EmoticonManager)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    HotVideoData localHotVideoData = this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a();
+    if ((localHotVideoData == null) || (this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.jdField_a_of_type_Int != 1) || (localHotVideoData.picIndex != this.a.a.jdField_a_of_type_Int))
     {
-      localObject1 = new EmoticonPackage();
-      ((EmoticonPackage)localObject1).epId = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString;
-      ((EmoticonPackage)localObject1).aio = true;
+      new QQToastNotifier(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a).a("视频插件安装成功", 100, 0, 2);
+      return;
     }
-    ((EmoticonPackage)localObject1).rscType = 1;
-    ((EmoticonManager)localObject3).a((EmoticonPackage)localObject1);
-    String str = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.eId;
-    localObject2 = EmoticonUtils.f.replace("[eIdSub]", str.substring(0, 2)).replace("[eId]", str);
-    localObject1 = EmoticonUtils.s.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString).replace("[eId]", str);
-    localObject3 = EmoticonUtils.j.replace("[eIdSub]", str.substring(0, 2)).replace("[eId]", str).replace("[width]", "200").replace("[height]", "200");
-    str = EmoticonUtils.q.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString).replace("[eId]", str);
-    ArrayList localArrayList = new ArrayList();
-    HashMap localHashMap = new HashMap();
-    localArrayList.add(localObject2);
-    localHashMap.put(localObject2, new File((String)localObject1));
-    localArrayList.add(localObject3);
-    localHashMap.put(localObject3, new File(str));
-    localObject2 = new DownloadTask(localArrayList, localHashMap, "random_magicface_" + this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString);
-    ((DownloadTask)localObject2).l = true;
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject2, new adqh(this, (String)localObject1), null);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.c(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder, this.a.a.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqg
  * JD-Core Version:    0.7.0.1
  */

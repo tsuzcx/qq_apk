@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
 
 public class lvy
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public lvy(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
+  public lvy(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void onClick(View paramView)
-  {
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

@@ -1,31 +1,56 @@
-import android.view.View;
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.Intent;
+import com.tencent.device.file.DevLittleVideoOperator;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.shortvideo.AioShortVideoOperator;
+import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ycx
-  implements Animation.AnimationListener
+class ycx
+  implements Runnable
 {
-  public ycx(SpecailCareListActivity paramSpecailCareListActivity) {}
+  ycx(ycw paramycw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.c.clearAnimation();
-    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
-    this.a.c = null;
-    if (this.a.a != null)
+    Object localObject;
+    ShortVideoUploadInfo localShortVideoUploadInfo;
+    if (this.a.jdField_a_of_type_AndroidContentIntent != null)
     {
-      this.a.a.a();
-      this.a.a = null;
+      int i = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_business_type", 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("SendVideoActivity", 2, "#SendTask# run(), busiType = " + i + ",VideoFileDir = " + this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("file_video_source_dir"));
+      }
+      int j = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", -1);
+      if (j == 9501) {
+        i = 4;
+      }
+      localObject = ShortVideoBusiManager.a(0, i);
+      localShortVideoUploadInfo = ShortVideoBusiManager.a(this.a.jdField_a_of_type_AndroidContentIntent, (ShortVideoReq)localObject);
+      ((ShortVideoReq)localObject).a(localShortVideoUploadInfo);
+      if (j != 9501) {
+        break label214;
+      }
+      localObject = new DevLittleVideoOperator(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+      ((DevLittleVideoOperator)localObject).a(((DevLittleVideoOperator)localObject).a(localShortVideoUploadInfo));
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SendVideoActivity", 2, "#SendTask# run(): success");
+      }
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+      }
+      return;
+      label214:
+      localObject = new AioShortVideoOperator(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+      ((AioShortVideoOperator)localObject).a(((AioShortVideoOperator)localObject).a(localShortVideoUploadInfo));
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

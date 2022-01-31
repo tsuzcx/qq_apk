@@ -65,9 +65,9 @@ import mqq.os.MqqHandler;
 import tencent.im.oidb.qqshop.qqshop_act.SQQSHPActInfo;
 import tencent.im.oidb.qqshop.qqshop_act.SQQSHPActRsp;
 import tencent.im.oidb.qqshop.qqshop_act.SQQSHPActShowInfo;
-import ywi;
-import ywj;
-import ywk;
+import yzo;
+import yzp;
+import yzq;
 
 public class ChatApolloViewListener
   extends VasExtensionObserver
@@ -82,7 +82,7 @@ public class ChatApolloViewListener
   
   public ChatApolloViewListener(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new ywk(this);
+    this.jdField_a_of_type_JavaLangRunnable = new yzq(this);
     if (((paramBaseChatPie instanceof FriendChatPie)) || ((paramBaseChatPie instanceof TroopChatPie)) || ((paramBaseChatPie instanceof DiscussChatPie)) || ((paramBaseChatPie instanceof HotChatPie))) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
     }
@@ -174,11 +174,11 @@ public class ChatApolloViewListener
       do
       {
         return;
-        Object localObject = (ImageView)localLinearLayout.findViewById(2131363206);
-        TextView localTextView = (TextView)localLinearLayout.findViewById(2131363208);
+        Object localObject = (ImageView)localLinearLayout.findViewById(2131363224);
+        TextView localTextView = (TextView)localLinearLayout.findViewById(2131363226);
         ((ImageView)localObject).setOnClickListener(this);
         localTextView.setOnClickListener(this);
-        localObject = (URLImageView)localLinearLayout.findViewById(2131363207);
+        localObject = (URLImageView)localLinearLayout.findViewById(2131363225);
         if (!TextUtils.isEmpty(paramString))
         {
           paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
@@ -303,7 +303,7 @@ public class ChatApolloViewListener
     if (QLog.isColorLevel()) {
       QLog.d("ChatApolloViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
     }
-    ThreadManager.post(new ywj(this, paramBoolean, paramObject), 5, null, true);
+    ThreadManager.post(new yzp(this, paramBoolean, paramObject), 5, null, true);
   }
   
   protected void n(boolean paramBoolean, Object paramObject)
@@ -414,7 +414,7 @@ public class ChatApolloViewListener
       } while ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController == null) || (!localBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.a()) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
       if (!NetworkUtil.g(localBaseChatPie.jdField_a_of_type_AndroidContentContext))
       {
-        ApolloItemBuilder.a(localBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438179), 1, localBaseChatPie.jdField_a_of_type_AndroidContentContext);
+        ApolloItemBuilder.a(localBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438197), 1, localBaseChatPie.jdField_a_of_type_AndroidContentContext);
         return;
       }
       localObject = SpriteUtil.a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -427,7 +427,7 @@ public class ChatApolloViewListener
     VipUtils.a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "long_press_avatar", localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, ApolloUtil.b(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { "0", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
     if (((ApolloManager)localObject).b(paramString) != 1)
     {
-      ApolloItemBuilder.a(localBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438181), 1, localBaseChatPie.jdField_a_of_type_AndroidContentContext);
+      ApolloItemBuilder.a(localBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438199), 1, localBaseChatPie.jdField_a_of_type_AndroidContentContext);
       return;
     }
     if (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) {
@@ -508,7 +508,7 @@ public class ChatApolloViewListener
     if (QLog.isColorLevel()) {
       QLog.d("ChatApolloViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
     }
-    ThreadManager.post(new ywi(this), 8, null, true);
+    ThreadManager.post(new yzo(this), 8, null, true);
   }
   
   protected void p(boolean paramBoolean, Object paramObject)

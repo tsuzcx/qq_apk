@@ -1,21 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateAdapter;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class lie
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+  extends ExecuteBinResponseCallback
 {
-  public lie(ReadInJoyCameraTemplateAdapter paramReadInJoyCameraTemplateAdapter) {}
+  public lie(ReadInJoyVideoCompositeManager paramReadInJoyVideoCompositeManager, PublishVideoEntry paramPublishVideoEntry, String paramString) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void a(String paramString)
   {
-    ReadInJoyCameraTemplateAdapter.a(this.a).post(new lig(this, paramPtvTemplateInfo, paramInt));
+    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString + ".doodle.mp4");
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  public void b(String paramString)
   {
-    ReadInJoyCameraTemplateAdapter.a(this.a).post(new lif(this, paramPtvTemplateInfo, paramBoolean));
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, "compositeVideo->combineDoodle: " + paramString);
+    }
+    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 999, "本地视频合成涂鸦是出错！");
   }
 }
 

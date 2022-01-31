@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
+import java.util.HashMap;
 
 public class wly
-  implements Runnable
+  implements Comparator
 {
-  public wly(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public wly(ContactsDisAdapter paramContactsDisAdapter, HashMap paramHashMap) {}
   
-  public void run()
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    if (!EmoticonGroupStoreFragment.c(this.a).isEmpty())
-    {
-      ArrayList localArrayList = new ArrayList(EmoticonGroupStoreFragment.c(this.a));
-      Map localMap = EmoticonGroupStoreFragment.a(this.a).a(localArrayList);
-      if (localMap != null) {
-        EmoticonGroupStoreFragment.a(this.a).a(localMap, localArrayList);
-      }
+    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
+    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
+    if (l1 < l2) {
+      return -1;
     }
+    if (l1 > l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 

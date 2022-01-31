@@ -1,49 +1,45 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
+import NS_MOBILE_MAIN_PAGE.PhotoWall;
+import android.os.Handler;
 import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.richmedia.ICallBack;
-import com.tencent.mobileqq.richmedia.LOG;
-import com.tencent.mobileqq.richmedia.RichmediaClient;
-import com.tencent.util.BinderWarpper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QZonePhotoWall;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple;
+import java.util.ArrayList;
+import java.util.List;
 
 public class agsj
-  implements ServiceConnection
+  implements Runnable
 {
-  public agsj(RichmediaClient paramRichmediaClient) {}
+  public agsj(VipPhotoViewForSimple paramVipPhotoViewForSimple) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void run()
   {
-    LOG.a("PTV.RichmediaClient", "onServiceConnected");
-    this.a.b = new Messenger(paramIBinder);
-    paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_ComTencentMobileqqRichmediaICallBack.asBinder());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
-    paramComponentName.setData(localBundle);
-    try
+    Object localObject1 = (QZonePhotoWall)this.a.a.getEntityManagerFactory().createEntityManager().a(QZonePhotoWall.class, VipPhotoViewForSimple.a(this.a));
+    if (localObject1 != null)
     {
-      this.a.b.send(paramComponentName);
+      localObject1 = ((QZonePhotoWall)localObject1).unpackPhotoWallData();
+      Object localObject2 = new ArrayList();
+      int i = 0;
+      while (i < ((ArrayList)localObject1).size())
+      {
+        ((ArrayList)localObject2).add(((PhotoWall)((ArrayList)localObject1).get(i)).photoUrls);
+        i += 1;
+      }
+      localObject1 = VipPhotoViewForSimple.a(this.a, "", (List)localObject2);
+      localObject2 = Message.obtain();
+      ((Message)localObject2).what = 200;
+      ((Message)localObject2).obj = localObject1;
+      VipPhotoViewForSimple.a(this.a).sendMessage((Message)localObject2);
       return;
     }
-    catch (RemoteException paramComponentName)
-    {
-      LOG.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.b = null;
+    VipPhotoViewForSimple.a(this.a).sendEmptyMessage(201);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agsj
  * JD-Core Version:    0.7.0.1
  */

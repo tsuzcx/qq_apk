@@ -1,17 +1,52 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLES20;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class aaba
   implements Runnable
 {
-  public aaba(AREngine paramAREngine) {}
+  public aaba(GreetingCardRender paramGreetingCardRender) {}
   
   public void run()
   {
-    QLog.i("AREngine_AREngine", 1, "processCloudMarkerRecogResult. download resource timeout.");
-    AREngine.a(this.a).a();
-    this.a.a(false, null);
+    if (GreetingCardRender.a(this.a) != null) {}
+    try
+    {
+      GreetingCardRender.a(this.a).stop();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("GreetingCardRender", 2, "playVideo fail.", localException);
+      return;
+    }
+    finally
+    {
+      if (GreetingCardRender.a(this.a) != null)
+      {
+        GreetingCardRender.a(this.a).setOnFrameAvailableListener(null);
+        GreetingCardRender.a(this.a).release();
+        GreetingCardRender.a(this.a, null);
+      }
+      if (GreetingCardRender.a(this.a) != -1)
+      {
+        GLES20.glDeleteTextures(1, new int[] { GreetingCardRender.a(this.a) }, 0);
+        GreetingCardRender.c(this.a, -1);
+      }
+      if (GreetingCardRender.a(this.a) != null)
+      {
+        GreetingCardRender.a(this.a).d();
+        GreetingCardRender.a(this.a, null);
+      }
+      if (GreetingCardRender.b(this.a) != null)
+      {
+        GreetingCardRender.b(this.a).d();
+        GreetingCardRender.b(this.a, null);
+      }
+    }
   }
 }
 

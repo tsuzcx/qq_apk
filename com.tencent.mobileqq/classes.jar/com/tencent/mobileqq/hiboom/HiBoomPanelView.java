@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hiboom;
 
-import adff;
-import adfg;
+import adpe;
+import adpf;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Handler;
@@ -37,7 +37,7 @@ public class HiBoomPanelView
   {
     super(???);
     this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter = null;
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new adfg(this);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new adpf(this);
     this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
     paramBaseChatPie = (HiBoomManager)this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218);
@@ -106,7 +106,7 @@ public class HiBoomPanelView
     HiBoomManager localHiBoomManager = (HiBoomManager)this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218);
     if (!localHiBoomManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      ThreadManager.post(new adff(this, localHiBoomManager), 8, null, true);
+      ThreadManager.post(new adpe(this, localHiBoomManager), 8, null, true);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.a(localHiBoomManager.b);
@@ -154,7 +154,7 @@ public class HiBoomPanelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomPanelView
  * JD-Core Version:    0.7.0.1
  */

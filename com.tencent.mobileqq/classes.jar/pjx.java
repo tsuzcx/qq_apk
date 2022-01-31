@@ -1,41 +1,68 @@
-import com.tencent.component.network.utils.thread.AsyncTask;
-import com.tencent.component.network.utils.thread.internel.ArrayDeque;
-import java.util.concurrent.Executor;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.component.network.downloader.impl.ipc.Const;
+import com.tencent.component.network.downloader.impl.ipc.DownloadSerice;
 
 public class pjx
-  implements Executor
+  implements Downloader.DownloadListener
 {
-  final ArrayDeque jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque = new ArrayDeque();
-  Runnable jdField_a_of_type_JavaLangRunnable;
+  public pjx(DownloadSerice paramDownloadSerice, Messenger paramMessenger) {}
   
-  protected void a()
+  public void onDownloadCanceled(String paramString)
   {
+    paramString = Const.a(paramString);
     try
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque.poll();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null) {
-        AsyncTask.a.execute(this.jdField_a_of_type_JavaLangRunnable);
-      }
+      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
       return;
     }
-    finally {}
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public void execute(Runnable paramRunnable)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
+    paramString = Const.b(paramString, paramDownloadResult);
     try
     {
-      this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque.offer(new pjy(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        a();
-      }
+      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
       return;
     }
-    finally
+    catch (RemoteException paramString)
     {
-      paramRunnable = finally;
-      throw paramRunnable;
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    paramString = Const.a(paramString, paramLong, paramFloat);
+    try
+    {
+      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
+      return;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramString = Const.a(paramString, paramDownloadResult);
+    try
+    {
+      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
+      return;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

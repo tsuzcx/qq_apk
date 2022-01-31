@@ -1,14 +1,18 @@
-import com.tencent.component.network.utils.http.pool.ConnFactory;
-import org.apache.http.conn.OperatedClientConnection;
-import org.apache.http.conn.routing.HttpRoute;
-import org.apache.http.impl.conn.DefaultClientConnection;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.component.network.downloader.DownloadResult.Content;
 
-class pjh
-  implements ConnFactory
+public final class pjh
+  implements Parcelable.Creator
 {
-  public OperatedClientConnection a(HttpRoute paramHttpRoute)
+  public DownloadResult.Content a(Parcel paramParcel)
   {
-    return new DefaultClientConnection();
+    return new DownloadResult.Content(paramParcel);
+  }
+  
+  public DownloadResult.Content[] a(int paramInt)
+  {
+    return new DownloadResult.Content[paramInt];
   }
 }
 

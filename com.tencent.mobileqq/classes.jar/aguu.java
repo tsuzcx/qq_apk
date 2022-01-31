@@ -1,37 +1,15 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.jumplightalk.CLJumpLightalkConfig;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
 
 public class aguu
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public aguu(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public aguu(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureFragment", 2, "clearAnimation end!");
-    }
-    if (EffectsCameraCaptureFragment.d(this.a) == null) {
-      return;
-    }
-    this.a.h = true;
-    EffectsCameraCaptureFragment.d(this.a).setText(2131439074);
-    EffectsCameraCaptureFragment.d(this.a).startAnimation(this.a.b);
-    this.a.a.setStartOffset(3000L);
-    this.a.a.setAnimationListener(EffectsCameraCaptureFragment.b(this.a));
-    EffectsCameraCaptureFragment.d(this.a).setAnimation(this.a.a);
-    this.a.a.startNow();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.h = true;
+    QCallDetailActivity.a(this.a, CLJumpLightalkConfig.a(this.a.app.getCurrentAccountUin()));
   }
 }
 

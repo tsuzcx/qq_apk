@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
 
 public class oqs
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public oqs(LoginManagerActivity paramLoginManagerActivity) {}
+  public oqs(AbsEmptyView paramAbsEmptyView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    if (AbsEmptyView.a(this.a) == 0) {
+      AbsEmptyView.a(this.a, 3, true);
+    }
+  }
 }
 
 

@@ -42,10 +42,10 @@ public class VoiceChangeItemView1
   
   public void a()
   {
-    ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130969374, this);
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131366297));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366299));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366298));
+    ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130969375, this);
+    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131366324));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366326));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366325));
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.getLayoutParams();
     int i = AIOUtils.a(65.0F, getResources());
     localLayoutParams.width = i;
@@ -65,7 +65,7 @@ public class VoiceChangeItemView1
       paramICallback = this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.getResources();
       if (this.jdField_b_of_type_Int == -16777216)
       {
-        paramICallback = TintStateDrawable.a(paramICallback, 2130840276, 2131494053);
+        paramICallback = TintStateDrawable.a(paramICallback, 2130840282, 2131494059);
         this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(paramICallback);
         label67:
         switch (paramVoiceInfo.jdField_b_of_type_Int)
@@ -82,7 +82,7 @@ public class VoiceChangeItemView1
       setHighlight(paramBoolean);
       setContentDescription(paramVoiceInfo.jdField_a_of_type_JavaLangString + "音效");
       return;
-      paramICallback = TintStateDrawable.a(paramICallback, 2130840276, 2131494061);
+      paramICallback = TintStateDrawable.a(paramICallback, 2130840282, 2131494067);
       break;
       if (TextUtils.isEmpty(paramVoiceInfo.jdField_b_of_type_JavaLangString)) {
         break label67;
@@ -90,7 +90,7 @@ public class VoiceChangeItemView1
       paramICallback = URLDrawable.URLDrawableOptions.obtain();
       paramInt1 = AIOUtils.a(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(getResources().getColor(2131493212));
+      localGradientDrawable.setColor(getResources().getColor(2131493213));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt1, paramInt1);
       paramICallback.mRequestWidth = paramInt1;
@@ -102,13 +102,13 @@ public class VoiceChangeItemView1
       paramICallback.setDecodeHandler(URLDrawableDecodeHandler.a);
       this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageDrawable(paramICallback);
       break label67;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840357);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840363);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840357);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840363);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840357);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840363);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
   }

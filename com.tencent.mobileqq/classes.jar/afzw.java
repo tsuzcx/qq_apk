@@ -1,28 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
+import EncounterSvc.RespEncounterInfo;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
+import com.tencent.mobileqq.util.FaceDecoder;
 
 public class afzw
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public afzw(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  public afzw(ChatPushCarrierHelper paramChatPushCarrierHelper, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent != null) && (paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label")))
+    FaceDecoder localFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
+    for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PersonalityLabelGalleryActivity", 2, "receive broadcast modify pl info");
-      }
-      paramContext = paramIntent.getBundleExtra("key_bundle_data");
-      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
-      {
-        this.a.a = true;
-        PersonalityLabelGalleryActivity.a(this.a);
-      }
+      localFaceDecoder.a(32, str, 202, l);
+      return;
     }
   }
 }

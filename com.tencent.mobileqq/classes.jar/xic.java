@@ -1,45 +1,31 @@
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
-public final class xic
-  implements Runnable
+public class xic
+  implements Animation.AnimationListener
 {
-  public xic(QQAppInterface paramQQAppInterface) {}
+  public xic(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    List localList = TroopBarAssistantManager.a().a(this.a);
-    int i;
-    int j;
-    label19:
-    Object localObject;
-    if (localList == null)
-    {
-      i = 0;
-      j = 0;
-      if (j >= i) {
-        return;
-      }
-      localObject = (TroopBarData)localList.get(j);
-      if (localObject != null) {
-        break label58;
-      }
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(4);
     }
-    for (;;)
+    if (AnonymousEntranceView.b(this.a) != null)
     {
-      j += 1;
-      break label19;
-      i = localList.size();
-      break;
-      label58:
-      localObject = this.a.a().a(((TroopBarData)localObject).mUin, 1008);
-      if (localObject != null) {
-        TroopBarAssistantManager.a().a(this.a, ((QQMessageFacade.Message)localObject).time);
-      }
+      AnonymousEntranceView.b(this.a).clearAnimation();
+      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (AnonymousEntranceView.a(this.a) != null) {
+      AnonymousEntranceView.a(this.a).setVisibility(0);
     }
   }
 }

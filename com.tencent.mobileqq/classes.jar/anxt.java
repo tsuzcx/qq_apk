@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import dov.com.qq.im.capture.text.EditTextPreView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
 
 public class anxt
   implements Runnable
 {
-  public anxt(VideoFilterPlayView paramVideoFilterPlayView) {}
+  public anxt(EditTextDialog paramEditTextDialog) {}
   
   public void run()
   {
-    VideoFilterPlayView.a(this.a).a();
-    VideoFilterPlayView.a(this.a).a(this.a.a, this.a.b);
+    this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
+    if (EditTextDialog.a(this.a) != 1) {
+      this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(), true);
+    }
+    this.a.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.invalidate();
   }
 }
 

@@ -1,51 +1,15 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
-import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.activity.aio.MessageShareActivity;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 
 public class ulx
-  implements Action.OnActionEndListener
+  implements Runnable
 {
-  public ulx(FriendShipWaveView paramFriendShipWaveView) {}
+  public ulx(MessageShareActivity paramMessageShareActivity, AbsStructMsg paramAbsStructMsg, String paramString, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(400, 0.2F, 1.0F), new ScaleAction(400, 1.0F, 0.2F) });
-    this.a.h.b = 255;
-    localSequenceAction.a = true;
-    this.a.h.a(new Action[] { localSequenceAction });
-    this.a.l = new Sprite();
-    this.a.l.a(FriendShipWaveView.d(this.a));
-    this.a.l.f = 30.0F;
-    this.a.l.a(this.a.e.c - DisplayUtil.a(this.a.a, 25.0F), this.a.e.d - DisplayUtil.a(this.a.a, 25.0F));
-    localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(600, 0.0F, 0.6F), new ScaleAction(600, 0.6F, 0.0F) });
-    localSequenceAction.a = true;
-    this.a.a(this.a.l);
-    this.a.l.a(new Action[] { localSequenceAction });
-    this.a.i = new Sprite();
-    this.a.i.a(FriendShipWaveView.d(this.a));
-    this.a.i.a(this.a.e.c + DisplayUtil.a(this.a.a, 20.0F), this.a.e.d - DisplayUtil.a(this.a.a, 10.0F));
-    localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(500, 0.0F, 1.2F), new ScaleAction(500, 1.2F, 0.0F) });
-    localSequenceAction.a = true;
-    this.a.a(this.a.i);
-    this.a.i.a(new Action[] { localSequenceAction });
-    this.a.j = new Sprite();
-    this.a.j.a(FriendShipWaveView.d(this.a));
-    this.a.j.a(this.a.f.c + DisplayUtil.a(this.a.a, 13.0F), this.a.f.d + DisplayUtil.a(this.a.a, 13.0F));
-    localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(500, 0.2F, 0.6F), new ScaleAction(500, 0.6F, 0.2F) });
-    localSequenceAction.a = true;
-    this.a.a(this.a.j);
-    this.a.j.a(new Action[] { localSequenceAction });
-    this.a.k = new Sprite();
-    this.a.k.a(FriendShipWaveView.d(this.a));
-    this.a.k.a(this.a.g.c - DisplayUtil.a(this.a.a, 10.0F), this.a.g.d - DisplayUtil.a(this.a.a, 3.0F));
-    localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(400, 0.0F, 0.6F), new ScaleAction(400, 0.6F, 0.0F) });
-    localSequenceAction.a = true;
-    this.a.a(this.a.k);
-    this.a.k.a(new Action[] { localSequenceAction });
+    StructMsgForImageShare.sendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageShareActivity.app, (StructMsgForImageShare)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null, 0);
   }
 }
 

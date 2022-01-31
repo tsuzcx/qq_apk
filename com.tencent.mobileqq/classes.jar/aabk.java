@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aabk
   implements Runnable
 {
-  public aabk(AREngine paramAREngine) {}
+  public aabk(Interactive3DRenderable paramInteractive3DRenderable, int[] paramArrayOfInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong) {}
   
   public void run()
   {
-    if ((AREngine.d(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null)) {
-      AREngine.a(this.a).a(0, 4);
+    Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).native_onTouchCancel(this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, this.b, this.jdField_a_of_type_Long, Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).mCurrentActiveId);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "ACTION_CANCEL native_onTouchCancel");
     }
   }
 }

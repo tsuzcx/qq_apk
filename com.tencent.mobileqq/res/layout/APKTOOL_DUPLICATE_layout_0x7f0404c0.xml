@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1834" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="50.0dip"
+<FrameLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0332" android:paddingBottom="14.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tenpay.sdk.i.a android:textColorHint="#ffbbbbbb" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16d1" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b0f8c" android:layout_weight="1.0" android:inputType="textPassword" android:imeOptions="actionDone" android:imeActionLabel="@string/APKTOOL_DUPLICATE_string_0x7f0b0e53" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
-    <Button android:textSize="14.0sp" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1835" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0eae" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ef" />
-</LinearLayout>
+    <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0331" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a173c" android:paddingTop="14.5dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ProgressBar android:layout_width="21.0dip" android:layout_height="21.0dip" android:indeterminateDrawable="@drawable/common_loading6" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0330" android:paddingLeft="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ea4" />
+    </LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0330" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f8" android:paddingTop="14.5dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b103e" />
+</FrameLayout>

@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
 
 public class xhu
-  extends DialogUtil.DialogOnClickAdapter
+  implements Runnable
 {
-  public xhu(RecentOptPopBar paramRecentOptPopBar) {}
+  public xhu(RecordMicView paramRecordMicView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.a.post(new xhv(this));
   }
 }
 

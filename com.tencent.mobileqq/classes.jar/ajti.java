@@ -1,34 +1,24 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.vas.FlashCarGameManager;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewHolder;
 
-public class ajti
-  implements Runnable
+class ajti
+  extends TroopFeedViewFactory.ViewHolder
 {
-  public ajti(FlashCarGameManager paramFlashCarGameManager, Bitmap paramBitmap, View paramView) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void run()
+  ajti(ajth paramajth)
   {
-    FlashCarGameManager.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidViewView);
-    if ((ApolloEngine.a()) && (!FlashCarGameManager.a(this.jdField_a_of_type_ComTencentMobileqqVasFlashCarGameManager).get()))
-    {
-      FlashCarGameManager.a(this.jdField_a_of_type_ComTencentMobileqqVasFlashCarGameManager).set(true);
-      if (FlashCarGameManager.a(this.jdField_a_of_type_ComTencentMobileqqVasFlashCarGameManager) != null)
-      {
-        Message localMessage = FlashCarGameManager.a(this.jdField_a_of_type_ComTencentMobileqqVasFlashCarGameManager).obtainMessage();
-        localMessage.what = 257;
-        FlashCarGameManager.a(this.jdField_a_of_type_ComTencentMobileqqVasFlashCarGameManager).sendMessage(localMessage);
-      }
-    }
+    super(paramajth.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajti
  * JD-Core Version:    0.7.0.1
  */

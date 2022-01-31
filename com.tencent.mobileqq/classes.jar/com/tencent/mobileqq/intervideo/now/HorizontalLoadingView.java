@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import adkr;
+import aduq;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -34,7 +34,7 @@ public class HorizontalLoadingView
   
   private void a()
   {
-    getViewTreeObserver().addOnGlobalLayoutListener(new adkr(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new aduq(this));
   }
   
   @TargetApi(11)
@@ -78,7 +78,7 @@ public class HorizontalLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.HorizontalLoadingView
  * JD-Core Version:    0.7.0.1
  */

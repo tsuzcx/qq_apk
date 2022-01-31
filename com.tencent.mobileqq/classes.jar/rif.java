@@ -1,47 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.now.NowLiveManager;
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rif
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public rif(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rif(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 1;
-    if (!paramCompoundButton.isPressed()) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      paramCompoundButton = "open_storyset";
-      StoryReportor.a("dynamic_more", paramCompoundButton, 0, 0, new String[0]);
-      paramCompoundButton = new Integer[5];
-      paramCompoundButton[0] = Integer.valueOf(1);
-      if (!paramBoolean) {
-        break label106;
-      }
-    }
-    label106:
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton[3] = Integer.valueOf(i);
-      this.a.app.a().a(paramCompoundButton);
-      paramCompoundButton = (QQStoryHandler)this.a.app.a(98);
-      i = j;
-      if (paramBoolean) {
-        i = 2;
-      }
-      paramCompoundButton.a(i);
-      return;
-      paramCompoundButton = "close_storyset";
-      break;
-    }
+    ReportController.b(this.a.app, "P_CliOper", "Safe_AntiFraud", this.a.app.getCurrentAccountUin(), "AlertDialog", "UserClick", 0, AddFriendLogicActivity.d(this.a), "", "", "", "");
+    this.a.finish();
   }
 }
 

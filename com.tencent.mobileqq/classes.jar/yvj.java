@@ -1,26 +1,48 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.TMG.utils.SoUtil;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
+import com.tencent.mobileqq.apollo.tmg_opensdk.TMG_Downloader;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqavopensdk.AVEngineEventHandler;
 
 public class yvj
-  implements Runnable
+  implements AVCallback
 {
-  public yvj(ApolloPanel paramApolloPanel, ApolloActionPackage paramApolloActionPackage) {}
+  public yvj(AVEngineWalper paramAVEngineWalper) {}
   
-  public void run()
+  public void onComplete(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "[checkRedTab] clear new action info");
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a != null))
+    if (paramInt == 0)
     {
-      ApolloDaoManager localApolloDaoManager = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.getManager(154);
-      if (localApolloDaoManager != null) {
-        localApolloDaoManager.a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPackage);
+      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
+      if (!this.a.a())
+      {
+        FileUtils.d(TMG_Downloader.a() + "libqav_graphics.so", TMG_Downloader.a() + "libtmg_graphics.so");
+        boolean bool = SoUtil.loadSo("tmg_graphics");
+        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
+        if (!this.a.a())
+        {
+          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
+          AVEngineWalper.a(this.a, false);
+          this.a.a();
+          paramInt = 1;
+        }
       }
+    }
+    for (;;)
+    {
+      if (this.a.a != null) {
+        this.a.a.a(paramInt, paramString);
+      }
+      return;
+      AVEngineWalper.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
+      continue;
+      AVEngineWalper.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
+      continue;
+      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
     }
   }
 }

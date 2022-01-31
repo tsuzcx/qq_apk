@@ -1,31 +1,37 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import mqq.os.MqqHandler;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
 
 public class rzc
-  implements Runnable
+  implements AudioPlayer.AudioPlayerListener
 {
-  public rzc(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
+  public rzc(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void a(AudioPlayer paramAudioPlayer)
   {
-    Message localMessage = null;
-    Object localObject = localMessage;
-    if (this.jdField_a_of_type_JavaLangStringBuilder != null)
-    {
-      localObject = localMessage;
-      if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
-        localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
-      }
+    this.a.p();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$PlayingPttHistoryInfo != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$PlayingPttHistoryInfo.d();
     }
-    if (ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, ChatSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), this.jdField_a_of_type_JavaLangStringBuilder) > 0)
-    {
-      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.a.obtainMessage();
-      localMessage.what = 18;
-      localMessage.obj = localObject;
-      localMessage.sendToTarget();
-    }
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
   }
+  
+  public void a(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.b(2131433883);
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+  }
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.setVolumeControlStream(paramInt);
+  }
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 

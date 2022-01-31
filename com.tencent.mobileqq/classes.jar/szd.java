@@ -1,29 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.NearbyObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.CircleProgress;
 
 public class szd
-  extends NearbyObserver
+  implements Runnable
 {
-  public szd(NearbyActivity paramNearbyActivity) {}
+  public szd(LikeRankingListActivity paramLikeRankingListActivity, Card paramCard) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
-    }
-    if ("OidbSvc.0xafc_1".equals(paramString))
-    {
-      if (paramBoolean) {
-        this.a.n = paramLong;
-      }
-      if (!this.a.c)
-      {
-        this.a.b.removeMessages(this.a.d);
-        this.a.b.sendEmptyMessageDelayed(this.a.d, this.a.n);
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataCard.strNick);
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.d.setVisibility(0);
   }
 }
 

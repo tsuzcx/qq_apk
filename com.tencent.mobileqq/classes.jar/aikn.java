@@ -1,67 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SubAccountObserver;
 
-public class aikn
-  implements DialogInterface.OnClickListener
+public final class aikn
+  extends SubAccountObserver
 {
-  public aikn(TroopBarReplyActivity paramTroopBarReplyActivity, int paramInt) {}
+  public aikn(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    switch (paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "initAllData() onGetKeyBack() thread.name=" + Thread.currentThread().getName());
+    }
+    paramString1 = (SubAccountManager)this.a.getManager(60);
+    int j;
+    if ((paramString3 != null) && (paramString3.length() > 0))
     {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
+      j = 1;
+      i = j;
+      if (paramString1 != null) {
+        paramString1.a(paramString2, paramString3, false);
+      }
+    }
+    for (int i = j;; i = 0)
+    {
+      if (i == 0) {
+        paramString1.e(paramString2);
+      }
       return;
     }
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 4: 
-    case 6: 
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.h();
-      return;
-    case 2: 
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiko(this), 200L);
-      return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.b(4);
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.g();
-      return;
-    case 7: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.b(3);
-      return;
-    }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new aikp(this), 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikn
  * JD-Core Version:    0.7.0.1
  */

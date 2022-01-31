@@ -1,17 +1,26 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqconnect.wtlogin.Login;
 
-public final class alwc
-  implements FileFilter
+public class alwc
+  implements TextView.OnEditorActionListener
 {
-  public boolean accept(File paramFile)
+  public alwc(Login paramLogin) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    return paramFile.getName().endsWith(".cfg");
+    if (paramInt == 6)
+    {
+      this.a.b();
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alwc
  * JD-Core Version:    0.7.0.1
  */

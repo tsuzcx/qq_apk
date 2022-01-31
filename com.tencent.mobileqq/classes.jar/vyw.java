@@ -1,10 +1,16 @@
-import android.annotation.SuppressLint;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class vyw
+  implements DialogInterface.OnCancelListener
 {
-  @SuppressLint({"StaticFieldLeak"})
-  private static StickerBubbleAnimationViewHolder a = new StickerBubbleAnimationViewHolder(null);
+  public vyw(PublicAccountChatPie paramPublicAccountChatPie) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.A();
+  }
 }
 
 

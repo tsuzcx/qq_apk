@@ -1,23 +1,75 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.CacheContext;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest.MsgTabNodeListResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class neb
-  extends SimpleJob
+  implements CmdTaskManger.CommandCallback
 {
-  public neb(DateCollectionListPageLoader paramDateCollectionListPageLoader) {}
+  public neb(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull MsgTabNodeListRequest arg1, @Nullable MsgTabNodeListRequest.MsgTabNodeListResponse paramMsgTabNodeListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext == null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext = new DateCollectionListPageLoader.CacheContext(this.a, this.a.d);
+    if ((paramErrorMessage.isFail()) || (paramMsgTabNodeListResponse == null))
+    {
+      SLog.b("Q.qqstory.msgTab.nodeList", "onResponse() get latest failed: %s", paramErrorMessage.getErrorMessage());
+      this.a.a(false);
+      if (this.a.a()) {
+        this.a.a(new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList), true, this.a.jdField_a_of_type_Boolean, true);
+      }
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      return;
     }
-    this.a.jdField_a_of_type_JavaLangString = "";
-    DateCollectionListPageLoader.a(this.a);
-    return null;
+    this.a.a(true);
+    if (TextUtils.equals(this.a.b, paramMsgTabNodeListResponse.jdField_a_of_type_JavaLangString))
+    {
+      SLog.b("Q.qqstory.msgTab.nodeList", "not change, sort only, mData size=%d", Integer.valueOf(this.a.jdField_a_of_type_JavaUtilArrayList.size()));
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
+      {
+        Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_JavaUtilComparator);
+        this.a.a();
+        this.a.a(new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList), true, this.a.jdField_a_of_type_Boolean, false);
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        return;
+      }
+    }
+    new ArrayList();
+    ??? = this.a.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    try
+    {
+      while (i < paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        MsgTabNodeListLoader.a(this.a, (MsgTabNodeInfo)paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.get(i));
+        i += 1;
+      }
+      this.a.b = paramMsgTabNodeListResponse.jdField_a_of_type_JavaLangString;
+      this.a.jdField_a_of_type_JavaLangString = paramMsgTabNodeListResponse.c;
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList);
+      Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_JavaUtilComparator);
+      this.a.jdField_a_of_type_Boolean = paramMsgTabNodeListResponse.jdField_a_of_type_Boolean;
+      this.a.a();
+      MsgTabNodeListLoader.a(this.a);
+      this.a.a(false, false);
+      paramMsgTabNodeListResponse = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a(paramMsgTabNodeListResponse, true);
+      this.a.a(paramMsgTabNodeListResponse, true, this.a.jdField_a_of_type_Boolean, false);
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      SLog.c("Q.qqstory.msgTab.nodeList", "get latest data size=" + this.a.jdField_a_of_type_JavaUtilArrayList.size());
+      return;
+    }
+    finally {}
   }
 }
 

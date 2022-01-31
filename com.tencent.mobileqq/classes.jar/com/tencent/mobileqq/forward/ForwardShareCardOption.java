@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.forward;
 
-import adcg;
-import adci;
-import adcj;
+import admf;
+import admh;
+import admi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -57,11 +57,11 @@ public class ForwardShareCardOption
   extends ForwardBaseOption
 {
   DiscussionHandler jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new adci(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new admh(this);
   AbsShareMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
   AbsStructMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
   private int jdField_b_of_type_Int = -1;
-  private DiscussionObserver jdField_b_of_type_ComTencentMobileqqAppDiscussionObserver = new adcj(this);
+  private DiscussionObserver jdField_b_of_type_ComTencentMobileqqAppDiscussionObserver = new admi(this);
   private int c;
   private int d;
   private String f;
@@ -93,7 +93,7 @@ public class ForwardShareCardOption
       paramString2 = "";
       label47:
       localObject2 = paramString2 + "&version=1&uin=" + paramString1 + "";
-      paramString2 = ((AbsShareMsg.Builder)localObject1).b(84).a(2).a("推荐了联系人" + paramQQAppInterface).a("plugin", "", "AppCmd://OpenContactInfo/?uin=", (String)localObject2, (String)localObject2).b(paramActivity.getResources().getString(2131433752)).a();
+      paramString2 = ((AbsShareMsg.Builder)localObject1).b(84).a(2).a("推荐了联系人" + paramQQAppInterface).a("plugin", "", "AppCmd://OpenContactInfo/?uin=", (String)localObject2, (String)localObject2).b(paramActivity.getResources().getString(2131433769)).a();
       localObject1 = new StructMsgItemLayout2();
       ((AbsStructMsgItem)localObject1).b(1);
       ((AbsStructMsgItem)localObject1).a(new StructMsgItemCover((String)localObject2));
@@ -149,10 +149,10 @@ public class ForwardShareCardOption
     for (;;)
     {
       Object localObject3 = "url=" + paramCardOCRInfo.jdField_b_of_type_JavaLangString + ";name=" + paramCardOCRInfo.a + ";phone=" + (String)localObject1;
-      localObject2 = ((AbsShareMsg.Builder)localObject2).b(73).a(this.jdField_a_of_type_AndroidAppActivity.getString(2131437101, new Object[] { paramCardOCRInfo.a })).a(2).a("shareBusinessCard", "", (String)localObject3, (String)localObject3, (String)localObject3).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131437102)).a();
+      localObject2 = ((AbsShareMsg.Builder)localObject2).b(73).a(this.jdField_a_of_type_AndroidAppActivity.getString(2131437118, new Object[] { paramCardOCRInfo.a })).a(2).a("shareBusinessCard", "", (String)localObject3, (String)localObject3, (String)localObject3).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131437119)).a();
       localObject3 = new StructMsgItemLayoutDefault();
       ((AbsStructMsgItem)localObject3).b(1);
-      ((AbsStructMsgItem)localObject3).a(this.jdField_a_of_type_AndroidAppActivity.getString(2131437100));
+      ((AbsStructMsgItem)localObject3).a(this.jdField_a_of_type_AndroidAppActivity.getString(2131437117));
       StructMsgItemLayout2 localStructMsgItemLayout2 = new StructMsgItemLayout2();
       localStructMsgItemLayout2.b(3);
       localStructMsgItemLayout2.a(new StructMsgItemCover(paramCardOCRInfo.jdField_b_of_type_JavaLangString + "/?02"));
@@ -189,7 +189,7 @@ public class ForwardShareCardOption
     if (TextUtils.isEmpty((CharSequence)localObject1)) {}
     for (;;)
     {
-      localObject1 = ((AbsShareMsg.Builder)localObject2).b(14).a(2).a("推荐了" + paramString2).a("plugin", str4, "", str2, str3).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433751)).a();
+      localObject1 = ((AbsShareMsg.Builder)localObject2).b(14).a(2).a("推荐了" + paramString2).a("plugin", str4, "", str2, str3).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433768)).a();
       localObject2 = new StructMsgItemLayout2();
       ((AbsStructMsgItem)localObject2).b(1);
       ((AbsStructMsgItem)localObject2).a(new StructMsgItemCover(str1));
@@ -221,7 +221,7 @@ public class ForwardShareCardOption
     localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      ThreadManager.post(new adcg(this, n, paramString, (String)localObject, paramBoolean), 8, null, false);
+      ThreadManager.post(new admf(this, n, paramString, (String)localObject, paramBoolean), 8, null, false);
       return;
     }
     t();
@@ -237,7 +237,7 @@ public class ForwardShareCardOption
     if (TextUtils.isEmpty((CharSequence)localObject1)) {}
     for (;;)
     {
-      localObject1 = ((AbsShareMsg.Builder)localObject2).b(14).a(2).a("推荐了" + paramString2).a("plugin", "", str2, str1, str1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433751)).a();
+      localObject1 = ((AbsShareMsg.Builder)localObject2).b(14).a(2).a("推荐了" + paramString2).a("plugin", "", str2, str1, str1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433768)).a();
       localObject2 = new StructMsgItemLayout2();
       ((AbsStructMsgItem)localObject2).b(1);
       ((AbsStructMsgItem)localObject2).a(new StructMsgItemCover(str1));
@@ -287,9 +287,9 @@ public class ForwardShareCardOption
     for (;;)
     {
       String str2 = AvatarTroopUtil.a("", this.i, 0) + "100";
-      AbsShareMsg localAbsShareMsg = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(15).a(this.jdField_a_of_type_AndroidAppActivity.getString(2131435304) + str1).c(this.f).a();
+      AbsShareMsg localAbsShareMsg = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(15).a(this.jdField_a_of_type_AndroidAppActivity.getString(2131435321) + str1).c(this.f).a();
       AbsStructMsgItem localAbsStructMsgItem = StructMsgElementFactory.a(2);
-      Object localObject1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131435308);
+      Object localObject1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131435325);
       Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
       if ((localObject2 != null) && (this.i != null))
       {
@@ -333,13 +333,13 @@ public class ForwardShareCardOption
     boolean bool = false;
     if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131432992), 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131433009), 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
       if (QLog.isColorLevel()) {
         QLog.i("ForwardOption.ForwardShareCardOption", 2, "tryToGetShareLink: net is not supported");
       }
       this.jdField_b_of_type_Int = -1;
     }
-    a(2131435053);
+    a(2131435070);
     TroopHandler localTroopHandler = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
     String str = this.i;
     if (this.jdField_b_of_type_Int == 0) {
@@ -414,11 +414,11 @@ public class ForwardShareCardOption
       this.jdField_h_of_type_Boolean = true;
       if (!NetworkUtil.d(BaseApplication.getContext()))
       {
-        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131432992), 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131433009), 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(Long.parseLong(str1), true);
-      a(2131435053);
+      a(2131435070);
       continue;
       this.i = null;
       this.j = null;
@@ -461,7 +461,7 @@ public class ForwardShareCardOption
   
   public String b()
   {
-    return this.jdField_a_of_type_AndroidAppActivity.getString(2131434955);
+    return this.jdField_a_of_type_AndroidAppActivity.getString(2131434972);
   }
   
   public String c()

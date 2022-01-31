@@ -1,21 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qqfav.globalsearch.FavoriteSearchResultGroupPresenter;
-import cooperation.qqfav.globalsearch.GroupSearchModelFavorite;
+import android.content.Context;
+import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
+import com.tencent.qphone.base.util.QLog;
 
-public class alzf
-  implements View.OnClickListener
+public final class alzf
+  implements Runnable
 {
-  public alzf(FavoriteSearchResultGroupPresenter paramFavoriteSearchResultGroupPresenter, GroupSearchModelFavorite paramGroupSearchModelFavorite) {}
+  public alzf(int paramInt1, Context paramContext, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_CooperationQqfavGlobalsearchGroupSearchModelFavorite.a(paramView);
+    BadgeUtilImpl.setLimitCount(this.jdField_a_of_type_Int);
+    try
+    {
+      BadgeUtilImpl.setBadge(this.jdField_a_of_type_AndroidContentContext, this.b);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("BadgeUtilImpl", 2, "badge not support");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alzf
  * JD-Core Version:    0.7.0.1
  */

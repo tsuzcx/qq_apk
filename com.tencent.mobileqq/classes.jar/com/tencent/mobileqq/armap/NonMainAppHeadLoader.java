@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.armap;
 
-import aavw;
-import aavx;
-import aavy;
+import abcx;
+import abcy;
+import abcz;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -46,9 +46,9 @@ public class NonMainAppHeadLoader
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aavw(this);
-    this.jdField_a_of_type_AndroidOsHandler = new aavx(this, Looper.getMainLooper());
-    this.jdField_b_of_type_AndroidOsHandler = new aavy(this, ThreadManager.getSubThreadLooper());
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new abcx(this);
+    this.jdField_a_of_type_AndroidOsHandler = new abcy(this, Looper.getMainLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new abcz(this, ThreadManager.getSubThreadLooper());
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;

@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
-import amnj;
-import amnk;
-import amnl;
+import ando;
+import andp;
+import andq;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -271,7 +271,7 @@ public class QzoneWidgetAIJsPlugin
         return;
       }
     }
-    ThreadManager.executeOnSubThread(new amnk(this, i, WidgetAIFileUtil.a("QzoneShowShare" + a() + ".png", paramJSONObject, this.a.mRuntime.a()), str));
+    ThreadManager.executeOnSubThread(new andp(this, i, WidgetAIFileUtil.a("QzoneShowShare" + a() + ".png", paramJSONObject, this.a.mRuntime.a()), str));
   }
   
   private void a(String... paramVarArgs)
@@ -283,7 +283,7 @@ public class QzoneWidgetAIJsPlugin
     {
       return;
       QLog.i("QzoneWidgetAIJsPlugin", 1, "publish gif mood start");
-      ThreadManager.executeOnSubThread(new amnl(this, paramVarArgs[0]));
+      ThreadManager.executeOnSubThread(new andq(this, paramVarArgs[0]));
     } while (this.a.mRuntime.a() == null);
     this.a.mRuntime.a().finish();
   }
@@ -317,7 +317,7 @@ public class QzoneWidgetAIJsPlugin
         if (i != 2) {
           continue;
         }
-        ThreadManager.executeOnSubThread(new amnj(this, paramJsBridgeListener));
+        ThreadManager.executeOnSubThread(new ando(this, paramJsBridgeListener));
         return true;
       }
       catch (Exception paramJsBridgeListener) {}

@@ -1,53 +1,113 @@
-import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.data.MessageForStructing;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetMessageConfigurationResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
+import mqq.observer.BusinessObserver;
 
-public final class lll
-  implements Runnable
+public class lll
+  implements BusinessObserver
 {
-  public lll(MessageForStructing paramMessageForStructing, RecentBaseData paramRecentBaseData, String paramString) {}
+  public lll(KandianMergeManager paramKandianMergeManager) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    JSONObject localJSONObject = new JSONObject();
-    boolean bool = WeishiReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
+    mobileqq_mp.GetMessageConfigurationResponse localGetMessageConfigurationResponse;
+    if (paramBoolean) {
+      localGetMessageConfigurationResponse = new mobileqq_mp.GetMessageConfigurationResponse();
+    }
+    label263:
+    label295:
+    label310:
+    label324:
+    label325:
     for (;;)
     {
       try
       {
-        localJSONObject.put("folder_status", WeishiReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing));
-        if ((bool) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData != null))
-        {
-          str1 = "";
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.b != 1) {
-            continue;
-          }
-          str1 = "1";
-          localJSONObject.put("reddot_style", str1);
-          localJSONObject.put("algorithm_id", WeishiReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing));
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label310;
         }
-        localJSONObject.put("EnterType", this.jdField_a_of_type_JavaLangString);
+        localGetMessageConfigurationResponse.mergeFrom(paramBundle);
+        if ((!localGetMessageConfigurationResponse.ret_info.has()) || (!localGetMessageConfigurationResponse.ret_info.ret_code.has())) {
+          break label295;
+        }
+        paramInt = localGetMessageConfigurationResponse.ret_info.ret_code.get();
+        if (paramInt != 0) {
+          break label263;
+        }
+        if (!localGetMessageConfigurationResponse.type.has()) {
+          break label324;
+        }
+        paramInt = localGetMessageConfigurationResponse.type.get();
+        if (paramInt != 1) {
+          break label325;
+        }
+        paramBoolean = true;
+        paramBundle = BaseActivity.sTopActivity;
+        if (ReadInJoyHelper.f(KandianMergeManager.a(this.a))) {
+          break label206;
+        }
+        if ((paramBundle instanceof ReadInJoySettingActivity))
+        {
+          paramBundle = (ReadInJoySettingActivity)paramBundle;
+          if (paramBundle.a())
+          {
+            QLog.d("KandianMergeManager", 1, "setting: has set kandian status");
+            QLog.d("KandianMergeManager", 1, "result:" + paramInt);
+            return;
+          }
+          this.a.a(paramBoolean);
+          paramBundle.a(paramBoolean);
+          continue;
+        }
+        this.a.a(paramBoolean);
       }
-      catch (JSONException localJSONException)
+      catch (Exception paramBundle)
       {
-        String str1;
-        String str2;
-        localJSONException.printStackTrace();
+        QLog.d("KandianMergeManager", 1, "failed to handle request Kandian status configuration");
+        return;
+      }
+      continue;
+      label206:
+      if ((paramBundle instanceof ReadinjoyMsgManagerActivity))
+      {
+        paramBundle = (ReadinjoyMsgManagerActivity)paramBundle;
+        if (paramBundle.a())
+        {
+          QLog.d("KandianMergeManager", 1, "msg manage: has set kandian status");
+        }
+        else
+        {
+          this.a.a(paramBoolean);
+          paramBundle.a(paramBoolean);
+        }
+      }
+      else
+      {
+        this.a.a(paramBoolean);
         continue;
-      }
-      str2 = "0";
-      str1 = "0";
-      if (bool)
-      {
-        str2 = WeishiReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
-        str1 = WeishiReportUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing);
-      }
-      WeishiReportUtil.a(str2, str1, "0X8009291", localJSONObject.toString());
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.b == 2) {
-        str1 = "0";
+        if (QLog.isColorLevel())
+        {
+          QLog.d("KandianMergeManager", 2, "request Kandian status fail code:" + paramInt);
+          return;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("KandianMergeManager", 2, "request Kandian status wrong resp");
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.d("KandianMergeManager", 2, "request Kandian status fail data null");
+            }
+          }
+        }
+        return;
+        paramBoolean = false;
       }
     }
   }

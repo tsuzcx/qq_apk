@@ -1,16 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
+import android.os.Message;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
-class anwj
-  implements CaptureVideoFilterManager.OnResourceDownloadListener
+public class anwj
+  implements Runnable
 {
-  anwj(anwi paramanwi) {}
+  public anwj(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, long paramLong) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
-    }
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 13, Long.valueOf(this.jdField_a_of_type_Long / 1000000L)));
   }
 }
 

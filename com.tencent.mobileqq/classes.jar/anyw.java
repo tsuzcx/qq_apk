@@ -1,12 +1,17 @@
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
 public class anyw
+  implements Runnable
 {
-  public long a;
-  public boolean a;
-  public long b;
+  public anyw(DoodleLayout paramDoodleLayout) {}
   
-  public anyw(QIMPtvTemplateManager paramQIMPtvTemplateManager) {}
+  public void run()
+  {
+    if (this.a.a != null) {
+      this.a.a.invalidate();
+    }
+  }
 }
 
 

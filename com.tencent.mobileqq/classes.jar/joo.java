@@ -1,16 +1,12 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
-import com.tencent.av.smallscreen.SmallScreenUtils;
+import com.tencent.av.app.GAudioUIObserver;
+import com.tencent.av.smallscreen.SmallScreenService;
 
 public class joo
-  implements Runnable
+  extends GAudioUIObserver
 {
-  public joo(SmallScreenActivityPlugin paramSmallScreenActivityPlugin, boolean paramBoolean) {}
+  public joo(SmallScreenService paramSmallScreenService) {}
   
-  public void run()
-  {
-    SmallScreenUtils.a(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin.a.getApp(), this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin.b, this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin.a.getCurrentAccountUin(), this.jdField_a_of_type_Boolean);
-  }
+  protected void a(long paramLong, int paramInt, String paramString) {}
 }
 
 

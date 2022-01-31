@@ -1,26 +1,51 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.ShortVideoExceptionReporter;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
 
-public class anwm
-  implements Runnable
+class anwm
+  implements HWEncodeListener
 {
-  public anwm(GuideVideoView paramGuideVideoView) {}
+  anwm(anwl paramanwl, HWEditLocalVideoPlayer.Mp4VideoFragmentInfo paramMp4VideoFragmentInfo) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "onVideoPrepared");
-    }
-    this.a.a = true;
-    if (this.a.b)
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = paramString;
+    SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "onEncodeFinish  iframe file filePath = " + paramString);
+    this.jdField_a_of_type_Anwl.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a(new anwn(this), 0L);
+  }
+  
+  public void a_(int paramInt, Throwable paramThrowable)
+  {
+    SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "encode error errorCode = " + paramInt + " Exception = " + paramThrowable);
+    if (this.jdField_a_of_type_Anwl.b == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "has triggered start, now start");
+      this.jdField_a_of_type_Anwl.b = 1;
+      this.jdField_a_of_type_Anwl.jdField_a_of_type_Int = 3;
+      SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Reencode i frame video by mIFrameInterval = " + this.jdField_a_of_type_Anwl.b + " mFrameRate = " + this.jdField_a_of_type_Anwl.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Anwl.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a(this.jdField_a_of_type_Anwl, 1000L);
+      return;
+    }
+    SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Reencode i frame video failed");
+    try
+    {
+      ShortVideoExceptionReporter.a(paramThrowable);
+      this.jdField_a_of_type_Anwl.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a(new anwo(this), 0L);
+      return;
+    }
+    catch (Throwable paramThrowable)
+    {
+      for (;;)
+      {
+        paramThrowable.printStackTrace();
       }
-      GuideVideoView.a(this.a).start();
     }
   }
+  
+  public void b() {}
 }
 
 

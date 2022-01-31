@@ -11,6 +11,7 @@ import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
@@ -138,6 +139,9 @@ public class ReadInJoyRecommendFeedsFragment
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     getArguments();
+    if (DiandianTopConfigManager.a()) {
+      DiandianTopConfigManager.a().a(false);
+    }
     return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyKanDianViewController.a();
   }
   

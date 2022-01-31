@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.paster;
 
-import amwn;
-import amwo;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
+import anms;
+import anmt;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -113,7 +113,7 @@ public class CaptureComboNormalPaster
           }
           for (;;)
           {
-            paramString.setURLDrawableListener(new amwo(str1, paramInt1, paramFloat3, str2, paramNormalFacePackage, i, paramIFaceSelectedListener, paramFloat1, paramInt2, paramFloat2, paramSegmentKeeper));
+            paramString.setURLDrawableListener(new anmt(str1, paramInt1, paramFloat3, str2, paramNormalFacePackage, i, paramIFaceSelectedListener, paramFloat1, paramInt2, paramFloat2, paramSegmentKeeper));
             jdField_a_of_type_JavaUtilHashMap.put(str1, paramString);
             paramString = null;
             break;
@@ -209,7 +209,7 @@ public class CaptureComboNormalPaster
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.a == null) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.a.size() == 0)) {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.a());
     }
-    ThreadManager.postImmediately(new amwn(this, paramInt), null, true);
+    ThreadManager.postImmediately(new anms(this, paramInt), null, true);
     if (QLog.isColorLevel()) {
       QLog.d("QComboNPaster", 2, "apply id=" + this.jdField_a_of_type_JavaLangString + " name=" + this.jdField_b_of_type_JavaLangString);
     }

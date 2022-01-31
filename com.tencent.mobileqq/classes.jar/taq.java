@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
 
 public class taq
-  extends CardObserver
+  implements Runnable
 {
-  public taq(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public taq(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public void run()
   {
-    if (paramBoolean1)
+    if ((LoginVerifyCodeActivity.a(this.a) == 1) || (this.a.isFinishing()))
     {
-      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
-      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
+      LoginVerifyCodeActivity.a(this.a).setText(2131434277);
+      LoginVerifyCodeActivity.a(this.a).setEnabled(true);
+      LoginVerifyCodeActivity.a(this.a).setClickable(true);
+      return;
     }
+    LoginVerifyCodeActivity.b(this.a);
+    LoginVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434277) + "(" + LoginVerifyCodeActivity.a(this.a) + ")");
+    this.a.a.postDelayed(this, 1000L);
   }
 }
 

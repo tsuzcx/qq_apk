@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.fragment;
 
-import agtw;
+import ahhy;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -29,7 +29,7 @@ import com.tencent.qphone.base.util.QLog;
 public class BlessEffectsCameraCaptureFragment
   extends AIOEffectsCameraCaptureFragment
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new agtw(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahhy(this);
   private View jdField_a_of_type_AndroidViewView;
   private String jdField_a_of_type_JavaLangString;
   private int c;
@@ -61,6 +61,11 @@ public class BlessEffectsCameraCaptureFragment
     return localBundle;
   }
   
+  public int a()
+  {
+    return 10003;
+  }
+  
   protected CameraCaptureView.CaptureParam a()
   {
     CameraCaptureView.CaptureParam localCaptureParam = super.a();
@@ -81,14 +86,9 @@ public class BlessEffectsCameraCaptureFragment
     JumpUtil.a(this, paramVideoCaptureResult, paramLocalMediaInfo, a(true), 5, 10003, 0, null, null, null);
   }
   
-  public int b()
+  protected void e()
   {
-    return 10003;
-  }
-  
-  protected void d()
-  {
-    super.d();
+    super.e();
     Object localObject;
     boolean bool;
     if ((this.o) && (this.l))

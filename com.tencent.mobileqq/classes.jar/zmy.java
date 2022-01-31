@@ -1,29 +1,47 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.vas.SignatureTemplateConfig.SignatureTemplateType;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class zmy
-  extends PublicAccountObserver
+  implements Handler.Callback
 {
-  private zmy(CheckPublicAccount paramCheckPublicAccount) {}
+  public zmy(SignatureManager paramSignatureManager) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "PublicAccount onUpdateUserFollowList:" + paramBoolean + " " + paramInt);
-    }
-    if ((paramBoolean) && (paramInt == 0))
+    if (2 == paramMessage.what)
     {
-      CheckPublicAccount.a(this.a).a.edit().putBoolean("isPublicAccountListOK", true).commit();
-      this.a.a(7);
+      SignatureManager.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateConfig$SignatureTemplateType = (SignatureTemplateConfig.SignatureTemplateType[])paramMessage.obj;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        if (paramMessage != null) {
+          paramMessage.sendEmptyMessageDelayed(2, 50L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SignatureManager", 2, "update sign tpl info...");
+        }
+      }
     }
-    while (paramInt == 0) {
-      return;
+    for (;;)
+    {
+      return true;
+      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        if (paramMessage != null) {
+          paramMessage.sendEmptyMessageDelayed(7, 50L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SignatureManager", 2, "update sign tpl animation ...");
+        }
+      }
     }
-    this.a.a(6);
   }
 }
 

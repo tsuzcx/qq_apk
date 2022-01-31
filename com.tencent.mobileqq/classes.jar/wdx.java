@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
 
-class wdx
-  extends AnimateUtils.AnimationAdapter
+public class wdx
+  implements MessageQueue.IdleHandler
 {
-  wdx(wdv paramwdv) {}
+  public wdx(ZhituManager paramZhituManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean queueIdle()
   {
-    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
+    ZhituManager.a(this.a, true);
+    return true;
   }
 }
 

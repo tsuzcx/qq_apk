@@ -1,60 +1,22 @@
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.FrameHelperActivity.QQSettingMeListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.UpSideDownDrawable;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-public class sdh
-  implements FrameHelperActivity.QQSettingMeListener
+class sdh
+  implements Runnable
 {
-  public sdh(Conversation paramConversation) {}
+  sdh(sdg paramsdg, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4) {}
   
-  public ViewGroup a()
+  public void run()
   {
-    return this.a.a.a;
-  }
-  
-  public UpSideDownDrawable a(String paramString)
-  {
-    return this.a.a.a(paramString);
-  }
-  
-  public void a()
-  {
-    this.a.a.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    this.a.a.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    this.a.a.a(paramConfiguration);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.a.a.a(paramQQAppInterface);
-  }
-  
-  public void a(String paramString, UpSideDownDrawable paramUpSideDownDrawable)
-  {
-    this.a.a.a(paramString, paramUpSideDownDrawable);
-  }
-  
-  public void b()
-  {
-    this.a.a.f();
-  }
-  
-  public void c()
-  {
-    this.a.a.g();
+    ((TroopManager)this.jdField_a_of_type_Sdg.a.app.getManager(51)).a(this.jdField_a_of_type_Sdg.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c, this.d);
+    this.jdField_a_of_type_Sdg.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = this.b;
+    this.jdField_a_of_type_Sdg.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+    if (this.jdField_a_of_type_Sdg.a.e != null) {
+      this.jdField_a_of_type_Sdg.a.a(this.jdField_a_of_type_Sdg.a.e);
+    }
   }
 }
 

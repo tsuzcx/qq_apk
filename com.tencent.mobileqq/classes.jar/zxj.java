@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.ar.ARLBSPOIDialog;
 
-class zxj
+public class zxj
   implements Runnable
 {
-  zxj(zxi paramzxi, int paramInt) {}
+  public zxj(ARLBSPOIDialog paramARLBSPOIDialog) {}
   
   public void run()
   {
-    ArConfigService.a(this.jdField_a_of_type_Zxi.a, this.jdField_a_of_type_Int);
+    if (!this.a.jdField_a_of_type_Boolean) {
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    }
   }
 }
 

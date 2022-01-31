@@ -33,13 +33,13 @@ import com.tencent.widget.XBaseAdapter;
 import com.tencent.widget.XListView;
 import mqq.manager.Manager;
 import mqq.util.WeakReference;
-import uiq;
-import uir;
-import uis;
-import uit;
-import uiu;
-import uiv;
-import uiw;
+import ulq;
+import ulr;
+import uls;
+import ult;
+import ulu;
+import ulv;
+import ulw;
 
 public class MediaPlayerManager
   extends BroadcastReceiver
@@ -49,7 +49,7 @@ public class MediaPlayerManager
   public float a;
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private MediaPlayer.OnCompletionListener jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener = new uis(this);
+  private MediaPlayer.OnCompletionListener jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener = new uls(this);
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
   private MediaPlayerManager.Callback jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager$Callback;
@@ -57,9 +57,9 @@ public class MediaPlayerManager
   private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
   private XBaseAdapter jdField_a_of_type_ComTencentWidgetXBaseAdapter;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new uiv(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new ulv(this);
   private WeakReference jdField_a_of_type_MqqUtilWeakReference;
-  private uiw jdField_a_of_type_Uiw;
+  private ulw jdField_a_of_type_Ulw;
   public boolean a;
   public float b;
   private Sensor jdField_b_of_type_AndroidHardwareSensor;
@@ -516,11 +516,11 @@ public class MediaPlayerManager
     //   314: invokevirtual 429	android/hardware/SensorManager:getDefaultSensor	(I)Landroid/hardware/Sensor;
     //   317: putfield 431	com/tencent/mobileqq/activity/aio/MediaPlayerManager:jdField_b_of_type_AndroidHardwareSensor	Landroid/hardware/Sensor;
     //   320: aload_0
-    //   321: new 433	uiw
+    //   321: new 433	ulw
     //   324: dup
     //   325: aload_0
-    //   326: invokespecial 434	uiw:<init>	(Lcom/tencent/mobileqq/activity/aio/MediaPlayerManager;)V
-    //   329: putfield 286	com/tencent/mobileqq/activity/aio/MediaPlayerManager:jdField_a_of_type_Uiw	Luiw;
+    //   326: invokespecial 434	ulw:<init>	(Lcom/tencent/mobileqq/activity/aio/MediaPlayerManager;)V
+    //   329: putfield 286	com/tencent/mobileqq/activity/aio/MediaPlayerManager:jdField_a_of_type_Ulw	Lulw;
     //   332: aload_0
     //   333: aload_0
     //   334: getfield 108	com/tencent/mobileqq/activity/aio/MediaPlayerManager:jdField_a_of_type_AndroidHardwareSensorManager	Landroid/hardware/SensorManager;
@@ -671,7 +671,7 @@ public class MediaPlayerManager
   
   public void a(AudioPlayer paramAudioPlayer)
   {
-    ThreadManager.postImmediately(new uir(this), null, false);
+    ThreadManager.postImmediately(new ulr(this), null, false);
   }
   
   public void a(AudioPlayer paramAudioPlayer, int paramInt)
@@ -686,7 +686,7 @@ public class MediaPlayerManager
       }
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new uit(this, paramAudioPlayer, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ult(this, paramAudioPlayer, paramInt));
   }
   
   public void a(MediaPlayerManager.Listener paramListener, MediaPlayerManager.Callback paramCallback)
@@ -743,7 +743,7 @@ public class MediaPlayerManager
       }
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new uiq(this, paramBoolean));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ulq(this, paramBoolean));
   }
   
   public boolean a(ChatMessage paramChatMessage)
@@ -942,7 +942,7 @@ public class MediaPlayerManager
   
   public void c(AudioPlayer paramAudioPlayer, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new uiu(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ulu(this, paramInt));
   }
   
   public void d()
@@ -1160,7 +1160,7 @@ public class MediaPlayerManager
     if ((this.jdField_b_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensor != null)) {}
     try
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Uiw, this.jdField_b_of_type_AndroidHardwareSensor, 3);
+      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Ulw, this.jdField_b_of_type_AndroidHardwareSensor, 3);
       if (this.jdField_a_of_type_AndroidHardwareSensor == null) {}
     }
     catch (Exception localException1)

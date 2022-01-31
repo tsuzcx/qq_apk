@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
-public final class ajbj
-  implements Runnable
+public class ajbj
+  extends FriendListObserver
 {
-  public ajbj(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public ajbj(NewTroopContactView paramNewTroopContactView) {}
   
-  public void run()
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    if (paramBoolean1) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbj
  * JD-Core Version:    0.7.0.1
  */

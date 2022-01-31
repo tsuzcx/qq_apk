@@ -5,13 +5,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
 import com.tencent.mobileqq.utils.AudioHelper;
-import kif;
-import kig;
+import khq;
+import khr;
 
 public class VideoMsgTools$5$1
   extends ResultReceiver
 {
-  public VideoMsgTools$5$1(kif paramkif, Handler paramHandler)
+  public VideoMsgTools$5$1(khq paramkhq, Handler paramHandler)
   {
     super(paramHandler);
   }
@@ -21,7 +21,7 @@ public class VideoMsgTools$5$1
     AudioHelper.a("addGroupMember_" + this.a.jdField_a_of_type_Long, paramBundle);
     if (paramInt == -1)
     {
-      paramBundle = new kig(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString);
+      paramBundle = new khr(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString);
       new Handler(Looper.getMainLooper()).postDelayed(paramBundle, 1000L);
     }
   }

@@ -1,32 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import android.view.ViewTreeObserver;
+import com.tencent.widget.DynamicGridView;
 
-public final class ambf
-  implements Parcelable.Creator
+public class ambf
+  implements ambi
 {
-  public LbsDataV2.GpsInfo a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private int b;
+  
+  public ambf(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
   {
-    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
-    if (paramParcel != null)
-    {
-      localGpsInfo.lat = paramParcel.readInt();
-      localGpsInfo.lon = paramParcel.readInt();
-      localGpsInfo.alt = paramParcel.readInt();
-      localGpsInfo.gpsType = paramParcel.readInt();
-      localGpsInfo.accuracy = paramParcel.readInt();
-    }
-    return localGpsInfo;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public LbsDataV2.GpsInfo[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    return null;
+    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new ambg(this, paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abiy;
+import abpz;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -57,16 +57,16 @@ public class TopicAdapter
     this.k = paramInt;
     Resources localResources = paramContext.getResources();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = localResources.getDimensionPixelSize(2131559404);
-    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131559405);
-    this.c = localResources.getColor(2131493373);
-    this.d = localResources.getColor(2131493374);
-    this.e = localResources.getColor(2131493377);
-    this.f = localResources.getDimensionPixelSize(2131559406);
-    this.g = localResources.getDimensionPixelSize(2131559409);
-    this.h = localResources.getDimensionPixelSize(2131559407);
-    this.i = localResources.getDimensionPixelSize(2131559402);
-    this.j = localResources.getDimensionPixelSize(2131559403);
+    this.jdField_a_of_type_Int = localResources.getDimensionPixelSize(2131559406);
+    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131559407);
+    this.c = localResources.getColor(2131493376);
+    this.d = localResources.getColor(2131493377);
+    this.e = localResources.getColor(2131493380);
+    this.f = localResources.getDimensionPixelSize(2131559408);
+    this.g = localResources.getDimensionPixelSize(2131559411);
+    this.h = localResources.getDimensionPixelSize(2131559409);
+    this.i = localResources.getDimensionPixelSize(2131559404);
+    this.j = localResources.getDimensionPixelSize(2131559405);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
     this.jdField_a_of_type_ArrayOfInt = new int[] { 16842919 };
     paramContext = StateSet.WILD_CARD;
@@ -135,7 +135,7 @@ public class TopicAdapter
       ??? = ???;
       if (??? == null)
       {
-        ??? = new abiy();
+        ??? = new abpz();
         ??? = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)???).mRequestWidth = this.f;
         ((URLDrawable.URLDrawableOptions)???).mRequestHeight = this.f;
@@ -181,8 +181,8 @@ public class TopicAdapter
     if (paramCampusTopic1 == null) {
       return;
     }
-    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131362701);
-    TextView localTextView = (TextView)paramView.findViewById(2131369838);
+    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131362719);
+    TextView localTextView = (TextView)paramView.findViewById(2131369915);
     localTextView.setText(paramCampusTopic1.title);
     int m;
     int n;
@@ -190,7 +190,7 @@ public class TopicAdapter
     {
       m = this.e;
       n = this.c;
-      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842301);
+      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842348);
       paramCampusTopic2 = null;
     }
     for (;;)
@@ -304,7 +304,7 @@ public class TopicAdapter
     case 0: 
       paramViewGroup = paramView;
       if (paramView == null) {
-        paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970259, null);
+        paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970275, null);
       }
       if (paramInt != 0) {
         break;
@@ -322,7 +322,7 @@ public class TopicAdapter
         paramViewGroup = paramView;
         if (paramView == null)
         {
-          paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970259, null);
+          paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970275, null);
           paramView = paramViewGroup.getLayoutParams();
           if (paramView != null) {
             break label329;
@@ -332,7 +332,7 @@ public class TopicAdapter
         for (;;)
         {
           paramViewGroup.setLayoutParams(paramView);
-          localView1 = paramViewGroup.findViewById(2131369838);
+          localView1 = paramViewGroup.findViewById(2131369915);
           localObject = (RelativeLayout.LayoutParams)localView1.getLayoutParams();
           paramView = (View)localObject;
           if (localObject == null) {
@@ -340,7 +340,7 @@ public class TopicAdapter
           }
           paramView.topMargin = ((int)(this.jdField_a_of_type_Float * 22.0F / 2.0F));
           localView1.setLayoutParams(paramView);
-          localView1 = paramViewGroup.findViewById(2131362701);
+          localView1 = paramViewGroup.findViewById(2131362719);
           localObject = (RelativeLayout.LayoutParams)localView1.getLayoutParams();
           paramView = (View)localObject;
           if (localObject == null) {
@@ -357,24 +357,24 @@ public class TopicAdapter
         }
         paramViewGroup = paramView;
         if (paramView == null) {
-          paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970260, null);
+          paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970276, null);
         }
         paramView = paramViewGroup;
         if (localCampusTopic == null) {
           break;
         }
-        paramView = (URLImageView)paramViewGroup.findViewById(2131362701);
-        Object localObject = (TextView)paramViewGroup.findViewById(2131369846);
-        View localView1 = paramViewGroup.findViewById(2131369838);
-        TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131369847);
-        TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131369848);
-        View localView2 = paramViewGroup.findViewById(2131369839);
+        paramView = (URLImageView)paramViewGroup.findViewById(2131362719);
+        Object localObject = (TextView)paramViewGroup.findViewById(2131369923);
+        View localView1 = paramViewGroup.findViewById(2131369915);
+        TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131369924);
+        TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131369925);
+        View localView2 = paramViewGroup.findViewById(2131369916);
         if (localCampusTopic.flag == 1)
         {
           ((TextView)localObject).setVisibility(0);
           localTextView2.setVisibility(8);
           ((TextView)localObject).setText("荐");
-          ((TextView)localObject).setBackgroundResource(2130842314);
+          ((TextView)localObject).setBackgroundResource(2130842361);
         }
         for (;;)
         {
@@ -395,7 +395,7 @@ public class TopicAdapter
             ((TextView)localObject).setVisibility(0);
             localTextView2.setVisibility(0);
             ((TextView)localObject).setText("热");
-            ((TextView)localObject).setBackgroundResource(2130842315);
+            ((TextView)localObject).setBackgroundResource(2130842362);
             localTextView2.setText(localCampusTopic.extra);
           }
           else
@@ -415,7 +415,7 @@ public class TopicAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.TopicAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.emogroupstore.FilterAdapter;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class wmd
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
+  public wmd(ContactsTroopAdapter paramContactsTroopAdapter) {}
   
-  private wmd(FilterAdapter paramFilterAdapter) {}
+  public void run()
+  {
+    ((TroopManager)this.a.a.getManager(51)).a();
+    this.a.a.runOnUiThread(new wme(this));
+  }
 }
 
 

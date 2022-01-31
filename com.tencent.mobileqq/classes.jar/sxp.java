@@ -1,20 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.nearby.NearbyEnterUpdateObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class sxp
-  extends MqqHandler
+  extends NearbyEnterUpdateObserver
 {
-  public sxp(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
+  public sxp(Leba paramLeba) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
     }
-    this.a.finish();
+    Leba.d(this.a);
   }
 }
 

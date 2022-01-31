@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.message.MsgPool;
+import com.tencent.mobileqq.app.msgcache.CacheConstants;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import mqq.app.AppRuntime;
 
-class abvq
-  implements Runnable
+public class abvq
+  implements View.OnClickListener
 {
-  abvq(abvp paramabvp, abvr paramabvr) {}
+  public abvq(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Abvp.a.e(this.jdField_a_of_type_Abvr.a);
+    if (CacheConstants.a) {
+      MsgPool.a(this.jdField_a_of_type_MqqAppAppRuntime.getAccount()).a().printMsgLruCache();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvq
  * JD-Core Version:    0.7.0.1
  */

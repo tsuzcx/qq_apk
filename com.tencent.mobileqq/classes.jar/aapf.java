@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
 
-public class aapf
+class aapf
   implements Runnable
 {
-  public aapf(ArkMediaPlayer paramArkMediaPlayer) {}
+  aapf(aaoz paramaaoz) {}
   
   public void run()
   {
-    if (ArkMediaPlayer.a(this.a)) {
-      return;
-    }
-    ArkMediaPlayer.a(this.a, true);
-    if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.b(this.a)) {
-      this.a.Play();
-    }
-    for (;;)
+    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"none".equals(ArkAppEventObserverManager.a(this.a.a))))
     {
-      ArkMediaPlayer.a(this.a, ArkMediaPlayer.f(this.a));
-      return;
-      if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.c(this.a)) {
-        this.a.Stop();
-      } else if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.d(this.a)) {
-        this.a.Resume();
-      } else if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.e(this.a)) {
-        this.a.Pause();
-      }
+      ArkAppEventObserverManager.a(this.a.a).a(true, "none");
+      ArkAppEventObserverManager.a(this.a.a, "none");
     }
   }
 }

@@ -1,25 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.util.Log;
+import com.tencent.mobileqq.lyric.data.Lyric;
+import com.tencent.mobileqq.lyric.widget.LyricViewController;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
 
 public class aecy
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public aecy(NearbyGuideActivity paramNearbyGuideActivity, ActionSheet paramActionSheet) {}
+  public aecy(LyricViewController paramLyricViewController, Lyric paramLyric1, Lyric paramLyric2, Lyric paramLyric3) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    switch (paramInt)
+    if (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) {
+      Log.d("ModuleController", "setLyric -> pronounce is null");
+    }
+    if (this.b == null)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
+      Log.d("ModuleController", "setLyric -> qrc is null");
+      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a(this.c, this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric);
+      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = this.c;
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a(this.b, this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric);
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = this.b;
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.b = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.c();
   }
 }
 

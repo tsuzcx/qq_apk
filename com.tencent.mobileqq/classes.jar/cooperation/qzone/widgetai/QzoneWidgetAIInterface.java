@@ -1,6 +1,5 @@
 package cooperation.qzone.widgetai;
 
-import amob;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -8,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
+import aneg;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -79,7 +79,7 @@ public class QzoneWidgetAIInterface
   
   public static String getBuildNumber()
   {
-    return "3525";
+    return "3560";
   }
   
   public static String getBuilderNumber()
@@ -170,12 +170,12 @@ public class QzoneWidgetAIInterface
   {
     String str = QZonePluginUtils.b();
     if (!str.equals("qzone_widgetai.apk")) {
-      QZonePluginMangerHelper.a(getContext(), new amob(str));
+      QZonePluginMangerHelper.a(getContext(), new aneg(str));
     }
     for (;;)
     {
       return version;
-      version = "2013 7.6.0";
+      version = "2013 7.6.3";
     }
   }
   

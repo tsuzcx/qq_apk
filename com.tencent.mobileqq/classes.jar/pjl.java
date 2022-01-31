@@ -1,23 +1,27 @@
-import com.tencent.component.network.utils.http.base.SniSSLSocketFactory;
-import java.security.cert.X509Certificate;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
+import com.tencent.component.network.downloader.UrlKeyGenerator;
 
 public class pjl
-  implements X509HostnameVerifier
+  extends UrlKeyGenerator
 {
-  public pjl(SniSSLSocketFactory paramSniSSLSocketFactory) {}
-  
-  public void verify(String paramString, X509Certificate paramX509Certificate) {}
-  
-  public void verify(String paramString, SSLSocket paramSSLSocket) {}
-  
-  public void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2) {}
-  
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public String b(String paramString)
   {
-    return false;
+    String str = null;
+    int i;
+    if (UrlKeyGenerator.a(paramString, "http://")) {
+      i = paramString.indexOf("/", "http://".length());
+    }
+    for (;;)
+    {
+      if (i != -1) {
+        str = paramString.substring(i);
+      }
+      return str;
+      if (UrlKeyGenerator.a(paramString, "https://")) {
+        i = paramString.indexOf("/", "https://".length());
+      } else {
+        i = paramString.indexOf("/");
+      }
+    }
   }
 }
 

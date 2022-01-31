@@ -1,24 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.tim.TIMUserManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class wch
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public wch(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  public wch(TIMUserManager paramTIMUserManager, String paramString1, String paramString2, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (!NetworkUtil.g(this.a.getApplicationContext())) {
-      QQToast.a(this.a, 2131437513, 1).a();
+    if (TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
+      if (TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, this.b))
+      {
+        TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager);
+        TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 2);
+      }
     }
     for (;;)
     {
-      paramDialogInterface.dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.i("TIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadTimTheme TimIconsState " + TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager));
+      }
       return;
-      this.a.U_();
+      TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 4);
+      continue;
+      TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 3);
     }
   }
 }

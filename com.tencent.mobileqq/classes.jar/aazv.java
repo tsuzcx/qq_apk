@@ -1,12 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 class aazv
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  aazv(aazt paramaazt) {}
+  aazv(aazs paramaazs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    ARMapActivity.a(this.a.a, null);
+  }
 }
 
 

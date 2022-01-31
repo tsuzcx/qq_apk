@@ -1,34 +1,49 @@
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.GetUserGroupUnionIDHandler.GetUserGroupUnionIDEvent;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.GroupID;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class nsg
-  extends GetRedPointExObserver
+  extends QQUIEventReceiver
 {
-  public nsg(QQStoryMainController paramQQStoryMainController) {}
-  
-  protected void a(Object paramObject)
+  public nsg(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    MessageNotifySegment localMessageNotifySegment;
-    do
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetUserGroupUnionIDHandler.GetUserGroupUnionIDEvent paramGetUserGroupUnionIDEvent)
+  {
+    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramGetUserGroupUnionIDEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramGetUserGroupUnionIDEvent.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
+      paramGetUserGroupUnionIDEvent = paramGetUserGroupUnionIDEvent.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramGetUserGroupUnionIDEvent.hasNext())
+      {
+        GroupID localGroupID = (GroupID)paramGetUserGroupUnionIDEvent.next();
+        if (paramQQStoryShareGroupProfileActivity.c.equals(localGroupID.a))
+        {
+          paramQQStoryShareGroupProfileActivity.b = localGroupID.b;
+          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
+            break label111;
+          }
+        }
+      }
+    }
+    label111:
+    for (boolean bool = true;; bool = false)
+    {
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
-      }
-      paramObject = ((TroopRedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).a(49);
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + TroopRedTouchManager.a(paramObject));
-      }
-      localMessageNotifySegment = (MessageNotifySegment)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
-    } while (localMessageNotifySegment == null);
-    localMessageNotifySegment.a(paramObject);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.q();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return GetUserGroupUnionIDHandler.GetUserGroupUnionIDEvent.class;
   }
 }
 

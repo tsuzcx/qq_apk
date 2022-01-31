@@ -53,9 +53,9 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import org.json.JSONObject;
-import vje;
-import vjf;
-import vjl;
+import vmg;
+import vmh;
+import vmn;
 
 public class AIOGalleryAdapter
   extends AbstractImageAdapter
@@ -71,7 +71,7 @@ public class AIOGalleryAdapter
   AIOImageListModel jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel;
   IAIOImageProvider jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private vjl jdField_a_of_type_Vjl;
+  private vmn jdField_a_of_type_Vmn;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int;
   long jdField_b_of_type_Long = -1L;
@@ -613,7 +613,7 @@ public class AIOGalleryAdapter
     {
       if ((paramString1 == null) || (paramString2 == null) || ((!"PART".equals(paramString2)) && (!"DISPLAY".equals(paramString2))))
       {
-        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837615));
+        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837618));
         a(paramInt, false);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().d();
       }
@@ -687,7 +687,7 @@ public class AIOGalleryAdapter
               if (paramString2.jdField_b_of_type_Int != 0) {
                 if (paramString2.jdField_b_of_type_Boolean)
                 {
-                  paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837615));
+                  paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837618));
                   a(paramInt, false);
                   if (QLog.isColorLevel()) {
                     QLog.i("AIOGalleryAdapter", 2, "AIOGalleryAdapter.updateView(): IMAGE_FILE_ERROR, position=" + paramInt);
@@ -762,7 +762,7 @@ public class AIOGalleryAdapter
         if ((paramString2 != null) && (paramString1 != null) && (("PART".equals(paramString1)) || ("DISPLAY".equals(paramString1)))) {
           break label222;
         }
-        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837615));
+        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837618));
         a(paramInt, false);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().d();
         if (((AIOFilePicData)localAIORichMediaInfo.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_a_of_type_Long < FMConfig.c()) {
@@ -828,7 +828,7 @@ public class AIOGalleryAdapter
             paramView.setDecodingDrawble(paramString1);
           }
         }
-        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837615));
+        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837618));
         a(paramInt, true);
         break label222;
         break;
@@ -986,9 +986,9 @@ public class AIOGalleryAdapter
     }
   }
   
-  public void a(vjl paramvjl)
+  public void a(vmn paramvmn)
   {
-    this.jdField_a_of_type_Vjl = paramvjl;
+    this.jdField_a_of_type_Vmn = paramvmn;
   }
   
   public void a(boolean paramBoolean)
@@ -1976,13 +1976,13 @@ public class AIOGalleryAdapter
     //   1925: getfield 972	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1928: aload 10
     //   1930: sipush 640
-    //   1933: new 974	vjg
+    //   1933: new 974	vmi
     //   1936: dup
     //   1937: aload_0
     //   1938: iload_1
     //   1939: aload 8
     //   1941: aload 10
-    //   1943: invokespecial 977	vjg:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;ILcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;)V
+    //   1943: invokespecial 977	vmi:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;ILcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;)V
     //   1946: invokevirtual 980	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;ILcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   1949: goto -47 -> 1902
     //   1952: aload 10
@@ -2054,10 +2054,10 @@ public class AIOGalleryAdapter
     //   2097: getfield 972	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   2100: aload 10
     //   2102: sipush 383
-    //   2105: new 984	vji
+    //   2105: new 984	vmk
     //   2108: dup
     //   2109: aload_0
-    //   2110: invokespecial 987	vji:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;)V
+    //   2110: invokespecial 987	vmk:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;)V
     //   2113: invokevirtual 980	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;ILcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   2116: aload_0
     //   2117: iload_1
@@ -2069,13 +2069,13 @@ public class AIOGalleryAdapter
     //   2127: getfield 972	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   2130: aload 10
     //   2132: sipush 640
-    //   2135: new 989	vjj
+    //   2135: new 989	vml
     //   2138: dup
     //   2139: aload_0
     //   2140: iload_1
     //   2141: aload 8
     //   2143: aload 10
-    //   2145: invokespecial 990	vjj:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;ILcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;)V
+    //   2145: invokespecial 990	vml:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;ILcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;)V
     //   2148: invokevirtual 980	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;ILcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   2151: goto -135 -> 2016
     //   2154: aload_0
@@ -2827,12 +2827,12 @@ public class AIOGalleryAdapter
       QLog.d("AIOGalleryAdapter", 2, "onStateChange => " + QQLiveImage.getStateStr(paramInt) + ", msgUniseq=" + paramQQLiveDrawableParams.msgUniseq + ", extra = " + paramObject);
     }
     if (paramInt == 6) {
-      new Handler(Looper.getMainLooper()).post(new vje(this));
+      new Handler(Looper.getMainLooper()).post(new vmg(this));
     }
     while (paramInt != 2) {
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new vjf(this));
+    new Handler(Looper.getMainLooper()).post(new vmh(this));
   }
 }
 

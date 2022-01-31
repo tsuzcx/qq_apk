@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import aeol;
+import afbr;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -54,7 +54,7 @@ public class PicBrowserGalleryScene
   
   public RelativeLayout a()
   {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970431, null);
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970472, null);
   }
   
   protected AbstractImageAdapter a(Context paramContext)
@@ -130,7 +130,7 @@ public class PicBrowserGalleryScene
         ((ActionSheet)localObject3).c("保存到手机");
         ((ActionSheet)localObject3).c("发送给QQ好友");
         ((ActionSheet)localObject3).d("取消");
-        ((ActionSheet)localObject3).a(new aeol(this, (ActionSheet)localObject3, (File)localObject1, (String)localObject2));
+        ((ActionSheet)localObject3).a(new afbr(this, (ActionSheet)localObject3, (File)localObject1, (String)localObject2));
         ((ActionSheet)localObject3).show();
         return;
         label176:

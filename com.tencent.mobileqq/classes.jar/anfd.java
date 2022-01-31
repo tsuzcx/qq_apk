@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import android.app.Activity;
+import cooperation.plugin.IPluginManager.OnOpenPluginListener;
 
-public class anfd
-  implements DialogInterface.OnClickListener
+public final class anfd
+  implements IPluginManager.OnOpenPluginListener
 {
-  public anfd(EditVideoTag paramEditVideoTag) {}
+  public anfd(Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    EditVideoTag.a(this.a);
-    paramDialogInterface.dismiss();
+    if (!paramBoolean) {
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfd
  * JD-Core Version:    0.7.0.1
  */

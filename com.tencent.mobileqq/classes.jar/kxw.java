@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
-class kxw
-  implements Runnable
+public class kxw
+  implements DialogInterface.OnClickListener
 {
-  kxw(kxv paramkxv) {}
+  public kxw(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadInJoyNativeAdAppVideoView.a(this.a.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView, this.a.a.jdField_a_of_type_AndroidContentContext);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

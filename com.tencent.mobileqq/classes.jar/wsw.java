@@ -1,34 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoResDownload;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
-public class wsw
-  implements View.OnClickListener
+class wsw
+  implements Runnable
 {
-  public wsw(CameraPreviewActivity paramCameraPreviewActivity) {}
+  wsw(wsv paramwsv) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!CameraPreviewActivity.a(this.a))
-    {
-      if (this.a.b) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
-      }
-      if (!this.a.b) {
-        break label92;
-      }
-      StatisticConstants.d();
-    }
-    for (;;)
-    {
-      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
-      paramView.setClickable(false);
-      return;
-      label92:
-      StatisticConstants.b();
+    if (!VideoEnvironment.e(this.a.a.app)) {
+      ShortVideoResDownload.a(this.a.a.app);
     }
   }
 }

@@ -10,8 +10,8 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mdh;
-import mdi;
+import mem;
+import men;
 import org.json.JSONObject;
 
 public class VideoFeedsRecommendManager
@@ -23,7 +23,7 @@ public class VideoFeedsRecommendManager
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private mdi jdField_a_of_type_Mdi;
+  private men jdField_a_of_type_Men;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private boolean jdField_b_of_type_Boolean;
@@ -93,12 +93,24 @@ public class VideoFeedsRecommendManager
       this.jdField_a_of_type_Boolean = false;
       return;
     }
-    ThreadManager.post(new mdh(this), 10, null, true);
+    ThreadManager.post(new mem(this), 10, null, true);
   }
   
   public int a()
   {
     return this.jdField_a_of_type_Int;
+  }
+  
+  public VideoInfo a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.pubaccount.video.feeds.VideoFeedsRecommendManager", 2, "getRequestArticleID() mRequestVideoInfo.articleID = " + this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g);
+      }
+      return this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
+    }
+    return null;
   }
   
   public String a()
@@ -116,7 +128,7 @@ public class VideoFeedsRecommendManager
   public void a()
   {
     this.jdField_a_of_type_AndroidAppActivity = null;
-    this.jdField_a_of_type_Mdi = null;
+    this.jdField_a_of_type_Men = null;
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
   }
   
@@ -129,7 +141,7 @@ public class VideoFeedsRecommendManager
     {
       if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != paramVideoInfo)
       {
-        i = paramVideoInfo.l;
+        i = paramVideoInfo.m;
         if (i != 0) {
           break label31;
         }
@@ -146,11 +158,11 @@ public class VideoFeedsRecommendManager
         }
         this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
         i = j;
-        if ((i != 0) && (this.jdField_a_of_type_Mdi != null))
+        if ((i != 0) && (this.jdField_a_of_type_Men != null))
         {
           a(paramInt, paramLong1);
           if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Mdi.c();
+            this.jdField_a_of_type_Men.c();
           }
         }
       }
@@ -199,9 +211,9 @@ public class VideoFeedsRecommendManager
     }
   }
   
-  public void a(mdi parammdi)
+  public void a(men parammen)
   {
-    this.jdField_a_of_type_Mdi = parammdi;
+    this.jdField_a_of_type_Men = parammen;
   }
   
   public String b()

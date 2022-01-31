@@ -1,29 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager.OnTalkingChangeListener;
 
 public class ajqj
-  implements TextWatcher
+  implements Runnable
 {
-  public ajqj(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput, int paramInt) {}
+  public ajqj(TroopRobotManager paramTroopRobotManager) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.a.setSelection(this.jdField_a_of_type_Int - 1);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager$OnTalkingChangeListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager$OnTalkingChangeListener.a(this.a.jdField_a_of_type_Boolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqj
  * JD-Core Version:    0.7.0.1
  */

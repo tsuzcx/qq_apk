@@ -1,237 +1,114 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.media.MediaMetadataRetriever;
-import com.tencent.biz.qqstory.utils.BitmapUtils;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandUnit;
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
-import com.tencent.biz.troop.VideoCombineHelper.CombineTask.3;
-import com.tencent.biz.troop.VideoCombineHelper.Task;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import android.text.TextUtils;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.TimerTask;
 
 public class ovk
-  extends VideoCombineHelper.Task
+  extends TimerTask
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  List jdField_a_of_type_JavaUtilList;
-  String b;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public ovk(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.TaskListener paramTaskListener, String paramString1, List paramList, String paramString2, String paramString3)
+  public ovk(TribeVideoPlugin paramTribeVideoPlugin, String paramString)
   {
-    super(paramVideoCombineHelper, paramTaskListener, paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new ovv(paramVideoCombineHelper, paramTaskListener, paramString1);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTribeVideoPlugin);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public File a(File paramFile, String paramString, VideoCombineHelper.Callback paramCallback)
+  public void run()
   {
-    Object localObject = new MediaMetadataRetriever();
-    ((MediaMetadataRetriever)localObject).setDataSource(paramFile.getAbsolutePath());
-    String str1 = ((MediaMetadataRetriever)localObject).extractMetadata(18);
-    localObject = ((MediaMetadataRetriever)localObject).extractMetadata(19);
-    String str2 = paramFile.getParent() + File.separator + "wording.png";
-    String str3 = paramFile.getParent() + File.separator + "vmw.mp4";
-    try
-    {
-      int i = Integer.parseInt(str1);
-      int j = Integer.parseInt((String)localObject);
-      long l = System.currentTimeMillis();
-      a(i, j, paramString, str2);
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.trace_video_combine", 2, "createWatermarkPng time = " + (System.currentTimeMillis() - l));
-      }
-      a().c.add(new File(str2));
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.a(str2, paramFile.getAbsolutePath(), str3, i, j, new ovr(this, paramCallback, str3));
-    }
-    catch (Exception paramFile)
-    {
-      for (;;)
+    Object localObject1 = (TribeVideoPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject2;
+    if ((localObject1 == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      if (QLog.isColorLevel())
       {
-        QLog.e(".troop.VideoCombineHelper", 2, "combineWording failed!", paramFile);
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    String str;
-    VideoCombineHelper.CombineParams localCombineParams;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      str = a() + File.separator + "v.ts";
-      localCombineParams = a();
-      if (localCombineParams.b) {
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this);
-      }
-    }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_JavaUtilList, str, new ovl(this, localCombineParams));
-  }
-  
-  public void a(List paramList, String paramString, VideoCombineHelper.Callback paramCallback)
-  {
-    if ((paramList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      paramCallback.a(null, false, "videoFiles empty!");
-      return;
-    }
-    if (paramList.size() == 1)
-    {
-      paramCallback.a((String)this.jdField_a_of_type_JavaUtilList.get(0), true, "combineVideos Success size = 1");
-      return;
-    }
-    try
-    {
-      long l = System.currentTimeMillis();
-      paramList = new File(paramString);
-      a(this.jdField_a_of_type_JavaUtilList, paramList.getAbsolutePath(), new ovp(this, l, paramCallback, paramList));
-      return;
-    }
-    catch (Exception paramList)
-    {
-      QLog.e(".troop.VideoCombineHelper", 2, "combineVideos failed", paramList);
-    }
-  }
-  
-  public void a(List paramList, String paramString, ovu paramovu)
-  {
-    Object localObject1 = new File(paramString);
-    if ((((File)localObject1).exists()) && (((File)localObject1).length() > 0L))
-    {
-      paramovu.b(true);
-      return;
-    }
-    localObject1 = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_Long = System.currentTimeMillis();
-    StringBuffer localStringBuffer = new StringBuffer("concat:");
-    int i = 0;
-    if (i < paramList.size())
-    {
-      localObject2 = (String)paramList.get(i);
-      Object localObject3 = new File((String)localObject2);
-      Object localObject4 = ((File)localObject3).getName().split("\\.");
-      localObject3 = ((File)localObject3).getAbsoluteFile().getParent() + File.separator + localObject4[0] + ".ts";
-      localStringBuffer.append((String)localObject3);
-      if (i != paramList.size() - 1) {
-        localStringBuffer.append("|");
-      }
-      localObject4 = new File((String)localObject3);
-      if ((((File)localObject4).exists()) && (((File)localObject4).length() > 0L)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (!((File)localObject4).getParentFile().exists()) {
-          ((File)localObject4).getParentFile().mkdirs();
+        localObject2 = new StringBuilder().append("plugin == null ");
+        if (localObject1 != null) {
+          break label82;
         }
-        localObject4 = new FFmpegCommandUnit();
-        ((FFmpegCommandUnit)localObject4).jdField_a_of_type_Int = 5;
-        ((FFmpegCommandUnit)localObject4).jdField_a_of_type_JavaUtilArrayList = new VideoCombineHelper.CombineTask.3(this, (String)localObject2, (String)localObject3);
-        ((FFmpegCommandUnit)localObject4).jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ovq(this, paramovu);
-        ((ArrayList)localObject1).add(localObject4);
+        bool = true;
+        QLog.d("TribeVideoPlugin", 2, bool + " playerID = " + this.jdField_a_of_type_JavaLangString);
       }
     }
-    paramList = new File(paramString);
-    paramString = paramList.getName().split("\\.");
-    paramList = paramList.getParent() + File.separator + paramString[0] + ".ts";
-    paramString = new FFmpegCommandUnit();
-    Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add("-y");
-    ((ArrayList)localObject2).add("-i");
-    ((ArrayList)localObject2).add(localStringBuffer.toString());
-    ((ArrayList)localObject2).add("-c");
-    ((ArrayList)localObject2).add("copy");
-    ((ArrayList)localObject2).add(paramList);
-    paramString.jdField_a_of_type_ArrayOfJavaLangString = ((String[])((ArrayList)localObject2).toArray(new String[0]));
-    paramString.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = paramovu;
-    ((ArrayList)localObject1).add(paramString);
-    if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.a()) {
-      try
-      {
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.b((ArrayList)localObject1);
-        return;
-      }
-      catch (FFmpegCommandAlreadyRunningException paramList)
-      {
-        paramList.printStackTrace();
-        return;
-      }
-      catch (IOException paramList)
-      {
-        paramList.printStackTrace();
-        return;
-      }
-    }
-    try
+    label82:
+    ovo localovo;
+    label124:
+    Object localObject3;
+    do
     {
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.a((ArrayList)localObject1);
+      do
+      {
+        return;
+        bool = false;
+        break;
+        localovo = (ovo)TribeVideoPlugin.a((TribeVideoPlugin)localObject1).get(this.jdField_a_of_type_JavaLangString);
+        if (localovo != null) {
+          break label124;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("TribeVideoPlugin", 2, "videoWrapper == null");
       return;
-    }
-    catch (FFmpegCommandAlreadyRunningException paramList)
+      localObject2 = ovo.a((ovo)TribeVideoPlugin.a((TribeVideoPlugin)localObject1).get(this.jdField_a_of_type_JavaLangString));
+      localObject3 = ovo.a((ovo)TribeVideoPlugin.a((TribeVideoPlugin)localObject1).get(this.jdField_a_of_type_JavaLangString));
+      if ((localObject2 != null) && (localObject3 != null)) {
+        break label247;
+      }
+    } while (!QLog.isColorLevel());
+    localObject1 = new StringBuilder().append("player == null ");
+    if (localObject2 == null)
     {
-      paramList.printStackTrace();
-      return;
-    }
-    catch (IOException paramList)
-    {
-      paramList.printStackTrace();
-    }
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, String paramString1, String paramString2)
-  {
-    boolean bool = false;
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      Paint localPaint1 = new Paint();
-      localPaint1.setColor(-1);
-      localPaint1.setTextSize(30.0F);
-      localPaint1.setTextAlign(Paint.Align.CENTER);
-      Rect localRect = new Rect();
-      localPaint1.getTextBounds(paramString1, 0, paramString1.length(), localRect);
-      Paint localPaint2 = new Paint();
-      localPaint2.setColor(-16777216);
-      RectF localRectF = new RectF();
-      localRectF.top = (paramInt2 - localRect.height() - 15 - 15);
-      localRectF.left = ((paramInt1 - localRect.width()) / 2 - 15);
-      localRectF.bottom = (localRectF.top + localRect.height() + 15);
-      localRectF.right = (localRectF.left + localRect.width() + 30);
-      localCanvas.drawRoundRect(localRectF, 8.0F, 8.0F, localPaint2);
-      localCanvas.drawText(paramString1, paramInt1 / 2, paramInt2 - 15 - localRect.height() / 2, localPaint1);
-      BitmapUtils.a(localBitmap, Bitmap.CompressFormat.PNG, 100, paramString2);
-      BitmapUtils.a(localBitmap);
       bool = true;
+      localObject1 = ((StringBuilder)localObject1).append(bool).append(" layoutHolder == null ");
+      if (localObject3 != null) {
+        break label242;
+      }
     }
-    catch (Throwable paramString1)
+    label242:
+    for (boolean bool = true;; bool = false)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(".troop.VideoCombineHelper", 2, "createWatermarkByWording", paramString1);
+      QLog.d("TribeVideoPlugin", 2, bool);
+      return;
+      bool = false;
+      break;
     }
-    return bool;
-    return false;
+    label247:
+    long l1 = ((TVK_IMediaPlayer)localObject2).getDuration();
+    long l2 = ((TVK_IMediaPlayer)localObject2).getCurrentPostion();
+    if (ovm.a((ovm)localObject3) == 2)
+    {
+      SeekBar localSeekBar = ovm.a((ovm)localObject3);
+      TextView localTextView1 = ovm.a((ovm)localObject3);
+      TextView localTextView2 = ovm.b((ovm)localObject3);
+      localObject3 = ovm.c((ovm)localObject3);
+      VideoFeedsHelper.a(localTextView1, l1 - l2);
+      VideoFeedsHelper.a(localTextView2, l2);
+      VideoFeedsHelper.a((TextView)localObject3, l1);
+      localSeekBar.setProgress((int)((float)l2 * 100.0F / (float)l1 + 0.5D));
+    }
+    for (;;)
+    {
+      if ((l2 <= 100L) && (!ovo.e(localovo)) && (((TVK_IMediaPlayer)localObject2).isPlaying()))
+      {
+        TribeVideoPlugin.a((TribeVideoPlugin)localObject1, this.jdField_a_of_type_JavaLangString, 1);
+        ovo.e(localovo, true);
+      }
+      if ((ovo.b(localovo) - l2 > 100L) || (!ovo.e(localovo)) || (!((TVK_IMediaPlayer)localObject2).isPlaying())) {
+        break;
+      }
+      TribeVideoPlugin.a((TribeVideoPlugin)localObject1, this.jdField_a_of_type_JavaLangString, 2);
+      ovo.e(localovo, false);
+      return;
+      if (ovm.a((ovm)localObject3) == 1) {
+        ovm.b((ovm)localObject3).setProgress((int)((float)l2 * 100.0F / (float)l1 + 0.5D));
+      }
+    }
   }
 }
 

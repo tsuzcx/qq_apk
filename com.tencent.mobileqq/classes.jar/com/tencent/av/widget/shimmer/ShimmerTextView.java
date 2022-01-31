@@ -7,8 +7,8 @@ import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import kip;
-import kiq;
+import kia;
+import kib;
 
 public class ShimmerTextView
   extends TextView
@@ -23,7 +23,7 @@ public class ShimmerTextView
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper = new ShimmerViewHelper(this, getPaint(), null);
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new kip(this));
+    ViewCompat.setAccessibilityDelegate(this, new kia(this));
   }
   
   public ShimmerTextView(Context paramContext, AttributeSet paramAttributeSet)
@@ -32,7 +32,7 @@ public class ShimmerTextView
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper = new ShimmerViewHelper(this, getPaint(), paramAttributeSet);
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new kip(this));
+    ViewCompat.setAccessibilityDelegate(this, new kia(this));
   }
   
   public ShimmerTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -41,7 +41,7 @@ public class ShimmerTextView
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper = new ShimmerViewHelper(this, getPaint(), paramAttributeSet);
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new kip(this));
+    ViewCompat.setAccessibilityDelegate(this, new kia(this));
   }
   
   public boolean a()
@@ -69,7 +69,7 @@ public class ShimmerTextView
     }
     super.onDraw(paramCanvas);
     if (a()) {
-      postDelayed(new kiq(this), 40L);
+      postDelayed(new kib(this), 40L);
     }
   }
   

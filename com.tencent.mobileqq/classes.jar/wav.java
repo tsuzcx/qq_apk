@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import com.tencent.biz.anonymous.QQAnonymousDialog;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class wav
   implements Runnable
 {
-  public wav(ZhituManager paramZhituManager, String paramString1, int paramInt1, ZhituResponse paramZhituResponse, ZhituImgResponse paramZhituImgResponse, int paramInt2, String paramString2) {}
+  public wav(TroopChatPie paramTroopChatPie) {}
   
   public void run()
   {
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituImgResponse, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
   }
 }
 

@@ -1,36 +1,39 @@
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.shortvideo.util.SimpleAudioPlayer;
+import com.tencent.sveffects.Logger;
+import com.tencent.sveffects.SdkContext;
 
 public class aiea
-  implements EIPClientConnectListener
+  extends Thread
 {
-  public aiea(InnerDns paramInnerDns) {}
+  private aiea(SimpleAudioPlayer paramSimpleAudioPlayer) {}
   
-  public void connectFailed()
+  public void run()
   {
-    InnerDns.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "connectFailed");
+    if (SdkContext.a().a().a()) {
+      SdkContext.a().a().d("SimpleAudioPlayer", "playSimpleAudio " + SimpleAudioPlayer.a(this.a));
     }
-  }
-  
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      InnerDns.a(this.a, paramEIPCConnection.procName);
+    try
+    {
+      if (SimpleAudioPlayer.a(this.a) != SimpleAudioPlayer.a) {
+        SimpleAudioPlayer.a(this.a).setAudioStreamType(SimpleAudioPlayer.a(this.a));
+      }
+      SimpleAudioPlayer.a(this.a).prepare();
+      SimpleAudioPlayer.a(this.a).start();
+      if (SimpleAudioPlayer.b(this.a) > 0) {
+        SimpleAudioPlayer.a(this.a).seekTo(SimpleAudioPlayer.b(this.a));
+      }
+      return;
     }
-    InnerDns.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "connectSuccess");
+    catch (Exception localException)
+    {
+      SdkContext.a().a().a("SimpleAudioPlayer", "playSimpleAudio " + SimpleAudioPlayer.a(this.a) + "error: " + localException.toString());
     }
-    InnerDns.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiea
  * JD-Core Version:    0.7.0.1
  */

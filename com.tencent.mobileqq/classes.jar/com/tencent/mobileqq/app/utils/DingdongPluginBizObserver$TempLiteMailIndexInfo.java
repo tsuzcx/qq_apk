@@ -3,12 +3,12 @@ package com.tencent.mobileqq.app.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ztr;
+import zwx;
 
 public class DingdongPluginBizObserver$TempLiteMailIndexInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ztr();
+  public static final Parcelable.Creator CREATOR = new zwx();
   public int a;
   public long a;
   public String a;

@@ -1,26 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.qphone.base.util.QLog;
 
 class aajr
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  aajr(aajq paramaajq, QQCustomDialog paramQQCustomDialog) {}
+  aajr(aajq paramaajq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_Aajq.a));
-    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin, 提前显示按钮");
+    this.a.a.a(0);
   }
 }
 

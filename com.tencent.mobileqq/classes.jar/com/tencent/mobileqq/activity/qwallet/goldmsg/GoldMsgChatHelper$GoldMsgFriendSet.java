@@ -8,8 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xbk;
-import xbl;
+import xep;
+import xeq;
 
 public class GoldMsgChatHelper$GoldMsgFriendSet
 {
@@ -42,7 +42,7 @@ public class GoldMsgChatHelper$GoldMsgFriendSet
   
   private static void a()
   {
-    ThreadManager.post(new xbk(), 5, null, false);
+    ThreadManager.post(new xep(), 5, null, false);
   }
   
   public static void a(String paramString, boolean paramBoolean, long paramLong)
@@ -107,7 +107,7 @@ public class GoldMsgChatHelper$GoldMsgFriendSet
       return a(paramString);
     }
     jdField_a_of_type_Boolean = true;
-    ThreadManager.post(new xbl(paramString), 1, null, false);
+    ThreadManager.post(new xeq(paramString), 1, null, false);
     return null;
   }
   

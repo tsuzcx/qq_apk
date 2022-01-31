@@ -1,24 +1,16 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
-
-public class amxd
-  implements TextWatcher
+class amxd
+  implements Runnable
 {
-  public amxd(FacePoiSearchUI paramFacePoiSearchUI) {}
+  amxd(amxc paramamxc, amxe paramamxe) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    FacePoiSearchUI.a(this.a);
+    amxc.a(this.jdField_a_of_type_Amxc, this.jdField_a_of_type_Amxe);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxd
  * JD-Core Version:    0.7.0.1
  */

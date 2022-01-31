@@ -1,74 +1,36 @@
-import com.rookery.asyncHttpClient.JsonHttpResponseHandler;
-import com.rookery.translate.google.GoogleTranslator;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import com.rookery.translate.type.TranslateWithTimeCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.av.AVLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
 
 public class jcw
-  extends JsonHttpResponseHandler
+  implements MediaPlayer.OnCompletionListener
 {
-  public jcw(GoogleTranslator paramGoogleTranslator, TranslateWithTimeCallback paramTranslateWithTimeCallback, Long paramLong) {}
+  public jcw(VideoController paramVideoController) {}
   
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("GoogleTranslator", 2, "[ERROR][SHOULD NOT GO HERE][onSuccess] statusCode:" + paramInt);
-    }
-  }
-  
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
-  {
-    paramArrayOfHeader = new ArrayList();
-    ArrayList localArrayList = new ArrayList();
-    try
+    AVLog.d(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onCloseDoubleVideoMeeting");
+    if (this.a.a().H)
     {
-      paramJSONObject = paramJSONObject.getJSONObject("data");
-      if (paramJSONObject != null)
-      {
-        paramJSONObject = paramJSONObject.getJSONArray("translations");
-        if (paramJSONObject != null)
-        {
-          paramInt = 0;
-          while (paramInt < paramJSONObject.length())
-          {
-            String str1 = ((JSONObject)paramJSONObject.get(paramInt)).getString("translatedText");
-            String str2 = ((JSONObject)paramJSONObject.get(paramInt)).getString("detectedSourceLanguage");
-            if ((paramArrayOfHeader != null) && (localArrayList != null))
-            {
-              paramArrayOfHeader.add(Language.fromString(str2));
-              localArrayList.add(str1);
-            }
-            paramInt += 1;
-          }
-        }
+      if (paramMediaPlayer != null) {
+        paramMediaPlayer.release();
       }
+      long l = this.a.a().f;
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
+      this.a.a(3, l, 85);
+      this.a.a().H = false;
+      this.a.a().G = false;
       return;
     }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-      this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(paramArrayOfHeader, localArrayList, this.jdField_a_of_type_JavaLangLong);
-    }
-  }
-  
-  public void a(Throwable paramThrowable, String paramString)
-  {
-    this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
-    if (QLog.isColorLevel()) {
-      QLog.e("GoogleTranslator", 2, " [onFailure][GoogleTranslateClient] Throwable:" + paramThrowable);
-    }
+    AVLog.e(VideoController.jdField_a_of_type_JavaLangString, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     jcw
  * JD-Core Version:    0.7.0.1
  */

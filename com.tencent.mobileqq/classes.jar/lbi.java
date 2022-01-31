@@ -1,37 +1,27 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.os.Bundle;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 
 public class lbi
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  public lbi(ReadInJoyNaviController paramReadInJoyNaviController) {}
+  public lbi(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    Object localObject = ReadInJoyNaviController.a(this.a).a();
-    ReadInJoyNaviController.a(this.a, 1000L);
-    if ((localObject != null) && (ReadInJoyNaviController.a(this.a)))
+    if (!WebIPCOperator.a().a())
     {
-      ReadInJoyNaviController.a(this.a, false);
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -((View)localObject).getHeight(), this.a.e);
-      localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new lbj(this, (View)localObject));
-      ((View)localObject).startAnimation(localTranslateAnimation);
-      if (ReadInJoyNaviController.a(this.a) != null)
-      {
-        localObject = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
-        ((Animation)localObject).setDuration(200L);
-        ((Animation)localObject).setFillEnabled(true);
-        ((Animation)localObject).setFillAfter(true);
-        ReadInJoyNaviController.a(this.a).startAnimation((Animation)localObject);
-      }
-      ReadInJoyNaviController.a(0, ReadInJoyNaviController.a(0, null));
+      WebIPCOperator.a().a().doBindService(BaseApplicationImpl.getApplication());
+      WebIPCOperator.a().a(new lbj(this));
+      return false;
     }
+    Bundle localBundle = DataFactory.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
+    WebIPCOperator.a().a(localBundle);
+    return false;
   }
 }
 

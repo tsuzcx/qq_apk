@@ -2,7 +2,7 @@ package com.tencent.mobileqq.apollo.game;
 
 public abstract interface ApolloGameConst$Security
 {
-  public static final String[] a = { "busId", "gameId" };
+  public static final String[] a = { "busId", "gameId", "gameid" };
 }
 
 

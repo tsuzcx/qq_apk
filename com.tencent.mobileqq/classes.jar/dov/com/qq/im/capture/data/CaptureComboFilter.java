@@ -1,9 +1,9 @@
 package dov.com.qq.im.capture.data;
 
-import amvc;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
+import anlh;
 import com.tencent.av.AVNetEngine;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
@@ -151,7 +151,7 @@ public class CaptureComboFilter
       for (int i = 0;; i = localArrayList.size())
       {
         QLog.d("QCombo", 2, i);
-        new amvc(bool, localArrayList, paramBoolean).a(new Void[0]);
+        new anlh(bool, localArrayList, paramBoolean).a(new Void[0]);
         return;
         localArrayList.add(localFilterDesc);
         break;

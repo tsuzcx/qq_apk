@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.portal.PortalManager;
 
-class sgp
-  implements DialogInterface.OnClickListener
+public class sgp
+  implements View.OnClickListener
 {
-  sgp(sgn paramsgn) {}
+  public sgp(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.c(this.a.a);
-    DevlockQuickLoginActivity.c(this.a.a, 0, 2131034135);
+    Conversation.a(this.a).removeView(Conversation.a(this.a));
+    paramView = (PortalManager)this.a.a.getManager(78);
+    if (paramView != null) {
+      paramView.a(this.a.a(), false);
+    }
+    Conversation.a(this.a, null);
   }
 }
 

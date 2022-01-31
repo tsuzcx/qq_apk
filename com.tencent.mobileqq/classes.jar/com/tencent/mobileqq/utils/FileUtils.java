@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import ajny;
+import akcf;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -35,7 +35,7 @@ public class FileUtils
   static
   {
     jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangRunnable = new ajny();
+    jdField_a_of_type_JavaLangRunnable = new akcf();
     jdField_a_of_type_JavaLangString = "unknown_";
   }
   
@@ -1815,10 +1815,10 @@ public class FileUtils
     //   58: aload_0
     //   59: invokespecial 160	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   62: astore 8
-    //   64: new 554	java/util/zip/ZipInputStream
+    //   64: new 554	com/tencent/commonsdk/zip/QZipInputStream
     //   67: dup
     //   68: aload 8
-    //   70: invokespecial 555	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   70: invokespecial 555	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
     //   73: astore 9
     //   75: new 36	java/io/File
     //   78: dup
@@ -1835,7 +1835,7 @@ public class FileUtils
     //   101: aconst_null
     //   102: astore 12
     //   104: aload 9
-    //   106: invokevirtual 559	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   106: invokevirtual 559	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
     //   109: astore 11
     //   111: aload 11
     //   113: ifnonnull +88 -> 201
@@ -1859,7 +1859,7 @@ public class FileUtils
     //   152: aload 9
     //   154: ifnull +8 -> 162
     //   157: aload 9
-    //   159: invokevirtual 582	java/util/zip/ZipInputStream:close	()V
+    //   159: invokevirtual 582	com/tencent/commonsdk/zip/QZipInputStream:close	()V
     //   162: aload 8
     //   164: ifnull +8 -> 172
     //   167: aload 8
@@ -1962,7 +1962,7 @@ public class FileUtils
     //   378: iload_3
     //   379: ifne +8 -> 387
     //   382: aload 9
-    //   384: invokevirtual 582	java/util/zip/ZipInputStream:close	()V
+    //   384: invokevirtual 582	com/tencent/commonsdk/zip/QZipInputStream:close	()V
     //   387: aload 10
     //   389: ifnull +8 -> 397
     //   392: aload 10
@@ -2045,7 +2045,7 @@ public class FileUtils
     //   554: iconst_0
     //   555: aload 15
     //   557: arraylength
-    //   558: invokevirtual 614	java/util/zip/ZipInputStream:read	([BII)I
+    //   558: invokevirtual 614	com/tencent/commonsdk/zip/QZipInputStream:read	([BII)I
     //   561: istore 7
     //   563: iload 7
     //   565: iconst_m1
@@ -2278,7 +2278,7 @@ public class FileUtils
     //   62	554	8	localObject1	Object
     //   821	1	8	localIOException1	IOException
     //   836	109	8	localObject2	Object
-    //   73	478	9	localZipInputStream	java.util.zip.ZipInputStream
+    //   73	478	9	localQZipInputStream	com.tencent.commonsdk.zip.QZipInputStream
     //   806	1	9	localIOException2	IOException
     //   811	1	9	localIOException3	IOException
     //   816	1	9	localIOException4	IOException
@@ -2830,10 +2830,10 @@ public class FileUtils
     //   114: invokestatic 728	com/tencent/mobileqq/utils/FileUtils:d	()Z
     //   117: ifne +18 -> 135
     //   120: invokestatic 734	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   123: new 736	ajnz
+    //   123: new 736	akcg
     //   126: dup
     //   127: aload_0
-    //   128: invokespecial 739	ajnz:<init>	(Landroid/content/Context;)V
+    //   128: invokespecial 739	akcg:<init>	(Landroid/content/Context;)V
     //   131: invokevirtual 745	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   134: pop
     //   135: iload_2
@@ -2864,10 +2864,10 @@ public class FileUtils
     //   183: invokestatic 728	com/tencent/mobileqq/utils/FileUtils:d	()Z
     //   186: ifne +18 -> 204
     //   189: invokestatic 734	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   192: new 736	ajnz
+    //   192: new 736	akcg
     //   195: dup
     //   196: aload_0
-    //   197: invokespecial 739	ajnz:<init>	(Landroid/content/Context;)V
+    //   197: invokespecial 739	akcg:<init>	(Landroid/content/Context;)V
     //   200: invokevirtual 745	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   203: pop
     //   204: iload_1
@@ -2892,10 +2892,10 @@ public class FileUtils
     //   244: invokestatic 728	com/tencent/mobileqq/utils/FileUtils:d	()Z
     //   247: ifne +18 -> 265
     //   250: invokestatic 734	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   253: new 736	ajnz
+    //   253: new 736	akcg
     //   256: dup
     //   257: aload_0
-    //   258: invokespecial 739	ajnz:<init>	(Landroid/content/Context;)V
+    //   258: invokespecial 739	akcg:<init>	(Landroid/content/Context;)V
     //   261: invokevirtual 745	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   264: pop
     //   265: iload_1
@@ -5984,15 +5984,17 @@ public class FileUtils
   
   public static boolean b(String paramString1, String paramString2)
   {
-    boolean bool = false;
-    paramString1 = new File(paramString1);
-    if (paramString1.exists()) {}
+    if ((paramString1 == null) || (paramString2 == null)) {}
+    do
+    {
+      return false;
+      paramString1 = new File(paramString1);
+    } while (!paramString1.exists());
     try
     {
       a(paramString1, a(paramString2));
       paramString1.delete();
-      bool = true;
-      return bool;
+      return true;
     }
     catch (IOException paramString1) {}
     return false;

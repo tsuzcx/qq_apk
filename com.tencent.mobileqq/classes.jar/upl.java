@@ -1,29 +1,18 @@
-import android.text.TextUtils;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-class upl
+public class upl
   implements Runnable
 {
-  upl(upk paramupk, String paramString) {}
+  public upl(CommonRecordSoundPanel paramCommonRecordSoundPanel, String paramString) {}
   
   public void run()
   {
-    uqb localuqb;
-    if (upk.a(this.jdField_a_of_type_Upk) != null)
-    {
-      localuqb = (uqb)upk.a(this.jdField_a_of_type_Upk).get();
-      if (localuqb != null) {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label66;
-        }
-      }
-    }
-    label66:
-    for (boolean bool = true;; bool = false)
-    {
-      localuqb.a(bool, upk.a(this.jdField_a_of_type_Upk), upk.b(this.jdField_a_of_type_Upk), this.jdField_a_of_type_JavaLangString);
-      return;
-    }
+    QQToast.a(CommonRecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel).getApp(), 2131433786, 1).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.c(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.b();
   }
 }
 

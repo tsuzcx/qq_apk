@@ -1,52 +1,77 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ApolloPanelManager.PanelClickCallback;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti.AVCustomData;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager.EnterRoomCallback;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager.RoomInfoListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class yvl
-  implements ApolloPanelManager.PanelClickCallback
+  implements AVRoomMulti.EventListener
 {
-  public yvl(ApolloPanel paramApolloPanel) {}
+  public yvl(AVManager paramAVManager) {}
   
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public void onCameraSettingNotify(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onDisableAudioIssue() {}
+  
+  public void onEndpointsUpdateInfo(int paramInt, String[] paramArrayOfString)
   {
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
-    if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
-    {
-      if ((!paramBoolean2) || (paramInt >= 5)) {
-        break label110;
-      }
-      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (!paramBoolean1) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      ThreadManager.getUIHandler().removeCallbacks(ApolloPanel.a(this.a));
+    QLog.i("AVManager", 1, String.format("onEndpointsUpdateInfo|eventid=%d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$RoomInfoListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$RoomInfoListener.a(paramInt, paramArrayOfString);
     }
-    label94:
-    label110:
-    do
-    {
-      do
-      {
-        ThreadManager.getUIHandler().postDelayed(ApolloPanel.a(this.a), 5000L);
-        do
-        {
-          return;
-        } while (paramInt <= 0);
-        this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        return;
-        this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      } while ((paramInt != 0) || (!paramBoolean1));
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null));
-    ApolloPanel.a(this.a, this.a.jdField_b_of_type_AndroidWidgetLinearLayout, 51, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getString(2131438213), 2);
   }
+  
+  public void onEnterRoomComplete(int paramInt, String paramString)
+  {
+    QLog.i("AVManager", 1, "mRoomEventListener.onEnterRoomComplete| result = " + paramInt + paramString);
+    if (paramInt != 0) {
+      this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$EnterRoomCallback != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$EnterRoomCallback.a(paramInt, paramString);
+    }
+  }
+  
+  public void onExitRoomComplete()
+  {
+    QLog.i("AVManager", 1, "mRoomEventListener.onExitRoomComplete");
+    this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$RoomInfoListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$RoomInfoListener.a();
+    }
+  }
+  
+  public void onHwStateChangeNotify(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  public void onPrivilegeDiffNotify(int paramInt) {}
+  
+  public void onRecvCustomData(AVRoomMulti.AVCustomData paramAVCustomData, String paramString) {}
+  
+  public void onRoomDisconnect(int paramInt, String paramString)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$RoomInfoListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$RoomInfoListener.a(paramInt, paramString);
+    }
+  }
+  
+  public void onRoomEvent(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void onSemiAutoRecvCameraVideo(String[] paramArrayOfString)
+  {
+    QLog.i("AVManager", 1, String.format("onSemiAutoRecvCameraVideo", new Object[0]));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$RoomInfoListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$RoomInfoListener.a(paramArrayOfString);
+    }
+  }
+  
+  public void onSemiAutoRecvMediaFileVideo(String[] paramArrayOfString) {}
+  
+  public void onSemiAutoRecvScreenVideo(String[] paramArrayOfString) {}
+  
+  public void onSwitchRoomComplete(int paramInt, String paramString) {}
 }
 
 

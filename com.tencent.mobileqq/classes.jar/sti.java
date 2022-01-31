@@ -1,15 +1,16 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class sti
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public sti(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public sti(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQToast.a(this.a, this.a.getResources().getString(2131437741), 0).b(this.a.getTitleBarHeight());
+    paramDialogInterface.dismiss();
+    this.a.a("0X80081E6", 1);
   }
 }
 

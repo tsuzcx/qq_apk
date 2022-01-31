@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import mqq.app.MobileQQ;
 
 public class aatg
   implements Runnable
 {
-  public aatg(ARMapActivity paramARMapActivity, long paramLong) {}
+  public aatg(ArkAppCGI paramArkAppCGI, QQAppInterface paramQQAppInterface, aati paramaati, HttpNetReq paramHttpNetReq) {}
   
   public void run()
   {
-    ARMapEngine.removePOITask(this.jdField_a_of_type_Long);
+    if ((ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI) == null) || (!NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
+    {
+      ArkAppCenter.b("ArkApp.ArkAppCGI", "runTask_retry, network not available");
+      ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI, this.jdField_a_of_type_Aati, false, null);
+      return;
+    }
+    ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 

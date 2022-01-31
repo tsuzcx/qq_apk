@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 public class ymo
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ymo(ApolloWebGameActivity paramApolloWebGameActivity) {}
+  public ymo(ApolloSurfaceView paramApolloSurfaceView, ApolloRender paramApolloRender) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ApolloWebGameActivity.a(this.a).dismiss();
-    ApolloWebGameActivity.b(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.getSavaWrapper().a(0.0D);
   }
 }
 

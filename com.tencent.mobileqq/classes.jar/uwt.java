@@ -1,41 +1,17 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 
-public class uwt
-  extends ClickableSpan
+class uwt
+  implements Runnable
 {
-  private WeakReference a;
-  private WeakReference b;
+  uwt(uws paramuws) {}
   
-  public uwt(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void run()
   {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (QQAppInterface)this.a.get();
-    if (((this.b.get() instanceof Activity)) && (paramView != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GrayTipsItemBuilder", 2, "handleHotChatToSeeTip span click ");
-      }
-      HotChatManager.a(null, false);
+    if ((FileUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath)) || (FileUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strMiddleThumPath))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.b();
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

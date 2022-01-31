@@ -10,12 +10,12 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.model.PhoneContactManager;
-import kgn;
+import kfy;
 
 public class InviteBaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new kgn();
+  public static final Parcelable.Creator CREATOR = new kfy();
   public int a;
   public String a;
   public int b;

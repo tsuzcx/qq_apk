@@ -1,36 +1,18 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
 
-class aalo
+public class aalo
+  implements Runnable
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public aalo(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
   
-  public void a()
+  public void run()
   {
-    this.e = null;
-    this.f = null;
-    this.g = null;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int >= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d));
-  }
-  
-  public boolean b()
-  {
-    return (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g));
+    ARCardCameraRecordFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalo
  * JD-Core Version:    0.7.0.1
  */

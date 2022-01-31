@@ -1,14 +1,14 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeSmallSocial;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypePgcGridSocial;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class lui
   implements View.OnClickListener
 {
-  public lui(FeedItemCellTypeSmallSocial paramFeedItemCellTypeSmallSocial) {}
+  public lui(FeedItemCellTypePgcGridSocial paramFeedItemCellTypePgcGridSocial) {}
   
   public void onClick(View paramView)
   {

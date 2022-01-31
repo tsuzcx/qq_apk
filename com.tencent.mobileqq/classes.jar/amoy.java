@@ -1,21 +1,17 @@
-import android.app.Activity;
-import cooperation.plugin.IPluginManager.OnOpenPluginListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public final class amoy
-  implements IPluginManager.OnOpenPluginListener
+  implements DialogInterface.OnClickListener
 {
-  public amoy(Activity paramActivity) {}
-  
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!paramBoolean) {
-      this.a.finish();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amoy
  * JD-Core Version:    0.7.0.1
  */

@@ -18,9 +18,9 @@ public class ShotView
   public ShotView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(2130970735, this);
-    ((TextView)findViewById(2131363360)).setText("拍摄");
-    ((ImageView)findViewById(2131371737)).setImageResource(2130843452);
+    LayoutInflater.from(paramContext).inflate(2130970783, this);
+    ((TextView)findViewById(2131363378)).setText("拍摄");
+    ((ImageView)findViewById(2131371907)).setImageResource(2130843573);
   }
 }
 

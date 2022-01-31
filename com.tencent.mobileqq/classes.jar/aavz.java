@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.POIInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetLocalAppPath;
 
-public final class aavz
-  implements Parcelable.Creator
+class aavz
+  implements Runnable
 {
-  public POIInfo a(Parcel paramParcel)
-  {
-    return new POIInfo(paramParcel);
-  }
+  aavz(aavy paramaavy, String paramString) {}
   
-  public POIInfo[] a(int paramInt)
+  public void run()
   {
-    return new POIInfo[paramInt];
+    this.jdField_a_of_type_Aavy.a.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

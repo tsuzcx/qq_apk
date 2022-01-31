@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import tnw;
+import tqw;
 
 public class RiskInfoItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new tnw();
+  public static final Parcelable.Creator CREATOR = new tqw();
   public int a;
   public String a;
   public int b;

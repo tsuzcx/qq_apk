@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -21,6 +22,7 @@ import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.biz.qqstory.widget.InteractContainerLayout;
 import com.tencent.biz.qqstory.widget.PollContainerLayout;
 import com.tencent.image.URLDrawable;
@@ -35,7 +37,7 @@ import org.json.JSONObject;
 
 public class QQStoryAutoPlayView
   extends FrameLayout
-  implements View.OnClickListener
+  implements View.OnClickListener, View.OnLongClickListener
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = -1L;
@@ -74,6 +76,7 @@ public class QQStoryAutoPlayView
   private void j()
   {
     super.setOnClickListener(this);
+    super.setOnLongClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout = new PollContainerLayout(getContext());
     this.jdField_a_of_type_ComTencentBizQqstoryWidgetPollContainerLayout.a(true);
@@ -215,11 +218,18 @@ public class QQStoryAutoPlayView
         }
         str1 = "2";
         localJSONObject.put("type", str1);
+        if (localStoryVideoItem.mSourceType == -1) {
+          continue;
+        }
+        bool = true;
+        AssertUtils.a(bool, "storyVideoItem.mSourceType is illegal");
+        localJSONObject.put("video_origin", localStoryVideoItem.mSourceType);
         str1 = localJSONObject.toString();
       }
       catch (Exception localException)
       {
         String str1;
+        boolean bool;
         String str2 = str3;
         continue;
       }
@@ -233,6 +243,8 @@ public class QQStoryAutoPlayView
       i = 0;
       break;
       str1 = "1";
+      continue;
+      bool = false;
     }
   }
   
@@ -450,9 +462,18 @@ public class QQStoryAutoPlayView
     super.onFinishInflate();
   }
   
+  public boolean onLongClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener.b(this, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_Int);
+    }
+    return true;
+  }
+  
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return StoryDepends.QQStoryAutoPlayView.a(this, paramMotionEvent);
+    StoryDepends.QQStoryAutoPlayView.a(this, paramMotionEvent);
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setCoverUrl(String paramString)

@@ -1,20 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.mobileqq.vip.DownloadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 public class xce
-  extends AbsPreDownloadTask
+  implements View.OnClickListener
 {
-  public xce(PreloadComDownloader paramPreloadComDownloader, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, Bundle paramBundle, DownloadListener paramDownloadListener)
-  {
-    super(paramQQAppInterface, paramString1);
-  }
+  public xce(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (TroopUnAccalimedRedPacketList.a() != null) {
+      TroopUnAccalimedRedPacketList.a().dismiss();
+    }
   }
 }
 

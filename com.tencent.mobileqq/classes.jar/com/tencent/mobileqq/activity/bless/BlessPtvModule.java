@@ -65,7 +65,7 @@ public class BlessPtvModule
   public Drawable getPngDrawable(Activity paramActivity)
   {
     if ("0".equals(this.id)) {
-      return paramActivity.getResources().getDrawable(2130838234);
+      return paramActivity.getResources().getDrawable(2130838244);
     }
     String str = path + File.separator + this.id + File.separator + this.id + ".png";
     try

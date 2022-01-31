@@ -1,18 +1,31 @@
-import com.tencent.mobileqq.qipc.QIPCServerModuleFactory;
-import eipc.EIPCModule;
-import eipc.EIPCModuleFactory;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public final class aghm
-  implements EIPCModuleFactory
+class aghm
+  implements Runnable
 {
-  public EIPCModule onCreateModule(String paramString)
+  aghm(aghl paramaghl) {}
+  
+  public void run()
   {
-    return QIPCServerModuleFactory.a(paramString);
+    long l = System.currentTimeMillis() - ScanTorchActivity.a(this.a.a);
+    if (l > 300L)
+    {
+      if (TextUtils.isEmpty(ScanTorchActivity.b(this.a.a)))
+      {
+        ScanTorchActivity.s(this.a.a);
+        return;
+      }
+      ScanTorchActivity.c(this.a.a, ScanTorchActivity.b(this.a.a));
+      return;
+    }
+    ScanTorchActivity.b(this.a.a).postDelayed(new aghn(this), 300L - l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghm
  * JD-Core Version:    0.7.0.1
  */

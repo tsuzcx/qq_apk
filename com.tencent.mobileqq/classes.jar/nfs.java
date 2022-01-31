@@ -1,20 +1,15 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddInteractViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
+import com.tencent.biz.qqstory.model.events.ReadStoryVideoEvent;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver;
 
 public class nfs
-  extends AddInteractViewJob
+  implements Runnable
 {
-  public nfs(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareWeChatData paramShareWeChatData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public nfs(RecentTabHaloPresenter.ReadStoryVideoEventReceiver paramReadStoryVideoEventReceiver, RecentTabHaloPresenter paramRecentTabHaloPresenter, ReadStoryVideoEvent paramReadStoryVideoEvent) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.e = ((String)a("result"));
-    return true;
+    RecentTabHaloPresenter.ReadStoryVideoEventReceiver.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$ReadStoryVideoEventReceiver, this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter, this.jdField_a_of_type_ComTencentBizQqstoryModelEventsReadStoryVideoEvent);
   }
 }
 

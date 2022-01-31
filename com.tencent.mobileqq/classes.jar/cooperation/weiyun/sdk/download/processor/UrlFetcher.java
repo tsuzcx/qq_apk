@@ -1,10 +1,10 @@
 package cooperation.weiyun.sdk.download.processor;
 
-import amrx;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
+import anic;
 import cooperation.weiyun.sdk.download.DownloadFile;
 import cooperation.weiyun.sdk.download.DownloadJobContext;
 import cooperation.weiyun.sdk.download.WyDownloader.IFetchListener;
@@ -36,7 +36,7 @@ public class UrlFetcher
       l = paramDownloadJobContext.a();
       str = paramDownloadJobContext.a().a;
     } while (paramDownloadJobContext.d());
-    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IFetchListener.a(paramDownloadJobContext.a().a(), cooperation.weiyun.sdk.download.DownloadType.values()[paramInt], new amrx(this, str, l, paramDownloadJobContext, paramInt));
+    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IFetchListener.a(paramDownloadJobContext.a().a(), cooperation.weiyun.sdk.download.DownloadType.values()[paramInt], new anic(this, str, l, paramDownloadJobContext, paramInt));
   }
   
   public void a(DownloadJobContext paramDownloadJobContext, int paramInt)

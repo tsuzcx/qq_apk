@@ -1,22 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.widget.PopupMenuDialog;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
+import com.tencent.qphone.base.util.QLog;
 
 public class tyo
-  implements View.OnTouchListener
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public tyo(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public tyo(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramMotionEvent.getAction() == 4)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      this.a.a.dismiss();
-      return true;
+      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.a.a(paramBundle);
+      return;
     }
-    return false;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
+    }
   }
 }
 

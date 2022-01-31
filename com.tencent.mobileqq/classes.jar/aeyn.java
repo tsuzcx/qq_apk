@@ -1,47 +1,59 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.DeleteFeedCallback;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_write.DelFeedRsp;
+import android.os.Handler;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
+import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerView.VideoInfoListener;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnPreparedListener;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
 import com.tencent.qphone.base.util.QLog;
 
-public final class aeyn
-  implements CsTask.Callback
+public class aeyn
+  implements IVideoView.OnPreparedListener
 {
-  public aeyn(NearbyMomentProtocol.DeleteFeedCallback paramDeleteFeedCallback, String paramString) {}
+  public aeyn(VideoPlayerView paramVideoPlayerView, VideoData paramVideoData, boolean paramBoolean) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(IVideoView paramIVideoView)
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      paramBundle = new ilive_feeds_write.DelFeedRsp();
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.c();
     }
-    for (;;)
+    NowVideoReporter localNowVideoReporter;
+    if (((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) && (((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidContentContext).isResume()))
     {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramInt = paramBundle.ret.get();
-        if (paramInt == 0)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$DeleteFeedCallback != null) {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$DeleteFeedCallback.a(bool, this.jdField_a_of_type_JavaLangString);
-          }
-          return;
-        }
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, ret=" + paramInt + ",msg=" + paramBundle.err_msg.get().toStringUtf8());
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoPlayerView", 2, "player truly start! app=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, e=" + paramArrayOfByte.toString());
-        continue;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, null);
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 100, 0, "");
       }
-      bool = false;
-      continue;
-      QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
+      ((NearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262)).h(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
+      localNowVideoReporter = new NowVideoReporter().i("video_view").h("video");
+      if (!this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Boolean) {
+        break label367;
+      }
+    }
+    label367:
+    for (paramIVideoView = "0";; paramIVideoView = "1")
+    {
+      localNowVideoReporter.g(paramIVideoView).b().f(NowVideoReporter.a + "").a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.b();
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        long l = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.b();
+        double d = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.c() / l;
+        QualityReporter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 1, String.valueOf(d), String.valueOf(l), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.c()), String.valueOf(QualityReporter.a()), true);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2026, 300L);
+      return;
     }
   }
 }

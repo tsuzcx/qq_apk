@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 
-class aicy
-  implements Runnable
+public class aicy
+  implements CustomFrameAnimationDrawable.AnimationEndListener
 {
-  aicy(aicx paramaicx, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public aicy(RedBagVideoManager paramRedBagVideoManager) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_Aicx.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    if (RedBagVideoManager.a(this.a) == null) {
+      RedBagVideoManager.a(this.a, new Handler());
+    }
+    RedBagVideoManager.a(this.a).postDelayed(new aicz(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aicy
  * JD-Core Version:    0.7.0.1
  */

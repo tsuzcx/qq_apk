@@ -1,67 +1,27 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.Doraemon.APIParam;
+import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
+import java.util.Iterator;
+import java.util.List;
 
 public class rea
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rea(AccountManageActivity paramAccountManageActivity) {}
+  public rea(DoraemonAPIManager paramDoraemonAPIManager, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.a.b) {
-      return;
-    }
-    paramView = this.a;
-    boolean bool;
-    if (!this.a.jdField_a_of_type_Boolean)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      bool = true;
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label245;
-      }
-      this.a.rightViewText.setVisibility(8);
-      this.a.rightHighLView.setVisibility(0);
-      this.a.rightViewText.setText(2131434517);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131494262));
-    }
-    for (;;)
-    {
-      if (AccountManageActivity.a(this.a) != null)
-      {
-        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
-        if ((paramView instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)paramView).f();
-        }
-        AccountManageActivity.a(this.a).a();
-        AccountManageActivity.a(this.a, null);
-      }
-      this.a.b();
-      this.a.a(this.a.jdField_a_of_type_Boolean);
-      this.a.b = false;
-      AccountManageActivity.a(this.a).postDelayed(new reb(this), 400L);
-      ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit", 0, 0, "", "", "", "");
-      return;
-      bool = false;
-      break;
-      label245:
-      this.a.rightViewText.setVisibility(0);
-      this.a.rightHighLView.setVisibility(8);
-      this.a.rightViewText.setText(2131434535);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131494213));
+      Object[] arrayOfObject = (Object[])localIterator.next();
+      DoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, (String)arrayOfObject[0], (APIParam)arrayOfObject[1], (APICallback)arrayOfObject[2]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rea
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alkz;
+import amap;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
@@ -23,7 +23,7 @@ public class AdapterViewPagerAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper = new PagerBaseAdapterWrapper(paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.registerDataSetObserver(new alkz(this));
+    this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.registerDataSetObserver(new amap(this));
   }
   
   public AdapterView a(int paramInt)

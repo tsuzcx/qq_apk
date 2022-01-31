@@ -1,24 +1,51 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-class acdf
+public final class acdf
   implements Runnable
 {
-  acdf(acde paramacde) {}
-  
   public void run()
   {
-    this.a.a.a.c = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, start");
+    }
+    String str = EmojiStickerManager.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, rootPath = " + str);
+    }
+    Object localObject = new File(str);
+    if (((File)localObject).exists())
+    {
+      localObject = ((File)localObject).list();
+      if ((localObject == null) || (localObject.length <= 1)) {
+        break label113;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, list.length =  " + localObject.length);
+      }
+    }
+    return;
+    label113:
+    if (QLog.isColorLevel()) {
+      QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, need to extract  ");
+    }
+    localObject = str + "emojiStickerGuideZip_v2" + ".zip";
     try
     {
-      this.a.a.a.a.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('addMorePage',{})");
+      FileUtils.a((String)localObject, str, false);
       return;
     }
-    catch (Exception localException)
+    catch (IOException localIOException)
     {
-      QLog.e("<FileAssistant>FilePreviewActivity", 1, localException.toString());
+      QLog.e("EmojiStickerManager", 1, "extractStickerMaterial uncompressZip error = " + localIOException);
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("EmojiStickerManager", 1, "extractStickerMaterial uncompressZip error = " + localOutOfMemoryError);
     }
   }
 }

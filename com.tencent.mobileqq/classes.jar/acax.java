@@ -1,23 +1,17 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerRecallListener;
 
 public class acax
-  implements View.OnClickListener
+  implements EmojiStickerManager.StickerRecallListener
 {
-  public acax(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString, View paramView) {}
+  public acax(MessengerService paramMessengerService) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app.getPreferences().edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    paramView = new AlphaAnimation(1.0F, 0.0F);
-    paramView.setDuration(500L);
-    paramView.setAnimationListener(new acay(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
+    if (this.a.a != null) {
+      EmojiStickerManager.a().a(this.a.a, paramBoolean);
+    }
   }
 }
 

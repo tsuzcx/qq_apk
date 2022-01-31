@@ -17,8 +17,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nvp;
-import nvq;
+import nxc;
+import nxd;
 
 public class MemoriesVideoCollectionPresenter
   implements IEventReceiver
@@ -30,8 +30,8 @@ public class MemoriesVideoCollectionPresenter
   public String a;
   public ArrayList a;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private nvp jdField_a_of_type_Nvp;
-  private nvq jdField_a_of_type_Nvq;
+  private nxc jdField_a_of_type_Nxc;
+  private nxd jdField_a_of_type_Nxd;
   public boolean a;
   public boolean b = true;
   
@@ -84,10 +84,10 @@ public class MemoriesVideoCollectionPresenter
   
   public void a()
   {
-    this.jdField_a_of_type_Nvp = new nvp(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nvp);
-    this.jdField_a_of_type_Nvq = new nvq(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nvq);
+    this.jdField_a_of_type_Nxc = new nxc(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nxc);
+    this.jdField_a_of_type_Nxd = new nxd(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nxd);
   }
   
   public void a(String paramString)
@@ -151,8 +151,8 @@ public class MemoriesVideoCollectionPresenter
   
   public void b()
   {
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nvp);
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nvq);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nxc);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nxd);
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller != null) {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.b();
     }

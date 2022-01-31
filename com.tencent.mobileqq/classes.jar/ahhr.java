@@ -1,46 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.model.GroupSearchModeTitle;
-import com.tencent.mobileqq.search.model.GroupSearchModelMoreItem;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import com.tencent.mobileqq.search.util.SearchStatisticsConstants;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.av.AVLog;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ahhr
-  extends GroupSearchEngine.SearchEngineEntity
+  implements INetEngine.INetEngineListener
 {
-  public ahhr(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  public ahhr(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
-  {
-    return null;
-  }
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
   
-  public List a(SearchRequest paramSearchRequest)
+  public void a(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle == null) {
-      paramSearchRequest.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
+    if (paramNetResp.jdField_a_of_type_Int != 0)
+    {
+      AVLog.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramNetResp.b + ", errorMsg: " + paramNetResp.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.c);
+      return;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramSearchRequest = new GroupSearchModelMoreItem(paramSearchRequest.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
-    localArrayList.add(new GroupSearchModeTitle(paramSearchRequest));
-    localArrayList.add(paramSearchRequest);
-    SearchStatisticsConstants.a(0);
-    return localArrayList;
+    if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.a(this.a) != null)) {
+      CaptureVideoFilterManager.a(this.a).a(true);
+    }
+    AVLog.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahhr
  * JD-Core Version:    0.7.0.1
  */

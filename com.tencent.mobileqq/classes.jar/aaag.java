@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.ar.arengine.ARCamera;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.arcard.ARcardSound;
 
-class aaag
+public class aaag
   implements Runnable
 {
-  aaag(aaaf paramaaaf) {}
+  public aaag(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
   public void run()
   {
-    ARCamera localARCamera = this.a.a;
-    int j = ARCamera.a(this.a.a) / 2;
-    int k = ARCamera.b(this.a.a) / 2;
-    int m = ARCamera.a(this.a.a);
-    int n = ARCamera.b(this.a.a);
-    if (!ARCamera.a(this.a.a)) {}
-    for (int i = ARCamera.f();; i = ARCamera.a(this.a.a) * 3 / 4)
+    if (ARWorldCupGlobalSceneRenderable.a(this.a) != null)
     {
-      ARCamera.a(localARCamera, j, k, m, n, i);
-      return;
+      ARWorldCupGlobalSceneRenderable.a(this.a).a();
+      ARWorldCupGlobalSceneRenderable.a(this.a, null);
     }
   }
 }

@@ -1,30 +1,50 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.troop.TroopPluginManager;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavHelper;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ampa
-  extends Handler
+public final class ampa
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public ampa(TroopPluginManager paramTroopPluginManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ampa(Runnable paramRunnable) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    switch (paramMessage.what)
+    if (paramPluginManagerClient == null) {}
+    try
     {
-    default: 
+      ThreadManager.post(this.a, 5, null, false);
       return;
     }
-    ((TroopPluginManager.TroopPluginCallback)paramMessage.obj).a(paramMessage.arg1);
+    catch (Exception paramPluginManagerClient) {}
+    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("qqfav", 2, "qqfav.apk already installed.");
+      }
+      QfavHelper.a().set(true);
+      try
+      {
+        ThreadManager.post(this.a, 5, null, false);
+        return;
+      }
+      catch (Exception paramPluginManagerClient)
+      {
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
+    }
+    paramPluginManagerClient.installPlugin("qqfav.apk", new ampb(this));
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampa
  * JD-Core Version:    0.7.0.1
  */

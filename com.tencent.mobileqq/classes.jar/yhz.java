@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.ttpic.util.youtu.VideoFaceDetector;
+import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
 
-public final class yhz
+class yhz
   implements Runnable
 {
-  public yhz(ApolloRender paramApolloRender, byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
+  yhz(yhy paramyhy) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mDetector.doFaceDetect(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b);
+    NewFriendMoreSysMsgAdapter.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yhz
  * JD-Core Version:    0.7.0.1
  */

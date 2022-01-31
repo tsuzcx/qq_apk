@@ -6,7 +6,7 @@ import android.os.Looper;
 import com.tencent.component.media.annotation.Public;
 import com.tencent.component.media.utils.BaseHandler;
 import java.io.File;
-import pes;
+import pgm;
 
 public class ImageLoader
 {
@@ -141,7 +141,7 @@ public class ImageLoader
     if ((localDrawable != null) && (paramImageLoadListener != null))
     {
       if ((paramOptions != null) && (paramOptions.useMainThread)) {
-        this.jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pes(this, paramImageLoadListener, paramString, localDrawable, paramOptions));
+        this.jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pgm(this, paramImageLoadListener, paramString, localDrawable, paramOptions));
       }
     }
     else {

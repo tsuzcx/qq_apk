@@ -1,74 +1,80 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ArticleTopicData.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallbackImpl;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
-public final class mmn
-  implements Parcelable.Creator
+public class mmn
+  extends ReadInJoyAtlasManager.AtlasCallbackImpl
 {
-  public FastWebArticleInfo a(Parcel paramParcel)
+  public mmn(FastWebActivity paramFastWebActivity) {}
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    int i = 0;
-    boolean bool2 = true;
-    FastWebArticleInfo localFastWebArticleInfo = new FastWebArticleInfo();
-    localFastWebArticleInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localFastWebArticleInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localFastWebArticleInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.d = paramParcel.readString();
-    localFastWebArticleInfo.e = paramParcel.readString();
-    localFastWebArticleInfo.f = paramParcel.readString();
-    localFastWebArticleInfo.h = paramParcel.readString();
-    localFastWebArticleInfo.g = paramParcel.readString();
-    localFastWebArticleInfo.j = paramParcel.readString();
-    localFastWebArticleInfo.i = paramParcel.readString();
-    localFastWebArticleInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localFastWebArticleInfo.k = paramParcel.readString();
-    if (paramParcel.readInt() == 1)
-    {
-      bool1 = true;
-      localFastWebArticleInfo.jdField_a_of_type_Boolean = bool1;
-      localFastWebArticleInfo.l = paramParcel.readString();
-      localFastWebArticleInfo.jdField_c_of_type_Long = paramParcel.readLong();
-      if (paramParcel.readInt() != 1) {
-        break label277;
-      }
+    FastWebActivity.a(this.a, false);
+    QLog.d(FastWebActivity.a(this.a), 1, new Object[] { "handleDoFavoriteResult, isSuccess = ", Boolean.valueOf(paramBoolean), ", rowKey = ", paramString1, ", operationType = ", Integer.valueOf(paramInt), ", cid = ", paramString2 });
+    if (FastWebActivity.a(this.a) == null) {
+      QLog.d(FastWebActivity.a(this.a), 1, "handleDoFavoriteResult but articleInfo is null.");
     }
-    ArrayList localArrayList;
-    label277:
-    for (boolean bool1 = bool2;; bool1 = false)
+    QQToast localQQToast;
+    do
     {
-      localFastWebArticleInfo.jdField_b_of_type_Boolean = bool1;
-      int j = paramParcel.readInt();
-      if (j < 0) {
-        break label293;
-      }
-      localArrayList = new ArrayList();
-      while (i < j)
+      do
       {
-        ArticleTopicData.TopicInfo localTopicInfo = new ArticleTopicData.TopicInfo();
-        localTopicInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-        localTopicInfo.jdField_a_of_type_Long = paramParcel.readLong();
-        localTopicInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-        localArrayList.add(localTopicInfo);
-        i += 1;
+        return;
+      } while ((!paramBoolean) || (!FastWebActivity.a(this.a).innerUniqueID.equals(paramString1)));
+      localQQToast = new QQToast(this.a.getBaseContext());
+      localQQToast.d(2000);
+      localQQToast.b(2);
+      localQQToast.a(QQToast.a(2));
+      if (paramInt == 1)
+      {
+        ArrayList localArrayList = (ArrayList)FastWebActivity.a(this.a).get(FastWebActivity.a(this.a).innerUniqueID);
+        paramString1 = localArrayList;
+        if (localArrayList == null) {
+          paramString1 = new ArrayList();
+        }
+        paramString1.add(paramString2);
+        FastWebActivity.a(this.a).put(FastWebActivity.a(this.a).innerUniqueID, paramString1);
+        localQQToast.a("已收藏");
+        if (FastWebActivity.b(this.a).isSelected())
+        {
+          FastWebActivity.a(this.a, true);
+          localQQToast.a();
+          QLog.d(FastWebActivity.a(this.a), 1, "handleDoFavoriteResult, add favorite succeed and update status.");
+          return;
+        }
+        QLog.d(FastWebActivity.a(this.a), 1, "The favorite button status is not right, user delete favorite when waiting for request.");
+        FastWebActivity.b(this.a, false);
+        return;
       }
-      bool1 = false;
-      break;
+    } while (paramInt != 2);
+    FastWebActivity.a(this.a).remove(FastWebActivity.a(this.a).innerUniqueID);
+    localQQToast.a("已取消收藏");
+    if (!FastWebActivity.b(this.a).isSelected())
+    {
+      FastWebActivity.a(this.a, false);
+      localQQToast.a();
+      QLog.d(FastWebActivity.a(this.a), 1, "handleDoFavoriteResult, delete favorite succeed and update status.");
+      return;
     }
-    localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = localArrayList;
-    return localFastWebArticleInfo;
-    label293:
-    localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = null;
-    return localFastWebArticleInfo;
+    QLog.d(FastWebActivity.a(this.a), 1, "The favorite button status is not right, user add favorite when waiting for request.");
+    FastWebActivity.b(this.a, true);
   }
   
-  public FastWebArticleInfo[] a(int paramInt)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList paramArrayList)
   {
-    return new FastWebArticleInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d(FastWebActivity.a(this.a), 2, "handleFavoriteStatus, isSuccess = " + paramBoolean1 + ", rowKey =  " + paramString + ", isFavorite = " + paramBoolean2 + ", cidList = " + paramArrayList);
+    }
+    if ((paramBoolean1) && (FastWebActivity.a(this.a).innerUniqueID.equals(paramString)))
+    {
+      FastWebActivity.a(this.a).put(paramString, paramArrayList);
+      FastWebActivity.a(this.a, paramBoolean2);
+    }
   }
 }
 

@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.ar.ARLBSObserver;
-import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload;
-import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudLBSLocationCheckCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.armap.sensor.rotation.Vector3;
 
 public class aaab
-  extends ARLBSObserver
+  implements Runnable
 {
-  public aaab(ARCloudFileUpload paramARCloudFileUpload) {}
+  public aaab(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, Vector3 paramVector3) {}
   
-  public void a(ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult)
+  public void run()
   {
-    if (ARCloudFileUpload.a(this.a) != null) {
-      ARCloudFileUpload.a(this.a).a(paramARCloudLBSLocationCheckResult);
+    if (ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) != null) {
+      ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).native_updateBallTanslateFromXYZ(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3.x, this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3.y, this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3.z);
     }
   }
 }

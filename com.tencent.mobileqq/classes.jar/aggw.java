@@ -1,29 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aggw
-  implements View.OnTouchListener
+class aggw
+  implements Runnable
 {
-  public aggw(QCallDetailActivity paramQCallDetailActivity) {}
+  aggw(aggv paramaggv, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      QCallDetailActivity.a(this.a).setPressed(true);
-    }
-    while (1 != paramMotionEvent.getAction()) {
-      return false;
-    }
-    QCallDetailActivity.a(this.a).setPressed(false);
-    return false;
+    QQToast.a(this.jdField_a_of_type_Aggv.a.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Aggv.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggw
  * JD-Core Version:    0.7.0.1
  */

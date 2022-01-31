@@ -1,15 +1,28 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.ui.BeautySettingUi;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class jrg
-  implements DialogInterface.OnDismissListener
+class jrg
+  implements DialogInterface.OnClickListener
 {
-  public jrg(BeautySettingUi paramBeautySettingUi, int paramInt) {}
+  jrg(jrf paramjrf) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiBeautySettingUi.c(this.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setPackage(CallbackWaitingActivityExt.a(this.a.a.a).getApp().getPackageName());
+    paramDialogInterface.setAction("tencent.av.v2q.CancelCallBack");
+    paramDialogInterface.putExtra("fromPhone", this.a.a.a.c);
+    paramDialogInterface.putExtra("toPhone", this.a.a.a.jdField_b_of_type_JavaLangString);
+    paramDialogInterface.putExtra("fromUin", this.a.a.a.e);
+    paramDialogInterface.putExtra("uinType", this.a.a.a.jdField_b_of_type_Int);
+    paramDialogInterface.putExtra("toUin", this.a.a.a.e);
+    paramDialogInterface.putExtra("callBackId", this.a.a.a.a);
+    CallbackWaitingActivityExt.a(this.a.a.a).getApp().sendBroadcast(paramDialogInterface);
   }
 }
 

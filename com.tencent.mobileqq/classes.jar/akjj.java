@@ -1,24 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
 
 public class akjj
   implements Runnable
 {
-  public akjj(MQPSensitiveMsgUtil paramMQPSensitiveMsgUtil, String paramString1, String paramString2) {}
+  public akjj(HealthStepCounterPlugin paramHealthStepCounterPlugin, String paramString) {}
   
   public void run()
   {
-    Object localObject = "sp_confirmed_sensmsg_" + MQPSensitiveMsgUtil.a();
-    localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 0).edit();
-    ((SharedPreferences.Editor)localObject).putString(this.jdField_a_of_type_JavaLangString, this.b);
-    ((SharedPreferences.Editor)localObject).commit();
+    HealthStepCounterPlugin.a(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthStepCounterPlugin, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjj
  * JD-Core Version:    0.7.0.1
  */

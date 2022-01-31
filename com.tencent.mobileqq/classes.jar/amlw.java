@@ -1,29 +1,25 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QUA;
-import cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic;
+import cooperation.plugin.IPluginManager;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class amlw
-  implements DialogInterface.OnClickListener
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public amlw(Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    try
-    {
-      if (QUA.a().indexOf("GM") < 0) {
-        QZoneWebViewJsHandleLogic.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
     }
-    catch (Exception paramDialogInterface)
+    IPluginManager.a(paramPluginManagerClient);
+    IPluginManager.a(null);
+    while (!IPluginManager.a().isEmpty())
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
+      paramPluginManagerClient = (ammb)IPluginManager.a().poll();
+      if (paramPluginManagerClient != null) {
+        IPluginManager.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
+      }
     }
   }
 }

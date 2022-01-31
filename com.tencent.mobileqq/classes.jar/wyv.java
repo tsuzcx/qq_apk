@@ -1,29 +1,24 @@
-import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class wyv
-  implements TextView.OnEditorActionListener
+class wyv
+  implements Runnable
 {
-  public wyv(TransactionActivity paramTransactionActivity) {}
+  wyv(wyu paramwyu, boolean paramBoolean, String[] paramArrayOfString, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      if (TransactionActivity.b(this.a).isEnabled()) {
-        TransactionActivity.b(this.a).performClick();
-      }
-      if (TransactionActivity.a(this.a) != null) {
-        ((InputMethodManager)TransactionActivity.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(TransactionActivity.c(this.a).getWindowToken(), 0);
-      }
+    
+    if (this.jdField_a_of_type_Boolean) {
+      StatisticConstants.e();
     }
-    return false;
+    try
+    {
+      StatisticConstants.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Int, false, false, -1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

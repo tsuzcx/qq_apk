@@ -1,31 +1,36 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.managers.TimUpgradeHongdianManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.kingkong.Common.Log;
+import com.tencent.kingkong.PatchInfo;
+import com.tencent.kingkong.UpdateManager;
+import org.json.JSONObject;
 
 public class rcs
-  implements View.OnClickListener
+  extends Handler
 {
-  public rcs(AboutActivity paramAboutActivity, TimUpgradeHongdianManager paramTimUpgradeHongdianManager) {}
-  
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqManagersTimUpgradeHongdianManager.d))
+    paramMessage = paramMessage.getData();
+    try
     {
-      ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getManager(255)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_ComTencentMobileqqManagersTimUpgradeHongdianManager.d);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X800865C", "0X800865C", 0, 0, "", "", "", "");
+      String str = paramMessage.getString("PATCH_JSON_STRING");
+      boolean bool = paramMessage.getBoolean("PATCH_FORCE_UPDATE");
+      paramMessage = PatchInfo.a(new JSONObject(str));
+      if (paramMessage != null) {
+        UpdateManager.a(paramMessage, bool);
+      }
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqManagersTimUpgradeHongdianManager.a();
-    AboutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, null);
+    catch (Exception paramMessage)
+    {
+      Common.Log.a("KingKongUpdateManager", "Update patch exception : " + paramMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rcs
  * JD-Core Version:    0.7.0.1
  */

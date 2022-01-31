@@ -22,6 +22,7 @@ public class LpReportInfo_dc00321
   public static final int DC00321_NETWORK_TYPE_CABLE = 6;
   public static final int DC00321_NETWORK_TYPE_UNKNOWN = 9;
   public static final int DC00321_NETWORK_TYPE_WIFI = 1;
+  public static final int VIDEO_PLAY_SCENE_NEW_VERTICAL_VIDEO = 28;
   public int actiontype;
   public long author_uin;
   public long client_video_play_time;
@@ -139,6 +140,13 @@ public class LpReportInfo_dc00321
     return 4;
   }
   
+  public static void report(int paramInt1, int paramInt2, int paramInt3)
+  {
+    LpReportInfo_dc00321 localLpReportInfo_dc00321 = new LpReportInfo_dc00321(paramInt1, paramInt2, paramInt3, null, null);
+    localLpReportInfo_dc00321.video_play_scene = 28;
+    LpReportManager.getInstance().reportToDC00321(localLpReportInfo_dc00321, false, true);
+  }
+  
   public static void report(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2, LbsDataV2.GpsInfo paramGpsInfo)
   {
     paramGpsInfo = new LpReportInfo_dc00321(paramInt1, paramInt2, paramInt3, paramGpsInfo);
@@ -211,6 +219,12 @@ public class LpReportInfo_dc00321
           localHashMap.put("device", "2");
           localHashMap.put("p_x", this.longitude);
           localHashMap.put("p_y", this.latitude);
+          if (!localHashMap.containsKey("video_play_scene")) {
+            localHashMap.put("video_play_scene", String.valueOf(this.video_play_scene));
+          }
+          if (!localHashMap.containsKey("video_sources")) {
+            localHashMap.put("video_sources", String.valueOf(this.video_sources));
+          }
           return localHashMap;
           localJSONObject = new JSONObject();
         }

@@ -38,13 +38,13 @@ import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import kfx;
-import kfy;
-import kfz;
-import kga;
-import kgb;
-import kgc;
-import kgd;
+import kfi;
+import kfj;
+import kfk;
+import kfl;
+import kfm;
+import kfn;
+import kfo;
 
 public class ResultUI
   extends SubHandleBase
@@ -53,7 +53,7 @@ public class ResultUI
   public Bitmap a;
   public ControlUIObserver a;
   public ResultData a;
-  public kgd a;
+  public kfo a;
   public boolean a;
   public Bitmap b;
   public boolean b;
@@ -77,11 +77,11 @@ public class ResultUI
   
   RelativeLayout a(AVActivity paramAVActivity)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramAVActivity.findViewById(2131366186);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramAVActivity.findViewById(2131366213);
     if (localRelativeLayout != null) {
       return localRelativeLayout;
     }
-    paramAVActivity = (RelativeLayout)paramAVActivity.getLayoutInflater().inflate(2130969345, (RelativeLayout)paramAVActivity.findViewById(2131365796)).findViewById(2131366186);
+    paramAVActivity = (RelativeLayout)paramAVActivity.getLayoutInflater().inflate(2130969346, (RelativeLayout)paramAVActivity.findViewById(2131365823)).findViewById(2131366213);
     a(paramAVActivity);
     return paramAVActivity;
   }
@@ -199,7 +199,7 @@ public class ResultUI
   
   void a(RelativeLayout paramRelativeLayout)
   {
-    paramRelativeLayout.setOnTouchListener(new kga(this));
+    paramRelativeLayout.setOnTouchListener(new kfl(this));
   }
   
   public void a(AVActivity paramAVActivity)
@@ -210,29 +210,29 @@ public class ResultUI
     for (paramAVActivity = paramAVActivity + "avredbag_error_sender.png";; paramAVActivity = paramAVActivity + "avredbag_error_player.png")
     {
       paramAVActivity = BitmapManager.a(paramAVActivity);
-      ((ImageView)localRelativeLayout.findViewById(2131366203)).setImageBitmap(paramAVActivity);
-      ((RelativeLayout)localRelativeLayout.findViewById(2131366202)).setVisibility(0);
+      ((ImageView)localRelativeLayout.findViewById(2131366230)).setImageBitmap(paramAVActivity);
+      ((RelativeLayout)localRelativeLayout.findViewById(2131366229)).setVisibility(0);
       return;
     }
   }
   
   void a(AVActivity paramAVActivity, RelativeLayout paramRelativeLayout)
   {
-    View localView = paramRelativeLayout.findViewById(2131366198);
+    View localView = paramRelativeLayout.findViewById(2131366225);
     AVRedPacketManager localAVRedPacketManager = paramAVActivity.a();
     if (this.c == null) {
       this.c = localAVRedPacketManager.a("qav_redpacket_result_close.png");
     }
     if (this.c != null) {
-      localView.setBackgroundDrawable(TintStateDrawable.a(paramAVActivity.getResources(), this.c, 2131494065));
+      localView.setBackgroundDrawable(TintStateDrawable.a(paramAVActivity.getResources(), this.c, 2131494071));
     }
     localView.setOnClickListener(this);
-    paramRelativeLayout.findViewById(2131366187).setOnTouchListener(new kfz(this));
+    paramRelativeLayout.findViewById(2131366214).setOnTouchListener(new kfk(this));
   }
   
   public void a(AVActivity paramAVActivity, ResultData paramResultData)
   {
-    Object localObject1 = (RelativeLayout)paramAVActivity.findViewById(2131366186);
+    Object localObject1 = (RelativeLayout)paramAVActivity.findViewById(2131366213);
     if ((localObject1 == null) || (paramResultData == null))
     {
       paramAVActivity = this.i;
@@ -249,19 +249,19 @@ public class ResultUI
       return;
       bool = false;
       break;
-      localObject1 = (RelativeLayout)((RelativeLayout)localObject1).findViewById(2131366187);
+      localObject1 = (RelativeLayout)((RelativeLayout)localObject1).findViewById(2131366214);
       localObject2 = paramAVActivity.a();
-      localObject3 = ((RelativeLayout)localObject1).findViewById(2131366199);
+      localObject3 = ((RelativeLayout)localObject1).findViewById(2131366226);
       ((View)localObject3).setAnimation(null);
       ((View)localObject3).setVisibility(8);
       paramAVActivity = paramAVActivity.getResources();
       i = AIOUtils.a(4.0F, paramAVActivity);
       if (paramResultData.jdField_e_of_type_Int == 0)
       {
-        StrokeTextView localStrokeTextView = (StrokeTextView)((RelativeLayout)localObject1).findViewById(2131366190);
-        localObject3 = (RedPacketRollNumberView)((RelativeLayout)localObject1).findViewById(2131366191);
-        localObject4 = (StrokeTextView)((RelativeLayout)localObject1).findViewById(2131366192);
-        localObject5 = (TextView)((RelativeLayout)localObject1).findViewById(2131366195);
+        StrokeTextView localStrokeTextView = (StrokeTextView)((RelativeLayout)localObject1).findViewById(2131366217);
+        localObject3 = (RedPacketRollNumberView)((RelativeLayout)localObject1).findViewById(2131366218);
+        localObject4 = (StrokeTextView)((RelativeLayout)localObject1).findViewById(2131366219);
+        localObject5 = (TextView)((RelativeLayout)localObject1).findViewById(2131366222);
         localStrokeTextView.setVisibility(0);
         localStrokeTextView.setStrokeEnable(true);
         localStrokeTextView.setStrokeColor(-3109366);
@@ -285,7 +285,7 @@ public class ResultUI
               this.jdField_b_of_type_AndroidGraphicsBitmap = ((AVRedPacketManager)localObject2).a("qav_redpacket_result_bqd.png");
             }
             if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-              ((RelativeLayout)localObject1).findViewById(2131366194).setBackgroundDrawable(new BitmapDrawable(paramAVActivity, this.jdField_b_of_type_AndroidGraphicsBitmap));
+              ((RelativeLayout)localObject1).findViewById(2131366221).setBackgroundDrawable(new BitmapDrawable(paramAVActivity, this.jdField_b_of_type_AndroidGraphicsBitmap));
             }
           }
           if (this.e == null) {
@@ -296,7 +296,7 @@ public class ResultUI
           }
           if ((this.e != null) && (this.f != null))
           {
-            paramResultData = ((RelativeLayout)localObject1).findViewById(2131366196);
+            paramResultData = ((RelativeLayout)localObject1).findViewById(2131366223);
             paramResultData.setVisibility(0);
             localObject3 = new StateListDrawable();
             localObject4 = new BitmapDrawable(paramAVActivity, this.f);
@@ -314,7 +314,7 @@ public class ResultUI
           }
           if ((this.g != null) && (this.h != null))
           {
-            paramResultData = ((RelativeLayout)localObject1).findViewById(2131366197);
+            paramResultData = ((RelativeLayout)localObject1).findViewById(2131366224);
             paramResultData.setVisibility(0);
             localObject1 = new StateListDrawable();
             localObject2 = new BitmapDrawable(paramAVActivity, this.h);
@@ -350,18 +350,21 @@ public class ResultUI
       paramResultData = new SpannableString((String)localObject4 + paramAVActivity);
       int j = ((String)localObject4).length();
       int k = paramAVActivity.length() + j;
-      paramResultData.setSpan(new kgc(this, bool, paramAVActivity, (String)localObject3), j, k, 33);
+      paramResultData.setSpan(new kfn(this, bool, paramAVActivity, (String)localObject3), j, k, 33);
       paramResultData.setSpan(localObject5, j, k, 17);
-      paramAVActivity = (StrokeTextView)((RelativeLayout)localObject1).findViewById(2131366200);
+      paramAVActivity = (StrokeTextView)((RelativeLayout)localObject1).findViewById(2131366227);
       paramAVActivity.setText((CharSequence)((com.tencent.util.Pair)localObject2).first);
       paramAVActivity.setStrokeEnable(true);
       paramAVActivity.setStrokeColor(-3109366);
       paramAVActivity.setInnerTextColor(-1);
       paramAVActivity.setStrokeSize(i);
-      paramAVActivity = (TextView)((RelativeLayout)localObject1).findViewById(2131366201);
+      paramAVActivity = (TextView)((RelativeLayout)localObject1).findViewById(2131366228);
       paramAVActivity.setVisibility(0);
       paramAVActivity.setText(paramResultData);
-      paramAVActivity.setMovementMethod(RedPacketLinkMovementMethod.a());
+      paramResultData = (RedPacketLinkMovementMethod)RedPacketLinkMovementMethod.a();
+      paramResultData.jdField_a_of_type_Int = -10864125;
+      paramResultData.jdField_b_of_type_Int = -7447805;
+      paramAVActivity.setMovementMethod(paramResultData);
       paramAVActivity.setHighlightColor(0);
       return;
       paramAVActivity = "去领取";
@@ -386,12 +389,12 @@ public class ResultUI
     QLog.w(this.i, 1, "onGetResult, 窗口还没显示");
   }
   
-  void a(ResultData paramResultData, kgd paramkgd)
+  void a(ResultData paramResultData, kfo paramkfo)
   {
     this.jdField_a_of_type_ComTencentAvUiRedbagResultData = paramResultData;
     paramResultData = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
     this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_b_of_type_Boolean = TextUtils.equals(paramResultData, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Kgd = paramkgd;
+    this.jdField_a_of_type_Kfo = paramkfo;
     paramResultData = a();
     QLog.w(this.i, 1, "show, mStarter[" + this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_b_of_type_Boolean + "], mGotMoney[" + this.jdField_a_of_type_ComTencentAvUiRedbagResultData.i + "], avActivity[" + paramResultData + "]");
     c();
@@ -408,20 +411,20 @@ public class ResultUI
     AVActivity localAVActivity = a();
     if (localAVActivity != null)
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)localAVActivity.findViewById(2131366186);
+      RelativeLayout localRelativeLayout = (RelativeLayout)localAVActivity.findViewById(2131366213);
       if (localRelativeLayout != null)
       {
         localRelativeLayout.setOnTouchListener(null);
-        ((RelativeLayout)localAVActivity.findViewById(2131365796)).removeView(localRelativeLayout);
+        ((RelativeLayout)localAVActivity.findViewById(2131365823)).removeView(localRelativeLayout);
       }
     }
     for (boolean bool = true;; bool = false)
     {
       QLog.w(this.i, 1, "closeUI[" + paramString + "], bret[" + bool + "]");
-      if (this.jdField_a_of_type_Kgd != null)
+      if (this.jdField_a_of_type_Kfo != null)
       {
-        this.jdField_a_of_type_Kgd.a();
-        this.jdField_a_of_type_Kgd = null;
+        this.jdField_a_of_type_Kfo.a();
+        this.jdField_a_of_type_Kfo = null;
       }
       if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
       {
@@ -473,7 +476,7 @@ public class ResultUI
       return;
     }
     QLog.w(this.i, 1, "listenOnActivityEvent,  mStarter[" + this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_b_of_type_Boolean + "], mPlayUin[" + this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_b_of_type_JavaLangString + "], mStartUin[" + this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_a_of_type_JavaLangString + "]");
-    this.jdField_a_of_type_ComTencentAvUiControlUIObserver = new kfx(this);
+    this.jdField_a_of_type_ComTencentAvUiControlUIObserver = new kfi(this);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvUiControlUIObserver);
   }
   
@@ -538,11 +541,11 @@ public class ResultUI
     {
       label313:
       localObject3 = a(paramAVActivity);
-      ((RelativeLayout)localObject3).findViewById(2131366204).setOnTouchListener(new kgb(this));
-      localObject4 = (ViewGroup)((RelativeLayout)localObject3).findViewById(2131366206);
+      ((RelativeLayout)localObject3).findViewById(2131366231).setOnTouchListener(new kfm(this));
+      localObject4 = (ViewGroup)((RelativeLayout)localObject3).findViewById(2131366233);
       ((ViewGroup)localObject4).removeAllViews();
-      ((ImageView)((RelativeLayout)localObject3).findViewById(2131366205)).setImageBitmap(localAVRedPacketManager.a((String)localObject2));
-      localObject2 = (ImageView)((RelativeLayout)localObject3).findViewById(2131366207);
+      ((ImageView)((RelativeLayout)localObject3).findViewById(2131366232)).setImageBitmap(localAVRedPacketManager.a((String)localObject2));
+      localObject2 = (ImageView)((RelativeLayout)localObject3).findViewById(2131366234);
       ((ImageView)localObject2).setImageBitmap(localAVRedPacketManager.a("qav_redpacket_result_close.png"));
       ((ImageView)localObject2).setOnClickListener(this);
       label415:
@@ -624,7 +627,7 @@ public class ResultUI
         }
       }
       label771:
-      ((RelativeLayout)((RelativeLayout)localObject3).findViewById(2131366204)).setVisibility(0);
+      ((RelativeLayout)((RelativeLayout)localObject3).findViewById(2131366231)).setVisibility(0);
       return;
       label787:
       localObject1 = null;
@@ -635,25 +638,25 @@ public class ResultUI
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new kfy(this));
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new kfj(this));
   }
   
   public void c(AVActivity paramAVActivity)
   {
     Object localObject2 = a(paramAVActivity);
     a(paramAVActivity, (RelativeLayout)localObject2);
-    RelativeLayout localRelativeLayout = (RelativeLayout)((RelativeLayout)localObject2).findViewById(2131366187);
+    RelativeLayout localRelativeLayout = (RelativeLayout)((RelativeLayout)localObject2).findViewById(2131366214);
     localRelativeLayout.setVisibility(0);
     Object localObject1 = paramAVActivity.a();
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
       this.jdField_a_of_type_AndroidGraphicsBitmap = ((AVRedPacketManager)localObject1).a("qav_redpacket_result_background.png");
     }
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      localRelativeLayout.findViewById(2131366188).setBackgroundDrawable(new BitmapDrawable(paramAVActivity.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap));
+      localRelativeLayout.findViewById(2131366215).setBackgroundDrawable(new BitmapDrawable(paramAVActivity.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap));
     }
-    ((TextView)localRelativeLayout.findViewById(2131366189)).setText(a(paramAVActivity, 2131429614, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.c, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.d) + "\n" + a(paramAVActivity, 2131429615, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_b_of_type_Int));
-    ((RelativeLayout)localObject2).findViewById(2131366193).setBackgroundDrawable(new BitmapDrawable(paramAVActivity.getResources(), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_b_of_type_JavaLangString, null, true, true)));
-    localObject2 = localRelativeLayout.findViewById(2131366199);
+    ((TextView)localRelativeLayout.findViewById(2131366216)).setText(a(paramAVActivity, 2131429620, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.c, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.d) + "\n" + a(paramAVActivity, 2131429621, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_b_of_type_Int));
+    ((RelativeLayout)localObject2).findViewById(2131366220).setBackgroundDrawable(new BitmapDrawable(paramAVActivity.getResources(), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0, this.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_b_of_type_JavaLangString, null, true, true)));
+    localObject2 = localRelativeLayout.findViewById(2131366226);
     if (this.d == null) {
       this.d = ((AVRedPacketManager)localObject1).a("qav_redpacket_result_loading.png");
     }
@@ -686,13 +689,13 @@ public class ResultUI
     {
     default: 
       return;
-    case 2131366198: 
+    case 2131366225: 
       a("qav_result_close");
       return;
-    case 2131366207: 
+    case 2131366234: 
       a("result_starter_close");
       return;
-    case 2131366196: 
+    case 2131366223: 
       a("qav_result_button");
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(126), Boolean.valueOf(true), Integer.valueOf(7) });
       RedBagReport.m();

@@ -1,34 +1,21 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.comment.FeedCommentEventHandler;
+import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.OnActionSheetButtonClickListener;
+import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.PostCommentCallback;
+import com.tencent.biz.qqstory.comment.FeedCommentLego;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
 public class nbt
-  implements Runnable
+  extends FeedCommentEventHandler.PostCommentCallback
 {
-  public nbt(TroopNickNameManager paramTroopNickNameManager, String paramString, QQUserUIItem paramQQUserUIItem, boolean paramBoolean1, boolean paramBoolean2) {}
+  public nbt(FeedCommentEventHandler.OnActionSheetButtonClickListener paramOnActionSheetButtonClickListener) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager.a.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null)
-    {
-      localTroopNickNameUpdateEvent = new TroopNickNameManager.TroopNickNameUpdateEvent();
-      localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaUtilList = localArrayList;
-      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      Dispatchers.get().dispatch(localTroopNickNameUpdateEvent);
+    this.a.a.a.e();
+    if (paramBoolean) {
+      this.a.a.a.a(true, paramCommentEntry);
     }
-    while (this.jdField_a_of_type_Boolean)
-    {
-      TroopNickNameManager.TroopNickNameUpdateEvent localTroopNickNameUpdateEvent;
-      ArrayList localArrayList;
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

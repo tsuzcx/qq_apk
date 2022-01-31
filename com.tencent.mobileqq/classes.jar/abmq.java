@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.businessCard.BusinessCardManager;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
 
 public class abmq
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  
-  public abmq(PicProgressView paramPicProgressView, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
+  public abmq(BusinessCardManager paramBusinessCardManager, TransferRequest paramTransferRequest) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.jdField_a_of_type_Abmq = null;
-    if (!this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Int += this.b;
-      PicProgressView.a(this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView, this.jdField_a_of_type_Int, this.b);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abmq
  * JD-Core Version:    0.7.0.1
  */

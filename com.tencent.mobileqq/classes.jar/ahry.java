@@ -1,34 +1,25 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.activity.VADActivity;
+import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
 
 public class ahry
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahry(StatisticCollector paramStatisticCollector, String paramString) {}
+  public ahry(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      SharedPreferences localSharedPreferences = StatisticCollector.a().getSharedPreferences("crashcontrol", 0);
-      if ((localSharedPreferences != null) && (localSharedPreferences.getBoolean("shouldStopMsf", false)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqStatisticsStatisticCollector.a(this.jdField_a_of_type_JavaLangString, "actKillMsf", true, 0L, 0L, null, "");
-        localSharedPreferences.edit().putBoolean("shouldStopMsf", false).commit();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    VADActivity.a(this.a, 3);
+    if (this.a.a != null) {
+      this.a.a.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahry
  * JD-Core Version:    0.7.0.1
  */

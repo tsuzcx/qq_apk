@@ -1,34 +1,51 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.setting.ICameraEntrance;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
-public class amsd
-  extends BroadcastReceiver
+public final class amsd
+  extends AccountObserver
 {
-  public amsd(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public amsd(String paramString, BusinessObserver paramBusinessObserver) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onChangeToken(boolean paramBoolean, HashMap paramHashMap)
   {
-    paramContext = this.a.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a();
-    if ((paramContext == null) || (paramContext.isFinishing()) || (QIMCameraCaptureUnit.a(this.a))) {}
-    while (!"tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
+        break label30;
+      }
+    }
+    for (;;)
+    {
       return;
+      label30:
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
+      {
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          if (this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver != null) {
+            this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(1, true, localOpenID);
+          }
+        }
+        i += 1;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VERSION_CODES", 2, "receive ACTION_START_VIDEO_CHAT.");
-    }
-    this.a.h();
-    this.a.jdField_a_of_type_DovComQqImSettingICameraEntrance.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsd
  * JD-Core Version:    0.7.0.1
  */

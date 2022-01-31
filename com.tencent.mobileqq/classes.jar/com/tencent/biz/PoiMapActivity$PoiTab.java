@@ -5,8 +5,8 @@ import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
-import kki;
-import kkj;
+import kjt;
+import kju;
 
 public class PoiMapActivity$PoiTab
 {
@@ -27,7 +27,7 @@ public class PoiMapActivity$PoiTab
     this.jdField_a_of_type_Int = 1;
     this.jdField_b_of_type_Int = 2;
     this.e = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((PoiMapActivity)paramContext).findViewById(2131371455));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((PoiMapActivity)paramContext).findViewById(2131371618));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramPoiMapActivity.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentBizPoiMapActivity$TabView = new PoiMapActivity.TabView(paramPoiMapActivity, paramContext, paramString, paramInt);
     this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(paramContext);
@@ -35,8 +35,8 @@ public class PoiMapActivity$PoiTab
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new kki(this, paramPoiMapActivity));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new kkj(this, paramPoiMapActivity));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new kjt(this, paramPoiMapActivity));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new kju(this, paramPoiMapActivity));
   }
   
   public void a(int paramInt)
@@ -47,15 +47,15 @@ public class PoiMapActivity$PoiTab
       return;
     case 1: 
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131436989));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131437006));
       return;
     case 2: 
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131436963));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131436980));
       return;
     case 3: 
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131437129));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131437146));
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);

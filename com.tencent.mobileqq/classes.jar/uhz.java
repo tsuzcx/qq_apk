@@ -1,40 +1,14 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.ThemeRedPkgElem;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
 public class uhz
-  implements CustomizeStrategyFactory.HBCustomizeStrategy
+  implements TabBarView.OnTabChangeListener
 {
-  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public uhz(VisitorsActivity paramVisitorsActivity) {}
   
-  public uhz(QQAppInterface paramQQAppInterface)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo == null) {
-      return;
-    }
-    ThreadManager.post(new uia(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
-  {
-    if ((paramRedPacketInfo != null) && ((paramBaseRedPkgElem instanceof ThemeRedPkgElem))) {
-      paramRedPacketInfo.animInfo = ((ThemeRedPkgElem)paramBaseRedPkgElem).a;
-    }
+    this.a.a(paramInt2);
   }
 }
 

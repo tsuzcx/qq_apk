@@ -1,23 +1,25 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.fragment.QzoneGifHotPicFragment;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
 
 public class adef
   implements View.OnClickListener
 {
-  public adef(QzoneGifHotPicFragment paramQzoneGifHotPicFragment) {}
+  public adef(MusicFilePresenter paramMusicFilePresenter) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.finish();
+    if (MusicFilePresenter.a(this.a))
+    {
+      MusicFilePresenter.a(this.a);
+      return;
     }
+    MusicFilePresenter.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adef
  * JD-Core Version:    0.7.0.1
  */

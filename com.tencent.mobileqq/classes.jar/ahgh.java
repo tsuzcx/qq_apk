@@ -1,21 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.GroupSearchModelFooter;
-import com.tencent.mobileqq.search.presenter.SearchResultGroupFooterViewPresenter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
 
-public class ahgh
-  implements View.OnClickListener
+public final class ahgh
+  implements Parcelable.Creator
 {
-  public ahgh(SearchResultGroupFooterViewPresenter paramSearchResultGroupFooterViewPresenter, GroupSearchModelFooter paramGroupSearchModelFooter) {}
-  
-  public void onClick(View paramView)
+  public RevokeMsgInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupSearchModelFooter.b(paramView);
+    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
+    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.b = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.d = paramParcel.readString();
+    localRevokeMsgInfo.e = paramParcel.readInt();
+    return localRevokeMsgInfo;
+  }
+  
+  public RevokeMsgInfo[] a(int paramInt)
+  {
+    return new RevokeMsgInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgh
  * JD-Core Version:    0.7.0.1
  */

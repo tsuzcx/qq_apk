@@ -1,8 +1,27 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituTextManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class wbf
+  implements Runnable
 {
-  private static ZhituTextManager a = new ZhituTextManager(null);
+  public wbf(TroopChatPie paramTroopChatPie) {}
+  
+  public void run()
+  {
+    TroopHandler localTroopHandler = (TroopHandler)this.a.a.a(20);
+    String str = this.a.a().a;
+    if (!TextUtils.isEmpty(str)) {
+      localTroopHandler.q(str);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("Q.aio.TroopChatPie", 2, "mGetOnlineMemberTipsRunnable, getSessionInfo().curFriendUin == null");
+  }
 }
 
 

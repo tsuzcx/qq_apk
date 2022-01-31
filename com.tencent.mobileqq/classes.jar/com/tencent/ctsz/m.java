@@ -24,7 +24,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.usq.u;
 import mqq.app.MobileQQ;
-import pkk;
+import pme;
 
 public class m
   implements INetTransportProvider.INetTransportEventListener
@@ -229,7 +229,7 @@ public class m
       return;
     }
     jdField_a_of_type_Boolean = true;
-    new pkk(this).start();
+    new pme(this).start();
     jdField_a_of_type_Boolean = false;
   }
   
@@ -312,7 +312,7 @@ public class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.ctsz.m
  * JD-Core Version:    0.7.0.1
  */

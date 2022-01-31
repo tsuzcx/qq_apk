@@ -1,22 +1,17 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.addContactTroopView.TroopCardXingquBuluo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
-import tencent.im.troop_search_searchtab.searchtab.Item3;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.offline.util.ILog;
 
-public class klh
-  implements AdapterView.OnItemClickListener
+public final class klh
+  implements AsyncBack
 {
-  public klh(TroopCardXingquBuluo paramTroopCardXingquBuluo) {}
+  public void a(int paramInt) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(String paramString, int paramInt)
   {
-    paramAdapterView = (searchtab.Item3)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    this.a.a(paramAdapterView.str_transfer_url.get());
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_tribe", 0, 0, "", "", "", "");
+    if ((paramInt == 0) && (HtmlOffline.a.a())) {
+      HtmlOffline.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
+    }
   }
 }
 

@@ -43,7 +43,7 @@ public class ComponentContentBigImageVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969560, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969567, this, true);
   }
   
   public URL a(IReadInJoyModel paramIReadInJoyModel)
@@ -56,8 +56,8 @@ public class ComponentContentBigImageVideo
       }
       return localArticleInfo.mSinglePicture;
     }
-    if ((localArticleInfo != null) && (localArticleInfo.mVideoCoverUrl != null)) {
-      return localArticleInfo.mVideoCoverUrl;
+    if ((localArticleInfo != null) && (localArticleInfo.getVideoCoverURL() != null)) {
+      return localArticleInfo.getVideoCoverURL();
     }
     return super.a(paramIReadInJoyModel);
   }
@@ -65,9 +65,9 @@ public class ComponentContentBigImageVideo
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364171));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366969));
-    this.b = ((TextView)paramView.findViewById(2131366970));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364195));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367011));
+    this.b = ((TextView)paramView.findViewById(2131367012));
   }
   
   public void a(Object paramObject)
@@ -92,7 +92,7 @@ public class ComponentContentBigImageVideo
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.b.setVisibility(0);
-    Drawable localDrawable = getContext().getResources().getDrawable(2130840843);
+    Drawable localDrawable = getContext().getResources().getDrawable(2130840876);
     this.b.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
     this.b.setCompoundDrawablePadding(AIOUtils.a(6.0F, getContext().getResources()));
     this.b.setVisibility(0);

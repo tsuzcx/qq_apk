@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.nearby.now.send.uploader;
 
-import aeiy;
-import aeja;
-import aejc;
-import aejd;
-import aejg;
-import aejh;
-import aeji;
-import aejj;
-import aejk;
+import aewe;
+import aewg;
+import aewi;
+import aewj;
+import aewm;
+import aewn;
+import aewo;
+import aewp;
+import aewq;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -351,7 +351,7 @@ public class VideoFeedsUploader
     }
     while (i != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageUploader.a(3, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.jdField_e_of_type_JavaLangString, new aejg(this));
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageUploader.a(3, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.jdField_e_of_type_JavaLangString, new aewm(this));
       return;
       if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.l != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.l)))
       {
@@ -396,13 +396,13 @@ public class VideoFeedsUploader
     if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
       throw new AssertionError();
     }
-    new CsTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(24592).b(1).a(new aejd(this)).a(new aejc(this, paramInt)).a(localUploadReq);
+    new CsTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(24592).b(1).a(new aewj(this)).a(new aewi(this, paramInt)).a(localUploadReq);
   }
   
   private void a(int paramInt1, int paramInt2)
   {
     VideoFeedsUploader.UploadInfo localUploadInfo = new VideoFeedsUploader.UploadInfo(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo);
-    ThreadManager.getUIHandler().post(new aejk(this, localUploadInfo, paramInt1));
+    ThreadManager.getUIHandler().post(new aewq(this, localUploadInfo, paramInt1));
     if (QLog.isColorLevel()) {
       QLog.i("VideoFeedsUploader", 2, String.format("upload process: %d%%, size:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     }
@@ -410,7 +410,7 @@ public class VideoFeedsUploader
   
   private void a(VideoFeedsUploader.UploadResult paramUploadResult)
   {
-    ThreadManager.post(new aeja(this, paramUploadResult), 5, null, false);
+    ThreadManager.post(new aewg(this, paramUploadResult), 5, null, false);
   }
   
   private void a(List paramList1, List paramList2, byte[] paramArrayOfByte, String paramString, long paramLong)
@@ -1166,10 +1166,10 @@ public class VideoFeedsUploader
     //   1482: lsub
     //   1483: putfield 679	com/tencent/mobileqq/nearby/now/send/uploader/VideoFeedsUploader$UploadResult:jdField_f_of_type_Long	J
     //   1486: invokestatic 551	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   1489: new 796	aejf
+    //   1489: new 796	aewl
     //   1492: dup
     //   1493: aload_0
-    //   1494: invokespecial 797	aejf:<init>	(Lcom/tencent/mobileqq/nearby/now/send/uploader/VideoFeedsUploader;)V
+    //   1494: invokespecial 797	aewl:<init>	(Lcom/tencent/mobileqq/nearby/now/send/uploader/VideoFeedsUploader;)V
     //   1497: invokevirtual 562	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   1500: pop
     //   1501: aload 16
@@ -1355,7 +1355,7 @@ public class VideoFeedsUploader
     }
     while (i != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageUploader.a(3, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.jdField_f_of_type_JavaLangString, new aejh(this));
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageUploader.a(3, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.jdField_f_of_type_JavaLangString, new aewn(this));
       return;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.m)) {
         i = 0;
@@ -1380,7 +1380,7 @@ public class VideoFeedsUploader
       a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult);
       return false;
     }
-    ThreadManager.post(new aeiy(this, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.jdField_d_of_type_JavaLangString), 5, null, false);
+    ThreadManager.post(new aewe(this, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.jdField_d_of_type_JavaLangString), 5, null, false);
     return true;
   }
   
@@ -1481,7 +1481,7 @@ public class VideoFeedsUploader
       }
       localAddFeedReq.lbs_info.set((MessageMicro)localObject2);
     }
-    new CsTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(24608).b(1).a(new aejj(this)).a(new aeji(this)).a(localAddFeedReq);
+    new CsTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(24608).b(1).a(new aewp(this)).a(new aewo(this)).a(localAddFeedReq);
   }
   
   private void d() {}

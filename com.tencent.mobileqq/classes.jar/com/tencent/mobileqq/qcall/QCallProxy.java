@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.qcall;
 
-import aghf;
-import aghg;
-import aghh;
-import aghj;
+import agvh;
+import agvi;
+import agvj;
+import agvl;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
@@ -151,7 +151,7 @@ public class QCallProxy
     if (paramList == null) {
       return null;
     }
-    Collections.sort(paramList, new aghg(this));
+    Collections.sort(paramList, new agvi(this));
     SparseIntArray localSparseIntArray = new SparseIntArray();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramList.iterator();
@@ -310,7 +310,7 @@ public class QCallProxy
     for (;;)
     {
       return true;
-      ThreadManager.post(new aghh(this, paramString), 5, null, false);
+      ThreadManager.post(new agvj(this, paramString), 5, null, false);
     }
   }
   
@@ -499,10 +499,10 @@ public class QCallProxy
     //   356: invokeinterface 427 2 0
     //   361: pop
     //   362: aload 6
-    //   364: new 429	aghi
+    //   364: new 429	agvk
     //   367: dup
     //   368: aload_0
-    //   369: invokespecial 430	aghi:<init>	(Lcom/tencent/mobileqq/qcall/QCallProxy;)V
+    //   369: invokespecial 430	agvk:<init>	(Lcom/tencent/mobileqq/qcall/QCallProxy;)V
     //   372: invokestatic 191	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   375: goto -150 -> 225
     //   378: astore 7
@@ -620,7 +620,7 @@ public class QCallProxy
   
   public List a(QCallProxy.QueryRecentCallsListener arg1)
   {
-    ThreadManager.post(new aghj(this, ???), 5, null, false);
+    ThreadManager.post(new agvl(this, ???), 5, null, false);
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       ArrayList localArrayList = new ArrayList();
@@ -679,7 +679,7 @@ public class QCallProxy
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
         if (!this.jdField_a_of_type_Boolean) {
-          ThreadManager.post(new aghf(this), 5, null, true);
+          ThreadManager.post(new agvh(this), 5, null, true);
         }
         return;
       }

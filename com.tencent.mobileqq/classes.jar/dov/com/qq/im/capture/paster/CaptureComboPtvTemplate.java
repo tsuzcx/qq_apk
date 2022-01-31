@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.paster;
 
-import amwp;
 import android.app.Activity;
+import anmu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 import dov.com.qq.im.capture.QIMManager;
@@ -15,7 +15,7 @@ public class CaptureComboPtvTemplate
 {
   private float jdField_a_of_type_Float = 0.0F;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = QIMManager.a();
-  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new amwp(this);
+  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new anmu(this);
   private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(paramString);
   private QIMPtvTemplateManager jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager = (QIMPtvTemplateManager)QIMManager.a(3);
   private int c = 2;
@@ -62,7 +62,7 @@ public class CaptureComboPtvTemplate
   
   public int a(Activity paramActivity, int paramInt)
   {
-    paramActivity = (EffectsCameraCaptureView)paramActivity.findViewById(2131366903);
+    paramActivity = (EffectsCameraCaptureView)paramActivity.findViewById(2131366945);
     if ((this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null) && (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) && (paramActivity != null))
     {
       String str = QIMPtvTemplateManager.a + this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name;
@@ -76,7 +76,7 @@ public class CaptureComboPtvTemplate
   
   public void a(Activity paramActivity, int paramInt)
   {
-    paramActivity = (EffectsCameraCaptureView)paramActivity.findViewById(2131366903);
+    paramActivity = (EffectsCameraCaptureView)paramActivity.findViewById(2131366945);
     if (paramActivity != null)
     {
       paramActivity.setFaceEffect("");

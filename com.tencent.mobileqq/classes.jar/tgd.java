@@ -1,18 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class tgd
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public tgd(QQLSActivity paramQQLSActivity) {}
+  public tgd(PortraitImageview paramPortraitImageview) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    QQLSActivity.a(this.a).setCursorVisible(true);
-    return false;
+    this.a.postInvalidate();
   }
 }
 

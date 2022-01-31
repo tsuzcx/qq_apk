@@ -1,21 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryStructMsgView;
+import com.tencent.mobileqq.adapter.ChatHistoryStructAdapter;
+import com.tencent.mobileqq.adapter.ChatHistoryStructAdapter.HistoryStructItemHolder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
 
 public class sbr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public sbr(ChatSettingForTroop paramChatSettingForTroop, BizTroopHandler paramBizTroopHandler) {}
+  public sbr(ChatHistoryStructMsgView paramChatHistoryStructMsgView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopCode, false);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "P_CliOper", "Grp_set", "", "Grp_data", "share_set_close", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, "", "", "");
-    TroopReportor.a("Grp_set_new", "grpData_admin", "share_set_close", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a) });
+    if ((paramView.getTag() instanceof String)) {
+      return;
+    }
+    Object localObject1 = (ChatMessage)((ChatHistoryStructAdapter.HistoryStructItemHolder)paramView.getTag()).a;
+    if (this.a.a()) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a((ChatMessage)localObject1)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b((ChatMessage)localObject1);
+      }
+    }
+    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg))) {
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryStructAdapter.notifyDataSetChanged();
+        return;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a()) {
+          break;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a((ChatMessage)localObject1);
+      }
+    }
+    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
+    Object localObject2;
+    if ((localObject1 instanceof StructMsgForGeneralShare))
+    {
+      localObject2 = (StructMsgForGeneralShare)localObject1;
+      StructMsgForGeneralShare.GeneralClickHandler localGeneralClickHandler = new StructMsgForGeneralShare.GeneralClickHandler(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (StructMsgForGeneralShare)localObject2);
+      StructMsgForGeneralShare.onClickEvent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localGeneralClickHandler);
+    }
+    for (;;)
+    {
+      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
+      break;
+      if ((localObject1 instanceof StructMsgForAudioShare))
+      {
+        localObject2 = (StructMsgForAudioShare)localObject1;
+        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
+      }
+    }
   }
 }
 

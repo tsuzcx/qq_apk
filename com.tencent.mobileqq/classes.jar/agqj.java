@@ -1,42 +1,41 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.profile.upload.task.VipBaseUploadTask;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
 
 public class agqj
-  extends agrh
+  implements IUploadTaskCallback
 {
-  public agqj(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public agqj(VipBaseUploadTask paramVipBaseUploadTask) {}
+  
+  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
-    super(paramReceiptMessageDetailFragment);
+    this.a.f = 1002;
+    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.c = paramString;
+    this.a.a(1002, new Object[0]);
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
+  
+  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
-    }
-    if (paramInt == 0)
+    if (this.a.f != paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
-      }
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
-      return;
+      this.a.f = paramInt;
+      this.a.a(this.a.f, new Object[0]);
     }
-    if (paramInt != 1281)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
-      return;
-    }
-    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+  }
+  
+  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
+  {
+    this.a.f = 1001;
+    this.a.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a.a(1001, new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqj
  * JD-Core Version:    0.7.0.1
  */

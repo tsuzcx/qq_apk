@@ -1,19 +1,14 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import android.widget.ImageButton;
+import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
 
-class omp
-  implements DialogInterface.OnClickListener
+public class omp
+  implements Runnable
 {
-  omp(omn paramomn) {}
+  public omp(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.a.a, QQSettingMsgHistoryActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
+    StoryLocalPublishPart.a(this.a).setVisibility(8);
   }
 }
 

@@ -1,4 +1,4 @@
-import android.os.Handler;
+import android.view.View;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class ksk
@@ -8,8 +8,7 @@ public class ksk
   
   public void run()
   {
-    this.a.jdField_a_of_type_OrgJsonJSONObject = this.a.a(this.a, this.a.d);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+    this.a.a.setEnabled(true);
   }
 }
 

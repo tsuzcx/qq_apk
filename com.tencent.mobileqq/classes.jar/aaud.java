@@ -1,27 +1,32 @@
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
-public class aaud
-  implements ValueAnimator.AnimatorUpdateListener
+public final class aaud
+  extends BroadcastReceiver
+  implements Runnable
 {
-  public aaud(ARMapActivity paramARMapActivity) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    if (ARMapActivity.b(this.a) != paramValueAnimator.intValue())
+    if ("android.intent.action.PROXY_CHANGE".equals(paramIntent.getAction()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapActivity", 2, String.format("updateProgress mCurProgress=%s", new Object[] { Integer.valueOf(ARMapActivity.b(this.a)) }));
-      }
-      ARMapActivity.b(this.a, paramValueAnimator.intValue());
-      if (ARMapActivity.a(this.a) != null) {
-        ARMapActivity.a(this.a).setProgress(ARMapActivity.b(this.a));
-      }
+      ArkAppCenter.b("ArkApp", "receive broadcast proxy change.");
+      ThreadManager.executeOnSubThread(this);
     }
+  }
+  
+  public void run()
+  {
+    if (AppNetConnInfo.isWifiConn())
+    {
+      ArkAppContainer.setArkHttpProxy();
+      return;
+    }
+    ArkAppContainer.clearArkHttpProxy();
   }
 }
 

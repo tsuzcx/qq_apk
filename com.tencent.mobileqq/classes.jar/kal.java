@@ -1,13 +1,15 @@
-import com.tencent.av.ui.QavVideoRecordUICtrl;
+import android.graphics.drawable.Drawable;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.ui.VoiceChangeData.GetDrawableCallack;
 
 public class kal
-  implements Runnable
+  implements VoiceChangeData.GetDrawableCallack
 {
-  public kal(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  public kal(VideoControlUI paramVideoControlUI, boolean paramBoolean) {}
   
-  public void run()
+  public void a(Drawable paramDrawable)
   {
-    QavVideoRecordUICtrl.a(this.a, 1);
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.l(this.jdField_a_of_type_Boolean);
   }
 }
 

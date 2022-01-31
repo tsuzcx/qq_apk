@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.utils.UIUtils;
-import ooi;
-import ooj;
-import ook;
-import ool;
+import oqc;
+import oqd;
+import oqe;
+import oqf;
 
 public class StoryImageDialog
   extends Dialog
@@ -34,13 +34,13 @@ public class StoryImageDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130970643);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371496));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369661));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371495));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131371497));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369662));
-    ((RelativeLayout)findViewById(2131371494)).setOnClickListener(new ooi(this));
+    setContentView(2130970688);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371662));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369738));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371661));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131371663));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369739));
+    ((RelativeLayout)findViewById(2131371660)).setOnClickListener(new oqc(this));
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -61,7 +61,7 @@ public class StoryImageDialog
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new ool(this));
+      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new oqf(this));
       return;
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       break;
@@ -84,7 +84,7 @@ public class StoryImageDialog
         this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         break label160;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ooj(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new oqd(this));
       break label160;
       label335:
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
@@ -92,7 +92,7 @@ public class StoryImageDialog
       if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
         this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       } else {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new ook(this));
+        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new oqe(this));
       }
     }
   }

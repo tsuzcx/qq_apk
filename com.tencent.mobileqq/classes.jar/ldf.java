@@ -1,24 +1,18 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class ldf
-  implements Runnable
+class ldf
+  implements AsyncBack
 {
-  public ldf(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity, int paramInt) {}
+  ldf(ldc paramldc) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Int <= 0)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.a.setText(2131433280);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
     }
-    if (this.jdField_a_of_type_Int > 99)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.a.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.getString(2131433280), Integer.valueOf(99) }));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.a.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.getString(2131433280), Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
 }
 

@@ -77,6 +77,7 @@ public class QQSVArtFilterNew
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
       paramInt1 = this.h * paramInt1 / paramInt2;
+      paramInt1 -= paramInt1 % 4;
       if (paramInt1 != this.g)
       {
         this.g = paramInt1;

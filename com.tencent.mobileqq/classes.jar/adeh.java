@@ -1,41 +1,19 @@
-import android.text.TextUtils;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.fragment.UnitedVerifyMsgEditFragment;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.IGetTotalTime;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
 
-class adeh
-  implements Runnable
+public class adeh
+  implements FileViewMusicService.IGetTotalTime
 {
-  adeh(adeg paramadeg, String paramString1, String paramString2) {}
+  public adeh(MusicFilePresenter paramMusicFilePresenter) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Adeg.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_JavaLangString);
-    try
-    {
-      if (!TextUtils.isEmpty(this.b)) {
-        this.jdField_a_of_type_Adeg.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.lastIndexOf(this.b), this.jdField_a_of_type_JavaLangString.length());
-      }
-      for (;;)
-      {
-        label58:
-        this.jdField_a_of_type_Adeg.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().setSoftInputMode(4);
-        return;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_Adeg.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.length());
-        }
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      break label58;
-    }
+    this.a.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adeh
  * JD-Core Version:    0.7.0.1
  */

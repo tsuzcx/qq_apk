@@ -1,6 +1,6 @@
 package cooperation.qqfav;
 
-import alza;
+import ampe;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
@@ -35,7 +35,7 @@ public abstract class QfavHelper$AsyncFavoritesProvider
   
   public void onInstallFinish(String paramString)
   {
-    ThreadManager.getSubThreadHandler().post(new alza(this));
+    ThreadManager.getSubThreadHandler().post(new ampe(this));
   }
 }
 

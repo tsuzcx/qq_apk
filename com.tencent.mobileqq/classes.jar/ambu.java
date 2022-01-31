@@ -1,44 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener.Stub;
+import android.graphics.Matrix;
+import android.view.ViewDebug.ExportedProperty;
 
 public class ambu
-  extends OnQZoneLiveSoDownloadListener.Stub
 {
-  public ambu(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  @ViewDebug.ExportedProperty
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  @ViewDebug.ExportedProperty
+  public float b;
+  private boolean b;
+  @ViewDebug.ExportedProperty
+  public float c = 0.0F;
+  @ViewDebug.ExportedProperty
+  public float d = 1.0F;
+  @ViewDebug.ExportedProperty
+  public float e = 1.0F;
+  @ViewDebug.ExportedProperty
+  public float f = 0.0F;
+  @ViewDebug.ExportedProperty
+  public float g = 0.0F;
   
-  public void a()
+  public ambu()
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1000;
-    localMessage.arg1 = 1;
-    this.a.a.sendMessage(localMessage);
-    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
-    this.a.a.sendEmptyMessageDelayed(1009, i);
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
-  
-  public void a(float paramFloat)
-  {
-    this.a.runOnUiThread(new ambv(this, paramFloat));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a.obtainMessage(1008).sendToTarget();
-  }
-  
-  public void b()
-  {
-    this.a.runOnUiThread(new ambw(this));
-  }
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambu
  * JD-Core Version:    0.7.0.1
  */

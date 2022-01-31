@@ -1,52 +1,47 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class ajjh
-  implements ActionSheet.OnButtonClickListener
+  implements INetInfoHandler
 {
-  public ajjh(TroopShareUtility paramTroopShareUtility) {}
+  public ajjh(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onNetMobile2None()
   {
-    if (this.a.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopShareUtility", 2, "OnClick.chooseLinkType: " + paramInt);
-    }
-    this.a.jdField_b_of_type_Boolean = true;
-    switch (paramInt)
-    {
-    default: 
-      this.a.a(false);
-      this.a.jdField_a_of_type_Int = -1;
-      this.a.jdField_b_of_type_Int = -1;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.a.a(true);
-      this.a.jdField_b_of_type_Int = 1;
-      TroopShareUtility.a(this.a);
-      continue;
-      this.a.a(true);
-      this.a.jdField_b_of_type_Int = 0;
-      TroopShareUtility.a(this.a);
-    }
+    this.a.b.cancel();
+    this.a.b.start();
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.b.cancel();
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.b.cancel();
+    this.a.b.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.qwallet.utils.FontConvert;
 
-class xho
-  implements Runnable
+public class xho
 {
-  xho(xhn paramxhn) {}
-  
-  public void run()
-  {
-    QQToast.a(this.a.a.a, 1, "资源加载失败", 1).a();
-  }
+  public static final FontConvert a = new FontConvert(null);
 }
 
 

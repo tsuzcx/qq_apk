@@ -1,24 +1,16 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.Utils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class rgu
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public rgu(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public rgu(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a("", null);
-    ReportController.b(this.a.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, "", "", "", "");
-    if (Utils.b(AddFriendVerifyActivity.a(this.a))) {
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8008275", "0X8008275", 0, 0, "", "", "", "");
-    }
-    if (!TextUtils.isEmpty(this.a.f)) {
-      ReportController.b(this.a.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+    if (paramDialogInterface == this.a.c) {
+      this.a.c = null;
     }
   }
 }

@@ -1,29 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
 public class aepj
-  implements DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback
+  extends DataSetObserver
 {
-  public aepj(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public aepj(PlayerInvitePanel paramPlayerInvitePanel) {}
   
-  public void a(String paramString, int paramInt)
+  public void onChanged()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadUpdate  url:" + paramString + "   progress:" + paramInt);
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (!this.a.o)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
-    }
-    this.a.runOnUiThread(new aepk(this, paramString, paramBoolean1));
+    super.onChanged();
+    this.a.a();
   }
 }
 

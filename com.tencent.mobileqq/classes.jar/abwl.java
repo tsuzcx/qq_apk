@@ -1,21 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.emoticon.SogouEmojiTaskController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import java.util.Iterator;
+import java.util.List;
 
-public class abwl
-  implements DialogInterface.OnDismissListener
+class abwl
+  implements Runnable
 {
-  public abwl(SogouEmojiTaskController paramSogouEmojiTaskController) {}
+  abwl(abwj paramabwj, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
-    }
-    this.a.a(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Abwj.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (this.jdField_a_of_type_Abwj.a.jdField_a_of_type_JavaUtilList != null))
+    {
+      Iterator localIterator = this.jdField_a_of_type_Abwj.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
+        if (localRecentBaseData.a().equals(this.jdField_a_of_type_JavaLangString))
+        {
+          localRecentBaseData.b = this.b;
+          this.jdField_a_of_type_Abwj.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abwj.a.jdField_a_of_type_Int);
+        }
+      }
     }
   }
 }

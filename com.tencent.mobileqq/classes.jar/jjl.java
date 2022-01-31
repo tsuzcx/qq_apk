@@ -1,18 +1,8 @@
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class jjl
-  implements Runnable
 {
-  public jjl(GuildMultiActivity paramGuildMultiActivity) {}
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(GuildMultiActivity.a, 2, "updateMemInStage refresh");
-    }
-    GuildMultiActivity.a(this.a, false);
-  }
+  public int a;
+  public int b;
+  public int c = 3;
 }
 
 

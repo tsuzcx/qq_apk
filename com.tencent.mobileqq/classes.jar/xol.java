@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.EditPicQzComment;
 
 public class xol
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public xol(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xol(EditPicQzComment paramEditPicQzComment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.startActivityForResult(NewFlowCameraActivity.a(this.a), 3);
+    EditPicQzComment.a(this.a).a = paramBoolean;
   }
 }
 

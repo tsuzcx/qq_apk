@@ -1,14 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
 
-public class aatu
+class aatu
   implements Runnable
 {
-  public aatu(ARMapActivity paramARMapActivity, String paramString) {}
+  aatu(aats paramaats, aauc paramaauc) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.b.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aats.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$OnGetAppIcon.a(this.jdField_a_of_type_Aats.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aauc.a);
   }
 }
 

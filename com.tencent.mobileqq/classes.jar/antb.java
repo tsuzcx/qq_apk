@@ -1,13 +1,17 @@
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
 
 public class antb
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public antb(ShortVideoPlayActivity paramShortVideoPlayActivity, int paramInt) {}
+  public antb(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.b(this.jdField_a_of_type_Int);
+    return this.a.a.a(paramMotionEvent);
   }
 }
 

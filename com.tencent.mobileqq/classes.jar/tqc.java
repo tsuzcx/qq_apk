@@ -1,34 +1,35 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class tqc
-  implements CompoundButton.OnCheckedChangeListener
+  extends WtloginObserver
 {
-  public tqc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public tqc(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
   {
-    int i = 1;
-    if (paramBoolean)
+    if (QLog.isColorLevel())
     {
-      this.a.app.c(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
+      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
     }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
+    if (paramInt2 == 0) {
       return;
-      this.a.app.c(0);
-      break;
-      label68:
-      i = 0;
     }
+    RegisterQQNumberActivity.a(this.a);
+    paramString = new Intent(this.a, LoginActivity.class);
+    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.a);
+    paramString.addFlags(131072);
+    this.a.startActivity(paramString);
+    this.a.finish();
   }
 }
 

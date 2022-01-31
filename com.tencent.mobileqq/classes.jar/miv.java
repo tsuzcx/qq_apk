@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public class miv
+class miv
   implements Runnable
 {
-  public miv(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  miv(miu parammiu) {}
   
   public void run()
   {
-    ReadinjoyTabFrame.a(this.a);
+    ReadInJoyListViewGroup.b(this.a.a);
   }
 }
 

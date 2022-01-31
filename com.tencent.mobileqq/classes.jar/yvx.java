@@ -1,29 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionPackage;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
 public class yvx
-  implements Runnable
+  implements Comparator
 {
-  public yvx(ApolloPanel paramApolloPanel, List paramList) {}
+  public yvx(ApolloDaoManager paramApolloDaoManager) {}
   
-  public void run()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a != null))
-    {
-      ApolloDaoManager localApolloDaoManager = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.getManager(154);
-      if (localApolloDaoManager != null)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext()) {
-          localApolloDaoManager.a((ApolloActionPackage)localIterator.next());
-        }
-      }
+    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
+      return 0;
     }
+    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
+      return 1;
+    }
+    return -1;
   }
 }
 

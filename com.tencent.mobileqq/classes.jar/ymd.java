@@ -1,21 +1,15 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.apollo.game.ApolloGameResManager;
-import com.tencent.mobileqq.apollo.game.ApolloGameResManager.ApolloGameRes;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
 
 public class ymd
-  extends LruCache
+  implements Runnable
 {
-  public ymd(ApolloGameResManager paramApolloGameResManager, int paramInt)
-  {
-    super(paramInt);
-  }
+  public ymd(ApolloRenderDriver paramApolloRenderDriver) {}
   
-  protected int a(String paramString, ApolloGameResManager.ApolloGameRes paramApolloGameRes)
+  public void run()
   {
-    if ((paramApolloGameRes == null) || (paramApolloGameRes.a == null)) {
-      return 0;
-    }
-    return paramApolloGameRes.a.length;
+    this.a.a.a(ApolloActionHelper.a());
   }
 }
 

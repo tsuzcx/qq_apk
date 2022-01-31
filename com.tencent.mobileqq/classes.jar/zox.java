@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.app.message.BaseMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.Map;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
+import mqq.os.MqqHandler;
 
-class zox
+public class zox
   implements Runnable
 {
-  zox(zow paramzow) {}
+  public zox(TroopManager paramTroopManager, String paramString, TroopManager.callbackInMainThread paramcallbackInMainThread) {}
   
   public void run()
   {
-    if (this.a.a.a.b.containsKey(this.a.b)) {
-      this.a.a.a.b.remove(this.a.b);
-    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.d(this.jdField_a_of_type_JavaLangString);
+    ThreadManager.getUIHandler().post(new zoy(this, str));
   }
 }
 

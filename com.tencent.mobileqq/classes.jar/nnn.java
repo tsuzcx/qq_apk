@@ -1,27 +1,30 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.os.Build.VERSION;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnVideoSizeChangedListener;
+import android.app.Dialog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class nnn
-  implements IMediaPlayer.OnVideoSizeChangedListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public nnn(TextureVideoView paramTextureVideoView) {}
+  public nnn(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  @TargetApi(15)
-  public void a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.a.d = paramIMediaPlayer.c();
-    this.a.e = paramIMediaPlayer.d();
-    if ((this.a.d != 0) && (this.a.e != 0))
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
     {
-      if (Build.VERSION.SDK_INT >= 15) {
-        this.a.getSurfaceTexture().setDefaultBufferSize(this.a.d, this.a.e);
+      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
+      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
+      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
+      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.b == 0)) {
+        this.a.a.dismiss();
       }
-      this.a.requestLayout();
     }
+    return false;
   }
 }
 

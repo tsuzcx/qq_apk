@@ -1,25 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.qqprotect.qsec.QSecLibMgr;
 
 public class alxu
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public alxu(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  public alxu(QSecLibMgr paramQSecLibMgr) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ("com.tencent.qlink.finishdlg".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
+    QSecLibMgr.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxu
  * JD-Core Version:    0.7.0.1
  */

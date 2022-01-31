@@ -1,21 +1,23 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.widget.KandianPopupWindow;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class almt
-  implements PopupWindow.OnDismissListener
+  implements View.OnClickListener
 {
-  public almt(KandianPopupWindow paramKandianPopupWindow) {}
+  public almt(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    this.a.a = null;
-    KandianPopupWindow.a(this.a, 1.0F);
-    com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.a = false;
+    ProfileCardUtil.a(this.a, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     almt
  * JD-Core Version:    0.7.0.1
  */

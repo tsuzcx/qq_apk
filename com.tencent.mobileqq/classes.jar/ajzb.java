@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
 
-public class ajzb
-  implements Runnable
+public final class ajzb
+  extends View.AccessibilityDelegate
 {
-  public ajzb(WebViewFragment paramWebViewFragment) {}
-  
-  public void run()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    SwiftOfflineDataUtils.a(this.a.d());
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    paramAccessibilityNodeInfo.setVisibleToUser(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzb
  * JD-Core Version:    0.7.0.1
  */

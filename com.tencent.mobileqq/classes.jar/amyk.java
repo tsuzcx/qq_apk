@@ -1,26 +1,45 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Color;
-import android.view.View;
+import android.os.RemoteException;
+import cooperation.qzone.remote.IServiceHandler;
+import cooperation.qzone.remote.RecvMsg;
+import cooperation.qzone.remote.RemoteServiceProxy;
+import cooperation.qzone.remote.SendMsg;
 
-public final class amyk
-  implements ValueAnimator.AnimatorUpdateListener
+public class amyk
+  implements Runnable
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
-  final int b = Color.green(this.d);
-  final int c = Color.blue(this.d);
+  public amyk(RemoteServiceProxy paramRemoteServiceProxy, SendMsg paramSendMsg) {}
   
-  public amyk(int paramInt, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    try
+    {
+      if (this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.serviceHandler != null)
+      {
+        this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.serviceHandler.sendMsg(this.jdField_a_of_type_CooperationQzoneRemoteSendMsg);
+        return;
+      }
+      try
+      {
+        RecvMsg localRecvMsg = this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.createWaiteRespTimeout(this.jdField_a_of_type_CooperationQzoneRemoteSendMsg, "main thread sendMsgToServiceFailed. serviceHandler is null.");
+        this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.sendFailedRespToApp(this.jdField_a_of_type_CooperationQzoneRemoteSendMsg, localRecvMsg);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        return;
+      }
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      localRemoteException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyk
  * JD-Core Version:    0.7.0.1
  */

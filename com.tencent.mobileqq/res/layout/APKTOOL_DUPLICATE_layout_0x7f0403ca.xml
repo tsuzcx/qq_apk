@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0385" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13e3" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403cb" />
-    <View android:layout_width="5.0dip" android:layout_height="20.0dip" />
-    <include android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13e4" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403cb" />
+<LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/image" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:scaleType="centerCrop" android:layout_below="@id/title" tencent:view_width_weight="1.0" tencent:view_height_weight="0.562" />
 </LinearLayout>

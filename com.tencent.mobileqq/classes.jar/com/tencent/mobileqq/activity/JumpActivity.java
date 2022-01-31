@@ -37,7 +37,6 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.forward.ForwardFileOption;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.nearby.gameroom.GameRoomUtils;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.troop.utils.NearbyVideoChatManager;
 import com.tencent.mobileqq.utils.Base64Util;
@@ -72,13 +71,13 @@ import mqq.observer.WtloginObserver;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ssz;
-import sta;
-import stb;
-import stc;
-import std;
-import ste;
-import stf;
+import svy;
+import svz;
+import swa;
+import swb;
+import swc;
+import swd;
+import swe;
 
 public class JumpActivity
   extends BaseActivity
@@ -92,7 +91,7 @@ public class JumpActivity
   private Intent jdField_a_of_type_AndroidContentIntent;
   private QQMapActivityProxy jdField_a_of_type_ComTencentMobileqqAppQQMapActivityProxy;
   private String jdField_a_of_type_JavaLangString;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new ssz(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new svy(this);
   private Intent jdField_b_of_type_AndroidContentIntent;
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
@@ -135,7 +134,7 @@ public class JumpActivity
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new sta(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new svz(this);
       IntentFilter localIntentFilter = new IntentFilter("ShareToQZoneAndFinishTheLastActivity");
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
@@ -160,7 +159,7 @@ public class JumpActivity
   
   private void a(Intent paramIntent, Bundle paramBundle)
   {
-    new stb(this, paramIntent, paramBundle).run();
+    new swa(this, paramIntent, paramBundle).run();
   }
   
   private void a(Bundle paramBundle)
@@ -438,7 +437,7 @@ public class JumpActivity
   
   private void b(Bundle paramBundle)
   {
-    new stc(this, paramBundle).run();
+    new swb(this, paramBundle).run();
   }
   
   private void b(boolean paramBoolean)
@@ -462,14 +461,14 @@ public class JumpActivity
     {
       int i = a(localBundle);
       if (i == 4) {
-        QfavUtil.a(this, 2131431661, 1);
+        QfavUtil.a(this, 2131431678, 1);
       }
       for (;;)
       {
         finish();
         return;
         if (i != 0) {
-          QfavUtil.a(this, 2131431662, 1);
+          QfavUtil.a(this, 2131431679, 1);
         }
       }
     }
@@ -1211,7 +1210,7 @@ public class JumpActivity
           }
           paramIntent = paramIntent.getStringExtra("roomId");
         } while (paramIntent == null);
-        localObject1 = new std(this);
+        localObject1 = new swc(this);
       } while (!ChatActivityUtils.a(this.app, this, 3000, paramIntent, true, true, (ChatActivityUtils.StartVideoListener)localObject1, null));
       finish();
       return;
@@ -1235,12 +1234,12 @@ public class JumpActivity
       return;
       if (paramInt1 == 570)
       {
-        new Handler().postDelayed(new ste(this), 10L);
+        new Handler().postDelayed(new swd(this), 10L);
         return;
       }
       if (paramInt1 == 573)
       {
-        new Handler().postDelayed(new stf(this, paramIntent), 10L);
+        new Handler().postDelayed(new swe(this, paramIntent), 10L);
         return;
       }
     } while (paramInt1 == 23);
@@ -1316,7 +1315,6 @@ public class JumpActivity
     }
     if ((localObject4 != null) && ("from_gesturemgr_download".equals(((Intent)localObject4).getAction())))
     {
-      GestureMgr.a();
       finish();
       return false;
     }
@@ -1426,7 +1424,7 @@ public class JumpActivity
         paramBundle = (Bundle)localObject3;
         localObject1 = super.getCallingActivity();
         if (localObject1 == null) {
-          break label1487;
+          break label1484;
         }
         paramBundle = (Bundle)localObject3;
         localObject3 = ((ComponentName)localObject1).getPackageName();
@@ -1439,11 +1437,11 @@ public class JumpActivity
           localObject1 = localObject3;
         }
       }
-      label1211:
+      label1208:
       paramBundle = (Bundle)localObject1;
       bool = TextUtils.isEmpty((CharSequence)localObject1);
       if (bool) {
-        break label1515;
+        break label1512;
       }
     }
     catch (Exception localException)
@@ -1488,12 +1486,12 @@ public class JumpActivity
             super.startActivity(paramBundle);
             super.finish();
             return false;
-            label1487:
+            label1484:
             paramBundle = (Bundle)localObject3;
             QLog.i("JumpAction", 1, "-->onCreate getCallingActivity returns null!");
             localObject1 = localObject3;
-            break label1211;
-            label1515:
+            break label1208;
+            label1512:
             break;
             if (((JumpAction)localObject3).jdField_c_of_type_JavaLangString.equals("VERIFYCODE")) {
               paramBundle.setClass(this, VerifyCodeActivity.class);
@@ -1504,36 +1502,36 @@ public class JumpActivity
         }
         bool = true;
         if ((((JumpAction)localObject3).jdField_b_of_type_JavaLangString != null) && (((JumpAction)localObject3).jdField_b_of_type_JavaLangString.equals("ptlogin")) && (((JumpAction)localObject3).jdField_c_of_type_JavaLangString != null) && (((JumpAction)localObject3).jdField_c_of_type_JavaLangString.equals("qlogin"))) {
-          break label2762;
+          break label2759;
         }
         if ((((JumpAction)localObject3).jdField_b_of_type_JavaLangString == null) || (!((JumpAction)localObject3).jdField_b_of_type_JavaLangString.equals("qqreg"))) {
-          break label2757;
+          break label2754;
         }
-        break label2762;
+        break label2759;
         if ((str1.startsWith("mqqwpa://im")) || (str1.startsWith("mqqwpaopenid://im")))
         {
           a(true, str2, true);
           return false;
         }
         if ((!str1.startsWith("mqqapi:")) || ((paramBundle != null) && (!"com.tencent.mobileqq".equals(paramBundle)))) {
-          break label2754;
+          break label2751;
         }
         paramBundle = getIntent().getStringExtra("pkg_name");
-        label1715:
+        label1712:
         if ((!this.app.isLogin()) && (i != 0))
         {
           localObject4 = new StringBuilder().append(str1);
           if (str1.indexOf("?") <= -1) {
-            break label2769;
+            break label2766;
           }
         }
       }
     }
+    label2751:
     label2754:
-    label2757:
-    label2762:
-    label2767:
-    label2769:
+    label2759:
+    label2764:
+    label2766:
     for (Object localObject2 = "&";; localObject2 = "?")
     {
       localObject2 = (String)localObject2;
@@ -1556,7 +1554,7 @@ public class JumpActivity
           break;
         }
         finish();
-        break label2767;
+        break label2764;
         if ((GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) && (!GesturePWDUtils.getAppForground(this)) && (!PatternLockUtils.isOpenQWalletLockWhenJumpToQWallet(this, this.app, str1)))
         {
           localObject2 = new Intent(getActivity(), GesturePWDUnlockActivity.class);
@@ -1571,11 +1569,11 @@ public class JumpActivity
           {
             if (!NetworkUtil.d(this))
             {
-              QQToast.a(this, getString(2131432992), 0).b(getTitleBarHeight());
-              break label2777;
+              QQToast.a(this, getString(2131433009), 0).b(getTitleBarHeight());
+              break label2774;
             }
             EquipmentLockImpl.a().a(this.app, this.app.getCurrentAccountUin(), this.jdField_a_of_type_MqqObserverWtloginObserver);
-            break label2777;
+            break label2774;
           }
           if ((((JumpAction)localObject3).jdField_b_of_type_JavaLangString != null) && (((JumpAction)localObject3).jdField_b_of_type_JavaLangString.equals("gvideo")) && (((JumpAction)localObject3).jdField_c_of_type_JavaLangString != null) && (((JumpAction)localObject3).jdField_c_of_type_JavaLangString.equals("open_plugin")))
           {
@@ -1645,7 +1643,7 @@ public class JumpActivity
       else
       {
         a();
-        break label2767;
+        break label2764;
         paramBundle = getIntent().getStringExtra("action");
         if (paramBundle == null)
         {
@@ -1661,17 +1659,17 @@ public class JumpActivity
         }
         while (this.jdField_b_of_type_Boolean)
         {
-          break label2779;
+          break label2776;
           if ("select_location".equals(paramBundle)) {
             this.jdField_c_of_type_Boolean = true;
           }
         }
         if (!this.jdField_c_of_type_Boolean) {
-          break label2779;
+          break label2776;
         }
         d();
-        break label2779;
-        break label1715;
+        break label2776;
+        break label1712;
         i = 1;
         break;
         i = 0;
@@ -1679,9 +1677,9 @@ public class JumpActivity
       }
       return false;
     }
-    label2777:
+    label2774:
     return false;
-    label2779:
+    label2776:
     return false;
   }
   

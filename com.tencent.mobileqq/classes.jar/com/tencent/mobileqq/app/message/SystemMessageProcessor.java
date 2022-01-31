@@ -77,15 +77,15 @@ import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
-import zqv;
-import zqw;
-import zqx;
-import zqy;
-import zqz;
-import zra;
-import zrb;
-import zrc;
-import zrd;
+import zub;
+import zuc;
+import zud;
+import zue;
+import zuf;
+import zug;
+import zuh;
+import zui;
+import zuj;
 
 public class SystemMessageProcessor
   extends BaseMessageProcessor
@@ -672,7 +672,7 @@ public class SystemMessageProcessor
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.L, 0, true, false);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.O, 0, true, false);
     GroupSystemMsgController.a().a(false, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Collections.sort(paramFromServiceMsg, new zqv(this));
+    Collections.sort(paramFromServiceMsg, new zub(this));
     n = 0;
     if (n < i3)
     {
@@ -1119,7 +1119,7 @@ public class SystemMessageProcessor
     if (QLog.isColorLevel()) {
       QLog.d("SystemMessageProcessor", 2, "sendSystemMsgReadedReport latestFriendSeq=" + l1 + ";latestGroupSeq=" + l2);
     }
-    a(true, true, false, 0L, new zqy(this, l1, l2, localReqSystemMsgRead));
+    a(true, true, false, 0L, new zue(this, l1, l2, localReqSystemMsgRead));
   }
   
   public void a(int paramInt)
@@ -1251,7 +1251,7 @@ public class SystemMessageProcessor
     paramString.addAttribute("_tag_LOGSTR", String.valueOf(l));
     paramString.extraData.putInt("system_msg_action_type", paramInt6);
     paramSystemMsgActionInfo.jdField_a_of_type_JavaLangObject = paramString;
-    paramSystemMsgActionInfo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zqw(this);
+    paramSystemMsgActionInfo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zuc(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(paramSystemMsgActionInfo);
   }
   
@@ -1279,7 +1279,7 @@ public class SystemMessageProcessor
     ((ToServiceMsg)localObject).extraData.putInt("system_msg_action_type", paramInt6);
     ((ToServiceMsg)localObject).extraData.putBoolean("isUncommonlyUsedFrd", paramBoolean);
     localProtoReq.jdField_a_of_type_JavaLangObject = localObject;
-    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zqx(this, paramInt6, paramInt3, paramSystemMsgActionInfo, paramStructMsg, paramLong2);
+    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zud(this, paramInt6, paramInt3, paramSystemMsgActionInfo, paramStructMsg, paramLong2);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localProtoReq);
   }
   
@@ -1525,7 +1525,7 @@ public class SystemMessageProcessor
     ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
     localProtoReq.jdField_a_of_type_JavaLangString = "ProfileService.Pb.ReqSystemMsgRead.Friend";
     localProtoReq.jdField_a_of_type_ArrayOfByte = localReqSystemMsgRead.toByteArray();
-    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zqz(this, l1, l2, l3);
+    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zuf(this, l1, l2, l3);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localProtoReq);
   }
   
@@ -1602,7 +1602,7 @@ public class SystemMessageProcessor
     ProtoReqManager.ProtoReq localProtoReq = new ProtoReqManager.ProtoReq();
     localProtoReq.jdField_a_of_type_JavaLangString = "ProfileService.Pb.ReqSystemMsgRead.Group";
     localProtoReq.jdField_a_of_type_ArrayOfByte = localReqSystemMsgRead.toByteArray();
-    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zra(this, l1, l2, l3);
+    localProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zug(this, l1, l2, l3);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localProtoReq);
   }
   
@@ -1617,7 +1617,7 @@ public class SystemMessageProcessor
     if (QLog.isColorLevel()) {
       QLog.d("SystemMessageProcessor", 2, "clearSystemMsg latestFriendSeq=" + l1 + ";latestGroupSeq=" + l2);
     }
-    a(true, true, false, 0L, new zrb(this, l1, l2, localReqSystemMsgRead));
+    a(true, true, false, 0L, new zuh(this, l1, l2, localReqSystemMsgRead));
   }
   
   public void e()
@@ -1641,7 +1641,7 @@ public class SystemMessageProcessor
     ((ProtoReqManager.ProtoReq)localObject).a();
     ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_JavaLangString = "ProfileService.Pb.ReqNextSystemMsg.Friend";
     ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_ArrayOfByte = localReqNextSystemMsg.toByteArray();
-    ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zrc(this);
+    ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zui(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a((ProtoReqManager.ProtoReq)localObject);
   }
   
@@ -1672,7 +1672,7 @@ public class SystemMessageProcessor
     ((ProtoReqManager.ProtoReq)localObject).a();
     ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_JavaLangString = "ProfileService.Pb.ReqNextSystemMsg.Group";
     ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_ArrayOfByte = localReqNextSystemMsg.toByteArray();
-    ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zrd(this);
+    ((ProtoReqManager.ProtoReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$IProtoRespBack = new zuj(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a((ProtoReqManager.ProtoReq)localObject);
   }
 }

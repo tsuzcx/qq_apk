@@ -26,11 +26,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import jgb;
-import jgd;
-import jge;
-import jgf;
-import jgg;
+import jfm;
+import jfo;
+import jfp;
+import jfq;
+import jfr;
 
 public class MagicFaceDataEntity
   extends MagicfaceData
@@ -42,9 +42,9 @@ public class MagicFaceDataEntity
   public EffectPendantTools a;
   EffectController jdField_a_of_type_ComTencentAvOpenglEffectsEffectController;
   BitSet jdField_a_of_type_JavaUtilBitSet;
-  protected jgd a;
-  jge jdField_a_of_type_Jge;
-  jgg jdField_a_of_type_Jgg;
+  protected jfo a;
+  jfp jdField_a_of_type_Jfp;
+  jfr jdField_a_of_type_Jfr;
   boolean jdField_a_of_type_Boolean;
   int[] jdField_a_of_type_ArrayOfInt;
   boolean b;
@@ -55,7 +55,7 @@ public class MagicFaceDataEntity
     AVLog.c("MagicFaceDataEntity", "MagicFaceDataEntity constructor:" + paramString1 + "|" + paramBoolean + "|" + paramInt);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.b = paramBoolean;
-    this.jdField_a_of_type_AndroidOsHandler = new jgf(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new jfq(this, Looper.getMainLooper());
     this.jdField_a_of_type_ArrayOfInt = a();
     this.jdField_a_of_type_JavaUtilBitSet = new BitSet();
     if ((paramInt & 0x1) != 0) {
@@ -69,9 +69,9 @@ public class MagicFaceDataEntity
     this.jdField_a_of_type_ComTencentAvOpenglEffectsEffectController = this.jdField_a_of_type_ComTencentAvVideoController.a(paramVideoAppInterface);
     this.jdField_a_of_type_ComTencentAvOpenglEffectsEffectController.a();
     this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools = ((EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2));
-    this.jdField_a_of_type_Jge = new jge(this);
-    this.jdField_a_of_type_Jgd = new jgd(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Jgd);
+    this.jdField_a_of_type_Jfp = new jfp(this);
+    this.jdField_a_of_type_Jfo = new jfo(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Jfo);
     this.jdField_a_of_type_Int = 0;
   }
   
@@ -292,8 +292,8 @@ public class MagicFaceDataEntity
       {
         AVLog.c("MagicFaceDataEntity", "startSelfDecoration 3:" + localMagicfaceDataPendantJason.duration);
         int i = localMagicfaceDataPendantJason.duration;
-        this.jdField_a_of_type_Jgg = new jgg(this, paramPendantItem);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Jgg, i);
+        this.jdField_a_of_type_Jfr = new jfr(this, paramPendantItem);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Jfr, i);
       }
     }
   }
@@ -301,7 +301,7 @@ public class MagicFaceDataEntity
   private void b(String paramString)
   {
     AVLog.c("MagicFaceDataEntity", "reloadDecrateList 1:" + paramString);
-    PtvTemplateManager.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(new jgb(this, paramString));
+    PtvTemplateManager.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(new jfm(this, paramString));
   }
   
   private void c(String paramString)
@@ -495,7 +495,7 @@ public class MagicFaceDataEntity
   public void c()
   {
     AVLog.c("MagicFaceDataEntity", "processStart:" + this.jdField_a_of_type_JavaLangString + "|" + this);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.a(this.jdField_a_of_type_Jge);
+    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.a(this.jdField_a_of_type_Jfp);
   }
   
   public void c(int paramInt)
@@ -511,14 +511,14 @@ public class MagicFaceDataEntity
     if (a() != null) {
       a(null);
     }
-    if (this.jdField_a_of_type_Jgg != null)
+    if (this.jdField_a_of_type_Jfr != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Jgg);
-      this.jdField_a_of_type_Jgg.run();
-      this.jdField_a_of_type_Jgg = null;
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Jfr);
+      this.jdField_a_of_type_Jfr.run();
+      this.jdField_a_of_type_Jfr = null;
     }
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.b(this.jdField_a_of_type_Jge);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Jgd);
+    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.b(this.jdField_a_of_type_Jfp);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Jfo);
   }
 }
 

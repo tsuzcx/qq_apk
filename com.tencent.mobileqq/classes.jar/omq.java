@@ -1,17 +1,14 @@
-import java.lang.reflect.Field;
+import android.widget.ImageButton;
+import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
 
-public final class omq
+public class omq
+  implements Runnable
 {
-  public final int a;
-  public final String a;
-  public final Field a;
+  public omq(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
-  public omq(String paramString, int paramInt, Field paramField)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectField = paramField;
-    paramField.setAccessible(true);
+    StoryLocalPublishPart.a(this.a).setVisibility(8);
   }
 }
 

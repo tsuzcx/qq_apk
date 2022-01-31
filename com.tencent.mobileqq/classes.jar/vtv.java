@@ -1,23 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import mqq.os.MqqHandler;
 
 public class vtv
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public vtv(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vtv(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.R = false;
-    this.a.aa = false;
-    this.a.c(this.a.jdField_o_of_type_AndroidViewView);
-    this.a.jdField_o_of_type_Int = 1;
+    synchronized (this.a)
+    {
+      this.a.a.a(this.a.a(), this.a);
+      GameRoomChatPie.a(this.a).post(new vtw(this));
+      return;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

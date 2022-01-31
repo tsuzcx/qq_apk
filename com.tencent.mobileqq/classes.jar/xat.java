@@ -1,17 +1,16 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
 public class xat
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xat(ThemeHbFragment paramThemeHbFragment) {}
+  public xat(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThemeHbFragment.a(this.a).startAnimation(ThemeHbFragment.a(this.a));
-    ThemeHbFragment.a(this.a).setVisibility(0);
-    this.a.a.a("theme.pack.show", 2);
+    this.a.getActivity().finish();
   }
 }
 

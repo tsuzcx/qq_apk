@@ -1,17 +1,14 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import com.tencent.mobileqq.activity.contact.newfriend.QIMNotifyAddFriendBuilder;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
 
-public class wjw
+class wjw
   implements Runnable
 {
-  public wjw(DeviceFragment paramDeviceFragment) {}
+  wjw(wjv paramwjv) {}
   
   public void run()
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("SmartDevice_clickOnDeviceList");
-    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+    this.a.a.a.c();
   }
 }
 

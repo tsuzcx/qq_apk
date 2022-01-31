@@ -55,14 +55,14 @@ public class DoodleUtils
   
   public static DoodleSurfaceView a(ViewGroup paramViewGroup)
   {
-    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131362514);
+    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131362535);
     Object localObject1 = localObject2;
     View localView;
     if (localObject2 == null)
     {
       localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
       localObject2 = new ViewGroup.LayoutParams(-1, -1);
-      localView = paramViewGroup.findViewById(2131362516);
+      localView = paramViewGroup.findViewById(2131362537);
       if (localView == null) {
         break label67;
       }
@@ -77,7 +77,7 @@ public class DoodleUtils
   
   public static void a(ViewGroup paramViewGroup)
   {
-    View localView = paramViewGroup.findViewById(2131362514);
+    View localView = paramViewGroup.findViewById(2131362535);
     if (localView != null) {
       paramViewGroup.removeView(localView);
     }

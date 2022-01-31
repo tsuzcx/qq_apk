@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class aguq
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  public aguq(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public aguq(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void run()
-  {
-    if ((EffectsCameraCaptureFragment.a(this.a) != null) && (EffectsCameraCaptureFragment.a(this.a).a()))
-    {
-      EffectsCameraCaptureFragment.a(this.a).e();
-      EffectsCameraCaptureFragment.a(this.a).a();
-    }
-  }
+  public void onDismiss() {}
 }
 
 

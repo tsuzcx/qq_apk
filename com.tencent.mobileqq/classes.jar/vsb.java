@@ -1,20 +1,19 @@
-import com.tencent.biz.troopgift.TroopGiftPanel.OnShowOrHideListerner;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.file.DevVideoMsgProcessor;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
 
 public class vsb
-  implements TroopGiftPanel.OnShowOrHideListerner
+  implements DialogInterface.OnClickListener
 {
-  public vsb(HotChatPie paramHotChatPie) {}
+  public vsb(DeviceMsgChatPie paramDeviceMsgChatPie) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a();
-  }
-  
-  public void b()
-  {
-    this.a.a.a(false, false, 4);
+    paramDialogInterface.dismiss();
+    DevVideoMsgProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.f);
+    this.a.f = "";
   }
 }
 

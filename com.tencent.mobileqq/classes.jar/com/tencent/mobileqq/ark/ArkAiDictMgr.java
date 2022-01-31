@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark;
 
-import aaky;
-import aala;
+import aarz;
+import aasb;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -60,7 +60,7 @@ public class ArkAiDictMgr
       ArkAppCenter.b("ArkApp.Dict", "reloadWordData, sIsSoLoaded is false");
       return;
     }
-    ArkRecommendLogic.a().post(new aala(paramQQAppInterface));
+    ArkRecommendLogic.a().post(new aasb(paramQQAppInterface));
   }
   
   private static boolean b(QQAppInterface paramQQAppInterface)
@@ -69,7 +69,7 @@ public class ArkAiDictMgr
     if (paramQQAppInterface == null) {
       return false;
     }
-    paramQQAppInterface = SharedPreUtils.i(paramQQAppInterface.getApp(), paramQQAppInterface.c());
+    paramQQAppInterface = SharedPreUtils.h(paramQQAppInterface.getApp(), paramQQAppInterface.c());
     if (TextUtils.isEmpty(paramQQAppInterface))
     {
       ArkAppCenter.b("ArkApp.Dict", "getWordInitState, dictConfigJsonString is empty");
@@ -144,14 +144,14 @@ public class ArkAiDictMgr
     } while (!QLog.isColorLevel());
     QLog.i("ark.ai", 2, "initWordData, loadWordSegmentSo failed.");
     return;
-    ArkRecommendLogic.a().post(new aaky(this));
+    ArkRecommendLogic.a().post(new aarz(this));
   }
   
   public void d()
   {
     ArkAppCenter.b("ArkApp.Dict", "clearDict");
     QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    SharedPreUtils.j(localQQAppInterface.getApp(), localQQAppInterface.c());
+    SharedPreUtils.i(localQQAppInterface.getApp(), localQQAppInterface.c());
     c();
   }
 }

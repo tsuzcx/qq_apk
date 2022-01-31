@@ -1,49 +1,21 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.io.File;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementStatistics;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class kvi
-  implements TVK_ICacheMgr.IPreloadCallback
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  private kvi(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kvi(VideoCoverView paramVideoCoverView) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    synchronized (AdvertisementVideoPreloadManager.a(this.a))
-    {
-      AdvertisementVideoPreloadManager.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
-      AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
-      return;
-    }
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    synchronized (AdvertisementVideoPreloadManager.a(this.a))
-    {
-      AdvertisementVideoPreloadManager.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
-      try
-      {
-        paramString2 = new JSONObject(paramString2);
-        long l1 = paramString2.optLong("fileSize");
-        long l2 = paramString2.optLong("offset");
-        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
-        {
-          paramString2 = new File(AdvertisementVideoPreloadManager.b(paramString1));
-          if (paramString2.exists()) {
-            paramString2.renameTo(new File(AdvertisementVideoPreloadManager.a(paramString1)));
-          }
-          AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
-        }
-      }
-      catch (Exception paramString1)
-      {
-        label136:
-        break label136;
-      }
-      return;
-    }
+    this.a.jdField_a_of_type_Int = 7;
+    AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
+    this.a.g();
+    return false;
   }
 }
 

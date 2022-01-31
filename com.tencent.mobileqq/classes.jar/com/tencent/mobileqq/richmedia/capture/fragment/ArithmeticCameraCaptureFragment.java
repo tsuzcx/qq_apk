@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.fragment;
 
-import agtu;
-import agtv;
+import ahhw;
+import ahhx;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -35,17 +35,6 @@ public class ArithmeticCameraCaptureFragment
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private String jdField_a_of_type_JavaLangString;
   
-  protected void K_()
-  {
-    super.K_();
-    this.b.setVisibility(8);
-  }
-  
-  protected int a()
-  {
-    return 2130971603;
-  }
-  
   protected CameraCaptureView.CaptureParam a()
   {
     CameraCaptureView.CaptureParam localCaptureParam = super.a();
@@ -62,6 +51,11 @@ public class ArithmeticCameraCaptureFragment
     paramPhotoCaptureResult.putExtra("arithmetic_ability", 1L);
     paramPhotoCaptureResult.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
     startActivityForResult(paramPhotoCaptureResult, 10001);
+  }
+  
+  protected int b()
+  {
+    return 2130971651;
   }
   
   public void b(boolean paramBoolean) {}
@@ -83,7 +77,7 @@ public class ArithmeticCameraCaptureFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363969)
+    if (paramView.getId() == 2131363993)
     {
       TroopReportor.a("Grp_edu", "Grp_oral", "Oral_Photo_Out", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, "" });
       getActivity().finish();
@@ -115,13 +109,13 @@ public class ArithmeticCameraCaptureFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    LayoutModifier.a(paramLayoutInflater, new agtu(this, paramLayoutInflater));
+    LayoutModifier.a(paramLayoutInflater, new ahhw(this, paramLayoutInflater));
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramViewGroup = paramLayoutInflater.findViewById(2131375081);
-    paramBundle = paramLayoutInflater.findViewById(2131375082);
-    View localView1 = paramLayoutInflater.findViewById(2131375083);
-    View localView2 = paramLayoutInflater.findViewById(2131375084);
-    View localView3 = paramLayoutInflater.findViewById(2131375085);
+    paramViewGroup = paramLayoutInflater.findViewById(2131375267);
+    paramBundle = paramLayoutInflater.findViewById(2131375268);
+    View localView1 = paramLayoutInflater.findViewById(2131375269);
+    View localView2 = paramLayoutInflater.findViewById(2131375270);
+    View localView3 = paramLayoutInflater.findViewById(2131375271);
     int i = UIUtils.b(getActivity()) / 4;
     int j = UIUtils.a(getActivity()) / 3;
     ((RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams()).setMargins(0, i, 0, 0);
@@ -129,11 +123,11 @@ public class ArithmeticCameraCaptureFragment
     ((RelativeLayout.LayoutParams)localView1.getLayoutParams()).setMargins(0, i * 3, 0, 0);
     ((RelativeLayout.LayoutParams)localView2.getLayoutParams()).setMargins(j, 0, 0, 0);
     ((RelativeLayout.LayoutParams)localView3.getLayoutParams()).setMargins(j * 2, 0, 0, 0);
-    this.b.setVisibility(8);
-    paramViewGroup = (Button)paramLayoutInflater.findViewById(2131365626);
+    this.c.setVisibility(8);
+    paramViewGroup = (Button)paramLayoutInflater.findViewById(2131365653);
     paramViewGroup.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131375087));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131375086));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131375273));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131375272));
     if (getActivity().getAppInterface().getAppRuntime("peak").getPreferences().getBoolean("SP_ARITHMETIC_GUIDE_SHOW", true))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -148,7 +142,7 @@ public class ArithmeticCameraCaptureFragment
       paramLayoutInflater.setFocusable(true);
       paramLayoutInflater.setFocusableInTouchMode(true);
       paramLayoutInflater.requestFocus();
-      paramLayoutInflater.setOnKeyListener(new agtv(this, null));
+      paramLayoutInflater.setOnKeyListener(new ahhx(this, null));
       return paramLayoutInflater;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -160,6 +154,12 @@ public class ArithmeticCameraCaptureFragment
     super.onViewCreated(paramView, paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout.setFunctionFlag(2);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout.a();
+  }
+  
+  protected void z_()
+  {
+    super.z_();
+    this.c.setVisibility(8);
   }
 }
 

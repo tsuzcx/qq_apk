@@ -1,28 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler.GetSimpleInfoListEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class nqs
-  extends QQUIEventReceiver
 {
-  public nqs(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  private double jdField_a_of_type_Double = 1.0D;
+  private long jdField_a_of_type_Long;
+  
+  public nqs()
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    a();
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
+  private long b()
   {
-    if (paramGetSimpleInfoListEvent.a.isSuccess()) {
-      paramQQStoryShareGroupProfileActivity.a.a(paramGetSimpleInfoListEvent);
-    }
+    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
   }
   
-  public Class acceptEventClass()
+  public double a()
   {
-    return VidToSimpleInfoHandler.GetSimpleInfoListEvent.class;
+    return this.jdField_a_of_type_Double;
+  }
+  
+  public long a()
+  {
+    return b() - this.jdField_a_of_type_Long;
+  }
+  
+  public long a(long paramLong)
+  {
+    return paramLong - a();
+  }
+  
+  public void a()
+  {
+    a(0L);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = (b() - paramLong);
   }
 }
 

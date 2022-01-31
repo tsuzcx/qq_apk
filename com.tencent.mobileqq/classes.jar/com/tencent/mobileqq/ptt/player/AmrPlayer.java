@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ptt.player;
 
-import agfm;
-import agfn;
+import agto;
+import agtp;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -16,11 +16,11 @@ public final class AmrPlayer
   implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, Handler.Callback, IPttPlayer
 {
   private int jdField_a_of_type_Int = -1;
-  private agfn jdField_a_of_type_Agfn;
+  private agtp jdField_a_of_type_Agtp;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   private IPttPlayerListener jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  Runnable jdField_a_of_type_JavaLangRunnable = new agfm(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new agto(this);
   private String jdField_a_of_type_JavaLangString;
   
   public AmrPlayer()
@@ -44,10 +44,10 @@ public final class AmrPlayer
   {
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(this);
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
-    if (this.jdField_a_of_type_Agfn == null)
+    if (this.jdField_a_of_type_Agtp == null)
     {
-      this.jdField_a_of_type_Agfn = new agfn(this, null);
-      this.jdField_a_of_type_Agfn.start();
+      this.jdField_a_of_type_Agtp = new agtp(this, null);
+      this.jdField_a_of_type_Agtp.start();
     }
   }
   
@@ -94,7 +94,7 @@ public final class AmrPlayer
   public void c()
   {
     this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    this.jdField_a_of_type_Agfn = null;
+    this.jdField_a_of_type_Agtp = null;
   }
   
   public void d()
@@ -133,7 +133,7 @@ public final class AmrPlayer
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_Agfn = null;
+    this.jdField_a_of_type_Agtp = null;
     if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener.a();
     }
@@ -141,7 +141,7 @@ public final class AmrPlayer
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Agfn = null;
+    this.jdField_a_of_type_Agtp = null;
     if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener.a(this, paramInt1, paramInt2);
     }
@@ -150,7 +150,7 @@ public final class AmrPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.player.AmrPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,29 @@
+import android.content.Context;
+import android.os.Handler;
+import android.view.KeyEvent;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
 
 public class aeta
-  implements Runnable
+  implements TextView.OnEditorActionListener
 {
-  public aeta(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public aeta(SelectLocationFragment paramSelectLocationFragment) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    int i = this.a.h.getTop();
-    int j = (int)(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a * 20.0F);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollTo(0, i - j);
+    if ((paramInt == 2) || (paramInt == 3) || (paramInt == 6))
+    {
+      paramKeyEvent = (InputMethodManager)paramTextView.getContext().getSystemService("input_method");
+      if (paramKeyEvent.isActive()) {
+        paramKeyEvent.hideSoftInputFromWindow(paramTextView.getApplicationWindowToken(), 0);
+      }
+      SelectLocationFragment.a(this.a).removeMessages(1);
+      SelectLocationFragment.a(this.a).sendEmptyMessage(1);
+      return true;
+    }
+    return false;
   }
 }
 

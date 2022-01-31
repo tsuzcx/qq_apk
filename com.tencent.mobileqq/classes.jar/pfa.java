@@ -1,17 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
 
-public final class pfa
-  extends Handler
+public class pfa
+  implements View.OnClickListener
 {
-  public pfa(Looper paramLooper)
+  public pfa(AbstractImageListScene paramAbstractImageListScene) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramLooper);
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pfa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,40 @@
-import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.LBSDetetor;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 
 public class xpp
-  implements Runnable
+  extends SosoInterface.OnLocationListener
 {
-  public xpp(NewPreFlowCamera paramNewPreFlowCamera, int paramInt) {}
+  private int jdField_a_of_type_Int = -1;
   
-  public void run()
+  public xpp(LBSDetetor paramLBSDetetor, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
   {
-    NewPreFlowCamera.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("NewPreFlowCamera", 2, "onDownloadProgress mGestureState=" + NewPreFlowCamera.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera) + " mVideoState=" + NewPreFlowCamera.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera) + "mFilterSoState=" + NewPreFlowCamera.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera));
+    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      double d1 = paramSosoLbsInfo.a.a;
+      double d2 = paramSosoLbsInfo.a.b;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+      }
+      LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor, d1, d2, this.jdField_a_of_type_Int);
     }
-    NewPreFlowCamera.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera, "GestureDownloadProgress");
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+      }
+    } while ((LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor) == null) || (!LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor).hasMessages(this.jdField_a_of_type_Int)));
+    LBSDetetor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor, false, null, this.jdField_a_of_type_Int);
   }
 }
 

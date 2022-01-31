@@ -1,27 +1,34 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.widget.TipsBar;
 
 public class xii
-  extends TouchDelegate
+  implements View.OnClickListener
 {
-  public xii(DragTextView paramDragTextView, Rect paramRect, View paramView)
-  {
-    super(paramRect, paramView);
-  }
+  public xii(BannerManager paramBannerManager, TipsBar paramTipsBar) {}
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (this.a.getVisibility() != 0) {
-      return false;
+    if (!FileUtil.a(FileViewMusicService.a().b()))
+    {
+      FileViewMusicService.a().c();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
+      return;
     }
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    boolean bool = super.onTouchEvent(paramMotionEvent);
-    paramMotionEvent.setLocation(f1, f2);
-    return bool;
+    paramView = new ForwardFileInfo();
+    paramView.b(10008);
+    Intent localIntent = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), FileBrowserActivity.class);
+    localIntent.putExtra("fileinfo", paramView);
+    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(localIntent);
+    FileManagerReporter.a("0X8004BFE");
   }
 }
 

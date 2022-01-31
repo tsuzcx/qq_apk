@@ -1,20 +1,27 @@
-import android.os.Handler;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
+import android.util.Log;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.io.ByteArrayOutputStream;
 
-public class aaue
-  extends AnimatorListenerAdapter
+public final class aaue
+  implements INetEngine.INetEngineListener
 {
-  public aaue(ARMapActivity paramARMapActivity) {}
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(NetResp paramNetResp)
   {
-    if (ARMapActivity.a(this.a) != null) {
-      ARMapActivity.a(this.a).setLoadStatus(2);
+    if (paramNetResp.jdField_a_of_type_Int == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      if (paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a != null)
+      {
+        paramNetResp = new String(((ByteArrayOutputStream)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a).toByteArray());
+        Log.d("ArkApp.DataReport", "report_realtime_monitor, reply=" + paramNetResp);
+      }
+      return;
     }
-    this.a.a.postDelayed(new aauf(this), 200L);
+    Log.d("ArkApp.DataReport", "report_realtime_monitor, fail");
   }
 }
 

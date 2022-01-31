@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
 public class rgr
-  implements Runnable
+  extends SubAccountBindObserver
 {
-  public rgr(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  public rgr(AccountManageActivity paramAccountManageActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    String str = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app.getManager(50)).a(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity));
-    ThreadManager.getUIHandler().post(new rgs(this, str));
+    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+  }
+  
+  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    AccountManageActivity.a(this.a, false);
+  }
+  
+  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    AccountManageActivity.a(this.a, false);
   }
 }
 

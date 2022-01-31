@@ -1,64 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.device.file.DeviceFileObserver;
-import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnThumbEventListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import java.util.ArrayList;
+import java.util.List;
 
-public class actc
-  extends DeviceFileObserver
+class actc
+  implements FMDialogUtil.FMDialogInterface
 {
-  public actc(DeviceFileModel paramDeviceFileModel) {}
+  actc(actb paramactb, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(Session paramSession, float paramFloat)
+  public void a()
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    if (localFileManagerEntity == null) {}
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener == null) || (paramSession.uSessionID != DeviceFileModel.a(this.a))) {
-      return;
+    this.jdField_a_of_type_Actb.a.a.a().ac();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      QfileBaseRecentFileTabView.s(this.jdField_a_of_type_Actb.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    localFileManagerEntity.fProgress = paramFloat;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.a(paramFloat);
-  }
-  
-  public void a(Session paramSession, boolean paramBoolean)
-  {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    if (localFileManagerEntity == null) {}
+    DataLineHandler localDataLineHandler;
+    ArrayList localArrayList;
     do
     {
       return;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null) && (paramSession.uSessionID == DeviceFileModel.b(this.a)) && (paramBoolean))
-      {
-        localFileManagerEntity.strThumbPath = paramSession.strFilePathSrc;
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
       }
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener == null) || (paramSession.uSessionID != DeviceFileModel.a(this.a)));
-    if (paramBoolean)
-    {
-      localFileManagerEntity.fProgress = 1.0F;
-      localFileManagerEntity.setFilePath(paramSession.strFilePathSrc);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.f();
-      if (this.a.e() == 2)
-      {
-        new Handler(Looper.getMainLooper()).postDelayed(new actd(this), 1000L);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.f();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.g();
+      localDataLineHandler = (DataLineHandler)QfileBaseRecentFileTabView.t(this.jdField_a_of_type_Actb.a).a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localDataLineHandler.a(localArrayList));
+    FMToastUtil.a(2131428328);
+    return;
+    QfileBaseRecentFileTabView.u(this.jdField_a_of_type_Actb.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
   
-  public void b(Session paramSession)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) && (paramSession.uSessionID == DeviceFileModel.a(this.a))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.d();
-    }
-  }
+  public void b() {}
 }
 
 

@@ -1,21 +1,16 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
 
-public class noe
-  implements TVK_IMediaPlayer.OnInfoListener
+class noe
+  implements Runnable
 {
-  public noe(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  noe(nod paramnod) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void run()
   {
-    SLog.d("VideoViewTVKImpl", "mMediaPlayer onInfo, what:%d, meaning:%s, extra:%s", new Object[] { Integer.valueOf(paramInt), (String)VideoViewTVKImpl.a.get(paramInt, "UNKNOWN"), paramObject });
-    ThreadManager.getUIHandler().post(new nof(this, paramInt, paramObject));
-    return false;
+    this.a.a.jdField_a_of_type_AndroidViewView.setBackgroundColor(-285212672);
+    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-14277082);
   }
 }
 

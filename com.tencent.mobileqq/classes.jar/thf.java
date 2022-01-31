@@ -1,105 +1,108 @@
-import android.widget.ImageView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.biz.widgets.QQMapRoutingHelper;
-import com.tencent.biz.widgets.SelfLocationOverlay;
-import com.tencent.mapsdk.raster.model.GeoPoint;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.map.MapController;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
+import com.tencent.mobileqq.profile.view.ProfileLabelPanel.LabelStatusManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class thf
-  extends SosoInterface.OnLocationListener
+  extends BaseAdapter
 {
-  public thf(QQMapActivity paramQQMapActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new thg(this);
+  List jdField_a_of_type_JavaUtilList;
+  
+  public thf(ProfileLabelEditorActivity paramProfileLabelEditorActivity, List paramList)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  private void a(ProfileLabelInfo paramProfileLabelInfo)
   {
-    if (paramInt2 >= this.d) {
-      SosoInterface.b(this);
+    Object localObject = null;
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a().keySet().iterator();
+    if (localIterator.hasNext())
+    {
+      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
+      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
+        break label114;
+      }
+      localObject = localProfileLabelInfo;
+    }
+    label114:
+    for (;;)
+    {
+      break;
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject)))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject));
+        return;
+      }
+      a(paramProfileLabelInfo.labelId);
+      return;
     }
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  private void a(Long paramLong)
   {
-    String str;
-    GeoPoint localGeoPoint;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null))
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
+    }
+    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
+    if (paramLong != null) {
+      paramLong.toggleStatus();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
-      if (QLog.isColorLevel()) {
-        QLog.d("get_location", 2, "onLocationFinish errCode=" + paramInt);
-      }
-      if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
-        break label486;
-      }
-      localGeoPoint = new GeoPoint((int)(paramSosoLbsInfo.a.jdField_a_of_type_Double * 1000000.0D), (int)(paramSosoLbsInfo.a.jdField_b_of_type_Double * 1000000.0D));
-      if (this.a.s)
-      {
-        if (!this.a.k) {
-          break label181;
-        }
-        label129:
-        this.a.h();
-        this.a.s = false;
-      }
-      if (this.a.k) {
-        break label225;
-      }
-      this.a.a(localGeoPoint, str);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2130971632, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
+      paramViewGroup = new the();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375218));
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      label181:
-      label225:
-      label486:
-      try
-      {
-        this.a.dismissDialog(0);
-        return;
-      }
-      catch (IllegalArgumentException paramSosoLbsInfo) {}
-      str = "";
-      break;
-      this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.setCenter(localGeoPoint);
-      this.a.g = str;
-      this.a.c.setVisibility(0);
-      this.a.c(localGeoPoint);
-      break label129;
-      this.a.z();
-      long l = System.currentTimeMillis();
-      if (l - this.a.jdField_a_of_type_Long > 5000L)
-      {
-        if ((this.a.e != null) && (this.a.jdField_a_of_type_ComTencentBizWidgetsPolyLineOverlay == null))
-        {
-          double d = QQMapRoutingHelper.a(localGeoPoint.getLongitudeE6() / 1000000.0D, localGeoPoint.getLatitudeE6() / 1000000.0D, this.a.jdField_b_of_type_Double, this.a.jdField_a_of_type_Double);
-          this.a.m();
-          this.a.e.setText(QQMapRoutingHelper.a(d));
-        }
-        this.a.jdField_b_of_type_ComTencentMapsdkRasterModelGeoPoint = localGeoPoint;
-        this.a.p = str;
-        this.a.q = paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString;
-        if (this.a.jdField_a_of_type_ComTencentBizWidgetsSelfLocationOverlay != null)
-        {
-          this.a.jdField_a_of_type_ComTencentBizWidgetsSelfLocationOverlay.a(this.a.jdField_b_of_type_ComTencentMapsdkRasterModelGeoPoint);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.invalidateOverLay();
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQMapView.invalidate();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("get_location", 2, "onLocationFinish, mSelfPoint=" + this.a.jdField_b_of_type_ComTencentMapsdkRasterModelGeoPoint + ",addr=" + str + ",poiName=" + this.a.q);
-        }
-        this.a.jdField_a_of_type_Long = l;
-        continue;
-        this.a.y();
-        SosoInterface.b(this);
-      }
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      int i = paramInt % ProfileActivity.a.length;
+      paramView.setBackgroundResource(ProfileActivity.a[i][0]);
+      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      i = ProfileActivity.a[i][1];
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      return paramView;
+      paramViewGroup = (the)paramView.getTag();
     }
   }
 }

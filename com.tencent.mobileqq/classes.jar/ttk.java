@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class ttk
-  implements Runnable
+class ttk
+  extends BroadcastReceiver
 {
-  public ttk(TroopAssistantActivity paramTroopAssistantActivity) {}
+  ttk(ttj paramttj) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
+    }
+    this.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ttk
  * JD-Core Version:    0.7.0.1
  */

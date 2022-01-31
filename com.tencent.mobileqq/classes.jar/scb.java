@@ -1,24 +1,54 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView.OnTextLineChangeListener;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import mqq.os.MqqHandler;
 
 public class scb
-  implements FollowImageTextView.OnTextLineChangeListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public scb(ChatSettingForTroop paramChatSettingForTroop) {}
+  public scb(ChatSettingActivity paramChatSettingActivity, String paramString, ActionSheet paramActionSheet) {}
   
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.f) {}
-    do
+    switch (paramInt)
     {
-      do
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      return;
+      if (NetworkUtil.d(BaseApplication.getContext()))
       {
-        return;
-      } while ((paramInt <= 0) || (ChatSettingForTroop.b(this.a) == paramInt));
-      ChatSettingForTroop.a(this.a, paramInt);
-    } while (this.a.a.hasSetNewTroopHead);
-    ChatSettingForTroop.b(this.a);
+        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getHandler(ChatActivity.class);
+        if (paramView != null)
+        {
+          paramView.removeMessages(16711681);
+          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+        }
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "CliOper", "", "", "AIO", "AIO_delete_frd", 0, 0, "", "", "", "");
+        if (Utils.b(this.jdField_a_of_type_JavaLangString)) {
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.finish();
+      }
+      else
+      {
+        ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 2131433260, 1);
+        continue;
+        if (Utils.b(this.jdField_a_of_type_JavaLangString)) {
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
+        }
+      }
+    }
   }
 }
 

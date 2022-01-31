@@ -1,14 +1,22 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import java.util.List;
 
-class mrg
-  implements Runnable
+public class mrg
+  extends Handler
 {
-  mrg(mrb parammrb) {}
+  public mrg(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    SubscriptFeedsActivity.a(this.a.a).g = 0;
-    SubscriptFeedsActivity.a(this.a.a, true, false, false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (List)paramMessage.obj;
+    ReadInJoyNewSearchActivity.a(this.a, paramMessage);
   }
 }
 

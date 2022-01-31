@@ -1,29 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
+import java.util.List;
 
-public class aeot
-  implements DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback
+class aeot
+  implements View.OnClickListener
 {
-  public aeot(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  aeot(aeos paramaeos, int paramInt, WerewolvesHandler paramWerewolvesHandler) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
-    }
-    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
+    try
+    {
+      long l = Long.parseLong(((aeor)this.jdField_a_of_type_Aeos.a.a.get(this.jdField_a_of_type_Int)).a);
+      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(this.jdField_a_of_type_Aeos.a.b, l, null);
+      this.jdField_a_of_type_Aeos.a.a("invite_page", "kick_out");
       return;
     }
-    this.a.getActivity().runOnUiThread(new aeou(this, paramBoolean1));
+    catch (Exception paramView) {}
   }
 }
 

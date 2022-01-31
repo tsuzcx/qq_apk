@@ -5,7 +5,7 @@ import com.tencent.av.opengl.utils.AVGLUtils;
 import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilter;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
-import kik;
+import khv;
 
 public class FilterProcess
 {
@@ -63,15 +63,15 @@ public class FilterProcess
     return (System.nanoTime() - l) / 1000L / 1000L;
   }
   
-  kik a(QQAVImageFilter paramQQAVImageFilter, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  khv a(QQAVImageFilter paramQQAVImageFilter, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramQQAVImageFilter != null)
     {
       paramQQAVImageFilter.onOutputSizeChanged(this.c, this.d);
       paramQQAVImageFilter.onDraw2(paramInt2, paramInt3);
-      return new kik(this, paramInt3, paramInt4);
+      return new khv(this, paramInt3, paramInt4);
     }
-    return new kik(this, paramInt1, paramInt2);
+    return new khv(this, paramInt1, paramInt2);
   }
   
   void a()

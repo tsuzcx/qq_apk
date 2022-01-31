@@ -1,24 +1,14 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
 
-public class uof
+class uof
   implements Runnable
 {
-  public uof(DoodleMsgLayout paramDoodleMsgLayout) {}
+  uof(uoe paramuoe) {}
   
   public void run()
   {
-    Bitmap localBitmap = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130838597);
-    if ((localBitmap != null) && (BaseApplicationImpl.sImageCache != null)) {
-      BaseApplicationImpl.sImageCache.put("aio_doodle_progress", localBitmap, (byte)0);
-    }
-    new Handler(Looper.getMainLooper()).post(new uog(this, localBitmap));
+    this.a.a.a(false, this.a.a.a.b);
   }
 }
 

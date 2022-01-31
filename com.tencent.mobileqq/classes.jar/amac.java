@@ -1,39 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.richstatus.StatusObserver;
-import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
-import java.util.ArrayList;
+import com.tencent.widget.AbsListView;
 
 public class amac
-  extends StatusObserver
 {
-  private amac(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
+  private int a;
   
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList paramArrayList, boolean paramBoolean3)
+  private amac(AbsListView paramAbsListView) {}
+  
+  public void a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSuccess", paramBoolean1);
-    localBundle.putInt("start", paramInt1);
-    localBundle.putInt("end", paramInt2);
-    localBundle.putBoolean("over", paramBoolean2);
-    localBundle.putSerializable("data", paramArrayList);
-    localBundle.putBoolean("isAddFromCard", paramBoolean3);
-    localBundle.putInt("which_method", 0);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
+    this.a = AbsListView.access$200(this.b);
   }
   
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
+  public boolean a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("key", paramArrayOfByte);
-    localBundle.putInt("which_method", 1);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
+    return (this.b.hasWindowFocus()) && (AbsListView.access$300(this.b) == this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amac
  * JD-Core Version:    0.7.0.1
  */

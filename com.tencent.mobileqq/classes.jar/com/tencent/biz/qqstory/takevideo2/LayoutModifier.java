@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.LayoutInflater.Factory;
 import java.lang.reflect.Field;
-import okp;
+import omj;
 
 public class LayoutModifier
 {
@@ -17,7 +17,7 @@ public class LayoutModifier
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      okp.c("LayoutModifier", "LayoutInflater.setFactory IllegalStateException " + localIllegalStateException);
+      omj.c("LayoutModifier", "LayoutInflater.setFactory IllegalStateException " + localIllegalStateException);
       try
       {
         Field localField1 = LayoutInflater.class.getDeclaredField("mFactory");
@@ -28,16 +28,16 @@ public class LayoutModifier
         localField2.set(paramLayoutInflater, paramFactory);
         if ((paramLayoutInflater.getFactory() == paramFactory) && (paramLayoutInflater.getFactory2() == paramFactory))
         {
-          okp.b("LayoutModifier", "hookLayoutInflaterFactory success");
+          omj.b("LayoutModifier", "hookLayoutInflaterFactory success");
           return;
         }
       }
       catch (Exception paramLayoutInflater)
       {
-        okp.d("LayoutModifier", "hook setFactory " + paramLayoutInflater);
+        omj.d("LayoutModifier", "hook setFactory " + paramLayoutInflater);
         return;
       }
-      okp.b("LayoutModifier", "hookLayoutInflaterFactory failed");
+      omj.b("LayoutModifier", "hookLayoutInflaterFactory failed");
     }
   }
 }

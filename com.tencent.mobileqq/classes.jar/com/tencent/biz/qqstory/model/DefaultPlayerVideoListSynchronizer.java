@@ -5,7 +5,7 @@ import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import com.tribe.async.dispatch.IEventReceiver;
-import nbh;
+import ncs;
 
 public abstract class DefaultPlayerVideoListSynchronizer
   implements IEventReceiver
@@ -19,7 +19,7 @@ public abstract class DefaultPlayerVideoListSynchronizer
   
   public void a(int paramInt)
   {
-    Bosses.get().postJob(new nbh(this, paramInt));
+    Bosses.get().postJob(new ncs(this, paramInt));
   }
   
   public void a(boolean paramBoolean)

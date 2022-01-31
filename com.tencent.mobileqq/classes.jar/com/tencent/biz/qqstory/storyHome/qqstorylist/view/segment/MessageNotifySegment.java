@@ -33,8 +33,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
-import nzf;
-import nzh;
+import oax;
+import oaz;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class MessageNotifySegment
@@ -61,15 +61,15 @@ public class MessageNotifySegment
   {
     if (this.jdField_a_of_type_Int == 0)
     {
-      paramBaseViewHolder.a(2131362710).setVisibility(8);
+      paramBaseViewHolder.a(2131362728).setVisibility(8);
       paramBaseViewHolder.a().setLayoutParams(new AbsListView.LayoutParams(-1, 0));
       return paramBaseViewHolder.a();
     }
     paramInt = UIUtils.a(paramBaseViewHolder.a().getContext(), 52.0F);
-    paramBaseViewHolder.a(2131362710).setVisibility(0);
+    paramBaseViewHolder.a(2131362728).setVisibility(0);
     paramBaseViewHolder.a().setLayoutParams(new AbsListView.LayoutParams(-1, paramInt));
     paramBaseViewHolder.a().setVisibility(0);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131362701);
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131362719);
     Drawable localDrawable = ImageUtil.b();
     QQStoryContext.a();
     if (QQStoryContext.a() == null) {
@@ -83,7 +83,7 @@ public class MessageNotifySegment
       }
       localImageView.setTag(this.jdField_a_of_type_JavaLangInteger);
       localImageView.setImageDrawable(localDrawable);
-      TextView localTextView = (TextView)paramBaseViewHolder.a(2131363039);
+      TextView localTextView = (TextView)paramBaseViewHolder.a(2131363057);
       StringBuilder localStringBuilder = new StringBuilder();
       if (this.jdField_a_of_type_Int > 99) {}
       for (paramViewGroup = "99+";; paramViewGroup = Integer.valueOf(this.jdField_a_of_type_Int))
@@ -99,14 +99,14 @@ public class MessageNotifySegment
         break;
       }
       label269:
-      ThreadManager.post(new nzf(this, localImageView, localDrawable), 8, null, true);
+      ThreadManager.post(new oax(this, localImageView, localDrawable), 8, null, true);
     }
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970732, paramViewGroup, false);
-    paramViewGroup.findViewById(2131362710).setOnClickListener(this);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970780, paramViewGroup, false);
+    paramViewGroup.findViewById(2131362728).setOnClickListener(this);
     return new BaseViewHolder(paramViewGroup);
   }
   
@@ -126,7 +126,7 @@ public class MessageNotifySegment
       QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch first message from gray, start=0");
     }
     QQStoryContext.a();
-    ProtoUtils.a(QQStoryContext.a(), new nzh(this, paramImageView), localReqStoryMessageList.toByteArray(), StoryApi.a("StorySvc.get_710_message_list"));
+    ProtoUtils.a(QQStoryContext.a(), new oaz(this, paramImageView), localReqStoryMessageList.toByteArray(), StoryApi.a("StorySvc.get_710_message_list"));
   }
   
   public void a(oidb_0x791.RedDotInfo paramRedDotInfo)

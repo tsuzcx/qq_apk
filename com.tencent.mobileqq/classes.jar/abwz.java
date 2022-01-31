@@ -1,51 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
-import com.tencent.pb.emosm.EmosmPb.SubCmd0x13Rsp;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class abwz
   implements Runnable
 {
-  public abwz(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
+  public abwz(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
   
   public void run()
   {
+    SharedPreferences.Editor localEditor = this.a.getSharedPreferences(HotChatFlashPicActivity.f(this.a), 4).edit();
+    if (HotChatFlashPicActivity.b(this.a))
+    {
+      localEditor.putInt("HOTCHAT_FLASHPIC_SHOT", HotChatFlashPicActivity.a(this.a));
+      if (HotChatFlashPicActivity.a(this.a) != 1) {
+        break label115;
+      }
+      ReportController.b(this.a.app, "CliOper", "", "", "0X800597A", "0X800597A", 0, 0, "", "", "", "");
+    }
     for (;;)
     {
-      synchronized (this.a.a)
+      localEditor.commit();
+      return;
+      localEditor.putInt("commen_flashpic_shot", HotChatFlashPicActivity.a(this.a));
+      break;
+      label115:
+      if (HotChatFlashPicActivity.a(this.a) == 2)
       {
-        File localFile = new File(BaseApplicationImpl.sApplication.getFilesDir(), "commonusedSystemEmojiInfoFile_v3_" + BaseApplicationImpl.sApplication.getRuntime().getAccount());
-        EmosmPb.SubCmd0x13Rsp localSubCmd0x13Rsp = new EmosmPb.SubCmd0x13Rsp();
-        Object localObject1 = CommonUsedSystemEmojiManager.a(this.a);
-        if (localObject1 == null)
-        {
-          localObject1 = new ArrayList();
-          localSubCmd0x13Rsp.itemlist.set((List)localObject1);
-          if ((QLog.isColorLevel()) && (((List)localObject1).size() > 0))
-          {
-            StringBuilder localStringBuilder = new StringBuilder("saveSystemEmojiInfoToFile : itemsInfo = ");
-            int i = 0;
-            if (i < ((List)localObject1).size())
-            {
-              EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)((List)localObject1).get(i);
-              localStringBuilder.append(";type = " + localSmallYellowItem.type.get()).append(";id = " + localSmallYellowItem.id.get()).append(";ts = " + localSmallYellowItem.ts.get());
-              i += 1;
-              continue;
-            }
-            QLog.d("CommonUsedSystemEmojiManager", 2, localStringBuilder.toString());
-          }
-          FileUtils.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
-          return;
+        if (!HotChatFlashPicActivity.b(this.a)) {
+          localEditor.putLong("commen_flashpic_shot_deadlineday", HotChatFlashPicActivity.b(this.a) + 518400000L);
         }
+        ReportController.b(this.a.app, "CliOper", "", "", "0X800597B", "0X800597B", 0, 0, "", "", "", "");
       }
     }
   }

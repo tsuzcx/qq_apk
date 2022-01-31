@@ -8,12 +8,12 @@ import cooperation.qzone.util.PanoramaUtil;
 import cooperation.qzone.util.XMPCoreUtil;
 import java.io.Serializable;
 import java.net.URL;
-import wte;
+import wwj;
 
 public class LocalMediaInfo
   implements Parcelable, Serializable, Comparable
 {
-  public static final Parcelable.Creator CREATOR = new wte();
+  public static final Parcelable.Creator CREATOR = new wwj();
   public static final int PHOTO_LAST_SELECTED = 3;
   public static final int PHOTO_SELECTED = 1;
   public static final int PHOTO_UNSELECTED = 2;

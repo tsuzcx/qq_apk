@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.config;
 
-import aaxt;
+import abeu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -23,7 +23,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARMapConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new aaxt();
+  public static final Parcelable.Creator CREATOR = new abeu();
   public static final int DEFAULT_503_TIMEOUT = 120;
   public static final int DEFAULT_FAIL_TIMEOUT = 20;
   public static final int DEFAULT_MAPUPDATEFLAG = 0;

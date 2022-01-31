@@ -1,22 +1,74 @@
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.UploadSoDownloader;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import cooperation.qzone.util.FileUtils;
+import java.io.File;
 
 public class amts
-  implements Runnable
+  implements ModuleDownloadListener
 {
-  public amts(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public amts(UploadSoDownloader paramUploadSoDownloader) {}
   
-  public void run()
+  public void onDownloadCanceled(String paramString)
   {
-    CapturePtvTemplateManager.a().a();
-    CaptureReportUtil.h();
-    this.a.A();
+    UploadSoDownloader.b(false);
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    UploadSoDownloader.b(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("upload.so")) {
+      return;
+    }
+    UploadSoDownloader.b(false);
+    String str = UploadSoDownloader.a().getAbsolutePath();
+    QLog.d("UploadEnv", 1, "upload so download success : " + str);
+    paramString = QzoneModuleManager.getInstance().getModuleFilePath(paramString);
+    File localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    if (!FileUtils.b(new File(paramString), localFile))
+    {
+      QLog.d("UploadEnv", 1, "upload so unzip fail");
+      UploadSoDownloader.b(false);
+      return;
+    }
+    if (UploadSoDownloader.a(this.a, str))
+    {
+      QLog.d("UploadEnv", 1, "upload so save success");
+      UploadSoDownloader.a(this.a, true);
+      UploadSoDownloader.a(true);
+    }
+    for (;;)
+    {
+      UploadSoDownloader.b(false);
+      return;
+      try
+      {
+        localFile.delete();
+        UploadSoDownloader.a(this.a, false);
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amts
  * JD-Core Version:    0.7.0.1
  */

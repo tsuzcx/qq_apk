@@ -1,27 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BadgeUtils;
 
 public class zky
-  extends ProtoUtils.TroopProtocolObserver
+  implements Runnable
 {
-  public zky(TroopHandler paramTroopHandler, String paramString1, String paramString2) {}
+  public zky(QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if (paramInt == 0)
+    if ((!this.a.isLogin()) || (this.a.l)) {}
+    for (int i = 0;; i = this.a.f())
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(6, true, new Object[] { Integer.valueOf(8), Integer.valueOf(0), this.jdField_a_of_type_JavaLangString });
-      paramArrayOfByte = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b.getManager(51)).b(this.jdField_a_of_type_JavaLangString);
-      if ((paramArrayOfByte != null) && (!paramArrayOfByte.hasSetTroopHead())) {
-        this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b(Long.parseLong(this.b));
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAppInterface", 2, String.format("unread: %d islogin: %s isReleased: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.a.isLogin()), Boolean.valueOf(this.a.l) }));
       }
+      BadgeUtils.a(QQAppInterface.l(this.a), i);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(6, false, new Object[] { Integer.valueOf(8), Integer.valueOf(paramInt) });
   }
 }
 

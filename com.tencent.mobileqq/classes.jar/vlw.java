@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.widget.ListView;
+import com.tencent.widget.XPanelContainer;
 
 public class vlw
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public vlw(PhotoListPanel paramPhotoListPanel) {}
+  public vlw(PEPanel paramPEPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
+    PEPanel.a(this.a).setVisibility(0);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
+    localTranslateAnimation.setDuration(200L);
+    PEPanel.a(this.a).startAnimation(localTranslateAnimation);
   }
 }
 

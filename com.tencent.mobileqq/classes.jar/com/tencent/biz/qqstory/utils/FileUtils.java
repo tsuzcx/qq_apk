@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.io.File;
 import mqq.os.MqqHandler;
-import omn;
+import ooh;
 
 public class FileUtils
 {
@@ -31,7 +31,7 @@ public class FileUtils
     }
     catch (Exception paramString)
     {
-      SLog.b("Q.qqstory:Utils", paramString, "", new Object[0]);
+      SLog.c("Q.qqstory:Utils", paramString, "", new Object[0]);
     }
     return -1L;
   }
@@ -159,7 +159,7 @@ public class FileUtils
     for (boolean bool = ((QQStoryBaseActivity)paramContext).isValidate();; bool = true)
     {
       if (bool) {
-        ThreadManager.getUIHandler().post(new omn(paramContext));
+        ThreadManager.getUIHandler().post(new ooh(paramContext));
       }
       return true;
     }
@@ -319,7 +319,7 @@ public class FileUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 90	java/io/File:exists	()Z
+    //   1: invokevirtual 89	java/io/File:exists	()Z
     //   4: ifne +31 -> 35
     //   7: new 305	java/lang/RuntimeException
     //   10: dup
@@ -752,6 +752,18 @@ public class FileUtils
   }
   
   public static boolean f(String paramString)
+  {
+    if (StringUtil.a(paramString))
+    {
+      SLog.d("Q.qqstory:Utils", "save from: delete path null");
+      return false;
+    }
+    com.tencent.mobileqq.utils.FileUtils.d(paramString);
+    SLog.d("Q.qqstory:Utils", "deleteFile %s", new Object[] { paramString });
+    return true;
+  }
+  
+  public static boolean g(String paramString)
   {
     if (StringUtil.a(paramString))
     {

@@ -1,75 +1,48 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.graphics.Color;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
-import org.json.JSONObject;
 
-public class lwo
-  extends DownloadListener
+class lwo
+  implements Runnable
 {
-  public lwo(ReadInJoyRefreshManager paramReadInJoyRefreshManager, String paramString, RefreshData paramRefreshData) {}
+  lwo(lwn paramlwn) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public void run()
   {
-    String str = paramDownloadTask.a().getString("refreshId");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.jdField_a_of_type_JavaUtilHashMap.remove("refresh_" + str);
-    super.onCancel(paramDownloadTask);
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    String str1 = paramDownloadTask.a().getString("refreshId");
-    if (paramDownloadTask.a == 0)
+    if (this.a.a.jdField_a_of_type_Boolean)
     {
-      paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
-      if (!paramDownloadTask.exists()) {}
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843369);
+      if (this.a.a.jdField_a_of_type_Int > 0)
+      {
+        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.a(this.a.a.jdField_a_of_type_Int));
+        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#07D0B0"));
+        if (QLog.isColorLevel()) {
+          QLog.d("ComponentSocialOperation", 2, "revert upvote to true, set num:" + this.a.a.a(this.a.a.jdField_a_of_type_Int));
+        }
+      }
     }
+    label314:
     for (;;)
     {
-      try
-      {
-        FileUtils.a(paramDownloadTask.getAbsolutePath(), RefreshRes.a(), false);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.isShown = true;
-        SharedPreUtils.v(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getBaseContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.toJson().toString());
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.a.a.jdField_b_of_type_AndroidViewAnimationScaleAnimation);
+      return;
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843372);
+      this.a.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
+      if (this.a.a.jdField_a_of_type_Int > 0) {
+        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.a(this.a.a.jdField_a_of_type_Int));
       }
-      catch (Exception localException)
+      for (;;)
       {
         if (!QLog.isColorLevel()) {
-          continue;
+          break label314;
         }
-        QLog.d("ReadInJoyRefreshManager", 2, "downloadSkinRes uncompressZip failed: id = " + str1 + ", " + QLog.getStackTraceString(localException));
-        paramDownloadTask.delete();
-        continue;
-      }
-      finally
-      {
-        paramDownloadTask.delete();
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.jdField_a_of_type_JavaUtilHashMap.remove("refresh_" + str1);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyRefreshManager", 2, "downloadSkinRes failed: id = " + str2);
+        QLog.d("ComponentSocialOperation", 2, "revert upvote to false, set num:" + this.a.a.a(this.a.a.jdField_a_of_type_Int));
+        break;
+        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131428487);
       }
     }
-  }
-  
-  public void onProgress(DownloadTask paramDownloadTask)
-  {
-    super.onProgress(paramDownloadTask);
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    return super.onStart(paramDownloadTask);
   }
 }
 

@@ -1,61 +1,82 @@
 import android.content.Context;
-import android.graphics.PointF;
-import android.os.SystemClock;
-import android.view.MotionEvent;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.widget.BubblePopupWindow;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
 
-public class akff
-  implements View.OnLongClickListener, View.OnTouchListener
+class akff
+  implements Runnable
 {
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  akff(akfe paramakfe) {}
   
-  private akff(ContextMenuTextView paramContextMenuTextView) {}
-  
-  protected void a(View paramView)
+  public void run()
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    int j = 0;
+    int k = this.a.a.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout);
+    int m = this.a.a.a(this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    int n = this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    Object localObject1 = this.a.a.getWindow().getAttributes();
+    int i;
+    Object localObject2;
+    if (k - n > 0)
     {
-      a(paramView);
-      return false;
+      i = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.getHeight() / 2;
+      ((WindowManager.LayoutParams)localObject1).y = (-i);
+      this.a.a.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
+      if ((this.a.a.c) && (this.a.a.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (TextUtils.isEmpty(this.a.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString())))
+      {
+        localObject1 = (LinearLayout)this.a.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131364089);
+        if ((localObject1 != null) && (((LinearLayout)localObject1).getChildCount() > 0))
+        {
+          localObject1 = ((LinearLayout)localObject1).getChildAt(0);
+          localObject2 = (TextView)((View)localObject1).findViewById(2131364090);
+          if (((TextView)localObject2).getText() != null) {
+            this.a.a.a(((TextView)localObject2).getText().toString());
+          }
+          localObject1 = ((View)localObject1).findViewById(2131364091);
+          ((View)localObject1).setVisibility(0);
+          this.a.a.jdField_a_of_type_AndroidViewView = ((View)localObject1);
+          this.a.a.c = false;
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = (Context)this.a.a.jdField_a_of_type_JavaLangRefSoftReference.get();
+        if (localObject1 != null) {
+          j = ((Context)localObject1).getResources().getDisplayMetrics().heightPixels;
+        }
+        localObject2 = new StringBuilder(128);
+        if (localObject1 != null) {
+          break label429;
+        }
+        ((StringBuilder)localObject2).append("|context is null");
+      }
     }
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131375342, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131435076), 2130838301);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, (int)this.jdField_a_of_type_AndroidGraphicsPointF.y, localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new akfe(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView));
-    }
-    a(paramView);
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+      ((StringBuilder)localObject2).append("|screenHeight=").append(j).append("|emoSpaceY=").append(k).append("|dialogY=").append(m).append("|dialogHeight=").append(n).append("|moveY=").append(i);
+      QLog.d("QQCustomDialogWtihInputAndChoose.meassure", 2, ((StringBuilder)localObject2).toString());
+      return;
+      i = m + n - k;
+      break;
+      label429:
+      ((StringBuilder)localObject2).append("|context is not null");
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akff
  * JD-Core Version:    0.7.0.1
  */

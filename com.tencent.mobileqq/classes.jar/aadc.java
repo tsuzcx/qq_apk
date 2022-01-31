@@ -1,25 +1,39 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.mobileqq.ar.FramePerformanceMonitor;
+import com.tencent.mobileqq.ar.FramePerformanceMonitor.FrameRefreshListener;
+import com.tencent.mobileqq.ar.GapDataCollector;
+import com.tencent.mobileqq.ar.GapDataCollector.RefreshData;
 
-public final class aadc
-  implements FileFilter
+public class aadc
+  implements Runnable
 {
-  public boolean accept(File paramFile)
+  private boolean jdField_a_of_type_Boolean;
+  
+  private aadc(FramePerformanceMonitor paramFramePerformanceMonitor) {}
+  
+  public void run()
   {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
+    for (;;)
     {
-      int i = 3;
-      while (i < paramFile.length())
+      try
       {
-        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
-          return false;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a() == 0) {
+            Thread.sleep(FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor));
+          }
         }
-        i += 1;
+        else {
+          return;
+        }
       }
-      return true;
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      GapDataCollector.RefreshData localRefreshData = FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a();
+      FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a(localRefreshData);
+      Thread.sleep(FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor));
     }
-    return false;
   }
 }
 

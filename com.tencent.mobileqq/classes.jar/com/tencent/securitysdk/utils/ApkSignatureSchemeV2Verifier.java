@@ -1,6 +1,6 @@
 package com.tencent.securitysdk.utils;
 
-import alix;
+import alyn;
 import android.util.Pair;
 import java.io.RandomAccessFile;
 import java.nio.BufferUnderflowException;
@@ -11,11 +11,11 @@ public class ApkSignatureSchemeV2Verifier
 {
   static long a(ByteBuffer paramByteBuffer, long paramLong)
   {
-    long l = alix.a(paramByteBuffer);
+    long l = alyn.a(paramByteBuffer);
     if (l >= paramLong) {
       throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP Central Directory offset out of range: " + l + ". ZIP End of Central Directory offset: " + paramLong);
     }
-    if (alix.b(paramByteBuffer) + l != paramLong) {
+    if (alyn.b(paramByteBuffer) + l != paramLong) {
       throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP Central Directory is not immediately followed by End of Central Directory");
     }
     return l;
@@ -23,7 +23,7 @@ public class ApkSignatureSchemeV2Verifier
   
   static Pair a(RandomAccessFile paramRandomAccessFile)
   {
-    paramRandomAccessFile = alix.a(paramRandomAccessFile);
+    paramRandomAccessFile = alyn.a(paramRandomAccessFile);
     if (paramRandomAccessFile == null) {
       throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("Not an APK file: ZIP End of Central Directory record not found");
     }
@@ -161,7 +161,7 @@ public class ApkSignatureSchemeV2Verifier
       Pair localPair = a(paramString);
       ByteBuffer localByteBuffer = (ByteBuffer)localPair.first;
       long l = ((Long)localPair.second).longValue();
-      if (alix.a(paramString, l)) {
+      if (alyn.a(paramString, l)) {
         throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP64 APK not supported");
       }
       a((ByteBuffer)a(paramString, a(localByteBuffer, l)).first);
@@ -206,7 +206,7 @@ public class ApkSignatureSchemeV2Verifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.securitysdk.utils.ApkSignatureSchemeV2Verifier
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,26 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
 public class obo
-  implements View.OnClickListener
+  implements Runnable
 {
-  public obo(EditPicQzonePublishActivity paramEditPicQzonePublishActivity) {}
+  public obo(NewMyStorySegment paramNewMyStorySegment, TextView paramTextView, View paramView, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!EditPicQzonePublishActivity.a(this.a))
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment, NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - UIUtils.a(NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
+    if (NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).f > 0)
     {
-      EditPicQzonePublishActivity.a(this.a);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
       return;
     }
-    EditPicQzonePublishActivity.a(this.a, false);
-    EditPicQzonePublishActivity.a(this.a).setSelected(false);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(NewMyStorySegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).getResources().getColor(2131494277));
   }
 }
 

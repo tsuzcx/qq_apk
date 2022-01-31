@@ -1,32 +1,20 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class rlx
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public rlx(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage, ActionSheet paramActionSheet) {}
+  public rlx(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
-        break label41;
-      }
-      FileManagerReporter.a("0X8005E4F");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      label41:
-      FileManagerReporter.a("0X8005E4D");
-    }
+    paramView = new Intent(this.a, QQStoryBasicSettingsActivity.class);
+    this.a.startActivity(paramView);
+    StoryReportor.a("browse_friend_settings", "clk_set", 0, 0, new String[] { "", "", "", "" });
   }
 }
 

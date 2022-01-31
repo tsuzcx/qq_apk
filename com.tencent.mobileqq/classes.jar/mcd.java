@@ -1,23 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 
-public class mcd
-  implements Animation.AnimationListener
+public final class mcd
+  implements Runnable
 {
-  public mcd(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mcd(View paramView, int paramInt1, int paramInt2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = (ImageView)this.a.findViewById(2131365561);
-    ImageView localImageView = (ImageView)this.a.findViewById(2131365562);
-    VideoFeedsPlayActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
+    VideoFeedsHelper.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

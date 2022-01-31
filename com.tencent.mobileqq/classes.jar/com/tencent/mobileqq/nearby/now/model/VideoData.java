@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import aego;
+import aetu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class VideoData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aego();
+  public static final Parcelable.Creator CREATOR = new aetu();
   public int a;
   public long a;
   public LocationInfo a;

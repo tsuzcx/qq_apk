@@ -1,15 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
 
 public class lws
-  extends BaseSkinRes
+  implements View.OnClickListener
 {
-  public lws(ReadInJoySkinManager paramReadInJoySkinManager) {}
+  public lws(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
   
-  public int a()
-  {
-    return -16265040;
-  }
+  public void onClick(View paramView) {}
 }
 
 

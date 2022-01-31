@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import ajtk;
+import akhr;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -64,7 +64,7 @@ public class IndividualRedPacketResDownloader
     this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo = new IndividualRedPacketResDownloader.RedPacketResInfo();
     this.jdField_c_of_type_JavaUtilMap = new HashMap();
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new ajtk(this);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new akhr(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager = paramIndividualRedPacketManager;
@@ -1212,7 +1212,7 @@ public class IndividualRedPacketResDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividualRedPacketResDownloader
  * JD-Core Version:    0.7.0.1
  */

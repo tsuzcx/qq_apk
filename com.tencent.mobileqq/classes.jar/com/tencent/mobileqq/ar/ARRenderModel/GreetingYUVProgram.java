@@ -14,7 +14,8 @@ public class GreetingYUVProgram
   static float[] jdField_c_of_type_ArrayOfFloat = { 0.0F, -1.0F, 1.0F, -1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
   static float[] jdField_d_of_type_ArrayOfFloat = { -1.0F, -1.0F, 0.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F };
   static float[] jdField_e_of_type_ArrayOfFloat = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-  private static float[] jdField_g_of_type_ArrayOfFloat = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  public static float[] f;
+  private static float[] jdField_h_of_type_ArrayOfFloat = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
   public final int a;
   private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
   private boolean jdField_a_of_type_Boolean;
@@ -23,10 +24,10 @@ public class GreetingYUVProgram
   private int jdField_c_of_type_Int;
   private int jdField_d_of_type_Int;
   private int jdField_e_of_type_Int;
-  private int jdField_f_of_type_Int;
-  private float[] jdField_f_of_type_ArrayOfFloat;
+  private int f;
   private int jdField_g_of_type_Int;
-  private int h;
+  private float[] jdField_g_of_type_ArrayOfFloat;
+  private int jdField_h_of_type_Int;
   private int i = -1;
   private int j = -1;
   private int k = -1;
@@ -37,6 +38,11 @@ public class GreetingYUVProgram
   private int p = -1;
   private int q = -1;
   private int r = -1;
+  
+  static
+  {
+    jdField_f_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 1.0F, 1.0F, -1.0F, -1.0F, 1.0F, -1.0F };
+  }
   
   public GreetingYUVProgram(int paramInt)
   {
@@ -134,49 +140,49 @@ public class GreetingYUVProgram
     switch (this.jdField_a_of_type_Int)
     {
     default: 
-      this.jdField_f_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
+      this.jdField_g_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
       this.jdField_c_of_type_Int = 33984;
       this.jdField_d_of_type_Int = 33985;
       this.jdField_e_of_type_Int = 33986;
       this.jdField_f_of_type_Int = 0;
       this.jdField_g_of_type_Int = 1;
-      this.h = 2;
+      this.jdField_h_of_type_Int = 2;
       return;
     case 1: 
-      this.jdField_f_of_type_ArrayOfFloat = jdField_b_of_type_ArrayOfFloat;
+      this.jdField_g_of_type_ArrayOfFloat = jdField_b_of_type_ArrayOfFloat;
       this.jdField_c_of_type_Int = 33984;
       this.jdField_d_of_type_Int = 33985;
       this.jdField_e_of_type_Int = 33986;
       this.jdField_f_of_type_Int = 0;
       this.jdField_g_of_type_Int = 1;
-      this.h = 2;
+      this.jdField_h_of_type_Int = 2;
       return;
     case 2: 
-      this.jdField_f_of_type_ArrayOfFloat = jdField_c_of_type_ArrayOfFloat;
+      this.jdField_g_of_type_ArrayOfFloat = jdField_c_of_type_ArrayOfFloat;
       this.jdField_c_of_type_Int = 33987;
       this.jdField_d_of_type_Int = 33988;
       this.jdField_e_of_type_Int = 33989;
       this.jdField_f_of_type_Int = 3;
       this.jdField_g_of_type_Int = 4;
-      this.h = 5;
+      this.jdField_h_of_type_Int = 5;
       return;
     case 3: 
-      this.jdField_f_of_type_ArrayOfFloat = jdField_d_of_type_ArrayOfFloat;
+      this.jdField_g_of_type_ArrayOfFloat = jdField_d_of_type_ArrayOfFloat;
       this.jdField_c_of_type_Int = 33990;
       this.jdField_d_of_type_Int = 33991;
       this.jdField_e_of_type_Int = 33992;
       this.jdField_f_of_type_Int = 6;
       this.jdField_g_of_type_Int = 7;
-      this.h = 8;
+      this.jdField_h_of_type_Int = 8;
       return;
     }
-    this.jdField_f_of_type_ArrayOfFloat = jdField_e_of_type_ArrayOfFloat;
+    this.jdField_g_of_type_ArrayOfFloat = jdField_e_of_type_ArrayOfFloat;
     this.jdField_c_of_type_Int = 33993;
     this.jdField_d_of_type_Int = 33994;
     this.jdField_e_of_type_Int = 33995;
     this.jdField_f_of_type_Int = 9;
     this.jdField_g_of_type_Int = 10;
-    this.h = 11;
+    this.jdField_h_of_type_Int = 11;
   }
   
   public void a(Buffer paramBuffer1, Buffer paramBuffer2, Buffer paramBuffer3, int paramInt1, int paramInt2)
@@ -249,7 +255,7 @@ public class GreetingYUVProgram
     }
   }
   
-  void a(float[] paramArrayOfFloat)
+  public void a(float[] paramArrayOfFloat)
   {
     this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(paramArrayOfFloat.length * 4);
     this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.nativeOrder());
@@ -257,9 +263,9 @@ public class GreetingYUVProgram
     this.jdField_a_of_type_JavaNioByteBuffer.position(0);
     if (this.jdField_b_of_type_JavaNioByteBuffer == null)
     {
-      this.jdField_b_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(jdField_g_of_type_ArrayOfFloat.length * 4);
+      this.jdField_b_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(jdField_h_of_type_ArrayOfFloat.length * 4);
       this.jdField_b_of_type_JavaNioByteBuffer.order(ByteOrder.nativeOrder());
-      this.jdField_b_of_type_JavaNioByteBuffer.asFloatBuffer().put(jdField_g_of_type_ArrayOfFloat);
+      this.jdField_b_of_type_JavaNioByteBuffer.asFloatBuffer().put(jdField_h_of_type_ArrayOfFloat);
       this.jdField_b_of_type_JavaNioByteBuffer.position(0);
     }
   }
@@ -287,12 +293,41 @@ public class GreetingYUVProgram
     GLES20.glUniform1i(this.l, this.jdField_g_of_type_Int);
     GLES20.glActiveTexture(this.jdField_e_of_type_Int);
     GLES20.glBindTexture(3553, this.p);
-    GLES20.glUniform1i(this.m, this.h);
+    GLES20.glUniform1i(this.m, this.jdField_h_of_type_Int);
     GLES20.glDrawArrays(5, 0, 4);
     GLES20.glFinish();
     GLES20.glDisableVertexAttribArray(this.i);
     GLES20.glDisableVertexAttribArray(this.j);
     GLES20.glUseProgram(0);
+  }
+  
+  public void c()
+  {
+    if (this.n != -1)
+    {
+      GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
+      a("glDeleteTextures");
+      this.n = -1;
+    }
+    if (this.o != -1)
+    {
+      GLES20.glDeleteTextures(1, new int[] { this.o }, 0);
+      a("glDeleteTextures");
+      this.o = -1;
+    }
+    if (this.p != -1)
+    {
+      GLES20.glDeleteTextures(1, new int[] { this.p }, 0);
+      a("glDeleteTextures");
+      this.p = -1;
+    }
+    if (this.jdField_b_of_type_Int > 0)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      GLES20.glDeleteProgram(this.jdField_b_of_type_Int);
+      a("glDeleteProgram");
+      this.jdField_b_of_type_Int = 0;
+    }
   }
 }
 

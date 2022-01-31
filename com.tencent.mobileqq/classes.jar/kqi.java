@@ -1,17 +1,16 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class kqi
-  implements Runnable
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public kqi(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, kqn paramkqn, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2, RelativeLayout.LayoutParams paramLayoutParams3) {}
+  public kqi(AccountDetailVideoManager paramAccountDetailVideoManager) {}
   
-  public void run()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_Kqn.b.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_Kqn.c.setLayoutParams(this.b);
-    this.jdField_a_of_type_Kqn.d.setLayoutParams(this.c);
+    this.a.a.start();
+    new Thread(new kqj(this)).start();
   }
 }
 

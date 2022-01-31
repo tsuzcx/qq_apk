@@ -1,37 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer;
 import com.tencent.qphone.base.util.QLog;
 
 public class wyf
-  extends BroadcastReceiver
+  implements SurfaceHolder.Callback
 {
-  public wyf(SendHbActivity paramSendHbActivity) {}
+  public wyf(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if (paramIntent.getAction().equals("com.qwallet.report"))
-    {
-      int i = paramIntent.getIntExtra("type", 0);
-      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
-      if (999 == i) {
-        break label53;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "surfaceCreated ");
     }
-    label53:
-    do
+    if ((this.a.q == 1) && (this.a.p > 0))
     {
-      do
-      {
-        return;
-        paramContext = paramIntent.getBundleExtra("params");
-      } while (paramContext == null);
-      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
-      paramContext = paramContext.getString("from");
-    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
-    this.a.finish();
+      this.a.a(this.a.p);
+      this.a.p = 0;
+      this.a.q = 0;
+    }
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "surfaceDestroyed ");
+    }
+    if (this.a.a != null) {
+      this.a.a.c();
+    }
   }
 }
 

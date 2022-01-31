@@ -1,41 +1,34 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
-import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.theme.diy.ResData;
+import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic.StyleCallBack;
+import java.lang.ref.WeakReference;
 
-public class acce
-  extends AsyncTask
+class acce
+  implements ThemeDiyStyleLogic.StyleCallBack
 {
-  public acce(FMLocalFileActivity paramFMLocalFileActivity) {}
+  acce(acbg paramacbg) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    return Integer.valueOf(FileCategoryUtil.d(this.a));
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    this.a.stopTitleProgress();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    paramResData = (MessengerService)this.a.a.get();
+    Bundle localBundle;
+    if (paramResData != null)
     {
-      FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)localIterator.next();
-      if (localFileCategoryEntity.e == 4)
-      {
-        localFileCategoryEntity.d = paramInteger.intValue();
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
+      localBundle = new Bundle();
+      localBundle.putString("themeId", paramBundle.getString("themeId"));
+      if (paramInt2 != 4) {
+        break label73;
       }
     }
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.a.startTitleProgress();
+    label73:
+    for (paramInt1 = 0;; paramInt1 = -2)
+    {
+      localBundle.putInt("themeStatus", paramInt1);
+      paramBundle.putBundle("response", localBundle);
+      paramResData.a(paramBundle);
+      return 1;
+    }
   }
 }
 

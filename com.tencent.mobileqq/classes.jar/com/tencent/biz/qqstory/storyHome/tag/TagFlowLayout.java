@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.widget.TraceUtils;
-import oap;
+import och;
 
 public class TagFlowLayout
   extends RelativeLayout
@@ -42,7 +42,7 @@ public class TagFlowLayout
     {
       int k = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemViewType(i);
       View localView = getChildAt(i);
-      if ((k == ((Integer)localView.getTag(2131362456)).intValue()) && (k == 0)) {
+      if ((k == ((Integer)localView.getTag(2131362459)).intValue()) && (k == 0)) {
         this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, localView, this);
       }
       for (;;)
@@ -204,7 +204,7 @@ public class TagFlowLayout
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
     if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null)
     {
-      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new oap(this);
+      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new och(this);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
       this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
     }

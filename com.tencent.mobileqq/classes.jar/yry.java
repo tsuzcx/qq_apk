@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager.EnterRoomCallback;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.ApolloTicker;
+import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
+import java.lang.ref.WeakReference;
 
 public class yry
-  implements AVManager.EnterRoomCallback
+  implements Runnable
 {
-  public yry(AVEngineWalper paramAVEngineWalper) {}
+  public yry(SpriteBackgroundManager paramSpriteBackgroundManager) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    if (paramInt == 0) {
-      QLog.e("AVEngineWalper", 1, "EnterRoom successfully!!!");
+    ApolloTextureView localApolloTextureView = (ApolloTextureView)SpriteBackgroundManager.a(this.a).get();
+    if ((localApolloTextureView != null) && (localApolloTextureView.getRender() != null) && (localApolloTextureView.getRender().mApolloTicker != null)) {
+      ApolloRender.tickerResume(localApolloTextureView.getRender().mApolloTicker.ticker);
     }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.b(paramInt, paramString);
-      }
-      return;
-      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "mResumeTickerTask");
     }
   }
 }

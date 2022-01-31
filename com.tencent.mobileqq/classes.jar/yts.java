@@ -1,91 +1,73 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.store.ApolloResDownloader;
+import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class yts
-  implements Runnable
+  extends DownloadListener
 {
-  public void run()
+  public yts(File paramFile, AppInterface paramAppInterface, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, ApolloResDownloader.OnApolloDownLoadListener paramOnApolloDownLoadListener, String paramString, int paramInt3, int[] paramArrayOfInt, int paramInt4) {}
+  
+  public void onDone(DownloadTask paramDownloadTask)
   {
+    boolean bool = true;
+    super.onDone(paramDownloadTask);
+    if (3 == paramDownloadTask.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
+    }
     for (;;)
     {
       try
       {
-        SharedPreferences localSharedPreferences = ApolloUtil.a();
-        Object localObject = new File(ApolloConstant.n);
-        if (!((File)localObject).exists()) {
-          break;
+        ZipUtils.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+        ApolloResDownloader.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) {
+          break label421;
         }
-        if (!((File)localObject).isDirectory()) {
-          return;
-        }
-        if (FileUtils.b(ApolloConstant.n) <= 104857600L) {
-          break;
-        }
-        localObject = ((File)localObject).listFiles();
-        if (localObject == null) {
-          break;
-        }
-        localObject = Arrays.asList((Object[])localObject);
-        Collections.sort((List)localObject, ApolloUtil.a);
-        Iterator localIterator = ((List)localObject).iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        File localFile = (File)localIterator.next();
-        int i = 0;
-        if ((localFile != null) && (localFile.exists()))
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnApolloDownLoadListener != null)
         {
-          String str = localFile.getName();
-          if ((str.endsWith(".patch")) || (str.endsWith(".patched")))
-          {
-            localFile.delete();
-            i = 1;
+          paramDownloadTask = this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnApolloDownLoadListener;
+          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
+            bool = false;
           }
-          localObject = str;
-          if (str.endsWith(".zip")) {
-            localObject = str.substring(0, str.indexOf("."));
-          }
-          if (AvatarTroopUtil.b((String)localObject))
-          {
-            long l1 = localSharedPreferences.getLong((String)localObject, 0L);
-            long l2 = NetConnInfoCenter.getServerTimeMillis();
-            if ((l2 - l1 > 2592000000L) && (l2 - localFile.lastModified() > 2592000000L))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("ApolloUtil", 2, "time limit delete file:" + localFile.getName());
-              }
-              localFile.delete();
-              i = 1;
-              if (i != 0)
-              {
-                l1 = FileUtils.b(ApolloConstant.n);
-                if (l1 < 104857600L)
-                {
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.i("ApolloUtil", 2, "delete finish,new size:" + l1);
-                  return;
-                }
-              }
-            }
+          paramDownloadTask.onDownLoadFinish(bool, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.d);
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloResDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_a_of_type_JavaLangString + "all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
           }
         }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ApolloUtil", 1, "deleteGameResIfNeed error:", localException);
+        this.jdField_a_of_type_JavaIoFile.delete();
         return;
+      }
+      catch (Exception paramDownloadTask)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + paramDownloadTask.getMessage());
+        continue;
+      }
+      catch (OutOfMemoryError paramDownloadTask)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + paramDownloadTask.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+      QLog.d("ApolloResDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + paramDownloadTask.a());
+      continue;
+      label421:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloRes download uin:" + this.jdField_a_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
       }
     }
   }

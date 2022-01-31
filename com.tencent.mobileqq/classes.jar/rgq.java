@@ -1,61 +1,26 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.util.FaceDrawable;
 
-public class rgq
-  implements View.OnClickListener
+class rgq
+  implements Runnable
 {
-  public rgq(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  rgq(rgp paramrgp, String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a != null)
+    try
     {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
-    }
-    paramView = AddFriendVerifyActivity.a(this.a).getText().toString().trim();
-    if (TextUtils.isEmpty(paramView))
-    {
-      if (!this.a.isFinishing())
-      {
-        paramView = new QQAnonymousDialog(this.a);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText("请输入答案");
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845946);
-        paramView.a();
-      }
+      FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Rgp.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
+      ((ImageView)this.jdField_a_of_type_Rgp.a.a.getChildAt(this.jdField_a_of_type_Int).findViewById(2131362719)).setImageDrawable(localFaceDrawable);
       return;
     }
-    if (paramView.length() > 90)
+    catch (Exception localException)
     {
-      paramView = new Dialog(this.a, 2131624515);
-      paramView.setContentView(2130971460);
-      ((TextView)paramView.findViewById(2131362758)).setText(this.a.getString(2131434767));
-      ((ProgressBar)paramView.findViewById(2131362757)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131374062)).setImageResource(2130838748);
-      paramView.show();
-      return;
+      localException.printStackTrace();
     }
-    this.a.a(paramView, true);
-    if (NetworkUtil.d(this.a))
-    {
-      AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), paramView, this.a.getIntent().getIntExtra("stat_option", 0));
-      return;
-    }
-    QQToast.a(this.a, 1, 2131434794, 0).b(this.a.getTitleBarHeight());
   }
 }
 

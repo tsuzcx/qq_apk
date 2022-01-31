@@ -1,24 +1,51 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.buscard.BuscardPluginInstallActivity;
+import cooperation.plugin.IPluginManager;
 
 public class amiz
-  implements DialogInterface.OnClickListener
+  implements OnPluginInstallListener
 {
-  public amiz(QZoneShareActivity paramQZoneShareActivity, Activity paramActivity, QZoneShareData paramQZoneShareData) {}
+  public amiz(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public IBinder asBinder()
   {
-    switch (paramInt)
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BuscardPluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
+    }
+    QQToast.a(this.a.getApplicationContext(), 2131438295, 0);
+    BuscardPluginInstallActivity.a(this.a, false);
+    this.a.finish();
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    BuscardPluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BuscardPluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
+    }
+    boolean bool = BuscardPluginInstallActivity.a(this.a).isPlugininstalled("BuscardPlugin.apk");
+    BuscardPluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
+    if (bool)
     {
-    default: 
+      BuscardPluginInstallActivity.a(this.a);
       return;
     }
-    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData, false);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    QQToast.a(this.a.getApplicationContext(), 2131438295, 0);
+    BuscardPluginInstallActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 

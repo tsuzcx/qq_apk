@@ -13,7 +13,7 @@ import com.tencent.av.ui.QavVideoRecordUICtrl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import kdx;
+import kdi;
 
 public class QavRecordUtils
 {
@@ -65,7 +65,7 @@ public class QavRecordUtils
       return;
     }
     AudioFileDecoder localAudioFileDecoder = new AudioFileDecoder(48000, 16, 1);
-    localAudioFileDecoder.a(new kdx());
+    localAudioFileDecoder.a(new kdi());
     int i = 0;
     if (i < paramString.length)
     {

@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import dov.com.qq.im.capture.text.SupernaturalTextItem;
 
 public class anom
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anom(PickerContainer paramPickerContainer) {}
+  public int a;
+  public String a;
+  public int b = 0;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private anom(SupernaturalTextItem paramSupernaturalTextItem)
   {
-    this.a.setAlpha(PickerContainer.b(this.a).floatValue());
-    this.a.invalidate();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = null;
   }
 }
 

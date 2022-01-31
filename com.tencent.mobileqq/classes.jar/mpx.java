@@ -1,29 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.HeaderListAdapter;
+import com.tencent.widget.ListView;
+import java.util.List;
 
 public class mpx
-  implements Runnable
+  extends ReadInJoyObserver
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  public mpx(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
   
-  public mpx(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager, boolean paramBoolean)
+  public void c(boolean paramBoolean, List paramList)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadInJoySkinAnimManager);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void run()
-  {
-    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localReadInJoySkinAnimManager != null)
+    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoySkinAnimManager", 1, "InitResourceRunnable folder = " + ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager));
-      }
-      ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager, this.jdField_a_of_type_Boolean);
+      ReadInJoyDiandianHeaderController.a(this.a).removeHeaderView(ReadInJoyDiandianHeaderController.a(this.a));
+      return;
     }
+    if (ReadInJoyDiandianHeaderController.a(this.a).findHeaderViewPosition(ReadInJoyDiandianHeaderController.a(this.a)) < 0) {
+      ReadInJoyDiandianHeaderController.a(this.a).addHeaderView(ReadInJoyDiandianHeaderController.a(this.a));
+    }
+    ReadInJoyDiandianHeaderController.a(this.a, false);
+    ReadInJoyDiandianHeaderController.a(this.a).clear();
+    ReadInJoyDiandianHeaderController.a(this.a).addAll(paramList);
+    ReadInJoyDiandianHeaderController.a(this.a).notifyDataSetChanged();
   }
 }
 

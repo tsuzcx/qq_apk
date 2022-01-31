@@ -1,21 +1,16 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import android.app.Dialog;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 
 public class nth
-  implements TextView.OnEditorActionListener
+  implements Runnable
 {
-  public nth(DetailCommentHelper paramDetailCommentHelper) {}
+  public nth(QQStoryBaseActivity paramQQStoryBaseActivity) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 4)
-    {
-      this.a.d();
-      return true;
+    if (this.a.a != null) {
+      this.a.a.dismiss();
     }
-    return false;
   }
 }
 

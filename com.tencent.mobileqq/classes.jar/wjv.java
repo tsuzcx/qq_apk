@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.contact.newfriend.QIMNotifyAddFriendBuilder;
+import com.tencent.mobileqq.app.QIMNewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.newfriend.QIMNotifyAddFriendMsg;
 
 public class wjv
   implements Runnable
 {
-  public wjv(DeviceFragment paramDeviceFragment) {}
+  public wjv(QIMNotifyAddFriendBuilder paramQIMNotifyAddFriendBuilder) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.getCount() > 0))
-    {
-      int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.a();
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.getCount())) {
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQIMNewFriendManager.b(((QIMNotifyAddFriendMsg)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wjw(this));
   }
 }
 

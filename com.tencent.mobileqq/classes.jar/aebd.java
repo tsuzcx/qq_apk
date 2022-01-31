@@ -1,43 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
 public class aebd
-  implements aecg
+  implements Runnable
 {
-  public aebd(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aebd(PluginAction paramPluginAction, QQAppInterface paramQQAppInterface, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
   
-  public void a(View paramView)
+  public void run()
   {
-    this.a.f();
-    ReportController.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_more", 0, 0, "", "", "", "");
-  }
-  
-  public void a(View paramView, aecl paramaecl)
-  {
-    if (paramaecl.jdField_a_of_type_Boolean) {
-      QQToast.a(this.a, 1, "已发送邀请链接~", 1).a();
-    }
-    do
-    {
-      return;
-      GameRoomInviteActivity.a(this.a, paramaecl.jdField_a_of_type_JavaLangString, paramaecl.jdField_a_of_type_Int);
-      paramaecl.jdField_a_of_type_Boolean = true;
-      this.a.a.a(paramView, paramaecl.jdField_a_of_type_Boolean);
-      if (paramaecl.jdField_a_of_type_Int == 1)
-      {
-        ReportController.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
-        return;
-      }
-    } while (paramaecl.jdField_a_of_type_Int != 0);
-    ReportController.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
+    ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(35)).a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebd
  * JD-Core Version:    0.7.0.1
  */

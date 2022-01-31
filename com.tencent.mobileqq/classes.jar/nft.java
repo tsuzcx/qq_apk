@@ -1,20 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.newshare.job.WeChatImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver;
 
 public class nft
-  extends WeChatImageJob
+  implements Runnable
 {
-  public nft(ShareModeBase paramShareModeBase, boolean paramBoolean1, boolean paramBoolean2, ShareWeChatData paramShareWeChatData)
-  {
-    super(paramBoolean1, paramBoolean2);
-  }
+  public nft(RecentTabHaloPresenter.ReadStoryVideoEventReceiver paramReadStoryVideoEventReceiver, RecentTabHaloPresenter paramRecentTabHaloPresenter) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
-    return true;
+    RecentTabHaloPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter);
   }
 }
 

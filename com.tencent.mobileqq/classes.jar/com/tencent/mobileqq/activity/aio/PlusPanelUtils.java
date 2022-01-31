@@ -100,15 +100,15 @@ import java.util.Map;
 import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ujg;
-import ujh;
-import uji;
-import ujj;
-import ujk;
-import ujl;
-import ujm;
-import ujn;
-import ujo;
+import umg;
+import umh;
+import umi;
+import umj;
+import umk;
+import uml;
+import umm;
+import umn;
+import umo;
 
 public class PlusPanelUtils
 {
@@ -148,8 +148,8 @@ public class PlusPanelUtils
     PstnCardInfo localPstnCardInfo;
     if (paramInt2 == 1)
     {
-      paramCallback.a(2131438327);
-      paramCallback.b(2131433811);
+      paramCallback.a(2131438345);
+      paramCallback.b(2131433828);
       localPstnManager = (PstnManager)paramQQAppInterface.getManager(142);
       localPstnCardInfo = localPstnManager.a(paramQQAppInterface.getCurrentAccountUin());
       if ((localPstnCardInfo == null) || (localPstnManager.a() != 1) || (localPstnManager.a().d != 1)) {
@@ -158,7 +158,7 @@ public class PlusPanelUtils
       if (localPstnCardInfo.pstn_multi_call_time <= 0) {
         break label236;
       }
-      paramCallback.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438325), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840353), 0);
+      paramCallback.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438343), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840359), 0);
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80063FE", "0X80063FE", 1, 0, "", "", "", "");
       i = 1;
       j = 3;
@@ -167,23 +167,23 @@ public class PlusPanelUtils
     {
       if (i != 0)
       {
-        paramCallback.c(2131432998);
-        paramCallback.a(new uji(paramQQAppInterface));
-        paramCallback.a(new ujj(paramCallback, paramQQAppInterface, paramActivity, paramInt1, paramString, j));
+        paramCallback.c(2131433015);
+        paramCallback.a(new umi(paramQQAppInterface));
+        paramCallback.a(new umj(paramCallback, paramQQAppInterface, paramActivity, paramInt1, paramString, j));
         paramCallback.show();
         ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004D6C", "0X8004D6C", 0, 0, "", "", "", "");
         return paramCallback;
         label236:
         if ((localPstnManager.c() == 1) && (localPstnCardInfo.pstn_multi_try_status == 0))
         {
-          paramCallback.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438325), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840352), 0);
+          paramCallback.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438343), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840358), 0);
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80063FE", "0X80063FE", 3, 0, "", "", "", "");
           i = 1;
           j = 4;
         }
         else
         {
-          paramCallback.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438325), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840351), 0);
+          paramCallback.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438343), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840357), 0);
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80063FE", "0X80063FE", 2, 0, "", "", "", "");
           i = 1;
           j = 5;
@@ -326,7 +326,7 @@ public class PlusPanelUtils
     }
     if (!Utils.a())
     {
-      QQToast.a(paramActivity, paramActivity.getResources().getString(2131434753), 0).a();
+      QQToast.a(paramActivity, paramActivity.getResources().getString(2131434770), 0).a();
       return;
     }
     long l1 = System.currentTimeMillis();
@@ -354,7 +354,7 @@ public class PlusPanelUtils
     catch (Exception paramAppInterface)
     {
       paramAppInterface.printStackTrace();
-      QQToast.a(paramActivity, 2131434776, 0).a();
+      QQToast.a(paramActivity, 2131434793, 0).a();
     }
   }
   
@@ -630,7 +630,7 @@ public class PlusPanelUtils
               l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
               localObject4 = (TroopHandler)paramQQAppInterface.a(20);
               if (a == null) {
-                a = new ujo(paramSessionInfo);
+                a = new umo(paramSessionInfo);
               }
               paramQQAppInterface.addObserver(a);
               ((TroopHandler)localObject4).a(l, 32, 0);
@@ -906,7 +906,7 @@ public class PlusPanelUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo)
   {
-    new ujl(paramSessionInfo, paramQQAppInterface, paramContext, ImageUtil.b(paramContext, paramUri)).execute(new Void[0]);
+    new uml(paramSessionInfo, paramQQAppInterface, paramContext, ImageUtil.b(paramContext, paramUri)).execute(new Void[0]);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean, String paramString, BaseChatPie paramBaseChatPie)
@@ -916,7 +916,7 @@ public class PlusPanelUtils
     }
     VideoActionSheet localVideoActionSheet = VideoActionSheet.a(paramContext);
     int[] arrayOfInt = new int[5];
-    localVideoActionSheet.a(2131438327);
+    localVideoActionSheet.a(2131438345);
     if (((paramSessionInfo.jdField_a_of_type_Int == 1025) || (paramSessionInfo.jdField_a_of_type_Int == 0) || (paramSessionInfo.jdField_a_of_type_Int == 1000) || (paramSessionInfo.jdField_a_of_type_Int == 1004)) && (((QidianManager)paramQQAppInterface.getManager(164)).d(paramSessionInfo.jdField_a_of_type_JavaLangString)))
     {
       arrayOfInt[0] = 5;
@@ -925,7 +925,7 @@ public class PlusPanelUtils
     for (int i = 1;; i = 0)
     {
       arrayOfInt[i] = 1;
-      localVideoActionSheet.b(2131433811);
+      localVideoActionSheet.b(2131433828);
       int j = i + 1;
       Object localObject1 = (PstnManager)paramQQAppInterface.getManager(142);
       Object localObject2 = ((PstnManager)localObject1).a(paramQQAppInterface.getCurrentAccountUin());
@@ -937,7 +937,7 @@ public class PlusPanelUtils
         if ((localObject2 != null) && (((PstnManager)localObject1).a() == 1) && (((PstnManager)localObject1).a().jdField_a_of_type_Int == 1)) {
           if (((PstnCardInfo)localObject2).pstn_c2c_call_time > 0)
           {
-            localVideoActionSheet.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438325), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840353), 0);
+            localVideoActionSheet.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438343), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840359), 0);
             ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80063FD", "0X80063FD", 1, 0, "", "", "", "");
             i = 1;
             arrayOfInt[j] = 4;
@@ -950,7 +950,7 @@ public class PlusPanelUtils
       for (;;)
       {
         arrayOfInt[i] = 2;
-        localVideoActionSheet.b(2131433808);
+        localVideoActionSheet.b(2131433825);
         if ((paramBaseChatPie instanceof FriendChatPie))
         {
           localObject1 = ((FriendChatPie)paramBaseChatPie).a();
@@ -967,20 +967,20 @@ public class PlusPanelUtils
         {
           arrayOfInt[(i + 1)] = 3;
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005B01", "0X8005B01", 0, 0, "", "", "", "");
-          localVideoActionSheet.c(2131432998);
-          localVideoActionSheet.a(new ujg(paramQQAppInterface, arrayOfInt));
-          localVideoActionSheet.a(new ujh(localVideoActionSheet, arrayOfInt, j, paramQQAppInterface, paramContext, localPstnSessionInfo, paramSessionInfo, paramBaseChatPie, paramString));
+          localVideoActionSheet.c(2131433015);
+          localVideoActionSheet.a(new umg(paramQQAppInterface, arrayOfInt));
+          localVideoActionSheet.a(new umh(localVideoActionSheet, arrayOfInt, j, paramQQAppInterface, paramContext, localPstnSessionInfo, paramSessionInfo, paramBaseChatPie, paramString));
           localVideoActionSheet.show();
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004D68", "0X8004D68", 0, 0, "", "", "", "");
           return;
           if ((((PstnManager)localObject1).b() == 1) && (((PstnCardInfo)localObject2).pstn_c2c_try_status == 0))
           {
-            localVideoActionSheet.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438325), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840352), 0);
+            localVideoActionSheet.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438343), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840358), 0);
             ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80063FD", "0X80063FD", 3, 0, "", "", "", "");
             i = 2;
             break;
           }
-          localVideoActionSheet.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438325), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840351), 0);
+          localVideoActionSheet.a(paramQQAppInterface.getApplication().getBaseContext().getResources().getString(2131438343), paramQQAppInterface.getApplication().getBaseContext().getResources().getDrawable(2130840357), 0);
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80063FD", "0X80063FD", 2, 0, "", "", "", "");
           i = 5;
           break;
@@ -1038,14 +1038,14 @@ public class PlusPanelUtils
   {
     QLog.i("Q.aio.xxx", 2, "[enterCamera] + Enter");
     if (AudioHelper.b(0)) {
-      DialogUtil.a(paramContext, 230, paramContext.getString(2131433394), paramContext.getString(2131433395), new ujm(), null).show();
+      DialogUtil.a(paramContext, 230, paramContext.getString(2131433411), paramContext.getString(2131433412), new umm(), null).show();
     }
     do
     {
       return;
       if (AudioHelper.a(0))
       {
-        DialogUtil.a(paramContext, 230, paramContext.getString(2131433394), paramContext.getString(2131433396), new ujn(), null).show();
+        DialogUtil.a(paramContext, 230, paramContext.getString(2131433411), paramContext.getString(2131433413), new umn(), null).show();
         return;
       }
       paramQQAppInterface.a().b();
@@ -1063,7 +1063,7 @@ public class PlusPanelUtils
       localFile.mkdirs();
     }
     if (!new File(paramString + ".nomedia").exists()) {
-      ThreadManager.post(new ujk(paramString), 5, null, false);
+      ThreadManager.post(new umk(paramString), 5, null, false);
     }
   }
   

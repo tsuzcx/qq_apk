@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-public class adip
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+class adip
+  implements Runnable
 {
-  public adip(VideoBaseItem paramVideoBaseItem) {}
+  adip(adil paramadil) {}
   
-  public void OnDownloadCallback(String paramString) {}
+  public void run()
+  {
+    UniformDownloaderAppBabySdk.c(this.a.a);
+    UniformDownloaderAppBabySdk.a(this.a.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adip
  * JD-Core Version:    0.7.0.1
  */

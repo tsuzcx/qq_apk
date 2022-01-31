@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder;
+import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class acft
+public class acft
   implements Runnable
 {
-  acft(acfs paramacfs) {}
+  public acft(EmotionPanelDataBuilder paramEmotionPanelDataBuilder, QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, EmotionPanelDataBuilder.EmotionPanelDataCallback paramEmotionPanelDataCallback) {}
   
   public void run()
   {
-    this.a.a.d();
+    List localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelDataBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.b, this.c, this.jdField_a_of_type_Boolean);
+    ThreadManager.getUIHandler().post(new acfu(this, localList));
   }
 }
 

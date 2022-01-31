@@ -1,38 +1,135 @@
-import com.tencent.biz.common.util.Util;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebAccelerator;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ajxi
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public ajxi(WebAccelerateHelper paramWebAccelerateHelper, boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  public ajxi(TroopShareUtility paramTroopShareUtility) {}
   
-  public void run()
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localHashMap = new HashMap();
-      localHashMap.put("User-Agent", SwiftWebViewUtils.a(SwiftWebViewUtils.b("x5prefetch_1.0"), "", false));
-      WebAccelerator.prefetchResource(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, localHashMap, true);
-      QLog.i("WebAccelerateHelper", 1, "now prefetchResource " + Util.c(this.jdField_a_of_type_JavaLangString, new String[0]));
-    }
-    while (!this.b)
-    {
-      HashMap localHashMap;
+    int j = 0;
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
       return;
     }
-    WebAccelerator.preConnect(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 1, true);
-    QLog.i("WebAccelerateHelper", 1, "now preconnect " + Util.c(this.jdField_a_of_type_JavaLangString, new String[0]));
+    this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.b();
+    switch (((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.c)
+    {
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = ((int)paramLong);
+      if (paramLong != 7L) {
+        break;
+      }
+      paramAdapterView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Face2FaceAddFriendActivity.class);
+      paramAdapterView.putExtra("activity_from_type", 1);
+      paramAdapterView.putExtra("activity_troop_uin", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramAdapterView);
+      return;
+      paramLong = 0L;
+      continue;
+      paramLong = 1L;
+      continue;
+      paramLong = 3L;
+      continue;
+      paramLong = 2L;
+      continue;
+      paramLong = 4L;
+      continue;
+      paramLong = 5L;
+      continue;
+      paramLong = 7L;
+    }
+    int i;
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        i = 2131435319;
+      }
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        this.a.a(false);
+        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(i), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        this.a.jdField_a_of_type_Int = -1;
+        this.a.b = -1;
+        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+          break;
+        }
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+        return;
+        if (WXShareHelper.a().b()) {
+          break label643;
+        }
+        i = 2131435320;
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopShareUtility", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
+      }
+      if ((this.a.jdField_a_of_type_Int == 5) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
+      {
+        this.a.g();
+        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+          break;
+        }
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+        return;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim())
+      {
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+          this.a.jdField_a_of_type_Boolean = true;
+        }
+        if ((TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 512))) {}
+        for (paramInt = 1;; paramInt = 0)
+        {
+          i = j;
+          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.cGroupOption == 1) {
+            i = 1;
+          }
+          if ((paramInt | i) == 0) {
+            break;
+          }
+          this.a.a(true);
+          this.a.c();
+          return;
+        }
+        this.a.e();
+        return;
+      }
+      this.a.a(true);
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+        this.a.jdField_a_of_type_Boolean = false;
+      }
+      this.a.b = 0;
+      TroopShareUtility.a(this.a);
+      return;
+      label643:
+      i = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxi
  * JD-Core Version:    0.7.0.1
  */

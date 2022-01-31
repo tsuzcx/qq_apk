@@ -244,23 +244,23 @@ public class ShortcutGuideActivity
     Object localObject1;
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("starShortcut")))
     {
-      findViewById(2131371302).setVisibility(8);
-      findViewById(2131371303).setVisibility(8);
+      findViewById(2131371465).setVisibility(8);
+      findViewById(2131371466).setVisibility(8);
       localObject1 = a(false, localIntent.getStringExtra("sid"));
       label108:
       if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null) {
         this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(b());
       }
-      findViewById(2131364008).setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+      findViewById(2131364032).setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
       if (localObject1 == null) {
         break label423;
       }
-      ((ImageView)findViewById(2131371297)).setImageBitmap((Bitmap)localObject1);
+      ((ImageView)findViewById(2131371460)).setImageBitmap((Bitmap)localObject1);
     }
     for (;;)
     {
       localObject1 = localIntent.getStringExtra("uinname");
-      TextView localTextView = (TextView)findViewById(2131371298);
+      TextView localTextView = (TextView)findViewById(2131371461);
       if (localObject1 != null)
       {
         localTextView.setText((CharSequence)localObject1);
@@ -268,13 +268,13 @@ public class ShortcutGuideActivity
         {
           localTextView.setText((String)localObject1 + "的主页");
           localTextView.setTextSize(16.0F);
-          ((TextView)findViewById(2131371299)).setVisibility(8);
-          ((TextView)findViewById(2131371300)).setVisibility(0);
-          localObject1 = (TextView)findViewById(2131371301);
+          ((TextView)findViewById(2131371462)).setVisibility(8);
+          ((TextView)findViewById(2131371463)).setVisibility(0);
+          localObject1 = (TextView)findViewById(2131371464);
           localObject2 = (String)((TextView)localObject1).getText();
           int i = ((String)localObject2).indexOf("TA");
           localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
-          ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(getResources().getColor(2131493135)), i, i + 2, 17);
+          ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(getResources().getColor(2131493136)), i, i + 2, 17);
           ((TextView)localObject1).setText((CharSequence)localObject2);
           ((TextView)localObject1).setVisibility(0);
         }
@@ -282,14 +282,14 @@ public class ShortcutGuideActivity
       if ((this.mRuntime == null) || (!(this.mRuntime instanceof QQAppInterface)) || (!QidianManager.b((QQAppInterface)this.mRuntime, localIntent.getStringExtra("uin")))) {
         break;
       }
-      findViewById(2131371303).setVisibility(8);
+      findViewById(2131371466).setVisibility(8);
       return;
-      findViewById(2131371302).setOnClickListener(this);
-      findViewById(2131371303).setOnClickListener(this);
+      findViewById(2131371465).setOnClickListener(this);
+      findViewById(2131371466).setOnClickListener(this);
       localObject1 = a(true, localIntent.getStringExtra("uin"));
       break label108;
       label423:
-      ((ImageView)findViewById(2131371297)).setImageResource(2130839189);
+      ((ImageView)findViewById(2131371460)).setImageResource(2130839193);
     }
   }
   
@@ -329,7 +329,7 @@ public class ShortcutGuideActivity
   
   private Bitmap b()
   {
-    return ImageUtil.b(BitmapManager.a(getResources(), 2130843226), 14.0F, 540, 620);
+    return ImageUtil.b(BitmapManager.a(getResources(), 2130843325), 14.0F, 540, 620);
   }
   
   private Bitmap b(boolean paramBoolean, String paramString)
@@ -480,7 +480,7 @@ public class ShortcutGuideActivity
           if (paramBundle == null) {
             break label922;
           }
-          ((ImageView)findViewById(2131371297)).setImageBitmap(paramBundle);
+          ((ImageView)findViewById(2131371460)).setImageBitmap(paramBundle);
         }
         for (;;)
         {
@@ -500,7 +500,7 @@ public class ShortcutGuideActivity
           paramBundle = a(true, ((Intent)localObject).getStringExtra("uin"));
           break;
           label922:
-          ((ImageView)findViewById(2131371297)).setImageResource(2130839189);
+          ((ImageView)findViewById(2131371460)).setImageResource(2130839193);
         }
         i = 0;
       }
@@ -579,21 +579,27 @@ public class ShortcutGuideActivity
   
   public boolean showPreview()
   {
-    String str = getIntent().getStringExtra("from");
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortcutGuideActivity", 2, "showPreview from=" + str);
-    }
-    if ("now_app_shortcut".equals(str)) {
-      return true;
-    }
-    super.setContentView(2130970577);
     try
     {
+      String str = getIntent().getStringExtra("from");
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortcutGuideActivity", 2, "showPreview from=" + str);
+      }
+      if ("now_app_shortcut".equals(str)) {
+        return true;
+      }
+      super.setContentView(2130970621);
       a();
       this.jdField_a_of_type_Boolean = true;
       return true;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortcutGuideActivity", 2, "create exception :" + localException.getMessage());
+      }
+    }
     return false;
   }
 }

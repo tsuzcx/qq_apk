@@ -1,6 +1,6 @@
 package com.tencent.open.wadl;
 
-import akud;
+import aljt;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class WadlJsBridgeDownloadInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new akud();
+  public static final Parcelable.Creator CREATOR = new aljt();
   public int a;
   public long a;
   public String a;

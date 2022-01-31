@@ -5,9 +5,9 @@ import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.TextUtils;
-import anve;
-import anvf;
-import anvg;
+import aolj;
+import aolk;
+import aoll;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -76,7 +76,7 @@ public class CapturePtvTemplateManager
   
   public static final CapturePtvTemplateManager a()
   {
-    return anvg.a();
+    return aoll.a();
   }
   
   public static String a(File paramFile)
@@ -349,7 +349,7 @@ public class CapturePtvTemplateManager
       return;
       this.jdField_a_of_type_JavaUtilList.clear();
       this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      ThreadManager.getSubThreadHandler().post(new anvf(this));
+      ThreadManager.getSubThreadHandler().post(new aolk(this));
       if (QLog.isColorLevel()) {
         QLog.d("CapturePtvTemplateManager", 2, "updateFaceuTemplateConfigInfo size=" + this.jdField_a_of_type_JavaUtilList.size());
       }
@@ -359,7 +359,7 @@ public class CapturePtvTemplateManager
   
   public void a(boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new anve(this, paramBoolean), null, false);
+    ThreadManager.postImmediately(new aolj(this, paramBoolean), null, false);
   }
   
   /* Error */

@@ -1,39 +1,41 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class almv
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private int b;
-  private int c;
+  public almv(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  private almv(Bitmap paramBitmap, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-    if (paramBitmap != null)
+    boolean bool = true;
+    paramView = QidianProfileCardActivity.a(this.a);
+    int i;
+    if (QidianProfileCardActivity.a(this.a))
     {
-      this.b = paramBitmap.getScaledWidth(paramInt);
-      this.c = paramBitmap.getScaledHeight(paramInt);
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramBitmap.getConfig();
-      return;
+      i = 1;
+      paramView.setMaxLines(i);
+      paramView = this.a;
+      if (QidianProfileCardActivity.a(this.a)) {
+        break label54;
+      }
     }
-    this.jdField_a_of_type_Int = 4;
-  }
-  
-  private void a(Rect paramRect)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+    for (;;)
+    {
+      QidianProfileCardActivity.a(paramView, bool);
+      return;
+      i = 3;
+      break;
+      label54:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     almv
  * JD-Core Version:    0.7.0.1
  */

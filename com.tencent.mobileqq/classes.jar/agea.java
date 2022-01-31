@@ -1,47 +1,29 @@
-import NS_MOBILE_MAIN_PAGE.PhotoWall;
-import android.os.Handler;
-import android.os.Message;
+import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QZonePhotoWall;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.olympic.TorchInfo;
+import java.io.ByteArrayOutputStream;
 
 public class agea
   implements Runnable
 {
-  public agea(QzonePhotoView paramQzonePhotoView) {}
+  public agea(OlympicManager paramOlympicManager, TorchInfo paramTorchInfo) {}
   
   public void run()
   {
-    Object localObject1 = (QZonePhotoWall)this.a.a.getEntityManagerFactory().createEntityManager().a(QZonePhotoWall.class, QzonePhotoView.a(this.a));
-    if (localObject1 != null)
+    synchronized (OlympicManager.b(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager))
     {
-      localObject1 = ((QZonePhotoWall)localObject1).unpackPhotoWallData();
-      Object localObject2 = new ArrayList();
-      int i = 0;
-      while (i < ((ArrayList)localObject1).size())
-      {
-        ((ArrayList)localObject2).add(((PhotoWall)((ArrayList)localObject1).get(i)).photoUrls);
-        i += 1;
-      }
-      new LinkedList();
-      localObject1 = QzonePhotoView.a(this.a, "", (List)localObject2);
-      localObject2 = Message.obtain();
-      ((Message)localObject2).what = 200;
-      ((Message)localObject2).obj = localObject1;
-      QzonePhotoView.a(this.a).sendMessage((Message)localObject2);
+      new ByteArrayOutputStream();
+      OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager);
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager.a.getPreferences().getBoolean("olympic_setting_ever_fetch_flag_switch_here", false);
+      if ((this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo.transfer_num != 1L) && (!bool)) {}
       return;
     }
-    QzonePhotoView.a(this.a).sendEmptyMessage(201);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agea
  * JD-Core Version:    0.7.0.1
  */

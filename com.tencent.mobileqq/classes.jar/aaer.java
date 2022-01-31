@@ -1,50 +1,84 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout.CaptureButtonListenerInterceptor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.IArFaceCallback;
 
 public class aaer
-  implements View.OnTouchListener
+  implements IArFaceCallback
 {
-  public aaer(ARCardCamereButtonLayout paramARCardCamereButtonLayout) {}
+  private IBinder a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aaer(IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARCardCamereButtonLayout", 2, "touch action:" + (paramMotionEvent.getAction() & 0xFF) + ", shortVideoShot:" + this.a.a.get() + ", actionUp:" + this.a.b.get() + ", isOver:" + ARCardCamereButtonLayout.a(this.a));
-    }
-    this.a.a();
-    if (ARCardCamereButtonLayout.a(this.a)) {}
-    do
+    this.a = paramIBinder;
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      return false;
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      case 2: 
-      default: 
-        return false;
-      }
-    } while (ARCardCamereButtonLayout.b(this.a));
-    if ((ARCardCamereButtonLayout.a(this.a) != null) && (!ARCardCamereButtonLayout.a(this.a).a())) {
-      return true;
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    this.a.b();
-    if ((ARCardCamereButtonLayout.a(this.a) == 3) || (ARCardCamereButtonLayout.a(this.a) == 1)) {
-      ARCardCamereButtonLayout.a(this.a).sendEmptyMessageDelayed(1, 100L);
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
-    ARCardCamereButtonLayout.a(this.a, true);
-    return true;
-    ARCardCamereButtonLayout.b(this.a);
-    return true;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaer
  * JD-Core Version:    0.7.0.1
  */

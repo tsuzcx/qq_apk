@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class ahrz
   implements Runnable
 {
-  public ahrz(StatisticCollector paramStatisticCollector, ToServiceMsg paramToServiceMsg) {}
+  public ahrz(UniteSearchActivity paramUniteSearchActivity) {}
   
   public void run()
   {
-    MsfServiceSdk.get().sendMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahrz
  * JD-Core Version:    0.7.0.1
  */

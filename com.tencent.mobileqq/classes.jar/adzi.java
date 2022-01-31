@@ -1,38 +1,21 @@
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.leba.LebaTitleBar;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 
 public class adzi
-  extends ShieldListObserver
+  implements Runnable
 {
-  public adzi(NearbyProxy paramNearbyProxy) {}
+  public adzi(LebaTitleBar paramLebaTitleBar, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt)
+  public void run()
   {
-    if (paramInt == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyProxy", 2, "onAddShieldList from nearby");
-      }
-      NearbyProxy.a(this.a, 4113, new Object[] { Boolean.valueOf(paramBoolean), paramList });
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List paramList, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyProxy", 2, "onDeleteShieldList from nearby");
-      }
-      NearbyProxy.a(this.a, 4114, new Object[] { Boolean.valueOf(paramBoolean), paramList });
-    }
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
+    LebaTitleBar.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaTitleBar).runOnUiThread(new adzj(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzi
  * JD-Core Version:    0.7.0.1
  */

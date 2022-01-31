@@ -9,37 +9,71 @@ import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 public final class lmp
   implements Runnable
 {
-  public lmp(int paramInt, boolean paramBoolean) {}
+  public lmp(boolean paramBoolean) {}
   
   public void run()
   {
-    oidb_cmd0x80a.AttributeList localAttributeList1;
-    oidb_cmd0x80a.AttributeList localAttributeList2;
+    int i = 1;
+    if (this.a) {
+      ReadinjoySPEventReport.c(System.currentTimeMillis());
+    }
+    ArrayList localArrayList;
+    oidb_cmd0x80a.AttributeList localAttributeList;
     PBStringField localPBStringField;
-    if (ReadinjoySPEventReport.b(7))
+    if (ReadinjoySPEventReport.b(9))
     {
-      localAttributeList1 = new oidb_cmd0x80a.AttributeList();
-      localAttributeList1.att_id.set(1);
-      localAttributeList1.att_name.set("tab");
-      localAttributeList1.att_value.set(String.valueOf(this.jdField_a_of_type_Int));
-      localAttributeList2 = new oidb_cmd0x80a.AttributeList();
-      localAttributeList2.att_id.set(4);
-      localAttributeList2.att_name.set("redStatus");
-      localPBStringField = localAttributeList2.att_value;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label127;
+      localArrayList = new ArrayList();
+      localAttributeList = new oidb_cmd0x80a.AttributeList();
+      localAttributeList.att_id.set(1);
+      localAttributeList.att_name.set("isOn");
+      localPBStringField = localAttributeList.att_value;
+      if (!this.a) {
+        break label272;
+      }
+      localObject = String.valueOf(1);
+      localPBStringField.set((String)localObject);
+      localArrayList.add(localAttributeList);
+      if (!this.a)
+      {
+        long l = ReadinjoySPEventReport.d();
+        if (ReadinjoySPEventReport.d() == 0L)
+        {
+          l = ReadinjoySPEventReport.e();
+          i = 0;
+        }
+        l = (System.currentTimeMillis() - l) / 1000L;
+        localObject = new oidb_cmd0x80a.AttributeList();
+        ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
+        ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("time");
+        ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(l));
+        localArrayList.add(localObject);
+        localAttributeList = new oidb_cmd0x80a.AttributeList();
+        localAttributeList.att_id.set(3);
+        localAttributeList.att_name.set("isScreenTime");
+        localPBStringField = localAttributeList.att_value;
+        if (i == 0) {
+          break label281;
+        }
       }
     }
-    label127:
+    label272:
+    label281:
     for (Object localObject = "1";; localObject = "0")
     {
       localPBStringField.set((String)localObject);
-      localObject = new ArrayList();
-      ((List)localObject).add(localAttributeList1);
-      ((List)localObject).add(localAttributeList2);
-      PublicAccountUtil.a(7, "ClickTab", (List)localObject);
+      localArrayList.add(localAttributeList);
+      PublicAccountUtil.a(9, "ScreenSwitch", localArrayList);
+      if (!this.a) {
+        break label288;
+      }
+      ReadinjoySPEventReport.d(System.currentTimeMillis());
+      ReadinjoySPEventReport.c(0);
       return;
+      localObject = String.valueOf(0);
+      break;
     }
+    label288:
+    ReadinjoySPEventReport.a();
   }
 }
 

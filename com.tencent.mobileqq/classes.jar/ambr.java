@@ -1,28 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
-import cooperation.qzone.report.lp.LpReportInfo_dc00321;
+import com.tencent.widget.Gallery;
 
 public class ambr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ambr(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  public ambr(Gallery paramGallery) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.a.b)
-    {
-      if (1 == this.a.c) {
-        LpReportInfo_dc00321.report(8, 129, 0, false, false, null);
-      }
-      this.a.a(false, false);
-      this.a.b();
-    }
+    Gallery.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambr
  * JD-Core Version:    0.7.0.1
  */

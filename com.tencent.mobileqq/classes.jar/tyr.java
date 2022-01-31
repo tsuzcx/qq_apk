@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.utils.DBUtils;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-class tyr
-  implements Runnable
+public class tyr
+  implements DialogInterface.OnClickListener
 {
-  tyr(typ paramtyp, String paramString) {}
+  public tyr(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = (FriendsManager)this.jdField_a_of_type_Typ.a.app.getManager(50);
-    TroopMemberInfo localTroopMemberInfo = DBUtils.a().a(this.jdField_a_of_type_Typ.a.app, this.jdField_a_of_type_Typ.a.b, this.jdField_a_of_type_JavaLangString);
-    if ((localTroopMemberInfo != null) && (localObject != null))
-    {
-      localObject = this.jdField_a_of_type_Typ.a.a(localTroopMemberInfo, (FriendsManager)localObject);
-      ThreadManager.getUIHandler().post(new tys(this, (TroopMemberListActivity.ATroopMember)localObject));
-    }
+    paramDialogInterface.dismiss();
+    this.a.i();
   }
 }
 

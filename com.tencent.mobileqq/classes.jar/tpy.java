@@ -1,25 +1,27 @@
-import android.provider.Settings.System;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class tpy
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tpy(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public tpy(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a(2);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
-    if (this.a.a().booleanValue())
-    {
-      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
-      this.a.b();
-      this.a.a(paramView);
+    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
+      return;
     }
+    Object localObject1 = localObject2;
+    if (!((String)localObject2).startsWith("http://")) {
+      localObject1 = "http://" + (String)localObject2;
+    }
+    localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.getActivity(), QQBrowserActivity.class);
+    ((Intent)localObject2).putExtra("selfSet_leftViewText", "返回");
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.app, "CliOper", "", "", "0X800665B", "0X800665B", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,24 +1,42 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import android.support.annotation.NonNull;
 
-public class ajqd
-  implements View.OnClickListener
+class ajqd
+  implements Comparable
 {
-  public ajqd(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  String c;
+  String d;
+  String e;
+  String f;
   
-  public void onClick(View paramView)
+  ajqd(ajqc paramajqc) {}
+  
+  public int a(@NonNull ajqd paramajqd)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    int i = -1;
+    if ((this.f != null) && (paramajqd.f != null)) {
+      i = this.f.compareTo(paramajqd.f);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    do
+    {
+      do
+      {
+        return i;
+        if (this.f != null) {
+          break;
+        }
+      } while (paramajqd.f == null);
+      return 1;
+    } while (paramajqd.f == null);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqd
  * JD-Core Version:    0.7.0.1
  */

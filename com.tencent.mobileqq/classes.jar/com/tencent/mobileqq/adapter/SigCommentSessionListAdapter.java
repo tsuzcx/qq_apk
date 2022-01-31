@@ -166,13 +166,13 @@ public class SigCommentSessionListAdapter
         SignatureManager.SigCommentInfo localSigCommentInfo;
         if (paramView == null)
         {
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971540, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971588, this.jdField_a_of_type_ComTencentWidgetXListView, false);
           paramViewGroup = new SigCommentSessionListAdapter.ViewHolder();
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374965));
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374966));
-          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374968));
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374969));
-          paramViewGroup.c = ((TextView)paramView.findViewById(2131374967));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375151));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375152));
+          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375154));
+          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375155));
+          paramViewGroup.c = ((TextView)paramView.findViewById(2131375153));
           paramView.setTag(paramViewGroup);
           localSigCommentInfo = a(paramInt);
           localObject = String.valueOf(localSigCommentInfo.uin);
@@ -182,7 +182,7 @@ public class SigCommentSessionListAdapter
           }
           localObject = ContactUtils.n(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
           paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845688);
+          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130845816);
           localObject = Calendar.getInstance();
           ((Calendar)localObject).setTimeInMillis(localSigCommentInfo.time * 1000L);
           paramInt = ((Calendar)localObject).get(9);
@@ -204,12 +204,12 @@ public class SigCommentSessionListAdapter
     } while (2 != i);
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970975, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971023, this.jdField_a_of_type_ComTencentWidgetXListView, false);
       paramView.setOnClickListener(this);
       paramViewGroup = new SigCommentSessionListAdapter.MoreViewHolder();
       paramView.setTag(paramViewGroup);
-      paramView.findViewById(2131365150).setVisibility(8);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364961));
+      paramView.findViewById(2131365172).setVisibility(8);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364983));
       this.b = paramView;
     }
     for (;;)

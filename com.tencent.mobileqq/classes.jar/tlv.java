@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-public class tlv
+class tlv
   implements Runnable
 {
-  public tlv(RegisterActivity paramRegisterActivity) {}
+  tlv(tlt paramtlt) {}
   
   public void run()
   {
-    try
-    {
-      if (RegisterActivity.a(this.a) != null)
-      {
-        RegisterActivity.a(this.a).dismiss();
-        RegisterActivity.a(this.a).cancel();
-        RegisterActivity.a(this.a, null);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    this.a.a.p();
   }
 }
 

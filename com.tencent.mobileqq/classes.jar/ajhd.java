@@ -1,20 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
-class ajhd
-  implements Runnable
+public class ajhd
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ajhd(ajhc paramajhc, Bitmap paramBitmap) {}
+  public ajhd(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_Ajhc.a.a.a).setReceiveHeadBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    PublishHomeWorkFragment.a(this.a, paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhd
  * JD-Core Version:    0.7.0.1
  */

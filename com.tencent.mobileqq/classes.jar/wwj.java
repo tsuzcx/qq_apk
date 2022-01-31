@@ -1,52 +1,66 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextWatcher;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper.GoldMsgChatState;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
-import com.tencent.mobileqq.widget.FormEditItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-public class wwj
-  extends wwi
+public final class wwj
+  implements Parcelable.Creator
 {
-  private View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new wwk(this);
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private EditText b;
-  
-  public wwj(GoldMsgSettingActivity paramGoldMsgSettingActivity, Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, int paramInt)
+  public LocalMediaInfo a(Parcel paramParcel)
   {
-    super(paramGoldMsgSettingActivity, paramContext, paramIntent, paramString1, paramString2, paramString3, paramInt);
-  }
-  
-  void a(View paramView)
-  {
-    Object localObject = (FormEditItem)paramView.findViewById(2131364724);
-    paramView = (FormEditItem)paramView.findViewById(2131364725);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((FormEditItem)localObject).a();
-    this.b = paramView.a();
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
-    this.b.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
-    this.jdField_a_of_type_AndroidWidgetEditText.setInputType(8194);
-    this.b.setInputType(2);
-    paramView = GoldMsgChatHelper.a().a(this.jdField_a_of_type_Int, this.c);
-    if (paramView != null)
+    boolean bool2 = true;
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo._id = paramParcel.readLong();
+    localLocalMediaInfo.path = paramParcel.readString();
+    localLocalMediaInfo.fileSize = paramParcel.readLong();
+    localLocalMediaInfo.addedDate = paramParcel.readLong();
+    localLocalMediaInfo.modifiedDate = paramParcel.readLong();
+    localLocalMediaInfo.orientation = paramParcel.readInt();
+    localLocalMediaInfo.rotation = paramParcel.readInt();
+    localLocalMediaInfo.mDuration = paramParcel.readLong();
+    if (paramParcel.readByte() == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(NumAnim.formatNumber(paramView.b / 100.0D, false));
-      localObject = paramView.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener((TextWatcher)localObject);
-      localObject = paramView.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-      this.b.setText(String.valueOf(paramView.c));
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener((TextWatcher)localObject);
+      bool1 = true;
+      localLocalMediaInfo.mChecked = bool1;
+      localLocalMediaInfo.selectStatus = paramParcel.readInt();
+      localLocalMediaInfo.thumbWidth = paramParcel.readInt();
+      localLocalMediaInfo.thumbHeight = paramParcel.readInt();
+      localLocalMediaInfo.index = paramParcel.readInt();
+      localLocalMediaInfo.position = Integer.valueOf(paramParcel.readInt());
+      localLocalMediaInfo.mMimeType = paramParcel.readString();
+      localLocalMediaInfo.mediaWidth = paramParcel.readInt();
+      localLocalMediaInfo.mediaHeight = paramParcel.readInt();
+      if (paramParcel.readByte() != 1) {
+        break label268;
+      }
+      bool1 = true;
+      label184:
+      localLocalMediaInfo.isSystemMeidaStore = bool1;
+      if (paramParcel.readByte() != 1) {
+        break label273;
+      }
+    }
+    label268:
+    label273:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localLocalMediaInfo.isRegionThumbUseNewDecoder = bool1;
+      localLocalMediaInfo.longitude = paramParcel.readInt();
+      localLocalMediaInfo.latitude = paramParcel.readInt();
+      localLocalMediaInfo.panoramaPhotoType = paramParcel.readInt();
+      localLocalMediaInfo.mCloudPhotoOwnerUin = paramParcel.readLong();
+      localLocalMediaInfo.mCloudPhotoOwnerAlbumId = paramParcel.readString();
+      localLocalMediaInfo.mCloudPhotoId = paramParcel.readString();
+      return localLocalMediaInfo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label184;
     }
   }
   
-  boolean a()
+  public LocalMediaInfo[] a(int paramInt)
   {
-    return GoldMsgChatHelper.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.d, this.c, this.jdField_a_of_type_AndroidWidgetEditText, this.b);
+    return new LocalMediaInfo[0];
   }
 }
 

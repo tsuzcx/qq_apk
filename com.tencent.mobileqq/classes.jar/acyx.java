@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
+import com.tencent.qphone.base.util.QLog;
 
-class acyx
+public class acyx
   implements Runnable
 {
-  acyx(acyw paramacyw) {}
+  public acyx(QfavFilePreviewController paramQfavFilePreviewController) {}
   
   public void run()
   {
-    QfileEditBottomBar.a(this.a.a).a().a(false);
-    ThreadManager.getUIHandler().post(new acyy(this));
+    FilePreviewActivity.ControlerCallback localControlerCallback = this.a.a;
+    if (0L == QfavFilePreviewController.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localControlerCallback.a(bool, QfavFilePreviewController.a(this.a), String.valueOf(QfavFilePreviewController.a(this.a)), QfavFilePreviewController.a(this.a), null, QfavFilePreviewController.b(this.a), null, QfavFilePreviewController.c(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.i("QfavFilePreviewController", 2, "sendCS: mHost=" + QfavFilePreviewController.a(this.a) + ", port=" + QfavFilePreviewController.a(this.a) + ", key=" + QfavFilePreviewController.b(this.a) + ", retCode =" + QfavFilePreviewController.a(this.a));
+      }
+      return;
+    }
   }
 }
 

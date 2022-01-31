@@ -1,65 +1,46 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.jsp.TroopApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import mqq.app.AppRuntime;
 
-public class admx
-  implements TroopMemberApiClient.Callback
+public final class admx
+  implements Runnable
 {
-  public admx(TroopApiPlugin paramTroopApiPlugin, long paramLong1, long paramLong2, String paramString) {}
-  
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    boolean bool = true;
-    paramBundle = paramBundle.getString("videoPath");
-    Object localObject;
-    if (!TextUtils.isEmpty(paramBundle))
-    {
-      localObject = new File(paramBundle);
-      if ((!((File)localObject).exists()) || (!((File)localObject).isFile())) {}
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject = localAppRuntime;
+    if (localAppRuntime != null) {
+      localObject = localAppRuntime.getAppRuntime("module_nearby");
     }
-    for (;;)
+    if ((localObject instanceof NearbyAppInterface))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopApiPlugin", 2, "previewRewardVideo: videoPath=" + paramBundle + ", " + bool);
-      }
-      try
+      localObject = (NearbyProcManager)((NearbyAppInterface)localObject).getManager(213);
+      if (localObject != null)
       {
-        localObject = new JSONObject();
-        if (bool)
-        {
-          MediaApiPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspTroopApiPlugin.mRuntime.a(), paramBundle, this.jdField_a_of_type_Long, this.b);
-          ((JSONObject)localObject).put("ret", 0);
-          ((JSONObject)localObject).put("errMsg", "");
+        com.tencent.mobileqq.fragment.NearbyHybridFragment.l = true;
+        ((NearbyProcManager)localObject).c();
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyHybridFragment", 2, "pre load now plugin!");
         }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqJspTroopApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
-          return;
-          ((JSONObject)localObject).put("ret", -2);
-          ((JSONObject)localObject).put("errMsg", "文件不存在");
-        }
-        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
       }
-      catch (Exception paramBundle)
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
       {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-      }
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("NearbyHybridFragment", 2, "pre load now plugin! err npb null;");
       return;
-      bool = false;
     }
+    QLog.d("NearbyHybridFragment", 2, "pre load now plugin! err runtime null or wrong! app = " + localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     admx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
 
 public class kra
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements View.OnClickListener
 {
-  public kra(AccountDetailVideoManager paramAccountDetailVideoManager) {}
+  public kra(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, String paramString, PaConfigAttr.PaConfigInfo paramPaConfigInfo) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public void onClick(View paramView)
+  {
+    AccountDetailGroupListContainer.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_JavaLangString);
+    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

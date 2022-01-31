@@ -1,31 +1,37 @@
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
+import java.util.List;
+import java.util.Vector;
 
 public class adpa
   implements Runnable
 {
-  public adpa(ReportLog paramReportLog, MobileQQ paramMobileQQ) {}
+  public adpa(HiBoomFontDrawer paramHiBoomFontDrawer, List paramList) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_MqqAppMobileQQ instanceof BaseApplicationImpl))
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject != null) && ((localObject instanceof QQAppInterface)))
+      Bitmap localBitmap = HiBoomFontDrawer.a((String)this.jdField_a_of_type_JavaUtilList.get(i));
+      if (localBitmap != null) {
+        BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaUtilList.get(i), localBitmap);
+      }
+      for (;;)
       {
-        localObject = (QQAppInterface)localObject;
-        QLog.d("ReportLog", 1, "uncaughtException QQAppInterface exit.");
-        ((QQAppInterface)localObject).b(false);
+        i += 1;
+        break;
+        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.a.add(this.jdField_a_of_type_JavaUtilList.get(i));
       }
     }
+    HiBoomFontDrawer.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpa
  * JD-Core Version:    0.7.0.1
  */

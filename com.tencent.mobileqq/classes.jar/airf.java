@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.ShortVideoUploadABTest;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class airf
+public final class airf
   implements Runnable
 {
-  airf(aire paramaire, Layer paramLayer) {}
+  public airf(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, StringBuilder paramStringBuilder) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aire.a.a.a != null) {
-      this.jdField_a_of_type_Aire.a.a.a.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLayer);
-    }
+    ShortVideoUploadABTest.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airf
  * JD-Core Version:    0.7.0.1
  */

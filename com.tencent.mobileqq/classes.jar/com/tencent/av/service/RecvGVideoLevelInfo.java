@@ -6,12 +6,12 @@ import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import jof;
+import jnq;
 
 public class RecvGVideoLevelInfo
   implements Parcelable, Cloneable, Comparable
 {
-  public static final Parcelable.Creator CREATOR = new jof();
+  public static final Parcelable.Creator CREATOR = new jnq();
   static String a;
   public int a;
   public long a;

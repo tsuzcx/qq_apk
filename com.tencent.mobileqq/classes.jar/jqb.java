@@ -1,40 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
-import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.gaudio.VideoViewInfo;
+import java.util.Comparator;
 
-public class jqb
-  extends Handler
+class jqb
+  implements Comparator
 {
-  public jqb(AVActivity paramAVActivity) {}
+  jqb(jpz paramjpz) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
   {
-    boolean bool = true;
-    int i = 0;
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-      return;
+    if (paramVideoViewInfo1.a) {}
+    while (paramVideoViewInfo2.a) {
+      return -1;
     }
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      this.a.h(bool);
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.n();
-      }
-      paramMessage = this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
-      if (bool) {
-        i = this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.a;
-      }
-      paramMessage.e(i);
-      this.a.m();
-      return;
-      bool = false;
-    }
+    return 0;
   }
 }
 

@@ -1,23 +1,37 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class vja
-  implements Runnable
+public class vja
+  implements View.OnClickListener
 {
-  vja(viz paramviz, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  public vja(ThumbItemBuilder paramThumbItemBuilder, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (viy.a(this.jdField_a_of_type_Viz.a) != null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("peak_pgjpeg", 4, "IAIOImageProviderCallBack.notifyImageResult():isPart " + this.jdField_a_of_type_Boolean);
-      }
-      ((AIOGalleryScene)viy.b(this.jdField_a_of_type_Viz.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("individuation_url_type", 40303);
+    String str = IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, "call", "mvip.gongneng.anroid.individuation.web");
+    str = str + "&funcallId=" + this.jdField_a_of_type_Int;
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, str, 524288L, paramView, true, -1);
+    int i = ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).j();
+    if (i == 2) {
+      i = 0;
     }
-    if (this.jdField_a_of_type_Viz.a.a != null) {
-      ((AIOImageListScene)this.jdField_a_of_type_Viz.a.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    for (;;)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004A25", "0X8004A25", 0, 0, "" + i, "", "", "");
+      return;
+      if (i == 3) {
+        i = 2;
+      }
     }
   }
 }

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ahhf;
-import ahhg;
-import ahhh;
-import ahhi;
-import ahhj;
-import ahhk;
-import ahhl;
-import ahhm;
-import ahhn;
-import ahho;
-import ahhp;
-import ahhq;
-import ahhr;
-import ahhs;
-import ahht;
-import ahhu;
-import ahhv;
-import ahhw;
-import ahhx;
+import ahvh;
+import ahvi;
+import ahvj;
+import ahvk;
+import ahvl;
+import ahvm;
+import ahvn;
+import ahvo;
+import ahvp;
+import ahvq;
+import ahvr;
+import ahvs;
+import ahvt;
+import ahvu;
+import ahvv;
+import ahvw;
+import ahvx;
+import ahvy;
+import ahvz;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -50,12 +50,12 @@ import java.util.concurrent.TimeUnit;
 public class GroupSearchEngine
   implements ISearchEngine, Observer
 {
-  private static final Comparator jdField_a_of_type_JavaUtilComparator = new ahhf();
-  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ahhp(3, 5, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new ahho());
+  private static final Comparator jdField_a_of_type_JavaUtilComparator = new ahvh();
+  private static final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ahvr(3, 5, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128), new ahvq());
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = -1L;
-  private ahhw jdField_a_of_type_Ahhw;
-  private ahhx jdField_a_of_type_Ahhx;
+  private ahvy jdField_a_of_type_Ahvy;
+  private ahvz jdField_a_of_type_Ahvz;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
@@ -77,41 +77,41 @@ public class GroupSearchEngine
     ArrayList localArrayList = new ArrayList();
     if (this.jdField_a_of_type_Int == 12)
     {
-      localArrayList.add(new ahhq(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
-      localArrayList.add(new ahhr(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
+      localArrayList.add(new ahvs(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
+      localArrayList.add(new ahvt(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
       Collections.sort(localArrayList, jdField_a_of_type_JavaUtilComparator);
       return localArrayList;
     }
     if (this.jdField_a_of_type_Int == 14)
     {
-      localArrayList.add(new ahhs(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
-      localArrayList.add(new ahht(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
+      localArrayList.add(new ahvu(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
+      localArrayList.add(new ahvv(this, new NetSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, this.jdField_a_of_type_Int), "net_search", 0));
       Collections.sort(localArrayList, jdField_a_of_type_JavaUtilComparator);
       return localArrayList;
     }
-    localArrayList.add(new ahhu(this, new ContactSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, 197437, null), "people", 20));
-    localArrayList.add(new ahhv(this, new ApproximateSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, 793, null), "people", 20));
-    localArrayList.add(new ahhg(this, new FunctionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "function", 130));
-    localArrayList.add(new ahhh(this, new CreateDiscussionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "create_discussion", 120));
+    localArrayList.add(new ahvw(this, new ContactSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, 197437, null), "people", 20));
+    localArrayList.add(new ahvx(this, new ApproximateSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, 793, null), "people", 20));
+    localArrayList.add(new ahvi(this, new FunctionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "function", 130));
+    localArrayList.add(new ahvj(this, new CreateDiscussionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "create_discussion", 120));
     if ((FTSDBManager.jdField_a_of_type_Boolean) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a()) && (SQLiteFTSUtils.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
     {
-      localArrayList.add(new ahhi(this, new FTSMessageSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "fts_message", 40));
+      localArrayList.add(new ahvk(this, new FTSMessageSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "fts_message", 40));
       if (QLog.isColorLevel()) {
         QLog.d("GroupSearchEngine", 2, "newSearchEngine() searchEngines add FTSMessageSearchEngine");
       }
       if ((FTSDBManager.jdField_a_of_type_Boolean) && (SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a()) && (SQLiteFTSUtils.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 1) && ((!SQLiteFTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (SQLiteFTSUtils.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))) {
         break label609;
       }
-      localArrayList.add(new ahhj(this, new MessageSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "message", 40));
+      localArrayList.add(new ahvl(this, new MessageSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "message", 40));
       if (QLog.isColorLevel()) {
         QLog.d("GroupSearchEngine", 2, "newSearchEngine() searchEngines add MessageSearchEngine");
       }
     }
     for (;;)
     {
-      localArrayList.add(new ahhk(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
-      localArrayList.add(new ahhl(this, new FavoriteSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "favorite", 60));
-      localArrayList.add(new ahhm(this, new FileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "file", 100));
+      localArrayList.add(new ahvm(this, new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int), "public_account", 50));
+      localArrayList.add(new ahvn(this, new FavoriteSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "favorite", 60));
+      localArrayList.add(new ahvo(this, new FileManagerSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "file", 100));
       Collections.sort(localArrayList, jdField_a_of_type_JavaUtilComparator);
       return localArrayList;
       if (!QLog.isColorLevel()) {
@@ -135,8 +135,8 @@ public class GroupSearchEngine
         jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.remove((Runnable)this.jdField_a_of_type_JavaUtilConcurrentFuture);
       }
     }
-    if (this.jdField_a_of_type_Ahhw != null) {
-      this.jdField_a_of_type_Ahhw.a();
+    if (this.jdField_a_of_type_Ahvy != null) {
+      this.jdField_a_of_type_Ahvy.a();
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture != null)
     {
@@ -145,8 +145,8 @@ public class GroupSearchEngine
         this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.remove((Runnable)this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture);
       }
     }
-    if (this.jdField_a_of_type_Ahhx != null) {
-      this.jdField_a_of_type_Ahhx.b();
+    if (this.jdField_a_of_type_Ahvz != null) {
+      this.jdField_a_of_type_Ahvz.b();
     }
   }
   
@@ -187,8 +187,8 @@ public class GroupSearchEngine
     paramSearchRequest.jdField_a_of_type_AndroidOsBundle.putBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", true);
     paramSearchRequest.jdField_a_of_type_AndroidOsBundle.putBoolean("searchTroopMember", false);
     h();
-    this.jdField_a_of_type_Ahhw = new ahhw(this, paramSearchRequest, paramISearchListener);
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Ahhw);
+    this.jdField_a_of_type_Ahvy = new ahvy(this, paramSearchRequest, paramISearchListener);
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Ahvy);
     SearchUtils.a("all_result", "active_local", new String[] { this.jdField_a_of_type_JavaLangString });
   }
   
@@ -505,7 +505,7 @@ public class GroupSearchEngine
           {
             paramObject = new FTSMessageSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
             paramObject.a();
-            this.jdField_a_of_type_JavaUtilArrayList.add(i, new ahhn(this, paramObject, "fts message", 40));
+            this.jdField_a_of_type_JavaUtilArrayList.add(i, new ahvp(this, paramObject, "fts message", 40));
             if (SQLiteFTSUtils.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == 0) {
               this.jdField_a_of_type_JavaUtilArrayList.remove(i + 1);
             }

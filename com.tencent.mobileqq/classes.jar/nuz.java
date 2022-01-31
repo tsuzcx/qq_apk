@@ -1,14 +1,14 @@
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
 
 public class nuz
   implements Runnable
 {
-  public nuz(StoryMemoriesFragment paramStoryMemoriesFragment) {}
+  public nuz(DetailCommentHelper paramDetailCommentHelper, CommentEntry paramCommentEntry, int paramInt) {}
   
   public void run()
   {
-    StoryMemoriesFragment.a(this.a).b();
+    DetailCommentHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
   }
 }
 

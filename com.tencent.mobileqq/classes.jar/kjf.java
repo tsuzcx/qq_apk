@@ -1,66 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.animation.Transformation;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.widget.QQMapView;
 
-class kjf
-  implements BusinessObserver
+public class kjf
+  implements ValueAnimation.AnimationUpdateListener
 {
-  kjf(kje paramkje) {}
+  public kjf(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorizeConfig", 2, "onReceive whitelist:" + paramBoolean);
+    paramValueAnimation = PoiMapActivity.g(this.a).getLayoutParams();
+    paramValueAnimation.height = paramInteger.intValue();
+    PoiMapActivity.h(this.a).setLayoutParams(paramValueAnimation);
+    paramValueAnimation = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+    paramValueAnimation.bottomMargin = (this.a.o - paramInteger.intValue());
+    this.a.b.setLayoutParams(paramValueAnimation);
+    int i = (paramInteger.intValue() - PoiMapActivity.c(this.a) - this.a.s) / 2;
+    if (i >= (this.a.o - PoiMapActivity.d(this.a)) / 2 + this.a.t) {
+      this.a.a(i, false);
     }
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        mobileqq_mp.WebviewWhiteListResponse localWebviewWhiteListResponse = new mobileqq_mp.WebviewWhiteListResponse();
-        try
-        {
-          localWebviewWhiteListResponse.mergeFrom(paramBundle);
-          paramInt = localWebviewWhiteListResponse.ret_info.ret_code.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "sso status code: " + String.valueOf(paramInt));
-          }
-          if (paramInt == 0)
-          {
-            ThreadManager.getSubThreadHandler().post(new kjg(this, localWebviewWhiteListResponse));
-            ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
-            return;
-          }
-          if (paramInt == 304)
-          {
-            this.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-            this.a.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
-            this.a.a.g();
-            ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 0, 1, 0, "", "", "", "");
-            return;
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "update error: " + paramBundle);
-          }
-        }
-      }
-    }
-    this.a.a.g();
-    this.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
   }
 }
 

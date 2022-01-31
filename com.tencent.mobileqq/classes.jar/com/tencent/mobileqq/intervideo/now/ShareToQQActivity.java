@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import adlh;
-import adli;
+import advg;
+import advh;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -29,8 +29,8 @@ public class ShareToQQActivity
 {
   static boolean jdField_a_of_type_Boolean;
   public ProfileActivity.AllInOne a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new adlh(this);
-  ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new adli(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new advg(this);
+  ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new advh(this);
   public String a;
   String b;
   private String c = "";
@@ -64,7 +64,7 @@ public class ShareToQQActivity
     String str = getIntent().getStringExtra("sourceFrom");
     if ((TextUtils.equals(this.c, "share_from_troop_member_card")) && (paramInt2 == -1))
     {
-      paramIntent.putExtra("selfSet_leftViewText", getString(2131433280));
+      paramIntent.putExtra("selfSet_leftViewText", getString(2131433297));
       new Intent(this, SplashActivity.class);
       localObject = AIOUtils.a(paramIntent, null);
       ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
@@ -215,7 +215,7 @@ public class ShareToQQActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.ShareToQQActivity
  * JD-Core Version:    0.7.0.1
  */

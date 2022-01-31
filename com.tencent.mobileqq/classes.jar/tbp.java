@@ -1,29 +1,24 @@
-import android.app.Dialog;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class tbp
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public tbp(PayBridgeActivity paramPayBridgeActivity, Dialog paramDialog) {}
-  
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramView.getId())
+    switch (paramMotionEvent.getActionMasked())
     {
+    case 2: 
     default: 
-      return;
-    case 2131364014: 
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      paramView = QWalletPushManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.a);
-      PayBridgeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity, paramView);
-      return;
+      return false;
+    case 0: 
+      FrameHelperActivity.b(false);
+      return false;
     }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    QWalletPushManager.b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.finish();
+    FrameHelperActivity.b(true);
+    return false;
   }
 }
 

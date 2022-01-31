@@ -1,18 +1,15 @@
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
+import java.util.Map;
 
 public class anvt
-  implements Runnable
+  implements VideoFilterPlayView.TrackerCallback
 {
-  public anvt(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite, String paramString) {}
+  public anvt(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
   
-  public void run()
+  public void a(Map paramMap)
   {
-    CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite).setText(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.a(new anvu(this, paramMap), 0L);
   }
 }
 

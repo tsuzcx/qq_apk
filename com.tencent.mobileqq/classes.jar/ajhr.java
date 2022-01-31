@@ -1,25 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.mobileqq.troop.utils.TroopGiftUtil;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.util.InputMethodUtil;
 
 public class ajhr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ajhr(TroopInteractGiftAnimationController paramTroopInteractGiftAnimationController, String paramString, MessageForDeliverGiftTips paramMessageForDeliverGiftTips, boolean paramBoolean, FrameSprite.OnFrameEndListener paramOnFrameEndListener, TroopGiftManager paramTroopGiftManager) {}
+  public ajhr(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    JSONObject localJSONObject = TroopGiftUtil.a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a.post(new ajhs(this, localJSONObject));
+    InputMethodUtil.b(paramView);
+    SubmitHomeWorkFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg;
 
-import ahue;
+import aiih;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.SparseArray;
@@ -32,7 +32,7 @@ public class StructMsgGroupElement
   {
     this.jdField_a_of_type_AndroidUtilSparseArray = null;
     this.jdField_a_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahue(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiih(this);
     this.jdField_a_of_type_JavaLangString = "group";
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
@@ -73,7 +73,7 @@ public class StructMsgGroupElement
         localView.setTag(localObject);
         localObject = (ImageView)paramView.findViewById(2131362366);
         if (localObject != null) {
-          ((ImageView)localObject).setBackgroundResource(2130841686);
+          ((ImageView)localObject).setBackgroundResource(2130841723);
         }
       }
       label178:
@@ -234,7 +234,7 @@ public class StructMsgGroupElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgGroupElement
  * JD-Core Version:    0.7.0.1
  */

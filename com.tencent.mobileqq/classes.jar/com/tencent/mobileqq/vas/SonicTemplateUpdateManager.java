@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import ajtp;
+import akhw;
 import android.content.Intent;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -78,7 +78,7 @@ public class SonicTemplateUpdateManager
       if (!bool) {
         break;
       }
-      ThreadManager.post(new ajtp(this), 5, null, true);
+      ThreadManager.post(new akhw(this), 5, null, true);
       return;
     }
     b();
@@ -174,7 +174,7 @@ public class SonicTemplateUpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.SonicTemplateUpdateManager
  * JD-Core Version:    0.7.0.1
  */

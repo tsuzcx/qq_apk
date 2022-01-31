@@ -1,26 +1,17 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
-import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable;
-import java.util.concurrent.locks.ReentrantLock;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class zwv
-  implements Runnable
+public final class zwv
+  implements DialogInterface.OnClickListener
 {
-  public zwv(MultiFragmentAnimRenderable paramMultiFragmentAnimRenderable) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MultiFragmentAnimRenderable.a(this.a).lock();
-    if (MultiFragmentAnimRenderable.a(this.a) != null)
-    {
-      MultiFragmentAnimRenderable.a(this.a).d();
-      MultiFragmentAnimRenderable.a(this.a, null);
-    }
-    MultiFragmentAnimRenderable.a(this.a).unlock();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zwv
  * JD-Core Version:    0.7.0.1
  */

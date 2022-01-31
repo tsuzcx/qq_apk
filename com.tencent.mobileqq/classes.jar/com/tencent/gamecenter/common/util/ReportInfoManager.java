@@ -8,7 +8,7 @@ import com.tencent.open.adapter.CommonDataAdapter;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qho;
+import qji;
 
 public class ReportInfoManager
 {
@@ -79,7 +79,7 @@ public class ReportInfoManager
     paramReportPGActInfo = a(paramReportPGActInfo);
     long l = paramReportPGActInfo.getBytes().length;
     String str = String.format("http://report.gamecenter.qq.com/cgi-bin/gc_pg_act_fcgi?appid=%1$s&tt=1&osv=%2$s", new Object[] { Integer.valueOf(AppSetting.jdField_a_of_type_Int), Build.VERSION.RELEASE });
-    new AsyncHttpConnection(new qho(this, l)).a(str, paramReportPGActInfo);
+    new AsyncHttpConnection(new qji(this, l)).a(str, paramReportPGActInfo);
   }
 }
 

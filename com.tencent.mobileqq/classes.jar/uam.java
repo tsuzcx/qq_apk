@@ -1,32 +1,22 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestRefuseActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class uam
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public uam(TroopRequestRefuseActivity paramTroopRequestRefuseActivity, Editable paramEditable) {}
+  public uam(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidTextEditable.length() > 25)
+    if (paramMotionEvent.getAction() == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(-65536);
-      TroopRequestRefuseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, false);
+      this.a.j();
+      paramView = this.a.n;
+      this.a.a("Clk_find", paramView, "");
     }
-    for (;;)
-    {
-      String str2 = "" + (25 - this.jdField_a_of_type_AndroidTextEditable.length());
-      String str1 = str2;
-      if (str2.length() > 4) {
-        str1 = str2.substring(0, 2) + "…";
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setText(str1);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(Color.rgb(119, 119, 119));
-      TroopRequestRefuseActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, true);
-    }
+    return true;
   }
 }
 

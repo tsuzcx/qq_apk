@@ -18,11 +18,11 @@ public class TXSafeCheckUtil
     //   9: aconst_null
     //   10: astore 7
     //   12: aconst_null
-    //   13: astore 11
+    //   13: astore 13
     //   15: aconst_null
-    //   16: astore 13
+    //   16: astore 10
     //   18: aconst_null
-    //   19: astore 10
+    //   19: astore 11
     //   21: aconst_null
     //   22: astore 12
     //   24: iconst_0
@@ -34,13 +34,13 @@ public class TXSafeCheckUtil
     //   34: astore 6
     //   36: aload 12
     //   38: astore 8
-    //   40: aload 11
+    //   40: aload 13
     //   42: astore_0
     //   43: aload 6
     //   45: astore 5
-    //   47: aload 13
+    //   47: aload 10
     //   49: astore 9
-    //   51: aload 10
+    //   51: aload 11
     //   53: astore 7
     //   55: aload 6
     //   57: aload_1
@@ -68,13 +68,13 @@ public class TXSafeCheckUtil
     //   98: ireturn
     //   99: aload 12
     //   101: astore 8
-    //   103: aload 11
+    //   103: aload 13
     //   105: astore_0
     //   106: aload 6
     //   108: astore 5
-    //   110: aload 13
+    //   110: aload 10
     //   112: astore 9
-    //   114: aload 10
+    //   114: aload 11
     //   116: astore 7
     //   118: aload 6
     //   120: aload_1
@@ -92,7 +92,7 @@ public class TXSafeCheckUtil
     //   138: astore 7
     //   140: ldc 38
     //   142: invokestatic 44	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   145: astore 10
+    //   145: astore 11
     //   147: aload_1
     //   148: astore 8
     //   150: aload_1
@@ -105,7 +105,7 @@ public class TXSafeCheckUtil
     //   160: astore 7
     //   162: sipush 8192
     //   165: newarray byte
-    //   167: astore 11
+    //   167: astore 10
     //   169: aload_1
     //   170: astore 8
     //   172: aload_1
@@ -117,7 +117,7 @@ public class TXSafeCheckUtil
     //   181: aload_1
     //   182: astore 7
     //   184: aload_1
-    //   185: aload 11
+    //   185: aload 10
     //   187: invokevirtual 50	java/io/InputStream:read	([B)I
     //   190: istore 4
     //   192: iload 4
@@ -133,8 +133,8 @@ public class TXSafeCheckUtil
     //   208: astore 9
     //   210: aload_1
     //   211: astore 7
-    //   213: aload 10
-    //   215: aload 11
+    //   213: aload 11
+    //   215: aload 10
     //   217: iconst_0
     //   218: iload 4
     //   220: invokevirtual 54	java/security/MessageDigest:update	([BII)V
@@ -171,7 +171,7 @@ public class TXSafeCheckUtil
     //   275: astore 9
     //   277: aload_1
     //   278: astore 7
-    //   280: aload 10
+    //   280: aload 11
     //   282: invokevirtual 62	java/security/MessageDigest:digest	()[B
     //   285: astore 10
     //   287: aload_1
@@ -308,10 +308,10 @@ public class TXSafeCheckUtil
     //   10	431	7	localObject2	Object
     //   1	288	8	localObject3	Object
     //   7	406	9	localObject4	Object
-    //   19	289	10	localObject5	Object
-    //   13	203	11	arrayOfByte	byte[]
-    //   22	78	12	localObject6	Object
-    //   16	95	13	localObject7	Object
+    //   16	292	10	arrayOfByte	byte[]
+    //   19	262	11	localMessageDigest	java.security.MessageDigest
+    //   22	78	12	localObject5	Object
+    //   13	91	13	localObject6	Object
     // Exception table:
     //   from	to	target	type
     //   55	62	226	java/io/IOException

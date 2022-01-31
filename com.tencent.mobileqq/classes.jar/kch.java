@@ -1,38 +1,27 @@
-import android.content.Intent;
-import com.tencent.av.ui.QavPanel.SlideAcceptListener;
-import com.tencent.av.ui.VideoInviteLock;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.VideoLayerUIBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class kch
-  implements QavPanel.SlideAcceptListener
+  implements Runnable
 {
-  public kch(VideoInviteLock paramVideoInviteLock) {}
+  public kch(VideoLayerUIBase paramVideoLayerUIBase) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null) {}
+    try
     {
-      if (this.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
-        ReportController.b(null, "CliOper", "", "", "0X80051FE", "0X80051FE", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
-      }
-      for (;;)
-      {
-        this.a.d = true;
-        VideoInviteLock.a(this.a);
-        return;
-        if (this.a.b) {
-          ReportController.b(null, "CliOper", "", "", "0X8004201", "0X8004201", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
-        } else {
-          ReportController.b(null, "CliOper", "", "", "0X8004205", "0X8004205", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
-        }
-      }
-    }
-    if (this.a.b)
-    {
-      ReportController.b(null, "CliOper", "", "", "0X800439E", "0X800439E", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+      String str = this.a.jdField_a_of_type_ComTencentAvVideoController.a().c;
+      this.a.jdField_a_of_type_ComTencentAvVideoController.b(str);
       return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X80043FD", "0X80043FD", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "pauseVideo Runnable exception", localException);
+    }
   }
 }
 

@@ -1,32 +1,23 @@
-import android.view.ViewGroup;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.font.FontManager;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class amuc
-  implements DoodleEditView.DoodleEditViewListener
+  implements EIPCResultCallback
 {
-  public amuc(QIMCaptureController paramQIMCaptureController) {}
+  public amuc(FontManager paramFontManager) {}
   
-  public void a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.a.setVisibility(0);
-    QIMCaptureController.a(this.a).setVisibility(0);
-    QIMCaptureController.a(this.a).b();
-  }
-  
-  public void a(GestureHelper.ZoomItem paramZoomItem)
-  {
-    this.a.a.setVisibility(8);
-    QIMCaptureController.a(this.a).setVisibility(8);
-    QIMCaptureController.a(this.a).a(103, new Object[] { paramZoomItem });
+    if (QLog.isColorLevel()) {
+      QLog.d("FontManager", 2, "startFontSoDownload download so success");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuc
  * JD-Core Version:    0.7.0.1
  */

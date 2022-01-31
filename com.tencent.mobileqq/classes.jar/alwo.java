@@ -1,51 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.ims.SafeReport.RspBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.pluginbridge.BridgeHelper;
-import cooperation.pluginbridge.BridgePluginInstallActivity;
-import cooperation.qqwifi.PluginLoadDialog;
+import com.tencent.qqprotect.common.QSecRptControllerImpl;
 
 public class alwo
-  extends BroadcastReceiver
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public alwo(QSecRptControllerImpl paramQSecRptControllerImpl) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramIntent = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new SafeReport.RspBody();
     }
-    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
     try
     {
-      paramContext.unregisterReceiver(BridgeHelper.a());
-      BridgeHelper.a(null);
-      if (BridgeHelper.a() != null)
-      {
-        BridgeHelper.a().dismiss();
-        BridgeHelper.a(null);
-      }
-      if ((paramContext instanceof BridgePluginInstallActivity))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("BridgeHelper", 2, "Activity finish!");
-        }
-        ((BridgePluginInstallActivity)paramContext).finish();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
+        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
       }
       return;
     }
-    catch (Exception paramIntent)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramIntent.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alwo
  * JD-Core Version:    0.7.0.1
  */

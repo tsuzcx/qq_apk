@@ -1,48 +1,15 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.armap.ipc.ArMapIPC;
+import com.tencent.mobileqq.armap.ipc.IAsyncObserver;
+import eipc.EIPCResult;
 
 public class abfy
-  implements View.OnClickListener
+  implements Runnable
 {
-  public abfy(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abfy(ArMapIPC paramArMapIPC, IAsyncObserver paramIAsyncObserver, String paramString, EIPCResult paramEIPCResult) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
-    {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-    }
-    if (this.a.jdField_a_of_type_Int == 0) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
-    }
-    while ((this.a.jdField_a_of_type_Boolean) && (this.a.b) && (!this.a.isFinishing()))
-    {
-      this.a.finish();
-      return;
-      if (this.a.getIntent().getIntExtra("source_activity", 0) == 1) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
-      }
-    }
-    if (this.a.c)
-    {
-      BusinessCardUtils.a(this.a.app.getCurrentAccountUin(), -1);
-      this.a.c = false;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId)))
-    {
-      this.a.finish();
-      return;
-    }
-    BusinessCardEditActivity.a(this.a, false, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqArmapIpcIAsyncObserver.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
   }
 }
 

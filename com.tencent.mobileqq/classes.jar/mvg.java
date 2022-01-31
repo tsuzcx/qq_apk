@@ -1,21 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.widget.ActionSheet;
 
-public final class mvg
-  implements BusinessObserver
+public class mvg
+  implements View.OnClickListener
 {
-  public mvg(QQAppInterface paramQQAppInterface) {}
+  public mvg(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, int paramInt1, int paramInt2, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    ThreadManager.getSubThreadHandler().postDelayed(new mvh(this, paramBoolean, paramBundle), 10L);
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.dismiss();
   }
 }
 

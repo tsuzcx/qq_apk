@@ -1,22 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
-import java.util.Collections;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
 
 public class ancy
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ancy(EditVideoDoodle paramEditVideoDoodle) {}
+  public ancy(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback.a(1, Collections.EMPTY_LIST);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancy
  * JD-Core Version:    0.7.0.1
  */

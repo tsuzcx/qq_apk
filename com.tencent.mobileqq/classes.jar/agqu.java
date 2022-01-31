@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
 
-class agqu
-  implements Runnable
+public class agqu
+  extends Handler
 {
-  agqu(agqt paramagqt, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public agqu(CircularProgressBar paramCircularProgressBar) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ReceiptMessageReadMemberListContainerFragment.e(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageReadMemberListContainerFragment);
+    this.a.invalidate();
+    if (CircularProgressBar.a(this.a))
+    {
+      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
+      if (CircularProgressBar.a(this.a) > 360) {
+        CircularProgressBar.a(this.a, 0);
+      }
+      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,15 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.bless.BlessManager;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class xkh
   implements Runnable
 {
-  public xkh(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public xkh(RecentAdapter paramRecentAdapter) {}
   
   public void run()
   {
-    EditLocalVideoActivity.a(this.a).setVisibility(8);
+    ((BlessManager)this.a.a.getManager(137)).b(true);
   }
 }
 

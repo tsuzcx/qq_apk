@@ -1,10 +1,10 @@
 package cooperation.qzone;
 
-import amba;
+import amre;
 
 public final class CloseGuard
 {
-  private static volatile CloseGuard.Reporter jdField_a_of_type_CooperationQzoneCloseGuard$Reporter = new amba(null);
+  private static volatile CloseGuard.Reporter jdField_a_of_type_CooperationQzoneCloseGuard$Reporter = new amre(null);
   private static final CloseGuard jdField_a_of_type_CooperationQzoneCloseGuard = new CloseGuard();
   private static volatile boolean jdField_a_of_type_Boolean = true;
   private Throwable jdField_a_of_type_JavaLangThrowable;

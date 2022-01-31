@@ -55,8 +55,8 @@ import tencent.im.oidb.cmd0x8db.oidb_0x8db.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.s2c.msgtype0x210.submsgtype0x6f.SubMsgType0x6f.ForwardBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x6f.SubMsgType0x6f.RewardInfo;
-import ywr;
-import yws;
+import yzx;
+import yzy;
 
 public class BabyQHandler
   extends BusinessHandler
@@ -108,7 +108,7 @@ public class BabyQHandler
   {
     paramView.setVisibility(0);
     paramContext = AnimationUtils.loadAnimation(paramContext, 2131034320);
-    paramContext.setAnimationListener(new ywr(paramView));
+    paramContext.setAnimationListener(new yzx(paramView));
     paramView.startAnimation(paramContext);
   }
   
@@ -221,7 +221,7 @@ public class BabyQHandler
     localHttpNetReq.c = c;
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.e = 1;
-    localHttpNetReq.a(new yws(this, paramInt + 1, paramString1, paramString2));
+    localHttpNetReq.a(new yzy(this, paramInt + 1, paramString1, paramString2));
     localINetEngine.a(localHttpNetReq);
   }
   
@@ -616,8 +616,8 @@ public class BabyQHandler
     {
       return;
       localObject1 = paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    } while ((localObject1 == null) || (!(localObject1 instanceof yws)));
-    Object localObject1 = (yws)localObject1;
+    } while ((localObject1 == null) || (!(localObject1 instanceof yzy)));
+    Object localObject1 = (yzy)localObject1;
     int i;
     label57:
     Object localObject2;
@@ -641,13 +641,13 @@ public class BabyQHandler
       }
       paramNetResp = new File(c);
       localObject2 = PortalUtils.a(paramNetResp.getAbsolutePath());
-      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (((String)localObject2).equalsIgnoreCase(((yws)localObject1).jdField_b_of_type_JavaLangString))) {
+      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (((String)localObject2).equalsIgnoreCase(((yzy)localObject1).jdField_b_of_type_JavaLangString))) {
         break label211;
       }
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("Q.BabyQ", 2, "onResp|Md5 error，fileMD5 = " + (String)localObject2 + ", configMD5 = " + ((yws)localObject1).jdField_b_of_type_JavaLangString);
+      QLog.d("Q.BabyQ", 2, "onResp|Md5 error，fileMD5 = " + (String)localObject2 + ", configMD5 = " + ((yzy)localObject1).jdField_b_of_type_JavaLangString);
       FileUtils.a(d, false);
       return;
       i = 0;
@@ -657,7 +657,7 @@ public class BabyQHandler
     a(5, a(paramNetResp.getAbsolutePath(), d), null);
     return;
     label229:
-    a(((yws)localObject1).jdField_a_of_type_JavaLangString, ((yws)localObject1).jdField_b_of_type_JavaLangString, ((yws)localObject1).jdField_a_of_type_Int);
+    a(((yzy)localObject1).jdField_a_of_type_JavaLangString, ((yzy)localObject1).jdField_b_of_type_JavaLangString, ((yzy)localObject1).jdField_a_of_type_Int);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

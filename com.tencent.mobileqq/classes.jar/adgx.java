@@ -1,20 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class adgx
+public final class adgx
   implements Runnable
 {
-  public adgx(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, Drawable paramDrawable) {}
+  public adgx(int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.b.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 0).b(FMToastUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,43 @@
-import com.tencent.mobileqq.businessCard.views.BusinessCardView;
-import com.tencent.mobileqq.businessCard.views.BusinessCardViewScroller;
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.armap.test.ArmapJumpActivity;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class abht
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abht(BusinessCardView paramBusinessCardView) {}
+  public abht(ArmapJumpActivity paramArmapJumpActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Float localFloat = Float.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a() - this.a.jdField_a_of_type_Float);
-    if (Math.abs(localFloat.floatValue()) < 0.05F)
+    switch (paramView.getId())
     {
-      BusinessCardViewScroller localBusinessCardViewScroller = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller;
-      if (localFloat.floatValue() > 0.0F) {}
-      for (int i = BusinessCardViewScroller.a;; i = BusinessCardViewScroller.b)
-      {
-        localBusinessCardViewScroller.a(i);
-        this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        return;
-      }
+    default: 
+      return;
     }
-    this.a.jdField_a_of_type_Float = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a();
-    this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 100L);
+    try
+    {
+      paramView = new Intent(this.a, ARMapLoadingActivity.class);
+      paramView.putExtra("disable_location", true);
+      double d1 = Double.parseDouble(this.a.a.getText().toString());
+      double d2 = Double.parseDouble(this.a.b.getText().toString());
+      long l = Long.parseLong(this.a.c.getText().toString());
+      Log.d("ArmapJumpActivity", "jump start lon = " + d1 + ",lat = " + d2);
+      paramView.putExtra("default_lon", d1);
+      paramView.putExtra("default_lat", d2);
+      paramView.putExtra("adcode", l);
+      paramView.putExtra("from_jump", true);
+      this.a.startActivity(paramView);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      QQToast.a(this.a.getApplicationContext(), "参数转化有误", 0).a();
+    }
   }
 }
 

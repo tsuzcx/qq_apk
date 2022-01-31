@@ -1,44 +1,58 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.app.EqqDetailDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qidian.QidianManager;
+import java.util.Iterator;
+import java.util.List;
 
-public class vre
-  implements View.OnTouchListener
+class vre
+  implements Runnable
 {
-  public vre(GameRoomChatPie paramGameRoomChatPie) {}
+  vre(vrd paramvrd) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    boolean bool = false;
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    if (i == 0)
+    Object localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EqqDetail localEqqDetail = (EqqDetail)((EntityManager)localObject).a(EqqDetail.class, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((EntityManager)localObject).a();
+    if (localEqqDetail == null) {
+      return;
+    }
+    try
     {
-      this.a.k.setText("正在发言");
-      this.a.k.setTextColor(this.a.n);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.b();
-      if (paramView != null) {
-        paramView.a(true);
+      localObject = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+      ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).mergeFrom(localEqqDetail.accountData);
+      localEqqDetail.groupInfoList = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).config_group_info.get();
+      localEqqDetail.mIsAgreeSyncLbs = true;
+      localEqqDetail.mIsSyncLbsSelected = true;
+      Iterator localIterator1 = localEqqDetail.groupInfoList.iterator();
+      while (localIterator1.hasNext())
+      {
+        Iterator localIterator2 = ((mobileqq_mp.ConfigGroupInfo)localIterator1.next()).config_info.get().iterator();
+        while (localIterator2.hasNext())
+        {
+          mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)localIterator2.next();
+          if (localConfigInfo.title.get().equals("提供地理位置")) {
+            localConfigInfo.state.set(1);
+          }
+        }
       }
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
-      bool = true;
+      localEqqDetail.accountData = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).toByteArray();
+      ((EqqDetailDataManager)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(68)).a(localEqqDetail);
+      this.a.a.jdField_a_of_type_ComTencentQidianQidianManager.a(true);
+      return;
     }
-    while ((i != 3) && (i != 1)) {
-      return bool;
-    }
-    this.a.k.setText("按住私密发言");
-    this.a.k.setTextColor(this.a.m);
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.c();
-    if (paramView != null) {
-      paramView.a(false);
-    }
-    return true;
+    catch (Exception localException) {}
   }
 }
 

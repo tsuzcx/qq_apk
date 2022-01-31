@@ -1,32 +1,102 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.recent.BannerManager.IBannerInteract;
+import com.tencent.mobileqq.activity.recent.BannerManager.MessageToShowBanner;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
+import java.lang.ref.WeakReference;
 
 public class xjz
-  implements ActionSheet.OnButtonClickListener
+  implements BannerManager.IBannerInteract
 {
-  public xjz(EditLocalVideoActivity paramEditLocalVideoActivity, ActionSheet paramActionSheet) {}
+  private final int jdField_a_of_type_Int;
+  @NonNull
+  private final Intent jdField_a_of_type_AndroidContentIntent;
+  @Nullable
+  private BannerManager.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
+  @NonNull
+  private final String jdField_a_of_type_JavaLangString;
+  @NonNull
+  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  @NonNull
+  private final String b;
+  @NonNull
+  private final String c;
+  @NonNull
+  private final String d;
   
-  public void OnClick(View paramView, int paramInt)
+  public xjz(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3, @NonNull Intent paramIntent, @NonNull String paramString4, int paramInt)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.d = paramString4;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner == null) {}
+    BaseActivity localBaseActivity;
+    do
     {
-    }
-    for (;;)
+      do
+      {
+        return;
+      } while ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
+      localBaseActivity = BaseActivity.sTopActivity;
+    } while ((localBaseActivity == null) || (localBaseActivity.isFinishing()));
+    try
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      Class localClass = Class.forName(this.jdField_b_of_type_JavaLangString).asSubclass(Activity.class);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("banner_fromBanner", true);
+      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(this.jdField_a_of_type_Int);
+      localPluginParams.e = this.jdField_a_of_type_JavaLangString;
+      localPluginParams.jdField_a_of_type_JavaLangClass = localClass;
+      localPluginParams.jdField_b_of_type_JavaLangString = this.c;
+      localPluginParams.jdField_a_of_type_JavaLangString = this.d;
+      localPluginParams.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
+      localPluginParams.jdField_b_of_type_Int = -1;
+      IPluginManager.a(localBaseActivity, localPluginParams);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.a("608", "4", "2", true);
-      EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, 0);
-      EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, 0);
-      EditLocalVideoActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity));
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).postDelayed(new xka(this), 300L);
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, false);
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, false);
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      QLog.e("Q.recent.banner", 1, "return to plugin error, can not find the ckass " + this.jdField_b_of_type_JavaLangString);
     }
   }
+  
+  public void a(@Nullable BannerManager.MessageToShowBanner paramMessageToShowBanner)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner = paramMessageToShowBanner;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    BannerManager.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner);
+  }
+  
+  public void c() {}
 }
 
 

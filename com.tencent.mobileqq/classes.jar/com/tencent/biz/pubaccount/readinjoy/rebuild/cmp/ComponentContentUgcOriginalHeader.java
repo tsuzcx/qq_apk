@@ -28,7 +28,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lvc;
+import lvl;
 
 public class ComponentContentUgcOriginalHeader
   extends LinearLayout
@@ -56,11 +56,15 @@ public class ComponentContentUgcOriginalHeader
     Object localObject1 = paramArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaLangString;
     Object localObject2 = ContactUtils.b((QQAppInterface)ReadInJoyUtils.a(), String.valueOf(l), true);
     this.jdField_a_of_type_AndroidTextSpannableStringBuilder = new SpannableStringBuilder();
-    this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append(ReadInJoyUtils.d((String)localObject2));
+    this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append(ReadInJoyUtils.e((String)localObject2));
     this.jdField_a_of_type_AndroidTextSpannableStringBuilder.setSpan(new ComponentContentUgcOriginalHeader.UserSpan(this, l, -3355444), 0, this.jdField_a_of_type_AndroidTextSpannableStringBuilder.length(), 33);
     this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append(": ");
-    if ((CmpCtxt.c(paramArticleInfo)) && (!ReadInJoyBaseAdapter.o(paramArticleInfo))) {
-      this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append(((SocializeFeedsInfo.UGCVideoInfo)paramArticleInfo.mSocialFeedInfo.a.b.get(0)).e);
+    if ((CmpCtxt.c(paramArticleInfo)) && (!ReadInJoyBaseAdapter.o(paramArticleInfo)))
+    {
+      localObject1 = ((SocializeFeedsInfo.UGCVideoInfo)paramArticleInfo.mSocialFeedInfo.a.b.get(0)).e;
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append((CharSequence)localObject1);
+      }
     }
     for (;;)
     {
@@ -75,7 +79,7 @@ public class ComponentContentUgcOriginalHeader
         int i = localList.size();
         localObject2 = ((SocializeFeedsInfo.BiuCommentInfo)localList.get(i - 1)).jdField_a_of_type_JavaLangString;
         int j;
-        label302:
+        label314:
         SocializeFeedsInfo.BiuCommentInfo localBiuCommentInfo;
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && ((((String)localObject2).startsWith(":")) || (((String)localObject2).startsWith("："))))
         {
@@ -84,7 +88,7 @@ public class ComponentContentUgcOriginalHeader
           j = localStringBuilder.length();
           i -= 2;
           if (i < 0) {
-            break label511;
+            break label523;
           }
           localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)localList.get(i);
           l = localBiuCommentInfo.jdField_a_of_type_JavaLangLong.longValue();
@@ -95,10 +99,10 @@ public class ComponentContentUgcOriginalHeader
             localObject1 = (String)localObject2 + " ";
           }
           if (localBiuCommentInfo.jdField_a_of_type_JavaLangString != null) {
-            break label501;
+            break label513;
           }
         }
-        label501:
+        label513:
         for (localObject2 = "";; localObject2 = localBiuCommentInfo.jdField_a_of_type_JavaLangString)
         {
           localStringBuilder.append((String)localObject1).append((String)localObject2);
@@ -109,7 +113,7 @@ public class ComponentContentUgcOriginalHeader
           ((List)localObject3).add(localObject2);
           j = localStringBuilder.length();
           i -= 1;
-          break label302;
+          break label314;
           localObject1 = localObject2;
           if (localObject2 != null) {
             break;
@@ -117,7 +121,7 @@ public class ComponentContentUgcOriginalHeader
           localObject1 = "";
           break;
         }
-        label511:
+        label523:
         localObject1 = new SpannableStringBuilder(new QQText(localStringBuilder, 7, 16));
         localObject2 = ((List)localObject3).iterator();
         while (((Iterator)localObject2).hasNext())
@@ -125,7 +129,9 @@ public class ComponentContentUgcOriginalHeader
           localObject3 = (ComponentHeaderNewSocial.biuUserStruct)((Iterator)localObject2).next();
           ((SpannableStringBuilder)localObject1).setSpan(new ComponentContentUgcOriginalHeader.UserSpan(this, ((ComponentHeaderNewSocial.biuUserStruct)localObject3).jdField_a_of_type_Long, -3355444), ((ComponentHeaderNewSocial.biuUserStruct)localObject3).jdField_a_of_type_Int, ((ComponentHeaderNewSocial.biuUserStruct)localObject3).b, 17);
         }
-        this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append((CharSequence)localObject1);
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          this.jdField_a_of_type_AndroidTextSpannableStringBuilder.append((CharSequence)localObject1);
+        }
       }
       else if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
@@ -149,7 +155,7 @@ public class ComponentContentUgcOriginalHeader
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setTextSize(2, 16.0F);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText("更多");
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new lvc(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new lvl(this));
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView);
   }
   

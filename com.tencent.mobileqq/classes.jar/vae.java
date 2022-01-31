@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class vae
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vae(PttItemBuilder paramPttItemBuilder, MessageRecord paramMessageRecord) {}
+  public vae(HeartCombolEffectView paramHeartCombolEffectView, vag paramvag) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extStr);
+    this.jdField_a_of_type_Vag.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Vag.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Vag.jdField_b_of_type_Float > 0.0F)) {
+      this.jdField_a_of_type_Vag.jdField_b_of_type_Boolean = true;
+    }
   }
 }
 

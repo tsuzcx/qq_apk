@@ -94,7 +94,7 @@ public class ChallengeBragBase$SendChallengeCallback
           break label131;
         }
         localObject = "ANDROIDQQ.BRAG.ASSISTANT";
-        i = 2131428643;
+        i = 2131428649;
       }
       for (;;)
       {
@@ -113,7 +113,7 @@ public class ChallengeBragBase$SendChallengeCallback
         if ("action_challenge".equals(this.a.p))
         {
           localObject = "ANDROIDQQ.PK.ASSISTANT";
-          i = 2131428642;
+          i = 2131428648;
         }
       }
       return;

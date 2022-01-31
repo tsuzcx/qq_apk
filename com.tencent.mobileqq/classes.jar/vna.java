@@ -1,31 +1,21 @@
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class vna
-  implements Runnable
+  implements ProgressPieDrawable.OnProgressListener
 {
-  public vna(QIMUserManager paramQIMUserManager, String paramString1, String paramString2, boolean paramBoolean) {}
+  public vna(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void run()
+  public void a(ProgressPieDrawable paramProgressPieDrawable)
   {
-    if (QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, this.b))
-      {
-        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager);
-        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 2);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadQimTheme QimIconsState " + QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager));
-      }
-      return;
-      QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 4);
-      continue;
-      QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 3);
+    if (QLog.isColorLevel()) {
+      QLog.i("AIOGalleryScene", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
     }
   }
+  
+  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

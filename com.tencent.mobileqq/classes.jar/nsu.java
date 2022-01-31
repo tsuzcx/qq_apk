@@ -1,18 +1,13 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.parallel.SimpleParallelObserver;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class nsu
-  extends SimpleParallelObserver
+  implements DialogInterface.OnClickListener
 {
-  public nsu(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
+  public nsu(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void onAllFunctionComplete(boolean paramBoolean)
-  {
-    super.onAllFunctionComplete(paramBoolean);
-    ThreadManager.getUIHandler().post(new nsv(this, paramBoolean));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

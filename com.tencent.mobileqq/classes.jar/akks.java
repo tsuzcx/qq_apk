@@ -1,32 +1,56 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 
-class akks
-  implements Runnable
+public class akks
+  implements TVK_IMediaPlayer.OnControllerClickListener
 {
-  akks(akko paramakko, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
+  public akks(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void run()
+  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$MsgIconsurl.url.get());
-    this.jdField_a_of_type_Akko.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(AuthorityActivity.f, localBitmap);
-    if (localBitmap != null)
-    {
-      Message localMessage = new Message();
-      localMessage.obj = localBitmap;
-      localMessage.what = 4;
-      this.jdField_a_of_type_Akko.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onBackClick");
     }
+    this.a.setResult(0);
+    this.a.finish();
   }
+  
+  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onBackOnFullScreenClick");
+    }
+    if (this.a.getRequestedOrientation() == 0)
+    {
+      this.a.setRequestedOrientation(1);
+      return;
+    }
+    this.a.setResult(0);
+    this.a.finish();
+  }
+  
+  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onFullScreenClick--------------");
+    }
+    this.a.setRequestedOrientation(0);
+  }
+  
+  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akks
  * JD-Core Version:    0.7.0.1
  */

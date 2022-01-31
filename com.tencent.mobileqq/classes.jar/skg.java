@@ -1,53 +1,23 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class skg
-  extends BaseAdapter
+  extends BizTroopObserver
 {
-  public skg(FontSettingActivity paramFontSettingActivity) {}
+  public skg(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public int getCount()
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = this.a.jdField_a_of_type_Skj.a(paramInt, getCount(), (ChatMessage)this.a.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, paramViewGroup, null);
-    paramViewGroup = (TextItemBuilder.Holder)paramView.getTag();
-    paramViewGroup.e.setOnClickListener(null);
-    if ((paramViewGroup.e instanceof AnimationTextView)) {
-      ((AnimationTextView)paramViewGroup.e).a = null;
-    }
-    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    this.a.i();
+    if (paramBoolean)
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a();
+      if (paramBoolean1.booleanValue()) {
+        DiscussionInfoCardActivity.e(this.a);
+      }
+      return;
     }
-    if ((this.a.c) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
-    {
-      this.a.c = false;
-      FontSettingActivity.a(this.a).postDelayed(new skh(this), 100L);
-    }
-    return paramView;
+    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 

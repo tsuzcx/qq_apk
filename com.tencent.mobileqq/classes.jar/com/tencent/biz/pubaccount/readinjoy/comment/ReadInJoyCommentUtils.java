@@ -25,9 +25,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ljy;
-import ljz;
-import lka;
+import ljt;
+import lju;
+import ljv;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,7 +39,7 @@ public class ReadInJoyCommentUtils
     if (paramArticleInfo == null) {
       return "";
     }
-    if ((ReadInJoyBaseAdapter.f(paramArticleInfo)) || (ReadInJoyBaseAdapter.g(paramArticleInfo))) {
+    if (((ReadInJoyBaseAdapter.f(paramArticleInfo)) || (ReadInJoyBaseAdapter.g(paramArticleInfo))) && (paramArticleInfo.mSocialFeedInfo != null)) {
       return String.valueOf(paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.a);
     }
     return paramArticleInfo.mSubscribeID;
@@ -168,7 +168,7 @@ public class ReadInJoyCommentUtils
       if (paramCommentInfo1.likeCount > 999)
       {
         paramTextView.setText("999+");
-        paramImageView.setImageResource(2130840725);
+        paramImageView.setImageResource(2130840748);
         paramTextView.setTextColor(Color.parseColor("#9D9D9D"));
         str = System.currentTimeMillis() + "";
         if (paramCommentInfo2 != null) {
@@ -179,7 +179,7 @@ public class ReadInJoyCommentUtils
           break label267;
         }
         paramTextView = "";
-        paramArticleCommentModule.commentLike(paramQQAppInterface, str, paramInt1, paramImageView, paramTextView, 0, paramString, paramInt2, new ljy(paramInt1, paramSecondCommentOperationCallback));
+        paramArticleCommentModule.commentLike(paramQQAppInterface, str, paramInt1, paramImageView, paramTextView, 0, paramString, paramInt2, new ljt(paramInt1, paramSecondCommentOperationCallback));
         if (paramCommentInfo1 != null)
         {
           paramCommentInfo1.likeCount -= 1;
@@ -223,7 +223,7 @@ public class ReadInJoyCommentUtils
     if (paramCommentInfo1.likeCount > 999)
     {
       paramTextView.setText("999+");
-      paramImageView.setImageResource(2130840726);
+      paramImageView.setImageResource(2130840749);
       paramTextView.setTextColor(Color.parseColor("#07D0B0"));
       str = System.currentTimeMillis() + "";
       if (paramCommentInfo2 != null) {
@@ -236,7 +236,7 @@ public class ReadInJoyCommentUtils
       }
       paramTextView = "";
       label366:
-      paramArticleCommentModule.commentLike(paramQQAppInterface, str, paramInt1, paramImageView, paramTextView, 1, paramString, paramInt2, new ljz(paramInt1, paramSecondCommentOperationCallback));
+      paramArticleCommentModule.commentLike(paramQQAppInterface, str, paramInt1, paramImageView, paramTextView, 1, paramString, paramInt2, new lju(paramInt1, paramSecondCommentOperationCallback));
       if (paramCommentInfo1 != null)
       {
         paramCommentInfo1.likeCount += 1;
@@ -323,7 +323,7 @@ public class ReadInJoyCommentUtils
         paramQQAppInterface.printStackTrace();
         return;
       }
-      paramArticleInfo.createComment(paramQQAppInterface, paramInt1, paramString1, str2, paramString2, localJSONArray, 1, paramInt2, str1, (String)localObject, new lka(paramCreateCommentInterface));
+      paramArticleInfo.createComment(paramQQAppInterface, paramInt1, paramString1, str2, paramString2, localJSONArray, 1, paramInt2, str1, (String)localObject, new ljv(paramCreateCommentInterface));
       return;
       label208:
       paramArticleInfo = new ArticleCommentModule(paramArticleInfo, paramInt1, "", System.currentTimeMillis() + "");

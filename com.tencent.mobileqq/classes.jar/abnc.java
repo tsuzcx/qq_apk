@@ -1,33 +1,25 @@
-import android.annotation.TargetApi;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class abnc
-  implements ArkViewImplement.LoadCallback
+  extends ContentObserver
 {
-  public abnc(MessageForArkApp paramMessageForArkApp, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt) {}
+  public abnc(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
+  {
+    super(paramHandler);
+  }
   
-  @TargetApi(14)
-  public void onLoadFinish(int paramInt)
+  public void onChange(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MessageForArkApp", 2, "attachArkView onLoadFinish MessageForArkApp state=" + paramInt);
+      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
     }
-    if (paramInt == 1)
+    if (BusinessCardEditActivity.a(this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
+      this.a.a(2131437106, 2);
+      BusinessCardEditActivity.a(this.a, false);
     }
   }
 }

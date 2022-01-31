@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aifz;
-import aiga;
-import aigb;
-import aigc;
-import aigd;
-import aige;
-import aigf;
-import aigg;
-import aigh;
-import aigi;
-import aigj;
+import aiuc;
+import aiud;
+import aiue;
+import aiuf;
+import aiug;
+import aiuh;
+import aiui;
+import aiuj;
+import aiuk;
+import aiul;
+import aium;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -67,32 +67,32 @@ public class MediaPreviewActivity
   {
     if (this.jdField_a_of_type_ComTencentWidgetGallery == null)
     {
-      QQToast.a(this, getString(2131435531), 0).a();
+      QQToast.a(this, getString(2131435548), 0).a();
       return;
     }
     Object localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
     if (localObject == null)
     {
-      QQToast.a(this, getString(2131435531), 0).a();
+      QQToast.a(this, getString(2131435548), 0).a();
       return;
     }
     localObject = ((ImageView)((View)localObject).findViewById(2131361846)).getDrawable();
     if ((localObject == null) || (!(localObject instanceof URLDrawable)))
     {
-      QQToast.a(this, getString(2131435531), 0).a();
+      QQToast.a(this, getString(2131435548), 0).a();
       return;
     }
     localObject = (URLDrawable)localObject;
     if (((URLDrawable)localObject).getStatus() != 1)
     {
-      QQToast.a(this, getString(2131435531), 0).a();
+      QQToast.a(this, getString(2131435548), 0).a();
       return;
     }
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.a(2131435854, 1);
-    localActionSheet.a(2131435860, 1);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new aigg(this, localActionSheet, (URLDrawable)localObject));
+    localActionSheet.a(2131435871, 1);
+    localActionSheet.a(2131435877, 1);
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new aiuj(this, localActionSheet, (URLDrawable)localObject));
     localActionSheet.show();
   }
   
@@ -110,9 +110,9 @@ public class MediaPreviewActivity
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new aiga(this));
+    localAnimationSet.setAnimationListener(new aiud(this));
     if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new aigb(this);
+      this.jdField_a_of_type_JavaLangRunnable = new aiue(this);
     }
     this.jdField_a_of_type_ComTencentWidgetGallery.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
     this.jdField_a_of_type_ComTencentWidgetGallery.startAnimation(localAnimationSet);
@@ -148,22 +148,22 @@ public class MediaPreviewActivity
         }
         catch (IOException paramURLDrawable)
         {
-          QQToast.a(this, getString(2131434566), 0).a();
+          QQToast.a(this, getString(2131434583), 0).a();
           return;
         }
       }
     }
-    DialogUtil.a(this, 230).setTitle(getString(2131434569)).setMessage(getString(2131434571)).setPositiveButton(getString(2131434570), new aigi(this, paramURLDrawable, str)).setNegativeButton(getString(2131432995), new aigh(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131434586)).setMessage(getString(2131434588)).setPositiveButton(getString(2131434587), new aiul(this, paramURLDrawable, str)).setNegativeButton(getString(2131433012), new aiuk(this)).show();
   }
   
   public void a(URLDrawable paramURLDrawable, String paramString)
   {
-    new aigf(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new aiui(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   public void b(URLDrawable paramURLDrawable, String paramString)
   {
-    new aigj(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new aium(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   protected boolean doOnCreate(Bundle arg1)
@@ -184,30 +184,30 @@ public class MediaPreviewActivity
         return false;
       }
     }
-    setContentView(2130969030);
+    setContentView(2130969029);
     ??? = getIntent().getExtras();
     this.jdField_a_of_type_Int = ???.getInt("index", -1);
     this.jdField_a_of_type_JavaUtilArrayList = ???.getParcelableArrayList("mediaInfoList");
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364773));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364795));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131364774));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131364796));
     this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363614));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363632));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362727);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362745);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter = new MediaPreviewAdapter(this, this.jdField_a_of_type_ComTencentWidgetGallery);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter);
     this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131558524));
     this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new aifz(this));
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new aigc(this));
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new aigd(this));
-    ThreadManager.post(new aige(this), 8, null, true);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new aiuc(this));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new aiuf(this));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new aiug(this));
+    ThreadManager.post(new aiuh(this), 8, null, true);
     return true;
   }
   
@@ -284,7 +284,7 @@ public class MediaPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

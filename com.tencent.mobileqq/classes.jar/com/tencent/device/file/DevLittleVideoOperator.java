@@ -18,7 +18,7 @@ import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import mqq.os.MqqHandler;
-import pvr;
+import pxl;
 
 public class DevLittleVideoOperator
   extends BaseShortVideoOprerator
@@ -167,7 +167,7 @@ public class DevLittleVideoOperator
   public void a(ShortVideoUploadInfo paramShortVideoUploadInfo)
   {
     Logger.a(this.jdField_g_of_type_JavaLangString, this.f, "sendPic.start", "");
-    ThreadManager.getSubThreadHandler().post(new pvr(this, paramShortVideoUploadInfo));
+    ThreadManager.getSubThreadHandler().post(new pxl(this, paramShortVideoUploadInfo));
   }
   
   public boolean a(String paramString)

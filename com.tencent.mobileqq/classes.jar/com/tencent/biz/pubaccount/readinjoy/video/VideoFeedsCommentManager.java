@@ -18,9 +18,9 @@ import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import maq;
-import mar;
-import mas;
+import mbt;
+import mbu;
+import mbv;
 
 public class VideoFeedsCommentManager
   implements VideoFeedsListView.ListViewEventListener
@@ -56,7 +56,7 @@ public class VideoFeedsCommentManager
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = ((TranslateAnimation)AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131034135));
     if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null)
     {
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new maq(this));
+      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new mbt(this));
       this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(200L);
     }
   }
@@ -65,7 +65,7 @@ public class VideoFeedsCommentManager
   {
     try
     {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new mas(this));
+      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new mbv(this));
       return;
     }
     catch (Exception localException)
@@ -236,9 +236,9 @@ public class VideoFeedsCommentManager
       ((Bundle)localObject).putBoolean("arg_comment_list_biu_btn", false);
       ((Bundle)localObject).putBoolean("readinjoy_open_comment_from_video", true);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment = new ReadInJoyCommentListFragment();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a((Bundle)localObject, new mar(this), this.jdField_a_of_type_AndroidViewViewGroup);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a((Bundle)localObject, new mbu(this), this.jdField_a_of_type_AndroidViewViewGroup);
       localObject = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager().beginTransaction();
-      ((FragmentTransaction)localObject).add(2131367310, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
+      ((FragmentTransaction)localObject).add(2131367373, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
       ((FragmentTransaction)localObject).commit();
     }
   }

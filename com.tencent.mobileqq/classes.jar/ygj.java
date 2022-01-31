@@ -1,29 +1,29 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.apollo.ApolloGameArkHandler;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
 
 public class ygj
-  implements Runnable
+  implements IIconListener
 {
-  public ygj(ApolloGameArkHandler paramApolloGameArkHandler, MessageForApollo paramMessageForApollo, String paramString1, String paramString2) {}
+  private ygj(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    try
+    if ((paramBitmap != null) && (paramInt2 == 200))
     {
-      ark.arkNotify(ApolloGameArkHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo), this.jdField_a_of_type_JavaLangString, this.b, "json");
+      if (this.b.d != 0) {
+        this.b.b = true;
+      }
+    }
+    else {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQ_CmGame", 1, localThrowable, new Object[0]);
-    }
+    this.b.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ygj
  * JD-Core Version:    0.7.0.1
  */

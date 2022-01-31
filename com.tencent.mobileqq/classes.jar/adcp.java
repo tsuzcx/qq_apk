@@ -1,34 +1,25 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class adcp
-  extends SosoInterface.OnLocationListener
+class adcp
+  implements FMDialogUtil.FMDialogInterface
 {
-  public adcp(CommonTabFragment paramCommonTabFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  adcp(adco paramadco) {}
+  
+  public void a()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    DatalineFileModel.a(this.a.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
+    }
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonTabFragment", 2, "startLocation finish" + System.currentTimeMillis());
-    }
-    if (paramInt != 0)
-    {
-      QQToast.a(this.a.a, 1, "获取地理位置失败。", 1).a();
-      this.a.d();
-      return;
-    }
-    this.a.a(paramSosoLbsInfo);
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adcp
  * JD-Core Version:    0.7.0.1
  */

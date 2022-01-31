@@ -1,16 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
 
 public class wzg
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public wzh a;
+  public wzg(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
   
-  public wzg(TroopUnAccalimedRedPacketList.HbListAdapter paramHbListAdapter, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_Wzh = ((wzh)paramView);
+    if ((this.a.a != null) && (this.a.a.a()))
+    {
+      GoldMsgAioState.a(this.a.getWindow(), this.a, null);
+      this.a.finish();
+    }
   }
 }
 

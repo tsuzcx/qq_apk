@@ -1,18 +1,18 @@
-import com.tencent.biz.qqstory.newshare.job.ShortenUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
-import java.util.HashMap;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeAdapter;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
 
 public class nfb
-  extends ShortenUrlJob
+  extends RecyclerView.AdapterDataObserver
 {
-  public nfb(ShareModeBase paramShareModeBase, ShareCopyLinkData paramShareCopyLinkData) {}
+  public nfb(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
-  public boolean b()
+  public void onChanged()
   {
-    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)localHashMap.get(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a));
-    return true;
+    if (this.a.a.getItemCount() > 0) {
+      return;
+    }
+    this.a.b();
   }
 }
 

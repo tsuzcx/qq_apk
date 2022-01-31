@@ -1,191 +1,87 @@
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileError;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import java.util.UUID;
 
-public class adbp
-  implements Runnable
+public final class adbp
+  implements View.OnClickListener
 {
-  public adbp(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public adbp(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ForwardOption.ForwardSdkBaseOption", 4, "asyncUploadImageAndSendToBuddy running...");
-    }
-    int i = 0;
-    for (;;)
+    try
     {
-      if ((i >= 3) || ((this.a.k) && (this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse != null))) {
-        if ((this.a.b == 65520L) || (this.a.b())) {
-          break label107;
-        }
-      }
-      try
+      paramView = new FileManagerReporter.fileAssistantReportData();
+      paramView.b = "file_forward";
+      paramView.a = 9;
+      FileManagerReporter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().getCurrentAccountUin(), paramView);
+      if (NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity()) == 0)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("ForwardOption.ForwardSdkBaseOption", 4, "asyncUploadImageAndSendToBuddy sleeping...");
-        }
-        Thread.sleep(1000L);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("ForwardOption.ForwardSdkBaseOption", 4, "asyncUploadImageAndSendToBuddy awake.");
-        }
-        i += 1;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        label107:
-        Object localObject1;
-        Object localObject2;
-        String str1;
-        String str2;
-        String str3;
-        Object localObject3;
-        long l;
+        TroopFileError.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity().getString(2131429788));
         return;
       }
-    }
-    if ((!this.a.k) || (TextUtils.isEmpty(this.a.i)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ForwardOption.ForwardSdkBaseOption", 2, "-->asyncUploadImageAndSendToBuddy--skey not ready");
+      Object localObject1 = new FileManagerEntity();
+      ((FileManagerEntity)localObject1).copyFrom(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      ((FileManagerEntity)localObject1).nSessionId = FileManagerUtil.a().longValue();
+      ((FileManagerEntity)localObject1).status = 2;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a();
+      if (paramView != null) {
+        paramView.a().d((FileManagerEntity)localObject1);
       }
-      this.a.x();
-      this.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adbq(this));
-      return;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse != null) && (this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.androidInfo != null))
-    {
-      localObject1 = this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.androidInfo;
-      localObject2 = Share.a(this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.iconsURL, 16);
-      if ((((GetAppInfoProto.AndroidInfo)localObject1).sourceUrl != null) && (this.a.b != Long.parseLong("1103584836"))) {
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", ((GetAppInfoProto.AndroidInfo)localObject1).sourceUrl.get());
+      paramView = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), (FileManagerEntity)localObject1);
+      Object localObject2 = new ForwardFileInfo();
+      ((ForwardFileInfo)localObject2).b(((FileManagerEntity)localObject1).nSessionId);
+      if (!TextUtils.isEmpty(((FileManagerEntity)localObject1).getFilePath())) {
+        ((ForwardFileInfo)localObject2).a(paramView.jdField_a_of_type_JavaLangString);
       }
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", (String)localObject2);
-      }
-      if (((GetAppInfoProto.AndroidInfo)localObject1).messagetail != null) {
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_name", ((GetAppInfoProto.AndroidInfo)localObject1).messagetail.get());
-      }
-      if (((GetAppInfoProto.AndroidInfo)localObject1).packName != null) {
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_a_action_data", ((GetAppInfoProto.AndroidInfo)localObject1).packName.get());
-      }
-    }
-    str1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString("detail_url");
-    localObject1 = this.a.jdField_a_of_type_AndroidOsBundle.getString("image_url");
-    localObject2 = this.a.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_url");
-    str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_icon");
-    localObject3 = new HashMap();
-    if ((!TextUtils.isEmpty(str2)) && (str2.length() > 150)) {
-      ((HashMap)localObject3).put("targetUrl", str2);
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-      ((HashMap)localObject3).put("sourceUrl", localObject2);
-    }
-    if (!TextUtils.isEmpty(str3)) {
-      ((HashMap)localObject3).put("sourceIcon", str3);
-    }
-    localObject2 = new ImageInfo();
-    ((ImageInfo)localObject2).h = str1;
-    ((ImageInfo)localObject2).c = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    localObject2 = StructMsgForImageShare.scaleLocalImage(this.a.jdField_a_of_type_AndroidAppActivity, (ImageInfo)localObject2, (String)localObject1, this.a.jdField_a_of_type_AndroidOsBundle.getInt("uintype"));
-    if (localObject2 == null)
-    {
-      localObject2 = new CompressInfo((String)localObject1, 0);
-      CompressOperator.b((CompressInfo)localObject2);
-      if (((CompressInfo)localObject2).jdField_e_of_type_JavaLangString != null)
+      ((ForwardFileInfo)localObject2).d(paramView.g);
+      ((ForwardFileInfo)localObject2).d(paramView.b);
+      ((ForwardFileInfo)localObject2).a(((FileManagerEntity)localObject1).TroopUin);
+      if (((FileManagerEntity)localObject1).isZipInnerFile)
       {
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("struct_share_key_thumb_height", ((CompressInfo)localObject2).jdField_e_of_type_Int);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("struct_share_key_thumb_width", ((CompressInfo)localObject2).d);
-      }
-      this.a.jdField_a_of_type_AndroidOsBundle.putString("image_url", (String)localObject1);
-      this.a.jdField_a_of_type_AndroidOsBundle.remove("image_url_remote");
-      this.a.jdField_a_of_type_AndroidOsBundle.remove("title");
-      this.a.jdField_a_of_type_AndroidOsBundle.remove("desc");
-      this.a.jdField_a_of_type_AndroidOsBundle.remove("detail_url");
-      l = System.currentTimeMillis();
-      localObject1 = new Bundle();
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("report_type", "102");
-      ((Bundle)localObject2).putString("act_type", "52");
-      ((Bundle)localObject2).putString("intext_3", "0");
-      ((Bundle)localObject2).putString("stringext_1", str2);
-      ReportCenter.a().a((Bundle)localObject2, "", str1, false);
-      localObject2 = HttpUtil.a(BaseApplication.getContext(), str1, this.a.i, 1, (HashMap)localObject3, (Bundle)localObject1);
-      l = System.currentTimeMillis() - l;
-      if ((localObject2 == null) || (((HashMap)localObject2).size() <= 0) || (!((String)((HashMap)localObject2).get(((HashMap)localObject2).keySet().iterator().next())).contains("url.cn"))) {
-        break label1272;
-      }
-    }
-    label1258:
-    label1272:
-    for (i = 0;; i = 1)
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject3 = "batchUrlExchange for IMAGE_SHARE, isFailed = " + i + ", cost = " + l;
-        if ((i != 1) && (l <= 3000L)) {
-          break label1258;
-        }
-        QLog.e("ForwardOption.ForwardSdkBaseOption", 2, (String)localObject3);
+        ((ForwardFileInfo)localObject2).b(10000);
+        ((ForwardFileInfo)localObject2).d(3);
       }
       for (;;)
       {
-        localObject3 = new Bundle();
-        ((Bundle)localObject3).putString("report_type", "102");
-        ((Bundle)localObject3).putString("act_type", "12");
-        ((Bundle)localObject3).putString("intext_3", "0");
-        ((Bundle)localObject3).putString("intext_1", "" + i);
-        ((Bundle)localObject3).putString("intext_2", "" + ((Bundle)localObject1).getInt("retcode", 0));
-        ((Bundle)localObject3).putString("intext_5", "" + l);
-        if (i == 1) {
-          ((Bundle)localObject3).putString("stringext_1", str2);
-        }
-        ReportCenter.a().a((Bundle)localObject3, "", str1, false);
-        if (localObject2 != null)
-        {
-          if (((HashMap)localObject2).containsKey("imageUrl"))
-          {
-            this.a.jdField_a_of_type_AndroidOsBundle.putString("image_url_remote", (String)((HashMap)localObject2).get("imageUrl"));
-            this.a.jdField_a_of_type_AndroidOsBundle.remove("image_url");
-          }
-          if (((HashMap)localObject2).containsKey("audioUrl")) {
-            this.a.jdField_a_of_type_AndroidOsBundle.putString("audio_url", (String)((HashMap)localObject2).get("audioUrl"));
-          }
-          if (((HashMap)localObject2).containsKey("targetUrl")) {
-            this.a.jdField_a_of_type_AndroidOsBundle.putString("detail_url", (String)((HashMap)localObject2).get("targetUrl"));
-          }
-          if (((HashMap)localObject2).containsKey("sourceUrl")) {
-            this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_url", (String)((HashMap)localObject2).get("sourceUrl"));
-          }
-          if (((HashMap)localObject2).containsKey("sourceIcon")) {
-            this.a.jdField_a_of_type_AndroidOsBundle.putString("struct_share_key_source_icon", (String)((HashMap)localObject2).get("sourceIcon"));
-          }
-        }
-        this.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adbr(this));
+        ((ForwardFileInfo)localObject2).a(2);
+        localObject1 = new Bundle();
+        ((Bundle)localObject1).putInt("forward_type", 0);
+        ((Bundle)localObject1).putParcelable("fileinfo", (Parcelable)localObject2);
+        ((Bundle)localObject1).putBoolean("not_forward", true);
+        localObject2 = new Intent();
+        ((Intent)localObject2).putExtras((Bundle)localObject1);
+        ((Intent)localObject2).putExtra("forward_text", paramView.g);
+        ((Intent)localObject2).putExtra("forward_from_troop_file", true);
+        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), (Intent)localObject2, 103);
         return;
-        localObject1 = localObject2;
-        break;
-        QLog.d("ForwardOption.ForwardSdkBaseOption", 2, (String)localObject3);
+        if (paramView.jdField_a_of_type_JavaUtilUUID != null) {
+          ((ForwardFileInfo)localObject2).e(paramView.jdField_a_of_type_JavaUtilUUID.toString());
+        }
+        ((ForwardFileInfo)localObject2).b(10006);
+        ((ForwardFileInfo)localObject2).d(4);
       }
+      return;
     }
+    catch (Exception paramView) {}
   }
 }
 

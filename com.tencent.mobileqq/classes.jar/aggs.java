@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.jumplightalk.CLJumpLightalkConfig;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class aggs
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aggs(QCallDetailActivity paramQCallDetailActivity) {}
+  public aggs(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QCallDetailActivity.a(this.a, CLJumpLightalkConfig.a(this.a.app.getCurrentAccountUin()));
+    this.a.startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggs
  * JD-Core Version:    0.7.0.1
  */

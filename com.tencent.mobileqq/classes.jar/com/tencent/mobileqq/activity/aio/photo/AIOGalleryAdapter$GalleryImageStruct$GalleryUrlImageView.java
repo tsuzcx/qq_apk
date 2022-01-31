@@ -9,7 +9,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.VideoDrawable;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import vjm;
+import vmo;
 
 public class AIOGalleryAdapter$GalleryImageStruct$GalleryUrlImageView
   extends AbstractImageAdapter.URLImageView2
@@ -78,7 +78,7 @@ public class AIOGalleryAdapter$GalleryImageStruct$GalleryUrlImageView
       }
       paramURLDrawable = paramURLDrawable.getCurrDrawable();
     } while (!VideoDrawable.class.isInstance(paramURLDrawable));
-    ((VideoDrawable)paramURLDrawable).setOnPlayRepeatListener(new vjm(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a));
+    ((VideoDrawable)paramURLDrawable).setOnPlayRepeatListener(new vmo(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a));
   }
 }
 

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bcb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02158c" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
-        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25c5" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textSize="20.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25c6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:singleLine="true" />
-            <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25c7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        </LinearLayout>
-        <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25c8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a260a" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip">
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a260b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b05dd" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01df" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a7a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b05dc" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01df" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2608" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b16ca" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01ed" />
     </LinearLayout>
-    <Button android:textSize="18.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25c9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bca" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginRight="10.0dip" android:text="导航" android:layout_weight="0.0" />
-</LinearLayout>
+</com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView>

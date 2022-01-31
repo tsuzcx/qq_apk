@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import qjk;
+import qle;
 
 public class GdtUIUtils
 {
@@ -56,7 +56,7 @@ public class GdtUIUtils
     if (paramView == null) {
       return;
     }
-    ((View)paramView.getParent()).post(new qjk(paramView, paramInt1, paramInt2, paramInt3, paramInt4));
+    ((View)paramView.getParent()).post(new qle(paramView, paramInt1, paramInt2, paramInt3, paramInt4));
   }
   
   @TargetApi(17)
@@ -111,7 +111,7 @@ public class GdtUIUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.GdtUIUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Array;
@@ -32,9 +33,8 @@ public class PublicFragmentActivity
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicFragmentActivity", 2, "create fragment error", localException);
-      }
+      com.tencent.common.app.BaseApplicationImpl.sPublicFragmentEscapedMsg = Log.getStackTraceString(localException);
+      QLog.e("PublicFragmentActivity", 1, "create fragment error", localException);
     }
     return null;
   }
@@ -42,6 +42,11 @@ public class PublicFragmentActivity
   public static void a(Activity paramActivity, Intent paramIntent, Class paramClass, int paramInt)
   {
     PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+  }
+  
+  public static void a(Activity paramActivity, Class paramClass, int paramInt)
+  {
+    a(paramActivity, null, paramClass, paramInt);
   }
   
   public static void a(Context paramContext, Intent paramIntent, Class paramClass)
@@ -128,7 +133,7 @@ public class PublicFragmentActivity
     super.doOnCreate(paramBundle);
     setContentView(2130968611);
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131362843, this.a);
+    paramBundle.replace(2131362861, this.a);
     paramBundle.commit();
     return true;
   }
@@ -219,11 +224,20 @@ public class PublicFragmentActivity
   public String toString()
   {
     String str2 = super.toString();
-    String str1 = str2;
+    String str1;
     if (this.a != null) {
       str1 = str2 + "#" + this.a.getClass().getName() + "@" + Integer.toHexString(this.a.hashCode());
     }
-    return str1;
+    do
+    {
+      do
+      {
+        return str1;
+        str1 = str2;
+      } while (getIntent() == null);
+      str1 = str2;
+    } while (getIntent().getStringExtra("public_fragment_class") == null);
+    return str2 + "#" + getIntent().getStringExtra("public_fragment_class");
   }
 }
 

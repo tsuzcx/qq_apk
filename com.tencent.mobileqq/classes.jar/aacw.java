@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ArResourceManager;
 
 public class aacw
   implements Runnable
 {
-  public aacw(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
+  public aacw(ArResourceManager paramArResourceManager) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
-    }
-    for (;;)
-    {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalMarkerRecoglSo", true, 0L, 0L, localHashMap, "");
-      return;
-      localHashMap.put("result", "1");
-    }
+    this.a.a();
+    this.a.a();
+    this.a.c();
   }
 }
 

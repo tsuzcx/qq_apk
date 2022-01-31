@@ -1,12 +1,12 @@
 package cooperation.thirdpay;
 
 import CardPay.LBSInfo;
-import amox;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.nfc.NfcAdapter;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import anfc;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.CardPayHandler;
@@ -136,7 +136,7 @@ public class ThirdPayManager
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    SosoInterface.a(new amox(3, true, true, 0L, false, false, "ThirdPayManager", paramQQAppInterface));
+    SosoInterface.a(new anfc(3, true, true, 0L, false, false, "ThirdPayManager", paramQQAppInterface));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)

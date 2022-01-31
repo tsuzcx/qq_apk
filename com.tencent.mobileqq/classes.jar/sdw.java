@@ -1,21 +1,15 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 
-class sdw
+public class sdw
   implements Runnable
 {
-  sdw(sdv paramsdv) {}
+  public sdw(ChatSettingForTroop paramChatSettingForTroop, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "Conversation onUpdateFriendList");
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
   }
 }
 

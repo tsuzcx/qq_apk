@@ -1,7 +1,7 @@
 package com.tencent.component.media.image;
 
 import android.graphics.Bitmap;
-import pfr;
+import phl;
 
 public final class ReuseBitmapCacheProxy
   extends BitmapPool
@@ -10,7 +10,7 @@ public final class ReuseBitmapCacheProxy
   
   public ReuseBitmapCacheProxy(PoolParams paramPoolParams, int paramInt)
   {
-    super(new pfr());
+    super(new phl());
     this.a = ReuseBitmapCache.getInstance(paramInt);
   }
   

@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
 
 public class obq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public obq(EditPicQzonePublishActivity paramEditPicQzonePublishActivity) {}
+  public obq(GuideInfoDialog paramGuideInfoDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    EditPicQzonePublishActivity.a(this.a, true);
-    EditPicQzonePublishActivity.a(this.a).setSelected(true);
+    this.a.dismiss();
   }
 }
 

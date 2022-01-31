@@ -1,15 +1,24 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.qqstory.base.QQStoryFeedManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Iterator;
+import java.util.List;
 
-class mzm
-  implements VideoCompositeHelper.VideoCompositeCallBack
+public class mzm
+  implements Runnable
 {
-  mzm(mzl parammzl, PublishVideoEntry paramPublishVideoEntry) {}
+  public mzm(QQStoryFeedManager paramQQStoryFeedManager, String paramString) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void run()
   {
-    ThreadManager.postImmediately(new mzn(this, paramInt, paramString1, paramString2), null, false);
+    Iterator localIterator = QQStoryFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryFeedManager).a().a(this.jdField_a_of_type_JavaLangString, 0, new int[] { -2061 }).iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      QQStoryFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryFeedManager).a().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
+      QQStoryFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryFeedManager).a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+    }
   }
 }
 

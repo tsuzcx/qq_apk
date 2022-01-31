@@ -1,41 +1,39 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.mapsdk.raster.model.GeoPoint;
-import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
-import com.tencent.tencentmap.mapsdk.map.Projection;
+import java.nio.ByteBuffer;
 
 public class ajdh
-  extends Overlay
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private GeoPoint jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint;
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
   
-  public ajdh(Bitmap paramBitmap, GeoPoint paramGeoPoint)
+  public ajdh(long paramLong)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint = paramGeoPoint;
+    this.a = 2882377846L;
+    this.b = 1007L;
+    this.c = 0L;
+    this.d = paramLong;
   }
   
-  public void draw(Canvas paramCanvas, MapView paramMapView)
+  public ajdh(ByteBuffer paramByteBuffer)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint != null))
-    {
-      Point localPoint = paramMapView.getProjection().toPixels(this.jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint, null);
-      localPoint.x -= this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      localPoint.y -= this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      Paint localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localPoint.x, localPoint.y, localPaint);
-    }
-    super.draw(paramCanvas, paramMapView);
+    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+  }
+  
+  public void a(ByteBuffer paramByteBuffer)
+  {
+    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdh
  * JD-Core Version:    0.7.0.1
  */

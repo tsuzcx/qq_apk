@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.managers.ShieldMsgManger;
-import java.util.ArrayList;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.qphone.base.util.QLog;
 
-public class adrv
+class adrv
   implements Runnable
 {
-  public adrv(ShieldMsgManger paramShieldMsgManger, ArrayList paramArrayList) {}
+  adrv(adru paramadru) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqManagersShieldMsgManger.a(this.jdField_a_of_type_JavaUtilArrayList);
+    PresenceInterfaceImpl.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    PresenceInterfaceImpl.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl, true);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a(0, this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a);
+    QLog.d("PresenceInterfaceImpl", 2, "saveUserPermission true");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrv
  * JD-Core Version:    0.7.0.1
  */

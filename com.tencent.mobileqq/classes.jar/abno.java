@@ -1,34 +1,100 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
-class abno
-  implements Runnable
+public class abno
+  implements TextWatcher
 {
-  abno(abnk paramabnk, QQAppInterface paramQQAppInterface) {}
+  int jdField_a_of_type_Int;
+  EditText jdField_a_of_type_AndroidWidgetEditText;
+  String jdField_a_of_type_JavaLangString = "";
+  boolean jdField_a_of_type_Boolean = true;
+  int b;
+  public boolean b;
   
-  public void run()
+  public abno(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt, EditText paramEditText)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MessageForNearbyMarketGrayTips", 4, "0X80052C4");
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052C4", "0X80052C4", 0, 0, abnk.a(this.jdField_a_of_type_Abnk).frienduin, "", "", "");
-    QQAppInterface localQQAppInterface;
-    if ((abnk.a(this.jdField_a_of_type_Abnk).AioType == 1) || (abnk.a(this.jdField_a_of_type_Abnk).AioType == 3))
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public abno(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt1, EditText paramEditText, int paramInt2)
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    int j = 1;
+    boolean bool;
+    label69:
+    int i;
+    if ((this.jdField_b_of_type_Int == 1) && (!this.jdField_a_of_type_JavaLangString.equals(paramEditable.toString())))
     {
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (abnk.a(this.jdField_a_of_type_Abnk).AioType != 0) {
-        break label122;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bool = this.jdField_b_of_type_Boolean;
+        this.jdField_b_of_type_Boolean = bool;
       }
     }
-    label122:
-    for (String str = "0";; str = "1")
+    else
     {
-      ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_blue", 0, 0, str, "", "", "");
+      this.jdField_a_of_type_Boolean = false;
+      if (!(this.jdField_a_of_type_AndroidWidgetEditText instanceof ClearEllipsisEditText)) {
+        break label155;
+      }
+      paramEditable = ((ClearEllipsisEditText)this.jdField_a_of_type_AndroidWidgetEditText).a();
+      i = paramEditable.length();
+      if ((this.jdField_a_of_type_AndroidWidgetEditText.getTag() == null) || (!((String)this.jdField_a_of_type_AndroidWidgetEditText.getTag()).equals("name"))) {
+        break label197;
+      }
+      i = paramEditable.getBytes().length;
+    }
+    for (;;)
+    {
+      if (i > this.jdField_a_of_type_Int)
+      {
+        for (;;)
+        {
+          if (i <= this.jdField_a_of_type_Int) {
+            break label177;
+          }
+          paramEditable = paramEditable.substring(0, paramEditable.length() - 1);
+          if (j != 0)
+          {
+            i = paramEditable.getBytes().length;
+            continue;
+            bool = true;
+            break;
+            label155:
+            paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+            break label69;
+          }
+          i = paramEditable.length();
+        }
+        label177:
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
+        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
+      }
       return;
+      label197:
+      j = 0;
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

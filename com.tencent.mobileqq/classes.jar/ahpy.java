@@ -1,39 +1,24 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.shortvideo.util.SimpleAudioPlayer;
-import com.tencent.sveffects.Logger;
-import com.tencent.sveffects.SdkContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.scribble.ScribbleBaseOperator;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahpy
-  extends Thread
+  implements Runnable
 {
-  private ahpy(SimpleAudioPlayer paramSimpleAudioPlayer) {}
+  public ahpy(ScribbleBaseOperator paramScribbleBaseOperator, MessageForScribble paramMessageForScribble) {}
   
   public void run()
   {
-    if (SdkContext.a().a().a()) {
-      SdkContext.a().a().d("SimpleAudioPlayer", "playSimpleAudio " + SimpleAudioPlayer.a(this.a));
-    }
-    try
-    {
-      if (SimpleAudioPlayer.a(this.a) != SimpleAudioPlayer.a) {
-        SimpleAudioPlayer.a(this.a).setAudioStreamType(SimpleAudioPlayer.a(this.a));
-      }
-      SimpleAudioPlayer.a(this.a).prepare();
-      SimpleAudioPlayer.a(this.a).start();
-      if (SimpleAudioPlayer.b(this.a) > 0) {
-        SimpleAudioPlayer.a(this.a).seekTo(SimpleAudioPlayer.b(this.a));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      SdkContext.a().a().a("SimpleAudioPlayer", "playSimpleAudio " + SimpleAudioPlayer.a(this.a) + "error: " + localException.toString());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleBaseOperator.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble, this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleBaseOperator.a.getCurrentAccountUin());
+    this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleBaseOperator.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.localFildPath, null);
+    QLog.i("SCRIBBLEMSG", 2, "!!!addMessage uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,14 @@
-import Wallet.SetSelectedSkinRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class xdr
-  implements BusinessObserver
+  implements Runnable
 {
-  public xdr(RedPacketManager paramRedPacketManager, BusinessObserver paramBusinessObserver) {}
+  public xdr(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    SetSelectedSkinRsp localSetSelectedSkinRsp = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketManager", 2, "setSelectedSkin onReceive isSuccess:" + paramBoolean);
-    }
+    QzoneHbFragment.a(this.a).startAnimation(QzoneHbFragment.a(this.a));
   }
 }
 

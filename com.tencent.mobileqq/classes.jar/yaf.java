@@ -1,13 +1,43 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class yaf
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
-  public yaf(ShortVideoPlayActivity paramShortVideoPlayActivity, int paramInt) {}
+  public yaf(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.b(this.jdField_a_of_type_Int);
+    if ((paramBoolean) && ((this.a.l == 6) || (this.a.l == 7) || (this.a.l != this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a())))
+    {
+      paramView = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
+      if (paramView != null)
+      {
+        paramView.a(this.a.a(), this.a.f);
+        FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        }
+        localFragmentTransaction.add(2131363923, paramView);
+        localFragmentTransaction.commitAllowingStateLoss();
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
+      }
+      if (this.a.d == 0) {
+        ReportController.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 1, 0, "", "", "", "");
+      }
+    }
+    else
+    {
+      return;
+    }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 2, 0, "", "", "", "");
   }
 }
 

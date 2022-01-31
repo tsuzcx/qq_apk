@@ -1,18 +1,13 @@
-import android.graphics.drawable.Drawable;
-import android.view.animation.Animation;
-import com.tencent.component.media.image.view.ExtendImageView;
+import com.tencent.component.media.image.ImageManager;
 
 public class pgx
   implements Runnable
 {
-  public pgx(ExtendImageView paramExtendImageView, Drawable paramDrawable, Animation paramAnimation) {}
+  public pgx(ImageManager paramImageManager) {}
   
   public void run()
   {
-    ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation != null) {
-      ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_AndroidViewAnimationAnimation, null);
-    }
+    ImageManager.a(this.a, ImageManager.b());
   }
 }
 

@@ -1,13 +1,23 @@
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.jtcode.JtcodePluginInstallActivity;
 
 public class amlp
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public amlp(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
+  private amlp(JtcodePluginInstallActivity paramJtcodePluginInstallActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QZoneSharePictureJsPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("JtcodePluginInstallActivity", 4, "JtcodePluginOnResumeReceiver->onReceive, intent:" + paramIntent);
+    }
+    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
+      return;
+    }
+    this.a.finish();
   }
 }
 

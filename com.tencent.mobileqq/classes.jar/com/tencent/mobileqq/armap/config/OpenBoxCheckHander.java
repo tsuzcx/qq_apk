@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap.config;
 
-import aayk;
-import aayl;
+import abfl;
+import abfm;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
@@ -18,7 +18,7 @@ import java.util.List;
 public class OpenBoxCheckHander
   extends BaseCheckHandler
 {
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aayk(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abfl(this);
   public OpenBoxCheckHander.OnResCheckResultListener a;
   WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(this.jdField_a_of_type_AndroidOsHandler$Callback);
   public List b = new ArrayList();
@@ -30,7 +30,7 @@ public class OpenBoxCheckHander
   
   private void b(BaseCheckHandler.ItemConfig paramItemConfig)
   {
-    ThreadManager.postImmediately(new aayl(this, paramItemConfig), null, false);
+    ThreadManager.postImmediately(new abfm(this, paramItemConfig), null, false);
   }
   
   int a()

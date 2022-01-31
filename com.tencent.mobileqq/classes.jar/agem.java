@@ -1,27 +1,25 @@
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.VipProfileWZRYView;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.OcrClickListener;
 
 public class agem
   implements View.OnClickListener
 {
-  public agem(VipProfileWZRYView paramVipProfileWZRYView, ProfileCardInfo paramProfileCardInfo) {}
+  public agem(ARTipsManager paramARTipsManager, aget paramaget) {}
   
   public void onClick(View paramView)
   {
-    paramView = IndividuationUrlHelper.a("gameHonourAddHonour");
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipProfileWZRYView.a, paramView, -1L, null, false, -1);
-    VasWebviewUtil.reportCommercialDrainage("", "card_gameking", "clk_into", "0", 1, 0, 0, HttpUtil.a(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.lCurrentBgId), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.lCurrentStyleId));
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Aget.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agem
  * JD-Core Version:    0.7.0.1
  */

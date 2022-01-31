@@ -56,15 +56,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import nql;
-import nqm;
-import nqn;
-import nqo;
-import nqq;
-import nqr;
-import nqs;
-import nqt;
-import nqv;
+import nry;
+import nrz;
+import nsa;
+import nsb;
+import nsd;
+import nse;
+import nsf;
+import nsg;
+import nsi;
 
 public class QQStoryShareGroupProfileActivity
   extends QQStoryBaseActivity
@@ -340,7 +340,7 @@ public class QQStoryShareGroupProfileActivity
         RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
         localLayoutParams.topMargin = 0;
         this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131432088);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131432105);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramShareGroupItem.name);
         this.jdField_a_of_type_ComTencentBizQqstoryUtilsTranslucentTitleBarHelper.a(true, false);
@@ -444,25 +444,25 @@ public class QQStoryShareGroupProfileActivity
   
   private void b()
   {
-    View localView = LayoutInflater.from(this).inflate(2130970786, null, false);
+    View localView = LayoutInflater.from(this).inflate(2130970834, null, false);
     super.setContentViewNoTitle(localView);
     this.jdField_a_of_type_ComTencentBizQqstoryUtilsTranslucentTitleBarHelper.a(localView);
     this.jdField_a_of_type_ComTencentBizQqstoryUtilsTranslucentTitleBarHelper.a(false, false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363362));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363363));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363227));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363456));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363410));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)super.findViewById(2131363361));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadMoreLayout = ((LoadMoreLayout)super.findViewById(2131371712));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131363098);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363380));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363381));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363245));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363474));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363428));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)super.findViewById(2131363379));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadMoreLayout = ((LoadMoreLayout)super.findViewById(2131371882));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131363116);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838579);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365660));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366651));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView = ((ShareGroupsListView)super.findViewById(2131371825));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.setContentBackground(2130838579);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131371655));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838583);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365687));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366675));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView = ((ShareGroupsListView)super.findViewById(2131371995));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.setContentBackground(2130838583);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131371825));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadMoreLayout.a(1);
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupHelper.a(this, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.getRootView());
     c();
@@ -524,8 +524,8 @@ public class QQStoryShareGroupProfileActivity
     if (this.jdField_c_of_type_Int == 1) {
       localActionSheet.a("查看群资料卡", 5);
     }
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new nqm(this, localActionSheet));
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new nrz(this, localActionSheet));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
     }
@@ -570,12 +570,12 @@ public class QQStoryShareGroupProfileActivity
   protected void a(@NonNull Map paramMap)
   {
     super.a(paramMap);
-    paramMap.put(new nqq(this), "");
-    paramMap.put(new nqs(this), "");
-    paramMap.put(new nqr(this), "");
-    paramMap.put(new nqv(this), "");
-    paramMap.put(new nqt(this), "");
-    paramMap.put(new nqo(this), "");
+    paramMap.put(new nsd(this), "");
+    paramMap.put(new nsf(this), "");
+    paramMap.put(new nse(this), "");
+    paramMap.put(new nsi(this), "");
+    paramMap.put(new nsg(this), "");
+    paramMap.put(new nsb(this), "");
     paramMap.put(new QQStoryShareGroupProfileActivity.VideoSortEventReceiver(this), "");
     paramMap.put(new QQStoryShareGroupProfileActivity.GetVideoByHotSortEventReceiver(this), "");
     paramMap.put(new QQStoryShareGroupProfileActivity.ReportVideoReceiver(this), "");
@@ -626,7 +626,7 @@ public class QQStoryShareGroupProfileActivity
       localReqLoadMoreVideoList.video_count.set(10);
       localObject = new Bundle();
       ((Bundle)localObject).putString("extra_feedid", paramVideoCollectionItem.feedId);
-      ProtoUtils.a(this.app, new nqn(this), localReqLoadMoreVideoList.toByteArray(), StoryApi.a("StoryGroupSvc.datacard_load_more_video"), (Bundle)localObject);
+      ProtoUtils.a(this.app, new nsa(this), localReqLoadMoreVideoList.toByteArray(), StoryApi.a("StoryGroupSvc.datacard_load_more_video"), (Bundle)localObject);
       return true;
       i = 1;
     }
@@ -689,7 +689,7 @@ public class QQStoryShareGroupProfileActivity
       }
       new GetUserGroupUnionIDHandler(this.jdField_c_of_type_JavaLangString).a();
       if (this.jdField_a_of_type_Int == 5) {
-        new Handler(Looper.getMainLooper()).postDelayed(new nql(this), 200L);
+        new Handler(Looper.getMainLooper()).postDelayed(new nry(this), 200L);
       }
       return true;
     }

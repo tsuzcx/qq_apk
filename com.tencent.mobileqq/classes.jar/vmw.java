@@ -1,20 +1,41 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import java.util.Locale;
 
-class vmw
-  implements Animation.AnimationListener
+public class vmw
+  implements vmn
 {
-  vmw(vmu paramvmu, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
+  public vmw(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(AIOImageData paramAIOImageData, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Vmu.a();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a() != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a instanceof AIOImageData)))
+    {
+      AIOImageData localAIOImageData = (AIOImageData)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a;
+      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.j, paramAIOImageData.j)))
+      {
+        if (localAIOImageData.i <= 0L) {
+          break label141;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, AIOGalleryScene.az(this.a).getString(2131436112), new Object[] { FileUtil.a(localAIOImageData.i) }));
+      }
+    }
+    for (;;)
+    {
+      this.a.c(true);
+      AIOGalleryScene.b(this.a);
+      AIOGalleryScene.c(this.a);
+      return;
+      label141:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131436111);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

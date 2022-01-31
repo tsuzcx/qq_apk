@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.lightReply;
 
-import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
@@ -12,35 +11,13 @@ import java.util.ArrayList;
 public class LightReplyFaceDetectSoManager
   implements ShortVideoResourceManager.INet_ShortVideoResource, ShortVideoResourceStatus.ISVConfig
 {
-  private Context jdField_a_of_type_AndroidContentContext;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private LightReplyFaceDetectSoManager.Callback jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyFaceDetectSoManager$Callback;
-  private boolean jdField_a_of_type_Boolean = true;
+  private boolean jdField_a_of_type_Boolean;
   private boolean b;
   private boolean c;
   
-  public LightReplyFaceDetectSoManager(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (PtvFilterSoLoad.a(paramContext) != 0) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    c();
-    if (this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyFaceDetectSoManager$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyFaceDetectSoManager$Callback.a(paramInt);
-    }
-  }
-  
-  private void c()
+  private void a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
@@ -49,16 +26,24 @@ public class LightReplyFaceDetectSoManager
     }
   }
   
-  private void d()
+  private void a(int paramInt)
+  {
+    a();
+    if (this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyFaceDetectSoManager$Callback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyFaceDetectSoManager$Callback.a(paramInt);
+    }
+  }
+  
+  private void c()
   {
     if ((this.b) && ((this.c) || (!this.jdField_a_of_type_Boolean))) {
       a(1);
     }
   }
   
-  public void a()
+  public void C_()
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
+    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onNetWorkNone", null);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -106,11 +91,6 @@ public class LightReplyFaceDetectSoManager
     }
   }
   
-  public void a(LightReplyFaceDetectSoManager.Callback paramCallback)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyFaceDetectSoManager$Callback = paramCallback;
-  }
-  
   public void a(String paramString1, int paramInt, String paramString2)
   {
     if (paramString1.startsWith("new_qq_android_native_short_video_"))
@@ -131,24 +111,19 @@ public class LightReplyFaceDetectSoManager
       VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
       return;
       this.b = true;
-      d();
+      c();
       break;
       label92:
       this.c = true;
-      d();
+      c();
     }
   }
   
   public void a(String paramString, long paramLong1, long paramLong2) {}
-  
-  public void y_()
-  {
-    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onNetWorkNone", null);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.lightReply.LightReplyFaceDetectSoManager
  * JD-Core Version:    0.7.0.1
  */

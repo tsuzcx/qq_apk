@@ -1,27 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qlink.QQProxyForQlink;
-import cooperation.qlink.QlinkServiceManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class alxn
-  extends RemoteCommand
+  extends Handler
 {
-  public alxn(QlinkServiceManager paramQlinkServiceManager, String paramString)
+  public alxn(QSecFramework paramQSecFramework, Looper paramLooper)
   {
-    super(paramString);
+    super(paramLooper);
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public void handleMessage(Message paramMessage)
   {
-    QlinkServiceManager.a(this.a).a().c(paramBundle);
-    return null;
+    if ((paramMessage.what == 1) && (paramMessage.arg1 != 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSecFramework", 2, "handle native msg for cookie:" + paramMessage.arg1);
+      }
+      QSecFramework.a(6, paramMessage.arg1, 0, 0, null, null, null, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxn
  * JD-Core Version:    0.7.0.1
  */

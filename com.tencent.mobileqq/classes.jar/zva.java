@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter;
+import com.dataline.util.WaitEvent;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class zva
   implements Runnable
 {
-  public zva(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
+  public zva(DataLineMsgProxy paramDataLineMsgProxy, Entity paramEntity, ProxyListener paramProxyListener, WaitEvent paramWaitEvent) {}
   
   public void run()
   {
-    if (ARVideoRecordUIControllerImpl.a(this.a) != null)
-    {
-      ARVideoRecordUIControllerImpl.a(this.a).a(0);
-      ARVideoRecordUIControllerImpl.a(this.a).b();
-    }
+    DataLineMsgRecord localDataLineMsgRecord = ((DataLineMsgRecord)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).clone();
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.jdField_a_of_type_JavaLangString, localDataLineMsgRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zva
  * JD-Core Version:    0.7.0.1
  */

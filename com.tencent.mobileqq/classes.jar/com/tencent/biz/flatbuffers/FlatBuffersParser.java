@@ -20,7 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
-import kmu;
+import kmf;
 import mqq.app.AppRuntime;
 
 public class FlatBuffersParser
@@ -268,7 +268,7 @@ public class FlatBuffersParser
       a(localFile, bool);
       return;
     }
-    ThreadManager.post(new kmu(localFile, bool), 5, null, false);
+    ThreadManager.post(new kmf(localFile, bool), 5, null, false);
   }
   
   public static void g()

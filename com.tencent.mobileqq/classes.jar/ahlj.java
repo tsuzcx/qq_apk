@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahlj
-  implements Runnable
+  implements Camera.AutoFocusCallback
 {
-  public ahlj(ShortVideoPreDownloader paramShortVideoPreDownloader, ShortVideoReq paramShortVideoReq) {}
+  public ahlj(CameraCaptureView paramCameraCaptureView) {}
   
-  public void run()
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    ShortVideoPreDownloader.a("consumeShortVideo", "start pre download short video type=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.b + " uniseq=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_Long + ", uuid=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloader.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq);
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "single tap focus " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      CameraCaptureView.a(this.a, true);
+      return;
+    }
+    CameraCaptureView.a().f();
   }
 }
 

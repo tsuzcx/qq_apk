@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class tfh
   implements Runnable
 {
-  public tfh(QQBrowserActivity paramQQBrowserActivity) {}
+  public tfh(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_QQBrowserActivity", 2, "start request: " + WebAccelerateHelper.isWebViewCache);
-    }
-    WebProcessManager.a(true);
-    SwiftWebViewUtils.a();
-    SwiftWebViewUtils.b();
+    this.a.e.setBackgroundDrawable(FormSwitchItem.a(this.a.getResources(), 0));
   }
 }
 

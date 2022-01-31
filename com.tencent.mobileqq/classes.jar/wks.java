@@ -1,16 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountSearchActivity;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.util.MqqWeakReferenceHandler;
+import java.util.List;
 
 public class wks
-  implements View.OnClickListener
+  extends TroopObserver
 {
-  public wks(PublicAccountFragment paramPublicAccountFragment) {}
+  public wks(RecommendTroopView paramRecommendTroopView) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean, List paramList)
   {
-    PublicAccountSearchActivity.a(this.a.a, null);
+    if ((paramBoolean) && (paramList != null))
+    {
+      this.a.a.a().sendEmptyMessage(105);
+      this.a.j();
+    }
   }
 }
 

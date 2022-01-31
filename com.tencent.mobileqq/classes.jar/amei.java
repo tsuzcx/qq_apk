@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DiscoverTab;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-public final class amei
-  implements Parcelable.Creator
+public class amei
+  implements View.OnFocusChangeListener
 {
-  public DiscoverTab a(Parcel paramParcel)
-  {
-    return new DiscoverTab(paramParcel);
-  }
+  public amei(XPanelContainer paramXPanelContainer) {}
   
-  public DiscoverTab[] a(int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    return new DiscoverTab[paramInt];
+    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
+      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amei
  * JD-Core Version:    0.7.0.1
  */

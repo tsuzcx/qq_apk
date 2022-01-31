@@ -4,6 +4,7 @@ import android.os.Bundle;
 import com.tencent.biz.qqstory.boundaries.StoryApi;
 import com.tencent.biz.qqstory.playmode.child.CommentPlayMode;
 import com.tencent.biz.qqstory.playmode.child.DiscoverPlayMode;
+import com.tencent.biz.qqstory.playmode.child.HotRecommendPlayMode;
 import com.tencent.biz.qqstory.playmode.child.MemorySelectVideosPlayMode;
 import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode;
 import com.tencent.biz.qqstory.playmode.child.MyMemoryPlayMode;
@@ -58,6 +59,7 @@ public class VideoPlayModeFactory
     case 40: 
     case 42: 
     case 43: 
+    case 50: 
     default: 
       return new NewFriendsPlayMode(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
     case 2: 
@@ -113,8 +115,10 @@ public class VideoPlayModeFactory
       return new TagStoryPlayMode(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
     case 48: 
       return new TagStoryVidListPlayMode(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
+    case 49: 
+      return new SimpleVideoPlayMode(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
     }
-    return new SimpleVideoPlayMode(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
+    return new HotRecommendPlayMode(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
   }
 }
 

@@ -1,21 +1,21 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import android.os.Bundle;
+import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
+import java.util.ArrayList;
 
 public class anep
   implements Runnable
 {
-  public anep(EditVideoPlayer paramEditVideoPlayer, int paramInt, byte[] paramArrayOfByte) {}
+  public anep(SmartDeviceIPCHost paramSmartDeviceIPCHost, Bundle paramBundle) {}
   
   public void run()
   {
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "setMosaic %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    VideoSourceHelper.nativeSetMosaic(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a.add(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anep
  * JD-Core Version:    0.7.0.1
  */

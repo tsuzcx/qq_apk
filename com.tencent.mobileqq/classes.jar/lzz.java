@@ -1,35 +1,46 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.BaseVideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView.OnUninterestConfirmListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
 
-public class lzz
-  implements ReadInJoyDisLikeDialogView.OnUninterestConfirmListener
+public final class lzz
+  implements Runnable
 {
-  public lzz(VideoFeedsAdapter paramVideoFeedsAdapter, VideoInfo paramVideoInfo, JSONObject paramJSONObject) {}
+  public lzz(AppRuntime paramAppRuntime, String paramString) {}
   
-  public void a(View paramView, ArrayList paramArrayList, Object paramObject)
+  public void run()
   {
-    paramView = ReadInJoyUtils.a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
-      ReadInJoyLogicEngine.a().a(Long.valueOf(paramView).longValue(), VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.makeDislikeParam(paramArrayList, VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g));
+    try
+    {
+      Object localObject1 = new Bundle();
+      Object localObject2 = (TicketManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(2);
+      Object localObject3 = this.jdField_a_of_type_MqqAppAppRuntime.getAccount();
+      localObject2 = ((TicketManager)localObject2).getSkey(this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
+      ((Bundle)localObject1).putString("Cookie", "uin=o" + (String)localObject3 + "; skey=" + (String)localObject2);
+      ((Bundle)localObject1).putString("User-Agent", ReadInJoyWebDataManager.d());
+      ((Bundle)localObject1).putString("qq", this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
+      ((Bundle)localObject1).putString("bid", "2");
+      ((Bundle)localObject1).putString("logArray", this.jdField_a_of_type_JavaLangString);
+      localObject3 = new HashMap();
+      ((HashMap)localObject3).put("BUNDLE", localObject1);
+      ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
+      if (QLog.isColorLevel()) {
+        QLog.w("ReadInJoyWebDataManager", 2, "sendLog :content :" + this.jdField_a_of_type_JavaLangString);
+      }
+      localObject1 = new maa(this);
+      new HttpWebCgiAsyncTask2("http://node.kandian.qq.com/cgi/stats/multy?g_tk=" + ReadInJoyWebDataManager.a((String)localObject2), "POST", (HttpWebCgiAsyncTask.Callback)localObject1, 0, null).execute(new HashMap[] { localObject3 });
+      return;
     }
-    QQToast.a(VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter), -1, VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getString(2131428470), 0).b(VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getResources().getDimensionPixelSize(2131558448));
-    VideoFeedsAdapter.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).dismiss();
-    PublicAccountReportUtils.b(null, null, "0X800913C", "0X800913C", 0, 0, null, null, null, VideoReporter.a(null, null, null, null, this.jdField_a_of_type_OrgJsonJSONObject), false);
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("ReadInJoyWebDataManager", 2, "sendLog:request err " + localException);
+    }
   }
 }
 

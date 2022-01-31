@@ -1,16 +1,11 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode.StoryVideoPublishStatusReceiver;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.VideoLocalCacheFilter;
-
-public class nij
-  implements BatchGetVideoInfo.VideoLocalCacheFilter
+class nij
+  implements Runnable
 {
-  public nij(MsgTabPlayMode.StoryVideoPublishStatusReceiver paramStoryVideoPublishStatusReceiver) {}
+  nij(nii paramnii, String paramString) {}
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public void run()
   {
-    return paramStoryVideoItem.mVideoIndex <= 0L;
+    this.jdField_a_of_type_Nii.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

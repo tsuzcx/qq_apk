@@ -12,14 +12,14 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 import mqq.os.MqqHandler;
-import zgp;
-import zkf;
-import zkg;
-import zkh;
-import zki;
-import zkj;
-import zkk;
-import zkt;
+import zjv;
+import znl;
+import znm;
+import znn;
+import zno;
+import znp;
+import znq;
+import znz;
 
 public class ThreadExcutor
 {
@@ -28,12 +28,12 @@ public class ThreadExcutor
   private static volatile MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   public static boolean a;
   public static boolean b;
-  private zgp jdField_a_of_type_Zgp = new zgp("GlobalPool-Light", 5);
-  private zkt jdField_a_of_type_Zkt;
-  private zgp jdField_b_of_type_Zgp = new zgp("GlobalPool-Heavy", 2);
-  private zkt jdField_b_of_type_Zkt;
-  private zgp jdField_c_of_type_Zgp = new zgp("GlobalPool-Download", 2);
-  private zkt jdField_c_of_type_Zkt;
+  private zjv jdField_a_of_type_Zjv = new zjv("GlobalPool-Light", 5);
+  private znz jdField_a_of_type_Znz;
+  private zjv jdField_b_of_type_Zjv = new zjv("GlobalPool-Heavy", 2);
+  private znz jdField_b_of_type_Znz;
+  private zjv jdField_c_of_type_Zjv = new zjv("GlobalPool-Download", 2);
+  private znz jdField_c_of_type_Znz;
   
   static
   {
@@ -199,7 +199,7 @@ public class ThreadExcutor
       localHandlerThread.start();
       jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(localHandlerThread.getLooper());
       if ((QLog.isColorLevel()) && (ThreadManager.logcatBgTaskMonitor)) {
-        jdField_a_of_type_MqqOsMqqHandler.getLooper().setMessageLogging(new zkk(4, "QQ_DISPATCHER"));
+        jdField_a_of_type_MqqOsMqqHandler.getLooper().setMessageLogging(new znq(4, "QQ_DISPATCHER"));
       }
     }
     return jdField_a_of_type_MqqOsMqqHandler;
@@ -208,21 +208,21 @@ public class ThreadExcutor
   @TargetApi(9)
   private void b()
   {
-    if (this.jdField_a_of_type_Zkt == null) {
-      this.jdField_a_of_type_Zkt = new zkj(new SynchronousQueue(true), this.jdField_a_of_type_Zgp);
+    if (this.jdField_a_of_type_Znz == null) {
+      this.jdField_a_of_type_Znz = new znp(new SynchronousQueue(true), this.jdField_a_of_type_Zjv);
     }
-    if (this.jdField_b_of_type_Zkt == null)
+    if (this.jdField_b_of_type_Znz == null)
     {
-      this.jdField_b_of_type_Zkt = new zki(new LinkedBlockingQueue(15), this.jdField_b_of_type_Zgp);
+      this.jdField_b_of_type_Znz = new zno(new LinkedBlockingQueue(15), this.jdField_b_of_type_Zjv);
       if (Build.VERSION.SDK_INT > 8) {
-        this.jdField_b_of_type_Zkt.allowCoreThreadTimeOut(true);
+        this.jdField_b_of_type_Znz.allowCoreThreadTimeOut(true);
       }
     }
-    if (this.jdField_c_of_type_Zkt == null)
+    if (this.jdField_c_of_type_Znz == null)
     {
-      this.jdField_c_of_type_Zkt = new zkf(new LinkedBlockingQueue(128), this.jdField_c_of_type_Zgp);
+      this.jdField_c_of_type_Znz = new znl(new LinkedBlockingQueue(128), this.jdField_c_of_type_Zjv);
       if (Build.VERSION.SDK_INT > 8) {
-        this.jdField_c_of_type_Zkt.allowCoreThreadTimeOut(true);
+        this.jdField_c_of_type_Znz.allowCoreThreadTimeOut(true);
       }
     }
   }
@@ -235,9 +235,9 @@ public class ThreadExcutor
   String a()
   {
     StringBuilder localStringBuilder = a("DebugActivity");
-    localStringBuilder.append("\n").append(this.jdField_a_of_type_Zkt.toString());
-    localStringBuilder.append("\n").append(this.jdField_b_of_type_Zkt.toString());
-    localStringBuilder.append("\n").append(this.jdField_c_of_type_Zkt.toString());
+    localStringBuilder.append("\n").append(this.jdField_a_of_type_Znz.toString());
+    localStringBuilder.append("\n").append(this.jdField_b_of_type_Znz.toString());
+    localStringBuilder.append("\n").append(this.jdField_c_of_type_Znz.toString());
     return localStringBuilder.toString();
   }
   
@@ -255,8 +255,8 @@ public class ThreadExcutor
     if (paramThreadPoolParams == null) {
       localThreadPoolParams = new ThreadPoolParams();
     }
-    paramThreadPoolParams = new zgp(localThreadPoolParams.jdField_a_of_type_JavaLangString, localThreadPoolParams.jdField_a_of_type_Int);
-    paramThreadPoolParams = new zkt(localThreadPoolParams.b, localThreadPoolParams.c, localThreadPoolParams.d, localThreadPoolParams.jdField_a_of_type_JavaUtilConcurrentBlockingQueue, paramThreadPoolParams);
+    paramThreadPoolParams = new zjv(localThreadPoolParams.jdField_a_of_type_JavaLangString, localThreadPoolParams.jdField_a_of_type_Int);
+    paramThreadPoolParams = new znz(localThreadPoolParams.b, localThreadPoolParams.c, localThreadPoolParams.d, localThreadPoolParams.jdField_a_of_type_JavaUtilConcurrentBlockingQueue, paramThreadPoolParams);
     if (Build.VERSION.SDK_INT > 8) {
       paramThreadPoolParams.allowCoreThreadTimeOut(true);
     }
@@ -273,7 +273,7 @@ public class ThreadExcutor
     if (paramRunnable == null) {
       throw new IllegalArgumentException();
     }
-    paramRunnable = new zkg(this, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
+    paramRunnable = new znm(this, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
     jdField_a_of_type_MqqOsMqqHandler.postAtFrontOfQueue(paramRunnable);
   }
   
@@ -286,12 +286,12 @@ public class ThreadExcutor
   {
     if (paramBoolean)
     {
-      this.jdField_b_of_type_Zkt.setMaximumPoolSize(Math.max(this.jdField_b_of_type_Zkt.getActiveCount(), this.jdField_b_of_type_Zkt.getCorePoolSize()));
-      this.jdField_c_of_type_Zkt.setMaximumPoolSize(Math.max(this.jdField_c_of_type_Zkt.getActiveCount(), this.jdField_c_of_type_Zkt.getCorePoolSize()));
+      this.jdField_b_of_type_Znz.setMaximumPoolSize(Math.max(this.jdField_b_of_type_Znz.getActiveCount(), this.jdField_b_of_type_Znz.getCorePoolSize()));
+      this.jdField_c_of_type_Znz.setMaximumPoolSize(Math.max(this.jdField_c_of_type_Znz.getActiveCount(), this.jdField_c_of_type_Znz.getCorePoolSize()));
       return;
     }
-    this.jdField_b_of_type_Zkt.setMaximumPoolSize(this.jdField_b_of_type_Zkt.a());
-    this.jdField_c_of_type_Zkt.setMaximumPoolSize(this.jdField_c_of_type_Zkt.a());
+    this.jdField_b_of_type_Znz.setMaximumPoolSize(this.jdField_b_of_type_Znz.a());
+    this.jdField_c_of_type_Znz.setMaximumPoolSize(this.jdField_c_of_type_Znz.a());
   }
   
   boolean a(Runnable paramRunnable)
@@ -307,7 +307,7 @@ public class ThreadExcutor
         QLog.e("ThreadManager", 1, "remove 3:w == null" + paramRunnable);
         return false;
       }
-      boolean bool = this.jdField_b_of_type_Zkt.remove(localJob);
+      boolean bool = this.jdField_b_of_type_Znz.remove(localJob);
       return bool;
     }
     catch (Exception paramRunnable)
@@ -322,7 +322,7 @@ public class ThreadExcutor
     if (paramRunnable == null) {
       throw new IllegalArgumentException();
     }
-    paramRunnable = new zkh(this, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
+    paramRunnable = new znn(this, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
     jdField_a_of_type_MqqOsMqqHandler.postAtFrontOfQueue(paramRunnable);
   }
 }

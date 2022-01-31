@@ -1,51 +1,33 @@
-import android.os.Bundle;
-import com.tencent.av.app.QQServiceProxy;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.camera.QavCameraUsage;
-import com.tencent.av.service.IQQServiceCallback.Stub;
-import com.tencent.av.service.RecvGVideoLevelInfo;
-import com.tencent.av.service.RecvMsg;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.AVLog;
+import com.tencent.av.business.manager.filter.EffectFilterTools;
+import com.tencent.av.business.manager.filter.FilterItem;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
 
 public class jfl
-  extends IQQServiceCallback.Stub
+  implements INetEngine.INetEngineListener
 {
-  public jfl(QQServiceProxy paramQQServiceProxy) {}
+  public jfl(EffectFilterTools paramEffectFilterTools) {}
   
-  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  
+  public void a(NetResp paramNetResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceProxy", 2, "getDataFromVideoProcess cmd = " + paramInt1 + ",subCmd = " + paramInt2 + ",request = " + paramBundle + ",callbackCookie = " + paramString);
+    FilterItem localFilterItem = (FilterItem)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
+    if (paramNetResp.jdField_a_of_type_Int != 0) {
+      AVLog.c("EffectFilterTools", "download IconFile. errcode = " + paramNetResp.b + "|" + localFilterItem.getId());
     }
-    switch (paramInt1)
+    String str;
+    do
     {
-    default: 
-      return null;
-    }
-    paramString = new Bundle();
-    paramString.putBoolean("AV_isUsingCamera", QavCameraUsage.a);
-    return paramString;
-  }
-  
-  public void a(RecvMsg paramRecvMsg)
-  {
-    if (paramRecvMsg != null) {
-      this.a.a.a(new Object[] { Integer.valueOf(12), paramRecvMsg });
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
-  {
-    this.a.a.a(new Object[] { Integer.valueOf(47), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3 });
-  }
-  
-  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
-  {
-    if ((paramArrayOfRecvGVideoLevelInfo != null) && (paramArrayOfRecvGVideoLevelInfo.length > 0)) {
-      this.a.a.a(new Object[] { Integer.valueOf(501), paramArrayOfRecvGVideoLevelInfo });
-    }
+      return;
+      str = SecUtil.getFileMd5(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+    } while (localFilterItem.getIconMd5().equalsIgnoreCase(str));
+    AVLog.c("EffectFilterTools", "download IconFile faild : md5 is not match: " + localFilterItem.getIconMd5() + "|" + str);
+    FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
   }
 }
 

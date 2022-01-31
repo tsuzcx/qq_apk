@@ -5,12 +5,12 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.BaseApplication;
-import pzs;
+import qbm;
 
 public class MessageForDevShortVideo
   extends MessageForShortVideo
 {
-  public static final Parcelable.Creator CREATOR = new pzs();
+  public static final Parcelable.Creator CREATOR = new qbm();
   public long fileSessionId;
   
   public String getSummary()
@@ -26,9 +26,9 @@ public class MessageForDevShortVideo
     case 2003: 
       return "[视频]";
     case 1003: 
-      return ((QQAppInterface)localObject).getApp().getString(2131435556);
+      return ((QQAppInterface)localObject).getApp().getString(2131435573);
     case 1005: 
-      return ((QQAppInterface)localObject).getApp().getString(2131435556);
+      return ((QQAppInterface)localObject).getApp().getString(2131435573);
     }
     return "[视频]";
   }

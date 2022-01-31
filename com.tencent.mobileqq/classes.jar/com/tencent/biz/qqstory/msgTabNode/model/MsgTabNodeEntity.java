@@ -18,11 +18,12 @@ public class MsgTabNodeEntity
   public long uid;
   @unique
   public String unionId;
+  public String videoCover;
   public String videoInfoList;
   
   public String toString()
   {
-    return "MsgTabNodeEntity{nodeType=" + this.nodeType + ", uid=" + this.uid + ", unionId='" + this.unionId + '\'' + ", title='" + this.title + '\'' + ", recommondId='" + this.recommendId + '\'' + ", nodeVid='" + this.nodeVid + '\'' + ", reqTimeStamp=" + this.reqTimeStamp + ", nodeInfoTimeStamp=" + this.nodeInfoTimeStamp + ", \nvideoInfoList='" + this.videoInfoList + '\'' + ", \nlocalSuccessVideoList='" + this.localSuccessVideoList + '\'' + '}';
+    return "MsgTabNodeEntity{nodeType=" + this.nodeType + ", uid=" + this.uid + ", unionId='" + this.unionId + '\'' + ", videoInfoList='" + this.videoInfoList + '\'' + ", reqTimeStamp=" + this.reqTimeStamp + ", nodeInfoTimeStamp=" + this.nodeInfoTimeStamp + ", localSuccessVideoList='" + this.localSuccessVideoList + '\'' + ", title='" + this.title + '\'' + ", headUrl='" + this.headUrl + '\'' + ", recommendId=" + this.recommendId + ", jumpUrl='" + this.jumpUrl + '\'' + ", nodeVid='" + this.nodeVid + '\'' + ", videoCover='" + this.videoCover + '\'' + "} " + super.toString();
   }
 }
 

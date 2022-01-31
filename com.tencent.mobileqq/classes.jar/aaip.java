@@ -1,45 +1,31 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Locale;
-import oicq.wlogin_sdk.tools.util;
 
-class aaip
-  implements Runnable
+public final class aaip
+  implements INetEngine.IBreakDownFix
 {
-  aaip(aaio paramaaio, int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, String paramString) {}
-  
-  public void run()
+  public void a(NetReq paramNetReq, NetResp paramNetResp)
   {
-    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Aaio.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.a(this.jdField_a_of_type_Aaio.jdField_a_of_type_Long);
-    if (localVariantWrapper1 == null)
-    {
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaio.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, null);
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    while (!(paramNetReq instanceof HttpNetReq)) {
       return;
     }
-    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
-    Object localObject;
-    if (this.jdField_a_of_type_Int == 0)
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
+    localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
+    paramNetResp.c = 0L;
+    paramNetResp = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
+    localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
+    paramNetResp = localHttpNetReq.jdField_a_of_type_JavaLangString;
+    if (paramNetResp.contains("range="))
     {
-      localObject = util.buf_to_string(this.jdField_a_of_type_ArrayOfByte);
-      String str1 = util.buf_to_string(this.b);
-      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"openid\":\"%s\",\"token\":\"%s\"}", new Object[] { localObject, str1 }));
-      String str2 = this.jdField_a_of_type_Aaio.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString;
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaio.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ).put(str2, localObject);
-      ArkAppModuleReg.ModuleQQ.b(this.jdField_a_of_type_Aaio.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ).put(str2, str1);
-      ArkAppModuleReg.ModuleQQ.c(this.jdField_a_of_type_Aaio.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ).put(this.jdField_a_of_type_Aaio.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Long));
+      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+      localHttpNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + localHttpNetReq.jdField_a_of_type_Long);
     }
-    for (;;)
-    {
-      localObject = localVariantWrapper1.Create();
-      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, (ark.VariantWrapper)localObject);
-      ((ark.VariantWrapper)localObject).Reset();
-      localVariantWrapper2.Reset();
-      localVariantWrapper1.Reset();
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaio.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, null);
-      return;
-      localVariantWrapper2.SetNull();
-    }
+    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).jdField_a_of_type_JavaLangString + ", offset=" + localHttpNetReq.jdField_a_of_type_Long);
   }
 }
 

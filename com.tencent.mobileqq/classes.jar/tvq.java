@@ -1,59 +1,21 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
 public class tvq
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public tvq(TroopInfoActivity paramTroopInfoActivity) {}
+  public tvq(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId != 0L) || (this.a.c != 0L))
-    {
-      this.a.c();
-      return;
-    }
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
+    switch (paramCompoundButton.getId())
     {
     default: 
       return;
-    case 0: 
-    case 1: 
-      paramView = TroopInfoActivity.a(this.a);
-      if (TextUtils.isEmpty(paramView))
-      {
-        this.a.i();
-        return;
-      }
-      this.a.a(paramView);
-      return;
     }
-    if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_a_of_type_Long <= this.a.jdField_b_of_type_Long) && (this.a.jdField_b_of_type_Int == 0))
-    {
-      paramView = DialogUtil.a(this.a, 230);
-      paramView.setTitle(null);
-      paramView.setMessage(this.a.getString(2131430537, new Object[] { this.a.jdField_a_of_type_Long + "" }));
-      paramView.setPositiveButton(this.a.getString(2131430538), new DialogUtil.DialogOnClickAdapter());
-      paramView.setPositiveButtonContentDescription(this.a.getString(2131430538));
-      paramView.show();
-      return;
-    }
-    paramView = TroopInfoActivity.b(this.a);
-    if (!TextUtils.isEmpty(paramView))
-    {
-      this.a.a(paramView);
-      return;
-    }
-    TroopInfoActivity.a(this.a);
+    TroopAssistantManager.a().a(this.a.app, paramBoolean);
   }
 }
 

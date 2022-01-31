@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.qzonealbumreddot;
 
 import NS_MOBILE_PHOTO.operation_red_touch_req;
-import agho;
-import aghp;
+import agvq;
+import agvr;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -88,7 +88,7 @@ public class QzoneAlbumRedTouchManager
       return;
     }
     QZoneClickReport.startReportImediately(this.a.getCurrentAccountUin(), "443", "1");
-    ThreadManager.getSubThreadHandler().post(new aghp(this));
+    ThreadManager.getSubThreadHandler().post(new agvr(this));
   }
   
   public boolean a()
@@ -124,7 +124,7 @@ public class QzoneAlbumRedTouchManager
     if (QLog.isColorLevel()) {
       QLog.d("QzoneAlbumRedTouchManager", 2, "clearRedTouch");
     }
-    ThreadManager.getSubThreadHandler().post(new agho(this));
+    ThreadManager.getSubThreadHandler().post(new agvq(this));
   }
   
   public boolean b()
@@ -192,7 +192,7 @@ public class QzoneAlbumRedTouchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager
  * JD-Core Version:    0.7.0.1
  */

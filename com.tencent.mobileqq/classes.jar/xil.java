@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import cooperation.qqdataline.QQProxyForDataline;
 
 public class xil
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xil(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface) {}
+  public xil(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80085A3");
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    paramView = new Bundle();
+    paramView.putBoolean("string_from", false);
+    paramView.putBoolean("string_uin", true);
+    paramView.putLong("device_din", 0L);
+    paramView.putInt("sTitleID", 0);
+    QQProxyForDataline.a(BannerManager.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
   }
 }
 

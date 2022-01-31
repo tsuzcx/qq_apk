@@ -38,10 +38,10 @@ import com.tencent.tencentmap.mapsdk.map.MapView;
 import com.tencent.tencentmap.mapsdk.map.MapView.LayoutParams;
 import com.tencent.tencentmap.mapsdk.map.Projection;
 import com.tencent.tencentmap.mapsdk.map.TencentMap;
-import zud;
-import zue;
-import zuf;
-import zug;
+import zxj;
+import zxk;
+import zxl;
+import zxm;
 
 public class ARLBSPOIDialog
   extends Dialog
@@ -71,7 +71,7 @@ public class ARLBSPOIDialog
   
   public ARLBSPOIDialog(Activity paramActivity, MapView paramMapView)
   {
-    super(paramActivity, 2131624515);
+    super(paramActivity, 2131624516);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidContentContext = paramActivity;
     c();
@@ -81,7 +81,7 @@ public class ARLBSPOIDialog
     localLayoutParams.width = paramActivity.getResources().getDisplayMetrics().widthPixels;
     localLayoutParams.height = paramActivity.getResources().getDisplayMetrics().heightPixels;
     paramMapView.setAttributes(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.postDelayed(new zud(this), 1500L);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.postDelayed(new zxj(this), 1500L);
   }
   
   private void a(ARCloudLBSLocationCheckResult.POIInfo paramPOIInfo)
@@ -90,16 +90,16 @@ public class ARLBSPOIDialog
       return;
     }
     Object localObject1 = new RelativeLayout.LayoutParams(-1, AIOUtils.a(210.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131369551);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131369628);
     this.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapView, (ViewGroup.LayoutParams)localObject1);
-    this.d = getLayoutInflater().inflate(2130970211, null);
-    localObject1 = (TextView)this.d.findViewById(2131369641);
-    Object localObject3 = (TextView)this.d.findViewById(2131369642);
-    Object localObject2 = (TextView)this.d.findViewById(2131369643);
+    this.d = getLayoutInflater().inflate(2130970227, null);
+    localObject1 = (TextView)this.d.findViewById(2131369718);
+    Object localObject3 = (TextView)this.d.findViewById(2131369719);
+    Object localObject2 = (TextView)this.d.findViewById(2131369720);
     ((TextView)localObject1).setText("到这里参加活动");
     if (paramPOIInfo.c < 1000)
     {
-      ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438731, new Object[] { String.valueOf(paramPOIInfo.c) }));
+      ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438749, new Object[] { String.valueOf(paramPOIInfo.c) }));
       localObject3 = new StringBuilder().append(paramPOIInfo.jdField_a_of_type_JavaLangString).append("|");
       if (!TextUtils.isEmpty(paramPOIInfo.jdField_b_of_type_JavaLangString)) {
         break label516;
@@ -116,7 +116,7 @@ public class ARLBSPOIDialog
     }
     for (;;)
     {
-      this.d.setOnClickListener(new zuf(this));
+      this.d.setOnClickListener(new zxl(this));
       localObject1 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapView.getMap();
       ((TencentMap)localObject1).setZoom(16);
       paramPOIInfo = new LatLng(paramPOIInfo.jdField_a_of_type_Int * 1.0D / 1000000.0D, paramPOIInfo.jdField_b_of_type_Int * 1.0D / 1000000.0D);
@@ -140,7 +140,7 @@ public class ARLBSPOIDialog
       this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       return;
       float f = Math.round(paramPOIInfo.c / 1000.0F * 100.0F) / 100.0F;
-      ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438730, new Object[] { String.valueOf(f) }));
+      ((TextView)localObject3).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438748, new Object[] { String.valueOf(f) }));
       break;
       label516:
       localObject1 = paramPOIInfo.jdField_b_of_type_JavaLangString;
@@ -152,22 +152,22 @@ public class ARLBSPOIDialog
   
   private void c()
   {
-    setContentView(2130970197);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369551));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369552));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369553));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369511));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369513));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369512));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369514));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363544));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363954));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new zue(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363805));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369554);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131369560);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131369564);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369563));
+    setContentView(2130970213);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369628));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369629));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369630));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369588));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369590));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369589));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369591));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363562));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363978));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new zxk(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363828));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369631);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131369637);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131369641);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369640));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
@@ -204,8 +204,8 @@ public class ARLBSPOIDialog
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.a(140.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.a(170.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846277);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846277);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846407);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846407);
       localObject = URLDrawable.getDrawable(paramArLBSActivity.d, (URLDrawable.URLDrawableOptions)localObject);
       this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
     }
@@ -215,16 +215,16 @@ public class ARLBSPOIDialog
       int i = AIOUtils.a(31.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846277);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846277);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846407);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846407);
       localObject = URLDrawable.getDrawable(paramArLBSActivity.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
     }
     if (!TextUtils.isEmpty(paramArLBSActivity.c))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846277);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846277);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846407);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846407);
       localObject = URLDrawable.getDrawable(paramArLBSActivity.c, (URLDrawable.URLDrawableOptions)localObject);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackground((Drawable)localObject);
     }
@@ -249,7 +249,7 @@ public class ARLBSPOIDialog
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
-    localAnimationSet.setAnimationListener(new zug(this));
+    localAnimationSet.setAnimationListener(new zxm(this));
   }
   
   public void dismiss()

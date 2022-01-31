@@ -1,14 +1,29 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexb
-  extends NearbyMomentManager.MomentDataChangeObserver
+  implements AdapterView.OnItemLongClickListener
 {
-  public aexb(NearbyMomentFailedFragment paramNearbyMomentFailedFragment) {}
+  public aexb(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  void a(String paramString)
+  public boolean onItemLongClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    NearbyMomentFailedFragment.a(this.a);
+    paramAdapterView = (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt);
+    if (paramAdapterView == null) {
+      return true;
+    }
+    paramLong = Long.parseLong(this.a.a.getCurrentAccountUin());
+    if (paramAdapterView.c == paramLong)
+    {
+      ShortVideoCommentsView.b(this.a, paramAdapterView);
+      return true;
+    }
+    return false;
   }
 }
 

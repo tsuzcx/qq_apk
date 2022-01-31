@@ -38,7 +38,7 @@ public class OperationView
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel = new PlayOperationViewModel(LayoutInflater.from(getContext()).inflate(2130970412, this, true), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel = new PlayOperationViewModel(LayoutInflater.from(getContext()).inflate(2130970453, this, true), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   public void a(VideoData paramVideoData)

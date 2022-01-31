@@ -1,21 +1,20 @@
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.qqstory.channel.CmdTaskManger;
+import com.tencent.biz.qqstory.network.request.GetFeedCommentRequest;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
+import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
 public class nuj
-  implements Runnable
+  extends ParallelJobSegment
 {
-  public nuj(DiscoverPresenter paramDiscoverPresenter) {}
+  public nuj(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
   
-  public void run()
+  protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
   {
-    byte[] arrayOfByte = ((DiscoverManager)SuperManager.a(22)).a(DiscoverPresenter.a(this.a));
-    if (arrayOfByte != null)
-    {
-      DiscoverPresenter.a(this.a, arrayOfByte);
-      DiscoverPresenter.a(this.a).a();
-    }
+    GetFeedCommentRequest localGetFeedCommentRequest = new GetFeedCommentRequest();
+    localGetFeedCommentRequest.a = paramFeedCommentSync;
+    CmdTaskManger.a().a(localGetFeedCommentRequest, new nuk(this, paramJobContext, paramFeedCommentSync));
   }
 }
 

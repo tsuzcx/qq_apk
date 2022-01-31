@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
+import com.tencent.mobileqq.magicface.magicfaceaction.Action;
+import com.tencent.mobileqq.magicface.model.RecordVolume.RecordVolumeListener;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
 
 public class aeec
-  implements Runnable
+  implements RecordVolume.RecordVolumeListener
 {
-  public aeec(NearbyProcManager paramNearbyProcManager, NearbyProcObserver paramNearbyProcObserver, int paramInt, Object[] paramArrayOfObject) {}
+  public aeec(MagicfaceActionManager paramMagicfaceActionManager) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction.a(paramInt, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeec
  * JD-Core Version:    0.7.0.1
  */

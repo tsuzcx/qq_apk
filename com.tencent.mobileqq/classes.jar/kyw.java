@@ -1,25 +1,55 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.biz.pubaccount.PublicAccountManager.refuseAcceptDone;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetRefuseFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class kyw
-  implements Runnable
+  implements BusinessObserver
 {
-  public kyw(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, JSONObject paramJSONObject, String paramString2) {}
+  public kyw(PublicAccountManager paramPublicAccountManager, NewIntent paramNewIntent, PublicAccountManager.refuseAcceptDone paramrefuseAcceptDone) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    long l = PublicAccountJavascriptInterface.a();
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountManager", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    bool = paramBoolean;
+    if (paramBoolean) {}
     try
     {
-      PublicAccountJavascriptInterface.a(l);
-      if (PublicAccountJavascriptInterface.b() > 52428800L)
+      paramBundle = paramBundle.getByteArray("data");
+      mobileqq_mp.SetRefuseFollowResponse localSetRefuseFollowResponse = new mobileqq_mp.SetRefuseFollowResponse();
+      localSetRefuseFollowResponse.mergeFrom(paramBundle);
+      bool = paramBoolean;
+      if (localSetRefuseFollowResponse.ret_info.has())
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{ret:-12, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
-        return;
+        bool = paramBoolean;
+        if (localSetRefuseFollowResponse.ret_info.ret_code.has())
+        {
+          paramInt = localSetRefuseFollowResponse.ret_info.ret_code.get();
+          bool = paramBoolean;
+          if (paramInt != 0L) {
+            bool = false;
+          }
+        }
       }
     }
-    finally {}
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        bool = false;
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$refuseAcceptDone != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$refuseAcceptDone.a(bool);
+    }
   }
 }
 

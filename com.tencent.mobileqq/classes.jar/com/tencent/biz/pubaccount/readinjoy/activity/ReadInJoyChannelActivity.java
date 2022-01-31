@@ -29,9 +29,9 @@ import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import cooperation.readinjoy.ReadInJoyHelper;
-import lcx;
-import lcy;
-import lcz;
+import lci;
+import lcj;
+import lck;
 
 public class ReadInJoyChannelActivity
   extends IphoneTitleBarActivity
@@ -52,19 +52,28 @@ public class ReadInJoyChannelActivity
   
   private void b()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131367167);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131367215);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController = new ReadInJoyChannelViewController(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.a(localViewGroup);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController.a();
     if ((ThemeUtil.isInNightMode(ReadInJoyUtils.a())) && (this.titleRoot != null)) {
-      View.inflate(this, 2130969633, this.titleRoot);
+      View.inflate(this, 2130969641, this.titleRoot);
     }
     c();
   }
   
+  private boolean b()
+  {
+    boolean bool = false;
+    if (getIntent().getIntExtra("channel_id", 0) == 40677) {
+      bool = true;
+    }
+    return bool;
+  }
+  
   private void c()
   {
-    if (getIntent().getIntExtra("channel_id", 0) == 40677) {
+    if (b()) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = WeishiReportUtil.b();
     }
   }
@@ -90,9 +99,9 @@ public class ReadInJoyChannelActivity
     {
       this.centerView.setTextColor(-16777216);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130845305);
+      this.leftView.setBackgroundResource(2130845433);
       this.vg.setBackgroundColor(-1);
-      if ((getIntent().getBooleanExtra("is_need_show_animation", false)) && (this.jdField_a_of_type_Boolean))
+      if ((getIntent().getBooleanExtra("is_need_show_animation_translate", false)) && (this.jdField_a_of_type_Boolean))
       {
         AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
         localAlphaAnimation.setDuration(400L);
@@ -134,7 +143,7 @@ public class ReadInJoyChannelActivity
     VideoVolumeControl.a().a(this);
     this.jdField_a_of_type_Boolean = VideoFeedsHelper.a();
     if (!this.jdField_a_of_type_Boolean) {
-      setTheme(2131624727);
+      setTheme(2131624729);
     }
     super.doOnCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 11) {
@@ -143,13 +152,13 @@ public class ReadInJoyChannelActivity
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().addFlags(-2147483648);
     }
-    setContentView(2130969616);
+    setContentView(2130969624);
     paramBundle = (ReadInJoyLogicManager)this.app.getManager(162);
-    setClickableTitle(getIntent().getStringExtra("channel_name"), new lcx(this));
+    setClickableTitle(getIntent().getStringExtra("channel_name"), new lci(this));
     b();
-    if (getIntent().getIntExtra("channel_id", 0) == 40677)
+    if (b())
     {
-      ThreadManager.executeOnSubThread(new lcy(this));
+      ThreadManager.executeOnSubThread(new lcj(this));
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       WeishiReportUtil.a(getIntent().getIntExtra("channel_from", 9), WeishiReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.a(this.jdField_a_of_type_Long));
     }
@@ -163,10 +172,10 @@ public class ReadInJoyChannelActivity
     ReadInJoyLogicManager localReadInJoyLogicManager = (ReadInJoyLogicManager)this.app.getManager(162);
     VideoVolumeControl.a().b(this);
     VideoBrightnessControl.a().b(this);
-    if (getIntent().getIntExtra("channel_id", 0) == 40677)
+    if (b())
     {
-      ThreadManager.executeOnSubThread(new lcz(this));
-      WeishiReportUtil.a(getIntent().getIntExtra("channel_from", 9), WeishiReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.a(this.jdField_a_of_type_Long), String.valueOf((System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L), "");
+      ThreadManager.executeOnSubThread(new lck(this));
+      WeishiReportUtil.a(getIntent().getIntExtra("channel_from", 9), WeishiReportUtil.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), WeishiReportUtil.a(this.jdField_a_of_type_Long), this.jdField_a_of_type_Long, "");
       this.jdField_a_of_type_Long = -1L;
     }
   }

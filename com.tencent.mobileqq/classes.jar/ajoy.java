@@ -1,44 +1,33 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import java.util.concurrent.TimeUnit;
-import mqq.os.MqqHandler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class ajoy
   implements Runnable
 {
-  public ajoy(NewUpgradeDialog paramNewUpgradeDialog) {}
+  public ajoy(TroopFileTransferManager paramTroopFileTransferManager) {}
   
   public void run()
   {
-    int i = 10;
-    long l = 1500L / 10;
     for (;;)
     {
-      if (i > 0)
+      synchronized (this.a)
       {
-        ThreadManager.getUIHandler().post(new ajoz(this, (10 - i) * 10));
-        try
-        {
-          TimeUnit.MILLISECONDS.sleep(l);
-          i -= 1;
+        if (this.a.e == 0L) {
+          return;
         }
-        catch (InterruptedException localInterruptedException)
+        if (SystemClock.uptimeMillis() > this.a.e + 10000L)
         {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
+          this.a.e = 0L;
+          this.a.a();
+          return;
         }
       }
-    }
-    if (!NewUpgradeDialog.a(this.a)) {
-      NewUpgradeDialog.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajoy
  * JD-Core Version:    0.7.0.1
  */

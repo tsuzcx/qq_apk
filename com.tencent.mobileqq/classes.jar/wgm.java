@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.newfriend.PhoneContactAddMessage;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryByDateFragment;
+import com.tencent.mobileqq.widget.datepicker.DatePickerView;
+import java.util.ArrayList;
 
-public class wgm
+class wgm
   implements Runnable
 {
-  public wgm(PhoneContactAddBuilder paramPhoneContactAddBuilder) {}
+  wgm(wgl paramwgl, ArrayList paramArrayList) {}
   
   public void run()
   {
-    ((PhoneContactManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).a(((PhoneContactAddMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wgn(this));
+    this.jdField_a_of_type_Wgl.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.a.a(this.jdField_a_of_type_Wgl.jdField_a_of_type_Int, this.jdField_a_of_type_Wgl.b, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

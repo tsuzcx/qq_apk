@@ -44,7 +44,7 @@ public class DetailShareGroupCommentEventProxy
     ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
     if ((!localShareGroupItem.isPublic()) && (!localShareGroupItem.isSubscribe()))
     {
-      QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131432086), 0).a();
+      QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131432103), 0).a();
       return false;
     }
     return true;
@@ -87,7 +87,7 @@ public class DetailShareGroupCommentEventProxy
       paramCommentEntry = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
       if ((!paramCommentEntry.isPublic()) && (!paramCommentEntry.isSubscribe()))
       {
-        QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131432086), 0).a();
+        QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131432103), 0).a();
         bool = false;
         break;
       }

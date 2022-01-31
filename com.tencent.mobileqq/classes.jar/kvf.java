@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-public class kvf
+class kvf
   implements Runnable
 {
-  public kvf(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  kvf(kve paramkve) {}
   
   public void run()
   {
-    this.a.a(2);
+    VideoCoverView.a(this.a.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView, this.a.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

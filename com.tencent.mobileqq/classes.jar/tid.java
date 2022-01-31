@@ -1,30 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-public class tid
-  implements View.OnTouchListener
+class tid
+  implements DialogInterface.OnClickListener
 {
-  public tid(QQSettingMe paramQQSettingMe) {}
+  tid(tic paramtic) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0)
+    switch (paramInt)
     {
-      this.a.a.setAlpha(0.5F);
-      this.a.a.invalidate();
     }
-    for (;;)
+    do
     {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        this.a.a.setAlpha(1.0F);
-        this.a.a.invalidate();
-      }
-    }
+      return;
+      this.a.jdField_a_of_type_Tib.a.app.a().b(this.a.jdField_a_of_type_Tib.a.a(), 0, this.a.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Tib.a.b();
+      return;
+    } while (this.a.jdField_a_of_type_Tib.a.jdField_a_of_type_Tib.getCount() <= 0);
+    this.a.jdField_a_of_type_Tib.a.app.a().a(this.a.jdField_a_of_type_Tib.a.a(), 0);
+    this.a.jdField_a_of_type_Tib.a.jdField_a_of_type_Tib.changeCursor(this.a.jdField_a_of_type_Tib.getCursor());
   }
 }
 

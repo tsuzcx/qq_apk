@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.text;
 
-import ahzm;
-import ahzn;
+import ainp;
+import ainq;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
@@ -80,7 +80,7 @@ public class QQText
     jdField_e_of_type_JavaUtilRegexPattern = Pattern.compile(jdField_c_of_type_JavaLangString);
     jdField_f_of_type_JavaUtilRegexPattern = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+");
     jdField_b_of_type_ArrayOfJavaLangObject = new Object[0];
-    jdField_a_of_type_AndroidTextSpannable$Factory = new ahzm();
+    jdField_a_of_type_AndroidTextSpannable$Factory = new ainp();
     try
     {
       StaticLayout.class.getDeclaredMethod("generate2", new Class[] { CharSequence.class, Integer.TYPE, Integer.TYPE, TextPaint.class, Integer.TYPE, Layout.Alignment.class, Float.TYPE, Float.TYPE, Boolean.TYPE, Boolean.TYPE });
@@ -561,29 +561,29 @@ public class QQText
     ActionSheet localActionSheet = ActionSheet.a(paramContext);
     if (paramInt == 0)
     {
-      localActionSheet.a(String.format(paramContext.getString(2131435092), new Object[] { paramString }));
-      localActionSheet.a(2131435075, 1);
-      localActionSheet.a(2131435076, 1);
-      localActionSheet.a(2131433015, 1);
+      localActionSheet.a(String.format(paramContext.getString(2131435109), new Object[] { paramString }));
+      localActionSheet.a(2131435092, 1);
+      localActionSheet.a(2131435093, 1);
       localActionSheet.a(2131433032, 1);
+      localActionSheet.a(2131433049, 1);
     }
     for (;;)
     {
-      localActionSheet.c(2131432998);
-      localActionSheet.a(new ahzn(paramInt, paramString, paramContext, localActionSheet));
+      localActionSheet.c(2131433015);
+      localActionSheet.a(new ainq(paramInt, paramString, paramContext, localActionSheet));
       localActionSheet.show();
       return;
       if (paramInt == 1)
       {
-        localActionSheet.a(String.format(paramContext.getString(2131435093), new Object[] { paramString }));
-        localActionSheet.a(2131435075, 1);
-        localActionSheet.a(2131435076, 1);
+        localActionSheet.a(String.format(paramContext.getString(2131435110), new Object[] { paramString }));
+        localActionSheet.a(2131435092, 1);
+        localActionSheet.a(2131435093, 1);
       }
       else
       {
-        localActionSheet.a(String.format(paramContext.getString(2131435094), new Object[] { paramString }));
-        localActionSheet.a(2131435077, 1);
-        localActionSheet.a(2131435076, 1);
+        localActionSheet.a(String.format(paramContext.getString(2131435111), new Object[] { paramString }));
+        localActionSheet.a(2131435094, 1);
+        localActionSheet.a(2131435093, 1);
       }
     }
   }
@@ -907,7 +907,7 @@ public class QQText
           TeamWorkDocEditBrowserActivity.a(paramView.getContext(), (Bundle)localObject, false);
           return;
         }
-        QQToast.a((Context)localObject, ((Context)localObject).getResources().getString(2131432992), 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131558448));
+        QQToast.a((Context)localObject, ((Context)localObject).getResources().getString(2131433009), 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131558448));
         return;
       }
       MttBrowerWrapper.a(paramView.getContext(), paramString, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
@@ -1300,7 +1300,7 @@ public class QQText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQText
  * JD-Core Version:    0.7.0.1
  */

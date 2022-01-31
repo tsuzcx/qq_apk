@@ -1,39 +1,45 @@
-import android.os.Handler;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.DownloadRequest;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.component.network.downloader.Downloader.DownloadMode;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 public class xkm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xkm(EditLocalVideoActivity paramEditLocalVideoActivity, String paramString) {}
+  public xkm(RecentAdapter paramRecentAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_JavaLangString.lastIndexOf("/") + 1, this.jdField_a_of_type_JavaLangString.lastIndexOf("?"));
-    if ((new File(EditLocalVideoActivity.b() + str).exists()) && (str != null) && (str.toLowerCase().endsWith(".m4a")))
+    if (paramView == null) {}
+    Object localObject1;
+    RecentBaseData localRecentBaseData;
+    do
     {
-      EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, EditLocalVideoActivity.b() + str);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.a.postDelayed(new xkn(this), 500L);
-      QLog.d("EditLocalVideoActivity", 2, "music exist------：" + str);
-      return;
-    }
-    Object localObject = new xko(this);
-    if ((str != null) && (str.toLowerCase().endsWith(".m4a")))
-    {
-      localObject = new DownloadRequest(this.jdField_a_of_type_JavaLangString, new String[] { EditLocalVideoActivity.b() + str }, false, (Downloader.DownloadListener)localObject);
-      ((DownloadRequest)localObject).mode = Downloader.DownloadMode.FastMode;
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.a.post(new xks(this));
-      DownloaderFactory.getInstance(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.getBaseContext()).getCommonDownloader().download((DownloadRequest)localObject, false);
-      EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, EditLocalVideoActivity.b() + str);
-      return;
-    }
-    QLog.d("EditLocalVideoActivity", 2, "error musicUrl=" + this.jdField_a_of_type_JavaLangString);
+      do
+      {
+        int i;
+        do
+        {
+          return;
+          i = paramView.getId();
+        } while ((i < 0) || (i >= this.a.getCount()));
+        localObject1 = this.a.getItem(i);
+      } while ((localObject1 == null) || (!(localObject1 instanceof RecentBaseData)));
+      localRecentBaseData = (RecentBaseData)localObject1;
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if ((paramView instanceof TextView))
+      {
+        paramView = ((TextView)paramView).getText();
+        localObject1 = localObject2;
+        if (paramView != null) {
+          localObject1 = paramView.toString();
+        }
+      }
+    } while (TextUtils.isEmpty((CharSequence)localObject1));
+    this.a.a(localRecentBaseData, (String)localObject1, "1");
   }
 }
 

@@ -39,12 +39,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import java.util.List;
 import mqq.os.MqqHandler;
-import wkd;
-import wke;
-import wkf;
-import wkg;
-import wkh;
-import wki;
+import wni;
+import wnj;
+import wnk;
+import wnl;
+import wnm;
+import wnn;
 
 public class FriendFragment
   extends ContactsBaseFragment
@@ -52,12 +52,12 @@ public class FriendFragment
 {
   protected ContactsFPSPinnedHeaderExpandableListView a;
   public BuddyListAdapter a;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wkf(this, null);
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wnk(this, null);
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), this);
-  private final wke jdField_a_of_type_Wke = new wke(this, null);
-  private final wkg jdField_a_of_type_Wkg = new wkg(this, null);
-  private final wkh jdField_a_of_type_Wkh = new wkh(this, null);
-  private final wki jdField_a_of_type_Wki = new wki(this, null);
+  private final wnj jdField_a_of_type_Wnj = new wnj(this, null);
+  private final wnl jdField_a_of_type_Wnl = new wnl(this, null);
+  private final wnm jdField_a_of_type_Wnm = new wnm(this, null);
+  private final wnn jdField_a_of_type_Wnn = new wnn(this, null);
   private View b;
   private boolean c = true;
   private boolean d;
@@ -107,7 +107,7 @@ public class FriendFragment
         return;
         if (!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
         {
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131432992, 1).a();
+          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131433009, 1).a();
           return;
         }
         if (!(paramView instanceof Friends)) {
@@ -187,7 +187,7 @@ public class FriendFragment
   
   private void h()
   {
-    ThreadManager.getSubThreadHandler().post(new wkd(this));
+    ThreadManager.getSubThreadHandler().post(new wni(this));
   }
   
   private void i()
@@ -277,7 +277,7 @@ public class FriendFragment
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsFPSPinnedHeaderExpandableListView = ((ContactsFPSPinnedHeaderExpandableListView)paramLayoutInflater.inflate(2130968801, null));
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsFPSPinnedHeaderExpandableListView.setActTAG("actFPSFriend");
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsFPSPinnedHeaderExpandableListView.setSelector(2131492923);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsFPSPinnedHeaderExpandableListView.setSelector(2131492924);
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsFPSPinnedHeaderExpandableListView.setNeedCheckSpringback(true);
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsFPSPinnedHeaderExpandableListView.setGroupIndicator(null);
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsFPSPinnedHeaderExpandableListView.mForContacts = true;
@@ -402,26 +402,26 @@ public class FriendFragment
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Wkg);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Wke);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Wkh);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Wnl);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Wnj);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Wnm);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     StatusManager localStatusManager = (StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
     if (localStatusManager != null) {
-      localStatusManager.a(this.jdField_a_of_type_Wki);
+      localStatusManager.a(this.jdField_a_of_type_Wnn);
     }
     ((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).a(this);
   }
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Wkg);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Wke);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Wkh);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Wnl);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Wnj);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Wnm);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     StatusManager localStatusManager = (StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
     if (localStatusManager != null) {
-      localStatusManager.b(this.jdField_a_of_type_Wki);
+      localStatusManager.b(this.jdField_a_of_type_Wnn);
     }
     ((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).b(this);
   }

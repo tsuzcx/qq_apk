@@ -1,38 +1,34 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
+import cooperation.qzone.util.QZLog;
 
 public class srb
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public srb(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  public srb(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    int j = 1;
-    paramCompoundButton = this.a;
-    String str = this.a.app.getCurrentAccountUin();
-    if (paramBoolean)
+    try
     {
-      i = 2;
-      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
-      this.a.a(paramBoolean);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label93;
+      if (!TextUtils.isEmpty(this.a.a.a.a))
+      {
+        Object localObject = this.a.a.a.a;
+        if (this.a.a.a.a.startsWith("+")) {
+          localObject = this.a.a.a.a.substring(1);
+        }
+        localObject = new LpReportInfo_pf00064(699, 1, Long.valueOf((String)localObject).longValue());
+        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
       }
-    }
-    label93:
-    for (int i = j;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
-      this.a.a();
       return;
-      i = 1;
-      break;
+    }
+    catch (Exception localException)
+    {
+      QZLog.e("QzoneReport", "LpReportInfoProfile", localException);
     }
   }
 }

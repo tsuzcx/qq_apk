@@ -1,19 +1,13 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.av.ui.MultiMembersAudioIndicator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
 
 public class jwg
-  extends RadioButton
+  implements DialogInterface.OnClickListener
 {
-  public jwg(MultiMembersAudioIndicator paramMultiMembersAudioIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public jwg(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  public boolean performClick()
-  {
-    return true;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

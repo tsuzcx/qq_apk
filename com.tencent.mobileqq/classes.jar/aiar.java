@@ -1,38 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar.ProgressBarListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
 
 public class aiar
-  implements Runnable
+  implements GLProgressBar.ProgressBarListener
 {
-  public aiar(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  public aiar(DanceReadyFilter paramDanceReadyFilter) {}
   
-  public void run()
+  public void a()
   {
-    switch (this.a.v)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() BUT current status is INIT");
-      return;
-    case 2: 
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume HTTP channel");
-      this.a.r();
-      return;
-    }
-    if (this.a.b != null)
-    {
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel");
-      this.a.a.getHwEngine().resumeTransactionTask(this.a.b);
-      return;
-    }
-    this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel, but trans == null");
+    DanceReadyFilter.a(this.a).a(DanceReadyFilter.a(this.a));
+    DanceReadyFilter.a(this.a).h_(false);
+    DanceReadyFilter.b(this.a).h_(false);
+    DanceReadyFilter.c(this.a).h_(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiar
  * JD-Core Version:    0.7.0.1
  */

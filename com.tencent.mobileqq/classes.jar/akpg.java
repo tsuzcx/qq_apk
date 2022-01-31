@@ -1,24 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi;
-import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.biz.common.offline.AsyncCallBack;
+import com.tencent.biz.webviewplugin.OfflinePlugin;
+import com.tencent.biz.webviewplugin.OfflineWebResManager;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class akpg
-  implements DialogInterface.OnClickListener
+  implements AsyncCallBack
 {
-  akpg(akpf paramakpf) {}
+  akpg(akpf paramakpf, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(DownloadConstants.q, false);
-    DownloadJSApi.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.b);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Akpf.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserOfflineHandler", 2, "now offline bid has checked, bid " + this.jdField_a_of_type_Akpf.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaLangString + ", loadMode: " + this.jdField_a_of_type_Akpf.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", cost: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    if (paramInt != 0)
+    {
+      OfflinePlugin.c(this.jdField_a_of_type_Akpf.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaLangString);
+      OfflineWebResManager.a(this.jdField_a_of_type_Akpf.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_Akpf.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akpg
  * JD-Core Version:    0.7.0.1
  */

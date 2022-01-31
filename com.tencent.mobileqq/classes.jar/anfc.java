@@ -1,33 +1,48 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import java.util.List;
+import CardPay.LBSInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.thirdpay.ThirdPayManager;
 
-public class anfc
-  implements AbsListView.OnScrollListener
+public final class anfc
+  extends SosoInterface.OnLocationListener
 {
-  int jdField_a_of_type_Int = 0;
-  
-  public anfc(EditVideoTag paramEditVideoTag) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public anfc(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag)).a().size()) && (!EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag)).a()))
-    {
-      paramAbsListView = EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag);
-      EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag)).b(paramAbsListView);
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    String str;
+    if (QLog.isColorLevel())
+    {
+      if (paramSosoLbsInfo == null)
+      {
+        str = "soso lbs info null.";
+        QLog.i("ThirdPayManager", 2, str);
+      }
+    }
+    else {
+      if ((paramInt != 0) || (paramSosoLbsInfo == null)) {
+        break label110;
+      }
+    }
+    label110:
+    for (paramSosoLbsInfo = new LBSInfo(paramSosoLbsInfo.a.jdField_a_of_type_Double, paramSosoLbsInfo.a.b, paramSosoLbsInfo.a.jdField_e_of_type_Double, paramSosoLbsInfo.a.jdField_a_of_type_Float, paramSosoLbsInfo.a.d, paramSosoLbsInfo.a.jdField_e_of_type_JavaLangString, paramSosoLbsInfo.a.g, paramSosoLbsInfo.a.h);; paramSosoLbsInfo = new LBSInfo())
+    {
+      ThirdPayManager.a(this.a, paramSosoLbsInfo);
+      return;
+      str = paramSosoLbsInfo.toString();
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfc
  * JD-Core Version:    0.7.0.1
  */

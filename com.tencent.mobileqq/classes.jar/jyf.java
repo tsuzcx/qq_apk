@@ -1,23 +1,16 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class jyf
-  implements Runnable
+class jyf
 {
-  public jyf(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public long a;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
   
-  public void run()
-  {
-    if ((NetworkUtil.a(MultiVideoEnterPageActivity.b(this.a)) == 0) && (!this.a.jdField_a_of_type_Boolean))
-    {
-      MultiVideoEnterPageActivity.f(this.a);
-      MultiVideoEnterPageActivity.a(this.a, 0, 2131034240);
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null) {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.c, this.a.jdField_a_of_type_Long, 22, 0);
-      }
-    }
-  }
+  jyf(jyc paramjyc) {}
 }
 
 

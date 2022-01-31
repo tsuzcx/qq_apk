@@ -1,36 +1,25 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
-import com.tencent.mobileqq.utils.StackBlur;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelObserver;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class sog
-  implements Runnable
+  extends PersonalityLabelObserver
 {
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler jdField_a_of_type_AndroidOsHandler;
+  public sog(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public sog(Handler paramHandler, Drawable paramDrawable)
+  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-  }
-  
-  public void run()
-  {
-    Bitmap localBitmap = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a();
-    Object localObject = localBitmap;
-    if (localBitmap == null) {
-      localObject = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).b();
+    if ((!TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {}
+    while (paramInt != 0) {
+      return;
     }
-    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
-    {
-      localObject = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(((Bitmap)localObject).getWidth() * 0.125F), (int)(((Bitmap)localObject).getHeight() * 0.125F), true);
-      StackBlur.a((Bitmap)localObject, 2);
-      localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(12, localObject);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
+    this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard, true);
   }
 }
 

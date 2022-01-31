@@ -1,35 +1,56 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import mqq.observer.SubAccountObserver;
 
 public class tas
-  implements CompoundButton.OnCheckedChangeListener
+  extends SubAccountObserver
 {
-  public tas(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tas(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131435386), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, paramCompoundButton, "", "", "");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
-      }
-      paramCompoundButton = new HashMap();
-      paramCompoundButton.put("param_ls_setting", paramBoolean + "");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, paramCompoundButton, "");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: mainAccount=" + paramString1 + " subAccount=" + paramString2);
     }
+    if (TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12005");
+      paramString1.put("fail_step", "getKeyEmpty");
+      paramString1.put("fail_location", "subLogin");
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", false, 0L, 0L, paramString1, "");
+      this.a.c();
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack:subLogin ...has Failed key  =  null");
+      }
+      this.a.a(2131436356, 0);
+    }
+    do
+    {
+      return;
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12006");
+      paramString1.put("fail_step", "getKeyNotEmpty");
+      paramString1.put("fail_location", "subLogin");
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", true, 0L, 0L, paramString1, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: key not null");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "subaccount onGetKeyBack goto bind");
+      }
+      paramString1 = (SubAccountProtocManager)this.a.app.getManager(27);
+      if (paramString1 != null) {
+        paramString1.a(paramString2, paramString3, LoginVerifyCodeActivity.a(this.a));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: success .........");
   }
 }
 

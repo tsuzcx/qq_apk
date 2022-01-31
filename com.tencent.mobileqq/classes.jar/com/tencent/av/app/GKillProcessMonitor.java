@@ -13,13 +13,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jfg;
+import jer;
 import mqq.app.Foreground;
 import mqq.app.MobileQQ;
 
 public class GKillProcessMonitor
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jfg(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jer(this);
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private boolean jdField_a_of_type_Boolean;
   

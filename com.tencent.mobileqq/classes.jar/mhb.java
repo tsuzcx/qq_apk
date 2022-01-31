@@ -1,24 +1,40 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.MessageObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoAutoPlayController;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView.OnDrawCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class mhb
-  implements KandianMergeManager.MessageObserver
+  implements ReadInJoyBaseListView.OnDrawCompleteListener
 {
-  public mhb(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public mhb(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
   
-  public void a(MessageRecord paramMessageRecord) {}
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
   {
-    this.a.a().runOnUiThread(new mhd(this));
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    this.a.a().runOnUiThread(new mhc(this));
+    ReadInJoyBaseAdapter.e(this.a, false);
+    if (!ReadInJoyBaseAdapter.d(this.a)) {
+      return;
+    }
+    ReadInJoyBaseAdapter.b(this.a, false);
+    if ((this.a.a()) && (ReadInJoyBaseAdapter.a(this.a) != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
+      }
+      if (!ReadInJoyBaseAdapter.a(this.a).b()) {
+        break label122;
+      }
+      ReadInJoyBaseAdapter.a(this.a).postDelayed(new mhc(this, paramReadInJoyBaseListView), 1200L);
+    }
+    for (;;)
+    {
+      ReadInJoyBaseAdapter.a(this.a, this.a.a.getLastVisiblePosition() + 1, ReadInJoyBaseAdapter.b());
+      return;
+      label122:
+      ReadInJoyBaseAdapter.a(this.a, paramReadInJoyBaseListView, ReadInJoyBaseAdapter.b);
+    }
   }
 }
 

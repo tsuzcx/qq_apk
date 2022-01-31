@@ -1,18 +1,40 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Environment;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class vfu
-  implements AnimationTextView.OnDoubleClick
+class vfu
+  implements DialogInterface.OnClickListener
 {
-  public vfu(TextTranslationItemBuilder paramTextTranslationItemBuilder) {}
+  vfu(vft paramvft, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void a(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    if (Environment.getExternalStorageState().equals("mounted"))
+    {
+      if (this.jdField_a_of_type_Vft.a.a != 1) {
+        break label79;
+      }
+      PlusPanelUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vft.a);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setCanLock(false);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "1", "", "", "");
+      return;
+      label79:
+      paramDialogInterface = new FileManagerReporter.fileAssistantReportData();
+      paramDialogInterface.b = "send_file";
+      paramDialogInterface.a = 1;
+      FileManagerReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramDialogInterface);
+      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vft.a);
+    }
   }
 }
 

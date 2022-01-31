@@ -1,13 +1,15 @@
-import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
 
-class adfn
+public class adfn
   implements Runnable
 {
-  adfn(adfm paramadfm) {}
+  public adfn(VideoFilePresenter paramVideoFilePresenter) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.jdField_a_of_type_AndroidViewView);
+    this.a.a.d(VideoFilePresenter.a(this.a));
+    VideoFilePresenter.c(this.a);
   }
 }
 

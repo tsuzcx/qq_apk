@@ -1,40 +1,77 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.preload.PlayingListPreloader.OnVideoDownloadListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class nii
-  implements Runnable
+  implements PlayingListPreloader.OnVideoDownloadListener
 {
-  public nii(MsgTabPlayMode paramMsgTabPlayMode, boolean paramBoolean, String paramString1, String paramString2) {}
+  private Set jdField_a_of_type_JavaUtilSet = new HashSet();
   
-  public void run()
+  public nii(VideoPlayModeBase paramVideoPlayModeBase) {}
+  
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.e = false;
-    if (this.jdField_a_of_type_Boolean)
+    int i = 0;
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.g();
-      return;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    for (Object localObject = this.b;; localObject = this.jdField_a_of_type_JavaLangString)
-    {
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a();
-      if ((TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() > 0) && (i > 1) && (i == this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.j))
+      if (i < this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())
       {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a;
-        MsgTabPlayMode localMsgTabPlayMode = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode;
-        i = localMsgTabPlayMode.j - 1;
-        localMsgTabPlayMode.j = i;
-        ((ProgressControler)localObject).a(i);
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.get(i);
+        if (!paramString.equals(localStoryVideoItem.mVid)) {
+          break label93;
+        }
+        if (StoryVideoItem.isPlayable(localStoryVideoItem.mVid, true)) {
+          break label72;
+        }
+        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(paramString, localStoryVideoItem.getVideoUrl());
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.b, false);
+      label72:
+      while (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b != i) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(i);
+      return;
+      label93:
+      i += 1;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayModeBase", 2, "get video download finish,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidOsHandler.post(new nij(this, paramString1));
+  }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("VideoPlayModeBase", 2, "Download video failed,vid=" + paramString1);
+    }
+    if (this.jdField_a_of_type_JavaUtilSet.add(paramString1)) {
+      if (paramInt != 1) {
+        break label111;
+      }
+    }
+    label111:
+    for (paramInt = 107;; paramInt = 108)
+    {
+      StoryReportor.b("play_video", "play_done", 0, 0, new String[] { "1", String.valueOf(paramInt), "", paramString1 });
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidOsHandler.post(new nik(this, paramString1, paramString2));
       return;
     }
   }
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

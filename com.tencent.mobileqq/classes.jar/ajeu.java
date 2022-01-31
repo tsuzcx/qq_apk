@@ -1,21 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class ajeu
-  implements ValueAnimator.AnimatorUpdateListener
+class ajeu
+  implements DialogInterface.OnClickListener
 {
-  public ajeu(RedDotAnimateView paramRedDotAnimateView) {}
+  ajeu(ajet paramajet) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c = ((int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F));
-    this.a.invalidate();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (TroopFileItemOperation.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) == 0);
+    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.b).b(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajeu
  * JD-Core Version:    0.7.0.1
  */

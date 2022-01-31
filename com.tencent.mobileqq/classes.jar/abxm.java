@@ -1,35 +1,78 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.RecentUtil;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.ConversationFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxProtocol.LastFeedObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class abxm
-  implements Runnable
+  extends MsgBoxProtocol.LastFeedObserver
 {
-  public abxm(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public abxm(MsgBoxListActivity paramMsgBoxListActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
   {
-    int i;
-    EmotionPanelInfo localEmotionPanelInfo;
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
-    {
-      i = 0;
-      if (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        localEmotionPanelInfo = (EmotionPanelInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.a != 4)) {}
+    if (!paramBoolean1) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.msg_box", 2, "onGetInteractLastFeed = false");
       }
     }
     for (;;)
     {
-      if ((localEmotionPanelInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localEmotionPanelInfo);
-      }
       return;
-      i += 1;
-      break;
-      localEmotionPanelInfo = null;
+      if (paramBoolean2) {
+        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
+      }
+      while (!this.a.isFinishing())
+      {
+        this.a.a();
+        return;
+        if (this.a.app.a().isInMsgBoxRecentList(AppConstants.ag, this.a.jdField_a_of_type_Int))
+        {
+          paramInt = this.a.app.a().a(AppConstants.ag, this.a.jdField_a_of_type_Int);
+          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.ag, this.a.app.getCurrentAccountUin());
+          if (paramInt > 0)
+          {
+            RecentUtil.b(this.a.app, AppConstants.ag, this.a.jdField_a_of_type_Int);
+            this.a.app.a().a(AppConstants.ag, this.a.jdField_a_of_type_Int, true, true);
+          }
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  {
+    if (!paramBoolean1) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.msg_box", 2, "onGetInteractLastFeed = false");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (paramBoolean2) {
+        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
+      }
+      while (!this.a.isFinishing())
+      {
+        this.a.a();
+        return;
+        if (this.a.app.a().isInMsgBoxRecentList(AppConstants.ah, this.a.jdField_a_of_type_Int))
+        {
+          paramInt = this.a.app.a().a(AppConstants.ah, this.a.jdField_a_of_type_Int);
+          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.ah, this.a.app.getCurrentAccountUin());
+          if (paramInt > 0)
+          {
+            RecentUtil.b(this.a.app, AppConstants.ah, this.a.jdField_a_of_type_Int);
+            this.a.app.a().a(AppConstants.ah, this.a.jdField_a_of_type_Int, true, true);
+          }
+        }
+      }
     }
   }
 }

@@ -20,6 +20,7 @@ public final class ReqSummaryCard
   static ArrayList cache_vvReqServices;
   public byte bIsFriend;
   public byte bReqCommLabel;
+  public byte bReqExtendCard;
   public byte bReqMedalWallInfo;
   public byte bReqNearbyGodInfo;
   public int eAddFriendSource;
@@ -64,7 +65,7 @@ public final class ReqSummaryCard
   
   public ReqSummaryCard() {}
   
-  public ReqSummaryCard(long paramLong1, int paramInt1, long paramLong2, byte paramByte1, long paramLong3, long paramLong4, byte[] paramArrayOfByte1, String paramString, long paramLong5, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, ArrayList paramArrayList1, long paramLong6, long paramLong7, UserLocaleInfo paramUserLocaleInfo, byte paramByte2, ArrayList paramArrayList2, byte paramByte3, byte paramByte4)
+  public ReqSummaryCard(long paramLong1, int paramInt1, long paramLong2, byte paramByte1, long paramLong3, long paramLong4, byte[] paramArrayOfByte1, String paramString, long paramLong5, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, ArrayList paramArrayList1, long paramLong6, long paramLong7, UserLocaleInfo paramUserLocaleInfo, byte paramByte2, ArrayList paramArrayList2, byte paramByte3, byte paramByte4, byte paramByte5)
   {
     this.lUIN = paramLong1;
     this.eComeFrom = paramInt1;
@@ -88,6 +89,7 @@ public final class ReqSummaryCard
     this.vReq0x5ebFieldId = paramArrayList2;
     this.bReqNearbyGodInfo = paramByte3;
     this.bReqCommLabel = paramByte4;
+    this.bReqExtendCard = paramByte5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -114,6 +116,7 @@ public final class ReqSummaryCard
     this.vReq0x5ebFieldId = ((ArrayList)paramJceInputStream.read(cache_vReq0x5ebFieldId, 19, false));
     this.bReqNearbyGodInfo = paramJceInputStream.read(this.bReqNearbyGodInfo, 20, false);
     this.bReqCommLabel = paramJceInputStream.read(this.bReqCommLabel, 21, false);
+    this.bReqExtendCard = paramJceInputStream.read(this.bReqExtendCard, 22, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -158,11 +161,12 @@ public final class ReqSummaryCard
     }
     paramJceOutputStream.write(this.bReqNearbyGodInfo, 20);
     paramJceOutputStream.write(this.bReqCommLabel, 21);
+    paramJceOutputStream.write(this.bReqExtendCard, 22);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     SummaryCard.ReqSummaryCard
  * JD-Core Version:    0.7.0.1
  */

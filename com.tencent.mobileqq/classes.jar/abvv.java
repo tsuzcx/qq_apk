@@ -1,69 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class abvv
-  extends DownloadListener
+  implements DialogInterface.OnCancelListener
 {
-  public abvv(EmojiManager paramEmojiManager, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public abvv(DBFixDialogUI paramDBFixDialogUI) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super.onDone(paramDownloadTask);
-    Object localObject = paramDownloadTask.a();
-    int j = ((Bundle)localObject).getInt(paramDownloadTask.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener| onDone:epId=" + ((EmoticonPackage)localObject).epId + " task:" + paramDownloadTask + " localVersion=" + ((EmoticonPackage)localObject).localVersion + ",latestVersion=" + ((EmoticonPackage)localObject).latestVersion + ",updateFlag=" + ((EmoticonPackage)localObject).updateFlag);
-    }
-    int i = 0;
-    if (paramDownloadTask.a() != 3)
+    if (DBFixDialogUI.a(this.a).equals("checked corrupt"))
     {
-      i = EmosmUtils.a(paramDownloadTask.a);
-      if (EmojiManager.a(j)) {
-        EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, -1, i);
-      }
-      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
+      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_Cancel").commit();
+      QLog.d(DBFixDialogUI.a(), 1, "dialog cancel");
     }
-    for (;;)
-    {
-      long l1 = paramDownloadTask.h;
-      long l2 = paramDownloadTask.g;
-      this.a.a((EmoticonPackage)localObject, i, l1 - l2, paramDownloadTask.d);
-      return;
-      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, 0, 0);
-    }
-  }
-  
-  public void onDoneFile(DownloadTask paramDownloadTask)
-  {
-    Object localObject = paramDownloadTask.a();
-    int i = ((Bundle)localObject).getInt(paramDownloadTask.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener | onProgress:epId=" + ((EmoticonPackage)localObject).epId + paramDownloadTask);
-    }
-    if (EmojiManager.a(i)) {
-      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, 0, 0);
-    }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    return super.onStart(paramDownloadTask);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public class xsg
-  implements Runnable
+class xsg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xsg(AudioTranslator paramAudioTranslator) {}
+  xsg(xsf paramxsf, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    synchronized (this.a)
-    {
-      if (AudioTranslator.a(this.a) != null)
-      {
-        AudioCapture localAudioCapture = (AudioCapture)AudioTranslator.a(this.a).get();
-        if (localAudioCapture != null)
-        {
-          localAudioCapture.a(false);
-          localAudioCapture.c();
-        }
-      }
-      return;
-    }
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)NewFlowCameraActivity.a(this.jdField_a_of_type_Xsf.a).getLayoutParams();
+    paramValueAnimator.width = ((int)((this.jdField_a_of_type_Int - this.b) * f1 + this.b));
+    paramValueAnimator.height = ((int)((this.c - this.d) * f1 + this.d));
+    paramValueAnimator.leftMargin = ((int)((this.e + 0) * f1 + 0.0F));
+    paramValueAnimator.bottomMargin = ((int)(f1 * (this.f + 0) + 0.0F));
+    NewFlowCameraActivity.a(this.jdField_a_of_type_Xsf.a).setLayoutParams(paramValueAnimator);
   }
 }
 

@@ -1,30 +1,33 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLViewContext;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
 
 public class aiax
-  extends MessageObserver
+  implements Animation.AnimationListener
 {
-  public aiax(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  public aiax(DanceReadyFilter paramDanceReadyFilter) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramStatictisInfo != null) {
-      this.a.u = paramStatictisInfo.d;
-    }
-    this.a.d();
+    DanceReadyFilter.e(this.a).h_(true);
+    DanceReadyFilter.e(this.a).a(DanceReadyFilter.c(this.a));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.a().a(DanceReadyFilter.a(this.a).a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiax
  * JD-Core Version:    0.7.0.1
  */

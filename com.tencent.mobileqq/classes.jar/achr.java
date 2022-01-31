@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class achr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public achr(QfileLocalFileAppTabView paramQfileLocalFileAppTabView) {}
+  public achr(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileCategoryUtil.a(this.a.a, this.a);
-    HashMap localHashMap = new HashMap();
-    FileCategoryUtil.a(true, FMSettings.a().b(), ".apk", "", localHashMap, this.a);
-    String str = FMSettings.a().a();
-    if (str != null) {
-      FileCategoryUtil.a(true, str, ".apk", "", localHashMap, null);
-    }
-    FileCategoryUtil.a(localHashMap);
-    QfileLocalFileAppTabView.a(this.a, new achs(this));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achr
  * JD-Core Version:    0.7.0.1
  */

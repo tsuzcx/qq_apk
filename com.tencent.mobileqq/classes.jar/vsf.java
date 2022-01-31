@@ -1,30 +1,54 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.adapter.HotChatPostListAdapter;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack.Stub;
+import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import java.lang.ref.WeakReference;
 
 public class vsf
-  implements OverScrollViewListener
+  extends ICompressionCallBack.Stub
 {
-  public vsf(HotChatPie paramHotChatPie) {}
+  final String jdField_a_of_type_JavaLangString = DeviceMsgChatPie.class.getSimpleName();
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public vsf(DeviceMsgChatPie paramDeviceMsgChatPie)
   {
-    HotChatPie.a(this.a).setPullType(0);
-    HotChatPie.a(this.a).c(HotChatPie.j);
-    HotChatPie.a(this.a, 0, this.a.a.a());
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDeviceMsgChatPie);
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void a(CompressInfo paramCompressInfo)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView) {}
+  public void b(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+  }
   
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public void c(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+    DeviceMsgChatPie localDeviceMsgChatPie = (DeviceMsgChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localDeviceMsgChatPie == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
+    }
+    localDeviceMsgChatPie.e(paramCompressInfo.e);
+    DeviceMsgChatPie.a(localDeviceMsgChatPie).a();
+  }
 }
 
 

@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.intervideo.now.NowDataReporter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
 public class adkv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public adkv(NowDataReporter paramNowDataReporter, long paramLong) {}
+  public adkv(ForwardFileOption paramForwardFileOption) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a(this.jdField_a_of_type_Long);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adkv
  * JD-Core Version:    0.7.0.1
  */

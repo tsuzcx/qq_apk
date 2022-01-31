@@ -29,7 +29,7 @@ public class GPUNashvilleFilter
     super.b();
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(BaseApplicationImpl.getContext().getResources().openRawResource(2130843235));
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(BaseApplicationImpl.getContext().getResources().openRawResource(2130843334));
       this.f = GLES20.glGetUniformLocation(a(), "sTexture2");
       return;
     }

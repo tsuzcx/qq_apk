@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
 
 public class yjs
   implements Runnable
 {
-  public yjs(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  public yjs(ApolloGameManager paramApolloGameManager) {}
   
   public void run()
   {
-    ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+    if (ApolloGameManager.a(this.a) == null) {}
+    while ((ApolloContentUpdateHandler)ApolloGameManager.a(this.a).a(115) == null) {
+      return;
+    }
+    ApolloContentUpdateHandler.a(ApolloGameManager.a(this.a), 2);
   }
 }
 

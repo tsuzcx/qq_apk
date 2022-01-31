@@ -11,8 +11,8 @@ public class PrinterDefaultActivity
 {
   private void a()
   {
-    ((TextView)findViewById(2131363227)).setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131363410);
+    ((TextView)findViewById(2131363245)).setVisibility(8);
+    TextView localTextView = (TextView)findViewById(2131363428);
     localTextView.setVisibility(0);
     localTextView.setText("关闭");
     localTextView.setOnClickListener(new cl(this));

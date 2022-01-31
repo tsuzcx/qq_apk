@@ -1,19 +1,30 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.ShareAioResultDialog;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.webviewplugin.QzonePlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
+import com.tencent.smtt.sdk.WebView;
 
 public class pcp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public pcp(ShareAioResultDialog paramShareAioResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public pcp(QzonePlugin paramQzonePlugin) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog, 0);
+    if (QzonePlugin.a(this.a) != null)
+    {
+      Object localObject = QzonePlugin.a(this.a);
+      if (this.a.mRuntime.a().getIntent().getExtras().getString("url") != null) {
+        localObject = this.a.mRuntime.a().getIntent().getExtras().getString("url");
+      }
+      QzonePlugin.a(this.a).loadData(new String((String)localObject).replaceAll("#", "%23").replaceAll("%", "%25").replaceAll("'", "%27"), "text/html", "utf-8");
+      localObject = this.a.mRuntime.a(this.a.mRuntime.a());
+      if ((localObject != null) && ((localObject instanceof WebUiUtils.WebUiMethodInterface))) {
+        ((WebUiUtils.WebUiMethodInterface)localObject).a(false);
+      }
     }
-    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.dismiss();
   }
 }
 

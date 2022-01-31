@@ -1,6 +1,7 @@
 package com.tencent.biz.common.util;
 
 import android.text.TextUtils;
+import com.tencent.commonsdk.zip.QZipFile;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.RecycleableBufferedOutputStream;
 import java.io.BufferedInputStream;
@@ -13,7 +14,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
 public class ZipUtils
@@ -56,10 +56,10 @@ public class ZipUtils
     //   71: aload_0
     //   72: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
     //   75: astore_0
-    //   76: new 62	java/util/zip/ZipFile
+    //   76: new 62	com/tencent/commonsdk/zip/QZipFile
     //   79: dup
     //   80: aload_0
-    //   81: invokespecial 65	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   81: invokespecial 65	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   84: astore 9
     //   86: iconst_0
     //   87: istore_3
@@ -72,7 +72,7 @@ public class ZipUtils
     //   102: invokespecial 68	java/lang/StringBuilder:<init>	(I)V
     //   105: astore 10
     //   107: aload 9
-    //   109: invokevirtual 72	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   109: invokevirtual 72	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   112: astore 11
     //   114: iload_3
     //   115: istore_2
@@ -126,7 +126,7 @@ public class ZipUtils
     //   223: iconst_5
     //   224: istore_2
     //   225: aload 9
-    //   227: invokevirtual 113	java/util/zip/ZipFile:close	()V
+    //   227: invokevirtual 113	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   230: iload_2
     //   231: ireturn
     //   232: astore_0
@@ -166,7 +166,7 @@ public class ZipUtils
     //   296: astore 7
     //   298: aload 9
     //   300: aload 12
-    //   302: invokevirtual 129	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   302: invokevirtual 129	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   305: astore_0
     //   306: new 131	java/util/zip/CheckedInputStream
     //   309: dup
@@ -384,7 +384,7 @@ public class ZipUtils
     //   673	11	8	localObject4	Object
     //   689	8	8	localObject5	Object
     //   702	9	8	localObject6	Object
-    //   84	215	9	localZipFile	ZipFile
+    //   84	215	9	localQZipFile	QZipFile
     //   105	227	10	localStringBuilder	StringBuilder
     //   112	15	11	localEnumeration	Enumeration
     //   136	353	12	localZipEntry	ZipEntry
@@ -458,7 +458,7 @@ public class ZipUtils
   
   public static Enumeration a(File paramFile)
   {
-    return new ZipFile(paramFile).entries();
+    return new QZipFile(paramFile).entries();
   }
   
   /* Error */
@@ -467,13 +467,13 @@ public class ZipUtils
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 62	java/util/zip/ZipFile
+    //   2: new 62	com/tencent/commonsdk/zip/QZipFile
     //   5: dup
     //   6: aload_0
-    //   7: invokespecial 65	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   7: invokespecial 65	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   10: astore 5
     //   12: aload 5
-    //   14: invokevirtual 72	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   14: invokevirtual 72	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   17: astore 6
     //   19: sipush 8192
     //   22: newarray byte
@@ -568,7 +568,7 @@ public class ZipUtils
     //   236: astore_0
     //   237: aload 5
     //   239: aload 4
-    //   241: invokevirtual 129	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   241: invokevirtual 129	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   244: astore 4
     //   246: aload 4
     //   248: aload 7
@@ -614,7 +614,7 @@ public class ZipUtils
     //   323: astore_0
     //   324: goto -298 -> 26
     //   327: aload 5
-    //   329: invokevirtual 113	java/util/zip/ZipFile:close	()V
+    //   329: invokevirtual 113	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   332: return
     //   333: astore 4
     //   335: goto -23 -> 312
@@ -643,7 +643,7 @@ public class ZipUtils
     //   46	262	4	localObject1	Object
     //   333	1	4	localIOException	IOException
     //   352	7	4	localObject2	Object
-    //   10	228	5	localZipFile	ZipFile
+    //   10	228	5	localQZipFile	QZipFile
     //   274	54	5	localObject3	Object
     //   17	20	6	localEnumeration	Enumeration
     //   24	241	7	arrayOfByte	byte[]

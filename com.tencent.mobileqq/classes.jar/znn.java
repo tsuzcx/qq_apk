@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetConfig;
-import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.mobileqq.app.Job;
+import com.tencent.mobileqq.app.ThreadExcutor;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class znn
-  extends ResourcePluginListener
+  implements Runnable
 {
-  private znn(GetConfig paramGetConfig) {}
+  public znn(ThreadExcutor paramThreadExcutor, int paramInt, Runnable paramRunnable, ThreadExcutor.IThreadListener paramIThreadListener, boolean paramBoolean) {}
   
-  public void a(byte paramByte)
+  public void run()
   {
-    if (GetConfig.a(this.a) == 44)
+    Job localJob = ThreadExcutor.a(this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, this.jdField_a_of_type_Boolean);
+    if (localJob == null)
     {
-      if ((paramByte != 2) && (paramByte == 3)) {}
-      GetConfig.b(this.a).b.c(GetConfig.a(this.a));
-      this.a.a(7);
+      QLog.e("ThreadManager", 1, "postDownLoadTask -1:w == null" + this.jdField_a_of_type_JavaLangRunnable);
+      return;
     }
-  }
-  
-  public void b(byte paramByte)
-  {
-    if ((paramByte != 2) && (paramByte == 3)) {}
-    GetConfig.c(this.a).b.d(this);
+    localJob.b = 5;
+    ThreadExcutor.c(this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor).a();
+    ThreadExcutor.c(this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor).execute(localJob);
   }
 }
 

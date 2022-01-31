@@ -2,7 +2,7 @@ package com.tencent.mobileqq.profile.PersonalityLabel;
 
 public abstract interface PersonalityLabelBoard$IScroll
 {
-  public abstract void c(int paramInt);
+  public abstract void d(int paramInt);
 }
 
 

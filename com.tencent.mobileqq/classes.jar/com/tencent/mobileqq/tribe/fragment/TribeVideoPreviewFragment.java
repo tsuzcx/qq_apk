@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import aiet;
-import aieu;
-import aiev;
+import aisw;
+import aisx;
+import aisy;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +31,7 @@ public class TribeVideoPreviewFragment
   
   public void a(String paramString)
   {
-    ThreadManager.post(new aiev(this, paramString), 5, null, true);
+    ThreadManager.post(new aisy(this, paramString), 5, null, true);
   }
   
   public boolean a()
@@ -46,22 +46,22 @@ public class TribeVideoPreviewFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130971597, paramViewGroup, false);
-    this.a = ((TextureVideoView)paramLayoutInflater.findViewById(2131375073));
-    paramViewGroup = paramLayoutInflater.findViewById(2131375074);
-    paramBundle = (ImageButton)paramLayoutInflater.findViewById(2131375075);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130971645, paramViewGroup, false);
+    this.a = ((TextureVideoView)paramLayoutInflater.findViewById(2131375259));
+    paramViewGroup = paramLayoutInflater.findViewById(2131375260);
+    paramBundle = (ImageButton)paramLayoutInflater.findViewById(2131375261);
     String str = getActivity().getIntent().getStringExtra("path");
     this.a.setVideoPath(str);
     this.a.setLooping(true);
     this.a.setCenterInside(true);
-    paramLayoutInflater.setOnTouchListener(new aiet(this));
+    paramLayoutInflater.setOnTouchListener(new aisw(this));
     this.a.start();
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setFillAfter(true);
     localAlphaAnimation.setDuration(500L);
     localAlphaAnimation.setStartOffset(3000L);
     paramViewGroup.startAnimation(localAlphaAnimation);
-    paramBundle.setOnClickListener(new aieu(this, str));
+    paramBundle.setOnClickListener(new aisx(this, str));
     return paramLayoutInflater;
   }
   
@@ -79,7 +79,7 @@ public class TribeVideoPreviewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

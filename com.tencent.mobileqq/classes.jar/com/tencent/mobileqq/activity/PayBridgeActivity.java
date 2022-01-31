@@ -38,10 +38,10 @@ import cooperation.qwallet.plugin.QWalletPayBridge;
 import java.util.HashSet;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tbp;
-import tbq;
-import tbr;
-import tbs;
+import tep;
+import teq;
+import ter;
+import tes;
 
 public class PayBridgeActivity
   extends BaseActivity
@@ -116,23 +116,23 @@ public class PayBridgeActivity
   
   private Dialog a(String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    Dialog localDialog = new Dialog(this, 2131624515);
+    Dialog localDialog = new Dialog(this, 2131624516);
     localDialog.setContentView(2130968842);
-    TextView localTextView = (TextView)localDialog.findViewById(2131364010);
+    TextView localTextView = (TextView)localDialog.findViewById(2131364034);
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131362758);
+    paramString1 = (TextView)localDialog.findViewById(2131362776);
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131364013);
+    paramString1 = (TextView)localDialog.findViewById(2131364037);
     if (paramString1 != null) {
       paramString1.setText(17039360);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131364014);
+    paramString1 = (TextView)localDialog.findViewById(2131364038);
     if (paramString1 != null) {
-      paramString1.setText(2131432218);
+      paramString1.setText(2131432235);
     }
     localDialog.setOnDismissListener(paramOnDismissListener);
     return localDialog;
@@ -1330,10 +1330,10 @@ public class PayBridgeActivity
     localQQCustomDialog.setTitle((String)localObject1);
     localQQCustomDialog.setMessage((CharSequence)localObject2);
     localQQCustomDialog.setCancelable(false);
-    localObject2 = new tbr(this, str2);
+    localObject2 = new ter(this, str2);
     localObject1 = str1;
     if (TextUtils.isEmpty(str1)) {
-      localObject1 = getResources().getString(2131432999);
+      localObject1 = getResources().getString(2131433016);
     }
     localQQCustomDialog.setPositiveButton((String)localObject1, (DialogInterface.OnClickListener)localObject2);
     localQQCustomDialog.show();
@@ -1568,7 +1568,7 @@ public class PayBridgeActivity
     localBundle.putString("pf", paramEmojiPayReqData.h);
     localBundle.putString("pfKey", paramEmojiPayReqData.i);
     localBundle.putString("tokenUrl", paramEmojiPayReqData.j);
-    localBundle.putInt("resId", 2130838901);
+    localBundle.putInt("resId", 2130838905);
     localBundle.putString("discountId", paramEmojiPayReqData.k);
     localBundle.putString("other", paramEmojiPayReqData.l);
     localBundle.putString("payload", paramEmojiPayReqData.m);
@@ -1795,7 +1795,7 @@ public class PayBridgeActivity
   
   private void b()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 231, null, getResources().getString(2131432258), getResources().getString(2131432257), null, null, new tbs(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 231, null, getResources().getString(2131432275), getResources().getString(2131432274), null, null, new tes(this));
     localQQCustomDialog.setCancelable(false);
     localQQCustomDialog.show();
   }
@@ -1830,7 +1830,7 @@ public class PayBridgeActivity
     paramBundle.putString("pf", str3);
     paramBundle.putString("pfKey", "pfKey");
     paramBundle.putString("acctType", "common");
-    paramBundle.putInt("resId", 2130843729);
+    paramBundle.putInt("resId", 2130843853);
     paramBundle.putString("discountId", str4);
     paramBundle.putString("other", str5);
     paramBundle.putString("payload", str6);
@@ -2036,7 +2036,7 @@ public class PayBridgeActivity
     localBundle.putString("pfKey", "pfKey");
     localBundle.putString("serviceCode", "QQYFSC");
     localBundle.putString("serviceName", "腾讯文学包月VIP");
-    localBundle.putInt("resId", 2130843729);
+    localBundle.putInt("resId", 2130843853);
     localBundle.putString("saveValue", "3");
     localBundle.putBoolean("isCanChange", true);
     localBundle.putString("remark", "");
@@ -3429,7 +3429,7 @@ public class PayBridgeActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131492923);
+    getWindow().setBackgroundDrawableResource(2131492924);
     if (QLog.isColorLevel()) {
       QLog.i("Q.qwallet.pay", 2, "" + System.currentTimeMillis() + " PayBridgeActivity.doOnCreate");
     }
@@ -3621,13 +3621,13 @@ public class PayBridgeActivity
     Object localObject = new Intent(this, PayBridgeActivity.class);
     ((Intent)localObject).addFlags(536870912);
     startActivity((Intent)localObject);
-    localObject = String.format(getString(2131432219), new Object[] { Integer.valueOf(i) });
-    localObject = a(getString(2131436764), (String)localObject, null);
+    localObject = String.format(getString(2131432236), new Object[] { Integer.valueOf(i) });
+    localObject = a(getString(2131436781), (String)localObject, null);
     ((Dialog)localObject).setCancelable(false);
-    tbp localtbp = new tbp(this, (Dialog)localObject);
-    ((Dialog)localObject).findViewById(2131364014).setOnClickListener(localtbp);
-    ((Dialog)localObject).findViewById(2131364013).setOnClickListener(localtbp);
-    ((Dialog)localObject).setOnDismissListener(new tbq(this));
+    tep localtep = new tep(this, (Dialog)localObject);
+    ((Dialog)localObject).findViewById(2131364038).setOnClickListener(localtep);
+    ((Dialog)localObject).findViewById(2131364037).setOnClickListener(localtep);
+    ((Dialog)localObject).setOnDismissListener(new teq(this));
     ((Dialog)localObject).show();
   }
   

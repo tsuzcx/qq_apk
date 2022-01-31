@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vas;
 
-import ajtx;
-import ajty;
-import ajtz;
+import akie;
+import akif;
+import akig;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -25,9 +25,9 @@ public class VasQuickUpdateManager
   public static final String a;
   SparseArray jdField_a_of_type_AndroidUtilSparseArray;
   public QQAppInterface a;
-  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new ajtx(this);
-  private VasQuickUpdateEngine.QuickUpdateBusinessCallback jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine$QuickUpdateBusinessCallback = new ajty(this);
-  private VasQuickUpdateEngine.QuickUpdateListener jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine$QuickUpdateListener = new ajtz(this);
+  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new akie(this);
+  private VasQuickUpdateEngine.QuickUpdateBusinessCallback jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine$QuickUpdateBusinessCallback = new akif(this);
+  private VasQuickUpdateEngine.QuickUpdateListener jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateEngine$QuickUpdateListener = new akig(this);
   public VasQuickUpdateEngine a;
   public AtomicBoolean a;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
@@ -494,7 +494,7 @@ public class VasQuickUpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager
  * JD-Core Version:    0.7.0.1
  */

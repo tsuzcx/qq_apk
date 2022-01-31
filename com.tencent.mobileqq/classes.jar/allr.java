@@ -1,26 +1,19 @@
-import com.tencent.widget.DynamicGridView;
+import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
+import com.tencent.qidian.QidianManager;
 
 public class allr
-  implements alls
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public allr(QidianManager paramQidianManager, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
   
-  public allr(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
-    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
+    QidianManager.a(this.jdField_a_of_type_ComTencentQidianQidianManager, this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     allr
  * JD-Core Version:    0.7.0.1
  */

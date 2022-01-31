@@ -1,14 +1,13 @@
-public class aaos
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+
+class aaos
+  implements Runnable
 {
-  public int a;
-  public long a;
+  aaos(aaor paramaaor, String paramString1, String paramString2) {}
   
-  public aaos(long paramLong, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = 1380;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    ArkAppDeviceModule.a(this.jdField_a_of_type_Aaor.jdField_a_of_type_Aaoq.a, this.jdField_a_of_type_Aaor.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

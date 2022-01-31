@@ -1,42 +1,67 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.os.Handler;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.common.GloableValue;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public class xux
-  extends ContactBindObserver
+class xux
+  implements Runnable
 {
-  public xux(ContactsInnerFrame paramContactsInnerFrame) {}
+  xux(xuw paramxuw) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    this.a.a.unRegistObserver(this);
-    switch (ContactsInnerFrame.a(this.a).c())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      ContactsInnerFrame.c(this.a);
-      return;
-    case 0: 
-    case 7: 
-    case 9: 
-      ContactsInnerFrame.a(this.a);
-      return;
-    case 1: 
-    case 5: 
-      ContactsInnerFrame.b(this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoInitState", 2, "[@] delayInit,run start");
     }
-    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (!localRMVideoStateMgr.f())
     {
-      ContactsInnerFrame.a(this.a);
-      return;
+      RMVideoStateMgr.b(null);
+      if (localRMVideoStateMgr.f()) {}
     }
-    ContactsInnerFrame.b(this.a);
+    for (;;)
+    {
+      return;
+      File localFile = new File(GloableValue.b + File.separator + ".nomedia");
+      if (!localFile.exists()) {}
+      try
+      {
+        localFile.createNewFile();
+        label84:
+        if (QLog.isColorLevel()) {
+          QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
+        }
+        localRMVideoStateMgr.a.postDelayed(this.a.a, 10000L);
+        localRMVideoStateMgr.l();
+        localRMVideoStateMgr.m();
+        localRMVideoStateMgr.k();
+        try
+        {
+          AVCodec.get().init();
+          this.a.c = true;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("RMVideoInitState", 2, "[@] delayInit,run finish");
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+        {
+          for (;;)
+          {
+            localUnsatisfiedLinkError.printStackTrace();
+            this.a.c = false;
+          }
+        }
+      }
+      catch (IOException localIOException)
+      {
+        break label84;
+      }
+    }
   }
 }
 

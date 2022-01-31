@@ -1,19 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 
 public class ypt
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ypt(ApolloGameActivity paramApolloGameActivity, int paramInt1, int paramInt2, Intent paramIntent) {}
+  public ypt(ApolloWebGameActivity paramApolloWebGameActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ApolloGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity).a().getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
-    }
+    paramDialogInterface = new Intent(this.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", ApolloConstant.O);
+    this.a.startActivity(paramDialogInterface);
+    ApolloWebGameActivity.a(this.a);
   }
 }
 

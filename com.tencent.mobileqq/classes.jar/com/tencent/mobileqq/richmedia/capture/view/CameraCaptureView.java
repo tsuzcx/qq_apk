@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import agxb;
-import agxc;
-import agxd;
-import agxe;
-import agxf;
-import agxg;
-import agxh;
-import agxi;
-import agxj;
-import agxk;
-import agxl;
-import agxm;
-import agxn;
+import ahld;
+import ahle;
+import ahlf;
+import ahlg;
+import ahlh;
+import ahli;
+import ahlj;
+import ahlk;
+import ahll;
+import ahlm;
+import ahln;
+import ahlo;
+import ahlp;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -86,13 +86,13 @@ public class CameraCaptureView
   extends GLSurfaceView
   implements SurfaceTexture.OnFrameAvailableListener, Camera.PreviewCallback, GLSurfaceView.Renderer, CameraCover.PictureCallback, AudioCapture.AudioCaptureListener, HWEncodeListener, Observer, CameraExceptionHandler.Callback
 {
-  private static Camera.FaceDetectionListener jdField_a_of_type_AndroidHardwareCamera$FaceDetectionListener = new agxg();
+  private static Camera.FaceDetectionListener jdField_a_of_type_AndroidHardwareCamera$FaceDetectionListener = new ahli();
   private static final CameraProxy jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy = new CameraProxy(null, null);
   private static int t;
   public int a;
   private long jdField_a_of_type_Long;
   public SurfaceTexture a;
-  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new agxb(this);
+  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new ahld(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
   protected OrientationEventListener a;
   private View jdField_a_of_type_AndroidViewView;
@@ -186,7 +186,7 @@ public class CameraCaptureView
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.a(paramVideoCaptureResult);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new agxn(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahlp(this));
     ReportUtil.c();
     if (CameraControl.a().jdField_a_of_type_Int == 1) {}
     for (;;)
@@ -228,6 +228,13 @@ public class CameraCaptureView
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilDarkModeChecker = new DarkModeChecker();
     QmcfManager.a().a(this.jdField_c_of_type_Int);
     this.jdField_h_of_type_Boolean = true;
+  }
+  
+  private void d()
+  {
+    if (!this.jdField_h_of_type_Boolean) {
+      throw new RuntimeException("Not inited. Must be called after setCaptureParam");
+    }
   }
   
   private void d(boolean paramBoolean)
@@ -285,14 +292,7 @@ public class CameraCaptureView
     ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
   }
   
-  private void f()
-  {
-    if (!this.jdField_h_of_type_Boolean) {
-      throw new RuntimeException("Not inited. Must be called after setCaptureParam");
-    }
-  }
-  
-  private void q()
+  private void g()
   {
     boolean bool = true;
     if (!this.jdField_h_of_type_Boolean) {}
@@ -370,19 +370,19 @@ public class CameraCaptureView
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.ah_();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.aj_();
     }
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    f();
+    d();
     Rect localRect1 = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraOperator.a(paramFloat1, paramFloat2, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.0F);
     Rect localRect2 = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraOperator.a(paramFloat1, paramFloat2, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1.5F);
     if (QLog.isColorLevel()) {
       QLog.i("CameraCaptureView", 2, "requestCameraFocus:" + paramFloat1 + " " + paramFloat2 + " " + localRect1 + " " + localRect2);
     }
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.a(localRect1, localRect2, new agxh(this));
+    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.a(localRect1, localRect2, new ahlj(this));
   }
   
   /* Error */
@@ -398,9 +398,9 @@ public class CameraCaptureView
     //   11: sipush 360
     //   14: irem
     //   15: istore 4
-    //   17: invokestatic 336	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   17: invokestatic 343	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   20: ifeq +51 -> 71
-    //   23: ldc_w 338
+    //   23: ldc_w 345
     //   26: iconst_2
     //   27: new 424	java/lang/StringBuilder
     //   30: dup
@@ -446,7 +446,7 @@ public class CameraCaptureView
     //   118: invokestatic 486	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:a	(IIII)Landroid/graphics/Bitmap;
     //   121: astore 5
     //   123: aload 6
-    //   125: invokevirtual 488	com/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer:d	()V
+    //   125: invokevirtual 487	com/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer:d	()V
     //   128: new 424	java/lang/StringBuilder
     //   131: dup
     //   132: invokespecial 425	java/lang/StringBuilder:<init>	()V
@@ -454,31 +454,31 @@ public class CameraCaptureView
     //   136: getfield 185	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureParam	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$CaptureParam;
     //   139: getfield 232	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$CaptureParam:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   142: invokevirtual 431	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: ldc_w 490
+    //   145: ldc_w 489
     //   148: invokevirtual 431	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   151: invokestatic 119	java/lang/System:currentTimeMillis	()J
-    //   154: invokevirtual 493	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   157: ldc_w 495
+    //   154: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   157: ldc_w 494
     //   160: invokevirtual 431	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: invokevirtual 442	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   166: astore 6
     //   168: aload 6
-    //   170: invokestatic 499	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;)V
-    //   173: new 501	java/io/File
+    //   170: invokestatic 498	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;)V
+    //   173: new 500	java/io/File
     //   176: dup
     //   177: aload 6
-    //   179: invokespecial 502	java/io/File:<init>	(Ljava/lang/String;)V
+    //   179: invokespecial 501	java/io/File:<init>	(Ljava/lang/String;)V
     //   182: astore 7
     //   184: aload 5
     //   186: aload 7
-    //   188: invokestatic 507	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;Ljava/io/File;)Z
+    //   188: invokestatic 506	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;Ljava/io/File;)Z
     //   191: pop
-    //   192: invokestatic 512	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   192: invokestatic 511	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   195: aload 7
-    //   197: invokevirtual 515	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   200: invokestatic 518	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/content/Context;Ljava/lang/String;)V
+    //   197: invokevirtual 514	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   200: invokestatic 517	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/content/Context;Ljava/lang/String;)V
     //   203: aload_0
-    //   204: new 520	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult
+    //   204: new 519	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult
     //   207: dup
     //   208: iconst_0
     //   209: iconst_0
@@ -486,13 +486,13 @@ public class CameraCaptureView
     //   212: aconst_null
     //   213: aload_0
     //   214: getfield 107	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:jdField_l_of_type_Int	I
-    //   217: invokespecial 523	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult:<init>	(IILjava/lang/String;Landroid/graphics/Bitmap;I)V
-    //   220: invokevirtual 526	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:b	(Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult;)V
+    //   217: invokespecial 522	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult:<init>	(IILjava/lang/String;Landroid/graphics/Bitmap;I)V
+    //   220: invokevirtual 525	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:b	(Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult;)V
     //   223: aload 5
-    //   225: invokevirtual 531	android/graphics/Bitmap:recycle	()V
+    //   225: invokevirtual 530	android/graphics/Bitmap:recycle	()V
     //   228: getstatic 77	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy	Lcom/tencent/mobileqq/shortvideo/mediadevice/CameraProxy;
     //   231: iconst_1
-    //   232: invokevirtual 532	com/tencent/mobileqq/shortvideo/mediadevice/CameraProxy:a	(Z)V
+    //   232: invokevirtual 531	com/tencent/mobileqq/shortvideo/mediadevice/CameraProxy:a	(Z)V
     //   235: return
     //   236: astore 5
     //   238: aload_0
@@ -501,13 +501,13 @@ public class CameraCaptureView
     //   245: aload_0
     //   246: getfield 134	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$CaptureListener;
     //   249: bipush 103
-    //   251: invokeinterface 533 2 0
+    //   251: invokeinterface 532 2 0
     //   256: return
     //   257: astore 7
     //   259: aload 7
-    //   261: invokevirtual 534	java/io/IOException:printStackTrace	()V
+    //   261: invokevirtual 533	java/io/IOException:printStackTrace	()V
     //   264: aload_0
-    //   265: new 520	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult
+    //   265: new 519	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult
     //   268: dup
     //   269: iconst_0
     //   270: iconst_m1
@@ -515,8 +515,8 @@ public class CameraCaptureView
     //   273: aconst_null
     //   274: aload_0
     //   275: getfield 107	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:jdField_l_of_type_Int	I
-    //   278: invokespecial 523	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult:<init>	(IILjava/lang/String;Landroid/graphics/Bitmap;I)V
-    //   281: invokevirtual 526	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:b	(Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult;)V
+    //   278: invokespecial 522	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult:<init>	(IILjava/lang/String;Landroid/graphics/Bitmap;I)V
+    //   281: invokevirtual 525	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:b	(Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView$PhotoCaptureResult;)V
     //   284: goto -61 -> 223
     // Local variable table:
     //   start	length	slot	name	signature
@@ -560,7 +560,7 @@ public class CameraCaptureView
       throw new RuntimeException("unknown status " + this.jdField_q_of_type_Int);
     }
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder.c();
-    p();
+    q();
     this.jdField_q_of_type_Int = 0;
   }
   
@@ -581,7 +581,7 @@ public class CameraCaptureView
     if (QLog.isColorLevel()) {
       QLog.i("CameraCaptureView", 2, "onCameraSizeSelected(): cameraPreviewWidth=" + this.jdField_d_of_type_Int + ",cameraPreviewHeight=" + this.jdField_e_of_type_Int + "， cameraClipWidth=" + this.jdField_f_of_type_Int + ",cameraClipHeight=" + this.jdField_g_of_type_Int + ", videoWidth=" + this.jdField_h_of_type_Int + ",videoHeight=" + this.jdField_i_of_type_Int);
     }
-    queueEvent(new agxk(this));
+    queueEvent(new ahlm(this));
   }
   
   public void a(Object paramObject, int paramInt, Object... paramVarArgs)
@@ -628,7 +628,7 @@ public class CameraCaptureView
     }
     for (;;)
     {
-      ThreadManager.postImmediately(new agxl(this), null, false);
+      ThreadManager.postImmediately(new ahln(this), null, false);
       return;
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.d();
       continue;
@@ -673,7 +673,7 @@ public class CameraCaptureView
     default: 
       return;
     }
-    ThreadManager.getUIHandler().post(new agxc(this));
+    ThreadManager.getUIHandler().post(new ahle(this));
   }
   
   protected void b(CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult)
@@ -682,7 +682,7 @@ public class CameraCaptureView
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.a(paramPhotoCaptureResult);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new agxm(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahlo(this));
     ReportUtil.b();
     if (CameraControl.a().jdField_a_of_type_Int == 1) {}
     for (;;)
@@ -706,7 +706,7 @@ public class CameraCaptureView
   
   public void b(boolean paramBoolean)
   {
-    f();
+    d();
     this.jdField_o_of_type_Boolean = paramBoolean;
     jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.d(this.jdField_o_of_type_Boolean);
   }
@@ -718,16 +718,16 @@ public class CameraCaptureView
   
   public void c(boolean paramBoolean)
   {
-    f();
+    d();
     QQLowLightFilter.a(paramBoolean);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.g_(paramBoolean);
   }
   
-  public void d() {}
-  
   public void e() {}
   
-  public void g()
+  public void f() {}
+  
+  public void h()
   {
     if (!this.jdField_h_of_type_Boolean) {}
     while (!this.jdField_i_of_type_Boolean) {
@@ -748,9 +748,9 @@ public class CameraCaptureView
     jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.a(null);
   }
   
-  public void h()
+  public void i()
   {
-    f();
+    d();
     if (!CameraAbility.c()) {
       return;
     }
@@ -770,8 +770,8 @@ public class CameraCaptureView
       this.jdField_n_of_type_Boolean = false;
       QmcfManager.a().a(this.jdField_c_of_type_Int);
       AudioTranslator.a().a(true);
+      h();
       g();
-      q();
       r();
       return;
       this.jdField_c_of_type_Int = 1;
@@ -779,12 +779,12 @@ public class CameraCaptureView
     }
   }
   
-  public void i()
+  public void j()
   {
     int i1 = 0;
-    f();
+    d();
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.ag_();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.B_();
     }
     if (a())
     {
@@ -808,7 +808,7 @@ public class CameraCaptureView
         if ((!this.jdField_o_of_type_Boolean) || (this.jdField_n_of_type_Boolean)) {
           break label165;
         }
-        jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.a(null, null, new agxi(this, (File)localObject, i1, bool));
+        jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.a(null, null, new ahlk(this, (File)localObject, i1, bool));
         return;
         bool = false;
         break;
@@ -822,12 +822,12 @@ public class CameraCaptureView
       i1 = 1500;
       a(true);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new agxj(this), i1);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ahll(this), i1);
   }
   
-  public void j()
+  public void k()
   {
-    f();
+    d();
     if (this.jdField_o_of_type_Boolean) {
       a(true);
     }
@@ -847,7 +847,7 @@ public class CameraCaptureView
     CaptureUtil.a(false, false);
   }
   
-  public void k()
+  public void l()
   {
     if (this.jdField_l_of_type_Boolean)
     {
@@ -862,26 +862,26 @@ public class CameraCaptureView
     CaptureReportUtil.jdField_a_of_type_Long = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
   }
   
-  public void l()
+  public void m()
   {
     ReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath);
   }
   
-  protected void m()
+  protected void n()
   {
-    this.jdField_a_of_type_AndroidViewOrientationEventListener = new agxd(this, getContext());
+    this.jdField_a_of_type_AndroidViewOrientationEventListener = new ahlf(this, getContext());
     if (this.jdField_a_of_type_AndroidViewOrientationEventListener.canDetectOrientation()) {
       this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.L_();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.A_();
     }
     if (QLog.isColorLevel()) {
       QLog.d("CameraCaptureView", 2, "Create to FirstFrameShown cost : " + (System.currentTimeMillis() - this.jdField_c_of_type_Long) + "ms");
     }
   }
   
-  public void n()
+  public void o()
   {
     if (QLog.isColorLevel()) {
       QLog.d("CameraCaptureView", 2, "onSurfaceDestroy");
@@ -890,22 +890,7 @@ public class CameraCaptureView
     if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
       this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
     }
-    g();
-  }
-  
-  protected void o()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onFirstFrameShownEachOpenFrame");
-    }
-    NewFlowCameraReporter.b("first frame show");
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.f();
-    }
-    if (this.jdField_a_of_type_AndroidViewOrientationEventListener.canDetectOrientation()) {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
-    }
-    CameraHelper.a(this.jdField_c_of_type_Int);
+    h();
   }
   
   public void onDrawFrame(GL10 arg1)
@@ -946,12 +931,12 @@ public class CameraCaptureView
         if (!this.jdField_b_of_type_Boolean)
         {
           this.jdField_b_of_type_Boolean = true;
-          m();
+          n();
         }
         if (!this.jdField_a_of_type_Boolean)
         {
           this.jdField_a_of_type_Boolean = true;
-          o();
+          p();
         }
         if (this.jdField_c_of_type_Boolean)
         {
@@ -972,10 +957,10 @@ public class CameraCaptureView
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.a()) && (!this.jdField_g_of_type_Boolean))
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.a().post(new agxe(this, paramSurfaceTexture));
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.a().post(new ahlg(this, paramSurfaceTexture));
       return;
     }
-    queueEvent(new agxf(this, paramSurfaceTexture));
+    queueEvent(new ahlh(this, paramSurfaceTexture));
   }
   
   public void onPause()
@@ -983,7 +968,7 @@ public class CameraCaptureView
     if (QLog.isColorLevel()) {
       QLog.d("CameraCaptureView", 2, "onPause");
     }
-    g();
+    h();
     if (this.jdField_a_of_type_AndroidViewOrientationEventListener != null) {
       this.jdField_a_of_type_AndroidViewOrientationEventListener.disable();
     }
@@ -1004,7 +989,7 @@ public class CameraCaptureView
       QLog.d("CameraCaptureView", 2, "onResume");
     }
     this.jdField_a_of_type_Boolean = false;
-    q();
+    g();
     if (this.jdField_k_of_type_Boolean) {
       r();
     }
@@ -1025,7 +1010,7 @@ public class CameraCaptureView
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_m_of_type_Boolean = true;
-    q();
+    g();
     r();
   }
   
@@ -1049,7 +1034,22 @@ public class CameraCaptureView
     this.jdField_g_of_type_Boolean = CameraCompatibleList.c();
   }
   
-  protected void p() {}
+  protected void p()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "onFirstFrameShownEachOpenFrame");
+    }
+    NewFlowCameraReporter.b("first frame show");
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$CaptureListener.g();
+    }
+    if (this.jdField_a_of_type_AndroidViewOrientationEventListener.canDetectOrientation()) {
+      this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
+    }
+    CameraHelper.a(this.jdField_c_of_type_Int);
+  }
+  
+  protected void q() {}
   
   public void setCaptureListener(CameraCaptureView.CaptureListener paramCaptureListener)
   {
@@ -1088,7 +1088,7 @@ public class CameraCaptureView
   
   public void setSceneMode(String paramString)
   {
-    f();
+    d();
     jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.a(paramString);
   }
   
@@ -1104,7 +1104,7 @@ public class CameraCaptureView
   
   public void setZoom(int paramInt)
   {
-    f();
+    d();
     jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy.b(paramInt);
   }
   

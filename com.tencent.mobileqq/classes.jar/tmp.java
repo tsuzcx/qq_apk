@@ -1,18 +1,26 @@
-import android.app.Dialog;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.qphone.base.util.QLog;
 
 public class tmp
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public tmp(RegisterNewBaseActivity paramRegisterNewBaseActivity, int paramInt) {}
+  public tmp(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, 2131624515);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a.setContentView(2130970866);
-    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a.findViewById(2131362758)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getString(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a.show();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
+    }
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
+      }
+      this.a.z();
+    }
   }
 }
 

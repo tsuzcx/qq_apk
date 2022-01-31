@@ -106,7 +106,7 @@ public class QQStoryLoggingDelegate
   
   public void b(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    a(5, paramString1, paramString2, paramThrowable);
+    a(4, paramString1, paramString2, paramThrowable);
   }
   
   public void c(String paramString1, String paramString2)
@@ -116,12 +116,17 @@ public class QQStoryLoggingDelegate
   
   public void c(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    a(6, paramString1, paramString2, paramThrowable);
+    a(5, paramString1, paramString2, paramThrowable);
   }
   
   public void d(String paramString1, String paramString2)
   {
     a(5, paramString1, paramString2);
+  }
+  
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    a(6, paramString1, paramString2, paramThrowable);
   }
   
   public void e(String paramString1, String paramString2)

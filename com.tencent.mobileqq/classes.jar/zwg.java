@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
 
-public class zwg
+class zwg
   implements Runnable
 {
-  public zwg(GreetingCardRender paramGreetingCardRender) {}
+  zwg(zwe paramzwe, SosoInterface.OnLocationListener paramOnLocationListener) {}
   
   public void run()
   {
-    GreetingCardRender.a(this.a);
+    if (!SosoInterface.OnLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener)) {
+      SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zwg
  * JD-Core Version:    0.7.0.1
  */

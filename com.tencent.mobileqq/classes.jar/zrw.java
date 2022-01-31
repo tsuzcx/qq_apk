@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import com.tencent.mobileqq.app.fms.SearchListener;
 
 public class zrw
-  implements Runnable
+  implements SearchListener
 {
-  public zrw(DataLineMsgProxy paramDataLineMsgProxy, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
+  public zrw(FullMessageSearchManager paramFullMessageSearchManager) {}
   
-  public void run()
+  public void a(FullMessageSearchResult paramFullMessageSearchResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
+    FullMessageSearchManager.a(this.a);
+    this.a.notifyObservers(paramFullMessageSearchResult);
   }
 }
 

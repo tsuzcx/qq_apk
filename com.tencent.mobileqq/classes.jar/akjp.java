@@ -1,102 +1,84 @@
-import android.content.pm.ApplicationInfo;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.ClientInfoA.EnvParamPacket;
-import com.tencent.ims.ClientInfoA.ReportDetectResultPacket;
-import com.tencent.mdm.m;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.mqp.app.sec.SecClientInfoTask;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.security.MessageDigest;
-import mqq.app.MobileQQ;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class akjp
-  implements Runnable
+  implements SensorEventListener
 {
-  public akjp(SecClientInfoTask paramSecClientInfoTask) {}
+  public akjp(HealthStepCounterPlugin paramHealthStepCounterPlugin) {}
   
-  public void run()
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    Object localObject1 = null;
+    this.a.f = ("Current step data:" + String.valueOf(paramSensorEvent.values[0]));
+    QLog.d("HealthStepCounterPlugin", 1, "onSensorChanged:" + this.a.f);
+    if ((HealthStepCounterPlugin.jdField_b_of_type_Int == 1) && (HealthStepCounterPlugin.jdField_b_of_type_Boolean))
+    {
+      this.a.c = ((int)paramSensorEvent.values[0]);
+      HealthStepCounterPlugin.jdField_b_of_type_Boolean = false;
+    }
+    if (HealthStepCounterPlugin.jdField_b_of_type_Int == 3)
+    {
+      HealthStepCounterPlugin.jdField_b_of_type_Int = 0;
+      this.a.d = ((int)paramSensorEvent.values[0]);
+    }
     for (;;)
     {
-      QQAppInterface localQQAppInterface;
-      String str;
-      ClientInfoA.ReportDetectResultPacket localReportDetectResultPacket;
-      Object localObject3;
+      JSONObject localJSONObject;
       try
       {
-        localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-        if (localQQAppInterface == null) {
-          return;
-        }
-        str = "" + SecClientInfoTask.a(this.a);
-        localReportDetectResultPacket = new ClientInfoA.ReportDetectResultPacket();
-        localObject3 = new ClientInfoA.EnvParamPacket();
-        ((ClientInfoA.EnvParamPacket)localObject3).u32_platform.set(1);
-        ((ClientInfoA.EnvParamPacket)localObject3).str_sysversion.set(Build.VERSION.RELEASE);
-        ((ClientInfoA.EnvParamPacket)localObject3).str_qqversion.set("7.6.0.3525");
-        ((ClientInfoA.EnvParamPacket)localObject3).u32_appid.set(AppSetting.a);
-        ((ClientInfoA.EnvParamPacket)localObject3).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
-        ((ClientInfoA.EnvParamPacket)localObject3).str_uin.set(str);
-        localReportDetectResultPacket.uint32_cmd.set(1);
-        localReportDetectResultPacket.envParam.set((MessageMicro)localObject3);
-        if (SecClientInfoTask.a(this.a) == 1)
+        paramSensorEvent = new JSONObject();
+        paramSensorEvent.put("retCode", 0);
+        paramSensorEvent.put("step", this.a.d - this.a.c);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("source", "none");
+        paramSensorEvent = WebViewPlugin.toJsScript("StepsDetect", paramSensorEvent, localJSONObject);
+        if (HealthStepCounterPlugin.a)
         {
-          localObject1 = SecClientInfoTask.a(SecClientInfoTask.b(this.a));
-          if (localObject1 != null) {
-            localReportDetectResultPacket.bytes_buffer.set(ByteStringMicro.copyFrom((byte[])localObject1));
-          }
-          localObject1 = new ToServiceMsg("mobileqq.service", str, "ClientInfoA.SecReport");
-          if (localObject1 == null) {
-            break;
-          }
-          ((ToServiceMsg)localObject1).putWupBuffer(localReportDetectResultPacket.toByteArray());
-          ((ToServiceMsg)localObject1).extraData.putBoolean("req_pb_protocol_flag", true);
-          ((ToServiceMsg)localObject1).setNeedCallback(false);
-          localQQAppInterface.sendToService((ToServiceMsg)localObject1);
-          return;
+          this.a.mRuntime.a().loadUrl("javascript:" + paramSensorEvent);
+          QLog.d("HealthStepCounterPlugin", 1, "Steps detect:" + (this.a.d - this.a.c));
+          HealthStepCounterPlugin.a = false;
         }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
+        HealthStepCounterPlugin.jdField_b_of_type_Boolean = true;
         return;
       }
-      if (SecClientInfoTask.a(this.a) == 2)
+      catch (Exception paramSensorEvent)
       {
-        if (!SecClientInfoTask.a())
+        paramSensorEvent = new JSONObject();
+      }
+      try
+      {
+        paramSensorEvent.put("retCode", -1);
+        paramSensorEvent.put("step", 0);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("source", "none");
+        this.a.dispatchJsEvent("StepsDetect", paramSensorEvent, localJSONObject);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("HealthStepCounterPlugin", 2, "Err StepsDetect");
+      }
+      catch (JSONException paramSensorEvent)
+      {
+        for (;;)
         {
-          SecClientInfoTask.a(m.a(localQQAppInterface.getApplication().getApplicationInfo().sourceDir));
-          SecClientInfoTask.a(true);
+          paramSensorEvent.printStackTrace();
         }
-        if ((SecClientInfoTask.a() != null) && (SecClientInfoTask.a().length() > 0)) {
-          localReportDetectResultPacket.str_qqmd5.set(SecClientInfoTask.a());
-        }
-        Object localObject2 = SecUtil.toHexString(NetConnInfoCenter.GUID).toLowerCase() + SecClientInfoTask.b(this.a);
-        localObject3 = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject3).update(((String)localObject2).getBytes());
-        localReportDetectResultPacket.bytes_buffer.set(ByteStringMicro.copyFrom(((MessageDigest)localObject3).digest()));
-        localObject2 = SecClientInfoTask.a(SecClientInfoTask.b(this.a) >> 1 & 0x7FFFFFFF);
-        if (localObject2 != null) {
-          localReportDetectResultPacket.bytes_buffer2.set(ByteStringMicro.copyFrom((byte[])localObject2));
-        }
-        localObject2 = new ToServiceMsg("mobileqq.service", str, "ClientInfoC.SecReport");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjp
  * JD-Core Version:    0.7.0.1
  */

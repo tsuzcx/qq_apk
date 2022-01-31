@@ -5,6 +5,7 @@ import android.content.IntentFilter;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.game.ApolloGameTimeReporter;
 import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -12,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import yol;
+import yrr;
 
 public class CmGameManager
   implements Manager
@@ -28,7 +29,7 @@ public class CmGameManager
     QLog.i("cmgame_process.CmGameManager", 1, "[CmGameManager] created.");
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel = new ApolloCmdChannel(CmGameUtil.a());
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new yol();
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new yrr();
     paramAppInterface = new IntentFilter();
     paramAppInterface.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
     try
@@ -249,6 +250,7 @@ public class CmGameManager
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
         this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       }
+      ApolloGameTimeReporter.a();
       return;
     }
     catch (Exception localException)

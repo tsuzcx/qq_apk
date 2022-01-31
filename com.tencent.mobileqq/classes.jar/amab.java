@@ -1,37 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.SignatureObserver;
-import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsListView.SavedState;
 
-public class amab
-  extends SignatureObserver
+public final class amab
+  implements Parcelable.Creator
 {
-  public amab(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject)
+  public AbsListView.SavedState a(Parcel paramParcel)
   {
-    if (paramBoolean)
-    {
-      paramObject = (Bundle)paramObject;
-      paramObject.putInt("which_method", 0);
-      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
-    }
+    return new AbsListView.SavedState(paramParcel, null);
   }
   
-  protected void c(boolean paramBoolean, Object paramObject)
+  public AbsListView.SavedState[] a(int paramInt)
   {
-    if (paramBoolean)
-    {
-      paramObject = (Bundle)paramObject;
-      paramObject.putInt("which_method", 1);
-      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
-    }
+    return new AbsListView.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amab
  * JD-Core Version:    0.7.0.1
  */

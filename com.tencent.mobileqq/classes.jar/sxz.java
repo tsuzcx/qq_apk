@@ -1,22 +1,15 @@
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
-import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 
 public class sxz
   implements Runnable
 {
-  public sxz(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2, String paramString1, String paramString2) {}
+  public sxz(Leba paramLeba, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
   
   public void run()
   {
-    String str = Utils.b(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() > 0) && (LoginVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity2) != null))
-    {
-      LoginVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity2).setText(str);
-      LoginVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity2).setSelection(str.length());
-      LoginVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity2).setEnabled(true);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(new sya(this));
   }
 }
 

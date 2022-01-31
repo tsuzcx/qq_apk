@@ -1,30 +1,37 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.HashMap;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper.StartActivity;
+import java.util.Iterator;
+import java.util.List;
 
 public final class amro
-  implements INetEngine.IBreakDownFix
+  implements Runnable
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public amro(QZoneHelper.StartActivity paramStartActivity) {}
+  
+  public void run()
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
+    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+    if ((localObject == null) || (((List)localObject).size() <= 0))
     {
-      do
+      this.a.a(true, false);
+      return;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if ("com.tencent.mobileqq:qzone".equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName))
       {
+        if (QLog.isColorLevel()) {
+          QLog.d("QZoneHelper", 2, "QzoneProcess is exist");
+        }
+        this.a.a(true, true);
         return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
-      paramNetResp.c = 0L;
-      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
-      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
-    } while (!paramNetResp.contains("range="));
-    paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-    paramNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + paramNetReq.jdField_a_of_type_Long);
+      }
+    }
+    this.a.a(true, false);
   }
 }
 

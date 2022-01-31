@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
-import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem.FontItem;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
 
-public class xte
+class xte
   implements Runnable
 {
-  public xte(SubtitleDataManager paramSubtitleDataManager, String paramString, SubtitleItem.FontItem paramFontItem) {}
+  xte(xtd paramxtd) {}
   
   public void run()
   {
-    if (SubtitleDataManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.jdField_c_of_type_JavaLangString, SubtitleDataManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager) + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.d, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.d, SubtitleDataManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager));
+    this.a.a.a();
   }
 }
 

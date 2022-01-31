@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector android:constantSize="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020749" />
-    <item android:state_checked="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02074a" />
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020756" />
+    <item android:state_enabled="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020755" />
+    <item android:drawable="@drawable/midas_ic_add" />
 </selector>

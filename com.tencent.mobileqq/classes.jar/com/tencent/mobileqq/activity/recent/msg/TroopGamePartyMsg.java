@@ -10,7 +10,7 @@ public class TroopGamePartyMsg
 {
   public TroopGamePartyMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131438406);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131438424);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   

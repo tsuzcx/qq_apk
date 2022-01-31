@@ -23,12 +23,12 @@ import java.util.List;
 import msf.msgcomm.msg_comm.GroupInfo;
 import msf.msgcomm.msg_comm.Msg;
 import msf.msgcomm.msg_comm.MsgHead;
-import zqb;
+import zth;
 
 public class HCTopicMessageProcessor
   extends BaseMessageProcessorForTroopAndDisc
 {
-  public Comparator b = new zqb(this);
+  public Comparator b = new zth(this);
   
   public HCTopicMessageProcessor(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {

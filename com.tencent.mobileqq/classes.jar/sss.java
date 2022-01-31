@@ -1,27 +1,21 @@
-import android.text.format.DateFormat;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class sss
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public sss(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public sss(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str1 = StringUtil.a(this.a.c, 0, 32);
-    String str2 = StringUtil.a(this.a.e, 0, 32);
-    if (this.a.jdField_a_of_type_JavaUtilList != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format("(%d人)", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()) }));
-    }
-    for (;;)
+    paramDialogInterface.dismiss();
+    if (this.a.l)
     {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + " 创建于 " + DateFormat.format("yy-M-d", this.a.jdField_b_of_type_Long));
+      this.a.a("0X80081E7", 3);
       return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
     }
+    this.a.a("0X80081E4", 2);
   }
 }
 

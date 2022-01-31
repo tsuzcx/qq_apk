@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.data.Card;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-class sqm
-  implements Runnable
+public class sqm
+  implements DialogInterface.OnClickListener
 {
-  sqm(sql paramsql, Card paramCard) {}
+  public sqm(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_Sql.a, this.jdField_a_of_type_ComTencentMobileqqDataCard, false);
+    this.a.K();
   }
 }
 

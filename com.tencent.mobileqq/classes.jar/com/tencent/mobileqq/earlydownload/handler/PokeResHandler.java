@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import abrv;
+import abyw;
+import abyx;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.earlydownload.xmldata.PokeResData;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -55,34 +54,18 @@ public class PokeResHandler
       }
       return;
     }
-    try
-    {
-      String str1 = PokeItemHelper.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeResHandler_1228", 2, "doOnDownloadSuccess imagePath=" + str1);
-      }
-      if (!TextUtils.isEmpty(str1))
-      {
-        String str2 = str1 + "/poke";
-        FileUtils.a(str2, false);
-        FileUtils.a(paramString, str2, false);
-      }
-      PokeItemHelper.b(str1 + "/poke/");
+    String str = PokeItemHelper.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeResHandler_1228", 2, "doOnDownloadSuccess imagePath=" + str);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    ThreadManager.post(new abyw(this, str, paramString), 8, null, true);
     super.a(paramString);
   }
   
   public void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    ThreadManager.executeOnSubThread(new abrv(this));
+    ThreadManager.executeOnSubThread(new abyx(this));
   }
   
   public boolean a()

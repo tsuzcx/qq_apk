@@ -1,26 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
-import com.tencent.mobileqq.util.FaceDrawable.OnLoadingStateChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ajha
-  implements FaceDrawable.OnLoadingStateChangeListener
+public class ajha
+  implements View.OnClickListener
 {
-  ajha(ajgz paramajgz) {}
+  public ajha(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onLoadingStateChanged(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    Bitmap localBitmap = TroopUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.senderUin), null));
-    if ((paramInt1 == 0) && (paramInt2 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a.b(new ajhb(this, localBitmap));
+    if (PublishHomeWorkFragment.a(this.a).a(4) >= 6)
+    {
+      QQToast.a(this.a.getActivity(), String.format("最多布置%d个作业", new Object[] { Integer.valueOf(6) }), 0).a();
+      return;
     }
+    SearchReciteArticleFragment.a(this.a.getActivity(), PublishHomeWorkFragment.a(this.a));
+    TroopReportor.a("Grp_edu", "Grp_recite", "Assign_Clk", 0, 0, new String[] { PublishHomeWorkFragment.a(this.a) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajha
  * JD-Core Version:    0.7.0.1
  */

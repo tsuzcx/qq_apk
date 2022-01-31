@@ -1,12 +1,17 @@
-public abstract interface anoi
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.RandomSizeTextItem;
+
+public class anoi
+  implements annx
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public anoi(RandomSizeTextItem paramRandomSizeTextItem) {}
   
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
-  
-  public abstract void f(int paramInt);
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
+  {
+    return TroopFileUtils.b(paramString);
+  }
 }
 
 

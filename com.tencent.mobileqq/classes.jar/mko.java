@@ -1,16 +1,57 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher.ItemShowCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class mko
-  implements ItemShowDispatcher.ItemShowCallback
+  extends Handler
 {
-  public mko(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  public mko(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    ReportUtil.a(FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      i = paramMessage.arg1;
+      if (i > 0)
+      {
+        paramMessage = new BusinessInfoCheckUpdate.RedTypeInfo();
+        paramMessage.red_content.set(String.valueOf(i));
+        paramMessage.red_desc.set("{'cn':'#FF0000'}");
+        paramMessage.red_type.set(5);
+        ReadinjoyTabFrame.a(this.a).a(paramMessage);
+        ReadinjoyTabFrame.a(this.a).invalidate();
+      }
+      for (;;)
+      {
+        QLog.d("Q.readinjoy.4tab", 2, "update self icon red point, value : " + i);
+        return;
+        ReadinjoyTabFrame.a(this.a).b();
+        ReadinjoyTabFrame.a(this.a).invalidate();
+      }
+    }
+    int i = paramMessage.arg1;
+    int j = paramMessage.arg2;
+    if ((i <= 0) || ((j == 2131362409) && ((this.a.a() instanceof ReadInJoyVideoChannelFragment))))
+    {
+      ReadinjoyTabFrame.a(this.a).a(j);
+      return;
+    }
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+    localRedTypeInfo.red_type.set(0);
+    localRedTypeInfo.red_content.set(String.valueOf(i));
+    localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
+    QLog.d("Q.readinjoy.4tab", 2, "update indicator red point , index : " + paramMessage.obj + ", value : " + i);
   }
 }
 

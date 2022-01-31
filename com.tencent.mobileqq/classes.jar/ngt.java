@@ -1,19 +1,20 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.pgc.adapter.PgcSearchResultAdapter;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.job.AddInteractViewJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareQQData;
 
 public class ngt
+  extends AddInteractViewJob
 {
-  public TextView a;
-  public URLImageView a;
-  public TextView b;
-  
-  public ngt(PgcSearchResultAdapter paramPgcSearchResultAdapter, View paramView)
+  public ngt(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareQQData paramShareQQData)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362736));
-    this.b = ((TextView)paramView.findViewById(2131362655));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131371528));
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.a = ((String)a("result"));
+    return true;
   }
 }
 

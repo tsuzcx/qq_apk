@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aizt;
-import aizw;
-import aizx;
-import aizy;
-import aizz;
-import ajaa;
-import ajab;
+import ajnx;
+import ajoa;
+import ajob;
+import ajoc;
+import ajod;
+import ajoe;
+import ajof;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
@@ -54,7 +54,7 @@ public class TroopAppMgr
   TroopHandler jdField_a_of_type_ComTencentMobileqqAppTroopHandler;
   final Object jdField_a_of_type_JavaLangObject = new Object();
   String jdField_a_of_type_JavaLangString;
-  ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new aizw(this);
+  ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new ajoa(this);
   protected Map a;
   protected boolean a;
   protected final int b;
@@ -83,10 +83,10 @@ public class TroopAppMgr
     while (i < j)
     {
       int k = paramQQAppInterface[i];
-      aizt localaizt = new aizt();
-      localaizt.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getString("appinfo_date_" + k, "");
-      localaizt.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt("KEY_APP_LIST_TIME_STAMP_" + k, 0);
-      this.jdField_b_of_type_AndroidUtilSparseArray.put(k, localaizt);
+      ajnx localajnx = new ajnx();
+      localajnx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getString("appinfo_date_" + k, "");
+      localajnx.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt("KEY_APP_LIST_TIME_STAMP_" + k, 0);
+      this.jdField_b_of_type_AndroidUtilSparseArray.put(k, localajnx);
       i += 1;
     }
     f();
@@ -97,7 +97,7 @@ public class TroopAppMgr
   
   private void b(ArrayList paramArrayList, int paramInt)
   {
-    ThreadManager.post(new aizy(this, paramArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), paramInt), 8, null, false);
+    ThreadManager.post(new ajoc(this, paramArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), paramInt), 8, null, false);
   }
   
   private void d()
@@ -153,9 +153,9 @@ public class TroopAppMgr
       if (((ListIterator)localObject1).hasNext())
       {
         localObject3 = (TroopAIOAppInfo)((ListIterator)localObject1).next();
-        aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(((TroopAIOAppInfo)localObject3).groupType);
-        AssertUtils.a(localaizt);
-        localaizt.a(((TroopAIOAppInfo)localObject3).appid, (TroopAIOAppInfo)localObject3);
+        ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(((TroopAIOAppInfo)localObject3).groupType);
+        AssertUtils.a(localajnx);
+        localajnx.a(((TroopAIOAppInfo)localObject3).appid, (TroopAIOAppInfo)localObject3);
       }
     }
     localEntityManager.a();
@@ -163,22 +163,22 @@ public class TroopAppMgr
   
   public int a(int paramInt)
   {
-    aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localaizt != null) {}
+    ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localajnx != null) {}
     for (boolean bool = true;; bool = false)
     {
       AssertUtils.a(bool);
-      if (localaizt != null) {
+      if (localajnx != null) {
         break;
       }
       return 0;
     }
-    return localaizt.jdField_b_of_type_Int;
+    return localajnx.jdField_b_of_type_Int;
   }
   
   public TroopAIOAppInfo a(int paramInt1, int paramInt2)
   {
-    Object localObject1 = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt2, null);
+    Object localObject1 = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt2, null);
     if (localObject1 != null) {}
     for (boolean bool = true;; bool = false)
     {
@@ -192,7 +192,7 @@ public class TroopAppMgr
     {
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        localObject1 = (TroopAIOAppInfo)((aizt)localObject1).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
+        localObject1 = (TroopAIOAppInfo)((ajnx)localObject1).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
         if (localObject1 != null)
         {
           localObject1 = new TroopAIOAppInfo((TroopAIOAppInfo)localObject1);
@@ -227,9 +227,9 @@ public class TroopAppMgr
     ArrayList localArrayList = new ArrayList();
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      Object localObject2 = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+      Object localObject2 = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
       AssertUtils.a(localObject2);
-      localObject2 = ((aizt)localObject2).a().iterator();
+      localObject2 = ((ajnx)localObject2).a().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)((Iterator)localObject2).next();
@@ -299,13 +299,13 @@ public class TroopAppMgr
   {
     Object localObject = Calendar.getInstance();
     localObject = ((SimpleDateFormat)this.jdField_a_of_type_JavaLangThreadLocal.get()).format(((Calendar)localObject).getTime());
-    aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt, null);
-    if (localaizt != null) {}
+    ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt, null);
+    if (localajnx != null) {}
     for (boolean bool = true;; bool = false)
     {
       AssertUtils.a(bool);
-      if (localaizt != null) {
-        localaizt.jdField_a_of_type_JavaLangString = ((String)localObject);
+      if (localajnx != null) {
+        localajnx.jdField_a_of_type_JavaLangString = ((String)localObject);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putString("appinfo_date_" + paramInt, (String)localObject).commit();
       return;
@@ -314,13 +314,13 @@ public class TroopAppMgr
   
   public void a(int paramInt1, int paramInt2)
   {
-    aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt2);
+    ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt2);
     boolean bool;
-    if (localaizt != null)
+    if (localajnx != null)
     {
       bool = true;
       AssertUtils.a(bool);
-      if (localaizt != null) {
+      if (localajnx != null) {
         break label35;
       }
     }
@@ -330,14 +330,14 @@ public class TroopAppMgr
       return;
       bool = false;
       break;
-      TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)localaizt.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt1));
+      TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)localajnx.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt1));
       if (localTroopAIOAppInfo != null)
       {
-        AssertUtils.a(localaizt.a(localTroopAIOAppInfo));
+        AssertUtils.a(localajnx.a(localTroopAIOAppInfo));
         if (QLog.isColorLevel()) {
           QLog.d(".troop.troop_app", 2, new Object[] { "removeTroopAppByAppid appid: ", Integer.valueOf(paramInt1), "/", Integer.valueOf(paramInt2), " removed" });
         }
-        ThreadManager.post(new aizz(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), localTroopAIOAppInfo), 8, null, false);
+        ThreadManager.post(new ajod(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), localTroopAIOAppInfo), 8, null, false);
         return;
       }
     } while (!QLog.isColorLevel());
@@ -412,12 +412,12 @@ public class TroopAppMgr
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       return;
     }
-    aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(0, null);
-    if (localaizt != null) {}
+    ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(0, null);
+    if (localajnx != null) {}
     for (boolean bool = true;; bool = false)
     {
       AssertUtils.a(bool);
-      if (localaizt == null) {
+      if (localajnx == null) {
         break;
       }
       Iterator localIterator = paramArrayList.iterator();
@@ -428,7 +428,7 @@ public class TroopAppMgr
           break;
         }
         localInteger = (Integer)localIterator.next();
-      } while (localaizt.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localInteger));
+      } while (localajnx.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localInteger));
       QLog.w(".troop.troop_app", 1, "TroopAppMgr:sortTroopAppList error, there is no appid in hashtable");
       return;
     }
@@ -440,12 +440,12 @@ public class TroopAppMgr
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       return;
     }
-    aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localaizt != null) {}
+    ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localajnx != null) {}
     for (boolean bool = true;; bool = false)
     {
       AssertUtils.a(bool);
-      if (localaizt == null) {
+      if (localajnx == null) {
         break;
       }
       synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -455,11 +455,11 @@ public class TroopAppMgr
           break label104;
         }
         TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)localIterator.next();
-        localaizt.a(localTroopAIOAppInfo.appid, localTroopAIOAppInfo);
+        localajnx.a(localTroopAIOAppInfo.appid, localTroopAIOAppInfo);
       }
     }
     label104:
-    ThreadManager.post(new aizx(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), paramInt, paramArrayList), 8, null, false);
+    ThreadManager.post(new ajob(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), paramInt, paramArrayList), 8, null, false);
   }
   
   public void a(ArrayList paramArrayList1, ArrayList paramArrayList2)
@@ -500,16 +500,16 @@ public class TroopAppMgr
     {
       try
       {
-        aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(0, null);
-        if (localaizt != null) {
+        ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(0, null);
+        if (localajnx != null) {
           bool = true;
         }
         AssertUtils.a(bool);
-        if (localaizt == null) {
+        if (localajnx == null) {
           return;
         }
         if (paramBoolean) {
-          localaizt.jdField_a_of_type_Int |= 0x2;
+          localajnx.jdField_a_of_type_Int |= 0x2;
         } else {
           localObject.jdField_a_of_type_Int &= 0xFFFFFFFD;
         }
@@ -524,13 +524,13 @@ public class TroopAppMgr
     {
       try
       {
-        aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt, null);
+        ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt, null);
         boolean bool;
-        if (localaizt != null)
+        if (localajnx != null)
         {
           bool = true;
           AssertUtils.a(bool);
-          if (localaizt != null) {}
+          if (localajnx != null) {}
         }
         else
         {
@@ -538,7 +538,7 @@ public class TroopAppMgr
           continue;
         }
         if (paramBoolean) {
-          localaizt.jdField_a_of_type_Int |= 0x1;
+          localajnx.jdField_a_of_type_Int |= 0x1;
         } else {
           localObject.jdField_a_of_type_Int &= 0xFFFFFFFE;
         }
@@ -571,7 +571,7 @@ public class TroopAppMgr
     //   8: iload_1
     //   9: aconst_null
     //   10: invokevirtual 287	android/util/SparseArray:get	(ILjava/lang/Object;)Ljava/lang/Object;
-    //   13: checkcast 67	aizt
+    //   13: checkcast 67	ajnx
     //   16: astore 4
     //   18: aload 4
     //   20: ifnull +20 -> 40
@@ -591,7 +591,7 @@ public class TroopAppMgr
     //   41: istore_2
     //   42: goto -17 -> 25
     //   45: aload 4
-    //   47: getfield 501	aizt:jdField_a_of_type_Int	I
+    //   47: getfield 501	ajnx:jdField_a_of_type_Int	I
     //   50: istore_1
     //   51: iload_1
     //   52: iconst_1
@@ -614,7 +614,7 @@ public class TroopAppMgr
     //   0	74	1	paramInt	int
     //   24	40	2	bool1	boolean
     //   1	34	3	bool2	boolean
-    //   16	30	4	localaizt	aizt
+    //   16	30	4	localajnx	ajnx
     //   67	5	4	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -654,7 +654,7 @@ public class TroopAppMgr
   {
     boolean bool2 = false;
     int i = paramTroopAIOAppInfo.appid;
-    Object localObject = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramTroopAIOAppInfo.groupType);
+    Object localObject = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramTroopAIOAppInfo.groupType);
     boolean bool1;
     if (localObject != null)
     {
@@ -670,7 +670,7 @@ public class TroopAppMgr
       return true;
       bool1 = false;
       break;
-      localObject = (TroopAIOAppInfo)((aizt)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+      localObject = (TroopAIOAppInfo)((ajnx)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
     } while (localObject == null);
     AssertUtils.a(paramTroopAIOAppInfo.hashVal);
     AssertUtils.a(((TroopAIOAppInfo)localObject).hashVal);
@@ -703,12 +703,12 @@ public class TroopAppMgr
   public boolean a(List paramList, int paramInt)
   {
     boolean bool2 = true;
-    aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt, null);
+    ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt, null);
     if (paramList != null)
     {
       bool1 = true;
       AssertUtils.a(bool1);
-      if (localaizt == null) {
+      if (localajnx == null) {
         break label54;
       }
     }
@@ -716,7 +716,7 @@ public class TroopAppMgr
     for (boolean bool1 = true;; bool1 = false)
     {
       AssertUtils.a(bool1);
-      if ((localaizt != null) && (paramList != null)) {
+      if ((localajnx != null) && (paramList != null)) {
         break label59;
       }
       return false;
@@ -726,7 +726,7 @@ public class TroopAppMgr
     label59:
     new ArrayList();
     Object localObject;
-    if (paramList.size() != localaizt.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size())
+    if (paramList.size() != localajnx.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size())
     {
       bool1 = bool2;
       localObject = this.jdField_a_of_type_JavaLangObject;
@@ -739,7 +739,7 @@ public class TroopAppMgr
     {
       try
       {
-        bool2 = localaizt.a(paramList);
+        bool2 = localajnx.a(paramList);
         bool1 = bool2;
         if (bool2)
         {
@@ -752,8 +752,8 @@ public class TroopAppMgr
         }
         if (bool1)
         {
-          localaizt.a(paramList, paramInt);
-          b(localaizt.a(), paramInt);
+          localajnx.a(paramList, paramInt);
+          b(localajnx.a(), paramInt);
         }
         return bool1;
       }
@@ -819,9 +819,9 @@ public class TroopAppMgr
         if (i < j)
         {
           int k = arrayOfInt[i];
-          Object localObject3 = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(k);
+          Object localObject3 = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(k);
           AssertUtils.a(localObject3);
-          localObject3 = (TroopAIOAppInfo)((aizt)localObject3).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          localObject3 = (TroopAIOAppInfo)((ajnx)localObject3).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           if (localObject3 != null)
           {
             localArrayList.add(localObject3);
@@ -833,7 +833,7 @@ public class TroopAppMgr
         else
         {
           if (bool) {
-            ThreadManager.post(new ajaa(this, localArrayList, localEntityManager), 8, null, false);
+            ThreadManager.post(new ajoe(this, localArrayList, localEntityManager), 8, null, false);
           }
           if (QLog.isColorLevel()) {
             QLog.d(".troop.troop_app", 2, "appid" + paramInt + "clearLocalTroopAppRedPoint," + bool);
@@ -851,17 +851,17 @@ public class TroopAppMgr
   
   public void b(int paramInt1, int paramInt2)
   {
-    aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt2);
-    if (localaizt != null) {}
+    ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt2);
+    if (localajnx != null) {}
     for (boolean bool = true;; bool = false)
     {
       AssertUtils.a(bool);
-      if (localaizt != null) {
+      if (localajnx != null) {
         break;
       }
       return;
     }
-    localaizt.jdField_b_of_type_Int = paramInt1;
+    localajnx.jdField_b_of_type_Int = paramInt1;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("KEY_APP_LIST_TIME_STAMP_" + paramInt2, paramInt1).commit();
   }
   
@@ -878,7 +878,7 @@ public class TroopAppMgr
     //   8: iload_1
     //   9: aconst_null
     //   10: invokevirtual 287	android/util/SparseArray:get	(ILjava/lang/Object;)Ljava/lang/Object;
-    //   13: checkcast 67	aizt
+    //   13: checkcast 67	ajnx
     //   16: astore 4
     //   18: aload 4
     //   20: ifnull +20 -> 40
@@ -898,7 +898,7 @@ public class TroopAppMgr
     //   41: istore_2
     //   42: goto -17 -> 25
     //   45: aload 4
-    //   47: getfield 501	aizt:jdField_a_of_type_Int	I
+    //   47: getfield 501	ajnx:jdField_a_of_type_Int	I
     //   50: istore_1
     //   51: iload_1
     //   52: iconst_2
@@ -921,7 +921,7 @@ public class TroopAppMgr
     //   0	74	1	paramInt	int
     //   24	40	2	bool1	boolean
     //   1	34	3	bool2	boolean
-    //   16	30	4	localaizt	aizt
+    //   16	30	4	localajnx	ajnx
     //   67	5	4	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -933,20 +933,20 @@ public class TroopAppMgr
   public boolean b(TroopAIOAppInfo paramTroopAIOAppInfo)
   {
     int i = paramTroopAIOAppInfo.appid;
-    aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramTroopAIOAppInfo.groupType);
-    if (localaizt != null) {}
+    ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramTroopAIOAppInfo.groupType);
+    if (localajnx != null) {}
     for (boolean bool = true;; bool = false)
     {
       AssertUtils.a(bool);
-      if (localaizt != null) {
+      if (localajnx != null) {
         break;
       }
       return false;
     }
-    if ((TroopAIOAppInfo)localaizt.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i)) != null) {
+    if ((TroopAIOAppInfo)localajnx.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i)) != null) {
       return true;
     }
-    localaizt.a(paramTroopAIOAppInfo.appid, paramTroopAIOAppInfo);
+    localajnx.a(paramTroopAIOAppInfo.appid, paramTroopAIOAppInfo);
     return false;
   }
   
@@ -979,7 +979,7 @@ public class TroopAppMgr
         i += 1;
       }
       localReqBody.rpt_app_click.set(localArrayList);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajab(this), localReqBody.toByteArray(), "OidbSvc.0xa1e", 2590, 0);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajof(this), localReqBody.toByteArray(), "OidbSvc.0xa1e", 2590, 0);
       return;
     }
     finally {}
@@ -997,13 +997,13 @@ public class TroopAppMgr
   
   public boolean c(int paramInt)
   {
-    aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt, null);
+    ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt, null);
     boolean bool;
-    if (localaizt != null)
+    if (localajnx != null)
     {
       bool = true;
       AssertUtils.a(bool);
-      if (localaizt != null) {
+      if (localajnx != null) {
         break label34;
       }
     }
@@ -1015,7 +1015,7 @@ public class TroopAppMgr
       bool = false;
       break;
       localCalendar = Calendar.getInstance();
-    } while (((SimpleDateFormat)this.jdField_a_of_type_JavaLangThreadLocal.get()).format(localCalendar.getTime()).equals(localaizt.jdField_a_of_type_JavaLangString));
+    } while (((SimpleDateFormat)this.jdField_a_of_type_JavaLangThreadLocal.get()).format(localCalendar.getTime()).equals(localajnx.jdField_a_of_type_JavaLangString));
     return true;
   }
   
@@ -1035,11 +1035,11 @@ public class TroopAppMgr
       {
         int k = arrayOfInt[i];
         a(false, k);
-        aizt localaizt = (aizt)this.jdField_b_of_type_AndroidUtilSparseArray.get(k);
-        AssertUtils.a(localaizt);
-        localaizt.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        localaizt.a();
-        localaizt.jdField_b_of_type_Int = 0;
+        ajnx localajnx = (ajnx)this.jdField_b_of_type_AndroidUtilSparseArray.get(k);
+        AssertUtils.a(localajnx);
+        localajnx.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+        localajnx.a();
+        localajnx.jdField_b_of_type_Int = 0;
         i += 1;
       }
       return;
@@ -1048,7 +1048,7 @@ public class TroopAppMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopAppMgr
  * JD-Core Version:    0.7.0.1
  */

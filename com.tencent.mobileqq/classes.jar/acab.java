@@ -1,84 +1,37 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
 
 public class acab
-  extends SosoInterface.OnLocationListener
+  implements Runnable
 {
-  public acab(EnterpriseQQManager paramEnterpriseQQManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public acab(FavroamingManager paramFavroamingManager, String[] paramArrayOfString, TransferRequest paramTransferRequest) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  public void run()
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("EnterpriseQQManager", 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if (paramInt == 0) {
-      paramInt = i;
-    }
-    acac localacac;
-    label219:
-    while (paramInt != 0)
+    if (!FileUtils.a(this.jdField_a_of_type_ArrayOfJavaLangString[1]))
     {
-      ??? = ???.a;
-      double d1 = ???.a;
-      double d2 = ???.b;
-      EnterpriseQQManager.a(this.a, d1);
-      EnterpriseQQManager.b(this.a, d2);
-      EnterpriseQQManager.a(this.a, System.currentTimeMillis());
-      synchronized (EnterpriseQQManager.a())
-      {
-        if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-          break label219;
-        }
-        Iterator localIterator1 = EnterpriseQQManager.a(this.a).iterator();
-        do
-        {
-          if (!localIterator1.hasNext()) {
-            break;
-          }
-          localacac = (acac)localIterator1.next();
-        } while (localacac == null);
-        this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localacac.a, localacac.b, true, d1, d2);
+      Object localObject = new File(this.jdField_a_of_type_ArrayOfJavaLangString[1]);
+      localObject = new DownloadTask(this.jdField_a_of_type_ArrayOfJavaLangString[0], (File)localObject);
+      ((DownloadTask)localObject).l = true;
+      if (DownloaderFactory.a((DownloadTask)localObject, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) {
+        QLog.e("FavroamingManager", 1, "collectEmoji fail to download thumbFile: " + this.jdField_a_of_type_ArrayOfJavaLangString[1]);
       }
-      paramInt = 0;
-      continue;
-      EnterpriseQQManager.a(this.a).clear();
     }
-    label362:
-    for (;;)
-    {
-      EnterpriseQQManager.a(this.a, null);
-      EnterpriseQQManager.a(this.a, null);
+    while (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController == null) {
       return;
-      synchronized (EnterpriseQQManager.a())
-      {
-        if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-          break label362;
-        }
-        Iterator localIterator2 = EnterpriseQQManager.a(this.a).iterator();
-        while (localIterator2.hasNext())
-        {
-          localacac = (acac)localIterator2.next();
-          if (localacac != null) {
-            this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localacac.a, localacac.b, false, 0.0D, 0.0D);
-          }
-        }
-      }
-      EnterpriseQQManager.a(this.a).clear();
     }
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acab
  * JD-Core Version:    0.7.0.1
  */

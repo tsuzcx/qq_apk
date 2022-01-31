@@ -26,13 +26,13 @@ import java.util.HashMap;
 import java.util.List;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import xda;
-import xdb;
-import xdd;
-import xdf;
-import xdg;
-import xdh;
-import xdi;
+import xgf;
+import xgg;
+import xgi;
+import xgk;
+import xgl;
+import xgm;
+import xgn;
 
 public class QWalletIPCModule
   extends QIPCModule
@@ -169,14 +169,14 @@ public class QWalletIPCModule
       String str = paramBundle.getString("md5");
       long l = paramBundle.getLong("md5_time");
       boolean bool = paramBundle.getBoolean("is_force_unzip");
-      ((PreloadManager)paramQQAppInterface.getManager(150)).a((String)localObject, str, l, new xdh(this, paramInt), bool);
+      ((PreloadManager)paramQQAppInterface.getManager(150)).a((String)localObject, str, l, new xgm(this, paramInt), bool);
       return null;
     }
     Object localObject = paramBundle.getStringArray("url");
     if (localObject == null) {}
     for (localObject = null;; localObject = Arrays.asList((Object[])localObject))
     {
-      paramBundle = new xdg(this, (ResultReceiver)paramBundle.getParcelable("receiver"));
+      paramBundle = new xgl(this, (ResultReceiver)paramBundle.getParcelable("receiver"));
       ((PreloadManager)paramQQAppInterface.getManager(150)).a((List)localObject, paramBundle);
       return null;
     }
@@ -222,7 +222,7 @@ public class QWalletIPCModule
       {
         return null;
         paramBundle = (RedPacketInfoBase)paramBundle.getParcelable("key_red_packet_info");
-        localObject = new xdi(this, (Bundle)localObject, localResultReceiver);
+        localObject = new xgn(this, (Bundle)localObject, localResultReceiver);
         if (paramInt == 1) {
           localIRedPacket.getSkin(paramBundle, (IRedPacket.OnGetSkinListener)localObject);
         }
@@ -263,7 +263,7 @@ public class QWalletIPCModule
       if (QLog.isColorLevel()) {
         QLog.d("QWalletIPCModule", 2, "onCall getFilePathByResID");
       }
-      ThreadManager.post(new xda(this, paramBundle, paramInt, (AppRuntime)localObject), 5, null, true);
+      ThreadManager.post(new xgf(this, paramBundle, paramInt, (AppRuntime)localObject), 5, null, true);
     }
     do
     {
@@ -275,7 +275,7 @@ public class QWalletIPCModule
           if (QLog.isColorLevel()) {
             QLog.d("QWalletIPCModule", 2, "onCall downloadModule:" + System.currentTimeMillis());
           }
-          ThreadManager.post(new xdb(this, paramBundle, (AppRuntime)localObject, paramString), 5, null, true);
+          ThreadManager.post(new xgg(this, paramBundle, (AppRuntime)localObject, paramString), 5, null, true);
           callbackResult(paramInt, null);
         }
         else
@@ -293,7 +293,7 @@ public class QWalletIPCModule
           }
           if ("request_gold_msg_entry".equals(paramString))
           {
-            ThreadManager.post(new xdd(this, (AppRuntime)localObject), 5, null, true);
+            ThreadManager.post(new xgi(this, (AppRuntime)localObject), 5, null, true);
           }
           else
           {
@@ -350,7 +350,7 @@ public class QWalletIPCModule
                   }
                   localObject = new Bundle();
                   if (paramInt == 0) {
-                    paramBundle.c(new xdf(this, (Bundle)localObject, paramInt, paramString, paramBundle));
+                    paramBundle.c(new xgk(this, (Bundle)localObject, paramInt, paramString, paramBundle));
                   }
                   ((Bundle)localObject).putInt("isUpdateSuccess", 0);
                   ((Bundle)localObject).putInt("updateResult", paramInt);

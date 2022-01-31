@@ -1,15 +1,22 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TroopFileVideoItemBuilder;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class vjw
-  implements Runnable
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public vjw(AIOGalleryScene paramAIOGalleryScene) {}
+  public RelativeLayout a;
+  public TextView a;
+  public BubbleImageView a;
+  public MessageProgressView a;
+  public RelativeLayout b;
+  public int e;
+  public int f;
   
-  public void run()
-  {
-    AIOGalleryScene.a(this.a).show();
-  }
+  public vjw(TroopFileVideoItemBuilder paramTroopFileVideoItemBuilder) {}
 }
 
 

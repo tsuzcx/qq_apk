@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import afow;
-import afox;
-import afoz;
-import afpa;
-import afpb;
-import afpj;
-import afpk;
-import afpm;
+import agcc;
+import agcd;
+import agcf;
+import agcg;
+import agch;
+import agcp;
+import agcq;
+import agcs;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -56,18 +56,18 @@ public class ScanOcrActivity
 {
   public int a;
   private long jdField_a_of_type_Long;
-  SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new afpj(this);
+  SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new agcp(this);
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
   private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afpa(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new afow(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new agcg(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new agcc(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ScanSuccessView jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView;
   public OcrCamera.CameraCallback a;
   private OcrCamera jdField_a_of_type_ComTencentMobileqqOcrOcrCamera;
-  OcrControl.OcrCallback jdField_a_of_type_ComTencentMobileqqOcrOcrControl$OcrCallback = new afpk(this);
+  OcrControl.OcrCallback jdField_a_of_type_ComTencentMobileqqOcrOcrControl$OcrCallback = new agcq(this);
   private OcrControl jdField_a_of_type_ComTencentMobileqqOcrOcrControl;
   private ScanOcrActivity.OcrResultCache jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$OcrResultCache;
   public MaskView a;
@@ -93,7 +93,7 @@ public class ScanOcrActivity
   public ScanOcrActivity()
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback = new afpb(this);
+    this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback = new agch(this);
   }
   
   private void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
@@ -112,7 +112,7 @@ public class ScanOcrActivity
         ReportController.b(null, "dc00898", "", "", "0X8008A1F", "0X8008A1F", 0, 0, "", "", "", "");
       }
       f();
-      ThreadManager.post(new afpm(this, paramInt), 5, null, false);
+      ThreadManager.post(new agcs(this, paramInt), 5, null, false);
       if (paramLong > 0L)
       {
         if (this.jdField_b_of_type_Int != 1) {
@@ -128,7 +128,7 @@ public class ScanOcrActivity
       return;
       if (this.jdField_a_of_type_Int == 1)
       {
-        QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439017, 0).a();
+        QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439045, 0).a();
         if ((this.jdField_b_of_type_Int != 0) && (this.jdField_b_of_type_Int != 4)) {
           break label377;
         }
@@ -144,15 +144,15 @@ public class ScanOcrActivity
         break;
         if (paramInt == 1)
         {
-          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439019, 0).a();
+          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439047, 0).a();
           break label238;
         }
         if (paramInt == 0)
         {
-          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439016, 0).a();
+          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439044, 0).a();
           break label238;
         }
-        QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439018, 0).a();
+        QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439046, 0).a();
         break label238;
         finish();
       }
@@ -164,7 +164,7 @@ public class ScanOcrActivity
   public static void a(Context paramContext, String paramString, int paramInt)
   {
     if (!NetworkUtil.d(paramContext)) {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439015, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439043, 0).a();
     }
     do
     {
@@ -191,7 +191,7 @@ public class ScanOcrActivity
         }
         if (NetworkUtil.d(this))
         {
-          this.jdField_a_of_type_AndroidViewViewGroup.postDelayed(new afoz(this), 200L);
+          this.jdField_a_of_type_AndroidViewViewGroup.postDelayed(new agcf(this), 200L);
           this.jdField_c_of_type_Boolean = true;
           this.jdField_e_of_type_JavaLangString = paramString;
           this.jdField_d_of_type_Boolean = paramBoolean;
@@ -202,7 +202,7 @@ public class ScanOcrActivity
         }
         else
         {
-          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439015, 0).a();
+          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439043, 0).a();
         }
       }
       finally {}
@@ -234,7 +234,7 @@ public class ScanOcrActivity
         this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.c();
         this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.e();
         this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.d();
-        this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new afox(this), 600L);
+        this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new agcd(this), 600L);
       }
       label178:
       while (QLog.isColorLevel())
@@ -338,9 +338,9 @@ public class ScanOcrActivity
       localLayoutParams.addRule(12);
       localLayoutParams.bottomMargin = AIOUtils.a(40.0F, getResources());
       this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842803);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842902);
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131432998));
+      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131433015));
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
       return;
       label216:
@@ -438,26 +438,26 @@ public class ScanOcrActivity
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
     getWindow().addFlags(128);
-    setContentView(2130970461);
+    setContentView(2130970502);
     a();
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362822));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369716));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370764));
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView = ((ScanOcrView)findViewById(2131370765));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370762);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370760);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363227));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370761));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370763));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362840));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369793));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370904));
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView = ((ScanOcrView)findViewById(2131370905));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370902);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370900);
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370901));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370903));
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_e_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView = ((MaskView)findViewById(2131365541));
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView = ((MaskView)findViewById(2131365568));
     if ((this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig.tips))) {}
     String str;
-    for (this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig.tips;; this.jdField_c_of_type_JavaLangString = getResources().getString(2131439010))
+    for (this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig.tips;; this.jdField_c_of_type_JavaLangString = getResources().getString(2131439038))
     {
       str = getIntent().getStringExtra("ocr_pic_path");
       this.jdField_b_of_type_Int = getIntent().getIntExtra("ocr_from_where", -1);
@@ -482,12 +482,12 @@ public class ScanOcrActivity
       {
         this.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setIsDisplayRect(true);
         this.jdField_a_of_type_Int = 1;
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370766));
-        this.jdField_c_of_type_JavaLangString = getResources().getString(2131439011);
+        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370906));
+        this.jdField_c_of_type_JavaLangString = getResources().getString(2131439039);
         paramBundle = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
         paramBundle.topMargin = this.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a().bottom;
         this.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131429905);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131429911);
       }
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
@@ -511,7 +511,7 @@ public class ScanOcrActivity
       paramBundle = this.jdField_a_of_type_JavaLangString;
       break;
       label631:
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439020, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439048, 0).a();
       finish();
       continue;
       label653:
@@ -596,10 +596,10 @@ public class ScanOcrActivity
     {
     default: 
       return;
-    case 2131363227: 
+    case 2131363245: 
       doOnBackPressed();
       return;
-    case 2131370761: 
+    case 2131370901: 
       paramView = new Intent();
       paramView.setClass(this, PhotoListActivity.class);
       paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ScanOcrActivity.class.getName());

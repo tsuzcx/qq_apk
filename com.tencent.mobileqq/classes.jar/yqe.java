@@ -1,29 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAccountHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class yqe
-  implements View.OnTouchListener
+  extends FriendListObserver
 {
-  public yqe(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  public yqe(CmGameAccountHandler paramCmGameAccountHandler) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
     }
-    for (;;)
+    if ((CmGameAccountHandler.a(this.a) != null) && (CmGameAccountHandler.a(this.a).get(paramString + "nick") != null))
     {
-      return true;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.a.jdField_a_of_type_AndroidWidgetButton.performClick();
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      int i = ((Integer)CmGameAccountHandler.a(this.a).remove(paramString + "nick")).intValue();
+      this.a.a(i, paramString, 1);
     }
   }
 }

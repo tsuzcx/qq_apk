@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.predownload;
 
-import aiee;
+import aish;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,7 +25,7 @@ public abstract class AbsPreDownloadTask
   
   public final void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new aiee(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aish(this));
   }
   
   public String toString()
@@ -35,7 +35,7 @@ public abstract class AbsPreDownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask
  * JD-Core Version:    0.7.0.1
  */

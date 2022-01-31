@@ -258,8 +258,8 @@ public class QFixApplicationImpl
         }
         label298:
         localObject2 = ((JSONObject)localObject1).optString("revision", "");
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "345599");
-        if (!"345599".equals(localObject2))
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "349884");
+        if (!"349884".equals(localObject2))
         {
           Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision not match.");
           bool1 = false;

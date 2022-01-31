@@ -1,20 +1,24 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
 
 public class rnu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rnu(BaseChatPie paramBaseChatPie) {}
+  public rnu(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.e != null) && (this.a.e.isShowing())) {
-      this.a.e.dismiss();
+    paramView = (ImageView)paramView.findViewById(2131362767);
+    if (paramView != null)
+    {
+      int i = 0;
+      if (paramView.getVisibility() == 0) {
+        i = 4;
+      }
+      paramView.setVisibility(i);
     }
-    while ((this.a.f == null) || (!this.a.f.isShowing())) {
-      return;
-    }
-    this.a.f.dismiss();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew;
 
-import aktb;
-import aktc;
+import alir;
+import alis;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.LogUtility;
 import com.tencent.tmassistantsdk.ITMAssistantCallBackListener;
@@ -38,13 +38,13 @@ public class MyAppApi$QQDownloadListener
     this.a.b = true;
     MyAppApi.a(this.a, true);
     LogUtility.b("MyAppApi", "onDownloadTaskStateChanged");
-    ThreadManager.getSubThreadHandler().post(new aktb(this, paramTMAssistantCallYYBParamStruct, paramInt1, paramInt2, paramString));
+    ThreadManager.getSubThreadHandler().post(new alir(this, paramTMAssistantCallYYBParamStruct, paramInt1, paramInt2, paramString));
   }
   
   public void onQQDownloaderInvalid()
   {
     LogUtility.b("MyAppApi", "应用宝挂了");
-    ThreadManager.getSubThreadHandler().post(new aktc(this));
+    ThreadManager.getSubThreadHandler().post(new alis(this));
   }
   
   public void onServiceFree()

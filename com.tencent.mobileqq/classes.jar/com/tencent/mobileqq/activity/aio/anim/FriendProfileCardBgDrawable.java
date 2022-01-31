@@ -22,7 +22,7 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import ukr;
+import unr;
 
 public class FriendProfileCardBgDrawable
   extends Drawable
@@ -799,7 +799,7 @@ public class FriendProfileCardBgDrawable
   {
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new ukr(this));
+      new Handler(Looper.getMainLooper()).post(new unr(this));
       return;
     }
     b();

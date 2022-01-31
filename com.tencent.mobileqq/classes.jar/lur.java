@@ -1,19 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeUgcPlainSocial;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeSmallSocial;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class lur
   implements View.OnClickListener
 {
-  public lur(FeedItemCellTypeUgcPlainSocial paramFeedItemCellTypeUgcPlainSocial) {}
+  public lur(FeedItemCellTypeSmallSocial paramFeedItemCellTypeSmallSocial) {}
   
   public void onClick(View paramView)
   {
-    ReadInJoyUtils.a(this.a.jdField_a_of_type_AndroidContentContext, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
-    ReadInJoyBaseAdapter.a(((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).e());
+    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (paramView != null) {
+      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

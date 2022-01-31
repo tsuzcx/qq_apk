@@ -1,17 +1,4 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
-
-public class ampf
-  implements Runnable
-{
-  public ampf(TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
-  
-  public void run()
-  {
-    QQToast.a(BaseApplicationImpl.getApplication(), "上传的语音、图片、视频数量达到了今日上限。", 0).a();
-  }
-}
+public class ampf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

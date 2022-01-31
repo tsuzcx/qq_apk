@@ -1,15 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.data.MessageForReplyText;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vbf
+public final class vbf
   implements Runnable
 {
-  public vbf(ReplyTextItemBuilder paramReplyTextItemBuilder, vbp paramvbp, MessageForReplyText paramMessageForReplyText, URLDrawable paramURLDrawable) {}
+  public vbf(Context paramContext) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Vbp, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131434501), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
   }
 }
 

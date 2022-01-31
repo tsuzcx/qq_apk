@@ -1,27 +1,40 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.NetChangedListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAiDictMgr;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.VasUtils;
+import com.tencent.wordsegment.WordSegment;
+import java.util.Locale;
 
-public class aasb
-  implements NetChangedListener
+public final class aasb
+  implements Runnable
 {
-  public aasb(ARMapActivity paramARMapActivity) {}
+  public aasb(QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARMapActivity", 2, "onMessageConnect");
+    try
+    {
+      if (ArkAiDictMgr.a(this.a))
+      {
+        WordSegment.uninit();
+        int i = WordSegment.init(ArkAppCenter.e() + '/');
+        if (i != 0)
+        {
+          ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));
+          return;
+        }
+        ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData success", new Object[0]));
+        ArkAiDictMgr.b = true;
+        VasUtils.a(this.a);
+        return;
+      }
     }
-    if (!this.a.a) {
-      ARMapActivity.d(this.a);
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      ArkAppCenter.b("ArkApp.Dict", "reloadWordData, UnsatisfiedLinkError, err:" + localUnsatisfiedLinkError.getMessage());
+      return;
     }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARMapActivity", 2, "onConnClose");
-    }
+    ArkAppCenter.b("ArkApp.Dict", String.format("reloadWordData, dict flag is off", new Object[0]));
   }
 }
 

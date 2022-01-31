@@ -24,7 +24,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.HeaderViewListAdapter;
 import com.tencent.widget.ListView;
-import mie;
+import mjm;
 
 public class ReadInJoyXListView
   extends ReadInJoyBaseListView
@@ -32,7 +32,7 @@ public class ReadInJoyXListView
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   private ReadInJoyAnimBaseManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager;
-  private ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new mie(this);
+  private ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new mjm(this);
   protected boolean c;
   private boolean d;
   protected int e;
@@ -111,7 +111,7 @@ public class ReadInJoyXListView
     {
       return;
     }
-    setOverscrollHeader(getResources().getDrawable(2130838586));
+    setOverscrollHeader(getResources().getDrawable(2130838590));
   }
   
   public void a(int paramInt, View paramView, ListView paramListView) {}

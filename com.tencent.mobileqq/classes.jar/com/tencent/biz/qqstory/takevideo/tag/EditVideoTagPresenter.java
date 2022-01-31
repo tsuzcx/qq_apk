@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Nonnull;
-import okd;
-import okf;
+import olx;
+import olz;
 
 public class EditVideoTagPresenter
 {
@@ -106,7 +106,7 @@ public class EditVideoTagPresenter
     if (paramEditBehavior.jdField_a_of_type_Boolean) {}
     for (paramEditBehavior = new GetTagListRequest(paramEditBehavior.jdField_a_of_type_Int, paramEditBehavior.jdField_a_of_type_Long, "", 20);; paramEditBehavior = new GetTagListRequest("", 20))
     {
-      CmdTaskManger.a().a(paramEditBehavior, new okd(this));
+      CmdTaskManger.a().a(paramEditBehavior, new olx(this));
       return;
     }
   }
@@ -147,7 +147,7 @@ public class EditVideoTagPresenter
     if (paramEditBehavior.jdField_a_of_type_Boolean) {}
     for (paramEditBehavior = new GetTagListRequest(paramEditBehavior.jdField_a_of_type_Int, paramEditBehavior.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, 20);; paramEditBehavior = new GetTagListRequest(this.jdField_a_of_type_JavaLangString, 20))
     {
-      CmdTaskManger.a().a(paramEditBehavior, new okf(this));
+      CmdTaskManger.a().a(paramEditBehavior, new olz(this));
       return;
     }
   }

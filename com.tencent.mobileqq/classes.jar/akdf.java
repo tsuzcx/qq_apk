@@ -1,28 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import java.util.concurrent.TimeUnit;
+import mqq.os.MqqHandler;
 
 public class akdf
-  implements WebSoService.CallBack
+  implements Runnable
 {
-  public akdf(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
+  public akdf(NewUpgradeDialog paramNewUpgradeDialog) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10005;
+    int i = 10;
+    long l = 1500L / 10;
+    for (;;)
+    {
+      if (i > 0)
+      {
+        ThreadManager.getUIHandler().post(new akdg(this, (10 - i) * 10));
+        try
+        {
+          TimeUnit.MILLISECONDS.sleep(l);
+          i -= 1;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter$HybridWebReportInfo.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+    if (!NewUpgradeDialog.a(this.a)) {
+      NewUpgradeDialog.b(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akdf
  * JD-Core Version:    0.7.0.1
  */

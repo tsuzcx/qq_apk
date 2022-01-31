@@ -1,38 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoVote;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.InteractPasterLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
-import dov.com.tencent.biz.qqstory.takevideo.interact.EditVideoInteract;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 
-public class anlr
-  implements DialogInterface.OnClickListener
+public final class anlr
+  implements Parcelable.Creator
 {
-  static
+  public QIMFilterCategoryItem a(Parcel paramParcel)
   {
-    if (!EditVideoInteract.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    return new QIMFilterCategoryItem(paramParcel);
   }
   
-  public anlr(EditVideoInteract paramEditVideoInteract) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public QIMFilterCategoryItem[] a(int paramInt)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    VoteLayer.VoteItem localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractEditVideoInteract.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localVoteItem == null)) {
-      throw new AssertionError();
-    }
-    EditVideoVote.a(paramDialogInterface, localVoteItem);
-    paramDialogInterface.putInt("interact_type", EditVideoInteract.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractEditVideoInteract));
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractEditVideoInteract.a.a(38, paramDialogInterface);
+    return new QIMFilterCategoryItem[paramInt];
   }
 }
 

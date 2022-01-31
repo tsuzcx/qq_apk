@@ -1,25 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
-public class aits
-  implements DialogInterface.OnClickListener
+class aits
+  implements Runnable
 {
-  public aits(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  aits(aitq paramaitq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    SubmitHomeWorkFragment.a(this.a);
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aits
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,28 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class aevk
-  implements IphonePickerView.IphonePickListener
+class aevk
+  implements Runnable
 {
-  public aevk(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
+  aevk(aevi paramaevi, PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult) {}
   
-  public void onConfirmBtClicked()
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo.uploadStatus == 3)
     {
-      NearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.h, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      QQToast.a(BaseApplicationImpl.getContext(), 2, "发表成功", 1).a();
+      new NowVideoReporter().h("video_public").i("public_suc").d(SmallVideoCameraCaptureFragment.a).a(2).b(this.jdField_a_of_type_Aevi.a.a);
+      return;
     }
-  }
-  
-  public void onItemSelected(int paramInt1, int paramInt2)
-  {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.h.setTag(Byte.valueOf((byte)(paramInt1 + 1)));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.h.setText(NearbyProfileEditTribePanel.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel).getText(0, paramInt1));
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "发表失败，请重试", 1).a();
+    QLog.i("ImageFeedsUploader", 1, "upload failed, errMsg=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.i + "code=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a);
+    new NowVideoReporter().h("video_public").i("public_fail").d(SmallVideoCameraCaptureFragment.a).a(2).b(this.jdField_a_of_type_Aevi.a.a);
   }
 }
 

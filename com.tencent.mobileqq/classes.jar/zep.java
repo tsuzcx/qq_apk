@@ -1,15 +1,36 @@
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import com.tencent.qphone.base.util.QLog;
 
 public class zep
-  implements Comparator
+  extends BroadcastReceiver
 {
-  public zep(NewFriendManager paramNewFriendManager) {}
+  public zep(GuardManager paramGuardManager) {}
   
-  public int a(NewFriendMessage paramNewFriendMessage1, NewFriendMessage paramNewFriendMessage2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return (int)(paramNewFriendMessage2.a - paramNewFriendMessage1.a);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, paramContext);
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      if (this.a.jdField_a_of_type_Long > 0L) {
+        this.a.a(false);
+      }
+      ArkMediaPlayer.b();
+    }
+    while (!"android.intent.action.SCREEN_ON".equals(paramContext)) {
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null)) {
+      this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    ArkMediaPlayer.a();
   }
 }
 

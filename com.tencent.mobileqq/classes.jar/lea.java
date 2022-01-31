@@ -1,44 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar.Tab;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.mobileqq.widget.BounceScrollView.DrawFinishedListener;
 
 public class lea
-  extends ReadInJoyObserver
+  implements BounceScrollView.DrawFinishedListener
 {
-  public lea(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public lea(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
-    }
-    if (paramInt1 == 0)
+    if (ReadInJoySelfActivity.a(this.a))
     {
-      ReadInJoyHelper.a(this.a.app, paramInt2, paramInt3);
-      ReadInJoyHelper.j(this.a.app, paramBoolean);
-      ReadInJoyBaseFragment localReadInJoyBaseFragment = ReadInJoyNewFeedsActivity.a(this.a).a(ReadInJoyNewFeedsActivity.a(this.a)).a();
-      if ((localReadInJoyBaseFragment != null) && ((localReadInJoyBaseFragment instanceof ReadInJoySelfFragment))) {
-        ((ReadInJoySelfFragment)localReadInJoyBaseFragment).a(paramInt2, paramInt3, paramBoolean);
-      }
+      ReadInJoySelfActivity.a(this.a, false);
+      PublicTracker.a("self_tab_cost", null);
     }
-  }
-  
-  public void a(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
-    }
-    this.a.runOnUiThread(new leb(this));
   }
 }
 

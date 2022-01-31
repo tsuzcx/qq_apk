@@ -1,6 +1,6 @@
 package com.tencent.mqp.app.sec;
 
-import akjr;
+import akzh;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -36,7 +36,7 @@ public class d
   
   public static void e1(int paramInt, Object[] paramArrayOfObject, byte[] paramArrayOfByte)
   {
-    ThreadManager.post(new akjr(paramInt, paramArrayOfObject, paramArrayOfByte), 8, null, false);
+    ThreadManager.post(new akzh(paramInt, paramArrayOfObject, paramArrayOfByte), 8, null, false);
   }
   
   public static void s(ToServiceMsg paramToServiceMsg)
@@ -127,7 +127,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mqp.app.sec.d
  * JD-Core Version:    0.7.0.1
  */

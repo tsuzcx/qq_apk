@@ -17,7 +17,7 @@ public class MSFProvideServlet
   {
     AppConstants.Action localAction = (AppConstants.Action)paramIntent.getSerializableExtra("action");
     Bundle localBundle = paramIntent.getExtras();
-    switch (ahjt.a[localAction.ordinal()])
+    switch (ahxv.a[localAction.ordinal()])
     {
     }
     do
@@ -31,7 +31,7 @@ public class MSFProvideServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     paramPacket = (AppConstants.Action)paramIntent.getSerializableExtra("action");
-    switch (ahjt.a[paramPacket.ordinal()])
+    switch (ahxv.a[paramPacket.ordinal()])
     {
     default: 
       return;
@@ -41,7 +41,7 @@ public class MSFProvideServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.MSFProvideServlet
  * JD-Core Version:    0.7.0.1
  */

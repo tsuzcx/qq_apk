@@ -1,26 +1,22 @@
-import com.tencent.av.app.GAudioUIObserver;
-import com.tencent.av.ui.VideoNetStateBar;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
 import com.tencent.qphone.base.util.QLog;
 
 public class kcz
-  extends GAudioUIObserver
+  implements Runnable
 {
-  public kcz(VideoNetStateBar paramVideoNetStateBar) {}
+  public kcz(EffectFilterTextPager paramEffectFilterTextPager) {}
   
-  protected void a(long paramLong)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong);
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(1), Float.valueOf(this.a.jdField_a_of_type_Float), Float.valueOf(this.a.b) });
+      if (QLog.isColorLevel()) {
+        QLog.e("EffectFilterTextPager", 2, "[childLock] trigger animation");
+      }
     }
-    this.a.i();
-  }
-  
-  protected void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong);
-    }
-    this.a.i();
   }
 }
 

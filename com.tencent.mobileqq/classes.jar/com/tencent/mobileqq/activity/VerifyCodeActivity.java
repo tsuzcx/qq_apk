@@ -15,17 +15,17 @@ import com.tencent.mobileqq.widget.ClearableEditText;
 import mqq.manager.VerifyCodeManager;
 import mqq.observer.ServerNotifyObserver;
 import mqq.os.MqqHandler;
-import udo;
-import udp;
-import udq;
-import udr;
-import uds;
+import ugo;
+import ugp;
+import ugq;
+import ugr;
+import ugs;
 
 public class VerifyCodeActivity
   extends IphoneTitleBarActivity
 {
   final int jdField_a_of_type_Int = 4;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new uds(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ugs(this);
   private View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   public TextView a;
@@ -40,7 +40,7 @@ public class VerifyCodeActivity
   public VerifyCodeActivity()
   {
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverServerNotifyObserver = new udo(this);
+    this.jdField_a_of_type_MqqObserverServerNotifyObserver = new ugo(this);
   }
   
   private void a(Intent paramIntent)
@@ -98,11 +98,11 @@ public class VerifyCodeActivity
           }
           this.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(i);
           this.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey((String)localObject2);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131371893));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131372063));
           this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonStyle(1);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new udr(this));
-          this.jdField_a_of_type_AndroidViewView = findViewById(2131372303);
-          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372304));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new ugr(this));
+          this.jdField_a_of_type_AndroidViewView = findViewById(2131372476);
+          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372477));
           this.jdField_a_of_type_MqqManagerVerifyCodeManager = ((VerifyCodeManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(6));
           this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
           this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -128,9 +128,9 @@ public class VerifyCodeActivity
   
   private void c()
   {
-    setTitle(2131433207);
-    setLeftButton(2131432998, new udp(this));
-    setRightHighlightButton(2131434517, new udq(this));
+    setTitle(2131433224);
+    setLeftButton(2131433015, new ugp(this));
+    setRightHighlightButton(2131434534, new ugq(this));
   }
   
   public void a()
@@ -185,10 +185,10 @@ public class VerifyCodeActivity
       super.finish();
       return false;
     }
-    super.setContentView(2130971663);
-    setContentBackgroundResource(2130838210);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372302));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372305));
+    super.setContentView(2130971711);
+    setContentBackgroundResource(2130838214);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372475));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372478));
     a(paramBundle);
     paramBundle = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(LoginActivity.class);
     if (paramBundle != null) {

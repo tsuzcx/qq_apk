@@ -1,51 +1,21 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.DecryptCallback;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
+import com.tencent.biz.qqstory.newshare.mode.ShareGroupCardShareMode;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager;
 
-public final class ngh
-  implements Runnable
+public class ngh
+  extends UploadImageJob
 {
-  public ngh(String paramString, QQProgressDialog paramQQProgressDialog, Context paramContext, StoryShareEncryptHelper.DecryptCallback paramDecryptCallback) {}
-  
-  public void run()
+  public ngh(ShareGroupCardShareMode paramShareGroupCardShareMode, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt params:" + this.jdField_a_of_type_JavaLangString);
-    }
-    long l = System.currentTimeMillis();
-    StoryShareTranslateTokenRequest localStoryShareTranslateTokenRequest = new StoryShareTranslateTokenRequest();
-    localStoryShareTranslateTokenRequest.c = 2;
-    localStoryShareTranslateTokenRequest.b = this.jdField_a_of_type_JavaLangString;
-    QQProgressDialog localQQProgressDialog1;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
-    {
-      QQProgressDialog localQQProgressDialog2 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-      localQQProgressDialog1 = localQQProgressDialog2;
-      if (!localQQProgressDialog2.isShowing())
-      {
-        localQQProgressDialog2.show();
-        localQQProgressDialog1 = localQQProgressDialog2;
-      }
-    }
-    for (;;)
-    {
-      CmdTaskManger.a().a(localStoryShareTranslateTokenRequest, new ngi(this, l, localQQProgressDialog1));
-      return;
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-      {
-        localQQProgressDialog1 = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext);
-        localQQProgressDialog1.a("正在加载...");
-        localQQProgressDialog1.show();
-      }
-      else
-      {
-        localQQProgressDialog1 = null;
-      }
-    }
+    super(paramString);
+  }
+  
+  public boolean b()
+  {
+    ShareGroupCardShareMode.a(this.a, (String)a("UploadImageJob_out_image_url"));
+    ((ShareGroupManager)SuperManager.a(7)).a(this.a.d, ShareGroupCardShareMode.a(this.a));
+    return true;
   }
 }
 

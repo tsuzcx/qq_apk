@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
 
-class veo
-  implements TroopTopicMgr.DoLikeCallback
+public class veo
+  implements DialogInterface.OnClickListener
 {
-  veo(ven paramven) {}
+  public veo(ReplyTextItemBuilder paramReplyTextItemBuilder) {}
   
-  public void a(int paramInt, JSONObject paramJSONObject)
-  {
-    if (paramInt == 0) {}
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

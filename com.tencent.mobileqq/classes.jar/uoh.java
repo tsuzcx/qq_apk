@@ -1,33 +1,27 @@
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
 
 public class uoh
-  implements Runnable
+  extends View
 {
-  public uoh(DoodleMsgLayout paramDoodleMsgLayout, int paramInt) {}
-  
-  public void run()
+  public uoh(XBubbleAnimation paramXBubbleAnimation, Context paramContext)
   {
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent start create drawable:" + this.jdField_a_of_type_Int);
-    if (!DoodleResHelper.a().b(1, this.jdField_a_of_type_Int)) {
-      DoodleResHelper.a().b(1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
+    super(paramContext);
+  }
+  
+  protected boolean verifyDrawable(Drawable paramDrawable)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new uoi(this));
     }
-    Drawable localDrawable;
-    do
-    {
-      return;
-      localDrawable = DoodleResHelper.a().a(2, this.jdField_a_of_type_Int, true);
-      if (localDrawable != null) {
-        ((URLDrawable)localDrawable).startDownload();
-      }
-    } while (this.jdField_a_of_type_Int != DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout));
-    new Handler(Looper.getMainLooper()).post(new uoi(this, localDrawable));
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent finish create drawable:" + this.jdField_a_of_type_Int);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new uoj(this));
+    }
+    return true;
   }
 }
 

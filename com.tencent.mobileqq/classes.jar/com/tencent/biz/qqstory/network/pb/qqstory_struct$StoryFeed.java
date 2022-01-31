@@ -15,6 +15,7 @@ public final class qqstory_struct$StoryFeed
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public qqstory_struct.GeneralFeed general_feed = new qqstory_struct.GeneralFeed();
   public qqstory_struct.GeneralRecommendFeed general_recommend_feed = new qqstory_struct.GeneralRecommendFeed();
+  public qqstory_struct.MultiRecommend multi_recommend_feed = new qqstory_struct.MultiRecommend();
   public qqstory_struct.ShareGroupFeed share_group_feed = new qqstory_struct.ShareGroupFeed();
   public qqstory_struct.ShareGroupRecommendFeed share_group_recommend_feed = new qqstory_struct.ShareGroupRecommendFeed();
   public qqstory_struct.TagFeed tag_feed = new qqstory_struct.TagFeed();
@@ -23,7 +24,7 @@ public final class qqstory_struct$StoryFeed
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66 }, new String[] { "type", "feed_id", "general_feed", "share_group_feed", "general_recommend_feed", "share_group_recommend_feed", "banner_feed", "tag_feed" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, null, null, null, null, null }, StoryFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74 }, new String[] { "type", "feed_id", "general_feed", "share_group_feed", "general_recommend_feed", "share_group_recommend_feed", "banner_feed", "tag_feed", "multi_recommend_feed" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, null, null, null, null, null, null }, StoryFeed.class);
   }
 }
 

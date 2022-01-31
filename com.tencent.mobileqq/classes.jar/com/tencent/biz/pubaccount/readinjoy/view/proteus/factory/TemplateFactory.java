@@ -45,6 +45,11 @@ public class TemplateFactory
     return paramString.a();
   }
   
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
   public void a()
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();

@@ -1,132 +1,19 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoAutoPlayController;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.VideoFeedsViewHolder;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
 
 public class mga
-  implements INetInfoHandler
+  implements Runnable
 {
-  public mga(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mga(VideoUIManager paramVideoUIManager) {}
   
-  public void onNetMobile2None()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "net change: mobile -> none");
+    if ((VideoUIManager.a(this.a) != null) && (VideoUIManager.a(this.a).a != null)) {
+      PublicAccountReportUtils.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", VideoReporter.a(VideoUIManager.a(this.a).a.mVideoVid, VideoUIManager.a(this.a).a.innerUniqueID, (int)VideoUIManager.a(this.a).a.mChannelID, null), false);
     }
-    ReadInJoyBaseAdapter.a(this.a).b(false);
-    if ((!this.a.a()) || (!this.a.jdField_a_of_type_Boolean)) {}
-    while (!this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a()) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a();
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "net change: wifi -> mobile");
-    }
-    if ((this.a.c == 0) || (this.a.c == 70)) {
-      ReadInJoyBaseAdapter.a(this.a).post(new mgk(this));
-    }
-    do
-    {
-      return;
-      ReadInJoyBaseAdapter.a(this.a).b(true);
-    } while ((!this.a.a()) || (!this.a.jdField_a_of_type_Boolean));
-    ReadInJoyBaseAdapter.a(this.a).post(new mgc(this));
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "net change: none -> mobile");
-    }
-    if ((this.a.c == 0) || (this.a.c == 70)) {
-      ReadInJoyBaseAdapter.a(this.a).post(new mgb(this));
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (ReadInJoyBaseAdapter.a(this.a) != null) {
-          ReadInJoyBaseAdapter.a(this.a).b(false);
-        }
-      } while ((!this.a.a()) || (!this.a.jdField_a_of_type_Boolean));
-      if ((!this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a()) && (!this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c()) && (ReadInJoyBaseAdapter.a(this.a).a()))
-      {
-        ReadInJoyBaseAdapter.a(this.a).post(new mgd(this));
-        return;
-      }
-    } while ((this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$VideoFeedsViewHolder == null) || (!this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c()) || (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.b() != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$VideoFeedsViewHolder.a.a) || (!ReadInJoyBaseAdapter.a(this.a).a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "net change: continue to play before video ,id : " + this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.b());
-    }
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.b();
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "net change: none -> wifi");
-    }
-    if ((this.a.c == 0) || (this.a.c == 70)) {
-      ReadInJoyBaseAdapter.a(this.a).post(new mgi(this));
-    }
-    do
-    {
-      do
-      {
-        return;
-        ReadInJoyBaseAdapter.a(this.a).b(true);
-      } while ((!this.a.a()) || (!this.a.jdField_a_of_type_Boolean));
-      if ((!this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a()) && (!this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c()))
-      {
-        ReadInJoyBaseAdapter.a(this.a).post(new mgj(this));
-        return;
-      }
-    } while ((this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$VideoFeedsViewHolder == null) || (!this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c()) || (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.b() != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$VideoFeedsViewHolder.a.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "net change: continue to play before video ,id : " + this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.b());
-    }
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.b();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "net change: wifi -> mobile,forwarding event to none2mobile handle");
-    }
-    if ((this.a.c == 0) || (this.a.c == 70)) {
-      ReadInJoyBaseAdapter.a(this.a).post(new mgg(this));
-    }
-    do
-    {
-      return;
-      ReadInJoyBaseAdapter.a(this.a).b(false);
-    } while ((this.a.h) || (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$VideoFeedsViewHolder == null));
-    ReadInJoyBaseAdapter.a(this.a).post(new mgh(this));
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "net change: wifi -> none.");
-    }
-    if ((this.a.c == 0) || (this.a.c == 70)) {
-      ReadInJoyBaseAdapter.a(this.a).post(new mge(this));
-    }
-    do
-    {
-      return;
-      ReadInJoyBaseAdapter.a(this.a).b(false);
-    } while ((this.a.h) || (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$VideoFeedsViewHolder == null));
-    ReadInJoyBaseAdapter.a(this.a).post(new mgf(this));
   }
 }
 

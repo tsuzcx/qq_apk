@@ -1,15 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileBaseExpandableListAdapter.CloudItemHolder;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
 public class acpk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acpk(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
+  public acpk(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    UniformDownloadMgr.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+    Object localObject = paramView.getTag();
+    int i;
+    if ((localObject instanceof QfileCloudFileBaseExpandableListAdapter.CloudItemHolder))
+    {
+      paramView = (QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)paramView.getTag();
+      i = paramView.c;
+      paramView = (WeiYunFileInfo)paramView.a;
+    }
+    for (;;)
+    {
+      this.a.a(paramView, i);
+      do
+      {
+        return;
+      } while (!(localObject instanceof ImageHolder));
+      paramView = (WeiYunFileInfo)((ImageHolder)paramView.getTag()).a;
+      i = -1;
+    }
   }
 }
 

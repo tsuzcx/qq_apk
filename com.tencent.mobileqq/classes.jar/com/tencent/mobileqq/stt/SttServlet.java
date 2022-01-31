@@ -78,7 +78,7 @@ public class SttServlet
           {
             paramQQAppInterface = "1";
             ((HashMap)localObject).put("param_FailCode", paramQQAppInterface);
-            ((HashMap)localObject).put("appversion", "7.6.0");
+            ((HashMap)localObject).put("appversion", "7.6.3");
             paramLong.a("", "PttSttRequestV2", false, 0L, 0L, (HashMap)localObject, "");
             label379:
             if (bool) {
@@ -278,7 +278,7 @@ public class SttServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.stt.SttServlet
  * JD-Core Version:    0.7.0.1
  */

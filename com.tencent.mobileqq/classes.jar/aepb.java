@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aepb
-  implements Runnable
+public final class aepb
+  implements DialogInterface.OnClickListener
 {
-  public aepb(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, BounceScrollView paramBounceScrollView, int paramInt) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.scrollBy(0, this.jdField_a_of_type_Int);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

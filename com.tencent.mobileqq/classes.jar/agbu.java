@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
+import com.tencent.mobileqq.ocr.OcrControl;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-public class agbu
+class agbu
   implements Runnable
 {
-  public agbu(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
+  agbu(agbt paramagbt, OcrRecogResult paramOcrRecogResult, ARCloudReqInfo paramARCloudReqInfo) {}
   
   public void run()
   {
-    this.a.l();
-    this.a.j();
+    if (this.jdField_a_of_type_Agbt.a.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult.filename = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.b;
+    }
   }
 }
 

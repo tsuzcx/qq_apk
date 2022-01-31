@@ -1,49 +1,109 @@
-import android.text.Editable;
-import android.text.SpannableString;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.XPanelContainer;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
-public class vnw
-  implements Runnable
+public final class vnw
+  extends AsyncTask
 {
-  public vnw(BaseTroopChatPie paramBaseTroopChatPie, boolean paramBoolean, String paramString1, String paramString2, int paramInt) {}
+  public vnw(Context paramContext, int paramInt, URLDrawable paramURLDrawable, QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, PicMessageExtraData paramPicMessageExtraData) {}
   
-  public void run()
+  protected Integer a(Void... paramVarArgs)
   {
-    int i;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().delete(i - 1, i);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly(false);
     }
-    SpannableString localSpannableString = AtTroopMemberSpan.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.y(), this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx, true);
-    if ((localSpannableString == null) || (localSpannableString.length() == 0)) {}
+    URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = ((MessageForPic)this.jdField_a_of_type_ComTencentImageURLDrawable.getTag()).path;
+    paramVarArgs = AIOGalleryUtils.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs);
+    if (paramVarArgs != null)
+    {
+      AIOGalleryUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, paramVarArgs);
+      return Integer.valueOf(2);
+    }
+    paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
+    if (!AbsDownloader.a(paramVarArgs)) {
+      return Integer.valueOf(1);
+    }
+    paramVarArgs = AbsDownloader.a(paramVarArgs);
+    if (paramVarArgs != null) {}
+    label299:
+    label310:
+    for (paramVarArgs = SecUtil.getFileMd5(paramVarArgs.getAbsolutePath());; paramVarArgs = null)
+    {
+      if ((paramVarArgs == null) || ("".equals(paramVarArgs))) {
+        return Integer.valueOf(1);
+      }
+      FileUtils.c(AppConstants.aU + ".nomedia");
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      int i;
+      StringBuilder localStringBuilder;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null) && (this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.isDiyDouTu()))
+      {
+        i = 1;
+        if (i == 0) {
+          break label310;
+        }
+        localStringBuilder = new StringBuilder().append("_diydoutu@");
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId)) {
+          break label299;
+        }
+        str1 = "0";
+      }
+      label220:
+      for (String str1 = str1;; str1 = "")
+      {
+        paramVarArgs = AppConstants.aU + str2 + paramVarArgs + str1 + ".jpg";
+        try
+        {
+          this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(paramVarArgs);
+          return Integer.valueOf(AIOGalleryUtils.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData));
+        }
+        catch (IOException paramVarArgs)
+        {
+          paramVarArgs.printStackTrace();
+          QLog.d("AIOGalleryUtils", 1, paramVarArgs, new Object[0]);
+          return Integer.valueOf(1);
+        }
+        i = 0;
+        break;
+        str1 = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId;
+        break label220;
+      }
+    }
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    if (paramInteger.intValue() == 0) {}
     do
     {
       return;
-      int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().insert(i, localSpannableString);
-      BaseTroopChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie).a(1);
-      if (this.jdField_a_of_type_Int == 1)
+      if (paramInteger.intValue() == 1)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Press_AIOhead_sendatmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131434584, 0).b(this.jdField_a_of_type_Int);
         return;
       }
-    } while (this.jdField_a_of_type_Int != 4);
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("0")))
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_atallmber_sendatallmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-      return;
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Input_atmber_sendatmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+      if (paramInteger.intValue() == 2)
+      {
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, 2131434501, 0).b(this.jdField_a_of_type_Int);
+        return;
+      }
+    } while (paramInteger.intValue() != 3);
   }
 }
 

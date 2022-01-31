@@ -1,21 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader;
+import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader.CacheContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class nsj
-  extends Handler
+  extends SimpleJob
 {
-  private nsj(QQStoryMainController paramQQStoryMainController) {}
+  public nsj(ShareGroupDateListPageLoader paramShareGroupDateListPageLoader) {}
   
-  public void handleMessage(Message paramMessage)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (this.a.a == null) {
+      this.a.a = new ShareGroupDateListPageLoader.CacheContext(this.a, this.a.c);
     }
-    this.a.a.a(false);
+    this.a.d = "";
+    ShareGroupDateListPageLoader.a(this.a);
+    return null;
   }
 }
 

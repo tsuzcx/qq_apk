@@ -688,23 +688,23 @@ public class af
     //   344: aload 4
     //   346: ldc_w 695
     //   349: invokevirtual 522	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   352: astore_1
-    //   353: aload_1
+    //   352: astore_2
+    //   353: aload_2
     //   354: ifnull +182 -> 536
-    //   357: aload_1
+    //   357: aload_2
     //   358: invokevirtual 698	java/lang/String:trim	()Ljava/lang/String;
     //   361: invokevirtual 700	java/lang/String:length	()I
     //   364: ifle +172 -> 536
-    //   367: aload_1
+    //   367: aload_2
     //   368: invokestatic 648	com/tencent/mobileqq/msf/core/d:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/msf/core/d;
-    //   371: astore_2
-    //   372: aload_2
+    //   371: astore_1
+    //   372: aload_1
     //   373: invokevirtual 650	com/tencent/mobileqq/msf/core/d:c	()Ljava/lang/String;
     //   376: ifnull -323 -> 53
-    //   379: aload_2
+    //   379: aload_1
     //   380: invokevirtual 652	com/tencent/mobileqq/msf/core/d:d	()I
     //   383: ifle -330 -> 53
-    //   386: aload_1
+    //   386: aload_2
     //   387: invokevirtual 698	java/lang/String:trim	()Ljava/lang/String;
     //   390: ldc_w 415
     //   393: ldc 176

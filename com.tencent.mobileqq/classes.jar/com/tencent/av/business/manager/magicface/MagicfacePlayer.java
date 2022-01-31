@@ -4,7 +4,7 @@ import com.tencent.av.AVLog;
 import com.tencent.mobileqq.magicface.service.SoundPoolUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.io.File;
-import jgm;
+import jfx;
 
 public class MagicfacePlayer
 {
@@ -16,7 +16,7 @@ public class MagicfacePlayer
   public String a;
   public MagicfaceBaseDecoder.MagicPlayListener b;
   public String b;
-  MagicfaceBaseDecoder.MagicPlayListener c = new jgm(this);
+  MagicfaceBaseDecoder.MagicPlayListener c = new jfx(this);
   
   public MagicfacePlayer()
   {

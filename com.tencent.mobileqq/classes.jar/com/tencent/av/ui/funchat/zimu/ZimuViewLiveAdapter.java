@@ -76,8 +76,8 @@ public class ZimuViewLiveAdapter
       localView = paramLayoutInflater.inflate(paramInt2, paramViewGroup, false);
     }
     paramLayoutInflater = a(paramInt1);
-    paramView = localView.findViewById(2131363045);
-    paramViewGroup = (TextView)localView.findViewById(2131363614);
+    paramView = localView.findViewById(2131363063);
+    paramViewGroup = (TextView)localView.findViewById(2131363632);
     paramViewGroup.setTextSize(0, this.jdField_a_of_type_Int);
     if (paramLayoutInflater.jdField_a_of_type_Boolean)
     {
@@ -131,7 +131,7 @@ public class ZimuViewLiveAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return a(this.jdField_a_of_type_AndroidViewLayoutInflater, paramInt, paramView, paramViewGroup, 2130969282);
+    return a(this.jdField_a_of_type_AndroidViewLayoutInflater, paramInt, paramView, paramViewGroup, 2130969283);
   }
 }
 

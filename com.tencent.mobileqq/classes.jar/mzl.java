@@ -1,26 +1,13 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryConstant;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.io.File;
+import com.tencent.biz.qqstory.base.QQStoryFeedManager;
 
 public class mzl
-  extends SimpleJob
+  implements Runnable
 {
-  public mzl(VideoCompositeManager paramVideoCompositeManager, String paramString, long paramLong) {}
+  public mzl(QQStoryFeedManager paramQQStoryFeedManager) {}
   
-  protected String a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "start composite vid:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    paramJobContext = VideoCompositeHelper.a(this.jdField_a_of_type_JavaLangString);
-    new File(QQStoryConstant.c).mkdirs();
-    paramVarArgs = QQStoryConstant.c + System.currentTimeMillis() + ".mp4";
-    new VideoCompositeHelper().a(paramJobContext, paramVarArgs, new mzm(this, paramJobContext));
-    return null;
+    QQStoryFeedManager.a(this.a);
   }
 }
 

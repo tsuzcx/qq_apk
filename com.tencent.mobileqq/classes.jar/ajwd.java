@@ -1,50 +1,35 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.VideoCallBack;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import org.json.JSONObject;
 
-public class ajwd
-  extends Handler
+class ajwd
+  implements FrameSprite.OnFrameEndListener
 {
-  public ajwd(VideoCallBack paramVideoCallBack, QQProgressDialog paramQQProgressDialog, String paramString, Activity paramActivity) {}
+  ajwd(ajwc paramajwc) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    int i;
-    do
-    {
+    if (this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView == null) {
       return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      }
-      i = paramMessage.arg1;
-      if (i != 0) {
-        break;
-      }
-      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("video_dir", paramMessage);
-      localIntent.putExtra("thumb_dir", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    } while (!QLog.isColorLevel());
-    QLog.i("VideoCallBack", 2, "encode success: " + paramMessage);
-    return;
-    this.jdField_a_of_type_AndroidAppActivity.setResult(2);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    QLog.e("VideoCallBack", 1, "error! ret = " + i);
+    }
+    if (this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds / 1000L > this.a.jdField_a_of_type_Int + this.a.jdField_b_of_type_Int)
+    {
+      String str = this.a.jdField_a_of_type_JavaLangString + this.a.jdField_b_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
+      this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(str, new ajwe(this));
+      return;
+    }
+    this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
+    if (this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
+      this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    }
+    this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_Int, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwd
  * JD-Core Version:    0.7.0.1
  */

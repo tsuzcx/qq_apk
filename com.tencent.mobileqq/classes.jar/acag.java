@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.emosm.view.DragSortListView.DragScrollProfile;
 
 public class acag
-  implements Runnable
+  implements DragSortListView.DragScrollProfile
 {
-  public acag(EquipmentLockImpl paramEquipmentLockImpl) {}
+  public acag(DragSortListView paramDragSortListView) {}
   
-  public void run()
+  public float a(float paramFloat, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DevLock", 2, "notification runnable run.");
-    }
-    this.a.b();
+    return this.a.e * paramFloat;
   }
 }
 

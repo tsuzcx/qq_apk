@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.javahook;
 
-import adlx;
+import advw;
 import android.os.Build.VERSION;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
@@ -11,7 +11,7 @@ import mqq.app.AppRuntime;
 public class TimeoutExceptionHooker
 {
   private static int jdField_a_of_type_Int;
-  private static adlx jdField_a_of_type_Adlx = new adlx(null);
+  private static advw jdField_a_of_type_Advw = new advw(null);
   
   public static void a()
   {
@@ -20,7 +20,7 @@ public class TimeoutExceptionHooker
     }
     try
     {
-      JavaHookBridge.findAndReplaceMethod(Class.forName("java.lang.Daemons$FinalizerWatchdogDaemon"), "finalizerTimedOut", new Object[] { Object.class, jdField_a_of_type_Adlx });
+      JavaHookBridge.findAndReplaceMethod(Class.forName("java.lang.Daemons$FinalizerWatchdogDaemon"), "finalizerTimedOut", new Object[] { Object.class, jdField_a_of_type_Advw });
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -60,7 +60,7 @@ public class TimeoutExceptionHooker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.TimeoutExceptionHooker
  * JD-Core Version:    0.7.0.1
  */

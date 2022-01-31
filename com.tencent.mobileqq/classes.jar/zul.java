@@ -1,38 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.UncommonMessageProcessor;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class zul
-  implements MediaPlayer.OnPreparedListener
+  extends SendMessageHandler.SendMessageRunnable
 {
-  public zul(ARMusicController paramARMusicController) {}
+  public zul(UncommonMessageProcessor paramUncommonMessageProcessor, ToServiceMsg paramToServiceMsg) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + ARMusicController.b(this.a));
-      }
-      this.a.a.seekTo(0);
-      ARMusicController.b(this.a, true);
-      if (ARMusicController.b(this.a))
-      {
-        this.a.a.start();
-        ARMusicController.c(this.a, false);
-      }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      paramMediaPlayer.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.setTimeout(this.c);
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putInt("retryIndex", this.b);
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putLong("timeOut", this.c);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageUncommonMessageProcessor.a.c(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zul
  * JD-Core Version:    0.7.0.1
  */

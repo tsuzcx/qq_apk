@@ -51,7 +51,7 @@ public class ComponentNotIntrest
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969581, this, true).findViewById(2131366836);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969588, this, true).findViewById(2131366879);
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)

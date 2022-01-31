@@ -1,42 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
 
 public class akfg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akfg(CustomHorizontalScrollView paramCustomHorizontalScrollView) {}
+  public akfg(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = this.a.getScrollX();
-    if (i == this.a.jdField_a_of_type_Int)
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
     {
-      int j = i % (this.a.b + this.a.c);
-      if (this.a.e + i >= this.a.d) {
-        return;
-      }
-      if (j < this.a.b / 2) {
-        this.a.smoothScrollBy(-j, 0);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Int = i;
-        return;
-        if (j >= this.a.b / 2)
-        {
-          int k = this.a.b;
-          int m = this.a.c;
-          this.a.smoothScrollBy(k + m - j, 0);
-        }
-      }
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 0);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
     }
-    this.a.jdField_a_of_type_Int = i;
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 5L);
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfg
  * JD-Core Version:    0.7.0.1
  */

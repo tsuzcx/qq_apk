@@ -1,23 +1,16 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
-import cooperation.qwallet.plugin.TenUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
 
-class xab
-  implements DialogInterface.OnClickListener
+public class xab
+  implements View.OnClickListener
 {
-  xab(xaa paramxaa, HbSkinInfo paramHbSkinInfo) {}
+  public xab(PayCodeEntryActivity paramPayCodeEntryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentHbSkinInfo.a.pop_dialog.left_url;
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      TenUtils.startQQBrowser(this.jdField_a_of_type_Xaa.a.getActivity(), paramDialogInterface);
-    }
+    this.a.a("payCodeEntry.back", "actQQWlxclick", "0005");
+    PayCodeEntryActivity.a(this.a);
   }
 }
 

@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class kwa
-  implements DialogInterface.OnClickListener
 {
-  public kwa(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public kwa(CustomWebView paramCustomWebView)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    this.jdField_a_of_type_Int = 1;
   }
 }
 

@@ -23,10 +23,10 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
 import org.json.JSONObject;
-import oyk;
-import oyl;
-import oym;
-import oyn;
+import pae;
+import paf;
+import pag;
+import pah;
 
 public class ViewPluginLoader
 {
@@ -80,7 +80,7 @@ public class ViewPluginLoader
       String str = "http://" + this.jdField_b_of_type_JavaLangString + "?_bid=" + this.jdField_a_of_type_JavaLangString;
       BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
       long l = System.currentTimeMillis();
-      if ((!HtmlOffline.a(BaseApplicationImpl.getContext(), str, new oyk(this, l, localWerewolvesHandler, localBaseApplication))) && (QLog.isColorLevel()))
+      if ((!HtmlOffline.a(BaseApplicationImpl.getContext(), str, new pae(this, l, localWerewolvesHandler, localBaseApplication))) && (QLog.isColorLevel()))
       {
         QLog.i("ViewPluginLoader", 2, "plugin:" + this.jdField_b_of_type_JavaLangString + " transToLocalUrl: return false");
         return;
@@ -114,7 +114,7 @@ public class ViewPluginLoader
     }
     for (;;)
     {
-      ThreadManager.post(new oyn(this, paramJSONObject, paramQQAppInterface, new oym(this, paramQQAppInterface, bool2, bool1)), 8, null, false);
+      ThreadManager.post(new pah(this, paramJSONObject, paramQQAppInterface, new pag(this, paramQQAppInterface, bool2, bool1)), 8, null, false);
       return;
       if ((i == 3) || (i == 2))
       {
@@ -273,7 +273,7 @@ public class ViewPluginLoader
       }
       return;
     }
-    HtmlOffline.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new oyl(this, localQQAppInterface), false);
+    HtmlOffline.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new paf(this, localQQAppInterface), false);
   }
   
   public void c()

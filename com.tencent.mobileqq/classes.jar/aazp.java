@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.mobileqq.armap.ItemInfo;
+import com.tencent.mobileqq.armap.POIInfo;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-public class aazp
-  implements View.OnClickListener
+class aazp
+  implements Runnable
 {
-  public aazp(ARGridMapViewDialog paramARGridMapViewDialog) {}
+  aazp(aazo paramaazo, ItemInfo paramItemInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.c();
+    ARMapEngine.removePOITask(this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo.a.a);
   }
 }
 

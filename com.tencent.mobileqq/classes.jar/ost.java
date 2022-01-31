@@ -1,16 +1,13 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
-class ost
-  extends ScannerActivity.QQDialogCancelListener
+public class ost
+  implements DialogInterface.OnClickListener
 {
-  ost(oss paramoss) {}
+  public ost(QRCardActivity paramQRCardActivity) {}
   
-  public void a()
-  {
-    ScannerActivity.a(this.a.a).b();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

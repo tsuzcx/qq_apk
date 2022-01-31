@@ -1,17 +1,23 @@
+import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lhc
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public lhc(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lhc(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ShortVideoUtils.a(ReadInJoyCameraCaptureActivity.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "ShortVideoUtils.isVideoSoLibLoaded() = " + ShortVideoUtils.a());
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity.d();
     }
   }
 }

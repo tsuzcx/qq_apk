@@ -1,24 +1,19 @@
-import android.content.Intent;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-import com.tencent.mobileqq.util.ThreadPriorityManager;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-class wdw
-  extends AnimateUtils.AnimationAdapter
+public class wdw
+  implements Runnable
 {
-  wdw(wdv paramwdv) {}
+  public wdw(ZhituManager paramZhituManager, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.a = true;
-    paramAnimation = new Intent(this.a.a, SearchContactsActivity.class);
-    paramAnimation.putExtra("from_key", this.a.a.a());
-    paramAnimation.putExtra("fromType", 13);
-    this.a.a.startActivity(paramAnimation);
-    this.a.a.overridePendingTransition(0, 0);
-    ThreadPriorityManager.a(false);
+    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_Int);
+    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager));
+    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager).clear();
+    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b.trim(), null, 0);
   }
 }
 

@@ -1,30 +1,26 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleSinglePic;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import java.net.URL;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class kxm
-  implements PublicAccountImageDownListener
+  implements FMDialogUtil.FMDialogInterface
 {
-  public kxm(AdModuleSinglePic paramAdModuleSinglePic, View paramView, ResizeURLImageView paramResizeURLImageView) {}
+  public kxm(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleSinglePic.a = 2;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131366494).setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.setPublicAccountImageDownListener(null);
-    AdModuleSinglePic.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleSinglePic, null);
+    GdtLog.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 5)
+    {
+      ReadInJoyNativeAdAppVideoView.a(this.a).start();
+      ReadInJoyNativeAdAppVideoView.e(this.a, 4);
+      ReadInJoyNativeAdAppVideoView.a(this.a);
+      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
+    }
   }
   
-  public void a(URL paramURL, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleSinglePic.a = 3;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131366494).setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131367201).setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131367201).setOnClickListener(new kxn(this));
-  }
+  public void b() {}
 }
 
 

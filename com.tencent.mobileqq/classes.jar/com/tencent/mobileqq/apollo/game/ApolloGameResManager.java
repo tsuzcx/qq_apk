@@ -7,7 +7,7 @@ import com.tencent.util.LRULinkedHashMap;
 import java.io.File;
 import java.net.URL;
 import java.net.URLDecoder;
-import ymd;
+import ypj;
 
 public class ApolloGameResManager
 {
@@ -105,7 +105,7 @@ public class ApolloGameResManager
         if (paramString1 != null) {
           break label190;
         }
-        paramString1 = new ymd(this, 10485760);
+        paramString1 = new ypj(this, 10485760);
         jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(paramString2, paramString1);
       }
     }

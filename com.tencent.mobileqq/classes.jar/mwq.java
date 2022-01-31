@@ -1,23 +1,28 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.data.OpenID;
 
-public class mwq
+class mwq
   implements Runnable
 {
-  public mwq(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity, int paramInt1, int paramInt2) {}
+  mwq(mwp parammwp, Object paramObject) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.a.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.a.setMove(true);
-    }
-    while (this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.b.getWidth() < this.b)
+    if ((this.jdField_a_of_type_JavaLangObject instanceof OpenID))
     {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.b.setMove(true);
-      return;
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.a.setMove(false);
+      OpenID localOpenID = (OpenID)this.jdField_a_of_type_JavaLangObject;
+      if (PublicAccountUtil.a(this.jdField_a_of_type_Mwp.jdField_a_of_type_AndroidAppActivity, localOpenID, this.jdField_a_of_type_Mwp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Mwp.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams)) {
+        break label77;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.b.setMove(false);
+    label77:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        PublicAccountUtil.b(this.jdField_a_of_type_Mwp.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Mwp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Mwp.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+      }
+      return;
+    }
   }
 }
 

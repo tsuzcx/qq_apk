@@ -3,12 +3,12 @@ package com.tencent.av.app;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import jfk;
+import jev;
 
 public class PstnSessionInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new jfk();
+  public static final Parcelable.Creator CREATOR = new jev();
   public int a;
   public String a;
   public int b;

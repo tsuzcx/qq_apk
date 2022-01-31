@@ -1,6 +1,6 @@
 package cooperation.plugin;
 
-import alwf;
+import ammj;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -33,7 +33,7 @@ public class PluginIphoneTitleBarActivity
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   public float b;
   public ViewGroup b;
-  protected View.OnClickListener c = new alwf(this);
+  protected View.OnClickListener c = new ammj(this);
   public RelativeLayout e;
   public ImageView f;
   public TextView h;
@@ -55,9 +55,9 @@ public class PluginIphoneTitleBarActivity
   
   public View a()
   {
-    this.j = ((TextView)findViewById(2131363410));
-    this.f = ((ImageView)findViewById(2131363456));
-    this.l = ((TextView)findViewById(2131364004));
+    this.j = ((TextView)findViewById(2131363428));
+    this.f = ((ImageView)findViewById(2131363474));
+    this.l = ((TextView)findViewById(2131364028));
     f(this.j);
     f(this.f);
     return this.j;
@@ -78,10 +78,10 @@ public class PluginIphoneTitleBarActivity
   
   public void a(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130845746));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130845874));
     if (this.h == null)
     {
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363226));
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363244));
       f(this.jdField_b_of_type_AndroidViewViewGroup);
       b();
       c();
@@ -125,14 +125,14 @@ public class PluginIphoneTitleBarActivity
   public String a_()
   {
     if ((this.i == null) || (this.i.getText() == null) || (this.i.getText().length() == 0)) {
-      return getString(2131433681);
+      return getString(2131433698);
     }
     return this.i.getText().toString();
   }
   
   protected View b()
   {
-    this.h = ((TextView)findViewById(2131363227));
+    this.h = ((TextView)findViewById(2131363245));
     if (this.h != null)
     {
       this.h.setOnClickListener(this.c);
@@ -149,7 +149,7 @@ public class PluginIphoneTitleBarActivity
       String str = paramIntent.getExtras().getString("leftViewText");
       paramIntent = str;
       if (str == null) {
-        paramIntent = getString(2131433681);
+        paramIntent = getString(2131433698);
       }
       localTextView.setText(paramIntent);
     }
@@ -157,14 +157,14 @@ public class PluginIphoneTitleBarActivity
   
   protected View c()
   {
-    this.i = ((TextView)findViewById(2131363363));
+    this.i = ((TextView)findViewById(2131363381));
     return this.i;
   }
   
   public void c(int paramInt, View.OnClickListener paramOnClickListener)
   {
     this.h.setVisibility(8);
-    this.h = ((TextView)findViewById(2131363455));
+    this.h = ((TextView)findViewById(2131363473));
     f(this.h);
     this.h.setVisibility(0);
     this.h.setText(paramInt);
@@ -195,7 +195,7 @@ public class PluginIphoneTitleBarActivity
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838596);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838600);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.i.getCompoundDrawables();
       this.jdField_a_of_type_Int = this.i.getCompoundDrawablePadding();
       this.i.setCompoundDrawablePadding(10);
@@ -238,7 +238,7 @@ public class PluginIphoneTitleBarActivity
       }
       else
       {
-        str1 = getString(2131433681);
+        str1 = getString(2131433698);
       }
       localTextView.setText(str1);
     }
@@ -275,14 +275,14 @@ public class PluginIphoneTitleBarActivity
           try
           {
             localObject2 = ((LayoutInflater)localObject2).inflate(paramInt, (ViewGroup)localObject1, false);
-            this.e = ((RelativeLayout)((View)localObject1).findViewById(2131363995));
+            this.e = ((RelativeLayout)((View)localObject1).findViewById(2131364019));
             if (ImmersiveUtils.isSupporImmersive() == 1)
             {
               this.e.setFitsSystemWindows(true);
               this.e.setPadding(0, ImmersiveUtils.a(this), 0, 0);
             }
             localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-            ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131363226);
+            ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131363244);
             this.e.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
             this.mContentView = ((View)localObject2);
             super.setContentView(this.e);

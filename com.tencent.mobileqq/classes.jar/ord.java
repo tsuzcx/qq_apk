@@ -1,14 +1,13 @@
-import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
 
-class ord
-  implements BubblePopupWindow.OnDismissListener
+public class ord
+  implements Runnable
 {
-  ord(orc paramorc, View paramView) {}
+  public ord(QQStoryPullToRefreshListView paramQQStoryPullToRefreshListView) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    QQStoryPullToRefreshListView.a(this.a);
   }
 }
 

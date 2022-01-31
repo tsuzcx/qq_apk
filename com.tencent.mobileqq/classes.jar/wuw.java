@@ -1,17 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.widget.TextView;
 
 public class wuw
-  implements View.OnClickListener
 {
-  public wuw(PhotoPreviewActivity paramPhotoPreviewActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.toggle();
-  }
+  public TextView a;
+  public wuv a;
 }
 
 

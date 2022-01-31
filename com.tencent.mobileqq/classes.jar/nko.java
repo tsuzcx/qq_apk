@@ -1,19 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
 import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader;
 import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
 public class nko
   implements View.OnClickListener
 {
-  public nko(VidListPlayMode paramVidListPlayMode) {}
+  public nko(NewFriendsPlayMode paramNewFriendsPlayMode) {}
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b();
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader.c();
     this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
     this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
   }

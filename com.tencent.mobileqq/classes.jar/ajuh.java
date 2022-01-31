@@ -1,76 +1,61 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.troop.widget.TroopPickerViewHelper;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout.WheelPickListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.Calendar;
 
 public class ajuh
-  implements SeekBar.OnSeekBarChangeListener
+  implements WheelPickerLayout.WheelPickListener
 {
-  public ajuh(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString) {}
+  public ajuh(TroopPickerViewHelper paramTroopPickerViewHelper) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2)
   {
-    Iterator localIterator;
-    if (((paramSeekBar.getProgress() == paramSeekBar.getMax()) || (this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int > paramSeekBar.getProgress())) && (!this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b)) {
-      localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
-    }
-    while (localIterator.hasNext())
+    if (TroopPickerViewHelper.a(this.a) != null)
     {
-      Object localObject1 = (String)localIterator.next();
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).seekTo(0);
-      paramSeekBar.setProgress(0);
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).pause();
-      Object localObject2 = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_JavaUtilHashMap.get(localObject1);
-      localObject1 = (SeekBar)((FrameLayout)localObject2).findViewById(2131364655);
-      TextView localTextView1 = (TextView)((FrameLayout)localObject2).findViewById(2131362354);
-      TextView localTextView2 = (TextView)((FrameLayout)localObject2).findViewById(2131362353);
-      ImageView localImageView1 = (ImageView)((FrameLayout)localObject2).findViewById(2131362355);
-      ImageView localImageView2 = (ImageView)((FrameLayout)localObject2).findViewById(2131362351);
-      localObject2 = (TextView)((FrameLayout)localObject2).findViewById(2131362352);
-      localImageView1.setImageResource(2130845166);
-      localImageView1.setVisibility(0);
-      ((SeekBar)localObject1).setVisibility(4);
-      localTextView1.setVisibility(4);
-      localTextView2.setVisibility(4);
-      localImageView2.setVisibility(4);
-      ((TextView)localObject2).setVisibility(4);
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = 0;
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = paramSeekBar.getProgress();
+      if (paramInt1 != 0) {
+        break label212;
+      }
+      if (TroopPickerViewHelper.a(this.a) == null) {
+        break label288;
+      }
+      paramInt1 = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), paramInt2);
+      int i = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), paramInt2, paramInt1);
+      paramInt2 = paramInt1;
+      paramInt1 = i;
     }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "onStartTrackingTouch");
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    int i = paramSeekBar.getProgress();
-    long l = ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).getDuration();
-    i = (int)(i / 100.0D * l);
-    ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).seekTo(i);
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = paramSeekBar.getProgress();
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "mLastprogressTime1:" + this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int);
+    for (;;)
+    {
+      TroopPickerViewHelper.a(this.a).setSelection(1, paramInt2);
+      TroopPickerViewHelper.a(this.a).a(1);
+      TroopPickerViewHelper.a(this.a).setSelection(2, paramInt1);
+      TroopPickerViewHelper.a(this.a).a(2);
+      label212:
+      do
+      {
+        TroopPickerViewHelper.a(this.a, TroopPickerViewHelper.a(this.a).a(new int[] { TroopPickerViewHelper.a(this.a).a(0), TroopPickerViewHelper.a(this.a).a(1), TroopPickerViewHelper.a(this.a).a(2) }));
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopPickerViewHelper", 2, Arrays.toString(TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a).getTimeInMillis())));
+        }
+        return;
+      } while (paramInt1 != 1);
+      if (TroopPickerViewHelper.a(this.a) != null) {}
+      for (paramInt1 = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), TroopPickerViewHelper.a(this.a).a(0), paramInt2);; paramInt1 = 0)
+      {
+        TroopPickerViewHelper.a(this.a).setSelection(2, paramInt1);
+        TroopPickerViewHelper.a(this.a).a(2);
+        break;
+      }
+      label288:
+      paramInt1 = 0;
+      paramInt2 = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajuh
  * JD-Core Version:    0.7.0.1
  */

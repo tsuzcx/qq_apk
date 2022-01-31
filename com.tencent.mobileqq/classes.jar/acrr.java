@@ -1,16 +1,47 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public final class acrr
-  implements View.OnClickListener
+public class acrr
+  implements Runnable
 {
-  public acrr(Activity paramActivity, String paramString) {}
+  public acrr(QfileLocalFileDocTabView paramQfileLocalFileDocTabView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    FileManagerUtil.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = FMSettings.a().b();
+    if (this.a.a.d() != 8) {}
+    for (boolean bool = true;; bool = false)
+    {
+      FileCategoryUtil.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
+      localObject1 = FMSettings.a().a();
+      if (localObject1 != null) {
+        FileCategoryUtil.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
+      }
+      localObject1 = new HashMap();
+      Iterator localIterator = localHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (String)localIterator.next();
+        String str = this.a.a((String)localObject2);
+        localObject2 = (List)localHashMap.get(localObject2);
+        if (!((HashMap)localObject1).containsKey(str)) {
+          ((HashMap)localObject1).put(str, new ArrayList());
+        }
+        ((List)((HashMap)localObject1).get(str)).addAll((Collection)localObject2);
+      }
+    }
+    FileCategoryUtil.a((Map)localObject1);
+    QfileLocalFileDocTabView.a(this.a, new acrs(this, (HashMap)localObject1));
   }
 }
 

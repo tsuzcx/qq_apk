@@ -1,39 +1,42 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.mobileqq.armap.ConversationARMap;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ARMapHongBaoListView;
 
 public class abcm
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public abcm(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  public abcm(ConversationARMap paramConversationARMap) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DynamicAvatarRecordActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
-      }
-      paramContext = BaseActivity2.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131362087);
-      if (paramContext != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
-      }
-      this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("ConversationARMap", 2, "mTouchReleaseRunnable mState:" + this.a.jdField_a_of_type_Int + "  mResume:" + this.a.c + " mTitleIsVisible:" + this.a.j);
     }
+    if ((this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.getScrollY() != 0))
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setSpringbackOffset(0);
+      this.a.c(0);
+    }
+    if (this.a.c) {
+      this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setEnableTouch(true);
+    }
+    if (!this.a.j)
+    {
+      if (this.a.c) {
+        break label159;
+      }
+      this.a.b(true);
+    }
+    label159:
+    while (this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.m) {
+      return;
+    }
+    this.a.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abcm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-public class tuv
-  implements DialogInterface.OnDismissListener
+class tuv
+  implements Runnable
 {
-  public tuv(TroopInfoActivity paramTroopInfoActivity) {}
+  tuv(tus paramtus) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
+    SubLoginActivity.a(this.a.a).setText("");
   }
 }
 

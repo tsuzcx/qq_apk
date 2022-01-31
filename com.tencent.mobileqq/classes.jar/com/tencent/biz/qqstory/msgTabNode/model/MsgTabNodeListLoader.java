@@ -26,14 +26,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ncr;
-import ncs;
-import nct;
-import ncv;
-import ncw;
-import ncx;
-import ncy;
-import ncz;
+import neb;
+import nec;
+import ned;
+import nef;
+import neg;
+import neh;
+import nei;
+import nej;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class MsgTabNodeListLoader
@@ -62,9 +62,9 @@ public class MsgTabNodeListLoader
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback = new ncr(this);
-    this.jdField_b_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback = new ncs(this);
-    this.jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new nct(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback = new neb(this);
+    this.jdField_b_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback = new nec(this);
+    this.jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new ned(this);
     this.jdField_a_of_type_JavaUtilComparator = new MsgTabNodeInfoComparator();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager = paramMsgTabStoryManager;
@@ -186,7 +186,7 @@ public class MsgTabNodeListLoader
         paramBoolean = bool;
         if (QLog.isColorLevel())
         {
-          QLog.d("Q.qqstory.msgTab.nodeList", 2, new Object[] { "insert push done, change=", Boolean.valueOf(bool), ", mSeq=", this.jdField_b_of_type_JavaLangString, ", data = ", localMsgTabNodeInfo1.a() });
+          QLog.d("Q.qqstory.msgTab.nodeList", 2, new Object[] { "insert push done, change=", Boolean.valueOf(bool), ", mSeq=", this.jdField_b_of_type_JavaLangString, ", data = ", localMsgTabNodeInfo1 });
           paramBoolean = bool;
         }
         return paramBoolean;
@@ -420,7 +420,7 @@ public class MsgTabNodeListLoader
     {
       i = -1;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ncy(this, paramMsgTabNodeInfo, paramBoolean, paramInt, i));
+    this.jdField_a_of_type_AndroidOsHandler.post(new nei(this, paramMsgTabNodeInfo, paramBoolean, paramInt, i));
   }
   
   public void a(MsgTabNodeListLoader.OnMsgTabNodeListLoadListener paramOnMsgTabNodeListLoadListener)
@@ -459,17 +459,17 @@ public class MsgTabNodeListLoader
     if (QLog.isDevelopLevel()) {
       QLog.d("Q.qqstory.msgTab.nodeList", 2, "requestQQStoryGuide request = " + paramString.toString());
     }
-    CmdTaskManger.a().a(paramString, new ncz(this));
+    CmdTaskManger.a().a(paramString, new nej(this));
   }
   
   public void a(ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ncx(this, paramArrayList, paramBoolean1, paramBoolean2, paramBoolean3));
+    this.jdField_a_of_type_AndroidOsHandler.post(new neh(this, paramArrayList, paramBoolean1, paramBoolean2, paramBoolean3));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ncv(this, paramBoolean));
+    this.jdField_a_of_type_AndroidOsHandler.post(new nef(this, paramBoolean));
   }
   
   public boolean a()
@@ -711,7 +711,7 @@ public class MsgTabNodeListLoader
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ncw(this, paramBoolean));
+    this.jdField_a_of_type_AndroidOsHandler.post(new neg(this, paramBoolean));
   }
 }
 

@@ -6,12 +6,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
-import tdk;
+import tgk;
 
 public class ProfileActivity$AllInOne
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new tdk();
+  public static final Parcelable.Creator CREATOR = new tgk();
   public byte a;
   public int a;
   public long a;
@@ -256,6 +256,15 @@ public class ProfileActivity$AllInOne
   {
     if (paramAllInOne == null) {}
     while (paramAllInOne.jdField_a_of_type_Int != 95) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean k(AllInOne paramAllInOne)
+  {
+    if (paramAllInOne == null) {}
+    while (paramAllInOne.jdField_a_of_type_Int != 96) {
       return false;
     }
     return true;

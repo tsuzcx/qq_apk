@@ -1,36 +1,49 @@
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aecl
+  extends CardObserver
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
+  public aecl(LoginWelcomeManager paramLoginWelcomeManager) {}
   
-  aecl(WerewolvesDataManager paramWerewolvesDataManager) {}
-  
-  public boolean equals(Object paramObject)
+  protected void b(boolean paramBoolean, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof aecl))
+    int i = 1;
+    if (QLog.isColorLevel())
     {
-      paramObject = (aecl)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
-      {
-        bool1 = bool2;
-        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
-          bool1 = true;
+      QLog.d("LoginWelcomeManager", 2, String.format("mCardObserver.onUpdateAvatar isSuccess=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+      if (TextUtils.equals(LoginWelcomeManager.a(this.a).getCurrentAccountUin(), paramString)) {
+        if (LoginWelcomeManager.a(this.a) != null)
+        {
+          paramString = LoginWelcomeManager.a(this.a).getBundle("request");
+          if (paramString != null) {
+            if (!paramBoolean) {
+              break label136;
+            }
+          }
         }
       }
     }
-    return bool1;
+    for (;;)
+    {
+      paramString.putInt("result", i);
+      paramString.putString("path", LoginWelcomeManager.a(this.a));
+      LoginWelcomeManager.a(this.a, null);
+      this.a.b();
+      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
+      return;
+      label136:
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecl
  * JD-Core Version:    0.7.0.1
  */

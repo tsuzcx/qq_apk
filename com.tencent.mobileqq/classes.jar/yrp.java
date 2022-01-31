@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class yrp
+public class yrp
   implements Runnable
 {
+  public yrp(CmGameLauncher paramCmGameLauncher, String paramString) {}
+  
   public void run()
   {
-    long l = System.currentTimeMillis();
-    if (!ApolloWebDataHandler.a()) {
-      ApolloWebDataHandler.a();
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("gameId", CmGameLauncher.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher));
+      ApolloGameBasicEventUtil.a(CmGameLauncher.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher), localJSONObject.toString(), this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a());
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "apollo_client initInAsyncThread use:" + (System.currentTimeMillis() - l));
+    catch (Exception localException)
+    {
+      QLog.e("cmgame_process.CmGameLauncher", 1, localException, new Object[0]);
     }
   }
 }

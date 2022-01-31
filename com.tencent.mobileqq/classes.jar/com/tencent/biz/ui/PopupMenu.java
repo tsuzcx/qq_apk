@@ -18,7 +18,7 @@ import com.tencent.biz.common.util.SubString;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
 import java.util.List;
-import oyd;
+import ozx;
 
 public class PopupMenu
   extends PopupWindows
@@ -75,8 +75,8 @@ public class PopupMenu
   public void a(int paramInt)
   {
     this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131364554));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364555));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131364578));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364579));
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
     super.b(this.jdField_a_of_type_AndroidViewView);
   }
@@ -112,14 +112,14 @@ public class PopupMenu
     if (this.jdField_a_of_type_Int != 0)
     {
       localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject1).setBackgroundResource(2130838907);
+      ((ImageView)localObject1).setBackgroundResource(2130838911);
       localObject2 = new LinearLayout.LayoutParams(-1, -2, 1.0F);
       ((LinearLayout.LayoutParams)localObject2).setMargins(AIOUtils.a(15.0F, ((ImageView)localObject1).getResources()), 0, AIOUtils.a(15.0F, ((ImageView)localObject1).getResources()), 0);
       this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     }
     Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968981, null);
-    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131364550);
-    TextView localTextView = (TextView)((View)localObject1).findViewById(2131364551);
+    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131364574);
+    TextView localTextView = (TextView)((View)localObject1).findViewById(2131364575);
     if (localDrawable != null)
     {
       ((ImageView)localObject2).setImageDrawable(localDrawable);
@@ -133,7 +133,7 @@ public class PopupMenu
     }
     for (;;)
     {
-      ((View)localObject1).setOnClickListener(new oyd(this, paramMenuItem.b(), paramMenuItem.a()));
+      ((View)localObject1).setOnClickListener(new ozx(this, paramMenuItem.b(), paramMenuItem.a()));
       ((View)localObject1).setFocusable(true);
       ((View)localObject1).setClickable(true);
       paramMenuItem = new LinearLayout.LayoutParams(-1, -2, 1.0F);

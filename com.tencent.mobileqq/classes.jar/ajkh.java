@@ -1,60 +1,100 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadCallback;
+import mqq.os.MqqHandler;
 
-public final class ajkh
-  implements DownloadParams.DecodeHandler
+public class ajkh
+  implements TroopHomeworkHelper.UploadCallback
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  
+  public ajkh(ImageInfo.UploadMediaSegment paramUploadMediaSegment)
   {
-    if ((paramBitmap == null) || (paramDownloadParams == null))
+    switch (ImageInfo.UploadMediaSegment.a(paramUploadMediaSegment))
+    {
+    default: 
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Float = 1.0F;
+      return;
+    case 1: 
+      this.jdField_a_of_type_Int = 10;
+      this.jdField_a_of_type_Float = 0.85F;
+      return;
+    }
+    this.jdField_a_of_type_Int = 95;
+    this.jdField_a_of_type_Float = 0.05F;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.isCanceled())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.hotchat", 2, "FLASH_PIC_MOSAIC_DECODE, bitmap is null");
+        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress cancel. progress=", Integer.valueOf(paramInt) });
       }
-      return null;
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.onCancel();
     }
-    float f1 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
-    int j = (int)(paramDownloadParams.reqWidth / f1 + 0.5F);
-    int i = (int)(paramDownloadParams.reqHeight / f1 + 0.5F);
-    int k = paramBitmap.getWidth();
-    int m = paramBitmap.getHeight();
-    if ("chatthumb".equals(paramDownloadParams.url.getProtocol()))
+    long l;
+    do
     {
-      j = 130;
-      i = 102;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress. mediaType=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment)), ", info hash=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).hashCode()), ", info status=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).g), ", progress=", Integer.valueOf(paramInt) });
+      }
+      l = System.currentTimeMillis();
+      paramInt = this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float * paramInt);
+    } while ((paramInt >= 100) || (l - this.jdField_a_of_type_Long <= 500L));
+    this.jdField_a_of_type_Long = l;
+    ThreadManager.getUIHandler().post(new ajkj(this, paramInt));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.isCanceled())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.onCancel();
+      return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat", 2, "downloadParams.reqWidth:" + paramDownloadParams.reqWidth + ",downloadParams.reqHeight:" + paramDownloadParams.reqHeight + ",reqWidth:" + j + ",reqHeight:" + i + ",isMutable:" + paramBitmap.isMutable());
+      QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onComplete. mediaType=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment)), ", info hash=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).hashCode()), ", info status=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).g) });
     }
-    f1 = j / k;
-    float f2 = i / m;
-    paramDownloadParams = new Matrix();
-    paramDownloadParams.postScale(f1, f2);
-    paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, paramDownloadParams, false);
+    switch (ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment))
+    {
+    }
+    while (!this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.isCanceled())
+    {
+      ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment));
+      return;
+      VideoInfo localVideoInfo = (VideoInfo)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment);
+      localVideoInfo.e = paramString;
+      ThreadManager.getUIHandler().post(new ajki(this, localVideoInfo));
+      continue;
+      ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).b = paramString;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.onCancel();
+  }
+  
+  public void b(int paramInt)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat", 2, "scaleW:" + f1 + "scaleH:" + f2 + ",resizeBmp w:" + paramDownloadParams.getWidth() + ",h:" + paramDownloadParams.getHeight());
+      QLog.e(getClass().getSimpleName(), 2, new Object[] { "upload onError. errorCode=", Integer.valueOf(paramInt), ", info type=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).b()), ", mediaType=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment)) });
     }
-    j = paramDownloadParams.getWidth() / 8;
-    i = j;
-    if (j == 0) {
-      i = 16;
+    if (ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment) == 2)
+    {
+      ImageInfo.UploadMediaSegment.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment));
+      return;
     }
-    paramDownloadParams = URLDrawableDecodeHandler.a(paramDownloadParams, i);
-    paramBitmap.recycle();
-    return paramDownloadParams;
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment, new Error("-3"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkh
  * JD-Core Version:    0.7.0.1
  */

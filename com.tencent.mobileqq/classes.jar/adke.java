@@ -1,125 +1,120 @@
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.pic.PicBusiManager;
+import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class adke
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public adke(HuayangJsPlugin paramHuayangJsPlugin) {}
+  public adke(ForwardBaseOption paramForwardBaseOption, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    int i;
-    JSONObject localJSONObject;
-    if ((paramContext.equals(HuayangJsPlugin.a(this.a.b))) || (paramContext.equals(HuayangJsPlugin.d(this.a.b))))
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800514A", "0X800514A", 0, 0, "", "", "", "");
+    paramView = this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidOsBundle.getParcelable("FORWARD_MSG_FOR_PIC");
+    Object localObject;
+    if ((paramView instanceof MessageForPic))
     {
-      i = paramIntent.getIntExtra("key_state", -1);
-      HuayangJsPlugin.a(this.a, i);
-      localJSONObject = HuayangJsPlugin.a(this.a, i);
-      switch (i)
+      paramView = (MessageForPic)paramView;
+      int j = 1;
+      localObject = new File(paramView.path);
+      int i = j;
+      if (localObject != null)
       {
-      default: 
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
+        i = j;
+        if (((File)localObject).exists())
+        {
+          i = j;
+          if (((File)localObject).length() == paramView.size) {
+            i = 0;
+          }
+        }
+      }
+      if (i == 0) {
+        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramView.path, this.jdField_a_of_type_JavaLangString);
       }
     }
     do
     {
-      for (;;)
+      do
       {
         return;
-        l = paramIntent.getLongExtra("key_totalSize", 0L);
-        HuayangJsPlugin.a(this.a, "size:" + l);
-        try
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800514B", "0X800514B", 0, 0, "", "", "", "");
+        if (NetworkUtil.a(BaseApplication.getContext()) == 0)
         {
-          localJSONObject.putOpt("totalSize", Long.valueOf(l));
-          localJSONObject.remove("state");
-        }
-        catch (JSONException paramContext)
-        {
-          for (;;)
-          {
-            paramContext.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: none network");
           }
-        }
-      }
-      int j = paramIntent.getIntExtra("key_progress", 0);
-      long l = paramIntent.getLongExtra("key_totalSize", 0L);
-      paramIntent = this.a;
-      if (i == 1) {}
-      for (paramContext = "progress:STATE_DOWANLOADING:" + j;; paramContext = "progress:STATE_LOADING:" + j)
-      {
-        for (;;)
-        {
-          HuayangJsPlugin.a(paramIntent, paramContext);
-          if (i == 4)
-          {
-            if (j <= 90) {
-              break;
-            }
-            HuayangJsPlugin.a(this.a).removeCallbacksAndMessages(null);
-          }
-          try
-          {
-            localJSONObject.putOpt("totalSize", Long.valueOf(l));
-            localJSONObject.putOpt("pro", Integer.valueOf(j));
-          }
-          catch (JSONException paramContext)
-          {
-            paramContext.printStackTrace();
-          }
-        }
-        break;
-      }
-      HuayangJsPlugin.a(this.a, "STATE_DOWANLODAD_COMPLETE");
-      paramContext = Message.obtain();
-      if (HuayangJsPlugin.a(this.a) == 1) {}
-      for (paramContext.arg1 = 40; !TextUtils.equals(HuayangJsPlugin.a(this.a), "checkVersion"); paramContext.arg1 = 0)
-      {
-        HuayangJsPlugin.a(this.a).sendMessage(paramContext);
-        break;
-      }
-      HuayangJsPlugin.a(this.a, "STATE_DOWANLODAD_FAILED");
-      break;
-      HuayangJsPlugin.a(this.a, "STATE_PRELOAD_FALIED");
-      break;
-      HuayangJsPlugin.a(this.a, "STATE_LOAD_COMPLETE");
-      break;
-      HuayangJsPlugin.a(this.a, "STATE_LOAD_FALIED");
-      break;
-      HuayangJsPlugin.a(this.a, "STATE_LAUNCHERING");
-      break;
-      HuayangJsPlugin.a(this.a, "STATE_LAUNCHER_SUCC");
-      break;
-      HuayangJsPlugin.a(this.a, "STATE_LAUNCHER_FAILED");
-      break;
-      if (HuayangJsPlugin.b(this.a.b).equals(paramContext))
-      {
-        paramContext = this.a.mRuntime.a();
-        if ((paramContext instanceof BaseActivity))
-        {
-          ((BaseActivity)paramContext).doOnBackPressed();
+          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidAppActivity, "目前没有网络，请稍后再试!", 1000).b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
           return;
         }
-        paramContext.onBackPressed();
+        this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setProgressBarVisibility(0);
+        localObject = PicBusiManager.a(6, 1536, 1);
+        ((PicReq)localObject).a(paramView, paramView.getPicDownloadInfo());
+        ((PicReq)localObject).a(new adkf(this, paramView));
+        PicBusiManager.a((PicReq)localObject, this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        return;
+        if (!(paramView instanceof AIOImageData)) {
+          break;
+        }
+        paramView = (AIOImageData)paramView;
+        if (paramView.a(4))
+        {
+          localObject = paramView.a(4);
+          if (localObject != null)
+          {
+            ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, ((File)localObject).getAbsolutePath(), this.jdField_a_of_type_JavaLangString);
+            return;
+          }
+        }
+        if (paramView.a(2))
+        {
+          paramView = paramView.a(2);
+          if (paramView != null)
+          {
+            ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramView.getAbsolutePath(), this.jdField_a_of_type_JavaLangString);
+            return;
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: image does not exist");
+      return;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidOsBundle.getString("forward_filepath");
+      if (paramView != null)
+      {
+        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramView, this.jdField_a_of_type_JavaLangString);
         return;
       }
-    } while (!HuayangJsPlugin.c(this.a.b).equals(paramContext));
-    HuayangJsPlugin.b(this.a, paramIntent.getIntExtra("key_isCache", -1));
+      if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("key_flag_from_plugin", false))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: from QZone");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_QZONE_SHARE", true);
+        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.b, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: Unknown source");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adke
  * JD-Core Version:    0.7.0.1
  */

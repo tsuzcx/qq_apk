@@ -1,26 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppHandler;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
-public class abms
-  implements ArkAppRootLayout.ArkSearchReportCallback
+class abms
+  implements Runnable
 {
-  public abms(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
+  abms(abmr paramabmr) {}
   
-  public void a()
+  public void run()
   {
-    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
-    {
-      MessageForArkBabyqReply localMessageForArkBabyqReply = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (localQQAppInterface != null) {
-        ((ArkAppHandler)localQQAppInterface.a(95)).a(localMessageForArkBabyqReply.arkSearchType, 0, 2, this.a.extra, localMessageForArkBabyqReply.arkMsgId, this.a.appName, this.a.appView, null, 0, 0);
-      }
-    }
+    this.a.a.jdField_a_of_type_JavaLangString = this.a.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId;
+    BusinessCardEditActivity.a(this.a.a, this.a.a.jdField_a_of_type_Boolean, true, true);
   }
 }
 

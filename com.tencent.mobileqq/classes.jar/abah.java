@@ -1,16 +1,14 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-class abah
+public class abah
   implements Runnable
 {
-  abah(abaf paramabaf) {}
+  public abah(ARMapActivity paramARMapActivity, long paramLong) {}
   
   public void run()
   {
-    if (!this.a.a.jdField_b_of_type_Boolean) {
-      this.a.a.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    }
+    ARMapEngine.removePOITask(this.jdField_a_of_type_Long);
   }
 }
 

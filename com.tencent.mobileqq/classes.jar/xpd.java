@@ -1,34 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.QzEditVideoPartManager;
-import com.tencent.open.base.ToastUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.richmedia.CompoundProcessor;
+import com.tencent.mobileqq.richmedia.RichmediaClient;
+import com.tencent.mobileqq.richmedia.VideoCompoundController;
 
 public class xpd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xpd(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  public xpd(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!NewFlowEditVideoActivity.a(this.a))
-    {
-      NewFlowEditVideoActivity.a(this.a);
-      return;
+    Object localObject = RichmediaClient.a().a().a(this.a.a);
+    if (localObject != null) {
+      ((CompoundProcessor)localObject).a(103);
     }
-    if (NewFlowEditVideoActivity.b(this.a))
+    for (;;)
     {
-      ToastUtil.a().a("不使用超清");
-      NewFlowEditVideoActivity.a(this.a, false);
-      NewFlowEditVideoActivity.a(this.a).setBackgroundResource(2130845179);
-      ((QzEditVideoPartManager)NewFlowEditVideoActivity.a(this.a)).f = false;
+      localObject = this.a.getIntent();
+      ((Intent)localObject).putExtra("flow_back", 0);
+      this.a.setResult(1001, (Intent)localObject);
+      this.a.finish();
       return;
+      this.a.c();
     }
-    ToastUtil.a().a("使用超清");
-    NewFlowEditVideoActivity.a(this.a, true);
-    NewFlowEditVideoActivity.a(this.a).setBackgroundResource(2130845178);
-    ((QzEditVideoPartManager)NewFlowEditVideoActivity.b(this.a)).f = true;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.utils;
 
-import ajsd;
-import ajse;
-import ajsf;
-import ajsg;
-import ajsh;
-import ajsi;
+import akgk;
+import akgl;
+import akgm;
+import akgn;
+import akgo;
+import akgp;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -19,11 +19,11 @@ import java.lang.reflect.Field;
 public class ValueAnimation
   extends Animation
 {
-  static final ajsi jdField_a_of_type_Ajsi = new ajsd();
-  static final ajsi b;
-  static final ajsi c;
-  static final ajsi d;
-  static final ajsi e = new ajsh();
+  static final akgp jdField_a_of_type_Akgp = new akgk();
+  static final akgp b;
+  static final akgp c;
+  static final akgp d;
+  static final akgp e = new akgo();
   private long jdField_a_of_type_Long;
   protected ValueAnimation.AnimationUpdateListener a;
   protected Object a;
@@ -33,13 +33,13 @@ public class ValueAnimation
   protected boolean b;
   protected boolean c;
   protected boolean d;
-  protected ajsi f;
+  protected akgp f;
   
   static
   {
-    jdField_b_of_type_Ajsi = new ajse();
-    jdField_c_of_type_Ajsi = new ajsf();
-    jdField_d_of_type_Ajsi = new ajsg();
+    jdField_b_of_type_Akgp = new akgl();
+    jdField_c_of_type_Akgp = new akgm();
+    jdField_d_of_type_Akgp = new akgn();
   }
   
   public ValueAnimation(Object paramObject1, Object paramObject2, ValueAnimation.AnimationUpdateListener paramAnimationUpdateListener)
@@ -52,11 +52,11 @@ public class ValueAnimation
     this(paramObject1, paramObject2, paramAnimationUpdateListener, paramBoolean1, paramBoolean2, null);
   }
   
-  public ValueAnimation(Object paramObject1, Object paramObject2, ValueAnimation.AnimationUpdateListener paramAnimationUpdateListener, boolean paramBoolean1, boolean paramBoolean2, ajsi paramajsi)
+  public ValueAnimation(Object paramObject1, Object paramObject2, ValueAnimation.AnimationUpdateListener paramAnimationUpdateListener, boolean paramBoolean1, boolean paramBoolean2, akgp paramakgp)
   {
     Class localClass = paramObject1.getClass();
-    if (paramajsi != null) {
-      this.f = paramajsi;
+    if (paramakgp != null) {
+      this.f = paramakgp;
     }
     for (;;)
     {
@@ -68,19 +68,19 @@ public class ValueAnimation
       return;
       if (localClass == Integer.class)
       {
-        this.f = jdField_a_of_type_Ajsi;
+        this.f = jdField_a_of_type_Akgp;
       }
       else if (Float.class == localClass)
       {
-        this.f = jdField_b_of_type_Ajsi;
+        this.f = jdField_b_of_type_Akgp;
       }
       else if (Rect.class == localClass)
       {
-        this.f = jdField_c_of_type_Ajsi;
+        this.f = jdField_c_of_type_Akgp;
       }
       else if (Point.class == localClass)
       {
-        this.f = jdField_d_of_type_Ajsi;
+        this.f = jdField_d_of_type_Akgp;
       }
       else
       {

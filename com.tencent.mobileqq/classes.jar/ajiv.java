@@ -1,28 +1,34 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class ajiv
+public class ajiv
   implements DialogInterface.OnClickListener
 {
-  ajiv(ajiu paramajiu) {}
+  public ajiv(ReciteRecordLayout paramReciteRecordLayout) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = String.format("http://qun.qq.com/qunpay/gifts/buy.html?_bid=2204&_wvSb=1&from=7&troopUin=%s", new Object[] { this.a.a.b });
-    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
-    localIntent.putExtra("selfSet_leftViewText", "返回");
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("url", this.a.a.a(paramDialogInterface));
-    this.a.a.startActivity(localIntent);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    if (!NetworkUtil.g(this.a.jdField_a_of_type_AndroidContentContext)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    }
+    do
+    {
+      return;
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    } while (ReciteRecordLayout.a(this.a) == null);
+    ReciteRecordLayout.a(this.a).e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajiv
  * JD-Core Version:    0.7.0.1
  */

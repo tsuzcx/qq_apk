@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-class acyp
-  implements Runnable
+public class acyp
+  extends acxu
 {
-  acyp(acyo paramacyo, String paramString, long paramLong1, long paramLong2) {}
-  
-  public void run()
+  public acyp(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Acyo.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateUploadoneWhenChangeToOff";
   }
 }
 

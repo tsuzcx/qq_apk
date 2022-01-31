@@ -1,71 +1,23 @@
-import android.os.Build.VERSION;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
 
 public class mjr
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  private WeakReference a;
+  public mjr(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
   
-  public mjr(ReadinjoyTabFrame paramReadinjoyTabFrame)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = new WeakReference(paramReadinjoyTabFrame);
+    this.a.setRotation(0.0F);
+    this.a.setAlpha(1.0F);
   }
   
-  public void run()
-  {
-    ReadinjoyTabFrame localReadinjoyTabFrame;
-    if ((this.a != null) && (this.a.get() != null))
-    {
-      localReadinjoyTabFrame = (ReadinjoyTabFrame)this.a.get();
-      localWebProcessManager = (WebProcessManager)localReadinjoyTabFrame.a.getManager(12);
-      if (localWebProcessManager != null)
-      {
-        i = ReadInJoyUtils.f();
-        if (!ReadInJoyUtils.f()) {}
-      }
-    }
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.e()));
-      localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.f()));
-      localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.b()));
-      localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.a()));
-      localHashMap.put("param_preloadLevel", String.valueOf(i));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.4tab", 2, "preloadToolProcessReport:" + localHashMap.toString());
-      }
-      StatisticCollector.a(localReadinjoyTabFrame.a()).a(localReadinjoyTabFrame.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("Q.readinjoy.4tab", 2, "", localException);
-        continue;
-        if (i == 2) {
-          localWebProcessManager.a(201);
-        }
-      }
-    }
-    if (i == 1)
-    {
-      localWebProcessManager.a(200);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.4tab", 2, "enter folder preload web process");
-      }
-      return;
-    }
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

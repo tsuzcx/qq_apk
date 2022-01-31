@@ -1,27 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
 
 public class aird
-  implements Runnable
+  implements ITransCallbackForReport
 {
-  public aird(TroopEnterEffectController paramTroopEnterEffectController, TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData) {}
+  public aird(ShortVideoForwardProcessor paramShortVideoForwardProcessor) {}
   
-  public void run()
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    new SceneBuilder().a(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getWidth()).a(TroopEnterEffectController.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$TroopEnterEffectData.a).a(new airl(this)).a(new airk(this, localQQAppInterface)).a(new airh(this, localQQAppInterface)).a(new airg(this)).a(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, new aire(this));
+    this.a.a(false, this.a.j, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aird
  * JD-Core Version:    0.7.0.1
  */

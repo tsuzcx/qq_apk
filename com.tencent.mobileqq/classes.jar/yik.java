@@ -1,24 +1,42 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Locale;
 
-class yik
-  implements Runnable
+public class yik
+  extends CardObserver
 {
-  yik(yij paramyij, byte[] paramArrayOfByte, int paramInt) {}
+  public yik(SystemMsgListAdapter paramSystemMsgListAdapter) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ArrayOfByte != null)) {
-      QLog.d("ApolloRender", 2, "httpLog httpCallBack data.len=" + this.jdField_a_of_type_ArrayOfByte.length);
+    if ((paramBoolean) && ((paramObject instanceof Card))) {}
+    try
+    {
+      paramObject = (Card)paramObject;
+      if ((!TextUtils.isEmpty(paramObject.strCampusName)) && (this.a.a != null) && (this.a.a.contains(paramObject.uin)))
+      {
+        SystemMsgListAdapter.a(this.a).runOnUiThread(new yil(this));
+        if (QLog.isDevelopLevel()) {
+          QLog.i("SystemMsgListAdapter", 4, String.format(Locale.getDefault(), "onGetCampusInfo [%s, %s]", new Object[] { Utils.b(paramObject.uin), Utils.b(paramObject.strCampusName) }));
+        }
+      }
+      return;
     }
-    ((ApolloSurfaceView)this.jdField_a_of_type_Yij.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(this.jdField_a_of_type_Yij.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+    catch (Exception paramObject)
+    {
+      paramObject.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yik
  * JD-Core Version:    0.7.0.1
  */

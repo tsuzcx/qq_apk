@@ -1,66 +1,44 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.view.View;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class oat
-  extends TransProcessorHandler
+  extends ChildViewClickListener
 {
-  public oat(CommonPicUploadFragment paramCommonPicUploadFragment) {}
+  public oat(LocalVideoPushSegment paramLocalVideoPushSegment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != CommonPicUploadFragment.a(this.a, CommonPicUploadFragment.a(this.a)))) {}
+    if (paramView == paramBaseViewHolder.a())
+    {
+      StoryReportor.a("home_page", "clk_album", 0, 0, new String[0]);
+      this.a.a.b("last_click_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
+      LocalVideoPushSegment.a(this.a).a(NetConnInfoCenter.getServerTimeMillis());
+      LocalVideoPushSegment.a(this.a);
+      this.a.a_(null);
+    }
     do
     {
-      do
-      {
-        return;
-      } while (localFileMsg.f.equals(CommonPicUploadFragment.b(this.a)));
-      switch (paramMessage.what)
-      {
-      case 1004: 
-      default: 
-        return;
-      case 1003: 
-        if (QLog.isColorLevel()) {
-          QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send finished!" + CommonPicUploadFragment.a(this.a));
-        }
-        break;
-      }
-    } while (CommonPicUploadFragment.a(this.a));
-    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
-    try
-    {
-      paramMessage.mergeFrom(localFileMsg.a, 0, localFileMsg.a.length);
-      CommonPicUploadFragment.a(this.a, true);
-      CommonPicUploadFragment.b(this.a, localFileMsg.f);
-      CommonPicUploadFragment.c(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
-      CommonPicUploadFragment.d(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler mUuid=" + CommonPicUploadFragment.c(this.a) + ", mPicMd5=" + CommonPicUploadFragment.b(this.a) + ", mPicUrl=" + CommonPicUploadFragment.d(this.a));
-      }
-      CommonPicUploadFragment.a(this.a).sendEmptyMessage(1005);
       return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      if (paramView == paramBaseViewHolder.a(2131371851))
       {
-        localInvalidProtocolBufferMicroException.printStackTrace();
+        StoryReportor.a("home_page", "close_album", 0, 0, new String[0]);
+        this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
+        this.a.a_(null);
+        this.a.c(true);
+        return;
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send error:" + localFileMsg.g);
-    }
-    CommonPicUploadFragment.a(this.a).sendEmptyMessage(1003);
+    } while (paramView != paramBaseViewHolder.a(2131371853));
+    StoryReportor.a("home_page", "clk_album", 0, 0, new String[0]);
+    this.a.a.b("last_click_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
+    LocalVideoPushSegment.a(this.a).a(NetConnInfoCenter.getServerTimeMillis());
+    LocalVideoPushSegment.a(this.a);
+    this.a.a_(null);
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewplugin;
 
-import amml;
+import ancq;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Looper;
@@ -48,7 +48,7 @@ public abstract class QzoneInternalWebViewPlugin
       paramCustomWebView.printStackTrace();
       return;
     }
-    paramCustomWebView.post(new amml(paramCustomWebView, paramString));
+    paramCustomWebView.post(new ancq(paramCustomWebView, paramString));
   }
   
   public Object a(String paramString, long paramLong)

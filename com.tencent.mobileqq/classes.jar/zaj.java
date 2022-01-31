@@ -1,19 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.theme.diy.ThemeBackground;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class zaj
-  implements Runnable
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public zaj(FrameHelperActivity paramFrameHelperActivity, AppRuntime paramAppRuntime) {}
+  public zaj(BaseActivity paramBaseActivity) {}
   
-  public void run()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.removeMessages(15);
-    ThemeBackground localThemeBackground = ThemeBackground.getThemeBgObj(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext(), 1, "setting");
-    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.sendMessage(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.obtainMessage(15, localThemeBackground));
+    if (paramInt == 0) {}
+    for (boolean bool = false;; bool = true)
+    {
+      BaseActivity.mIsInMultiScreen = bool;
+      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
+      }
+      return;
+    }
   }
 }
 

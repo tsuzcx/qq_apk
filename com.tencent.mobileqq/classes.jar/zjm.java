@@ -1,15 +1,36 @@
-import com.tencent.mobileqq.addon.DiyPendantFetcher;
-import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
 public class zjm
-  implements Runnable
+  extends zeq
 {
-  public zjm(SVIPHandler paramSVIPHandler, String paramString) {}
-  
-  public void run()
+  protected void a()
   {
-    DiyPendantFetcher localDiyPendantFetcher = DiyPendantFetcher.a();
-    localDiyPendantFetcher.a(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler.b, this.jdField_a_of_type_JavaLangString, new zjn(this, localDiyPendantFetcher));
+    super.a();
+    if (this.d >= zeo.a().a / 12000L)
+    {
+      CoreService.stopTempService();
+      this.a.c();
+      this.d = 0L;
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.b();
+    CoreService.startTempService();
   }
 }
 

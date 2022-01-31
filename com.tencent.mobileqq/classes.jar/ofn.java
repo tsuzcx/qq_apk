@@ -1,21 +1,23 @@
-import com.tencent.biz.qqstory.takevideo.EditMusicExport;
-import com.tencent.biz.qqstory.takevideo.EditSubtitleExport;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ofn
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public ofn(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public ofn(EditVideoPartManager paramEditVideoPartManager, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = (EditMusicExport)this.a.a(EditMusicExport.class);
-    if (localObject != null) {
-      ((EditMusicExport)localObject).b();
+    switch (paramInt)
+    {
     }
-    localObject = (EditSubtitleExport)this.a.a(EditSubtitleExport.class);
-    if (localObject != null) {
-      ((EditSubtitleExport)localObject).b();
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.c();
     }
   }
 }

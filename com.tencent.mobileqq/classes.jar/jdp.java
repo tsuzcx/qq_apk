@@ -1,18 +1,22 @@
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
 
 public class jdp
   implements Runnable
 {
-  public jdp(VideoController paramVideoController) {}
+  public jdp(VideoController paramVideoController1, VideoController paramVideoController2, String paramString, int paramInt, boolean paramBoolean, Runnable paramRunnable) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.a, 2, "mSwitchToMultiRunnable timeOut ");
+    try
+    {
+      this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_JavaLangRunnable.run();
+      return;
     }
-    this.a.c(this.a.a().c, 2);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

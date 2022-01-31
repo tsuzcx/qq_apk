@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import akir;
-import akis;
-import akit;
+import akxa;
+import akxb;
+import akxc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -39,7 +39,7 @@ public class TabBarView
   private float jdField_a_of_type_Float;
   public long a;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new akir(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new akxa(this);
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   public TabBarView.OnTabChangeListener a;
   public List a;
@@ -79,14 +79,14 @@ public class TabBarView
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_c_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.p = paramContext.getResources().getColor(2131494213);
-    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131494207);
+    this.p = paramContext.getResources().getColor(2131494220);
+    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131494214);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.p);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(0, -1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.weight = 1.0F;
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.gravity = 17;
-    setBackgroundDrawable(getResources().getDrawable(2130845918));
+    setBackgroundDrawable(getResources().getDrawable(2130846046));
     if (jdField_a_of_type_Int == 0) {
       jdField_a_of_type_Int = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getWidth();
     }
@@ -126,11 +126,16 @@ public class TabBarView
   
   private void b(int paramInt1, int paramInt2)
   {
+    if (paramInt1 >= 0) {}
     try
     {
-      TextView localTextView = (TextView)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
-      if (localTextView != null) {
-        localTextView.setTextColor(this.jdField_b_of_type_Int);
+      TextView localTextView;
+      if (paramInt1 < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localTextView = (TextView)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
+        if (localTextView != null) {
+          localTextView.setTextColor(this.jdField_b_of_type_Int);
+        }
       }
       return;
     }
@@ -214,9 +219,9 @@ public class TabBarView
     localRedDotTextView.setContentDescription(paramString);
     localRedDotTextView.setGravity(17);
     if (!TextUtils.isEmpty(paramString)) {
-      localLinearLayout1.setOnClickListener(new akis(this, paramInt));
+      localLinearLayout1.setOnClickListener(new akxb(this, paramInt));
     }
-    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new akit(this));
+    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new akxc(this));
     this.jdField_a_of_type_JavaUtilList.add(localRedDotTextView);
     this.jdField_b_of_type_JavaUtilList.add(localLinearLayout1);
     this.jdField_c_of_type_JavaUtilList.add(paramString);
@@ -500,7 +505,7 @@ public class TabBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView
  * JD-Core Version:    0.7.0.1
  */

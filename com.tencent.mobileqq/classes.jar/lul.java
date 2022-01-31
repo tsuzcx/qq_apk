@@ -1,14 +1,14 @@
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicRecommendBig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeRecommendBig;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class lul
   implements View.OnClickListener
 {
-  public lul(FeedItemCellTypeTopicRecommendBig paramFeedItemCellTypeTopicRecommendBig) {}
+  public lul(FeedItemCellTypeRecommendBig paramFeedItemCellTypeRecommendBig) {}
   
   public void onClick(View paramView)
   {

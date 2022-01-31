@@ -29,14 +29,14 @@ public class LpReport_Retention_dc03208
     this.reserves = paramString2;
   }
   
-  public static void report(int paramInt, HashMap paramHashMap)
+  public static void report(String paramString, HashMap paramHashMap)
   {
     String str = null;
     if (paramHashMap != null) {
       str = paramHashMap.toString();
     }
-    paramHashMap = new LpReport_Retention_dc03208(String.valueOf(paramInt), str);
-    LpReportManager.getInstance().reportToDC03208(paramHashMap, false, false);
+    paramString = new LpReport_Retention_dc03208(paramString, str);
+    LpReportManager.getInstance().reportToDC03208(paramString, false, false);
   }
   
   public String getSimpleInfo()

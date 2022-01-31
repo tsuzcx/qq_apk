@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.filemanager.activity.MPFileFailedView.MPFileFailedEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class actj
-  implements MPFileFailedView.MPFileFailedEvent
+  implements Runnable
 {
-  public actj(MPcFileModel paramMPcFileModel) {}
+  public actj(QfileRecentDocFileTabView paramQfileRecentDocFileTabView, String paramString, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(long paramLong)
+  public void run()
   {
-    MPcFileModel.b(this.a, paramLong);
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentDocFileTabView.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentDocFileTabView.a.put(this.jdField_a_of_type_JavaLangString, new ArrayList());
+    }
+    List localList = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentDocFileTabView.a.get(this.jdField_a_of_type_JavaLangString);
+    if (localList.contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
+      return;
+    }
+    localList.add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentDocFileTabView.i();
   }
 }
 

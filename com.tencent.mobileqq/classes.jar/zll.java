@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
+import com.tencent.av.utils.GVideoGrayConfig.Record;
+import com.tencent.mobileqq.app.QQGAudioMsgHandler;
 
-class zll
-  implements Runnable
+public class zll
+  implements GVideoGrayConfig.GVideoGrayConfigListener
 {
-  zll(zlk paramzlk) {}
+  public zll(QQGAudioMsgHandler paramQQGAudioMsgHandler, long paramLong, int paramInt) {}
   
-  public void run()
+  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    if (paramInt1 == 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(7, this.jdField_a_of_type_Long, 2, 21, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
+    }
   }
 }
 

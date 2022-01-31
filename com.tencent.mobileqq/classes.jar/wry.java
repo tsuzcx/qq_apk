@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.widget.TextView;
 
 public class wry
-  implements Runnable
 {
-  public wry(PhoneLaunchActivity paramPhoneLaunchActivity) {}
-  
-  public void run()
-  {
-    this.a.a.g();
-  }
+  public TextView a;
 }
 
 

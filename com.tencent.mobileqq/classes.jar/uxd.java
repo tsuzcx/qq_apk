@@ -1,15 +1,13 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.FileTimDocGrayTipsItemBuilder;
 
 public class uxd
-  implements Runnable
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public uxd(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public TextView b;
   
-  public void run()
-  {
-    HapticManager.a().a();
-  }
+  public uxd(FileTimDocGrayTipsItemBuilder paramFileTimDocGrayTipsItemBuilder) {}
 }
 
 

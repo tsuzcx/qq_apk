@@ -15,15 +15,15 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public class GdtAd
   implements Externalizable
 {
+  public long advertiserId = -2147483648L;
   private qq_ad_get.QQAdGetRsp.AdInfo info;
-  public GdtStatistics statistics;
+  public int reportState;
   
   public GdtAd() {}
   
   public GdtAd(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
     this.info = paramAdInfo;
-    this.statistics = new GdtStatistics(paramAdInfo.report_info);
   }
   
   private boolean a()
@@ -86,6 +86,7 @@ public class GdtAd
       GdtLog.d("GdtAd", "readExternal error");
       return;
     }
+    this.advertiserId = paramObjectInput.readLong();
     int j = paramObjectInput.readInt();
     if (j <= 0)
     {
@@ -124,7 +125,6 @@ public class GdtAd
     {
       ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).mergeFrom(paramObjectInput);
       this.info = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
-      this.statistics = new GdtStatistics(((qq_ad_get.QQAdGetRsp.AdInfo)localObject).report_info);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramObjectInput)
@@ -140,6 +140,7 @@ public class GdtAd
       GdtLog.d("GdtAd", "writeExternal error");
       return;
     }
+    paramObjectOutput.writeLong(this.advertiserId);
     byte[] arrayOfByte = this.info.toByteArray();
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
@@ -152,7 +153,7 @@ public class GdtAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtAd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aaat;
+import aafn;
 import android.graphics.YuvImage;
 import android.os.Handler;
 import android.os.Message;
@@ -257,7 +257,7 @@ public class ARCloudPretreatmentManager
         }
         ARLocalFaceRecog.a.removeMessages(4);
       }
-      paramArrayOfByte = Message.obtain(ARLocalFaceRecog.a, new aaat(this, paramARRecognition, localFaceCluster, paramArrayOfByte, paramInt1, paramInt2));
+      paramArrayOfByte = Message.obtain(ARLocalFaceRecog.a, new aafn(this, paramARRecognition, localFaceCluster, paramArrayOfByte, paramInt1, paramInt2));
       paramArrayOfByte.what = 4;
       ARLocalFaceRecog.a.sendMessage(paramArrayOfByte);
     }

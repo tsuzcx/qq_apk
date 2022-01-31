@@ -1,24 +1,21 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agfg
-  extends LSRecordAnimations.LSRecordAnimationCallback
+  implements Runnable
 {
-  public agfg(LSRecordPanel paramLSRecordPanel) {}
+  public agfg(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startSideAnimation onAnimationEnd");
-    }
-    this.a.b = null;
+    ScanTorchActivity.i(this.a);
+    ScanTorchActivity.j(this.a);
+    ScanTorchActivity.k(this.a);
+    ScanTorchActivity.c(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfg
  * JD-Core Version:    0.7.0.1
  */

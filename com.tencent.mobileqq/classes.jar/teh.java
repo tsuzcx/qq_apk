@@ -1,22 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.mobileqq.activity.Now;
 
 public class teh
-  implements Handler.Callback
+  implements Runnable
 {
-  public teh(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public teh(Now paramNow) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.e();
-    }
+    this.a.a.a(null);
   }
 }
 

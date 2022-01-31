@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
 import com.tencent.mobileqq.statistics.ReportController;
 
 public class ugf
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ugf(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public ugf(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
-    this.a.setResult(0);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "0");
     this.a.finish();
   }
 }

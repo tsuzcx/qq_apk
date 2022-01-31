@@ -23,8 +23,8 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
 import java.io.File;
-import wvt;
-import wvu;
+import wyy;
+import wyz;
 
 public class SendWebPicActivity
   extends BaseActivity
@@ -33,7 +33,7 @@ public class SendWebPicActivity
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new wvu(this);
+  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new wyz(this);
   private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -90,7 +90,7 @@ public class SendWebPicActivity
   
   public void a(String paramString)
   {
-    ThreadManager.executeOnSubThread(new wvt(this, paramString));
+    ThreadManager.executeOnSubThread(new wyy(this, paramString));
   }
   
   public void b(String paramString)
@@ -100,8 +100,8 @@ public class SendWebPicActivity
     localIntent.putExtra("param_type", 9003);
     localIntent.putExtra("param_only_friends", true);
     localIntent.putExtra("param_donot_need_contacts", true);
-    localIntent.putExtra("param_title", getString(2131438235));
-    localIntent.putExtra("param_done_button_wording", getString(2131432400));
+    localIntent.putExtra("param_title", getString(2131438253));
+    localIntent.putExtra("param_done_button_wording", getString(2131432417));
     localIntent.putExtra("param_exit_animation", 1);
     localIntent.putExtra("param_entrance", 32);
     localIntent.putExtra("param_blesstype", 3);
@@ -185,11 +185,11 @@ public class SendWebPicActivity
           continue;
         }
         a();
-        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381);
+        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399);
         if (!StringUtil.a(paramString)) {
           continue;
         }
-        localTextView.setText(2131434297);
+        localTextView.setText(2131434314);
       }
       catch (Throwable paramString)
       {
@@ -207,10 +207,10 @@ public class SendWebPicActivity
       }
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       return;
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624515);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
     }
   }
   
@@ -255,7 +255,7 @@ public class SendWebPicActivity
       return false;
     case 1003: 
       a();
-      QQToast.a(this, 1, 2131435286, 0).a();
+      QQToast.a(this, 1, 2131435303, 0).a();
       finish();
       return true;
     case 1001: 
@@ -267,7 +267,7 @@ public class SendWebPicActivity
       return true;
     }
     a();
-    QQToast.a(this, 1, 2131435586, 0).a();
+    QQToast.a(this, 1, 2131435603, 0).a();
     finish();
     return true;
   }

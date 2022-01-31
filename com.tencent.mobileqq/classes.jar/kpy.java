@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.FullScreenTopContainerHolder;
 
 public class kpy
-  implements Animation.AnimationListener
 {
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
+  
   public kpy(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(this.a.b);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

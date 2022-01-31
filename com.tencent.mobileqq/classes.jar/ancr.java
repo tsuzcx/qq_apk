@@ -1,27 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.cache.FileCacheService;
+import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper;
 
-public class ancr
-  implements DialogInterface.OnDismissListener
+public final class ancr
+  implements Runnable
 {
-  public ancr(EditVideoDoodle paramEditVideoDoodle) {}
+  public ancr(String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    paramDialogInterface = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a;
-    if (paramDialogInterface != null) {
-      paramDialogInterface.b();
-    }
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(true, 0.0F, 0.0F, 0.0F, 0.0F);
+    QzoneOfflineCacheHelper.access$000().a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancr
  * JD-Core Version:    0.7.0.1
  */

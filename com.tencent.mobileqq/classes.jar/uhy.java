@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-class uhy
-  implements PreloadManager.OnGetPathListener
+public class uhy
+  extends AnimateUtils.AnimationAdapter
 {
-  uhy(uhv paramuhv) {}
+  public uhy(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
-    {
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_ANIM path=" + paramPathResult);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
-      return;
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
+    this.a.f = false;
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.d.setVisibility(0);
   }
 }
 

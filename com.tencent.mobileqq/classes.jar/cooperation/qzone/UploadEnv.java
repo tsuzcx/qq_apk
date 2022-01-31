@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amdm;
+import amtq;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -151,7 +151,7 @@ public final class UploadEnv
     if (QLog.isColorLevel()) {
       QLog.d("UploadEnv", 2, "registerNetworkStateObserver");
     }
-    NetworkState.addListener(new amdm(this, paramNetworkStateObserver));
+    NetworkState.addListener(new amtq(this, paramNetworkStateObserver));
   }
 }
 

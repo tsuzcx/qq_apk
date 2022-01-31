@@ -1,20 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.Holder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.mobileqq.widget.MessageProgressView.AnimRunnableListener;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.item.PLNewsItemBuilder;
+import com.tencent.mobileqq.data.MessageForPLNews;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 public class vcj
-  implements MessageProgressView.AnimRunnableListener
+  implements View.OnClickListener
 {
-  public vcj(ShortVideoItemBuilder paramShortVideoItemBuilder, ShortVideoItemBuilder.Holder paramHolder) {}
+  public vcj(PLNewsItemBuilder paramPLNewsItemBuilder, MessageForPLNews paramMessageForPLNews, String paramString) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(2);
+    paramView = (vck)paramView.getTag();
+    if (paramView == null) {
+      return;
     }
+    paramView = new ProfileActivity.AllInOne(paramView.jdField_a_of_type_JavaLangString, 1);
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPLNewsItemBuilder.a, PersonalityLabelGalleryActivity.class);
+    localIntent.putExtra("personality_label_allinone", paramView);
+    localIntent.putExtra("fromType", 2);
+    localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPLNews.frienduin);
+    localIntent.putExtra("nickname", this.jdField_a_of_type_JavaLangString);
+    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPLNewsItemBuilder.a instanceof Activity)) {
+      localIntent.addFlags(268435456);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPLNewsItemBuilder.a.startActivity(localIntent);
   }
 }
 

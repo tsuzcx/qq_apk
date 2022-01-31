@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.Gallery.OnScollListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wvk
-  implements Gallery.OnScollListener
+class wvk
+  implements DialogInterface.OnClickListener
 {
-  public wvk(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  wvk(wvj paramwvj) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.l();
+    paramDialogInterface.dismiss();
   }
-  
-  public void b(int paramInt) {}
 }
 
 

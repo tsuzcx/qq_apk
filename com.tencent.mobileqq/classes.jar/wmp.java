@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import com.tencent.mobileqq.activity.contacts.base.CardViewController;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class wmp
-  implements NewFriendManager.INewFriendListener
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  public wmp(MainAssistObserver paramMainAssistObserver) {}
+  public wmp(CardViewController paramCardViewController) {}
   
-  public void O_() {}
-  
-  public void a(int paramInt)
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
   {
-    this.a.f();
-  }
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
+    paramSharedPreferences = "contact_recommend_config_json_" + CardViewController.a(this.a).getCurrentAccountUin();
+    if (QLog.isColorLevel()) {
+      QLog.d("CardViewController", 2, "mConfigChangelistener CONTACT_RECOMMEND_CONFIG_JSON ");
     }
-    ((NewFriendManager)this.a.a.app.getManager(33)).b();
+    if (paramSharedPreferences.equals(paramString)) {
+      CardViewController.a(this.a, true, true);
+    }
   }
 }
 

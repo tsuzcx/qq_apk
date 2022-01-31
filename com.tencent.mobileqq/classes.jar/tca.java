@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import java.util.List;
 
-class tca
-  implements Runnable
+public class tca
+  implements View.OnClickListener
 {
-  tca(tbz paramtbz, String paramString) {}
+  public tca(NearbyActivity paramNearbyActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PermisionPrivacyActivity.a(this.jdField_a_of_type_Tbz.a).setRightText(this.jdField_a_of_type_JavaLangString);
-    PermisionPrivacyActivity.a(this.jdField_a_of_type_Tbz.a).setContentDescription("不常联系好友 " + this.jdField_a_of_type_JavaLangString);
+    int i = 0;
+    while (i < this.a.a.size())
+    {
+      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
+      i += 1;
+    }
   }
 }
 

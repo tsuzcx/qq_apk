@@ -1,40 +1,34 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class kbc
-  implements GestureDetector.OnGestureListener
+class kbc
+  implements QavInOutAnimation.QavOutAnimationListener
 {
-  public kbc(VideoControlUI paramVideoControlUI) {}
+  kbc(kbb paramkbb, int paramInt) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a()
   {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if ((this.a.k != null) && (this.a.k.isShown()))
+    if (this.jdField_a_of_type_Kbb.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
-      this.a.k.setVisibility(8);
-      com.tencent.mobileqq.utils.AudioHelper.b = false;
+      this.jdField_a_of_type_Kbb.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131364247, false);
+      this.jdField_a_of_type_Kbb.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365414, false);
+      this.jdField_a_of_type_Kbb.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365413, false);
+      this.jdField_a_of_type_Kbb.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365411, false);
+      this.jdField_a_of_type_Kbb.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365409, false);
+      this.jdField_a_of_type_Kbb.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131364249, false);
     }
-    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Kbb.a.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Kbb.a.c, 0);
+    this.jdField_a_of_type_Kbb.a.jdField_a_of_type_ComTencentAvVideoController.b(250);
+    this.jdField_a_of_type_Kbb.a.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_Kbb.a.c, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Kbb.a.e = true;
+    this.jdField_a_of_type_Kbb.a.finish();
+    this.jdField_a_of_type_Kbb.a.overridePendingTransition(0, 2131034269);
   }
 }
 

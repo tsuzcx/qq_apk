@@ -1,16 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class xmo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xmo(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xmo(LoginView paramLoginView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
-    this.a.finish();
+    paramDialogInterface = this.a.a.getText().toString();
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      this.a.b(paramDialogInterface);
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajbm;
-import ajbn;
+import ajpq;
+import ajpr;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -55,7 +55,7 @@ public class TroopGagMgr
 {
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
   public QQAppInterface a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ajbn(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ajpr(this);
   Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
   
   public TroopGagMgr(QQAppInterface paramQQAppInterface)
@@ -116,7 +116,7 @@ public class TroopGagMgr
       if (QLog.isDevelopLevel()) {
         QLog.d("TroopGagMgr", 4, String.format("getTroopGagInfo:sUin=%s, Troop Gag", new Object[] { paramString }));
       }
-      return new TroopGagMgr.SelfGagInfo(this, paramString, true, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getString(2131430242), 60L);
+      return new TroopGagMgr.SelfGagInfo(this, paramString, true, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getString(2131430259), 60L);
     }
     if ((((TroopInfo)localObject).dwGagTimeStamp_me != 0L) && (l < ((TroopInfo)localObject).dwGagTimeStamp_me + 3L))
     {
@@ -124,7 +124,7 @@ public class TroopGagMgr
         QLog.d("TroopGagMgr", 4, String.format("getTroopGagInfo:sUin=%s, self Gag", new Object[] { paramString }));
       }
       Context localContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
-      String str = localContext.getString(2131430243);
+      String str = localContext.getString(2131430260);
       l = ((TroopInfo)localObject).dwGagTimeStamp_me + 3L;
       if (paramBoolean) {
         l = ((TroopInfo)localObject).dwGagTimeStamp_me - 30L;
@@ -152,15 +152,15 @@ public class TroopGagMgr
   
   public String a(Context paramContext, long paramLong)
   {
-    return String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getString(2131430244), new Object[] { b(paramContext, paramLong) });
+    return String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getString(2131430261), new Object[] { b(paramContext, paramLong) });
   }
   
   public String a(Context paramContext, long paramLong1, long paramLong2)
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
-    paramContext = ((Context)localObject).getString(2131430245);
-    String str = ((Context)localObject).getString(2131430246);
-    localObject = ((Context)localObject).getString(2131430247);
+    paramContext = ((Context)localObject).getString(2131430262);
+    String str = ((Context)localObject).getString(2131430263);
+    localObject = ((Context)localObject).getString(2131430264);
     if (paramLong1 < 60L) {
       return String.format("约%d%s", new Object[] { Integer.valueOf(1), paramContext });
     }
@@ -235,7 +235,7 @@ public class TroopGagMgr
         }
         if (paramLong3 == 0L)
         {
-          paramString = ((Context)localObject2).getResources().getString(2131430451);
+          paramString = ((Context)localObject2).getResources().getString(2131430468);
           localObject2 = (MessageForGrayTips)MessageRecordFactory.a(-2030);
           ((MessageForGrayTips)localObject2).frienduin = ((String)localObject1);
           ((MessageForGrayTips)localObject2).init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (String)localObject1, (String)localObject1, paramString, paramLong2, -2030, 1, paramInt1);
@@ -245,13 +245,13 @@ public class TroopGagMgr
         }
       }
       finally {}
-      paramString = ((Context)localObject2).getResources().getString(2131430452);
+      paramString = ((Context)localObject2).getResources().getString(2131430469);
       continue;
       label244:
       if (paramLong3 == 0L) {
-        paramString = ((Context)localObject2).getResources().getString(2131430450, new Object[] { paramString });
+        paramString = ((Context)localObject2).getResources().getString(2131430467, new Object[] { paramString });
       } else {
-        paramString = ((Context)localObject2).getResources().getString(2131430449, new Object[] { paramString, c((Context)localObject2, paramLong3) });
+        paramString = ((Context)localObject2).getResources().getString(2131430466, new Object[] { paramString, c((Context)localObject2, paramLong3) });
       }
     }
   }
@@ -427,12 +427,12 @@ public class TroopGagMgr
     Object localObject2;
     if ((paramBoolean) && (bool))
     {
-      i = 2131430257;
+      i = 2131430274;
       localObject1 = localContext.getString(i);
       if (paramLong2 == 0L) {
         break label539;
       }
-      i = 2131430260;
+      i = 2131430277;
       localObject3 = localContext.getString(i);
       str1 = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2);
       str2 = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString3);
@@ -500,9 +500,9 @@ public class TroopGagMgr
           break label596;
         }
         return;
-        i = 2131430258;
+        i = 2131430275;
         break;
-        i = 2131430261;
+        i = 2131430278;
         break label87;
         localObject1 = (String)localObject2 + " ";
       }
@@ -524,17 +524,17 @@ public class TroopGagMgr
     Object localObject2;
     if (!paramBoolean1)
     {
-      localObject1 = ((Context)localObject3).getString(2131430259);
+      localObject1 = ((Context)localObject3).getString(2131430276);
       if ((paramBoolean2) && (bool))
       {
-        str = (String)localObject1 + ((Context)localObject3).getString(2131430257);
+        str = (String)localObject1 + ((Context)localObject3).getString(2131430274);
         if (!paramBoolean1) {
           break label419;
         }
         if (paramLong2 == 0L) {
           break label406;
         }
-        localObject1 = ((Context)localObject3).getString(2131430264);
+        localObject1 = ((Context)localObject3).getString(2131430281);
         localObject2 = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2);
         if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equalsIgnoreCase(paramString2)) {
           break label567;
@@ -575,19 +575,19 @@ public class TroopGagMgr
           break label547;
         }
         return;
-        str = (String)localObject1 + ((Context)localObject3).getString(2131430258);
+        str = (String)localObject1 + ((Context)localObject3).getString(2131430275);
         break;
         if ((paramBoolean2) && (bool))
         {
-          str = ((Context)localObject3).getString(2131430263);
+          str = ((Context)localObject3).getString(2131430280);
           break;
         }
-        str = ((Context)localObject3).getString(2131430262);
+        str = ((Context)localObject3).getString(2131430279);
         break;
-        localObject1 = ((Context)localObject3).getString(2131430265);
+        localObject1 = ((Context)localObject3).getString(2131430282);
         break label126;
         if (paramLong2 != 0L) {}
-        for (i = 2131430260;; i = 2131430261)
+        for (i = 2131430277;; i = 2131430278)
         {
           localObject2 = ((Context)localObject3).getString(i);
           localObject1 = localObject2;
@@ -664,7 +664,7 @@ public class TroopGagMgr
   
   public final boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = 2131430253;
+    int i = 2131430270;
     if (!"OidbSvc.0x89a_0".equals(paramFromServiceMsg.getServiceCmd())) {
       return false;
     }
@@ -675,7 +675,7 @@ public class TroopGagMgr
     {
       a(str, false, l);
       if (l == 0L) {}
-      for (i = 2131430253;; i = 2131430249)
+      for (i = 2131430270;; i = 2131430266)
       {
         a(i, false);
         if (QLog.isDevelopLevel()) {
@@ -702,7 +702,7 @@ public class TroopGagMgr
       {
         a(i, false);
         return true;
-        i = 2131430249;
+        i = 2131430266;
       }
       if (paramToServiceMsg.uint32_result.get() != 0)
       {
@@ -712,7 +712,7 @@ public class TroopGagMgr
           a(i, false);
           a(str, false, l);
           return true;
-          i = 2131430249;
+          i = 2131430266;
         }
       }
       if (QLog.isDevelopLevel()) {
@@ -791,7 +791,7 @@ public class TroopGagMgr
   
   public boolean a(String paramString1, String paramString2, long paramLong)
   {
-    int i = 2131430255;
+    int i = 2131430272;
     if ((TextUtils.isEmpty(paramString1)) || (paramString1.equals("0")))
     {
       if (paramLong == 0L) {}
@@ -799,7 +799,7 @@ public class TroopGagMgr
       {
         a(i, false);
         return false;
-        i = 2131430251;
+        i = 2131430268;
       }
     }
     if ((TextUtils.isEmpty(paramString2)) || (paramString2.equals("0")))
@@ -809,7 +809,7 @@ public class TroopGagMgr
       {
         a(i, false);
         return false;
-        i = 2131430251;
+        i = 2131430268;
       }
     }
     ArrayList localArrayList = new ArrayList();
@@ -889,7 +889,7 @@ public class TroopGagMgr
     int i = localContext.getResources().getDimensionPixelSize(2131558448);
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new ajbm(this, paramBoolean, localContext, paramString, i));
+      new Handler(Looper.getMainLooper()).post(new ajpq(this, paramBoolean, localContext, paramString, i));
       return;
     }
     if (paramBoolean)
@@ -897,7 +897,7 @@ public class TroopGagMgr
       QQToast.a(localContext, 2, paramString, 0).b(i);
       return;
     }
-    QQToast.a(localContext, 2130838748, paramString, 0).b(i);
+    QQToast.a(localContext, 2130838752, paramString, 0).b(i);
   }
   
   public final boolean b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -917,7 +917,7 @@ public class TroopGagMgr
       if (paramFromServiceMsg.getResultCode() == 10)
       {
         if (l == 0L) {}
-        for (i = 2131430255;; i = 2131430266)
+        for (i = 2131430272;; i = 2131430283)
         {
           a(i, false);
           b(str1, false, l);
@@ -925,7 +925,7 @@ public class TroopGagMgr
         }
       }
       if (l == 0L) {}
-      for (i = 2131430255;; i = 2131430251)
+      for (i = 2131430272;; i = 2131430268)
       {
         a(i, false);
         break;
@@ -945,7 +945,7 @@ public class TroopGagMgr
     {
       b(str1, false, l);
       if (l == 0L) {}
-      for (i = 2131430255;; i = 2131430251)
+      for (i = 2131430272;; i = 2131430268)
       {
         a(i, false);
         return true;
@@ -955,7 +955,7 @@ public class TroopGagMgr
         if (paramToServiceMsg.uint32_result.get() == 10)
         {
           if (l == 0L) {}
-          for (i = 2131430255;; i = 2131430266)
+          for (i = 2131430272;; i = 2131430283)
           {
             a(i, false);
             b(str1, false, l);
@@ -963,7 +963,7 @@ public class TroopGagMgr
           }
         }
         if (l == 0L) {}
-        for (i = 2131430255;; i = 2131430251)
+        for (i = 2131430272;; i = 2131430268)
         {
           a(i, false);
           break;
@@ -975,7 +975,7 @@ public class TroopGagMgr
       b(str1, true, l);
       if (l != 0L) {}
     }
-    for (int i = 2131430254;; i = 2131430250)
+    for (int i = 2131430271;; i = 2131430267)
     {
       a(i, true);
       return true;
@@ -1046,9 +1046,9 @@ public class TroopGagMgr
   public String c(Context paramContext, long paramLong)
   {
     paramContext = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext();
-    String str1 = paramContext.getString(2131430245);
-    String str2 = paramContext.getString(2131430246);
-    Object localObject = paramContext.getString(2131430247);
+    String str1 = paramContext.getString(2131430262);
+    String str2 = paramContext.getString(2131430263);
+    Object localObject = paramContext.getString(2131430264);
     if (paramLong < 60L) {
       paramContext = 1 + str1;
     }
@@ -1095,7 +1095,7 @@ public class TroopGagMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGagMgr
  * JD-Core Version:    0.7.0.1
  */

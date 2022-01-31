@@ -26,10 +26,10 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jfs;
-import jft;
-import jfu;
-import jfv;
+import jfd;
+import jfe;
+import jff;
+import jfg;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -53,7 +53,7 @@ public abstract class EffectConfigBase
   public EffectConfigBase(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_AndroidOsHandler = new jfu(this);
+    this.jdField_a_of_type_AndroidOsHandler = new jff(this);
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
   }
   
@@ -195,7 +195,7 @@ public abstract class EffectConfigBase
   
   static void a(String paramString1, String paramString2, String paramString3)
   {
-    ThreadManager.getFileThreadHandler().post(new jft(paramString2, paramString3, paramString1));
+    ThreadManager.getFileThreadHandler().post(new jfe(paramString2, paramString3, paramString1));
   }
   
   static boolean a(int paramInt)
@@ -305,13 +305,13 @@ public abstract class EffectConfigBase
       return;
     }
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jfs(this, paramItemBase);
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jfd(this, paramItemBase);
     localHttpNetReq.jdField_a_of_type_JavaLangString = paramItemBase.getResurl();
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.jdField_c_of_type_JavaLangString = a(paramItemBase);
     localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
     localHttpNetReq.a(paramItemBase);
-    ThreadManager.post(new jfv(this, localHttpNetReq), 5, null, true);
+    ThreadManager.post(new jfg(this, localHttpNetReq), 5, null, true);
   }
   
   public void a(String paramString, boolean paramBoolean)

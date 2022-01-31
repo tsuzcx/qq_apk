@@ -1,17 +1,17 @@
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVVideoCtrl;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
+import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
+import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
+import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.CheckGameListener;
 
 public class ynf
-  implements Runnable
+  implements ApolloGameWrapper.CheckGameListener
 {
-  public ynf(CmGameAvHandler paramCmGameAvHandler, float paramFloat) {}
+  public ynf(ChatPieApolloViewController paramChatPieApolloViewController) {}
   
-  public void run()
+  public void a(boolean paramBoolean, CmGameMainManager paramCmGameMainManager)
   {
-    AVManager.a(BaseApplicationImpl.getContext()).a().getVideoCtrl().inputBeautyParam(this.jdField_a_of_type_Float);
+    if ((paramBoolean) && (paramCmGameMainManager != null)) {
+      paramCmGameMainManager.d();
+    }
   }
 }
 

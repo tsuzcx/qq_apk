@@ -1,83 +1,39 @@
-import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.os.Bundle;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-class ovt
-  extends DownloadListener
+public class ovt
+  implements BusinessObserver
 {
-  ovt(ovs paramovs, VideoCombineHelper.CombineParams paramCombineParams, ArrayList paramArrayList, long paramLong) {}
+  public ovt(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramDownloadTask.a == 0)
-    {
-      paramDownloadTask = this.jdField_a_of_type_Ovs.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (paramDownloadTask.hasNext()) {
-        if (!((File)paramDownloadTask.next()).exists())
-        {
-          this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Ovs);
-          return;
-        }
-      }
-      try
-      {
-        paramDownloadTask = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b.iterator();
-        int i = 1;
-        while (paramDownloadTask.hasNext())
-        {
-          String str = (String)paramDownloadTask.next();
-          File localFile = new File(this.jdField_a_of_type_Ovs.a() + File.separator + "v_" + i + ".mp4");
-          this.jdField_a_of_type_JavaUtilArrayList.add(localFile.getAbsolutePath());
-          if (localFile.exists())
-          {
-            i += 1;
-          }
-          else
-          {
-            if (!localFile.exists()) {
-              localFile.createNewFile();
-            }
-            FileUtils.a(new File(str), localFile);
-            i += 1;
-          }
-        }
-        this.jdField_a_of_type_Ovs.b();
-      }
-      catch (IOException paramDownloadTask)
-      {
-        QLog.e(".troop.VideoCombineHelper", 1, paramDownloadTask, new Object[0]);
-        this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Ovs);
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b = this.jdField_a_of_type_JavaUtilArrayList;
-        this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_Ovs);
-        this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new ovk(this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener, this.jdField_a_of_type_Ovs.c, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.d, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.c);
-        if (!VideoEnvironment.e((AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web"))) {}
-      }
-      for (;;)
-      {
-        QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-        return;
-        if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a) {
-          this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
-        } else {
-          this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
     }
-    this.jdField_a_of_type_Ovs.d = ("donwload failed!code = " + paramDownloadTask.a + "errmsg = " + paramDownloadTask.b);
-    this.jdField_a_of_type_Ovs.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Ovs);
+    if (!paramBoolean)
+    {
+      EditUniqueTitleActivity.a(this.a, -1);
+      return;
+    }
+    paramBundle = paramBundle.getByteArray("data");
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    try
+    {
+      localOIDBSSOPkg.mergeFrom(paramBundle);
+      paramInt = localOIDBSSOPkg.uint32_result.get();
+      EditUniqueTitleActivity.a(this.a, paramInt);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      EditUniqueTitleActivity.a(this.a, -1);
+    }
   }
 }
 

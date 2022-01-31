@@ -1,14 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexp
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aexp(NearbyMomentFragment paramNearbyMomentFragment, URLDrawable paramURLDrawable) {}
+  public aexp(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

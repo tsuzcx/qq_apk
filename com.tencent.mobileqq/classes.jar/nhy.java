@@ -1,26 +1,44 @@
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
 
 public class nhy
-  implements Runnable
+  implements TextWatcher
 {
-  public nhy(FeedsPlayModeBase paramFeedsPlayModeBase, boolean paramBoolean) {}
+  public nhy(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.e = false;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.g();
+    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
     }
-    while ((this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() <= 0) || (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a() <= 1)) {
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("正在加载…");
+      this.a.b.setVisibility(8);
+      paramEditable = this.a.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838596);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramEditable, null, null, null);
+      ((Animatable)paramEditable).start();
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.a(null);
       return;
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a() - 1);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.b, false);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

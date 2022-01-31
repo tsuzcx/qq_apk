@@ -1,46 +1,40 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.util.TroopReportor;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class ual
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public ual(TroopRequestActivity paramTroopRequestActivity, ActionSheet paramActionSheet) {}
+  public ual(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    Intent localIntent = new Intent();
+    localIntent.putExtra("troop_uin", this.a.b);
+    List localList = (List)this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a.get(TroopMemberListActivity.a(this.a));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
     {
+      localArrayList.add(((TroopMemberListActivity.ATroopMember)localList.get(i)).a);
+      i += 1;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (NetworkUtil.d(BaseApplication.getContext())) {}
-      try
-      {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app.getCurrentAccountUin();
-        ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.r, null, paramView, 10029, null);
-        for (;;)
-        {
-          label68:
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.s, "", "");
-          break;
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131434794, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
-        }
-      }
-      catch (Exception paramView)
-      {
-        break label68;
-      }
-    }
+    localIntent.putExtra("members_uin", localArrayList);
+    PublicFragmentActivity.a(paramView.getContext(), localIntent, TroopMemberHistoryFragment.class);
+    paramView = ((TroopManager)this.a.app.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.app.getCurrentAccountUin());
+    TroopReportor.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, TroopReportor.a(paramView) });
   }
 }
 

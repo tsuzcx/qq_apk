@@ -1,17 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.ViewHolder;
 
 public class aely
-  implements IMediaPlayer.OnErrorListener
+  implements View.OnClickListener
 {
-  public aely(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnErrorListener paramOnErrorListener, Object paramObject) {}
+  public aely(NearbyFragmentEnterAdapter paramNearbyFragmentEnterAdapter) {}
   
-  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnErrorListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl, 0, paramInt1, this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    NearbyFragmentEnterAdapter.ViewHolder localViewHolder = (NearbyFragmentEnterAdapter.ViewHolder)paramView.getTag();
+    if (this.a.a != null) {
+      this.a.a.onItemClick(null, paramView, localViewHolder.a, localViewHolder.a);
+    }
   }
 }
 

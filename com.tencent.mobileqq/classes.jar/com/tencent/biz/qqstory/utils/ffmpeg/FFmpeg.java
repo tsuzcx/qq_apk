@@ -3,10 +3,10 @@ package com.tencent.biz.qqstory.utils.ffmpeg;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
+import android.media.MediaMetadataRetriever;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.app.QQStoryConstant;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.biz.qqstory.utils.VideoUtils;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.io.BufferedWriter;
@@ -15,15 +15,15 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import ona;
-import onc;
-import ond;
-import one;
-import onf;
-import ong;
-import onh;
-import onm;
-import ono;
+import oou;
+import oow;
+import oox;
+import ooy;
+import ooz;
+import opa;
+import opb;
+import opg;
+import opi;
 
 public class FFmpeg
 {
@@ -35,7 +35,7 @@ public class FFmpeg
   public FFmpegCommandUnit a;
   public String a;
   public ArrayList a;
-  public onh a;
+  public opb a;
   protected boolean a;
   public ArrayList b = new ArrayList();
   public boolean b;
@@ -45,13 +45,13 @@ public class FFmpeg
     this.jdField_a_of_type_Long = 9223372036854775807L;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_Int = -9999;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ong(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new opa(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
     paramContext = new IntentFilter();
     paramContext.addAction("android.intent.action.SCREEN_OFF");
     paramContext.addAction("android.intent.action.SCREEN_ON");
     this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramContext);
-    ono.a(new File(onm.a(this.jdField_a_of_type_AndroidContentContext)));
+    opi.a(new File(opg.a(this.jdField_a_of_type_AndroidContentContext)));
   }
   
   public static FFmpeg a(Context paramContext)
@@ -85,93 +85,148 @@ public class FFmpeg
     return paramContext;
   }
   
-  public ona a(String paramString1, String paramString2, String paramString3, String paramString4, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
+  public oou a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, int paramInt, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    paramString4 = new ona(paramString4);
+    paramString4 = new oou(paramString4);
     paramString4.jdField_a_of_type_JavaLangString = paramString3;
-    return a(paramString1, paramString2, paramString4, paramFFmpegExecuteResponseCallback);
+    return a(paramString1, paramString2, paramBoolean, paramString4, paramInt, paramFFmpegExecuteResponseCallback);
   }
   
-  public ona a(String paramString1, String paramString2, ona paramona, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
+  public oou a(String paramString1, String paramString2, boolean paramBoolean, oou paramoou, int paramInt, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "combineAudioAndVideo arguments: \n inVideo" + paramString1 + "\n inAudio:" + paramString2 + "\n outMedia:" + paramona);
-    if (!FileUtils.c(paramString1))
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "combineAudioAndVideo arguments: \n inVideo" + paramString1 + "\n inAudio:" + paramString2 + "\n outMedia:" + paramoou);
+    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString1))
     {
       SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio but inVideo file is not exist");
       paramFFmpegExecuteResponseCallback.b(String.valueOf(941002));
       paramFFmpegExecuteResponseCallback.a(false);
-      return paramona;
+      return paramoou;
     }
-    if (!FileUtils.c(paramString2))
+    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString2))
     {
       SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio but inAudio file is not exist");
       paramFFmpegExecuteResponseCallback.b(String.valueOf(941002));
       paramFFmpegExecuteResponseCallback.a(false);
-      return paramona;
+      return paramoou;
     }
     ArrayList localArrayList = new ArrayList();
     localArrayList.add("-y");
     localArrayList.add("-i");
     localArrayList.add(new File(paramString1).getCanonicalPath());
-    localArrayList.add("-i");
-    localArrayList.add(new File(paramString2).getCanonicalPath());
-    localArrayList.add("-map_chapters");
-    localArrayList.add("-1");
-    localArrayList.add("-strict");
-    localArrayList.add("-2");
-    localArrayList.add("-vcodec");
-    if (paramona.jdField_a_of_type_JavaLangString != null)
+    String str;
+    long l1;
+    if (paramBoolean)
     {
-      localArrayList.add(paramona.jdField_a_of_type_JavaLangString);
-      localArrayList.add("-acodec");
-      if (paramona.jdField_c_of_type_JavaLangString == null) {
-        break label523;
+      paramString1 = new MediaMetadataRetriever();
+      paramString1.setDataSource(paramString2);
+      str = paramString1.extractMetadata(9);
+      paramString1.release();
+      l1 = paramInt;
+    }
+    label810:
+    label822:
+    try
+    {
+      long l2 = Long.parseLong(str);
+      l1 = l2;
+    }
+    catch (Exception paramString1)
+    {
+      label204:
+      int i;
+      StringBuilder localStringBuilder;
+      label443:
+      break label204;
+    }
+    i = (int)Math.ceil(paramInt / (float)l1);
+    if (i > 1)
+    {
+      paramString1 = new File(paramString2).getCanonicalPath();
+      str = new File(paramString2).getParent() + "/catAudioFile.txt";
+      localStringBuilder = new StringBuilder();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        if (paramInt > 0) {
+          localStringBuilder.append("\n");
+        }
+        localStringBuilder.append("file '").append(paramString1).append("'");
+        paramInt += 1;
       }
-      localArrayList.add(paramona.jdField_c_of_type_JavaLangString);
+      com.tencent.mobileqq.utils.FileUtils.a(str, localStringBuilder.toString());
+      localArrayList.add("-f");
+      localArrayList.add("concat");
+      localArrayList.add("-safe");
+      localArrayList.add("0");
+      localArrayList.add("-i");
+      localArrayList.add(str);
+      localArrayList.add("-map_chapters");
+      localArrayList.add("-1");
+      localArrayList.add("-strict");
+      localArrayList.add("-2");
+      localArrayList.add("-vcodec");
+      if (paramoou.jdField_a_of_type_JavaLangString == null) {
+        break label810;
+      }
+      localArrayList.add(paramoou.jdField_a_of_type_JavaLangString);
+      localArrayList.add("-acodec");
+      if (paramoou.jdField_c_of_type_JavaLangString == null) {
+        break label822;
+      }
+      localArrayList.add(paramoou.jdField_c_of_type_JavaLangString);
     }
     for (;;)
     {
       FFmpegUtils.a(paramString2);
       localArrayList.add("-bsf:a");
       localArrayList.add("aac_adtstoasc");
-      if (paramona.jdField_c_of_type_Int != -1)
+      if (paramoou.jdField_c_of_type_Int != -1)
       {
         localArrayList.add("-b:v");
-        localArrayList.add(paramona.jdField_c_of_type_Int + "k");
+        localArrayList.add(paramoou.jdField_c_of_type_Int + "k");
       }
-      if (paramona.jdField_b_of_type_JavaLangString != null)
+      if (paramoou.jdField_b_of_type_JavaLangString != null)
       {
         localArrayList.add("-r");
-        localArrayList.add(paramona.jdField_b_of_type_JavaLangString);
+        localArrayList.add(paramoou.jdField_b_of_type_JavaLangString);
       }
-      if (paramona.jdField_e_of_type_Int != -1)
+      if (paramoou.jdField_e_of_type_Int != -1)
       {
         localArrayList.add("-b:a");
-        localArrayList.add(paramona.jdField_e_of_type_Int + "k");
+        localArrayList.add(paramoou.jdField_e_of_type_Int + "k");
       }
-      if (paramona.jdField_a_of_type_Int > 0)
+      if (paramoou.jdField_a_of_type_Int > 0)
       {
         localArrayList.add("-s");
-        localArrayList.add(paramona.jdField_a_of_type_Int + "x" + paramona.jdField_b_of_type_Int);
+        localArrayList.add(paramoou.jdField_a_of_type_Int + "x" + paramoou.jdField_b_of_type_Int);
       }
-      if (paramona.jdField_e_of_type_JavaLangString != null)
+      if (paramoou.jdField_e_of_type_JavaLangString != null)
       {
         localArrayList.add("-f");
-        localArrayList.add(paramona.jdField_e_of_type_JavaLangString);
+        localArrayList.add(paramoou.jdField_e_of_type_JavaLangString);
       }
-      localArrayList.add(new File(paramona.d).getCanonicalPath());
+      paramString1 = new File(paramoou.d);
+      if (paramBoolean) {
+        localArrayList.add("-shortest");
+      }
+      localArrayList.add(paramString1.getCanonicalPath());
       a((String[])localArrayList.toArray(new String[0]), paramFFmpegExecuteResponseCallback);
-      return paramona;
-      localArrayList.add("copy");
+      return paramoou;
+      localArrayList.add("-i");
+      localArrayList.add(new File(paramString2).getCanonicalPath());
       break;
-      label523:
+      localArrayList.add("-i");
+      localArrayList.add(new File(paramString2).getCanonicalPath());
+      break;
+      localArrayList.add("copy");
+      break label443;
       localArrayList.add("aac");
     }
   }
   
   public void a()
   {
-    ono.a(new File(onm.a(this.jdField_a_of_type_AndroidContentContext)));
+    opi.a(new File(opg.a(this.jdField_a_of_type_AndroidContentContext)));
   }
   
   public void a(String paramString)
@@ -197,7 +252,7 @@ public class FFmpeg
     if ((k > 960) || (n > 960))
     {
       if (n >= k) {
-        break label638;
+        break label641;
       }
       i = 540;
       j = 540 * k / n;
@@ -221,7 +276,7 @@ public class FFmpeg
         m = k;
       }
       k = 1;
-      long l = FileUtils.a(paramString1);
+      long l = com.tencent.biz.qqstory.utils.FileUtils.a(paramString1);
       j = k;
       if (l != -1L)
       {
@@ -276,7 +331,7 @@ public class FFmpeg
         ((ArrayList)localObject).add("-acodec");
         ((ArrayList)localObject).add("aac");
       }
-      label638:
+      label641:
       j = k;
       i = n;
     }
@@ -285,7 +340,7 @@ public class FFmpeg
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
     SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio arguments: \n inAudio" + paramString1 + "\n outAudio:" + paramString2 + "\n start:" + paramInt1 + "\n duration:" + paramInt2);
-    if (!FileUtils.c(paramString1))
+    if (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString1))
     {
       SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", "clipAudio but inAudio file is not exist");
       paramFFmpegExecuteResponseCallback.b(String.valueOf(941001));
@@ -312,7 +367,7 @@ public class FFmpeg
   {
     SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "mp4Tots arguments: \n input:" + paramString1 + "\n outputPath:" + paramString2);
     this.b.add(paramString2);
-    if (FileUtils.c(paramString2))
+    if (com.tencent.biz.qqstory.utils.FileUtils.c(paramString2))
     {
       paramFFmpegExecuteResponseCallback.a("TS file exists");
       paramFFmpegExecuteResponseCallback.a(true);
@@ -345,7 +400,7 @@ public class FFmpeg
     }
     if (paramString1 == null)
     {
-      boolean bool = FileUtils.a(this.jdField_a_of_type_AndroidContentContext, paramString2, paramString3);
+      boolean bool = com.tencent.biz.qqstory.utils.FileUtils.a(this.jdField_a_of_type_AndroidContentContext, paramString2, paramString3);
       if (bool) {
         paramFFmpegExecuteResponseCallback.a("copy_success");
       }
@@ -410,10 +465,10 @@ public class FFmpeg
     paramArrayList = (FFmpegCommandUnit)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
     ArrayList localArrayList = paramArrayList.jdField_a_of_type_JavaUtilArrayList;
     String[] arrayOfString = paramArrayList.jdField_a_of_type_ArrayOfJavaLangString;
-    onf localonf = new onf(this, paramArrayList.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback, arrayOfString, this.jdField_a_of_type_JavaUtilArrayList);
+    ooz localooz = new ooz(this, paramArrayList.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback, arrayOfString, this.jdField_a_of_type_JavaUtilArrayList);
     if (arrayOfString != null)
     {
-      a(arrayOfString, localonf);
+      a(arrayOfString, localooz);
       return;
     }
     switch (paramArrayList.jdField_a_of_type_Int)
@@ -421,52 +476,52 @@ public class FFmpeg
     default: 
       return;
     case 1: 
-      a((String)localArrayList.get(0), (String)localArrayList.get(1), (String)localArrayList.get(2), ((Integer)localArrayList.get(3)).intValue(), ((Integer)localArrayList.get(4)).intValue(), localonf);
+      a((String)localArrayList.get(0), (String)localArrayList.get(1), (String)localArrayList.get(2), ((Integer)localArrayList.get(3)).intValue(), ((Integer)localArrayList.get(4)).intValue(), localooz);
       return;
     case 3: 
-      a((String)localArrayList.get(0), (String)localArrayList.get(1), ((Integer)localArrayList.get(2)).intValue(), ((Integer)localArrayList.get(3)).intValue(), localonf);
+      a((String)localArrayList.get(0), (String)localArrayList.get(1), ((Integer)localArrayList.get(2)).intValue(), ((Integer)localArrayList.get(3)).intValue(), localooz);
       return;
     case 4: 
-      a((String)localArrayList.get(0), (String)localArrayList.get(1), (String)localArrayList.get(2), (String)localArrayList.get(3), localonf);
+      a((String)localArrayList.get(0), (String)localArrayList.get(1), (String)localArrayList.get(2), (String)localArrayList.get(3), ((Boolean)localArrayList.get(4)).booleanValue(), ((Integer)localArrayList.get(5)).intValue(), localooz);
       return;
     case 2: 
-      a((List)localArrayList.get(0), (String)localArrayList.get(1), localonf, ((Boolean)localArrayList.get(2)).booleanValue());
+      a((List)localArrayList.get(0), (String)localArrayList.get(1), localooz, ((Boolean)localArrayList.get(2)).booleanValue());
       return;
     case 7: 
-      b((List)localArrayList.get(0), (String)localArrayList.get(1), localonf);
+      b((List)localArrayList.get(0), (String)localArrayList.get(1), localooz);
       return;
     case 8: 
-      a((List)localArrayList.get(0), (String)localArrayList.get(1), localonf);
+      a((List)localArrayList.get(0), (String)localArrayList.get(1), localooz);
       return;
     case 5: 
-      a((String)localArrayList.get(0), (String)localArrayList.get(1), localonf);
+      a((String)localArrayList.get(0), (String)localArrayList.get(1), localooz);
       return;
     case 6: 
-      c((List)localArrayList.get(0), (String)localArrayList.get(1), localonf);
+      c((List)localArrayList.get(0), (String)localArrayList.get(1), localooz);
       return;
     case 9: 
-      c((String)localArrayList.get(0), (String)localArrayList.get(1), localonf);
+      c((String)localArrayList.get(0), (String)localArrayList.get(1), localooz);
       return;
     case 10: 
-      f((String)localArrayList.get(0), (String)localArrayList.get(1), localonf);
+      f((String)localArrayList.get(0), (String)localArrayList.get(1), localooz);
       return;
     case 11: 
-      a((String)localArrayList.get(0), ((Integer)localArrayList.get(1)).intValue(), ((Integer)localArrayList.get(2)).intValue(), ((Integer)localArrayList.get(3)).intValue(), ((Boolean)localArrayList.get(4)).booleanValue(), (String)localArrayList.get(5), localonf);
+      a((String)localArrayList.get(0), ((Integer)localArrayList.get(1)).intValue(), ((Integer)localArrayList.get(2)).intValue(), ((Integer)localArrayList.get(3)).intValue(), ((Boolean)localArrayList.get(4)).booleanValue(), (String)localArrayList.get(5), localooz);
       return;
     case 12: 
-      a((String)localArrayList.get(0), (String)localArrayList.get(1), (String)localArrayList.get(2), localonf);
+      a((String)localArrayList.get(0), (String)localArrayList.get(1), (String)localArrayList.get(2), localooz);
       return;
     case 13: 
-      b((String)localArrayList.get(0), (String)localArrayList.get(1), localonf);
+      b((String)localArrayList.get(0), (String)localArrayList.get(1), localooz);
       return;
     case 14: 
-      d((String)localArrayList.get(0), (String)localArrayList.get(1), localonf);
+      d((String)localArrayList.get(0), (String)localArrayList.get(1), localooz);
       return;
     case 15: 
-      b((String)localArrayList.get(0), (String)localArrayList.get(1), (String)localArrayList.get(2), localonf);
+      b((String)localArrayList.get(0), (String)localArrayList.get(1), (String)localArrayList.get(2), localooz);
       return;
     }
-    e((String)localArrayList.get(0), (String)localArrayList.get(1), localonf);
+    e((String)localArrayList.get(0), (String)localArrayList.get(1), localooz);
   }
   
   public void a(List paramList, String paramString, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
@@ -516,7 +571,7 @@ public class FFmpeg
         localBufferedWriter = new BufferedWriter(new FileWriter(localFile, true));
         int i = 0;
         if (paramString == null) {
-          break label363;
+          break label360;
         }
       }
       finally
@@ -541,14 +596,14 @@ public class FFmpeg
           paramList.add("-i");
           paramList.add(localFile.getCanonicalPath());
           if (!paramBoolean) {
-            break label365;
+            break label362;
           }
           paramList.add("-c:v");
           paramList.add("libx264");
           paramList.add("-bsf:a");
           paramList.add("aac_adtstoasc");
           paramList.add(new File(paramString).getCanonicalPath());
-          a((String[])paramList.toArray(new String[0]), new ond(this, paramFFmpegExecuteResponseCallback, localFile));
+          a((String[])paramList.toArray(new String[0]), new oox(this, paramFFmpegExecuteResponseCallback, localFile));
           return;
         }
         finally
@@ -563,9 +618,9 @@ public class FFmpeg
         paramString = null;
       }
       paramString.close();
-      label363:
+      label360:
       throw paramList;
-      label365:
+      label362:
       paramList.add("-c");
       paramList.add("copy");
     }
@@ -573,10 +628,10 @@ public class FFmpeg
   
   public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Onh != null) && (!this.jdField_a_of_type_Onh.a()))
+    if ((this.jdField_a_of_type_Opb != null) && (!this.jdField_a_of_type_Opb.a()))
     {
-      ono.a(this.jdField_a_of_type_Onh);
-      this.jdField_a_of_type_Onh = null;
+      opi.a(this.jdField_a_of_type_Opb);
+      this.jdField_a_of_type_Opb = null;
       this.jdField_a_of_type_Int = -9999;
       if (this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegCommandUnit != null)
       {
@@ -599,7 +654,7 @@ public class FFmpeg
   
   public void a(String[] paramArrayOfString, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)
   {
-    if ((this.jdField_a_of_type_Onh != null) && (!this.jdField_a_of_type_Onh.a()))
+    if ((this.jdField_a_of_type_Opb != null) && (!this.jdField_a_of_type_Opb.a()))
     {
       SLog.e("Q.qqstory.ffmpeg.FFmpegCmd", "FFmpeg command is already running");
       throw new FFmpegCommandAlreadyRunningException("FFmpeg command is already running, you are only allowed to run single command at a time");
@@ -616,10 +671,10 @@ public class FFmpeg
           ((File)localObject).mkdir();
         }
       }
-      paramFFmpegExecuteResponseCallback = new onc(this, paramFFmpegExecuteResponseCallback);
-      paramArrayOfString = (String[])ono.a((String[])ono.a(new String[] { onm.a(this.jdField_a_of_type_AndroidContentContext) }, paramArrayOfString), new String[] { onm.b(this.jdField_a_of_type_AndroidContentContext) });
-      this.jdField_a_of_type_Onh = new onh(this.jdField_a_of_type_AndroidContentContext, paramArrayOfString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, paramFFmpegExecuteResponseCallback);
-      this.jdField_a_of_type_Onh.execute(new Void[0]);
+      paramFFmpegExecuteResponseCallback = new oow(this, paramFFmpegExecuteResponseCallback);
+      paramArrayOfString = (String[])opi.a((String[])opi.a(new String[] { opg.a(this.jdField_a_of_type_AndroidContentContext) }, paramArrayOfString), new String[] { opg.b(this.jdField_a_of_type_AndroidContentContext) });
+      this.jdField_a_of_type_Opb = new opb(this.jdField_a_of_type_AndroidContentContext, paramArrayOfString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, paramFFmpegExecuteResponseCallback);
+      this.jdField_a_of_type_Opb.execute(new Void[0]);
       SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "command execute: " + TextUtils.join(" ", paramArrayOfString));
       return;
     }
@@ -628,7 +683,7 @@ public class FFmpeg
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Onh != null) && (!this.jdField_a_of_type_Onh.a());
+    return (this.jdField_a_of_type_Opb != null) && (!this.jdField_a_of_type_Opb.a());
   }
   
   public boolean a(String paramString)
@@ -645,7 +700,7 @@ public class FFmpeg
     localArrayList.add("-metadata");
     localArrayList.add("title=" + System.currentTimeMillis());
     paramString1 = new StringBuilder();
-    paramString1.append("dev=").append(DeviceInfoUtil.e()).append("/").append("os=").append(DeviceInfoUtil.f()).append("/").append("appVer=").append("V 7.6.0.3525");
+    paramString1.append("dev=").append(DeviceInfoUtil.e()).append("/").append("os=").append(DeviceInfoUtil.f()).append("/").append("appVer=").append("V 7.6.3.3560");
     localArrayList.add("-metadata");
     localArrayList.add("comment=" + paramString1.toString());
     localArrayList.add("-movflags");
@@ -698,7 +753,7 @@ public class FFmpeg
       localObject3 = new FFmpegCommandUnit();
       ((FFmpegCommandUnit)localObject3).jdField_a_of_type_Int = 5;
       ((FFmpegCommandUnit)localObject3).jdField_a_of_type_JavaUtilArrayList = new FFmpeg.3(this, (String)localObject1, (String)localObject2);
-      ((FFmpegCommandUnit)localObject3).jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new one(this, paramFFmpegExecuteResponseCallback);
+      ((FFmpegCommandUnit)localObject3).jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ooy(this, paramFFmpegExecuteResponseCallback);
       localArrayList.add(localObject3);
       i += 1;
     }
@@ -778,7 +833,7 @@ public class FFmpeg
       paramFFmpegExecuteResponseCallback.a(false);
       return;
     }
-    boolean bool = FileUtils.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
+    boolean bool = com.tencent.biz.qqstory.utils.FileUtils.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
     if (bool) {
       paramFFmpegExecuteResponseCallback.a("copy_success");
     }

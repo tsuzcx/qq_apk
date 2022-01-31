@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import mqq.os.MqqHandler;
 
 public class sry
-  extends WebViewClient
+  implements Runnable
 {
-  public sry(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public sry(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void run()
   {
-    if (this.a.a(paramString)) {}
-    return true;
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.a.app.getManager(50)).a(this.a.a.b);
+    if (localExtensionInfo != null) {
+      ThreadManager.getUIHandler().post(new srz(this, localExtensionInfo));
+    }
   }
 }
 

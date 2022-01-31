@@ -1,118 +1,76 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.takevideo.filter.FilterData.FilterPageItem;
-import com.tencent.biz.qqstory.takevideo.filter.WeatherFilterData;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.LayerEventListener;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer.LayerListener;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerListener;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import java.util.List;
 
 public class ojg
-  extends FilterData.FilterPageItem
+  implements TextFaceEditLayer.LayerListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  public ojg(DoodleEditView paramDoodleEditView) {}
   
-  public ojg(WeatherFilterData paramWeatherFilterData, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void a(GestureHelper.ZoomItem paramZoomItem)
   {
-    super(paramContext, paramViewGroup);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371995));
-  }
-  
-  private void a(int paramInt)
-  {
-    char[] arrayOfChar = String.valueOf(paramInt).toCharArray();
-    paramInt = 0;
-    Object localObject1;
-    while (paramInt < arrayOfChar.length)
+    if ((paramZoomItem instanceof TextLayer.TextItem))
     {
-      Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        localObject2 = new RelativeLayout.LayoutParams(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 40.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 62.0F));
-        if (paramInt != 0) {
-          ((RelativeLayout.LayoutParams)localObject2).leftMargin = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 1.0F);
-        }
-        ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_CENTER);
-        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
+      paramZoomItem = (TextLayer)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a("TextLayer");
+      if (paramZoomItem != null) {
+        paramZoomItem.a();
       }
-      a((ImageView)localObject1, arrayOfChar[paramInt]);
-      paramInt += 1;
     }
-    paramInt = arrayOfChar.length;
-    while (paramInt < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.b();
+  }
+  
+  public void a(GestureHelper.ZoomItem paramZoomItem, int paramInt1, int paramInt2)
+  {
+    if ((paramZoomItem instanceof TextLayer.TextItem))
     {
-      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView((View)localObject1);
-      paramInt += 1;
+      SLog.b("DoodleEditView", "click the TextItem:" + paramZoomItem);
+      paramZoomItem = (TextLayer)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a("TextLayer");
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.b();
+      if ((paramZoomItem != null) && (paramZoomItem.a != null))
+      {
+        paramZoomItem.d();
+        paramZoomItem.a.a();
+      }
     }
-  }
-  
-  private void a(ImageView paramImageView, char paramChar)
-  {
-    if (paramImageView == null) {
-      return;
-    }
-    switch (paramChar)
+    FaceLayer localFaceLayer;
+    do
     {
-    case '.': 
-    case '/': 
-    default: 
-      return;
-    case '-': 
-      paramImageView.setImageResource(2130843639);
-      return;
-    case '0': 
-      paramImageView.setImageResource(2130843640);
-      return;
-    case '1': 
-      paramImageView.setImageResource(2130843641);
-      return;
-    case '2': 
-      paramImageView.setImageResource(2130843642);
-      return;
-    case '3': 
-      paramImageView.setImageResource(2130843643);
-      return;
-    case '4': 
-      paramImageView.setImageResource(2130843644);
-      return;
-    case '5': 
-      paramImageView.setImageResource(2130843645);
-      return;
-    case '6': 
-      paramImageView.setImageResource(2130843646);
-      return;
-    case '7': 
-      paramImageView.setImageResource(2130843647);
-      return;
-    case '8': 
-      paramImageView.setImageResource(2130843648);
-      return;
-    }
-    paramImageView.setImageResource(2130843649);
-  }
-  
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2130970856, paramViewGroup, false);
-  }
-  
-  public void a(WeatherFilterData paramWeatherFilterData, int paramInt)
-  {
-    super.a(paramWeatherFilterData, paramInt);
-    if (paramWeatherFilterData != null) {
-      a(paramWeatherFilterData.c);
-    }
+      do
+      {
+        do
+        {
+          return;
+        } while (!(paramZoomItem instanceof FaceLayer.FaceItem));
+        SLog.b("DoodleEditView", "click the FaceAndTextItem:" + paramZoomItem);
+        paramZoomItem.d = false;
+        localFaceLayer = (FaceLayer)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a("FaceLayer");
+        FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)paramZoomItem;
+        if (localFaceLayer != null) {
+          localFaceLayer.jdField_a_of_type_JavaUtilList.add(localFaceItem);
+        }
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.b();
+        this.a.setVisibility(8);
+      } while (DoodleEditView.a(this.a) == null);
+      if (!(paramZoomItem instanceof FaceLayer.FaceAndTextItem)) {
+        break;
+      }
+    } while ((localFaceLayer == null) || (localFaceLayer.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$LayerEventListener == null));
+    localFaceLayer.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$LayerEventListener.a((FaceLayer.FaceAndTextItem)paramZoomItem);
+    return;
+    DoodleEditView.a(this.a).a(paramZoomItem);
   }
 }
 

@@ -1,21 +1,38 @@
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.handler.AVC2CDataHandler;
+import com.tencent.av.business.handler.AVC2CDataHandler.C2CDataHandler;
 import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
-import com.tencent.av.ui.redbag.GameSink;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.ui.redbag.SubHandleBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class kfe
-  implements Runnable
+  extends SubHandleBase
 {
-  public kfe(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
+  public int a;
+  public AVC2CDataHandler.C2CDataHandler a;
+  public boolean a;
+  public boolean b;
   
-  public void run()
+  public kfe(AVRedBagMgr paramAVRedBagMgr)
   {
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.jdField_c_of_type_JavaLangString = "0";
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.d = "0";
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.jdField_c_of_type_Boolean = false;
-    AudioHelper.a("开始模拟onGameEnd, RedBagID[" + this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a + "], playerGetRedbagResultCode[" + this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.jdField_c_of_type_JavaLangString + "], playerGetRedbagResultState[" + this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.d + "]");
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a().a(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a, this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a().getCurrentAccountUin(), this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a, this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.b, 1000, 2000, 2, 5, "231", "0", null, true, 0);
+    super(paramAVRedBagMgr);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler = new kff(this);
+    paramAVRedBagMgr = AVC2CDataHandler.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (paramAVRedBagMgr != null)
+    {
+      paramAVRedBagMgr.a(11, this.jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler);
+      return;
+    }
+    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.i, 1, "resetData[" + paramString + "]");
+    }
   }
 }
 

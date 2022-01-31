@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acqo;
+import adal;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.app.FMObserver;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
@@ -28,7 +28,7 @@ public class WeiYunPreviewController
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acqo(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new adal(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
   

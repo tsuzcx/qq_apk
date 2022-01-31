@@ -1,18 +1,14 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.app.Dialog;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
 
 public class anrp
+  implements Runnable
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public anrp(EditPicSave paramEditPicSave) {}
   
-  private anrp(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
+  public void run()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
+    EditPicSave.a(this.a).show();
   }
 }
 

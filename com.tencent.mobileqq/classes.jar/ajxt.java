@@ -1,33 +1,32 @@
-import android.os.Bundle;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.filemanager.app.UniformDownload;
-import com.tencent.mobileqq.webview.AbsWebView;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
 
 public class ajxt
-  implements DownloadListener
+  implements Runnable
 {
-  public ajxt(AbsWebView paramAbsWebView) {}
+  public ajxt(SnapshotService paramSnapshotService, ajya paramajya, ajxy paramajxy) {}
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "start UniformDownloadActivity");
+      QLog.i(SnapshotService.a(), 2, "start once debug, webview id =" + ajya.a(this.jdField_a_of_type_Ajya) + ", seq=" + this.jdField_a_of_type_Ajxy.a);
     }
-    String str = this.a.a.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    UniformDownload.a(this.a.g, paramString1, localBundle);
+    this.jdField_a_of_type_Ajya.a.a.invalidate();
+    if (this.jdField_a_of_type_Ajya.a.a.getX5WebViewExtension() != null) {
+      this.jdField_a_of_type_Ajya.a.a.loadUrl("javascript:window.scrollTo(0, 0);");
+    }
+    for (;;)
+    {
+      SnapshotService.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService, this.jdField_a_of_type_Ajxy, this.jdField_a_of_type_Ajya);
+      return;
+      this.jdField_a_of_type_Ajya.a.a.pageUp(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxt
  * JD-Core Version:    0.7.0.1
  */

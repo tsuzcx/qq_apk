@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.OnAdapterNotify;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.TribeShortVideoMsgHolder;
 
 public class vje
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vje(AIOGalleryAdapter paramAIOGalleryAdapter) {}
+  public vje(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a(1);
+    TribeShortVideoItemBuilder.TribeShortVideoMsgHolder localTribeShortVideoMsgHolder = (TribeShortVideoItemBuilder.TribeShortVideoMsgHolder)AIOUtils.a(paramView);
+    if (paramView == localTribeShortVideoMsgHolder.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localTribeShortVideoMsgHolder);
     }
+    while (paramView != localTribeShortVideoMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+      return;
+    }
+    this.a.a(localTribeShortVideoMsgHolder);
   }
 }
 

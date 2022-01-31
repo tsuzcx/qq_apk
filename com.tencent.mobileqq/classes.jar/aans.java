@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
 
-public class aans
-  implements Runnable
+public final class aans
+  implements DialogInterface.OnClickListener
 {
-  public aans(ArkLocalAppMgr paramArkLocalAppMgr) {}
+  public aans(Context paramContext) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.post(new aant(this), 5, null, true);
+    ((ArCardSelectMemberActivity)this.a).u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aans
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.RecentUtil;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxProtocol.LastFeedObserver;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 import com.tencent.qphone.base.util.QLog;
 
 public class abql
-  extends MsgBoxProtocol.LastFeedObserver
+  implements Runnable
 {
-  public abql(MsgBoxListActivity paramMsgBoxListActivity) {}
+  public abql(ConditionSearchFriendActivity paramConditionSearchFriendActivity, int paramInt1, int paramInt2) {}
   
-  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public void run()
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.msg_box", 2, "onGetInteractLastFeed = false");
-      }
+    int i = this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.a.getHeight();
+    ConditionSearchFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity, this.jdField_a_of_type_Int - (this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.d.getBottom() - i) + this.b);
+    int j = this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.getResources().getDisplayMetrics().heightPixels;
+    int k = this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.getResources().getDisplayMetrics().widthPixels;
+    if (QLog.isColorLevel()) {
+      QLog.d("meassure", 2, "(" + k + "," + j + ")value: " + ConditionSearchFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity) + " itemTop:" + this.jdField_a_of_type_Int + "  pvTop:" + (this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.d.getBottom() - i) + "  itemHeight:" + this.b + " RootBottom:" + this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.d.getBottom() + " pvHeight:" + i);
     }
-    for (;;)
-    {
+    if ((ConditionSearchFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity) <= 0) || (this.jdField_a_of_type_Int == -1) || (this.b == -1)) {
       return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(AppConstants.ag, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(AppConstants.ag, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.ag, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            RecentUtil.b(this.a.app, AppConstants.ag, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(AppConstants.ag, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
     }
-  }
-  
-  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
-  {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.msg_box", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(AppConstants.ah, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(AppConstants.ah, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.ah, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            RecentUtil.b(this.a.app, AppConstants.ah, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(AppConstants.ah, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.e.scrollBy(0, ConditionSearchFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity));
   }
 }
 

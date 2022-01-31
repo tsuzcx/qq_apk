@@ -34,8 +34,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.MobileQQ;
-import zsk;
-import zsm;
+import zvq;
+import zvs;
 
 public class FTSTroopOperator
   extends FTSIndexOperator
@@ -357,7 +357,7 @@ public class FTSTroopOperator
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      ThreadManager.post(new zsm(this, paramArrayList), 8, null, true);
+      ThreadManager.post(new zvs(this, paramArrayList), 8, null, true);
       return;
     }
     a(paramArrayList);
@@ -625,7 +625,7 @@ public class FTSTroopOperator
   
   public void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyFtsFTSSyncHandler.post(new zsk(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyFtsFTSSyncHandler.post(new zvq(this));
   }
 }
 

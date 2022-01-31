@@ -68,6 +68,11 @@ public class AIOEffectsCameraCaptureFragment
     return localBundle;
   }
   
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
   protected void a(AIOEffectsCameraCaptureFragment.Session paramSession, PublishParam paramPublishParam)
   {
     a(paramSession, paramPublishParam, null);
@@ -113,11 +118,6 @@ public class AIOEffectsCameraCaptureFragment
     throw new IllegalStateException();
   }
   
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   protected void b(AIOEffectsCameraCaptureFragment.Session paramSession, PublishParam paramPublishParam, AIOEffectsCameraCaptureFragment.MediaCodecEditCallback paramMediaCodecEditCallback)
   {
     MediaCodecSendTask.VideoSendPublicParam localVideoSendPublicParam = new MediaCodecSendTask.VideoSendPublicParam();
@@ -125,6 +125,7 @@ public class AIOEffectsCameraCaptureFragment
     localVideoSendPublicParam.jdField_a_of_type_JavaLangString = new File(paramPublishParam.jdField_j_of_type_JavaLangString).getParent();
     localVideoSendPublicParam.jdField_b_of_type_JavaLangString = paramPublishParam.k;
     int k;
+    boolean bool;
     if (paramPublishParam.f <= 5)
     {
       k = paramPublishParam.f;
@@ -136,20 +137,26 @@ public class AIOEffectsCameraCaptureFragment
       localVideoSendPublicParam.k = paramPublishParam.jdField_b_of_type_JavaLangString;
       localVideoSendPublicParam.l = paramPublishParam.m;
       localVideoSendPublicParam.m = paramPublishParam.n;
+      if (paramPublishParam.i != 1) {
+        break label268;
+      }
+      bool = true;
+      label135:
+      localVideoSendPublicParam.jdField_c_of_type_Boolean = bool;
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult != null) {
-        break label250;
+        break label274;
       }
       ShortVideoExceptionReporter.a(new RuntimeException("videoCaptureResult == null"));
       QLog.e("AIOEffectsCameraCaptureFragment", 2, "videoCaptureResult == null");
       localVideoSendPublicParam.i = 0;
-      label157:
+      label175:
       localVideoSendPublicParam.jdField_j_of_type_Int = ((int)paramPublishParam.jdField_a_of_type_Long);
       if (this.jdField_a_of_type_Int == 10007) {
         localVideoSendPublicParam.jdField_d_of_type_Boolean = true;
       }
       paramPublishParam = "";
       if (paramSession == null) {
-        break label265;
+        break label289;
       }
       paramPublishParam = paramSession.curFriendUin;
       k = paramSession.curType;
@@ -164,10 +171,13 @@ public class AIOEffectsCameraCaptureFragment
       return;
       k = 0;
       break;
-      label250:
+      label268:
+      bool = false;
+      break label135;
+      label274:
       localVideoSendPublicParam.i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount;
-      break label157;
-      label265:
+      break label175;
+      label289:
       String str = "";
       k = 0;
       paramSession = paramPublishParam;
@@ -175,10 +185,10 @@ public class AIOEffectsCameraCaptureFragment
     }
   }
   
-  protected void d()
+  protected void e()
   {
-    super.d();
-    if ((b() == 10000) && (this.j))
+    super.e();
+    if ((a() == 10000) && (this.j))
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.jdField_c_of_type_Int, this.f);
       PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = CapturePtvTemplateManager.a().a();

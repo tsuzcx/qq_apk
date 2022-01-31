@@ -1,20 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.apollo.ai.ApolloAIActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.apollo.ApolloRender;
 
-public class yld
-  implements ClickableColorSpanTextView.SpanClickListener
+public final class yld
+  implements Runnable
 {
-  public yld(ApolloAIActivity paramApolloAIActivity) {}
+  public yld(ApolloRender paramApolloRender) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void run()
   {
-    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.startActivity(paramClickableColorSpanTextView);
+    if (this.a.mShowEditWindow)
+    {
+      this.a.mEditWindow.dismiss();
+      this.a.mShowEditWindow = false;
+      ApolloRender.sIsKeyBoardDissmiss = true;
+    }
   }
 }
 

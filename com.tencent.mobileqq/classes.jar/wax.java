@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class wax
+class wax
   implements Runnable
 {
-  public wax(ZhituManager paramZhituManager, ZhituResponse paramZhituResponse, String paramString1, int paramInt, String paramString2) {}
+  wax(waw paramwaw, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.sendFailCode == 41)
+    {
+      QQToast.a(this.jdField_a_of_type_Waw.a.a.getApp(), 2131436086, 0).a();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_Waw.a.a.getApp(), 2131438846, 0).a();
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Waw.a.a.c(), "Stick", "Send", "2", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.MimeHelper;
 
-public class wwo
-  implements Runnable
+public final class wwo
+  extends MediaFileFilter
 {
-  public wwo(PasswdRedBagManager paramPasswdRedBagManager) {}
-  
-  public void run()
+  public boolean a()
   {
-    PasswdRedBagManager.a(this.a).c();
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    paramString = MimeHelper.a(paramString);
+    return (paramString == null) || (!"image".equals(paramString[0])) || (!MimeHelper.a(paramString[1])) || (paramString[1].equals("gif"));
+  }
+  
+  public boolean b()
+  {
+    return false;
   }
 }
 

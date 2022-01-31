@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:padding="12.0dip" android:layout_width="275.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
-        <ImageView android:id="@id/icon" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02219b" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:padding="12.0dip" android:layout_width="275.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
+        <ImageView android:id="@id/icon" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02221b" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
         <TextView android:textSize="15.0dip" android:textColor="#ff333333" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="来自TIM，QQ办公简洁版。" android:layout_toRightOf="@id/icon" />
         <TextView android:textSize="12.0dip" android:textColor="#ff888888" android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="5.0dip" android:text="更丰富的办公功能，支持在线编辑文档。" android:layout_toRightOf="@id/icon" android:layout_below="@id/title" />
     </RelativeLayout>

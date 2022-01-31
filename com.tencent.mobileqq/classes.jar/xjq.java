@@ -1,29 +1,45 @@
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.PhoneUnityBannerData;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class xjq
-  extends Filter
+public class xjq
+  implements View.OnClickListener
 {
-  xjq(xjp paramxjp) {}
+  public xjq(BannerManager paramBannerManager, PhoneUnityBannerData paramPhoneUnityBannerData) {}
   
-  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
+  public void onClick(View paramView)
   {
-    paramCharSequence = new Filter.FilterResults();
-    paramCharSequence.values = this.a.a.a;
-    paramCharSequence.count = this.a.a.a.size();
-    return paramCharSequence;
-  }
-  
-  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
-  {
-    if (paramFilterResults.count > 0)
+    ReportController.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
+    paramView = BaseActivity.sTopActivity;
+    Intent localIntent;
+    if (paramView != null)
     {
-      this.a.notifyDataSetChanged();
-      return;
+      if (!URLUtil.isValidUrl(this.jdField_a_of_type_ComTencentMobileqqAppPhoneUnityBannerData.a)) {
+        break label110;
+      }
+      localIntent = new Intent(paramView, QQBrowserActivity.class);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqAppPhoneUnityBannerData.a);
+      localIntent.putExtra("hideRightButton", true);
+      paramView.startActivity(localIntent);
     }
-    this.a.notifyDataSetInvalidated();
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(5, 0);
+      return;
+      label110:
+      localIntent = new Intent(paramView, PhoneUnityBindInfoActivity.class);
+      localIntent.putExtra("kSrouce", 0);
+      paramView.startActivity(localIntent);
+    }
   }
 }
 

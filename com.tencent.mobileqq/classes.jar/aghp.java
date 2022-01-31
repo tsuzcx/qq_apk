@@ -1,27 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
+import android.widget.ImageView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class aghp
+class aghp
   implements Runnable
 {
-  public aghp(QzoneAlbumRedTouchManager paramQzoneAlbumRedTouchManager) {}
+  aghp(agho paramagho) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = QzoneAlbumRedTouchManager.a(this.a).edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
-    if (Build.VERSION.SDK_INT < 9)
+    long l = System.currentTimeMillis() - ScanTorchActivity.a(this.a.a);
+    if (l > 500L)
     {
-      localEditor.commit();
+      ScanTorchActivity.d(this.a.a, ScanTorchActivity.b(this.a.a));
       return;
     }
-    localEditor.apply();
+    ScanTorchActivity.b(this.a.a).postDelayed(new aghq(this), 500L - l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghp
  * JD-Core Version:    0.7.0.1
  */

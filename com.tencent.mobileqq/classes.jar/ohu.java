@@ -1,17 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoResDownload;
 
-public final class ohu
-  implements ValueAnimator.AnimatorUpdateListener
+public class ohu
+  implements Runnable
 {
-  public ohu(AnimatorFactory.AnimatorListener paramAnimatorListener) {}
+  public ohu(ArtFilterBridgeActivity paramArtFilterBridgeActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
+    ShortVideoResDownload.a(this.a.app);
   }
 }
 

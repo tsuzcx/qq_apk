@@ -1,31 +1,93 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder.MomentViewHolder;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.MomentFeedInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.ilive_feeds.ShortVideo.UploadRsp;
+import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aewj
-  implements ActionSheet.OnButtonClickListener
+  implements CsTask.Callback
 {
-  public aewj(BaseMomentItemBuilder paramBaseMomentItemBuilder, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder, MomentFeedInfo paramMomentFeedInfo, ActionSheet paramActionSheet) {}
+  public aewj(VideoFeedsUploader paramVideoFeedsUploader) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramInt)
+    int j = 0;
+    Object localObject = new ShortVideo.UploadRsp();
+    List localList;
+    int i;
+    try
     {
-    default: 
+      ((ShortVideo.UploadRsp)localObject).mergeFrom(paramArrayOfByte);
+      paramInt = ((ShortVideo.UploadRsp)localObject).retcode.get();
+      if (paramInt != 0)
+      {
+        VideoFeedsUploader.a(this.a).a = paramInt;
+        VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
+        return;
+      }
+      VideoFeedsUploader.a(this.a, 10, 0);
+      paramArrayOfByte = ((ShortVideo.UploadRsp)localObject).authkey.get().toByteArray();
+      ((ShortVideo.UploadRsp)localObject).expiretime.get();
+      ((ShortVideo.UploadRsp)localObject).frontid.get();
+      paramBundle = ((ShortVideo.UploadRsp)localObject).frontip.get();
+      localList = ((ShortVideo.UploadRsp)localObject).zoneip.get();
+      localObject = new ArrayList();
+      paramInt = 0;
+      i = j;
+      if (paramInt < paramBundle.size())
+      {
+        if (((Integer)paramBundle.get(paramInt)).intValue() == 0) {
+          break label380;
+        }
+        ((List)localObject).add(VideoFeedsUploader.a(this.a, ((Integer)paramBundle.get(paramInt)).intValue()));
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      VideoFeedsUploader.a(this.a).a = -1005;
+      VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
       return;
     }
-    NowVideoReporter localNowVideoReporter = new NowVideoReporter().h("data_card").i("feed_delete").d("2").a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)).b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c).c(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)));
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_Boolean) {}
-    for (paramView = "1";; paramView = "2")
+    for (;;)
     {
-      localNowVideoReporter.e(paramView).b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      BaseMomentItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+      if (i < localList.size())
+      {
+        if (((Integer)localList.get(i)).intValue() != 0) {
+          ((List)localObject).add(VideoFeedsUploader.a(this.a, ((Integer)localList.get(i)).intValue()));
+        }
+      }
+      else
+      {
+        if (((List)localObject).size() <= 0)
+        {
+          VideoFeedsUploader.a(this.a).a = -1006;
+          VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
+          if (QLog.isColorLevel()) {
+            QLog.i("VideoFeedsUploader", 2, "frontip is empty!");
+          }
+        }
+        else
+        {
+          paramBundle = VideoFeedsUploader.a(this.a).c;
+          VideoFeedsUploader.a(this.a).post(new aewk(this, (List)localObject, paramArrayOfByte, paramBundle));
+        }
+        return;
+        label380:
+        paramInt += 1;
+        break;
+      }
+      i += 1;
     }
   }
 }

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.olympic;
 
-import afqo;
-import afqp;
-import afqq;
-import afqr;
-import afqs;
-import afqt;
-import afqu;
-import afqv;
-import afqw;
-import afqx;
+import agdu;
+import agdv;
+import agdw;
+import agdx;
+import agdy;
+import agdz;
+import agea;
+import ageb;
+import agec;
+import aged;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.media.SoundPool;
@@ -67,7 +67,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x78.submsgtype0x78.MsgBody;
 public class OlympicManager
   implements SoundPool.OnLoadCompleteListener, Handler.Callback, Manager, BusinessObserver
 {
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new afqp();
+  private static Comparator jdField_a_of_type_JavaUtilComparator = new agdv();
   static Map jdField_a_of_type_JavaUtilMap = new HashMap(8);
   public static boolean a;
   private static final int[] jdField_b_of_type_ArrayOfInt;
@@ -82,8 +82,8 @@ public class OlympicManager
   public OlympicActConfig a;
   private OlympicDPC jdField_a_of_type_ComTencentMobileqqOlympicOlympicDPC;
   public OlympicListener a;
-  private OlympicObserver jdField_a_of_type_ComTencentMobileqqOlympicOlympicObserver = new afqw(this);
-  private OlympicResources.DownloadListener jdField_a_of_type_ComTencentMobileqqOlympicOlympicResources$DownloadListener = new afqq(this);
+  private OlympicObserver jdField_a_of_type_ComTencentMobileqqOlympicOlympicObserver = new agec(this);
+  private OlympicResources.DownloadListener jdField_a_of_type_ComTencentMobileqqOlympicOlympicResources$DownloadListener = new agdw(this);
   private OlympicResources jdField_a_of_type_ComTencentMobileqqOlympicOlympicResources;
   private ShuayishuaConfig jdField_a_of_type_ComTencentMobileqqOlympicShuayishuaConfig;
   private TorchInfo jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo;
@@ -133,7 +133,7 @@ public class OlympicManager
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicObserver);
     this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicResources.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicResources$DownloadListener);
     paramQQAppInterface.registObserver(this);
-    ThreadManager.post(new afqo(this), 5, null, false);
+    ThreadManager.post(new agdu(this), 5, null, false);
     if (QLog.isColorLevel()) {
       QLog.e("OlympicManager", 2, "OlympicManager constructor ,mDebugUseLocalTime = " + this.jdField_b_of_type_Boolean + ",mUiHandler = " + this.jdField_a_of_type_AndroidOsHandler);
     }
@@ -664,7 +664,7 @@ public class OlympicManager
       for (;;)
       {
         if (OlympicUtil.a(BaseApplicationImpl.getContext(), "olympic_predown_act")) {
-          this.jdField_b_of_type_AndroidOsHandler.postDelayed(new afqs(this, localArrayList1, localArrayList2), 60000L);
+          this.jdField_b_of_type_AndroidOsHandler.postDelayed(new agdy(this, localArrayList1, localArrayList2), 60000L);
         }
         if (!QLog.isColorLevel()) {
           break;
@@ -1083,7 +1083,7 @@ public class OlympicManager
         }
       }
     } while (!OlympicUtil.a(BaseApplicationImpl.getContext(), "olympic_predown_shua"));
-    this.jdField_b_of_type_AndroidOsHandler.postDelayed(new afqr(this, localArrayList1, localArrayList2), 60000L);
+    this.jdField_b_of_type_AndroidOsHandler.postDelayed(new agdx(this, localArrayList1, localArrayList2), 60000L);
   }
   
   private void b(boolean paramBoolean, Bundle paramBundle)
@@ -1841,7 +1841,7 @@ public class OlympicManager
       if (this.jdField_a_of_type_Int == 1) {
         this.jdField_g_of_type_Int = 0;
       }
-      ThreadManager.post(new afqt(this, paramInt), 5, null, false);
+      ThreadManager.post(new agdz(this, paramInt), 5, null, false);
       return;
     }
   }
@@ -1974,7 +1974,7 @@ public class OlympicManager
     {
       this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig = paramOlympicActConfig;
       a();
-      ThreadManager.post(new afqx(this), 5, null, true);
+      ThreadManager.post(new aged(this), 5, null, true);
       return;
     }
   }
@@ -1988,12 +1988,12 @@ public class OlympicManager
       return;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo.transfer_num < paramTorchInfo.transfer_num)) {
-      ThreadManager.post(new afqu(this, paramTorchInfo), 5, null, false);
+      ThreadManager.post(new agea(this, paramTorchInfo), 5, null, false);
     }
     synchronized (this.jdField_c_of_type_ArrayOfByte)
     {
       this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo = paramTorchInfo;
-      ThreadManager.post(new afqv(this, paramTorchInfo), 5, null, false);
+      ThreadManager.post(new ageb(this, paramTorchInfo), 5, null, false);
       return;
     }
   }

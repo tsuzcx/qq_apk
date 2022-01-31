@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
-class rrh
-  implements DialogInterface.OnClickListener
+public class rrh
+  implements Runnable
 {
-  rrh(rrg paramrrg) {}
+  public rrh(BaseChatPie paramBaseChatPie, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.am();
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, false);
   }
 }
 

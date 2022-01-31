@@ -1,34 +1,68 @@
-import com.tencent.qqprotect.qsec.QSecLibMgr;
-import com.tencent.qqprotect.qsec.QSecLibMgr.LibEventListener;
-import com.tencent.qqprotect.qsec.QSecPushServiceMgr;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.open.appcircle.st.AppCircleReportManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.ControlPolicyUtil;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.MyAppApi.CopyAndInstallTask;
+import com.tencent.open.downloadnew.MyAppApi.InstallParams;
+import com.tencent.open.downloadnew.MyAppDialog;
 
 public class alik
-  implements QSecLibMgr.LibEventListener
+  implements DialogInterface.OnClickListener
 {
-  public alik(QSecPushServiceMgr paramQSecPushServiceMgr) {}
+  public alik(MyAppApi paramMyAppApi, boolean paramBoolean1, DialogInterface.OnClickListener paramOnClickListener, Bundle paramBundle, int paramInt, boolean paramBoolean2, Activity paramActivity, String paramString1, boolean paramBoolean3, boolean paramBoolean4, String paramString2) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt1 == 1) {
-      synchronized (QSecPushServiceMgr.a(this.a))
+    LogUtility.c("MyAppApi", "---onConfirm--onClick");
+    if (!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b())
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams = new MyAppApi.InstallParams(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      if (this.jdField_b_of_type_Boolean)
       {
-        Object localObject2 = (List)QSecPushServiceMgr.a(this.a).get(Integer.valueOf(paramInt2));
-        if (localObject2 != null)
-        {
-          QSecPushServiceMgr.a(this.a).remove(Integer.valueOf(paramInt2));
-          QSecPushServiceMgr.a(this.a);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
+        if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing())) {
+          this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(0, 1);
         }
-        if (localObject2 != null)
-        {
-          ??? = ((List)localObject2).iterator();
-          if (((Iterator)???).hasNext())
-          {
-            localObject2 = (alil)((Iterator)???).next();
-            QSecPushServiceMgr.a(this.a).a(((alil)localObject2).jdField_a_of_type_Int, ((alil)localObject2).b, ((alil)localObject2).c, new Object[] { ((alil)localObject2).jdField_a_of_type_ArrayOfByte }, null);
-          }
+      }
+    }
+    label409:
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c = true;
+      StaticAnalyz.a("201", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.jdField_b_of_type_JavaLangString);
+      paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 100;
+      AppCircleReportManager.a().a(25, paramDialogInterface);
+      ReportController.b(null, "dc00898", "", "", "0X8008F7D", "0X8008F7D", 0, 0, "", "", "", "");
+      return;
+      new MyAppApi.CopyAndInstallTask(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams).execute(new Void[0]);
+      continue;
+      if ((ControlPolicyUtil.h()) || (this.c)) {
+        if (this.jdField_a_of_type_Int == 0) {
+          this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.d);
+        }
+      }
+      for (;;)
+      {
+        if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog == null) || (!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing())) {
+          break label409;
+        }
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
+        break;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.d);
+        continue;
+        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
         }
       }
     }

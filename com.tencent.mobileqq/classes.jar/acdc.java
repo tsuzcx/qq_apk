@@ -1,19 +1,22 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.EmotionJsonDownloadListener;
 
-class acdc
-  implements Runnable
+public class acdc
+  extends EmotionJsonDownloadListener
 {
-  acdc(accy paramaccy) {}
+  public acdc(EmojiManager paramEmojiManager, String paramString, Object paramObject) {}
   
-  public void run()
+  public void a(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
   {
-    if (this.a.a.a.getVisibility() == 0)
-    {
-      this.a.a.c();
-      return;
+    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.notify();
+        return;
+      }
     }
-    this.a.a.d();
   }
 }
 

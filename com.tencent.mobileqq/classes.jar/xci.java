@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.ConfigInfo;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class xci
-  implements Runnable
+  implements PopupWindow.OnDismissListener
 {
-  public xci(PreloadManager paramPreloadManager) {}
+  public xci(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void run()
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "synDataFromMoggy");
-    }
-    Object localObject = (QWalletConfigManager)this.a.a.getManager(244);
-    if (localObject != null)
-    {
-      ((QWalletConfigManager)localObject).a("preload", this.a);
-      localObject = ((QWalletConfigManager)localObject).a("preload");
-      this.a.a((QWalletConfig.ConfigInfo)localObject);
+    if (!TroopUnAccalimedRedPacketList.a(this.a)) {
+      QWalletTools.a(TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a().getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
     }
   }
 }

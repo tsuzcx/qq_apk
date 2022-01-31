@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class woc
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public woc(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
+  public woc(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    this.a.a = null;
-    this.a.dismiss();
+    if (paramBoolean) {
+      this.a.i();
+    }
   }
 }
 

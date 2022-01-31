@@ -12,7 +12,7 @@ import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import wot;
+import wry;
 
 public class SearchHistoryAdapter
   extends BaseAdapter
@@ -86,9 +86,9 @@ public class SearchHistoryAdapter
     View localView;
     if (paramView == null)
     {
-      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969072, null);
-      paramView = new wot(null);
-      paramView.a = ((TextView)localView.findViewById(2131363614));
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969071, null);
+      paramView = new wry(null);
+      paramView.a = ((TextView)localView.findViewById(2131363632));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
@@ -96,7 +96,7 @@ public class SearchHistoryAdapter
     {
       paramViewGroup.a.setText(localHistoryItem.jdField_a_of_type_JavaLangString);
       return localView;
-      paramViewGroup = (wot)paramView.getTag();
+      paramViewGroup = (wry)paramView.getTag();
       localView = paramView;
     }
   }

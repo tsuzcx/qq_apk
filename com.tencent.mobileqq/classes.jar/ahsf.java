@@ -1,19 +1,26 @@
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class ahsf
-  implements Runnable
+  extends ClickableSpan
 {
-  public ahsf(UnifiedMonitor paramUnifiedMonitor) {}
+  public ahsf(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DropFrameMonitor.a().c();
+    this.a.openContextMenu(this.a.a);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahsf
  * JD-Core Version:    0.7.0.1
  */

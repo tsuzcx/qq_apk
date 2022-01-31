@@ -1,26 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorAdapter.ChildItemHolder;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
-public class aeen
-  implements View.OnClickListener
+class aeen
+  implements Runnable
 {
-  public aeen(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
+  aeen(aeem paramaeem, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((paramView.getTag() instanceof NearbyVisitorAdapter.ChildItemHolder))
+    if (this.jdField_a_of_type_Aeem.jdField_a_of_type_Int == 1)
     {
-      paramView = (NearbyVisitorAdapter.ChildItemHolder)paramView.getTag();
-      NearbyMineHelper.a(this.a.a, this.a, paramView.a);
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        break label48;
+      }
+      this.jdField_a_of_type_Aeem.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aeem.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      return;
+      label48:
+      this.jdField_a_of_type_Aeem.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeen
  * JD-Core Version:    0.7.0.1
  */

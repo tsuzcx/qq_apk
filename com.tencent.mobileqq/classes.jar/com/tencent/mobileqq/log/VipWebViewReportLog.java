@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.log;
 
-import adpb;
+import aech;
 import android.content.Context;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
@@ -58,7 +58,7 @@ public class VipWebViewReportLog
   {
     if ((jdField_a_of_type_JavaLangThread == null) || (!jdField_a_of_type_JavaLangThread.isAlive()))
     {
-      jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(new adpb(), "WebviewLoadConfig", 8);
+      jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(new aech(), "WebviewLoadConfig", 8);
       if (QLog.isColorLevel()) {
         QLog.d("WebCoreDump", 1, "ready to load config at:" + System.currentTimeMillis());
       }
@@ -640,7 +640,7 @@ public class VipWebViewReportLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.log.VipWebViewReportLog
  * JD-Core Version:    0.7.0.1
  */

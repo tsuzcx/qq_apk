@@ -1,37 +1,44 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.service.QavWrapper;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.av.utils.GVideoGrayConfig.Record;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.groupvideo.GroupVideoWrapper;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.ContactBinded;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class zii
-  implements GVideoGrayConfig.GVideoGrayConfigListener
+  implements Runnable
 {
-  public zii(QQGAudioMsgHandler paramQQGAudioMsgHandler, long paramLong1, int paramInt, long paramLong2) {}
+  public zii(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
+  public void run()
   {
-    if (paramInt1 == 0)
+    Object localObject1 = PhoneContactManagerImp.a(this.a).a();
+    ((EntityTransaction)localObject1).a();
+    try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter != null)
+      Iterator localIterator = PhoneContactManagerImp.a(this.a).values().iterator();
+      while (localIterator.hasNext())
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(3, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 20, 1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(this.jdField_a_of_type_Long, true);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, Long.valueOf(this.jdField_a_of_type_Long).longValue(), 0L);
-      }
-      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 13, false, Long.toString(this.jdField_a_of_type_Long), Long.toString(this.b), false, null, false, this.jdField_a_of_type_Int, new Object[0]);
-      if (this.jdField_a_of_type_Int == 2) {
-        new GroupVideoWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new zij(this));
+        PhoneContact localPhoneContact = (PhoneContact)localIterator.next();
+        if (localPhoneContact.isNewRecommend)
+        {
+          localPhoneContact.isNewRecommend = false;
+          PhoneContactManagerImp.a(this.a).a(localPhoneContact);
+        }
       }
     }
-    else
+    finally
     {
-      return;
+      ((EntityTransaction)localObject1).b();
     }
-    new QavWrapper(BaseApplication.getContext()).a(new zik(this));
+    ((EntityTransaction)localObject1).b();
+    localObject1 = PhoneContactManagerImp.a(this.a);
+    if (localObject1 != null) {
+      ((ContactBinded)localObject1).isReaded = true;
+    }
+    PhoneContactManagerImp.c(this.a, false);
   }
 }
 

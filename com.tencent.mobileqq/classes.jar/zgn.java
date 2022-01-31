@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.PrinterStatusHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class zgn
-  extends MessageObserver
+  implements Runnable
 {
-  public zgn(PrinterStatusHandler paramPrinterStatusHandler) {}
+  public zgn(MessageHandler paramMessageHandler) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    this.a.b();
+    FileUtils.a(AIOShareActionSheet.a, true);
   }
 }
 

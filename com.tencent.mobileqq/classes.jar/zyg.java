@@ -1,27 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ar.FaceUIController;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter;
 
 public class zyg
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public zyg(FaceUIController paramFaceUIController) {}
+  public zyg(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    if (ARVideoRecordUIControllerImpl.a(this.a) != null)
     {
-    default: 
-      return;
-    case 1: 
-      QQToast.a(this.a.a, 2, 2131430531, 0).a();
-      paramDialogInterface.dismiss();
-      ReportController.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
-      return;
+      ARVideoRecordUIControllerImpl.a(this.a).a(0);
+      ARVideoRecordUIControllerImpl.a(this.a).b();
     }
-    paramDialogInterface.dismiss();
   }
 }
 

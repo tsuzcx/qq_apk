@@ -11,7 +11,7 @@ public class TroopAdminList$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

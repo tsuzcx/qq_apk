@@ -1,33 +1,24 @@
-import android.os.Bundle;
-import com.tencent.ark.ArkViewModelBase.AppInfo;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
-import com.tencent.mobileqq.flashchat.FlashChatObserver;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleItem;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.scribble.ScribbleMsgUtils.CombineCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class urz
-  extends FlashChatObserver
+  implements ScribbleMsgUtils.CombineCallback
 {
-  public urz(ArkFlashChatContainerWrapper paramArkFlashChatContainerWrapper) {}
+  public urz(DoodlePanel paramDoodlePanel, DoodleItem paramDoodleItem) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    if (paramBoolean)
-    {
-      if (paramBundle != null)
-      {
-        int i = paramBundle.getInt("resourceId");
-        if ((i != -1) && (this.a.c == i))
-        {
-          paramBundle = (FlashChatManager)ArkAppContainer.a().getManager(216);
-          ArkFlashChatContainerWrapper.a(this.a).path = paramBundle.a(this.a.c, ArkFlashChatContainerWrapper.b(this.a).name, ArkFlashChatContainerWrapper.c(this.a).appMinVersion);
-          this.a.a(ArkFlashChatContainerWrapper.d(this.a).path, 0, null);
-        }
-      }
-      return;
-    }
-    this.a.a(ArkFlashChatContainerWrapper.e(this.a).path, -1, null);
+    QLog.i("Scribble", 2, "bsuc " + paramInt);
+    new Handler(Looper.getMainLooper()).post(new usa(this, paramInt));
+  }
+  
+  public boolean a(String paramString)
+  {
+    return DoodlePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodlePanel, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleItem);
   }
 }
 

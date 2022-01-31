@@ -10,14 +10,14 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import zuz;
-import zva;
-import zvb;
-import zvc;
-import zvd;
-import zve;
-import zvf;
-import zvg;
+import zyf;
+import zyg;
+import zyh;
+import zyi;
+import zyj;
+import zyk;
+import zyl;
+import zym;
 
 public class ARVideoRecordUIControllerImpl
   implements Handler.Callback, ARVideoRecordViewPresenter.onMonitorUserOperationListener, VideoRecordController.RecordListener
@@ -57,7 +57,7 @@ public class ARVideoRecordUIControllerImpl
   
   public static ARVideoRecordUIControllerImpl a()
   {
-    return zvg.a();
+    return zym.a();
   }
   
   private void a(Runnable paramRunnable)
@@ -137,7 +137,7 @@ public class ARVideoRecordUIControllerImpl
         this.m = -1;
         a("0X8008A57");
         return;
-        ThreadManager.getUIHandler().post(new zvb(this));
+        ThreadManager.getUIHandler().post(new zyh(this));
         continue;
         this.jdField_c_of_type_Boolean = false;
       }
@@ -157,7 +157,7 @@ public class ARVideoRecordUIControllerImpl
       this.jdField_d_of_type_Boolean = false;
       n();
       break;
-      ThreadManager.getUIHandler().post(new zvc(this));
+      ThreadManager.getUIHandler().post(new zyi(this));
       continue;
       this.jdField_c_of_type_Boolean = false;
     }
@@ -284,7 +284,7 @@ public class ARVideoRecordUIControllerImpl
         QLog.i("ARVideoRecordUIControllerImpl", 2, "handleMonitorUserOperationInternal with value null");
       }
     }
-    label141:
+    label142:
     do
     {
       do
@@ -293,14 +293,14 @@ public class ARVideoRecordUIControllerImpl
         {
           return;
           if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewPresenter.a() != 0) {
-            break label141;
+            break label142;
           }
           if (!ARRecordUtils.a(104857600L))
           {
             ARRecordUtils.a("无法录屏", "手机可用存储空间不足，无法录制AR视频，你可以在手机“设置”中管理存储空间。");
             return;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(true)) {
+          if (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(true, null)) {
             break;
           }
           ARRecordUtils.a("录制时间过短，请重新录制。", false);
@@ -365,13 +365,13 @@ public class ARVideoRecordUIControllerImpl
   public void a(int paramInt1, int paramInt2)
   {
     QLog.d("ARVideoRecordUIControllerImpl", 2, String.format("onRecordUpdate duration=%s fileSize=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    a(new zve(this, paramInt1, paramInt2));
+    a(new zyk(this, paramInt1, paramInt2));
   }
   
   public void a(int paramInt, String paramString)
   {
     QLog.d("ARVideoRecordUIControllerImpl", 2, String.format("onRecordFinish finishType=%s", new Object[] { Integer.valueOf(paramInt) }));
-    a(new zvf(this, paramInt));
+    a(new zyl(this, paramInt));
   }
   
   @Deprecated
@@ -495,7 +495,7 @@ public class ARVideoRecordUIControllerImpl
     if ((!this.jdField_e_of_type_Boolean) || (!this.jdField_f_of_type_Boolean)) {
       return;
     }
-    a(new zuz(this));
+    a(new zyf(this));
   }
   
   public void c(int paramInt)
@@ -517,7 +517,7 @@ public class ARVideoRecordUIControllerImpl
     if ((!this.jdField_e_of_type_Boolean) || (!this.jdField_f_of_type_Boolean)) {
       return;
     }
-    a(new zva(this));
+    a(new zyg(this));
   }
   
   public void e()
@@ -612,7 +612,7 @@ public class ARVideoRecordUIControllerImpl
           e(paramMessage.arg1);
           return true;
         } while ((a()) || (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource == null));
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false);
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false, null);
         return true;
       } while (this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource == null);
       this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordDataSource.a(false, false);
@@ -628,7 +628,7 @@ public class ARVideoRecordUIControllerImpl
   public void i()
   {
     QLog.d("ARVideoRecordUIControllerImpl", 2, "onRecordStart");
-    a(new zvd(this));
+    a(new zyj(this));
   }
 }
 

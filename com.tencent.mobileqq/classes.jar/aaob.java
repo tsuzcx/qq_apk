@@ -1,13 +1,39 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aaob
-  implements Runnable
+class aaob
+  implements DialogInterface.OnClickListener
 {
-  public aaob(ArkLocalAppMgr paramArkLocalAppMgr, aaov paramaaov) {}
+  aaob(aanz paramaanz, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aaov);
+    ArkAppCenter.a().post(new aaoc(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aanz.a, "ark_authority_api_location", this.jdField_a_of_type_Aanz.c, 2);
+      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438819), 2131435269, 2131435269, new DialogUtil.DialogOnClickAdapter(), null);
+      try
+      {
+        paramDialogInterface.show();
+        return;
+      }
+      catch (Exception paramDialogInterface) {}
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label38;
+    }
   }
 }
 

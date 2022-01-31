@@ -1,24 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager.PageItemScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
+import com.tencent.widget.ActionSheet.WatchDismissActions;
 
 public class mfp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ActionSheet.WatchDismissActions
 {
-  public mfp(ReadInJoyAtlasViewPager paramReadInJoyAtlasViewPager) {}
+  public mfp(VideoShareHelper paramVideoShareHelper) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.getChildAt(this.a.getCurrentItem()).setScrollY(((Float)paramValueAnimator.getAnimatedValue()).intValue());
-    if (ReadInJoyAtlasViewPager.a(this.a) != null)
+    if (VideoShareHelper.c(this.a))
     {
-      ReadInJoyAtlasViewPager.a(this.a).a(0.0F, this.a.getChildAt(this.a.getCurrentItem()).getScrollY(), null);
-      if (paramValueAnimator.getAnimatedFraction() == 1.0F) {
-        ReadInJoyAtlasViewPager.a(this.a).b();
-      }
+      VideoShareHelper.c(this.a, false);
+      VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), true, false);
+      return;
     }
+    VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), true, true);
   }
 }
 

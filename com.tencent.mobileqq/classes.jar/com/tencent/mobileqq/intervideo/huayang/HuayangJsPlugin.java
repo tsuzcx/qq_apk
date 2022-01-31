@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import adke;
-import adkf;
+import adud;
+import adue;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,7 +22,7 @@ public class HuayangJsPlugin
   private long jdField_a_of_type_Long;
   protected BroadcastReceiver a;
   public Context a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new adkf(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new adue(this, Looper.getMainLooper());
   public TroopMemberApiClient a;
   public String a;
   private int b;
@@ -32,7 +32,7 @@ public class HuayangJsPlugin
   
   public HuayangJsPlugin()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adke(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adud(this);
     this.mPluginNameSpace = "huayang";
   }
   
@@ -507,7 +507,7 @@ public class HuayangJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin
  * JD-Core Version:    0.7.0.1
  */

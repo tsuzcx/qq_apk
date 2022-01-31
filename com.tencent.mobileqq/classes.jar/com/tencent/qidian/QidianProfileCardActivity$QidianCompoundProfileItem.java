@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import akxo;
+import alne;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class QidianProfileCardActivity$QidianCompoundProfileItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new akxo();
+  public static final Parcelable.Creator CREATOR = new alne();
   public int a;
   public String a;
   public boolean a;

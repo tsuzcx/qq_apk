@@ -1,20 +1,27 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.util.SparseArray;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
 
-public final class ajro
-  implements View.OnClickListener
+public class ajro
+  implements Runnable
 {
-  public ajro(Dialog paramDialog) {}
+  public ajro(AvatarWallAdapter paramAvatarWallAdapter, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.dismiss();
+    ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.get(this.jdField_a_of_type_Int);
+    if (localProgressBar != null)
+    {
+      AvatarWallAdapter localAvatarWallAdapter = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter;
+      int i = localAvatarWallAdapter.h + 1;
+      localAvatarWallAdapter.h = i;
+      localProgressBar.setProgress(100 - i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajro
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.HealthPathTracePlugin;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.OpacityAction;
+import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
+import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.Label;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
-public class ajvq
-  extends Handler
+class ajvq
+  implements Action.OnActionEndListener
 {
-  public ajvq(PathTraceManager paramPathTraceManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ajvq(ajvp paramajvp) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramMessage = (JSONObject)paramMessage.obj;
-        String str = paramMessage.getString("callback");
-        if (this.a.a != null)
-        {
-          HealthPathTracePlugin localHealthPathTracePlugin = (HealthPathTracePlugin)this.a.a.get();
-          if (localHealthPathTracePlugin != null)
-          {
-            localHealthPathTracePlugin.callJs(str, new String[] { paramMessage.toString() });
-            return;
-          }
-        }
-      }
-      catch (Exception paramMessage) {}
-    }
+    TroopGiftToAllSurfaceView.a(this.a.a).a(new Action[] { new OpacityAction(600, 0, 255), new SequenceAction(new Action[] { new ScaleAction(300, 0.0F, 1.2F), new ScaleAction(300, 1.2F, 1.0F) }) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvq
  * JD-Core Version:    0.7.0.1
  */

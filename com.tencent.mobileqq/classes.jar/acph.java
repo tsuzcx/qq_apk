@@ -1,21 +1,25 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
-class acph
-  extends BroadcastReceiver
+public class acph
+  implements View.OnLongClickListener
 {
-  acph(acpg paramacpg) {}
+  public acph(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onLongClick(View paramView)
   {
-    if (paramIntent == null) {
-      return;
+    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
+      return false;
     }
-    paramContext = paramIntent.getBundleExtra("param");
-    paramIntent = paramIntent.getStringExtra("url");
-    UniformDownloadMgr.a().a(paramIntent, paramContext);
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131362740, paramView.getContext().getString(2131434041));
+    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new acpi(this, paramView), new acpj(this, paramView));
+    return true;
   }
 }
 

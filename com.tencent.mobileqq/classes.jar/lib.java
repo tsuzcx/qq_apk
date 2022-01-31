@@ -1,6 +1,15 @@
-public abstract interface lib
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyEffectsCameraCaptureFragment;
+
+public class lib
+  implements Runnable
 {
-  public abstract void a();
+  public lib(ReadInJoyEffectsCameraCaptureFragment paramReadInJoyEffectsCameraCaptureFragment) {}
+  
+  public void run()
+  {
+    this.a.a.setVisibility(0);
+  }
 }
 
 

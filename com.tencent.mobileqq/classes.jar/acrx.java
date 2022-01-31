@@ -1,25 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager;
-import com.tencent.smtt.sdk.TbsReaderView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-class acrx
-  implements DialogInterface.OnClickListener
+public class acrx
+  implements Runnable
 {
-  acrx(acrv paramacrv, String paramString1, String paramString2) {}
+  public acrx(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView, FileInfo paramFileInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    LocalTbsViewManager.a(this.jdField_a_of_type_Acrv.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager).userStatistics(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("_filename_from_dlg", this.jdField_a_of_type_Acrv.jdField_a_of_type_AndroidAppActivity.getString(2131435091));
-    Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
-    localIntent.putExtra("param", paramDialogInterface);
-    localIntent.putExtra("url", this.b);
-    this.jdField_a_of_type_Acrv.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
+    Object localObject = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a());
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.containsKey(localObject)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.put(localObject, new ArrayList());
+    }
+    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.get(localObject);
+    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo) == true) {
+      return;
+    }
+    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.i();
   }
 }
 

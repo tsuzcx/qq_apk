@@ -1,24 +1,20 @@
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager.LoadMusicStepListener;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class amvr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public amvr(QIMMusicConfigManager paramQIMMusicConfigManager, int paramInt, boolean paramBoolean, Object paramObject) {}
+  public amvr(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Iterator localIterator = QIMMusicConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager).iterator();
-    while (localIterator.hasNext()) {
-      ((QIMMusicConfigManager.LoadMusicStepListener)localIterator.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
-    }
+    QzoneWebMusicJsPlugin.access$300(this.a, "buttonclick");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,38 @@
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.tencent.av.service.IAVServiceCallback;
 
 public class jmr
-  implements Runnable
+  implements IAVServiceCallback
 {
-  public jmr(RedPacketShareFragment paramRedPacketShareFragment, int paramInt) {}
+  private IBinder a;
   
-  public void run()
+  public jmr(IBinder paramIBinder)
   {
-    String str = RedPacketShareFragment.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment);
-    ThreadManager.getUIHandler().post(new jms(this, str));
+    this.a = paramIBinder;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceCallback");
+      localParcel.writeInt(paramInt1);
+      localParcel.writeInt(paramInt2);
+      localParcel.writeInt(paramInt3);
+      this.a.transact(1, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 

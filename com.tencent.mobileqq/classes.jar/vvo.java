@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class vvo
-  implements WebProcessManager.WebProcessStartListener
+public class vvo
+  implements Runnable
 {
-  vvo(vvn paramvvn) {}
+  public vvo(MultiForwardChatPie paramMultiForwardChatPie) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {
-      this.a.a.a.a();
-    }
+    List localList = MultiMsgManager.a().a(this.a.a, this.a.h);
+    Message localMessage = this.a.b.obtainMessage(0);
+    localMessage.obj = localList;
+    this.a.b.sendMessage(localMessage);
   }
 }
 

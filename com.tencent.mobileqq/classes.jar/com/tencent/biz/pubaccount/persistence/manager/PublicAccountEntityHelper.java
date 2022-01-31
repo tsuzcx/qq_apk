@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.persistence.manager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.persistence.EntityManager;
-import lba;
+import lal;
 import mqq.manager.Manager;
 
 public class PublicAccountEntityHelper
@@ -34,7 +34,7 @@ public class PublicAccountEntityHelper
       if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory == null)
       {
         paramQQAppInterface = new PublicAccountEntityManagerFactory(paramQQAppInterface);
-        ThreadManager.post(new lba(this, paramQQAppInterface), 8, null, false);
+        ThreadManager.post(new lal(this, paramQQAppInterface), 8, null, false);
         this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory = paramQQAppInterface;
       }
       return this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory;

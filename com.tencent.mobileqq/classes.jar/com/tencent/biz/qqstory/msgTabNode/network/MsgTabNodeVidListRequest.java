@@ -54,7 +54,8 @@ public class MsgTabNodeVidListRequest
     localReqMsgTabNodeVideoList.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString));
     localReqMsgTabNodeVideoList.req_time_stamp.set(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.c);
     localReqMsgTabNodeVideoList.node_type.set(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int);
-    localReqMsgTabNodeVideoList.recommend_id.set(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.e);
+    localReqMsgTabNodeVideoList.recommend_id.set(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_e_of_type_Long);
+    localReqMsgTabNodeVideoList.source.set(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_e_of_type_Int);
     return localReqMsgTabNodeVideoList.toByteArray();
   }
 }

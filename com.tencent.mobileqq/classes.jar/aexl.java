@@ -1,15 +1,10 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import com.tencent.mobileqq.nearby.now.model.MedalInfoMgr.IMediaInfoListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexl
-  implements Runnable
+  implements MedalInfoMgr.IMediaInfoListener
 {
-  public aexl(NearbyMomentFragment paramNearbyMomentFragment, URLDrawable paramURLDrawable) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
-  }
+  public aexl(ShortVideoCommentsView paramShortVideoCommentsView) {}
 }
 
 

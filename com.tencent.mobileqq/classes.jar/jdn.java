@@ -1,8 +1,5 @@
-import android.graphics.Bitmap;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.utils.QAVNotification;
+import com.tencent.av.utils.PhoneStatusMonitor;
 
 public class jdn
   implements Runnable
@@ -11,9 +8,8 @@ public class jdn
   
   public void run()
   {
-    String str = this.a.a.getDisplayName(this.a.a().i, this.a.a().q, null);
-    Bitmap localBitmap = this.a.a.a(this.a.a().i, this.a.a().q, null, true, true);
-    QAVNotification.a(this.a.a).a(this.a.a().b, str, localBitmap, this.a.a().q, 44, this.a.a().i, this.a.a().d);
+    this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener = new jdy(this.a);
+    this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor = new PhoneStatusMonitor(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener);
   }
 }
 

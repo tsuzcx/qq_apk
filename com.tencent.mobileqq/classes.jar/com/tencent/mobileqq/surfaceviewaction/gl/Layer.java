@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ahxe;
+import ailh;
 import android.view.MotionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Layer
   extends Node
-  implements ahxe
+  implements ailh
 {
   public List a;
   
@@ -54,7 +54,7 @@ public class Layer
       boolean bool1 = bool2;
       if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        if (((this.jdField_a_of_type_JavaUtilList.get(i) instanceof ahxe)) && (((ahxe)this.jdField_a_of_type_JavaUtilList.get(i)).a(paramMotionEvent, paramInt1, paramInt2))) {
+        if (((this.jdField_a_of_type_JavaUtilList.get(i) instanceof ailh)) && (((ailh)this.jdField_a_of_type_JavaUtilList.get(i)).a(paramMotionEvent, paramInt1, paramInt2))) {
           bool1 = true;
         }
       }
@@ -90,7 +90,7 @@ public class Layer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Layer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,81 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryConfigs;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class zab
-  implements Animation.AnimationListener
+  extends zeq
 {
-  public zab(FrameHelperActivity paramFrameHelperActivity, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a()
   {
-    paramAnimation = new AnimationSet(true);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.3F, 1.2F, 1.3F, 1.2F, 1, 0.5F, 1, 0.5F);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.6F, 0.5F);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.addAnimation(localAlphaAnimation);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    super.a();
+    MemoryManager.a().a(0, 0, this.c, this.d, 0L, GuardManager.c * 50, 2);
+    float f2 = MemoryManager.a().a();
+    float f1;
+    if (MemoryConfigs.a().d > 0.0F)
+    {
+      f1 = MemoryConfigs.a().d;
+      if ((f2 >= f1) && (MemoryConfigs.a().c) && (this.a.a == null))
+      {
+        MemoryManager.a().a(2L);
+        System.exit(-1);
+      }
+      if (this.d != GuardManager.c * 50 - 1) {
+        break label252;
+      }
+      l = MemoryManager.a(Process.myPid());
+      localHashMap = new HashMap();
+      localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
+      localHashMap.put("ramSize", String.valueOf(DeviceInfoUtil.e() / 1024L));
+      localHashMap.put("heapSize", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
+      localHashMap.put("maxHeapSize", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
+      this.a.a("GM_reborn", localHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuardManager", 2, "suicide to free memory! suicide_factor=" + GuardManager.c);
+      }
+    }
+    label252:
+    while (((this.d != GuardManager.c * 50) && (this.d != GuardManager.c * 50 + 1)) || (this.a.a != null))
+    {
+      long l;
+      HashMap localHashMap;
+      return;
+      f1 = 0.95F;
+      break;
+    }
+    System.exit(-1);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected void a(String paramString)
+  {
+    this.a.a(3, paramString);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void b()
+  {
+    this.a.a(4, "fake_p_msg");
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.c(false);
+    if (!"trick_p_msg".equals(paramString)) {
+      this.a.a(false, new String[] { paramString });
+    }
+    long l = MemoryManager.a(Process.myPid());
+    if (zeo.a().a(l) != 2) {
+      this.a.c();
+    }
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(2, zeo.a().a, 0L);
+    CoreService.stopCoreService();
+  }
 }
 
 

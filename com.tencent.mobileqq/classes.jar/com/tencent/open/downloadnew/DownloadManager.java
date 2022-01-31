@@ -1,24 +1,24 @@
 package com.tencent.open.downloadnew;
 
-import akqz;
-import akrc;
-import akrd;
-import akre;
-import akrf;
-import akrh;
-import akrk;
-import akrl;
-import akrm;
-import akrn;
-import akro;
-import akrp;
-import akrq;
-import akrr;
-import akrs;
-import akrv;
-import akrw;
-import akrx;
-import akry;
+import algp;
+import algs;
+import algt;
+import algu;
+import algv;
+import algx;
+import alha;
+import alhb;
+import alhc;
+import alhd;
+import alhe;
+import alhf;
+import alhg;
+import alhh;
+import alhi;
+import alhl;
+import alhm;
+import alhn;
+import alho;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -76,7 +76,7 @@ public class DownloadManager
   public static final String b;
   protected final int a;
   protected long a;
-  private ApkGetCodeListener jdField_a_of_type_ComTencentOpenDownloadnewApkGetCodeListener = new akrl(this);
+  private ApkGetCodeListener jdField_a_of_type_ComTencentOpenDownloadnewApkGetCodeListener = new alhb(this);
   private ApkWriteCodeListener jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener;
   protected PackageInstallReceiver a;
   public ITMAssistantDownloadClientListener a;
@@ -102,9 +102,9 @@ public class DownloadManager
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new akrs(this);
+    this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new alhi(this);
     this.jdField_a_of_type_Int = 1000;
-    this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadLogListener = new akrp(this);
+    this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadLogListener = new alhf(this);
     LogUtility.c(jdField_a_of_type_JavaLangString, "DownloadManager create QQ5.0");
     this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver = new PackageInstallReceiver();
     IntentFilter localIntentFilter = new IntentFilter();
@@ -116,7 +116,7 @@ public class DownloadManager
     NoticeDownloadListener.a().a(ThreadManager.getSubThreadHandler().getLooper());
     a(WebViewDownloadListener.a());
     a(NoticeDownloadListener.a());
-    ThreadManager.getSubThreadHandler().post(new akrm(this));
+    ThreadManager.getSubThreadHandler().post(new alhc(this));
     DownloaderGetCodeClient.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewApkGetCodeListener);
   }
   
@@ -199,7 +199,7 @@ public class DownloadManager
       LogUtility.c(jdField_a_of_type_JavaLangString, "receive write code msg but data is null......");
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new akro(this, paramBundle));
+    ThreadManager.getSubThreadHandler().post(new alhe(this, paramBundle));
   }
   
   /* Error */
@@ -238,7 +238,7 @@ public class DownloadManager
   
   private void h(DownloadInfo paramDownloadInfo)
   {
-    ThreadManager.getSubThreadHandler().post(new akrf(this, paramDownloadInfo));
+    ThreadManager.getSubThreadHandler().post(new algv(this, paramDownloadInfo));
   }
   
   private void i(DownloadInfo paramDownloadInfo)
@@ -249,7 +249,7 @@ public class DownloadManager
       LogUtility.c(jdField_a_of_type_JavaLangString, "receive get code msg but info is null......");
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new akrn(this, paramDownloadInfo));
+    ThreadManager.getSubThreadHandler().post(new alhd(this, paramDownloadInfo));
   }
   
   public int a(DownloadInfo paramDownloadInfo)
@@ -275,7 +275,7 @@ public class DownloadManager
     label77:
     for (localObject = ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString;; localObject = ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString)
     {
-      ThreadManager.getSubThreadHandler().post(new akrc(this, (String)localObject));
+      ThreadManager.getSubThreadHandler().post(new algs(this, (String)localObject));
       LogUtility.a(jdField_a_of_type_JavaLangString, "pause url=" + (String)localObject + ", appid=" + paramString);
       return 0;
     }
@@ -475,7 +475,7 @@ public class DownloadManager
   
   public void a()
   {
-    ThreadManager.getSubThreadHandler().post(new akqz(this));
+    ThreadManager.getSubThreadHandler().post(new algp(this));
   }
   
   public void a(int paramInt, DownloadInfo paramDownloadInfo)
@@ -570,7 +570,7 @@ public class DownloadManager
   
   public void a(Activity paramActivity, Bundle paramBundle, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2)
   {
-    new Handler(Looper.getMainLooper()).post(new akrh(this, paramBundle, paramActivity, paramInt1, paramApkUpdateDetail, paramInt2));
+    new Handler(Looper.getMainLooper()).post(new algx(this, paramBundle, paramActivity, paramInt1, paramApkUpdateDetail, paramInt2));
   }
   
   public void a(AppInterface paramAppInterface)
@@ -611,11 +611,11 @@ public class DownloadManager
     //   39: getfield 283	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   42: bipush 100
     //   44: invokestatic 605	com/tencent/open/base/ImageUtil:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   47: new 607	akra
+    //   47: new 607	algq
     //   50: dup
     //   51: aload_0
     //   52: aload_1
-    //   53: invokespecial 608	akra:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   53: invokespecial 608	algq:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   56: invokestatic 613	com/tencent/open/base/img/ImageCache:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/open/base/img/ImageDownCallback;)V
     //   59: aload_0
     //   60: aload_1
@@ -758,7 +758,7 @@ public class DownloadManager
     //   389: invokeinterface 651 3 0
     //   394: pop
     //   395: invokestatic 147	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   398: new 708	akrb
+    //   398: new 708	algr
     //   401: dup
     //   402: aload_0
     //   403: aload_1
@@ -766,7 +766,7 @@ public class DownloadManager
     //   406: iload_2
     //   407: aload_3
     //   408: aload 4
-    //   410: invokespecial 711	akrb:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Ljava/lang/String;Ljava/util/Map;ILcom/tencent/open/downloadnew/DownloadInfo;Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   410: invokespecial 711	algr:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Ljava/lang/String;Ljava/util/Map;ILcom/tencent/open/downloadnew/DownloadInfo;Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   413: invokevirtual 171	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   416: pop
     //   417: aload_0
@@ -855,14 +855,14 @@ public class DownloadManager
     {
       try
       {
-        paramString = CommonDataAdapter.a().a().getString(2131428515);
+        paramString = CommonDataAdapter.a().a().getString(2131428521);
       }
       catch (Exception paramDownloadInfo)
       {
         paramDownloadInfo.printStackTrace();
         return;
       }
-      paramString = CommonDataAdapter.a().a().getString(2131428516);
+      paramString = CommonDataAdapter.a().a().getString(2131428522);
       int i = 3;
       paramDownloadInfo.a(i);
       LogUtility.a(jdField_a_of_type_JavaLangString, "onNetworkConnect ###下载错误:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
@@ -875,7 +875,7 @@ public class DownloadManager
         if ((paramDownloadInfo.jdField_d_of_type_JavaLangString != null) && ("com.tencent.mobileqq".equals(paramDownloadInfo.jdField_d_of_type_JavaLangString)) && (paramDownloadInfo.jdField_a_of_type_Int != 1) && (b()))
         {
           LogUtility.a(jdField_a_of_type_JavaLangString, "onDownloadError ###写码失败引起的..........");
-          ThreadManager.getSubThreadHandler().post(new akrv(this, paramDownloadInfo));
+          ThreadManager.getSubThreadHandler().post(new alhl(this, paramDownloadInfo));
           return;
         }
         paramDownloadInfo.a(4);
@@ -884,15 +884,9 @@ public class DownloadManager
           h(paramDownloadInfo);
           return;
         }
-        ThreadManager.getSubThreadHandler().post(new akrw(this, paramDownloadInfo));
+        ThreadManager.getSubThreadHandler().post(new alhm(this, paramDownloadInfo));
         return;
-        paramString = CommonDataAdapter.a().a().getString(2131428523);
-        i = 3;
-        continue;
-        paramString = CommonDataAdapter.a().a().getString(2131428515);
-        i = 3;
-        continue;
-        paramString = CommonDataAdapter.a().a().getString(2131428516);
+        paramString = CommonDataAdapter.a().a().getString(2131428529);
         i = 3;
         continue;
         paramString = CommonDataAdapter.a().a().getString(2131428521);
@@ -901,14 +895,20 @@ public class DownloadManager
         paramString = CommonDataAdapter.a().a().getString(2131428522);
         i = 3;
         continue;
-        paramString = CommonDataAdapter.a().a().getString(2131428520);
+        paramString = CommonDataAdapter.a().a().getString(2131428527);
+        i = 3;
+        continue;
+        paramString = CommonDataAdapter.a().a().getString(2131428528);
+        i = 3;
+        continue;
+        paramString = CommonDataAdapter.a().a().getString(2131428526);
         i = 3;
         continue;
         label455:
         int j;
         if (paramInt == 712)
         {
-          localObject = CommonDataAdapter.a().a().getString(2131428524);
+          localObject = CommonDataAdapter.a().a().getString(2131428530);
           j = 10;
           if ((BaseApplicationImpl.getApplication().getRuntime() instanceof AppInterface))
           {
@@ -934,11 +934,11 @@ public class DownloadManager
           if (str == null) {
             break;
           }
-          ThreadManager.getSubThreadHandler().post(new akrx(this, str, paramDownloadInfo));
+          ThreadManager.getSubThreadHandler().post(new alhn(this, str, paramDownloadInfo));
           i = j;
           paramString = (String)localObject;
           break;
-          localObject = CommonDataAdapter.a().a().getString(2131428513);
+          localObject = CommonDataAdapter.a().a().getString(2131428519);
           break label455;
         }
         LogUtility.a(jdField_a_of_type_JavaLangString, "onDownloadError ###失败处理..........");
@@ -1303,7 +1303,7 @@ public class DownloadManager
     for (localObject = ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString;; localObject = ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        ThreadManager.getSubThreadHandler().post(new akry(this, paramBoolean, (String)localObject));
+        ThreadManager.getSubThreadHandler().post(new alho(this, paramBoolean, (String)localObject));
       }
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
       DownloadDBHelper.a().a(paramString);
@@ -1641,8 +1641,8 @@ public class DownloadManager
   
   protected void b()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new akrq(this), 5000L);
-    ThreadManager.getSubThreadHandler().postDelayed(new akrr(this), 10000L);
+    ThreadManager.getSubThreadHandler().postDelayed(new alhg(this), 5000L);
+    ThreadManager.getSubThreadHandler().postDelayed(new alhh(this), 10000L);
   }
   
   public void b(DownloadInfo paramDownloadInfo)
@@ -1665,11 +1665,11 @@ public class DownloadManager
         if (paramDownloadInfo.jdField_a_of_type_Int == 1) {
           h(paramDownloadInfo);
         } else {
-          ThreadManager.getSubThreadHandler().post(new akrd(this, paramDownloadInfo));
+          ThreadManager.getSubThreadHandler().post(new algt(this, paramDownloadInfo));
         }
       }
       else {
-        ThreadManager.getSubThreadHandler().post(new akre(this, paramDownloadInfo));
+        ThreadManager.getSubThreadHandler().post(new algu(this, paramDownloadInfo));
       }
     }
   }
@@ -1959,10 +1959,10 @@ public class DownloadManager
     //   53: monitorexit
     //   54: return
     //   55: invokestatic 147	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   58: new 1173	akrg
+    //   58: new 1173	algw
     //   61: dup
     //   62: aload_0
-    //   63: invokespecial 1174	akrg:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;)V
+    //   63: invokespecial 1174	algw:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;)V
     //   66: invokevirtual 171	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   69: pop
     //   70: goto -26 -> 44
@@ -2001,7 +2001,7 @@ public class DownloadManager
   protected void e()
   {
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 200) {
-      ThreadManager.getSubThreadHandler().postDelayed(new akrk(this), 3000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new alha(this), 3000L);
     }
   }
   

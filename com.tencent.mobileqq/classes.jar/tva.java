@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import java.util.ArrayList;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
-class tva
-  implements Runnable
+public class tva
+  implements TextView.OnEditorActionListener
 {
-  tva(tuz paramtuz, ArrayList paramArrayList) {}
+  public tva(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Tuz.a.c) {
-      return;
+    if ((paramInt == 1) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0))) {
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).c("onTabKeyDown()");
     }
-    this.jdField_a_of_type_Tuz.a.a(8, this.jdField_a_of_type_JavaUtilArrayList, true, 2, true);
+    return false;
   }
 }
 

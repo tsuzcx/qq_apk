@@ -18,7 +18,7 @@ public final class MqqNearbyGdt$ExposeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.mp.MqqNearbyGdt.ExposeRequest
  * JD-Core Version:    0.7.0.1
  */

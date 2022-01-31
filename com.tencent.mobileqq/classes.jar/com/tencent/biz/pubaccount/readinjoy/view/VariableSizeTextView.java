@@ -6,8 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Build.VERSION;
 import android.text.Layout.Alignment;
-import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.StaticLayout;
+import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
@@ -22,9 +23,10 @@ import android.widget.TextView;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
-import mjt;
+import mle;
 
 public class VariableSizeTextView
   extends RelativeLayout
@@ -36,8 +38,7 @@ public class VariableSizeTextView
   private VariableSizeTextView.OnSizeChangedListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener;
   protected boolean a;
   public float b;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean b;
   float jdField_c_of_type_Float;
   private boolean jdField_c_of_type_Boolean;
   float d;
@@ -66,13 +67,6 @@ public class VariableSizeTextView
     paramContext.recycle();
     setClickable(true);
     setFocusable(true);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(1, 17.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-    paramContext = new RelativeLayout.LayoutParams(-1, -2);
-    paramContext.addRule(10);
-    paramContext.addRule(9);
-    addView(this.jdField_b_of_type_AndroidWidgetTextView, paramContext);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
@@ -136,20 +130,28 @@ public class VariableSizeTextView
   {
     super.onDraw(paramCanvas);
     b();
-    paramCanvas = new StaticLayout(this.jdField_a_of_type_AndroidWidgetTextView.getText(), this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), getMeasuredWidth() - getPaddingLeft() - getPaddingRight(), Layout.Alignment.ALIGN_NORMAL, this.i, this.j, true);
-    float f1 = paramCanvas.getHeight() + getPaddingTop() + getPaddingBottom();
-    int k = paramCanvas.getLineCount();
-    if (f1 != this.jdField_b_of_type_Float)
-    {
-      this.jdField_b_of_type_Float = f1;
-      a();
+    int k = getMeasuredWidth();
+    if (k == 0) {
+      k = (int)DeviceInfoUtil.l();
     }
-    if (k > 5)
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = true;
+      paramCanvas = new StaticLayout(this.jdField_a_of_type_AndroidWidgetTextView.getText(), this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), k - getPaddingLeft() - getPaddingRight(), Layout.Alignment.ALIGN_NORMAL, this.i, this.j, true);
+      float f1 = paramCanvas.getHeight() + getPaddingTop() + getPaddingBottom();
+      k = paramCanvas.getLineCount();
+      if (f1 != this.jdField_b_of_type_Float)
+      {
+        this.jdField_b_of_type_Float = f1;
+        a();
+      }
+      if (k > 5)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        return;
+      }
+      this.jdField_a_of_type_Boolean = false;
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -192,7 +194,7 @@ public class VariableSizeTextView
         paramMotionEvent = ValueAnimator.ofFloat(new float[] { k, this.jdField_b_of_type_Float });
         paramMotionEvent.setDuration(300L);
         paramMotionEvent.setInterpolator(new DecelerateInterpolator());
-        paramMotionEvent.addUpdateListener(new mjt(this, localLayoutParams));
+        paramMotionEvent.addUpdateListener(new mle(this, localLayoutParams));
         setFocusable(false);
         setClickable(false);
         paramMotionEvent.start();
@@ -262,21 +264,20 @@ public class VariableSizeTextView
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener = paramOnSizeChangedListener;
   }
   
-  public void setPage(int paramInt1, int paramInt2)
+  public void setText(int paramInt1, int paramInt2, CharSequence paramCharSequence)
   {
     Object localObject = paramInt1 + 1 + "/" + paramInt2;
     paramInt1 = a(paramInt1 + 1);
     paramInt2 = a(paramInt2);
-    localObject = new SpannableString((CharSequence)localObject);
-    ((SpannableString)localObject).setSpan(new AbsoluteSizeSpan(DisplayUtil.a(getContext(), 17.0F)), 0, paramInt1, 33);
-    ((SpannableString)localObject).setSpan(new AbsoluteSizeSpan(DisplayUtil.a(getContext(), 12.0F)), paramInt1, paramInt2 + paramInt1 + 1, 33);
-    ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#77FFFFFF")), paramInt1, paramInt2 + paramInt1 + 1, 33);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-  }
-  
-  public void setText(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("        " + paramCharSequence);
+    localObject = new SpannableStringBuilder((CharSequence)localObject);
+    ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(DisplayUtil.a(getContext(), 17.0F)), 0, paramInt1, 33);
+    ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(DisplayUtil.a(getContext(), 12.0F)), paramInt1, paramInt2 + paramInt1 + 1, 33);
+    ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#77FFFFFF")), paramInt1, paramInt2 + paramInt1 + 1, 33);
+    ((SpannableStringBuilder)localObject).append("  ");
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      ((SpannableStringBuilder)localObject).append(paramCharSequence);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
   }
 }
 

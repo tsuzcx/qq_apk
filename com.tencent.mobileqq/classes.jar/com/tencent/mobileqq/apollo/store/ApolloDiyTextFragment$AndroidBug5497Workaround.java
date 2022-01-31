@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import ypl;
+import ysr;
 
 public class ApolloDiyTextFragment$AndroidBug5497Workaround
 {
@@ -17,7 +17,7 @@ public class ApolloDiyTextFragment$AndroidBug5497Workaround
   private ApolloDiyTextFragment$AndroidBug5497Workaround(Activity paramActivity)
   {
     this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new ypl(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new ysr(this));
     this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
   }
   

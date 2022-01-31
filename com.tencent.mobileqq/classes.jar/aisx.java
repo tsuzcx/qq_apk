@@ -1,39 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
 
 public class aisx
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public aisx(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public aisx(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("口算开关状态改变 ");
-      if (!paramBoolean) {
-        break label71;
-      }
-    }
-    label71:
-    for (paramCompoundButton = "on";; paramCompoundButton = "off")
-    {
-      QLog.d("PublishHomeWorkFragment", 2, paramCompoundButton);
-      PublishHomeWorkFragment.c(this.a, paramBoolean);
-      if (PublishHomeWorkFragment.e(this.a)) {
-        PublishHomeWorkFragment.a(this.a).setChecked(true);
-      }
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisx
  * JD-Core Version:    0.7.0.1
  */

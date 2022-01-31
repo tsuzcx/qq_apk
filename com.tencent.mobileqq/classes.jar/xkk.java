@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 
 public class xkk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xkk(EditLocalVideoActivity paramEditLocalVideoActivity, int paramInt1, int paramInt2) {}
+  public xkk(RecentAdapter paramRecentAdapter) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if ((EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).isPlaying()) && (EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity))) {
-        EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).pause();
-      }
-      if (EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
-        EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setPlayDuration(this.jdField_a_of_type_Int, this.b - this.jdField_a_of_type_Int);
-      }
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      QLog.w("EditLocalVideoActivity", 2, "Illegal state: onFramesClipChanged");
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

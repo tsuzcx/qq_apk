@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.doutu;
 
-import abqy;
-import abqz;
+import abxz;
+import abya;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -46,7 +46,7 @@ public class DoutuEmotionAdapter
   public long a;
   private Context jdField_a_of_type_AndroidContentContext;
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
-  URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new abqy(this);
+  URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new abxz(this);
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -287,7 +287,7 @@ public class DoutuEmotionAdapter
     }
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramViewGroup = new abqz(null);
+      paramViewGroup = new abya(null);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
       paramView = new ViewGroup.LayoutParams(this.jdField_b_of_type_Int, this.c);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
@@ -296,7 +296,7 @@ public class DoutuEmotionAdapter
       paramView.addRule(13, -1);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView, paramView);
       paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838592));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838596));
       paramView = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 30.0F), (int)(this.jdField_a_of_type_Float * 30.0F));
       paramView.addRule(13, -1);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar, paramView);
@@ -343,7 +343,7 @@ public class DoutuEmotionAdapter
       {
         QLog.e("DoutuEmotionAdapter", 1, "getView url = null");
         return null;
-        paramViewGroup = (abqz)paramView.getTag();
+        paramViewGroup = (abya)paramView.getTag();
         break;
       }
       ((URLDrawable)localObject2).setTag(localDoutuData);
@@ -370,8 +370,8 @@ public class DoutuEmotionAdapter
   public void onClick(View paramView)
   {
     paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof abqz))) {}
-    for (paramView = (abqz)paramView;; paramView = null)
+    if ((paramView != null) && ((paramView instanceof abya))) {}
+    for (paramView = (abya)paramView;; paramView = null)
     {
       if (paramView == null) {}
       DoutuData localDoutuData;
@@ -423,7 +423,7 @@ public class DoutuEmotionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

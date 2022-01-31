@@ -1,40 +1,20 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class uwi
-  extends ClickableSpan
+  implements FMDialogUtil.FMDialogInterface
 {
-  public uwi(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public uwi(FileItemBuilder paramFileItemBuilder, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (NetworkUtil.d(this.a.jdField_a_of_type_AndroidContentContext))
-    {
-      paramView = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      paramView.a((short)1, localArrayList, false);
-      return;
-    }
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131432992), 1).b(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
-  }
+  public void b() {}
 }
 
 

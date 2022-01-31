@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
+import java.io.File;
 
-public class vnu
-  extends ProxyObserver
+public final class vnu
+  implements DialogInterface.OnClickListener
 {
-  public vnu(BaseTroopChatPie paramBaseTroopChatPie) {}
+  public vnu(Activity paramActivity, File paramFile1, File paramFile2) {}
   
-  public void b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(false, false);
+    AIOGalleryUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile, this.b);
   }
 }
 

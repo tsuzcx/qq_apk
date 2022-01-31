@@ -1,8 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import andp;
-import andq;
-import andr;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
@@ -18,8 +15,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import ands;
-import andt;
+import antu;
+import antv;
+import antw;
+import antx;
+import anty;
 import com.tencent.biz.qqstory.model.AddressDataProvider;
 import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
 import com.tencent.biz.qqstory.model.DataProviderManager;
@@ -43,8 +43,8 @@ public class EditVideoGuide
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ands jdField_a_of_type_Ands;
-  private andt jdField_a_of_type_Andt;
+  private antx jdField_a_of_type_Antx;
+  private anty jdField_a_of_type_Anty;
   public AtomicBoolean a;
   public int b;
   
@@ -141,7 +141,7 @@ public class EditVideoGuide
     localAnimationSet.addAnimation(localAlphaAnimation2);
     localAnimationSet.setFillAfter(false);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
-    localTranslateAnimation.setAnimationListener(new andr(this));
+    localTranslateAnimation.setAnimationListener(new antw(this));
   }
   
   private void m()
@@ -164,9 +164,9 @@ public class EditVideoGuide
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131364395));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364397));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364396));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131364419));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364421));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364420));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     boolean bool1 = EditVideoPartManager.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.b, 262144);
     boolean bool2 = b();
@@ -182,10 +182,10 @@ public class EditVideoGuide
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler();
     }
-    if (this.jdField_a_of_type_Andt == null) {
-      this.jdField_a_of_type_Andt = new andt(this, null);
+    if (this.jdField_a_of_type_Anty == null) {
+      this.jdField_a_of_type_Anty = new anty(this, null);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Andt, 5000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Anty, 5000L);
   }
   
   public void a(boolean paramBoolean)
@@ -245,10 +245,10 @@ public class EditVideoGuide
       return super.a(paramMessage);
       SLog.b("Q.qqstory.publish.edit.EditVideoGuide", "handleEditVideoMessage. mWaitForFragmentMsg = %s.", Boolean.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()));
     } while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false));
-    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_Andt != null))
+    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_Anty != null))
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Andt);
-      this.jdField_a_of_type_Andt = null;
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Anty);
+      this.jdField_a_of_type_Anty = null;
     }
     paramMessage = (EditVideoPlayerExport)a(EditVideoPlayerExport.class);
     if (paramMessage != null) {}
@@ -279,9 +279,9 @@ public class EditVideoGuide
     }
   }
   
-  public void aC_()
+  public void aE_()
   {
-    super.aC_();
+    super.aE_();
     if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       c();
     }
@@ -335,7 +335,7 @@ public class EditVideoGuide
                     StoryAddDescribeGuideDialog localStoryAddDescribeGuideDialog = new StoryAddDescribeGuideDialog(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a());
                     localStoryAddDescribeGuideDialog.a("点击屏幕可添加描述");
                     localStoryAddDescribeGuideDialog.show();
-                    localStoryAddDescribeGuideDialog.setOnDismissListener(new andp(this));
+                    localStoryAddDescribeGuideDialog.setOnDismissListener(new antu(this));
                     paramObject.b("has_show_basal_guide", Boolean.valueOf(true));
                     StoryReportor.a("video_edit", "guide_txt", 0, 0, new String[0]);
                     return;
@@ -343,7 +343,7 @@ public class EditVideoGuide
                     paramObject.a("左右滑动可添加滤镜效果");
                   } while (((Activity)a()).isFinishing());
                   paramObject.show();
-                  paramObject.setOnDismissListener(new andq(this));
+                  paramObject.setOnDismissListener(new antv(this));
                   StoryReportor.a("video_edit", "guide_filter", 0, 0, new String[0]);
                   return;
                 } while (!a(2));
@@ -420,15 +420,15 @@ public class EditVideoGuide
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      if (this.jdField_a_of_type_Ands != null)
+      if (this.jdField_a_of_type_Antx != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Ands);
-        this.jdField_a_of_type_Ands = null;
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Antx);
+        this.jdField_a_of_type_Antx = null;
       }
-      if (this.jdField_a_of_type_Andt != null)
+      if (this.jdField_a_of_type_Anty != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Andt);
-        this.jdField_a_of_type_Andt = null;
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Anty);
+        this.jdField_a_of_type_Anty = null;
       }
     }
   }
@@ -456,10 +456,10 @@ public class EditVideoGuide
         if (this.jdField_a_of_type_AndroidOsHandler == null) {
           this.jdField_a_of_type_AndroidOsHandler = new Handler();
         }
-        if (this.jdField_a_of_type_Ands == null) {
-          this.jdField_a_of_type_Ands = new ands(this);
+        if (this.jdField_a_of_type_Antx == null) {
+          this.jdField_a_of_type_Antx = new antx(this);
         }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Ands, 200L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Antx, 200L);
       }
       return;
     }

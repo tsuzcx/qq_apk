@@ -28,7 +28,7 @@ import com.tencent.av.ui.funchat.zimu.ZimuViewProxy;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Observable;
-import jps;
+import jpd;
 
 public class SmallScreenVideoLayerUI
   extends VideoLayerUIBase
@@ -64,14 +64,14 @@ public class SmallScreenVideoLayerUI
       if (this.i != 0) {
         break label181;
       }
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(0, 0, 0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559765));
+      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(0, 0, 0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559783));
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentAvUiScreenLayout.a(this.jdField_a_of_type_ComTencentAvVideoController.a(), this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView, paramInt1, paramInt2, paramBoolean, this.i, this.c);
       return;
       label181:
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559765), 0, 0);
+      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559783), 0, 0);
       continue;
       label208:
       this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(paramInt3, paramInt3, paramInt3, paramInt3);
@@ -782,7 +782,7 @@ public class SmallScreenVideoLayerUI
       QLog.d("SmallScreenVideoLayerUI", 2, "onFirstDraw");
     }
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new jps(this));
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new jpd(this));
     }
   }
   

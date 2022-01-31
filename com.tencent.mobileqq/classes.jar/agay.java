@@ -1,32 +1,27 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.OnUseResListener;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ocr.OCRManager;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
+import com.tencent.qphone.base.util.QLog;
 
-class agay
+public class agay
   implements Runnable
 {
-  agay(agax paramagax, String paramString) {}
+  public agay(OCRManager paramOCRManager, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Agax.jdField_a_of_type_Agas.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.manager", 2, "onGetOCRConfig ,excute runnable");
     }
-    this.jdField_a_of_type_Agax.jdField_a_of_type_Agas.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(false);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QRUtils.a(1, 2131429987);
-      return;
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqOcrOCRManager.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig != null)) {
+      synchronized (OCRManager.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRManager))
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqOcrOCRManager.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig != null) {
+          this.jdField_a_of_type_ComTencentMobileqqOcrOCRManager.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig.saveToFile(this.jdField_a_of_type_ComTencentMobileqqOcrOCRManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        }
+        return;
+      }
     }
-    if (this.jdField_a_of_type_Agax.jdField_a_of_type_Long == 2L)
-    {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agax.jdField_a_of_type_Agas.a.jdField_a_of_type_AndroidGraphicsBitmap, 0);
-      return;
-    }
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agax.jdField_a_of_type_Agas.a.jdField_a_of_type_AndroidGraphicsBitmap, 1);
   }
 }
 

@@ -81,7 +81,7 @@ public class VideoPlayerPagerAdapter$VideoViewHolder
     if ((this.jdField_b_of_type_AndroidWidgetImageView == null) || (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView != null)) {
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.a();
     }
-    Object localObject = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(2131371936);
+    Object localObject = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(2131372109);
     if ((localObject instanceof StoryDownloadView)) {
       ((StoryDownloadView)localObject).a();
     }

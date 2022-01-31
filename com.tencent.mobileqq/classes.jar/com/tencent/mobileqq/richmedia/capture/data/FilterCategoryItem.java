@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import agtr;
+import ahht;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class FilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new agtr();
+  public static final Parcelable.Creator CREATOR = new ahht();
   public int a;
   public String a;
   public ArrayList a;

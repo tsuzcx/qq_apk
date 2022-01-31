@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import java.util.List;
+import android.os.Message;
+import com.tencent.mobileqq.leba.model.pluginactions.JDPluginAction;
+import mqq.os.MqqHandler;
 
-class aebb
-  implements aeck
+public class aebb
+  extends MqqHandler
 {
-  aebb(aeba paramaeba) {}
+  public aebb(JDPluginAction paramJDPluginAction) {}
   
-  public void a(List paramList, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.b = paramList;
-    this.a.a.g = paramBoolean;
-    this.a.a.runOnUiThread(new aebc(this, paramList, paramBoolean));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1134008: 
+      this.a.a(paramMessage);
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebb
  * JD-Core Version:    0.7.0.1
  */

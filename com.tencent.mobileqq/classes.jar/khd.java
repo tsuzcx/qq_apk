@@ -1,33 +1,50 @@
 import android.os.Handler;
-import com.tencent.av.utils.QQAnimationListener;
-import com.tencent.av.utils.QQFrameByFrameAnimation;
+import com.tencent.av.utils.TipsManager;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class khd
   implements Runnable
 {
-  public khd(QQFrameByFrameAnimation paramQQFrameByFrameAnimation) {}
+  public int a;
+  
+  public khd(TipsManager paramTipsManager)
+  {
+    this.jdField_a_of_type_Int = -1;
+  }
   
   public void run()
   {
-    if ((this.a.d > 0) && (this.a.c >= this.a.d)) {
-      this.a.c();
-    }
-    do
+    if (this.jdField_a_of_type_ComTencentAvUtilsTipsManager.jdField_a_of_type_JavaUtilMap.size() > 0)
     {
-      do
-      {
-        return;
-        if ((this.a.b > 0) && (this.a.c / this.a.jdField_a_of_type_ArrayOfInt.length >= this.a.b))
+      Object localObject = this.jdField_a_of_type_ComTencentAvUtilsTipsManager.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      int i = ((Integer)((Iterator)localObject).next()).intValue();
+      if (i == this.jdField_a_of_type_Int) {
+        if (((Iterator)localObject).hasNext())
         {
-          this.a.c();
-          return;
+          i = ((Integer)((Iterator)localObject).next()).intValue();
+          this.jdField_a_of_type_ComTencentAvUtilsTipsManager.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(this.jdField_a_of_type_Int));
         }
-        this.a.a();
-        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.a.jdField_a_of_type_Int);
-      } while (this.a.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener == null);
-      this.a.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener.c();
-    } while ((this.a.jdField_a_of_type_ArrayOfInt.length <= 0) || (this.a.c % this.a.jdField_a_of_type_ArrayOfInt.length != 0));
-    this.a.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener.b();
+      }
+      for (this.jdField_a_of_type_Int = i;; this.jdField_a_of_type_Int = i)
+      {
+        this.jdField_a_of_type_ComTencentAvUtilsTipsManager.e = true;
+        localObject = (String)this.jdField_a_of_type_ComTencentAvUtilsTipsManager.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+        this.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(i, (String)localObject, 0L, 0);
+        if (this.jdField_a_of_type_ComTencentAvUtilsTipsManager.jdField_a_of_type_AndroidOsHandler != null) {
+          this.jdField_a_of_type_ComTencentAvUtilsTipsManager.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 3000L);
+        }
+        return;
+        this.jdField_a_of_type_ComTencentAvUtilsTipsManager.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+        this.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Int = -1;
+        this.jdField_a_of_type_ComTencentAvUtilsTipsManager.e = false;
+        return;
+      }
+    }
+    this.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentAvUtilsTipsManager.e = false;
   }
 }
 

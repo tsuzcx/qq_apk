@@ -1,24 +1,48 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
 import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QwAdapter;
+import java.util.List;
 
 public class xdi
   implements IRedPacket.OnGetSkinListener
 {
-  public xdi(QWalletIPCModule paramQWalletIPCModule, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
+  public xdi(CommonHbFragment paramCommonHbFragment) {}
   
   public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
+    HbSkinInfo localHbSkinInfo = HbSkinInfo.a(CommonHbFragment.a(this.a), paramRedPacketInfoBase.skinId);
+    List localList;
+    if (localHbSkinInfo != null)
+    {
+      localList = CommonHbFragment.a(this.a).getList();
+      if (QLog.isColorLevel()) {
+        QLog.d("CommonHbFragment", 2, "redl iscache = " + HbSkinInfo.jdField_a_of_type_Boolean + " info.iscache = " + paramRedPacketInfoBase.isCache);
+      }
+      if ((HbSkinInfo.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localHbSkinInfo))) {
+        break label110;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CommonHbFragment", 2, "no add in list...");
+      }
+    }
+    label110:
+    while ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
+      paramRedPacketInfoBase.title = CommonHbFragment.e(this.a);
+    }
+    localHbSkinInfo.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = paramRedPacketInfoBase;
     if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "getRedPacketBundle | info resPath = " + paramRedPacketInfoBase.resPath);
+      QLog.d("CommonHbFragment", 2, "redl add to list show!");
     }
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, this.jdField_a_of_type_AndroidOsBundle);
-    }
+    localList.add(localHbSkinInfo);
+    HbSkinInfo.a(localList);
+    CommonHbFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

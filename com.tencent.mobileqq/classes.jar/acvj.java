@@ -1,32 +1,13 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
 
 public class acvj
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements Runnable
 {
-  public acvj(VideoFilePresenter paramVideoFilePresenter) {}
+  public acvj(FileManagerRSWorker paramFileManagerRSWorker, long paramLong) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void run()
   {
-    long l1 = 0L;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.g(false);
-    long l2 = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileBrowserPresenter<FileAssistant>", 4, "Video Total Time:" + l2);
-    }
-    paramTVK_IMediaPlayer = this.a;
-    if (l2 < 0L) {}
-    for (;;)
-    {
-      VideoFilePresenter.a(paramTVK_IMediaPlayer, l1);
-      this.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new acvk(this));
-      return;
-      l1 = l2;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.f, this.jdField_a_of_type_Long);
   }
 }
 

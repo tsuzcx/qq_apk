@@ -1,23 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.view.CircularProgressBar;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
 public class agcs
-  extends Handler
+  implements Runnable
 {
-  public agcs(CircularProgressBar paramCircularProgressBar) {}
+  public agcs(ScanOcrActivity paramScanOcrActivity, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    this.a.invalidate();
-    if (CircularProgressBar.a(this.a))
-    {
-      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
-      if (CircularProgressBar.a(this.a) > 360) {
-        CircularProgressBar.a(this.a, 0);
-      }
-      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ocr_recog", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

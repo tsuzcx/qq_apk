@@ -1,20 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.addContactTroopView.TroopCardXingquBuluo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.im.troop_search_searchtab.searchtab.Card;
-import tencent.im.troop_search_searchtab.searchtab.TitleBar;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.offline.util.ILog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-public class kli
-  implements View.OnClickListener
+public final class kli
+  implements Runnable
 {
-  public kli(TroopCardXingquBuluo paramTroopCardXingquBuluo) {}
+  public kli(int paramInt, String paramString, AppRuntime paramAppRuntime, HashMap paramHashMap, AsyncBack paramAsyncBack, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a(this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.str_transfer_url.get());
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_more", 0, 0, "", this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.title_bar.str_desc.get(), "", "");
+    if (HtmlOffline.a.a()) {
+      HtmlOffline.a.a("HtmlCheckUpdate", 2, "start checkUpThread. delay:" + this.jdField_a_of_type_Int + ", businessId:" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Int > 0) {}
+    try
+    {
+      Thread.sleep(this.jdField_a_of_type_Int * 1000);
+      label75:
+      HtmlOffline.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack, true, true, this.jdField_a_of_type_Boolean);
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      break label75;
+    }
   }
 }
 

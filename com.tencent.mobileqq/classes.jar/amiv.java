@@ -1,22 +1,57 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.os.MqqHandler;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class amiv
-  implements Runnable
+  extends AbstractCollection
 {
-  public amiv(QZoneShareActivity paramQZoneShareActivity) {}
+  public amiv(SoftHashMap paramSoftHashMap) {}
   
-  public void run()
+  public void clear()
   {
-    int i = this.a.b();
-    int j = this.a.a();
-    ThreadManager.getUIHandler().post(new amiw(this, i - j));
+    this.a.clear();
+  }
+  
+  public boolean contains(Object paramObject)
+  {
+    return this.a.containsValue(paramObject);
+  }
+  
+  public Iterator iterator()
+  {
+    return new amiu(this.a);
+  }
+  
+  public int size()
+  {
+    return this.a.size();
+  }
+  
+  public Object[] toArray()
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray();
+  }
+  
+  public Object[] toArray(Object[] paramArrayOfObject)
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray(paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amiv
  * JD-Core Version:    0.7.0.1
  */

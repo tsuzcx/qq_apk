@@ -1,35 +1,31 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BaseAnimDrawer;
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class xth
+class xth
   implements Runnable
 {
-  public xth(SubtitleLayout paramSubtitleLayout) {}
+  xth(xtf paramxtf, int paramInt) {}
   
   public void run()
   {
-    SubtitleLayout.a(this.a, true);
-    if ((SubtitleLayout.a(this.a) != null) && (SubtitleLayout.a(this.a).b() == 3))
+    if (QzDynamicVideoPreviewActivity.d(this.jdField_a_of_type_Xtf.a)) {
+      QzDynamicVideoPreviewActivity.b(this.jdField_a_of_type_Xtf.a);
+    }
+    switch (this.jdField_a_of_type_Int)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SubtitleLayout", 2, "count down, not in preview state.");
+    default: 
+      if (this.jdField_a_of_type_Int != -1)
+      {
+        QQToast.a(this.jdField_a_of_type_Xtf.a, "合成错误(" + this.jdField_a_of_type_Int + ")，请稍后重试", 0).a();
+        return;
       }
-      SubtitleLayout.a(this.a, null);
+      break;
+    case 4: 
+    case 5: 
+      QQToast.a(this.jdField_a_of_type_Xtf.a, "存在不支持格式的素材，合成错误(" + this.jdField_a_of_type_Int + ")", 0).a();
       return;
     }
-    AudioTranslator.a().a(true, false);
-    this.a.a();
-    if (this.a.a != 0)
-    {
-      SubtitleLayout.a(this.a);
-      SubtitleLayout.b(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SubtitleLayout", 2, "stop auto trans.");
-    }
-    SubtitleLayout.a(this.a, null);
+    QQToast.a(this.jdField_a_of_type_Xtf.a, "合成错误，请稍后重试", 0).a();
   }
 }
 

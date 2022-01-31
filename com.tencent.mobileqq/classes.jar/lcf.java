@@ -1,13 +1,18 @@
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.mobileqq.hotpic.PublicAccountGifListener;
 
 public class lcf
-  implements Runnable
+  implements PublicAccountGifListener
 {
   public lcf(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void run()
+  public void a(HotPicData paramHotPicData)
   {
-    this.a.b(this.a.b);
+    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
+      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
+    }
   }
 }
 

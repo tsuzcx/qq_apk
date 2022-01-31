@@ -6,9 +6,9 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.view.Surface;
-import anxi;
-import anxj;
-import anxk;
+import aonn;
+import aono;
+import aonp;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.TrackerStickerParam.MotionInfo;
@@ -35,7 +35,7 @@ public class SimpleStickerTrackerOrigin
   private Surface jdField_a_of_type_AndroidViewSurface;
   private GPUVideoFrameRender jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGPUVideoFrameRender;
   private StickerDecodePlayer jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecTrackerStickerDecodePlayer = new StickerDecodePlayer();
-  private TrackingDecoderListener jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecTrackerTrackingDecoderListener = new anxi(this);
+  private TrackingDecoderListener jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecTrackerTrackingDecoderListener = new aonn(this);
   private VideoFilterPlayView.TrackerCallback jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView$TrackerCallback;
   private List jdField_a_of_type_JavaUtilList;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
@@ -71,10 +71,10 @@ public class SimpleStickerTrackerOrigin
     this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localMotionInfo);
   }
   
-  private void a(anxk paramanxk)
+  private void a(aonp paramaonp)
   {
     long l1 = System.currentTimeMillis();
-    float[] arrayOfFloat = TrackerManager.newInstance().processTrackFrame(paramanxk.jdField_a_of_type_ArrayOfByte, 2, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+    float[] arrayOfFloat = TrackerManager.newInstance().processTrackFrame(paramaonp.jdField_a_of_type_ArrayOfByte, 2, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
     if (arrayOfFloat == null) {
       return;
     }
@@ -85,7 +85,7 @@ public class SimpleStickerTrackerOrigin
     float f1 = arrayOfFloat[0] * this.g - this.h;
     float f2 = arrayOfFloat[1] * this.g - this.i;
     if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTrackerOrigin", 2, "trackVideoFrame centerX = " + f1 + ", centerY = " + f2 + ", imageInfo.timestamp" + paramanxk.jdField_a_of_type_Long);
+      QLog.d("SimpleStickerTrackerOrigin", 2, "trackVideoFrame centerX = " + f1 + ", centerY = " + f2 + ", imageInfo.timestamp" + paramaonp.jdField_a_of_type_Long);
     }
     int j;
     double d1;
@@ -102,11 +102,11 @@ public class SimpleStickerTrackerOrigin
       if (j == 0) {
         break label350;
       }
-      a(paramanxk.jdField_a_of_type_Long, f1, f2, (float)d1, 0.0F, false);
+      a(paramaonp.jdField_a_of_type_Long, f1, f2, (float)d1, 0.0F, false);
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramanxk.jdField_a_of_type_ArrayOfByte);
+      this.jdField_a_of_type_JavaUtilList.add(paramaonp.jdField_a_of_type_ArrayOfByte);
       return;
       j = 0;
       break;
@@ -114,7 +114,7 @@ public class SimpleStickerTrackerOrigin
       d1 = 1.0D;
       break label303;
       label350:
-      a(paramanxk.jdField_a_of_type_Long, 0.0F, 0.0F, 1.0F, 0.0F, true);
+      a(paramaonp.jdField_a_of_type_Long, 0.0F, 0.0F, 1.0F, 0.0F, true);
     }
   }
   
@@ -122,7 +122,7 @@ public class SimpleStickerTrackerOrigin
   {
     this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("Story_HWVideoTrackerThread", 0);
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new anxj(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aono(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGPUVideoFrameRender = new GPUVideoFrameRender(this);
   }
   
@@ -140,12 +140,12 @@ public class SimpleStickerTrackerOrigin
   private void g()
   {
     if (this.jdField_b_of_type_JavaUtilList.size() == 0) {}
-    anxk localanxk;
+    aonp localaonp;
     do
     {
       return;
-      localanxk = (anxk)this.jdField_b_of_type_JavaUtilList.remove(0);
-      if (localanxk != null) {
+      localaonp = (aonp)this.jdField_b_of_type_JavaUtilList.remove(0);
+      if (localaonp != null) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -153,7 +153,7 @@ public class SimpleStickerTrackerOrigin
     return;
     try
     {
-      a(localanxk);
+      a(localaonp);
       return;
     }
     catch (Exception localException)
@@ -233,11 +233,11 @@ public class SimpleStickerTrackerOrigin
         QLog.e("SimpleStickerTrackerOrigin", 2, "dealImageData get data null");
         return;
       }
-      this.jdField_b_of_type_JavaUtilList.add(new anxk((byte[])localObject, 0, 0, paramLong));
+      this.jdField_b_of_type_JavaUtilList.add(new aonp((byte[])localObject, 0, 0, paramLong));
       if (this.jdField_b_of_type_JavaUtilList.size() == 0) {
         return;
       }
-      localObject = (anxk)this.jdField_b_of_type_JavaUtilList.remove(0);
+      localObject = (aonp)this.jdField_b_of_type_JavaUtilList.remove(0);
       if (localObject == null)
       {
         if (!QLog.isColorLevel()) {

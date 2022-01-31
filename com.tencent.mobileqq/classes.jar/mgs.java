@@ -1,43 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoRecommendManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class mgs
-  extends VideoShareListener
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public mgs(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, BaseArticleInfo paramBaseArticleInfo) {}
+  public mgs(ReadInJoyAllInOneBar paramReadInJoyAllInOneBar) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (paramBoolean3)
-    {
-      if (paramBoolean4) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.b();
-      }
-    }
-    else
-    {
-      if (paramBoolean1) {
-        break label78;
-      }
-      ReadInJoyBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter, false);
-    }
+    if ((paramInt != 1000) || (paramJSONObject != null)) {}
     for (;;)
     {
-      if ((paramBoolean2) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoRecommendManager != null)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoRecommendManager.a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, 0L);
-      }
-      return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.b(2);
-      break;
-      label78:
-      if (ReadInJoyBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter))
+      try
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.b();
-        ReadInJoyBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter, false);
+        if (paramJSONObject.optInt("ret") == 0) {
+          break label61;
+        }
       }
+      catch (Exception paramBundle)
+      {
+        QLog.e(ReadInJoyAllInOneBar.a, 1, "requestCode == REQUEST_CODE_COMMENT. parse result failed. result=" + paramJSONObject);
+        return;
+      }
+      ReadInJoyAllInOneBar.a(this.a, bool);
+      return;
+      label61:
+      boolean bool = true;
+      continue;
+      bool = false;
     }
   }
 }

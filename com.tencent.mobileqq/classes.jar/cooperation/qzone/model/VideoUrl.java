@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import ameu;
+import amuy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class VideoUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ameu();
+  public static final Parcelable.Creator CREATOR = new amuy();
   public int a;
   public String a;
   

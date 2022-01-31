@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.view.FrameGifView;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class tjf
-  implements Runnable
+  implements Comparator
 {
-  public tjf(QQSettingMe paramQQSettingMe) {}
+  public tjf(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    QQSettingMe.a(this.a).b();
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      return 0;
+    }
+    if (paramChatMessage1.time > paramChatMessage2.time) {
+      return 1;
+    }
+    return -1;
   }
 }
 

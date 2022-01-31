@@ -1,15 +1,33 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Condition;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
-import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.Config;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
 
 public class nzc
-  implements LocalVideoPusher.Condition
+  extends LruCache
 {
-  public nzc(LocalVideoPushSegment paramLocalVideoPushSegment) {}
-  
-  public boolean a()
+  public nzc(URLImageLoader paramURLImageLoader, int paramInt)
   {
-    return StoryPublishLauncher.b();
+    super(paramInt);
+  }
+  
+  protected int a(URLImageLoader.Config paramConfig, Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramConfig, " size=", Integer.valueOf(i) });
+        return i;
+      }
+    }
+    return 524288;
   }
 }
 

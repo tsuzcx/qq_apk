@@ -1,33 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class rpd
-  implements Runnable
+class rpd
+  implements FilenameFilter
 {
-  public rpd(BaseChatPie paramBaseChatPie) {}
+  rpd(rpc paramrpc) {}
   
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "start preload peak process");
-    }
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, PeakService.class);
-    if (VideoEnvironment.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      localIntent.putExtra("ServiceAction", 2);
-    }
-    try
-    {
-      this.a.jdField_a_of_type_AndroidContentContext.startService(localIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("Q.aio.BaseChatPie", 1, "onShow_otherThings startService ", localException);
-    }
+    return !paramString.contains("CrashInfoSummary.txt");
   }
 }
 

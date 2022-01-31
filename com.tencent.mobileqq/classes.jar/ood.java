@@ -1,21 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
-import com.tencent.biz.qqstory.view.RingView.DrawInfo;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
 
-public class ood
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface ood
 {
-  public ood(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
-    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
-    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
-    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

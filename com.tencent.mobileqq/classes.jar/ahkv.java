@@ -1,19 +1,9 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import java.util.ArrayList;
-
-public class ahkv
+class ahkv
   implements Runnable
 {
-  public ahkv(PtvTemplateManager paramPtvTemplateManager, AppInterface paramAppInterface, ArrayList paramArrayList) {}
+  ahkv(ahku paramahku) {}
   
-  public void run()
-  {
-    if (PtvFilterSoLoad.b()) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
-    }
-  }
+  public void run() {}
 }
 
 

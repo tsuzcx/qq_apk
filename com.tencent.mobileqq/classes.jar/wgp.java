@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import android.view.View;
+import android.widget.TextView;
 
-class wgp
-  implements Runnable
+public class wgp
 {
-  wgp(wgo paramwgo) {}
+  public TextView a;
   
-  public void run()
+  public wgp(View paramView)
   {
-    this.a.a.a.c();
+    this.a = ((TextView)paramView.findViewById(2131363632));
+    paramView.setTag(this);
   }
 }
 

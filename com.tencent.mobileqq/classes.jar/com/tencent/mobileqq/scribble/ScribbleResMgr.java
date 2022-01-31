@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.scribble;
 
-import ahcb;
-import ahcc;
-import ahcd;
-import ahcf;
+import ahqd;
+import ahqe;
+import ahqf;
+import ahqh;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
@@ -41,7 +41,7 @@ public class ScribbleResMgr
   protected Handler a;
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
-  private final Handler jdField_b_of_type_AndroidOsHandler = new ahcb(this, Looper.getMainLooper());
+  private final Handler jdField_b_of_type_AndroidOsHandler = new ahqd(this, Looper.getMainLooper());
   private ArrayList jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_b_of_type_Boolean;
   private ArrayList jdField_c_of_type_JavaUtilArrayList = new ArrayList();
@@ -147,10 +147,10 @@ public class ScribbleResMgr
     //   18: ifeq +41 -> 59
     //   21: aload 5
     //   23: invokeinterface 208 1 0
-    //   28: checkcast 210	ahch
+    //   28: checkcast 210	ahqj
     //   31: astore 6
     //   33: aload 6
-    //   35: invokevirtual 213	ahch:a	()Landroid/view/View;
+    //   35: invokevirtual 213	ahqj:a	()Landroid/view/View;
     //   38: aload_3
     //   39: if_acmpne -28 -> 11
     //   42: aload 6
@@ -158,20 +158,20 @@ public class ScribbleResMgr
     //   47: dup
     //   48: aload 4
     //   50: invokespecial 218	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   53: putfield 221	ahch:b	Ljava/lang/ref/WeakReference;
+    //   53: putfield 221	ahqj:b	Ljava/lang/ref/WeakReference;
     //   56: aload_0
     //   57: monitorexit
     //   58: return
     //   59: aload_0
     //   60: getfield 105	com/tencent/mobileqq/scribble/ScribbleResMgr:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   63: new 210	ahch
+    //   63: new 210	ahqj
     //   66: dup
     //   67: aload_0
     //   68: iload_1
     //   69: iload_2
     //   70: aload_3
     //   71: aload 4
-    //   73: invokespecial 224	ahch:<init>	(Lcom/tencent/mobileqq/scribble/ScribbleResMgr;IILandroid/view/View;Lcom/tencent/mobileqq/scribble/ScribbleResMgr$ResCallback;)V
+    //   73: invokespecial 224	ahqj:<init>	(Lcom/tencent/mobileqq/scribble/ScribbleResMgr;IILandroid/view/View;Lcom/tencent/mobileqq/scribble/ScribbleResMgr$ResCallback;)V
     //   76: invokevirtual 175	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   79: pop
     //   80: goto -24 -> 56
@@ -188,7 +188,7 @@ public class ScribbleResMgr
     //   0	88	3	paramView	View
     //   0	88	4	paramResCallback	ScribbleResMgr.ResCallback
     //   9	13	5	localIterator	Iterator
-    //   31	12	6	localahch	ahch
+    //   31	12	6	localahqj	ahqj
     // Exception table:
     //   from	to	target	type
     //   2	11	83	finally
@@ -374,7 +374,7 @@ public class ScribbleResMgr
       QLog.e("ScribbleResMgrdownloading", 2, "SD card mounted err");
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ahcf(this, paramInt, paramQQAppInterface), paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ahqh(this, paramInt, paramQQAppInterface), paramLong);
   }
   
   private void a(QQAppInterface paramQQAppInterface, ScribbleResMgr.ResInfo paramResInfo, long paramLong, boolean paramBoolean)
@@ -382,7 +382,7 @@ public class ScribbleResMgr
     if (paramResInfo == null) {
       return;
     }
-    ahcd localahcd = new ahcd(this, paramResInfo);
+    ahqf localahqf = new ahqf(this, paramResInfo);
     PreDownloadController localPreDownloadController;
     String str;
     if (paramBoolean)
@@ -406,7 +406,7 @@ public class ScribbleResMgr
       if (QLog.isColorLevel()) {
         QLog.d("ScribbleResMgr", 2, "download res, predownload enable:" + paramResInfo.sourceId + " " + paramResInfo.resType + " outpath:" + str + " url:" + paramResInfo.sourceUrl);
       }
-      paramQQAppInterface = new RunnableTask(paramQQAppInterface, "doodle_msg_res", localahcd, 4000L);
+      paramQQAppInterface = new RunnableTask(paramQQAppInterface, "doodle_msg_res", localahqf, 4000L);
       localPreDownloadController.a(10068, "prd", String.valueOf(paramResInfo.sourceId), 0, paramResInfo.sourceUrl, str, 2, 0, true, paramQQAppInterface);
       return;
       paramQQAppInterface = (PreDownloadController)paramQQAppInterface.getManager(192);
@@ -420,7 +420,7 @@ public class ScribbleResMgr
       if (QLog.isColorLevel()) {
         QLog.d("ScribbleResMgr", 2, "download res, normal download:" + paramResInfo.sourceId + " " + paramResInfo.resType + " Url:" + paramResInfo.sourceUrl);
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(localahcd, paramLong);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(localahqf, paramLong);
       return;
     }
   }
@@ -466,7 +466,7 @@ public class ScribbleResMgr
     if ((paramArrayList == null) || (paramArrayList.size() < 2)) {
       return;
     }
-    Collections.sort(paramArrayList, new ahcc(this));
+    Collections.sort(paramArrayList, new ahqe(this));
   }
   
   private boolean a(QQAppInterface paramQQAppInterface, String paramString)
@@ -505,8 +505,8 @@ public class ScribbleResMgr
             continue;
           }
           QLog.i("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_PAINT newVersion = " + (String)localObject1);
-          SharedPreUtils.A(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
-          SharedPreUtils.C(paramQQAppInterface.getApp().getBaseContext(), paramString);
+          SharedPreUtils.z(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
+          SharedPreUtils.B(paramQQAppInterface.getApp().getBaseContext(), paramString);
           a(paramQQAppInterface, 3, jdField_a_of_type_JavaLangLong.longValue());
           if (this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) {
             break label386;
@@ -617,8 +617,8 @@ public class ScribbleResMgr
             continue;
           }
           QLog.i("ScribbleResMgr", 2, "RESOURCE_CONFIG_TASK_ID_GIF newVersion = " + (String)localObject1);
-          SharedPreUtils.z(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
-          SharedPreUtils.B(paramQQAppInterface.getApp().getBaseContext(), paramString);
+          SharedPreUtils.y(paramQQAppInterface.getApp().getBaseContext(), (String)localObject1);
+          SharedPreUtils.A(paramQQAppInterface.getApp().getBaseContext(), paramString);
           a(paramQQAppInterface, 4, jdField_a_of_type_JavaLangLong.longValue());
           if (this.jdField_b_of_type_JavaUtilArrayList.isEmpty()) {
             break label386;
@@ -758,8 +758,8 @@ public class ScribbleResMgr
     }
     if ((str2 == null) || (!str2.equalsIgnoreCase(localObject2)))
     {
-      SharedPreUtils.D(paramQQAppInterface.getApp().getBaseContext(), localObject2);
-      SharedPreUtils.E(paramQQAppInterface.getApp().getBaseContext(), paramString);
+      SharedPreUtils.C(paramQQAppInterface.getApp().getBaseContext(), localObject2);
+      SharedPreUtils.D(paramQQAppInterface.getApp().getBaseContext(), paramString);
     }
     this.jdField_d_of_type_Boolean = bool1;
     if (QLog.isColorLevel()) {
@@ -808,7 +808,7 @@ public class ScribbleResMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleResMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
 
-public class npq
-  extends ProtoUtils.TroopProtocolObserver
+class npq
+  implements Runnable
 {
-  public npq(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate, boolean paramBoolean) {}
+  npq(npp paramnpp, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if (paramInt != 0)
-    {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(3, bool);
-        this.a.a(0, this.a.a.getString(2131435357));
-        return;
-      }
+    if (this.jdField_a_of_type_Npp.a.a != null) {
+      this.jdField_a_of_type_Npp.a.a.a(this.jdField_a_of_type_Npp.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
     }
-    ((QQStoryManager)this.a.a.app.getManager(180)).b(this.b);
   }
 }
 

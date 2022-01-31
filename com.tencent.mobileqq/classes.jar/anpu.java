@@ -1,34 +1,28 @@
-import android.os.MessageQueue.IdleHandler;
-import android.widget.Button;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class anpu
-  implements MessageQueue.IdleHandler
+  implements Animator.AnimatorListener
 {
-  public anpu(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public anpu(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public boolean queueIdle()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (CameraCompatibleList.d(CameraCompatibleList.b)) {
-      this.a.b(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("UserGuideManager", 2, "ProviderContainerView  startDownAnimation onAnimationEnd");
     }
-    for (;;)
-    {
-      if ((this.a.g) && (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
-        this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
-      }
-      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      this.a.c.setEnabled(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      return false;
-      this.a.g();
-    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.c.setVisibility(8);
   }
 }
 

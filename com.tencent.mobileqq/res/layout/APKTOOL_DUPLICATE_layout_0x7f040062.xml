@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="14.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a051e" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="15.0dip" />
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a051f" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0520" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="2.0dip" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0521" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="5.0dip">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0530" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="15.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0531" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0532" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="2.0dip" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0533" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="5.0dip">
             <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="好友的秘密" android:singleLine="true" />
             <TextView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.88" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0522" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d91" android:scaleType="centerInside" android:layout_centerInParent="true" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0534" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e0e" android:scaleType="centerInside" android:layout_centerInParent="true" />
         </LinearLayout>
         <ImageView android:background="#ffd4d4d4" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-        <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b6a" />
+        <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b9a" />
         <View android:layout_width="fill_parent" android:layout_height="15.0dip" />
     </LinearLayout>
 </LinearLayout>

@@ -31,7 +31,7 @@ public class NewFlowCameraOperator
   {
     if (c == 0)
     {
-      c = (int)BaseApplicationImpl.getApplication().getResources().getDimension(2131559527);
+      c = (int)BaseApplicationImpl.getApplication().getResources().getDimension(2131559541);
       return c;
     }
     return c;

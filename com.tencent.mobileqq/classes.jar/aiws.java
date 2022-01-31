@@ -1,51 +1,35 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.AnimationDrawable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase.OnEditItemListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class aiws
-  implements Runnable
+public class aiws
+  implements Animation.AnimationListener
 {
-  aiws(aiwr paramaiwr) {}
+  public aiws(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    AudioItem.AudioViewHolder localAudioViewHolder;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.c < this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().getItemCount())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.c), true);
-      localAudioViewHolder = (AudioItem.AudioViewHolder)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.c);
-      if (localAudioViewHolder != null)
-      {
-        if (!this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.a) {
-          break label171;
-        }
-        AnimationDrawable localAnimationDrawable = (AnimationDrawable)AudioItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem).getResources().getDrawable(2131034360);
-        localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
-        localAnimationDrawable.start();
-      }
-    }
-    for (;;)
-    {
-      localAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localAudioViewHolder.c.setVisibility(4);
+    if (this.a.jdField_b_of_type_AndroidViewView == null) {
       return;
-      label171:
-      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843779);
     }
+    this.a.jdField_b_of_type_AndroidViewView.post(new aiwt(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (this.a.jdField_b_of_type_AndroidWidgetTextView == null) {
+      return;
+    }
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiws
  * JD-Core Version:    0.7.0.1
  */

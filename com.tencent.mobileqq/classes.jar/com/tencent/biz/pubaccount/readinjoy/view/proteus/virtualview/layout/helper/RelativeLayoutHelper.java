@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import mpp;
+import mqw;
 
 public class RelativeLayoutHelper
 {
@@ -115,7 +115,7 @@ public class RelativeLayoutHelper
     if (paramArrayOfString[paramInt] == null) {
       return null;
     }
-    paramArrayOfString = (mpp)this.jdField_a_of_type_JavaUtilMap.get(paramArrayOfString[paramInt]);
+    paramArrayOfString = (mqw)this.jdField_a_of_type_JavaUtilMap.get(paramArrayOfString[paramInt]);
     if ((paramArrayOfString == null) || (paramArrayOfString.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.d())) {
       return null;
     }
@@ -130,8 +130,8 @@ public class RelativeLayoutHelper
     while (i < k)
     {
       Object localObject1 = (ViewBase)paramList.get(i);
-      localObject1 = (mpp)this.jdField_a_of_type_JavaUtilMap.get(((ViewBase)localObject1).c());
-      String[] arrayOfString = ((RelativeLayout.Params)((mpp)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.b()).a();
+      localObject1 = (mqw)this.jdField_a_of_type_JavaUtilMap.get(((ViewBase)localObject1).c());
+      String[] arrayOfString = ((RelativeLayout.Params)((mqw)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.b()).a();
       int m = paramArrayOfInt.length;
       int j = 0;
       if (j < m)
@@ -139,7 +139,7 @@ public class RelativeLayoutHelper
         Object localObject2 = arrayOfString[paramArrayOfInt[j]];
         if (localObject2 != null)
         {
-          localObject2 = (mpp)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+          localObject2 = (mqw)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
           if ((localObject2 != null) && (localObject2 != localObject1)) {
             break label143;
           }
@@ -149,8 +149,8 @@ public class RelativeLayoutHelper
           j += 1;
           break;
           label143:
-          ((mpp)localObject2).jdField_a_of_type_JavaUtilList.add(localObject1);
-          ((mpp)localObject1).b.add(localObject2);
+          ((mqw)localObject2).jdField_a_of_type_JavaUtilList.add(localObject1);
+          ((mqw)localObject1).b.add(localObject2);
         }
       }
       i += 1;
@@ -158,7 +158,7 @@ public class RelativeLayoutHelper
     paramList = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
     while (paramList.hasNext())
     {
-      paramArrayOfInt = (mpp)((Map.Entry)paramList.next()).getValue();
+      paramArrayOfInt = (mqw)((Map.Entry)paramList.next()).getValue();
       if (paramArrayOfInt.b.isEmpty()) {
         localArrayList.add(paramArrayOfInt);
       }
@@ -172,7 +172,7 @@ public class RelativeLayoutHelper
     Object localObject = new ArrayList();
     paramList = paramList.iterator();
     ViewBase localViewBase;
-    mpp localmpp;
+    mqw localmqw;
     while (paramList.hasNext())
     {
       localViewBase = (ViewBase)paramList.next();
@@ -182,9 +182,9 @@ public class RelativeLayoutHelper
       }
       else
       {
-        localmpp = new mpp();
-        localmpp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = localViewBase;
-        localHashMap.put(localViewBase.c(), localmpp);
+        localmqw = new mqw();
+        localmqw.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = localViewBase;
+        localHashMap.put(localViewBase.c(), localmqw);
       }
     }
     localObject = ((List)localObject).iterator();
@@ -192,8 +192,8 @@ public class RelativeLayoutHelper
     while (((Iterator)localObject).hasNext())
     {
       localViewBase = (ViewBase)((Iterator)localObject).next();
-      localmpp = new mpp();
-      localmpp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = localViewBase;
+      localmqw = new mqw();
+      localmqw.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = localViewBase;
       int j;
       for (paramList = String.valueOf(i); localHashMap.containsKey(paramList); paramList = String.valueOf(j))
       {
@@ -201,7 +201,7 @@ public class RelativeLayoutHelper
         i = j;
       }
       localViewBase.b(paramList);
-      localHashMap.put(localViewBase.c(), localmpp);
+      localHashMap.put(localViewBase.c(), localmqw);
     }
     return localHashMap;
   }
@@ -228,15 +228,15 @@ public class RelativeLayoutHelper
   private static void a(List paramList, String paramString)
   {
     Iterator localIterator = paramList.iterator();
-    mpp localmpp;
+    mqw localmqw;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localmpp = (mpp)localIterator.next();
-    } while (!localmpp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.c().equals(paramString));
-    for (paramString = localmpp;; paramString = null)
+      localmqw = (mqw)localIterator.next();
+    } while (!localmqw.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.c().equals(paramString));
+    for (paramString = localmqw;; paramString = null)
     {
       paramList.remove(paramString);
       return;
@@ -281,17 +281,17 @@ public class RelativeLayoutHelper
     int i = 0;
     while (i < paramArrayOfInt.size())
     {
-      Object localObject1 = (mpp)paramArrayOfInt.get(i);
-      Object localObject2 = ((mpp)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
+      Object localObject1 = (mqw)paramArrayOfInt.get(i);
+      Object localObject2 = ((mqw)localObject1).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
       String str = ((ViewBase)localObject2).c();
       localArrayList.add(localObject2);
-      localObject1 = ((mpp)localObject1).jdField_a_of_type_JavaUtilList;
+      localObject1 = ((mqw)localObject1).jdField_a_of_type_JavaUtilList;
       int k = ((List)localObject1).size();
       int j = 0;
       while (j < k)
       {
-        localObject2 = (mpp)((List)localObject1).get(j);
-        List localList = ((mpp)localObject2).b;
+        localObject2 = (mqw)((List)localObject1).get(j);
+        List localList = ((mqw)localObject2).b;
         a(localList, str);
         if (localList.size() == 0) {
           paramArrayOfInt.add(localObject2);

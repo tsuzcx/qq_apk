@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hotpic;
 
-import adir;
-import adis;
+import adsq;
+import adsr;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class VideoItemEventManager
 {
   private static volatile VideoItemEventManager jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adis(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adsr(this);
   private Context jdField_a_of_type_AndroidContentContext;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new adir(this);
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new adsq(this);
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   
@@ -85,7 +85,7 @@ public class VideoItemEventManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoItemEventManager
  * JD-Core Version:    0.7.0.1
  */

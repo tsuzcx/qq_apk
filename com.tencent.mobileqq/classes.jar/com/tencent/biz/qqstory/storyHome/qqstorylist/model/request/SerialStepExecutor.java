@@ -4,7 +4,7 @@ import android.os.Handler;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import nyd;
+import nzo;
 
 public class SerialStepExecutor
   extends SimpleStepExector
@@ -26,7 +26,7 @@ public class SerialStepExecutor
     if (this.jdField_a_of_type_Int == 2) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new nyd(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new nzo(this));
   }
   
   public SerialStepExecutor a(SimpleStepExector.CompletedHandler paramCompletedHandler)

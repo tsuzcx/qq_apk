@@ -1,25 +1,15 @@
-import android.graphics.Bitmap;
-import android.widget.RelativeLayout;
-import com.tencent.av.ui.redbag.GuideTip2;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.utils.AvCustomDialog;
 
 public class kfs
-  implements Runnable
+  implements View.OnClickListener
 {
-  public kfs(GuideTip2 paramGuideTip2, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2) {}
+  public kfs(AvCustomDialog paramAvCustomDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.b);
-    if (this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.a != null)
-    {
-      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.a.recycle();
-      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.a = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.b != null)
-    {
-      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.b.recycle();
-      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.b = null;
-    }
+    this.a.dismiss();
   }
 }
 

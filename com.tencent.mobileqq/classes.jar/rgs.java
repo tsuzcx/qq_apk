@@ -1,41 +1,45 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
-class rgs
-  implements Runnable
+public class rgs
+  extends MessageObserver
 {
-  rgs(rgr paramrgr, String paramString) {}
+  public rgs(AccountManageActivity paramAccountManageActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    TextView localTextView;
-    if (AddFriendVerifyActivity.b(this.jdField_a_of_type_Rgr.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).isShown())
+    if (this.a.isFinishing()) {}
+    SubAccountControll localSubAccountControll;
+    do
     {
-      localTextView = AddFriendVerifyActivity.b(this.jdField_a_of_type_Rgr.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Rgr.jdField_a_of_type_JavaLangString)) {
-        break label91;
-      }
-      str = this.jdField_a_of_type_JavaLangString;
-      localTextView.setText(str);
-      if (AppSetting.b)
+      for (;;)
       {
-        localTextView = AddFriendVerifyActivity.b(this.jdField_a_of_type_Rgr.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Rgr.jdField_a_of_type_JavaLangString)) {
-          break label102;
+        return;
+        AccountManageActivity.a(this.a, false);
+        localSubAccountControll = (SubAccountControll)this.a.app.getManager(61);
+        if (paramSubAccountBackProtocData.a != 1) {
+          break;
+        }
+        if ((this.a.isResume()) && (SubAccountControll.a(this.a.app, "sub.uin.all")))
+        {
+          paramString = localSubAccountControll.a("sub.uin.all");
+          int j = paramString.size();
+          int i = 0;
+          while (i < j)
+          {
+            paramSubAccountBackProtocData = (Pair)paramString.get(i);
+            localSubAccountControll.a(this.a.app, this.a, paramSubAccountBackProtocData, new rgt(this, localSubAccountControll, paramSubAccountBackProtocData));
+            i += 1;
+          }
         }
       }
-    }
-    label91:
-    label102:
-    for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_a_of_type_Rgr.jdField_a_of_type_JavaLangString)
-    {
-      localTextView.setContentDescription(str);
-      return;
-      str = this.jdField_a_of_type_Rgr.jdField_a_of_type_JavaLangString;
-      break;
-    }
+    } while (!this.a.isResume());
+    localSubAccountControll.a(paramString, 1, true);
   }
 }
 

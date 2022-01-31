@@ -50,7 +50,7 @@ public class QzoneBannerJsPlugin
     }
     while (paramJsBridgeListener != null)
     {
-      paramString1 = paramJsBridgeListener.getTag(2131362645);
+      paramString1 = paramJsBridgeListener.getTag(2131362662);
       if ((paramString1 != null) && ((paramString1 instanceof QzoneBannerJsPlugin.WebViewBannerInterface)))
       {
         paramString1 = (QzoneBannerJsPlugin.WebViewBannerInterface)paramString1;

@@ -1,33 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
+import com.qq.jce.wup.UniAttribute;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.qzone.QZoneFeedCountPackeger;
 
-class ahxr
-  implements MediaPlayer.OnSeekCompleteListener
+public final class ahxr
+  implements Runnable
 {
-  ahxr(ahxq paramahxq) {}
+  public ahxr(UniAttribute paramUniAttribute, QQAppInterface paramQQAppInterface) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    try
-    {
-      this.a.a.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.a.g = true;
-      this.a.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.a, 33L);
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
-    }
+    QZoneFeedCountPackeger.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxr
  * JD-Core Version:    0.7.0.1
  */

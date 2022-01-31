@@ -1,21 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
 
 public class aedd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aedd(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public aedd(LyricViewInternal paramLyricViewInternal) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
-      this.a.e("0X800590A");
-    }
+    this.a.requestLayout();
   }
 }
 

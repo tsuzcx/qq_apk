@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder;
 
-class uvj
-  implements DialogInterface.OnClickListener
+public class uvj
+  implements View.OnClickListener
 {
-  uvj(uvi paramuvi, QQCustomDialog paramQQCustomDialog) {}
+  public uvj(CommonHobbyForAIOShowItemBuilder paramCommonHobbyForAIOShowItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView)) {
+      CommonHobbyForAIOShowItemBuilder.a(this.a, paramView);
+    }
   }
 }
 

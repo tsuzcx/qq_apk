@@ -1,20 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ahmi
-  implements Animation.AnimationListener
+public final class ahmi
+  extends BroadcastReceiver
 {
-  public ahmi(GLLittleBoyManager paramGLLittleBoyManager) {}
+  private ahmi(FilterProviderView paramFilterProviderView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    GLLittleBoyManager.b(this.a, paramAnimation);
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      CaptureVideoFilterManager.a().b();
+      FilterProviderView.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("FilterProviderView", 2, "FilterProviderView FilterBroadcastReceiver size=" + this.a.a.size());
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

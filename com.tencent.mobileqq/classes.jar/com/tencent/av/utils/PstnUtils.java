@@ -239,10 +239,10 @@ public class PstnUtils
   {
     PstnManager localPstnManager = (PstnManager)paramQQAppInterface.getManager(142);
     if (paramInt == 1) {
-      return String.format(paramQQAppInterface.getApplication().getResources().getString(2131438396), new Object[] { Integer.valueOf(localPstnManager.e()) });
+      return String.format(paramQQAppInterface.getApplication().getResources().getString(2131438414), new Object[] { Integer.valueOf(localPstnManager.e()) });
     }
     if (paramInt == 2) {
-      return String.format(paramQQAppInterface.getApplication().getResources().getString(2131438396), new Object[] { Integer.valueOf(localPstnManager.f()) });
+      return String.format(paramQQAppInterface.getApplication().getResources().getString(2131438414), new Object[] { Integer.valueOf(localPstnManager.f()) });
     }
     return null;
   }
@@ -688,7 +688,7 @@ public class PstnUtils
     if (paramInt == 1) {
       if ((localObject1 != null) && (((PstnCardInfo)localObject1).pstn_ever_c2c_vip == 1))
       {
-        localObject1 = paramQQAppInterface.getApplication().getResources().getString(2131438372);
+        localObject1 = paramQQAppInterface.getApplication().getResources().getString(2131438390);
         localObject2 = ((PstnManager)localObject2).a("key_pstn_tried_c2c_recharge_title");
         paramQQAppInterface = (QQAppInterface)localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -704,7 +704,7 @@ public class PstnUtils
         do
         {
           return paramQQAppInterface;
-          str = paramQQAppInterface.getApplication().getResources().getString(2131438378);
+          str = paramQQAppInterface.getApplication().getResources().getString(2131438396);
           localObject1 = ((PstnManager)localObject2).a("key_pstn_untried_c2c_recharge_title");
           paramQQAppInterface = (QQAppInterface)localObject1;
         } while (!TextUtils.isEmpty((CharSequence)localObject1));
@@ -712,12 +712,12 @@ public class PstnUtils
         if ((localObject1 == null) || (((PstnCardInfo)localObject1).pstn_ever_multi_vip != 1)) {
           break;
         }
-        str = paramQQAppInterface.getApplication().getResources().getString(2131438375);
+        str = paramQQAppInterface.getApplication().getResources().getString(2131438393);
         localObject1 = ((PstnManager)localObject2).a("key_pstn_tried_multi_recharge_title");
         paramQQAppInterface = (QQAppInterface)localObject1;
       } while (!TextUtils.isEmpty((CharSequence)localObject1));
       return str;
-      str = paramQQAppInterface.getApplication().getResources().getString(2131438381);
+      str = paramQQAppInterface.getApplication().getResources().getString(2131438399);
       localObject1 = ((PstnManager)localObject2).a("key_pstn_untried_multi_recharge_title");
       paramQQAppInterface = (QQAppInterface)localObject1;
     } while (!TextUtils.isEmpty((CharSequence)localObject1));
@@ -800,7 +800,7 @@ public class PstnUtils
     if (paramInt == 1) {
       if ((localObject1 != null) && (((PstnCardInfo)localObject1).pstn_ever_c2c_vip == 1))
       {
-        localObject1 = paramQQAppInterface.getApplication().getResources().getString(2131438373);
+        localObject1 = paramQQAppInterface.getApplication().getResources().getString(2131438391);
         localObject2 = ((PstnManager)localObject2).a("key_pstn_tried_c2c_recharge_content");
         paramQQAppInterface = (QQAppInterface)localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -816,7 +816,7 @@ public class PstnUtils
         do
         {
           return paramQQAppInterface;
-          str = paramQQAppInterface.getApplication().getResources().getString(2131438379);
+          str = paramQQAppInterface.getApplication().getResources().getString(2131438397);
           localObject1 = ((PstnManager)localObject2).a("key_pstn_untried_c2c_recharge_content");
           paramQQAppInterface = (QQAppInterface)localObject1;
         } while (!TextUtils.isEmpty((CharSequence)localObject1));
@@ -824,12 +824,12 @@ public class PstnUtils
         if ((localObject1 == null) || (((PstnCardInfo)localObject1).pstn_ever_multi_vip != 1)) {
           break;
         }
-        str = paramQQAppInterface.getApplication().getResources().getString(2131438376);
+        str = paramQQAppInterface.getApplication().getResources().getString(2131438394);
         localObject1 = ((PstnManager)localObject2).a("key_pstn_tried_multi_recharge_content");
         paramQQAppInterface = (QQAppInterface)localObject1;
       } while (!TextUtils.isEmpty((CharSequence)localObject1));
       return str;
-      str = paramQQAppInterface.getApplication().getResources().getString(2131438382);
+      str = paramQQAppInterface.getApplication().getResources().getString(2131438400);
       localObject1 = ((PstnManager)localObject2).a("key_pstn_untried_multi_recharge_content");
       paramQQAppInterface = (QQAppInterface)localObject1;
     } while (!TextUtils.isEmpty((CharSequence)localObject1));
@@ -843,7 +843,7 @@ public class PstnUtils
     if (paramInt == 1) {
       if ((localObject1 != null) && (((PstnCardInfo)localObject1).pstn_ever_c2c_vip == 1))
       {
-        localObject1 = paramQQAppInterface.getApplication().getResources().getString(2131438374);
+        localObject1 = paramQQAppInterface.getApplication().getResources().getString(2131438392);
         localObject2 = ((PstnManager)localObject2).a("key_pstn_tried_c2c_recharge_confirm_text");
         paramQQAppInterface = (QQAppInterface)localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -859,7 +859,7 @@ public class PstnUtils
         do
         {
           return paramQQAppInterface;
-          str = paramQQAppInterface.getApplication().getResources().getString(2131438380);
+          str = paramQQAppInterface.getApplication().getResources().getString(2131438398);
           localObject1 = ((PstnManager)localObject2).a("key_pstn_untried_c2c_recharge_confirm_text");
           paramQQAppInterface = (QQAppInterface)localObject1;
         } while (!TextUtils.isEmpty((CharSequence)localObject1));
@@ -867,12 +867,12 @@ public class PstnUtils
         if ((localObject1 == null) || (((PstnCardInfo)localObject1).pstn_ever_multi_vip != 1)) {
           break;
         }
-        str = paramQQAppInterface.getApplication().getResources().getString(2131438377);
+        str = paramQQAppInterface.getApplication().getResources().getString(2131438395);
         localObject1 = ((PstnManager)localObject2).a("key_pstn_tried_multi_recharge_confirm_text");
         paramQQAppInterface = (QQAppInterface)localObject1;
       } while (!TextUtils.isEmpty((CharSequence)localObject1));
       return str;
-      str = paramQQAppInterface.getApplication().getResources().getString(2131438383);
+      str = paramQQAppInterface.getApplication().getResources().getString(2131438401);
       localObject1 = ((PstnManager)localObject2).a("key_pstn_untried_multi_recharge_confirm_text");
       paramQQAppInterface = (QQAppInterface)localObject1;
     } while (!TextUtils.isEmpty((CharSequence)localObject1));

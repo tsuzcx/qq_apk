@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2dec" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ded" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a2dec" />
-</RelativeLayout>
+<ImageView android:layout_width="fill_parent" android:layout_height="0.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0222f1" android:scaleType="fitXY"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

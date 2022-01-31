@@ -1,7 +1,6 @@
-import android.content.res.Resources;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.av.VideoController;
 import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 public class jxk
@@ -11,22 +10,18 @@ public class jxk
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_AndroidViewViewGroup == null) || (this.a.i == null) || (this.a.jdField_a_of_type_AndroidContentResResources == null))
+    if (this.a.a != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(this.a.c, 2, "SetTitleMaxWidth Failed --> RootView Or TitleView Or Resource is NULL");
+      this.a.a.f();
+      this.a.S();
+      if (this.a.d == 2) {
+        ReportController.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
       }
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    if (this.a.h == null)
-    {
-      i = this.a.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559737);
-      this.a.i.setMaxWidth(i);
-      return;
-    }
-    int i = this.a.jdField_a_of_type_AndroidViewViewGroup.getWidth();
-    int j = this.a.h.getWidth();
-    this.a.i.setMaxWidth(i - j * 2);
+    QLog.e(this.a.c, 2, "RequestVideoTimeOutRunnable, mVideoController = null!!!");
   }
 }
 

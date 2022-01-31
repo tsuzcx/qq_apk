@@ -1,43 +1,26 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.app.ShakeListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class zal
-  implements View.OnTouchListener
+  extends ShakeListener
 {
-  public zal(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity == null)
     {
+      ScreenShot.a("MyShakeListener - top activity is null");
+      return;
     }
-    do
+    if (!localBaseActivity.mCurrentActivityShakeFlag)
     {
-      do
-      {
-        return false;
-      } while (!SubAccountControll.c(this.a.getActivity().app, false));
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
-      return false;
-      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
-      }
-    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    return false;
-    FrameHelperActivity.a(this.a);
-    return false;
+      ScreenShot.a("MyShakeListener - shake flag is false");
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(new zam(this, localBaseActivity));
   }
 }
 

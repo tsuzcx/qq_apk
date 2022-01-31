@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-public class rxk
-  implements Runnable
+public final class rxk
+  implements DialogInterface.OnClickListener
 {
-  public rxk(ChatHistoryFileActivity paramChatHistoryFileActivity, String paramString1, String paramString2, int paramInt) {}
+  public rxk(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean, Map paramMap) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = MultiMsgManager.a().a.iterator();
-    while (localIterator.hasNext())
-    {
-      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if ((localChatMessage instanceof MessageForStructing)) {
-        ShareMsgHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, ((MessageForStructing)localChatMessage).structingMsg, null);
-      }
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaUtilMap);
+    paramDialogInterface.dismiss();
   }
 }
 

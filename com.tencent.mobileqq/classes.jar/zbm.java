@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.app.HotChatCenterManager;
-import com.tencent.mobileqq.data.HotChatItemData;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class zbm
   implements Runnable
 {
-  public zbm(HotChatCenterManager paramHotChatCenterManager, EntityManager paramEntityManager, HotChatItemData paramHotChatItemData) {}
+  public zbm(ConditionSearchManager paramConditionSearchManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
+    int i = -1;
+    int j = this.a.a();
+    if (j != 0) {
+      i = this.a.a(j);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "pendCardParseRequest | check reuslt = " + j + " | update result = " + i);
+    }
+    if (j == 0) {
+      ConditionSearchManager.a(this.a).a(new zbn(this));
+    }
   }
 }
 

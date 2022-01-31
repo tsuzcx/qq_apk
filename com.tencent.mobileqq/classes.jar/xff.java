@@ -1,23 +1,30 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.util.VersionUtils;
+import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.WaitRecord;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class xff
-  implements View.OnClickListener
+public final class xff
+  implements Runnable
 {
-  public xff(BannerManager paramBannerManager) {}
+  public xff(ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (VersionUtils.e())
+    QQAppInterface localQQAppInterface = QWalletTools.a();
+    if (localQQAppInterface != null)
     {
-      BannerManager.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
-      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        NotifyMsgManager.WaitRecord localWaitRecord = (NotifyMsgManager.WaitRecord)localIterator.next();
+        if ((localWaitRecord != null) && (localWaitRecord.a != null)) {
+          localQQAppInterface.a().a(localWaitRecord.a.frienduin, localWaitRecord.a.istroop, localWaitRecord.a.uniseq, "extStr", localWaitRecord.a.extStr);
+        }
+      }
     }
-    BannerManager.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

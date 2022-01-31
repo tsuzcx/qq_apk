@@ -1,27 +1,17 @@
-import android.support.v4.view.ViewPager.PageTransformer;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
 
 public class kwr
-  implements ViewPager.PageTransformer
+  implements View.OnClickListener
 {
-  private kwr(VerticleViewPager paramVerticleViewPager) {}
+  public kwr(AdModuleBase paramAdModuleBase) {}
   
-  public void transformPage(View paramView, float paramFloat)
+  public void onClick(View paramView)
   {
-    if (paramFloat < -1.0F)
-    {
-      paramView.setAlpha(0.0F);
-      return;
-    }
-    if (paramFloat <= 1.0F)
-    {
-      paramView.setAlpha(1.0F);
-      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
-      paramView.setTranslationY(paramView.getHeight() * paramFloat);
-      return;
-    }
-    paramView.setAlpha(0.0F);
+    this.a.a.dismiss();
+    AdModuleBase.c(this.a);
   }
 }
 

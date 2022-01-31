@@ -1,82 +1,27 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanel.LabelStatusManager;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanelAdapter;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.qphone.base.util.QLog;
 
 public class agdm
-  extends BaseAdapter
+  extends Handler
 {
-  List jdField_a_of_type_JavaUtilList;
+  public agdm(ScanOcrView paramScanOcrView) {}
   
-  private agdm(ProfileLabelPanelAdapter paramProfileLabelPanelAdapter) {}
-  
-  public void a(List paramList)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ProfileLabelInfo localProfileLabelInfo;
-    if (paramView == null)
-    {
-      paramView = new ToggleButton(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(28.0F * this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_Float)));
-      paramView.setBackgroundResource(2130846019);
-      paramViewGroup = (ToggleButton)paramView;
-      paramViewGroup.setGravity(17);
-      paramViewGroup.setTextSize(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131689476));
-      paramViewGroup.setTextColor(Color.parseColor("#777777"));
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter);
-      localProfileLabelInfo = (ProfileLabelInfo)getItem(paramInt);
-      if (localProfileLabelInfo == null) {
-        break label204;
-      }
-      paramViewGroup.setTag(localProfileLabelInfo);
-      if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
-        break label198;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
     }
-    label198:
-    for (boolean bool = true;; bool = false)
+    switch (paramMessage.what)
     {
-      paramViewGroup.setChecked(bool);
-      paramViewGroup.setText(localProfileLabelInfo.labelName);
-      paramViewGroup.setTextOn(localProfileLabelInfo.labelName);
-      paramViewGroup.setTextOff(localProfileLabelInfo.labelName);
-      if (localProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localProfileLabelInfo, paramViewGroup);
-      }
-      return paramView;
-      paramViewGroup = (ToggleButton)paramView;
-      break;
     }
-    label204:
-    paramViewGroup.setVisibility(8);
-    return paramView;
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a(paramMessage.arg1);
+    }
   }
 }
 

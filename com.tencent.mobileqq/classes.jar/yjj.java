@@ -1,18 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.antiphing.UinFraudInfo;
 
-class yjj
-  implements Runnable
+public class yjj
 {
-  yjj(yji paramyji) {}
+  public int a;
+  public long a;
   
-  public void run()
-  {
-    QLog.d("ApolloSurfaceView", 1, "[onEnterGame] apollosurfaceview visiable");
-  }
+  public yjj(UinFraudInfo paramUinFraudInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     yjj
  * JD-Core Version:    0.7.0.1
  */

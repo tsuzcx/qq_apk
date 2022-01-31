@@ -1,43 +1,23 @@
-import com.tencent.mobileqq.ar.ArNativeSoManager;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class zxz
-  implements ARPreSoResourceDownload.ARResourceDownloadCallback
+public final class zxz
+  implements Runnable
 {
-  public zxz(ArNativeSoManager paramArNativeSoManager, String paramString, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback) {}
+  public zxz(String paramString1, String paramString2) {}
   
-  public void a()
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback.a();
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(boolean paramBoolean, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramDownloadInfo.d + ", filename = " + paramDownloadInfo.c + ", url = " + paramDownloadInfo.jdField_a_of_type_JavaLangString);
-    if (paramBoolean) {
-      if (!ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c, paramDownloadInfo.b))
-      {
-        ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback == null)
+    try
     {
+      DialogUtil.a(ARVideoRecordUIControllerImpl.a().a(), 230, this.a, this.b, "", "我知道了", new zya(this), null).show();
       return;
-      if ((!paramDownloadInfo.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager.a(paramDownloadInfo.d, paramDownloadInfo.c, paramDownloadInfo.b) != 0)) {}
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback.a(paramBoolean, paramDownloadInfo);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

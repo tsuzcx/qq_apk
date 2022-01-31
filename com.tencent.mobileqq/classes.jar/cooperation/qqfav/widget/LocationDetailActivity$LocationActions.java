@@ -31,7 +31,7 @@ public class LocationDetailActivity$LocationActions
   {
     LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
     if (localLocationDetailActivity == null) {}
-    while (localLocationDetailActivity.getString(2131431611).compareTo(paramString) != 0) {
+    while (localLocationDetailActivity.getString(2131431628).compareTo(paramString) != 0) {
       return;
     }
   }
@@ -49,7 +49,7 @@ public class LocationDetailActivity$LocationActions
       ForwardBaseOption.a(localLocationDetailActivity, localIntent, 103);
       return;
     }
-    QQToast.a(localLocationDetailActivity, 2131431568, 1, 2000).b(5);
+    QQToast.a(localLocationDetailActivity, 2131431585, 1, 2000).b(5);
   }
 }
 

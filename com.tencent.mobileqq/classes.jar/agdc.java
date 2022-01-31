@@ -1,17 +1,24 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class agdc
-  extends AnimateUtils.AnimationAdapter
+  implements TextView.OnEditorActionListener
 {
-  public agdc(ProfileHeaderView paramProfileHeaderView, boolean paramBoolean) {}
+  public agdc(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Boolean = false;
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    {
+      OCRTextSearchActivity.a(this.a);
+      this.a.a.setSelection(this.a.a.getText().length());
+      return true;
     }
+    return false;
   }
 }
 

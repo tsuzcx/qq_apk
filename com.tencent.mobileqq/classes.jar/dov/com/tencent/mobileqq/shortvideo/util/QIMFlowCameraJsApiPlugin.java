@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aoai;
+import aoqn;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
 import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class QIMFlowCameraJsApiPlugin
   extends WebViewPlugin
 {
-  private Client.onRemoteRespObserver a = new aoai(this);
+  private Client.onRemoteRespObserver a = new aoqn(this);
   
   public QIMFlowCameraJsApiPlugin()
   {

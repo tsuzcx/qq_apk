@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter.LocalFileItemHolder;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import java.util.ArrayList;
 
-public class acnn
-  extends acnp
+class acnn
+  implements View.OnClickListener
 {
-  public acnn(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  acnn(acnm paramacnm, View paramView) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateAcceptByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    paramView = (LocalFileAdapter.LocalFileItemHolder)this.jdField_a_of_type_AndroidViewView.getTag();
+    this.jdField_a_of_type_Acnm.a.d = paramView.a;
+    paramView = (FileInfo)this.jdField_a_of_type_Acnm.a.b.get(this.jdField_a_of_type_Acnm.a.d);
+    if ((!FileUtil.a(paramView.c())) || (FileUtil.c(paramView.c())))
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      FileManagerUtil.d(paramView.c());
+      this.jdField_a_of_type_Acnm.a.b.remove(this.jdField_a_of_type_Acnm.a.d);
+      LocalFileBrowserActivity.a(this.jdField_a_of_type_Acnm.a);
       return;
     }
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Acnp.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Acnp = new acnm(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    FMToastUtil.a(2131428144);
   }
 }
 

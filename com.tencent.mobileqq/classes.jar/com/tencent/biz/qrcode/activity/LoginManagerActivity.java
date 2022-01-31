@@ -44,9 +44,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.NewIntent;
-import oqr;
-import oqs;
-import oqt;
+import osl;
+import osm;
+import osn;
 
 public class LoginManagerActivity
   extends IphoneTitleBarActivity
@@ -93,7 +93,7 @@ public class LoginManagerActivity
       this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a(true);
     }
     this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = new DownloadTask(this.jdField_c_of_type_JavaLangString, localFile);
-    ((DownloaderFactory)this.app.getManager(46)).a(1).a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, new oqt(this), null);
+    ((DownloaderFactory)this.app.getManager(46)).a(1).a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, new osn(this), null);
     return false;
   }
   
@@ -194,7 +194,7 @@ public class LoginManagerActivity
       ((NewIntent)localObject1).putExtra(ToServiceMsg.class.getSimpleName(), (Parcelable)localObject2);
       this.app.startServlet((NewIntent)localObject1);
     }
-    QQToast.a(this, -1, 2131429966, 0).a();
+    QQToast.a(this, -1, 2131429983, 0).a();
     super.finish();
     Object localObject1 = new Intent("com.tencent.mobileqq.action.PC_STATUS_MANAGE");
     ((Intent)localObject1).putExtra("status", "logout");
@@ -210,9 +210,9 @@ public class LoginManagerActivity
     {
       return;
       paramView = DialogUtil.a(this, 230);
-      paramView.setMessage(getString(2131429965, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
-      paramView.setPositiveButton(2131429994, new oqr(this));
-      paramView.setNegativeButton(2131432998, new oqs(this));
+      paramView.setMessage(getString(2131429982, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+      paramView.setPositiveButton(2131430011, new osl(this));
+      paramView.setNegativeButton(2131433015, new osm(this));
       paramView.show();
       return;
       if (!TextUtils.isEmpty(this.e))
@@ -240,14 +240,14 @@ public class LoginManagerActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130969696);
-    super.setTitle(2131429963);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131367504));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367501));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367193));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367500));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367508));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367507));
+    super.setContentView(2130969710);
+    super.setTitle(2131429980);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131367572));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367569));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367241));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367568));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367576));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367575));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -268,26 +268,26 @@ public class LoginManagerActivity
       this.jdField_b_of_type_JavaLangString = "TIM";
       if ((TextUtils.isEmpty(str)) || (str.equalsIgnoreCase("null")) || (str.contains("未知")))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131429960, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131429977, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
         label303:
         b();
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131429964, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131429981, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
       paramBundle = FaceDrawable.a(this.app, paramBundle, (byte)3);
       if (paramBundle == null) {
         break;
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131429959, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, str }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131429976, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, str }));
       break label303;
       this.jdField_b_of_type_JavaLangString = "QQ";
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131429959, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, str }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131429976, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, str }));
     }
   }
 }

@@ -1,81 +1,79 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class ajrb
-  extends BaseAdapter
+public final class ajrb
+  implements BusinessObserver
 {
-  public ajrb(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog) {}
+  public ajrb(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
-  public int getCount()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968846, null);
-      paramView = new ajrg(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131364031));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (ajrg)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
-    {
-      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      paramView.a.setOnClickListener(new ajrf(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-        break label207;
-      }
-      paramView.a.setBackgroundResource(2130838703);
-    }
+    if (paramBoolean) {}
     for (;;)
     {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label207:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130838704);
-      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-        paramView.a.setBackgroundResource(2130838702);
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
+        }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        paramInt = localWebSsoResponseBody.ret.get();
+        if (paramInt == 0)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment ok~~~");
+          return;
+        }
+        paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
+        paramBundle = "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed1, errorCode = " + paramInt + ", msg = " + paramBundle;
+        if (QLog.isColorLevel()) {
+          QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle);
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle = "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed4, msg = " + QLog.getStackTraceString(paramBundle);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle);
+        continue;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, 32768, 1002);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(6003, false, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq) });
+      return;
+      if (QLog.isColorLevel())
+      {
+        QLog.w(".troop.troop_topic.TroopTopicMgr", 2, "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed2, data is null !!!!");
+        continue;
+        paramBundle = "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed3, isSuccess is " + paramBoolean;
+        if (QLog.isColorLevel()) {
+          QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle + paramBoolean);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajrb
  * JD-Core Version:    0.7.0.1
  */

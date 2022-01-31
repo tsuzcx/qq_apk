@@ -1,34 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class txd
-  implements View.OnClickListener
+class txd
+  implements DialogInterface.OnClickListener
 {
-  public txd(TroopMemberListActivity paramTroopMemberListActivity) {}
+  txd(txc paramtxc, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
-    {
-      paramView = new Intent();
-      paramView.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
-      this.a.setResult(-1, paramView);
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label159;
-      }
-    }
-    label159:
-    for (int i = 0;; i = 1)
-    {
-      ReportController.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
-      this.a.finish();
-      return;
-    }
+    ReportController.b(this.jdField_a_of_type_Txc.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Txc.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Txc.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Txc.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

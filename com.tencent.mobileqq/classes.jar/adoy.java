@@ -1,58 +1,45 @@
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.log.ReportLog;
+import android.text.SpannableStringBuilder;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public final class adoy
-  extends Handler
+public class adoy
+  extends View.AccessibilityDelegate
 {
-  public adoy(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adoy(UniteGrayTipItemBuilder paramUniteGrayTipItemBuilder, long paramLong1, long paramLong2, ArrayList paramArrayList, SpannableStringBuilder paramSpannableStringBuilder) {}
   
-  public void handleMessage(Message paramMessage)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if (paramMessage.what == 10000001)
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if (paramInt == 1)
     {
-      paramMessage = (ProgressBar)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131362757);
-      localDrawable = ReportLog.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130838746);
-      paramMessage.setIndeterminateDrawable(localDrawable);
-      paramMessage.setBackgroundDrawable(localDrawable);
-      ((TextView)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131362758)).setText(2131435036);
-      ReportLog.a().sendEmptyMessageDelayed(10000002, 2000L);
-    }
-    while ((paramMessage.what != 10000002) || (ReportLog.jdField_a_of_type_AndroidAppProgressDialog == null))
-    {
-      Drawable localDrawable;
-      return;
-    }
-    try
-    {
-      ReportLog.jdField_a_of_type_Boolean = false;
-      ReportLog.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-      return;
-    }
-    finally
-    {
-      ReportLog.jdField_a_of_type_AndroidAppProgressDialog = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder sendAccessibilityEvent click msg uinseq=", Long.valueOf(this.jdField_a_of_type_Long), ",holder.mPosition=", Long.valueOf(this.b) });
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (MessageForGrayTips.HightlightItem)localIterator.next();
+        if (localObject != null)
+        {
+          localObject = (ClickableSpan[])this.jdField_a_of_type_AndroidTextSpannableStringBuilder.getSpans(((MessageForGrayTips.HightlightItem)localObject).start, ((MessageForGrayTips.HightlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
+          if (localObject.length > 0) {
+            localObject[0].onClick(paramView);
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adoy
  * JD-Core Version:    0.7.0.1
  */

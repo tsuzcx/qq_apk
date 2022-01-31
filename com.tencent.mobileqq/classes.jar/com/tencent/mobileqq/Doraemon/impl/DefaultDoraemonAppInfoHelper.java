@@ -20,13 +20,13 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rbr;
-import rbs;
-import rbt;
-import rbu;
-import rbv;
-import rbw;
-import rby;
+import rei;
+import rej;
+import rek;
+import rel;
+import rem;
+import ren;
+import rep;
 
 public class DefaultDoraemonAppInfoHelper
 {
@@ -41,16 +41,16 @@ public class DefaultDoraemonAppInfoHelper
   
   static
   {
-    Bosses.init(BaseApplicationImpl.getApplication());
     jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper = new DefaultDoraemonAppInfoHelper();
+    Bosses.init(BaseApplicationImpl.getApplication());
   }
   
   public DefaultDoraemonAppInfoHelper()
   {
+    this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_Long = 0L;
     this.jdField_b_of_type_Long = 0L;
   }
@@ -308,14 +308,14 @@ public class DefaultDoraemonAppInfoHelper
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 35	com/tencent/mobileqq/Doraemon/impl/DefaultDoraemonAppInfoHelper:jdField_a_of_type_Boolean	Z
+    //   3: getfield 37	com/tencent/mobileqq/Doraemon/impl/DefaultDoraemonAppInfoHelper:jdField_a_of_type_Boolean	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
     //   11: aload_0
     //   12: monitorexit
     //   13: return
-    //   14: invokestatic 20	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   14: invokestatic 25	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   17: ldc 196
     //   19: iconst_4
     //   20: invokevirtual 200	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
@@ -352,7 +352,7 @@ public class DefaultDoraemonAppInfoHelper
     //   79: iconst_1
     //   80: ldc 222
     //   82: invokestatic 225	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   85: invokestatic 20	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   85: invokestatic 25	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   88: ldc 196
     //   90: invokestatic 227	com/tencent/mobileqq/Doraemon/impl/DefaultDoraemonAppInfoHelper:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   93: astore_3
@@ -371,7 +371,7 @@ public class DefaultDoraemonAppInfoHelper
     //   116: invokestatic 181	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   119: aload_0
     //   120: iconst_1
-    //   121: putfield 35	com/tencent/mobileqq/Doraemon/impl/DefaultDoraemonAppInfoHelper:jdField_a_of_type_Boolean	Z
+    //   121: putfield 37	com/tencent/mobileqq/Doraemon/impl/DefaultDoraemonAppInfoHelper:jdField_a_of_type_Boolean	Z
     //   124: goto -113 -> 11
     //   127: astore_3
     //   128: aload_0
@@ -400,17 +400,17 @@ public class DefaultDoraemonAppInfoHelper
   
   public void a(String paramString1, int paramInt, String paramString2, DefaultDoraemonAppInfoHelper.OnGetAppInfo paramOnGetAppInfo)
   {
-    rbv localrbv = (rbv)this.jdField_b_of_type_JavaUtilMap.get(paramString1);
-    if ((localrbv != null) && (localrbv.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis()))
+    rem localrem = (rem)this.jdField_b_of_type_JavaUtilMap.get(paramString1);
+    if ((localrem != null) && (localrem.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis()))
     {
-      ThreadManager.getUIHandler().post(new rbs(this, paramOnGetAppInfo, localrbv));
+      ThreadManager.getUIHandler().post(new rej(this, paramOnGetAppInfo, localrem));
       return;
     }
-    localrbv = new rbv(null);
-    localrbv.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo = new AppInfo();
-    localrbv.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_Int = paramInt;
-    localrbv.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaLangString = paramString2;
-    Stream.of(localrbv).map(new ThreadOffFunction(16)).map(new rbu(this)).map(new rbw(null)).map(new rby(null)).map(new UIThreadOffFunction(null)).subscribe(new rbt(this, paramString1, paramOnGetAppInfo));
+    localrem = new rem(null);
+    localrem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo = new AppInfo();
+    localrem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_Int = paramInt;
+    localrem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaLangString = paramString2;
+    Stream.of(localrem).map(new ThreadOffFunction(16)).map(new rel(this)).map(new ren(null)).map(new rep(null)).map(new UIThreadOffFunction(null)).subscribe(new rek(this, paramString1, paramOnGetAppInfo));
   }
   
   public void a(List paramList, Set paramSet)
@@ -455,7 +455,7 @@ public class DefaultDoraemonAppInfoHelper
       if (l > this.jdField_a_of_type_Long)
       {
         this.jdField_a_of_type_Long = (l + 300000L);
-        ThreadManager.post(new rbr(this), 5, null, false);
+        ThreadManager.post(new rei(this), 5, null, false);
         return;
       }
       return;
@@ -464,7 +464,7 @@ public class DefaultDoraemonAppInfoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper
  * JD-Core Version:    0.7.0.1
  */

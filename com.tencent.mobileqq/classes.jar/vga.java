@@ -1,17 +1,73 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.CircleBubbleImageView;
+import java.net.URL;
 
 public class vga
-  extends AbstractChatItemBuilder.ViewHolder
+  extends CircleBubbleImageView
 {
-  public ViewGroup a;
-  public AnyScaleTypeImageView a;
-  public TextView b;
+  URLDrawable a;
+  public URLDrawable b;
   
-  public vga(ThumbItemBuilder paramThumbItemBuilder) {}
+  public vga(Context paramContext)
+  {
+    super(paramContext);
+    a(true);
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (this.a != null) {
+      this.a.setURLDrawableListener(null);
+    }
+    paramURLDrawable.setURLDrawableListener(this);
+    this.a = paramURLDrawable;
+    paramURLDrawable.startDownload();
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    setImageDrawable(paramURLDrawable);
+    if (this.b != paramURLDrawable) {
+      this.b = paramURLDrawable;
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (paramURLDrawable == this.a)
+    {
+      b(paramURLDrawable);
+      return;
+    }
+    super.onLoadFialed(paramURLDrawable, paramThrowable);
+  }
+  
+  @TargetApi(11)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable == this.a) {
+      b(paramURLDrawable);
+    }
+    super.onLoadSuccessed(paramURLDrawable);
+  }
+  
+  public void setImageDrawable(Drawable paramDrawable)
+  {
+    super.setImageDrawable(paramDrawable);
+    if (this.a != null)
+    {
+      this.a.setURLDrawableListener(null);
+      this.a = null;
+    }
+  }
 }
 
 

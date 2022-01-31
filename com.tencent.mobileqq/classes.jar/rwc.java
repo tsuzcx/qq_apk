@@ -1,33 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.MessageObserver;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.DataReport;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 
-public class rwc
-  extends MessageObserver
+public final class rwc
+  implements DialogInterface.OnClickListener
 {
-  public rwc(ChatHistory paramChatHistory) {}
+  public rwc(ChatActivityUtils.StartVideoListener paramStartVideoListener, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.r();
-    if (!paramBoolean)
-    {
-      Message localMessage = this.a.a.obtainMessage(5);
-      this.a.a(localMessage);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
     }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      localMessage = this.a.a.obtainMessage(3);
-      this.a.a(localMessage);
-      return;
-    }
-    Message localMessage = this.a.a.obtainMessage(2);
-    this.a.a(localMessage);
+    paramDialogInterface.dismiss();
+    DataReport.b(this.jdField_a_of_type_Boolean);
   }
 }
 

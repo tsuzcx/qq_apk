@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
-import java.util.LinkedHashMap;
+import java.util.List;
 
-class acic
-  implements Runnable
+public class acic
 {
-  acic(acib paramacib, LinkedHashMap paramLinkedHashMap) {}
+  public long a;
+  public List a;
+  public boolean a;
   
-  public void run()
+  public String toString()
   {
-    this.jdField_a_of_type_Acib.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.jdField_a_of_type_Acib.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
-    this.jdField_a_of_type_Acib.a.i();
-    this.jdField_a_of_type_Acib.a.setSelect(0);
+    return "CacheData{mList.size()=" + this.jdField_a_of_type_JavaUtilList.size() + ", mLoadOver=" + this.jdField_a_of_type_Boolean + ", mUpdateTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acic
  * JD-Core Version:    0.7.0.1
  */

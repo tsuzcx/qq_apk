@@ -1,21 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-public class tlu
-  implements DialogInterface.OnKeyListener
+class tlu
+  implements Runnable
 {
-  public tlu(RegisterActivity paramRegisterActivity) {}
+  tlu(tlt paramtlt) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
-    {
-      RegisterActivity.b(this.a);
-      return true;
-    }
-    return false;
+    this.a.a.p();
   }
 }
 

@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.UITools;
+import com.tencent.av.opengl.effects.FilterProcessRender;
 
-class jjr
-  implements DialogInterface.OnClickListener
+public class jjr
 {
-  jjr(jjq paramjjq) {}
+  public int a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public jjr(FilterProcessRender paramFilterProcessRender, int paramInt1, int paramInt2)
   {
-    UITools.a(this.a.a);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

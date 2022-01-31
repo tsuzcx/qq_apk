@@ -25,7 +25,7 @@ import com.tencent.av.ui.redbag.RedBagReport;
 import com.tencent.av.utils.TintStateDrawable;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.List;
-import jmc;
+import jln;
 
 public class RedPacketGameScore
   implements View.OnClickListener
@@ -78,7 +78,7 @@ public class RedPacketGameScore
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_ArrayOfFloat = new float[8];
-    this.jdField_a_of_type_JavaLangRunnable = new jmc(this);
+    this.jdField_a_of_type_JavaLangRunnable = new jln(this);
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView = paramRedPacketGameView;
     int n = 0;
     while (n < this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameParticleStatic.length)
@@ -105,13 +105,13 @@ public class RedPacketGameScore
     this.jdField_c_of_type_ComTencentAvRedpacketUiRedPacketGameParticleStatic.a(255);
     paramRedPacketGameView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.getContext();
     Object localObject = new View(paramRedPacketGameView);
-    ((View)localObject).setId(2131362518);
+    ((View)localObject).setId(2131362539);
     ((View)localObject).setOnClickListener(this);
     ((View)localObject).setVisibility(8);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.addView((View)localObject, localLayoutParams);
     paramRedPacketGameView = new View(paramRedPacketGameView);
-    paramRedPacketGameView.setId(2131362519);
+    paramRedPacketGameView.setId(2131362540);
     paramRedPacketGameView.setOnClickListener(this);
     paramRedPacketGameView.setVisibility(8);
     localObject = new RelativeLayout.LayoutParams(-2, -2);
@@ -125,12 +125,12 @@ public class RedPacketGameScore
   
   private void e()
   {
-    View localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362518);
+    View localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362539);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
     localLayoutParams.topMargin = ((int)(this.j + this.g + this.jdField_b_of_type_Float));
     localLayoutParams.leftMargin = ((int)(this.k + this.jdField_a_of_type_Float));
     localView.setLayoutParams(localLayoutParams);
-    localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362519);
+    localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362540);
     localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
     localLayoutParams.topMargin = ((int)(this.l + this.g + this.jdField_b_of_type_Float));
     localLayoutParams.leftMargin = ((int)(this.m + this.jdField_a_of_type_Float));
@@ -251,7 +251,7 @@ public class RedPacketGameScore
         }
       }
       else {
-        localView = ((Activity)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.getContext()).findViewById(2131366228);
+        localView = ((Activity)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.getContext()).findViewById(2131366255);
       }
       try
       {
@@ -282,7 +282,7 @@ public class RedPacketGameScore
           this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleStatic.a(n);
           this.jdField_b_of_type_ComTencentAvRedpacketUiRedPacketGameParticleStatic.a(n);
           this.jdField_c_of_type_ComTencentAvRedpacketUiRedPacketGameParticleStatic.a(n);
-          localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362518);
+          localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362539);
           if (Float.compare(f2, localView.getAlpha()) != 0) {
             localView.setAlpha(f2);
           }
@@ -302,7 +302,7 @@ public class RedPacketGameScore
           if (bool1 != bool3) {
             localView.setClickable(bool1);
           }
-          localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362519);
+          localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362540);
           i1 = (int)((1.0F - f2) * 10000.0F);
           if (i1 >= 0) {
             break label605;
@@ -420,7 +420,7 @@ public class RedPacketGameScore
   public void a(boolean paramBoolean, AVRedPacketManager paramAVRedPacketManager)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
-    View localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362518);
+    View localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362539);
     if (!paramBoolean)
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap = paramAVRedPacketManager.a("qav_redpacket_close.png");
@@ -428,11 +428,11 @@ public class RedPacketGameScore
       this.jdField_c_of_type_AndroidGraphicsBitmap = paramAVRedPacketManager.a("qav_redpacket_close_pressed.png");
       paramAVRedPacketManager = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.getResources();
       if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        localView.setBackgroundDrawable(TintStateDrawable.a(paramAVRedPacketManager, this.jdField_a_of_type_AndroidGraphicsBitmap, 2131494065));
+        localView.setBackgroundDrawable(TintStateDrawable.a(paramAVRedPacketManager, this.jdField_a_of_type_AndroidGraphicsBitmap, 2131494071));
       }
       if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (this.jdField_c_of_type_AndroidGraphicsBitmap != null))
       {
-        localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362519);
+        localView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362540);
         StateListDrawable localStateListDrawable = new StateListDrawable();
         BitmapDrawable localBitmapDrawable = new BitmapDrawable(paramAVRedPacketManager, this.jdField_c_of_type_AndroidGraphicsBitmap);
         localStateListDrawable.addState(new int[] { 16842919 }, localBitmapDrawable);
@@ -451,7 +451,7 @@ public class RedPacketGameScore
     this.jdField_c_of_type_ComTencentAvRedpacketUiRedPacketGameParticleStatic.b();
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.removeAllViews();
-    View localView = ((Activity)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.getContext()).findViewById(2131366228);
+    View localView = ((Activity)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.getContext()).findViewById(2131366255);
     localView.setX(0.0F);
     localView.setY(0.0F);
     this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite = null;
@@ -491,10 +491,10 @@ public class RedPacketGameScore
   
   public void c()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362518).getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362539).getLayoutParams();
     localLayoutParams.width = (this.h * 52 / 750);
     localLayoutParams.height = (this.h * 52 / 750);
-    localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362519).getLayoutParams();
+    localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.findViewById(2131362540).getLayoutParams();
     localLayoutParams.width = (this.h * 252 / 750);
     localLayoutParams.height = (this.h * 72 / 750);
     e();
@@ -524,7 +524,7 @@ public class RedPacketGameScore
     {
     default: 
       return;
-    case 2131362518: 
+    case 2131362539: 
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);

@@ -1,18 +1,28 @@
-import com.tencent.qidian.QidianManager;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import java.util.HashMap;
 
-public class akvx
+class akvx
   implements Runnable
 {
-  public akvx(QidianManager paramQidianManager) {}
+  akvx(akvw paramakvw) {}
   
   public void run()
   {
-    QidianManager.a(this.a);
+    if (!this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume()) {}
+    View localView;
+    do
+    {
+      return;
+      localView = (View)this.a.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_troop_mem_recent_said");
+    } while ((!this.a.a.e) || (localView == null));
+    ProfileCardMoreInfoView.a(localView, this.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akvx
  * JD-Core Version:    0.7.0.1
  */

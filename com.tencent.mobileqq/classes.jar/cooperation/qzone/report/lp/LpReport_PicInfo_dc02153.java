@@ -146,18 +146,18 @@ public class LpReport_PicInfo_dc02153
   
   private void recheck()
   {
-    Object localObject3 = null;
-    Cursor localCursor2 = null;
-    localCursor1 = localCursor2;
-    localObject1 = localObject3;
+    Cursor localCursor = null;
+    Object localObject4 = null;
+    localObject2 = localObject4;
+    localObject1 = localCursor;
     label44:
     do
     {
       try
       {
         str = this.photo_id;
-        localCursor1 = localCursor2;
-        localObject1 = localObject3;
+        localObject2 = localObject4;
+        localObject1 = localCursor;
         localBaseApplication = BaseApplication.getContext();
         if (localBaseApplication != null) {
           break label44;
@@ -168,14 +168,10 @@ public class LpReport_PicInfo_dc02153
       }
       catch (Exception localException)
       {
-        do
-        {
-          String str;
-          BaseApplication localBaseApplication;
-          localObject1 = localCursor1;
-          QLog.e(TAG, 4, "recheck error", localException);
-        } while (localCursor1 == null);
-        localCursor1.close();
+        String str;
+        BaseApplication localBaseApplication;
+        localObject1 = localObject2;
+        QLog.e(TAG, 4, "recheck error", localException);
         return;
       }
       finally
@@ -186,30 +182,30 @@ public class LpReport_PicInfo_dc02153
         ((Cursor)localObject1).close();
       }
       return;
-      localCursor1 = localCursor2;
-      localObject1 = localObject3;
-      localCursor2 = localBaseApplication.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "datetaken", "latitude", "longitude", "date_added", "date_modified", "_size", "width", "height" }, "_id= ?", new String[] { str }, "datetaken desc limit 1");
-      localCursor1 = localCursor2;
-      localObject1 = localCursor2;
-      if (localCursor2.getCount() == 1)
+      localObject2 = localObject4;
+      localObject1 = localCursor;
+      localCursor = localBaseApplication.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "datetaken", "latitude", "longitude", "date_added", "date_modified", "_size", "width", "height" }, "_id= ?", new String[] { str }, "datetaken desc limit 1");
+      localObject2 = localCursor;
+      localObject1 = localCursor;
+      if (localCursor.getCount() == 1)
       {
-        localCursor1 = localCursor2;
-        localObject1 = localCursor2;
-        localCursor2.moveToNext();
-        localCursor1 = localCursor2;
-        localObject1 = localCursor2;
-        reset(localCursor2.getColumnIndexOrThrow("datetaken"), localCursor2.getColumnIndexOrThrow("latitude"), localCursor2.getColumnIndexOrThrow("longitude"), localCursor2.getColumnIndexOrThrow("date_added"), localCursor2.getColumnIndexOrThrow("date_modified"), localCursor2.getColumnIndexOrThrow("_size"), localCursor2.getColumnIndexOrThrow("width"), localCursor2.getColumnIndexOrThrow("height"), localCursor2);
+        localObject2 = localCursor;
+        localObject1 = localCursor;
+        localCursor.moveToNext();
+        localObject2 = localCursor;
+        localObject1 = localCursor;
+        reset(localCursor.getColumnIndexOrThrow("datetaken"), localCursor.getColumnIndexOrThrow("latitude"), localCursor.getColumnIndexOrThrow("longitude"), localCursor.getColumnIndexOrThrow("date_added"), localCursor.getColumnIndexOrThrow("date_modified"), localCursor.getColumnIndexOrThrow("_size"), localCursor.getColumnIndexOrThrow("width"), localCursor.getColumnIndexOrThrow("height"), localCursor);
       }
-      localCursor1 = localCursor2;
-      localObject1 = localCursor2;
+      localObject2 = localCursor;
+      localObject1 = localCursor;
       if (MachinelearningReport.getInstance().needReportExifCameraInfo())
       {
-        localCursor1 = localCursor2;
-        localObject1 = localCursor2;
+        localObject2 = localCursor;
+        localObject1 = localCursor;
         handleExifCameraInfo();
       }
-    } while (localCursor2 == null);
-    localCursor2.close();
+    } while (localCursor == null);
+    localCursor.close();
   }
   
   private void reset(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, Cursor paramCursor)

@@ -5,16 +5,16 @@ import com.tencent.ark.ark.RuntimeClassCallbackWrapper;
 import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.WeakReference;
-import usp;
-import uxh;
-import vbx;
+import uvr;
+import vaj;
+import vez;
 
 public class ArkDataRequestObj
-  implements ark.RuntimeClassCallbackWrapper, uxh
+  implements ark.RuntimeClassCallbackWrapper, vaj
 {
   private ark.VariantWrapper jdField_a_of_type_ComTencentArkArk$VariantWrapper;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private usp jdField_a_of_type_Usp;
+  private uvr jdField_a_of_type_Uvr;
   
   public ArkDataRequestObj(QQAppInterface paramQQAppInterface)
   {
@@ -67,19 +67,19 @@ public class ArkDataRequestObj
         } while (TextUtils.isEmpty(str));
         localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       } while ((localQQAppInterface == null) || (!str.equalsIgnoreCase("sso")));
-      this.jdField_a_of_type_Usp = new vbx(localQQAppInterface);
-    } while (!this.jdField_a_of_type_Usp.a(paramArrayOfVariantWrapper));
+      this.jdField_a_of_type_Uvr = new vez(localQQAppInterface);
+    } while (!this.jdField_a_of_type_Uvr.a(paramArrayOfVariantWrapper));
     paramVariantWrapper.SetBool(true);
     return true;
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Usp != null)
+    if (this.jdField_a_of_type_Uvr != null)
     {
-      this.jdField_a_of_type_Usp.a(null);
-      this.jdField_a_of_type_Usp.a();
-      this.jdField_a_of_type_Usp = null;
+      this.jdField_a_of_type_Uvr.a(null);
+      this.jdField_a_of_type_Uvr.a();
+      this.jdField_a_of_type_Uvr = null;
     }
   }
   
@@ -122,7 +122,7 @@ public class ArkDataRequestObj
   
   private boolean e(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if ((this.jdField_a_of_type_Usp == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
+    if ((this.jdField_a_of_type_Uvr == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
     do
     {
       paramVariantWrapper.SetBool(false);
@@ -134,8 +134,8 @@ public class ArkDataRequestObj
     }
     for (;;)
     {
-      this.jdField_a_of_type_Usp.a(this);
-      if (!this.jdField_a_of_type_Usp.b(paramArrayOfVariantWrapper)) {
+      this.jdField_a_of_type_Uvr.a(this);
+      if (!this.jdField_a_of_type_Uvr.b(paramArrayOfVariantWrapper)) {
         break;
       }
       paramVariantWrapper.SetBool(true);
@@ -157,7 +157,7 @@ public class ArkDataRequestObj
   private boolean f(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
     int j = 0;
-    if ((this.jdField_a_of_type_Usp == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2))
+    if ((this.jdField_a_of_type_Uvr == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2))
     {
       paramVariantWrapper.SetBool(false);
       return true;
@@ -174,7 +174,7 @@ public class ArkDataRequestObj
       }
       for (;;)
       {
-        this.jdField_a_of_type_Usp.a(i);
+        this.jdField_a_of_type_Uvr.a(i);
         paramVariantWrapper.SetBool(true);
         return true;
         if (paramArrayOfVariantWrapper.GetType() == 3)
@@ -196,12 +196,12 @@ public class ArkDataRequestObj
   private boolean g(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
     boolean bool = false;
-    if ((this.jdField_a_of_type_Usp == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1))
+    if ((this.jdField_a_of_type_Uvr == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1))
     {
       paramVariantWrapper.SetBool(false);
       return true;
     }
-    if (this.jdField_a_of_type_Usp.a() == 0) {
+    if (this.jdField_a_of_type_Uvr.a() == 0) {
       bool = true;
     }
     paramVariantWrapper.SetBool(bool);
@@ -210,7 +210,7 @@ public class ArkDataRequestObj
   
   private boolean h(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if ((this.jdField_a_of_type_Usp == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
+    if ((this.jdField_a_of_type_Uvr == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
     String str;
     do
     {
@@ -224,8 +224,8 @@ public class ArkDataRequestObj
             {
               paramVariantWrapper.SetNull();
               return true;
-            } while (this.jdField_a_of_type_Usp.a() != 0);
-            str = this.jdField_a_of_type_Usp.a();
+            } while (this.jdField_a_of_type_Uvr.a() != 0);
+            str = this.jdField_a_of_type_Uvr.a();
           } while (str == null);
           paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
         } while (TextUtils.isEmpty(paramArrayOfVariantWrapper));
@@ -287,7 +287,7 @@ public class ArkDataRequestObj
   
   public void a()
   {
-    if (this.jdField_a_of_type_Usp == null) {}
+    if (this.jdField_a_of_type_Uvr == null) {}
     while ((this.jdField_a_of_type_ComTencentArkArk$VariantWrapper == null) || (!this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.IsFunction())) {
       return;
     }

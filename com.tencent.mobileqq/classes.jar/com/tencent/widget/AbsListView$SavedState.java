@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alkl;
+import amab;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +11,7 @@ import com.tencent.util.LongSparseArray;
 public class AbsListView$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new alkl();
+  public static final Parcelable.Creator CREATOR = new amab();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray;

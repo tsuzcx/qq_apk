@@ -1,22 +1,18 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class ncx
   implements Runnable
 {
-  public ncx(MsgTabNodeListLoader paramMsgTabNodeListLoader, ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
+  public ncx(StoryManager paramStoryManager, String paramString) {}
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
-    while (localIterator.hasNext()) {
-      ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean, this.b, this.c);
-    }
-    if ((QLog.isDevelopLevel()) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.isEmpty())) {
-      QLog.d("Q.qqstory.msgTab.nodeList", 2, "mListeners is empty!");
+    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString);
+    if (localStoryVideoItem != null)
+    {
+      localStoryVideoItem.mHadRead = 1;
+      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString, localStoryVideoItem);
     }
   }
 }

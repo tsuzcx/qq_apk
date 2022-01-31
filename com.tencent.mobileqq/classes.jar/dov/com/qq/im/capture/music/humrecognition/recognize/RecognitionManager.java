@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.music.humrecognition.recognize;
 
-import amwk;
 import android.text.TextUtils;
+import anmp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.FlowMusic;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
@@ -191,7 +191,7 @@ public class RecognitionManager
     } while (!this.jdField_a_of_type_JavaLangClass.equals(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionHumObserver.getClass()));
     d();
     return;
-    ((QIMMusicConfigManager)localObject).a((String)localList.get(0), new amwk(this, paramNetResp));
+    ((QIMMusicConfigManager)localObject).a((String)localList.get(0), new anmp(this, paramNetResp));
   }
   
   public void a()

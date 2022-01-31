@@ -1,58 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.ContainerDrawable;
+import dov.com.qq.im.capture.poi.FacePoiUI;
 
-public class annn
-  implements Animator.AnimatorListener
+class annn
+  implements Runnable
 {
-  public annn(ContainerDrawable paramContainerDrawable) {}
+  annn(annl paramannl) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    if (!ContainerDrawable.a(this.a)) {}
-    do
-    {
-      return;
-      if (ContainerDrawable.b(this.a)) {
-        break;
-      }
-      ContainerDrawable.a(this.a, false);
-    } while (ContainerDrawable.b(this.a) != 2);
-    ContainerDrawable.a(this.a, 0);
-    return;
-    ContainerDrawable.a(this.a, false);
-    ContainerDrawable.a(this.a, 0);
+    FacePoiUI.a(this.a.a, 1);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!ContainerDrawable.a(this.a)) {
-      return;
-    }
-    if (!ContainerDrawable.b(this.a))
-    {
-      ContainerDrawable.a(this.a, false);
-      if (ContainerDrawable.b(this.a) == 1)
-      {
-        ContainerDrawable.a(this.a, 3);
-        return;
-      }
-      ContainerDrawable.a(this.a, 0);
-      return;
-    }
-    if (ContainerDrawable.b(this.a) == 1)
-    {
-      ContainerDrawable.a(this.a, 2);
-      ContainerDrawable.a(this.a, ContainerDrawable.b(this.a), 1000);
-      return;
-    }
-    ContainerDrawable.a(this.a, false);
-    ContainerDrawable.a(this.a, 0);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

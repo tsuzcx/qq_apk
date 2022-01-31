@@ -1,13 +1,20 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.qphone.base.util.QLog;
 
 public class kuw
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public kuw(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, int paramInt) {}
+  public kuw(AdControlView paramAdControlView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager.a(this.jdField_a_of_type_Int);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    QLog.d("Ron", 2, "alpha:" + f);
+    this.a.a.setAlpha(f);
+    this.a.invalidate();
   }
 }
 

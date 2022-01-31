@@ -1,14 +1,17 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class tdn
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public tdn(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public tdn(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c(this.a.a.getLeft(), this.a.a.getTop() + this.a.a.getMeasuredHeight() - 20);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.a.finish();
   }
 }
 

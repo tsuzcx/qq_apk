@@ -1,28 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.av.AVLog;
+import android.os.Handler;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.utils.QAVNotification;
+import com.tencent.av.utils.UITools;
 
 public class jdk
-  implements MediaPlayer.OnCompletionListener
+  implements Runnable
 {
   public jdk(VideoController paramVideoController) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    AVLog.d(VideoController.a, "onCompletion onClose");
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
-    }
-    if (!this.a.a().h())
-    {
-      AVLog.d(VideoController.a, "onCompletion onClose is not Closing2");
+    if (this.a.f) {
       return;
     }
-    this.a.a(this.a.a().c, 0);
-    this.a.b(217);
-    this.a.c(this.a.a().c, this.a.a().z);
+    String str = UITools.a(this.a.a());
+    QAVNotification.a(this.a.a).a(this.a.a().b, this.a.a().d, str);
+    this.a.a.a().postDelayed(this, 1000L);
   }
 }
 

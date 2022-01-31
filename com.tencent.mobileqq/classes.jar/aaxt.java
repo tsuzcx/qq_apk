@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class aaxt
-  implements Parcelable.Creator
+public class aaxt
+  extends ClickableSpan
 {
-  public ARMapConfig a(Parcel paramParcel)
+  private final View.OnClickListener a;
+  
+  public aaxt(View.OnClickListener paramOnClickListener)
   {
-    return new ARMapConfig(paramParcel);
+    this.a = paramOnClickListener;
   }
   
-  public ARMapConfig[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ARMapConfig[paramInt];
+    this.a.onClick(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(1226741);
+    paramTextPaint.setAlpha(255);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

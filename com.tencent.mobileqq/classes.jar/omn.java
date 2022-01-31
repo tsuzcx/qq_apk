@@ -1,23 +1,27 @@
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo2.GetFirstMediaThumbnailFunction;
+import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public final class omn
-  implements Runnable
+public class omn
+  extends SimpleJob
 {
-  public omn(Context paramContext) {}
+  public omn(StoryLocalPublishPart paramStoryLocalPublishPart, View paramView) {}
   
-  public void run()
+  protected Bitmap a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230);
-    localQQCustomDialog.setMessage("存储空间不足，请清理缓存后重试");
-    localQQCustomDialog.setNegativeButton("取消", new omo(this));
-    localQQCustomDialog.setPositiveButton("清理缓存", new omp(this));
-    localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    localQQCustomDialog.show();
+    return new GetFirstMediaThumbnailFunction(this.jdField_a_of_type_AndroidViewView.getContext()).a();
+  }
+  
+  protected void a(@Nullable Bitmap paramBitmap)
+  {
+    new Handler(Looper.getMainLooper()).post(new omo(this, paramBitmap));
   }
 }
 

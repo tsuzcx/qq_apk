@@ -1,34 +1,39 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class adnr
-  extends BroadcastReceiver
+class adnr
+  implements DialogInterface.OnClickListener
 {
-  public adnr(UiApiPlugin paramUiApiPlugin) {}
+  adnr(adnq paramadnq) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
-    {
-      Iterator localIterator = UiApiPlugin.a.iterator();
-      while (localIterator.hasNext())
+    paramDialogInterface = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
+    if (paramDialogInterface.getInt("state", 0) == 1) {
+      try
       {
-        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
-        if (localUiApiPlugin != null) {
-          localUiApiPlugin.b(paramContext, paramIntent);
-        }
+        UniformDownloadUtil.a(paramDialogInterface.getString("filePath", ""));
+        return;
+      }
+      catch (Exception paramDialogInterface)
+      {
+        QLog.e("NearbyHybridFragment", 1, paramDialogInterface, new Object[0]);
+        this.a.a.f();
+        return;
       }
     }
+    this.a.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnr
  * JD-Core Version:    0.7.0.1
  */

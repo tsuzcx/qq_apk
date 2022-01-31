@@ -1,14 +1,11 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.data.Card;
-
 class rgy
   implements Runnable
 {
-  rgy(rgx paramrgx, Card paramCard) {}
+  rgy(rgx paramrgx) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Rgx.a.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    this.a.a.b = true;
   }
 }
 

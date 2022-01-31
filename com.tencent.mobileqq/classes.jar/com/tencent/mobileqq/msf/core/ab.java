@@ -14,20 +14,20 @@ final class ab
     //   11: dup
     //   12: getstatic 34	com/tencent/mobileqq/msf/core/x:ab	Ljava/lang/String;
     //   15: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
-    //   18: astore_2
+    //   18: astore_3
     //   19: new 30	java/io/File
     //   22: dup
     //   23: getstatic 40	com/tencent/mobileqq/msf/core/x:ae	Ljava/lang/String;
     //   26: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
-    //   29: astore_3
-    //   30: aload_2
+    //   29: astore_2
+    //   30: aload_3
     //   31: invokestatic 46	com/tencent/mobileqq/msf/sdk/utils/SignUtils:readFile	(Ljava/io/File;)Ljava/lang/String;
     //   34: astore 4
     //   36: ldc 48
     //   38: astore_1
     //   39: getstatic 52	com/tencent/mobileqq/msf/core/x:ai	Z
     //   42: ifne +8 -> 50
-    //   45: aload_3
+    //   45: aload_2
     //   46: invokestatic 46	com/tencent/mobileqq/msf/sdk/utils/SignUtils:readFile	(Ljava/io/File;)Ljava/lang/String;
     //   49: astore_1
     //   50: getstatic 52	com/tencent/mobileqq/msf/core/x:ai	Z
@@ -210,16 +210,16 @@ final class ab
     //   419: invokestatic 196	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   422: iconst_0
     //   423: putstatic 199	com/tencent/mobileqq/msf/core/x:ag	Z
-    //   426: aload_2
+    //   426: aload_3
     //   427: invokevirtual 203	java/io/File:exists	()Z
     //   430: ifeq +8 -> 438
-    //   433: aload_2
+    //   433: aload_3
     //   434: invokevirtual 206	java/io/File:delete	()Z
     //   437: pop
-    //   438: aload_3
+    //   438: aload_2
     //   439: invokevirtual 203	java/io/File:exists	()Z
     //   442: ifeq +8 -> 450
-    //   445: aload_3
+    //   445: aload_2
     //   446: invokevirtual 206	java/io/File:delete	()Z
     //   449: pop
     //   450: iconst_0
@@ -432,13 +432,13 @@ final class ab
     //   860	1	1	str2	java.lang.String
     //   864	1	1	localIOException4	java.io.IOException
     //   900	1	1	str3	java.lang.String
-    //   18	416	2	localObject2	Object
+    //   29	417	2	localObject2	Object
     //   534	21	2	localException1	java.lang.Exception
     //   644	89	2	localObject3	Object
     //   904	1	2	localObject4	Object
     //   908	1	2	localException2	java.lang.Exception
     //   913	1	2	localObject5	Object
-    //   29	540	3	localObject6	Object
+    //   18	551	3	localObject6	Object
     //   34	370	4	localObject7	Object
     //   6	287	5	str4	java.lang.String
     //   89	24	6	arrayOfByte	byte[]

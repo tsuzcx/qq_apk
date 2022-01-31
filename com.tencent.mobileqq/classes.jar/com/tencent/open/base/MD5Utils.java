@@ -1,7 +1,7 @@
 package com.tencent.open.base;
 
-import akpq;
-import akpr;
+import alfg;
+import alfh;
 import android.text.TextUtils;
 import com.tencent.mobileqq.utils.HexUtil;
 import java.io.ByteArrayInputStream;
@@ -30,8 +30,8 @@ public class MD5Utils
   
   static
   {
-    jdField_a_of_type_JavaUtilComparator = new akpr();
-    jdField_b_of_type_JavaUtilComparator = new akpq();
+    jdField_a_of_type_JavaUtilComparator = new alfh();
+    jdField_b_of_type_JavaUtilComparator = new alfg();
     jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   

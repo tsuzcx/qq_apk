@@ -1,46 +1,25 @@
-import android.content.Context;
-import android.text.Selection;
-import android.text.Spannable;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout.DispatchKeyEventListener;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
 
 public class akfc
-  implements View.OnLongClickListener
+  implements MyLinearLayout.DispatchKeyEventListener
 {
-  public akfc(ContainerView.SelectableTextView paramSelectableTextView) {}
+  public akfc(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
   
-  public boolean onLongClick(View paramView)
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if (this.a.getSelectionEnd() - this.a.getSelectionStart() > 0)
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
     {
-      this.a.onTextContextMenuItem(16908321);
-      Toast.makeText(this.a.getContext(), "已经复制到剪贴板", 0).show();
-    }
-    for (;;)
-    {
+      this.a.a();
       return true;
-      try
-      {
-        Selection.setSelection((Spannable)this.a.getText(), Math.max(ContainerView.SelectableTextView.a(this.a) - 50, 0), Math.min(ContainerView.SelectableTextView.a(this.a) + 50, this.a.getText().length()));
-        this.a.onTextContextMenuItem(16908328);
-        ((InputMethodManager)this.a.getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
-      }
-      catch (Exception paramView)
-      {
-        for (;;)
-        {
-          Selection.setSelection((Spannable)this.a.getText(), ContainerView.SelectableTextView.a(this.a), ContainerView.SelectableTextView.a(this.a));
-        }
-      }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfc
  * JD-Core Version:    0.7.0.1
  */

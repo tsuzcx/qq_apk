@@ -3,12 +3,12 @@ package com.tencent.component.network.downloader;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import phn;
+import pjh;
 
 public final class DownloadResult$Content
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new phn();
+  public static final Parcelable.Creator CREATOR = new pjh();
   public String clientip;
   public Object content;
   public String encoding;

@@ -26,11 +26,11 @@ import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import oda;
-import odb;
-import odc;
-import odd;
-import ode;
+import oes;
+import oet;
+import oeu;
+import oev;
+import oew;
 
 @TargetApi(13)
 public class EditVideoFragment
@@ -44,7 +44,7 @@ public class EditVideoFragment
   public ElasticImageView a;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private odd jdField_a_of_type_Odd;
+  private oev jdField_a_of_type_Oev;
   private boolean jdField_a_of_type_Boolean = true;
   private ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
   private RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
@@ -53,8 +53,8 @@ public class EditVideoFragment
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131371594, 2131371597, 2131371600, 2131371603, 2131371606, 2131371609 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2131371593, 2131371596, 2131371599, 2131371602, 2131371605, 2131371608 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131371759, 2131371762, 2131371765, 2131371768, 2131371771, 2131371774 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2131371758, 2131371761, 2131371764, 2131371767, 2131371770, 2131371773 };
   }
   
   public EditVideoFragment(@NonNull EditVideoPartManager paramEditVideoPartManager)
@@ -88,7 +88,7 @@ public class EditVideoFragment
       this.jdField_a_of_type_JavaUtilList.clear();
       if (i == 1)
       {
-        this.jdField_a_of_type_JavaUtilList.add(new ode((VideoFragmentInfo)paramList.get(0), null, null));
+        this.jdField_a_of_type_JavaUtilList.add(new oew((VideoFragmentInfo)paramList.get(0), null, null));
         return;
       }
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.d()) {}
@@ -126,7 +126,7 @@ public class EditVideoFragment
       if (localObject != null) {}
       for (localObject = localRoundedTransformation.a((Bitmap)localObject);; localObject = null)
       {
-        this.jdField_a_of_type_JavaUtilList.add(new ode(localVideoFragmentInfo, (Bitmap)localObject, null));
+        this.jdField_a_of_type_JavaUtilList.add(new oew(localVideoFragmentInfo, (Bitmap)localObject, null));
         break;
       }
     }
@@ -140,8 +140,8 @@ public class EditVideoFragment
       SLog.c("Q.qqstory.record.EditVideoFragment", "updateValidFragmentThumb error. fragmentInfos=null.");
       return;
     }
-    if (this.jdField_a_of_type_Odd == null) {
-      this.jdField_a_of_type_Odd = new odd(this);
+    if (this.jdField_a_of_type_Oev == null) {
+      this.jdField_a_of_type_Oev = new oev(this);
     }
     int i;
     if (paramBoolean)
@@ -168,9 +168,9 @@ public class EditVideoFragment
         if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
           break;
         }
-      } while (((ode)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_c_of_type_Int != this.jdField_b_of_type_Int);
+      } while (((oew)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_c_of_type_Int != this.jdField_b_of_type_Int);
       SLog.b("Q.qqstory.record.EditVideoFragment", "update the %d fragment's thumb.", Integer.valueOf(j));
-      this.jdField_a_of_type_Odd.a((VideoFragmentInfo)paramList.get(i), (ode)this.jdField_a_of_type_JavaUtilList.get(j));
+      this.jdField_a_of_type_Oev.a((VideoFragmentInfo)paramList.get(i), (oew)this.jdField_a_of_type_JavaUtilList.get(j));
       return;
       i = 0;
       while (i < paramList.size())
@@ -181,13 +181,13 @@ public class EditVideoFragment
           if ((paramList.get(i) == null) || (this.jdField_a_of_type_JavaUtilList.get(j) == null)) {
             SLog.b("Q.qqstory.record.EditVideoFragment", "updateValidFragmentThumb error. fragmentInfos.get(%d) == null or mValidFragmentInfo.get(%d) == null.", Integer.valueOf(i), Integer.valueOf(j));
           }
-          while (((VideoFragmentInfo)paramList.get(i)).jdField_c_of_type_Int != ((ode)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_c_of_type_Int)
+          while (((VideoFragmentInfo)paramList.get(i)).jdField_c_of_type_Int != ((oew)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_c_of_type_Int)
           {
             j += 1;
             break;
           }
           SLog.b("Q.qqstory.record.EditVideoFragment", "updateValidFragmentThumb. update mValidFragmentInfo.get(%d)", Integer.valueOf(j));
-          this.jdField_a_of_type_Odd.a((VideoFragmentInfo)paramList.get(i), (ode)this.jdField_a_of_type_JavaUtilList.get(j));
+          this.jdField_a_of_type_Oev.a((VideoFragmentInfo)paramList.get(i), (oew)this.jdField_a_of_type_JavaUtilList.get(j));
         }
         i += 1;
       }
@@ -214,11 +214,11 @@ public class EditVideoFragment
     SLog.b("Q.qqstory.record.EditVideoFragment", "initViewStub. fragmentCount = %d.", Integer.valueOf(i));
     if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null)
     {
-      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364392));
+      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364416));
       this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131364346));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView = ((ElasticImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131364347));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131364370));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView = ((ElasticImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131364371));
     this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout = new RelativeLayout[6];
     i = 0;
     while (i < this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout.length)
@@ -239,18 +239,18 @@ public class EditVideoFragment
   
   private void c(int paramInt)
   {
-    if (this.jdField_a_of_type_Odd == null) {
-      this.jdField_a_of_type_Odd = new odd(this);
+    if (this.jdField_a_of_type_Oev == null) {
+      this.jdField_a_of_type_Oev = new oev(this);
     }
     int i = 0;
     for (;;)
     {
       if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        if (paramInt == ((ode)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_c_of_type_Int)
+        if (paramInt == ((oew)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_c_of_type_Int)
         {
           SLog.b("Q.qqstory.record.EditVideoFragment", "updateValidFragmentDoodleByBlockIndex. update mValidFragmentInfo.get(%d)", Integer.valueOf(i));
-          ((ode)this.jdField_a_of_type_JavaUtilList.get(i)).a = this.jdField_a_of_type_Odd.a(paramInt);
+          ((oew)this.jdField_a_of_type_JavaUtilList.get(i)).a = this.jdField_a_of_type_Oev.a(paramInt);
         }
       }
       else {
@@ -308,7 +308,7 @@ public class EditVideoFragment
       i = j;
       while (i < paramList.size())
       {
-        this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setOnTouchListener(new odc(this, i));
+        this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setOnTouchListener(new oeu(this, i));
         i += 1;
       }
     }
@@ -346,8 +346,8 @@ public class EditVideoFragment
       if (i >= paramList.size()) {
         break label217;
       }
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(new BitmapDrawable(((ode)paramList.get(i)).b));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageBitmap(((ode)paramList.get(i)).a);
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(new BitmapDrawable(((oew)paramList.get(i)).b));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageBitmap(((oew)paramList.get(i)).a);
       this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setVisibility(0);
     }
     for (;;)
@@ -395,7 +395,7 @@ public class EditVideoFragment
       SLog.e("Q.qqstory.record.EditVideoFragment", "selectFragment error. fragmentInfo is null!");
       return;
     }
-    if ((this.jdField_a_of_type_Int == ((ode)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_Int) && (!this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Int == ((oew)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_Int) && (!this.jdField_a_of_type_Boolean))
     {
       SLog.e("Q.qqstory.record.EditVideoFragment", "selectFragment error. the same index!");
       return;
@@ -404,7 +404,7 @@ public class EditVideoFragment
     if (i < this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout.length)
     {
       if (i == paramInt) {
-        this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setBackgroundResource(2130843652);
+        this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setBackgroundResource(2130843773);
       }
       for (;;)
       {
@@ -414,7 +414,7 @@ public class EditVideoFragment
       }
     }
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = ((ode)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_Int;
+    this.jdField_a_of_type_Int = ((oew)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_Int;
     if (!this.jdField_a_of_type_Boolean)
     {
       SLog.b("Q.qqstory.record.EditVideoFragment", "send message. selected card index = %d. selected fragment index change form %d to %d.", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int));
@@ -573,8 +573,8 @@ public class EditVideoFragment
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     localValueAnimator.setDuration(200L);
     localValueAnimator.setInterpolator(new DecelerateInterpolator());
-    localValueAnimator.addListener(new oda(this, paramView));
-    localValueAnimator.addUpdateListener(new odb(this, paramInt3, paramInt1, paramInt4, paramInt2, paramView));
+    localValueAnimator.addListener(new oes(this, paramView));
+    localValueAnimator.addUpdateListener(new oet(this, paramInt3, paramInt1, paramInt4, paramInt2, paramView));
     localValueAnimator.start();
   }
   

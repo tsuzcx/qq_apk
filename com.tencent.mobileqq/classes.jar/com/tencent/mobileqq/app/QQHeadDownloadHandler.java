@@ -10,14 +10,14 @@ import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.utils.ContactConfig;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
-import zip;
-import ziq;
+import zlv;
+import zlw;
 
 public class QQHeadDownloadHandler
   extends FaceDownloader
 {
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130839275, 2130846154, 2130846155, 2130846156 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130839279, 2130846282, 2130846283, 2130846284 };
   private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
@@ -240,7 +240,7 @@ public class QQHeadDownloadHandler
     }
     catch (Throwable paramFaceInfo) {}finally
     {
-      ThreadManager.postImmediately(new zip(this, i9, str, localQQHeadInfo.idType, localQQHeadInfo.dstUsrType, 4, i5, (String)localObject5, i6, System.currentTimeMillis()), null, false);
+      ThreadManager.postImmediately(new zlv(this, i9, str, localQQHeadInfo.idType, localQQHeadInfo.dstUsrType, 4, i5, (String)localObject5, i6, System.currentTimeMillis()), null, false);
       if (i18 != 0) {
         break label3296;
       }
@@ -503,7 +503,7 @@ public class QQHeadDownloadHandler
         i1 = i3;
         localObject3 = localObject4;
         m = j;
-        ThreadManager.postImmediately(new ziq(this, localSetting, paramFaceInfo), null, false);
+        ThreadManager.postImmediately(new zlw(this, localSetting, paramFaceInfo), null, false);
         i4 = j;
         continue;
         i9 = i;

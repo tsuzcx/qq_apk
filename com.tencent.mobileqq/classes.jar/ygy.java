@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ygy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ygy(ApolloManager paramApolloManager, String paramString) {}
+  public ygy(BuddyListAdapter paramBuddyListAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.b(this.jdField_a_of_type_JavaLangString);
+    GroupManagerActivity.a(this.a.a);
+    ReportController.b(BuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ygy
  * JD-Core Version:    0.7.0.1
  */

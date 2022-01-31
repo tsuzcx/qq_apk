@@ -1,11 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 
 public class vhi
-  extends vhf
+  implements View.OnClickListener
 {
-  public vhi(QQAppInterface paramQQAppInterface)
+  public vhi(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData;
+    int i = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uinType;
+    if (!TextUtils.isEmpty(paramView))
+    {
+      paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, paramView);
+      if (paramView != null)
+      {
+        paramView.a("webview");
+        paramView.a("uin_type", i + "");
+        paramView.b();
+      }
+    }
   }
 }
 

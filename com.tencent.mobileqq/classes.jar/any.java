@@ -1,16 +1,27 @@
-import com.qq.im.poi.LbsPackManager;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.qq.im.poi.LbsStrangerPoiDialog;
 
 public class any
-  implements Runnable
+  extends Handler
 {
-  public any(LbsPackManager paramLbsPackManager, ARMapActivity paramARMapActivity, String paramString) {}
-  
-  public void run()
+  public any(LbsStrangerPoiDialog paramLbsStrangerPoiDialog, Looper paramLooper)
   {
-    ARMapEngine localARMapEngine = this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a;
-    ARMapEngine.nativeRequestLbsPOIListByPid(this.jdField_a_of_type_JavaLangString);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 100: 
+      this.a.a(this.a.a, this.a.d);
+      return;
+    }
+    this.a.a(this.a.a, this.a.d);
   }
 }
 

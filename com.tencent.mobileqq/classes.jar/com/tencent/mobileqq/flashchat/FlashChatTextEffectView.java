@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flashchat;
 
-import adaa;
+import adjx;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -21,7 +21,7 @@ public class FlashChatTextEffectView
   int jdField_a_of_type_Int;
   StaggeredGridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager;
   BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  FlashChatObserver jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatObserver = new adaa(this);
+  FlashChatObserver jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatObserver = new adjx(this);
   FlashChatTextEffectView.FlashChatAdapter jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView$FlashChatAdapter;
   OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
   
@@ -101,7 +101,7 @@ public class FlashChatTextEffectView
       localPluginData.jdField_b_of_type_Int = localFlashChatItem.jdField_a_of_type_Int;
       if (localFlashChatItem.jdField_a_of_type_Int == -100000) {}
       URLDrawable localURLDrawable;
-      for (localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130842432);; localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localURLDrawable)
+      for (localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130842524);; localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localURLDrawable)
       {
         localPluginData.jdField_b_of_type_JavaLangString = "插件描述内容";
         localPluginData.jdField_a_of_type_JavaLangString = localFlashChatItem.jdField_b_of_type_JavaLangString;
@@ -130,7 +130,7 @@ public class FlashChatTextEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatTextEffectView
  * JD-Core Version:    0.7.0.1
  */

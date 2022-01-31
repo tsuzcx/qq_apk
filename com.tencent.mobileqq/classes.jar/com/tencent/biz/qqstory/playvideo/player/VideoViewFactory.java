@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.playvideo.player;
 import android.content.Context;
 import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import nny;
+import npl;
 
 public class VideoViewFactory
 {
@@ -32,7 +32,7 @@ public class VideoViewFactory
   
   public static void a(Context paramContext)
   {
-    TVK_SDKMgr.setOnLogListener(new nny(null));
+    TVK_SDKMgr.setOnLogListener(new npl(null));
     TVK_SDKMgr.initSdk(paramContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
   }
   

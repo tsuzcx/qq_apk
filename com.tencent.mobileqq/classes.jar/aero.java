@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import android.view.View;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnGroupClickListener;
 
-class aero
-  implements Runnable
+public class aero
+  implements ExpandableListView.OnGroupClickListener
 {
-  aero(aern paramaern) {}
+  public aero(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
   
-  public void run()
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
-    ConnectNearbyProcService.a(4144);
+    return true;
   }
 }
 

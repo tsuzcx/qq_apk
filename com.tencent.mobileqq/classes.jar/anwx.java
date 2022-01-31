@@ -1,24 +1,27 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
 
 public class anwx
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public anwx(ShareActionSheet paramShareActionSheet) {}
+  public anwx(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
     }
-    while (this.a.b.getWidth() < ShareActionSheet.a(this.a))
-    {
-      this.a.b.setMove(true);
-      return;
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
     }
-    this.a.b.setMove(false);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

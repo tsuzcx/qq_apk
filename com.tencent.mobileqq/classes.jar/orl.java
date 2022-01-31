@@ -1,27 +1,21 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.util.LruCache;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
+import friendlist.GetOnlineInfoResp;
 
-public class orl
-  implements WXShareHelper.WXShareListener
+class orl
+  implements Runnable
 {
-  public orl(QRDisplayActivity paramQRDisplayActivity) {}
+  orl(ork paramork, GetOnlineInfoResp paramGetOnlineInfoResp, String paramString) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    if (this.jdField_a_of_type_FriendlistGetOnlineInfoResp.eIconType == 11) {}
+    for (boolean bool = true;; bool = false)
     {
-    case -2: 
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435286);
+      StoryQIMBadgeView.a().put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool));
+      this.jdField_a_of_type_Ork.a.a(bool);
       return;
     }
-    QRUtils.a(2, 2131435285);
   }
 }
 

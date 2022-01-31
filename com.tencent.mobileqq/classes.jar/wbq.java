@@ -1,21 +1,24 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class wbq
-  implements MediaPlayer.OnCompletionListener
+public final class wbq
+  implements Animation.AnimationListener
 {
-  public wbq(BlessActivity paramBlessActivity) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onAnimationEnd(Animation paramAnimation)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
+      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
     }
-    BlessActivity.a(this.a, true);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
+    }
   }
 }
 

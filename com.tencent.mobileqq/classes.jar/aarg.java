@@ -1,20 +1,12 @@
-import android.content.Context;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import com.tencent.mobileqq.ark.ArkActionAppMgr.IGetAppNameByActionCallback;
 
 public class aarg
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public aarg(ArkTipsManager paramArkTipsManager, Context paramContext) {}
-  
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    if ((paramInt == 0) && (paramAppPathInfo.a != null)) {
-      ArkAppCenter.a(paramAppPathInfo.a, new aarh(this));
-    }
-  }
+  public ArkActionAppMgr.IGetAppNameByActionCallback a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public String b;
 }
 
 

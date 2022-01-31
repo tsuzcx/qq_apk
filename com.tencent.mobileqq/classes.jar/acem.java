@@ -1,5 +1,6 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.content.Context;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.widget.QQToast;
 
 class acem
   implements Runnable
@@ -8,8 +9,9 @@ class acem
   
   public void run()
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(4);
-    this.a.a.finish();
+    if (this.a.a.a != null) {
+      QQToast.a(this.a.a.a, this.a.a.a.getString(2131438028), 1).b(this.a.a.g);
+    }
   }
 }
 

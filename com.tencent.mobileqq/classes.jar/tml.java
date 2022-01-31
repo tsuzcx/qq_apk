@@ -1,26 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
 
-public class tml
-  extends Handler
+class tml
+  implements Runnable
 {
-  public tml(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  tml(tmk paramtmk, int paramInt, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (this.jdField_a_of_type_Tmk.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext == null) {
       return;
     }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131434824);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_Tmk.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(QQSettingMe.a(this.jdField_a_of_type_Tmk.a), this.jdField_a_of_type_Tmk.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Tmk.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
     }
-    this.a.a(paramMessage, 1);
+    QQSettingMe.a(this.jdField_a_of_type_Tmk.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 

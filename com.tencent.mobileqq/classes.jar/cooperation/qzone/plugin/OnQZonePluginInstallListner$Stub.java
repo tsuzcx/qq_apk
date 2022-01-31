@@ -1,6 +1,6 @@
 package cooperation.qzone.plugin;
 
-import amgv;
+import amxa;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -24,7 +24,7 @@ public abstract class OnQZonePluginInstallListner$Stub
     if ((localIInterface != null) && ((localIInterface instanceof OnQZonePluginInstallListner))) {
       return (OnQZonePluginInstallListner)localIInterface;
     }
-    return new amgv(paramIBinder);
+    return new amxa(paramIBinder);
   }
   
   public IBinder asBinder()

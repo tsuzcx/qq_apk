@@ -1,41 +1,28 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.widget.Gallery;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import cooperation.troop.TroopFileProxyActivity;
 
 public class vjo
-  implements FMDialogUtil.FMDialogInterface
+  implements View.OnClickListener
 {
-  public vjo(AIOGalleryScene paramAIOGalleryScene, AIORichMediaInfo paramAIORichMediaInfo) {}
+  public vjo(TroopFileItemBuilder paramTroopFileItemBuilder) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b.setText(AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, (float)((AIOFilePicData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.jdField_a_of_type_Int));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_Vko.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_Vko.jdField_a_of_type_Int, 20);
-      AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).b(true);
-      AIOGalleryScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).a(true);
+    ChatMessage localChatMessage = AIOUtils.a(paramView);
+    paramView = (Activity)paramView.getContext();
+    Intent localIntent = new Intent();
+    if (localIntent == null) {
       return;
     }
-    catch (Exception localException) {}
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.c(true);
+    localIntent.putExtra(TroopFileProxyActivity.a, localChatMessage.frienduin);
+    TroopFileProxyActivity.a(paramView, localIntent, this.a.a.getCurrentAccountUin());
   }
 }
 

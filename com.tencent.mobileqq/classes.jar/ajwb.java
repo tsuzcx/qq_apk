@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vashealth.SportManager;
-import com.tencent.mobileqq.vashealth.StepAlarmReceiver;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
 
-public class ajwb
-  implements Runnable
+class ajwb
+  implements FrameSprite.OnFrameEndListener
 {
-  public ajwb(StepAlarmReceiver paramStepAlarmReceiver) {}
+  ajwb(ajwa paramajwa) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a == null) {
-      return;
+    this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
+    if (this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
+      this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
     }
-    ((SportManager)this.a.a.getManager(259)).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwb
  * JD-Core Version:    0.7.0.1
  */

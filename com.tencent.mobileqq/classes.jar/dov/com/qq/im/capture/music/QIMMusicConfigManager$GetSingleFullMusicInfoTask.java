@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.music;
 
-import amvw;
 import android.text.TextUtils;
+import anmb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.FlowMusic;
 import com.tencent.mobileqq.transfile.HttpNetReq;
@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class QIMMusicConfigManager$GetSingleFullMusicInfoTask
-  extends amvw
+  extends anmb
 {
   QIMMusicConfigManager.GetSingleMusicInfoCallback jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager$GetSingleMusicInfoCallback;
   String jdField_a_of_type_JavaLangString;
@@ -129,7 +129,7 @@ public final class QIMMusicConfigManager$GetSingleFullMusicInfoTask
     localHashMap.putAll(a(this.b, str));
     localHttpNetReq.jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_song_info_batch.fcg", localHashMap);
     if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigManager", 2, "GetSingleFullMusicInfoTask songId:" + this.jdField_a_of_type_JavaLangString);
+      QLog.d("QIMMusicConfigManager", 2, "QQMusicReq SingleFullMusicInfoTask songId:" + this.jdField_a_of_type_JavaLangString);
     }
     this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.a(localHttpNetReq);
   }

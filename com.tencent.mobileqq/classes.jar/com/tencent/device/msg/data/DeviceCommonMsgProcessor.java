@@ -1,32 +1,32 @@
 package com.tencent.device.msg.data;
 
 import com.tencent.litetransfersdk.Session;
-import pzj;
-import pzk;
+import qbd;
+import qbe;
 
 public class DeviceCommonMsgProcessor
 {
-  public static String a(pzj parampzj1, pzj parampzj2)
+  public static String a(qbd paramqbd1, qbd paramqbd2)
   {
-    if ((parampzj1 == null) || (parampzj2 == null)) {
+    if ((paramqbd1 == null) || (paramqbd2 == null)) {
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{");
     localStringBuilder.append("\"");
-    localStringBuilder.append(parampzj1.a);
+    localStringBuilder.append(paramqbd1.a);
     localStringBuilder.append("\"");
     localStringBuilder.append(":");
     localStringBuilder.append("\"");
-    localStringBuilder.append(parampzj1.b);
+    localStringBuilder.append(paramqbd1.b);
     localStringBuilder.append("\"");
     localStringBuilder.append(",");
     localStringBuilder.append("\"");
-    localStringBuilder.append(parampzj2.a);
+    localStringBuilder.append(paramqbd2.a);
     localStringBuilder.append("\"");
     localStringBuilder.append(":");
     localStringBuilder.append("\"");
-    localStringBuilder.append(parampzj2.b);
+    localStringBuilder.append(paramqbd2.b);
     localStringBuilder.append("\"");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
@@ -36,7 +36,7 @@ public class DeviceCommonMsgProcessor
   {
     try
     {
-      new pzk(paramSession, paramBoolean).a();
+      new qbe(paramSession, paramBoolean).a();
       return;
     }
     catch (Throwable paramSession)

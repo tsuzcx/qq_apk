@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
 
 public class lmg
   implements Runnable
 {
-  public lmg(ReadInJoyLogicEngine paramReadInJoyLogicEngine, ReadInJoyEntityManagerFactory paramReadInJoyEntityManagerFactory) {}
+  public lmg(ReadinjoySPEventReport paramReadinjoySPEventReport) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyEntityManagerFactory.verifyAuthentication();
+    this.a.b();
   }
 }
 

@@ -12,7 +12,7 @@ public class TroopSpecialAttentionMsg
 {
   public TroopSpecialAttentionMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131433142);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131433159);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   

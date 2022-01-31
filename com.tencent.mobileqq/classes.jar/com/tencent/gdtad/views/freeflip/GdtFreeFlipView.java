@@ -8,13 +8,13 @@ import android.widget.FrameLayout;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.views.GdtViewStatus.Listener;
 import com.tencent.mobileqq.utils.ViewUtils;
-import qkc;
+import qmq;
 
 public class GdtFreeFlipView
   extends FrameLayout
 {
   protected int a;
-  private GdtViewStatus.Listener jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus$Listener = new qkc(this);
+  private GdtViewStatus.Listener jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus$Listener = new qmq(this);
   private GdtFreeFlipContentView jdField_a_of_type_ComTencentGdtadViewsFreeflipGdtFreeFlipContentView;
   private boolean jdField_a_of_type_Boolean;
   protected int b;
@@ -101,7 +101,7 @@ public class GdtFreeFlipView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.freeflip.GdtFreeFlipView
  * JD-Core Version:    0.7.0.1
  */

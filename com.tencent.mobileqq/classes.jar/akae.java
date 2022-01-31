@@ -1,37 +1,25 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.manager.TicketManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.util.HeadRequest;
 
 public final class akae
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public void run()
+  public HeadRequest a(Parcel paramParcel)
   {
-    if (SwiftBrowserCookieMonster.a == null) {
-      synchronized (SwiftBrowserCookieMonster.a())
-      {
-        if (SwiftBrowserCookieMonster.a == null)
-        {
-          Object localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-          if (localObject1 != null)
-          {
-            localObject1 = (TicketManager)((AppRuntime)localObject1).getManager(2);
-            if (localObject1 != null)
-            {
-              SwiftBrowserCookieMonster.a = new akaf();
-              ((TicketManager)localObject1).registTicketManagerListener(SwiftBrowserCookieMonster.a);
-            }
-          }
-        }
-        return;
-      }
-    }
+    HeadRequest localHeadRequest = new HeadRequest();
+    localHeadRequest.a(paramParcel);
+    return localHeadRequest;
+  }
+  
+  public HeadRequest[] a(int paramInt)
+  {
+    return new HeadRequest[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akae
  * JD-Core Version:    0.7.0.1
  */

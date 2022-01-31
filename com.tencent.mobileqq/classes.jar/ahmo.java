@@ -1,28 +1,29 @@
-import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView.StatusListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DancePlayFilter;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
 
 public class ahmo
-  implements GLRecognizeRegionView.StatusListener
+  implements Animation.AnimationListener
 {
-  public ahmo(DancePlayFilter paramDancePlayFilter) {}
+  public ahmo(ProviderContainerView paramProviderContainerView, boolean paramBoolean) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 2)
+    if (ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView) != null)
     {
-      DancePlayFilter.a(this.a, DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a), 75, 1));
-      DancePlayFilter.a(this.a).e();
-      DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a));
+      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).setAlpha(1.0F);
+      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).setVisibility(8);
     }
-    if (paramInt == 3)
-    {
-      DancePlayFilter.b(this.a, DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a), 75, 2));
-      DancePlayFilter.a(this.a).e();
-      DancePlayFilter.a(this.a).a(DancePlayFilter.b(this.a));
+    if ((!this.jdField_a_of_type_Boolean) && (ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView) != null)) {
+      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).a(false, 150);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

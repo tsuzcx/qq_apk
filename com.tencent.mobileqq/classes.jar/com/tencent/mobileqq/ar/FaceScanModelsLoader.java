@@ -293,21 +293,21 @@ public class FaceScanModelsLoader
     //   24: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   30: invokestatic 64	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   33: new 195	java/util/zip/ZipFile
+    //   33: new 195	com/tencent/commonsdk/zip/QZipFile
     //   36: dup
     //   37: aload_0
-    //   38: invokespecial 196	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   38: invokespecial 196	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
     //   41: astore 4
     //   43: aload 4
-    //   45: invokevirtual 200	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
-    //   48: astore 6
+    //   45: invokevirtual 200	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
+    //   48: astore 7
     //   50: sipush 8192
     //   53: newarray byte
-    //   55: astore 7
-    //   57: aload 6
+    //   55: astore 6
+    //   57: aload 7
     //   59: invokeinterface 205 1 0
     //   64: ifeq +330 -> 394
-    //   67: aload 6
+    //   67: aload 7
     //   69: invokeinterface 208 1 0
     //   74: checkcast 210	java/util/zip/ZipEntry
     //   77: astore 5
@@ -406,12 +406,12 @@ public class FaceScanModelsLoader
     //   278: astore_0
     //   279: aload 4
     //   281: aload 5
-    //   283: invokevirtual 252	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   283: invokevirtual 252	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   286: astore 5
     //   288: aload 5
-    //   290: aload 7
+    //   290: aload 6
     //   292: iconst_0
-    //   293: aload 7
+    //   293: aload 6
     //   295: arraylength
     //   296: invokevirtual 258	java/io/InputStream:read	([BII)I
     //   299: istore_2
@@ -419,7 +419,7 @@ public class FaceScanModelsLoader
     //   301: iconst_m1
     //   302: if_icmpeq +52 -> 354
     //   305: aload_0
-    //   306: aload 7
+    //   306: aload 6
     //   308: iconst_0
     //   309: iload_2
     //   310: invokevirtual 262	java/io/FileOutputStream:write	([BII)V
@@ -442,7 +442,7 @@ public class FaceScanModelsLoader
     //   342: aload 4
     //   344: ifnull +8 -> 352
     //   347: aload 4
-    //   349: invokevirtual 267	java/util/zip/ZipFile:close	()V
+    //   349: invokevirtual 267	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   352: aload_0
     //   353: athrow
     //   354: aload_0
@@ -479,7 +479,7 @@ public class FaceScanModelsLoader
     //   418: aload 4
     //   420: ifnull +8 -> 428
     //   423: aload 4
-    //   425: invokevirtual 267	java/util/zip/ZipFile:close	()V
+    //   425: invokevirtual 267	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   428: return
     //   429: astore_0
     //   430: aload_0
@@ -529,12 +529,12 @@ public class FaceScanModelsLoader
     //   1	330	3	str1	String
     //   451	2	3	localIOException	java.io.IOException
     //   489	1	3	str2	String
-    //   41	437	4	localZipFile	java.util.zip.ZipFile
+    //   41	437	4	localQZipFile	com.tencent.commonsdk.zip.QZipFile
     //   77	286	5	localObject1	Object
     //   484	7	5	localObject2	Object
-    //   48	20	6	localEnumeration	java.util.Enumeration
+    //   55	252	6	arrayOfByte	byte[]
     //   316	8	6	localObject3	Object
-    //   55	252	7	arrayOfByte	byte[]
+    //   48	20	7	localEnumeration	java.util.Enumeration
     //   172	206	8	localObject4	Object
     //   253	127	9	localFile	File
     // Exception table:

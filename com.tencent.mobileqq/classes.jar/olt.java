@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 
 class olt
-  implements View.OnClickListener
+  implements Runnable
 {
-  olt(ols paramols) {}
+  olt(olq paramolq) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a();
-    }
+    this.a.a.a.a.a();
   }
 }
 

@@ -1,32 +1,21 @@
-import android.app.Activity;
-import com.tencent.biz.widgets.ShareResultDialog.IShareResultCallback;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
 public class adbf
-  implements ShareResultDialog.IShareResultCallback
+  extends BroadcastReceiver
 {
-  public adbf(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public adbf(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public void a(boolean paramBoolean)
+  @TargetApi(5)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (ForwardRecentActivity.class.isInstance(this.a.a)) {
-      if (!this.a.a.isFinishing())
-      {
-        if (!paramBoolean) {
-          break label75;
-        }
-        this.a.a(0, "", "");
-      }
-    }
-    for (;;)
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
     {
-      if (this.a.i) {
-        ForwardSdkBaseOption.a(this.a.a, true, "shareToQQ", this.a.b);
-      }
-      return;
-      label75:
-      this.a.a(-1, "未知错误!", "未知错误!");
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
     }
   }
 }

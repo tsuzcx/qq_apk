@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richstatus;
 
-import ahbn;
-import ahbo;
-import ahbp;
-import ahbq;
+import ahpp;
+import ahpq;
+import ahpr;
+import ahps;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Handler;
@@ -37,11 +37,11 @@ public class StatusJsHandler
   public AccountDetail a;
   public String a;
   public WeakReference a;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new ahbp(this);
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new ahpr(this);
   public boolean a;
   public String b;
   WeakReference jdField_b_of_type_JavaLangRefWeakReference;
-  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new ahbq(this);
+  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new ahps(this);
   public boolean b;
   public String c;
   
@@ -64,7 +64,7 @@ public class StatusJsHandler
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
     localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.0,3,3525");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.3,3,3560");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     try
     {
@@ -155,7 +155,7 @@ public class StatusJsHandler
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahbo(this, paramString1, paramString2, localWebView));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahpq(this, paramString1, paramString2, localWebView));
   }
   
   public void followAccount(String paramString1, String paramString2)
@@ -187,7 +187,7 @@ public class StatusJsHandler
     }
     this.jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_JavaLangString = paramString;
-    ThreadManager.post(new ahbn(this, (LocationManager)localBaseActivity.getSystemService("location")), 5, null, false);
+    ThreadManager.post(new ahpp(this, (LocationManager)localBaseActivity.getSystemService("location")), 5, null, false);
   }
   
   public boolean hasFollowAccount(String paramString)

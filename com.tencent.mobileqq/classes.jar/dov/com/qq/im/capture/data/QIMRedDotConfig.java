@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.data;
 
-import amvn;
 import android.text.TextUtils;
+import anls;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
@@ -244,7 +244,7 @@ public class QIMRedDotConfig
     if (QLog.isColorLevel()) {
       QLog.d("QIMRedDotConfig", 2, "saveRedDotConfig|config= " + paramQIMRedDotConfig);
     }
-    ThreadManager.getFileThreadHandler().post(new amvn(paramString, paramQIMRedDotConfig));
+    ThreadManager.getFileThreadHandler().post(new anls(paramString, paramQIMRedDotConfig));
   }
   
   public boolean needShowRedDot(int paramInt1, int paramInt2, String paramString)

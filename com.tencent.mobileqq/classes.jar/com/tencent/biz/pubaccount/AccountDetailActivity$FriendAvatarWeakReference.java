@@ -5,14 +5,14 @@ import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
 import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import kto;
-import ktp;
+import ksz;
+import kta;
 import mqq.util.WeakReference;
 
 public class AccountDetailActivity$FriendAvatarWeakReference
 {
   public FriendProfileImageAvatar a;
-  ktp jdField_a_of_type_Ktp;
+  kta jdField_a_of_type_Kta;
   WeakReference jdField_a_of_type_MqqUtilWeakReference;
   
   public AccountDetailActivity$FriendAvatarWeakReference(QQAppInterface paramQQAppInterface, AccountDetailActivity paramAccountDetailActivity)
@@ -20,7 +20,7 @@ public class AccountDetailActivity$FriendAvatarWeakReference
     this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar = new FriendProfileImageAvatar(paramQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b = paramAccountDetailActivity.d;
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAccountDetailActivity);
-    this.jdField_a_of_type_Ktp = new ktp(paramAccountDetailActivity);
+    this.jdField_a_of_type_Kta = new kta(paramAccountDetailActivity);
   }
   
   public void a()
@@ -32,9 +32,9 @@ public class AccountDetailActivity$FriendAvatarWeakReference
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get(), localProfileImageInfo);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a(this.jdField_a_of_type_Ktp);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a(this.jdField_a_of_type_Kta);
     this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
-    new kto(this, localProfileImageInfo).execute(new Void[0]);
+    new ksz(this, localProfileImageInfo).execute(new Void[0]);
   }
   
   public void b()

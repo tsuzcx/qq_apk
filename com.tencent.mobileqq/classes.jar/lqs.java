@@ -1,15 +1,15 @@
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
 
 public class lqs
   implements Runnable
 {
-  public lqs(ChannelInfoModule paramChannelInfoModule, ChannelInfo paramChannelInfo) {}
+  public lqs(ChannelInfoModule paramChannelInfoModule, boolean paramBoolean, int paramInt, SparseArray paramSparseArray) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidUtilSparseArray);
   }
 }
 

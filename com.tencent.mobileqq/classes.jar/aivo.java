@@ -1,40 +1,35 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.SearchArticle;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
-import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.troop.logic.TroopAvatarWallEditCtrl;
 import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import org.json.JSONException;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
-public class aivo
-  implements AdapterView.OnItemClickListener
+class aivo
+  implements AdapterView.OnItemSelectedListener
 {
-  public aivo(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  aivo(aivm paramaivm) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt < SearchReciteArticleFragment.a(this.a).getCount()) {
-      paramAdapterView = SearchReciteArticleFragment.a(this.a).a(paramInt);
-    }
-    try
-    {
-      TroopReportor.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { SearchReciteArticleFragment.a(this.a), "1", String.valueOf(paramInt), String.valueOf(paramAdapterView.jdField_a_of_type_Int) });
-      TroopReportor.a("Grp_edu", "Grp_recite", "Clk_Success", 0, 0, new String[] { SearchReciteArticleFragment.a(this.a), String.valueOf(paramAdapterView.jdField_a_of_type_Int) });
-      SearchReciteArticleFragment.a(this.a, HWReciteInfo.a(SearchReciteArticleFragment.a(this.a), paramAdapterView.jdField_a_of_type_JavaLangString, paramAdapterView.c, null));
-      SearchReciteArticleFragment.b(this.a);
+    if (paramView == null) {
       return;
     }
-    catch (JSONException paramAdapterView)
+    this.a.a.a.jdField_a_of_type_Int = paramInt;
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.a(paramInt);
+    if (this.a.a.a.jdField_a_of_type_Boolean)
     {
-      paramAdapterView.printStackTrace();
+      ReportController.b(this.a.a.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.a.jdField_a_of_type_JavaLangString, "0", "", "");
+      return;
     }
+    ReportController.b(this.a.a.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.a.jdField_a_of_type_JavaLangString, "1", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aivo
  * JD-Core Version:    0.7.0.1
  */

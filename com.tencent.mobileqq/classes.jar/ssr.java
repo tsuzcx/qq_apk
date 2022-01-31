@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class ssr
-  extends FriendListObserver
+  implements DialogInterface.OnDismissListener
 {
-  public ssr(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public ssr(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean)
-    {
-      paramString = ((FriendsManager)this.a.app.getManager(50)).c(this.a.a + "");
-      if (paramString != null)
-      {
-        this.a.e = paramString.name;
-        JoinDiscussionActivity.a(this.a);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
   }
 }
 

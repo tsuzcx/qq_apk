@@ -1,69 +1,41 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.os.Build;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.utils.QQLSSensor;
-import com.tencent.mobileqq.utils.QQLSSensor.ProximitySensorChangeListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
+import com.tencent.mobileqq.troop.data.TroopTopicDetailInfoManager;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.mobileqq.troop.utils.TroopTopicObserver;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ajrh
-  implements SensorEventListener
+  implements Runnable
 {
-  public ajrh(QQLSSensor paramQQLSSensor) {}
+  public ajrh(TroopTopicMgr paramTroopTopicMgr, String paramString, long paramLong1, long paramLong2) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent arg1)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQLSSensor", 4, "QQLSSensor onSensorChanged" + ???.values[0]);
-    }
-    if (QQLSSensor.a(this.a) == null) {
-      return;
-    }
-    if (AIOUtils.b())
+    Object localObject = TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    TroopTopicDetailInfo localTroopTopicDetailInfo = (TroopTopicDetailInfo)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+    localObject = localTroopTopicDetailInfo;
+    if (localTroopTopicDetailInfo == null)
     {
-      this.a.a = false;
-      return;
+      localObject = new TroopTopicDetailInfo();
+      ((TroopTopicDetailInfo)localObject).troopUin = this.jdField_a_of_type_JavaLangString;
+      ((TroopTopicDetailInfo)localObject).msgSeq = this.jdField_a_of_type_Long;
     }
-    if (???.values[0] < QQLSSensor.a(this.a)) {
-      QQLSSensor.a(this.a, true);
-    }
-    for (;;)
-    {
-      ??? = Build.MODEL;
-      if (!AIOUtils.a()) {
-        break;
-      }
-      if (QQLSSensor.a(this.a).hasMessages(1)) {
-        QQLSSensor.a(this.a).removeMessages(1);
-      }
-      QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 150L);
-      return;
-      QQLSSensor.a(this.a, false);
-    }
-    if ((???.equalsIgnoreCase("mi 3c")) || (???.equalsIgnoreCase("K-Touch W619")) || (???.equalsIgnoreCase("mi 3w")))
-    {
-      if (QQLSSensor.a(this.a).hasMessages(1)) {
-        QQLSSensor.a(this.a).removeMessages(1);
-      }
-      QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 250L);
-      return;
-    }
-    synchronized (this.a)
-    {
-      if (QQLSSensor.a(this.a) != null) {
-        QQLSSensor.a(this.a).a(QQLSSensor.a(this.a));
-      }
-      return;
-    }
+    ((TroopTopicDetailInfo)localObject).pVersion = this.b;
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b((TroopTopicDetailInfo)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfoManager.a((TroopTopicDetailInfo)localObject, true);
+    localObject = new Bundle();
+    ((Bundle)localObject).putInt("ret", 0);
+    ((Bundle)localObject).putString("troopUin", this.jdField_a_of_type_JavaLangString);
+    ((Bundle)localObject).putLong("msgSeq", this.jdField_a_of_type_Long);
+    ((Bundle)localObject).putLong("pVersion", this.b);
+    TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).notifyObservers(TroopTopicObserver.class, 3, true, (Bundle)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajrh
  * JD-Core Version:    0.7.0.1
  */

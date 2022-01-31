@@ -1,27 +1,23 @@
-import com.rookery.asyncHttpClient.JsonHttpResponseHandler;
-import com.rookery.translate.microsoft.MicrosoftTranslator;
-import org.apache.http.Header;
-import org.json.JSONObject;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class jda
-  extends JsonHttpResponseHandler
+  implements Runnable
 {
-  public jda(MicrosoftTranslator paramMicrosoftTranslator, JsonHttpResponseHandler paramJsonHttpResponseHandler) {}
+  public jda(VideoController paramVideoController) {}
   
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
+  public void run()
   {
-    this.jdField_a_of_type_ComRookeryAsyncHttpClientJsonHttpResponseHandler.a(paramInt, paramArrayOfHeader, paramJSONObject);
-  }
-  
-  public void a(Throwable paramThrowable, String paramString)
-  {
-    this.jdField_a_of_type_ComRookeryAsyncHttpClientJsonHttpResponseHandler.a(paramThrowable, paramString);
-    super.a(paramThrowable, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoController.a, 2, "mSwitchToMultiRunnable timeOut ");
+    }
+    this.a.c(this.a.a().c, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     jda
  * JD-Core Version:    0.7.0.1
  */

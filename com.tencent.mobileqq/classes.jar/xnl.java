@@ -1,17 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class xnl
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public xnl(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
+  public xnl(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.b(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (EditLocalVideoActivity.a(this.a).isPlaying()) {
+        if (EditLocalVideoActivity.a(this.a))
+        {
+          EditLocalVideoActivity.c(this.a, false);
+          EditLocalVideoActivity.a(this.a).pause();
+          EditLocalVideoActivity.b(this.a).setVisibility(0);
+        }
+      }
+      while (!EditLocalVideoActivity.a(this.a)) {
+        return true;
+      }
+      EditLocalVideoActivity.a(this.a).start();
+      EditLocalVideoActivity.c(this.a, true);
+      EditLocalVideoActivity.b(this.a).setVisibility(4);
+      return true;
+    }
+    return false;
   }
 }
 

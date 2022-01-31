@@ -1,14 +1,17 @@
-import com.tencent.av.ui.GAudioMemberListCtrl;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.MultiIncomingCallUICtr;
+import com.tencent.av.ui.VideoInviteFloatBar;
 
 class jvd
   implements Runnable
 {
-  jvd(jva paramjva, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  jvd(jvc paramjvc) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Jva.a.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
+    this.a.a.f();
+    if (this.a.a.a != null) {
+      this.a.a.a.a();
+    }
   }
 }
 

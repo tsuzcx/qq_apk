@@ -1,34 +1,26 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class aiur
   implements DialogInterface.OnClickListener
 {
-  public aiur(ReciteRecordLayout paramReciteRecordLayout) {}
+  public aiur(QLifeCommentActivity paramQLifeCommentActivity, QQCustomDialog paramQQCustomDialog) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
     }
-    if (!NetworkUtil.g(this.a.jdField_a_of_type_AndroidContentContext)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    }
-    do
-    {
-      return;
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    } while (ReciteRecordLayout.a(this.a) == null);
-    ReciteRecordLayout.a(this.a).e();
+    QLifeCommentActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity);
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "cancel", 0, 0, "", "", "", this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity.A);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiur
  * JD-Core Version:    0.7.0.1
  */

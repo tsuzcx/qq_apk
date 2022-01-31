@@ -1,13 +1,22 @@
-import android.media.MediaScannerConnection.OnScanCompletedListener;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import com.tencent.qphone.base.util.QLog;
 
 public class xqf
-  implements MediaScannerConnection.OnScanCompletedListener
+  implements Runnable
 {
-  public xqf(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
+  public xqf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onScanCompleted(String paramString, Uri paramUri) {}
+  public void run()
+  {
+    if (VideoFilterTools.a(this.a.getApplicationContext()))
+    {
+      VideoFilterTools localVideoFilterTools = VideoFilterTools.a();
+      localVideoFilterTools.a(this.a.getApplicationContext(), new xqg(this, localVideoFilterTools));
+      return;
+    }
+    QLog.w("PTV.NewFlowCameraActivity", 2, "your device don't support video filter!");
+  }
 }
 
 

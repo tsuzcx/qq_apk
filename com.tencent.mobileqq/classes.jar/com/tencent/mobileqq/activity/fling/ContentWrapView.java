@@ -5,13 +5,13 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import wmi;
+import wpn;
 
 public class ContentWrapView
   extends RelativeLayout
 {
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private wmi jdField_a_of_type_Wmi;
+  private wpn jdField_a_of_type_Wpn;
   
   public ContentWrapView(Context paramContext)
   {
@@ -32,13 +32,13 @@ public class ContentWrapView
   
   private void a()
   {
-    wmi localwmi = this.jdField_a_of_type_Wmi;
-    if (localwmi == null) {}
-    while (!localwmi.jdField_a_of_type_Boolean) {
+    wpn localwpn = this.jdField_a_of_type_Wpn;
+    if (localwpn == null) {}
+    while (!localwpn.jdField_a_of_type_Boolean) {
       return;
     }
-    wmi.a(localwmi).setTranslate(localwmi.jdField_a_of_type_Float, localwmi.b);
-    localwmi.jdField_a_of_type_Boolean = false;
+    wpn.a(localwpn).setTranslate(localwpn.jdField_a_of_type_Float, localwpn.b);
+    localwpn.jdField_a_of_type_Boolean = false;
   }
   
   private void a(Context paramContext)
@@ -48,34 +48,34 @@ public class ContentWrapView
   
   public void draw(Canvas paramCanvas)
   {
-    wmi localwmi = this.jdField_a_of_type_Wmi;
-    if (localwmi != null)
+    wpn localwpn = this.jdField_a_of_type_Wpn;
+    if (localwpn != null)
     {
       a();
-      paramCanvas.concat(wmi.a(localwmi));
+      paramCanvas.concat(wpn.a(localwpn));
     }
     super.draw(paramCanvas);
   }
   
   public void ensureTransformationInfo()
   {
-    if (this.jdField_a_of_type_Wmi == null) {
-      this.jdField_a_of_type_Wmi = new wmi();
+    if (this.jdField_a_of_type_Wpn == null) {
+      this.jdField_a_of_type_Wpn = new wpn();
     }
   }
   
   public float getTransX()
   {
-    if (this.jdField_a_of_type_Wmi != null) {
-      return this.jdField_a_of_type_Wmi.jdField_a_of_type_Float;
+    if (this.jdField_a_of_type_Wpn != null) {
+      return this.jdField_a_of_type_Wpn.jdField_a_of_type_Float;
     }
     return 0.0F;
   }
   
   public float getTransY()
   {
-    if (this.jdField_a_of_type_Wmi != null) {
-      return this.jdField_a_of_type_Wmi.b;
+    if (this.jdField_a_of_type_Wpn != null) {
+      return this.jdField_a_of_type_Wpn.b;
     }
     return 0.0F;
   }
@@ -83,11 +83,11 @@ public class ContentWrapView
   public void transX(float paramFloat)
   {
     ensureTransformationInfo();
-    wmi localwmi = this.jdField_a_of_type_Wmi;
-    if (localwmi.jdField_a_of_type_Float != paramFloat)
+    wpn localwpn = this.jdField_a_of_type_Wpn;
+    if (localwpn.jdField_a_of_type_Float != paramFloat)
     {
-      localwmi.jdField_a_of_type_Float = paramFloat;
-      localwmi.jdField_a_of_type_Boolean = true;
+      localwpn.jdField_a_of_type_Float = paramFloat;
+      localwpn.jdField_a_of_type_Boolean = true;
       invalidate();
     }
   }
@@ -102,11 +102,11 @@ public class ContentWrapView
   public void transY(float paramFloat)
   {
     ensureTransformationInfo();
-    wmi localwmi = this.jdField_a_of_type_Wmi;
-    if (localwmi.b != paramFloat)
+    wpn localwpn = this.jdField_a_of_type_Wpn;
+    if (localwpn.b != paramFloat)
     {
-      localwmi.b = paramFloat;
-      localwmi.jdField_a_of_type_Boolean = true;
+      localwpn.b = paramFloat;
+      localwpn.jdField_a_of_type_Boolean = true;
       invalidate();
     }
   }

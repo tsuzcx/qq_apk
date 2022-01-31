@@ -11,7 +11,7 @@ public class StructMsgItemLive$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgItemLive.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class rcw
-  extends ConfigObserver
+  implements Runnable
 {
-  public rcw(AboutActivity paramAboutActivity) {}
+  public rcw(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void run()
   {
-    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
-    paramUpgradeDetailWrapper = this.a.app.a();
-    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
+    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
+      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetThumbPathToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rcw
  * JD-Core Version:    0.7.0.1
  */

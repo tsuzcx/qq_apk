@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.entry.ui.view;
 
-import aitv;
+import ajhz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -46,18 +46,18 @@ public class ComplexGuidViewPager
   public ComplexGuidViewPager(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(getContext()).inflate(2130970601, this, true);
-    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator = ((RadioButtonIndicator)findViewById(2131371387));
+    LayoutInflater.from(getContext()).inflate(2130970645, this, true);
+    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator = ((RadioButtonIndicator)findViewById(2131371550));
     this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setOrientation(0);
-    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setButtonResourceId(2130843251);
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131363746));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363247));
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager = ((GuideViewPager)findViewById(2131371386));
+    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setButtonResourceId(2130843350);
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131363769));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363265));
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager = ((GuideViewPager)findViewById(2131371549));
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager.setOnPagerSizeChangeListener(this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator);
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371385));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371548));
     this.jdField_a_of_type_Int = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aitv(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ajhz(this));
   }
   
   public float a()
@@ -111,7 +111,7 @@ public class ComplexGuidViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,9 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.support.annotation.NonNull;
 
-public class annx
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface annx
 {
-  public annx(GroundDrawable paramGroundDrawable) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.invalidateSelf();
-  }
+  @NonNull
+  public abstract String a(int paramInt, @NonNull String paramString);
 }
 
 

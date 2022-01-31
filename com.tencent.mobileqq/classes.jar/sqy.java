@@ -1,14 +1,52 @@
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.widgets.ShareAioResultDialog;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
-class sqy
-  implements Runnable
+public class sqy
+  implements DialogInterface.OnClickListener
 {
-  sqy(sqv paramsqv) {}
+  public sqy(FriendProfileCardActivity paramFriendProfileCardActivity, Context paramContext) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.dismiss();
+      com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog back");
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getIntExtra("source_id", 3999) == 3090) {}
+      try
+      {
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getStringExtra("extra");
+        ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, "action_game_make_friend", Long.valueOf(paramDialogInterface).longValue(), -1, "已是你的好友");
+        if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
+          continue;
+        }
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).moveTaskToBack(true);
+      }
+      catch (Exception paramDialogInterface)
+      {
+        for (;;)
+        {
+          QLog.e("FriendProfileCardActivity", 1, "feedBackToGameSDK error = " + paramDialogInterface);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog stay");
+      }
+    }
   }
 }
 

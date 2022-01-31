@@ -22,8 +22,8 @@ import com.tencent.mobileqq.msf.sdk.QNotificationManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BadgeUtils;
 import java.util.ArrayList;
-import ngj;
-import ngk;
+import nhv;
+import nhw;
 
 public class StoryMsgNotification
 {
@@ -103,7 +103,7 @@ public class StoryMsgNotification
   
   public void a(Context paramContext)
   {
-    ThreadManager.post(new ngk(this, paramContext), 8, null, true);
+    ThreadManager.post(new nhw(this, paramContext), 8, null, true);
   }
   
   public void a(Context paramContext, int paramInt)
@@ -179,13 +179,13 @@ public class StoryMsgNotification
         QLog.w("zivonchen", 2, "showQQStoryMsgNotification line1 = " + str1 + ", line2 = " + str2);
       }
       localBuilder = new NotificationCompat.Builder(paramQQAppInterface.getApp());
-      localBuilder.setSmallIcon(2130839532).setWhen(System.currentTimeMillis()).setContentTitle(str1).setContentText(str2).setPriority(2).setStyle(new NotificationCompat.BigTextStyle().bigText(str2));
+      localBuilder.setSmallIcon(2130839537).setWhen(System.currentTimeMillis()).setContentTitle(str1).setContentText(str2).setPriority(2).setStyle(new NotificationCompat.BigTextStyle().bigText(str2));
       if (TextUtils.isEmpty(paramStoryPushMsg.g)) {
         break label490;
       }
       localObject = URLDrawable.URLDrawableOptions.obtain();
       localObject = URLDrawable.getDrawable(paramStoryPushMsg.g, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setURLDrawableListener(new ngj(this, localBuilder, paramQQAppInterface, paramStoryPushMsg, i, str1, str2));
+      ((URLDrawable)localObject).setURLDrawableListener(new nhv(this, localBuilder, paramQQAppInterface, paramStoryPushMsg, i, str1, str2));
       if (((URLDrawable)localObject).getStatus() != 1) {
         break;
       }

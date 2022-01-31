@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.data;
 
-import aioh;
-import aioi;
-import aiok;
-import aiom;
-import aioo;
-import aiop;
+import ajcl;
+import ajcm;
+import ajco;
+import ajcq;
+import ajcs;
+import ajct;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.util.SparseArray;
@@ -114,7 +114,7 @@ public class TroopAioKeywordTipManager
   private void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo, TroopAioKeywordTipManager.Callback paramCallback)
   {
     if (paramCallback != null) {
-      ThreadManager.getUIHandler().post(new aioo(this, paramCallback, paramMessageRecord, paramTroopAioKeywordTipInfo));
+      ThreadManager.getUIHandler().post(new ajcs(this, paramCallback, paramMessageRecord, paramTroopAioKeywordTipInfo));
     }
   }
   
@@ -122,7 +122,7 @@ public class TroopAioKeywordTipManager
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramInteger);
-    ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(localArrayList, new aiom(this, paramMessageRecord, paramCallback));
+    ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(localArrayList, new ajcq(this, paramMessageRecord, paramCallback));
   }
   
   private boolean a(MessageRecord paramMessageRecord)
@@ -285,7 +285,7 @@ public class TroopAioKeywordTipManager
     if ((paramList == null) || (paramList.size() == 0)) {
       return;
     }
-    ThreadManager.post(new aioi(this, paramList), 8, null, true);
+    ThreadManager.post(new ajcm(this, paramList), 8, null, true);
   }
   
   public Pair a(List paramList1, List paramList2, int paramInt)
@@ -362,7 +362,7 @@ public class TroopAioKeywordTipManager
   
   public void a(String paramString1, String paramString2, Integer paramInteger)
   {
-    ThreadManager.post(new aiop(this, paramString1, paramString2, paramInteger), 8, null, true);
+    ThreadManager.post(new ajct(this, paramString1, paramString2, paramInteger), 8, null, true);
   }
   
   public void a(List paramList)
@@ -370,7 +370,7 @@ public class TroopAioKeywordTipManager
     if ((paramList == null) || (paramList.size() == 0)) {
       return;
     }
-    ThreadManager.post(new aioh(this, paramList), 5, null, true);
+    ThreadManager.post(new ajcl(this, paramList), 5, null, true);
   }
   
   public void a(List arg1, List paramList2)
@@ -420,14 +420,14 @@ public class TroopAioKeywordTipManager
   
   public void a(List paramList1, List paramList2, int paramInt, TroopAioKeywordTipManager.Callback paramCallback)
   {
-    ThreadManager.post(new aiok(this, paramList1, paramList2, paramInt, paramCallback), 8, null, true);
+    ThreadManager.post(new ajco(this, paramList1, paramList2, paramInt, paramCallback), 8, null, true);
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager
  * JD-Core Version:    0.7.0.1
  */

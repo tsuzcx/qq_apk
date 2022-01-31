@@ -1,26 +1,15 @@
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.widget.PullToZoomListView;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class swh
   implements Runnable
 {
-  public swh(LikeRankingListActivity paramLikeRankingListActivity) {}
+  public swh(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
   public void run()
   {
-    if (this.a.c == null) {
-      return;
-    }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestHeight = this.a.e;
-    localURLDrawableOptions.mRequestWidth = this.a.d;
-    this.a.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.a.b.setImageDrawable(URLDrawable.getDrawable(this.a.c, localURLDrawableOptions));
-    this.a.a.a(true);
+    QQToast.a(this.a, this.a.getResources().getString(2131437758), 0).b(this.a.getTitleBarHeight());
   }
 }
 

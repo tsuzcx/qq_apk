@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import myv;
+import nag;
 
 @TargetApi(14)
 public class PreloadDownloader
@@ -33,7 +33,7 @@ public class PreloadDownloader
   public volatile PreloadQueue a;
   protected Thread a;
   public List a;
-  protected myv a;
+  protected nag a;
   protected final Object b = new Object();
   
   static
@@ -241,19 +241,19 @@ public class PreloadDownloader
     //   18: monitorexit
     //   19: return
     //   20: aload_0
-    //   21: new 290	myv
+    //   21: new 290	nag
     //   24: dup
     //   25: aload_0
     //   26: aconst_null
-    //   27: invokespecial 293	myv:<init>	(Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;Lmyu;)V
-    //   30: putfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Myv	Lmyv;
+    //   27: invokespecial 293	nag:<init>	(Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;Lnaf;)V
+    //   30: putfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
     //   33: aload_0
-    //   34: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Myv	Lmyv;
+    //   34: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
     //   37: iconst_1
-    //   38: putfield 297	myv:jdField_a_of_type_Boolean	Z
+    //   38: putfield 297	nag:jdField_a_of_type_Boolean	Z
     //   41: aload_0
     //   42: aload_0
-    //   43: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Myv	Lmyv;
+    //   43: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
     //   46: ldc_w 299
     //   49: iconst_5
     //   50: invokestatic 305	com/tencent/mobileqq/app/ThreadManager:newFreeThread	(Ljava/lang/Runnable;Ljava/lang/String;I)Ljava/lang/Thread;
@@ -388,7 +388,7 @@ public class PreloadDownloader
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Myv != null) && (this.jdField_a_of_type_Myv.jdField_a_of_type_Boolean);
+    return (this.jdField_a_of_type_Nag != null) && (this.jdField_a_of_type_Nag.jdField_a_of_type_Boolean);
   }
   
   /* Error */
@@ -398,15 +398,15 @@ public class PreloadDownloader
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Myv	Lmyv;
+    //   3: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
     //   6: ifnull +42 -> 48
     //   9: aload_0
-    //   10: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Myv	Lmyv;
+    //   10: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
     //   13: iconst_0
-    //   14: putfield 297	myv:jdField_a_of_type_Boolean	Z
+    //   14: putfield 297	nag:jdField_a_of_type_Boolean	Z
     //   17: aload_0
     //   18: aconst_null
-    //   19: putfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Myv	Lmyv;
+    //   19: putfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
     //   22: aload_0
     //   23: getfield 43	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader	Lcom/tencent/biz/qqstory/base/preload/AsyncFileDownloader;
     //   26: invokevirtual 361	com/tencent/biz/qqstory/base/preload/AsyncFileDownloader:a	()Z

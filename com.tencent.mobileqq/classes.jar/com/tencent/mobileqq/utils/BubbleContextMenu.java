@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import ajnr;
+import akbx;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -76,9 +76,9 @@ public class BubbleContextMenu
     while (i < paramInt)
     {
       Object localObject = paramQQCustomMenu.a(i);
-      ajnr localajnr = new ajnr(paramContext, paramBubblePopupWindow);
-      localajnr.setText(((QQCustomMenuItem)localObject).a());
-      localajnr.setTextSize(13.0F);
+      akbx localakbx = new akbx(paramContext, paramBubblePopupWindow);
+      localakbx.setText(((QQCustomMenuItem)localObject).a());
+      localakbx.setTextSize(13.0F);
       Resources localResources = paramContext.getResources();
       TextPaint localTextPaint = new TextPaint(1);
       localTextPaint.density = localResources.getDisplayMetrics().density;
@@ -88,20 +88,20 @@ public class BubbleContextMenu
         j = 10;
       }
       j = (int)(j * localTextPaint.density);
-      localajnr.setMinimumWidth(j * 2 + k);
-      localajnr.setPadding(j, 0, j, 0);
-      localajnr.setContentDescription(((QQCustomMenuItem)localObject).a());
-      localajnr.setId(((QQCustomMenuItem)localObject).a());
-      localajnr.setTextColor(-1);
-      localajnr.setBackgroundDrawable(null);
-      localajnr.setIncludeFontPadding(true);
-      localajnr.setOnClickListener(paramOnClickListener);
-      localajnr.setGravity(17);
-      paramQQCustomMenuLayout.addView(localajnr, new LinearLayout.LayoutParams(-2, -2, 1.0F));
+      localakbx.setMinimumWidth(j * 2 + k);
+      localakbx.setPadding(j, 0, j, 0);
+      localakbx.setContentDescription(((QQCustomMenuItem)localObject).a());
+      localakbx.setId(((QQCustomMenuItem)localObject).a());
+      localakbx.setTextColor(-1);
+      localakbx.setBackgroundDrawable(null);
+      localakbx.setIncludeFontPadding(true);
+      localakbx.setOnClickListener(paramOnClickListener);
+      localakbx.setGravity(17);
+      paramQQCustomMenuLayout.addView(localakbx, new LinearLayout.LayoutParams(-2, -2, 1.0F));
       if (i != paramInt - 1)
       {
         localObject = new ImageView(paramContext);
-        ((ImageView)localObject).setBackgroundResource(2130838296);
+        ((ImageView)localObject).setBackgroundResource(2130838300);
         paramQQCustomMenuLayout.addView((View)localObject, -2, -2);
       }
       i += 1;

@@ -110,8 +110,8 @@ public class RecentHotchatItem
         this.jdField_c_of_type_Int = ((ConversationFacade)localObject1).a(localMessage.frienduin, localMessage.istroop);
         if ((TroopNotificationHelper.a((String)localObject4)) || (TroopNotificationHelper.c((String)localObject4)))
         {
-          this.jdField_d_of_type_JavaLangCharSequence = BaseApplicationImpl.getContext().getString(2131433490);
-          this.e = paramContext.getResources().getColor(2131494281);
+          this.jdField_d_of_type_JavaLangCharSequence = BaseApplicationImpl.getContext().getString(2131433507);
+          this.e = paramContext.getResources().getColor(2131494288);
         }
         k = this.f;
         localObject1 = (TroopManager)paramQQAppInterface.getManager(51);
@@ -183,8 +183,8 @@ public class RecentHotchatItem
         }
         if ((this.jdField_b_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)))
         {
-          this.jdField_d_of_type_JavaLangCharSequence = paramQQAppInterface.getApp().getString(2131430810);
-          this.e = paramQQAppInterface.getApp().getResources().getColor(2131494281);
+          this.jdField_d_of_type_JavaLangCharSequence = paramQQAppInterface.getApp().getString(2131430827);
+          this.e = paramQQAppInterface.getApp().getResources().getColor(2131494288);
         }
         if ((this.jdField_b_of_type_Boolean) && (!bool))
         {
@@ -192,7 +192,7 @@ public class RecentHotchatItem
           ReportController.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject1, "" + TroopUtils.a(paramQQAppInterface, (String)localObject1), "", "");
         }
         if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) && (localMessage != null) && (localObject4 != null) && (AnonymousChatHelper.a(localMessage))) {
-          this.jdField_c_of_type_JavaLangCharSequence = ((MsgSummary)localObject4).a(paramContext, paramContext.getResources().getString(2131430270), -1);
+          this.jdField_c_of_type_JavaLangCharSequence = ((MsgSummary)localObject4).a(paramContext, paramContext.getResources().getString(2131430287), -1);
         }
         this.f &= 0xFFFFFF0F;
         k = this.f;
@@ -242,7 +242,7 @@ public class RecentHotchatItem
             break label751;
           }
           this.jdField_d_of_type_JavaLangCharSequence = "[新活动]";
-          this.e = paramQQAppInterface.getApp().getResources().getColor(2131494281);
+          this.e = paramQQAppInterface.getApp().getResources().getColor(2131494288);
           localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataAioPushData.wording;
           ((MsgSummary)localObject4).a();
           this.jdField_c_of_type_JavaLangCharSequence = ((MsgSummary)localObject4).a(paramContext, (String)localObject1, -1);
@@ -259,7 +259,7 @@ public class RecentHotchatItem
           if ((e()) && (!c()))
           {
             this.jdField_d_of_type_JavaLangCharSequence = "[新活动]";
-            this.e = paramQQAppInterface.getApp().getResources().getColor(2131494281);
+            this.e = paramQQAppInterface.getApp().getResources().getColor(2131494288);
             paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqDataAioPushData.wording;
             ((MsgSummary)localObject4).a();
             this.jdField_c_of_type_JavaLangCharSequence = ((MsgSummary)localObject4).a(paramContext, paramQQAppInterface, -1);

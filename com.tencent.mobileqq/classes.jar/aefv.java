@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.medalwall.MedalID;
 
-public class aefv
-  implements View.OnFocusChangeListener
+public final class aefv
+  implements Parcelable.Creator
 {
-  public aefv(SelectLocationFragment paramSelectLocationFragment) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public MedalID a(Parcel paramParcel)
   {
-    if (!paramBoolean) {
-      SelectLocationFragment.a(this.a);
-    }
+    return new MedalID(paramParcel);
+  }
+  
+  public MedalID[] a(int paramInt)
+  {
+    return new MedalID[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefv
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ public abstract class ComponentHeaderBase
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969569, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969576, this, true);
   }
   
   public void a() {}
@@ -70,7 +70,7 @@ public abstract class ComponentHeaderBase
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131366978));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131367020));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)

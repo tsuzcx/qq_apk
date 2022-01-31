@@ -1,4 +1,4 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.HotChatShare;
 
 class zfl
   implements Runnable
@@ -7,11 +7,8 @@ class zfl
   
   public void run()
   {
-    if (this.a.a.b)
-    {
-      this.a.a.b = false;
-      this.a.a();
-    }
+    this.a.a.c();
+    HotChatShare.a(this.a.a);
   }
 }
 

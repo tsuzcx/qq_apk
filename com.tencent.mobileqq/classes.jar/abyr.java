@@ -1,25 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder;
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.doutu.combo.ComboUIManager;
 
 public class abyr
   implements Runnable
 {
-  public abyr(EmotionPanelDataBuilder paramEmotionPanelDataBuilder, QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, EmotionPanelDataBuilder.EmotionPanelDataCallback paramEmotionPanelDataCallback) {}
+  public abyr(ComboUIManager paramComboUIManager) {}
   
   public void run()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelDataBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.b, this.c, this.jdField_a_of_type_Boolean);
-    ThreadManager.getUIHandler().post(new abys(this, localList));
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyr
  * JD-Core Version:    0.7.0.1
  */

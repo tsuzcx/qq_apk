@@ -1,24 +1,19 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
-import com.tencent.widget.XEditTextEx;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class vhe
-  implements TextWatcher
+public class vhe
+  extends AnimatorListenerAdapter
 {
-  vhe(vhd paramvhd) {}
+  public vhe(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
-    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this);
-    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131362149, null);
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.a) {
+      return;
+    }
+    this.a.b();
   }
 }
 

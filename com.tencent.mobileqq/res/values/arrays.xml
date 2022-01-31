@@ -42,8 +42,8 @@
         <item>拍照</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f09000a">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1d26</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1d27</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1d37</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1d38</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f09000b">
         <item>删除消息</item>
@@ -57,13 +57,13 @@
         <item>清空所有验证消息</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f09000e">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1e97</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1e98</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1e99</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1ea8</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1ea9</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1eaa</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f09000f">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1e97</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1e99</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1ea8</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1eaa</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f090010">
         <item>添加新分组</item>
@@ -119,14 +119,14 @@
         <item>空间相册</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f090017">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b167f</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1680</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1690</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b1691</item>
         <item>取消</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f090018">
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09cb</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09cc</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09cd</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09d1</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09d2</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b09d3</item>
         <item>取消</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f090019">
@@ -157,9 +157,9 @@
         <item>清除位置信息并退出</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f09001e">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b27fd</item>
         <item>@string/APKTOOL_DUPLICATE_string_0x7f0b27ec</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b27db</item>
-        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b27cd</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0b27de</item>
     </string-array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f09001f">
         <item>今天</item>
@@ -755,11 +755,11 @@
         <item>Z</item>
     </string-array>
     <array name="APKTOOL_DUPLICATE_array_0x7f090059">
-        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a7c</item>
-        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a7d</item>
+        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a82</item>
+        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a83</item>
     </array>
     <array name="APKTOOL_DUPLICATE_array_0x7f09005a">
-        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a7b</item>
+        <item>@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a81</item>
     </array>
     <string-array name="APKTOOL_DUPLICATE_array_0x7f09005b">
         <item>从本设备中删除</item>

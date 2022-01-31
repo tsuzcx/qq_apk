@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webprocess;
 
-import ajxh;
+import aklo;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
@@ -87,12 +87,12 @@ public class PreloadService$PreloadImpl
       return;
     }
     a();
-    ThreadManager.postImmediately(new ajxh(this, paramAppInterface), null, true);
+    ThreadManager.postImmediately(new aklo(this, paramAppInterface), null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.PreloadService.PreloadImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,16 @@
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload.Listener;
 
 public class anvr
   implements Runnable
 {
-  public anvr(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite) {}
+  public anvr(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload) {}
   
   public void run()
   {
-    this.a.a();
+    if (EditWebVideoHallowenUpload.a(this.a) != null) {
+      EditWebVideoHallowenUpload.a(this.a).b();
+    }
   }
 }
 

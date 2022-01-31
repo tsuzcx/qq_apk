@@ -1,33 +1,24 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.GridViewAdapter;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class xwz
-  implements View.OnKeyListener
+  implements Comparable
 {
-  public xwz(SelectMemberActivity paramSelectMemberActivity) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public xwz(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
   {
-    if (paramInt == 67)
-    {
-      if (paramKeyEvent.getAction() != 0) {
-        break label35;
-      }
-      this.a.r = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
-    }
-    for (;;)
-    {
-      return false;
-      label35:
-      if ((paramKeyEvent.getAction() == 1) && (this.a.r)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity$GridViewAdapter.a();
-      }
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
+    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
+  }
+  
+  public int a(xwz paramxwz)
+  {
+    return -(int)(this.jdField_a_of_type_Long - paramxwz.jdField_a_of_type_Long);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adhh;
+import adrg;
 import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
@@ -48,7 +48,7 @@ public class HotVideoData
             break label92;
           }
           str2 = this.md5;
-          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new adhh(this, localHotVideoGetUrlResult, paramHotVideoGetUrlCallBack));
+          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new adrg(this, localHotVideoGetUrlResult, paramHotVideoGetUrlCallBack));
           break;
         }
       }
@@ -206,7 +206,7 @@ public class HotVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoData
  * JD-Core Version:    0.7.0.1
  */

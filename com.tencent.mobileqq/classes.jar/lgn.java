@@ -1,25 +1,14 @@
-import com.tencent.ark.ark;
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class lgn
   implements Runnable
 {
-  public lgn(ReadInJoyArkViewController paramReadInJoyArkViewController, String paramString1, String paramString2) {}
+  public lgn(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
   public void run()
   {
-    try
-    {
-      ark.arkNotify("com.tencent.khala", this.jdField_a_of_type_JavaLangString, this.b, "json");
-      ark.arkNotify("com.tencent.test.khala", this.jdField_a_of_type_JavaLangString, this.b, "json");
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ReadInJoyArkViewController", 2, "arkNotify failed, .so not loaded");
-    }
+    ReadInJoyDeliverBiuActivity.c(this.a).setSelection(0);
   }
 }
 

@@ -1,43 +1,47 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.view.ProfileLabelCallBack;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanel.LabelStatusManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class teb
-  implements ProfileLabelCallBack
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public teb(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public teb(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramBoolean.booleanValue())
-    {
-      if ((this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) || (this.a.a(this.a.jdField_a_of_type_JavaUtilList)))
-      {
-        if (this.a.a(this.a.jdField_a_of_type_JavaUtilList)) {
-          this.a.b(2131435789);
-        }
-        return;
-      }
-      ReportController.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
-      this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
+    int i = 1;
+    if (AppSetting.b) {
+      NotifyPushSettingActivity.c(this.a).setContentDescription("通知时指示灯闪烁");
     }
-    for (;;)
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131434203), "qqsetting_notify_blncontrol_key", paramBoolean);
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(paramProfileLabelInfo, paramToggleButton);
-      this.a.a(this.a.jdField_a_of_type_JavaUtilList.size());
-      if (this.a.jdField_a_of_type_Tef == null) {
-        break;
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label144;
       }
-      this.a.jdField_a_of_type_Tef.notifyDataSetChanged();
+      label86:
+      if (!paramBoolean) {
+        break label149;
+      }
+    }
+    label144:
+    label149:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Led_blinking", 0, i, paramCompoundButton, "", "", "");
       return;
-      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
-        break;
-      }
-      this.a.a(paramProfileLabelInfo, this.a.jdField_a_of_type_JavaUtilList);
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 0);
+      break;
+      i = 0;
+      break label86;
     }
   }
 }

@@ -1,45 +1,22 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.av.ui.QAVPtvTemplateAdapter;
-import com.tencent.av.ui.QavListItemBase.ItemInfo;
-import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
-import com.tencent.common.app.AppInterface;
-import com.tencent.widget.HorizontalListView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.GetRedBag;
+import com.tencent.qphone.base.util.QLog;
 
-public final class keb
-  extends QAVPtvTemplateAdapter
+public class keb
+  implements key
 {
-  WeakReference a;
+  public keb(AVRedBagMgr paramAVRedBagMgr) {}
   
-  public keb(AppInterface paramAppInterface, Context paramContext, ArrayList paramArrayList, HorizontalListView paramHorizontalListView, ZimuToolbar paramZimuToolbar)
+  public void a(GetRedBag paramGetRedBag)
   {
-    super(paramAppInterface, paramContext, paramArrayList, paramHorizontalListView);
-    this.a = new WeakReference(paramZimuToolbar);
-  }
-  
-  public void a(String paramString)
-  {
-    int i;
-    if (!TextUtils.isEmpty(paramString))
+    if (paramGetRedBag == this.a.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag)
     {
-      int j = getCount();
-      i = 1;
-      if (i < j)
-      {
-        QavListItemBase.ItemInfo localItemInfo = a(i);
-        if ((localItemInfo == null) || (!paramString.equals(localItemInfo.a))) {}
-      }
-    }
-    for (;;)
-    {
-      a(i);
+      this.a.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag = null;
+      this.a.jdField_a_of_type_Key = null;
+      this.a.a("onGetRedBagResult", AVRedBagMgr.d(this.a), paramGetRedBag.a);
       return;
-      i += 1;
-      break;
-      i = 1;
     }
+    QLog.w("AVRedBag", 1, "onGetRedBagResult,  GetRedBag不一致，callback[" + paramGetRedBag + "], src[" + this.a.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag + "]");
   }
 }
 

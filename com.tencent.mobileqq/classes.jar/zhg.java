@@ -1,26 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.MobileQQService;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.app.MessageRoamManager;
 
 public class zhg
   implements Runnable
 {
-  public zhg(QQAppInterface paramQQAppInterface) {}
+  public zhg(MessageRoamManager paramMessageRoamManager) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
-    int i = 0;
-    while (i < QQAppInterface.a(this.a).length)
-    {
-      Manager localManager = QQAppInterface.a(this.a)[i];
-      if (localManager != null) {
-        localManager.onDestroy();
-      }
-      i += 1;
-    }
+    this.a.n();
   }
 }
 

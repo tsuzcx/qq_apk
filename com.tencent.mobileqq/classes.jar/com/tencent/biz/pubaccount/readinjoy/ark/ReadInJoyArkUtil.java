@@ -19,8 +19,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import lgg;
-import lgj;
+import lfw;
+import lfz;
 
 public class ReadInJoyArkUtil
 {
@@ -58,7 +58,7 @@ public class ReadInJoyArkUtil
       }
       return;
     }
-    a(new lgj(), 5);
+    a(new lfz(), 5);
   }
   
   public static void a(int paramInt)
@@ -153,7 +153,7 @@ public class ReadInJoyArkUtil
       }
       return;
     }
-    a(new lgg(paramArkAppMessage, paramInt), 5);
+    a(new lfw(paramArkAppMessage, paramInt), 5);
   }
   
   public static void a(Runnable paramRunnable, int paramInt)

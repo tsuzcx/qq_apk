@@ -1,53 +1,124 @@
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.net.URLEncoder;
-import mqq.os.MqqHandler;
+import Wallet.JudgeDownloadRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadFlowControlConfig;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class xgb
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public xgb(BannerManager paramBannerManager) {}
+  public xgb(PreloadResource paramPreloadResource, WeakReference paramWeakReference, DownloadListener paramDownloadListener, PreloadModule paramPreloadModule) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle arg3)
   {
-    if (!BannerManager.a(this.a)) {
+    int i = 60;
+    PreloadManager localPreloadManager1;
+    label83:
+    JudgeDownloadRsp localJudgeDownloadRsp;
+    if (paramInt == 1)
+    {
+      try
+      {
+        localPreloadManager1 = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (!PreloadManager.a(localPreloadManager1)) {
+          return;
+        }
+        if (paramBoolean) {
+          break label83;
+        }
+        localPreloadManager1.d();
+        return;
+      }
+      catch (Throwable ???)
+      {
+        if (!QLog.isColorLevel()) {
+          break label579;
+        }
+      }
+      QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " startFlowControlReq onReceive exception:" + ???);
+      return;
+      localJudgeDownloadRsp = (JudgeDownloadRsp)???.getSerializable("rsp");
+      if (localJudgeDownloadRsp == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadResource", 2, "onReceive rsp is null:" + localJudgeDownloadRsp);
+        }
+        localPreloadManager1.d();
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + "FlowControlRsp|" + localJudgeDownloadRsp.iDownloadStatus + "|" + localJudgeDownloadRsp.iSegTime + "|" + localJudgeDownloadRsp.iFailedRetryMax);
+      }
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource)
+      {
+        switch (localJudgeDownloadRsp.iDownloadStatus)
+        {
+        case 1: 
+          if (localJudgeDownloadRsp.iDownloadStatus != 0) {
+            PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource).mRetryReqTimes = 0;
+          }
+          PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource).saveConfig();
+          if (localJudgeDownloadRsp.iDownloadStatus != 2) {
+            break label527;
+          }
+          localPreloadManager1.d();
+          if (this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener == null) {
+            break label579;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.notifyListenerDownloadFailInFlowControl(this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, localPreloadManager1);
+          return;
+          PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource).mDownloadStatus = 1;
+          localPreloadFlowControlConfig = PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource);
+          if (localJudgeDownloadRsp.iFailedRetryMax > 0)
+          {
+            paramInt = localJudgeDownloadRsp.iFailedRetryMax;
+            localPreloadFlowControlConfig.mRetryDownloadTimes = paramInt;
+            localPreloadFlowControlConfig = PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource);
+            if (localJudgeDownloadRsp.iSegTime > 60) {
+              i = localJudgeDownloadRsp.iSegTime;
+            }
+            localPreloadFlowControlConfig.mValidDownloadTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
+          }
+          break;
+        }
+      }
+      paramInt = 3;
+      continue;
+      PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource).mDownloadStatus = 2;
+      PreloadFlowControlConfig localPreloadFlowControlConfig = PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource);
+      if (localJudgeDownloadRsp.iSegTime > 60) {
+        i = localJudgeDownloadRsp.iSegTime;
+      }
+      localPreloadFlowControlConfig.mNextCanReqTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
+      continue;
+      PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource).mDownloadStatus = 0;
+      localPreloadFlowControlConfig = PreloadResource.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource);
+      if (localJudgeDownloadRsp.iSegTime > 60) {
+        i = localJudgeDownloadRsp.iSegTime;
+      }
+      localPreloadFlowControlConfig.mNextRetryReqTime = (i * 1000 + NetConnInfoCenter.getServerTimeMillis());
+      continue;
+      label527:
+      if (localJudgeDownloadRsp.iDownloadStatus == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(localPreloadManager2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+        return;
+      }
+      if (localJudgeDownloadRsp.iDownloadStatus == 1) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(localPreloadManager2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+      }
+      label579:
       return;
     }
-    BannerManager.a(this.a, false);
-    new Handler().postDelayed(new xgc(this), 1000L);
-    paramView = (QQAppInterface)BannerManager.a(this.a).getAppRuntime();
-    String str = paramView.getCurrentAccountUin();
-    Object localObject = new StringBuilder("http://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
-    ((StringBuilder)localObject).append("?");
-    ((StringBuilder)localObject).append("uin=");
-    ((StringBuilder)localObject).append(str);
-    ((StringBuilder)localObject).append("&plat=1");
-    ((StringBuilder)localObject).append("&app=1");
-    ((StringBuilder)localObject).append("&version=7.6.0.3525");
-    ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
-    ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
-    ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-    localObject = ((StringBuilder)localObject).toString();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", (String)localObject);
-    localIntent.putExtra("uin", str);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    VasWebviewUtil.openQQBrowserActivity(BannerManager.a(this.a), (String)localObject, 32768L, localIntent, false, -1);
-    PhoneNumLoginImpl.a().a(paramView);
-    BannerManager.a(this.a).sendEmptyMessageDelayed(4, 1000L);
-    ReportController.b(paramView, "CliOper", "", "", "Mobile_signup", "Clk_blue_pw", 0, 0, "", "", "", "");
   }
 }
 

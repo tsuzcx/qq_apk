@@ -1,8 +1,19 @@
-import cooperation.thirdpay.ThirdPayGate;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqdataline.ipc.MessageRecordParcel;
 
-public class amow
+public final class amow
+  implements Parcelable.Creator
 {
-  public static final ThirdPayGate a = new ThirdPayGate(null);
+  public MessageRecordParcel a(Parcel paramParcel)
+  {
+    return MessageRecordParcel.a(paramParcel);
+  }
+  
+  public MessageRecordParcel[] a(int paramInt)
+  {
+    return new MessageRecordParcel[paramInt];
+  }
 }
 
 

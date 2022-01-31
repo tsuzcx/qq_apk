@@ -15,7 +15,7 @@ public class TroopBaseProxyActivity
     {
       try
       {
-        paramActivity = new Dialog(paramActivity, 2131624515);
+        paramActivity = new Dialog(paramActivity, 2131624516);
         Activity localActivity = paramActivity;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
@@ -23,9 +23,9 @@ public class TroopBaseProxyActivity
         try
         {
           paramActivity.setCancelable(true);
-          paramActivity.setContentView(2130969181);
+          paramActivity.setContentView(2130969180);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131363381)).setText("正在加载...");
+          ((TextView)paramActivity.findViewById(2131363399)).setText("正在加载...");
           localActivity = paramActivity;
           return localActivity;
         }

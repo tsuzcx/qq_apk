@@ -1,27 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler;
+import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.Callback;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-class abyv
-  implements AbsListView.OnScrollListener
+public class abyv
+  implements Runnable
 {
-  abyv(abyu paramabyu) {}
+  public abyv(ChirpSoHandler paramChirpSoHandler) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    if (paramInt == 0)
+    synchronized (ChirpSoHandler.a(this.a))
     {
-      URLDrawable.resume();
-      if (this.a.jdField_a_of_type_Abyt.jdField_a_of_type_Int == 1) {
-        EmotionPanelViewPagerAdapter.a(this.a.jdField_a_of_type_Abyt.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_Abyt.jdField_a_of_type_ComTencentWidgetListView);
+      Iterator localIterator = ChirpSoHandler.a(this.a).iterator();
+      if (localIterator.hasNext()) {
+        ((ChirpSoHandler.Callback)localIterator.next()).k();
       }
-      return;
     }
-    URLDrawable.pause();
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

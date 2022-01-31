@@ -2,8 +2,10 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
 import android.text.SpannableStringBuilder;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeArticleCommentSummaryView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
@@ -31,6 +33,12 @@ public class SummaryView
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     this.a.a(paramIReadInJoyModel, localSpannableStringBuilder);
     this.a.b(paramIReadInJoyModel, localSpannableStringBuilder);
+    if (this.a.getLayoutParams() == null)
+    {
+      paramIReadInJoyModel = b();
+      paramIReadInJoyModel = new ViewGroup.LayoutParams(paramIReadInJoyModel.a, paramIReadInJoyModel.b);
+      this.a.setLayoutParams(paramIReadInJoyModel);
+    }
     this.a.setText(localSpannableStringBuilder);
   }
   

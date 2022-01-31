@@ -1,34 +1,20 @@
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
 
-public final class acxh
-  implements Runnable
+public class acxh
+  extends TimerTask
 {
-  public acxh(FileManagerEntity paramFileManagerEntity) {}
+  public acxh(OnlineFileSessionWorker paramOnlineFileSessionWorker) {}
   
   public void run()
   {
-    if (FileUtil.a(this.a.getFilePath())) {}
-    PackageInfo localPackageInfo;
-    do
-    {
-      Iterator localIterator;
-      do
-      {
-        return;
-        while ((this.a.strApkPackageName == null) || (this.a.strApkPackageName.length() == 0)) {}
-        localIterator = FileCategoryUtil.a(BaseApplicationImpl.getContext()).iterator();
-      } while (!localIterator.hasNext());
-      localPackageInfo = (PackageInfo)localIterator.next();
-    } while (!this.a.strApkPackageName.equalsIgnoreCase(localPackageInfo.packageName));
-    this.a.setFilePath(localPackageInfo.applicationInfo.publicSourceDir);
-    this.a.fileName = FileCategoryUtil.a(this.a.getFilePath());
+    QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + OnlineFileSessionWorker.a(this.a).a() + " WaitAskUpProgressResultTimer time out!!!!!!!");
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 43, new Object[] { Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
+    this.a.c();
   }
 }
 

@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
 
-class acgy
-  implements Runnable
+public class acgy
+  implements DialogInterface.OnClickListener
 {
-  acgy(acgx paramacgx) {}
+  public acgy(StickerGestureDetector paramStickerGestureDetector) {}
   
-  public void run()
-  {
-    QfileFileAssistantActivity.g(this.a.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

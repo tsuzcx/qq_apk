@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
 
 public class jxo
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public jxo(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public jxo(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.c()))
-    {
-      this.a.e();
-      this.a.L();
-      this.a.a.a().as = true;
-    }
-    paramDialogInterface.dismiss();
+    QAVGroupConfig.Report.c();
+    ReportController.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.b, "", "", "");
+    this.a.c(10);
   }
 }
 

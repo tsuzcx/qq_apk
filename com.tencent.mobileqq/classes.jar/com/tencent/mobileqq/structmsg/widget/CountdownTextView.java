@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.widget;
 
-import ahwa;
+import aikd;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
@@ -41,7 +41,7 @@ public class CountdownTextView
     CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
     if (localCountDownTimer != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new ahwa(this, paramLong, paramTimerCallback);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new aikd(this, paramLong, paramTimerCallback);
       localCountDownTimer.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
     }
   }
@@ -54,7 +54,7 @@ public class CountdownTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.widget.CountdownTextView
  * JD-Core Version:    0.7.0.1
  */

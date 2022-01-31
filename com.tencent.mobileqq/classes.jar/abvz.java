@@ -1,60 +1,51 @@
-import com.tencent.mobileqq.app.EmoticonHandler;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.EmojiManager.SyncFetchEmoticonKeyObserver;
-import com.tencent.mobileqq.emoticon.ReqInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class abvz
-  extends EmojiManager.SyncFetchEmoticonKeyObserver
+  implements DialogInterface.OnClickListener
 {
-  public abvz(EmojiManager paramEmojiManager, EmoticonHandler paramEmoticonHandler, ReqInfo paramReqInfo, Object paramObject)
-  {
-    super(paramEmojiManager, paramEmoticonHandler);
-  }
+  public abvz(DBFixDialogUI paramDBFixDialogUI) {}
   
-  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
-    }
-    ??? = (EmoticonHandler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    int i = paramEmoticonResp.epId;
-    int j = paramEmoticonResp.timestamp;
-    Object localObject1 = (ArrayList)paramEmoticonResp.data;
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".db");
+    boolean bool = false;
+    if ((paramDialogInterface.exists()) && ((float)paramDialogInterface.length() * 1.7F > FileUtils.a()))
     {
-      ((EmoticonHandler)???).b(this);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.b = paramEmoticonResp.timeoutReason;
+      bool = true;
+      DBFixDialogUI.a(this.a);
+      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
+      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_MemoryAlert").commit();
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        ??? = this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
-        if (localObject1 == null)
-        {
-          localObject1 = "null";
-          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
-          return;
-        }
-      }
-      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
+      paramDialogInterface = new HashMap();
+      paramDialogInterface.put("isMemAlert", String.valueOf(bool));
+      StatisticCollector.a(BaseApplication.getContext()).a(null, DBFixManager.n, true, -1L, 0L, paramDialogInterface, null, false);
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, DBFixDialogUI.c, DBFixDialogUI.c, 0, 0, "", "", "", "");
+      return;
+      DBFixDialogUI.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvz
  * JD-Core Version:    0.7.0.1
  */

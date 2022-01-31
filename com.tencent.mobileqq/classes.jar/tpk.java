@@ -1,40 +1,45 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class tpk
-  implements CompoundButton.OnCheckedChangeListener
+  extends AccountObserver
 {
-  public tpk(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
+  public tpk(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
   {
-    boolean bool = true;
-    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!NetworkUtil.d(this.a.getActivity())))
-    {
-      this.a.a(2131437741, 0);
-      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
-      if (!paramBoolean)
-      {
-        paramBoolean = bool;
-        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, paramBoolean);
-      }
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt, paramArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginFailed ");
     }
-    do
-    {
-      return;
-      paramBoolean = false;
-      break;
-      if (paramCompoundButton == this.a.a.a())
-      {
-        this.a.app.e(paramBoolean, true);
-        return;
-      }
-    } while (paramCompoundButton != this.a.b.a());
-    this.a.app.f(paramBoolean, true);
+    RegisterChooseLoginActivity.a(this.a);
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginSuccess ");
+    }
+  }
+  
+  protected void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    RegisterChooseLoginActivity.a(this.a);
+  }
+  
+  protected void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onUserCancel ");
+    }
+    RegisterChooseLoginActivity.a(this.a);
   }
 }
 

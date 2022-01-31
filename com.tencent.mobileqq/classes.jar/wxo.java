@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
+import java.util.ArrayList;
 
-public class wxo
-  implements DialogInterface.OnClickListener
+class wxo
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public wxo(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  wxo(wxk paramwxk, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    this.a.getActivity().finish();
+    this.jdField_a_of_type_Wxk.a.d();
+    if (QQStoryFlowCallback.a(this.jdField_a_of_type_Wxk.a, paramLocalMediaInfo))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a(this.jdField_a_of_type_Wxk.a, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, this.jdField_a_of_type_Wxk.a.d);
+    }
   }
 }
 

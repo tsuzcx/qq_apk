@@ -1,17 +1,20 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class alwa
-  implements FilenameFilter
+  implements DialogInterface.OnDismissListener
 {
-  public boolean accept(File paramFile, String paramString)
+  public alwa(Login paramLogin) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return paramString.endsWith(this.a);
+    Login.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alwa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public final class aadx
-  implements Parcelable.Creator
+public class aadx
+  implements Runnable
 {
-  public ArWebInfo a(Parcel paramParcel)
-  {
-    return new ArWebInfo(paramParcel);
-  }
+  public aadx(ScanEntranceReport paramScanEntranceReport, int paramInt, long paramLong) {}
   
-  public ArWebInfo[] a(int paramInt)
+  public void run()
   {
-    return new ArWebInfo[paramInt];
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

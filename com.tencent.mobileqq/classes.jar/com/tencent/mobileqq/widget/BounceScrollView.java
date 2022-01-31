@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aken;
+import aksu;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -18,7 +18,7 @@ public class BounceScrollView
   extends ScrollView
 {
   private int jdField_a_of_type_Int;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new aken(this));
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new aksu(this));
   private BounceScrollView.DrawFinishedListener jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$DrawFinishedListener;
   private BounceScrollView.MotionEventInterceptor jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView$MotionEventInterceptor;
   protected BounceScrollView.OnScrollChangedListener a;
@@ -196,7 +196,7 @@ public class BounceScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BounceScrollView
  * JD-Core Version:    0.7.0.1
  */

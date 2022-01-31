@@ -10,13 +10,13 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.av.config.ConfigInfo;
 import com.tencent.av.report.TraeConfigUpdate;
-import jsl;
+import jrw;
 
 public class ConfigInfoTips
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int = -1;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jsl(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jrw(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private boolean jdField_a_of_type_Boolean;
   private long[] jdField_a_of_type_ArrayOfLong;
@@ -31,9 +31,9 @@ public class ConfigInfoTips
   private void a(View paramView)
   {
     paramView = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    paramView.findViewById(2131365892).setVisibility(0);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131365893);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131365894);
+    paramView.findViewById(2131365919).setVisibility(0);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131365920);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131365921);
     int n = ConfigInfo.instance().getSharpConfigVersionFromFile();
     String[] arrayOfString = ConfigInfo.instance().getSharpConfigPayloadFromFile().split("\n");
     paramView = new String();
@@ -82,15 +82,15 @@ public class ConfigInfoTips
   public void a()
   {
     Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    View localView = ((Activity)localObject).findViewById(2131365348);
+    View localView = ((Activity)localObject).findViewById(2131365370);
     if (localView != null) {
       localView.setOnClickListener(this);
     }
-    localView = ((Activity)localObject).findViewById(2131365894);
+    localView = ((Activity)localObject).findViewById(2131365921);
     if (localView != null) {
       localView.setOnClickListener(this);
     }
-    localObject = ((Activity)localObject).findViewById(2131365892);
+    localObject = ((Activity)localObject).findViewById(2131365919);
     if (localObject != null) {
       ((View)localObject).setOnClickListener(this);
     }
@@ -110,7 +110,7 @@ public class ConfigInfoTips
     switch (paramView.getId())
     {
     default: 
-    case 2131365348: 
+    case 2131365370: 
       do
       {
         return;
@@ -120,7 +120,7 @@ public class ConfigInfoTips
       a(paramView);
       return;
     }
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131365892).setVisibility(8);
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131365919).setVisibility(8);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abzd;
-import abze;
-import abzf;
+import acgf;
+import acgg;
+import acgh;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -77,11 +77,11 @@ public class IPSiteListGoodsAdapter
       if (paramView == null)
       {
         paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968967, null, false);
-        paramViewGroup = new abzf(this, null);
+        paramViewGroup = new acgh(this, null);
         paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364495));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364497));
-        paramViewGroup.b = ((TextView)paramView.findViewById(2131364498));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364519));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364521));
+        paramViewGroup.b = ((TextView)paramView.findViewById(2131364522));
         paramView.setTag(paramViewGroup);
       }
       for (;;)
@@ -95,10 +95,10 @@ public class IPSiteListGoodsAdapter
             localObject1 = ((IPSiteModel.Goods)localObject2).saleNum;
           }
           paramViewGroup.b.setText((String)localObject1 + "人已拥有");
-          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new abzd(this, (IPSiteModel.Goods)localObject2));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new acgf(this, (IPSiteModel.Goods)localObject2));
         }
         return paramView;
-        paramViewGroup = (abzf)paramView.getTag();
+        paramViewGroup = (acgh)paramView.getTag();
       }
     }
     paramView = (IPSiteModel.Goods)this.jdField_a_of_type_JavaUtilList.get(0);
@@ -120,7 +120,7 @@ public class IPSiteListGoodsAdapter
     ((TextView)localObject2).setText("发现更多");
     ((TextView)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
     ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    localImageView.setImageResource(2130843837);
+    localImageView.setImageResource(2130843961);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(1, 2131362323);
     localLayoutParams.addRule(15);
@@ -129,7 +129,7 @@ public class IPSiteListGoodsAdapter
     ((RelativeLayout)localObject1).addView((View)localObject2);
     ((RelativeLayout)localObject1).addView(localImageView);
     paramViewGroup.addView((View)localObject1);
-    paramViewGroup.setOnClickListener(new abze(this, paramView));
+    paramViewGroup.setOnClickListener(new acgg(this, paramView));
     return paramViewGroup;
   }
 }

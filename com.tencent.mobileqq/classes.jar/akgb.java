@@ -1,36 +1,28 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
-import com.tencent.mobileqq.widget.GridListView.WraperAdapter;
+import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
 public class akgb
-  extends DataSetObserver
+  implements Runnable
 {
-  public akgb(GridListView paramGridListView) {}
+  public akgb(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
   
-  public void onChanged()
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
+      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
+    while (this.a.b.getWidth() < ShareActionSheetBuilder.a(this.a))
+    {
+      this.a.b.setMove(true);
+      return;
+      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
     }
-  }
-  
-  public void onInvalidated()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetInvalidated();
-    }
+    this.a.b.setMove(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akgb
  * JD-Core Version:    0.7.0.1
  */

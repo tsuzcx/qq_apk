@@ -87,10 +87,10 @@ public class QQStoryWatcherListAdapter
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
       if (this.jdField_a_of_type_Int == -1)
       {
-        i = 2130970853;
+        i = 2130970901;
         paramView = new BaseViewHolder(paramView.inflate(i, null));
         paramViewGroup = (QQUserUIItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localObject = (TextView)paramView.a(2131362876);
+        localObject = (TextView)paramView.a(2131362894);
         String str = paramViewGroup.getUserIconUrl();
         if (TextUtils.isEmpty(str)) {
           break label249;
@@ -101,7 +101,7 @@ public class QQStoryWatcherListAdapter
         PlayModeUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), (TextView)localObject, str, 13.0F, 2.0F);
         label127:
         ((TextView)localObject).setText(PlayModeUtils.a(paramViewGroup));
-        localObject = (ImageView)paramView.a(2131364953);
+        localObject = (ImageView)paramView.a(2131364975);
         if ((!paramViewGroup.isVip) || (!HttpUtil.a(paramViewGroup.headUrl))) {
           break label267;
         }

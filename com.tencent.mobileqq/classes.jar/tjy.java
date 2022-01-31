@@ -1,12 +1,16 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-public class tjy
-  implements PopupWindow.OnDismissListener
+class tjy
+  implements DialogInterface.OnClickListener
 {
-  public tjy(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  tjy(tjw paramtjw) {}
   
-  public void onDismiss() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.p();
+  }
 }
 
 

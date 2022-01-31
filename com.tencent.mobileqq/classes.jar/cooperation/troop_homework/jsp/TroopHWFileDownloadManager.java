@@ -1,10 +1,10 @@
 package cooperation.troop_homework.jsp;
 
-import ampi;
-import ampj;
-import ampk;
 import android.content.Context;
 import android.os.Process;
+import anfn;
+import anfo;
+import anfp;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class TroopHWFileDownloadManager
 {
   public static final String a;
-  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new ampk(this);
+  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new anfp(this);
   private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient;
   private TMAssistantDownloadSettingClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadSettingClient;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -39,7 +39,7 @@ public class TroopHWFileDownloadManager
   
   public void a(String paramString)
   {
-    ThreadManager.post(new ampj(this, paramString), 5, null, true);
+    ThreadManager.post(new anfo(this, paramString), 5, null, true);
   }
   
   public void a(String paramString1, String paramString2, TroopHWFileDownloadManager.OnDownloadStateListener paramOnDownloadStateListener)
@@ -60,7 +60,7 @@ public class TroopHWFileDownloadManager
       this.jdField_b_of_type_JavaUtilHashMap.put(paramString1, paramOnDownloadStateListener);
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
     }
-    ThreadManager.post(new ampi(this, paramString1, str), 5, null, true);
+    ThreadManager.post(new anfn(this, paramString1, str), 5, null, true);
   }
 }
 

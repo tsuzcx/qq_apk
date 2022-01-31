@@ -1,23 +1,28 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.mobileqq.apollo.process.data.CmGameOpenIdFinder.OpenIdListener;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ymb
-  implements CmGameOpenIdFinder.OpenIdListener
+  implements Runnable
 {
-  public ymb(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy, int paramInt, String paramString) {}
+  public ymb(ApolloRenderDriver paramApolloRenderDriver, String paramString) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void run()
   {
-    if (!TextUtils.isEmpty(paramString2))
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    try
     {
-      paramString1 = new Bundle();
-      paramString1.putInt("type", this.jdField_a_of_type_Int);
-      paramString1.putString("uin", paramString2);
-      paramString2 = new ymc(this);
-      QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", paramString1, paramString2);
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
     }
   }
 }

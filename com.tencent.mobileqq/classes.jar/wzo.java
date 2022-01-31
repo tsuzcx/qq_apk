@@ -1,87 +1,52 @@
-import android.support.v4.view.ViewPager;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.Button;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbLogic;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbLogic.QwTextAdapter;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper.GoldMsgChatState;
+import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
+import com.tencent.mobileqq.widget.FormEditItem;
 
 public class wzo
-  extends SendHbLogic.QwTextAdapter
+  extends wzn
 {
-  public wzo(CommonHbFragment paramCommonHbFragment) {}
+  private View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new wzp(this);
+  private EditText jdField_a_of_type_AndroidWidgetEditText;
+  private EditText b;
   
-  public void afterTextChanged(Editable paramEditable)
+  public wzo(GoldMsgSettingActivity paramGoldMsgSettingActivity, Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    paramEditable = CommonHbFragment.a(this.a).getText().toString();
-    Object localObject1;
-    Object localObject2;
-    SendHbLogic localSendHbLogic;
-    if ((CommonHbFragment.a(this.a)) && (CommonHbFragment.b(this.a)) && ((CommonHbFragment.a(this.a).getCurrentItem() != 2) || (!TextUtils.isEmpty(paramEditable))) && (((!"1".equals(CommonHbFragment.a(this.a))) && (!"7".equals(CommonHbFragment.a(this.a)))) || (CommonHbFragment.a(this.a).getCurrentItem() != 1) || (!TextUtils.isEmpty(paramEditable))))
+    super(paramGoldMsgSettingActivity, paramContext, paramIntent, paramString1, paramString2, paramString3, paramInt);
+  }
+  
+  void a(View paramView)
+  {
+    Object localObject = (FormEditItem)paramView.findViewById(2131364746);
+    paramView = (FormEditItem)paramView.findViewById(2131364747);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((FormEditItem)localObject).a();
+    this.b = paramView.a();
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
+    this.b.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
+    this.jdField_a_of_type_AndroidWidgetEditText.setInputType(8194);
+    this.b.setInputType(2);
+    paramView = GoldMsgChatHelper.a().a(this.jdField_a_of_type_Int, this.c);
+    if (paramView != null)
     {
-      if (!CommonHbFragment.a(this.a).isEnabled())
-      {
-        CommonHbFragment.a(this.a).setEnabled(true);
-        CommonHbFragment.a(this.a).setClickable(true);
-        CommonHbFragment.a(this.a, "hongbao.wrap.enable", "");
-      }
-      paramEditable = new StringBuffer();
-      paramEditable.append(this.a.getString(2131431250));
-      if ("2".equals(CommonHbFragment.b(this.a)))
-      {
-        localObject1 = CommonHbFragment.b(this.a).getText().toString();
-        localObject2 = this.a;
-        localSendHbLogic = this.a.a;
-        CommonHbFragment.a((CommonHbFragment)localObject2, SendHbLogic.a((String)localObject1, "1"));
-        paramEditable.append(CommonHbFragment.d(this.a));
-        paramEditable.append("元");
-        CommonHbFragment.a(this.a).setText(paramEditable.toString());
-        label261:
-        if (!TextUtils.isEmpty(CommonHbFragment.b(this.a).getText().toString())) {
-          break label524;
-        }
-        CommonHbFragment.b(this.a).setGravity(19);
-      }
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(NumAnim.formatNumber(paramView.b / 100.0D, false));
+      localObject = paramView.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener((TextWatcher)localObject);
+      localObject = paramView.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+      this.b.setText(String.valueOf(paramView.c));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener((TextWatcher)localObject);
     }
-    for (;;)
-    {
-      if (CommonHbFragment.c(this.a) != null)
-      {
-        if (!TextUtils.isEmpty(CommonHbFragment.c(this.a).getText().toString())) {
-          break label539;
-        }
-        CommonHbFragment.c(this.a).setGravity(19);
-      }
-      return;
-      if (CommonHbFragment.c(this.a) == null)
-      {
-        localObject1 = CommonHbFragment.b(this.a).getText().toString();
-        localObject2 = this.a;
-        localSendHbLogic = this.a.a;
-        CommonHbFragment.a((CommonHbFragment)localObject2, SendHbLogic.a((String)localObject1, "1"));
-        break;
-      }
-      localObject1 = this.a;
-      localObject2 = this.a.a;
-      CommonHbFragment.a((CommonHbFragment)localObject1, SendHbLogic.a(CommonHbFragment.c(this.a), "1"));
-      break;
-      if (CommonHbFragment.a(this.a).isEnabled())
-      {
-        CommonHbFragment.a(this.a).setClickable(false);
-        CommonHbFragment.a(this.a).setEnabled(false);
-        CommonHbFragment.a(this.a, "hongbao.wrap.disable", "");
-      }
-      if ((CommonHbFragment.b(this.a) != null) && (CommonHbFragment.b(this.a).getText() != null)) {
-        CommonHbFragment.a(this.a, CommonHbFragment.b(this.a).getText().toString());
-      }
-      CommonHbFragment.a(this.a).setText(2131431250);
-      break label261;
-      label524:
-      CommonHbFragment.b(this.a).setGravity(21);
-    }
-    label539:
-    CommonHbFragment.c(this.a).setGravity(21);
+  }
+  
+  boolean a()
+  {
+    return GoldMsgChatHelper.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.d, this.c, this.jdField_a_of_type_AndroidWidgetEditText, this.b);
   }
 }
 

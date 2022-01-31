@@ -1,24 +1,25 @@
-import android.widget.LinearLayout;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
-import com.tencent.mobileqq.widget.BounceScrollView.OnScrollChangedListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.now.NowVideoController;
 
 public class koa
-  implements BounceScrollView.OnScrollChangedListener
+  extends Handler
 {
-  public koa(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
-  
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public koa(NowVideoController paramNowVideoController, Looper paramLooper)
   {
-    paramInt1 = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() - this.a.b * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + 56.0F * this.a.jdField_a_of_type_Float);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setMaxOverScrollY(paramInt1);
-    if (LebaSearchPluginManagerActivity.a(this.a))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.a.a(paramInt2);
-      LebaSearchPluginManagerActivity.b(this.a, paramInt2);
+    default: 
+      return;
     }
+    this.a.a = true;
+    NowVideoController.a(this.a);
   }
 }
 

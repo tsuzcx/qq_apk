@@ -1,23 +1,10 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.Process;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TroopUnreadTipsChatItemBuilder;
 
-public final class vkv
-  extends Handler
+public class vkv
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PEAK", 2, "self-destory BOOM!!!!");
-    }
-    Process.killProcess(Process.myPid());
-  }
+  public vkv(TroopUnreadTipsChatItemBuilder paramTroopUnreadTipsChatItemBuilder) {}
 }
 
 

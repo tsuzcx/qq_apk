@@ -1,14 +1,15 @@
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicSoundFile.ProgressListener;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicWaveformManager;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
 
 public class anzy
-  implements MusicSoundFile.ProgressListener
+  implements View.OnLayoutChangeListener
 {
-  public anzy(MusicWaveformManager paramMusicWaveformManager) {}
+  public anzy(GLTextureView paramGLTextureView) {}
   
-  public boolean a(double paramDouble)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    return MusicWaveformManager.a(this.a);
+    this.a.a(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
   }
 }
 

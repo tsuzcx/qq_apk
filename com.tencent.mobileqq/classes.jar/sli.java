@@ -1,25 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelObserver;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
 
 public class sli
-  extends PersonalityLabelObserver
+  implements View.OnClickListener
 {
-  public sli(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sli(EditActivity paramEditActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {}
-    while (paramInt != 0) {
+    paramView = this.a;
+    if (!EditActivity.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      EditActivity.a(paramView, bool);
+      if (!EditActivity.a(this.a)) {
+        break;
+      }
+      this.a.d();
+      EditActivity.a(this.a).setImageResource(2130837627);
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).setVisibility(0);
+      }
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
-    this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard, true);
+    if (EditActivity.a(this.a) != null) {
+      EditActivity.a(this.a).setVisibility(4);
+    }
+    EditActivity.a(this.a).setImageResource(2130844545);
+    this.a.a();
   }
 }
 

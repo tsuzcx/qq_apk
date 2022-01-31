@@ -1,30 +1,6 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.plugin.PluginBaseActivity;
-
-class men
-  implements Runnable
+public abstract interface men
 {
-  men(mem parammem) {}
-  
-  public void run()
-  {
-    VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    if ((VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper) instanceof BaseActivity)) {
-      QQToast.a(VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper), -1, VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).getString(2131428470), 0).b(((BaseActivity)VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper)).getTitleBarHeight());
-    }
-    for (;;)
-    {
-      VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).a(VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper), this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
-      return;
-      if ((VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper) instanceof PluginBaseActivity)) {
-        QQToast.a(VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper), -1, VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).getString(2131428470), 0).b(((PluginBaseActivity)VideoShareHelper.a(this.a.jdField_a_of_type_Mel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper)).g());
-      }
-    }
-  }
+  public abstract void c();
 }
 
 

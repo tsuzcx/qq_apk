@@ -1,49 +1,33 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment;
-import java.util.ArrayList;
-import javax.annotation.Nonnull;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
+import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
 
 public class agqw
-  extends FragmentPagerAdapter
+  implements Runnable
 {
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private ArrayList b;
+  public agqw(PhotoViewForShopping paramPhotoViewForShopping, ProfileCardInfo paramProfileCardInfo) {}
   
-  private agqw(FragmentManager paramFragmentManager)
+  public void run()
   {
-    super(paramFragmentManager);
-  }
-  
-  public void a(@Nonnull ArrayList paramArrayList1, @Nonnull ArrayList paramArrayList2, @Nonnull String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
-    this.b = paramArrayList2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    switch (paramInt)
+    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null))
     {
-    default: 
-      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
-    case 0: 
-      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+      ProfileShoppingPhotoInfo localProfileShoppingPhotoInfo = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+      if ((localProfileShoppingPhotoInfo != null) && (PhotoViewForShopping.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping) != null))
+      {
+        Message localMessage = Message.obtain();
+        localMessage.what = 200;
+        localMessage.obj = localProfileShoppingPhotoInfo;
+        PhotoViewForShopping.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping).sendMessage(localMessage);
+      }
     }
-    return ReceiptMessageReadMemberListFragment.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,13 @@
-import android.view.View;
-import com.tencent.device.msg.data.DeviceGroupChatMsgProcessor;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.activity.aio.item.DevicePicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
+import com.tencent.mobileqq.activity.aio.doodle.PathData.PointData;
 
-public class usv
-  implements ActionSheet.OnButtonClickListener
+public final class usv
+  implements MyParcelable.Creator
 {
-  public usv(DevicePicItemBuilder paramDevicePicItemBuilder, MessageForDeviceFile paramMessageForDeviceFile, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public PathData.PointData a(MyParcel paramMyParcel)
   {
-    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
-      ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.b();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
+    return new PathData.PointData(paramMyParcel);
   }
 }
 

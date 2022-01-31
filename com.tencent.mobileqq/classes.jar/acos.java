@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.widget.ActionSheet;
 
 public class acos
-  extends acnx
+  implements DialogInterface.OnKeyListener
 {
-  public acos(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  public acos(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  protected String a()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    return "StateUploadoneWhenChangeToOff";
+    boolean bool = false;
+    if (paramInt == 4)
+    {
+      if (this.a.a != null)
+      {
+        this.a.a.dismiss();
+        this.a.a = null;
+      }
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      bool = true;
+    }
+    return bool;
   }
 }
 

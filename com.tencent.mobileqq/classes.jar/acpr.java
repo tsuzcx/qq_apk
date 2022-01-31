@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
 
-public class acpr
+class acpr
   implements Runnable
 {
-  public acpr(UniformDownloadMgr paramUniformDownloadMgr) {}
+  acpr(acpp paramacpp, long paramLong) {}
   
   public void run()
   {
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onQQProcessExit releaseABSdkClient...");
-    UniformDownloaderAppBabySdk.a().a();
+    this.jdField_a_of_type_Acpp.a.d();
+    QfileBaseCloudFileTabView.k(this.jdField_a_of_type_Acpp.a).a().a(this.jdField_a_of_type_Long);
   }
 }
 

@@ -1,19 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView.ARMapSplashEntryListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
 
-public class abbq
-  extends AnimatorListenerAdapter
+class abbq
+  implements Runnable
 {
-  public abbq(ARMapSplashEntryView paramARMapSplashEntryView) {}
+  abbq(abbp paramabbp, Bitmap paramBitmap) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    if (ARMapSplashEntryView.a(this.a) != null) {
-      ARMapSplashEntryView.a(this.a).a();
-    }
-    ARMapSplashEntryView.b(this.a);
+    ARMapActivity.a(this.jdField_a_of_type_Abbp.a).a(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

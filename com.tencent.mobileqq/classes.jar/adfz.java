@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.hotpic.HotPicManager;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
 
 public class adfz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adfz(HotPicManager paramHotPicManager) {}
+  public adfz(VideoFileViewer paramVideoFileViewer) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a();
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfz
  * JD-Core Version:    0.7.0.1
  */

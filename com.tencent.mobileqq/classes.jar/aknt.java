@@ -1,20 +1,21 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-class aknt
-  implements Runnable
+public class aknt
+  implements ThreadExcutor.IThreadListener
 {
-  aknt(akns paramakns, Bundle paramBundle) {}
+  public aknt(WebViewPlugin paramWebViewPlugin) {}
   
-  public void run()
+  public void a() {}
+  
+  public void b()
   {
-    MyAppApi.a().a(this.jdField_a_of_type_Akns.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Akns.jdField_a_of_type_Boolean, false);
+    this.a.onPostPluginAsyncTask();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aknt
  * JD-Core Version:    0.7.0.1
  */

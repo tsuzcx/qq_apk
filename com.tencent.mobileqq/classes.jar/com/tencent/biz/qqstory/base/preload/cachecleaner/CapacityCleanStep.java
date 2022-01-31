@@ -8,7 +8,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import myy;
+import naj;
 
 @TargetApi(14)
 public class CapacityCleanStep
@@ -58,7 +58,7 @@ public class CapacityCleanStep
       j = 0;
       while (j < k)
       {
-        localArrayList.add(new myy(this, arrayOfFile[j]));
+        localArrayList.add(new naj(this, arrayOfFile[j]));
         j += 1;
       }
       Collections.sort(localArrayList);
@@ -81,7 +81,7 @@ public class CapacityCleanStep
           {
             localInterruptedException.printStackTrace();
           }
-          a(((myy)localArrayList.get(j)).a);
+          a(((naj)localArrayList.get(j)).a);
           k += 1;
           j += 1;
         }

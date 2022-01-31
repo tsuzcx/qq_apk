@@ -61,21 +61,21 @@ public class WadlJsBridgeUtil
     switch (paramInt)
     {
     default: 
-      return CommonDataAdapter.a().a().getString(2131428516);
+      return CommonDataAdapter.a().a().getString(2131428522);
     case 0: 
       return "";
     case 1: 
-      return CommonDataAdapter.a().a().getString(2131428515);
+      return CommonDataAdapter.a().a().getString(2131428521);
     case 2: 
-      return CommonDataAdapter.a().a().getString(2131428522);
+      return CommonDataAdapter.a().a().getString(2131428528);
     case 3: 
-      return CommonDataAdapter.a().a().getString(2131428520);
+      return CommonDataAdapter.a().a().getString(2131428526);
     case 4: 
-      return CommonDataAdapter.a().a().getString(2131428513);
+      return CommonDataAdapter.a().a().getString(2131428519);
     case 5: 
-      return CommonDataAdapter.a().a().getString(2131428516);
+      return CommonDataAdapter.a().a().getString(2131428522);
     }
-    return CommonDataAdapter.a().a().getString(2131428516);
+    return CommonDataAdapter.a().a().getString(2131428522);
   }
   
   public static String a(String paramString)

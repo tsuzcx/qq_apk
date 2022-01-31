@@ -1,37 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.atvideo.model.AtVideoTextWatcher;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryConstant;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.io.File;
 
 public class naw
-  implements View.OnTouchListener
+  extends SimpleJob
 {
-  public naw(StoryInputBarView paramStoryInputBarView) {}
+  public naw(VideoCompositeManager paramVideoCompositeManager, String paramString, long paramLong) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected String a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      StoryInputBarView.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeAtvideoModelAtVideoTextWatcher.a);
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label89;
-      }
-    }
-    label89:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.jdField_a_of_type_Boolean = bool;
-      return false;
-    }
-    label94:
-    this.a.a();
-    return false;
+    SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "start composite vid:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    paramJobContext = VideoCompositeHelper.a(this.jdField_a_of_type_JavaLangString);
+    new File(QQStoryConstant.c).mkdirs();
+    paramVarArgs = QQStoryConstant.c + System.currentTimeMillis() + ".mp4";
+    new VideoCompositeHelper().a(paramJobContext, paramVarArgs, new nax(this, paramJobContext));
+    return null;
   }
 }
 

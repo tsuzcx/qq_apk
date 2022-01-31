@@ -1,141 +1,37 @@
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
 
-public class tqa
-  implements CompoundButton.OnCheckedChangeListener
+class tqa
+  implements Runnable
 {
-  public tqa(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  tqa(tpz paramtpz, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    int j = 1;
-    int k = SettingCloneUtil.readValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
-    if (paramBoolean)
+    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
+      return;
+    }
+    Object localObject1 = localObject2;
+    if (!((String)localObject2).startsWith("http://"))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setClickable(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
-      SoundAndVibrateActivity.a(this.a).setVisibility(0);
-      SoundAndVibrateActivity.a(this.a).setBackgroundResource(2130838631);
-      paramCompoundButton = ThemeUtil.getUserCurrentThemeId(this.a.app);
-      if (paramCompoundButton.equals("1000")) {
-        break label1357;
-      }
-      paramCompoundButton = ThemeUtil.getThemeInfo(this.a, paramCompoundButton);
-      if ((paramCompoundButton == null) || (!paramCompoundButton.isVoiceTheme)) {
-        break label1357;
+      localObject1 = localObject2;
+      if (!((String)localObject2).startsWith("https://")) {
+        localObject1 = "http://" + (String)localObject2;
       }
     }
-    label423:
-    label445:
-    label1352:
-    label1357:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        SoundAndVibrateActivity.b(this.a).setBackgroundResource(2130838619);
-        SoundAndVibrateActivity.b(this.a).setVisibility(0);
-      }
-      if (k == 2131230720)
-      {
-        SoundAndVibrateActivity.b(this.a).setRightIcon(this.a.getResources().getDrawable(2130846151));
-        SoundAndVibrateActivity.c(this.a).setRightIcon(null);
-        SoundAndVibrateActivity.d(this.a).setRightIcon(null);
-        SoundAndVibrateActivity.e(this.a).setRightIcon(null);
-        SoundAndVibrateActivity.a(this.a, 0);
-        if (AppSetting.b)
-        {
-          SoundAndVibrateActivity.b(this.a).setContentDescription(this.a.getString(2131435225) + this.a.getString(2131437112));
-          SoundAndVibrateActivity.c(this.a).setContentDescription(this.a.getString(2131435226) + this.a.getString(2131437113));
-          SoundAndVibrateActivity.d(this.a).setContentDescription(this.a.getString(2131435227) + this.a.getString(2131437113));
-          SoundAndVibrateActivity.e(this.a).setContentDescription(this.a.getString(2131435228) + this.a.getString(2131437113));
-        }
-        if (this.a.app.a() != 0) {
-          break label1252;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
-        this.a.app.e(1);
-        SoundAndVibrateActivity.c(this.a).setChecked(true);
-        paramCompoundButton = this.a.app;
-        if (!paramBoolean) {
-          break label1352;
-        }
-      }
-      for (i = j;; i = 0)
-      {
-        ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_sound", 0, i, "", "", "", "");
-        return;
-        if (k == 2131230721)
-        {
-          SoundAndVibrateActivity.b(this.a).setRightIcon(null);
-          SoundAndVibrateActivity.c(this.a).setRightIcon(this.a.getResources().getDrawable(2130846151));
-          SoundAndVibrateActivity.d(this.a).setRightIcon(null);
-          SoundAndVibrateActivity.e(this.a).setRightIcon(null);
-          SoundAndVibrateActivity.a(this.a, 1);
-          if (!AppSetting.b) {
-            break;
-          }
-          SoundAndVibrateActivity.b(this.a).setContentDescription(this.a.getString(2131435225) + this.a.getString(2131437113));
-          SoundAndVibrateActivity.c(this.a).setContentDescription(this.a.getString(2131435226) + this.a.getString(2131437112));
-          SoundAndVibrateActivity.d(this.a).setContentDescription(this.a.getString(2131435227) + this.a.getString(2131437113));
-          SoundAndVibrateActivity.e(this.a).setContentDescription(this.a.getString(2131435228) + this.a.getString(2131437113));
-          break;
-        }
-        if (k == SoundAndVibrateActivity.jdField_a_of_type_Int)
-        {
-          SoundAndVibrateActivity.b(this.a).setRightIcon(null);
-          SoundAndVibrateActivity.c(this.a).setRightIcon(null);
-          SoundAndVibrateActivity.d(this.a).setRightIcon(this.a.getResources().getDrawable(2130846151));
-          SoundAndVibrateActivity.e(this.a).setRightIcon(null);
-          SoundAndVibrateActivity.a(this.a, 2);
-          if (!AppSetting.b) {
-            break;
-          }
-          SoundAndVibrateActivity.b(this.a).setContentDescription(this.a.getString(2131435225) + this.a.getString(2131437113));
-          SoundAndVibrateActivity.c(this.a).setContentDescription(this.a.getString(2131435226) + this.a.getString(2131437113));
-          SoundAndVibrateActivity.d(this.a).setContentDescription(this.a.getString(2131435227) + this.a.getString(2131437112));
-          SoundAndVibrateActivity.e(this.a).setContentDescription(this.a.getString(2131435228) + this.a.getString(2131437113));
-          break;
-        }
-        if (k != SoundAndVibrateActivity.b) {
-          break;
-        }
-        SoundAndVibrateActivity.b(this.a).setRightIcon(null);
-        SoundAndVibrateActivity.c(this.a).setRightIcon(null);
-        SoundAndVibrateActivity.d(this.a).setRightIcon(null);
-        SoundAndVibrateActivity.e(this.a).setRightIcon(this.a.getResources().getDrawable(2130846151));
-        SoundAndVibrateActivity.a(this.a, 3);
-        if (!AppSetting.b) {
-          break;
-        }
-        SoundAndVibrateActivity.b(this.a).setContentDescription(this.a.getString(2131435225) + this.a.getString(2131437113));
-        SoundAndVibrateActivity.c(this.a).setContentDescription(this.a.getString(2131435226) + this.a.getString(2131437113));
-        SoundAndVibrateActivity.d(this.a).setContentDescription(this.a.getString(2131435227) + this.a.getString(2131437113));
-        SoundAndVibrateActivity.e(this.a).setContentDescription(this.a.getString(2131435228) + this.a.getString(2131437112));
-        break;
-        label1252:
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(true);
-        break label423;
-        SoundAndVibrateActivity.a(this.a).setBackgroundResource(2130838619);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-        SoundAndVibrateActivity.a(this.a).setVisibility(8);
-        SoundAndVibrateActivity.b(this.a).setVisibility(8);
-        SoundAndVibrateActivity.b(this.a).setBackgroundResource(2130838619);
-        SoundAndVibrateActivity.b(this.a).setVisibility(8);
-        this.a.app.e(0);
-        break label445;
-      }
-    }
+    localObject2 = new Intent(this.jdField_a_of_type_Tpz.a.getActivity(), QQBrowserActivity.class);
+    ((Intent)localObject2).putExtra("is_register_uin", true);
+    ((Intent)localObject2).putExtra("isShowAd", false);
+    ((Intent)localObject2).putExtra("hide_more_button", true);
+    ((Intent)localObject2).putExtra("hide_operation_bar", true);
+    ((Intent)localObject2).putExtra("register_uin_msg", 104);
+    ((Intent)localObject2).putExtra("register_uin_class", RegisterPhoneNumActivity.class.getName());
+    this.jdField_a_of_type_Tpz.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
+    ((Intent)localObject2).putExtra("selfSet_leftViewText", "返回");
+    ReportController.b(this.jdField_a_of_type_Tpz.a.app, "CliOper", "", "", "0X800665A", "0X800665A", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,13 +1,23 @@
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import com.tencent.av.AVLog;
+import com.tencent.av.business.manager.pendant.EffectPendantTips;
 
-class jgc
+public class jgc
   implements Runnable
 {
-  jgc(jgb paramjgb) {}
+  public jgc(EffectPendantTips paramEffectPendantTips, int paramInt) {}
   
   public void run()
   {
-    MagicFaceDataEntity.a(this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity, this.a.jdField_a_of_type_JavaLangString);
+    try
+    {
+      AVLog.c("EffectPendantTips", "processTips clearIconTips");
+      this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.c(this.jdField_a_of_type_Int);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

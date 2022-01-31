@@ -1,28 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.util.SurfaceViewUtil;
+import com.tencent.mobileqq.video.IMediaPlayer;
+import com.tencent.mobileqq.video.IMediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class wyh
-  implements DialogInterface.OnClickListener
+  implements IMediaPlayer.OnPreparedListener
 {
-  public wyh(SendHbActivity paramSendHbActivity) {}
+  public wyh(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(IMediaPlayer paramIMediaPlayer)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("hb_id", SendHbActivity.a(this.a));
-    paramDialogInterface.putExtra("send_uin", SendHbActivity.b(this.a));
-    paramDialogInterface.putExtra("hb_type", "1");
-    paramDialogInterface.putExtra("forward_text", this.a.getString(2131431521));
-    if (SendHbActivity.a(this.a)) {
-      paramDialogInterface.putExtra("item", 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "mMediaPlayer onPrepared: ");
     }
-    paramDialogInterface.putExtra("forward_type", 17);
-    paramDialogInterface.putExtra("invoke_from", "qwallet");
-    ForwardBaseOption.a(this.a, paramDialogInterface);
-    this.a.a(SendHbActivity.b(this.a), this.a.a(), "hongbao.wrapped.send", "", "");
+    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid()))
+    {
+      FMToastUtil.a(2131437402);
+      return;
+    }
+    SurfaceViewUtil.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.n, this.a.o, this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.d(), this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.e());
+    paramIMediaPlayer.a(localSurfaceHolder);
   }
 }
 

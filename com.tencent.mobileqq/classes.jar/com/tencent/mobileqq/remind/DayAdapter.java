@@ -21,9 +21,9 @@ public class DayAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.b = paramContext.getColor(2131494266);
+    this.b = paramContext.getColor(2131494273);
     this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, paramContext.getDisplayMetrics()));
-    this.c = paramContext.getColor(2131494248);
+    this.c = paramContext.getColor(2131494255);
   }
   
   public View a(int paramInt)
@@ -68,7 +68,7 @@ public class DayAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.remind.DayAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,23 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.widget.BounceScrollView.DrawFinishedListener;
+import com.tencent.widget.HorizontalListView;
 
 public class lns
-  implements BounceScrollView.DrawFinishedListener
+  implements Animation.AnimationListener
 {
   public lns(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (ReadInJoySelfFragment.a(this.a))
-    {
-      ReadInJoySelfFragment.a(this.a, false);
-      PublicTracker.a("self_tab_cost", null);
-      PublicTracker.a = 4;
-      PublicTracker.a("KANDIAN_FEEDS_COST", null);
-    }
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    ReadInJoySelfFragment.a(this.a).setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

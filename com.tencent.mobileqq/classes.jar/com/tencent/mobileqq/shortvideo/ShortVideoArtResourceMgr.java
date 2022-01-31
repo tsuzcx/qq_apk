@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahlc;
+import ahze;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.AppInterface;
@@ -31,12 +31,12 @@ public class ShortVideoArtResourceMgr
   
   private static void a()
   {
-    ThreadManager.post(new ahlc(), 5, null, false);
+    ThreadManager.post(new ahze(), 5, null, false);
   }
   
   public static boolean a()
   {
-    return PtvFilterSoLoad.c(VideoEnvironment.a());
+    return PtvFilterSoLoad.b(VideoEnvironment.a());
   }
   
   public static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)

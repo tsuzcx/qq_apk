@@ -1,30 +1,14 @@
-import android.app.Dialog;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.VideoInfoListEvent;
 
-public class nmb
-  extends GestureDetector.SimpleOnGestureListener
+class nmb
+  implements Runnable
 {
-  public nmb(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  nmb(nma paramnma, BatchGetVideoInfoHandler.VideoInfoListEvent paramVideoInfoListEvent) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void run()
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
-    {
-      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
-      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
-      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.b == 0)) {
-        this.a.a.dismiss();
-      }
-    }
-    return false;
+    this.jdField_a_of_type_Nma.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$VideoInfoListEvent);
   }
 }
 

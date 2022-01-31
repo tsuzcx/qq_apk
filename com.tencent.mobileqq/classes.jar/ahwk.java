@@ -1,40 +1,66 @@
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.search.model.ContactSearchModelPhoneContact;
+import com.tencent.mobileqq.search.model.IContactSearchModel;
+import com.tencent.mobileqq.search.searchengine.PhoneContactBinedSearchEngine;
+import java.util.Comparator;
 
-public final class ahwk
-  extends SubAccountObserver
+public class ahwk
+  implements Comparator
 {
-  public ahwk(QQAppInterface paramQQAppInterface) {}
+  public ahwk(PhoneContactBinedSearchEngine paramPhoneContactBinedSearchEngine) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "initAllData() onGetKeyBack() thread.name=" + Thread.currentThread().getName());
-    }
-    paramString1 = (SubAccountManager)this.a.getManager(60);
-    int j;
-    if ((paramString3 != null) && (paramString3.length() > 0))
-    {
-      j = 1;
-      i = j;
-      if (paramString1 != null) {
-        paramString1.a(paramString2, paramString3, false);
+    int i = -1;
+    Object localObject = (PhoneContactManager)this.a.a.getManager(10);
+    paramIContactSearchModel1 = ((PhoneContactManager)localObject).c(((ContactSearchModelPhoneContact)paramIContactSearchModel1).e());
+    paramIContactSearchModel2 = ((PhoneContactManager)localObject).c(((ContactSearchModelPhoneContact)paramIContactSearchModel2).e());
+    if ((paramIContactSearchModel1 == null) || (paramIContactSearchModel2 == null)) {
+      if ((paramIContactSearchModel1 == null) && (paramIContactSearchModel2 == null)) {
+        i = 0;
       }
     }
-    for (int i = j;; i = 0)
+    boolean bool2;
+    do
     {
-      if (i == 0) {
-        paramString1.e(paramString2);
+      do
+      {
+        return i;
+        if (paramIContactSearchModel2 == null) {}
+        for (i = -1;; i = 1) {
+          return i;
+        }
+        if ((paramIContactSearchModel1.uin.equals("0")) && (paramIContactSearchModel2.uin.equals("0"))) {
+          break;
+        }
+        if ((!paramIContactSearchModel1.uin.equals("0")) && (!paramIContactSearchModel2.uin.equals("0"))) {
+          return 0;
+        }
+      } while (!paramIContactSearchModel2.uin.equals("0"));
+      return 1;
+      if (!paramIContactSearchModel1.uin.equals("0")) {
+        break;
       }
-      return;
-    }
+      localObject = (FriendsManager)this.a.a.getManager(50);
+      boolean bool1 = ((FriendsManager)localObject).a(paramIContactSearchModel1.unifiedCode, true);
+      bool2 = ((FriendsManager)localObject).a(paramIContactSearchModel2.unifiedCode, true);
+      if ((!bool1) && (!bool2)) {
+        break;
+      }
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+    } while (bool2);
+    return 1;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahwk
  * JD-Core Version:    0.7.0.1
  */

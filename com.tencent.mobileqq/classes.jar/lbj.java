@@ -1,27 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
 
 class lbj
-  extends AnimateUtils.AnimationAdapter
+  extends Client.onRemoteRespObserver
 {
-  lbj(lbi paramlbi, View paramView) {}
+  lbj(lbi paramlbi) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onBindedToClient()
   {
-    paramAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_Lbi.a.e, 0.0F);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setAnimationListener(new lbk(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    ReadInJoyArticleDetailActivity.a(this.a.a);
   }
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    ReadInJoyNaviController.a(this.jdField_a_of_type_Lbi.a).setAlpha(1.0F);
-  }
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

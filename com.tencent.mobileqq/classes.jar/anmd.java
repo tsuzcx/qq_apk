@@ -1,12 +1,16 @@
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import dov.com.qq.im.capture.music.QQMusicPlayerScene;
 
-public abstract interface anmd
+public class anmd
+  implements Runnable
 {
-  public abstract void a(long paramLong);
+  public anmd(QQMusicPlayerScene paramQQMusicPlayerScene, String paramString, int paramInt1, int paramInt2) {}
   
-  public abstract void a(List paramList);
-  
-  public abstract void b(long paramLong);
+  public void run()
+  {
+    this.jdField_a_of_type_DovComQqImCaptureMusicQQMusicPlayerScene.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_DovComQqImCaptureMusicQQMusicPlayerScene.a(this.b);
+  }
 }
 
 

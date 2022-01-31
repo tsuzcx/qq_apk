@@ -1,33 +1,23 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.core.VcSystemInfo;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.EffectSettingUi;
 
 public class jtp
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public jtp(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jtp(EffectSettingUi paramEffectSettingUi) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvUiQavPanel == null)) {}
-    for (;;)
-    {
-      return;
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController.c()) && (VcSystemInfo.b()))
-      {
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365377, true);
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365377, true);
-      }
-      while ((this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) && (this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365369)) && (this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (!this.a.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365369)))
-      {
-        this.a.D();
-        return;
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365377, false);
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365377, false);
-      }
+    if (this.a.a != null) {
+      this.a.a.setVisibility(0);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,23 +1,20 @@
-import android.app.Activity;
-import android.app.Dialog;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.businessCard.views.BusinessCardViewScroller;
 
 public class abow
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abow(DBFixDialogUI paramDBFixDialogUI, Dialog paramDialog) {}
+  public abow(BusinessCardViewScroller paramBusinessCardViewScroller) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (((this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixDialogUI.a instanceof Activity)) && (((Activity)this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixDialogUI.a).isFinishing())) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppDialog.show();
+    this.a.a(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abow
  * JD-Core Version:    0.7.0.1
  */

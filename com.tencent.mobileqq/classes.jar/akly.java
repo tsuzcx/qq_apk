@@ -1,33 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webprocess.WebProcessReceiver;
+import com.tencent.sonic.sdk.SonicEngine;
+import java.util.Map;
 
 public class akly
-  extends Handler
+  implements Runnable
 {
-  public akly(CardContainer paramCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public akly(WebProcessReceiver paramWebProcessReceiver, Map paramMap) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.b.setImageDrawable(this.a.a);
-    }
+    WebAccelerateHelper.getSonicEngine().removeExpiredSessionCache(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akly
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
 
-public class say
+class say
   implements Runnable
 {
-  public say(ChatSettingForTroop paramChatSettingForTroop, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
+  say(sax paramsax, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    this.jdField_a_of_type_Sax.a.a.d();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Sax.a.a.b(false);
+      return;
+    }
+    this.jdField_a_of_type_Sax.a.a.g();
   }
 }
 

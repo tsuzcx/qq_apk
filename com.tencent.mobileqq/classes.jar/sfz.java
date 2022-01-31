@@ -1,28 +1,22 @@
+import android.os.Message;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.mobileqq.statistics.ReportController;
 import mqq.os.MqqHandler;
 
-public class sfz
-  implements DragFrameLayout.OnDragModeChangedListener
+class sfz
+  implements Runnable
 {
-  private final int jdField_a_of_type_Int = -2147483648;
+  sfz(sfy paramsfy, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  private sfz(Conversation paramConversation) {}
-  
-  public void a(int paramInt, List paramList) {}
-  
-  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
+  public void run()
   {
-    if (paramDragFrameLayout.a() == -1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
-      FrameHelperActivity.b(true);
-      return;
-    }
-    FrameHelperActivity.b(false);
+    Message localMessage = this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage();
+    localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper;
+    this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(22, 2);
+    this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(22, localMessage);
+    ReportController.b(this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008658", "0X8008658", 0, 0, "", "", "", "");
   }
 }
 

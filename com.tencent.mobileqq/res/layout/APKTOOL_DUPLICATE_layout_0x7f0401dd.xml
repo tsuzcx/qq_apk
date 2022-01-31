@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.fpsreport.FPSXListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bf4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c3" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:cacheColorHint="@null" android:foreground="@drawable/skin_header_bar_shadow" android:divider="@null" android:dividerHeight="0.0px" android:foregroundGravity="fill_horizontal|center|top"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c0b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022123" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00b7"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/search_box" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00b7" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b7e" />
+</RelativeLayout>

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.config;
 
-import aayo;
+import abfp;
 import com.tencent.mobileqq.armap.ArMapHandler;
 import com.tencent.mobileqq.armap.ArMapInterface;
 import com.tencent.mobileqq.armap.ArMapObserver;
@@ -11,7 +11,7 @@ import java.io.File;
 public class ShopScanCheckHandler
 {
   private ArMapInterface jdField_a_of_type_ComTencentMobileqqArmapArMapInterface;
-  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new aayo(this);
+  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new abfp(this);
   private ShopScanCheckHandler.Info jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info;
   private ShopScanCheckHandler.OnResCheckResultListener jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$OnResCheckResultListener;
   private boolean jdField_a_of_type_Boolean;

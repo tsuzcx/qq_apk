@@ -1,21 +1,14 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class sgl
   implements Runnable
 {
-  public sgl(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public sgl(Conversation paramConversation) {}
   
   public void run()
   {
-    if (this.a.app == null) {
-      return;
-    }
-    Object localObject = this.a.app.getCurrentAccountUin();
-    localObject = FaceDrawable.a(this.a.app, 3, (String)localObject);
-    this.a.runOnUiThread(new sgm(this, (Drawable)localObject));
+    PublicAccountManager.a().a(this.a.a);
   }
 }
 

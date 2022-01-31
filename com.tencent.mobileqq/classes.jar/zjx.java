@@ -1,28 +1,13 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
-import java.util.Queue;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
 public class zjx
-  extends Handler
+  implements FileFilter
 {
-  public zjx(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
+  public boolean accept(File paramFile)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (zka)paramMessage.obj;
-    this.a.a.remove(paramMessage);
-    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
 }
 

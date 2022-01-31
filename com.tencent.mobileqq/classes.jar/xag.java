@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import cooperation.qwallet.plugin.TenUtils;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
 
 public class xag
-  implements View.OnClickListener
 {
-  public xag(CommonHbFragment paramCommonHbFragment, String paramString) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
-  {
-    TenUtils.startQQBrowser(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.getActivity(), this.jdField_a_of_type_JavaLangString);
-  }
+  private xag(PayCodeEntryActivity paramPayCodeEntryActivity) {}
 }
 
 

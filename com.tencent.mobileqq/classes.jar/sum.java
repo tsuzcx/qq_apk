@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class sum
-  extends PublicAccountObserver
+  implements DialogInterface.OnDismissListener
 {
-  public sum(Leba paramLeba) {}
+  public sum(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a.notifyDataSetChanged();
-    }
+    GroupManagerActivity.b(this.a, null);
   }
 }
 

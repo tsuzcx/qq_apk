@@ -1,39 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QIMNewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class taz
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public taz(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public taz(MainFragment paramMainFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    if (NotifyPushSettingActivity.a())
-    {
-      NotifyPushSettingActivity.a(this.a).setChecked(false);
-      NotifyPushSettingActivity.a(this.a).setVisibility(8);
-      SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131434185), "qqsetting_notify_showcontent_key", paramBoolean);
-      if (!paramBoolean) {
-        break label127;
-      }
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    label127:
-    for (int i = 1;; i = 0)
+    if (MainFragment.a(this.a) != null)
     {
-      ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
-      return;
-      if (paramBoolean)
-      {
-        NotifyPushSettingActivity.a(this.a).setVisibility(0);
-        break;
-      }
-      NotifyPushSettingActivity.a(this.a).setVisibility(8);
-      break;
+      MainFragment.a(this.a).addObserver(MainFragment.a(this.a));
+      ((QIMNewFriendManager)MainFragment.a(this.a).getManager(256)).a(MainFragment.a(this.a));
+      MainFragment.a(this.a).registObserver(MainFragment.a(this.a));
     }
+    MainFragment.a(this.a, false);
   }
 }
 

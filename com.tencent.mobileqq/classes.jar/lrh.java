@@ -1,25 +1,17 @@
 import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.List;
 
 public class lrh
   implements Runnable
 {
-  public lrh(InterestLabelInfoModule paramInterestLabelInfoModule, List paramList) {}
+  public lrh(InterestLabelInfoModule paramInterestLabelInfoModule) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
-        InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).put(Integer.valueOf(localInterestLabelInfo.mInterestLabelID), localInterestLabelInfo);
-      }
-    }
+    List localList = this.a.a.a(InterestLabelInfo.class, true, null, null, null, null, null, null);
+    this.a.c(localList);
   }
 }
 

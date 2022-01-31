@@ -1,14 +1,22 @@
-import com.tencent.av.ui.AVActivity;
+import android.graphics.Bitmap;
+import com.tencent.av.gaudio.BaseGaInvite.GetGaFaceRunnable.OnGetSink;
+import com.tencent.av.ui.BaseInviteFloatBarUICtr;
+import com.tencent.av.ui.VideoInviteFloatBar;
 
-class jqj
-  implements Runnable
+public class jqj
+  implements BaseGaInvite.GetGaFaceRunnable.OnGetSink
 {
-  jqj(jqh paramjqh) {}
+  public jqj(BaseInviteFloatBarUICtr paramBaseInviteFloatBarUICtr) {}
   
-  public void run()
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    this.a.a.b(false);
-    this.a.a.d(false);
+    boolean bool = false;
+    if (this.a.a != null)
+    {
+      this.a.a.a(paramBitmap);
+      bool = true;
+    }
+    return bool;
   }
 }
 

@@ -1,25 +1,20 @@
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
-import java.lang.ref.SoftReference;
-import java.util.TimerTask;
+import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.RedGrayTipsInfo;
 
 public class ajqr
-  extends TimerTask
 {
-  public ajqr(QQCustomDialogWtihInput paramQQCustomDialogWtihInput) {}
+  public String a;
+  public TroopTips0x857.RedGrayTipsInfo a;
   
-  public void run()
+  public ajqr(TroopTipsMsgMgr paramTroopTipsMsgMgr, String paramString, TroopTips0x857.RedGrayTipsInfo paramRedGrayTipsInfo)
   {
-    Context localContext = (Context)QQCustomDialogWtihInput.a(this.a).get();
-    if (localContext != null) {
-      ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo = paramRedGrayTipsInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,21 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.filemanager.fileviewer.ImageGalleryAdapter;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
 public class acsh
+  implements Comparator
 {
-  public ProgressBar a;
-  public TextView a;
-  public URLImageView a;
+  public acsh(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  private acsh(ImageGalleryAdapter paramImageGalleryAdapter)
+  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
   {
-    this.jdField_a_of_type_AndroidWidgetProgressBar = null;
+    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
+      return 1;
+    }
+    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
+      return -1;
+    }
+    return 0;
   }
 }
 

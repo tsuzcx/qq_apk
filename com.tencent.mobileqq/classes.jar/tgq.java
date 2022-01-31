@@ -1,35 +1,76 @@
-import android.graphics.Paint;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.ShieldListObserver;
+import com.tencent.mobileqq.util.Utils;
+import java.util.List;
 
 public class tgq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends ShieldListObserver
 {
-  public tgq(QQMapActivity paramQQMapActivity) {}
+  public tgq(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onGlobalLayout()
+  protected void a(boolean paramBoolean, List paramList)
   {
-    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
-    if (i > 0)
+    if (this.a.a == null) {
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.h(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
     {
-      int j = DisplayUtil.a(this.a, 10.0F);
-      Object localObject = new Paint();
-      ((Paint)localObject).setTextSize(DisplayUtil.a(this.a, 14.0F));
-      ((Paint)localObject).setAntiAlias(true);
-      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
-      ((Paint)localObject).setTextSize(DisplayUtil.a(this.a, 20.0F));
-      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
       {
-        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
       }
-      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      if (k == 0) {
+        break;
+      }
+      this.a.a(paramBoolean, false);
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List paramList)
+  {
+    int k = 0;
+    if (this.a.a == null) {
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.h(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      this.a.a(paramBoolean, true);
+      return;
     }
   }
 }

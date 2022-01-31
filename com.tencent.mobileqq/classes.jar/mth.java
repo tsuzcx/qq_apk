@@ -1,102 +1,55 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.PAH5Manager;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAccountInfo;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendItem;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendPublicAccountObserver;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
 public class mth
-  extends TransProcessorHandler
+  implements View.OnClickListener
 {
-  public mth(PAH5Manager paramPAH5Manager) {}
+  public mth(SubscriptRecommendAdapter.RecommendItem paramRecommendItem, SubscriptRecommendAdapter paramSubscriptRecommendAdapter) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || ((localFileMsg.jdField_b_of_type_Int != 24) && (localFileMsg.jdField_b_of_type_Int != 32))) {}
-    do
+    ReportController.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005732", "0X8005732", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642F", "0X800642F", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo.jdField_a_of_type_Long), "", "", "");
+    if (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                  } while ((localFileMsg.jdField_b_of_type_Int == 24) && (localFileMsg.c != 10));
-                  switch (paramMessage.what)
-                  {
-                  case 1002: 
-                  case 1004: 
-                  default: 
-                    return;
-                  case 1001: 
-                    paramMessage = (Bundle)this.a.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(localFileMsg.jdField_b_of_type_Long));
-                  }
-                } while ((paramMessage == null) || (paramMessage.getInt("is_showProgress_tips") != 1));
-                this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(23, paramMessage);
-              } while (!QLog.isColorLevel());
-              QLog.d("PAH5Manager", 2, "start" + localFileMsg.jdField_b_of_type_Long);
-              return;
-              paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localFileMsg.jdField_b_of_type_Long));
-              this.a.a(localFileMsg.jdField_b_of_type_Long);
-              this.a.b(localFileMsg.jdField_b_of_type_Long);
-            } while (paramMessage == null);
-            if (localFileMsg.jdField_b_of_type_Int == 32)
-            {
-              new PublicAccountH5AbilityForPtt();
-              paramMessage.putLong("uniseq", localFileMsg.jdField_b_of_type_Long);
-              paramMessage.putString("pic_server_id", PublicAccountH5AbilityForPtt.a());
-            }
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PAH5Manager", 2, "finished" + localFileMsg.jdField_b_of_type_Long);
-              }
-              this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(24, paramMessage);
-              return;
-              paramMessage.putLong("uniseq", localFileMsg.jdField_b_of_type_Long);
-              paramMessage.putString("pic_server_id", localFileMsg.i);
-            }
-            paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localFileMsg.jdField_b_of_type_Long));
-            this.a.a(localFileMsg.jdField_b_of_type_Long);
-            this.a.b(localFileMsg.jdField_b_of_type_Long);
-          } while (paramMessage == null);
-          if (QLog.isColorLevel()) {
-            QLog.d("PAH5Manager", 2, "error" + localFileMsg.jdField_b_of_type_Long);
-          }
-          paramMessage.putLong("uniseq", localFileMsg.jdField_b_of_type_Long);
-          paramMessage.putString("pic_server_id", "-1");
-          this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(24, paramMessage);
-          return;
-          paramMessage = (Bundle)this.a.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(localFileMsg.jdField_b_of_type_Long));
-        } while ((paramMessage == null) || (paramMessage.getInt("is_showProgress_tips") != 1));
-        this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(25, paramMessage);
-        return;
-        this.a.b(localFileMsg.jdField_b_of_type_Long);
-        paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localFileMsg.jdField_b_of_type_Long));
-      } while (paramMessage == null);
-      if (localFileMsg.jdField_b_of_type_Int == 32) {
-        paramMessage.putString("pic_local_id", new PublicAccountH5AbilityForPtt().a(null));
-      }
-      this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(26, paramMessage);
+      paramView = String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo.jdField_a_of_type_Long);
+      if (!TextUtils.isEmpty(paramView)) {}
+    }
+    else
+    {
       return;
-      this.a.b(localFileMsg.jdField_b_of_type_Long);
-      paramMessage = (Bundle)this.a.b.remove(Long.valueOf(localFileMsg.jdField_b_of_type_Long));
-    } while (paramMessage == null);
-    paramMessage.putString("pic_local_id", "-1");
-    this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(26, paramMessage);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo.jdField_a_of_type_Int == 0)
+    {
+      if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity, 2131434811, 0).b(((BaseActivity)this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
+        return;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.a(2);
+      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAccountInfo.jdField_a_of_type_Int = 2;
+      MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
+      if ((localMqqHandler != null) && (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity instanceof SubscriptFeedsActivity))) {
+        localMqqHandler.sendEmptyMessage(1007);
+      }
+      PublicAccountUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.jdField_a_of_type_AndroidAppActivity, paramView, new SubscriptRecommendAdapter.RecommendPublicAccountObserver(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem));
+      return;
+    }
+    SubscriptRecommendAdapter.RecommendItem.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem);
   }
 }
 

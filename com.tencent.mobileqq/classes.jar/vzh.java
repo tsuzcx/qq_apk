@@ -1,32 +1,23 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.tips.ArkTipsBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class vzh
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public vzh(ArkTipsBar paramArkTipsBar) {}
+  private vzh(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-    {
-      paramView = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (paramView != null)
-      {
-        paramView = paramView.a();
-        if (paramView != null) {
-          paramView.a(ArkTipsBar.a(this.a));
-        }
-      }
-      ArkTipsManager.a().a();
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      PublicAccountChatPie.a(this.a, 1);
     }
+    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      return;
+    }
+    PublicAccountChatPie.a(this.a, 1);
   }
 }
 

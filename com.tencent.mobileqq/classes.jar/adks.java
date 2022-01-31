@@ -1,20 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
 
-class adks
-  implements ValueAnimator.AnimatorUpdateListener
+public class adks
+  implements DialogInterface.OnDismissListener
 {
-  adks(adkr paramadkr, View paramView) {}
+  public adks(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidViewView.setTranslationX(-((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    if (ForwardFileBaseOption.a(this.a))
+    {
+      ForwardFileBaseOption.a(this.a, false);
+      this.a.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adks
  * JD-Core Version:    0.7.0.1
  */

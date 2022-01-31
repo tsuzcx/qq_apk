@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity.richmedia.subtitles;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import xtm;
+import xws;
 
 public class WordingItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new xtm();
+  public static final Parcelable.Creator CREATOR = new xws();
   public long a;
   public String a;
   public byte[] a;

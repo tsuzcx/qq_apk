@@ -1,52 +1,69 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class admt
-  implements TroopMemberApiClient.Callback
+public class admt
+  extends BroadcastReceiver
 {
-  admt(admq paramadmq, Bitmap paramBitmap) {}
+  public admt(HotChatFragment paramHotChatFragment) {}
   
-  public void a(Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int j = 0;
-    int i = 0;
-    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
+    if ((paramIntent != null) && ("com.tencent.mobileqq.get_banner_rect".equals(paramIntent.getAction())))
     {
-      paramBundle = WxShareHelperFromReadInjoy.a();
-      str1 = this.jdField_a_of_type_Admq.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
-      str2 = this.jdField_a_of_type_Admq.d;
-      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      str3 = this.jdField_a_of_type_Admq.e;
-      str4 = this.jdField_a_of_type_Admq.b;
-      if ("2".equals(this.jdField_a_of_type_Admq.jdField_a_of_type_JavaLangString)) {}
-      for (;;)
-      {
-        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
-        return;
-        i = 1;
+      paramContext = paramIntent.getStringExtra("content");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label31;
       }
     }
-    paramBundle = WXShareHelper.a();
-    String str1 = this.jdField_a_of_type_Admq.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
-    String str2 = this.jdField_a_of_type_Admq.d;
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    String str3 = this.jdField_a_of_type_Admq.e;
-    String str4 = this.jdField_a_of_type_Admq.b;
-    if ("2".equals(this.jdField_a_of_type_Admq.jdField_a_of_type_JavaLangString)) {}
-    for (i = j;; i = 1)
+    label31:
+    do
     {
-      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
-      return;
-    }
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
+          if (paramContext != null)
+          {
+            float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
+            int j = paramContext.length();
+            this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+            int i = 0;
+            while (i < j)
+            {
+              paramIntent = paramContext.getJSONObject(i);
+              Rect localRect = new Rect();
+              localRect.top = ((int)(paramIntent.getInt("top") * f));
+              localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
+              this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
+              i += 1;
+            }
+            this.a.d = true;
+            return;
+          }
+        }
+        catch (JSONException paramContext) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     admt
  * JD-Core Version:    0.7.0.1
  */

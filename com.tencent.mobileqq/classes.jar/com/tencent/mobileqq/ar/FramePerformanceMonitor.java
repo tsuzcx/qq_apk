@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar;
 
+import aadc;
 import com.tencent.mobileqq.app.ThreadManager;
-import zyi;
 
 public class FramePerformanceMonitor
 {
   private int jdField_a_of_type_Int = 1000;
+  private aadc jdField_a_of_type_Aadc;
   private FramePerformanceMonitor.FrameRefreshListener jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$FrameRefreshListener;
   private GapDataCollector jdField_a_of_type_ComTencentMobileqqArGapDataCollector = new GapDataCollector(100);
-  private zyi jdField_a_of_type_Zyi;
   
   public void a()
   {
@@ -16,9 +16,9 @@ public class FramePerformanceMonitor
     if (this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$FrameRefreshListener == null) {
       return;
     }
-    this.jdField_a_of_type_Zyi = new zyi(this, null);
-    zyi.a(this.jdField_a_of_type_Zyi, true);
-    ThreadManager.post(this.jdField_a_of_type_Zyi, 8, null, true);
+    this.jdField_a_of_type_Aadc = new aadc(this, null);
+    aadc.a(this.jdField_a_of_type_Aadc, true);
+    ThreadManager.post(this.jdField_a_of_type_Aadc, 8, null, true);
   }
   
   public void a(int paramInt)
@@ -38,10 +38,10 @@ public class FramePerformanceMonitor
   
   public void b()
   {
-    if (this.jdField_a_of_type_Zyi != null)
+    if (this.jdField_a_of_type_Aadc != null)
     {
-      zyi.a(this.jdField_a_of_type_Zyi, false);
-      this.jdField_a_of_type_Zyi = null;
+      aadc.a(this.jdField_a_of_type_Aadc, false);
+      this.jdField_a_of_type_Aadc = null;
     }
   }
 }

@@ -1,32 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.MultiImageTextView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
 
-class sbc
-  implements Runnable
+public class sbc
+  implements Animation.AnimationListener
 {
-  sbc(sbb paramsbb, String paramString) {}
+  public sbc(ChatHistoryForC2C paramChatHistoryForC2C, View paramView1, View paramView2) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FormSimpleItem localFormSimpleItem;
-    if (this.jdField_a_of_type_Sbb.a.a != null)
-    {
-      localFormSimpleItem = (FormSimpleItem)this.jdField_a_of_type_Sbb.a.a[6];
-      if ((localFormSimpleItem != null) && (!TextUtils.equals(localFormSimpleItem.a().getText(), this.jdField_a_of_type_JavaLangString)))
-      {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label78;
-        }
-        localFormSimpleItem.setRightText(this.jdField_a_of_type_Sbb.a.getString(2131430580));
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.show();
+    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.b.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    return;
-    label78:
-    localFormSimpleItem.setRightText(new QQText(this.jdField_a_of_type_JavaLangString, 3));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

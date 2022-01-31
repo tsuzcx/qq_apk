@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia;
 
-import agsm;
-import agsn;
+import ahgo;
+import ahgp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,7 +24,7 @@ public class RichmediaService
 {
   public static volatile RichmediaService a;
   static volatile WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  agsn jdField_a_of_type_Agsn;
+  ahgp jdField_a_of_type_Ahgp;
   Messenger jdField_a_of_type_AndroidOsMessenger;
   public volatile ICallBack a;
   public Messenger b;
@@ -40,7 +40,7 @@ public class RichmediaService
     WeakReferenceHandler localWeakReferenceHandler = jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
     if (localWeakReferenceHandler != null)
     {
-      localWeakReferenceHandler.post(new agsm(paramInt, paramBundle));
+      localWeakReferenceHandler.post(new ahgo(paramInt, paramBundle));
       return;
     }
     LOG.a("RichmediaService", "sendICallBackRequest subHandler is null");
@@ -225,8 +225,8 @@ public class RichmediaService
   public void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_Agsn = new agsn(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Agsn);
+    this.jdField_a_of_type_Ahgp = new ahgp(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Ahgp);
     jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService = this;
     jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
     if (QLog.isColorLevel()) {
@@ -237,7 +237,7 @@ public class RichmediaService
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Agsn = null;
+    this.jdField_a_of_type_Ahgp = null;
     jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService = null;
     jdField_a_of_type_ComTencentUtilWeakReferenceHandler = null;
     if (QLog.isColorLevel()) {

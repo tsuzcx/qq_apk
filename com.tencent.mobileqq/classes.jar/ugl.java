@@ -1,100 +1,33 @@
-import com.tencent.mobileqq.activity.aio.AIOReporterGetDeviceInfo;
-import com.tencent.mobileqq.activity.aio.AIOTimeReporter;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.StartupTracker;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class ugl
-  implements Runnable
+  extends WebChromeClient
 {
-  public ugl(AIOTimeReporter paramAIOTimeReporter) {}
+  private ugl(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
-  public void run()
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    AIOReporterGetDeviceInfo localAIOReporterGetDeviceInfo = AIOReporterGetDeviceInfo.a();
-    AIOTimeReporter.a(this.a, localAIOReporterGetDeviceInfo.a());
-    if (StartupTracker.a <= 0L)
-    {
-      AIOTimeReporter.a(this.a);
-      return;
+    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onProgressChanged: " + paramInt + "%");
     }
-    String str = "";
-    switch (AIOTimeReporter.a(this.a))
-    {
-    default: 
-      return;
-    case 1: 
-      switch (localAIOReporterGetDeviceInfo.a)
-      {
-      }
-      for (;;)
-      {
-        StatisticCollector.a(BaseApplication.getContext()).a(null, str, true, StartupTracker.a, 0L, null, "");
-        if (QLog.isDevelopLevel()) {
-          QLog.d(this.a.a, 4, "reportAIOTime: " + str + " cost : " + StartupTracker.a);
-        }
-        AIOTimeReporter.a(this.a);
-        return;
-        if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0"))
-        {
-          str = AIOTimeReporter.a();
-        }
-        else
-        {
-          str = AIOTimeReporter.b();
-          continue;
-          if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0")) {
-            str = AIOTimeReporter.c();
-          } else {
-            str = AIOTimeReporter.d();
-          }
-        }
-      }
-    case 2: 
-      switch (localAIOReporterGetDeviceInfo.a)
-      {
-      }
-      for (;;)
-      {
-        break;
-        if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0"))
-        {
-          str = AIOTimeReporter.e();
-        }
-        else
-        {
-          str = AIOTimeReporter.f();
-          continue;
-          if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0")) {
-            str = AIOTimeReporter.g();
-          } else {
-            str = AIOTimeReporter.h();
-          }
-        }
-      }
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeDetailActivity", 2, "onReceivedTitle:" + paramString);
     }
-    switch (localAIOReporterGetDeviceInfo.a)
-    {
-    }
-    for (;;)
-    {
-      break;
-      if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0"))
-      {
-        str = AIOTimeReporter.i();
-      }
-      else
-      {
-        str = AIOTimeReporter.j();
-        continue;
-        if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0")) {
-          str = AIOTimeReporter.k();
-        } else {
-          str = AIOTimeReporter.l();
-        }
-      }
-    }
+    this.a.setTitle(paramString);
   }
 }
 

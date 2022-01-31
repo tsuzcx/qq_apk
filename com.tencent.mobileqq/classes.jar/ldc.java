@@ -1,18 +1,16 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 
-class ldc
-  implements AsyncBack
+public class ldc
+  implements Runnable
 {
-  ldc(lda paramlda) {}
+  public ldc(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
-    }
+    HtmlOffline.b("2378", this.a.app, true, new ldd(this));
+    HtmlOffline.b("2464", this.a.app, true, new lde(this));
+    HtmlOffline.b("2463", this.a.app, true, new ldf(this));
   }
 }
 

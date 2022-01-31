@@ -10,12 +10,12 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.animation.LinearInterpolator;
-import anig;
-import anih;
-import anii;
-import anij;
-import anik;
-import anjk;
+import anyl;
+import anym;
+import anyn;
+import anyo;
+import anyp;
+import anzp;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import dov.com.qq.im.capture.data.IFaceSelectedListener;
 import dov.com.qq.im.capture.text.DynamicTextItem;
@@ -35,13 +35,13 @@ import java.util.List;
 
 public class DoodleEditView
   extends DoodleView
-  implements anjk
+  implements anzp
 {
   private float jdField_a_of_type_Float;
   private IFaceSelectedListener jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener;
   public TextFaceEditLayer a;
   private DoodleEditView.DoodleEditViewListener jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView$DoodleEditViewListener;
-  Runnable jdField_a_of_type_JavaLangRunnable = new anik(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new anyp(this);
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
   private boolean c;
@@ -71,7 +71,7 @@ public class DoodleEditView
   protected void a()
   {
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer = new TextFaceEditLayer(this);
-    this.jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener = new anig(this);
+    this.jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener = new anyl(this);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -108,8 +108,8 @@ public class DoodleEditView
         localValueAnimator1.setRepeatMode(1);
         localValueAnimator1.setRepeatCount(-1);
         localValueAnimator1.setInterpolator(new LinearInterpolator());
-        localValueAnimator1.addUpdateListener(new anii(this, paramZoomItem));
-        localValueAnimator1.addListener(new anij(this, paramZoomItem));
+        localValueAnimator1.addUpdateListener(new anyn(this, paramZoomItem));
+        localValueAnimator1.addListener(new anyo(this, paramZoomItem));
         paramZoomItem.jdField_a_of_type_AndroidAnimationValueAnimator = localValueAnimator1;
       }
     } while ((paramZoomItem.jdField_a_of_type_AndroidAnimationValueAnimator.isStarted()) || (paramZoomItem.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()));
@@ -381,8 +381,8 @@ public class DoodleEditView
   
   public void setOnLayerTouchListener()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Anjm);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.a(new anih(this));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Anzr);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.a(new anym(this));
   }
 }
 

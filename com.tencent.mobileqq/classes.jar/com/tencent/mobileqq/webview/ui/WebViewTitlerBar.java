@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.ui;
 
-import akcr;
-import akcs;
-import akct;
+import akqy;
+import akqz;
+import akra;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -86,17 +86,17 @@ public class WebViewTitlerBar
   
   void a()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375274));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375275));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375277));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363363));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375460));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375461));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131375463));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363381));
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
     this.jdField_a_of_type_AndroidWidgetTextView.setMaxEms(9);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375276));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363227));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363410));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363456));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363241);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375462));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363245));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363428));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363474));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363259);
   }
   
   public void a(int paramInt)
@@ -127,7 +127,7 @@ public class WebViewTitlerBar
       this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInt2);
       return;
     }
-    ValueAnimation localValueAnimation = new ValueAnimation(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), new akct(this, paramInt2));
+    ValueAnimation localValueAnimation = new ValueAnimation(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), new akra(this, paramInt2));
     localValueAnimation.setDuration(paramInt3);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidViewView.startAnimation(localValueAnimation);
@@ -154,7 +154,7 @@ public class WebViewTitlerBar
   
   void a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130971677, paramViewGroup, true);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130971725, paramViewGroup, true);
   }
   
   public void a(ImageView paramImageView)
@@ -198,7 +198,7 @@ public class WebViewTitlerBar
     if (paramString1 != null)
     {
       this.jdField_a_of_type_JavaLangString = paramString1.trim();
-      b(new akcs(this));
+      b(new akqz(this));
       return;
     }
     this.jdField_a_of_type_JavaLangString = null;
@@ -266,27 +266,27 @@ public class WebViewTitlerBar
         }
         c(paramOnClickListener);
         break;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841420);
-        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434725));
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841457);
+        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434742));
         break label141;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841419);
-        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434722));
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841456);
+        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434739));
         break label141;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839143);
-        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434718));
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839147);
+        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434735));
         break label141;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838558);
-        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434719));
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838562);
+        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434737));
         break label141;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841454);
-        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434723));
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841491);
+        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434740));
         ((AnimationDrawable)this.jdField_b_of_type_AndroidWidgetImageView.getDrawable()).start();
         break label141;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838271);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838286);
         break label141;
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841248);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130841285);
         continue;
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845924);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130846052);
         continue;
         if (this.jdField_c_of_type_AndroidWidgetImageView != null) {
           this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -296,7 +296,7 @@ public class WebViewTitlerBar
       if (paramString1 != null)
       {
         this.jdField_a_of_type_JavaLangString = paramString1.trim();
-        c(new akcr(this));
+        c(new akqy(this));
       }
       else
       {
@@ -398,7 +398,7 @@ public class WebViewTitlerBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTitlerBar
  * JD-Core Version:    0.7.0.1
  */

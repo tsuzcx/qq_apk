@@ -1,15 +1,14 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.biz.qqstory.model.DiscoverManager;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
 
 public class nct
-  extends GetRedPointExObserver
+  implements Runnable
 {
-  public nct(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
+  public nct(DiscoverManager paramDiscoverManager, CardItem paramCardItem) {}
   
-  protected void a(Object paramObject)
+  public void run()
   {
-    ThreadManager.post(new ncu(this), 5, null, true);
+    DiscoverManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelDiscoverManager, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.forward;
 
-import adcc;
-import adcd;
-import adce;
-import adcf;
+import admb;
+import admc;
+import admd;
+import adme;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -108,7 +108,7 @@ public class ForwardSendHongBaoOption
         }
         if (paramInt1 != 0)
         {
-          String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131435069);
+          String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131435086);
           paramIntent = str;
           if (localJSONObject.has("retmsg"))
           {
@@ -121,18 +121,18 @@ public class ForwardSendHongBaoOption
           {
             this.jdField_c_of_type_Int -= 1;
             paramIntent = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, "发送失败", paramIntent, null, null);
-            paramIntent.setPositiveButton(2131435070, new adcd(this, paramIntent));
-            paramIntent.setNegativeButton(2131432998, new adce(this, paramIntent));
+            paramIntent.setPositiveButton(2131435087, new admc(this, paramIntent));
+            paramIntent.setNegativeButton(2131433015, new admd(this, paramIntent));
             paramIntent.show();
             return;
-            paramIntent = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, "发送失败", this.jdField_a_of_type_AndroidAppActivity.getString(2131435069), null, null);
-            paramIntent.setNegativeButton(2131433681, new adcc(this, paramIntent));
+            paramIntent = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, "发送失败", this.jdField_a_of_type_AndroidAppActivity.getString(2131435086), null, null);
+            paramIntent.setNegativeButton(2131433698, new admb(this, paramIntent));
             paramIntent.show();
             paramInt1 = 0;
             continue;
           }
           paramIntent = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, "发送失败", paramIntent, null, null);
-          paramIntent.setNegativeButton(2131433681, new adcf(this, paramIntent));
+          paramIntent.setNegativeButton(2131433698, new adme(this, paramIntent));
           paramIntent.show();
           return;
         }
@@ -155,7 +155,7 @@ public class ForwardSendHongBaoOption
   {
     if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131433196, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplicationImpl.sApplication, 2131433213, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
       return true;
     }
     Object localObject1 = new JSONObject();
@@ -193,7 +193,7 @@ public class ForwardSendHongBaoOption
       ((Intent)localObject1).putExtras((Bundle)localObject2);
       ((Intent)localObject1).putExtra("pay_requestcode", 5);
       this.jdField_a_of_type_AndroidAppActivity.startActivityForResult((Intent)localObject1, 20002);
-      a(2131435071);
+      a(2131435088);
       return true;
       ((JSONObject)localObject2).put("recv_type", 3);
       ((JSONObject)localObject2).put("group_id", this.jdField_a_of_type_AndroidOsBundle.getString("uin"));

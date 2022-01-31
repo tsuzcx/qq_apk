@@ -1,46 +1,45 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.SlideTabWidget;
 
 public class akwy
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public akwy(QidianProfileCardActivity paramQidianProfileCardActivity, ActionSheet paramActionSheet, URLDrawable paramURLDrawable, String paramString) {}
+  public akwy(SlideTabWidget paramSlideTabWidget) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramView == null) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
-    do
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
-      if (TextUtils.isEmpty(paramView))
+    case 0: 
+      SlideTabWidget.a(this.a, 0.0F);
+      SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (SlideTabWidget.a(this.a) < 1.0F)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
+        if (SlideTabWidget.a(this.a) >= 1.0F) {
+          SlideTabWidget.a(this.a, false);
+        }
+        this.a.invalidate();
+        sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
         return;
       }
-      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131435854)))
-      {
-        QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-        return;
-      }
-      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131435860)))
-      {
-        QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-        return;
-      }
-    } while (!paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131438713)));
-    QidianProfileCardActivity.c(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString);
+      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    SlideTabWidget.a(this.a, 1.0F);
+    SlideTabWidget.a(this.a, SlideTabWidget.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akwy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.VideoVipItemBuilder;
-import com.tencent.mobileqq.data.MessageForVideoVip;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.mobileqq.data.MessageForText;
 
 public class vip
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public vip(VideoVipItemBuilder paramVideoVipItemBuilder, MessageForVideoVip paramMessageForVideoVip, MessageRecord paramMessageRecord) {}
+  public vip(TextItemBuilder paramTextItemBuilder, MessageForText paramMessageForText) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideoVip.url);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 0)
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X80063FF", "0X80063FF", 0, 0, "", "", "", "");
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X80063EF", "0X80063EF", 14, 0, "", "", "", "");
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop != 3000) {
-      return;
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X8006400", "0X8006400", 0, 0, "", "", "", "");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X80063EF", "0X80063EF", 13, 0, "", "", "", "");
+    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
   }
 }
 

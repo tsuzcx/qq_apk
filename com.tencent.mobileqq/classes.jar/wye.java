@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
 public class wye
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public wye(RedPacketRecordFragment paramRedPacketRecordFragment) {}
+  public wye(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    switch (this.a.b())
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.a(0);
+      return;
+    case 1: 
+      this.a.l();
+      return;
+    case 2: 
+      this.a.k();
+      return;
+    }
+    this.a.a(0);
   }
 }
 

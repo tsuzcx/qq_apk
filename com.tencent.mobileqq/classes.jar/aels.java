@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnPreparedListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class aels
-  implements Runnable
+public final class aels
+  implements DialogInterface.OnClickListener
 {
-  aels(aelr paramaelr) {}
-  
-  public void run()
-  {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

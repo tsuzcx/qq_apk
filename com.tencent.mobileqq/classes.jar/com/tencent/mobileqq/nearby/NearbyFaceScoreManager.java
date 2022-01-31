@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
-import adyn;
-import adyo;
+import aelt;
+import aelu;
 import com.tencent.biz.ProtoUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -38,20 +38,20 @@ public class NearbyFaceScoreManager
     if (QLog.isColorLevel()) {
       QLog.e("Q..troop.faceScore", 2, "getTinyIdByUin oidb_0x8da onResult  uin=" + paramLong);
     }
-    ProtoUtils.a(this.a, new adyo(this, paramFaceScoreCallBack), localReqBody.toByteArray(), "OidbSvc.0x8da_1", 2266, 0, null, 0L);
+    ProtoUtils.a(this.a, new aelu(this, paramFaceScoreCallBack), localReqBody.toByteArray(), "OidbSvc.0x8da_1", 2266, 0, null, 0L);
   }
   
   public void a(FaceScoreCallBack paramFaceScoreCallBack)
   {
     cmd0x938.ReqBody localReqBody = new cmd0x938.ReqBody();
     cmd0x938.CommParamReq localCommParamReq = new cmd0x938.CommParamReq();
-    localCommParamReq.bytes_version.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+    localCommParamReq.bytes_version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
     localCommParamReq.uint32_platform.set(1);
     localReqBody.msg_comm_param.set(localCommParamReq);
     if (QLog.isColorLevel()) {
       QLog.e("Q..troop.faceScore", 2, "fetchGrayAbility");
     }
-    ProtoUtils.a(this.a, new adyn(this, paramFaceScoreCallBack), localReqBody.toByteArray(), "OidbSvc.0x938_1", 2360, 1, null, 0L);
+    ProtoUtils.a(this.a, new aelt(this, paramFaceScoreCallBack), localReqBody.toByteArray(), "OidbSvc.0x938_1", 2360, 1, null, 0L);
   }
   
   public void onDestroy() {}

@@ -1,23 +1,17 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import com.tencent.mobileqq.activity.MakeVideoActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import java.util.List;
 
-public class syt
-  implements MediaRecorder.OnInfoListener
+class syt
+  implements Runnable
 {
-  public syt(MakeVideoActivity paramMakeVideoActivity) {}
+  syt(sys paramsys, List paramList) {}
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void run()
   {
-    switch (paramInt1)
-    {
-    default: 
-      QLog.i(this.a.a, 4, "start|onInfo|what=" + paramInt1 + ",extra=" + paramInt2);
-      return;
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Sys.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Sys.a).a(this.jdField_a_of_type_JavaUtilList);
     }
-    QLog.i(this.a.a, 4, "start|onInfo|max file size reached.extra=" + paramInt2);
-    this.a.b();
   }
 }
 

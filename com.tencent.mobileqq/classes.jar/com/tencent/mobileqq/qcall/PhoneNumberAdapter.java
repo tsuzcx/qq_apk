@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.qcall;
 
-import agfy;
+import agua;
 import android.content.Context;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.view.LayoutInflater;
@@ -30,22 +30,22 @@ public class PhoneNumberAdapter
   
   private View a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970249, null);
-    agfy localagfy = new agfy(null);
-    localagfy.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369823));
-    localagfy.b = ((TextView)paramViewGroup.findViewById(2131369824));
-    localagfy.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369825));
-    ViewGroup.LayoutParams localLayoutParams = localagfy.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970265, null);
+    agua localagua = new agua(null);
+    localagua.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369900));
+    localagua.b = ((TextView)paramViewGroup.findViewById(2131369901));
+    localagua.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369902));
+    ViewGroup.LayoutParams localLayoutParams = localagua.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
     localLayoutParams.width = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
     localLayoutParams.height = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
-    localagfy.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    paramViewGroup.setTag(localagfy);
+    localagua.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    paramViewGroup.setTag(localagua);
     return paramViewGroup;
   }
   
   private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (agfy)paramView.getTag();
+    paramViewGroup = (agua)paramView.getTag();
     PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     paramInt = localPhoneContact.type;
     paramView = null;

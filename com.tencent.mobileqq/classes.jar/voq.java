@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
 
 public class voq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public voq(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public voq(AIOPhotoListAdapter paramAIOPhotoListAdapter, AIOShortVideoData paramAIOShortVideoData) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.f, 0);
   }
 }
 

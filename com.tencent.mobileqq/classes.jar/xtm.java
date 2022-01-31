@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
+import com.tencent.biz.qqstory.base.download.DownloadProgressListener;
+import com.tencent.biz.qqstory.base.download.DownloaderImp;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
 
-public final class xtm
-  implements Parcelable.Creator
+public class xtm
+  implements Runnable
 {
-  public WordingItem a(Parcel paramParcel)
-  {
-    return new WordingItem(paramParcel);
-  }
+  public xtm(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity, DownloadProgressListener paramDownloadProgressListener, String paramString1, String paramString2) {}
   
-  public WordingItem[] a(int paramInt)
+  public void run()
   {
-    return new WordingItem[paramInt];
+    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity, new DownloaderImp());
+    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener);
+    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
   }
 }
 

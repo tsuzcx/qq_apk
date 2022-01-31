@@ -47,12 +47,12 @@ public class RecentItemChangeMachine
           if (!TextUtils.isEmpty(paramQQAppInterface.a)) {
             break label181;
           }
-          this.jdField_b_of_type_JavaLangString = paramContext.getResources().getString(2131430828);
+          this.jdField_b_of_type_JavaLangString = paramContext.getResources().getString(2131430845);
         }
         if (!TextUtils.isEmpty(paramQQAppInterface.jdField_b_of_type_JavaLangString)) {
           break label192;
         }
-        this.jdField_c_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131430829);
+        this.jdField_c_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131430846);
       }
     }
     catch (JSONException localJSONException)

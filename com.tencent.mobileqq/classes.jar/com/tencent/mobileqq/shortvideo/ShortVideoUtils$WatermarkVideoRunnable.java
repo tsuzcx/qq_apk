@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahmb;
+import aiad;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -46,7 +46,7 @@ public class ShortVideoUtils$WatermarkVideoRunnable
     this.jdField_b_of_type_JavaLangString = paramString1;
     this.jdField_c_of_type_JavaLangString = paramString2;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ahmb(this, paramString2);
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new aiad(this, paramString2);
     this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
   }
   
@@ -116,7 +116,7 @@ public class ShortVideoUtils$WatermarkVideoRunnable
       }
       try
       {
-        localObject1 = BitmapFactory.decodeResource(((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources(), 2130843154);
+        localObject1 = BitmapFactory.decodeResource(((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources(), 2130843253);
         if (this.jdField_b_of_type_Int != 576)
         {
           float f = this.jdField_b_of_type_Int / 576.0F;

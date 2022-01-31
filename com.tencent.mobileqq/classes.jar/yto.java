@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
-import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.IRenderCallback;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class yto
-  implements Runnable
+public class yto
+  implements IRenderCallback
 {
-  public yto(MessageForApollo paramMessageForApollo, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public yto(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    try
+    if (this.a.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.hasPlayed = true;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage.isPlayed = true;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData = MessagePkgUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
+      }
+      this.a.a.getRenderImpl().a(0L);
     }
-    catch (Exception localException) {}
   }
+  
+  public void a(int paramInt, String paramString) {}
 }
 
 

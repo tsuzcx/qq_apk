@@ -1,20 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
 
 public final class ncp
   implements Parcelable.Creator
 {
-  public MsgTabNodeInfo a(Parcel paramParcel)
+  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
   {
-    MsgTabNodeInfo localMsgTabNodeInfo = new MsgTabNodeInfo();
-    localMsgTabNodeInfo.a(paramParcel);
-    return localMsgTabNodeInfo;
+    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
   }
   
-  public MsgTabNodeInfo[] a(int paramInt)
+  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
   {
-    return new MsgTabNodeInfo[paramInt];
+    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
   }
 }
 

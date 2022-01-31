@@ -1,19 +1,27 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class mxl
-  implements Runnable
+  implements TextWatcher
 {
-  public mxl(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public mxl(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.findViewById(2131365627).setVisibility(8);
-    this.a.a.findViewById(2131365561).setVisibility(8);
-    this.a.a.findViewById(2131365562).setVisibility(8);
+    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
+      QQToast.a(this.a, 0, this.a.getString(2131438559), 0).b(this.a.getTitleBarHeight());
+    }
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

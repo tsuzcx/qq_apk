@@ -1,15 +1,17 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.biz.qqstory.view.segment.SegmentManager;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-public class oos
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
+public final class oos
+  implements DialogInterface.OnClickListener
 {
-  public oos(SegmentList paramSegmentList) {}
+  public oos(DownloadInfo paramDownloadInfo) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a(false);
+    paramDialogInterface.dismiss();
+    WeishiGuideUtils.a(this.a);
   }
 }
 

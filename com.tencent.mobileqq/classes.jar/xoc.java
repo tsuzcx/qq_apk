@@ -1,23 +1,46 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
 
 public class xoc
-  implements Animation.AnimationListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public xoc(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xoc(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (NewFlowCameraActivity.b(this.a) != null) {
-      NewFlowCameraActivity.b(this.a).setVisibility(4);
+    EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
+    new StringBuilder().append(EditLocalVideoActivity.g()).append("mix_").append(System.currentTimeMillis()).append(".mp4").toString();
+    this.jdField_a_of_type_AndroidOsBundle.putString("param.videoPath", EditLocalVideoActivity.h());
+    if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
+      RemoteHandleManager.a().a("cmd.publishVideoMood", this.jdField_a_of_type_AndroidOsBundle, false);
+    }
+    for (;;)
+    {
+      if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.setResult(-1);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.finish();
+      return;
+      if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 1)
+      {
+        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.getIntent());
+        paramView.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+        String str = paramView.getStringExtra("PhotoConst.PLUGIN_APK");
+        boolean bool = paramView.getBooleanExtra("DirectBackToQzone", false);
+        if (("qzone_plugin.apk".equals(str)) && (bool))
+        {
+          paramView.setFlags(603979776);
+          QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, "", paramView, -1);
+        }
+      }
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

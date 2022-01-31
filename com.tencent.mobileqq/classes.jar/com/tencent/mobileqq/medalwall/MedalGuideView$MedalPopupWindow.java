@@ -36,7 +36,7 @@ public class MedalGuideView$MedalPopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalGuideView.MedalPopupWindow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.data.MarkFaceMessage;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class aduo
-  implements QueryTask.Query
+class aduo
+  implements AsyncBack
 {
-  public aduo(EmoticonManager paramEmoticonManager, MarkFaceMessage paramMarkFaceMessage) {}
+  aduo(adun paramadun) {}
   
-  public PicEmoticonInfo a(MarkFaceMessage paramMarkFaceMessage)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage);
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorConfig", 2, "3136 offline loaded param:" + paramString + " code:" + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aduo
  * JD-Core Version:    0.7.0.1
  */

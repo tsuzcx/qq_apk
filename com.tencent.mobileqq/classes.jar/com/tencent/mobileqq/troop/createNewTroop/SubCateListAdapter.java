@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import ainq;
+import ajbu;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,13 +54,13 @@ public class SubCateListAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     TroopCateListProvider.TroopCateInfo localTroopCateInfo = (TroopCateListProvider.TroopCateInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    ainq localainq = new ainq();
+    ajbu localajbu = new ajbu();
     if (paramView != null)
     {
-      localainq = (ainq)paramView.getTag();
+      localajbu = (ajbu)paramView.getTag();
       paramViewGroup = paramView;
     }
-    for (paramView = localainq;; paramView = localainq)
+    for (paramView = localajbu;; paramView = localajbu)
     {
       paramView.a.setText(localTroopCateInfo.b);
       paramView.a.setTag(localTroopCateInfo);
@@ -68,15 +68,15 @@ public class SubCateListAdapter
         paramView.a.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
       return paramViewGroup;
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969864, null);
-      localainq.a = ((TextView)paramViewGroup.findViewById(2131363614));
-      paramViewGroup.setTag(localainq);
+      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969878, null);
+      localajbu.a = ((TextView)paramViewGroup.findViewById(2131363632));
+      paramViewGroup.setTag(localajbu);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.SubCateListAdapter
  * JD-Core Version:    0.7.0.1
  */

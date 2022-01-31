@@ -1,35 +1,26 @@
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.widget.ActionSheet;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-class adxj
-  implements AdapterView.OnItemClickListener
+public class adxj
+  implements Animation.AnimationListener
 {
-  adxj(adxi paramadxi, adxs paramadxs) {}
+  public adxj(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      adxi.a(this.jdField_a_of_type_Adxi).dismiss();
-      return;
-      MusicPlayerActivity.a(this.jdField_a_of_type_Adxi.a, this.jdField_a_of_type_Adxs.a, this.jdField_a_of_type_Adxs.b, this.jdField_a_of_type_Adxs.d, this.jdField_a_of_type_Adxs.c, this.jdField_a_of_type_Adxs.e);
-      continue;
-      MusicPlayerActivity.b(this.jdField_a_of_type_Adxi.a, this.jdField_a_of_type_Adxs.a, this.jdField_a_of_type_Adxs.b, this.jdField_a_of_type_Adxs.d, this.jdField_a_of_type_Adxs.c, this.jdField_a_of_type_Adxs.e);
-      continue;
-      ThreadManager.post(new adxk(this, paramInt), 8, null, true);
-    }
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxj
  * JD-Core Version:    0.7.0.1
  */

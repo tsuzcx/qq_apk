@@ -40,10 +40,10 @@ public class SigTypeListAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971542, null);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971590, null);
       paramView = new SigTypeListAdapter.Holder(this);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131374976));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131374977);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131375162));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131375163);
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
@@ -66,7 +66,7 @@ public class SigTypeListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.SigTypeListAdapter
  * JD-Core Version:    0.7.0.1
  */

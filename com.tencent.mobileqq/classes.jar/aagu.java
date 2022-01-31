@@ -1,8 +1,17 @@
-import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ar.arengine.ARCamera;
+import com.tencent.mobileqq.ar.arengine.AREngine;
 
-public abstract interface aagu
+public class aagu
+  implements Runnable
 {
-  public abstract boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
+  public aagu(AREngine paramAREngine) {}
+  
+  public void run()
+  {
+    if (this.a.a != null) {
+      this.a.a.a(AREngine.j(this.a), AREngine.k(this.a), AREngine.h(this.a), AREngine.i(this.a));
+    }
+  }
 }
 
 

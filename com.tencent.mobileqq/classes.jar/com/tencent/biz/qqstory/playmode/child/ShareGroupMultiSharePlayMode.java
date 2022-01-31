@@ -42,7 +42,7 @@ public class ShareGroupMultiSharePlayMode
   public void a(Bundle paramBundle)
   {
     paramBundle = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager.a(this.g, this.p);
-    if ((paramBundle != null) && (paramBundle.mIsVideoEnd) && (this.n))
+    if ((paramBundle != null) && (paramBundle.mIsVideoEnd) && (this.o))
     {
       int i = 0;
       while (i < paramBundle.mVideoItemList.size())

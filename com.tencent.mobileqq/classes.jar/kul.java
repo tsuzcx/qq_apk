@@ -1,14 +1,19 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class kul
+public class kul
   implements Runnable
 {
-  kul(kuk paramkuk) {}
+  public kul(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, ArrayList paramArrayList) {}
   
   public void run()
   {
-    VideoCoverFragment.a(this.a.a).setCurrentItem(0, true);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      AdvertisementVideoPreloadManager.b(((PAAdPreloadTask)localIterator.next()).mVideoVid);
+    }
   }
 }
 

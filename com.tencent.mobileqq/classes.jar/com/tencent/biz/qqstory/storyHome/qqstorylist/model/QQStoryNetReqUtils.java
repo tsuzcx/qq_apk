@@ -3,8 +3,8 @@ package com.tencent.biz.qqstory.storyHome.qqstorylist.model;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserSelfInfoStep;
 import com.tencent.mobileqq.app.AppConstants;
 import java.lang.ref.WeakReference;
-import nxx;
-import nxy;
+import nzi;
+import nzj;
 
 public class QQStoryNetReqUtils
 {
@@ -14,8 +14,8 @@ public class QQStoryNetReqUtils
   {
     paramRequestCallBack = new WeakReference(paramRequestCallBack);
     GetUserSelfInfoStep localGetUserSelfInfoStep = new GetUserSelfInfoStep(null);
-    localGetUserSelfInfoStep.a(new nxx(paramRequestCallBack));
-    localGetUserSelfInfoStep.a(new nxy(paramRequestCallBack));
+    localGetUserSelfInfoStep.a(new nzi(paramRequestCallBack));
+    localGetUserSelfInfoStep.a(new nzj(paramRequestCallBack));
     localGetUserSelfInfoStep.a();
   }
 }

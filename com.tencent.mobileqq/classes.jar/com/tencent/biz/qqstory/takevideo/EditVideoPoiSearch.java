@@ -26,16 +26,16 @@ import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import oep;
-import oeq;
-import oer;
-import oes;
+import ogi;
+import ogj;
+import ogk;
+import ogl;
 
 public class EditVideoPoiSearch
   extends EditVideoPart
   implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new oes(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ogl(this);
   View jdField_a_of_type_AndroidViewView;
   ViewStub jdField_a_of_type_AndroidViewViewStub;
   public EditText a;
@@ -76,7 +76,7 @@ public class EditVideoPoiSearch
     LbsManager localLbsManager = (LbsManager)SuperManager.a(9);
     BasicLocation localBasicLocation = LocationUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a);
     if (localBasicLocation != null) {
-      localLbsManager.a(localBasicLocation, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession, new oer(this, str));
+      localLbsManager.a(localBasicLocation, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession, new ogk(this, str));
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.b())
     {
@@ -89,7 +89,7 @@ public class EditVideoPoiSearch
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364329));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364353));
   }
   
   public void a(int paramInt, Object paramObject)
@@ -108,7 +108,7 @@ public class EditVideoPoiSearch
     e();
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    this.jdField_a_of_type_AndroidWidgetEditText.post(new oep(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.post(new ogi(this));
     this.d.setVisibility(4);
   }
   
@@ -131,7 +131,7 @@ public class EditVideoPoiSearch
     this.e.setVisibility(0);
     this.f.setVisibility(4);
     this.g.setVisibility(0);
-    paramString = a().getString(2131432074, new Object[] { paramString });
+    paramString = a().getString(2131432091, new Object[] { paramString });
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
   }
   
@@ -140,13 +140,13 @@ public class EditVideoPoiSearch
     if (this.d == null) {
       return;
     }
-    TextView localTextView = (TextView)this.d.findViewById(2131363921);
+    TextView localTextView = (TextView)this.d.findViewById(2131363944);
     if (paramBoolean)
     {
-      localTextView.setText(2131434333);
+      localTextView.setText(2131434350);
       return;
     }
-    localTextView.setText(2131434329);
+    localTextView.setText(2131434346);
   }
   
   public boolean a()
@@ -184,14 +184,14 @@ public class EditVideoPoiSearch
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131371781);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131371779));
-      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131371780);
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371776));
-      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131371782);
-      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131371783);
-      this.g = this.jdField_a_of_type_AndroidViewView.findViewById(2131371784);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371785));
+      this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131371951);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131371949));
+      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131371950);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371946));
+      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131371952);
+      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131371953);
+      this.g = this.jdField_a_of_type_AndroidViewView.findViewById(2131371954);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371955));
       this.b.setOnClickListener(this);
       this.e.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
@@ -199,7 +199,7 @@ public class EditVideoPoiSearch
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter.a(this.jdField_a_of_type_JavaUtilArrayList, null);
       this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.e);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new oeq(this));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new ogj(this));
       i();
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter);
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
@@ -219,13 +219,13 @@ public class EditVideoPoiSearch
   {
     if (this.d == null)
     {
-      this.d = LayoutInflater.from(a()).inflate(2130969238, null);
-      ImageView localImageView = (ImageView)this.d.findViewById(2131363283);
-      TextView localTextView1 = (TextView)this.d.findViewById(2131363921);
-      TextView localTextView2 = (TextView)this.d.findViewById(2131363922);
-      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131363031);
+      this.d = LayoutInflater.from(a()).inflate(2130969239, null);
+      ImageView localImageView = (ImageView)this.d.findViewById(2131363301);
+      TextView localTextView1 = (TextView)this.d.findViewById(2131363944);
+      TextView localTextView2 = (TextView)this.d.findViewById(2131363945);
+      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131363049);
       localTextView1.setTextColor(-8355712);
-      localTextView1.setText(2131434329);
+      localTextView1.setText(2131434346);
       localTextView2.setVisibility(8);
       localImageView.setVisibility(8);
       localProgressBar.setVisibility(8);
@@ -256,8 +256,8 @@ public class EditVideoPoiSearch
     {
     default: 
       return;
-    case 2131371781: 
-    case 2131371782: 
+    case 2131371951: 
+    case 2131371952: 
       InputMethodUtil.b(a().a());
       return;
     }

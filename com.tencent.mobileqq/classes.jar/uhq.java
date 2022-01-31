@@ -1,35 +1,26 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.AnimConfig;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class uhq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public uhq(CustomizeStrategyFactory paramCustomizeStrategyFactory, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public uhq(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    if ((paramView.getTag() instanceof uil))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = QWalletTools.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig.a);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.c = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "preProcessAnim-preProcess finished");
-      }
-      CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
+      paramView = (uil)paramView.getTag();
+      ReportController.a(this.a.app, "CliOper", "", "", "0X8004447", "0X8004447", 0, 0, "", "", "", "");
+      VisitorsActivity.a(this.a, (CardProfile)paramView.a);
+    }
+    while (!(paramView.getTag() instanceof uin)) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("CustomizeStrategyFactory", 2, "preProcessAnim-throw:" + localThrowable);
-        }
-      }
-    }
+    this.a.b();
   }
 }
 

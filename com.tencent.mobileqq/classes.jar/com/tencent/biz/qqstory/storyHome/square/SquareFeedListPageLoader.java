@@ -22,8 +22,8 @@ import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import oaf;
-import oag;
+import obx;
+import oby;
 
 public class SquareFeedListPageLoader
   extends FeedListPageLoaderBase
@@ -36,7 +36,7 @@ public class SquareFeedListPageLoader
   private void d()
   {
     GetSquareBannerRequest localGetSquareBannerRequest = new GetSquareBannerRequest();
-    CmdTaskManger.a().a(localGetSquareBannerRequest, new oaf(this));
+    CmdTaskManger.a().a(localGetSquareBannerRequest, new obx(this));
   }
   
   private void e()
@@ -104,7 +104,7 @@ public class SquareFeedListPageLoader
   
   protected JobSegment a(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
   {
-    return new oag(paramFeedIdListCache, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation);
+    return new oby(paramFeedIdListCache, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation);
   }
   
   public void a(SquareFeedData paramSquareFeedData)

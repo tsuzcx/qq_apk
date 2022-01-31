@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import abnh;
-import abni;
+import abui;
+import abuj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -395,7 +395,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                               paramView.putExtra("edit_type", 0);
                                               paramView.putExtra("troopUin", this.frienduin);
                                               paramView.putExtra("uin", (String)localObject1);
-                                              paramView.putExtra("title", this.context.getResources().getString(2131430578));
+                                              paramView.putExtra("title", this.context.getResources().getString(2131430595));
                                               paramView.putExtra("isTroopNick", true);
                                               paramView.putExtra("default_text", (String)localObject2);
                                               paramView.putExtra("max_num", 60);
@@ -439,10 +439,10 @@ public class MessageForGrayTips$HightlightClickableSpan
                                           paramView.putExtra("param_groupcode", this.frienduin);
                                           paramView.putExtra("param_type", 1);
                                           paramView.putExtra("param_subtype", 1);
-                                          paramView.putExtra("param_done_button_wording", this.context.getString(2131430600));
+                                          paramView.putExtra("param_done_button_wording", this.context.getString(2131430617));
                                           paramView.putExtra("param_only_friends", true);
                                           paramView.putExtra("param_is_troop_admin", true);
-                                          paramView.putExtra("param_title", this.context.getString(2131430183));
+                                          paramView.putExtra("param_title", this.context.getString(2131430200));
                                           this.context.startActivity(paramView);
                                           return;
                                         } while (((TroopManager)((QQAppInterface)this.mApp.get()).getManager(51)).b(this.frienduin) == null);
@@ -464,7 +464,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                   ((QidianHandler)localObject1).a(paramView.extUin, paramView.masterUin, paramView.taskId, paramView.uniseq, paramView.istroop);
                                   return;
                                   paramView = new Intent(this.context, EditActivity.class);
-                                  paramView.putExtra("title", 2131433476).putExtra("current", this.item.remark).putExtra("action", 103).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("multiLine", false);
+                                  paramView.putExtra("title", 2131433493).putExtra("current", this.item.remark).putExtra("action", 103).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("multiLine", false);
                                   if ((this.context instanceof BaseActivity)) {
                                     ((BaseActivity)this.context).startActivityForResult(paramView, 13008);
                                   }
@@ -637,7 +637,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                         }
                       }
                     } while (paramView == null);
-                    paramView = DialogUtil.b(this.context, 0, "确认永久屏蔽？", "永久屏蔽后，你将不再收到对方的坦白说消息，此操作不可撤销，确认永久屏蔽吗？", 2131432998, 2131432999, new abnh(this, (QQAppInterface)localObject4, (String)localObject2, i, j, (ConfessInfo)localObject3, paramView), new abni(this));
+                    paramView = DialogUtil.b(this.context, 0, "确认永久屏蔽？", "永久屏蔽后，你将不再收到对方的坦白说消息，此操作不可撤销，确认永久屏蔽吗？", 2131433015, 2131433016, new abui(this, (QQAppInterface)localObject4, (String)localObject2, i, j, (ConfessInfo)localObject3, paramView), new abuj(this));
                   } while (((FragmentActivity)this.context).isFinishing());
                   paramView.show();
                   return;

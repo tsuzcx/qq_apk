@@ -1,22 +1,37 @@
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.game.ApolloFragmentManager;
+import com.tencent.mobileqq.apollo.game.ApolloGameView;
+import com.tencent.mobileqq.apollo.game.ApolloGameView.Director;
+import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
 
 public class ypq
   implements Runnable
 {
-  public ypq(ApolloGameActivity paramApolloGameActivity) {}
+  public ypq(ApolloGameView paramApolloGameView, Intent paramIntent) {}
   
   public void run()
   {
-    try
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
-      this.a.b();
-      return;
+      ApolloGameView.Director localDirector = new ApolloGameView.Director();
+      String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.TITLE);
+      if (!TextUtils.isEmpty(str)) {
+        localDirector.title = str;
+      }
+      str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.FOREGROUND_COLOR);
+      if (!TextUtils.isEmpty(str)) {
+        localDirector.frontColor = str;
+      }
+      str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.BACKGROUND_COLOR);
+      if (!TextUtils.isEmpty(str)) {
+        localDirector.bgColor = str;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a = localDirector;
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a();
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("Director", localDirector);
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.ApolloGameActivity", 1, localThrowable, new Object[0]);
-    }
+    ApolloFragmentManager.a().a(this.jdField_a_of_type_AndroidContentIntent, ApolloWebViewFragment.class);
   }
 }
 

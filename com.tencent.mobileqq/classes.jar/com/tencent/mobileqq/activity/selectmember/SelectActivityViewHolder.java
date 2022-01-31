@@ -37,14 +37,14 @@ public class SelectActivityViewHolder
     paramViewGroup = paramLayoutInflater.inflate(paramInt, paramViewGroup, false);
     paramLayoutInflater = new SelectActivityViewHolder();
     paramViewGroup.setTag(paramLayoutInflater);
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131363915));
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363914));
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131363916));
-    paramLayoutInflater.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131362701));
-    paramLayoutInflater.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363917));
-    paramLayoutInflater.d = ((TextView)paramViewGroup.findViewById(2131363918));
-    paramLayoutInflater.b = ((TextView)paramViewGroup.findViewById(2131362736));
-    paramLayoutInflater.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131363919);
+    paramLayoutInflater.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131363938));
+    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363937));
+    paramLayoutInflater.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131363939));
+    paramLayoutInflater.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131362719));
+    paramLayoutInflater.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363940));
+    paramLayoutInflater.d = ((TextView)paramViewGroup.findViewById(2131363941));
+    paramLayoutInflater.b = ((TextView)paramViewGroup.findViewById(2131362754));
+    paramLayoutInflater.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131363942);
     return paramViewGroup;
   }
   
@@ -56,7 +56,7 @@ public class SelectActivityViewHolder
     if (TextUtils.isEmpty(paramPhoneContact.uin))
     {
       paramSelectActivityViewHolder.jdField_a_of_type_JavaLangString = ("pstn" + paramPhoneContact.mobileNo);
-      paramSelectActivityViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840183);
+      paramSelectActivityViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840189);
       paramSelectActivityViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
       paramSelectActivityViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(ContactUtils.a(paramPhoneContact.name));
       paramSelectActivityViewHolder.jdField_a_of_type_Boolean = true;

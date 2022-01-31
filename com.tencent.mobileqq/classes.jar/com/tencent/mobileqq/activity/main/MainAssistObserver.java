@@ -44,30 +44,30 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import wmo;
-import wmp;
-import wmq;
-import wmr;
-import wms;
-import wmt;
-import wmu;
-import wmw;
-import wmy;
-import wnc;
-import wnd;
-import wne;
-import wnf;
-import wng;
-import wnh;
-import wni;
-import wnj;
-import wnk;
-import wnl;
-import wnn;
-import wnq;
-import wnr;
-import wns;
-import wnv;
+import wpt;
+import wpu;
+import wpv;
+import wpw;
+import wpx;
+import wpy;
+import wpz;
+import wqb;
+import wqd;
+import wqh;
+import wqi;
+import wqj;
+import wqk;
+import wql;
+import wqm;
+import wqn;
+import wqo;
+import wqp;
+import wqq;
+import wqs;
+import wqv;
+import wqw;
+import wqx;
+import wra;
 
 public class MainAssistObserver
 {
@@ -77,19 +77,19 @@ public class MainAssistObserver
   protected OpenIdObserver a;
   public SplashActivity a;
   public LebaTabRedTouch a;
-  private CallTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppCallTabUnreadListener = new wnv(this);
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new wnf(this);
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new wmq(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wnk(this);
-  private MsgTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppMsgTabUnreadListener = new wns(this);
-  private NewFriendManager.INewFriendListener jdField_a_of_type_ComTencentMobileqqAppNewFriendManager$INewFriendListener = new wmp(this);
-  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyObserver = new wnq(this);
-  private ReadInJoyTabObserver jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyTabObserver = new wnn(this);
+  private CallTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppCallTabUnreadListener = new wra(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new wqk(this);
+  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new wpv(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wqp(this);
+  private MsgTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppMsgTabUnreadListener = new wqx(this);
+  private NewFriendManager.INewFriendListener jdField_a_of_type_ComTencentMobileqqAppNewFriendManager$INewFriendListener = new wpu(this);
+  private ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyObserver = new wqv(this);
+  private ReadInJoyTabObserver jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyTabObserver = new wqs(this);
   private UpgradeDetailWrapper jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper;
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new wnr(this);
-  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new wnc(this);
-  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new wnl(this);
-  private VipGifObserver jdField_a_of_type_ComTencentMobileqqObserverVipGifObserver = new wmo(this);
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new wqw(this);
+  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new wqh(this);
+  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new wqq(this);
+  private VipGifObserver jdField_a_of_type_ComTencentMobileqqObserverVipGifObserver = new wpt(this);
   public QQCustomDialog a;
   public QQProgressDialog a;
   protected String a;
@@ -112,8 +112,8 @@ public class MainAssistObserver
     this.jdField_c_of_type_Int = 3;
     this.jdField_d_of_type_Int = 4;
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    this.jdField_a_of_type_AndroidOsHandler = new wmy(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new wni(this);
+    this.jdField_a_of_type_AndroidOsHandler = new wqd(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new wqn(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityMainLebaTabRedTouch = new LebaTabRedTouch(paramSplashActivity);
     this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity = paramSplashActivity;
   }
@@ -263,7 +263,7 @@ public class MainAssistObserver
   {
     try
     {
-      ThreadManager.getSubThreadHandler().postDelayed(new wne(this), 500L);
+      ThreadManager.getSubThreadHandler().postDelayed(new wqj(this), 500L);
       return;
     }
     catch (Exception localException)
@@ -286,7 +286,7 @@ public class MainAssistObserver
     if ((this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null)) {
       return;
     }
-    ThreadManager.post(new wmr(this, this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app), 8, null, false);
+    ThreadManager.post(new wpw(this, this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app), 8, null, false);
   }
   
   public void f()
@@ -294,7 +294,7 @@ public class MainAssistObserver
     if ((this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null)) {
       return;
     }
-    ThreadManager.post(new wms(this, this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app), 8, null, false);
+    ThreadManager.post(new wpx(this, this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app), 8, null, false);
   }
   
   public void g()
@@ -307,7 +307,7 @@ public class MainAssistObserver
     if (QLog.isColorLevel()) {
       NearbyUtils.a(2, "NearbyUtils", "updateTabLebaNotify", new Object[0]);
     }
-    ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqActivityMainLebaTabRedTouch.a(new wmt(this)), 8, null, false);
+    ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqActivityMainLebaTabRedTouch.a(new wpy(this)), 8, null, false);
   }
   
   public void h()
@@ -320,9 +320,9 @@ public class MainAssistObserver
     Object localObject = localQQAppInterface.a();
     NewFriendManager localNewFriendManager = (NewFriendManager)this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.getManager(33);
     if ((localObject != null) && (localNewFriendManager != null)) {
-      ThreadManager.post(new wmu(this, localQQAppInterface, (QQMessageFacade)localObject), 8, null, false);
+      ThreadManager.post(new wpz(this, localQQAppInterface, (QQMessageFacade)localObject), 8, null, false);
     }
-    ThreadManager.post(new wmw(this, localQQAppInterface), 8, null, false);
+    ThreadManager.post(new wqb(this, localQQAppInterface), 8, null, false);
     g();
     f();
     localObject = new Intent("com.tencent.qq.syncQQMessage");
@@ -334,7 +334,7 @@ public class MainAssistObserver
     if ((this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null)) {
       return;
     }
-    ThreadManager.post(new wnd(this, this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app), 8, null, false);
+    ThreadManager.post(new wqi(this, this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app), 8, null, false);
   }
   
   public void j()
@@ -345,10 +345,10 @@ public class MainAssistObserver
       return;
     }
     this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131430008);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131430142);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131432998, new wng(this));
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131430009, new wnh(this));
+    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131430025);
+    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131430159);
+    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433015, new wql(this));
+    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131430026, new wqm(this));
     this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
@@ -368,10 +368,10 @@ public class MainAssistObserver
       if ((localObject != null) && (!TextUtils.isEmpty(((OpenID)localObject).openID))) {
         break label182;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434416);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434433);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       this.jdField_b_of_type_AndroidOsHandler = new Handler();
-      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new wnj(this), 3000L);
+      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new wqo(this), 3000L);
       this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.a().d(this.jdField_a_of_type_JavaLangString);
     }
     label182:

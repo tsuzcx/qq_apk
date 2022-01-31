@@ -1,69 +1,23 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import com.tencent.util.WeakReferenceHandler;
 
 public class aavx
-  extends Handler
 {
-  public aavx(NonMainAppHeadLoader paramNonMainAppHeadLoader, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public int a;
+  public long a;
+  public ArkLocalAppMgr.AppPathInfo a;
+  public ArkLocalAppMgr.IGetAppPathByNameCallback a;
+  public WeakReferenceHandler a;
+  public Object a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void handleMessage(Message paramMessage)
+  public aavx()
   {
-    if (paramMessage.what == 1000) {
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
-        paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        this.a.a(paramMessage);
-      }
-    }
-    Object localObject;
-    String str;
-    do
-    {
-      this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
-      for (;;)
-      {
-        return;
-        if (paramMessage.what == 1002) {
-          try
-          {
-            localObject = (Bundle)paramMessage.obj;
-            paramMessage = (Bitmap)((Bundle)localObject).getParcelable("bmp");
-            str = ((Bundle)localObject).getString("uin");
-            localObject = ((Bundle)localObject).getString("path");
-            if (paramMessage != null) {
-              this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramMessage);
-            }
-            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-            while (localIterator.hasNext())
-            {
-              NonMainAppHeadLoader.FaceObserver localFaceObserver = (NonMainAppHeadLoader.FaceObserver)localIterator.next();
-              if (localFaceObserver != null) {
-                localFaceObserver.onFaceUpdate(str, (String)localObject, paramMessage);
-              }
-            }
-            if (!QLog.isColorLevel()) {}
-          }
-          catch (Exception paramMessage) {}
-        }
-      }
-      QLog.e("NonMainAppHeadLoader", 2, "refreshImg, exception:" + paramMessage.toString());
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("NonMainAppHeadLoader", 2, "refreshImg, uin:" + str + ", path=" + (String)localObject);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
 }
 

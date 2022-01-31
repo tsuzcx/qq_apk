@@ -1,28 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class xlz
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public xlz(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xlz(LoginView paramLoginView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (this.a.a.b.get() == 4) {
-      this.a.a(false);
-    }
-    this.a.a.a("FlowCameraActivity");
-    this.a.d();
-    FlowCameraMqqAction.b("", "0X800656F", "0");
+    LoginView.b(this.a, false);
   }
 }
 

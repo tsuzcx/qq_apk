@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import ajiy;
+import ajxc;
 import android.content.Intent;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -42,12 +42,12 @@ public class TroopPicEffectsEditActivity$UploadPicCallback
     localIntent.putExtra("isFromTroopEffectPic", true);
     localTroopPicEffectsEditActivity.startActivity(AIOUtils.a(localIntent, new int[] { 1 }));
     localTroopPicEffectsEditActivity.finish();
-    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.a, (im_msg_body.CustomFace)paramSendResult.a, new ajiy(this, localTroopPicEffectsEditActivity));
+    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.a, (im_msg_body.CustomFace)paramSendResult.a, new ajxc(this, localTroopPicEffectsEditActivity));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.UploadPicCallback
  * JD-Core Version:    0.7.0.1
  */

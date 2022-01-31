@@ -1,17 +1,11 @@
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.PhotoCaptureResult;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class agua
-  implements Runnable
 {
-  public agua(CameraCaptureFragment paramCameraCaptureFragment, CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult) {}
-  
-  public void run()
-  {
-    Toast.makeText(BaseApplicationImpl.getContext(), "onPhotoCaptured : " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$PhotoCaptureResult.a, 1).show();
-  }
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 

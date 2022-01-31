@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import java.util.List;
-import myf;
+import mzo;
 
 public class QQStoryObserver
   implements BusinessObserver
@@ -68,6 +68,8 @@ public class QQStoryObserver
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
   
+  public void b() {}
+  
   public void b(int paramInt) {}
   
   public void b(boolean paramBoolean) {}
@@ -88,11 +90,34 @@ public class QQStoryObserver
     }
     switch (paramInt)
     {
-    }
-    label488:
-    label494:
-    do
-    {
+    case 1008: 
+    case 1013: 
+    case 1014: 
+    case 1025: 
+    default: 
+    case 1003: 
+    case 1018: 
+    case 1004: 
+    case 1019: 
+    case 1001: 
+    case 1002: 
+    case 1005: 
+    case 1006: 
+    case 1007: 
+    case 1009: 
+    case 1010: 
+    case 1011: 
+    case 1015: 
+    case 1016: 
+    case 1017: 
+    case 1012: 
+    case 1020: 
+    case 1021: 
+    case 1022: 
+    case 1023: 
+    case 1024: 
+      label496:
+      label502:
       do
       {
         do
@@ -103,132 +128,137 @@ public class QQStoryObserver
             {
               do
               {
-                return;
-                a(((Integer)paramObject).intValue());
-                return;
-                b(((Integer)paramObject).intValue());
-                return;
-                a(paramBoolean);
-                return;
-                b(paramBoolean);
-                return;
-                paramObject = (Object[])paramObject;
-                if (paramBoolean)
+                do
                 {
-                  a(paramBoolean, (List)paramObject[0], (byte[])paramObject[1], ((Boolean)paramObject[2]).booleanValue());
                   return;
-                }
-                a(false, null, null, true);
-                return;
-                paramObject = (Object[])paramObject;
-                a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
-                return;
-                a(paramBoolean, (QQStoryUserInfo)paramObject);
-                return;
-                a(paramBoolean, (List)paramObject);
-                return;
-                if (paramBoolean)
-                {
+                  a(((Integer)paramObject).intValue());
+                  return;
+                  b(((Integer)paramObject).intValue());
+                  return;
+                  a(paramBoolean);
+                  return;
+                  b(paramBoolean);
+                  return;
                   paramObject = (Object[])paramObject;
-                  a(paramBoolean, ((Integer)paramObject[0]).intValue(), (List)paramObject[1]);
-                  return;
-                }
-                a(paramBoolean, 0, null);
-                return;
-                Object localObject2 = (UserInfo)paramObject;
-                Object localObject3;
-                boolean bool;
-                if (localObject2 != null)
-                {
-                  localObject3 = (UserManager)SuperManager.a(2);
-                  localObject1 = ((UserManager)localObject3).b(((UserInfo)localObject2).uid);
-                  paramObject = localObject1;
-                  if (localObject1 == null)
+                  if (paramBoolean)
                   {
-                    paramObject = new QQUserUIItem();
-                    paramObject.uid = ((UserInfo)localObject2).uid;
-                    paramObject.setUnionId(((UserInfo)localObject2).unionId);
+                    a(paramBoolean, (List)paramObject[0], (byte[])paramObject[1], ((Boolean)paramObject[2]).booleanValue());
+                    return;
                   }
-                  if (((UserInfo)localObject2).type != 1) {
-                    break label488;
-                  }
-                  bool = true;
-                  paramObject.isVip = bool;
-                  paramObject.headUrl = ((UserInfo)localObject2).headUrl;
-                  paramObject.nickName = ((UserInfo)localObject2).nick;
-                  paramObject.remark = ((UserInfo)localObject2).remark;
-                  if (!((UserInfo)localObject2).isSubscribe) {
-                    break label494;
-                  }
-                }
-                for (paramInt = i;; paramInt = 0)
-                {
-                  paramObject.isSubscribe = paramInt;
-                  paramObject.symbolUrl = ((UserInfo)localObject2).authTypeIcon;
-                  ((UserManager)localObject3).a(paramObject);
-                  a(paramBoolean, (UserInfo)localObject2);
+                  a(false, null, null, true);
                   return;
-                  bool = false;
-                  break;
-                }
-                if (paramBoolean)
-                {
-                  localObject3 = (Object[])paramObject;
-                  paramInt = ((Integer)localObject3[0]).intValue();
-                  paramObject = (List)localObject3[1];
-                  localObject1 = (Boolean)localObject3[2];
-                  localObject2 = (String)localObject3[3];
-                  localObject3 = (List)localObject3[4];
-                  a(paramBoolean, paramInt, paramObject, ((Boolean)localObject1).booleanValue(), (String)localObject2, (List)localObject3);
-                  return;
-                }
-                a(false, 0, null, false, null, null);
-                return;
-                Object localObject1 = (Object[])paramObject;
-                paramInt = ((Integer)localObject1[0]).intValue();
-                paramObject = (String)localObject1[1];
-                localObject1 = (Boolean)localObject1[2];
-                if (paramBoolean)
-                {
-                  Bosses.get().postJob(new myf(this, paramObject, (Boolean)localObject1, paramBoolean, paramInt));
-                  return;
-                }
-                a(paramBoolean, false, paramInt, paramObject);
-                return;
-                if (paramBoolean)
-                {
                   paramObject = (Object[])paramObject;
-                  a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+                  a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue());
                   return;
-                }
-                a(paramBoolean, 0, null);
-                return;
-                c(paramBoolean);
-                return;
-                if (paramBoolean)
-                {
-                  a(true, (QQStoryBanInfo)paramObject);
+                  a(paramBoolean, (QQStoryUserInfo)paramObject);
                   return;
-                }
-                a(false, null);
+                  a(paramBoolean, (List)paramObject);
+                  return;
+                  if (paramBoolean)
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (List)paramObject[1]);
+                    return;
+                  }
+                  a(paramBoolean, 0, null);
+                  return;
+                  Object localObject2 = (UserInfo)paramObject;
+                  Object localObject3;
+                  boolean bool;
+                  if (localObject2 != null)
+                  {
+                    localObject3 = (UserManager)SuperManager.a(2);
+                    localObject1 = ((UserManager)localObject3).b(((UserInfo)localObject2).uid);
+                    paramObject = localObject1;
+                    if (localObject1 == null)
+                    {
+                      paramObject = new QQUserUIItem();
+                      paramObject.uid = ((UserInfo)localObject2).uid;
+                      paramObject.setUnionId(((UserInfo)localObject2).unionId);
+                    }
+                    if (((UserInfo)localObject2).type != 1) {
+                      break label496;
+                    }
+                    bool = true;
+                    paramObject.isVip = bool;
+                    paramObject.headUrl = ((UserInfo)localObject2).headUrl;
+                    paramObject.nickName = ((UserInfo)localObject2).nick;
+                    paramObject.remark = ((UserInfo)localObject2).remark;
+                    if (!((UserInfo)localObject2).isSubscribe) {
+                      break label502;
+                    }
+                  }
+                  for (paramInt = i;; paramInt = 0)
+                  {
+                    paramObject.isSubscribe = paramInt;
+                    paramObject.symbolUrl = ((UserInfo)localObject2).authTypeIcon;
+                    ((UserManager)localObject3).a(paramObject);
+                    a(paramBoolean, (UserInfo)localObject2);
+                    return;
+                    bool = false;
+                    break;
+                  }
+                  if (paramBoolean)
+                  {
+                    localObject3 = (Object[])paramObject;
+                    paramInt = ((Integer)localObject3[0]).intValue();
+                    paramObject = (List)localObject3[1];
+                    localObject1 = (Boolean)localObject3[2];
+                    localObject2 = (String)localObject3[3];
+                    localObject3 = (List)localObject3[4];
+                    a(paramBoolean, paramInt, paramObject, ((Boolean)localObject1).booleanValue(), (String)localObject2, (List)localObject3);
+                    return;
+                  }
+                  a(false, 0, null, false, null, null);
+                  return;
+                  Object localObject1 = (Object[])paramObject;
+                  paramInt = ((Integer)localObject1[0]).intValue();
+                  paramObject = (String)localObject1[1];
+                  localObject1 = (Boolean)localObject1[2];
+                  if (paramBoolean)
+                  {
+                    Bosses.get().postJob(new mzo(this, paramObject, (Boolean)localObject1, paramBoolean, paramInt));
+                    return;
+                  }
+                  a(paramBoolean, false, paramInt, paramObject);
+                  return;
+                  if (paramBoolean)
+                  {
+                    paramObject = (Object[])paramObject;
+                    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+                    return;
+                  }
+                  a(paramBoolean, 0, null);
+                  return;
+                  c(paramBoolean);
+                  return;
+                  if (paramBoolean)
+                  {
+                    a(true, (QQStoryBanInfo)paramObject);
+                    return;
+                  }
+                  a(false, null);
+                  return;
+                } while (!(paramObject instanceof StoryPushMsg));
+                a((StoryPushMsg)paramObject);
                 return;
-              } while (!(paramObject instanceof StoryPushMsg));
-              a((StoryPushMsg)paramObject);
+              } while (!paramBoolean);
+              d(((Boolean)paramObject).booleanValue());
               return;
             } while (!paramBoolean);
-            d(((Boolean)paramObject).booleanValue());
+            b();
             return;
           } while (!paramBoolean);
-          a();
+          e(((Boolean)paramObject).booleanValue());
           return;
         } while (!paramBoolean);
-        e(((Boolean)paramObject).booleanValue());
+        f(((Boolean)paramObject).booleanValue());
         return;
       } while (!paramBoolean);
-      f(((Boolean)paramObject).booleanValue());
+      a(((Byte)paramObject).byteValue());
       return;
-    } while (!paramBoolean);
-    a(((Byte)paramObject).byteValue());
+    }
+    a();
   }
 }
 

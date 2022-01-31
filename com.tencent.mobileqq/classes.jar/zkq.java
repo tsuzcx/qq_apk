@@ -1,47 +1,31 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
 
-public final class zkq
-  extends Timer
+public class zkq
+  implements Runnable
 {
-  public zkq(String paramString)
-  {
-    super(paramString);
-  }
+  public zkq(QQAppInterface paramQQAppInterface, String paramString, File paramFile) {}
   
-  public void cancel()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ThreadManager", 2, "Can't cancel Global Timer");
-    }
-  }
-  
-  public void schedule(TimerTask paramTimerTask, long paramLong)
-  {
-    try
+    File localFile;
+    if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, MsfSdkUtils.insertMtype("lingyin", this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile))
     {
-      super.schedule(paramTimerTask, paramLong);
+      localFile = new File(QQAppInterface.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getApplicationContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
+      if (localFile == null) {
+        break label69;
+      }
+    }
+    label69:
+    for (long l = localFile.length();; l = 0L)
+    {
+      QQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(l);
       return;
-    }
-    catch (Exception paramTimerTask)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ThreadManager", 2, "timer schedule err", paramTimerTask);
-    }
-  }
-  
-  public void schedule(TimerTask paramTimerTask, long paramLong1, long paramLong2)
-  {
-    try
-    {
-      super.schedule(paramTimerTask, paramLong1, paramLong2);
-      return;
-    }
-    catch (Exception paramTimerTask)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ThreadManager", 2, "timer schedule2 err", paramTimerTask);
     }
   }
 }

@@ -1,4 +1,3 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class lnt
@@ -8,9 +7,8 @@ public class lnt
   
   public void run()
   {
-    if (ReadInJoySelfFragment.a(this.a) != null) {
-      ReadInJoySelfFragment.a(this.a).g();
-    }
+    ReadInJoySelfFragment.a(this.a);
+    ReadInJoySelfFragment.b(this.a);
   }
 }
 

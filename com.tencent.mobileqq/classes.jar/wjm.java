@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
+import com.tencent.mobileqq.activity.contact.newfriend.ContactMatchBuilder;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
 
-public class wjm
-  implements wjp
+class wjm
+  implements Runnable
 {
-  public wjm(CardViewController paramCardViewController) {}
+  wjm(wjl paramwjl) {}
   
-  public void a()
+  public void run()
   {
-    CardViewController.e(this.a);
+    this.a.a.a.c();
   }
 }
 

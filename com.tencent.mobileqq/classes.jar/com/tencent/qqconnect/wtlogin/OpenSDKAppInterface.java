@@ -1,6 +1,6 @@
 package com.tencent.qqconnect.wtlogin;
 
-import algu;
+import alwk;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -110,7 +110,7 @@ public class OpenSDKAppInterface
     {
       paramContext = new AlertDialog.Builder(paramContext);
       paramContext.setMessage(paramString);
-      paramContext.setNegativeButton("确定", new algu(this));
+      paramContext.setNegativeButton("确定", new alwk(this));
       paramContext.show();
     }
   }
@@ -189,7 +189,7 @@ public class OpenSDKAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.OpenSDKAppInterface
  * JD-Core Version:    0.7.0.1
  */

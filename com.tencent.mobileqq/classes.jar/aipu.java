@@ -1,58 +1,69 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aipu
-  extends Handler
+  extends aipl
 {
-  public aipu(TroopFeedsDataManager paramTroopFeedsDataManager, Looper paramLooper)
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  boolean jdField_a_of_type_Boolean = false;
+  private AtomicBoolean c = new AtomicBoolean(false);
+  
+  public aipu(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
   {
-    super(paramLooper);
+    super(paramForwardSdkShareProcessor);
+    this.jdField_a_of_type_JavaLangString = "RichStep";
+    g();
   }
   
-  public void handleMessage(Message paramMessage)
+  protected boolean a()
   {
-    switch (paramMessage.what)
+    return (!this.c.get()) || (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 2);
+  }
+  
+  protected void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "RichStep|process|neeRich=" + this.c + ",lack=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+    }
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-    default: 
-    case 2: 
-    case 3: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          this.a.a(1000);
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          TroopFeedsDataManager.a(this.a);
-          this.a.notifyObservers(Integer.valueOf(101));
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
-        return;
-        this.a.a = ((List)paramMessage.obj);
-        TroopFeedsDataManager.b(this.a);
-        this.a.notifyObservers(Integer.valueOf(105));
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
-      return;
-    case 5: 
-      TroopFeedsDataManager.c(this.a);
-      this.a.notifyObservers(Integer.valueOf(1010));
+      f();
       return;
     }
-    TroopFeedsDataManager.d(this.a);
-    this.a.notifyObservers(Integer.valueOf(103));
+    if (this.c.get())
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      ThreadManager.post(new aipv(this), 5, null, true);
+      return;
+    }
+    b();
+  }
+  
+  void g()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    this.c.set(false);
+    if ((TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))) && (TextUtils.isEmpty(ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)))) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor, ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) | 0x1);
+    }
+    if (TextUtils.isEmpty(ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor, ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) | 0x2);
+    }
+    if (TextUtils.isEmpty(ForwardSdkShareProcessor.d(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor, ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) | 0x4);
+    }
+    if (ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) > 0) {
+      this.c.set(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipu
  * JD-Core Version:    0.7.0.1
  */

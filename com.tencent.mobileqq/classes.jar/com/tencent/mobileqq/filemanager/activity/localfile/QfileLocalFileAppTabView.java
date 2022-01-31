@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import achr;
-import acht;
+import acro;
+import acrq;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -69,7 +69,7 @@ public class QfileLocalFileAppTabView
     this.b.put("已安装", new ArrayList());
     this.b.put("未安装", new ArrayList());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this);
-    this.jdField_a_of_type_JavaLangRunnable = new achr(this);
+    this.jdField_a_of_type_JavaLangRunnable = new acro(this);
     ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -79,7 +79,7 @@ public class QfileLocalFileAppTabView
     Looper localLooper = Looper.getMainLooper();
     if (localLooper.getThread() != localThread)
     {
-      new Handler(localLooper).post(new acht(this, paramFileInfo));
+      new Handler(localLooper).post(new acrq(this, paramFileInfo));
       return;
     }
     d(paramFileInfo);

@@ -1,55 +1,80 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.arcard.ARCardHeadIconManager;
-import java.util.ArrayList;
-import java.util.Hashtable;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.IArSoCallback;
 
 public class aaeu
-  extends BroadcastReceiver
+  implements IArSoCallback
 {
-  public aaeu(ARCardHeadIconManager paramARCardHeadIconManager) {}
+  private IBinder a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aaeu(IBinder paramIBinder)
   {
-    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
+    this.a = paramIBinder;
+  }
+  
+  public void a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      ArrayList localArrayList = paramIntent.getExtras().getStringArrayList("uinList");
-      paramIntent = paramIntent.getExtras().getStringArrayList("headPathList");
-      if ((localArrayList != null) && (paramIntent != null))
-      {
-        int i = 0;
-        if (i < localArrayList.size())
-        {
-          String str1 = (String)paramIntent.get(i);
-          if (str1 != null)
-          {
-            String str2 = (String)localArrayList.get(i);
-            paramContext = (aaev)ARCardHeadIconManager.a(this.a).get(str2);
-            if (paramContext != null) {
-              break label147;
-            }
-            paramContext = new aaev(this.a);
-            paramContext.jdField_a_of_type_JavaLangString = str1;
-            ARCardHeadIconManager.a(this.a).put(str2, paramContext);
-          }
-          for (;;)
-          {
-            paramContext.jdField_a_of_type_Boolean = false;
-            i += 1;
-            break;
-            label147:
-            paramContext.jdField_a_of_type_JavaLangString = str1;
-          }
-        }
-      }
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaeu
  * JD-Core Version:    0.7.0.1
  */

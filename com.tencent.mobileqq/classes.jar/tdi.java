@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.activity.PreloadWebService;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class tdi
-  extends WebViewClient
+class tdi
+  implements DialogInterface.OnClickListener
 {
-  public tdi(PreloadWebService paramPreloadWebService) {}
+  tdi(tdh paramtdh) {}
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    ThreadManager.getSubThreadHandler().post(new tdj(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tdi
  * JD-Core Version:    0.7.0.1
  */

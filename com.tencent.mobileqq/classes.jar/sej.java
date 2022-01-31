@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class sej
-  implements Runnable
+public class sej
+  implements View.OnClickListener
 {
-  sej(seg paramseg) {}
+  public sej(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.a.b != 5) {
-      this.a.a.a.b();
-    }
+    paramView = String.format("https://qun.qq.com/certification/index.html?_wv=7&_bid=2589&gc=%1$s", new Object[] { this.a.a.troopUin });
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    localIntent.putExtra("url", paramView);
+    this.a.startActivity(localIntent);
   }
 }
 

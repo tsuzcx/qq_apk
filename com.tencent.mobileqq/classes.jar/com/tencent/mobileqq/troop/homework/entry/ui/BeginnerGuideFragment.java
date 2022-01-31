@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import aisg;
+import ajgk;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +32,7 @@ public class BeginnerGuideFragment
   implements ComplexGuidViewPager.OnGuideBtnClickListener
 {
   private int jdField_a_of_type_Int;
-  private aisg jdField_a_of_type_Aisg;
+  private ajgk jdField_a_of_type_Ajgk;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private View jdField_a_of_type_AndroidViewView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -169,7 +169,7 @@ public class BeginnerGuideFragment
         try
         {
           String str3 = new File(new URL(str2).getFile()).getName();
-          new BeginnerGuideDownloadManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1).a(this.jdField_a_of_type_Aisg, i, false);
+          new BeginnerGuideDownloadManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1).a(this.jdField_a_of_type_Ajgk, i, false);
           return true;
         }
         catch (Exception localException) {}
@@ -270,7 +270,7 @@ public class BeginnerGuideFragment
       QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment create view");
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_Aisg = new aisg(this, Looper.myLooper());
+    this.jdField_a_of_type_Ajgk = new ajgk(this, Looper.myLooper());
     this.jdField_a_of_type_AndroidOsBundle = getArguments();
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
@@ -283,15 +283,15 @@ public class BeginnerGuideFragment
     for (;;)
     {
       boolean bool = e();
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969886, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969900, paramViewGroup, false);
       if (this.jdField_a_of_type_AndroidViewView == null) {
         getActivity().finish();
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager = ((ComplexGuidViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131368338));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager = ((ComplexGuidViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131368405));
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setOnActionBtnClickListener(this);
       e();
       if (bool) {
-        a(2131430646);
+        a(2131430663);
       }
       return this.jdField_a_of_type_AndroidViewView;
       label177:
@@ -305,8 +305,8 @@ public class BeginnerGuideFragment
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Aisg != null) {
-      this.jdField_a_of_type_Aisg.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Ajgk != null) {
+      this.jdField_a_of_type_Ajgk.removeCallbacksAndMessages(null);
     }
   }
   
@@ -318,7 +318,7 @@ public class BeginnerGuideFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment
  * JD-Core Version:    0.7.0.1
  */

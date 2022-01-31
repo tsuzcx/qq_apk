@@ -98,7 +98,7 @@ public final class share_detail_item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_CAMPUS_INTERLOCUTION_FEEDS.share_detail_item
  * JD-Core Version:    0.7.0.1
  */

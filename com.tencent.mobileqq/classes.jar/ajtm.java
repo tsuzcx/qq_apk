@@ -1,199 +1,76 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.anim.VipPendantDrawable;
-import com.tencent.mobileqq.vas.PendantInfo;
-import com.tencent.mobileqq.vas.PendantInfo.AnimationLruCache;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.mobileqq.troop.widget.TrooFileTextViewMenuBuilder;
+import com.tencent.mobileqq.troop.widget.TroopFileItemBuilder;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
 
 public class ajtm
-  extends MqqWeakReferenceHandler
+  extends TrooFileTextViewMenuBuilder
 {
-  public ajtm(PendantInfo paramPendantInfo, Looper paramLooper, Handler.Callback paramCallback)
+  public ajtm(TroopFileItemBuilder paramTroopFileItemBuilder, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    super(paramLooper, paramCallback);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
   {
-    long l;
-    Object localObject;
-    if (paramMessage.what == 16)
+    if ((paramObject instanceof Object[]))
     {
-      l = paramMessage.getData().getLong("targetId");
-      if (PendantInfo.g == l)
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
-        while (paramMessage.hasNext())
-        {
-          localObject = (Drawable)paramMessage.next();
-          if (localObject != null) {
-            ((Drawable)localObject).invalidateSelf();
-          }
-        }
-      }
-      paramMessage = (Drawable)this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l));
-      if (paramMessage != null) {
-        paramMessage.invalidateSelf();
+      paramObject = (Object[])paramObject;
+      if (paramObject.length == 2) {
+        break label22;
       }
     }
-    Bitmap localBitmap;
-    for (;;)
+    label22:
+    do
     {
-      return;
-      if (paramMessage.what != 17) {
-        break label527;
-      }
-      this.a.b = true;
-      this.a.q = this.a.a(this.a.q);
-      if (!(paramMessage.obj instanceof Bitmap)) {
-        break label489;
-      }
-      localObject = (Bitmap)paramMessage.obj;
-      if ((localObject != null) && (this.a.b() != localObject))
+      do
       {
-        localBitmap = this.a.a();
-        if (localBitmap != null)
-        {
-          if ((!localBitmap.isMutable()) || (Build.VERSION.SDK_INT <= 11)) {
-            break label435;
-          }
-          this.a.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
-        }
-        label217:
-        this.a.a((Bitmap)localObject);
-      }
-      l = paramMessage.getData().getLong("targetId");
-      try
-      {
-        if (PendantInfo.g != l) {
-          break label451;
-        }
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
-        while (paramMessage.hasNext())
-        {
-          localObject = (Drawable)paramMessage.next();
-          if (localObject != null) {
-            ((Drawable)localObject).invalidateSelf();
-          }
-        }
-        if (2 != this.a.o) {}
-      }
-      catch (Exception paramMessage)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PendantInfo", 2, "handleMessage, exception:" + paramMessage.getMessage());
-        }
-      }
+        return;
+        paramObject = paramObject[0];
+      } while (!(paramObject instanceof boolean[]));
+      paramObject = (boolean[])paramObject;
+    } while ((paramArrayOfSwipRightMenuItem == null) || (paramArrayOfSwipRightMenuItem.length <= 0) || (paramObject.length != 3));
+    if ((paramArrayOfSwipRightMenuItem.length < 0) && (paramObject[0] != 0))
+    {
+      paramArrayOfSwipRightMenuItem[0].b = 0;
+      paramArrayOfSwipRightMenuItem[0].a = 0;
     }
-    label329:
-    if (this.a.c)
+    for (int i = 1;; i = 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PendantInfo", 2, "cancel decode pendant in market:" + this.a.jdField_a_of_type_Long);
-      }
-      this.a.c = false;
-      l = PendantInfo.g;
-      this.a.q = 0;
-      this.a.r = 3;
-    }
-    for (;;)
-    {
-      if (this.a.r == 0)
+      paramInt = i;
+      if (i < paramArrayOfSwipRightMenuItem.length)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = null;
-        return;
-        label435:
-        localBitmap.recycle();
-        this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        break label217;
-        label451:
-        paramMessage = (Drawable)this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l));
-        if (paramMessage == null) {
-          break label329;
-        }
-        paramMessage.invalidateSelf();
-        break label329;
-      }
-      this.a.b(l);
-      return;
-      label489:
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("PendantInfo", 2, "wrong type , msg.obj = " + paramMessage.obj.getClass());
-      return;
-      label527:
-      if (paramMessage.what == 18)
-      {
-        if ((!this.a.jdField_a_of_type_Boolean) && (this.a.o == 2) && (this.a.r > 0))
+        paramInt = i;
+        if (paramObject[1] != 0)
         {
-          this.a.b(paramMessage.getData().getLong("targetId"));
-          return;
+          paramArrayOfSwipRightMenuItem[i].b = 1;
+          paramArrayOfSwipRightMenuItem[i].a = 1;
+          paramInt = i + 1;
         }
-        if ((this.a.jdField_a_of_type_Boolean) || (this.a.o != 1)) {
-          break;
-        }
-        this.a.d();
-        return;
       }
-      if (paramMessage.what == 19)
+      i = paramInt;
+      if (paramInt < paramArrayOfSwipRightMenuItem.length)
       {
-        l = paramMessage.getData().getLong("targetId");
-        if (PendantInfo.g == l)
+        i = paramInt;
+        if (paramObject[2] != 0)
         {
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
-          while (paramMessage.hasNext())
-          {
-            localObject = (Drawable)paramMessage.next();
-            if (localObject != null) {
-              this.a.a((Drawable)localObject, true, 0L);
-            }
-          }
-          break;
+          paramArrayOfSwipRightMenuItem[paramInt].b = 2;
+          paramArrayOfSwipRightMenuItem[paramInt].a = 0;
+          i = paramInt + 1;
         }
-        paramMessage = (Drawable)this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l));
-        if (paramMessage == null) {
-          break;
-        }
-        this.a.a(paramMessage, false, 0L);
-        return;
       }
-      if (paramMessage.what != 20) {
-        break;
-      }
-      l = paramMessage.getData().getLong("targetId");
-      if (PendantInfo.g == l)
+      while (i < paramArrayOfSwipRightMenuItem.length)
       {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
-        while (paramMessage.hasNext())
-        {
-          localObject = (Drawable)paramMessage.next();
-          if ((localObject != null) && ((localObject instanceof VipPendantDrawable))) {
-            this.a.a((VipPendantDrawable)localObject, l);
-          }
-        }
-        break;
+        paramArrayOfSwipRightMenuItem[i].b = -1;
+        paramArrayOfSwipRightMenuItem[i].a = -1;
+        i += 1;
       }
-      paramMessage = (Drawable)this.a.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l));
-      if ((paramMessage == null) || (!(paramMessage instanceof VipPendantDrawable))) {
-        break;
-      }
-      this.a.a((VipPendantDrawable)paramMessage, l);
-      return;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajtm
  * JD-Core Version:    0.7.0.1
  */

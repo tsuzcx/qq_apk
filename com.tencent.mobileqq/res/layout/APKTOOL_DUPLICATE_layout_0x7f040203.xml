@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cef" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020782" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="25.0dip" android:layout_marginBottom="25.0dip">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip">
-                <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0248" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="温馨提示" android:singleLine="true" android:layout_centerHorizontal="true" />
-                <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf1" android:layout_marginTop="0.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" style="@style/midas_ic_tipsclose" />
-            </RelativeLayout>
+    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d08" android:background="@null" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0079">
+        <LinearLayout android:layout_marginLeft="10.0dip" android:layout_weight="100.0" style="@style/midas_wrap">
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d09" android:text=" 200书币" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0064" />
+            <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c024c" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0a" android:text="(送10)" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0067" />
         </LinearLayout>
-        <com.tencent.smtt.sdk.WebView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cee" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip">
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0b" android:text="100.00" android:layout_centerVertical="true" style="@style/midas_tx.price" />
+            <TextView android:text="元" style="@style/midas_tx.price" />
+        </LinearLayout>
+        <ImageView android:layout_marginRight="10.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0080" />
     </LinearLayout>
 </LinearLayout>

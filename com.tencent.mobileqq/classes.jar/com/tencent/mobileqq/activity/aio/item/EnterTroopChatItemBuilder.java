@@ -25,7 +25,7 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import utf;
+import uwh;
 
 public class EnterTroopChatItemBuilder
   extends AbstractChatItemBuilder
@@ -38,7 +38,7 @@ public class EnterTroopChatItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     int j = 0;
-    paramOnLongClickAndTouchListener = (utf)paramViewHolder;
+    paramOnLongClickAndTouchListener = (uwh)paramViewHolder;
     paramViewHolder = paramView;
     Object localObject1;
     Object localObject2;
@@ -74,7 +74,7 @@ public class EnterTroopChatItemBuilder
     if ((paramMessageRecord instanceof MessageForEnterTroop))
     {
       localObject1 = (MessageForEnterTroop)paramMessageRecord;
-      paramMessageRecord = this.jdField_a_of_type_AndroidContentContext.getString(2131429681);
+      paramMessageRecord = this.jdField_a_of_type_AndroidContentContext.getString(2131429687);
       localObject2 = ((MessageForEnterTroop)localObject1).mList.iterator();
       for (i = 1; ((Iterator)localObject2).hasNext(); i = 0)
       {
@@ -134,7 +134,7 @@ public class EnterTroopChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new utf(this);
+    return new uwh(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

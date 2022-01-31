@@ -1,73 +1,58 @@
-import com.tencent.component.network.utils.FileUtils;
-import java.io.File;
-import java.util.Random;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import com.tencent.component.media.image.drawable.DrawableContainer;
 
-public final class phv
+public abstract class phv
+  extends Drawable.ConstantState
 {
-  private static final Random a = new Random();
+  public int a;
+  public Drawable a;
+  private boolean a;
+  private boolean b;
   
-  public static int a(Object... paramVarArgs)
+  phv(Drawable paramDrawable, DrawableContainer paramDrawableContainer)
   {
-    int i = 17;
-    int k = i;
-    if (paramVarArgs != null)
-    {
-      int m = paramVarArgs.length;
-      int j = 0;
-      k = i;
-      if (j < m)
-      {
-        Object localObject = paramVarArgs[j];
-        if (localObject == null) {}
-        for (;;)
-        {
-          j += 1;
-          break;
-          i = i * 31 + localObject.hashCode();
-        }
-      }
-    }
-    return k * 31 + a.nextInt();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(paramDrawableContainer);
   }
   
-  public static boolean a(File paramFile, boolean paramBoolean)
+  phv(phv paramphv, DrawableContainer paramDrawableContainer, Resources paramResources)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramFile == null) {
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      return bool1;
-      try
-      {
-        File localFile = paramFile.getParentFile();
-        if ((localFile.exists()) && (localFile.isFile())) {
-          FileUtils.delete(localFile);
-        }
-        if (!localFile.exists())
-        {
-          bool1 = bool2;
-          if (!localFile.mkdirs()) {
-            continue;
-          }
-        }
-        if ((paramBoolean) && (paramFile.exists())) {
-          FileUtils.delete(paramFile);
-        }
-        if (!paramFile.exists())
-        {
-          paramBoolean = paramFile.createNewFile();
-          bool1 = bool2;
-          if (!paramBoolean) {
-            continue;
-          }
-        }
-        bool1 = true;
+    if ((paramphv != null) && (paramphv.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (paramphv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() != null)) {
+      if (paramResources == null) {
+        break label63;
       }
-      finally {}
     }
+    label63:
+    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramphv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable(paramResources);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramphv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable())
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(paramDrawableContainer);
+      this.b = true;
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() == null) {
+        break label34;
+      }
+    }
+    label34:
+    for (boolean bool = true;; bool = false)
+    {
+      this.b = bool;
+      this.jdField_a_of_type_Boolean = true;
+      return this.b;
+    }
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

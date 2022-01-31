@@ -1,86 +1,112 @@
-import android.graphics.Point;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.MotionEvent;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.SeekBar;
-import com.tencent.biz.tribe.TribeVideoPlugin;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import mqq.manager.TicketManager;
 
 public class ott
-  implements View.OnTouchListener
+  implements Runnable
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public ott(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public ott(TribeVideoPlugin paramTribeVideoPlugin, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTribeVideoPlugin);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramView = (TribeVideoPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramView == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TribeVideoPlugin.a(paramView).containsKey(this.jdField_a_of_type_JavaLangString))) {}
+    int i = 0;
+    int k = (int)(20.0F * QRDisplayActivity.a(this.a));
+    int j = this.a.jdField_c_of_type_AndroidViewView.getWidth() - k * 2;
+    k = this.a.jdField_c_of_type_AndroidViewView.getHeight() - k * 2;
+    if ((j >= 540) && (k >= 740))
+    {
+      this.a.jdField_d_of_type_Int = 540;
+      this.a.jdField_e_of_type_Int = 740;
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+        ThreadManager.post(new otu(this), 8, null, false);
+      }
+      if (this.a.jdField_a_of_type_AndroidOsBundle == null)
+      {
+        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("bkgRes", 0);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("nameClr", -16777216);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("tipsClr", -8947849);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("B", -16777216);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("W", 16777215);
+        this.a.jdField_a_of_type_AndroidOsBundle.putParcelable("qrloc", new Rect(45, 76, 495, 526));
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("head", 1);
+      }
+      if (this.a.jdField_c_of_type_Int == 5) {
+        break label606;
+      }
+      if (this.a.jdField_a_of_type_ComGoogleZxingCommonBitMatrix == null) {
+        this.a.jdField_a_of_type_ComGoogleZxingCommonBitMatrix = this.a.a(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_c_of_type_Int, -1);
+      }
+      if (this.a.jdField_a_of_type_ComGoogleZxingCommonBitMatrix == null) {
+        break label491;
+      }
+      this.a.f();
+    }
     for (;;)
     {
-      return false;
-      Object localObject1 = otu.a((otu)TribeVideoPlugin.a(paramView).get(this.jdField_a_of_type_JavaLangString));
-      if ((localObject1 != null) && (ots.a((ots)localObject1) == 2))
-      {
-        switch (paramMotionEvent.getAction())
-        {
-        case 2: 
-        default: 
-          return false;
-        case 0: 
-          TribeVideoPlugin.a(paramView).x = ((int)paramMotionEvent.getRawX());
-          TribeVideoPlugin.a(paramView).y = ((int)paramMotionEvent.getRawY());
-          return false;
-        }
-        TribeVideoPlugin.b(paramView).x = ((int)paramMotionEvent.getRawX());
-        TribeVideoPlugin.b(paramView).y = ((int)paramMotionEvent.getRawY());
-        if ((Math.abs(TribeVideoPlugin.a(paramView).y - TribeVideoPlugin.b(paramView).y) < 8) && (Math.abs(TribeVideoPlugin.a(paramView).x - TribeVideoPlugin.b(paramView).x) < 8))
-        {
-          paramMotionEvent = new Rect();
-          localObject1 = TribeVideoPlugin.a(paramView).keySet().iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            String str = (String)((Iterator)localObject1).next();
-            Object localObject2 = otu.a((otu)TribeVideoPlugin.a(paramView).get(str));
-            SeekBar localSeekBar = ots.a(otu.a((otu)TribeVideoPlugin.a(paramView).get(str)));
-            ((FrameLayout)localObject2).getGlobalVisibleRect(paramMotionEvent);
-            if ((paramMotionEvent.contains(TribeVideoPlugin.a(paramView).x, TribeVideoPlugin.a(paramView).y)) && (paramMotionEvent.contains(TribeVideoPlugin.b(paramView).x, TribeVideoPlugin.b(paramView).y)))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("TribeVideoPlugin", 2, "videoplayer section clicked");
-              }
-              if (localSeekBar.getVisibility() == 4)
-              {
-                TribeVideoPlugin.a(paramView).removeMessages(2, str);
-                TribeVideoPlugin.a(paramView, str, true);
-                localObject2 = TribeVideoPlugin.a(paramView).obtainMessage();
-                ((Message)localObject2).obj = str;
-                ((Message)localObject2).what = 2;
-                TribeVideoPlugin.a(paramView).sendMessageDelayed((Message)localObject2, 3000L);
-              }
-              else
-              {
-                TribeVideoPlugin.a(paramView, str, false);
-              }
-            }
-          }
-        }
+      this.a.jdField_b_of_type_AndroidViewView.post(this.a.jdField_b_of_type_JavaLangRunnable);
+      return;
+      if (j * 740 < k * 540) {
+        this.a.jdField_d_of_type_Int = j;
       }
+      for (this.a.jdField_e_of_type_Int = ((int)(j / 540.0D * 740.0D));; this.a.jdField_e_of_type_Int = k)
+      {
+        localObject1 = this.a.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject1).width = this.a.jdField_d_of_type_Int;
+        ((ViewGroup.LayoutParams)localObject1).height = this.a.jdField_e_of_type_Int;
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        localObject1 = this.a.jdField_d_of_type_AndroidViewView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject1).width = this.a.jdField_d_of_type_Int;
+        ((ViewGroup.LayoutParams)localObject1).height = this.a.jdField_e_of_type_Int;
+        this.a.jdField_d_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        break;
+        this.a.jdField_d_of_type_Int = ((int)(k / 740.0D * 540.0D));
+      }
+      label491:
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QRDisplayActivity", 4, "qrcode url not valid");
+      }
+      Object localObject2 = (TicketManager)this.a.app.getManager(2);
+      Object localObject1 = this.a.app.getAccount();
+      localObject2 = ((TicketManager)localObject2).getSkey((String)localObject1);
+      Intent localIntent = this.a.getIntent();
+      String str = localIntent.getStringExtra("uin");
+      i = localIntent.getIntExtra("type", 1);
+      QRUtils.a(this.a.app, this.a, str, i, (String)localObject1, (String)localObject2, new otv(this, str, i));
+      continue;
+      label606:
+      localObject1 = this.a.getSharedPreferences("qrcode", 0);
+      this.a.jdField_b_of_type_Long = ((SharedPreferences)localObject1).getLong("discussionvalidtime" + this.a.jdField_c_of_type_JavaLangString, 0L);
+      this.a.jdField_d_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("discussion" + this.a.jdField_c_of_type_JavaLangString, null);
+      this.a.jdField_e_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("discussionfullSig" + this.a.jdField_c_of_type_JavaLangString, null);
+      if (this.a.jdField_b_of_type_Long - System.currentTimeMillis() / 1000L > 0L) {
+        i = 1;
+      }
+      this.a.findViewById(2131367559).setOnClickListener(this.a);
+      if ((this.a.jdField_d_of_type_JavaLangString == null) || (this.a.jdField_e_of_type_JavaLangString == null) || (i == 0)) {
+        break label851;
+      }
+      ((TextView)this.a.findViewById(2131367558)).setText(this.a.jdField_d_of_type_JavaLangString);
+      this.a.jdField_a_of_type_ComGoogleZxingCommonBitMatrix = QRUtils.a(this.a.jdField_d_of_type_JavaLangString, -1);
+      this.a.f();
     }
+    label851:
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QRDisplayActivity", 4, "qrcode url not valid");
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(Long.parseLong(this.a.jdField_c_of_type_JavaLangString), true);
   }
 }
 

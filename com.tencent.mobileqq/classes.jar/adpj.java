@@ -1,18 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.lyric.util.Singleton;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.mobileqq.hiboom.HiBoomTextView.OnDoubleClick;
 
-public final class adpj
-  extends Singleton
+public class adpj
+  extends GestureDetector.SimpleOnGestureListener
 {
-  protected Handler a(Void paramVoid)
+  public adpj(HiBoomTextView paramHiBoomTextView) {}
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    return new Handler(Looper.getMainLooper());
+    if (this.a.a != null)
+    {
+      this.a.a.a(this.a);
+      return true;
+    }
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpj
  * JD-Core Version:    0.7.0.1
  */

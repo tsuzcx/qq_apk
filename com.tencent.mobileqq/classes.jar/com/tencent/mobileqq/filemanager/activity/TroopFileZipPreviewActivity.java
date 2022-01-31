@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import acea;
-import aceb;
-import acec;
-import aced;
+import acnx;
+import acny;
+import acnz;
+import acoa;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +36,7 @@ public class TroopFileZipPreviewActivity
   long jdField_a_of_type_Long;
   Context jdField_a_of_type_AndroidContentContext;
   public ZipFilesListAdapter a;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new aced(this);
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acoa(this);
   ForwardFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo;
   public XListView a;
   public String a;
@@ -56,7 +56,7 @@ public class TroopFileZipPreviewActivity
   
   private TroopFileProtocol.OnGetZipFileList a(FileManagerEntity paramFileManagerEntity)
   {
-    return new aceb(this, paramFileManagerEntity);
+    return new acny(this, paramFileManagerEntity);
   }
   
   private void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, FileManagerEntity paramFileManagerEntity, TroopFileProtocol.OnGetZipFileList paramOnGetZipFileList)
@@ -75,7 +75,7 @@ public class TroopFileZipPreviewActivity
     label226:
     for (;;)
     {
-      paramString1 = new HttpWebCgiAsyncTask2(str, "GET", new acec(this, localArrayList, paramString4, paramFileManagerEntity, bool, paramString5, paramString1, paramString2, paramString3, paramInt, paramOnGetZipFileList), 1000, null);
+      paramString1 = new HttpWebCgiAsyncTask2(str, "GET", new acnz(this, localArrayList, paramString4, paramFileManagerEntity, bool, paramString5, paramString1, paramString2, paramString3, paramInt, paramOnGetZipFileList), 1000, null);
       paramString2 = new Bundle();
       paramString2.putString("version", DeviceInfoUtil.d());
       paramString2.putString("Cookie", paramString5);
@@ -119,7 +119,7 @@ public class TroopFileZipPreviewActivity
     this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this);
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
     this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838210);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838214);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     setContentView(this.jdField_a_of_type_ComTencentWidgetXListView);
     setTitle(paramBundle);
@@ -136,7 +136,7 @@ public class TroopFileZipPreviewActivity
     for (;;)
     {
       startTitleProgress();
-      super.setRightButton(2131434920, new acea(this, paramBundle));
+      super.setRightButton(2131434937, new acnx(this, paramBundle));
       return true;
       a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, this.e, this.d, paramBundle, a(paramBundle));
     }

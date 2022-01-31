@@ -1,13 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
-
 public class uta
-  implements DialogInterface.OnClickListener
 {
-  public uta(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
+  public float a;
+  public long a;
+  public float b = 0.0F;
+  public float c = 0.0F;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  uta()
+  {
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  void a(uta paramuta)
+  {
+    this.jdField_a_of_type_Float = paramuta.jdField_a_of_type_Float;
+    this.b = paramuta.b;
+    this.c = paramuta.c;
+    this.jdField_a_of_type_Long = paramuta.jdField_a_of_type_Long;
+  }
 }
 
 

@@ -1,26 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class slh
-  extends BroadcastReceiver
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public slh(ForwardRecentActivity paramForwardRecentActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (!this.a.isFinishing())
-    {
-      this.a.finish();
-      QLog.i("ForwardOption.ForwardEntranceActivity", 1, "ForwardRecentActivity has finished by broadcastReceiver.");
-    }
-  }
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     slh
  * JD-Core Version:    0.7.0.1
  */

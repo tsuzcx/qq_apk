@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.magicface.view;
 
-import adrb;
-import adrc;
-import adrd;
-import adre;
-import adrf;
-import adrg;
-import adrk;
-import adrn;
-import adro;
+import aeeh;
+import aeei;
+import aeej;
+import aeek;
+import aeel;
+import aeem;
+import aeeq;
+import aeet;
+import aeeu;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
@@ -276,8 +276,8 @@ public class MagicfaceViewController
       localObject3 = new MagicfacePlayManager();
       ((MagicfacePlayManager)localObject3).a((MagicfaceDecoder.MagicfaceRenderListener)localObject2);
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a((MagicfacePlayManager)localObject3);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(new adrg(this, paramInt1, (TextView)localObject1));
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(new adrk(this, l, paramInt1));
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(new aeem(this, paramInt1, (TextView)localObject1));
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(new aeeq(this, l, paramInt1));
       if (!((IMagicFaceView)localObject2).a()) {
         break;
       }
@@ -300,7 +300,7 @@ public class MagicfaceViewController
       a(0);
       ((ViewGroup)localObject1).addView(this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView);
       this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.updateViewLayout((View)this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView, (ViewGroup.LayoutParams)localObject2);
-      this.jdField_a_of_type_AndroidOsHandler.post(new adrf(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new aeel(this));
       this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(8);
       ((View)this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView).setVisibility(8);
       this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(0);
@@ -315,8 +315,8 @@ public class MagicfaceViewController
     if (QLog.isColorLevel()) {
       QLog.d("MagicfaceViewController", 2, "func playMaigcface ends, step 8.");
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new adrn(this), 200L);
-    ((IMagicFaceView)localObject2).setSurfaceCreatelistener(new adro(this, paramEmoticon, paramInt1, paramString, paramInt2));
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aeet(this), 200L);
+    ((IMagicFaceView)localObject2).setSurfaceCreatelistener(new aeeu(this, paramEmoticon, paramInt1, paramString, paramInt2));
   }
   
   public void a(Emoticon paramEmoticon, MagicfaceViewController.OnMagicPlayEnd paramOnMagicPlayEnd)
@@ -347,7 +347,7 @@ public class MagicfaceViewController
       this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = paramOnMagicPlayEnd;
     } while (this.jdField_a_of_type_AndroidOsHandler == null);
     if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new adrd(this);
+      this.jdField_a_of_type_JavaLangRunnable = new aeej(this);
     }
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 400L);
   }
@@ -365,15 +365,15 @@ public class MagicfaceViewController
       }
       if (this.jdField_b_of_type_Boolean)
       {
-        localView = View.inflate(BaseApplicationImpl.getContext(), 2130970912, null);
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView = ((IMagicFaceView)localView.findViewById(2131372185));
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131372184));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372186));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372187));
-        this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131372191));
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131372188));
-        this.jdField_d_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131372190));
-        this.e = ((Button)localView.findViewById(2131372189));
+        localView = View.inflate(BaseApplicationImpl.getContext(), 2130970960, null);
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView = ((IMagicFaceView)localView.findViewById(2131372358));
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131372357));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372359));
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372360));
+        this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131372364));
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131372361));
+        this.jdField_d_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131372363));
+        this.e = ((Button)localView.findViewById(2131372362));
         this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
         this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
         this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -387,24 +387,24 @@ public class MagicfaceViewController
       }
     }
     label415:
-    for (View localView = View.inflate(BaseApplicationImpl.getContext(), 2130970911, null);; localView = View.inflate(BaseApplicationImpl.getContext(), 2130970913, null))
+    for (View localView = View.inflate(BaseApplicationImpl.getContext(), 2130970959, null);; localView = View.inflate(BaseApplicationImpl.getContext(), 2130970961, null))
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.getContext(), 2130970915, null);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372192);
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView = ((IMagicFaceView)localView.findViewById(2131366101));
-      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131366100));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372195));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372183));
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366102));
-      this.f = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131372193));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372194));
+      this.jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.getContext(), 2130970963, null);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372365);
+      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView = ((IMagicFaceView)localView.findViewById(2131366128));
+      this.jdField_b_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131366127));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372368));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372356));
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366129));
+      this.f = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131372366));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372367));
       this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.f.setOnClickListener(this);
       if (QLog.isColorLevel()) {
         QLog.d("MagicfaceViewController", 2, "initMagicfaceView ends");
       }
       return;
-      localView = View.inflate(BaseApplicationImpl.getContext(), 2130970914, null);
+      localView = View.inflate(BaseApplicationImpl.getContext(), 2130970962, null);
       break;
     }
   }
@@ -423,25 +423,25 @@ public class MagicfaceViewController
   {
     if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b())
     {
-      this.e.setBackgroundResource(2130843878);
+      this.e.setBackgroundResource(2130844002);
       return;
     }
-    this.e.setBackgroundResource(2130843877);
+    this.e.setBackgroundResource(2130844001);
   }
   
   public void d()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c())
     {
-      this.f.setBackgroundResource(2130843854);
+      this.f.setBackgroundResource(2130843978);
       return;
     }
-    this.f.setBackgroundResource(2130843875);
+    this.f.setBackgroundResource(2130843999);
   }
   
   public void e()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new adrc(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aeei(this));
   }
   
   public void f()
@@ -506,7 +506,7 @@ public class MagicfaceViewController
     if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a())
     {
       localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager;
-      ((MagicfaceActionManager)localObject).a(new adre(this, (MagicfaceActionManager)localObject));
+      ((MagicfaceActionManager)localObject).a(new aeek(this, (MagicfaceActionManager)localObject));
     }
     for (;;)
     {
@@ -535,9 +535,9 @@ public class MagicfaceViewController
     switch (paramView.getId())
     {
     default: 
-    case 2131372188: 
-    case 2131366102: 
-    case 2131372191: 
+    case 2131372361: 
+    case 2131366129: 
+    case 2131372364: 
       do
       {
         return;
@@ -550,12 +550,12 @@ public class MagicfaceViewController
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "CliOper", "", "", "MbFasong", "MbChongzuo", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
       } while (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager == null);
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.f();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new adrb(this), 300L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aeeh(this), 300L);
       return;
-    case 2131372190: 
+    case 2131372363: 
       f();
       return;
-    case 2131372189: 
+    case 2131372362: 
       bool3 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b();
       paramView = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager;
       if (!bool3)
@@ -611,7 +611,7 @@ public class MagicfaceViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController
  * JD-Core Version:    0.7.0.1
  */

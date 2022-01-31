@@ -1,33 +1,24 @@
-import android.widget.PopupWindow;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsNewActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
+import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
 
 public class mrv
-  implements Runnable
+  extends SwipRightMenuBuilder.SwipItemBaseHolder
 {
-  public mrv(SubscriptFeedsNewActivity paramSubscriptFeedsNewActivity, int paramInt1, int paramInt2) {}
+  public Button a;
+  public ImageView a;
+  public RelativeLayout a;
+  public DragTextView a;
+  public SingleLineTextView a;
+  public String a;
+  public Button b;
+  public SingleLineTextView b;
   
-  public void run()
-  {
-    try
-    {
-      int[] arrayOfInt = new int[2];
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsNewActivity.rightViewText.getLocationInWindow(arrayOfInt);
-      int i = this.jdField_a_of_type_Int;
-      int j = arrayOfInt[0];
-      int k = this.b;
-      int m = AIOUtils.a(2.0F, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsNewActivity.getResources());
-      SubscriptFeedsNewActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsNewActivity).showAsDropDown(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsNewActivity.rightViewText, i - j - k - m, -AIOUtils.a(5.0F, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsNewActivity.getResources()));
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("IphoneTitleBarActivity", 2, "showSubscriptCenterGuideWindow, " + localException);
-    }
-  }
+  public mrv(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter) {}
 }
 
 

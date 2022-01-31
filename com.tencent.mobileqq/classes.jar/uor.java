@@ -1,10 +1,21 @@
-public abstract interface uor
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
+import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+
+public class uor
+  implements Action.OnActionEndListener
 {
-  public abstract void a(int paramInt);
+  public uor(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public abstract void f();
-  
-  public abstract void g();
+  public void a()
+  {
+    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(300, 0.1F, 1.1F), new ScaleAction(100, 1.2F, 0.9F), new ScaleAction(100, 0.9F, 1.0F) });
+    this.a.c.a(new Action[] { localSequenceAction });
+    this.a.b.a(new Action[] { new ScaleAction(300, 0.0F, 1.0F) });
+  }
 }
 
 

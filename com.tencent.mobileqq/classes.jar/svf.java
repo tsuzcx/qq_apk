@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.GameCenterManagerImp;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class svf
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public svf(Leba paramLeba, long paramLong) {}
+  public svf(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void run()
-  {
-    GameCenterManagerImp localGameCenterManagerImp = (GameCenterManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getManager(11);
-    if ((localGameCenterManagerImp != null) && ((localGameCenterManagerImp.a(601L)) || ((this.jdField_a_of_type_Long > 0L) && (localGameCenterManagerImp.a(this.jdField_a_of_type_Long))))) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
-    }
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

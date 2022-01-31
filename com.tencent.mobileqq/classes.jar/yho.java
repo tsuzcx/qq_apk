@@ -1,31 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloPushManager;
-import com.tencent.mobileqq.apollo.ApolloPushManager.OnActionPushListener;
-import com.tencent.mobileqq.data.ApolloActionPush;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.LebaUtil;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class yho
-  implements ApolloPushManager.OnActionPushListener
+  implements Runnable
 {
-  public yho(ApolloPushManager paramApolloPushManager) {}
+  public yho(LebaListViewAdapter paramLebaListViewAdapter, LebaViewItem paramLebaViewItem, String paramString, LebaListViewAdapter.CornerListItemHolder paramCornerListItemHolder) {}
   
-  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
+  public void run()
   {
-    if ((ApolloPushManager.a(this.a) != null) && (paramApolloActionPush != null))
+    Object localObject = LebaUtil.a(this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.a, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a.strPkgName, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a.strResURL);
+    if (((File)localObject).exists())
     {
+      localObject = LebaUtil.a((File)localObject);
+      if (localObject == null) {
+        break label122;
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
+        QLog.d("LebaListViewAdapter", 2, "found bitmap from sdcard, info=" + this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a.strResName);
       }
-      if ((ApolloPushManager.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == ApolloPushManager.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(ApolloPushManager.a(this.a).jdField_a_of_type_JavaLangString)) && (ApolloPushManager.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
-        this.a.a(paramApolloActionPush);
-      }
+      BaseApplicationImpl.sImageHashMap.put(this.jdField_a_of_type_JavaLangString, localObject);
+      ((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.a).runOnUiThread(new yhp(this, (Bitmap)localObject));
     }
+    label122:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("LebaListViewAdapter", 2, "can't find bitmap form cache & sdcard" + this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a.strResName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yho
  * JD-Core Version:    0.7.0.1
  */

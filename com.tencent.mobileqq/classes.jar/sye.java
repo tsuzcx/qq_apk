@@ -1,27 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.widget.QQTabWidget.onTabWidgetTouchMoveListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.servlet.GameCenterManagerImp;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class sye
-  implements QQTabWidget.onTabWidgetTouchMoveListener
+  implements Runnable
 {
-  public sye(MainFragment paramMainFragment) {}
+  public sye(Leba paramLeba, long paramLong) {}
   
-  public void a()
+  public void run()
   {
-    int i = GesturePWDUtils.getGesturePWDState(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
-    int j = GesturePWDUtils.getGesturePWDMode(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
-    if ((i == 2) && (j == 20))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("mainactivity", 2, "gesturepwd manual move.");
-      }
-      ((SplashActivity)this.a.getActivity()).startUnlockActivity();
-      this.a.getActivity().overridePendingTransition(2131034134, 2131034131);
+    GameCenterManagerImp localGameCenterManagerImp = (GameCenterManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getManager(11);
+    if ((localGameCenterManagerImp != null) && ((localGameCenterManagerImp.a(601L)) || ((this.jdField_a_of_type_Long > 0L) && (localGameCenterManagerImp.a(this.jdField_a_of_type_Long))))) {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
     }
   }
 }

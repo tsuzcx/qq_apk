@@ -31,14 +31,14 @@ public class QWalletPayProgressDialog
   {
     try
     {
-      super.setContentView(2130969102);
+      super.setContentView(2130969101);
       paramBundle = getWindow();
       paramBundle.setLayout(-1, -1);
       paramBundle.setBackgroundDrawable(new ColorDrawable(0));
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         paramBundle.addFlags(67108864);
       }
-      this.mTextView = ((TextView)super.findViewById(2131365147));
+      this.mTextView = ((TextView)super.findViewById(2131365169));
       this.mTextView.setVisibility(0);
       this.mTextView.setText(this.mMessage);
       super.setCancelable(false);

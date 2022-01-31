@@ -1,28 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
 public class ohq
-  implements View.OnClickListener
+  implements IMediaPlayer.OnErrorListener
 {
-  public ohq(EditTextDialog paramEditTextDialog) {}
+  public ohq(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void onClick(View paramView)
+  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.a = this.a.d;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.d = this.a.e;
-    this.a.dismiss();
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 3);
-    }
-    VideoEditReport.a("0X80076C5");
-    VideoEditReport.b("0X80075D9");
+    LocalVideoSelectActivity.a(this.a).a();
+    LocalVideoSelectActivity.a(this.a).a(true);
+    return true;
   }
 }
 

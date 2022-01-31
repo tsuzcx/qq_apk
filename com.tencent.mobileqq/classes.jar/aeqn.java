@@ -1,13 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback;
+import java.util.ArrayList;
 
 public class aeqn
-  implements DialogInterface.OnClickListener
+  implements ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback
 {
-  public aeqn(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public aeqn(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(long paramLong)
+  {
+    int i = 0;
+    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
+    {
+      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
+      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
+      {
+        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
+        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
+        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
+      }
+      i += 1;
+    }
+  }
 }
 
 

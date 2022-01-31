@@ -1,45 +1,15 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwThumbGen;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.richmedia.dc.DataAdapter;
 
-class ahnt
-  extends AsyncTask
+public abstract class ahnt
+  extends DataAdapter
 {
-  ahnt(ahns paramahns) {}
-  
-  protected Integer a(Void... paramVarArgs)
-  {
-    long l = System.currentTimeMillis();
-    paramVarArgs = ahns.a(this.a) + "shortvideo_thumb.jpg";
-    int j = this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwThumbGen.a(ahns.b(this.a), SVHwEncoder.f(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder), SVHwEncoder.g(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder), SVHwEncoder.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder), SVHwEncoder.b(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder), paramVarArgs);
-    int i = j;
-    String str;
-    if (j == 0)
-    {
-      str = ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwThumbGen.jdField_a_of_type_JavaLangString, "jpg");
-      if (!FileUtils.c(paramVarArgs, str)) {
-        break label177;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwThumbGen.b = str;
-      i = j;
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwThumbGen.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwThumbGen.jdField_a_of_type_Int = i;
-      ahns.a(this.a, true);
-      return Integer.valueOf(i);
-      label177:
-      i = j;
-      if (!FileUtils.b(str))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
-        i = -3;
-      }
-    }
-  }
+  public int b = -1;
+  public int c;
+  public int d = -1;
+  public int e = -1;
+  public int f = -1;
+  public int g = -1;
+  public int h = -1;
 }
 
 

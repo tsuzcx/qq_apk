@@ -1,129 +1,64 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
 public class accx
-  extends WebViewClient
+  extends DownloadListener
 {
-  long jdField_a_of_type_Long = 0L;
-  
-  public accx(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public accx(EmojiManager paramEmojiManager, String paramString1, String paramString2)
   {
-    String str = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e)
+    super(paramString1, paramString2);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    super.onDone(paramDownloadTask);
+    Object localObject = paramDownloadTask.a();
+    int j = ((Bundle)localObject).getInt(paramDownloadTask.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener| onDone:epId=" + ((EmoticonPackage)localObject).epId + " task:" + paramDownloadTask + " localVersion=" + ((EmoticonPackage)localObject).localVersion + ",latestVersion=" + ((EmoticonPackage)localObject).latestVersion + ",updateFlag=" + ((EmoticonPackage)localObject).updateFlag);
+    }
+    int i = 0;
+    if (paramDownloadTask.a() != 3)
     {
-      super.onPageFinished(paramWebView, paramString);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e = true;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Int == 0)
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getInitString(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.i), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.f, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g, null);
-        QLog.i("<FileAssistant>FilePreviewActivity", 1, "finish load run javascript![" + str + "]");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str);
-        str = "javascript:qpreview.onClientResponse('showFileList', {})";
-        QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('showFileList', {})");
+      i = EmosmUtils.a(paramDownloadTask.a);
+      if (EmojiManager.a(j)) {
+        EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, -1, i);
       }
+      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
     for (;;)
     {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "mWebView.loadUrl(" + str + ")");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.e = true;
-      super.onPageFinished(paramWebView, paramString);
+      long l1 = paramDownloadTask.h;
+      long l2 = paramDownloadTask.g;
+      this.a.a((EmoticonPackage)localObject, i, l1 - l2, paramDownloadTask.d);
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Int == 1)
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getInitString(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.i), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.f, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.d);
-        break;
-      }
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      throw new NullPointerException("压缩文件类型错误！！！");
-      str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getInitString(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.h, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.b, Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.i), this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.f, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g, null);
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "finish load run javascript![" + str + "]");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str);
-      str = "javascript:qpreview.onClientResponse('addMorePage',{})";
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('addMorePage',{})");
+      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, 0, 0);
     }
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    for (;;)
-    {
-      try
-      {
-        String str = URLDecoder.decode(paramString, "UTF-8");
-        paramString = str;
-      }
-      catch (Exception localException)
-      {
-        boolean bool;
-        long l;
-        int k;
-        int j;
-        int i;
-        continue;
-      }
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("<FileAssistant>FilePreviewActivity", 1, "URLDecoder.decode, url:" + paramString);
-        }
-        bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.a(paramWebView, paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView$JSInterface);
-        if (!bool) {
-          continue;
-        }
-      }
-      catch (Exception paramWebView)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("<FileAssistant>FilePreviewActivity", 2, "parseUrl error,exception:" + paramWebView.toString());
-        if ((paramString != null) && (!"".equals(paramString)) && (!"about:blank;".equals(paramString)) && (!"about:blank".equals(paramString))) {
-          continue;
-        }
-        QLog.e("<FileAssistant>FilePreviewActivity", 1, "request url is null,or about:blank! return");
-        return true;
-        l = System.currentTimeMillis();
-        if (l - this.jdField_a_of_type_Long < 1500L) {
-          continue;
-        }
-        this.jdField_a_of_type_Long = l;
-        QLog.i("<FileAssistant>FilePreviewActivity", 1, "start load new[" + paramString + "]");
-        k = paramString.lastIndexOf("/") + 1;
-        j = paramString.lastIndexOf("&");
-        i = j;
-        if (j >= k) {
-          continue;
-        }
-        i = paramString.length();
-        paramWebView = paramString.substring(k, i);
-        try
-        {
-          URLDecoder.decode(paramWebView, "UTF-8");
-          return true;
-        }
-        catch (UnsupportedEncodingException paramWebView)
-        {
-          paramWebView.printStackTrace();
-          return true;
-        }
-      }
+    Object localObject = paramDownloadTask.a();
+    int i = ((Bundle)localObject).getInt(paramDownloadTask.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener | onProgress:epId=" + ((EmoticonPackage)localObject).epId + paramDownloadTask);
     }
-    return true;
+    if (EmojiManager.a(i)) {
+      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, 0, 0);
+    }
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    return super.onStart(paramDownloadTask);
   }
 }
 

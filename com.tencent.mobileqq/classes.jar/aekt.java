@@ -1,32 +1,64 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import mqq.os.MqqHandler;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.IQQPlayerService;
+import com.tencent.mobileqq.music.IQQPlayerService.Stub;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.musicgene.MusicPlayerHandler;
+import java.util.HashMap;
 
 public class aekt
-  implements Runnable
+  implements ServiceConnection
 {
-  long jdField_a_of_type_Long;
+  public aekt(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public aekt(ShortVideoCommentsView paramShortVideoCommentsView, long paramLong)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void run()
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L) {
+    MusicPlayerActivity.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
+    try
+    {
+      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
+      paramComponentName = MusicPlayerActivity.a(this.a).a();
+      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
+      if (paramComponentName != null)
+      {
+        String str = MusicPlayerActivity.a(this.a, paramComponentName);
+        if (MusicPlayerActivity.b().containsKey(str)) {
+          MusicPlayerActivity.a(this.a, (aekz)MusicPlayerActivity.b().get(str), paramIBinder);
+        }
+        for (;;)
+        {
+          int i = MusicPlayerActivity.a(this.a).a();
+          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
+          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.b, paramComponentName.g, paramComponentName.f, String.valueOf(paramComponentName.a), paramComponentName.c, MusicPlayerActivity.a(this.a).c());
+          return;
+          MusicPlayerActivity.a(this.a, paramComponentName.b, paramComponentName.g, paramComponentName.d, paramIBinder, false, false);
+        }
+      }
       return;
     }
-    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setFocusable(true);
-    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setFocusableInTouchMode(true);
-    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).requestFocus();
-    ThreadManager.getUIHandler().postDelayed(this, 100L);
+    catch (Exception paramComponentName) {}
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    paramComponentName = MusicPlayerActivity.a(this.a);
+    if (paramComponentName != null) {}
+    try
+    {
+      paramComponentName.b(MusicPlayerActivity.a(this.a));
+      return;
+    }
+    catch (RemoteException paramComponentName) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aekt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,24 @@
-import com.tencent.biz.qqstory.base.download.DownloadProgressListener;
-import com.tencent.biz.qqstory.base.download.DownloaderImp;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterTools.OnResourceDownloadListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class xqg
-  implements Runnable
+class xqg
+  implements VideoFilterTools.OnResourceDownloadListener
 {
-  public xqg(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity, DownloadProgressListener paramDownloadProgressListener, String paramString1, String paramString2) {}
+  xqg(xqf paramxqf, VideoFilterTools paramVideoFilterTools) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity, new DownloaderImp());
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener);
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("PTV.NewFlowCameraActivity", 2, "onResourceDownload isOnlineRes: " + paramBoolean);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterTools.a())
+    {
+      this.jdField_a_of_type_Xqf.a.runOnUiThread(new xqh(this));
+      return;
+    }
+    QLog.w("PTV.NewFlowCameraActivity", 2, "has not valid video filter!");
   }
 }
 

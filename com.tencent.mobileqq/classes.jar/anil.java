@@ -1,15 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.base.BaseLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
 public class anil
-  implements Comparator
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public anil(DoodleLayout paramDoodleLayout) {}
+  public anil(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public int a(BaseLayer paramBaseLayer1, BaseLayer paramBaseLayer2)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    return paramBaseLayer2.f_() - paramBaseLayer1.f_();
+    if (!paramBoolean)
+    {
+      this.a.a(101);
+      return;
+    }
+    this.a.a(this.a.a, paramLocalMediaInfo);
   }
 }
 

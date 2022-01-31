@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.apollo.drawer.CardDrawerStatus;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public class ylx
-  implements Runnable
+public final class ylx
+  implements TextWatcher
 {
-  public ylx(CardDrawerStatus paramCardDrawerStatus, QQAppInterface paramQQAppInterface) {}
+  public ylx(ApolloSurfaceView paramApolloSurfaceView, ApolloRender paramApolloRender) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == null)) {
-      QLog.w("CardDrawerStatus", 1, "MediaPlayerManager is null");
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.queueEvent(new yly(this, paramEditable));
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

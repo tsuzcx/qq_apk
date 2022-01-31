@@ -1,14 +1,31 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.richmedia.CompoundProcessor;
+import com.tencent.mobileqq.richmedia.RichmediaClient;
+import com.tencent.mobileqq.richmedia.VideoCompoundController;
 
-class xqo
+public class xqo
   implements Runnable
 {
-  xqo(xqm paramxqm) {}
+  public xqo(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
   public void run()
   {
-    QzDynamicVideoPreviewActivity.a(this.a.a).setVisibility(8);
+    Object localObject = RichmediaClient.a().a().a(this.a.d);
+    if (localObject != null) {
+      ((CompoundProcessor)localObject).a(103);
+    }
+    for (;;)
+    {
+      localObject = this.a.getIntent();
+      ((Intent)localObject).putExtra("flow_back", 0);
+      this.a.setResult(1001, (Intent)localObject);
+      this.a.a.b();
+      this.a.finish();
+      return;
+      this.a.j();
+    }
   }
 }
 

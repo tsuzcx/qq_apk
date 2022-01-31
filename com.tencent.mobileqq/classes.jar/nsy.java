@@ -1,29 +1,53 @@
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListRequest;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import android.support.annotation.NonNull;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode.SelectedVideosEvent;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerListAdapter;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem.FakeVideoUIItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 public class nsy
-  extends ParallelJobSegment
+  extends QQUIEventReceiver
 {
-  public int a;
-  
-  public nsy(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment, int paramInt)
+  public nsy(@NonNull StoryPickerFragment paramStoryPickerFragment)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramStoryPickerFragment);
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull SelectVideosPlayMode.SelectedVideosEvent paramSelectedVideosEvent)
   {
-    DetailLikeListLoader.GetLikeListRequest localGetLikeListRequest = new DetailLikeListLoader.GetLikeListRequest();
-    localGetLikeListRequest.jdField_a_of_type_JavaLangString = paramString;
-    localGetLikeListRequest.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != -1) {
-      localGetLikeListRequest.c = this.jdField_a_of_type_Int;
+    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.clear();
+    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(paramSelectedVideosEvent.jdField_a_of_type_JavaUtilArrayList);
+    List localList = paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a();
+    int i = 0;
+    while (i < localList.size())
+    {
+      Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
+      while (localIterator.hasNext())
+      {
+        VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)localIterator.next();
+        if (paramSelectedVideosEvent.jdField_a_of_type_JavaUtilArrayList.contains(localFakeVideoUIItem.jdField_a_of_type_JavaLangString)) {
+          localFakeVideoUIItem.jdField_a_of_type_Boolean = true;
+        } else {
+          localFakeVideoUIItem.jdField_a_of_type_Boolean = false;
+        }
+      }
+      i += 1;
     }
-    CmdTaskManger.a().a(localGetLikeListRequest, new nsz(this, paramJobContext, paramString));
+    paramStoryPickerFragment.d();
+    if (paramSelectedVideosEvent.jdField_a_of_type_Boolean) {
+      paramStoryPickerFragment.e.performClick();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return SelectVideosPlayMode.SelectedVideosEvent.class;
   }
 }
 

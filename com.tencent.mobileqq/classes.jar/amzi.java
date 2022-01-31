@@ -1,21 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class amzi
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public amzi(QIMCircleProgress paramQIMCircleProgress) {}
+  public amzi(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b();
+    if ((QZoneShareActivity.a(this.a) != null) && (QZoneShareActivity.a(this.a).isShowing())) {}
+    try
+    {
+      QZoneShareActivity.a(this.a).dismiss();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QZoneShare", 1, localException.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzi
  * JD-Core Version:    0.7.0.1
  */

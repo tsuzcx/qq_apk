@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class agdr
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agdr(ProfileTagView paramProfileTagView, ProfileCardInfo paramProfileCardInfo) {}
+  public agdr(ScanOcrView paramScanOcrView, agds paramagds) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.getLabelList();
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.runOnUiThread(new agds(this, localList));
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_Agds.e = i;
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 

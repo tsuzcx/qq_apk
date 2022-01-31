@@ -1,16 +1,19 @@
-import android.graphics.RectF;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
 
-public abstract interface anny
+public final class anny
+  implements Parcelable.Creator
 {
-  public abstract void a(int paramInt);
+  public DynamicTextItem.TextMap a(Parcel paramParcel)
+  {
+    return new DynamicTextItem.TextMap(paramParcel);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, RectF paramRectF);
-  
-  public abstract void a(int paramInt, RectF paramRectF);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public DynamicTextItem.TextMap[] a(int paramInt)
+  {
+    return new DynamicTextItem.TextMap[paramInt];
+  }
 }
 
 

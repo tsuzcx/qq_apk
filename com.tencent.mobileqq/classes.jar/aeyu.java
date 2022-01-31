@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
 
-public final class aeyu
-  implements VideoFeedsUploader.UploadListener
+class aeyu
+  implements Runnable
 {
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo) {}
+  aeyu(aeyt paramaeyt, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
   
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, int paramInt) {}
-  
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
+  public void run()
   {
-    ThreadManager.getUIHandler().post(new aeyv(this, paramUploadInfo, paramUploadResult));
+    if (this.jdField_a_of_type_Aeyt.a.a != null) {
+      this.jdField_a_of_type_Aeyt.a.a.a(this.jdField_a_of_type_Aeyt.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    }
   }
-  
-  public void b(VideoFeedsUploader.UploadInfo paramUploadInfo) {}
 }
 
 

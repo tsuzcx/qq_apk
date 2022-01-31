@@ -78,10 +78,10 @@ public class Common
     //   36: putstatic 68	com/tencent/kingkong/Common:jdField_a_of_type_ComTencentKingkongReportThread	Lcom/tencent/kingkong/ReportThread;
     //   39: getstatic 68	com/tencent/kingkong/Common:jdField_a_of_type_ComTencentKingkongReportThread	Lcom/tencent/kingkong/ReportThread;
     //   42: invokevirtual 100	com/tencent/kingkong/ReportThread:start	()V
-    //   45: new 102	qzz
+    //   45: new 102	rcp
     //   48: dup
-    //   49: invokespecial 103	qzz:<init>	()V
-    //   52: invokevirtual 104	qzz:start	()V
+    //   49: invokespecial 103	rcp:<init>	()V
+    //   52: invokevirtual 104	rcp:start	()V
     //   55: goto -40 -> 15
     //   58: astore_0
     //   59: ldc 2
@@ -144,10 +144,10 @@ public class Common
     //   37: iconst_1
     //   38: putstatic 150	com/tencent/kingkong/Common:jdField_b_of_type_Boolean	Z
     //   41: invokestatic 152	com/tencent/kingkong/Common:b	()V
-    //   44: new 154	raa
+    //   44: new 154	rcq
     //   47: dup
-    //   48: invokespecial 155	raa:<init>	()V
-    //   51: invokevirtual 156	raa:start	()V
+    //   48: invokespecial 155	rcq:<init>	()V
+    //   51: invokevirtual 156	rcq:start	()V
     //   54: goto -43 -> 11
     //   57: astore_2
     //   58: ldc 2
@@ -609,7 +609,7 @@ public class Common
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.kingkong.Common
  * JD-Core Version:    0.7.0.1
  */

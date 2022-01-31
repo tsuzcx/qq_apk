@@ -1,29 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.network.request.GetLocationRequest;
-import com.tencent.biz.qqstory.network.response.GetLocationResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
 
-public class ocy
-  implements CmdTaskManger.CommandCallback
+public final class ocy
+  implements Parcelable.Creator
 {
-  public ocy(EditVideoFilterNeo paramEditVideoFilterNeo) {}
-  
-  public void a(@NonNull GetLocationRequest paramGetLocationRequest, @Nullable GetLocationResponse paramGetLocationResponse, @NonNull ErrorMessage paramErrorMessage)
+  public EditLocalPhotoSource a(Parcel paramParcel)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetLocationResponse != null))
-    {
-      SLog.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramGetLocationResponse.toString());
-      paramGetLocationRequest = new AddressDataProvider.AddressInfo(paramGetLocationResponse.a, paramGetLocationResponse.c, paramGetLocationResponse.d, paramGetLocationResponse.e, paramGetLocationResponse.f, paramGetLocationRequest.d, paramGetLocationRequest.e);
-      this.a.a(0, paramGetLocationRequest);
-      return;
-    }
-    SLog.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
+    return new EditLocalPhotoSource(paramParcel);
+  }
+  
+  public EditLocalPhotoSource[] a(int paramInt)
+  {
+    return new EditLocalPhotoSource[paramInt];
   }
 }
 

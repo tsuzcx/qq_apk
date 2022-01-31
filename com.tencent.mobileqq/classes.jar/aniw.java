@@ -1,17 +1,27 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnStrokeSelectedListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.InsetDrawable;
+import android.widget.Button;
+import com.tencent.mobileqq.utils.ViewUtils;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
-public class aniw
-  implements HorizontalSelectColorLayout.OnStrokeSelectedListener
+class aniw
+  implements Runnable
 {
-  public aniw(DoodleLayout paramDoodleLayout) {}
+  aniw(aniv paramaniv) {}
   
-  public void a(@NonNull HorizontalStroke paramHorizontalStroke)
+  public void run()
   {
-    VideoEditReport.b("0X80075CD");
+    if ((QIMCameraCaptureUnit.a(this.a.a) != null) && (this.a.a.e != null))
+    {
+      int i = ViewUtils.a(7.5F);
+      InsetDrawable localInsetDrawable = new InsetDrawable(new BitmapDrawable(QIMCameraCaptureUnit.a(this.a.a)), i, i, i, i);
+      this.a.a.e.setBackgroundDrawable(localInsetDrawable);
+      this.a.a.e.setVisibility(0);
+      this.a.a.e.setEnabled(true);
+      return;
+    }
+    this.a.a.e.setVisibility(8);
+    this.a.a.e.setEnabled(false);
   }
 }
 

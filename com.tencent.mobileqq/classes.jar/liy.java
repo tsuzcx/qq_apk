@@ -1,35 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CommentLikeObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentLikeObserver;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 
 public class liy
-  implements NativeCommentServlet.CommentLikeObserver
+  implements Runnable
 {
-  public liy(ArticleCommentModule paramArticleCommentModule, ArticleCommentModule.CommentLikeObserver paramCommentLikeObserver, int paramInt) {}
+  public liy(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString1, paramInt, paramString2);
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, String paramString, JSONObject paramJSONObject)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString, this.jdField_a_of_type_Int);
-      }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver == null) {}
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString, -1, "parser local data error");
-    }
+    ReadInJoyCommentComponentFragment.a(this.a, 1);
   }
 }
 

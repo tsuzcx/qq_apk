@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
-import aixi;
-import aixj;
-import aixk;
-import aixn;
-import aixo;
+import ajlm;
+import ajln;
+import ajlo;
+import ajlr;
+import ajls;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -68,7 +68,7 @@ public class HWReciteItem
       return;
     }
     h(paramHWReciteInfo);
-    ThreadManager.post(new aixi(this, paramHWReciteInfo), 8, null, true);
+    ThreadManager.post(new ajlm(this, paramHWReciteInfo), 8, null, true);
   }
   
   private void g(HWReciteInfo paramHWReciteInfo)
@@ -77,7 +77,7 @@ public class HWReciteItem
       return;
     }
     h(paramHWReciteInfo);
-    ThreadManager.post(new aixj(this, paramHWReciteInfo), 8, null, true);
+    ThreadManager.post(new ajln(this, paramHWReciteInfo), 8, null, true);
   }
   
   private void h(HWReciteInfo paramHWReciteInfo)
@@ -85,7 +85,7 @@ public class HWReciteItem
     if (paramHWReciteInfo.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask == null)
     {
       paramHWReciteInfo.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask = new TroopHomeworkHelper.UploadFileTask(PlayModeUtils.a(), paramHWReciteInfo.d, paramHWReciteInfo.f);
-      paramHWReciteInfo.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a(new aixk(this, paramHWReciteInfo));
+      paramHWReciteInfo.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a(new ajlo(this, paramHWReciteInfo));
     }
     paramHWReciteInfo.g = 1;
   }
@@ -97,9 +97,9 @@ public class HWReciteItem
     }
   }
   
-  public aixo a(ViewGroup paramViewGroup)
+  public ajls a(ViewGroup paramViewGroup)
   {
-    return new aixo(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969906, paramViewGroup, false));
+    return new ajls(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969920, paramViewGroup, false));
   }
   
   public void a()
@@ -115,18 +115,18 @@ public class HWReciteItem
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().notifyItemChanged(paramInt1);
   }
   
-  public void a(aixo paramaixo, HWReciteInfo paramHWReciteInfo, int paramInt)
+  public void a(ajls paramajls, HWReciteInfo paramHWReciteInfo, int paramInt)
   {
     if (TextUtils.isEmpty(paramHWReciteInfo.f)) {
       paramHWReciteInfo.f = this.jdField_a_of_type_JavaLangString;
     }
-    paramaixo.a(this, paramHWReciteInfo, paramInt);
+    paramajls.a(this, paramHWReciteInfo, paramInt);
   }
   
-  public void a(View paramView, aixo paramaixo)
+  public void a(View paramView, ajls paramajls)
   {
-    if (paramaixo != null) {
-      paramaixo.a(paramView, this);
+    if (paramajls != null) {
+      paramajls.a(paramView, this);
     }
   }
   
@@ -189,7 +189,7 @@ public class HWReciteItem
         paramHWReciteInfo.b = 2;
         return;
       }
-      ThreadManager.postImmediately(new aixn(this, paramHWReciteInfo), null, false);
+      ThreadManager.postImmediately(new ajlr(this, paramHWReciteInfo), null, false);
       return;
     }
     paramHWReciteInfo.b = 3;
@@ -234,7 +234,7 @@ public class HWReciteItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem
  * JD-Core Version:    0.7.0.1
  */

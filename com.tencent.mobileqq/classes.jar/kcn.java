@@ -1,18 +1,27 @@
-import com.tencent.av.opengl.ui.animation.GLAnimation.AnimationListenerGL;
-import com.tencent.av.ui.GLVideoView;
-import com.tencent.av.ui.VideoLayerUI;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.VoiceChangeChooseDialog;
 
 public class kcn
-  implements GLAnimation.AnimationListenerGL
+  implements Runnable
 {
-  public kcn(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
+  public kcn(VoiceChangeChooseDialog paramVoiceChangeChooseDialog) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].h(this.b);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].a(Boolean.valueOf(true));
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
+    if ((VoiceChangeChooseDialog.a(this.a) == 1) && (!this.a.jdField_a_of_type_Boolean))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429605);
+      VoiceChangeChooseDialog.a(this.a, 2);
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().aB = true;
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
+    }
+    while (VoiceChangeChooseDialog.a(this.a) != 2) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429604);
+    VoiceChangeChooseDialog.a(this.a, 0);
   }
 }
 

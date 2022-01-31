@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
 
-public class aeqq
-  implements DialogInterface.OnClickListener
+class aeqq
+  implements Runnable
 {
-  public aeqq(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  aeqq(aeqp paramaeqp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    ChooseInterestTagActivity.b(this.a.a, false);
+  }
 }
 
 

@@ -1,22 +1,28 @@
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ryf
   implements Animation.AnimationListener
 {
-  public ryf(ChatHistoryForC2C paramChatHistoryForC2C, View paramView, int paramInt) {}
+  public ryf(ChatFragment paramChatFragment) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
+    this.a.b(1);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationRepeat");
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationStart");
+  }
 }
 
 

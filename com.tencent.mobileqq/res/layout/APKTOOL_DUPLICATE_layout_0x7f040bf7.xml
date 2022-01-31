@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="#ffd3f3ff" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3443" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="vertical" android:background="#b3000000" android:layout_width="fill_parent" android:layout_height="229.0dip" android:layout_alignParentBottom="true">
-        <com.tencent.widget.HorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3444" android:paddingLeft="12.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="135.0dip" android:layout_marginTop="21.0dip" android:layout_marginBottom="9.0dip" />
-        <Button android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3445" android:background="@drawable/common_btn_blue" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_margin="12.0dip" android:text="30金豆秀一下" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3496" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037f" android:layout_marginBottom="84.0dip" android:weightSum="6.0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3497" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="立即更换主题" android:layout_weight="4.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0216" />
     </LinearLayout>
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="58.0dip" android:text="体验全新沟通乐趣！" android:layout_alignParentBottom="true" />
 </RelativeLayout>

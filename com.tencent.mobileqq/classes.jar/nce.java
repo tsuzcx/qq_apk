@@ -1,51 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller.StoryVidListReceiver;
-import com.tencent.biz.qqstory.network.handler.UidToVidHandler;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.comment.FeedLikeLego;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.model.LikeManager;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class nce
-  extends SimpleJob
+  implements Runnable
 {
-  public nce(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
+  public nce(FeedLikeLego paramFeedLikeLego, String paramString) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    paramJobContext = (StoryManager)SuperManager.a(5);
-    if (!this.a.jdField_a_of_type_Boolean) {}
-    for (paramJobContext = paramJobContext.d(this.a.jdField_b_of_type_JavaLangString);; paramJobContext = null)
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount > 0)
     {
-      paramVarArgs = paramJobContext;
-      if (paramJobContext == null) {
-        paramVarArgs = new ArrayList();
-      }
-      if (paramVarArgs.size() > 0)
-      {
-        this.a.a(paramVarArgs);
-        SLog.d("Q.qqstory.net:VidToVideoInfoPuller", String.format("Found %s vid list from local , pullType is %d , %s", new Object[] { this.a.jdField_b_of_type_JavaLangString, Integer.valueOf(this.a.jdField_b_of_type_Int), paramVarArgs }));
-        return null;
-      }
-      SLog.d("Q.qqstory.net:VidToVideoInfoPuller", String.format("Cannot found %s vid list from local , pullType is %d , request from net", new Object[] { this.a.jdField_b_of_type_JavaLangString, Integer.valueOf(this.a.jdField_b_of_type_Int) }));
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver == null)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver = new VidToVideoInfoPuller.StoryVidListReceiver(this.a);
-        Dispatchers.get().registerSubscriber(this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver);
-      }
-      paramJobContext = new ArrayList();
-      paramJobContext.add(this.a.jdField_b_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerUidToVidHandler = new UidToVidHandler(paramJobContext, this.a.jdField_b_of_type_Int);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerUidToVidHandler.a();
-      return null;
+      CommentLikeFeedItem localCommentLikeFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      localCommentLikeFeedItem.mLikeCount -= 1;
     }
+    int i = 0;
+    while (i < this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_JavaUtilList.size())
+    {
+      if (((LikeEntry)this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_JavaUtilList.get(i)).unionId.equals(this.jdField_a_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryModelLikeManager.b((LikeEntry)this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_JavaUtilList.get(i));
+        this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_JavaUtilList.remove(i);
+      }
+      i += 1;
+    }
+    ThreadManager.getUIHandler().post(new ncf(this));
   }
 }
 

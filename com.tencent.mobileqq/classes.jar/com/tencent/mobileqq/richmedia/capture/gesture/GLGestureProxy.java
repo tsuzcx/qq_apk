@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.gesture;
 
-import agwm;
+import ahko;
 import android.opengl.GLSurfaceView;
 import android.os.SystemClock;
 import android.view.MotionEvent;
@@ -26,7 +26,7 @@ public class GLGestureProxy
   
   public static final GLGestureProxy a()
   {
-    return agwm.a();
+    return ahko.a();
   }
   
   public static String a(MotionEvent paramMotionEvent)

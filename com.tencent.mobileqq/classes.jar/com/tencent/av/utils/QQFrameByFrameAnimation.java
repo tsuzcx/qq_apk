@@ -2,7 +2,7 @@ package com.tencent.av.utils;
 
 import android.os.Handler;
 import android.view.View;
-import khd;
+import kgo;
 
 public class QQFrameByFrameAnimation
 {
@@ -10,7 +10,7 @@ public class QQFrameByFrameAnimation
   public Handler a;
   View jdField_a_of_type_AndroidViewView = null;
   public QQAnimationListener a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new khd(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new kgo(this);
   public int[] a;
   public int b = 0;
   public int c = 0;

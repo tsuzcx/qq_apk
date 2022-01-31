@@ -1,45 +1,24 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.PhoneUnityBannerData;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
+import com.tencent.qphone.base.util.QLog;
 
 public class xgl
-  implements View.OnClickListener
+  implements PreloadManager.OnGetPathListener
 {
-  public xgl(BannerManager paramBannerManager, PhoneUnityBannerData paramPhoneUnityBannerData) {}
+  public xgl(QWalletIPCModule paramQWalletIPCModule, ResultReceiver paramResultReceiver) {}
   
-  public void onClick(View paramView)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    ReportController.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
-    paramView = BaseActivity.sTopActivity;
-    Intent localIntent;
-    if (paramView != null)
-    {
-      if (!URLUtil.isValidUrl(this.jdField_a_of_type_ComTencentMobileqqAppPhoneUnityBannerData.a)) {
-        break label110;
-      }
-      localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqAppPhoneUnityBannerData.a);
-      localIntent.putExtra("hideRightButton", true);
-      paramView.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(5, 0);
-      return;
-      label110:
-      localIntent = new Intent(paramView, PhoneUnityBindInfoActivity.class);
-      localIntent.putExtra("kSrouce", 0);
-      paramView.startActivity(localIntent);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramPathResult);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 

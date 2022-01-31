@@ -1,34 +1,55 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class uig
-  implements Runnable
+public class uig
+  implements View.OnTouchListener
 {
-  uig(uif paramuif, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public uig(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
+    switch (paramMotionEvent.getAction())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "VoiceResStrategy");
-      }
-      if ((this.jdField_a_of_type_Uif.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager == null) || (this.jdField_a_of_type_Uif.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager == null))
-      {
-        CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
-        return;
-      }
-      String str = this.jdField_a_of_type_Uif.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager.a("voice_pwd", "http://imgcache.qq.com/channel/static/socialpay/voice/", new String[] { "urlPrefix" });
-      str = str + "voice_rate_" + this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId + ".zip";
-      this.jdField_a_of_type_Uif.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(str, new uih(this));
-      return;
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      localThrowable.printStackTrace();
+      return true;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+        this.a.b.setAlpha(127);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
+        }
+        ReportController.b(this.a.app, "dc00898", "", "", "0X8007611", "0X8007611", 0, 0, "", "", "", "");
+        paramView = new Intent(this.a, LikeRankingListActivity.class);
+        this.a.startActivity(paramView);
+        this.a.d.setVisibility(8);
+        this.a.f.clearAnimation();
+        this.a.c = 0;
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        continue;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+          this.a.b.setAlpha(255);
+        }
+      }
     }
   }
 }

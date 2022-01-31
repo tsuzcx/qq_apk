@@ -1,29 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import com.tencent.mobileqq.leba.QZoneEntryController;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeas
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aeas(GameRoomInviteActivity paramGameRoomInviteActivity, oidb_0x8e4.RspBody paramRspBody) {}
+  public aeas(QZoneEntryController paramQZoneEntryController) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
-    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
-    GameRoomUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
+    if (QZoneEntryController.a(this.a))
+    {
+      QZoneEntryController.a(this.a, 1);
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneEntryController", 2, "显示被动");
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!QZoneEntryController.b(this.a)) {
+            break;
+          }
+          QZoneEntryController.a(this.a, 2);
+        } while (!QLog.isColorLevel());
+        QLog.i("UndealCount.QZoneEntryController", 2, "显示主动");
+        return;
+        if (!QZoneEntryController.c(this.a)) {
+          break;
+        }
+        QZoneEntryController.a(this.a, 3);
+      } while (!QLog.isColorLevel());
+      QLog.i("UndealCount.QZoneEntryController", 2, "显示访客");
+      return;
+      if (!QZoneEntryController.d(this.a)) {
+        break;
+      }
+      QZoneEntryController.a(this.a, 4);
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneEntryController", 2, "显示运营内容");
+    return;
+    QZoneEntryController.a(this.a, 0);
+    if (QLog.isColorLevel()) {
+      QLog.i("UndealCount.QZoneEntryController", 2, "显示默认布局");
+    }
+    QZoneEntryController.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeas
  * JD-Core Version:    0.7.0.1
  */

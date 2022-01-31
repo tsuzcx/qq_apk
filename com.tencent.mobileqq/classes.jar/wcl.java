@@ -1,22 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.TextView;
 
-public class wcl
-  implements View.OnClickListener
+class wcl
+  implements Runnable
 {
-  public wcl(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  wcl(wck paramwck, StateListDrawable paramStateListDrawable) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    }
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
-    }
+    this.jdField_a_of_type_Wck.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
   }
 }
 

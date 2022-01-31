@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahuo;
-import ahup;
+import aiir;
+import aiis;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -56,7 +56,7 @@ public class StructMsgItemLayout12
   public StructMsgItemLayout12()
   {
     this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahuo(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiir(this);
   }
   
   private FrameLayout a(Context paramContext)
@@ -159,7 +159,7 @@ public class StructMsgItemLayout12
   @TargetApi(11)
   private void e(View paramView)
   {
-    paramView.setOnTouchListener(new ahup(this, paramView));
+    paramView.setOnTouchListener(new aiis(this, paramView));
   }
   
   public void a()
@@ -805,7 +805,7 @@ public class StructMsgItemLayout12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout12
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,32 @@
-import android.app.Activity;
-import com.tencent.biz.addContactTroopView.AddContactTroopHandler.IGetPopClassAndSearchCB;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-public class wgc
-  implements AddContactTroopHandler.IGetPopClassAndSearchCB
+class wgc
+  implements Runnable
 {
-  public wgc(TroopView paramTroopView) {}
+  wgc(wgb paramwgb, List paramList) {}
   
-  public void a()
+  public void run()
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+    ChatHistoryBubbleListAdapter localChatHistoryBubbleListAdapter = this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (this.jdField_a_of_type_JavaUtilList.size() < 20) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localChatHistoryBubbleListAdapter.a(localList, bool);
+      if (this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() > 0)
+      {
+        this.jdField_a_of_type_Wgb.a.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(0)).shmsgseq;
+        this.jdField_a_of_type_Wgb.a.b = ((MessageRecord)this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1)).shmsgseq;
+      }
+      this.jdField_a_of_type_Wgb.a.a(this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a, this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.b);
+      this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.notifyDataSetChanged();
+      this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setSelection(this.jdField_a_of_type_Wgb.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1);
       return;
     }
-    TroopView.b(this.a, true);
-    TroopView.c(this.a, true);
-    TroopView.a(this.a).sendEmptyMessage(4);
-  }
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
-    }
-    TroopView.b(this.a, true);
-    TroopView.c(this.a, false);
-    TroopView.a(this.a).sendEmptyMessage(5);
   }
 }
 

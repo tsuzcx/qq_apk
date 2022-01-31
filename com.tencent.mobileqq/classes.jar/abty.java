@@ -1,53 +1,33 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.vip.IPCDownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Game;
+import com.tencent.mobileqq.data.IPSiteModel.GameRich;
+import java.util.ArrayList;
+import java.util.List;
 
-public class abty
-  extends IPCDownloadListener
+public final class abty
+  implements Parcelable.Creator
 {
-  public abty(MessengerService paramMessengerService) {}
-  
-  public void a(long paramLong, int paramInt, Bundle paramBundle)
+  public IPSiteModel.Game a(Parcel paramParcel)
   {
-    if (this.a.a != null) {}
-    try
-    {
-      Message localMessage = Message.obtain(null, 5);
-      paramBundle.putInt("id", (int)paramLong);
-      paramBundle.putInt("result", paramInt);
-      localMessage.setData(paramBundle);
-      this.a.a.send(localMessage);
-      return;
+    IPSiteModel.Game localGame = new IPSiteModel.Game();
+    localGame.cover = paramParcel.readString();
+    localGame.desc = paramParcel.readString();
+    localGame.id = paramParcel.readString();
+    localGame.jumpUrl = paramParcel.readString();
+    localGame.name = paramParcel.readString();
+    localGame.recommDesc = paramParcel.readString();
+    if (localGame.gameRiches == null) {
+      localGame.gameRiches = new ArrayList();
     }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
-    }
+    localGame.gameRiches.clear();
+    paramParcel.readList(localGame.gameRiches, IPSiteModel.GameRich.class.getClassLoader());
+    return localGame;
   }
   
-  public void a(Bundle paramBundle)
+  public IPSiteModel.Game[] a(int paramInt)
   {
-    Message localMessage;
-    if (this.a.a != null)
-    {
-      localMessage = Message.obtain(null, 5);
-      localMessage.setData(paramBundle);
-    }
-    try
-    {
-      this.a.a.send(localMessage);
-      return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
-    }
+    return new IPSiteModel.Game[paramInt];
   }
 }
 

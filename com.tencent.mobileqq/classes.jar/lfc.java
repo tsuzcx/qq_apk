@@ -1,33 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.Switch;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lfc
-  implements DialogInterface.OnKeyListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public lfc(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public lfc(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = true;
-    if (paramInt == 4)
+    if (paramInt == 0)
     {
-      ReadInJoySettingActivity.a(this.a, true);
-      paramDialogInterface = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label53;
-      }
-    }
-    for (;;)
-    {
-      paramDialogInterface.setChecked(bool);
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return false;
-      label53:
-      bool = false;
+      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo, false);
+      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity).dismiss();
     }
   }
 }

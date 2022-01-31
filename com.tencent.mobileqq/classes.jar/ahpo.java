@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.shortvideo.util.NativeSoLoader;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-public final class ahpo
-  implements Runnable
+public class ahpo
 {
-  public void run()
+  public int a;
+  public int b;
+  
+  public ahpo(int paramInt1, int paramInt2)
   {
-    if (!NativeSoLoader.a().get())
-    {
-      boolean bool = NativeSoLoader.a("TKGLRenderer");
-      NativeSoLoader.a().getAndSet(bool);
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

@@ -1,15 +1,32 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-class nol
-  implements Runnable
+public final class nol
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  nol(nok paramnok) {}
-  
-  public void run()
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a, 102, 201, 0, "", null);
+    synchronized ()
+    {
+      SLog.d("Q.qqstory.player.TVKPreloader", "preloadVideo onPreLoadFailed, preloadItem = %s, s = %s, s1 = %s, cost %d ms", new Object[] { TVKPreloader.a(), paramString1, paramString2, Long.valueOf(SystemClock.uptimeMillis() - TVKPreloader.a()) });
+      TVKPreloader.PreloadItem localPreloadItem = TVKPreloader.a();
+      TVKPreloader.a().post(new non(this, localPreloadItem, paramString1, paramInt, paramString2));
+      return;
+    }
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    synchronized ()
+    {
+      SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo onPreLoadSuccess, preloadItem = %s, s = %s, s1 = %s,  cost %d ms", TVKPreloader.a(), paramString1, paramString2, Long.valueOf(SystemClock.uptimeMillis() - TVKPreloader.a()));
+      paramString1 = TVKPreloader.a();
+      TVKPreloader.a().post(new nom(this, paramString1));
+      return;
     }
   }
 }

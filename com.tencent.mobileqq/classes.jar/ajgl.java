@@ -1,65 +1,45 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout.PickerViewAdapter;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout.ViewStyle;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
+import java.util.ArrayList;
 
 public class ajgl
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  public ajgl(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment) {}
   
-  public ajgl(WheelPickerLayout paramWheelPickerLayout, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramWheelPickerLayout.getResources().getDisplayMetrics()));
-  }
-  
-  public int getCount()
-  {
-    return WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    paramView = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    if (HomeWorkTroopSelectorFragment.a(this.a) != null)
     {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+      int j = HomeWorkTroopSelectorFragment.a(this.a).getCount();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (ajgr)HomeWorkTroopSelectorFragment.a(this.a).getItem(i);
+        if ((((Boolean)((ajgr)localObject).b).booleanValue()) && (!HomeWorkTroopSelectorFragment.a(this.a).equals(((TroopInfo)((ajgr)localObject).a).troopuin)))
+        {
+          paramView.add(((TroopInfo)((ajgr)localObject).a).troopname);
+          localArrayList.add(((TroopInfo)((ajgr)localObject).a).troopuin);
+        }
+        i += 1;
+      }
     }
-    for (;;)
-    {
-      paramViewGroup = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(1, WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).b);
-      localWheelTextView.setTextColor(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).c);
-      localWheelTextView.setGravity(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).d);
-      localWheelTextView.setText(paramViewGroup);
-      return paramView;
-    }
+    Object localObject = new Intent();
+    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_uin_list_key", localArrayList);
+    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_name_list_key", paramView);
+    this.a.getActivity().setResult(262, (Intent)localObject);
+    this.a.getActivity().doOnBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgl
  * JD-Core Version:    0.7.0.1
  */

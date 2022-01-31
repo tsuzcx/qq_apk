@@ -1,28 +1,34 @@
+import android.graphics.Bitmap;
+import android.os.Message;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import java.util.HashMap;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.vas.FlashCarGameManager;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.os.MqqHandler;
 
-class akhp
+public class akhp
   implements Runnable
 {
-  akhp(akho paramakho) {}
+  public akhp(FlashCarGameManager paramFlashCarGameManager, Bitmap paramBitmap, View paramView) {}
   
   public void run()
   {
-    if (!this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume()) {}
-    View localView;
-    do
+    FlashCarGameManager.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidViewView);
+    if ((ApolloEngine.a()) && (!FlashCarGameManager.a(this.jdField_a_of_type_ComTencentMobileqqVasFlashCarGameManager).get()))
     {
-      return;
-      localView = (View)this.a.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_troop_mem_recent_said");
-    } while ((!this.a.a.d) || (localView == null));
-    ProfileCardMoreInfoView.a(localView, this.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+      FlashCarGameManager.a(this.jdField_a_of_type_ComTencentMobileqqVasFlashCarGameManager).set(true);
+      if (FlashCarGameManager.a(this.jdField_a_of_type_ComTencentMobileqqVasFlashCarGameManager) != null)
+      {
+        Message localMessage = FlashCarGameManager.a(this.jdField_a_of_type_ComTencentMobileqqVasFlashCarGameManager).obtainMessage();
+        localMessage.what = 257;
+        FlashCarGameManager.a(this.jdField_a_of_type_ComTencentMobileqqVasFlashCarGameManager).sendMessage(localMessage);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhp
  * JD-Core Version:    0.7.0.1
  */

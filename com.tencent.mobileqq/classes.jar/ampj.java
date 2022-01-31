@@ -1,14 +1,16 @@
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqfav.globalsearch.FavoriteSearchResultGroupPresenter;
+import cooperation.qqfav.globalsearch.GroupSearchModelFavorite;
 
 public class ampj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ampj(TroopHWFileDownloadManager paramTroopHWFileDownloadManager, String paramString) {}
+  public ampj(FavoriteSearchResultGroupPresenter paramFavoriteSearchResultGroupPresenter, GroupSearchModelFavorite paramGroupSearchModelFavorite) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TroopHWFileDownloadManager.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWFileDownloadManager).pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_CooperationQqfavGlobalsearchGroupSearchModelFavorite.a(paramView);
   }
 }
 

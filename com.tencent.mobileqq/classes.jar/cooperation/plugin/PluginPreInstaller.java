@@ -1,8 +1,8 @@
 package cooperation.plugin;
 
-import alwk;
-import alwl;
-import alwm;
+import ammo;
+import ammp;
+import ammq;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,7 +38,7 @@ public class PluginPreInstaller
   private static final String[] e = { "qqreaderplugin.apk", "comic_plugin.apk", "wlx_jtcode.apk" };
   private Context jdField_a_of_type_AndroidContentContext;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new alwk(this);
+  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new ammo(this);
   private IPluginManager jdField_a_of_type_CooperationPluginIPluginManager;
   
   public PluginPreInstaller(Context paramContext, IPluginManager paramIPluginManager, QQAppInterface paramQQAppInterface)
@@ -117,7 +117,7 @@ public class PluginPreInstaller
     this.jdField_a_of_type_CooperationPluginIPluginManager.a(paramString, this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener, true);
     if (("qqreaderplugin.apk".equals(paramString)) && (QRUtility.a(this.jdField_a_of_type_AndroidContentContext) == -1))
     {
-      ThreadManager.post(new alwm(this), 5, null, false);
+      ThreadManager.post(new ammq(this), 5, null, false);
       if (QLog.isColorLevel()) {
         QLog.e("PluginPreInstaller", 2, "");
       }
@@ -158,7 +158,7 @@ public class PluginPreInstaller
   {
     try
     {
-      SosoInterface.a(new alwl(this, 3, true, true, 300000L, false, false, "buscardLocation"));
+      SosoInterface.a(new ammp(this, 3, true, true, 300000L, false, false, "buscardLocation"));
       Iterator localIterator = a().iterator();
       while (localIterator.hasNext())
       {

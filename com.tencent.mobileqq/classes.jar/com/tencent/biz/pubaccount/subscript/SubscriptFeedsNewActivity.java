@@ -32,9 +32,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import mrv;
-import mrw;
-import mrx;
+import mtc;
+import mtd;
+import mte;
 
 public class SubscriptFeedsNewActivity
   extends IphoneTitleBarActivity
@@ -51,13 +51,13 @@ public class SubscriptFeedsNewActivity
   
   public SubscriptFeedsNewActivity()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new mrw(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new mtd(this);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.titleRoot.findViewById(2131367043));
-    this.b = ((ViewGroup)findViewById(2131367167));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.titleRoot.findViewById(2131367091));
+    this.b = ((ViewGroup)findViewById(2131367215));
     SubscriptionViewController localSubscriptionViewController = new SubscriptionViewController(this);
     localSubscriptionViewController.a(this);
     localSubscriptionViewController.a(this.b);
@@ -65,7 +65,7 @@ public class SubscriptFeedsNewActivity
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController = localSubscriptionViewController;
     c();
     boolean bool = SubscriptRecommendController.e(this.app);
-    this.rightViewText.setText(2131437921);
+    this.rightViewText.setText(2131437938);
     if (bool) {
       this.rightViewText.setVisibility(0);
     }
@@ -81,7 +81,7 @@ public class SubscriptFeedsNewActivity
   private void c()
   {
     int i = 1;
-    Object localObject = "7.6.0" + this.app.c() + "subscript_guid";
+    Object localObject = "7.6.3" + this.app.c() + "subscript_guid";
     if ((this.app.getPreferences().getBoolean((String)localObject, true)) && (SubscriptRecommendController.e(this.app))) {
       if (i != 0) {
         break label70;
@@ -99,8 +99,8 @@ public class SubscriptFeedsNewActivity
         localObject = getResources();
         this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow();
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView = new CustomGuideView(this);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.g = ((Resources)localObject).getColor(2131493323);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.f = ((Resources)localObject).getColor(2131493324);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.g = ((Resources)localObject).getColor(2131493324);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.f = ((Resources)localObject).getColor(2131493325);
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_a_of_type_Float = AIOUtils.a(2, 14, (Resources)localObject);
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView.e = AIOUtils.a(12.0F, (Resources)localObject);
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_a_of_type_Int = AIOUtils.a(30.0F, (Resources)localObject);
@@ -117,7 +117,7 @@ public class SubscriptFeedsNewActivity
         this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
         i = this.jdField_a_of_type_ComTencentBizUiCustomGuideView.b();
         int j = getResources().getDisplayMetrics().widthPixels;
-        this.rightViewText.post(new mrv(this, j, i));
+        this.rightViewText.post(new mtc(this, j, i));
         return;
       }
       catch (Exception localException) {}
@@ -163,9 +163,9 @@ public class SubscriptFeedsNewActivity
       getWindow().setFlags(16777216, 16777216);
     }
     if (Build.VERSION.SDK_INT >= 19) {
-      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new mrx(this), 1000L);
+      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new mte(this), 1000L);
     }
-    setContentView(2130969616);
+    setContentView(2130969624);
     getWindow().setBackgroundDrawable(null);
     paramBundle = (ReadInJoyLogicManager)this.app.getManager(162);
     ReadInJoyLogicEngine.a().i();

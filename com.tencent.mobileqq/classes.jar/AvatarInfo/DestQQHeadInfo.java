@@ -48,7 +48,7 @@ public final class DestQQHeadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\acom1.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     AvatarInfo.DestQQHeadInfo
  * JD-Core Version:    0.7.0.1
  */

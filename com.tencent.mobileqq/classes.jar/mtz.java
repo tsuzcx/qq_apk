@@ -1,18 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.widget.ActionSheet;
+import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.biz.pubaccount.util.DiffUtil.DiffResult;
+import com.tencent.biz.pubaccount.util.ListUpdateCallback;
 
 public class mtz
-  implements View.OnClickListener
+  implements ListUpdateCallback
 {
-  public mtz(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, int paramInt1, int paramInt2, String paramString) {}
+  public mtz(DiffUtil.DiffResult paramDiffResult, RecyclerView.Adapter paramAdapter) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.m = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.dismiss();
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemRangeInserted(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemRangeRemoved(paramInt1, paramInt2);
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemMoved(paramInt1, paramInt2);
   }
 }
 

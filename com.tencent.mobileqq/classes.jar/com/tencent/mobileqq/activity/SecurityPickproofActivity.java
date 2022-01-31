@@ -17,8 +17,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tog;
-import toh;
+import trg;
+import trh;
 
 public class SecurityPickproofActivity
   extends IphoneTitleBarActivity
@@ -95,18 +95,18 @@ public class SecurityPickproofActivity
   private void b()
   {
     if (this.d) {
-      setTitle(2131437452);
+      setTitle(2131437469);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131374847));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131375033));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131371134);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131371297);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371036));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371046));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371200));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371210));
       return;
-      setTitle(2131437442);
+      setTitle(2131437459);
     }
   }
   
@@ -114,14 +114,14 @@ public class SecurityPickproofActivity
   {
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131437456);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131437453);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437447);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131437473);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131437470);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437464);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131437456);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131437453);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437447);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131437473);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131437470);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437464);
   }
   
   public boolean a(DownloadInfo paramDownloadInfo)
@@ -142,14 +142,14 @@ public class SecurityPickproofActivity
     {
       this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
     }
-    runOnUiThread(new toh(this));
+    runOnUiThread(new trh(this));
     return true;
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130971499);
+    super.setContentView(2130971547);
     a();
     b();
     return true;
@@ -173,7 +173,7 @@ public class SecurityPickproofActivity
       if (UniformDownloadMgr.a().a(this.jdField_a_of_type_JavaLangString))
       {
         this.jdField_c_of_type_Boolean = true;
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131436641);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131436658);
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -184,14 +184,14 @@ public class SecurityPickproofActivity
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       if (this.d)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131437453);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131435396);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131437470);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131435413);
       }
       for (;;)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437445);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437462);
         return;
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131437448);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131437465);
       }
     }
     if ((JumpQqPimSecureUtil.c(this)) || ((this.d) && (!JumpQqPimSecureUtil.e(this))))
@@ -199,7 +199,7 @@ public class SecurityPickproofActivity
       if (UniformDownloadMgr.a().a(this.jdField_a_of_type_JavaLangString))
       {
         this.jdField_c_of_type_Boolean = true;
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131436641);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131436658);
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -215,13 +215,13 @@ public class SecurityPickproofActivity
           c();
           return;
         }
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131437453);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131437457);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437458);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131437470);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131437474);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437475);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131437448);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437446);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131437465);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437463);
       return;
     }
     if (this.d)
@@ -229,8 +229,8 @@ public class SecurityPickproofActivity
       c();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131437449);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437447);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131437466);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437464);
   }
   
   protected void doOnStop()
@@ -270,9 +270,9 @@ public class SecurityPickproofActivity
         ReportController.b(null, "P_CliOper", "Safe_SecurityPay", "", "Safe_SecurityPay_", "click_jumpPimsecure", 0, 0, "", "", "", "");
         return;
       }
-      ThreadManager.executeOnNetWorkThread(new tog(this));
+      ThreadManager.executeOnNetWorkThread(new trg(this));
       this.jdField_c_of_type_Boolean = true;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131436641);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131436658);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);

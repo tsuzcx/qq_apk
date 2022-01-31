@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.RequestPublicAccountObserver;
 
 public class udg
-  implements DialogInterface.OnClickListener
+  extends TroopBindPubAccountProtocol.RequestPublicAccountObserver
 {
-  public udg(UpgradeActivity paramUpgradeActivity) {}
+  public udg(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    UpgradeActivity.a(this.a, false);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "");
+    if ((paramBoolean) && (paramAccountDetail != null))
+    {
+      this.a.k.setText(paramAccountDetail.name);
+      this.a.b.setVisibility(0);
+      this.a.e();
+    }
   }
 }
 

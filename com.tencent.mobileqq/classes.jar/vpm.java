@@ -1,26 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.MyAdapter;
+import java.util.List;
 
-class vpm
-  implements DialogInterface.OnClickListener
+public class vpm
+  implements Runnable
 {
-  vpm(vpl paramvpl, String paramString) {}
+  public vpm(PhotoListPanel.MyAdapter paramMyAdapter, List paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ((DiscussionManager)this.jdField_a_of_type_Vpl.a.a.getManager(52)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Vpl.a.a.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
-    }
-    this.jdField_a_of_type_Vpl.a.A();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$MyAdapter.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

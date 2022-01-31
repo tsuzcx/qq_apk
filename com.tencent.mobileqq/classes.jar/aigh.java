@@ -1,17 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.statistics.UEC.UECItem;
 
-public class aigh
-  implements DialogInterface.OnClickListener
+public final class aigh
+  implements Parcelable.Creator
 {
-  public aigh(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public UEC.UECItem a(Parcel paramParcel)
+  {
+    UEC.UECItem localUECItem = new UEC.UECItem();
+    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
+    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
+    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localUECItem.c = paramParcel.readString();
+    localUECItem.d = paramParcel.readString();
+    localUECItem.e = paramParcel.readString();
+    localUECItem.f = paramParcel.readString();
+    return localUECItem;
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public UEC.UECItem[] a(int paramInt)
+  {
+    return new UEC.UECItem[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aigh
  * JD-Core Version:    0.7.0.1
  */

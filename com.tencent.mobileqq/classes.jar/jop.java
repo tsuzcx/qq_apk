@@ -1,18 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.smallscreen.SmallScreenDialogActivity;
-import com.tencent.av.smallscreen.SmallScreenUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenService;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class jop
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public jop(SmallScreenDialogActivity paramSmallScreenDialogActivity) {}
+  public jop(SmallScreenService paramSmallScreenService) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent.getAction().equals("tencent.video.v2q.SmallScreenState")) && (SmallScreenUtils.c(paramContext))) {
-      this.a.finish();
+    Object localObject = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject != null)
+    {
+      localObject = ((VideoAppInterface)localObject).getApp().getSharedPreferences("qav_SP", 0).edit();
+      if (this.a.a.a()) {
+        ((SharedPreferences.Editor)localObject).putInt("small_window_position_land", this.a.a.a().J);
+      }
+      ((SharedPreferences.Editor)localObject).commit();
     }
   }
 }

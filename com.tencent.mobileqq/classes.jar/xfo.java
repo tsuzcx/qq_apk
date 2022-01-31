@@ -1,25 +1,35 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.ResUtil;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import java.lang.ref.WeakReference;
 
 public class xfo
-  implements View.OnClickListener
+  extends DownloadListener
 {
-  public xfo(BannerManager paramBannerManager) {}
+  public xfo(PreloadManager paramPreloadManager, WeakReference paramWeakReference, boolean paramBoolean, PreloadManager.OnGetPathListener paramOnGetPathListener) {}
   
-  public void onClick(View paramView)
+  public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    Intent localIntent = new Intent(BannerManager.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("uin", ((QQAppInterface)BannerManager.a(this.a).getAppRuntime()).getCurrentAccountUin());
-    paramView = (Pair)paramView.getTag();
-    if (paramView != null) {
-      BannerManager.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)paramView.first).longValue() + "&deviceRemark=" + (String)paramView.second));
+    super.onDoneFile(paramDownloadTask);
+    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (!PreloadManager.a((PreloadManager)localObject)) {
+      return;
     }
+    if (paramDownloadTask.jdField_a_of_type_Int == 0)
+    {
+      localObject = ResUtil.a(paramDownloadTask.jdField_a_of_type_JavaLangString, (PreloadManager)localObject, this.jdField_a_of_type_Boolean, 0);
+      PreloadManager.PathResult localPathResult = new PreloadManager.PathResult();
+      localPathResult.url = paramDownloadTask.jdField_a_of_type_JavaLangString;
+      localPathResult.filePath = ((ResourceInfo)localObject).filePath;
+      localPathResult.folderPath = ((ResourceInfo)localObject).folderPath;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(0, localPathResult);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(1, PreloadManager.PathResult.getFailRes(paramDownloadTask.jdField_a_of_type_JavaLangString));
   }
 }
 

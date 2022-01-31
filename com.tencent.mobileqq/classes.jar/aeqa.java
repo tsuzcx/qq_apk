@@ -1,23 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 
-public class aeqa
-  implements View.OnClickListener
+class aeqa
+  implements Runnable
 {
-  public aeqa(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  aeqa(aepz paramaepz, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.b != null) && (!this.a.isFinishing()))
+    this.jdField_a_of_type_Aepz.a.l();
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.a.b.dismiss();
-      this.a.b = null;
+      this.jdField_a_of_type_Aepz.a.a(2, "编辑资料成功");
+      this.jdField_a_of_type_Aepz.a.a(true);
+      this.jdField_a_of_type_Aepz.a.finish();
+      NearbySPUtil.a(this.jdField_a_of_type_Aepz.a.app.getAccount(), "nearby_need_show_guide", Boolean.valueOf(false));
+      return;
     }
-    this.a.a(300L);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Aepz.a.a(1, "更新交友资料失败，请重试。");
   }
 }
 

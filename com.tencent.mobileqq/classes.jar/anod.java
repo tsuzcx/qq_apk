@@ -1,27 +1,20 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.JourneyTextItem;
 
 public class anod
-  extends Property
+  implements annx
 {
-  public anod(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public anod(JourneyTextItem paramJourneyTextItem) {}
   
-  public Integer a(MarkDrawable paramMarkDrawable)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    if (paramMarkDrawable != null) {
-      return Integer.valueOf(MarkDrawable.a(paramMarkDrawable));
+    String str = paramString;
+    if (paramInt == 0) {
+      str = TroopFileUtils.b(paramString);
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(MarkDrawable paramMarkDrawable, Integer paramInteger)
-  {
-    if (paramMarkDrawable != null) {
-      MarkDrawable.a(paramMarkDrawable, paramInteger.intValue());
-    }
+    return str;
   }
 }
 

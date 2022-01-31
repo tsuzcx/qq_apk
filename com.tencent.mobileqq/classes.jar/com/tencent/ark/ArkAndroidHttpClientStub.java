@@ -137,8 +137,6 @@ public class ArkAndroidHttpClientStub
     try
     {
       this.isCompleted = true;
-      this.isCanceled = false;
-      this.isTimeOut = false;
       return;
     }
     finally {}
@@ -163,7 +161,7 @@ public class ArkAndroidHttpClientStub
     //   20: aload_0
     //   21: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
     //   24: sipush 3000
-    //   27: invokevirtual 219	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   27: invokevirtual 217	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   30: aload 8
     //   32: astore 7
     //   34: aload 9
@@ -171,7 +169,7 @@ public class ArkAndroidHttpClientStub
     //   38: aload_0
     //   39: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
     //   42: sipush 3000
-    //   45: invokevirtual 222	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   45: invokevirtual 220	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   48: aload 8
     //   50: astore 7
     //   52: aload 9
@@ -179,13 +177,13 @@ public class ArkAndroidHttpClientStub
     //   56: aload_0
     //   57: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
     //   60: iconst_1
-    //   61: invokevirtual 226	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
+    //   61: invokevirtual 224	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
     //   64: aload 8
     //   66: astore 7
     //   68: aload 9
     //   70: astore 6
     //   72: aload_0
-    //   73: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   73: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
     //   76: ifnull +340 -> 416
     //   79: aload 8
     //   81: astore 7
@@ -200,8 +198,8 @@ public class ArkAndroidHttpClientStub
     //   100: astore 6
     //   102: aload_0
     //   103: aload_0
-    //   104: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
-    //   107: getfield 231	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:cookie	Ljava/lang/String;
+    //   104: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   107: getfield 229	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:cookie	Ljava/lang/String;
     //   110: invokevirtual 160	com/tencent/ark/ArkAndroidHttpClientStub:isEmpty	(Ljava/lang/CharSequence;)Z
     //   113: ifne +44 -> 157
     //   116: aload 8
@@ -210,49 +208,49 @@ public class ArkAndroidHttpClientStub
     //   122: astore 6
     //   124: aload_0
     //   125: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
-    //   128: ldc 233
+    //   128: ldc 231
     //   130: aload_0
-    //   131: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
-    //   134: getfield 231	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:cookie	Ljava/lang/String;
-    //   137: invokevirtual 236	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   131: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   134: getfield 229	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:cookie	Ljava/lang/String;
+    //   137: invokevirtual 234	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   140: aload 8
     //   142: astore 7
     //   144: aload 9
     //   146: astore 6
     //   148: aload_0
-    //   149: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
-    //   152: ldc 238
-    //   154: putfield 231	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:cookie	Ljava/lang/String;
+    //   149: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   152: ldc 236
+    //   154: putfield 229	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:cookie	Ljava/lang/String;
     //   157: aload 8
     //   159: astore 7
     //   161: aload 9
     //   163: astore 6
     //   165: aload_0
-    //   166: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
-    //   169: getfield 242	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:customHeader	Ljava/util/List;
+    //   166: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   169: getfield 240	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:customHeader	Ljava/util/List;
     //   172: ifnull +189 -> 361
     //   175: aload 8
     //   177: astore 7
     //   179: aload 9
     //   181: astore 6
     //   183: aload_0
-    //   184: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
-    //   187: getfield 242	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:customHeader	Ljava/util/List;
-    //   190: invokeinterface 248 1 0
+    //   184: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   187: getfield 240	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:customHeader	Ljava/util/List;
+    //   190: invokeinterface 246 1 0
     //   195: astore 11
     //   197: aload 8
     //   199: astore 7
     //   201: aload 9
     //   203: astore 6
     //   205: aload 11
-    //   207: invokeinterface 253 1 0
+    //   207: invokeinterface 251 1 0
     //   212: ifeq +129 -> 341
     //   215: aload 8
     //   217: astore 7
     //   219: aload 9
     //   221: astore 6
     //   223: aload 11
-    //   225: invokeinterface 257 1 0
+    //   225: invokeinterface 255 1 0
     //   230: checkcast 10	com/tencent/ark/ArkAndroidHttpClientStub$Header
     //   233: astore 12
     //   235: aload 8
@@ -261,7 +259,7 @@ public class ArkAndroidHttpClientStub
     //   241: astore 6
     //   243: aload_0
     //   244: aload 12
-    //   246: getfield 260	com/tencent/ark/ArkAndroidHttpClientStub$Header:name	Ljava/lang/String;
+    //   246: getfield 258	com/tencent/ark/ArkAndroidHttpClientStub$Header:name	Ljava/lang/String;
     //   249: invokevirtual 160	com/tencent/ark/ArkAndroidHttpClientStub:isEmpty	(Ljava/lang/CharSequence;)Z
     //   252: ifne -55 -> 197
     //   255: aload 8
@@ -271,10 +269,10 @@ public class ArkAndroidHttpClientStub
     //   263: aload_0
     //   264: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
     //   267: aload 12
-    //   269: getfield 260	com/tencent/ark/ArkAndroidHttpClientStub$Header:name	Ljava/lang/String;
+    //   269: getfield 258	com/tencent/ark/ArkAndroidHttpClientStub$Header:name	Ljava/lang/String;
     //   272: aload 12
-    //   274: getfield 263	com/tencent/ark/ArkAndroidHttpClientStub$Header:value	Ljava/lang/String;
-    //   277: invokevirtual 266	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   274: getfield 261	com/tencent/ark/ArkAndroidHttpClientStub$Header:value	Ljava/lang/String;
+    //   277: invokevirtual 264	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   280: goto -83 -> 197
     //   283: astore_2
     //   284: aload 7
@@ -284,7 +282,7 @@ public class ArkAndroidHttpClientStub
     //   293: new 142	java/lang/StringBuilder
     //   296: dup
     //   297: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   300: ldc_w 268
+    //   300: ldc_w 266
     //   303: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   306: aload_2
     //   307: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -294,10 +292,10 @@ public class ArkAndroidHttpClientStub
     //   319: aload 7
     //   321: ifnull +19 -> 340
     //   324: aload 7
-    //   326: invokevirtual 273	java/io/OutputStream:close	()V
+    //   326: invokevirtual 271	java/io/OutputStream:close	()V
     //   329: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   332: ldc 52
-    //   334: ldc_w 275
+    //   334: ldc_w 273
     //   337: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   340: return
     //   341: aload 8
@@ -305,9 +303,9 @@ public class ArkAndroidHttpClientStub
     //   345: aload 9
     //   347: astore 6
     //   349: aload_0
-    //   350: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
-    //   353: getfield 242	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:customHeader	Ljava/util/List;
-    //   356: invokeinterface 278 1 0
+    //   350: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   353: getfield 240	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:customHeader	Ljava/util/List;
+    //   356: invokeinterface 276 1 0
     //   361: iload 4
     //   363: ifeq +180 -> 543
     //   366: aload 8
@@ -317,7 +315,7 @@ public class ArkAndroidHttpClientStub
     //   374: aload_0
     //   375: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
     //   378: iconst_1
-    //   379: invokevirtual 281	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   379: invokevirtual 279	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   382: aload 8
     //   384: astore 7
     //   386: aload 9
@@ -325,15 +323,15 @@ public class ArkAndroidHttpClientStub
     //   390: aload_0
     //   391: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
     //   394: iconst_0
-    //   395: invokevirtual 284	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   395: invokevirtual 282	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   398: aload 8
     //   400: astore 7
     //   402: aload 9
     //   404: astore 6
     //   406: aload_0
     //   407: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
-    //   410: ldc_w 286
-    //   413: invokevirtual 289	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   410: ldc_w 284
+    //   413: invokevirtual 287	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   416: aload 8
     //   418: astore 7
     //   420: aload 9
@@ -342,7 +340,7 @@ public class ArkAndroidHttpClientStub
     //   425: monitorenter
     //   426: aload_0
     //   427: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
-    //   430: invokevirtual 292	java/net/HttpURLConnection:connect	()V
+    //   430: invokevirtual 290	java/net/HttpURLConnection:connect	()V
     //   433: aload_0
     //   434: monitorexit
     //   435: iload 4
@@ -355,7 +353,7 @@ public class ArkAndroidHttpClientStub
     //   450: astore 6
     //   452: aload_0
     //   453: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
-    //   456: invokevirtual 296	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   456: invokevirtual 294	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   459: ifnull +20 -> 479
     //   462: aload 8
     //   464: astore 7
@@ -363,7 +361,7 @@ public class ArkAndroidHttpClientStub
     //   468: astore 6
     //   470: aload_0
     //   471: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
-    //   474: invokevirtual 296	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   474: invokevirtual 294	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   477: astore 5
     //   479: aload 5
     //   481: ifnonnull +141 -> 622
@@ -373,7 +371,7 @@ public class ArkAndroidHttpClientStub
     //   490: astore 6
     //   492: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   495: ldc 52
-    //   497: ldc_w 298
+    //   497: ldc_w 296
     //   500: invokevirtual 197	com/tencent/ark/ArkEnvironmentManager:logE	(Ljava/lang/String;Ljava/lang/String;)V
     //   503: aload 5
     //   505: astore 7
@@ -381,16 +379,16 @@ public class ArkAndroidHttpClientStub
     //   509: astore 6
     //   511: new 126	java/lang/Exception
     //   514: dup
-    //   515: invokespecial 299	java/lang/Exception:<init>	()V
+    //   515: invokespecial 297	java/lang/Exception:<init>	()V
     //   518: athrow
     //   519: astore_2
     //   520: aload 6
     //   522: ifnull +19 -> 541
     //   525: aload 6
-    //   527: invokevirtual 273	java/io/OutputStream:close	()V
+    //   527: invokevirtual 271	java/io/OutputStream:close	()V
     //   530: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   533: ldc 52
-    //   535: ldc_w 275
+    //   535: ldc_w 273
     //   538: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   541: aload_2
     //   542: athrow
@@ -402,11 +400,11 @@ public class ArkAndroidHttpClientStub
     //   553: astore 6
     //   555: aload_0
     //   556: getfield 128	com/tencent/ark/ArkAndroidHttpClientStub:httpURLConnection	Ljava/net/HttpURLConnection;
-    //   559: ldc_w 301
+    //   559: ldc_w 299
     //   562: aload_0
     //   563: iload_1
-    //   564: invokevirtual 305	com/tencent/ark/ArkAndroidHttpClientStub:timeStampToString	(I)Ljava/lang/String;
-    //   567: invokevirtual 236	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   564: invokevirtual 303	com/tencent/ark/ArkAndroidHttpClientStub:timeStampToString	(I)Ljava/lang/String;
+    //   567: invokevirtual 234	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   570: aload 8
     //   572: astore 7
     //   574: aload 9
@@ -416,10 +414,10 @@ public class ArkAndroidHttpClientStub
     //   583: new 142	java/lang/StringBuilder
     //   586: dup
     //   587: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   590: ldc_w 307
+    //   590: ldc_w 305
     //   593: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   596: iload_1
-    //   597: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   597: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   600: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   603: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   606: goto -190 -> 416
@@ -440,39 +438,39 @@ public class ArkAndroidHttpClientStub
     //   632: aload_2
     //   633: iconst_0
     //   634: iload_3
-    //   635: invokevirtual 314	java/io/OutputStream:write	([BII)V
+    //   635: invokevirtual 312	java/io/OutputStream:write	([BII)V
     //   638: aload 5
     //   640: astore 7
     //   642: aload 5
     //   644: astore 6
     //   646: aload 5
-    //   648: invokevirtual 317	java/io/OutputStream:flush	()V
+    //   648: invokevirtual 315	java/io/OutputStream:flush	()V
     //   651: aload 5
     //   653: astore 7
     //   655: aload 5
     //   657: astore 6
     //   659: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   662: ldc 52
-    //   664: ldc_w 319
+    //   664: ldc_w 317
     //   667: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   670: aload 5
     //   672: ifnull -332 -> 340
     //   675: aload 5
-    //   677: invokevirtual 273	java/io/OutputStream:close	()V
+    //   677: invokevirtual 271	java/io/OutputStream:close	()V
     //   680: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   683: ldc 52
-    //   685: ldc_w 275
+    //   685: ldc_w 273
     //   688: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   691: return
     //   692: astore_2
     //   693: aload_2
-    //   694: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   694: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   697: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   700: ldc 52
     //   702: new 142	java/lang/StringBuilder
     //   705: dup
     //   706: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   709: ldc_w 324
+    //   709: ldc_w 322
     //   712: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   715: aload_2
     //   716: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -482,13 +480,13 @@ public class ArkAndroidHttpClientStub
     //   728: return
     //   729: astore_2
     //   730: aload_2
-    //   731: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   731: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   734: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   737: ldc 52
     //   739: new 142	java/lang/StringBuilder
     //   742: dup
     //   743: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   746: ldc_w 324
+    //   746: ldc_w 322
     //   749: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   752: aload_2
     //   753: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -498,13 +496,13 @@ public class ArkAndroidHttpClientStub
     //   765: return
     //   766: astore 5
     //   768: aload 5
-    //   770: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   770: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   773: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   776: ldc 52
     //   778: new 142	java/lang/StringBuilder
     //   781: dup
     //   782: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   785: ldc_w 324
+    //   785: ldc_w 322
     //   788: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   791: aload 5
     //   793: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -633,18 +631,18 @@ public class ArkAndroidHttpClientStub
     //   28: astore 11
     //   30: aload 13
     //   32: astore 10
-    //   34: new 338	java/io/FileOutputStream
+    //   34: new 336	java/io/FileOutputStream
     //   37: dup
     //   38: aload 4
-    //   40: invokespecial 339	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   40: invokespecial 337	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   43: astore 9
     //   45: aload 9
     //   47: astore 11
     //   49: aload 9
     //   51: astore 10
-    //   53: new 341	java/io/ByteArrayOutputStream
+    //   53: new 339	java/io/ByteArrayOutputStream
     //   56: dup
-    //   57: invokespecial 342	java/io/ByteArrayOutputStream:<init>	()V
+    //   57: invokespecial 340	java/io/ByteArrayOutputStream:<init>	()V
     //   60: astore 12
     //   62: iload 5
     //   64: ifne +8 -> 72
@@ -657,25 +655,25 @@ public class ArkAndroidHttpClientStub
     //   80: aload_0
     //   81: aload_1
     //   82: lload_2
-    //   83: ldc 238
+    //   83: ldc 236
     //   85: aconst_null
     //   86: aload 12
-    //   88: invokevirtual 346	com/tencent/ark/ArkAndroidHttpClientStub:httpGetorPost	(Ljava/util/TimerTask;JLjava/lang/String;Ljava/io/FileOutputStream;Ljava/io/ByteArrayOutputStream;)V
+    //   88: invokevirtual 344	com/tencent/ark/ArkAndroidHttpClientStub:httpGetorPost	(Ljava/util/TimerTask;JLjava/lang/String;Ljava/io/FileOutputStream;Ljava/io/ByteArrayOutputStream;)V
     //   91: aload 9
     //   93: ifnull +19 -> 112
     //   96: aload 9
-    //   98: invokevirtual 347	java/io/FileOutputStream:close	()V
+    //   98: invokevirtual 345	java/io/FileOutputStream:close	()V
     //   101: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   104: ldc 52
-    //   106: ldc_w 349
+    //   106: ldc_w 347
     //   109: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   112: aload 12
     //   114: ifnull +19 -> 133
     //   117: aload 12
-    //   119: invokevirtual 350	java/io/ByteArrayOutputStream:close	()V
+    //   119: invokevirtual 348	java/io/ByteArrayOutputStream:close	()V
     //   122: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   125: ldc 52
-    //   127: ldc_w 352
+    //   127: ldc_w 350
     //   130: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   133: return
     //   134: iload 6
@@ -692,7 +690,7 @@ public class ArkAndroidHttpClientStub
     //   155: aload 4
     //   157: aload 9
     //   159: aconst_null
-    //   160: invokevirtual 346	com/tencent/ark/ArkAndroidHttpClientStub:httpGetorPost	(Ljava/util/TimerTask;JLjava/lang/String;Ljava/io/FileOutputStream;Ljava/io/ByteArrayOutputStream;)V
+    //   160: invokevirtual 344	com/tencent/ark/ArkAndroidHttpClientStub:httpGetorPost	(Ljava/util/TimerTask;JLjava/lang/String;Ljava/io/FileOutputStream;Ljava/io/ByteArrayOutputStream;)V
     //   163: goto -72 -> 91
     //   166: astore 4
     //   168: aload 12
@@ -706,7 +704,7 @@ public class ArkAndroidHttpClientStub
     //   183: new 142	java/lang/StringBuilder
     //   186: dup
     //   187: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   190: ldc_w 354
+    //   190: ldc_w 352
     //   193: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   196: aload 4
     //   198: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -716,29 +714,29 @@ public class ArkAndroidHttpClientStub
     //   210: aload 9
     //   212: ifnull +19 -> 231
     //   215: aload 9
-    //   217: invokevirtual 347	java/io/FileOutputStream:close	()V
+    //   217: invokevirtual 345	java/io/FileOutputStream:close	()V
     //   220: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   223: ldc 52
-    //   225: ldc_w 349
+    //   225: ldc_w 347
     //   228: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   231: aload_1
     //   232: ifnull -99 -> 133
     //   235: aload_1
-    //   236: invokevirtual 350	java/io/ByteArrayOutputStream:close	()V
+    //   236: invokevirtual 348	java/io/ByteArrayOutputStream:close	()V
     //   239: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   242: ldc 52
-    //   244: ldc_w 352
+    //   244: ldc_w 350
     //   247: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   250: return
     //   251: astore_1
     //   252: aload_1
-    //   253: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   253: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   256: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   259: ldc 52
     //   261: new 142	java/lang/StringBuilder
     //   264: dup
     //   265: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   268: ldc_w 356
+    //   268: ldc_w 354
     //   271: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   274: aload_1
     //   275: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -748,13 +746,13 @@ public class ArkAndroidHttpClientStub
     //   287: return
     //   288: astore_1
     //   289: aload_1
-    //   290: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   290: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   293: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   296: ldc 52
     //   298: new 142	java/lang/StringBuilder
     //   301: dup
     //   302: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   305: ldc_w 358
+    //   305: ldc_w 356
     //   308: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   311: aload_1
     //   312: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -764,13 +762,13 @@ public class ArkAndroidHttpClientStub
     //   324: goto -212 -> 112
     //   327: astore_1
     //   328: aload_1
-    //   329: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   329: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   332: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   335: ldc 52
     //   337: new 142	java/lang/StringBuilder
     //   340: dup
     //   341: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   344: ldc_w 356
+    //   344: ldc_w 354
     //   347: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   350: aload_1
     //   351: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -780,13 +778,13 @@ public class ArkAndroidHttpClientStub
     //   363: return
     //   364: astore 4
     //   366: aload 4
-    //   368: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   368: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   371: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   374: ldc 52
     //   376: new 142	java/lang/StringBuilder
     //   379: dup
     //   380: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   383: ldc_w 358
+    //   383: ldc_w 356
     //   386: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   389: aload 4
     //   391: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -804,30 +802,30 @@ public class ArkAndroidHttpClientStub
     //   418: aload 10
     //   420: ifnull +19 -> 439
     //   423: aload 10
-    //   425: invokevirtual 347	java/io/FileOutputStream:close	()V
+    //   425: invokevirtual 345	java/io/FileOutputStream:close	()V
     //   428: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   431: ldc 52
-    //   433: ldc_w 349
+    //   433: ldc_w 347
     //   436: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   439: aload 11
     //   441: ifnull +19 -> 460
     //   444: aload 11
-    //   446: invokevirtual 350	java/io/ByteArrayOutputStream:close	()V
+    //   446: invokevirtual 348	java/io/ByteArrayOutputStream:close	()V
     //   449: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   452: ldc 52
-    //   454: ldc_w 352
+    //   454: ldc_w 350
     //   457: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   460: aload_1
     //   461: athrow
     //   462: astore 4
     //   464: aload 4
-    //   466: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   466: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   469: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   472: ldc 52
     //   474: new 142	java/lang/StringBuilder
     //   477: dup
     //   478: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   481: ldc_w 358
+    //   481: ldc_w 356
     //   484: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   487: aload 4
     //   489: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -837,13 +835,13 @@ public class ArkAndroidHttpClientStub
     //   501: goto -62 -> 439
     //   504: astore 4
     //   506: aload 4
-    //   508: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   508: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   511: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   514: ldc 52
     //   516: new 142	java/lang/StringBuilder
     //   519: dup
     //   520: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   523: ldc_w 356
+    //   523: ldc_w 354
     //   526: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   529: aload 4
     //   531: invokevirtual 194	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -1258,7 +1256,7 @@ public class ArkAndroidHttpClientStub
     //   16: aload 13
     //   18: astore 10
     //   20: aload_0
-    //   21: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   21: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
     //   24: ifnonnull +23 -> 47
     //   27: aload 12
     //   29: astore 11
@@ -1268,25 +1266,25 @@ public class ArkAndroidHttpClientStub
     //   36: new 13	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption
     //   39: dup
     //   40: aload_0
-    //   41: invokespecial 360	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:<init>	(Lcom/tencent/ark/ArkAndroidHttpClientStub;)V
-    //   44: putfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   41: invokespecial 358	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:<init>	(Lcom/tencent/ark/ArkAndroidHttpClientStub;)V
+    //   44: putfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
     //   47: aload 12
     //   49: astore 11
     //   51: aload 13
     //   53: astore 10
     //   55: aload_0
-    //   56: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
-    //   59: ldc 238
+    //   56: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   59: ldc 236
     //   61: putfield 412	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:filePath	Ljava/lang/String;
     //   64: aload 12
     //   66: astore 11
     //   68: aload 13
     //   70: astore 10
     //   72: aload_0
-    //   73: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
-    //   76: new 341	java/io/ByteArrayOutputStream
+    //   73: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   76: new 339	java/io/ByteArrayOutputStream
     //   79: dup
-    //   80: invokespecial 342	java/io/ByteArrayOutputStream:<init>	()V
+    //   80: invokespecial 340	java/io/ByteArrayOutputStream:<init>	()V
     //   83: putfield 397	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:outputStream	Ljava/io/ByteArrayOutputStream;
     //   86: aload 12
     //   88: astore 11
@@ -1309,7 +1307,7 @@ public class ArkAndroidHttpClientStub
     //   126: astore 10
     //   128: new 126	java/lang/Exception
     //   131: dup
-    //   132: invokespecial 299	java/lang/Exception:<init>	()V
+    //   132: invokespecial 297	java/lang/Exception:<init>	()V
     //   135: athrow
     //   136: astore 4
     //   138: aload 11
@@ -1384,7 +1382,7 @@ public class ArkAndroidHttpClientStub
     //   296: astore 10
     //   298: new 126	java/lang/Exception
     //   301: dup
-    //   302: invokespecial 299	java/lang/Exception:<init>	()V
+    //   302: invokespecial 297	java/lang/Exception:<init>	()V
     //   305: athrow
     //   306: astore 4
     //   308: aload_0
@@ -1425,7 +1423,7 @@ public class ArkAndroidHttpClientStub
     //   383: aload 9
     //   385: astore 10
     //   387: aload_0
-    //   388: getfield 213	com/tencent/ark/ArkAndroidHttpClientStub:isCanceled	Z
+    //   388: getfield 377	com/tencent/ark/ArkAndroidHttpClientStub:isCanceled	Z
     //   391: ifne +69 -> 460
     //   394: aload 9
     //   396: astore 11
@@ -1464,7 +1462,7 @@ public class ArkAndroidHttpClientStub
     //   464: aload 9
     //   466: astore 10
     //   468: aload_0
-    //   469: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   469: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
     //   472: aload 4
     //   474: putfield 412	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:filePath	Ljava/lang/String;
     //   477: aload 9
@@ -1479,7 +1477,7 @@ public class ArkAndroidHttpClientStub
     //   497: ldc_w 607
     //   500: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   503: iload 7
-    //   505: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   505: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   508: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   511: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   514: aload_0
@@ -1512,7 +1510,7 @@ public class ArkAndroidHttpClientStub
     //   573: aload 9
     //   575: astore 10
     //   577: aload_0
-    //   578: getfield 213	com/tencent/ark/ArkAndroidHttpClientStub:isCanceled	Z
+    //   578: getfield 377	com/tencent/ark/ArkAndroidHttpClientStub:isCanceled	Z
     //   581: ifne +62 -> 643
     //   584: aload 9
     //   586: astore 11
@@ -1547,7 +1545,7 @@ public class ArkAndroidHttpClientStub
     //   647: aload 9
     //   649: astore 10
     //   651: aload_0
-    //   652: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   652: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
     //   655: aload 6
     //   657: putfield 397	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:outputStream	Ljava/io/ByteArrayOutputStream;
     //   660: aload 9
@@ -1562,16 +1560,16 @@ public class ArkAndroidHttpClientStub
     //   680: ldc_w 610
     //   683: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   686: aload_0
-    //   687: getfield 228	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
+    //   687: getfield 226	com/tencent/ark/ArkAndroidHttpClientStub:m_option	Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;
     //   690: getfield 397	com/tencent/ark/ArkAndroidHttpClientStub$RequestOption:outputStream	Ljava/io/ByteArrayOutputStream;
     //   693: invokevirtual 401	java/io/ByteArrayOutputStream:size	()I
-    //   696: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   696: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   699: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   702: invokevirtual 106	com/tencent/ark/ArkEnvironmentManager:logD	(Ljava/lang/String;Ljava/lang/String;)V
     //   705: goto -191 -> 514
     //   708: astore_1
     //   709: aload_1
-    //   710: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   710: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   713: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   716: ldc 52
     //   718: new 142	java/lang/StringBuilder
@@ -1587,7 +1585,7 @@ public class ArkAndroidHttpClientStub
     //   744: goto -195 -> 549
     //   747: astore_1
     //   748: aload_1
-    //   749: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   749: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   752: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   755: ldc 52
     //   757: new 142	java/lang/StringBuilder
@@ -1603,7 +1601,7 @@ public class ArkAndroidHttpClientStub
     //   783: goto -574 -> 209
     //   786: astore_1
     //   787: aload_1
-    //   788: invokevirtual 322	java/lang/Exception:printStackTrace	()V
+    //   788: invokevirtual 320	java/lang/Exception:printStackTrace	()V
     //   791: getstatic 80	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
     //   794: ldc 52
     //   796: new 142	java/lang/StringBuilder

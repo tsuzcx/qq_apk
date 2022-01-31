@@ -57,9 +57,9 @@ public class MemoriesInnerListAdapter
   {
     LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
     if (getItemViewType(paramInt) == 1) {
-      return localLayoutInflater.inflate(2130970720, paramViewGroup, false);
+      return localLayoutInflater.inflate(2130970768, paramViewGroup, false);
     }
-    return localLayoutInflater.inflate(2130970721, paramViewGroup, false);
+    return localLayoutInflater.inflate(2130970769, paramViewGroup, false);
   }
   
   private void a(ImageView paramImageView, String paramString)
@@ -79,12 +79,12 @@ public class MemoriesInnerListAdapter
       if (localObject == null) {
         return;
       }
-      StoryCoverView localStoryCoverView = (StoryCoverView)paramBaseViewHolder.a(2131371708);
+      StoryCoverView localStoryCoverView = (StoryCoverView)paramBaseViewHolder.a(2131371878);
       if (((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
       {
-        localStoryCoverView.a.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843434));
+        localStoryCoverView.a.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843554));
         localStoryCoverView.setPollLayout(null, -1, null);
-        localStoryCoverView.setRateLayout(((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), -1, -1L, -1);
+        localStoryCoverView.setRateLayout(null, -1, -1L, -1);
       }
       for (;;)
       {
@@ -99,20 +99,20 @@ public class MemoriesInnerListAdapter
         }
       }
     }
-    Object localObject = (ImageView)paramBaseViewHolder.a(2131371711);
-    paramBaseViewHolder = (ImageView)paramBaseViewHolder.a(2131371710);
+    Object localObject = (ImageView)paramBaseViewHolder.a(2131371881);
+    paramBaseViewHolder = (ImageView)paramBaseViewHolder.a(2131371880);
     QQStoryContext.a();
     if (ThemeUtil.isInNightMode(QQStoryContext.a()))
     {
-      paramBaseViewHolder.setBackgroundResource(2130843435);
-      ((ImageView)localObject).setImageResource(2130843439);
+      paramBaseViewHolder.setBackgroundResource(2130843555);
+      ((ImageView)localObject).setImageResource(2130843559);
     }
     for (;;)
     {
       ((ImageView)localObject).setContentDescription("拍摄");
       return;
-      paramBaseViewHolder.setBackgroundResource(2130843434);
-      ((ImageView)localObject).setImageResource(2130843438);
+      paramBaseViewHolder.setBackgroundResource(2130843554);
+      ((ImageView)localObject).setImageResource(2130843558);
     }
   }
   
@@ -173,7 +173,7 @@ public class MemoriesInnerListAdapter
           paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
           localObject = (WeakReference)this.jdField_b_of_type_JavaUtilHashMap.get(((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_JavaLangString);
           if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-            a(((StoryCoverView)((BaseViewHolder)((WeakReference)localObject).get()).a(2131371708)).a, paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+            a(((StoryCoverView)((BaseViewHolder)((WeakReference)localObject).get()).a(2131371878)).a, paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
           }
         }
       }

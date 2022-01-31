@@ -1,16 +1,51 @@
-import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ywk
-  implements Runnable
+class ywk
+  implements WXShareHelper.WXShareListener
 {
-  public ywk(ChatApolloViewListener paramChatApolloViewListener) {}
+  ywk(ywj paramywj) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    if ((this.a.a) && (!this.a.b))
+    if (paramBaseResp == null) {}
+    do
     {
-      this.a.c();
-      this.a.a = false;
+      do
+      {
+        return;
+      } while ((ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare) == null) || (!ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare).equals(paramBaseResp.transaction)));
+      QLog.i("ApolloGameShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
+    } while (paramBaseResp.errCode != 0);
+    paramBaseResp = this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare.a();
+    int j;
+    int i;
+    if (paramBaseResp == null)
+    {
+      j = -1;
+      if (1 != this.a.jdField_a_of_type_Int) {
+        break label159;
+      }
+      i = 3;
+    }
+    for (;;)
+    {
+      VipUtils.a(ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), "cmshow", "Apollo", "share_url_succeed", j, i, new String[] { Integer.toString(ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare)) });
+      return;
+      j = ApolloUtil.b(paramBaseResp.a.jdField_a_of_type_Int);
+      break;
+      label159:
+      if (2 == this.a.jdField_a_of_type_Int) {
+        i = 4;
+      } else {
+        i = -1;
+      }
     }
   }
 }

@@ -1,29 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserLoginLogic;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
 
 public class rey
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public rey(AddAccountActivity paramAddAccountActivity) {}
+  public rey(UserLoginLogic paramUserLoginLogic) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.isShown())) {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
-    libsafeedit.clearPassBuffer();
+    DoraemonUtil.a(this.a.a, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rey
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
 
-public class wdr
-  implements Runnable
+public final class wdr
+  implements Parcelable.Creator
 {
-  private int jdField_a_of_type_Int;
-  
-  private wdr(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
-  
-  public void a(int paramInt)
+  public ZhituImgResponse a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return new ZhituImgResponse(paramParcel);
   }
   
-  public void run()
+  public ZhituImgResponse[] a(int paramInt)
   {
-    long l1;
-    Message localMessage;
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.isDetached())
-    {
-      l1 = System.currentTimeMillis();
-      List localList = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a();
-      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(0, localList);
-      localMessage.arg1 = this.jdField_a_of_type_Int;
-      if ((localList != null) && (!localList.isEmpty())) {
-        break label83;
-      }
-      localMessage.arg2 = 11;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-      return;
-      label83:
-      localMessage.arg2 = 10;
-      if (QLog.isColorLevel())
-      {
-        long l2 = System.currentTimeMillis();
-        QLog.d(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "More messages loaded. Costs " + (l2 - l1) + " ms.");
-      }
-    }
+    return new ZhituImgResponse[paramInt];
   }
 }
 

@@ -1,15 +1,25 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.base.BaseLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.Comparator;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 
 public class anjr
-  implements Comparator
+  implements Runnable
 {
-  public anjr(DoodleView paramDoodleView) {}
+  public anjr(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, boolean paramBoolean) {}
   
-  public int a(BaseLayer paramBaseLayer1, BaseLayer paramBaseLayer2)
+  public void run()
   {
-    return paramBaseLayer2.f_() - paramBaseLayer1.f_();
+    if ((this.jdField_a_of_type_Boolean) && (QIMEffectCameraCaptureUnit.e(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit)))
+    {
+      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.d = true;
+      QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit);
+    }
+    ((QIMPtvTemplateManager)QIMManager.a(3)).a("0", QIMPtvTemplateAdapter.b, "");
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.jdField_a_of_type_DovComQqImCaptureQIMCaptureController.t();
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect("");
   }
 }
 

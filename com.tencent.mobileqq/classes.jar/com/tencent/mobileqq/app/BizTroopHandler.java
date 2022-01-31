@@ -79,7 +79,7 @@ import tencent.im.oidb.cmd0x8b4.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.video_url.video_url.RspBody;
 import tencent.qun.group_activity.group_activity.RspBody;
-import yxl;
+import zar;
 
 public class BizTroopHandler
   extends BusinessHandler
@@ -479,14 +479,14 @@ public class BizTroopHandler
   private void j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      a(42, false, new Object[] { Integer.valueOf(2131429857) });
+      a(42, false, new Object[] { Integer.valueOf(2131429863) });
     }
     for (;;)
     {
       return;
       if (paramFromServiceMsg.getResultCode() != 1000)
       {
-        a(42, false, new Object[] { Integer.valueOf(2131429857) });
+        a(42, false, new Object[] { Integer.valueOf(2131429863) });
         return;
       }
       paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -495,13 +495,13 @@ public class BizTroopHandler
         paramToServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
         if ((paramToServiceMsg == null) || (!paramToServiceMsg.uint32_result.has()) || (!paramToServiceMsg.bytes_bodybuffer.has()) || (paramToServiceMsg.bytes_bodybuffer.get() == null))
         {
-          a(42, false, new Object[] { Integer.valueOf(2131429857) });
+          a(42, false, new Object[] { Integer.valueOf(2131429863) });
           return;
         }
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
-        a(42, false, new Object[] { Integer.valueOf(2131429857) });
+        a(42, false, new Object[] { Integer.valueOf(2131429863) });
         return;
       }
       paramFromServiceMsg = new cmd0x874.RspBody();
@@ -524,7 +524,7 @@ public class BizTroopHandler
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
-        i = 2131429857;
+        i = 2131429863;
       }
     }
     a(42, false, new Object[] { Integer.valueOf(i) });
@@ -552,7 +552,7 @@ public class BizTroopHandler
     paramObject = (DiscussionManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
     paramObject.jdField_a_of_type_JavaUtilMap.put(paramToServiceMsg, new String[] { paramFromServiceMsg, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() });
     paramObject.jdField_a_of_type_JavaUtilSet.add(paramFromServiceMsg);
-    a(42, true, new Object[] { Integer.valueOf(2131429856), paramToServiceMsg, paramFromServiceMsg, Boolean.valueOf(true) });
+    a(42, true, new Object[] { Integer.valueOf(2131429862), paramToServiceMsg, paramFromServiceMsg, Boolean.valueOf(true) });
     return;
     label520:
     int i = paramFromServiceMsg.uint32_code.get();
@@ -560,7 +560,7 @@ public class BizTroopHandler
     {
     case 9: 
     default: 
-      i = 2131429857;
+      i = 2131429863;
     }
     for (;;)
     {
@@ -571,25 +571,25 @@ public class BizTroopHandler
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg) {}
       break;
-      i = 2131429856;
-      continue;
-      i = 2131429858;
-      continue;
-      i = 2131429859;
-      continue;
-      i = 2131429860;
-      continue;
-      i = 2131429861;
-      continue;
       i = 2131429862;
-      continue;
-      i = 2131429863;
       continue;
       i = 2131429864;
       continue;
       i = 2131429865;
       continue;
       i = 2131429866;
+      continue;
+      i = 2131429867;
+      continue;
+      i = 2131429868;
+      continue;
+      i = 2131429869;
+      continue;
+      i = 2131429870;
+      continue;
+      i = 2131429871;
+      continue;
+      i = 2131429872;
     }
   }
   
@@ -1543,7 +1543,7 @@ public class BizTroopHandler
     }
     if (n == 0)
     {
-      QQToast.a(BaseApplication.getContext(), 2131429828, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplication.getContext(), 2131429834, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
       return false;
     }
     Object localObject1 = (TroopManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
@@ -1607,7 +1607,7 @@ public class BizTroopHandler
   
   public void b()
   {
-    SosoInterface.a(new yxl(this, 0, false, true, 180000L, false, false, this.jdField_a_of_type_JavaLangString));
+    SosoInterface.a(new zar(this, 0, false, true, 180000L, false, false, this.jdField_a_of_type_JavaLangString));
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

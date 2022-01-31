@@ -1,24 +1,21 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class zao
-  extends MqqHandler
+  extends BroadcastReceiver
 {
-  public zao(FriendListHandler paramFriendListHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private zao(BaseActivity2 paramBaseActivity2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
+    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
     {
-    default: 
-      return;
+      BaseActivity2.T = false;
+      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.T);
     }
-    FriendListHandler.a(this.a);
   }
 }
 

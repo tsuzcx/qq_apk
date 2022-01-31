@@ -1,18 +1,59 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-class wmv
-  implements Runnable
+public class wmv
+  implements Handler.Callback
 {
-  wmv(wmu paramwmu, int paramInt) {}
+  public wmv(ContactsViewController paramContactsViewController) {}
   
-  public void run()
+  private void a()
   {
-    this.jdField_a_of_type_Wmu.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a(32, 16, Integer.valueOf(this.jdField_a_of_type_Int));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    this.jdField_a_of_type_Wmu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+    if (ContactsViewController.a(this.a) != null) {
+      ContactsViewController.a(this.a).setRefreshing(false);
+    }
+    if (ContactsViewController.a(this.a) != null) {
+      ContactsViewController.a(this.a).setRefresh(false);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 3: 
+      QQToast.a(this.a.a(), 1, 2131434349, 0).b(ContactsViewController.a(this.a));
+      a();
+      return false;
+    case 4: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label134;
+        }
+        ContactsViewController.a(this.a);
+        if (ContactsViewController.a(this.a) == null) {
+          break;
+        }
+        ContactsViewController.a(this.a).a(0);
+        this.a.a.sendEmptyMessageDelayed(5, 800L);
+        return false;
+      }
+      label134:
+      a();
+      QQToast.a(this.a.a(), 1, 2131434349, 0).b(ContactsViewController.a(this.a));
+      return false;
+    }
+    a();
+    return false;
   }
 }
 

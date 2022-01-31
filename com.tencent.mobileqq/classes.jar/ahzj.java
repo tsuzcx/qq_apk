@@ -1,27 +1,23 @@
-import android.text.format.Time;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ahzj
-  implements FilenameFilter
+  implements Runnable
 {
-  public ahzj(ShareAppLogHelper paramShareAppLogHelper) {}
+  public ahzj(ShortVideoPreDownloader paramShortVideoPreDownloader) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void run()
   {
-    if ((!paramString.endsWith(".log")) && (!paramString.endsWith(".zip")) && (!paramString.endsWith(".qlog"))) {}
-    do
+    if (!this.a.a.get())
     {
-      return false;
-      paramFile = ShareAppLogHelper.a(this.a, paramString);
-    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
-    return true;
+      this.a.a.set(true);
+      ShortVideoPreDownloader.a("openRunnable", "Timer count off, mIsPreDownloaderOpen=" + this.a.a.get());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzj
  * JD-Core Version:    0.7.0.1
  */

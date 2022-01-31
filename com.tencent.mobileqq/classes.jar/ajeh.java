@@ -1,24 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.ViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class ajeh
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ajeh(MediaPreviewAdapter paramMediaPreviewAdapter, MediaPreviewAdapter.ViewHolder paramViewHolder, MediaPreviewInfo paramMediaPreviewInfo) {}
+  public ajeh(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (TroopFileItemOperation.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) == 0);
+    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.b).e(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajeh
  * JD-Core Version:    0.7.0.1
  */

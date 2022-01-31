@@ -1,46 +1,27 @@
-import android.os.Handler;
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.pendant.EffectPendantTips;
 
 public class jgd
-  implements Observer
+  implements Runnable
 {
-  private WeakReference a;
+  public jgd(EffectPendantTips paramEffectPendantTips, int paramInt1, int paramInt2) {}
   
-  public jgd(MagicFaceDataEntity paramMagicFaceDataEntity)
+  public void run()
   {
-    this.a = new WeakReference(paramMagicFaceDataEntity);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    int j;
-    if (this.a.get() != null)
+    try
     {
-      paramObservable = ((MagicFaceDataEntity)this.a.get()).a;
-      if (paramObject != null)
+      if (this.jdField_a_of_type_Int != 0)
       {
-        Object[] arrayOfObject = (Object[])paramObject;
-        if ((arrayOfObject != null) && (arrayOfObject.length > 0))
-        {
-          j = ((Integer)arrayOfObject[0]).intValue();
-          if ((j == 130) || (j == 131) || (j == 132)) {
-            if ((j != 131) && (j != 132)) {
-              break label152;
-            }
-          }
+        String str = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.a(EffectPendantTips.a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips), this.jdField_a_of_type_Int);
+        if (!TextUtils.isEmpty(str)) {
+          this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.b(this.b, str);
         }
       }
-    }
-    label152:
-    for (int i = 500;; i = 0)
-    {
-      AVLog.c("MagicFaceDataEntity", "MagicFaceDataEntity update :" + j + "|" + i);
-      paramObservable.sendMessageDelayed(paramObservable.obtainMessage(1, paramObject), i);
       return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }

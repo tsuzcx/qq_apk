@@ -1,29 +1,49 @@
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.nearby.NearbyReportManager;
-import com.tencent.mobileqq.nearby.NearbyReportManager.ReportRecord;
-import com.tencent.util.LongSparseArray;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import cooperation.comic.PluginPreloader;
+import cooperation.comic.QQComicPreloadManager;
+import cooperation.qqreader.QRProcessManager;
 
 public class adzs
   implements Runnable
 {
-  public adzs(NearbyReportManager paramNearbyReportManager, LongSparseArray paramLongSparseArray, NearbyHandler paramNearbyHandler, boolean paramBoolean) {}
+  public adzs(LebaWithFeeds paramLebaWithFeeds) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentUtilLongSparseArray.a())
+    Object localObject = this.a.a.getCurrentAccountUin();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localArrayList.add((NearbyReportManager.ReportRecord)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i));
-      i += 1;
+      long l = WebProcessManager.a((String)localObject);
+      if (System.currentTimeMillis() - l < 604800000L) {
+        WebProcessManager.a(LebaWithFeeds.a(), "key_health_dns_parse");
+      }
+      l = WebProcessManager.c((String)localObject);
+      if (System.currentTimeMillis() - l < 259200000L) {
+        WebProcessManager.a(LebaWithFeeds.b(), "key_gamecenter_dns_parse");
+      }
+      l = WebProcessManager.a((String)localObject, "key_reader_click_time");
+      if (System.currentTimeMillis() - l < 259200000L) {
+        WebProcessManager.a(LebaWithFeeds.c(), "key_reader_dns_parse");
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppNearbyHandler.a(localArrayList, this.jdField_a_of_type_Boolean);
+    localObject = (QRProcessManager)this.a.a.getManager(128);
+    if (localObject != null) {
+      ((QRProcessManager)localObject).a(6);
+    }
+    localObject = (QQComicPreloadManager)this.a.a.getManager(141);
+    if (localObject != null) {
+      PluginPreloader.a(((QQComicPreloadManager)localObject).a(6), 500L);
+    }
+    ThreadManager.post(new adzt(this), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzs
  * JD-Core Version:    0.7.0.1
  */

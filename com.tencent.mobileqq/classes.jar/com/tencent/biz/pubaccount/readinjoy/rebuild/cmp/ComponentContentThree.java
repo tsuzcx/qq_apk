@@ -60,7 +60,7 @@ public class ComponentContentThree
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969566, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969573, this, true);
   }
   
   public void a() {}
@@ -72,7 +72,7 @@ public class ComponentContentThree
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366834));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366877));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131361794));
     this.b = ((KandianUrlImageView)paramView.findViewById(2131361800));
     this.c = ((KandianUrlImageView)paramView.findViewById(2131361795));
@@ -137,7 +137,7 @@ public class ComponentContentThree
     label161:
     for (localObject2 = ((ArticleInfo)localObject2).mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject3).optString("picture"))
     {
-      ReadInJoyDisplayUtils.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { ReadInJoyUtils.b(paramIReadInJoyModel), ReadInJoyUtils.b((String)localObject1), ReadInJoyUtils.b((String)localObject2) }), getContext());
+      ReadInJoyDisplayUtils.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { ReadInJoyUtils.a(paramIReadInJoyModel), ReadInJoyUtils.a((String)localObject1), ReadInJoyUtils.a((String)localObject2) }), getContext());
       return;
       paramIReadInJoyModel = paramIReadInJoyModel.optString("picture");
       break;

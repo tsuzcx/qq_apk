@@ -43,7 +43,6 @@ import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoFullInfoList;
 import com.tencent.biz.qqstory.network.request.GetVideoFullInfoListRequest;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
 import com.tencent.biz.qqstory.playvideo.player.IVideoView;
 import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 import com.tencent.biz.qqstory.storyHome.memory.model.StoryProfileUtils;
@@ -102,14 +101,14 @@ import java.io.File;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import nlk;
-import nll;
-import nlm;
-import nln;
-import nlo;
-import nlp;
-import nlq;
-import nlr;
+import nmu;
+import nmv;
+import nmw;
+import nmx;
+import nmy;
+import nmz;
+import nna;
+import nnb;
 
 public class PlayModeUtils
 {
@@ -121,7 +120,7 @@ public class PlayModeUtils
   static
   {
     jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.report_comment");
-    b = StoryApi.a(2131432070);
+    b = StoryApi.a(2131432087);
     jdField_a_of_type_ArrayOfInt = new int[] { 90 };
     jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
@@ -172,8 +171,7 @@ public class PlayModeUtils
       if (!FFmpegUtils.a((String)localObject3, (String)localObject1, str))
       {
         QLog.e("Q.qqstory.player.PlayModeUtils", 2, "combineTwoImg maxMask videoVote failed");
-        paramInt = -997;
-        return paramInt;
+        return -997;
         localObject1 = str;
       }
       else
@@ -185,7 +183,7 @@ public class PlayModeUtils
     {
       localObject3 = localObject2;
       if (FFmpegUtils.a((String)localObject1, (String)localObject2, (String)localObject2)) {
-        break label238;
+        break label236;
       }
       QLog.e("Q.qqstory.player.PlayModeUtils", 2, "watermarkVideoByMediaCodec() combineTwoImg failed");
       return -997;
@@ -194,30 +192,36 @@ public class PlayModeUtils
       }
     }
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    label236:
+    long l;
     for (;;)
     {
       localObject3 = localObject1;
-      label238:
       localObject1 = new PublishVideoEntry();
       ((PublishVideoEntry)localObject1).doodlePath = ((String)localObject3);
       ((PublishVideoEntry)localObject1).isPicture = false;
       ((PublishVideoEntry)localObject1).mLocalRawVideoDir = paramStoryVideoItem.mLocalVideoPath;
       ((PublishVideoEntry)localObject1).businessId = 1;
-      long l = SystemClock.elapsedRealtime();
+      l = SystemClock.elapsedRealtime();
       localObject1 = new MergeEditVideo.EditParam(2000000, (PublishVideoEntry)localObject1);
       ((MergeEditVideo.EditParam)localObject1).b(0);
       localObject2 = new MergeEditVideo();
       localObject3 = QQStoryConstant.i + paramStoryVideoItem.mVid + ".mp4";
-      int i = ((MergeEditVideo)localObject2).a(paramStoryVideoItem.mLocalVideoPath, (String)localObject3, (MergeEditVideo.EditParam)localObject1);
-      if (i != 0)
-      {
-        paramInt = i;
-        if (i != -1) {
-          break;
-        }
-        FileUtils.c(paramStoryVideoItem.mLocalVideoPath, (String)localObject3);
+      paramInt = ((MergeEditVideo)localObject2).a(paramStoryVideoItem.mLocalVideoPath, (String)localObject3, (MergeEditVideo.EditParam)localObject1);
+      if (paramInt == 0) {
+        break label481;
       }
-      paramInt = VideoMergeHelper.a((String)localObject3, paramStoryVideoItem.mLocalVideoPath, paramString, 0);
+      if (paramInt == -1) {
+        break;
+      }
+      SLog.b("Q.qqstory.player.PlayModeUtils", new Throwable("MergeVideoError"), "watermarkVideoByMediaCodec() error after mergeVideo() return, errorCode=%d", new Object[] { Integer.valueOf(paramInt) });
+      return paramInt;
+      localObject1 = localObject2;
+    }
+    FileUtils.c(paramStoryVideoItem.mLocalVideoPath, paramString);
+    label481:
+    for (paramInt = 0;; paramInt = VideoMergeHelper.a((String)localObject3, paramStoryVideoItem.mLocalVideoPath, paramString, 0))
+    {
       if (paramInt == 0) {
         FileUtils.a(BaseApplication.getContext(), new File(paramString));
       }
@@ -227,7 +231,6 @@ public class PlayModeUtils
       }
       QLog.i("Q.qqstory.player.PlayModeUtils", 1, "hardware watermar cost:" + (SystemClock.elapsedRealtime() - l) / 1000.0D);
       return paramInt;
-      localObject1 = localObject2;
     }
   }
   
@@ -314,101 +317,101 @@ public class PlayModeUtils
     //   3: dup
     //   4: invokespecial 96	java/lang/StringBuilder:<init>	()V
     //   7: astore 5
-    //   9: new 317	android/media/MediaMetadataRetriever
+    //   9: new 335	android/media/MediaMetadataRetriever
     //   12: dup
-    //   13: invokespecial 318	android/media/MediaMetadataRetriever:<init>	()V
+    //   13: invokespecial 336	android/media/MediaMetadataRetriever:<init>	()V
     //   16: astore_3
     //   17: aload_3
     //   18: aload_1
-    //   19: invokevirtual 321	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   19: invokevirtual 339	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   22: aload_3
     //   23: bipush 9
-    //   25: invokevirtual 324	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   25: invokevirtual 342	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   28: astore 6
     //   30: aload_3
     //   31: bipush 20
-    //   33: invokevirtual 324	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   33: invokevirtual 342	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   36: astore 4
     //   38: aload_3
     //   39: bipush 19
-    //   41: invokevirtual 324	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   41: invokevirtual 342	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   44: astore 7
     //   46: aload_3
     //   47: bipush 18
-    //   49: invokevirtual 324	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   49: invokevirtual 342	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   52: astore 8
     //   54: aload_3
     //   55: bipush 25
-    //   57: invokevirtual 324	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   57: invokevirtual 342	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   60: astore 9
     //   62: aload_3
-    //   63: invokevirtual 327	android/media/MediaMetadataRetriever:release	()V
+    //   63: invokevirtual 345	android/media/MediaMetadataRetriever:release	()V
     //   66: aload 4
-    //   68: invokestatic 333	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   71: invokestatic 336	com/tencent/mobileqq/filemanager/util/FileUtil:a	(J)Ljava/lang/String;
+    //   68: invokestatic 351	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   71: invokestatic 354	com/tencent/mobileqq/filemanager/util/FileUtil:a	(J)Ljava/lang/String;
     //   74: astore_3
-    //   75: new 187	java/io/File
+    //   75: new 202	java/io/File
     //   78: dup
     //   79: aload_1
-    //   80: invokespecial 190	java/io/File:<init>	(Ljava/lang/String;)V
+    //   80: invokespecial 203	java/io/File:<init>	(Ljava/lang/String;)V
     //   83: astore_1
     //   84: aload 5
     //   86: new 95	java/lang/StringBuilder
     //   89: dup
     //   90: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   93: ldc_w 338
+    //   93: ldc_w 356
     //   96: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: aload_1
-    //   100: invokevirtual 341	java/io/File:length	()J
-    //   103: invokestatic 336	com/tencent/mobileqq/filemanager/util/FileUtil:a	(J)Ljava/lang/String;
+    //   100: invokevirtual 359	java/io/File:length	()J
+    //   103: invokestatic 354	com/tencent/mobileqq/filemanager/util/FileUtil:a	(J)Ljava/lang/String;
     //   106: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: ldc_w 343
+    //   109: ldc_w 361
     //   112: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: aload 7
     //   117: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: ldc_w 345
+    //   120: ldc_w 363
     //   123: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: aload 8
     //   128: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: ldc_w 347
+    //   131: ldc_w 365
     //   134: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   137: aload_3
     //   138: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   141: ldc_w 349
+    //   141: ldc_w 367
     //   144: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   147: aload_0
-    //   148: getfield 352	com/tencent/biz/qqstory/model/item/StoryVideoItem:mVideoDuration	J
+    //   148: getfield 370	com/tencent/biz/qqstory/model/item/StoryVideoItem:mVideoDuration	J
     //   151: invokevirtual 109	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   154: ldc_w 354
+    //   154: ldc_w 372
     //   157: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: aload 6
     //   162: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: ldc_w 356
+    //   165: ldc_w 374
     //   168: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   171: aload 9
     //   173: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   179: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: pop
-    //   183: invokestatic 361	com/tencent/biz/qqstory/app/QQStoryContext:a	()Lcom/tencent/biz/qqstory/app/QQStoryContext;
+    //   183: invokestatic 379	com/tencent/biz/qqstory/app/QQStoryContext:a	()Lcom/tencent/biz/qqstory/app/QQStoryContext;
     //   186: pop
-    //   187: invokestatic 363	com/tencent/biz/qqstory/app/QQStoryContext:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   187: invokestatic 381	com/tencent/biz/qqstory/app/QQStoryContext:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
     //   190: sipush 180
-    //   193: invokevirtual 367	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   196: checkcast 369	com/tencent/biz/qqstory/base/QQStoryManager
+    //   193: invokevirtual 385	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   196: checkcast 387	com/tencent/biz/qqstory/base/QQStoryManager
     //   199: astore_1
     //   200: aload_1
     //   201: ifnull +42 -> 243
     //   204: new 95	java/lang/StringBuilder
     //   207: dup
     //   208: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   211: ldc_w 371
+    //   211: ldc_w 389
     //   214: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   217: astore_3
     //   218: aload_1
-    //   219: getfield 374	com/tencent/biz/qqstory/base/QQStoryManager:k	Z
+    //   219: getfield 392	com/tencent/biz/qqstory/base/QQStoryManager:k	Z
     //   222: ifeq +192 -> 414
-    //   225: ldc_w 376
+    //   225: ldc_w 394
     //   228: astore_1
     //   229: aload 5
     //   231: aload_3
@@ -420,14 +423,14 @@ public class PlayModeUtils
     //   243: new 95	java/lang/StringBuilder
     //   246: dup
     //   247: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   250: ldc_w 378
+    //   250: ldc_w 396
     //   253: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   256: astore_3
-    //   257: invokestatic 379	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   260: invokestatic 384	com/tencent/biz/qqstory/playvideo/player/VideoViewFactory:a	(Landroid/content/Context;)Lcom/tencent/biz/qqstory/playvideo/player/VideoViewFactory;
-    //   263: invokevirtual 386	com/tencent/biz/qqstory/playvideo/player/VideoViewFactory:a	()Z
+    //   257: invokestatic 397	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   260: invokestatic 402	com/tencent/biz/qqstory/playvideo/player/VideoViewFactory:a	(Landroid/content/Context;)Lcom/tencent/biz/qqstory/playvideo/player/VideoViewFactory;
+    //   263: invokevirtual 404	com/tencent/biz/qqstory/playvideo/player/VideoViewFactory:a	()Z
     //   266: ifeq +155 -> 421
-    //   269: ldc_w 388
+    //   269: ldc_w 406
     //   272: astore_1
     //   273: aload 5
     //   275: aload_3
@@ -442,20 +445,20 @@ public class PlayModeUtils
     //   293: new 95	java/lang/StringBuilder
     //   296: dup
     //   297: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   300: ldc_w 390
+    //   300: ldc_w 408
     //   303: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   306: aload_2
-    //   307: getfield 395	com/tencent/biz/qqstory/storyHome/model/VideoListFeedItem:feedId	Ljava/lang/String;
+    //   307: getfield 413	com/tencent/biz/qqstory/storyHome/model/VideoListFeedItem:feedId	Ljava/lang/String;
     //   310: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   313: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   316: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   319: pop
     //   320: bipush 28
-    //   322: invokestatic 400	com/tencent/biz/qqstory/model/SuperManager:a	(I)Lcom/tencent/biz/qqstory/model/IManager;
-    //   325: checkcast 402	com/tencent/biz/qqstory/base/download/DownloadUrlManager
+    //   322: invokestatic 418	com/tencent/biz/qqstory/model/SuperManager:a	(I)Lcom/tencent/biz/qqstory/model/IManager;
+    //   325: checkcast 420	com/tencent/biz/qqstory/base/download/DownloadUrlManager
     //   328: astore_1
     //   329: aload 5
-    //   331: ldc_w 404
+    //   331: ldc_w 422
     //   334: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   337: pop
     //   338: aload 5
@@ -463,41 +466,41 @@ public class PlayModeUtils
     //   341: aload_0
     //   342: getfield 48	com/tencent/biz/qqstory/model/item/StoryVideoItem:mVid	Ljava/lang/String;
     //   345: iconst_0
-    //   346: invokevirtual 407	com/tencent/biz/qqstory/base/download/DownloadUrlManager:a	(Ljava/lang/String;I)Lcom/tencent/biz/qqstory/base/download/DownloadUrlManager$DumpInfo;
-    //   349: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   346: invokevirtual 425	com/tencent/biz/qqstory/base/download/DownloadUrlManager:a	(Ljava/lang/String;I)Lcom/tencent/biz/qqstory/base/download/DownloadUrlManager$DumpInfo;
+    //   349: invokevirtual 428	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   352: pop
     //   353: aload 5
     //   355: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   358: areturn
     //   359: astore_0
     //   360: aload_3
-    //   361: invokevirtual 327	android/media/MediaMetadataRetriever:release	()V
-    //   364: ldc 219
+    //   361: invokevirtual 345	android/media/MediaMetadataRetriever:release	()V
+    //   364: ldc 237
     //   366: areturn
     //   367: astore 10
     //   369: aload 4
     //   371: astore_3
-    //   372: invokestatic 413	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   372: invokestatic 431	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   375: ifeq -300 -> 75
     //   378: ldc 68
     //   380: iconst_2
     //   381: new 95	java/lang/StringBuilder
     //   384: dup
     //   385: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   388: ldc_w 415
+    //   388: ldc_w 433
     //   391: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   394: aload 10
-    //   396: invokevirtual 418	java/lang/NumberFormatException:getMessage	()Ljava/lang/String;
+    //   396: invokevirtual 436	java/lang/NumberFormatException:getMessage	()Ljava/lang/String;
     //   399: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   402: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   405: invokestatic 421	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   405: invokestatic 439	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   408: aload 4
     //   410: astore_3
     //   411: goto -336 -> 75
-    //   414: ldc_w 423
+    //   414: ldc_w 441
     //   417: astore_1
     //   418: goto -189 -> 229
-    //   421: ldc_w 425
+    //   421: ldc_w 443
     //   424: astore_1
     //   425: goto -152 -> 273
     // Local variable table:
@@ -589,9 +592,9 @@ public class PlayModeUtils
     jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
   }
   
-  public static void a(Context paramContext, CommentEntry paramCommentEntry)
+  public static void a(Activity paramActivity, CommentEntry paramCommentEntry)
   {
-    if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing())) {}
+    if (paramActivity.isFinishing()) {}
     do
     {
       do
@@ -605,15 +608,15 @@ public class PlayModeUtils
       } while (!QLog.isColorLevel());
       QLog.w("Q.qqstory.player.PlayModeUtils", 2, "reportVideoCommemt - isNetSupport is false----");
       return;
-      paramContext = (ActionSheet)ActionSheetHelper.b(paramContext, null);
-      paramContext.a("欺诈骗钱", 5);
-      paramContext.a("色情暴力", 5);
-      paramContext.a("广告骚扰", 5);
-      paramContext.a("其他", 5);
-      paramContext.c(2131432998);
-      paramContext.a(new nlq(paramCommentEntry, paramContext));
-    } while (paramContext.isShowing());
-    paramContext.show();
+      paramActivity = (ActionSheet)ActionSheetHelper.b(paramActivity, null);
+      paramActivity.a("欺诈骗钱", 5);
+      paramActivity.a("色情暴力", 5);
+      paramActivity.a("广告骚扰", 5);
+      paramActivity.a("其他", 5);
+      paramActivity.c(2131433015);
+      paramActivity.a(new nna(paramCommentEntry, paramActivity));
+    } while (paramActivity.isShowing());
+    paramActivity.show();
   }
   
   public static void a(Context paramContext, QQUserUIItem paramQQUserUIItem, DialogInterface.OnDismissListener paramOnDismissListener)
@@ -629,8 +632,8 @@ public class PlayModeUtils
       paramContext.a("色情暴力", 5);
       paramContext.a("广告骚扰", 5);
       paramContext.a("其他", 5);
-      paramContext.c(2131432998);
-      paramContext.a(new nlp(paramQQUserUIItem, paramContext));
+      paramContext.c(2131433015);
+      paramContext.a(new nmz(paramQQUserUIItem, paramContext));
       paramContext.setOnDismissListener(paramOnDismissListener);
     } while (paramContext.isShowing());
     paramContext.show();
@@ -649,8 +652,8 @@ public class PlayModeUtils
       paramContext.a("色情暴力", 5);
       paramContext.a("广告骚扰", 5);
       paramContext.a("其他", 5);
-      paramContext.c(2131432998);
-      paramContext.a(new nlr(paramStoryVideoItem, paramContext));
+      paramContext.c(2131433015);
+      paramContext.a(new nnb(paramStoryVideoItem, paramContext));
       paramContext.setOnDismissListener(paramOnDismissListener);
     } while (paramContext.isShowing());
     paramContext.show();
@@ -680,14 +683,14 @@ public class PlayModeUtils
     }
     paramStoryVideoItem.mIsPlaying = 0;
     String str = a((QQUserUIItem)localObject);
-    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369122);
+    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369188);
     localTextView.setText(str);
-    a((ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371964), ((QQUserUIItem)localObject).headUrl, true, (int)DisplayUtils.a(paramContext, 35.0F));
+    a((ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372137), ((QQUserUIItem)localObject).headUrl, true, (int)DisplayUtils.a(paramContext, 35.0F));
     localObject = ((QQUserUIItem)localObject).getUserIconUrl();
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       a(paramContext.getResources(), localTextView, (String)localObject, 13.0F, 2.0F);
     }
-    ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369053)).setText(a(paramStoryVideoItem, paramInt));
+    ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369119)).setText(a(paramStoryVideoItem, paramInt));
     a(paramVideoViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramStoryVideoItem.mLocalMaskPath, paramStoryVideoItem.getDownloadMaskUrl(), paramVideoViewHolder.jdField_b_of_type_Boolean);
   }
   
@@ -708,8 +711,8 @@ public class PlayModeUtils
       QLog.w("Q.qqstory.player.PlayModeUtils", 2, "fillFeedFriendsData, userItem:" + localQQUserUIItem.toString());
     }
     paramStoryVideoItem.mIsPlaying = 0;
-    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369122);
-    ImageView localImageView = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371964);
+    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369188);
+    ImageView localImageView = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372137);
     paramContext = paramContext.getResources();
     boolean bool;
     int i;
@@ -717,8 +720,8 @@ public class PlayModeUtils
     {
       bool = true;
       a(paramContext, localQQUserUIItem, localImageView, 35.0F, localTextView, 13.0F, 2.0F, bool, paramString);
-      ((StoryQIMBadgeView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371516)).a(localQQUserUIItem);
-      paramContext = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371969);
+      ((StoryQIMBadgeView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371682)).a(localQQUserUIItem);
+      paramContext = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372142);
       if (!localQQUserUIItem.isVipButNoFriend()) {
         break label432;
       }
@@ -726,11 +729,11 @@ public class PlayModeUtils
       label222:
       paramContext.setVisibility(i);
       if (localQQUserUIItem.isVipButNoFriend()) {
-        StoryReportor.a("weishi_share", "tag_exp", 0, 0, new String[] { "2", localQQUserUIItem.getUnionId(), "weishi", paramStoryVideoItem.mVid });
+        StoryReportor.a("weishi_share", "tag_exp", 0, 0, new String[] { "4", localQQUserUIItem.getUnionId(), "weishi", paramStoryVideoItem.mVid });
       }
-      paramContext = (View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371529);
-      paramString = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371967);
-      localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371966);
+      paramContext = (View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371695);
+      paramString = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372140);
+      localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372139);
       if (paramStoryVideoItem.mStoryType != 1) {
         break label528;
       }
@@ -745,7 +748,7 @@ public class PlayModeUtils
       if (!localQQUserUIItem.isVip) {
         break label439;
       }
-      paramString.setImageResource(2130843682);
+      paramString.setImageResource(2130843805);
       label388:
       if (!StoryProfileUtils.a(localQQUserUIItem)) {
         break label519;
@@ -754,7 +757,7 @@ public class PlayModeUtils
     }
     for (;;)
     {
-      ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369053)).setText(a(paramStoryVideoItem, paramStoryVideoItem.mStoryType));
+      ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369119)).setText(a(paramStoryVideoItem, paramStoryVideoItem.mStoryType));
       return;
       bool = false;
       break;
@@ -762,20 +765,20 @@ public class PlayModeUtils
       i = 8;
       break label222;
       label439:
-      paramString.setImageResource(2130843676);
+      paramString.setImageResource(2130843799);
       break label388;
       label449:
       if (paramStoryVideoItem.mBanType == 1)
       {
-        paramString.setImageResource(2130843679);
+        paramString.setImageResource(2130843802);
         break label388;
       }
       if ((paramStoryVideoItem.mBanType == 2) || (paramStoryVideoItem.mBanType == 3))
       {
-        paramString.setImageResource(2130843684);
+        paramString.setImageResource(2130843807);
         break label388;
       }
-      paramString.setImageResource(2130843682);
+      paramString.setImageResource(2130843805);
       break label388;
       label503:
       paramString.setVisibility(8);
@@ -798,10 +801,10 @@ public class PlayModeUtils
   
   public static void a(Context paramContext, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
   {
-    Object localObject = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371932);
-    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371933);
-    paramContext = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371951);
-    paramVideoViewHolder = (ElasticImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131364555);
+    Object localObject = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372105);
+    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372106);
+    paramContext = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372124);
+    paramVideoViewHolder = (ElasticImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131364579);
     if (paramVideoListFeedItem == null)
     {
       if ((localObject != null) && (localTextView != null))
@@ -809,7 +812,7 @@ public class PlayModeUtils
         if ((!paramBoolean) || ((paramStoryVideoItem.mHasLike != -1) && (paramStoryVideoItem.mHasLike != 0))) {
           break label148;
         }
-        ((ImageView)localObject).setImageResource(2130843393);
+        ((ImageView)localObject).setImageResource(2130843513);
         localTextView.setText("取消");
       }
       for (paramStoryVideoItem.mHasLike = 1;; paramStoryVideoItem.mHasLike = 0)
@@ -824,7 +827,7 @@ public class PlayModeUtils
         }
         return;
         label148:
-        ((ImageView)localObject).setImageResource(2130843661);
+        ((ImageView)localObject).setImageResource(2130843782);
         localTextView.setText("赞");
       }
     }
@@ -837,7 +840,7 @@ public class PlayModeUtils
     {
       if (paramVideoListFeedItem.mHadLike == 1)
       {
-        ((ImageView)localObject).setImageResource(2130843393);
+        ((ImageView)localObject).setImageResource(2130843513);
         localTextView.setText("取消");
       }
     }
@@ -888,7 +891,7 @@ public class PlayModeUtils
     {
       paramContext.setText(((StringBuilder)localObject).toString());
       return;
-      ((ImageView)localObject).setImageResource(2130843661);
+      ((ImageView)localObject).setImageResource(2130843782);
       localTextView.setText("赞");
       break label268;
       label549:
@@ -985,13 +988,13 @@ public class PlayModeUtils
       if (!paramQQUserUIItem.isVipButNoFriend()) {
         break;
       }
-      localObject = paramResources.getDrawable(2130843620);
+      localObject = paramResources.getDrawable(2130843741);
       i = AIOUtils.a(paramFloat2, paramResources);
       int j = AIOUtils.a(paramFloat3, paramResources);
       if (localObject == null) {
         break;
       }
-      ((Drawable)localObject).setBounds(0, 0, i, j);
+      ((Drawable)localObject).setBounds(0, 0, i, i);
       paramTextView.setCompoundDrawablePadding(j);
       paramTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
       break;
@@ -1047,15 +1050,14 @@ public class PlayModeUtils
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
-  public static void a(WindowManager paramWindowManager, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, int paramInt1, int paramInt2)
+  public static void a(WindowManager paramWindowManager, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, int paramInt1, int paramInt2, int paramInt3)
   {
     Object localObject = new DisplayMetrics();
     paramWindowManager.getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-    int k = ((DisplayMetrics)localObject).widthPixels;
+    int n = ((DisplayMetrics)localObject).widthPixels;
     int m = ((DisplayMetrics)localObject).heightPixels;
     localObject = paramVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a();
     boolean bool2 = localObject instanceof TextureVideoView;
-    int j;
     boolean bool1;
     int i;
     if ((paramInt1 <= 0) || (paramInt2 <= 0))
@@ -1063,86 +1065,120 @@ public class PlayModeUtils
       if (QLog.isDevelopLevel()) {
         QLog.i("Q.qqstory.player.PlayModeUtils", 2, "azrael: \t发现一个没有传 videoWidth 和videoHeight 的!");
       }
-      paramInt2 = m;
-      j = 0;
+      paramInt3 = 0;
+      paramInt2 = n;
       paramInt1 = 0;
       bool1 = false;
-      i = k;
+      i = m;
       if (bool2)
       {
         paramWindowManager = null;
         if (bool1)
         {
           paramWindowManager = new Matrix();
-          paramWindowManager.setScale(paramInt2 / i, i / paramInt2, i / 2.0F, paramInt2 / 2.0F);
-          paramWindowManager.postRotate(90.0F, i / 2.0F, paramInt2 / 2.0F);
+          paramWindowManager.setScale(i / paramInt2, paramInt2 / i, paramInt2 / 2.0F, i / 2.0F);
+          paramWindowManager.postRotate(90.0F, paramInt2 / 2.0F, i / 2.0F);
         }
         ((TextureVideoView)localObject).setTransform(paramWindowManager);
       }
-      a(paramVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(), i, paramInt2, j, paramInt1);
-      a(paramVideoViewHolder.jdField_b_of_type_AndroidWidgetImageView, i, paramInt2, j, paramInt1);
-      a(paramVideoViewHolder.jdField_a_of_type_AndroidWidgetImageView, i, paramInt2, j, paramInt1);
+      a(paramVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(), paramInt2, i, paramInt3, paramInt1);
+      a(paramVideoViewHolder.jdField_b_of_type_AndroidWidgetImageView, paramInt2, i, paramInt3, paramInt1);
+      a(paramVideoViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramInt2, i, paramInt3, paramInt1);
       paramVideoViewHolder.jdField_b_of_type_Boolean = bool1;
       return;
     }
-    double d1 = paramInt1 / paramInt2;
-    double d2 = k / m;
-    label243:
-    label253:
+    int j;
+    int k;
     int i1;
-    label263:
-    int n;
+    if (paramInt3 == 1)
+    {
+      float f1 = n / paramInt1;
+      float f2 = m / paramInt2;
+      if (f1 < f2)
+      {
+        paramInt1 = (int)(paramInt1 * f1);
+        j = (int)(f1 * paramInt2);
+        i = (m - j) / 2;
+        paramInt3 = 0;
+        paramInt2 = paramInt1;
+        paramInt1 = j;
+      }
+      for (;;)
+      {
+        j = paramInt1;
+        k = paramInt2;
+        i1 = i;
+        bool1 = false;
+        i = paramInt1;
+        paramInt1 = i1;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("Q.qqstory.player.PlayModeUtils", 2, "azrael: layoutImage: \tscreenWidth: " + n + ", screenHeight: " + m + "\n\t\t videoWidth: " + k + ", videoHeight:" + j + "\n\t\t layoutWidth: " + paramInt2 + ", layoutHeight:" + i + "\n\t\t leftMargin: " + paramInt3 + ", topMargin: " + paramInt1 + "\n\t\t shouldRotate: " + bool1);
+        }
+        break;
+        j = (int)(paramInt1 * f2);
+        paramInt1 = (int)(paramInt2 * f2);
+        i = 0;
+        paramInt3 = (n - j) / 2;
+        paramInt2 = j;
+      }
+    }
+    double d1 = paramInt1 / paramInt2;
+    double d2 = n / m;
     if (bool2) {
       if (d1 < 1.0D)
       {
-        i = 1;
+        paramInt3 = 1;
+        label479:
         if (d2 >= 1.0D) {
-          break label449;
+          break label571;
         }
-        j = 1;
-        if (i == j) {
-          break label455;
+        i = 1;
+        label489:
+        if (paramInt3 == i) {
+          break label577;
         }
         bool1 = true;
+        label499:
         if (!bool1) {
-          break label497;
+          break label633;
         }
         d1 = paramInt2 / paramInt1;
-        i1 = paramInt2;
-        n = paramInt1;
       }
     }
     for (;;)
     {
       if (d2 >= d1)
       {
-        paramInt2 = (int)(k / d1);
-        j = 0;
-        paramInt1 = (int)(1.0D * (m - paramInt2) / 2.0D + 0.5D);
-        i = k;
-      }
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("Q.qqstory.player.PlayModeUtils", 2, "azrael: layoutImage: \tscreenWidth: " + k + ", screenHeight: " + m + "\n\t\t videoWidth: " + i1 + ", videoHeight:" + n + "\n\t\t layoutWidth: " + i + ", layoutHeight:" + paramInt2 + "\n\t\t leftMargin: " + j + ", topMargin: " + paramInt1 + "\n\t\t shouldRotate: " + bool1);
-        }
+        i = (int)(n / d1);
+        paramInt3 = 0;
+        i1 = (int)(1.0D * (m - i) / 2.0D + 0.5D);
+        k = paramInt2;
+        j = paramInt1;
+        paramInt2 = n;
+        paramInt1 = i1;
         break;
+        paramInt3 = 0;
+        break label479;
+        label571:
         i = 0;
-        break label243;
-        label449:
-        j = 0;
-        break label253;
-        label455:
+        break label489;
+        label577:
         bool1 = false;
-        break label263;
-        i = (int)(d1 * m);
-        paramInt1 = 0;
-        j = (int)(1.0D * (k - i) / 2.0D + 0.5D);
-        paramInt2 = m;
+        break label499;
       }
-      label497:
-      n = paramInt2;
-      i1 = paramInt1;
+      i = (int)(d1 * m);
+      i1 = 0;
+      paramInt3 = (int)(1.0D * (n - i) / 2.0D + 0.5D);
+      k = paramInt2;
+      j = paramInt1;
+      paramInt2 = i;
+      i = m;
+      paramInt1 = i1;
+      break;
+      label633:
+      paramInt3 = paramInt1;
+      paramInt1 = paramInt2;
+      paramInt2 = paramInt3;
     }
   }
   
@@ -1237,7 +1273,7 @@ public class PlayModeUtils
       }
       paramString1 = null;
     }
-    paramString1.setURLDrawableListener(new nlk(System.currentTimeMillis(), paramImageViewLoadCallback));
+    paramString1.setURLDrawableListener(new nmu(System.currentTimeMillis(), paramImageViewLoadCallback));
   }
   
   protected static void a(ImageView paramImageView, String paramString1, int paramInt1, int paramInt2, boolean paramBoolean, DownloadParams.DecodeHandler paramDecodeHandler, Object paramObject, String paramString2)
@@ -1258,7 +1294,7 @@ public class PlayModeUtils
     int[] arrayOfInt;
     if (paramBoolean)
     {
-      localDecodeHandler = URLDrawableDecodeHandler.m;
+      localDecodeHandler = URLDrawableDecodeHandler.n;
       if (!paramBoolean) {
         break label67;
       }
@@ -1318,7 +1354,7 @@ public class PlayModeUtils
     int[] arrayOfInt;
     if (paramBoolean)
     {
-      localDecodeHandler = URLDrawableDecodeHandler.m;
+      localDecodeHandler = URLDrawableDecodeHandler.n;
       if (!paramBoolean) {
         break label73;
       }
@@ -1357,16 +1393,17 @@ public class PlayModeUtils
   
   public static void a(StoryVideoItem paramStoryVideoItem, int paramInt, String paramString)
   {
-    if (paramStoryVideoItem.mIsPicture == 1) {
-      b(paramStoryVideoItem, paramInt, paramString);
+    if (TextUtils.isEmpty(paramStoryVideoItem.mLocalVideoPath))
+    {
+      paramStoryVideoItem = new PlayModeUtils.DownloadStatusChangeEvent(paramString, 3, paramStoryVideoItem);
+      Dispatchers.get().dispatch(paramStoryVideoItem);
     }
     for (;;)
     {
       return;
-      if (TextUtils.isEmpty(paramStoryVideoItem.mLocalVideoPath))
+      if (paramStoryVideoItem.mIsPicture == 1)
       {
-        paramStoryVideoItem = new PlayModeUtils.DownloadStatusChangeEvent(paramString, 3, paramStoryVideoItem);
-        Dispatchers.get().dispatch(paramStoryVideoItem);
+        b(paramStoryVideoItem, paramInt, paramString);
         return;
       }
       long l1 = SystemClock.uptimeMillis();
@@ -1513,11 +1550,6 @@ public class PlayModeUtils
     }
   }
   
-  public static void a(VideoPlayModeBase paramVideoPlayModeBase, StoryVideoItem paramStoryVideoItem, int paramInt)
-  {
-    a(paramStoryVideoItem, paramInt, "");
-  }
-  
   protected static final void a(FFmpeg paramFFmpeg, String paramString1, StoryVideoItem paramStoryVideoItem, String paramString2, int paramInt, String paramString3)
   {
     try
@@ -1537,7 +1569,7 @@ public class PlayModeUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, String paramString2, int paramInt4)
   {
-    a(paramQQAppInterface, paramString1, new nlo(paramActivity, paramString1, paramInt1, paramBoolean, paramInt2, paramInt3, paramString2, paramInt4));
+    a(paramQQAppInterface, paramString1, new nmy(paramActivity, paramString1, paramInt1, paramBoolean, paramInt2, paramInt3, paramString2, paramInt4));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, PlayModeUtils.VideoInfoObserver paramVideoInfoObserver)
@@ -1576,7 +1608,7 @@ public class PlayModeUtils
     for (Object localObject2 = "";; localObject2 = paramString1)
     {
       localObject2 = new QQUserUIItem.UserID((String)localObject1, (String)localObject2);
-      localGetUserInfoHandler = new GetUserInfoHandler(new nll(paramOnFetchUserInfoCallback, paramString1, paramString2));
+      localGetUserInfoHandler = new GetUserInfoHandler(new nmv(paramOnFetchUserInfoCallback, paramString1, paramString2));
       localUserManager = (UserManager)SuperManager.a(2);
       if (TextUtils.isEmpty(paramString1)) {
         break label297;
@@ -1658,7 +1690,7 @@ public class PlayModeUtils
       }
       for (;;)
       {
-        paramContext.setPositiveButton("我知道了", new nlm(paramStoryVideoItem, str));
+        paramContext.setPositiveButton("我知道了", new nmw(paramStoryVideoItem, str));
         paramContext.setCancelable(false);
         paramContext.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         paramContext.show();
@@ -1671,7 +1703,7 @@ public class PlayModeUtils
   
   public static boolean a(VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, TagItem.TagInfoBase paramTagInfoBase)
   {
-    paramVideoViewHolder = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371968);
+    paramVideoViewHolder = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372141);
     if (paramVideoViewHolder != null)
     {
       if ((paramTagInfoBase != null) && (!TextUtils.isEmpty(paramTagInfoBase.jdField_a_of_type_JavaLangString)))
@@ -1744,7 +1776,7 @@ public class PlayModeUtils
   {
     PlayModeUtils.DownloadStatusChangeEvent localDownloadStatusChangeEvent = new PlayModeUtils.DownloadStatusChangeEvent(paramString, 0, paramStoryVideoItem);
     Dispatchers.get().dispatch(localDownloadStatusChangeEvent);
-    ThreadManager.post(new nln(paramStoryVideoItem, paramString, paramInt), 5, null, false);
+    ThreadManager.post(new nmx(paramStoryVideoItem, paramString, paramInt), 5, null, false);
   }
   
   public static boolean b(StoryVideoItem paramStoryVideoItem)

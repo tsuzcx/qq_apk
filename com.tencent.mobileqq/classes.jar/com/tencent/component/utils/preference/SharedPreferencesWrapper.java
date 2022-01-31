@@ -6,25 +6,25 @@ import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import java.util.Map;
 import java.util.Set;
-import pke;
+import ply;
 
 public class SharedPreferencesWrapper
   implements SharedPreferences
 {
   private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private final pke jdField_a_of_type_Pke;
+  private final ply jdField_a_of_type_Ply;
   
-  public SharedPreferencesWrapper(SharedPreferences paramSharedPreferences, pke parampke)
+  public SharedPreferencesWrapper(SharedPreferences paramSharedPreferences, ply paramply)
   {
     this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
-    this.jdField_a_of_type_Pke = parampke;
+    this.jdField_a_of_type_Ply = paramply;
   }
   
   private String a(String paramString)
   {
     String str = paramString;
-    if (this.jdField_a_of_type_Pke != null) {
-      str = this.jdField_a_of_type_Pke.a(paramString);
+    if (this.jdField_a_of_type_Ply != null) {
+      str = this.jdField_a_of_type_Ply.a(paramString);
     }
     return str;
   }
@@ -34,9 +34,9 @@ public class SharedPreferencesWrapper
     return this.jdField_a_of_type_AndroidContentSharedPreferences;
   }
   
-  public final pke a()
+  public final ply a()
   {
-    return this.jdField_a_of_type_Pke;
+    return this.jdField_a_of_type_Ply;
   }
   
   public boolean contains(String paramString)
@@ -97,7 +97,7 @@ public class SharedPreferencesWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.component.utils.preference.SharedPreferencesWrapper
  * JD-Core Version:    0.7.0.1
  */

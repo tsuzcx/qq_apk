@@ -1,33 +1,32 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.theme.ThemeSwitchManager;
+import com.tencent.mobileqq.theme.diy.ResData;
+import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic.StyleCallBack;
+import com.tencent.qphone.base.util.QLog;
 
-class aiod
-  extends TroopAioKeywordTipManager.Callback
+public class aiod
+  implements ThemeDiyStyleLogic.StyleCallBack
 {
-  aiod(aioc paramaioc, List paramList, TroopAioKeywordTipManager paramTroopAioKeywordTipManager) {}
+  public aiod(ThemeSwitchManager paramThemeSwitchManager) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    if (!this.jdField_a_of_type_Aioc.a.a) {}
-    do
+    if (paramInt2 == 4)
     {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeSwitchManager", 2, "saveThemeToSVCallBack:save theme server ok, themeId=" + this.a.a + ",version=" + this.a.b);
       }
-    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (TroopAioKeywordTipBar.a(this.jdField_a_of_type_Aioc.a)));
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.a(this.jdField_a_of_type_JavaUtilList, null, 2, new aioe(this));
-    return;
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_Aioc.a, paramMessageRecord, paramTroopAioKeywordTipInfo);
+      new aiok(this.a).execute(new Object[] { this.a.a, this.a.b });
+      return 0;
+    }
+    QLog.e("ThemeSwitchManager", 1, "saveThemeToSVCallBack:save theme server error, themeId=" + this.a.a + ",version=" + this.a.b);
+    this.a.a(-2, this.a.a, this.a.b, 20);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiod
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.vip.IPCDownloadListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class acba
-  implements DialogInterface.OnClickListener
+  extends IPCDownloadListener
 {
-  public acba(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public acba(MessengerService paramMessengerService) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    this.a.a = false;
-    this.a.l = false;
-    this.a.doOnBackPressed();
+    if (this.a.a != null) {}
+    try
+    {
+      Message localMessage = Message.obtain(null, 5);
+      paramBundle.putInt("id", (int)paramLong);
+      paramBundle.putInt("result", paramInt);
+      localMessage.setData(paramBundle);
+      this.a.a.send(localMessage);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    Message localMessage;
+    if (this.a.a != null)
+    {
+      localMessage = Message.obtain(null, 5);
+      localMessage.setData(paramBundle);
+    }
+    try
+    {
+      this.a.a.send(localMessage);
+      return;
+    }
+    catch (RemoteException paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+    }
   }
 }
 

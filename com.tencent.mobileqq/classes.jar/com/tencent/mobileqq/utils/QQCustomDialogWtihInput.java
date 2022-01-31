@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import ajqq;
-import ajqr;
+import akex;
+import akey;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.text.Editable;
@@ -56,7 +56,7 @@ public class QQCustomDialogWtihInput
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131363479));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131363497));
   }
   
   public QQCustomDialog setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
@@ -68,7 +68,7 @@ public class QQCustomDialogWtihInput
     }
     this.rBtn.setText(paramInt);
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new ajqq(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new akex(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -81,7 +81,7 @@ public class QQCustomDialogWtihInput
       Selection.setSelection((Spannable)localEditable, localEditable.length());
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.isFocusable()) || (this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.isFocusableInTouchMode())) {
-      new Timer().schedule(new ajqr(this), 200L);
+      new Timer().schedule(new akey(this), 200L);
     }
   }
 }

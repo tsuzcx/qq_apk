@@ -1,25 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.Button;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
 public class aiuk
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public aiuk(ReciteFragment paramReciteFragment, Button paramButton) {}
+  public aiuk(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiuk
  * JD-Core Version:    0.7.0.1
  */

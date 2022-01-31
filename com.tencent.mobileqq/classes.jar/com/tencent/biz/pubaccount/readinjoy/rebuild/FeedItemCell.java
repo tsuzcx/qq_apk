@@ -45,10 +45,10 @@ import cooperation.plugin.PluginBaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import lsy;
-import lsz;
-import lta;
-import ltb;
+import lth;
+import lti;
+import ltj;
+import ltk;
 import org.json.JSONObject;
 
 public abstract class FeedItemCell
@@ -116,7 +116,7 @@ public abstract class FeedItemCell
       }
       i += 1;
     }
-    paramIReadInJoyModel = new ltb(this, localArrayList2, paramArrayList, paramInt, paramObject);
+    paramIReadInJoyModel = new ltk(this, localArrayList2, paramArrayList, paramInt, paramObject);
     paramInt = 0;
     while (paramInt < localArrayList1.size())
     {
@@ -195,7 +195,7 @@ public abstract class FeedItemCell
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell$CellListener = new lsy(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell$CellListener = new lth(this);
   }
   
   public void a(long paramLong, Bitmap paramBitmap)
@@ -235,7 +235,7 @@ public abstract class FeedItemCell
           localKandianPopupWindowForAd.a();
         }
         if (localKandianPopupWindowForAd.a(((ReadInJoyModelImpl)this.jdField_a_of_type_JavaLangObject).b, localArrayList)) {
-          localKandianPopupWindowForAd.a(paramView, new lsz(this));
+          localKandianPopupWindowForAd.a(paramView, new lti(this));
         }
       }
       try
@@ -265,7 +265,7 @@ public abstract class FeedItemCell
           if (!localKandianPopupWindow.a(((ReadInJoyModelImpl)this.jdField_a_of_type_JavaLangObject).b, localArrayList)) {
             break label122;
           }
-          localKandianPopupWindow.a(paramView, new lta(this));
+          localKandianPopupWindow.a(paramView, new ltj(this));
           break label122;
         }
         paramView.put("folder_status", 1);

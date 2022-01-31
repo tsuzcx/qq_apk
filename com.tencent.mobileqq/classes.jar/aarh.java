@@ -1,17 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import java.util.ArrayList;
 
-class aarh
-  implements ArkAppCenter.OnGetAppIcon
+public class aarh
 {
-  aarh(aarg paramaarg) {}
+  public long a;
+  public String a;
+  public final ArrayList a;
+  public long b = 0L;
+  public String b;
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public aarh()
   {
-    if (paramBitmap != null) {
-      ArkTipsManager.a(this.a.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

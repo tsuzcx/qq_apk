@@ -33,8 +33,8 @@ import com.tencent.smtt.utils.ByteUtils;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.BitSet;
-import jkd;
-import jke;
+import jjo;
+import jjp;
 
 @TargetApi(18)
 public class EffectsRenderController
@@ -48,11 +48,11 @@ public class EffectsRenderController
   Context jdField_a_of_type_AndroidContentContext;
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private EffectPendantTips jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips;
-  CameraObserver jdField_a_of_type_ComTencentAvCameraCameraObserver = new jkd(this);
+  CameraObserver jdField_a_of_type_ComTencentAvCameraCameraObserver = new jjo(this);
   EffectsRenderController.TempTime jdField_a_of_type_ComTencentAvOpenglEffectsEffectsRenderController$TempTime = new EffectsRenderController.TempTime(this);
   public FilterProcessRender a;
   private BitSet jdField_a_of_type_JavaUtilBitSet;
-  jke jdField_a_of_type_Jke = new jke();
+  jjp jdField_a_of_type_Jjp = new jjp();
   boolean jdField_a_of_type_Boolean = false;
   private String jdField_b_of_type_JavaLangString;
   
@@ -179,32 +179,40 @@ public class EffectsRenderController
   
   public static boolean a(int paramInt, long paramLong)
   {
-    if (c()) {}
-    do
-    {
+    if (c()) {
       return true;
-      int i = DeviceInfoUtil.a();
-      if (i < 17)
-      {
-        AVLog.c(jdField_a_of_type_JavaLangString, "isUserEffectFace error  OSversion:" + i);
-        return false;
-      }
-      i = VcSystemInfo.e();
-      if (i < paramInt)
-      {
-        AVLog.c(jdField_a_of_type_JavaLangString, "isUserEffectFace error cpucount:" + i);
-        return false;
-      }
-      long l = VcSystemInfo.c();
-      if ((l != 0L) && (l < paramLong))
-      {
-        AVLog.c(jdField_a_of_type_JavaLangString, "isUserEffectFace error cpuFrequency:" + l);
-        return false;
-      }
-      paramLong = DeviceInfoUtil.e();
-    } while (paramLong >= 1073741824L);
-    AVLog.c(jdField_a_of_type_JavaLangString, "isUserEffectFace error  memory:" + paramLong);
-    return false;
+    }
+    a(paramInt, paramLong, 1073741824L);
+    return true;
+  }
+  
+  public static boolean a(int paramInt, long paramLong1, long paramLong2)
+  {
+    int i = DeviceInfoUtil.a();
+    if (i < 17)
+    {
+      AVLog.c(jdField_a_of_type_JavaLangString, "isUserEffectFace error  OSversion:" + i);
+      return false;
+    }
+    i = VcSystemInfo.e();
+    if (i < paramInt)
+    {
+      AVLog.c(jdField_a_of_type_JavaLangString, "isUserEffectFace error cpucount:" + i);
+      return false;
+    }
+    long l = VcSystemInfo.c();
+    if ((l != 0L) && (l < paramLong1))
+    {
+      AVLog.c(jdField_a_of_type_JavaLangString, "isUserEffectFace error cpuFrequency:" + l);
+      return false;
+    }
+    paramLong1 = DeviceInfoUtil.e();
+    if (paramLong1 < paramLong2)
+    {
+      AVLog.c(jdField_a_of_type_JavaLangString, "isUserEffectFace error  memory:" + paramLong1);
+      return false;
+    }
+    return true;
   }
   
   public static boolean b()
@@ -330,7 +338,7 @@ public class EffectsRenderController
     }
     EffectsRenderController.CameraFrame localCameraFrame = new EffectsRenderController.CameraFrame(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1, paramLong, System.currentTimeMillis());
     localCameraFrame.jdField_d_of_type_Long = AudioHelper.b();
-    this.jdField_a_of_type_Jke.a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramLong, paramBoolean1, localCameraFrame.jdField_c_of_type_Long);
+    this.jdField_a_of_type_Jjp.a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramLong, paramBoolean1, localCameraFrame.jdField_c_of_type_Long);
     this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.jdField_a_of_type_Boolean = paramBoolean2;
     this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.jdField_a_of_type_ArrayOfInt[0] = paramArrayOfInt[0];
     this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.jdField_a_of_type_ArrayOfInt[1] = paramArrayOfInt[1];

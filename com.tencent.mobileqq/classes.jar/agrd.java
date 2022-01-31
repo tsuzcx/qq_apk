@@ -1,25 +1,24 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.widget.Rotate3dAnimation;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 public class agrd
-  extends RecyclerView.ViewHolder
+  extends AnimateUtils.AnimationAdapter
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
+  public agrd(ProfileHeaderView paramProfileHeaderView, View paramView1, View paramView2, Rotate3dAnimation paramRotate3dAnimation) {}
   
-  private agrd(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363531));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364316));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.b.setVisibility(0);
+    this.b.startAnimation(this.jdField_a_of_type_ComTencentMobileqqWidgetRotate3dAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agrd
  * JD-Core Version:    0.7.0.1
  */

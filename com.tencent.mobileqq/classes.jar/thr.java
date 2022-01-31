@@ -1,37 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.ApolloManager.CheckApolloInfoResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class thr
-  extends Handler
+  implements View.OnTouchListener
 {
-  public thr(QQSettingMe paramQQSettingMe, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public thr(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    if (paramMotionEvent.getAction() == 1)
     {
+      this.a.c();
+      PublicAccountReportUtils.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
     }
-    do
-    {
-      return;
-      this.a.n();
-      return;
-      QQSettingMe.a(this.a);
-      return;
-      if (QQSettingMe.a(this.a))
-      {
-        QLog.i("QQSettingRedesign", 1, "MSG_CODE_REFRESH_APOLLO on DrawerClosed!");
-        return;
-      }
-    } while (!(paramMessage.obj instanceof ApolloManager.CheckApolloInfoResult));
-    QQSettingMe.a(this.a, (ApolloManager.CheckApolloInfoResult)paramMessage.obj);
+    return true;
   }
 }
 

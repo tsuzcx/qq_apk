@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
+import java.util.ArrayList;
 
-class aatn
-  implements Runnable
+public class aatn
+  extends aati
 {
-  aatn(aatm paramaatm) {}
+  public boolean a;
+  public long b;
+  public long c;
+  public final ArrayList c = new ArrayList();
+  public String d;
+  public final ArrayList d = new ArrayList();
+  public String e;
   
-  public void run()
+  private aatn()
   {
-    ARMapActivity.j(this.a.a);
+    super(null);
   }
 }
 

@@ -4,11 +4,11 @@ import java.util.List;
 class loz
   implements Runnable
 {
-  loz(lox paramlox, List paramList) {}
+  loz(loy paramloy, List paramList) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_Lox.a, this.jdField_a_of_type_JavaUtilList, false);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Loy.a, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

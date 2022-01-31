@@ -1,6 +1,6 @@
 package cooperation.qzone.util;
 
-import amkm;
+import anar;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -27,7 +27,7 @@ public class NetworkState
   
   static
   {
-    netEventHandler = new amkm();
+    netEventHandler = new anar();
     mApnMap.put("unknown", Integer.valueOf(0));
     mApnMap.put("cmnet", Integer.valueOf(1));
     mApnMap.put("cmwap", Integer.valueOf(2));

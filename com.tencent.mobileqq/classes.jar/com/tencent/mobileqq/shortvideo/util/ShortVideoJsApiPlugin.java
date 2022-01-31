@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import ahpv;
+import aidx;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class ShortVideoJsApiPlugin
   extends WebViewPlugin
 {
-  public BroadcastReceiver a = new ahpv(this);
+  public BroadcastReceiver a = new aidx(this);
   
   public ShortVideoJsApiPlugin()
   {
@@ -318,7 +318,7 @@ public class ShortVideoJsApiPlugin
                   bool1 = ShortVideoGuideUtil.c(this.mRuntime.a());
                   boolean bool2 = GestureRecognitionUtils.c();
                   boolean bool3 = VideoEnvironment.e(this.mRuntime.a());
-                  boolean bool4 = PtvFilterSoLoad.b(BaseApplicationImpl.getContext());
+                  boolean bool4 = PtvFilterSoLoad.a(BaseApplicationImpl.getContext());
                   QLog.i("ShortVideoJsApiPlugin", 1, "call isSupportGestureDecoration isSupportPTV:" + bool1 + ",isSupportGesture:" + bool2);
                   paramString1 = new JSONObject();
                   if ((!bool2) || (!bool1) || (!bool3) || (!bool4)) {

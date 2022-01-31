@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo;
 
-import adjh;
+import adtg;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class IVPluginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new adjh();
+  public static final Parcelable.Creator CREATOR = new adtg();
   public int a;
   public long a;
   public Bundle a;
@@ -142,7 +142,7 @@ public class IVPluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.IVPluginInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,22 @@
-import com.tencent.av.gaudio.VideoViewInfo;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenUtils;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.BeautySettingUi;
 
-class jqq
-  implements Comparator
+public class jqq
+  implements DialogInterface.OnClickListener
 {
-  jqq(jqo paramjqo) {}
+  public jqq(BeautySettingUi paramBeautySettingUi, AVActivity paramAVActivity) {}
   
-  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramVideoViewInfo1.a) {}
-    while (paramVideoViewInfo2.a) {
-      return -1;
-    }
-    return 0;
+    boolean bool = this.jdField_a_of_type_ComTencentAvUiAVActivity.getIntent().getBooleanExtra("is_video", false);
+    String str = this.jdField_a_of_type_ComTencentAvUiBeautySettingUi.a.getCurrentAccountUin();
+    SmallScreenUtils.a(str, SmallScreenUtils.a(str, bool) + 1, bool);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import ailb;
+import aizf;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -38,7 +38,7 @@ public class TroopCreateLogicActivity
   
   public TroopCreateLogicActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ailb(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new aizf(this);
   }
   
   public void a(int paramInt, String paramString)
@@ -244,7 +244,7 @@ public class TroopCreateLogicActivity
         break;
       }
       i = getResources().getDimensionPixelSize(2131558448);
-      QQToast.a(this, 2, getString(2131430446), 0).b(i);
+      QQToast.a(this, 2, getString(2131430463), 0).b(i);
       localObject = StructMsgFactory.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
     } while (localObject == null);
     if ((localObject instanceof StructMsgForImageShare)) {}
@@ -368,7 +368,7 @@ public class TroopCreateLogicActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity
  * JD-Core Version:    0.7.0.1
  */

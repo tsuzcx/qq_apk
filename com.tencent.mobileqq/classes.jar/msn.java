@@ -1,18 +1,14 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
-public class msn
+class msn
   implements Runnable
 {
-  public msn(SubscriptRecommendController paramSubscriptRecommendController) {}
+  msn(msi parammsi) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.a.a(str);
-    }
+    SubscriptFeedsActivity.a(this.a.a).g = 0;
+    SubscriptFeedsActivity.a(this.a.a, true, false, false);
   }
 }
 

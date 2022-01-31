@@ -1,21 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkBridgeActivity;
+import android.util.Pair;
 
-public class alxi
-  implements DialogInterface.OnClickListener
+public abstract interface alxi
 {
-  public alxi(QlinkBridgeActivity paramQlinkBridgeActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.finish();
-  }
+  public abstract Pair a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxi
  * JD-Core Version:    0.7.0.1
  */

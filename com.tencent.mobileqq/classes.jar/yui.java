@@ -1,12 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class yui
-  implements View.OnClickListener
+public class yui
+  extends DownloadListener
 {
-  yui(yuh paramyuh) {}
+  public yui(ApolloCardWindow paramApolloCardWindow) {}
   
-  public void onClick(View paramView) {}
+  public void onDoneFile(DownloadTask paramDownloadTask)
+  {
+    if (paramDownloadTask == null) {
+      return;
+    }
+    try
+    {
+      ??? = paramDownloadTask.a().getString("path");
+      String str = paramDownloadTask.a().getString("url");
+      paramDownloadTask = this.a.a((String)???);
+      str = MD5Utils.d(str);
+      synchronized (ApolloCardWindow.a)
+      {
+        ApolloCardWindow.a.put(str, paramDownloadTask);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramDownloadTask)
+    {
+      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", paramDownloadTask);
+    }
+  }
 }
 
 

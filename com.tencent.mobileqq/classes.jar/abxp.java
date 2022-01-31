@@ -1,58 +1,99 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.HotChatObserver;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.dating.DatingUtil;
+import com.tencent.mobileqq.dating.NearbyTransitActivity;
+import com.tencent.mobileqq.nearby.HotChatUtil;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class abxp
-  implements Runnable
+  extends HotChatObserver
 {
-  public abxp(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public abxp(NearbyTransitActivity paramNearbyTransitActivity) {}
   
-  public void run()
+  protected void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, Boolean paramBoolean1)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "preloadWebProcess");
-    }
-    try
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        return;
-      }
-      WebProcessManager localWebProcessManager = (WebProcessManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
-      if (localWebProcessManager != null)
-      {
-        SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("emoticon_panel_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-        long l = localSharedPreferences.getLong("sp_key_market_open_time", 0L);
-        if (System.currentTimeMillis() - l < 2592000000L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, startWebProcess for market open strategy");
-          }
-          localWebProcessManager.a(-1, new abxq(this));
-          return;
-        }
-        l = localSharedPreferences.getLong("sp_key_send_h5_magic_face_time", 0L);
-        if (System.currentTimeMillis() - l >= 2592000000L) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, startWebProcess for h5 magic send strategy");
-        }
-        localWebProcessManager.a(-1, new abxr(this));
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("EmoticonMainPanel", 1, "preloadWebProcess, exception=" + MsfSdkUtils.getStackTraceString(localException));
+    DatingUtil.a("NearbyTransitActivity", new Object[] { "onJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), paramString1 });
+    NearbyTransitActivity.a("onJoinHotChat", 1);
+    if (NearbyTransitActivity.a(this.a)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, web process alive already");
+    NearbyTransitActivity.a(this.a).removeMessages(2);
+    NearbyTransitActivity.a(this.a).removeMessages(5);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
+    paramBoolean1 = Message.obtain();
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString1))) {
+      paramBoolean1.what = 3;
+    }
+    for (paramBoolean1.obj = new Object[] { paramString1, paramString2, paramString4 };; paramBoolean1.obj = paramString1)
+    {
+      NearbyTransitActivity.a(this.a).sendMessage(paramBoolean1);
+      return;
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = "加入热聊失败，请稍后再试。";
+      }
+      paramBoolean1.what = 1;
+      paramBoolean1.arg1 = 11;
+    }
+  }
+  
+  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
+  {
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (paramHotChatInfo != null) {
+        str = paramHotChatInfo.name;
+      }
+    }
+    if ((NearbyTransitActivity.a(this.a) == 1) && (!Utils.a(str, NearbyTransitActivity.a(this.a)))) {}
+    do
+    {
+      return;
+      NearbyTransitActivity.a("onQuickJoinHotChat", 1);
+      DatingUtil.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), Integer.valueOf(NearbyTransitActivity.a(this.a)), Integer.valueOf(paramInt), str, paramHotChatInfo, paramWifiPOIInfo });
+    } while (NearbyTransitActivity.a(this.a));
+    NearbyTransitActivity.a(this.a).removeMessages(2);
+    NearbyTransitActivity.a(this.a).removeMessages(5);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    paramWifiPOIInfo = Message.obtain();
+    if (paramBoolean) {
+      if ((paramHotChatInfo != null) && ((paramInt == 1) || (paramInt == 2)))
+      {
+        paramWifiPOIInfo.what = 3;
+        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name };
+      }
+    }
+    while ((NearbyTransitActivity.b(this.a) == 1) && (paramWifiPOIInfo.what == 3) && (paramHotChatInfo.mFissionRoomNum > 0))
+    {
+      NearbyUtils.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat allocate room success,is to showing entering tip " });
+      paramString = Message.obtain();
+      paramString.what = 5;
+      paramString.obj = String.format(this.a.getResources().getString(2131437315), new Object[] { Integer.valueOf(paramHotChatInfo.mFissionRoomNum) });
+      NearbyTransitActivity.a(this.a).sendMessage(paramString);
+      NearbyTransitActivity.a(this.a).sendMessageDelayed(paramWifiPOIInfo, 600L);
+      return;
+      paramWifiPOIInfo.what = 1;
+      paramWifiPOIInfo.arg1 = 5;
+      paramWifiPOIInfo.obj = "加入热聊失败，请稍后再试。";
+      continue;
+      paramWifiPOIInfo.what = 1;
+      paramWifiPOIInfo.arg1 = (paramInt + 100);
+      paramWifiPOIInfo.obj = HotChatUtil.a(paramInt);
+    }
+    NearbyTransitActivity.a(this.a).sendMessage(paramWifiPOIInfo);
   }
 }
 

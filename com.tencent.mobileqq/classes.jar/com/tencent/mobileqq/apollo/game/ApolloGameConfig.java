@@ -7,7 +7,7 @@ import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import ylz;
+import ypf;
 
 public class ApolloGameConfig
 {
@@ -76,7 +76,7 @@ public class ApolloGameConfig
   
   public static void a()
   {
-    ThreadManager.post(new ylz(), 8, null, true);
+    ThreadManager.post(new ypf(), 8, null, true);
   }
   
   public static boolean a(String paramString, int paramInt)

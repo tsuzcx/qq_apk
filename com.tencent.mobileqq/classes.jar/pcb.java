@@ -1,15 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.widgets.QQMapRoutingHelper;
-import org.json.JSONObject;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
+import com.tencent.biz.webviewplugin.OfflinePlugin;
+import java.util.HashMap;
 
-class pcb
+public class pcb
   implements Runnable
 {
-  pcb(pca parampca, JSONObject paramJSONObject, Bundle paramBundle) {}
+  public pcb(OfflinePlugin paramOfflinePlugin) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Pca.a.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle.getInt("routeMode"));
+    if (OfflinePlugin.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
+      if ((localOfflineUpdateStatus != null) && (localOfflineUpdateStatus.b() == 1))
+      {
+        if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        }
+        if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+          this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        }
+        localOfflineUpdateStatus.b(2);
+      }
+    }
   }
 }
 

@@ -1,14 +1,48 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class mgj
-  implements Runnable
+public class mgj
+  extends Handler
 {
-  mgj(mga parammga) {}
+  public mgj(BaseTabbar paramBaseTabbar) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.notifyDataSetChanged();
-    ReadInJoyBaseAdapter.a(this.a.a, this.a.a.a, 0);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+      int i;
+      do
+      {
+        return;
+        BaseTabbar.a(this.a, 0.0F);
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        i = paramMessage.arg1;
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+      } while (i == 1);
+      BaseTabbar.a(this.a, BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+      return;
+    case 1: 
+      if (BaseTabbar.a(this.a) < 1.0F)
+      {
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    BaseTabbar.a(this.a);
+    this.a.a(BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+    BaseTabbar.a(this.a, 1.0F);
+    BaseTabbar.a(this.a, BaseTabbar.b(this.a));
+    this.a.invalidate();
+    BaseTabbar.a(this.a).set(false);
   }
 }
 

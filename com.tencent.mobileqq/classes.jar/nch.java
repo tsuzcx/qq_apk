@@ -1,40 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.WeatherDataProvider;
-import com.tencent.biz.qqstory.model.WeatherDataProvider.WeatherInfo;
-import com.tencent.biz.qqstory.network.request.GetWeatherRequest;
-import com.tencent.biz.qqstory.network.response.GetWeatherResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.storyHome.atvideo.model.AtVideoTextWatcher;
 
 public class nch
-  implements CmdTaskManger.CommandCallback
+  implements View.OnTouchListener
 {
-  public nch(WeatherDataProvider paramWeatherDataProvider) {}
+  public nch(StoryInputBarView paramStoryInputBarView) {}
   
-  public void a(@NonNull GetWeatherRequest paramGetWeatherRequest, @Nullable GetWeatherResponse paramGetWeatherResponse, @NonNull ErrorMessage paramErrorMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    SLog.b("WeatherDataProvider", "requestWeather Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetWeatherResponse != null))
+    if (paramMotionEvent.getAction() == 0)
     {
-      SLog.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramGetWeatherResponse.b));
-      this.a.jdField_a_of_type_JavaLangObject = new WeatherDataProvider.WeatherInfo(paramGetWeatherResponse.b);
-      SLog.c("WeatherDataProvider", "update local weather data.");
-      paramGetWeatherRequest = (StoryConfigManager)SuperManager.a(10);
-      paramGetWeatherRequest.b("edit_video_weather_filter_data", Integer.valueOf(paramGetWeatherResponse.b));
-      paramGetWeatherRequest.b("edit_video_weather_expiry_time", Long.valueOf(System.currentTimeMillis() + 14400000L));
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+      StoryInputBarView.a(this.a);
+      if (this.a.jdField_a_of_type_Boolean) {
+        break label94;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeAtvideoModelAtVideoTextWatcher.a);
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label89;
+      }
     }
-    for (;;)
+    label89:
+    for (boolean bool = true;; bool = false)
     {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-      SLog.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetWeatherRequest });
-      this.a.a(false, null);
+      paramView.jdField_a_of_type_Boolean = bool;
+      return false;
     }
+    label94:
+    this.a.a();
+    return false;
   }
 }
 

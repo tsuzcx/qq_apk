@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.widget;
 
-import akgp;
-import akgq;
-import akgr;
-import akgt;
-import akgu;
+import akuw;
+import akux;
+import akuy;
+import akva;
+import akvb;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,7 +41,7 @@ public class MusicPendantView
 {
   private static boolean d;
   private Handler jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new akgr(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new akuy(this);
   private View jdField_a_of_type_AndroidViewView;
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(1, 1.0F, 1, 0.0F, 1, 0.0F, 1, 0.0F);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -60,7 +60,7 @@ public class MusicPendantView
   public MusicPendantView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqMusicpendantMusicPendantListener = new akgp(this);
+    this.jdField_a_of_type_ComTencentMobileqqMusicpendantMusicPendantListener = new akuw(this);
     c();
     MusicPendantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqMusicpendantMusicPendantListener);
   }
@@ -68,7 +68,7 @@ public class MusicPendantView
   public MusicPendantView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentMobileqqMusicpendantMusicPendantListener = new akgp(this);
+    this.jdField_a_of_type_ComTencentMobileqqMusicpendantMusicPendantListener = new akuw(this);
     c();
     MusicPendantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqMusicpendantMusicPendantListener);
   }
@@ -76,7 +76,7 @@ public class MusicPendantView
   public MusicPendantView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqMusicpendantMusicPendantListener = new akgp(this);
+    this.jdField_a_of_type_ComTencentMobileqqMusicpendantMusicPendantListener = new akuw(this);
     c();
     MusicPendantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqMusicpendantMusicPendantListener);
   }
@@ -101,7 +101,7 @@ public class MusicPendantView
       }
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839444);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839449);
       return;
       label127:
       do
@@ -110,7 +110,7 @@ public class MusicPendantView
         {
           this.jdField_b_of_type_AndroidViewView.setVisibility(0);
           this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839445);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839450);
           return;
         }
         this.jdField_b_of_type_AndroidViewView.setVisibility(8);
@@ -125,17 +125,17 @@ public class MusicPendantView
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2130970376, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetArcImageView = ((ArcImageView)findViewById(2131370318));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370317));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370319));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new akgq(this));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370315);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370316);
+    LayoutInflater.from(getContext()).inflate(2130970417, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetArcImageView = ((ArcImageView)findViewById(2131370459));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370458));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370460));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new akux(this));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370456);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370457);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370314));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370455));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370313));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370454));
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
     this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
   }
@@ -271,7 +271,7 @@ public class MusicPendantView
           {
             this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
             localObject = paramCard.mNowShowJumpUrl;
-            this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new akgt(this, (String)localObject, paramCard));
+            this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new akva(this, (String)localObject, paramCard));
             this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
             this.jdField_b_of_type_AndroidViewView.setVisibility(8);
             if (!this.jdField_b_of_type_Boolean) {
@@ -293,7 +293,7 @@ public class MusicPendantView
           if ((paramCard.showRedPointMusicPendant) || ((BaseApplicationImpl.isCurrentVersionFirstLaunch) && (!d)))
           {
             this.jdField_a_of_type_ComTencentMobileqqWidgetArcImageView.a(true);
-            ThreadManager.post(new akgu(this), 8, null, true);
+            ThreadManager.post(new akvb(this), 8, null, true);
             if (this.jdField_a_of_type_AndroidOsHandler == null) {
               return;
             }
@@ -412,7 +412,7 @@ public class MusicPendantView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MusicPendantView
  * JD-Core Version:    0.7.0.1
  */

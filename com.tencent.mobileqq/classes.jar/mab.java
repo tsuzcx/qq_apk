@@ -1,25 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class mab
-  implements URLDrawable.URLDrawableListener
+  implements mac
 {
-  public mab(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public mab(ReadInJoyWebDataManager paramReadInJoyWebDataManager) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(JSONObject paramJSONObject)
   {
-    if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).getStatus() == 1) && ((VideoFeedsAdapter.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
-    {
-      paramURLDrawable = (RegionDrawable)VideoFeedsAdapter.a(this.a).getCurrDrawable();
-      VideoFeedsAdapter.a(this.a, paramURLDrawable.getBitmap());
+    ReadInJoyWebDataManager.a(this.a, paramJSONObject.toString());
+    if (QLog.isColorLevel()) {
+      QLog.w("ReadInJoyWebDataManager", 2, "preLoadMsgBox HttpFetchBizCallback jsonRetData result" + ReadInJoyWebDataManager.a(this.a));
     }
   }
 }

@@ -1,17 +1,16 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class xno
   implements Runnable
 {
-  public xno(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
+  public xno(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.b(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (EditLocalVideoActivity.a(this.a)) {
+      EditLocalVideoActivity.b(this.a).setVisibility(0);
+    }
   }
 }
 

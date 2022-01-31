@@ -1,21 +1,22 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.content.Context;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import java.util.HashMap;
 
-public class acvz
-  implements View.OnClickListener
+public final class acvz
+  implements Runnable
 {
-  public acvz(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public acvz(Context paramContext, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
-    SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer, TeamWorkConvertUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a.getString(2131439112), false));
+    if (FileVideoManager.a == null) {
+      FileVideoManager.a = new FileVideoManager(null);
+    }
+    if (FileVideoManager.a(FileVideoManager.a) == null) {
+      FileVideoManager.a(FileVideoManager.a, new HashMap());
+    }
+    FileVideoManager.a(FileVideoManager.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback);
   }
 }
 

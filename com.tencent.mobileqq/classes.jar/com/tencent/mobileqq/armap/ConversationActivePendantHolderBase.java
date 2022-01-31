@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import aavm;
-import aavn;
+import abcn;
+import abco;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.RectF;
@@ -105,7 +105,7 @@ public class ConversationActivePendantHolderBase
     if (QLog.isColorLevel()) {
       QLog.d("ConvActivePendantHolderBase", 2, "startActiveSanHua scale");
     }
-    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(1.0F), Float.valueOf(1.1F), new aavm(this));
+    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(1.0F), Float.valueOf(1.1F), new abcn(this));
     localValueAnimation.setDuration(500L);
     localValueAnimation.setRepeatCount(-1);
     localValueAnimation.setRepeatMode(2);
@@ -169,7 +169,7 @@ public class ConversationActivePendantHolderBase
     this.e = this.g;
     this.d = this.jdField_a_of_type_Int;
     this.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new aavn(this);
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new abco(this);
     a(1500L);
   }
 }

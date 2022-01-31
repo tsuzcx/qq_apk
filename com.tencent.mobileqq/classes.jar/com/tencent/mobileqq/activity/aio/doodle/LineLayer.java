@@ -18,15 +18,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import uph;
-import upi;
-import upk;
-import upr;
-import uqb;
+import usj;
+import usk;
+import usm;
+import ust;
+import utd;
 
 public class LineLayer
   extends BaseLayer
-  implements upr, uqb
+  implements ust, utd
 {
   public static final int a;
   private long jdField_a_of_type_Long;
@@ -38,7 +38,7 @@ public class LineLayer
   private PathDesc jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private Map jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private upi jdField_a_of_type_Upi;
+  private usk jdField_a_of_type_Usk;
   private int jdField_b_of_type_Int = jdField_a_of_type_Int;
   private Map jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
   private int jdField_c_of_type_Int;
@@ -89,13 +89,13 @@ public class LineLayer
   {
     this.i += 1;
     this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.i));
-    if (this.jdField_a_of_type_Upi != null)
+    if (this.jdField_a_of_type_Usk != null)
     {
-      ThreadManager.remove(this.jdField_a_of_type_Upi);
-      this.jdField_a_of_type_Upi = null;
+      ThreadManager.remove(this.jdField_a_of_type_Usk);
+      this.jdField_a_of_type_Usk = null;
     }
-    this.jdField_a_of_type_Upi = new upi(this, this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaUtilMap, this.i, this);
-    ThreadManager.post(this.jdField_a_of_type_Upi, 5, null, false);
+    this.jdField_a_of_type_Usk = new usk(this, this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaUtilMap, this.i, this);
+    ThreadManager.post(this.jdField_a_of_type_Usk, 5, null, false);
   }
   
   private void f()
@@ -191,7 +191,7 @@ public class LineLayer
   
   public void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Upi = null;
+    this.jdField_a_of_type_Usk = null;
     Object localObject = (Integer)this.jdField_c_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt1));
     if (localObject == null) {
       if (QLog.isColorLevel()) {
@@ -259,7 +259,7 @@ public class LineLayer
     this.jdField_a_of_type_JavaUtilMap.clear();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = null;
     this.h = 0;
-    ThreadManager.post(new uph(this), 5, null, true);
+    ThreadManager.post(new usj(this), 5, null, true);
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidGraphicsCanvas = null;
@@ -429,7 +429,7 @@ public class LineLayer
       f();
       this.i += 1;
       this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.i));
-      ThreadManager.post(new upk(this, this.jdField_a_of_type_JavaUtilList.size(), this.i, this.jdField_a_of_type_AndroidGraphicsBitmap, this), 5, null, true);
+      ThreadManager.post(new usm(this, this.jdField_a_of_type_JavaUtilList.size(), this.i, this.jdField_a_of_type_AndroidGraphicsBitmap, this), 5, null, true);
       break;
     }
   }
@@ -458,7 +458,7 @@ public class LineLayer
     this.jdField_a_of_type_JavaUtilMap.clear();
     this.jdField_b_of_type_JavaUtilMap.clear();
     this.jdField_c_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_Upi = null;
+    this.jdField_a_of_type_Usk = null;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = null;
     this.jdField_a_of_type_AndroidGraphicsCanvas = null;
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
@@ -470,7 +470,7 @@ public class LineLayer
     this.jdField_c_of_type_Int = 0;
     this.g = -1;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener = null;
-    ThreadManager.post(new uph(this), 5, null, true);
+    ThreadManager.post(new usj(this), 5, null, true);
   }
   
   public void c(Canvas paramCanvas)
@@ -499,7 +499,7 @@ public class LineLayer
       if (this.jdField_a_of_type_JavaUtilList.size() == 0)
       {
         this.h = 0;
-        ThreadManager.post(new uph(this), 5, null, true);
+        ThreadManager.post(new usj(this), 5, null, true);
         this.jdField_b_of_type_JavaUtilMap.clear();
         this.jdField_c_of_type_JavaUtilMap.clear();
         this.jdField_a_of_type_JavaUtilMap.clear();

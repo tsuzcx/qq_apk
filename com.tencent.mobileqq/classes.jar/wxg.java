@@ -1,48 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
-import com.tencent.qphone.base.util.MD5;
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import mqq.app.MobileQQ;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
-public class wxg
+class wxg
   implements Runnable
 {
-  public wxg(PreloadImgManager paramPreloadImgManager, Set paramSet, String paramString1, String paramString2, AppInterface paramAppInterface, List paramList, String paramString3, Map paramMap, Bundle paramBundle) {}
+  wxg(wxf paramwxf) {}
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext())
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b != null)
     {
-      String str1 = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str1))
-      {
-        String str2 = MD5.toMD5(str1);
-        Object localObject2 = new File(this.jdField_a_of_type_JavaLangString, str2);
-        Object localObject1 = localObject2;
-        if (!((File)localObject2).exists()) {
-          localObject1 = new File(this.b, str2);
-        }
-        if (((File)localObject1).exists())
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager;
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-          if (PreloadImgManager.a((PreloadImgManager)localObject2, MobileQQ.getContext(), ((File)localObject1).getPath(), str1) != null) {}
-        }
-        else
-        {
-          this.jdField_a_of_type_JavaUtilList.add(str1);
-          localObject1 = new File(this.c, str2);
-          this.jdField_a_of_type_JavaUtilMap.put(str1, localObject1);
-          this.jdField_a_of_type_AndroidOsBundle.putString(str1, ((File)localObject1).getPath());
-        }
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b.setChecked(this.a.jdField_a_of_type_Boolean);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.E = this.a.jdField_a_of_type_Boolean;
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.e();
     }
   }
 }

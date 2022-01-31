@@ -1,42 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.troop.data.TroopAioTips;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
 
 public class vut
-  implements BusinessObserver
+  implements Runnable
 {
-  public vut(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vut(HotChatPie paramHotChatPie) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getVisibility() == 0) {
+      this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setVisibility(4);
     }
-    if (!paramBoolean) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
-          {
-            ThreadManager.getSubThreadHandler().postDelayed(new vuu(this, localGetPublicAccountDetailInfoResponse), 10L);
-            return;
-          }
-        }
-      }
-      catch (Exception paramBundle) {}
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getCount();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) && (this.a.r != i)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.a(true);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a() > 0)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.c(4);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_red_point", 2, "update, mLastMsgCountBeforeSwitch2PostTab:" + this.a.r + ",current msgItemCount:" + i);
     }
   }
 }

@@ -1,99 +1,105 @@
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.securitysdk.utils.MD5;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class anmb
-  extends anlz
+public abstract class anmb
+  implements INetEngine.INetEngineListener, Runnable
 {
-  public anmb(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, anma paramanma)
+  public final QQAppInterface a;
+  public final INetEngine a;
+  final QIMMusicConfigManager a;
+  public final String b;
+  final String c;
+  
+  public anmb(QIMMusicConfigManager paramQIMMusicConfigManager)
   {
-    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, paramanma);
+    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = paramQIMMusicConfigManager;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQIMMusicConfigManager.a();
+    this.b = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    this.c = paramQIMMusicConfigManager.a;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = QIMMusicConfigManager.a(paramQIMMusicConfigManager);
   }
   
-  private void c()
+  public String a(long paramLong)
   {
-    for (;;)
-    {
-      try
-      {
-        localMediaMetadataRetriever1 = new MediaMetadataRetriever();
-        try
-        {
-          localMediaMetadataRetriever1.setDataSource(this.jdField_a_of_type_JavaLangString);
-          this.e = -1;
-          if (QLog.isColorLevel()) {
-            QLog.d("VFLDecodeRunnable", 2, "runWithRetriever, start");
-          }
-          localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
-          if (Thread.interrupted()) {
-            continue;
-          }
-          localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
-          if (a()) {
-            continue;
-          }
-          localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
-          if (this.e >= this.jdField_c_of_type_Int - 1) {
-            continue;
-          }
-          l = a();
-          Bitmap localBitmap1 = localMediaMetadataRetriever1.getFrameAtTime(l, 3);
-          if (localBitmap1 != null) {
-            continue;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("VFLDecodeRunnable", 2, "runWithRetriever return null! time:" + l);
-          continue;
-          localException1.printStackTrace();
-        }
-        catch (Exception localException1) {}
-      }
-      catch (Exception localException2)
-      {
-        MediaMetadataRetriever localMediaMetadataRetriever2;
-        long l;
-        Bitmap localBitmap2;
-        MediaMetadataRetriever localMediaMetadataRetriever1 = null;
-        continue;
-      }
-      localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("VFLDecodeRunnable", 2, "runWithRetriever Load video frame execption:" + localException1);
-        localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
-      }
-      if (localMediaMetadataRetriever2 != null) {
-        localMediaMetadataRetriever2.release();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VFLDecodeRunnable", 2, "runWithRetriever, end");
-      }
-      return;
-      localBitmap2 = a(localException1);
-      a(this.e, l, localBitmap2);
-    }
-  }
-  
-  public void run()
-  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000025").append("_").append("SApgehUTVGxZKBQZTt").append("_").append("QmnkKmaTHNDozKdIUA").append("_").append(paramLong);
+    localObject = ((StringBuilder)localObject).toString();
+    String str = MD5.a((String)localObject).toLowerCase();
     if (QLog.isColorLevel()) {
-      QLog.d("VFLDecodeRunnable", 2, "RetrieverDecodeRunnable run");
+      QLog.d("QIMMusicConfigManager", 2, "generate the sign string, pre=" + (String)localObject + ", md5=" + str);
     }
-    b();
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Int <= 0) || (this.jdField_c_of_type_Long - this.jdField_b_of_type_Long <= 0L) || (this.jdField_c_of_type_Int <= 0))
+    return str;
+  }
+  
+  public String a(String paramString, Map paramMap)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    if (!paramMap.isEmpty())
     {
-      this.jdField_a_of_type_Boolean = true;
-      a(1);
-      if (QLog.isColorLevel()) {
-        QLog.d("VFLDecodeRunnable", 2, "Retriever param error, path:" + this.jdField_a_of_type_JavaLangString + " height:" + this.jdField_b_of_type_Int + " width:" + this.jdField_a_of_type_Int + "time:" + this.jdField_b_of_type_Long + "-" + this.jdField_c_of_type_Long + " Count:" + this.jdField_c_of_type_Int);
+      paramString = paramMap.entrySet().iterator();
+      int i = 1;
+      if (paramString.hasNext())
+      {
+        paramMap = (Map.Entry)paramString.next();
+        if (i != 0)
+        {
+          localStringBuilder.append("?");
+          i = 0;
+        }
+        for (;;)
+        {
+          localStringBuilder.append((String)paramMap.getKey()).append("=").append((String)paramMap.getValue());
+          break;
+          localStringBuilder.append("&");
+        }
       }
-      return;
     }
-    c();
-    a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigManager", 2, "genQQMusicReqUrl url" + localStringBuilder.toString());
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public Map a(String paramString1, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("login_type", String.valueOf(1));
+    localHashMap.put("uin", paramString1);
+    localHashMap.put("ticket_type", "skey");
+    localHashMap.put("auth", paramString2);
+    return localHashMap;
+  }
+  
+  public void a()
+  {
+    ThreadManager.executeOnSubThread(this);
+  }
+  
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  
+  public void a(NetResp paramNetResp) {}
+  
+  void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      QIMMusicConfigManager.b(this.b);
+    }
+    anma localanma = new anma(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager);
+    localanma.a = true;
+    localanma.a();
   }
 }
 

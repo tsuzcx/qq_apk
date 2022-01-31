@@ -1,40 +1,17 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexm
-  implements URLDrawable.URLDrawableListener
+  implements Runnable
 {
-  public aexm(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public aexm(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void run()
   {
-    QLog.i("NearbyMomentFragment", 1, "onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 1) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
-    }
-    QLog.i("NearbyMomentFragment", 1, "onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    QLog.i("NearbyMomentFragment", 1, "onLoadProgressed");
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 1)
-    {
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
-      NearbyMomentFragment.a(this.a).setVisibility(0);
-    }
-    QLog.i("NearbyMomentFragment", 1, "onLoadSuccessed");
+    ShortVideoCommentsView.c(this.a, true);
+    ShortVideoCommentsView.a(this.a).requestFocus();
+    ShortVideoCommentsView.a(this.a).setVisibility(0);
   }
 }
 

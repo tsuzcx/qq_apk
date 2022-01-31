@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.CopyOnWriteArrayList;
-import nlj;
+import nmt;
 
 public class PlayModePollViewUtils
 {
@@ -72,7 +72,7 @@ public class PlayModePollViewUtils
         }
       } while ((paramWidgetElement instanceof PollWidgetUtils.QuestionElement));
       k = ((PollWidgetUtils.OptionElement)paramWidgetElement).a();
-    } while (i != ((Integer)paramIPollWidget.a().getTag(2131362457)).intValue());
+    } while (i != ((Integer)paramIPollWidget.a().getTag(2131362460)).intValue());
     SLog.c("Q.qqstory.PlayModePollViewUtils", "[%d]vid:%s  投票!! poll index %d!! %.2f %.2f", new Object[] { Integer.valueOf(i), localStoryVideoItem.mVid, Integer.valueOf(k), Float.valueOf(paramIPollWidget.a().getX()), Float.valueOf(paramIPollWidget.a().getY()) });
     Object localObject1 = localStoryVideoItem.getPollLayout();
     if ((localObject1 != null) && (((StoryVideoItem.PollLayout)localObject1).a.length > 0))
@@ -228,7 +228,7 @@ public class PlayModePollViewUtils
       return;
       SLog.b("Q.qqstory.PlayModePollViewUtils", "initPollView %d", Integer.valueOf(k));
       localView = paramVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.a();
-      localView.setTag(2131362457, Integer.valueOf(k));
+      localView.setTag(2131362460, Integer.valueOf(k));
       SLog.b("Q.qqstory.PlayModePollViewUtils", "Users Count: %d", Integer.valueOf(paramStoryVideoItem.mPollUsers.size()));
       if (paramStoryVideoItem.mPollNumbers == null)
       {
@@ -291,7 +291,7 @@ public class PlayModePollViewUtils
         break;
       }
     } while (!paramBoolean);
-    paramVideoViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.post(new nlj(paramVideoPlayModeBase, paramVideoViewHolder, paramStoryVideoItem));
+    paramVideoViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.post(new nmt(paramVideoPlayModeBase, paramVideoViewHolder, paramStoryVideoItem));
     return;
     int i = paramVideoViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.getWidth();
     int j = paramVideoViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.getHeight();

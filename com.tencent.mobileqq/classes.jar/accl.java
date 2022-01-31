@@ -1,30 +1,41 @@
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class accl
-  implements Runnable
+class accl
+  extends WtloginObserver
 {
-  public accl(FilePreviewActivity paramFilePreviewActivity, int paramInt) {}
+  accl(acbg paramacbg, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
   
-  public void run()
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c = new FilePreviewAnimQueue(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a);
+    boolean bool2 = true;
+    if ((paramInt == 0) && (paramDevlockInfo != null))
+    {
+      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
+      if (paramDevlockInfo.AllowSet != 1) {
+        break label85;
+      }
+      bool1 = true;
+      paramWUserSigInfo.putBoolean("hasSecurityPhoneNumber", bool1);
+      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
+      if (paramDevlockInfo.DevSetup != 1) {
+        break label91;
+      }
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.jdField_a_of_type_Int;
-    localFilePreviewAnim.b = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.a(localFilePreviewAnim);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FilePreviewActivity", 2, "hideGetMore(" + this.jdField_a_of_type_Int + ")");
+    label85:
+    label91:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramWUserSigInfo.putBoolean("devlockIsOpen", bool1);
+      this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+      return;
+      bool1 = false;
+      break;
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.now;
 
-import afms;
+import afzy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.NowHandler;
@@ -122,12 +122,12 @@ public class NowAppHelper
       return;
       l = System.currentTimeMillis() / 1000L;
     } while ((paramChannelResponse == null) || (paramChannelResponse.isDownload != 1) || (paramChannelResponse.downloadTime > l));
-    ThreadManager.post(new afms(paramQQAppInterface, localNowHandler, paramChannelResponse, localSharedPreferences), 2, null, true);
+    ThreadManager.post(new afzy(paramQQAppInterface, localNowHandler, paramChannelResponse, localSharedPreferences), 2, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.now.NowAppHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,34 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
 public class ahjj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahjj(MessagePBElemDecoder paramMessagePBElemDecoder) {}
+  public ahjj(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PublicAccountManager.a().a(MessagePBElemDecoder.a(this.a));
+    paramView = CapturePtvTemplateManager.a().a();
+    if ((paramView != null) && (!TextUtils.isEmpty(paramView.advertiseWebUrl)))
+    {
+      Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView.advertiseWebUrl);
+      this.a.getActivity().startActivity(localIntent);
+      CaptureReportUtil.l();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjj
  * JD-Core Version:    0.7.0.1
  */

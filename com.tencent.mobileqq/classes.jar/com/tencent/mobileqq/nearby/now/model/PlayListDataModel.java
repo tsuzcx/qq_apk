@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import aegn;
+import aett;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
@@ -193,7 +193,7 @@ public class PlayListDataModel
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_b_of_type_JavaLangString + "&start=" + this.jdField_b_of_type_Int + "&num=" + 10, new aegn(this));
+    new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_b_of_type_JavaLangString + "&start=" + this.jdField_b_of_type_Int + "&num=" + 10, new aett(this));
   }
   
   public void a(Bundle paramBundle)

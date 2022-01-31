@@ -1,22 +1,15 @@
-import com.tencent.biz.pubaccount.PublicAccountArticleObserver;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.PhotoCollectionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
 public class mxq
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public mxq(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo) {}
+  public mxq(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(PublicAccountImageCollectionPreloadManager.a(), 2, "notifyUIToRefresh articleId=" + this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionUtils$PhotoCollectionInfo.a);
-    }
-    if (PublicAccountImageCollectionPreloadManager.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager) != null) {
-      PublicAccountImageCollectionPreloadManager.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager).a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionUtils$PhotoCollectionInfo);
-    }
-    PublicAccountImageCollectionPreloadManager.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager, null);
+    PublicAccountImageCollectionCommentActivity.b(this.a, paramBoolean);
   }
 }
 

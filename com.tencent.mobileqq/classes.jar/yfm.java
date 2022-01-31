@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import java.util.HashMap;
 
-class yfm
+public class yfm
   implements Runnable
 {
-  yfm(yfl paramyfl, String paramString) {}
+  public yfm(QvipSpecialSoundManager paramQvipSpecialSoundManager, QvipSpecialSoundManager.CallBack paramCallBack) {}
   
   public void run()
   {
-    TroopListAdapter2.a(this.jdField_a_of_type_Yfl.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2, this.jdField_a_of_type_Yfl.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$TroopListItem, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Yfl.jdField_a_of_type_Boolean);
+    String str = QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(str);
+    boolean bool = QvipSpecialSoundManager.a.containsKey("key_special_sound_list" + QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager).getCurrentAccountUin());
+    QvipSpecialSoundManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager, this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager$CallBack, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     yfm
  * JD-Core Version:    0.7.0.1
  */

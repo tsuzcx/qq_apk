@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipLayout.OnBackClickListener;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipViewManager;
 
 public class uol
+  implements FriendShipLayout.OnBackClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c;
+  public uol(FriendShipViewManager paramFriendShipViewManager) {}
   
-  public uol(DoodleMsgLayout paramDoodleMsgLayout)
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.a.e();
   }
 }
 

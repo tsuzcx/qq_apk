@@ -1,28 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.app.QQGAudioMsgHandler;
+import cooperation.groupvideo.GroupVideoWrapper;
+import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
 
 public class zlm
-  implements Runnable
+  implements GroupVideoWrapper.OnGVideoReadyListener
 {
-  public zlm(TroopManager paramTroopManager, TroopMemberInfo paramTroopMemberInfo, Handler paramHandler, String paramString1, String paramString2) {}
+  public zlm(QQGAudioMsgHandler paramQQGAudioMsgHandler) {}
   
-  public void run()
+  public void a(GroupVideoWrapper paramGroupVideoWrapper)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.getEntityManagerFactory().createEntityManager();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      localEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
-    }
-    for (;;)
-    {
-      localEntityManager.a();
-      this.jdField_a_of_type_AndroidOsHandler.post(new zln(this));
-      return;
-      localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
-    }
+    paramGroupVideoWrapper.a(this.a.a);
+    paramGroupVideoWrapper.a();
   }
 }
 

@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.phone.TosActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 
-public class wsk
-  implements View.OnLongClickListener
+class wsk
+  implements Runnable
 {
-  public wsk(TosActivity paramTosActivity) {}
+  wsk(wsj paramwsj) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    return true;
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView != null) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setFaceDrawable(this.a.a.app, 1, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, 640, true, true, true, false, 7);
+    }
   }
 }
 

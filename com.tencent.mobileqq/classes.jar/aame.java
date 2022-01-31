@@ -1,39 +1,25 @@
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.arcard.ARCardRender;
+import java.util.Map;
 
 public class aame
-  implements aamg
+  implements Runnable
 {
-  public aame(ArkAppCGI paramArkAppCGI) {}
+  public aame(ARCardRender paramARCardRender) {}
   
-  public void a(aamh paramaamh, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void run()
   {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    if ((!paramBoolean) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("getPredownloadAppList: fail, url=%s", new Object[] { paramaamh.jdField_a_of_type_JavaLangString }));
-    }
-    for (;;)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null)
     {
-      int i = 0;
-      while (i < paramaamh.b.size())
-      {
-        paramArrayOfByte = paramaamh.jdField_a_of_type_JavaUtilArrayList.get(i);
-        ArkAppCGI.ArkAppCGICallback localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramaamh.b.get(i);
-        if (localArkAppCGICallback != null) {
-          localArkAppCGICallback.a(paramBoolean, localArrayList1, localArrayList2, paramArrayOfByte);
-        }
-        i += 1;
-      }
-      ArkAppCGI.a(this.a, paramArrayOfByte, localArrayList1, localArrayList2);
+      this.a.jdField_a_of_type_JavaUtilMap.remove(this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a());
+      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
+      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aame
  * JD-Core Version:    0.7.0.1
  */

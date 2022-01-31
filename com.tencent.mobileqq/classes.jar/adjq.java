@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.intervideo.groupvideo.GVideoLoadingUI;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class adjq
-  implements View.OnClickListener
+  implements Runnable
 {
-  private adjq(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  public adjq(SendBottomBar paramSendBottomBar) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    GroupVideoLoadingFragment.a(this.a).a("正在检查环境", "群视频体验群，可尝鲜更酷炫的多人互动");
-    GroupVideoLoadingFragment.a(this.a).c();
-    GroupVideoLoadingFragment.a(this.a, false);
+    new adjr(this).execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adjq
  * JD-Core Version:    0.7.0.1
  */

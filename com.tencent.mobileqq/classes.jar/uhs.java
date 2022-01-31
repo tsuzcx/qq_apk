@@ -1,36 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.profile.like.PraiseConfigHelper;
 
-class uhs
+public class uhs
   implements Runnable
 {
-  uhs(uhr paramuhr, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  public uhs(VisitorsActivity paramVisitorsActivity) {}
   
   public void run()
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy");
-      }
-      if ((this.jdField_a_of_type_Uhr.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager == null) || (this.jdField_a_of_type_Uhr.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId)))
-      {
-        CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
-        return;
-      }
-      String str = this.jdField_a_of_type_Uhr.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager.a("redPackPanel", "http://i.gtimg.cn/channel/imglib/201803/", new String[] { "themeInfo", "prefix" });
-      str = str + this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId + ".png";
-      this.jdField_a_of_type_Uhr.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.b(str, new uht(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    PraiseConfigHelper.a(this.a.app);
+    Message localMessage = this.a.a.obtainMessage(13, 0, 0);
+    this.a.a.sendMessageDelayed(localMessage, 100L);
   }
 }
 

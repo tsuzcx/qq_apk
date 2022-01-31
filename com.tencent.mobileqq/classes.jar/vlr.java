@@ -1,28 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.VideoVipItemBuilder;
+import com.tencent.mobileqq.data.MessageForVideoVip;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class vlr
-  implements Parcelable.Creator
+public class vlr
+  implements View.OnClickListener
 {
-  public AIORichMediaData a(Parcel paramParcel)
-  {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIORichMediaData.a((String)localObject);
-      ((AIORichMediaData)localObject).a(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
-  }
+  public vlr(VideoVipItemBuilder paramVideoVipItemBuilder, MessageForVideoVip paramMessageForVideoVip, MessageRecord paramMessageRecord) {}
   
-  public AIORichMediaData[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new AIORichMediaData[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideoVip.url);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 0)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X80063FF", "0X80063FF", 0, 0, "", "", "", "");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X80063EF", "0X80063EF", 14, 0, "", "", "", "");
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop != 3000) {
+      return;
+    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X8006400", "0X8006400", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X80063EF", "0X80063EF", 13, 0, "", "", "", "");
   }
 }
 

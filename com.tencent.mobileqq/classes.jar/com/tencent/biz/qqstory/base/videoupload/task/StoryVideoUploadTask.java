@@ -30,11 +30,11 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import mzt;
-import mzu;
-import mzv;
-import mzw;
-import mzx;
+import nbe;
+import nbf;
+import nbg;
+import nbh;
+import nbi;
 
 @TargetApi(14)
 public class StoryVideoUploadTask
@@ -96,26 +96,26 @@ public class StoryVideoUploadTask
           }
           localObject = new ImageFileObject(true);
           ((ImageFileObject)localObject).jdField_a_of_type_JavaLangString = paramStoryVideoTaskInfo.jdField_e_of_type_JavaLangString;
-          ((ImageFileObject)localObject).a(new mzt(this, paramStoryVideoTaskInfo));
+          ((ImageFileObject)localObject).a(new nbe(this, paramStoryVideoTaskInfo));
           paramStoryVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localObject);
           if ((TextUtils.isEmpty(paramStoryVideoTaskInfo.jdField_f_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramStoryVideoTaskInfo.l))) {
             break label698;
           }
           localObject = new ImageFileObject(true);
           ((ImageFileObject)localObject).jdField_a_of_type_JavaLangString = paramStoryVideoTaskInfo.jdField_f_of_type_JavaLangString;
-          ((ImageFileObject)localObject).a(new mzu(this, paramStoryVideoTaskInfo));
+          ((ImageFileObject)localObject).a(new nbf(this, paramStoryVideoTaskInfo));
           paramStoryVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localObject);
           if (!TextUtils.isEmpty(((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_g_of_type_JavaLangString)) {
             break label708;
           }
           localObject = new StoryVideoFileObject(((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a(), ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_a_of_type_JavaLangString);
-          ((StoryVideoFileObject)localObject).a(new mzv(this));
+          ((StoryVideoFileObject)localObject).a(new nbg(this));
           paramStoryVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localObject);
-          if ((TextUtils.isEmpty(((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).j)) && (!TextUtils.isEmpty(((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_b_of_type_JavaLangString)))
+          if ((TextUtils.isEmpty(((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_j_of_type_JavaLangString)) && (!TextUtils.isEmpty(((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_b_of_type_JavaLangString)))
           {
             localObject = new ImageFileObject(false);
             ((ImageFileObject)localObject).jdField_a_of_type_JavaLangString = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_b_of_type_JavaLangString;
-            ((ImageFileObject)localObject).a(new mzw(this));
+            ((ImageFileObject)localObject).a(new nbh(this));
             paramStoryVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localObject);
           }
           return;
@@ -261,7 +261,7 @@ public class StoryVideoUploadTask
       PublishStoryVideoRequest localPublishStoryVideoRequest = new PublishStoryVideoRequest(bool);
       localPublishStoryVideoRequest.jdField_d_of_type_JavaLangString = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_g_of_type_JavaLangString;
       localPublishStoryVideoRequest.jdField_f_of_type_JavaLangString = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_h_of_type_JavaLangString;
-      localPublishStoryVideoRequest.j = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).j;
+      localPublishStoryVideoRequest.jdField_j_of_type_JavaLangString = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_j_of_type_JavaLangString;
       localPublishStoryVideoRequest.k = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_i_of_type_JavaLangString;
       localPublishStoryVideoRequest.jdField_b_of_type_Long = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_b_of_type_Long;
       localPublishStoryVideoRequest.jdField_g_of_type_JavaLangString = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().videoLabel;
@@ -276,20 +276,21 @@ public class StoryVideoUploadTask
       localPublishStoryVideoRequest.l = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().videoLocationDescription;
       localPublishStoryVideoRequest.m = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().gpsFilterDescription;
       localPublishStoryVideoRequest.n = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().atJsonData;
-      localPublishStoryVideoRequest.jdField_f_of_type_Int = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().publishFrom;
+      localPublishStoryVideoRequest.jdField_g_of_type_Int = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().publishFrom;
       localPublishStoryVideoRequest.jdField_e_of_type_Long = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().videoCreateTime;
-      localPublishStoryVideoRequest.jdField_g_of_type_Int = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().videoLatitude;
-      localPublishStoryVideoRequest.jdField_h_of_type_Int = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().videoLongitude;
+      localPublishStoryVideoRequest.jdField_h_of_type_Int = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().videoLatitude;
+      localPublishStoryVideoRequest.jdField_i_of_type_Int = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().videoLongitude;
       localPublishStoryVideoRequest.o = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().localCreateCity;
       if (((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().isPicture) {}
       for (;;)
       {
         localPublishStoryVideoRequest.jdField_e_of_type_Int = i;
+        localPublishStoryVideoRequest.jdField_f_of_type_Int = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().getIntExtra("video_type", 0);
         localPublishStoryVideoRequest.jdField_a_of_type_ArrayOfByte = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().readerConfBytes;
         localPublishStoryVideoRequest.jdField_b_of_type_ArrayOfByte = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().spreadGroupBytes;
         localPublishStoryVideoRequest.p = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().multiFragmentGroupId;
         localPublishStoryVideoRequest.jdField_b_of_type_Boolean = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().getBooleanExtra("ignorePersonalPublish", false);
-        localPublishStoryVideoRequest.jdField_i_of_type_Int = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().getIntExtra("add_video_source", 0);
+        localPublishStoryVideoRequest.jdField_j_of_type_Int = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().getIntExtra("add_video_source", 0);
         localPublishStoryVideoRequest.jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
         localPublishStoryVideoRequest.jdField_c_of_type_ArrayOfByte = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().tagInfoBytes;
         localPublishStoryVideoRequest.q = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().getStringExtra("pl", null);
@@ -297,7 +298,7 @@ public class StoryVideoUploadTask
         localPublishStoryVideoRequest.s = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().getStringExtra("i_l", null);
         localPublishStoryVideoRequest.t = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).l;
         localPublishStoryVideoRequest.jdField_c_of_type_Boolean = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().getBooleanExtra("story_sync_qzone", false);
-        CmdTaskManger.a().a(localPublishStoryVideoRequest, new mzx(this));
+        CmdTaskManger.a().a(localPublishStoryVideoRequest, new nbi(this));
         return;
         i = 0;
       }

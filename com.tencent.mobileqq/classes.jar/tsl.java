@@ -1,25 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
-import com.etrump.mixlayout.FontManager;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class tsl
-  implements Runnable
+  implements ChatActivityUtils.StartVideoListener
 {
-  public tsl(TextPreviewActivity paramTextPreviewActivity) {}
+  public tsl(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void run()
+  public void a()
   {
-    Drawable localDrawable = this.a.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.a.d);
-    if (localDrawable == null)
-    {
-      this.a.b(this.a.d);
-      return;
-    }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(18);
-    localMessage.obj = localDrawable;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 

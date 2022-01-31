@@ -2,7 +2,7 @@ package cooperation.qzone.plugin;
 
 import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_RSP;
 import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
-import amhw;
+import amyb;
 import android.content.Context;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -137,7 +137,7 @@ public class QZonePluginUpdater
     PluginIntent localPluginIntent = new PluginIntent(BaseApplicationImpl.getContext(), QzoneUpdatePatchServlet.class);
     localPluginIntent.a = a();
     localPluginIntent.b = QzoneModuleConfigManager.a().a();
-    localPluginIntent.a(new amhw(this));
+    localPluginIntent.a(new amyb(this));
     localPluginIntent.putExtra("forceDownLoadPlugins", paramArrayOfString);
     paramArrayOfString = null;
     if (paramWeakReference != null) {

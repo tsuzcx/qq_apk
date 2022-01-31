@@ -201,26 +201,28 @@ public class ReportControllerImpl
     }
     Object localObject = this.jdField_a_of_type_JavaUtilHashMap.values();
     if ((localObject != null) && (((Collection)localObject).size() > 0)) {}
-    for (;;)
+    try
     {
-      try
+      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+      EntityTransaction localEntityTransaction = paramQQAppInterface.a();
+      localEntityTransaction.a();
+      for (;;)
       {
-        paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-        EntityTransaction localEntityTransaction = paramQQAppInterface.a();
-        localEntityTransaction.a();
+        Reporting localReporting;
         try
         {
           localObject = ((Collection)localObject).iterator();
           if (((Iterator)localObject).hasNext())
           {
             localReporting = (Reporting)((Iterator)localObject).next();
-            if (localReporting.getStatus() != 1000) {
-              continue;
+            if (localReporting.getStatus() == 1000) {
+              paramQQAppInterface.b(localReporting);
             }
-            paramQQAppInterface.b(localReporting);
-            continue;
           }
-          this.jdField_a_of_type_JavaUtilHashMap.clear();
+          else
+          {
+            return;
+          }
         }
         catch (Throwable localThrowable)
         {
@@ -228,15 +230,11 @@ public class ReportControllerImpl
           localEntityTransaction.b();
           paramQQAppInterface.a();
         }
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        Reporting localReporting;
-        continue;
+        paramQQAppInterface.a(localReporting);
       }
       return;
-      paramQQAppInterface.a(localReporting);
     }
+    catch (Throwable paramQQAppInterface) {}
   }
   
   private void b(String paramString1, String paramString2, int paramInt)

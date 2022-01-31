@@ -1,47 +1,34 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData.ActionCountdownOver;
+import java.util.TimerTask;
 
-class aedu
-  implements Runnable
+public class aedu
+  extends TimerTask
 {
-  aedu(aedt paramaedt, int paramInt) {}
+  public aedu(ActionGlobalData paramActionGlobalData) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int >= 0)
-    {
-      ((RelativeLayout.LayoutParams)ChooseInterestTagActivity.a(this.jdField_a_of_type_Aedt.a).getLayoutParams()).leftMargin = ((int)(this.jdField_a_of_type_Int + ChooseInterestTagActivity.a(this.jdField_a_of_type_Aedt.a) * 7.0F));
-      ChooseInterestTagActivity.a(this.jdField_a_of_type_Aedt.a).requestLayout();
+    ActionGlobalData localActionGlobalData = this.a;
+    localActionGlobalData.h += 1;
+    localActionGlobalData = this.a;
+    localActionGlobalData.jdField_a_of_type_Float -= 0.1F;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver.b();
     }
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (ChooseInterestTagActivity.a(this.jdField_a_of_type_Aedt.a).getChildCount() <= 0)
+    if (this.a.h * 100 == this.a.c * 1000)
     {
-      ChooseInterestTagActivity.a(this.jdField_a_of_type_Aedt.a).setVisibility(8);
-      if (ChooseInterestTagActivity.b(this.jdField_a_of_type_Aedt.a))
-      {
-        localLayoutParams = (RelativeLayout.LayoutParams)ChooseInterestTagActivity.a(this.jdField_a_of_type_Aedt.a).getLayoutParams();
-        localLayoutParams.height = 1;
-        if (!ChooseInterestTagActivity.a(this.jdField_a_of_type_Aedt.a)) {
-          break label183;
-        }
+      this.a.jdField_a_of_type_Float = 0.0F;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver.a();
       }
-    }
-    label183:
-    for (int i = (int)(ChooseInterestTagActivity.a(this.jdField_a_of_type_Aedt.a) * 7.0F + 0.5D);; i = 0)
-    {
-      localLayoutParams.topMargin = i;
-      localLayoutParams.bottomMargin = i;
-      ChooseInterestTagActivity.a(this.jdField_a_of_type_Aedt.a).setLayoutParams(localLayoutParams);
-      return;
+      cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aedu
  * JD-Core Version:    0.7.0.1
  */

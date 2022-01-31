@@ -35,19 +35,19 @@ public class NetSearchTemplateNormalView
   {
     View localView = a(this.jdField_b_of_type_Int);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131361846));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366346));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366345));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366308));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363360));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362701));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364423));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363509));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366307));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365632));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366360));
-    this.g = ((TextView)localView.findViewById(2131366359));
-    this.h = ((TextView)localView.findViewById(2131366361));
-    this.i = ((TextView)localView.findViewById(2131366362));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366373));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366372));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366335));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363378));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362719));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364447));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363527));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366334));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365659));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366387));
+    this.g = ((TextView)localView.findViewById(2131366386));
+    this.h = ((TextView)localView.findViewById(2131366388));
+    this.i = ((TextView)localView.findViewById(2131366389));
   }
 }
 

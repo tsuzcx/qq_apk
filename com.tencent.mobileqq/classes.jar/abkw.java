@@ -1,34 +1,24 @@
-import com.tencent.mobileqq.confess.ConfessConfig;
-import com.tencent.mobileqq.confess.ConfessMsgListFragment;
-import com.tencent.mobileqq.confess.ConfessObserver;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
+import mqq.app.AppRuntime;
 
 public class abkw
-  extends ConfessObserver
+  implements Runnable
 {
-  public abkw(ConfessMsgListFragment paramConfessMsgListFragment) {}
+  public abkw(BubbleDiyFetcher paramBubbleDiyFetcher) {}
   
-  public void a(ConfessConfig paramConfessConfig)
+  public void run()
   {
-    ConfessMsgListFragment.a(this.a);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (this.a.isResumed()) {
-      this.a.c();
-    }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (this.a.isResumed()) {
-      this.a.c();
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      this.a.b((QQAppInterface)localAppRuntime);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abkw
  * JD-Core Version:    0.7.0.1
  */

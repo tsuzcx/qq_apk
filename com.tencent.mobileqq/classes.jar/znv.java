@@ -1,15 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.automator.step.GetTbsSwitchInfo;
-import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.mobileqq.app.ThreadOptimizer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ThreadFactory;
 
-public class znv
-  implements Runnable
+public final class znv
+  implements ThreadFactory
 {
-  public znv(GetTbsSwitchInfo paramGetTbsSwitchInfo) {}
-  
-  public void run()
+  public Thread newThread(Runnable paramRunnable)
   {
-    QbSdk.isX5DisabledSync(BaseApplicationImpl.getContext());
+    if (QLog.isColorLevel()) {
+      QLog.d("ThreadManager", 2, "new NetExcutor5Thread");
+    }
+    paramRunnable = new Thread(paramRunnable, "NetExcutor5Thread");
+    if (ThreadOptimizer.a().c()) {
+      paramRunnable.setPriority(1);
+    }
+    return paramRunnable;
   }
 }
 

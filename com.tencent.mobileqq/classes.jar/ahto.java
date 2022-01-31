@@ -1,28 +1,23 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
+import java.util.List;
 
-public class ahto
-  implements View.OnLongClickListener
+class ahto
+  implements Runnable
 {
-  public ahto(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  ahto(ahtn paramahtn, boolean paramBoolean) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    StructMsgForGeneralShare.clickedItemIndex = 0;
-    AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)paramView.getTag();
-    if (!TextUtils.isEmpty(localAbsStructMsgElement.s)) {
-      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localAbsStructMsgElement.s).intValue();
+    this.jdField_a_of_type_Ahtn.a.c.setVisibility(8);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ahtn.a.b != null) && (this.jdField_a_of_type_Ahtn.a.b.size() > 0)) {
+      this.jdField_a_of_type_Ahtn.a.b(true);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahto
  * JD-Core Version:    0.7.0.1
  */

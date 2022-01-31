@@ -1,27 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Pair;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
+import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class abdz
-  extends Handler
+class abdz
+  implements Runnable
 {
-  public abdz(BubbleInterActiveAnim paramBubbleInterActiveAnim, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  abdz(abdy paramabdy, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (Pair)paramMessage.obj;
-    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
+    QQToast.a(this.jdField_a_of_type_Abdy.a.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Abdy.a.getTitleBarHeight());
   }
 }
 

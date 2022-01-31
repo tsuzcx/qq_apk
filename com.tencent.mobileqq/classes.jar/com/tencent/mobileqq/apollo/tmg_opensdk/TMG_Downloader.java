@@ -12,14 +12,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import ysh;
+import yvn;
 
 public class TMG_Downloader
 {
   private static TMG_Downloader jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkTMG_Downloader;
   TMG_DownloadInfo jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkTMG_DownloadInfo;
   TMG_Downloader.TMG_Downloader_DownloadEvent jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkTMG_Downloader$TMG_Downloader_DownloadEvent;
-  ysh jdField_a_of_type_Ysh = new ysh();
+  yvn jdField_a_of_type_Yvn = new yvn();
   
   static SharedPreferences a()
   {
@@ -128,7 +128,7 @@ public class TMG_Downloader
       QLog.d("TMG_Downloader", 4, "appRuntime 不是 QQAppInterface");
     }
     this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkTMG_DownloadInfo = paramTMG_DownloadInfo;
-    return this.jdField_a_of_type_Ysh.a(paramTMG_DownloadInfo, this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkTMG_Downloader$TMG_Downloader_DownloadEvent);
+    return this.jdField_a_of_type_Yvn.a(paramTMG_DownloadInfo, this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkTMG_Downloader$TMG_Downloader_DownloadEvent);
   }
   
   boolean a(TMG_DownloadInfo paramTMG_DownloadInfo, TMG_Downloader.TMG_Downloader_DownloadEvent paramTMG_Downloader_DownloadEvent)

@@ -1,21 +1,29 @@
-import com.tencent.av.VideoController.CameraDataUpdataInterface;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.VoiceChangeAdapter;
+import com.tencent.av.ui.VoiceChangeAdapter.ICallback;
+import com.tencent.av.ui.VoiceChangeData.VoiceInfo;
+import com.tencent.av.ui.VoiceChangeItemView1;
+import com.tencent.av.ui.VoiceChangeItemView1.ICallback;
 
 public class kcm
-  implements VideoController.CameraDataUpdataInterface
+  implements VoiceChangeItemView1.ICallback
 {
-  public kcm(VideoLayerUI paramVideoLayerUI, int paramInt, boolean paramBoolean) {}
+  public kcm(VoiceChangeAdapter paramVoiceChangeAdapter) {}
   
-  public void a()
+  public void a(VoiceChangeItemView1 paramVoiceChangeItemView1, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length > this.jdField_a_of_type_Int)) {
-      VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[this.jdField_a_of_type_Int], this.jdField_a_of_type_Boolean);
-    }
-    while (!QLog.isColorLevel()) {
+    VoiceChangeData.VoiceInfo localVoiceInfo = (VoiceChangeData.VoiceInfo)this.a.getItem(paramInt);
+    if ((localVoiceInfo == null) || (localVoiceInfo.a == VoiceChangeAdapter.a(this.a))) {}
+    do
+    {
       return;
-    }
-    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "switchCameraFristData Error : Index = " + this.jdField_a_of_type_Int);
+      if (VoiceChangeAdapter.a(this.a) != null) {
+        VoiceChangeAdapter.a(this.a).setHighlight(false);
+      }
+      VoiceChangeAdapter.a(this.a, localVoiceInfo.a);
+      VoiceChangeAdapter.a(this.a, paramVoiceChangeItemView1);
+      VoiceChangeAdapter.a(this.a).setHighlight(true);
+    } while (VoiceChangeAdapter.a(this.a) == null);
+    VoiceChangeAdapter.a(this.a).a(VoiceChangeAdapter.a(this.a));
   }
 }
 

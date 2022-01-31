@@ -1,35 +1,25 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aaqj
   implements Runnable
 {
-  public aaqj(ArkRecommendController paramArkRecommendController, ChatMessage paramChatMessage, SessionInfo paramSessionInfo) {}
+  public aaqj(ArkAppMusicModule paramArkAppMusicModule, SongInfo paramSongInfo) {}
   
   public void run()
   {
-    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) == null) {
-      return;
-    }
-    int i = "@babyQ".length();
-    String str;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.length() > i) {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.charAt(i) != ' ') {
-        str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.substring(i);
-      }
-    }
-    for (;;)
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if ((localBaseActivity instanceof FragmentActivity))
     {
-      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController);
-      ArkAppDataReport.e(ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a);
-      return;
-      str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.substring(i + 1);
-      continue;
-      str = "";
+      QQPlayerService.a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
+      QQPlayerService.a(101);
+      QQPlayerService.a(localBaseActivity, ArkAppMusicModule.a(), new SongInfo[] { this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo });
     }
   }
 }

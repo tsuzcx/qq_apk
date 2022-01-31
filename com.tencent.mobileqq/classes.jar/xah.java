@@ -1,26 +1,25 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.widget.QwScrollView.OnQwScrollListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.ScrollView;
 
 public class xah
-  implements QwScrollView.OnQwScrollListener
+  extends BroadcastReceiver
 {
-  public xah(CommonHbFragment paramCommonHbFragment) {}
+  private xah(PayCodeEntryActivity paramPayCodeEntryActivity) {}
   
-  public void onScrollChanged(Boolean paramBoolean, ScrollView paramScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public void onTouch(ScrollView paramScrollView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("CommonHbFragment", 2, "onScrollChanged...");
-      }
-      InputMethodUtil.a(this.a.a);
+    paramContext = paramIntent.getAction();
+    if ((paramContext == null) || (paramContext.length() == 0)) {}
+    while (!paramContext.equals("wlx.plugin.paycode.enterpage.exit")) {
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("PayCodeEntryActivity", 2, "receive broadcast, exit paycode entry activity");
+    }
+    this.a.finish();
   }
 }
 

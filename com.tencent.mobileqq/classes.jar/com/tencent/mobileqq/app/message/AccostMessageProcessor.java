@@ -43,8 +43,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
-import zou;
-import zov;
+import zsa;
+import zsb;
 
 public class AccostMessageProcessor
   extends BaseMessageProcessor
@@ -122,16 +122,16 @@ public class AccostMessageProcessor
       if (localAccostMsg.eAccostType == 0) {}
       for (int j = localAccostMsg.iAccostType;; j = localAccostMsg.eAccostType)
       {
-        a(paramLong1, new zov(paramLong2, j, localAccostMsg.uMsgID, localAccostMsg.iMsgTime, localArrayList, ((RichMsg)localObject).sAction), localSvcGetMsgInfo, false);
+        a(paramLong1, new zsb(paramLong2, j, localAccostMsg.uMsgID, localAccostMsg.iMsgTime, localArrayList, ((RichMsg)localObject).sAction), localSvcGetMsgInfo, false);
         break;
       }
       return;
     }
   }
   
-  private void a(long paramLong, zov paramzov)
+  private void a(long paramLong, zsb paramzsb)
   {
-    ArrayList localArrayList = paramzov.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = paramzsb.jdField_a_of_type_JavaUtilArrayList;
     int i = 0;
     try
     {
@@ -157,7 +157,7 @@ public class AccostMessageProcessor
               QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
               localObject2 = (CardHandler)((QQAppInterface)localObject2).a(2);
               if (localObject2 != null) {
-                ((CardHandler)localObject2).a((PushVoteIncreaseInfo)localObject1, String.valueOf(paramLong), String.valueOf(paramzov.jdField_a_of_type_Long));
+                ((CardHandler)localObject2).a((PushVoteIncreaseInfo)localObject1, String.valueOf(paramLong), String.valueOf(paramzsb.jdField_a_of_type_Long));
               }
             }
           }
@@ -166,17 +166,17 @@ public class AccostMessageProcessor
       }
       return;
     }
-    catch (Exception paramzov)
+    catch (Exception paramzsb)
     {
-      paramzov.printStackTrace();
+      paramzsb.printStackTrace();
     }
   }
   
-  private void a(long paramLong, zov paramzov, SvcGetMsgInfo paramSvcGetMsgInfo, boolean paramBoolean)
+  private void a(long paramLong, zsb paramzsb, SvcGetMsgInfo paramSvcGetMsgInfo, boolean paramBoolean)
   {
     ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = paramzov.jdField_a_of_type_JavaUtilArrayList;
-    String str2 = paramzov.jdField_a_of_type_JavaLangString;
+    ArrayList localArrayList2 = paramzsb.jdField_a_of_type_JavaUtilArrayList;
+    String str2 = paramzsb.jdField_a_of_type_JavaLangString;
     int m = 0;
     int i = -1000;
     Object localObject3;
@@ -219,7 +219,7 @@ public class AccostMessageProcessor
         localObject3 = null;
         j = i;
         continue;
-        if (paramzov.jdField_a_of_type_Int != 201) {
+        if (paramzsb.jdField_a_of_type_Int != 201) {
           continue;
         }
         localObject2 = ActionMsgUtil.a((String)localObject3, str2);
@@ -238,7 +238,7 @@ public class AccostMessageProcessor
         i = -1003;
         l1 = l2;
         continue;
-        if (paramzov.jdField_a_of_type_Int != 6) {
+        if (paramzsb.jdField_a_of_type_Int != 6) {
           continue;
         }
         a(str2, paramLong, false);
@@ -278,18 +278,18 @@ public class AccostMessageProcessor
       if (localObject3 != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "----------handleAccostMsgItemResp accostMsg.eAccostType" + paramzov.jdField_a_of_type_Int + "accostMsg.msgId: " + paramzov.jdField_b_of_type_Long + " accostMsg.time" + paramzov.c + " msgConten: " + Utils.a((String)localObject3));
+          QLog.d("Q.msg.BaseMessageProcessor", 2, "----------handleAccostMsgItemResp accostMsg.eAccostType" + paramzsb.jdField_a_of_type_Int + "accostMsg.msgId: " + paramzsb.jdField_b_of_type_Long + " accostMsg.time" + paramzsb.c + " msgConten: " + Utils.a((String)localObject3));
         }
-        l2 = paramzov.jdField_a_of_type_Long;
-        if (paramzov.jdField_a_of_type_Int != 1) {
+        l2 = paramzsb.jdField_a_of_type_Long;
+        if (paramzsb.jdField_a_of_type_Int != 1) {
           continue;
         }
         l1 = 9999L;
         i = j;
         localObject1 = localObject3;
         localObject3 = MessageRecordFactory.a(i);
-        ((MessageRecord)localObject3).init(paramLong, l1, paramzov.jdField_a_of_type_Long, (String)localObject1, paramzov.c, i, 1001, 0L);
-        ((MessageRecord)localObject3).shmsgseq = paramzov.jdField_b_of_type_Long;
+        ((MessageRecord)localObject3).init(paramLong, l1, paramzsb.jdField_a_of_type_Long, (String)localObject1, paramzsb.c, i, 1001, 0L);
+        ((MessageRecord)localObject3).shmsgseq = paramzsb.jdField_b_of_type_Long;
         ((MessageRecord)localObject3).isread = paramBoolean;
         if ((paramSvcGetMsgInfo != null) && (paramSvcGetMsgInfo.vReserved != null) && (paramSvcGetMsgInfo.vReserved.length >= 2))
         {
@@ -330,7 +330,7 @@ public class AccostMessageProcessor
         localObject1 = TransfileUtile.a(str1, 0L, 2, false, str1);
         i = -2002;
         continue;
-        a(paramLong, paramBoolean, paramzov);
+        a(paramLong, paramBoolean, paramzsb);
         return;
         if (localArrayList1.size() <= 0) {
           continue;
@@ -338,11 +338,11 @@ public class AccostMessageProcessor
         boolean bool1 = MessageHandlerUtils.a(localArrayList1);
         boolean bool2 = MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList1);
         i = MsgProxyUtils.a(localArrayList1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        paramzov = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+        paramzsb = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
         if ((bool1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Stop)) {}
         for (paramBoolean = true;; paramBoolean = false)
         {
-          paramzov.a(localArrayList1, String.valueOf(paramLong), paramBoolean);
+          paramzsb.a(localArrayList1, String.valueOf(paramLong), paramBoolean);
           a("handleAccostMsgItemResp", true, i, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(bool1, bool2), false);
           return;
         }
@@ -356,10 +356,10 @@ public class AccostMessageProcessor
     }
   }
   
-  private void a(long paramLong, boolean paramBoolean, zov paramzov)
+  private void a(long paramLong, boolean paramBoolean, zsb paramzsb)
   {
     ArrayList localArrayList = new ArrayList();
-    long l = paramzov.d;
+    long l = paramzsb.d;
     if (l == paramLong) {}
     SystemMsg localSystemMsg;
     for (int i = 1;; i = 0)
@@ -368,21 +368,21 @@ public class AccostMessageProcessor
       localSystemMsg = new SystemMsg();
       localObject = new StringBuffer();
       int j = 0;
-      while (j < paramzov.jdField_a_of_type_JavaUtilArrayList.size())
+      while (j < paramzsb.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((StringBuffer)localObject).append(new String(((MsgItem)paramzov.jdField_a_of_type_JavaUtilArrayList.get(j)).MsgContent));
-        if (j < paramzov.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+        ((StringBuffer)localObject).append(new String(((MsgItem)paramzsb.jdField_a_of_type_JavaUtilArrayList.get(j)).MsgContent));
+        if (j < paramzsb.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
           ((StringBuffer)localObject).append("\n");
         }
         j += 1;
       }
     }
     localSystemMsg.sMsg = ((StringBuffer)localObject).toString();
-    localSystemMsg.auth = paramzov.jdField_a_of_type_ArrayOfByte;
-    localSystemMsg.lToMobile = paramzov.e;
-    localSystemMsg.strNickName = paramzov.jdField_b_of_type_JavaLangString;
+    localSystemMsg.auth = paramzsb.jdField_a_of_type_ArrayOfByte;
+    localSystemMsg.lToMobile = paramzsb.e;
+    localSystemMsg.strNickName = paramzsb.jdField_b_of_type_JavaLangString;
     if (QLog.isColorLevel()) {
-      QLog.d("MessageHandler", 2, "addFriendRequestByOldVersion, addUin=" + paramzov.d + ", msgUid=" + paramzov.jdField_b_of_type_Long + ", msg=" + localSystemMsg.sMsg);
+      QLog.d("MessageHandler", 2, "addFriendRequestByOldVersion, addUin=" + paramzsb.d + ", msgUid=" + paramzsb.jdField_b_of_type_Long + ", msg=" + localSystemMsg.sMsg);
     }
     Object localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).c(String.valueOf(l));
     label320:
@@ -393,7 +393,7 @@ public class AccostMessageProcessor
       if ((localObject != null) && (((String)localObject).length() != 0)) {
         break label558;
       }
-      localSystemMsg.message = (l + BaseApplication.getContext().getString(2131434651));
+      localSystemMsg.message = (l + BaseApplication.getContext().getString(2131434668));
       localObject = new JceOutputStream();
       ((JceOutputStream)localObject).setServerEncoding("UTF-8");
       localSystemMsg.writeTo((JceOutputStream)localObject);
@@ -401,9 +401,9 @@ public class AccostMessageProcessor
       if (localObject != null)
       {
         localMessageRecord = MessageRecordFactory.a(-1011);
-        localMessageRecord.init(paramLong, 9998L, l, (String)localObject, 0L, -1011, 0, paramzov.c);
+        localMessageRecord.init(paramLong, 9998L, l, (String)localObject, 0L, -1011, 0, paramzsb.c);
         localMessageRecord.shmsgseq = 187L;
-        localMessageRecord.msgUid = paramzov.jdField_b_of_type_Long;
+        localMessageRecord.msgUid = paramzsb.jdField_b_of_type_Long;
         if (paramBoolean) {
           localMessageRecord.isread = true;
         }
@@ -434,14 +434,14 @@ public class AccostMessageProcessor
       localObject = null;
       break;
       label558:
-      localSystemMsg.message = ((String)localObject + BaseApplication.getContext().getString(2131434651));
+      localSystemMsg.message = ((String)localObject + BaseApplication.getContext().getString(2131434668));
       break label320;
       label593:
       i = 0;
       break label427;
       label599:
       if (QLog.isColorLevel()) {
-        QLog.d("MessageHandler", 2, "addFriendRequestByOldVersion, the message is remove by msgFilter, addUin=" + paramzov.d + ", msgUid=" + localMessageRecord.msgUid + ", msg=" + localSystemMsg.sMsg);
+        QLog.d("MessageHandler", 2, "addFriendRequestByOldVersion, the message is remove by msgFilter, addUin=" + paramzsb.d + ", msgUid=" + localMessageRecord.msgUid + ", msg=" + localSystemMsg.sMsg);
       }
     }
   }
@@ -484,23 +484,23 @@ public class AccostMessageProcessor
         if ((paramFromServiceMsg != null) && (paramFromServiceMsg.VecMsg != null))
         {
           Object localObject = paramFromServiceMsg.VecMsg;
-          localObject = new zov(paramObject.stMsg.lFromMID, paramObject.stMsg.eAccostType, paramObject.stMsg.uMsgID, paramObject.stMsg.iMsgTime, (ArrayList)localObject, paramFromServiceMsg.sAction);
+          localObject = new zsb(paramObject.stMsg.lFromMID, paramObject.stMsg.eAccostType, paramObject.stMsg.uMsgID, paramObject.stMsg.iMsgTime, (ArrayList)localObject, paramFromServiceMsg.sAction);
           if (paramFromServiceMsg.stSender != null)
           {
             if (QLog.isColorLevel()) {
               QLog.d("Q.msg.BaseMessageProcessor", 2, "handlePushAccostMsg richMsg.stSender is null");
             }
-            ((zov)localObject).d = paramFromServiceMsg.stSender.lMobileUin;
-            ((zov)localObject).jdField_a_of_type_ArrayOfByte = paramFromServiceMsg.stSender.sig;
-            ((zov)localObject).jdField_b_of_type_JavaLangString = paramFromServiceMsg.stSender.nickname;
+            ((zsb)localObject).d = paramFromServiceMsg.stSender.lMobileUin;
+            ((zsb)localObject).jdField_a_of_type_ArrayOfByte = paramFromServiceMsg.stSender.sig;
+            ((zsb)localObject).jdField_b_of_type_JavaLangString = paramFromServiceMsg.stSender.nickname;
           }
-          ((zov)localObject).e = paramObject.stMsg.lFromMID;
-          a(Long.valueOf(paramToServiceMsg).longValue(), (zov)localObject, null, false);
+          ((zsb)localObject).e = paramObject.stMsg.lFromMID;
+          a(Long.valueOf(paramToServiceMsg).longValue(), (zsb)localObject, null, false);
           continue;
           paramFromServiceMsg = a(paramObject.stMsg.strMsg);
           if (paramFromServiceMsg != null)
           {
-            paramFromServiceMsg = new zov(paramObject.stMsg.lFromMID, paramFromServiceMsg.VecMsg);
+            paramFromServiceMsg = new zsb(paramObject.stMsg.lFromMID, paramFromServiceMsg.VecMsg);
             a(Long.valueOf(paramToServiceMsg).longValue(), paramFromServiceMsg);
           }
         }
@@ -686,7 +686,7 @@ public class AccostMessageProcessor
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.BaseMessageProcessor", 2, "<GetMsgV4><S>--->getLbsOfflineMsg : cChannel:4,syncFlag:" + paramInt);
     }
-    a(false, false, false, 0L, new zou(this, paramArrayOfByte, paramInt));
+    a(false, false, false, 0L, new zsa(this, paramArrayOfByte, paramInt));
   }
   
   public void b(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)

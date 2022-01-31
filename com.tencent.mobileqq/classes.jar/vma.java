@@ -1,57 +1,91 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import cooperation.qzone.QZoneClickReport;
-import cooperation.qzone.QZoneClickReport.ReportInfo;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.AbstractImageListModel;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOGallerySceneWithBusiness;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider.Stub;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BinderWarpper;
 
-class vma
-  implements Runnable
+public class vma
+  extends GalleryManager
 {
-  vma(vlz paramvlz, boolean paramBoolean) {}
+  IAIOImageProviderCallBack jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack = new vmb(this);
   
-  public void run()
+  public vma(AIOGalleryActivity paramAIOGalleryActivity) {}
+  
+  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a, this.jdField_a_of_type_Vlz.a.findViewById(2131369412));
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a).setBackgroundResource(2130845678);
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a).setVisibility(0);
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a, (CheckBox)this.jdField_a_of_type_Vlz.a.findViewById(2131370073));
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a, (TextView)this.jdField_a_of_type_Vlz.a.findViewById(2131370075));
-    PhotoListPanel.b(this.jdField_a_of_type_Vlz.a, (TextView)this.jdField_a_of_type_Vlz.a.findViewById(2131370074));
-    PhotoListPanel.b(this.jdField_a_of_type_Vlz.a, this.jdField_a_of_type_Vlz.a.findViewById(2131370072));
-    PhotoListPanel.c(this.jdField_a_of_type_Vlz.a, this.jdField_a_of_type_Vlz.a.findViewById(2131370076));
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a).setOnClickListener(this.jdField_a_of_type_Vlz.a);
-    PhotoListPanel.b(this.jdField_a_of_type_Vlz.a).setOnClickListener(this.jdField_a_of_type_Vlz.a);
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a).setOnClickListener(this.jdField_a_of_type_Vlz.a);
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a).setOnClickListener(this.jdField_a_of_type_Vlz.a);
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a, PhotoListPanel.a(this.jdField_a_of_type_Vlz.a), PhotoListPanel.b(this.jdField_a_of_type_Vlz.a));
-    Object localObject = new QZoneClickReport.ReportInfo();
-    ((QZoneClickReport.ReportInfo)localObject).a = Long.valueOf(this.jdField_a_of_type_Vlz.a.a).longValue();
-    ((QZoneClickReport.ReportInfo)localObject).c = "459";
-    ((QZoneClickReport.ReportInfo)localObject).d = "1";
-    QZoneClickReport.report(this.jdField_a_of_type_Vlz.a.a, (QZoneClickReport.ReportInfo)localObject, true);
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a).setOnCheckedChangeListener(null);
-    PhotoListPanel.a(this.jdField_a_of_type_Vlz.a).setChecked(this.jdField_a_of_type_Boolean);
-    CheckBox localCheckBox;
-    StringBuilder localStringBuilder;
-    if (AppSetting.b)
+    return new AIOGallerySceneWithBusiness(paramActivity, paramAbstractImageListModel, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider, AIOGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
+  }
+  
+  public AbstractImageListModel a(Activity paramActivity)
+  {
+    paramActivity.getIntent().getIntExtra("forward_source_uin_type", -1);
+    return new AIOImageListModel(false, false);
+  }
+  
+  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    AIOImageListModel localAIOImageListModel = (AIOImageListModel)paramAbstractImageListModel;
+    if ((localAIOImageListModel.b()) && (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene != null)) {
+      ((AIOGalleryScene)this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene).u();
+    }
+    localAIOImageListModel.f = paramActivity.getIntent().getBooleanExtra("extra.IS_FROM_NEW_TROOP_CHAT_HISTORY", false);
+    if (localAIOImageListModel.f) {
+      ReportController.b(null, "dc00899", "Grp_chatRecord", "", "chatRecor_pic", "pic_exp", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_JavaLangString, "", "", "");
+    }
+    localAIOImageListModel.d(4);
+    localAIOImageListModel.a();
+    return new AIOImageListScene(paramActivity, paramAbstractImageListModel, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider, AIOGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity));
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if (AIOGalleryUtils.a != null) {
+      AIOGalleryUtils.a.removeMessages(1);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider == null)
     {
-      localCheckBox = PhotoListPanel.a(this.jdField_a_of_type_Vlz.a);
-      localStringBuilder = new StringBuilder().append("上传到").append(PhotoListPanel.b(this.jdField_a_of_type_Vlz.a)).append(" ");
-      if (!this.jdField_a_of_type_Boolean) {
-        break label493;
+      BinderWarpper localBinderWarpper = (BinderWarpper)paramActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
+      if (localBinderWarpper == null) {
+        break label173;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider = IAIOImageProvider.Stub.a(localBinderWarpper.a);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack);
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryActivity", 2, "IAIOImageProvider is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider);
       }
     }
-    label493:
-    for (localObject = "已选中";; localObject = "未选中")
+    boolean bool = paramActivity.getIntent().getBooleanExtra("extra.IS_GOTO_IMAGELIST", false);
+    super.a(paramActivity);
+    if (bool)
     {
-      localCheckBox.setContentDescription((String)localObject);
-      PhotoListPanel.a(this.jdField_a_of_type_Vlz.a).setOnCheckedChangeListener(this.jdField_a_of_type_Vlz.a);
-      PhotoListPanel.a(this.jdField_a_of_type_Vlz.a).setOnClickListener(this.jdField_a_of_type_Vlz.a);
-      this.jdField_a_of_type_Vlz.a.h();
-      return;
+      this.jdField_a_of_type_Boolean = paramActivity.getIntent().getBooleanExtra("extra.NO_FIRST_ENTER_ANIMATION", false);
+      super.a();
+      if ((this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene != null) && ((this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene instanceof AIOImageListScene))) {
+        ((AIOImageListScene)this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene).m();
+      }
     }
+    return;
+    label173:
+    throw new IllegalArgumentException("can't find Binder in Intent..");
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

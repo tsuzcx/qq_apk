@@ -10,7 +10,11 @@ public final class count_info
 {
   static single_count cache_stCount = new single_count();
   static ArrayList cache_vecUinList = new ArrayList();
+  public int iSubCountID;
   public single_count stCount;
+  public String strIconUrl = "";
+  public String strReportValue = "";
+  public String strShowMsg = "";
   public String trace_info = "";
   public ArrayList vecUinList;
   
@@ -22,11 +26,15 @@ public final class count_info
   
   public count_info() {}
   
-  public count_info(single_count paramsingle_count, ArrayList paramArrayList, String paramString)
+  public count_info(single_count paramsingle_count, ArrayList paramArrayList, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
     this.stCount = paramsingle_count;
     this.vecUinList = paramArrayList;
-    this.trace_info = paramString;
+    this.trace_info = paramString1;
+    this.iSubCountID = paramInt;
+    this.strIconUrl = paramString2;
+    this.strShowMsg = paramString3;
+    this.strReportValue = paramString4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -34,6 +42,10 @@ public final class count_info
     this.stCount = ((single_count)paramJceInputStream.read(cache_stCount, 0, false));
     this.vecUinList = ((ArrayList)paramJceInputStream.read(cache_vecUinList, 1, false));
     this.trace_info = paramJceInputStream.readString(2, false);
+    this.iSubCountID = paramJceInputStream.read(this.iSubCountID, 3, false);
+    this.strIconUrl = paramJceInputStream.readString(4, false);
+    this.strShowMsg = paramJceInputStream.readString(5, false);
+    this.strReportValue = paramJceInputStream.readString(6, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -46,6 +58,16 @@ public final class count_info
     }
     if (this.trace_info != null) {
       paramJceOutputStream.write(this.trace_info, 2);
+    }
+    paramJceOutputStream.write(this.iSubCountID, 3);
+    if (this.strIconUrl != null) {
+      paramJceOutputStream.write(this.strIconUrl, 4);
+    }
+    if (this.strShowMsg != null) {
+      paramJceOutputStream.write(this.strShowMsg, 5);
+    }
+    if (this.strReportValue != null) {
+      paramJceOutputStream.write(this.strReportValue, 6);
     }
   }
 }

@@ -21,13 +21,13 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
 import java.util.Iterator;
-import neh;
+import nfr;
 
 public class OfficialRecommendListPageLoader
   extends INetPageLoader
   implements CmdTaskManger.CommandCallback
 {
-  private LbsManager.LbsUpdateListener a = new neh(this);
+  private LbsManager.LbsUpdateListener a = new nfr(this);
   
   public void a(BasicLocation paramBasicLocation)
   {

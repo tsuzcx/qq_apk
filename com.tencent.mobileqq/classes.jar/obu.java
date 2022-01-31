@@ -1,51 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import com.tencent.biz.qqstory.takevideo.publish.GeneratePicArgs;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
 
 public class obu
-  extends SimpleObserver
+  implements Animation.AnimationListener
 {
-  public obu(EditPicSave paramEditPicSave) {}
+  public obu(NewMessageYellowBar paramNewMessageYellowBar) {}
   
-  public void a(GenerateContext paramGenerateContext)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.onNext(paramGenerateContext);
-    this.a.a(40);
-    paramGenerateContext = paramGenerateContext.a.b;
-    SLog.b("EditPicSave", "picPath = " + paramGenerateContext);
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
-    {
-      ThreadManager.post(new obv(this, paramGenerateContext), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
-      this.a.jdField_a_of_type_Int = 40;
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.b = 10;
-      this.a.e();
-    }
+    this.a.setVisibility(8);
   }
   
-  public void onCancel()
-  {
-    super.onCancel();
-    SLog.d("EditPicSave", "saveVideo cancel !");
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.h();
-    QQToast.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onError(@NonNull Error paramError)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    super.onError(paramError);
-    SLog.e("EditPicSave", "saveVideo error ：" + paramError);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    QQToast.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
-    this.a.h();
+    this.a.a.setAlpha(1.0F);
   }
 }
 

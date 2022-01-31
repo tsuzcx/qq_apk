@@ -1,25 +1,31 @@
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.net.InetAddress;
+import java.net.URL;
 
-public class oxt
-  implements AsyncBack
+public final class oxt
+  implements Runnable
 {
-  public oxt(PluginJumpManager paramPluginJumpManager) {}
+  public oxt(String paramString) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    if (paramInt == 0) {
-      HtmlOffline.a("urlplugin.cfg", this.a.mContext, "1007", new oxu(this));
-    }
-    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
+    try
+    {
+      URL localURL = new URL(this.a);
+      String str = InetAddress.getByName(localURL.getHost()).getHostAddress();
+      if (!TextUtils.isEmpty(str)) {
+        BaseApplicationImpl.getContext().getSharedPreferences("qbiz_host_ip_map", 0).edit().putString(localURL.getHost(), str).commit();
+      }
       return;
     }
-    this.a.loadConfigFromFile();
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

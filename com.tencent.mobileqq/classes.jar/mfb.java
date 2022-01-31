@@ -1,29 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.OnPlayStateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class mfb
-  implements VideoPlayManager.OnPlayStateListener
+  implements Runnable
 {
-  public mfb(VideoVolumeControl paramVideoVolumeControl) {}
+  public mfb(VideoPluginInstall paramVideoPluginInstall) {}
   
-  public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam, VideoPlayerWrapper paramVideoPlayerWrapper, int paramInt1, int paramInt2, Object paramObject)
+  public void run()
   {
-    if (paramInt2 == 0) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "start install video sdk in subThread");
+    }
+    try
     {
-      do
-      {
-        return;
-      } while ((paramInt2 == 1) || (paramInt2 == 2));
-      if (paramInt2 == 3)
-      {
-        this.a.a(true, "PLAY_STATE_PLAYING");
-        this.a.a(this.a.b(), "video playing", 1);
-        return;
+      if (VideoPluginInstall.a(this.a) != null) {
+        TVK_SDKMgr.installPlugin(VideoPluginInstall.a(this.a), new mfd(VideoPluginInstall.a(this.a)));
       }
-    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.readinjoy.video", 2, "TVK_SDKMgr.installPlugin ERROR e=" + localException.getMessage());
+    }
   }
 }
 

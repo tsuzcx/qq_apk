@@ -1,37 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.TextParcelData;
 
-public class anon
-  implements Animator.AnimatorListener
+public final class anon
+  implements Parcelable.Creator
 {
-  public anon(PickerContainer paramPickerContainer) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public TextParcelData a(Parcel paramParcel)
   {
-    if (PickerContainer.a(this.a))
-    {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
-      }
-      PickerContainer.a(this.a, false);
-    }
+    return new TextParcelData(paramParcel);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public TextParcelData[] a(int paramInt)
   {
-    if (PickerContainer.a(this.a))
-    {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
-      }
-      PickerContainer.a(this.a, false);
-    }
+    return new TextParcelData[paramInt];
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

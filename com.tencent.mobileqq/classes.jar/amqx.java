@@ -1,24 +1,29 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBStringField;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgReq;
-import cooperation.weiyun.sdk.api.WeiyunApi;
-import cooperation.weiyun.utils.PreferenceUtils;
-import mqq.app.AppRuntime;
+import android.os.Handler.Callback;
+import android.os.Message;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public final class amqx
-  implements Runnable
+  extends WtloginObserver
 {
-  public amqx(int paramInt) {}
+  public amqx(Handler.Callback paramCallback) {}
   
-  public void run()
+  public void OnException(String paramString, int paramInt)
   {
-    WeiyunPB.WeiyunTrialCouponUseMsgReq localWeiyunTrialCouponUseMsgReq = new WeiyunPB.WeiyunTrialCouponUseMsgReq();
-    localWeiyunTrialCouponUseMsgReq.business_id.set("upload_speed_up");
-    WeiyunApi.a(localWeiyunTrialCouponUseMsgReq, null);
-    if (this.a > 0)
-    {
-      int i = this.a;
-      PreferenceUtils.a(BaseApplicationImpl.getApplication(), String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "upload_coupon_count", String.valueOf(i - 1));
+    paramString = Message.obtain();
+    paramString.what = 1001;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
+    }
+  }
+  
+  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    paramString = Message.obtain();
+    paramString.what = 1000;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
     }
   }
 }

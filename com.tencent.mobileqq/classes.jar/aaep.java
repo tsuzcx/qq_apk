@@ -1,21 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class aaep
-  implements ValueAnimator.AnimatorUpdateListener
+public final class aaep
+  implements Parcelable.Creator
 {
-  public aaep(ARCardCamereButtonLayout paramARCardCamereButtonLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public ArEffectConfig a(Parcel paramParcel)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ARCardCamereButtonLayout.a(this.a, f);
+    return new ArEffectConfig(paramParcel);
+  }
+  
+  public ArEffectConfig[] a(int paramInt)
+  {
+    return new ArEffectConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaep
  * JD-Core Version:    0.7.0.1
  */

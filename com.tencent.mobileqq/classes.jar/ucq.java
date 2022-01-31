@@ -1,20 +1,34 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-public class ucq
-  extends FacePreloadBaseAdapter.ViewHolder
+class ucq
+  implements Runnable
 {
-  public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  int jdField_b_of_type_Int;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  ucq(ucp paramucp, String paramString) {}
   
-  private ucq(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public void run()
+  {
+    if (this.jdField_a_of_type_Ucp.a.app != null)
+    {
+      localObject = (FriendsManager)this.jdField_a_of_type_Ucp.a.app.getManager(50);
+      if (localObject != null)
+      {
+        localObject = ((FriendsManager)localObject).a(this.jdField_a_of_type_JavaLangString);
+        if (localObject != null) {
+          this.jdField_a_of_type_Ucp.a.runOnUiThread(new ucr(this, (Card)localObject));
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      Object localObject;
+      return;
+    }
+    QLog.d("Q.systemmsg.TroopRequestActivity", 2, "onUpdateFriendInfo app is null");
+  }
 }
 
 

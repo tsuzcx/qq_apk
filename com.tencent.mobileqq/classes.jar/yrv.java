@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.IApolloRenderView;
+import com.tencent.mobileqq.apollo.script.SpriteAioScript;
 
 public class yrv
   implements Runnable
 {
-  public yrv(ApolloMsgPlayController paramApolloMsgPlayController, MessageRecord paramMessageRecord) {}
+  public yrv(SpriteAioScript paramSpriteAioScript, IApolloRenderView paramIApolloRenderView, String paramString) {}
   
   public void run()
   {
-    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null)
-    {
-      localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(19);
-      if (localObject != null) {
-        ((QQMessageFacade)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extStr);
-      }
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker() != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker().a != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

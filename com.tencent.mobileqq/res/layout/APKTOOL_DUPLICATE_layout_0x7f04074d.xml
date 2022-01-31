@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02ca" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02c9"
+<LinearLayout android:orientation="vertical" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a071a" android:layout_width="fill_parent" android:layout_height="0.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020006" android:scaleType="centerCrop" android:layout_weight="1.0" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:ellipsize="end" android:gravity="bottom|center" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02cb" android:text="Title Mary's Good Story" android:singleLine="true" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2242" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04074c" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2243" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04020f" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2244" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04074a" />
 </LinearLayout>

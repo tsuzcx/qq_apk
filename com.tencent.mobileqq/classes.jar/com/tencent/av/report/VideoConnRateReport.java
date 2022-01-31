@@ -5,8 +5,8 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
-import jmw;
-import jmx;
+import jmh;
+import jmi;
 
 public class VideoConnRateReport
 {
@@ -869,7 +869,7 @@ public class VideoConnRateReport
   
   public void a()
   {
-    new Thread(new jmw(this)).start();
+    new Thread(new jmh(this)).start();
   }
   
   public void a(long paramLong)
@@ -1738,7 +1738,7 @@ public class VideoConnRateReport
     if (!this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Boolean = true;
-      new Thread(new jmx(this)).start();
+      new Thread(new jmi(this)).start();
     }
   }
 }

@@ -1,41 +1,38 @@
-import android.app.Activity;
-import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.util.Locale;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.customviews.MessageProgressTextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.widget.ProgressCircle;
 
 public class vju
-  implements vjl
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public vju(AIOGalleryScene paramAIOGalleryScene) {}
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public MessageProgressTextView a;
+  public AsyncImageView a;
+  public EllipsizingTextView a;
+  public ProgressCircle a;
+  public View b;
+  public ImageView b;
+  public ProgressBar b;
+  public TextView b;
+  public AsyncImageView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
+  public View e;
+  public TextView e;
+  public TextView f;
   
-  public void a(AIOImageData paramAIOImageData, boolean paramBoolean)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a() != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a instanceof AIOImageData)))
-    {
-      AIOImageData localAIOImageData = (AIOImageData)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a;
-      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.j, paramAIOImageData.j)))
-      {
-        if (localAIOImageData.i <= 0L) {
-          break label141;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, AIOGalleryScene.az(this.a).getString(2131436095), new Object[] { FileUtil.a(localAIOImageData.i) }));
-      }
-    }
-    for (;;)
-    {
-      this.a.c(true);
-      AIOGalleryScene.b(this.a);
-      AIOGalleryScene.c(this.a);
-      return;
-      label141:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131436094);
-    }
-  }
+  public vju(TroopFileItemBuilder paramTroopFileItemBuilder) {}
 }
 
 

@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import kgz;
-import kha;
-import khb;
+import kgk;
+import kgl;
+import kgm;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
@@ -37,14 +37,14 @@ public class PopupDialogQQSide
     int j = ((Bundle)localObject).getInt("rightBtnText", 0);
     localObject = (ResultReceiver)((Bundle)localObject).getParcelable("resultReceiver");
     a();
-    localObject = new kgz(this, null);
-    kha localkha = new kha(this, null);
+    localObject = new kgk(this, null);
+    kgl localkgl = new kgl(this, null);
     int i = k;
     if (k == 0) {
-      i = 2131428668;
+      i = 2131428674;
     }
     if (j == 0) {
-      j = 2131428668;
+      j = 2131428674;
     }
     for (;;)
     {
@@ -52,8 +52,8 @@ public class PopupDialogQQSide
       localQQCustomDialog.setMessage(str2);
       localQQCustomDialog.setTitle(str1);
       localQQCustomDialog.setNegativeButton(i, (DialogInterface.OnClickListener)localObject);
-      localQQCustomDialog.setPositiveButton(j, localkha);
-      localQQCustomDialog.setOnDismissListener(new khb(this));
+      localQQCustomDialog.setPositiveButton(j, localkgl);
+      localQQCustomDialog.setOnDismissListener(new kgm(this));
       localQQCustomDialog.setCancelable(true);
       localQQCustomDialog.show();
       this.a = localQQCustomDialog;

@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class ump
   implements Runnable
 {
-  public ump(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  public ump(PokePanel paramPokePanel, String paramString, ArrayList paramArrayList) {}
   
   public void run()
   {
-    this.a.b();
-    QQToast.a(this.a.a, this.a.a.getString(2131433368), 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]start parsing config");
+    }
+    PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel, this.jdField_a_of_type_JavaLangString);
+    PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel, this.jdField_a_of_type_JavaUtilArrayList);
+    ArrayList localArrayList = PokeItemHelper.a(PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel), this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a);
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      ThreadManager.getUIHandler().post(new umq(this));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.PokePanel", 2, "[pokepanel] parsing config end");
+    }
   }
 }
 

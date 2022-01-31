@@ -440,11 +440,11 @@ public class PtvGuideUploader
     //   725: aload_3
     //   726: invokevirtual 408	pttcenterservice/PttShortVideo$PttShortVideoUploadReq:toByteArray	()[B
     //   729: astore_3
-    //   730: new 410	aicl
+    //   730: new 410	aiqo
     //   733: dup
     //   734: aload_0
     //   735: aload 9
-    //   737: invokespecial 413	aicl:<init>	(Lcom/tencent/mobileqq/transfile/PtvGuideUploader;Ljava/lang/String;)V
+    //   737: invokespecial 413	aiqo:<init>	(Lcom/tencent/mobileqq/transfile/PtvGuideUploader;Ljava/lang/String;)V
     //   740: astore 4
     //   742: aload_0
     //   743: new 415	com/tencent/mobileqq/highway/transaction/Transaction
@@ -863,7 +863,7 @@ public class PtvGuideUploader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.PtvGuideUploader
  * JD-Core Version:    0.7.0.1
  */

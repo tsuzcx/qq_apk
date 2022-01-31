@@ -1,15 +1,22 @@
 import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.utils.TipsManager;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class jst
-  implements Runnable
+public class jst
+  implements URLDrawable.URLDrawableListener
 {
-  jst(jss paramjss) {}
+  public jst(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, URLDrawable paramURLDrawable) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.b(25, true);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
+      DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, this.jdField_a_of_type_ComTencentImageURLDrawable);
     }
   }
 }

@@ -1,5 +1,6 @@
 package com.tencent.common.cache;
 
+import com.tencent.commonsdk.zip.QZipFile;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +9,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class HookDexZipFile
-  extends ZipFile
+  extends QZipFile
 {
   protected File a;
   private HashMap a;
@@ -126,7 +127,7 @@ public class HookDexZipFile
     //   23: ifnull +15 -> 38
     //   26: aload_0
     //   27: getfield 18	com/tencent/common/cache/HookDexZipFile:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
-    //   30: invokevirtual 101	java/util/zip/ZipFile:close	()V
+    //   30: invokevirtual 103	java/util/zip/ZipFile:close	()V
     //   33: aload_0
     //   34: aconst_null
     //   35: putfield 18	com/tencent/common/cache/HookDexZipFile:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
@@ -173,18 +174,18 @@ public class HookDexZipFile
     //   7: iload_1
     //   8: ifeq +23 -> 31
     //   11: aload_0
-    //   12: new 4	java/util/zip/ZipFile
+    //   12: new 4	com/tencent/commonsdk/zip/QZipFile
     //   15: dup
     //   16: aload_0
     //   17: getfield 16	com/tencent/common/cache/HookDexZipFile:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   20: invokespecial 14	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   20: invokespecial 14	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   23: putfield 18	com/tencent/common/cache/HookDexZipFile:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
     //   26: aload_0
     //   27: iconst_0
     //   28: putfield 32	com/tencent/common/cache/HookDexZipFile:jdField_a_of_type_Boolean	Z
     //   31: aload_0
     //   32: getfield 18	com/tencent/common/cache/HookDexZipFile:jdField_a_of_type_JavaUtilZipZipFile	Ljava/util/zip/ZipFile;
-    //   35: invokevirtual 109	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   35: invokevirtual 112	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
     //   38: astore_2
     //   39: aload_0
     //   40: monitorexit
@@ -192,7 +193,7 @@ public class HookDexZipFile
     //   42: areturn
     //   43: astore_2
     //   44: aload_2
-    //   45: invokevirtual 110	java/lang/Exception:printStackTrace	()V
+    //   45: invokevirtual 113	java/lang/Exception:printStackTrace	()V
     //   48: goto -17 -> 31
     //   51: astore_2
     //   52: aload_0
@@ -231,7 +232,7 @@ public class HookDexZipFile
       {
         try
         {
-          this.jdField_a_of_type_JavaUtilZipZipFile = new ZipFile(this.jdField_a_of_type_JavaIoFile);
+          this.jdField_a_of_type_JavaUtilZipZipFile = new QZipFile(this.jdField_a_of_type_JavaIoFile);
           this.jdField_a_of_type_Boolean = false;
           ZipEntry localZipEntry = this.jdField_a_of_type_JavaUtilZipZipFile.getEntry(paramString);
           this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localZipEntry);
@@ -256,7 +257,7 @@ public class HookDexZipFile
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_JavaUtilZipZipFile = new ZipFile(this.jdField_a_of_type_JavaIoFile);
+        this.jdField_a_of_type_JavaUtilZipZipFile = new QZipFile(this.jdField_a_of_type_JavaIoFile);
         this.jdField_a_of_type_Boolean = false;
       }
       paramZipEntry = this.jdField_a_of_type_JavaUtilZipZipFile.getInputStream(paramZipEntry);
@@ -270,7 +271,7 @@ public class HookDexZipFile
     if (this.jdField_a_of_type_Boolean) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilZipZipFile = new ZipFile(this.jdField_a_of_type_JavaIoFile);
+      this.jdField_a_of_type_JavaUtilZipZipFile = new QZipFile(this.jdField_a_of_type_JavaIoFile);
       this.jdField_a_of_type_Boolean = false;
       return this.jdField_a_of_type_JavaUtilZipZipFile.getName();
     }
@@ -290,7 +291,7 @@ public class HookDexZipFile
     finally {}
     try
     {
-      this.jdField_a_of_type_JavaUtilZipZipFile = new ZipFile(this.jdField_a_of_type_JavaIoFile);
+      this.jdField_a_of_type_JavaUtilZipZipFile = new QZipFile(this.jdField_a_of_type_JavaIoFile);
       this.jdField_a_of_type_Boolean = false;
       i = this.jdField_a_of_type_JavaUtilZipZipFile.size();
     }

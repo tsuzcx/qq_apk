@@ -1,37 +1,40 @@
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class aanz
   implements Runnable
 {
-  aanz(aany paramaany, Set paramSet) {}
+  aanz(aanw paramaanw, String paramString1, String paramString2, long paramLong, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aany.jdField_a_of_type_Aaov.jdField_a_of_type_JavaUtilSet.addAll(this.jdField_a_of_type_JavaUtilSet);
-    if (this.jdField_a_of_type_Aany.jdField_a_of_type_Aaov.jdField_a_of_type_JavaUtilSet.isEmpty())
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(BaseActivity.sTopActivity, 2131624516);
+    localQQCustomDialog.setContentView(2130968843);
+    localQQCustomDialog.setTitle(BaseActivity.sTopActivity.getString(2131438244, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    ((ImageView)localQQCustomDialog.findViewById(2131364041)).setImageDrawable(BaseActivity.sTopActivity.getResources().getDrawable(2130838200));
+    ((TextView)localQQCustomDialog.findViewById(2131364042)).setText(this.jdField_a_of_type_JavaLangString);
+    ((TextView)localQQCustomDialog.findViewById(2131362776)).setText(BaseActivity.sTopActivity.getString(2131438826));
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    ArkAppCenter.a(this.b, new aaoa(this, localQQCustomDialog));
+    localQQCustomDialog.setNegativeButton(2131434674, new aaob(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(2131434672, new aaod(this, localQQCustomDialog));
+    try
     {
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppPathByAction, no app name found, task complete, action=%s.%s", new Object[] { this.jdField_a_of_type_Aany.jdField_a_of_type_Aaov.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aany.jdField_a_of_type_Aaov.b }));
-      this.jdField_a_of_type_Aany.jdField_a_of_type_Aaov.jdField_a_of_type_Boolean = true;
-      ArkLocalAppMgr.a(this.jdField_a_of_type_Aany.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aany.jdField_a_of_type_Aaov);
-    }
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = this.jdField_a_of_type_Aany.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a(str1, "0.0.0.0");
-        if (!TextUtils.isEmpty(str2)) {
-          ArkLocalAppMgr.a(this.jdField_a_of_type_Aany.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aany.jdField_a_of_type_Aaov, 0, "Found on Local", str2, str1);
-        } else {
-          this.jdField_a_of_type_Aany.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a(str1, "0.0.0.0", null, new aaoa(this, str1));
-        }
+      localQQCustomDialog.show();
+      label159:
+      if (ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_location", this.c) == 0) {
+        ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_location", this.c, 2);
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label159;
     }
   }
 }

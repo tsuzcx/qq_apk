@@ -1,24 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class akjf
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public akjf(WXShareHelper paramWXShareHelper) {}
+  public akjf(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (WXShareHelper.a(this.a) != null) {
-      WXShareHelper.a(this.a).handleIntent(paramIntent, this.a);
+    Iterator localIterator = this.a.d.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (ImageView)((FrameLayout)this.a.e.get(localObject)).findViewById(2131362355);
+      ((ImageView)localObject).setImageResource(2130845291);
+      ((ImageView)localObject).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akjf
  * JD-Core Version:    0.7.0.1
  */

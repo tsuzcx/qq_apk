@@ -1,32 +1,13 @@
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.IWeiYunImageEvent;
+import com.tencent.mobileqq.emoticonview.HorizontalListViewEx;
 
 public class acge
-  implements QfileCloudFileTabView.IWeiYunImageEvent
+  implements Runnable
 {
-  public acge(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public acge(HorizontalListViewEx paramHorizontalListViewEx) {}
   
-  public View.OnClickListener a(TextView paramTextView)
+  public void run()
   {
-    this.a.a = paramTextView;
-    return new acgf(this);
-  }
-  
-  public boolean a()
-  {
-    return this.a.c;
-  }
-  
-  public boolean b()
-  {
-    return this.a.b;
-  }
-  
-  public boolean c()
-  {
-    return QfileCloudFileTabView.a(this.a);
+    this.a.requestLayout();
   }
 }
 

@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.newfriend.QIMFollowMessage;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.TroopAIOImageGeter.LoadMediaDataCallBack;
+import com.tencent.qphone.base.util.QLog;
 
 public class wgo
-  implements Runnable
+  implements TroopAIOImageGeter.LoadMediaDataCallBack
 {
-  public wgo(QIMFollowerAddBuilder paramQIMFollowerAddBuilder) {}
+  public wgo(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
   
-  public void run()
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
   {
-    ((NewFriendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33)).a(((QIMFollowMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wgp(this));
+    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
+    {
+      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
+      if (QLog.isColorLevel()) {
+        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("chatHistory.troop.portal", 2, "no media data found");
   }
 }
 

@@ -1,18 +1,13 @@
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder;
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
-import java.lang.ref.WeakReference;
+import com.tencent.av.business.manager.report.VideoNodeReporter;
 
 public class jgl
   implements Runnable
 {
-  public jgl(MagicfaceBaseDecoder paramMagicfaceBaseDecoder, String paramString) {}
+  public jgl(VideoNodeReporter paramVideoNodeReporter, long paramLong1, int paramInt, long paramLong2) {}
   
   public void run()
   {
-    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a.get();
-    if (localMagicPlayListener != null) {
-      localMagicPlayListener.b(this.jdField_a_of_type_JavaLangString);
-    }
+    VideoNodeReporter.a(this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 

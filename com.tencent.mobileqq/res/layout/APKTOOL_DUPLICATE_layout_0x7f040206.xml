@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e0092"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf7" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0093" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf8" android:text="微信支付" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0094" />
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cf9" android:text="95折" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0099" />
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cfa" android:text="抽 iPhone X" style="@style/APKTOOL_DUPLICATE_style_0x7f0e009a" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:padding="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d12" android:text="10元" android:layout_weight="1.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0094" />
+        <ImageView style="@style/APKTOOL_DUPLICATE_style_0x7f0e0097" />
     </LinearLayout>
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cfb" android:text="余额：909" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0096" />
-    <ImageView style="@style/APKTOOL_DUPLICATE_style_0x7f0e0097" />
 </LinearLayout>

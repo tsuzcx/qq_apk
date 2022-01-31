@@ -1,22 +1,19 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
 
-public final class aamu
+public class aamu
   implements Runnable
 {
-  public aamu(aanb paramaanb) {}
+  public aamu(ARGreetingCardListManager paramARGreetingCardListManager) {}
   
   public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.recycle();
-      this.a.a = null;
-    }
+    ARGreetingCardListManager.c(this.a);
+    ARGreetingCardListManager.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamu
  * JD-Core Version:    0.7.0.1
  */

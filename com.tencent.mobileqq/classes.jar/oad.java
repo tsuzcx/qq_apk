@@ -1,16 +1,18 @@
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
-import java.util.Locale;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
+import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.widget.ActionSheet.OnDismissListener;
+import java.util.List;
 
 public class oad
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  public oad(NewMessageYellowBar paramNewMessageYellowBar, int paramInt) {}
+  public oad(FeedSegment paramFeedSegment, int paramInt) {}
   
-  public void run()
+  public void onDismiss()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.getDefault(), "%d个小视频更新", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.jdField_a_of_type_AndroidWidgetTextView.startAnimation(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.jdField_a_of_type_AndroidViewAnimationAnimationSet);
+    StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a.a().get(this.jdField_a_of_type_Int);
+    FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, localStoryHomeFeed, "clk_hide");
   }
 }
 

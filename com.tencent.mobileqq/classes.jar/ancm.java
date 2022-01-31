@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
 
 public class ancm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ancm(EditVideoButton paramEditVideoButton) {}
+  public ancm(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a(22);
+    RemoteHandleManager.a().a().k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancm
  * JD-Core Version:    0.7.0.1
  */

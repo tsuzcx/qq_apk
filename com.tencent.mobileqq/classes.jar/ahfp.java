@@ -1,38 +1,20 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.search.view.ContactSearchResultView;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import java.util.List;
 
 public class ahfp
-  extends BaseMvpFaceAdapter
+  implements Runnable
 {
-  public ahfp(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
-  {
-    super(paramListView, paramFaceDecoder);
-  }
+  public ahfp(RedTouchManager paramRedTouchManager, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt, boolean paramBoolean, List paramList) {}
   
-  protected IPresenter a(int paramInt)
+  public void run()
   {
-    return new ContactSearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    if (SearchUtils.a(SelectMemberContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentSelectMemberContactSearchFragment))) {
-      return new ContactSearchResultView(paramViewGroup, 2130971484);
-    }
-    return new ContactSearchResultView(paramViewGroup, 2130971485);
+    RedTouchManager.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahfp
  * JD-Core Version:    0.7.0.1
  */

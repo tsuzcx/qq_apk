@@ -1,75 +1,61 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiDownloadEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDanceMachine;
+import com.tencent.qphone.base.util.QLog;
 
 public class oco
-  extends QQUIEventReceiver
+  extends MessageObserver
 {
-  public oco(@NonNull EditVideoDoodle paramEditVideoDoodle)
-  {
-    super(paramEditVideoDoodle);
-  }
+  public oco(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
   
-  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiDownloadEvent paramDoodleEmojiDownloadEvent)
+  public void a(MessageForDanceMachine paramMessageForDanceMachine)
   {
-    if (paramDoodleEmojiDownloadEvent.jdField_a_of_type_Int != 0) {
-      paramEditVideoDoodle.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a("fail_face", 0, 0, new String[0]);
+    super.a(paramMessageForDanceMachine);
+    if (!DanceMachineUploadVideoFragment.a(this.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadDanceMachineVideo", 2, "do not need callback");
+      }
     }
-    ocr localocr = paramEditVideoDoodle.jdField_a_of_type_Ocr;
-    if (localocr != null)
+    do
     {
-      Object localObject = localocr.a(paramDoodleEmojiDownloadEvent.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.a);
-      if (!(localObject instanceof NormalFacePackage))
-      {
-        SLog.d(this.TAG, "DoodleEmojiDownloadEventReceiver no FacePackage found by pack id = " + paramDoodleEmojiDownloadEvent.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.a);
-        return;
-      }
-      localObject = (NormalFacePackage)localObject;
-      if (paramDoodleEmojiDownloadEvent.jdField_a_of_type_Int == 0)
-      {
-        if (paramDoodleEmojiDownloadEvent.jdField_a_of_type_Boolean)
-        {
-          SLog.b(this.TAG, "notify ui we finish downloading");
-          ((NormalFacePackage)localObject).jdField_a_of_type_Boolean = false;
-          ((NormalFacePackage)localObject).f = paramDoodleEmojiDownloadEvent.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.a();
-          ((NormalFacePackage)localObject).jdField_a_of_type_Int = 0;
-          ((NormalFacePackage)localObject).b = 0;
-          localocr.a((FacePackage)localObject);
-          return;
-        }
-        SLog.a(this.TAG, "notify ui we new progress : " + paramDoodleEmojiDownloadEvent.b + " / " + paramDoodleEmojiDownloadEvent.jdField_a_of_type_Long);
-        ((NormalFacePackage)localObject).jdField_a_of_type_Boolean = true;
-        ((NormalFacePackage)localObject).f = null;
-        ((NormalFacePackage)localObject).jdField_a_of_type_Int = ((int)paramDoodleEmojiDownloadEvent.jdField_a_of_type_Long);
-        ((NormalFacePackage)localObject).b = ((int)paramDoodleEmojiDownloadEvent.b);
-        localocr.a((FacePackage)localObject);
-        return;
-      }
-      ((NormalFacePackage)localObject).jdField_a_of_type_Boolean = false;
-      ((NormalFacePackage)localObject).f = null;
-      ((NormalFacePackage)localObject).jdField_a_of_type_Int = 0;
-      ((NormalFacePackage)localObject).b = 0;
-      localocr.a((FacePackage)localObject);
-      SLog.e(this.TAG, "DoodleEmojiDownloadEventReceiver download error = " + paramDoodleEmojiDownloadEvent.jdField_a_of_type_Int);
-      QQToast.a(paramEditVideoDoodle.a(), "下载失败，请稍后重试", 1).a();
-      VideoEditReport.a("0X80076C9");
-      VideoEditReport.b("0X80075DE");
       return;
+      DanceMachineUploadVideoFragment.a(this.a, false);
+      if (paramMessageForDanceMachine != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("UploadDanceMachineVideo", 2, "mfd is null");
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadDanceMachineVideo", 2, "uuid : " + paramMessageForDanceMachine.uuid + "  md5 : " + paramMessageForDanceMachine.md5 + " thumbFilePath : " + paramMessageForDanceMachine.mThumbFilePath);
     }
-    SLog.b(this.TAG, "DoodleEmojiDownloadEventReceiver adapter is null");
-  }
-  
-  public Class acceptEventClass()
-  {
-    return DoodleEmojiManager.DoodleEmojiDownloadEvent.class;
+    if (paramMessageForDanceMachine.errorCode == 0)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("upload_result", true);
+      localIntent.putExtra("upload_video_uuid", paramMessageForDanceMachine.uuid);
+      localIntent.putExtra("upload_video_md5", paramMessageForDanceMachine.md5);
+      localIntent.putExtra("upload_video_thumb", paramMessageForDanceMachine.mThumbFilePath);
+      localIntent.putExtra("share_method", DanceMachineUploadVideoFragment.a(this.a));
+      localIntent.putExtra("current_nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+      localIntent.putExtra("current_uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      if (DanceMachineUploadVideoFragment.a(this.a) != -1L) {
+        localIntent.putExtra("upload_time_cost", SystemClock.elapsedRealtime() - DanceMachineUploadVideoFragment.a(this.a));
+      }
+      paramMessageForDanceMachine = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      BaseActivity localBaseActivity = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      paramMessageForDanceMachine.setResult(-1, localIntent);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(2);
+    }
   }
 }
 

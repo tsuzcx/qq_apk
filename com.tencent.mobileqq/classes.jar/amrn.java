@@ -1,12 +1,15 @@
-import com.tencent.weiyun.utils.Singleton;
-import cooperation.weiyun.sdk.download.WyDownloader;
+import android.content.Context;
+import cooperation.qzone.PlatformInfor;
+import cooperation.qzone.SharpPDec;
 
-public final class amrn
-  extends Singleton
+public class amrn
+  implements Runnable
 {
-  protected WyDownloader a(Void paramVoid)
+  public amrn(PlatformInfor paramPlatformInfor, Context paramContext) {}
+  
+  public void run()
   {
-    return new WyDownloader(null);
+    PlatformInfor.a(this.jdField_a_of_type_CooperationQzonePlatformInfor, SharpPDec.a(this.jdField_a_of_type_AndroidContentContext));
   }
 }
 

@@ -1,29 +1,39 @@
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTimer;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-public class ahvr
-  implements CountdownTextView.TimerCallback
+public final class ahvr
+  extends ThreadPoolExecutor
 {
-  public ahvr(StructMsgItemTimer paramStructMsgItemTimer, CountdownTextView paramCountdownTextView) {}
-  
-  public void a()
+  public ahvr(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
   {
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, 0L));
+    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
   }
   
-  public void a(long paramLong)
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
-    paramLong /= 1000L;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.setText(StructMsgItemTimer.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer, paramLong));
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemTimer.jdField_d_of_type_Long = paramLong;
+    if ((paramRunnable instanceof FutureTask)) {}
+    try
+    {
+      ((FutureTask)paramRunnable).get();
+      return;
+    }
+    catch (ExecutionException paramRunnable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
+      return;
+    }
+    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahvr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,17 @@
-import cooperation.qzone.cache.CacheManager;
-import cooperation.qzone.cache.FileStorageHandler.Collector;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.Switch;
 
-public final class amdr
-  implements FileStorageHandler.Collector
+public class amdr
+  implements View.OnClickListener
 {
-  public Collection a()
-  {
-    synchronized ()
-    {
-      if (CacheManager.a().size() <= 0)
-      {
-        localObject1 = null;
-        return localObject1;
-      }
-      Object localObject1 = new ArrayList(CacheManager.a().values());
-    }
-  }
+  public amdr(Switch paramSwitch) {}
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdr
  * JD-Core Version:    0.7.0.1
  */

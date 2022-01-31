@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
 
-class aire
-  implements SceneBuilder.OnBuiltListener
+public class aire
+  extends MessageObserver
 {
-  aire(aird paramaird) {}
+  public aire(ShortVideoForwardProcessor paramShortVideoForwardProcessor) {}
   
-  public void a(Layer paramLayer)
+  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
   {
-    if (this.a.a.a == null) {
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
+    {
+      this.a.e();
       return;
     }
-    this.a.a.a.post(new airf(this, paramLayer));
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aire
  * JD-Core Version:    0.7.0.1
  */

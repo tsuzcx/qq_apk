@@ -1,38 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.QLog;
 
-public class shg
-  implements ActionSheet.OnButtonClickListener
+class shg
+  implements Runnable
 {
-  public shg(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, ActionSheet paramActionSheet) {}
+  shg(she paramshe, boolean paramBoolean) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    Conversation.a(this.jdField_a_of_type_She.a, 800L);
+    PullRefreshHeader localPullRefreshHeader;
+    if (this.jdField_a_of_type_She.a.a != null)
     {
+      localPullRefreshHeader = this.jdField_a_of_type_She.a.a;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label66;
+      }
     }
-    for (;;)
+    label66:
+    for (int i = 0;; i = 2)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      localPullRefreshHeader.a(i);
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoMonitor", 2, "ConversationTab[onRefleshRecentListFinished_ui]");
+      }
       return;
-      if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getActivity()))
-      {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006669", "0X8006669", 0, 0, "", "", "", "");
-        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).c(Long.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity)).longValue());
-        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131435266));
-        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).show();
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131434596));
-      }
     }
   }
 }

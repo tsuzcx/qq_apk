@@ -1,36 +1,26 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.base.ImageUtil;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.img.ImageCache;
+import com.tencent.open.base.img.ImageDownCallback;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
 public class algq
-  implements TextWatcher
+  implements ImageDownCallback
 {
-  public algq(Login paramLogin) {}
+  public algq(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
+  public void a(String paramString1, String paramString2, String paramString3) {}
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void b(String paramString1, String paramString2, String paramString3)
   {
-    if (paramInt3 < 2)
-    {
-      this.a.jdField_b_of_type_Boolean = false;
-      if (paramCharSequence.length() == 0) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    LogUtility.d(DownloadManager.a, ">>download apk icon err,should load another size icon");
+    ImageCache.a("app", ImageUtil.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, 75), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     algq
  * JD-Core Version:    0.7.0.1
  */

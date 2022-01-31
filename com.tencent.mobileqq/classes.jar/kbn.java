@@ -1,54 +1,16 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.av.utils.CharacterUtil;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoInviteFloatBarUICtr;
 
-public class kbn
-  implements QavInOutAnimation.QavOutAnimationListener
+class kbn
+  implements Runnable
 {
-  public kbn(VideoInviteActivity paramVideoInviteActivity, boolean paramBoolean) {}
+  kbn(kbm paramkbm, long paramLong) {}
   
-  public void a()
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel != null)
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131364223, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365392, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365391, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365389, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365387, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131364225, false);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvVideoController != null)
-    {
-      if (!this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h) {
-        break label108;
-      }
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1, true);
-      long l = CharacterUtil.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvVideoController.b(3, l);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.g = true;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvVideoController.a(l, 1);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e = true;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2131034269);
-      return;
-      label108:
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 0);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvVideoController.b(248);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1);
-      }
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+    this.jdField_a_of_type_Kbm.a.jdField_a_of_type_ComTencentAvAppSessionInfo.an = true;
+    if (this.jdField_a_of_type_Kbm.a.b == 1) {
+      this.jdField_a_of_type_Kbm.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
     }
   }
 }

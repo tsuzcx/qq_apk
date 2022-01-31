@@ -1,21 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.widget.XListView;
 
 public class aiyk
-  implements View.OnTouchListener
+  extends Handler
 {
-  public aiyk(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public aiyk(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    return false;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a.springBackOverScrollHeaderView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyk
  * JD-Core Version:    0.7.0.1
  */

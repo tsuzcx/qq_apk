@@ -1,83 +1,36 @@
+import android.app.Activity;
 import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import com.tencent.mobileqq.widget.QQToast;
 
 class adxl
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  adxl(adxi paramadxi, View paramView, ActionSheet paramActionSheet) {}
+  adxl(adxk paramadxk, boolean paramBoolean) {}
   
-  private void a()
+  public void run()
   {
-    ReportController.b(this.jdField_a_of_type_Adxi.a.app, "CliOper", "", "", "0X800682D", "0X800682D", 0, 0, "", "", "", "");
-    long l = 0L;
-    for (;;)
+    String str;
+    if (this.jdField_a_of_type_Boolean)
     {
-      try
-      {
-        localObject = new URL("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435");
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        Object localObject;
-        QLog.e("MusicPlayerActivity", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
-        continue;
-        int i = -1;
-        continue;
-      }
-      try
-      {
-        i = ((URL)localObject).openConnection().getContentLength();
-        l = i;
-      }
-      catch (IOException localIOException)
-      {
-        QLog.e("MusicPlayerActivity", 1, "music player activity url IOException ", localIOException);
-      }
+      str = UiApiPlugin.a("0", null, null, this.jdField_a_of_type_Adxk.d);
+      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_result", 0, 1, 0, "", "", "", "");
     }
-    localObject = new Bundle();
-    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
-    ((Bundle)localObject).putString("_filename_from_dlg", this.jdField_a_of_type_Adxi.a.getResources().getString(2131435090));
-    UniformDownloadMgr.a().b("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435", (Bundle)localObject);
-    localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof Integer))
+    for (int i = 2131430705;; i = 2131430706)
     {
-      i = ((Integer)localObject).intValue();
-      Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Adxi.a), 54, 2131438462, i, this.jdField_a_of_type_AndroidViewView).sendToTarget();
+      QQToast.a(this.jdField_a_of_type_Adxk.jdField_a_of_type_AndroidAppActivity, i, 0).b(this.jdField_a_of_type_Adxk.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
+      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_dialog_click", 0, 1, 0, "", "", "", "");
+      this.jdField_a_of_type_Adxk.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_Adxk.e, new String[] { str });
       return;
-    }
-  }
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (!UniformDownloadMgr.a().a("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435")) {
-        ThreadManager.post(new adxm(this), 5, null, true);
-      }
+      str = UiApiPlugin.a("-3", null, "createShortcut failed, iconUrl is invalide: " + this.jdField_a_of_type_Adxk.c, this.jdField_a_of_type_Adxk.d);
+      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_result", 0, 1, -1, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxl
  * JD-Core Version:    0.7.0.1
  */

@@ -23,15 +23,15 @@ import cooperation.qwallet.plugin.QWalletPayBridge;
 import mqq.manager.TicketManager;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wvz;
-import wwa;
-import wwb;
-import wwc;
-import wwd;
-import wwe;
-import wwf;
-import wwi;
-import wwj;
+import wze;
+import wzf;
+import wzg;
+import wzh;
+import wzi;
+import wzj;
+import wzk;
+import wzn;
+import wzo;
 
 public class GoldMsgSettingActivity
   extends IphoneTitleBarActivity
@@ -40,18 +40,18 @@ public class GoldMsgSettingActivity
   public static boolean b;
   private int jdField_a_of_type_Int = -1;
   private Intent jdField_a_of_type_AndroidContentIntent;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wvz(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wze(this);
   private View jdField_a_of_type_AndroidViewView;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new wwc(this);
-  GoldConfigObserver jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldConfigObserver = new wwe(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new wzh(this);
+  GoldConfigObserver jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldConfigObserver = new wzj(this);
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  public wwi a;
+  public wzn a;
   public boolean a;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new wwa(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new wzf(this);
   private View jdField_b_of_type_AndroidViewView;
   private String jdField_b_of_type_JavaLangString;
-  private View.OnClickListener c = new wwb(this);
+  private View.OnClickListener c = new wzg(this);
   
   public GoldMsgSettingActivity()
   {
@@ -61,15 +61,15 @@ public class GoldMsgSettingActivity
   private void a()
   {
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131364728));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131364729));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131364730);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131364750));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131364751));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131364752);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (this.jdField_a_of_type_Wwi != null) {
-      this.jdField_a_of_type_Wwi.a(this.jdField_a_of_type_AndroidViewView);
+    if (this.jdField_a_of_type_Wzn != null) {
+      this.jdField_a_of_type_Wzn.a(this.jdField_a_of_type_AndroidViewView);
     }
   }
   
@@ -77,10 +77,10 @@ public class GoldMsgSettingActivity
   {
     switch (paramView.getId())
     {
-    case 2131362822: 
+    case 2131362840: 
     default: 
       return;
-    case 2131364729: 
+    case 2131364751: 
       GoldMsgChatHelper.a().a(this, this.app.getCurrentAccountUin());
       return;
     }
@@ -147,7 +147,7 @@ public class GoldMsgSettingActivity
       a(paramBoolean1, paramBoolean2);
       return;
     }
-    runOnUiThread(new wwd(this, paramBoolean1, paramBoolean2));
+    runOnUiThread(new wzi(this, paramBoolean1, paramBoolean2));
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -209,11 +209,11 @@ public class GoldMsgSettingActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969018);
-    setTitle(2131432266);
-    setLeftButton(2131432275, this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    setRightButton(2131432274, this.c);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362822);
+    super.setContentView(2130969017);
+    setTitle(2131432283);
+    setLeftButton(2131432292, this.jdField_b_of_type_AndroidViewView$OnClickListener);
+    setRightButton(2131432291, this.c);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362840);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(true);
@@ -225,7 +225,7 @@ public class GoldMsgSettingActivity
     }
     this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldConfigObserver);
     this.jdField_a_of_type_AndroidContentIntent = getIntent();
-    findViewById(2131364713);
+    findViewById(2131364735);
     if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("goldmsg_setting_type", -1);
@@ -247,8 +247,8 @@ public class GoldMsgSettingActivity
       a();
       return true;
       label266:
-      paramBundle = findViewById(2131364714);
-      localObject = findViewById(2131364723);
+      paramBundle = findViewById(2131364736);
+      localObject = findViewById(2131364745);
       String str;
       switch (this.jdField_a_of_type_Int)
       {
@@ -257,14 +257,14 @@ public class GoldMsgSettingActivity
         break;
       case 0: 
         str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("goldmsg_frienduin");
-        this.jdField_a_of_type_Wwi = new wwf(this, this, this.jdField_a_of_type_AndroidContentIntent, str, jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Wzn = new wzk(this, this, this.jdField_a_of_type_AndroidContentIntent, str, jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
         paramBundle.setVisibility(0);
         ((View)localObject).setVisibility(8);
         break;
       case 1: 
       case 3000: 
         str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("goldmsg_frienduin");
-        this.jdField_a_of_type_Wwi = new wwj(this, this, this.jdField_a_of_type_AndroidContentIntent, str, jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Wzn = new wzo(this, this, this.jdField_a_of_type_AndroidContentIntent, str, jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
         paramBundle.setVisibility(8);
         ((View)localObject).setVisibility(0);
       }

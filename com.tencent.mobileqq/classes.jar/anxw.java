@@ -1,7 +1,15 @@
-public final class anxw
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+
+class anxw
   implements Runnable
 {
-  public void run() {}
+  anxw(anxv paramanxv) {}
+  
+  public void run()
+  {
+    this.a.a.a.a(50);
+  }
 }
 
 

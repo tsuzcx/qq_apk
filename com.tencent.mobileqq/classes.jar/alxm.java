@@ -1,73 +1,54 @@
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.common.CommTvRpt;
+import com.tencent.qqprotect.common.QPMiscUtils;
+import com.tencent.qqprotect.qsec.CrashProtector.IProtectedMethod;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import mqq.app.MobileQQ;
 
 public class alxm
+  implements CrashProtector.IProtectedMethod
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  public alxm(QSecFramework paramQSecFramework) {}
   
-  public alxm(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    if ((!QSecFramework.a()) || (QSecFramework.a(this.a))) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Object[] arrayOfObject = new Object[1];
+        if ((QSecFramework.a(1, 33751040, QPMiscUtils.a(), 0, QSecFramework.a(this.a), MobileQQ.sMobileQQ, null, arrayOfObject) == 0) && (arrayOfObject[0] != null) && ((arrayOfObject[0] instanceof Integer)))
+        {
+          QSecFramework.a(this.a, ((Integer)arrayOfObject[0]).intValue());
+          QPMiscUtils.a = QSecFramework.a(this.a);
+          QSecFramework.a(this.a, true);
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QSecFramework", 2, String.format("Native ver: %d(%s)", new Object[] { Integer.valueOf(QSecFramework.a(this.a)), QPMiscUtils.a(QSecFramework.a(this.a)) }));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
   }
   
-  public long a()
+  public void b()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public HashMap a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public long b()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("], tagName[");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("], success[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("], size[");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append("]");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("QSecFramework", 2, "Something wrong when init native.");
+    }
+    CommTvRpt.a(1, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,39 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
+import android.content.res.Resources;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.config.WorldCup;
+import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import java.lang.ref.WeakReference;
 
 public class aakn
-  implements ArkAppContainer.ArkAppModuleCallback
+  extends aakq
 {
-  public aakn(ArkAiAppPanel paramArkAiAppPanel) {}
+  WorldCupConfigInfo jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo;
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public boolean a;
   
-  public boolean a(ArkAppContainer paramArkAppContainer)
+  public aakn(String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (ArkAiAppPanel.a(this.a) != null)
-    {
-      ArkAiAppPanel.a(this.a).ai();
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
+  void a()
   {
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = null;
+  }
+  
+  boolean a(Resources paramResources)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = WorldCupConfigInfo.a(this.jdField_a_of_type_JavaLangString, null);
+    WorldCup.b();
+    if (AudioHelper.e()) {
+      AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    }
+    return true;
   }
 }
 

@@ -1,18 +1,21 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class wev
-  implements MessageQueue.IdleHandler
+  implements MediaPlayer.OnCompletionListener
 {
-  public wev(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public wev(BlessActivity paramBlessActivity) {}
   
-  public boolean queueIdle()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
+    }
+    BlessActivity.a(this.a, true);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas;
 
-import ajti;
-import ajtj;
+import akhp;
+import akhq;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -312,7 +312,7 @@ public class FlashCarGameManager
       if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(261, 3000L);
       }
-      SosoInterface.a(new ajtj(this, 3, true, true, 300000L, true, false, "FlashCarGame"));
+      SosoInterface.a(new akhq(this, 3, true, true, 300000L, true, false, "FlashCarGame"));
       return;
     }
     a();
@@ -359,7 +359,7 @@ public class FlashCarGameManager
     {
       this.jdField_a_of_type_AndroidAppActivity = paramActivity;
       paramActivity = LayoutInflater.from(paramActivity).inflate(2130968996, null);
-      ImageView localImageView = (ImageView)paramActivity.findViewById(2131364618);
+      ImageView localImageView = (ImageView)paramActivity.findViewById(2131364642);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable = a();
@@ -384,7 +384,7 @@ public class FlashCarGameManager
         QLog.d("FlashCarGame", 2, "screenShot bitmap = " + paramActivity);
       }
       ApolloEngine.a(this);
-      ThreadManager.post(new ajti(this, paramActivity, paramView), 8, null, true);
+      ThreadManager.post(new akhp(this, paramActivity, paramView), 8, null, true);
     }
   }
   
@@ -437,7 +437,7 @@ public class FlashCarGameManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.FlashCarGameManager
  * JD-Core Version:    0.7.0.1
  */

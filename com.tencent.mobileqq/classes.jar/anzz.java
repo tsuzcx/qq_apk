@@ -1,39 +1,19 @@
-import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicSoundFile;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicWaveformManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
 
 public class anzz
   implements Runnable
 {
-  public anzz(MusicWaveformManager paramMusicWaveformManager) {}
+  public anzz(GLTextureView paramGLTextureView) {}
   
   public void run()
   {
-    try
-    {
-      long l = SystemClock.elapsedRealtimeNanos();
-      boolean bool = MusicWaveformManager.a(this.a).a(MusicWaveformManager.a(this.a), MusicWaveformManager.a(this.a), MusicWaveformManager.a(this.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicWaveformManager", 2, "createSoundFile time: " + (SystemClock.elapsedRealtimeNanos() - l) / 1000000L + "ms");
-      }
-      if (!bool)
-      {
-        MusicWaveformManager.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.e("MusicWaveformManager", 2, "create musicSoundFile fail");
-        }
-      }
-      return;
+    GLTextureView.a(this.a).a(this.a.getWidth(), this.a.getHeight());
+    if (QLog.isColorLevel()) {
+      QLog.d("GLTextureView", 2, "TextureView mCheckAlphaTask,alpha:" + GLTextureView.a(this.a));
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        MusicWaveformManager.a(this.a, false);
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("MusicWaveformManager", 2, localException.toString());
+    if (GLTextureView.a(this.a) != 1.0F) {
+      GLTextureView.a(this.a, 1.0F);
     }
   }
 }

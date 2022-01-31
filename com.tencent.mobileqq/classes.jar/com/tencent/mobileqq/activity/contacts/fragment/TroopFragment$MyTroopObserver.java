@@ -7,7 +7,7 @@ import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import wlf;
+import wok;
 
 public class TroopFragment$MyTroopObserver
   extends TroopObserver
@@ -53,7 +53,7 @@ public class TroopFragment$MyTroopObserver
         this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener.a(1, paramBoolean, null);
       }
     }
-    ThreadManager.getUIHandler().postDelayed(new wlf(this), 500L);
+    ThreadManager.getUIHandler().postDelayed(new wok(this), 500L);
   }
   
   protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)

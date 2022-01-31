@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.arcard.ARCardPageProcess;
+import com.tencent.mobileqq.arcard.ARCardPageProcess.Circle;
 
 public class aama
-  implements aamg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aama(ArkAppCGI paramArkAppCGI, aami paramaami) {}
+  public aama(ARCardPageProcess paramARCardPageProcess, ARCardPageProcess.Circle paramCircle) {}
   
-  public void a(aamh paramaamh, boolean paramBoolean, byte[] arg3)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramBoolean) && (??? != null)) {
-      ArkAppCGI.a(this.jdField_a_of_type_Aami, ???);
-    }
-    synchronized (this.jdField_a_of_type_Aami)
-    {
-      this.jdField_a_of_type_Aami.jdField_a_of_type_JavaUtilArrayList.remove(paramaamh);
-      paramBoolean = this.jdField_a_of_type_Aami.jdField_a_of_type_JavaUtilArrayList.isEmpty();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Aami.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$ArkAppCGICallback.a(true, this.jdField_a_of_type_Aami.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aami.b);
-      }
-      return;
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("queryActionAppNeedUpdate, subTask fail", new Object[0]));
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess$Circle.setTranslationX(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aama
  * JD-Core Version:    0.7.0.1
  */

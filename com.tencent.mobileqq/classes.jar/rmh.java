@@ -1,56 +1,55 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
+import mqq.os.MqqHandler;
 
-class rmh
-  implements Runnable
+public class rmh
+  implements OverScrollViewListener
 {
-  rmh(rme paramrme) {}
+  public rmh(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void run()
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    try
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      FragmentActivity localFragmentActivity = this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-      Object localObject;
-      String str;
-      if (BaseChatPie.j(this.a.a) > 0)
-      {
-        localObject = "发送到 " + this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
-        if (BaseChatPie.j(this.a.a) <= 0) {
-          break label186;
-        }
-        str = "Crash count: " + BaseChatPie.j(this.a.a) + "\n" + "CrashInfoSummary.txt";
-        label109:
-        if (BaseChatPie.j(this.a.a) <= 0) {
-          break label191;
-        }
-      }
-      label186:
-      label191:
-      for (int i = 2131433614;; i = 2131432999)
-      {
-        localObject = DialogUtil.b(localFragmentActivity, 230, (String)localObject, str, 2131432998, i, new rmi(this), new rmj(this));
-        ((QQCustomDialog)localObject).adjustTitle();
-        if (this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
-          return;
-        }
-        ((QQCustomDialog)localObject).show();
-        return;
-        localObject = "0 Crash";
-        break;
-        str = null;
-        break label109;
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.Y_();
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
+    }
+    if (this.a.b())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+      this.a.b = true;
+      AssociatedAccountActivity.b(this.a, false, true);
+      return true;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new rmi(this), 800L);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

@@ -1,18 +1,19 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.widget.XListView.DrawFinishedListener;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.OfflineUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class mqx
-  implements XListView.DrawFinishedListener
+public final class mqx
+  implements AsyncBack
 {
-  public mqx(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public void a(int paramInt) {}
   
-  public void a()
+  public void a(String paramString, int paramInt)
   {
-    if ((!this.a.c) && (this.a.d))
+    if (paramInt == 0)
     {
-      this.a.c = true;
-      PublicTracker.a("SUBSCRIPT_FEEDS_COST", null);
+      QLog.d("OfflineUtils", 2, "loaded:CODE_SUCCESS bid : " + OfflineUtils.a());
+      OfflineUtils.a(true);
+      OfflineUtils.a();
     }
   }
 }

@@ -20,9 +20,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.util.WeakReference;
-import ncl;
-import ncm;
-import ncn;
+import ndw;
+import ndx;
+import ndy;
 
 public class LbsManager
   implements IManager
@@ -47,7 +47,7 @@ public class LbsManager
   public void a(int paramInt)
   {
     c();
-    new Handler().postDelayed(new ncm(this, paramInt), paramInt);
+    new Handler().postDelayed(new ndx(this, paramInt), paramInt);
   }
   
   public void a(@NonNull BasicLocation paramBasicLocation, LbsManager.POIListRequestSession paramPOIListRequestSession, LbsManager.POIListRequestCallback paramPOIListRequestCallback)
@@ -74,7 +74,7 @@ public class LbsManager
       localReqGetPOIList.gps.lng.set(paramBasicLocation.b);
       localReqGetPOIList.gps.setHasFlag(true);
       paramBasicLocation = new Bundle();
-      CmdTaskManger.a().a(new CommonRequest(paramPOIListRequestSession, localReqGetPOIList, paramBasicLocation), new ncn(this, localWeakReference, paramPOIListRequestCallback));
+      CmdTaskManger.a().a(new CommonRequest(paramPOIListRequestSession, localReqGetPOIList, paramBasicLocation), new ndy(this, localWeakReference, paramPOIListRequestCallback));
       return;
       paramPOIListRequestCallback = paramPOIListRequestSession;
       if (!TextUtils.isEmpty(paramPOIListRequestSession.jdField_a_of_type_JavaLangString))
@@ -140,7 +140,7 @@ public class LbsManager
     }
     SLog.b("LbsManager", "requestLbs...");
     this.jdField_a_of_type_Boolean = true;
-    SosoInterface.a(new ncl(this, 0, true, false, 60000L, false, false, "NewStoryTakeVideoActivity"));
+    SosoInterface.a(new ndw(this, 0, true, false, 60000L, false, false, "NewStoryTakeVideoActivity"));
   }
 }
 

@@ -1,19 +1,19 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
+import java.util.HashMap;
 
-class aedo
+public class aedo
   implements Runnable
 {
-  aedo(aedn paramaedn) {}
+  public aedo(PngFrameManager paramPngFrameManager, long paramLong) {}
   
   public void run()
   {
-    ChooseInterestTagActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity).removeView(this.a.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.put(Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aedo
  * JD-Core Version:    0.7.0.1
  */

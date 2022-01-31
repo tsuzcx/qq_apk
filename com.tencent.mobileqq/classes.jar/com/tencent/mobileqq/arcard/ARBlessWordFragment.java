@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.arcard;
 
-import aady;
-import aadz;
-import aaea;
-import aaeb;
-import aaec;
-import aaed;
-import aaee;
-import aaeh;
+import aakz;
+import aala;
+import aalb;
+import aalc;
+import aald;
+import aale;
+import aalf;
+import aali;
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Bitmap;
@@ -60,7 +60,7 @@ public class ARBlessWordFragment
   ARRelationShipFileUpload jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload;
   private RubberStamp jdField_a_of_type_ComTencentMobileqqArcardARWordingBlessRubberStamp;
   private OnCameraVideoRecordListener jdField_a_of_type_ComTencentMobileqqArcardOnCameraVideoRecordListener;
-  final Runnable jdField_a_of_type_JavaLangRunnable = new aady(this);
+  final Runnable jdField_a_of_type_JavaLangRunnable = new aakz(this);
   private String jdField_a_of_type_JavaLangString = "";
   public boolean a;
   long jdField_b_of_type_Long;
@@ -118,20 +118,20 @@ public class ARBlessWordFragment
       }
       this.jdField_a_of_type_AndroidViewView.buildDrawingCache();
       localObject = this.jdField_a_of_type_AndroidViewView.getDrawingCache();
-      this.jdField_b_of_type_AndroidOsHandler.post(new aaeh(this, (Bitmap)localObject, paramRunnable));
+      this.jdField_b_of_type_AndroidOsHandler.post(new aali(this, (Bitmap)localObject, paramRunnable));
       return;
     }
   }
   
   private void c()
   {
-    DialogUtil.b(getActivity(), 233, null, "AR贺卡发送失败，请重新发送。", 2131432998, 2131433014, new aaec(this), new aaed(this)).show();
+    DialogUtil.b(getActivity(), 233, null, "AR贺卡发送失败，请重新发送。", 2131433015, 2131433031, new aald(this), new aale(this)).show();
   }
   
   private void d()
   {
     if (!NetworkUtil.g(getActivity().getApplicationContext())) {
-      QQToast.a(getActivity(), 2131437513, 1).a();
+      QQToast.a(getActivity(), 2131437530, 1).a();
     }
     do
     {
@@ -146,7 +146,7 @@ public class ARBlessWordFragment
     ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject).jdField_a_of_type_Int = 1;
     ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a();
     ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject, new aaee(this));
+    this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject, new aalf(this));
   }
   
   private void e()
@@ -215,12 +215,12 @@ public class ARBlessWordFragment
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() != 2131363479) && (paramView.getId() != 2131369461))
+    if ((paramView.getId() != 2131363497) && (paramView.getId() != 2131369538))
     {
       ((InputMethodManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
       this.jdField_a_of_type_AndroidViewView.requestFocus();
     }
-    if (paramView.getId() == 2131369459)
+    if (paramView.getId() == 2131369536)
     {
       if (!this.jdField_a_of_type_Boolean)
       {
@@ -230,7 +230,7 @@ public class ARBlessWordFragment
     }
     else
     {
-      if (paramView.getId() != 2131369463) {
+      if (paramView.getId() != 2131369540) {
         break label155;
       }
       if (!this.jdField_b_of_type_Boolean) {
@@ -240,7 +240,7 @@ public class ARBlessWordFragment
     }
     label133:
     label155:
-    while (paramView.getId() != 2131369449)
+    while (paramView.getId() != 2131369526)
     {
       return;
       this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
@@ -267,13 +267,13 @@ public class ARBlessWordFragment
     if (QLog.isColorLevel()) {
       QLog.d("ARBlessWordFragment", 2, "onCreateView");
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.inflate(2130970187, null));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369456));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.inflate(2130970203, null));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369533));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362749));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362767));
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369458));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369462));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369535));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369539));
     try
     {
       paramLayoutInflater = new BitmapFactory.Options();
@@ -281,14 +281,14 @@ public class ARBlessWordFragment
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeFile(ARResouceDir.c() + "arcard_textbg.png", paramLayoutInflater));
       this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeFile(ARResouceDir.c() + "arcard_videorecord_bg.png", paramLayoutInflater));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369457);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369461));
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369162));
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369459));
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369534);
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369538));
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369228));
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369536));
       this.jdField_d_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new aadz(this));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369460));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363479));
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new aala(this));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369537));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363497));
       this.jdField_a_of_type_AndroidWidgetEditText.setHorizontallyScrolling(false);
       paramLayoutInflater = this.jdField_a_of_type_AndroidWidgetEditText.getPaint();
       paramLayoutInflater.setTypeface(this.jdField_a_of_type_AndroidWidgetEditText.getTypeface());
@@ -306,11 +306,11 @@ public class ARBlessWordFragment
       a(j);
       this.jdField_a_of_type_AndroidWidgetEditText.setMaxEms(5);
       this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.f);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aaea(this));
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new aaeb(this));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369463));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aalb(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new aalc(this));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369540));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369449));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369526));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqArcardARWordingBlessRubberStamp = new RubberStamp(getActivity());
@@ -349,7 +349,7 @@ public class ARBlessWordFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARBlessWordFragment
  * JD-Core Version:    0.7.0.1
  */

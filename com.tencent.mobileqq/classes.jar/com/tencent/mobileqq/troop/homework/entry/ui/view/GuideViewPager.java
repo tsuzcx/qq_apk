@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.entry.ui.view;
 
-import aitw;
-import aity;
+import ajia;
+import ajic;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -49,7 +49,7 @@ public class GuideViewPager
   
   public static void setBitmapByPath(ImageView paramImageView, String paramString)
   {
-    ThreadManager.post(new aitw(paramString, paramImageView), 8, null, true);
+    ThreadManager.post(new ajia(paramString, paramImageView), 8, null, true);
   }
   
   public int a()
@@ -60,11 +60,11 @@ public class GuideViewPager
   public View a(int paramInt)
   {
     HomeworkConfig.HomeWorkGuideInfo.PageInfo localPageInfo = (HomeworkConfig.HomeWorkGuideInfo.PageInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2130970606, null);
-    Object localObject = (ImageView)localRelativeLayout.findViewById(2131371396);
-    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131371397);
-    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131371398);
-    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131371399);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2130970650, null);
+    Object localObject = (ImageView)localRelativeLayout.findViewById(2131371559);
+    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131371560);
+    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131371561);
+    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131371562);
     if (localPageInfo.jdField_a_of_type_Boolean) {
       if (!TextUtils.isEmpty(localPageInfo.jdField_a_of_type_JavaLangString))
       {
@@ -112,7 +112,7 @@ public class GuideViewPager
   
   public void onPlayOnce()
   {
-    ThreadManager.getUIHandler().post(new aity(this));
+    ThreadManager.getUIHandler().post(new ajic(this));
   }
   
   public void setOnActionBtnClickListener(ComplexGuidViewPager.OnGuideBtnClickListener paramOnGuideBtnClickListener)
@@ -122,7 +122,7 @@ public class GuideViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.view.GuideViewPager
  * JD-Core Version:    0.7.0.1
  */

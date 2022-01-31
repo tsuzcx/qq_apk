@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2700" android:background="#67000000" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <com.tencent.biz.qqstory.view.AnimationPoint android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26e7" android:layout_width="200.0dip" android:layout_height="50.0dip" />
-        <TextView android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ffc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:text="左右滑动可切换滤镜" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a26e7" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2701" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip">
+        <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2702" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2703" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="确定" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
-</RelativeLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2704" android:background="#67ffffff" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_margin="0.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2701" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="123.0dip">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2705" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip" android:layout_weight="1.0" android:layout_centerVertical="true">
+            <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021770" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+            <TextView android:textSize="12.0dip" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="慢速" />
+        </LinearLayout>
+        <SeekBar android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2706" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="230.0dip" android:layout_height="wrap_content" android:maxHeight="2.0dip" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02183c" android:thumb="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02183d" android:layout_weight="1.0" android:layout_centerVertical="true" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2707" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="26.0dip" android:layout_weight="1.0" android:layout_centerVertical="true">
+            <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02176e" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+            <TextView android:textSize="12.0dip" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="快速" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

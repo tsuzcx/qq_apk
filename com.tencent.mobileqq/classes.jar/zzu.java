@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
-public final class zzu
-  implements Parcelable.Creator
+public class zzu
+  implements Runnable
 {
-  public ArConfigInfo a(Parcel paramParcel)
-  {
-    return new ArConfigInfo(paramParcel);
-  }
+  public zzu(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
-  public ArConfigInfo[] a(int paramInt)
+  public void run()
   {
-    return new ArConfigInfo[paramInt];
+    ARWorldCupGameLogicManager.a().h();
   }
 }
 

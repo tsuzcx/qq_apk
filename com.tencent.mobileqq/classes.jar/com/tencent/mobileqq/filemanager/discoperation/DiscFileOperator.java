@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.discoperation;
 
-import acrc;
-import acrd;
+import adaz;
+import adba;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -196,7 +196,7 @@ public class DiscFileOperator
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationDiscFileUploader = new DiscFileUploader();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationDiscFileUploader.a(paramString3, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationFileHttpUploder = new FileHttpUploder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationFileReportData, paramString4, paramInt, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDiscoperationDiscFileUploader);
-    ThreadManager.post(new acrc(this), 8, null, true);
+    ThreadManager.post(new adaz(this), 8, null, true);
   }
   
   protected void a(boolean paramBoolean, Long paramLong)
@@ -232,7 +232,7 @@ public class DiscFileOperator
     if (QLog.isColorLevel()) {
       QLog.i("DiscFileOperator<FileAssistant>", 1, "start sendFile:" + MessageCache.a());
     }
-    FileManagerUtil.FileExecutor.a().execute(new acrd(this));
+    FileManagerUtil.FileExecutor.a().execute(new adba(this));
   }
   
   public int c()

@@ -1,32 +1,17 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.io.File;
-import java.io.FileFilter;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class aaoj
-  implements FileFilter
+class aaoj
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public aaoj(String paramString, boolean paramBoolean) {}
+  aaoj(aaoi paramaaoi, QQCustomDialog paramQQCustomDialog) {}
   
-  public boolean accept(File paramFile)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    String str = paramFile.getName();
-    int i = str.lastIndexOf('.');
-    if (i <= 0) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!str.substring(i).equalsIgnoreCase(".app"));
-      str = str.substring(0, i);
-    } while ((!ArkLocalAppMgr.b(str)) || (ArkLocalAppMgr.a(str, this.jdField_a_of_type_JavaLangString) >= 0));
-    if (this.jdField_a_of_type_Boolean) {
-      paramFile.deleteOnExit();
-    }
-    for (;;)
-    {
-      return true;
-      paramFile.delete();
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364041)).setImageBitmap(paramBitmap);
     }
   }
 }

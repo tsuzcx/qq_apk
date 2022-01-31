@@ -1,49 +1,43 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.LocalTbsViewManagerCallback;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.TbsReaderView.ReaderCallback;
 
 public class adbx
-  extends OpenIdObserver
+  implements TbsReaderView.ReaderCallback
 {
-  public adbx(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  public adbx(LocalTbsViewManager paramLocalTbsViewManager, LocalTbsViewManager.LocalTbsViewManagerCallback paramLocalTbsViewManagerCallback) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.h)) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("LocalTbsViewManager<FileAssistant>", 1, "recv actionType[" + paramInteger + "]");
+    }
+    if (paramInteger.intValue() == 5012)
+    {
+      int i = ((Integer)paramObject1).intValue();
+      if (QLog.isColorLevel()) {
+        QLog.i("LocalTbsViewManager<FileAssistant>", 1, "err Code[" + i + "]");
+      }
+      if (i != 0) {
+        break label129;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, "canOpenFile return ok 1-------");
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback.b(true);
+      }
+    }
+    label129:
     do
     {
       return;
-      this.a.t();
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, "canOpenFile return ok 2-------");
       }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(this.a.f))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->onGetOpenId--openid doesn't equal current openid");
-          }
-          this.a.z();
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver fail");
-      }
-    } while (!ForwardSdkShareOption.a(this.a));
-    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
-    this.a.j();
+    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback == null);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback.b(false);
   }
 }
 

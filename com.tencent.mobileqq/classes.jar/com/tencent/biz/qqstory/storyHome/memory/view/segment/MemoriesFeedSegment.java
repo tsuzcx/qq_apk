@@ -82,15 +82,15 @@ public class MemoriesFeedSegment
     return String.valueOf(localObject[0]);
   }
   
-  private void m()
+  private void n()
   {
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void E_()
+  public void J_()
   {
-    super.E_();
-    m();
+    super.J_();
+    n();
   }
   
   public int a()
@@ -112,12 +112,12 @@ public class MemoriesFeedSegment
     if (((ProfileFeedPresenter)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).jdField_a_of_type_Boolean) {
       return super.a(paramInt);
     }
-    return 3;
+    return 4;
   }
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    if (a(paramInt) == 3) {
+    if (a(paramInt) == 4) {
       return paramBaseViewHolder.a();
     }
     return super.a(paramInt, paramBaseViewHolder, paramViewGroup);
@@ -131,19 +131,19 @@ public class MemoriesFeedSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    if (a(paramInt) == 3) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970723, paramViewGroup, false));
+    if (a(paramInt) == 4) {
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970771, paramViewGroup, false));
     }
     return super.a(paramInt, paramViewGroup);
   }
   
   protected void a(int paramInt, BaseViewHolder paramBaseViewHolder, VideoListHomeFeed paramVideoListHomeFeed, QQUserUIItem paramQQUserUIItem)
   {
-    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131371576);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371577);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371578);
-    paramQQUserUIItem = (TextView)paramBaseViewHolder.a(2131371579);
-    paramBaseViewHolder = (Button)paramBaseViewHolder.a(2131371561);
+    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131371741);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371742);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371743);
+    paramQQUserUIItem = (TextView)paramBaseViewHolder.a(2131371744);
+    paramBaseViewHolder = (Button)paramBaseViewHolder.a(2131371726);
     ((RelativeLayout)localObject).setVisibility(0);
     localRelativeLayout.setVisibility(0);
     localTextView.setText(a(((StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt)).a().date));
@@ -174,13 +174,13 @@ public class MemoriesFeedSegment
         int i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
         paramBaseViewHolder.setText("关注");
         paramBaseViewHolder.setVisibility(0);
-        paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494207));
-        paramBaseViewHolder.setBackgroundResource(2130843371);
+        paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494214));
+        paramBaseViewHolder.setBackgroundResource(2130843489);
         paramBaseViewHolder.setPadding(paramInt, i, paramInt, i);
       }
     }
     paramBaseViewHolder.setVisibility(8);
-    paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493768));
+    paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493774));
     paramBaseViewHolder.setBackgroundDrawable(null);
     paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
     UIUtils.a(paramBaseViewHolder, paramInt, paramInt, paramInt, paramInt);
@@ -188,9 +188,9 @@ public class MemoriesFeedSegment
   
   protected void a(int paramInt, BaseViewHolder paramBaseViewHolder, boolean paramBoolean)
   {
-    Object localObject1 = (RelativeLayout)paramBaseViewHolder.a(2131371486);
-    Object localObject2 = (TextView)paramBaseViewHolder.a(2131371574);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371575);
+    Object localObject1 = (RelativeLayout)paramBaseViewHolder.a(2131371652);
+    Object localObject2 = (TextView)paramBaseViewHolder.a(2131371739);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371740);
     localTextView.setVisibility(8);
     List localList = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a();
     String str = ((StoryHomeFeed)localList.get(paramInt)).a().date;
@@ -234,8 +234,8 @@ public class MemoriesFeedSegment
   
   protected BaseViewHolder b(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970680, paramViewGroup, false));
-    paramViewGroup.a(2131371561).setOnClickListener(paramViewGroup);
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970726, paramViewGroup, false));
+    paramViewGroup.a(2131371726).setOnClickListener(paramViewGroup);
     a(paramViewGroup);
     return paramViewGroup;
   }
@@ -243,7 +243,7 @@ public class MemoriesFeedSegment
   protected void b()
   {
     super.b();
-    g();
+    h();
   }
   
   protected int d_()
@@ -251,11 +251,11 @@ public class MemoriesFeedSegment
     return super.d_() + 1;
   }
   
-  public void e_(boolean paramBoolean)
+  public void f_(boolean paramBoolean)
   {
-    super.e_(paramBoolean);
+    super.f_(paramBoolean);
     if (paramBoolean) {
-      g();
+      h();
     }
   }
 }

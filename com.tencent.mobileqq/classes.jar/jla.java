@@ -1,25 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class jla
-  implements DialogInterface.OnClickListener
+  extends jkv
 {
-  public jla(RandomController paramRandomController) {}
+  String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  jla(RandomWebProtocol paramRandomWebProtocol) {}
+  
+  void a(String paramString)
   {
-    if (RandomController.a(this.a) == 2) {
-      ReportController.b(null, "CliOper", "", "", "0X8005729", "0X8005729", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.c();
-      return;
-      if (RandomController.a(this.a) == 1) {
-        ReportController.b(null, "CliOper", "", "", "0X8005727", "0X8005727", 0, 0, "", "", "", "");
-      }
+    super.a(paramString);
+    if ((this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) {
+      this.b = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
     }
   }
 }

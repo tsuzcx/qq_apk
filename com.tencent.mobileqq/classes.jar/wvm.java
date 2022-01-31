@@ -1,49 +1,23 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
-public class wvm
-  implements AdapterView.OnItemClickListener
+class wvm
+  extends ContactBindObserver
 {
-  public wvm(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  wvm(wvl paramwvl) {}
   
-  @TargetApi(11)
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void c(boolean paramBoolean)
   {
-    if (this.a.b)
+    this.a.a.a.b();
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
     {
-      this.a.h();
-      return;
+      this.a.a.a.a.a(true, true);
+      this.a.a.a.setResult(4002);
+      this.a.a.a.finish();
     }
-    paramAdapterView = (String)paramAdapterView.getItemAtPosition(paramInt);
-    if (PhotoPreviewActivity.a(this.a, paramAdapterView) == 1)
-    {
-      this.a.p = paramAdapterView;
-      switch (this.a.b())
-      {
-      default: 
-        return;
-      case 0: 
-        this.a.a(0);
-        return;
-      case 1: 
-        this.a.l();
-        return;
-      case 2: 
-        this.a.k();
-        return;
-      }
-      this.a.a(0);
-      return;
-    }
-    if (this.a.e)
-    {
-      this.a.c();
-      return;
-    }
-    this.a.d();
   }
 }
 

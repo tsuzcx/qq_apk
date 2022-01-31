@@ -1,76 +1,25 @@
-import com.tencent.mobileqq.app.HotChatCenterManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatItemData;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class zbl
   implements Runnable
 {
-  public zbl(HotChatCenterManager paramHotChatCenterManager, HotChatItemData paramHotChatItemData) {}
+  public zbl(ConditionSearchManager paramConditionSearchManager, boolean paramBoolean) {}
   
   public void run()
   {
-    EntityManager localEntityManager = null;
-    Object localObject4 = null;
-    localObject2 = localObject4;
-    localObject1 = localEntityManager;
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a != null)
     {
-      try
-      {
-        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppHotChatCenterManager.a();
-        if (localQQAppInterface != null) {
-          continue;
-        }
-        if (0 != 0) {
-          throw new NullPointerException();
-        }
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ConditionSearchManager.IConfigListener)localIterator.next()).a(1, this.jdField_a_of_type_Boolean);
       }
-      catch (Throwable localThrowable)
-      {
-        QQAppInterface localQQAppInterface;
-        localObject1 = localObject2;
-        QLog.e("HotChatCenterManager", 1, localThrowable, new Object[0]);
-        return;
-      }
-      finally
-      {
-        if (localObject1 == null) {
-          continue;
-        }
-        ((EntityManager)localObject1).a();
-      }
-      return;
-      localObject2 = localObject4;
-      localObject1 = localEntityManager;
-      localEntityManager = localQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject2 = localEntityManager;
-      localObject1 = localEntityManager;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData.getStatus() == 1000)
-      {
-        localObject2 = localEntityManager;
-        localObject1 = localEntityManager;
-        localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
-        localObject2 = localEntityManager;
-        localObject1 = localEntityManager;
-        if (QLog.isColorLevel())
-        {
-          localObject2 = localEntityManager;
-          localObject1 = localEntityManager;
-          QLog.d("HotChatCenterManager", 2, new Object[] { "[persist],code:", this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData.mHotChatCode });
-        }
-        if (localEntityManager != null) {
-          localEntityManager.a();
-        }
-      }
-      else
-      {
-        localObject2 = localEntityManager;
-        localObject1 = localEntityManager;
-        localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
-      }
+    }
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.c)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a());
     }
   }
 }

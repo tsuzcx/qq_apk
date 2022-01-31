@@ -1,27 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.view.View.OnClickListener;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class amzn
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public amzn(QIMProviderContainerView paramQIMProviderContainerView) {}
+  public amzn(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.c.setVisibility(0);
+    QZoneShareActivity.b(this.a);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzn
  * JD-Core Version:    0.7.0.1
  */

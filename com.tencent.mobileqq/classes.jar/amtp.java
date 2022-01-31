@@ -1,19 +1,23 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnErrorListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.UndealCount.QZoneCountUserInfo;
 
-public class amtp
-  implements GuideVideoView.OnErrorListener
+public final class amtp
+  implements Parcelable.Creator
 {
-  public amtp(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void a(String paramString)
+  public QZoneCountUserInfo a(Parcel paramParcel)
   {
-    QIMEffectCameraCaptureUnit.e(this.a);
+    return new QZoneCountUserInfo(paramParcel);
+  }
+  
+  public QZoneCountUserInfo[] a(int paramInt)
+  {
+    return new QZoneCountUserInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtp
  * JD-Core Version:    0.7.0.1
  */

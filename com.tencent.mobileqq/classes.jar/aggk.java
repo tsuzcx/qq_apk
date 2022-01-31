@@ -1,31 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.qcall.LightalkShieldHandler;
-import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.UinUtils;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 class aggk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aggk(aggi paramaggi, QQCustomDialog paramQQCustomDialog) {}
+  aggk(aggj paramaggj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
     }
-    while (paramInt != 1) {
-      return;
-    }
-    QCallDetailActivity.a(this.jdField_a_of_type_Aggi.a).b(10, UinUtils.a(QCallDetailActivity.a(this.jdField_a_of_type_Aggi.a)));
-    QCallDetailActivity.a(this.jdField_a_of_type_Aggi.a).a((byte)0);
+    ScanTorchActivity.k(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
+    ScanTorchActivity.j(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
+    this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.a.setOnClickListener(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggk
  * JD-Core Version:    0.7.0.1
  */

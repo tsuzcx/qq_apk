@@ -1,13 +1,36 @@
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.ar.aidl.IArConfigManager;
+import com.tencent.mobileqq.ar.aidl.IArConfigManager.Stub;
+import com.tencent.mobileqq.ar.config.DownloadDependRes;
+import com.tencent.qphone.base.util.QLog;
 
-class aaix
-  implements Runnable
+public class aaix
+  implements ServiceConnection
 {
-  aaix(aaiw paramaaiw) {}
+  public aaix(DownloadDependRes paramDownloadDependRes) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, 16L, this.a.a.b, 2);
+    QLog.w("WorldCupMgr", 1, "onServiceConnected, name[" + paramComponentName + "]");
+    try
+    {
+      this.a.a = IArConfigManager.Stub.a(paramIBinder);
+      this.a.a.a(DownloadDependRes.a(this.a));
+      this.a.a.c();
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      QLog.w("WorldCupMgr", 1, "onServiceConnected, Exception", paramComponentName);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.w("WorldCupMgr", 1, "onServiceDisconnected, name[" + paramComponentName + "]");
+    this.a.a();
   }
 }
 

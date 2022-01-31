@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
 
-public class xtu
+class xtu
   implements Runnable
 {
-  public xtu(CameraFilterGLView paramCameraFilterGLView) {}
+  xtu(xts paramxts) {}
   
   public void run()
   {
-    CameraFilterGLView.a(this.a);
+    QzDynamicVideoPreviewActivity.a(this.a.a).setVisibility(8);
   }
 }
 

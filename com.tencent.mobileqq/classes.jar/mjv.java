@@ -1,13 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
 public class mjv
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public mjv(AppInPushNotification paramAppInPushNotification, boolean paramBoolean) {}
+  public mjv(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public void run()
+  @SuppressLint({"NewApi"})
+  public void onGlobalLayout()
   {
-    AppInPushNotification.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushNotification, this.jdField_a_of_type_Boolean);
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
+      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
+      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
+      this.a.invalidate();
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
 }
 

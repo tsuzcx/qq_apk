@@ -1,33 +1,25 @@
-import cooperation.qlink.QlinkServiceProxy;
-import cooperation.qlink.SendMsg;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mqp.app.sec.d;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.qqprotect.qsec.QSecLibMgr;
+import com.tencent.qqprotect.qsec.QSecLibMgr.LibEventListener;
 
 public class alxp
-  extends Thread
+  implements QSecLibMgr.LibEventListener
 {
-  public alxp(QlinkServiceProxy paramQlinkServiceProxy) {}
+  public alxp(QSecFramework paramQSecFramework) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    while (!QlinkServiceProxy.a(this.a).isEmpty())
+    if ((paramInt1 == 1) && (paramInt2 == 1))
     {
-      SendMsg localSendMsg = (SendMsg)QlinkServiceProxy.a(this.a).poll();
-      if (localSendMsg != null) {
-        try
-        {
-          QlinkServiceProxy.a(this.a, localSendMsg);
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
+      d.e(1, d.x(), null);
+      QSecFramework.a(this.a).b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxp
  * JD-Core Version:    0.7.0.1
  */

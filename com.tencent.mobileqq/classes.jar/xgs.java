@@ -1,28 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager.IBannerInteract;
-import com.tencent.mobileqq.activity.recent.BannerManager.MessageToShowBanner;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import Wallet.GetSkinListRsp;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class xgs
-  implements View.OnClickListener
+  implements Runnable
 {
-  private BannerManager.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public xgs(RedPacketManager paramRedPacketManager, QQAppInterface paramQQAppInterface) {}
   
-  public xgs(BannerManager.MessageToShowBanner paramMessageToShowBanner, MqqHandler paramMqqHandler)
+  public void run()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner = paramMessageToShowBanner;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_JavaLangString + " on enter");
+    try
+    {
+      Object localObject = FileUtils.a(BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        localObject = new JceInputStream((byte[])localObject);
+        ((JceInputStream)localObject).setServerEncoding("utf-8");
+        GetSkinListRsp localGetSkinListRsp = new GetSkinListRsp();
+        localGetSkinListRsp.readFrom((JceInputStream)localObject);
+        if (localGetSkinListRsp != null) {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new xgt(this, localGetSkinListRsp));
+        }
+      }
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$IBannerInteract.a();
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

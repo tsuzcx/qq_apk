@@ -1,19 +1,26 @@
-import com.tencent.widget.ActionSheet;
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
 
-class aiiw
-  implements Runnable
+public class aiiw
+  implements TextUtils.EllipsizeCallback
 {
-  aiiw(aiiv paramaiiv) {}
+  public aiiw(StructMsgItemLayout13 paramStructMsgItemLayout13, TextView paramTextView, String paramString) {}
   
-  public void run()
+  public void ellipsized(int paramInt1, int paramInt2)
   {
-    this.a.a.b(2131435857);
-    this.a.a.b();
+    if (paramInt1 == paramInt2)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(str + "...");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiiw
  * JD-Core Version:    0.7.0.1
  */

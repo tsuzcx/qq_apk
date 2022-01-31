@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.automator.step.GetSig;
+import com.tencent.mobileqq.app.ThreadOptimizer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ThreadFactory;
 
-public class znu
-  extends MessageObserver
+public final class znu
+  implements ThreadFactory
 {
-  private znu(GetSig paramGetSig) {}
-  
-  protected void k(boolean paramBoolean)
+  public Thread newThread(Runnable paramRunnable)
   {
-    GetSig localGetSig = this.a;
-    if (paramBoolean) {}
-    for (int i = 7;; i = 6)
-    {
-      localGetSig.a(i);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ThreadManager", 2, "serialExecutor_thread");
     }
+    paramRunnable = new Thread(paramRunnable, "serialExecutor_thread");
+    if (ThreadOptimizer.a().c()) {
+      paramRunnable.setPriority(1);
+    }
+    return paramRunnable;
   }
 }
 

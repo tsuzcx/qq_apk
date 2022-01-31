@@ -1,40 +1,20 @@
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class acpm
-  implements Runnable
+class acpm
+  implements FMDialogUtil.FMDialogInterface
 {
-  public acpm(UniformDownloadMgr paramUniformDownloadMgr) {}
+  acpm(acpl paramacpl, FileManagerEntity paramFileManagerEntity) {}
   
-  public void run()
+  public void a()
   {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (UniformDownloadMgr.a(this.a))
-    {
-      if (UniformDownloadMgr.a(this.a).size() > 0)
-      {
-        Iterator localIterator = UniformDownloadMgr.a(this.a).entrySet().iterator();
-        while (localIterator.hasNext())
-        {
-          acpy localacpy = (acpy)((Map.Entry)localIterator.next()).getValue();
-          if ((localacpy != null) && (localacpy.a != null) && (localacpy.a.b()) && (2 == localacpy.a.g())) {
-            localArrayList.add(localacpy);
-          }
-        }
-      }
-    }
-    ??? = localObject2.iterator();
-    while (((Iterator)???).hasNext()) {
-      ((acpy)((Iterator)???).next()).a.e();
-    }
-    UniformDownloadMgr.b(this.a);
+    QfileBaseCloudFileTabView.d(this.jdField_a_of_type_Acpl.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

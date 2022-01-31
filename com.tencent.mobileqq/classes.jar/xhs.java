@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import android.content.res.Resources;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
+import java.lang.ref.WeakReference;
 
-public class xhs
-  extends DialogUtil.DialogOnClickAdapter
+class xhs
+  implements Runnable
 {
-  public xhs(RecentOptPopBar paramRecentOptPopBar) {}
+  xhs(xhr paramxhr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    RedDotImageView localRedDotImageView = (RedDotImageView)this.a.b.get();
+    if (localRedDotImageView != null)
+    {
+      localRedDotImageView.setReddotXOffsetDp(15);
+      localRedDotImageView.setRedDotDrawable(localRedDotImageView.getResources().getDrawable(2130846052));
+      localRedDotImageView.a(true);
+    }
   }
 }
 

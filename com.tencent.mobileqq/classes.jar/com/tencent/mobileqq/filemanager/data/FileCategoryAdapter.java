@@ -78,13 +78,13 @@ public class FileCategoryAdapter
       paramView.setTag(localObject);
       if ((localFileCategoryEntity.jdField_a_of_type_Int == 0) || (localFileCategoryEntity.jdField_a_of_type_Int == 3))
       {
-        ((FileCategoryAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365533));
+        ((FileCategoryAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365555));
         ((FileCategoryAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        ((FileCategoryAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368707));
-        ((FileCategoryAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368709));
-        ((FileCategoryAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365534));
-        ((FileCategoryAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368708));
-        ((FileCategoryAdapter.ItemHolder)localObject).c = ((TextView)paramView.findViewById(2131363447));
+        ((FileCategoryAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368774));
+        ((FileCategoryAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368776));
+        ((FileCategoryAdapter.ItemHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365556));
+        ((FileCategoryAdapter.ItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368775));
+        ((FileCategoryAdapter.ItemHolder)localObject).c = ((TextView)paramView.findViewById(2131363465));
         paramViewGroup = (ViewGroup)localObject;
       }
     }
@@ -119,7 +119,7 @@ public class FileCategoryAdapter
           switch (localFileCategoryEntity.f)
           {
           default: 
-            paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838619);
+            paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838623);
           }
         }
         for (;;)
@@ -141,8 +141,8 @@ public class FileCategoryAdapter
           if ((localFileCategoryEntity.jdField_a_of_type_Int != 1) && (localFileCategoryEntity.jdField_a_of_type_Int != 4)) {
             break label794;
           }
-          ((FileCategoryAdapter.ItemHolder)localObject).d = ((TextView)paramView.findViewById(2131365198));
-          ((FileCategoryAdapter.ItemHolder)localObject).e = ((TextView)paramView.findViewById(2131365531));
+          ((FileCategoryAdapter.ItemHolder)localObject).d = ((TextView)paramView.findViewById(2131365220));
+          ((FileCategoryAdapter.ItemHolder)localObject).e = ((TextView)paramView.findViewById(2131365553));
           paramViewGroup = (ViewGroup)localObject;
           break label198;
           paramViewGroup = (FileCategoryAdapter.ItemHolder)paramView.getTag();
@@ -155,13 +155,13 @@ public class FileCategoryAdapter
           label562:
           paramViewGroup.c.setVisibility(8);
           break label296;
-          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838619);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838623);
           continue;
-          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838631);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838635);
           continue;
-          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838626);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838630);
           continue;
-          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838629);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838633);
         }
         label622:
         ((RedTouch)paramView).b();

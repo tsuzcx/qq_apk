@@ -1,32 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.ipc.PreCallUpToolProc;
-import com.tencent.biz.qrcode.ipc.PreCallUpToolProc.Callback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
 
-public class otb
-  extends BroadcastReceiver
+class otb
+  implements Runnable
 {
-  public otb(PreCallUpToolProc paramPreCallUpToolProc) {}
+  otb(ota paramota) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    if (this.a.a.isFinishing()) {
+      return;
     }
-    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), PreCallUpToolProc.a(this.a))))
-    {
-      if (PreCallUpToolProc.a(this.a) != null) {
-        PreCallUpToolProc.a(this.a).removeMessages(108);
-      }
-      if (PreCallUpToolProc.a(this.a) != null) {
-        PreCallUpToolProc.a(this.a).a();
-      }
-    }
+    QRUtils.a(1, 2131430003);
   }
 }
 

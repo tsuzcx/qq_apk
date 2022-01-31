@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
-import ajrt;
-import ajru;
-import ajrv;
+import akga;
+import akgb;
+import akgc;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
@@ -59,10 +59,10 @@ public class ShareActionSheetBuilder
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null));
     paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.e = paramContext.getDimensionPixelSize(2131559384);
+    this.e = paramContext.getDimensionPixelSize(2131559386);
     this.f = this.e;
-    this.g = paramContext.getDimensionPixelOffset(2131559385);
-    this.h = paramContext.getDimensionPixelOffset(2131559386);
+    this.g = paramContext.getDimensionPixelOffset(2131559387);
+    this.h = paramContext.getDimensionPixelOffset(2131559388);
     this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$AdViewManager = new ShareActionSheetBuilder.AdViewManager();
     int i = (paramContext.getDisplayMetrics().widthPixels - (int)(a() * 5.2F)) / (((int)5.2F + 1) * 2);
     b(i);
@@ -112,8 +112,8 @@ public class ShareActionSheetBuilder
   public View a()
   {
     View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130968798, null);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$AdViewManager.a((RelativeLayout)localView.findViewById(2131363791));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363792));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$AdViewManager.a((RelativeLayout)localView.findViewById(2131363814));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363815));
     Object localObject2;
     Object localObject1;
     if (this.jdField_b_of_type_Boolean)
@@ -122,8 +122,8 @@ public class ShareActionSheetBuilder
       if (this.jdField_a_of_type_JavaLangCharSequence != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
       }
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131363794));
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131363796));
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131363817));
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131363819));
       localObject2 = a();
       if (localObject2.length <= 0) {
         break label376;
@@ -158,11 +158,11 @@ public class ShareActionSheetBuilder
         if (((StaticLayout)localObject4).getHeight() >= ((StaticLayout)localObject5).getHeight()) {
           localObject3 = localObject4;
         }
-        int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131559388);
+        int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131559390);
         int i;
         if (j != 0)
         {
-          localObject4 = (GridView)localView.findViewById(2131363795);
+          localObject4 = (GridView)localView.findViewById(2131363818);
           if (Build.VERSION.SDK_INT >= 9) {
             this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
           }
@@ -194,12 +194,12 @@ public class ShareActionSheetBuilder
           this.jdField_a_of_type_Int = ((ViewGroup.LayoutParams)localObject5).width;
           ((ViewGroup.LayoutParams)localObject5).height = (this.e + this.g + ((StaticLayout)localObject3).getHeight() + m);
           ((GridView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
-          ((GridView)localObject4).setAdapter(new ajrv(this.jdField_a_of_type_AndroidContentContext, (List)localObject1));
+          ((GridView)localObject4).setAdapter(new akgc(this.jdField_a_of_type_AndroidContentContext, (List)localObject1));
           ((GridView)localObject4).setSelector(new ColorDrawable(0));
           ((GridView)localObject4).setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
           if (k != 0)
           {
-            localObject1 = (GridView)localView.findViewById(2131363797);
+            localObject1 = (GridView)localView.findViewById(2131363820);
             if (Build.VERSION.SDK_INT >= 9) {
               this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
             }
@@ -227,19 +227,19 @@ public class ShareActionSheetBuilder
             ((ViewGroup.LayoutParams)localObject4).height = (this.e + this.g + ((StaticLayout)localObject3).getHeight() + m);
             ((GridView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
             ((GridView)localObject1).setNumColumns(i);
-            ((GridView)localObject1).setAdapter(new ajrv(this.jdField_a_of_type_AndroidContentContext, (List)localObject2));
+            ((GridView)localObject1).setAdapter(new akgc(this.jdField_a_of_type_AndroidContentContext, (List)localObject2));
             ((GridView)localObject1).setSelector(new ColorDrawable(0));
             ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
-            localObject1 = (TextView)localView.findViewById(2131363798);
-            ((TextView)localObject1).setText(2131432998);
-            ((TextView)localObject1).setOnClickListener(new ajrt(this));
+            localObject1 = (TextView)localView.findViewById(2131363821);
+            ((TextView)localObject1).setText(2131433015);
+            ((TextView)localObject1).setOnClickListener(new akga(this));
             if (j == 0) {
               this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
             }
             if (k == 0) {
               this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
             }
-            localView.post(new ajru(this));
+            localView.post(new akgb(this));
             return localView;
           }
         }

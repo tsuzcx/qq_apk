@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gesturelock;
 
-import adet;
-import adeu;
+import ados;
+import adot;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningServiceInfo;
@@ -465,13 +465,13 @@ public class GesturePWDUtils
         }
       }
       if (paramContext != null) {
-        ThreadManager.post(new adet(paramContext), 8, null, false);
+        ThreadManager.post(new ados(paramContext), 8, null, false);
       }
     }
     while (paramContext == null) {
       return;
     }
-    ThreadManager.post(new adeu(paramContext), 8, null, false);
+    ThreadManager.post(new adot(paramContext), 8, null, false);
   }
   
   public static void setGestureLocking(Context paramContext, boolean paramBoolean)
@@ -561,7 +561,7 @@ public class GesturePWDUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.gesturelock.GesturePWDUtils
  * JD-Core Version:    0.7.0.1
  */

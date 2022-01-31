@@ -1,60 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.IP2VMusicEditListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransformation;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.BitmapUtils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class xrh
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public xrh(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  public xrh(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      paramIntent = paramIntent.getStringExtra("event");
-      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic"))) {}
+    int i = AIOUtils.a(47.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
+    int j = AIOUtils.a(75.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
+    Bitmap localBitmap1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false);
+    if (localBitmap1 == null) {
+      SLog.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
     }
+    Bitmap localBitmap2;
     do
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "onReceive:" + paramContext);
-        }
-      } while (TextUtils.isEmpty(paramContext));
-      paramContext = new QQStoryMusicInfo(paramContext);
-      this.a.a();
-      if (!TextUtils.isEmpty(paramContext.d))
-      {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.b);
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      }
-      P2VEditMusicDialog.a(this.a).a(paramContext);
-      this.a.a(paramContext.d);
-      VideoEditReport.a("0X80076D6");
       return;
-      if ("action_music_start".equals(paramContext))
+      localBitmap2 = new RoundedTransformation(AIOUtils.a(3.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
+      if (localBitmap2 == null)
       {
-        this.a.f();
-        this.a.d();
+        SLog.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
         return;
       }
-    } while (!"action_music_refresh_list".equals(paramContext));
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      float f1 = ScreenUtil.a;
+      float f2 = ScreenUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getApplicationContext());
+      if (i / j > f1 / f2) {}
+      for (localBitmap1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, (int)(f2 / f1 * i), true))
+      {
+        SLog.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
+        return;
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a == null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.post(new xsf(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, localBitmap1, localBitmap2));
   }
 }
 

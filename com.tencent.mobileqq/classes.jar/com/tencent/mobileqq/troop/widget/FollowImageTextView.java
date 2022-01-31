@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajeb;
-import ajed;
+import ajsf;
+import ajsh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -20,8 +20,8 @@ public class FollowImageTextView
   extends LinearLayout
 {
   private int jdField_a_of_type_Int = 2147483647;
-  private ajeb jdField_a_of_type_Ajeb;
-  private ajed jdField_a_of_type_Ajed;
+  private ajsf jdField_a_of_type_Ajsf;
+  private ajsh jdField_a_of_type_Ajsh;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -49,12 +49,12 @@ public class FollowImageTextView
     a(paramContext);
   }
   
-  private ajed a()
+  private ajsh a()
   {
-    if (this.jdField_a_of_type_Ajed == null) {
-      this.jdField_a_of_type_Ajed = new ajed(this);
+    if (this.jdField_a_of_type_Ajsh == null) {
+      this.jdField_a_of_type_Ajsh = new ajsh(this);
     }
-    return this.jdField_a_of_type_Ajed;
+    return this.jdField_a_of_type_Ajsh;
   }
   
   private void a()
@@ -68,12 +68,12 @@ public class FollowImageTextView
       if (!this.jdField_a_of_type_Boolean) {
         break label95;
       }
-      this.jdField_a_of_type_Ajeb.setMaxLines(1);
-      this.jdField_a_of_type_Ajeb.setEllipsize(TextUtils.TruncateAt.END);
+      this.jdField_a_of_type_Ajsf.setMaxLines(1);
+      this.jdField_a_of_type_Ajsf.setEllipsize(TextUtils.TruncateAt.END);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ajeb.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      this.jdField_a_of_type_Ajsf.setText(this.jdField_a_of_type_JavaLangCharSequence);
       if (((this.jdField_a_of_type_Boolean ^ bool2)) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$OnTextLineChangeListener != null)) {
         this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView$OnTextLineChangeListener.a(1);
       }
@@ -81,8 +81,8 @@ public class FollowImageTextView
       bool1 = false;
       break;
       label95:
-      this.jdField_a_of_type_Ajeb.setMaxLines(this.jdField_a_of_type_Int - 1);
-      this.jdField_a_of_type_Ajeb.setEllipsize(null);
+      this.jdField_a_of_type_Ajsf.setMaxLines(this.jdField_a_of_type_Int - 1);
+      this.jdField_a_of_type_Ajsf.setEllipsize(null);
     }
   }
   
@@ -93,17 +93,17 @@ public class FollowImageTextView
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    this.jdField_a_of_type_Ajeb = new ajeb(this, paramContext);
-    this.jdField_a_of_type_Ajeb.setId(2131362463);
-    this.jdField_a_of_type_Ajeb.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Ajeb);
+    this.jdField_a_of_type_Ajsf = new ajsf(this, paramContext);
+    this.jdField_a_of_type_Ajsf.setId(2131362467);
+    this.jdField_a_of_type_Ajsf.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Ajsf);
     this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     addView(this.jdField_b_of_type_AndroidWidgetLinearLayout);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362464);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362468);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -143,28 +143,28 @@ public class FollowImageTextView
   
   public void setAllChildOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Ajeb.setOnClickListener(paramOnClickListener);
+    this.jdField_a_of_type_Ajsf.setOnClickListener(paramOnClickListener);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
   }
   
   public void setAllChildOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    this.jdField_a_of_type_Ajeb.setOnTouchListener(paramOnTouchListener);
+    this.jdField_a_of_type_Ajsf.setOnTouchListener(paramOnTouchListener);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(paramOnTouchListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(paramOnTouchListener);
   }
   
   public void setAllChildTag(Object paramObject)
   {
-    this.jdField_a_of_type_Ajeb.setTag(paramObject);
+    this.jdField_a_of_type_Ajsf.setTag(paramObject);
     this.jdField_a_of_type_AndroidWidgetTextView.setTag(paramObject);
     this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramObject);
   }
   
   public void setContentDescription(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Ajeb.setContentDescription(paramCharSequence);
+    this.jdField_a_of_type_Ajsf.setContentDescription(paramCharSequence);
     this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramCharSequence);
   }
   
@@ -194,7 +194,7 @@ public class FollowImageTextView
   
   public void setMaxWidth(int paramInt)
   {
-    this.jdField_a_of_type_Ajeb.setMaxWidth(paramInt);
+    this.jdField_a_of_type_Ajsf.setMaxWidth(paramInt);
     this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(paramInt);
   }
   
@@ -214,25 +214,25 @@ public class FollowImageTextView
   
   public void setTextColor(int paramInt)
   {
-    this.jdField_a_of_type_Ajeb.setTextColor(paramInt);
+    this.jdField_a_of_type_Ajsf.setTextColor(paramInt);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
   }
   
   public void setTextSize(float paramFloat)
   {
-    this.jdField_a_of_type_Ajeb.setTextSize(paramFloat);
+    this.jdField_a_of_type_Ajsf.setTextSize(paramFloat);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(paramFloat);
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    this.jdField_a_of_type_Ajeb.setTextSize(paramInt, paramFloat);
+    this.jdField_a_of_type_Ajsf.setTextSize(paramInt, paramFloat);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(paramInt, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.FollowImageTextView
  * JD-Core Version:    0.7.0.1
  */

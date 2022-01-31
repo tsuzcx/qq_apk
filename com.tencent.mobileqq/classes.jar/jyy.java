@@ -1,27 +1,17 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.PSTNC2CActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.av.ui.QAVPtvTemplateAdapter;
+import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class jyy
-  implements ChatActivityUtils.StartVideoListener
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public jyy(PSTNC2CActivity paramPSTNC2CActivity) {}
+  public jyy(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.a.a.a().a().b = -1;
-    PSTNC2CActivity.a(this.a);
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.a.a().a().b = -1;
-    PSTNC2CActivity.a(this.a);
-    this.a.finish();
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a();
+    }
   }
 }
 

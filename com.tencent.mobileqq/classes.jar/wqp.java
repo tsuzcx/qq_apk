@@ -1,51 +1,56 @@
-import MyCarrier.Carrier;
-import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class wqp
-  implements View.OnClickListener
+  extends MessageObserver
 {
-  public wqp(ContactListView paramContactListView) {}
+  public wqp(MainAssistObserver paramMainAssistObserver) {}
   
-  private void a()
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    Context localContext = this.a.getContext();
-    Object localObject = ((MyBusinessManager)this.a.a.getManager(48)).a();
-    if ((localObject == null) || (TextUtils.isEmpty(((Carrier)localObject).carrierURL))) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver_PCActiveNotice", 2, "onPushPCActiveNotice.isSuccess=" + paramBoolean);
     }
-    localObject = ((Carrier)localObject).carrierURL;
-    Intent localIntent = new Intent(localContext, MyBusinessActivity.class);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("uin", this.a.a.getCurrentAccountUin());
-    localIntent.putExtra("title", localContext.getString(2131437105));
-    localIntent.putExtra("url", (String)localObject);
-    localIntent.putExtra("hideRightButton", true);
-    this.a.a(localIntent, 1000);
+    if (this.a.a == null) {}
+    Intent localIntent;
+    do
+    {
+      do
+      {
+        return;
+      } while ((!this.a.a.isResume()) || (!paramBoolean));
+      localIntent = new Intent("mqq.intent.action.PCACTIVE_TIPS");
+      localIntent.putExtra("uin", paramString1);
+      localIntent.putExtra("Message", paramString2);
+      localIntent.putExtra("lButton", paramString3);
+      localIntent.putExtra("rButton", paramString4);
+    } while (NotifyPCActiveActivity.a != null);
+    this.a.a.startActivity(localIntent);
   }
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, String paramString4, ArrayList paramArrayList)
   {
-    switch (paramView.getId())
-    {
-    case 2131369897: 
-    default: 
-      return;
-    case 2131369898: 
-      ContactListView.a(this.a, true);
-      ContactListView.a(this.a, "P_CliOper", "QQwangting", "txl_close_bluebar", "close_bluebar");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.", 2, "onPushRecommandDevLock.isSuccess=" + paramBoolean1 + " canCancel=" + paramBoolean2 + " words=" + paramString1);
+    }
+    if (this.a.a == null) {}
+    while ((!this.a.a.isResume()) || (!paramBoolean1)) {
       return;
     }
-    ContactListView.a(this.a, true);
-    ContactListView.a(this.a, "P_CliOper", "QQwangting", "txl_clk_bluebar", "clk_bluebar");
-    a();
+    Intent localIntent = new Intent(this.a.a, DevlockPushActivity.class);
+    localIntent.putExtra("canCancel", paramBoolean2);
+    localIntent.putExtra("tipMsg", paramString1);
+    localIntent.putExtra("title", paramString2);
+    localIntent.putExtra("secondTitle", paramString3);
+    localIntent.putExtra("thirdTitle", paramString4);
+    localIntent.putStringArrayListExtra("wordsList", paramArrayList);
+    this.a.a.startActivity(localIntent);
   }
 }
 

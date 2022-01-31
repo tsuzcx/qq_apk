@@ -1,19 +1,24 @@
-import android.os.Looper;
+import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.aio.FileTransferManager;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.profile.vote.VoteHelper;
+import java.util.ArrayList;
 
 public class uii
-  extends TransProcessorHandler
+  implements Runnable
 {
-  public uii(FileTransferManager paramFileTransferManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public uii(VisitorsActivity paramVisitorsActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    this.a.a(paramMessage);
+    ArrayList localArrayList1 = this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(2, 7);
+    ArrayList localArrayList2 = this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(3, 7);
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a();
+      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5, 0, 0, new Object[] { localArrayList1, localArrayList2 }).sendToTarget();
+    }
   }
 }
 

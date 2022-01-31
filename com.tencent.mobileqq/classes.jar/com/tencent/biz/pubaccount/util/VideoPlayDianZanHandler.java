@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyOidbHelper;
 import com.tencent.mobileqq.app.BusinessHandler;
@@ -8,6 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -19,6 +21,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.FeedsInfo;
 import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.ReqBody;
 import tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.RspBody;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.ControlParam;
@@ -152,6 +155,31 @@ public class VideoPlayDianZanHandler
     return VideoPlayDianZanObserver.class;
   }
   
+  public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
+  {
+    oidb_cmd0x83e.ReqBody localReqBody = new oidb_cmd0x83e.ReqBody();
+    localReqBody.uint64_uin.set(Long.valueOf(ReadInJoyUtils.a()).longValue());
+    if (paramVideoInfo.b)
+    {
+      localReqBody.uint64_feeds_id.set(paramVideoInfo.c);
+      localReqBody.msg_feeds_info = new oidb_cmd0x83e.FeedsInfo();
+      localReqBody.msg_feeds_info.feeds_type.set(paramVideoInfo.f);
+      if (!paramBoolean) {
+        break label115;
+      }
+      localReqBody.uint32_operation.set(2);
+    }
+    for (;;)
+    {
+      super.b(super.a("OidbSvc.0x83e", 2110, 0, localReqBody.toByteArray()));
+      return;
+      localReqBody.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(paramVideoInfo.g));
+      break;
+      label115:
+      localReqBody.uint32_operation.set(3);
+    }
+  }
+  
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (QLog.isColorLevel()) {
@@ -191,22 +219,6 @@ public class VideoPlayDianZanHandler
     paramString.uint32_need_article_info.set(1);
     localReqBody.control_req_param.set(paramString);
     super.b(super.a("OidbSvc.0x8c8", 2248, 0, localReqBody.toByteArray()));
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    oidb_cmd0x83e.ReqBody localReqBody = new oidb_cmd0x83e.ReqBody();
-    localReqBody.uint64_uin.set(Long.valueOf(ReadInJoyUtils.a()).longValue());
-    localReqBody.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(paramString));
-    if (paramBoolean) {
-      localReqBody.uint32_operation.set(2);
-    }
-    for (;;)
-    {
-      super.b(super.a("OidbSvc.0x83e", 2110, 0, localReqBody.toByteArray()));
-      return;
-      localReqBody.uint32_operation.set(3);
-    }
   }
   
   protected boolean a(String paramString)

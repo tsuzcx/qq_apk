@@ -1,26 +1,14 @@
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
-import cooperation.weiyun.utils.WyReportUtils;
+import cooperation.qqreader.QRBridgeActivity;
+import cooperation.qqreader.QRBridgeActivity.PluginLaunchReceiver;
 
-public final class amqw
-  implements UploadManager.IUploadStatusListener
+public class amqw
+  implements Runnable
 {
-  public void onUploadJobAdded(String paramString, long paramLong) {}
+  public amqw(QRBridgeActivity.PluginLaunchReceiver paramPluginLaunchReceiver) {}
   
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      if (paramStatusInfo.state != 6) {
-        break label26;
-      }
-      WyReportUtils.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
-    }
-    label26:
-    while (paramStatusInfo.state != 5) {
-      return;
-    }
-    WyReportUtils.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
+    this.a.a.finish();
   }
 }
 

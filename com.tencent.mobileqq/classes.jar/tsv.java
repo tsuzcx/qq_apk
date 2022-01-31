@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class tsv
-  implements Runnable
+  extends ClickableSpan
 {
-  public tsv(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public tsv(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.equals("conversation"))) {
-      this.a.a();
-    }
+    SoundAndVibrateActivity.b(this.a);
+    VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(this.a.getResources().getColor(2131494220));
   }
 }
 

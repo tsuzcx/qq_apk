@@ -1,30 +1,18 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
 
-public class ajuy
+class ajuy
   implements Runnable
 {
-  public ajuy(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  ajuy(ajux paramajux) {}
   
   public void run()
   {
-    Iterator localIterator = this.a.d.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (ImageView)((FrameLayout)this.a.e.get(localObject)).findViewById(2131362355);
-      ((ImageView)localObject).setImageResource(2130845166);
-      ((ImageView)localObject).setVisibility(0);
-    }
+    this.a.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajuy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,29 @@
-import com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep;
-import java.io.File;
+import com.tencent.biz.pubaccount.PublicAccountArticleObserver;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.PhotoCollectionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class myy
-  implements Comparable
+  extends PublicAccountArticleObserver
 {
-  public final long a;
-  public final File a;
+  public myy(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
   
-  public myy(CapacityCleanStep paramCapacityCleanStep, File paramFile)
+  public void a(boolean paramBoolean, PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo, byte[] paramArrayOfByte, String paramString)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
-  }
-  
-  public int a(myy parammyy)
-  {
-    if (this.jdField_a_of_type_Long < parammyy.jdField_a_of_type_Long) {
-      return -1;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
+      if (paramPhotoCollectionInfo != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramPhotoCollectionInfo.a);
+        }
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramPhotoCollectionInfo, paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramPhotoCollectionInfo);
+      }
+      return;
     }
-    if (this.jdField_a_of_type_Long == parammyy.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
+    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
   }
 }
 

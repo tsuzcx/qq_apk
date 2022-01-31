@@ -1,26 +1,18 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class algm
-  implements TextView.OnEditorActionListener
+public final class algm
+  implements Runnable
 {
-  public algm(Login paramLogin) {}
+  public algm(String paramString1, String paramString2, boolean paramBoolean) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 6)
-    {
-      this.a.b();
-      return true;
-    }
-    return false;
+    DownloadManager.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     algm
  * JD-Core Version:    0.7.0.1
  */

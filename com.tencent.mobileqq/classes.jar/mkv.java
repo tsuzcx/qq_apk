@@ -1,13 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyViewLayer;
 
-class mkv
-  implements Runnable
+public class mkv
+  implements View.OnClickListener
 {
-  mkv(mku parammku) {}
+  public mkv(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FastWebActivity.d(this.a.a);
+    if (ReadinjoyTabFrame.a(this.a) != null)
+    {
+      if ((ReadinjoyTabFrame.a(this.a) != null) && (ReadinjoyTabFrame.a(this.a).getParent() != null) && ((ReadinjoyTabFrame.a(this.a).getParent().getParent() instanceof FrameLayout))) {
+        ReadinjoyTabFrame.a(this.a).a((ViewGroup)ReadinjoyTabFrame.a(this.a).getParent().getParent());
+      }
+      if (ReadinjoyTabFrame.a(this.a).a()) {
+        ReadinjoyTabFrame.a(this.a).a(null);
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (ReadinjoyTabFrame.a(this.a) != null)
+    {
+      ReadinjoyTabFrame.a(this.a).a(ReadinjoyTabFrame.a(this.a).mChannelCoverId);
+      return;
+    }
+    ReadinjoyTabFrame.a(this.a).a(ReadInJoyNaviController.a().mChannelCoverId);
   }
 }
 

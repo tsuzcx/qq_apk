@@ -1,49 +1,46 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import com.tencent.mfsdk.LeakInspector.DumpMemInfoHandler;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectorListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDKData;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aiev
-  implements Runnable
+  implements LeakInspector.InspectorListener
 {
-  public aiev(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
-  
-  public void run()
+  public List a(String paramString)
   {
-    try
-    {
-      Object localObject1 = new File(this.jdField_a_of_type_JavaLangString);
-      Object localObject2 = Environment.getExternalStorageDirectory() + "/tencent/QQfile_recv/" + ((File)localObject1).getName();
-      localObject1 = localObject2;
-      if (((String)localObject2).endsWith("mp4.tmp.mp4")) {
-        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 11) + "_" + System.currentTimeMillis() + ".mp4";
-      }
-      FileUtils.d(this.jdField_a_of_type_JavaLangString, (String)localObject1);
-      localObject2 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      ((Intent)localObject2).setData(Uri.parse("file://" + (String)localObject1));
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aiew(this));
-      return;
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new aiew(this, paramString));
     }
-    catch (Exception localException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aiex(this));
-      return;
+    paramString = new ArrayList(4);
+    paramString.add(DumpMemInfoHandler.b());
+    paramString.add(DumpMemInfoHandler.a());
+    paramString.addAll(DumpMemInfoHandler.a());
+    return paramString;
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new aiex(this, paramString1, paramBoolean, paramString2));
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aiey(this));
-    }
+  }
+  
+  public boolean a(LeakInspector.InspectUUID paramInspectUUID)
+  {
+    return InitMagnifierSDKData.a(paramInspectUUID);
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aiev
  * JD-Core Version:    0.7.0.1
  */

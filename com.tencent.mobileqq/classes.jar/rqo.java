@@ -1,13 +1,23 @@
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class rqo
+public class rqo
   implements Runnable
 {
-  rqo(rqn paramrqn) {}
+  public rqo(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    this.a.d.setText(this.a.a.d);
+    if (AppSetting.b)
+    {
+      String str = this.a.d.getText().toString();
+      this.a.d.setContentDescription(str);
+      this.a.a().setTitle(this.a.d.getText());
+    }
   }
 }
 

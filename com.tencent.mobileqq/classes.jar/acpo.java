@@ -1,17 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetApkNameCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public class acpo
-  implements UniformDownloadUtil.GetApkNameCallback
+class acpo
+  implements FMDialogUtil.FMDialogInterface
 {
-  public acpo(UniformDownloadMgr paramUniformDownloadMgr, String paramString) {}
+  acpo(acpl paramacpl, WeiYunFileInfo paramWeiYunFileInfo) {}
   
-  public void a(String paramString)
+  public void a()
   {
-    new Handler(Looper.getMainLooper()).post(new acpp(this, paramString));
+    FileManagerEntity localFileManagerEntity = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
+    QfileBaseCloudFileTabView.h(this.jdField_a_of_type_Acpl.a).a().b(localFileManagerEntity);
+    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Acpl.a).a().a(localFileManagerEntity);
+    this.jdField_a_of_type_Acpl.a.a(localFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 

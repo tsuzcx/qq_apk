@@ -1,48 +1,45 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.artfilter.FilterTemplate;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.concurrent.atomic.AtomicInteger;
+import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin;
+import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin.SimpleAACRecorder.RecorderListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ancd
-  implements EIPCResultCallback
+  implements QzoneAudioRecordPlugin.SimpleAACRecorder.RecorderListener
 {
-  public ancd(EditVideoArtFilter paramEditVideoArtFilter, FilterTemplate paramFilterTemplate) {}
+  public ancd(QzoneAudioRecordPlugin paramQzoneAudioRecordPlugin) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a() {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, double paramDouble)
   {
-    if (paramEIPCResult.data == null) {}
-    int j;
-    Object localObject;
-    do
+    paramString = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      return;
-      int i = paramEIPCResult.data.getInt("param_art_filter_task_id");
-      j = paramEIPCResult.data.getInt("param_art_filter_style_id");
-      localObject = paramEIPCResult.data.getString("param_art_filter_resource_path");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "QIPCResult: resultFilterTaskId:" + i + " currentFilterTaskId:" + this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " currentStyleId:" + EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter) + " resultFilterStyleId:" + j + " resultFilterOriginImgPath:" + (String)localObject);
-      }
-    } while ((EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter) != j) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.d == null) || (!((String)localObject).equals(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.d)) || (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_Boolean));
-    if (paramEIPCResult.data.getInt("param_art_filter_task_result") == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("param_art_filter_output_path");
-      localObject = EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(34);
-      ((Message)localObject).obj = paramEIPCResult;
-      ((Message)localObject).arg1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterFilterTemplate.a;
-      EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage((Message)localObject);
+      localJSONObject.put("stopped", 1);
+      localJSONObject.put("errorcode", 0);
+      localJSONObject.put("audioClientKey", QzoneAudioRecordPlugin.a(this.a));
+      this.a.a.dispatchJsEvent("QzoneJSBridgeQzoneAudioPlugin_RecordState", localJSONObject, paramString);
       return;
     }
-    paramEIPCResult = EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(37);
-    EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage(paramEIPCResult);
+    catch (JSONException paramString)
+    {
+      QLog.w("QzoneVoiceRecordPlugin", 1, "args is null or empty");
+    }
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    QzoneAudioRecordPlugin.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancd
  * JD-Core Version:    0.7.0.1
  */

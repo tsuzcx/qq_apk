@@ -1,50 +1,30 @@
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.QQMapRoutingHelper;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class tjw
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public tjw(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  public tjw(QQMapActivity paramQQMapActivity) {}
   
-  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map paramMap)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
+    if (!NetworkUtil.d(this.a)) {
+      this.a.x();
     }
-    this.a.e();
-    if (paramBoolean)
+    for (;;)
     {
-      QQToast.a(this.a.getApplicationContext(), 2, 2131434977, 0).b(this.a.getTitleBarHeight());
+      QQMapRoutingHelper.a("see_streetview");
       return;
-    }
-    if (QQSettingMsgHistoryActivity.a(this.a) != null)
-    {
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramMap = QQSettingMsgHistoryActivity.a(this.a);
-      if (this.a.app.e() != 1) {
-        break label159;
+      if (NetworkUtil.a(this.a)) {
+        this.a.p();
+      } else {
+        DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131436445)).setMessage(2131436444).setPositiveButton(2131436446, new tjy(this)).setNegativeButton(2131433015, new tjx(this)).show();
       }
-    }
-    label159:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramMap.setChecked(paramBoolean);
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      QQToast.a(this.a.getApplicationContext(), 2131434978, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-  }
-  
-  protected void onSetMessageRaoam(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      QQSettingMsgHistoryActivity.b(this.a);
     }
   }
 }

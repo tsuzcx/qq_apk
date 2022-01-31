@@ -1,17 +1,21 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeUgcVideoSocial;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class lvc
-  extends CharacterStyle
+  implements View.OnClickListener
 {
-  public lvc(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
+  public lvc(FeedItemCellTypeUgcVideoSocial paramFeedItemCellTypeUgcVideoSocial) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onClick(View paramView)
   {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.a.getResources()));
+    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (paramView != null) {
+      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
   }
 }
 

@@ -1,45 +1,26 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.opengl.effects.EffectBeautyTools;
-import com.tencent.av.opengl.effects.EffectBeautyTools.SkinColorFilterDesc;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jkc
-  implements INetEngine.INetEngineListener
+  implements DialogInterface.OnClickListener
 {
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public jkc(RandomController paramRandomController) {}
   
-  public void a(NetResp paramNetResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = (EffectBeautyTools.SkinColorFilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    AVLog.c("EffectBeautyTools", "download file call back. file = " + ((EffectBeautyTools.SkinColorFilterDesc)localObject).a);
-    if (paramNetResp.jdField_a_of_type_Int != 0)
-    {
-      AVLog.c("EffectBeautyTools", "download file faild. errcode = " + paramNetResp.b);
-      return;
+    if (RandomController.a(this.a) == 1) {
+      ReportController.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
     }
-    if (!((EffectBeautyTools.SkinColorFilterDesc)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c)))
+    for (;;)
     {
-      AVLog.c("EffectBeautyTools", "download file faild : md5 is not match.");
-      FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+      this.a.c();
+      RandomController.d(this.a, false);
       return;
-    }
-    AVLog.c("EffectBeautyTools", "download file successed.");
-    try
-    {
-      localObject = EffectBeautyTools.a();
-      FileUtils.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c, (String)localObject, false);
-      FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
-      return;
-    }
-    catch (IOException paramNetResp)
-    {
-      paramNetResp.printStackTrace();
-      AVLog.c("EffectBeautyTools", "unzip file faild.");
+      if (RandomController.a(this.a) == 2) {
+        ReportController.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
+      }
     }
   }
 }

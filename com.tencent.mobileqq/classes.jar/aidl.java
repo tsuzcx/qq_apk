@@ -1,40 +1,40 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
-import java.text.DecimalFormat;
-import java.util.HashMap;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
 
 public class aidl
-  implements Runnable
+  extends AsyncTask
 {
-  public aidl(ShortVideoUploadProcessor paramShortVideoUploadProcessor, String paramString) {}
+  aidl(RedBagVideoManager paramRedBagVideoManager) {}
   
-  public void run()
+  protected Boolean a(String... paramVarArgs)
   {
-    long l1 = SystemClock.uptimeMillis();
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    Object localObject = ShortVideoUtils.e(localFile);
-    if (localObject == null) {
-      return;
+    if (RedBagVideoManager.a(this.a) != null)
+    {
+      RedBagVideoManager.a(this.a).g = 1;
+      long l = RedBagVideoManager.a(this.a).a;
+      paramVarArgs = RedBagVideoManager.a(this.a).e;
+      int i = RedBagVideoManager.a(this.a).h;
+      Bundle localBundle = new Bundle();
+      localBundle.putLong("VALUE_MSG_UINSEQ", l);
+      localBundle.putString("VALUE_MSG_FRIENDUIN", paramVarArgs);
+      localBundle.putInt("VALUE_MSG_ISTROOP", i);
+      localBundle.putString("VALUE_MSG_VIDEO_ID", RedBagVideoManager.a(this.a).c);
+      VideoPlayIPCClient.a().a("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", localBundle);
     }
-    long l2 = Long.valueOf(localObject.split("\\|")[0]).longValue();
-    long l3 = Long.valueOf(localObject.split("\\|")[1]).longValue();
-    long l4 = SystemClock.uptimeMillis();
-    localObject = new HashMap();
-    ((HashMap)localObject).put("param_moovOffset", l2 + "");
-    ((HashMap)localObject).put("param_moovSize", l3 + "");
-    ((HashMap)localObject).put("param_videoLen", localFile.length() + "");
-    DecimalFormat localDecimalFormat = new DecimalFormat("##.000");
-    ((HashMap)localObject).put("param_moovPosition", localDecimalFormat.format(l2 * 1.0D / localFile.length()) + "");
-    StatisticCollector.a(BaseApplication.getContext()).a(null, "actShortVideoMoov", false, l4 - l1, -1L, (HashMap)localObject, "");
+    return Boolean.valueOf(true);
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    this.a.b(RedBagVideoManager.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aidl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
 
 public class aeua
-  implements ActionSheet.OnDismissListener
+  extends ProtoUtils.TroopGiftProtocolObserver
 {
-  public aeua(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public aeua(NowShortVideoProtoManager paramNowShortVideoProtoManager, NowShortVideoProtoManager.Callback paramCallback) {}
   
-  public void onDismiss()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    NearbyProfileEditPanel.a(this.a, this.a.h, false);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 

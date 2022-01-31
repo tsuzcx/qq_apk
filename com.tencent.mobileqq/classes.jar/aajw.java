@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aajw
-  extends ArkAppCGI.ArkAppCGICallback
+  implements IMediaPlayer.OnInfoListener
 {
-  public aajw(ArkActionAppMgr paramArkActionAppMgr, WeakReference paramWeakReference, QQAppInterface paramQQAppInterface) {}
+  public aajw(SplashPopupWin paramSplashPopupWin, PopupWindow paramPopupWindow, TextureVideoView paramTextureVideoView) {}
   
-  public void a(boolean paramBoolean, Object paramObject, ArrayList paramArrayList)
+  public boolean a_(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    ThreadManager.post(new aajx(this, paramArrayList), 5, null, true);
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin.onInfo, what[" + paramInt1 + "], extra[" + paramInt2 + "], popupWindow[" + this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing() + "]");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setBackgroundDrawable(null);
+    if (this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a != null)
+    {
+      paramIMediaPlayer = (ImageView)SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin).getContentView().findViewById(2131364642);
+      paramIMediaPlayer.setImageDrawable((Drawable)this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a.a.get(Integer.valueOf(1)));
+      paramIMediaPlayer.setVisibility(0);
+    }
+    return false;
   }
 }
 

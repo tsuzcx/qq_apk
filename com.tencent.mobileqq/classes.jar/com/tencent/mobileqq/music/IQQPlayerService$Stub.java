@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.music;
 
-import adwk;
+import aejq;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ public abstract class IQQPlayerService$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQQPlayerService))) {
       return (IQQPlayerService)localIInterface;
     }
-    return new adwk(paramIBinder);
+    return new aejq(paramIBinder);
   }
   
   public IBinder asBinder()
@@ -230,7 +230,7 @@ public abstract class IQQPlayerService$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.music.IQQPlayerService.Stub
  * JD-Core Version:    0.7.0.1
  */

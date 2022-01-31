@@ -1,15 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agfy
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public agfy(ScanTorchActivity paramScanTorchActivity) {}
+  
+  public void run()
+  {
+    ScanTorchActivity.i(this.a);
+    ScanTorchActivity.j(this.a);
+    ScanTorchActivity.k(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfy
  * JD-Core Version:    0.7.0.1
  */

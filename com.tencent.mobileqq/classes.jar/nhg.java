@@ -1,15 +1,18 @@
-import com.tencent.biz.qqstory.base.preload.FileCacheUtils;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
 
-class nhg
-  implements Runnable
+public class nhg
+  extends UrlDrawableDownloadJob
 {
-  nhg(nhf paramnhf, String paramString) {}
-  
-  public void run()
+  public nhg(ShareModeBase paramShareModeBase, String paramString)
   {
-    FileCacheUtils.a(this.jdField_a_of_type_Nhf.a, this.jdField_a_of_type_JavaLangString, 0, StoryReportor.a(BaseApplicationImpl.getContext()));
+    super(paramString);
+  }
+  
+  public boolean b()
+  {
+    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
+    return true;
   }
 }
 

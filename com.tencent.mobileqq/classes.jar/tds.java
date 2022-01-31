@@ -1,19 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class tds
-  implements Runnable
+public class tds
+  implements CompoundButton.OnCheckedChangeListener
 {
-  tds(tdr paramtdr) {}
+  public tds(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    FormSimpleItem localFormSimpleItem = this.a.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-    if (TextUtils.isEmpty(this.a.a.jdField_c_of_type_JavaLangString)) {}
-    for (String str = "";; str = this.a.a.jdField_c_of_type_JavaLangString)
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131435403), "qqsetting_lock_screen_whenexit_key", paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
     {
-      localFormSimpleItem.setRightText(str);
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, paramCompoundButton, "", "", "");
+      if (QLog.isDevelopLevel()) {
+        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
+      }
+      paramCompoundButton = new HashMap();
+      paramCompoundButton.put("param_ls_setting", paramBoolean + "");
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, paramCompoundButton, "");
       return;
     }
   }

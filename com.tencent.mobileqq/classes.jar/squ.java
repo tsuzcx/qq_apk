@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class squ
-  implements View.OnClickListener
+class squ
+  implements OnCompositionLoadedListener
 {
-  public squ(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
+  squ(sqt paramsqt) {}
   
-  public void onClick(View paramView)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    this.a.finish();
+    if (paramLottieComposition == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MedalWallMng", 2, "onCompositionLoaded failed!");
+      }
+      return;
+    }
+    this.a.a.post(new sqv(this, paramLottieComposition));
   }
 }
 

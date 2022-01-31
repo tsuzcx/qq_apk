@@ -1,24 +1,38 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.qphone.base.util.QLog;
 
 public class lmw
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public lmw(ReadinjoySPEventReport paramReadinjoySPEventReport) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ArrayList localArrayList = new ArrayList();
-    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(1);
-    localAttributeList.att_name.set("OneClickRead");
-    localAttributeList.att_value.set(String.valueOf(System.currentTimeMillis() / 1000L));
-    localArrayList.add(localAttributeList);
-    PublicAccountUtil.a(13, "OneClickRead", localArrayList);
+    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+    {
+      QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
+      ReadinjoySPEventReport.b(false);
+    }
+    do
+    {
+      return;
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
+      {
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
+        ReadinjoySPEventReport.b(true);
+        return;
+      }
+    } while (!paramIntent.getAction().equals("com.tencent.plugin.state.change"));
+    int i = paramIntent.getIntExtra("key_plugin_state", -1);
+    QLog.d("ReadinjoySPEventReport", 2, "ACTION_PLUGIN_STATE_CHANGE " + i);
+    switch (i)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    ReadinjoySPEventReport.a(System.currentTimeMillis());
   }
 }
 

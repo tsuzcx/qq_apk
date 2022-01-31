@@ -1,24 +1,23 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
+import cooperation.qwallet.plugin.TenUtils;
 
-public class xdg
-  implements PreloadManager.OnGetPathListener
+class xdg
+  implements DialogInterface.OnClickListener
 {
-  public xdg(QWalletIPCModule paramQWalletIPCModule, ResultReceiver paramResultReceiver) {}
+  xdg(xdf paramxdf, HbSkinInfo paramHbSkinInfo) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentHbSkinInfo.a.pop_dialog.left_url;
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      TenUtils.startQQBrowser(this.jdField_a_of_type_Xdf.a.getActivity(), paramDialogInterface);
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramPathResult);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 

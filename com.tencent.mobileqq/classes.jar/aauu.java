@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapActivity.LocationMonitor;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
-public class aauu
+class aauu
   implements Runnable
 {
-  public aauu(ARMapActivity.LocationMonitor paramLocationMonitor) {}
+  aauu(aaut paramaaut) {}
   
-  public void run()
-  {
-    this.a.a.b();
-  }
+  public void run() {}
 }
 
 

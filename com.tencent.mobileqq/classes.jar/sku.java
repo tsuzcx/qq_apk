@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class sku
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public sku(ForwardRecentActivity paramForwardRecentActivity) {}
+  public sku(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a.a(ForwardRecentActivity.a(this.a), paramView, paramView.getId());
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     sku
  * JD-Core Version:    0.7.0.1
  */

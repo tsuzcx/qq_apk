@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
-import com.tencent.mobileqq.data.ApolloGameRoamData;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class ysl
+public final class ysl
   implements Runnable
 {
-  public ysl(ApolloDaoManager paramApolloDaoManager, ApolloGameRoamData paramApolloGameRoamData) {}
-  
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloDaoManager.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloDaoManager", 2, new Object[] { "[saveUserPlayedGameRoamData] game ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRoamData.gameId), " not in local, try update json" });
-      }
-      ApolloContentUpdateHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloDaoManager.a, 2);
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131438224), 1).a();
   }
 }
 

@@ -1,61 +1,17 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.activity.PublicAccountSearchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class ten
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ten(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public ten(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131363227: 
-    case 2131363410: 
-    case 2131365639: 
-      Object localObject;
-      do
-      {
-        return;
-        this.a.finish();
-        return;
-        PublicAccountSearchActivity.a(this.a);
-        PublicAccountReportUtils.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573A", "0X800573A", 0, 0, "", "", "", "", false);
-        paramView = (RedTouchManager)this.a.app.getManager(35);
-        localObject = paramView.a("101000.101001");
-        if ((localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1)) {
-          ReportController.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X80060E3", "0X80060E3", 0, 0, "", "", "", "");
-        }
-        paramView.b("101000.101001");
-        return;
-        localObject = (String)paramView.getTag(-1);
-        paramView = (String)paramView.getTag(-2);
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramView))) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.w("PublicAccountListActivity", 2, "onClick - uin = " + (String)localObject + ", name = " + paramView);
-      return;
-      CrmUtils.a(this.a.app, this.a, paramView, (String)localObject, "IvrEnterpriseDetailEngineFalse");
-      return;
-    case 2131365641: 
-      PublicAccountSearchActivity.a(this.a, (String)this.a.d.getTag());
-      PublicAccountReportUtils.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573D", "0X800573D", 0, 0, "", "", "", "", false);
-      return;
-    }
-    PublicAccountSearchActivity.a(this.a, (String)this.a.d.getTag());
+    SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
+    this.a.finish();
   }
 }
 

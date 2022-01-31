@@ -1,6 +1,6 @@
 package cooperation.qzone.util;
 
-import amkn;
+import anas;
 import android.graphics.Bitmap.Config;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -315,7 +315,7 @@ public class PanoramaUtil
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new amkn(this, paramString2, paramString1, paramInt));
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new anas(this, paramString2, paramString1, paramInt));
   }
   
   public boolean a()

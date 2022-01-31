@@ -1,16 +1,21 @@
-import com.tencent.av.gaudio.GaInviteDialogActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils.OnDownloadAsyncTaskListener;
+import com.tencent.av.SessionMgr;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.SessionInfo.Anychat_Info;
+import com.tencent.av.guild.GuildMultiActivity;
+import com.tencent.av.utils.SparkDot;
 
 public class jiz
-  implements ChatActivityUtils.OnDownloadAsyncTaskListener
+  implements Runnable
 {
-  public jiz(GaInviteDialogActivity paramGaInviteDialogActivity) {}
+  public jiz(GuildMultiActivity paramGuildMultiActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    this.a.k = paramInt1;
-    this.a.l = paramInt2;
-    GaInviteDialogActivity.a(this.a);
+    if (SessionMgr.a().a(this.a.e).a.b == 5)
+    {
+      this.a.a.b();
+      this.a.a.setVisibility(8);
+    }
   }
 }
 

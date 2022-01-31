@@ -1,22 +1,24 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
 
-public class ajzd
-  implements Runnable
+public final class ajzd
+  extends View.AccessibilityDelegate
 {
-  public ajzd(WebViewFragment paramWebViewFragment, Activity paramActivity) {}
+  public ajzd(CharSequence paramCharSequence, String paramString) {}
   
-  public void run()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    if (MyAppApi.d()) {
-      MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity);
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
+      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
     }
+    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzd
  * JD-Core Version:    0.7.0.1
  */

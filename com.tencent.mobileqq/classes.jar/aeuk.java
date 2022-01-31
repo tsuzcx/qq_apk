@@ -1,26 +1,19 @@
-import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
 
-public class aeuk
-  implements View.OnClickListener
+class aeuk
+  implements Runnable
 {
-  public aeuk(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  aeuk(aeui paramaeui) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity;
-    if (i >= NearbyPeopleProfileActivity.c)
+    if ((this.a.a.getActivity() != null) && (!this.a.a.getActivity().isFinishing()))
     {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131437386), 0).a();
-      return;
+      this.a.a.a.setVisibility(0);
+      this.a.a.b.setVisibility(0);
     }
-    NearbyProfileEditTribePanel.b(this.a);
   }
 }
 

@@ -1,29 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.SingleItemViewHolder;
-import com.tencent.mobileqq.troop.createNewTroop.SubCateListView;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.text.QzoneTextBuilder;
 
-public class aint
-  implements ValueAnimator.AnimatorUpdateListener
+public final class aint
+  extends Editable.Factory
 {
-  public aint(SubCateListView paramSubCateListView, CateListAdapter.SingleItemViewHolder paramSingleItemViewHolder) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f = 1.0F * (100 - i) / 100.0F;
-    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setAlpha(f);
-    f = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.getHeight() / 2.0F * i / 100.0F;
-    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.jdField_b_of_type_AndroidViewView.setTranslationY(f);
-    f = i * -180.0F / 100.0F;
-    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.c.setRotation(f);
+    if ((paramCharSequence instanceof QzoneTextBuilder)) {
+      return (Editable)paramCharSequence;
+    }
+    return new QzoneTextBuilder(paramCharSequence, 3, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aint
  * JD-Core Version:    0.7.0.1
  */

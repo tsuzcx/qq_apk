@@ -1,15 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class lbu
   implements Runnable
 {
-  public lbu(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity, List paramList) {}
+  public lbu(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
   public void run()
   {
-    ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaUtilList);
+    this.a.g();
   }
 }
 

@@ -1,83 +1,137 @@
-import android.util.Pair;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import com.tencent.mobileqq.theme.ThemeDownloader;
+import com.tencent.mobileqq.theme.ThemeDownloader.ThemeDownloadListener;
+import com.tencent.mobileqq.theme.ThemeReporter;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
+import com.tencent.mobileqq.vas.VasMonitorHandler;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.app.AppRuntime;
 
 public class aioc
-  implements Runnable
+  extends VasQuickUpdateManager.CallBacker
 {
-  public aioc(TroopAioKeywordTipBar paramTroopAioKeywordTipBar) {}
+  public aioc(ThemeDownloader paramThemeDownloader) {}
   
-  public void run()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    TroopAioKeywordTipBar.b(this.a, false);
-    if (!TroopAioKeywordTipBar.c(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopAioKeywordTipBar", 2, "checkMsgForShow, mIsCanCheck = false");
-      }
-    }
-    TroopAioKeywordTipManager localTroopAioKeywordTipManager;
-    ArrayList localArrayList1;
-    do
+    if (3L != paramLong) {}
+    label514:
+    label526:
+    label691:
+    for (;;)
     {
-      ArrayList localArrayList2;
-      do
+      return;
+      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
+        QLog.d("ThemeDownloader", 2, "callBacker themeDownloader, from" + paramString3 + ",httpCode=" + paramInt2 + ",errorCode:" + paramInt1 + ", mSVThemeSCID=" + this.a.jdField_b_of_type_JavaLangString + ", scid:" + paramString1 + ", cfgScid:" + paramString2);
+      }
+      if ((!TextUtils.isEmpty(paramString2)) && (paramString2.equals(this.a.jdField_b_of_type_JavaLangString)) && (paramString1.indexOf("theme.android.") >= 0))
       {
-        int i;
-        int j;
-        do
+        String str = ThemeUtil.getIDFromSCID(paramString1);
+        boolean bool = ThemeUtil.isNeedUpdataById(str);
+        if ((!bool) || (QLog.isColorLevel())) {
+          QLog.d("ThemeDownloader", 2, "onCompleted theme update theme ok. bid = " + paramLong + ", themeid=" + str + ", cfgScid=" + paramString2 + ",scid = " + paramString1 + ", isUpdate=" + bool);
+        }
+        if (bool)
         {
-          return;
-          i = this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition() - this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-          j = this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() - this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-          localTroopAioKeywordTipManager = (TroopAioKeywordTipManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(224);
-        } while ((i < 0) || (j < 0));
-        localArrayList1 = new ArrayList(10);
-        localArrayList2 = new ArrayList(10);
-        if (i <= j)
-        {
-          localObject = (MessageRecord)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getItem(i);
-          if (localObject == null) {}
+          paramLong = System.currentTimeMillis();
+          long l = this.a.jdField_a_of_type_Long;
+          int i;
+          if (paramInt1 == 0)
+          {
+            i = 1;
+            ThemeReporter.a(null, "theme_speed", paramString3, 153, -1, i, String.valueOf(paramLong - l), "665", String.valueOf(this.a.jdField_b_of_type_Long), str);
+            if (paramInt1 != 0) {
+              break label526;
+            }
+            paramString2 = BaseApplicationImpl.getApplication().getRuntime();
+            paramString1 = null;
+            if ((paramString2 instanceof QQAppInterface)) {
+              paramString1 = (QQAppInterface)paramString2;
+            }
+            if ((paramString1 != null) && (ThemeUtil.getThemeInfo(paramString1.getApplication(), str) == null))
+            {
+              paramString2 = new ThemeUtil.ThemeInfo();
+              paramString2.themeId = str;
+              paramString2.isVoiceTheme = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("isVoiceTheme", false);
+              if (paramString2.zipVer >= 20000000) {
+                break label514;
+              }
+              i = 20000000;
+              label374:
+              paramString2.zipVer = i;
+              paramString2.status = "3";
+              if (this.a.jdField_a_of_type_AndroidOsBundle != null)
+              {
+                paramLong = this.a.jdField_a_of_type_AndroidOsBundle.getLong("size");
+                paramString2.downsize = paramLong;
+                paramString2.size = paramLong;
+              }
+              ThemeUtil.setThemeInfo(paramString1.getApplication(), paramString2);
+            }
+            if ((!TextUtils.isEmpty(str)) && (this.a.jdField_a_of_type_AndroidOsBundle != null) && (str.equals(this.a.jdField_a_of_type_AndroidOsBundle.getString("themeId")))) {
+              this.a.a(this.a.jdField_a_of_type_AndroidOsBundle, 1, paramInt1, paramInt2);
+            }
+          }
           for (;;)
           {
-            i += 1;
+            if (paramVasQuickUpdateManager == null) {
+              break label691;
+            }
+            paramVasQuickUpdateManager.b(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+            return;
+            i = -1;
             break;
-            if (!((MessageRecord)localObject).isSend()) {
-              localArrayList1.add(localObject);
-            } else if (((MessageRecord)localObject).time > NetConnInfoCenter.getServerTime() - 5L) {
-              localArrayList2.add(0, localObject);
+            i = paramString2.zipVer + 1;
+            break label374;
+            AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+            QQAppInterface localQQAppInterface = null;
+            if ((localAppRuntime instanceof QQAppInterface)) {
+              localQQAppInterface = (QQAppInterface)localAppRuntime;
+            }
+            if ((!TextUtils.isEmpty(str)) && (this.a.jdField_a_of_type_AndroidOsBundle != null) && (str.equals(this.a.jdField_a_of_type_AndroidOsBundle.getString("themeId"))))
+            {
+              this.a.a(this.a.jdField_a_of_type_AndroidOsBundle, -1, paramInt1, paramInt2);
+              VasMonitorHandler.a(localQQAppInterface, "individual_v2_theme_download_fail", String.valueOf(paramInt1), "from" + paramString3 + ",httpCode=" + paramInt2 + ",errorCode:" + paramInt1 + ", scid:" + paramString1 + ", cfgScid:" + paramString2, str, String.valueOf(paramInt2), null, 0.0F, 0.0F);
             }
           }
         }
-        if (localArrayList2.size() <= 0) {
-          break;
-        }
-      } while ((TroopAioKeywordTipBar.b(this.a) != null) && (TroopAioKeywordTipBar.b(this.a) == localArrayList2.get(0)));
-      Object localObject = localTroopAioKeywordTipManager.a(localArrayList2, TroopAioKeywordTipBar.a(this.a), 1);
-      if ((TroopAioKeywordTipBar.a(this.a)) && ((((Pair)localObject).second == null) || ((TroopAioKeywordTipBar.a(this.a) != null) && (TroopAioKeywordTipBar.a(this.a).ruleId != ((Integer)((Pair)localObject).second).intValue())))) {
-        TroopAioKeywordTipBar.a(this.a, false);
       }
-      for (;;)
+    }
+  }
+  
+  public void onProgress(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  {
+    if (3L != paramLong1) {}
+    do
+    {
+      do
       {
-        localTroopAioKeywordTipManager.a(localArrayList2, TroopAioKeywordTipBar.a(this.a), 1, new aiod(this, localArrayList1, localTroopAioKeywordTipManager));
         return;
-        TroopAioKeywordTipBar.b(this.a, (MessageRecord)localArrayList2.get(0));
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDownloader", 2, "ThemeDownloader onDownloadProgress scid:" + paramString1 + ", readSize:" + paramLong2 + ", dwProgressMax:" + paramLong3);
+        }
+      } while ((TextUtils.isEmpty(paramString2)) || (!paramString2.equals(this.a.jdField_b_of_type_JavaLangString)) || (paramString1.indexOf("theme.android.") < 0));
+      if (this.a.jdField_a_of_type_AndroidOsBundle != null) {
+        this.a.jdField_a_of_type_AndroidOsBundle.putLong("size", paramLong3);
       }
-    } while ((localArrayList1.size() <= 0) || (TroopAioKeywordTipBar.a(this.a)));
-    localTroopAioKeywordTipManager.a(localArrayList1, null, 2, new aiof(this));
+      if (this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeDownloadListener != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeDownloadListener.onDownloadProgress(this.a.jdField_a_of_type_AndroidOsBundle, 1, paramLong2, paramLong3);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ThemeDownloader", 2, "ThemeDownloader onDownloadProgress outSideListener == null;");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aioc
  * JD-Core Version:    0.7.0.1
  */

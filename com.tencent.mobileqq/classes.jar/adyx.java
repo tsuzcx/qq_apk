@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController.VideoPlayParam;
 
-class adyx
-  implements DialogInterface.OnClickListener
+public class adyx
+  implements Runnable
 {
-  adyx(adyw paramadyw) {}
+  public adyx(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController, LebaFeedsVideoPlayController.VideoPlayParam paramVideoPlayParam) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyx
  * JD-Core Version:    0.7.0.1
  */

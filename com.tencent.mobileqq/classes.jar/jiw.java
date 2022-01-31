@@ -1,14 +1,17 @@
-import com.tencent.av.gaudio.BaseGaInvite;
-import java.util.TimerTask;
+import com.tencent.av.guild.GuildMultiActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class jiw
-  extends TimerTask
+  implements Runnable
 {
-  public jiw(BaseGaInvite paramBaseGaInvite) {}
+  public jiw(GuildMultiActivity paramGuildMultiActivity) {}
   
   public void run()
   {
-    this.a.a.sendEmptyMessage(0);
+    if (QLog.isColorLevel()) {
+      QLog.d(GuildMultiActivity.a, 2, "updateMemInStage refresh");
+    }
+    GuildMultiActivity.a(this.a, false);
   }
 }
 

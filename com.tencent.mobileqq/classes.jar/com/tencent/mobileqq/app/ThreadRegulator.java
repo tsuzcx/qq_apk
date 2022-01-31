@@ -5,8 +5,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.pool.RecyclablePool;
 import mqq.os.MqqHandler;
 import mqq.os.MqqRegulatorCallback;
-import zkr;
-import zks;
+import znx;
+import zny;
 
 public class ThreadRegulator
   implements MqqRegulatorCallback
@@ -14,8 +14,8 @@ public class ThreadRegulator
   private static ThreadRegulator jdField_a_of_type_ComTencentMobileqqAppThreadRegulator;
   private final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(ThreadRegulator.CpuBusyness.class, 2);
   private volatile ThreadRegulator.CpuBusyness jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness;
-  Runnable jdField_a_of_type_JavaLangRunnable = new zks(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new zkr(this, ThreadManager.getSubThreadLooper());
+  Runnable jdField_a_of_type_JavaLangRunnable = new zny(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new znx(this, ThreadManager.getSubThreadLooper());
   
   public static ThreadRegulator a()
   {

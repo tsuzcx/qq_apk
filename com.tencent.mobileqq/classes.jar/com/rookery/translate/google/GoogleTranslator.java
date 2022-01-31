@@ -8,8 +8,8 @@ import com.rookery.translate.type.TranslateWithTimeCallback;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jcv;
-import jcw;
+import jcg;
+import jch;
 
 public class GoogleTranslator
   extends Translator
@@ -54,12 +54,12 @@ public class GoogleTranslator
         paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
       }
     }
-    jcv.a(paramContext, null, (List)localObject, new jcw(this, paramTranslateWithTimeCallback, paramLong));
+    jcg.a(paramContext, null, (List)localObject, new jch(this, paramTranslateWithTimeCallback, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.rookery.translate.google.GoogleTranslator
  * JD-Core Version:    0.7.0.1
  */

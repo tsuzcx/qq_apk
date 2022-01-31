@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rotate android:fromDegrees="90.0" android:toDegrees="90.0" android:pivotX="131.0" android:pivotY="50.0%"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <shape android:shape="line">
-        <stroke android:width="2.0dip" android:color="#fffafafa" />
-    </shape>
-</rotate>
+    <item>
+        <shape>
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+    <item android:left="0.0dip" android:top="0.0dip" android:right="0.0dip" android:bottom="0.0dip">
+        <shape
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c001e" />
+            <corners android:radius="0.0dip" />
+        </shape>
+    </item>
+</layer-list>

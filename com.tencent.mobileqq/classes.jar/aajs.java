@@ -1,21 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class aajs
-  implements DialogInterface.OnClickListener
+public class aajs
+  implements OnCompositionLoadedListener
 {
-  aajs(aajq paramaajq, QQCustomDialog paramQQCustomDialog) {}
+  public aajs(SplashPopupWin paramSplashPopupWin, WeakReference paramWeakReference, aakd paramaakd, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = new StringBuilder().append("onCompositionLoaded, MovingView[");
+    if (localImageView != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      QLog.w("WorldCupMgr", 1, bool + "]");
+      if (localImageView != null) {
+        break;
+      }
       return;
     }
-    catch (Exception paramDialogInterface) {}
+    localObject = new LottieDrawable();
+    ((LottieDrawable)localObject).setImageAssetDelegate(new aajt(this));
+    ((LottieDrawable)localObject).addAnimatorListener(new aaju(this));
+    ((LottieDrawable)localObject).setImagesAssetsFolder(this.jdField_a_of_type_JavaLangString);
+    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+    ((LottieDrawable)localObject).loop(true);
+    localImageView.setImageDrawable((Drawable)localObject);
+    SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin, (LottieDrawable)localObject);
   }
 }
 

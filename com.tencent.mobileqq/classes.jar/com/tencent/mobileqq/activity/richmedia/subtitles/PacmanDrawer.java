@@ -18,9 +18,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import xsm;
-import xsu;
-import xsv;
+import xvs;
+import xwa;
+import xwb;
 
 public class PacmanDrawer
   extends BaseAnimDrawer
@@ -31,14 +31,14 @@ public class PacmanDrawer
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private xsv jdField_a_of_type_Xsv;
+  private xwb jdField_a_of_type_Xwb;
   private float[] jdField_a_of_type_ArrayOfFloat;
   private int jdField_b_of_type_Int = 102;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private Map jdField_b_of_type_JavaUtilMap = new HashMap();
-  private xsv jdField_b_of_type_Xsv;
+  private xwb jdField_b_of_type_Xwb;
   private int jdField_c_of_type_Int = 136;
-  private xsv jdField_c_of_type_Xsv;
+  private xwb jdField_c_of_type_Xwb;
   private int d = 150;
   private int e = 30;
   private int f = 25;
@@ -102,7 +102,7 @@ public class PacmanDrawer
       {
         i = 0;
       }
-      xsm localxsm = (xsm)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
+      xvs localxvs = (xvs)this.jdField_a_of_type_JavaUtilLinkedList.get(i);
       float f4 = a(paramInt2);
       float f2 = (int)a(true);
       float f1;
@@ -111,13 +111,13 @@ public class PacmanDrawer
       }
       for (;;)
       {
-        paramString = new xsu(paramLong1, a(paramLong2), a(), b(), paramFloat, d(), paramString, localxsm, f1, f4, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsTypeface);
+        paramString = new xwa(paramLong1, a(paramLong2), a(), b(), paramFloat, d(), paramString, localxvs, f1, f4, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsTypeface);
         paramArrayList.add(paramString);
         localLinkedList.add(paramString);
         return;
-        xsu localxsu = (xsu)localLinkedList.getLast();
-        f1 = localxsu.a(6);
-        float f3 = localxsu.a(3) + f1 + this.d;
+        xwa localxwa = (xwa)localLinkedList.getLast();
+        f1 = localxwa.a(6);
+        float f3 = localxwa.a(3) + f1 + this.d;
         f1 = f2;
         if (f3 > f2) {
           f1 = f3;
@@ -141,10 +141,10 @@ public class PacmanDrawer
   
   private float c()
   {
-    if (this.jdField_c_of_type_Xsv == null) {
-      this.jdField_c_of_type_Xsv = new xsv(this.g, 2);
+    if (this.jdField_c_of_type_Xwb == null) {
+      this.jdField_c_of_type_Xwb = new xwb(this.g, 2);
     }
-    int i = this.jdField_c_of_type_Xsv.a();
+    int i = this.jdField_c_of_type_Xwb.a();
     if ((this.jdField_a_of_type_ArrayOfFloat != null) && (i >= 0) && (i < this.jdField_a_of_type_ArrayOfFloat.length)) {
       return this.jdField_a_of_type_ArrayOfFloat[i] * c() / 1000.0F;
     }
@@ -153,10 +153,10 @@ public class PacmanDrawer
   
   private int e()
   {
-    if (this.jdField_a_of_type_Xsv == null) {
-      this.jdField_a_of_type_Xsv = new xsv(4, 2);
+    if (this.jdField_a_of_type_Xwb == null) {
+      this.jdField_a_of_type_Xwb = new xwb(4, 2);
     }
-    return this.jdField_a_of_type_Xsv.a();
+    return this.jdField_a_of_type_Xwb.a();
   }
   
   private int f()
@@ -164,10 +164,10 @@ public class PacmanDrawer
     if ((this.jdField_a_of_type_JavaUtilLinkedList == null) || (this.jdField_a_of_type_JavaUtilLinkedList.size() == 0)) {
       return 0;
     }
-    if (this.jdField_b_of_type_Xsv == null) {
-      this.jdField_b_of_type_Xsv = new xsv(this.jdField_a_of_type_JavaUtilLinkedList.size(), 2);
+    if (this.jdField_b_of_type_Xwb == null) {
+      this.jdField_b_of_type_Xwb = new xwb(this.jdField_a_of_type_JavaUtilLinkedList.size(), 2);
     }
-    return this.jdField_b_of_type_Xsv.a();
+    return this.jdField_b_of_type_Xwb.a();
   }
   
   public int a()
@@ -197,7 +197,7 @@ public class PacmanDrawer
     {
       Iterator localIterator2 = ((ArrayList)localIterator1.next()).iterator();
       while (localIterator2.hasNext()) {
-        ((xsu)localIterator2.next()).g();
+        ((xwa)localIterator2.next()).g();
       }
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
@@ -213,13 +213,13 @@ public class PacmanDrawer
     }
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130840358);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130840359);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130840364);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130840365);
       f1 = f1 / 2.0F * a();
-      this.jdField_a_of_type_JavaUtilLinkedList.add(new xsm(28.0F * f1, 72.0F * f1, 42.0F * f1, 10.0F * f1, 8.0F * f1, 4.0F * f1));
-      this.jdField_a_of_type_JavaUtilLinkedList.add(new xsm(34.0F * f1, 76.0F * f1, 52.0F * f1, 10.0F * f1, 8.0F * f1, 4.0F * f1));
-      this.jdField_a_of_type_JavaUtilLinkedList.add(new xsm(38.0F * f1, 90.0F * f1, 58.0F * f1, 10.0F * f1, 8.0F * f1, 4.0F * f1));
-      this.jdField_a_of_type_JavaUtilLinkedList.add(new xsm(48.0F * f1, 102.0F * f1, 70.0F * f1, 10.0F * f1, 8.0F * f1, 4.0F * f1));
+      this.jdField_a_of_type_JavaUtilLinkedList.add(new xvs(28.0F * f1, 72.0F * f1, 42.0F * f1, 10.0F * f1, 8.0F * f1, 4.0F * f1));
+      this.jdField_a_of_type_JavaUtilLinkedList.add(new xvs(34.0F * f1, 76.0F * f1, 52.0F * f1, 10.0F * f1, 8.0F * f1, 4.0F * f1));
+      this.jdField_a_of_type_JavaUtilLinkedList.add(new xvs(38.0F * f1, 90.0F * f1, 58.0F * f1, 10.0F * f1, 8.0F * f1, 4.0F * f1));
+      this.jdField_a_of_type_JavaUtilLinkedList.add(new xvs(48.0F * f1, 102.0F * f1, 70.0F * f1, 10.0F * f1, 8.0F * f1, 4.0F * f1));
       this.jdField_b_of_type_Int = ((int)(this.jdField_b_of_type_Int * f1));
       this.jdField_c_of_type_Int = ((int)(this.jdField_c_of_type_Int * f1));
       this.d = ((int)(this.d * f1));
@@ -282,17 +282,17 @@ public class PacmanDrawer
         }
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((xsu)((Iterator)localObject).next()).a(paramWordingItem.jdField_a_of_type_JavaLangString);
+          ((xwa)((Iterator)localObject).next()).a(paramWordingItem.jdField_a_of_type_JavaLangString);
         }
         break;
       }
-      if (this.jdField_a_of_type_Xsv == null) {
-        this.jdField_a_of_type_Xsv = new xsv(4, 2);
+      if (this.jdField_a_of_type_Xwb == null) {
+        this.jdField_a_of_type_Xwb = new xwb(4, 2);
       }
       int j = a(0);
       if (j >= 0)
       {
-        this.jdField_a_of_type_Xsv.a(j);
+        this.jdField_a_of_type_Xwb.a(j);
         i = j;
         label396:
         i1 = f();
@@ -301,7 +301,7 @@ public class PacmanDrawer
         if (k < 0) {
           break label521;
         }
-        this.jdField_a_of_type_Xsv.a(k);
+        this.jdField_a_of_type_Xwb.a(k);
         m = k;
         j = k;
         k = m;
@@ -312,7 +312,7 @@ public class PacmanDrawer
         if (k < 0) {
           break label538;
         }
-        this.jdField_a_of_type_Xsv.a(k);
+        this.jdField_a_of_type_Xwb.a(k);
       }
       for (;;)
       {
@@ -370,7 +370,7 @@ public class PacmanDrawer
     {
       Iterator localIterator2 = ((ArrayList)localIterator1.next()).iterator();
       while (localIterator2.hasNext()) {
-        ((xsu)localIterator2.next()).d();
+        ((xwa)localIterator2.next()).d();
       }
     }
     return true;
@@ -399,42 +399,42 @@ public class PacmanDrawer
         label490:
         while (localIterator2.hasNext())
         {
-          xsu localxsu = (xsu)localIterator2.next();
-          if ((localxsu.a(2) != paramLong1) || (localLinkedList.size() <= 1)) {}
+          xwa localxwa = (xwa)localIterator2.next();
+          if ((localxwa.a(2) != paramLong1) || (localLinkedList.size() <= 1)) {}
           int i;
           for (;;)
           {
             i = 1;
-            if ((localxsu.a(6) > a(true)) || (localxsu.a(6) + localxsu.a(3) < 0.0F) || (localxsu.a(2) > paramLong1))
+            if ((localxwa.a(6) > a(true)) || (localxwa.a(6) + localxwa.a(3) < 0.0F) || (localxwa.a(2) > paramLong1))
             {
               if (QLog.isColorLevel()) {
-                QLog.d("BaseAnimDrawer", 2, "invisible: posx:" + localxsu.a(6) + "  width:" + localxsu.a(3) + "  index:" + localxsu.a(2) + " curindex:" + paramLong1);
+                QLog.d("BaseAnimDrawer", 2, "invisible: posx:" + localxwa.a(6) + "  width:" + localxwa.a(3) + "  index:" + localxwa.a(2) + " curindex:" + paramLong1);
               }
               i = 0;
             }
-            if ((i != 0) || (localxsu.a(6) >= 0.0F)) {
+            if ((i != 0) || (localxwa.a(6) >= 0.0F)) {
               break label364;
             }
-            ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localxsu.a(1)));
+            ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(localxwa.a(1)));
             if (localArrayList != null)
             {
-              localArrayList.remove(localxsu);
+              localArrayList.remove(localxwa);
               if (localArrayList.size() == 0) {
-                this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(localxsu.a(1)));
+                this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(localxwa.a(1)));
               }
             }
             localIterator2.remove();
-            localxsu.g();
+            localxwa.g();
             break;
-            localxsu.b(a(true));
+            localxwa.b(a(true));
           }
           label364:
-          if (localxsu.a(2) <= paramLong1)
+          if (localxwa.a(2) <= paramLong1)
           {
-            if (localxsu.jdField_a_of_type_Int == 1)
+            if (localxwa.jdField_a_of_type_Int == 1)
             {
               if (!c()) {
-                localxsu.a(-1.0F * localxsu.a(5) / 2.0F);
+                localxwa.a(-1.0F * localxwa.a(5) / 2.0F);
               }
               bool2 = bool1;
               if (i != 0)
@@ -442,7 +442,7 @@ public class PacmanDrawer
                 if (paramCanvas == null) {
                   break label490;
                 }
-                localxsu.a(paramCanvas);
+                localxwa.a(paramCanvas);
               }
               for (;;)
               {
@@ -452,32 +452,32 @@ public class PacmanDrawer
                   break;
                 }
                 bool1 = bool2;
-                if (localxsu.a(6) >= a(true) / 2.0F) {
+                if (localxwa.a(6) >= a(true) / 2.0F) {
                   break;
                 }
                 bool1 = bool2;
-                if (localxsu.a(6) <= 0.0F) {
+                if (localxwa.a(6) <= 0.0F) {
                   break;
                 }
-                localxsu.jdField_a_of_type_Int = 2;
+                localxwa.jdField_a_of_type_Int = 2;
                 bool1 = bool2;
                 break;
-                localxsu.a(paramRenderBuffer);
+                localxwa.a(paramRenderBuffer);
               }
             }
             if (!c()) {
-              localxsu.a(-1.0F * localxsu.a(5) / 2.0F);
+              localxwa.a(-1.0F * localxwa.a(5) / 2.0F);
             }
             if (i != 0)
             {
               if (paramCanvas != null) {
-                localxsu.a(paramCanvas);
+                localxwa.a(paramCanvas);
               }
               for (;;)
               {
                 bool1 = true;
                 break;
-                localxsu.a(paramRenderBuffer);
+                localxwa.a(paramRenderBuffer);
               }
             }
           }

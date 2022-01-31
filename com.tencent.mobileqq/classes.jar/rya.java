@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
+import com.tencent.qphone.base.util.QLog;
 
-class rya
-  implements Runnable
+public final class rya
+  implements CUKingCardHelper.CUKingDialogListener
 {
-  rya(rxz paramrxz, boolean paramBoolean) {}
+  public rya(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public void run()
+  public void callback(int paramInt)
   {
-    this.jdField_a_of_type_Rxz.a.a.d();
-    if (this.jdField_a_of_type_Boolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
+    }
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Rxz.a.a.b(false);
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
       return;
     }
-    this.jdField_a_of_type_Rxz.a.a.g();
+    this.b.onClick(null, 0);
   }
 }
 

@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudFileUploadCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
 public class aaad
+  implements Runnable
 {
-  public ARCloudFileUpload.ARCloudFileUploadCallback a;
-  public ARCloudReqInfo a;
-  public Transaction a;
-  public String a;
+  public aaad(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, long paramLong) {}
   
-  public aaad()
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = null;
+    ARWorldCupGameLogicManager.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.b);
   }
 }
 

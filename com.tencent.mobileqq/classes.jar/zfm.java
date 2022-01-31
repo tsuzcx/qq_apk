@@ -1,17 +1,22 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.HotChatShare;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
-class zfm
+public class zfm
   implements Runnable
 {
-  zfm(zfk paramzfk) {}
+  public zfm(HotChatShare paramHotChatShare) {}
   
   public void run()
   {
-    if ((this.a.a.c() == 1) && (this.a.a.a().noBindUploadContacts)) {
+    if ((this.a.a == null) || (!this.a.a.isShowing())) {
       return;
     }
-    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatShare", 2, "30s has gone, goto share....");
+    }
+    this.a.c();
+    HotChatShare.a(this.a);
   }
 }
 

@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.component.network.utils.AssertUtil;
-import phm;
+import pjg;
 
 public final class DownloadResult
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new phm();
+  public static final Parcelable.Creator CREATOR = new pjg();
   private DownloadResult.Content mContent = new DownloadResult.Content();
   private String mDescInfo;
   private String mDetailDownloadInfo;

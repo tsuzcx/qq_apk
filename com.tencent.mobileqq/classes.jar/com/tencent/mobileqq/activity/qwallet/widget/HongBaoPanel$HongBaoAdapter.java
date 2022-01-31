@@ -63,7 +63,7 @@ class HongBaoPanel$HongBaoAdapter
         return;
         localObject1 = (PanelData)this.mDatas.get(paramInt);
         HongBaoPanel.access$300(this.this$0, paramMyViewHolder.hongbaoText, ((PanelData)this.mDatas.get(paramInt)).b, HongBaoPanel.access$200(this.this$0));
-        paramMyViewHolder.hongbaoPic.setImageResource(2130841024);
+        paramMyViewHolder.hongbaoPic.setImageResource(2130841061);
         if (!StringUtil.a(((PanelData)localObject1).c))
         {
           paramMyViewHolder.hongbaoPic.setTag(((PanelData)localObject1).c);
@@ -106,7 +106,7 @@ class HongBaoPanel$HongBaoAdapter
   
   public HongBaoPanel.MyViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new HongBaoPanel.MyViewHolder(this.this$0, LayoutInflater.from(this.this$0.mContext).inflate(2130969776, paramViewGroup, false), this.mHolderItemClickListener);
+    return new HongBaoPanel.MyViewHolder(this.this$0, LayoutInflater.from(this.this$0.mContext).inflate(2130969790, paramViewGroup, false), this.mHolderItemClickListener);
   }
   
   public void setDatas(List paramList)

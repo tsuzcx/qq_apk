@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.arithmetic.ui;
 
-import aisb;
+import ajgf;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -38,7 +38,7 @@ public class DotStyleNavBar
     {
       ImageView localImageView = new ImageView(getContext());
       if (i == this.b) {
-        localImageView.setImageResource(2130844561);
+        localImageView.setImageResource(2130844685);
       }
       for (;;)
       {
@@ -48,7 +48,7 @@ public class DotStyleNavBar
         addView(localImageView, localLayoutParams);
         i += 1;
         break;
-        localImageView.setImageResource(2130844562);
+        localImageView.setImageResource(2130844686);
       }
     }
   }
@@ -67,13 +67,13 @@ public class DotStyleNavBar
     {
       ImageView localImageView = (ImageView)getChildAt(i);
       if (i == this.b) {
-        localImageView.setImageResource(2130844561);
+        localImageView.setImageResource(2130844685);
       }
       for (;;)
       {
         i += 1;
         break;
-        localImageView.setImageResource(2130844562);
+        localImageView.setImageResource(2130844686);
       }
     }
     postInvalidate();
@@ -105,12 +105,12 @@ public class DotStyleNavBar
   {
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
     a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount());
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new aisb(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ajgf(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar
  * JD-Core Version:    0.7.0.1
  */

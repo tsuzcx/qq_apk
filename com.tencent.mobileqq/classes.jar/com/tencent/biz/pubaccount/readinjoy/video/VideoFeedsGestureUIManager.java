@@ -48,23 +48,23 @@ public class VideoFeedsGestureUIManager
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "/");
       this.jdField_b_of_type_AndroidWidgetTextView.setText(str2);
       if (paramFloat > 0.0F) {
-        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130840835);
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130840868);
       }
       while (this.c.getVisibility() == 8)
       {
         VideoFeedsHelper.a(this.c, 0, 300);
         break;
-        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130840833);
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130840866);
       }
       this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView.setProgress(paramFloat);
       if (paramFloat == 0.0F) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840851);
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840887);
       }
       while (this.e.getVisibility() == 8)
       {
         VideoFeedsHelper.a(this.e, 0, 300);
         break;
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840852);
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840888);
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView.setProgress(paramFloat);
       if (this.d.getVisibility() == 8)
@@ -95,16 +95,16 @@ public class VideoFeedsGestureUIManager
   public void a(Context paramContext, ViewGroup paramViewGroup)
   {
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130969657, paramViewGroup));
-    this.c = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367321));
-    this.d = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367325));
-    this.e = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367328));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367323));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367324));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367330));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367322));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView = ((VideoFeedsGestureProgressView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367326));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView = ((VideoFeedsGestureProgressView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367329));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130969670, paramViewGroup));
+    this.c = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367384));
+    this.d = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367388));
+    this.e = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367391));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367386));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367387));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367393));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367385));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView = ((VideoFeedsGestureProgressView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367389));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView = ((VideoFeedsGestureProgressView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131367392));
   }
 }
 

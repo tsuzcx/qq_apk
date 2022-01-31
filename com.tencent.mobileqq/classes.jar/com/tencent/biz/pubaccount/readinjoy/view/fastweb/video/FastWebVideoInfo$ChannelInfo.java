@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.video;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import mom;
+import mps;
 
 public class FastWebVideoInfo$ChannelInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new mom();
+  public static final Parcelable.Creator CREATOR = new mps();
   public int a;
   public String a;
   public int b;

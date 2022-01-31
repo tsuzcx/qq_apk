@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import com.tencent.mobileqq.data.DynamicAvatar;
-import com.tencent.mobileqq.util.DynamicFaceDrawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
-public class abch
+public final class abch
   implements Runnable
 {
-  public abch(DynamicAvatarManager paramDynamicAvatarManager, DynamicFaceDrawable paramDynamicFaceDrawable, long paramLong) {}
+  public abch(String[] paramArrayOfString) {}
   
   public void run()
   {
-    DynamicAvatar localDynamicAvatar = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.c, this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a);
-    if (localDynamicAvatar != null)
+    if (this.a == null) {}
+    for (int i = 0;; i = this.a.length)
     {
-      localDynamicAvatar.playTimeStamp = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(localDynamicAvatar);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("preloadFileCount", String.valueOf(i));
+      StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, localHashMap, "", false);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abch
  * JD-Core Version:    0.7.0.1
  */

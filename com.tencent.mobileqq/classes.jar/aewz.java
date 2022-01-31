@@ -1,17 +1,16 @@
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.PublishableMomentInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aewz
+  implements View.OnClickListener
 {
-  public View a;
-  public ImageView a;
-  public PublishableMomentInfo a;
-  public View b;
-  public View c;
+  public aewz(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public aewz(NearbyMomentFailedAdapter paramNearbyMomentFailedAdapter) {}
+  public void onClick(View paramView)
+  {
+    ShortVideoCommentsView.a(this.a);
+  }
 }
 
 

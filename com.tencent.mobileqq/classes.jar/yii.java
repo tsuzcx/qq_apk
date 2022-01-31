@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
-import com.tencent.mobileqq.apollo.utils.ApolloHttpUtil;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
-public final class yii
+public class yii
   implements Runnable
 {
-  public yii(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, ApolloHttpCallBack paramApolloHttpCallBack) {}
+  public yii(SystemMsgListAdapter paramSystemMsgListAdapter) {}
   
   public void run()
   {
-    ApolloHttpUtil.a(this.jdField_a_of_type_JavaLangString.toUpperCase(), this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
+    SystemMsgListAdapter.a(this.a).a(true);
+    ArrayList localArrayList = SystemMsgListAdapter.a(this.a).b();
+    this.a.a(localArrayList);
+    SystemMsgListAdapter.a(this.a).runOnUiThread(new yij(this, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yii
  * JD-Core Version:    0.7.0.1
  */

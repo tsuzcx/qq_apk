@@ -1,71 +1,49 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import java.util.concurrent.CountDownLatch;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.IBinder;
+import com.tencent.device.utils.SmartDeviceReport;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.smartdevice.ipc.ISmartDeviceService.Stub;
+import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
+import mqq.app.MobileQQ;
 
 public class aneo
-  implements Runnable
+  implements ServiceConnection
 {
-  public aneo(EditVideoPlayer paramEditVideoPlayer, int paramInt, Bitmap[] paramArrayOfBitmap, CountDownLatch paramCountDownLatch) {}
+  public aneo(SmartDeviceIPCHost paramSmartDeviceIPCHost) {}
   
-  /* Error */
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 15	aneo:jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPlayer	Ldov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer;
-    //   4: getfield 31	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer:a	Ljava/util/List;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnull +56 -> 65
-    //   12: aload_0
-    //   13: getfield 17	aneo:jdField_a_of_type_Int	I
-    //   16: aload_1
-    //   17: invokeinterface 37 1 0
-    //   22: if_icmpge +43 -> 65
-    //   25: aload_1
-    //   26: aload_0
-    //   27: getfield 17	aneo:jdField_a_of_type_Int	I
-    //   30: invokeinterface 41 2 0
-    //   35: checkcast 43	dov/com/tencent/biz/qqstory/takevideo/MultiBlockVideoPlayer$RecordVideoBlockInfo
-    //   38: astore_1
-    //   39: aload_1
-    //   40: ifnull +17 -> 57
-    //   43: aload_0
-    //   44: getfield 19	aneo:jdField_a_of_type_ArrayOfAndroidGraphicsBitmap	[Landroid/graphics/Bitmap;
-    //   47: iconst_0
-    //   48: aload_0
-    //   49: getfield 15	aneo:jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPlayer	Ldov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer;
-    //   52: aload_1
-    //   53: invokevirtual 46	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer:a	(Ldov/com/tencent/biz/qqstory/takevideo/MultiBlockVideoPlayer$RecordVideoBlockInfo;)Landroid/graphics/Bitmap;
-    //   56: aastore
-    //   57: aload_0
-    //   58: getfield 21	aneo:jdField_a_of_type_JavaUtilConcurrentCountDownLatch	Ljava/util/concurrent/CountDownLatch;
-    //   61: invokevirtual 51	java/util/concurrent/CountDownLatch:countDown	()V
-    //   64: return
-    //   65: aconst_null
-    //   66: astore_1
-    //   67: goto -28 -> 39
-    //   70: astore_1
-    //   71: aload_0
-    //   72: getfield 21	aneo:jdField_a_of_type_JavaUtilConcurrentCountDownLatch	Ljava/util/concurrent/CountDownLatch;
-    //   75: invokevirtual 51	java/util/concurrent/CountDownLatch:countDown	()V
-    //   78: aload_1
-    //   79: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	80	0	this	aneo
-    //   7	60	1	localObject1	Object
-    //   70	9	1	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	8	70	finally
-    //   12	39	70	finally
-    //   43	57	70	finally
+    SmartDeviceIPCHost.a(this.a).removeMessages(1);
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = ISmartDeviceService.Stub.a(paramIBinder);
+    this.a.b();
+    QLog.d("SmartDeviceIPCHost", 1, "plugin service connected");
+    SmartDeviceReport.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Host", 0, 1, 0);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    try
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(this.a.jdField_a_of_type_AndroidContentServiceConnection);
+      label20:
+      this.a.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = null;
+      this.a.jdField_a_of_type_Boolean = false;
+      QLog.d("SmartDeviceIPCHost", 1, "plugin service disconnected");
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      break label20;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aneo
  * JD-Core Version:    0.7.0.1
  */

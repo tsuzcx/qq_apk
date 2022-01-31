@@ -1,32 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
 
 public class anst
-  implements TVK_SDKMgr.InstallListener
+  extends AnimatorListenerAdapter
 {
-  public anst(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public anst(EditVideoButton paramEditVideoButton) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ShortVideoPlayActivity.a(this.a, false);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a("腾讯视频插件加载失败");
-    ShortVideoPlayActivity.c(this.a, 3000);
-    ShortVideoPlayActivity.d(this.a, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
+    EditVideoButton.a(this.a).setVisibility(8);
+    EditVideoButton.a(this.a).setVisibility(8);
+    EditVideoButton.a(this.a, EditVideoButton.b(this.a));
+    if (this.a.a != null) {
+      this.a.a(2131363408);
     }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    ShortVideoPlayActivity.a(this.a, true);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a.post(new ansu(this));
   }
 }
 

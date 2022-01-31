@@ -1,28 +1,25 @@
-import android.view.WindowManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
+import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.PrefixSelectedListener;
+import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-class aiyf
-  implements Runnable
+public class aiyf
+  implements TribeTitlePrefixPanelView.PrefixSelectedListener
 {
-  aiyf(aiye paramaiye) {}
+  private aiyf(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void run()
+  public void a(TribeTitlePrefixPanelView.TitlePrefixItem paramTitlePrefixItem)
   {
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView != null) {
-      RobotResourcesManager.a(this.a.a.a).removeView(this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView);
-    }
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView = null;
-    this.a.a.a.jdField_a_of_type_JavaLangString = null;
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.notifyDataSetChanged();
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem = paramTitlePrefixItem;
+    this.a.jdField_a_of_type_ComTencentMobileqqTribeTribePostTitlePrefixPanelController.b();
+    this.a.e(true);
+    ReportController.b(null, "dc00899", "Grp_tribe", "", "pub_page", "choose_prefix", 0, 0, this.a.r, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyf
  * JD-Core Version:    0.7.0.1
  */

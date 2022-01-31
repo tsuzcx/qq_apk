@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="5.0dip" />
-    <stroke android:width="0.5dip" android:color="#ffcccccc" />
-    <solid android:color="#00000000" />
-</shape>
+    <item android:state_focused="false" android:state_pressed="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021334" />
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021335" />
+    <item android:state_focused="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021335" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021334" />
+</selector>

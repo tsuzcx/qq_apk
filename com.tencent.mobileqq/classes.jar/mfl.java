@@ -1,14 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.RainView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class mfl
-  implements Action.OnActionEndListener
+  implements URLDrawable.URLDrawableListener
 {
-  public mfl(RainView paramRainView) {}
+  public mfl(VideoShareHelper paramVideoShareHelper) {}
   
-  public void a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.b(this.a);
+    if ((VideoShareHelper.a(this.a) != null) && (VideoShareHelper.a(this.a).getStatus() == 1) && ((VideoShareHelper.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)VideoShareHelper.a(this.a).getCurrDrawable();
+      VideoShareHelper.a(this.a, paramURLDrawable.getBitmap());
+    }
   }
 }
 

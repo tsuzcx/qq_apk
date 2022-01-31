@@ -1,87 +1,77 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
+import com.tencent.mobileqq.voicechange.VoiceChangeManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 
 public class akln
-  extends Handler
+  extends DownloadListener
 {
-  public akln(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  public akln(VoiceChangeManager paramVoiceChangeManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if (paramMessage == null) {}
-    do
+    if (paramDownloadTask == null)
     {
-      return;
-      switch (paramMessage.what)
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
       {
-      default: 
-        return;
-      case 3: 
-        paramMessage = (GetAppInfoProto.GetAppinfoResponse)paramMessage.obj;
+        localObject = (String)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size()=" + this.a.jdField_a_of_type_JavaUtilArrayList.size() + ", url=" + (String)localObject);
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          QLog.e("VoiceChangeManager", 1, "picDownloadListener url = null");
+          onDone(null);
+        }
       }
-    } while (!paramMessage.iconsURL.has());
-    int i = 0;
-    int j = 0;
-    int m = 0;
-    label58:
-    GetAppInfoProto.MsgIconsurl localMsgIconsurl;
-    if (i < paramMessage.iconsURL.get().size()) {
-      localMsgIconsurl = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
+      else
+      {
+        while (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("VoiceChangeManager", 2, "picDownloadListener mUrlList.size() = 0");
+        return;
+      }
+      File localFile = new File(VoiceChangeManager.jdField_a_of_type_JavaLangString + ((String)localObject).substring(((String)localObject).lastIndexOf("/") + 1));
+      if ((localFile.isFile()) && (localFile.exists()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VoiceChangeManager", 2, "picDownloadListener  file.exists()");
+        }
+        onDone(null);
+        return;
+      }
+      paramDownloadTask = new Bundle();
+      Object localObject = new DownloadTask((String)localObject, localFile);
+      ((DownloadTask)localObject).l = true;
+      ((DownloaderFactory)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46)).a(1).a((DownloadTask)localObject, this.a.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, paramDownloadTask);
+      return;
+    }
+    super.onDone(paramDownloadTask);
+    paramDownloadTask.a();
+    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VoiceChangeManager", 2, "picDownloadListener downloadOk task.key = " + paramDownloadTask.jdField_a_of_type_JavaLangString);
+      }
     }
     for (;;)
     {
-      try
-      {
-        k = Integer.parseInt(localMsgIconsurl.size.get());
-        if (k >= 100)
-        {
-          paramMessage = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
-          if (paramMessage == null) {
-            break;
-          }
-          ThreadManager.executeOnNetWorkThread(new aklo(this, paramMessage));
-          return;
-        }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        int k = 0;
-        continue;
-        int n = m;
-        if (k > m)
-        {
-          j = i;
-          n = k;
-        }
-        i += 1;
-        m = n;
-      }
-      break label58;
-      paramMessage = (Bitmap)paramMessage.obj;
-      Bitmap localBitmap = AuthorityUtil.a(this.a, paramMessage, 50, 50);
-      paramMessage.recycle();
-      if (localBitmap == null) {
-        break;
-      }
-      this.a.b.setImageBitmap(localBitmap);
+      onDone(null);
       return;
-      i = j;
+      QLog.e("VoiceChangeManager", 1, "picDownloadListener download Error task.key = " + paramDownloadTask.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akln
  * JD-Core Version:    0.7.0.1
  */

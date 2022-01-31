@@ -1,32 +1,31 @@
-import com.tencent.mobileqq.hotpic.HotPicManager;
-import java.io.File;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
 
 public class adgb
-  implements Comparator
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adgb(HotPicManager paramHotPicManager) {}
+  public adgb(VideoFileViewer paramVideoFileViewer) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramFile1.lastModified() > paramFile2.lastModified()) {}
-    do
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      return -1;
-      if (paramFile1.lastModified() != paramFile2.lastModified()) {
-        break;
+      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
+      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
+        this.a.a.setAlpha(f);
       }
-      if (paramFile1.length() > paramFile2.length()) {
-        return 1;
+      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
+        this.a.a.setAlpha(f);
       }
-    } while (paramFile1.length() < paramFile2.length());
-    return 0;
-    return 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgb
  * JD-Core Version:    0.7.0.1
  */

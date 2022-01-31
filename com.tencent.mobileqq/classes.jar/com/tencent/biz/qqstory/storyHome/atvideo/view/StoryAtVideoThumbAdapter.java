@@ -7,16 +7,19 @@ import android.view.View;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.storyHome.detail.view.segment.FeedItemThumbAdapter;
 import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView.StoryCoverClickListener;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class StoryAtVideoThumbAdapter
   extends FeedItemThumbAdapter
+  implements QQStoryAutoPlayView.StoryCoverClickListener
 {
   public StoryAtVideoThumbAdapter(Context paramContext, Activity paramActivity, int paramInt1, int paramInt2)
   {
     super(paramContext, paramActivity, paramInt1, paramInt2);
+    super.a(this);
   }
   
   public static void a(Activity paramActivity, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem)
@@ -71,6 +74,8 @@ public class StoryAtVideoThumbAdapter
     StoryReportor.a("home_page", "choose_video", 0, 0, new String[0]);
     this.a.finish();
   }
+  
+  public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}
 }
 
 

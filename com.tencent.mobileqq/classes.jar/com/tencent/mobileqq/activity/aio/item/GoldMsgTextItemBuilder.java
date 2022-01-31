@@ -146,10 +146,10 @@ public class GoldMsgTextItemBuilder
     paramContext = (GoldMsgTextItemBuilder.GoldMsgTextHolder)paramViewHolder;
     if (paramChatMessage.isSend())
     {
-      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130843988);
+      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844112);
       return;
     }
-    paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130843987);
+    paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844111);
   }
 }
 

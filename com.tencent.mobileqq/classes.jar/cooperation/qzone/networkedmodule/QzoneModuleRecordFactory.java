@@ -1,6 +1,6 @@
 package cooperation.qzone.networkedmodule;
 
-import amgm;
+import amwr;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneAlphaConfig;
 import common.config.service.QzoneConfig;
@@ -45,10 +45,10 @@ public class QzoneModuleRecordFactory
       {
         localObject.setAccessible(true);
         String str = ((QzoneModuleId)localObject.getAnnotation(QzoneModuleId.class)).a();
-        amgm localamgm = new amgm(null);
-        localamgm.jdField_a_of_type_JavaLangObject = paramObject;
-        localamgm.jdField_a_of_type_JavaLangReflectMethod = localObject;
-        localHashMap.put(str, localamgm);
+        amwr localamwr = new amwr(null);
+        localamwr.jdField_a_of_type_JavaLangObject = paramObject;
+        localamwr.jdField_a_of_type_JavaLangReflectMethod = localObject;
+        localHashMap.put(str, localamwr);
       }
       i += 1;
     }
@@ -67,7 +67,7 @@ public class QzoneModuleRecordFactory
   
   public QzoneModuleConfigManager.QzoneModuleRecord createRecord(String paramString)
   {
-    paramString = (amgm)this.mMethodMap.get(paramString);
+    paramString = (amwr)this.mMethodMap.get(paramString);
     if (paramString != null) {
       try
       {

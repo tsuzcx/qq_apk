@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
 
 public class abxn
-  implements Runnable
+  implements Handler.Callback
 {
-  public abxn(EmoticonMainPanel paramEmoticonMainPanel) {}
+  private String a;
   
-  public void run()
+  public abxn(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "func updateLastEmoticonPanel begins.");
+    this.a = paramString;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
     }
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    NearbyProcessMonitor.a(this.a, 1);
+    return true;
   }
 }
 

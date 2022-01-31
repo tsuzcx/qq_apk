@@ -1,15 +1,24 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView.OnTrimVDPlayCompelteListener;
 
 public class xwu
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements MediaPlayer.OnCompletionListener
 {
-  public CheckBox a;
-  public TextView a;
+  public xwu(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  private xwu(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    if (this.a.a != null)
+    {
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
+    }
+  }
 }
 
 

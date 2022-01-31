@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import jnh;
+import jms;
 
 public abstract class IAVServiceForQQ$Stub
   extends Binder
@@ -27,7 +27,7 @@ public abstract class IAVServiceForQQ$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IAVServiceForQQ))) {
       return (IAVServiceForQQ)localIInterface;
     }
-    return new jnh(paramIBinder);
+    return new jms(paramIBinder);
   }
   
   public IBinder asBinder()

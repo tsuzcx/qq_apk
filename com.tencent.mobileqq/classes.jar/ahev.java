@@ -1,25 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import java.lang.ref.WeakReference;
 
-class ahev
-  implements Runnable
+public class ahev
+  extends Handler
 {
-  ahev(aheu paramaheu) {}
+  private WeakReference a;
   
-  public void run()
+  private ahev(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.isDetached()) {}
+    this.a = new WeakReference(paramReceiptMessageReadMemberListContainerFragment);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ReceiptMessageReadMemberListContainerFragment localReceiptMessageReadMemberListContainerFragment = (ReceiptMessageReadMemberListContainerFragment)this.a.get();
+    if ((localReceiptMessageReadMemberListContainerFragment == null) || (!localReceiptMessageReadMemberListContainerFragment.isAdded())) {}
     do
     {
       return;
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.c();
-    } while ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.b)) && (!this.a.jdField_a_of_type_Boolean));
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.b);
+      switch (paramMessage.what)
+      {
+      case 0: 
+      default: 
+        return;
+      case -1: 
+        localReceiptMessageReadMemberListContainerFragment.h();
+        ReceiptMessageReadMemberListContainerFragment.g(localReceiptMessageReadMemberListContainerFragment);
+        return;
+      case 1: 
+        ReceiptMessageReadMemberListContainerFragment.b(localReceiptMessageReadMemberListContainerFragment);
+        return;
+      }
+    } while (this.a.get() == null);
+    if (ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment)) {
+      ReceiptMessageReadMemberListContainerFragment.c(localReceiptMessageReadMemberListContainerFragment);
+    }
+    for (;;)
+    {
+      ReceiptMessageReadMemberListContainerFragment.d(localReceiptMessageReadMemberListContainerFragment);
+      return;
+      sendEmptyMessage(5);
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment, ((Long)paramMessage.obj).longValue());
+    return;
+    ThreadManager.post(new ahew(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
+    return;
+    ThreadManager.post(new ahex(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahev
  * JD-Core Version:    0.7.0.1
  */

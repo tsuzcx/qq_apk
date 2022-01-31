@@ -16,8 +16,12 @@ public class QZoneCountInfo
   public boolean a;
   public int b;
   public String b;
-  public String c = "";
+  public int c;
+  public String c;
   public String d = "";
+  public String e;
+  public String f;
+  public String g;
   
   public QZoneCountInfo()
   {
@@ -26,6 +30,7 @@ public class QZoneCountInfo
   
   public QZoneCountInfo(int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString1, String paramString2)
   {
+    this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_Long = paramInt1;
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
@@ -36,6 +41,7 @@ public class QZoneCountInfo
   
   public QZoneCountInfo(QZoneCountInfo paramQZoneCountInfo)
   {
+    this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_Long = paramQZoneCountInfo.jdField_a_of_type_Long;
     this.jdField_a_of_type_Int = paramQZoneCountInfo.jdField_a_of_type_Int;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -45,8 +51,12 @@ public class QZoneCountInfo
     this.jdField_a_of_type_JavaLangString = paramQZoneCountInfo.jdField_a_of_type_JavaLangString;
     this.jdField_b_of_type_Int = 0;
     this.d = paramQZoneCountInfo.d;
-    this.c = paramQZoneCountInfo.c;
+    this.jdField_c_of_type_JavaLangString = paramQZoneCountInfo.jdField_c_of_type_JavaLangString;
     this.jdField_b_of_type_JavaLangString = paramQZoneCountInfo.jdField_b_of_type_JavaLangString;
+    this.e = paramQZoneCountInfo.e;
+    this.jdField_c_of_type_Int = paramQZoneCountInfo.jdField_c_of_type_Int;
+    this.f = paramQZoneCountInfo.f;
+    this.g = paramQZoneCountInfo.g;
   }
   
   public static HashMap a(Cursor paramCursor)
@@ -104,7 +114,11 @@ public class QZoneCountInfo
       {
         localQZoneCountInfo.jdField_a_of_type_Boolean = bool;
         localQZoneCountInfo.d = paramCursor.getString(paramCursor.getColumnIndex("pushMsg"));
-        localQZoneCountInfo.c = paramCursor.getString(paramCursor.getColumnIndex("schema"));
+        localQZoneCountInfo.jdField_c_of_type_JavaLangString = paramCursor.getString(paramCursor.getColumnIndex("schema"));
+        localQZoneCountInfo.e = paramCursor.getString(paramCursor.getColumnIndex("iconUrl"));
+        localQZoneCountInfo.g = paramCursor.getString(paramCursor.getColumnIndex("reportValue"));
+        localQZoneCountInfo.f = paramCursor.getString(paramCursor.getColumnIndex("showMsg"));
+        localQZoneCountInfo.jdField_c_of_type_Int = paramCursor.getInt(paramCursor.getColumnIndex("countID"));
         localHashMap.put(Integer.valueOf(j), localQZoneCountInfo);
         break;
       }
@@ -135,7 +149,11 @@ public class QZoneCountInfo
     {
       localContentValues.put("existDL", Integer.valueOf(i));
       localContentValues.put("pushMsg", this.d);
-      localContentValues.put("schema", this.c);
+      localContentValues.put("schema", this.jdField_c_of_type_JavaLangString);
+      localContentValues.put("iconUrl", this.e);
+      localContentValues.put("showMsg", this.f);
+      localContentValues.put("reportValue", this.g);
+      localContentValues.put("countID", Integer.valueOf(this.jdField_c_of_type_Int));
       return localContentValues;
     }
   }
@@ -143,7 +161,7 @@ public class QZoneCountInfo
   public boolean a(QZoneCountInfo paramQZoneCountInfo)
   {
     if (paramQZoneCountInfo == null) {}
-    while (((this.jdField_b_of_type_JavaLangString != null) && (!this.jdField_b_of_type_JavaLangString.equals(paramQZoneCountInfo.jdField_b_of_type_JavaLangString))) || ((paramQZoneCountInfo.jdField_b_of_type_JavaLangString != null) && (!paramQZoneCountInfo.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) || ((this.d != null) && (!this.d.equals(paramQZoneCountInfo.d))) || ((this.d == null) && (paramQZoneCountInfo.d != null)) || ((this.c != null) && (!this.c.equals(paramQZoneCountInfo.c))) || ((this.c == null) && (paramQZoneCountInfo.c != null)) || (this.jdField_a_of_type_Long != paramQZoneCountInfo.jdField_a_of_type_Long) || (!this.jdField_a_of_type_JavaUtilArrayList.equals(paramQZoneCountInfo.jdField_a_of_type_JavaUtilArrayList))) {
+    while (((this.jdField_b_of_type_JavaLangString != null) && (!this.jdField_b_of_type_JavaLangString.equals(paramQZoneCountInfo.jdField_b_of_type_JavaLangString))) || ((paramQZoneCountInfo.jdField_b_of_type_JavaLangString != null) && (!paramQZoneCountInfo.jdField_b_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) || ((this.d != null) && (!this.d.equals(paramQZoneCountInfo.d))) || ((this.d == null) && (paramQZoneCountInfo.d != null)) || ((this.jdField_c_of_type_JavaLangString != null) && (!this.jdField_c_of_type_JavaLangString.equals(paramQZoneCountInfo.jdField_c_of_type_JavaLangString))) || ((this.jdField_c_of_type_JavaLangString == null) && (paramQZoneCountInfo.jdField_c_of_type_JavaLangString != null)) || (this.jdField_c_of_type_Int != paramQZoneCountInfo.jdField_c_of_type_Int) || (!String.valueOf(this.e).equals(String.valueOf(paramQZoneCountInfo.e))) || (!String.valueOf(this.f).equals(String.valueOf(paramQZoneCountInfo.f))) || (!String.valueOf(this.g).equals(String.valueOf(this.g))) || (this.jdField_a_of_type_Long != paramQZoneCountInfo.jdField_a_of_type_Long) || (!this.jdField_a_of_type_JavaUtilArrayList.equals(paramQZoneCountInfo.jdField_a_of_type_JavaUtilArrayList))) {
       return false;
     }
     return true;

@@ -87,7 +87,7 @@ public class QidianUtils
     int i;
     if (!TextUtils.isEmpty(paramString4))
     {
-      i = paramString4.indexOf(paramQQAppInterface.getApp().getString(2131438709));
+      i = paramString4.indexOf(paramQQAppInterface.getApp().getString(2131438727));
       if (i != -1) {}
     }
     else

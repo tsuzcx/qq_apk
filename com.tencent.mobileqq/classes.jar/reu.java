@@ -1,20 +1,28 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.RecentDataListManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.Doraemon.APIParam;
+import com.tencent.mobileqq.Doraemon.DoraemonBridge.Callback;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
 
-public final class reu
-  implements Runnable
+public class reu
+  extends DoraemonBridge.Callback
 {
-  public reu(QQAppInterface paramQQAppInterface) {}
+  public reu(UserInfoModule paramUserInfoModule, APICallback paramAPICallback) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    RecentDataListManager.a().a(this.a, BaseApplicationImpl.sApplication, false);
+    if (paramBundle != null)
+    {
+      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, new APIParam(paramBundle));
+      return;
+    }
+    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, 1, "get user info error, try again");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     reu
  * JD-Core Version:    0.7.0.1
  */

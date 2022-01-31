@@ -1,18 +1,23 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.util.WeakReferenceHandler;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 class slv
   implements Runnable
 {
-  slv(slu paramslu, Card paramCard) {}
+  slv(slt paramslt, int paramInt) {}
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_Slu.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet);
-    Message localMessage = this.jdField_a_of_type_Slu.a.b.obtainMessage(13, Boolean.valueOf(bool));
-    this.jdField_a_of_type_Slu.a.b.sendMessage(localMessage);
+    this.jdField_a_of_type_Slt.a.a.setText(this.jdField_a_of_type_Slt.a.jdField_c_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Slt.a.jdField_c_of_type_Int)
+    {
+      this.jdField_a_of_type_Slt.a.a.setTextColor(-65536);
+      this.jdField_a_of_type_Slt.a.rightViewText.setEnabled(false);
+      return;
+    }
+    this.jdField_a_of_type_Slt.a.a.setTextColor(Color.rgb(119, 119, 119));
+    this.jdField_a_of_type_Slt.a.rightViewText.setEnabled(true);
   }
 }
 

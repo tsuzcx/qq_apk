@@ -1,22 +1,23 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class aekg
-  implements Runnable
+public final class aekg
+  implements Parcelable.Creator
 {
-  public aekg(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void run()
+  public SongInfo a(Parcel paramParcel)
   {
-    ShortVideoCommentsView.c(this.a, true);
-    ShortVideoCommentsView.a(this.a).requestFocus();
-    ShortVideoCommentsView.a(this.a).setVisibility(0);
+    return new SongInfo(paramParcel, null);
+  }
+  
+  public SongInfo[] a(int paramInt)
+  {
+    return new SongInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aekg
  * JD-Core Version:    0.7.0.1
  */

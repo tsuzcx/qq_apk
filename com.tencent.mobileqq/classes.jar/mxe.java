@@ -1,17 +1,19 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class mxe
-  implements Runnable
+  implements View.OnTouchListener
 {
-  mxe(mwx parammwx) {}
+  mxe(mxc parammxc, int paramInt) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null))
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).a(true);
-      PublicAccountImageCollectionMainActivity.a(this.a.a).notifyDataSetChanged();
-    }
+    mxc.a(this.jdField_a_of_type_Mxc, paramView);
+    this.jdField_a_of_type_Mxc.d = this.jdField_a_of_type_Int;
+    mxc.a(this.jdField_a_of_type_Mxc).onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 

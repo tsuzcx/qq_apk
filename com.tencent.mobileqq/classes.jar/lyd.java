@@ -1,32 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lyd
-  implements DialogInterface.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public lyd(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public lyd(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.i("ReadInJoyDeliverVideoActivity", 2, "qbShowShareResultDialog back");
-      }
-      ForwardSdkShareOption.a(this.a, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(this.a));
-      Util.a(this.a, 0, "", "");
-      this.a.finish();
+    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
       return;
     }
-    ReadInJoyDeliverVideoActivity.c(this.a);
-    this.a.finish();
+    ReadInJoyDeliverUGCActivity.a(this.a, true);
+    ReadInJoyDeliverUGCActivity.b(this.a, ReadInJoyDeliverUGCActivity.b(this.a));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
+      return;
+      ReadInJoyDeliverUGCActivity.a(this.a);
+      PublicAccountReportUtils.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
+      continue;
+      ReadInJoyDeliverUGCActivity.b(this.a);
+      PublicAccountReportUtils.a(null, "", "0X800823A", "0X800823A", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
+    }
   }
 }
 

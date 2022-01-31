@@ -1,38 +1,42 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.mobileqq.data.EmoticonTab;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.File;
 
 public class smi
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public smi(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public smi(EmosmActivity paramEmosmActivity, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a.equals(this.a.app.getCurrentAccountUin())) && (this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null))
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface)) {}
+    for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
     {
-      if ((paramIntent == null) || (!paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label"))) {
-        break label107;
+      if (localObject1 != null)
+      {
+        localObject1 = ((EmoticonManager)((QQAppInterface)localObject1).getManager(13)).a(this.jdField_a_of_type_JavaLangString);
+        if ((localObject1 == null) || ((!((EmoticonTab)localObject1).aioHave) && (!((EmoticonTab)localObject1).kandianHave)))
+        {
+          Object localObject2 = AppConstants.br + this.jdField_a_of_type_JavaLangString;
+          localObject1 = new File((String)localObject2);
+          localObject2 = new File((String)localObject2 + "del");
+          if (!((File)localObject1).renameTo((File)localObject2)) {
+            break label134;
+          }
+          FileUtils.a(((File)localObject2).getAbsolutePath());
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "receive broadcast modify pl info");
-      }
-      paramContext = paramIntent.getBundleExtra("key_bundle_data");
-      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged"))) {
-        this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(16, 0, 0).sendToTarget();
-      }
+      return;
+      label134:
+      FileUtils.a(((File)localObject1).getAbsolutePath());
+      return;
     }
-    return;
-    label107:
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
   }
 }
 

@@ -1,55 +1,93 @@
-import android.graphics.drawable.Animatable;
-import android.os.Handler;
-import android.os.Message;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.File;
-import java.net.MalformedURLException;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.HashMap;
 
 public class rga
-  extends Handler
+  implements Runnable
 {
-  public rga(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public rga(AccountManageActivity paramAccountManageActivity, String paramString1, SimpleAccount paramSimpleAccount, String paramString2, TextView paramTextView, ImageView paramImageView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
+    boolean bool = true;
     for (;;)
     {
-      return;
-      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
-        continue;
-      }
-      AddFriendVerifyActivity.a(this.a).setVisibility(0);
-      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
-      return;
-      if (this.a.isFinishing()) {
-        continue;
-      }
-      if (!TextUtils.isEmpty(AddFriendVerifyActivity.d(this.a))) {}
       try
       {
-        paramMessage = new File(AddFriendVerifyActivity.e(this.a)).toURL();
-        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
-        label142:
-        if (AddFriendVerifyActivity.a(this.a) == null) {
+        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a(1, this.jdField_a_of_type_JavaLangString, (byte)3, 0);
+        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a((String)localObject1);
+        if (localBitmap == null)
+        {
+          if ((!AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).containsKey(this.jdField_a_of_type_JavaLangString)) || (AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).get(this.jdField_a_of_type_JavaLangString) == null))
+          {
+            localObject1 = FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, this.jdField_a_of_type_JavaLangString, (byte)3);
+            String str2 = ContactUtils.j(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, this.jdField_a_of_type_JavaLangString);
+            localObject2 = (SubAccountManager)this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getManager(60);
+            if (localObject2 == null) {
+              break label337;
+            }
+            localObject2 = ((SubAccountManager)localObject2).a(this.jdField_a_of_type_JavaLangString);
+            String str1;
+            if (!this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.isLogined())
+            {
+              str1 = str2;
+              if (localObject2 != null)
+              {
+                str1 = str2;
+                if (((SubAccountInfo)localObject2).subuin != null)
+                {
+                  str1 = str2;
+                  if (!((SubAccountInfo)localObject2).subuin.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {}
+                }
+              }
+            }
+            else if (!TextUtils.isEmpty(str2))
+            {
+              str1 = str2;
+              if (!str2.equals(this.jdField_a_of_type_JavaLangString)) {}
+            }
+            else
+            {
+              str1 = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, this.jdField_a_of_type_JavaLangString);
+            }
+            if ((!TextUtils.isEmpty(str1)) && (!this.b.equals(str1))) {
+              this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.runOnUiThread(new rgb(this, bool, str1, localBitmap, (Drawable)localObject1));
+            }
+          }
+          else
+          {
+            localBitmap = (Bitmap)AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).get(this.jdField_a_of_type_JavaLangString);
+            FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, this.jdField_a_of_type_JavaLangString, (byte)3);
+            localObject1 = null;
+            continue;
+          }
+        }
+        else
+        {
+          AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).put(this.jdField_a_of_type_JavaLangString, localBitmap);
+          localObject1 = null;
           continue;
         }
-        AddFriendVerifyActivity.a(this.a).setVisibility(8);
-        return;
-        QQToast.a(this.a.getApplicationContext(), 1, 2131434545, 0).b(this.a.getTitleBarHeight());
-        return;
+        bool = false;
       }
-      catch (MalformedURLException paramMessage)
+      catch (Exception localException)
       {
-        break label142;
+        localException.printStackTrace();
+        return;
       }
+      continue;
+      label337:
+      Object localObject2 = null;
     }
   }
 }

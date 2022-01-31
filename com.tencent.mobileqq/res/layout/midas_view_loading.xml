@@ -3,6 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e009e">
         <ProgressBar style="@style/APKTOOL_DUPLICATE_style_0x7f0e009f" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c024c" android:ellipsize="end" android:layout_gravity="center" android:id="@id/midas_loading_message" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="请稍候..." android:singleLine="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0252" android:ellipsize="end" android:layout_gravity="center" android:id="@id/midas_loading_message" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="请稍候..." android:singleLine="true" />
     </LinearLayout>
 </RelativeLayout>

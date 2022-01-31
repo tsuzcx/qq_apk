@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.text;
 
-import amxo;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import annt;
 import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -71,12 +71,11 @@ public class DynamicTextConfigManager
   
   public static boolean b()
   {
-    boolean bool1 = new File(jdField_a_of_type_JavaIoFile + File.separator + "dynamic_text_config.cfg").exists();
-    boolean bool2 = new File(jdField_a_of_type_JavaIoFile, "temp_dynamic_text_zip").exists();
+    boolean bool = new File(jdField_a_of_type_JavaIoFile + File.separator + "dynamic_text_config.cfg").exists();
     if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "isDynamicTextConfigExist" + bool1 + " " + bool2);
+      QLog.i("DText", 2, "DynamicTextConfigManager isStickerConfigFileExist" + bool);
     }
-    return (bool2) && (bool1);
+    return bool;
   }
   
   public DynamicTextConfigManager.DynamicTextConfigBean a(String arg1)
@@ -118,7 +117,7 @@ public class DynamicTextConfigManager
     if ((paramDynamicTextConfigBean == null) || (paramDynamicTextConfigBean.fontInfos == null)) {
       return;
     }
-    ThreadManager.postImmediately(new amxo(this, paramDynamicTextConfigBean, paramIDynamicTextResDownloadCallback), null, true);
+    ThreadManager.postImmediately(new annt(this, paramDynamicTextConfigBean, paramIDynamicTextResDownloadCallback), null, true);
   }
   
   public void a(String paramString)

@@ -1,18 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
+import android.os.Message;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer.Mp4VideoFragmentInfo;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class anvw
+class anvw
   implements Runnable
 {
-  public anvw(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite, int paramInt) {}
+  anvw(anvv paramanvv) {}
   
   public void run()
   {
-    CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "onDownloadProgress mGestureState=" + CaptureQmcfSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite) + " mVideoState=" + CaptureQmcfSoDownloadFragmentAllWaite.c(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite) + ",mFilterSoState=" + CaptureQmcfSoDownloadFragmentAllWaite.d(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite));
+    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      HWEditImportVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditImportVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditImportVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
     }
-    CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite, "GestureDownloadProgress");
+    for (;;)
+    {
+      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
+      HWEditImportVideoPlayer.a(this.a.a).set(true);
+      return;
+      SLog.e("Q.qqstory.record.HWEditImportVideoPlayer", "mFragmentInfos is empty");
+    }
   }
 }
 

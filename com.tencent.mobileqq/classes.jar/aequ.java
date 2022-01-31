@@ -1,22 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.nearby.widget.NearbyFacePowerDialog;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
 
-public class aequ
-  implements View.OnClickListener
+class aequ
+  implements Runnable
 {
-  public aequ(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, String paramString, NearbyFacePowerDialog paramNearbyFacePowerDialog) {}
+  aequ(aeqt paramaeqt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a.startActivity(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyFacePowerDialog.dismiss();
+    ChooseInterestTagActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity).removeView(this.a.jdField_a_of_type_AndroidViewView);
   }
 }
 

@@ -1,30 +1,53 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class tmr
-  implements TextWatcher
+  implements Runnable
 {
-  public tmr(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
+  private WeakReference a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public tmr(QQSettingMe paramQQSettingMe)
   {
-    if (paramEditable == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramEditable.toString()))
-    {
-      RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
-      return;
-    }
-    RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
+    this.a = new WeakReference(paramQQSettingMe);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void run()
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.a == null) {
+          return;
+        }
+        QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
+        if ((localQQSettingMe == null) || (localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+          break;
+        }
+        WebProcessManager localWebProcessManager = (WebProcessManager)localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
+        if (localWebProcessManager == null) {
+          break;
+        }
+        if (ApolloUtil.a(localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localQQSettingMe.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView))
+        {
+          i = 100;
+          localWebProcessManager.a(i, new tms(this, localQQSettingMe));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("QQSettingRedesign", 1, "WebPreloadTask preloadWebProcess, exception=" + MsfSdkUtils.getStackTraceString(localException));
+        return;
+      }
+      int i = -1;
+    }
+  }
 }
 
 

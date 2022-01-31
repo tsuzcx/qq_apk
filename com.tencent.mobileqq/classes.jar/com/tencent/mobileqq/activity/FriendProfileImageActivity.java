@@ -67,22 +67,22 @@ import com.tencent.widget.AdapterView;
 import com.tencent.widget.Gallery;
 import java.io.File;
 import mqq.os.MqqHandler;
-import soq;
-import sor;
-import sos;
-import sot;
-import sou;
-import sov;
-import sow;
-import sox;
-import soz;
-import spb;
-import spc;
-import spd;
-import spe;
-import spg;
-import sph;
-import spi;
+import srp;
+import srq;
+import srr;
+import srs;
+import srt;
+import sru;
+import srv;
+import srw;
+import sry;
+import ssa;
+import ssb;
+import ssc;
+import ssd;
+import ssf;
+import ssg;
+import ssh;
 
 public class FriendProfileImageActivity
   extends BaseActivity
@@ -92,7 +92,7 @@ public class FriendProfileImageActivity
   public long a;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   public AsyncTask a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new sox(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new srw(this);
   public View a;
   AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
@@ -108,7 +108,7 @@ public class FriendProfileImageActivity
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private QQToastNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQToastNotifier;
   public Gallery a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new sot(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new srs(this);
   public boolean a;
   public int b;
   private long jdField_b_of_type_Long = 350L;
@@ -232,10 +232,10 @@ public class FriendProfileImageActivity
         paramRect1 = new TranslateAnimation(-(i - k), 0.0F, -(j - m), 0.0F);
         paramRect1.setDuration(this.jdField_b_of_type_Long);
         paramRect1.setInterpolator(new AccelerateDecelerateInterpolator());
-        paramRect1.setAnimationListener(new sou(this));
+        paramRect1.setAnimationListener(new srt(this));
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(paramRect1);
         if (!this.e) {
-          this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new sov(this), this.jdField_b_of_type_Long);
+          this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(new sru(this), this.jdField_b_of_type_Long);
         }
         paramRect1 = new AlphaAnimation(0.0F, 1.0F);
         paramRect1.setInterpolator(new DecelerateInterpolator());
@@ -263,8 +263,8 @@ public class FriendProfileImageActivity
     paramTextView.setVisibility(4);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
     this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new sor(this, paramTextView));
-    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new sos(this, paramTextView));
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new srq(this, paramTextView));
+    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new srr(this, paramTextView));
   }
   
   private void d()
@@ -277,13 +277,13 @@ public class FriendProfileImageActivity
       localProfileImageInfo = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
     } while ((localProfileImageInfo == null) || (localProfileImageInfo.jdField_a_of_type_Int != 6));
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.a(2131435854, 1);
-    localActionSheet.a(2131435860, 1);
+    localActionSheet.a(2131435871, 1);
+    localActionSheet.a(2131435877, 1);
     if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean)) {
-      localActionSheet.a(2131435868, 3);
+      localActionSheet.a(2131435885, 3);
     }
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new spg(this, localProfileImageInfo, localActionSheet));
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new ssf(this, localProfileImageInfo, localActionSheet));
     localActionSheet.show();
   }
   
@@ -292,7 +292,7 @@ public class FriendProfileImageActivity
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434025);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434042);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
@@ -355,7 +355,7 @@ public class FriendProfileImageActivity
     {
       sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.parse("file://" + paramString2)));
       return;
-      DialogUtil.a(this, 230).setTitle(getString(2131434569)).setMessage(getString(2131434571)).setPositiveButton(getString(2131434570), new spi(this, paramString1, paramString2)).setNegativeButton(getString(2131432995), new sph(this)).show();
+      DialogUtil.a(this, 230).setTitle(getString(2131434586)).setMessage(getString(2131434588)).setPositiveButton(getString(2131434587), new ssh(this, paramString1, paramString2)).setNegativeButton(getString(2131433012), new ssg(this)).show();
     }
   }
   
@@ -388,10 +388,10 @@ public class FriendProfileImageActivity
   {
     if (FileUtils.d(paramString1, paramString2))
     {
-      QQToast.a(this, getString(2131434565) + " " + AppConstants.aP, 0).a();
+      QQToast.a(this, getString(2131434582) + " " + AppConstants.aP, 0).a();
       return;
     }
-    QQToast.a(this, getString(2131434566), 0).a();
+    QQToast.a(this, getString(2131434583), 0).a();
   }
   
   public void c()
@@ -413,7 +413,7 @@ public class FriendProfileImageActivity
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new sow(this));
+    localAnimationSet.setAnimationListener(new srv(this));
     this.jdField_a_of_type_ComTencentWidgetGallery.startAnimation(localAnimationSet);
     this.jdField_b_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
@@ -421,7 +421,7 @@ public class FriendProfileImageActivity
   public void c(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
   {
     if (!NetworkUtil.d(this)) {
-      QQToast.a(this, getString(2131434575), 0).a();
+      QQToast.a(this, getString(2131434592), 0).a();
     }
     Card localCard;
     do
@@ -494,8 +494,8 @@ public class FriendProfileImageActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131492923);
-    super.setContentView(2130969030);
+    getWindow().setBackgroundDrawableResource(2131492924);
+    super.setContentView(2130969029);
     this.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler = new CustomHandler(getMainLooper(), this);
     paramBundle = getIntent().getExtras();
     this.jdField_c_of_type_Boolean = paramBundle.getBoolean("is_from_face2face_add_friend", false);
@@ -503,23 +503,23 @@ public class FriendProfileImageActivity
     this.e = paramBundle.getBoolean("is_hide_footbar", false);
     this.jdField_d_of_type_Int = paramBundle.getInt("curType", 0);
     this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = ((ProfileActivity.AllInOne)getIntent().getParcelableExtra("AllInOne"));
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131364774));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131364796));
     this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363614));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362822));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131362727);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363632));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362840));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131362745);
     this.jdField_b_of_type_AndroidViewView.setBackgroundColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364773));
-    Object localObject = ((ViewStub)findViewById(2131364783)).inflate();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131364638));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131364639));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131362722));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364776));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364795));
+    Object localObject = ((ViewStub)findViewById(2131364805)).inflate();
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131364662));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131364663));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131362740));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364798));
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131364642));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131364666));
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new soq(this));
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new srp(this));
     this.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter = new FriendProfileImageAdapter(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel = new FriendProfileImageAvatar(this.app);
     this.jdField_b_of_type_Boolean = true;
@@ -530,7 +530,7 @@ public class FriendProfileImageActivity
     this.jdField_a_of_type_Long = paramBundle.getLong("extra_pendant_id", 0L);
     if (this.jdField_a_of_type_Long == 0L)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131436890);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131436907);
       this.jdField_a_of_type_Long = 5L;
     }
     this.jdField_c_of_type_Int = paramBundle.getInt("extra_action_source", 0);
@@ -540,10 +540,10 @@ public class FriendProfileImageActivity
       localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131558775);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
       this.jdField_c_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131364640));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131364664));
       ThreadManager.getSubThreadHandler().post(this);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131364641));
-      ThreadManager.post(new soz(this), 8, null, true);
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131364665));
+      ThreadManager.post(new sry(this), 8, null, true);
     }
     if (this.app.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.jdField_b_of_type_JavaLangString)) {}
     for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
@@ -560,11 +560,11 @@ public class FriendProfileImageActivity
       this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter);
       this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
       this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131558524));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new spb(this));
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new spc(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new ssa(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new ssb(this));
       a(this.jdField_a_of_type_AndroidWidgetTextView);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new spd(this));
-      this.jdField_a_of_type_AndroidOsAsyncTask = new spe(this, (FriendProfileImageModel.ProfileImageInfo)localObject);
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new ssc(this));
+      this.jdField_a_of_type_AndroidOsAsyncTask = new ssd(this, (FriendProfileImageModel.ProfileImageInfo)localObject);
       return true;
     }
   }
@@ -698,7 +698,7 @@ public class FriendProfileImageActivity
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
       return true;
     } while ((this == null) || (isFinishing()));
-    a(2131434575, 1);
+    a(2131434592, 1);
     return true;
   }
   
@@ -718,7 +718,7 @@ public class FriendProfileImageActivity
     } while (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel == null);
     if (!Utils.a())
     {
-      Toast.makeText(super.getApplicationContext(), getString(2131434753), 0).show();
+      Toast.makeText(super.getApplicationContext(), getString(2131434770), 0).show();
       return;
     }
     boolean bool2 = true;

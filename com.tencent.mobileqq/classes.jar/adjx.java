@@ -1,29 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.flashchat.FlashChatObserver;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
 
 public class adjx
-  implements INetEventHandler
+  extends FlashChatObserver
 {
-  public adjx(GroupVideoManager paramGroupVideoManager) {}
+  public adjx(FlashChatTextEffectView paramFlashChatTextEffectView) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    if (GroupVideoManager.a(this.a) == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + GroupVideoManager.a(this.a).e);
-      }
-    } while (!paramBoolean);
-    this.a.a(false);
+    super.b(paramBoolean, paramBundle);
+    if (paramBoolean) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjx
  * JD-Core Version:    0.7.0.1
  */

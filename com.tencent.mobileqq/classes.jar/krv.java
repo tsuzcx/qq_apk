@@ -1,18 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class krv
-  implements View.OnClickListener
+  implements Runnable
 {
-  public krv(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, Dialog paramDialog) {}
+  public krv(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    this.a.jdField_a_of_type_OrgJsonJSONObject = this.a.a(this.a, this.a.d);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
   }
 }
 

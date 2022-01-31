@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import lwm;
+import lwv;
 import mqq.manager.Manager;
 
 public abstract class ReadInJoyBaseResManager
@@ -105,7 +105,7 @@ public abstract class ReadInJoyBaseResManager
     localObject = new DownloadTask(paramBaseResData.url, localFile);
     ((DownloadTask)localObject).b = paramInt;
     ((DownloadTask)localObject).d = 60L;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject, new lwm(this, str, paramBaseResData, paramString), localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject, new lwv(this, str, paramBaseResData, paramString), localBundle);
     return false;
   }
   

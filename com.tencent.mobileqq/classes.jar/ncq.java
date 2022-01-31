@@ -1,17 +1,24 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInsertLocalVideoInfoSegment;
-import com.tencent.biz.qqstory.msgTabNode.util.MsgTabStoryUtil;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoData;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.model.AddressDataProvider;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class ncq
-  implements Comparator
+  implements LbsManager.LbsUpdateListener
 {
-  public ncq(MsgTabNodeInsertLocalVideoInfoSegment paramMsgTabNodeInsertLocalVideoInfoSegment) {}
+  public ncq(AddressDataProvider paramAddressDataProvider) {}
   
-  public int a(MsgTabVideoData paramMsgTabVideoData1, MsgTabVideoData paramMsgTabVideoData2)
+  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    return MsgTabStoryUtil.a(paramMsgTabVideoData1.a.mCreateTime, paramMsgTabVideoData2.a.mCreateTime);
+    SLog.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramBasicLocation != null))
+    {
+      SLog.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramBasicLocation.b), Integer.valueOf(paramBasicLocation.a));
+      this.a.a(paramBasicLocation.b, paramBasicLocation.a);
+      return;
+    }
+    SLog.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
+    this.a.a(false, null);
   }
 }
 

@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class rjw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public rjw(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public rjw(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.springBackOverScrollHeaderView();
-    }
+    this.a.a.cancel();
   }
 }
 

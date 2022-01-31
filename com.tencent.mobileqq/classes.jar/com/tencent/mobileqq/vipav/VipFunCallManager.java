@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vipav;
 
-import ajwu;
-import ajwv;
-import ajww;
-import ajwx;
-import ajwy;
+import aklb;
+import aklc;
+import akld;
+import akle;
+import aklf;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -57,7 +57,7 @@ public class VipFunCallManager
   public static int c = -7;
   public static int d = -1;
   public QQAppInterface a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ajwy(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new aklf(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory;
   public IPCDownloadListener a;
   
@@ -317,12 +317,12 @@ public class VipFunCallManager
     do
     {
       return null;
-      localView = paramActivity.getLayoutInflater().inflate(2130971670, null);
+      localView = paramActivity.getLayoutInflater().inflate(2130971718, null);
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       localLayoutParams.addRule(13);
     } while (paramActivity.isFinishing());
     paramRelativeLayout.addView(localView, 0, localLayoutParams);
-    return (VipFullScreenVideoView)localView.findViewById(2131372332);
+    return (VipFullScreenVideoView)localView.findViewById(2131372505);
   }
   
   public static String a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, String paramString)
@@ -461,13 +461,13 @@ public class VipFunCallManager
       }
       if (paramInt1 == 6)
       {
-        paramVideoView.setOnTouchListener(new ajwu());
+        paramVideoView.setOnTouchListener(new aklb());
         paramVideoView.setVideoPath(paramContext.getAbsolutePath());
         paramVideoView.requestFocus();
         paramVideoView.setVisibility(0);
-        paramVideoView.setOnPreparedListener(new ajwv(paramVipFunCallMediaListener));
-        paramVideoView.setOnCompletionListener(new ajww(paramVideoView));
-        paramVideoView.setOnErrorListener(new ajwx(paramInt2, paramVipFunCallMediaListener, paramVideoView, paramBoolean));
+        paramVideoView.setOnPreparedListener(new aklc(paramVipFunCallMediaListener));
+        paramVideoView.setOnCompletionListener(new akld(paramVideoView));
+        paramVideoView.setOnErrorListener(new akle(paramInt2, paramVipFunCallMediaListener, paramVideoView, paramBoolean));
         return true;
       }
       if (paramInt1 == 7)
@@ -851,7 +851,7 @@ public class VipFunCallManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vipav.VipFunCallManager
  * JD-Core Version:    0.7.0.1
  */

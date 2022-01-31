@@ -1,40 +1,18 @@
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.qphone.base.util.QLog;
 
-class aagy
+public class aagy
   implements Runnable
 {
-  aagy(aagv paramaagv, String paramString1, String paramString2, long paramLong, String paramString3) {}
+  public aagy(AREngine paramAREngine) {}
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(BaseActivity.sTopActivity, 2131624515);
-    localQQCustomDialog.setContentView(2130968843);
-    localQQCustomDialog.setTitle(BaseActivity.sTopActivity.getString(2131438226, new Object[] { this.jdField_a_of_type_JavaLangString }));
-    ((ImageView)localQQCustomDialog.findViewById(2131364017)).setImageDrawable(BaseActivity.sTopActivity.getResources().getDrawable(2130838196));
-    ((TextView)localQQCustomDialog.findViewById(2131364018)).setText(this.jdField_a_of_type_JavaLangString);
-    ((TextView)localQQCustomDialog.findViewById(2131362758)).setText(BaseActivity.sTopActivity.getString(2131438808));
-    localQQCustomDialog.setCanceledOnTouchOutside(false);
-    ArkAppCenter.a(this.b, new aagz(this, localQQCustomDialog));
-    localQQCustomDialog.setNegativeButton(2131434657, new aaha(this, localQQCustomDialog));
-    localQQCustomDialog.setPositiveButton(2131434655, new aahc(this, localQQCustomDialog));
-    try
-    {
-      localQQCustomDialog.show();
-      label159:
-      if (ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_location", this.c) == 0) {
-        ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_location", this.c, 2);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label159;
+    QLog.i("AREngine_AREngine", 2, "downloadWorldCupIdx1Res. download timeout.");
+    WorldCupMgr.a(AREngine.a(this.a)).b(this.a.a);
+    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null)) {
+      AREngine.b(this.a, 7);
     }
   }
 }

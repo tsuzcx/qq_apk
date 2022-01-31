@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03cc"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/icon" android:focusable="false" android:clickable="false" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03cd" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03cd" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03c4" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a01" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@null" />
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03c4" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true">
-        <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01bb" android:id="@id/title" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02e7" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b236a" android:includeFontPadding="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a9" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0572" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f00" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b236c" android:maxLines="1" android:includeFontPadding="true" android:layout_below="@id/title" android:layout_alignLeft="@id/title" />
-    </RelativeLayout>
-</RelativeLayout>
+<com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

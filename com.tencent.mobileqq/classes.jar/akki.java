@@ -1,30 +1,23 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.BounceScrollView;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vashealth.SportManager;
+import com.tencent.mobileqq.vashealth.StepAlarmReceiver;
 
 public class akki
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public akki(AuthorityActivity paramAuthorityActivity) {}
+  public akki(StepAlarmReceiver paramStepAlarmReceiver) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    int i = this.a.jdField_a_of_type_AndroidViewView.getHeight();
-    int j = this.a.b.getHeight();
-    if ((j != 0) && (i != 0))
-    {
-      QLog.d("AuthorityActivity", 2, "height_root=" + i + " height_bt=" + j);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setMaxHeight(i - j);
-      this.a.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (this.a.a == null) {
+      return;
     }
+    ((SportManager)this.a.a.getManager(259)).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akki
  * JD-Core Version:    0.7.0.1
  */

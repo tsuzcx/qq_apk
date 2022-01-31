@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
 
 public class vsd
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public vsd(HotChatPie paramHotChatPie, boolean paramBoolean) {}
+  public vsd(DeviceMsgChatPie paramDeviceMsgChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.x()) {
-      return;
-    }
-    HotChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie, this.jdField_a_of_type_Boolean);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,19 +1,12 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-
-public class aisv
-  implements Runnable
+public abstract interface aisv
 {
-  public aisv(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public abstract void a();
   
-  public void run()
-  {
-    PublishHomeWorkFragment.b(this.a).setVisibility(0);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisv
  * JD-Core Version:    0.7.0.1
  */

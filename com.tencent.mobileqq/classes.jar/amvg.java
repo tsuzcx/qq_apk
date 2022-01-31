@@ -1,18 +1,23 @@
-import dov.com.qq.im.capture.data.CaptureSet;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastOneShow;
 
-public class amvg
-  implements Runnable
+public final class amvg
+  implements Parcelable.Creator
 {
-  public amvg(CaptureSet paramCaptureSet) {}
-  
-  public void run()
+  public BroadcastOneShow a(Parcel paramParcel)
   {
-    this.a.c();
+    return new BroadcastOneShow(paramParcel);
+  }
+  
+  public BroadcastOneShow[] a(int paramInt)
+  {
+    return new BroadcastOneShow[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvg
  * JD-Core Version:    0.7.0.1
  */

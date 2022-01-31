@@ -11,10 +11,10 @@ import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import lgk;
-import lgl;
-import lgm;
-import lgn;
+import lga;
+import lgb;
+import lgc;
+import lgd;
 import mqq.util.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +33,7 @@ public class ReadInJoyArkViewController
     {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
       this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-      a(new lgk(this), 5);
+      a(new lga(this), 5);
       return;
     }
     catch (Exception localException) {}
@@ -140,7 +140,7 @@ public class ReadInJoyArkViewController
       label27:
       QLog.d("ReadInJoyArkViewController", 1, "notify ark app notify:" + paramString + ", current:" + paramInt1 + ", total:" + paramInt2);
       localObject = ((JSONObject)localObject).toString();
-      ArkAppCenter.a().post(new lgn(this, paramString, (String)localObject));
+      ArkAppCenter.a().post(new lgd(this, paramString, (String)localObject));
       return;
     }
     catch (JSONException localJSONException)
@@ -172,7 +172,7 @@ public class ReadInJoyArkViewController
   
   public void a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    ThreadManager.executeOnSubThread(new lgm(this, paramString3, paramString1, paramString2, paramInt));
+    ThreadManager.executeOnSubThread(new lgc(this, paramString3, paramString1, paramString2, paramInt));
   }
   
   public boolean a(String paramString)
@@ -207,7 +207,7 @@ public class ReadInJoyArkViewController
           }
           paramString2 = paramString1.b;
           str = paramString1.c;
-          ReadInJoyUtils.a(paramString1.b, paramString1.c, null, new lgl(this, paramString2, str));
+          ReadInJoyUtils.a(paramString1.b, paramString1.c, null, new lgb(this, paramString2, str));
           return false;
         }
       }

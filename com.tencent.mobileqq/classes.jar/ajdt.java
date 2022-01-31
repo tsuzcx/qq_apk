@@ -1,34 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.data.TroopEntranceBar;
 
 public class ajdt
-  extends Handler
+  implements Runnable
 {
-  public ajdt(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ajdt(TroopEntranceBar paramTroopEntranceBar) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (AvatarWallViewPager.a(this.a)) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
-      return;
+    String str1 = "";
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    {
+      String str2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      AccountDetail localAccountDetail = PublicAccountUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2);
+      if (localAccountDetail != null) {
+        str1 = localAccountDetail.uin;
+      }
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "interest_data", "exp_tribechat_aio", 0, 0, str2, str1, "", "");
     }
-    paramMessage = this.a;
-    paramMessage.d += 1;
-    this.a.d %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.d, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.utils.UITools;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
 
-class aeux
-  implements DialogInterface.OnClickListener
+public class aeux
+  implements View.OnTouchListener
 {
-  aeux(aeuv paramaeuv, QQCustomDialog paramQQCustomDialog) {}
+  public aeux(SmallVideoSendFragment paramSmallVideoSendFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Aeuv.a.a.c();
-    paramInt = ((Integer)NearbySPUtil.a(this.jdField_a_of_type_Aeuv.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    ReportController.b(this.jdField_a_of_type_Aeuv.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, NearbyUtils.a(this.jdField_a_of_type_Aeuv.a.a.j), paramInt + "", "", "");
+    if ((SmallVideoSendFragment.a(this.a)) && (paramMotionEvent.getY() > UITools.a(this.a.a(), 131.0F))) {}
+    return false;
   }
 }
 

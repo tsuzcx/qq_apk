@@ -1,35 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
+import com.tencent.mobileqq.ocr.OcrCamera;
 
-class agbn
-  implements Runnable
+public class agbn
+  implements Camera.PictureCallback
 {
-  agbn(agbm paramagbm, Card paramCard, HashMap paramHashMap, String paramString) {}
+  public agbn(OcrCamera paramOcrCamera) {}
   
-  public void run()
+  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    boolean bool = this.jdField_a_of_type_Agbm.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet);
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    if (bool) {}
-    for (Object localObject = "0";; localObject = "-102")
-    {
-      localHashMap.put("param_FailCode", localObject);
-      if (bool != true) {
-        break;
-      }
-      StatisticCollector.a(this.jdField_a_of_type_Agbm.a.app.getApp()).a(this.jdField_a_of_type_JavaLangString, "profileCardSet", true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-      localObject = this.jdField_a_of_type_Agbm.a.a.obtainMessage(5);
-      this.jdField_a_of_type_Agbm.a.a.sendMessage((Message)localObject);
-      return;
-    }
-    StatisticCollector.a(this.jdField_a_of_type_Agbm.a.app.getApp()).a(this.jdField_a_of_type_JavaLangString, "profileCardSet", false, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-    localObject = this.jdField_a_of_type_Agbm.a.a.obtainMessage(6);
-    this.jdField_a_of_type_Agbm.a.a.sendMessage((Message)localObject);
+    this.a.a(paramArrayOfByte, true);
   }
 }
 

@@ -58,9 +58,9 @@ import java.util.zip.ZipFile;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
-import xek;
-import xel;
-import xem;
+import xhp;
+import xhq;
+import xhr;
 
 public class QWalletTools
 {
@@ -182,8 +182,8 @@ public class QWalletTools
             j = k;
           }
           SpannableString localSpannableString = new SpannableString(str1);
-          localSpannableString.setSpan(new xel(paramTextUrlClickListener, str2), 0, str1.length(), 33);
-          localSpannableString.setSpan(new ForegroundColorSpan(paramContext.getResources().getColor(2131493044)), 0, str1.length(), 33);
+          localSpannableString.setSpan(new xhq(paramTextUrlClickListener, str2), 0, str1.length(), 33);
+          localSpannableString.setSpan(new ForegroundColorSpan(paramContext.getResources().getColor(2131493045)), 0, str1.length(), 33);
           localSpannableStringBuilder.append(localSpannableString);
           m = 1;
           i = j;
@@ -297,16 +297,16 @@ public class QWalletTools
     //   126: goto -20 -> 106
     //   129: astore 6
     //   131: aconst_null
-    //   132: astore 8
+    //   132: astore 7
     //   134: aload 5
     //   136: astore_3
     //   137: aconst_null
-    //   138: astore 7
+    //   138: astore 8
     //   140: aload 4
     //   142: astore_0
-    //   143: aload 8
+    //   143: aload 7
     //   145: astore 5
-    //   147: aload 7
+    //   147: aload 8
     //   149: astore 4
     //   151: aload 6
     //   153: invokevirtual 154	java/lang/Exception:printStackTrace	()V
@@ -547,26 +547,24 @@ public class QWalletTools
     //   578: astore 6
     //   580: goto -429 -> 151
     //   583: astore 9
-    //   585: aload 5
-    //   587: astore 7
-    //   589: aload 6
-    //   591: astore 5
-    //   593: aload_3
-    //   594: astore 8
-    //   596: aload 4
-    //   598: astore_0
-    //   599: aload 9
-    //   601: astore 6
-    //   603: aload 7
-    //   605: astore_3
-    //   606: aload 5
-    //   608: astore 4
-    //   610: aload 8
-    //   612: astore 5
-    //   614: goto -463 -> 151
+    //   585: aload 6
+    //   587: astore 8
+    //   589: aload_3
+    //   590: astore 7
+    //   592: aload 4
+    //   594: astore_0
+    //   595: aload 9
+    //   597: astore 6
+    //   599: aload 5
+    //   601: astore_3
+    //   602: aload 8
+    //   604: astore 4
+    //   606: aload 7
+    //   608: astore 5
+    //   610: goto -459 -> 151
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	617	0	paramString	String
+    //   0	613	0	paramString	String
     //   112	11	1	i	int
     //   16	2	2	bool	boolean
     //   59	217	3	localObject1	Object
@@ -578,25 +576,25 @@ public class QWalletTools
     //   457	1	3	localOutOfMemoryError2	OutOfMemoryError
     //   477	1	3	localOutOfMemoryError3	OutOfMemoryError
     //   494	17	3	localOutOfMemoryError4	OutOfMemoryError
-    //   514	92	3	localObject3	Object
-    //   89	520	4	localObject4	Object
-    //   98	515	5	localObject5	Object
+    //   514	88	3	localObject3	Object
+    //   89	516	4	localObject4	Object
+    //   98	511	5	localObject5	Object
     //   129	28	6	localException1	Exception
     //   163	278	6	localObject6	Object
     //   447	5	6	localObject7	Object
     //   462	58	6	localObject8	Object
     //   526	1	6	localException2	Exception
     //   541	29	6	localException3	Exception
-    //   578	24	6	localObject9	Object
-    //   138	362	7	localObject10	Object
+    //   578	20	6	localObject9	Object
+    //   132	368	7	localObject10	Object
     //   508	5	7	localOutOfMemoryError5	OutOfMemoryError
     //   517	38	7	localObject11	Object
     //   561	16	7	localException4	Exception
-    //   587	17	7	localObject12	Object
-    //   1	143	8	localObject13	Object
+    //   590	17	7	localObject12	Object
+    //   1	147	8	localObject13	Object
     //   159	181	8	localObject14	Object
-    //   594	17	8	localObject15	Object
-    //   583	17	9	localException5	Exception
+    //   587	16	8	localObject15	Object
+    //   583	13	9	localException5	Exception
     // Exception table:
     //   from	to	target	type
     //   25	33	74	java/io/IOException
@@ -811,7 +809,7 @@ public class QWalletTools
   public static void a(QQAppInterface paramQQAppInterface, RedDotImageView paramRedDotImageView, int paramInt)
   {
     paramRedDotImageView.a(false);
-    ThreadManager.executeOnSubThread(new xem(new WeakReference(paramQQAppInterface), new WeakReference(paramRedDotImageView), paramInt));
+    ThreadManager.executeOnSubThread(new xhr(new WeakReference(paramQQAppInterface), new WeakReference(paramRedDotImageView), paramInt));
   }
   
   private static void a(File paramFile)
@@ -1140,7 +1138,7 @@ public class QWalletTools
   
   public static void a(File[] paramArrayOfFile)
   {
-    Arrays.sort(paramArrayOfFile, new xek());
+    Arrays.sort(paramArrayOfFile, new xhp());
   }
   
   public static boolean a(String paramString, int paramInt)

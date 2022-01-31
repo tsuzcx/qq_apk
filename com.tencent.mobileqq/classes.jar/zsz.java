@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.ConversationFacade;
 
-class zsz
+public class zsz
   implements Runnable
 {
-  zsz(zsy paramzsy, SosoInterface.OnLocationListener paramOnLocationListener, String paramString1, int paramInt, String paramString2) {}
+  public zsz(ConversationFacade paramConversationFacade) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    this.a.b(AppConstants.G, 1001);
+    this.a.b(AppConstants.v, 1009);
+    this.a.b(AppConstants.X, 1010);
+    this.a.b(AppConstants.aE, 1032);
+    ConversationFacade.a(this.a).a().a(8023, true, null);
   }
 }
 

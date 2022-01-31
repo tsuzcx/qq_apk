@@ -1,17 +1,32 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
-public class aelr
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+public final class aelr
+  implements DialogInterface.OnClickListener
 {
-  public aelr(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  public aelr(String paramString, int paramInt, Activity paramActivity) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new aels(this));
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString + "&from=" + this.jdField_a_of_type_Int;
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramDialogInterface);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.nearby.tribeAppDownload", 2, "open download page, url=" + paramDialogInterface);
+    }
+    if (this.jdField_a_of_type_Int == 1) {
+      ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "msg_down", 0, 0, "", "", "", "");
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "pic_down", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,10 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anbg;
-import anbi;
-import anbk;
-import anbl;
-import anbm;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.graphics.Bitmap;
@@ -17,6 +12,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import anrl;
+import anrn;
+import anrp;
+import anrq;
+import anrr;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.VideoEditReport;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -49,7 +49,7 @@ public class EditPicSave
   public EditPicSave(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
     super(paramEditVideoPartManager);
-    this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener = new anbg(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener = new anrl(this);
   }
   
   private ProgressPieDrawable a()
@@ -65,7 +65,7 @@ public class EditPicSave
     localProgressPieDrawable.jdField_f_of_type_Boolean = true;
     localProgressPieDrawable.jdField_f_of_type_Int = 2;
     localProgressPieDrawable.e(true);
-    localProgressPieDrawable.a(new anbm(this));
+    localProgressPieDrawable.a(new anrr(this));
     return localProgressPieDrawable;
   }
   
@@ -89,8 +89,8 @@ public class EditPicSave
     SLog.d("EditPicSave", "PUBLISH start ...");
     a("正在保存...", false, 0);
     a(20);
-    localObject = BitmapFactory.decodeResource(a(), 2130843154);
-    Stream.of(localGenerateContext).map(new GenerateEditPicDoodleSegment((EditDoodleExport)a(EditDoodleExport.class), null)).map(new ThreadOffFunction(2)).map(new MergePicSegment(EditPicConstants.jdField_a_of_type_JavaLangString + "qq_pic_merged_" + System.currentTimeMillis() + ".jpg", true, (Bitmap)localObject)).map(new UIThreadOffFunction(this)).subscribe(new anbi(this));
+    localObject = BitmapFactory.decodeResource(a(), 2130843253);
+    Stream.of(localGenerateContext).map(new GenerateEditPicDoodleSegment((EditDoodleExport)a(EditDoodleExport.class), null)).map(new ThreadOffFunction(2)).map(new MergePicSegment(EditPicConstants.jdField_a_of_type_JavaLangString + "qq_pic_merged_" + System.currentTimeMillis() + ".jpg", true, (Bitmap)localObject)).map(new UIThreadOffFunction(this)).subscribe(new anrn(this));
   }
   
   public void a(int paramInt)
@@ -123,16 +123,16 @@ public class EditPicSave
         }
       }
       this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130970847);
-      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131362987);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130970895);
+      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363005);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable = a();
       ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable);
     }
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366618)).setText(paramString);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366642)).setText(paramString);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(paramBoolean);
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(paramBoolean);
     this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(0);
-    a().a().postDelayed(new anbk(this), paramInt);
+    a().a().postDelayed(new anrp(this), paramInt);
   }
   
   public void a_(int paramInt, Object paramObject)
@@ -148,7 +148,7 @@ public class EditPicSave
   
   public void c()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().postDelayed(new anbl(this), 1000L);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().postDelayed(new anrq(this), 1000L);
   }
   
   public void d()

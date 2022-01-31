@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acpf;
+import aczc;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -281,7 +281,7 @@ public class ThumbHttpDownloader
     paramString4.add(paramString1);
     paramString3.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor = new HttpUrlProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString4, paramString2);
     paramString3.jdField_a_of_type_JavaLangString = paramString3.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
-    ThreadManager.post(new acpf(this, paramString3), 8, null, false);
+    ThreadManager.post(new aczc(this, paramString3), 8, null, false);
   }
   
   public final void a(HttpMsg arg1, HttpMsg paramHttpMsg2)

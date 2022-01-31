@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
+import com.tencent.mobileqq.armap.ipc.IAsyncObserver;
+import eipc.EIPCResult;
 
 public class abgc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public abgc(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abgc(ArMapIPCProxy paramArMapIPCProxy, IAsyncObserver paramIAsyncObserver, String paramString, EIPCResult paramEIPCResult) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    this.a.a(i);
+    this.jdField_a_of_type_ComTencentMobileqqArmapIpcIAsyncObserver.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
   }
 }
 

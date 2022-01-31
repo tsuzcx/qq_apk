@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
 
-public final class ofz
-  implements DialogInterface.OnCancelListener
+public class ofz
+  implements Runnable
 {
-  public void onCancel(DialogInterface paramDialogInterface)
+  public ofz(EditVideoPlayer paramEditVideoPlayer, int paramInt, byte[] paramArrayOfByte) {}
+  
+  public void run()
   {
-    com.tencent.biz.qqstory.takevideo.SlideShowPhotoListManager.a = true;
+    SLog.a("Q.qqstory.record.EditVideoPlayer", "setMosaic %d", Integer.valueOf(this.jdField_a_of_type_Int));
+    VideoSourceHelper.nativeSetMosaic(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

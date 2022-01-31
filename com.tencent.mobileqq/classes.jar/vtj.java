@@ -1,17 +1,24 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class vtj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vtj(NearbyChatPie paramNearbyChatPie) {}
+  public vtj(FriendChatPie paramFriendChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Intent localIntent = this.a.a.getIntent();
-    localIntent.putExtra("uintype", 0);
-    NearbyChatPie.a(this.a, localIntent);
+    if (FriendChatPie.a(this.a).getVisibility() == 0) {
+      ThreadManager.post(new vtk(this), 5, null, false);
+    }
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
   }
 }
 

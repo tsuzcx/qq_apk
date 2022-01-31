@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vas;
 
-import ajua;
+import akih;
 import java.util.ArrayList;
 import java.util.List;
 
 public class VasQuickUpdateManager$SyncVCRRsp
-  extends ajua
+  extends akih
 {
   public int a;
   public VasQuickUpdateManager.SCPreloadOrReport a;
@@ -23,7 +23,7 @@ public class VasQuickUpdateManager$SyncVCRRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager.SyncVCRRsp
  * JD-Core Version:    0.7.0.1
  */

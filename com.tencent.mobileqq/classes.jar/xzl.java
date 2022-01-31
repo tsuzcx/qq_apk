@@ -1,44 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
 
 public class xzl
-  implements xzn
+  implements View.OnFocusChangeListener
 {
-  public xzl(EncodeVideoTask paramEncodeVideoTask) {}
+  public xzl(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
   
-  public void a(int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (EncodeVideoTask.a(this.a) != null) {
-      EncodeVideoTask.a(this.a).a(paramInt);
-    }
-  }
-  
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
-    }
-    if (EncodeVideoTask.a(this.a))
+    if ((paramBoolean) && ((this.a.l == 0) || (this.a.l == 1) || (this.a.l == 2) || (this.a.l == 3) || (this.a.l != this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a())))
     {
-      b(paramPublishVideoEntry, paramString);
-      return;
+      paramView = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
+      if (paramView != null)
+      {
+        FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        }
+        localFragmentTransaction.add(2131363923, paramView);
+        localFragmentTransaction.commit();
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
+      }
     }
-    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (FileUtils.b(paramPublishVideoEntry.doodlePath)))
-    {
-      EncodeVideoTask.a(paramString, paramPublishVideoEntry, EncodeVideoTask.a(this.a));
-      return;
-    }
-    b(paramPublishVideoEntry, paramString);
-  }
-  
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    ThreadManager.postImmediately(new xzm(this, paramPublishVideoEntry, paramString), null, true);
   }
 }
 

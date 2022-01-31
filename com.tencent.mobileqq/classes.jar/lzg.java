@@ -1,23 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.biz.widgets.ElasticHorScrView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class lzg
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public lzg(TopicShareHelper paramTopicShareHelper, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
+  public lzg(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-    }
-    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
+    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
+    if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
     {
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-      return;
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+      if (ReadInJoyVideoTagSelectionFragment.a(this.a).a()) {
+        break label72;
+      }
+      if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).c())) {
+        ReadInJoyVideoTagSelectionFragment.a(this.a).a();
+      }
     }
-    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    label72:
+    while (ReadInJoyVideoTagSelectionFragment.b(this.a).c()) {
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.b(this.a).a();
   }
 }
 

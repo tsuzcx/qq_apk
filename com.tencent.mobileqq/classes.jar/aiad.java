@@ -1,61 +1,71 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.theme.ThemeDownloader;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeDownloadListener;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeUnzipListener;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.WatermarkVideoRunnable;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aiad
-  implements ThemeDownloader.ThemeDownloadListener
+  implements FFmpegExecuteResponseCallback
 {
-  public aiad(ThemeSwitchManager paramThemeSwitchManager) {}
+  public aiad(ShortVideoUtils.WatermarkVideoRunnable paramWatermarkVideoRunnable, String paramString) {}
   
-  public void onDownloadCallback(Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, ThemeDownloader paramThemeDownloader)
+  public void a() {}
+  
+  public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ThemeSwitchManager", 2, "mThemeDownloadListener onDownloadCallback stateCode:" + paramInt1);
+      QLog.d("ShortVideoUtils", 2, new Object[] { "update system gallery: ", this.jdField_a_of_type_JavaLangString });
     }
-    if (paramInt1 == 3) {
-      this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener.onUnzipCallback(paramBundle, paramInt1, paramThemeDownloader);
+    com.tencent.biz.qqstory.utils.FileUtils.a(BaseApplication.getContext(), new File(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ShortVideoUtils", 2, new Object[] { "watermark video finish: ", Boolean.valueOf(paramBoolean) });
+      double d = (SystemClock.uptimeMillis() - this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable.jdField_a_of_type_Long) / 1000.0D;
+      QLog.d("ShortVideoUtils", 2, "generate files|third step cost:" + d);
     }
     for (;;)
     {
-      this.a.a(null);
-      return;
-      BaseApplication localBaseApplication;
-      if (paramInt1 == 1)
+      synchronized (ShortVideoUtils.WatermarkVideoRunnable.a())
       {
-        if (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {}
-        for (localBaseApplication = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();; localBaseApplication = null)
+        ShortVideoUtils.WatermarkVideoRunnable.a().notify();
+        if (!ShortVideoUtils.WatermarkVideoRunnable.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable))
         {
-          paramThemeDownloader.a(localBaseApplication, paramBundle, this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener);
-          break;
+          ??? = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable;
+          if (paramBoolean)
+          {
+            i = 10000;
+            ShortVideoUtils.WatermarkVideoRunnable.a((ShortVideoUtils.WatermarkVideoRunnable)???, i);
+          }
+        }
+        else
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable.jdField_a_of_type_JavaLangString != null) {
+            com.tencent.mobileqq.utils.FileUtils.d(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable.jdField_a_of_type_JavaLangString);
+          }
+          return;
         }
       }
-      if (paramInt1 == 2)
-      {
-        if (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {}
-        for (localBaseApplication = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();; localBaseApplication = null)
-        {
-          paramThemeDownloader.a(localBaseApplication, paramBundle, this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener);
-          break;
-        }
-      }
-      if (paramInt1 < 0)
-      {
-        QLog.e("ThemeSwitchManager", 1, "mThemeDownloadListener onDownloadCallback Error stateCode:" + paramInt1);
-        paramThemeDownloader.a();
-      }
+      int i = 10001;
     }
   }
   
-  public void onDownloadProgress(Bundle paramBundle, int paramInt, long paramLong1, long paramLong2) {}
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("ShortVideoUtils", 2, "watermark video failed: " + paramString);
+    }
+  }
+  
+  public void c(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiad
  * JD-Core Version:    0.7.0.1
  */

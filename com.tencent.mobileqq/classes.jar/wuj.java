@@ -1,25 +1,10 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
-import java.util.ArrayList;
+import android.widget.TextView;
 
-class wuj
-  implements MediaScanner.OnMediaInfoScannerListener
+public class wuj
 {
-  wuj(wuf paramwuf, Intent paramIntent, ArrayList paramArrayList) {}
-  
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Wuf.a.d();
-    if (QQStoryFlowCallback.a(this.jdField_a_of_type_Wuf.a, paramLocalMediaInfo))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Wuf.a, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, this.jdField_a_of_type_Wuf.a.d);
-    }
-  }
+  public TextView a;
+  public wui a;
+  public TextView b;
 }
 
 

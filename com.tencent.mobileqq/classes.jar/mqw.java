@@ -1,15 +1,12 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import java.util.ArrayList;
+import java.util.List;
 
 public class mqw
-  implements Runnable
 {
-  public mqw(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface, String paramString) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-  }
+  public ViewBase a;
+  public final List a = new ArrayList();
+  public final List b = new ArrayList();
 }
 
 

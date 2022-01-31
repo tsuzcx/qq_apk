@@ -1,15 +1,22 @@
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.UICallbackTask;
+import com.tencent.component.media.gif.NewGifDecoder;
+import com.tencent.component.media.gif.NewGifDrawable;
+import com.tencent.component.media.utils.ImageManagerLog;
 
-public class pfv
-  implements Runnable
+class pfv
+  extends pgd
 {
-  public pfv(UICallbackTask paramUICallbackTask, ImageKey paramImageKey) {}
-  
-  public void run()
+  pfv(pfu parampfu, NewGifDrawable paramNewGifDrawable)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener.onImageFailed(UICallbackTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey), this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
+    super(paramNewGifDrawable);
+  }
+  
+  public void doWork()
+  {
+    ImageManagerLog.e("NewGifDrawable", "reset");
+    if (this.a.a.a.reset()) {
+      this.a.a.start();
+    }
+    NewGifDrawable.a(this.a.a, false);
   }
 }
 

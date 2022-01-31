@@ -20,14 +20,14 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.widget.QzoneGuideBubbleHelper;
-import xpd;
-import xpe;
-import xpf;
-import xpg;
-import xph;
-import xpi;
-import xpj;
-import xpk;
+import xsj;
+import xsk;
+import xsl;
+import xsm;
+import xsn;
+import xso;
+import xsp;
+import xsq;
 
 public class NewFlowEditVideoActivity
   extends EditVideoActivity
@@ -63,10 +63,10 @@ public class NewFlowEditVideoActivity
     }
     for (;;)
     {
-      paramIntent = (RelativeLayout)findViewById(2131364381);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2130971118, paramIntent, false));
+      paramIntent = (RelativeLayout)findViewById(2131364405);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2130971166, paramIntent, false));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)AIOUtils.a(2, 50, getResources()));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131493770));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131493776));
       Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
       int i;
       if (bool) {
@@ -88,14 +88,14 @@ public class NewFlowEditVideoActivity
           i = 1;
           if (i != 0)
           {
-            this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130971119, paramIntent, false);
+            this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130971167, paramIntent, false);
             localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
             localLayoutParams.addRule(11);
             localLayoutParams.addRule(10);
-            this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131373356));
-            this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new xpd(this));
-            this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131373354));
-            this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new xpe(this));
+            this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131373537));
+            this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new xsj(this));
+            this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131373535));
+            this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new xsk(this));
             this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("lastLoginUin");
           }
         }
@@ -106,10 +106,10 @@ public class NewFlowEditVideoActivity
           bool = getIntent().getBooleanExtra("TAKE_DANCING_VIDEO", false);
           if ((QzoneSyncQQStoryTool.a(this.jdField_a_of_type_Long, 2)) && (!bool))
           {
-            this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131373359));
-            this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new xpf(this));
+            this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131373540));
+            this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new xsl(this));
             this.jdField_c_of_type_AndroidWidgetButton.setVisibility(0);
-            this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131373360);
+            this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131373541);
             this.jdField_a_of_type_AndroidViewView.setVisibility(0);
             if (QzoneSyncQQStoryTool.b(this.jdField_a_of_type_Long))
             {
@@ -119,7 +119,7 @@ public class NewFlowEditVideoActivity
             if (!QzoneSyncQQStoryTool.a(this.jdField_a_of_type_Long)) {
               QzoneSyncQQStoryTool.a(this, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Long);
             }
-            ((QzEditVideoPartManager)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager).a(new xpg(this));
+            ((QzEditVideoPartManager)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager).a(new xsm(this));
           }
           paramIntent.addView(this.jdField_b_of_type_AndroidViewView, localLayoutParams);
           paramIntent.addView((View)localObject);
@@ -143,17 +143,17 @@ public class NewFlowEditVideoActivity
   
   private void b()
   {
-    DialogUtil.a(this, 230).setMessage(2131432441).setPositiveButton(2131432398, new xpi(this)).setNegativeButton(2131432754, new xph(this)).show();
+    DialogUtil.a(this, 230).setMessage(2131432458).setPositiveButton(2131432415, new xso(this)).setNegativeButton(2131432771, new xsn(this)).show();
   }
   
   private void c()
   {
-    DialogUtil.a(this, 230).setMessage(2131432442).setPositiveButton(2131432398, new xpk(this)).setNegativeButton(2131432400, new xpj(this)).show();
+    DialogUtil.a(this, 230).setMessage(2131432459).setPositiveButton(2131432415, new xsq(this)).setNegativeButton(2131432417, new xsp(this)).show();
   }
   
   private void c(String paramString)
   {
-    String str = getResources().getString(2131432793);
+    String str = getResources().getString(2131432810);
     QZoneHelper.a(this, QZoneHelper.UserInfo.a(), paramString, this.jdField_a_of_type_Long, "", 1010, str, false);
   }
   

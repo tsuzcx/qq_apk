@@ -1,45 +1,97 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.annotation.TargetApi;
+import android.os.Message;
+import android.util.Pair;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class uhg
-  implements TroopManager.ITroopMemberInfoCallBack
+  extends CardObserver
 {
-  public BaseChatItemLayout a;
+  public uhg(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  private uhg(BaseBubbleBuilder paramBaseBubbleBuilder) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  @TargetApi(9)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if ((localObject != null) && (((TroopInfo)localObject).isHomeworkTroop())) {}
-    do
-    {
-      return;
-      localObject = (BaseBubbleBuilder.ViewHolder)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getTag();
-    } while ((paramTroopMemberInfo == null) || (!TextUtils.equals(((BaseBubbleBuilder.ViewHolder)localObject).a.senderuin, paramTroopMemberInfo.memberuin)));
-    BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder, paramTroopMemberInfo.globalTroopLevel);
-    paramTroopMemberInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder) > 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramTroopMemberInfo.a((QQAppInterface)localObject, bool, BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder), false);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.d == null) {
-        break;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipProfileCardDiyActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
+    }
+    this.a.b.set(false);
+    this.a.a.removeMessages(6);
+    this.a.i();
+    if ((paramBoolean) && (paramObject != null)) {
+      if ((paramObject instanceof Card)) {
+        ThreadManager.post(new uhh(this, (Card)paramObject), 5, null, true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.d.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.d.setTag(Integer.valueOf(2131361868));
+    }
+    for (;;)
+    {
+      this.a.e = null;
+      this.a.j = 0;
       return;
+      if ((paramObject instanceof Pair))
+      {
+        paramObject = (Pair)paramObject;
+        QLog.e("VipProfileCardDiyActivity", 1, "set diy card failed, code=" + paramObject.first + ", msg=" + (String)paramObject.second);
+        if (((Integer)paramObject.first).intValue() == 101107)
+        {
+          this.a.n = 1;
+          this.a.a.obtainMessage(2, paramObject.second).sendToTarget();
+          if (VipUtils.b(this.a.app)) {}
+          for (paramObject = "3";; paramObject = "2")
+          {
+            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
+            break;
+          }
+        }
+        if (((Integer)paramObject.first).intValue() == 101108)
+        {
+          this.a.n = 2;
+          this.a.a.obtainMessage(2, paramObject.second).sendToTarget();
+          if (VipUtils.a(this.a.app)) {}
+          for (paramObject = "3";; paramObject = "2")
+          {
+            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
+            break;
+          }
+        }
+        if (((Integer)paramObject.first).intValue() == 401019)
+        {
+          this.a.a.obtainMessage(8, paramObject.second).sendToTarget();
+        }
+        else if (((Integer)paramObject.first).intValue() == 401020)
+        {
+          this.a.a.obtainMessage(7, paramObject.second).sendToTarget();
+        }
+        else
+        {
+          if (((Integer)paramObject.first).intValue() == 401009)
+          {
+            this.a.n = 2;
+            this.a.a.obtainMessage(2, paramObject.second).sendToTarget();
+            if (VipUtils.a(this.a.app)) {}
+            for (paramObject = "3";; paramObject = "2")
+            {
+              VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
+              break;
+            }
+          }
+          Message localMessage = this.a.a.obtainMessage(1);
+          if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
+            localMessage.obj = paramObject.second;
+          }
+          this.a.a.sendMessage(localMessage);
+          continue;
+          paramObject = this.a.a.obtainMessage(1);
+          this.a.a.sendMessage(paramObject);
+        }
+      }
     }
   }
 }

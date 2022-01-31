@@ -1,18 +1,14 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
 
-class ldu
-  implements AsyncBack
+public class ldu
+  implements Runnable
 {
-  ldu(ldr paramldr) {}
+  public ldu(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
-    }
+    ReadInJoyNewFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity).a(0, false, this.jdField_a_of_type_Int);
   }
 }
 

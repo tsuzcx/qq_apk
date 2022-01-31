@@ -2,24 +2,28 @@ package com.tencent.mobileqq.activity.aio.stickerbubble;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.widget.ListView;
 import java.lang.ref.WeakReference;
-import vyx;
-import vyy;
-import vyz;
+import wca;
+import wcb;
+import wcc;
+import wcd;
 
 public class StickerBubbleListView
   extends ListView
   implements StickerBubbleAnimationViewHolder.AnimationViewCallback, StickerBubbleTouchDelegate.StickerBubbleSendCallbackByGesture
 {
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private StickerBubbleTouchDelegate jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate = new StickerBubbleTouchDelegate(this, this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
@@ -31,7 +35,7 @@ public class StickerBubbleListView
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  private void a(float paramFloat1, float paramFloat2, vyz paramvyz)
+  private void a(float paramFloat1, float paramFloat2, wcd paramwcd)
   {
     int i = 0;
     for (;;)
@@ -46,7 +50,7 @@ public class StickerBubbleListView
         {
           localView = ((StickerBubbleLinearLayout)localView).a(paramFloat1 - localView.getLeft(), paramFloat2 - localView.getTop());
           if (((localView instanceof LinearLayout)) && (((LinearLayout)localView).getChildAt(0) != null)) {
-            paramvyz.a(((LinearLayout)localView).getChildAt(0));
+            paramwcd.a(((LinearLayout)localView).getChildAt(0));
           }
         }
       }
@@ -74,7 +78,7 @@ public class StickerBubbleListView
   {
     int[] arrayOfInt = new int[1];
     arrayOfInt[0] = -1;
-    a(paramFloat1, paramFloat2, new vyx(this, arrayOfInt));
+    a(paramFloat1, paramFloat2, new wca(this, arrayOfInt));
     return arrayOfInt[0];
   }
   
@@ -82,7 +86,7 @@ public class StickerBubbleListView
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    a(paramFloat1, paramFloat2, new vyy(this));
+    a(paramFloat1, paramFloat2, new wcc(this));
   }
   
   public void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
@@ -111,11 +115,16 @@ public class StickerBubbleListView
     PEItemData localPEItemData = PEPanelHelper.a(paramInt1);
     if (localPEItemData != null)
     {
-      StickerBubbleAnimationHelper.a(localPEItemData);
+      StickerBubbleAnimationHelper.a(localPEItemData, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
       this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(null);
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localPEItemData.jdField_a_of_type_Int, paramInt2, "test");
+      ThreadManager.post(new wcb(this, localPEItemData, paramInt2), 10, null, false);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8009222", "0X8009222", localPEItemData.jdField_a_of_type_Int, 0, Integer.toString(paramInt2), "", "", "");
     }
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2)
+  {
+    return !this.jdField_a_of_type_AndroidGraphicsRect.contains((int)paramFloat1, (int)paramFloat2);
   }
   
   public void b()

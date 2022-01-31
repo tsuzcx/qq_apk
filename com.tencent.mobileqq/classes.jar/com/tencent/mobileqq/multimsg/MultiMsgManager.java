@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.multimsg;
 
-import adwb;
-import adwc;
-import adwd;
-import adwe;
-import adwf;
-import adwg;
-import adwh;
-import adwi;
+import aejh;
+import aeji;
+import aejj;
+import aejk;
+import aejl;
+import aejm;
+import aejn;
+import aejo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -154,7 +154,7 @@ public class MultiMsgManager
   {
     if (!new File(jdField_a_of_type_JavaLangString).exists())
     {
-      FileUtils.a(paramQQAppInterface.getApp(), 2130839557, jdField_a_of_type_JavaLangString);
+      FileUtils.a(paramQQAppInterface.getApp(), 2130839562, jdField_a_of_type_JavaLangString);
       paramQQAppInterface = FileUtils.b(jdField_a_of_type_JavaLangString);
       paramQQAppInterface = "chatthumb:" + paramQQAppInterface;
       paramQQAppInterface = URLDrawableHelper.a + "/" + AbsDownloader.c(paramQQAppInterface) + "_hd";
@@ -269,7 +269,7 @@ public class MultiMsgManager
       localTransferRequest.n = k;
       localTransferRequest.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)paramArrayList.get(0));
       localMessageForPtt.mInputContent = "";
-      localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new adwi(paramMessageRecord, paramArrayList, paramQQAppInterface, paramString, paramInt1, paramInt2, this, null);
+      localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new aejo(paramMessageRecord, paramArrayList, paramQQAppInterface, paramString, paramInt1, paramInt2, this, null);
       localTransferRequest.jdField_e_of_type_Boolean = false;
       paramQQAppInterface.a().a(localTransferRequest);
       return;
@@ -309,7 +309,7 @@ public class MultiMsgManager
         QLog.d("MultiMsg", 2, "pack multi msg done.............................");
       }
       if (paramInt2 == 0) {
-        paramHashMap = new adwh(paramQQAppInterface, paramMessageRecord, paramString, paramInt1);
+        paramHashMap = new aejn(paramQQAppInterface, paramMessageRecord, paramString, paramInt1);
       }
       for (;;)
       {
@@ -322,7 +322,7 @@ public class MultiMsgManager
           return;
           if (paramInt2 == 2)
           {
-            paramHashMap = new adwg(paramQQAppInterface, paramMessageRecord, paramString, paramInt1, paramArrayList, paramHashMap);
+            paramHashMap = new aejm(paramQQAppInterface, paramMessageRecord, paramString, paramInt1, paramArrayList, paramHashMap);
           }
           else if (paramInt2 == 5)
           {
@@ -343,7 +343,7 @@ public class MultiMsgManager
   {
     PicReq localPicReq = PicBusiManager.a(8, 7);
     localPicReq.a(paramArrayList2);
-    localPicReq.a(new adwd(this, paramInt2, paramMessageRecord, paramArrayList1, paramQQAppInterface, paramString, paramInt1, paramHashMap));
+    localPicReq.a(new aejj(this, paramInt2, paramMessageRecord, paramArrayList1, paramQQAppInterface, paramString, paramInt1, paramHashMap));
     PicBusiManager.a(localPicReq, paramQQAppInterface);
   }
   
@@ -354,7 +354,7 @@ public class MultiMsgManager
       localShortVideoReq = ShortVideoBusiManager.a(5, 5);
     }
     localShortVideoReq.a(paramArrayList2);
-    localShortVideoReq.a(new adwe(this, paramArrayList1, paramMessageRecord, paramQQAppInterface, paramString, paramInt1, paramHashMap, paramInt2));
+    localShortVideoReq.a(new aejk(this, paramArrayList1, paramMessageRecord, paramQQAppInterface, paramString, paramInt1, paramHashMap, paramInt2));
     ShortVideoBusiManager.a(localShortVideoReq, paramQQAppInterface);
   }
   
@@ -745,12 +745,12 @@ public class MultiMsgManager
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return;
     }
-    paramQQAppInterface.a(new adwb(this, new ArrayList(paramArrayList), paramQQAppInterface, paramSessionInfo));
+    paramQQAppInterface.a(new aejh(this, new ArrayList(paramArrayList), paramQQAppInterface, paramSessionInfo));
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean)
   {
-    paramQQAppInterface.a(new adwf(this, paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean));
+    paramQQAppInterface.a(new aejl(this, paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean));
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, String paramString2, AbsStructMsg paramAbsStructMsg, long paramLong, boolean paramBoolean, int paramInt2)
@@ -864,7 +864,7 @@ public class MultiMsgManager
     while ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return;
     }
-    paramQQAppInterface.a(new adwc(this, paramArrayList, paramInt2, paramHashMap, paramMessageRecord, paramQQAppInterface, paramString, paramInt1, paramBundle));
+    paramQQAppInterface.a(new aeji(this, paramArrayList, paramInt2, paramHashMap, paramMessageRecord, paramQQAppInterface, paramString, paramInt1, paramBundle));
   }
   
   public void a(QQAppInterface paramQQAppInterface, List paramList, boolean paramBoolean)
@@ -1385,7 +1385,7 @@ public class MultiMsgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgManager
  * JD-Core Version:    0.7.0.1
  */

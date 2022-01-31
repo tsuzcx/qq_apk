@@ -1,4 +1,4 @@
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
 
 class adie
   implements Runnable
@@ -7,12 +7,12 @@ class adie
   
   public void run()
   {
-    this.a.a.a(0, this.a.a.a);
+    UniformDownloadUtil.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adie
  * JD-Core Version:    0.7.0.1
  */

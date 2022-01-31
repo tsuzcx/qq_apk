@@ -1,19 +1,20 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCompleteListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qzone.TranslucentActivity;
 
 public class amto
-  implements GuideVideoView.OnCompleteListener
+  implements DialogInterface.OnDismissListener
 {
-  public amto(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public amto(TranslucentActivity paramTranslucentActivity) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QIMEffectCameraCaptureUnit.e(this.a);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amto
  * JD-Core Version:    0.7.0.1
  */

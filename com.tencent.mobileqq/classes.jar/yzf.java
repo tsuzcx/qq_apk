@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 
 public class yzf
-  extends TimerTask
+  implements View.OnClickListener
 {
-  public yzf(DataLineHandler paramDataLineHandler) {}
+  public yzf(ApolloPanel paramApolloPanel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.e();
+    this.a.b.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yzf
  * JD-Core Version:    0.7.0.1
  */

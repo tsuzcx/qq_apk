@@ -36,12 +36,12 @@ public class ShareGroupsListAdapter$ProfilePlaceholderViewHolder
   {
     this.jdField_a_of_type_Int = 2;
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter = paramShareGroupsListAdapter;
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371717));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371720));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371823));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131371529));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131371824));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371714));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371887));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371890));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371993));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131371695));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131371994));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371884));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -122,7 +122,7 @@ public class ShareGroupsListAdapter$ProfilePlaceholderViewHolder
     if (paramView.type == 1)
     {
       paramVideoCollectionItem = "仅群成员可查看和添加小视频";
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843600);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843721);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     }
     for (;;)
@@ -147,10 +147,10 @@ public class ShareGroupsListAdapter$ProfilePlaceholderViewHolder
     {
     default: 
       return;
-    case 2131371529: 
+    case 2131371695: 
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView$UIEventListener.a(this.jdField_a_of_type_AndroidWidgetButton);
       return;
-    case 2131371824: 
+    case 2131371994: 
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView$UIEventListener.b(this.jdField_a_of_type_AndroidWidgetLinearLayout);
       return;
     }

@@ -1,16 +1,28 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.TakeVideoButtonMainPart.OnTakeVideoButtonClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler.GetSimpleInfoListEvent;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class nsf
-  implements TakeVideoButtonMainPart.OnTakeVideoButtonClickListener
+  extends QQUIEventReceiver
 {
-  public nsf(QQStoryMainController paramQQStoryMainController) {}
-  
-  public void a()
+  public nsf(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    StoryReportor.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    this.a.a(false, true, 1, null);
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
+  {
+    if (paramGetSimpleInfoListEvent.a.isSuccess()) {
+      paramQQStoryShareGroupProfileActivity.a.a(paramGetSimpleInfoListEvent);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return VidToSimpleInfoHandler.GetSimpleInfoListEvent.class;
   }
 }
 

@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
-import jhe;
+import jgp;
 
 public abstract class ARZimuTask
 {
@@ -24,7 +24,7 @@ public abstract class ARZimuTask
   protected ARZimuTask.IARZimuShowPlayer a;
   protected EffectZimuManager a;
   protected final List a;
-  protected jhe a;
+  protected jgp a;
   
   public ARZimuTask(VideoAppInterface paramVideoAppInterface)
   {
@@ -189,8 +189,8 @@ public abstract class ARZimuTask
   
   public void a()
   {
-    this.jdField_a_of_type_Jhe = new jhe(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Jhe);
+    this.jdField_a_of_type_Jgp = new jgp(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Jgp);
   }
   
   public void a(SentenceInfo paramSentenceInfo)
@@ -223,8 +223,8 @@ public abstract class ARZimuTask
   
   public void b()
   {
-    if (this.jdField_a_of_type_Jhe != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Jhe);
+    if (this.jdField_a_of_type_Jgp != null) {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Jgp);
     }
   }
   

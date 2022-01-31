@@ -1,6 +1,6 @@
 package cooperation.qqfav.globalsearch;
 
-import alze;
+import ampi;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,7 +22,7 @@ public class FavoriteSearchFragment
   
   protected BaseMvpAdapter a()
   {
-    return new alze(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new ampi(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
   }
   
   protected ISearchEngine a()

@@ -1,19 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.PortraitImageview;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class tde
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public tde(PortraitImageview paramPortraitImageview, Bitmap paramBitmap) {}
+  public tde(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramDialogInterface = new Intent("qqplayer_exit_action");
+    this.a.sendBroadcast(paramDialogInterface);
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putString("password", null);
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tde
  * JD-Core Version:    0.7.0.1
  */

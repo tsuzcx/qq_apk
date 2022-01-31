@@ -26,7 +26,7 @@ import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import kkv;
+import kkg;
 import mqq.manager.Manager;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
@@ -159,7 +159,7 @@ public class TroopRedTouchManager
       return;
       try
       {
-        ThreadManager.post(new kkv(this, paramGetRedDotRes), 5, null, false);
+        ThreadManager.post(new kkg(this, paramGetRedDotRes), 5, null, false);
       }
       finally {}
     }

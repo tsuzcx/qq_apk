@@ -1,39 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.open.agent.AuthorityLoginView;
+import com.tencent.mobileqq.vip.AioVipKeywordHelper;
 
-public class akkx
-  implements View.OnClickListener
+class akkx
+  implements Runnable
 {
-  public akkx(AuthorityLoginView paramAuthorityLoginView) {}
+  akkx(akkw paramakkw, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.a.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    View localView = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131365700);
-    if (paramView == this.a.b)
-    {
-      if (localView != null) {
-        localView.setVisibility(8);
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    }
-    while (paramView != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
-      return;
-    }
-    if (localView != null) {
-      localView.setVisibility(0);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.b);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_Akkw.jdField_a_of_type_ComTencentMobileqqVipAioVipKeywordHelper.a(this.jdField_a_of_type_Akkw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Akkw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akkx
  * JD-Core Version:    0.7.0.1
  */

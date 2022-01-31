@@ -1,26 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.qphone.base.util.QLog;
 
-class aemq
-  implements DialogInterface.OnClickListener
+public class aemq
+  implements ConditionSearchManager.IConfigListener
 {
-  aemq(aemp paramaemp) {}
+  public aemq(NearbyProxy paramNearbyProxy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (!NetworkUtil.g(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
-    {
-      QQToast.a(this.a.a.jdField_a_of_type_AndroidViewView.getContext(), 1, "网络异常，无法操作", 0).a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.dating", 2, "onGetConfig, resultCode:" + paramInt + ",isSuccess:" + paramBoolean);
     }
-    ((NearbyMomentManager)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262)).a(this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.c, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.g, new aemr(this));
+    NearbyProxy.a(this.a, 4131, new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
   }
 }
 

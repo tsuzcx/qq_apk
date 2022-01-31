@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.arithmetic.ui;
 
-import airz;
-import aisa;
+import ajgd;
+import ajge;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -141,7 +141,7 @@ public class CheckArithHWResultFragment
       localReqInfo.c = Long.parseLong(this.f);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(paramBitmap).map(new ThreadOffFunction(2)).map(new UploadImageSegment(this.e, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticDataArithResult, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView.jdField_a_of_type_Int)).map(new SendArithHomeResultSegment(localReqInfo)).map(new UIThreadOffFunction(null));
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new aisa(this));
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new ajge(this));
       return;
     }
     catch (NumberFormatException paramString)
@@ -297,14 +297,14 @@ public class CheckArithHWResultFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramBundle = paramLayoutInflater.inflate(2130970599, paramViewGroup, false);
+    paramBundle = paramLayoutInflater.inflate(2130970643, paramViewGroup, false);
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(getActivity(), null));
-    paramLayoutInflater = paramLayoutInflater.inflate(2130970600, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130970644, paramViewGroup, false);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramLayoutInflater);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131371379));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131371383));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131371381));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131371384));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131371542));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131371546));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131371544));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131371547));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     paramLayoutInflater = getActivity();
@@ -314,16 +314,16 @@ public class CheckArithHWResultFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView = ((ArithResultView)paramBundle.findViewById(2131371374));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramBundle.findViewById(2131371375));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131371378));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiArithResultView = ((ArithResultView)paramBundle.findViewById(2131371537));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramBundle.findViewById(2131371538));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131371541));
       paramLayoutInflater = "全对";
       if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticDataArithResult.jdField_a_of_type_Int > 0)
       {
         paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticDataArithResult.jdField_a_of_type_Int + "道错题";
         label233:
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramLayoutInflater);
-        ((TextView)paramBundle.findViewById(2131371377)).setOnClickListener(new airz(this));
+        ((TextView)paramBundle.findViewById(2131371540)).setOnClickListener(new ajgd(this));
         paramLayoutInflater = URLDrawable.URLDrawableOptions.obtain();
         paramLayoutInflater.mRequestWidth = 0;
         paramLayoutInflater.mRequestHeight = 0;
@@ -432,7 +432,7 @@ public class CheckArithHWResultFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment
  * JD-Core Version:    0.7.0.1
  */

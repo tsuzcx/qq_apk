@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
+import java.util.ArrayList;
 
 public class vcn
-  implements DialogInterface.OnClickListener
+  implements TransFileController.OnCancelListener
 {
-  public vcn(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
+  public vcn(PicItemBuilder paramPicItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ArrayList paramArrayList)
   {
-    com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = 0L;
+    this.a.b();
   }
 }
 

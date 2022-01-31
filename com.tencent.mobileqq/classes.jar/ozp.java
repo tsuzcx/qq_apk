@@ -1,42 +1,40 @@
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.biz.troopplugin.PluginJumpManager.BidInfo;
+import com.tencent.biz.troopplugin.PluginJumpManager.UrlMappingInfo;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 
 public class ozp
-  implements PopupMenuDialog.OnClickActionListener
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public ozp(HotchatPlugin paramHotchatPlugin, String paramString) {}
+  public ozp(PluginJumpManager paramPluginJumpManager, PluginJumpManager.BidInfo paramBidInfo, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, PluginJumpManager.UrlMappingInfo paramUrlMappingInfo, String paramString4) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    JSONObject localJSONObject = new JSONObject();
-    switch (paramMenuItem.a)
-    {
-    default: 
-      return;
-    case 0: 
-      try
+    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
+    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
+    int i;
+    if (paramPluginManagerClient != null) {
+      if (paramPluginManagerClient.mState == 4)
       {
-        localJSONObject.put("index", 0);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramMenuItem)
-      {
-        paramMenuItem.printStackTrace();
-        return;
+        i = 1;
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.a);
       }
     }
-    try
+    for (;;)
     {
-      localJSONObject.put("index", 1);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
+      }
       return;
-    }
-    catch (Exception paramMenuItem)
-    {
-      paramMenuItem.printStackTrace();
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, null, null);
+      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
+      i = 0;
+      continue;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, null, null);
+      i = 0;
     }
   }
 }

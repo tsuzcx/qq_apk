@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
+import android.os.Bundle;
 
 public class acct
-  implements View.OnClickListener
 {
-  public acct(FilePreviewActivity paramFilePreviewActivity) {}
+  public int a;
+  public Bundle a;
+  public Runnable a;
   
-  public void onClick(View paramView)
+  public acct(int paramInt, Bundle paramBundle)
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
-    FilePreviewActivity.a(this.a, TeamWorkConvertUtils.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131439112), false));
+    this.jdField_a_of_type_Int = paramInt;
+    paramBundle.putInt("seq", paramInt);
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
 }
 

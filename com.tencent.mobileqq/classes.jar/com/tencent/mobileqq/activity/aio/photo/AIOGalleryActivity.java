@@ -20,8 +20,8 @@ import com.tencent.mobileqq.richmedia.dc.DCAIOPreview;
 import com.tencent.mobileqq.richmedia.dc.DCAIOPreviewProgressive;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import viy;
-import vjd;
+import vma;
+import vmf;
 
 public class AIOGalleryActivity
   extends PeakActivity
@@ -29,7 +29,7 @@ public class AIOGalleryActivity
   int jdField_a_of_type_Int;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
   private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-  GalleryManager jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new viy(this);
+  GalleryManager jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new vma(this);
   public IAIOImageProvider a;
   DCAIOPreview jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreview;
   DCAIOPreviewProgressive jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreviewProgressive;
@@ -181,7 +181,7 @@ public class AIOGalleryActivity
     QQLiveImage.resumeAll();
     if (Build.MODEL.equals("Coolpad 5930"))
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new vjd(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new vmf(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");

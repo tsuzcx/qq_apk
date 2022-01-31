@@ -1,33 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
 public class ahes
-  implements View.OnTouchListener
+  implements TabBarView.OnTabChangeListener
 {
-  public ahes(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
+  public ahes(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    paramView = this.a.getActivity();
-    if ((paramView instanceof ActiveEntitySearchActivity)) {
-      ((ActiveEntitySearchActivity)paramView).c();
+    if (paramInt1 == paramInt2) {
+      return;
     }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof UniteSearchActivity)) {
-        ((UniteSearchActivity)paramView).c();
-      }
-    }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahes
  * JD-Core Version:    0.7.0.1
  */

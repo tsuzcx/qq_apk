@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class kvc
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public kvc(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kvc(VideoCoverView paramVideoCoverView) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a(1);
+    super.onAnimationEnd(paramAnimator);
+    VideoCoverView.a(this.a, true);
   }
 }
 

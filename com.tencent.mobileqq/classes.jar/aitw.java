@@ -1,46 +1,28 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
 
-public final class aitw
-  implements Runnable
+public class aitw
+  implements InputFilter
 {
-  public aitw(String paramString, ImageView paramImageView) {}
+  public aitw(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void run()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    try
+    if (paramCharSequence != null)
     {
-      if (FileUtil.a(this.jdField_a_of_type_JavaLangString))
-      {
-        Object localObject = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-        localObject = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-        ThreadManager.getUIHandler().post(new aitx(this, (Bitmap)localObject));
+      paramCharSequence = paramCharSequence.toString();
+      if (TroopBarUtils.a(paramCharSequence, '\n') + TroopBarUtils.a(paramSpanned.toString(), '\n') > 100) {
+        return paramCharSequence.replaceAll("\n", "");
       }
-      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("setBitmapByPath", 2, localOutOfMemoryError.getStackTrace());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("setBitmapByPath", 2, localException.getStackTrace());
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitw
  * JD-Core Version:    0.7.0.1
  */

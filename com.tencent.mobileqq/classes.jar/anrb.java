@@ -1,66 +1,37 @@
-import android.os.Handler;
-import com.tencent.maxvideo.mediadevice.AVCodec;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.image.NativeGifImage;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
-import java.io.File;
-import java.io.IOException;
+import cooperation.qzone.widget.FastAnimationDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
+import dov.com.tencent.biz.qqstory.takevideo.EditGifSpeedControl;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-class anrb
-  implements Runnable
+public class anrb
+  implements SeekBar.OnSeekBarChangeListener
 {
-  anrb(anqz paramanqz) {}
+  public anrb(EditGifSpeedControl paramEditGifSpeedControl) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] delayInit,run start");
-    }
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.d())
+    if (paramBoolean)
     {
-      RMVideoStateMgr.b(null);
-      if (!localRMVideoStateMgr.d()) {
-        return;
+      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
+      if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a != null) {
+        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a.a(NativeGifImage.QZONE_DELAY);
       }
-    }
-    File localFile = new File(GloableValue.b + File.separator + ".nomedia");
-    if (!localFile.exists()) {}
-    try
-    {
-      localFile.createNewFile();
-      label84:
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.e = NativeGifImage.QZONE_DELAY;
+      this.a.d = paramInt;
       if (QLog.isColorLevel()) {
-        QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
+        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
       }
-      localRMVideoStateMgr.a.postDelayed(this.a.a, 20000L);
-      localRMVideoStateMgr.k();
-      localRMVideoStateMgr.l();
-      localRMVideoStateMgr.j();
-      try
-      {
-        AVCodec.get().init();
-        this.a.c = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoInitState", 2, "[@] delayInit,run finish");
-        }
-        this.a.g = false;
-        return;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        for (;;)
-        {
-          localUnsatisfiedLinkError.printStackTrace();
-          this.a.c = false;
-        }
-      }
-    }
-    catch (IOException localIOException)
-    {
-      break label84;
     }
   }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

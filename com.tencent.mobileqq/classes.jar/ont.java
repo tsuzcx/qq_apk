@@ -1,26 +1,59 @@
-import android.view.MotionEvent;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.CustomViewPager;
-import com.tencent.biz.qqstory.utils.BetterGestureDetector;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer.GestureListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.utils.DateUtils;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
 
 public class ont
-  implements View.OnTouchListener
+  extends SwipRightMenuBuilder.SwipItemBaseHolder
 {
-  public ont(StoryVideoPlayer paramStoryVideoPlayer) {}
+  public View a;
+  public TextView a;
+  public URLImageView a;
+  public TextView b;
+  public URLImageView b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ont(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    switch (paramMotionEvent.getAction())
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367037));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362754));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366704));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131371878));
+  }
+  
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  {
+    TroopStoryMemoriesListAdapter.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(DateUtils.c(paramTroopStoryItemInfo.publishTime));
+    Drawable localDrawable = this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130843797);
+    try
     {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = localDrawable;
+      localURLDrawableOptions.mFailedDrawable = localDrawable;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
+      paramTroopStoryItemInfo = URLDrawable.getDrawable(paramTroopStoryItemInfo.videoThumbUrl, localURLDrawableOptions);
+      paramTroopStoryItemInfo.setTag(URLDrawableDecodeHandler.a(UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
+      paramTroopStoryItemInfo.setDecodeHandler(URLDrawableDecodeHandler.g);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new onu(this, paramInt));
+      return;
     }
-    for (;;)
+    catch (Exception paramTroopStoryItemInfo)
     {
-      return false;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.a.a()) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer$GestureListener.l();
+      for (;;)
+      {
+        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
       }
     }
   }

@@ -1,38 +1,48 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.biz.now.NowVideoController;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PAVideoView;
+import com.tencent.widget.AbsListView;
 
 public class koc
-  extends Handler
+  implements Runnable
 {
-  public koc(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  public koc(NowVideoController paramNowVideoController, int paramInt1, int paramInt2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramMessage.what)
-    {
-    case -1: 
-    default: 
-      return;
-    case 0: 
-      this.a.a.jdField_a_of_type_Byte = 0;
-      LebaSearchPluginManagerActivity.a(this.a);
-      localStringBuilder.append(this.a.getString(2131430519));
-      localStringBuilder.append(this.a.getString(2131430516));
-      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);
-      QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+    if (NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController) == null) {
       return;
     }
-    this.a.a.jdField_a_of_type_Byte = 1;
-    LebaSearchPluginManagerActivity.a(this.a);
-    localStringBuilder.append(this.a.getString(2131430519));
-    localStringBuilder.append(this.a.getString(2131430517));
-    localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);
-    QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+    int i = this.jdField_a_of_type_Int;
+    label16:
+    Object localObject;
+    if (i <= this.b)
+    {
+      localObject = NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController).getChildAt(i - this.jdField_a_of_type_Int);
+      if (localObject != null) {
+        break label52;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label16;
+      break;
+      label52:
+      localObject = (PAVideoView)((View)localObject).findViewById(2131362177);
+      if ((localObject != null) && (((PAVideoView)localObject).j == 4))
+      {
+        ((PAVideoView)localObject).getGlobalVisibleRect(NowVideoController.a());
+        if ((((PAVideoView)localObject).getHeight() == NowVideoController.a().height()) && (NetworkUtil.h(((PAVideoView)localObject).getContext())) && (EcShopAssistantManager.a) && (NowVideoController.a().top > 0)) {
+          ((PAVideoView)localObject).d();
+        } else {
+          ((PAVideoView)localObject).c();
+        }
+      }
+    }
   }
 }
 

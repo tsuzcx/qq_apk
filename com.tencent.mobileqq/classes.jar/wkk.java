@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.adapter.PhoneContactAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class wkk
-  implements Runnable
+public class wkk
+  implements View.OnClickListener
 {
-  wkk(wkj paramwkj, boolean paramBoolean) {}
+  public wkk(NotificationView paramNotificationView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PhoneContactFragment.a(this.jdField_a_of_type_Wkj.a, this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Wkj.a.a != null) {
-      this.jdField_a_of_type_Wkj.a.a.notifyDataSetChanged();
+    paramView = (NotificationAdapter.ViewHolder)paramView.getTag();
+    if (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
+    {
+      this.a.a(paramView);
+      if (paramView.jdField_a_of_type_Int == 82) {
+        ReportController.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+      }
     }
   }
 }

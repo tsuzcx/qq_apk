@@ -1,17 +1,15 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.redbag.GuideTip2;
 
 public class kfa
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
-  public kfa(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
+  public kfa(GuideTip2 paramGuideTip2) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(32) });
-    return true;
+    this.a.a(false, 1);
   }
 }
 

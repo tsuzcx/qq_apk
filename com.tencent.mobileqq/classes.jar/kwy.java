@@ -1,19 +1,15 @@
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleSinglePic;
 
-public class kwy
-  implements Runnable
+class kwy
+  implements View.OnClickListener
 {
-  public kwy(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  kwy(kwx paramkwx) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyNativeAdFragment.a(this.a).setBackgroundResource(2130838504);
-    ReadInJoyNativeAdFragment.a(this.a).setText(this.a.getText(2131438676));
-    ReadInJoyNativeAdFragment.a(this.a).setTextColor(-1);
-    ReadInJoyNativeAdFragment.a(this.a).setProgress(0);
-    ReadInJoyNativeAdFragment.a(this.a).setClickable(true);
-    ReadInJoyNativeAdFragment.c(this.a, 2);
+    this.a.a.d();
   }
 }
 

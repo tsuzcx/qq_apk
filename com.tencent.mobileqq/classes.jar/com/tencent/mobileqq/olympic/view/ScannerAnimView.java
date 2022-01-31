@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic.view;
 
-import afwb;
+import agkd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -153,7 +153,7 @@ public class ScannerAnimView
     this.jdField_b_of_type_Int = AIOUtils.a(14.5F, getResources());
     this.jdField_c_of_type_Int = AIOUtils.a(3.0F, getResources());
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842825);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842924);
     if (ScanEntranceDPC.a().jdField_a_of_type_Boolean) {
       this.jdField_d_of_type_Int = 24;
     }
@@ -599,7 +599,7 @@ public class ScannerAnimView
     if (this.jdField_b_of_type_Boolean)
     {
       if ((!this.jdField_a_of_type_Boolean) && (b())) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new afwb(this), 400L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new agkd(this), 400L);
       }
     }
     else {

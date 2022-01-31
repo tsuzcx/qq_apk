@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import kzz;
+import kzk;
 
 public class VideoInfo$ChannelInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new kzz();
+  public static final Parcelable.Creator CREATOR = new kzk();
   public int a;
   public String a;
   public int b;

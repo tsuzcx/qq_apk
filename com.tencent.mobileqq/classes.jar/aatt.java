@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
 
-public class aatt
+class aatt
   implements Runnable
 {
-  public aatt(ARMapActivity paramARMapActivity) {}
+  aatt(aats paramaats, aauc paramaauc) {}
   
   public void run()
   {
-    if (this.a.b)
-    {
-      this.a.m();
-      ARMapActivity.k(this.a);
-    }
+    this.jdField_a_of_type_Aats.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$OnGetAppIcon.a(this.jdField_a_of_type_Aats.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aauc.a);
   }
 }
 

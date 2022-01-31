@@ -1,18 +1,13 @@
-import android.graphics.Bitmap;
-import android.view.animation.Animation;
-import com.tencent.component.media.image.view.ExtendImageView;
+import com.tencent.component.media.image.ImageManager;
 
-public class pgw
+class pgw
   implements Runnable
 {
-  public pgw(ExtendImageView paramExtendImageView, Bitmap paramBitmap, Animation paramAnimation) {}
+  pgw(pgv parampgv) {}
   
   public void run()
   {
-    ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation != null) {
-      ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_AndroidViewAnimationAnimation, null);
-    }
+    ImageManager.b(this.a.a);
   }
 }
 

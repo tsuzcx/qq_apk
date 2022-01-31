@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aiam;
+import aiop;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.support.v4.util.MQLruCache;
@@ -77,7 +77,7 @@ public class BasePicDownloadProcessor
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqHighwayNetprobeWeakNetLearner = new WeakNetLearner(BaseApplication.getContext(), new aiam());
+    jdField_a_of_type_ComTencentMobileqqHighwayNetprobeWeakNetLearner = new WeakNetLearner(BaseApplication.getContext(), new aiop());
     jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile(".*//[^/]*/[^/]*/(.*)/.*");
   }
   
@@ -885,7 +885,7 @@ public class BasePicDownloadProcessor
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.g == 0)
     {
       str = "&rf=aio";
-      str = "cldver=7.6.0.3525" + str;
+      str = "cldver=7.6.3.3560" + str;
       paramInt = paramString.indexOf("?");
       if (paramInt <= 0) {
         break label219;
@@ -1820,7 +1820,7 @@ public class BasePicDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BasePicDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class oht
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public final class oht
+  implements Animation.AnimationListener
 {
-  private oht(EditTextDialog paramEditTextDialog) {}
+  public oht(View paramView) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
-    {
-      this.a.dismiss();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener.a(this.a.a());
+    this.a.setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

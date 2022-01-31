@@ -1,17 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.qphone.base.util.QLog;
 
-class vyk
+public class vyk
   implements Runnable
 {
-  vyk(vyj paramvyj) {}
+  public vyk(PublicAccountChatPie paramPublicAccountChatPie, FrameLayout paramFrameLayout) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_AndroidWidgetToast = ChatActivityUtils.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131433335));
-    this.a.a.jdField_a_of_type_AndroidWidgetToast.show();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
+    }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.p != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.p.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.p = null;
+    }
   }
 }
 

@@ -1,14 +1,12 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
-public class ankf
-  implements Runnable
+public final class ankf
+  extends DialogUtil.DialogOnClickAdapter
 {
-  public ankf(FaceListPage paramFaceListPage, FacePackage paramFacePackage) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage);
+    paramDialogInterface.dismiss();
   }
 }
 

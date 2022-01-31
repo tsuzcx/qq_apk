@@ -1,25 +1,30 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Message;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.jumplightalk.AIOJumpLightalkConfig;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import mqq.os.MqqHandler;
 
 public class vtm
-  extends FriendListObserver
+  implements Runnable
 {
-  public vtm(NearbyChatPie paramNearbyChatPie) {}
+  public vtm(FriendChatPie paramFriendChatPie) {}
   
-  protected void onAddFriend(String paramString)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramString))
+    FriendChatPie.a(this.a, AIOJumpLightalkConfig.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    if ((FriendChatPie.a(this.a) != null) && (!Utils.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
     {
-      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
-      localIntent.putExtra("uintype", 0);
-      NearbyChatPie.b(this.a, localIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.f + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
-      }
+      FriendChatPie.a(this.a, SharedPreUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).getBoolean("aio_jump_lightalk_red_dot", false));
+      Message localMessage = FriendChatPie.e(this.a).obtainMessage(42);
+      Bundle localBundle = new Bundle();
+      localBundle.putBoolean("showRedDot", FriendChatPie.a(this.a));
+      localMessage.setData(localBundle);
+      FriendChatPie.f(this.a).sendMessage(localMessage);
     }
   }
 }

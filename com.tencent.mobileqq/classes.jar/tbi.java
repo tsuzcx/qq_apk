@@ -1,81 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.activity.Now;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.ar.config.WorldCup;
 
 public class tbi
-  implements QQStoryMainController.QQStoryMainView
+  implements Runnable
 {
-  public tbi(Now paramNow) {}
+  public tbi(MainFragment paramMainFragment) {}
   
-  public View a()
+  public void run()
   {
-    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    String str = MainFragment.a(this.a);
+    WorldCup.a(MainFragment.a(this.a), this.a.getActivity(), this.a.getView(), str);
   }
-  
-  public ImageView a()
-  {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      return this.a.jdField_a_of_type_AndroidWidgetImageView;
-    }
-  }
-  
-  public TextView a()
-  {
-    if (this.a.c != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      return this.a.c;
-    }
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      Now.a(this.a);
-      return;
-    }
-    Now.b(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.b(false);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    this.a.b(true);
-  }
-  
-  public void d() {}
 }
 
 

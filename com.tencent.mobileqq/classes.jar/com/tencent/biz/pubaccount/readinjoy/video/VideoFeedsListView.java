@@ -26,14 +26,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
-import mbk;
-import mbl;
-import mbm;
-import mbn;
-import mbo;
-import mbp;
-import mbq;
-import mbr;
+import mco;
+import mcp;
+import mcq;
+import mcr;
+import mcs;
+import mct;
+import mcu;
+import mcv;
 
 public class VideoFeedsListView
   extends ListView
@@ -51,7 +51,7 @@ public class VideoFeedsListView
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private mbr jdField_a_of_type_Mbr;
+  private mcv jdField_a_of_type_Mcv;
   private boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -94,8 +94,8 @@ public class VideoFeedsListView
     setOverScrollMode(2);
     g();
     this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    this.jdField_a_of_type_Mbr = new mbr(this, new Handler());
-    this.jdField_a_of_type_Mbr.a();
+    this.jdField_a_of_type_Mcv = new mcv(this, new Handler());
+    this.jdField_a_of_type_Mcv.a();
     this.q = VideoFeedsHelper.a(this.jdField_a_of_type_AndroidContentContext);
     super.setOnScrollListener(this);
   }
@@ -150,7 +150,7 @@ public class VideoFeedsListView
     paramInt = a(paramInt);
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366656);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366680);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.height = paramInt;
       localView.setLayoutParams(localLayoutParams);
@@ -160,11 +160,11 @@ public class VideoFeedsListView
   private void a(int paramInt, boolean paramBoolean)
   {
     c();
-    Object localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367331);
+    Object localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367394);
     if (localObject1 != null) {
       ((View)localObject1).setVisibility(8);
     }
-    localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367333);
+    localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367396);
     if (localObject1 != null) {
       ((View)localObject1).setVisibility(8);
     }
@@ -177,7 +177,7 @@ public class VideoFeedsListView
         ((VideoFeedsListView.ListViewEventListener)((Iterator)localObject1).next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag(), true);
       }
     }
-    localObject1 = (ViewGroup)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367332);
+    localObject1 = (ViewGroup)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367395);
     ViewGroup.LayoutParams localLayoutParams;
     if (!this.jdField_c_of_type_Boolean)
     {
@@ -197,7 +197,7 @@ public class VideoFeedsListView
       }
       this.jdField_e_of_type_Boolean = true;
       smoothScrollBy(this.jdField_g_of_type_Int, 0);
-      localObject2 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367334);
+      localObject2 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367397);
       if (localObject2 != null) {
         ((View)localObject2).setVisibility(8);
       }
@@ -231,7 +231,7 @@ public class VideoFeedsListView
         ((View)localObject2).setRotation(-90.0F);
       }
     }
-    localObject2 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367334);
+    localObject2 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367397);
     if (localObject2 != null) {
       ((View)localObject2).setVisibility(8);
     }
@@ -288,7 +288,7 @@ public class VideoFeedsListView
       if ((this.jdField_i_of_type_Boolean) && (i2 <= 0)) {
         this.jdField_e_of_type_Boolean = false;
       }
-      post(new mbm(this, i2, paramInt));
+      post(new mcq(this, i2, paramInt));
       return;
       paramInt = i4 / i3;
       break label72;
@@ -303,7 +303,7 @@ public class VideoFeedsListView
   
   private void a(View paramView, boolean paramBoolean)
   {
-    paramView = paramView.findViewById(2131367332);
+    paramView = paramView.findViewById(2131367395);
     if (paramBoolean)
     {
       localLayoutParams = paramView.getLayoutParams();
@@ -366,7 +366,7 @@ public class VideoFeedsListView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366656);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366680);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.height = paramInt;
       localView.setLayoutParams(localLayoutParams);
@@ -378,7 +378,7 @@ public class VideoFeedsListView
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     try
     {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener = new mbk(this, this.jdField_a_of_type_AndroidAppActivity, 3);
+      this.jdField_a_of_type_AndroidViewOrientationEventListener = new mco(this, this.jdField_a_of_type_AndroidAppActivity, 3);
       if (this.jdField_a_of_type_AndroidViewOrientationEventListener.canDetectOrientation()) {
         this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
       }
@@ -404,7 +404,7 @@ public class VideoFeedsListView
   public void a()
   {
     if (this.jdField_e_of_type_Boolean) {
-      postDelayed(new mbl(this), 100L);
+      postDelayed(new mcp(this), 100L);
     }
     while (this.jdField_b_of_type_AndroidViewViewGroup == null) {
       return;
@@ -553,7 +553,7 @@ public class VideoFeedsListView
     if ((this.jdField_c_of_type_AndroidViewViewGroup != null) && (this.jdField_c_of_type_AndroidViewViewGroup.getTag() != null))
     {
       this.jdField_j_of_type_Int = ((VideoFeedsAdapter.BaseItemHolder)this.jdField_c_of_type_AndroidViewViewGroup.getTag()).jdField_b_of_type_Int;
-      View localView = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367332);
+      View localView = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367395);
       i1 = Math.abs(localView.getRight() - localView.getLeft());
       i2 = Math.abs(localView.getBottom() - localView.getTop());
       if (i1 <= i2) {
@@ -586,15 +586,15 @@ public class VideoFeedsListView
     while (((Iterator)localObject1).hasNext()) {
       ((VideoFeedsListView.ListViewEventListener)((Iterator)localObject1).next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag(), false);
     }
-    localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367331);
+    localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367394);
     if (localObject1 != null) {
       ((View)localObject1).setVisibility(0);
     }
-    localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367333);
+    localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367396);
     if (localObject1 != null) {
       ((View)localObject1).setVisibility(0);
     }
-    localObject1 = (ViewGroup)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367332);
+    localObject1 = (ViewGroup)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367395);
     Object localObject2;
     int i1;
     ViewGroup.LayoutParams localLayoutParams;
@@ -616,7 +616,7 @@ public class VideoFeedsListView
       }
       this.jdField_e_of_type_Boolean = true;
       smoothScrollBy(-this.jdField_g_of_type_Int, 0);
-      localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367334);
+      localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367397);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(0);
       }
@@ -647,7 +647,7 @@ public class VideoFeedsListView
       }
       this.jdField_e_of_type_Boolean = true;
       smoothScrollBy(-this.jdField_g_of_type_Int, 0);
-      localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367334);
+      localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367397);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(0);
       }
@@ -671,7 +671,7 @@ public class VideoFeedsListView
         localAlphaAnimation.setDuration(800L);
         localAlphaAnimation.setFillAfter(true);
         startAnimation(localAlphaAnimation);
-        postDelayed(new mbn(this), 100L);
+        postDelayed(new mcr(this), 100L);
         return;
       }
       b(true);
@@ -685,7 +685,7 @@ public class VideoFeedsListView
       localAlphaAnimation.setDuration(500L);
       localAlphaAnimation.setFillAfter(true);
       startAnimation(localAlphaAnimation);
-      postDelayed(new mbo(this), 100L);
+      postDelayed(new mcs(this), 100L);
       return;
     }
     d(true);
@@ -710,7 +710,7 @@ public class VideoFeedsListView
       this.jdField_h_of_type_Int = (this.jdField_c_of_type_AndroidViewViewGroup.getBottom() - this.jdField_c_of_type_AndroidViewViewGroup.getTop());
       if (this.o)
       {
-        paramCanvas = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367332);
+        paramCanvas = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367395);
         int i1 = Math.abs(paramCanvas.getRight() - paramCanvas.getLeft());
         int i2 = Math.abs(paramCanvas.getBottom() - paramCanvas.getTop());
         if (i1 > i2)
@@ -718,7 +718,7 @@ public class VideoFeedsListView
           this.jdField_c_of_type_Boolean = true;
           this.jdField_f_of_type_Int = i2;
           this.jdField_g_of_type_Int = a(this.jdField_h_of_type_Int);
-          this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367331).setVisibility(8);
+          this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367394).setVisibility(8);
           b(0);
           a(this.jdField_c_of_type_AndroidViewViewGroup, true);
           this.p = false;
@@ -743,7 +743,7 @@ public class VideoFeedsListView
         this.jdField_g_of_type_Int = a(this.jdField_h_of_type_Int);
       }
     } while ((this.jdField_c_of_type_AndroidViewViewGroup == null) || (!(this.jdField_c_of_type_AndroidViewViewGroup.getTag() instanceof VideoFeedsAdapter.BaseVideoItemHolder)));
-    this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367334).setAlpha(0.0F);
+    this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367397).setAlpha(0.0F);
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
       paramCanvas = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -756,19 +756,19 @@ public class VideoFeedsListView
   
   public void e()
   {
-    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969658, null);
+    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969671, null);
     localViewGroup.setId(2131362199);
-    localViewGroup.setOnClickListener(new mbp(this));
+    localViewGroup.setOnClickListener(new mct(this));
     this.jdField_a_of_type_AndroidViewView = localViewGroup;
     addHeaderView(localViewGroup);
     int i1 = (int)this.jdField_a_of_type_Int;
-    localViewGroup = (ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969658, null);
+    localViewGroup = (ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969671, null);
     localViewGroup.setId(2131362200);
-    View localView = localViewGroup.findViewById(2131366656);
+    View localView = localViewGroup.findViewById(2131366680);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
     localLayoutParams.height = i1;
     localView.setLayoutParams(localLayoutParams);
-    localViewGroup.setOnClickListener(new mbq(this));
+    localViewGroup.setOnClickListener(new mcu(this));
     addFooterView(localViewGroup);
   }
   
@@ -789,10 +789,10 @@ public class VideoFeedsListView
       this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
       this.jdField_a_of_type_AndroidViewVelocityTracker = null;
     }
-    if (this.jdField_a_of_type_Mbr != null)
+    if (this.jdField_a_of_type_Mcv != null)
     {
-      this.jdField_a_of_type_Mbr.b();
-      this.jdField_a_of_type_Mbr = null;
+      this.jdField_a_of_type_Mcv.b();
+      this.jdField_a_of_type_Mcv = null;
     }
     this.jdField_a_of_type_AndroidViewViewGroup = null;
     this.jdField_c_of_type_AndroidViewViewGroup = null;
@@ -812,11 +812,14 @@ public class VideoFeedsListView
     }
     if (paramMotionEvent.getAction() == 0)
     {
-      int i1 = AIOUtils.a(25.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      if ((paramMotionEvent.getY() < i1) || (Math.abs(this.jdField_a_of_type_Int - paramMotionEvent.getY()) < i1))
+      if ((this.jdField_c_of_type_AndroidViewViewGroup != null) && (!(this.jdField_c_of_type_AndroidViewViewGroup.getTag() instanceof VideoFeedsAdapter.ADVideoItemHolder)))
       {
-        this.jdField_g_of_type_Boolean = true;
-        return true;
+        int i1 = AIOUtils.a(25.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        if ((paramMotionEvent.getY() < i1) || (Math.abs(this.jdField_a_of_type_Int - paramMotionEvent.getY()) < i1))
+        {
+          this.jdField_g_of_type_Boolean = true;
+          return true;
+        }
       }
       this.l = false;
       this.jdField_h_of_type_Boolean = false;
@@ -917,7 +920,7 @@ public class VideoFeedsListView
     if (this.jdField_k_of_type_Boolean) {
       if (!paramBoolean1)
       {
-        this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367331).setVisibility(0);
+        this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367394).setVisibility(0);
         if (!this.p)
         {
           this.p = true;
@@ -951,7 +954,7 @@ public class VideoFeedsListView
       break;
       this.o = true;
       this.jdField_h_of_type_Int = (this.jdField_c_of_type_AndroidViewViewGroup.getBottom() - this.jdField_c_of_type_AndroidViewViewGroup.getTop());
-      this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367331).setVisibility(8);
+      this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367394).setVisibility(8);
       this.jdField_e_of_type_Boolean = true;
       if (paramBoolean2) {
         smoothScrollBy(this.jdField_g_of_type_Int, 500);

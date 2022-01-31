@@ -1,23 +1,39 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class ajud
-  implements TouchWebView.OnScrollChangedListener
+  implements Runnable
 {
-  public ajud(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  private final WeakReference a;
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public ajud(TroopMoreDetailView paramTroopMoreDetailView)
   {
-    if (this.a.a != null) {
-      this.a.a.scrollBy(0, paramInt2 - paramInt4);
-    }
+    this.a = new WeakReference(paramTroopMoreDetailView);
+  }
+  
+  public void run()
+  {
+    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
+    if (localTroopMoreDetailView == null) {}
+    ArrayList localArrayList;
+    do
+    {
+      do
+      {
+        return;
+      } while (localTroopMoreDetailView.getContext() == null);
+      localArrayList = TroopInfoActivity.a(localTroopMoreDetailView.getContext(), localTroopMoreDetailView.a);
+    } while (localArrayList == null);
+    ThreadManager.getUIHandler().post(new ajue(this, localTroopMoreDetailView, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajud
  * JD-Core Version:    0.7.0.1
  */

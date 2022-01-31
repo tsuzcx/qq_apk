@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
 
-class wkv
+public class wkv
   implements Runnable
 {
-  wkv(wku paramwku) {}
+  public wkv(RecommendTroopView paramRecommendTroopView) {}
   
   public void run()
   {
-    this.a.a.i();
+    this.a.n();
   }
 }
 

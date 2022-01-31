@@ -1,15 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import java.util.List;
 
 public class lqi
   implements Runnable
 {
-  public lqi(ArticleReadInfoModule paramArticleReadInfoModule, ArticleReadInfo paramArticleReadInfo) {}
+  public lqi(ArticleInfoModule paramArticleInfoModule, int paramInt, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleReadInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleReadInfo);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

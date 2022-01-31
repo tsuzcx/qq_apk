@@ -38,7 +38,7 @@ public class TroopAIOImageEmptyFragment
   
   protected int a()
   {
-    return 2130969856;
+    return 2130969870;
   }
   
   protected void a(Bundle paramBundle)
@@ -62,9 +62,9 @@ public class TroopAIOImageEmptyFragment
       paramViewGroup.mLoadingDrawable = URLDrawableHelper.a;
       paramViewGroup.mFailedDrawable = URLDrawableHelper.a;
       paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
-      ((ImageView)this.e.findViewById(2131364167)).setImageDrawable(paramLayoutInflater);
+      ((ImageView)this.e.findViewById(2131364191)).setImageDrawable(paramLayoutInflater);
     }
-    ((TextView)this.e.findViewById(2131365531)).setText(this.c);
+    ((TextView)this.e.findViewById(2131365553)).setText(this.c);
   }
 }
 

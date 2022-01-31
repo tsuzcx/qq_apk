@@ -1,18 +1,23 @@
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class suw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public suw(Leba paramLeba) {}
+  public suw(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TroopRedTouchManager localTroopRedTouchManager = (TroopRedTouchManager)this.a.a.getManager(69);
-    oidb_0x791.RedDotInfo localRedDotInfo = localTroopRedTouchManager.a(7);
-    this.a.a(new sux(this, localRedDotInfo, localTroopRedTouchManager));
+    H5MagicPlayerActivity.a(this.a);
+    if ((this.a.d.equals(this.a.c)) && (this.a.a != null))
+    {
+      ReportController.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
+      return;
+    }
+    ReportController.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
   }
 }
 

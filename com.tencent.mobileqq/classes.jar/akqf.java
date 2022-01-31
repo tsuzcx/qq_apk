@@ -1,244 +1,192 @@
-import android.os.Bundle;
-import com.tencent.open.business.cgireport.ReportManager;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
 
 public class akqf
   implements Runnable
 {
-  public akqf(ReportManager paramReportManager, String paramString, Bundle paramBundle) {}
+  public akqf(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
-    //   0: ldc 33
-    //   2: new 35	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   9: ldc 38
-    //   11: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14: aload_0
-    //   15: getfield 16	akqf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   18: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: invokestatic 52	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   27: ldc 33
-    //   29: new 35	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   36: ldc 54
-    //   38: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: aload_0
-    //   42: getfield 18	akqf:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   45: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 52	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   0: aload_0
+    //   1: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   4: getfield 24	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   7: astore_1
+    //   8: aload_1
+    //   9: monitorenter
+    //   10: aload_0
+    //   11: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   14: getfield 27	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
+    //   17: invokevirtual 33	java/lang/Boolean:booleanValue	()Z
+    //   20: ifne +13 -> 33
+    //   23: aload_0
+    //   24: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   27: getfield 24	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   30: invokevirtual 36	java/lang/Object:wait	()V
+    //   33: new 38	android/os/Bundle
+    //   36: dup
+    //   37: invokespecial 39	android/os/Bundle:<init>	()V
+    //   40: astore_2
+    //   41: aload_2
+    //   42: getstatic 44	com/tencent/open/downloadnew/DownloadConstants:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   45: ldc 46
+    //   47: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   50: aload_2
+    //   51: getstatic 53	com/tencent/open/downloadnew/DownloadConstants:i	Ljava/lang/String;
     //   54: aload_0
-    //   55: getfield 14	akqf:jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager	Lcom/tencent/open/business/cgireport/ReportManager;
-    //   58: invokestatic 62	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
-    //   61: invokevirtual 65	com/tencent/open/adapter/CommonDataAdapter:a	()Landroid/content/Context;
-    //   64: aconst_null
-    //   65: invokestatic 70	com/tencent/open/business/base/OpenConfig:a	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/open/business/base/OpenConfig;
-    //   68: ldc 72
-    //   70: invokevirtual 75	com/tencent/open/business/base/OpenConfig:a	(Ljava/lang/String;)I
-    //   73: putfield 80	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Int	I
-    //   76: aload_0
-    //   77: getfield 14	akqf:jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager	Lcom/tencent/open/business/cgireport/ReportManager;
-    //   80: astore 5
-    //   82: aload_0
-    //   83: getfield 14	akqf:jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager	Lcom/tencent/open/business/cgireport/ReportManager;
-    //   86: getfield 80	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Int	I
-    //   89: ifne +193 -> 282
-    //   92: iconst_3
-    //   93: istore_1
-    //   94: aload 5
-    //   96: iload_1
-    //   97: putfield 80	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Int	I
-    //   100: iconst_0
-    //   101: istore_1
-    //   102: iconst_0
-    //   103: istore_3
-    //   104: iload_3
-    //   105: iconst_1
-    //   106: iadd
-    //   107: istore 4
-    //   109: ldc 33
-    //   111: new 35	java/lang/StringBuilder
-    //   114: dup
-    //   115: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   118: ldc 82
-    //   120: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: iload 4
-    //   125: invokevirtual 85	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   128: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   131: invokestatic 52	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   134: aconst_null
-    //   135: aload_0
-    //   136: getfield 16	akqf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   139: invokestatic 90	com/tencent/open/base/http/HttpBaseUtil:a	(Ljava/lang/String;Ljava/lang/String;)Lorg/apache/http/client/HttpClient;
-    //   142: astore 5
-    //   144: new 92	org/apache/http/client/methods/HttpPost
-    //   147: dup
-    //   148: ldc 94
-    //   150: aload_0
-    //   151: getfield 16	akqf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   154: invokestatic 100	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:insertMtype	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   157: invokespecial 103	org/apache/http/client/methods/HttpPost:<init>	(Ljava/lang/String;)V
-    //   160: astore 6
-    //   162: aload 6
-    //   164: ldc 105
-    //   166: ldc 107
-    //   168: invokevirtual 110	org/apache/http/client/methods/HttpPost:addHeader	(Ljava/lang/String;Ljava/lang/String;)V
-    //   171: aload 6
-    //   173: ldc 112
-    //   175: ldc 114
-    //   177: invokevirtual 117	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
-    //   180: aload 6
-    //   182: new 119	org/apache/http/entity/ByteArrayEntity
-    //   185: dup
-    //   186: aload_0
-    //   187: getfield 18	akqf:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   190: invokestatic 122	com/tencent/open/base/http/HttpBaseUtil:a	(Landroid/os/Bundle;)Ljava/lang/String;
-    //   193: invokevirtual 128	java/lang/String:getBytes	()[B
-    //   196: invokespecial 131	org/apache/http/entity/ByteArrayEntity:<init>	([B)V
-    //   199: invokevirtual 135	org/apache/http/client/methods/HttpPost:setEntity	(Lorg/apache/http/HttpEntity;)V
-    //   202: aload 5
-    //   204: aload 6
-    //   206: invokeinterface 141 2 0
-    //   211: invokeinterface 147 1 0
-    //   216: invokeinterface 153 1 0
-    //   221: sipush 200
-    //   224: if_icmpeq +69 -> 293
-    //   227: ldc 33
-    //   229: ldc 155
-    //   231: invokestatic 158	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   234: aload_0
-    //   235: getfield 14	akqf:jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager	Lcom/tencent/open/business/cgireport/ReportManager;
-    //   238: iconst_0
-    //   239: putfield 161	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Boolean	Z
-    //   242: ldc 33
-    //   244: new 35	java/lang/StringBuilder
-    //   247: dup
-    //   248: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   251: ldc 163
-    //   253: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: aload_0
-    //   257: getfield 16	akqf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   260: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   263: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   266: invokestatic 52	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   269: iload_1
-    //   270: iconst_1
-    //   271: if_icmpne +101 -> 372
-    //   274: ldc 33
-    //   276: ldc 165
-    //   278: invokestatic 52	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   281: return
-    //   282: aload_0
-    //   283: getfield 14	akqf:jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager	Lcom/tencent/open/business/cgireport/ReportManager;
-    //   286: getfield 80	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Int	I
-    //   289: istore_1
-    //   290: goto -196 -> 94
-    //   293: ldc 33
-    //   295: ldc 167
-    //   297: invokestatic 52	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   300: iconst_1
-    //   301: istore_1
-    //   302: goto -68 -> 234
-    //   305: astore 5
-    //   307: getstatic 168	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   310: ldc 170
-    //   312: aload 5
-    //   314: invokestatic 174	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   317: iload_1
-    //   318: istore_2
-    //   319: iload_2
-    //   320: istore_1
-    //   321: iload 4
-    //   323: istore_3
-    //   324: iload 4
-    //   326: aload_0
-    //   327: getfield 14	akqf:jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager	Lcom/tencent/open/business/cgireport/ReportManager;
-    //   330: getfield 80	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_Int	I
-    //   333: if_icmplt -229 -> 104
-    //   336: iload_2
-    //   337: istore_1
-    //   338: goto -104 -> 234
-    //   341: astore 5
-    //   343: getstatic 168	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   346: ldc 176
-    //   348: aload 5
-    //   350: invokestatic 174	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   353: iload_1
-    //   354: istore_2
-    //   355: goto -36 -> 319
-    //   358: astore 5
-    //   360: ldc 33
-    //   362: ldc 178
-    //   364: aload 5
-    //   366: invokestatic 174	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   369: goto -135 -> 234
-    //   372: ldc 33
-    //   374: ldc 180
-    //   376: invokestatic 158	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   379: aload_0
-    //   380: getfield 14	akqf:jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager	Lcom/tencent/open/business/cgireport/ReportManager;
-    //   383: getfield 183	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_ComTencentOpenBusinessCgireportReportDataModal	Lcom/tencent/open/business/cgireport/ReportDataModal;
-    //   386: aload_0
-    //   387: getfield 14	akqf:jdField_a_of_type_ComTencentOpenBusinessCgireportReportManager	Lcom/tencent/open/business/cgireport/ReportManager;
-    //   390: getfield 186	com/tencent/open/business/cgireport/ReportManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   393: invokevirtual 191	com/tencent/open/business/cgireport/ReportDataModal:a	(Ljava/util/ArrayList;)I
-    //   396: pop
-    //   397: return
-    //   398: astore 5
-    //   400: goto -166 -> 234
-    //   403: astore 5
-    //   405: iconst_1
-    //   406: istore_1
-    //   407: goto -173 -> 234
-    //   410: astore 5
-    //   412: iconst_1
-    //   413: istore_1
-    //   414: goto -54 -> 360
-    //   417: astore 5
-    //   419: iconst_1
-    //   420: istore_1
-    //   421: goto -78 -> 343
-    //   424: astore 5
-    //   426: iconst_1
-    //   427: istore_1
-    //   428: goto -121 -> 307
+    //   55: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   58: getfield 54	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   61: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   64: aload_2
+    //   65: getstatic 57	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
+    //   68: iconst_2
+    //   69: invokevirtual 61	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   72: aload_2
+    //   73: getstatic 64	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
+    //   76: ldc 66
+    //   78: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   81: aload_2
+    //   82: getstatic 69	com/tencent/open/downloadnew/DownloadConstants:q	Ljava/lang/String;
+    //   85: iconst_0
+    //   86: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   89: aload_2
+    //   90: getstatic 76	com/tencent/open/downloadnew/DownloadConstants:w	Ljava/lang/String;
+    //   93: iconst_0
+    //   94: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   97: aload_2
+    //   98: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:e	Ljava/lang/String;
+    //   101: ldc 81
+    //   103: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   106: aload_0
+    //   107: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   110: getfield 84	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
+    //   113: aload_2
+    //   114: iconst_0
+    //   115: aconst_null
+    //   116: iconst_0
+    //   117: invokestatic 89	com/tencent/open/downloadnew/DownloadApi:a	(Landroid/app/Activity;Landroid/os/Bundle;ILcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
+    //   120: aload_1
+    //   121: monitorexit
+    //   122: return
+    //   123: astore_2
+    //   124: new 38	android/os/Bundle
+    //   127: dup
+    //   128: invokespecial 39	android/os/Bundle:<init>	()V
+    //   131: astore_2
+    //   132: aload_2
+    //   133: getstatic 44	com/tencent/open/downloadnew/DownloadConstants:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   136: ldc 46
+    //   138: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   141: aload_2
+    //   142: getstatic 53	com/tencent/open/downloadnew/DownloadConstants:i	Ljava/lang/String;
+    //   145: aload_0
+    //   146: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   149: getfield 54	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   152: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   155: aload_2
+    //   156: getstatic 57	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
+    //   159: iconst_2
+    //   160: invokevirtual 61	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   163: aload_2
+    //   164: getstatic 64	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
+    //   167: ldc 66
+    //   169: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   172: aload_2
+    //   173: getstatic 69	com/tencent/open/downloadnew/DownloadConstants:q	Ljava/lang/String;
+    //   176: iconst_0
+    //   177: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   180: aload_2
+    //   181: getstatic 76	com/tencent/open/downloadnew/DownloadConstants:w	Ljava/lang/String;
+    //   184: iconst_0
+    //   185: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   188: aload_2
+    //   189: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:e	Ljava/lang/String;
+    //   192: ldc 81
+    //   194: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   197: aload_0
+    //   198: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   201: getfield 84	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
+    //   204: aload_2
+    //   205: iconst_0
+    //   206: aconst_null
+    //   207: iconst_0
+    //   208: invokestatic 89	com/tencent/open/downloadnew/DownloadApi:a	(Landroid/app/Activity;Landroid/os/Bundle;ILcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
+    //   211: goto -91 -> 120
+    //   214: astore_2
+    //   215: aload_1
+    //   216: monitorexit
+    //   217: aload_2
+    //   218: athrow
+    //   219: astore_2
+    //   220: new 38	android/os/Bundle
+    //   223: dup
+    //   224: invokespecial 39	android/os/Bundle:<init>	()V
+    //   227: astore_3
+    //   228: aload_3
+    //   229: getstatic 44	com/tencent/open/downloadnew/DownloadConstants:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   232: ldc 46
+    //   234: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   237: aload_3
+    //   238: getstatic 53	com/tencent/open/downloadnew/DownloadConstants:i	Ljava/lang/String;
+    //   241: aload_0
+    //   242: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   245: getfield 54	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   248: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   251: aload_3
+    //   252: getstatic 57	com/tencent/open/downloadnew/DownloadConstants:j	Ljava/lang/String;
+    //   255: iconst_2
+    //   256: invokevirtual 61	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   259: aload_3
+    //   260: getstatic 64	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
+    //   263: ldc 66
+    //   265: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   268: aload_3
+    //   269: getstatic 69	com/tencent/open/downloadnew/DownloadConstants:q	Ljava/lang/String;
+    //   272: iconst_0
+    //   273: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   276: aload_3
+    //   277: getstatic 76	com/tencent/open/downloadnew/DownloadConstants:w	Ljava/lang/String;
+    //   280: iconst_0
+    //   281: invokevirtual 73	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   284: aload_3
+    //   285: getstatic 79	com/tencent/open/downloadnew/DownloadConstants:e	Ljava/lang/String;
+    //   288: ldc 81
+    //   290: invokevirtual 50	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   293: aload_0
+    //   294: getfield 12	akqf:a	Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler;
+    //   297: getfield 84	com/tencent/mobileqq/webview/swift/component/SwiftBrowserTBSHandler:jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity	Lcom/tencent/mobileqq/activity/QQBrowserActivity;
+    //   300: aload_3
+    //   301: iconst_0
+    //   302: aconst_null
+    //   303: iconst_0
+    //   304: invokestatic 89	com/tencent/open/downloadnew/DownloadApi:a	(Landroid/app/Activity;Landroid/os/Bundle;ILcom/tencent/apkupdate/logic/data/ApkUpdateDetail;I)V
+    //   307: aload_2
+    //   308: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	431	0	this	akqf
-    //   93	335	1	i	int
-    //   318	37	2	j	int
-    //   103	221	3	k	int
-    //   107	227	4	m	int
-    //   80	123	5	localObject	Object
-    //   305	8	5	localConnectTimeoutException1	org.apache.http.conn.ConnectTimeoutException
-    //   341	8	5	localSocketTimeoutException1	java.net.SocketTimeoutException
-    //   358	7	5	localException1	java.lang.Exception
-    //   398	1	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   403	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   410	1	5	localException2	java.lang.Exception
-    //   417	1	5	localSocketTimeoutException2	java.net.SocketTimeoutException
-    //   424	1	5	localConnectTimeoutException2	org.apache.http.conn.ConnectTimeoutException
-    //   160	45	6	localHttpPost	org.apache.http.client.methods.HttpPost
+    //   0	309	0	this	akqf
+    //   7	209	1	localObject1	Object
+    //   40	74	2	localBundle1	android.os.Bundle
+    //   123	1	2	localInterruptedException	java.lang.InterruptedException
+    //   131	74	2	localBundle2	android.os.Bundle
+    //   214	4	2	localObject2	Object
+    //   219	89	2	localObject3	Object
+    //   227	74	3	localBundle3	android.os.Bundle
     // Exception table:
     //   from	to	target	type
-    //   134	234	305	org/apache/http/conn/ConnectTimeoutException
-    //   134	234	341	java/net/SocketTimeoutException
-    //   134	234	358	java/lang/Exception
-    //   134	234	398	java/lang/OutOfMemoryError
-    //   293	300	403	java/lang/OutOfMemoryError
-    //   293	300	410	java/lang/Exception
-    //   293	300	417	java/net/SocketTimeoutException
-    //   293	300	424	org/apache/http/conn/ConnectTimeoutException
+    //   10	33	123	java/lang/InterruptedException
+    //   33	120	214	finally
+    //   120	122	214	finally
+    //   124	211	214	finally
+    //   215	217	214	finally
+    //   220	309	214	finally
+    //   10	33	219	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akqf
  * JD-Core Version:    0.7.0.1
  */

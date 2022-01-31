@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
 import com.tencent.biz.qqstory.comment.FeedInfoChangeEvent;
-import nie;
+import njq;
 
 public class FeedsPlayModeBase$FeedInfoUpdateReceiver
   extends UIBaseEventReceiver
@@ -19,7 +19,7 @@ public class FeedsPlayModeBase$FeedInfoUpdateReceiver
     if (paramFeedsPlayModeBase.a(paramFeedsPlayModeBase.b) == null) {
       return;
     }
-    paramFeedsPlayModeBase.a.post(new nie(this, paramFeedsPlayModeBase));
+    paramFeedsPlayModeBase.a.post(new njq(this, paramFeedsPlayModeBase));
   }
   
   public Class acceptEventClass()

@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 
-public final class ahlo
+public class ahlo
   implements Runnable
 {
-  public ahlo(String paramString) {}
+  public ahlo(CameraCaptureView paramCameraCaptureView) {}
   
   public void run()
   {
-    QQToast.a(VideoEnvironment.a(), "" + this.a, 1).a();
+    CameraCaptureView.a(this.a, false);
   }
 }
 

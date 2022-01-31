@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class thj
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  public thj(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  public thj(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    ThreadManager.executeOnNetWorkThread(new thk(this));
+    if (paramBoolean) {
+      this.a.e();
+    }
   }
 }
 

@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
-import com.tencent.biz.ui.PopupMenu;
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
 public class oyd
-  implements View.OnClickListener
+  implements TextUtils.EllipsizeCallback
 {
-  public oyd(PopupMenu paramPopupMenu, String paramString, int paramInt) {}
+  public oyd(MoveFileActivity paramMoveFileActivity, TextView paramTextView) {}
   
-  public void onClick(View paramView)
+  public void ellipsized(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiPopupMenu.a != null) {
-      this.jdField_a_of_type_ComTencentBizUiPopupMenu.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
+    if (paramInt1 == paramInt2)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
+      return;
     }
-    paramView.post(new oye(this));
+    String str1 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(0, paramInt1);
+    String str2 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(paramInt2, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).length());
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "..." + str2);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import android.support.annotation.NonNull;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView.PicInfo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,9 @@ public final class ComponentContentGridImage$Model$Builder
   
   public Builder a(@NonNull List paramList)
   {
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() == 1)) {
+      ((SquareCornerTextImageView.PicInfo)this.jdField_b_of_type_JavaUtilList.get(0)).a(true);
+    }
     this.jdField_b_of_type_JavaUtilList = paramList;
     return this;
   }

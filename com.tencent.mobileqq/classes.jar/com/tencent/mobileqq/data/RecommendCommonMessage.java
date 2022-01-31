@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import aboe;
-import abof;
-import abog;
+import abvf;
+import abvg;
+import abvh;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -84,7 +84,7 @@ public class RecommendCommonMessage
     {
       boolean bool = paramArkContextInfo.equalInputText;
       paramArkContextInfo = (ArkAppCenter)localQQAppInterface.getManager(120);
-      localObject2 = new aboe((String)localObject3, bool, (String)localObject2);
+      localObject2 = new abvf((String)localObject3, bool, (String)localObject2);
       paramArkContextInfo.a().a(arrayOfString[0], arrayOfString[1], 1, localArrayList, null, paramIGetAppInfosByContextCallback, (ArkLocalAppMgr.IGetAppPathByActionCallback)localObject2);
       return true;
       ((JSONObject)localObject2).put(paramArkContextInfo.context, localObject3);
@@ -148,7 +148,7 @@ public class RecommendCommonMessage
     {
       bool1 = ((RecommendCommonMessage.ArkContextInfo)localObject1).equalInputText;
       localObject1 = (ArkAppCenter)localQQAppInterface.getManager(120);
-      paramArrayList = new abof((String)localObject2, bool1, paramArrayList);
+      paramArrayList = new abvg((String)localObject2, bool1, paramArrayList);
       ((ArkAppCenter)localObject1).a().a(arrayOfString[0], arrayOfString[1], 1, localArrayList, null, paramIGetAppInfosByContextListCallback, paramArrayList);
       break;
       paramArrayList.put(((RecommendCommonMessage.ArkContextInfo)localObject1).context, localObject2);
@@ -425,7 +425,7 @@ public class RecommendCommonMessage
       }
     }
     label455:
-    ThreadManager.post(new abog(this, paramWeakReference), 8, null, false);
+    ThreadManager.post(new abvh(this, paramWeakReference), 8, null, false);
   }
 }
 

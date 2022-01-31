@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import aeom;
-import aeon;
-import aeoo;
+import afbs;
+import afbt;
+import afbu;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -108,12 +108,12 @@ public class PicBrowserImage
       if ((localObject1 == null) || (((URLDrawable)localObject1).getStatus() == 1) || (((URLDrawable)localObject1).getStatus() == 2) || (((URLDrawable)localObject1).getStatus() == 4)) {
         break label627;
       }
-      localURLImageView.setURLDrawableDownListener(new aeon(this, paramOnLoadListener, paramInt));
+      localURLImageView.setURLDrawableDownListener(new afbt(this, paramOnLoadListener, paramInt));
       if (!bool1) {
         break label619;
       }
       l = 1000L;
-      paramHandler.postDelayed(new aeoo(this, (URLDrawable)localObject1, paramOnLoadListener, paramInt), l);
+      paramHandler.postDelayed(new afbu(this, (URLDrawable)localObject1, paramOnLoadListener, paramInt), l);
     }
     for (;;)
     {
@@ -210,7 +210,7 @@ public class PicBrowserImage
         localURLDrawableOptions.mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo;
         localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
         ((URLDrawable)localObject).setDownloadListener(new ImgDownloadListener(this.jdField_a_of_type_AndroidContentContext));
-        ThreadManager.postImmediately(new aeom(this, (URLDrawable)localObject), null, true);
+        ThreadManager.postImmediately(new afbs(this, (URLDrawable)localObject), null, true);
       }
       return;
     }

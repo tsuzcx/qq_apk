@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import adef;
+import adoe;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ public class QzoneGifHotPicFragment
   extends PublicBaseFragment
   implements HotPicPageView.OnHotPicItemClickListener
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adef(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adoe(this);
   private View jdField_a_of_type_AndroidViewView;
   protected FrameLayout a;
   public BaseActivity a;
@@ -48,7 +48,6 @@ public class QzoneGifHotPicFragment
     super.a(paramActivity);
     if (paramActivity != null)
     {
-      paramActivity.requestWindowFeature(1);
       paramActivity.getWindow().setFlags(1024, 1024);
       paramActivity.overridePendingTransition(0, 0);
     }
@@ -80,9 +79,9 @@ public class QzoneGifHotPicFragment
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidViewView = getActivity().findViewById(2131373549);
+    this.jdField_a_of_type_AndroidViewView = getActivity().findViewById(2131373730);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)getActivity().findViewById(2131373548));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)getActivity().findViewById(2131373729));
   }
   
   public boolean b()
@@ -94,7 +93,7 @@ public class QzoneGifHotPicFragment
   {
     if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel = ((QzoneHotPicPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971174, null));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel = ((QzoneHotPicPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971222, null));
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel, -1, DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 250.0F));
     }
@@ -140,7 +139,7 @@ public class QzoneGifHotPicFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130971164, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130971212, null);
     paramLayoutInflater.setSystemUiVisibility(4);
     return paramLayoutInflater;
   }
@@ -170,7 +169,7 @@ public class QzoneGifHotPicFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QzoneGifHotPicFragment
  * JD-Core Version:    0.7.0.1
  */

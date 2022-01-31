@@ -1,93 +1,51 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
-import com.tencent.mobileqq.data.Groups;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class xyj
-  extends BaseAdapter
+  extends Handler
 {
-  public xyj(SelectMemberFromFriendGroup paramSelectMemberFromFriendGroup) {}
+  public xyj(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public int getCount()
+  public void handleMessage(Message paramMessage)
   {
-    return SelectMemberFromFriendGroup.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return SelectMemberFromFriendGroup.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    if (paramMessage.what == 0)
     {
-      paramView = LayoutInflater.from(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity).inflate(2130969708, null);
-      paramViewGroup = new xyl(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363916));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367522));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131367523));
-      paramView.setTag(paramViewGroup);
-      paramView.setOnClickListener(new xyk(this));
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups = ((Groups)getItem(paramInt));
-      int i = paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups.group_friend_count;
-      paramViewGroup.b.setText("" + i);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups.group_name);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramViewGroup);
-      if (!this.a.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups)) {
-        break label224;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      CreateFaceToFaceDiscussionActivity.a(this.a, 3);
+      paramMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, this.a.jdField_a_of_type_Long);
     }
-    for (;;)
+    do
     {
-      if (SelectMemberFromFriendGroup.a(this.a).size() != 1) {
-        break label258;
-      }
-      paramView.setBackgroundResource(2130838626);
-      return paramView;
-      paramViewGroup = (xyl)paramView.getTag();
-      break;
-      label224:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.a.jdField_a_of_type_JavaUtilList.contains(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups));
-    }
-    label258:
-    if (SelectMemberFromFriendGroup.a(this.a).size() == 2)
-    {
-      if (paramInt == 0)
+      do
       {
-        paramView.setBackgroundResource(2130838631);
-        return paramView;
-      }
-      paramView.setBackgroundResource(2130838626);
-      return paramView;
-    }
-    if (paramInt == 0)
-    {
-      paramView.setBackgroundResource(2130838631);
-      return paramView;
-    }
-    if (paramInt == SelectMemberFromFriendGroup.a(this.a).size() - 1)
-    {
-      paramView.setBackgroundResource(2130838626);
-      return paramView;
-    }
-    paramView.setBackgroundResource(2130838629);
-    return paramView;
+        return;
+        if (1 != paramMessage.what) {
+          break;
+        }
+      } while (this.a.jdField_c_of_type_Boolean);
+      this.a.jdField_a_of_type_JavaLangStringBuffer.delete(0, this.a.jdField_a_of_type_JavaLangStringBuffer.length());
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842559);
+      this.a.b.setImageResource(2130842559);
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130842559);
+      this.a.d.setImageResource(2130842559);
+      this.a.e.setEnabled(true);
+      this.a.f.setEnabled(true);
+      this.a.g.setEnabled(true);
+      this.a.h.setEnabled(true);
+      this.a.i.setEnabled(true);
+      this.a.j.setEnabled(true);
+      this.a.k.setEnabled(true);
+      this.a.l.setEnabled(true);
+      this.a.m.setEnabled(true);
+      this.a.n.setEnabled(true);
+      this.a.o.setEnabled(true);
+      return;
+    } while (2 != paramMessage.what);
+    QQToast.a(BaseApplicationImpl.getContext(), paramMessage.arg1, paramMessage.arg2, 0).a();
   }
 }
 

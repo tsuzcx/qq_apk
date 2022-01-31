@@ -61,31 +61,31 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import cooperation.readinjoy.ReadInJoyHelper;
 import java.io.File;
+import lgs;
+import lgt;
+import lgv;
+import lgx;
+import lgy;
+import lgz;
+import lha;
+import lhb;
 import lhc;
 import lhd;
-import lhf;
+import lhe;
 import lhh;
 import lhi;
 import lhj;
 import lhk;
 import lhl;
 import lhm;
-import lhn;
-import lho;
 import lhr;
-import lhs;
-import lht;
-import lhu;
-import lhv;
-import lhw;
-import lib;
-import lih;
+import lhx;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
 public class ReadInJoyCameraCaptureActivity
   extends PeakActivity
-  implements View.OnClickListener, View.OnTouchListener, EffectsCameraCaptureView.EffectListener, SplitEffectsCameraCaptureView.EventListener, lib, lih
+  implements View.OnClickListener, View.OnTouchListener, EffectsCameraCaptureView.EffectListener, SplitEffectsCameraCaptureView.EventListener, lhr, lhx
 {
   private static int jdField_a_of_type_Int = 100;
   private long jdField_a_of_type_Long;
@@ -104,7 +104,7 @@ public class ReadInJoyCameraCaptureActivity
   private ReadInJoyVideoDownloadManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoDownloadManager;
   protected CameraFocusView a;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new lhl(this);
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new lhb(this);
   private CameraZoomGesture jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture;
   private SplitEffectsCameraCaptureView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView;
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
@@ -373,7 +373,7 @@ public class ReadInJoyCameraCaptureActivity
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.setVisibility(4);
       this.jdField_e_of_type_AndroidViewViewGroup.setVisibility(4);
-      DialogUtil.a(paramContext, 230, null, "暂不支持该机型", null, paramContext.getString(2131432999), new lhn(this), null).show();
+      DialogUtil.a(paramContext, 230, null, "暂不支持该机型", null, paramContext.getString(2131433016), new lhd(this), null).show();
     }
   }
   
@@ -419,9 +419,9 @@ public class ReadInJoyCameraCaptureActivity
   private void f()
   {
     int i = -1;
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492970));
-    View localView = findViewById(2131366217);
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366902));
+    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492971));
+    View localView = findViewById(2131366244);
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366944));
     Object localObject = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidViewViewGroup.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).width = -1;
     if (b()) {
@@ -432,7 +432,7 @@ public class ReadInJoyCameraCaptureActivity
       ((RelativeLayout.LayoutParams)localObject).topMargin = AIOUtils.a(64.0F, getResources());
     }
     this.jdField_c_of_type_AndroidViewViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView = ((SplitEffectsCameraCaptureView)localView.findViewById(2131366903));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView = ((SplitEffectsCameraCaptureView)localView.findViewById(2131366945));
     localObject = new CameraCaptureView.CaptureParam();
     if (b())
     {
@@ -461,36 +461,36 @@ public class ReadInJoyCameraCaptureActivity
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.setEventListener(this);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.setFaceEffectListener(this);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture = new CameraZoomGesture(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView = ((CameraFocusView)localView.findViewById(2131366904));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366906));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366907));
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView = ((CameraFocusView)localView.findViewById(2131366946));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366948));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366949));
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366909));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)localView.findViewById(2131366908));
-      this.jdField_e_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366905));
-      this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366910);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraProgressView = ((ReadInJoyCameraProgressView)localView.findViewById(2131365629));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366922));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366917));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366951));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)localView.findViewById(2131366950));
+      this.jdField_e_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366947));
+      this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131366952);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraProgressView = ((ReadInJoyCameraProgressView)localView.findViewById(2131365656));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366964));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366959));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366919));
+      this.jdField_d_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366961));
       this.jdField_d_of_type_AndroidViewViewGroup.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131366918);
+      this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131366960);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraStatusLayout = ((ReadInJoyCameraStatusLayout)localView.findViewById(2131366915));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraStatusLayout = ((ReadInJoyCameraStatusLayout)localView.findViewById(2131366957));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraStatusLayout.setStatus(this.jdField_b_of_type_Int);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraStatusLayout.setOnBottonClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366920));
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366911));
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366914));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131366913));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366962));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366953));
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366956));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131366955));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363969));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131363993));
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131366912));
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131366954));
       this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_f_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366923));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366924));
+      this.jdField_f_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131366965));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366966));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateManager = new ReadInJoyCameraTemplateManager(this, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView, this.jdField_d_of_type_Int);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateManager.a(this);
       return;
@@ -529,7 +529,7 @@ public class ReadInJoyCameraCaptureActivity
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
     localObject = URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoDownloadManager = new ReadInJoyVideoDownloadManager(this.jdField_d_of_type_JavaLangString, new lho(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoDownloadManager = new ReadInJoyVideoDownloadManager(this.jdField_d_of_type_JavaLangString, new lhe(this));
     h();
   }
   
@@ -538,7 +538,7 @@ public class ReadInJoyCameraCaptureActivity
     if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoDownloadManager.a()) {
       if (!NetworkUtil.g(this))
       {
-        QQToast.a(BaseApplication.getContext(), 1, 2131432992, 0).a(e()).show();
+        QQToast.a(BaseApplication.getContext(), 1, 2131433009, 0).a(e()).show();
         this.jdField_b_of_type_Int = 7;
       }
     }
@@ -553,7 +553,7 @@ public class ReadInJoyCameraCaptureActivity
       }
       else
       {
-        DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131428443), this.jdField_a_of_type_AndroidContentContext.getString(2131428447), this.jdField_a_of_type_AndroidContentContext.getString(2131428444), this.jdField_a_of_type_AndroidContentContext.getString(2131428446), new lhr(this), new lhs(this)).show();
+        DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131428449), this.jdField_a_of_type_AndroidContentContext.getString(2131428453), this.jdField_a_of_type_AndroidContentContext.getString(2131428450), this.jdField_a_of_type_AndroidContentContext.getString(2131428452), new lhh(this), new lhi(this)).show();
         this.jdField_b_of_type_Int = 7;
         continue;
         this.jdField_b_of_type_Int = 6;
@@ -676,7 +676,7 @@ public class ReadInJoyCameraCaptureActivity
   
   private void j()
   {
-    ThreadManager.postImmediately(new lhf(this), null, false);
+    ThreadManager.postImmediately(new lgv(this), null, false);
   }
   
   private void k()
@@ -689,7 +689,7 @@ public class ReadInJoyCameraCaptureActivity
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, "生成失败", "很遗憾，发生了一个错误，导致无法顺利生成视频。", "退出拍摄", "留在此页", new lhh(this), new lhi(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, "生成失败", "很遗憾，发生了一个错误，导致无法顺利生成视频。", "退出拍摄", "留在此页", new lgx(this), new lgy(this));
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
     }
@@ -708,8 +708,8 @@ public class ReadInJoyCameraCaptureActivity
       ActionSheet localActionSheet = ActionSheet.d(this.jdField_a_of_type_AndroidContentContext);
       localActionSheet.a("退出将丢失所有已编辑的内容");
       localActionSheet.a("退出", 3);
-      localActionSheet.c(2131432998);
-      localActionSheet.a(new lhm(this, localActionSheet));
+      localActionSheet.c(2131433015);
+      localActionSheet.a(new lhc(this, localActionSheet));
       localActionSheet.show();
       return;
     }
@@ -731,16 +731,16 @@ public class ReadInJoyCameraCaptureActivity
     } while (System.currentTimeMillis() - this.jdField_c_of_type_Long < 1000L);
     PublicAccountReportUtils.a(null, "", "0X80081CD", "0X80081CD", 0, 0, "2", "", "", VideoReporter.a(this.jdField_d_of_type_Int), false);
     this.jdField_b_of_type_Int = 4;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.k();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.l();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraProgressView.a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
     for (;;)
     {
       i();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new lhv(this), 100L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new lhl(this), 100L);
       return;
       PublicAccountReportUtils.a(null, "", "0X80081CD", "0X80081CD", 0, 0, "1", "", "", VideoReporter.a(this.jdField_d_of_type_Int), false);
       this.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.j();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.k();
       this.jdField_c_of_type_Long = System.currentTimeMillis();
     }
   }
@@ -766,7 +766,7 @@ public class ReadInJoyCameraCaptureActivity
   public void a(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      ThreadManager.getUIHandler().post(new lhd(this));
+      ThreadManager.getUIHandler().post(new lgt(this));
     }
   }
   
@@ -782,12 +782,12 @@ public class ReadInJoyCameraCaptureActivity
     if (QLog.isColorLevel()) {
       QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "onCompletion()");
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lhw(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lhm(this));
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new lhj(this), 500L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new lgz(this), 500L);
   }
   
   public void c(boolean paramBoolean) {}
@@ -801,7 +801,7 @@ public class ReadInJoyCameraCaptureActivity
   
   public void d(boolean paramBoolean) {}
   
-  public void f_(boolean paramBoolean)
+  public void d_(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "onSoload(): success=" + paramBoolean);
@@ -813,7 +813,7 @@ public class ReadInJoyCameraCaptureActivity
       return;
     }
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.post(new lhk(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lha(this));
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -831,17 +831,17 @@ public class ReadInJoyCameraCaptureActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131366913: 
-    case 2131363969: 
-    case 2131366917: 
-    case 2131366919: 
+    case 2131366955: 
+    case 2131363993: 
+    case 2131366959: 
+    case 2131366961: 
       do
       {
         return;
         if (QLog.isColorLevel()) {
           QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "onClick() R.id.change_camera");
         }
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.h();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.i();
         return;
         if (QLog.isColorLevel()) {
           QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "onClick() R.id.cancel");
@@ -852,7 +852,7 @@ public class ReadInJoyCameraCaptureActivity
           QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "onClick() R.id.delete_segment_button");
         }
         PublicAccountReportUtils.a(null, "", "0X80081CE", "0X80081CE", 0, 0, "", "", "", VideoReporter.a(this.jdField_d_of_type_Int), false);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.z();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.A();
         this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.h();
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraProgressView.a();
         this.jdField_b_of_type_Int = 4;
@@ -865,18 +865,18 @@ public class ReadInJoyCameraCaptureActivity
       paramView = ActionSheet.d(this.jdField_a_of_type_AndroidContentContext);
       paramView.a("生成视频后，将无法修改内容");
       paramView.c("生成视频");
-      paramView.c(2131432998);
-      paramView.a(new lhu(this, paramView));
+      paramView.c(2131433015);
+      paramView.a(new lhk(this, paramView));
       paramView.show();
       return;
-    case 2131366918: 
+    case 2131366960: 
       if (QLog.isColorLevel()) {
         QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "onClick() R.id.jump_to_back_button");
       }
       this.jdField_b_of_type_Int = 4;
       i();
       return;
-    case 2131366912: 
+    case 2131366954: 
       if (QLog.isColorLevel()) {
         QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "onClick() R.id.template_btn");
       }
@@ -911,8 +911,8 @@ public class ReadInJoyCameraCaptureActivity
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
     this.jdField_a_of_type_AndroidContentContext = this;
     super.onCreate(paramBundle);
-    super.setContentView(2130969551);
-    ThreadManager.post(new lhc(this), 8, null, true);
+    super.setContentView(2130969558);
+    ThreadManager.post(new lgs(this), 8, null, true);
     e();
     f();
     g();
@@ -927,7 +927,7 @@ public class ReadInJoyCameraCaptureActivity
     }
     super.onDestroy();
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.A();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.B();
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateManager != null)
     {
@@ -940,7 +940,7 @@ public class ReadInJoyCameraCaptureActivity
     if (this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler != null) {
       AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     }
-    ThreadManager.post(new lht(this), 5, null, false);
+    ThreadManager.post(new lhj(this), 5, null, false);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)

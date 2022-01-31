@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import aljw;
+import alzm;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.RectF;
@@ -30,13 +30,13 @@ public class ARMapHongBaoListView
   public ARMapHongBaoListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new aljw(this));
+    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new alzm(this));
   }
   
   public ARMapHongBaoListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new aljw(this));
+    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new alzm(this));
   }
   
   private void c(int paramInt)
@@ -328,7 +328,7 @@ public class ARMapHongBaoListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.ARMapHongBaoListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
 
 public class mtb
-  implements DialogInterface.OnClickListener
 {
-  public mtb(GalleryShareHelper paramGalleryShareHelper) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private mtb(SubscriptFeedsAdapter paramSubscriptFeedsAdapter) {}
 }
 
 

@@ -1,24 +1,39 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
-import org.xmlpull.v1.XmlSerializer;
+import android.app.Dialog;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public class rgh
-  extends StructMsgItemCover
+class rgh
+  implements Runnable
 {
-  public rgh(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString)
-  {
-    super(paramString);
-  }
+  rgh(rgg paramrgg) {}
   
-  public void a(XmlSerializer paramXmlSerializer)
+  public void run()
   {
-    paramXmlSerializer.startTag(null, "picture");
-    if (this.u == null) {}
-    for (String str = "";; str = this.u)
+    int i = 0;
+    try
     {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "picture");
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(this.a.jdField_a_of_type_Int);
+      label22:
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Boolean) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(false);
+      }
+      AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, null);
+      int j = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      while (i < j)
+      {
+        View localView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        if (localView.getTag() != null) {
+          localView.setTag(Integer.valueOf(i));
+        }
+        i += 1;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
       return;
+    }
+    catch (Exception localException)
+    {
+      break label22;
     }
   }
 }

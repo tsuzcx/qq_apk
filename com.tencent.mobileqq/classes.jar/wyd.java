@@ -1,21 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class wyd
-  implements ClickableColorSpanTextView.SpanClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public wyd(RedPacketRecordFragment paramRedPacketRecordFragment, Context paramContext) {}
+  public wyd(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onGlobalLayout()
   {
-    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
+    this.a.n = this.a.a.getWidth();
+    this.a.o = this.a.a.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.n + ",mSurfaceViewHeight:" + this.a.o);
+    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setVisibility(8);
   }
 }
 

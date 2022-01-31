@@ -1,45 +1,53 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.doutu.DoutuManager;
+import com.tencent.mobileqq.doutu.DoutuServlet;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
 public class abyf
-  implements QueryCallback
+  implements Runnable
 {
-  public abyf(EmoticonPanelLinearLayout paramEmoticonPanelLinearLayout, Emoticon paramEmoticon, EmoticonInfo paramEmoticonInfo, PicEmoticonInfo paramPicEmoticonInfo) {}
+  public abyf(DoutuManager paramDoutuManager) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void run()
   {
-    if (paramEmoticonPackage == null) {
+    if (QLog.isColorLevel()) {
+      QLog.i("DoutuManager", 2, "postGetDoutuList : run begin .");
+    }
+    DoutuManager.a(this.a, 1);
+    NewIntent localNewIntent = new NewIntent(DoutuManager.a(this.a).getApp(), DoutuServlet.class);
+    long l = Long.valueOf(DoutuManager.a(this.a).getCurrentAccountUin()).longValue();
+    localNewIntent.putExtra("KEY_SRC_UIN", l);
+    localNewIntent.putExtra("KEY_CMD", 1);
+    Object localObject = (FriendsManager)DoutuManager.a(this.a).getManager(50);
+    int i;
+    if (localObject != null)
+    {
+      localObject = ((FriendsManager)localObject).a(DoutuManager.a(this.a).getCurrentAccountUin());
+      if (localObject != null)
+      {
+        i = ((Card)localObject).age;
+        localNewIntent.putExtra("KEY_AGE", ((Card)localObject).age);
+        localNewIntent.putExtra("key_gender", ((Card)localObject).shGender);
+        DoutuManager.a(this.a, (Card)localObject);
+      }
+    }
+    for (;;)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("EmotionPanelLinearLayout", 2, "package is null, epId: " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+        QLog.d("DoutuManager", 2, "postGetDoutuList : curUin = " + l + ", age = " + i);
       }
-    }
-    do
-    {
+      DoutuManager.a(this.a).startServlet(localNewIntent);
       return;
-      EmoticonCallback localEmoticonCallback = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback;
-      if (localEmoticonCallback != null) {
-        localEmoticonCallback.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo);
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.d != 2);
-    if ((paramEmoticonPackage.jobType == 0) && (paramEmoticonPackage.subType == 4))
-    {
-      ReportController.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "3", "");
-      return;
+      i = 0;
     }
-    ReportController.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "2", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyf
  * JD-Core Version:    0.7.0.1
  */

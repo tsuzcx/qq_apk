@@ -1,22 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-class tys
-  implements Runnable
+public class tys
+  implements DialogInterface.OnClickListener
 {
-  tys(tyr paramtyr, TroopMemberListActivity.ATroopMember paramATroopMember) {}
+  public tys(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Tyr.jdField_a_of_type_Typ.a.a(this.jdField_a_of_type_Tyr.jdField_a_of_type_JavaLangString);
-    synchronized (this.jdField_a_of_type_Tyr.jdField_a_of_type_Typ.a)
-    {
-      this.jdField_a_of_type_Tyr.jdField_a_of_type_Typ.a.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember);
-      this.jdField_a_of_type_Tyr.jdField_a_of_type_Typ.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

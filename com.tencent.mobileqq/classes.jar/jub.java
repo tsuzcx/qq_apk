@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.EffectSettingBtn;
-import com.tencent.av.utils.UITools;
+import com.tencent.av.business.manager.pendant.EffectPendantTools;
+import com.tencent.av.ui.EffectToolbar;
+import com.tencent.qphone.base.util.QLog;
 
 public class jub
-  implements View.OnClickListener
+  implements Runnable
 {
-  public jub(EffectSettingBtn paramEffectSettingBtn) {}
+  public jub(EffectToolbar paramEffectToolbar, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a().a().ax = true;
-    UITools.a(this.a.a);
-    EffectSettingBtn.c(this.a);
+    if (EffectToolbar.access$200(this.jdField_a_of_type_ComTencentAvUiEffectToolbar) != null)
+    {
+      QLog.w("EffectToolbar", 1, "postSetCurrentItemById, id[" + this.jdField_a_of_type_JavaLangString + "]");
+      EffectToolbar.access$200(this.jdField_a_of_type_ComTencentAvUiEffectToolbar).b(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

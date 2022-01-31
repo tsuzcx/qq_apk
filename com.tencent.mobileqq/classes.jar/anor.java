@@ -1,36 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.network.request.GetTagListRequest;
-import com.tencent.biz.qqstory.network.response.GetTagListResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import dov.com.tencent.biz.qqstory.takevideo.tag.IEditVideoTagView;
-import java.util.List;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class anor
-  extends CmdTaskManger.UIThreadCallback
+public final class anor
+  implements Runnable
 {
-  public anor(EditVideoTagPresenter paramEditVideoTagPresenter) {}
+  public anor(File paramFile, String paramString1, String paramString2) {}
   
-  public void a(@NonNull GetTagListRequest paramGetTagListRequest, @Nullable GetTagListResponse paramGetTagListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void run()
   {
-    SLog.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetTagListResponse != null))
-    {
-      SLog.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramGetTagListResponse.toString());
-      EditVideoTagPresenter.a(this.a).addAll(paramGetTagListResponse.jdField_a_of_type_JavaUtilList);
-      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.jdField_a_of_type_JavaLangString);
-      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.b);
-      ThreadManager.executeOnSubThread(new anos(this));
-    }
-    for (;;)
-    {
-      EditVideoTagPresenter.a(this.a).b(paramErrorMessage.errorCode, EditVideoTagPresenter.a(this.a), this.a.a());
-      return;
-      SLog.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
+    FileUtils.a(this.jdField_a_of_type_JavaIoFile.getPath() + File.separator, this.jdField_a_of_type_JavaLangString, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMFileUtils", 2, "paster config save to file " + this.jdField_a_of_type_JavaIoFile.getPath() + File.separator + this.jdField_a_of_type_JavaLangString);
     }
   }
 }

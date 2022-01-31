@@ -1,14 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinHandler.ReadInJoySkinObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.ThreadManager;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
-class mks
-  implements Runnable
+public class mks
+  extends ReadInJoySkinHandler.ReadInJoySkinObserver
 {
-  mks(mkr parammkr) {}
+  public mks(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void run()
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo)
   {
-    FastWebActivity.a(this.a.a).notifyDataSetChanged();
+    if (paramBoolean) {
+      ThreadManager.post(new mkt(this, paramGuideInfo2, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    }
   }
 }
 

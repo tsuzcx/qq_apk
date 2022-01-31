@@ -10,8 +10,8 @@ import com.tencent.mobileqq.gesturelock.LockPatternView;
 import com.tencent.mobileqq.gesturelock.LockPatternView.Cell;
 import java.util.Iterator;
 import java.util.List;
-import squ;
-import sqv;
+import stt;
+import stu;
 
 public class GesturePWDCreateActivity
   extends IphoneTitleBarActivity
@@ -47,13 +47,13 @@ public class GesturePWDCreateActivity
   
   private void b()
   {
-    setTitle(2131436023);
-    setLeftButton(2131432998, new squ(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364681));
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131364683));
+    setTitle(2131436040);
+    setLeftButton(2131433015, new stt(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364703));
+    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131364705));
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setFillInGapCell(false);
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setTactileFeedbackEnabled(true);
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(new sqv(this));
+    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(new stu(this));
     if (this.mDensity <= 1.0D)
     {
       ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.getLayoutParams();
@@ -61,15 +61,15 @@ public class GesturePWDCreateActivity
       localLayoutParams.width = ((int)(this.mDensity * 240.0F));
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setLayoutParams(localLayoutParams);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364671);
-    this.b = findViewById(2131364672);
-    this.c = findViewById(2131364673);
-    this.d = findViewById(2131364674);
-    this.e = findViewById(2131364675);
-    this.f = findViewById(2131364676);
-    this.g = findViewById(2131364677);
-    this.h = findViewById(2131364678);
-    this.i = findViewById(2131364679);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364693);
+    this.b = findViewById(2131364694);
+    this.c = findViewById(2131364695);
+    this.d = findViewById(2131364696);
+    this.e = findViewById(2131364697);
+    this.f = findViewById(2131364698);
+    this.g = findViewById(2131364699);
+    this.h = findViewById(2131364700);
+    this.i = findViewById(2131364701);
   }
   
   private void c()
@@ -92,75 +92,75 @@ public class GesturePWDCreateActivity
       if (this.jdField_a_of_type_ArrayOfInt[0] != 1) {
         break label192;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842473);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842565);
       if (this.jdField_a_of_type_ArrayOfInt[1] != 1) {
         break label204;
       }
-      this.b.setBackgroundResource(2130842473);
+      this.b.setBackgroundResource(2130842565);
       label55:
       if (this.jdField_a_of_type_ArrayOfInt[2] != 1) {
         break label216;
       }
-      this.c.setBackgroundResource(2130842473);
+      this.c.setBackgroundResource(2130842565);
       label74:
       if (this.jdField_a_of_type_ArrayOfInt[3] != 1) {
         break label228;
       }
-      this.d.setBackgroundResource(2130842473);
+      this.d.setBackgroundResource(2130842565);
       label93:
       if (this.jdField_a_of_type_ArrayOfInt[4] != 1) {
         break label240;
       }
-      this.e.setBackgroundResource(2130842473);
+      this.e.setBackgroundResource(2130842565);
       label112:
       if (this.jdField_a_of_type_ArrayOfInt[5] != 1) {
         break label252;
       }
-      this.f.setBackgroundResource(2130842473);
+      this.f.setBackgroundResource(2130842565);
       label131:
       if (this.jdField_a_of_type_ArrayOfInt[6] != 1) {
         break label264;
       }
-      this.g.setBackgroundResource(2130842473);
+      this.g.setBackgroundResource(2130842565);
       label151:
       if (this.jdField_a_of_type_ArrayOfInt[7] != 1) {
         break label276;
       }
-      this.h.setBackgroundResource(2130842473);
+      this.h.setBackgroundResource(2130842565);
     }
     for (;;)
     {
       if (this.jdField_a_of_type_ArrayOfInt[8] != 1) {
         break label288;
       }
-      this.i.setBackgroundResource(2130842473);
+      this.i.setBackgroundResource(2130842565);
       return;
       label192:
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842472);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842564);
       break;
       label204:
-      this.b.setBackgroundResource(2130842472);
+      this.b.setBackgroundResource(2130842564);
       break label55;
       label216:
-      this.c.setBackgroundResource(2130842472);
+      this.c.setBackgroundResource(2130842564);
       break label74;
       label228:
-      this.d.setBackgroundResource(2130842472);
+      this.d.setBackgroundResource(2130842564);
       break label93;
       label240:
-      this.e.setBackgroundResource(2130842472);
+      this.e.setBackgroundResource(2130842564);
       break label112;
       label252:
-      this.f.setBackgroundResource(2130842472);
+      this.f.setBackgroundResource(2130842564);
       break label131;
       label264:
-      this.g.setBackgroundResource(2130842472);
+      this.g.setBackgroundResource(2130842564);
       break label151;
       label276:
-      this.h.setBackgroundResource(2130842472);
+      this.h.setBackgroundResource(2130842564);
     }
     label288:
-    this.i.setBackgroundResource(2130842472);
+    this.i.setBackgroundResource(2130842564);
   }
   
   public void a(List paramList)
@@ -188,7 +188,7 @@ public class GesturePWDCreateActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969009);
+    super.setContentView(2130969008);
     a();
     b();
     return true;

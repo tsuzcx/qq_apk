@@ -107,7 +107,7 @@ public class NearbyHandler
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("client_ver", "7.6.0");
+      localJSONObject.put("client_ver", "7.6.3");
       localJSONObject.put("from", paramString2);
       if ("1".equals(paramString2))
       {
@@ -158,7 +158,7 @@ public class NearbyHandler
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("7.6.0");
+      paramReqBody.version.set("7.6.3");
       paramReqBody.version_code.set(ApkUtils.a(BaseApplicationImpl.sApplication));
       paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);

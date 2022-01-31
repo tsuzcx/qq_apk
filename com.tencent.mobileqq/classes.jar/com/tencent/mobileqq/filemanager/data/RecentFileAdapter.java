@@ -105,7 +105,7 @@ public class RecentFileAdapter
       str1 = null;
       str2 = null;
       break;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131431776);
+      str2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131431793);
       str1 = null;
       break;
       localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131428135);
@@ -200,7 +200,7 @@ public class RecentFileAdapter
   
   private void a(AsyncImageView paramAsyncImageView, String paramString)
   {
-    paramAsyncImageView.setDefaultImage(2130841602);
+    paramAsyncImageView.setDefaultImage(2130841639);
     paramAsyncImageView.setAsyncImage(paramString);
   }
   
@@ -254,7 +254,7 @@ public class RecentFileAdapter
         try
         {
           localItemHolder = new RecentFileAdapter.ItemHolder(this);
-          paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970010, paramViewGroup, false);
+          paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970024, paramViewGroup, false);
           paramView = paramViewGroup;
           paramViewGroup = paramView;
         }
@@ -268,7 +268,7 @@ public class RecentFileAdapter
         }
         try
         {
-          localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368699));
+          localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368766));
           paramViewGroup = paramView;
           localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
           paramViewGroup = paramView;
@@ -276,27 +276,27 @@ public class RecentFileAdapter
           paramViewGroup = paramView;
           localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localItemHolder);
           paramViewGroup = paramView;
-          localItemHolder.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368741));
+          localItemHolder.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368808));
           paramViewGroup = paramView;
-          localItemHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131368700));
+          localItemHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131368767));
           paramViewGroup = paramView;
-          localItemHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368742));
+          localItemHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368809));
           paramViewGroup = paramView;
-          localItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131368702));
+          localItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131368769));
           paramViewGroup = paramView;
-          localItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368703));
+          localItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368770));
           paramViewGroup = paramView;
-          localItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368662));
+          localItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368729));
           paramViewGroup = paramView;
-          localItemHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131364093));
+          localItemHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131364117));
           paramViewGroup = paramView;
-          localItemHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368706));
+          localItemHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368773));
           paramViewGroup = paramView;
-          localItemHolder.c = ((TextView)paramView.findViewById(2131363183));
+          localItemHolder.c = ((TextView)paramView.findViewById(2131363201));
           paramViewGroup = paramView;
-          localItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131362723));
+          localItemHolder.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131362741));
           paramViewGroup = paramView;
-          localItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364578));
+          localItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364602));
           paramViewGroup = paramView;
           paramView.setTag(localItemHolder);
           paramViewGroup = paramView;
@@ -359,7 +359,7 @@ public class RecentFileAdapter
             paramViewGroup = paramView;
             localItemHolder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
             paramViewGroup = paramView;
-            localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838581);
+            localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838585);
             paramViewGroup = paramView;
             localItemHolder.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
             paramViewGroup = paramView;

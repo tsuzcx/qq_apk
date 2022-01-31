@@ -1,5 +1,4 @@
 import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.qphone.base.util.QLog;
 
 public class jsn
   implements Runnable
@@ -8,10 +7,7 @@ public class jsn
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.c, 2, "2s has past, startTimer now!");
-    }
-    this.a.Z();
+    this.a.h(true);
   }
 }
 

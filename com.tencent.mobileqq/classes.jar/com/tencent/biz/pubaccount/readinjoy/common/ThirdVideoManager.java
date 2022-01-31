@@ -19,8 +19,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import llf;
-import llh;
+import lla;
+import llc;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import org.json.JSONException;
@@ -121,7 +121,7 @@ public class ThirdVideoManager
     return "";
   }
   
-  public static void a(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  public static void a(String paramString1, String paramString2, long paramLong, boolean paramBoolean, String paramString3)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return;
@@ -134,12 +134,13 @@ public class ThirdVideoManager
     localVidUrl.jdField_a_of_type_JavaLangString = paramString1;
     localVidUrl.jdField_a_of_type_Long = paramLong;
     localVidUrl.jdField_a_of_type_Boolean = paramBoolean;
+    localVidUrl.c = paramString3;
     jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramString1, localVidUrl);
   }
   
-  public static void a(String paramString1, String paramString2, boolean paramBoolean)
+  public static void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {
-    a(paramString1, paramString2, NetConnInfoCenter.getServerTime(), paramBoolean);
+    a(paramString1, paramString2, NetConnInfoCenter.getServerTime(), paramBoolean, paramString3);
   }
   
   public static String[] a(String paramString)
@@ -201,9 +202,9 @@ public class ThirdVideoManager
     ArticleCenter.GetVidByUrlRequest localGetVidByUrlRequest = new ArticleCenter.GetVidByUrlRequest();
     ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString);
     localGetVidByUrlRequest.url.set(localByteStringMicro);
-    localGetVidByUrlRequest.mv.set(ByteStringMicro.copyFromUtf8("7.6.0,3,3525"));
+    localGetVidByUrlRequest.mv.set(ByteStringMicro.copyFromUtf8("7.6.3,3,3560"));
     localNewIntent.putExtra("data", localGetVidByUrlRequest.toByteArray());
-    localNewIntent.setObserver(new llh(this, l, localNewIntent, paramUrlToUUIDCallback, paramString));
+    localNewIntent.setObserver(new llc(this, l, localNewIntent, paramUrlToUUIDCallback, paramString));
     localAppRuntime.startServlet(localNewIntent);
   }
   
@@ -213,14 +214,14 @@ public class ThirdVideoManager
     if ((localAppRuntime == null) || (localAppRuntime.getApplication() == null) || (TextUtils.isEmpty(paramString2)))
     {
       if (paramUUIDToUrlCallback != null) {
-        paramUUIDToUrlCallback.a("", paramString1, 0, false);
+        paramUUIDToUrlCallback.a("", paramString1, 0, false, "");
       }
       return;
     }
     if (TextUtils.isEmpty(paramString1))
     {
       if (paramUUIDToUrlCallback != null) {
-        paramUUIDToUrlCallback.a("", paramString1, 0, false);
+        paramUUIDToUrlCallback.a("", paramString1, 0, false, "");
       }
       paramString2 = new VideoGetUrlReportData();
       paramString2.jdField_a_of_type_Boolean = false;
@@ -239,6 +240,7 @@ public class ThirdVideoManager
     {
       localObject1 = ((VidUrl)localObject2).jdField_b_of_type_JavaLangString;
       bool = ((VidUrl)localObject2).jdField_a_of_type_Boolean;
+      localObject2 = ((VidUrl)localObject2).c;
     }
     for (;;)
     {
@@ -251,7 +253,7 @@ public class ThirdVideoManager
           break;
         }
         this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-        paramUUIDToUrlCallback.a((String)localObject1, paramString1, 0, bool);
+        paramUUIDToUrlCallback.a((String)localObject1, paramString1, 0, bool, (String)localObject2);
         return;
       }
       long l = System.currentTimeMillis();
@@ -260,7 +262,7 @@ public class ThirdVideoManager
       localObject2 = new ArticleCenter.GetUrlByVidRequest();
       ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString1);
       ((ArticleCenter.GetUrlByVidRequest)localObject2).vid.set(localByteStringMicro);
-      ((ArticleCenter.GetUrlByVidRequest)localObject2).mv.set(ByteStringMicro.copyFromUtf8("7.6.0,3,3525"));
+      ((ArticleCenter.GetUrlByVidRequest)localObject2).mv.set(ByteStringMicro.copyFromUtf8("7.6.3,3,3560"));
       int i = NetUtil.a(null);
       ((ArticleCenter.GetUrlByVidRequest)localObject2).net_type.set(i);
       ((ArticleCenter.GetUrlByVidRequest)localObject2).video_type.set(0);
@@ -269,9 +271,10 @@ public class ThirdVideoManager
         QLog.d("Q.readinjoy.video.TAG", 2, "sendUUIDToUrlRequest netType : " + i + ", vid : " + paramString1);
       }
       ((NewIntent)localObject1).putExtra("data", ((ArticleCenter.GetUrlByVidRequest)localObject2).toByteArray());
-      ((NewIntent)localObject1).setObserver(new llf(this, (NewIntent)localObject1, l, paramUUIDToUrlCallback, paramString1, paramString2, localAppRuntime));
+      ((NewIntent)localObject1).setObserver(new lla(this, (NewIntent)localObject1, l, paramUUIDToUrlCallback, paramString1, paramString2, localAppRuntime));
       localAppRuntime.startServlet((NewIntent)localObject1);
       return;
+      localObject2 = null;
       bool = false;
       localObject1 = null;
     }

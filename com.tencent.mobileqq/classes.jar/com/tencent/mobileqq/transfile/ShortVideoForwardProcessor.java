@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aicw;
-import aidb;
+import aiqz;
+import aire;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
@@ -58,7 +58,7 @@ public class ShortVideoForwardProcessor
 {
   protected int a;
   protected long a;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aidb(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aire(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)this.a;
   protected ShortVideoTransManager a;
   protected ShortVideoUpInfo a;
@@ -300,7 +300,7 @@ public class ShortVideoForwardProcessor
       paramArrayOfByte.append(((ServerAddr)localObject2).jdField_a_of_type_Int);
     }
     paramArrayOfByte.append("/qqupload?ver=");
-    paramArrayOfByte.append("3525");
+    paramArrayOfByte.append("3560");
     paramArrayOfByte.append("&ukey=");
     paramArrayOfByte.append(this.jdField_l_of_type_JavaLangString);
     paramArrayOfByte.append("&filekey=");
@@ -378,7 +378,7 @@ public class ShortVideoForwardProcessor
           if (this.x >= 3) {
             break;
           }
-          al_();
+          an_();
           this.x += 1;
           return;
         }
@@ -493,7 +493,7 @@ public class ShortVideoForwardProcessor
             break;
           }
           g();
-          al_();
+          an_();
           return;
         }
         a(this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo, paramNetResp, false);
@@ -523,7 +523,7 @@ public class ShortVideoForwardProcessor
       {
         this.jdField_d_of_type_Boolean = true;
         m();
-        al_();
+        an_();
         return;
       }
       a(this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo, paramNetResp, false);
@@ -1086,7 +1086,7 @@ public class ShortVideoForwardProcessor
     //   1207: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1210: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1213: aload_0
-    //   1214: invokevirtual 670	com/tencent/mobileqq/transfile/ShortVideoForwardProcessor:al_	()V
+    //   1214: invokevirtual 670	com/tencent/mobileqq/transfile/ShortVideoForwardProcessor:an_	()V
     //   1217: goto -1042 -> 175
     //   1220: aload_0
     //   1221: getfield 931	com/tencent/mobileqq/transfile/ShortVideoForwardProcessor:v	I
@@ -1257,7 +1257,7 @@ public class ShortVideoForwardProcessor
     //   1582: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1585: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1588: aload_0
-    //   1589: invokevirtual 670	com/tencent/mobileqq/transfile/ShortVideoForwardProcessor:al_	()V
+    //   1589: invokevirtual 670	com/tencent/mobileqq/transfile/ShortVideoForwardProcessor:an_	()V
     //   1592: goto -1417 -> 175
     //   1595: new 88	java/lang/StringBuilder
     //   1598: dup
@@ -1936,12 +1936,12 @@ public class ShortVideoForwardProcessor
     //   1094: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1097: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1100: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1103: new 1255	aicx
+    //   1103: new 1255	aira
     //   1106: dup
     //   1107: aload_0
     //   1108: lload 4
     //   1110: aload 16
-    //   1112: invokespecial 1258	aicx:<init>	(Lcom/tencent/mobileqq/transfile/ShortVideoForwardProcessor;JLjava/lang/String;)V
+    //   1112: invokespecial 1258	aira:<init>	(Lcom/tencent/mobileqq/transfile/ShortVideoForwardProcessor;JLjava/lang/String;)V
     //   1115: astore 11
     //   1117: aload_0
     //   1118: new 1260	com/tencent/mobileqq/highway/transaction/Transaction
@@ -1961,10 +1961,10 @@ public class ShortVideoForwardProcessor
     //   1145: aload_2
     //   1146: invokespecial 1263	com/tencent/mobileqq/highway/transaction/Transaction:<init>	(Ljava/lang/String;ILjava/lang/String;I[B[BLcom/tencent/mobileqq/highway/api/ITransactionCallback;[B)V
     //   1149: putfield 1111	com/tencent/mobileqq/transfile/ShortVideoForwardProcessor:jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction	Lcom/tencent/mobileqq/highway/transaction/Transaction;
-    //   1152: new 1265	aida
+    //   1152: new 1265	aird
     //   1155: dup
     //   1156: aload_0
-    //   1157: invokespecial 1266	aida:<init>	(Lcom/tencent/mobileqq/transfile/ShortVideoForwardProcessor;)V
+    //   1157: invokespecial 1266	aird:<init>	(Lcom/tencent/mobileqq/transfile/ShortVideoForwardProcessor;)V
     //   1160: astore_1
     //   1161: aload_0
     //   1162: getfield 1111	com/tencent/mobileqq/transfile/ShortVideoForwardProcessor:jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction	Lcom/tencent/mobileqq/highway/transaction/Transaction;
@@ -2228,7 +2228,7 @@ public class ShortVideoForwardProcessor
     }
   }
   
-  public void al_()
+  public void an_()
   {
     if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_i_of_type_JavaLangString)) || (!FileUtils.b(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_i_of_type_JavaLangString)))
     {
@@ -2282,11 +2282,11 @@ public class ShortVideoForwardProcessor
         }
       }
     }
-    super.al_();
+    super.an_();
   }
   
   /* Error */
-  public void an_()
+  public void ap_()
   {
     // Byte code:
     //   0: aload_0
@@ -2300,7 +2300,7 @@ public class ShortVideoForwardProcessor
     //   17: ldc_w 1334
     //   20: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   23: aload_0
-    //   24: invokespecial 1336	com/tencent/mobileqq/transfile/BaseUploadProcessor:an_	()V
+    //   24: invokespecial 1336	com/tencent/mobileqq/transfile/BaseUploadProcessor:ap_	()V
     //   27: aload_0
     //   28: sipush 1001
     //   31: invokevirtual 763	com/tencent/mobileqq/transfile/ShortVideoForwardProcessor:d	(I)V
@@ -2607,7 +2607,7 @@ public class ShortVideoForwardProcessor
       this.jdField_j_of_type_JavaLangString = "";
       this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
       r();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a.post(new aicw(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a.post(new aiqz(this));
     }
     return 0;
   }
@@ -2943,15 +2943,15 @@ public class ShortVideoForwardProcessor
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().resumeTransactionTask(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction);
         return;
       }
-      an_();
+      ap_();
       return;
     }
-    an_();
+    ap_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoForwardProcessor
  * JD-Core Version:    0.7.0.1
  */

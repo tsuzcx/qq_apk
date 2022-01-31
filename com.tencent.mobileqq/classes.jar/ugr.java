@@ -1,37 +1,29 @@
-import android.media.AudioManager;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
-import com.tencent.mobileqq.utils.AudioHelper.AudioPlayerParameter;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
 
 public class ugr
-  extends Handler
+  implements TextWatcher
 {
-  public ugr(AudioPlayer paramAudioPlayer) {}
+  public ugr(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((paramMessage.what == 1000) && (AudioPlayer.a(this.a) == 0) && (this.a.a()))
+    if (paramEditable.length() >= 4)
     {
-      int i = AudioPlayer.a(this.a).getStreamVolume(AudioPlayer.a(this.a).b);
-      int j = AudioPlayer.a(this.a).getStreamMaxVolume(AudioPlayer.a(this.a).b);
-      if (i / j <= 0.1F) {
-        break label126;
-      }
-      AudioPlayer.a(this.a, 1);
-      if (AudioPlayer.a(this.a) != null) {
-        AudioPlayer.a(this.a).c(this.a, AudioPlayer.a(this.a));
-      }
+      VerifyCodeActivity.c(this.a, true);
+      return;
     }
-    return;
-    label126:
-    AudioPlayer.a(this.a).sendEmptyMessageDelayed(1000, 200L);
+    VerifyCodeActivity.d(this.a, false);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ugr
  * JD-Core Version:    0.7.0.1
  */

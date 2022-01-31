@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
 
 public class aadg
   implements Runnable
 {
-  public aadg(ARReport paramARReport, long paramLong) {}
+  public aadg(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData1, ObjectBaseData paramObjectBaseData2) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("loadingtime", String.valueOf(this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARWebView", true, 0L, 0L, localHashMap, "");
+    ObjectBaseData localObjectBaseData = this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData;
+    if ((this.b != null) && (this.b.a) && (this.b.f) && (!this.b.e)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localObjectBaseData.a(bool);
+      return;
+    }
   }
 }
 

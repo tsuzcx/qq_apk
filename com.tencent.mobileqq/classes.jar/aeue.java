@@ -1,19 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
+import com.tencent.mobileqq.nearby.now.send.PublishManager;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
 
 public class aeue
   implements DialogInterface.OnClickListener
 {
-  public aeue(NearbyProfileEditPanel paramNearbyProfileEditPanel, QQCustomDialog paramQQCustomDialog) {}
+  public aeue(PublishManager paramPublishManager) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    while (paramInt != 0) {
+    paramDialogInterface = new NowVideoReporter().h("video_public").i("clk_cancelbox").e("1");
+    if (this.a.b) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      paramDialogInterface.a(paramInt).d(PublishManager.b(this.a)).b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a(0, null, 0, 0);
       return;
     }
   }

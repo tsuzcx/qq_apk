@@ -1,25 +1,13 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.activity.selectmember.TroopListAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
 public class xyw
-  extends ProtoUtils.TroopProtocolObserver
+  extends TroopMemberListActivity.ViewHolder
 {
-  public xyw(TroopListAdapter paramTroopListAdapter) {}
+  public CheckBox a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
-      return;
-    }
-    ThreadManager.post(new xyx(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
-  }
+  private xyw(FriendListInnerFrame paramFriendListInnerFrame) {}
 }
 
 

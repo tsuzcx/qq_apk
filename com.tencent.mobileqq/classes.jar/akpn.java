@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.open.applist.QZoneAppListActivity;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
 
-public class akpn
-  extends OnPluginInstallListener.Stub
+class akpn
+  implements Runnable
 {
-  public akpn(QZoneAppListActivity paramQZoneAppListActivity) {}
+  akpn(akpl paramakpl) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.a.a(paramInt1 / paramInt2 * 100);
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new akpo(this));
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    QZoneAppListActivity.a(this.a);
+    this.a.a.f(this.a.a.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akpn
  * JD-Core Version:    0.7.0.1
  */

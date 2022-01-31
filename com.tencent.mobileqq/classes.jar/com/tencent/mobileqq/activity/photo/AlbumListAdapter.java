@@ -34,13 +34,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import wsn;
-import wso;
-import wsp;
-import wsq;
-import wsr;
-import wss;
-import wst;
+import wvs;
+import wvt;
+import wvu;
+import wvv;
+import wvw;
+import wvx;
+import wvy;
 
 public class AlbumListAdapter
   extends BaseAdapter
@@ -88,7 +88,7 @@ public class AlbumListAdapter
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter = paramMediaFileFilter;
     if (paramList != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130838337).getConstantState();
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130838341).getConstantState();
       this.jdField_b_of_type_JavaUtilList = paramList;
       this.jdField_d_of_type_Boolean = true;
     }
@@ -96,9 +96,9 @@ public class AlbumListAdapter
     {
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131558591);
       this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      ThreadManager.getFileThreadHandler().post(new wsn(this));
+      ThreadManager.getFileThreadHandler().post(new wvs(this));
       return;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130838480).getConstantState();
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130838484).getConstantState();
     }
   }
   
@@ -1227,11 +1227,11 @@ public class AlbumListAdapter
             if ((j == 0) && (!this.jdField_d_of_type_Boolean)) {
               break;
             }
-            ThreadManager.getFileThreadHandler().post(new wss(this));
+            ThreadManager.getFileThreadHandler().post(new wvx(this));
           }
           return;
         }
-        ThreadManager.getFileThreadHandler().post(new wst(this));
+        ThreadManager.getFileThreadHandler().post(new wvy(this));
         return;
         localObject = null;
         j = i;
@@ -1292,7 +1292,7 @@ public class AlbumListAdapter
       this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
     notifyDataSetChanged();
-    ThreadManager.post(new wso(this), 2, null, false);
+    ThreadManager.post(new wvt(this), 2, null, false);
   }
   
   public void a(boolean paramBoolean)
@@ -1645,7 +1645,7 @@ public class AlbumListAdapter
       a(paramQQAlbumInfo);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new wsq(this, paramQQAlbumInfo));
+    this.jdField_a_of_type_AndroidOsHandler.post(new wvv(this, paramQQAlbumInfo));
   }
   
   void b(List paramList)
@@ -1655,7 +1655,7 @@ public class AlbumListAdapter
       a(paramList);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new wsp(this, paramList));
+    this.jdField_a_of_type_AndroidOsHandler.post(new wvu(this, paramList));
   }
   
   public void c(QQAlbumInfo paramQQAlbumInfo)
@@ -1711,7 +1711,7 @@ public class AlbumListAdapter
       c(paramQQAlbumInfo);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new wsr(this, paramQQAlbumInfo));
+    this.jdField_a_of_type_AndroidOsHandler.post(new wvw(this, paramQQAlbumInfo));
   }
   
   public int getCount()
@@ -1738,7 +1738,7 @@ public class AlbumListAdapter
     Object localObject;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2130970179, null);
+      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2130970193, null);
       localTextView = (TextView)localView;
       localQQAlbumInfo = a(paramInt);
       localView.setContentDescription(localQQAlbumInfo.name + "，" + localQQAlbumInfo.mMediaFileCount + "张照片");
@@ -1796,7 +1796,7 @@ public class AlbumListAdapter
         if (!this.jdField_b_of_type_JavaUtilList.contains(localQQAlbumInfo._id)) {
           break label498;
         }
-        paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130839270);
+        paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130839274);
         localTextView.setContentDescription("已选中");
       }
       for (;;)
@@ -1817,14 +1817,14 @@ public class AlbumListAdapter
         label465:
         paramViewGroup = AlbumUtil.a(localQQAlbumInfo.mCoverInfo);
         break label154;
-        paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130841056);
+        paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130841093);
         paramView = URLDrawableHelper.a(paramViewGroup, paramView, paramView);
         break label247;
         label498:
-        paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130839271);
+        paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130839275);
         localTextView.setContentDescription("未选中");
       }
-      paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130844222);
+      paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130844346);
       paramView.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       paramViewGroup = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$ConstantState.newDrawable(this.jdField_a_of_type_AndroidContentResResources);
       paramViewGroup.setBounds(0, 0, paramViewGroup.getIntrinsicWidth(), paramViewGroup.getIntrinsicHeight());

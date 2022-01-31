@@ -37,20 +37,20 @@ public class ChallengeActivity
   @TargetApi(14)
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131365750));
+    this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout = ((KeyboardDetectorRelativeLayout)super.findViewById(2131365777));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.setFitsSystemWindows(true);
       this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.setPadding(0, ImmersiveUtils.a(this), 0, 0);
     }
-    this.jdField_b_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131365752));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365753));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131365749));
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131365754));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365762));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365761));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365756));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365758));
+    this.jdField_b_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131365779));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365780));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131365776));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131365781));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365789));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365788));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365783));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365785));
     this.jdField_a_of_type_ComTencentOpenWidgetKeyboardDetectorRelativeLayout.a(this);
     this.jdField_b_of_type_AndroidWidgetScrollView.setVerticalFadingEdgeEnabled(false);
     this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new LengthInputFilter(this.jdField_a_of_type_AndroidWidgetEditText, 100) };
@@ -86,10 +86,10 @@ public class ChallengeActivity
         c();
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839128);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839132);
       ImageLoader.a().a(this.jdField_a_of_type_JavaLangString, this);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839128);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839132);
     ImageLoader.a().a(this.jdField_b_of_type_JavaLangString, this);
   }
   
@@ -156,7 +156,7 @@ public class ChallengeActivity
   {
     super.getWindow().requestFeature(1);
     super.onCreate(paramBundle);
-    super.setContentView(2130969256);
+    super.setContentView(2130969257);
     super.a();
     a();
     StaticAnalyz.a("100", "ANDROIDQQ.PK.FS", this.jdField_c_of_type_JavaLangString);

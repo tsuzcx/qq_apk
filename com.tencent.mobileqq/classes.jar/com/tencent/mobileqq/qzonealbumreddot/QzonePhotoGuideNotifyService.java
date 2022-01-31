@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qzonealbumreddot;
 
-import aghq;
-import aghr;
+import agvs;
+import agvt;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -27,8 +27,8 @@ public class QzonePhotoGuideNotifyService
   
   public QzonePhotoGuideNotifyService(QQAppInterface paramQQAppInterface, QzoneAlbumRedTouchManager paramQzoneAlbumRedTouchManager)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new aghq(this);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aghr(this);
+    this.jdField_a_of_type_JavaLangRunnable = new agvs(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new agvt(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqQzonealbumreddotQzoneAlbumRedTouchManager = paramQzoneAlbumRedTouchManager;
     if (paramQQAppInterface != null) {}
@@ -108,7 +108,7 @@ public class QzonePhotoGuideNotifyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.qzonealbumreddot.QzonePhotoGuideNotifyService
  * JD-Core Version:    0.7.0.1
  */

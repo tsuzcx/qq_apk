@@ -72,8 +72,8 @@ public class ComponentTitle
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2130969584, this, true);
-    this.c = ((TextView)findViewById(2131367011));
+    LayoutInflater.from(paramContext).inflate(2130969591, this, true);
+    this.c = ((TextView)findViewById(2131367055));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
@@ -209,12 +209,12 @@ public class ComponentTitle
         if (paramBoolean) {
           break label68;
         }
-        this.c.setTextColor(getContext().getResources().getColor(2131492970));
+        this.c.setTextColor(getContext().getResources().getColor(2131492971));
       }
     }
     return;
     label68:
-    this.c.setTextColor(getContext().getResources().getColor(2131493474));
+    this.c.setTextColor(getContext().getResources().getColor(2131493480));
   }
 }
 

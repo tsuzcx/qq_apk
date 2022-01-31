@@ -1,20 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class njn
-  extends Job
+public class njn
+  implements ActionSheet.OnButtonClickListener
 {
-  njn(njm paramnjm, DeleteStoryVideoEvent paramDeleteStoryVideoEvent) {}
+  public njn(FeedsPlayModeBase paramFeedsPlayModeBase, Boolean[] paramArrayOfBoolean, StoryVideoItem paramStoryVideoItem) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void OnClick(View paramView, int paramInt)
   {
-    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryModelDeleteStoryVideoEvent);
-    return null;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a.dismiss();
+    if (paramView != null)
+    {
+      String str = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a.a(paramInt);
+      if (!TextUtils.isEmpty(str)) {
+        this.jdField_a_of_type_ArrayOfJavaLangBoolean[0] = Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a(paramView, str, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem));
+      }
+    }
   }
 }
 

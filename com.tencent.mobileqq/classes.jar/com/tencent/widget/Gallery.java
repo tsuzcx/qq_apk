@@ -1,11 +1,11 @@
 package com.tencent.widget;
 
-import alko;
-import alma;
-import almb;
-import almc;
-import almd;
-import alme;
+import amae;
+import ambq;
+import ambr;
+import ambs;
+import ambt;
+import ambu;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -57,7 +57,7 @@ public class Gallery
   private static int w = 20;
   double jdField_a_of_type_Double = 0.0D;
   public long a;
-  private almc jdField_a_of_type_Almc = new almc(this);
+  private ambs jdField_a_of_type_Ambs = new ambs(this);
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, this);
@@ -67,7 +67,7 @@ public class Gallery
   Gallery.OnItemRotateListener jdField_a_of_type_ComTencentWidgetGallery$OnItemRotateListener;
   public Gallery.OnScollListener a;
   private ScaleGestureDetector jdField_a_of_type_ComTencentWidgetScaleGestureDetector;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new alma(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ambq(this);
   private boolean jdField_a_of_type_Boolean;
   float jdField_b_of_type_Float = 0.0F;
   private View jdField_b_of_type_AndroidViewView;
@@ -207,19 +207,19 @@ public class Gallery
     }
   }
   
-  private almd a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  private ambt a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     boolean bool2 = false;
-    almd localalmd = new almd(null);
+    ambt localambt = new ambt(null);
     if (paramView.getTag(2131296389) != null) {}
     for (int i3 = ((Integer)paramView.getTag(2131296389)).intValue();; i3 = 0)
     {
-      localalmd.jdField_a_of_type_Int = i3;
+      localambt.jdField_a_of_type_Int = i3;
       if (paramView.getTag(2131296386) != null)
       {
-        localalmd.jdField_a_of_type_Float = ((Float)paramView.getTag(2131296386)).floatValue();
-        localalmd.jdField_b_of_type_Int = 17;
-        return localalmd;
+        localambt.jdField_a_of_type_Float = ((Float)paramView.getTag(2131296386)).floatValue();
+        localambt.jdField_b_of_type_Int = 17;
+        return localambt;
       }
       int i2;
       int i1;
@@ -248,12 +248,12 @@ public class Gallery
           if ((paramInt1 == 0) || ((i2 <= paramInt3) && (i1 <= paramInt4)) || ((i2 < URLDrawableHelper.c) && (i1 < URLDrawableHelper.c))) {
             break label320;
           }
-          localalmd.jdField_b_of_type_Int = 49;
-          localalmd.jdField_a_of_type_Float = Math.min(paramInt3 / i2, this.jdField_i_of_type_Float);
-          localalmd.jdField_b_of_type_Boolean = true;
+          localambt.jdField_b_of_type_Int = 49;
+          localambt.jdField_a_of_type_Float = Math.min(paramInt3 / i2, this.jdField_i_of_type_Float);
+          localambt.jdField_b_of_type_Boolean = true;
           paramView.setTag(2131296392, Float.valueOf(f1));
           if (c()) {
-            paramView.setTag(2131296414, Float.valueOf(localalmd.jdField_a_of_type_Float));
+            paramView.setTag(2131296414, Float.valueOf(localambt.jdField_a_of_type_Float));
           }
         }
         for (;;)
@@ -266,32 +266,32 @@ public class Gallery
               bool1 = true;
             }
           }
-          localalmd.jdField_a_of_type_Boolean = bool1;
-          return localalmd;
+          localambt.jdField_a_of_type_Boolean = bool1;
+          return localambt;
           paramInt1 = 0;
           break;
           label320:
-          localalmd.jdField_b_of_type_Int = 17;
-          localalmd.jdField_b_of_type_Boolean = false;
-          localalmd.jdField_a_of_type_Float = f1;
+          localambt.jdField_b_of_type_Int = 17;
+          localambt.jdField_b_of_type_Boolean = false;
+          localambt.jdField_a_of_type_Float = f1;
         }
       }
     }
   }
   
-  private alme a(View paramView)
+  private ambu a(View paramView)
   {
-    alme localalme2 = (alme)paramView.getTag(2131296388);
-    alme localalme1 = localalme2;
-    if (localalme2 == null)
+    ambu localambu2 = (ambu)paramView.getTag(2131296388);
+    ambu localambu1 = localambu2;
+    if (localambu2 == null)
     {
-      localalme1 = new alme();
-      paramView.setTag(2131296388, localalme1);
+      localambu1 = new ambu();
+      paramView.setTag(2131296388, localambu1);
     }
-    if (localalme1.jdField_a_of_type_Boolean) {
-      a(localalme1);
+    if (localambu1.jdField_a_of_type_Boolean) {
+      a(localambu1);
     }
-    return localalme1;
+    return localambu1;
   }
   
   private Matrix a(View paramView)
@@ -302,7 +302,7 @@ public class Gallery
     if (VersionUtils.e()) {
       return paramView.getMatrix();
     }
-    return alme.a(a(paramView));
+    return ambu.a(a(paramView));
   }
   
   private Rect a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
@@ -370,7 +370,7 @@ public class Gallery
     Rect localRect = new Rect();
     jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramView.getWidth(), paramView.getHeight());
     if (VersionUtils.e()) {}
-    for (Matrix localMatrix = paramView.getMatrix();; localMatrix = alme.a(a(paramView)))
+    for (Matrix localMatrix = paramView.getMatrix();; localMatrix = ambu.a(a(paramView)))
     {
       localMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
       jdField_a_of_type_AndroidGraphicsRectF.offset(paramView.getLeft(), paramView.getTop());
@@ -406,7 +406,7 @@ public class Gallery
     Object localObject2;
     if (!this.mDataChanged)
     {
-      localObject2 = this.jdField_a_of_type_Alko.a(paramInt1);
+      localObject2 = this.jdField_a_of_type_Amae.a(paramInt1);
       if (localObject2 != null)
       {
         paramInt1 = ((View)localObject2).getLeft();
@@ -426,7 +426,7 @@ public class Gallery
       {
         localObject2 = getContext();
         localObject1 = new ImageView((Context)localObject2);
-        ((ImageView)localObject1).setImageDrawable(((Context)localObject2).getResources().getDrawable(2130846201));
+        ((ImageView)localObject1).setImageDrawable(((Context)localObject2).getResources().getDrawable(2130846329));
       }
       a((View)localObject1, paramInt2, paramInt3, paramBoolean, false);
       localObject2 = localObject1;
@@ -471,7 +471,7 @@ public class Gallery
     if ((i2 == 0) || (i1 == 0)) {
       return;
     }
-    almd localalmd = a(i1, i2, paramInt1, paramInt2, paramView);
+    ambt localambt = a(i1, i2, paramInt1, paramInt2, paramView);
     boolean bool;
     if ((paramView.getWidth() != i1) || (paramView.getHeight() != i2))
     {
@@ -479,28 +479,28 @@ public class Gallery
       if (QLog.isColorLevel()) {
         QLog.d("Gallery", 2, "imgSizeChanged in layoutAndScaleChild is " + Boolean.toString(bool));
       }
-      if (localalmd != null)
+      if (localambt != null)
       {
         paramInt1 = paramView.getLeft();
-        a(paramView, localalmd.jdField_b_of_type_Int, paramInt3, paramBoolean);
-        if ((localalmd.jdField_b_of_type_Boolean) && (a())) {
+        a(paramView, localambt.jdField_b_of_type_Int, paramInt3, paramBoolean);
+        if ((localambt.jdField_b_of_type_Boolean) && (a())) {
           d(true);
         }
-        if ((localalmd.jdField_a_of_type_Boolean) && (!bool)) {
+        if ((localambt.jdField_a_of_type_Boolean) && (!bool)) {
           break label316;
         }
-        float f1 = localalmd.jdField_a_of_type_Float;
+        float f1 = localambt.jdField_a_of_type_Float;
         if (f1 != 0.0F)
         {
           a(paramView, 0.0F, 0.0F);
           a(paramView, f1);
-          b(paramView, localalmd.jdField_a_of_type_Int * 90);
+          b(paramView, localambt.jdField_a_of_type_Int * 90);
           a(paramView, jdField_b_of_type_AndroidGraphicsRect);
-          Rect localRect = a(jdField_b_of_type_AndroidGraphicsRect.width(), jdField_b_of_type_AndroidGraphicsRect.height(), localalmd.jdField_b_of_type_Int, paramInt3, paramBoolean);
+          Rect localRect = a(jdField_b_of_type_AndroidGraphicsRect.width(), jdField_b_of_type_AndroidGraphicsRect.height(), localambt.jdField_b_of_type_Int, paramInt3, paramBoolean);
           a(paramView, localRect.left - jdField_b_of_type_AndroidGraphicsRect.left, localRect.top - jdField_b_of_type_AndroidGraphicsRect.top);
         }
-        paramView.setTag(2131296385, Float.valueOf(localalmd.jdField_a_of_type_Float));
-        paramView.setTag(2131296389, Integer.valueOf(localalmd.jdField_a_of_type_Int));
+        paramView.setTag(2131296385, Float.valueOf(localambt.jdField_a_of_type_Float));
+        paramView.setTag(2131296389, Integer.valueOf(localambt.jdField_a_of_type_Int));
       }
     }
     for (;;)
@@ -520,18 +520,18 @@ public class Gallery
     }
   }
   
-  private void a(alme paramalme)
+  private void a(ambu paramambu)
   {
-    if (paramalme == null) {}
-    while (!paramalme.jdField_a_of_type_Boolean) {
+    if (paramambu == null) {}
+    while (!paramambu.jdField_a_of_type_Boolean) {
       return;
     }
-    alme.a(paramalme).reset();
-    alme.a(paramalme).setTranslate(paramalme.jdField_b_of_type_Float, paramalme.jdField_c_of_type_Float);
-    alme.a(paramalme).preRotate(paramalme.jdField_a_of_type_Float, paramalme.jdField_f_of_type_Float, paramalme.jdField_g_of_type_Float);
-    alme.a(paramalme).preScale(paramalme.jdField_d_of_type_Float, paramalme.jdField_e_of_type_Float, paramalme.jdField_f_of_type_Float, paramalme.jdField_g_of_type_Float);
-    paramalme.jdField_a_of_type_Boolean = false;
-    alme.a(paramalme, alme.a(paramalme).isIdentity());
+    ambu.a(paramambu).reset();
+    ambu.a(paramambu).setTranslate(paramambu.jdField_b_of_type_Float, paramambu.jdField_c_of_type_Float);
+    ambu.a(paramambu).preRotate(paramambu.jdField_a_of_type_Float, paramambu.jdField_f_of_type_Float, paramambu.jdField_g_of_type_Float);
+    ambu.a(paramambu).preScale(paramambu.jdField_d_of_type_Float, paramambu.jdField_e_of_type_Float, paramambu.jdField_f_of_type_Float, paramambu.jdField_g_of_type_Float);
+    paramambu.jdField_a_of_type_Boolean = false;
+    ambu.a(paramambu, ambu.a(paramambu).isIdentity());
   }
   
   private void a(View paramView)
@@ -559,7 +559,7 @@ public class Gallery
   private void a(View paramView, float paramFloat1, float paramFloat2)
   {
     if (paramView == null) {}
-    alme localalme;
+    ambu localambu;
     do
     {
       return;
@@ -569,11 +569,11 @@ public class Gallery
         paramView.setPivotY(paramFloat2);
         return;
       }
-      localalme = a(paramView);
-    } while ((localalme.jdField_f_of_type_Float == paramFloat1) && (localalme.jdField_g_of_type_Float == paramFloat2));
-    localalme.jdField_f_of_type_Float = paramFloat1;
-    localalme.jdField_g_of_type_Float = paramFloat2;
-    localalme.jdField_a_of_type_Boolean = true;
+      localambu = a(paramView);
+    } while ((localambu.jdField_f_of_type_Float == paramFloat1) && (localambu.jdField_g_of_type_Float == paramFloat2));
+    localambu.jdField_f_of_type_Float = paramFloat1;
+    localambu.jdField_g_of_type_Float = paramFloat2;
+    localambu.jdField_a_of_type_Boolean = true;
     paramView.invalidate();
   }
   
@@ -693,7 +693,7 @@ public class Gallery
     else {
       return;
     }
-    paramView2.setTag(2131296388, (alme)paramView1.getTag(2131296388));
+    paramView2.setTag(2131296388, (ambu)paramView1.getTag(2131296388));
   }
   
   private void a(boolean paramBoolean, int paramInt)
@@ -904,7 +904,7 @@ public class Gallery
           return;
         }
         i2 += 1;
-        this.jdField_a_of_type_Alko.a(i6 + i1, localView);
+        this.jdField_a_of_type_Amae.a(i6 + i1, localView);
         a(i6 + i1, localView, this, paramBoolean);
         a(i6 + i1 + 1, this, paramBoolean, true);
         i3 = i1;
@@ -928,7 +928,7 @@ public class Gallery
       if (a(localView, jdField_b_of_type_AndroidGraphicsRect).left < i8 - i9) {
         break;
       }
-      this.jdField_a_of_type_Alko.a(i6 + i1, localView);
+      this.jdField_a_of_type_Amae.a(i6 + i1, localView);
       a(i6 + i1, localView, this, paramBoolean);
       a(i6 + i1 - 1, this, paramBoolean, true);
       i2 += 1;
@@ -1312,9 +1312,9 @@ public class Gallery
           break label497;
         }
         this.jdField_a_of_type_AndroidViewView.setTag(2131296389, Integer.valueOf(i2));
-        almd localalmd = a(i3, i4, i5, i6, this.jdField_a_of_type_AndroidViewView);
-        f1 = localalmd.jdField_a_of_type_Float;
-        this.jdField_a_of_type_AndroidViewView.setTag(2131296385, Float.valueOf(localalmd.jdField_a_of_type_Float));
+        ambt localambt = a(i3, i4, i5, i6, this.jdField_a_of_type_AndroidViewView);
+        f1 = localambt.jdField_a_of_type_Float;
+        this.jdField_a_of_type_AndroidViewView.setTag(2131296385, Float.valueOf(localambt.jdField_a_of_type_Float));
         paramFloat = f1;
         if (this.jdField_a_of_type_ComTencentWidgetGallery$OnItemRotateListener != null)
         {
@@ -1348,7 +1348,7 @@ public class Gallery
           if ((f2 == paramFloat) && (f6 == f5)) {
             break label692;
           }
-          this.jdField_a_of_type_Almc.a(i2, i1, f2, paramFloat, f5, f6);
+          this.jdField_a_of_type_Ambs.a(i2, i1, f2, paramFloat, f5, f6);
           return;
           if (!(this.jdField_a_of_type_AndroidViewView.getTag(2131296385) instanceof Float)) {
             break;
@@ -1388,7 +1388,7 @@ public class Gallery
             i1 = this.jdField_r_of_type_Int + this.jdField_a_of_type_AndroidGraphicsRect.top - jdField_b_of_type_AndroidGraphicsRect.bottom;
           }
         }
-        this.jdField_a_of_type_Almc.a(i2, i1);
+        this.jdField_a_of_type_Ambs.a(i2, i1);
         return;
         if (jdField_b_of_type_AndroidGraphicsRect.right + this.jdField_i_of_type_Int / 2 > this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_q_of_type_Int / 2)
         {
@@ -1396,14 +1396,14 @@ public class Gallery
           i1 = this.jdField_a_of_type_AndroidGraphicsRect.left;
           i2 = this.jdField_q_of_type_Int;
           i3 = jdField_b_of_type_AndroidGraphicsRect.right;
-          this.jdField_a_of_type_Almc.a(i1 + i2 - i3, 0);
+          this.jdField_a_of_type_Ambs.a(i1 + i2 - i3, 0);
           return;
         }
         a(localView, jdField_b_of_type_AndroidGraphicsRect);
         i1 = this.jdField_a_of_type_AndroidGraphicsRect.left;
         i2 = jdField_b_of_type_AndroidGraphicsRect.right;
         i3 = this.jdField_i_of_type_Int;
-        this.jdField_a_of_type_Almc.a(i1 - i2 - i3, 0);
+        this.jdField_a_of_type_Ambs.a(i1 - i2 - i3, 0);
         return;
       }
     }
@@ -1537,7 +1537,7 @@ public class Gallery
           }
           d(false);
           break label305;
-          if (almc.a(this.jdField_a_of_type_Almc).a())
+          if (ambs.a(this.jdField_a_of_type_Ambs).a())
           {
             f();
             if (this.jdField_o_of_type_Int == 0) {
@@ -1610,7 +1610,7 @@ public class Gallery
       }
       for (;;)
       {
-        this.jdField_a_of_type_Alko.a();
+        this.jdField_a_of_type_Amae.a();
         if (paramInt1 != 0) {
           g();
         }
@@ -1819,7 +1819,7 @@ public class Gallery
       detachAllViewsFromParent();
       if (this.jdField_q_of_type_Boolean)
       {
-        this.jdField_a_of_type_Alko.a();
+        this.jdField_a_of_type_Amae.a();
         this.jdField_v_of_type_Int = 0;
         this.jdField_u_of_type_Int = 0;
         localView = null;
@@ -1848,7 +1848,7 @@ public class Gallery
           this.jdField_u_of_type_Int = 0;
           this.jdField_v_of_type_Int = 0;
         }
-        this.jdField_a_of_type_Alko.a();
+        this.jdField_a_of_type_Amae.a();
         invalidate();
         checkSelectionChanged();
         this.mDataChanged = false;
@@ -2094,7 +2094,7 @@ public class Gallery
           }
           d(false);
           break label235;
-          if (!almc.a(this.jdField_a_of_type_Almc).a()) {
+          if (!ambs.a(this.jdField_a_of_type_Ambs).a()) {
             break label240;
           }
           f();
@@ -2198,11 +2198,11 @@ public class Gallery
   
   protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
-    paramView = (alme)paramView.getTag(2131296388);
+    paramView = (ambu)paramView.getTag(2131296388);
     if (paramView != null)
     {
       a(paramView);
-      paramTransformation.getMatrix().set(alme.a(paramView));
+      paramTransformation.getMatrix().set(ambu.a(paramView));
       return true;
     }
     return false;
@@ -2242,7 +2242,7 @@ public class Gallery
     }
     for (;;)
     {
-      this.jdField_a_of_type_Almc.a(false);
+      this.jdField_a_of_type_Ambs.a(false);
       this.jdField_m_of_type_Int = a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
       if (this.jdField_m_of_type_Int >= 0)
       {
@@ -2331,7 +2331,7 @@ public class Gallery
     label707:
     for (;;)
     {
-      this.jdField_a_of_type_Almc.a((int)paramFloat1, (int)paramFloat2, i1, i2, i3 + i4 - i5, i6 - i7 - i8);
+      this.jdField_a_of_type_Ambs.a((int)paramFloat1, (int)paramFloat2, i1, i2, i3 + i4 - i5, i6 - i7 - i8);
       break;
       i3 = this.jdField_r_of_type_Int;
       i4 = this.jdField_a_of_type_AndroidGraphicsRect.top;
@@ -2346,7 +2346,7 @@ public class Gallery
       }
       for (;;)
       {
-        this.jdField_a_of_type_Almc.a((int)paramFloat1, (int)paramFloat2, i1, i2, i3 + i4 - i5, i6 - i7);
+        this.jdField_a_of_type_Ambs.a((int)paramFloat1, (int)paramFloat2, i1, i2, i3 + i4 - i5, i6 - i7);
         break;
         if (paramFloat1 < 0.0F)
         {
@@ -2355,14 +2355,14 @@ public class Gallery
           if (i1 == 0) {
             return true;
           }
-          if (this.jdField_a_of_type_Almc.a(i1, (int)paramFloat1) <= this.jdField_a_of_type_AndroidGraphicsRect.left)
+          if (this.jdField_a_of_type_Ambs.a(i1, (int)paramFloat1) <= this.jdField_a_of_type_AndroidGraphicsRect.left)
           {
-            this.jdField_a_of_type_Almc.a((int)paramFloat1, 0, this.jdField_a_of_type_AndroidGraphicsRect.left - i1, 2147483647, 0, 0);
+            this.jdField_a_of_type_Ambs.a((int)paramFloat1, 0, this.jdField_a_of_type_AndroidGraphicsRect.left - i1, 2147483647, 0, 0);
             break;
           }
           if (paramFloat1 < -this.jdField_n_of_type_Int)
           {
-            this.jdField_a_of_type_Almc.a(this.jdField_a_of_type_AndroidGraphicsRect.left - i1, 0);
+            this.jdField_a_of_type_Ambs.a(this.jdField_a_of_type_AndroidGraphicsRect.left - i1, 0);
             break;
           }
           f();
@@ -2373,14 +2373,14 @@ public class Gallery
         if (i2 == i1) {
           return true;
         }
-        if (this.jdField_a_of_type_Almc.a(i2, (int)paramFloat1) >= i1)
+        if (this.jdField_a_of_type_Ambs.a(i2, (int)paramFloat1) >= i1)
         {
-          this.jdField_a_of_type_Almc.a((int)paramFloat1, 0, -2147483648, i1 - i2, 0, 0);
+          this.jdField_a_of_type_Ambs.a((int)paramFloat1, 0, -2147483648, i1 - i2, 0, 0);
           break;
         }
         if (paramFloat1 > this.jdField_n_of_type_Int)
         {
-          this.jdField_a_of_type_Almc.a(i1 - i2, 0);
+          this.jdField_a_of_type_Ambs.a(i1 - i2, 0);
           break;
         }
         f();
@@ -2442,7 +2442,7 @@ public class Gallery
     if ((this.jdField_i_of_type_Boolean) && (this.mItemCount > 0))
     {
       b(this.jdField_a_of_type_AndroidViewView);
-      postDelayed(new almb(this), ViewConfiguration.getPressedStateDuration());
+      postDelayed(new ambr(this), ViewConfiguration.getPressedStateDuration());
       performItemClick(getChildAt(this.mSelectedPosition - this.mFirstPosition), this.mSelectedPosition, this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getItemId(this.mSelectedPosition));
     }
     this.jdField_i_of_type_Boolean = false;
@@ -2681,7 +2681,7 @@ public class Gallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.Gallery
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,25 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.mobileqq.activity.contacts.adapter.PhoneContactAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.widget.XListView;
 
 class wnt
   implements Runnable
 {
-  wnt(wns paramwns) {}
+  wnt(wns paramwns, boolean paramBoolean) {}
   
   public void run()
   {
-    SplashActivity localSplashActivity = this.a.a.a;
-    if ((localSplashActivity == null) || (localSplashActivity.app == null)) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = localSplashActivity.app;
-    int i = 0;
-    int j = QCallFacade.a(localQQAppInterface);
-    QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
-    if (localQQMessageFacade != null)
+    if (this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentWidgetXListView != null)
     {
-      ServiceAccountFolderManager.a().a(localQQAppInterface);
-      i = localQQMessageFacade.b();
+      PhoneContactFragment.a(this.jdField_a_of_type_Wns.a, this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter == null)
+      {
+        this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter = new PhoneContactAdapter(this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.jdField_a_of_type_Wns.a);
+        this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter);
+      }
+      this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter.a(this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter.notifyDataSetChanged();
     }
-    localSplashActivity.runOnUiThread(new wnu(this, i + j));
   }
 }
 

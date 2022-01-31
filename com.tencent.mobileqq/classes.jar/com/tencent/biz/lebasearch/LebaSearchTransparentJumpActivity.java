@@ -72,7 +72,7 @@ public class LebaSearchTransparentJumpActivity
       ((Intent)localObject1).addFlags(805306368);
       QZoneHelper.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
       continue;
-      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131433681));
+      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131433698));
       QfavHelper.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
       continue;
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajae;
+import ajoi;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -48,7 +48,7 @@ public class TroopBatchAddFriendMgr
   public TroopBatchAddFriendMgr(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ajae(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ajoi(this);
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver, true);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
@@ -524,7 +524,7 @@ public class TroopBatchAddFriendMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.confess;
 
-import abku;
-import abkv;
-import abkw;
+import abrv;
+import abrw;
+import abrx;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -44,7 +44,7 @@ public class ConfessMsgListFragment
   implements View.OnClickListener
 {
   ConfessManager jdField_a_of_type_ComTencentMobileqqConfessConfessManager;
-  ConfessObserver jdField_a_of_type_ComTencentMobileqqConfessConfessObserver = new abkw(this);
+  ConfessObserver jdField_a_of_type_ComTencentMobileqqConfessConfessObserver = new abrx(this);
   View b;
   View c;
   
@@ -72,12 +72,12 @@ public class ConfessMsgListFragment
     label76:
     Object localObject3;
     Object localObject2;
-    if (this.b.findViewById(2131363834).getVisibility() == 0)
+    if (this.b.findViewById(2131363857).getVisibility() == 0)
     {
       bool1 = true;
       if (bool2 != bool1)
       {
-        localObject1 = this.b.findViewById(2131363834);
+        localObject1 = this.b.findViewById(2131363857);
         if (!bool2) {
           break label220;
         }
@@ -110,8 +110,8 @@ public class ConfessMsgListFragment
         }
         for (;;)
         {
-          localObject3 = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363039);
-          TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363561);
+          localObject3 = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363057);
+          TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363579);
           if (bool2) {}
           for (;;)
           {
@@ -171,35 +171,35 @@ public class ConfessMsgListFragment
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131439151));
-    b(2131433253);
-    b(2131433498, this);
+    a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131439179));
+    b(2131433270);
+    b(2131433515, this);
     paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
     this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager = ((ConfessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(268));
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager.b();
     if ((paramBundle == null) || ((paramBundle != null) && (paramBundle.jdField_g_of_type_Int >= 1)) || (ConfessConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show")))
     {
-      this.b = paramLayoutInflater.inflate(2130970271, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+      this.b = paramLayoutInflater.inflate(2130970287, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
       if ((LinearLayout.LayoutParams)this.b.getLayoutParams() != null) {
         break label265;
       }
-      paramBundle = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131559466));
-      paramBundle.topMargin = paramViewGroup.getDimensionPixelSize(2131559467);
-      paramBundle.bottomMargin = paramViewGroup.getDimensionPixelOffset(2131559467);
+      paramBundle = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131559468));
+      paramBundle.topMargin = paramViewGroup.getDimensionPixelSize(2131559469);
+      paramBundle.bottomMargin = paramViewGroup.getDimensionPixelOffset(2131559469);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.b, paramBundle);
       this.b.setOnClickListener(this);
       e();
-      this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.inflate(2130970274, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+      this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.inflate(2130970290, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
       if ((LinearLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams() != null) {
         break label279;
       }
-      paramLayoutInflater = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131559468));
+      paramLayoutInflater = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131559470));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidViewView, paramLayoutInflater);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqConfessConfessObserver, true);
-      ThreadManager.post(new abku(this), 5, null, true);
+      ThreadManager.post(new abrv(this), 5, null, true);
       return;
       label265:
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.b);
@@ -466,7 +466,7 @@ public class ConfessMsgListFragment
       QLog.i("ConfessMsgListFragment", 2, "onWindowFocusChanged " + paramBoolean);
     }
     if (paramBoolean) {
-      ThreadManager.getSubThreadHandler().postDelayed(new abkv(this), 200L);
+      ThreadManager.getSubThreadHandler().postDelayed(new abrw(this), 200L);
     }
   }
   
@@ -494,7 +494,7 @@ public class ConfessMsgListFragment
           ((Intent)localObject).putExtra("url", paramView);
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
         }
-        localObject = this.b.findViewById(2131363834);
+        localObject = this.b.findViewById(2131363857);
         if (((View)localObject).getVisibility() != 8) {
           ((View)localObject).setVisibility(8);
         }
@@ -574,7 +574,7 @@ public class ConfessMsgListFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessMsgListFragment
  * JD-Core Version:    0.7.0.1
  */

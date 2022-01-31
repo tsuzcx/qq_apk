@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.equipmentlock;
 
-import acae;
-import acaf;
+import achg;
+import achh;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.Messenger;
@@ -17,9 +17,9 @@ public class EquipLockWebImpl
   private static EquipLockWebImpl jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private Messenger jdField_a_of_type_AndroidOsMessenger;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new acae(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new achg(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new acaf(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new achh(this);
   
   public static EquipLockWebImpl a()
   {

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import aaut;
-import aauu;
+import abbu;
+import abbv;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
@@ -53,7 +53,7 @@ public class ARMapActivity$LocationMonitor
             if (this.jdField_a_of_type_Int > j)
             {
               this.jdField_a_of_type_Int = 0;
-              this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.runOnUiThread(new aaut(this));
+              this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.runOnUiThread(new abbu(this));
             }
             this.b = 0;
             return;
@@ -64,7 +64,7 @@ public class ARMapActivity$LocationMonitor
             {
               this.b += 1;
               if (this.b > i) {
-                this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.runOnUiThread(new aauu(this));
+                this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.runOnUiThread(new abbv(this));
               }
             }
             for (;;)

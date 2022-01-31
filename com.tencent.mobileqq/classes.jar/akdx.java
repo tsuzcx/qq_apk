@@ -1,22 +1,34 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController.OnBindCallback;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import android.text.Layout;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class akdx
-  implements GameRoomAVController.OnBindCallback
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public akdx(WerewolvesHostInterface paramWerewolvesHostInterface) {}
+  public akdx(QQCustomDialog paramQQCustomDialog, int paramInt, String paramString) {}
   
-  public void bc()
+  public void onGlobalLayout()
   {
-    this.a.mGameRoomAVController.c();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getLineCount() > this.jdField_a_of_type_Int)
+    {
+      int i = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
+      boolean bool1 = QQText.a(this.jdField_a_of_type_JavaLangString);
+      boolean bool2 = QQText.b(this.jdField_a_of_type_JavaLangString);
+      if ((!bool1) && (!bool2))
+      {
+        String str = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getText().subSequence(0, i - 3) + "...";
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.setText(str);
+      }
+    }
   }
-  
-  public void bd() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akdx
  * JD-Core Version:    0.7.0.1
  */

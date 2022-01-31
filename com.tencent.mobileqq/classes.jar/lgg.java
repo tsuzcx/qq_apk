@@ -1,35 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkUtil;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class lgg
+public class lgg
   implements Runnable
 {
-  public lgg(ArkAppMessage paramArkAppMessage, int paramInt) {}
+  public lgg(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appName)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appMinVersion))) {
-      if (ReadInJoyArkUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage)) {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyArkUtil", 2, "arkApp exists, no need to download again.");
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInJoyDeliverBiuActivity.app.getCurrentAccountUin();
+    localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + (String)localObject, 4);
+    if (localObject != null)
     {
-      ArkLocalAppMgr localArkLocalAppMgr;
-      do
-      {
-        return;
-        localArkLocalAppMgr = ReadInJoyArkUtil.a();
-      } while (localArkLocalAppMgr == null);
-      localArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appName, this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appMinVersion, "", new lgh(this));
-      return;
+      ((SharedPreferences)localObject).edit().putString("readinjoy_deliver_biu_guide_time", this.jdField_a_of_type_JavaLangString);
+      ((SharedPreferences)localObject).edit().commit();
     }
-    QLog.d("ReadInJoyArkUtil", 2, "ArkAppMessage is invalid, preDownloadArkApp do not begin.");
   }
 }
 

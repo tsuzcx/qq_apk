@@ -1,28 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2.DiscussionListListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class ydx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ydx(DiscussionListAdapter2 paramDiscussionListAdapter2) {}
+  public ydx(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof ydz)) {}
-    do
-    {
-      return;
-      paramView = (ydz)paramView;
-    } while ((paramView.a == null) || (this.a.a == null));
-    this.a.a.a(paramView.a);
+    this.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ydx
  * JD-Core Version:    0.7.0.1
  */

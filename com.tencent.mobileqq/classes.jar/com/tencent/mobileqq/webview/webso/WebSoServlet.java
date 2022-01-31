@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.webso;
 
-import akdh;
+import akro;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -126,7 +126,7 @@ public class WebSoServlet
   {
     if ((paramClass == WebSoCgiService.class) && (a()))
     {
-      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").getHandler().post(new akdh(this, paramInt, paramBoolean, paramBundle));
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").getHandler().post(new akro(this, paramInt, paramBoolean, paramBundle));
       return;
     }
     super.notifyObserver(paramIntent, paramInt, paramBoolean, paramBundle, paramClass);
@@ -271,7 +271,7 @@ public class WebSoServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoServlet
  * JD-Core Version:    0.7.0.1
  */

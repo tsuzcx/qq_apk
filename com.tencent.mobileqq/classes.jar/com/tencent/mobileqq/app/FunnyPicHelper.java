@@ -30,7 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import zbb;
+import zeh;
 
 public class FunnyPicHelper
 {
@@ -336,7 +336,7 @@ public class FunnyPicHelper
                   }
                 }
               }
-              localDownloaderInterface.a(localDownloadTask, new zbb(paramList, localFile, localCustomEmotionData, bool1, paramBoolean, localFavroamingDBManager, paramIPicDownloadListener, localArrayList1, localArrayList2, paramContext, localAtomicInteger2, localAtomicInteger1), null);
+              localDownloaderInterface.a(localDownloadTask, new zeh(paramList, localFile, localCustomEmotionData, bool1, paramBoolean, localFavroamingDBManager, paramIPicDownloadListener, localArrayList1, localArrayList2, paramContext, localAtomicInteger2, localAtomicInteger1), null);
             }
             continue;
           }

@@ -1,31 +1,13 @@
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 
-public class tnl
-  extends MqqHandler
+class tnl
+  implements Runnable
 {
-  public tnl(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  tnl(tnk paramtnk, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    case 107: 
-    default: 
-      return;
-    case 106: 
-      this.a.finish();
-      return;
-    }
-    int i = 0;
-    while (i < 6)
-    {
-      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
-      i += 1;
-    }
-    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
+    QQSettingSettingActivity.a(this.jdField_a_of_type_Tnk.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 

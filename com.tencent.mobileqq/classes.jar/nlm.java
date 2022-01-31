@@ -1,19 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
 
-public final class nlm
-  implements DialogInterface.OnClickListener
+public class nlm
+  implements DialogInterface.OnDismissListener
 {
-  public nlm(StoryVideoItem paramStoryVideoItem, String paramString) {}
+  public nlm(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    SLog.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
-    StoryVideoUploadManager.a(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.dismiss();
+    this.a.s();
   }
 }
 

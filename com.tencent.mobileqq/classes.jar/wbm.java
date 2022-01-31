@@ -1,18 +1,17 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
+import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-public class wbm
+class wbm
   implements Runnable
 {
-  public wbm(BlessActivity paramBlessActivity) {}
+  wbm(wbl paramwbl) {}
   
   public void run()
   {
-    BlessActivity.a(this.a).setBackgroundDrawable(this.a.a);
-    BlessActivity.a(this.a).setVisibility(0);
-    this.a.a.start();
-    BlessActivity.b(this.a);
+    this.a.a.jdField_a_of_type_AndroidWidgetToast = ChatActivityUtils.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131433352));
+    this.a.a.jdField_a_of_type_AndroidWidgetToast.show();
   }
 }
 

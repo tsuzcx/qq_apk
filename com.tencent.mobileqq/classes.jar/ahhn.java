@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.search.ftsmsg.FTSGroupSearchModelMessage;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahhn
-  extends GroupSearchEngine.SearchEngineEntity
+  implements Runnable
 {
-  public ahhn(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  public ahhn(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void run()
   {
-    return new FTSGroupSearchModelMessage(paramList, paramString);
+    this.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMRedDotConfig", 2, "saved to red dot config file");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahhn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
-import java.util.Map;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Handler;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
-public final class ahkd
+public class ahkd
   implements Runnable
 {
-  public ahkd(QQAppInterface paramQQAppInterface, ShortVideoReq paramShortVideoReq) {}
+  private ahkd(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
   public void run()
   {
-    ShortVideoPreDownloader localShortVideoPreDownloader = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue.contains(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq))
-    {
-      localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentPriorityBlockingQueue.remove(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq);
-      localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-      localShortVideoPreDownloader.a.remove(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_JavaLangString);
-      Logger.a("PIC_TAG_PRELOAD", "onDownload", "uniseq:" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_Long + ",curHandingNum:" + localShortVideoPreDownloader.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
+    EffectsCameraCaptureFragment.b(this.a);
+    if (EffectsCameraCaptureFragment.a(this.a) >= 3) {
+      EffectsCameraCaptureFragment.a(this.a, 0);
     }
+    EffectsCameraCaptureFragment.a(this.a, EffectsCameraCaptureFragment.a(this.a));
+    this.a.a.postDelayed(EffectsCameraCaptureFragment.a(this.a), 500L);
   }
 }
 

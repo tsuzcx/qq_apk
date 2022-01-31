@@ -88,11 +88,11 @@ public class ComboNavigateBar
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.e = ((ImageView)findViewById(2131362950));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362951));
-    this.b = ((ImageView)findViewById(2131362947));
-    this.c = ((ImageView)findViewById(2131362948));
-    this.d = ((ImageView)findViewById(2131362949));
+    this.e = ((ImageView)findViewById(2131362968));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362969));
+    this.b = ((ImageView)findViewById(2131362965));
+    this.c = ((ImageView)findViewById(2131362966));
+    this.d = ((ImageView)findViewById(2131362967));
     setVisibility(8);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
@@ -178,7 +178,7 @@ public class ComboNavigateBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboNavigateBar
  * JD-Core Version:    0.7.0.1
  */

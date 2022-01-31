@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.TextUrlClickListener;
 
-class xhq
-  implements Runnable
+public final class xhq
+  extends ClickableSpan
 {
-  xhq(xhn paramxhn) {}
+  public xhq(QWalletTools.TextUrlClickListener paramTextUrlClickListener, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.f();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletUtilsQWalletTools$TextUrlClickListener.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

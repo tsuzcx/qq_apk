@@ -42,10 +42,10 @@ public class TroopAdminList$AdminListAdapter
     if (paramView == null)
     {
       paramViewGroup = new TroopAdminList.ViewHolder();
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969836, null);
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131364277));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362736));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131364095));
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969850, null);
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131364301));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362754));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131364119));
       paramView.setTag(paramViewGroup);
       paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_AndroidViewView$OnClickListener);
     }
@@ -73,7 +73,7 @@ public class TroopAdminList$AdminListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter
  * JD-Core Version:    0.7.0.1
  */

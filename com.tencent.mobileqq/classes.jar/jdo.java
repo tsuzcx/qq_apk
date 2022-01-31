@@ -1,15 +1,43 @@
+import android.content.Context;
+import android.view.OrientationEventListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
 
 public class jdo
-  implements Runnable
+  extends OrientationEventListener
 {
-  public jdo(VideoController paramVideoController) {}
+  private long jdField_a_of_type_Long;
   
-  public void run()
+  public jdo(VideoController paramVideoController, Context paramContext, int paramInt)
   {
-    this.a.a.a(new Object[] { Integer.valueOf(33), this.a.a().c, Boolean.valueOf(false) });
+    super(paramContext, paramInt);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (paramInt == -1) {}
+    long l;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+    } while (l - this.jdField_a_of_type_Long < 50L);
+    this.jdField_a_of_type_Long = l;
+    if ((paramInt > 315) || (paramInt <= 45))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 1);
+      return;
+    }
+    if ((paramInt > 45) && (paramInt <= 135))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 2);
+      return;
+    }
+    if ((paramInt > 135) && (paramInt <= 225))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 3);
+      return;
+    }
+    VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 4);
   }
 }
 

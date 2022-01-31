@@ -1,6 +1,5 @@
 package cooperation.qzone.widget;
 
-import amnw;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -15,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.util.LruCache;
+import aneb;
 import cooperation.qzone.util.gifCoderWnsConfig;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class FastAnimationDrawable
       this.jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
     }
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_AndroidUtilLruCache = new amnw(this, paramArrayList.size());
+    this.jdField_a_of_type_AndroidUtilLruCache = new aneb(this, paramArrayList.size());
   }
   
   private static int a(Bitmap.Config paramConfig)

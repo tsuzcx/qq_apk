@@ -1,67 +1,125 @@
-import android.app.Dialog;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class rgp
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public rgp(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  public rgp(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null)
+    this.a.runOnUiThread(new rgq(this, paramString, paramInt));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getWindow().setSoftInputMode(2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).clearFocus();
-    }
-    paramView = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString();
-    if (TextUtils.isEmpty(paramView))
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.isFinishing())
-      {
-        paramView = new QQAnonymousDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText("请输入答案");
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843243);
-        paramView.a();
+      return;
+      int i;
+      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+        i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
       }
+      while (j < this.a.jdField_a_of_type_JavaUtilList.size())
+      {
+        if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
+        {
+          a(paramString, j);
+          return;
+        }
+        j += 1;
+        continue;
+        i = 0;
+      }
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {
       return;
     }
-    if (!paramView.equals(this.jdField_a_of_type_JavaLangString))
+    Object localObject2 = (SubAccountManager)this.a.app.getManager(60);
+    Object localObject1 = "";
+    int i = ((SubAccountManager)localObject2).a();
+    if (i == 0)
     {
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).setVisibility(0);
-      return;
+      label43:
+      AccountManageActivity.a(this.a).setRightText((CharSequence)localObject1);
+      if (AppSetting.b) {
+        AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject1);
+      }
+      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
+        break label429;
+      }
+      i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      label112:
+      if (j >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+        break label432;
+      }
+      if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
+      {
+        localObject1 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131362754);
+        localObject2 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131362755);
+        ((TextView)localObject1).setText(ContactUtils.j(this.a.app, paramString));
+        ((TextView)localObject2).setText(paramString);
+        a(paramString, j);
+      }
     }
-    AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).setVisibility(8);
-    if (paramView.length() > 90)
+    else if (i == 1)
     {
-      paramView = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131624515);
-      paramView.setContentView(2130971460);
-      ((TextView)paramView.findViewById(2131362758)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131434767));
-      ((ProgressBar)paramView.findViewById(2131362757)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131374062)).setImageResource(2130838748);
-      paramView.show();
-      return;
+      SubAccountInfo localSubAccountInfo = ((SubAccountManager)localObject2).a("sub.uin.default");
+      if (localSubAccountInfo == null) {
+        break label434;
+      }
+      localObject2 = ContactUtils.c(this.a.app, localSubAccountInfo.subuin, false);
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        if (!TextUtils.isEmpty(localSubAccountInfo.subname))
+        {
+          localObject1 = localObject2;
+          if (((String)localObject2).equals(localSubAccountInfo.subname)) {}
+        }
+        else
+        {
+          localSubAccountInfo.subname = ((String)localObject2);
+          AccountManageActivity.a(this.a).setRightText((CharSequence)localObject2);
+          localObject1 = localObject2;
+          if (AppSetting.b) {
+            AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject2);
+          }
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString(), true);
-    if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))
+    label429:
+    label432:
+    label434:
+    for (localObject1 = localObject2;; localObject1 = "")
     {
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity), AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).getText().toString(), this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getIntent().getIntExtra("stat_option", 0));
-      return;
+      break label43;
+      localObject1 = i + "个";
+      break label43;
+      j += 1;
+      break label112;
+      i = 0;
+      break label112;
+      break;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1, 2131434794, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
   }
 }
 

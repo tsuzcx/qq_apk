@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.manager.Manager;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wxj;
+import xao;
 
 public class PublicQuickPayManager
   implements Manager
@@ -50,7 +50,7 @@ public class PublicQuickPayManager
     if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, "支付失败", "", "确定", new wxj(this), null, null);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, "支付失败", "", "确定", new xao(this), null, null);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.show();
   }
   

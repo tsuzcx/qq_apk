@@ -1,49 +1,61 @@
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import java.util.Iterator;
+import java.util.List;
 
 public class laj
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public laj(EcShopAssistantManager paramEcShopAssistantManager) {}
+  public laj(ShopWebViewFragment paramShopWebViewFragment) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject = new IntentFilter();
-    ((IntentFilter)localObject).addAction("action_get_PA_head");
-    ((IntentFilter)localObject).addAction("action_shop_set_read");
-    ((IntentFilter)localObject).addAction("action_folder_set_read");
-    ((IntentFilter)localObject).addAction("action_folder_destroy");
-    ((IntentFilter)localObject).addAction("action_folder_msg_change");
-    ((IntentFilter)localObject).addAction("action_set_folder_tab_red");
-    ((IntentFilter)localObject).addAction("action_follow_status");
-    try
+    if (paramIntent == null) {}
+    do
     {
-      BaseApplicationImpl.getContext().registerReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-      ((EcshopReportHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).b();
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("ecshop_sp" + EcShopAssistantManager.a(this.a), 0);
-      this.a.b = ((SharedPreferences)localObject).getBoolean("folder_tab_show", false);
-      this.a.c = ((SharedPreferences)localObject).getBoolean("preload_web", false);
-      EcShopAssistantManager.g = String.valueOf(((SharedPreferences)localObject).getLong("ad_puin", 0L));
-      this.a.jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong("stayTime", 5000L);
-      this.a.d = ((SharedPreferences)localObject).getInt("dayLimit", 3);
-      this.a.b();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      Object localObject;
+      do
       {
-        QLog.e("EcShopAssistantManager", 1, "Register receiver error:" + localException);
+        do
+        {
+          return;
+          paramContext = paramIntent.getAction();
+          localObject = paramIntent.getStringExtra("uin");
+          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
+          if (!"action_decode_finish".equals(paramContext)) {
+            break;
+          }
+          if ((this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
+            this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a((String)localObject, localBitmap);
+          }
+        } while (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter == null);
+        this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a((String)localObject);
+        return;
+      } while (!"action_on_shop_msg_receive".equals(paramContext));
+      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
+      paramContext = this.a.getActivity();
+      if ((paramContext instanceof EcshopWebActivity)) {
+        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
       }
-    }
+      paramContext = paramIntent.getStringExtra("uin");
+      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramIntent.hasNext())
+      {
+        localObject = (RecentShopParcel)paramIntent.next();
+        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
+          ((RecentShopParcel)localObject).b += 1;
+        }
+      }
+    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter == null));
+    this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a(this.a.jdField_a_of_type_JavaUtilList);
   }
 }
 

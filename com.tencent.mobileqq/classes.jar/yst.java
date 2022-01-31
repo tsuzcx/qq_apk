@@ -1,44 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyDressReady;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.apollo.store.ApolloFloatActivity;
 
-public final class yst
-  implements ApolloGameBasicEventUtil.NotifyDressReady
+public class yst
+  implements Runnable
 {
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public yst(ApolloFloatActivity paramApolloFloatActivity, Resources paramResources, RelativeLayout paramRelativeLayout) {}
+  
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt1 + ",from:" + paramInt2 + ",cmd:" + paramString3);
-    }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return;
-    }
-    try
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a = new TextView(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity);
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setBackgroundResource(2130846269);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentResResources), AIOUtils.a(52.0F, this.jdField_a_of_type_AndroidContentResResources));
+    if (ApolloFloatActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity) == 1)
     {
-      paramArrayOfInt = ApolloGameBasicEventUtil.a(paramInt1, paramArrayOfInt);
-      if (paramArrayOfInt == null)
-      {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
-        return;
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
-      return;
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramArrayOfInt.put("openId", paramString2);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setTextColor(-16777216);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setVisibility(8);
     }
     for (;;)
     {
-      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, paramString3, paramArrayOfInt.toString());
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setGravity(17);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setTextSize(17.0F);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setText(2131434937);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a, localLayoutParams);
       return;
-      paramArrayOfInt.put("uin", paramString1);
+      localLayoutParams.addRule(10, -1);
+      localLayoutParams.addRule(11, -1);
+      localLayoutParams.rightMargin = AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentResResources);
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloFloatActivity.a.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131494210));
     }
   }
 }

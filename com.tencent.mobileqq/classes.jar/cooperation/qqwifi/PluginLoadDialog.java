@@ -36,17 +36,17 @@ public class PluginLoadDialog
     View localView = ((LayoutInflater)localObject1).inflate(2130968837, null);
     try
     {
-      Object localObject2 = ((LayoutInflater)localObject1).inflate(2130970865, (ViewGroup)localView, false);
-      localObject1 = (RelativeLayout)localView.findViewById(2131363995);
+      Object localObject2 = ((LayoutInflater)localObject1).inflate(2130970913, (ViewGroup)localView, false);
+      localObject1 = (RelativeLayout)localView.findViewById(2131364019);
       Object localObject3 = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131363226);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131363244);
       ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-      localObject2 = (TextView)localView.findViewById(2131363227);
+      localObject2 = (TextView)localView.findViewById(2131363245);
       IphoneTitleBarActivity.setLayerType((View)localObject2);
       if (localObject2 != null) {
         ((TextView)localObject2).setText("返回");
       }
-      localObject3 = (TextView)localView.findViewById(2131363363);
+      localObject3 = (TextView)localView.findViewById(2131363381);
       IphoneTitleBarActivity.setLayerType((View)localObject2);
       if (localObject3 != null) {
         ((TextView)localObject3).setText(paramString);
@@ -60,7 +60,7 @@ public class PluginLoadDialog
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         paramString.addFlags(67108864);
-        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131494247)).init();
+        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131494254)).init();
         localView.setFitsSystemWindows(true);
         localView.setPadding(0, ImmersiveUtils.a(paramContext), 0, 0);
       }
@@ -71,7 +71,7 @@ public class PluginLoadDialog
       if (QLog.isColorLevel()) {
         QLog.e("QQWIFIPluginLoadDialog", 2, "layout with merge ,use framelayout to immersive");
       }
-      super.setContentView(2130970865);
+      super.setContentView(2130970913);
       getWindow().setFeatureInt(7, 2130968832);
     }
   }

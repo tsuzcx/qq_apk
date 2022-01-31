@@ -1,22 +1,44 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import java.util.List;
 
 public class oiq
-  implements Runnable
+  implements LocationListener
 {
-  public oiq(DoodleTextureView paramDoodleTextureView) {}
+  public oiq(DoodleEmojiManager paramDoodleEmojiManager) {}
   
-  public void run()
+  public void onLocationChanged(Location paramLocation)
   {
-    PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
-    if (localPersonalityOperator != null)
+    if (paramLocation != null)
     {
-      localPersonalityOperator.a();
-      localPersonalityOperator.a(this.a.jdField_a_of_type_Int, this.a.b);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.h();
-      this.a.a();
+      SLog.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
+      if (this.a.b.size() >= 10)
+      {
+        this.a.b.remove(0);
+        SLog.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
+      }
+      this.a.b.add(new Location(paramLocation));
+      return;
     }
+    SLog.d("DoodleEmojiManager", "onLocationChanged, location is null.");
+  }
+  
+  public void onProviderDisabled(String paramString)
+  {
+    SLog.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
+  }
+  
+  public void onProviderEnabled(String paramString)
+  {
+    SLog.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
+  }
+  
+  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
+  {
+    SLog.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
   }
 }
 

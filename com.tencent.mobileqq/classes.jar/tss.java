@@ -1,16 +1,25 @@
+import android.content.Context;
+import android.net.Uri;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class tss
-  implements ExpandableListView.OnGroupClickListener
+  implements View.OnClickListener
 {
-  public tss(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public tss(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    return true;
+    this.a.a(0);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
+    if (this.a.a().booleanValue())
+    {
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230720));
+    }
   }
 }
 

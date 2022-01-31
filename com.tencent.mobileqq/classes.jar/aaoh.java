@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
 
-public class aaoh
-  implements aapc
+class aaoh
+  implements ArkAppEventObserverManager.ConnectionCallback
 {
-  public aaoh(ArkLocalAppMgr paramArkLocalAppMgr) {}
+  aaoh(aanw paramaanw, long paramLong) {}
   
-  public void a(ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, Object paramObject)
+  public void a(long paramLong)
   {
-    paramObject = (aaow)paramObject;
-    paramObject.a.post(new aaoi(this, paramUpdateAppByNameTask, paramObject));
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aanw.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    ArkAppDeviceModule.a(this.jdField_a_of_type_Aanw.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
   }
 }
 

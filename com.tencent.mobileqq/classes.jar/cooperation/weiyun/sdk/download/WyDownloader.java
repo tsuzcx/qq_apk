@@ -1,17 +1,17 @@
 package cooperation.weiyun.sdk.download;
 
-import amrn;
-import amro;
-import amrp;
-import amrq;
-import amrr;
-import amrs;
-import amrt;
-import amru;
-import amrv;
-import amrw;
 import android.content.Context;
 import android.text.TextUtils;
+import anhs;
+import anht;
+import anhu;
+import anhv;
+import anhw;
+import anhx;
+import anhy;
+import anhz;
+import ania;
+import anib;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -50,7 +50,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class WyDownloader
   implements INetEngine.INetEngineListener, InfoRecorder.InfoRecorderCallback, LocalProcessor.LocalProcessorCallback, UrlFetcher.UrlFetcherCallback
 {
-  static INetEngine.IBreakDownFix jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new amro();
+  static INetEngine.IBreakDownFix jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new anht();
   private static Singleton jdField_a_of_type_ComTencentWeiyunUtilsSingleton;
   private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private Context jdField_a_of_type_AndroidContentContext;
@@ -75,12 +75,12 @@ public class WyDownloader
   
   static
   {
-    jdField_a_of_type_ComTencentWeiyunUtilsSingleton = new amrn();
+    jdField_a_of_type_ComTencentWeiyunUtilsSingleton = new anhs();
   }
   
   private WyDownloader()
   {
-    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, new amrp(this));
+    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, new anhu(this));
   }
   
   public static WyDownloader a()
@@ -202,7 +202,7 @@ public class WyDownloader
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null) {
       this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = WeiyunNetEngine.a();
     }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new amrt(this, localLong, localNetReq));
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new anhy(this, localLong, localNetReq));
   }
   
   public int a()
@@ -215,7 +215,7 @@ public class WyDownloader
     {
       localArrayList.addAll(this.jdField_a_of_type_JavaUtilHashMap.keySet());
       if (!localArrayList.isEmpty()) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new amru(this, localArrayList));
+        this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new anhz(this, localArrayList));
       }
       return j + i;
     }
@@ -251,7 +251,7 @@ public class WyDownloader
   public String a(String paramString1, String paramString2, String paramString3, String paramString4, WyDownloader.IDownloadStatusListener paramIDownloadStatusListener)
   {
     int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    a(paramString1, paramString2, paramString3, paramString4, new amrq(this, paramIDownloadStatusListener, i), Integer.toString(i));
+    a(paramString1, paramString2, paramString3, paramString4, new anhv(this, paramIDownloadStatusListener, i), Integer.toString(i));
     return Integer.toString(i);
   }
   
@@ -730,11 +730,11 @@ public class WyDownloader
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, WyDownloader.IDownloadListener paramIDownloadListener, String paramString5)
   {
-    paramString1 = DownloadJobContext.a(paramString4, paramString1, paramString2, paramString3, jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix, new amrr(this, paramIDownloadListener, paramString4, paramString2));
+    paramString1 = DownloadJobContext.a(paramString4, paramString1, paramString2, paramString3, jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix, new anhw(this, paramIDownloadListener, paramString4, paramString2));
     if (this.jdField_b_of_type_ComTencentMobileqqTransfileINetEngine == null) {
       this.jdField_b_of_type_ComTencentMobileqqTransfileINetEngine = WeiyunNetEngine.b();
     }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new amrs(this, paramString1));
+    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new anhx(this, paramString1));
     if (paramString5 != null) {
       this.jdField_b_of_type_JavaUtilMap.put(paramString5, paramString1);
     }
@@ -905,7 +905,7 @@ public class WyDownloader
     {
       localArrayList.addAll(this.jdField_a_of_type_JavaUtilHashMap.keySet());
       if (!localArrayList.isEmpty()) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new amrv(this, localArrayList));
+        this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new ania(this, localArrayList));
       }
       return k + (i + j);
     }
@@ -943,7 +943,7 @@ public class WyDownloader
       int i = this.jdField_b_of_type_JavaUtilHashSet.size();
       localArrayList.addAll(this.jdField_b_of_type_JavaUtilHashSet);
       if (!localArrayList.isEmpty()) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new amrw(this, localArrayList));
+        this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new anib(this, localArrayList));
       }
       return i;
     }

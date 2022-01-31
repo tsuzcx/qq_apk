@@ -1,42 +1,91 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class akcn
-  implements Runnable
+public class akcn
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  akcn(akcm paramakcm, int paramInt) {}
+  public akcn(JumpAction paramJumpAction, QQProgressDialog paramQQProgressDialog, String paramString1, ArkAppCenter paramArkAppCenter, String paramString2, String paramString3) {}
   
-  public void run()
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Int == 202)
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+    if ((paramAppPathInfo != null) && (paramInt == 0))
     {
-      localObject = new String[2];
-      localObject[0] = "https://qc.vip.qq.com/";
-      localObject[1] = "http://m.gamecenter.qq.com";
-      int j = localObject.length;
-      while (i < j)
+      if (QLog.isColorLevel()) {
+        QLog.d("JumpAction", 2, new Object[] { "Ark mqqapi://ligthapp/open goToLightAppOpen get path succeed, appPath: ", paramAppPathInfo.jdField_a_of_type_JavaLangString });
+      }
+      paramObject = this.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(paramObject)) {
+        break label310;
+      }
+      paramString = this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter;
+      paramString = ArkAppCenter.c(paramAppPathInfo.jdField_a_of_type_JavaLangString);
+      if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
       {
-        String str = localObject[i];
-        SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(str);
-        if (localSwiftBrowserCookieMonster != null) {
-          localSwiftBrowserCookieMonster.a(str, null, null, null);
-        }
-        i += 1;
+        paramInt = 0;
+        paramAppPathInfo = paramObject;
       }
     }
-    Object localObject = SwiftBrowserCookieMonster.a("http://zb.vip.qq.com/");
-    if (localObject != null) {
-      ((SwiftBrowserCookieMonster)localObject).a("http://zb.vip.qq.com/", null, null, null);
+    for (;;)
+    {
+      String str = this.b;
+      paramObject = str;
+      if (TextUtils.isEmpty(str)) {
+        paramObject = "{}";
+      }
+      if (paramInt != 0)
+      {
+        ArkAppDataReport.j(null, this.c);
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a != null) {
+          ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a, this.c, paramAppPathInfo, "0.0.0.1", paramObject, this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a.getResources().getDisplayMetrics().scaledDensity, null, 1);
+        }
+      }
+      do
+      {
+        do
+        {
+          return;
+          paramAppPathInfo = paramString;
+          paramInt = 1;
+          paramString = null;
+          break;
+          paramAppPathInfo = new Intent();
+          paramAppPathInfo.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserDelegationActivity");
+          paramAppPathInfo.putExtra("param_force_internal_browser", true);
+          paramAppPathInfo.putExtra("url", paramString);
+          paramAppPathInfo.putExtra("injectrecommend", false);
+          paramAppPathInfo.addFlags(603979776);
+        } while (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a == null);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a.startActivity(paramAppPathInfo);
+        return;
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a, 2131438836, 0).a();
+      } while (!QLog.isColorLevel());
+      QLog.d("JumpAction", 2, "Ark mqqapi://ligthapp/open goToLightAppOpen appPath is null ");
+      return;
+      label310:
+      paramString = null;
+      paramInt = 1;
+      paramAppPathInfo = paramObject;
     }
-    this.jdField_a_of_type_Akcm.jdField_a_of_type_AndroidOsBundle.putBoolean("_should_set_cookie_", true);
-    this.jdField_a_of_type_Akcm.jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator.a(this.jdField_a_of_type_Akcm.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akcn
  * JD-Core Version:    0.7.0.1
  */

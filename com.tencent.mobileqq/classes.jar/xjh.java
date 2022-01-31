@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class xjh
-  implements DialogInterface.OnClickListener
+class xjh
+  implements Runnable
 {
-  public xjh(LoginView paramLoginView) {}
+  xjh(xjg paramxjg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = this.a.a.getText().toString();
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      this.a.b(paramDialogInterface);
-    }
+    BannerManager.a(this.a.a, true);
   }
 }
 

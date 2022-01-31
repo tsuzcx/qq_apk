@@ -1,50 +1,40 @@
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask.Result;
-import java.util.HashMap;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class aaoi
   implements Runnable
 {
-  aaoi(aaoh paramaaoh, ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, aaow paramaaow) {}
+  aaoi(aanw paramaanw, String paramString1, String paramString2, long paramLong, String paramString3) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_Int;
-    ??? = this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_a_of_type_JavaLangString;
-    if (i == 0) {
-      if (ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aaow.c) >= 0) {
-        ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("updateAppByName success, result=%s, app-name=%s, expect-ver=%s, local-ver=%s", new Object[] { ArkLocalAppMgr.UpdateAppByNameTask.Result.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aaow.c, this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a.jdField_b_of_type_JavaLangString }));
-      }
-    }
-    for (;;)
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(BaseActivity.sTopActivity, 2131624516);
+    localQQCustomDialog.setContentView(2130968843);
+    localQQCustomDialog.setTitle(BaseActivity.sTopActivity.getString(2131438244, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    ((ImageView)localQQCustomDialog.findViewById(2131364041)).setImageDrawable(BaseActivity.sTopActivity.getResources().getDrawable(2130838200));
+    ((TextView)localQQCustomDialog.findViewById(2131364042)).setText(this.jdField_a_of_type_JavaLangString);
+    ((TextView)localQQCustomDialog.findViewById(2131362776)).setText(BaseActivity.sTopActivity.getString(2131438826));
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    ArkAppCenter.a(this.b, new aaoj(this, localQQCustomDialog));
+    localQQCustomDialog.setNegativeButton(2131434674, new aaok(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(2131434672, new aaom(this, localQQCustomDialog));
+    try
     {
-      this.jdField_a_of_type_Aaow.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Aaow.jdField_a_of_type_JavaLangString = ((String)???);
-      if (i == 0) {
-        this.jdField_a_of_type_Aaow.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo;
+      localQQCustomDialog.show();
+      label159:
+      if (ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_location", this.c) == 0) {
+        ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_location", this.c, 2);
       }
-      synchronized (ArkLocalAppMgr.a(this.jdField_a_of_type_Aaoh.a))
-      {
-        ArkLocalAppMgr.a(this.jdField_a_of_type_Aaoh.a).put(this.jdField_a_of_type_Aaow.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aaow.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo);
-        ArkLocalAppMgr.a(this.jdField_a_of_type_Aaoh.a, this.jdField_a_of_type_Aaow);
-        return;
-        i = 6;
-        ??? = null;
-        ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("updateAppByName fail, invalid app version, result=%s, app-name=%s, expect-ver=%s, local-ver=%s", new Object[] { ArkLocalAppMgr.UpdateAppByNameTask.Result.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aaow.c, this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a.jdField_b_of_type_JavaLangString }));
-        continue;
-        String str = this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_JavaLangString;
-        if (??? != null)
-        {
-          localObject2 = ???;
-          ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("updateAppByName fail, retCode=%d, app-name=%s, msg=%s", new Object[] { Integer.valueOf(i), str, localObject2 }));
-          continue;
-        }
-        Object localObject2 = "unknown";
-      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label159;
     }
   }
 }

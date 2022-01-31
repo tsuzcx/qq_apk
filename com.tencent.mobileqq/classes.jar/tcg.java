@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 class tcg
   implements Runnable
 {
-  tcg(tce paramtce) {}
+  tcg(tcf paramtcf) {}
   
   public void run()
   {
-    this.a.a.b(this.a.a.app.o());
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tcg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
 
 public class aevb
-  implements Runnable
+  implements ProviderContainerView.ContainerViewListener
 {
-  public aevb(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public aevb(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    NearbyProfileEditTribePanel.a(this.a, (PicInfo)this.a.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (NearbyProfileEditTribePanel.a(this.a) == null) {
-      return;
-    }
-    CompressInfo localCompressInfo = new CompressInfo(NearbyProfileEditTribePanel.a(this.a).c, 0);
-    localCompressInfo.f = 0;
-    CompressOperator.a(localCompressInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..uploadPhoto(), img_path = " + localCompressInfo.e);
-    }
-    if (!StringUtil.a(localCompressInfo.e))
-    {
-      TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.a = true;
-      localTransferRequest.i = localCompressInfo.e;
-      localTransferRequest.b = 8;
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localTransferRequest);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.runOnUiThread(new aevc(this));
+    this.a.d();
+  }
+  
+  public void y_()
+  {
+    this.a.c();
   }
 }
 

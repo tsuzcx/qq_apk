@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
-import akox;
-import akoy;
+import alen;
+import aleo;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.mobileqq.jsbridge.JsBridge.JsBridgeListener;
@@ -38,7 +38,7 @@ public class OpenJsBridge$OpenJsBridgeListener
     }
     for (;;)
     {
-      new Handler(Looper.getMainLooper()).post(new akox(this, paramString, str, localWebView));
+      new Handler(Looper.getMainLooper()).post(new alen(this, paramString, str, localWebView));
       return;
       if (((paramObject instanceof Number)) || ((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float))) {
         str = paramObject.toString();
@@ -57,7 +57,7 @@ public class OpenJsBridge$OpenJsBridgeListener
     if (localWebView == null) {
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new akoy(this, paramString, localWebView));
+    new Handler(Looper.getMainLooper()).post(new aleo(this, paramString, localWebView));
   }
 }
 

@@ -1,13 +1,16 @@
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
+import java.io.File;
+import java.io.FileFilter;
 
-class okg
-  implements Runnable
+public class okg
+  implements FileFilter
 {
-  okg(okf paramokf) {}
+  public okg(NormalFacePackage paramNormalFacePackage) {}
   
-  public void run()
+  public boolean accept(File paramFile)
   {
-    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
   }
 }
 

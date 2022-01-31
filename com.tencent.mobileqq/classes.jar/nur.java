@@ -1,20 +1,16 @@
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.storyHome.discover.view.QQStoryDiscoverFragment;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.OnFeedItemPullListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
 
 public class nur
-  implements LoadingMoreHelper.OnLoadMoreListener
+  implements Runnable
 {
-  public nur(QQStoryDiscoverFragment paramQQStoryDiscoverFragment) {}
+  public nur(DetailFeedAllInfoPuller paramDetailFeedAllInfoPuller, DetailFeedItem paramDetailFeedItem, boolean paramBoolean, ErrorMessage paramErrorMessage) {}
   
-  public void a() {}
-  
-  public boolean a(boolean paramBoolean)
+  public void run()
   {
-    QQStoryDiscoverFragment.a(this.a).c();
-    StoryReportor.a("content_flow", "load_more", 0, 0, new String[0]);
-    return true;
+    DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

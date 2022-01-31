@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMNotifyAddFriendBuilder;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 
-class wgr
-  implements Runnable
+public class wgr
+  implements View.OnTouchListener
 {
-  wgr(wgq paramwgq) {}
+  public wgr(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.a.c();
+    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
   }
 }
 

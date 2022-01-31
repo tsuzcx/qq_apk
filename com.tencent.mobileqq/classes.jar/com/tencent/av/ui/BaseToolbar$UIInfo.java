@@ -2,9 +2,9 @@ package com.tencent.av.ui;
 
 public class BaseToolbar$UIInfo
 {
-  public int a = 2131494061;
+  public int a = 2131494067;
   public String a;
-  public int b = 2131494053;
+  public int b = 2131494059;
   public int c;
   public int d;
   public int e;

@@ -19,7 +19,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lkk;
+import lkf;
 
 public class ReadInJoySecondCommentListFragment
   extends PublicBaseFragment
@@ -165,7 +165,7 @@ public class ReadInJoySecondCommentListFragment
     if ((paramInt1 == 117) && (paramInt2 == -1))
     {
       paramIntent = paramIntent.getStringExtra("arg_result_json");
-      ReadInJoyCommentUtils.a((QQAppInterface)getActivity().getAppRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, this.b, paramIntent, true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter.a, this.jdField_a_of_type_Int, new lkk(this, paramIntent));
+      ReadInJoyCommentUtils.a((QQAppInterface)getActivity().getAppRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, this.b, paramIntent, true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter.a, this.jdField_a_of_type_Int, new lkf(this, paramIntent));
     }
   }
   
@@ -182,9 +182,9 @@ public class ReadInJoySecondCommentListFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131362850: 
-    case 2131363479: 
-    case 2131366945: 
+    case 2131362868: 
+    case 2131363497: 
+    case 2131366987: 
       label356:
       label362:
       do
@@ -205,7 +205,7 @@ public class ReadInJoySecondCommentListFragment
           paramView = getActivity();
           localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
           localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo;
-          localObject3 = getActivity().getString(2131438899) + this.jdField_a_of_type_JavaLangString;
+          localObject3 = getActivity().getString(2131438927) + this.jdField_a_of_type_JavaLangString;
           if (this.jdField_a_of_type_Boolean) {
             break label356;
           }
@@ -287,14 +287,14 @@ public class ReadInJoySecondCommentListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969638, paramViewGroup, false);
-    paramLayoutInflater.findViewById(2131362850).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131363479).setOnClickListener(this);
-    paramLayoutInflater.findViewById(2131363360).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView = ((ReadInJoyCommentListView)paramLayoutInflater.findViewById(2131366942));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367220));
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969646, paramViewGroup, false);
+    paramLayoutInflater.findViewById(2131362868).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131363497).setOnClickListener(this);
+    paramLayoutInflater.findViewById(2131363378).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView = ((ReadInJoyCommentListView)paramLayoutInflater.findViewById(2131366984));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367268));
     getArguments();
-    paramViewGroup = paramLayoutInflater.findViewById(2131366945);
+    paramViewGroup = paramLayoutInflater.findViewById(2131366987);
     paramViewGroup.setVisibility(0);
     paramViewGroup.setOnClickListener(this);
     b();

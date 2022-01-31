@@ -1,44 +1,36 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter;
-import com.tencent.widget.Gallery;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.ClipboardManager;
+import android.view.View;
+import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class aihj
-  implements Runnable
+public final class aihj
+  implements ActionSheet.OnButtonClickListener
 {
-  aihj(aihi paramaihi, Setting paramSetting) {}
+  public aihj(String paramString, Context paramContext) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.isFinishing()) {
-      return;
-    }
-    this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.a(this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.b);
-    this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.a(this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.a(this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataSetting);
-    TroopAvatarWallGalleryAdapter localTroopAvatarWallGalleryAdapter = this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter;
-    if (!this.jdField_a_of_type_Aihi.jdField_a_of_type_AndroidOsBundle.getBoolean("from_photo_wall", false)) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramInt)
     {
-      localTroopAvatarWallGalleryAdapter.a(bool);
-      this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.b(this.jdField_a_of_type_Aihi.jdField_a_of_type_AndroidOsBundle.getBoolean("is_use_path", false));
-      this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter);
-      this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getResources().getDimensionPixelSize(2131558524));
-      this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentWidgetGallery.b(false);
-      this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentWidgetGallery.a(false);
-      this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new aihk(this));
-      this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new aihl(this));
-      this.jdField_a_of_type_Aihi.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new aihm(this));
+    }
+    for (;;)
+    {
+      StructMsgClickHandler.a().dismiss();
       return;
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      continue;
+      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aihj
  * JD-Core Version:    0.7.0.1
  */

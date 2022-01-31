@@ -1,37 +1,51 @@
-import android.util.Log;
-import com.tencent.component.network.utils.thread.AsyncTask;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import com.tencent.component.network.downloader.impl.DownloaderImpl;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class pjs
-  extends FutureTask
 {
-  public pjs(AsyncTask paramAsyncTask, Callable paramCallable)
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
+  
+  private pjs(DownloaderImpl paramDownloaderImpl) {}
+  
+  public Object a(String paramString)
   {
-    super(paramCallable);
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+        {
+          paramString = this.jdField_a_of_type_JavaUtilMap.get(paramString);
+          return paramString;
+        }
+        if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+        {
+          localObject1 = this.jdField_a_of_type_JavaUtilList.remove(0);
+          this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject1);
+          return localObject1;
+        }
+      }
+      Object localObject1 = new Object();
+    }
   }
   
-  protected void done()
+  public void a(String paramString)
   {
-    try
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      AsyncTask.a(this.a, get());
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+        return;
+      }
+      paramString = this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      if ((paramString != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramString))) {
+        this.jdField_a_of_type_JavaUtilList.add(paramString);
+      }
       return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      Log.w("AsyncTask", localInterruptedException);
-      return;
-    }
-    catch (ExecutionException localExecutionException)
-    {
-      throw new RuntimeException("An error occured while executing doInBackground()", localExecutionException.getCause());
-    }
-    catch (CancellationException localCancellationException)
-    {
-      AsyncTask.a(this.a, null);
     }
   }
 }

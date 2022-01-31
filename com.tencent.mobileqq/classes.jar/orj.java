@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.view.widget.StoryAddDescribeGuideDialog;
 
 public class orj
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public orj(QRDisplayActivity paramQRDisplayActivity) {}
+  public orj(StoryAddDescribeGuideDialog paramStoryAddDescribeGuideDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.dismiss();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

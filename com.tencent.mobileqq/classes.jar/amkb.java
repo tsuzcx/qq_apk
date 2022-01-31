@@ -1,9 +1,14 @@
-public final class amkb
-  extends ThreadLocal
+import cooperation.comic.ui.QQComicTabBarView;
+import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver;
+
+public class amkb
+  extends QQComicRedTouchManager.PluginRedTouchObserver
 {
-  protected Boolean a()
+  public amkb(QQComicTabBarView paramQQComicTabBarView) {}
+  
+  public void a()
   {
-    return Boolean.valueOf(false);
+    this.a.a();
   }
 }
 

@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class abia
   implements Runnable
 {
-  public abia(ClearEllipsisEditText paramClearEllipsisEditText, String paramString) {}
+  public abia(ARMapLoadingActivity paramARMapLoadingActivity, boolean paramBoolean) {}
   
   public void run()
   {
-    ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, true);
-    ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.getMeasuredWidth());
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setText(ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, this.jdField_a_of_type_JavaLangString, ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText)));
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.a(BaseApplication.getContext()).a("", "REPORT_TAG_PRE_START_THREAD", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "", false);
   }
 }
 

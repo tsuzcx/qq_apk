@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
-import com.tencent.mobileqq.shortvideo.util.TextureDataPipe.OnFrameAvailableListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class xtv
-  implements TextureDataPipe.OnFrameAvailableListener
+  implements DialogInterface.OnClickListener
 {
-  public xtv(CameraFilterGLView paramCameraFilterGLView) {}
+  public xtv(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CameraFilterGLView.b(this.a);
+    QzDynamicVideoPreviewActivity.a(this.a).dismiss();
   }
 }
 

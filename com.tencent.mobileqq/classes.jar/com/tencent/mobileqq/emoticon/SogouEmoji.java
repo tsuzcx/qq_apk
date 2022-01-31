@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticon;
 
-import abwf;
-import abwg;
-import abwh;
-import abwi;
-import abwj;
-import abwk;
+import acdh;
+import acdi;
+import acdj;
+import acdk;
+import acdl;
+import acdm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -32,7 +32,7 @@ public class SogouEmoji
   int jdField_a_of_type_Int = 0;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   EmoticonHandler jdField_a_of_type_ComTencentMobileqqAppEmoticonHandler;
-  EmoticonObserver jdField_a_of_type_ComTencentMobileqqAppEmoticonObserver = new abwg(this);
+  EmoticonObserver jdField_a_of_type_ComTencentMobileqqAppEmoticonObserver = new acdi(this);
   public EmojiManager a;
   public EmotionJsonDownloadListener a;
   public SogouEmojiTaskController a;
@@ -47,7 +47,7 @@ public class SogouEmoji
   
   public SogouEmoji(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmotionJsonDownloadListener = new abwf(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmotionJsonDownloadListener = new acdh(this);
     if (QLog.isColorLevel()) {
       QLog.d("SogouEmoji", 2, "func SogouEmoji constructor begins");
     }
@@ -126,10 +126,10 @@ public class SogouEmoji
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() != null) && (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getApplicationContext())))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131433196, 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 2131433213, 0).a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(Integer.toString(paramInt), paramString, new abwh(this, paramInt, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(Integer.toString(paramInt), paramString, new acdj(this, paramInt, paramString));
   }
   
   public void a(Emoticon paramEmoticon)
@@ -146,12 +146,12 @@ public class SogouEmoji
     PicEmoticonInfo localPicEmoticonInfo = new PicEmoticonInfo(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().app.getCurrentAccountUin());
     localPicEmoticonInfo.c = 6;
     localPicEmoticonInfo.a = paramEmoticon;
-    this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(paramEmoticon.epId, new abwk(this, localPicEmoticonInfo));
+    this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(paramEmoticon.epId, new acdm(this, localPicEmoticonInfo));
   }
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    paramString1 = new abwi(this, paramString1, paramString2, paramBoolean);
+    paramString1 = new acdk(this, paramString1, paramString2, paramBoolean);
     ThreadManager.getFileThreadHandler().post(paramString1);
   }
   
@@ -175,7 +175,7 @@ public class SogouEmoji
   
   public void a(List paramList)
   {
-    paramList = new abwj(this, paramList);
+    paramList = new acdl(this, paramList);
     ThreadManager.getFileThreadHandler().post(paramList);
   }
 }

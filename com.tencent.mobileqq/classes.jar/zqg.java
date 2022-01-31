@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import java.io.File;
+import java.util.Comparator;
 
-public final class zqg
-  implements Runnable
+class zqg
+  implements Comparator
 {
-  public zqg(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2) {}
+  zqg(zqf paramzqf) {}
   
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    MsgProxyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 

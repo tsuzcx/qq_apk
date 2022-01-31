@@ -1,16 +1,32 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wdm
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public wdm(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  public wdm(TroopAssistTipsBar paramTroopAssistTipsBar) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
+    TroopAssistTipsBar.a(this.a).a(TroopAssistTipsBar.a(this.a).a, Integer.valueOf(4));
+    TroopAssistTipsBar.a(this.a).a();
+    TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.a).a, TroopAssistTipsBar.a(this.a));
+    TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
+    ReportController.b(TroopAssistTipsBar.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, TroopAssistTipsBar.a(this.a).a, "", "", "");
+    QQAppInterface localQQAppInterface = TroopAssistTipsBar.a(this.a);
+    String str = TroopAssistTipsBar.a(this.a).a;
+    if (TroopAssistTipsBar.a(this.a).b(TroopAssistTipsBar.a(this.a).a) == 3) {}
+    for (paramView = "1";; paramView = "0")
+    {
+      ReportController.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_confirm", 0, 0, str, paramView, "", "");
+      return;
+    }
   }
 }
 

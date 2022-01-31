@@ -1,85 +1,50 @@
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
+import com.tencent.gdtad.jsbridge.GdtJsCallHandler;
 import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
-import com.tencent.gdtad.views.videoceiling.GdtWebViewBuilder;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.gdtad.util.GdtDeviceUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class qkt
-  extends GdtWebViewBuilder
+  implements GdtJsCallHandler
 {
-  public qkt(GdtVideoCeilingView paramGdtVideoCeilingView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
-  
-  public void a(WebView paramWebView, String paramString)
-  {
-    super.a(paramWebView, paramString);
-    GdtLog.b("GdtVideoCeilingView", "onReceivedTitle: " + paramString);
-    if ((GdtVideoCeilingView.a(this.a) != null) && (!TextUtils.isEmpty(paramString))) {
-      GdtVideoCeilingView.a(this.a).setText(paramString);
-    }
-  }
-  
-  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.a(paramWebView, paramString, paramBitmap);
-    GdtLog.b("GdtVideoCeilingView", "onPageStarted:" + paramString);
-  }
-  
-  public boolean a(WebView paramWebView, String paramString)
-  {
-    GdtLog.b("GdtVideoCeilingView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
-    do
+    if ((paramGdtAdWebPlugin == null) || (paramGdtAdWebPlugin.mRuntime == null) || (paramGdtAdWebPlugin.mRuntime.a() == null))
     {
+      GdtLog.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
       return true;
-      localObject = ((CustomWebView)paramWebView).a();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      paramString = Uri.parse(paramString);
-      localObject = paramString.getScheme();
-    } while (!AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
+    }
+    Activity localActivity = paramGdtAdWebPlugin.mRuntime.a();
+    paramVarArgs = new JSONObject();
     try
     {
-      this.e.startActivity(paramWebView);
-      return true;
+      paramVarArgs.put("carrier", GdtDeviceUtil.a(localActivity));
+      try
+      {
+        paramGdtAdWebPlugin.callJs(paramString, new String[] { paramVarArgs.toString() });
+        return true;
+      }
+      catch (Throwable paramGdtAdWebPlugin)
+      {
+        GdtLog.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramGdtAdWebPlugin);
+        return true;
+      }
     }
-    catch (ActivityNotFoundException paramWebView)
+    catch (JSONException localJSONException)
     {
-      GdtLog.d("GdtVideoCeilingView", paramWebView.toString());
+      for (;;)
+      {
+        GdtLog.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
+      }
     }
-    return true;
-  }
-  
-  public void b(WebView paramWebView, String paramString)
-  {
-    super.b(paramWebView, paramString);
-    GdtLog.b("GdtVideoCeilingView", "onPageFinished:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     qkt
  * JD-Core Version:    0.7.0.1
  */

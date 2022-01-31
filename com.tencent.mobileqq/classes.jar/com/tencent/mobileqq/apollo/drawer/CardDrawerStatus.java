@@ -13,7 +13,7 @@ import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import ylx;
+import ypd;
 
 public class CardDrawerStatus
   extends ApolloDrawerStatus
@@ -36,7 +36,7 @@ public class CardDrawerStatus
   
   private void a(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getUIHandler().post(new ylx(this, paramQQAppInterface));
+    ThreadManager.getUIHandler().post(new ypd(this, paramQQAppInterface));
   }
   
   public static void a(boolean paramBoolean)

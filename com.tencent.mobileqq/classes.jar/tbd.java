@@ -1,40 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.app.Frame;
 
 public class tbd
-  implements CompoundButton.OnCheckedChangeListener
+  extends tbo
 {
-  public tbd(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public tbd(MainFragment paramMainFragment)
   {
-    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131434190) + this.a.a, paramBoolean);
-    if (AppSetting.b) {
-      NotifyPushSettingActivity.e(this.a).setContentDescription("与我相关的通知");
+    super(null);
+  }
+  
+  public void onClick(View paramView)
+  {
+    Frame localFrame = MainFragment.a(this.a);
+    if ((localFrame instanceof ReadinjoyTabFrame)) {
+      ((ReadinjoyTabFrame)localFrame).l();
     }
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      if (!paramBoolean) {
-        break label106;
-      }
-    }
-    label106:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, paramCompoundButton, "", "", "");
-      return;
-      i = 0;
-      break;
-    }
+    ReadInJoyLogicEngine.a().a(0);
+    super.onClick(paramView);
   }
 }
 

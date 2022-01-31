@@ -1,23 +1,43 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-class vxv
-  implements Runnable
+public class vxv
+  implements BusinessObserver
 {
-  vxv(vxu paramvxu, MessageRecord paramMessageRecord) {}
+  public vxv(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.sendFailCode == 41)
-    {
-      QQToast.a(this.jdField_a_of_type_Vxu.a.a.getApp(), 2131436069, 0).a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie", 2, "success:" + String.valueOf(paramBoolean));
     }
-    QQToast.a(this.jdField_a_of_type_Vxu.a.a.getApp(), 2131438828, 0).a();
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Vxu.a.a.c(), "Stick", "Send", "2", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    if (!paramBoolean) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
+          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
+          {
+            ThreadManager.getSubThreadHandler().postDelayed(new vxw(this, localGetPublicAccountDetailInfoResponse), 10L);
+            return;
+          }
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
   }
 }
 

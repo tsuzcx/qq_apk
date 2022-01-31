@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.OnProgressChangedListener;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.InputMethodUtil;
 
-class ajhu
-  implements VideoSprite.OnProgressChangedListener
+public class ajhu
+  implements Runnable
 {
-  ajhu(ajhs paramajhs) {}
+  public ajhu(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (this.a.a.a.a != null) {
-      this.a.a.a.a.setProgress(paramInt / 30);
+    EditText localEditText = SubmitHomeWorkFragment.a(this.a, SubmitHomeWorkFragment.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("SubmitHomeWorkFragment", 2, "弹起键盘");
+    }
+    if (localEditText != null) {
+      InputMethodUtil.a(localEditText);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhu
  * JD-Core Version:    0.7.0.1
  */

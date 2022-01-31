@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Future;
-import myh;
+import mzq;
 
 public class StoryBoss
   implements Boss, MonitorThreadPoolExecutor.ThreadPoolMonitorListener
@@ -70,7 +70,7 @@ public class StoryBoss
   private Future a(Job paramJob, int paramInt1, int paramInt2, @Nullable FutureListener paramFutureListener, @Nullable Object paramObject)
   {
     paramJob = prepareWorker(paramJob, paramInt2, paramFutureListener, paramObject);
-    paramJob.addFutureListener(new myh(this, paramJob));
+    paramJob.addFutureListener(new mzq(this, paramJob));
     if (paramInt1 == 0)
     {
       Dispatchers.get().dispatch(paramJob);

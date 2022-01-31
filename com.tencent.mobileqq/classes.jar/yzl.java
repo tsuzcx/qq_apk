@@ -1,33 +1,25 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.DataMigrationService;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class yzl
-  extends Handler
+class yzl
+  implements Animation.AnimationListener
 {
-  public yzl(DataMigrationService paramDataMigrationService) {}
+  yzl(yzk paramyzk) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = paramMessage.arg1;
-    paramMessage = (Intent)paramMessage.obj;
-    if (paramMessage == null)
-    {
-      this.a.stopSelf(i);
-      return;
-    }
-    if ("com.tencent.mobileqq.action.MIGRATION_DATA".equals(paramMessage.getAction()))
-    {
-      DataMigrationService.a(this.a, paramMessage, i);
-      return;
-    }
-    this.a.stopSelf(i);
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new yzm(this), 300L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yzl
  * JD-Core Version:    0.7.0.1
  */

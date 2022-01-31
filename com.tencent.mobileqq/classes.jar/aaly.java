@@ -1,24 +1,33 @@
-import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.arcard.ARCardPageProcess;
 import java.util.ArrayList;
 
 public class aaly
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public aaly(ArkAppCGI paramArkAppCGI, aamh paramaamh, boolean paramBoolean, byte[] paramArrayOfByte) {}
+  public aaly(ARCardPageProcess paramARCardPageProcess, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    synchronized (ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI))
-    {
-      ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI).remove(this.jdField_a_of_type_Aamh);
-      this.jdField_a_of_type_Aamh.a.a(this.jdField_a_of_type_Aamh, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.jdField_a_of_type_Boolean = false;
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if ((!this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.b) && (this.jdField_a_of_type_Boolean)) {
+      ARCardPageProcess.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess).remove(ARCardPageProcess.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess).size() - 1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaly
  * JD-Core Version:    0.7.0.1
  */

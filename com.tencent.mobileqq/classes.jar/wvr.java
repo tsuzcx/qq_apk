@@ -1,51 +1,112 @@
 import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity.sendPhotoTask;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pic.compress.Utils;
-import com.tencent.mobileqq.utils.AlbumConstants;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class wvr
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public wvr(SendPhotoActivity.sendPhotoTask paramsendPhotoTask) {}
+  private wvr(AlbumListActivity paramAlbumListActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
+    paramAdapterView = this.a.a.a(paramInt);
+    if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name)))
     {
-      this.a.a();
-      this.a.jdField_a_of_type_AndroidContentIntent.removeExtra("PhotoConst.SEND_BUSINESS_TYPE");
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra(AlbumConstants.h, 2);
-      if (!this.a.jdField_a_of_type_AndroidContentIntent.hasExtra("extra_image_sender_tag")) {
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("extra_image_sender_tag", "SendPhotoActivity.handlePhoto");
-      }
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("open_chatfragment_fromphoto", true);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("param_selNum", this.a.jdField_b_of_type_JavaUtilArrayList.size());
-      if (!this.a.jdField_c_of_type_Boolean)
-      {
-        ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
-        ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).overridePendingTransition(0, 2131034124);
-        if (!this.a.jdField_b_of_type_Boolean)
-        {
-          String str1 = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-          String str2 = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
-          this.a.jdField_a_of_type_AndroidContentIntent.setClassName(str2, str1);
-          this.a.jdField_a_of_type_AndroidContentIntent.addFlags(603979776);
-          ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(this.a.jdField_a_of_type_AndroidContentIntent);
-        }
-      }
-      Utils.a(BaseApplication.getContext(), this.a.jdField_c_of_type_JavaUtilArrayList);
+      QQToast.a(this.a, 2131436147, 0).a();
       return;
     }
-    catch (Exception localException)
+    if (this.a.h)
     {
+      paramView = this.a.getIntent();
+      paramView.putExtra("ALBUM_ID", paramAdapterView._id);
+      paramView.putExtra("ALBUM_NAME", paramAdapterView.name);
+      paramView.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", paramView.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0));
+      paramView.putExtra("album_enter_directly", false);
+      this.a.setResult(-1, paramView);
+      this.a.finish();
+      AlbumUtil.a(this.a, true, true);
+      return;
+    }
+    if (AlbumListActivity.a(this.a))
+    {
+      if (AlbumListActivity.a(this.a).contains(paramAdapterView._id)) {
+        AlbumListActivity.a(this.a).remove(paramAdapterView._id);
+      }
       for (;;)
       {
-        localException.printStackTrace();
+        this.a.a.notifyDataSetChanged();
+        return;
+        if (!TextUtils.isEmpty(paramAdapterView._id)) {
+          AlbumListActivity.a(this.a).add(paramAdapterView._id);
+        }
+      }
+    }
+    if (paramAdapterView._id == "qzone_album")
+    {
+      paramView = this.a.getIntent();
+      paramAdapterView = paramView.getExtras();
+      paramAdapterView.putInt("key_personal_album_enter_model", 1);
+      paramAdapterView.putInt("PhotoConst.CURRENT_QUALITY_TYPE", paramView.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0));
+      paramAdapterView.putSerializable("PhotoConst.PHOTO_INFOS", paramView.getSerializableExtra("PhotoConst.PHOTO_INFOS"));
+      paramAdapterView.putBoolean("PhotoConst.IS_SHOW_QZONE_ALBUM", true);
+      paramAdapterView.putLong("PhotoConst.QZONE_ALBUM_NUM", paramView.getLongExtra("PhotoConst.QZONE_ALBUM_NUM", 0L));
+      paramAdapterView.putStringArrayList("PhotoConst.PHOTO_PATHS", paramView.getStringArrayListExtra("PhotoConst.PHOTO_PATHS"));
+      paramView = QZoneHelper.UserInfo.a();
+      paramView.a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      paramAdapterView.putString("keyAction", "actionSelectPicture");
+      paramAdapterView.putBoolean("key_need_change_to_jpg", true);
+      QZoneHelper.a(this.a, paramView, paramAdapterView, 0);
+      this.a.finish();
+      AlbumUtil.a(this.a, true, true);
+    }
+    while (this.a.i)
+    {
+      StoryReportor.a("pic_choose_slides", "change_album", 0, 0, new String[0]);
+      return;
+      paramView = this.a.getIntent();
+      paramView.putExtra("ALBUM_ID", paramAdapterView._id);
+      paramView.putExtra("ALBUM_NAME", paramAdapterView.name);
+      paramView.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", paramView.getIntExtra("PhotoConst.CURRENT_QUALITY_TYPE", 0));
+      paramView.putExtra("album_enter_directly", false);
+      paramView.putExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", this.a.b);
+      paramView.putExtra("PhotoConst.DISABLE_UPLOAD_TO_TROOP_ALBUM", this.a.d);
+      AlbumListActivity.a(this.a, true);
+      paramView.setClass(this.a, PhotoListActivity.class);
+      paramView.addFlags(603979776);
+      this.a.startActivity(paramView);
+      if ("$VideoAlbumId".equals(paramAdapterView._id)) {
+        ReportController.b(null, "CliOper", "", "", "0X8006131", "0X8006131", 0, 0, "", "", "", "");
+      }
+      try
+      {
+        this.a.finish();
+        AlbumUtil.a(this.a, true, true);
+      }
+      catch (Exception paramAdapterView)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AlbumListActivity", 2, "onItemClick finish() exception=" + paramAdapterView.getMessage());
+          }
+        }
       }
     }
   }

@@ -1,11 +1,5 @@
 package cooperation.wadl.ipc;
 
-import amqf;
-import amqg;
-import amqh;
-import amqi;
-import amqj;
-import amqk;
 import android.content.ServiceConnection;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -15,6 +9,12 @@ import android.os.HandlerThread;
 import android.os.IBinder.DeathRecipient;
 import android.os.Message;
 import android.text.TextUtils;
+import angk;
+import angl;
+import angm;
+import angn;
+import ango;
+import angp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.jsp.WebSSOAgentServlet;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -33,13 +33,13 @@ import mqq.app.NewIntent;
 
 public class WadlProxyServiceManager
 {
-  private amqk jdField_a_of_type_Amqk;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new amqh(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new angm(this);
   public Handler a;
-  private IBinder.DeathRecipient jdField_a_of_type_AndroidOsIBinder$DeathRecipient = new amqg(this);
+  private IBinder.DeathRecipient jdField_a_of_type_AndroidOsIBinder$DeathRecipient = new angl(this);
+  private angp jdField_a_of_type_Angp;
   private IWadlProxyServiceMonitor jdField_a_of_type_CooperationWadlIpcIWadlProxyServiceMonitor;
   private IWadlService jdField_a_of_type_CooperationWadlIpcIWadlService;
-  private IWadlServiceCallBack jdField_a_of_type_CooperationWadlIpcIWadlServiceCallBack = new amqj(this);
+  private IWadlServiceCallBack jdField_a_of_type_CooperationWadlIpcIWadlServiceCallBack = new ango(this);
   private List jdField_a_of_type_JavaUtilList = new Vector();
   private CopyOnWriteArrayList jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
   private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
@@ -51,7 +51,7 @@ public class WadlProxyServiceManager
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     paramAppRuntime = new HandlerThread("WadlClientMessage.Thread", 10);
     paramAppRuntime.start();
-    this.jdField_a_of_type_Amqk = new amqk(this, paramAppRuntime.getLooper());
+    this.jdField_a_of_type_Angp = new angp(this, paramAppRuntime.getLooper());
     paramAppRuntime = new HandlerThread("WadlClientJob.Thread", 10);
     paramAppRuntime.start();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(paramAppRuntime.getLooper());
@@ -99,9 +99,9 @@ public class WadlProxyServiceManager
   
   private void d()
   {
-    Message localMessage = this.jdField_a_of_type_Amqk.obtainMessage();
+    Message localMessage = this.jdField_a_of_type_Angp.obtainMessage();
     localMessage.what = 2;
-    this.jdField_a_of_type_Amqk.sendMessage(localMessage);
+    this.jdField_a_of_type_Angp.sendMessage(localMessage);
   }
   
   private void d(Bundle paramBundle)
@@ -142,7 +142,7 @@ public class WadlProxyServiceManager
       WebSSOAgent.UniSsoServerReqComm localUniSsoServerReqComm = new WebSSOAgent.UniSsoServerReqComm();
       localUniSsoServerReqComm.platform.set(109L);
       localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-      localUniSsoServerReqComm.mqqver.set("7.6.0");
+      localUniSsoServerReqComm.mqqver.set("7.6.3");
       paramBundle = new WebSSOAgent.UniSsoServerReq();
       paramBundle.comm.set(localUniSsoServerReqComm);
       paramBundle.reqdata.set((String)localObject);
@@ -150,7 +150,7 @@ public class WadlProxyServiceManager
       ((NewIntent)localObject).putExtra("extra_cmd", "DownloaderReport.DownloaderMsg");
       ((NewIntent)localObject).putExtra("extra_data", paramBundle.toByteArray());
       ((NewIntent)localObject).putExtra("extra_timeout", 5000L);
-      ((NewIntent)localObject).setObserver(new amqi(this, str));
+      ((NewIntent)localObject).setObserver(new angn(this, str));
       this.jdField_a_of_type_MqqAppAppRuntime.startServlet((NewIntent)localObject);
       return;
     }
@@ -205,9 +205,9 @@ public class WadlProxyServiceManager
   
   public void a()
   {
-    Message localMessage = this.jdField_a_of_type_Amqk.obtainMessage();
+    Message localMessage = this.jdField_a_of_type_Angp.obtainMessage();
     localMessage.what = 1;
-    this.jdField_a_of_type_Amqk.sendMessage(localMessage);
+    this.jdField_a_of_type_Angp.sendMessage(localMessage);
   }
   
   public void a(Bundle paramBundle)
@@ -276,7 +276,7 @@ public class WadlProxyServiceManager
     {
       WLog.b("WadlProxyServiceManager", "##@innerStartService:bindWadlService");
       WadlProxyService.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new amqf(this), 3000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new angk(this), 3000L);
       return;
     }
     catch (Exception localException)

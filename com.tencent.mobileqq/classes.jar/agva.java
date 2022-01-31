@@ -1,21 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class agva
-  implements ProviderContainerView.ContainerViewListener
+  implements ActionSheet.OnDismissListener
 {
-  public agva(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agva(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void a()
+  public void onDismiss()
   {
-    EffectsCameraCaptureFragment.a(this.a).setState(2);
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    EffectsCameraCaptureFragment.a(this.a).setState(1);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8005AFA", "0X8005AFA", 0, 0, "", "", "", "");
   }
 }
 

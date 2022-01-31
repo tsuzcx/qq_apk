@@ -1,17 +1,28 @@
-import com.tencent.common.galleryactivity.AbstractImageAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.animation.AnimationSet;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class vld
   implements Runnable
 {
-  public vld(AIOImageListScene paramAIOImageListScene) {}
+  public vld(UnlimitedBladeWorks paramUnlimitedBladeWorks, Activity paramActivity, int paramInt) {}
   
   public void run()
   {
-    if ((this.a.a != null) && (!((AIOPhotoListAdapter)this.a.a).a(false))) {
-      this.a.a.notifyDataSetChanged();
-    }
+    if (((Build.VERSION.SDK_INT > 16) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {}
+    View localView;
+    AnimationSet localAnimationSet;
+    do
+    {
+      return;
+      localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131363491);
+      localAnimationSet = UnlimitedBladeWorks.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks, this.jdField_a_of_type_Int);
+    } while (localView == null);
+    localView.startAnimation(localAnimationSet);
   }
 }
 

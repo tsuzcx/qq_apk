@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.app.FriendsManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-class zax
+public class zax
   implements Runnable
 {
-  zax(zaw paramzaw, String paramString1, String paramString2) {}
+  String jdField_a_of_type_JavaLangString = null;
+  
+  zax(BrowserAppInterface paramBrowserAppInterface, String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
   public void run()
   {
-    this.jdField_a_of_type_Zaw.a.a(this.jdField_a_of_type_JavaLangString, this.b);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, 1).a();
+    }
   }
 }
 

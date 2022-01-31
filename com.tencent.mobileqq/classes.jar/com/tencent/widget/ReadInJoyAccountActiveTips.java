@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alnw;
+import amdm;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -35,17 +35,17 @@ public class ReadInJoyAccountActiveTips
   {
     this.jdField_a_of_type_Int = ((int)DeviceInfoUtil.j());
     this.jdField_b_of_type_Int = ((int)DeviceInfoUtil.k());
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130969532, null);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130969539, null);
     setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366847));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366846);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366889));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366888);
     setHeight(-2);
     setWidth(-2);
     setBackgroundDrawable(new ColorDrawable(0));
     setTouchable(true);
     setFocusable(true);
     setOutsideTouchable(true);
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new alnw(this));
+    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new amdm(this));
     b();
   }
   
@@ -67,7 +67,7 @@ public class ReadInJoyAccountActiveTips
       QLog.d("ReadInJoyAccountActiveTips", 2, "x = " + arrayOfInt[0] + ", y = " + arrayOfInt[1]);
       QLog.d("ReadInJoyAccountActiveTips", 2, "parent.getWidth() = " + paramView.getWidth() + ", parent.getHeight() = " + paramView.getHeight());
     }
-    int i = (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559669);
+    int i = (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559687);
     int j;
     int k;
     if (this.jdField_a_of_type_Int - arrayOfInt[0] > i)
@@ -87,7 +87,7 @@ public class ReadInJoyAccountActiveTips
       }
       showAtLocation(paramView, 0, j, i);
       return;
-      j = this.jdField_a_of_type_Int - this.c - (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559685);
+      j = this.jdField_a_of_type_Int - this.c - (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559703);
       i = arrayOfInt[1] + paramView.getHeight() / 2 + paramView.getHeight() / 5 + AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
       k = arrayOfInt[0] + paramView.getWidth() / 2 - j - AIOUtils.a(12.5F, this.jdField_a_of_type_AndroidAppActivity.getResources()) / 2;
       if (QLog.isColorLevel()) {
@@ -99,7 +99,7 @@ public class ReadInJoyAccountActiveTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.ReadInJoyAccountActiveTips
  * JD-Core Version:    0.7.0.1
  */

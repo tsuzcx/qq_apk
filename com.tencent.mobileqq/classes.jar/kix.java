@@ -1,27 +1,35 @@
-import android.graphics.drawable.Drawable;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.av.widget.stageview.StageEffectView;
-import com.tencent.av.widget.stageview.StageMemberView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.JoinGroupHandler;
+import com.tencent.biz.JoinGroupTransitActivity;
+import java.lang.ref.WeakReference;
 
 public class kix
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public kix(StageEffectView paramStageEffectView, boolean paramBoolean, StageMemberView paramStageMemberView, Drawable paramDrawable, ImageView paramImageView, float paramFloat1, float paramFloat2) {}
+  private WeakReference a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public kix(JoinGroupTransitActivity paramJoinGroupTransitActivity)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.post(new kiy(this));
+    this.a = new WeakReference(paramJoinGroupTransitActivity);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void handleMessage(Message paramMessage)
+  {
+    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
+    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
+      return;
+    }
+    localJoinGroupTransitActivity.finish();
+  }
 }
 
 

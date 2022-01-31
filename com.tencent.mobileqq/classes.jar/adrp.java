@@ -1,37 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.app.Dialog;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class adrp
   implements Runnable
 {
-  public adrp(CUOpenCardGuideMng.CUOpenCardClickableSpan paramCUOpenCardClickableSpan) {}
+  public adrp(PresenceInterfaceImpl paramPresenceInterfaceImpl, String paramString) {}
   
   public void run()
   {
-    String str;
-    if (this.a.a == 1) {
-      str = "0X8008124";
-    }
-    for (;;)
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a, 232, null, this.jdField_a_of_type_JavaLangString, new adrq(this), null);
+    try
     {
-      if (!TextUtils.isEmpty(str)) {
-        ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      }
+      localQQCustomDialog.show();
       return;
-      if (this.a.a == 2) {
-        str = "0X8008126";
-      } else if ((this.a.a == 3) || (this.a.a == 4)) {
-        str = "0X800813E";
-      } else {
-        str = null;
-      }
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("PresenceInterfaceImpl", 2, "show dialog fail");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrp
  * JD-Core Version:    0.7.0.1
  */

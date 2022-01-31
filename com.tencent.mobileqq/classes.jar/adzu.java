@@ -1,33 +1,22 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
 
-public class adzu
-  implements Runnable
+class adzu
+  implements WebProcessManager.WebProcessStartListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public long c;
-  public long d;
+  adzu(adzt paramadzt) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      this.d = System.currentTimeMillis();
-      ThreadManager.post(new adzv(this), 5, null, false);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    if (paramBoolean) {
+      LebaWithFeeds.a(this.a.a.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzu
  * JD-Core Version:    0.7.0.1
  */

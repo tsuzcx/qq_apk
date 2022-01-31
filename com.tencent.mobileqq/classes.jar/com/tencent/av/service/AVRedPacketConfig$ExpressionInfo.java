@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.io.Serializable;
-import jna;
+import jml;
 
 public class AVRedPacketConfig$ExpressionInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new jna();
+  public static final Parcelable.Creator CREATOR = new jml();
   public int coolValue;
   public int id;
   public int perfectValue;

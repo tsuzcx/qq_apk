@@ -10,7 +10,7 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
 import java.util.ArrayList;
-import nls;
+import nne;
 
 public class ShareGroupVideoDataProvider
   extends MultiGroupVideoDataProvider
@@ -95,7 +95,7 @@ public class ShareGroupVideoDataProvider
   public void a(String paramString, ArrayList paramArrayList)
   {
     paramArrayList = new BatchGetVideoInfo(paramArrayList);
-    paramArrayList.a(new nls(this, paramArrayList, paramString));
+    paramArrayList.a(new nne(this, paramArrayList, paramString));
     paramArrayList.b();
   }
   

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import aipc;
+import ajdg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class TroopBarPOI
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aipc();
+  public static final Parcelable.Creator CREATOR = new ajdg();
   public final int a;
   public final String a;
   public final int b;
@@ -133,7 +133,7 @@ public class TroopBarPOI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopBarPOI
  * JD-Core Version:    0.7.0.1
  */

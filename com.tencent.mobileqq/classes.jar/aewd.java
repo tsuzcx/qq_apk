@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.nearby.FaceScoreCallBack;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.nearby.now.model.NowPublishParam;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import com.tencent.mobileqq.nearby.now.send.uploader.WordsCheck.OnResultListener;
 
 public class aewd
-  extends FaceScoreCallBack
+  implements WordsCheck.OnResultListener
 {
-  public aewd(NearbyProfileFragment paramNearbyProfileFragment, long paramLong) {}
+  public aewd(VideoFeedsManager paramVideoFeedsManager, NowPublishParam paramNowPublishParam) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Long == paramLong1)
+    if (paramInt == 0)
     {
-      NearbyProfileFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment).tinyId = paramLong2;
-      NearbyPeopleProfileActivity localNearbyPeopleProfileActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a;
-      if (!NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.j)) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.jdField_a_of_type_Long = paramLong2;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a(paramLong2);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelNowPublishParam);
+      return;
     }
+    b(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    VideoFeedsUploader.UploadResult localUploadResult = new VideoFeedsUploader.UploadResult();
+    localUploadResult.i = "文字包含敏感词！";
+    localUploadResult.a = -109;
+    VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager).a(new VideoFeedsUploader.UploadInfo(), localUploadResult);
   }
 }
 

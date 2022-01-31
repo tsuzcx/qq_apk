@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.WebViewTitleStyleHelper;
 
-class tij
+public class tij
   implements Runnable
 {
-  tij(tii paramtii, RichStatus paramRichStatus) {}
+  public tij(QQBrowserActivity paramQQBrowserActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Tii.a.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+    WebViewTitleStyleHelper.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
   }
 }
 

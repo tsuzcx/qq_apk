@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.app.Job;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mobileqq.app.QIMNewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
 
 public class zkj
-  extends zkt
+  implements Runnable
 {
-  public zkj(BlockingQueue paramBlockingQueue, zgp paramzgp)
-  {
-    super(2, 128, 2L, paramBlockingQueue, paramzgp);
-  }
+  public zkj(QIMNewFriendManager paramQIMNewFriendManager, QQAppInterface paramQQAppInterface) {}
   
-  protected String a()
+  public void run()
   {
-    return "ThreadLightPool";
-  }
-  
-  protected ConcurrentLinkedQueue a()
-  {
-    return Job.c;
+    ((FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(216)).c();
   }
 }
 

@@ -1,18 +1,32 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-public final class lct
-  implements QueryCallback
+public class lct
+  extends ReadInJoyObserver
 {
-  public lct(EditText paramEditText) {}
+  public lct(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
   
-  public void a(char[] paramArrayOfChar)
+  public void a(int paramInt)
   {
-    int i = this.a.getSelectionStart();
-    int j = this.a.getSelectionEnd();
-    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
-    this.a.requestFocus();
+    ReadInJoyFeedsActivity.a(this.a, paramInt);
+    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
+      ((KanDianViewController)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (ReadInJoyFeedsActivity.a(this.a) == 1)
+    {
+      ((KandianMergeManager)this.a.app.getManager(161)).b(1);
+      return;
+    }
+    ReadInJoyFeedsActivity.b(this.a, paramInt1);
+    ((KanDianViewController)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
   }
 }
 

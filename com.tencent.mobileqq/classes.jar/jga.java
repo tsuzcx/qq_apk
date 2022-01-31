@@ -1,33 +1,25 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.filter.EffectFilterTools;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SecUtil;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.pendant.EffectPendantTips;
 
 public class jga
-  implements INetEngine.INetEngineListener
+  implements Runnable
 {
-  public jga(EffectFilterTools paramEffectFilterTools) {}
+  public jga(EffectPendantTips paramEffectPendantTips, String paramString, int paramInt) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void run()
   {
-    FilterItem localFilterItem = (FilterItem)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    if (paramNetResp.jdField_a_of_type_Int != 0) {
-      AVLog.c("EffectFilterTools", "download IconFile. errcode = " + paramNetResp.b + "|" + localFilterItem.getId());
-    }
-    String str;
-    do
+    try
     {
+      String str = this.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(str)) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.b(this.jdField_a_of_type_Int, str);
+      }
       return;
-      str = SecUtil.getFileMd5(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
-    } while (localFilterItem.getIconMd5().equalsIgnoreCase(str));
-    AVLog.c("EffectFilterTools", "download IconFile faild : md5 is not match: " + localFilterItem.getIconMd5() + "|" + str);
-    FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

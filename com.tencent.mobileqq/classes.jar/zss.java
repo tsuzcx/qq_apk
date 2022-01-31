@@ -1,19 +1,15 @@
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.qim.QIMUndecideNotifyDialog;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
 
 public class zss
+  implements Runnable
 {
-  long jdField_a_of_type_Long;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public zss(C2CMessageProcessor paramC2CMessageProcessor, TroopHandler paramTroopHandler, String paramString) {}
   
-  zss(QIMUndecideNotifyDialog paramQIMUndecideNotifyDialog) {}
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+  }
 }
 
 

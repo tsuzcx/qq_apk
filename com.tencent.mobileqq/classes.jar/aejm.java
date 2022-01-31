@@ -1,69 +1,140 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
-import com.tencent.mobileqq.nearby.now.send.uploader.WordsCheck.OnResultListener;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.WordsSecurity.SecurityRsp;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MultiMsgProxy;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
+import tencent.im.msg.im_msg_body.RichText;
 
-public final class aejm
-  implements CsTask.Callback
+public class aejm
+  implements UpCallBack
 {
-  public aejm(WordsCheck.OnResultListener paramOnResultListener) {}
+  int jdField_a_of_type_Int;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  HashMap jdField_a_of_type_JavaUtilHashMap;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public aejm(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString, int paramInt, ArrayList paramArrayList, HashMap paramHashMap)
   {
-    paramBundle = new WordsSecurity.SecurityRsp();
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (!paramBundle.ret_code.has()) {
-        break label104;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+  }
+  
+  private Bitmap a(Bitmap paramBitmap)
+  {
+    Bitmap localBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+    Canvas localCanvas = new Canvas(localBitmap);
+    localCanvas.drawColor(-1);
+    localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
+    return localBitmap;
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
+    if (paramSendResult.jdField_a_of_type_Int == 0) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg", 2, "send real struct msg done, cost : " + (System.currentTimeMillis() - MultiMsgManager.b()));
       }
-      i = paramBundle.ret_code.get();
-      if (paramBundle.sys_beat_level.get() == 4) {
-        break label177;
-      }
-      paramInt = i;
-      if (paramBundle.dirty_word_beat.get() != 1) {}
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
-      for (;;)
+      String str2;
+      Object localObject2;
+      long l;
+      try
       {
-        int i;
-        QLog.e("WordsCheck", 1, paramArrayOfByte, new Object[0]);
-        if (this.a == null) {
-          break;
+        String str1;
+        String str3;
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          str1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131438944), new Object[] { ContactUtils.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c()), ContactUtils.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString) });
+          str3 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg;
+          str2 = "https://mma.qq.com/jumpqq/forward2.html?rId=" + paramSendResult.c + "&fName=" + paramSendResult.d;
+          if (this.jdField_a_of_type_Int == 1)
+          {
+            i = 4;
+            localObject2 = ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(i, this.jdField_a_of_type_JavaLangString, (byte)1, false, 0);
+            if (localObject2 != null) {
+              continue;
+            }
+          }
         }
-        this.a.a(0);
-        return;
-        paramInt = i;
-        if (i == 0) {
-          paramInt = -1;
+        else
+        {
+          str1 = String.format(((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplication().getString(2131438945), new Object[] { ContactUtils.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
+          continue;
         }
+        if (this.jdField_a_of_type_Int != 3000) {
+          break label567;
+        }
+        i = 101;
+        continue;
+        Object localObject1 = localObject2;
+        if (this.jdField_a_of_type_Int == 3000) {
+          localObject1 = a((Bitmap)localObject2);
+        }
+        localObject2 = String.valueOf(System.currentTimeMillis());
+        WXShareHelper.a().d((String)localObject2, str1, (Bitmap)localObject1, str3, str2);
+        l = paramSendResult.c.hashCode();
+        paramSendResult = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (paramSendResult.hasNext())
+        {
+          ((MessageRecord)paramSendResult.next()).msgseq = l;
+          continue;
+        }
+        ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
       }
-    }
-    QLog.i("WordsCheck", 1, "ret_code = " + paramInt);
-    if (this.a != null)
-    {
-      this.a.a(paramInt);
+      catch (Exception paramSendResult)
+      {
+        paramSendResult.printStackTrace();
+        return;
+      }
+      MultiMsgManager.a().a(this.jdField_a_of_type_JavaUtilHashMap, l, (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).a(8031, false, Integer.valueOf(0));
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("MultiMsg", 2, "shareToWXFriend.transaction: " + (String)localObject2 + ", shareLink:" + str2);
       return;
-      label104:
-      QLog.i("WordsCheck", 1, "ret_code not has, ret_code = " + paramInt);
-      if (this.a != null)
-      {
-        this.a.b(3);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
       }
+      ((MessageHandler)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(0)).a(8031, false, Integer.valueOf(5));
+      return;
+      label567:
+      int i = 1;
     }
-    label177:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,55 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class aekl
-  implements View.OnTouchListener
+  extends Handler
 {
-  public aekl(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aekl(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, Looper paramLooper)
   {
-    return paramMotionEvent.getAction() == 2;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object localObject = paramMessage.getData();
+    if (localObject != null) {}
+    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
+    {
+      paramMessage = (Bitmap)paramMessage.obj;
+      if ((paramMessage != null) && (localObject != null))
+      {
+        localObject = new File((String)localObject);
+        if (((File)localObject).exists()) {
+          ((File)localObject).delete();
+        }
+      }
+      try
+      {
+        localObject = new FileOutputStream((File)localObject);
+        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
+        ((FileOutputStream)localObject).flush();
+        ((FileOutputStream)localObject).close();
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        paramMessage.printStackTrace();
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aekl
  * JD-Core Version:    0.7.0.1
  */

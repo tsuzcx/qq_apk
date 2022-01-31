@@ -57,7 +57,7 @@ import tencent.im.oidb.cmd0x857.TroopTips0x857.GoldMsgTipsElem;
 import tencent.im.s2c.msgtype0x210.submsgtype0x66.submsgtype0x66.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x7e.submsgtype0x7e.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x7e.submsgtype0x7e.WalletMsgPush;
-import wxp;
+import xau;
 
 public class QWalletPushManager
 {
@@ -369,7 +369,7 @@ public class QWalletPushManager
       if (localMqqHandler == null) {
         break;
       }
-      localMqqHandler.postDelayed(new wxp(paramQQAppInterface), i);
+      localMqqHandler.postDelayed(new xau(paramQQAppInterface), i);
       return;
     }
   }
@@ -677,7 +677,7 @@ public class QWalletPushManager
     if (QQUtils.a(paramQQAppInterface.getApp()))
     {
       ((PowerManager)paramQQAppInterface.getApp().getSystemService("power")).newWakeLock(268435462, "Q.qwallet.push").acquire(10000L);
-      String str2 = String.format(BaseApplication.getContext().getString(2131432220), new Object[] { Integer.valueOf(a()) });
+      String str2 = String.format(BaseApplication.getContext().getString(2131432237), new Object[] { Integer.valueOf(a()) });
       if (!TextUtils.isEmpty(paramPCPayData.jdField_b_of_type_JavaLangString))
       {
         str1 = paramPCPayData.jdField_b_of_type_JavaLangString;
@@ -741,7 +741,7 @@ public class QWalletPushManager
         AudioUtil.a(Uri.fromFile(paramQQAppInterface), false, true);
       }
       return;
-      str1 = BaseApplication.getContext().getString(2131432221);
+      str1 = BaseApplication.getContext().getString(2131432238);
       break;
       bool1 = true;
       break label327;
@@ -1020,11 +1020,11 @@ public class QWalletPushManager
     do
     {
       return;
-      String str = String.format(BaseApplication.getContext().getString(2131432220), new Object[] { Integer.valueOf(a()) });
+      String str = String.format(BaseApplication.getContext().getString(2131432237), new Object[] { Integer.valueOf(a()) });
       localObject1 = paramPCPayData.jdField_b_of_type_JavaLangString;
       paramPCPayData = (QWalletPushManager.PCPayData)localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        paramPCPayData = BaseApplication.getContext().getString(2131432221);
+        paramPCPayData = BaseApplication.getContext().getString(2131432238);
       }
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("callbackSn", "0");
@@ -1036,7 +1036,7 @@ public class QWalletPushManager
       ((Intent)localObject2).addFlags(268435456);
       ((Intent)localObject2).putExtras((Bundle)localObject1);
       localObject2 = PendingIntent.getActivity(paramQQAppInterface.getApp(), 12, (Intent)localObject2, 1073741824);
-      localObject1 = new Notification(2130839532, str, System.currentTimeMillis());
+      localObject1 = new Notification(2130839537, str, System.currentTimeMillis());
       ((Notification)localObject1).flags = 16;
       ((Notification)localObject1).setLatestEventInfo(paramQQAppInterface.getApp(), str, paramPCPayData, (PendingIntent)localObject2);
       paramQQAppInterface = new QNotificationManager(paramQQAppInterface.getApp());

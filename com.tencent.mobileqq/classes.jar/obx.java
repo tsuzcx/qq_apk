@@ -1,25 +1,50 @@
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.DiscoverManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.network.request.square.GetSquareBannerRequest;
+import com.tencent.biz.qqstory.network.request.square.GetSquareBannerRequest.GetSquareBannerResponse;
+import com.tencent.biz.qqstory.storyHome.square.SquareFeedListPageLoader;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.util.List;
 
 public class obx
-  implements Runnable
+  implements CmdTaskManger.CommandCallback
 {
-  public obx(EditPicSave paramEditPicSave) {}
+  public obx(SquareFeedListPageLoader paramSquareFeedListPageLoader) {}
   
-  public void run()
+  public void a(@NonNull GetSquareBannerRequest arg1, @Nullable GetSquareBannerRequest.GetSquareBannerResponse paramGetSquareBannerResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    EditPicSave localEditPicSave = this.a;
-    localEditPicSave.jdField_a_of_type_Int += this.a.b;
-    if (this.a.jdField_a_of_type_Int > 99)
+    ??? = (DiscoverManager)SuperManager.a(22);
+    if ((paramErrorMessage.isSuccess()) && (paramGetSquareBannerResponse != null))
     {
-      this.a.jdField_a_of_type_Int = 99;
-      this.a.a(this.a.jdField_a_of_type_Int);
-      return;
+      ???.b(paramGetSquareBannerResponse.a, true);
+      SLog.a("Q.qqstory.discover.SquareFeedListPageLoader", "refresh banner :%s", paramGetSquareBannerResponse.a);
+      synchronized (this.a)
+      {
+        SquareFeedListPageLoader.a(this.a, paramGetSquareBannerResponse);
+        SquareFeedListPageLoader.a(this.a);
+        return;
+      }
     }
-    this.a.a(this.a.jdField_a_of_type_Int);
-    this.a.e();
+    SLog.b("Q.qqstory.discover.SquareFeedListPageLoader", "refresh banner fail:%s", paramErrorMessage);
+    paramGetSquareBannerResponse = ???.b();
+    for (;;)
+    {
+      synchronized (this.a)
+      {
+        if (paramGetSquareBannerResponse.size() > 0)
+        {
+          SquareFeedListPageLoader.a(this.a, new GetSquareBannerRequest.GetSquareBannerResponse(new ErrorMessage()));
+          SquareFeedListPageLoader.a(this.a).a = paramGetSquareBannerResponse;
+          SquareFeedListPageLoader.a(this.a);
+          return;
+        }
+      }
+      SquareFeedListPageLoader.a(this.a, new GetSquareBannerRequest.GetSquareBannerResponse(paramErrorMessage));
+    }
   }
 }
 

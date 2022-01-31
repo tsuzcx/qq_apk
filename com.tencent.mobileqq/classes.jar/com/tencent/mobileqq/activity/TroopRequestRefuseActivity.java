@@ -34,7 +34,7 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
 import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
-import uam;
+import udm;
 
 public class TroopRequestRefuseActivity
   extends IphoneTitleBarActivity
@@ -112,7 +112,7 @@ public class TroopRequestRefuseActivity
       enableRightHighlight(true);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new uam(this, paramEditable));
+    this.jdField_a_of_type_AndroidOsHandler.post(new udm(this, paramEditable));
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -120,17 +120,17 @@ public class TroopRequestRefuseActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130971641);
-    setTitle(2131430593);
-    setLeftButton(2131432998, this);
-    setRightHighlightButton(2131434739, this);
+    super.setContentView(2130971689);
+    setTitle(2131430610);
+    setLeftButton(2131433015, this);
+    setRightHighlightButton(2131434756, this);
     enableRightHighlight(true);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131375179));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131375365));
     this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(-1);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375180));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375366));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(25));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131375181));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131375367));
     paramBundle = a();
     if (!TextUtils.isEmpty(paramBundle))
     {
@@ -162,7 +162,7 @@ public class TroopRequestRefuseActivity
   {
     if (paramView == this.rightHighLView) {
       if (!NetworkUtil.d(this)) {
-        QQToast.a(this, getString(2131433196), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131433213), 0).b(getTitleBarHeight());
       }
     }
     label137:

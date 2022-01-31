@@ -27,12 +27,12 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.Vector;
-import zey;
+import zie;
 
 public class PeakAppInterface
   extends AppInterface
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new zey(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new zie(this);
   private QQStoryContext jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   public PeakMsfServletProxy a;

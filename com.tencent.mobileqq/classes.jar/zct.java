@@ -1,83 +1,44 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.LebaHelper;
-import com.tencent.mobileqq.config.DownloadIconsListener;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
 
 public class zct
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public zct(LebaHelper paramLebaHelper, URL paramURL, File paramFile, String paramString) {}
+  public zct(DeviceProfileManager paramDeviceProfileManager) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = 0;
-    for (;;)
+    if (QLog.isDevelopLevel()) {
+      QLog.e("DeviceProfileManager", 4, "onReceive");
+    }
+    if (paramIntent == null) {}
+    do
     {
-      try
+      for (;;)
       {
-        if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaIoFile))
+        return;
+        try
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("LebaHelper", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "suc--------");
-          }
-          Object localObject1 = null;
-          if (BaseApplicationImpl.sImageCache != null)
+          paramContext = paramIntent.getExtras();
+          if (paramContext != null)
           {
-            localObject1 = "LebaIcon://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-            localObject1 = (Bitmap)BaseApplicationImpl.sImageCache.get(localObject1);
-          }
-          if (QLog.isColorLevel())
-          {
-            ??? = new StringBuilder().append("get Bitmap from cache, result=");
-            if (localObject1 == null) {
-              break label349;
-            }
-            bool = true;
-            QLog.d("LebaHelper", 2, bool);
-          }
-          if (localObject1 != null) {
-            break label346;
-          }
-          localObject1 = LebaHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaIoFile);
-          if (localObject1 != null) {
-            if (QLog.isColorLevel()) {
-              QLog.d("LebaHelper", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "notify UI++++++++");
-            }
-          }
-          synchronized (this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.d)
-          {
-            if (i < this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.d.size())
+            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
+            if (DeviceProfileManager.a() != null)
             {
-              ((DownloadIconsListener)this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.d.get(i)).a(this.jdField_a_of_type_JavaLangString, (Bitmap)localObject1);
-              i += 1;
-              continue;
+              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
+              return;
             }
-            LebaHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaLangString);
-            return;
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_JavaLangString);
+        catch (Exception paramContext) {}
       }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper.jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_JavaLangString);
-        LebaHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      LebaHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppLebaHelper, this.jdField_a_of_type_JavaLangString);
-      return;
-      label346:
-      continue;
-      label349:
-      boolean bool = false;
-    }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 

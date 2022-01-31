@@ -1,25 +1,24 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
 
 public class adfs
-  implements URLDrawable.DownloadListener
+  implements View.OnClickListener
 {
-  public adfs(HotPicMainPanel paramHotPicMainPanel, ImageView paramImageView) {}
+  public adfs(ZipFilePresenter paramZipFilePresenter) {}
   
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.post(new adft(this));
+    if (this.a.a.a() != null) {
+      this.a.a.a().a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfs
  * JD-Core Version:    0.7.0.1
  */

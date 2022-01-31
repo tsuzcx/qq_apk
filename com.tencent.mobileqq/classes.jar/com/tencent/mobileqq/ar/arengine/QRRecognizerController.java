@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aadp;
+import aaiv;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -244,7 +244,7 @@ public class QRRecognizerController
   {
     this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("QRRecognizerController", 0);
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new aadp(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aaiv(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(100);
     this.jdField_a_of_type_Long = 500L;
     if (ScanEntranceDPC.a().jdField_a_of_type_Boolean) {

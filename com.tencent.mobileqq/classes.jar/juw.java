@@ -1,25 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.av.ui.GAudioMemberListCtrl;
+import com.tencent.av.gameplay.ARNativeBridge;
+import com.tencent.av.ui.GamePlayView;
 
-public final class juw
+public class juw
+  implements Runnable
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  public TextView a;
-  boolean jdField_a_of_type_Boolean = false;
-  public ImageView b;
-  TextView b;
-  public boolean b;
+  public juw(GamePlayView paramGamePlayView, float paramFloat1, float paramFloat2, boolean paramBoolean) {}
   
-  private juw(GAudioMemberListCtrl paramGAudioMemberListCtrl)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetImageView = null;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = -1;
+    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView).native_updateEmitterLocation(this.jdField_a_of_type_Float, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
 
 public class ansx
   implements Runnable
 {
-  public ansx(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ansx(EditVideoDoodle paramEditVideoDoodle) {}
   
   public void run()
   {
-    this.a.a.serial();
-    this.a.app.a().a(this.a.a.frienduin, this.a.a.istroop, this.a.a.uniseq, this.a.a.msgData);
+    QQToast.a(this.a.a(), "表情个数已达上限", 0).a();
   }
 }
 

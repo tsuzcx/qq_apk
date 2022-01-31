@@ -1,14 +1,28 @@
-import com.tencent.qqprotect.qsec.FilterManager;
-import com.tencent.qqprotect.qsec.IScanner;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class alho
   implements Runnable
 {
-  public alho(FilterManager paramFilterManager, IScanner paramIScanner) {}
+  public alho(DownloadManager paramDownloadManager, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentQqprotectQsecIScanner.a();
+    try
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().deleteDownloadTask(this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
+    }
   }
 }
 

@@ -1,33 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.OnFetchUserInfoCallback;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest;
+import com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tribe.async.async.JobContext;
 
-public class onx
-  implements PlayModeUtils.OnFetchUserInfoCallback
+class onx
+  implements CmdTaskManger.CommandCallback
 {
-  public onx(StoryVideoPlayer paramStoryVideoPlayer, String paramString1, String paramString2, Bundle paramBundle) {}
+  onx(onw paramonw, JobContext paramJobContext, Integer paramInteger) {}
   
-  public void a(boolean paramBoolean1, QQUserUIItem paramQQUserUIItem, boolean paramBoolean2)
+  public void a(@NonNull GetTroopAssistantFeedIdListRequest paramGetTroopAssistantFeedIdListRequest, @Nullable GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse paramGetTroopAssistantFeedIdListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    SLog.d("Q.qqstory.player.YPlayModeUtils", "StoryPlayVideoActivity.fetchUserInfo, success==%s, unionId==%s, uin==%s, userUIItem==%s", new Object[] { Boolean.valueOf(paramBoolean1), this.jdField_a_of_type_JavaLangString, this.b, paramQQUserUIItem });
-    if (!paramBoolean1) {
-      QLog.e("Q.qqstory.player.StoryVideoPlayer", 2, "读取用户信息失败了, 赶紧查一下");
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      ThreadManager.getUIHandler().post(new ony(this));
+      SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
       return;
-      if (paramQQUserUIItem != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.d = paramQQUserUIItem.qq;
-        this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.b = paramQQUserUIItem.uid;
-      }
     }
+    if ((paramErrorMessage.isFail()) || (paramGetTroopAssistantFeedIdListResponse == null))
+    {
+      SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      onw.a(this.jdField_a_of_type_Onw, paramErrorMessage);
+      return;
+    }
+    onw.a(this.jdField_a_of_type_Onw).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_Boolean);
+    ((FeedManager)SuperManager.a(11)).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList);
+    paramGetTroopAssistantFeedIdListRequest = onw.a(this.jdField_a_of_type_Onw).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    onw.a(this.jdField_a_of_type_Onw, paramGetTroopAssistantFeedIdListRequest);
   }
 }
 

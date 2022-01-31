@@ -36,7 +36,7 @@ public class ZimuViewLiveListView
     if (bool)
     {
       localObject = (View)getParent();
-      EditText localEditText = (EditText)((View)localObject).findViewById(2131365920);
+      EditText localEditText = (EditText)((View)localObject).findViewById(2131365947);
       if (!((ZimuViewLive)((View)localObject).getParent()).a()) {
         break label71;
       }

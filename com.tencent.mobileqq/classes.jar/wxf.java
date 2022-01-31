@@ -1,26 +1,17 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class wxf
-  extends DownloadListener
+  implements Runnable
 {
-  public wxf(PreloadImgManager paramPreloadImgManager, AppInterface paramAppInterface) {}
+  final boolean jdField_a_of_type_Boolean = PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public wxf(PhotoListActivity paramPhotoListActivity) {}
+  
+  public void run()
   {
-    super.onDone(paramDownloadTask);
-    List localList = (List)PreloadImgManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager).get(paramDownloadTask.c);
-    if (paramDownloadTask.c.endsWith(".zip")) {
-      PreloadImgManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramDownloadTask.c, localList);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.B) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b())) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.runOnUiThread(new wxg(this));
     }
-    while (!paramDownloadTask.c.endsWith(".png")) {
-      return;
-    }
-    PreloadImgManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramDownloadTask.c, localList);
   }
 }
 

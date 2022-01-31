@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import afxl;
+import agln;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
@@ -522,7 +522,7 @@ public class PresendPicMgrService
     do
     {
       return;
-      localPicReq.a(new afxl(this, localPicReq));
+      localPicReq.a(new agln(this, localPicReq));
       if ((!a()) || (b()) || (FileUtils.a(localPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString) > 512000L))
       {
         Logger.a("PresendPicMgrService", "presendPic", "set FLAG_NOT_UPLOAD!");

@@ -1,22 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.ValueAnimator;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.SimpleAnimatorListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class okk
-  implements View.OnClickListener
+  extends AnimatorFactory.SimpleAnimatorListener
 {
-  public okk(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public okk(ElasticImageView paramElasticImageView) {}
   
-  public void onClick(View paramView)
+  public void a(ValueAnimator paramValueAnimator)
   {
-    SLog.b("SelectColorLayout", "onUndoClick: undoTypeEnable=" + this.a.jdField_a_of_type_Boolean);
-    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
-    while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnUndoViewClickListener == null)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnUndoViewClickListener.a();
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    SLog.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
   }
 }
 

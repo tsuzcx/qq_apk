@@ -1,36 +1,18 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OcrCamera;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
 public class agbl
-  extends Handler
+  implements Runnable
 {
-  public agbl(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public agbl(OcrCamera paramOcrCamera, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (!this.a.a(paramMessage)) {}
-    switch (paramMessage.what)
-    {
-    case 5: 
-    case 8: 
-    default: 
-      return;
-    case 6: 
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
-      {
-        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
-        return;
-      }
-      Toast.makeText(this.a.a.getApplicationContext(), 2131436727, 0).show();
-      return;
-    case 7: 
-      Toast.makeText(this.a.a.getApplicationContext(), 2131436729, 0).show();
-      return;
-    }
-    this.a.d();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("costTime", String.valueOf(this.jdField_a_of_type_Long));
+    StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ocr_select_pic", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

@@ -1,32 +1,11 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import dov.com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
 
 public class ansh
-  implements SensorEventListener
+  implements Runnable
 {
-  public ansh(SensorFrameImageView paramSensorFrameImageView) {}
+  public ansh(EditVideoActivity paramEditVideoActivity) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    switch (paramSensorEvent.sensor.getType())
-    {
-    }
-    for (;;)
-    {
-      SensorFrameImageView.a(this.a);
-      SensorFrameImageView.b(this.a);
-      return;
-      SensorFrameImageView.a(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.b(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.c(this.a, paramSensorEvent.values);
-    }
-  }
+  public void run() {}
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.open.agent;
 
-import akly;
-import aklz;
-import akma;
+import albo;
+import albp;
+import albq;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -80,8 +80,8 @@ public class CardContainer
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new akly(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new aklz(this);
+    this.jdField_a_of_type_AndroidOsHandler = new albo(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new albp(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     new DisplayMetrics();
     paramAttributeSet = getResources().getDisplayMetrics();
@@ -142,7 +142,7 @@ public class CardContainer
   
   public void a(int paramInt)
   {
-    ThreadManager.executeOnSubThread(new akma(this));
+    ThreadManager.executeOnSubThread(new albq(this));
     if (paramInt == this.jdField_a_of_type_Int) {
       return;
     }
@@ -204,7 +204,7 @@ public class CardContainer
     if (!TextUtils.isEmpty(paramString))
     {
       if (getTag() != null) {
-        ((TextView)findViewById(2131365737)).setText("该服务由" + paramString + "提供，提供以下权限即可继续操作");
+        ((TextView)findViewById(2131365764)).setText("该服务由" + paramString + "提供，提供以下权限即可继续操作");
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
       this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
@@ -249,7 +249,7 @@ public class CardContainer
       this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString2);
       if (!TextUtils.isEmpty(paramString1))
       {
-        paramString2 = String.format(super.getContext().getString(2131428657), new Object[] { paramString1 });
+        paramString2 = String.format(super.getContext().getString(2131428663), new Object[] { paramString1 });
         this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString2);
         this.jdField_f_of_type_AndroidWidgetTextView.setText(paramString2);
         if (this.g.getVisibility() == 0) {
@@ -339,36 +339,36 @@ public class CardContainer
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365732));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365733));
-    this.jdField_a_of_type_ComTencentOpenAgentCardLargeView = ((CardLargeView)super.findViewById(2131365703));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131365721));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365759));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365760));
+    this.jdField_a_of_type_ComTencentOpenAgentCardLargeView = ((CardLargeView)super.findViewById(2131365730));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131365748));
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setVisibility(8);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131365707));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131365704);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365719));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365726));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365720));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365727));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365728));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365705));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365712));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365706));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365714));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365715));
-    this.g = ((TextView)super.findViewById(2131365716));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)super.findViewById(2131365734));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131365731);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365746));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365753));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365747));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365754));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365755));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365732));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365739));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365733));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365741));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365742));
+    this.g = ((TextView)super.findViewById(2131365743));
     this.g.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131365739));
-    this.k = ((TextView)super.findViewById(2131365738));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365722));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365708));
-    this.h = ((TextView)super.findViewById(2131365724));
-    this.i = ((TextView)super.findViewById(2131365710));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365723));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365709));
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView = ((AuthorityLoginView)super.findViewById(2131365734));
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365736));
-    this.j = ((TextView)super.findViewById(2131365735));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131365766));
+    this.k = ((TextView)super.findViewById(2131365765));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365749));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365735));
+    this.h = ((TextView)super.findViewById(2131365751));
+    this.i = ((TextView)super.findViewById(2131365737));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365750));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365736));
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView = ((AuthorityLoginView)super.findViewById(2131365761));
+    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365763));
+    this.j = ((TextView)super.findViewById(2131365762));
     if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof AuthorityActivity))) {
       this.j.setOnClickListener((AuthorityActivity)this.jdField_a_of_type_AndroidContentContext);
     }

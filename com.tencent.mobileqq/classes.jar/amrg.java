@@ -1,62 +1,29 @@
-import com.tencent.mobileqq.util.EndianUtil;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.CellInfo;
 
-final class amrg
+public final class amrg
+  implements Parcelable.Creator
 {
-  public static int d = 16;
-  int jdField_a_of_type_Int = 538116905;
-  short jdField_a_of_type_Short = 1;
-  int jdField_b_of_type_Int;
-  short jdField_b_of_type_Short = 0;
-  int c;
-  
-  public int a()
+  public LbsDataV2.CellInfo a(Parcel paramParcel)
   {
-    return this.jdField_b_of_type_Int;
+    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
+    if (paramParcel != null)
+    {
+      localCellInfo.mcc = paramParcel.readInt();
+      localCellInfo.mnc = paramParcel.readInt();
+      localCellInfo.lac = paramParcel.readInt();
+      localCellInfo.cellId = paramParcel.readInt();
+      localCellInfo.rssi = paramParcel.readInt();
+      localCellInfo.stationLat = paramParcel.readDouble();
+      localCellInfo.stationLon = paramParcel.readDouble();
+    }
+    return localCellInfo;
   }
   
-  public void a(int paramInt)
+  public LbsDataV2.CellInfo[] a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    byte[] arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 4);
-    this.jdField_a_of_type_Int = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[2];
-    System.arraycopy(paramArrayOfByte, 4, arrayOfByte, 0, 2);
-    this.jdField_a_of_type_Short = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 6, arrayOfByte, 0, 4);
-    this.jdField_b_of_type_Int = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 10, arrayOfByte, 0, 4);
-    this.c = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[2];
-    System.arraycopy(paramArrayOfByte, 14, arrayOfByte, 0, 2);
-    this.jdField_b_of_type_Short = EndianUtil.a(arrayOfByte);
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = new byte[16];
-    System.arraycopy(EndianUtil.a(this.jdField_a_of_type_Int), 0, arrayOfByte, 0, 4);
-    System.arraycopy(EndianUtil.a(this.jdField_a_of_type_Short), 0, arrayOfByte, 4, 2);
-    System.arraycopy(EndianUtil.a(this.jdField_b_of_type_Int), 0, arrayOfByte, 6, 4);
-    System.arraycopy(EndianUtil.a(this.c), 0, arrayOfByte, 10, 4);
-    System.arraycopy(EndianUtil.a(this.jdField_b_of_type_Short), 0, arrayOfByte, 14, 2);
-    return arrayOfByte;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
+    return null;
   }
 }
 

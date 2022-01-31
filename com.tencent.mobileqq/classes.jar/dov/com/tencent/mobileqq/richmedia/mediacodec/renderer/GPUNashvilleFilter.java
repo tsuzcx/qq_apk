@@ -35,7 +35,7 @@ public class GPUNashvilleFilter
     {
       try
       {
-        localInputStream = BaseApplicationImpl.getContext().getResources().openRawResource(2130843235);
+        localInputStream = BaseApplicationImpl.getContext().getResources().openRawResource(2130843334);
         localObject1 = localInputStream;
         localObject3 = localInputStream;
         this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(localInputStream);

@@ -1,27 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.theme.SkinEngine;
+import mqq.os.MqqHandler;
 
-public class wck
-  implements DialogInterface.OnKeyListener
+public final class wck
+  implements Runnable
 {
-  public wck(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  public wck(TextView paramTextView) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 84) {}
-    do
-    {
-      return true;
-      if (paramInt != 4) {
-        break;
-      }
-    } while (BlessSelectMemberActivity.a() == null);
-    BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    return true;
-    return false;
+    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845881);
+    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845883);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
+    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);
+    ThreadManager.getUIHandler().post(new wcl(this, localStateListDrawable));
   }
 }
 

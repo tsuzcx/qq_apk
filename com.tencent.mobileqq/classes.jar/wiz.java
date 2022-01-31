@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-class wiz
-  implements Runnable
+public final class wiz
+  implements MessageQueue.IdleHandler
 {
-  wiz(wiy paramwiy) {}
+  final SearchContactsActivity a;
   
-  public void run()
+  public wiz(SearchContactsActivity paramSearchContactsActivity)
   {
-    this.a.a.notifyDataSetChanged();
+    this.a = paramSearchContactsActivity;
+  }
+  
+  public boolean queueIdle()
+  {
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

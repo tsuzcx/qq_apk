@@ -1,22 +1,20 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import android.os.Handler;
+import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForTroopStory;
 
-public class one
-  extends ExecuteBinResponseCallback
+class one
+  implements Runnable
 {
-  public one(FFmpeg paramFFmpeg, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback) {}
+  one(ond paramond, String paramString) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
-  }
-  
-  public void b(String paramString)
-  {
-    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.b(paramString);
+    this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.storyId = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.serial();
+    this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq, this.jdField_a_of_type_Ond.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.msgData);
+    this.jdField_a_of_type_Ond.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
   }
 }
 

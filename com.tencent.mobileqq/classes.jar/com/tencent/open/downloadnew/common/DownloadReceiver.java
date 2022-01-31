@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew.common;
 
-import aktn;
+import aljd;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -45,7 +45,7 @@ public class DownloadReceiver
       str3 = paramIntent.a;
       str4 = paramIntent.d;
     } while ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4)));
-    ThreadManager.executeOnSubThread(new aktn(this, str3, str4, paramIntent, str2, str1, paramContext));
+    ThreadManager.executeOnSubThread(new aljd(this, str3, str4, paramIntent, str2, str1, paramContext));
   }
 }
 

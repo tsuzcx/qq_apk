@@ -1,22 +1,20 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.MixedImageOnclickListener;
+import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
 
-class vby
-  implements BusinessObserver
+public class vby
+  implements View.OnClickListener
 {
-  vby(vbx paramvbx, WeakReference paramWeakReference) {}
+  public vby(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
-    {
-      paramObject = (String)paramObject;
-      ArkAppCenter.a().post(new vbz(this, paramInt, i, paramObject));
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    if (MixedMsgItemBuilder.a(this.a)) {
       return;
     }
+    MixedMsgItemBuilder.a(this.a).onClick(paramView);
   }
 }
 

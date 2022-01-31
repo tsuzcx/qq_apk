@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZoneLogTags;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
 class ahjv
   implements Runnable
 {
-  ahjv(ahju paramahju) {}
+  ahjv(ahjs paramahjs) {}
   
   public void run()
   {
-    long l = QZoneManagerImp.a(this.a.a);
-    QZoneManagerImp.a(this.a.a);
-    QZoneManagerImp.a(this.a.a, QZoneManagerImp.b(this.a.a));
-    this.a.a.a(l | QZoneManagerImp.a(this.a.a));
-    if (QLog.isColorLevel()) {
-      QLog.d(QZoneLogTags.LOG_TAG_UNDEALCOUNT + "QZoneManagerImp.", 2, "onChange notifyQQTab type:" + Long.toBinaryString(QZoneManagerImp.a(this.a.a)));
-    }
+    EffectsCameraCaptureFragment.a(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,42 @@
-import android.widget.FrameLayout;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.Timer;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ImageUtil;
 
-public class otu
+class otu
+  implements Runnable
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private String jdField_a_of_type_JavaLangString;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private ots jdField_a_of_type_Ots;
-  private boolean jdField_a_of_type_Boolean;
-  private double jdField_b_of_type_Double;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private double jdField_c_of_type_Double;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private double jdField_d_of_type_Double;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private double jdField_e_of_type_Double;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private double jdField_f_of_type_Double;
-  private int jdField_f_of_type_Int;
-  private int g;
-  private int h;
+  otu(ott paramott) {}
+  
+  public void run()
+  {
+    if (this.a.a.jdField_c_of_type_Int == 1) {
+      this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.a.app.a(this.a.a.jdField_c_of_type_JavaLangString, false);
+    }
+    for (;;)
+    {
+      if (this.a.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+        this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a();
+      }
+      return;
+      if (this.a.a.jdField_c_of_type_Int == 2)
+      {
+        this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.a.app.a(this.a.a.jdField_c_of_type_JavaLangString, (byte)3, false, false);
+        if (this.a.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+          this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
+        }
+      }
+      else
+      {
+        Drawable localDrawable = this.a.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.a.a.jdField_c_of_type_JavaLangString, true);
+        if ((localDrawable instanceof BitmapDrawable)) {
+          this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localDrawable).getBitmap();
+        }
+      }
+    }
+  }
 }
 
 

@@ -1,21 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
 
-public class aeuo
-  implements TextWatcher
+class aeuo
+  implements Runnable
 {
-  public aeuo(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  aeuo(aeun paramaeun) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    NearbyUtils.a(this.a.e, 90);
+    if ((this.a.a.a.getActivity() != null) && (this.a.a.a.c != null))
+    {
+      SmallVideoSendFragment.a(this.a.a.a);
+      this.a.a.a.c();
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

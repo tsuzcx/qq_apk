@@ -255,7 +255,7 @@ public class HttpContinueDownloadFileProcessor
     return true;
   }
   
-  public void an_()
+  public void ap_()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ThemeDownloadTrace", 2, "start download using HttpContinueDownloadFileProcessor");
@@ -400,7 +400,7 @@ public class HttpContinueDownloadFileProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.HttpContinueDownloadFileProcessor
  * JD-Core Version:    0.7.0.1
  */

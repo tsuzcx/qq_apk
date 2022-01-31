@@ -1508,7 +1508,7 @@ public class ApolloJsPlugin
                     if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a != null) && (paramJsBridgeListener.a.a != null))
                     {
                       paramString3 = URLDrawable.URLDrawableOptions.obtain();
-                      paramString3.mLoadingDrawable = paramVarArgs.getResources().getDrawable(2130846136);
+                      paramString3.mLoadingDrawable = paramVarArgs.getResources().getDrawable(2130846264);
                       paramString2 = URLDrawable.getDrawable(paramString2, paramString3);
                       paramString2.startDownload();
                       paramJsBridgeListener.a.a.setBackgroundDrawable(paramString2);
@@ -2191,7 +2191,7 @@ public class ApolloJsPlugin
               j = ((Bundle)localObject2).getInt("gameMode");
               if (((Bundle)localObject2).getBoolean("hasGameRunning"))
               {
-                this.gameDialog = DialogUtil.b((Context)localObject1, 0, "", "当前正在游戏中，确认加入新的游戏?", 2131432998, 2131432999, new ApolloJsPlugin.5(this, i, j, (Activity)localObject1), new ApolloJsPlugin.6(this));
+                this.gameDialog = DialogUtil.b((Context)localObject1, 0, "", "当前正在游戏中，确认加入新的游戏?", 2131433015, 2131433016, new ApolloJsPlugin.5(this, i, j, (Activity)localObject1), new ApolloJsPlugin.6(this));
                 if ((localObject1 instanceof BaseActivity)) {
                   VipUtils.a(((BaseActivity)localObject1).getAppInterface(), "cmshow", "Apollo", "game_alert_show", 3, 0, new String[0]);
                 }
@@ -2290,7 +2290,7 @@ public class ApolloJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin
  * JD-Core Version:    0.7.0.1
  */

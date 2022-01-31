@@ -1,73 +1,55 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.videoceiling.GdtWebViewBuilder;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 
 public class kxs
-  extends GdtWebViewBuilder
+  implements View.OnClickListener
 {
-  public kxs(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
+  public kxs(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void a(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    super.a(paramWebView, paramString);
-  }
-  
-  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.a(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean a(WebView paramWebView, String paramString)
-  {
-    GdtLog.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
-    do
+    switch (paramView.getId())
     {
-      return true;
-      localObject = ((CustomWebView)paramWebView).a();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+    default: 
+      onClick(paramView);
+      return;
+    case 2131363428: 
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a.a)
       {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
+        paramView = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.getText().toString();
+        this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onRightBtn(\"" + paramView + "\")");
+        return;
       }
-      paramString = Uri.parse(paramString);
-      localObject = paramString.getScheme();
-    } while (!AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
-    try
-    {
-      this.e.startActivity(paramWebView);
-      return true;
+      if (PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a) == 1001)
+      {
+        ThreadManager.executeOnSubThread(new kxt(this));
+        this.a.getActivity().finish();
+        return;
+      }
+      onClick(paramView);
+      return;
     }
-    catch (ActivityNotFoundException paramWebView)
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a.a)
     {
-      GdtLog.d("AbsWebView", paramWebView.toString());
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.getText().toString();
+      if (paramView.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
+      {
+        this.a.n();
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onLeftBtn(\"" + paramView + "\")");
+      return;
     }
-    return true;
-  }
-  
-  public void b(WebView paramWebView, String paramString)
-  {
-    super.b(paramWebView, paramString);
+    onClick(paramView);
   }
 }
 

@@ -1,71 +1,46 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader;
+import android.text.TextUtils;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetLocalAppPath;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.lang.ref.WeakReference;
 
-public class aavy
-  extends Handler
+public final class aavy
+  implements Runnable
 {
-  public aavy(NonMainAppHeadLoader paramNonMainAppHeadLoader, Looper paramLooper)
+  public ArkLocalAppMgr.IGetLocalAppPath a;
+  public String a;
+  public WeakReference a;
+  public String b;
+  
+  public aavy(ArkLocalAppMgr paramArkLocalAppMgr, String paramString1, String paramString2, ArkLocalAppMgr.IGetLocalAppPath paramIGetLocalAppPath)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramArkLocalAppMgr);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetLocalAppPath = paramIGetLocalAppPath;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1001) {}
-    try
-    {
-      paramMessage = (ArrayList)paramMessage.obj;
-      if ((paramMessage != null) && (paramMessage.size() > 0))
-      {
-        paramMessage = paramMessage.iterator();
-        while (paramMessage.hasNext())
-        {
-          String str1 = (String)paramMessage.next();
-          String str2 = (String)this.a.b.get(str1);
-          Bitmap localBitmap = BitmapFactory.decodeFile(str2);
-          if (localBitmap != null)
-          {
-            localBitmap = this.a.a(localBitmap);
-            if (localBitmap != null)
-            {
-              Message localMessage = Message.obtain();
-              Bundle localBundle = new Bundle();
-              localBundle.putParcelable("bmp", localBitmap);
-              localBundle.putString("uin", str1);
-              localBundle.putString("path", str2);
-              localMessage.obj = localBundle;
-              localMessage.what = 1002;
-              this.a.a.sendMessage(localMessage);
-              if (QLog.isColorLevel()) {
-                QLog.d("NonMainAppHeadLoader", 2, "decodeFile, uin:" + str1);
-              }
-            }
-          }
-        }
-      }
-      return;
-    }
-    catch (OutOfMemoryError paramMessage)
-    {
+    Object localObject = (ArkLocalAppMgr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {
       if (QLog.isColorLevel()) {
-        QLog.e("NonMainAppHeadLoader", 2, "decodeFile, OutOfMemoryError");
+        QLog.d("ArkApp.ArkLocalAppMgr", 2, "ArkLocalAppMgr.GetAppPathTask.object.null");
       }
-      return;
     }
-    catch (Exception paramMessage)
+    do
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppHeadLoader", 2, "decodeFile, exception:" + paramMessage.toString());
-    }
+      return;
+      localObject = ((ArkLocalAppMgr)localObject).a(this.jdField_a_of_type_JavaLangString, this.b);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ArkApp.ArkLocalAppMgr", 2, "ArkLocalAppMgr.GetAppPathTask.path.null");
+    return;
+    ArkAppCenter.a().postToMainThread(new aavz(this, (String)localObject));
   }
 }
 

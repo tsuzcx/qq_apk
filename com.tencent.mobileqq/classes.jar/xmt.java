@@ -1,49 +1,22 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraOperator;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class xmt
-  extends OrientationEventListener
+  implements DialogInterface.OnClickListener
 {
-  public xmt(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public xmt(LoginView paramLoginView) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NewFlowCameraActivity.a(this.a).a(paramInt);
-    if (this.a.j) {}
-    do
+    ReportController.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
+    try
     {
+      paramDialogInterface.dismiss();
       return;
-      if (paramInt == -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
-        }
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 315) || (paramInt < 45))
-      {
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 45) && (paramInt < 135))
-      {
-        this.a.o = 180;
-        return;
-      }
-      if ((paramInt > 135) && (paramInt < 225))
-      {
-        this.a.o = 270;
-        return;
-      }
-    } while ((paramInt <= 225) || (paramInt >= 315));
-    this.a.o = 0;
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

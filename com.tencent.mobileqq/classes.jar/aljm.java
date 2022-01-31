@@ -1,119 +1,86 @@
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.DeviceConfigManager;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.pcpush.PCPushDBHelper;
+import com.tencent.open.pcpush.PCPushProxy;
+import com.tencent.open.pcpush.PCPushProxy.PkgEntry;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class aljm
-  extends Thread
+public class aljm
+  extends Handler
 {
-  long jdField_a_of_type_Long = 0L;
-  HashMap jdField_a_of_type_JavaUtilHashMap = null;
-  boolean jdField_a_of_type_Boolean = true;
-  boolean[] jdField_a_of_type_ArrayOfBoolean = { false };
-  
-  aljm(TraeAudioManager paramTraeAudioManager)
+  public aljm(PCPushProxy paramPCPushProxy, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, " ++switchThread:" + a());
-    }
+    super(paramLooper);
   }
   
-  public abstract String a();
-  
-  public abstract void a();
-  
-  void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.b.b();
-    AudioDeviceInterface.LogTraceEntry(a() + " err:" + paramInt + " ConnectedDevice: " + this.b.a.d());
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.b.a();
+    String str1 = null;
+    LogUtility.b("PCPushProxy", "handleMessage msg.what = " + paramMessage.what + ", msg.obj = " + paramMessage.obj);
+    String str2;
+    PCPushProxy.PkgEntry localPkgEntry;
+    switch (paramMessage.what)
+    {
+    default: 
+      str2 = (String)paramMessage.obj;
+      if (str2 != null)
+      {
+        localPkgEntry = (PCPushProxy.PkgEntry)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
+        if (localPkgEntry == null) {
+          LogUtility.e("PCPushProxy", "handleMessage get entry = null, key = " + str2);
+        }
+      }
+      break;
     }
     do
     {
-      return;
-      this.b.b = this.b.a.d();
-      localObject = (Long)this.jdField_a_of_type_JavaUtilHashMap.get("PARAM_SESSIONID");
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, " sessonID:" + localObject + "sessionConnectedDev: " + this.b.b);
+      do
+      {
+        return;
+        StaticAnalyz.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
+        return;
+        StaticAnalyz.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
+        return;
+        if (localPkgEntry.jdField_b_of_type_Int != 1) {
+          str1 = localPkgEntry.jdField_b_of_type_JavaLangString.substring(localPkgEntry.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
+        }
+        for (;;)
+        {
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1: 
+            this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+            return;
+            str1 = localPkgEntry.jdField_b_of_type_JavaLangString;
+            continue;
+            LogUtility.e("PCPushProxy", "handleMessage get key = null");
+            localPkgEntry = null;
+          }
+        }
+      } while (localPkgEntry == null);
+      if (localPkgEntry.c.startsWith("ANDROIDQQ.PCPUSH.")) {
+        StaticAnalyz.a("100", localPkgEntry.c, str1);
       }
-      if ((localObject != null) && (((Long)localObject).longValue() != -9223372036854775808L)) {
-        break;
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(localPkgEntry);
+        return;
+        StaticAnalyz.a("100", "ANDROIDQQ.PCPUSH." + localPkgEntry.c, str1);
       }
-      this.b.a();
-    } while (!QLog.isColorLevel());
-    QLog.w("TRAE", 2, "processDeviceConnectRes sid null,don't send res");
-    return;
-    Object localObject = new Intent();
-    ((Intent)localObject).putExtra("CONNECTDEVICE_RESULT_DEVICENAME", (String)this.jdField_a_of_type_JavaUtilHashMap.get("PARAM_DEVICE"));
-    if (this.b.a((Intent)localObject, this.jdField_a_of_type_JavaUtilHashMap, paramInt) == 0) {
-      this.b.a();
-    }
-    AudioDeviceInterface.LogTraceExit();
-  }
-  
-  public void a(HashMap paramHashMap)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-  }
-  
-  public abstract void b();
-  
-  void e()
-  {
-    this.b.a.d(a());
-    a(0);
-  }
-  
-  public void f()
-  {
-    AudioDeviceInterface.LogTraceEntry(a());
-    this.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, " quit:" + a() + " _running:" + this.jdField_a_of_type_Boolean);
-    }
-    interrupt();
-    b();
-    synchronized (this.jdField_a_of_type_ArrayOfBoolean)
-    {
-      int i = this.jdField_a_of_type_ArrayOfBoolean[0];
-      if (i != 0) {}
-    }
-    try
-    {
-      this.jdField_a_of_type_ArrayOfBoolean.wait();
-      label91:
-      AudioDeviceInterface.LogTraceExit();
+      this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(str2);
       return;
-      localObject = finally;
-      throw localObject;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label91;
-    }
-  }
-  
-  public void run()
-  {
-    AudioDeviceInterface.LogTraceEntry(a());
-    this.b.a.c(a());
-    this.b.b();
-    a();
-    synchronized (this.jdField_a_of_type_ArrayOfBoolean)
-    {
-      this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-      this.jdField_a_of_type_ArrayOfBoolean.notify();
-      AudioDeviceInterface.LogTraceExit();
-      return;
-    }
+    } while (localPkgEntry == null);
+    StaticAnalyz.a("500", localPkgEntry.c, str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljm
  * JD-Core Version:    0.7.0.1
  */

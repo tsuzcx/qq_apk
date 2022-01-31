@@ -1,25 +1,33 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
 public class acso
-  implements IUploadController
+  implements Runnable
 {
-  public acso(C2CFileModel paramC2CFileModel) {}
+  public acso(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a(true, FileModel.a(this.a.a.a()), this.a.b(), new acsp(this));
-  }
-  
-  public void b()
-  {
-    this.a.d();
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.c());
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.f()) && (this.a.jdField_a_of_type_JavaUtilLinkedHashMap != null) && (this.a.jdField_a_of_type_JavaUtilLinkedHashMap.size() > 0))
+    {
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (String)localIterator.next();
+        localObject = ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject)).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          if (((FileManagerEntity)((Iterator)localObject).next()).sendCloudUnsuccessful()) {
+            ((Iterator)localObject).remove();
+          }
+        }
+      }
+    }
+    this.a.e();
   }
 }
 

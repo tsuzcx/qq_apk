@@ -3,49 +3,40 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import mim;
+import mjw;
 
 public class ReadinjoySocialMsgTips
-  implements FaceDecoder.DecodeTaskCompletionListener
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private KandianOx210MsgInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo;
-  private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
+  private ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
   
   ReadinjoySocialMsgTips(Activity paramActivity, View paramView)
   {
     this.jdField_a_of_type_AndroidContentContext = paramActivity;
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(paramActivity.getApplicationContext(), (QQAppInterface)ReadInJoyUtils.a());
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
     d();
   }
   
   private void d()
   {
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362701));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363039));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new mim(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362719));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setRound(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.a(ImageUtil.a());
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363057));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new mjw(this));
   }
   
   public View a()
@@ -77,23 +68,13 @@ public class ReadinjoySocialMsgTips
     QLog.d("ReadinjoySocialMsgTips", 2, "set msg info , count : " + paramKandianOx210MsgInfo.a + ", uin : " + paramKandianOx210MsgInfo.e + ", seq : " + paramKandianOx210MsgInfo.b);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo = paramKandianOx210MsgInfo;
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.e == -1L) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130840796));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getResources().getDrawable(2130840820));
     }
     while (paramKandianOx210MsgInfo.a < 100)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramKandianOx210MsgInfo.a + "条新消息");
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a((QQAppInterface)ReadInJoyUtils.a());
-        this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.e), 1));
-      }
-      else
-      {
-        QLog.d("ReadinjoySocialMsgTips", 2, "faceDecoder is null, set default image drawable!");
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(ImageUtil.b());
-      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.e);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText("99+条新消息");
   }
@@ -113,22 +94,10 @@ public class ReadinjoySocialMsgTips
   public void c()
   {
     this.jdField_a_of_type_AndroidContentContext = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.d();
-      this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = null;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = null;
     this.jdField_a_of_type_AndroidViewView = null;
     this.jdField_a_of_type_AndroidWidgetTextView = null;
     this.jdField_a_of_type_AndroidViewView$OnClickListener = null;
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo != null) && (TextUtils.equals(paramString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.e + ""))) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-    }
   }
 }
 

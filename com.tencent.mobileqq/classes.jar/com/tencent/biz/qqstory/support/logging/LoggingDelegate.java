@@ -18,6 +18,8 @@ public abstract interface LoggingDelegate
   
   public abstract void d(String paramString1, String paramString2);
   
+  public abstract void d(String paramString1, String paramString2, Throwable paramThrowable);
+  
   public abstract void e(String paramString1, String paramString2);
 }
 

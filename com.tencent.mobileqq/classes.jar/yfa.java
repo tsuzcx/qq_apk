@@ -1,27 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter;
-import com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter.OnTroopListClickListener;
-import com.tencent.mobileqq.troop.data.NearbyTroops.CustomViewHolder;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import com.tencent.qphone.base.util.QLog;
 
 public class yfa
-  implements View.OnClickListener
+  implements QvipSpecialSoundManager.CallBack
 {
-  public yfa(ShowExternalTroopListAdapter paramShowExternalTroopListAdapter) {}
+  public yfa(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof NearbyTroops.CustomViewHolder)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
     }
-    paramView = (NearbyTroops.CustomViewHolder)paramView;
-    this.a.a.a(paramView.a);
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        QQSpecialCareSettingActivity.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        this.a.stopTitleProgress();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yfa
  * JD-Core Version:    0.7.0.1
  */

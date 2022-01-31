@@ -34,8 +34,8 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import luy;
-import luz;
+import lvh;
+import lvi;
 
 public class ComponentContentGalleryBiu
   extends FrameLayout
@@ -104,7 +104,7 @@ public class ComponentContentGalleryBiu
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
     int k = (localResources.getDisplayMetrics().widthPixels - AIOUtils.a(this.jdField_a_of_type_Float * 2.0F, localResources) - AIOUtils.a(22.0F, localResources)) / 3;
-    int j = localResources.getDimensionPixelSize(2131559668);
+    int j = localResources.getDimensionPixelSize(2131559686);
     if (this.jdField_a_of_type_Boolean) {
       j = k;
     }
@@ -148,7 +148,7 @@ public class ComponentContentGalleryBiu
       int j = 0;
       while (j < paramList.size())
       {
-        ((KandianUrlImageView)paramList.get(j)).setOnClickListener(new luz(this, paramArticleInfo, paramArrayOfLong[j], paramString, j));
+        ((KandianUrlImageView)paramList.get(j)).setOnClickListener(new lvi(this, paramArticleInfo, paramArrayOfLong[j], paramString, j));
         j += 1;
       }
     }
@@ -255,7 +255,7 @@ public class ComponentContentGalleryBiu
           paramIReadInJoyModel.setTextSize(1, 17.0F);
           paramIReadInJoyModel.setIncludeFontPadding(false);
           paramIReadInJoyModel.setText(localArticleInfo.mTitle);
-          paramIReadInJoyModel.setOnClickListener(new luy(this, localArticleInfo));
+          paramIReadInJoyModel.setOnClickListener(new lvh(this, localArticleInfo));
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramIReadInJoyModel);
         }
         str = localArticleInfo.innerUniqueID;
@@ -290,7 +290,7 @@ public class ComponentContentGalleryBiu
     label1284:
     for (;;)
     {
-      localArrayList.add(ReadInJoyUtils.b(paramIReadInJoyModel));
+      localArrayList.add(ReadInJoyUtils.a(paramIReadInJoyModel));
       j += 1;
       break label281;
       bool = false;
@@ -302,8 +302,8 @@ public class ComponentContentGalleryBiu
         paramIReadInJoyModel = new LinearLayout(getContext());
         paramIReadInJoyModel.setOrientation(0);
         paramIReadInJoyModel.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localObject1 = LayoutInflater.from(getContext()).inflate(2130969561, null);
-        ((TextView)((View)localObject1).findViewById(2131366886)).setText(String.valueOf(l) + "图");
+        localObject1 = LayoutInflater.from(getContext()).inflate(2130969568, null);
+        ((TextView)((View)localObject1).findViewById(2131366928)).setText(String.valueOf(l) + "图");
         if (k == 1)
         {
           paramIReadInJoyModel.addView((View)localObject1);
@@ -352,8 +352,8 @@ public class ComponentContentGalleryBiu
           ((LinearLayout)localObject2).addView(this.d);
           ((LinearLayout)localObject2).addView(this.e);
           ((LinearLayout)localObject2).addView(this.f);
-          localObject1 = LayoutInflater.from(getContext()).inflate(2130969561, null);
-          ((TextView)((View)localObject1).findViewById(2131366886)).setText(String.valueOf(l) + "图");
+          localObject1 = LayoutInflater.from(getContext()).inflate(2130969568, null);
+          ((TextView)((View)localObject1).findViewById(2131366928)).setText(String.valueOf(l) + "图");
           this.g = new KandianUrlImageView(getContext());
           this.h = new KandianUrlImageView(getContext());
           this.i = ((KandianUrlImageView)((View)localObject1).findViewById(2131361846));

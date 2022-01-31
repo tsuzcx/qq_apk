@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
-import yxm;
+import zas;
 
 public class BoundedPriorityBlockingQueue
   extends AbstractQueue
@@ -373,7 +373,7 @@ public class BoundedPriorityBlockingQueue
   
   public Iterator iterator()
   {
-    return new yxm(this, toArray());
+    return new zas(this, toArray());
   }
   
   public boolean offer(Object paramObject)

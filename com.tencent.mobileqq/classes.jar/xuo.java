@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
+import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
 
 public class xuo
-  implements Runnable
+  implements DataProvider.DataUpdateListener
 {
-  public xuo(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean) {}
+  public xuo(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  public void run()
+  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
   {
-    LbsFilterStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
+    if ((paramBoolean) && (paramAddressInfo != null))
+    {
+      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
+      this.a.a.post(new xup(this, paramAddressInfo));
+      return;
+    }
+    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
   }
 }
 

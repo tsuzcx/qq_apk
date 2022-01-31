@@ -1,43 +1,19 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.widget.StoryCoverView;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.QQStoryNetReqUtils.RequestCallBack;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step.ErrorCallBack;
+import java.lang.ref.WeakReference;
 
-public class nzj
-  extends ChildViewClickListener
+public final class nzj
+  implements Step.ErrorCallBack
 {
-  public nzj(NewMyStorySegment paramNewMyStorySegment, boolean paramBoolean) {}
+  public nzj(WeakReference paramWeakReference) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    if (paramView == paramBaseViewHolder.a()) {
-      NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment, paramInt, (StoryVideoItem)NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).a().get(paramInt), paramView);
+    QQStoryNetReqUtils.RequestCallBack localRequestCallBack = (QQStoryNetReqUtils.RequestCallBack)this.a.get();
+    if (localRequestCallBack != null) {
+      localRequestCallBack.a(paramErrorMessage);
     }
-    do
-    {
-      return;
-      if (paramView == paramBaseViewHolder.a(2131371849))
-      {
-        paramView = (StoryCoverView)paramBaseViewHolder.a(2131371842);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment, paramInt, (StoryVideoItem)NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).a().get(paramInt), paramView);
-          return;
-        }
-        NewMyStorySegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment, paramInt, (StoryVideoItem)NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).a().get(paramInt), paramView);
-        return;
-      }
-      if ((paramView == paramBaseViewHolder.a(2131371853)) || (paramView == paramBaseViewHolder.a(2131371844)))
-      {
-        NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment, paramInt, (StoryVideoItem)NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).a().get(paramInt));
-        return;
-      }
-    } while (paramView != paramBaseViewHolder.a(2131371854));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment.a(paramBaseViewHolder, paramInt);
   }
 }
 

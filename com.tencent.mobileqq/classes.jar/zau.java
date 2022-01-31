@@ -1,23 +1,53 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+import android.content.Context;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.utils.TbsLogClient;
+import mqq.os.MqqHandler;
 
-public final class zau
-  implements Parcelable.Creator
+public class zau
+  extends TbsLogClient
 {
-  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
+  public zau(BrowserAppInterface paramBrowserAppInterface, Context paramContext)
   {
-    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
-    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
-    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
-    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
-    return localQQHeadDetails;
+    super(paramContext);
   }
   
-  public FriendListHandler.QQHeadDetails[] a(int paramInt)
+  public void d(String paramString1, String paramString2)
   {
-    return new FriendListHandler.QQHeadDetails[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+  }
+  
+  public void showLog(String paramString)
+  {
+    if (this.a.a == -1) {
+      this.a.a = 0;
+    }
+    if (this.a.a == 1) {
+      this.a.getHandler(BrowserAppInterface.class).post(new zax(this.a, paramString));
+    }
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
   }
 }
 

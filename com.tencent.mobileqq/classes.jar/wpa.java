@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.animation.Animation;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 public class wpa
-  implements DialogInterface.OnClickListener
+  extends AnimateUtils.AnimationAdapter
 {
-  public wpa(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
+  public wpa(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD9", "0X8005FD9", 0, 0, "", "", "", "");
+    this.a.a(true);
+    EmoticonGroupStoreFragment.a(this.a, false);
+    this.a.a.removeView(EmoticonGroupStoreFragment.a(this.a));
+    this.a.a.removeView(EmoticonGroupStoreFragment.b(this.a));
   }
 }
 

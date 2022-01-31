@@ -1,21 +1,58 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
-public final class rud
-  implements DialogInterface.OnClickListener
+public class rud
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public rud(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, String paramString, int paramInt3) {}
+  private rud(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    ReportController.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.c + "", "0", "");
-    paramDialogInterface.dismiss();
+    if (paramInt == 4)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.aio.BaseChatPie", 2, "IME_ACTION_SEND");
+      }
+      this.a.al();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramKeyEvent.getKeyCode() == 66)
+    {
+      if (paramKeyEvent.getAction() == 1)
+      {
+        paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.BaseChatPie", 2, " sendOnEnterEnabled = " + this.a.l);
+        }
+        if ((this.a.l) && (paramView.length() > 0)) {
+          this.a.ak();
+        }
+      }
+      if (this.a.l) {
+        return true;
+      }
+    }
+    else if ((paramKeyEvent.getKeyCode() == 67) && (paramKeyEvent.getAction() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131362132) != null))
+    {
+      paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramView[0], null, paramView[2], paramView[3]);
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131362132, null);
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
+      this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
+      return true;
+    }
+    return false;
   }
 }
 

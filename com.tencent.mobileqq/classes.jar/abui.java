@@ -1,43 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.video.VipVideoManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.confess.ConfessHandler;
+import com.tencent.mobileqq.confess.ConfessInfo;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 
-class abui
-  implements TVK_SDKMgr.InstallListener
+public class abui
+  implements DialogInterface.OnClickListener
 {
-  abui(abue paramabue, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public abui(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo, ConfessChatPie paramConfessChatPie) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = (int)Math.floor(100.0F * paramFloat);
-    if (i > VipVideoManager.a)
-    {
-      VipVideoManager.a = i;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("status", 1);
-      localBundle.putFloat("progress", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 2);
-    localBundle.putInt("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 3);
-    localBundle.putBoolean("result", true);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    ((ConfessHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(125)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo, -1);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.a(0, "正在屏蔽...", 0);
   }
 }
 

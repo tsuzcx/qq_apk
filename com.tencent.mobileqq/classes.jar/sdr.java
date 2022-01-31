@@ -1,23 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.Observable;
+import java.util.Observer;
 
 public class sdr
-  implements View.OnClickListener
+  implements Observer
 {
-  public sdr(Conversation paramConversation) {}
+  public sdr(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(View paramView)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    Conversation.a(this.a).removeView(Conversation.a(this.a));
-    paramView = (PortalManager)this.a.a.getManager(78);
-    if (paramView != null) {
-      paramView.a(this.a.a(), false);
+    if (this.a.isFinishing()) {}
+    while ((!(paramObject instanceof TroopUploadingThread.UploadState)) || (((TroopUploadingThread.UploadState)paramObject).a != 1)) {
+      return;
     }
-    Conversation.a(this.a, null);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead = true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop = false;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.hasSetNewTroopHead = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead;
+      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop;
+      this.a.u();
+    }
+    this.a.runOnUiThread(new sds(this));
   }
 }
 

@@ -1,15 +1,24 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import java.io.File;
+import java.net.URL;
 
 public class ujx
   implements Runnable
 {
-  public ujx(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
+  public ujx(BaseBubbleBuilder paramBaseBubbleBuilder, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(this.jdField_a_of_type_Int) });
+    File localFile = AbsDownloader.a(URLDrawableHelper.a((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 1, null).toString());
+    if ((localFile == null) || (!localFile.exists())) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.a().a((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 2);
+    }
   }
 }
 

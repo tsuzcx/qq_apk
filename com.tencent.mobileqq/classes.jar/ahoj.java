@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
+import java.util.Comparator;
 
 public class ahoj
-  implements Runnable
+  implements Comparator
 {
-  public ahoj(CameraProxy.WaitDoneBundle paramWaitDoneBundle) {}
+  public ahoj(Mp4FlowReEncoder paramMp4FlowReEncoder) {}
   
-  public void run()
+  public int a(ahod paramahod1, ahod paramahod2)
   {
-    synchronized (this.a.a)
-    {
-      this.a.a.notifyAll();
-      return;
+    if (paramahod2.a() > paramahod1.a()) {
+      return -1;
     }
+    if (paramahod2.a() == paramahod1.a()) {
+      return 0;
+    }
+    return 1;
   }
 }
 

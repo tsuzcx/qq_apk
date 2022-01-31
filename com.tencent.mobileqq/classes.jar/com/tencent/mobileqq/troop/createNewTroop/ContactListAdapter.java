@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import aimu;
-import aimv;
-import aimx;
-import aimy;
-import aimz;
-import aina;
-import ainb;
-import ainc;
-import aind;
+import ajay;
+import ajaz;
+import ajbb;
+import ajbc;
+import ajbd;
+import ajbe;
+import ajbf;
+import ajbg;
+import ajbh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.SparseArray;
@@ -52,16 +52,16 @@ public class ContactListAdapter
   extends BaseFacePreloadExpandableListAdapter
   implements View.OnClickListener, View.OnLongClickListener, PhoneContactManager.IPhoneContactListener
 {
-  private static final ainb jdField_a_of_type_Ainb = new ainb(null);
+  private static final ajbf jdField_a_of_type_Ajbf = new ajbf(null);
   private final Context jdField_a_of_type_AndroidContentContext;
   private final SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aimu(this);
+  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ajay(this);
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public NewTroopContactView a;
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean = true;
-  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new aimv(this);
+  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new ajaz(this);
   private ExpandableListView jdField_b_of_type_ComTencentWidgetExpandableListView;
   
   public ContactListAdapter(NewTroopContactView paramNewTroopContactView, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean)
@@ -72,7 +72,7 @@ public class ContactListAdapter
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_b_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
-    paramExpandableListView.post(new aimx(this));
+    paramExpandableListView.post(new ajbb(this));
   }
   
   private int a(int paramInt1, int paramInt2)
@@ -88,15 +88,15 @@ public class ContactListAdapter
     Object localObject;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969706, paramViewGroup, false);
-      paramViewGroup = new aind();
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362701));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131362736));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363916));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969720, paramViewGroup, false);
+      paramViewGroup = new ajbh();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131362754));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363939));
       if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
         paramView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       }
-      paramView.findViewById(2131363914).setVisibility(8);
+      paramView.findViewById(2131363937).setVisibility(8);
       paramView.setTag(paramViewGroup);
       localObject = getChild(paramInt1, paramInt2);
       Friends localFriends = (Friends)localObject;
@@ -126,7 +126,7 @@ public class ContactListAdapter
         paramView.setContentDescription((String)localObject + "已选中");
       }
       return paramView;
-      paramViewGroup = (aind)paramView.getTag();
+      paramViewGroup = (ajbh)paramView.getTag();
       paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       break;
       label318:
@@ -144,7 +144,7 @@ public class ContactListAdapter
   {
     try
     {
-      Collections.sort(paramList, jdField_a_of_type_Ainb);
+      Collections.sort(paramList, jdField_a_of_type_Ajbf);
       return;
     }
     catch (ArrayIndexOutOfBoundsException paramList)
@@ -159,11 +159,11 @@ public class ContactListAdapter
     PhoneContact localPhoneContact;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969706, paramViewGroup, false);
-      paramViewGroup = new aind();
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362701));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131362736));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363916));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969720, paramViewGroup, false);
+      paramViewGroup = new ajbh();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131362754));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363939));
       if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
         paramView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       }
@@ -195,7 +195,7 @@ public class ContactListAdapter
         paramView.setContentDescription(localPhoneContact.name + "已选中");
       }
       return paramView;
-      paramViewGroup = (aind)paramView.getTag();
+      paramViewGroup = (ajbh)paramView.getTag();
       paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       break;
       label319:
@@ -211,17 +211,17 @@ public class ContactListAdapter
   
   private View c(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
-    if ((paramView == null) || ((paramView.getTag() instanceof aind)))
+    if ((paramView == null) || ((paramView.getTag() instanceof ajbh)))
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969220, paramViewGroup, false);
-      paramViewGroup = new ainc();
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362701));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365638));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131363873));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365636));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365635));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131365637));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131363878));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969221, paramViewGroup, false);
+      paramViewGroup = new ajbg();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365665));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131363896));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365663));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365662));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131365664));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131363901));
       paramView.setTag(paramViewGroup);
       if (this.jdField_b_of_type_AndroidViewView$OnClickListener == null) {
         break label483;
@@ -235,7 +235,7 @@ public class ContactListAdapter
       PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localObject;
       paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
       paramViewGroup.jdField_a_of_type_JavaLangString = Long.toString(localPublicAccountInfo.uin);
-      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494207));
+      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494214));
       if (PublicAccountInfo.isLooker(localPublicAccountInfo))
       {
         paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -249,7 +249,7 @@ public class ContactListAdapter
           paramView.setContentDescription(paramViewGroup.d.getText());
         }
         return paramView;
-        paramViewGroup = (ainc)paramView.getTag();
+        paramViewGroup = (ajbg)paramView.getTag();
         paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       }
       else
@@ -261,7 +261,7 @@ public class ContactListAdapter
         if (localPublicAccountInfo.certifiedGrade > 0L)
         {
           paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839745);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839751);
         }
         for (;;)
         {
@@ -308,7 +308,7 @@ public class ContactListAdapter
         {
           localObject2 = new Groups();
           ((Groups)localObject2).group_id = 1003;
-          ((Groups)localObject2).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131433319);
+          ((Groups)localObject2).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131433336);
           ((Groups)localObject2).group_friend_count = ((List)localObject1).size();
           ((Groups)localObject2).seqid = 0;
           this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
@@ -369,7 +369,7 @@ public class ContactListAdapter
           localObject4 = new ArrayList();
           localObject5 = ((List)localObject2).iterator();
           while (((Iterator)localObject5).hasNext()) {
-            ((ArrayList)localObject4).add(new aimz((Friends)((Iterator)localObject5).next(), -1));
+            ((ArrayList)localObject4).add(new ajbd((Friends)((Iterator)localObject5).next(), -1));
           }
           localObject1 = localObject2;
           if (!QLog.isColorLevel()) {
@@ -385,7 +385,7 @@ public class ContactListAdapter
         ((List)localObject2).clear();
         localObject4 = ((ArrayList)localObject4).iterator();
         while (((Iterator)localObject4).hasNext()) {
-          ((List)localObject2).add(((aimz)((Iterator)localObject4).next()).a);
+          ((List)localObject2).add(((ajbd)((Iterator)localObject4).next()).a);
         }
         localObject4 = ((List)localObject2).iterator();
         i = 0;
@@ -442,19 +442,19 @@ public class ContactListAdapter
   
   public void a(View paramView, int paramInt)
   {
-    aina localaina = (aina)paramView.getTag();
-    if (localaina == null)
+    ajbe localajbe = (ajbe)paramView.getTag();
+    if (localajbe == null)
     {
-      localaina = new aina();
-      paramView.findViewById(2131363817).setVisibility(0);
-      localaina.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363819));
-      paramView.setTag(localaina);
+      localajbe = new ajbe();
+      paramView.findViewById(2131363840).setVisibility(0);
+      localajbe.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363842));
+      paramView.setTag(localajbe);
     }
     for (;;)
     {
       Groups localGroups = (Groups)getGroup(paramInt);
-      localaina.jdField_a_of_type_AndroidWidgetTextView.setText(localGroups.group_name);
-      ((CheckBox)paramView.findViewById(2131363817)).setChecked(this.jdField_b_of_type_ComTencentWidgetExpandableListView.c(paramInt));
+      localajbe.jdField_a_of_type_AndroidWidgetTextView.setText(localGroups.group_name);
+      ((CheckBox)paramView.findViewById(2131363840)).setChecked(this.jdField_b_of_type_ComTencentWidgetExpandableListView.c(paramInt));
       return;
     }
   }
@@ -586,7 +586,7 @@ public class ContactListAdapter
     Object localObject;
     if (paramView != null)
     {
-      localObject = (aina)paramView.getTag();
+      localObject = (ajbe)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
     }
@@ -603,9 +603,9 @@ public class ContactListAdapter
         paramViewGroup.setContentDescription(((Groups)localObject).group_name + "分组已展开");
       }
       return paramViewGroup;
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969705, paramViewGroup, false);
-      paramView = new aina();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363819));
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969719, paramViewGroup, false);
+      paramView = new ajbe();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363842));
       paramViewGroup.setTag(paramView);
       paramViewGroup.setOnClickListener(this);
     }
@@ -631,7 +631,7 @@ public class ContactListAdapter
   
   public void onClick(View paramView)
   {
-    paramView = (aina)paramView.getTag();
+    paramView = (ajbe)paramView.getTag();
     if (this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(paramView.jdField_a_of_type_Int))
     {
       this.jdField_a_of_type_ComTencentWidgetExpandableListView.b(paramView.jdField_a_of_type_Int);
@@ -648,14 +648,14 @@ public class ContactListAdapter
   public boolean onLongClick(View paramView)
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131435519));
-    BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new aimy(this));
+    localQQCustomMenu.a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131435536));
+    BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new ajbc(this));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter
  * JD-Core Version:    0.7.0.1
  */

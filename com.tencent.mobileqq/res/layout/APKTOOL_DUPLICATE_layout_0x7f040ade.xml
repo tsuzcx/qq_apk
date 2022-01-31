@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b64" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_gravity="center|right" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0sp" android:textColor="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021dff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3161" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021dfe" android:padding="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:text="查看原片" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <com.qzone.widget.AsynAutoGifImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3129" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a312a" android:padding="16.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="2.0dip" android:src="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:scaleType="centerCrop" />
+</FrameLayout>

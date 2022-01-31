@@ -1,19 +1,16 @@
-import android.content.Context;
-import com.rookery.translate.model.TranslateCache;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.av.VideoController;
 
-public final class jdd
-  implements Runnable
+public class jdd
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public jdd(Context paramContext) {}
+  public jdd(VideoController paramVideoController) {}
   
-  public void run()
-  {
-    TranslateCache.a(this.a);
-  }
+  public void onAudioFocusChange(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     jdd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,18 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
+import android.support.annotation.NonNull;
+import dov.com.qq.im.capture.text.MidNightTextItem;
+import dov.com.qq.im.capture.text.PinYinSpan.OnHanZiToPinYinListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class anof
-  extends Property
+  implements PinYinSpan.OnHanZiToPinYinListener
 {
-  public anof(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public anof(MidNightTextItem paramMidNightTextItem) {}
   
-  public Float a(MarkDrawable paramMarkDrawable)
+  @NonNull
+  public String a(@NonNull String paramString)
   {
-    if (paramMarkDrawable != null) {
-      return Float.valueOf(MarkDrawable.a(paramMarkDrawable));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(MarkDrawable paramMarkDrawable, Float paramFloat)
-  {
-    if (paramMarkDrawable != null) {
-      MarkDrawable.a(paramMarkDrawable, paramFloat.floatValue());
-    }
+    return MidNightTextItem.a().matcher(paramString).replaceAll(" ");
   }
 }
 

@@ -1,37 +1,43 @@
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import cooperation.qzone.cache.FileCacheService;
-import cooperation.qzone.cache.FileStorageHandler;
-import cooperation.qzone.cache.FileStorageHandler.Collector;
-import java.util.Collection;
-import java.util.Iterator;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.widget.TCWNumberPicker;
 
 public class amdw
-  implements ThreadPool.Job
+  implements InputFilter
 {
-  public amdw(FileStorageHandler paramFileStorageHandler, boolean paramBoolean) {}
+  private amdw(TCWNumberPicker paramTCWNumberPicker) {}
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    paramJobContext.setMode(1);
-    paramJobContext = FileStorageHandler.a(this.jdField_a_of_type_CooperationQzoneCacheFileStorageHandler).a();
-    if (paramJobContext != null)
+    int i = 0;
+    if (TCWNumberPicker.a(this.a) == null)
     {
-      paramJobContext = paramJobContext.iterator();
-      while (paramJobContext.hasNext())
-      {
-        Object localObject = (FileCacheService)paramJobContext.next();
-        int i = ((FileCacheService)localObject).a(this.jdField_a_of_type_Boolean);
-        localObject = ((FileCacheService)localObject).a();
-        this.jdField_a_of_type_CooperationQzoneCacheFileStorageHandler.a((String)localObject, i);
-      }
+      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      return paramCharSequence;
     }
-    return null;
+    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
+    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
+    String[] arrayOfString = TCWNumberPicker.a(this.a);
+    paramInt2 = arrayOfString.length;
+    paramInt1 = i;
+    for (;;)
+    {
+      if (paramInt1 >= paramInt2) {
+        break label154;
+      }
+      paramCharSequence = str;
+      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
+        break;
+      }
+      paramInt1 += 1;
+    }
+    label154:
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amdw
  * JD-Core Version:    0.7.0.1
  */

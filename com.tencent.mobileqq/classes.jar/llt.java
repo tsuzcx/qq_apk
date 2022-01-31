@@ -1,14 +1,20 @@
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class llt
-  implements Runnable
+  extends FriendListObserver
 {
   public llt(KandianMergeManager paramKandianMergeManager) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    ReadInJoyHelper.l(KandianMergeManager.a(this.a), true);
+    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.a(this.a), paramString)) && (!TextUtils.equals(paramString, AppConstants.as))) {
+      KandianMergeManager.a(this.a).a(1).a(4, true, new Object[] { AppConstants.as });
+    }
   }
 }
 

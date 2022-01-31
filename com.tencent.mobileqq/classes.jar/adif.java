@@ -1,44 +1,132 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.hotpic.RecyclerFooterWrapperAdapter;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class adif
-  extends RecyclerView.AdapterDataObserver
+  implements UniformDownloader.IUniformDownloaderListener
 {
-  public adif(RecyclerFooterWrapperAdapter paramRecyclerFooterWrapperAdapter) {}
+  public adif(UniformDownloader paramUniformDownloader) {}
   
-  public void onChanged()
+  public void a(int paramInt, Bundle paramBundle)
   {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
+    boolean bool = this.a.c();
+    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadStart. start:" + bool + "progress:" + paramInt);
+    if (bool) {}
+    for (;;)
+    {
+      return;
+      this.a.a(true);
+      Object localObject = UniformDownloader.a(this.a);
+      if (paramBundle != null) {
+        paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)((Iterator)localObject).next();
+        if (localIUniformDownloaderListener != null) {
+          localIUniformDownloaderListener.a(paramInt, paramBundle);
+        }
+      }
+    }
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    super.onItemRangeChanged(paramInt1, paramInt2);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
+    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errcode:" + paramInt + "errStr:" + paramString);
+    if ((UniformDownloader.b(this.a) < 1) && (1 == UniformDownloader.a(this.a)))
+    {
+      QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errorRetry");
+      UniformDownloader.c(this.a);
+      UniformDownloader.a(this.a, paramInt, paramString, paramBundle);
+    }
+    for (;;)
+    {
+      return;
+      if (paramBundle != null) {
+        paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
+      }
+      Iterator localIterator = UniformDownloader.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
+        if (localIUniformDownloaderListener != null) {
+          localIUniformDownloaderListener.a(paramInt, paramString, paramBundle);
+        }
+      }
+    }
   }
   
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    super.onItemRangeInserted(paramInt1, paramInt2);
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadSucess. filePath:" + paramString);
+    paramBundle = new Bundle();
+    paramBundle.putInt("_CB_SID", UniformDownloader.a(this.a));
+    paramBundle.putString("_CB_URL", UniformDownloader.a(this.a));
+    paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
+    Iterator localIterator = UniformDownloader.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
+      if (localIUniformDownloaderListener != null) {
+        localIUniformDownloaderListener.a(paramString, paramLong, paramBundle);
+      }
+    }
   }
   
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  public void b(int paramInt, Bundle paramBundle)
   {
-    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
+    }
+    Iterator localIterator = UniformDownloader.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
+      if (localIUniformDownloaderListener != null) {
+        localIUniformDownloaderListener.b(paramInt, paramBundle);
+      }
+    }
   }
   
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  public void c(int paramInt, Bundle paramBundle)
   {
-    super.onItemRangeRemoved(paramInt1, paramInt2);
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadPause. progress:" + paramInt);
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
+    }
+    Iterator localIterator = UniformDownloader.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
+      if (localIUniformDownloaderListener != null) {
+        localIUniformDownloaderListener.c(paramInt, paramBundle);
+      }
+    }
+  }
+  
+  public void d(int paramInt, Bundle paramBundle)
+  {
+    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadResume. progress:" + paramInt);
+    if (paramBundle != null) {
+      paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
+    }
+    Iterator localIterator = UniformDownloader.a(this.a).iterator();
+    while (localIterator.hasNext())
+    {
+      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
+      if (localIUniformDownloaderListener != null) {
+        localIUniformDownloaderListener.d(paramInt, paramBundle);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adif
  * JD-Core Version:    0.7.0.1
  */

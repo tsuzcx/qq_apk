@@ -1,17 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DialogAppInPushNotification;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-public class mka
-  implements View.OnClickListener
+class mka
+  extends AnimateUtils.AnimationAdapter
 {
-  public mka(DialogAppInPushNotification paramDialogAppInPushNotification) {}
+  mka(mjz parammjz) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    AppInPushNotification.a(1);
-    this.a.a(true, false);
+    paramAnimation = new ScaleAnimation(1.05F, 0.95F, 1.05F, 0.95F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(100L);
+    paramAnimation.setAnimationListener(new mkb(this));
+    this.a.a.a.startAnimation(paramAnimation);
   }
 }
 

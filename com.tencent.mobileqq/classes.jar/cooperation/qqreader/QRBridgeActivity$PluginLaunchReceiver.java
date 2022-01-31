@@ -1,6 +1,6 @@
 package cooperation.qqreader;
 
-import amas;
+import amqw;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,7 +20,7 @@ public class QRBridgeActivity$PluginLaunchReceiver
     }
     if (paramContext.equals("com.tencent.mobileqq.closeQRBridgeActivity")) {
       if ((this.a.d) || (!this.a.e)) {
-        this.a.a.postDelayed(new amas(this), 1200L);
+        this.a.a.postDelayed(new amqw(this), 1200L);
       }
     }
     do

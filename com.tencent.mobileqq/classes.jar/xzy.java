@@ -1,15 +1,4 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-
-class xzy
-  implements Runnable
-{
-  xzy(xzx paramxzx) {}
-  
-  public void run()
-  {
-    this.a.a.b();
-  }
-}
+public class xzy {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar

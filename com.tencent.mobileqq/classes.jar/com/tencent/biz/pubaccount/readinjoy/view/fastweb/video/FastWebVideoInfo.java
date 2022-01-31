@@ -14,12 +14,12 @@ import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
-import mol;
+import mpr;
 
 public class FastWebVideoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new mol();
+  public static final Parcelable.Creator CREATOR = new mpr();
   public int a;
   public long a;
   public VideoAdInfo a;

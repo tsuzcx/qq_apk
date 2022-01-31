@@ -1,22 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
 
 public class nmg
-  extends Handler
+  implements BatchHandlerListPuller.IPullResultCallback
 {
-  public nmg(ProgressControler paramProgressControler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public nmg(BatchGetVideoInfo paramBatchGetVideoInfo, BatchHandlerListPuller paramBatchHandlerListPuller) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.d();
   }
 }
 

@@ -1,95 +1,48 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import java.util.List;
 
 public class ufm
-  implements AbsListView.OnScrollListener
+  extends FriendListObserver
 {
-  public int a;
-  public boolean a;
+  public ufm(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public ufm(VisitorsActivity paramVisitorsActivity)
+  protected void onSetAsNormalContacts(boolean paramBoolean, List paramList)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    if (VersionUtils.j())
+    if (paramBoolean)
     {
-      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getCurrentFocus();
-      if (paramAbsListView != null) {
-        paramAbsListView.clearFocus();
-      }
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, paramAbsListView + ", mLastTop=" + this.jdField_a_of_type_Int + ", mHeaderVisible=" + this.jdField_a_of_type_Boolean);
-    }
-    paramAbsListView = paramAbsListView.getChildAt(0);
-    Object localObject;
-    CharSequence localCharSequence;
-    if ((paramAbsListView != null) && (paramInt1 == 0))
-    {
-      paramInt1 = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.getHeight();
-      paramInt2 = paramInt1 - this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.f;
-      if (QLog.isColorLevel()) {
-        QLog.d("VisitorsActivity", 2, "mSummaryHeight = " + paramInt1);
-      }
-      paramInt3 = Math.abs(paramAbsListView.getTop());
-      if ((paramInt3 <= this.jdField_a_of_type_Int) || (paramInt3 < paramInt1) || (this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.getVisibility() != 8)) {
-        break label269;
-      }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setVisibility(0);
-      localObject = null;
-      localCharSequence = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.centerView.getText();
-      if ((paramInt3 <= this.jdField_a_of_type_Int) || (paramInt3 < paramInt2) || (!"".equals(localCharSequence))) {
-        break label317;
-      }
-      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-    }
-    for (;;)
-    {
-      if ((paramAbsListView != null) && (paramAbsListView != this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.centerView.getAnimation()))
-      {
-        paramAbsListView.reset();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.d) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.centerView.startAnimation(paramAbsListView);
-        }
-      }
-      this.jdField_a_of_type_Int = paramInt3;
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
       return;
-      label269:
-      if ((paramInt3 >= this.jdField_a_of_type_Int) || (paramInt3 > paramInt1) || (this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.getVisibility() != 0)) {
-        break;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setVisibility(8);
-      break;
-      label317:
-      paramAbsListView = localObject;
-      if (paramInt3 < this.jdField_a_of_type_Int)
-      {
-        paramAbsListView = localObject;
-        if (paramInt3 <= paramInt2)
-        {
-          paramAbsListView = localObject;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaLangString.equals(localCharSequence)) {
-            paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_AndroidViewAnimationAlphaAnimation;
-          }
-        }
-      }
+    }
+    this.a.a(2131437762, 1);
+  }
+  
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List paramList)
+  {
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      this.a.a(2131433261, 2);
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if ((paramBoolean1) && (paramBoolean3))
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

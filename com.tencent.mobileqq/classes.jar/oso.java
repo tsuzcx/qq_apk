@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginActivity;
+import com.tencent.biz.qrcode.activity.LoginManagerActivity;
 
-public class oso
-  implements DialogInterface.OnClickListener
+class oso
+  implements Runnable
 {
-  public oso(QRLoginActivity paramQRLoginActivity) {}
+  oso(osn paramosn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    LoginManagerActivity.a(this.a.a);
+  }
 }
 
 

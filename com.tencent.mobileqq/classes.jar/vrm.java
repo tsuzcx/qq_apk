@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.data.EqqDetail;
 
-public class vrm
-  extends TroopObserver
+class vrm
+  implements Runnable
 {
-  public vrm(HotChatPie paramHotChatPie) {}
+  vrm(vrl paramvrl, EqqDetail paramEqqDetail) {}
   
-  protected void c(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((this.a.s != 2) && (paramBoolean) && (this.a.b != null) && (this.a.a != null) && (this.a.a.troopUin.equals(paramString)) && (this.a.a.hasPostRedPoint())) {
-      this.a.b.a(true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
-    }
+    CrmUtils.b(this.jdField_a_of_type_Vrl.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+    this.jdField_a_of_type_Vrl.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new vrn(this));
   }
 }
 

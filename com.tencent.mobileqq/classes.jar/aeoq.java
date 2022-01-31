@@ -1,24 +1,33 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.AnchorDisplayAdapter;
-import tencent.im.oidb.cmd0xac5.cmd0xac5.NowFollowAnchor;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class aeoq
+  implements WerewolvesHandler.Callback
 {
-  public int a;
-  public View a;
-  public TextView a;
-  public URLImageView a;
-  public cmd0xac5.NowFollowAnchor a;
-  public View b;
-  public URLImageView b;
-  public View c;
-  public View d;
-  public View e;
-  public View f;
+  public aeoq(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public aeoq(AnchorDisplayAdapter paramAnchorDisplayAdapter) {}
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  {
+    if (paramInt == 0)
+    {
+      paramRspBody = paramRspBody.poi_info;
+      String str = paramRspBody.bytes_uid.get().toStringUtf8();
+      this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
+    }
+    do
+    {
+      return;
+      this.a.a(paramInt, paramRspBody, "开始游戏失败");
+    } while (!QLog.isColorLevel());
+    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
+  }
 }
 
 

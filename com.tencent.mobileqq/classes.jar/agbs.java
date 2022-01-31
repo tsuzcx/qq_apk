@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
+import com.tencent.mobileqq.ocr.OcrControl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.io.File;
+import java.util.HashMap;
 
 public class agbs
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public agbs(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public agbs(OcrControl paramOcrControl, ARCloudReqFileInfo paramARCloudReqFileInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.f();
+    long l1 = new File(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.a).length() / 1024L;
+    long l2 = new File(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.b).length() / 1024L;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("ocrFilesize", String.valueOf(l1));
+    localHashMap.put("previewFilesize", String.valueOf(l2));
+    StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ocr_pic_size", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

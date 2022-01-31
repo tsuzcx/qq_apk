@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.apollo.game.ApolloFragment;
-import com.tencent.mobileqq.apollo.game.ApolloFragmentManager;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.text.Editable;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public class yly
+class yly
   implements Runnable
 {
-  public yly(ApolloFragmentManager paramApolloFragmentManager, ApolloFragment paramApolloFragment) {}
+  yly(ylx paramylx, Editable paramEditable) {}
   
   public void run()
   {
-    ((ApolloGameActivity)ApolloFragmentManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloFragmentManager)).a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloFragment.a());
+    ApolloRender localApolloRender = this.jdField_a_of_type_Ylx.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender();
+    if ((localApolloRender != null) && (this.jdField_a_of_type_Ylx.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr != 0L)) {
+      localApolloRender.getSavaWrapper().a(this.jdField_a_of_type_Ylx.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr, this.jdField_a_of_type_AndroidTextEditable.toString());
+    }
   }
 }
 

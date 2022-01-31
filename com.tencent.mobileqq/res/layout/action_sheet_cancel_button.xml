@@ -2,5 +2,5 @@
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:background="#ffe5e3e4" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0080" />
-    <Button android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c00c2" android:id="@id/action_sheet_btnCancel" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020018" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d007f" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0080" style="@style/action_sheet_btn_style" />
+    <Button android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c00c3" android:id="@id/action_sheet_btnCancel" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020018" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d007f" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0080" style="@style/action_sheet_btn_style" />
 </RelativeLayout>

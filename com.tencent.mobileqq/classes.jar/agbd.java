@@ -1,21 +1,28 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.Tag;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
+import com.tencent.mobileqq.ocr.OcrImageUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class agbd
-  implements Comparator
+  implements Runnable
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  public agbd(OCRRecognitionResultActivity paramOCRRecognitionResultActivity, String paramString) {}
   
-  public agbd(TagCloudView paramTagCloudView, Point paramPoint)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-  }
-  
-  public int a(Tag paramTag1, Tag paramTag2)
-  {
-    return TagCloudView.a(paramTag1.a(), this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramTag2.a(), this.jdField_a_of_type_AndroidGraphicsPoint);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (new File(this.jdField_a_of_type_JavaLangString).exists()))
+    {
+      String str = new File(this.jdField_a_of_type_JavaLangString).getParent();
+      if (OcrImageUtil.b.equals(str))
+      {
+        FileUtils.d(this.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel()) {
+          QLog.d("OCRRecognitionResultActivity", 2, "delete pic path:" + this.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
   }
 }
 

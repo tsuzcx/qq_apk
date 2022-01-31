@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import angr;
-import angs;
+import anww;
+import anwx;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
@@ -38,11 +38,11 @@ public class ArtFilterItemView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(paramContext, 2130969187, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365518));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365515));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365516));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365517));
+    inflate(paramContext, 2130969186, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365540));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365537));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365538));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365539));
   }
   
   public void a()
@@ -101,7 +101,7 @@ public class ArtFilterItemView
       if (paramBoolean)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setText("100%");
-        postDelayed(new angr(this), 100L);
+        postDelayed(new anww(this), 100L);
         return;
       }
     } while (this.jdField_a_of_type_AndroidWidgetTextView.getText().equals("100&"));
@@ -133,7 +133,7 @@ public class ArtFilterItemView
     localTranslateAnimation.setFillEnabled(true);
     localTranslateAnimation.setStartTime(0L);
     localTranslateAnimation.setDuration(200L);
-    localTranslateAnimation.setAnimationListener(new angs(this, paramEditVideoArtFilter));
+    localTranslateAnimation.setAnimationListener(new anwx(this, paramEditVideoArtFilter));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
   }
   

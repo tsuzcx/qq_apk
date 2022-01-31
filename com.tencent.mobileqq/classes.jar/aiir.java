@@ -1,28 +1,17 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout12;
 
 public class aiir
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aiir(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public aiir(StructMsgItemLayout12 paramStructMsgItemLayout12) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.b == null) {
-      return;
-    }
-    this.a.b.post(new aiis(this));
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiir
  * JD-Core Version:    0.7.0.1
  */

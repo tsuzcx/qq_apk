@@ -1,18 +1,35 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.activity.richmedia.QIMShortVideoEntryDialog;
+import com.tencent.mobileqq.activity.richmedia.QIMShortVideoEntryDialog.IAdvertiseJumpDialogCallBack;
+import com.tencent.mobileqq.richmedia.capture.util.EffectsListenerController;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class ahkt
-  implements Runnable
+public class ahkt
+  implements QIMShortVideoEntryDialog.IAdvertiseJumpDialogCallBack
 {
-  public ahkt(String paramString1, String paramString2) {}
+  public ahkt(EffectsListenerController paramEffectsListenerController, int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
   
-  public void run()
+  public void a()
   {
-    FileUtils.a(PtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "save Config to file finish.");
+    int i = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "1";; str = "0")
+    {
+      ReportController.b(null, "dc00898", "", "", "0X80085A1", "0X80085A1", i, 0, str, "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilEffectsListenerController.a.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilEffectsListenerController.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    int i = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "1";; str = "0")
+    {
+      ReportController.b(null, "dc00898", "", "", "0X80085A2", "0X80085A2", i, 0, str, "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilEffectsListenerController.a.dismiss();
+      return;
     }
   }
 }

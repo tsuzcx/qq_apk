@@ -1,19 +1,26 @@
-import com.tencent.av.utils.TipsManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QAVGroupConfig;
+import java.lang.ref.WeakReference;
 
 public class khr
   implements Runnable
 {
-  public khr(TipsManager paramTipsManager) {}
+  long jdField_a_of_type_Long = 0L;
+  String jdField_a_of_type_JavaLangString = null;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
+  
+  public khr(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TipsManager", 2, "hideTipsRunnable, mPreviosState[" + this.a.b + "]");
-    }
-    this.a.a();
-    if (this.a.b) {
-      this.a.e();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface != null) {
+      QAVGroupConfig.a("addGroupMember_" + this.jdField_a_of_type_Long, localQQAppInterface, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

@@ -1,36 +1,21 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl.ARCloudControlCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
-import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aaar
   implements Runnable
 {
-  public aaar(ARCloudControl paramARCloudControl, SosoInterface.OnLocationListener paramOnLocationListener) {}
+  public aaar(GreetingCardRender paramGreetingCardRender, String paramString) {}
   
   public void run()
   {
-    if ((ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl) != null) && (ARCloudControl.e(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl)))
+    if (new File(this.jdField_a_of_type_JavaLangString).exists())
     {
-      QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
-      SosoInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
-      if (!ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl)) {}
-    }
-    else
-    {
+      GreetingCardRender.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingCardRender).native_setARCardVideoCover(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    ARCloudLBSLocationCheckResult localARCloudLBSLocationCheckResult = new ARCloudLBSLocationCheckResult();
-    localARCloudLBSLocationCheckResult.a = 2;
-    ARCloudRecogResult.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.a.recognitions, ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl), localARCloudLBSLocationCheckResult);
-    if (ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl) != null) {
-      ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl).a(0, ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl));
-    }
-    ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl, null);
+    QLog.e("GreetingCardRender", 1, String.format("setARCardVideoCover file not exist! videoCoverPath=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
   }
 }
 

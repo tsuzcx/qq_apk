@@ -1,14 +1,13 @@
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.StoryMessageListAdapter;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
 
 public class nwq
   implements Runnable
 {
-  public nwq(StoryMessageListActivity paramStoryMessageListActivity) {}
+  public nwq(StoryMemoriesFragment paramStoryMemoriesFragment) {}
   
   public void run()
   {
-    this.a.a.notifyDataSetChanged();
+    this.a.c();
   }
 }
 

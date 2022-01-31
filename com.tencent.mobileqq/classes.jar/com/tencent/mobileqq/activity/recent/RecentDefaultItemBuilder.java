@@ -143,15 +143,15 @@ public class RecentDefaultItemBuilder
     if (paramViewGroup == null)
     {
       paramOnDragModeChangedListener = new RecentDefaultItemBuilder.RecentItemDefaultHolder();
-      localObject = a(paramContext, 2130971437, paramOnDragModeChangedListener);
-      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131362701));
-      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject).findViewById(2131363189));
-      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363183));
-      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363187));
+      localObject = a(paramContext, 2130971485, paramOnDragModeChangedListener);
+      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131362719));
+      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject).findViewById(2131363207));
+      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363201));
+      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363205));
       paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(16908308));
-      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363185));
-      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363186));
-      paramOnDragModeChangedListener.d = ((TextView)((View)localObject).findViewById(2131363188));
+      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363203));
+      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363204));
+      paramOnDragModeChangedListener.d = ((TextView)((View)localObject).findViewById(2131363206));
       paramOnDragModeChangedListener.e = ((TextView)((View)localObject).findViewById(16908309));
       paramOnDragModeChangedListener.e.setGravity(16);
       a((View)localObject, paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetTextView, paramContext);
@@ -258,7 +258,7 @@ public class RecentDefaultItemBuilder
   {
     try
     {
-      LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131363184);
+      LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131363202);
       paramView = TimeManager.a().a("000000", 1225168973512L);
       if (TextUtils.isEmpty(paramView))
       {
@@ -418,7 +418,7 @@ public class RecentDefaultItemBuilder
               if ((paramRecentBaseData.f & 0xF0) != 32) {
                 break label753;
               }
-              paramContext.f.setBackgroundResource(2130838584);
+              paramContext.f.setBackgroundResource(2130838588);
               long l = paramRecentBaseData.c();
               if (!(paramContext.jdField_a_of_type_AndroidWidgetImageView instanceof IRecentImgv)) {
                 break;
@@ -455,7 +455,7 @@ public class RecentDefaultItemBuilder
             }
             else if (i == 3)
             {
-              j = 2130845928;
+              j = 2130846056;
               if ((paramRecentBaseData instanceof RecentTroopAssistantItem)) {}
               paramContext.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, paramView);
               k = 99;
@@ -463,13 +463,13 @@ public class RecentDefaultItemBuilder
             }
             else
             {
-              j = 2130845927;
+              j = 2130846055;
               paramContext.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
               k = 99;
               i = 3;
               continue;
               label753:
-              paramContext.f.setBackgroundResource(2130838583);
+              paramContext.f.setBackgroundResource(2130838587);
               continue;
               k = 99;
               m = 0;
@@ -492,33 +492,33 @@ public class RecentDefaultItemBuilder
       return;
     case 1: 
       paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840207);
+      paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840213);
       return;
     case 2: 
       paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       if (paramRecentBaseData.jdField_a_of_type_Boolean)
       {
-        paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840214);
+        paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840220);
         return;
       }
-      paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840207);
+      paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840213);
       return;
     case 3: 
       paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       if (paramRecentBaseData.jdField_a_of_type_Boolean)
       {
-        paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840214);
+        paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840220);
         return;
       }
-      paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840215);
+      paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840221);
       return;
     case 5: 
       paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840215);
+      paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840221);
       return;
     }
     paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838697);
+    paramRecentItemDefaultHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838701);
   }
 }
 

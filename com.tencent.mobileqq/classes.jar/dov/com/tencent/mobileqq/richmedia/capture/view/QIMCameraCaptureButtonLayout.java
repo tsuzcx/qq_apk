@@ -15,11 +15,11 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anwn;
-import anwo;
-import anwp;
-import anwq;
-import anwr;
+import aoms;
+import aomt;
+import aomu;
+import aomv;
+import aomw;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.richmedia.capture.gesture.GLGestureProxy;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
@@ -36,7 +36,7 @@ public class QIMCameraCaptureButtonLayout
   public long a;
   protected ValueAnimator a;
   public Handler a;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new anwq(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aomv(this);
   protected View a;
   private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
   public ImageView a;
@@ -69,7 +69,7 @@ public class QIMCameraCaptureButtonLayout
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler = new anwr(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aomw(this, Looper.getMainLooper());
     a();
   }
   
@@ -88,7 +88,7 @@ public class QIMCameraCaptureButtonLayout
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler = new anwr(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aomw(this, Looper.getMainLooper());
     a();
   }
   
@@ -104,17 +104,17 @@ public class QIMCameraCaptureButtonLayout
   
   protected void a()
   {
-    LayoutInflater.from(getContext()).inflate(2130970082, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131368940);
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCircleProgress = ((QIMCircleProgress)findViewById(2131368942));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368941));
+    LayoutInflater.from(getContext()).inflate(2130970096, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369006);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCircleProgress = ((QIMCircleProgress)findViewById(2131369008));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369007));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCircleProgress.setBackgroundResource(2130841706);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCircleProgress.setBackgroundResource(2130841743);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMCircleProgress.setCenterView();
     this.jdField_a_of_type_DovComQqImCaptureViewQIMCircleProgress.setVisibility(0);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMCircleProgress.a(0);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout = ((QIMCameraCountTimeLayout)findViewById(2131368943));
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout = ((QIMCameraCountTimeLayout)findViewById(2131369009));
   }
   
   public void a(float paramFloat)
@@ -209,7 +209,7 @@ public class QIMCameraCaptureButtonLayout
       j();
       return true;
       if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView instanceof EffectsCameraCaptureView)) && (((EffectsCameraCaptureView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView).c())) {
-        ((EffectsCameraCaptureView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView).s();
+        ((EffectsCameraCaptureView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView).t();
       }
     }
   }
@@ -221,14 +221,14 @@ public class QIMCameraCaptureButtonLayout
   {
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 1.2222F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anwn(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new anwo(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aoms(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aomt(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_a_of_type_DovComQqImCaptureViewQIMCircleProgress.a(1);
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.1F, 1.0F });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMCircleProgress.setStrokeWidth(3.0F);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anwp(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aomu(this));
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
   }
   

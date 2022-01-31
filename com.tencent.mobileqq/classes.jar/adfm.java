@@ -1,34 +1,25 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.hotchat.anim.HeartAnimator;
-import com.tencent.mobileqq.hotchat.anim.HeartAnimator.HeartAnimatorListener;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import java.util.HashMap;
+import java.util.Map;
 
-public class adfm
-  implements Animation.AnimationListener
+class adfm
+  implements Runnable
 {
-  public adfm(HeartAnimator paramHeartAnimator, ViewGroup paramViewGroup, View paramView) {}
+  adfm(adfk paramadfk, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.jdField_a_of_type_AndroidOsHandler.post(new adfn(this));
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-    if (HeartAnimator.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator) != null) {
-      HeartAnimator.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator).b(paramAnimation);
+    if (this.jdField_a_of_type_Adfk.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-    if (HeartAnimator.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator) != null) {
-      HeartAnimator.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator).a(paramAnimation);
-    }
+    this.jdField_a_of_type_Adfk.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
+    VideoFilePresenter.a(this.jdField_a_of_type_Adfk.a, this.jdField_a_of_type_JavaLangString);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("shouq_bus_type", "bus_type_filevideo_online_play");
+    this.jdField_a_of_type_Adfk.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
+    this.jdField_a_of_type_Adfk.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_Adfk.a.jdField_a_of_type_AndroidAppActivity, VideoFilePresenter.a(this.jdField_a_of_type_Adfk.a), 0L, 0L, this.jdField_a_of_type_Adfk.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
   }
 }
 

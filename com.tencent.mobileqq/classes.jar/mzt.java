@@ -1,19 +1,49 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager.ServerInfo;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import org.json.JSONObject;
 
 public class mzt
-  implements UploadObject.UploadFinishListener
+  extends SimpleJob
 {
-  public mzt(StoryVideoUploadTask paramStoryVideoUploadTask, StoryVideoTaskInfo paramStoryVideoTaskInfo) {}
+  public mzt(VideoServerInfoManager paramVideoServerInfoManager) {}
   
-  public void a(UploadObject paramUploadObject)
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.k = ((ImageFileObject)paramUploadObject).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    Object localObject = (String)((StoryConfigManager)SuperManager.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
+    synchronized (this.a.b)
+    {
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        long l = this.a.a.jdField_a_of_type_Long;
+        if (l != 0L) {}
+      }
+      try
+      {
+        paramVarArgs = new VideoServerInfoManager.ServerInfo();
+        localObject = new JSONObject((String)localObject);
+        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
+        paramVarArgs.jdField_a_of_type_ArrayOfByte = HexUtil.a(((JSONObject)localObject).getString("ak"));
+        this.a.a = paramVarArgs;
+        SLog.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
+        return null;
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          SLog.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
+        }
+      }
+    }
   }
 }
 

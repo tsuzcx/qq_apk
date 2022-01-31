@@ -1,18 +1,15 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
+import com.tencent.mobileqq.apollo.script.SpriteTaskHandler;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 
-public class ysc
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
+public final class ysc
+  implements Runnable
 {
-  public ysc(AVEngineWalper paramAVEngineWalper) {}
+  public ysc(SpriteTaskHandler paramSpriteTaskHandler, SpriteTaskParam paramSpriteTaskParam) {}
   
-  protected void onComplete(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskHandler != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskHandler.b(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
     }
   }
 }

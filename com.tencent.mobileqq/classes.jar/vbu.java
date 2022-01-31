@@ -1,35 +1,15 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.Holder;
-import com.tencent.mobileqq.activity.aio.item.SignatureView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.vas.SignatureTemplateInfo;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
+import com.tencent.mobileqq.data.MessageForMedalNews;
 
-public class vbu
-  implements URLDrawable.URLDrawableListener
+class vbu
+  implements Runnable
 {
-  public vbu(RichStatItemBuilder paramRichStatItemBuilder, RichStatItemBuilder.Holder paramHolder) {}
+  vbu(vbt paramvbt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.a = SignatureManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager, RichStatItemBuilder.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    paramURLDrawable = ((SignatureManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(57)).a(Integer.toString(RichStatItemBuilder.a().tplId));
-    if (!TextUtils.isEmpty(paramURLDrawable.p)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.c = Color.parseColor(paramURLDrawable.p);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.invalidate();
+    MedalNewsItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMedalNewsItemBuilder, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMedalNewsItemBuilder.a.d, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.level, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.id, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.ts, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.seq);
   }
 }
 

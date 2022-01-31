@@ -38,19 +38,19 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import kuv;
-import kuw;
-import kux;
-import kuz;
-import kva;
-import kvb;
-import kvc;
-import kvd;
-import kvf;
-import kvg;
-import kvh;
-import kvi;
-import kvj;
+import kug;
+import kuh;
+import kui;
+import kuk;
+import kul;
+import kum;
+import kun;
+import kuo;
+import kuq;
+import kur;
+import kus;
+import kut;
+import kuu;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
 
@@ -68,7 +68,7 @@ public class AdvertisementVideoPreloadManager
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private kvh jdField_a_of_type_Kvh;
+  private kus jdField_a_of_type_Kus;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private ArrayList jdField_b_of_type_JavaUtilArrayList = new ArrayList();
@@ -164,13 +164,13 @@ public class AdvertisementVideoPreloadManager
     if (localTVK_IProxyFactory != null)
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr = localTVK_IProxyFactory.getCacheMgr(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new kvi(this, null));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(new kvj(this, null));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new kut(this, null));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(new kuu(this, null));
     }
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo = new TVK_UserInfo(b(), "");
-    this.jdField_a_of_type_Kvh = new kvh(this, this);
-    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Kvh);
-    ThreadManager.executeOnNetWorkThread(new kuz(this));
+    this.jdField_a_of_type_Kus = new kus(this, this);
+    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Kus);
+    ThreadManager.executeOnNetWorkThread(new kuk(this));
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -179,7 +179,7 @@ public class AdvertisementVideoPreloadManager
     c("continueDownload queueType:" + paramInt);
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = null;
-    ThreadManager.executeOnNetWorkThread(new kuw(this, paramInt));
+    ThreadManager.executeOnNetWorkThread(new kuh(this, paramInt));
   }
   
   public static void b(String paramString)
@@ -243,7 +243,7 @@ public class AdvertisementVideoPreloadManager
     TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", b());
     if (!TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext))
     {
-      ThreadManager.post(new kux(this), 8, null, false);
+      ThreadManager.post(new kui(this), 8, null, false);
       return;
     }
     b();
@@ -352,7 +352,7 @@ public class AdvertisementVideoPreloadManager
           b(paramInt);
           if (a(str1) != 0)
           {
-            ThreadManager.executeOnFileThread(new kuv(this, str1));
+            ThreadManager.executeOnFileThread(new kug(this, str1));
             continue;
             c("startVideoDownload empty vid, skip to next task");
             b(paramInt);
@@ -400,7 +400,7 @@ public class AdvertisementVideoPreloadManager
             localPAAdPreloadTask.mPreloadState = 1;
             localPAAdPreloadTask.mNetworkType = localVideoDownloadItem.e;
             this.jdField_b_of_type_JavaUtilArrayList.add(localPAAdPreloadTask);
-            ThreadManager.executeOnNetWorkThread(new kvf(this));
+            ThreadManager.executeOnNetWorkThread(new kuq(this));
             c("handlePreloadTaskFromMessage msgid:" + paramAdvertisementItem.c + ", vid:" + localVideoCoverItem.b + ", add to queue");
           }
         }
@@ -451,7 +451,7 @@ public class AdvertisementVideoPreloadManager
             localPAAdPreloadTask.mPreloadState = 1;
             localPAAdPreloadTask.mNetworkType = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.e;
             this.c.add(localPAAdPreloadTask);
-            ThreadManager.executeOnNetWorkThread(new kvg(this));
+            ThreadManager.executeOnNetWorkThread(new kur(this));
             c("handlePreloadTaskFromPlay msgid:" + paramAdvertisementItem.c + ", index:" + paramInt + ", vid:" + str + ", add to queue");
           }
         }
@@ -537,15 +537,15 @@ public class AdvertisementVideoPreloadManager
           paramConfig.add(localPAAdPreloadTask);
         }
       }
-      ThreadManager.executeOnFileThread(new kva(this, paramConfig));
+      ThreadManager.executeOnFileThread(new kul(this, paramConfig));
       this.jdField_a_of_type_JavaUtilArrayList.clear();
       this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
       c("handlePreloadTaskFromConfig new taskSize:" + localArrayList.size());
-      ThreadManager.executeOnSubThread(new kvb(this));
+      ThreadManager.executeOnSubThread(new kum(this));
       paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
       paramQQAppInterface.putInt("public_account_ad_preload_task", j);
       paramQQAppInterface.apply();
-      ThreadManager.executeOnNetWorkThread(new kvc(this));
+      ThreadManager.executeOnNetWorkThread(new kun(this));
       for (;;)
       {
         return;
@@ -560,7 +560,7 @@ public class AdvertisementVideoPreloadManager
   
   public void a(String paramString)
   {
-    ThreadManager.executeOnSubThread(new kvd(this, paramString));
+    ThreadManager.executeOnSubThread(new kuo(this, paramString));
   }
   
   public void onDestroy()
@@ -574,11 +574,11 @@ public class AdvertisementVideoPreloadManager
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.removePreloadCallback();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(null);
     }
-    if (this.jdField_a_of_type_Kvh != null)
+    if (this.jdField_a_of_type_Kus != null)
     {
-      this.jdField_a_of_type_Kvh.a();
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Kvh);
-      this.jdField_a_of_type_Kvh = null;
+      this.jdField_a_of_type_Kus.a();
+      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Kus);
+      this.jdField_a_of_type_Kus = null;
     }
     this.jdField_a_of_type_Boolean = false;
   }

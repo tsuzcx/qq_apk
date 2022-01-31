@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahki;
-import ahly;
-import ahlz;
+import ahyk;
+import aiaa;
+import aiab;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -244,7 +244,7 @@ public class PendantVersionManager
   {
     String str = paramString.trim();
     VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK signature=" + paramString, null);
-    paramString = ahly.a(str);
+    paramString = aiaa.a(str);
     int i = paramString.a();
     VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK errCode=" + i + ",trimSignature=" + str, null);
     if (i == 0)
@@ -339,7 +339,7 @@ public class PendantVersionManager
   
   private static void b()
   {
-    ThreadManager.post(new ahki(), 5, null, false);
+    ThreadManager.post(new ahyk(), 5, null, false);
   }
   
   private static boolean b(String paramString)
@@ -384,19 +384,19 @@ public class PendantVersionManager
           str = ((String)paramString2.get(i)).trim();
         } while (TextUtils.isEmpty(str));
         VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK trimValue=" + str, null);
-        localObject = ahly.a(str);
-        j = ((ahlz)localObject).a('|');
+        localObject = aiaa.a(str);
+        j = ((aiab)localObject).a('|');
         if (j != 0) {
           break label407;
         }
-        str = paramString1 + ((ahlz)localObject).c();
+        str = paramString1 + ((aiab)localObject).c();
         File localFile = new File(str);
         if (!localFile.exists())
         {
           VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK[exists=false] fileName=" + str, null);
           return false;
         }
-        j = Integer.parseInt(((ahlz)localObject).d());
+        j = Integer.parseInt(((aiab)localObject).d());
         l = localFile.length();
       } while (j == l);
       VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK sizeConfig=" + j + ",fileSize=" + l, null);

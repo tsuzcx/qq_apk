@@ -1,34 +1,45 @@
-import android.media.MediaPlayer;
-import android.os.Message;
-import android.widget.SeekBar;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoLabel;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
 
 public class anub
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anub(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public anub(EditVideoLabel paramEditVideoLabel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Message localMessage;
-    if ((this.a.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) && (this.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.a.jdField_a_of_type_AndroidViewSurfaceView != null))
+    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString))
     {
-      localMessage = Message.obtain();
-      localMessage.arg1 = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "此时时间为+" + localMessage.arg1);
+      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString;
+      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
+      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
+      {
+        EditVideoPartManager localEditVideoPartManager = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager;
+        if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a())
+        {
+          paramView = "2";
+          localEditVideoPartManager.a("use_custom_tag", 0, 0, new String[] { paramView });
+        }
       }
-      this.a.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(localMessage.arg1);
-      if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {}
+      else
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
+      }
     }
-    else
+    for (;;)
     {
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
       return;
+      paramView = "1";
+      break;
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

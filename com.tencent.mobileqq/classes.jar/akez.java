@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
 
 public class akez
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public akez(ContainerView paramContainerView, int paramInt) {}
+  public akez(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ContainerView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView).smoothScrollTo(0, this.jdField_a_of_type_Int);
+    this.a.a.setImageResource(2130844124);
+    this.a.a.setTag(Integer.valueOf(2130844124));
+    this.a.a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akez
  * JD-Core Version:    0.7.0.1
  */

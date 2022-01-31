@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import ambg;
+import amrk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class LbsDataV2$PoiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ambg();
+  public static final Parcelable.Creator CREATOR = new amrk();
   public String address;
   public String city = "";
   public String country = "";

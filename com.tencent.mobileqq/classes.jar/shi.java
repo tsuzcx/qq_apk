@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class shi
-  extends BizTroopObserver
+class shi
+  implements Runnable
 {
-  public shi(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  shi(she paramshe) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
+  public void run()
   {
-    this.a.i();
-    if (paramBoolean)
-    {
-      if (paramBoolean1.booleanValue()) {
-        DiscussionInfoCardActivity.e(this.a);
-      }
-      return;
+    if (this.a.a.a.b == 5) {
+      this.a.a.a.b();
     }
-    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 

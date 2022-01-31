@@ -1,18 +1,18 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin.SimpleAACRecorder;
+import android.content.Context;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class ammb
-  implements MediaRecorder.OnErrorListener
+public final class ammb
 {
-  public ammb(QzoneAudioRecordPlugin.SimpleAACRecorder paramSimpleAACRecorder) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  IPluginManager.OnPluginReadyListener jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
+  IPluginManager.PluginParams jdField_a_of_type_CooperationPluginIPluginManager$PluginParams;
   
-  public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public ammb(Context paramContext, IPluginManager.PluginParams paramPluginParams, IPluginManager.OnPluginReadyListener paramOnPluginReadyListener)
   {
-    paramMediaRecorder = "(code = " + paramInt1 + ", extra = " + paramInt2 + ")";
-    QzoneAudioRecordPlugin.SimpleAACRecorder.a(this.a, paramInt1, paramMediaRecorder);
-    QLog.w("QzoneVoiceRecordPlugin.SimpleRecorder", 1, "MediaRecorder error " + paramMediaRecorder);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams = paramPluginParams;
+    this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
   }
 }
 

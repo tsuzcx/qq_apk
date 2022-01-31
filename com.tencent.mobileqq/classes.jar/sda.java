@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.utils.PackageUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
 
-class sda
+public class sda
   implements Runnable
 {
-  sda(scu paramscu) {}
+  public sda(ChatSettingForTroop paramChatSettingForTroop, String paramString) {}
   
   public void run()
   {
-    UpgradeTIMWrapper localUpgradeTIMWrapper = UpgradeTIMWrapper.a(this.a.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, new Object[] { "UpgradeTIMWrapper MSG_TIM_UPGRADE_BAR_SHOW, tips on: ", Boolean.valueOf(localUpgradeTIMWrapper.a()) });
-    }
-    if (!localUpgradeTIMWrapper.a()) {
-      this.a.a.a(1134058, 0L, true);
-    }
-    do
-    {
-      return;
-      if (PackageUtil.a(this.a.a.a.getApp(), "com.tencent.tim"))
-      {
-        this.a.a.a(1134058, 0L, true);
-        return;
-      }
-    } while ((UpgradeTIMWrapper.b()) || (Conversation.a(this.a.a) != null));
-    this.a.a.a(new sdb(this, localUpgradeTIMWrapper));
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean = GroupCatalogTool.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16);
   }
 }
 

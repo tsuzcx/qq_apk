@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now.view.widget;
 
-import aenz;
-import aeoa;
+import afbf;
+import afbg;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,14 +17,14 @@ public class StoryNewGuideDialog
   
   public StoryNewGuideDialog(Context paramContext)
   {
-    super(paramContext, 2131624747);
-    paramContext = LayoutInflater.from(paramContext).inflate(2130970740, null);
-    paramContext.setOnTouchListener(new aenz(this));
+    super(paramContext, 2131624749);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130970788, null);
+    paramContext.setOnTouchListener(new afbf(this));
     super.setContentView(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131371751));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369980));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131371921));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370057));
     this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(-1L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new aeoa(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new afbg(this));
   }
   
   public void a(String paramString)

@@ -1,42 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
 public class jhp
-  extends Handler
 {
-  WeakReference a;
+  public static final float[] a;
   
-  public jhp(CameraUtils paramCameraUtils, Looper paramLooper)
+  static
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCameraUtils);
-  }
-  
-  public void a()
-  {
-    removeMessages(1);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    QLog.w("CameraUtils", 1, "sendReopenCameraMsg[" + paramString + "], size[" + paramInt1 + ", " + paramInt2 + "], subthread[" + getLooper().getThread().getId() + "]");
-    a();
-    paramString = obtainMessage(1);
-    paramString.arg1 = paramInt1;
-    paramString.arg2 = paramInt2;
-    sendMessageDelayed(paramString, 1000L);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((this.a != null) && (this.a.get() != null) && (paramMessage != null) && (paramMessage.what == 1)) {
-      CameraUtils.a((CameraUtils)this.a.get(), paramMessage.arg1, paramMessage.arg2);
+    int k = 0;
+    a = new float[16384];
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= 16384) {
+        break;
+      }
+      a[i] = ((float)Math.sin((i + 0.5F) / 16384.0F * 6.283186F));
+      i += 1;
     }
-    super.handleMessage(paramMessage);
+    while (j < 360)
+    {
+      a[((int)(j * 45.511112F) & 0x3FFF)] = ((float)Math.sin(j * 0.01745329F));
+      j += 90;
+    }
   }
 }
 

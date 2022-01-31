@@ -1,18 +1,28 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.IGetTotalTime;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import java.util.LinkedHashMap;
 
 class acsd
-  implements MediaPlayer.OnPreparedListener
+  implements Runnable
 {
-  acsd(acsc paramacsc, MediaPlayer paramMediaPlayer) {}
+  acsd(acsc paramacsc, LinkedHashMap paramLinkedHashMap, int paramInt1, int paramInt2) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-    this.jdField_a_of_type_Acsc.a.a(i);
+    this.jdField_a_of_type_Acsc.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    this.jdField_a_of_type_Acsc.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    this.jdField_a_of_type_Acsc.a.i();
+    if ((this.jdField_a_of_type_Int == -1) || (this.b == -1))
+    {
+      this.jdField_a_of_type_Acsc.a.setSelect(0);
+      return;
+    }
+    if ((this.jdField_a_of_type_Acsc.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.g()) || (this.jdField_a_of_type_Acsc.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.h()))
+    {
+      this.jdField_a_of_type_Acsc.a.setPos(this.jdField_a_of_type_Int, this.b);
+      return;
+    }
+    this.jdField_a_of_type_Acsc.a.setSelect(0);
   }
 }
 

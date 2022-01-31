@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
 
 public class aaax
   implements Runnable
 {
-  public aaax(AREngine paramAREngine, ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult, ArLBSActivity paramArLBSActivity) {}
+  public aaax(GreetingCardRender paramGreetingCardRender) {}
   
   public void run()
   {
-    AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+    GreetingCardRender.a(this.a);
+    GreetingCardRender.a(this.a, false);
   }
 }
 

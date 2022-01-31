@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import ahny;
+import aica;
 import android.annotation.TargetApi;
 import android.graphics.ImageFormat;
 import android.graphics.Rect;
@@ -1136,7 +1136,7 @@ public class CameraControl
       try
       {
         this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, null, new ahny(this, paramInt1, paramFile, paramRect, paramPictureCallback, paramBoolean, paramInt2));
+        this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, null, new aica(this, paramInt1, paramFile, paramRect, paramPictureCallback, paramBoolean, paramInt2));
         return;
       }
       catch (RuntimeException paramFile) {}

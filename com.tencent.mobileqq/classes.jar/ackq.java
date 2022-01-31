@@ -1,44 +1,101 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.app.UniformDownload;
+import com.tencent.mobileqq.app.NearFieldTroopHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView.IFace2faceContext;
+import com.tencent.mobileqq.facetoface.Face2FaceGroupProfile;
+import com.tencent.mobileqq.facetoface.Face2FaceTroopDetailView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class ackq
-  implements Runnable
+public class ackq
+  implements Face2FaceDetailBaseView.IFace2faceContext
 {
-  ackq(ackp paramackp, String paramString, long paramLong) {}
+  public ackq(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void run()
+  public QQAppInterface a()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Ackp.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a, UniformDownloadActivity.class);
-    String str1 = this.jdField_a_of_type_Ackp.jdField_a_of_type_AndroidOsBundle.getString("param_content_memo");
-    String str2 = this.jdField_a_of_type_Ackp.jdField_a_of_type_AndroidOsBundle.getString("param_icon_path");
-    String str3 = this.jdField_a_of_type_Ackp.jdField_a_of_type_AndroidOsBundle.getString("param_mime_type");
-    if (str1 != null) {
-      localIntent.putExtra(UniformDownloadActivity.h, str1);
-    }
-    if (str2 != null) {
-      localIntent.putExtra(UniformDownloadActivity.g, str2);
-    }
-    boolean bool = this.jdField_a_of_type_Ackp.jdField_a_of_type_AndroidOsBundle.getBoolean("param_isqbdownload", false);
-    localIntent.putExtra(UniformDownloadActivity.i, bool);
-    localIntent.putExtra(UniformDownloadActivity.b, this.jdField_a_of_type_Ackp.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra(UniformDownloadActivity.d, this.jdField_a_of_type_JavaLangString);
-    localIntent.setFlags(536870912);
-    if (this.jdField_a_of_type_Ackp.jdField_a_of_type_Long != 0L) {}
-    for (long l = this.jdField_a_of_type_Ackp.jdField_a_of_type_Long;; l = this.jdField_a_of_type_Long)
+    return this.a.app;
+  }
+  
+  public void a()
+  {
+    this.a.h();
+  }
+  
+  public void a(Face2FaceGroupProfile paramFace2FaceGroupProfile)
+  {
+    if (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == this.a.d.size())
     {
-      localIntent.putExtra(UniformDownloadActivity.e, l);
-      localIntent.putExtra(UniformDownloadActivity.j, str3);
-      if (this.jdField_a_of_type_Ackp.b == 1L) {
-        localIntent.putExtra(UniformDownloadActivity.c, this.jdField_a_of_type_Ackp.b);
-      }
-      localIntent.putExtra("fromArkAppDownload", this.jdField_a_of_type_Ackp.jdField_a_of_type_AndroidOsBundle.getBoolean("fromArkAppDownload", false));
-      this.jdField_a_of_type_Ackp.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.startActivity(localIntent);
-      this.jdField_a_of_type_Ackp.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.overridePendingTransition(0, 0);
+      this.a.a(paramFace2FaceGroupProfile);
       return;
     }
+    Face2FaceAddFriendActivity.a(this.a).obtainMessage().obj = paramFace2FaceGroupProfile;
+    Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(12, 5000L);
+  }
+  
+  public boolean a(Face2FaceGroupProfile paramFace2FaceGroupProfile, int paramInt)
+  {
+    if (!NetworkUtil.d(this.a))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop, NetworkUtil.isNetSupport==false");
+      }
+      QQToast.a(this.a.app.getApplication(), 2131434811, 0).b(this.a.getTitleBarHeight());
+    }
+    do
+    {
+      NearFieldTroopHandler localNearFieldTroopHandler;
+      do
+      {
+        return false;
+        localNearFieldTroopHandler = (NearFieldTroopHandler)this.a.app.a(57);
+      } while (localNearFieldTroopHandler == null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在加入群...");
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      try
+      {
+        long l1 = Long.valueOf(paramFace2FaceGroupProfile.e).longValue();
+        long l2 = Long.valueOf(paramFace2FaceGroupProfile.jdField_b_of_type_JavaLangString).longValue();
+        if (QLog.isColorLevel()) {
+          QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop, troopCode=" + l1 + ", ownerUin=" + l2 + ", distance=" + paramFace2FaceGroupProfile.d);
+        }
+        localNearFieldTroopHandler.a(l1, l2, paramFace2FaceGroupProfile.d, paramInt);
+        return true;
+      }
+      catch (Exception paramFace2FaceGroupProfile) {}
+    } while (!QLog.isColorLevel());
+    QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop:" + paramFace2FaceGroupProfile.toString());
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.a.a(paramString);
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    if (this.a.jdField_b_of_type_Int == 1) {
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceTroopDetailView.a);
+    }
+  }
+  
+  public void d()
+  {
+    this.a.g();
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "afterDetailViewHide 详情页返回");
+    }
+    this.a.g = "";
+    Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(13, this.a.a());
   }
 }
 

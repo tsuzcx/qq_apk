@@ -1,32 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class amlz
-  implements MediaPlayer.OnCompletionListener
+public final class amlz
+  implements IPluginManager.OnPluginReadyListener
 {
-  public amlz(QzoneAudioRecordPlugin paramQzoneAudioRecordPlugin) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    QzoneAudioRecordPlugin.a(this.a, null);
-    paramMediaPlayer = new JSONObject();
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("stopped", 1);
-      localJSONObject.put("errorcode", 0);
-      localJSONObject.put("audioClientKey", QzoneAudioRecordPlugin.a(this.a));
-      this.a.a.dispatchJsEvent("QzoneJSBridgeQzoneAudioPlugin_PlayState", localJSONObject, paramMediaPlayer);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
     }
-    catch (JSONException paramMediaPlayer)
-    {
-      QLog.w("QzoneVoiceRecordPlugin", 1, "args is null or empty");
+    if (paramBoolean) {
+      IPluginManager.d(paramContext, paramPluginParams);
     }
   }
 }

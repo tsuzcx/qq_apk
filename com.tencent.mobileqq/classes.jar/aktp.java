@@ -1,31 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.common.PackageInstallReceiver;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
 
-public class aktp
-  implements Runnable
+public final class aktp
+  implements AnyScaleTypeImageView.DisplayRuleDef
 {
-  public aktp(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
-  
-  public void run()
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_REMOVED >> " + this.jdField_a_of_type_JavaLangString);
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(DownloadConstants.p)))
-    {
-      DownloadManager.a().a(true);
-      MyAppApi.a().f();
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
     }
-    DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    DownloadManager.a().a(9, localDownloadInfo);
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    float f = Math.max(paramInt1 / i, paramInt2 / j);
+    localMatrix.setScale(f, f);
+    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
+    return localMatrix;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aktp
  * JD-Core Version:    0.7.0.1
  */

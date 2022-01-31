@@ -1,18 +1,23 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.network.request.GetBlackStatusRequest;
+import com.tencent.biz.qqstory.network.response.GetBlackListStatusResponse;
 
 public class ncv
-  implements Runnable
+  implements CmdTaskManger.CommandCallback
 {
-  public ncv(MsgTabNodeListLoader paramMsgTabNodeListLoader, boolean paramBoolean) {}
+  public ncv(StoryConfigManager paramStoryConfigManager, long paramLong) {}
   
-  public void run()
+  public void a(@NonNull GetBlackStatusRequest paramGetBlackStatusRequest, @Nullable GetBlackListStatusResponse paramGetBlackListStatusResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
-    while (localIterator.hasNext()) {
-      ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a(this.jdField_a_of_type_Boolean);
+    if (paramGetBlackListStatusResponse != null)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status", Integer.valueOf(paramGetBlackListStatusResponse.b));
+      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status_update_interval", Integer.valueOf(paramGetBlackListStatusResponse.c));
+      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
     }
   }
 }

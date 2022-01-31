@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.MediaScanner;
+import com.tencent.mobileqq.activity.photo.PeakService;
+import com.tencent.qphone.base.util.QLog;
 
 public class wwr
   implements Runnable
 {
-  public wwr(PasswdRedBagManager paramPasswdRedBagManager) {}
+  public wwr(PeakService paramPeakService) {}
   
   public void run()
   {
-    Iterator localIterator = PasswdRedBagManager.a(this.a).a().entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      this.a.c.put(localEntry.getKey(), localEntry.getValue());
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakService", 2, "peak service start MediaScanner.doScan()");
     }
+    MediaScanner.a(BaseApplicationImpl.getContext()).a();
   }
 }
 

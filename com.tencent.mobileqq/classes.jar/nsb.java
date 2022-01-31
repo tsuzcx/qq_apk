@@ -1,53 +1,71 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity.ButtonConfig;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
+import com.tencent.biz.qqstory.model.MemoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public final class nsb
-  implements View.OnClickListener
+public class nsb
+  extends QQUIEventReceiver
 {
-  public nsb(QQStoryMainActivity.ButtonConfig paramButtonConfig, Activity paramActivity, String paramString) {}
-  
-  public void onClick(View paramView)
+  public nsb(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity$ButtonConfig.c)) && (HttpUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity$ButtonConfig.c))) {}
-    for (paramView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity$ButtonConfig.c; this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity$ButtonConfig.a == 1; paramView = "https://story.now.qq.com/mobile/find.html?_wv=3&_bid=2542")
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-      StoryReportor.a("hall", "exp", 0, 0, new String[] { "" });
-      if (!"troopStoryHallConfig".equals(this.jdField_a_of_type_JavaLangString)) {
-        break label195;
-      }
-      StoryReportor.a("story_grp", "clk_find_left", 0, 0, new String[] { "", "", "", "" });
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
+  {
+    if (!paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString.equals(paramDeleteStoryVideoEvent.c)) {}
+    while ((!paramDeleteStoryVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) || (TextUtils.isEmpty(paramDeleteStoryVideoEvent.d)) || (!((MemoryManager)SuperManager.a(19)).a(paramDeleteStoryVideoEvent.d).contains(paramDeleteStoryVideoEvent.jdField_a_of_type_JavaLangString))) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity$ButtonConfig.a == 2) {
-      if (!(this.jdField_a_of_type_AndroidAppActivity instanceof TroopStoryMainActivity)) {
-        break label209;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "get delete event. groupId=" + paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString + ", feedId=" + paramDeleteStoryVideoEvent.d);
+    }
+    ShareGroupItem localShareGroupItem;
+    if (paramQQStoryShareGroupProfileActivity.a != null)
+    {
+      localShareGroupItem = paramQQStoryShareGroupProfileActivity.a;
+      int i = localShareGroupItem.videoCount - 1;
+      localShareGroupItem.videoCount = i;
+      if (i == 0)
+      {
+        ThreadManager.getUIHandler().postDelayed(new nsc(this, paramQQStoryShareGroupProfileActivity), 400L);
+        return;
       }
     }
-    label195:
-    label209:
-    for (int i = 2;; i = 1)
+    if (paramQQStoryShareGroupProfileActivity.isResume())
     {
-      StoryDiscoverActivity.a(this.jdField_a_of_type_AndroidAppActivity, "日迹", i);
-      break;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity$ButtonConfig.a != 3) {
-        break;
+      if (paramDeleteStoryVideoEvent.jdField_b_of_type_Boolean)
+      {
+        localShareGroupItem = ((ShareGroupManager)SuperManager.a(7)).a(paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString);
+        if ((localShareGroupItem != null) && (localShareGroupItem.headerUnionIdList.contains(paramDeleteStoryVideoEvent.jdField_b_of_type_JavaLangString))) {
+          QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, true);
+        }
       }
-      break;
-      StoryReportor.a("home_page", "clk_find_entry", 0, 0, new String[0]);
+      paramQQStoryShareGroupProfileActivity.b(false);
       return;
     }
+    if (paramDeleteStoryVideoEvent.jdField_b_of_type_Boolean)
+    {
+      paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
+      paramQQStoryShareGroupProfileActivity.c = true;
+      return;
+    }
+    paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DeleteStoryVideoEvent.class;
   }
 }
 

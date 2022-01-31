@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkRecommendController;
 
 public class aaxh
   implements Runnable
 {
-  public aaxh(ShopScanActivity paramShopScanActivity, String paramString) {}
+  public aaxh(ArkRecommendController paramArkRecommendController) {}
   
   public void run()
   {
-    ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, this.jdField_a_of_type_JavaLangString);
+    if (ArkRecommendController.a(this.a) != null)
+    {
+      ArkAppCenter.b("ArkRecommendController", "mArkBabyqDisappearBubbleTask, destroy scroll bar");
+      ArkRecommendController.a(this.a).d();
+    }
   }
 }
 

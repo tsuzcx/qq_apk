@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnErrorListener;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
 public class agvd
-  implements GuideVideoView.OnErrorListener
+  extends FriendListObserver
 {
-  public agvd(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agvd(QCallFacade paramQCallFacade) {}
   
-  public void a(String paramString)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    EffectsCameraCaptureFragment.c(this.a);
+    this.a.a(String.valueOf(paramObject));
   }
 }
 

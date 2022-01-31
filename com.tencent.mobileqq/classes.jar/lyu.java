@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoDeliverController;
+import mqq.os.MqqHandler;
 
 public class lyu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lyu(ReadInJoyWebDataManager paramReadInJoyWebDataManager, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject) {}
+  public lyu(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyWebDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_OrgJsonJSONObject);
+    ReadInJoyDeliverVideoActivity.a(this.a).sendEmptyMessage(103);
+    ReadInJoyDeliverVideoActivity.e(this.a);
+    ReadInJoyDeliverVideoActivity.a(this.a).b();
   }
 }
 

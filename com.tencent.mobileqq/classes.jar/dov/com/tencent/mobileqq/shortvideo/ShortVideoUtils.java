@@ -7,7 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.text.TextUtils;
 import android.text.format.Formatter;
-import anzl;
+import aopq;
 import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.AppConstants;
@@ -45,7 +45,7 @@ public class ShortVideoUtils
     jdField_a_of_type_Int = 2;
     jdField_b_of_type_Int = 1;
     jdField_a_of_type_ArrayOfInt = new int[] { 1, 97, 125 };
-    ThreadManager.getSubThreadHandler().post(new anzl());
+    ThreadManager.getSubThreadHandler().post(new aopq());
   }
   
   public static long a(String paramString)

@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlResult;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimDefineList;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
+import cooperation.qqpim.QQPimTipsInfo;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class amqp
-  implements Parcelable.Creator
+class amqp
+  implements EIPCResultCallback
 {
-  public WadlResult a(Parcel paramParcel)
-  {
-    return new WadlResult(paramParcel);
-  }
+  amqp(amqo paramamqo) {}
   
-  public WadlResult[] a(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return new WadlResult[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.a).hashCode());
+    }
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
+    {
+      paramEIPCResult = paramEIPCResult.data.getParcelable(QQPimDefineList.n);
+      if (paramEIPCResult != null)
+      {
+        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
+        this.a.a.a = paramEIPCResult;
+        QQPimGetTipsInfoIPC.a(this.a.a).a(paramEIPCResult);
+      }
+    }
   }
 }
 

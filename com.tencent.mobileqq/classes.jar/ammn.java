@@ -1,79 +1,86 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZoneHttpDownloadUtil;
-import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper;
-import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelperCallBack;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
+import cooperation.plugin.PluginInfo;
+import cooperation.plugin.PluginInstaller;
+import cooperation.plugin.PluginManagerV2;
+import cooperation.plugin.PluginManagerV2.LaunchState;
 
-public final class ammn
-  implements Runnable
+public class ammn
+  extends OnPluginInstallListener.Stub
 {
-  public ammn(String paramString1, String paramString2, AppInterface paramAppInterface, String paramString3, int paramInt) {}
+  private PluginManagerV2.LaunchState jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
   
-  public void run()
+  public ammn(PluginManagerV2 paramPluginManagerV2, PluginManagerV2.LaunchState paramLaunchState)
   {
-    try
+    this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState = paramLaunchState;
+  }
+  
+  public void onInstallBegin(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallBegin." + paramString);
+    }
+    if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog != null)) {
+      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog.show();
+    }
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallDownloadProgress." + paramString);
+    }
+    if ((!this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog != null))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("QzoneOfflineCacheHelper", 4, String.format("delay 10s,url:%s ,path:%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog.setMax(paramInt2);
+      this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState.jdField_a_of_type_AndroidAppProgressDialog.setProgress(paramInt1);
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallError." + paramString + "," + paramInt);
+    }
+    PluginManagerV2.LaunchState localLaunchState = this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
+    if ((localLaunchState != null) && (localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null))
+    {
+      paramString = this.jdField_a_of_type_CooperationPluginPluginManagerV2.a(paramString);
+      if ((paramString != null) && (paramString.mInstalledPath != null)) {
+        localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c = paramString.mInstalledPath;
       }
-      ??? = new File(this.b);
-      boolean bool = QZoneHttpDownloadUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, (File)???, this.c, this.jdField_a_of_type_Int);
-      if (bool)
-      {
-        QzoneOfflineCacheHelper.updateLruFileInNewThread(this.b);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("QzoneOfflineCacheHelper", 4, String.format("download succ,path:%s", new Object[] { this.b }));
-        }
-      }
-      for (;;)
-      {
-        synchronized (QzoneOfflineCacheHelper.access$100())
-        {
-          if (QzoneOfflineCacheHelper.access$200() != null)
-          {
-            Object localObject2 = (ArrayList)QzoneOfflineCacheHelper.access$200().get(this.jdField_a_of_type_JavaLangString);
-            if (localObject2 != null)
-            {
-              localObject2 = ((ArrayList)localObject2).iterator();
-              if (((Iterator)localObject2).hasNext())
-              {
-                Object localObject4 = ((Iterator)localObject2).next();
-                if (!(localObject4 instanceof QzoneOfflineCacheHelperCallBack)) {
-                  continue;
-                }
-                ((QzoneOfflineCacheHelperCallBack)localObject4).onResultOfNativeRequest(bool, this.b);
-              }
-            }
-          }
-        }
-        try
-        {
-          if (localException.exists()) {
-            FileUtil.a(localException);
-          }
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.i("QzoneOfflineCacheHelper", 4, String.format("download fail,url:%s ,path:%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-          continue;
-          QzoneOfflineCacheHelper.access$200().remove(this.jdField_a_of_type_JavaLangString);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          break label213;
-        }
+      paramString = localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener;
+      if (paramInt != 2) {
+        break label122;
       }
     }
-    catch (Exception localException)
+    label122:
+    for (boolean bool = true;; bool = false)
     {
-      QLog.w("QzoneOfflineCacheHelper", 1, "预下载offline资源发生异常", localException);
+      paramString.a(bool, localLaunchState.jdField_a_of_type_AndroidContentContext, localLaunchState.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
       return;
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "onInstallFinish." + paramString);
+    }
+    paramString = this.jdField_a_of_type_CooperationPluginPluginManagerV2$LaunchState;
+    if ((paramString != null) && (!paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_AndroidAppProgressDialog != null)) {
+      paramString.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+    }
+    if ((paramString != null) && (paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null))
+    {
+      PluginInfo localPluginInfo = PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2).a(paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b);
+      if ((localPluginInfo != null) && (localPluginInfo.mInstalledPath != null)) {
+        paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c = localPluginInfo.mInstalledPath;
+      }
+      paramString.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
     }
   }
 }

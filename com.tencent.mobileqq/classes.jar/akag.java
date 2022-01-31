@@ -1,20 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper;
+import com.tencent.mobileqq.app.FaceObserver;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.mobileqq.util.NearByFaceDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class akag
-  implements DialogInterface.OnClickListener
+  extends FaceObserver
 {
-  public akag(SwiftBrowserDebugHelper paramSwiftBrowserDebugHelper) {}
+  public akag(NearByFaceDrawable paramNearByFaceDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
+    }
+    if ((this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramFaceInfo == null)) {}
+    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a.equals(paramFaceInfo.a))) {
+      return;
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppFaceObserver != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFaceObserver);
+    }
+    if (paramBoolean)
+    {
+      paramFaceInfo = this.a.b();
+      if (paramFaceInfo != null)
+      {
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramFaceInfo);
+        return;
+      }
+      this.a.a();
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akag
  * JD-Core Version:    0.7.0.1
  */

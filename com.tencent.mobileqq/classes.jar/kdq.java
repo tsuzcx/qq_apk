@@ -1,42 +1,94 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager.OnEffectFilterChangeListener;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.app.VideoObserver;
+import com.tencent.av.ui.redbag.AVRedBag;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.RedBagReport;
 
 public class kdq
-  implements ViewPager.OnPageChangeListener
+  extends VideoObserver
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public kdq(AVRedBag paramAVRedBag) {}
   
-  public kdq(EffectFilterTextPager paramEffectFilterTextPager, EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
+  protected void c()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnEffectFilterChangeListener);
-  }
-  
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    AVLog.c("EffectFilterTextPager", "onPageScrollStateChanged : " + paramInt);
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a(1300);
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    AVLog.c("EffectFilterTextPager", "onPageScrollStateChanged onPageSelected : " + paramInt + "|" + EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager));
-    if ((EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) != paramInt) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    int i = this.a.a.a().a().d;
+    if ((i == 2) || (i == 1))
     {
-      FilterItem localFilterItem = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a.a(paramInt);
-      if (localFilterItem != null) {
-        ((EffectFilterTextPager.OnEffectFilterChangeListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt, localFilterItem.getId());
-      }
-      EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager, -1);
+      RedBagReport.a(this.a.a.a().c());
+      RedBagReport.g();
+      e(3);
+      return;
     }
+    RedBagReport.a(0L);
+  }
+  
+  protected void c(String paramString, boolean paramBoolean)
+  {
+    paramString = this.a.a();
+    if (paramString == null) {}
+    do
+    {
+      int i;
+      do
+      {
+        return;
+        i = this.a.a.a().a().d;
+      } while ((i != 2) && (i != 1));
+      if (paramBoolean)
+      {
+        if (paramString.a != null) {
+          paramString.a.a("onPeerSwitchTerminal");
+        }
+        paramString.b("onPeerSwitchTerminal");
+        return;
+      }
+      paramString.a("onPeerSwitchTerminal");
+    } while (paramString.a == null);
+    paramString.a(paramString.a.b);
+  }
+  
+  protected void d()
+  {
+    AVRedBagMgr localAVRedBagMgr = this.a.a();
+    if (localAVRedBagMgr != null) {
+      localAVRedBagMgr.b("onPauseVideo");
+    }
+  }
+  
+  protected void e()
+  {
+    AVRedBagMgr localAVRedBagMgr = this.a.a();
+    if (localAVRedBagMgr != null) {
+      localAVRedBagMgr.b("onResumeVideo");
+    }
+  }
+  
+  void e(int paramInt)
+  {
+    if (paramInt <= 0) {
+      return;
+    }
+    AVRedBagMgr localAVRedBagMgr = this.a.a();
+    if (localAVRedBagMgr != null)
+    {
+      localAVRedBagMgr.a("onConnected:" + paramInt);
+      if (localAVRedBagMgr.a != null) {
+        localAVRedBagMgr.a(localAVRedBagMgr.a.b);
+      }
+    }
+    this.a.a.a().postDelayed(new kdr(this, paramInt), 1100L);
+  }
+  
+  protected void e(String paramString, boolean paramBoolean)
+  {
+    paramString = this.a.a();
+    if (paramString != null) {
+      paramString.c();
+    }
+    RedBagReport.h();
   }
 }
 

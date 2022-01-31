@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
 
-public final class lxf
-  implements Parcelable.Creator
+public class lxf
+  extends BaseSkinRes
 {
-  public DislikeInfo a(Parcel paramParcel)
-  {
-    return new DislikeInfo(paramParcel);
-  }
-  
-  public DislikeInfo[] a(int paramInt)
-  {
-    return new DislikeInfo[paramInt];
-  }
+  public lxf(ReadInJoySkinManager paramReadInJoySkinManager) {}
 }
 
 

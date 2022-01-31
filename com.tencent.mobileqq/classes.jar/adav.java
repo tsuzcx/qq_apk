@@ -1,29 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
-import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
+import com.tencent.mobileqq.filemanager.data.search.FileManagerSearchEngine;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
+import java.util.List;
 
 public class adav
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public adav(ForwardFileBaseOption paramForwardFileBaseOption, Uri paramUri, String paramString, InputStream paramInputStream, long paramLong) {}
+  public ISearchListener a;
+  public SearchRequest a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private adav(FileManagerSearchEngine paramFileManagerSearchEngine) {}
+  
+  public void run()
   {
+    SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
+    String str = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a;
+    List localList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine.a(localSearchRequest);
     try
     {
-      ForwardFileBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileBaseOption, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
+      if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a))) {
+        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+      }
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ForwardOption.ForwardFileBaseOption", 2, "copy file error", paramDialogInterface);
-      }
-      ForwardFileBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileBaseOption, this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileBaseOption.d());
-    }
+    finally {}
   }
 }
 

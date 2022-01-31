@@ -1,22 +1,44 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.Map;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
 
 public final class rvf
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public rvf(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, ChatActivityUtils.StartVideoListener paramStartVideoListener, Map paramMap) {}
+  public rvf(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_JavaUtilMap);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80067FB", "0X80067FB", 2, 0, "", "", "", "");
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    long l1;
+    long l2;
+    if (localExtensionInfo == null)
+    {
+      l1 = 0L;
+      if (localExtensionInfo != null) {
+        break label102;
+      }
+      l2 = 0L;
+      label38:
+      if (localExtensionInfo != null) {
+        break label111;
+      }
+    }
+    label102:
+    label111:
+    for (long l3 = 0L;; l3 = localExtensionInfo.lastPullPLNewsTimestamp)
+    {
+      if ((l1 > l2) && (System.currentTimeMillis() / 1000L - l3 >= 86400L)) {
+        ((PersonalityLabelHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(112)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2);
+      }
+      return;
+      l1 = localExtensionInfo.latestPLUpdateTimestamp;
+      break;
+      l2 = localExtensionInfo.lastPLNewsTimestamp;
+      break label38;
+    }
   }
 }
 

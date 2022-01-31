@@ -1,58 +1,58 @@
 package com.tencent.mobileqq.armap;
 
-import aarv;
-import aarz;
-import aasa;
-import aasb;
-import aasc;
-import aasf;
-import aasg;
-import aash;
-import aasi;
-import aasl;
-import aasm;
-import aasn;
-import aasq;
-import aasr;
-import aasx;
-import aasy;
-import aasz;
-import aata;
-import aatb;
-import aatc;
-import aatd;
-import aatf;
-import aatg;
-import aath;
-import aati;
-import aatj;
-import aatk;
-import aatm;
-import aatp;
-import aatq;
-import aatr;
-import aats;
-import aatt;
-import aatu;
-import aatv;
-import aatw;
-import aaty;
-import aatz;
-import aaua;
-import aaub;
-import aauc;
-import aaud;
-import aaue;
-import aaug;
-import aauh;
-import aauk;
-import aaul;
-import aaum;
-import aaun;
-import aauo;
-import aauq;
-import aaur;
-import aaus;
+import aayw;
+import aaza;
+import aazb;
+import aazc;
+import aazd;
+import aazg;
+import aazh;
+import aazi;
+import aazj;
+import aazm;
+import aazn;
+import aazo;
+import aazr;
+import aazs;
+import aazy;
+import aazz;
+import abaa;
+import abab;
+import abac;
+import abad;
+import abae;
+import abag;
+import abah;
+import abai;
+import abaj;
+import abak;
+import abal;
+import aban;
+import abaq;
+import abar;
+import abas;
+import abat;
+import abau;
+import abav;
+import abaw;
+import abax;
+import abaz;
+import abba;
+import abbb;
+import abbc;
+import abbd;
+import abbe;
+import abbf;
+import abbh;
+import abbi;
+import abbl;
+import abbm;
+import abbn;
+import abbo;
+import abbp;
+import abbr;
+import abbs;
+import abbt;
 import android.annotation.TargetApi;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -187,7 +187,7 @@ public class ARMapActivity
   public float a;
   public long a;
   public ProgressDialog a;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aata(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abab(this);
   public Handler a;
   View jdField_a_of_type_AndroidViewView;
   ViewStub jdField_a_of_type_AndroidViewViewStub;
@@ -197,20 +197,20 @@ public class ARMapActivity
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   public TextView a;
   private ValueAnimator jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator;
-  LbsPackObserver jdField_a_of_type_ComQqImPoiLbsPackObserver = new aarv(this);
+  LbsPackObserver jdField_a_of_type_ComQqImPoiLbsPackObserver = new aayw(this);
   private LbsStrangerPoiDialog jdField_a_of_type_ComQqImPoiLbsStrangerPoiDialog;
   PoiInfo jdField_a_of_type_ComQqImPoiPoiInfo;
   public SosoInterface.OnLocationListener a;
   public ARGLSurfaceView a;
   public ARMapActivity.LocationMonitor a;
   public ARMapTracer a;
-  ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new aasn(this);
-  NetChangedListener jdField_a_of_type_ComTencentMobileqqArmapNetChangedListener = new aasb(this);
-  NonMainAppHeadLoader.FaceObserver jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader$FaceObserver = new aauo(this);
+  ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new aazo(this);
+  NetChangedListener jdField_a_of_type_ComTencentMobileqqArmapNetChangedListener = new aazc(this);
+  NonMainAppHeadLoader.FaceObserver jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader$FaceObserver = new abbp(this);
   public RedPackRainCloudView a;
-  private OpenBoxCheckHander.OnResCheckResultListener jdField_a_of_type_ComTencentMobileqqArmapConfigOpenBoxCheckHander$OnResCheckResultListener = new aasf(this);
+  private OpenBoxCheckHander.OnResCheckResultListener jdField_a_of_type_ComTencentMobileqqArmapConfigOpenBoxCheckHander$OnResCheckResultListener = new aazg(this);
   public OpenBoxCheckHander a;
-  private POICheckHander.Listener jdField_a_of_type_ComTencentMobileqqArmapConfigPOICheckHander$Listener = new aasc(this);
+  private POICheckHander.Listener jdField_a_of_type_ComTencentMobileqqArmapConfigPOICheckHander$Listener = new aazd(this);
   POICheckHander jdField_a_of_type_ComTencentMobileqqArmapConfigPOICheckHander;
   private ShopScanCheckHandler.OnResCheckResultListener jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$OnResCheckResultListener;
   private ShopScanCheckHandler jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler;
@@ -225,7 +225,7 @@ public class ARMapActivity
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   public MapView a;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aatd(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new abae(this);
   public String a;
   private SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat;
   public boolean a;
@@ -234,7 +234,7 @@ public class ARMapActivity
   private float jdField_b_of_type_Float = 0.0F;
   public int b;
   public long b;
-  private Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new aatb(this);
+  private Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new abac(this);
   public Handler b;
   View jdField_b_of_type_AndroidViewView;
   private Button jdField_b_of_type_AndroidWidgetButton;
@@ -327,7 +327,7 @@ public class ARMapActivity
     this.jdField_e_of_type_Int = 0;
     this.jdField_f_of_type_Int = 0;
     this.jdField_e_of_type_Long = -1L;
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new aatk(this, 3, true, true, 0L, false, true, "ARMapActivity");
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abal(this, 3, true, true, 0L, false, true, "ARMapActivity");
     this.jdField_m_of_type_JavaLangString = "/supercell_icon_pre0.png";
   }
   
@@ -343,9 +343,9 @@ public class ARMapActivity
     if (this.B) {
       return;
     }
-    findViewById(2131369587).setOnClickListener(this);
+    findViewById(2131369664).setOnClickListener(this);
     this.B = true;
-    ((Joystick)findViewById(2131369588)).setJoystickListener(new aatm(this));
+    ((Joystick)findViewById(2131369665)).setJoystickListener(new aban(this));
   }
   
   private void C()
@@ -356,13 +356,13 @@ public class ARMapActivity
       double d1 = Math.sin(f1 * 3.141592653589793D / 180.0D);
       double d2 = this.jdField_d_of_type_Float;
       a(Math.cos(f1 * 3.141592653589793D / 180.0D) * this.jdField_d_of_type_Float * 0.0003D, d1 * d2 * 0.0001D);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aatp(this), 100L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new abaq(this), 100L);
     }
   }
   
   private void D()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new aatt(this), 5000L);
+    ThreadManager.getSubThreadHandler().postDelayed(new abau(this), 5000L);
   }
   
   private void E()
@@ -434,8 +434,8 @@ public class ARMapActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369573));
-      this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView = ((ARMapSplashView)findViewById(2131369575));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369650));
+      this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView = ((ARMapSplashView)findViewById(2131369652));
       if (this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView != null) {
         if (this.jdField_e_of_type_Int == 1)
         {
@@ -462,11 +462,11 @@ public class ARMapActivity
         this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.setProgressMax(100);
         this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.setProgress(this.jdField_j_of_type_Int);
         this.jdField_k_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.a();
-        this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131369577));
+        this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131369654));
         if (this.jdField_b_of_type_AndroidWidgetButton != null) {
           this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
         }
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369576));
+        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369653));
         if (this.mSystemBarComp != null)
         {
           this.mSystemBarComp.setStatusColor(0);
@@ -494,32 +494,32 @@ public class ARMapActivity
     if (QLog.isColorLevel()) {
       QLog.d("ARMapActivity", 2, "loadARMapViewStub");
     }
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131369574));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131369651));
     this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369579);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369656);
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.mSystemBarComp != null))
     {
       int i1 = ImmersiveUtils.a(this);
       this.jdField_a_of_type_AndroidViewView.setPadding(0, i1, 0, 0);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369592));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369593));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131369594);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369595));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369669));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369670));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131369671);
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369672));
     Object localObject = (LbsPackManager)this.app.getManager(214);
     d(((LbsPackManager)localObject).jdField_b_of_type_Int);
     if (QLog.isColorLevel()) {
       QLog.d("LbsPack", 2, "getLbsPackEntrance " + ((LbsPackManager)localObject).jdField_b_of_type_Int);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView = ((RedPackRainCloudView)findViewById(2131369584));
+    this.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView = ((RedPackRainCloudView)findViewById(2131369661));
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView.setPadding(0, AIOUtils.a(10.0F, getResources()), 0, 0);
     }
     this.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView.setOnCloudClickListener(this);
-    this.jdField_b_of_type_AndroidOsHandler.post(new aatv(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369589));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369590));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369585));
+    this.jdField_b_of_type_AndroidOsHandler.post(new abaw(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369666));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369667));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369662));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -530,9 +530,9 @@ public class ARMapActivity
     if (this.jdField_h_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject = (TextView)findViewById(2131369586);
+      localObject = (TextView)findViewById(2131369663);
       ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setOnClickListener(new aatw(this));
+      ((TextView)localObject).setOnClickListener(new abax(this));
     }
     this.jdField_a_of_type_JavaLangString = DeviceInfoUtil.a();
     if ((this.jdField_h_of_type_Boolean) && (this.jdField_b_of_type_AndroidWidgetTextView != null))
@@ -549,9 +549,9 @@ public class ARMapActivity
     }
     if (this.jdField_c_of_type_AndroidWidgetButton == null)
     {
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131369581));
-      this.jdField_d_of_type_AndroidViewView = findViewById(2131369582);
-      this.jdField_e_of_type_AndroidViewView = findViewById(2131369580);
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131369658));
+      this.jdField_d_of_type_AndroidViewView = findViewById(2131369659);
+      this.jdField_e_of_type_AndroidViewView = findViewById(2131369657);
     }
     long l2 = 0L;
     long l3 = MessageCache.a() * 1000L;
@@ -600,7 +600,7 @@ public class ARMapActivity
       i3 = i1;
       label219:
       if (this.jdField_d_of_type_AndroidWidgetButton == null) {
-        this.jdField_d_of_type_AndroidWidgetButton = ((Button)findViewById(2131369583));
+        this.jdField_d_of_type_AndroidWidgetButton = ((Button)findViewById(2131369660));
       }
       if ((this.jdField_d_of_type_AndroidWidgetButton != null) && (this.app != null))
       {
@@ -796,7 +796,7 @@ public class ARMapActivity
     if (this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashEntryView != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashEntryView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashEntryView.a(new aauc(this));
+      this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashEntryView.a(new abbd(this));
     }
     t();
   }
@@ -810,8 +810,8 @@ public class ARMapActivity
     {
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { this.jdField_j_of_type_Int, 100 });
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(1000L);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new aaud(this));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addListener(new aaue(this));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new abbe(this));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addListener(new abbf(this));
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.start();
     }
   }
@@ -1141,8 +1141,8 @@ public class ARMapActivity
       TencentMap localTencentMap = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapView.getMap();
       localTencentMap.setMinZoomLevel(15);
       localTencentMap.setMaxZoomLevel(17);
-      localTencentMap.setOnMapCameraChangeListener(new aasx(this));
-      localTencentMap.setOnMapLoadedListener(new aasy(this));
+      localTencentMap.setOnMapCameraChangeListener(new aazy(this));
+      localTencentMap.setOnMapLoadedListener(new aazz(this));
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapView.setEnabled(true);
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapView.setClickable(true);
       this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapView.onCreate(null);
@@ -1183,7 +1183,7 @@ public class ARMapActivity
       this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapLoadingActivity$LoadingTimeStamp.o = System.currentTimeMillis();
     }
     G();
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131369578));
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131369655));
     this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.setLowFPSRate(true, 200L, false);
     this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.getHolder().setFormat(-3);
     this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine = new ARMapEngine(this, this.app, this.jdField_a_of_type_AndroidOsHandler, paramList);
@@ -1291,8 +1291,8 @@ public class ARMapActivity
           ((TextView)localObject2).setTextColor(getResources().getColor(2131492879));
           ((TextView)localObject2).setTextSize(2, 16.0F);
           this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.addView((View)localObject2);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131432400, new aaua(this));
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new aaub(this));
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131432417, new abbb(this));
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new abbc(this));
           this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(true);
           this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
           ReportController.b(null, "dc01440", "", "", "0X80079C9", "0X80079C9", 0, 0, "", "", "" + this.jdField_e_of_type_Long, "");
@@ -1389,7 +1389,7 @@ public class ARMapActivity
       if (QLog.isColorLevel()) {
         QLog.d("ARMapActivity", 2, String.format("reportLoadTime loadingTime=%sms locationTime=%sms requestInfoTime=%sms resCheckTime=%sms soCheckTime=%sms startThreadTime=%sms launchARMapTime=%sms loadMapTime=%sms", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4), Long.valueOf(l5), Long.valueOf(l6), Long.valueOf(l7), Long.valueOf(l8) }));
       }
-      ThreadManager.post(new aaug(this, l1, l2, l3, l4, l5, l6, l7, l8), 5, null, false);
+      ThreadManager.post(new abbh(this, l1, l2, l3, l4, l5, l6, l7, l8), 5, null, false);
       return;
       l1 = 0L;
       break;
@@ -1425,14 +1425,14 @@ public class ARMapActivity
       if (localObject == null) {
         break;
       }
-      this.jdField_c_of_type_AndroidViewView = getLayoutInflater().inflate(2130970202, null);
+      this.jdField_c_of_type_AndroidViewView = getLayoutInflater().inflate(2130970218, null);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_c_of_type_AndroidViewView);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_c_of_type_AndroidViewView.findViewById(2131369600));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_c_of_type_AndroidViewView.findViewById(2131369677));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_c_of_type_AndroidViewView.bringToFront();
       this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      ((ImageView)this.jdField_c_of_type_AndroidViewView.findViewById(2131369598)).setBackgroundDrawable((Drawable)localObject);
-      localObject = this.jdField_c_of_type_AndroidViewView.findViewById(2131369597);
+      ((ImageView)this.jdField_c_of_type_AndroidViewView.findViewById(2131369675)).setBackgroundDrawable((Drawable)localObject);
+      localObject = this.jdField_c_of_type_AndroidViewView.findViewById(2131369674);
     } while (c());
     int i1 = AIOUtils.a(400.0F, getResources());
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0, 0.0F, 0, 0.0F, 0, (i1 + (getResources().getDisplayMetrics().heightPixels - i1) / 2) * -1, 0, 0.0F);
@@ -1463,7 +1463,7 @@ public class ARMapActivity
       break;
       QLog.i("ARMapActivity", 1, "changeContinueLocationInterval. interval is: " + this.jdField_h_of_type_Int * 1000 + " lbsinterval:" + this.jdField_g_of_type_Int * 1000 + " current interval is: " + SosoInterface.jdField_a_of_type_Int + " isResume: " + isResume() + " hasEnteredMap: " + this.D);
     } while ((!this.D) || (this.jdField_a_of_type_Boolean));
-    runOnUiThread(new aaun(this, i1));
+    runOnUiThread(new abbo(this, i1));
   }
   
   private void b(long paramLong)
@@ -1472,7 +1472,7 @@ public class ARMapActivity
       QLog.d("ARMapActivity", 2, String.format("sendStartCompletedResponseDelay delay=%s", new Object[] { Long.valueOf(paramLong) }));
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aatz(this), paramLong);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new abba(this), paramLong);
     }
   }
   
@@ -1481,7 +1481,7 @@ public class ARMapActivity
     if ((paramWealthGodInfo == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new aatc(this, paramWealthGodInfo));
+    this.jdField_a_of_type_AndroidOsHandler.post(new abad(this, paramWealthGodInfo));
   }
   
   private boolean b()
@@ -1563,7 +1563,7 @@ public class ARMapActivity
       this.jdField_a_of_type_Double = d1;
       this.jdField_e_of_type_Long = l1;
       if ((this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine != null) && (this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine.mGameplayHandler != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aasg(this));
+        this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aazh(this));
       }
     }
   }
@@ -1573,12 +1573,12 @@ public class ARMapActivity
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131438773);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131438774);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131438775);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131432998);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new aasm(this));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new aasq(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131438791);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131438792);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131438793);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new aazn(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new aazr(this));
     }
     if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
     {
@@ -1704,7 +1704,7 @@ public class ARMapActivity
   {
     this.jdField_a_of_type_Double += paramDouble1;
     this.jdField_b_of_type_Double += paramDouble2;
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aatq(this));
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abar(this));
   }
   
   public void a(double paramDouble1, double paramDouble2, float paramFloat, String paramString)
@@ -1757,7 +1757,7 @@ public class ARMapActivity
       return;
     }
     this.jdField_h_of_type_Long = System.currentTimeMillis();
-    paramString1 = new aasr(this, paramInt3, paramInt4, paramLong1, paramLong2, paramInt5, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramDouble2, paramDouble1, paramObject);
+    paramString1 = new aazs(this, paramInt3, paramInt4, paramLong1, paramLong2, paramInt5, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramDouble2, paramDouble1, paramObject);
     this.jdField_a_of_type_AndroidOsHandler.postAtFrontOfQueue(paramString1);
   }
   
@@ -1784,7 +1784,7 @@ public class ARMapActivity
     if (QLog.isColorLevel()) {
       QLog.i("ARMapActivity", 2, "updateLeftTime nextWealthGodInfo = " + paramWealthGodInfo);
     }
-    runOnUiThread(new aatf(this, paramWealthGodInfo));
+    runOnUiThread(new abag(this, paramWealthGodInfo));
   }
   
   public void a(String paramString1, int paramInt1, long paramLong1, long paramLong2, int paramInt2, String paramString2, boolean paramBoolean, String paramString3, String paramString4)
@@ -2054,7 +2054,7 @@ public class ARMapActivity
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.post(new aasz(this, paramBoolean, paramString, paramInt));
+    this.jdField_a_of_type_AndroidWidgetImageView.post(new abaa(this, paramBoolean, paramString, paramInt));
   }
   
   boolean a()
@@ -2075,7 +2075,7 @@ public class ARMapActivity
     while (isFinishing()) {
       return;
     }
-    DialogUtil.a(this, 230, "安全提示", "在开车吗？安全第一，请勿边驾驶边参加活动哦。", "", "我知道了", new aaty(this), null).show();
+    DialogUtil.a(this, 230, "安全提示", "在开车吗？安全第一，请勿边驾驶边参加活动哦。", "", "我知道了", new abaz(this), null).show();
     ReportController.b(null, "dc01440", "", "", "0X80079E1", "0X80079E1", 0, 0, "", "", "" + this.jdField_e_of_type_Long, "");
     if (QLog.isColorLevel()) {
       QLog.d("ARMapActivity", 2, "showGPSOverSpeedDialog");
@@ -2087,7 +2087,7 @@ public class ARMapActivity
   {
     this.jdField_a_of_type_Double = paramDouble1;
     this.jdField_b_of_type_Double = paramDouble2;
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aats(this));
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abat(this));
   }
   
   public void b(int paramInt)
@@ -2108,12 +2108,12 @@ public class ARMapActivity
     if (paramBoolean)
     {
       B();
-      findViewById(2131369588).setVisibility(0);
-      findViewById(2131369587).setVisibility(0);
+      findViewById(2131369665).setVisibility(0);
+      findViewById(2131369664).setVisibility(0);
       return;
     }
-    findViewById(2131369588).setVisibility(8);
-    findViewById(2131369587).setVisibility(8);
+    findViewById(2131369665).setVisibility(8);
+    findViewById(2131369664).setVisibility(8);
   }
   
   void c()
@@ -2122,7 +2122,7 @@ public class ARMapActivity
     do
     {
       return;
-      DialogUtil.a(this, 230, null, "打开Wi-Fi，抢奖励会更准哦！现在开启？", "取消", "去开启", new aaum(this), new aauq(this)).show();
+      DialogUtil.a(this, 230, null, "打开Wi-Fi，抢奖励会更准哦！现在开启？", "取消", "去开启", new abbn(this), new abbr(this)).show();
       ReportController.b(null, "dc01440", "", "", "0X8007855", "0X8007855", 0, 0, "1", "", "" + this.jdField_e_of_type_Long, "");
     } while (!QLog.isColorLevel());
     QLog.d("ARMapActivity", 2, "showOpenWifiDialog");
@@ -2154,7 +2154,7 @@ public class ARMapActivity
     do
     {
       return;
-      DialogUtil.a(this, 230, null, "打开GPS定位服务，抢奖励会更准哦！现在开启？", "取消", "去开启", new aaur(this), new aaus(this)).show();
+      DialogUtil.a(this, 230, null, "打开GPS定位服务，抢奖励会更准哦！现在开启？", "取消", "去开启", new abbs(this), new abbt(this)).show();
       ReportController.b(null, "dc01440", "", "", "0X8007855", "0X8007855", 0, 0, "2", "", "" + this.jdField_e_of_type_Long, "");
     } while (!QLog.isColorLevel());
     QLog.d("ARMapActivity", 2, "showOpenGPSDialog");
@@ -2215,7 +2215,7 @@ public class ARMapActivity
           QLog.i("ARMapActivity", 2, "remove poi tasks");
         }
         if (this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView != null) {
-          this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aatg(this, l1));
+          this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abah(this, l1));
         }
       }
       label397:
@@ -2223,7 +2223,7 @@ public class ARMapActivity
         a(bool1, bool3, bool4);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aati(this));
+        this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abaj(this));
       }
     }
     for (;;)
@@ -2242,7 +2242,7 @@ public class ARMapActivity
       if (this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView == null) {
         break label397;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aath(this, l1, l2));
+      this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abai(this, l1, l2));
       break label397;
       if (paramInt1 == 105)
       {
@@ -2256,7 +2256,7 @@ public class ARMapActivity
           if ((!TextUtils.isEmpty(paramIntent)) && (this.jdField_a_of_type_ComQqImPoiPoiInfo != null))
           {
             paramIntent = new LbsPackShareDialog(this, this, this.jdField_a_of_type_ComQqImPoiPoiInfo, paramIntent);
-            paramIntent.setOnDismissListener(new aatj(this));
+            paramIntent.setOnDismissListener(new abak(this));
             paramIntent.b();
           }
         }
@@ -2281,7 +2281,7 @@ public class ARMapActivity
     }
     E();
     getWindow().setFormat(-3);
-    setContentView(2130970200);
+    setContentView(2130970216);
     this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(this.jdField_b_of_type_AndroidOsHandler$Callback);
     this.jdField_b_of_type_AndroidOsHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
     F();
@@ -2473,7 +2473,7 @@ public class ARMapActivity
     do
     {
       return;
-      DialogUtil.a(this, 230, null, "打开Wi-Fi和GPS定位服务，抢奖励会更准哦！现在开启？", "取消", "去开启", new aarz(this), new aasa(this)).show();
+      DialogUtil.a(this, 230, null, "打开Wi-Fi和GPS定位服务，抢奖励会更准哦！现在开启？", "取消", "去开启", new aaza(this), new aazb(this)).show();
       ReportController.b(null, "dc01440", "", "", "0X8007855", "0X8007855", 0, 0, "3", "", "" + this.jdField_e_of_type_Long, "");
     } while (!QLog.isColorLevel());
     QLog.d("ARMapActivity", 2, "showOpenWifiGPSDialog");
@@ -2498,8 +2498,8 @@ public class ARMapActivity
         return;
         localQQCustomDialog = DialogUtil.a(this, 0);
         localQQCustomDialog.setMessage((CharSequence)localObject).setCancelable(true);
-        localQQCustomDialog.setNegativeButton(2131432998, null);
-        localQQCustomDialog.setPositiveButton(2131438000, new aasl(this, localQQCustomDialog));
+        localQQCustomDialog.setNegativeButton(2131433015, null);
+        localQQCustomDialog.setPositiveButton(2131438017, new aazm(this, localQQCustomDialog));
       } while (isFinishing());
       localQQCustomDialog.show();
       return;
@@ -2510,7 +2510,7 @@ public class ARMapActivity
   {
     if (!NetworkUtil.d(this))
     {
-      QQToast.a(this, getString(2131433196), 1).a();
+      QQToast.a(this, getString(2131433213), 1).a();
       return;
     }
     Object localObject2 = new JSONObject();
@@ -2673,7 +2673,7 @@ public class ARMapActivity
   {
     AlertDialog.Builder localBuilder = new AlertDialog.Builder(this, 3);
     localBuilder.setTitle("选择一个城市");
-    localBuilder.setItems(MapBorderUtils.jdField_a_of_type_ArrayOfJavaLangString, new aatr(this));
+    localBuilder.setItems(MapBorderUtils.jdField_a_of_type_ArrayOfJavaLangString, new abas(this));
     localBuilder.show();
   }
   
@@ -2682,7 +2682,7 @@ public class ARMapActivity
     String str = SystemUtil.a(this, "com.tencent.mobileqq:tool");
     str = "lon:" + this.jdField_a_of_type_Double + ",lat:" + this.jdField_b_of_type_Double + str;
     if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.post(new aatu(this, str));
+      this.jdField_b_of_type_AndroidWidgetTextView.post(new abav(this, str));
     }
   }
   
@@ -2705,7 +2705,7 @@ public class ARMapActivity
   
   public void o()
   {
-    ThreadManager.post(new aauh(this), 5, null, true);
+    ThreadManager.post(new abbi(this), 5, null, true);
   }
   
   protected boolean onBackEvent()
@@ -2731,15 +2731,15 @@ public class ARMapActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131369592: 
-    case 2131369585: 
-    case 2131369577: 
-    case 2131369581: 
-    case 2131369583: 
-    case 2131369600: 
-    case 2131369657: 
-    case 2131369587: 
-    case 2131369594: 
+    case 2131369669: 
+    case 2131369662: 
+    case 2131369654: 
+    case 2131369658: 
+    case 2131369660: 
+    case 2131369677: 
+    case 2131369734: 
+    case 2131369664: 
+    case 2131369671: 
       do
       {
         do
@@ -2754,7 +2754,7 @@ public class ARMapActivity
               }
               while ((this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView != null) && (this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.getEngineHandler() != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine != null))
               {
-                this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aash(this));
+                this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aazi(this));
                 return;
                 b(2);
               }
@@ -2763,7 +2763,7 @@ public class ARMapActivity
               QLog.d("ARMapActivity", 2, "tv_poiguide clicked");
             }
           } while (this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView == null);
-          this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aasi(this));
+          this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new aazj(this));
           return;
         } while (System.currentTimeMillis() - this.jdField_i_of_type_Long <= 1000L);
         if (!this.F) {
@@ -2799,12 +2799,12 @@ public class ARMapActivity
   
   public void q()
   {
-    Object localObject = new SpannableString(getString(2131438747));
-    StatableSpanTextView.StatableForegroundColorSpan localStatableForegroundColorSpan = new StatableSpanTextView.StatableForegroundColorSpan(getResources().getColor(2131493061), getResources().getColor(2131493062));
+    Object localObject = new SpannableString(getString(2131438765));
+    StatableSpanTextView.StatableForegroundColorSpan localStatableForegroundColorSpan = new StatableSpanTextView.StatableForegroundColorSpan(getResources().getColor(2131493062), getResources().getColor(2131493063));
     int i1 = ((SpannableString)localObject).length();
     ((SpannableString)localObject).setSpan(localStatableForegroundColorSpan, i1 - 7, i1 - 1, 33);
-    localObject = DialogUtil.a(this, "安全提示", (CharSequence)localObject, 0, 2131435179, null, null, new aauk(this));
-    ((Dialog)localObject).setOnDismissListener(new aaul(this));
+    localObject = DialogUtil.a(this, "安全提示", (CharSequence)localObject, 0, 2131435196, null, null, new abbl(this));
+    ((Dialog)localObject).setOnDismissListener(new abbm(this));
     if (!isFinishing()) {}
     try
     {

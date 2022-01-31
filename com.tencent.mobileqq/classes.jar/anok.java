@@ -1,14 +1,21 @@
-public abstract interface anok
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.SupernaturalTextItem;
+
+public class anok
+  implements annx
 {
-  public abstract void a(int paramInt);
+  public anok(SupernaturalTextItem paramSupernaturalTextItem) {}
   
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
+  {
+    String str = paramString;
+    if (paramInt != 0) {
+      str = TroopFileUtils.b(paramString);
+    }
+    return str;
+  }
 }
 
 

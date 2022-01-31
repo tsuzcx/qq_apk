@@ -31,15 +31,15 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import kem;
-import ken;
-import keo;
-import kep;
-import keq;
-import ker;
-import kes;
-import kfn;
-import kft;
+import kdx;
+import kdy;
+import kdz;
+import kea;
+import keb;
+import kec;
+import ked;
+import key;
+import kfe;
 
 public class AVRedBagMgr
   extends BusinessManager
@@ -55,15 +55,15 @@ public class AVRedBagMgr
   public SendRedBag a;
   public String a;
   WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  public kfn a;
-  public kft a;
+  public key a;
+  public kfe a;
   public boolean a;
   WeakReference b;
   
   public AVRedBagMgr(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_Kft = null;
+    this.jdField_a_of_type_Kfe = null;
     this.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag = null;
     this.jdField_a_of_type_ComTencentAvUiRedbagSendRedBag = null;
     this.jdField_a_of_type_ComTencentAvUiRedbagResultUI = null;
@@ -107,10 +107,10 @@ public class AVRedBagMgr
       if (!RedBagUtil.a()) {
         break;
       }
-      if (this.jdField_a_of_type_Kft == null) {
-        this.jdField_a_of_type_Kft = new kft(this);
+      if (this.jdField_a_of_type_Kfe == null) {
+        this.jdField_a_of_type_Kfe = new kfe(this);
       }
-      this.jdField_a_of_type_Kft.a("init");
+      this.jdField_a_of_type_Kfe.a("init");
       if ((this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info == null) || (!this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info.c)) {
         g();
       }
@@ -119,7 +119,7 @@ public class AVRedBagMgr
     this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBag.a();
     return;
     a("init_when_not_support");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new kem(this));
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new kdx(this));
   }
   
   private void g()
@@ -132,8 +132,8 @@ public class AVRedBagMgr
   
   public int a()
   {
-    if (this.jdField_a_of_type_Kft != null) {
-      return this.jdField_a_of_type_Kft.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Kfe != null) {
+      return this.jdField_a_of_type_Kfe.jdField_a_of_type_Int;
     }
     return -1;
   }
@@ -214,8 +214,8 @@ public class AVRedBagMgr
   
   public void a(AVActivity paramAVActivity, ResultData paramResultData)
   {
-    this.jdField_a_of_type_Kfn = new keq(this);
-    paramAVActivity = a(paramAVActivity, paramResultData, new WeakReference(this.jdField_a_of_type_Kfn));
+    this.jdField_a_of_type_Key = new keb(this);
+    paramAVActivity = a(paramAVActivity, paramResultData, new WeakReference(this.jdField_a_of_type_Key));
     if (paramAVActivity.jdField_a_of_type_ComTencentAvUiRedbagResultData.jdField_e_of_type_Int != 1)
     {
       a("getRedBag_Fail", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramAVActivity.jdField_a_of_type_ComTencentAvUiRedbagResultData);
@@ -247,13 +247,13 @@ public class AVRedBagMgr
     b(true);
     b("onGameStart_from_GameSink");
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().az = true;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new ker(this));
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new kec(this));
   }
   
   void a(ResultData paramResultData)
   {
     ResultUI localResultUI = new ResultUI(this);
-    localResultUI.a(paramResultData, new keo(this));
+    localResultUI.a(paramResultData, new kdz(this));
     this.jdField_a_of_type_ComTencentAvUiRedbagResultUI = localResultUI;
   }
   
@@ -334,7 +334,7 @@ public class AVRedBagMgr
   
   public void a(String paramString, VideoAppInterface paramVideoAppInterface, ResultData paramResultData)
   {
-    this.jdField_a_of_type_Kfn = null;
+    this.jdField_a_of_type_Key = null;
     a(paramVideoAppInterface, paramResultData);
     paramVideoAppInterface = this.jdField_a_of_type_ComTencentAvUiRedbagResultUI;
     if (paramVideoAppInterface != null)
@@ -409,7 +409,7 @@ public class AVRedBagMgr
     else
     {
       StringBuilder localStringBuilder = new StringBuilder().append("sendEnterMode, bEnter[");
-      if (this.jdField_a_of_type_Kft != null) {
+      if (this.jdField_a_of_type_Kfe != null) {
         break label126;
       }
       localObject = null;
@@ -423,14 +423,14 @@ public class AVRedBagMgr
     for (boolean bool = true;; bool = false)
     {
       QLog.w("AVRedBag", 1, bool + "]");
-      if (this.jdField_a_of_type_Kft != null) {
-        this.jdField_a_of_type_Kft.jdField_b_of_type_Boolean = paramBoolean;
+      if (this.jdField_a_of_type_Kfe != null) {
+        this.jdField_a_of_type_Kfe.jdField_b_of_type_Boolean = paramBoolean;
       }
       return;
       i = 5;
       break;
       label126:
-      localObject = Boolean.valueOf(this.jdField_a_of_type_Kft.jdField_b_of_type_Boolean);
+      localObject = Boolean.valueOf(this.jdField_a_of_type_Kfe.jdField_b_of_type_Boolean);
       break label54;
     }
   }
@@ -483,7 +483,7 @@ public class AVRedBagMgr
       this.jdField_a_of_type_ComTencentAvUiRedbagSendRedBag = null;
     }
     this.jdField_a_of_type_ComTencentAvUiRedbagSendRedBag = new SendRedBag(this);
-    boolean bool = this.jdField_a_of_type_ComTencentAvUiRedbagSendRedBag.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt, paramAVActivity, new ken(this));
+    boolean bool = this.jdField_a_of_type_ComTencentAvUiRedbagSendRedBag.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt, paramAVActivity, new kdy(this));
     if (bool)
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAVActivity);
@@ -502,7 +502,7 @@ public class AVRedBagMgr
   void b()
   {
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new kes(this));
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new ked(this));
     }
   }
   
@@ -547,8 +547,8 @@ public class AVRedBagMgr
   {
     b(false);
     b("onGameEnd_from_GameSink");
-    if (this.jdField_a_of_type_Kft != null) {
-      a(this.jdField_a_of_type_Kft.jdField_b_of_type_Boolean);
+    if (this.jdField_a_of_type_Kfe != null) {
+      a(this.jdField_a_of_type_Kfe.jdField_b_of_type_Boolean);
     }
     c(paramResultData);
     a(paramResultData);
@@ -626,7 +626,7 @@ public class AVRedBagMgr
   void c(ResultData paramResultData)
   {
     if ((!paramResultData.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new kep(this, paramResultData));
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new kea(this, paramResultData));
     }
   }
   
@@ -660,8 +660,8 @@ public class AVRedBagMgr
   
   public boolean c()
   {
-    if (this.jdField_a_of_type_Kft != null) {
-      return this.jdField_a_of_type_Kft.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_Kfe != null) {
+      return this.jdField_a_of_type_Kfe.jdField_a_of_type_Boolean;
     }
     return false;
   }

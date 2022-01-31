@@ -1,20 +1,34 @@
-import android.graphics.Rect;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.FakeFeedViewUpdateCompletedEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoManager;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
+import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListHomeFeed;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class nyv
   implements Runnable
 {
-  public nyv(FeedSegment paramFeedSegment, Rect paramRect) {}
+  public nyv(HomeFeedPresenter paramHomeFeedPresenter, ArrayList paramArrayList) {}
   
   public void run()
   {
-    FeedSegment.FakeFeedViewUpdateCompletedEvent localFakeFeedViewUpdateCompletedEvent = new FeedSegment.FakeFeedViewUpdateCompletedEvent(this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-    Dispatchers.get().dispatch(localFakeFeedViewUpdateCompletedEvent);
-    SLog.b("Q.qqstory.home:FeedSegment_animation", "发了动画时间过去了 2");
+    FeedVideoManager localFeedVideoManager = (FeedVideoManager)SuperManager.a(12);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (StoryHomeFeed)localIterator.next();
+      if ((localObject instanceof VideoListHomeFeed))
+      {
+        localObject = (VideoListHomeFeed)localObject;
+        FeedVideoInfo localFeedVideoInfo = ((VideoListHomeFeed)localObject).a().getVideoInfo();
+        localFeedVideoInfo.mVideoItemList.addAll(((VideoListHomeFeed)localObject).a());
+        localFeedVideoManager.a(0, localFeedVideoInfo.feedId, localFeedVideoInfo.mVideoSeq, localFeedVideoInfo.mVideoItemList, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mIsVideoEnd, localFeedVideoInfo.mVideoPullType, true);
+      }
+    }
   }
 }
 

@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
+import com.tencent.mobileqq.app.ShakeListener;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
 
 public class aeeb
-  implements Runnable
+  extends ShakeListener
 {
-  public aeeb(NearbyProcManager paramNearbyProcManager, NearbyProcObserver paramNearbyProcObserver, int paramInt, Object[] paramArrayOfObject) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
-  }
+  public aeeb(MagicfaceActionManager paramMagicfaceActionManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeeb
  * JD-Core Version:    0.7.0.1
  */

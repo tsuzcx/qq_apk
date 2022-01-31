@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.magicface.magicfaceaction;
 
-import adqm;
-import adqn;
+import aeds;
+import aedt;
 import android.os.Vibrator;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.MagicPlayListener;
@@ -22,12 +22,12 @@ public class Action
   public Vibrator a;
   public ActionGlobalData a;
   public ActionProcess a;
-  MagicfaceDecoder.MagicPlayListener jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener = new adqm(this);
+  MagicfaceDecoder.MagicPlayListener jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener = new aeds(this);
   public MagicfacePlayRes a;
   public MagicfacePlayManager a;
   public String a;
   public List a;
-  TimerTask jdField_a_of_type_JavaUtilTimerTask = new adqn(this);
+  TimerTask jdField_a_of_type_JavaUtilTimerTask = new aedt(this);
   public CountDownLatch a;
   public boolean a;
   public int b;
@@ -190,7 +190,7 @@ public class Action
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.magicfaceaction.Action
  * JD-Core Version:    0.7.0.1
  */

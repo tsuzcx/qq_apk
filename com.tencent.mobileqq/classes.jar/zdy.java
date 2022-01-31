@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.app.MessageRoamManager;
+import com.tencent.mobileqq.app.FriendListHandler;
+import java.util.ArrayList;
 
 public class zdy
   implements Runnable
 {
-  public zdy(MessageRoamManager paramMessageRoamManager) {}
+  public zdy(FriendListHandler paramFriendListHandler, ArrayList paramArrayList1, String paramString, int paramInt1, int paramInt2, ArrayList paramArrayList2) {}
   
   public void run()
   {
-    this.a.n();
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaUtilArrayList);
   }
 }
 

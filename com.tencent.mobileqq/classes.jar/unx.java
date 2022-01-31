@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.activity.aio.anim.VipPendantDrawable;
 
 public class unx
-  implements Runnable
 {
-  public unx(RecordSoundPanel paramRecordSoundPanel) {}
+  public String a;
   
-  public void run()
+  public unx(VipPendantDrawable paramVipPendantDrawable, String paramString)
   {
-    this.a.b();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

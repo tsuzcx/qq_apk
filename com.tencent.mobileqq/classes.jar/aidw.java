@@ -1,19 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
 
-class aidw
+public final class aidw
   implements Runnable
 {
-  aidw(aidv paramaidv) {}
-  
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication().getBaseContext(), 2, 2131435910, 0).a();
+    RecentDanceConfigMgr.a(RecentDanceConfigMgr.c());
+    RecentDanceConfigMgr.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aidw
  * JD-Core Version:    0.7.0.1
  */

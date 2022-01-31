@@ -1,18 +1,15 @@
-import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.automator.step.AfterSyncMsg;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
 
 public class zmq
   implements Runnable
 {
-  public zmq(AfterSyncMsg paramAfterSyncMsg) {}
+  public zmq(SVIPHandler paramSVIPHandler, String paramString) {}
   
   public void run()
   {
-    if (!BmqqSegmentUtil.a.get()) {
-      BmqqSegmentUtil.a(BaseApplicationImpl.getContext());
-    }
+    BubbleDiyFetcher localBubbleDiyFetcher = BubbleDiyFetcher.a();
+    localBubbleDiyFetcher.a(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler.b, this.jdField_a_of_type_JavaLangString, new zmr(this, localBubbleDiyFetcher));
   }
 }
 

@@ -20,6 +20,7 @@ import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.activity.Now;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.mobileqq.widget.QQTabHost;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import mqq.app.Constants.LogoutReason;
-import yzz;
+import zdf;
 
 public class FrameFragment
   extends Fragment
@@ -73,11 +74,6 @@ public class FrameFragment
     return null;
   }
   
-  protected Map a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap;
-  }
-  
   public void a()
   {
     long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
@@ -103,7 +99,7 @@ public class FrameFragment
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost = ((QQTabHost)paramView1.findViewById(16908306));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setup();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabChangedListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabSelectionListener(new yzz(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost.setOnTabSelectionListener(new zdf(this));
       this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
     }
     String str = paramClass.getName();
@@ -193,6 +189,8 @@ public class FrameFragment
         localObject = new Now();
       } else if (paramString.equals(ReadinjoyTabFrame.class.getName())) {
         localObject = new ReadinjoyTabFrame();
+      } else if (paramString.equals(LebaWithFeeds.class.getName())) {
+        localObject = new LebaWithFeeds();
       }
     }
   }
@@ -207,7 +205,7 @@ public class FrameFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2130969063, null);
+    return paramLayoutInflater.inflate(2130969062, null);
   }
   
   public void onDestroy()

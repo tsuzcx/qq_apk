@@ -1,13 +1,18 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-class ansf
-  implements Runnable
+public final class ansf
+  implements Parcelable.Creator
 {
-  ansf(anse paramanse) {}
-  
-  public void run()
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    LbsFilterStatusManager.a(this.a.a);
+    return new EditTakePhotoSource(paramParcel);
+  }
+  
+  public EditTakePhotoSource[] a(int paramInt)
+  {
+    return new EditTakePhotoSource[paramInt];
   }
 }
 

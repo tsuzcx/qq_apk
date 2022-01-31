@@ -8,7 +8,7 @@ public abstract interface TroopTopicMgr$DoLikeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback
  * JD-Core Version:    0.7.0.1
  */

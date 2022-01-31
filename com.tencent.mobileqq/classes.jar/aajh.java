@@ -1,19 +1,13 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.config.MainDownAni;
 
-public class aajh
+class aajh
   implements Runnable
 {
-  public aajh(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  aajh(aajg paramaajg) {}
   
   public void run()
   {
-    ArkAppContainer localArkAppContainer = (ArkAppContainer)ArkAppContainer.a(ark.arkGetContainer(this.jdField_a_of_type_Long)).get();
-    if (localArkAppContainer != null) {
-      localArkAppContainer.c();
-    }
+    this.a.a.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.c(this.a.a.jdField_a_of_type_Aaji);
   }
 }
 

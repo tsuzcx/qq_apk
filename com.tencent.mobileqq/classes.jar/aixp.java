@@ -1,45 +1,34 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.ReciteTextSubViewHolder;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-public class aixp
-  implements ActionSheet.OnButtonClickListener
+class aixp
+  implements View.OnClickListener
 {
-  public aixp(ReciteTextSubViewHolder paramReciteTextSubViewHolder, ActionSheet paramActionSheet, boolean paramBoolean, HWReciteInfo paramHWReciteInfo) {}
+  aixp(aixn paramaixn) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    switch (i)
+    paramView = new Intent();
+    paramView.putExtra("path", this.a.jdField_a_of_type_JavaLangString);
+    PublicFragmentActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, paramView, TribeVideoPreviewFragment.class);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.overridePendingTransition(2131034403, 2131034404);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b != null) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.getVisibility() == 0)) {}
+    for (int i = 2;; i = 1)
     {
-    default: 
-      paramView = "";
-    }
-    for (;;)
-    {
-      TroopReportor.a("Grp_edu", "Grp_recite", "Blueword_Clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.f, paramView });
+      ReportController.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_full_screen", i, 0, "", "", "", "");
       return;
-      SelectReciteParagraphFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.f, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.jdField_a_of_type_JavaLangString, new ArrayList(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c);
-      paramView = "2";
-      continue;
-      SearchReciteArticleFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.f, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.b, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c);
-      paramView = "0";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixp
  * JD-Core Version:    0.7.0.1
  */

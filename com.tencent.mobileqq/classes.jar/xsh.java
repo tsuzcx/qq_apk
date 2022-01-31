@@ -1,19 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public final class xsh
-  implements Parcelable.Creator
+class xsh
+  implements Animator.AnimatorListener
 {
-  public BarrageParcelItem a(Parcel paramParcel)
+  xsh(xsf paramxsf) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new BarrageParcelItem(paramParcel);
+    if ((NewFlowCameraActivity.a(this.a.a) != null) && (NewFlowCameraActivity.b(this.a.a) != null) && (NewFlowCameraActivity.a(this.a.a) != null))
+    {
+      NewFlowCameraActivity.a(this.a.a).setVisibility(8);
+      NewFlowCameraActivity.b(this.a.a).setImageBitmap(this.a.b);
+      NewFlowCameraActivity.b(this.a.a).setVisibility(0);
+      NewFlowCameraActivity.a(this.a.a).setText(NewFlowCameraActivity.c(this.a.a) + "");
+      NewFlowCameraActivity.a(this.a.a).setVisibility(0);
+    }
   }
   
-  public BarrageParcelItem[] a(int paramInt)
-  {
-    return new BarrageParcelItem[paramInt];
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

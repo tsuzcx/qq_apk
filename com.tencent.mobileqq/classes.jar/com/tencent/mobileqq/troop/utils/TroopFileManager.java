@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajah;
-import ajai;
-import ajaj;
-import ajak;
-import ajal;
+import ajol;
+import ajom;
+import ajon;
+import ajoo;
+import ajop;
 import android.database.Observable;
 import android.os.Handler;
 import android.os.Message;
@@ -39,9 +39,9 @@ public class TroopFileManager
   public long a;
   public Handler a;
   public ArrayMap a;
-  private TroopFileProtocol.DeleteFileObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$DeleteFileObserver = new ajaj(this);
-  private TroopFileProtocol.GetFileListObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$GetFileListObserver = new ajal(this);
-  private TroopFileProtocol.ReqTransFileObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqTransFileObserver = new ajak(this);
+  private TroopFileProtocol.DeleteFileObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$DeleteFileObserver = new ajon(this);
+  private TroopFileProtocol.GetFileListObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$GetFileListObserver = new ajop(this);
+  private TroopFileProtocol.ReqTransFileObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqTransFileObserver = new ajoo(this);
   public BizTroopObserver a;
   public QQAppInterface a;
   public TroopFileManager.Filter a;
@@ -71,7 +71,7 @@ public class TroopFileManager
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager$Filter = new TroopFileManager.NormalFileFilter();
     this.jdField_b_of_type_ComTencentMobileqqTroopUtilsTroopFileManager$Filter = new TroopFileManager.UploadingFileFilter();
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new ajai(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new ajom(this);
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager = TroopFileTransferManager.a(paramQQAppInterface, paramLong);
@@ -87,7 +87,7 @@ public class TroopFileManager
         this.c.put(localTroopFileInfo.b, localTroopFileInfo);
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler = new ajah(this, paramQQAppInterface.getApplication().getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new ajol(this, paramQQAppInterface.getApplication().getMainLooper());
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
   }
   
@@ -723,7 +723,7 @@ public class TroopFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileManager
  * JD-Core Version:    0.7.0.1
  */

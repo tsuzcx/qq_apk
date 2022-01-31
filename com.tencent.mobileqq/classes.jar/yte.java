@@ -1,52 +1,24 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 class yte
-  implements WXShareHelper.WXShareListener
+  implements Runnable
 {
-  yte(ytd paramytd) {}
+  yte(ytc paramytc, long paramLong, CmGameStartChecker.ICmGameConfirmListener paramICmGameConfirmListener, CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if (paramBaseResp == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare) == null) || (!ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare).equals(paramBaseResp.transaction)));
-      QLog.i("ApolloGameShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
-    } while (paramBaseResp.errCode != 0);
-    paramBaseResp = this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare.a();
-    int j;
-    int i;
-    if (paramBaseResp == null)
-    {
-      j = -1;
-      if (1 != this.a.jdField_a_of_type_Int) {
-        break label159;
-      }
-      i = 3;
-    }
-    for (;;)
-    {
-      VipUtils.a(ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), "cmshow", "Apollo", "share_url_succeed", j, i, new String[] { Integer.toString(ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare)) });
-      return;
-      j = ApolloUtil.b(paramBaseResp.a.jdField_a_of_type_Int);
-      break;
-      label159:
-      if (2 == this.a.jdField_a_of_type_Int) {
-        i = 4;
-      } else {
-        i = -1;
-      }
-    }
+    String str = String.format("当前需要更新%.1fM，马上开始?", new Object[] { Float.valueOf((float)this.jdField_a_of_type_Long * 1.0F / 1024.0F / 1024.0F) });
+    ApolloGameActivity.a(this.jdField_a_of_type_Ytc.a).setVisibility(4);
+    ApolloGameActivity.b(this.jdField_a_of_type_Ytc.a).setVisibility(8);
+    ApolloGameActivity.c(this.jdField_a_of_type_Ytc.a).setText(str);
+    ApolloGameActivity.c(this.jdField_a_of_type_Ytc.a).setVisibility(0);
+    ApolloGameActivity.a(this.jdField_a_of_type_Ytc.a).setVisibility(0);
+    ApolloGameActivity.a(this.jdField_a_of_type_Ytc.a).setOnClickListener(new ytf(this));
   }
 }
 

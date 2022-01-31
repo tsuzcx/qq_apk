@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class vnm
-  implements Runnable
+  implements EIPCResultCallback
 {
-  vnm(vnl paramvnl) {}
+  vnm(vnk paramvnk) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    QQToast.a(this.a.a.a.a, "连接已经建立...", 0).a();
+    if (-102 == paramEIPCResult.code) {
+      AIOGalleryScene.M(this.a.a).finish();
+    }
   }
 }
 

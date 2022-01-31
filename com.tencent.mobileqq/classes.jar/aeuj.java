@@ -1,21 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aeuj
-  implements DialogInterface.OnClickListener
+class aeuj
+  implements Runnable
 {
-  public aeuj(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, QQCustomDialog paramQQCustomDialog) {}
+  aeuj(aeui paramaeui) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    while (paramInt != 0) {
-      return;
-    }
+    QQToast.a(this.a.a.getActivity(), 1, SmallVideoCameraCaptureFragment.a(this.a.a), 0).a();
   }
 }
 

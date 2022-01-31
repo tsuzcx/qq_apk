@@ -19,7 +19,7 @@ public class StructMsgItemTips
   public TextView a(Context paramContext)
   {
     paramContext = super.a(paramContext);
-    paramContext.setBackgroundResource(2130842144);
+    paramContext.setBackgroundResource(2130842181);
     paramContext.setPadding(20, 5, 20, 5);
     paramContext.setGravity(17);
     return paramContext;
@@ -47,7 +47,7 @@ public class StructMsgItemTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgItemTips
  * JD-Core Version:    0.7.0.1
  */

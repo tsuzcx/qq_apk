@@ -1,22 +1,15 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Condition;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
+import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
 
 public class oau
-  implements View.OnSystemUiVisibilityChangeListener
+  implements LocalVideoPusher.Condition
 {
-  public oau(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
+  public oau(LocalVideoPushSegment paramLocalVideoPushSegment) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public boolean a()
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 4870;; paramInt = 775)
-    {
-      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
+    return StoryPublishLauncher.b();
   }
 }
 

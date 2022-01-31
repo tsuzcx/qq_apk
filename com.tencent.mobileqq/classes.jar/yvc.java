@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
+import com.tencent.mobileqq.apollo.tmg_opensdk.TMG_Downloader.TMG_Downloader_DownloadEvent;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class yvc
-  implements DialogInterface.OnClickListener
+  extends TMG_Downloader.TMG_Downloader_DownloadEvent
 {
-  public yvc(ApolloPanel paramApolloPanel) {}
+  public yvc(AVEngineWalper paramAVEngineWalper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    this.a.m();
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new yvd(this));
+    }
   }
 }
 

@@ -39,16 +39,16 @@ import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pvu;
-import pvv;
-import pvw;
+import pxo;
+import pxp;
+import pxq;
 
 public class DeviceAVFileMsgObserver
   extends DeviceFileObserver
 {
   DevAudioMsgProcessor jdField_a_of_type_ComTencentDeviceFileDevAudioMsgProcessor = new DevAudioMsgProcessor();
   DevVideoMsgProcessor jdField_a_of_type_ComTencentDeviceFileDevVideoMsgProcessor = new DevVideoMsgProcessor();
-  private final TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new pvu(this, Looper.getMainLooper());
+  private final TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new pxo(this, Looper.getMainLooper());
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Set jdField_a_of_type_JavaUtilSet = new HashSet(10);
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
@@ -58,7 +58,7 @@ public class DeviceAVFileMsgObserver
   {
     if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramLong1 + ""))
     {
-      paramString = new pvw(this, paramString, paramLong2, paramInt, "", 0L);
+      paramString = new pxq(this, paramString, paramLong2, paramInt, "", 0L);
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(paramLong1), paramString);
     }
     while (!QLog.isColorLevel()) {
@@ -69,20 +69,20 @@ public class DeviceAVFileMsgObserver
   
   private void b(Session paramSession, boolean paramBoolean)
   {
-    pvw localpvw = (pvw)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
-    if (localpvw == null) {
+    pxq localpxq = (pxq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
+    if (localpxq == null) {
       return;
     }
     Object localObject1;
     Object localObject2;
     if (paramSession.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.e))
     {
-      this.jdField_a_of_type_ComTencentDeviceFileDevVideoMsgProcessor.a(paramSession, localpvw.jdField_a_of_type_JavaLangString, localpvw.jdField_a_of_type_Long, localpvw.jdField_a_of_type_Int, paramBoolean);
+      this.jdField_a_of_type_ComTencentDeviceFileDevVideoMsgProcessor.a(paramSession, localpxq.jdField_a_of_type_JavaLangString, localpxq.jdField_a_of_type_Long, localpxq.jdField_a_of_type_Int, paramBoolean);
       localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject1 instanceof QQAppInterface))
       {
         localObject1 = (QQAppInterface)localObject1;
-        localObject2 = ((SmartDeviceProxyMgr)((QQAppInterface)localObject1).a(51)).a(Long.parseLong(localpvw.jdField_a_of_type_JavaLangString));
+        localObject2 = ((SmartDeviceProxyMgr)((QQAppInterface)localObject1).a(51)).a(Long.parseLong(localpxq.jdField_a_of_type_JavaLangString));
         if (localObject2 == null) {
           break label377;
         }
@@ -117,7 +117,7 @@ public class DeviceAVFileMsgObserver
         for (i = 1003;; i = 1005)
         {
           ((DeviceAVFileMsgObserver.DevMsgViewData)localObject2).jdField_a_of_type_Int = i;
-          ((DeviceAVFileMsgObserver.DevMsgViewData)localObject2).jdField_a_of_type_Long = localpvw.jdField_a_of_type_Long;
+          ((DeviceAVFileMsgObserver.DevMsgViewData)localObject2).jdField_a_of_type_Long = localpxq.jdField_a_of_type_Long;
           ((Message)localObject1).obj = localObject2;
           this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.sendMessageDelayed((Message)localObject1, 0L);
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(String.valueOf(paramSession.uSessionID));
@@ -125,7 +125,7 @@ public class DeviceAVFileMsgObserver
           if (!paramSession.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.f)) {
             break;
           }
-          this.jdField_a_of_type_ComTencentDeviceFileDevAudioMsgProcessor.a(paramSession, localpvw.jdField_a_of_type_JavaLangString, localpvw.jdField_a_of_type_Long, localpvw.jdField_a_of_type_Int, paramBoolean);
+          this.jdField_a_of_type_ComTencentDeviceFileDevAudioMsgProcessor.a(paramSession, localpxq.jdField_a_of_type_JavaLangString, localpxq.jdField_a_of_type_Long, localpxq.jdField_a_of_type_Int, paramBoolean);
           break;
           j = 1;
           break label157;
@@ -265,7 +265,7 @@ public class DeviceAVFileMsgObserver
       f = paramBundle.getFloat("percent", 0.0F);
       localObject = new Session();
       ((Session)localObject).uSessionID = i;
-      paramBundle = (pvw)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(i));
+      paramBundle = (pxq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(i));
     } while (paramBundle == null);
     this.jdField_a_of_type_ComTencentDeviceFileDevAudioMsgProcessor.a((Session)localObject, paramBundle.jdField_a_of_type_JavaLangString, paramBundle.jdField_a_of_type_Long, paramBundle.jdField_a_of_type_Int, f);
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.obtainMessage();
@@ -285,9 +285,9 @@ public class DeviceAVFileMsgObserver
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject = (pvv)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      View localView = ((pvv)localObject).a();
-      localObject = ((pvv)localObject).a();
+      Object localObject = (pxp)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      View localView = ((pxp)localObject).a();
+      localObject = ((pxp)localObject).a();
       if ((localView != null) && (localObject != null)) {
         ((DeviceAVFileMsgObserver.DevMsgViewCallback)localObject).a(localView, (DeviceAVFileMsgObserver.DevMsgViewData)paramMessage.obj);
       }
@@ -306,14 +306,14 @@ public class DeviceAVFileMsgObserver
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      pvv localpvv = (pvv)localIterator.next();
-      if (localpvv.a() == paramView)
+      pxp localpxp = (pxp)localIterator.next();
+      if (localpxp.a() == paramView)
       {
-        localpvv.b = new WeakReference(paramDevMsgViewCallback);
+        localpxp.b = new WeakReference(paramDevMsgViewCallback);
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new pvv(this, paramView, paramDevMsgViewCallback));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new pxp(this, paramView, paramDevMsgViewCallback));
   }
   
   public void a(MessageForDevPtt paramMessageForDevPtt)
@@ -348,7 +348,7 @@ public class DeviceAVFileMsgObserver
         localObject = String.valueOf(l);
         if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject))
         {
-          paramMessageForDevPtt = new pvw(this, paramMessageForDevPtt.frienduin, paramMessageForDevPtt.uniseq, paramMessageForDevPtt.istroop, "", 0L);
+          paramMessageForDevPtt = new pxq(this, paramMessageForDevPtt.frienduin, paramMessageForDevPtt.uniseq, paramMessageForDevPtt.istroop, "", 0L);
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, paramMessageForDevPtt);
           return;
         }
@@ -379,15 +379,15 @@ public class DeviceAVFileMsgObserver
     if (QLog.isColorLevel()) {
       QLog.d("DeviceAVFileMsgObserver", 2, "onServiceSessionProgress : service@" + paramSession.actionInfo.strServiceName);
     }
-    pvw localpvw = (pvw)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
+    pxq localpxq = (pxq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
     Message localMessage;
     DeviceAVFileMsgObserver.DevMsgViewData localDevMsgViewData;
-    if (localpvw != null)
+    if (localpxq != null)
     {
       if (!paramSession.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.e)) {
         break label165;
       }
-      this.jdField_a_of_type_ComTencentDeviceFileDevVideoMsgProcessor.a(paramSession, localpvw.jdField_a_of_type_JavaLangString, localpvw.jdField_a_of_type_Long, localpvw.jdField_a_of_type_Int, paramFloat);
+      this.jdField_a_of_type_ComTencentDeviceFileDevVideoMsgProcessor.a(paramSession, localpxq.jdField_a_of_type_JavaLangString, localpxq.jdField_a_of_type_Long, localpxq.jdField_a_of_type_Int, paramFloat);
       localMessage = this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.obtainMessage();
       localDevMsgViewData = new DeviceAVFileMsgObserver.DevMsgViewData(this);
       if (!paramSession.bSend) {
@@ -399,14 +399,14 @@ public class DeviceAVFileMsgObserver
     for (localDevMsgViewData.jdField_a_of_type_Int = 1002;; localDevMsgViewData.jdField_a_of_type_Int = 2002)
     {
       localDevMsgViewData.jdField_a_of_type_Float = paramFloat;
-      localDevMsgViewData.jdField_a_of_type_Long = localpvw.jdField_a_of_type_Long;
+      localDevMsgViewData.jdField_a_of_type_Long = localpxq.jdField_a_of_type_Long;
       localMessage.obj = localDevMsgViewData;
       this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.sendMessageDelayed(localMessage, 0L);
       return;
       if (!paramSession.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.f)) {
         break;
       }
-      this.jdField_a_of_type_ComTencentDeviceFileDevAudioMsgProcessor.a(paramSession, localpvw.jdField_a_of_type_JavaLangString, localpvw.jdField_a_of_type_Long, localpvw.jdField_a_of_type_Int, paramFloat);
+      this.jdField_a_of_type_ComTencentDeviceFileDevAudioMsgProcessor.a(paramSession, localpxq.jdField_a_of_type_JavaLangString, localpxq.jdField_a_of_type_Long, localpxq.jdField_a_of_type_Int, paramFloat);
       break;
     }
   }
@@ -419,7 +419,7 @@ public class DeviceAVFileMsgObserver
     if (paramSession == null) {
       QLog.e("DeviceAVFileMsgObserver", 1, "onServiceSessionComplete, session == null !!!!!");
     }
-    pvw localpvw;
+    pxq localpxq;
     do
     {
       return;
@@ -428,15 +428,15 @@ public class DeviceAVFileMsgObserver
         b(paramSession, paramBoolean);
         return;
       }
-      localpvw = (pvw)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
-    } while (localpvw == null);
+      localpxq = (pxq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
+    } while (localpxq == null);
     label135:
     Object localObject1;
     Object localObject2;
     if (paramSession.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.e))
     {
       DeviceCommonMsgProcessor.a(paramSession, paramBoolean);
-      this.jdField_a_of_type_ComTencentDeviceFileDevVideoMsgProcessor.a(paramSession, localpvw.jdField_a_of_type_JavaLangString, localpvw.jdField_a_of_type_Long, localpvw.jdField_a_of_type_Int, paramBoolean);
+      this.jdField_a_of_type_ComTencentDeviceFileDevVideoMsgProcessor.a(paramSession, localpxq.jdField_a_of_type_JavaLangString, localpxq.jdField_a_of_type_Long, localpxq.jdField_a_of_type_Int, paramBoolean);
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.obtainMessage();
       localObject2 = new DeviceAVFileMsgObserver.DevMsgViewData(this);
       if (!paramBoolean) {
@@ -447,15 +447,15 @@ public class DeviceAVFileMsgObserver
     for (int i = 2003;; i = 2005)
     {
       ((DeviceAVFileMsgObserver.DevMsgViewData)localObject2).jdField_a_of_type_Int = i;
-      ((DeviceAVFileMsgObserver.DevMsgViewData)localObject2).jdField_a_of_type_Long = localpvw.jdField_a_of_type_Long;
+      ((DeviceAVFileMsgObserver.DevMsgViewData)localObject2).jdField_a_of_type_Long = localpxq.jdField_a_of_type_Long;
       ((Message)localObject1).obj = localObject2;
       this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.sendMessageDelayed((Message)localObject1, 0L);
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(String.valueOf(paramSession.uSessionID));
-      this.jdField_a_of_type_JavaUtilSet.remove(Long.valueOf(localpvw.jdField_a_of_type_Long));
+      this.jdField_a_of_type_JavaUtilSet.remove(Long.valueOf(localpxq.jdField_a_of_type_Long));
       if (!paramBoolean) {
         break label439;
       }
-      this.b.remove(Long.valueOf(localpvw.jdField_a_of_type_Long));
+      this.b.remove(Long.valueOf(localpxq.jdField_a_of_type_Long));
       return;
       if ((paramSession.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.f)) || (!paramSession.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.g))) {
         break label135;
@@ -465,7 +465,7 @@ public class DeviceAVFileMsgObserver
         break label135;
       }
       localObject1 = (QQAppInterface)localObject1;
-      localObject2 = ((QQAppInterface)localObject1).a().a(localpvw.jdField_a_of_type_JavaLangString, localpvw.jdField_a_of_type_Int, localpvw.jdField_a_of_type_Long);
+      localObject2 = ((QQAppInterface)localObject1).a().a(localpxq.jdField_a_of_type_JavaLangString, localpxq.jdField_a_of_type_Int, localpxq.jdField_a_of_type_Long);
       if (localObject2 == null) {
         break;
       }
@@ -484,7 +484,7 @@ public class DeviceAVFileMsgObserver
       }
     }
     label439:
-    this.b.put(Long.valueOf(localpvw.jdField_a_of_type_Long), Long.valueOf(MessageCache.a()));
+    this.b.put(Long.valueOf(localpxq.jdField_a_of_type_Long), Long.valueOf(MessageCache.a()));
   }
   
   public void a(MessageRecord paramMessageRecord, float paramFloat)
@@ -543,7 +543,7 @@ public class DeviceAVFileMsgObserver
       if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject2)) {
         break label221;
       }
-      paramString2 = new pvw(this, String.valueOf(paramLong1), paramLong2, paramInt1, paramString2, ((Session)localObject1).uFileSizeSrc);
+      paramString2 = new pxq(this, String.valueOf(paramLong1), paramLong2, paramInt1, paramString2, ((Session)localObject1).uFileSizeSrc);
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, paramString2);
       label154:
       if (!NetworkUtil.d(BaseApplication.getContext()))
@@ -581,7 +581,7 @@ public class DeviceAVFileMsgObserver
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (((pvw)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).jdField_a_of_type_Long == paramLong) {
+      if (((pxq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).jdField_a_of_type_Long == paramLong) {
         return true;
       }
     }
@@ -592,7 +592,7 @@ public class DeviceAVFileMsgObserver
   {
     boolean bool = true;
     if (paramBundle == null) {}
-    pvw localpvw;
+    pxq localpxq;
     do
     {
       return;
@@ -600,14 +600,14 @@ public class DeviceAVFileMsgObserver
       i = paramBundle.getInt("err_code", 1);
       paramBundle = new Session();
       paramBundle.uSessionID = j;
-      localpvw = (pvw)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramBundle.uSessionID));
-    } while (localpvw == null);
-    paramBundle.strFilePathSrc = localpvw.jdField_b_of_type_JavaLangString;
-    paramBundle.uFileSizeSrc = localpvw.jdField_b_of_type_Long;
+      localpxq = (pxq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramBundle.uSessionID));
+    } while (localpxq == null);
+    paramBundle.strFilePathSrc = localpxq.jdField_b_of_type_JavaLangString;
+    paramBundle.uFileSizeSrc = localpxq.jdField_b_of_type_Long;
     Object localObject1 = this.jdField_a_of_type_ComTencentDeviceFileDevAudioMsgProcessor;
-    Object localObject2 = localpvw.jdField_a_of_type_JavaLangString;
-    long l = localpvw.jdField_a_of_type_Long;
-    int j = localpvw.jdField_a_of_type_Int;
+    Object localObject2 = localpxq.jdField_a_of_type_JavaLangString;
+    long l = localpxq.jdField_a_of_type_Long;
+    int j = localpxq.jdField_a_of_type_Int;
     if (i == 0)
     {
       ((DevAudioMsgProcessor)localObject1).a(paramBundle, (String)localObject2, l, j, bool);
@@ -615,7 +615,7 @@ public class DeviceAVFileMsgObserver
       if ((localObject1 instanceof QQAppInterface))
       {
         localObject1 = (QQAppInterface)localObject1;
-        localObject2 = ((SmartDeviceProxyMgr)((QQAppInterface)localObject1).a(51)).a(Long.parseLong(localpvw.jdField_a_of_type_JavaLangString));
+        localObject2 = ((SmartDeviceProxyMgr)((QQAppInterface)localObject1).a(51)).a(Long.parseLong(localpxq.jdField_a_of_type_JavaLangString));
         if (localObject2 != null) {
           j = ((DeviceInfo)localObject2).productId;
         }
@@ -637,7 +637,7 @@ public class DeviceAVFileMsgObserver
     for (int i = 1003;; i = 1005)
     {
       ((DeviceAVFileMsgObserver.DevMsgViewData)localObject2).jdField_a_of_type_Int = i;
-      ((DeviceAVFileMsgObserver.DevMsgViewData)localObject2).jdField_a_of_type_Long = localpvw.jdField_a_of_type_Long;
+      ((DeviceAVFileMsgObserver.DevMsgViewData)localObject2).jdField_a_of_type_Long = localpxq.jdField_a_of_type_Long;
       ((Message)localObject1).obj = localObject2;
       this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.sendMessageDelayed((Message)localObject1, 0L);
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(String.valueOf(paramBundle.uSessionID));
@@ -652,8 +652,8 @@ public class DeviceAVFileMsgObserver
     if (QLog.isColorLevel()) {
       QLog.d("DeviceAVFileMsgObserver", 2, "onServiceSessionStart : service@" + paramSession.actionInfo.strServiceName);
     }
-    pvw localpvw = (pvw)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
-    if (localpvw == null) {
+    pxq localpxq = (pxq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramSession.uSessionID));
+    if (localpxq == null) {
       return;
     }
     Message localMessage = this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.obtainMessage();
@@ -661,7 +661,7 @@ public class DeviceAVFileMsgObserver
     if (paramSession.bSend) {}
     for (localDevMsgViewData.jdField_a_of_type_Int = 1001;; localDevMsgViewData.jdField_a_of_type_Int = 2001)
     {
-      localDevMsgViewData.jdField_a_of_type_Long = localpvw.jdField_a_of_type_Long;
+      localDevMsgViewData.jdField_a_of_type_Long = localpxq.jdField_a_of_type_Long;
       localMessage.obj = localDevMsgViewData;
       this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.sendMessageDelayed(localMessage, 0L);
       return;

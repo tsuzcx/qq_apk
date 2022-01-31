@@ -1,32 +1,23 @@
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import cooperation.dingdong.DingdongPluginDataFactory.ScheduleSummaryData;
+import cooperation.dingdong.data.ScheduleReminderMgr.onScheduleTipsListener;
+import cooperation.dingdong.data.ScheduleTipsDialog;
 
 public class amlf
-  implements Runnable
+  implements ScheduleReminderMgr.onScheduleTipsListener
 {
-  public amlf(QZoneDNSAnalyzeJsPlugin paramQZoneDNSAnalyzeJsPlugin, int paramInt) {}
+  public amlf(ScheduleTipsDialog paramScheduleTipsDialog) {}
   
-  public void run()
+  public void a(DingdongPluginDataFactory.ScheduleSummaryData paramScheduleSummaryData)
   {
-    int i = HttpUtil.a();
-    if ((i != 0) && (i != -1)) {
-      try
-      {
-        String str = InetAddress.getByName("h5.qzone.qq.com").getHostAddress();
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.jdField_a_of_type_Int + ", Analyze h5.qzone.qq.com ip address : " + str);
-        return;
-      }
-      catch (UnknownHostException localUnknownHostException)
-      {
-        localUnknownHostException.printStackTrace();
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.jdField_a_of_type_Int + ", UnknownHostException:Analyze  h5.qzone.qq.com  ip address failed");
-        return;
-      }
+    ScheduleTipsDialog.a(this.a, paramScheduleSummaryData);
+  }
+  
+  public boolean a()
+  {
+    if (this.a.isFinishing()) {
+      return false;
     }
-    QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.jdField_a_of_type_Int + ", No ActiveNetwork, Analyze  h5.qzone.qq.com  ip address failed");
+    return ScheduleTipsDialog.a(this.a);
   }
 }
 

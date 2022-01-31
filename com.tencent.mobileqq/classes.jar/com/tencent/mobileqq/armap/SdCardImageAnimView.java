@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import aawc;
-import aawd;
+import abdd;
+import abde;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.HandlerThread;
@@ -19,9 +19,9 @@ public class SdCardImageAnimView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   FrameBmpCache.EndListener jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener = null;
   private FrameBmpCache jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aawc(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new abdd(this);
   public boolean a;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new aawd(this);
+  private Runnable jdField_b_of_type_JavaLangRunnable = new abde(this);
   private boolean jdField_b_of_type_Boolean;
   private boolean c;
   private boolean d;

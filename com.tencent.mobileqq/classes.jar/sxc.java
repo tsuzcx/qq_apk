@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
-class sxc
+public class sxc
   implements Runnable
 {
-  sxc(sxb paramsxb) {}
+  public sxc(Leba paramLeba) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131436492), 0).b(this.a.a.a.getTitleBarHeight());
+    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.a.getManager(159);
+    RedTouchItem localRedTouchItem1 = localLocalRedTouchManager.a(10017);
+    RedTouchItem localRedTouchItem2 = localLocalRedTouchManager.a(103421);
+    if ((localLocalRedTouchManager.a(localRedTouchItem2)) && (localRedTouchItem2.redtouchType == 1)) {
+      localLocalRedTouchManager.a(103421);
+    }
+    if (localLocalRedTouchManager.a(localRedTouchItem1)) {
+      localLocalRedTouchManager.a(10017);
+    }
   }
 }
 

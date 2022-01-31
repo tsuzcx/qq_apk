@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import ahos;
+import aicu;
 import android.graphics.Color;
 import android.graphics.PointF;
 import android.text.TextUtils;
@@ -70,7 +70,7 @@ import org.json.JSONObject;
 
 public class TemplateParser
 {
-  private static final DecryptListener a = new ahos();
+  private static final DecryptListener a = new aicu();
   
   /* Error */
   public static MovieMaterial a(String paramString1, String paramString2)

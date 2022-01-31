@@ -1,16 +1,34 @@
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.RouterHandler;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class zjg
-  implements Runnable
+class zjg
+  implements Comparator
 {
-  public zjg(RouterHandler paramRouterHandler, Session paramSession) {}
+  zjg(zje paramzje) {}
   
-  public void run()
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.e.put(Long.valueOf(this.jdField_a_of_type_ComTencentLitetransfersdkSession.uSessionID), this.jdField_a_of_type_ComTencentLitetransfersdkSession);
-    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.a(3, this.jdField_a_of_type_ComTencentLitetransfersdkSession, 0.0D, 0);
+    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
+    int i = j;
+    if (j == 0)
+    {
+      Object localObject2 = paramPhoneContact1.pinyinFirst;
+      String str = paramPhoneContact2.pinyinFirst;
+      Object localObject1 = localObject2;
+      if (((String)localObject2).endsWith("#")) {
+        localObject1 = "Za";
+      }
+      localObject2 = str;
+      if (str.endsWith("#")) {
+        localObject2 = "Za";
+      }
+      j = ((String)localObject1).compareTo((String)localObject2);
+      i = j;
+      if (j == 0) {
+        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+      }
+    }
+    return i;
   }
 }
 

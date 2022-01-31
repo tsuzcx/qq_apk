@@ -1,15 +1,31 @@
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.os.Message;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
+import java.util.List;
 
-public class ohe
-  implements FilenameFilter
+class ohe
+  implements Runnable
 {
-  public ohe(DoodleEmojiManager paramDoodleEmojiManager) {}
+  ohe(ohd paramohd) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void run()
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
+    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      HWEditLocalVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditLocalVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
+    }
+    for (;;)
+    {
+      this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
+      HWEditLocalVideoPlayer.a(this.a.a, this.a.a.jdField_a_of_type_Int);
+      this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true);
+      return;
+      SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
+    }
   }
 }
 

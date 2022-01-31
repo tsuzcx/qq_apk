@@ -1,39 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.HashSet;
 
 public class amak
-  implements Runnable
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  public amak(ActionSheet paramActionSheet) {}
   
-  public amak(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void run()
-  {
-    try
+    int i = paramView.getId();
+    if ((ActionSheet.a(this.a)) && ((ActionSheet.a(this.a) == null) || (!ActionSheet.a(this.a).contains(Integer.valueOf(i)))) && (ActionSheet.b(this.a) != -1) && (i != ActionSheet.b(this.a)))
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString(QQPimDefineList.l, this.jdField_a_of_type_JavaLangString);
-      localBundle.putString(QQPimDefineList.m, this.b);
-      QIPCServerHelper.getInstance().callClient(QQPimDefineList.b, QQPimDefineList.c, QQPimDefineList.d, localBundle, new amal(this));
-      return;
+      Object localObject = (View)ActionSheet.a(this.a).get(ActionSheet.b(this.a));
+      ((View)localObject).findViewById(2131362812).setVisibility(8);
+      localObject = (TextView)((View)localObject).findViewById(2131362811);
+      ActionSheet.a(this.a, (TextView)localObject, false);
+      localObject = (View)ActionSheet.a(this.a).get(i);
+      ((View)localObject).findViewById(2131362812).setVisibility(0);
+      localObject = (TextView)((View)localObject).findViewById(2131362811);
+      ActionSheet.a(this.a, (TextView)localObject, true);
+      ActionSheet.a(this.a, i);
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    if (ActionSheet.a(this.a) != null) {
+      ActionSheet.a(this.a).OnClick(paramView, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amak
  * JD-Core Version:    0.7.0.1
  */

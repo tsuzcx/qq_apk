@@ -1,35 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class yxq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public yxq(BrowserAppInterface paramBrowserAppInterface) {}
+  public yxq(ApolloGameViewBinder paramApolloGameViewBinder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.isBackground_Stop) && (BaseActivity.sTopActivity == null))
+    if (ApolloGameViewBinder.a(this.a) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BrowserAppInterface", 2, "no activity running, reboot for tbs now");
+      paramView = (ApolloGameManager)ApolloGameViewBinder.a(this.a).getManager(210);
+      if (paramView != null) {
+        paramView.e();
       }
-      localIntent = new Intent();
-      localIntent.putExtra("qq_mode_foreground", true);
-      BrowserAppInterface.a(this.a, localIntent);
     }
-    while (!QLog.isColorLevel())
-    {
-      Intent localIntent;
-      return;
-    }
-    QLog.d("BrowserAppInterface", 2, "activity still running, cannot reboot");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yxq
  * JD-Core Version:    0.7.0.1
  */

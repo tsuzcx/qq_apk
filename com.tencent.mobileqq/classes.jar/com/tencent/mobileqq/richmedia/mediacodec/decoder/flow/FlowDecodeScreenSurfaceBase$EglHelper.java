@@ -82,7 +82,7 @@ public class FlowDecodeScreenSurfaceBase$EglHelper
         }
         catch (IllegalArgumentException localIllegalArgumentException)
         {
-          SLog.c("FlowEdit_FlowDecodeScreenSurfaceBase", localIllegalArgumentException, "createContext", new Object[0]);
+          SLog.d("FlowEdit_FlowDecodeScreenSurfaceBase", localIllegalArgumentException, "createContext", new Object[0]);
           throw new FlowDecodeScreenSurfaceBase.FlowDecodeException("createContext failed", localIllegalArgumentException);
         }
       }

@@ -135,11 +135,11 @@ public class MediaCodecSendTask
         }
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624515);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
       }
       return;
     }
@@ -469,8 +469,8 @@ public class MediaCodecSendTask
         paramInteger.putExtra("param_type", 9003);
         paramInteger.putExtra("param_only_friends", true);
         paramInteger.putExtra("param_donot_need_contacts", true);
-        paramInteger.putExtra("param_title", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getString(2131438235));
-        paramInteger.putExtra("param_done_button_wording", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getString(2131432400));
+        paramInteger.putExtra("param_title", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getString(2131438253));
+        paramInteger.putExtra("param_done_button_wording", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getString(2131432417));
         paramInteger.putExtra("param_exit_animation", 1);
         paramInteger.putExtra("param_entrance", this.jdField_b_of_type_Int);
         paramInteger.putExtra("param_blesstype", 2);
@@ -506,7 +506,7 @@ public class MediaCodecSendTask
   
   protected void onPreExecute()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity, 2131436128);
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity, 2131436145);
   }
 }
 

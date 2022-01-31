@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.now.datasource;
 
-import aefd;
-import aefe;
-import aeff;
+import aesj;
+import aesk;
+import aesl;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.biz.ProtoUtils;
@@ -50,7 +50,7 @@ public class CommentsDataSourceImpl
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("7.6.0");
+      paramReqBody.version.set("7.6.3");
       paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
@@ -81,7 +81,7 @@ public class CommentsDataSourceImpl
     localReqBody.cmd.set(857);
     localReqBody.subcmd.set(1);
     localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetCommentListReq.toByteArray()));
-    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aefd(this, paramLoadCommentsCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aesj(this, paramLoadCommentsCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
   }
   
   public void a(Comments.Comment paramComment, CommentsDataSource.DeleteCommentCallback paramDeleteCommentCallback)
@@ -98,7 +98,7 @@ public class CommentsDataSourceImpl
       localDelCommentReq.feed_id.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString.getBytes()));
       localDelCommentReq.comment_id.set(paramComment.jdField_a_of_type_Long);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localDelCommentReq.toByteArray()));
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aeff(this, paramDeleteCommentCallback, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aesl(this, paramDeleteCommentCallback, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
       return;
     }
     paramDeleteCommentCallback.a(paramComment, -1);
@@ -139,7 +139,7 @@ public class CommentsDataSourceImpl
       localReqBody.cmd.set(857);
       localReqBody.subcmd.set(2);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localAddCommentReq.toByteArray()));
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aefe(this, paramPublishCommentCallback, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aesk(this, paramPublishCommentCallback, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
       return;
       localAddCommentReq.feed_type.set(4L);
     }

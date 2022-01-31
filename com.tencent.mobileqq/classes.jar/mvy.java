@@ -1,15 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class mvy
-  implements View.OnClickListener
+public class mvy
 {
-  mvy(mvv parammvv) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(paramView);
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 

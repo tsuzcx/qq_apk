@@ -1,49 +1,29 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.GetFeedCommentEvent;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
+import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper;
+import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper.GenerateManifestCallback;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class nty
-  extends UIBaseEventReceiver
+  extends SimpleObserver
 {
-  public nty(StoryDetailPresenter paramStoryDetailPresenter)
+  public nty(QQStoryTakeVideoHelper paramQQStoryTakeVideoHelper, QQStoryTakeVideoHelper.GenerateManifestCallback paramGenerateManifestCallback) {}
+  
+  public void a(Void paramVoid)
   {
-    super(paramStoryDetailPresenter);
+    super.onNext(paramVoid);
+    SLog.b("QQStoryTakeVideoHelper", "generate video manifest success.");
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper.a = 2;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper$GenerateManifestCallback.a();
   }
   
-  public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
+  public void onError(@NonNull Error paramError)
   {
-    if ((!paramGetFeedCommentEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null)) {
-      SLog.b(this.TAG, "ignore this comment list event. %s.", paramGetFeedCommentEvent.toString());
-    }
-    boolean bool2;
-    boolean bool1;
-    do
-    {
-      return;
-      SLog.a(this.TAG, "receive comment list event. %s.", paramGetFeedCommentEvent.toString());
-      bool2 = StoryDetailPresenter.a(paramStoryDetailPresenter);
-      bool1 = true;
-      if (paramGetFeedCommentEvent.jdField_a_of_type_Int == 0) {
-        bool1 = false;
-      }
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a(bool1);
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a(bool1, paramGetFeedCommentEvent.b);
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a(bool1, paramGetFeedCommentEvent.jdField_a_of_type_Boolean);
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList, paramGetFeedCommentEvent.c, bool1);
-    } while (bool2 != bool1);
-    paramStoryDetailPresenter.b(paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+    super.onError(paramError);
+    SLog.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper.a = -1;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper$GenerateManifestCallback.b();
   }
-  
-  public Class acceptEventClass()
-  {
-    return CommentListPageLoader.GetFeedCommentEvent.class;
-  }
-  
-  public void b(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent) {}
 }
 
 

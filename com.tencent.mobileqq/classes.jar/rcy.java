@@ -1,39 +1,20 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class rcy
   implements Runnable
 {
-  public rcy(AccountManageActivity paramAccountManageActivity) {}
+  public rcy(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
   
   public void run()
   {
-    try
-    {
-      if (this.a.app != null)
-      {
-        FriendsManager localFriendsManager = (FriendsManager)this.a.app.getManager(50);
-        if (localFriendsManager != null) {
-          AccountManageActivity.a(this.a, localFriendsManager.a(this.a.app.getCurrentAccountUin()));
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.w("AccountManageActivity", 2, "showLogoutDialog getCard Exception! ");
+    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
+      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetTempPathToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rcy
  * JD-Core Version:    0.7.0.1
  */

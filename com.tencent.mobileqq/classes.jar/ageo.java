@@ -1,22 +1,27 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.VipTagView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
 
 public class ageo
-  implements ValueAnimation.AnimationUpdateListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ageo(VipTagView paramVipTagView) {}
+  public ageo(ARTipsManager paramARTipsManager) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    VipTagView.a(this.a, paramFloat1.floatValue());
-    this.a.invalidate();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (ARTipsManager.a(this.a) != null)
+    {
+      ARTipsManager.a(this.a).setAlpha(f);
+      ARTipsManager.a(this.a).setTranslationY((1.0F - f) * AIOUtils.a(25.0F, ARTipsManager.a(this.a)));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ageo
  * JD-Core Version:    0.7.0.1
  */

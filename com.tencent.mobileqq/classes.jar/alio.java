@@ -1,29 +1,63 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.singleupdate.QPSingleUpdTimerTask;
-import com.tencent.qqprotect.singleupdate.QPUpdateManager;
-import mqq.app.MobileQQ;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.downloadnew.DownloadConstants;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
+import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
+import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.tools.util;
 
-public class alio
+class alio
   implements Runnable
 {
-  public alio(QPSingleUpdTimerTask paramQPSingleUpdTimerTask) {}
+  alio(alin paramalin, byte[] paramArrayOfByte, String paramString) {}
   
   public void run()
   {
-    try
+    boolean bool2 = false;
+    this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
+    for (;;)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sMobileQQ.waitAppRuntime(null);
-      if (localQQAppInterface != null)
+      boolean bool3;
+      try
       {
-        ((QPUpdateManager)localQQAppInterface.getManager(193)).a();
+        Object localObject = this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Alin.jdField_a_of_type_AndroidOsBundle);
+        ThreadManager.getSubThreadHandler().post(new alip(this, (DownloadInfo)localObject));
+        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0))
+        {
+          localObject = new StringBuilder();
+          this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + util.buf_to_string(this.jdField_a_of_type_ArrayOfByte));
+          this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d = this.jdField_a_of_type_Alin.jdField_a_of_type_Long;
+        }
+        LogUtility.a("MyAppApi", "OpenSDK startToAppDetail param SNGAppId=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
+        LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
+        if (this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
+        {
+          ((TMAssistantCallYYB_V1)this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.jdField_a_of_type_Alin.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Alin.jdField_a_of_type_Boolean, this.jdField_a_of_type_Alin.b);
+          return;
+        }
+        int i = this.jdField_a_of_type_Alin.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
+        int j = this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Alin.jdField_a_of_type_AndroidOsBundle);
+        boolean bool1 = this.jdField_a_of_type_Alin.jdField_a_of_type_Boolean;
+        bool3 = this.jdField_a_of_type_Alin.b;
+        if (i == 3)
+        {
+          bool1 = false;
+          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.jdField_a_of_type_Alin.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, bool1, bool2, j);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        LogUtility.b("MyAppApi", "startToAppDetail err", localException);
         return;
       }
-      QLog.w("QPUpdate", 1, "qqprotect failed to start update because QQAppInterface is null");
-      return;
+      bool2 = bool3;
     }
-    catch (Exception localException) {}
   }
 }
 

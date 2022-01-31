@@ -24,7 +24,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
-import ysx;
+import ywd;
 
 public class ApolloGameInvitation
   implements DialogInterface.OnDismissListener, AdapterView.OnItemClickListener, ActionSheet.OnButtonClickListener
@@ -184,7 +184,7 @@ public class ApolloGameInvitation
       QLog.e("ApolloGameInvitation", 1, "fail to invite wxFriend, mGameMsg is null.");
       return;
     }
-    ThreadManager.post(new ysx(this), 5, null, true);
+    ThreadManager.post(new ywd(this), 5, null, true);
   }
   
   public void d()

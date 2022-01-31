@@ -1,24 +1,16 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.widget.LeftPopupMenuDialog;
+import android.graphics.Rect;
 
-public class akgm
-  extends View.AccessibilityDelegate
+public final class akgm
+  implements akgp
 {
-  public akgm(LeftPopupMenuDialog paramLeftPopupMenuDialog) {}
-  
-  @TargetApi(14)
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
   {
-    if (paramInt != 32) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
+    return new Rect(paramRect1.left + (int)((paramRect2.left - paramRect1.left) * paramFloat), paramRect1.top + (int)((paramRect2.top - paramRect1.top) * paramFloat), paramRect1.right + (int)((paramRect2.right - paramRect1.right) * paramFloat), paramRect1.bottom + (int)((paramRect2.bottom - paramRect1.bottom) * paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akgm
  * JD-Core Version:    0.7.0.1
  */

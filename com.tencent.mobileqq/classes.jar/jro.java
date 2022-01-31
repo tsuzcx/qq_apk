@@ -1,19 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class jro
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public jro(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  jro(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.a.app, this.a, 2, 12);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 5, 0, "", "", "", "");
+    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey"))) {
+        CallbackWaitingActivityExt.a(this.a);
+      }
+    }
   }
 }
 

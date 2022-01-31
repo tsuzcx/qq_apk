@@ -1,51 +1,40 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForTroopStory;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
 
 public class onc
-  extends ExecuteBinResponseCallback
+  implements Runnable
 {
-  public onc(FFmpeg paramFFmpeg, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback) {}
+  public onc(TroopStoryForwardTask paramTroopStoryForwardTask) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    FFmpeg localFFmpeg;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-    {
-      localFFmpeg = this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg;
-      if (!paramBoolean) {
-        break label44;
-      }
-    }
-    label44:
-    for (int i = 1;; i = 0)
-    {
-      localFFmpeg.jdField_a_of_type_Int = i;
-      FFmpeg.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg = null;
-      this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a(paramBoolean);
-      return;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.b(paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.c(paramString);
+    MessageForTroopStory localMessageForTroopStory = (MessageForTroopStory)MessageRecordFactory.a(-2057);
+    MessageRecordFactory.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForTroopStory, this.a.k, this.a.l, this.a.jdField_d_of_type_Int);
+    localMessageForTroopStory.uid = Long.valueOf(this.a.jdField_b_of_type_JavaLangString).longValue();
+    localMessageForTroopStory.unionId = this.a.jdField_c_of_type_JavaLangString;
+    localMessageForTroopStory.md5 = this.a.jdField_d_of_type_JavaLangString;
+    localMessageForTroopStory.thumbUrl = this.a.e;
+    localMessageForTroopStory.doodleUrl = this.a.f;
+    localMessageForTroopStory.videoWidth = this.a.jdField_a_of_type_Int;
+    localMessageForTroopStory.videoHeight = this.a.jdField_b_of_type_Int;
+    localMessageForTroopStory.sourceName = this.a.g;
+    localMessageForTroopStory.sourceActionType = this.a.h;
+    localMessageForTroopStory.sourceActionData = this.a.i;
+    localMessageForTroopStory.compatibleText = this.a.j;
+    localMessageForTroopStory.ctrVersion = this.a.jdField_c_of_type_Int;
+    localMessageForTroopStory.msg = "[小视频]";
+    localMessageForTroopStory.serial();
+    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory = localMessageForTroopStory;
+    ((SVIPHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localMessageForTroopStory);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForTroopStory, 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForTroopStory, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
   }
 }
 

@@ -5,7 +5,7 @@ import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Observable;
 import java.util.Observer;
-import jit;
+import jie;
 
 public class AVObserver
   implements Observer
@@ -93,7 +93,7 @@ public class AVObserver
       if (this.a == null) {
         this.a = new Handler(paramObservable);
       }
-      this.a.post(new jit(this, paramObject));
+      this.a.post(new jie(this, paramObject));
       return;
     }
     a(paramObject);

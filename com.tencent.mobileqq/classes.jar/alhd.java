@@ -1,32 +1,24 @@
-import com.tencent.ims.QSecCloudAVEngineMsg.QSecCloudRespBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.CloudAVEngineImpl;
-import com.tencent.qqprotect.qsec.SecSvcHandlerHelper.ISecSvcRespListener;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.DownloaderGetCodeClient;
 
 public class alhd
-  implements SecSvcHandlerHelper.ISecSvcRespListener
+  implements Runnable
 {
-  public alhd(CloudAVEngineImpl paramCloudAVEngineImpl) {}
+  public alhd(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void run()
   {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && (paramObject != null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "server reply packet");
-      }
-    }
     try
     {
-      paramToServiceMsg = new QSecCloudAVEngineMsg.QSecCloudRespBody();
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      CloudAVEngineImpl.a(this.a).sendMessage(CloudAVEngineImpl.a(this.a).obtainMessage(4, paramToServiceMsg));
+      LogUtility.c(DownloadManager.a, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d + " begin getApkCode ......");
+      DownloaderGetCodeClient.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
       return;
     }
-    catch (Exception paramToServiceMsg)
+    catch (Exception localException)
     {
-      paramToServiceMsg.printStackTrace();
+      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
     }
   }
 }

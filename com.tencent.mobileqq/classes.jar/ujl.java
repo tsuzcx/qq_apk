@@ -1,72 +1,100 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicBusiManager;
-import com.tencent.mobileqq.pic.PicReq;
-import com.tencent.mobileqq.pic.PicUploadInfo.Builder;
-import com.tencent.mobileqq.transfile.TranDbRecord.PicDbRecord;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.AIOReporterGetDeviceInfo;
+import com.tencent.mobileqq.activity.aio.AIOTimeReporter;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.StartupTracker;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ujl
-  extends AsyncTask
+public class ujl
+  implements Runnable
 {
-  public ujl(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext, String paramString) {}
+  public ujl(AIOTimeReporter paramAIOTimeReporter) {}
   
-  protected ImageInfo a(Void... paramVarArgs)
+  public void run()
   {
-    ImageUtil.a(-1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true, "image_send_prepare", "sessionInfo.handleScreenPhoto");
-    String str = ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    paramVarArgs = new ImageInfo();
-    ImageUtil.a(paramVarArgs, "compress_start", "sessionInfo.handleScreenPhoto");
-    ImageUtil.a(3, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, str, true, paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    if (!FileUtils.b(paramVarArgs.b)) {
-      return null;
-    }
-    try
+    AIOReporterGetDeviceInfo localAIOReporterGetDeviceInfo = AIOReporterGetDeviceInfo.a();
+    AIOTimeReporter.a(this.a, localAIOReporterGetDeviceInfo.a());
+    if (StartupTracker.a <= 0L)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      StatisticConstants.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
-      return paramVarArgs;
+      AIOTimeReporter.a(this.a);
+      return;
     }
-    catch (Exception localException) {}
-    return paramVarArgs;
-  }
-  
-  protected void a(ImageInfo paramImageInfo)
-  {
-    if (paramImageInfo != null)
+    String str = "";
+    switch (AIOTimeReporter.a(this.a))
     {
-      Object localObject = new PicUploadInfo.Builder();
-      ((PicUploadInfo.Builder)localObject).a(paramImageInfo.b);
-      ((PicUploadInfo.Builder)localObject).d(1027);
-      ((PicUploadInfo.Builder)localObject).d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      if (paramImageInfo.h == 2) {}
-      for (int i = TranDbRecord.PicDbRecord.e;; i = TranDbRecord.PicDbRecord.d)
+    default: 
+      return;
+    case 1: 
+      switch (localAIOReporterGetDeviceInfo.a)
       {
-        ((PicUploadInfo.Builder)localObject).c(i);
-        ((PicUploadInfo.Builder)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
-        ((PicUploadInfo.Builder)localObject).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((PicUploadInfo.Builder)localObject).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-        PicReq localPicReq = PicBusiManager.a(2, 1027);
-        localPicReq.a(((PicUploadInfo.Builder)localObject).a());
-        PicBusiManager.a(localPicReq, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add(paramImageInfo);
-        ImageUtil.a(this.jdField_a_of_type_AndroidContentContext, (List)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      }
+      for (;;)
+      {
+        StatisticCollector.a(BaseApplication.getContext()).a(null, str, true, StartupTracker.a, 0L, null, "");
+        if (QLog.isDevelopLevel()) {
+          QLog.d(this.a.a, 4, "reportAIOTime: " + str + " cost : " + StartupTracker.a);
+        }
+        AIOTimeReporter.a(this.a);
         return;
+        if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0"))
+        {
+          str = AIOTimeReporter.a();
+        }
+        else
+        {
+          str = AIOTimeReporter.b();
+          continue;
+          if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0")) {
+            str = AIOTimeReporter.c();
+          } else {
+            str = AIOTimeReporter.d();
+          }
+        }
+      }
+    case 2: 
+      switch (localAIOReporterGetDeviceInfo.a)
+      {
+      }
+      for (;;)
+      {
+        break;
+        if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0"))
+        {
+          str = AIOTimeReporter.e();
+        }
+        else
+        {
+          str = AIOTimeReporter.f();
+          continue;
+          if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0")) {
+            str = AIOTimeReporter.g();
+          } else {
+            str = AIOTimeReporter.h();
+          }
+        }
       }
     }
-    ImageUtil.a(-1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true, "image_send_prepared_failed", "sessionInfo.handleScreenPhoto");
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131434488), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+    switch (localAIOReporterGetDeviceInfo.a)
+    {
+    }
+    for (;;)
+    {
+      break;
+      if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0"))
+      {
+        str = AIOTimeReporter.i();
+      }
+      else
+      {
+        str = AIOTimeReporter.j();
+        continue;
+        if (!AIOTimeReporter.a(this.a).equalsIgnoreCase("0")) {
+          str = AIOTimeReporter.k();
+        } else {
+          str = AIOTimeReporter.l();
+        }
+      }
+    }
   }
 }
 

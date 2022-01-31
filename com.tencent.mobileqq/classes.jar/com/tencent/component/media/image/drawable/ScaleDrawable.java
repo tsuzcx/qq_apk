@@ -7,7 +7,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import com.tencent.component.media.annotation.Public;
-import pgh;
+import pib;
 
 @Public
 public class ScaleDrawable
@@ -17,7 +17,7 @@ public class ScaleDrawable
   private int jdField_a_of_type_Int;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private pgh jdField_a_of_type_Pgh;
+  private pib jdField_a_of_type_Pib;
   private float b = 0.0F;
   
   @Public
@@ -29,15 +29,15 @@ public class ScaleDrawable
   @Public
   public ScaleDrawable(Drawable paramDrawable, int paramInt)
   {
-    this.jdField_a_of_type_Pgh = new pgh(paramDrawable, this);
-    setConstantState(this.jdField_a_of_type_Pgh);
+    this.jdField_a_of_type_Pib = new pib(paramDrawable, this);
+    setConstantState(this.jdField_a_of_type_Pib);
     setScaleType(paramInt);
   }
   
-  private ScaleDrawable(pgh parampgh, Resources paramResources)
+  private ScaleDrawable(pib parampib, Resources paramResources)
   {
-    this.jdField_a_of_type_Pgh = new pgh(parampgh, this, paramResources);
-    setConstantState(this.jdField_a_of_type_Pgh);
+    this.jdField_a_of_type_Pib = new pib(parampib, this, paramResources);
+    setConstantState(this.jdField_a_of_type_Pib);
   }
   
   private void a()
@@ -218,10 +218,10 @@ public class ScaleDrawable
   
   public Drawable.ConstantState getConstantState()
   {
-    if (this.jdField_a_of_type_Pgh.a())
+    if (this.jdField_a_of_type_Pib.a())
     {
-      this.jdField_a_of_type_Pgh.jdField_a_of_type_Int = getChangingConfigurations();
-      return this.jdField_a_of_type_Pgh;
+      this.jdField_a_of_type_Pib.jdField_a_of_type_Int = getChangingConfigurations();
+      return this.jdField_a_of_type_Pib;
     }
     return null;
   }

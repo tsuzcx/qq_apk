@@ -1,6 +1,6 @@
 package com.tencent.open.model;
 
-import aktv;
+import aljl;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -79,7 +79,7 @@ public class AccountManage
             ((Bundle)localObject2).putByteArray("st_temp", (byte[])localObject3);
             ((Bundle)localObject2).putByteArray("st_temp_key", arrayOfByte);
             localObject3 = new WeakReference(paramSSOAccountObserver);
-            this.jdField_a_of_type_AndroidOsHandler.post(new aktv(this, (WeakReference)localObject3, paramString, (String)localObject1, paramInt, (Bundle)localObject2));
+            this.jdField_a_of_type_AndroidOsHandler.post(new aljl(this, (WeakReference)localObject3, paramString, (String)localObject1, paramInt, (Bundle)localObject2));
           }
         }
         break;

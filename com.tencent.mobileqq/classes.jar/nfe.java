@@ -1,16 +1,26 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import android.view.View;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.widget.ListView;
 
-public class nfe
-  extends UploadImageJob
+class nfe
+  implements Runnable
 {
-  public nfe(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
+  nfe(nfd paramnfd) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.e = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    int i = this.a.a.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition();
+    if (i < this.a.a.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount())
+    {
+      View localView = this.a.a.jdField_a_of_type_ComTencentWidgetListView.getChildAt(0);
+      if (localView == this.a.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView)
+      {
+        int j = localView.getTop();
+        if ((j < 0) && (j > -localView.getHeight())) {
+          this.a.a.jdField_a_of_type_ComTencentWidgetListView.setSelection(i + 1);
+        }
+      }
+    }
   }
 }
 

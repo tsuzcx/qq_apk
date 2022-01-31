@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
+import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
+import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
-public final class nbe
-  implements Parcelable.Creator
+public class nbe
+  implements UploadObject.UploadFinishListener
 {
-  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
-  {
-    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
-  }
+  public nbe(StoryVideoUploadTask paramStoryVideoUploadTask, StoryVideoTaskInfo paramStoryVideoTaskInfo) {}
   
-  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
+  public void a(UploadObject paramUploadObject)
   {
-    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.k = ((ImageFileObject)paramUploadObject).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
 }
 

@@ -1,44 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyTabObserver;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.mobileqq.richstatus.IIconListener;
 
 public class wnn
-  extends ReadInJoyTabObserver
+  implements IIconListener
 {
-  public wnn(MainAssistObserver paramMainAssistObserver) {}
+  private wnn(FriendFragment paramFriendFragment) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (ReadInJoyHelper.g()) {
-      this.a.a(39, null);
+    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      FriendFragment.a(this.a, 1400L, false);
     }
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    super.a(paramInt, paramObject);
-    if (!ReadInJoyHelper.f()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.runOnUiThread(new wnp(this, paramInt, paramObject));
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    a(1, paramView);
-  }
-  
-  public void d()
-  {
-    if (!ReadInJoyHelper.f()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.runOnUiThread(new wno(this));
   }
 }
 

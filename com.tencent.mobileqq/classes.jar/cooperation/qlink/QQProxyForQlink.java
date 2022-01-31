@@ -1,14 +1,14 @@
 package cooperation.qlink;
 
-import alwx;
-import alwy;
-import alxa;
-import alxb;
-import alxc;
-import alxd;
-import alxe;
-import alxf;
-import alxg;
+import amnb;
+import amnc;
+import amne;
+import amnf;
+import amng;
+import amnh;
+import amni;
+import amnj;
+import amnk;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -78,7 +78,7 @@ public class QQProxyForQlink
     }
     for (;;)
     {
-      DialogUtil.b(paramActivity, 230, paramActivity.getString(2131431950), paramString, 2131431907, 2131431907, new alxg(this, paramQrHandleResultCallBack), null).show();
+      DialogUtil.b(paramActivity, 230, paramActivity.getString(2131431967), paramString, 2131431924, 2131431924, new amnk(this, paramQrHandleResultCallBack), null).show();
       return;
       if (2 == paramInt) {
         paramString = "你当前正在使用面对面快传" + "接收来着" + paramString + "的文件,请稍候";
@@ -137,10 +137,10 @@ public class QQProxyForQlink
     //   30: putfield 168	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
     //   33: aload_0
     //   34: getfield 168	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
-    //   37: new 177	alxh
+    //   37: new 177	amnl
     //   40: dup
     //   41: aload_0
-    //   42: invokespecial 179	alxh:<init>	(Lcooperation/qlink/QQProxyForQlink;)V
+    //   42: invokespecial 179	amnl:<init>	(Lcooperation/qlink/QQProxyForQlink;)V
     //   45: lconst_0
     //   46: ldc2_w 180
     //   49: invokevirtual 185	java/util/Timer:schedule	(Ljava/util/TimerTask;JJ)V
@@ -191,7 +191,7 @@ public class QQProxyForQlink
     else {
       return;
     }
-    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new alwy(this);
+    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new amnc(this);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
@@ -239,10 +239,10 @@ public class QQProxyForQlink
     //   31: getfield 232	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
     //   34: ifnonnull -7 -> 27
     //   37: aload_0
-    //   38: new 234	alwz
+    //   38: new 234	amnd
     //   41: dup
     //   42: aload_0
-    //   43: invokespecial 235	alwz:<init>	(Lcooperation/qlink/QQProxyForQlink;)V
+    //   43: invokespecial 235	amnd:<init>	(Lcooperation/qlink/QQProxyForQlink;)V
     //   46: putfield 232	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
     //   49: new 204	android/content/IntentFilter
     //   52: dup
@@ -340,7 +340,7 @@ public class QQProxyForQlink
   {
     QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppInit");
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() != null)) {
-      ThreadManager.executeOnSubThread(new alwx(this));
+      ThreadManager.executeOnSubThread(new amnb(this));
     }
   }
   
@@ -384,10 +384,10 @@ public class QQProxyForQlink
       if (this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mMode == 1)
       {
         a("0X8004854", 1);
-        paramOnClickListener3 = paramActivity.getResources().getString(2131431996) + str1 + paramActivity.getResources().getString(2131431997);
+        paramOnClickListener3 = paramActivity.getResources().getString(2131432013) + str1 + paramActivity.getResources().getString(2131432014);
         if ((paramString != null) && (!paramString.equalsIgnoreCase(this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerUin)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431949), paramOnClickListener3, paramActivity.getResources().getString(2131431998), paramActivity.getResources().getString(2131431998), paramOnClickListener2, null);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431966), paramOnClickListener3, paramActivity.getResources().getString(2131432015), paramActivity.getResources().getString(2131432015), paramOnClickListener2, null);
           label194:
           this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
         }
@@ -397,18 +397,18 @@ public class QQProxyForQlink
         if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
           break label403;
         }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new alxd(this));
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new amnh(this));
         return;
         label224:
         str1 = this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerUin;
         break;
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431949), paramOnClickListener3, paramActivity.getResources().getString(2131431998), paramActivity.getResources().getString(2131431999), paramOnClickListener1, paramOnClickListener2);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431966), paramOnClickListener3, paramActivity.getResources().getString(2131432015), paramActivity.getResources().getString(2131432016), paramOnClickListener1, paramOnClickListener2);
         break label194;
         if (this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mMode == 2)
         {
           a("0X8004856", 1);
-          paramOnClickListener1 = str1 + paramActivity.getResources().getString(2131432000);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431949), paramOnClickListener1, paramActivity.getResources().getString(2131432001), paramActivity.getResources().getString(2131432001), paramOnClickListener3, null);
+          paramOnClickListener1 = str1 + paramActivity.getResources().getString(2131432017);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431966), paramOnClickListener1, paramActivity.getResources().getString(2131432018), paramActivity.getResources().getString(2131432018), paramOnClickListener3, null);
           this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
         }
         else if (QLog.isColorLevel())
@@ -468,7 +468,7 @@ public class QQProxyForQlink
     } while (!paramBoolean);
     paramActivity.finish();
     return;
-    a(paramActivity, new alxa(this, paramArrayList, paramActivity, paramInt1, paramBoolean), new alxb(this), new alxc(this), paramString);
+    a(paramActivity, new amne(this, paramArrayList, paramActivity, paramInt1, paramBoolean), new amnf(this), new amng(this), paramString);
   }
   
   public void a(Bundle paramBundle)
@@ -610,7 +610,7 @@ public class QQProxyForQlink
     if (paramAppActivity == null) {
       return;
     }
-    DialogUtil.b(paramAppActivity, 230, paramAppActivity.getString(2131432022), paramAppActivity.getString(2131431954), 2131431907, 2131431907, new alxf(this, paramQrHandleResultCallBack), null).show();
+    DialogUtil.b(paramAppActivity, 230, paramAppActivity.getString(2131432039), paramAppActivity.getString(2131431971), 2131431924, 2131431924, new amnj(this, paramQrHandleResultCallBack), null).show();
   }
   
   public void a(AppActivity paramAppActivity, String paramString, QrHandleResultCallBack paramQrHandleResultCallBack)
@@ -621,7 +621,7 @@ public class QQProxyForQlink
     QlinkHelper.QRScanInfo localQRScanInfo = QlinkHelper.a(paramString);
     if (localQRScanInfo == null)
     {
-      DialogUtil.b(paramAppActivity, 230, paramAppActivity.getString(2131431950), paramAppActivity.getString(2131431955), 2131431907, 2131431907, new alxe(this, paramQrHandleResultCallBack), null).show();
+      DialogUtil.b(paramAppActivity, 230, paramAppActivity.getString(2131431967), paramAppActivity.getString(2131431972), 2131431924, 2131431924, new amni(this, paramQrHandleResultCallBack), null).show();
       return;
     }
     if (this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mWorking)

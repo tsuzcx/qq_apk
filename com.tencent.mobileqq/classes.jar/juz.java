@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.gameplay.ARNativeBridge;
+import com.tencent.av.ui.GamePlayView;
 
 public class juz
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public juz(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public juz(GamePlayView paramGamePlayView, boolean paramBoolean) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.b();
+    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView).native_stopEmitter(this.jdField_a_of_type_Boolean);
   }
 }
 

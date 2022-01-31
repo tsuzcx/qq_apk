@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity.OnMeasuredListener;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
-class uhf
-  implements Runnable
+public class uhf
+  implements VipProfileCardDiyActivity.OnMeasuredListener
 {
-  uhf(uhe paramuhe, String paramString) {}
+  public uhf(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Uhe.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTag(2131361863, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Uhe.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnLongClickListener(this.jdField_a_of_type_Uhe.jdField_a_of_type_AndroidViewView$OnLongClickListener);
+    this.a.a.setActualViewSize(paramInt1, paramInt2);
+    this.a.a.invalidate();
   }
 }
 

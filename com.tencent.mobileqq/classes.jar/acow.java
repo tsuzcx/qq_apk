@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class acow
+  implements FMDialogUtil.FMDialogInterface
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public boolean c = false;
+  public acow(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public acow(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    UniformDownloadActivity.a(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

@@ -1,54 +1,37 @@
-import android.content.res.Resources;
-import android.os.Build;
-import android.util.DisplayMetrics;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
+import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager.ARMarkerResourceCallback;
+import com.tencent.mobileqq.ar.arengine.ARResourceManagerTools.ARResourceCallback;
 
 public class aahs
-  implements aagu
+  implements ARResourceManagerTools.ARResourceCallback
 {
-  private aahs(ArkAppDeviceModule paramArkAppDeviceModule) {}
+  public aahs(ARMarkerResourceManager paramARMarkerResourceManager, ARMarkerResourceManager.ARMarkerResourceCallback paramARMarkerResourceCallback, ArCloudConfigInfo paramArCloudConfigInfo) {}
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public void a()
   {
-    if (!ArkAppModuleReg.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, "permission.DEVICE_INFORMATION")) {}
-    do
-    {
-      return false;
-      if ("GetModelName".equals(paramString))
-      {
-        paramVariantWrapper.SetString(Build.MODEL);
-        return true;
-      }
-      if ("GetScreenWidth".equals(paramString))
-      {
-        paramString = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-        paramVariantWrapper.SetInt((int)(paramString.widthPixels / paramString.density));
-        return true;
-      }
-      if ("GetScreenHeight".equals(paramString))
-      {
-        paramString = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-        paramVariantWrapper.SetInt((int)(paramString.heightPixels / paramString.density));
-        return true;
-      }
-      if ("GetPixelRatio".equals(paramString))
-      {
-        paramVariantWrapper.SetDouble(BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density);
-        return true;
-      }
-    } while (!"GetIdentifier".equals(paramString));
-    paramArrayOfVariantWrapper = DeviceInfoUtil.a();
-    paramString = paramArrayOfVariantWrapper;
-    if (this.a.jdField_a_of_type_Long != 0L) {
-      paramString = MD5Coding.encodeHexStr(paramArrayOfVariantWrapper);
+    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.r();
     }
-    paramVariantWrapper.SetString(paramString);
-    return true;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.c(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {}
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.d(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
   }
 }
 

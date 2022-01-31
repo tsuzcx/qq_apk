@@ -1,28 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper.GenerateManifestCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.reactive.SimpleObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView.OnRefreshListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
 
 public class nsl
-  extends SimpleObserver
+  implements View.OnClickListener
 {
-  public nsl(QQStoryTakeVideoHelper paramQQStoryTakeVideoHelper, QQStoryTakeVideoHelper.GenerateManifestCallback paramGenerateManifestCallback) {}
+  public nsl(MyMemoriesListView paramMyMemoriesListView) {}
   
-  public void a(Void paramVoid)
+  public void onClick(View paramView)
   {
-    super.onNext(paramVoid);
-    SLog.b("QQStoryTakeVideoHelper", "generate video manifest success.");
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper.a = 2;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper$GenerateManifestCallback.a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper.a = -1;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper$GenerateManifestCallback.b();
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnRefreshListener != null) {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnRefreshListener.c();
+      }
+    }
   }
 }
 

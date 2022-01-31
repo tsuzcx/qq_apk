@@ -7,9 +7,9 @@ public abstract interface EditMusicExport
   
   public abstract void a(EditVideoTag.EditBehavior paramEditBehavior);
   
-  public abstract void aq_();
+  public abstract void as_();
   
-  public abstract void ar_();
+  public abstract void at_();
   
   public abstract void c();
 }

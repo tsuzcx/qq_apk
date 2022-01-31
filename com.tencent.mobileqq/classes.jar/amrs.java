@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
+import android.net.Proxy;
+import cooperation.qzone.QZoneHttpUtil.HttpProxy;
 
-public class amrs
-  implements ThreadPool.Job
+public final class amrs
+  extends QZoneHttpUtil.HttpProxy
 {
-  public amrs(WyDownloader paramWyDownloader, HttpNetReq paramHttpNetReq) {}
-  
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public int a()
   {
-    WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-    return null;
+    return Proxy.getDefaultPort();
+  }
+  
+  public String a()
+  {
+    return Proxy.getDefaultHost();
   }
 }
 

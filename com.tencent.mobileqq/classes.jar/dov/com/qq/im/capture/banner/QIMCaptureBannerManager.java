@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.banner;
 
-import amvb;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import anlg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -94,7 +94,7 @@ public class QIMCaptureBannerManager
   
   public void c()
   {
-    ThreadManager.post(new amvb(this), 8, null, true);
+    ThreadManager.post(new anlg(this), 8, null, true);
   }
   
   public void c(boolean paramBoolean)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import ahpr;
+import aidt;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Environment;
@@ -47,7 +47,7 @@ public class PtvFilterSoLoad
   {
     int i;
     if (d()) {
-      if (c(BaseApplicationImpl.getContext())) {
+      if (b(BaseApplicationImpl.getContext())) {
         i = 1;
       }
     }
@@ -67,7 +67,7 @@ public class PtvFilterSoLoad
   {
     int i;
     if (b()) {
-      if (b(paramContext)) {
+      if (a(paramContext)) {
         i = 1;
       }
     }
@@ -81,32 +81,6 @@ public class PtvFilterSoLoad
       continue;
       i = 0;
     }
-  }
-  
-  public static int a(String paramString)
-  {
-    int i;
-    if (paramString == null) {
-      i = -1;
-    }
-    do
-    {
-      return i;
-      if (!new File(paramString).exists()) {
-        return -2;
-      }
-      try
-      {
-        System.load(paramString);
-        return 0;
-      }
-      catch (UnsatisfiedLinkError paramString)
-      {
-        i = -3;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PtvFilterSoLoad", 2, "LoadExtractedShortVideoFilterLib : exp=", paramString);
-    return -3;
   }
   
   public static String a(Context paramContext)
@@ -178,25 +152,12 @@ public class PtvFilterSoLoad
   
   public static boolean a()
   {
-    return SoLoader.d();
+    return SoLoader.e();
   }
   
   public static boolean a(Context paramContext)
   {
-    try
-    {
-      System.loadLibrary("OpenCL");
-      return PtvFilterSoLoad.SVFilterSoLoadStatus.c(paramContext);
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PtvFilterSoLoad", 2, "load OpenCL so error");
-        }
-      }
-    }
+    return PtvFilterSoLoad.SVFilterSoLoadStatus.a(paramContext);
   }
   
   public static boolean a(Context paramContext, boolean paramBoolean)
@@ -213,10 +174,10 @@ public class PtvFilterSoLoad
     //   3: invokestatic 145	com/tencent/mobileqq/shortvideo/util/PtvFilterSoLoad:b	()Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: invokestatic 233	com/tencent/mobileqq/shortvideo/ShortVideoResDownload:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   10: invokestatic 212	com/tencent/mobileqq/shortvideo/ShortVideoResDownload:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   13: pop
     //   14: aload_1
-    //   15: invokestatic 147	com/tencent/mobileqq/shortvideo/util/PtvFilterSoLoad:b	(Landroid/content/Context;)Z
+    //   15: invokestatic 147	com/tencent/mobileqq/shortvideo/util/PtvFilterSoLoad:a	(Landroid/content/Context;)Z
     //   18: istore_2
     //   19: iload_2
     //   20: ifeq +10 -> 30
@@ -266,7 +227,7 @@ public class PtvFilterSoLoad
     if (!jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = true;
-      ThreadManager.post(new ahpr(), 5, null, false);
+      ThreadManager.post(new aidt(), 5, null, false);
     }
   }
   
@@ -307,7 +268,7 @@ public class PtvFilterSoLoad
   
   public static boolean b(Context paramContext)
   {
-    return PtvFilterSoLoad.SVFilterSoLoadStatus.a(paramContext);
+    return PtvFilterSoLoad.SVFilterSoLoadStatus.b(paramContext);
   }
   
   public static String c(Context paramContext)
@@ -323,14 +284,9 @@ public class PtvFilterSoLoad
   
   public static boolean c()
   {
-    boolean bool1 = PtvFilterSoLoad.SVFilterSoLoadStatus.b();
+    boolean bool1 = PtvFilterSoLoad.SVFilterSoLoadStatus.a();
     boolean bool2 = VideoEnvironment.e();
     return (bool1) && (bool2);
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    return PtvFilterSoLoad.SVFilterSoLoadStatus.b(paramContext);
   }
   
   public static String d(Context paramContext)

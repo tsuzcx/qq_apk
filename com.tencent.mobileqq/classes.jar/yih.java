@@ -1,34 +1,27 @@
 import android.view.View;
-import com.tencent.mobileqq.Doraemon.APICallback;
-import com.tencent.mobileqq.Doraemon.APIParam;
-import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter;
+import com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter.OnTroopListClickListener;
+import com.tencent.mobileqq.troop.data.NearbyTroops.CustomViewHolder;
 
-public final class yih
-  implements APICallback
+public class yih
+  implements View.OnClickListener
 {
-  public yih(View paramView, DoraemonAPIManager paramDoraemonAPIManager, long paramLong, int paramInt, String paramString) {}
+  public yih(ShowExternalTroopListAdapter paramShowExternalTroopListAdapter) {}
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login permision code");
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login failed," + paramString);
-  }
-  
-  public void a(APIParam paramAPIParam)
-  {
-    ApolloRender.getLocationDoLocation(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    paramView = paramView.getTag();
+    if (!(paramView instanceof NearbyTroops.CustomViewHolder)) {
+      return;
+    }
+    paramView = (NearbyTroops.CustomViewHolder)paramView;
+    this.a.a.a(paramView.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yih
  * JD-Core Version:    0.7.0.1
  */

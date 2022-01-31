@@ -1,69 +1,45 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.OnUseResListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.widget.ActionSheet;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.now.enter.widget.NowAnswerPreloadManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class agas
-  implements AdapterView.OnItemClickListener
+public final class agas
+  implements BusinessObserver
 {
-  public agas(ShareHelper paramShareHelper) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a().isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a().dismiss();
-    }
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131435302;
-      }
-    }
-    for (;;)
+    if (paramBoolean) {}
+    try
     {
-      if (paramInt != -1)
-      {
-        QRUtils.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435303;
-        }
-      }
-      else
-      {
-        if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-        {
-          QRUtils.a(1, 2131439062);
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(true);
-        switch ((int)paramLong)
-        {
-        default: 
-          return;
-        case 0: 
-          ThreadManager.postImmediately(new agat(this), null, true);
-          return;
-        case 1: 
-          ThreadManager.postImmediately(new agav(this), null, true);
-          return;
-        }
-        ThreadManager.postImmediately(new agax(this, paramLong), null, true);
+      QLog.i("NowAnswerPreloadManager", 3, "reqNowLiveStatusAndOpenRoom----SSO request Success");
+      Object localObject = paramBundle.getByteArray("data");
+      if (localObject == null) {
         return;
       }
-      paramInt = -1;
+      paramBundle = new WebSsoBody.WebSsoResponseBody();
+      paramBundle.mergeFrom((byte[])localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("data", paramBundle.data.get());
+      ((JSONObject)localObject).put("retcode", paramBundle.ret.get());
+      ((JSONObject)localObject).put("cret", 0);
+      NowAnswerPreloadManager.a((JSONObject)localObject);
+      return;
     }
+    catch (Exception paramBundle)
+    {
+      QLog.i("NowAnswerPreloadManager", 3, "reqNowLiveStatusAndOpenRoom----SSO request Exception e = " + paramBundle.getMessage());
+    }
+    QLog.i("NowAnswerPreloadManager", 3, "reqNowLiveStatusAndOpenRoom----SSO requset Error");
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agas
  * JD-Core Version:    0.7.0.1
  */

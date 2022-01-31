@@ -1,27 +1,15 @@
-import android.os.Handler;
 import android.os.Message;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
 
 public class anvx
-  extends Handler
+  implements Runnable
 {
-  public anvx(BeautyBar paramBeautyBar) {}
+  public anvx(HWEditImportVideoPlayer paramHWEditImportVideoPlayer, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
-      }
-    } while (BeautyBar.a(this.a) == null);
-    BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditImportVideoPlayer.a.a(Message.obtain(null, 8, 1, this.jdField_a_of_type_Int));
   }
 }
 

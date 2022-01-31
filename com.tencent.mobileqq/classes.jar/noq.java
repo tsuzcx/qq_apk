@@ -1,16 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnPreparedListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public class noq
-  implements IMediaPlayer.OnPreparedListener
+public final class noq
+  implements Runnable
 {
-  public noq(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnPreparedListener paramOnPreparedListener) {}
+  public noq(TVKPreloader.PreloadItem paramPreloadItem) {}
   
-  public void a_(IMediaPlayer paramIMediaPlayer)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnPreparedListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl);
+    Iterator localIterator = TVKPreloader.a().iterator();
+    while (localIterator.hasNext()) {
+      ((TVKPreloader.PreloadListener)localIterator.next()).a(this.a, new Throwable("TVK_ICacheMgr create failed !"));
+    }
   }
 }
 

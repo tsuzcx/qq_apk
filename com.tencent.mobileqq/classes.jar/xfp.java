@@ -1,28 +1,51 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
+import Wallet.DownloadChooseRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadBackControlConfig;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.observer.BusinessObserver;
 
 public class xfp
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public xfp(BannerManager paramBannerManager, long paramLong, String paramString) {}
+  public xfp(PreloadManager paramPreloadManager, List paramList, DownloadListener paramDownloadListener, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager) != null)
+    if (!paramBoolean) {}
+    do
     {
-      paramView = BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(1134028);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendMessage(paramView);
+      for (;;)
+      {
+        return;
+        if (paramInt == 3) {
+          try
+          {
+            paramBundle = (DownloadChooseRsp)paramBundle.getSerializable("rsp");
+            if (paramBundle != null) {
+              break label89;
+            }
+            if (QLog.isColorLevel())
+            {
+              QLog.d("PreloadManager", 2, "download choose rsp is null:" + paramBundle);
+              return;
+            }
+          }
+          catch (Throwable paramBundle) {}
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PreloadManager", 2, "downloadBackControlModules onReceive exception:" + paramBundle);
+    return;
+    label89:
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "download choose rsp:" + paramBundle.vecResInfo);
     }
-    paramView = new Intent();
-    paramView.setAction("cooperation.qqreader.aioback2reader");
-    paramView.putExtra("bookid", this.jdField_a_of_type_Long);
-    paramView.putExtra("chapterid", this.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("is_from_conversation", true);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendBroadcast(paramView);
+    PreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager).update(paramBundle.vecResInfo);
+    ThreadManager.post(new xfq(this), 5, null, true);
   }
 }
 

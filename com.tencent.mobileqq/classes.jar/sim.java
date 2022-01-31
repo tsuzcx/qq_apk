@@ -1,25 +1,34 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
-public class sim
-  implements View.OnClickListener
+class sim
+  implements Runnable
 {
-  public sim(EditActivity paramEditActivity) {}
+  sim(sil paramsil) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.d();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-    Intent localIntent = this.a.getIntent();
-    localIntent.putExtra("result", paramView);
-    if (this.a.jdField_a_of_type_Int == 103) {
-      localIntent.putExtra("hasChange", EditActivity.b(this.a));
+    if (this.a.a.j) {}
+    for (;;)
+    {
+      return;
+      SubAccountControll localSubAccountControll = (SubAccountControll)this.a.a.a.getManager(61);
+      if (localSubAccountControll != null)
+      {
+        ArrayList localArrayList = localSubAccountControll.a("sub.uin.all");
+        int j = localArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          Pair localPair = (Pair)localArrayList.get(i);
+          localSubAccountControll.a(this.a.a.a, this.a.a.a(), localPair, new sin(this, localSubAccountControll, localPair));
+          i += 1;
+        }
+      }
     }
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
   }
 }
 

@@ -1,10 +1,11 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
+import com.tencent.biz.qqstory.base.Producer.StoryProducer;
 import java.util.List;
 
 public class FeedCommentBackgroundSyncer
 {
-  private FeedCommentBackgroundSyncer.StoryProducer a;
+  private Producer.StoryProducer a;
   
   public void a()
   {
@@ -29,7 +30,7 @@ public class FeedCommentBackgroundSyncer
     try
     {
       if (this.a == null) {
-        this.a = new FeedCommentBackgroundSyncer.StoryProducer(new FeedCommentBackgroundSyncer.CommentPullConsumer());
+        this.a = new Producer.StoryProducer(new FeedCommentBackgroundSyncer.CommentPullConsumer());
       }
       this.a.a(paramList);
       return;

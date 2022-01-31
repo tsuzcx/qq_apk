@@ -20,10 +20,10 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.view.segment.SegmentView;
 import java.util.ArrayList;
-import nzb;
-import nzc;
-import nzd;
-import nze;
+import oat;
+import oau;
+import oav;
+import oaw;
 
 public class LocalVideoPushSegment
   extends SegmentView
@@ -44,7 +44,7 @@ public class LocalVideoPushSegment
     super(paramContext);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher = new LocalVideoPusher(paramContext);
     this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager = ((StoryConfigManager)SuperManager.a(10));
-    g();
+    h();
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -56,11 +56,11 @@ public class LocalVideoPushSegment
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentLocalVideoPushSegment$EventListener.i();
   }
   
-  private void g()
+  private void h()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(new nzd(this)).a(new nzc(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(new nze(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(new oav(this)).a(new oau(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(new oaw(this));
     long l = ((Long)this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("last_click_time", Long.valueOf(0L))).longValue();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(l);
   }
@@ -79,11 +79,11 @@ public class LocalVideoPushSegment
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder == null) {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = paramBaseViewHolder;
     }
-    paramBaseViewHolder = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371682);
-    paramViewGroup = (Button)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371683);
-    ThumbSlideShowView localThumbSlideShowView = (ThumbSlideShowView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371684);
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371681);
-    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371685);
+    paramBaseViewHolder = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371852);
+    paramViewGroup = (Button)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371853);
+    ThumbSlideShowView localThumbSlideShowView = (ThumbSlideShowView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371854);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371851);
+    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371855);
     if (this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Boolean = false;
@@ -102,7 +102,7 @@ public class LocalVideoPushSegment
       paramViewGroup.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder);
       localImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder);
       if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a == null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(new nzb(this));
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(new oat(this));
       }
       return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a();
       label243:
@@ -112,7 +112,7 @@ public class LocalVideoPushSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970713, paramViewGroup, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970761, paramViewGroup, false));
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
   }
   
@@ -194,7 +194,7 @@ public class LocalVideoPushSegment
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.c();
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder != null)
     {
-      ThumbSlideShowView localThumbSlideShowView = (ThumbSlideShowView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371684);
+      ThumbSlideShowView localThumbSlideShowView = (ThumbSlideShowView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371854);
       if (localThumbSlideShowView != null) {
         localThumbSlideShowView.a();
       }
@@ -207,7 +207,7 @@ public class LocalVideoPushSegment
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(false);
   }
   
-  protected void i()
+  protected void g()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(true);
   }

@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
-import com.tencent.mobileqq.lyric.widget.LyricViewScroll;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
 public class adpq
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adpq(LyricViewController paramLyricViewController) {}
+  public adpq(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    LyricViewController.a(this.a).a(this.a.a.a());
+    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpq
  * JD-Core Version:    0.7.0.1
  */

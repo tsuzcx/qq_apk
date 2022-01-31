@@ -1,19 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.message.BaseMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class zow
   implements Runnable
 {
-  public zow(BaseMessageManager paramBaseMessageManager, String paramString1, int paramInt1, int paramInt2, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, String paramString2) {}
+  public zow(TroopManager paramTroopManager, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.a("refreshMessageListHead uin = " + this.jdField_a_of_type_JavaLangString + ", type = " + this.jdField_a_of_type_Int + ", count = " + this.jdField_b_of_type_Int + ", context = " + this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext, ", timestamp = " + System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.a.post(new zox(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_JavaLangString, -1L);
   }
 }
 

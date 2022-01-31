@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.now.send;
 
-import aeha;
-import aehb;
-import aehc;
-import aehf;
+import aeug;
+import aeuh;
+import aeui;
+import aeul;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -81,9 +81,19 @@ public class SmallVideoCameraCaptureFragment
     this.jdField_a_of_type_JavaUtilHashSet.add(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLaunchEditPart);
   }
   
-  protected int a()
+  public void B_()
   {
-    return 2130970415;
+    super.B_();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+    while (localIterator.hasNext()) {
+      ((StoryCapturePart)localIterator.next()).b();
+    }
+    new NowVideoReporter().h("video_shoot").i("clk_shoot").d(jdField_a_of_type_JavaLangString).a(2).b(getActivity().app);
+  }
+  
+  public int a()
+  {
+    return 10002;
   }
   
   public Bundle a()
@@ -267,19 +277,9 @@ public class SmallVideoCameraCaptureFragment
     return this.i;
   }
   
-  public void ag_()
+  public void aj_()
   {
-    super.ag_();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
-    while (localIterator.hasNext()) {
-      ((StoryCapturePart)localIterator.next()).b();
-    }
-    new NowVideoReporter().h("video_shoot").i("clk_shoot").d(jdField_a_of_type_JavaLangString).a(2).b(getActivity().app);
-  }
-  
-  public void ah_()
-  {
-    super.ah_();
+    super.aj_();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
     while (localIterator.hasNext()) {
       ((StoryCapturePart)localIterator.next()).a();
@@ -287,9 +287,9 @@ public class SmallVideoCameraCaptureFragment
     new NowVideoReporter().h("video_shoot").i("press_shoot").d(jdField_a_of_type_JavaLangString).a(1).b(getActivity().app);
   }
   
-  public int b()
+  protected int b()
   {
-    return 10002;
+    return 2130970456;
   }
   
   public int c()
@@ -297,9 +297,9 @@ public class SmallVideoCameraCaptureFragment
     return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
   }
   
-  public void c()
+  public void d()
   {
-    super.c();
+    super.d();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -323,16 +323,16 @@ public class SmallVideoCameraCaptureFragment
       return;
       new NowVideoReporter().h("video_shoot").i("clk_left").d(jdField_a_of_type_JavaLangString).b(null);
       continue;
-      if (!this.c.isSelected()) {}
+      if (!this.d.isSelected()) {}
       for (int j = 1;; j = 0)
       {
         if (j == 0) {
-          break label113;
+          break label112;
         }
         NowSmallVideoRepotor.a("open_flash", 0, new String[0]);
         break;
       }
-      label113:
+      label112:
       NowSmallVideoRepotor.a("close_flash", 0, new String[0]);
       continue;
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a() == 2) {
@@ -369,15 +369,15 @@ public class SmallVideoCameraCaptureFragment
     paramViewGroup.setFocusable(true);
     paramViewGroup.setFocusableInTouchMode(true);
     paramViewGroup.requestFocus();
-    paramViewGroup.setOnKeyListener(new aehf(this, null));
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131368888);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout.setButtonListenerInterceptor(new aeha(this));
+    paramViewGroup.setOnKeyListener(new aeul(this, null));
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131368954);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout.setButtonListenerInterceptor(new aeug(this));
     ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams()).bottomMargin = ((int)UITools.a(getActivity(), 30.0F));
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.setSubtitleEnable(false);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.b();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131370475));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aehb(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131370616));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aeuh(this));
     if (jdField_a_of_type_JavaLangString.equals("2")) {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
@@ -423,11 +423,11 @@ public class SmallVideoCameraCaptureFragment
     while (((Iterator)localObject).hasNext()) {
       ((StoryCapturePart)((Iterator)localObject).next()).a(paramView, paramBundle);
     }
-    this.b = paramView.findViewById(2131370473);
+    this.b = paramView.findViewById(2131370614);
     this.b.setVisibility(4);
     paramView = new ShortVideo.CheckAuthReq();
     paramView.ver.set(0);
-    new CsTask(getActivity().getAppInterface()).a(24592).b(3).a(new aehc(this)).a(paramView);
+    new CsTask(getActivity().getAppInterface()).a(24592).b(3).a(new aeui(this)).a(paramView);
   }
 }
 

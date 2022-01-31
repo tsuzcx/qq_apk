@@ -48,7 +48,7 @@ public class ComponentContentSmall
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969562, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969569, this, true);
   }
   
   public void a() {}
@@ -60,7 +60,7 @@ public class ComponentContentSmall
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131366929));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131366971));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)

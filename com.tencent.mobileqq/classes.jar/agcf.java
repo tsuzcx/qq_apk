@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.profile.like.PraiseManager;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
 public class agcf
   implements Runnable
 {
-  public agcf(PraiseManager paramPraiseManager, int paramInt, boolean paramBoolean, String paramString) {}
+  public agcf(ScanOcrActivity paramScanOcrActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    ScanOcrActivity.a(this.a);
   }
 }
 

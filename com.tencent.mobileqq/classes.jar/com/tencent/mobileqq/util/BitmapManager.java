@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import ajlc;
+import ajzh;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -69,7 +69,7 @@ public class BitmapManager
       {
         localBitmapDecodeResult.jdField_a_of_type_Int = 0;
         paramResources = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-        localObject = new ajlc(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
+        localObject = new ajzh(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
         jdField_a_of_type_JavaUtilMap.put(paramResources, localObject);
       }
       return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
@@ -89,8 +89,8 @@ public class BitmapManager
     if (paramResources != null)
     {
       localObject = String.valueOf(paramResources.hashCode());
-      ajlc localajlc = new ajlc((String)localObject, paramResources, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localajlc);
+      ajzh localajzh = new ajzh((String)localObject, paramResources, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(localObject, localajzh);
     }
     return paramResources;
   }
@@ -112,8 +112,8 @@ public class BitmapManager
     if (paramString != null)
     {
       localObject = String.valueOf(paramString.hashCode());
-      ajlc localajlc = new ajlc((String)localObject, paramString, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localajlc);
+      ajzh localajzh = new ajzh((String)localObject, paramString, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(localObject, localajzh);
     }
     return paramString;
   }
@@ -156,7 +156,7 @@ public class BitmapManager
       {
         localBitmapDecodeResult.jdField_a_of_type_Int = 0;
         paramArrayOfByte = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-        localObject = new ajlc(paramArrayOfByte, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
+        localObject = new ajzh(paramArrayOfByte, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
         jdField_a_of_type_JavaUtilMap.put(paramArrayOfByte, localObject);
       }
       return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
@@ -206,11 +206,11 @@ public class BitmapManager
   {
     for (;;)
     {
-      ajlc localajlc = (ajlc)jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-      if (localajlc == null) {
+      ajzh localajzh = (ajzh)jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+      if (localajzh == null) {
         break;
       }
-      jdField_a_of_type_JavaUtilMap.remove(ajlc.a(localajlc));
+      jdField_a_of_type_JavaUtilMap.remove(ajzh.a(localajzh));
     }
   }
   
@@ -219,17 +219,17 @@ public class BitmapManager
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 8
+    //   1: astore 9
     //   3: aconst_null
-    //   4: astore 10
+    //   4: astore 8
     //   6: aconst_null
-    //   7: astore 7
+    //   7: astore 5
     //   9: aconst_null
-    //   10: astore 5
+    //   10: astore 7
     //   12: aconst_null
     //   13: astore 6
     //   15: aconst_null
-    //   16: astore 9
+    //   16: astore 10
     //   18: invokestatic 52	com/tencent/mobileqq/util/BitmapManager:a	()V
     //   21: new 267	java/io/File
     //   24: dup
@@ -264,22 +264,22 @@ public class BitmapManager
     //   83: invokespecial 293	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   86: invokespecial 296	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   89: astore 4
-    //   91: aload 7
-    //   93: astore 10
-    //   95: aload 5
-    //   97: astore 8
+    //   91: aload 5
+    //   93: astore 8
+    //   95: aload 7
+    //   97: astore 9
     //   99: aload 6
-    //   101: astore 9
+    //   101: astore 10
     //   103: aload 11
     //   105: invokevirtual 299	java/io/File:length	()J
     //   108: l2i
     //   109: istore_3
-    //   110: aload 7
-    //   112: astore 10
-    //   114: aload 5
-    //   116: astore 8
+    //   110: aload 5
+    //   112: astore 8
+    //   114: aload 7
+    //   116: astore 9
     //   118: aload 6
-    //   120: astore 9
+    //   120: astore 10
     //   122: invokestatic 282	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   125: iload_3
     //   126: invokevirtual 303	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
@@ -289,11 +289,11 @@ public class BitmapManager
     //   135: aload 4
     //   137: astore 6
     //   139: aload 7
-    //   141: astore 10
+    //   141: astore 8
     //   143: aload 7
-    //   145: astore 8
+    //   145: astore 9
     //   147: aload 7
-    //   149: astore 9
+    //   149: astore 10
     //   151: iload_3
     //   152: aload 4
     //   154: aload 7
@@ -304,11 +304,11 @@ public class BitmapManager
     //   166: aload 4
     //   168: astore 6
     //   170: aload 7
-    //   172: astore 10
+    //   172: astore 8
     //   174: aload 7
-    //   176: astore 8
+    //   176: astore 9
     //   178: aload 7
-    //   180: astore 9
+    //   180: astore 10
     //   182: aload_2
     //   183: iconst_3
     //   184: putfield 106	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
@@ -327,11 +327,11 @@ public class BitmapManager
     //   215: aload 4
     //   217: astore 6
     //   219: aload 7
-    //   221: astore 10
+    //   221: astore 8
     //   223: aload 7
-    //   225: astore 8
+    //   225: astore 9
     //   227: aload 7
-    //   229: astore 9
+    //   229: astore 10
     //   231: aload_2
     //   232: aload 7
     //   234: iconst_0
@@ -355,13 +355,13 @@ public class BitmapManager
     //   275: aload_2
     //   276: iconst_0
     //   277: putfield 106	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
-    //   280: new 116	ajlc
+    //   280: new 116	ajzh
     //   283: dup
     //   284: aload_0
     //   285: aload_2
     //   286: getfield 104	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   289: getstatic 27	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
-    //   292: invokespecial 119	ajlc:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    //   292: invokespecial 119	ajzh:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
     //   295: astore_1
     //   296: getstatic 22	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   299: aload_0
@@ -372,7 +372,7 @@ public class BitmapManager
     //   308: astore_1
     //   309: aconst_null
     //   310: astore 4
-    //   312: aload 9
+    //   312: aload 10
     //   314: astore 5
     //   316: aload 4
     //   318: astore 6
@@ -383,16 +383,16 @@ public class BitmapManager
     //   327: ifnull +8 -> 335
     //   330: aload 4
     //   332: invokevirtual 312	java/io/InputStream:close	()V
-    //   335: aload 9
+    //   335: aload 10
     //   337: ifnull -69 -> 268
     //   340: invokestatic 282	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   343: aload 9
+    //   343: aload 10
     //   345: invokevirtual 286	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   348: goto -80 -> 268
     //   351: astore_1
     //   352: aconst_null
     //   353: astore 4
-    //   355: aload 8
+    //   355: aload 9
     //   357: astore 5
     //   359: aload 4
     //   361: astore 6
@@ -403,16 +403,16 @@ public class BitmapManager
     //   370: ifnull +8 -> 378
     //   373: aload 4
     //   375: invokevirtual 312	java/io/InputStream:close	()V
-    //   378: aload 8
+    //   378: aload 9
     //   380: ifnull -112 -> 268
     //   383: invokestatic 282	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   386: aload 8
+    //   386: aload 9
     //   388: invokevirtual 286	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   391: goto -123 -> 268
     //   394: astore_1
     //   395: aconst_null
     //   396: astore 4
-    //   398: aload 10
+    //   398: aload 8
     //   400: astore 5
     //   402: aload 4
     //   404: astore 6
@@ -423,10 +423,10 @@ public class BitmapManager
     //   413: ifnull +8 -> 421
     //   416: aload 4
     //   418: invokevirtual 312	java/io/InputStream:close	()V
-    //   421: aload 10
+    //   421: aload 8
     //   423: ifnull -155 -> 268
     //   426: invokestatic 282	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   429: aload 10
+    //   429: aload 8
     //   431: invokevirtual 286	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   434: goto -166 -> 268
     //   437: astore_0
@@ -484,12 +484,12 @@ public class BitmapManager
     //   0	522	2	paramBitmapDecodeResult	BitmapManager.BitmapDecodeResult
     //   109	51	3	i	int
     //   89	404	4	localBufferedInputStream	java.io.BufferedInputStream
-    //   10	495	5	localObject1	Object
+    //   7	498	5	localObject1	Object
     //   13	489	6	localObject2	Object
-    //   7	257	7	arrayOfByte	byte[]
-    //   1	386	8	localObject3	Object
-    //   16	328	9	localObject4	Object
-    //   4	426	10	localObject5	Object
+    //   10	254	7	arrayOfByte	byte[]
+    //   4	426	8	localObject3	Object
+    //   1	386	9	localObject4	Object
+    //   16	328	10	localObject5	Object
     //   29	75	11	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
@@ -552,8 +552,8 @@ public class BitmapManager
       {
         localBitmapDecodeResult.jdField_a_of_type_Int = 0;
         paramResources = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-        ajlc localajlc = new ajlc(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
-        jdField_a_of_type_JavaUtilMap.put(paramResources, localajlc);
+        ajzh localajzh = new ajzh(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
+        jdField_a_of_type_JavaUtilMap.put(paramResources, localajzh);
       }
       return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
     }

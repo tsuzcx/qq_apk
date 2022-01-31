@@ -1,17 +1,19 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.BubbleAppInPushNotification;
 
 public class mlh
-  implements MessageQueue.IdleHandler
+  implements View.OnClickListener
 {
-  public mlh(FastWebActivity paramFastWebActivity) {}
+  public mlh(BubbleAppInPushNotification paramBubbleAppInPushNotification) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    FastWebRequestUtil.a(FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).c), FastWebActivity.a(this.a).k, FastWebActivity.a(this.a).c(), FastWebActivity.a(this.a));
-    return false;
+    AppInPushNotification.a(8);
+    this.a.a.postDelayed(new mli(this), 200L);
+    this.a.a(true, false);
   }
 }
 

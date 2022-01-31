@@ -23,9 +23,9 @@ import com.tencent.av.business.manager.EffectOperateManager;
 import com.tencent.av.business.manager.filter.EffectFilterTools;
 import com.tencent.av.business.manager.filter.FilterItem;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import kdl;
-import kdm;
-import kdn;
+import kcw;
+import kcx;
+import kcy;
 
 public class EffectFilterPanel
   extends RelativeLayout
@@ -36,8 +36,8 @@ public class EffectFilterPanel
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private EffectFilterTools jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools;
   private EffectFilterTextPager jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager;
-  kdl jdField_a_of_type_Kdl;
-  private kdm jdField_a_of_type_Kdm;
+  kcw jdField_a_of_type_Kcw;
+  private kcx jdField_a_of_type_Kcx;
   private boolean jdField_a_of_type_Boolean;
   
   public EffectFilterPanel(Context paramContext, VideoAppInterface paramVideoAppInterface)
@@ -45,7 +45,7 @@ public class EffectFilterPanel
     super(paramContext);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_Kdm = new kdm(this);
+    this.jdField_a_of_type_Kcx = new kcx(this);
     this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools = ((EffectFilterTools)paramVideoAppInterface.a(1));
     this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools.a(this);
     a(paramContext, paramVideoAppInterface);
@@ -55,15 +55,15 @@ public class EffectFilterPanel
   {
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(450L);
-    localAlphaAnimation.setAnimationListener(new kdn(this, this.jdField_a_of_type_AndroidWidgetImageView));
+    localAlphaAnimation.setAnimationListener(new kcy(this, this.jdField_a_of_type_AndroidWidgetImageView));
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAlphaAnimation);
   }
   
   void a(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    paramContext = (ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130969366, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131366266));
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager = ((EffectFilterTextPager)paramContext.findViewById(2131366265));
+    paramContext = (ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130969367, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131366293));
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager = ((EffectFilterTextPager)paramContext.findViewById(2131366292));
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setApp(paramVideoAppInterface);
     setOnFilterListenner(null);
     paramContext = (FilterItem)this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools.a();
@@ -117,7 +117,7 @@ public class EffectFilterPanel
       i = 11;
       label165:
       ((RelativeLayout.LayoutParams)localObject).addRule(i);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, -(int)getContext().getResources().getDimension(2131560054), 0, 0);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, -(int)getContext().getResources().getDimension(2131560072), 0, 0);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(0.9F);
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(0.9F);
@@ -138,7 +138,7 @@ public class EffectFilterPanel
       ((RelativeLayout.LayoutParams)localObject).height = -1;
       this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)getContext().getResources().getDimension(2131560053), 0, 0);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)getContext().getResources().getDimension(2131560071), 0, 0);
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
@@ -159,14 +159,14 @@ public class EffectFilterPanel
   
   public void setOnFilterListenner(EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
   {
-    if (this.jdField_a_of_type_Kdl == null) {
-      this.jdField_a_of_type_Kdl = new kdl(this, paramOnEffectFilterChangeListener);
+    if (this.jdField_a_of_type_Kcw == null) {
+      this.jdField_a_of_type_Kcw = new kcw(this, paramOnEffectFilterChangeListener);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setOnFilterListenner(this.jdField_a_of_type_Kdl);
+      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setOnFilterListenner(this.jdField_a_of_type_Kcw);
       return;
-      this.jdField_a_of_type_Kdl.a(paramOnEffectFilterChangeListener);
+      this.jdField_a_of_type_Kcw.a(paramOnEffectFilterChangeListener);
     }
   }
   
@@ -182,7 +182,7 @@ public class EffectFilterPanel
       {
         localSessionInfo.ay = false;
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Kdm, 4000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Kcx, 4000L);
       }
       super.setVisibility(paramInt);
       return;

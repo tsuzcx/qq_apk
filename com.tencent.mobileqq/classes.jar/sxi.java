@@ -1,48 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import java.lang.ref.WeakReference;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import java.util.List;
 
-public class sxi
+class sxi
   implements Runnable
 {
-  private WeakReference a;
-  private WeakReference b;
-  
-  public sxi(Activity paramActivity, FormSimpleItem paramFormSimpleItem)
-  {
-    this.a = new WeakReference(paramFormSimpleItem);
-    this.b = new WeakReference(paramActivity);
-  }
+  sxi(sxh paramsxh, List paramList) {}
   
   public void run()
   {
-    boolean bool1 = JumpQqPimSecureUtil.a(MobileQQ.sMobileQQ);
-    boolean bool2 = JumpQqPimSecureUtil.b(MobileQQ.sMobileQQ);
-    if (!bool1)
+    if (Leba.a(this.jdField_a_of_type_Sxh.a) != null)
     {
-      i = LoginInfoActivity.a();
-      if (i == LoginInfoActivity.c()) {
-        break label85;
+      Leba.a(this.jdField_a_of_type_Sxh.a).clear();
+      Leba.a(this.jdField_a_of_type_Sxh.a).addAll(this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Sxh.a.a != null) {
+        this.jdField_a_of_type_Sxh.a.a.notifyDataSetChanged();
       }
-    }
-    label85:
-    for (int i = 2131436629;; i = 2131436630)
-    {
-      Activity localActivity = (Activity)this.b.get();
-      if (localActivity != null) {
-        localActivity.runOnUiThread(new sxk(i, this.a));
-      }
-      return;
-      if (!bool2)
-      {
-        i = LoginInfoActivity.b();
-        break;
-      }
-      i = LoginInfoActivity.c();
-      break;
+      Leba.c(this.jdField_a_of_type_Sxh.a);
     }
   }
 }

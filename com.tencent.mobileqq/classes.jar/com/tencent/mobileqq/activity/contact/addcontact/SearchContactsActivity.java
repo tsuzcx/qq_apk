@@ -18,9 +18,9 @@ import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebView;
-import wfs;
-import wft;
-import wfu;
+import wix;
+import wiy;
+import wiz;
 
 public class SearchContactsActivity
   extends SearchBaseActivity
@@ -29,7 +29,7 @@ public class SearchContactsActivity
   
   public SearchContactsActivity()
   {
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new wfu(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new wiz(this);
   }
   
   private void a(String paramString)
@@ -79,10 +79,10 @@ public class SearchContactsActivity
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new wfs(this, bool));
-      String str2 = getResources().getString(2131432998);
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new wix(this, bool));
+      String str2 = getResources().getString(2131433015);
       this.jdField_a_of_type_AndroidWidgetButton.setText(str2);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new wft(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new wiy(this));
       if (AppSetting.b)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(str2);

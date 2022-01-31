@@ -1,85 +1,39 @@
-import com.tencent.av.gameplay.QAVGamePlaySoConfigInfo;
-import com.tencent.av.gameplay.QavGPDownloader;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteActivity;
 
-class jij
-  implements INetEngine.INetEngineListener
+public class jij
+  implements DialogInterface.OnClickListener
 {
-  jij(jii paramjii, String paramString, QAVGamePlaySoConfigInfo paramQAVGamePlaySoConfigInfo, int paramInt) {}
+  int jdField_a_of_type_Int;
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public jij(GaInviteActivity paramGaInviteActivity, int paramInt)
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
-    }
-    for (;;)
-    {
-      QavGPDownloader.a(i / this.jdField_a_of_type_Jii.jdField_a_of_type_Int + this.jdField_a_of_type_Jii.b);
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(NetResp paramNetResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
-    if (this.jdField_a_of_type_Jii.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
-      this.jdField_a_of_type_Jii.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QavGPDownloadManager", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.jdField_a_of_type_JavaLangString, Integer.valueOf(paramNetResp.jdField_a_of_type_Int), Integer.valueOf(paramNetResp.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    int i;
-    if (paramNetResp.jdField_a_of_type_Int == 0)
+    switch (this.jdField_a_of_type_Int)
     {
-      paramNetResp = new File(localHttpNetReq.c);
-      if (paramNetResp.exists())
-      {
-        try
-        {
-          String str = paramNetResp.getParent();
-          FileUtils.a(localHttpNetReq.c, str, false);
-          QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载成功了. path[%s]", new Object[] { str }));
-          QavGPDownloader.a(this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo);
-          i = 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
-          }
-          QavGPDownloader.a(-1);
-          return;
-        }
-        paramNetResp.delete();
-      }
     }
     for (;;)
     {
-      if (i != 0)
-      {
-        QavGPDownloader.a(100 / this.jdField_a_of_type_Jii.jdField_a_of_type_Int + this.jdField_a_of_type_Jii.b);
-        paramNetResp = this.jdField_a_of_type_Jii;
-        paramNetResp.b += 100 / this.jdField_a_of_type_Jii.jdField_a_of_type_Int;
-        if (!this.jdField_a_of_type_Jii.a(this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo, this.jdField_a_of_type_Int - 1)) {
-          this.jdField_a_of_type_Jii.jdField_a_of_type_Boolean = false;
-        }
-        return;
+      paramDialogInterface.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.h(true);
       }
-      i = 0;
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
+        break;
+        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
+          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.r();
+        }
+      }
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
     }
   }
 }

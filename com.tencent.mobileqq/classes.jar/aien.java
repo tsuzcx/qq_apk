@@ -1,19 +1,21 @@
-import android.widget.Button;
-import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadOptimizer;
+import com.tencent.mobileqq.startup.director.StartupDirector;
 
 public class aien
   implements Runnable
 {
-  public aien(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
+  public aien(StartupDirector paramStartupDirector) {}
   
   public void run()
   {
-    this.a.e.setVisibility(8);
+    ThreadManager.initDPC();
+    ThreadOptimizer.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aien
  * JD-Core Version:    0.7.0.1
  */

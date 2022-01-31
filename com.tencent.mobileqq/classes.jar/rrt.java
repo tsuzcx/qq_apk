@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.ChatActivityFacade.SendMsgParams;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class rrt
+class rrt
   implements Runnable
 {
-  public rrt(ChatActivityFacade.SendMsgParams paramSendMsgParams, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  rrt(rrs paramrrs) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityFacade$SendMsgParams.a) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().f(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    if (this.a.a.h != null)
+    {
+      this.a.a.h.setText(this.a.a.a.getResources().getString(2131433405));
+      this.a.a.h.setTag(Integer.valueOf(1));
     }
   }
 }

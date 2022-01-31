@@ -1,45 +1,15 @@
 import android.os.Bundle;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.buscard.BuscardPluginRemoteCommand;
 
 public class amjb
-  implements BusinessObserver
+  implements Runnable
 {
-  public amjb(QZoneShareActivity paramQZoneShareActivity) {}
+  public amjb(BuscardPluginRemoteCommand paramBuscardPluginRemoteCommand, Bundle paramBundle1, Bundle paramBundle2, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    synchronized (QZoneShareActivity.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.h = false;
-      if (paramBoolean) {}
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-          localGetAppinfoResponse.mergeFrom(paramBundle);
-          this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = localGetAppinfoResponse;
-          if (QLog.isColorLevel()) {
-            QLog.d("QZoneShare", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QZoneShare", 2, paramBundle.getMessage());
-          }
-        }
-      }
-      QZoneShareActivity.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
+    BuscardPluginRemoteCommand.a(this.jdField_a_of_type_CooperationBuscardBuscardPluginRemoteCommand, this.jdField_a_of_type_AndroidOsBundle, this.b, this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener);
   }
 }
 

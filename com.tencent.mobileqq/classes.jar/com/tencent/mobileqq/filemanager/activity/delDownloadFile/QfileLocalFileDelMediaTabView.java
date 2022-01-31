@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.delDownloadFile;
 
-import acgm;
+import acqj;
 import android.content.Context;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
@@ -34,7 +34,7 @@ public class QfileLocalFileDelMediaTabView
   protected void a()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this);
-    this.jdField_a_of_type_JavaLangRunnable = new acgm(this);
+    this.jdField_a_of_type_JavaLangRunnable = new acqj(this);
     ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }

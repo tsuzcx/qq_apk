@@ -22,8 +22,8 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import java.io.File;
-import vnk;
-import vns;
+import vqm;
+import vqu;
 
 public class ArkDebugChatPie
   extends BaseChatPie
@@ -103,13 +103,13 @@ public class ArkDebugChatPie
   {
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow().addFlags(128);
     ArkAppCenter.a(true);
-    ArkDispatchTask.getInstance().post(new vnk(this));
+    ArkDispatchTask.getInstance().post(new vqm(this));
     return super.a(paramBoolean);
   }
   
   protected void z()
   {
-    ArkDispatchTask.getInstance().post(new vns(this));
+    ArkDispatchTask.getInstance().post(new vqu(this));
     super.z();
   }
 }

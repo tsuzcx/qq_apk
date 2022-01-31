@@ -1,54 +1,39 @@
-import dov.com.qq.im.capture.text.MidNightTextItem;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.networkedmodule.QzoneModuleConfigManager;
+import cooperation.qzone.patch.QZonePatchRequest;
+import cooperation.qzone.plugin.PluginIntent.OnResultListner;
+import cooperation.qzone.plugin.QZonePluginUpdater;
+import cooperation.qzone.plugin.QZonePluginUpdater.OnUpdateListner;
 
 public class amyb
+  implements PluginIntent.OnResultListner
 {
-  public int a;
-  public String a;
-  public int b = 0;
+  public amyb(QZonePluginUpdater paramQZonePluginUpdater) {}
   
-  private amyb(MidNightTextItem paramMidNightTextItem)
+  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
+      paramIntent = QZonePatchRequest.a(paramFromServiceMsg.getWupBuffer());
+      QZonePluginUpdater.a(this.a, paramIntent);
+      QZonePluginUpdater.a(this.a, paramIntent, null);
+      QzoneModuleConfigManager.a().a(paramIntent);
+      if (this.a.a != null) {
+        this.a.a.a(true);
+      }
+    }
     do
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (amyb)paramObject;
-      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
-        break;
-      }
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break label74;
-      }
-    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
-    label74:
-    while (paramObject.jdField_a_of_type_JavaLangString != null) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    int j = this.jdField_a_of_type_Int;
-    int k = this.b;
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
-    }
+      return;
+      QZonePluginUpdater.a(this.a, null, null);
+    } while (this.a.a == null);
+    this.a.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyb
  * JD-Core Version:    0.7.0.1
  */

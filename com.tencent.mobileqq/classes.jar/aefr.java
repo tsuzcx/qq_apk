@@ -1,31 +1,32 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.mobileqq.nearby.now.location.adapter.LocationListAdapter;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.now.widget.ItemClickHelper;
-import com.tencent.util.LogUtil;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.mobileqq.medalwall.ParticleSystem;
 
 public class aefr
-  extends ItemClickHelper
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aefr(SelectLocationFragment paramSelectLocationFragment) {}
+  public aefr(MedalGuideView paramMedalGuideView) {}
   
-  public void a(int paramInt, View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    LogUtil.d("SelectLocationFragment", "onItemClick: " + paramInt);
-    SelectLocationFragment.a(this.a, paramInt);
-    SelectLocationFragment.b(this.a, (LocationInfo)SelectLocationFragment.a(this.a).a().get(paramInt));
-    new NowVideoReporter().h("video_public").i("change_poi").d(SmallVideoCameraCaptureFragment.a).a(SelectLocationFragment.a(this.a)).b(this.a.getActivity().app);
-    LogUtil.d("SelectLocationFragment", "onItemClick: " + SelectLocationFragment.b(this.a).toString());
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    MedalGuideView.a(this.a, f);
+    if (this.a.a != null)
+    {
+      this.a.a.a(f);
+      if (f <= 0.05F) {
+        this.a.a.b();
+      }
+    }
+    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefr
  * JD-Core Version:    0.7.0.1
  */

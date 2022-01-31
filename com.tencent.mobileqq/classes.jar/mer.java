@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView.ScrollEventCallback;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
 
-public class mer
-  implements ReadInJoyBaseListView.ScrollEventCallback
+class mer
+  implements Runnable
 {
-  public mer(VideoUIManager paramVideoUIManager) {}
+  mer(meq parammeq) {}
   
-  public void a()
+  public void run()
   {
-    this.a.b();
+    this.a.a.b(6);
   }
 }
 

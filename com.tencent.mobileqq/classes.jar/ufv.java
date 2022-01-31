@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class ufv
-  extends ActivateFriendsObserver
+  implements DialogInterface.OnClickListener
 {
-  public ufv(ActivateFriendActivity paramActivateFriendActivity) {}
+  public ufv(UpgradeActivity paramUpgradeActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
-    }
-    ActivateFriendActivity.b(this.a);
+    UpgradeActivity.b(this.a);
+    this.a.finish();
   }
 }
 

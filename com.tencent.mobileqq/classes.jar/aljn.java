@@ -1,29 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeMediaPlayer;
-import com.tencent.sharp.jni.TraeMediaPlayer.OnCompletionListener;
-import java.util.TimerTask;
+import com.tencent.open.wadl.WLog;
+import com.tencent.open.wadl.WadlJsBridge;
+import com.tencent.tmassistantbase.util.GlobalUtil;
 
 public class aljn
-  extends TimerTask
+  implements Runnable
 {
-  public aljn(TraeMediaPlayer paramTraeMediaPlayer, long paramLong) {}
+  public aljn(WadlJsBridge paramWadlJsBridge) {}
   
   public void run()
   {
-    if (TraeMediaPlayer.a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer) != null)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeMediaPlay", 1, "playRing, onCompletion, seq[" + this.jdField_a_of_type_Long + "]");
-      }
-      if (TraeMediaPlayer.a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer) != null) {
-        TraeMediaPlayer.a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer).a();
-      }
+      WLog.b("WadlJsBridge", "initYYBSDKService start restoreTaskFromYYB=false");
+      GlobalUtil.getInstance().setContext(WadlJsBridge.a(this.a));
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      return;
+    }
+    finally
+    {
+      WLog.b("WadlJsBridge", "initYYBSDKService end");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljn
  * JD-Core Version:    0.7.0.1
  */

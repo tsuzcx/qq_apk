@@ -1,15 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.FoodAloneTextItem;
 
 public class anob
-  implements ValueAnimator.AnimatorUpdateListener
+  implements annx
 {
-  public anob(HintDrawable paramHintDrawable) {}
+  public anob(FoodAloneTextItem paramFoodAloneTextItem) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    this.a.invalidateSelf();
+    if (paramInt == 0) {
+      return TroopFileUtils.b(paramString);
+    }
+    return "";
   }
 }
 

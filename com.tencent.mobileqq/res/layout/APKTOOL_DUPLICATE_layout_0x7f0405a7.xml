@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b06" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:padding="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b3e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b3f" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b40" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02040a" android:layout_width="100.0dip" android:layout_height="100.0dip" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1bc6" />
-        <TextView android:textSize="16.0dip" android:textColor="#ffa6a6a6" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b41" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1e49" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1b40" />
-    </LinearLayout>
-    <RelativeLayout android:orientation="horizontal" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b42" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021012" android:layout_width="110.0dip" android:layout_height="36.0dip" android:layout_centerHorizontal="true">
-            <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b43" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminateDrawable="@drawable/common_loading5" />
-            <TextView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b44" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1e48" />
-        </LinearLayout>
-    </RelativeLayout>
-    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b45" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021012" android:layout_width="70.0dip" android:layout_height="30.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_alignParentTop="true" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b46" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0400fe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b65" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020806" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b66" android:paddingRight="4.0dip" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020805" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
 </RelativeLayout>

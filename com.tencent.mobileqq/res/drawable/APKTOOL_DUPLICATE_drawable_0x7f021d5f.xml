@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#7f000000" />
-    <corners android:radius="5.0dip" />
-</shape>
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_0" />
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_1" />
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_2" />
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_3" />
+    <item android:duration="200" android:drawable="@drawable/skin_qzone_publish_box_level_4" />
+</animation-list>

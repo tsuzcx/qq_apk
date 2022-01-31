@@ -1,17 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.ViewHolder;
+import java.util.ArrayList;
 
 class mhz
-  implements SceneBuilder.OnBuiltListener
+  implements Animation.AnimationListener
 {
-  mhz(mhy parammhy) {}
+  mhz(mhy parammhy, ArrayList paramArrayList, Object paramObject) {}
   
-  public void a(Layer paramLayer)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.a.post(new mia(this, paramLayer));
+    this.jdField_a_of_type_Mhy.a.f.post(new mia(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

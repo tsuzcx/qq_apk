@@ -41,10 +41,10 @@ import mqq.app.NewIntent;
 import mqq.manager.TicketManager;
 import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
-import yls;
-import ylt;
-import ylu;
-import ylv;
+import yoy;
+import yoz;
+import ypa;
+import ypb;
 
 public class CmGameStartChecker
   implements BusinessObserver
@@ -55,7 +55,7 @@ public class CmGameStartChecker
   
   public CmGameStartChecker(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ylv(this);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ypb(this);
     this.b = new WeakReference(paramAppInterface);
   }
   
@@ -80,7 +80,7 @@ public class CmGameStartChecker
     if (QLog.isColorLevel()) {
       QLog.d("apollo_cmGame_CmGameStartChecker", 2, new Object[] { "startGame startCheckParam:", paramStartCheckParam });
     }
-    ThreadManager.post(new yls(this, paramStartCheckParam), 5, null, true);
+    ThreadManager.post(new yoy(this, paramStartCheckParam), 5, null, true);
   }
   
   public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam, OnGameStartCheckListener paramOnGameStartCheckListener)
@@ -300,7 +300,7 @@ public class CmGameStartChecker
         if ((!paramBoolean) || (!localSTCheckGameRsp.patchContent.has()) || (paramBundle.length <= 0)) {
           break;
         }
-        ThreadManager.post(new ylt(this, paramStartCheckParam, paramBundle), 5, null, true);
+        ThreadManager.post(new yoz(this, paramStartCheckParam, paramBundle), 5, null, true);
         return;
         if (QLog.isColorLevel()) {
           QLog.d("apollo_cmGame_CmGameStartChecker", 2, new Object[] { "ssoCmdRule, no ssoCmdRule for game ", Integer.valueOf(j) });
@@ -316,7 +316,7 @@ public class CmGameStartChecker
       a(paramStartCheckParam, paramBundle);
       return;
       label946:
-      paramBundle = new ylu(this, paramBoolean, (String)localObject, str1, str2);
+      paramBundle = new ypa(this, paramBoolean, (String)localObject, str1, str2);
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
         localObject = (OnGameStartCheckListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
@@ -388,7 +388,7 @@ public class CmGameStartChecker
           localObject = new WebSSOAgent.UniSsoServerReqComm();
           ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
           ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-          ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.0");
+          ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
           WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
           localUniSsoServerReq.comm.set((MessageMicro)localObject);
           JSONObject localJSONObject = new JSONObject();

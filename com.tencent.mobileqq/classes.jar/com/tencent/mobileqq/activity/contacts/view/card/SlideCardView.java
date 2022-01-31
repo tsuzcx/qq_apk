@@ -29,13 +29,13 @@ import com.tencent.mobileqq.activity.contacts.base.InterceptListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import wlk;
+import wop;
 
 @TargetApi(14)
 public class SlideCardView
   extends LinearLayout
 {
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new wlk();
+  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new wop();
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -308,27 +308,29 @@ public class SlideCardView
     f4 = i2;
     i2 = (int)((i3 * (paramInt - 1) - i2) * paramFloat + f4);
     f1 += (1.0F - f2 * f3 - f1) * paramFloat;
-    paramView = (View)this.jdField_a_of_type_JavaUtilList.get(i1 + paramInt);
-    paramView.setScaleX(f1);
-    paramView.setScaleY(f1);
-    paramView.offsetTopAndBottom(i2 - paramView.getTop() + this.jdField_b_of_type_Int);
-    View localView;
-    if ((paramInt == 1) && ((paramView instanceof ViewGroup)))
+    View localView1 = (View)this.jdField_a_of_type_JavaUtilList.get(i1 + paramInt);
+    localView1.setScaleX(f1);
+    localView1.setScaleY(f1);
+    localView1.offsetTopAndBottom(i2 - localView1.getTop() + this.jdField_b_of_type_Int);
+    View localView2;
+    if ((paramInt == 1) && ((localView1 instanceof ViewGroup)))
     {
-      localView = ((ViewGroup)paramView).findViewById(2131363823);
+      localView2 = ((ViewGroup)localView1).findViewById(2131363846);
       if (!this.jdField_i_of_type_Boolean) {
-        break label219;
+        break label237;
       }
-      localView.setAlpha(1.0F);
+      paramView = localView1;
+      if (localView2 != null) {
+        localView2.setAlpha(1.0F);
+      }
     }
-    for (;;)
+    label237:
+    for (paramView = localView1;; paramView = localView2)
     {
       if (paramView != null) {
         paramView.setAlpha(paramFloat);
       }
       return;
-      label219:
-      paramView = localView;
     }
   }
   
@@ -503,7 +505,7 @@ public class SlideCardView
     if ((paramView instanceof ViewGroup))
     {
       paramView = (ViewGroup)paramView;
-      localView = paramView.findViewById(2131363823);
+      localView = paramView.findViewById(2131363846);
       paramView.setAlpha(1.0F);
       if (localView != null)
       {
@@ -614,7 +616,7 @@ public class SlideCardView
       bool1 = bool2;
       if (localView.getVisibility() == 0)
       {
-        localView = localView.findViewById(2131363830);
+        localView = localView.findViewById(2131363853);
         bool1 = bool2;
         if (localView != null)
         {

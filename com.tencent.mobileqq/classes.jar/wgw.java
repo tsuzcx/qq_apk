@@ -1,58 +1,47 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Message;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class wgw
-  extends DiscussionObserver
+  implements Runnable
 {
-  public wgw(SystemMsgListView paramSystemMsgListView) {}
+  private int jdField_a_of_type_Int;
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  private wgw(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  
+  public void a(int paramInt)
   {
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).a(paramLong);
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (paramBoolean) {
-      if (!(paramObject instanceof ArrayList)) {
-        break label76;
-      }
-    }
-    label76:
-    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    long l1;
+    Message localMessage;
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.isDetached())
     {
-      if ((paramObject != null) && (paramObject.size() > 0))
+      l1 = System.currentTimeMillis();
+      List localList = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a();
+      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(0, localList);
+      localMessage.arg1 = this.jdField_a_of_type_Int;
+      if ((localList != null) && (!localList.isEmpty())) {
+        break label83;
+      }
+      localMessage.arg2 = 11;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+      return;
+      label83:
+      localMessage.arg2 = 10;
+      if (QLog.isColorLevel())
       {
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
-        {
-          Object localObject = paramObject.next();
-          if ((localObject instanceof Long)) {
-            SystemMsgListView.a(this.a).a(((Long)localObject).longValue());
-          }
-        }
+        long l2 = System.currentTimeMillis();
+        QLog.d(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "More messages loaded. Costs " + (l2 - l1) + " ms.");
       }
-      return;
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      long l = Long.parseLong(paramString);
-      SystemMsgListView.a(this.a).a(l);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
     }
   }
 }

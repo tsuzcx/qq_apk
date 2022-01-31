@@ -1,46 +1,22 @@
-import android.os.AsyncTask;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class rwh
-  extends AsyncTask
+public final class rwh
+  implements DialogInterface.OnCancelListener
 {
-  rwh(rwg paramrwg) {}
+  public rwh(boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.a.d) {
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(paramVarArgs[0], true);
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
-    for (;;)
-    {
-      if ((paramVarArgs[0] instanceof MessageForApollo)) {
-        SpriteCommFunc.a(this.a.a.app, "chat_history_start_del_msg");
-      }
-      return null;
-      this.a.a.app.a().a(paramVarArgs[0], true);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
     }
-  }
-  
-  protected void onPostExecute(Object paramObject)
-  {
-    super.onPostExecute(paramObject);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if (this.a.a.d) {
-      this.a.a.a(11, false);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

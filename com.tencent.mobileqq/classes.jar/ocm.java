@@ -1,23 +1,21 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
 
 public class ocm
-  implements Runnable
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public ocm(EditVideoDoodle paramEditVideoDoodle) {}
+  public ocm(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
   
-  public void run()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.g();
-    }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4870;; paramInt = 775)
     {
-      this.a.jdField_a_of_type_Int = 1;
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
       return;
-      if (this.a.jdField_a_of_type_Int == 3) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.s();
-      }
     }
   }
 }

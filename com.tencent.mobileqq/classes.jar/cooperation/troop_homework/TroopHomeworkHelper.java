@@ -291,85 +291,85 @@ public class TroopHomeworkHelper
     //   318: invokevirtual 278	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   321: invokespecial 279	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   324: invokespecial 282	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   327: astore 4
-    //   329: aload 4
-    //   331: invokevirtual 285	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   334: astore_1
-    //   335: aload_1
-    //   336: ifnull +129 -> 465
+    //   327: astore_1
+    //   328: aload_1
+    //   329: invokevirtual 285	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   332: astore 4
+    //   334: aload 4
+    //   336: ifnull +130 -> 466
     //   339: aload 5
-    //   341: aload_1
-    //   342: invokevirtual 288	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   345: ldc_w 290
-    //   348: invokevirtual 288	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   351: pop
-    //   352: goto -23 -> 329
-    //   355: astore 4
-    //   357: aload_0
-    //   358: astore_1
-    //   359: aload_2
-    //   360: astore_0
-    //   361: aload 4
-    //   363: astore_2
-    //   364: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   367: ifeq +13 -> 380
-    //   370: ldc 52
-    //   372: iconst_2
-    //   373: ldc_w 292
-    //   376: aload_2
-    //   377: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   380: aload_1
-    //   381: ifnull +7 -> 388
-    //   384: aload_1
-    //   385: invokevirtual 263	java/net/HttpURLConnection:disconnect	()V
-    //   388: aload_0
-    //   389: ifnull +259 -> 648
-    //   392: aload_0
-    //   393: invokevirtual 260	java/io/DataOutputStream:close	()V
-    //   396: iconst_m1
-    //   397: istore_3
-    //   398: iload_3
-    //   399: ireturn
-    //   400: astore 4
-    //   402: aload_1
-    //   403: invokevirtual 264	java/io/BufferedInputStream:close	()V
-    //   406: aload 4
-    //   408: athrow
-    //   409: astore 4
-    //   411: aload_0
-    //   412: astore_1
-    //   413: aload 4
-    //   415: astore_0
-    //   416: aload_2
-    //   417: astore 5
-    //   419: aload_1
-    //   420: astore 4
-    //   422: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   425: ifeq +19 -> 444
-    //   428: aload_2
-    //   429: astore 5
-    //   431: aload_1
-    //   432: astore 4
-    //   434: ldc 52
-    //   436: iconst_2
-    //   437: ldc_w 292
-    //   440: aload_0
-    //   441: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   444: aload_1
-    //   445: ifnull +7 -> 452
-    //   448: aload_1
-    //   449: invokevirtual 263	java/net/HttpURLConnection:disconnect	()V
-    //   452: aload_2
-    //   453: ifnull +195 -> 648
-    //   456: aload_2
-    //   457: invokevirtual 260	java/io/DataOutputStream:close	()V
-    //   460: iconst_m1
-    //   461: istore_3
-    //   462: goto -64 -> 398
-    //   465: aload 5
-    //   467: invokevirtual 296	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   470: pop
-    //   471: aload 4
+    //   341: aload 4
+    //   343: invokevirtual 288	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   346: ldc_w 290
+    //   349: invokevirtual 288	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   352: pop
+    //   353: goto -25 -> 328
+    //   356: astore 4
+    //   358: aload_0
+    //   359: astore_1
+    //   360: aload_2
+    //   361: astore_0
+    //   362: aload 4
+    //   364: astore_2
+    //   365: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   368: ifeq +13 -> 381
+    //   371: ldc 52
+    //   373: iconst_2
+    //   374: ldc_w 292
+    //   377: aload_2
+    //   378: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   381: aload_1
+    //   382: ifnull +7 -> 389
+    //   385: aload_1
+    //   386: invokevirtual 263	java/net/HttpURLConnection:disconnect	()V
+    //   389: aload_0
+    //   390: ifnull +258 -> 648
+    //   393: aload_0
+    //   394: invokevirtual 260	java/io/DataOutputStream:close	()V
+    //   397: iconst_m1
+    //   398: istore_3
+    //   399: iload_3
+    //   400: ireturn
+    //   401: astore 4
+    //   403: aload_1
+    //   404: invokevirtual 264	java/io/BufferedInputStream:close	()V
+    //   407: aload 4
+    //   409: athrow
+    //   410: astore 4
+    //   412: aload_0
+    //   413: astore_1
+    //   414: aload 4
+    //   416: astore_0
+    //   417: aload_2
+    //   418: astore 5
+    //   420: aload_1
+    //   421: astore 4
+    //   423: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   426: ifeq +19 -> 445
+    //   429: aload_2
+    //   430: astore 5
+    //   432: aload_1
+    //   433: astore 4
+    //   435: ldc 52
+    //   437: iconst_2
+    //   438: ldc_w 292
+    //   441: aload_0
+    //   442: invokestatic 295	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   445: aload_1
+    //   446: ifnull +7 -> 453
+    //   449: aload_1
+    //   450: invokevirtual 263	java/net/HttpURLConnection:disconnect	()V
+    //   453: aload_2
+    //   454: ifnull +194 -> 648
+    //   457: aload_2
+    //   458: invokevirtual 260	java/io/DataOutputStream:close	()V
+    //   461: iconst_m1
+    //   462: istore_3
+    //   463: goto -64 -> 399
+    //   466: aload 5
+    //   468: invokevirtual 296	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   471: pop
+    //   472: aload_1
     //   473: invokevirtual 297	java/io/BufferedReader:close	()V
     //   476: aload_0
     //   477: ifnull +7 -> 484
@@ -381,19 +381,19 @@ public class TroopHomeworkHelper
     //   489: invokevirtual 260	java/io/DataOutputStream:close	()V
     //   492: iconst_0
     //   493: istore_3
-    //   494: goto -96 -> 398
+    //   494: goto -95 -> 399
     //   497: astore_0
     //   498: iconst_0
     //   499: istore_3
-    //   500: goto -102 -> 398
+    //   500: goto -101 -> 399
     //   503: astore_0
     //   504: iconst_m1
     //   505: istore_3
-    //   506: goto -108 -> 398
+    //   506: goto -107 -> 399
     //   509: astore_0
     //   510: iconst_m1
     //   511: istore_3
-    //   512: goto -114 -> 398
+    //   512: goto -113 -> 399
     //   515: astore_0
     //   516: aconst_null
     //   517: astore_2
@@ -445,7 +445,7 @@ public class TroopHomeworkHelper
     //   590: astore_2
     //   591: aload 7
     //   593: astore_1
-    //   594: goto -178 -> 416
+    //   594: goto -177 -> 417
     //   597: astore 4
     //   599: aconst_null
     //   600: astore_2
@@ -453,17 +453,17 @@ public class TroopHomeworkHelper
     //   602: astore_1
     //   603: aload 4
     //   605: astore_0
-    //   606: goto -190 -> 416
+    //   606: goto -189 -> 417
     //   609: astore_0
     //   610: aload 7
     //   612: astore_1
-    //   613: goto -197 -> 416
+    //   613: goto -196 -> 417
     //   616: astore_2
     //   617: aconst_null
     //   618: astore_0
     //   619: aload 6
     //   621: astore_1
-    //   622: goto -258 -> 364
+    //   622: goto -257 -> 365
     //   625: astore_2
     //   626: aconst_null
     //   627: astore 4
@@ -471,7 +471,7 @@ public class TroopHomeworkHelper
     //   630: astore_1
     //   631: aload 4
     //   633: astore_0
-    //   634: goto -270 -> 364
+    //   634: goto -269 -> 365
     //   637: astore_1
     //   638: aload_2
     //   639: astore_0
@@ -479,24 +479,24 @@ public class TroopHomeworkHelper
     //   641: astore_2
     //   642: aload 6
     //   644: astore_1
-    //   645: goto -281 -> 364
+    //   645: goto -280 -> 365
     //   648: iconst_m1
     //   649: istore_3
-    //   650: goto -252 -> 398
+    //   650: goto -251 -> 399
     //   653: iconst_0
     //   654: istore_3
-    //   655: goto -257 -> 398
+    //   655: goto -256 -> 399
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	658	0	paramJSONObject	JSONObject
     //   0	658	1	paramString1	String
     //   0	658	2	paramString2	String
     //   194	461	3	i	int
-    //   7	323	4	localBufferedReader	java.io.BufferedReader
-    //   355	7	4	localException	Exception
-    //   400	7	4	localObject1	Object
-    //   409	5	4	localOutOfMemoryError1	OutOfMemoryError
-    //   420	52	4	str	String
+    //   7	335	4	str1	String
+    //   356	7	4	localException	Exception
+    //   401	7	4	localObject1	Object
+    //   410	5	4	localOutOfMemoryError1	OutOfMemoryError
+    //   421	13	4	str2	String
     //   546	7	4	localObject2	Object
     //   558	15	4	localObject3	Object
     //   578	5	4	localObject4	Object
@@ -512,38 +512,38 @@ public class TroopHomeworkHelper
     //   from	to	target	type
     //   188	195	211	java/lang/OutOfMemoryError
     //   200	208	211	java/lang/OutOfMemoryError
-    //   147	188	355	java/lang/Exception
-    //   296	329	355	java/lang/Exception
-    //   329	335	355	java/lang/Exception
-    //   339	352	355	java/lang/Exception
-    //   402	409	355	java/lang/Exception
-    //   465	476	355	java/lang/Exception
-    //   188	195	400	finally
-    //   200	208	400	finally
-    //   213	267	400	finally
-    //   147	188	409	java/lang/OutOfMemoryError
-    //   296	329	409	java/lang/OutOfMemoryError
-    //   329	335	409	java/lang/OutOfMemoryError
-    //   339	352	409	java/lang/OutOfMemoryError
-    //   402	409	409	java/lang/OutOfMemoryError
-    //   465	476	409	java/lang/OutOfMemoryError
+    //   147	188	356	java/lang/Exception
+    //   296	328	356	java/lang/Exception
+    //   328	334	356	java/lang/Exception
+    //   339	353	356	java/lang/Exception
+    //   403	410	356	java/lang/Exception
+    //   466	476	356	java/lang/Exception
+    //   188	195	401	finally
+    //   200	208	401	finally
+    //   213	267	401	finally
+    //   147	188	410	java/lang/OutOfMemoryError
+    //   296	328	410	java/lang/OutOfMemoryError
+    //   328	334	410	java/lang/OutOfMemoryError
+    //   339	353	410	java/lang/OutOfMemoryError
+    //   403	410	410	java/lang/OutOfMemoryError
+    //   466	476	410	java/lang/OutOfMemoryError
     //   488	492	497	java/io/IOException
-    //   392	396	503	java/io/IOException
-    //   456	460	509	java/io/IOException
+    //   393	397	503	java/io/IOException
+    //   457	461	509	java/io/IOException
     //   46	61	515	finally
     //   290	294	539	java/io/IOException
     //   533	537	542	java/io/IOException
     //   61	147	546	finally
     //   147	188	558	finally
-    //   296	329	558	finally
-    //   329	335	558	finally
-    //   339	352	558	finally
-    //   402	409	558	finally
-    //   465	476	558	finally
+    //   296	328	558	finally
+    //   328	334	558	finally
+    //   339	353	558	finally
+    //   403	410	558	finally
+    //   466	476	558	finally
     //   270	274	568	finally
-    //   422	428	568	finally
-    //   434	444	568	finally
-    //   364	380	578	finally
+    //   423	429	568	finally
+    //   435	445	568	finally
+    //   365	381	578	finally
     //   46	61	588	java/lang/OutOfMemoryError
     //   61	147	597	java/lang/OutOfMemoryError
     //   270	274	609	java/lang/OutOfMemoryError

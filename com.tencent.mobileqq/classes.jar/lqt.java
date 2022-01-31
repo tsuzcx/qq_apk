@@ -1,14 +1,15 @@
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.List;
 
 public class lqt
   implements Runnable
 {
-  public lqt(ChannelInfoModule paramChannelInfoModule, ChannelInfo paramChannelInfo) {}
+  public lqt(ChannelInfoModule paramChannelInfoModule, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo);
+    ReadInJoyLogicEngineEventDispatcher.a().c(true, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -26,23 +26,23 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import mqq.manager.WtloginManager;
 import mqq.observer.WtloginObserver;
-import sgk;
-import sgl;
-import sgn;
+import sji;
+import sjj;
+import sjl;
 
 public class DevlockQuickLoginActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
   int jdField_a_of_type_Int = 1;
-  Handler jdField_a_of_type_AndroidOsHandler = new sgk(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new sji(this);
   Button jdField_a_of_type_AndroidWidgetButton;
   public ImageView a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   String jdField_a_of_type_JavaLangString;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new sgn(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new sjl(this);
   byte[] jdField_a_of_type_ArrayOfByte = null;
   int jdField_b_of_type_Int = 1;
   Button jdField_b_of_type_AndroidWidgetButton;
@@ -761,14 +761,14 @@ public class DevlockQuickLoginActivity
     {
     default: 
       return;
-    case 2131363410: 
+    case 2131363428: 
       super.finish();
       super.overridePendingTransition(0, 2131034135);
       return;
     }
     if (!NetworkUtil.d(this))
     {
-      QQToast.a(this, super.getString(2131432992), 0).b(super.getTitleBarHeight());
+      QQToast.a(this, super.getString(2131433009), 0).b(super.getTitleBarHeight());
       return;
     }
     if ((this.app == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
@@ -776,7 +776,7 @@ public class DevlockQuickLoginActivity
       if (QLog.isColorLevel()) {
         QLog.d("DevlockQuickLoginActivity", 2, "requestQRLogin qrCodeString is empty");
       }
-      QQToast.a(super.getApplicationContext(), 1, super.getString(2131436581), 0).b(getTitleBarHeight());
+      QQToast.a(super.getApplicationContext(), 1, super.getString(2131436598), 0).b(getTitleBarHeight());
       super.finish();
       super.overridePendingTransition(0, 2131034135);
       return;
@@ -787,7 +787,7 @@ public class DevlockQuickLoginActivity
       if (QLog.isColorLevel()) {
         QLog.d("DevlockQuickLoginActivity", 2, "requestQRLogin qrCodeString  error");
       }
-      QQToast.a(super.getApplicationContext(), 1, super.getString(2131436581), 0).b(getTitleBarHeight());
+      QQToast.a(super.getApplicationContext(), 1, super.getString(2131436598), 0).b(getTitleBarHeight());
       super.finish();
       super.overridePendingTransition(0, 2131034135);
       return;
@@ -800,7 +800,7 @@ public class DevlockQuickLoginActivity
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) && (!super.isFinishing()))
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435053);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435070);
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
@@ -808,7 +808,7 @@ public class DevlockQuickLoginActivity
       if (QLog.isColorLevel()) {
         QLog.d("DevlockQuickLoginActivity", 2, "requestQRLogin start verifyCode..");
       }
-      if (i == 2131367686)
+      if (i == 2131367754)
       {
         i = this.jdField_b_of_type_Int;
         this.jdField_a_of_type_Int = i;
@@ -832,17 +832,17 @@ public class DevlockQuickLoginActivity
   
   protected void onCreate(Bundle paramBundle)
   {
-    super.setTheme(2131624729);
+    super.setTheme(2131624731);
     super.onCreate(paramBundle);
-    super.setContentView(2130970305);
+    super.setContentView(2130970321);
     this.leftView.setVisibility(4);
-    super.setRightButton(2131434920, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367500));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367501));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369983));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369984));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131367686));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131369985));
+    super.setRightButton(2131434937, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367568));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367569));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370060));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370061));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131367754));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131370062));
     paramBundle = super.getIntent();
     if (paramBundle != null)
     {
@@ -856,7 +856,7 @@ public class DevlockQuickLoginActivity
     if (QLog.isColorLevel()) {
       QLog.d("DevlockQuickLoginActivity", 2, "onCreate qrCodeSting=" + this.jdField_a_of_type_JavaLangString + " mainTip=" + this.jdField_b_of_type_JavaLangString + " smallTip=" + this.jdField_c_of_type_JavaLangString);
     }
-    ThreadManager.post(new sgl(this), 5, null, false);
+    ThreadManager.post(new sjj(this), 5, null, false);
     d();
   }
   

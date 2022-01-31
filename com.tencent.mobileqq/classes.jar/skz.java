@@ -1,28 +1,21 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class skz
-  extends AutomatorObserver
+  implements View.OnClickListener
 {
-  public skz(ForwardRecentActivity paramForwardRecentActivity) {}
+  public skz(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  protected void a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ForwardRecentActivity.c(this.a);
-      return;
-      this.a.a.f();
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     skz
  * JD-Core Version:    0.7.0.1
  */

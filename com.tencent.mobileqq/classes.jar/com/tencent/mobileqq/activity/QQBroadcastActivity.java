@@ -11,19 +11,19 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.MsgProxy;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import java.util.Observer;
-import tfa;
-import tfb;
+import tia;
+import tib;
 
 public class QQBroadcastActivity
   extends BaseSystemActivity
   implements Observer
 {
   public Handler a;
-  public tfb a;
+  public tib a;
   
   public QQBroadcastActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new tfa(this);
+    this.jdField_a_of_type_AndroidOsHandler = new tia(this);
   }
   
   private void c()
@@ -43,10 +43,10 @@ public class QQBroadcastActivity
     }
     for (;;)
     {
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131433280) + "(" + i + ")"));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131433297) + "(" + i + ")"));
       return;
       label79:
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131433280)));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131433297)));
       return;
       label99:
       i = j;
@@ -60,15 +60,15 @@ public class QQBroadcastActivity
   
   protected CursorAdapter a()
   {
-    if (this.jdField_a_of_type_Tfb == null) {
-      this.jdField_a_of_type_Tfb = new tfb(this, this, this.app.a(0).a(a(), 0));
+    if (this.jdField_a_of_type_Tib == null) {
+      this.jdField_a_of_type_Tib = new tib(this, this, this.app.a(0).a(a(), 0));
     }
-    return this.jdField_a_of_type_Tfb;
+    return this.jdField_a_of_type_Tib;
   }
   
   protected CharSequence a()
   {
-    return getString(2131434924);
+    return getString(2131434941);
   }
   
   public String a()
@@ -92,8 +92,8 @@ public class QQBroadcastActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Tfb != null) {
-      this.jdField_a_of_type_Tfb.changeCursor(null);
+    if (this.jdField_a_of_type_Tib != null) {
+      this.jdField_a_of_type_Tib.changeCursor(null);
     }
   }
   

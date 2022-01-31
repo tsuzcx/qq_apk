@@ -1,14 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class lgk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lgk(ReadInJoyArkViewController paramReadInJoyArkViewController) {}
+  public lgk(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArkAppCenter.a(true);
+    this.a.a();
   }
 }
 

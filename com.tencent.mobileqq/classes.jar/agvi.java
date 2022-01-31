@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.OnProviderContainerTriggerLisener;
+import com.tencent.mobileqq.data.QCallRecord;
+import com.tencent.mobileqq.qcall.QCallProxy;
+import java.util.Comparator;
 
 public class agvi
-  implements ProviderContainerView.OnProviderContainerTriggerLisener
+  implements Comparator
 {
-  public agvi(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agvi(QCallProxy paramQCallProxy) {}
   
-  public void a()
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
   {
-    this.a.b = true;
-    this.a.l();
-  }
-  
-  public void b()
-  {
-    this.a.b = false;
-    this.a.m();
+    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
+      return 0;
+    }
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
   }
 }
 

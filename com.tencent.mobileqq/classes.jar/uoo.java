@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
 
-class uoo
+public class uoo
   implements Runnable
 {
-  uoo(uom paramuom, int paramInt) {}
+  public uoo(FriendShipWaveView paramFriendShipWaveView) {}
   
   public void run()
   {
-    if (DoodleMsgView.a(this.jdField_a_of_type_Uom.a) != null)
-    {
-      uor localuor = (uor)DoodleMsgView.a(this.jdField_a_of_type_Uom.a).get();
-      if (localuor != null) {
-        localuor.a(this.jdField_a_of_type_Int);
-      }
-    }
+    this.a.c();
   }
 }
 

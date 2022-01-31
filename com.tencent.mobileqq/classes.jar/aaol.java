@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import com.tencent.mobileqq.ark.ArkAppCGI.QueryAppInfoByAppNameBatchResult;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.util.HashMap;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
 
 class aaol
-  extends ArkAppCGI.ArkAppCGICallback
+  implements Runnable
 {
   aaol(aaok paramaaok) {}
   
-  public void a(ArkAppCGI.QueryAppInfoByAppNameBatchResult paramQueryAppInfoByAppNameBatchResult, Object paramObject)
+  public void run()
   {
-    paramObject = (HashMap)paramObject;
-    ArkLocalAppMgr.a(this.a.a, paramQueryAppInfoByAppNameBatchResult, paramObject);
+    ArkAppDeviceModule.a(this.a.a.jdField_a_of_type_Aanw.a, this.a.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
+    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Aanw.a.a(this.a.a.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
   }
 }
 

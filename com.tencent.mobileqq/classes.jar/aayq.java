@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ShopScanCheckHandler.Info;
+import android.view.View;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class aayq
-  implements Parcelable.Creator
+class aayq
+  implements ActionSheet.OnButtonClickListener
 {
-  public ShopScanCheckHandler.Info a(Parcel paramParcel)
-  {
-    return new ShopScanCheckHandler.Info(paramParcel);
-  }
+  aayq(aayo paramaayo, ActionSheet paramActionSheet) {}
   
-  public ShopScanCheckHandler.Info[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new ShopScanCheckHandler.Info[paramInt];
+    this.jdField_a_of_type_Aayo.a.e();
+    this.jdField_a_of_type_Aayo.a.b("本地APP已删除成功");
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

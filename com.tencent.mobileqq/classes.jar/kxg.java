@@ -1,17 +1,28 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class kxg
-  implements View.OnClickListener
+class kxg
+  implements TVK_SDKMgr.InstallListener
 {
-  public kxg(AdModuleBase paramAdModuleBase) {}
+  kxg(kxf paramkxf) {}
   
-  public void onClick(View paramView)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    this.a.a.dismiss();
-    AdModuleBase.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk failed");
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk success");
+    }
+    ReadInJoyNativeAdAppVideoView.a(this.a.a).post(new kxh(this));
   }
 }
 

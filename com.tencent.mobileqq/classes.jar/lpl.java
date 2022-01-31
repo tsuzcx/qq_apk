@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class lpl
   implements Runnable
 {
-  public lpl(ArticleInfoModule paramArticleInfoModule, int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2) {}
+  public lpl(ArticleInfoModule paramArticleInfoModule) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+    SosoInterface.a(ArticleInfoModule.a(), "PublicAccountManager");
+    if (QLog.isColorLevel()) {
+      QLog.d("ArticleInfoModule", 2, "0x68b lbs info start location");
+    }
   }
 }
 

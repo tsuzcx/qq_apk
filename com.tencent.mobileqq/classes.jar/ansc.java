@@ -1,13 +1,18 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
 
-public class ansc
-  implements Runnable
+public final class ansc
+  implements Parcelable.Creator
 {
-  public ansc(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean) {}
-  
-  public void run()
+  public EditRecordVideoSource a(Parcel paramParcel)
   {
-    LbsFilterStatusManager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    return new EditRecordVideoSource(paramParcel);
+  }
+  
+  public EditRecordVideoSource[] a(int paramInt)
+  {
+    return new EditRecordVideoSource[paramInt];
   }
 }
 

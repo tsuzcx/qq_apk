@@ -37,6 +37,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.zip.QZipInputStream;
 import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
 import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI;
 import com.tencent.mobileqq.apollo.data.ApolloDevInfo;
@@ -91,7 +92,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -100,29 +100,29 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import yhr;
-import yhs;
-import yht;
-import yhu;
-import yhv;
-import yhw;
-import yhx;
-import yhy;
-import yhz;
-import yia;
-import yib;
-import yic;
-import yie;
-import yif;
-import yig;
-import yih;
-import yii;
-import yij;
-import yil;
-import yim;
-import yio;
-import yiq;
-import yis;
+import yky;
+import ykz;
+import yla;
+import ylb;
+import ylc;
+import yld;
+import yle;
+import ylf;
+import ylg;
+import ylh;
+import yli;
+import ylj;
+import yll;
+import ylm;
+import yln;
+import ylo;
+import ylp;
+import ylq;
+import yls;
+import ylt;
+import ylv;
+import ylx;
+import ylz;
 
 public class ApolloRender
   implements GLSurfaceView.Renderer
@@ -273,12 +273,12 @@ public class ApolloRender
   public static void createAIFaceDetector(long paramLong)
   {
     Object localObject = getRenderByThreadId();
-    if ((!PtvFilterSoLoad.b(BaseApplicationImpl.getContext())) && (!sIsDownLoadingSo))
+    if ((!PtvFilterSoLoad.a(BaseApplicationImpl.getContext())) && (!sIsDownLoadingSo))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ApolloRender", 2, "createAIFaceDetecor download");
       }
-      localObject = new yhy((ApolloRender)localObject);
+      localObject = new ylf((ApolloRender)localObject);
       QIPCClientHelper.getInstance().callServer("cm_game_module", "action_loadyoutu", null, (EIPCResultCallback)localObject);
     }
     do
@@ -684,12 +684,12 @@ public class ApolloRender
   
   public static void getLocationCity(View paramView, DoraemonAPIManager paramDoraemonAPIManager, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6)
   {
-    paramDoraemonAPIManager.a("getCity", null, new yif(paramView, paramDoraemonAPIManager, paramLong, paramDouble1, paramDouble2, paramDouble3, paramDouble4, paramDouble5, paramDouble6));
+    paramDoraemonAPIManager.a("getCity", null, new ylm(paramView, paramDoraemonAPIManager, paramLong, paramDouble1, paramDouble2, paramDouble3, paramDouble4, paramDouble5, paramDouble6));
   }
   
   public static void getLocationDoLocation(View paramView, DoraemonAPIManager paramDoraemonAPIManager, long paramLong, int paramInt, String paramString)
   {
-    paramDoraemonAPIManager.a("getLocation", null, new yig(paramView, paramDoraemonAPIManager, paramLong, paramInt));
+    paramDoraemonAPIManager.a("getLocation", null, new yln(paramView, paramDoraemonAPIManager, paramLong, paramInt));
   }
   
   public static void getLocationLogin(long paramLong, int paramInt, String paramString)
@@ -701,7 +701,7 @@ public class ApolloRender
     Object localObject = (Activity)localView.getContext();
     DoraemonOpenAPI.a();
     localObject = DoraemonOpenAPI.a((Activity)localObject, 5, paramString);
-    ((DoraemonAPIManager)localObject).a("login", null, new yih(localView, (DoraemonAPIManager)localObject, paramLong, paramInt, paramString));
+    ((DoraemonAPIManager)localObject).a("login", null, new ylo(localView, (DoraemonAPIManager)localObject, paramLong, paramInt, paramString));
   }
   
   public static ApolloRender getRenderByThreadId()
@@ -879,97 +879,97 @@ public class ApolloRender
   {
     // Byte code:
     //   0: aload 6
-    //   2: invokestatic 449	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2: invokestatic 448	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   5: ifeq +5 -> 10
     //   8: aconst_null
     //   9: areturn
-    //   10: new 488	android/widget/TextView
+    //   10: new 487	android/widget/TextView
     //   13: dup
     //   14: invokestatic 328	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   17: invokespecial 490	android/widget/TextView:<init>	(Landroid/content/Context;)V
+    //   17: invokespecial 489	android/widget/TextView:<init>	(Landroid/content/Context;)V
     //   20: astore 8
-    //   22: new 492	android/graphics/Paint$FontMetricsInt
+    //   22: new 491	android/graphics/Paint$FontMetricsInt
     //   25: dup
-    //   26: invokespecial 493	android/graphics/Paint$FontMetricsInt:<init>	()V
+    //   26: invokespecial 492	android/graphics/Paint$FontMetricsInt:<init>	()V
     //   29: astore 5
     //   31: aload 8
-    //   33: invokevirtual 497	android/widget/TextView:getPaint	()Landroid/text/TextPaint;
+    //   33: invokevirtual 496	android/widget/TextView:getPaint	()Landroid/text/TextPaint;
     //   36: aload 5
-    //   38: invokevirtual 503	android/text/TextPaint:getFontMetricsInt	(Landroid/graphics/Paint$FontMetricsInt;)I
+    //   38: invokevirtual 502	android/text/TextPaint:getFontMetricsInt	(Landroid/graphics/Paint$FontMetricsInt;)I
     //   41: pop
     //   42: aload 5
-    //   44: getfield 506	android/graphics/Paint$FontMetricsInt:ascent	I
+    //   44: getfield 505	android/graphics/Paint$FontMetricsInt:ascent	I
     //   47: aload 5
-    //   49: getfield 509	android/graphics/Paint$FontMetricsInt:top	I
+    //   49: getfield 508	android/graphics/Paint$FontMetricsInt:top	I
     //   52: isub
     //   53: ifne +11 -> 64
     //   56: fconst_2
-    //   57: getstatic 513	com/tencent/mobileqq/utils/DeviceInfoUtil:a	F
+    //   57: getstatic 512	com/tencent/mobileqq/utils/DeviceInfoUtil:a	F
     //   60: fmul
     //   61: f2i
     //   62: istore 7
     //   64: aload 8
     //   66: iload_2
-    //   67: invokevirtual 562	android/widget/TextView:setWidth	(I)V
+    //   67: invokevirtual 561	android/widget/TextView:setWidth	(I)V
     //   70: aload 8
     //   72: iload_3
-    //   73: invokevirtual 565	android/widget/TextView:setHeight	(I)V
+    //   73: invokevirtual 564	android/widget/TextView:setHeight	(I)V
     //   76: iload 4
     //   78: ifne +264 -> 342
     //   81: aload 8
     //   83: iconst_3
-    //   84: invokevirtual 550	android/widget/TextView:setGravity	(I)V
+    //   84: invokevirtual 549	android/widget/TextView:setGravity	(I)V
     //   87: aload 8
     //   89: iload_1
-    //   90: invokevirtual 554	android/widget/TextView:setTextColor	(I)V
+    //   90: invokevirtual 553	android/widget/TextView:setTextColor	(I)V
     //   93: aload 8
     //   95: iload_0
     //   96: i2f
-    //   97: invokevirtual 559	android/widget/TextView:setTextSize	(F)V
+    //   97: invokevirtual 558	android/widget/TextView:setTextSize	(F)V
     //   100: aload 8
     //   102: aload 6
-    //   104: invokevirtual 574	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   104: invokevirtual 573	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   107: aload 8
     //   109: iconst_0
     //   110: iconst_0
-    //   111: invokestatic 580	android/view/View$MeasureSpec:makeMeasureSpec	(II)I
+    //   111: invokestatic 579	android/view/View$MeasureSpec:makeMeasureSpec	(II)I
     //   114: iconst_0
     //   115: iconst_0
-    //   116: invokestatic 580	android/view/View$MeasureSpec:makeMeasureSpec	(II)I
-    //   119: invokevirtual 584	android/widget/TextView:measure	(II)V
+    //   116: invokestatic 579	android/view/View$MeasureSpec:makeMeasureSpec	(II)I
+    //   119: invokevirtual 583	android/widget/TextView:measure	(II)V
     //   122: aload 8
-    //   124: invokevirtual 587	android/widget/TextView:getMeasuredWidth	()I
+    //   124: invokevirtual 586	android/widget/TextView:getMeasuredWidth	()I
     //   127: istore_0
     //   128: aload 8
-    //   130: invokevirtual 590	android/widget/TextView:getMeasuredHeight	()I
+    //   130: invokevirtual 589	android/widget/TextView:getMeasuredHeight	()I
     //   133: istore_1
     //   134: aload 8
     //   136: iconst_0
     //   137: iconst_0
     //   138: iload_0
     //   139: iload_1
-    //   140: invokevirtual 594	android/widget/TextView:layout	(IIII)V
+    //   140: invokevirtual 593	android/widget/TextView:layout	(IIII)V
     //   143: aconst_null
     //   144: astore 5
     //   146: new 124	java/lang/StringBuilder
     //   149: dup
     //   150: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   153: ldc_w 457
+    //   153: ldc_w 456
     //   156: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: iload_0
-    //   160: invokevirtual 431	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   163: ldc_w 459
+    //   160: invokevirtual 430	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   163: ldc_w 458
     //   166: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   169: iload_1
-    //   170: invokevirtual 431	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   170: invokevirtual 430	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   173: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   176: astore 9
-    //   178: getstatic 463	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   178: getstatic 462	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   181: ifnull +66 -> 247
-    //   184: getstatic 463	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   184: getstatic 462	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   187: aload 9
-    //   189: invokevirtual 468	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   192: checkcast 470	android/graphics/Bitmap
+    //   189: invokevirtual 467	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   192: checkcast 469	android/graphics/Bitmap
     //   195: astore 6
     //   197: aload 6
     //   199: astore 5
@@ -984,7 +984,7 @@ public class ApolloRender
     //   219: new 124	java/lang/StringBuilder
     //   222: dup
     //   223: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   226: ldc_w 472
+    //   226: ldc_w 471
     //   229: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   232: aload 9
     //   234: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -998,26 +998,26 @@ public class ApolloRender
     //   253: ifnonnull +38 -> 291
     //   256: iload_0
     //   257: iload_1
-    //   258: getstatic 478	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   261: invokestatic 482	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   258: getstatic 477	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   261: invokestatic 481	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   264: astore 5
     //   266: aload 5
     //   268: astore 6
-    //   270: getstatic 463	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   270: getstatic 462	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   273: ifnull +18 -> 291
-    //   276: getstatic 463	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   276: getstatic 462	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   279: aload 9
     //   281: aload 5
-    //   283: invokevirtual 486	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   283: invokevirtual 485	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   286: pop
     //   287: aload 5
     //   289: astore 6
     //   291: aload 8
-    //   293: new 610	android/graphics/Canvas
+    //   293: new 609	android/graphics/Canvas
     //   296: dup
     //   297: aload 6
-    //   299: invokespecial 613	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   302: invokevirtual 633	android/widget/TextView:draw	(Landroid/graphics/Canvas;)V
+    //   299: invokespecial 612	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   302: invokevirtual 632	android/widget/TextView:draw	(Landroid/graphics/Canvas;)V
     //   305: aload 6
     //   307: areturn
     //   308: astore 5
@@ -1032,7 +1032,7 @@ public class ApolloRender
     //   328: invokevirtual 918	java/lang/Exception:toString	()Ljava/lang/String;
     //   331: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   334: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   337: invokestatic 732	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   337: invokestatic 731	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   340: aconst_null
     //   341: areturn
     //   342: iload 4
@@ -1040,14 +1040,14 @@ public class ApolloRender
     //   345: if_icmpne +13 -> 358
     //   348: aload 8
     //   350: bipush 17
-    //   352: invokevirtual 550	android/widget/TextView:setGravity	(I)V
+    //   352: invokevirtual 549	android/widget/TextView:setGravity	(I)V
     //   355: goto -268 -> 87
     //   358: iload 4
     //   360: iconst_2
     //   361: if_icmpne -274 -> 87
     //   364: aload 8
     //   366: iconst_5
-    //   367: invokevirtual 550	android/widget/TextView:setGravity	(I)V
+    //   367: invokevirtual 549	android/widget/TextView:setGravity	(I)V
     //   370: goto -283 -> 87
     //   373: astore 5
     //   375: invokestatic 247	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1057,10 +1057,10 @@ public class ApolloRender
     //   384: new 124	java/lang/StringBuilder
     //   387: dup
     //   388: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   391: ldc_w 641
+    //   391: ldc_w 640
     //   394: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   397: aload 5
-    //   399: invokevirtual 644	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   399: invokevirtual 643	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   402: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   405: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   408: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1073,10 +1073,10 @@ public class ApolloRender
     //   425: new 124	java/lang/StringBuilder
     //   428: dup
     //   429: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   432: ldc_w 641
+    //   432: ldc_w 640
     //   435: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   438: aload 5
-    //   440: invokevirtual 645	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   440: invokevirtual 644	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   443: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   446: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   449: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1121,7 +1121,7 @@ public class ApolloRender
   {
     // Byte code:
     //   0: aload_2
-    //   1: invokestatic 449	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 448	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aconst_null
     //   8: areturn
@@ -1132,7 +1132,7 @@ public class ApolloRender
     //   14: dload 14
     //   16: dconst_1
     //   17: dmul
-    //   18: getstatic 513	com/tencent/mobileqq/utils/DeviceInfoUtil:a	F
+    //   18: getstatic 512	com/tencent/mobileqq/utils/DeviceInfoUtil:a	F
     //   21: f2d
     //   22: ddiv
     //   23: d2f
@@ -1166,7 +1166,7 @@ public class ApolloRender
     //   78: iload_3
     //   79: istore_0
     //   80: aload 7
-    //   82: ldc_w 811
+    //   82: ldc_w 810
     //   85: invokevirtual 292	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   88: ifne +26 -> 114
     //   91: aload 7
@@ -1234,10 +1234,10 @@ public class ApolloRender
     //   216: aload 17
     //   218: iconst_0
     //   219: iconst_0
-    //   220: invokestatic 580	android/view/View$MeasureSpec:makeMeasureSpec	(II)I
+    //   220: invokestatic 579	android/view/View$MeasureSpec:makeMeasureSpec	(II)I
     //   223: iconst_0
     //   224: iconst_0
-    //   225: invokestatic 580	android/view/View$MeasureSpec:makeMeasureSpec	(II)I
+    //   225: invokestatic 579	android/view/View$MeasureSpec:makeMeasureSpec	(II)I
     //   228: invokevirtual 964	com/tencent/mobileqq/portal/StrokeTextView:measure	(II)V
     //   231: aload 17
     //   233: invokevirtual 965	com/tencent/mobileqq/portal/StrokeTextView:getMeasuredWidth	()I
@@ -1256,22 +1256,22 @@ public class ApolloRender
     //   254: new 124	java/lang/StringBuilder
     //   257: dup
     //   258: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   261: ldc_w 457
+    //   261: ldc_w 456
     //   264: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   267: iload_0
-    //   268: invokevirtual 431	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   271: ldc_w 459
+    //   268: invokevirtual 430	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   271: ldc_w 458
     //   274: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   277: iload_1
-    //   278: invokevirtual 431	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   278: invokevirtual 430	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   281: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   284: astore 18
-    //   286: getstatic 463	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   286: getstatic 462	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   289: ifnull +63 -> 352
-    //   292: getstatic 463	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   292: getstatic 462	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   295: aload 18
-    //   297: invokevirtual 468	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   300: checkcast 470	android/graphics/Bitmap
+    //   297: invokevirtual 467	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   300: checkcast 469	android/graphics/Bitmap
     //   303: astore 7
     //   305: aload 7
     //   307: astore_2
@@ -1286,7 +1286,7 @@ public class ApolloRender
     //   325: new 124	java/lang/StringBuilder
     //   328: dup
     //   329: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   332: ldc_w 472
+    //   332: ldc_w 471
     //   335: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   338: aload 18
     //   340: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1300,25 +1300,25 @@ public class ApolloRender
     //   356: ifnonnull +34 -> 390
     //   359: iload_0
     //   360: iload_1
-    //   361: getstatic 478	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   364: invokestatic 482	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   361: getstatic 477	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   364: invokestatic 481	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   367: astore_2
     //   368: aload_2
     //   369: astore 7
-    //   371: getstatic 463	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   371: getstatic 462	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   374: ifnull +16 -> 390
-    //   377: getstatic 463	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   377: getstatic 462	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   380: aload 18
     //   382: aload_2
-    //   383: invokevirtual 486	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   383: invokevirtual 485	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   386: pop
     //   387: aload_2
     //   388: astore 7
     //   390: aload 17
-    //   392: new 610	android/graphics/Canvas
+    //   392: new 609	android/graphics/Canvas
     //   395: dup
     //   396: aload 7
-    //   398: invokespecial 613	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   398: invokespecial 612	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   401: invokevirtual 968	com/tencent/mobileqq/portal/StrokeTextView:draw	(Landroid/graphics/Canvas;)V
     //   404: aload 7
     //   406: areturn
@@ -1334,7 +1334,7 @@ public class ApolloRender
     //   425: invokevirtual 918	java/lang/Exception:toString	()Ljava/lang/String;
     //   428: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   431: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   434: invokestatic 732	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   434: invokestatic 731	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   437: aconst_null
     //   438: areturn
     //   439: iload 5
@@ -1375,10 +1375,10 @@ public class ApolloRender
     //   512: new 124	java/lang/StringBuilder
     //   515: dup
     //   516: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   519: ldc_w 641
+    //   519: ldc_w 640
     //   522: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   525: aload_2
-    //   526: invokevirtual 644	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   526: invokevirtual 643	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   529: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   532: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   535: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1391,10 +1391,10 @@ public class ApolloRender
     //   551: new 124	java/lang/StringBuilder
     //   554: dup
     //   555: invokespecial 127	java/lang/StringBuilder:<init>	()V
-    //   558: ldc_w 641
+    //   558: ldc_w 640
     //   561: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   564: aload_2
-    //   565: invokevirtual 645	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   565: invokevirtual 644	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   568: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   571: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   574: invokestatic 266	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1637,7 +1637,7 @@ public class ApolloRender
   {
     ApolloRender localApolloRender = getRenderByThreadId();
     localApolloRender.mEditorAddr = paramLong;
-    ThreadManager.getUIHandler().post(new yhw(localApolloRender));
+    ThreadManager.getUIHandler().post(new yld(localApolloRender));
   }
   
   public static void httpRequest(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String[] paramArrayOfString, boolean paramBoolean)
@@ -1651,7 +1651,7 @@ public class ApolloRender
       QLog.e("ApolloRender", 2, "httpLog  httpRequest method null ");
       return;
     }
-    ThreadManager.post(new yil(paramString2, paramString1, paramArrayOfString, new yij(localView, paramLong), paramBoolean, paramString3, paramString4, paramString5), 5, null, true);
+    ThreadManager.post(new yls(paramString2, paramString1, paramArrayOfString, new ylq(localView, paramLong), paramBoolean, paramString3, paramString4, paramString5), 5, null, true);
   }
   
   public static void httpRequestData(long paramLong, String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3, String paramString4, String[] paramArrayOfString, boolean paramBoolean)
@@ -1665,7 +1665,7 @@ public class ApolloRender
       QLog.e("ApolloRender", 2, "httpLog  httpRequest method null ");
       return;
     }
-    ThreadManager.post(new yii(paramString2, paramString1, paramArrayOfByte, paramArrayOfString, new yic(paramString3, paramLong)), 5, null, true);
+    ThreadManager.post(new ylp(paramString2, paramString1, paramArrayOfByte, paramArrayOfString, new ylj(paramString3, paramLong)), 5, null, true);
   }
   
   protected static byte[] jsha1(byte[] paramArrayOfByte, int paramInt)
@@ -1837,7 +1837,7 @@ public class ApolloRender
     if (localView == null) {
       return;
     }
-    ThreadManager.getUIHandler().post(new yia(paramLong, paramInt1, localView, localApolloRender));
+    ThreadManager.getUIHandler().post(new ylh(paramLong, paramInt1, localView, localApolloRender));
   }
   
   public static void selectPhotoFromSystem(int paramInt1, int paramInt2, Intent paramIntent)
@@ -1909,7 +1909,7 @@ public class ApolloRender
         ((ApolloSurfaceView)localView).getRender().getSavaWrapper().a(g_imageselector, 2, 0, 0, null);
         continue;
         if ((localView instanceof ApolloTextureView)) {
-          ((ApolloTextureView)localView).queueEvent(new yib(paramInt2, paramIntent, localView));
+          ((ApolloTextureView)localView).queueEvent(new yli(paramInt2, paramIntent, localView));
         } else {
           QLog.e("ApolloRender", 2, "imageselector view type else ");
         }
@@ -1920,14 +1920,14 @@ public class ApolloRender
   public static void setEditorBtnClick(ApolloSurfaceView paramApolloSurfaceView, ApolloRender paramApolloRender)
   {
     if (paramApolloRender.mEditorBtn != null) {
-      paramApolloRender.mEditorBtn.setOnClickListener(new yio(paramApolloRender, paramApolloSurfaceView));
+      paramApolloRender.mEditorBtn.setOnClickListener(new ylv(paramApolloRender, paramApolloSurfaceView));
     }
   }
   
   public static void setEditorWatcher(ApolloSurfaceView paramApolloSurfaceView, ApolloRender paramApolloRender)
   {
     if (paramApolloRender.mEditorPop != null) {
-      paramApolloRender.mEditorPop.addTextChangedListener(new yiq(paramApolloSurfaceView, paramApolloRender));
+      paramApolloRender.mEditorPop.addTextChangedListener(new ylx(paramApolloSurfaceView, paramApolloRender));
     }
   }
   
@@ -1947,7 +1947,7 @@ public class ApolloRender
     if (localView == null) {
       return;
     }
-    ThreadManager.getUIHandler().post(new yie(localView, paramInt));
+    ThreadManager.getUIHandler().post(new yll(localView, paramInt));
   }
   
   public static void setKeyBoardText(long paramLong, String paramString)
@@ -1959,7 +1959,7 @@ public class ApolloRender
       localApolloRender.mEditorDefaultText = paramString;
       return;
     }
-    ThreadManager.getUIHandler().post(new yhx(localApolloRender, paramString));
+    ThreadManager.getUIHandler().post(new yle(localApolloRender, paramString));
   }
   
   public static void setRenderMode(int paramInt)
@@ -1996,10 +1996,10 @@ public class ApolloRender
         paramApolloRender.mEditWindow = new PopupWindow(paramView.getContext());
         Object localObject = (RelativeLayout)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2130968685, null);
         paramApolloRender.mEditWindow.setContentView((View)localObject);
-        paramApolloRender.mEditorPop = ((EditText)((RelativeLayout)localObject).findViewById(2131363171));
+        paramApolloRender.mEditorPop = ((EditText)((RelativeLayout)localObject).findViewById(2131363189));
         ((RelativeLayout)localObject).requestLayout();
-        ((RelativeLayout)localObject).post(new yis(paramApolloRender, (RelativeLayout)localObject));
-        paramApolloRender.mEditorBtn = ((Button)((RelativeLayout)localObject).findViewById(2131363172));
+        ((RelativeLayout)localObject).post(new ylz(paramApolloRender, (RelativeLayout)localObject));
+        paramApolloRender.mEditorBtn = ((Button)((RelativeLayout)localObject).findViewById(2131363190));
         paramApolloRender.mEditorBtn.setWidth((int)(50.0F * DeviceInfoUtil.a));
         paramApolloRender.mEditWindow.setOutsideTouchable(false);
         paramApolloRender.mEditWindow.setFocusable(true);
@@ -2008,7 +2008,7 @@ public class ApolloRender
           paramApolloRender.mEditorPop.setText(paramApolloRender.mEditorDefaultText);
           paramApolloRender.mEditorPop.setSelection(paramApolloRender.mEditorDefaultText.length());
         }
-        localObject = BaseApplicationImpl.getContext().getResources().getDrawable(2130845508);
+        localObject = BaseApplicationImpl.getContext().getResources().getDrawable(2130845636);
         paramApolloRender.mEditWindow.setBackgroundDrawable((Drawable)localObject);
       }
       setEditorWatcher((ApolloSurfaceView)paramView, paramApolloRender);
@@ -2019,7 +2019,7 @@ public class ApolloRender
       i = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0).getInt("sp_key_apollo_keyboard_height", 0);
       if (i > 0)
       {
-        paramView.getRootView().postDelayed(new yhs(paramApolloRender, paramView, i), 1000L);
+        paramView.getRootView().postDelayed(new ykz(paramApolloRender, paramView, i), 1000L);
         return;
       }
     } while ((paramApolloRender == null) || (paramApolloRender.mEditWindow == null) || (paramView == null));
@@ -2060,7 +2060,7 @@ public class ApolloRender
     //   51: aload_0
     //   52: ldc_w 1515
     //   55: ldc_w 1517
-    //   58: invokevirtual 814	com/tencent/mobileqq/apollo/ApolloRender:getRscPath	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   58: invokevirtual 813	com/tencent/mobileqq/apollo/ApolloRender:getRscPath	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   61: invokevirtual 1519	com/tencent/mobileqq/apollo/ApolloEngine:b	(Ljava/lang/String;)V
     //   64: aload_0
     //   65: getfield 208	com/tencent/mobileqq/apollo/ApolloRender:mSavaWrapper	Lcom/tencent/mobileqq/apollo/ApolloEngine;
@@ -2090,7 +2090,7 @@ public class ApolloRender
     //   123: ldc 44
     //   125: iconst_1
     //   126: ldc_w 1538
-    //   129: invokestatic 732	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   129: invokestatic 731	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   132: goto -17 -> 115
     //   135: astore_1
     //   136: aload_0
@@ -2119,10 +2119,10 @@ public class ApolloRender
     sIsKeyBoardDissmiss = false;
     sIsKeyBoardShow = false;
     if (localApolloRender.mEditWindow == null) {
-      localView.getViewTreeObserver().addOnGlobalLayoutListener(new yht(localApolloRender, localView));
+      localView.getViewTreeObserver().addOnGlobalLayoutListener(new yla(localApolloRender, localView));
     }
-    ThreadManager.getUIHandler().post(new yhu(localApolloRender, localView));
-    ThreadManager.getUIHandler().postDelayed(new yhv(), 500L);
+    ThreadManager.getUIHandler().post(new ylb(localApolloRender, localView));
+    ThreadManager.getUIHandler().postDelayed(new ylc(), 500L);
   }
   
   private boolean snapShot(GL10 paramGL10)
@@ -2193,7 +2193,7 @@ public class ApolloRender
       return null;
     }
     FaceStatus[] arrayOfFaceStatus = localApolloRender.mDetector.doTrack(paramArrayOfByte, paramInt1, paramInt2);
-    mDetectorThreadHandler.post(new yhz(localApolloRender, paramArrayOfByte, paramInt1, paramInt2));
+    mDetectorThreadHandler.post(new ylg(localApolloRender, paramArrayOfByte, paramInt1, paramInt2));
     return arrayOfFaceStatus;
   }
   
@@ -2206,12 +2206,12 @@ public class ApolloRender
       try
       {
         localFileInputStream = new FileInputStream(paramString1);
-        localZipInputStream = new ZipInputStream(new BufferedInputStream(localFileInputStream));
+        localQZipInputStream = new QZipInputStream(new BufferedInputStream(localFileInputStream));
       }
       catch (Exception paramString1)
       {
         FileInputStream localFileInputStream;
-        ZipInputStream localZipInputStream;
+        QZipInputStream localQZipInputStream;
         int i;
         byte[] arrayOfByte;
         Object localObject2;
@@ -2220,7 +2220,7 @@ public class ApolloRender
       }
       try
       {
-        paramString1 = localZipInputStream.getNextEntry();
+        paramString1 = localQZipInputStream.getNextEntry();
         i = j;
         if (paramString1 != null)
         {
@@ -2247,7 +2247,7 @@ public class ApolloRender
         localObject2 = new BufferedOutputStream(paramString1, 4096);
         try
         {
-          i = localZipInputStream.read(arrayOfByte, 0, 4096);
+          i = localQZipInputStream.read(arrayOfByte, 0, 4096);
           if (i == -1) {
             continue;
           }
@@ -2278,7 +2278,7 @@ public class ApolloRender
       paramString1.printStackTrace();
       i = 0;
       localFileInputStream.close();
-      localZipInputStream.close();
+      localQZipInputStream.close();
       return i;
       ((BufferedOutputStream)localObject2).flush();
       ((BufferedOutputStream)localObject2).close();
@@ -2432,7 +2432,7 @@ public class ApolloRender
           if ((paramString3 != null) && (!paramString3.equals(""))) {
             paramString1.setEnabledProtocols(new String[] { paramString3 });
           }
-          paramString1.addHandshakeCompletedListener(new yim(localView, paramLong));
+          paramString1.addHandshakeCompletedListener(new ylt(localView, paramLong));
           paramString1.startHandshake();
           paramInt1 = getfd(paramSocket);
           ((ApolloSurfaceView)localView).getRender().getSavaWrapper().b(paramLong, paramInt1);
@@ -2483,8 +2483,8 @@ public class ApolloRender
     //   34: goto -22 -> 12
     //   37: iload_1
     //   38: iload_2
-    //   39: getstatic 478	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   42: invokestatic 482	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   39: getstatic 477	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   42: invokestatic 481	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   45: astore 6
     //   47: aload 6
     //   49: aload 7
@@ -2525,19 +2525,19 @@ public class ApolloRender
     //   121: astore_0
     //   122: aload_3
     //   123: ldc_w 857
-    //   126: invokevirtual 639	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   126: invokevirtual 638	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   129: ifne +188 -> 317
     //   132: aload_3
     //   133: ldc_w 1823
-    //   136: invokevirtual 639	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   136: invokevirtual 638	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   139: ifne +178 -> 317
     //   142: aload_3
     //   143: ldc_w 1825
-    //   146: invokevirtual 639	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   146: invokevirtual 638	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   149: ifne +168 -> 317
     //   152: aload_3
     //   153: ldc_w 1827
-    //   156: invokevirtual 639	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   156: invokevirtual 638	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   159: ifeq +6 -> 165
     //   162: goto +155 -> 317
     //   165: iload 5
@@ -2706,7 +2706,7 @@ public class ApolloRender
     //   74: astore_1
     //   75: aload 4
     //   77: aload 5
-    //   79: ldc_w 811
+    //   79: ldc_w 810
     //   82: invokestatic 1205	com/tencent/mobileqq/apollo/ApolloRender:recursionZip	(Ljava/util/zip/ZipOutputStream;Ljava/io/File;Ljava/lang/String;)V
     //   85: goto +84 -> 169
     //   88: astore_1
@@ -2726,7 +2726,7 @@ public class ApolloRender
     //   110: astore_1
     //   111: aload 4
     //   113: aload_0
-    //   114: ldc_w 811
+    //   114: ldc_w 810
     //   117: invokestatic 1205	com/tencent/mobileqq/apollo/ApolloRender:recursionZip	(Ljava/util/zip/ZipOutputStream;Ljava/io/File;Ljava/lang/String;)V
     //   120: aload 4
     //   122: invokevirtual 1858	java/util/zip/ZipOutputStream:close	()V
@@ -3101,7 +3101,7 @@ public class ApolloRender
       {
         paramGL10 = (OnApolloViewListener)this.mCallbackRef.get();
         this.mIsReadyNotify = true;
-        ThreadManager.post(new yhr(this, paramGL10, paramInt1, paramInt2), 5, null, true);
+        ThreadManager.post(new yky(this, paramGL10, paramInt1, paramInt2), 5, null, true);
       }
       return;
       label194:

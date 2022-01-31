@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.paster;
 
-import amwt;
 import android.annotation.TargetApi;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anmy;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
@@ -14,7 +14,7 @@ import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
 public class PasterParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amwt();
+  public static final Parcelable.Creator CREATOR = new anmy();
   public static int a;
   public static int b;
   public float a;

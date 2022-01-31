@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import QQService.StreamData;
 import QQService.StreamInfo;
-import aidu;
+import airx;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -137,7 +137,7 @@ public class TransFileController
                   continue;
                 }
                 PicPreDownloadUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramTransferRequest);
-                paramBaseTransProcessor.an_();
+                paramBaseTransProcessor.ap_();
                 if (!paramBoolean) {
                   continue;
                 }
@@ -171,7 +171,7 @@ public class TransFileController
         paramBaseTransProcessor.c(paramString);
       } while (paramBaseTransProcessor.c() != 0);
       PicPreDownloadUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramTransferRequest);
-      paramBaseTransProcessor.an_();
+      paramBaseTransProcessor.ap_();
     } while (!paramBoolean);
     try
     {
@@ -337,7 +337,7 @@ public class TransFileController
         if ((paramTransferRequest.b == 6) || (paramTransferRequest.b == 17) || (paramTransferRequest.b == 9)) {
           return new ShortVideoUploadProcessor(this, paramTransferRequest);
         }
-        if ((paramTransferRequest.b == 8) || (paramTransferRequest.b == 64) || (paramTransferRequest.b == 22) || (paramTransferRequest.b == 21) || (paramTransferRequest.b == 34) || (paramTransferRequest.b == 35) || (paramTransferRequest.b == 36) || (paramTransferRequest.b == 37) || (paramTransferRequest.b == 38) || (paramTransferRequest.b == 48) || (paramTransferRequest.b == 39) || (paramTransferRequest.b == 40) || (paramTransferRequest.b == 41) || (paramTransferRequest.b == 50) || (paramTransferRequest.b == 51) || (paramTransferRequest.b == 54) || (paramTransferRequest.b == 56)) {
+        if ((paramTransferRequest.b == 8) || (paramTransferRequest.b == 64) || (paramTransferRequest.b == 22) || (paramTransferRequest.b == 21) || (paramTransferRequest.b == 34) || (paramTransferRequest.b == 35) || (paramTransferRequest.b == 36) || (paramTransferRequest.b == 37) || (paramTransferRequest.b == 38) || (paramTransferRequest.b == 48) || (paramTransferRequest.b == 23) || (paramTransferRequest.b == 39) || (paramTransferRequest.b == 40) || (paramTransferRequest.b == 41) || (paramTransferRequest.b == 50) || (paramTransferRequest.b == 51) || (paramTransferRequest.b == 54) || (paramTransferRequest.b == 56)) {
           return new NearbyPeoplePhotoUploadProcessor(this, paramTransferRequest);
         }
         if (paramTransferRequest.b == 20) {
@@ -479,7 +479,7 @@ public class TransFileController
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, Intent paramIntent)
   {
-    ThreadManager.postImmediately(new aidu(this, paramString, paramIntent, paramQQAppInterface), null, true);
+    ThreadManager.postImmediately(new airx(this, paramString, paramIntent, paramQQAppInterface), null, true);
   }
   
   public void a(String paramString)

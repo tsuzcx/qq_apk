@@ -1,52 +1,36 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
-class svi
-  implements Runnable
+public class svi
+  implements TextWatcher
 {
-  svi(svh paramsvh, List paramList) {}
+  public svi(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (Leba.a(this.jdField_a_of_type_Svh.a) == null) {
-      Leba.a(this.jdField_a_of_type_Svh.a, new ArrayList());
+    paramEditable = paramEditable.toString();
+    int i = 0;
+    if (!TextUtils.isEmpty(paramEditable)) {
+      i = paramEditable.getBytes().length / 3;
     }
-    Iterator localIterator1 = Leba.a(this.jdField_a_of_type_Svh.a).iterator();
-    while (localIterator1.hasNext())
+    if (i <= 40) {
+      this.a.a.setTextColor(this.a.getResources().getColor(2131494264));
+    }
+    for (;;)
     {
-      LebaViewItem localLebaViewItem1 = (LebaViewItem)localIterator1.next();
-      if ((localLebaViewItem1 != null) && (localLebaViewItem1.b != null) && (localLebaViewItem1.a != null))
-      {
-        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator2.hasNext())
-        {
-          LebaViewItem localLebaViewItem2 = (LebaViewItem)localIterator2.next();
-          if ((localLebaViewItem2 != null) && (localLebaViewItem2.a != null) && (localLebaViewItem2.a.strPkgName.equals(localLebaViewItem1.a.strPkgName))) {
-            localLebaViewItem2.b = localLebaViewItem1.b;
-          }
-        }
-      }
-    }
-    Leba.a(this.jdField_a_of_type_Svh.a).clear();
-    Leba.a(this.jdField_a_of_type_Svh.a).addAll(this.jdField_a_of_type_JavaUtilList);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, "refreshLebaConfig. lebaData size=" + Leba.a(this.jdField_a_of_type_Svh.a).size());
-    }
-    if (this.jdField_a_of_type_Svh.a.a != null)
-    {
-      this.jdField_a_of_type_Svh.a.a.notifyDataSetChanged();
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "refreshLebaConfig. notifyData.");
-      }
-      Leba.c(this.jdField_a_of_type_Svh.a);
+      this.a.a.setText("" + (40 - i));
+      return;
+      this.a.a.setTextColor(-65536);
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

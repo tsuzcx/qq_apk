@@ -17,9 +17,9 @@ import mqq.manager.Manager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wzl;
-import wzm;
-import wzn;
+import xcq;
+import xcr;
+import xcs;
 
 public class QWalletConfigManager
   implements Manager
@@ -73,7 +73,7 @@ public class QWalletConfigManager
     if (QLog.isColorLevel()) {
       QLog.d("QWalletConfigManager", 2, "realGetConfig:" + paramLong + "|" + paramConfigListener + "|" + paramString + "|" + paramMap + "|" + localReqWalletConfig);
     }
-    QWalletCommonServlet.a(localReqWalletConfig, new wzm(this, paramLong, paramConfigListener, new WeakReference(this)));
+    QWalletCommonServlet.a(localReqWalletConfig, new xcr(this, paramLong, paramConfigListener, new WeakReference(this)));
   }
   
   private boolean a()
@@ -161,7 +161,7 @@ public class QWalletConfigManager
     WeakReference localWeakReference = new WeakReference(this);
     Handler localHandler = a();
     if (localHandler != null) {
-      localHandler.postDelayed(new wzl(this, localWeakReference), 5000L);
+      localHandler.postDelayed(new xcq(this, localWeakReference), 5000L);
     }
   }
   
@@ -222,7 +222,7 @@ public class QWalletConfigManager
     {
       return;
       paramMap = ReqWalletConfig.createReq(0L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfig.seriesNo, null, paramMap);
-      QWalletCommonServlet.a(paramMap, 1, new wzn(this));
+      QWalletCommonServlet.a(paramMap, 1, new xcs(this));
     } while (!QLog.isColorLevel());
     QLog.d("QWalletConfigManager", 2, "setConfig:" + paramMap);
   }

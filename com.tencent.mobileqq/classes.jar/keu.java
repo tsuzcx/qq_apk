@@ -10,7 +10,7 @@ public class keu
   
   public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr);
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr, 0);
     return true;
   }
 }

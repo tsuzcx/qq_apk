@@ -1,24 +1,23 @@
-import android.app.Activity;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AntiphingToast;
+import java.util.TimerTask;
 
 public class aksr
-  implements Runnable
+  extends TimerTask
 {
-  public aksr(MyAppApi paramMyAppApi, Activity paramActivity) {}
+  public aksr(AntiphingToast paramAntiphingToast) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.e) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a != null))
-    {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d(this.jdField_a_of_type_AndroidAppActivity);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_AndroidAppActivity);
+    Message localMessage = new Message();
+    localMessage.what = 1;
+    this.a.a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksr
  * JD-Core Version:    0.7.0.1
  */

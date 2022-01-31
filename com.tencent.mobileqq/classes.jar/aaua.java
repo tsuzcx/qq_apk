@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aaua
-  implements DialogInterface.OnClickListener
+public final class aaua
+  implements ArkEnvironmentManager.LibraryLoader
 {
-  public aaua(ARMapActivity paramARMapActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean Load()
   {
-    paramDialogInterface.dismiss();
+    ArkAppCenter.e();
+    return ArkAppCenter.b;
+  }
+  
+  public boolean isLibraryLoad()
+  {
+    return ArkAppCenter.b;
   }
 }
 

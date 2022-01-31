@@ -1,53 +1,39 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardWebviewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
-import com.tencent.util.URLUtil;
+import android.view.View;
+import com.tencent.mobileqq.ocr.OCRShareHelper;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class agbh
-  extends BroadcastReceiver
+  implements ActionSheet.OnButtonClickListener
 {
-  public agbh(ProfileCardWebviewPlugin paramProfileCardWebviewPlugin) {}
+  int jdField_a_of_type_Int = -1;
+  String jdField_a_of_type_JavaLangString = "";
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public agbh(OCRShareHelper paramOCRShareHelper) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramIntent == null) {}
-    do
+    switch (paramInt)
     {
-      return;
-      paramContext = this.a.mRuntime.a();
-    } while ((paramContext == null) || (paramContext.isFinishing()));
-    paramIntent = this.a.mRuntime.a(this.a.mRuntime.a());
-    if ((paramIntent != null) && ((paramIntent instanceof WebUiUtils.WebUiMethodInterface)))
-    {
-      paramIntent = ((WebUiUtils.WebUiMethodInterface)paramIntent).b();
-      if ((TextUtils.isEmpty(paramIntent)) || (!paramIntent.contains("entryId"))) {
-        break label232;
-      }
     }
-    label232:
-    for (this.a.a = URLUtil.a(URLUtil.a(paramIntent), "entryId", 2);; this.a.a = 2)
+    for (;;)
     {
-      paramContext.finish();
-      paramContext = new Intent(this.a.mRuntime.a(), FriendProfileCardActivity.class);
-      paramIntent = new ProfileActivity.AllInOne(this.a.mRuntime.a().getCurrentAccountUin(), 0);
-      if (this.a.a == 0) {
-        paramContext.setFlags(67108864);
+      if ((OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper) != null) && (OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper).isShowing())) {
+        OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper).dismiss();
       }
-      paramContext.putExtra("AllInOne", paramIntent);
-      this.a.mRuntime.a().startActivity(paramContext);
-      paramContext = new Intent();
-      paramContext.putExtra("closeSpecialLogic", true);
-      this.a.mRuntime.a().setResult(-1, paramContext);
-      this.a.mRuntime.a().finish();
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        ReportController.b(null, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+      }
       return;
+      OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper, 1, OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper));
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_JavaLangString = "0X80082EB";
+      continue;
+      OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper, 2, OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper));
+      this.jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_JavaLangString = "0X80082EC";
     }
   }
 }

@@ -1,7 +1,16 @@
-public abstract class pja
+import com.tencent.component.media.photogif.QzoneAnimationDrawable;
+
+public class pja
+  implements Runnable
 {
-  public int a;
-  public byte[] a;
+  private pja(QzoneAnimationDrawable paramQzoneAnimationDrawable) {}
+  
+  public void run()
+  {
+    if (!QzoneAnimationDrawable.b(this.a)) {
+      QzoneAnimationDrawable.a(this.a, true);
+    }
+  }
 }
 
 

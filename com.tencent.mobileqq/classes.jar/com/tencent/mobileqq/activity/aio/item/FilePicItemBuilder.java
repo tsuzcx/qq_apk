@@ -93,14 +93,14 @@ import java.net.URL;
 import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import utq;
-import uts;
-import utt;
-import utv;
-import utw;
-import utx;
-import uty;
-import utz;
+import uws;
+import uwu;
+import uwv;
+import uwx;
+import uwy;
+import uwz;
+import uxa;
+import uxb;
 
 public class FilePicItemBuilder
   extends BaseBubbleBuilder
@@ -127,7 +127,7 @@ public class FilePicItemBuilder
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = null;
   }
   
-  private URLDrawable a(FileManagerEntity paramFileManagerEntity, MessageForFile paramMessageForFile, Context paramContext, URL paramURL, utz paramutz)
+  private URLDrawable a(FileManagerEntity paramFileManagerEntity, MessageForFile paramMessageForFile, Context paramContext, URL paramURL, uxb paramuxb)
   {
     if (QLog.isColorLevel()) {
       QLog.i("FilePicItemBuilder<FileAssistant>", 1, "Id[" + paramFileManagerEntity.nSessionId + "] picFile entity size(wh)[" + paramFileManagerEntity.imgWidth + ":" + paramFileManagerEntity.imgHeight + "]");
@@ -150,15 +150,15 @@ public class FilePicItemBuilder
     if (QLog.isColorLevel()) {
       QLog.i("FilePicItemBuilder<FileAssistant>", 1, "Id[" + paramFileManagerEntity.nSessionId + "] show AIOFilePicItem use size(wh)[" + j + ":" + i + "]");
     }
-    paramutz.e = j;
-    paramutz.f = i;
+    paramuxb.e = j;
+    paramuxb.f = i;
     if (paramURL != null)
     {
       paramMessageForFile = paramURL.toString();
       if ((BaseApplicationImpl.sImageCache != null) && (BaseApplicationImpl.sImageCache.get(paramMessageForFile) != null))
       {
         paramContext = URLDrawableHelper.a(paramURL, 0, 0, null, null, true, 0.0F);
-        paramutz.jdField_a_of_type_Boolean = true;
+        paramuxb.jdField_a_of_type_Boolean = true;
         return paramContext;
       }
     }
@@ -181,7 +181,7 @@ public class FilePicItemBuilder
       }
       paramMessageForFile = URLDrawable.getDrawable(paramURL, paramContext);
       paramMessageForFile.setAutoDownload(true);
-      paramutz.jdField_a_of_type_Boolean = true;
+      paramuxb.jdField_a_of_type_Boolean = true;
     }
     for (;;)
     {
@@ -203,7 +203,7 @@ public class FilePicItemBuilder
       label414:
       paramContext.mPlayGifImage = false;
       if (FileUtil.b(paramFileManagerEntity.getFilePath())) {
-        ThreadManager.executeOnSubThread(new utq(this, paramFileManagerEntity));
+        ThreadManager.executeOnSubThread(new uws(this, paramFileManagerEntity));
       }
       if (FilePicURLDrawlableHelper.b(paramFileManagerEntity)) {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity, 7);
@@ -305,23 +305,23 @@ public class FilePicItemBuilder
     }
   }
   
-  private void a(String paramString1, String paramString2, utz paramutz)
+  private void a(String paramString1, String paramString2, uxb paramuxb)
   {
-    if (paramutz.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    if (paramuxb.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
-      paramutz.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-      ((RelativeLayout)paramutz.jdField_a_of_type_AndroidViewView).removeView(paramutz.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      paramuxb.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      ((RelativeLayout)paramuxb.jdField_a_of_type_AndroidViewView).removeView(paramuxb.jdField_a_of_type_AndroidWidgetRelativeLayout);
     }
     RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
     localRelativeLayout.setId(2131361958);
-    localRelativeLayout.setBackgroundResource(2130838361);
-    paramutz.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
+    localRelativeLayout.setBackgroundResource(2130838365);
+    paramuxb.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
     Object localObject1 = new RelativeLayout.LayoutParams(-1, AIOUtils.a(55.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     ((RelativeLayout.LayoutParams)localObject1).addRule(12);
-    ((RelativeLayout)paramutz.jdField_a_of_type_AndroidViewView).addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject1);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(5, 2131366616);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(7, 2131366616);
-    int i = QFileUtils.a(paramutz.e, paramutz.f);
+    ((RelativeLayout)paramuxb.jdField_a_of_type_AndroidViewView).addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject1);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(5, 2131366640);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(7, 2131366640);
+    int i = QFileUtils.a(paramuxb.e, paramuxb.f);
     localObject1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
     ((TextView)localObject1).setId(2131361963);
     ((TextView)localObject1).setTextSize(2, 12.0F);
@@ -347,7 +347,7 @@ public class FilePicItemBuilder
       localLayoutParams.addRule(12);
       localLayoutParams.addRule(2, 2131361963);
       localRelativeLayout.addView((View)localObject2, localLayoutParams);
-      paramString1 = QFileUtils.a(this.jdField_a_of_type_AndroidContentContext, i, paramutz.e, (TextView)localObject2, (TextView)localObject1, paramString1, paramString2);
+      paramString1 = QFileUtils.a(this.jdField_a_of_type_AndroidContentContext, i, paramuxb.e, (TextView)localObject2, (TextView)localObject1, paramString1, paramString2);
       switch (i)
       {
       }
@@ -370,7 +370,7 @@ public class FilePicItemBuilder
   }
   
   @TargetApi(16)
-  private void a(utz paramutz)
+  private void a(uxb paramuxb)
   {
     FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
     float f = this.jdField_a_of_type_Float;
@@ -383,21 +383,21 @@ public class FilePicItemBuilder
       localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
       ((TextView)localObject).setGravity(17);
       ((TextView)localObject).setTextColor(Color.rgb(178, 182, 195));
-      ((TextView)localObject).setText(2131433434);
+      ((TextView)localObject).setText(2131433451);
       ((TextView)localObject).setCompoundDrawablePadding(AIOUtils.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(0, 2130845457, 0, 0);
+      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(0, 2130845585, 0, 0);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 17;
       localFrameLayout.addView((View)localObject, localLayoutParams);
-      localObject = new RelativeLayout.LayoutParams(paramutz.e, paramutz.f);
-      ((RelativeLayout)paramutz.jdField_a_of_type_AndroidViewView).addView(localFrameLayout, (ViewGroup.LayoutParams)localObject);
-      paramutz.jdField_a_of_type_AndroidWidgetFrameLayout = localFrameLayout;
+      localObject = new RelativeLayout.LayoutParams(paramuxb.e, paramuxb.f);
+      ((RelativeLayout)paramuxb.jdField_a_of_type_AndroidViewView).addView(localFrameLayout, (ViewGroup.LayoutParams)localObject);
+      paramuxb.jdField_a_of_type_AndroidWidgetFrameLayout = localFrameLayout;
       return;
       localFrameLayout.setBackgroundDrawable((Drawable)localObject);
     }
   }
   
-  private void a(utz paramutz, FileManagerEntity paramFileManagerEntity)
+  private void a(uxb paramuxb, FileManagerEntity paramFileManagerEntity)
   {
     int j = 1;
     if (paramFileManagerEntity != null) {}
@@ -409,7 +409,7 @@ public class FilePicItemBuilder
       j = 0;
       label65:
       if (j != 0) {
-        if (paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView == null)
+        if (paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView == null)
         {
           paramFileManagerEntity = new PicProgressView(this.jdField_a_of_type_AndroidContentContext);
           paramFileManagerEntity.setRadius(this.jdField_a_of_type_Float * 15.0F, false);
@@ -417,29 +417,29 @@ public class FilePicItemBuilder
           paramFileManagerEntity.setShowCorner(false);
           paramFileManagerEntity.setProgressBackgroudColor(2130706432);
           RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-          localLayoutParams.addRule(6, 2131366616);
-          localLayoutParams.addRule(8, 2131366616);
-          localLayoutParams.addRule(5, 2131366616);
-          localLayoutParams.addRule(7, 2131366616);
-          ((RelativeLayout)paramutz.jdField_a_of_type_AndroidViewView).addView(paramFileManagerEntity, localLayoutParams);
+          localLayoutParams.addRule(6, 2131366640);
+          localLayoutParams.addRule(8, 2131366640);
+          localLayoutParams.addRule(5, 2131366640);
+          localLayoutParams.addRule(7, 2131366640);
+          ((RelativeLayout)paramuxb.jdField_a_of_type_AndroidViewView).addView(paramFileManagerEntity, localLayoutParams);
           paramFileManagerEntity.setProgress(0);
-          paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = paramFileManagerEntity;
-          paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgressKey(paramutz.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + paramutz.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+          paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = paramFileManagerEntity;
+          paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgressKey(paramuxb.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + paramuxb.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
           label233:
-          paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setVisibility(0);
+          paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setVisibility(0);
         }
       }
       break;
     }
     for (;;)
     {
-      if ((i != 0) && (paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null))
+      if ((i != 0) && (paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null))
       {
-        if (paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.a(paramutz.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + paramutz.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq)) {
+        if (paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.a(paramuxb.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + paramuxb.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq)) {
           break label447;
         }
-        ((RelativeLayout)paramutz.jdField_a_of_type_AndroidViewView).removeView(paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
-        paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
+        ((RelativeLayout)paramuxb.jdField_a_of_type_AndroidViewView).removeView(paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
+        paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
       }
       return;
       i = 0;
@@ -455,29 +455,29 @@ public class FilePicItemBuilder
       i = 1;
       j = 0;
       break label65;
-      paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress((int)(paramFileManagerEntity.fProgress * 100.0F));
+      paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress((int)(paramFileManagerEntity.fProgress * 100.0F));
       break label233;
-      if (paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null) {
-        if (!paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.a(paramutz.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + paramutz.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))
+      if (paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView != null) {
+        if (!paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.a(paramuxb.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + paramuxb.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))
         {
-          ((RelativeLayout)paramutz.jdField_a_of_type_AndroidViewView).removeView(paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
-          paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
+          ((RelativeLayout)paramuxb.jdField_a_of_type_AndroidViewView).removeView(paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
+          paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
         }
         else
         {
-          paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress(100);
+          paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress(100);
         }
       }
     }
     label447:
-    paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress(100);
+    paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress(100);
   }
   
-  private boolean a(utz paramutz, FileManagerEntity paramFileManagerEntity)
+  private boolean a(uxb paramuxb, FileManagerEntity paramFileManagerEntity)
   {
     boolean bool = false;
     int i;
-    if ((paramutz.jdField_a_of_type_Boolean) && ((paramFileManagerEntity.status == -1) || (paramFileManagerEntity.status == 1) || (paramFileManagerEntity.status == 0) || (paramFileManagerEntity.status == 3) || (paramFileManagerEntity.status == 13)))
+    if ((paramuxb.jdField_a_of_type_Boolean) && ((paramFileManagerEntity.status == -1) || (paramFileManagerEntity.status == 1) || (paramFileManagerEntity.status == 0) || (paramFileManagerEntity.status == 3) || (paramFileManagerEntity.status == 13)))
     {
       i = 1;
       if (paramFileManagerEntity.status != 16) {
@@ -557,16 +557,16 @@ public class FilePicItemBuilder
   {
     MessageForFile localMessageForFile = (MessageForFile)paramChatMessage;
     paramChatMessage = null;
-    if (utz.class.isInstance(paramViewHolder))
+    if (uxb.class.isInstance(paramViewHolder))
     {
-      paramViewHolder = (utz)paramViewHolder;
+      paramViewHolder = (uxb)paramViewHolder;
       paramChatMessage = paramView;
       if (paramChatMessage != null) {
         break label333;
       }
       paramChatMessage = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
       paramView = new BubbleImageView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setId(2131366616);
+      paramView.setId(2131366640);
       paramView.setAdjustViewBounds(true);
       paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       paramView.setRadius(15.0F);
@@ -596,7 +596,7 @@ public class FilePicItemBuilder
       paramViewHolder.jdField_a_of_type_AndroidViewView = paramChatMessage;
       a(paramBaseChatItemLayout, localMessageForFile, paramViewHolder, paramView, false);
       return paramChatMessage;
-      paramView = new utz(this);
+      paramView = new uxb(this);
       paramView.jdField_b_of_type_JavaLangStringBuilder = paramViewHolder.jdField_b_of_type_JavaLangStringBuilder;
       paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
       paramView.jdField_a_of_type_AndroidViewView = paramViewHolder.jdField_a_of_type_AndroidViewView;
@@ -617,8 +617,8 @@ public class FilePicItemBuilder
     if ((paramView != null) && (paramView.getParent() != null))
     {
       paramView = ((View)paramView.getParent()).getTag();
-      if ((paramView != null) && (utz.class.isInstance(paramView))) {
-        return ((utz)paramView).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+      if ((paramView != null) && (uxb.class.isInstance(paramView))) {
+        return ((uxb)paramView).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
       }
     }
     return null;
@@ -626,7 +626,7 @@ public class FilePicItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new utz(this);
+    return new uxb(this);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -676,7 +676,7 @@ public class FilePicItemBuilder
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800644C", "0X800644C", 0, 0, "6", "", "", "");
         if (FileModel.a(localFileManagerEntity).a(false))
         {
-          FMDialogUtil.a(paramContext, 2131428241, 2131428238, new utw(this, localMessageForFile, paramContext));
+          FMDialogUtil.a(paramContext, 2131428241, 2131428238, new uwy(this, localMessageForFile, paramContext));
         }
         else
         {
@@ -707,7 +707,7 @@ public class FilePicItemBuilder
             paramChatMessage.putExtra("isPic", true);
             paramChatMessage.putExtra("forward_filepath", localFileManagerEntity.getFilePath());
             if (!NetworkUtil.d(BaseApplication.getContext())) {
-              QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131434596, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+              QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131434613, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
             }
             for (;;)
             {
@@ -736,7 +736,7 @@ public class FilePicItemBuilder
                   FMToastUtil.a(2131428327);
                   return;
                 }
-                FileModel.a(localFileManagerEntity).a(false, paramContext, new utx(this, localFileManagerEntity));
+                FileModel.a(localFileManagerEntity).a(false, paramContext, new uwz(this, localFileManagerEntity));
                 this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
                 continue;
                 FileManagerReporter.a("0X8005081");
@@ -756,7 +756,7 @@ public class FilePicItemBuilder
                     return;
                   }
                   boolean bool = localFileManagerEntity.isSend();
-                  FileModel.a(localFileManagerEntity).a(bool, paramContext, new uty(this, localFileManagerEntity));
+                  FileModel.a(localFileManagerEntity).a(bool, paramContext, new uxa(this, localFileManagerEntity));
                   this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
                   continue;
                   this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
@@ -779,17 +779,17 @@ public class FilePicItemBuilder
   protected void a(View paramView)
   {
     super.a(paramView);
-    utz localutz = (utz)AIOUtils.a(paramView);
-    MessageForFile localMessageForFile = (MessageForFile)localutz.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    BaseChatItemLayout localBaseChatItemLayout = localutz.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
+    uxb localuxb = (uxb)AIOUtils.a(paramView);
+    MessageForFile localMessageForFile = (MessageForFile)localuxb.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    BaseChatItemLayout localBaseChatItemLayout = localuxb.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
     paramView = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile);
     if (paramView.getCloudType() == 5)
     {
       FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView);
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext.getString(2131433618);
-    this.jdField_a_of_type_AndroidContentContext.getString(2131433619);
+    this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
+    this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
     String str;
     switch (paramView.nOpType)
     {
@@ -802,22 +802,22 @@ public class FilePicItemBuilder
     {
       ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
       localActionSheet.c(str);
-      localActionSheet.d(this.jdField_a_of_type_AndroidContentContext.getString(2131432998));
+      localActionSheet.d(this.jdField_a_of_type_AndroidContentContext.getString(2131433015));
       localActionSheet.a(paramView);
-      localActionSheet.a(new utt(this, localMessageForFile, localActionSheet, localBaseChatItemLayout, localutz));
+      localActionSheet.a(new uwv(this, localMessageForFile, localActionSheet, localBaseChatItemLayout, localuxb));
       localActionSheet.show();
       return;
       str = this.jdField_a_of_type_AndroidContentContext.getString(2131428110);
     }
     paramView = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
     paramView.c(this.jdField_a_of_type_AndroidContentContext.getString(2131428110));
-    paramView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131432998));
+    paramView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131433015));
     paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131428108));
-    paramView.a(new utv(this, localMessageForFile, paramView, localBaseChatItemLayout, localutz));
+    paramView.a(new uwx(this, localMessageForFile, paramView, localBaseChatItemLayout, localuxb));
     paramView.show();
   }
   
-  public void a(BaseChatItemLayout paramBaseChatItemLayout, MessageForFile paramMessageForFile, utz paramutz, FileManagerEntity paramFileManagerEntity, boolean paramBoolean)
+  public void a(BaseChatItemLayout paramBaseChatItemLayout, MessageForFile paramMessageForFile, uxb paramuxb, FileManagerEntity paramFileManagerEntity, boolean paramBoolean)
   {
     if (paramFileManagerEntity == null) {
       break label5;
@@ -834,27 +834,27 @@ public class FilePicItemBuilder
     paramMessageForFile.urlAtServer = paramFileManagerEntity.strServerPath;
     paramMessageForFile.url = paramFileManagerEntity.getFilePath();
     paramMessageForFile.fileSizeString = FileUtil.a(paramFileManagerEntity.fileSize);
-    if (paramutz.jdField_a_of_type_AndroidWidgetFrameLayout != null)
+    if (paramuxb.jdField_a_of_type_AndroidWidgetFrameLayout != null)
     {
-      paramutz.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-      ((RelativeLayout)paramutz.jdField_a_of_type_AndroidViewView).removeView(paramutz.jdField_a_of_type_AndroidWidgetFrameLayout);
+      paramuxb.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+      ((RelativeLayout)paramuxb.jdField_a_of_type_AndroidViewView).removeView(paramuxb.jdField_a_of_type_AndroidWidgetFrameLayout);
     }
     if ((paramFileManagerEntity.status == 16) && (!FileManagerUtil.e(paramFileManagerEntity)))
     {
       paramMessageForFile = FilePicURLDrawlableHelper.a(paramFileManagerEntity);
       if ((paramMessageForFile.jdField_a_of_type_Int > 0) && (paramMessageForFile.jdField_b_of_type_Int > 0))
       {
-        paramutz.e = paramMessageForFile.jdField_a_of_type_Int;
-        paramutz.f = paramMessageForFile.jdField_b_of_type_Int;
+        paramuxb.e = paramMessageForFile.jdField_a_of_type_Int;
+        paramuxb.f = paramMessageForFile.jdField_b_of_type_Int;
         label165:
-        paramutz.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(null);
-        paramutz.jdField_a_of_type_ComTencentImageURLDrawable = null;
-        a(paramutz);
+        paramuxb.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(null);
+        paramuxb.jdField_a_of_type_ComTencentImageURLDrawable = null;
+        a(paramuxb);
         label183:
-        if (!a(paramutz, paramFileManagerEntity)) {
+        if (!a(paramuxb, paramFileManagerEntity)) {
           break label376;
         }
-        a(paramFileManagerEntity.fileName, FileUtils.a(paramFileManagerEntity.fileSize), paramutz);
+        a(paramFileManagerEntity.fileName, FileUtils.a(paramFileManagerEntity.fileSize), paramuxb);
       }
     }
     for (;;)
@@ -863,36 +863,36 @@ public class FilePicItemBuilder
       if (paramFileManagerEntity.isSend()) {
         break label410;
       }
-      if (paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView == null) {
+      if (paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView == null) {
         break;
       }
-      if (paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.a(paramutz.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + paramutz.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq)) {
+      if (paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.a(paramuxb.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + paramuxb.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq)) {
         break label400;
       }
-      ((RelativeLayout)paramutz.jdField_a_of_type_AndroidViewView).removeView(paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
-      paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
+      ((RelativeLayout)paramuxb.jdField_a_of_type_AndroidViewView).removeView(paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView);
+      paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView = null;
       return;
-      paramutz.e = this.jdField_b_of_type_Int;
-      paramutz.f = this.jdField_c_of_type_Int;
+      paramuxb.e = this.jdField_b_of_type_Int;
+      paramuxb.f = this.jdField_c_of_type_Int;
       break label165;
       URL localURL = FilePicURLDrawlableHelper.b(paramFileManagerEntity);
-      if ((paramutz.jdField_a_of_type_ComTencentImageURLDrawable != null) && (paramutz.jdField_a_of_type_ComTencentImageURLDrawable.getURL().equals(localURL))) {
+      if ((paramuxb.jdField_a_of_type_ComTencentImageURLDrawable != null) && (paramuxb.jdField_a_of_type_ComTencentImageURLDrawable.getURL().equals(localURL))) {
         break label183;
       }
-      paramMessageForFile = a(paramFileManagerEntity, paramMessageForFile, this.jdField_a_of_type_AndroidContentContext, localURL, paramutz);
-      paramutz.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForFile);
-      paramutz.jdField_a_of_type_ComTencentImageURLDrawable = paramMessageForFile;
+      paramMessageForFile = a(paramFileManagerEntity, paramMessageForFile, this.jdField_a_of_type_AndroidContentContext, localURL, paramuxb);
+      paramuxb.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramMessageForFile);
+      paramuxb.jdField_a_of_type_ComTencentImageURLDrawable = paramMessageForFile;
       break label183;
       label376:
-      if (paramutz.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        ((RelativeLayout)paramutz.jdField_a_of_type_AndroidViewView).removeView(paramutz.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      if (paramuxb.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        ((RelativeLayout)paramuxb.jdField_a_of_type_AndroidViewView).removeView(paramuxb.jdField_a_of_type_AndroidWidgetRelativeLayout);
       }
     }
     label400:
-    paramutz.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress(100);
+    paramuxb.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView.setProgress(100);
     return;
     label410:
-    a(paramutz, paramFileManagerEntity);
+    a(paramuxb, paramFileManagerEntity);
   }
   
   public boolean a(FileManagerEntity paramFileManagerEntity)
@@ -924,7 +924,7 @@ public class FilePicItemBuilder
     FileManagerEntity localFileManagerEntity = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView);
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     if ((paramView.isSendFromLocal()) && (localFileManagerEntity.status == 2)) {
-      localQQCustomMenu.a(2131375338, this.jdField_a_of_type_AndroidContentContext.getString(2131433622), 2130838299);
+      localQQCustomMenu.a(2131375569, this.jdField_a_of_type_AndroidContentContext.getString(2131433639), 2130838303);
     }
     for (;;)
     {
@@ -938,9 +938,9 @@ public class FilePicItemBuilder
         if ((localFileManagerEntity.getCloudType() != 0) && (!a(localFileManagerEntity)))
         {
           if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-            localQQCustomMenu.a(2131375357, this.jdField_a_of_type_AndroidContentContext.getString(2131428121), 2130838309);
+            localQQCustomMenu.a(2131375588, this.jdField_a_of_type_AndroidContentContext.getString(2131428121), 2130838313);
           }
-          localQQCustomMenu.a(2131366733, this.jdField_a_of_type_AndroidContentContext.getString(2131428123), 2130838308);
+          localQQCustomMenu.a(2131366776, this.jdField_a_of_type_AndroidContentContext.getString(2131428123), 2130838312);
         }
       }
       if ((localFileManagerEntity.status == 1) || (localFileManagerEntity.status == -1) || ((localFileManagerEntity.status == 3) && (localFileManagerEntity.nOpType == 1))) {
@@ -962,7 +962,7 @@ public class FilePicItemBuilder
       {
         return;
         this.jdField_c_of_type_Boolean = true;
-        new Handler().postDelayed(new uts(this), 1000L);
+        new Handler().postDelayed(new uwu(this), 1000L);
         AIOUtils.m = true;
       } while (super.a());
       if (paramView.getId() != 2131361877) {
@@ -974,12 +974,12 @@ public class FilePicItemBuilder
         QLog.w("FilePicItemBuilder<FileAssistant>", 1, "holder tag is null");
         return;
       }
-      if (!utz.class.isInstance(paramView))
+      if (!uxb.class.isInstance(paramView))
       {
         QLog.w("FilePicItemBuilder<FileAssistant>", 1, "holder tag class[" + paramView.getClass().getName() + "] is not Holder");
         return;
       }
-      paramView = (utz)paramView;
+      paramView = (uxb)paramView;
       localMessageForFile = (MessageForFile)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
       localFileManagerEntity = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile);
     } while ((localFileManagerEntity.status == 16) && (!FileManagerUtil.e(localFileManagerEntity)));

@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
 public class wiy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wiy(ContactsTroopAdapter paramContactsTroopAdapter) {}
+  public wiy(SearchContactsActivity paramSearchContactsActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((TroopManager)this.a.a.getManager(51)).a();
-    this.a.a.runOnUiThread(new wiz(this));
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

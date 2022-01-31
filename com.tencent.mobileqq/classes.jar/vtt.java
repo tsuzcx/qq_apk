@@ -1,24 +1,13 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
 public class vtt
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public vtt(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vtt(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.p = 5;
-    PublicAccountChatPie.c(this.a).post(new vtu(this));
-    this.a.a.sendEmptyMessage(1);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

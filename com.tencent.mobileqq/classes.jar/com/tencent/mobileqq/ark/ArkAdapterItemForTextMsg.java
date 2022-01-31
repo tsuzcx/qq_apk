@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark;
 
-import aakh;
-import aaki;
-import aakj;
+import aari;
+import aarj;
+import aark;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -37,18 +37,18 @@ public class ArkAdapterItemForTextMsg
   
   private void a(Context paramContext)
   {
-    new QQToastNotifier(paramContext).a(2131434447, paramContext.getResources().getDimensionPixelSize(2131558448), 1, 0);
+    new QQToastNotifier(paramContext).a(2131434464, paramContext.getResources().getDimensionPixelSize(2131558448), 1, 0);
   }
   
   private void a(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder)
   {
-    paramArkHorizontalListViewAdapter = new aakj(this, paramArkHorizontalListViewAdapter);
+    paramArkHorizontalListViewAdapter = new aark(this, paramArkHorizontalListViewAdapter);
     paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramArkHorizontalListViewAdapter);
   }
   
   public void attachArkView(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, int paramInt)
   {
-    paramItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842201);
+    paramItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842248);
     ArkAppView localArkAppView = paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
     localArkAppView.setBorderType(3);
     localArkAppView.setClipRadiusTop(15.0F);
@@ -92,12 +92,12 @@ public class ArkAdapterItemForTextMsg
       ((ArkAioContainerWrapper)localObject).setFixSize(BaseChatItemLayout.d, BaseChatItemLayout.d);
       ((ArkAioContainerWrapper)localObject).setMaxSize(BaseChatItemLayout.d, BaseChatItemLayout.d);
       ((ArkAioContainerWrapper)localObject).setMinSize(BaseChatItemLayout.d * 7 / 10, BaseChatItemLayout.d);
-      localObject = new aakh(this, paramItemViewHolder, paramArkHorizontalListViewAdapter, (ArkAioContainerWrapper)localObject, paramInt);
+      localObject = new aari(this, paramItemViewHolder, paramArkHorizontalListViewAdapter, (ArkAioContainerWrapper)localObject, paramInt);
       paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer, paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
       localArkAppView.setOnTouchListener(paramArkHorizontalListViewAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
       localArkAppView.setOnLongClickListener(paramArkHorizontalListViewAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
       localArkAppView.setLoadCallback((ArkViewImplement.LoadCallback)localObject);
-      paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setCallback(new aaki(this));
+      paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setCallback(new aarj(this));
       return;
       label446:
       i = 100;

@@ -47,9 +47,9 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import mso;
-import msp;
-import msq;
+import mtv;
+import mtw;
+import mtx;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -77,7 +77,7 @@ public class TroopBarAssistantManager
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilComparator = new mso(this);
+    this.jdField_a_of_type_JavaUtilComparator = new mtv(this);
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
@@ -480,7 +480,7 @@ public class TroopBarAssistantManager
     if (paramQQAppInterface == null) {
       return;
     }
-    ThreadManager.executeOnSubThread(new msp(this, paramQQAppInterface));
+    ThreadManager.executeOnSubThread(new mtw(this, paramQQAppInterface));
   }
   
   private void m(QQAppInterface paramQQAppInterface)
@@ -1287,7 +1287,7 @@ public class TroopBarAssistantManager
   
   public void e(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.executeOnSubThread(new msq(this, paramQQAppInterface));
+    ThreadManager.executeOnSubThread(new mtx(this, paramQQAppInterface));
   }
   
   public void e(QQAppInterface paramQQAppInterface, boolean paramBoolean)

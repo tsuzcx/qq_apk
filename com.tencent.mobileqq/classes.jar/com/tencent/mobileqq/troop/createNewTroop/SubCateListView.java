@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import ainr;
-import ains;
-import aint;
+import ajbv;
+import ajbw;
+import ajbx;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.view.View;
@@ -43,8 +43,8 @@ public class SubCateListView
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt1, paramInt2 });
     localValueAnimator.setDuration(200L);
     localValueAnimator.setInterpolator(paramInterpolator);
-    localValueAnimator.addUpdateListener(new ainr(this, paramView));
-    localValueAnimator.addListener(new ains(this, paramBoolean, paramView, paramInt2));
+    localValueAnimator.addUpdateListener(new ajbv(this, paramView));
+    localValueAnimator.addListener(new ajbw(this, paramBoolean, paramView, paramInt2));
     localValueAnimator.start();
   }
   
@@ -55,7 +55,7 @@ public class SubCateListView
     {
       localValueAnimator.setDuration(200L);
       localValueAnimator.setInterpolator(new LinearInterpolator());
-      localValueAnimator.addUpdateListener(new aint(this, paramSingleItemViewHolder));
+      localValueAnimator.addUpdateListener(new ajbx(this, paramSingleItemViewHolder));
       localValueAnimator.start();
       return;
     }
@@ -68,10 +68,10 @@ public class SubCateListView
     }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    GridView localGridView = (GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368281);
+    GridView localGridView = (GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368348);
     this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListAdapter = new SubCateListAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     localGridView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListAdapter);
-    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131368280);
+    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131368347);
   }
   
   public void a()
@@ -120,7 +120,7 @@ public class SubCateListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.SubCateListView
  * JD-Core Version:    0.7.0.1
  */

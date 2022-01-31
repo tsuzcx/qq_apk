@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.activity.bless.BlessManager;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView.StickerBubbleAnimationCallback;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class wbv
-  implements Runnable
+  implements StickerBubbleAnimationView.StickerBubbleAnimationCallback
 {
-  public wbv(BlessManager paramBlessManager) {}
+  public wbv(StickerBubbleAnimationViewHolder paramStickerBubbleAnimationViewHolder) {}
   
-  public void run()
+  public void a()
   {
-    if (BlessManager.a(this.a) != null)
-    {
-      if (!BlessManager.a(this.a))
-      {
-        BlessManager.b(this.a, BlessManager.a(this.a, BlessManager.a(this.a), false));
-        BlessManager.a(this.a, BlessManager.a(this.a));
-        BlessManager.a(this.a, BlessManager.a(this.a), true);
-      }
-      return;
+    StickerBubbleAnimationViewHolder.a(this.a, StickerBubbleAnimationViewHolder.a(this.a));
+    ThreadManager.getUIHandler().post(new wbw(this));
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleAnimationViewHolder", 2, "onSurfaceDestroyed");
     }
-    BlessManager.a(this.a, false);
+    StickerBubbleAnimationViewHolder.b(this.a, StickerBubbleAnimationViewHolder.a(this.a));
   }
 }
 

@@ -28,7 +28,7 @@ public class LocationListAdapter
   
   protected void a(View paramView)
   {
-    paramView.findViewById(2131365278).setVisibility(0);
+    paramView.findViewById(2131365300).setVisibility(0);
   }
   
   protected void a(CommonViewHolder paramCommonViewHolder, int paramInt, LocationInfo paramLocationInfo)
@@ -37,7 +37,7 @@ public class LocationListAdapter
     {
       this.jdField_a_of_type_AndroidViewView = paramCommonViewHolder.itemView;
       this.jdField_a_of_type_Int = paramInt;
-      paramCommonViewHolder.a(2131365278).setVisibility(0);
+      paramCommonViewHolder.a(2131365300).setVisibility(0);
       if (getItemViewType(paramInt) != this.b) {
         break label71;
       }
@@ -47,31 +47,31 @@ public class LocationListAdapter
     while ((paramLocationInfo.isCityEmpty()) && (paramLocationInfo.isNameEmpty()))
     {
       return;
-      paramCommonViewHolder.a(2131365278).setVisibility(8);
+      paramCommonViewHolder.a(2131365300).setVisibility(8);
       break;
     }
-    paramCommonViewHolder.a(2131365277, paramLocationInfo.getNameOrCity());
-    paramCommonViewHolder.a(2131365277, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(17170444));
+    paramCommonViewHolder.a(2131365299, paramLocationInfo.getNameOrCity());
+    paramCommonViewHolder.a(2131365299, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(17170444));
   }
   
   public void a(CommonViewHolder paramCommonViewHolder, LocationInfo paramLocationInfo)
   {
-    paramCommonViewHolder.a(2131365279, paramLocationInfo.getName());
-    paramCommonViewHolder.a(2131365280, paramLocationInfo.getAddress());
+    paramCommonViewHolder.a(2131365301, paramLocationInfo.getName());
+    paramCommonViewHolder.a(2131365302, paramLocationInfo.getAddress());
   }
   
   protected int b(int paramInt)
   {
     LocationInfo localLocationInfo = (LocationInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if ((localLocationInfo != null) && ((localLocationInfo.isNameEmpty()) || (localLocationInfo.isCityEmpty()))) {
-      return 2130969128;
+      return 2130969127;
     }
     return super.b(paramInt);
   }
   
   protected void b(View paramView)
   {
-    paramView.findViewById(2131365278).setVisibility(8);
+    paramView.findViewById(2131365300).setVisibility(8);
   }
 }
 

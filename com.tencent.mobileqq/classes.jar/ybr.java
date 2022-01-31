@@ -1,18 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
+import java.util.List;
 
-public class ybr
-  implements DialogInterface.OnClickListener
+class ybr
+  implements View.OnClickListener
 {
-  public ybr(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
+  ybr(ybq paramybq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    PhotoUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
+    paramView = (ybs)paramView.getTag();
+    if (this.a.a.a.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups))
+    {
+      this.a.a.a.remove(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
+      return;
+    }
+    this.a.a.a.add(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
+    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
   }
 }
 

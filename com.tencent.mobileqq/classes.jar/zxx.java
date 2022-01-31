@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-class zxx
+public class zxx
   implements Runnable
 {
-  zxx(zxw paramzxw, ArConfigService paramArConfigService, int paramInt) {}
+  public zxx(ARRecordReport paramARRecordReport, int paramInt, long paramLong) {}
   
   public void run()
   {
-    ArConfigService.a(this.jdField_a_of_type_ComTencentMobileqqArArConfigService, this.jdField_a_of_type_Int);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "ar_record_record_success", true, 0L, this.jdField_a_of_type_Long, localHashMap, "");
   }
 }
 

@@ -17,8 +17,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import cooperation.plugin.IPluginManager;
 import protocol.KQQConfig.GetResourceReqInfo;
-import znm;
-import znn;
+import zqs;
+import zqt;
 
 public class GetConfig
   extends AsyncStep
@@ -37,7 +37,7 @@ public class GetConfig
     ((ConfigHandler)localObject).a(null, new GetResourceReqInfo[] { ((ConfigHandler)localObject).d(), ((ConfigHandler)localObject).f(), ((ConfigHandler)localObject).b(), ((ConfigHandler)localObject).e(), ((ConfigHandler)localObject).c() });
     if ((!"5.0.2".equals(Build.VERSION.RELEASE)) && (NetworkUtil.b(BaseApplication.getContext()) == 1))
     {
-      localObject = new znm(this);
+      localObject = new zqs(this);
       PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getManager(192);
       if (!localPreDownloadController.a()) {
         break label251;
@@ -57,7 +57,7 @@ public class GetConfig
   {
     if (this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new znn(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new zqt(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.b(this.jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener);
     }

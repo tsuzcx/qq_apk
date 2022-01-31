@@ -1,28 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLViewContext;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
 
 public class ahmv
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public ahmv(DanceReadyFilter paramDanceReadyFilter) {}
+  public ahmv(ShareActionSheet paramShareActionSheet) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    DanceReadyFilter.e(this.a).h_(true);
-    DanceReadyFilter.e(this.a).a(DanceReadyFilter.c(this.a));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a.a().a(DanceReadyFilter.a(this.a).a.b);
+    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
+      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    }
+    while (this.a.b.getWidth() < ShareActionSheet.a(this.a))
+    {
+      this.a.b.setMove(true);
+      return;
+      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    }
+    this.a.b.setMove(false);
   }
 }
 

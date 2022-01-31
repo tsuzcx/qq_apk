@@ -1,21 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.search.activity.VADActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MultiMsgProxy;
+import com.tencent.mobileqq.pic.DownCallBack;
+import com.tencent.mobileqq.pic.DownCallBack.DownResult;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import java.lang.ref.WeakReference;
 
 public class ahei
-  implements DialogInterface.OnClickListener
+  implements DownCallBack
 {
-  public ahei(VADActivity paramVADActivity) {}
+  private WeakReference a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahei(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    this.a.finish();
-    paramDialogInterface.dismiss();
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(DownCallBack.DownResult paramDownResult)
+  {
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
+    if (localReceiptMessageDetailFragment == null) {
+      return;
+    }
+    switch (paramDownResult.a)
+    {
+    default: 
+      return;
+    case -1: 
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
+      return;
+    }
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahei
  * JD-Core Version:    0.7.0.1
  */

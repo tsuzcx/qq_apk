@@ -1,19 +1,102 @@
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.SimpleAnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import android.graphics.Bitmap;
+import com.tencent.component.network.utils.thread.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBitmapImageRender;
+import java.util.List;
 
-public class anlh
-  extends AnimatorFactory.SimpleAnimatorListener
+public final class anlh
+  extends AsyncTask
 {
-  public anlh(ElasticImageView paramElasticImageView) {}
+  public anlh(boolean paramBoolean1, List paramList, boolean paramBoolean2) {}
   
-  public void a(ValueAnimator paramValueAnimator)
+  protected Bitmap a(Void... paramVarArgs)
   {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ElasticImageView.a(this.a, this.a.d);
-    SLog.b("ElasticImageView", "updateAnimator:" + this.a.d);
-    ElasticImageView.a(this.a);
+    paramVarArgs = VideoFilterTools.a();
+    try
+    {
+      paramVarArgs = paramVarArgs.a();
+      Object localObject = paramVarArgs;
+      Void[] arrayOfVoid;
+      if (paramVarArgs != null)
+      {
+        localObject = paramVarArgs;
+        arrayOfVoid = paramVarArgs;
+      }
+      GPUBitmapImageRender localGPUBitmapImageRender;
+      Bitmap localBitmap;
+      label114:
+      return localObject;
+    }
+    catch (Exception paramVarArgs)
+    {
+      try
+      {
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          localObject = paramVarArgs;
+          arrayOfVoid = paramVarArgs;
+          localGPUBitmapImageRender = new GPUBitmapImageRender();
+          localObject = paramVarArgs;
+          arrayOfVoid = paramVarArgs;
+          localGPUBitmapImageRender.b(paramVarArgs.getWidth(), paramVarArgs.getHeight());
+          localObject = paramVarArgs;
+          arrayOfVoid = paramVarArgs;
+          localBitmap = localGPUBitmapImageRender.a(paramVarArgs, this.jdField_a_of_type_JavaUtilList, this.b);
+          if (localBitmap != null) {
+            paramVarArgs = localBitmap;
+          }
+          localObject = paramVarArgs;
+          arrayOfVoid = paramVarArgs;
+          localGPUBitmapImageRender.a();
+          return paramVarArgs;
+        }
+        localObject = paramVarArgs;
+        arrayOfVoid = paramVarArgs;
+        paramVarArgs = paramVarArgs.copy(paramVarArgs.getConfig(), true);
+        return paramVarArgs;
+      }
+      catch (Error localError2)
+      {
+        for (;;)
+        {
+          paramVarArgs = (Void[])localObject;
+        }
+      }
+      catch (Exception paramVarArgs)
+      {
+        break label114;
+      }
+      paramVarArgs = paramVarArgs;
+      arrayOfVoid = null;
+      localObject = arrayOfVoid;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QCombo", 1, "applyFiltersForEditPic excep!", paramVarArgs);
+        return arrayOfVoid;
+      }
+    }
+    catch (Error localError1)
+    {
+      paramVarArgs = null;
+      localObject = paramVarArgs;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QCombo", 1, "applyFiltersForEditPic error!", localError1);
+        return paramVarArgs;
+      }
+    }
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    EditVideoPartManager localEditVideoPartManager = VideoFilterTools.a().a();
+    if (localEditVideoPartManager != null)
+    {
+      localEditVideoPartManager.a(paramBitmap, true);
+      localEditVideoPartManager.v();
+    }
   }
 }
 

@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.mobileqq.widget.QQToast;
 
-class mpa
-  implements View.OnClickListener
+public class mpa
+  implements Runnable
 {
-  mpa(moz parammoz, View.OnClickListener paramOnClickListener) {}
+  public mpa(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onClick: " + moz.a(this.jdField_a_of_type_Moz).mChannelCoverName);
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    }
-    ReadInJoyHelper.a(moz.a(this.jdField_a_of_type_Moz).mChannelCoverId, true);
-    moz.a(this.jdField_a_of_type_Moz);
+    QQToast.a(FastWebVideoFeedsPlayManager.a(this.a), 1, "无网络连接,请检测网络配置!", 0).a();
   }
 }
 

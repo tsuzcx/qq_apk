@@ -1,15 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager.SubtitleDataManagerListener;
+import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem;
+import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem.FontItem;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class xwl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xwl(PhoneContactTabView paramPhoneContactTabView) {}
+  public xwl(SubtitleDataManager paramSubtitleDataManager, SubtitleItem.FontItem paramFontItem) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    PhoneContactTabView.a(this.a);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      SubtitleDataManager.SubtitleDataManagerListener localSubtitleDataManagerListener = (SubtitleDataManager.SubtitleDataManagerListener)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.jdField_a_of_type_JavaLangRefWeakReference.get();
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        SubtitleItem localSubtitleItem = (SubtitleItem)localIterator.next();
+        if ((localSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem) && (localSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem != null)) {
+          localSubtitleDataManagerListener.a(localSubtitleItem.jdField_a_of_type_Int, 0, localSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.f);
+        }
+      }
+    }
   }
 }
 

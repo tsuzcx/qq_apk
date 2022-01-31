@@ -1593,7 +1593,7 @@ public class ScrollView
       return;
     }
     this.mContentBackgroundDrawable = paramDrawable;
-    this.mOverScrollHeaderShadow = getResources().getDrawable(2130839289);
+    this.mOverScrollHeaderShadow = getResources().getDrawable(2130839293);
   }
   
   public void setEdgeEffectEnabled(boolean paramBoolean)
@@ -1758,7 +1758,7 @@ public class ScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.ScrollView
  * JD-Core Version:    0.7.0.1
  */

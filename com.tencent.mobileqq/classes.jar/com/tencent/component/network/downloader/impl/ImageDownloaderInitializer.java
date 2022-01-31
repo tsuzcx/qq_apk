@@ -2,8 +2,8 @@ package com.tencent.component.network.downloader.impl;
 
 import android.text.TextUtils;
 import com.tencent.component.network.downloader.Downloader;
-import pia;
-import pib;
+import pju;
+import pjv;
 
 public class ImageDownloaderInitializer
 {
@@ -12,8 +12,8 @@ public class ImageDownloaderInitializer
     if (paramDownloader == null) {
       return;
     }
-    paramDownloader.setPreprocessStrategy(new pia(paramDownloader));
-    paramDownloader.setContentHandler(new pib());
+    paramDownloader.setPreprocessStrategy(new pju(paramDownloader));
+    paramDownloader.setContentHandler(new pjv());
   }
   
   private static boolean c(String paramString)

@@ -1,36 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDBHelper;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDbManager;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-public final class xbn
-  implements Runnable
+public class xbn
+  implements DialogInterface.OnClickListener
 {
-  public xbn(boolean paramBoolean, ArrayList paramArrayList) {}
+  public xbn(SendHbActivity paramSendHbActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    do
-    {
-      synchronized (GoldMsgDbManager.jdField_a_of_type_JavaLangObject)
-      {
-        if (GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper == null) {
-          GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper = new GoldMsgDBHelper(BaseApplicationImpl.getContext());
-        }
-        ??? = QWalletTools.a();
-        if (??? == null) {
-          return;
-        }
-      }
-    } while (GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper == null);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper.a(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
-      return;
-    }
-    GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+    this.a.finish();
   }
 }
 

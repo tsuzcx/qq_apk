@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.SendingFileInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class tor
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public tor(SendMultiPictureHelper paramSendMultiPictureHelper, SendMultiPictureHelper.SendingFileInfo paramSendingFileInfo, int paramInt, String paramString1, String paramString2) {}
+  public tor(RegisterActivity paramRegisterActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_Long = SendMultiPictureHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper, this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    paramDialogInterface.dismiss();
   }
 }
 

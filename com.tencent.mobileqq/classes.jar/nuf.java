@@ -1,30 +1,20 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.FeedItemThumbAdapter;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.GeneralFeedProfileSegment;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 import java.util.List;
-import java.util.Map;
 
 public class nuf
-  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public nuf(GeneralFeedProfileSegment paramGeneralFeedProfileSegment, StoryHomeHorizontalListView paramStoryHomeHorizontalListView, FeedItemThumbAdapter paramFeedItemThumbAdapter) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  List jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public void a(int paramInt)
+  public nuf(boolean paramBoolean1, List paramList, int paramInt, boolean paramBoolean2, String paramString)
   {
-    if (paramInt == 4097)
-    {
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
-      paramInt = i;
-      if (i < 0) {
-        paramInt = 0;
-      }
-      GeneralFeedProfileSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentGeneralFeedProfileSegment).a.put("2_" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentGeneralFeedProfileSegment.a.a.feedId, ((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentFeedItemThumbAdapter.a.get(paramInt)).mVid);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richstatus;
 
-import ahaz;
-import ahba;
-import ahbb;
+import ahpb;
+import ahpc;
+import ahpd;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -74,20 +74,20 @@ public class ActionListActivity
       while (i < j)
       {
         StateTag localStateTag = (StateTag)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        TextView localTextView = (TextView)localLayoutInflater.inflate(2130970333, this.jdField_a_of_type_AndroidWidgetTabWidget, false);
+        TextView localTextView = (TextView)localLayoutInflater.inflate(2130970362, this.jdField_a_of_type_AndroidWidgetTabWidget, false);
         localTextView.setText(localStateTag.a);
         localTextView.setWidth(k);
         localTextView.setGravity(17);
-        this.jdField_a_of_type_AndroidWidgetTabHost.addTab(this.jdField_a_of_type_AndroidWidgetTabHost.newTabSpec(localStateTag.a).setIndicator(localTextView).setContent(2131362785));
+        this.jdField_a_of_type_AndroidWidgetTabHost.addTab(this.jdField_a_of_type_AndroidWidgetTabHost.newTabSpec(localStateTag.a).setIndicator(localTextView).setContent(2131362803));
         i += 1;
       }
     }
-    ((ahbb)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter()).a();
+    ((ahpd)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter()).a();
     int j = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildCount();
     i = 0;
     while (i < j)
     {
-      ((ahba)((GridView)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildAt(i)).getAdapter()).notifyDataSetChanged();
+      ((ahpc)((GridView)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getChildAt(i)).getAdapter()).notifyDataSetChanged();
       i += 1;
     }
   }
@@ -121,9 +121,9 @@ public class ActionListActivity
       int j = 0;
       while (j < m)
       {
-        ahaz localahaz = (ahaz)localGridView.getChildAt(j).getTag();
-        if ((localahaz != null) && (localahaz.jdField_a_of_type_Int == paramInt)) {
-          localahaz.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(getResources(), paramBitmap, false, false));
+        ahpb localahpb = (ahpb)localGridView.getChildAt(j).getTag();
+        if ((localahpb != null) && (localahpb.jdField_a_of_type_Int == paramInt)) {
+          localahpb.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(getResources(), paramBitmap, false, false));
         }
         j += 1;
       }
@@ -154,13 +154,13 @@ public class ActionListActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(2130968597);
-    this.jdField_a_of_type_AndroidWidgetTabHost = ((TabHost)findViewById(2131362784));
+    this.jdField_a_of_type_AndroidWidgetTabHost = ((TabHost)findViewById(2131362802));
     this.jdField_a_of_type_AndroidWidgetTabHost.setup();
     this.jdField_a_of_type_AndroidWidgetTabHost.setOnTabChangedListener(this);
     this.jdField_a_of_type_AndroidWidgetTabWidget = this.jdField_a_of_type_AndroidWidgetTabHost.getTabWidget();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((MyViewPager)findViewById(2131362786));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((MyViewPager)findViewById(2131362804));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new ahbb(this, null));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new ahpd(this, null));
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager = ((StatusManager)this.app.getManager(14));
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("k_action_id", -1);
@@ -168,14 +168,14 @@ public class ActionListActivity
     {
       setTitle("你在做什么");
       this.leftView.setVisibility(8);
-      setRightButton(2131434920, this);
+      setRightButton(2131434937, this);
     }
     for (;;)
     {
       if (jdField_a_of_type_Boolean)
       {
         this.leftView.setContentDescription(this.leftView.getText() + "按钮");
-        this.rightViewText.setContentDescription(getResources().getString(2131434920) + "按钮");
+        this.rightViewText.setContentDescription(getResources().getString(2131434937) + "按钮");
       }
       a();
       if (this.jdField_a_of_type_AndroidWidgetTabWidget.getChildCount() > 0)
@@ -243,8 +243,8 @@ public class ActionListActivity
         {
           return;
           paramView = paramView.getTag();
-        } while ((paramView == null) || (!(paramView instanceof ahaz)));
-        paramView = (ahaz)paramView;
+        } while ((paramView == null) || (!(paramView instanceof ahpb)));
+        paramView = (ahpb)paramView;
         localActionInfo = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(paramView.jdField_a_of_type_Int);
       } while (localActionInfo == null);
       localIntent = new Intent();

@@ -36,11 +36,11 @@ import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.S
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import kyh;
-import kyj;
-import kyk;
-import kyl;
-import kym;
+import kxs;
+import kxu;
+import kxv;
+import kxw;
+import kxx;
 
 public class PublicAccountBrowser$PublicAccountBrowserFragment
   extends WebViewFragment
@@ -128,7 +128,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   private void a(Bundle paramBundle)
   {
     if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!NetworkUtil.d(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
-      QQToast.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2131433196, 0).b(super.b());
+      QQToast.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2131433213, 0).b(super.b());
     }
     if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Boolean)
     {
@@ -140,8 +140,8 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
         break label198;
       }
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText("");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839147);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131434719));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839151);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131434737));
     }
     for (;;)
     {
@@ -297,10 +297,10 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     int i = super.a(paramBundle);
     if ((this.jdField_a_of_type_AndroidContentIntent.getIntExtra("reqType", -1) == 5) && (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Boolean))
     {
-      kyh localkyh = new kyh(this);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localkyh);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText(2131433121);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(localkyh);
+      kxs localkxs = new kxs(this);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localkxs);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText(2131433138);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(localkxs);
     }
     a(paramBundle);
     return i;
@@ -308,7 +308,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   
   public SwiftBrowserComponentsProvider a()
   {
-    return new SwiftBrowserComponentsProvider(this, 127, new kyj(this));
+    return new SwiftBrowserComponentsProvider(this, 127, new kxu(this));
   }
   
   public String a()
@@ -379,7 +379,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   {
     try
     {
-      paramContext = DialogUtil.b(paramContext, 230, null, paramString3, "取消", "打开", new kyk(this, paramContext, paramUri, paramString1, paramString4), new kyl(this, paramString4));
+      paramContext = DialogUtil.b(paramContext, 230, null, paramString3, "取消", "打开", new kxv(this, paramContext, paramUri, paramString1, paramString4), new kxw(this, paramString4));
       paramContext.show();
       paramContext.setCancelable(false);
       return;
@@ -407,7 +407,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     if (paramInt == -8) {
-      QRUtils.a(1, 2131430018);
+      QRUtils.a(1, 2131430035);
     }
     super.a(paramWebView, paramInt, paramString1, paramString2);
   }
@@ -501,7 +501,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   {
     super.d();
     if (this.jdField_a_of_type_Int == 1001) {
-      ThreadManager.executeOnSubThread(new kym(this));
+      ThreadManager.executeOnSubThread(new kxx(this));
     }
   }
 }

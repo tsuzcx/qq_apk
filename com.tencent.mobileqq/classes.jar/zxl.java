@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.ar.ARLBSPOIDialog;
+import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult.POIInfo;
 
-class zxl
-  implements Runnable
+public class zxl
+  implements View.OnClickListener
 {
-  zxl(zxi paramzxi) {}
+  public zxl(ARLBSPOIDialog paramARLBSPOIDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArConfigService.e(this.a.a);
+    this.a.dismiss();
+    paramView = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo.b * 1.0D / 1000000.0D));
+    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
   }
 }
 

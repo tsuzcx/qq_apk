@@ -1,45 +1,60 @@
-import android.support.annotation.NonNull;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.troop.homework.arithmetic.stream.SendArithHomeResultSegment.RspInfo;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import android.text.TextUtils;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
+import com.tencent.mobileqq.mqsafeedit.MD5;
+import com.tencent.mobileqq.transfile.VasExtensionDownloader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aisa
-  extends SimpleObserver
+  implements Runnable
 {
-  public aisa(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  public aisa(VasExtensionDownloader paramVasExtensionDownloader, FavoriteEmoticonInfo paramFavoriteEmoticonInfo) {}
   
-  public void a(SendArithHomeResultSegment.RspInfo paramRspInfo)
+  public void run()
   {
-    super.onNext(paramRspInfo);
-    SLog.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    AssertUtils.a(paramRspInfo.a);
-    AssertUtils.a(paramRspInfo.b);
-    CheckArithHWResultFragment.a(this.a, paramRspInfo.a, paramRspInfo.b);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
-    QQToast.a(this.a.getActivity(), 1, "上传作业失败", 0).a();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    CheckArithHWResultFragment.a(this.a, null, null);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof AppInterface)) {}
+    CustomEmotionData localCustomEmotionData;
+    do
+    {
+      return;
+      localObject = (FavroamingDBManager)((AppInterface)localObject).getManager(148);
+      localCustomEmotionData = ((FavroamingDBManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.e);
+    } while ((localCustomEmotionData == null) || (!new File(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d).exists()));
+    if ("needDownload".equals(localCustomEmotionData.RomaingType)) {
+      localCustomEmotionData.RomaingType = "isUpdate";
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData romaing type  isUpdate, path: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d);
+      }
+      if ((TextUtils.isEmpty(localCustomEmotionData.md5)) && (!TextUtils.isEmpty(localCustomEmotionData.emoPath)))
+      {
+        localCustomEmotionData.md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(localCustomEmotionData.emoPath));
+        if (QLog.isColorLevel()) {
+          QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData md5 , path: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d);
+        }
+      }
+      if ("needDel".equals(localCustomEmotionData.RomaingType)) {
+        break;
+      }
+      ((FavroamingDBManager)localObject).b(localCustomEmotionData);
+      return;
+      if ("overflow".equals(localCustomEmotionData.RomaingType)) {
+        localCustomEmotionData.RomaingType = "overflow_downloaded";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisa
  * JD-Core Version:    0.7.0.1
  */

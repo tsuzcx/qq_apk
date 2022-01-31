@@ -1,27 +1,16 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.SupernaturalTextItem;
 
 public class anol
-  extends Property
+  implements annx
 {
-  public anol(PickerContainer paramPickerContainer, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public anol(SupernaturalTextItem paramSupernaturalTextItem) {}
   
-  public Float a(PickerContainer paramPickerContainer)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    if (paramPickerContainer != null) {
-      return PickerContainer.a(paramPickerContainer);
-    }
-    return Float.valueOf(1.0F);
-  }
-  
-  public void a(PickerContainer paramPickerContainer, Float paramFloat)
-  {
-    if (paramPickerContainer != null) {
-      PickerContainer.a(paramPickerContainer, paramFloat);
-    }
+    return TroopFileUtils.b(paramString);
   }
 }
 

@@ -1,17 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
 
 public class lwh
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public lwh(ComponentSocialOperation paramComponentSocialOperation) {}
+  public lwh(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(View paramView)
+  {
+    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
+    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
+  }
 }
 
 

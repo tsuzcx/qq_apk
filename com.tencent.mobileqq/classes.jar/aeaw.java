@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.leba.QZoneEntryController;
 
 public class aeaw
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aeaw(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
+  public aeaw(QZoneEntryController paramQZoneEntryController) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      GameRoomInviteActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity);
-    }
+    this.a.j();
+    QZoneEntryController.b(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeaw
  * JD-Core Version:    0.7.0.1
  */

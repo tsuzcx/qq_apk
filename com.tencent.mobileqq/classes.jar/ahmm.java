@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.LyricItem;
-import java.util.Comparator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
 
 public class ahmm
-  implements Comparator
+  implements Animation.AnimationListener
 {
-  public ahmm(ResourceManager paramResourceManager) {}
+  public ahmm(ProviderContainerView paramProviderContainerView) {}
   
-  public int a(ResourceManager.LyricItem paramLyricItem1, ResourceManager.LyricItem paramLyricItem2)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (paramLyricItem1.b < paramLyricItem2.b) {
-      return -1;
+    if (ProviderContainerView.a(this.a) != null)
+    {
+      ProviderContainerView.a(this.a).setAlpha(1.0F);
+      ProviderContainerView.a(this.a).setVisibility(0);
     }
-    if (paramLyricItem1.b > paramLyricItem2.b) {
-      return 1;
-    }
-    return 0;
   }
 }
 

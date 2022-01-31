@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayBasePanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
 
-class aepk
-  implements Runnable
+public class aepk
+  implements View.OnClickListener
 {
-  aepk(aepj paramaepj, String paramString, boolean paramBoolean) {}
+  public aepk(RecentUserInvitePanel paramRecentUserInvitePanel, aepr paramaepr) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aepj.a.e == 1) {}
-    do
-    {
-      return;
-      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aepj.a) != null)
-      {
-        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aepj.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.nearby_people_card.", 2, "mDisplayModel == null ！");
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a.a(paramView, this.jdField_a_of_type_Aepr);
+    }
   }
 }
 

@@ -1,45 +1,73 @@
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.data.BannerInfo;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.AuthorizeConfig;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.gdtad.views.videoceiling.GdtWebViewBuilder;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
 
 public class kxd
-  implements View.OnClickListener
+  extends GdtWebViewBuilder
 {
-  public kxd(AdModuleBase paramAdModuleBase) {}
-  
-  public void onClick(View paramView)
+  public kxd(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.b == 2)
+    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+  }
+  
+  public void a(WebView paramWebView, String paramString)
+  {
+    super.a(paramWebView, paramString);
+  }
+  
+  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.a(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean a(WebView paramWebView, String paramString)
+  {
+    GdtLog.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
+    Object localObject;
+    do
     {
-      paramView = new Intent((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.jdField_c_of_type_JavaLangString);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 3, 0);
-    }
-    while (this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.b != 1) {
-      return;
-    }
-    switch (this.a.jdField_c_of_type_Int)
+      return true;
+      localObject = ((CustomWebView)paramWebView).a();
+      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      {
+        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
+        for (boolean bool = true;; bool = false) {
+          return bool;
+        }
+      }
+      paramString = Uri.parse(paramString);
+      localObject = paramString.getScheme();
+    } while (!AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
+    paramWebView = new Intent("android.intent.action.VIEW", paramString);
+    paramWebView.addFlags(268435456);
+    try
     {
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      AdModuleBase.a(this.a);
-      return;
-    case 1: 
-      NativeAdUtils.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.f);
-      NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 1, 0);
-      return;
+      this.e.startActivity(paramWebView);
+      return true;
     }
-    NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo);
-    NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 4, 0);
+    catch (ActivityNotFoundException paramWebView)
+    {
+      GdtLog.d("AbsWebView", paramWebView.toString());
+    }
+    return true;
+  }
+  
+  public void b(WebView paramWebView, String paramString)
+  {
+    super.b(paramWebView, paramString);
   }
 }
 

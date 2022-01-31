@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
-public class sty
+class sty
   implements Runnable
 {
-  public sty(Leba paramLeba) {}
+  sty(stu paramstu) {}
   
   public void run()
   {
-    Leba.b(this.a, true);
+    this.a.a.a.a();
   }
 }
 

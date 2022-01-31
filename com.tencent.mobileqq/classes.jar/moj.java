@@ -1,27 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import java.util.TimerTask;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter.VideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
+import java.util.List;
 
-class moj
-  extends TimerTask
+public class moj
+  implements Runnable
 {
-  moj(moi parammoi, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  public moj(FastWebVideoFeedsAdapter paramFastWebVideoFeedsAdapter) {}
   
   public void run()
   {
-    VideoPlayerWrapper localVideoPlayerWrapper = (VideoPlayerWrapper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    FastWebVideoFeedsPlayManager.VideoPlayParam localVideoPlayParam = (FastWebVideoFeedsPlayManager.VideoPlayParam)this.b.get();
-    if ((localVideoPlayerWrapper != null) && (localVideoPlayerWrapper.a()) && (!FastWebVideoFeedsPlayManager.d(this.jdField_a_of_type_Moi.a)))
+    FastWebVideoInfo localFastWebVideoInfo = (FastWebVideoInfo)FastWebVideoFeedsAdapter.a(this.a).get(0);
+    Object localObject;
+    if (FastWebVideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
     {
-      long l1 = localVideoPlayerWrapper.a();
-      long l2 = localVideoPlayerWrapper.b();
-      long l3 = localVideoPlayerWrapper.b();
-      ThreadManager.getUIHandler().post(new mok(this, localVideoPlayParam, l3, l1, l2));
+      localObject = FastWebVideoFeedsAdapter.a(this.a).getChildAt(FastWebVideoFeedsAdapter.a(this.a).getHeaderViewsCount());
+      if ((localObject != null) && ((((View)localObject).getTag() instanceof FastWebVideoFeedsAdapter.VideoItemHolder)))
+      {
+        localObject = (FastWebVideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
+        if (!localFastWebVideoInfo.a(FastWebVideoFeedsAdapter.a(this.a), FastWebVideoFeedsAdapter.a(this.a))) {
+          break label106;
+        }
+        ((FastWebVideoFeedsAdapter.VideoItemHolder)localObject).k.setText(localFastWebVideoInfo.j);
+      }
     }
+    return;
+    label106:
+    ((FastWebVideoFeedsAdapter.VideoItemHolder)localObject).a.setText(localFastWebVideoInfo.j);
   }
 }
 

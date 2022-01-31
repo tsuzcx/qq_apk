@@ -1,18 +1,22 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.os.Handler;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 public class trp
-  implements View.OnFocusChangeListener
+  implements INetEventHandler
 {
-  public trp(SubLoginActivity paramSubLoginActivity) {}
+  public trp(SendMultiPictureHelper paramSendMultiPictureHelper) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if (true == paramBoolean) {
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    if (!paramBoolean)
+    {
+      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131436291), 1).show();
+      trq localtrq = new trq(this);
+      new Handler().postDelayed(localtrq, 3000L);
     }
   }
 }

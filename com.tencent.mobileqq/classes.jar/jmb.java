@@ -1,20 +1,37 @@
-import com.tencent.av.redpacket.ui.RedPacketGameEmojiAnimation;
-import com.tencent.av.redpacket.ui.RedPacketGameParticleEmoji.OnShowListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
-public class jmb
-  implements RedPacketGameParticleEmoji.OnShowListener
+class jmb
+  implements Runnable
 {
-  public jmb(RedPacketGameEmojiAnimation paramRedPacketGameEmojiAnimation) {}
+  jmb(jma paramjma, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketGameEmojiAnimation", 2, "onShow called, needDetectFace set true");
+    if ((this.jdField_a_of_type_Jma.a.getActivity() == null) || (this.jdField_a_of_type_Jma.a.getActivity().isFinishing())) {
+      return;
     }
-    if (this.a.a != null) {
-      this.a.a.c = true;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      RedPacketShareFragment.a(this.jdField_a_of_type_Jma.a);
+      QRUtils.a(1, 2131430004);
+      return;
     }
+    this.jdField_a_of_type_Jma.a.a(false);
+    String str = String.format(BaseApplication.getContext().getString(2131429670), new Object[] { RedPacketShareFragment.b(this.jdField_a_of_type_Jma.a), RedPacketShareFragment.c(this.jdField_a_of_type_Jma.a) });
+    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
+    if (this.jdField_a_of_type_Jma.a.a != null)
+    {
+      localUserInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Jma.a.a.getAccount();
+      localUserInfo.b = this.jdField_a_of_type_Jma.a.a.getDisplayName(0, this.jdField_a_of_type_Jma.a.a.getCurrentAccountUin(), null);
+    }
+    QZoneHelper.a(this.jdField_a_of_type_Jma.a.getActivity(), localUserInfo, this.jdField_a_of_type_JavaLangString, BaseApplication.getContext().getString(2131429969), str, 1);
   }
 }
 

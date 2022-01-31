@@ -1,15 +1,39 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.HotChatHandler;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class zfh
-  implements Comparator
+  implements Runnable
 {
-  public zfh(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  HotChatInfo jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = null;
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public zfh(HotChatManager paramHotChatManager, HotChatInfo paramHotChatInfo)
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = paramHotChatInfo;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.jdField_a_of_type_JavaUtilMap.get(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin)) == null) {
+        break label63;
+      }
+      if (QLog.isColorLevel()) {
+        NearbyUtils.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable already exist", this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin });
+      }
+    }
+    return;
+    label63:
+    if (QLog.isColorLevel()) {
+      NearbyUtils.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable", this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin });
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, 4);
+    ((HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).b();
   }
 }
 

@@ -1,34 +1,18 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.util.AccessibilityUtil;
 
 public class otp
   implements Runnable
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public otp(TribeVideoPlugin paramTribeVideoPlugin, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTribeVideoPlugin);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public otp(QRDisplayActivity paramQRDisplayActivity) {}
   
   public void run()
   {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localTribeVideoPlugin == null) || (TribeVideoPlugin.a(localTribeVideoPlugin) == null)) {
-      return;
-    }
-    String str = ((BaseActivity)TribeVideoPlugin.a(localTribeVideoPlugin)).getCurrentAccountUin();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(NetworkUtil.b(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
-      return;
-    }
+    CustomAccessibilityDelegate localCustomAccessibilityDelegate = new CustomAccessibilityDelegate(this.a.d, this.a);
+    this.a.d.setAccessibilityDelegate(localCustomAccessibilityDelegate);
+    AccessibilityUtil.a(this.a.a, false);
   }
 }
 

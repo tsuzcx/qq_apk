@@ -1,25 +1,19 @@
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout.DispatchKeyEventListener;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
 
-public class ajqv
-  implements MyLinearLayout.DispatchKeyEventListener
+class ajqv
+  implements Runnable
 {
-  public ajqv(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
+  ajqv(ajqu paramajqu, TroopTopicDetailInfo paramTroopTopicDetailInfo) {}
   
-  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  public void run()
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
-    {
-      this.a.a();
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_Ajqu.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqv
  * JD-Core Version:    0.7.0.1
  */

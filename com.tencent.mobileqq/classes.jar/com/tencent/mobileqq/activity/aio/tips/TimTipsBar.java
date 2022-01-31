@@ -39,9 +39,9 @@ public class TimTipsBar
     this.jdField_a_of_type_JavaLangString = paramVarArgs.tipsUrl;
     paramVarArgs = paramVarArgs.tipsMsg;
     View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968669, null);
-    ((TextView)localView.findViewById(2131363089)).setText(paramVarArgs);
+    ((TextView)localView.findViewById(2131363107)).setText(paramVarArgs);
     localView.setOnClickListener(this);
-    localView.findViewById(2131363088).setOnClickListener(this);
+    localView.findViewById(2131363106).setOnClickListener(this);
     return localView;
   }
   
@@ -61,10 +61,10 @@ public class TimTipsBar
   {
     switch (paramView.getId())
     {
-    case 2131363087: 
+    case 2131363105: 
     default: 
       return;
-    case 2131363086: 
+    case 2131363104: 
       if (QLog.isColorLevel()) {
         QLog.d("TimTipsBar", 2, "click tips, jump");
       }

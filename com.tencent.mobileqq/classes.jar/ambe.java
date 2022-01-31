@@ -1,31 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GeoInfo;
-import cooperation.qzone.LbsDataV2.GetGeoInfoRsp;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.widget.DynamicGridView;
 
-public final class ambe
-  implements Parcelable.Creator
+class ambe
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public LbsDataV2.GetGeoInfoRsp a(Parcel paramParcel)
+  private final int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final int b;
+  
+  ambe(ambd paramambd, View paramView, int paramInt1, int paramInt2)
   {
-    LbsDataV2.GetGeoInfoRsp localGetGeoInfoRsp = new LbsDataV2.GetGeoInfoRsp();
-    if (paramParcel != null)
-    {
-      localGetGeoInfoRsp.stGps = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-      localGetGeoInfoRsp.stGeoInfo = ((LbsDataV2.GeoInfo)paramParcel.readParcelable(LbsDataV2.GeoInfo.class.getClassLoader()));
-    }
-    return localGetGeoInfoRsp;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public LbsDataV2.GetGeoInfoRsp[] a(int paramInt)
+  public boolean onPreDraw()
   {
-    return null;
+    this.jdField_a_of_type_Ambd.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    DynamicGridView.a(this.jdField_a_of_type_Ambd.a, DynamicGridView.a(this.jdField_a_of_type_Ambd.a) + ambd.a(this.jdField_a_of_type_Ambd));
+    DynamicGridView.b(this.jdField_a_of_type_Ambd.a, DynamicGridView.b(this.jdField_a_of_type_Ambd.a) + ambd.b(this.jdField_a_of_type_Ambd));
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    DynamicGridView.a(this.jdField_a_of_type_Ambd.a, this.jdField_a_of_type_Ambd.a.a(DynamicGridView.a(this.jdField_a_of_type_Ambd.a)));
+    if (DynamicGridView.a(this.jdField_a_of_type_Ambd.a) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_Ambd.a).setVisibility(4);
+    }
+    DynamicGridView.a(this.jdField_a_of_type_Ambd.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambe
  * JD-Core Version:    0.7.0.1
  */

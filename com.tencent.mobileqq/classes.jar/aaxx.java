@@ -1,18 +1,50 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig.WealthGodConfig;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkContextInfo;
+import com.tencent.wordsegment.ContextItem;
+import com.tencent.wordsegment.SemanticItem;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 
-public final class aaxx
-  implements Parcelable.Creator
+class aaxx
+  implements Runnable
 {
-  public ARMapConfig.WealthGodConfig a(Parcel paramParcel)
-  {
-    return new ARMapConfig.WealthGodConfig(paramParcel);
-  }
+  aaxx(aaxw paramaaxw, ArrayList paramArrayList) {}
   
-  public ARMapConfig.WealthGodConfig[] a(int paramInt)
+  public void run()
   {
-    return new ARMapConfig.WealthGodConfig[paramInt];
+    if (this.jdField_a_of_type_Aaxw.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      ArkAppCenter.b("ArkApp.ArkRecommendLogic", String.format("analyseInstantText server analyse, this is null, return", new Object[0]));
+    }
+    for (;;)
+    {
+      return;
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() != 0))
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (ContextItem)localIterator.next();
+          ArkAppCenter.b("ArkApp.ArkRecommendLogic", String.format("analyseInstantText server analyse, context:%s", new Object[] { ArkRecommendLogic.a((ContextItem)localObject) }));
+          if (localObject != null)
+          {
+            ArrayList localArrayList = new ArrayList();
+            RecommendCommonMessage.ArkContextInfo localArkContextInfo = new RecommendCommonMessage.ArkContextInfo();
+            localArkContextInfo.context = ((ContextItem)localObject).contextName;
+            localObject = ((ContextItem)localObject).semantic.iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              SemanticItem localSemanticItem = (SemanticItem)((Iterator)localObject).next();
+              localArkContextInfo.semantic.put(localSemanticItem.key, localSemanticItem.value);
+            }
+            localArrayList.add(localArkContextInfo);
+            ArkRecommendLogic.a(this.jdField_a_of_type_Aaxw.jdField_a_of_type_ComTencentMobileqqArkArkRecommendLogic, localArrayList, null, this.jdField_a_of_type_Aaxw.b, 2);
+          }
+        }
+      }
+    }
   }
 }
 

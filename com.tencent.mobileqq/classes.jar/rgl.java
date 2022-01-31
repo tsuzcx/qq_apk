@@ -1,22 +1,17 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.util.Utils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rgl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public rgl(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  public rgl(AccountManageActivity paramAccountManageActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ProfileActivity.e(AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null))
-    {
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getText().toString();
-      if (Utils.a(this.jdField_a_of_type_JavaLangString, str)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.e);
-      }
-    }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80040A7", "0X80040A7", 0, 0, "", "", "", "");
+    this.a.d();
   }
 }
 

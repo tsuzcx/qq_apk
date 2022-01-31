@@ -1,35 +1,63 @@
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AttachedAdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.JumpAdUtils;
+import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class mnd
-  implements Runnable
+  extends BaseItemViewHolder
+  implements View.OnClickListener
 {
-  public mnd(FastWebVideoFeedsAdapter paramFastWebVideoFeedsAdapter) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private TextView b;
   
-  public void run()
+  public mnd(View paramView, BaseData paramBaseData)
   {
-    FastWebVideoInfo localFastWebVideoInfo = (FastWebVideoInfo)FastWebVideoFeedsAdapter.a(this.a).get(0);
-    Object localObject;
-    if (FastWebVideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
+    super(paramView, paramBaseData);
+    paramView.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367103));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361926));
+    this.b = ((TextView)paramView.findViewById(2131367104));
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    switch (paramBaseData2.d)
     {
-      localObject = FastWebVideoFeedsAdapter.a(this.a).getChildAt(FastWebVideoFeedsAdapter.a(this.a).getHeaderViewsCount());
-      if ((localObject != null) && ((((View)localObject).getTag() instanceof FastWebVideoFeedsAdapter.VideoItemHolder)))
-      {
-        localObject = (FastWebVideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
-        if (!localFastWebVideoInfo.a(FastWebVideoFeedsAdapter.a(this.a), FastWebVideoFeedsAdapter.a(this.a))) {
-          break label106;
-        }
-        ((FastWebVideoFeedsAdapter.VideoItemHolder)localObject).k.setText(localFastWebVideoInfo.j);
-      }
+    default: 
+      throw new IllegalArgumentException();
     }
-    return;
-    label106:
-    ((FastWebVideoFeedsAdapter.VideoItemHolder)localObject).a.setText(localFastWebVideoInfo.j);
+    paramBaseData1 = (AttachedAdData)paramBaseData2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.b);
+    this.b.setText(paramBaseData1.c);
+    paramBaseData2 = URLDrawable.URLDrawableOptions.obtain();
+    paramBaseData2.mRequestWidth = AIOUtils.a(85.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    paramBaseData2.mRequestHeight = AIOUtils.a(72.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    paramBaseData2.mLoadingDrawable = new ColorDrawable(-2565414);
+    paramBaseData2.mPlayGifImage = true;
+    paramBaseData2.mMemoryCacheKeySuffix = "fast_web";
+    paramBaseData1 = URLDrawable.getDrawable(PubAccountHttpDownloader.a(paramBaseData1.d, 4), paramBaseData2);
+    if ((paramBaseData1 != null) && (paramBaseData1.getStatus() == 2)) {
+      paramBaseData1.restartDownload();
+    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBaseData1);
+  }
+  
+  public void onClick(View paramView)
+  {
+    JumpAdUtils.a((Activity)paramView.getContext(), (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 

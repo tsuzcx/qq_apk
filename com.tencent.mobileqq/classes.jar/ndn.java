@@ -1,24 +1,20 @@
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader.OnPreloaderListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-public class ndn
-  implements MsgTabStoryVideoPreloader.OnPreloaderListener
+class ndn
+  implements Comparator
 {
-  private long jdField_a_of_type_Long;
+  ndn(ndm paramndm) {}
   
-  public ndn(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate) {}
-  
-  public void a()
+  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Long != 0L) {
-      StoryReportor.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    if (paramStoryVideoItem1.mCreateTime > paramStoryVideoItem2.mCreateTime) {
+      return 1;
     }
+    if (paramStoryVideoItem1.mCreateTime < paramStoryVideoItem2.mCreateTime) {
+      return -1;
+    }
+    return 0;
   }
 }
 

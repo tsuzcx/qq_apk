@@ -5,8 +5,8 @@ import android.text.TextUtils;
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
-import mpu;
-import mpv;
+import mrb;
+import mrc;
 
 public class NativeText
   extends TextBase
@@ -88,10 +88,10 @@ public class NativeText
         for (;;)
         {
           if (b()) {
-            this.a.setOnClickListener(new mpu(this));
+            this.a.setOnClickListener(new mrb(this));
           }
           if (c()) {
-            this.a.setOnLongClickListener(new mpv(this));
+            this.a.setOnLongClickListener(new mrc(this));
           }
           return;
           if ((this.s & 0x1) != 0)

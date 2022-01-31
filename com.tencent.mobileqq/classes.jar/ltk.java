@@ -1,22 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
+import java.util.ArrayList;
 
 public class ltk
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public ltk(FeedItemCellTypeGalleryBiu paramFeedItemCellTypeGalleryBiu) {}
+  public ltk(FeedItemCell paramFeedItemCell, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (paramView != null) {
-      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell.a().post(new ltl(this));
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      paramAnimation.printStackTrace();
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

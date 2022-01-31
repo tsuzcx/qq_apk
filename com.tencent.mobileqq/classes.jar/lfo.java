@@ -1,16 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
-public class lfo
+class lfo
   implements Runnable
 {
-  public lfo(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  lfo(lfn paramlfn) {}
   
   public void run()
   {
-    if (ReadInJoyVideoSubChannelActivity.a(this.a) != null) {
-      ReadInJoyVideoSubChannelActivity.a(this.a).setVisibility(8);
-    }
+    ReadinjoySubscriptManagerActivity.a(this.a.a);
   }
 }
 

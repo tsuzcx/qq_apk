@@ -1,23 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.NowPublishParam;
+import com.tencent.mobileqq.nearby.now.send.PublishManager;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aevz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aevz(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public aevz(VideoFeedsManager paramVideoFeedsManager, NowPublishParam paramNowPublishParam) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
-    paramView.putExtra("url", "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501");
-    this.a.a.startActivity(paramView);
-    ReportController.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
+    VideoFeedsUploader.UploadInfo localUploadInfo = new VideoFeedsUploader.UploadInfo();
+    localUploadInfo.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelNowPublishParam.a());
+    String str2 = BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager.a.getCurrentAccountUin(), 4).getString("nick", "");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager.a.getCurrentNickname();
+    }
+    localUploadInfo.o = str1;
+    localUploadInfo.g = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelNowPublishParam.a;
+    localUploadInfo.c = this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager.a.getLongAccountUin();
+    localUploadInfo.j = this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager.a.getLongAccountUin();
+    localUploadInfo.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo = VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager).a();
+    localUploadInfo.f = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelNowPublishParam.a().l;
+    localUploadInfo.b = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelNowPublishParam.a().b;
+    if (localUploadInfo.jdField_a_of_type_JavaUtilList == null) {
+      localUploadInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelNowPublishParam.a() != null) {
+      localUploadInfo.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelNowPublishParam.a());
+    }
+    localUploadInfo.d = this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelNowPublishParam.b;
+    VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager, localUploadInfo);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajdz;
+import ajsd;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -69,9 +69,9 @@ public class ExpandableTextView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368440));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368507));
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368441));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368508));
     TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
     if (this.jdField_b_of_type_Boolean) {}
     for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
@@ -205,7 +205,7 @@ public class ExpandableTextView
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       super.onMeasure(paramInt1, paramInt2);
     } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.post(new ajdz(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.post(new ajsd(this));
     this.jdField_a_of_type_Int = getMeasuredHeight();
   }
   
@@ -256,7 +256,7 @@ public class ExpandableTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ExpandableTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -21,11 +21,11 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import wpw;
-import wpx;
-import wpy;
-import wpz;
-import wqa;
+import wtb;
+import wtc;
+import wtd;
+import wte;
+import wtf;
 
 @SuppressLint({"ViewConstructor"})
 public class BaseActivityView
@@ -41,7 +41,7 @@ public class BaseActivityView
   public PhoneContactManagerImp a;
   public QQAppInterface a;
   public QQProgressDialog a;
-  private wqa jdField_a_of_type_Wqa;
+  private wtf jdField_a_of_type_Wtf;
   private boolean jdField_a_of_type_Boolean;
   protected View b;
   protected TextView b;
@@ -91,13 +91,13 @@ public class BaseActivityView
       this.d.setMaxWidth(AIOUtils.a(120.0F, getResources()));
       this.d.setText("推荐联系人");
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131432998);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433015);
       this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("取消本次转发");
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
     for (;;)
     {
-      this.d.setOnClickListener(new wpw(this));
+      this.d.setOnClickListener(new wtb(this));
       this.jdField_a_of_type_Boolean = false;
       return;
       if (this.jdField_a_of_type_Int == 1)
@@ -109,7 +109,7 @@ public class BaseActivityView
         this.d.setText("联系人");
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839207);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839211);
       }
       else if (this.jdField_a_of_type_Int == 5)
       {
@@ -143,18 +143,18 @@ public class BaseActivityView
     if (!a())
     {
       b(paramInt);
-      this.jdField_a_of_type_Wqa.sendEmptyMessageDelayed(2, paramLong);
+      this.jdField_a_of_type_Wtf.sendEmptyMessageDelayed(2, paramLong);
     }
   }
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Wqa;
+    Object localObject = this.jdField_a_of_type_Wtf;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
-      localObject = ((wqa)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Wqa.sendMessageDelayed((Message)localObject, paramLong);
+      localObject = ((wtf)localObject).obtainMessage(1, paramInt, i);
+      this.jdField_a_of_type_Wtf.sendMessageDelayed((Message)localObject, paramLong);
       return;
     }
   }
@@ -185,7 +185,7 @@ public class BaseActivityView
   
   protected void a(Intent paramIntent, PhoneInnerFrame paramPhoneInnerFrame)
   {
-    this.jdField_a_of_type_Wqa = new wqa(this);
+    this.jdField_a_of_type_Wtf = new wtf(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneInnerFrame = paramPhoneInnerFrame;
     paramIntent = paramPhoneInnerFrame.b();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramIntent.a();
@@ -203,7 +203,7 @@ public class BaseActivityView
   protected void a(String paramString1, String paramString2)
   {
     if (!a()) {
-      DialogUtil.a(getContext(), 231, paramString1, paramString2, new wpx(this), null).show();
+      DialogUtil.a(getContext(), 231, paramString1, paramString2, new wtc(this), null).show();
     }
   }
   
@@ -224,9 +224,9 @@ public class BaseActivityView
     if ((!a()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getContext(), a());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new wpy(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new wtd(this));
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnKeyListener(new wpz(this));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnKeyListener(new wte(this));
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
@@ -252,7 +252,7 @@ public class BaseActivityView
   
   public void g()
   {
-    this.jdField_a_of_type_Wqa.removeMessages(1);
+    this.jdField_a_of_type_Wtf.removeMessages(1);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
@@ -264,12 +264,12 @@ public class BaseActivityView
   {
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838596);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838600);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
-      this.jdField_a_of_type_Wqa.removeMessages(3);
-      this.jdField_a_of_type_Wqa.sendEmptyMessageDelayed(3, 120000L);
+      this.jdField_a_of_type_Wtf.removeMessages(3);
+      this.jdField_a_of_type_Wtf.sendEmptyMessageDelayed(3, 120000L);
     }
   }
   
@@ -277,7 +277,7 @@ public class BaseActivityView
   {
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
     {
-      this.jdField_a_of_type_Wqa.removeMessages(3);
+      this.jdField_a_of_type_Wtf.removeMessages(3);
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);

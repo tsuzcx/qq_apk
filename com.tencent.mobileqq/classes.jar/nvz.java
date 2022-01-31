@@ -1,18 +1,28 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.DiscoverManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.network.request.CommonRequest;
+import com.tencent.biz.qqstory.network.response.CommonResponse;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
 
 public class nvz
-  implements Runnable
+  implements CmdTaskManger.CommandCallback
 {
-  public nvz(StoryQQ2UidConverter paramStoryQQ2UidConverter, long paramLong) {}
+  public nvz(DiscoverPresenter paramDiscoverPresenter) {}
   
-  public void run()
+  public void a(@NonNull CommonRequest paramCommonRequest, @Nullable CommonResponse paramCommonResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    String str = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelStoryQQ2UidConverter.a(this.jdField_a_of_type_Long);
-    SLog.a("Q.qqstory.memories.StoryQQ2UidConverter", "get uid by qq from cache. qq = %d, uid = %s.", Long.valueOf(this.jdField_a_of_type_Long), str);
-    ThreadManager.getUIHandler().post(new nwa(this, str));
+    if ((paramErrorMessage.isFail()) || (paramCommonResponse == null))
+    {
+      SLog.e("Q.qqstory.discover.DiscoverPresenter", "StorySvc.get_hot_topic_info request fail! %s", new Object[] { paramErrorMessage.toString() });
+      return;
+    }
+    ((DiscoverManager)SuperManager.a(22)).a(DiscoverPresenter.a(this.a), paramCommonResponse.a);
+    DiscoverPresenter.a(this.a, paramCommonResponse.a);
   }
 }
 

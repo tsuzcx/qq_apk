@@ -1,45 +1,42 @@
-import android.view.View;
-import com.tencent.mobileqq.armap.ARMapShuaMsgView;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
-import com.tencent.mobileqq.portal.StrokeTextView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
 
-public class aavb
-  implements Runnable
+class aavb
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public aavb(ARMapShuaMsgView paramARMapShuaMsgView) {}
-  
-  public void run()
+  static
   {
-    boolean bool2 = true;
-    StringBuilder localStringBuilder;
-    if ((QLog.isColorLevel()) && (this.a.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView != null) && (this.a.jdField_a_of_type_AndroidViewView != null))
+    if (!ArkLocalAppMgr.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      localStringBuilder = new StringBuilder().append("SpringBackRunnable, pullType=").append(this.a.jdField_a_of_type_Int).append("  refreshProgressRoot.visible:");
-      if (this.a.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
-        break label135;
-      }
-      bool1 = true;
-      localStringBuilder = localStringBuilder.append(bool1).append("  refreshMsgText.visible:");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.getVisibility() != 0) {
-        break label140;
-      }
-    }
-    label135:
-    label140:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      QLog.d("ARMapShuaMsgView", 2, bool1);
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
-        break label145;
-      }
+      jdField_a_of_type_Boolean = bool;
       return;
-      bool1 = false;
-      break;
     }
-    label145:
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.c(0);
+  }
+  
+  aavb(aava paramaava, String paramString) {}
+  
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    if ((paramInt == 0) && (paramAppPathInfo != null))
+    {
+      ArkLocalAppMgr.a(this.jdField_a_of_type_Aava.a.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aava.a.jdField_a_of_type_Aavw, paramInt, paramString, paramAppPathInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    if (paramInt == 0)
+    {
+      if (!jdField_a_of_type_Boolean) {
+        throw new AssertionError();
+      }
+      paramInt = -1;
+      paramString = "ret is 0 but path is null";
+    }
+    for (;;)
+    {
+      ArkLocalAppMgr.a(this.jdField_a_of_type_Aava.a.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aava.a.jdField_a_of_type_Aavw, paramInt, paramString, null, this.jdField_a_of_type_JavaLangString);
+      return;
+    }
   }
 }
 

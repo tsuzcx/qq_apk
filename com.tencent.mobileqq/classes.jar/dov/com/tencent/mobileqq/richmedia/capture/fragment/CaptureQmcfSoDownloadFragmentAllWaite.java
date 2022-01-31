@@ -11,12 +11,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import anvr;
-import anvs;
-import anvt;
-import anvu;
-import anvv;
-import anvw;
+import aolw;
+import aolx;
+import aoly;
+import aolz;
+import aoma;
+import aomb;
 import com.tencent.mobileqq.activity.richmedia.Size;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -58,7 +58,7 @@ public class CaptureQmcfSoDownloadFragmentAllWaite
   private void a(String paramString)
   {
     f();
-    ThreadManager.getUIHandler().post(new anvs(this, paramString));
+    ThreadManager.getUIHandler().post(new aolx(this, paramString));
   }
   
   private boolean a()
@@ -68,7 +68,7 @@ public class CaptureQmcfSoDownloadFragmentAllWaite
   
   private void b(String paramString)
   {
-    ThreadManager.getUIHandler().post(new anvt(this, paramString));
+    ThreadManager.getUIHandler().post(new aoly(this, paramString));
   }
   
   private void d()
@@ -108,9 +108,16 @@ public class CaptureQmcfSoDownloadFragmentAllWaite
     b("正在启动拍摄" + this.c + "%");
   }
   
+  public void C_()
+  {
+    b("网络已断,请连接网络后继续下载");
+    VideoEnvironment.a("CaptureSoDownloadFragmentAllWaite", "网络已断,请连接网络后继续下载", null);
+    ShortVideoErrorReport.a(3, -1500);
+  }
+  
   protected int a()
   {
-    return 2130970253;
+    return 2130970269;
   }
   
   public void a()
@@ -123,7 +130,7 @@ public class CaptureQmcfSoDownloadFragmentAllWaite
   
   public void a(int paramInt)
   {
-    ThreadManager.getUIHandler().post(new anvw(this, paramInt));
+    ThreadManager.getUIHandler().post(new aomb(this, paramInt));
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -222,7 +229,7 @@ public class CaptureQmcfSoDownloadFragmentAllWaite
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new anvv(this, paramBoolean1, paramInt));
+    ThreadManager.getUIHandler().post(new aoma(this, paramBoolean1, paramInt));
   }
   
   public void c()
@@ -235,7 +242,7 @@ public class CaptureQmcfSoDownloadFragmentAllWaite
     }
     if (!bool)
     {
-      ThreadManager.getUIHandler().post(new anvu(this));
+      ThreadManager.getUIHandler().post(new aolz(this));
       return;
     }
     this.d = 101;
@@ -259,7 +266,7 @@ public class CaptureQmcfSoDownloadFragmentAllWaite
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = paramLayoutInflater.inflate(a(), paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = ((CameraCaptureView)paramLayoutInflater.findViewById(2131366903));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = ((CameraCaptureView)paramLayoutInflater.findViewById(2131366945));
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setDarkModeEnable(false);
     int i = CameraHelper.a();
     paramViewGroup = SVParamManager.a().a(i);
@@ -273,13 +280,13 @@ public class CaptureQmcfSoDownloadFragmentAllWaite
     paramBundle.a(false);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCaptureParam(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setSyncStopCamera(true);
-    ((Button)paramLayoutInflater.findViewById(2131363969)).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)paramLayoutInflater.findViewById(2131368942));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492968), 100, getResources().getColor(2131493307));
+    ((Button)paramLayoutInflater.findViewById(2131363993)).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)paramLayoutInflater.findViewById(2131369008));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492969), 100, getResources().getColor(2131493308));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(6.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131369444));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131369521));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppInterface());
     boolean bool = VideoEnvironment.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     getActivity().getIntent().getExtras();
@@ -311,7 +318,7 @@ public class CaptureQmcfSoDownloadFragmentAllWaite
     }
     label371:
     VideoEnvironment.a("CaptureSoDownloadFragmentAllWaite", "checkAVCodecLoadIsOK loaded=true, activityId=" + this.jdField_a_of_type_JavaLangString, null);
-    ThreadManager.getUIHandler().postDelayed(new anvr(this), 5L);
+    ThreadManager.getUIHandler().postDelayed(new aolw(this), 5L);
     return paramLayoutInflater;
   }
   
@@ -336,13 +343,6 @@ public class CaptureQmcfSoDownloadFragmentAllWaite
   {
     super.onResume();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.onResume();
-  }
-  
-  public void y_()
-  {
-    b("网络已断,请连接网络后继续下载");
-    VideoEnvironment.a("CaptureSoDownloadFragmentAllWaite", "网络已断,请连接网络后继续下载", null);
-    ShortVideoErrorReport.a(3, -1500);
   }
 }
 

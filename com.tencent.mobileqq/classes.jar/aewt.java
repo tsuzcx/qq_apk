@@ -1,55 +1,69 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.ShortVideoMomentFeedInfo;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
 import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class aewt
-  implements NearbyMomentManager.DeleteFeedCallback
+public final class aewt
+  implements AdapterView.OnItemClickListener
 {
-  aewt(aews paramaews) {}
+  public aewt(ShareActionSheetBuilder paramShareActionSheetBuilder, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i;
-    if (!paramBoolean)
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "删除失败", 0).a();
-      if (!(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo instanceof ShortVideoMomentFeedInfo)) {
-        break label187;
-      }
-      paramString = (ShortVideoMomentFeedInfo)this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo;
-      if (paramString.b % 1000L <= 500L) {
-        break label168;
-      }
-      i = (int)paramString.b / 1000 + 1;
-      label69:
-      localNowVideoReporter = new NowVideoReporter().h("video_public").i("de_republic").a(String.valueOf(i)).d("5").c("1");
-      if (!paramBoolean) {
-        break label181;
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.b();
+    int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.c;
+    if ((i == 9) || (i == 10)) {
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131435319;
       }
     }
-    label168:
-    label181:
-    for (paramString = "1";; paramString = "")
+    for (;;)
     {
-      localNowVideoReporter.e(paramString).b(NearbyMomentFailedAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter));
-      return;
-      NearbyMomentFailedAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter).remove(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter.notifyDataSetChanged();
-      break;
-      i = (int)paramString.b / 1000;
-      break label69;
-    }
-    label187:
-    NowVideoReporter localNowVideoReporter = new NowVideoReporter().h("video_public").i("de_republic").d("5").c("2");
-    if (paramBoolean) {}
-    for (paramString = "1";; paramString = "")
-    {
-      localNowVideoReporter.e(paramString).b(NearbyMomentFailedAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter));
-      return;
+      if (paramInt != -1)
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(paramInt), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131558448));
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131435320;
+        }
+      }
+      else
+      {
+        paramAdapterView = this.jdField_a_of_type_JavaLangString;
+        switch (i)
+        {
+        case 4: 
+        case 5: 
+        case 6: 
+        case 7: 
+        case 8: 
+        default: 
+          return;
+        case 2: 
+          ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.e, false);
+          return;
+        case 3: 
+          ShortVideoShareUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.e);
+          return;
+        case 9: 
+          ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.f);
+          return;
+        }
+        ShortVideoShareUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.f);
+        return;
+      }
+      paramInt = -1;
     }
   }
 }

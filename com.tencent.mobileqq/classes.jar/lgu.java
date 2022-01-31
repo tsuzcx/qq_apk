@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
 
-public class lgu
-  implements View.OnClickListener
+class lgu
+  implements DialogInterface.OnClickListener
 {
-  public lgu(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  lgu(lgt paramlgt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    this.a.a.d();
   }
 }
 

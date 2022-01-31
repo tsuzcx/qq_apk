@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQGAudioMsgHandler;
+import cooperation.groupvideo.GroupVideoWrapper;
+import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
 
 public class zlr
-  implements Runnable
+  implements GroupVideoWrapper.OnGVideoReadyListener
 {
-  public zlr(TroopManager paramTroopManager, String paramString, TroopManager.callbackInMainThread paramcallbackInMainThread) {}
+  public zlr(QQGAudioMsgHandler paramQQGAudioMsgHandler, byte[] paramArrayOfByte) {}
   
-  public void run()
+  public void a(GroupVideoWrapper paramGroupVideoWrapper)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.d(this.jdField_a_of_type_JavaLangString);
-    ThreadManager.getUIHandler().post(new zls(this, str));
+    paramGroupVideoWrapper.a(this.jdField_a_of_type_ArrayOfByte);
+    paramGroupVideoWrapper.a();
   }
 }
 

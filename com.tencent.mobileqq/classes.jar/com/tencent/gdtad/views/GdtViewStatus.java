@@ -2,7 +2,7 @@ package com.tencent.gdtad.views;
 
 import android.view.View;
 import java.lang.ref.WeakReference;
-import qjl;
+import qlf;
 
 public class GdtViewStatus
 {
@@ -75,7 +75,7 @@ public class GdtViewStatus
     if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
       return;
     }
-    ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new qjl(this), 500L);
+    ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new qlf(this), 500L);
   }
   
   public void c()
@@ -98,7 +98,7 @@ public class GdtViewStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.GdtViewStatus
  * JD-Core Version:    0.7.0.1
  */

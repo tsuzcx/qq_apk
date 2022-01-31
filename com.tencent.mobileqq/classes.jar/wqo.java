@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
-class wqo
+public class wqo
   implements Runnable
 {
-  wqo(wqn paramwqn) {}
+  public wqo(MainAssistObserver paramMainAssistObserver) {}
   
   public void run()
   {
-    this.a.a.a.g();
-    this.a.a.a.f = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "-->onGetOpenId timeout.");
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) {
+      return;
+    }
+    this.a.c = true;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
   }
 }
 

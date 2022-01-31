@@ -1,32 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview.NaviMaskTouchListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class leo
-  implements ReadInJoyNavigationGridview.NaviMaskTouchListener
+  implements ActionSheet.OnDismissListener
 {
-  private WeakReference a;
+  public leo(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public leo(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
+  public void onDismiss()
   {
-    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
-  }
-  
-  public void a()
-  {
-    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
-    if (localReadInJoyNewFeedsActivity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
-      }
-    }
-    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
-      return;
-    }
-    localReadInJoyNewFeedsActivity.a.a(null);
+    ReadInJoySettingActivity.c(this.a).cancel();
   }
 }
 

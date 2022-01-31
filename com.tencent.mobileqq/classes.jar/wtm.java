@@ -1,19 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.MediaScanner;
-import com.tencent.mobileqq.activity.photo.PeakService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.qphone.base.util.QLog;
 
-public class wtm
-  implements Runnable
+class wtm
+  implements DialogInterface.OnClickListener
 {
-  public wtm(PeakService paramPeakService) {}
+  wtm(wtl paramwtl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PeakService", 2, "peak service start MediaScanner.doScan()");
+      QLog.d("IphoneTitleBarActivity", 2, "new user guild confirm unbind");
     }
-    MediaScanner.a(BaseApplicationImpl.getContext()).a();
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.a.a.jdField_a_of_type_JavaLangString, this.a.a.b, 0, BindNumberActivity.a(this.a.a), BindNumberActivity.c(this.a.a));
+    this.a.a.a(2131434453, 1000L, true);
   }
 }
 

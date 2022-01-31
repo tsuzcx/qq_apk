@@ -1,20 +1,17 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import cooperation.thirdpay.ThirdPayGate;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
 
 public class amop
   implements DialogInterface.OnClickListener
 {
-  public amop(ThirdPayGate paramThirdPayGate, Bundle paramBundle, Activity paramActivity) {}
+  public amop(DatalineRemoteManager paramDatalineRemoteManager) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isactivityfinish")) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
+    this.a.b = true;
+    DatalineRemoteManager.a(this.a, 1);
+    DatalineRemoteManager.b(this.a);
   }
 }
 

@@ -1,24 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
 
 public class uun
-  implements Runnable
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public uun(FlashPicItemBuilder.FlashPicAIOThumbView paramFlashPicAIOThumbView) {}
+  public uun(ArkAppItemBubbleBuilder.Holder paramHolder1, ArkAppItemBubbleBuilder.Holder paramHolder2) {}
   
-  public void run()
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    try
+    if (paramBitmap != null)
     {
-      synchronized (BaseApplicationImpl.sImageCache) {}
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.hotchat", 2, "cache flashpic abumb exception:" + localException);
-      }
+      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
     }
   }
 }

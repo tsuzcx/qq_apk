@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vashealth;
 
-import ajvk;
-import ajvl;
-import ajvm;
-import ajvo;
-import ajvp;
-import ajvq;
-import ajvr;
+import akjr;
+import akjs;
+import akjt;
+import akjv;
+import akjw;
+import akjx;
+import akjy;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -105,11 +105,11 @@ public class PathTraceManager
   {
     this.jdField_e_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new ajvq(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new akjx(this, Looper.getMainLooper());
     this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = paramBrowserAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterfaceHelper$OnPluginInterfaceLoadedListener = new ajvk(this);
+    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterfaceHelper$OnPluginInterfaceLoadedListener = new akjr(this);
     PluginInterfaceHelper.getPluginInterface(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterfaceHelper$OnPluginInterfaceLoadedListener);
     this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData = b();
     paramBrowserAppInterface = new StringBuilder(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp().getFilesDir().getPath());
@@ -118,7 +118,7 @@ public class PathTraceManager
     a(null);
     this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp().getApplicationContext().getSystemService("sensor"));
     this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(19);
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new ajvl(this);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new akjs(this);
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -277,10 +277,10 @@ public class PathTraceManager
     //   228: aload_3
     //   229: astore_2
     //   230: getstatic 266	com/tencent/mobileqq/vashealth/PathTraceManager:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   233: new 320	ajvn
+    //   233: new 320	akju
     //   236: dup
     //   237: aload_0
-    //   238: invokespecial 322	ajvn:<init>	(Ljava/util/ArrayList;)V
+    //   238: invokespecial 322	akju:<init>	(Ljava/util/ArrayList;)V
     //   241: invokevirtual 326	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   244: aload_3
     //   245: astore 4
@@ -802,7 +802,7 @@ public class PathTraceManager
   
   public void a(long paramLong, String paramString)
   {
-    ThreadManager.executeOnNetWorkThread(new ajvr(this, paramLong, paramString));
+    ThreadManager.executeOnNetWorkThread(new akjy(this, paramLong, paramString));
   }
   
   public void a(Bundle paramBundle)
@@ -1068,7 +1068,7 @@ public class PathTraceManager
       }
       for (;;)
       {
-        ThreadManager.getSubThreadHandler().post(new ajvp(this, (List)localObject2));
+        ThreadManager.getSubThreadHandler().post(new akjw(this, (List)localObject2));
         if ((this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData != null) && (Build.VERSION.SDK_INT >= 25))
         {
           paramTracePointsData = new Intent();
@@ -1297,7 +1297,7 @@ public class PathTraceManager
       } while (!QLog.isColorLevel());
       QLog.d("PathTraceManager", 2, "loaderInterface Null");
       return;
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject, new ajvm(this, str, paramString), null);
+      this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject, new akjt(this, str, paramString), null);
       return;
       localObject = null;
     }
@@ -1738,7 +1738,7 @@ public class PathTraceManager
         localArrayList.add(Uri.fromFile(new File(this.jdField_a_of_type_JavaLangString + (String)paramArrayList.get(m) + ".mp3")));
         m += 1;
       }
-      ThreadManager.post(new ajvo(this, localArrayList), 5, null, false);
+      ThreadManager.post(new akjv(this, localArrayList), 5, null, false);
       return;
     }
     QLog.d("PathTraceManager", 1, "play mute");
@@ -1954,7 +1954,7 @@ public class PathTraceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceManager
  * JD-Core Version:    0.7.0.1
  */

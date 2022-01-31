@@ -1,34 +1,9 @@
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnAudioDownloadListener;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-
-public final class yqo
-  extends DownloadListener
+class yqo
+  implements Runnable
 {
-  public yqo(int paramInt, ApolloResDownloader.OnAudioDownloadListener paramOnAudioDownloadListener) {}
+  yqo(yqn paramyqn) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    super.onDone(paramDownloadTask);
-    if (3 == paramDownloadTask.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio ok id" + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnAudioDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnAudioDownloadListener.a(true, this.jdField_a_of_type_Int);
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio error id->" + this.jdField_a_of_type_Int + " task.getStatus()->" + paramDownloadTask.a());
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnAudioDownloadListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloResDownloader$OnAudioDownloadListener.a(false, this.jdField_a_of_type_Int);
-  }
+  public void run() {}
 }
 
 

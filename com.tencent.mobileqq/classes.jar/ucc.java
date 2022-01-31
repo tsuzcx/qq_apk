@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class ucc
-  implements Comparator
+  implements View.OnClickListener
 {
-  private ucc(TroopTransferActivity paramTroopTransferActivity) {}
+  public ucc(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public int a(TroopTransferActivity.TroopMemberItem paramTroopMemberItem1, TroopTransferActivity.TroopMemberItem paramTroopMemberItem2)
+  public void onClick(View paramView)
   {
-    return paramTroopMemberItem1.f.compareToIgnoreCase(paramTroopMemberItem2.f);
+    this.a.finish();
   }
 }
 

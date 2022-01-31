@@ -1,82 +1,37 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import android.view.View;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter.FilterPagerAdapter;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.biz.qqstory.takevideo.EditGifSpeedControl;
 import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayerExport;
-import com.tencent.biz.qqstory.takevideo.filter.FilterData;
-import com.tencent.biz.qqstory.takevideo.filter.FilterData.FilterPageItem;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
 public class ocu
-  implements ViewPager.OnPageChangeListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private ocu(EditVideoFilter paramEditVideoFilter) {}
+  public ocu(EditGifSpeedControl paramEditGifSpeedControl) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    paramInt2 = 0;
-    int i = paramInt1 % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a();
-    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(i);
-    if (localObject != null) {}
-    for (paramInt1 = ((FilterData)localObject).jdField_a_of_type_Int;; paramInt1 = 0)
+    if (paramBoolean)
     {
-      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a((i + 1) % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a());
-      if (localObject != null) {
-        paramInt2 = ((FilterData)localObject).jdField_a_of_type_Int;
+      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a != null) {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a.a(NativeGifImage.QZONE_DELAY);
       }
-      localObject = (EditVideoPlayerExport)this.a.a(EditVideoPlayerExport.class);
-      if (localObject != null) {
-        ((EditVideoPlayerExport)localObject).a(paramInt1, paramInt2, paramFloat);
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.e = NativeGifImage.QZONE_DELAY;
+      this.a.d = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
       }
-      return;
     }
   }
   
-  public void onPageSelected(int paramInt)
-  {
-    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-    if (localObject != null) {}
-    for (int i = ((FilterData)localObject).jdField_a_of_type_Int;; i = 0)
-    {
-      this.a.jdField_a_of_type_AndroidUtilSparseArray.put(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(), localObject);
-      if ((i == 2) || (i == 1) || (i == 3))
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-        if ((localObject != null) && (TextUtils.isEmpty(((FilterData.FilterPageItem)localObject).jdField_a_of_type_ComTencentBizQqstoryTakevideoFilterFilterData.b))) {
-          EditVideoFilter.a((FilterData.FilterPageItem)localObject);
-        }
-      }
-      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt - 1);
-      FilterData.FilterPageItem localFilterPageItem = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt + 1);
-      if (localObject != null) {
-        ((FilterData.FilterPageItem)localObject).jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      if (localFilterPageItem != null) {
-        localFilterPageItem.jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_Int = i;
-      EditVideoFilter.a(this.a).put(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(), paramInt);
-      localObject = (EditVideoPlayerExport)this.a.a(EditVideoPlayerExport.class);
-      if (localObject != null) {
-        ((EditVideoPlayerExport)localObject).b(i);
-      }
-      if (i != 0)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a("608", "9", "0", true);
-        VideoEditReport.a("0X80076DE");
-      }
-      SLog.a("Q.qqstory.publish.edit.EditVideoFilter", "LastSelectVideoFilterTime : %s , LastSelectVideoPlayMode : %s .", Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(this.a.jdField_a_of_type_Int));
-      return;
-    }
-  }
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

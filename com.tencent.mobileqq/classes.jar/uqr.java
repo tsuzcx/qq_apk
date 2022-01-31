@@ -1,19 +1,13 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
-public final class uqr
+public class uqr
   implements Runnable
 {
-  public uqr(Context paramContext, int paramInt, String paramString) {}
+  public uqr(PressToSpeakPanel paramPressToSpeakPanel) {}
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloItemBuilder", 2, "fav action number is 144");
-    }
+    this.a.b();
   }
 }
 

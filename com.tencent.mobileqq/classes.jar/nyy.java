@@ -1,18 +1,30 @@
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.CommentManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
 import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidPollDataResultReceiver;
 
 public class nyy
-  implements ActionSheet.OnDismissListener
+  implements Runnable
 {
-  public nyy(FeedSegment paramFeedSegment, int paramInt) {}
+  public nyy(HomeFeedPresenter.SendVidPollDataResultReceiver paramSendVidPollDataResultReceiver, CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry) {}
   
-  public void onDismiss()
+  public void run()
   {
-    StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a.a().get(this.jdField_a_of_type_Int);
-    FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, localStoryHomeFeed, "clk_hide");
+    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
+    if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.type = 3;
+      localCommentManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    }
+    for (;;)
+    {
+      ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      return;
+      localCommentManager.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    }
   }
 }
 

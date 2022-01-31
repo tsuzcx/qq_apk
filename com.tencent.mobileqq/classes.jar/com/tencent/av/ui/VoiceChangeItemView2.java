@@ -31,9 +31,9 @@ public class VoiceChangeItemView2
   
   public void a(int paramInt1, int paramInt2)
   {
-    ((LayoutInflater)this.b.getSystemService("layout_inflater")).inflate(2130969375, this);
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131366237));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366299));
+    ((LayoutInflater)this.b.getSystemService("layout_inflater")).inflate(2130969376, this);
+    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131366264));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366326));
     this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setOnClickListener(this);
     setOnClickListener(this);
   }
@@ -48,7 +48,7 @@ public class VoiceChangeItemView2
       paramIClickCallback = URLDrawable.URLDrawableOptions.obtain();
       paramInt = AIOUtils.a(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(getResources().getColor(2131493212));
+      localGradientDrawable.setColor(getResources().getColor(2131493213));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt, paramInt);
       paramIClickCallback.mRequestWidth = paramInt;
@@ -69,20 +69,20 @@ public class VoiceChangeItemView2
     {
       setHighlight(paramBoolean1);
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840357);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840363);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840357);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840363);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840357);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840363);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    View localView = findViewById(2131366300);
+    View localView = findViewById(2131366327);
     ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
     localLayoutParams.width = paramInt1;
     localLayoutParams.height = paramInt2;

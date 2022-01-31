@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public class uyt
-  implements View.OnClickListener
+class uyt
+  implements ActionSheet.OnDismissListener
 {
-  public uyt(MedalNewsItemBuilder paramMedalNewsItemBuilder) {}
+  uyt(uys paramuys) {}
   
-  public void onClick(View paramView)
-  {
-    MedalNewsItemBuilder.a(this.a, true, this.a.a.getCurrentAccountUin());
-  }
+  public void onDismiss() {}
 }
 
 

@@ -1,31 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadCallbackNativeImpl;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class akpm
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  akpm(akpk paramakpk) {}
+  akpm(akpl paramakpl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      DownloadNativeApi.a(this.a.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadNativeApi).d(this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    this.a.a.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akpm
  * JD-Core Version:    0.7.0.1
  */

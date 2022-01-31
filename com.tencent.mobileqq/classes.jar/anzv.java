@@ -1,16 +1,26 @@
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.DispatchThread;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
 
 public class anzv
   implements Runnable
 {
-  public anzv(DispatchThread paramDispatchThread) {}
+  public anzv(DoodleTextureView paramDoodleTextureView) {}
   
   public void run()
   {
-    synchronized (this.a)
+    if (this.a.a != null)
     {
-      this.a.notifyAll();
-      return;
+      this.a.a.g();
+      PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.a.a(102);
+      if (localPersonalityOperator != null) {
+        localPersonalityOperator.b();
+      }
+      this.a.a = null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DoodleTextureView", 2, "onDestroy end");
     }
   }
 }

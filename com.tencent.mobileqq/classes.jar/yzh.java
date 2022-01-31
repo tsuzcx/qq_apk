@@ -1,69 +1,64 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.MsgSCBody;
-import com.tencent.litetransfersdk.ProtocolHelper;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloTabAdapter;
+import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.widget.HorizontalListView;
+import java.util.Iterator;
+import java.util.List;
 
 public class yzh
   implements Runnable
 {
-  public yzh(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
+  public yzh(ApolloPanel paramApolloPanel, List paramList) {}
   
   public void run()
   {
-    MsgSCBody localMsgSCBody = new MsgSCBody();
-    cmd0x346.RspBody localRspBody = new cmd0x346.RspBody();
-    localMsgSCBody.uMsgType = 838;
-    if ((this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg == null) || (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null)) {
-      localMsgSCBody.bTimeOut = true;
-    }
-    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqApolloViewApolloTabAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentWidgetHorizontalListView != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.FillMsgSCBody(localMsgSCBody, localRspBody, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null) {
-        break label174;
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqApolloViewApolloTabAdapter.a(this.jdField_a_of_type_JavaUtilList);
+      if (!ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel)) {
+        break label111;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqApolloViewApolloTabAdapter.notifyDataSetChanged();
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null)) {
+        break;
+      }
+      return;
+      label111:
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    label135:
+    ApolloActionPackage localApolloActionPackage;
+    while (localIterator.hasNext())
+    {
+      localApolloActionPackage = (ApolloActionPackage)localIterator.next();
+      if ((localApolloActionPackage != null) && (localApolloActionPackage.isUpdate)) {
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a != 3000) {
+          break label215;
+        }
       }
     }
-    label174:
-    for (long l = 0L;; l = ((Long)this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("cookie")).longValue())
+    label215:
+    for (int i = 2;; i = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a)
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReply(Long.valueOf(l).intValue(), localMsgSCBody);
-        return;
-        byte[] arrayOfByte = null;
-        if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer() != null)
-        {
-          int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer().length - 4;
-          if (i < 0) {
-            break;
-          }
-          arrayOfByte = new byte[i];
-          PkgTools.a(arrayOfByte, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
-        }
-        if (arrayOfByte == null) {
-          break;
-        }
-        try
-        {
-          localRspBody.mergeFrom(arrayOfByte);
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          localInvalidProtocolBufferMicroException.printStackTrace();
-        }
-      }
+      VipUtils.a(null, "cmshow", "Apollo", "tabreddot", i, 0, new String[] { String.valueOf(localApolloActionPackage.packageId) });
+      break label135;
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yzh
  * JD-Core Version:    0.7.0.1
  */

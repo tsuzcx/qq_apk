@@ -1,28 +1,27 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class rxf
-  implements FMDialogUtil.FMDialogInterface
+public final class rxf
+  implements DialogInterface.OnClickListener
 {
-  public rxf(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, FileManagerEngine paramFileManagerEngine) {}
+  public rxf(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 1, 8);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (this.jdField_a_of_type_Int == 5) {}
+    for (paramInt = 2;; paramInt = 3)
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.b(localFileManagerEntity);
-      }
+      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FB", "0X80063FB", paramInt, 0, "", "", "", "");
+      return;
     }
   }
-  
-  public void b() {}
 }
 
 

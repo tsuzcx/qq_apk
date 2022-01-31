@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
-import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.HomeworkInfo;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajhj
-  implements Action.OnActionEndListener
+  implements DialogInterface.OnClickListener
 {
-  public ajhj(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  public ajhj(PublishHomeWorkFragment paramPublishHomeWorkFragment, HomeworkInfo paramHomeworkInfo) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
-    localSequenceAction.a = true;
-    TroopGiftToAllSurfaceView.a(this.a).a(new Action[] { localSequenceAction });
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      PublishHomeWorkFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkHomeworkInfo);
+    } while (!QLog.isColorLevel());
+    QLog.d("PublishHomeWorkFragment", 2, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkHomeworkInfo.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhj
  * JD-Core Version:    0.7.0.1
  */

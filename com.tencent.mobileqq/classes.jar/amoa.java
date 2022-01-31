@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QQProxyForQlink;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-public final class amoa
-  implements Parcelable.Creator
+public class amoa
+  implements DialogInterface.OnClickListener
 {
-  public RedTouchExtendButton.RedInfo a(Parcel paramParcel)
-  {
-    return new RedTouchExtendButton.RedInfo(paramParcel);
-  }
+  public amoa(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public RedTouchExtendButton.RedInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new RedTouchExtendButton.RedInfo[paramInt];
+    QQProxyForQlink.a(this.a, 5, null);
+    this.a.finish();
   }
 }
 

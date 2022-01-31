@@ -1,27 +1,49 @@
-import android.content.res.Resources;
-import android.graphics.NinePatch;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import com.tencent.mobileqq.bubble.ReversedNinePatchDrawable;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.armap.config.ARMapConfigManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class abfc
-  extends Drawable.ConstantState
+public class abfc
+  extends SosoInterface.OnLocationListener
 {
-  public final NinePatch a;
-  
-  public int getChangingConfigurations()
+  public abfc(ARMapConfigManager paramARMapConfigManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    return 0;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public Drawable newDrawable()
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return new ReversedNinePatchDrawable(null, this);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new ReversedNinePatchDrawable(paramResources, this);
+    long l2 = -1L;
+    long l1 = l2;
+    if (paramSosoLbsInfo != null)
+    {
+      l1 = l2;
+      if (paramSosoLbsInfo.a == null) {}
+    }
+    try
+    {
+      l1 = Long.valueOf(paramSosoLbsInfo.a.f).longValue();
+      ARMapConfigManager.a(this.a, paramSosoLbsInfo.a.b);
+      ARMapConfigManager.b(this.a, paramSosoLbsInfo.a.a);
+      this.a.e = l1;
+      if (l1 > 0L) {
+        ARMapConfigManager.a(this.a, 0L);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapConfigManager", 2, String.format("onFirstLocationFinish errCode=%s adCode=%s mLongitude=%s mLatitude=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(l1), Double.valueOf(ARMapConfigManager.a(this.a)), Double.valueOf(ARMapConfigManager.b(this.a)) }));
+      }
+      return;
+    }
+    catch (Exception paramSosoLbsInfo)
+    {
+      for (;;)
+      {
+        l1 = -1L;
+        ARMapConfigManager.a(this.a, 0.0D);
+        ARMapConfigManager.b(this.a, 0.0D);
+      }
+    }
   }
 }
 

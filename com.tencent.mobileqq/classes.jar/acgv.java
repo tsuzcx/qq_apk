@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
 
-class acgv
+public class acgv
   implements Runnable
 {
-  acgv(acgu paramacgu, boolean paramBoolean) {}
+  public acgv(StickerGestureDetector paramStickerGestureDetector) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QfileFileAssistantActivity.e(this.jdField_a_of_type_Acgu.a);
-      return;
-    }
-    QfileFileAssistantActivity.f(this.jdField_a_of_type_Acgu.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout);
   }
 }
 

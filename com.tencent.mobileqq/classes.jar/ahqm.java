@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.startup.director.StartupDirector;
-import mqq.app.AppActivity;
+import com.tencent.mobileqq.search.BusinessSearchEntryModel;
 
-public class ahqm
+class ahqm
   implements Runnable
 {
-  public ahqm(StartupDirector paramStartupDirector, AppActivity paramAppActivity) {}
+  ahqm(ahql paramahql) {}
   
   public void run()
   {
-    this.jdField_a_of_type_MqqAppAppActivity.superFinish();
-    System.exit(0);
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel.b(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelBusinessSearchEntryDataModel);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahqm
  * JD-Core Version:    0.7.0.1
  */

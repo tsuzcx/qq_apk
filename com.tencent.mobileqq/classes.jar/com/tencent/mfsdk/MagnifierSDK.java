@@ -10,7 +10,7 @@ import com.tencent.mfsdk.persist.DBHandler;
 import com.tencent.mfsdk.reporter.DFObserver;
 import com.tencent.mfsdk.reporter.StackObserver;
 import mqq.os.MqqHandler;
-import rba;
+import rdq;
 
 public class MagnifierSDK
 {
@@ -91,14 +91,14 @@ public class MagnifierSDK
     while (jdField_a_of_type_MqqOsMqqHandler == null) {
       return false;
     }
-    paramApplication = new rba(this, paramApplication, paramInt);
+    paramApplication = new rdq(this, paramApplication, paramInt);
     jdField_a_of_type_MqqOsMqqHandler.post(paramApplication);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mfsdk.MagnifierSDK
  * JD-Core Version:    0.7.0.1
  */

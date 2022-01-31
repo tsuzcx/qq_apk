@@ -1,32 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.res.Resources;
+import com.tencent.litetransfersdk.ProtocolHelper;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class rdi
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rdi(AccountManageActivity paramAccountManageActivity) {}
+  public rdi(ProtocolHelper paramProtocolHelper, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (View)paramView.getParent().getParent();
-    if ((paramView == null) || (paramView.getTag() == null)) {}
-    int i;
-    do
-    {
-      return;
-      i = ((Integer)paramView.getTag()).intValue();
-    } while ((i == 0) && (!PhoneNumLoginImpl.a().a(this.a.app, this.a)));
-    this.a.a(i);
-    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
+    FMToastUtil.a("'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131427559));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rdi
  * JD-Core Version:    0.7.0.1
  */

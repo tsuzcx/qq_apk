@@ -1,26 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
 
 public class aikg
-  extends Handler
+  implements Runnable
 {
-  public aikg(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  public aikg(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a()))
     {
-    default: 
-      return;
+      this.a.a.app.f(false);
+      SubAccountControll.a(this.a.a.app, false);
     }
-    this.a.a.springBackOverScrollHeaderView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikg
  * JD-Core Version:    0.7.0.1
  */

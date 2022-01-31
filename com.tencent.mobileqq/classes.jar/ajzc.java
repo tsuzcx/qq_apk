@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.webso.WebSoService;
+import android.view.View;
 
-public class ajzc
+public final class ajzc
   implements Runnable
 {
-  public ajzc(WebViewFragment paramWebViewFragment, String paramString) {}
+  public ajzc(View paramView) {}
   
   public void run()
   {
-    WebSoService.a().a(this.jdField_a_of_type_JavaLangString, null);
+    this.a.sendAccessibilityEvent(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskHandler;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloRenderRunner;
+import com.tencent.mobileqq.apollo.aioChannel.IRenderRunner;
+import com.tencent.qphone.base.util.QLog;
 
-public final class yow
+public class yow
   implements Runnable
 {
-  public yow(SpriteTaskHandler paramSpriteTaskHandler, SpriteTaskParam paramSpriteTaskParam) {}
+  public yow(ApolloRenderRunner paramApolloRenderRunner, IRenderRunner paramIRenderRunner, long paramLong, ApolloCmdChannel paramApolloCmdChannel, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskHandler.b(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner != null) && (this.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner.getRuntimeState()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.callbackEngineWrapper(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner.isJsRuntime(), this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+      if (QLog.isColorLevel()) {
+        QLog.d("apollochannel_JsRenderRunner", 2, "apolloSurfaceView.queueEvent mNativeSSOReqMgr.callbackEngine cmd:" + this.jdField_a_of_type_JavaLangString);
+      }
     }
   }
 }

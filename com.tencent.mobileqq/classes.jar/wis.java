@@ -1,30 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
-import com.tencent.widget.SimpleTextView;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
-import com.tencent.widget.SwipTextViewMenuBuilder;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
 public class wis
-  extends SwipTextViewMenuBuilder
+  extends Handler
 {
-  public wis(ContactsDisAdapter paramContactsDisAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  public wis(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  public void handleMessage(Message paramMessage)
   {
-    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
-    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
-      paramSwipRightMenuItem.setTag(paramObject);
-    }
-    return paramSwipRightMenuItem;
-  }
-  
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
-  {
-    this.a.a(paramInt, paramArrayOfSwipRightMenuItem, paramObject);
+    this.a.a.clearFocus();
   }
 }
 

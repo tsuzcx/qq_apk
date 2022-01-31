@@ -10,9 +10,9 @@ import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 import cooperation.qzone.util.QZLog;
 import java.io.File;
-import xrk;
-import xrl;
-import xrm;
+import xuq;
+import xur;
+import xus;
 
 public class P2VEffectLoader
 {
@@ -115,7 +115,7 @@ public class P2VEffectLoader
   
   public void a(P2VEffectLoader.P2VEffectDownloadListener paramP2VEffectDownloadListener)
   {
-    b(new xrk(this, paramP2VEffectDownloadListener));
+    b(new xuq(this, paramP2VEffectDownloadListener));
   }
   
   public void a(ClassLoader paramClassLoader)
@@ -187,7 +187,7 @@ public class P2VEffectLoader
       paramP2VEffectDownloadListener.a(true);
       return;
     }
-    QzoneModuleManager.getInstance().downloadModule("p2v_effect.jar", new xrl(this, paramP2VEffectDownloadListener));
+    QzoneModuleManager.getInstance().downloadModule("p2v_effect.jar", new xur(this, paramP2VEffectDownloadListener));
   }
   
   public void c(P2VEffectLoader.P2VEffectDownloadListener paramP2VEffectDownloadListener)
@@ -201,7 +201,7 @@ public class P2VEffectLoader
       paramP2VEffectDownloadListener.a(true);
       return;
     }
-    QzoneModuleManager.getInstance().downloadModule("p2v_material.zip", new xrm(this, paramP2VEffectDownloadListener));
+    QzoneModuleManager.getInstance().downloadModule("p2v_material.zip", new xus(this, paramP2VEffectDownloadListener));
   }
 }
 

@@ -1,16 +1,17 @@
-import com.tencent.biz.qqstory.base.download.DownloaderImp;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
 
 public class ojn
-  implements Runnable
+  implements DoodleOpController.DoodleOpListener
 {
-  public ojn(EditVideoMusicDialog paramEditVideoMusicDialog, String paramString1, String paramString2) {}
+  public ojn(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a = new DownloaderImp();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
   }
 }
 

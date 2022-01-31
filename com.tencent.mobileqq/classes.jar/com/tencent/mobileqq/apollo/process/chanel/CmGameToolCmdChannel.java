@@ -9,10 +9,10 @@ import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResultCallback;
 import org.json.JSONObject;
-import yoa;
-import yob;
-import yoc;
-import yod;
+import yrg;
+import yrh;
+import yri;
+import yrj;
 
 public class CmGameToolCmdChannel
 {
@@ -72,7 +72,7 @@ public class CmGameToolCmdChannel
   private static boolean a(long paramLong, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
   {
     if (paramString1.equals("cs.check_pubAccount_state.local")) {
-      a(paramString1, paramString2, paramBoolean, new yoa(paramLong), paramInt);
+      a(paramString1, paramString2, paramBoolean, new yrg(paramLong), paramInt);
     }
     label199:
     do
@@ -85,13 +85,13 @@ public class CmGameToolCmdChannel
           return false;
           if (paramString1.equals("cs.on_get_open_key.local"))
           {
-            a(paramString1, paramString2, paramBoolean, new yob(paramLong), paramInt);
+            a(paramString1, paramString2, paramBoolean, new yrh(paramLong), paramInt);
             return false;
           }
           if (!paramString1.equals("cs.get_dress_path.local")) {
             break label199;
           }
-          localObject2 = new yoc(paramLong, paramString1);
+          localObject2 = new yri(paramLong, paramString1);
           try
           {
             CmGameLauncher localCmGameLauncher = CmGameUtil.b(paramLong);
@@ -123,7 +123,7 @@ public class CmGameToolCmdChannel
         if (!paramString1.equals("cs.script_get_action_data.local")) {
           break;
         }
-        Object localObject1 = new yod(paramLong);
+        Object localObject1 = new yrj(paramLong);
         localObject2 = new Bundle();
         ((Bundle)localObject2).putString("cmd", paramString1);
         ((Bundle)localObject2).putString("reqData", paramString2);

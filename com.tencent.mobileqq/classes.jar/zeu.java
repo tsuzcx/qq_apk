@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.HotChatCenterManager;
+import com.tencent.mobileqq.data.HotChatItemData;
+import java.util.Comparator;
 
 public class zeu
-  implements Runnable
+  implements Comparator
 {
-  public zeu(NewFriendManager paramNewFriendManager) {}
+  public zeu(HotChatCenterManager paramHotChatCenterManager) {}
   
-  public void run()
+  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
   {
-    this.a.a(true);
-    NewFriendManager.a(this.a);
+    long l1 = Math.max(paramHotChatItemData1.mLatestMsgSec, paramHotChatItemData1.mDraftSec);
+    long l2 = Math.max(paramHotChatItemData2.mLatestMsgSec, paramHotChatItemData2.mDraftSec);
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

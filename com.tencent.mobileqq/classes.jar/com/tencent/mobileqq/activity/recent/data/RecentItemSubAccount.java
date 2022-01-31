@@ -33,7 +33,7 @@ public class RecentItemSubAccount
       if (!AppConstants.w.equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)) {
         break;
       }
-      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131436380);
+      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131436397);
       this.jdField_c_of_type_Int = 0;
       SubAccountControll.a(paramQQAppInterface, paramContext, this, localMsgSummary);
       if (!TextUtils.isEmpty(localMsgSummary.jdField_b_of_type_JavaLangCharSequence)) {
@@ -45,7 +45,7 @@ public class RecentItemSubAccount
       if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) {
         break label377;
       }
-      this.e = paramContext.getResources().getColor(2131494281);
+      this.e = paramContext.getResources().getColor(2131494288);
       this.jdField_c_of_type_JavaLangString = "";
       this.jdField_a_of_type_Long = a();
       a(paramQQAppInterface);
@@ -66,7 +66,7 @@ public class RecentItemSubAccount
       if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
         this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
       }
-      this.jdField_b_of_type_JavaLangString = (paramContext.getString(2131436291) + "（" + this.jdField_b_of_type_JavaLangString + "）");
+      this.jdField_b_of_type_JavaLangString = (paramContext.getString(2131436308) + "（" + this.jdField_b_of_type_JavaLangString + "）");
       break;
       label377:
       this.jdField_d_of_type_JavaLangCharSequence = "";

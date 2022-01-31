@@ -1,37 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.leba.LebaFeedsAdapter;
 
-public final class adyl
-  implements DialogInterface.OnClickListener
+public class adyl
+  implements View.OnTouchListener
 {
-  public adyl(String paramString, int paramInt, Activity paramActivity) {}
+  public adyl(LebaFeedsAdapter paramLebaFeedsAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString + "&from=" + this.jdField_a_of_type_Int;
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramDialogInterface);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby.tribeAppDownload", 2, "open download page, url=" + paramDialogInterface);
+    if (LebaFeedsAdapter.a(this.a) != 4) {
+      return false;
     }
-    if (this.jdField_a_of_type_Int == 1) {
-      ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "msg_down", 0, 0, "", "", "", "");
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      LebaFeedsAdapter.a(this.a).setAlpha(0.5F);
+      return false;
     }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "pic_down", 0, 0, "", "", "", "");
+    LebaFeedsAdapter.a(this.a).setAlpha(1.0F);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.qq.im.poi;
 
+import amp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anj;
 
 public class LbsPackInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anj();
+  public static final Parcelable.Creator CREATOR = new amp();
   public int a;
   public long a;
   public String a;

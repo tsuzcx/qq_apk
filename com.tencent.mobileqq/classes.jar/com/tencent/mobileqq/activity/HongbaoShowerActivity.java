@@ -32,8 +32,8 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import ssg;
-import ssh;
+import svf;
+import svg;
 
 public class HongbaoShowerActivity
   extends BaseActivity
@@ -88,9 +88,9 @@ public class HongbaoShowerActivity
     {
     default: 
       return null;
-    case 2130842280: 
+    case 2130842327: 
       return "shower_star_high_bg";
-    case 2130842279: 
+    case 2130842326: 
       return "shower_star_bg";
     }
     return "shower_business_high_bg";
@@ -148,9 +148,9 @@ public class HongbaoShowerActivity
   
   public static void a()
   {
-    PortalManager.a(a(2130842280), 2130842280);
-    PortalManager.a(a(2130842279), 2130842279);
-    PortalManager.a(a(2130842269), 2130842269);
+    PortalManager.a(a(2130842327), 2130842327);
+    PortalManager.a(a(2130842326), 2130842326);
+    PortalManager.a(a(2130842316), 2130842316);
     if (QLog.isColorLevel()) {
       QLog.d("PortalManager.HongbaoShowerActivity", 2, "preloadBg stated!");
     }
@@ -169,13 +169,13 @@ public class HongbaoShowerActivity
   
   private void b()
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363196));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363214));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 2, -1.0F, 2, 0.0F);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new HongbaoShowerActivity.MyOvershotInterpolator(this));
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(800L);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new ssg(this));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363195);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new svf(this));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363213);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 0.7F);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(350L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
@@ -247,7 +247,7 @@ public class HongbaoShowerActivity
   
   private void d()
   {
-    ThreadManager.getUIHandler().postDelayed(new ssh(this), 500L);
+    ThreadManager.getUIHandler().postDelayed(new svg(this), 500L);
   }
   
   /* Error */
@@ -510,10 +510,10 @@ public class HongbaoShowerActivity
     //   565: invokevirtual 517	android/widget/RelativeLayout:setContentDescription	(Ljava/lang/CharSequence;)V
     //   568: aload_0
     //   569: getfield 275	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   572: new 519	ssc
+    //   572: new 519	svb
     //   575: dup
     //   576: aload_0
-    //   577: invokespecial 520	ssc:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
+    //   577: invokespecial 520	svb:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
     //   580: invokevirtual 524	android/widget/RelativeLayout:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
     //   583: aload_0
     //   584: aload_0
@@ -545,10 +545,10 @@ public class HongbaoShowerActivity
     //   642: invokevirtual 532	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   645: aload_0
     //   646: getfield 535	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   649: new 539	ssd
+    //   649: new 539	svc
     //   652: dup
     //   653: aload_0
-    //   654: invokespecial 540	ssd:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
+    //   654: invokespecial 540	svc:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
     //   657: invokevirtual 544	android/widget/TextView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   660: aload_0
     //   661: ldc_w 545
@@ -615,10 +615,10 @@ public class HongbaoShowerActivity
     //   798: putfield 569	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
     //   801: aload_0
     //   802: getfield 569	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
-    //   805: new 571	sse
+    //   805: new 571	svd
     //   808: dup
     //   809: aload_0
-    //   810: invokespecial 572	sse:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
+    //   810: invokespecial 572	svd:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
     //   813: invokevirtual 573	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   816: aload_0
     //   817: ldc_w 574
@@ -646,10 +646,10 @@ public class HongbaoShowerActivity
     //   861: putfield 583	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   864: aload_0
     //   865: getfield 583	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   868: new 585	ssf
+    //   868: new 585	sve
     //   871: dup
     //   872: aload_0
-    //   873: invokespecial 586	ssf:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
+    //   873: invokespecial 586	sve:<init>	(Lcom/tencent/mobileqq/activity/HongbaoShowerActivity;)V
     //   876: invokevirtual 544	android/widget/TextView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   879: aload_0
     //   880: getfield 490	com/tencent/mobileqq/activity/HongbaoShowerActivity:jdField_a_of_type_ComTencentMobileqqPortalPortalManager$ResultData	Lcom/tencent/mobileqq/portal/PortalManager$ResultData;

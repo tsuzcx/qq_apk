@@ -19,10 +19,10 @@ import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.mobileqq.transfile.predownload.RunnableTask;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import jlx;
-import jly;
-import jlz;
-import jma;
+import jli;
+import jlj;
+import jlk;
+import jll;
 import mqq.manager.Manager;
 
 public class AVRedPacketConfigManager
@@ -83,9 +83,9 @@ public class AVRedPacketConfigManager
   void a()
   {
     PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(192);
-    RunnableTask localRunnableTask = new RunnableTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "av_redpacket_pic", new jlx(this), 0L);
+    RunnableTask localRunnableTask = new RunnableTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "av_redpacket_pic", new jli(this), 0L);
     boolean bool1 = localPreDownloadController.a(10070, "prd", "av_redpacket", 0, this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, AVRedPacketRDHandler.a(), 1, 1, true, localRunnableTask);
-    localRunnableTask = new RunnableTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "av_redpacket_music", new jly(this), 0L);
+    localRunnableTask = new RunnableTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "av_redpacket_music", new jlj(this), 0L);
     boolean bool2 = localPreDownloadController.a(10070, "prd", "av_redpacket", 0, this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, AVRedPacketRDHandler.a(), 1, 1, true, localRunnableTask);
     if (QLog.isColorLevel()) {
       QLog.d("AVRedPacketConfigManger", 2, "preDownloadRes picReqRet =  " + bool1 + ",musicReqRet = " + bool2);
@@ -144,7 +144,7 @@ public class AVRedPacketConfigManager
     PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(192);
     localPreDownloadController.a(this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL);
     localPreDownloadController.a(this.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl);
-    ThreadManager.executeOnSubThread(new jlz(this, paramIAVRedPacketCallback), true);
+    ThreadManager.executeOnSubThread(new jlk(this, paramIAVRedPacketCallback), true);
   }
   
   public void a(String paramString1, String paramString2, int paramInt)
@@ -178,7 +178,7 @@ public class AVRedPacketConfigManager
     for (str = paramString3;; str = paramString3 + File.separator)
     {
       if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString1)) && (paramString1.equals(paramObject))) {
-        ThreadManager.executeOnSubThread(new jma(this, paramInt, str, paramString2, i, paramString1), true);
+        ThreadManager.executeOnSubThread(new jll(this, paramInt, str, paramString2, i, paramString1), true);
       }
       return;
       paramObject = str;

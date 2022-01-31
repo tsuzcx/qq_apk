@@ -1,28 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wxl
-  extends BroadcastReceiver
+class wxl
+  implements DialogInterface.OnClickListener
 {
-  public wxl(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
+  wxl(wxk paramwxk) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      if ("action_close_camera".equals(paramIntent.getAction()))
-      {
-        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
-        return;
-      }
-    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
-    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

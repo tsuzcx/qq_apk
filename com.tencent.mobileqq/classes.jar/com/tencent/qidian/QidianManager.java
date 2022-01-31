@@ -1,16 +1,16 @@
 package com.tencent.qidian;
 
-import akvx;
-import akvy;
-import akvz;
-import akwa;
-import akwb;
-import akwc;
-import akwd;
-import akwe;
-import akwf;
-import akwg;
-import akwh;
+import alln;
+import allo;
+import allp;
+import allq;
+import allr;
+import alls;
+import allt;
+import allu;
+import allv;
+import allw;
+import allx;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -103,7 +103,7 @@ public class QidianManager
     this.i = new HashMap();
     this.h = new HashMap();
     if (UiThreadUtil.a()) {
-      ThreadManager.getSubThreadHandler().post(new akvx(this));
+      ThreadManager.getSubThreadHandler().post(new alln(this));
     }
     for (;;)
     {
@@ -348,8 +348,8 @@ public class QidianManager
     if (new Intent().setPackage("com.tencent.qidian").setData(Uri.parse("qdapi://")).resolveActivity((PackageManager)localObject) != null)
     {
       localObject = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = paramContext.getString(2131430113);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_Int = 2130841678;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = paramContext.getString(2131430130);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_Int = 2130841715;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject).c = 19;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
       paramArrayList.add(localObject);
@@ -399,7 +399,7 @@ public class QidianManager
             continue;
           }
           if (UiThreadUtil.a()) {
-            ThreadManager.post(new akvz(localQidianManager, paramQQAppInterface, localBmqqAccountType), 5, null, true);
+            ThreadManager.post(new allp(localQidianManager, paramQQAppInterface, localBmqqAccountType), 5, null, true);
           }
         }
         else
@@ -460,7 +460,7 @@ public class QidianManager
     {
       localQidianManager = (QidianManager)paramQQAppInterface.getManager(164);
       if (UiThreadUtil.a()) {
-        ThreadManager.postImmediately(new akvy(localQidianManager, paramQQAppInterface, paramArrayOfFriends), null, false);
+        ThreadManager.postImmediately(new allo(localQidianManager, paramQQAppInterface, paramArrayOfFriends), null, false);
       }
     }
     else
@@ -576,7 +576,7 @@ public class QidianManager
         if (!bool1) {
           break label364;
         }
-        SosoInterface.a(new akwe(this, 1, true, true, 0L, true, false, "QidianManager", paramString1, paramInt1, str3, paramInt2, str2, str1, paramString2));
+        SosoInterface.a(new allu(this, 1, true, true, 0L, true, false, "QidianManager", paramString1, paramInt1, str3, paramInt2, str2, str1, paramString2));
       }
     }
     label364:
@@ -1167,9 +1167,9 @@ public class QidianManager
   {
     paramString = c(paramString);
     if (!TextUtils.isEmpty(paramString)) {
-      return String.format(paramContext.getString(2131435851), new Object[] { paramString });
+      return String.format(paramContext.getString(2131435868), new Object[] { paramString });
     }
-    return paramContext.getString(2131435850);
+    return paramContext.getString(2131435867);
   }
   
   public String a(String paramString)
@@ -1238,7 +1238,7 @@ public class QidianManager
     }
     if (UiThreadUtil.a())
     {
-      ThreadManager.post(new akwb(this, paramBmqqUserSimpleInfo), 5, null, true);
+      ThreadManager.post(new allr(this, paramBmqqUserSimpleInfo), 5, null, true);
       return;
     }
     b(paramBmqqUserSimpleInfo);
@@ -1259,7 +1259,7 @@ public class QidianManager
       if (!UiThreadUtil.a()) {
         break label47;
       }
-      ThreadManager.post(new akwa(this, paramBmqqAccountType), 5, null, true);
+      ThreadManager.post(new allq(this, paramBmqqAccountType), 5, null, true);
     }
     label47:
     EntityManager localEntityManager;
@@ -1295,7 +1295,7 @@ public class QidianManager
     }
     if (UiThreadUtil.a())
     {
-      ThreadManager.post(new akwc(this, paramQidianExternalInfo, paramQidianInternalInfo, paramQidianCorpInfo, paramQidianProfileUiInfo), 5, null, true);
+      ThreadManager.post(new alls(this, paramQidianExternalInfo, paramQidianInternalInfo, paramQidianCorpInfo, paramQidianProfileUiInfo), 5, null, true);
       return;
     }
     b(paramQidianExternalInfo, paramQidianInternalInfo, paramQidianCorpInfo, paramQidianProfileUiInfo);
@@ -1311,7 +1311,7 @@ public class QidianManager
     }
     if (UiThreadUtil.a())
     {
-      ThreadManager.post(new akwh(this, paramQidianExternalInfo, paramQidianProfileUiInfo), 5, null, true);
+      ThreadManager.post(new allx(this, paramQidianExternalInfo, paramQidianProfileUiInfo), 5, null, true);
       return;
     }
     b(paramQidianExternalInfo, paramQidianProfileUiInfo);
@@ -1382,7 +1382,7 @@ public class QidianManager
       if (!UiThreadUtil.a()) {
         break;
       }
-      ThreadManager.post(new akwf(this, localQidianPAForWpa, paramString1, paramString2), 5, null, true);
+      ThreadManager.post(new allv(this, localQidianPAForWpa, paramString1, paramString2), 5, null, true);
       return;
     }
     a(localQidianPAForWpa, paramString1, paramString2);
@@ -1626,7 +1626,7 @@ public class QidianManager
       if (!UiThreadUtil.a()) {
         break label157;
       }
-      ThreadManager.post(new akwd(this, paramString), 5, null, true);
+      ThreadManager.post(new allt(this, paramString), 5, null, true);
       return bool1;
       if (a(paramString, 4))
       {
@@ -1715,7 +1715,7 @@ public class QidianManager
           if (!UiThreadUtil.a()) {
             break label211;
           }
-          ThreadManager.post(new akwg(this, paramString), 5, null, true);
+          ThreadManager.post(new allw(this, paramString), 5, null, true);
           return bool1;
           if (!paramBoolean)
           {

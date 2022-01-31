@@ -1,33 +1,40 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import cooperation.qlink.QQProxyForQlink;
-import cooperation.qlink.QlAndQQInterface.WorkState;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qqprotect.qsec.CloudAVEngineImpl;
 
 public class alxa
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public alxa(QQProxyForQlink paramQQProxyForQlink, ArrayList paramArrayList, Activity paramActivity, int paramInt, boolean paramBoolean) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public alxa(CloudAVEngineImpl paramCloudAVEngineImpl, Looper paramLooper)
   {
-    this.jdField_a_of_type_CooperationQlinkQQProxyForQlink.a("0X8004855", 1);
-    this.jdField_a_of_type_CooperationQlinkQQProxyForQlink.a(QQProxyForQlink.a(this.jdField_a_of_type_CooperationQlinkQQProxyForQlink).mPeerUin, this.jdField_a_of_type_JavaUtilArrayList);
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putBoolean("STRING_CONTINUE_SEND_TO_", true);
-    QQProxyForQlink.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, localBundle);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      CloudAVEngineImpl.a(this.a, CloudAVEngineImpl.a(this.a, paramMessage.obj));
+      return;
+    case 2: 
+      CloudAVEngineImpl.a(this.a, true);
+      CloudAVEngineImpl.a(this.a);
+      CloudAVEngineImpl.a(this.a, false);
+      return;
+    case 3: 
+      CloudAVEngineImpl.a(this.a, paramMessage.obj);
+      return;
     }
+    CloudAVEngineImpl.b(this.a, paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxa
  * JD-Core Version:    0.7.0.1
  */

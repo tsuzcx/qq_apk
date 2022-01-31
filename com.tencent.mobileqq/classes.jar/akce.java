@@ -1,27 +1,22 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class akce
-  implements URLDrawable.URLDrawableListener
+public final class akce
+  implements View.OnClickListener
 {
-  public akce(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
+  public akce(QQCustomDialog paramQQCustomDialog) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    this.a.a.sendMessage(this.a.a.obtainMessage(103, paramURLDrawable));
+    if (this.a != null) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akce
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,64 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicpendant.MusicPendantListener;
+import com.tencent.mobileqq.musicpendant.MusicPendantManager;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class aela
-  implements View.OnClickListener
+  implements QQPlayerService.QQPlayerCallback
 {
-  public aela(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aela(MusicPendantManager paramMusicPendantManager) {}
   
-  public void onClick(View paramView)
+  public String getToken()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.l();
+    return MusicPendantManager.a();
+  }
+  
+  public void onPlaySongChanged(SongInfo paramSongInfo)
+  {
+    try
+    {
+      Iterator localIterator = MusicPendantManager.a().iterator();
+      while (localIterator.hasNext())
+      {
+        MusicPendantListener localMusicPendantListener = (MusicPendantListener)((WeakReference)localIterator.next()).get();
+        if (localMusicPendantListener != null) {
+          localMusicPendantListener.a(paramSongInfo);
+        }
+      }
+      return;
+    }
+    catch (Exception paramSongInfo)
+    {
+      paramSongInfo.printStackTrace();
+    }
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    try
+    {
+      Iterator localIterator = MusicPendantManager.a().iterator();
+      while (localIterator.hasNext())
+      {
+        MusicPendantListener localMusicPendantListener = (MusicPendantListener)((WeakReference)localIterator.next()).get();
+        if (localMusicPendantListener != null) {
+          localMusicPendantListener.a(paramInt);
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aela
  * JD-Core Version:    0.7.0.1
  */

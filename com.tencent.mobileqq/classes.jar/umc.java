@@ -1,14 +1,17 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.mobileqq.troop.utils.TroopAppMgr;
 
 public class umc
   implements Runnable
 {
-  public umc(GoldMsgNumAnim paramGoldMsgNumAnim) {}
+  public umc(PlusPanel paramPlusPanel, TroopAppMgr paramTroopAppMgr, TroopAIOAppInfo paramTroopAIOAppInfo) {}
   
   public void run()
   {
-    this.a.b.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIOAppInfo.appid, 0);
+    }
   }
 }
 

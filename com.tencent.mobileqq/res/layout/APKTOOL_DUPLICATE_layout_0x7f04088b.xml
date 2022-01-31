@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a270a" android:layout_width="fill_parent" android:layout_height="58.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="12.0dip">
-        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
-        <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="36.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
-    </RelativeLayout>
-    <RelativeLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26fe" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216ff" android:clickable="true" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
-        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26ff" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="搜索附近位置" android:maxLength="10" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220a9" android:drawablePadding="3.0dip" android:layout_centerInParent="true" android:inputType="textMultiLine" />
-    </RelativeLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2700" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:listSelector="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021829" android:divider="@null" android:dividerHeight="0.0dip" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2701" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-            <ProgressBar android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateOnly="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021723" android:indeterminateBehavior="repeat" />
-            <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="正在搜索附近位置" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2702" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-            <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="位置获取失败，点击重试" />
-            <ImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021771" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26ed" android:paddingBottom="100.0dip" android:focusable="false" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a2715" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2750" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040879" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2751" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04087e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a26ed" />
+    <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2731" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02186c" android:scaleType="centerInside" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="按住拍" />
+</RelativeLayout>

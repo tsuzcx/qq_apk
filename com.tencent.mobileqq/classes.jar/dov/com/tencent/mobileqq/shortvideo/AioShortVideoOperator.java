@@ -8,6 +8,7 @@ import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pic.Logger;
 import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.service.message.MessageConstants;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.qphone.base.util.QLog;
 import tencent.im.msg.im_msg_body.RichText;
@@ -102,9 +103,13 @@ public class AioShortVideoOperator
   
   public MessageRecord a(ShortVideoUploadInfo paramShortVideoUploadInfo)
   {
-    int i = 1;
     long l = System.currentTimeMillis();
     MessageForShortVideo localMessageForShortVideo;
+    label234:
+    label252:
+    String str1;
+    label324:
+    int i;
     if (paramShortVideoUploadInfo.jdField_d_of_type_Boolean)
     {
       localMessageForShortVideo = MessageRecordFactory.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramShortVideoUploadInfo.jdField_c_of_type_JavaLangString, paramShortVideoUploadInfo.jdField_d_of_type_JavaLangString, paramShortVideoUploadInfo.jdField_b_of_type_Int);
@@ -136,15 +141,13 @@ public class AioShortVideoOperator
       localMessageForShortVideo.lastModified = 0L;
       localMessageForShortVideo.mediacodecEncode = paramShortVideoUploadInfo.jdField_c_of_type_Boolean;
       if (localMessageForShortVideo.istroop != 0) {
-        break label524;
+        break label551;
       }
       localMessageForShortVideo.fileType = 6;
-      label236:
       if (paramShortVideoUploadInfo.jdField_b_of_type_Int != 1008) {
-        break label564;
+        break label591;
       }
       localMessageForShortVideo.busiType = 1007;
-      label254:
       localMessageForShortVideo.fromChatType = -1;
       localMessageForShortVideo.toChatType = -1;
       localMessageForShortVideo.uiOperatorFlag = 1;
@@ -152,10 +155,17 @@ public class AioShortVideoOperator
       localMessageForShortVideo.fileWidth = paramShortVideoUploadInfo.jdField_h_of_type_Int;
       localMessageForShortVideo.fileHeight = paramShortVideoUploadInfo.jdField_i_of_type_Int;
       localMessageForShortVideo.syncToStory = paramShortVideoUploadInfo.jdField_e_of_type_Boolean;
-      if (paramShortVideoUploadInfo.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoUploadInfo$RetryInfo == null) {
-        break label607;
+      String str2 = MessageConstants.o;
+      if (!localMessageForShortVideo.syncToStory) {
+        break label634;
       }
-      label315:
+      str1 = "1";
+      localMessageForShortVideo.saveExtInfoToExtStr(str2, str1);
+      if (paramShortVideoUploadInfo.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoUploadInfo$RetryInfo == null) {
+        break label642;
+      }
+      i = 1;
+      label342:
       if (i != 0)
       {
         localMessageForShortVideo.msgseq = paramShortVideoUploadInfo.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoUploadInfo$RetryInfo.jdField_a_of_type_Long;
@@ -163,12 +173,12 @@ public class AioShortVideoOperator
         localMessageForShortVideo.msgUid = paramShortVideoUploadInfo.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoUploadInfo$RetryInfo.jdField_c_of_type_Long;
       }
       if (localMessageForShortVideo.busiType != 2) {
-        break label612;
+        break label647;
       }
       localMessageForShortVideo.msg = "[视频对讲]";
-      label371:
+      label398:
       if (!paramShortVideoUploadInfo.jdField_g_of_type_Boolean) {
-        break label622;
+        break label657;
       }
       localMessageForShortVideo.saveExtInfoToExtStr("video_send_aio_key_is_qim", "true");
     }
@@ -182,37 +192,40 @@ public class AioShortVideoOperator
       localMessageForShortVideo = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramShortVideoUploadInfo.jdField_c_of_type_JavaLangString, paramShortVideoUploadInfo.jdField_d_of_type_JavaLangString, paramShortVideoUploadInfo.jdField_b_of_type_Int);
       localMessageForShortVideo.subBusiType = 0;
       break;
-      label524:
+      label551:
       if (localMessageForShortVideo.istroop == 3000)
       {
         localMessageForShortVideo.fileType = 17;
-        break label236;
+        break label234;
       }
       if (localMessageForShortVideo.istroop != 1) {
-        break label236;
+        break label234;
       }
       localMessageForShortVideo.fileType = 9;
-      break label236;
-      label564:
+      break label234;
+      label591:
       if (2 == paramShortVideoUploadInfo.jdField_a_of_type_Int)
       {
         localMessageForShortVideo.busiType = 1;
-        break label254;
+        break label252;
       }
       if (3 == paramShortVideoUploadInfo.jdField_a_of_type_Int)
       {
         localMessageForShortVideo.busiType = 2;
-        break label254;
+        break label252;
       }
       localMessageForShortVideo.busiType = 0;
-      break label254;
-      label607:
+      break label252;
+      label634:
+      str1 = "0";
+      break label324;
+      label642:
       i = 0;
-      break label315;
-      label612:
+      break label342;
+      label647:
       localMessageForShortVideo.msg = "[视频]";
-      break label371;
-      label622:
+      break label398;
+      label657:
       localMessageForShortVideo.saveExtInfoToExtStr("video_send_aio_key_is_qim", "false");
     }
   }

@@ -1,20 +1,18 @@
-import com.tencent.component.media.gif.NewGifDrawable;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
+import com.tencent.biz.widgets.ScannerView;
 
 public class pea
   implements Runnable
 {
-  public pea(NewGifDrawable paramNewGifDrawable) {}
+  public pea(ScannerView paramScannerView) {}
   
   public void run()
   {
-    NewGifDrawable.a(this.a);
-    this.a.a.execute(new peb(this, this.a));
+    ScannerView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pea
  * JD-Core Version:    0.7.0.1
  */

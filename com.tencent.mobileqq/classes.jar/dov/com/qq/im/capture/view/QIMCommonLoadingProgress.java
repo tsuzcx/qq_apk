@@ -1,9 +1,9 @@
 package dov.com.qq.im.capture.view;
 
-import amzk;
 import android.os.SystemClock;
 import android.util.SparseArray;
 import android.view.animation.AccelerateInterpolator;
+import anpp;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import dov.com.qq.im.capture.data.ComboSet;
 import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
@@ -151,26 +151,26 @@ public class QIMCommonLoadingProgress
     int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
     if (i >= 0)
     {
-      amzk localamzk = (amzk)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
-      if (localamzk == null) {
+      anpp localanpp = (anpp)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
+      if (localanpp == null) {
         this.jdField_a_of_type_JavaUtilArrayList.remove(i);
       }
       for (;;)
       {
         i -= 1;
         break;
-        localamzk.a();
+        localanpp.a();
       }
     }
   }
   
-  public void a(amzk paramamzk)
+  public void a(anpp paramanpp)
   {
     int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
     while (i >= 0)
     {
-      amzk localamzk = (amzk)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
-      if ((localamzk == null) || (localamzk == paramamzk)) {
+      anpp localanpp = (anpp)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
+      if ((localanpp == null) || (localanpp == paramanpp)) {
         this.jdField_a_of_type_JavaUtilArrayList.remove(i);
       }
       i -= 1;
@@ -182,9 +182,9 @@ public class QIMCommonLoadingProgress
     this.jdField_a_of_type_Byte = 1;
   }
   
-  public void b(amzk paramamzk)
+  public void b(anpp paramanpp)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramamzk));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramanpp));
   }
   
   public void c()

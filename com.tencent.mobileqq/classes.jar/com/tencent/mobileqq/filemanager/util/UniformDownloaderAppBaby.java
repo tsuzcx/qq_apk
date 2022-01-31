@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import acyk;
+import adih;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
@@ -65,7 +65,7 @@ public class UniformDownloaderAppBaby
   
   private int i()
   {
-    int i = UniformDownloaderAppBabySdk.a().a(this.jdField_c_of_type_Long, this.jdField_c_of_type_JavaLangString, this.b, new acyk(this));
+    int i = UniformDownloaderAppBabySdk.a().a(this.jdField_c_of_type_Long, this.jdField_c_of_type_JavaLangString, this.b, new adih(this));
     if (i == 0) {
       a(true);
     }

@@ -1,14 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
 public class lqh
-  implements Runnable
+  implements Comparator
 {
-  public lqh(ArticleReadInfoModule paramArticleReadInfoModule, ArticleReadInfo paramArticleReadInfo) {}
+  public lqh(ArticleInfoModule paramArticleInfoModule) {}
   
-  public void run()
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleReadInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleReadInfo);
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
+    }
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

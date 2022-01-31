@@ -26,12 +26,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import jgw;
+import jgh;
 
 public class VideoNodeManager
 {
   public static int a;
-  private static Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new jgw();
+  private static Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new jgh();
   private static Handler jdField_a_of_type_AndroidOsHandler;
   private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private static VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
@@ -89,7 +89,7 @@ public class VideoNodeManager
     {
       localStringBuilder.append("Android").append('|');
       localStringBuilder.append(String.valueOf(Build.VERSION.SDK_INT)).append('|');
-      localStringBuilder.append("7.6.0").append('|');
+      localStringBuilder.append("7.6.3").append('|');
       localStringBuilder.append(Build.MANUFACTURER).append('|');
       localStringBuilder.append(Build.MODEL).append('|');
       localStringBuilder.append(a("9", "0", paramMap)).append('|');

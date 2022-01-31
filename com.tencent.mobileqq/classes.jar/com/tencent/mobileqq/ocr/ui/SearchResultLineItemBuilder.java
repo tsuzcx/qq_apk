@@ -13,7 +13,7 @@ public class SearchResultLineItemBuilder
     if ((paramView != null) && (((SearchResultAdapter.ListItem)paramView.getTag()).a == paramListItem.a)) {
       return paramView;
     }
-    paramView = LayoutInflater.from(paramViewGroup).inflate(2130969390, null);
+    paramView = LayoutInflater.from(paramViewGroup).inflate(2130969391, null);
     paramView.setTag(paramListItem);
     return paramView;
   }

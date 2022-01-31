@@ -1,115 +1,99 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.DeleteCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet;
+import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentLikeObserver;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.List;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class lix
-  implements ArticleCommentModule.DeleteCommentObserver
+public final class lix
+  implements BusinessObserver
 {
-  public lix(ArticleCommentModule paramArticleCommentModule, String paramString1, String paramString2, ArticleCommentModule.DeleteCommentObserver paramDeleteCommentObserver) {}
+  public lix(int paramInt, NativeCommentServlet.CommentLikeObserver paramCommentLikeObserver, ArticleInfo paramArticleInfo, String paramString1, String paramString2) {}
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString1, String paramString2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int j = 0;
-    int i = j;
-    if (paramInt == 2) {
-      i = j;
-    }
-    try
+    int m = 0;
+    int k = 0;
+    j = -1;
+    String str = "";
+    Object localObject = str;
+    i = j;
+    paramInt = k;
+    if (paramBoolean) {}
+    for (paramInt = j;; paramInt = j)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.commentType != 1) {
-        break label216;
-      }
-      paramInt = 0;
-    }
-    catch (Exception localException)
-    {
-      Object localObject1;
-      Object localObject2;
-      label115:
-      CommentInfo localCommentInfo;
-      while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver != null)
+      try
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(paramArticleInfo, paramString1, paramString2, -1, "parser local data error");
-        return;
-        i = 0;
-        while (i == 0)
+        paramBundle = paramBundle.getByteArray("data");
+        localObject = str;
+        i = j;
+        paramInt = k;
+        if (paramBundle != null)
         {
-          paramInt += 1;
-          break;
-          i = 0;
-          break label115;
+          paramInt = j;
+          localObject = new WebSsoBody.WebSsoResponseBody();
+          paramInt = j;
+          ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+          paramInt = j;
+          i = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+          paramInt = i;
+          paramBundle = ((WebSsoBody.WebSsoResponseBody)localObject).data.get();
+          paramInt = i;
+          if (QLog.isColorLevel())
+          {
+            paramInt = i;
+            QLog.d(NativeCommentServlet.jdField_a_of_type_JavaLangString, 2, "commentLike ret=" + paramBundle);
+          }
+          paramInt = i;
+          paramBundle = new JSONObject(paramBundle);
+          if (i == 0) {
+            break label195;
+          }
+          paramInt = i;
+          localObject = paramBundle.optString("msg");
+          paramInt = k;
         }
       }
-    }
-    if (paramInt < ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).size())
-    {
-      localObject1 = (CommentInfo)ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).get(paramInt);
-      if ((TextUtils.isEmpty(((CommentInfo)localObject1).commentId)) || (!((CommentInfo)localObject1).commentId.equalsIgnoreCase(paramString1))) {
-        break label350;
-      }
-      localObject2 = ((CommentInfo)ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).get(paramInt)).mCommentItemLists;
-      if (localObject2 != null) {
-        break label357;
-      }
-      break label350;
-      if (i >= ((List)localObject2).size()) {
-        break label344;
-      }
-      localCommentInfo = (CommentInfo)((List)localObject2).get(i);
-      if ((TextUtils.isEmpty(localCommentInfo.commentId)) || (!localCommentInfo.commentId.equalsIgnoreCase(paramString2))) {
-        break label372;
-      }
-      ((CommentInfo)localObject1).toLogString("delete sub comment:");
-      ((List)localObject2).remove(i);
-      i = 1;
-      break label363;
-    }
-    label388:
-    for (;;)
-    {
-      label188:
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver != null)
+      catch (Exception paramBundle)
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(paramArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.commentType, paramString1, paramString2);
-        return;
-      }
-      for (;;)
-      {
-        label216:
-        if (i >= ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).size()) {
-          break label388;
-        }
-        localObject2 = (CommentInfo)ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).get(i);
-        localObject1 = this.jdField_a_of_type_JavaLangString;
-        if (paramInt == 2) {
-          localObject1 = this.b;
-        }
-        if ((!TextUtils.isEmpty(((CommentInfo)localObject2).commentId)) && (((CommentInfo)localObject2).commentId.equalsIgnoreCase((String)localObject1)))
+        try
         {
-          ((CommentInfo)localObject2).toLogString("delete comment:");
-          ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).remove(i);
-          break label188;
-          label344:
-          label350:
-          label357:
-          label363:
-          return;
-          label372:
-          i += 1;
-          break;
+          label195:
+          while (this.jdField_a_of_type_Int == 1)
+          {
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentNativeCommentServlet$CommentLikeObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaLangString, paramBundle);
+            paramInt = 1;
+            localObject = str;
+          }
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentNativeCommentServlet$CommentLikeObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.b, paramBundle);
+          paramInt = 1;
+          localObject = str;
         }
-        i += 1;
+        catch (Exception paramBundle)
+        {
+          for (;;)
+          {
+            j = 1;
+            paramInt = i;
+          }
+        }
+        paramBundle = paramBundle;
+        j = m;
       }
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(paramArticleInfo, paramString1, paramString2, paramInt, paramString3);
+      if (paramInt == 0) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentNativeCommentServlet$CommentLikeObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaLangString, i, (String)localObject);
+      }
+      return;
+      localObject = paramBundle.getLocalizedMessage();
+      paramBundle.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d(NativeCommentServlet.jdField_a_of_type_JavaLangString, 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
+      }
+      i = paramInt;
     }
   }
 }

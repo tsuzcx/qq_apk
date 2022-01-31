@@ -38,7 +38,7 @@ public class RecentInteractAndFollowItem
       ((MessageForInteractAndFollow)localObject1).parse();
       if (((MessageForInteractAndFollow)localObject1).type == 1)
       {
-        this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438782);
+        this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438800);
         label84:
         this.jdField_b_of_type_Int = 3;
         this.jdField_a_of_type_Long = ((MessageForInteractAndFollow)localObject1).timeStamp;
@@ -70,7 +70,7 @@ public class RecentInteractAndFollowItem
         return;
         if (((MessageForInteractAndFollow)localObject1).type == 2)
         {
-          this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438783);
+          this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438801);
           break label84;
         }
         if (!QLog.isColorLevel()) {

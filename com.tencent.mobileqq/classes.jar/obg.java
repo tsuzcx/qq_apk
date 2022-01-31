@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryDesFromVidListStep;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.utils.UncheckedCallable;
 
-public final class obg
-  implements Parcelable.Creator
+public class obg
+  implements UncheckedCallable
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
+  public obg(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public EditLocalPhotoSource[] a(int paramInt)
+  public GetMyStoryDesFromVidListStep a()
   {
-    return new EditLocalPhotoSource[paramInt];
+    return new GetMyStoryDesFromVidListStep(new obh(this));
   }
 }
 

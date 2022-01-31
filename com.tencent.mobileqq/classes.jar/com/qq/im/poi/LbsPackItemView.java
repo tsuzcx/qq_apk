@@ -77,7 +77,7 @@ public class LbsPackItemView
     for (paramInt1 = paramInt3 + paramInt2;; paramInt1 = paramInt3)
     {
       this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setId(2131362914);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setId(2131362932);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setOrientation(1);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setGravity(1);
       localObject = new LinearLayout.LayoutParams(-1, AIOUtils.a(350.0F, getResources()));
@@ -105,14 +105,14 @@ public class LbsPackItemView
       localLayoutParams.gravity = 17;
       this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject, localLayoutParams);
       this.jdField_b_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_b_of_type_AndroidWidgetTextView.setId(2131362916);
+      this.jdField_b_of_type_AndroidWidgetTextView.setId(2131362934);
       this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
       this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
       localLayoutParams = new LinearLayout.LayoutParams(0, -2);
       localLayoutParams.weight = 1.0F;
       ((LinearLayout)localObject).addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362917);
+      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362935);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(20.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-863840);
       this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
@@ -120,7 +120,7 @@ public class LbsPackItemView
       localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       ((LinearLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
       this.c = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      this.c.setId(2131362918);
+      this.c.setId(2131362936);
       this.c.setSingleLine(true);
       localObject = new LinearLayout.LayoutParams(-2, -2);
       ((LinearLayout.LayoutParams)localObject).topMargin = AIOUtils.a(20.0F, getResources());
@@ -134,14 +134,14 @@ public class LbsPackItemView
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(AIOUtils.a(16.0F, getResources()), 0, AIOUtils.a(6.0F, getResources()), 0);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
       this.jdField_b_of_type_AndroidWidgetButton = new Button(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_b_of_type_AndroidWidgetButton.setId(2131362919);
+      this.jdField_b_of_type_AndroidWidgetButton.setId(2131362937);
       localObject = new LinearLayout.LayoutParams(0, -1);
       ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
       ((LinearLayout.LayoutParams)localObject).rightMargin = AIOUtils.a(10.0F, getResources());
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetButton, (ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetButton = new Button(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidWidgetButton.setId(2131362920);
+      this.jdField_a_of_type_AndroidWidgetButton.setId(2131362938);
       localObject = new LinearLayout.LayoutParams(0, -1);
       ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
       ((LinearLayout.LayoutParams)localObject).rightMargin = AIOUtils.a(10.0F, getResources());

@@ -1,36 +1,25 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout20;
+import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
+import java.util.List;
 
 public class ahuz
-  extends PublicAccountObserver
+  implements Runnable
 {
-  ahuy jdField_a_of_type_Ahuy = null;
+  public ahuz(ApproximateSearchEngine paramApproximateSearchEngine, SearchRequest paramSearchRequest) {}
   
-  public ahuz(StructMsgItemLayout20 paramStructMsgItemLayout20, ahuy paramahuy)
+  public void run()
   {
-    this.jdField_a_of_type_Ahuy = paramahuy;
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (this.jdField_a_of_type_Ahuy != null)
-    {
-      this.jdField_a_of_type_Ahuy.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Ahuy.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (paramBoolean)
-      {
-        this.jdField_a_of_type_Ahuy.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
-        this.jdField_a_of_type_Ahuy.jdField_a_of_type_AndroidWidgetTextView.setText("已关注");
-        this.jdField_a_of_type_Ahuy.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      }
+    List localList = ApproximateSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineApproximateSearchEngine, this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
+    ISearchListener localISearchListener = ApproximateSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineApproximateSearchEngine);
+    if ((localISearchListener != null) && (localList != null)) {
+      localISearchListener.a(localList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahuz
  * JD-Core Version:    0.7.0.1
  */

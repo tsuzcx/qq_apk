@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.app.HotchatSCMng;
-import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.DataLineHandler;
 
 public class zci
-  implements Comparator
+  implements Runnable
 {
-  public zci(HotchatSCMng paramHotchatSCMng) {}
+  public zci(DataLineHandler paramDataLineHandler, int paramInt, long paramLong, String paramString) {}
   
-  public int a(HotchatSCMng.HotchatNote paramHotchatNote1, HotchatSCMng.HotchatNote paramHotchatNote2)
+  public void run()
   {
-    if ((paramHotchatNote1 == null) || (paramHotchatNote2 == null)) {}
-    do
-    {
-      return 0;
-      if (paramHotchatNote1.a > paramHotchatNote2.a) {
-        return 1;
-      }
-    } while (paramHotchatNote1.a >= paramHotchatNote2.a);
-    return -1;
+    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
 }
 

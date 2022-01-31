@@ -15,7 +15,7 @@ public class FeedSegment$DeleteShareGroupMemberEventReceiver
   public void a(@NonNull FeedSegment paramFeedSegment, @NonNull DeleteShareGroupMemberEvent paramDeleteShareGroupMemberEvent)
   {
     if (paramDeleteShareGroupMemberEvent.a) {
-      FeedSegment.c(paramFeedSegment);
+      FeedSegment.d(paramFeedSegment);
     }
   }
   

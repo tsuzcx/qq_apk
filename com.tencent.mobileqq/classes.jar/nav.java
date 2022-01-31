@@ -1,39 +1,50 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.qqstory.comment.FeedCommentLego;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.InputViewHideListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.annotation.TargetApi;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
 
+@TargetApi(14)
 public class nav
-  implements TextView.OnEditorActionListener
+  extends ExecuteBinResponseCallback
 {
-  public nav(StoryInputBarView paramStoryInputBarView) {}
+  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  private VideoCompositeHelper.VideoCompositeCallBack jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public nav(String paramString1, String paramString2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
-    if (paramInt == 4)
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack = paramVideoCompositeCallBack;
+  }
+  
+  public void a(String paramString)
+  {
+    SLog.a(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(0, "", this.b);
+    FileUtils.g(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b(String paramString)
+  {
+    if (paramString.equals(String.valueOf(941001))) {
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(941001, paramString, "");
+    }
+    for (;;)
     {
-      paramTextView = paramTextView.getText().toString();
-      if (paramTextView.length() <= 0) {
-        break label122;
-      }
-      this.a.setKeyBoardState(false);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      this.a.c();
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-      if (StoryInputBarView.a(this.a) != null) {
-        StoryInputBarView.a(this.a).f();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
+      SLog.d(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "combine audio fail %s", new Object[] { paramString });
+      FileUtils.g(this.jdField_a_of_type_JavaLangString);
+      return;
+      if (paramString.equals(String.valueOf(941002))) {
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(941002, paramString, "");
+      } else {
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(941000, paramString, "");
       }
     }
-    return false;
-    label122:
-    return true;
   }
 }
 

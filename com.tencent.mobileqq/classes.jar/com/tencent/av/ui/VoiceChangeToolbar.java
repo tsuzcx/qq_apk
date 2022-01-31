@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.HorizontalListView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import kdh;
+import kcs;
 
 public class VoiceChangeToolbar
   extends BaseToolbar
@@ -25,7 +25,7 @@ public class VoiceChangeToolbar
   ArrayList mItemInfo;
   HorizontalListView mListView;
   BaseToolbar.UIInfo mUIInfo = null;
-  QAVPtvTemplateAdapter.IEffectCallback mVoiceClickCallback = new kdh(this);
+  QAVPtvTemplateAdapter.IEffectCallback mVoiceClickCallback = new kcs(this);
   
   public VoiceChangeToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
@@ -67,9 +67,9 @@ public class VoiceChangeToolbar
   
   private void updateEarbackBtn()
   {
-    int i = 2130840355;
+    int i = 2130840361;
     if (this.mApp.a().a().aC) {
-      i = 2130840356;
+      i = 2130840362;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
@@ -80,10 +80,10 @@ public class VoiceChangeToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 5;
-      this.mUIInfo.g = 2130969363;
+      this.mUIInfo.g = 2130969364;
       this.mUIInfo.e = 103416;
-      this.mUIInfo.f = 2130840340;
-      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428727);
+      this.mUIInfo.f = 2130840346;
+      this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428733);
     }
     return this.mUIInfo;
   }
@@ -129,7 +129,7 @@ public class VoiceChangeToolbar
   
   protected void onCreate(AVActivity paramAVActivity)
   {
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366248));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366275));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mItemInfo = getList();
     this.mAdapter = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mItemInfo, this.mListView);
@@ -137,7 +137,7 @@ public class VoiceChangeToolbar
     this.mAdapter.b(true);
     this.mAdapter.a(this.mVoiceClickCallback);
     this.mListView.setAdapter(this.mAdapter);
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131366255));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131366282));
     this.mEarbackBtn.setOnClickListener(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.setMargins(QAVPtvTemplateAdapter.a(paramAVActivity.getResources(), QAVPtvTemplateAdapter.a(paramAVActivity), 0.1666667F), 0, 0, 0);

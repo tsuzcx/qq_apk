@@ -1,33 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.media.AudioManager;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public final class kxp
-  implements BusinessObserver
+class kxp
+  implements Runnable
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  kxp(kxo paramkxo) {}
+  
+  public void run()
   {
-    if (paramBoolean) {}
-    try
+    if (ReadInJoyNativeAdAppVideoView.a(this.a.a).getStreamVolume(3) > 0)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, "nativeEngineAdReport success!" + localWebSsoResponseBody.data.get());
-        }
-      }
+      ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130839661);
+      ReadInJoyNativeAdAppVideoView.a(this.a.a).setOutputMute(false);
       return;
     }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130839660);
+    ReadInJoyNativeAdAppVideoView.a(this.a.a).setOutputMute(true);
   }
 }
 

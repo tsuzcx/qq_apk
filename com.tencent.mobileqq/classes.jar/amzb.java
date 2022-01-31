@@ -1,26 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.widget.AdapterView;
-import dov.com.qq.im.capture.view.MusicProviderView;
-import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
+import android.content.res.Resources;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public class amzb
-  implements DialogInterface.OnClickListener
+class amzb
+  implements Runnable
 {
-  public amzb(MusicProviderView paramMusicProviderView, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  amzb(amza paramamza, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    MusicProviderView.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.aw_();
-    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_Amza.a.a == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_Int <= 0) {
+          break;
+        }
+        String str = "超出" + this.jdField_a_of_type_Int + "个字";
+        int i = this.jdField_a_of_type_Amza.a.getResources().getColor(2131493818);
+        this.jdField_a_of_type_Amza.a.a.setTextColor(i);
+        this.jdField_a_of_type_Amza.a.a.setText(str);
+        if (this.jdField_a_of_type_Amza.a.a.getVisibility() != 0) {
+          this.jdField_a_of_type_Amza.a.a.setVisibility(0);
+        }
+      } while (!this.jdField_a_of_type_Amza.a.b);
+      QQToast.a(this.jdField_a_of_type_Amza.a, 2131432446, 0).a();
+      this.jdField_a_of_type_Amza.a.b = false;
+      return;
+    } while (this.jdField_a_of_type_Amza.a.a.getVisibility() == 8);
+    this.jdField_a_of_type_Amza.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzb
  * JD-Core Version:    0.7.0.1
  */

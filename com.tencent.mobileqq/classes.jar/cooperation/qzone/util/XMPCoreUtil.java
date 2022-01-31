@@ -1,6 +1,6 @@
 package cooperation.qzone.util;
 
-import amkx;
+import anbc;
 import android.text.TextUtils;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
@@ -124,7 +124,7 @@ public class XMPCoreUtil
       paramXMPCoreJarLoadListener.a(this.jdField_a_of_type_Boolean);
       return;
     }
-    QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new amkx(this, paramXMPCoreJarLoadListener));
+    QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new anbc(this, paramXMPCoreJarLoadListener));
   }
   
   public boolean a(String paramString)

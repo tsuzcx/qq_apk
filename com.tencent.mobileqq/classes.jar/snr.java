@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.OnGetPhotoWallListener;
-import com.tencent.widget.ListView.OnScrollChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class snr
-  implements ListView.OnScrollChangeListener
+  implements Runnable
 {
-  public snr(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public snr(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    if ((paramInt1 + paramInt2 != paramInt3) || (paramInt3 <= 0) || (this.a.b()) || (!NetworkUtil.d(this.a))) {}
-    while ((this.a.a == null) || (!this.a.a.a())) {
-      return;
-    }
-    this.a.a.a();
-    this.a.d(true);
+    this.a.a.sendAccessibilityEvent(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     snr
  * JD-Core Version:    0.7.0.1
  */

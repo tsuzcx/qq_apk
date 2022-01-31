@@ -1,101 +1,57 @@
-import com.tencent.mobileqq.app.NearFieldTroopHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView.IFace2faceContext;
-import com.tencent.mobileqq.facetoface.Face2FaceGroupProfile;
-import com.tencent.mobileqq.facetoface.Face2FaceTroopDetailView;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class acat
-  implements Face2FaceDetailBaseView.IFace2faceContext
+  extends EmoticonPackageDownloadListener
 {
-  public acat(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public acat(MessengerService paramMessengerService) {}
   
-  public QQAppInterface a()
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    return this.a.app;
-  }
-  
-  public void a()
-  {
-    this.a.h();
-  }
-  
-  public void a(Face2FaceGroupProfile paramFace2FaceGroupProfile)
-  {
-    if (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == this.a.d.size())
+    int i = 2;
+    if (this.a.a != null) {}
+    try
     {
-      this.a.a(paramFace2FaceGroupProfile);
+      Message localMessage = Message.obtain(null, 5);
+      int j = Integer.valueOf(paramEmoticonPackage.epId).intValue();
+      if (paramInt == 0) {
+        i = 0;
+      }
+      for (;;)
+      {
+        paramEmoticonPackage = new Bundle();
+        paramEmoticonPackage.putInt("packetid", j);
+        paramEmoticonPackage.putInt("peoriodtype", 1);
+        paramEmoticonPackage.putInt("resultcode", i);
+        localMessage.setData(paramEmoticonPackage);
+        this.a.a.send(localMessage);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.emoji.web.MessengerService", 2, "resp to sever: ");
+        }
+        return;
+        if (paramInt != 11007) {
+          if (paramInt == 11001) {
+            i = 1;
+          } else if (paramInt == 11000) {
+            i = 6;
+          } else {
+            i = -1;
+          }
+        }
+      }
       return;
     }
-    Face2FaceAddFriendActivity.a(this.a).obtainMessage().obj = paramFace2FaceGroupProfile;
-    Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(12, 5000L);
-  }
-  
-  public boolean a(Face2FaceGroupProfile paramFace2FaceGroupProfile, int paramInt)
-  {
-    if (!NetworkUtil.d(this.a))
+    catch (Exception paramEmoticonPackage)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop, NetworkUtil.isNetSupport==false");
-      }
-      QQToast.a(this.a.app.getApplication(), 2131434794, 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    do
-    {
-      NearFieldTroopHandler localNearFieldTroopHandler;
-      do
-      {
-        return false;
-        localNearFieldTroopHandler = (NearFieldTroopHandler)this.a.app.a(57);
-      } while (localNearFieldTroopHandler == null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在加入群...");
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      try
-      {
-        long l1 = Long.valueOf(paramFace2FaceGroupProfile.e).longValue();
-        long l2 = Long.valueOf(paramFace2FaceGroupProfile.jdField_b_of_type_JavaLangString).longValue();
-        if (QLog.isColorLevel()) {
-          QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop, troopCode=" + l1 + ", ownerUin=" + l2 + ", distance=" + paramFace2FaceGroupProfile.d);
-        }
-        localNearFieldTroopHandler.a(l1, l2, paramFace2FaceGroupProfile.d, paramInt);
-        return true;
-      }
-      catch (Exception paramFace2FaceGroupProfile) {}
-    } while (!QLog.isColorLevel());
-    QLog.d(Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString, 2, "joinTroop:" + paramFace2FaceGroupProfile.toString());
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.a.a(paramString);
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    if (this.a.jdField_b_of_type_Int == 1) {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceTroopDetailView.a);
-    }
-  }
-  
-  public void d()
-  {
-    this.a.g();
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "afterDetailViewHide 详情页返回");
-    }
-    this.a.g = "";
-    Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(13, this.a.a());
+    catch (RemoteException paramEmoticonPackage) {}
   }
 }
 

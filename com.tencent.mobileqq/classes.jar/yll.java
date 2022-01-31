@@ -1,14 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import android.app.Activity;
+import android.view.View;
+import android.view.Window;
+import com.tencent.qphone.base.util.QLog;
 
-public class yll
+public final class yll
   implements Runnable
 {
-  public yll(ApolloCmdChannel paramApolloCmdChannel, Bitmap paramBitmap, String paramString, int paramInt, long paramLong) {}
+  public yll(View paramView, int paramInt) {}
   
   public void run()
   {
-    ApolloCmdChannel.access$200(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
+    if (this.jdField_a_of_type_Int == 1) {
+      localActivity.getWindow().addFlags(128);
+    }
+    for (;;)
+    {
+      QLog.e("ApolloRender", 2, "SetKeepScreenOn :" + this.jdField_a_of_type_Int);
+      return;
+      localActivity.getWindow().clearFlags(128);
+    }
   }
 }
 

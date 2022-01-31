@@ -1,35 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
 public class amth
-  extends Handler
+  implements View.OnClickListener
 {
-  public amth(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public amth(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {
-        this.a.a.u();
-      }
-    }
+    QzoneVerticalVideoDownloadActivity.a(this.a, true);
+    QzoneVerticalVideoDownloadActivity.b(this.a);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amth
  * JD-Core Version:    0.7.0.1
  */

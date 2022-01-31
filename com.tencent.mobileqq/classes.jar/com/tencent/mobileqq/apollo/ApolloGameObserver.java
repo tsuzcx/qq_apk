@@ -21,13 +21,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import ygr;
+import yjy;
 
 public class ApolloGameObserver
   extends VasExtensionObserver
 {
   public QQAppInterface a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ygr(this);
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new yjy(this);
   private String jdField_a_of_type_JavaLangString = "ApolloGameObserver";
   
   public ApolloGameObserver(QQAppInterface paramQQAppInterface)

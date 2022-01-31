@@ -1,43 +1,71 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ahyq
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public ahyq(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, ActionSheet paramActionSheet) {}
+  public ahyq(PtvTemplateManager paramPtvTemplateManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    if (PtvTemplateManager.b == null) {}
+    File[] arrayOfFile;
+    do
     {
-      paramInt = -1;
-      switch (paramInt)
-      {
+      return;
+      arrayOfFile = PtvTemplateManager.b.listFiles();
+    } while ((arrayOfFile == null) || (arrayOfFile.length == 0));
+    int k = arrayOfFile.length;
+    int i = 0;
+    label32:
+    File localFile;
+    if (i < k)
+    {
+      localFile = arrayOfFile[i];
+      if ((localFile != null) && (localFile.isFile())) {
+        break label63;
       }
     }
+    label63:
+    label208:
     for (;;)
     {
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
-      return;
-      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
+      i += 1;
+      break label32;
       break;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 1);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 0);
+      Object localObject = localFile.getName();
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).contains(".")))
+      {
+        localObject = this.a.a.doodleInfos.iterator();
+        PtvTemplateManager.DoodleInfo localDoodleInfo;
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localDoodleInfo = (PtvTemplateManager.DoodleInfo)((Iterator)localObject).next();
+        } while ((localDoodleInfo == null) || (TextUtils.isEmpty(localDoodleInfo.doodleName)) || (!localFile.getName().equalsIgnoreCase(localDoodleInfo.doodleName)));
+        for (int j = 1;; j = 0)
+        {
+          if (j != 0) {
+            break label208;
+          }
+          localFile.deleteOnExit();
+          new File(PtvTemplateManager.c + localFile.getName()).deleteOnExit();
+          break;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahyq
  * JD-Core Version:    0.7.0.1
  */

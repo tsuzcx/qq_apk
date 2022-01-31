@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajad;
+import ajoh;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -86,7 +86,7 @@ public class TroopBarUtils
         return paramString;
       }
     } while ((paramBaseActivity == null) || (paramBaseActivity.isFinishing()));
-    QQToast.a(paramBaseActivity, 2131430335, 1).b(paramBaseActivity.getTitleBarHeight());
+    QQToast.a(paramBaseActivity, 2131430352, 1).b(paramBaseActivity.getTitleBarHeight());
     return null;
   }
   
@@ -108,7 +108,7 @@ public class TroopBarUtils
         paramEditText.append((char[])localObject1);
         localObject1 = (QQText.EmoticonSpan[])localQQTextBuilder.getSpans(0, i, QQText.EmoticonSpan.class);
         if (((localQQTextBuilder instanceof Spanned)) && (Build.VERSION.SDK_INT >= 24)) {
-          Arrays.sort((Object[])localObject1, new ajad(localQQTextBuilder));
+          Arrays.sort((Object[])localObject1, new ajoh(localQQTextBuilder));
         }
         int k = 0;
         if (j < localObject1.length)
@@ -201,7 +201,7 @@ public class TroopBarUtils
   {
     if ((paramBundle1 != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      paramBundle1.putString("version", "7.6.0");
+      paramBundle1.putString("version", "7.6.3");
       paramBundle1.putString("platform", "android");
       paramBundle1.putString("mType", "qb_troop_bar");
       paramBundle1.putString("Cookie", "uin=" + paramString1 + ";skey=" + paramString2);
@@ -254,7 +254,7 @@ public class TroopBarUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBarUtils
  * JD-Core Version:    0.7.0.1
  */

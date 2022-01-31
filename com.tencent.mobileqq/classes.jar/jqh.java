@@ -1,24 +1,17 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.mobileqq.vipav.VipFunCallMediaListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.AVLoadingDialogActivity;
 
 public class jqh
-  extends VipFunCallMediaListener
+  extends BroadcastReceiver
 {
-  public jqh(AVActivity paramAVActivity) {}
+  public jqh(AVLoadingDialogActivity paramAVLoadingDialogActivity) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a != null) {
-      this.a.a.a().postDelayed(new jqi(this), 0L);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.a != null) {
-      this.a.a.a().post(new jqj(this));
+    if (paramIntent.getAction().equals("com.tencent.av.ui.AVLoadingDialogActivity.ACTION_LOADING_FINISH")) {
+      this.a.finish();
     }
   }
 }

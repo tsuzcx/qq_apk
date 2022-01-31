@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.od;
 
-import adll;
-import adlm;
+import advk;
+import advl;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -47,7 +47,7 @@ public class ODLoadingActivity
   public ODLoadingActivity()
   {
     this.jdField_a_of_type_ComTencentMobileqqIntervideoOdLoadingUI = new LoadingUI();
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adlm(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new advl(this);
   }
   
   private void b()
@@ -113,7 +113,7 @@ public class ODLoadingActivity
     }
     for (;;)
     {
-      StoryReportor.a("huayang", "ODLoad", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[] { "", "", "", "7.6.0" });
+      StoryReportor.a("huayang", "ODLoad", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[] { "", "", "", "7.6.3" });
       return;
       Monitor.a("2694146");
     }
@@ -224,9 +224,9 @@ public class ODLoadingActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new adll(this), 50L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new advk(this), 50L);
       return;
-      paramBundle = getString(2131430827);
+      paramBundle = getString(2131430844);
       break;
       label257:
       if (this.c) {
@@ -268,7 +268,7 @@ public class ODLoadingActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODLoadingActivity
  * JD-Core Version:    0.7.0.1
  */

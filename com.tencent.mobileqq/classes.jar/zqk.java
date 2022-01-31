@@ -1,15 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class zqk
-  implements Runnable
+  implements FilenameFilter
 {
-  public zqk(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, int paramInt) {}
+  public zqk(CleanCache paramCleanCache) {}
   
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), "Linkstar Push!ChooserAc!! msgType = " + this.jdField_a_of_type_Int, 0).a();
+    return !paramString.contains("CrashInfoSummary.txt");
   }
 }
 

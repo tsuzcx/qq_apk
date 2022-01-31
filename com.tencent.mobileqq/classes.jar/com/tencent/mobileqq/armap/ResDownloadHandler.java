@@ -2,6 +2,7 @@ package com.tencent.mobileqq.armap;
 
 import com.tencent.av.redpacket.config.AVRedPacketRDHandler;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.config.ARWorldCupRDHandler;
 import com.tencent.mobileqq.armap.config.ARMapRDHandler;
 import com.tencent.mobileqq.armap.config.PreloadMapRDHandler;
 
@@ -17,7 +18,7 @@ public class ResDownloadHandler
   
   public ResDownloadHandler()
   {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqArmapResDownloadHandler$RDHandler = new ResDownloadHandler.RDHandler[5];
+    this.jdField_a_of_type_ArrayOfComTencentMobileqqArmapResDownloadHandler$RDHandler = new ResDownloadHandler.RDHandler[6];
   }
   
   public ResDownloadHandler.RDHandler a(AppInterface paramAppInterface, int paramInt)
@@ -26,7 +27,7 @@ public class ResDownloadHandler
     if (paramInt >= 0)
     {
       i = paramInt;
-      if (paramInt <= 5) {}
+      if (paramInt <= 6) {}
     }
     else
     {
@@ -54,6 +55,8 @@ public class ResDownloadHandler
       localObject = new PreloadMapRDHandler();
       continue;
       localObject = new AVRedPacketRDHandler();
+      continue;
+      localObject = new ARWorldCupRDHandler();
     }
   }
 }

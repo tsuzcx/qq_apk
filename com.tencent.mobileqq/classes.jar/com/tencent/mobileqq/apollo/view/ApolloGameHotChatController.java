@@ -44,24 +44,24 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
-import yua;
-import yub;
-import yuc;
-import yud;
-import yue;
-import yuf;
+import yxg;
+import yxh;
+import yxi;
+import yxj;
+import yxk;
+import yxl;
 
 public class ApolloGameHotChatController
   implements Handler.Callback, View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  private HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new yub(this);
+  private HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new yxh(this);
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new yuc(this);
+  private VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new yxi(this);
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
   private String jdField_a_of_type_JavaLangString;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private yuf jdField_a_of_type_Yuf;
+  private yxl jdField_a_of_type_Yxl;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
@@ -119,18 +119,18 @@ public class ApolloGameHotChatController
           return;
         }
         localTipsManager = ((HotChatPie)localObject).a();
-      } while ((localTipsManager == null) || (this.jdField_a_of_type_Yuf == null));
+      } while ((localTipsManager == null) || (this.jdField_a_of_type_Yxl == null));
       ((HotChatPie)localObject).p(true);
       ((HotChatPie)localObject).q(true);
-      bool = localTipsManager.a(this.jdField_a_of_type_Yuf, new Object[0]);
+      bool = localTipsManager.a(this.jdField_a_of_type_Yxl, new Object[0]);
       this.jdField_a_of_type_Boolean = true;
     } while ((!bool) || (!paramBoolean));
     Object localObject = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -1.0F, 1, 0.0F);
     ((TranslateAnimation)localObject).setDuration(300L);
     ((TranslateAnimation)localObject).setRepeatCount(0);
     ((TranslateAnimation)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-    ((TranslateAnimation)localObject).setAnimationListener(new yue(this));
-    yuf.a(this.jdField_a_of_type_Yuf).startAnimation((Animation)localObject);
+    ((TranslateAnimation)localObject).setAnimationListener(new yxk(this));
+    yxl.a(this.jdField_a_of_type_Yxl).startAnimation((Animation)localObject);
   }
   
   public void a()
@@ -213,19 +213,19 @@ public class ApolloGameHotChatController
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    if (this.jdField_a_of_type_Yuf != null)
+    if (this.jdField_a_of_type_Yxl != null)
     {
-      if ((yuf.a(this.jdField_a_of_type_Yuf).getParent() instanceof ViewGroup)) {
-        ((ViewGroup)yuf.a(this.jdField_a_of_type_Yuf).getParent()).removeView(yuf.a(this.jdField_a_of_type_Yuf));
+      if ((yxl.a(this.jdField_a_of_type_Yxl).getParent() instanceof ViewGroup)) {
+        ((ViewGroup)yxl.a(this.jdField_a_of_type_Yxl).getParent()).removeView(yxl.a(this.jdField_a_of_type_Yxl));
       }
       if ((this.jdField_c_of_type_JavaLangRefWeakReference != null) && (this.jdField_c_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_c_of_type_JavaLangRefWeakReference.get() != null))
       {
         TipsManager localTipsManager = ((HotChatPie)this.jdField_c_of_type_JavaLangRefWeakReference.get()).a();
-        if (localTipsManager.a() == this.jdField_a_of_type_Yuf) {
+        if (localTipsManager.a() == this.jdField_a_of_type_Yxl) {
           localTipsManager.a();
         }
       }
-      this.jdField_a_of_type_Yuf = null;
+      this.jdField_a_of_type_Yxl = null;
     }
     this.jdField_c_of_type_JavaLangRefWeakReference = null;
     if ((paramHotChatPie != null) && (paramHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
@@ -324,7 +324,7 @@ public class ApolloGameHotChatController
       ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
       ((QQAppInterface)localObject).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
       this.jdField_a_of_type_JavaLangString = paramString;
-      ThreadManager.postImmediately(new yua(this, (QQAppInterface)localObject, paramString, paramInt1), null, true);
+      ThreadManager.postImmediately(new yxg(this, (QQAppInterface)localObject, paramString, paramInt1), null, true);
     } while (!QLog.isColorLevel());
     QLog.d("ApolloGameHotChatController", 2, "quickJionHotChat, query server, local no hotChatCode:" + paramString + ",gameId:" + paramInt1);
   }
@@ -350,11 +350,11 @@ public class ApolloGameHotChatController
       ((HotChatPie)localObject).p(false);
       ((HotChatPie)localObject).q(false);
       Object localObject = ((HotChatPie)localObject).a();
-      if ((localObject != null) && (((TipsManager)localObject).a() == this.jdField_a_of_type_Yuf))
+      if ((localObject != null) && (((TipsManager)localObject).a() == this.jdField_a_of_type_Yxl))
       {
         ((TipsManager)localObject).a();
-        if (this.jdField_a_of_type_Yuf != null) {
-          yuf.a(this.jdField_a_of_type_Yuf).setVisibility(8);
+        if (this.jdField_a_of_type_Yxl != null) {
+          yxl.a(this.jdField_a_of_type_Yxl).setVisibility(8);
         }
       }
     } while (!QLog.isColorLevel());
@@ -390,14 +390,14 @@ public class ApolloGameHotChatController
     TipsManager localTipsManager = localHotChatPie.a();
     if (this.jdField_a_of_type_Boolean)
     {
-      if ((localTipsManager != null) && (this.jdField_a_of_type_Yuf != null) && (localTipsManager.a() == this.jdField_a_of_type_Yuf) && (yuf.a(this.jdField_a_of_type_Yuf) != null) && (yuf.a(this.jdField_a_of_type_Yuf).getVisibility() == 0))
+      if ((localTipsManager != null) && (this.jdField_a_of_type_Yxl != null) && (localTipsManager.a() == this.jdField_a_of_type_Yxl) && (yxl.a(this.jdField_a_of_type_Yxl) != null) && (yxl.a(this.jdField_a_of_type_Yxl).getVisibility() == 0))
       {
         TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -1.0F);
         localTranslateAnimation.setDuration(300L);
         localTranslateAnimation.setRepeatCount(0);
         localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        localTranslateAnimation.setAnimationListener(new yud(this, localTipsManager));
-        yuf.a(this.jdField_a_of_type_Yuf).startAnimation(localTranslateAnimation);
+        localTranslateAnimation.setAnimationListener(new yxj(this, localTipsManager));
+        yxl.a(this.jdField_a_of_type_Yxl).startAnimation(localTranslateAnimation);
       }
       localHotChatPie.p(true);
       localHotChatPie.q(false);

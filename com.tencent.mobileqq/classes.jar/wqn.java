@@ -1,86 +1,45 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.OpenIdObserver;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class wqn
-  extends ContactBindObserver
+  extends OpenIdObserver
 {
-  public wqn(BindVerifyActivity paramBindVerifyActivity) {}
+  public wqn(MainAssistObserver paramMainAssistObserver) {}
   
-  protected void c(boolean paramBoolean, int paramInt)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    this.a.b();
-    if (!paramBoolean)
-    {
-      this.a.b(2131434438);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("MainAssistObserver", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString() + " mOpenId = " + this.a.jdField_b_of_type_JavaLangString);
     }
-    if ((paramInt == 0) || (paramInt == 106))
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) || (this.a.c)) {}
+    do
     {
-      if (1 == this.a.a) {
-        MyBusinessActivity.a(true);
-      }
-      if (this.a.getIntent().getBooleanExtra("k_is_block", false)) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X80053D5", "0X80053D5", 0, 0, "", "", "", "");
-      }
-      if (this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false))
+      do
       {
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("bind_mobile", BindVerifyActivity.a(this.a).getText().toString().trim());
-        this.a.setResult(-1, (Intent)localObject);
-        this.a.finish();
         return;
-      }
-      if (this.a.b == 10)
-      {
-        localObject = new Intent(this.a, SplashActivity.class);
-        ((Intent)localObject).putExtra("main_tab_id", 1);
-        ((Intent)localObject).setFlags(603979776);
-        this.a.startActivity((Intent)localObject);
-        this.a.setResult(-1, null);
-        this.a.finish();
-        return;
-      }
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("bind_mobile", BindVerifyActivity.a(this.a).getText().toString().trim());
-      this.a.app.a(new wqo(this));
-      if ((this.a.b == 15) || (this.a.b == 17) || (this.a.b == 0) || (this.a.b == 1) || (this.a.b == 6) || (this.a.b == 14) || (this.a.b == 9) || (this.a.b == 12))
-      {
-        QQToast.a(BaseApplicationImpl.sApplication, "寻找通讯录联系人中。", 0).a();
-        if (this.a.b == 15) {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X80077C7", "0X80077C7", 0, 0, "", "", "", "");
+        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
         }
-      }
-      for (;;)
-      {
-        this.a.setResult(-1, (Intent)localObject);
-        this.a.finish();
-        return;
-        if (this.a.b == 17)
-        {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X80077CB", "0X80077CB", 0, 0, "", "", "", "");
-          continue;
-          QQToast.a(BaseApplicationImpl.sApplication, "特征码匹配中。", 0).a();
+        if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
+          this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
         }
-      }
-    }
-    if (paramInt == 213)
-    {
-      this.a.b("验证码错误，请重新输入。");
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MainAssistObserver", 2, "openIdObserver success");
+        }
+      } while ((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString)));
+      this.a.j();
       return;
-    }
-    Object localObject = "请稍后重试。";
-    if (paramInt == 107) {
-      localObject = "此手机号已与其他帐号绑定，请返回重试。";
-    }
-    this.a.a("请求失败", (String)localObject);
+    } while (!QLog.isColorLevel());
+    QLog.d("MainAssistObserver", 2, "openIdObserver fail");
   }
 }
 

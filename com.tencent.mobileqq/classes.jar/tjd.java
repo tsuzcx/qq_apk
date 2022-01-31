@@ -1,23 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.widget.XEditTextEx;
 
 public class tjd
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public tjd(QQSettingMe paramQQSettingMe, int paramInt, String paramString) {}
+  public tjd(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Int == 33) {
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setBackgroundResource(2130838035);
-    }
-    for (;;)
-    {
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setVisibility(0);
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setText(this.jdField_a_of_type_JavaLangString);
-      return;
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setBackgroundResource(2130838034);
-    }
+    QQLSActivity.a(this.a).setCursorVisible(true);
+    return false;
   }
 }
 

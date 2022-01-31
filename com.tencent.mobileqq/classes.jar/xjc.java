@@ -1,16 +1,33 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class xjc
-  implements Runnable
+public class xjc
+  implements View.OnClickListener
 {
-  xjc(xjb paramxjb) {}
+  public xjc(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = this.a.a.a.getText().toString();
-    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      this.a.a.a.setText("");
+    BannerManager.a(this.a).app.getPreferences();
+    UpgradeController.a().a();
+    if (UpgradeController.a().a() == 4)
+    {
+      UpgradeController.a().a(BannerManager.a(this.a));
+      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "1");
+    }
+    for (;;)
+    {
+      this.a.a(-1, null);
+      return;
+      UpgradeDetailActivity.a(BannerManager.a(this.a), UpgradeController.a().a(), true, true, true);
+      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "1");
     }
   }
 }

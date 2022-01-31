@@ -210,14 +210,14 @@ public class MsgNotification
         localPendingIntent = PendingIntent.getBroadcast(paramQQAppInterface.getApp(), i, (Intent)localObject3, 134217728);
         if (paramBoolean1) {
           if ((paramInt2 == 2) || (paramInt2 == 8) || (paramInt2 == 4)) {
-            localObject3 = BaseApplication.getContext().getString(2131434067);
+            localObject3 = BaseApplication.getContext().getString(2131434084);
           }
         }
         try
         {
           for (;;)
           {
-            localObject1 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130844782);
+            localObject1 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130844907);
             Object localObject4 = localObject1;
             if (localObject1 != null) {
               localObject4 = localObject1;
@@ -245,7 +245,7 @@ public class MsgNotification
               {
                 try
                 {
-                  localObject5 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130844747);
+                  localObject5 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130844872);
                   localObject2 = localObject5;
                   try
                   {
@@ -265,9 +265,9 @@ public class MsgNotification
                   localObject5 = localObject2;
                   continue;
                   if ("oppo".equalsIgnoreCase(DeviceInfoUtil.l())) {
-                    paramString1 = QZoneNotificationAdapter.a().b(localPendingIntent, paramQQAppInterface.getApp(), (Bitmap)localObject5, str, paramString1, 2130844747);
+                    paramString1 = QZoneNotificationAdapter.a().b(localPendingIntent, paramQQAppInterface.getApp(), (Bitmap)localObject5, str, paramString1, 2130844872);
                   } else {
-                    paramString1 = QZoneNotificationAdapter.a().c(localPendingIntent, paramQQAppInterface.getApp(), (Bitmap)localObject5, str, paramString1, 2130844747);
+                    paramString1 = QZoneNotificationAdapter.a().c(localPendingIntent, paramQQAppInterface.getApp(), (Bitmap)localObject5, str, paramString1, 2130844872);
                   }
                 }
               }
@@ -275,7 +275,7 @@ public class MsgNotification
             if (MobileIssueSettings.e) {
               break label1193;
             }
-            paramString1 = QZoneNotificationAdapter.a().a(localPendingIntent, paramQQAppInterface.getApp(), (Bitmap)localObject4, (String)localObject3, paramString1, 2130844747);
+            paramString1 = QZoneNotificationAdapter.a().a(localPendingIntent, paramQQAppInterface.getApp(), (Bitmap)localObject4, (String)localObject3, paramString1, 2130844872);
             if ((paramInt2 == 1) || (paramInt2 == 2) || (paramInt2 == 300))
             {
               localObject1 = new Intent("com.qzone.action.SYSTEM_CLEAR_PUSH");
@@ -430,9 +430,9 @@ public class MsgNotification
               continue;
               localObject1 = a(paramQQAppInterface, b(paramQQAppInterface, paramString2));
             }
-            str = BaseApplication.getContext().getString(2131434067) + "(" + BaseApplication.getContext().getString(2131433691) + paramInt1 + BaseApplication.getContext().getString(2131433692) + BaseApplication.getContext().getString(2131434822) + ")";
+            str = BaseApplication.getContext().getString(2131434084) + "(" + BaseApplication.getContext().getString(2131433708) + paramInt1 + BaseApplication.getContext().getString(2131433709) + BaseApplication.getContext().getString(2131434839) + ")";
             continue;
-            str = BaseApplication.getContext().getString(2131434067);
+            str = BaseApplication.getContext().getString(2131434084);
           }
         }
         catch (OutOfMemoryError localOutOfMemoryError1)

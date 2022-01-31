@@ -1,13 +1,25 @@
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.plugin.PluginManagerV2;
 
-public final class amml
-  implements Runnable
+public class amml
+  implements DialogInterface.OnClickListener
 {
-  public amml(CustomWebView paramCustomWebView, String paramString) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  private amml(PluginManagerV2 paramPluginManagerV2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_CooperationPluginPluginManagerV2.cancelInstall(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,43 +1,42 @@
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
 public class ncl
-  extends SosoInterface.OnLocationListener
+  implements EmoticonCallback
 {
-  public ncl(LbsManager paramLbsManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public ncl(StoryInputBarView paramStoryInputBarView) {}
+  
+  public void a(EmoticonInfo paramEmoticonInfo)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
+    }
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public boolean a(EmoticonInfo paramEmoticonInfo)
   {
-    SLog.b("LbsManager", "onLocationFinish.");
-    boolean bool;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      bool = true;
-      if (!bool) {
-        break label114;
-      }
-      this.a.b = BasicLocation.a(paramSosoLbsInfo.a);
-      SLog.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
-    }
-    for (;;)
-    {
-      if (!LbsManager.a(this.a)) {
-        this.a.a(bool, this.a.b);
-      }
-      this.a.a = false;
-      return;
-      bool = false;
-      break;
-      label114:
-      SLog.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      TextUtils.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
     }
   }
+  
+  public void b(EmoticonInfo paramEmoticonInfo) {}
+  
+  public void c() {}
+  
+  public void setting() {}
 }
 
 

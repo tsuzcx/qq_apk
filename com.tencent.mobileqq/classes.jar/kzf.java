@@ -1,14 +1,14 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.PublicAccountUnfollowTask;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 
-public final class kzf
+public class kzf
   implements Runnable
 {
-  public kzf(QQAppInterface paramQQAppInterface, String paramString) {}
+  public kzf(PublicAccountUnfollowTask paramPublicAccountUnfollowTask) {}
   
   public void run()
   {
-    ServiceAccountFolderManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    PublicAccountUtil.a(PublicAccountUnfollowTask.a(this.a), PublicAccountUnfollowTask.a(this.a), PublicAccountUnfollowTask.a(this.a), false, this.a);
   }
 }
 

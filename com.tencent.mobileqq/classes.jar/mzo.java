@@ -1,42 +1,35 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import mqq.os.MqqHandler;
 
 public class mzo
-  implements UpCallBack
+  extends SimpleJob
 {
-  public mzo(ImageFileObject paramImageFileObject) {}
+  public mzo(QQStoryObserver paramQQStoryObserver, String paramString, Boolean paramBoolean, boolean paramBoolean1, int paramInt) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return null;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
-  {
-    if (paramSendResult.jdField_b_of_type_Int == 0)
-    {
-      this.a.jdField_b_of_type_JavaLangString = paramSendResult.jdField_b_of_type_JavaLangString;
-      this.a.b();
-      ImageFileObject.a(this.a, new ErrorMessage());
-      return;
+    paramJobContext = (UserManager)SuperManager.a(2);
+    paramVarArgs = paramJobContext.b(this.jdField_a_of_type_JavaLangString);
+    if (paramVarArgs != null) {
+      if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+        break label61;
+      }
     }
-    if ((paramSendResult.jdField_b_of_type_Int == StoryUploadProcessor.a(940010)) && (this.a.a.getAndIncrement() < 2))
+    label61:
+    for (int i = 1;; i = 0)
     {
-      ImageFileObject.a(this.a);
-      SLog.d("Q.qqstory.publish.upload:ImageFileObject", "retry load file");
-      return;
+      paramVarArgs.isSubscribe = i;
+      paramJobContext.a(paramVarArgs);
+      ThreadManager.getUIHandler().post(new mzp(this));
+      return null;
     }
-    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
-    ImageFileObject.a(this.a, paramSendResult);
   }
 }
 

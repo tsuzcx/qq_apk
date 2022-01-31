@@ -24,11 +24,11 @@ import com.tencent.mobileqq.widget.QQVideoView;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import wbi;
-import wbn;
-import wbo;
-import wbq;
-import wbr;
+import wen;
+import wes;
+import wet;
+import wev;
+import wew;
 
 public class BlessActivity
   extends BlessTypeActivity
@@ -65,11 +65,11 @@ public class BlessActivity
       this.jdField_b_of_type_Boolean = false;
       if (paramBoolean)
       {
-        View localView = findViewById(2131363350);
+        View localView = findViewById(2131363368);
         localView.setVisibility(0);
         localView.bringToFront();
-        findViewById(2131363352).bringToFront();
-        findViewById(2131363360).bringToFront();
+        findViewById(2131363370).bringToFront();
+        findViewById(2131363378).bringToFront();
       }
       if (this.jdField_b_of_type_AndroidViewView != null)
       {
@@ -174,279 +174,279 @@ public class BlessActivity
     //   165: aload_0
     //   166: getfield 141	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager	Lcom/tencent/mobileqq/activity/bless/BlessManager;
     //   169: invokevirtual 209	com/tencent/mobileqq/activity/bless/BlessManager:m	()I
-    //   172: istore 4
-    //   174: iload 4
-    //   176: iconst_m1
-    //   177: if_icmpne +87 -> 264
-    //   180: new 66	java/lang/StringBuilder
-    //   183: dup
-    //   184: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   187: aload 8
-    //   189: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: iconst_1
-    //   193: invokevirtual 212	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   196: ldc 214
-    //   198: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   201: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: aload 6
-    //   206: invokestatic 219	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   209: astore 6
-    //   211: aload_0
-    //   212: getfield 47	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   215: new 221	wbk
-    //   218: dup
-    //   219: aload_0
-    //   220: aload 6
-    //   222: invokespecial 224	wbk:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;Landroid/graphics/Bitmap;)V
-    //   225: ldc2_w 225
-    //   228: invokevirtual 230	android/widget/ImageView:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   231: pop
-    //   232: aload 7
-    //   234: ifnull -187 -> 47
-    //   237: aload 7
-    //   239: invokevirtual 235	java/io/InputStream:close	()V
-    //   242: return
-    //   243: astore 6
-    //   245: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   248: ifeq -201 -> 47
-    //   251: aload_0
-    //   252: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   255: iconst_2
-    //   256: ldc 160
-    //   258: aload 6
-    //   260: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   263: return
-    //   264: new 165	java/io/File
-    //   267: dup
-    //   268: aload 8
-    //   270: invokespecial 168	java/io/File:<init>	(Ljava/lang/String;)V
-    //   273: astore 9
-    //   275: aload 9
-    //   277: invokevirtual 238	java/io/File:isDirectory	()Z
-    //   280: istore 5
-    //   282: iload 5
-    //   284: ifne +35 -> 319
-    //   287: aload 7
-    //   289: ifnull -242 -> 47
-    //   292: aload 7
-    //   294: invokevirtual 235	java/io/InputStream:close	()V
-    //   297: return
-    //   298: astore 6
-    //   300: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   303: ifeq -256 -> 47
-    //   306: aload_0
-    //   307: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   310: iconst_2
-    //   311: ldc 160
-    //   313: aload 6
-    //   315: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   318: return
-    //   319: aload 9
-    //   321: invokevirtual 242	java/io/File:list	()[Ljava/lang/String;
-    //   324: arraylength
-    //   325: istore_3
-    //   326: aload_0
-    //   327: getfield 141	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager	Lcom/tencent/mobileqq/activity/bless/BlessManager;
-    //   330: invokevirtual 245	com/tencent/mobileqq/activity/bless/BlessManager:n	()I
-    //   333: istore_2
-    //   334: aload_0
-    //   335: new 247	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2
-    //   338: dup
-    //   339: aload_0
-    //   340: invokespecial 249	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;)V
-    //   343: putfield 251	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2	Lcom/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2;
-    //   346: iload_1
-    //   347: iload_3
-    //   348: if_icmpge +66 -> 414
-    //   351: new 66	java/lang/StringBuilder
-    //   354: dup
-    //   355: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   358: aload 8
-    //   360: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   363: iload_1
-    //   364: iconst_1
-    //   365: iadd
-    //   366: invokevirtual 212	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   369: ldc 214
-    //   371: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   374: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   377: aload 6
-    //   379: invokestatic 219	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   382: astore 9
-    //   384: aload_0
-    //   385: getfield 251	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2	Lcom/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2;
-    //   388: new 253	android/graphics/drawable/BitmapDrawable
-    //   391: dup
-    //   392: aload_0
-    //   393: invokevirtual 257	com/tencent/mobileqq/activity/bless/BlessActivity:getResources	()Landroid/content/res/Resources;
-    //   396: aload 9
-    //   398: invokespecial 260	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
-    //   401: iload_2
-    //   402: iload_3
+    //   172: istore_3
+    //   173: iload_3
+    //   174: iconst_m1
+    //   175: if_icmpne +87 -> 262
+    //   178: new 66	java/lang/StringBuilder
+    //   181: dup
+    //   182: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   185: aload 8
+    //   187: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   190: iconst_1
+    //   191: invokevirtual 212	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   194: ldc 214
+    //   196: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   202: aload 6
+    //   204: invokestatic 219	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   207: astore 6
+    //   209: aload_0
+    //   210: getfield 47	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   213: new 221	wep
+    //   216: dup
+    //   217: aload_0
+    //   218: aload 6
+    //   220: invokespecial 224	wep:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;Landroid/graphics/Bitmap;)V
+    //   223: ldc2_w 225
+    //   226: invokevirtual 230	android/widget/ImageView:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   229: pop
+    //   230: aload 7
+    //   232: ifnull -185 -> 47
+    //   235: aload 7
+    //   237: invokevirtual 235	java/io/InputStream:close	()V
+    //   240: return
+    //   241: astore 6
+    //   243: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   246: ifeq -199 -> 47
+    //   249: aload_0
+    //   250: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   253: iconst_2
+    //   254: ldc 160
+    //   256: aload 6
+    //   258: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   261: return
+    //   262: new 165	java/io/File
+    //   265: dup
+    //   266: aload 8
+    //   268: invokespecial 168	java/io/File:<init>	(Ljava/lang/String;)V
+    //   271: astore 9
+    //   273: aload 9
+    //   275: invokevirtual 238	java/io/File:isDirectory	()Z
+    //   278: istore 5
+    //   280: iload 5
+    //   282: ifne +35 -> 317
+    //   285: aload 7
+    //   287: ifnull -240 -> 47
+    //   290: aload 7
+    //   292: invokevirtual 235	java/io/InputStream:close	()V
+    //   295: return
+    //   296: astore 6
+    //   298: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   301: ifeq -254 -> 47
+    //   304: aload_0
+    //   305: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   308: iconst_2
+    //   309: ldc 160
+    //   311: aload 6
+    //   313: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   316: return
+    //   317: aload 9
+    //   319: invokevirtual 242	java/io/File:list	()[Ljava/lang/String;
+    //   322: arraylength
+    //   323: istore_2
+    //   324: aload_0
+    //   325: getfield 141	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager	Lcom/tencent/mobileqq/activity/bless/BlessManager;
+    //   328: invokevirtual 245	com/tencent/mobileqq/activity/bless/BlessManager:n	()I
+    //   331: istore 4
+    //   333: aload_0
+    //   334: new 247	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2
+    //   337: dup
+    //   338: aload_0
+    //   339: invokespecial 249	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;)V
+    //   342: putfield 251	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2	Lcom/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2;
+    //   345: iload_1
+    //   346: iload_2
+    //   347: if_icmpge +67 -> 414
+    //   350: new 66	java/lang/StringBuilder
+    //   353: dup
+    //   354: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   357: aload 8
+    //   359: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   362: iload_1
+    //   363: iconst_1
+    //   364: iadd
+    //   365: invokevirtual 212	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   368: ldc 214
+    //   370: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   373: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   376: aload 6
+    //   378: invokestatic 219	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   381: astore 9
+    //   383: aload_0
+    //   384: getfield 251	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2	Lcom/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2;
+    //   387: new 253	android/graphics/drawable/BitmapDrawable
+    //   390: dup
+    //   391: aload_0
+    //   392: invokevirtual 257	com/tencent/mobileqq/activity/bless/BlessActivity:getResources	()Landroid/content/res/Resources;
+    //   395: aload 9
+    //   397: invokespecial 260	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+    //   400: iload 4
+    //   402: iload_2
     //   403: idiv
     //   404: invokevirtual 264	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2:addFrame	(Landroid/graphics/drawable/Drawable;I)V
     //   407: iload_1
     //   408: iconst_1
     //   409: iadd
     //   410: istore_1
-    //   411: goto -65 -> 346
-    //   414: iload 4
-    //   416: ifne +62 -> 478
-    //   419: aload_0
-    //   420: getfield 251	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2	Lcom/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2;
-    //   423: iconst_0
-    //   424: invokevirtual 267	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2:setOneShot	(Z)V
-    //   427: aload_0
-    //   428: getfield 47	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   431: new 269	wbm
-    //   434: dup
-    //   435: aload_0
-    //   436: invokespecial 270	wbm:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;)V
-    //   439: ldc2_w 225
-    //   442: invokevirtual 230	android/widget/ImageView:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   445: pop
-    //   446: aload 7
-    //   448: ifnull -401 -> 47
-    //   451: aload 7
-    //   453: invokevirtual 235	java/io/InputStream:close	()V
-    //   456: return
-    //   457: astore 6
-    //   459: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   462: ifeq -415 -> 47
-    //   465: aload_0
-    //   466: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   469: iconst_2
-    //   470: ldc 160
-    //   472: aload 6
-    //   474: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   477: return
-    //   478: aload_0
-    //   479: getfield 251	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2	Lcom/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2;
-    //   482: iconst_1
-    //   483: invokevirtual 267	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2:setOneShot	(Z)V
-    //   486: aload_0
-    //   487: getfield 251	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2	Lcom/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2;
-    //   490: new 272	wbl
-    //   493: dup
-    //   494: aload_0
-    //   495: invokespecial 273	wbl:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;)V
-    //   498: invokevirtual 276	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2:a	(Lcom/tencent/mobileqq/activity/bless/BlessActivity$IAnimationFinishListener;)V
-    //   501: goto -74 -> 427
-    //   504: astore 8
-    //   506: aload 7
-    //   508: astore 6
-    //   510: aload 8
-    //   512: astore 7
-    //   514: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   517: ifeq +16 -> 533
-    //   520: aload_0
-    //   521: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   524: iconst_2
-    //   525: ldc_w 278
-    //   528: aload 7
-    //   530: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   533: aload 6
-    //   535: ifnull -488 -> 47
-    //   538: aload 6
-    //   540: invokevirtual 235	java/io/InputStream:close	()V
-    //   543: return
-    //   544: astore 6
-    //   546: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   549: ifeq -502 -> 47
-    //   552: aload_0
-    //   553: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   556: iconst_2
-    //   557: ldc 160
-    //   559: aload 6
-    //   561: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   564: return
-    //   565: astore 6
-    //   567: aconst_null
-    //   568: astore 7
-    //   570: aload 7
-    //   572: ifnull +8 -> 580
-    //   575: aload 7
-    //   577: invokevirtual 235	java/io/InputStream:close	()V
-    //   580: aload 6
-    //   582: athrow
-    //   583: astore 7
-    //   585: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   588: ifeq -8 -> 580
-    //   591: aload_0
-    //   592: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   595: iconst_2
-    //   596: ldc 160
-    //   598: aload 7
-    //   600: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   603: goto -23 -> 580
-    //   606: astore 6
-    //   608: goto -38 -> 570
-    //   611: astore 8
-    //   613: aload 6
-    //   615: astore 7
-    //   617: aload 8
-    //   619: astore 6
-    //   621: goto -51 -> 570
-    //   624: astore 7
-    //   626: goto -112 -> 514
+    //   411: goto -66 -> 345
+    //   414: iload_3
+    //   415: ifne +62 -> 477
+    //   418: aload_0
+    //   419: getfield 251	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2	Lcom/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2;
+    //   422: iconst_0
+    //   423: invokevirtual 267	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2:setOneShot	(Z)V
+    //   426: aload_0
+    //   427: getfield 47	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   430: new 269	wer
+    //   433: dup
+    //   434: aload_0
+    //   435: invokespecial 270	wer:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;)V
+    //   438: ldc2_w 225
+    //   441: invokevirtual 230	android/widget/ImageView:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   444: pop
+    //   445: aload 7
+    //   447: ifnull -400 -> 47
+    //   450: aload 7
+    //   452: invokevirtual 235	java/io/InputStream:close	()V
+    //   455: return
+    //   456: astore 6
+    //   458: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   461: ifeq -414 -> 47
+    //   464: aload_0
+    //   465: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   468: iconst_2
+    //   469: ldc 160
+    //   471: aload 6
+    //   473: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   476: return
+    //   477: aload_0
+    //   478: getfield 251	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2	Lcom/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2;
+    //   481: iconst_1
+    //   482: invokevirtual 267	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2:setOneShot	(Z)V
+    //   485: aload_0
+    //   486: getfield 251	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2	Lcom/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2;
+    //   489: new 272	weq
+    //   492: dup
+    //   493: aload_0
+    //   494: invokespecial 273	weq:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;)V
+    //   497: invokevirtual 276	com/tencent/mobileqq/activity/bless/BlessActivity$AnimationDrawable2:a	(Lcom/tencent/mobileqq/activity/bless/BlessActivity$IAnimationFinishListener;)V
+    //   500: goto -74 -> 426
+    //   503: astore 8
+    //   505: aload 7
+    //   507: astore 6
+    //   509: aload 8
+    //   511: astore 7
+    //   513: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   516: ifeq +16 -> 532
+    //   519: aload_0
+    //   520: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   523: iconst_2
+    //   524: ldc_w 278
+    //   527: aload 7
+    //   529: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   532: aload 6
+    //   534: ifnull -487 -> 47
+    //   537: aload 6
+    //   539: invokevirtual 235	java/io/InputStream:close	()V
+    //   542: return
+    //   543: astore 6
+    //   545: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   548: ifeq -501 -> 47
+    //   551: aload_0
+    //   552: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   555: iconst_2
+    //   556: ldc 160
+    //   558: aload 6
+    //   560: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   563: return
+    //   564: astore 6
+    //   566: aconst_null
+    //   567: astore 7
+    //   569: aload 7
+    //   571: ifnull +8 -> 579
+    //   574: aload 7
+    //   576: invokevirtual 235	java/io/InputStream:close	()V
+    //   579: aload 6
+    //   581: athrow
+    //   582: astore 7
+    //   584: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   587: ifeq -8 -> 579
+    //   590: aload_0
+    //   591: getfield 29	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   594: iconst_2
+    //   595: ldc 160
+    //   597: aload 7
+    //   599: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   602: goto -23 -> 579
+    //   605: astore 6
+    //   607: goto -38 -> 569
+    //   610: astore 8
+    //   612: aload 6
+    //   614: astore 7
+    //   616: aload 8
+    //   618: astore 6
+    //   620: goto -51 -> 569
+    //   623: astore 7
+    //   625: goto -112 -> 513
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	629	0	this	BlessActivity
+    //   0	628	0	this	BlessActivity
     //   1	410	1	i	int
-    //   333	71	2	j	int
-    //   325	79	3	k	int
-    //   172	243	4	m	int
-    //   28	255	5	bool	boolean
+    //   323	81	2	j	int
+    //   172	243	3	k	int
+    //   331	73	4	m	int
+    //   28	253	5	bool	boolean
     //   3	1	6	localObject1	Object
     //   48	16	6	localException1	Exception
-    //   132	89	6	localObject2	Object
-    //   243	16	6	localException2	Exception
-    //   298	80	6	localException3	Exception
-    //   457	16	6	localException4	Exception
-    //   508	31	6	localObject3	Object
-    //   544	16	6	localException5	Exception
-    //   565	16	6	localObject4	Object
-    //   606	8	6	localObject5	Object
-    //   619	1	6	localObject6	Object
-    //   78	498	7	localObject7	Object
-    //   583	16	7	localException6	Exception
-    //   615	1	7	localObject8	Object
-    //   624	1	7	localException7	Exception
-    //   21	338	8	str	String
-    //   504	7	8	localException8	Exception
-    //   611	7	8	localObject9	Object
-    //   12	385	9	localObject10	Object
+    //   132	87	6	localObject2	Object
+    //   241	16	6	localException2	Exception
+    //   296	81	6	localException3	Exception
+    //   456	16	6	localException4	Exception
+    //   507	31	6	localObject3	Object
+    //   543	16	6	localException5	Exception
+    //   564	16	6	localObject4	Object
+    //   605	8	6	localObject5	Object
+    //   618	1	6	localObject6	Object
+    //   78	497	7	localObject7	Object
+    //   582	16	7	localException6	Exception
+    //   614	1	7	localObject8	Object
+    //   623	1	7	localException7	Exception
+    //   21	337	8	str	String
+    //   503	7	8	localException8	Exception
+    //   610	7	8	localObject9	Object
+    //   12	384	9	localObject10	Object
     // Exception table:
     //   from	to	target	type
     //   39	47	48	java/lang/Exception
-    //   237	242	243	java/lang/Exception
-    //   292	297	298	java/lang/Exception
-    //   451	456	457	java/lang/Exception
-    //   125	174	504	java/lang/Exception
-    //   180	232	504	java/lang/Exception
-    //   264	282	504	java/lang/Exception
-    //   319	346	504	java/lang/Exception
-    //   351	407	504	java/lang/Exception
-    //   419	427	504	java/lang/Exception
-    //   427	446	504	java/lang/Exception
-    //   478	501	504	java/lang/Exception
-    //   538	543	544	java/lang/Exception
-    //   5	30	565	finally
-    //   69	114	565	finally
-    //   114	125	565	finally
-    //   575	580	583	java/lang/Exception
-    //   125	174	606	finally
-    //   180	232	606	finally
-    //   264	282	606	finally
-    //   319	346	606	finally
-    //   351	407	606	finally
-    //   419	427	606	finally
-    //   427	446	606	finally
-    //   478	501	606	finally
-    //   514	533	611	finally
-    //   5	30	624	java/lang/Exception
-    //   69	114	624	java/lang/Exception
-    //   114	125	624	java/lang/Exception
+    //   235	240	241	java/lang/Exception
+    //   290	295	296	java/lang/Exception
+    //   450	455	456	java/lang/Exception
+    //   125	173	503	java/lang/Exception
+    //   178	230	503	java/lang/Exception
+    //   262	280	503	java/lang/Exception
+    //   317	345	503	java/lang/Exception
+    //   350	407	503	java/lang/Exception
+    //   418	426	503	java/lang/Exception
+    //   426	445	503	java/lang/Exception
+    //   477	500	503	java/lang/Exception
+    //   537	542	543	java/lang/Exception
+    //   5	30	564	finally
+    //   69	114	564	finally
+    //   114	125	564	finally
+    //   574	579	582	java/lang/Exception
+    //   125	173	605	finally
+    //   178	230	605	finally
+    //   262	280	605	finally
+    //   317	345	605	finally
+    //   350	407	605	finally
+    //   418	426	605	finally
+    //   426	445	605	finally
+    //   477	500	605	finally
+    //   513	532	610	finally
+    //   5	30	623	java/lang/Exception
+    //   69	114	623	java/lang/Exception
+    //   114	125	623	java/lang/Exception
   }
   
   private void c()
@@ -455,9 +455,9 @@ public class BlessActivity
       return;
     }
     this.jdField_c_of_type_Boolean = true;
-    Object localObject1 = (RelativeLayout)findViewById(2131362822);
+    Object localObject1 = (RelativeLayout)findViewById(2131362840);
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView = ((QQVideoView)findViewById(2131363351));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView = ((QQVideoView)findViewById(2131363369));
     }
     if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
       this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)getSystemService("audio"));
@@ -474,10 +474,10 @@ public class BlessActivity
     {
       this.jdField_b_of_type_Boolean = true;
       d();
-      Object localObject2 = (RelativeLayout.LayoutParams)findViewById(2131363350).getLayoutParams();
+      Object localObject2 = (RelativeLayout.LayoutParams)findViewById(2131363368).getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject2).width = j;
       ((RelativeLayout.LayoutParams)localObject2).height = i;
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363349));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363367));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       try
       {
@@ -502,7 +502,7 @@ public class BlessActivity
           }
         }
       }
-      findViewById(2131363360).bringToFront();
+      findViewById(2131363378).bringToFront();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setDimension(j, i);
       ((RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.getLayoutParams()).setMargins(0, 0, 0, 0);
       this.jdField_b_of_type_AndroidViewView = new View(this);
@@ -514,14 +514,14 @@ public class BlessActivity
       ((RelativeLayout.LayoutParams)localObject1).width = ((int)(localDisplayMetrics.density * 60.0F + 0.5F));
       ((RelativeLayout.LayoutParams)localObject1).height = ((int)(localDisplayMetrics.density * 60.0F + 0.5F));
       this.jdField_b_of_type_AndroidViewView.bringToFront();
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new wbn(this));
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new wes(this));
       if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
         this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(null, 3, 1);
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnPreparedListener(new wbo(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnCompletionListener(new wbq(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnErrorListener(new wbr(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnPreparedListener(new wet(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnCompletionListener(new wev(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnErrorListener(new wew(this));
       return;
     }
   }
@@ -529,7 +529,7 @@ public class BlessActivity
   private void d()
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new wbi(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new wen(this);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
@@ -624,11 +624,11 @@ public class BlessActivity
     //   162: astore_1
     //   163: aload_1
     //   164: invokevirtual 430	android/widget/RelativeLayout:getViewTreeObserver	()Landroid/view/ViewTreeObserver;
-    //   167: new 432	wbh
+    //   167: new 432	wem
     //   170: dup
     //   171: aload_0
     //   172: aload_1
-    //   173: invokespecial 435	wbh:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;Landroid/widget/RelativeLayout;)V
+    //   173: invokespecial 435	wem:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;Landroid/widget/RelativeLayout;)V
     //   176: invokevirtual 441	android/view/ViewTreeObserver:addOnGlobalLayoutListener	(Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;)V
     //   179: aload_0
     //   180: getfield 141	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager	Lcom/tencent/mobileqq/activity/bless/BlessManager;
@@ -641,10 +641,10 @@ public class BlessActivity
     //   197: invokevirtual 94	com/tencent/mobileqq/activity/bless/BlessActivity:findViewById	(I)Landroid/view/View;
     //   200: checkcast 114	android/widget/ImageView
     //   203: putfield 47	com/tencent/mobileqq/activity/bless/BlessActivity:jdField_b_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   206: new 452	wbj
+    //   206: new 452	weo
     //   209: dup
     //   210: aload_0
-    //   211: invokespecial 453	wbj:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;)V
+    //   211: invokespecial 453	weo:<init>	(Lcom/tencent/mobileqq/activity/bless/BlessActivity;)V
     //   214: bipush 10
     //   216: aconst_null
     //   217: iconst_1

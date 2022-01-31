@@ -33,7 +33,7 @@ public class FeedSegment$VideoListTouchEventHandler
   
   protected FeedSegment$VideoListTouchEventHandler(FeedSegment paramFeedSegment) {}
   
-  public void C_()
+  public void H_()
   {
     if (this.jdField_a_of_type_Int == -1) {
       AssertUtils.a("位置没有赋值！！", new Object[0]);
@@ -45,7 +45,7 @@ public class FeedSegment$VideoListTouchEventHandler
     FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, localStoryHomeFeed);
   }
   
-  public void D_()
+  public void I_()
   {
     FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment).l();
   }
@@ -60,53 +60,62 @@ public class FeedSegment$VideoListTouchEventHandler
   public void a(int paramInt)
   {
     int j = 0;
-    if (this.jdField_a_of_type_Int == -1) {
-      AssertUtils.a("位置没有赋值！！", new Object[0]);
-    }
-    StoryHomeHorizontalListView localStoryHomeHorizontalListView;
-    StoryHomeFeed localStoryHomeFeed;
-    Object localObject;
-    do
+    if (this.jdField_a_of_type_Int == -1)
     {
-      do
-      {
-        return;
-      } while (!FeedSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment));
-      localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371589);
-      localStoryHomeFeed = (StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(this.jdField_a_of_type_Int);
-      if ((localStoryHomeFeed != null) && ((paramInt == 4097) || (paramInt == 4098)))
-      {
-        int k = localStoryHomeHorizontalListView.getFirstVisiblePosition();
-        int i = k;
-        if (k < 0) {
-          i = 0;
-        }
-        SLog.a("Q.qqstory.home:FeedSegment", "onScrollChange, state=%d, leftPosition=%d", Integer.valueOf(paramInt), Integer.valueOf(i));
-        localObject = new ArrayList();
-        ((List)localObject).add(localStoryHomeFeed);
-        FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, (List)localObject, i);
-        FeedSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, (List)localObject, i);
-      }
-      localObject = (FeedItemThumbAdapter)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a("general_adapter");
-      if (paramInt != 4097) {
-        break;
-      }
-      paramInt = FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.b(paramInt);
-    } while ((localStoryHomeHorizontalListView == null) || (localObject == null) || (localStoryHomeFeed == null));
-    paramInt = localStoryHomeHorizontalListView.getFirstVisiblePosition();
-    if (paramInt < 0) {
-      paramInt = j;
+      AssertUtils.a("位置没有赋值！！", new Object[0]);
+      break label19;
     }
+    label19:
+    label330:
+    label331:
     for (;;)
     {
-      FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment).jdField_a_of_type_JavaUtilMap.put("1_" + localStoryHomeFeed.a().feedId, ((StoryVideoItem)((FeedItemThumbAdapter)localObject).a.get(paramInt)).mVid);
       return;
-      if ((FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment) == null) || (FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment).b() != 1)) {
-        break;
+      if (FeedSegment.c(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment))
+      {
+        StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131371754);
+        StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(this.jdField_a_of_type_Int);
+        if ((localStoryHomeFeed != null) && ((paramInt == 4097) || (paramInt == 4098)))
+        {
+          int k = localStoryHomeHorizontalListView.getFirstVisiblePosition();
+          int i = k;
+          if (k < 0) {
+            i = 0;
+          }
+          SLog.a("Q.qqstory.home:FeedSegment", "onScrollChange, state=%d, leftPosition=%d", Integer.valueOf(paramInt), Integer.valueOf(i));
+          localObject = new ArrayList();
+          ((List)localObject).add(localStoryHomeFeed);
+          FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, (List)localObject, i);
+          FeedSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, (List)localObject, i);
+        }
+        Object localObject = (FeedItemThumbAdapter)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a("general_adapter");
+        if (paramInt == 4097)
+        {
+          paramInt = FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment);
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.b(paramInt);
+          if ((localStoryHomeHorizontalListView == null) || (localObject == null) || (localStoryHomeFeed == null)) {
+            break;
+          }
+          paramInt = localStoryHomeHorizontalListView.getFirstVisiblePosition();
+          if (paramInt >= 0) {
+            break label330;
+          }
+          paramInt = j;
+        }
+        for (;;)
+        {
+          if (((FeedItemThumbAdapter)localObject).a.isEmpty()) {
+            break label331;
+          }
+          FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment).jdField_a_of_type_JavaUtilMap.put("1_" + localStoryHomeFeed.a().feedId, ((StoryVideoItem)((FeedItemThumbAdapter)localObject).a.get(paramInt)).mVid);
+          return;
+          if ((FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment) == null) || (FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment).b() != 1)) {
+            break;
+          }
+          FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment).b();
+          return;
+        }
       }
-      FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment).b();
-      return;
     }
   }
   
@@ -121,6 +130,7 @@ public class FeedSegment$VideoListTouchEventHandler
     if ((localStoryHomeFeed.a() != null) && (!TextUtils.isEmpty(localStoryHomeFeed.a().feedId)))
     {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.jdField_a_of_type_JavaUtilMap.put(localStoryHomeFeed.a().feedId, Integer.valueOf(paramInt2));
+      SLog.a("Q.qqstory.home:FeedSegment", "pppp bind view remeber feedId:%s x:%s", localStoryHomeFeed.a().feedId, Integer.valueOf(paramInt2));
       return;
     }
     AssertUtils.a("保存位置时，数据不全", new Object[0]);

@@ -1,20 +1,16 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
 import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPermission;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
+import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 
 public class oea
-  implements Runnable
+  implements DoodleEditView.DoodleEditViewListener
 {
-  public oea(EditVideoPermission paramEditVideoPermission) {}
+  public oea(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void run()
+  public void a(GestureHelper.ZoomItem paramZoomItem)
   {
-    if (EditVideoPermission.a(this.a))
-    {
-      SLog.b("Q.qqstory.publish.edit.EditVideoPermission", "PermissionSettingActivity launch failed, change state to IDLE");
-      this.a.a.a(0);
-      EditVideoPermission.a(this.a, false);
-    }
+    this.a.a.a(6);
   }
 }
 

@@ -1,25 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
 public class srh
-  implements DialogInterface.OnDismissListener
+  implements ImageAssetDelegate
 {
-  public srh(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public srh(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if (!GesturePWDUnlockActivity.a(this.a))
-    {
-      GesturePWDUnlockActivity.a(this.a, true);
-      return;
-    }
-    this.a.e();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
-    StatisticCollector.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
   }
 }
 

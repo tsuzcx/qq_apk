@@ -1,17 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class txv
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public txv(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public txv(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.d == 1) || (this.a.d == 11) || (this.a.d == 16))
-    {
-      Object[] arrayOfObject = this.a.a(this.a.b);
-      this.a.a.sendMessage(this.a.a.obtainMessage(1, arrayOfObject));
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

@@ -1,22 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
-import com.tencent.qqprotect.qsec.RptImpl;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.ControlPolicyUtil;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class alim
-  implements QSecFramework.IGoingUpHandler
+  implements Runnable
 {
-  public alim(RptImpl paramRptImpl) {}
+  public alim(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public void run()
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.Rpt", 2, String.format("Op: %d, Rid: %d, val: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), (String)paramObject1 }));
-      }
-      this.a.a(paramInt1, paramInt2, (String)paramObject1);
-    }
-    return 0;
+    StaticAnalyz.a("100", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+    ControlPolicyUtil.a();
   }
 }
 

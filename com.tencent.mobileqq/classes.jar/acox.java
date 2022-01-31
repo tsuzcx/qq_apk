@@ -1,18 +1,14 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
-import cooperation.qqfav.ipc.FavoritesRemoteCommand.IRemoteCommandHandler;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.open.downloadnew.DownloadManager;
 
 public class acox
-  implements FavoritesRemoteCommand.IRemoteCommandHandler
+  implements Runnable
 {
-  public acox(QfavFilePreviewController paramQfavFilePreviewController) {}
+  public acox(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public boolean a(int paramInt, Bundle paramBundle)
+  public void run()
   {
-    new Handler(Looper.getMainLooper()).post(new acoy(this, paramBundle));
-    return true;
+    DownloadManager.a().b(UniformDownloadActivity.a(this.a));
   }
 }
 

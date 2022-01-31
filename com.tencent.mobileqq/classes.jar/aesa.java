@@ -1,113 +1,146 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.util.SparseArray;
+import android.widget.ImageView;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.mobileqq.nearby.now.ProgressControler;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.model.BasePlayListDataModel;
+import com.tencent.mobileqq.nearby.now.model.BasePlayListDataModel.OnDataComeListener;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
+import com.tencent.mobileqq.nearby.now.view.OperationView;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter.VideoViewHolder;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aesa
-  implements BusinessObserver
+  implements BasePlayListDataModel.OnDataComeListener
 {
-  public aesa(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public aesa(StoryPlayController paramStoryPlayController) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
+  {
+    if ((NetworkUtil.a(this.a.a())) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilList.size() != 0))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnRetryClickListener(new aesb(this));
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayTribePanel", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
+      QLog.i("VideoPlayController", 2, "onDataCome ! type is: " + paramInt1 + " errorCode is " + paramInt2);
     }
-    Object localObject;
-    if (paramBoolean)
+    if ((paramInt2 > 0) || (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a().size() == 0))
     {
-      try
-      {
-        ((NearbyCardManager)this.a.a.app.getManager(105)).d.put(this.a.a.app.getCurrentAccountUin(), Integer.valueOf(1));
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label526;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+      QLog.e("VideoPlayController", 1, "onDataCome errorCode > 0, errorCode=" + paramInt2 + " mPlayListDataModel.getDataList().size() is : " + this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a().size());
+      if (paramInt2 == 1000730) {
         if (QLog.isColorLevel()) {
-          QLog.i("NearbyProfileDisplayTribePanel", 2, "retCode = [" + paramInt + "]");
+          QLog.i("VideoPlayController", 2, "onDataCome error! errorCode is: " + paramInt2);
         }
-        if (paramInt == 0) {
-          break label296;
-        }
-        paramBundle = paramBundle.optString("msg");
-        if (!TextUtils.isEmpty(paramBundle))
-        {
-          QQToast.a(this.a.a, 1, "" + paramBundle, 1).a();
-          return;
-        }
-        QQToast.a(this.a.a, 1, "操作失败，请稍后重试", 1).a();
+      }
+      do
+      {
         return;
-      }
-      catch (Exception paramBundle)
-      {
-        QQToast.a(this.a.a, 1, "未知异常，请稍后重试", 1).a();
-        if (!QLog.isColorLevel()) {
-          break label563;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilList.size() == 0) {
+          break;
         }
-      }
-      QLog.e("NearbyProfileDisplayTribePanel", 2, "未知异常，请稍后重试", paramBundle);
+      } while (!QLog.isColorLevel());
+      QLog.i("VideoPlayController", 2, "onDataCome error! pass it! errorCode is: " + paramInt2);
       return;
-      label296:
-      if (paramBundle.optInt("retcode") == 0)
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.a(paramInt2);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a());
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a());
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_Boolean) {
+      if (StoryPlayController.a(this.a))
       {
-        paramBundle = this.a;
-        if (NearbyProfileDisplayTribePanel.a(this.a)) {
-          break label564;
+        paramInt2 = 0;
+        if (paramInt2 >= this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a().size()) {
+          break label661;
         }
-        paramBoolean = true;
-        NearbyProfileDisplayTribePanel.a(paramBundle, paramBoolean);
-        localObject = this.a.a;
-        if (!NearbyProfileDisplayTribePanel.a(this.a)) {
-          break label569;
-        }
+        if (!((VideoData)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a().get(paramInt2)).jdField_a_of_type_JavaLangString.equals(StoryPlayController.a(this.a))) {}
       }
     }
-    label526:
-    label563:
-    label564:
-    label569:
-    for (paramBundle = "关注成功";; paramBundle = "已取消关注")
+    for (;;)
     {
-      QQToast.a((Context)localObject, 2, paramBundle, 1).a();
-      NearbyProfileDisplayTribePanel.a(this.a, 1, 60);
-      if ((!NearbyProfileDisplayTribePanel.a(this.a)) && (NearbyProfileDisplayTribePanel.a(this.a).getChildAt(2).getVisibility() != 0))
-      {
-        paramBundle = (Button)NearbyProfileDisplayTribePanel.a(this.a).getChildAt(1).findViewById(2131365229);
-        paramBundle.setTextColor(this.a.a.getResources().getColor(2131494229));
-        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130838487));
+      int i = paramInt2;
+      if (paramInt2 == -1) {
+        i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a().size() / 2 - 1;
       }
-      if (NearbyProfileDisplayTribePanel.a(this.a))
+      this.a.c = i;
+      if (i != -1)
       {
-        paramBundle = (Button)NearbyProfileDisplayTribePanel.a(this.a).getChildAt(1).findViewById(2131365229);
-        paramBundle.setTextColor(this.a.a.getResources().getColor(2131494231));
-        paramBundle.setBackgroundDrawable(this.a.a.getResources().getDrawable(2130838521));
-        return;
-        QQToast.a(this.a.a, 1, "操作失败，请稍后重试", 1).a();
-        return;
-        QQToast.a(this.a.a, 1, "操作失败，请稍后重试", 1).a();
+        this.a.jdField_a_of_type_Int = i;
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
       }
+      QualityReporter.b();
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a(paramInt1, this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a());
+        this.a.a();
+        if (StoryPlayController.a(this.a))
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setCurrentItem(this.a.jdField_a_of_type_Int, false);
+          StoryPlayController.a(this.a, false);
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.notifyDataSetChanged();
+        StoryPlayController.b(this.a, this.a.jdField_a_of_type_Int);
+        return;
+        paramInt2 += 1;
+        break;
+        if (paramInt1 == 0)
+        {
+          paramInt2 = this.a.jdField_a_of_type_Int;
+          this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a().size();
+        }
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a(paramInt1, this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a());
+      this.a.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.notifyDataSetChanged();
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.setCurrentItem(this.a.jdField_a_of_type_Int, false);
       return;
-      paramBoolean = false;
-      break;
+      label661:
+      paramInt2 = -1;
+    }
+  }
+  
+  public void a(VideoData paramVideoData)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayController", 2, "onFillData ! data is: " + paramVideoData.toString() + " " + paramVideoData.c);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilList.size() == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_AndroidUtilSparseArray.size() == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.b.size() == 1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoPlayController", 2, "onFillData ! suc");
+      }
+      paramVideoData.c = ((VideoData)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilList.get(0)).c;
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilList.set(0, paramVideoData);
+      ((VideoPlayerPagerAdapter.VideoViewHolder)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_AndroidUtilSparseArray.get(0)).jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
+      VideoPlayerPagerAdapter.VideoViewHolder localVideoViewHolder = (VideoPlayerPagerAdapter.VideoViewHolder)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.jdField_a_of_type_AndroidUtilSparseArray.get(0);
+      ShortVideoCommentsView localShortVideoCommentsView = (ShortVideoCommentsView)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.b.get(0);
+      localShortVideoCommentsView.setVideoData(paramVideoData);
+      localShortVideoCommentsView.d();
+      localShortVideoCommentsView.h();
+      localVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setCurrentAnchorUin(paramVideoData.jdField_a_of_type_Long);
+      this.a.a(localVideoViewHolder, paramVideoData, false, localShortVideoCommentsView, false);
     }
   }
 }

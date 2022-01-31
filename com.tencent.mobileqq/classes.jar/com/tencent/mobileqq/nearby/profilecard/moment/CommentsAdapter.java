@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import aewr;
+import afjx;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -53,7 +53,7 @@ public class CommentsAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int i = 0;
-    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970435, paramViewGroup, false);
+    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970476, paramViewGroup, false);
     CommentInfo localCommentInfo = (CommentInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     Object localObject = localCommentInfo.a;
     paramView = (View)localObject;
@@ -105,7 +105,7 @@ public class CommentsAdapter
     }
     localTextView.setText(localSpannableStringBuilder);
     localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    localTextView.setOnClickListener(new aewr(this, paramViewGroup));
+    localTextView.setOnClickListener(new afjx(this, paramViewGroup));
     return localTextView;
   }
 }

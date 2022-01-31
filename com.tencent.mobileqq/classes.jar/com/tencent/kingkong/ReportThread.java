@@ -8,14 +8,14 @@ import android.os.Message;
 import android.os.Process;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import rab;
+import rcr;
 
 public class ReportThread
   extends Thread
 {
   public Looper a;
   public Object a;
-  public rab a;
+  public rcr a;
   
   public ReportThread()
   {
@@ -288,21 +288,21 @@ public class ReportThread
   
   public void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if (this.jdField_a_of_type_Rab == null) {
+    if (this.jdField_a_of_type_Rcr == null) {
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_Rab != null)
+      if (this.jdField_a_of_type_Rcr != null)
       {
-        Message localMessage = this.jdField_a_of_type_Rab.obtainMessage();
+        Message localMessage = this.jdField_a_of_type_Rcr.obtainMessage();
         Bundle localBundle = new Bundle();
         localBundle.putInt("KEY_TYPE", paramInt1);
         localBundle.putInt("KEY_INDEX", paramInt2);
         localBundle.putInt("KEY_SUBINDEX", paramInt3);
         localBundle.putString("KEY_EXTRAINFO", paramString);
         localMessage.setData(localBundle);
-        this.jdField_a_of_type_Rab.sendMessage(localMessage);
+        this.jdField_a_of_type_Rcr.sendMessage(localMessage);
       }
       return;
     }
@@ -311,7 +311,7 @@ public class ReportThread
   public void run()
   {
     Looper.prepare();
-    this.jdField_a_of_type_Rab = new rab();
+    this.jdField_a_of_type_Rcr = new rcr();
     this.jdField_a_of_type_AndroidOsLooper = Looper.myLooper();
     Process.setThreadPriority(11);
     Common.Log.a("KingKongReportThread", "ReportThread " + Process.myTid() + " priority : " + Process.getThreadPriority(Process.myTid()));
@@ -320,7 +320,7 @@ public class ReportThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.kingkong.ReportThread
  * JD-Core Version:    0.7.0.1
  */

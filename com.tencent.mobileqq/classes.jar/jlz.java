@@ -1,31 +1,44 @@
-import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
-import com.tencent.av.service.AVRedPacketConfig;
-import com.tencent.av.service.IAVRedPacketCallback;
-import com.tencent.mobileqq.armap.ResDownloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
-public class jlz
+class jlz
   implements Runnable
 {
-  public jlz(AVRedPacketConfigManager paramAVRedPacketConfigManager, IAVRedPacketCallback paramIAVRedPacketCallback) {}
+  jlz(jly paramjly, String paramString) {}
   
   public void run()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("downloadRes, threadName[").append(Thread.currentThread().getName()).append("], threadId[").append(Thread.currentThread().getId()).append("], resDownloadManager[");
-    if (this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.w("AVRedPacketConfigManger", 1, bool + "]");
-      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback = this.jdField_a_of_type_ComTencentAvServiceIAVRedPacketCallback;
-      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.c = false;
-      if (this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager != null)
-      {
-        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resMD5, ".zip", true, 4, Integer.valueOf(1));
-        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResMd5, ".zip", true, 4, Integer.valueOf(2));
-      }
+    if ((this.jdField_a_of_type_Jly.a.getActivity() == null) || (this.jdField_a_of_type_Jly.a.getActivity().isFinishing())) {
       return;
     }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      RedPacketShareFragment.a(this.jdField_a_of_type_Jly.a);
+      QRUtils.a(1, 2131430004);
+      return;
+    }
+    this.jdField_a_of_type_Jly.a.a(false);
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("forward_type", 1);
+    ((Bundle)localObject).putString("forward_filepath", this.jdField_a_of_type_JavaLangString);
+    ((Bundle)localObject).putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
+    ((Bundle)localObject).putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
+    ((Bundle)localObject).putString("forward_extra", this.jdField_a_of_type_JavaLangString);
+    ((Bundle)localObject).putInt(ForwardBaseOption.e, 1);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("isFromShare", false);
+    localIntent.putExtras((Bundle)localObject);
+    localObject = new ForwardFileInfo();
+    ((ForwardFileInfo)localObject).b(10012);
+    localIntent.putExtra("fileinfo", (Parcelable)localObject);
+    ForwardBaseOption.a(this.jdField_a_of_type_Jly.a.getActivity(), localIntent, 21);
   }
 }
 

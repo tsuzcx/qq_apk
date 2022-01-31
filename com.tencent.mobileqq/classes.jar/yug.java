@@ -1,17 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.widget.navbar.OnItemSelectListener;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper;
 
 public class yug
-  implements OnItemSelectListener
+  implements Runnable
 {
-  public yug(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
+  public yug(ApolloVoiceDIYHelper paramApolloVoiceDIYHelper, ApolloTextureView paramApolloTextureView, double paramDouble) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt == 1) {
-      this.a.getActivity().finish();
+    ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender();
+    if ((localApolloRender != null) && (localApolloRender.getSavaWrapper() != null)) {
+      localApolloRender.getSavaWrapper().a(this.jdField_a_of_type_Double);
     }
   }
 }

@@ -1,21 +1,46 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
+import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class mzw
-  implements UploadObject.UploadFinishListener
+  extends SimpleJob
 {
-  public mzw(StoryVideoUploadTask paramStoryVideoUploadTask) {}
+  public mzw(DownloadUrlManager paramDownloadUrlManager, String paramString, int paramInt) {}
   
-  public void a(UploadObject paramUploadObject)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    ((StoryVideoTaskInfo)this.a.a).j = ((ImageFileObject)paramUploadObject).b;
-    SLog.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((StoryVideoTaskInfo)this.a.a).j);
-    this.a.a(1, new ErrorMessage());
+    paramJobContext = DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    long l1;
+    if (paramJobContext != null)
+    {
+      paramVarArgs = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null) {
+        break label132;
+      }
+      l1 = 0L;
+      if (paramJobContext.updatedMs <= 0L) {
+        break label141;
+      }
+    }
+    label132:
+    label141:
+    for (long l2 = paramJobContext.updatedMs;; l2 = System.currentTimeMillis())
+    {
+      int i = paramJobContext.compressLevel;
+      StoryReportor.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(i), this.jdField_a_of_type_JavaLangString });
+      SLog.a("Q.qqstory.DownloadUrlManager", "report url level , vid = %s , compress level = %d , cms = %d , dms = %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2));
+      return null;
+      l1 = paramVarArgs.mCreateTime;
+      break;
+    }
   }
 }
 

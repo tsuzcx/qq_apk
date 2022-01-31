@@ -1,46 +1,51 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.CountDownProgressBar;
+import com.tencent.widget.CountDownProgressBar.OnCountDownLinstener;
 
-class amaw
-  implements AsyncBack
+public class amaw
+  extends Handler
 {
-  amaw(amav paramamav) {}
+  public amaw(CountDownProgressBar paramCountDownProgressBar) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.e("QReaderHelper", 2, "Load offline package finish, code = " + paramInt);
-    }
-    switch (paramInt)
+    switch (paramMessage.what)
     {
     }
-    for (int i = 0;; i = 1)
+    do
     {
-      paramString = this.a.a.getApplication().getSharedPreferences("qr_offline_fail", 0);
-      int k = paramString.getInt("offlinePkgDownloadFailCount", 0);
-      if (i != 0) {
-        j = k + 1;
-      }
-      if (j != k) {
-        paramString.edit().putInt("offlinePkgDownloadFailCount", j).commit();
-      }
-      if ((i != 0) && (QLog.isColorLevel())) {
-        QLog.e("QReaderHelper", 2, "offline package update failed:" + paramInt);
-      }
       return;
+      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
+      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      return;
+      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
+      if (CountDownProgressBar.a(this.a) <= (float)CountDownProgressBar.a(this.a)) {
+        break;
+      }
+      CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+      this.a.invalidate();
+    } while (CountDownProgressBar.a(this.a) == null);
+    CountDownProgressBar.a(this.a).a();
+    return;
+    CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+    if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
+    {
+      CountDownProgressBar.b(this.a, 0.0F);
+      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) - 1);
+    }
+    for (;;)
+    {
+      this.a.invalidate();
+      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      return;
+      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) + CountDownProgressBar.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amaw
  * JD-Core Version:    0.7.0.1
  */

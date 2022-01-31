@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ahlr
+public class ahlr
   implements Runnable
 {
-  public ahlr(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
+  public ahlr(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
   public void run()
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_short_video_");
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onCaptureVideoFilterRefresh");
+    }
+    this.a.c();
   }
 }
 

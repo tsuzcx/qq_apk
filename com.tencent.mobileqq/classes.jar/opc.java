@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
-import com.tencent.biz.qqstory.view.widget.InnerListView.OnItemLongClickListener;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class opc
-  implements View.OnLongClickListener
+class opc
+  implements Runnable
 {
-  public opc(InnerListView paramInnerListView, int paramInt) {}
+  opc(opb paramopb) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      return InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", 2, "ThreadName:" + Thread.currentThread().getName());
     }
-    return false;
+    this.a.a.a();
   }
 }
 

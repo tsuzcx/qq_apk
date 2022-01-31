@@ -1,30 +1,22 @@
-import com.tencent.biz.qqstory.base.preload.cachecleaner.AbsCleanStep;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.AbsCleanStep.CleanContext;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.CacheCleaner;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.MyVideoCleanStep;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.TimeCleanStep;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.UploadTmpVideoCleanStep;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.biz.pubaccount.PublicAccountArticleObserver;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.PhotoCollectionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class myx
   implements Runnable
 {
-  public myx(CacheCleaner paramCacheCleaner) {}
+  public myx(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo) {}
   
   public void run()
   {
-    SLog.d("Q.qqstory.cleaner:CacheCleaner", "start clean cache");
-    Object localObject = new TimeCleanStep(CacheCleaner.a);
-    CapacityCleanStep localCapacityCleanStep = new CapacityCleanStep(CacheCleaner.b);
-    MyVideoCleanStep localMyVideoCleanStep = new MyVideoCleanStep(CacheCleaner.c);
-    UploadTmpVideoCleanStep localUploadTmpVideoCleanStep = new UploadTmpVideoCleanStep(CacheCleaner.d);
-    localCapacityCleanStep.a(localMyVideoCleanStep).a(localUploadTmpVideoCleanStep).a((AbsCleanStep)localObject);
-    localObject = new AbsCleanStep.CleanContext();
-    ((AbsCleanStep.CleanContext)localObject).jdField_a_of_type_Boolean = FileUtils.a();
-    ((AbsCleanStep.CleanContext)localObject).jdField_a_of_type_Long = System.currentTimeMillis();
-    localCapacityCleanStep.a((AbsCleanStep.CleanContext)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d(PublicAccountImageCollectionPreloadManager.a(), 2, "notifyUIToRefresh articleId=" + this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionUtils$PhotoCollectionInfo.a);
+    }
+    if (PublicAccountImageCollectionPreloadManager.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager) != null) {
+      PublicAccountImageCollectionPreloadManager.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager).a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionUtils$PhotoCollectionInfo);
+    }
+    PublicAccountImageCollectionPreloadManager.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager, null);
   }
 }
 

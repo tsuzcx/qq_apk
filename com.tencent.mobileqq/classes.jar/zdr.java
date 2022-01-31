@@ -1,21 +1,43 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
 
 public class zdr
-  extends SendMessageHandler.SendMessageRunnable
+  implements View.OnTouchListener
 {
-  public zdr(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, BusinessObserver paramBusinessObserver, boolean paramBoolean) {}
+  public zdr(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "--->sendRichTextMessageWith_MR : resend message");
+    switch (paramMotionEvent.getAction())
+    {
     }
-    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq, this.c, this.b, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, this.jdField_a_of_type_Boolean);
+    do
+    {
+      do
+      {
+        return false;
+      } while (!SubAccountControll.c(this.a.getActivity().app, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
+      return false;
+      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
+      }
+    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    return false;
+    FrameHelperActivity.a(this.a);
+    return false;
   }
 }
 

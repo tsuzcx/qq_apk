@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
+import cooperation.qqpim.QQPimTipsInfo;
+import cooperation.qqpim.QQPimTipsInfoHelper;
 
 public class wtz
-  implements AbsListView.OnScrollListener
+  implements QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack
 {
-  public wtz(PhotoListActivity paramPhotoListActivity) {}
+  public wtz(ContactListView paramContactListView) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(QQPimTipsInfo paramQQPimTipsInfo)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView != null) && (this.a.jdField_a_of_type_Wur != null) && (this.a.c != null)) {
-      PhotoListActivity.a(this.a);
+    if (paramQQPimTipsInfo == null) {
+      return;
     }
+    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
+    QQPimTipsInfoHelper.b(this.a.getContext(), paramQQPimTipsInfo);
+    Message localMessage = new Message();
+    localMessage.what = 6;
+    localMessage.obj = paramQQPimTipsInfo;
+    this.a.a.sendMessage(localMessage);
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

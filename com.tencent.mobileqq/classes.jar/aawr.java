@@ -1,25 +1,25 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ark.ArkAiInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppViewByIntentCallback;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
+import java.util.ArrayList;
 
-public class aawr
-  implements Runnable
+class aawr
+  implements ArkLocalAppMgr.IGetAppViewByIntentCallback
 {
-  public aawr(ShopScanActivity paramShopScanActivity, ARRenderMangerInnerCallback paramARRenderMangerInnerCallback, ArVideoResourceInfo paramArVideoResourceInfo) {}
+  aawr(aawq paramaawq, ArkAiInfo paramArkAiInfo, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, int paramInt1, int paramInt2) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    ShopScanActivity.c(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_c_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new aaws(this));
-    if (QLog.isColorLevel()) {
-      QLog.i("ShopScanActivity", 2, "onMultiARAnimationInteraction 请点击屏幕进入下一动画片段！");
+    if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4)))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d = paramString3;
+      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.b = paramString4;
+      this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo.a.add(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo);
+    }
+    if ((this.jdField_a_of_type_Int == this.b - 1) && (this.jdField_a_of_type_Aawq.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler != null)) {
+      this.jdField_a_of_type_Aawq.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler.a(this.jdField_a_of_type_Aawq.a.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aawq.a.a.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo, false);
     }
   }
 }

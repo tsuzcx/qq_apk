@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class ansv
-  implements Runnable
+  implements EditVideoPoiPickerCallback
 {
-  public ansv(ShortVideoPlayActivity paramShortVideoPlayActivity, String paramString) {}
+  public ansv(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void run()
+  public void a()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity, 232, null, this.jdField_a_of_type_JavaLangString, new answ(this), null);
-    ShortVideoPlayActivity.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity, localQQCustomDialog);
+    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
+  }
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
+  {
+    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
+    this.a.a.setLocation(paramTroopBarPOI);
+    if (paramTroopBarPOI != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.b = bool;
+      return;
+    }
   }
 }
 

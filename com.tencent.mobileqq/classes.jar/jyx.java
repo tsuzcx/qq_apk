@@ -1,26 +1,16 @@
-import android.content.IntentFilter;
-import com.tencent.av.ui.PSTNC2CActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.av.ui.QAVPtvTemplateAdapter;
 
 public class jyx
-  implements Runnable
+  implements View.OnLayoutChangeListener
 {
-  public jyx(PSTNC2CActivity paramPSTNC2CActivity) {}
+  public jyx(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter) {}
   
-  public void run()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    try
-    {
-      this.a.a = new jzj(this.a);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.a.registerReceiver(this.a.a, localIntentFilter);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PSTNC2CActivity", 2, "Exception", localException);
+    if (paramInt4 - paramInt2 != paramInt8 - paramInt6) {
+      this.a.notifyDataSetChanged();
     }
   }
 }

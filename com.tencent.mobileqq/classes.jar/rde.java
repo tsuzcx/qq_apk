@@ -1,33 +1,25 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import java.util.HashMap;
+import com.tencent.litetransfersdk.FTNInfo;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.litetransfersdk.NFCInfo;
+import com.tencent.litetransfersdk.Session;
 
-class rde
+public class rde
   implements Runnable
 {
-  rde(rdd paramrdd, boolean paramBoolean, String paramString, Bitmap paramBitmap, Drawable paramDrawable) {}
+  public rde(LiteTransferWrapper paramLiteTransferWrapper, Session[] paramArrayOfSession, NFCInfo[] paramArrayOfNFCInfo, FTNInfo[] paramArrayOfFTNInfo, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L)
     {
-      this.jdField_a_of_type_Rdd.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      AccountManageActivity.b(this.jdField_a_of_type_Rdd.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).put(this.jdField_a_of_type_Rdd.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetProxyToJni();
+      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.RecvGroupToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkSession, this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ArrayOfComTencentLitetransfersdkFTNInfo, this.jdField_a_of_type_Boolean);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_Rdd.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      return;
-    }
-    this.jdField_a_of_type_Rdd.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rde
  * JD-Core Version:    0.7.0.1
  */

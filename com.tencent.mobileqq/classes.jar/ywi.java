@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.script.SpriteScriptManager;
-import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
 
 public class ywi
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public ywi(ChatApolloViewListener paramChatApolloViewListener) {}
+  public ywi(ApolloGameShare paramApolloGameShare, String paramString) {}
   
-  public void run()
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.a == null) {}
-    BaseChatPie localBaseChatPie;
-    do
-    {
-      return;
-      localBaseChatPie = (BaseChatPie)this.a.a.get();
-    } while ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
-    ((SpriteScriptManager)localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(248)).a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    paramAdapterView = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare.a.obtainMessage();
+    paramAdapterView.what = ((int)paramLong);
+    paramAdapterView.obj = this.jdField_a_of_type_JavaLangString;
+    paramAdapterView.sendToTarget();
   }
 }
 

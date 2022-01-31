@@ -1,40 +1,33 @@
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
-import com.tencent.mobileqq.profile.vote.VoteHelper;
+import android.widget.TextView;
+import com.tencent.mobileqq.olympic.activity.ARTipsCircleProgress;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
 
 public class ageu
-  implements NearbyLikeLimitManager.onDoVoteListener
 {
-  public ageu(VoteHelper paramVoteHelper, CardProfile paramCardProfile, ImageView paramImageView) {}
+  public View a;
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public ARTipsCircleProgress a;
+  public ViewGroup b;
+  public TextView b;
+  public ViewGroup c;
+  public TextView c;
+  public ViewGroup d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
   
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile, this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
-    {
-      str1 = "1";
-      if (!paramBoolean) {
-        break label69;
-      }
-    }
-    label69:
-    for (String str2 = "2";; str2 = "1")
-    {
-      NearbyLikeLimitManager.a(localQQAppInterface, "detail_like", paramString, str1, "", "", str2);
-      return;
-      str1 = "2";
-      break;
-    }
-  }
+  private ageu(ARTipsManager paramARTipsManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ageu
  * JD-Core Version:    0.7.0.1
  */

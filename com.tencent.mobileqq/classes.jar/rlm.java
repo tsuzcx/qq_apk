@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 
 public class rlm
   implements Runnable
 {
-  public rlm(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public rlm(AssistantSettingActivity paramAssistantSettingActivity) {}
   
   public void run()
   {
-    try
-    {
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (AuthDevVerifyCodeActivity.a(this.a).isShowing()))
-      {
-        AuthDevVerifyCodeActivity.a(this.a).dismiss();
-        AuthDevVerifyCodeActivity.a(this.a).cancel();
-      }
-      AuthDevVerifyCodeActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    Card localCard = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
+    this.a.a.sendMessage(this.a.a.obtainMessage(2, Boolean.valueOf(localCard.medalSwitchDisable)));
   }
 }
 

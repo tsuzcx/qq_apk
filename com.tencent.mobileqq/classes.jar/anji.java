@@ -1,25 +1,53 @@
-import android.view.animation.Animation;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleBtnOperationHelper;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class anji
-  implements Animation.AnimationListener
+public class anji
+  implements Runnable
 {
-  anji(anjh paramanjh) {}
+  public anji(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper != null) {
-      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper.a(null);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a.setAnimationListener(null);
+      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.setAnimationListener(null);
+      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.cancel();
+      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a.cancel();
+      QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).clearAnimation();
+      QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(8);
+      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.i = false;
+      return;
+    }
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.reset();
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a.reset();
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.i = true;
+    QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(0);
+    QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setText(2131439101);
+    AlphaAnimation localAlphaAnimation = this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a;
+    Object localObject;
+    if (this.b)
+    {
+      localObject = QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit);
+      localAlphaAnimation.setAnimationListener((Animation.AnimationListener)localObject);
+      localObject = this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a;
+      if (!this.b) {
+        break label224;
+      }
+    }
+    label224:
+    for (long l = 2000L;; l = 3000L)
+    {
+      ((AlphaAnimation)localObject).setStartOffset(l);
+      QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setAnimation(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a);
+      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a.startNow();
+      return;
+      localObject = QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit);
+      break;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

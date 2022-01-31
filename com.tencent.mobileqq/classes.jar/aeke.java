@@ -1,21 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.media.MediaPlayer;
+import android.os.Looper;
+import com.tencent.mobileqq.music.SongInfo;
 
 public class aeke
-  implements View.OnTouchListener
 {
-  public aeke(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return paramMotionEvent.getAction() == 2;
-  }
+  public MediaPlayer a;
+  public Looper a;
+  public SongInfo a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeke
  * JD-Core Version:    0.7.0.1
  */

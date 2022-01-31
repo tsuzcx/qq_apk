@@ -1,25 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
 import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
 
 public class mpg
-  extends TimerTask
+  implements Runnable
 {
-  public mpg(ReadInJoyGlobalReporter paramReadInJoyGlobalReporter) {}
+  public mpg(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager, boolean paramBoolean, FastWebVideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyGlobalReporter", 2, "TimerTask heart = " + NetConnInfoCenter.getServerTimeMillis());
-    }
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    if (this.jdField_a_of_type_Boolean)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      this.a.b(localQQAppInterface, NetConnInfoCenter.getServerTimeMillis());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager.a(1);
+      if (FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager).a()) {
+        break label76;
+      }
+      FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager).a();
     }
+    label76:
+    VideoPlayerWrapper localVideoPlayerWrapper;
+    do
+    {
+      return;
+      FastWebVideoFeedsPlayManager.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager, true);
+      if (FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager) == null) {
+        break;
+      }
+      FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager).sendEmptyMessageDelayed(-1, 1200L);
+      break;
+      localVideoPlayerWrapper = FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager);
+      FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager, FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoPlayParam));
+      if (FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager) != null) {
+        break label128;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "playVideo() ERROR, mUIHandler==null");
+    return;
+    label128:
+    FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager).post(new mph(this, localVideoPlayerWrapper));
   }
 }
 

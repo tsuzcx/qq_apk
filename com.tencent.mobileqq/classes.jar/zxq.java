@@ -1,45 +1,35 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.DownloadInfo;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.mobileqq.ar.ARMusicController;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
 public class zxq
-  implements ARPreSoResourceDownload.ARResourceDownloadCallback
+  implements SoundPool.OnLoadCompleteListener
 {
-  public zxq(ArConfigService paramArConfigService) {}
+  public zxq(ARMusicController paramARMusicController) {}
   
-  public void a() {}
-  
-  public void a(long paramLong1, long paramLong2)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    ArConfigService.c(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a)) / 3;
-    if (!ArConfigService.d(this.a)) {
-      ArConfigService.a(this.a).post(new zxr(this, i));
-    }
-  }
-  
-  public void a(boolean paramBoolean, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
+    if (paramInt2 != 0) {}
+    try
     {
-      ArConfigService.d(this.a, true);
-      if ((ArConfigService.e(this.a)) && (ArConfigService.f(this.a)) && (ArConfigService.g(this.a))) {
-        ArConfigService.a(this.a).post(new zxs(this));
-      }
-    }
-    while (ArConfigService.d(this.a)) {
+      QLog.e("ARMusicController", 2, "load fire music failed. id=" + paramInt1);
       return;
     }
-    ArConfigService.a(this.a).post(new zxt(this));
-    ArConfigService.a(this.a, true);
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. id=" + paramInt1);
+    }
+    ARMusicController.a(this.a).add(Integer.valueOf(paramInt1));
+    if (ARMusicController.b(this.a).contains(Integer.valueOf(paramInt1)))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
+    }
   }
 }
 

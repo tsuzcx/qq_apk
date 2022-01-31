@@ -1,19 +1,34 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
+import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nfv
-  extends EncryptUrlJob
+  implements Runnable
 {
-  public nfv(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareQZoneData paramShareQZoneData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public nfv(ReportEvilToXinanHandler paramReportEvilToXinanHandler, String paramString) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.e = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    try
+    {
+      i = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("rtn_code");
+      if (i == 0)
+      {
+        QQToast.a(BaseApplication.getContext(), "举报成功，客服人员将尽快处理", 0).a();
+        return;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+        int i = -1;
+      }
+      QQToast.a(BaseApplication.getContext(), "举报失败，请稍后重试", 0).a();
+    }
   }
 }
 

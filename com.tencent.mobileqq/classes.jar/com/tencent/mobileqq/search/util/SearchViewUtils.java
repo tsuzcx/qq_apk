@@ -36,15 +36,15 @@ public class SearchViewUtils
     if ((paramView instanceof LinearLayout))
     {
       localLinearLayout = (LinearLayout)paramView;
-      localLinearLayout.removeView(localLinearLayout.findViewById(2131362469));
-      localLinearLayout.removeView(localLinearLayout.findViewById(2131362470));
+      localLinearLayout.removeView(localLinearLayout.findViewById(2131362473));
+      localLinearLayout.removeView(localLinearLayout.findViewById(2131362474));
       if (localLinearLayout.getChildCount() == 1)
       {
         localContext = localLinearLayout.getContext();
         localView = localLinearLayout.getChildAt(0);
         localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-        j = localContext.getResources().getDimensionPixelSize(2131559429);
-        k = localContext.getResources().getDimensionPixelSize(2131559430);
+        j = localContext.getResources().getDimensionPixelSize(2131559431);
+        k = localContext.getResources().getDimensionPixelSize(2131559432);
         switch (paramInt2)
         {
         default: 
@@ -56,7 +56,7 @@ public class SearchViewUtils
             if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
               break label390;
             }
-            localLinearLayout.setBackgroundColor(paramView.getResources().getColor(2131492947));
+            localLinearLayout.setBackgroundColor(paramView.getResources().getColor(2131492948));
           }
           break;
         }
@@ -67,14 +67,14 @@ public class SearchViewUtils
       if (NetSearchTemplateDividerItem.a(paramInt3))
       {
         paramView = new NetSearchTemplateDividerView(localContext, paramInt3).a();
-        paramView.setId(2131362470);
+        paramView.setId(2131362474);
         localLinearLayout.addView(paramView, 0);
       }
       if (((paramInt2 == 0) || (paramInt1 == 1)) && (paramBoolean) && (i != 1))
       {
         paramView = new View(localLinearLayout.getContext());
-        paramView.setId(2131362469);
-        paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, localLinearLayout.getContext().getResources().getDimensionPixelSize(2131559425)));
+        paramView.setId(2131362473);
+        paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, localLinearLayout.getContext().getResources().getDimensionPixelSize(2131559427)));
         localLinearLayout.addView(paramView, 0);
         if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
           break label407;
@@ -94,7 +94,7 @@ public class SearchViewUtils
       localView.setPadding(localView.getPaddingLeft(), k, localView.getPaddingRight(), k);
       break label167;
       label390:
-      localLinearLayout.setBackgroundColor(paramView.getResources().getColor(2131492968));
+      localLinearLayout.setBackgroundColor(paramView.getResources().getColor(2131492969));
     }
     label407:
     paramView.setBackgroundColor(Color.parseColor("#f2f2f2"));

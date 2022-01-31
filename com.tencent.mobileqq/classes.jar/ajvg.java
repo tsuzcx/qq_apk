@@ -1,22 +1,32 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
+import com.tencent.mobileqq.util.FaceDrawable.OnLoadingStateChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajvg
-  implements Runnable
+class ajvg
+  implements FaceDrawable.OnLoadingStateChangeListener
 {
-  public ajvg(HealthStepCounterPlugin paramHealthStepCounterPlugin) {}
+  ajvg(ajvd paramajvd) {}
   
-  public void run()
+  public void onLoadingStateChanged(int paramInt1, int paramInt2)
   {
-    QQToast localQQToast = new QQToast(this.a.mRuntime.a().getContext());
-    QQToast.a(this.a.mRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).b((int)(localQQToast.b() * 2.5D));
+    if ((paramInt1 == 0) && (paramInt2 == 1) && ((this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a instanceof TroopGiftToPersonalSurfaceView)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopGiftAnimationController", 2, "onLoadingStateChanged: curState = " + paramInt2);
+      }
+      Bitmap localBitmap = TroopUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.receiverUin), null));
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a.b(new ajvh(this, localBitmap));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
+import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
+import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nbh
-  extends Job
+  implements UploadObject.UploadFinishListener
 {
-  public nbh(DefaultPlayerVideoListSynchronizer paramDefaultPlayerVideoListSynchronizer, int paramInt) {}
+  public nbh(StoryVideoUploadTask paramStoryVideoUploadTask) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void a(UploadObject paramUploadObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer.b(this.jdField_a_of_type_Int);
-    return null;
+    ((StoryVideoTaskInfo)this.a.a).j = ((ImageFileObject)paramUploadObject).b;
+    SLog.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((StoryVideoTaskInfo)this.a.a).j);
+    this.a.a(1, new ErrorMessage());
   }
 }
 

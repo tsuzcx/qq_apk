@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.armap;
 
-import aavo;
-import aavp;
-import aavq;
-import aavr;
-import aavs;
-import aavt;
-import aavu;
+import abcp;
+import abcq;
+import abcr;
+import abcs;
+import abct;
+import abcu;
+import abcv;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.res.Resources;
@@ -105,8 +105,8 @@ public class ConversationPullDownActiveBase
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new aavr(this, paramView2, paramView1, paramView3));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new aavs(this, paramView3);
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new abcs(this, paramView2, paramView1, paramView3));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new abct(this, paramView3);
     }
     if ((this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator != null) && (this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.isRunning()))
     {
@@ -134,8 +134,8 @@ public class ConversationPullDownActiveBase
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new aavt(this, paramView2, paramView1, paramView3));
-      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new aavu(this, paramView3, paramView1);
+      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new abcu(this, paramView2, paramView1, paramView3));
+      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new abcv(this, paramView3, paramView1);
     }
     if ((this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator != null) && (this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.isRunning()))
     {
@@ -213,9 +213,9 @@ public class ConversationPullDownActiveBase
       do
       {
         return;
-        localView1 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b();
-        localView2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.d();
-        localView3 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c();
+        localView1 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
+        localView2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c();
+        localView3 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b();
         if ((localView1 != null) && (localView2 != null) && (localView3 != null)) {
           break;
         }
@@ -290,9 +290,9 @@ public class ConversationPullDownActiveBase
         {
           return;
         } while (!this.j);
-        localView1 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b();
-        localView2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.d();
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c();
+        localView1 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
+        localView2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c();
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b();
         if ((localView1 != null) && (localView2 != null) && (localObject != null)) {
           break;
         }
@@ -316,7 +316,7 @@ public class ConversationPullDownActiveBase
   public boolean c()
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363949));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363973));
     }
     if (QLog.isColorLevel()) {
       QLog.d("ConversationPullDownActiveBase", 2, "startGestureGuide mIsShowGesture=" + this.i + "  this=" + this);
@@ -442,7 +442,7 @@ public class ConversationPullDownActiveBase
   public void n()
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363949));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363973));
     }
     if (QLog.isColorLevel()) {
       QLog.d("ConversationPullDownActiveBase", 2, "stopGestureGuide");
@@ -455,7 +455,7 @@ public class ConversationPullDownActiveBase
   public void o()
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363949));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363973));
     }
     if (QLog.isColorLevel()) {
       QLog.d("ConversationPullDownActiveBase", 2, "doGestureGuide  this=" + this);
@@ -465,18 +465,18 @@ public class ConversationPullDownActiveBase
     localAlphaAnimation.setStartOffset(1L);
     localAlphaAnimation.setDuration(200L);
     localAlphaAnimation.setInterpolator(new AccelerateInterpolator());
-    localAlphaAnimation.setAnimationListener(new aavo(this));
-    int m = (int)this.jdField_a_of_type_AndroidViewViewGroup.getResources().getDimension(2131559586);
+    localAlphaAnimation.setAnimationListener(new abcp(this));
+    int m = (int)this.jdField_a_of_type_AndroidViewViewGroup.getResources().getDimension(2131559600);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0, 0.0F, 0, 0.0F, 0, -this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.b(), 0, m + -this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.b());
     localTranslateAnimation.setDuration(1500L);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new aavp(this));
+    localTranslateAnimation.setAnimationListener(new abcq(this));
     localAnimationSet.addAnimation(localTranslateAnimation);
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(500L);
     localAlphaAnimation.setStartOffset(1000L);
-    localAlphaAnimation.setAnimationListener(new aavq(this));
+    localAlphaAnimation.setAnimationListener(new abcr(this));
     localAnimationSet.addAnimation(localAlphaAnimation);
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAnimationSet);
   }
@@ -487,8 +487,8 @@ public class ConversationPullDownActiveBase
     if (QLog.isColorLevel()) {
       QLog.d("ConversationPullDownActiveBase", 2, "resetTitle  mTitleIsVisible:" + this.j + "  mTitleBarOffset:" + this.jdField_g_of_type_Int);
     }
-    View localView1 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b();
-    View localView2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.d();
+    View localView1 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
+    View localView2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c();
     if ((localView1 == null) || (localView2 == null))
     {
       if (QLog.isColorLevel()) {

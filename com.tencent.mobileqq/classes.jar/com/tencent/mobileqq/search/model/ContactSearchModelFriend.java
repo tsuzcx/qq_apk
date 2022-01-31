@@ -268,7 +268,7 @@ public class ContactSearchModelFriend
       BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
       if (((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin) != null)
       {
-        QQToast.a(localBaseActivity, localBaseActivity.getString(2131436881), 0).b(localBaseActivity.getTitleBarHeight());
+        QQToast.a(localBaseActivity, localBaseActivity.getString(2131436898), 0).b(localBaseActivity.getTitleBarHeight());
         return;
       }
     }

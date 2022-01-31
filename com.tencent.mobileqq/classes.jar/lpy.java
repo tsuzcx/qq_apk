@@ -1,23 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class lpy
   implements Runnable
 {
-  public lpy(ArticleInfoModule paramArticleInfoModule, int paramInt1, int paramInt2) {}
+  public lpy(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
-    boolean bool = true;
-    ReadInJoyLogicEngineEventDispatcher localReadInJoyLogicEngineEventDispatcher = ReadInJoyLogicEngineEventDispatcher.a();
-    long l = this.jdField_a_of_type_Int;
-    if (this.b == 1) {}
-    for (;;)
-    {
-      localReadInJoyLogicEngineEventDispatcher.a(l, bool);
-      return;
-      bool = false;
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

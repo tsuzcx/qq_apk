@@ -1,25 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.RotateAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
 
-public class uow
-  implements DialogInterface.OnClickListener
+class uow
+  implements Action.OnActionEndListener
 {
-  public uow(DoodlePanel paramDoodlePanel) {}
+  uow(uos paramuos) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    if (DoodlePanel.a(this.a) != null) {
-      DoodlePanel.a(this.a).a(false, false);
-    }
-    DoodlePanel.a(this.a);
+    RotateAction localRotateAction = new RotateAction(3000, 360, 0);
+    localRotateAction.a = true;
+    this.a.a.g.a(new Action[] { localRotateAction });
   }
 }
 

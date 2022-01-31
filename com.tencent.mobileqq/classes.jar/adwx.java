@@ -1,37 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.jsp.TroopApiPlugin;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class adwx
-  extends BroadcastReceiver
+  implements TroopMemberApiClient.Callback
 {
-  public adwx(QQPlayerService paramQQPlayerService) {}
+  public adwx(TroopApiPlugin paramTroopApiPlugin) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(Bundle paramBundle)
   {
-    if (QQPlayerService.c(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQPlayerService", 2, "received broadcast after service destroy");
-      }
-    }
-    do
+    int i = paramBundle.getInt("state", 0);
+    String str = paramBundle.getString("version");
+    long l = paramBundle.getLong("size", 0L);
+    try
     {
+      paramBundle = new JSONObject();
+      paramBundle.put("status", i);
+      paramBundle.put("versionCode", str);
+      paramBundle.put("fileSize", l);
+      this.a.callJs(this.a.d, new String[] { paramBundle.toString() });
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
-      }
-    } while ((!"com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) && (!"qqplayer_exit_action".equals(paramIntent.getAction())));
-    if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
-      this.a.a.b = true;
     }
-    QQPlayerService.c(this.a.getApplicationContext());
+    catch (Exception paramBundle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("TroopApiPlugin", 2, "previewRewardVideo exp", paramBundle);
+      }
+      this.a.callJs(this.a.d, new String[] { "{\"result\":-10,\"message\":\"request fail\"}" });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adwx
  * JD-Core Version:    0.7.0.1
  */

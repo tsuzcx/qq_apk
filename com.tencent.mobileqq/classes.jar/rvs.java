@@ -1,16 +1,21 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class rvs
+public final class rvs
   implements DialogInterface.OnClickListener
 {
-  public rvs(ChatHistory paramChatHistory) {}
+  public rvs(ChatActivityUtils.StartVideoListener paramStartVideoListener, QQAppInterface paramQQAppInterface) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.post(new rvt(this), 8, null, false);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006405", "0X8006405", 0, 0, "", "", "", "");
   }
 }
 

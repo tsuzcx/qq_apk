@@ -114,7 +114,7 @@ public class DeviceGroupChatMsgProcessor
     localMessageForDevPtt.senderuin = Long.toString(paramLong1);
     localMessageForDevPtt.frienduin = Long.toString(paramLong2);
     localMessageForDevPtt.time = MessageCache.a();
-    localMessageForDevPtt.msg = (ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForDevPtt.senderuin, true) + ": " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435553));
+    localMessageForDevPtt.msg = (ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForDevPtt.senderuin, true) + ": " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435570));
     localMessageForDevPtt.voiceLength = i;
     localMessageForDevPtt.extStr = "device_groupchat";
     localMessageForDevPtt.serial();
@@ -153,7 +153,7 @@ public class DeviceGroupChatMsgProcessor
     localMessageForDeviceFile.msgStatus = 3;
     localMessageForDeviceFile.nFileStatus = 1;
     localMessageForDeviceFile.time = MessageCache.a();
-    localMessageForDeviceFile.msg = (ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForDeviceFile.senderuin, true) + ": " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437813));
+    localMessageForDeviceFile.msg = (ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForDeviceFile.senderuin, true) + ": " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437830));
     localMessageForDeviceFile.nFileMsgType = 2;
     localMessageForDeviceFile.extStr = "device_groupchat";
     localMessageForDeviceFile.strCoverKey = str2;

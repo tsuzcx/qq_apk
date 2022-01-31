@@ -21,8 +21,8 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.video.QZoneVideoCompressor;
 import java.io.File;
 import java.util.HashMap;
-import xzl;
-import xzn;
+import ycs;
+import ycu;
 
 public class EncodeVideoTask
   extends AsyncTask
@@ -33,7 +33,7 @@ public class EncodeVideoTask
   private EncodeVideoTask.ResultListener jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener;
   private EncodeVideoTask.ThumbInfo jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ThumbInfo;
   private String jdField_a_of_type_JavaLangString;
-  private xzn jdField_a_of_type_Xzn = new xzl(this);
+  private ycu jdField_a_of_type_Ycu = new ycs(this);
   private boolean jdField_a_of_type_Boolean = true;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
@@ -136,7 +136,7 @@ public class EncodeVideoTask
     return 0;
   }
   
-  private static void b(String paramString, PublishVideoEntry paramPublishVideoEntry, xzn paramxzn)
+  private static void b(String paramString, PublishVideoEntry paramPublishVideoEntry, ycu paramycu)
   {
     String str = ShortVideoUtils.a(new File(paramPublishVideoEntry.mLocalRawVideoDir));
     if (jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg == null) {
@@ -151,14 +151,14 @@ public class EncodeVideoTask
     }
     try
     {
-      EncodeVideoTask.VideoSaveAlumCallBack localVideoSaveAlumCallBack = new EncodeVideoTask.VideoSaveAlumCallBack(paramPublishVideoEntry, paramString, str, paramxzn);
+      EncodeVideoTask.VideoSaveAlumCallBack localVideoSaveAlumCallBack = new EncodeVideoTask.VideoSaveAlumCallBack(paramPublishVideoEntry, paramString, str, paramycu);
       jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.a(str);
       jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.a(paramPublishVideoEntry.doodlePath, paramString, str, paramPublishVideoEntry.videoWidth, paramPublishVideoEntry.videoHeight, localVideoSaveAlumCallBack);
       return;
     }
     catch (Exception paramString)
     {
-      paramxzn.a(-12);
+      paramycu.a(-12);
       QLog.e("EncodeVideoTask", 2, "generate files save alum:", paramString);
     }
   }
@@ -314,7 +314,7 @@ public class EncodeVideoTask
         }
         long l3 = ShortVideoUtils.b(str3);
         localObject1 = new EncodeVideoTask.ResponseCallBack(localPublishVideoEntry, str3, paramVarArgs);
-        ((EncodeVideoTask.ResponseCallBack)localObject1).a(this.jdField_a_of_type_Xzn);
+        ((EncodeVideoTask.ResponseCallBack)localObject1).a(this.jdField_a_of_type_Ycu);
         FFmpegUtils.b(this.jdField_a_of_type_AndroidContentContext, str3, localPublishVideoEntry.backgroundMusicPath, localPublishVideoEntry.backgroundMusicOffset, (int)l3, paramVarArgs, (ExecuteBinResponseCallback)localObject1);
         a("[NewVersion]FFmpegUtils.combinBackgroundMusic cost:" + (System.currentTimeMillis() - l2) / 1000.0D);
       }
@@ -328,7 +328,7 @@ public class EncodeVideoTask
       }
       a("[NewVersion] doInBackground cost:" + (System.currentTimeMillis() - l1) / 1000.0D);
       return Integer.valueOf(0);
-      this.jdField_a_of_type_Xzn.a(localPublishVideoEntry, str3);
+      this.jdField_a_of_type_Ycu.a(localPublishVideoEntry, str3);
     }
   }
   
@@ -407,7 +407,7 @@ public class EncodeVideoTask
         localObject1 = ShortVideoUtils.d((File)localObject2);
         l = ShortVideoUtils.b(paramVarArgs);
         localObject2 = new EncodeVideoTask.ResponseCallBack(localPublishVideoEntry, paramVarArgs, (String)localObject1);
-        ((EncodeVideoTask.ResponseCallBack)localObject2).a(this.jdField_a_of_type_Xzn);
+        ((EncodeVideoTask.ResponseCallBack)localObject2).a(this.jdField_a_of_type_Ycu);
         FFmpegUtils.b(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, localPublishVideoEntry.backgroundMusicPath, localPublishVideoEntry.backgroundMusicOffset, (int)l, (String)localObject1, (ExecuteBinResponseCallback)localObject2);
         return Integer.valueOf(0);
         i = 1;
@@ -427,7 +427,7 @@ public class EncodeVideoTask
         continue;
       }
       label415:
-      this.jdField_a_of_type_Xzn.a(localPublishVideoEntry, paramVarArgs);
+      this.jdField_a_of_type_Ycu.a(localPublishVideoEntry, paramVarArgs);
     }
   }
   

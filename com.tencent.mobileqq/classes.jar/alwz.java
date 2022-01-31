@@ -1,26 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import cooperation.qlink.QQProxyForQlink;
+import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
 
-public class alwz
-  extends BroadcastReceiver
+abstract class alwz
 {
-  public alwz(QQProxyForQlink paramQQProxyForQlink) {}
+  public void a() {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (QQProxyForQlink.a(this.a) != null))
-    {
-      QQProxyForQlink.a(this.a).dismiss();
-      QQProxyForQlink.a(this.a, null);
-    }
-  }
+  public abstract boolean a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alwz
  * JD-Core Version:    0.7.0.1
  */

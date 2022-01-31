@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager.TravellerVideoItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
+import java.io.File;
+import java.io.FileFilter;
 
-public final class aoao
-  implements Parcelable.Creator
+public class aoao
+  implements FileFilter
 {
-  public ShortVideoTravellerManager.TravellerVideoItem a(Parcel paramParcel)
-  {
-    return new ShortVideoTravellerManager.TravellerVideoItem(paramParcel);
-  }
+  public aoao(NormalFacePackage paramNormalFacePackage) {}
   
-  public ShortVideoTravellerManager.TravellerVideoItem[] a(int paramInt)
+  public boolean accept(File paramFile)
   {
-    return new ShortVideoTravellerManager.TravellerVideoItem[paramInt];
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
   }
 }
 

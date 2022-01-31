@@ -1,33 +1,42 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.model.QueryCallback;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class abwh
-  implements QueryCallback
+  implements Runnable
 {
-  public abwh(SogouEmoji paramSogouEmoji, int paramInt, String paramString) {}
+  public abwh(DBFixManager paramDBFixManager) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void run()
   {
-    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    if (((SharedPreferences)localObject).getBoolean(str + DBFixManager.d, false))
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
+      this.a.a();
+      if ((((SharedPreferences)localObject).getInt(str + DBFixManager.e, 0) < DBFixManager.jdField_a_of_type_Int) && (DBFixManager.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abwi(this));
       }
     }
-    do
+    else
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(paramEmoticon);
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
+    }
+    QLog.d(DBFixManager.a(), 1, "DBFixDialogUI 1, max count, delete db");
+    this.a.b(false);
+    this.a.b();
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.d);
+    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.e);
+    ((SharedPreferences.Editor)localObject).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwh
  * JD-Core Version:    0.7.0.1
  */

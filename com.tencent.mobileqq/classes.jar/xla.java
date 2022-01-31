@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class xla
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xla(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public xla(RecentOptPopBar paramRecentOptPopBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (EditLocalVideoActivity.c(this.a)) {}
-    for (paramInt = -1;; paramInt = 0)
-    {
-      EditLocalVideoActivity.a(this.a).dismiss();
-      EditLocalVideoActivity.a(this.a, paramInt);
-      return;
-    }
+    ShortVideoUtils.a(this.a.a.app);
   }
 }
 

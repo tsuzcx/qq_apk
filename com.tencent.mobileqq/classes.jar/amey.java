@@ -1,26 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiUserInfo;
+import android.view.animation.Interpolator;
 
 public final class amey
-  implements Parcelable.Creator
+  implements Interpolator
 {
-  public WeishiUserInfo a(Parcel paramParcel)
+  public float getInterpolation(float paramFloat)
   {
-    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
-    localWeishiUserInfo.uin = paramParcel.readLong();
-    localWeishiUserInfo.nickName = paramParcel.readString();
-    return localWeishiUserInfo;
-  }
-  
-  public WeishiUserInfo[] a(int paramInt)
-  {
-    return new WeishiUserInfo[paramInt];
+    return paramFloat * paramFloat * paramFloat * paramFloat * paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amey
  * JD-Core Version:    0.7.0.1
  */

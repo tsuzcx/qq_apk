@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import ahor;
+import aict;
 import android.graphics.PointF;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 public class GameEvent
 {
   public final int a;
-  private ahor jdField_a_of_type_Ahor = new ahor(this, null);
+  private aict jdField_a_of_type_Aict = new aict(this, null);
   private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
   private GameEvent.GestureEventListener jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialGameEvent$GestureEventListener;
   private boolean jdField_a_of_type_Boolean;
   public final int b;
-  private ahor jdField_b_of_type_Ahor = new ahor(this, null);
+  private aict jdField_b_of_type_Aict = new aict(this, null);
   private PointF jdField_b_of_type_AndroidGraphicsPointF = new PointF();
   private boolean jdField_b_of_type_Boolean;
   public final int c;
@@ -87,25 +87,25 @@ public class GameEvent
     return 4.712389F;
   }
   
-  private ahor a(int paramInt)
+  private aict a(int paramInt)
   {
-    ahor localahor = null;
-    VideoEnvironment.a("GameplayEngine.GameEvent", String.format("id=%d,pointerId0=%d,pointerId1=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Ahor.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Ahor.jdField_a_of_type_Int) }), null);
-    VideoEnvironment.a("GameplayEngine.GameEvent", String.format("id=%d,pressed0=%b,pressed1=%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.jdField_a_of_type_Ahor.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_b_of_type_Ahor.jdField_a_of_type_Boolean) }), null);
-    if (paramInt == this.jdField_a_of_type_Ahor.jdField_a_of_type_Int) {
-      localahor = this.jdField_a_of_type_Ahor;
+    aict localaict = null;
+    VideoEnvironment.a("GameplayEngine.GameEvent", String.format("id=%d,pointerId0=%d,pointerId1=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Aict.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Aict.jdField_a_of_type_Int) }), null);
+    VideoEnvironment.a("GameplayEngine.GameEvent", String.format("id=%d,pressed0=%b,pressed1=%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.jdField_a_of_type_Aict.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_b_of_type_Aict.jdField_a_of_type_Boolean) }), null);
+    if (paramInt == this.jdField_a_of_type_Aict.jdField_a_of_type_Int) {
+      localaict = this.jdField_a_of_type_Aict;
     }
     do
     {
-      return localahor;
-      if (paramInt == this.jdField_b_of_type_Ahor.jdField_a_of_type_Int) {
-        return this.jdField_b_of_type_Ahor;
+      return localaict;
+      if (paramInt == this.jdField_b_of_type_Aict.jdField_a_of_type_Int) {
+        return this.jdField_b_of_type_Aict;
       }
-      if (this.jdField_a_of_type_Ahor.jdField_a_of_type_Boolean) {
-        return this.jdField_a_of_type_Ahor;
+      if (this.jdField_a_of_type_Aict.jdField_a_of_type_Boolean) {
+        return this.jdField_a_of_type_Aict;
       }
-    } while (!this.jdField_b_of_type_Ahor.jdField_a_of_type_Boolean);
-    return this.jdField_b_of_type_Ahor;
+    } while (!this.jdField_b_of_type_Aict.jdField_a_of_type_Boolean);
+    return this.jdField_b_of_type_Aict;
   }
   
   private String a(int paramInt)
@@ -136,7 +136,7 @@ public class GameEvent
   
   private void a()
   {
-    this.x = ((int)Math.sqrt(Math.pow(this.jdField_a_of_type_Ahor.jdField_a_of_type_Float - this.jdField_b_of_type_Ahor.jdField_a_of_type_Float, 2.0D) + Math.pow(this.jdField_a_of_type_Ahor.b - this.jdField_b_of_type_Ahor.b, 2.0D)) + 5);
+    this.x = ((int)Math.sqrt(Math.pow(this.jdField_a_of_type_Aict.jdField_a_of_type_Float - this.jdField_b_of_type_Aict.jdField_a_of_type_Float, 2.0D) + Math.pow(this.jdField_a_of_type_Aict.b - this.jdField_b_of_type_Aict.b, 2.0D)) + 5);
   }
   
   private void a(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
@@ -162,13 +162,13 @@ public class GameEvent
   
   private boolean a(int paramInt, float paramFloat1, float paramFloat2)
   {
-    ahor localahor = a(paramInt);
-    if (localahor == null) {}
+    aict localaict = a(paramInt);
+    if (localaict == null) {}
     do
     {
       return false;
-      float f2 = localahor.jdField_a_of_type_Float;
-      float f1 = localahor.b;
+      float f2 = localaict.jdField_a_of_type_Float;
+      float f1 = localaict.b;
       paramFloat1 = Math.abs(paramFloat1 - f2);
       paramFloat2 = Math.abs(paramFloat2 - f1);
     } while ((paramFloat1 <= 8.0F) && (paramFloat2 <= 8.0F));
@@ -215,8 +215,8 @@ public class GameEvent
   
   private void b()
   {
-    this.jdField_a_of_type_Ahor.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Ahor.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Aict.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Aict.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidGraphicsPointF.set(0.0F, 0.0F);
     this.jdField_b_of_type_AndroidGraphicsPointF.set(0.0F, 0.0F);
     this.jdField_c_of_type_AndroidGraphicsPointF.set(0.0F, 0.0F);
@@ -250,11 +250,11 @@ public class GameEvent
       b();
       if (bool)
       {
-        this.jdField_a_of_type_Ahor.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Ahor.jdField_a_of_type_Long = paramLong2;
-        this.jdField_a_of_type_Ahor.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_Ahor.jdField_a_of_type_Float = paramFloat1;
-        this.jdField_a_of_type_Ahor.b = paramFloat2;
+        this.jdField_a_of_type_Aict.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Aict.jdField_a_of_type_Long = paramLong2;
+        this.jdField_a_of_type_Aict.jdField_a_of_type_Int = paramInt1;
+        this.jdField_a_of_type_Aict.jdField_a_of_type_Float = paramFloat1;
+        this.jdField_a_of_type_Aict.b = paramFloat2;
         this.jdField_a_of_type_AndroidGraphicsPointF.set(paramFloat1, paramFloat2);
         this.jdField_c_of_type_AndroidGraphicsPointF.set(paramFloat1, paramFloat2);
       }
@@ -270,15 +270,15 @@ public class GameEvent
       } while (paramInt2 != 5);
       if (bool)
       {
-        this.jdField_b_of_type_Ahor.jdField_a_of_type_Boolean = true;
-        this.jdField_b_of_type_Ahor.jdField_a_of_type_Long = paramLong2;
-        this.jdField_b_of_type_Ahor.jdField_a_of_type_Int = paramInt1;
-        this.jdField_b_of_type_Ahor.jdField_a_of_type_Float = paramFloat1;
-        this.jdField_b_of_type_Ahor.b = paramFloat2;
+        this.jdField_b_of_type_Aict.jdField_a_of_type_Boolean = true;
+        this.jdField_b_of_type_Aict.jdField_a_of_type_Long = paramLong2;
+        this.jdField_b_of_type_Aict.jdField_a_of_type_Int = paramInt1;
+        this.jdField_b_of_type_Aict.jdField_a_of_type_Float = paramFloat1;
+        this.jdField_b_of_type_Aict.b = paramFloat2;
         this.jdField_b_of_type_AndroidGraphicsPointF.set(paramFloat1, paramFloat2);
         this.jdField_d_of_type_AndroidGraphicsPointF.set(paramFloat1, paramFloat2);
         a();
-        this.jdField_e_of_type_AndroidGraphicsPointF.set((this.jdField_a_of_type_Ahor.jdField_a_of_type_Float + this.jdField_b_of_type_Ahor.jdField_a_of_type_Float) / 2.0F, (this.jdField_a_of_type_Ahor.b + this.jdField_b_of_type_Ahor.b) / 2.0F);
+        this.jdField_e_of_type_AndroidGraphicsPointF.set((this.jdField_a_of_type_Aict.jdField_a_of_type_Float + this.jdField_b_of_type_Aict.jdField_a_of_type_Float) / 2.0F, (this.jdField_a_of_type_Aict.b + this.jdField_b_of_type_Aict.b) / 2.0F);
       }
     } while (!this.jdField_a_of_type_Boolean);
     a(paramLong1, 0, paramFloat1, paramFloat2, paramInt1);
@@ -299,13 +299,13 @@ public class GameEvent
       f3 = paramArrayOfFloat2[i2];
       i3 = 0;
       i1 = i3;
-      if (!this.jdField_a_of_type_Ahor.jdField_a_of_type_Boolean) {
+      if (!this.jdField_a_of_type_Aict.jdField_a_of_type_Boolean) {
         break label721;
       }
-      if ((!this.jdField_b_of_type_Ahor.jdField_a_of_type_Boolean) || ((i5 != this.jdField_a_of_type_Ahor.jdField_a_of_type_Int) && (i5 != this.jdField_b_of_type_Ahor.jdField_a_of_type_Int))) {
+      if ((!this.jdField_b_of_type_Aict.jdField_a_of_type_Boolean) || ((i5 != this.jdField_a_of_type_Aict.jdField_a_of_type_Int) && (i5 != this.jdField_b_of_type_Aict.jdField_a_of_type_Int))) {
         break label1070;
       }
-      if (this.jdField_a_of_type_Ahor.jdField_a_of_type_Int == this.jdField_b_of_type_Ahor.jdField_a_of_type_Int) {
+      if (this.jdField_a_of_type_Aict.jdField_a_of_type_Int == this.jdField_b_of_type_Aict.jdField_a_of_type_Int) {
         c();
       }
     }
@@ -325,12 +325,12 @@ public class GameEvent
     float f1;
     if (a(paramLong1, 2))
     {
-      if (this.jdField_a_of_type_Ahor.jdField_a_of_type_Int != i5) {
+      if (this.jdField_a_of_type_Aict.jdField_a_of_type_Int != i5) {
         break label776;
       }
       this.jdField_a_of_type_AndroidGraphicsPointF.set(this.jdField_c_of_type_AndroidGraphicsPointF);
       this.jdField_c_of_type_AndroidGraphicsPointF.set(f2, f3);
-      this.v = ((int)Math.sqrt(Math.pow(f2 - this.jdField_a_of_type_Ahor.jdField_a_of_type_Float, 2.0D) + Math.pow(f3 - this.jdField_a_of_type_Ahor.b, 2.0D)));
+      this.v = ((int)Math.sqrt(Math.pow(f2 - this.jdField_a_of_type_Aict.jdField_a_of_type_Float, 2.0D) + Math.pow(f3 - this.jdField_a_of_type_Aict.b, 2.0D)));
       if ((!this.jdField_b_of_type_Boolean) && (this.v >= 30) && (this.w >= 30)) {
         this.jdField_b_of_type_Boolean = true;
       }
@@ -347,7 +347,7 @@ public class GameEvent
         i10 = (int)(this.jdField_c_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsPointF.y);
         i11 = (int)(this.jdField_d_of_type_AndroidGraphicsPointF.x - this.jdField_b_of_type_AndroidGraphicsPointF.x);
         i12 = (int)(this.jdField_d_of_type_AndroidGraphicsPointF.y - this.jdField_b_of_type_AndroidGraphicsPointF.y);
-        if (i5 != this.jdField_a_of_type_Ahor.jdField_a_of_type_Int) {
+        if (i5 != this.jdField_a_of_type_Aict.jdField_a_of_type_Int) {
           break label844;
         }
         f1 = i1 / i6;
@@ -384,7 +384,7 @@ public class GameEvent
       label776:
       this.jdField_b_of_type_AndroidGraphicsPointF.set(this.jdField_d_of_type_AndroidGraphicsPointF);
       this.jdField_d_of_type_AndroidGraphicsPointF.set(f2, f3);
-      this.w = ((int)Math.sqrt(Math.pow(f2 - this.jdField_b_of_type_Ahor.jdField_a_of_type_Float, 2.0D) + Math.pow(f3 - this.jdField_b_of_type_Ahor.b, 2.0D)));
+      this.w = ((int)Math.sqrt(Math.pow(f2 - this.jdField_b_of_type_Aict.jdField_a_of_type_Float, 2.0D) + Math.pow(f3 - this.jdField_b_of_type_Aict.b, 2.0D)));
       break label197;
       label844:
       f1 = i7 / i8;
@@ -436,12 +436,12 @@ public class GameEvent
         if (a())
         {
           i1 = i3;
-          if (i5 == this.jdField_a_of_type_Ahor.jdField_a_of_type_Int)
+          if (i5 == this.jdField_a_of_type_Aict.jdField_a_of_type_Int)
           {
             i1 = i3;
             if (a(paramLong1, 5))
             {
-              i6 = (int)Math.sqrt(Math.pow(f2 - this.jdField_a_of_type_Ahor.jdField_a_of_type_Float, 2.0D) + Math.pow(f3 - this.jdField_a_of_type_Ahor.b, 2.0D));
+              i6 = (int)Math.sqrt(Math.pow(f2 - this.jdField_a_of_type_Aict.jdField_a_of_type_Float, 2.0D) + Math.pow(f3 - this.jdField_a_of_type_Aict.b, 2.0D));
               if (!this.jdField_f_of_type_Boolean)
               {
                 i1 = i3;
@@ -450,7 +450,7 @@ public class GameEvent
               else
               {
                 i1 = i3;
-                if (paramLong2 - this.jdField_a_of_type_Ahor.jdField_a_of_type_Long >= 200L)
+                if (paramLong2 - this.jdField_a_of_type_Aict.jdField_a_of_type_Long >= 200L)
                 {
                   i1 = i3;
                   if (i6 >= 30)
@@ -472,13 +472,13 @@ public class GameEvent
   {
     int i2;
     int i1;
-    ahor localahor;
+    aict localaict;
     if (paramInt2 == 1)
     {
       i2 = 0;
       i1 = 0;
-      localahor = a(paramInt1);
-      if (localahor != null) {}
+      localaict = a(paramInt1);
+      if (localaict != null) {}
     }
     label114:
     do
@@ -489,10 +489,10 @@ public class GameEvent
         paramInt2 = i1;
         float f1;
         float f2;
-        if (localahor.jdField_a_of_type_Boolean)
+        if (localaict.jdField_a_of_type_Boolean)
         {
-          f1 = paramFloat1 - localahor.jdField_a_of_type_Float;
-          f2 = paramFloat2 - localahor.b;
+          f1 = paramFloat1 - localaict.jdField_a_of_type_Float;
+          f2 = paramFloat2 - localaict.b;
           if (!this.jdField_b_of_type_Boolean) {
             break label114;
           }
@@ -501,7 +501,7 @@ public class GameEvent
         }
         for (;;)
         {
-          localahor.jdField_a_of_type_Boolean = false;
+          localaict.jdField_a_of_type_Boolean = false;
           if ((paramInt2 == 0) && ((this.jdField_a_of_type_Boolean) || (this.u == paramInt1))) {
             a(paramLong1, 1, paramFloat1, paramFloat2, paramInt1);
           }
@@ -519,7 +519,7 @@ public class GameEvent
           }
           else
           {
-            if ((a(paramLong1, 1)) && (paramLong2 - localahor.jdField_a_of_type_Long < 400L) && ((Math.abs(f1) > 50.0F) || (Math.abs(f2) > 50.0F)))
+            if ((a(paramLong1, 1)) && (paramLong2 - localaict.jdField_a_of_type_Long < 400L) && ((Math.abs(f1) > 50.0F) || (Math.abs(f2) > 50.0F)))
             {
               paramInt2 = 0;
               if (Math.abs(f1) > Math.abs(f2)) {
@@ -544,7 +544,7 @@ public class GameEvent
                 }
               }
             }
-            if ((a(paramLong1, 0)) && (a((int)f1, (int)f2)) && (paramLong2 - localahor.jdField_a_of_type_Long < 200L))
+            if ((a(paramLong1, 0)) && (a((int)f1, (int)f2)) && (paramLong2 - localaict.jdField_a_of_type_Long < 200L))
             {
               a(paramLong1, 0, paramFloat1, paramFloat2, 0.0F);
               paramInt2 = 1;
@@ -558,9 +558,9 @@ public class GameEvent
                 if (a((int)f1, (int)f2))
                 {
                   paramInt2 = i1;
-                  if (paramLong2 - localahor.jdField_a_of_type_Long >= 200L)
+                  if (paramLong2 - localaict.jdField_a_of_type_Long >= 200L)
                   {
-                    a(paramLong1, 3, paramFloat1, paramFloat2, (float)(paramLong2 - localahor.jdField_a_of_type_Long));
+                    a(paramLong1, 3, paramFloat1, paramFloat2, (float)(paramLong2 - localaict.jdField_a_of_type_Long));
                     paramInt2 = 1;
                   }
                 }
@@ -570,15 +570,15 @@ public class GameEvent
         }
       } while (paramInt2 != 6);
       i1 = 0;
-      localahor = a(paramInt1);
-    } while (localahor == null);
+      localaict = a(paramInt1);
+    } while (localaict == null);
     paramInt2 = i1;
     int i3;
-    if (localahor.jdField_a_of_type_Boolean)
+    if (localaict.jdField_a_of_type_Boolean)
     {
-      i3 = (int)(paramFloat1 - localahor.jdField_a_of_type_Float);
-      i2 = (int)(paramFloat2 - localahor.b);
-      if ((!this.jdField_a_of_type_Boolean) || (!a(paramLong1, 1)) || (paramLong2 - localahor.jdField_a_of_type_Long >= 400L) || ((Math.abs(i3) <= 50) && (Math.abs(i2) <= 50))) {
+      i3 = (int)(paramFloat1 - localaict.jdField_a_of_type_Float);
+      i2 = (int)(paramFloat2 - localaict.b);
+      if ((!this.jdField_a_of_type_Boolean) || (!a(paramLong1, 1)) || (paramLong2 - localaict.jdField_a_of_type_Long >= 400L) || ((Math.abs(i3) <= 50) && (Math.abs(i2) <= 50))) {
         break label646;
       }
       paramInt2 = 0;
@@ -597,7 +597,7 @@ public class GameEvent
     }
     for (;;)
     {
-      localahor.jdField_a_of_type_Boolean = false;
+      localaict.jdField_a_of_type_Boolean = false;
       if ((paramInt2 == 0) && ((this.jdField_a_of_type_Boolean) || (this.u == paramInt1))) {
         a(paramLong1, 1, paramFloat1, paramFloat2, paramInt1);
       }
@@ -620,7 +620,7 @@ public class GameEvent
       i1 = paramInt2 | 0x1;
       break label550;
       label646:
-      if ((this.jdField_a_of_type_Boolean) && (a(paramLong1, 0)) && (a(i3, i2)) && (paramLong2 - localahor.jdField_a_of_type_Long < 200L))
+      if ((this.jdField_a_of_type_Boolean) && (a(paramLong1, 0)) && (a(i3, i2)) && (paramLong2 - localaict.jdField_a_of_type_Long < 200L))
       {
         a(paramLong1, 0, paramFloat1, paramFloat2, 0.0F);
         paramInt2 = 1;
@@ -637,9 +637,9 @@ public class GameEvent
             if (a(i3, i2))
             {
               paramInt2 = i1;
-              if (paramLong2 - localahor.jdField_a_of_type_Long >= 200L)
+              if (paramLong2 - localaict.jdField_a_of_type_Long >= 200L)
               {
-                a(paramLong1, 3, paramFloat1, paramFloat2, (float)(paramLong2 - localahor.jdField_a_of_type_Long));
+                a(paramLong1, 3, paramFloat1, paramFloat2, (float)(paramLong2 - localaict.jdField_a_of_type_Long));
                 paramInt2 = 1;
               }
             }

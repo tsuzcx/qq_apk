@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26a0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216ad" android:layout_width="fill_parent" android:layout_height="94.0dip"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26a1" android:clickable="true" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="32.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216f0" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_marginStart="32.0dip" android:layout_alignParentStart="true" />
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a26a1" android:layout_centerVertical="true" android:layout_marginStart="32.0dip" android:layout_toEndOf="@id/APKTOOL_DUPLICATE_id_0x7f0a26a1">
-            <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26a2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="和好友分享你的近况" />
-            <Button android:textColor="#ff12b7f5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26a3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02131a" android:layout_width="87.0dip" android:layout_height="30.0dip" android:layout_marginTop="10.0dip" android:text="立即分享" />
-        </LinearLayout>
-        <com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.ThumbSlideShowView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26a4" android:layout_width="55.0dip" android:layout_height="78.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
-        <TextView android:textSize="20.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26a5" android:layout_width="55.0dip" android:layout_height="78.0dip" android:layout_marginRight="12.0dip" android:text="0" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+<RelativeLayout android:background="#00000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:stroke="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a20" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:paddingLeft="14.0dip" android:paddingTop="10.0dip" android:paddingRight="14.0dip" android:paddingBottom="10.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="17.0sp" android:textColor="#ff12b7f5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26c0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff12b7f5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26c1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1c26" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
-    <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02202e" android:layout_width="fill_parent" android:layout_height="12.0dip" />
-</LinearLayout>
+    <com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a17" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a0a20" />
+    <EditText android:textSize="18.0sp" android:textColor="@android:color/white" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a1e" android:paddingLeft="14.0dip" android:paddingTop="5.0dip" android:paddingRight="14.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="40.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a0a17" android:textCursorDrawable="@null" />
+    <requestFocus />
+</RelativeLayout>

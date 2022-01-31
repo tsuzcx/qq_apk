@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a092e" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:divider="@null" />
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a092f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" android:contentDescription="该电脑未找到可使用的打印机，请确认打印机连接正常。">
-        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="130.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204ba" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff999999" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0930" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="该电脑未找到可使用的打印机，" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff999999" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0931" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="请确认打印机连接正常。" />
+    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0946" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:divider="@null" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0947" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" android:contentDescription="该电脑未找到可使用的打印机，请确认打印机连接正常。">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="130.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204be" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff999999" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0948" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="该电脑未找到可使用的打印机，" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff999999" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0949" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="请确认打印机连接正常。" />
     </LinearLayout>
 </RelativeLayout>

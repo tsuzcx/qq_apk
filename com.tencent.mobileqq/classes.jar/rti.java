@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.model.QueryCallback;
 
-public final class rti
-  implements DialogInterface.OnClickListener
+class rti
+  implements QueryCallback
 {
-  public rti(boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  rti(rth paramrth, int paramInt1, int paramInt2, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Emoticon paramEmoticon)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
-    }
-    paramDialogInterface.dismiss();
+    MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Rth.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rth.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rth.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

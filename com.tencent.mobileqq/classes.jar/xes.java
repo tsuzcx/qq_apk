@@ -1,51 +1,36 @@
-import Wallet.C2CVoiceInfo;
-import Wallet.GroupVoiceInfo;
-import Wallet.VoiceMatchStatus;
-import Wallet.VoiceRedPackMatchReq;
-import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet;
-import com.tencent.mobileqq.activity.qwallet.voice.VoiceRecognizer;
-import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDBHelper;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDbManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
-import com.tencent.mobileqq.transfile.BaseUploadProcessor;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class xes
-  implements xew
+public final class xes
+  implements Runnable
 {
-  public xes(VoiceRedPacketHelper paramVoiceRedPacketHelper, QQAppInterface paramQQAppInterface, MessageForQQWalletMsg paramMessageForQQWalletMsg, int paramInt, long paramLong, byte[] paramArrayOfByte, String paramString, MessageForPtt paramMessageForPtt, BaseUploadProcessor paramBaseUploadProcessor, MessageObserver paramMessageObserver) {}
+  public xes(boolean paramBoolean, ArrayList paramArrayList) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    if (TextUtils.isEmpty(paramString))
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("skey is null");
-      return;
-    }
-    long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId;
-    String str2 = VoiceRedPacketHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title);
-    long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
-    long l3 = AppSetting.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Int;
-    GroupVoiceInfo localGroupVoiceInfo = new GroupVoiceInfo(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin), this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte);
-    C2CVoiceInfo localC2CVoiceInfo = new C2CVoiceInfo(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.jdField_c_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      QWalletCommonServlet.a(new VoiceRedPackMatchReq(l1, str1, str2, l2, paramString, l3, j, localGroupVoiceInfo, 0, localC2CVoiceInfo, "7.6.0", new VoiceMatchStatus(i, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.jdField_c_of_type_Int, VoiceRecognizer.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))), new xet(this, System.currentTimeMillis()));
-      if (!QLog.isColorLevel()) {
-        break;
+      synchronized (GoldMsgDbManager.jdField_a_of_type_JavaLangObject)
+      {
+        if (GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper == null) {
+          GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper = new GoldMsgDBHelper(BaseApplicationImpl.getContext());
+        }
+        ??? = QWalletTools.a();
+        if (??? == null) {
+          return;
+        }
       }
-      QLog.d("VoiceRedPacketHelper", 2, "checkAndSendMessage() sendRequest");
+    } while (GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper == null);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper.a(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
       return;
     }
+    GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

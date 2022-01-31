@@ -23,10 +23,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import jcp;
-import jcq;
-import jcr;
-import jct;
+import jca;
+import jcb;
+import jcc;
+import jce;
 
 public class AITranslator
 {
@@ -42,7 +42,7 @@ public class AITranslator
     do
     {
       return 9223372036854775807L;
-      switch (jcs.a[paramTranslatorType.ordinal()])
+      switch (jcd.a[paramTranslatorType.ordinal()])
       {
       }
     } while (!QLog.isColorLevel());
@@ -54,7 +54,7 @@ public class AITranslator
   
   private long a(Context paramContext, AITranslator.TranslatorType paramTranslatorType)
   {
-    switch (jcs.a[paramTranslatorType.ordinal()])
+    switch (jcd.a[paramTranslatorType.ordinal()])
     {
     default: 
       if (QLog.isColorLevel()) {
@@ -243,7 +243,7 @@ public class AITranslator
     {
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        switch (jcs.a[localTranslatorType.ordinal()])
+        switch (jcd.a[localTranslatorType.ordinal()])
         {
         case 1: 
           return;
@@ -253,13 +253,13 @@ public class AITranslator
       if (!this.jdField_a_of_type_JavaUtilList.contains(str))
       {
         this.jdField_a_of_type_JavaUtilList.add(str);
-        GoogleTranslator.a().a(paramContext, paramList2, paramLanguage, this.jdField_a_of_type_ComRookeryTranslateGoogleGoogleInfo.a(), localLong, new jcp(this, str, paramLong, paramContext, paramHolder, paramString, paramLanguage, paramTranslateCallback, paramList1, paramList2, paramInt, localTranslatorType));
+        GoogleTranslator.a().a(paramContext, paramList2, paramLanguage, this.jdField_a_of_type_ComRookeryTranslateGoogleGoogleInfo.a(), localLong, new jca(this, str, paramLong, paramContext, paramHolder, paramString, paramLanguage, paramTranslateCallback, paramList1, paramList2, paramInt, localTranslatorType));
         continue;
         str = paramString + paramLanguage.toString() + "M";
         if (!this.jdField_a_of_type_JavaUtilList.contains(str))
         {
           this.jdField_a_of_type_JavaUtilList.add(str);
-          MicrosoftTranslator.a().a(paramContext, paramList2, paramLanguage, localLong, this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftInfo.a(), this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftInfo.b(), new jcq(this, str, paramLong, paramContext, paramHolder, paramString, paramLanguage, paramTranslateCallback, paramList1, paramList2, paramInt, localTranslatorType));
+          MicrosoftTranslator.a().a(paramContext, paramList2, paramLanguage, localLong, this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftInfo.a(), this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftInfo.b(), new jcb(this, str, paramLong, paramContext, paramHolder, paramString, paramLanguage, paramTranslateCallback, paramList1, paramList2, paramInt, localTranslatorType));
         }
       }
     }
@@ -273,7 +273,7 @@ public class AITranslator
       if (Build.VERSION.SDK_INT >= 9)
       {
         paramContext.getSharedPreferences("[Translate]pref", 0).edit().putLong("pref_policy_update_time", System.currentTimeMillis()).apply();
-        jct.a(paramContext, new jcr(this, paramContext));
+        jce.a(paramContext, new jcc(this, paramContext));
       }
     }
     while (!QLog.isColorLevel()) {
@@ -289,7 +289,7 @@ public class AITranslator
   @TargetApi(9)
   private void a(Context paramContext, AITranslator.TranslatorType paramTranslatorType, long paramLong)
   {
-    switch (jcs.a[paramTranslatorType.ordinal()])
+    switch (jcd.a[paramTranslatorType.ordinal()])
     {
     default: 
       if (QLog.isColorLevel()) {
@@ -395,7 +395,7 @@ public class AITranslator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.rookery.translate.AITranslator
  * JD-Core Version:    0.7.0.1
  */

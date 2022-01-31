@@ -8,9 +8,9 @@ import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import ngb;
-import ngc;
-import ngd;
+import nhn;
+import nho;
+import nhp;
 
 public class ActionSheetShareUI
   extends ShareUI
@@ -49,23 +49,23 @@ public class ActionSheetShareUI
           localArrayList.add(localActionSheetItem);
           j += 1;
           break;
-          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430091);
-          localActionSheetItem.b = 2130838332;
-          continue;
-          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430097);
-          localActionSheetItem.b = 2130838333;
-          continue;
-          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430109);
+          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430108);
           localActionSheetItem.b = 2130838336;
           continue;
-          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430110);
-          localActionSheetItem.b = 2130838330;
+          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430114);
+          localActionSheetItem.b = 2130838337;
           continue;
-          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430115);
-          localActionSheetItem.b = 2130838335;
+          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430126);
+          localActionSheetItem.b = 2130838340;
           continue;
-          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131436997);
-          localActionSheetItem.b = 2130838328;
+          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430127);
+          localActionSheetItem.b = 2130838334;
+          continue;
+          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430132);
+          localActionSheetItem.b = 2130838339;
+          continue;
+          localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131437014);
+          localActionSheetItem.b = 2130838332;
         }
       }
       arrayOfList[i] = localArrayList;
@@ -96,14 +96,14 @@ public class ActionSheetShareUI
   
   public void a()
   {
-    ngb localngb;
-    ngc localngc;
+    nhn localnhn;
+    nho localnho;
     Activity localActivity;
     ShareActionSheetBuilder localShareActionSheetBuilder;
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
     {
-      localngb = new ngb(this);
-      localngc = new ngc(this);
+      localnhn = new nhn(this);
+      localnho = new nho(this);
       localActivity = a();
       if (localActivity == null) {
         return;
@@ -115,13 +115,13 @@ public class ActionSheetShareUI
       }
     }
     label146:
-    for (String str = localActivity.getString(2131433083);; str = this.jdField_a_of_type_JavaLangString)
+    for (String str = localActivity.getString(2131433100);; str = this.jdField_a_of_type_JavaLangString)
     {
       localShareActionSheetBuilder.a(str);
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(a(localActivity, this.jdField_a_of_type_JavaUtilList));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localngb);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localngc);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(new ngd(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localnhn);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localnho);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(new nhp(this));
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a()) {
         break;
       }

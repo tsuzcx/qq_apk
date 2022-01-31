@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
-import aedx;
+import aerd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -19,7 +19,7 @@ public class ShowTagNamePopupWindow
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aedx(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aerd(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback jdField_a_of_type_ComTencentMobileqqNearbyInterestTagShowTagNamePopupWindow$IShowTagNamePopupWindowCallback;
@@ -32,7 +32,7 @@ public class ShowTagNamePopupWindow
     this.jdField_a_of_type_Int = paramInt2;
     setWidth(this.jdField_a_of_type_Int);
     setHeight((int)(this.jdField_a_of_type_Float * 42.0F + 0.5D));
-    View localView = LayoutInflater.from(paramContext).inflate(2130969190, null);
+    View localView = LayoutInflater.from(paramContext).inflate(2130969189, null);
     setContentView(localView);
     a(paramContext, localView, paramInt1);
     setOutsideTouchable(true);
@@ -40,10 +40,10 @@ public class ShowTagNamePopupWindow
   
   private void a(Context paramContext, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363787));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363810));
     this.jdField_a_of_type_AndroidWidgetTextView.getTextSize();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365527));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.findViewById(2131363685).getLayoutParams();
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365549));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.findViewById(2131363708).getLayoutParams();
     int i = (int)(10.0F * this.jdField_a_of_type_Float + 0.5D);
     if (paramInt <= 0) {
       localLayoutParams.leftMargin = 0;
@@ -51,7 +51,7 @@ public class ShowTagNamePopupWindow
     for (;;)
     {
       paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      setBackgroundDrawable(paramContext.getResources().getDrawable(2130846277));
+      setBackgroundDrawable(paramContext.getResources().getDrawable(2130846407));
       return;
       if (paramInt < (this.jdField_a_of_type_Int - i) / 2)
       {

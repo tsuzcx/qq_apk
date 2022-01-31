@@ -1,17 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.widget.ActionSheet.WatchDismissActions;
 
-public final class mbb
-  extends AnimatorListenerAdapter
+public class mbb
+  implements ActionSheet.WatchDismissActions
 {
-  public mbb(View paramView) {}
+  public mbb(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    this.a.setAlpha(1.0F);
-    this.a.setLayerType(0, null);
-    this.a.setVisibility(8);
+    VideoFeedsAdapter.a(this.a).d();
   }
 }
 

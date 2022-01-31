@@ -1,28 +1,15 @@
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.drawable.ScaleDrawable;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
 
-public class pgh
-  extends pgb
+class pgh
+  implements Runnable
 {
-  public pgh(Drawable paramDrawable, ScaleDrawable paramScaleDrawable)
-  {
-    super(paramDrawable, paramScaleDrawable);
-  }
+  pgh(pgf parampgf, Drawable paramDrawable) {}
   
-  public pgh(pgh parampgh, ScaleDrawable paramScaleDrawable, Resources paramResources)
+  public void run()
   {
-    super(parampgh, paramScaleDrawable, paramResources);
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new ScaleDrawable(this, null, null);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new ScaleDrawable(this, paramResources, null);
+    this.jdField_a_of_type_Pgf.a.listener.onImageLoaded(this.jdField_a_of_type_Pgf.a.url, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Pgf.a.options);
   }
 }
 

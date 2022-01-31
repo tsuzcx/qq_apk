@@ -5,7 +5,7 @@ import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import naa;
+import nbl;
 
 public abstract class CmdTaskManger$UIThreadCallback
   implements CmdTaskManger.CommandCallback
@@ -19,7 +19,7 @@ public abstract class CmdTaskManger$UIThreadCallback
       b(paramNetworkRequest, paramBaseResponse, paramErrorMessage);
       return;
     }
-    a.post(new naa(this, paramNetworkRequest, paramBaseResponse, paramErrorMessage));
+    a.post(new nbl(this, paramNetworkRequest, paramBaseResponse, paramErrorMessage));
   }
   
   public abstract void b(@NonNull NetworkRequest paramNetworkRequest, @Nullable BaseResponse paramBaseResponse, @NonNull ErrorMessage paramErrorMessage);

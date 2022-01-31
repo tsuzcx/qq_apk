@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahri;
+import aifk;
+import aifl;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -10,7 +11,6 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.dalvik.DalvikReplacer;
-import com.tencent.mobileqq.statistics.cpu.CPUReport;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -59,8 +59,8 @@ public class NewRuntime
           localAppRuntime.setAppStateChangeListener(MemoryClearManagerNew.a());
         }
       }
-      if (BaseApplicationImpl.sProcessId != 1) {
-        CPUReport.b();
+      if ((BaseApplicationImpl.sProcessId != 1) && (BaseApplicationImpl.sProcessId != 4) && (BaseApplicationImpl.sProcessId != -1)) {
+        ThreadManager.getSubThreadHandler().postDelayed(new aifk(this), 5000L);
       }
       return true;
       bool = false;
@@ -100,7 +100,7 @@ public class NewRuntime
       b = DalvikReplacer.b;
     }
     if ((bool) && (BaseApplicationImpl.sProcessId == 1)) {
-      ThreadManager.getSubThreadHandler().postDelayed(new ahri(this), 5000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new aifl(this), 5000L);
     }
     return true;
   }

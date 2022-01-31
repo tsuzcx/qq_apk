@@ -1,14 +1,22 @@
-import android.widget.TextView;
+import com.tencent.av.VideoController;
 import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.ui.QavPanel;
 
-public class jqc
+class jqc
   implements Runnable
 {
-  public jqc(AVActivity paramAVActivity) {}
+  jqc(jpz paramjpz, DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
   public void run()
   {
-    ((TextView)this.a.findViewById(2131365814)).setVisibility(8);
+    QavPanel localQavPanel = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a;
+    if (this.jdField_a_of_type_Jpz.a.a.t) {}
+    for (int i = 2;; i = 0)
+    {
+      localQavPanel.a(true, i, false);
+      return;
+    }
   }
 }
 

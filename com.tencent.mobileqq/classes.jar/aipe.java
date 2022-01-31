@@ -1,74 +1,45 @@
-import java.nio.ByteBuffer;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.media.ThumbnailUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class aipe
+  implements BitmapDecoder
 {
-  public final int a;
-  public final long a;
-  public final byte[] a;
-  public final int b;
-  public final long b;
-  public final byte[] b;
-  public final long c;
-  public final long d;
-  public final long e;
+  public aipe(DeviceMsgThumbDownloader paramDeviceMsgThumbDownloader) {}
   
-  public aipe(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
+  public Bitmap a(URL paramURL)
   {
-    this.jdField_a_of_type_Int = 304;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.jdField_b_of_type_Int = 20;
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
-  }
-  
-  public void a(ByteBuffer paramByteBuffer)
-  {
-    paramByteBuffer.putShort((short)(this.jdField_a_of_type_Int & 0xFFFF));
-    byte[] arrayOfByte;
-    if (this.jdField_a_of_type_ArrayOfByte.length == this.jdField_a_of_type_Int) {
-      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    }
+    LocalMediaInfo localLocalMediaInfo = this.a.a(paramURL);
+    if (localLocalMediaInfo == null) {}
     for (;;)
     {
-      paramByteBuffer.put(arrayOfByte, 0, this.jdField_a_of_type_Int);
-      paramByteBuffer.putShort((short)(this.jdField_b_of_type_Int & 0xFFFF));
-      if (this.jdField_b_of_type_ArrayOfByte.length == this.jdField_b_of_type_Int) {
-        arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
-      }
-      for (;;)
+      return null;
+      paramURL = new BitmapFactory.Options();
+      paramURL.inDensity = 160;
+      paramURL.inTargetDensity = 160;
+      paramURL.inScreenDensity = 160;
+      try
       {
-        paramByteBuffer.put(arrayOfByte, 0, this.jdField_b_of_type_Int);
-        paramByteBuffer.putInt((int)(this.jdField_a_of_type_Long & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.jdField_b_of_type_Long & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
-        paramByteBuffer.putInt((int)(this.e & 0xFFFFFFFF));
-        return;
-        arrayOfByte = new byte[this.jdField_a_of_type_Int];
-        if (this.jdField_a_of_type_ArrayOfByte.length > this.jdField_a_of_type_Int) {}
-        for (int i = this.jdField_a_of_type_Int;; i = this.jdField_a_of_type_ArrayOfByte.length)
-        {
-          System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
-          while (i < this.jdField_a_of_type_Int)
-          {
-            arrayOfByte[i] = 0;
-            i += 1;
-          }
+        paramURL = BitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
+        if (paramURL == null) {
+          continue;
         }
-        arrayOfByte = new byte[this.jdField_b_of_type_Int];
-        if (this.jdField_b_of_type_ArrayOfByte.length > this.jdField_b_of_type_Int) {}
-        for (i = this.jdField_b_of_type_Int;; i = this.jdField_b_of_type_ArrayOfByte.length)
+        return ThumbnailUtils.extractThumbnail(paramURL, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbHeight, 2);
+      }
+      catch (OutOfMemoryError paramURL)
+      {
+        for (;;)
         {
-          System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
-          while (i < this.jdField_b_of_type_Int)
-          {
-            arrayOfByte[i] = 0;
-            i += 1;
+          if (QLog.isColorLevel()) {
+            QLog.e("VIdeoThumbDownloader", 2, "DeviceImgBitmapDecoder getBitmap", paramURL);
           }
+          paramURL = null;
         }
       }
     }
@@ -76,7 +47,7 @@ public class aipe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipe
  * JD-Core Version:    0.7.0.1
  */

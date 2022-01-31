@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
-import com.tencent.util.ProfilePerformanceReport;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.util.InputMethodUtil;
 
 public class snp
-  implements OnDrawCompleteListener
+  implements Runnable
 {
-  public snp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public snp(ForwardFriendListActivity paramForwardFriendListActivity, View paramView) {}
   
-  public void a()
+  public void run()
   {
-    ProfilePerformanceReport localProfilePerformanceReport = ProfilePerformanceReport.a;
-    if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a()))
-    {
-      if (!localProfilePerformanceReport.a(1)) {
-        localProfilePerformanceReport.b(1);
-      }
-      if ((!localProfilePerformanceReport.a(8)) && (localProfilePerformanceReport.a(5)) && (localProfilePerformanceReport.a(7))) {
-        localProfilePerformanceReport.b(8);
-      }
-      if ((!localProfilePerformanceReport.a(9)) && (localProfilePerformanceReport.a(6)) && (localProfilePerformanceReport.a(7))) {
-        localProfilePerformanceReport.b(9);
-      }
-    }
+    InputMethodUtil.a(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

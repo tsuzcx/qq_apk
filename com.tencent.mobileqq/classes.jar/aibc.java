@@ -1,52 +1,56 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.os.SystemClock;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ShareResource;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter.GamePlayOutData;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceScoreFilter;
+import java.util.List;
 
 public class aibc
-  implements BitmapDecoder
+  implements Animation.AnimationListener
 {
-  public aibc(DeviceMsgThumbDownloader paramDeviceMsgThumbDownloader) {}
+  public aibc(DanceScoreFilter paramDanceScoreFilter) {}
   
-  public Bitmap a(URL paramURL)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramURL = this.a.a(paramURL);
-    if (paramURL == null) {
-      paramURL = null;
-    }
-    for (;;)
+    DanceScoreFilter.a(this.a, true);
+    DanceScoreFilter.a(this.a, SystemClock.elapsedRealtime());
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    int i = ResourceManager.a().a().size() * 50;
+    int j = this.a.a.a.a;
+    if (j < i * 0.2F)
     {
-      return paramURL;
-      String str = paramURL.path;
-      if (TextUtils.isEmpty(str)) {
-        return null;
-      }
-      try
-      {
-        Bitmap localBitmap = this.a.a(str);
-        paramURL = localBitmap;
-        if (localBitmap == null)
-        {
-          paramURL = this.a.b(str);
-          return paramURL;
-        }
-      }
-      catch (Throwable paramURL)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-        }
-      }
+      DanceScoreFilter.b(this.a).a(DanceScoreFilter.a(this.a).a.d);
+      DanceScoreFilter.a(this.a, "C");
+      return;
     }
-    return null;
+    if (j < i * 0.3F)
+    {
+      DanceScoreFilter.b(this.a).a(DanceScoreFilter.a(this.a).a.c);
+      DanceScoreFilter.a(this.a, "B");
+      return;
+    }
+    if (j < i * 0.4F)
+    {
+      DanceScoreFilter.b(this.a).a(DanceScoreFilter.a(this.a).a.b);
+      DanceScoreFilter.a(this.a, "A");
+      return;
+    }
+    DanceScoreFilter.b(this.a).a(DanceScoreFilter.a(this.a).a.e);
+    DanceScoreFilter.a(this.a, "S");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aibc
  * JD-Core Version:    0.7.0.1
  */

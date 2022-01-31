@@ -1,27 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetApkNameCallback;
 
-public class adic
-  implements DialogInterface.OnClickListener
+public final class adic
+  implements Runnable
 {
-  public adic(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  public adic(String paramString, UniformDownloadUtil.GetApkNameCallback paramGetApkNameCallback) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    PresenceInterfaceImpl.jdField_a_of_type_Boolean = false;
-    PresenceInterfaceImpl.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
-    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
+    String str = UniformDownloadUtil.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadUtil$GetApkNameCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadUtil$GetApkNameCallback.a(str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adic
  * JD-Core Version:    0.7.0.1
  */

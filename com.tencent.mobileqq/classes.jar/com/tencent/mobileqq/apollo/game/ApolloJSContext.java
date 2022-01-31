@@ -16,8 +16,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebView;
 import java.lang.ref.WeakReference;
-import yml;
-import ymm;
+import ypr;
+import yps;
 
 public class ApolloJSContext
   implements Handler.Callback, IApolloGameInterface
@@ -25,9 +25,10 @@ public class ApolloJSContext
   public Bundle a;
   private IApolloGameInterface jdField_a_of_type_ComTencentMobileqqApolloGameIApolloGameInterface = new ApolloGameInterfaceProxy(this);
   public CmGameInitParams a;
-  private CmGameObserver jdField_a_of_type_ComTencentMobileqqApolloProcessSsoCmGameObserver = new yml(this);
+  private CmGameObserver jdField_a_of_type_ComTencentMobileqqApolloProcessSsoCmGameObserver = new ypr(this);
   private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   public String a;
+  public boolean a;
   
   public ApolloJSContext()
   {
@@ -61,6 +62,7 @@ public class ApolloJSContext
   {
     if (ApolloGameTool.a(this.jdField_a_of_type_JavaLangString))
     {
+      paramString2 = ApolloGameTool.b(paramString2);
       if (QLog.isColorLevel()) {
         QLog.d("ApolloJSContext", 1, "[notifyJSEVent] " + paramString1 + " " + paramString2);
       }
@@ -119,7 +121,7 @@ public class ApolloJSContext
   {
     if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (!TextUtils.isEmpty(paramString)))
     {
-      new Handler(Looper.getMainLooper()).post(new ymm(this, paramString, paramValueCallback));
+      new Handler(Looper.getMainLooper()).post(new yps(this, paramString, paramValueCallback));
       return;
     }
     QLog.e("ApolloJSContext", 1, "[execScript] context is null");
@@ -137,6 +139,14 @@ public class ApolloJSContext
     a(0, "sc.game_shell_share.local", "{}");
   }
   
+  public void b(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloJSContext", 2, new Object[] { "cmd:", paramString1 });
+    }
+    a(0, paramString1, paramString2);
+  }
+  
   public void c() {}
   
   public void d()
@@ -150,7 +160,7 @@ public class ApolloJSContext
   public void e()
   {
     ApolloGameView localApolloGameView = a();
-    if (localApolloGameView != null)
+    if ((localApolloGameView != null) && (!this.jdField_a_of_type_Boolean))
     {
       if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams == null) {
         this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = localApolloGameView.a();
@@ -158,8 +168,10 @@ public class ApolloJSContext
       if (QLog.isColorLevel()) {
         QLog.d("ApolloJSContext", 1, "[onLoadFinish] " + this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null) && (localApolloGameView.b)) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null) && (localApolloGameView.b))
+      {
         a(0, "sc.init_global_var.local", CmGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams));
+        this.jdField_a_of_type_Boolean = true;
       }
     }
   }

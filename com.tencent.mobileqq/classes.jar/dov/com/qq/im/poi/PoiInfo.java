@@ -1,14 +1,14 @@
 package dov.com.qq.im.poi;
 
-import anaq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anqv;
 
 public class PoiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anaq();
+  public static final Parcelable.Creator CREATOR = new anqv();
   public int a;
   public long a;
   public String a;

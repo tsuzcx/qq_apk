@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import mqq.app.MobileQQ;
 
 public class tla
   implements Runnable
 {
-  public tla(QzoneTiantaiTranslucentBrowserActivity paramQzoneTiantaiTranslucentBrowserActivity) {}
+  public tla(QQSettingMe paramQQSettingMe) {}
   
   public void run()
   {
-    QzoneTiantaiTranslucentBrowserActivity.a(this.a);
+    if (this.a.a != null)
+    {
+      String str = this.a.a.getCurrentAccountUin();
+      if (!TextUtils.isEmpty(str)) {
+        WebProcessManager.a(str, "key_individuation_click_time");
+      }
+      this.a.a.getApplication().getSharedPreferences("emoticon_panel_" + this.a.a.getCurrentAccountUin(), 0).edit().putLong("sp_key_market_open_time", System.currentTimeMillis()).commit();
+    }
   }
 }
 

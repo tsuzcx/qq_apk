@@ -1,31 +1,21 @@
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
 
-public class akbw
-  implements Runnable
+public final class akbw
+  implements WebProcessManager.WebProcessStartListener
 {
-  public akbw(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler, int paramInt) {}
+  public akbw(PreloadProcHitSession paramPreloadProcHitSession) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    TextView localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.a);
-    localTextView.setBackgroundColor(2130706432);
-    localTextView.setTextColor(2147483647);
-    StringBuilder localStringBuilder = new StringBuilder().append("当前内核:");
-    if (this.jdField_a_of_type_Int == 0) {}
-    for (String str = "系统WebView";; str = "x5 " + this.jdField_a_of_type_Int)
-    {
-      localTextView.setText(str);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.a.addContentView(localTextView, new RelativeLayout.LayoutParams(-2, -2));
-      return;
+    if ((paramBoolean) && (this.a != null)) {
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akbw
  * JD-Core Version:    0.7.0.1
  */

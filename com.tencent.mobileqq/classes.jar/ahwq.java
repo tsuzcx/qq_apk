@@ -1,100 +1,54 @@
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.search.model.IContactSearchModel;
+import com.tencent.mobileqq.search.model.TroopBatchAddFrdsSearchModelMember;
+import com.tencent.mobileqq.search.searchengine.TroopBatchAddFrdsSearchEngine;
+import java.util.Comparator;
 
 public class ahwq
-  extends SubAccountBindObserver
+  implements Comparator
 {
-  public ahwq(SubAccountProtocManager paramSubAccountProtocManager) {}
+  public ahwq(TroopBatchAddFrdsSearchEngine paramTroopBatchAddFrdsSearchEngine) {}
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
   {
-    Object localObject2;
-    if (QLog.isColorLevel())
+    int i = -1;
+    paramIContactSearchModel1 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel1;
+    paramIContactSearchModel2 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel2;
+    FriendsManager localFriendsManager = (FriendsManager)this.a.a.getManager(50);
+    boolean bool1 = localFriendsManager.b((String)paramIContactSearchModel1.a());
+    boolean bool2 = localFriendsManager.b((String)paramIContactSearchModel2.a());
+    if ((!bool1) && (!bool2))
     {
-      localObject2 = new StringBuilder().append("SubAccountProtocManager.onGetBindSubAccount() isSucc=").append(paramBoolean).append(" data.mSubUin=");
-      if (paramSubAccountBackProtocData == null)
+      bool1 = localFriendsManager.c((String)paramIContactSearchModel1.a());
+      bool2 = localFriendsManager.c((String)paramIContactSearchModel2.a());
+      if ((!bool1) && (!bool2)) {
+        return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
+      }
+      if (bool1 != bool2)
       {
-        ??? = "data is null";
-        QLog.d("SUB_ACCOUNT", 2, (String)???);
+        if (bool2) {
+          return -1;
+        }
+        return 1;
       }
+      return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
     }
-    else
+    if (bool1 != bool2)
     {
-      if (!SubAccountProtocManager.a(this.a).l) {
-        break label73;
-      }
-    }
-    for (;;)
-    {
-      return;
-      ??? = paramSubAccountBackProtocData.c;
-      break;
-      label73:
-      if ((!SubAccountProtocManager.a(this.a)) && (ThreadManager.getSubThreadHandler() != null)) {
-        ThreadManager.getSubThreadHandler().postDelayed(SubAccountProtocManager.a(this.a), 100L);
-      }
-      if (paramSubAccountBackProtocData != null)
+      if (bool2) {}
+      for (;;)
       {
-        if (paramSubAccountBackProtocData.a()) {
-          SubAccountControll.a(SubAccountProtocManager.a(this.a), paramSubAccountBackProtocData.a(), 2);
-        }
-        if (paramSubAccountBackProtocData.b())
-        {
-          ??? = paramSubAccountBackProtocData.b();
-          if (??? != null)
-          {
-            ??? = ((ArrayList)???).iterator();
-            while (((Iterator)???).hasNext())
-            {
-              localObject2 = (String)((Iterator)???).next();
-              SubAccountControll.c(SubAccountProtocManager.a(this.a), (String)localObject2);
-            }
-          }
-        }
-        paramSubAccountBackProtocData.a();
-      }
-      synchronized (SubAccountProtocManager.c())
-      {
-        SubAccountProtocManager.c(this.a, false);
-        SubAccountProtocManager.d(this.a, true);
-        if ((paramSubAccountBackProtocData == null) || (!paramSubAccountBackProtocData.b)) {
-          continue;
-        }
-        SubAccountControll.a(SubAccountProtocManager.a(this.a), paramSubAccountBackProtocData.c, false);
-        return;
+        return i;
+        i = 1;
       }
     }
-  }
-  
-  protected void b(boolean paramBoolean, SubAccountBackProtocData arg2)
-  {
-    synchronized ()
-    {
-      SubAccountProtocManager.a(this.a, false);
-      return;
-    }
-  }
-  
-  protected void c(boolean paramBoolean, SubAccountBackProtocData arg2)
-  {
-    synchronized ()
-    {
-      SubAccountProtocManager.b(this.a, false);
-      return;
-    }
+    return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahwq
  * JD-Core Version:    0.7.0.1
  */

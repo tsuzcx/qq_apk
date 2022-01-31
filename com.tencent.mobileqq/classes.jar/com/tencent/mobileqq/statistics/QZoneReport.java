@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import ahrt;
+import aifw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -30,7 +30,7 @@ public class QZoneReport
 {
   public static int a;
   private static long jdField_a_of_type_Long;
-  private static ahrt jdField_a_of_type_Ahrt = new ahrt();
+  private static aifw jdField_a_of_type_Aifw = new aifw();
   private static Calendar jdField_a_of_type_JavaUtilCalendar;
   private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
@@ -135,7 +135,7 @@ public class QZoneReport
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(NetConnInfoCenter.getServerTime());
     NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), QzonePublicMsgServlet.class);
     localNewIntent.putExtra("key_uin", Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
-    BaseApplicationImpl.getApplication().getRuntime().registObserver(jdField_a_of_type_Ahrt);
+    BaseApplicationImpl.getApplication().getRuntime().registObserver(jdField_a_of_type_Aifw);
     BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800915C", "0X800915C", 0, 0, "", "", "", "");
   }
@@ -189,7 +189,7 @@ public class QZoneReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.QZoneReport
  * JD-Core Version:    0.7.0.1
  */

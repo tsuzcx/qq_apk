@@ -1,53 +1,23 @@
-import dov.com.qq.im.capture.paster.CaptureComboPtvTemplate;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
 
 public class amwp
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+  implements Runnable
 {
-  public amwp(CaptureComboPtvTemplate paramCaptureComboPtvTemplate) {}
+  public amwp(QzoneModuleManager paramQzoneModuleManager) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void run()
   {
-    synchronized (CaptureComboPtvTemplate.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(CaptureComboPtvTemplate.a(this.a).id))
-      {
-        CaptureComboPtvTemplate.a(this.a).downloading = true;
-        CaptureComboPtvTemplate.a(this.a, 1.0F * paramInt / 100.0F);
-        CaptureComboPtvTemplate.a(this.a, 1);
-      }
-      return;
-    }
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    synchronized (CaptureComboPtvTemplate.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(CaptureComboPtvTemplate.a(this.a).id))
-      {
-        CaptureComboPtvTemplate.a(this.a).downloading = false;
-        CaptureComboPtvTemplate.a(this.a).usable = paramBoolean;
-      }
-      if (paramBoolean)
-      {
-        if (CaptureComboPtvTemplate.a(this.a).id.equals(paramPtvTemplateInfo.id))
-        {
-          CaptureComboPtvTemplate.a(this.a, 3);
-          CaptureComboPtvTemplate.a(this.a, 1.0F);
-          this.a.b();
-        }
-        return;
-      }
-      this.a.a(1);
-      CaptureComboPtvTemplate.a(this.a, 2);
-    }
+    int i = StatisticCollector.a();
+    QLog.i("QzoneModuleManager", 1, "current versionNum is:" + i);
+    StatisticCollector.a(i + 6000);
+    QzoneModuleManager.access$102(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwp
  * JD-Core Version:    0.7.0.1
  */

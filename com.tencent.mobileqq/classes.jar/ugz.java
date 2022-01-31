@@ -1,20 +1,29 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class ugz
-  extends View.AccessibilityDelegate
+  implements Runnable
 {
-  public ugz(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  public ugz(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  @TargetApi(16)
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public void run()
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramAccessibilityNodeInfo.setVisibleToUser(false);
+    try
+    {
+      if ((VerifyPhoneNumActivity.a(this.a) != null) && (VerifyPhoneNumActivity.a(this.a).isShowing()))
+      {
+        VerifyPhoneNumActivity.a(this.a).dismiss();
+        VerifyPhoneNumActivity.a(this.a).cancel();
+      }
+      VerifyPhoneNumActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }

@@ -8,7 +8,7 @@ import android.view.View;
 import com.tencent.biz.qqstory.view.widget.LoadMoreLayout;
 import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
 import com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewWithHeaderFooter;
-import ooo;
+import oqi;
 
 public class XRecyclerView
   extends AbsPullToRefreshView2
@@ -37,17 +37,17 @@ public class XRecyclerView
   
   private void b()
   {
-    LayoutInflater.from(getContext()).inflate(2130971695, this, true);
+    LayoutInflater.from(getContext()).inflate(2130971744, this, true);
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter = ((RecyclerViewWithHeaderFooter)findViewById(2131375327));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter = ((RecyclerViewWithHeaderFooter)findViewById(2131375558));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper = new LoadingMoreHelper(localLoadMoreLayout, getContext());
     this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.b(localLoadMoreLayout);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.setOnScrollListener(new ooo(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.setOnScrollListener(new oqi(this));
   }
   
   protected View a()
   {
-    return LayoutInflater.from(getContext()).inflate(2130970769, this, false);
+    return LayoutInflater.from(getContext()).inflate(2130970817, this, false);
   }
   
   public LoadingMoreHelper a()

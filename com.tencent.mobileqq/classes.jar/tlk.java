@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 
 public class tlk
-  implements DialogInterface.OnClickListener
+  extends GameCenterObserver
 {
-  public tlk(RegisterActivity paramRegisterActivity) {}
+  public tlk(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a = 0;
-    this.a.finish();
+    if (this.a.c)
+    {
+      this.a.k();
+      return;
+    }
+    QQSettingMe.a(this.a, true);
   }
 }
 

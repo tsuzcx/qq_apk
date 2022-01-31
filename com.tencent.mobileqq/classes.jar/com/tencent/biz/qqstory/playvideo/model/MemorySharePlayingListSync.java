@@ -5,7 +5,7 @@ import com.tencent.biz.qqstory.database.VideoCollectionEntry;
 import com.tencent.biz.qqstory.network.request.GetCollectionVideoListRequest;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.AssertUtils;
-import nnh;
+import nou;
 
 public class MemorySharePlayingListSync
   extends BasePagePlayingListSync
@@ -62,7 +62,7 @@ public class MemorySharePlayingListSync
     localGetCollectionVideoListRequest.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
     localGetCollectionVideoListRequest.f = this.jdField_d_of_type_Int;
     SLog.d("Q.qqstory.player.MemorySharePlayingListSync", "loadCollectionVideo with timezone. uid=%s feedid=%s identify=%d collectionId=%s timeZoneOffset=%d", new Object[] { this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, Integer.valueOf(this.jdField_d_of_type_Int), this.jdField_c_of_type_JavaLangString, Integer.valueOf(localGetCollectionVideoListRequest.jdField_e_of_type_Int) });
-    CmdTaskManger.a().a(localGetCollectionVideoListRequest, new nnh(this));
+    CmdTaskManger.a().a(localGetCollectionVideoListRequest, new nou(this));
   }
 }
 

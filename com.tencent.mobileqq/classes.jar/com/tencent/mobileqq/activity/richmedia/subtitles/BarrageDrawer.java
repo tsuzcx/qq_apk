@@ -16,8 +16,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import xsi;
-import xsv;
+import xvo;
+import xwb;
 
 public class BarrageDrawer
   extends BaseAnimDrawer
@@ -28,16 +28,16 @@ public class BarrageDrawer
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private xsv jdField_a_of_type_Xsv;
+  private xwb jdField_a_of_type_Xwb;
   private float[] jdField_a_of_type_ArrayOfFloat;
   private int jdField_b_of_type_Int = 150;
   private ArrayList jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   private Map jdField_b_of_type_JavaUtilMap = new HashMap();
-  private xsv jdField_b_of_type_Xsv;
+  private xwb jdField_b_of_type_Xwb;
   private int jdField_c_of_type_Int = 92;
-  private xsv jdField_c_of_type_Xsv;
+  private xwb jdField_c_of_type_Xwb;
   private int jdField_d_of_type_Int = 136;
-  private xsv jdField_d_of_type_Xsv;
+  private xwb jdField_d_of_type_Xwb;
   private int e = 5;
   private int f = 15;
   private int g = 25;
@@ -92,7 +92,7 @@ public class BarrageDrawer
     }
     float f1 = a(paramInt2);
     float f2 = (int)a(true);
-    paramString = new xsi(paramLong1, a(paramLong2), a(), b(), paramFloat2, d(), paramString, paramFloat1, paramInt1, f2, f1, -1.0F, this.jdField_c_of_type_Int, this.e, this.jdField_a_of_type_AndroidGraphicsTypeface);
+    paramString = new xvo(paramLong1, a(paramLong2), a(), b(), paramFloat2, d(), paramString, paramFloat1, paramInt1, f2, f1, -1.0F, this.jdField_c_of_type_Int, this.e, this.jdField_a_of_type_AndroidGraphicsTypeface);
     paramArrayList.add(paramString);
     localLinkedList1.add(paramString);
   }
@@ -112,10 +112,10 @@ public class BarrageDrawer
   
   private float c()
   {
-    if (this.jdField_d_of_type_Xsv == null) {
-      this.jdField_d_of_type_Xsv = new xsv(this.h, 2);
+    if (this.jdField_d_of_type_Xwb == null) {
+      this.jdField_d_of_type_Xwb = new xwb(this.h, 2);
     }
-    int i = this.jdField_d_of_type_Xsv.a();
+    int i = this.jdField_d_of_type_Xwb.a();
     if ((this.jdField_a_of_type_ArrayOfFloat != null) && (i >= 0) && (i < this.jdField_a_of_type_ArrayOfFloat.length)) {
       return this.jdField_a_of_type_ArrayOfFloat[i] * c() / 1000.0F;
     }
@@ -124,10 +124,10 @@ public class BarrageDrawer
   
   private int e()
   {
-    if (this.jdField_a_of_type_Xsv == null) {
-      this.jdField_a_of_type_Xsv = new xsv(4, 2);
+    if (this.jdField_a_of_type_Xwb == null) {
+      this.jdField_a_of_type_Xwb = new xwb(4, 2);
     }
-    return this.jdField_a_of_type_Xsv.a();
+    return this.jdField_a_of_type_Xwb.a();
   }
   
   private int f()
@@ -135,10 +135,10 @@ public class BarrageDrawer
     if ((this.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_b_of_type_JavaUtilArrayList.size() == 0)) {
       return 0;
     }
-    if (this.jdField_c_of_type_Xsv == null) {
-      this.jdField_c_of_type_Xsv = new xsv(this.jdField_b_of_type_JavaUtilArrayList.size(), 1);
+    if (this.jdField_c_of_type_Xwb == null) {
+      this.jdField_c_of_type_Xwb = new xwb(this.jdField_b_of_type_JavaUtilArrayList.size(), 1);
     }
-    int i = this.jdField_c_of_type_Xsv.a();
+    int i = this.jdField_c_of_type_Xwb.a();
     return ((Integer)this.jdField_b_of_type_JavaUtilArrayList.get(i)).intValue() | 0xFF000000;
   }
   
@@ -147,10 +147,10 @@ public class BarrageDrawer
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
       return 0;
     }
-    if (this.jdField_b_of_type_Xsv == null) {
-      this.jdField_b_of_type_Xsv = new xsv(this.jdField_a_of_type_JavaUtilArrayList.size(), 2);
+    if (this.jdField_b_of_type_Xwb == null) {
+      this.jdField_b_of_type_Xwb = new xwb(this.jdField_a_of_type_JavaUtilArrayList.size(), 2);
     }
-    return this.jdField_b_of_type_Xsv.a();
+    return this.jdField_b_of_type_Xwb.a();
   }
   
   public int a()
@@ -180,7 +180,7 @@ public class BarrageDrawer
     {
       Iterator localIterator2 = ((ArrayList)localIterator1.next()).iterator();
       while (localIterator2.hasNext()) {
-        ((xsi)localIterator2.next()).g();
+        ((xvo)localIterator2.next()).g();
       }
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
@@ -272,21 +272,21 @@ public class BarrageDrawer
         }
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((xsi)((Iterator)localObject).next()).a(paramWordingItem.jdField_a_of_type_JavaLangString);
+          ((xvo)((Iterator)localObject).next()).a(paramWordingItem.jdField_a_of_type_JavaLangString);
         }
         break;
         if (QLog.isColorLevel()) {
           QLog.d("BaseAnimDrawer", 2, "item exsit, update ,size：" + ((ArrayList)localObject).size());
         }
       }
-      if (this.jdField_a_of_type_Xsv == null) {
-        this.jdField_a_of_type_Xsv = new xsv(4, 2);
+      if (this.jdField_a_of_type_Xwb == null) {
+        this.jdField_a_of_type_Xwb = new xwb(4, 2);
       }
       j = a(0);
       int i6;
       if (j >= 0)
       {
-        this.jdField_a_of_type_Xsv.a(j);
+        this.jdField_a_of_type_Xwb.a(j);
         i = j;
         i1 = f();
         i6 = g();
@@ -295,7 +295,7 @@ public class BarrageDrawer
         if (k < 0) {
           break label613;
         }
-        this.jdField_a_of_type_Xsv.a(k);
+        this.jdField_a_of_type_Xwb.a(k);
         m = k;
         j = k;
         k = m;
@@ -306,7 +306,7 @@ public class BarrageDrawer
         if (k < 0) {
           break label630;
         }
-        this.jdField_a_of_type_Xsv.a(k);
+        this.jdField_a_of_type_Xwb.a(k);
       }
       for (;;)
       {
@@ -362,7 +362,7 @@ public class BarrageDrawer
     {
       Iterator localIterator2 = ((ArrayList)localIterator1.next()).iterator();
       while (localIterator2.hasNext()) {
-        ((xsi)localIterator2.next()).d();
+        ((xvo)localIterator2.next()).d();
       }
     }
     return true;
@@ -395,7 +395,7 @@ public class BarrageDrawer
     label102:
     if (((Iterator)localObject2).hasNext())
     {
-      if (((xsi)((Iterator)localObject2).next()).a(2) > paramLong1) {
+      if (((xvo)((Iterator)localObject2).next()).a(2) > paramLong1) {
         break label500;
       }
       i += 1;
@@ -412,52 +412,52 @@ public class BarrageDrawer
         if (!((Iterator)localObject1).hasNext()) {
           break;
         }
-        localObject2 = (xsi)((Iterator)localObject1).next();
-        if (((xsi)localObject2).a(2) == paramLong1) {
-          ((xsi)localObject2).a(6, a(true));
+        localObject2 = (xvo)((Iterator)localObject1).next();
+        if (((xvo)localObject2).a(2) == paramLong1) {
+          ((xvo)localObject2).a(6, a(true));
         }
         int j = 1;
-        if ((((xsi)localObject2).a(6) > a(true)) || (((xsi)localObject2).a(6) + ((xsi)localObject2).a(3) < 0.0F) || (((xsi)localObject2).a(2) > paramLong1))
+        if ((((xvo)localObject2).a(6) > a(true)) || (((xvo)localObject2).a(6) + ((xvo)localObject2).a(3) < 0.0F) || (((xvo)localObject2).a(2) > paramLong1))
         {
           int k = 0;
           j = k;
           if (QLog.isColorLevel())
           {
-            QLog.d("BaseAnimDrawer", 2, "barrage invisible: posx:" + ((xsi)localObject2).a(6) + "  width:" + ((xsi)localObject2).a(3) + "  index:" + ((xsi)localObject2).a(2) + " curindex:" + paramLong1);
+            QLog.d("BaseAnimDrawer", 2, "barrage invisible: posx:" + ((xvo)localObject2).a(6) + "  width:" + ((xvo)localObject2).a(3) + "  index:" + ((xvo)localObject2).a(2) + " curindex:" + paramLong1);
             j = k;
           }
         }
-        if ((j == 0) && (((xsi)localObject2).a(6) < 0.0F))
+        if ((j == 0) && (((xvo)localObject2).a(6) < 0.0F))
         {
           if (i > 1)
           {
-            ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(((xsi)localObject2).a(1)));
+            ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(((xvo)localObject2).a(1)));
             if (localArrayList != null)
             {
               localArrayList.remove(localObject2);
               if (localArrayList.size() == 0) {
-                this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(((xsi)localObject2).a(1)));
+                this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(((xvo)localObject2).a(1)));
               }
             }
             ((Iterator)localObject1).remove();
-            ((xsi)localObject2).g();
+            ((xvo)localObject2).g();
             i -= 1;
           }
           else
           {
-            ((xsi)localObject2).c();
+            ((xvo)localObject2).c();
           }
         }
-        else if (((xsi)localObject2).a(2) <= paramLong1)
+        else if (((xvo)localObject2).a(2) <= paramLong1)
         {
           if (!c()) {
-            ((xsi)localObject2).a();
+            ((xvo)localObject2).a();
           }
           if (paramCanvas != null) {
-            ((xsi)localObject2).a(paramCanvas);
+            ((xvo)localObject2).a(paramCanvas);
           }
           if (paramRenderBuffer != null) {
-            ((xsi)localObject2).a(paramRenderBuffer);
+            ((xvo)localObject2).a(paramRenderBuffer);
           }
           bool2 = true;
         }

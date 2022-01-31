@@ -1,17 +1,24 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
+import com.tencent.biz.qqstory.base.Producer.ConsumerBase;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.async.ThreadOffFunction;
 import com.tribe.async.reactive.Stream;
-import nwv;
-import nww;
+import nyi;
+import nyj;
 
 public class FeedCommentBackgroundSyncer$CommentPullConsumer
-  extends FeedCommentBackgroundSyncer.ConsumerBase
+  extends Producer.ConsumerBase
 {
   private Stream a;
   
-  public void a()
+  public void a(FeedCommentSync paramFeedCommentSync)
+  {
+    this.a = Stream.of(paramFeedCommentSync).map(new ThreadOffFunction(2)).map(new nyj(null));
+    this.a.subscribe(new nyi(this));
+  }
+  
+  public void c()
   {
     SLog.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
     if (this.a != null)
@@ -19,12 +26,6 @@ public class FeedCommentBackgroundSyncer$CommentPullConsumer
       this.a.cancel();
       this.a = null;
     }
-  }
-  
-  public void a(FeedCommentSync paramFeedCommentSync)
-  {
-    this.a = Stream.of(paramFeedCommentSync).map(new ThreadOffFunction(2)).map(new nww(null));
-    this.a.subscribe(new nwv(this));
   }
 }
 

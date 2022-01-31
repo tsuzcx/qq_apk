@@ -1,34 +1,38 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import java.lang.ref.WeakReference;
 
-public final class ajkj
-  implements DownloadParams.DecodeHandler
+class ajkj
+  implements Runnable
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  ajkj(ajkh paramajkh, int paramInt) {}
+  
+  public void run()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).e = this.jdField_a_of_type_Int;
+    Object localObject = (XMediaEditor)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).get();
+    if (localObject != null)
     {
-      do
+      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).c);
+      if ((localObject instanceof ImageItem.ImageViewHolder))
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 2);
-    paramDownloadParams = (int[])localObject;
-    return ImageUtil.d(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+        localObject = (ImageItem.ImageViewHolder)localObject;
+        if (ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).d.equals(((ImageItem.ImageViewHolder)localObject).a.getTag()))
+        {
+          ((ImageItem.ImageViewHolder)localObject).a.setVisibility(0);
+          ((ImageItem.ImageViewHolder)localObject).a.setDrawStatus(1);
+          ((ImageItem.ImageViewHolder)localObject).a.setAnimProgress(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).e, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).d);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkj
  * JD-Core Version:    0.7.0.1
  */

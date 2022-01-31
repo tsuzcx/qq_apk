@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.utils.LogTag;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener;
+import com.tencent.widget.AbsListView;
 
 public class wsn
-  implements Runnable
+  extends AvatarPendantActivity.AnimationScrollListener
 {
-  public wsn(AlbumListAdapter paramAlbumListAdapter) {}
-  
-  public void run()
+  public wsn(AvatarPendantActivity paramAvatarPendantActivity)
   {
-    LogTag.a();
-    this.a.a(100);
-    LogTag.a("PEAK", "queryAlbumList");
+    super(paramAvatarPendantActivity);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.e == AvatarPendantActivity.d) {}
+    while (Build.VERSION.SDK_INT < 14) {
+      return;
+    }
+    this.a.b();
   }
 }
 

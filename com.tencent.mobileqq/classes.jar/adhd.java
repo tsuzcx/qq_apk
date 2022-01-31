@@ -1,81 +1,17 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicTab;
-import com.tencent.mobileqq.hotpic.HotPicTagInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
-public class adhd
-  extends BaseAdapter
+public final class adhd
+  implements Comparator
 {
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
-  public List a;
-  boolean jdField_a_of_type_Boolean;
-  
-  public adhd(HotPicTab paramHotPicTab, List paramList, ArrayList paramArrayList, boolean paramBoolean)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramArrayList.clone());
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = new adhf(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab);
-      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2130968648, null);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131362992));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      String str = ((HotPicTagInfo)getItem(paramInt)).tagName;
-      paramViewGroup = paramViewGroup.a;
-      paramViewGroup.setText(str);
-      paramViewGroup.setTextSize(2, HotPicTab.b());
-      paramViewGroup.setTextColor(HotPicTab.c());
-      paramViewGroup.setPadding(0, 0, 0, 0);
-      paramViewGroup.setFocusable(true);
-      paramViewGroup.setGravity(17);
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
-      paramView.setContentDescription(str);
-      paramView.setFocusable(true);
-      paramView.setOnHoverListener(new adhe(this));
-      if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
-      {
-        ReportController.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, paramInt + "", "", str, "");
-        HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
-      }
-      return paramView;
-      paramViewGroup = (adhf)paramView.getTag();
-    }
+    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhd
  * JD-Core Version:    0.7.0.1
  */

@@ -33,8 +33,8 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
 import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
-import wgz;
-import wha;
+import wke;
+import wkf;
 
 public class SystemRequestInfoView
   extends LinearLayout
@@ -45,7 +45,7 @@ public class SystemRequestInfoView
   private Intent jdField_a_of_type_AndroidContentIntent;
   Button jdField_a_of_type_AndroidWidgetButton;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wgz(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wke(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public QQProgressDialog a;
   public String a;
@@ -78,7 +78,7 @@ public class SystemRequestInfoView
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getContext(), a());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new wha(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new wkf(this));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
@@ -101,7 +101,7 @@ public class SystemRequestInfoView
   public void onClick(View paramView)
   {
     if (!NetworkUtil.d(getContext())) {
-      QQToast.a(getContext(), getResources().getString(2131433196), 0).b(a());
+      QQToast.a(getContext(), getResources().getString(2131433213), 0).b(a());
     }
     label835:
     for (;;)
@@ -123,7 +123,7 @@ public class SystemRequestInfoView
         if (i == 0) {
           break label835;
         }
-        a(2131434436);
+        a(2131434453);
         return;
         long l1 = FriendSystemMsgController.a().b();
         paramView = FriendSystemMsgController.a().a(Long.valueOf(l1));

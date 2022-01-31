@@ -1,14 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
 
-public class anla
+class anla
   implements Runnable
 {
-  public anla(EditTextPanel paramEditTextPanel, int paramInt) {}
+  anla(anky paramanky) {}
   
   public void run()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel.a.smoothScrollToPosition(this.jdField_a_of_type_Int);
+    QQToast.a(this.a.a.a, "网络出问题了，一会儿再试试。", 0).a();
   }
 }
 

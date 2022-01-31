@@ -1,57 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.AuthDevForRoamMsgActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class rnv
-  extends BroadcastReceiver
+  implements Handler.Callback
 {
-  public rnv(BaseChatPie paramBaseChatPie) {}
+  public rnv(AuthDevForRoamMsgActivity paramAuthDevForRoamMsgActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramContext = paramIntent.getAction();
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie", 2, "receive action_recv_video_request");
-      }
-      this.a.f(2);
+    default: 
+      return false;
     }
-    do
+    this.a.findViewById(2131372248).setEnabled(true);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    if (paramMessage.arg1 == 0) {
+      QQToast.a(this.a.getApplicationContext(), 2, "开启保护成功", 0).b(this.a.getTitleBarHeight());
+    }
+    for (;;)
     {
-      return;
-      if ("android.intent.action.PHONE_STATE".equals(paramContext))
-      {
-        paramContext = (TelephonyManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("phone");
-        if (paramContext.getCallState() == 1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.aio.BaseChatPie", 2, "receive action_phone_state_changed|call_state_ringing");
-          }
-          this.a.f(2);
-        }
-        if (paramContext.getCallState() == 1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.aio.BaseChatPie", 2, "receive action_phone_state_changed|call_state_ringing");
-          }
-          paramIntent = MediaPlayerManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (paramIntent.b()) {
-            paramIntent.a(false);
-          }
-        }
-        this.a.a(paramContext.getCallState());
-        return;
-      }
-    } while ((BaseChatPie.h() != 1) || (!"vivo_smart_shot_enter".equals(paramContext)));
-    if (QLog.isColorLevel()) {
-      QLog.d("vivo", 2, "receive action_vivo_smart_shot_enter");
+      this.a.setResult(1);
+      this.a.finish();
+      return false;
+      QQToast.a(this.a.getApplicationContext(), 2, "开启保护失败", 0).b(this.a.getTitleBarHeight());
     }
-    BaseChatPie.a(this.a, Boolean.valueOf(false));
   }
 }
 

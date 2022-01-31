@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class roj
   implements Runnable
 {
-  public roj(BaseChatPie paramBaseChatPie, MessageForShakeWindow paramMessageForShakeWindow) {}
+  public roj(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.am();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, false);
+    try
+    {
+      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (AuthDevVerifyCodeActivity.a(this.a).isShowing()))
+      {
+        AuthDevVerifyCodeActivity.a(this.a).dismiss();
+        AuthDevVerifyCodeActivity.a(this.a).cancel();
+      }
+      AuthDevVerifyCodeActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

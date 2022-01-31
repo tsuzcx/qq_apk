@@ -17,22 +17,22 @@ public class RetentionReport
   
   public static void a(int paramInt)
   {
-    a(paramInt, null);
+    a(String.valueOf(paramInt), null);
   }
   
-  public static void a(int paramInt, HashMap paramHashMap)
+  public static void a(String paramString, HashMap paramHashMap)
   {
-    if (a(paramInt))
+    if (a(paramString))
     {
       i = QzoneConfig.getInstance().getConfig("ClientReport", "retention_report", 0);
       if ((i == 0) || (i == 2)) {
-        b(paramInt, paramHashMap);
+        b(paramString, paramHashMap);
       }
       if ((i == 0) || (i == 1)) {
-        LpReport_Retention_dc03208.report(paramInt, paramHashMap);
+        LpReport_Retention_dc03208.report(paramString, paramHashMap);
       }
       if (QZLog.isColorLevel()) {
-        QZLog.i("Retention.Report", 2, new Object[] { "RetentionReport, functionid:", Integer.valueOf(paramInt) });
+        QZLog.i("Retention.Report", 2, new Object[] { "RetentionReport, functionid:", paramString });
       }
     }
     while (!QZLog.isColorLevel())
@@ -40,10 +40,10 @@ public class RetentionReport
       int i;
       return;
     }
-    QZLog.i("Retention.Report", 2, new Object[] { "not meet condition, functionid:", Integer.valueOf(paramInt) });
+    QZLog.i("Retention.Report", 2, new Object[] { "not meet condition, functionid:", paramString });
   }
   
-  public static boolean a(int paramInt)
+  public static boolean a(String paramString)
   {
     if (a.size() == 0)
     {
@@ -61,8 +61,7 @@ public class RetentionReport
             if (!TextUtils.isEmpty(localCharSequence)) {}
             try
             {
-              int k = Integer.parseInt(localCharSequence);
-              a.add(Integer.valueOf(k));
+              a.add(localCharSequence);
               i += 1;
             }
             catch (Exception localException)
@@ -76,25 +75,25 @@ public class RetentionReport
         }
       }
     }
-    return (a.size() <= 0) || (!a.contains(new Integer(paramInt)));
+    return (a.size() <= 0) || (!a.contains(paramString));
   }
   
-  public static void b(int paramInt, HashMap paramHashMap)
+  public static void b(String paramString, HashMap paramHashMap)
   {
     HashMap localHashMap = paramHashMap;
     if (paramHashMap == null) {}
     try
     {
       localHashMap = new HashMap();
-      localHashMap.put("function_id", String.valueOf(paramInt));
+      localHashMap.put("function_id", paramString);
       paramHashMap = new Properties();
       paramHashMap.putAll(localHashMap);
-      MTAReportController.a(BaseApplicationImpl.getContext()).reportKVEvent("qzone_retention_" + paramInt, paramHashMap);
+      MTAReportController.a(BaseApplicationImpl.getContext()).reportKVEvent("qzone_retention_" + paramString, paramHashMap);
       return;
     }
-    catch (Exception paramHashMap)
+    catch (Exception paramString)
     {
-      QZLog.e("Retention.Report", "统计率上报失败", paramHashMap);
+      QZLog.e("Retention.Report", "统计率上报失败", paramString);
     }
   }
 }

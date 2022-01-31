@@ -6,7 +6,7 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
 import java.util.List;
-import nng;
+import not;
 
 public abstract class BasePagePlayingListSync
   extends DefaultPlayerVideoListSynchronizer
@@ -14,7 +14,7 @@ public abstract class BasePagePlayingListSync
   public int a;
   public String a;
   public List a;
-  public nng a;
+  public not a;
   protected int b;
   public String b;
   public boolean b;
@@ -36,8 +36,8 @@ public abstract class BasePagePlayingListSync
   {
     super.a();
     this.e = true;
-    this.jdField_a_of_type_Nng = new nng(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nng);
+    this.jdField_a_of_type_Not = new not(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Not);
   }
   
   protected boolean a(int paramInt)
@@ -63,7 +63,7 @@ public abstract class BasePagePlayingListSync
   {
     super.b();
     this.e = false;
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nng);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Not);
   }
   
   protected void b(int paramInt)

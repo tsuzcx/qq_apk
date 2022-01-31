@@ -100,13 +100,13 @@ import mqq.app.AppActivity;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
-import pbd;
-import pbg;
-import pbi;
-import pbj;
-import pbk;
-import pbm;
-import pbo;
+import pcx;
+import pda;
+import pdc;
+import pdd;
+import pde;
+import pdg;
+import pdi;
 
 public class Share
   implements View.OnClickListener, ReportDef
@@ -179,8 +179,8 @@ public class Share
     this.jdField_b_of_type_AndroidAppActivity = null;
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
     this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new pbm(this);
-    this.jdField_a_of_type_AndroidOsHandler = new pbo(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new pdg(this);
+    this.jdField_a_of_type_AndroidOsHandler = new pdi(this);
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "Share secret init share");
     }
@@ -448,7 +448,7 @@ public class Share
         }
       }
       if (!QZoneShareManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_b_of_type_AndroidAppActivity, (Bundle)localObject1, null)) {
-        QRUtils.a(1, 2131435463);
+        QRUtils.a(1, 2131435480);
       }
       return;
       this.jdField_b_of_type_AndroidAppActivity = this.jdField_a_of_type_AndroidAppActivity;
@@ -510,7 +510,7 @@ public class Share
         localObject1 = null;
         localObject2 = null;
         str1 = "http://url.cn/PWkhNu";
-        localObject3 = localResources.getString(2131430099);
+        localObject3 = localResources.getString(2131430116);
         continue;
         paramBitmap = "plugin";
         localObject1 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { str5 });
@@ -560,13 +560,13 @@ public class Share
             }
             if (paramInt != 0)
             {
-              localObject3 = this.jdField_b_of_type_AndroidAppActivity.getString(2131430112);
+              localObject3 = this.jdField_b_of_type_AndroidAppActivity.getString(2131430129);
               str1 = "https://q.url.cn/s/jBJuV";
               paramBitmap = "plugin";
               localObject1 = "mqqapi://readinjoy/open?src_type=internal&version=1&target=1";
               localObject2 = "mqqapi://readinjoy/open?src_type=internal&version=1&target=1";
             }
-            ShareMsgHelper.a(this.jdField_a_of_type_AndroidAppActivity, 1001, 1, "web_share", str5, paramString4, paramString1, paramString2, String.format(localResources.getString(2131430100), new Object[] { paramString1 }), paramString3, "web", null, null, null, paramBitmap, null, (String)localObject1, (String)localObject2, str1, (String)localObject3, "", localIntent, -1, null, -1L);
+            ShareMsgHelper.a(this.jdField_a_of_type_AndroidAppActivity, 1001, 1, "web_share", str5, paramString4, paramString1, paramString2, String.format(localResources.getString(2131430117), new Object[] { paramString1 }), paramString3, "web", null, null, null, paramBitmap, null, (String)localObject1, (String)localObject2, str1, (String)localObject3, "", localIntent, -1, null, -1L);
             i1 = 0;
             if (TextUtils.isEmpty(paramString4)) {
               i1 = 1;
@@ -616,7 +616,7 @@ public class Share
       {
         if (paramInt != 0)
         {
-          localObject3 = this.jdField_b_of_type_AndroidAppActivity.getString(2131430112);
+          localObject3 = this.jdField_b_of_type_AndroidAppActivity.getString(2131430129);
           paramBitmap = "https://q.url.cn/s/jBJuV";
           localObject1 = "plugin";
           localObject2 = "mqqapi://readinjoy/open?src_type=internal&version=1&target=1";
@@ -639,9 +639,9 @@ public class Share
           label1739:
           for (paramBitmap = ((WebViewFragment)localObject5).k;; paramBitmap = ((WebViewFragment)localObject5).i)
           {
-            ShareMsgHelper.a(this.jdField_b_of_type_AndroidAppActivity, 1001, 1, "web_share", paramBitmap, paramString4, paramString1, paramString2, this.jdField_b_of_type_AndroidAppActivity.getString(2131430100, new Object[] { paramString1 }), paramString3, "web", null, null, null, (String)localObject1, null, (String)localObject2, str1, (String)localObject4, (String)localObject3, "", localIntent, -1, "http://url.cn/UQoBHn", 801097412L);
+            ShareMsgHelper.a(this.jdField_b_of_type_AndroidAppActivity, 1001, 1, "web_share", paramBitmap, paramString4, paramString1, paramString2, this.jdField_b_of_type_AndroidAppActivity.getString(2131430117, new Object[] { paramString1 }), paramString3, "web", null, null, null, (String)localObject1, null, (String)localObject2, str1, (String)localObject4, (String)localObject3, "", localIntent, -1, "http://url.cn/UQoBHn", 801097412L);
             break;
-            localObject3 = this.jdField_b_of_type_AndroidAppActivity.getString(2131430099);
+            localObject3 = this.jdField_b_of_type_AndroidAppActivity.getString(2131430116);
             localObject1 = "app";
             paramBitmap = MttLoader.getBrowserInfo(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
             if ((paramBitmap != null) && (!TextUtils.isEmpty(paramBitmap.packageName))) {}
@@ -660,7 +660,7 @@ public class Share
               label1769:
               if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
               {
-                this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new pbi(this, paramString3);
+                this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new pdc(this, paramString3);
                 WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
               }
               this.k = String.valueOf(System.currentTimeMillis());
@@ -768,7 +768,7 @@ public class Share
               if (ReadInJoyShareManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_b_of_type_AndroidAppActivity, (Bundle)localObject1, null, 0)) {
                 break;
               }
-              QRUtils.a(1, 2131435463);
+              QRUtils.a(1, 2131435480);
               return;
             }
             if ((paramInt == 6) || (paramInt == 7))
@@ -788,7 +788,7 @@ public class Share
                 if (QLog.isColorLevel()) {
                   QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina installSinaWeibo:true");
                 }
-                ThreadManager.executeOnSubThread(new pbj(this, paramString4, paramString1, paramString3, paramString2));
+                ThreadManager.executeOnSubThread(new pdd(this, paramString4, paramString1, paramString3, paramString2));
               }
               catch (PackageManager.NameNotFoundException paramString2)
               {
@@ -870,7 +870,7 @@ public class Share
     localGetAppinfoRequest.client_id.set(paramLong1);
     localGetAppinfoRequest.sdkp.set("android");
     localGetAppinfoRequest.os.set(Build.VERSION.RELEASE);
-    localGetAppinfoRequest.qqv.set("7.6.0");
+    localGetAppinfoRequest.qqv.set("7.6.3");
     localGetAppinfoRequest.setHasFlag(true);
     paramContext = new NewIntent(paramContext, OpensdkServlet.class);
     paramContext.putExtra("uin", paramString);
@@ -889,7 +889,7 @@ public class Share
     localGetAppinfoRequest.client_id.set(paramLong1);
     localGetAppinfoRequest.sdkp.set("android");
     localGetAppinfoRequest.os.set(Build.VERSION.RELEASE);
-    localGetAppinfoRequest.qqv.set("7.6.0");
+    localGetAppinfoRequest.qqv.set("7.6.3");
     localGetAppinfoRequest.setHasFlag(true);
     localGetAppinfoRequest.md5time.set(paramLong3);
     localGetAppinfoRequest.signature.set(paramString2);
@@ -909,7 +909,7 @@ public class Share
     localGetAppinfoRequest.client_id.set(paramLong1);
     localGetAppinfoRequest.sdkp.set("android");
     localGetAppinfoRequest.os.set(Build.VERSION.RELEASE);
-    localGetAppinfoRequest.qqv.set("7.6.0");
+    localGetAppinfoRequest.qqv.set("7.6.3");
     localGetAppinfoRequest.setHasFlag(true);
     localGetAppinfoRequest.md5time.set(paramLong2);
     localGetAppinfoRequest.signature.set(paramString2);
@@ -953,7 +953,7 @@ public class Share
       if (((!this.jdField_e_of_type_Boolean) && (((HashMap)localObject).size() <= 0) && (!bool)) || (paramInt == 2) || (paramInt == 9)) {
         break label207;
       }
-      ThreadManager.executeOnNetWorkThread(new pbg(this, (HashMap)localObject, paramInt, paramString, bool));
+      ThreadManager.executeOnNetWorkThread(new pda(this, (HashMap)localObject, paramInt, paramString, bool));
       return;
       localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangRefSoftReference.get();
       break;
@@ -986,7 +986,7 @@ public class Share
     String str;
     if (paramInt == 1)
     {
-      paramInt = 2130845414;
+      paramInt = 2130845542;
       str = "static://DefaultTeamWorkShareDoc";
       if (BaseApplicationImpl.sImageCache == null) {
         break label91;
@@ -1011,7 +1011,7 @@ public class Share
         }
       }
       return localBitmap2;
-      paramInt = 2130845416;
+      paramInt = 2130845544;
       str = "static://DefaultTeamWorkShareSheet";
       break;
     }
@@ -1035,7 +1035,7 @@ public class Share
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidAppActivity, i1);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435464);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435481);
       long l1 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "dialog show time :" + l1);
@@ -1089,7 +1089,7 @@ public class Share
     this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidAppActivity.getIntent().getLongExtra("appShareID", 0L);
     if (this.jdField_a_of_type_Long > 0L)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131366735));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131366778));
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
         break label52;
       }
@@ -1103,15 +1103,15 @@ public class Share
       {
         return;
         this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-        this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131366734);
+        this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131366777);
         this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
         a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.j, AppShareIDUtil.b(this.jdField_a_of_type_Long), this.jdField_a_of_type_MqqObserverBusinessObserver);
         this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493498));
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493504));
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840168);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840174);
         localObject1 = new LinearLayout.LayoutParams((int)UITools.a(this.jdField_a_of_type_AndroidContentContext, 19.0F), (int)UITools.a(this.jdField_a_of_type_AndroidContentContext, 19.0F));
         this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
         localObject2 = new LinearLayout.LayoutParams(-2, -2);
@@ -1120,7 +1120,7 @@ public class Share
         this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject2);
         this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839177);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839181);
         localObject1 = new LinearLayout.LayoutParams((int)UITools.a(this.jdField_a_of_type_AndroidContentContext, 30.0F), (int)UITools.a(this.jdField_a_of_type_AndroidContentContext, 30.0F));
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
         this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
@@ -1129,17 +1129,17 @@ public class Share
         this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
         localObject1 = new LinearLayout.LayoutParams(-2, -2);
         ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428569);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428575);
         this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 13.75F);
         this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493499));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493505));
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject1);
         this.jdField_b_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
         this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, 14.75F);
         this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-        this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130839775);
+        this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130839781);
         this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493499));
+        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493505));
         localObject1 = new LinearLayout.LayoutParams((int)UITools.a(this.jdField_a_of_type_AndroidContentContext, 56.0F), (int)UITools.a(this.jdField_a_of_type_AndroidContentContext, 30.0F));
         ((LinearLayout.LayoutParams)localObject1).rightMargin = ((int)UITools.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject1);
@@ -1384,7 +1384,7 @@ public class Share
       break label57;
     }
     label209:
-    QRUtils.a(1, 2131435463);
+    QRUtils.a(1, 2131435480);
     return true;
   }
   
@@ -1412,7 +1412,7 @@ public class Share
   {
     if (TextUtils.isEmpty(paramString))
     {
-      QRUtils.a(1, 2131435465);
+      QRUtils.a(1, 2131435482);
       return false;
     }
     Bundle localBundle;
@@ -1443,7 +1443,7 @@ public class Share
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "getSummary Fail_Network. title=" + this.jdField_d_of_type_JavaLangString + ", desc=" + this.jdField_e_of_type_JavaLangString + ", thumb=" + this.jdField_f_of_type_JavaLangString);
       }
-      QRUtils.a(1, 2131434794);
+      QRUtils.a(1, 2131434811);
       paramString = new Bundle();
       paramString.putString("report_type", "102");
       paramString.putString("act_type", "84");
@@ -1473,12 +1473,12 @@ public class Share
       b(paramString, paramInt, paramBoolean);
       return true;
     }
-    a().c(2131435464);
+    a().c(2131435481);
     boolean bool = TextUtils.isEmpty(this.s);
     if ((!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (bool)) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
-    ThreadManager.executeOnNetWorkThread(new pbd(this, paramString, paramInt, paramBoolean));
+    ThreadManager.executeOnNetWorkThread(new pcx(this, paramString, paramInt, paramBoolean));
     return true;
   }
   
@@ -1802,12 +1802,12 @@ public class Share
   {
     if (!NetworkUtil.d(this.jdField_a_of_type_AndroidAppActivity))
     {
-      QRUtils.a(1, 2131434794);
+      QRUtils.a(1, 2131434811);
       return false;
     }
     if (TextUtils.isEmpty(paramString4))
     {
-      QRUtils.a(1, 2131435465);
+      QRUtils.a(1, 2131435482);
       return false;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
@@ -1824,7 +1824,7 @@ public class Share
     for (int i1 = ((WebUiUtils.WebTitleBarInterface)paramString7).b();; i1 = 0)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidAppActivity, i1);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435464);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435481);
       boolean bool;
       if (paramString4.length() > 180)
       {
@@ -1837,7 +1837,7 @@ public class Share
           break label192;
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-        new pbk(this, bool, paramString5, paramString1, paramString2, paramString3, paramString4, paramString6).start();
+        new pde(this, bool, paramString5, paramString1, paramString2, paramString3, paramString4, paramString6).start();
       }
       for (;;)
       {
@@ -1848,7 +1848,7 @@ public class Share
         break label139;
         paramString7 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { paramString1 });
         paramString8 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { paramString1 });
-        String str = String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430100), new Object[] { paramString2 });
+        String str = String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430117), new Object[] { paramString2 });
         ShareMsgHelper.a(this.jdField_a_of_type_AndroidAppActivity, 1001, 1, "struct_msg_from_h5", paramString1, paramString5, paramString2, paramString3, str, paramString4, "web", null, null, null, "plugin", null, paramString7, paramString8, "http://url.cn/JS8oE7", paramString6, null);
         int i2 = 0;
         if (TextUtils.isEmpty(paramString5)) {

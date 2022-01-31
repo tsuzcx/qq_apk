@@ -1,38 +1,18 @@
-import android.view.View;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.widget.RectMaskView;
 
 public class akwq
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public akwq(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
+  public akwq(RectMaskView paramRectMaskView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-        continue;
-        if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView.invalidate(this.jdField_a_of_type_Int, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akwq
  * JD-Core Version:    0.7.0.1
  */

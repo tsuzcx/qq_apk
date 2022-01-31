@@ -1,15 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaaj
   implements Runnable
 {
-  public aaaj(ARCloudControl paramARCloudControl) {}
+  public aaaj(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, int paramInt, float paramFloat1, float paramFloat2, long paramLong) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), "开始选图", 0).a();
+    ARWorldCupGlobalSceneRenderable.b(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable);
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.b != 1) {}
+    do
+    {
+      return;
+      ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).native_onTouchBegin(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b, 0, this.jdField_a_of_type_Long, ARWorldCupGlobalSceneRenderable.c(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable));
+    } while (!QLog.isColorLevel());
+    QLog.d("ARWorldCupGlobalSceneRenderable", 2, "ACTION_DOWN native_onTouchBegin");
   }
 }
 

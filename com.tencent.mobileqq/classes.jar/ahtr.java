@@ -1,28 +1,38 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
+import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter;
+import com.tencent.mobileqq.search.presenter.IPresenter;
+import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.search.view.ContactSearchResultView;
+import com.tencent.mobileqq.search.view.IView;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.widget.ListView;
 
-class ahtr
-  implements Runnable
+public class ahtr
+  extends BaseMvpFaceAdapter
 {
-  ahtr(ahtq paramahtq, StructMsgForGeneralShare paramStructMsgForGeneralShare, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public ahtr(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
   {
-    long l = NetConnInfoCenter.getServerTime();
-    if (PublicAccountChatPie.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-    for (int i = 1;; i = 0)
-    {
-      PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X80055C7", "0X80055C7", 0, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId), this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mMsgAction, Integer.toString(i), false);
-      return;
+    super(paramListView, paramFaceDecoder);
+  }
+  
+  protected IPresenter a(int paramInt)
+  {
+    return new ContactSearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+  }
+  
+  protected IView a(int paramInt, ViewGroup paramViewGroup)
+  {
+    if (SearchUtils.a(SelectMemberContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentSelectMemberContactSearchFragment))) {
+      return new ContactSearchResultView(paramViewGroup, 2130971532);
     }
+    return new ContactSearchResultView(paramViewGroup, 2130971533);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahtr
  * JD-Core Version:    0.7.0.1
  */

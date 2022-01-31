@@ -1,18 +1,16 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class ufa
-  extends AnimateUtils.AnimationAdapter
+  implements View.OnClickListener
 {
-  public ufa(VisitorsActivity paramVisitorsActivity) {}
+  public ufa(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.e.setVisibility(0);
-    this.a.a.setClipChildren(false);
+    this.a.a.dismiss();
   }
 }
 

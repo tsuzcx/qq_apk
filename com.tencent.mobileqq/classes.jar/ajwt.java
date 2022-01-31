@@ -1,46 +1,35 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter;
+import com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter.ViewHolder;
 
-class ajwt
-  implements Runnable
+public class ajwt
+  implements TroopManager.ITroopMemberInfoCallBack
 {
-  ajwt(ajws paramajws, DownloadTask paramDownloadTask) {}
+  public TroopOnlineMemberListAdapter.ViewHolder a;
   
-  public void run()
+  private ajwt(TroopOnlineMemberListAdapter paramTroopOnlineMemberListAdapter) {}
+  
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QueueDownloader", 2, "doTask | run() downloadLimitCount=" + this.jdField_a_of_type_Ajws.a.get() + ",task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.c) && (DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.jdField_a_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.jdField_a_of_type_Int = -101;
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a(-1);
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.e();
-      this.jdField_a_of_type_Ajws.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-      this.jdField_a_of_type_Ajws.a.addAndGet(-1);
-      this.jdField_a_of_type_Ajws.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("QueueDownloader", 2, "doTask | run() task is limit of failTime, task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
+      paramTroopMemberInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter.a.getManager(51)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin);
+      this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
+      if (AppSetting.b) {
+        TroopOnlineMemberListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter, this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder);
       }
-      return;
     }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    int i = DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, localAppRuntime);
-    if (QLog.isColorLevel()) {
-      QLog.d("QueueDownloader", 2, "doTask | run() download task result=" + i + ",task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-    }
-    this.jdField_a_of_type_Ajws.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-    this.jdField_a_of_type_Ajws.a.addAndGet(-1);
-    this.jdField_a_of_type_Ajws.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwt
  * JD-Core Version:    0.7.0.1
  */

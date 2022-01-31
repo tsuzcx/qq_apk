@@ -18,8 +18,8 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import kkm;
-import kkn;
+import kjx;
+import kjy;
 
 public class TroopMemberLbsHelper
 {
@@ -93,7 +93,7 @@ public class TroopMemberLbsHelper
     }
     paramString1 = b(l2);
     paramString1 = "  [icon]" + " " + paramString1;
-    paramString2 = new ImageSpan(paramContext, 2130840524, 1);
+    paramString2 = new ImageSpan(paramContext, 2130840530, 1);
     paramString1 = new SpannableString(paramString1);
     paramString1.setSpan(paramString2, 2, "  [icon]".length(), 17);
     return paramString1;
@@ -135,7 +135,7 @@ public class TroopMemberLbsHelper
     paramQQAppInterface = (BizTroopHandler)paramQQAppInterface.a(22);
     if (!paramBoolean)
     {
-      DialogUtil.a(paramContext, 230).setTitle(paramContext.getResources().getString(2131433248)).setMessage(paramContext.getResources().getString(2131430400)).setNegativeButton(paramContext.getResources().getString(2131430401), new kkn(paramQQAppInterface, paramString)).setPositiveButton(paramContext.getResources().getString(2131430402), new kkm()).show();
+      DialogUtil.a(paramContext, 230).setTitle(paramContext.getResources().getString(2131433265)).setMessage(paramContext.getResources().getString(2131430417)).setNegativeButton(paramContext.getResources().getString(2131430418), new kjy(paramQQAppInterface, paramString)).setPositiveButton(paramContext.getResources().getString(2131430419), new kjx()).show();
       return;
     }
     paramQQAppInterface.b(paramString, paramBoolean);

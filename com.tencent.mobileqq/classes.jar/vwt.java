@@ -1,23 +1,14 @@
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import mqq.os.MqqHandler;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-class vwt
+public class vwt
   implements Runnable
 {
-  vwt(vwq paramvwq) {}
+  public vwt(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_ComTencentBizAnonymousQQAnonymousDialog != null) {
-      this.a.a.jdField_a_of_type_ComTencentBizAnonymousQQAnonymousDialog.dismiss();
-    }
-    this.a.a.p(true);
-    TroopChatPie.d(this.a.a).postDelayed(new vwu(this), 100L);
-    if (!AnonymousChatHelper.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      TroopChatPie.e(this.a.a).postDelayed(new vwv(this), 200L);
-    }
+    PublicAccountChatPie.a(this.a).removeView(this.a.o);
   }
 }
 

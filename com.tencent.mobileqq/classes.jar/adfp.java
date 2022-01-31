@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public final class adfp
-  extends DownloadListener
+public class adfp
+  implements View.OnClickListener
 {
-  public adfp(String paramString) {}
+  public adfp(ZipFilePresenter paramZipFilePresenter) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(View paramView)
   {
-    PayLikeFloatViewBuilder.a(false);
-    if (paramDownloadTask.a == 0)
-    {
-      paramDownloadTask = new File(this.a + ".tmp");
-      if (paramDownloadTask.exists()) {
-        paramDownloadTask.renameTo(new File(this.a));
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
+    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
   }
 }
 

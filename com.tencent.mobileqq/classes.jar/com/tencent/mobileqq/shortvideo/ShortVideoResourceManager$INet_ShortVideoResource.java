@@ -2,11 +2,11 @@ package com.tencent.mobileqq.shortvideo;
 
 public abstract interface ShortVideoResourceManager$INet_ShortVideoResource
 {
+  public abstract void C_();
+  
   public abstract void a(String paramString1, int paramInt, String paramString2);
   
   public abstract void a(String paramString, long paramLong1, long paramLong2);
-  
-  public abstract void y_();
 }
 
 

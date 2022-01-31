@@ -1,49 +1,41 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.ChatBackground;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountMenuEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
 public class vxr
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public vxr(TroopChatPie paramTroopChatPie) {}
+  public vxr(PublicAccountChatPie paramPublicAccountChatPie, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.q.setVisibility(8);
-    this.a.r.setVisibility(8);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.jdField_d_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.a);
-    if (!this.a.E)
+    try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130845743);
-      this.a.m.setVisibility(8);
-      paramAnimation = this.a.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494205);
-      this.a.jdField_d_of_type_AndroidWidgetTextView.setTextColor(paramAnimation);
+      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localEntityManager.a(PublicAccountMenuEntity.class, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      if (localPublicAccountMenuEntity != null) {
+        localEntityManager.b(localPublicAccountMenuEntity);
+      }
+      if (localEntityManager != null) {
+        localEntityManager.a();
+      }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      this.a.b.setBackgroundResource(2130845507);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130845744);
-      this.a.m.setVisibility(8);
-      paramAnimation = this.a.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494206);
-      this.a.jdField_d_of_type_AndroidWidgetTextView.setTextColor(paramAnimation);
+      for (;;)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("Q.aio.BaseChatPie", 4, localException.getMessage());
+        }
+      }
     }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
   }
 }
 

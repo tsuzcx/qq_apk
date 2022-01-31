@@ -1,20 +1,18 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.qphone.base.util.QLog;
 
-class row
+public class row
   implements Runnable
 {
-  row(rou paramrou) {}
+  public row(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    if (this.a.a.h != null)
-    {
-      this.a.a.h.setText(this.a.a.a.getResources().getString(2131433387));
-      this.a.a.h.setTag(Integer.valueOf(2));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie", 2, "checkAllSourceDowned showPokePanel");
     }
+    PokePanel.a(this.a.a);
   }
 }
 

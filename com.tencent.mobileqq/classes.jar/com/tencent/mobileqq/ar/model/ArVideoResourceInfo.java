@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import aadw;
+import aakx;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArVideoResourceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aadw();
+  public static final Parcelable.Creator CREATOR = new aakx();
   public int a;
   public long a;
   public String a;

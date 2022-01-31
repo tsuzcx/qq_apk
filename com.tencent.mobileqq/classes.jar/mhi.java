@@ -1,14 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
-public class mhi
+class mhi
   implements Runnable
 {
-  public mhi(ReadInJoyListViewGroup paramReadInJoyListViewGroup, Map paramMap, boolean paramBoolean) {}
+  mhi(mhf parammhf) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.b(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+    this.a.a.notifyDataSetChanged();
+    ReadInJoyBaseAdapter.a(this.a.a, this.a.a.a, 0);
   }
 }
 

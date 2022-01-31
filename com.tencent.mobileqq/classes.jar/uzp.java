@@ -1,38 +1,20 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder.Holder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.peak.PeakUtils;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.filemanager.data.FMConfig;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
 public class uzp
-  implements Runnable
+  implements FileManagerUtil.TipsClickedInterface
 {
-  public uzp(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, PicItemBuilder.Holder paramHolder) {}
+  public uzp(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.checkIsGIF();
-      LightReplyMenuManager localLightReplyMenuManager = LightReplyMenuManager.a();
-      if ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.isSend()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.isDui) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a == 1) && (localLightReplyMenuManager != null) && (localLightReplyMenuManager.d()) && (localLightReplyMenuManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic)) && (!PeakUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ThreadManager.getUIHandler().post(new uzq(this, bool));
-        return;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("PicItemBuilder", 1, "checkIsGIF exception :", localException);
-    }
+    paramView = FMConfig.a();
+    FileManagerUtil.a(this.a.a, paramView);
+    FileManagerReporter.a("0X8007FA2");
   }
 }
 

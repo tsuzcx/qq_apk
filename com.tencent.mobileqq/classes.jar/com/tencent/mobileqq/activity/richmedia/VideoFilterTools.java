@@ -32,9 +32,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xqy;
-import xqz;
-import xra;
+import xue;
+import xuf;
+import xug;
 
 public class VideoFilterTools
 {
@@ -191,7 +191,7 @@ public class VideoFilterTools
         if (!((File)localObject).exists())
         {
           localObject = new HttpNetReq();
-          ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new xqz();
+          ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new xuf();
           ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
           ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
           ((HttpNetReq)localObject).jdField_c_of_type_JavaLangString = (e + "skin_color.zip");
@@ -620,7 +620,7 @@ public class VideoFilterTools
             if (!((File)localObject2).exists())
             {
               localObject2 = new HttpNetReq();
-              ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new xra(this);
+              ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new xug(this);
               ((HttpNetReq)localObject2).jdField_a_of_type_JavaLangString = localFilterDesc.jdField_c_of_type_JavaLangString;
               ((HttpNetReq)localObject2).jdField_a_of_type_Int = 0;
               ((HttpNetReq)localObject2).jdField_c_of_type_JavaLangString = ((String)localObject1);
@@ -637,7 +637,7 @@ public class VideoFilterTools
             if (!((File)localObject2).exists())
             {
               localObject1 = new HttpNetReq();
-              ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new xqy(this);
+              ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new xue(this);
               ((HttpNetReq)localObject1).jdField_a_of_type_JavaLangString = localFilterDesc.jdField_a_of_type_JavaLangString;
               ((HttpNetReq)localObject1).jdField_a_of_type_Int = 0;
               ((HttpNetReq)localObject1).jdField_c_of_type_JavaLangString = (jdField_b_of_type_JavaLangString + localFilterDesc.e + ".zip");

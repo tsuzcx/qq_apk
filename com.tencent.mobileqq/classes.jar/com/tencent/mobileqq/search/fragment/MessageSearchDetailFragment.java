@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahfi;
+import ahtk;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -45,9 +45,9 @@ public class MessageSearchDetailFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969069, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364953));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131364021));
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969068, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364975));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131364045));
     return paramLayoutInflater;
   }
   
@@ -62,9 +62,9 @@ public class MessageSearchDetailFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131438128, new Object[] { Integer.valueOf(this.b.secondPageMessageUniseq.size()), this.jdField_a_of_type_JavaLangString }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131438146, new Object[] { Integer.valueOf(this.b.secondPageMessageUniseq.size()), this.jdField_a_of_type_JavaLangString }));
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getActivity(), getActivity().app);
-    this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpMessageAdapter = new ahfi(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
+    this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpMessageAdapter = new ahtk(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
     this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpMessageAdapter);
     this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpMessageAdapter.a();
   }

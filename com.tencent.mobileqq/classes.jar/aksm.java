@@ -1,44 +1,62 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.open.base.APNUtil;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.InstallParams;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.struct.PushBanner;
+import com.tencent.mobileqq.widget.ADView;
+import com.tencent.mobileqq.widget.WorkSpaceView;
+import java.lang.ref.WeakReference;
 
 public class aksm
-  implements Runnable
+  extends Handler
 {
-  public aksm(MyAppApi paramMyAppApi, Activity paramActivity, String paramString) {}
+  private ADView jdField_a_of_type_ComTencentMobileqqWidgetADView;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  public aksm(ADView paramADView)
   {
-    LogUtility.c("MyAppApi", "---isAutoInstall:" + ControlPolicyUtil.c() + " url:" + ControlPolicyUtil.a() + " interval:" + ControlPolicyUtil.a());
-    if ((APNUtil.b(this.jdField_a_of_type_AndroidAppActivity)) && (APNUtil.c(this.jdField_a_of_type_AndroidAppActivity)))
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramADView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      boolean bool1 = ControlPolicyUtil.b();
-      boolean bool2 = ControlPolicyUtil.j();
-      String str = SharedPreUtils.l(this.jdField_a_of_type_AndroidAppActivity, "wifiAutoPreDown");
-      if ((!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b()) && (bool1) && (bool2) && ("true".equals(str)))
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      do
       {
-        ThreadManager.getUIHandler().post(new aksn(this));
-        LogUtility.c("MyAppApi", "---startDownloadYYB---");
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = new MyAppApi.InstallParams(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.b = false;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidOsBundle = null;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Int = -1;
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 1);
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqWidgetADView = ((ADView)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a == null));
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildCount() > 1) && (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getWidth() > 0)) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a() + 1);
       }
+      try
+      {
+        PushBanner localPushBanner = (PushBanner)this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetADView.a.a()).getTag();
+        i = localPushBanner.a;
+        this.jdField_a_of_type_ComTencentMobileqqWidgetADView.setContentDescription(localPushBanner.n);
+        i *= 1000;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          int i = 5000;
+        }
+      }
+      sendEmptyMessageDelayed(0, i);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetADView = null;
+      continue;
+      removeMessages(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksm
  * JD-Core Version:    0.7.0.1
  */

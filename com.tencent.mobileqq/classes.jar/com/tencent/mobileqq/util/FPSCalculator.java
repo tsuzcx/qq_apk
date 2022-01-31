@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.util;
 
-import ajle;
-import ajlf;
-import ajlg;
+import ajzj;
+import ajzk;
+import ajzl;
 import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.os.Handler;
@@ -23,10 +23,10 @@ public class FPSCalculator
   private Choreographer.FrameCallback jdField_a_of_type_AndroidViewChoreographer$FrameCallback;
   private Choreographer jdField_a_of_type_AndroidViewChoreographer;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ajlf(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ajzk(this);
   private Vector jdField_a_of_type_JavaUtilVector = new Vector();
   private boolean jdField_a_of_type_Boolean;
-  private Runnable b = new ajlg(this);
+  private Runnable b = new ajzl(this);
   
   private static long a(long paramLong)
   {
@@ -61,7 +61,7 @@ public class FPSCalculator
     if (Build.VERSION.SDK_INT > 16)
     {
       if (this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback == null) {
-        this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback = new ajle(this);
+        this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback = new ajzj(this);
       }
       this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
       return;
@@ -165,7 +165,7 @@ public class FPSCalculator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.util.FPSCalculator
  * JD-Core Version:    0.7.0.1
  */

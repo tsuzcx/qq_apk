@@ -1,15 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
+import com.tencent.mobileqq.nearby.widget.ButtonInfo;
+import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
 
-class xet
-  implements BusinessObserver
+public class xet
+  implements View.OnClickListener
 {
-  xet(xes paramxes, long paramLong) {}
+  public xet(GoldMsgDialog paramGoldMsgDialog, ButtonInfo paramButtonInfo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    ThreadManager.postImmediately(new xeu(this, paramBoolean, paramBundle, paramInt), null, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDialog.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a.a(paramView);
+    }
   }
 }
 

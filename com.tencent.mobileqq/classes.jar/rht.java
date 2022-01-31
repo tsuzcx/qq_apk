@@ -1,47 +1,51 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import java.util.Calendar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class rht
-  implements IphonePickerView.PickerViewAdapter
+  implements TextWatcher
 {
-  private rht(AgeSelectionActivity paramAgeSelectionActivity) {}
+  public rht(AddAccountActivity paramAddAccountActivity) {}
   
-  public int getColumnCount()
+  public void afterTextChanged(Editable paramEditable)
   {
-    return 3;
+    AddAccountActivity.a(this.a, null);
   }
   
-  public int getRowCount(int paramInt)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return AgeSelectionActivity.a(this.a) - 1897 + 1;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, AgeSelectionActivity.b(this.a) + 1897);
-    localCalendar.set(2, AgeSelectionActivity.c(this.a));
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
+    AddAccountActivity.a(this.a, paramCharSequence.toString());
   }
   
-  public String getText(int paramInt1, int paramInt2)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramInt1)
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
     {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1897 + "年";
-    case 1: 
-      return paramInt2 + 1 + "月";
+      paramCharSequence = paramCharSequence.toString();
+      if ((paramCharSequence != null) && (AddAccountActivity.a(this.a) != null) && (AddAccountActivity.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
+        BaseApplicationImpl.sApplication.refreAccountList();
+      }
+      AddAccountActivity.a(this.a, null);
+      if ((AddAccountActivity.a(this.a) == null) || (AddAccountActivity.a(this.a).length() == 0)) {}
+      do
+      {
+        return;
+        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != AddAccountActivity.a(this.a).length() + 1))
+        {
+          BaseApplicationImpl.sApplication.refreAccountList();
+          return;
+        }
+        if ((!paramCharSequence.substring(0, AddAccountActivity.a(this.a).length()).equals(AddAccountActivity.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText == null)) {
+          break;
+        }
+        paramCharSequence = paramCharSequence.substring(AddAccountActivity.a(this.a).length());
+      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText(paramCharSequence);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(1);
     }
-    return paramInt2 + 1 + "日";
+    AddAccountActivity.a(this.a, null);
   }
 }
 

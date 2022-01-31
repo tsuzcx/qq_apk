@@ -1,10 +1,10 @@
 package cooperation.qzone;
 
-import ambo;
+import amrs;
 
 public abstract class QZoneHttpUtil$HttpProxy
 {
-  public static HttpProxy a = new ambo();
+  public static HttpProxy a = new amrs();
   
   public abstract int a();
   

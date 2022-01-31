@@ -30,9 +30,9 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import urf;
-import urg;
-import urh;
+import uuh;
+import uui;
+import uuj;
 
 public class ArkAppContainer
   extends ArkViewModel
@@ -55,7 +55,7 @@ public class ArkAppContainer
   {
     jdField_a_of_type_Int = 1000;
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_ComTencentArkArk$ApplicationCallback = new urf();
+    jdField_a_of_type_ComTencentArkArk$ApplicationCallback = new uuh();
   }
   
   public ArkAppContainer()
@@ -497,7 +497,7 @@ public class ArkAppContainer
   protected void onFirstDrawEnd()
   {
     super.onFirstDrawEnd();
-    ThreadManager.executeOnSubThread(new urh(this));
+    ThreadManager.executeOnSubThread(new uuj(this));
   }
   
   public boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
@@ -519,7 +519,7 @@ public class ArkAppContainer
     String str = ((ArkLocalAppMgr)localObject2).a(this.mAppInfo.name, this.mAppInfo.appMinVersion);
     if (!TextUtils.isEmpty(str))
     {
-      ArkDispatchTask.getInstance().post(new urg(this, str, (String)localObject1));
+      ArkDispatchTask.getInstance().post(new uui(this, str, (String)localObject1));
       return true;
     }
     localObject1 = this.mViewImpl;
@@ -535,7 +535,7 @@ public class ArkAppContainer
     Object localObject = this.mViewImpl;
     if (localObject != null)
     {
-      localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131436159);
+      localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131436176);
       this.mErrorInfo.msg = a((String)localObject);
       this.mErrorInfo.canRetry = false;
     }

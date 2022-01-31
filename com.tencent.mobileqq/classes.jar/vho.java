@@ -1,14 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class vho
-  implements Runnable
+public class vho
+  implements PopupWindow.OnDismissListener
 {
-  vho(vhn paramvhn) {}
+  public vho(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void run()
+  public void onDismiss()
   {
-    this.a.a.d.setVisibility(8);
+    StructingMsgItemBuilder.a(this.a, false);
   }
 }
 

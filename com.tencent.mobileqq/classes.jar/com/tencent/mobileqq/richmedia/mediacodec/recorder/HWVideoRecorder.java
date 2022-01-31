@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.recorder;
 
-import ahap;
+import ahor;
 import android.annotation.TargetApi;
 import android.media.MediaFormat;
 import android.opengl.EGL14;
@@ -199,7 +199,7 @@ public class HWVideoRecorder
           if ((this.b) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_Boolean))
           {
             this.b = false;
-            ThumbnailUtil.a(paramInt2, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.b, ThumbnailUtil.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_JavaLangString), new ahap(this));
+            ThumbnailUtil.a(paramInt2, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.b, ThumbnailUtil.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_JavaLangString), new ahor(this));
           }
           if (this.d)
           {

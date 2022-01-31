@@ -1,38 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest;
-import com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-class omd
-  implements CmdTaskManger.CommandCallback
+public class omd
+  implements AdapterView.OnItemSelectedListener
 {
-  omd(omc paramomc, JobContext paramJobContext, Integer paramInteger) {}
+  public omd(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public void a(@NonNull GetTroopAssistantFeedIdListRequest paramGetTroopAssistantFeedIdListRequest, @Nullable GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse paramGetTroopAssistantFeedIdListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void onItemSelected(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
-      return;
-    }
-    if ((paramErrorMessage.isFail()) || (paramGetTroopAssistantFeedIdListResponse == null))
-    {
-      SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-      omc.a(this.jdField_a_of_type_Omc, paramErrorMessage);
-      return;
-    }
-    omc.a(this.jdField_a_of_type_Omc).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_Boolean);
-    ((FeedManager)SuperManager.a(11)).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList);
-    paramGetTroopAssistantFeedIdListRequest = omc.a(this.jdField_a_of_type_Omc).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    omc.a(this.jdField_a_of_type_Omc, paramGetTroopAssistantFeedIdListRequest);
+    HorizontalSelectColorLayout.a(this.a, paramInt);
   }
+  
+  public void onNothingSelected(AdapterView paramAdapterView) {}
 }
 
 

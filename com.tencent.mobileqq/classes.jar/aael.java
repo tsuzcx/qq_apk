@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
 
-public class aael
-  implements Runnable
+public final class aael
+  implements Parcelable.Creator
 {
-  public aael(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
-  
-  public void run()
+  public ARScanStarFaceActInfo a(Parcel paramParcel)
   {
-    if ((ARCardCameraRecordFragment.b(this.a)) && (ARCardCameraRecordFragment.c(this.a) != 0)) {
-      return;
-    }
-    this.a.a();
+    return new ARScanStarFaceActInfo(paramParcel);
+  }
+  
+  public ARScanStarFaceActInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceActInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aael
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.open.wadl;
 
-import akua;
-import akub;
+import aljq;
+import aljr;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -42,7 +42,7 @@ public class WadlJsBridgeCall
   public static void a(String paramString)
   {
     jdField_a_of_type_JavaUtilMap.put(paramString, new Boolean(true));
-    jdField_a_of_type_AndroidOsHandler.postDelayed(new akua(paramString), 2000L);
+    jdField_a_of_type_AndroidOsHandler.postDelayed(new aljq(paramString), 2000L);
   }
   
   private void a(List paramList)
@@ -181,7 +181,7 @@ public class WadlJsBridgeCall
         ((NewIntent)localObject).putExtra("extra_cmd", "GameCenterProtoSvr.GetGameCheckCode");
         ((NewIntent)localObject).putExtra("extra_data", localGetGameCheckCodeReqBody.toByteArray());
         ((NewIntent)localObject).putExtra("extra_timeout", 5000L);
-        ((NewIntent)localObject).setObserver(new akub(this, paramWadlParams));
+        ((NewIntent)localObject).setObserver(new aljr(this, paramWadlParams));
         this.jdField_a_of_type_MqqAppAppRuntime.startServlet((NewIntent)localObject);
         return;
       }

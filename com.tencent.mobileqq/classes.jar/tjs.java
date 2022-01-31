@@ -1,32 +1,14 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 class tjs
-  implements WebProcessManager.WebProcessStartListener
+  implements Runnable
 {
-  tjs(tjr paramtjr, QQSettingMe paramQQSettingMe) {}
+  tjs(tjr paramtjr) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if ((paramBoolean) && (QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe) != null)) {
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).a();
-    }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("WebPreloadTask preloadWebProcess isProcessExist: ");
-      if (paramBoolean) {
-        break label64;
-      }
-    }
-    label64:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("QQSettingRedesign", 2, paramBoolean);
-      return;
-    }
+    this.a.a.m = true;
+    this.a.a.w();
   }
 }
 

@@ -1,31 +1,37 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.widget.FrameLayout;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.util.Timer;
 
-class ovo
-  implements VideoCombineHelper.Callback
+public class ovo
 {
-  ovo(ovl paramovl, long paramLong) {}
-  
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Ovl.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.e = paramString1;
-      this.jdField_a_of_type_Ovl.jdField_a_of_type_Ovk.a.b(this.jdField_a_of_type_Ovl.jdField_a_of_type_Ovk);
-      this.jdField_a_of_type_Ovl.jdField_a_of_type_Ovk.b();
-      return;
-    }
-    this.jdField_a_of_type_Ovl.jdField_a_of_type_Ovk.d = paramString2;
-    this.jdField_a_of_type_Ovl.jdField_a_of_type_Ovk.a.a(this.jdField_a_of_type_Ovl.jdField_a_of_type_Ovk);
-  }
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  private String jdField_a_of_type_JavaLangString;
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  private ovm jdField_a_of_type_Ovm;
+  private boolean jdField_a_of_type_Boolean;
+  private double jdField_b_of_type_Double;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private double jdField_c_of_type_Double;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private double jdField_d_of_type_Double;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private double jdField_e_of_type_Double;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private double jdField_f_of_type_Double;
+  private int jdField_f_of_type_Int;
+  private int g;
+  private int h;
 }
 
 

@@ -1,23 +1,15 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-public class wrn
-  implements Animation.AnimationListener
+class wrn
+  implements BubblePopupWindow.OnDismissListener
 {
-  public wrn(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
+  wrn(wrm paramwrm, View paramView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

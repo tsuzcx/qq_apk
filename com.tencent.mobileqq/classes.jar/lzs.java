@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import android.view.OrientationEventListener;
+import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
 
 public class lzs
-  implements DialogInterface.OnShowListener
+  implements Runnable
 {
-  public lzs(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public lzs(OrientationDetector paramOrientationDetector, boolean paramBoolean) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mShareActionSheet onShow()");
+    for (;;)
+    {
+      synchronized (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector))
+      {
+        if (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector) == null) {
+          return;
+        }
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).canDetectOrientation()) {
+            OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).enable();
+          }
+          return;
+        }
+      }
+      OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).disable();
     }
-    VideoFeedsAdapter.a(this.a).getWindow().clearFlags(8);
   }
 }
 

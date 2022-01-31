@@ -35,11 +35,11 @@ public class ActivateFriendGridItem
   
   private void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    LayoutInflater.from(paramContext).inflate(2130970161, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362701));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369348));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362736));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369349));
+    LayoutInflater.from(paramContext).inflate(2130970175, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362719));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369414));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362754));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369415));
     if (!paramBoolean2)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setHorizontallyScrolling(false);
@@ -47,7 +47,7 @@ public class ActivateFriendGridItem
     }
     if (!paramBoolean1)
     {
-      paramContext = findViewById(2131369347).getBackground();
+      paramContext = findViewById(2131369413).getBackground();
       if ((paramContext != null) && ((paramContext instanceof GradientDrawable))) {
         ((GradientDrawable)paramContext).setColor(-1);
       }
@@ -81,7 +81,7 @@ public class ActivateFriendGridItem
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842117);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842154);
     }
     for (;;)
     {
@@ -92,7 +92,7 @@ public class ActivateFriendGridItem
       }
       setContentDescription(str1);
       return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842118);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842155);
     }
   }
   

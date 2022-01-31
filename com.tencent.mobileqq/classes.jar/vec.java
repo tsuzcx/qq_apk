@@ -1,20 +1,40 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 public class vec
-  extends AnimatorListenerAdapter
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public vec(SixCombolEffectView paramSixCombolEffectView) {}
+  public long a;
+  public ImageView a;
+  public CornerImageView a;
+  public String a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public CornerImageView b;
+  public String b;
+  public View c;
+  public ImageView c;
+  public TextView c;
+  public CornerImageView c;
+  public View d;
+  public TextView d;
+  public CornerImageView d;
+  public View e;
+  public TextView e;
+  public View f;
+  public TextView f;
+  public View g;
+  public TextView g;
+  public TextView h;
+  public TextView i;
+  public TextView j;
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.a) {
-      return;
-    }
-    this.a.b();
-  }
+  public vec(QzoneFeedItemBuilder paramQzoneFeedItemBuilder) {}
 }
 
 

@@ -19,7 +19,7 @@ class br
     Bundle localBundle;
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject = this.jdField_a_of_type_Bq.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDrawable(2130838339);
+      localObject = this.jdField_a_of_type_Bq.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDrawable(2130838343);
       localBundle = new Bundle();
       localBundle.putBoolean("key_use_rect", true);
       localBundle.putBoolean("key_double_bitmap", true);

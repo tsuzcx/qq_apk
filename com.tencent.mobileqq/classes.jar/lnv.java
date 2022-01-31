@@ -1,19 +1,14 @@
 import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.widget.XListView.DrawFinishedListener;
+import java.util.List;
 
 public class lnv
-  implements XListView.DrawFinishedListener
+  implements Runnable
 {
-  public lnv(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement) {}
+  public lnv(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, List paramList) {}
   
-  public void a()
+  public void run()
   {
-    if ((!this.a.c) && (this.a.d))
-    {
-      this.a.c = true;
-      PublicTracker.a("subscribe_tab_cost", null);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

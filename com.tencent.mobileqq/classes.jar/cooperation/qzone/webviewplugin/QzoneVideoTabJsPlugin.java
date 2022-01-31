@@ -1,9 +1,9 @@
 package cooperation.qzone.webviewplugin;
 
-import amne;
-import amnf;
-import amng;
-import amnh;
+import andj;
+import andk;
+import andl;
+import andm;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -52,7 +52,7 @@ public class QzoneVideoTabJsPlugin
         i += 1;
       }
       if (((ArrayList)localObject).size() > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new amne(this, (ArrayList)localObject, localArrayList));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new andj(this, (ArrayList)localObject, localArrayList));
       }
       return;
     }
@@ -64,7 +64,7 @@ public class QzoneVideoTabJsPlugin
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new amng(this));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new andl(this));
   }
   
   private void b(String paramString)
@@ -83,7 +83,7 @@ public class QzoneVideoTabJsPlugin
         i += 1;
       }
       if (localArrayList1.size() > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new amnf(this, localArrayList1, localArrayList2));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new andk(this, localArrayList1, localArrayList2));
       }
       return;
     }
@@ -98,7 +98,7 @@ public class QzoneVideoTabJsPlugin
     try
     {
       paramString = new JSONObject(paramString).optString("url");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new amnh(this, paramString));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new andm(this, paramString));
       return;
     }
     catch (JSONException paramString)

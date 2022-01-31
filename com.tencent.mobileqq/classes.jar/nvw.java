@@ -1,22 +1,50 @@
-import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.DiscoverManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.NearbyCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.NormalCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.OperationCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
+import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader.GetDiscoverCardsEvent;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.Iterator;
 import java.util.List;
 
 public class nvw
-  implements Runnable
+  extends SimpleJob
 {
-  public nvw(ProfileFeedPresenter paramProfileFeedPresenter, HomeFeedData paramHomeFeedData) {}
+  public nvw(DiscoverPagerLoader paramDiscoverPagerLoader, DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent, boolean paramBoolean) {}
   
-  public void run()
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.d)
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader.b();
+    ((DiscoverManager)SuperManager.a(22)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader$GetDiscoverCardsEvent.a, DiscoverPagerLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader), DiscoverPagerLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader), this.jdField_a_of_type_Boolean);
+    paramJobContext = (UserManager)SuperManager.a(2);
+    paramArrayOfObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader$GetDiscoverCardsEvent.a.iterator();
+    while (paramArrayOfObject.hasNext())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
-      return;
+      CardItem localCardItem = (CardItem)paramArrayOfObject.next();
+      switch (localCardItem.cardType)
+      {
+      default: 
+        break;
+      case 1: 
+        paramJobContext.a(localCardItem.normalCardInfo.a());
+        break;
+      case 2: 
+        paramJobContext.a(localCardItem.nearByCardInfo.a());
+        break;
+      case 3: 
+        paramJobContext.a(localCardItem.operationCardInfo.a());
+      }
     }
-    ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
-    ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter).remove(ProfileFeedPresenter.a());
-    ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader.a("Q.qqstory.discover:DiscoverPagerLoader");
+    return null;
   }
 }
 

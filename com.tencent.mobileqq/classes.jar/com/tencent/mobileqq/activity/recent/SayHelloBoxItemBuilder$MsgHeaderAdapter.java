@@ -69,7 +69,7 @@ public class SayHelloBoxItemBuilder$MsgHeaderAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970294, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970310, null);
       paramView.setLayoutParams(new AbsListView.LayoutParams(this.b, this.b));
     }
     for (;;)

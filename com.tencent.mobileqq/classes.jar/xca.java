@@ -1,30 +1,29 @@
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager.WaitRecord;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.view.KeyEvent;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-public final class xca
-  implements Runnable
+public class xca
+  implements TextView.OnEditorActionListener
 {
-  public xca(ArrayList paramArrayList) {}
+  public xca(TransactionActivity paramTransactionActivity) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    QQAppInterface localQQAppInterface = QWalletTools.a();
-    if (localQQAppInterface != null)
+    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        NotifyMsgManager.WaitRecord localWaitRecord = (NotifyMsgManager.WaitRecord)localIterator.next();
-        if ((localWaitRecord != null) && (localWaitRecord.a != null)) {
-          localQQAppInterface.a().a(localWaitRecord.a.frienduin, localWaitRecord.a.istroop, localWaitRecord.a.uniseq, "extStr", localWaitRecord.a.extStr);
-        }
+      if (TransactionActivity.b(this.a).isEnabled()) {
+        TransactionActivity.b(this.a).performClick();
+      }
+      if (TransactionActivity.a(this.a) != null) {
+        ((InputMethodManager)TransactionActivity.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(TransactionActivity.c(this.a).getWindowToken(), 0);
       }
     }
+    return false;
   }
 }
 

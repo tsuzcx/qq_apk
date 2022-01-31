@@ -40,20 +40,20 @@ public class BlessSendTextActivity
   
   private void b()
   {
-    ((ImmersiveTitleBar2)findViewById(2131363361)).setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363360);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131493303));
+    ((ImmersiveTitleBar2)findViewById(2131363379)).setVisibility(4);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363378);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131493304));
+    findViewById(2131363428).setOnClickListener(this);
+    findViewById(2131363439).setOnClickListener(this);
     findViewById(2131363410).setOnClickListener(this);
-    findViewById(2131363421).setOnClickListener(this);
-    findViewById(2131363392).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131363420));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131363438));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int));
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363418));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363436));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
   }
   
@@ -104,7 +104,7 @@ public class BlessSendTextActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131363421: 
+    case 2131363439: 
       do
       {
         return;
@@ -116,11 +116,11 @@ public class BlessSendTextActivity
         this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int));
         return;
       }
-    case 2131363392: 
+    case 2131363410: 
       paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       if (paramView.equals(""))
       {
-        QQToast.a(this, 2131438266, 1).a();
+        QQToast.a(this, 2131438284, 1).a();
         return;
       }
       c();
@@ -129,8 +129,8 @@ public class BlessSendTextActivity
       localIntent.putExtra("param_entrance", 15);
       localIntent.putExtra("param_only_friends", true);
       localIntent.putExtra("param_donot_need_contacts", true);
-      localIntent.putExtra("param_title", getString(2131438235));
-      localIntent.putExtra("param_done_button_wording", getString(2131432400));
+      localIntent.putExtra("param_title", getString(2131438253));
+      localIntent.putExtra("param_done_button_wording", getString(2131432417));
       localIntent.putExtra("param_exit_animation", 1);
       localIntent.putExtra("param_blesstype", 1);
       localIntent.putExtra("param_blessword_content", paramView);
@@ -145,7 +145,7 @@ public class BlessSendTextActivity
         return;
         i = 0;
       }
-    case 2131363418: 
+    case 2131363436: 
       a(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken());
       return;
     }

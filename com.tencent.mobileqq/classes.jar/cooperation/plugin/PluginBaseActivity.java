@@ -16,7 +16,7 @@ public class PluginBaseActivity
   
   public String a_()
   {
-    return getString(2131433681);
+    return getString(2131433698);
   }
   
   public int g()

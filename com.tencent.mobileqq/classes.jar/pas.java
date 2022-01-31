@@ -1,16 +1,37 @@
-import com.tencent.biz.webviewplugin.PubAccountWebViewHttpBridge;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class pas
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public pas(PubAccountWebViewHttpBridge paramPubAccountWebViewHttpBridge) {}
+  public pas(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l = System.currentTimeMillis();
-    PubAccountWebViewHttpBridge.a(this.a);
-    this.a.a = (System.currentTimeMillis() - l);
-    PubAccountWebViewHttpBridge.b(this.a);
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+      bool1 = false;
+    }
+    do
+    {
+      return bool1;
+      bool1 = bool2;
+    } while (paramView != AbsBaseWebViewActivity.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "vg onTouch");
+    }
+    paramView = new HashMap(2);
+    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
+    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
+    this.a.a(8589934606L, paramView);
+    return true;
   }
 }
 

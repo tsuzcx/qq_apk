@@ -1,31 +1,40 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.LimitInfo;
+import android.os.Handler;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class adzd
-  implements DialogInterface.OnClickListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public adzd(NearbyLikeLimitManager paramNearbyLikeLimitManager, Activity paramActivity) {}
+  private Handler a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adzd(Handler paramHandler)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a;
-    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.a)))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramDialogInterface.a);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 1028);
+    this.a = paramHandler;
+  }
+  
+  public void onInstallProgress(float paramFloat)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(1);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzd
  * JD-Core Version:    0.7.0.1
  */

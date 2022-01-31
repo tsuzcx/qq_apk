@@ -491,12 +491,12 @@ public class NearByFaceDownloader
     //   930: astore 24
     //   932: iload 4
     //   934: istore_2
-    //   935: new 217	zek
+    //   935: new 217	zhq
     //   938: dup
     //   939: aload_0
     //   940: aload 27
     //   942: aload_1
-    //   943: invokespecial 220	zek:<init>	(Lcom/tencent/mobileqq/app/NearByFaceDownloader;Lcom/tencent/mobileqq/data/Setting;Lcom/tencent/mobileqq/util/FaceInfo;)V
+    //   943: invokespecial 220	zhq:<init>	(Lcom/tencent/mobileqq/app/NearByFaceDownloader;Lcom/tencent/mobileqq/data/Setting;Lcom/tencent/mobileqq/util/FaceInfo;)V
     //   946: aconst_null
     //   947: iconst_0
     //   948: invokestatic 226	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
@@ -574,7 +574,7 @@ public class NearByFaceDownloader
     //   1081: laload
     //   1082: lsub
     //   1083: lstore 19
-    //   1085: new 240	zej
+    //   1085: new 240	zhp
     //   1088: dup
     //   1089: aload_0
     //   1090: iload_3
@@ -584,7 +584,7 @@ public class NearByFaceDownloader
     //   1095: aload 25
     //   1097: iload 4
     //   1099: lload 19
-    //   1101: invokespecial 243	zej:<init>	(Lcom/tencent/mobileqq/app/NearByFaceDownloader;ILcom/tencent/mobileqq/util/FaceInfo;IILjava/lang/String;IJ)V
+    //   1101: invokespecial 243	zhp:<init>	(Lcom/tencent/mobileqq/app/NearByFaceDownloader;ILcom/tencent/mobileqq/util/FaceInfo;IILjava/lang/String;IJ)V
     //   1104: aconst_null
     //   1105: iconst_0
     //   1106: invokestatic 226	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
@@ -700,7 +700,7 @@ public class NearByFaceDownloader
     //   1372: laload
     //   1373: lsub
     //   1374: lstore 19
-    //   1376: new 240	zej
+    //   1376: new 240	zhp
     //   1379: dup
     //   1380: aload_0
     //   1381: sipush 9202
@@ -710,7 +710,7 @@ public class NearByFaceDownloader
     //   1387: aload 25
     //   1389: iconst_0
     //   1390: lload 19
-    //   1392: invokespecial 243	zej:<init>	(Lcom/tencent/mobileqq/app/NearByFaceDownloader;ILcom/tencent/mobileqq/util/FaceInfo;IILjava/lang/String;IJ)V
+    //   1392: invokespecial 243	zhp:<init>	(Lcom/tencent/mobileqq/app/NearByFaceDownloader;ILcom/tencent/mobileqq/util/FaceInfo;IILjava/lang/String;IJ)V
     //   1395: aconst_null
     //   1396: iconst_0
     //   1397: invokestatic 226	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
@@ -878,7 +878,7 @@ public class NearByFaceDownloader
     //   1740: laload
     //   1741: lsub
     //   1742: lstore 19
-    //   1744: new 240	zej
+    //   1744: new 240	zhp
     //   1747: dup
     //   1748: aload_0
     //   1749: sipush 9204
@@ -888,7 +888,7 @@ public class NearByFaceDownloader
     //   1756: aload 24
     //   1758: iload 4
     //   1760: lload 19
-    //   1762: invokespecial 243	zej:<init>	(Lcom/tencent/mobileqq/app/NearByFaceDownloader;ILcom/tencent/mobileqq/util/FaceInfo;IILjava/lang/String;IJ)V
+    //   1762: invokespecial 243	zhp:<init>	(Lcom/tencent/mobileqq/app/NearByFaceDownloader;ILcom/tencent/mobileqq/util/FaceInfo;IILjava/lang/String;IJ)V
     //   1765: aconst_null
     //   1766: iconst_0
     //   1767: invokestatic 226	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
@@ -959,7 +959,7 @@ public class NearByFaceDownloader
     //   1895: laload
     //   1896: lsub
     //   1897: lstore 19
-    //   1899: new 240	zej
+    //   1899: new 240	zhp
     //   1902: dup
     //   1903: aload_0
     //   1904: iload 7
@@ -969,7 +969,7 @@ public class NearByFaceDownloader
     //   1910: aload 23
     //   1912: iload 8
     //   1914: lload 19
-    //   1916: invokespecial 243	zej:<init>	(Lcom/tencent/mobileqq/app/NearByFaceDownloader;ILcom/tencent/mobileqq/util/FaceInfo;IILjava/lang/String;IJ)V
+    //   1916: invokespecial 243	zhp:<init>	(Lcom/tencent/mobileqq/app/NearByFaceDownloader;ILcom/tencent/mobileqq/util/FaceInfo;IILjava/lang/String;IJ)V
     //   1919: aconst_null
     //   1920: iconst_0
     //   1921: invokestatic 226	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V

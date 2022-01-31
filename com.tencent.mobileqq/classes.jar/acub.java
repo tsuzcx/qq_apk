@@ -1,140 +1,88 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.file.TroopFileProtocol.ReqDownloadFileObserver;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TroopFileVideoOnlinePlayManager;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnPreviewVideoOnlineListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
 
 public class acub
-  extends TroopFileProtocol.ReqDownloadFileObserver
+  implements ProtoReqManager.IProtoRespBack
 {
-  public acub(TroopFileModel paramTroopFileModel, FileBrowserModelBase.OnPreviewVideoOnlineListener paramOnPreviewVideoOnlineListener) {}
+  public acub(FileTransferHandler paramFileTransferHandler) {}
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener == null) {}
-    Object localObject;
-    label665:
+    if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD-500".equals(paramProtoReq.a)) {
+      FileTransferHandler.a(this.a, paramProtoReq, paramProtoResp);
+    }
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          if (paramDownloadFileRspBody == null)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.e("TroopFileModel<FileAssistant>", 4, "error DownloadFileRspBody is null!!!!!");
-            }
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.c();
-            return;
-          }
-          long l = paramBundle.getLong("troopUin");
-          TroopFileTransferManager localTroopFileTransferManager;
-          try
-          {
-            localTroopFileTransferManager = (TroopFileTransferManager)TroopFileTransferManager.a.get(Long.valueOf(l));
-            if (localTroopFileTransferManager == null)
-            {
-              if (QLog.isDevelopLevel()) {
-                QLog.e("TroopFileModel<FileAssistant>", 4, "bad troopUin" + l);
-              }
-              this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.c();
-              return;
-            }
-          }
-          finally {}
-          paramBundle = paramBundle.getString("itemKey");
-          if (paramBundle == null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.c();
-            return;
-          }
-          localObject = UUID.fromString(paramBundle);
-          try
-          {
-            localObject = (TroopFileTransferManager.Item)localTroopFileTransferManager.b.get(localObject);
-            if (localObject == null)
-            {
-              if (QLog.isDevelopLevel()) {
-                QLog.e("TroopFileModel<FileAssistant>", 4, "bad item key" + paramBundle);
-              }
-              this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.c();
-              return;
-            }
-          }
-          finally {}
-          paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-          if (QLog.isDevelopLevel()) {
-            QLog.e("TroopFileModel<FileAssistant>", 4, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
-          }
-          ((TroopFileTransferManager.Item)localObject).cookieValue = HexUtil.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-          if (((TroopFileTransferManager.Item)localObject).cookieValue != null) {
-            ((TroopFileTransferManager.Item)localObject).cookieValue = ((TroopFileTransferManager.Item)localObject).cookieValue.toLowerCase();
-          }
-          ((TroopFileTransferManager.Item)localObject).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-          ((TroopFileTransferManager.Item)localObject).DownloadUrl = HexUtil.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-          ((TroopFileTransferManager.Item)localObject).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-          ((TroopFileTransferManager.Item)localObject).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-          if ((paramInt != -133) && (paramInt != -132) && (paramInt != -134)) {
-            break;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.c();
-        } while (!QLog.isDevelopLevel());
-        QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
-        return;
-        if ((paramInt != -103) && (paramInt != -301)) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
       return;
-      paramDownloadFileRspBody = TroopFileVideoOnlinePlayManager.a(((TroopFileTransferManager.Item)localObject).DownloadIp, ((TroopFileTransferManager.Item)localObject).DownloadUrl, ((TroopFileTransferManager.Item)localObject).FilePath, ((TroopFileTransferManager.Item)localObject).cookieValue, "");
-      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_UPLOAD_SUCC-800".equals(paramProtoReq.a))
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.a(paramDownloadFileRspBody, ((TroopFileTransferManager.Item)localObject).cookieValue);
-        if (QLog.isColorLevel()) {
-          QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a.a() != null)
-        {
-          paramDownloadFileRspBody = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a.a().TroopUin);
-          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a.a() == null) {
-            break label665;
-          }
-        }
-        for (paramBundle = FileManagerUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a.a().nFileType);; paramBundle = "unknow")
-        {
-          ReportController.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
-          return;
-          paramDownloadFileRspBody = "";
-          break;
-        }
+        FileTransferHandler.b(this.a, paramProtoReq, paramProtoResp);
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.c();
-    } while (!QLog.isColorLevel());
-    QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD-1200".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.c(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_DOWNLOAD_SUCC-1000".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.d(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_FORWARD_FILE-700".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.e(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_COPY_TO-60100".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.f(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_DOWNLOAD_ABS-1100".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.g(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_DELETE_FILE-900".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.h(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("GTalkFileAppSvr.CMD_DISCUSS_FILE".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.i(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V2-1600".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.j(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.k(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_HIT_V2-1800".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.l(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+      if ("SafeCenterSvr.CMD_FACE2FACE_FLAG_REQ".equals(paramProtoReq.a))
+      {
+        FileTransferHandler.m(this.a, paramProtoReq, paramProtoResp);
+        return;
+      }
+    } while (!"OfflineFilleHandleSvr.pb_ftn_CMD_REQ_RECALL-400".equals(paramProtoReq.a));
+    FileTransferHandler.n(this.a, paramProtoReq, paramProtoResp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acub
  * JD-Core Version:    0.7.0.1
  */

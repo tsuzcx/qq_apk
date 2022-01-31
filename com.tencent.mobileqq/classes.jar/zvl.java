@@ -1,41 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
 public class zvl
   implements Runnable
 {
-  public zvl(ARVideoRecordViewProxy paramARVideoRecordViewProxy, int paramInt) {}
+  public zvl(MpfileTaskProxy paramMpfileTaskProxy, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setShowState(2);
-      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy);
-      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy, 0);
-      if (QLog.isColorLevel()) {
-        QLog.i("ARVideoRecordViewProxy", 2, "switchUIdisplayMode run RECORD_NORMAL_MODE");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Int != 1);
-      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setShowState(3);
-      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setVisibility(0);
-      ARVideoRecordViewProxy.b(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setVisibility(0);
-      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy, 1);
-    } while (!QLog.isColorLevel());
-    QLog.i("ARVideoRecordViewProxy", 2, "switchUIdisplayMode run RECORD_PROGRESS_MODE");
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyMpfileTaskProxy.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zvl
  * JD-Core Version:    0.7.0.1
  */

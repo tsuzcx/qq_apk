@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14fe" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2adb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
-                <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2adc" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" />
-                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2adb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c3f" android:layout_width="65.0dip" android:layout_height="65.0dip" />
-                <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2add" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2adb" android:layout_centerVertical="true" android:textIsSelectable="false" />
-            </RelativeLayout>
-            <TextView android:textSize="12.0sp" android:textColor="#ff666666" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ade" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d4b" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="" android:textIsSelectable="false" />
-            <Button android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2adf" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d49" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="30.0dip" android:text="添加到+号" />
-        </LinearLayout>
-    </ScrollView>
-    <com.qzone.widget.QZoneEmptyView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26e0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2a33" android:layout_width="1.0dip" android:layout_height="44.0dip" android:layout_weight="2.0" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0583" android:layout_width="1.0dip" android:layout_height="44.0dip" android:layout_weight="1.0" />
+</LinearLayout>

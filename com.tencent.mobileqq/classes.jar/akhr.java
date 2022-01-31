@@ -1,145 +1,194 @@
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.IndividualRedPacketManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
-import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.profile.ShoppingPhotoItemInfo;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader;
+import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader.DecorateInfo;
+import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader.RedPacketTemplateInfo;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.io.File;
 import java.util.List;
+import java.util.Map;
 
-class akhr
-  implements Runnable
+public class akhr
+  extends VasQuickUpdateManager.CallBacker
 {
-  akhr(akhq paramakhq, ProfileShoppingPhotoInfo paramProfileShoppingPhotoInfo) {}
+  public akhr(IndividualRedPacketResDownloader paramIndividualRedPacketResDownloader) {}
   
-  public void run()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileShoppingPhotoInfo == null) || (this.jdField_a_of_type_Akhq.a.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_Akhq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_Akhq.a.jdField_a_of_type_AndroidViewLayoutInflater == null) || (this.jdField_a_of_type_Akhq.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo == null) || (this.jdField_a_of_type_Akhq.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null)) {
+    if ((16L != paramLong) || (TextUtils.isEmpty(paramString1))) {
       return;
     }
-    Object localObject1 = new ArrayList();
-    Object localObject3 = (View)this.jdField_a_of_type_Akhq.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_shopping_photo");
-    Object localObject2 = localObject3;
-    if (localObject3 == null)
-    {
-      localObject2 = this.jdField_a_of_type_Akhq.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970522, null);
-      this.jdField_a_of_type_Akhq.a.jdField_a_of_type_JavaUtilHashMap.put("map_key_shopping_photo", localObject2);
-    }
-    localObject3 = (TextView)((View)localObject2).findViewById(2131371004);
-    if ((this.jdField_a_of_type_Akhq.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Akhq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_Akhq.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
-    {
-      localObject3 = (TextView)((View)localObject2).findViewById(2131371004);
-      ((TextView)localObject3).setText(this.jdField_a_of_type_Akhq.a.a(2131435711));
-    }
-    Object localObject4;
-    Object localObject5;
-    int j;
+    label94:
+    boolean bool;
+    label118:
     int i;
-    label418:
-    Object localObject6;
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileShoppingPhotoInfo != null)
+    if ((QLog.isColorLevel()) || (paramInt1 != 0))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqProfileProfileShoppingPhotoInfo.getPhotoFromRawData();
-      if (localObject1 == null) {
-        break label500;
-      }
-      localObject4 = (LinearLayout)((View)localObject2).findViewById(2131371006);
-      localObject5 = (LinearLayout)((View)localObject2).findViewById(2131371008);
-      if (((List)localObject1).size() <= 0)
+      localObject1 = new StringBuilder().append("callBacker, from:").append(paramString3).append(",httpCode=").append(paramInt2).append(",errorCode:").append(paramInt1).append(", scid:").append(paramString1).append(", cfgScid:").append(paramString2);
+      if (paramInt1 != 0)
       {
-        ((LinearLayout)localObject4).setVisibility(0);
-        ((LinearLayout)localObject5).setVisibility(8);
-        localObject4 = (TextView)((View)localObject2).findViewById(2131371007);
-        ((TextView)localObject4).setText(this.jdField_a_of_type_ComTencentMobileqqProfileProfileShoppingPhotoInfo.shopName);
-        ProfileCardTemplate.a((View)localObject4, "color", this.jdField_a_of_type_Akhq.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, "commonItemContentColor");
+        paramVasQuickUpdateManager = ", Error ";
+        QLog.d("IndividualRedPacketResDownloader", 2, paramVasQuickUpdateManager);
       }
     }
     else
     {
-      j = this.jdField_a_of_type_Akhq.a.getResources().getDimensionPixelSize(2131559163);
-      localObject5 = new ImageView[3];
-      localObject5[0] = ((ImageView)((View)localObject2).findViewById(2131371009));
-      localObject5[1] = ((ImageView)((View)localObject2).findViewById(2131371010));
-      localObject5[2] = ((ImageView)((View)localObject2).findViewById(2131371011));
-      i = 0;
-      if (i >= localObject5.length) {
-        break label660;
+      if (paramInt1 != 0) {
+        break label339;
       }
-      localObject6 = localObject5[i];
-      if ((localObject1 == null) || (((List)localObject1).size() <= i)) {
-        break label503;
+      bool = true;
+      if (!bool) {
+        break label345;
       }
-      localObject4 = ((ShoppingPhotoItemInfo)((List)localObject1).get(i)).jdField_a_of_type_JavaLangString;
-      label460:
-      if ((!TextUtils.isEmpty((CharSequence)localObject4)) || (localObject6 == null)) {
-        break label509;
+      i = 2;
+    }
+    label339:
+    label345:
+    label351:
+    do
+    {
+      for (;;)
+      {
+        try
+        {
+          if (!"iRedPacket_v3.json".equals(paramString1)) {
+            break label351;
+          }
+          this.a.a(true, false);
+          if (QLog.isColorLevel()) {
+            QLog.d("IndividualRedPacketResDownloader", 2, "callBacker, from:" + paramString3 + ",httpCode=" + paramInt2 + ",errorCode:" + paramInt1 + ", scid:" + paramString1 + ", cfgScid:" + paramString2 + ", downloadOK=" + bool);
+          }
+          if ((TextUtils.isEmpty(paramString3)) || (!paramString3.startsWith("silent_download.redbag"))) {
+            break;
+          }
+          this.a.a();
+          return;
+        }
+        catch (Exception paramVasQuickUpdateManager)
+        {
+          QLog.d("IndividualRedPacketResDownloader", 2, "callBacker, from:" + paramString3 + ",httpCode=" + paramInt2 + ",errorCode:" + paramInt1 + ", scid:" + paramString1 + ", cfgScid:" + paramString2 + ", e=" + paramVasQuickUpdateManager.getMessage());
+          return;
+        }
+        paramVasQuickUpdateManager = ", ok ";
+        break label94;
+        bool = false;
+        break label118;
+        i = -1;
+        continue;
+        if ("iRedPacket_v3.char300.json".equals(paramString1))
+        {
+          if (bool)
+          {
+            paramVasQuickUpdateManager = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "pddata/vas/redpacket/" + "iRedPacket_v3.char300.json";
+            paramVasQuickUpdateManager = VasQuickUpdateManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 16L, "iRedPacket_v3.char300.json", paramVasQuickUpdateManager, false, this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+            this.a.a(true, false, paramString1, paramVasQuickUpdateManager);
+          }
+          localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+          ??? = IndividualRedPacketManager.c;
+          if (!bool) {
+            break label1071;
+          }
+          paramVasQuickUpdateManager = "1";
+          ReportController.b((QQAppInterface)localObject1, "CliOper", "", "", "0X800612D", "0X800612D", 0, 0, (String)???, paramVasQuickUpdateManager, "1", "");
+        }
+        else if ("iRedPacket_v3.font.zip".equals(paramString1))
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo.e = i;
+          if (bool)
+          {
+            paramVasQuickUpdateManager = new File(IndividualRedPacketManager.a(null, null, 21, 0, 0));
+            this.a.a(true, false, paramString1, paramVasQuickUpdateManager);
+          }
+          localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+          ??? = IndividualRedPacketManager.c;
+          if (!bool) {
+            break label1079;
+          }
+          paramVasQuickUpdateManager = "1";
+          ReportController.b((QQAppInterface)localObject1, "CliOper", "", "", "0X800612C", "0X800612C", 0, 0, (String)???, paramVasQuickUpdateManager, "1", "");
+        }
+        else
+        {
+          if (!"iRedPacket_v3.specialChar.zip".equals(paramString1)) {
+            break label658;
+          }
+          this.a.b.e = i;
+          if (bool)
+          {
+            paramVasQuickUpdateManager = new File(IndividualRedPacketManager.a(null, null, 25, 0, 0));
+            this.a.a(true, false, paramString1, paramVasQuickUpdateManager);
+          }
+        }
       }
-      localObject6.setVisibility(8);
+    } while (!paramString1.startsWith("luckyMoney.item."));
+    label464:
+    Object localObject1 = IndividualRedPacketManager.a(paramString1);
+    label571:
+    if (bool)
+    {
+      paramVasQuickUpdateManager = this.a.a((String)localObject1);
+      if ((paramVasQuickUpdateManager != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager != null))
+      {
+        ??? = IndividualRedPacketManager.a((String)localObject1, null, paramVasQuickUpdateManager.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f, paramVasQuickUpdateManager.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.d, 0);
+        ??? = (String)??? + "_dir2";
+        VasQuickUpdateEngine.safeDeleteFile(new File((String)???));
+        if (QLog.isColorLevel()) {
+          QLog.d("IndividualRedPacketResDownloader", 2, "callBacker delete animateDir: " + (String)???);
+        }
+      }
     }
     for (;;)
     {
-      i += 1;
-      break label418;
-      ((LinearLayout)localObject4).setVisibility(8);
-      ((LinearLayout)localObject5).setVisibility(0);
-      label500:
-      break;
-      label503:
-      localObject4 = null;
-      break label460;
-      label509:
-      if (localObject6 != null)
+      label658:
+      synchronized (this.a.c)
       {
-        if (this.jdField_a_of_type_Akhq.a.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable == null) {
-          this.jdField_a_of_type_Akhq.a.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(this.jdField_a_of_type_Akhq.a.getResources().getColor(2131493014));
+        if (!this.a.c.containsKey(localObject1)) {
+          break label1009;
         }
-        try
+        localObject3 = (List)this.a.c.get(localObject1);
+        i = 0;
+        if (i < ((List)localObject3).size())
         {
-          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_Akhq.a.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-          localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_Akhq.a.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-          localURLDrawableOptions.mRequestHeight = j;
-          localURLDrawableOptions.mRequestWidth = j;
-          localObject4 = URLDrawable.getDrawable((String)localObject4, localURLDrawableOptions);
-          localObject6.setVisibility(0);
-          localObject6.setImageDrawable((Drawable)localObject4);
-        }
-        catch (Exception localException)
-        {
-          localObject6.setVisibility(8);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.profilecard.FrdProfileCard", 2, localException.toString());
+          String str = (String)((List)localObject3).get(i);
+          if (TextUtils.isEmpty(str)) {
+            break label1087;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.a(str, paramVasQuickUpdateManager.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f);
+          this.a.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.a(str + "_tp", paramVasQuickUpdateManager.b.f);
+          this.a.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.a(str + "_send", paramVasQuickUpdateManager.c.f);
         }
       }
+      this.a.c.remove(paramVasQuickUpdateManager.jdField_a_of_type_JavaLangString);
+      label1009:
+      ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      Object localObject3 = IndividualRedPacketManager.c;
+      if (bool) {}
+      for (paramVasQuickUpdateManager = "1";; paramVasQuickUpdateManager = "0")
+      {
+        ReportController.b((QQAppInterface)???, "CliOper", "", "", "0X800612E", "0X800612E", 0, 0, (String)localObject3, paramVasQuickUpdateManager, "1", (String)localObject1);
+        break;
+      }
+      label1071:
+      paramVasQuickUpdateManager = "0";
+      break label464;
+      label1079:
+      paramVasQuickUpdateManager = "0";
+      break label571;
+      label1087:
+      i += 1;
     }
-    label660:
-    ((View)localObject2).setTag(new DataTag(41, null));
-    ((View)localObject2).setOnClickListener(this.jdField_a_of_type_Akhq.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_AndroidViewView$OnClickListener);
-    ((View)localObject2).setContentDescription(this.jdField_a_of_type_Akhq.a.a(2131427376));
-    localObject1 = (ImageView)((View)localObject2).findViewById(2131371005);
-    this.jdField_a_of_type_Akhq.a.a("map_key_shopping_photo", (TextView)localObject3, null, (ImageView)localObject1);
-    this.jdField_a_of_type_Akhq.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhr
  * JD-Core Version:    0.7.0.1
  */

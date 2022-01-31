@@ -1,90 +1,24 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class rec
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rec(AccountManageActivity paramAccountManageActivity) {}
+  public rec(DoraemonAPIManager paramDoraemonAPIManager, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.a.b) {
-      return;
-    }
-    paramView = this.a;
-    boolean bool;
-    label102:
-    int i;
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      bool = true;
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label214;
-      }
-      this.a.rightViewText.setVisibility(8);
-      this.a.rightHighLView.setVisibility(0);
-      this.a.rightViewText.setText(2131434517);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131494262));
-      if (AccountManageActivity.a(this.a) != null)
-      {
-        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
-        if ((paramView instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)paramView).f();
-        }
-        AccountManageActivity.a(this.a).a();
-        AccountManageActivity.a(this.a, null);
-      }
-      int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-      i = 0;
-      label173:
-      if (i >= j) {
-        break label321;
-      }
-      paramView = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if ((paramView != null) && (paramView.getTag() != null)) {
-        break label274;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label173;
-      bool = false;
-      break;
-      label214:
-      this.a.rightViewText.setVisibility(0);
-      this.a.rightHighLView.setVisibility(8);
-      this.a.rightViewText.setText(2131434535);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131494213));
-      break label102;
-      label274:
-      paramView = paramView.findViewById(2131362735);
-      if (paramView != null)
-      {
-        ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) * AccountManageActivity.b(this.a)));
-        paramView.setLayoutParams(localLayoutParams);
-      }
-    }
-    label321:
-    this.a.b();
-    this.a.a(this.a.jdField_a_of_type_Boolean);
-    this.a.b = false;
-    AccountManageActivity.a(this.a).postDelayed(new red(this), 400L);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a, 0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
+    localQQCustomDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
+    localQQCustomDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rec
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,30 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.HorizontalScrollView;
+import com.tencent.av.ui.EffectSettingUi;
 import com.tencent.qphone.base.util.QLog;
 
 public class jtv
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  long b;
+  public jtv(EffectSettingUi paramEffectSettingUi, ViewTreeObserver paramViewTreeObserver, HorizontalScrollView paramHorizontalScrollView) {}
   
-  public jtv(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, int paramInt, long paramLong1, long paramLong2)
+  @TargetApi(16)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-  }
-  
-  void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(true, 1, paramLong1);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeOnGlobalLayoutListener(this);
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-        if (paramInt == 2)
-        {
-          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(false, 1, paramLong1);
-          return;
-        }
-        if (paramInt == 3)
-        {
-          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(true, 2, paramLong1);
-          return;
-        }
-        if (paramInt == 4)
-        {
-          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(false, 2, paramLong1);
-          return;
-        }
-        if (paramInt == 5)
-        {
-          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
-          DoubleVideoMeetingCtrlUI.e(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI);
-          return;
-        }
-        if (paramInt != 6) {
-          break;
-        }
-      } while (paramLong1 == this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.b);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.c(true);
+      QLog.w("EffectSettingUi", 1, "onGlobalLayout");
+      this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setTag(new Object());
+      this.jdField_a_of_type_ComTencentAvUiEffectSettingUi.d();
       return;
-    } while (!QLog.isColorLevel());
-    QLog.e(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.c, 2, "ERROR-->The RefreshType is Error. Type = " + paramInt);
-  }
-  
-  public void run()
-  {
-    a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b);
+      this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

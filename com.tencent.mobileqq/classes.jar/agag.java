@@ -1,33 +1,50 @@
 import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.now.enter.ConversationNowController;
 
-class agag
-  implements ActionSheet.OnButtonClickListener
+public class agag
+  implements Animator.AnimatorListener
 {
-  agag(agad paramagad, PersonalityLabelInfo paramPersonalityLabelInfo, ActionSheet paramActionSheet) {}
+  public agag(ConversationNowController paramConversationNowController, View paramView1, View paramView2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramInt)
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-ConversationNowController.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController));
+    this.b.setLayoutParams(paramAnimator);
+    if ((this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.d) && (this.jdField_a_of_type_AndroidViewView != null))
     {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    for (;;)
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-ConversationNowController.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController));
+    this.b.setLayoutParams(paramAnimator);
+    if ((this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.d) && (this.jdField_a_of_type_AndroidViewView != null))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-      agad.a(this.jdField_a_of_type_Agad, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
-      continue;
-      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Agad.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
-      this.jdField_a_of_type_Agad.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if ((!this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.d) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agag
  * JD-Core Version:    0.7.0.1
  */

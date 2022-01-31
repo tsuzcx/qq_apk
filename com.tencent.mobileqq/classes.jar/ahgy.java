@@ -1,45 +1,72 @@
-import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
+import android.media.AudioRecord;
+import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
+import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture.AudioCaptureListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahgy
+  implements Runnable
 {
-  boolean jdField_a_of_type_Boolean;
+  public ahgy(AudioCapture paramAudioCapture) {}
   
-  public ahgy(ApproximateSearchEngine paramApproximateSearchEngine, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean)
+  public void run()
   {
     try
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (this.a.a != null) {
+        return;
+      }
+      AudioCapture.a(this.a);
+      this.a.a = new AudioRecord(AudioCapture.a(this.a), AudioCapture.b(this.a), AudioCapture.c(this.a), AudioCapture.d(this.a), this.a.e);
+      try
+      {
+        this.a.a.startRecording();
+        this.a.a(true);
+        if (AudioCapture.a(this.a) != null) {
+          AudioCapture.a(this.a).e();
+        }
+        if ((this.a.a.getState() == 0) && (AudioCapture.a(this.a) != null))
+        {
+          AudioCapture.a(this.a).b(-4);
+          return;
+        }
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        QLog.e("AudioCapture", 2, localIllegalStateException, new Object[0]);
+      }
       return;
     }
-    finally
+    catch (Exception localException1)
     {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      try
+      {
+        this.a.a.release();
+        if (AudioCapture.a(this.a) != null)
+        {
+          AudioCapture.a(this.a).b(-4);
+          return;
+          localException1 = localException1;
+          QLog.e("AudioCapture", 2, localException1, new Object[0]);
+          if (AudioCapture.a(this.a) != null)
+          {
+            AudioCapture.a(this.a).b(-4);
+            return;
+          }
+        }
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          localException2.printStackTrace();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahgy
  * JD-Core Version:    0.7.0.1
  */

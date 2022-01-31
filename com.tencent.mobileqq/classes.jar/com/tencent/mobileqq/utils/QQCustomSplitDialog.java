@@ -31,16 +31,16 @@ public class QQCustomSplitDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364010));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362758));
-    this.c = ((TextView)findViewById(2131364013));
-    this.d = ((TextView)findViewById(2131364014));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364034));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362776));
+    this.c = ((TextView)findViewById(2131364037));
+    this.d = ((TextView)findViewById(2131364038));
     this.c.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364011));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363771));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131364021));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364022));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364035));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363794));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131364045));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364046));
   }
   
   public void setTitle(int paramInt)

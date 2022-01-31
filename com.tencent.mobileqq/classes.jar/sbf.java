@@ -1,33 +1,32 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class sbf
-  implements Runnable
+  extends WtloginObserver
 {
-  public sbf(ChatSettingForTroop paramChatSettingForTroop, Intent paramIntent) {}
+  public sbf(ChatHistoryForC2C paramChatHistoryForC2C, long paramLong, boolean paramBoolean) {}
   
-  public void run()
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    try
+    long l;
+    if (QLog.isColorLevel())
     {
-      ArrayList localArrayList = this.jdField_a_of_type_AndroidContentIntent.getExtras().getStringArrayList("param_admins");
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.coverAdministrators(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, localArrayList);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.post(new sbg(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.chatopttroop", 2, localException, new Object[0]);
-        }
+      l = System.currentTimeMillis();
+      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
+      if (paramDevlockInfo != null) {
+        break label93;
       }
+    }
+    label93:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("ChatHistoryForC2C", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.runOnUiThread(new sbg(this, paramInt, paramDevlockInfo));
+      return;
     }
   }
 }

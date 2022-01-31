@@ -1,34 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.music.QimMusicPlayer;
-import dov.com.qq.im.capture.view.MusicProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.util.AlbumLibDownloaderUtil;
+import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
 
 public class anbs
-  implements View.OnClickListener
+  implements Runnable
 {
-  public anbs(EditRecognitionPart paramEditRecognitionPart) {}
+  public anbs(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditRecognitionPart", 2, "mRecognitionBubble onClick: invoked. ");
-    }
-    paramView = ((QimMusicPlayer)QIMManager.a().c(8)).b();
-    if ((MusicProviderView.a) && (paramView != null) && (paramView.a != EditRecognitionPart.a(this.a).a) && (paramView.d == 5))
+    if (AlbumLibDownloaderUtil.a().a(AlbumLibDownloaderUtil.a, true))
     {
-      this.a.c();
+      QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime, this.jdField_a_of_type_ArrayOfJavaLangString);
       return;
     }
-    EditRecognitionPart.a(this.a);
+    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbs
  * JD-Core Version:    0.7.0.1
  */

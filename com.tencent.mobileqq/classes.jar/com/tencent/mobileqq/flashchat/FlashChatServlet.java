@@ -93,7 +93,7 @@ public class FlashChatServlet
       paramIntent = new FlashChatSso.TSsoReq();
       paramIntent.i32_cmd.set(1);
       paramIntent.i32_implat.set(109);
-      paramIntent.str_qq_ver.set("7.6.0");
+      paramIntent.str_qq_ver.set("7.6.3");
       paramIntent = paramIntent.toByteArray();
       ByteBuffer localByteBuffer = ByteBuffer.allocate(paramIntent.length + 4);
       localByteBuffer.putInt(paramIntent.length + 4).put(paramIntent);
@@ -106,7 +106,7 @@ public class FlashChatServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatServlet
  * JD-Core Version:    0.7.0.1
  */

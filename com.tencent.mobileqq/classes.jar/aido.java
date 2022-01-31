@@ -1,55 +1,104 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.transfile.BaseTransFileController;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.shortvideo.util.HwVideoMerge;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class aido
-  implements Runnable
 {
-  public aido(ShortVideoUploadProcessor paramShortVideoUploadProcessor, boolean paramBoolean, int paramInt) {}
+  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
+  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
+  public Process a;
   
-  public void run()
+  public void a()
   {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)
+    if (this.jdField_a_of_type_JavaLangProcess != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoUploadProcessor", 2, "<PreUploadVideo><BDH_LOG> cancelCurrentSlices isNeedWait:" + this.jdField_a_of_type_Boolean + " cancelReason:" + this.jdField_a_of_type_Int);
-      }
-      if (ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) != 3)
+      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
+      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
+      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangProcess != null) {}
+    try
+    {
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> cancelCurrentSlices mSwitch != SWITCH_PRE_UPLOAD  mSwitch : " + ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor));
+        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
+        if (str == null) {
+          break;
         }
-        return;
+        HwVideoMerge.a("[@] compressVideo log:" + str, null);
       }
-      ShortVideoUploadProcessor.b(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, 3);
-      ShortVideoUploadProcessor.c(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, 1);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.y = this.jdField_a_of_type_Int;
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.c.iterator();
-      if (localIterator.hasNext()) {
-        ((Transaction)localIterator.next()).cancelTransaction();
+      label177:
+      return;
+    }
+    catch (IOException localIOException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (this.jdField_a_of_type_JavaIoInputStream != null) {
+            this.jdField_a_of_type_JavaIoInputStream.close();
+          }
+          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+            this.jdField_a_of_type_JavaIoInputStreamReader.close();
+          }
+          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
+            this.jdField_a_of_type_JavaIoBufferedReader.close();
+          }
+          return;
+        }
+        catch (IOException localIOException3) {}
+        try
+        {
+          if (this.jdField_a_of_type_JavaIoInputStream != null) {
+            this.jdField_a_of_type_JavaIoInputStream.close();
+          }
+          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+            this.jdField_a_of_type_JavaIoInputStreamReader.close();
+          }
+          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
+            continue;
+          }
+          this.jdField_a_of_type_JavaIoBufferedReader.close();
+          return;
+        }
+        catch (IOException localIOException2)
+        {
+          return;
+        }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.c.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck != null)
+    finally
     {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().cancelAckRequest(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqHighwaySegmentRequestAck = null;
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.s();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.a());
+      try
+      {
+        if (this.jdField_a_of_type_JavaIoInputStream != null) {
+          this.jdField_a_of_type_JavaIoInputStream.close();
+        }
+        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+          this.jdField_a_of_type_JavaIoInputStreamReader.close();
+        }
+        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
+          this.jdField_a_of_type_JavaIoBufferedReader.close();
+        }
+      }
+      catch (IOException localIOException4)
+      {
+        break label177;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aido
  * JD-Core Version:    0.7.0.1
  */

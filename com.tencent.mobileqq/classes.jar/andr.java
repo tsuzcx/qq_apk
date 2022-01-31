@@ -1,26 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import cooperation.qzone.cache.FileCacheService;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
 
-public class andr
-  implements Animation.AnimationListener
+public final class andr
+  implements ThreadPool.Job
 {
-  public andr(EditVideoGuide paramEditVideoGuide) {}
+  public andr(String paramString1, String paramString2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public Object run(ThreadPool.JobContext paramJobContext)
   {
-    this.a.j();
-    this.a.a.a(0);
+    QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$000(this.a, this.b)), true);
+    return null;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andr
  * JD-Core Version:    0.7.0.1
  */

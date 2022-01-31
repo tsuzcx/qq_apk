@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_pressed="true" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c030e">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c030e" />
-        </shape>
-    </item>
-    <item android:state_focused="true" android:state_enabled="true" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c030e">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c030e" />
-        </shape>
-    </item>
-    <item android:state_enabled="false" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0311">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0311" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c030d" />
-        </shape>
-    </item>
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d8a" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d88" />
 </selector>

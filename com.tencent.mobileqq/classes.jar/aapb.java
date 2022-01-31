@@ -1,6 +1,19 @@
-public abstract interface aapb
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
+
+class aapb
+  implements Runnable
 {
-  public abstract void a(String[] paramArrayOfString);
+  aapb(aaoz paramaaoz) {}
+  
+  public void run()
+  {
+    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"cellular".equals(ArkAppEventObserverManager.a(this.a.a))))
+    {
+      ArkAppEventObserverManager.a(this.a.a).a(true, "cellular");
+      ArkAppEventObserverManager.a(this.a.a, "cellular");
+    }
+  }
 }
 
 

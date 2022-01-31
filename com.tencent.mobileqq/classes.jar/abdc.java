@@ -1,36 +1,40 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
-import com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.VideoDrawableHandler;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class abdc
-  implements Runnable
+public final class abdc
+  implements INetEngine.IBreakDownFix
 {
-  public abdc(SelectCoverActivity paramSelectCoverActivity) {}
-  
-  public void run()
+  public void a(NetReq paramNetReq, NetResp paramNetResp)
   {
-    Bitmap localBitmap = VideoDrawableHandler.a(this.a.a);
-    if (this.a.jdField_b_of_type_Boolean) {}
-    for (;;)
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      return;
-      if (localBitmap != null) {
-        this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(4, localBitmap).sendToTarget();
-      }
-      while (this.a.d == 1)
+      do
       {
-        SelectCoverActivity.a(this.a);
         return;
-        this.a.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(6);
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
+      paramNetResp.c = 0L;
+      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
+      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.jdField_a_of_type_JavaLangString = (str + "range=" + paramNetReq.jdField_a_of_type_Long);
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + paramNetResp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abdc
  * JD-Core Version:    0.7.0.1
  */

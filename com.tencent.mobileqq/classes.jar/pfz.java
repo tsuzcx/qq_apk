@@ -1,23 +1,29 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import com.tencent.component.media.image.drawable.AutoGifDrawable;
-import com.tencent.component.media.image.drawable.AutoGifDrawable.AutoGifCallback;
+import com.tencent.component.media.gif.NewGifDrawable;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class pfz
-  implements Drawable.Callback
+  implements Runnable
 {
-  public pfz(AutoGifDrawable paramAutoGifDrawable) {}
+  long jdField_a_of_type_Long;
   
-  public void invalidateDrawable(Drawable paramDrawable)
+  public pfz(NewGifDrawable paramNewGifDrawable, long paramLong)
   {
-    if (this.a.a != null) {
-      this.a.a.invalidateGifView();
-    }
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
+  public void run()
+  {
+    long l = 0L;
+    NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
+    NewGifDrawable localNewGifDrawable = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable;
+    ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
+    pgb localpgb = NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
+    if (this.jdField_a_of_type_Long > 0L) {
+      l = this.jdField_a_of_type_Long;
+    }
+    localNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = localScheduledThreadPoolExecutor.schedule(localpgb, l, TimeUnit.MILLISECONDS);
+  }
 }
 
 

@@ -1,33 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.ArithResult;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import org.json.JSONException;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class airz
-  implements View.OnClickListener
+class airz
+  implements Runnable
 {
-  public airz(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  airz(airy paramairy) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    try
-    {
-      CheckArithHWResultFragment.a(this.a, CheckArithHWResultFragment.a(this.a).a(), CheckArithHWResultFragment.a(this.a).a());
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-      AssertUtils.a("QQ.Troop.homework.CheckArithHWResultFragment//onClick toJSON error:" + paramView, new Object[0]);
-    }
+    QQToast.a(BaseApplicationImpl.getApplication().getBaseContext(), 2, 2131435927, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     airz
  * JD-Core Version:    0.7.0.1
  */

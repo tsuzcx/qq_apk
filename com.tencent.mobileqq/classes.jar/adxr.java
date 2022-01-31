@@ -1,54 +1,60 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.musicgene.BitmapOptionUtil;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.pic.compress.Utils;
+import com.tencent.mobileqq.search.util.SearchUtils.GenerateGifWithTextCallback;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.MD5;
+import org.json.JSONObject;
 
 public class adxr
-  implements DownloadParams.DecodeHandler
+  implements SearchUtils.GenerateGifWithTextCallback
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  public adxr(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public adxr(MusicPlayerActivity paramMusicPlayerActivity, boolean paramBoolean, String paramString)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMusicPlayerActivity);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    Object localObject = (MusicPlayerActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramBitmap != null) && (localObject != null))
+    if (paramString == null)
     {
-      paramDownloadParams = BitmapOptionUtil.a(Bitmap.createBitmap(paramBitmap, 0, paramBitmap.getHeight() / 2, paramBitmap.getWidth(), paramBitmap.getHeight() / 2));
-      localObject = Message.obtain(MusicPlayerActivity.a((MusicPlayerActivity)localObject), 49);
-      Bundle localBundle = new Bundle();
-      localBundle.putIntArray("KEY_COLOR_LIST", paramDownloadParams);
-      localBundle.putBoolean("KEY_MATCH_SONG", this.jdField_a_of_type_Boolean);
-      ((Message)localObject).setData(localBundle);
-      ((Message)localObject).sendToTarget();
-      if ((paramDownloadParams != null) && (paramDownloadParams.length >= 2))
-      {
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add(Integer.valueOf(paramDownloadParams[0]));
-        ((ArrayList)localObject).add(Integer.valueOf(paramDownloadParams[1]));
-        MusicPlayerActivity.c().put(this.jdField_a_of_type_JavaLangString, localObject);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
+      return;
     }
-    return paramBitmap;
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        byte[] arrayOfByte = FileUtils.a(paramString);
+        if (arrayOfByte == null) {
+          break;
+        }
+        localJSONObject.put("code", 0);
+        StringBuilder localStringBuilder = new StringBuilder("data:");
+        if (Utils.a(paramString))
+        {
+          str = "image/gif;";
+          localStringBuilder.append(str);
+          localStringBuilder.append("base64,");
+          localStringBuilder.append(Base64Util.encodeToString(arrayOfByte, 0));
+          localJSONObject.put("imgData", localStringBuilder);
+          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
+          localJSONObject.put("imagePath", paramString);
+          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+        return;
+      }
+      String str = "image/jpg;";
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxr
  * JD-Core Version:    0.7.0.1
  */

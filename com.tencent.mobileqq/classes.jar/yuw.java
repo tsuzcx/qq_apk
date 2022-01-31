@@ -1,61 +1,59 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.apollo.utils.IResDownloadListener;
-import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler;
+import com.tencent.mobileqq.apollo.store.webview.ApolloWebStatistics;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.util.LRULinkedHashMap;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 public class yuw
-  extends IResDownloadListener
 {
-  public yuw(ApolloPanel paramApolloPanel) {}
+  public String a;
+  public WeakReference a;
+  private WeakReference b;
   
-  public void a()
+  public yuw(ApolloWebDataHandler paramApolloWebDataHandler, String paramString, WebViewPlugin paramWebViewPlugin)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "tab download Done");
-    }
+    this.b = new WeakReference(paramApolloWebDataHandler);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebViewPlugin);
   }
   
-  public void a(ApolloActionData paramApolloActionData)
+  public void a(yux paramyux, ApolloWebStatistics paramApolloWebStatistics)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "action res done. action=" + paramApolloActionData.actionId);
-    }
-    this.a.a(paramApolloActionData);
-  }
-  
-  public void a(Boolean paramBoolean)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null)) {}
-    MqqHandler localMqqHandler;
-    do
+    ApolloWebDataHandler localApolloWebDataHandler = (ApolloWebDataHandler)this.b.get();
+    WebViewPlugin localWebViewPlugin;
+    if ((localApolloWebDataHandler != null) && (paramyux != null))
     {
-      do
+      localWebViewPlugin = (WebViewPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
       {
-        do
-        {
-          return;
-          localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getHandler(ChatActivity.class);
-        } while (localMqqHandler == null);
-        localMqqHandler.post(new yux(this));
-        if (!paramBoolean.booleanValue()) {
-          break;
+        if (paramApolloWebStatistics != null) {
+          paramApolloWebStatistics.d = System.currentTimeMillis();
         }
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin());
-      } while (this.a.c == null);
-      this.a.c.clear();
-      this.a.d(this.a.b(ApolloPanel.jdField_a_of_type_Int));
-      return;
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloMainViewBinder == null) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloMainViewBinder.c != 3));
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "onJsonDone in panel fail refresh panel");
+        if (yux.a(paramyux) == null) {
+          break label175;
+        }
+        localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { yux.a(paramyux).toString() });
+      }
     }
-    localMqqHandler.post(new yuy(this));
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, plugin.callJs.mResultJson:" + yux.a(paramyux));
+      }
+      if (ApolloWebDataHandler.a(localApolloWebDataHandler) != null)
+      {
+        ApolloWebDataHandler.a(localApolloWebDataHandler).remove(yux.a(paramyux));
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, remove sso from mPreloadSSODatas:" + yux.a(paramyux));
+        }
+      }
+      return;
+      label175:
+      localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+    }
   }
 }
 

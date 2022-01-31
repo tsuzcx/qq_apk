@@ -1,18 +1,27 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.OnPlayStateListener;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class mev
   implements Runnable
 {
-  public mev(VideoUIManager paramVideoUIManager) {}
+  public mev(VideoPlayManager paramVideoPlayManager, VideoPlayManager.VideoPlayParam paramVideoPlayParam, VideoPlayerWrapper paramVideoPlayerWrapper, int paramInt1, int paramInt2, Object paramObject) {}
   
   public void run()
   {
-    if ((VideoUIManager.a(this.a) != null) && (VideoUIManager.a(this.a).a != null)) {
-      PublicAccountReportUtils.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", VideoReporter.a(VideoUIManager.a(this.a).a.mVideoVid, VideoUIManager.a(this.a).a.innerUniqueID, (int)VideoUIManager.a(this.a).a.mChannelID, null), false);
+    if (VideoPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager) != null)
+    {
+      Iterator localIterator = VideoPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager).iterator();
+      while (localIterator.hasNext())
+      {
+        VideoPlayManager.OnPlayStateListener localOnPlayStateListener = (VideoPlayManager.OnPlayStateListener)localIterator.next();
+        if (localOnPlayStateListener != null) {
+          localOnPlayStateListener.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
+        }
+      }
     }
   }
 }

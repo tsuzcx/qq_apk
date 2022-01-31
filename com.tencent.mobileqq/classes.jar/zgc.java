@@ -1,71 +1,57 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import mqq.os.MqqMessageQueue;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-public class zgc
-  implements Runnable
+public final class zgc
+  implements AbstractUnifiedMonitor.ThreadMonitorCallback
 {
-  int jdField_a_of_type_Int = 0;
-  volatile boolean jdField_a_of_type_Boolean;
-  volatile int jdField_b_of_type_Int = 0;
-  volatile boolean jdField_b_of_type_Boolean = false;
-  volatile int c = 5;
-  
-  private zgc(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  public void a()
+  public void onThreadMonitorEnd(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    BaseApplicationImpl.sUiHandler.postDelayed(this, 100L);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "set progress, actual = " + paramInt1 + ", expected = " + paramInt2);
-    }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    BaseApplicationImpl.sUiHandler.removeCallbacks(this);
-    BaseApplicationImpl.sUiHandler.postDelayed(this, 20L);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    BaseApplicationImpl.sUiHandler.removeCallbacks(this);
-  }
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "run progress, isCanceled = " + this.jdField_a_of_type_Boolean + ", bindState = " + this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.jdField_a_of_type_Int);
-    }
-    Object localObject;
-    if ((!this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.jdField_a_of_type_Int == 8) || (this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.jdField_a_of_type_Int == 4)) && (this.jdField_a_of_type_Int + 1 < this.c))
+    if (paramInt == 0)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      PhoneContactManagerImp.b((PhoneContactManagerImp)localObject, i);
-      if (this.jdField_b_of_type_Boolean)
+      Looper.getMainLooper().setMessageLogging(null);
+      MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
+    }
+    do
+    {
+      Object localObject;
+      do
       {
-        PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, 7);
-        this.jdField_b_of_type_Boolean = false;
-      }
-      localObject = BaseApplicationImpl.sUiHandler;
-      if (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int) {
-        break label166;
-      }
-    }
-    label166:
-    for (long l = 20L;; l = 100L)
-    {
-      ((MqqHandler)localObject).postDelayed(this, l);
+        return;
+        if (paramInt == 4)
+        {
+          ThreadManager.getSubThreadLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt == 5)
+        {
+          ThreadManager.getFileThreadLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt == 14)
+        {
+          Looper.getMainLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt != 18) {
+          break;
+        }
+        localObject = MsfCore.sCore;
+        if (localObject == null)
+        {
+          QLog.e("AutoMonitor", 1, "msf core hasnot init");
+          return;
+        }
+        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
+      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
+      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
       return;
-    }
+    } while (paramInt != 19);
+    Looper.getMainLooper().setMessageLogging(null);
   }
 }
 

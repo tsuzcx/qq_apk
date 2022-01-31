@@ -1,62 +1,28 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Message;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import java.util.Collections;
+import java.util.List;
 
 public class ante
-  extends MqqHandler
+  implements DoodleEmojiManager.POIPostersRequestCallback
 {
-  public ante(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ante(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, List paramList)
   {
-    switch (paramMessage.what)
-    {
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    List localList = paramList;
+    if (paramList == null) {
+      localList = Collections.EMPTY_LIST;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          QQToast.a(this.a, 2131437344, 0).a();
-          return;
-          String str = this.a.getString(2131437345);
-          paramMessage = (String)paramMessage.obj;
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, str + paramMessage, 0).a();
-          ImageUtil.a(this.a, paramMessage);
-          return;
-          paramMessage = DialogUtil.b(this.a.jdField_a_of_type_AndroidContentContext, 232, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131437372), this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131437373), 2131437374, 2131434570, new antf(this), new antg(this));
-          ShortVideoPlayActivity.a(this.a, paramMessage);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
-          }
-        } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
-        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(1);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
-        }
-        if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-          this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(2);
-        }
-        if ((this.a.b != 1) && (this.a.b != 2)) {
-          break;
-        }
-      } while (!this.a.b());
-      this.a.j();
-      this.a.r();
-      return;
-    } while (this.a.b != 0);
-    ShortVideoPlayActivity.a(this.a);
+    Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent(paramInt, localList));
   }
 }
 

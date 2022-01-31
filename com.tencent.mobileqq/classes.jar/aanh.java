@@ -1,24 +1,20 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
 
 public class aanh
-  implements ArkAppCenter.OnGetAppIcon
+  implements DialogInterface.OnClickListener
 {
-  public aanh(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder) {}
+  public aanh(ARVideoPreviewActivity paramARVideoPreviewActivity) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBitmap != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setImageBitmap(paramBitmap);
-    }
+    ARVideoPreviewActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aanh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.wordsegment.WordSegment.ILogCallback;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
 
-class aakz
-  implements WordSegment.ILogCallback
+public class aakz
+  implements Runnable
 {
-  aakz(aaky paramaaky) {}
+  public aakz(ARBlessWordFragment paramARBlessWordFragment) {}
   
-  public void OnLog(String paramString1, String paramString2)
+  public void run()
   {
-    ArkAppCenter.b("ArkApp.Dict.WordSegment." + paramString1, String.format("%s", new Object[] { paramString2 }));
+    ARBlessWordFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aakz
  * JD-Core Version:    0.7.0.1
  */

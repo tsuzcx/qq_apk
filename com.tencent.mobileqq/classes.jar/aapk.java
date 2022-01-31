@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
+import com.tencent.ark.ark;
+import com.tencent.ark.ark.Container;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.ArkTipsManager;
+import java.lang.ref.WeakReference;
 
-public final class aapk
-  implements ArkAppLocationManager.ArkGetLocationCallback
+public class aapk
+  implements Runnable
 {
-  public aapk(String paramString, Object paramObject, ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler paramIAnalyzeTextIntentByServerHandler) {}
+  public aapk(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
   
-  public void a(String paramString, double paramDouble1, double paramDouble2)
+  public void run()
   {
-    aapx localaapx = new aapx(null);
-    localaapx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localaapx.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
-    localaapx.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler;
-    ThreadManager.post(new aapl(this, localaapx, paramString), 5, null, true);
+    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ArkAppContainer.a((ark.Container)localObject);
+    } while ((localObject == null) || ((ArkAppContainer)((WeakReference)localObject).get() == null));
+    ArkTipsManager.a().b();
   }
 }
 

@@ -1,112 +1,83 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.flashchat.OnHolderItemClickListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import com.tencent.widget.GridView;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
+import dov.com.tencent.mobileqq.activity.richmedia.PtvTemplateItemView;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import java.util.ArrayList;
 
-public class ankz
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+class ankz
+  implements Runnable
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  OnHolderItemClickListener a;
-  public DynamicTextConfigManager.DynamicTextConfigBean a;
-  public QIMCommonLoadingView a;
-  View b;
-  public ImageView b;
-  public ImageView c;
-  public ImageView d;
+  ankz(anky paramanky, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean) {}
   
-  public ankz(View paramView, OnHolderItemClickListener paramOnHolderItemClickListener)
+  public void run()
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371550));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371551));
-    this.c = ((ImageView)paramView.findViewById(2131371553));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131371552);
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = ((QIMCommonLoadingView)paramView.findViewById(2131363434));
-    this.d = ((ImageView)paramView.findViewById(2131371554));
-    paramView.setOnClickListener(this);
-    paramOnHolderItemClickListener = (RelativeLayout.LayoutParams)this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
-    paramView = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    paramOnHolderItemClickListener.width = paramView.width;
-    paramOnHolderItemClickListener.height = paramView.height;
-    paramOnHolderItemClickListener.addRule(10);
-    paramOnHolderItemClickListener.addRule(9);
-    paramOnHolderItemClickListener.addRule(12);
-    paramOnHolderItemClickListener.addRule(11);
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setLayoutParams(paramOnHolderItemClickListener);
-    localLayoutParams.width = paramView.width;
-    localLayoutParams.height = paramView.height;
-    localLayoutParams.addRule(10);
-    localLayoutParams.addRule(9);
-    localLayoutParams.addRule(12);
-    localLayoutParams.addRule(11);
-    this.c.setLayoutParams(localLayoutParams);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getVisibility() != 0) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(0);
-    }
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setProgress((int)paramFloat);
-    int i = this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getMeasuredWidth();
-    int j = this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getMeasuredHeight();
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "updateProgress progress is: " + paramFloat + " pos is: " + this.jdField_a_of_type_Int + " width is: " + i + "height is: " + j);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getVisibility() != 8) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(8);
-    }
-    if (paramBoolean) {
-      if (this.d.getVisibility() != 8) {
-        this.d.setVisibility(8);
+    int j = this.jdField_a_of_type_Anky.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
+    int k = this.jdField_a_of_type_Anky.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
+    int i = j;
+    if (i <= k)
+    {
+      if (i < 0) {}
+      do
+      {
+        i += 1;
+        break;
+        localObject1 = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Anky.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+      } while ((localObject1 == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject1).id.equals(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
+      ((PtvTemplateManager.PtvTemplateInfo)localObject1).downloading = false;
+      ((PtvTemplateManager.PtvTemplateInfo)localObject1).usable = this.jdField_a_of_type_Boolean;
+      Object localObject2 = this.jdField_a_of_type_Anky.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
+      if ((localObject2 instanceof PtvTemplateItemView))
+      {
+        localObject2 = (PtvTemplateItemView)localObject2;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label214;
+        }
+        i = 1000;
+        ((PtvTemplateItemView)localObject2).a(i);
       }
+      if (this.jdField_a_of_type_Boolean) {
+        ((QIMPtvTemplateManager)QIMManager.a(3)).a(112, localObject1);
+      }
+    }
+    if ((QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a) < 0) || (QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a) >= this.jdField_a_of_type_Anky.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
+    label214:
+    while ((!((PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Anky.a.jdField_a_of_type_JavaUtilArrayList.get(QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a))).id.equals(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) || (!this.jdField_a_of_type_Boolean) || (QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a) == null))
+    {
+      return;
+      i = -1;
+      break;
+    }
+    Object localObject1 = QIMPtvTemplateManager.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name;
+    QIMPtvTemplateAdapter.jdField_a_of_type_JavaLangString = (String)localObject1;
+    QIMPtvTemplateAdapter.jdField_b_of_type_Int = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.categoryId;
+    QIMPtvTemplateAdapter.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id;
+    if (this.jdField_a_of_type_Anky.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.kind == 3)
+    {
+      QIMPtvTemplateAdapter.jdField_a_of_type_JavaLangString = "";
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).a((String)localObject1);
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).a("", false, false);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DText", 2, "finish download pos is: " + this.jdField_a_of_type_Int);
+      i = AdvancedProviderView.b();
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).c(i);
+      i = AdvancedProviderView.c();
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).b(i, false);
+      localObject1 = (QIMPtvTemplateManager)QIMManager.a(3);
+      ((QIMPtvTemplateManager)localObject1).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, 111);
+      ((QIMPtvTemplateManager)localObject1).a(3, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.categoryId, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id);
+      ((QIMPtvTemplateManager)localObject1).a(113, null);
+      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.templateStyle != 0) {
+        break;
       }
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).a(101, new Object[0]);
       return;
-      if (this.d.getVisibility() != 0) {
-        this.d.setVisibility(0);
-      }
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.c.getVisibility() != 0) {
-        this.c.setVisibility(0);
-      }
-    }
-    while (this.c.getVisibility() == 8) {
-      return;
-    }
-    this.c.setVisibility(8);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView == this.jdField_a_of_type_AndroidViewView) && (this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener.a(paramView, getPosition(), -1);
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).a((String)localObject1, false, false);
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).a(null);
     }
   }
 }

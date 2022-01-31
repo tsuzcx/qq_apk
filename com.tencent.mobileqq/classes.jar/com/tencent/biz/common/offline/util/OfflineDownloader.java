@@ -14,14 +14,14 @@ import com.tencent.tmdownloader.TMAssistantDownloadManager;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import kmg;
-import kmh;
+import klr;
+import kls;
 
 public class OfflineDownloader
   implements IOfflineDownloader
 {
   private static HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new kmh(this);
+  private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new kls(this);
   public TMAssistantDownloadClient a;
   
   public int a(Context paramContext, String paramString)
@@ -77,7 +77,7 @@ public class OfflineDownloader
         return;
       }
       localObject = paramString3.substring(i + 1);
-      paramString2 = new kmg((String)localObject, paramString3, paramString2, paramAsyncBack);
+      paramString2 = new klr((String)localObject, paramString3, paramString2, paramAsyncBack);
       jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
       if (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient == null) {
         this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(paramContext).getDownloadSDKClient("OfflineDownload" + Process.myPid());
@@ -128,7 +128,7 @@ public class OfflineDownloader
     jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
   }
   
-  public void a(TMAssistantDownloadClient paramTMAssistantDownloadClient, kmg paramkmg, String paramString)
+  public void a(TMAssistantDownloadClient paramTMAssistantDownloadClient, klr paramklr, String paramString)
   {
     TMAssistantDownloadClient localTMAssistantDownloadClient = null;
     Object localObject = null;
@@ -142,7 +142,7 @@ public class OfflineDownloader
         if (!TextUtils.isEmpty(paramTMAssistantDownloadClient)) {
           break;
         }
-        a(paramkmg.a, paramString, paramkmg.c, 14, "get current download path fail after download");
+        a(paramklr.a, paramString, paramklr.c, 14, "get current download path fail after download");
         return;
       }
       paramTMAssistantDownloadClient = new File(localTMAssistantDownloadClient);
@@ -157,28 +157,28 @@ public class OfflineDownloader
     {
       if (TextUtils.isEmpty(null))
       {
-        a(paramkmg.a, paramString, paramkmg.c, 14, "get current download path fail after download");
+        a(paramklr.a, paramString, paramklr.c, 14, "get current download path fail after download");
         return;
       }
     }
     if (!paramTMAssistantDownloadClient.exists())
     {
-      a(paramkmg.a, paramString, paramkmg.c, 15, "cannot get current file after download");
+      a(paramklr.a, paramString, paramklr.c, 15, "cannot get current file after download");
       return;
     }
-    boolean bool = FileUtils.c(localTMAssistantDownloadClient, paramkmg.b);
+    boolean bool = FileUtils.c(localTMAssistantDownloadClient, paramklr.b);
     if (!bool) {
-      bool = FileUtils.b(localTMAssistantDownloadClient, paramkmg.b);
+      bool = FileUtils.b(localTMAssistantDownloadClient, paramklr.b);
     }
     for (;;)
     {
       if (!bool)
       {
-        a(paramkmg.a, paramString, paramkmg.c, 16, "rename file fail after download");
+        a(paramklr.a, paramString, paramklr.c, 16, "rename file fail after download");
         paramTMAssistantDownloadClient.delete();
         return;
       }
-      a(paramkmg.a, paramString, paramkmg.c, 0, "offline zip download success");
+      a(paramklr.a, paramString, paramklr.c, 0, "offline zip download success");
       return;
     }
   }

@@ -35,13 +35,13 @@ import oicq.wlogin_sdk.request.WFastLoginInfo;
 import oicq.wlogin_sdk.request.WUserSigInfo;
 import oicq.wlogin_sdk.request.WtloginHelper;
 import oicq.wlogin_sdk.tools.util;
-import yzl;
-import yzm;
+import zcr;
+import zcs;
 
 public class DataMigrationService
   extends Service
 {
-  private Handler a = new yzl(this);
+  private Handler a = new zcr(this);
   
   private void a(Intent paramIntent, int paramInt)
   {
@@ -223,9 +223,9 @@ public class DataMigrationService
       WtloginHelper localWtloginHelper = new WtloginHelper(this);
       localWtloginHelper.SetTimeOut(20);
       localWtloginHelper.SetMsfTransportFlag(1);
-      localWtloginHelper.SetListener(new yzm(this, paramString1, paramString2, paramString3, paramInt1, paramInt2, localWtloginHelper));
+      localWtloginHelper.SetListener(new zcs(this, paramString1, paramString2, paramString3, paramInt1, paramInt2, localWtloginHelper));
       byte[] arrayOfByte = util.getPkgSigFromApkName(this, "com.tencent.tim");
-      i = localWtloginHelper.GetA1WithA1(localAppRuntime.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "7.6.0".getBytes(), arrayOfByte, new WUserSigInfo(), new WFastLoginInfo());
+      i = localWtloginHelper.GetA1WithA1(localAppRuntime.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "7.6.3".getBytes(), arrayOfByte, new WUserSigInfo(), new WFastLoginInfo());
       if (QLog.isColorLevel()) {
         QLog.d("DataMigrationService", 2, new Object[] { "sendActionAfterGetTicket| retCode=", Integer.valueOf(i), ", account=", localAppRuntime.getAccount() });
       }

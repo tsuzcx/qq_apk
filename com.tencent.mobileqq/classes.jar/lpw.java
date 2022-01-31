@@ -1,5 +1,6 @@
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.qphone.base.util.QLog;
 
 public class lpw
   implements Runnable
@@ -9,6 +10,9 @@ public class lpw
   public void run()
   {
     ReadInJoyLogicEngineEventDispatcher.a().b();
+    if (QLog.isColorLevel()) {
+      QLog.d("ArticleInfoModule", 2, "8c8 response refresh ui ");
+    }
   }
 }
 

@@ -1,24 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-public class aazf
-  implements View.OnClickListener
+class aazf
+  implements Runnable
 {
-  public aazf(ARGridMapViewDialog paramARGridMapViewDialog, long paramLong) {}
+  aazf(aazd paramaazd, String paramString1, long paramLong, String paramString2, String paramString3) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.jdField_a_of_type_AndroidAppActivity.isFinishing())
-    {
-      paramView = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.jdField_a_of_type_AndroidContentContext, 230, null, "当前地址有误我要去反馈", "取消", "去反馈", new aazg(this), new aazh(this));
-      if (!this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-        paramView.show();
-      }
-    }
+    this.jdField_a_of_type_Aazd.a.a.loadPoiLogoRes(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b, this.c);
   }
 }
 

@@ -1,40 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.common.cache.MemoryClearManagerNew.IClearMemoryListener;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.widget.UpSideDownDrawable;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class thq
-  implements MemoryClearManagerNew.IClearMemoryListener
+  implements Runnable
 {
-  public thq(QQSettingMe paramQQSettingMe) {}
+  public thq(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public int a()
+  public void run()
   {
-    if (QQSettingMe.a(this.a).size() > 0)
-    {
-      Iterator localIterator = QQSettingMe.a(this.a).values().iterator();
-      int i = 0;
-      if (localIterator.hasNext())
-      {
-        Bitmap localBitmap = ((UpSideDownDrawable)localIterator.next()).a();
-        if (localBitmap == null) {
-          break label79;
-        }
-        i = Utils.a(localBitmap) + i;
-      }
-      label79:
-      for (;;)
-      {
-        break;
-        QQSettingMe.a(this.a).clear();
-        return i;
-      }
-    }
-    return 0;
+    this.a.e();
   }
 }
 

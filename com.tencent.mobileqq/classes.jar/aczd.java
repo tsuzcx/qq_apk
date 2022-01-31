@@ -1,13 +1,32 @@
-import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class aczd
   implements Runnable
 {
-  public aczd(QfileHorizontalListView paramQfileHorizontalListView) {}
+  public aczd(UniformDownloadMgr paramUniformDownloadMgr) {}
   
   public void run()
   {
-    this.a.requestLayout();
+    try
+    {
+      if (UniformDownloadMgr.a(this.a) == null)
+      {
+        UniformDownloadMgr.a(this.a, new acze(this));
+        IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.qfile_unifromdownload");
+        BaseApplicationImpl.getApplication().registerReceiver(UniformDownloadMgr.a(this.a), localIntentFilter);
+        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr Register UNIDOWNLOAD_BORDCAST");
+        return;
+      }
+      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onAppInit, but mRecv is already setted");
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

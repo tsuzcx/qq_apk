@@ -1,32 +1,44 @@
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.campuscircle.CampusCircleObserver;
-import com.tencent.mobileqq.campuscircle.CampusCircleSelTopicFragment;
-import java.util.List;
+import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class abix
-  extends CampusCircleObserver
+  extends Handler
 {
-  public abix(CampusCircleSelTopicFragment paramCampusCircleSelTopicFragment) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(boolean paramBoolean, List paramList1, List paramList2, List paramList3, List paramList4)
+  public abix(ARMapSplashView paramARMapSplashView1, Looper paramLooper, ARMapSplashView paramARMapSplashView2)
   {
-    if (!paramBoolean) {}
-    do
-    {
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramARMapSplashView2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ARMapSplashView localARMapSplashView = (ARMapSplashView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localARMapSplashView == null) {
       return;
-      if (paramList2 != null) {
-        Message.obtain(this.a.a, 1, 0, 0, paramList2).sendToTarget();
-      }
-      if (paramList3 != null) {
-        Message.obtain(this.a.a, 2, 0, 0, paramList3).sendToTarget();
-      }
-    } while ((paramList4 == null) || (paramList4.size() <= 0));
-    Message.obtain(this.a.a, 3, 0, 0, paramList4).sendToTarget();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMapSplashView", 2, String.format("handleMessage msg=%s", new Object[] { Integer.valueOf(paramMessage.what) }));
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      ARMapSplashView.a(localARMapSplashView);
+      return;
+    }
+    ARMapSplashView.b(localARMapSplashView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abix
  * JD-Core Version:    0.7.0.1
  */

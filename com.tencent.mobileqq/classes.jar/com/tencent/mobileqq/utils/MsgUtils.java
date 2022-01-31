@@ -144,9 +144,9 @@ public class MsgUtils
     }
     paramContext = paramQQAppInterface.a().a(AppShareIDUtil.a(paramMessage.shareAppID));
     if ((paramContext == null) || (paramContext.messagetail == null) || ("".equals(paramContext.messagetail))) {
-      return paramQQAppInterface.getApp().getString(2131435919);
+      return paramQQAppInterface.getApp().getString(2131435936);
     }
-    return paramQQAppInterface.getApp().getString(2131435917) + paramContext.messagetail + paramQQAppInterface.getApp().getString(2131435918);
+    return paramQQAppInterface.getApp().getString(2131435934) + paramContext.messagetail + paramQQAppInterface.getApp().getString(2131435935);
   }
   
   private static String a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, QQMessageFacade.Message paramMessage)
@@ -199,15 +199,15 @@ public class MsgUtils
                 do
                 {
                   return str1;
-                  paramContext = paramContext.getString(2131434651);
+                  paramContext = paramContext.getString(2131434668);
                   break;
-                  paramContext = paramContext.getString(2131434652);
+                  paramContext = paramContext.getString(2131434669);
                   break;
-                  paramContext = paramContext.getString(2131434653);
+                  paramContext = paramContext.getString(2131434670);
                   break;
-                  paramContext = paramContext.getString(2131434661);
+                  paramContext = paramContext.getString(2131434678);
                   break;
-                  paramContext = paramContext.getString(2131434662);
+                  paramContext = paramContext.getString(2131434679);
                   break;
                   return paramMessage.senderuin + paramContext;
                   str1 = paramString;
@@ -283,12 +283,12 @@ public class MsgUtils
     int k = Integer.parseInt(((Matcher)localObject).group(4));
     Object localObject = new StringBuffer();
     if (i > 0) {
-      ((StringBuffer)localObject).append(i).append(paramContext.getString(2131433069));
+      ((StringBuffer)localObject).append(i).append(paramContext.getString(2131433086));
     }
     if (j > 0) {
-      ((StringBuffer)localObject).append(j).append(paramContext.getString(2131433072));
+      ((StringBuffer)localObject).append(j).append(paramContext.getString(2131433089));
     }
-    ((StringBuffer)localObject).append(k).append(paramContext.getString(2131433073));
+    ((StringBuffer)localObject).append(k).append(paramContext.getString(2131433090));
     return paramString.replace(str1, ((StringBuffer)localObject).toString());
   }
   
@@ -656,7 +656,7 @@ public class MsgUtils
               if (j == 0) {
                 break label913;
               }
-              paramContext = paramContext.getResources().getString(2131428751);
+              paramContext = paramContext.getResources().getString(2131428757);
               localObject = paramContext;
               if (TextUtils.isEmpty(paramArrayOfString[0])) {
                 break label11;
@@ -675,96 +675,96 @@ public class MsgUtils
             break label930;
           }
         }
-        if (paramContext.getString(2131428842).equals(paramArrayOfString[0]))
+        if (paramContext.getString(2131428848).equals(paramArrayOfString[0]))
         {
           if (j != 0) {
-            return paramContext.getResources().getString(2131428760);
+            return paramContext.getResources().getString(2131428766);
           }
-          return paramContext.getResources().getString(2131428766);
+          return paramContext.getResources().getString(2131428772);
         }
         if (j != 0) {
-          return paramContext.getResources().getString(2131428751) + " " + paramArrayOfString[0];
+          return paramContext.getResources().getString(2131428757) + " " + paramArrayOfString[0];
         }
-        return paramContext.getResources().getString(2131428753) + " " + paramArrayOfString[0];
+        return paramContext.getResources().getString(2131428759) + " " + paramArrayOfString[0];
         if (paramArrayOfString[0] == null) {
           break label930;
         }
-        if (paramContext.getString(2131428839).equals(paramArrayOfString[0]))
+        if (paramContext.getString(2131428845).equals(paramArrayOfString[0]))
         {
           if (j != 0)
           {
             if (paramBoolean2) {
-              return paramContext.getResources().getString(2131428759);
+              return paramContext.getResources().getString(2131428765);
             }
-            return paramContext.getResources().getString(2131428757);
+            return paramContext.getResources().getString(2131428763);
           }
+          if (paramBoolean2) {
+            return paramContext.getResources().getString(2131428771);
+          }
+          return paramContext.getResources().getString(2131428769);
+        }
+        if (j != 0) {
+          return paramContext.getResources().getString(2131428757) + " " + paramArrayOfString[0];
+        }
+        return paramContext.getResources().getString(2131428759) + " " + paramArrayOfString[0];
+        if (j != 0)
+        {
           if (paramBoolean2) {
             return paramContext.getResources().getString(2131428765);
           }
           return paramContext.getResources().getString(2131428763);
         }
-        if (j != 0) {
-          return paramContext.getResources().getString(2131428751) + " " + paramArrayOfString[0];
+        if (paramBoolean2) {
+          return paramContext.getResources().getString(2131428771);
         }
-        return paramContext.getResources().getString(2131428753) + " " + paramArrayOfString[0];
+        return paramContext.getResources().getString(2131428769);
         if (j != 0)
         {
           if (paramBoolean2) {
-            return paramContext.getResources().getString(2131428759);
+            return paramContext.getResources().getString(2131428765);
           }
-          return paramContext.getResources().getString(2131428757);
+          return paramContext.getResources().getString(2131428763);
         }
         if (paramBoolean2) {
-          return paramContext.getResources().getString(2131428765);
+          return paramContext.getResources().getString(2131428771);
         }
-        return paramContext.getResources().getString(2131428763);
-        if (j != 0)
-        {
-          if (paramBoolean2) {
-            return paramContext.getResources().getString(2131428759);
-          }
-          return paramContext.getResources().getString(2131428757);
-        }
-        if (paramBoolean2) {
-          return paramContext.getResources().getString(2131428765);
-        }
-        return paramContext.getResources().getString(2131428763);
+        return paramContext.getResources().getString(2131428769);
         if (j != 0) {
-          return paramContext.getResources().getString(2131428756);
-        }
-        return paramContext.getResources().getString(2131428762);
-        if (j != 0) {
-          return paramContext.getResources().getString(2131428751);
-        }
-        return paramContext.getResources().getString(2131428753);
-        if (j != 0) {
-          return paramContext.getResources().getString(2131428761);
+          return paramContext.getResources().getString(2131428762);
         }
         return paramContext.getResources().getString(2131428768);
         if (j != 0) {
-          return paramContext.getResources().getString(2131428760);
+          return paramContext.getResources().getString(2131428757);
         }
-        return paramContext.getResources().getString(2131428766);
-        if (paramArrayOfString[0] == null) {
-          break label930;
+        return paramContext.getResources().getString(2131428759);
+        if (j != 0) {
+          return paramContext.getResources().getString(2131428767);
         }
-        if (paramContext.getString(2131428842).equals(paramArrayOfString[0]))
-        {
-          if (j != 0) {
-            return paramContext.getResources().getString(2131428760);
-          }
+        return paramContext.getResources().getString(2131428774);
+        if (j != 0) {
           return paramContext.getResources().getString(2131428766);
         }
-        if (j != 0) {
-          return paramContext.getResources().getString(2131428751) + " " + paramArrayOfString[0];
-        }
-        return paramContext.getResources().getString(2131428753) + " " + paramArrayOfString[0];
+        return paramContext.getResources().getString(2131428772);
         if (paramArrayOfString[0] == null) {
           break label930;
         }
-        return paramContext.getResources().getString(2131428753) + " " + paramArrayOfString[0];
+        if (paramContext.getString(2131428848).equals(paramArrayOfString[0]))
+        {
+          if (j != 0) {
+            return paramContext.getResources().getString(2131428766);
+          }
+          return paramContext.getResources().getString(2131428772);
+        }
+        if (j != 0) {
+          return paramContext.getResources().getString(2131428757) + " " + paramArrayOfString[0];
+        }
+        return paramContext.getResources().getString(2131428759) + " " + paramArrayOfString[0];
+        if (paramArrayOfString[0] == null) {
+          break label930;
+        }
+        return paramContext.getResources().getString(2131428759) + " " + paramArrayOfString[0];
         label913:
-        paramContext = paramContext.getResources().getString(2131428753);
+        paramContext = paramContext.getResources().getString(2131428759);
       }
     }
     return "";
@@ -847,7 +847,7 @@ public class MsgUtils
           paramInt = 0;
           i = 0;
           if ((paramMessage.msgtype == -2011) && (paramMessage.extInt == 61)) {
-            paramMessage.msg = paramQQAppInterface.getApp().getResources().getString(2131433660);
+            paramMessage.msg = paramQQAppInterface.getApp().getResources().getString(2131433677);
           }
           if (paramMessage.istroop == 1)
           {
@@ -956,12 +956,12 @@ public class MsgUtils
         }
         for (;;)
         {
-          paramQQAppInterface = paramContext.getString(2131435550);
+          paramQQAppInterface = paramContext.getString(2131435567);
           if ((HotChatHelper.a(paramMessage)) || (FlashPicHelper.a(paramMessage))) {
-            paramQQAppInterface = paramContext.getString(2131435551);
+            paramQQAppInterface = paramContext.getString(2131435568);
           }
           if (paramMessage.msgtype == -5015) {
-            paramQQAppInterface = paramContext.getString(2131435552);
+            paramQQAppInterface = paramContext.getString(2131435569);
           }
           if (!GoldMsgChatHelper.c(paramMessage)) {
             break label6893;
@@ -1011,7 +1011,7 @@ public class MsgUtils
             break label6890;
           }
           paramString = paramMessage.senderuin;
-          localObject = paramContext.getString(2131435553);
+          localObject = paramContext.getString(2131435570);
           paramContext = (Context)localObject;
           if (GoldMsgChatHelper.c(paramMessage)) {
             paramContext = "[句有料]" + (String)localObject;
@@ -1066,7 +1066,7 @@ public class MsgUtils
         }
         if (paramMessage.msgtype == -2017)
         {
-          paramString = paramContext.getString(2131430368);
+          paramString = paramContext.getString(2131430385);
           paramContext = paramMessage.frienduin;
           if (MsgProxyUtils.a(paramMessage.frienduin, paramMessage.istroop)) {
             paramContext = paramMessage.senderuin;
@@ -1370,7 +1370,7 @@ public class MsgUtils
               paramBoolean1 = paramBoolean2;
             }
             str1 = paramString;
-            paramQQAppInterface = paramContext.getString(2131435550);
+            paramQQAppInterface = paramContext.getString(2131435567);
             str1 = paramString;
             if (!HotChatHelper.a(paramMessage))
             {
@@ -1380,7 +1380,7 @@ public class MsgUtils
             else
             {
               str1 = paramString;
-              paramQQAppInterface = paramContext.getString(2131435551);
+              paramQQAppInterface = paramContext.getString(2131435568);
             }
             str1 = paramString;
             a(str3, paramQQAppInterface, null, bool1, paramBoolean1, paramMsgSummary);
@@ -1546,7 +1546,7 @@ public class MsgUtils
                 a(paramContext, paramMessage, null, false, false, paramMsgSummary);
                 return;
               }
-              paramContext = paramQQAppInterface.getApp().getString(2131430764);
+              paramContext = paramQQAppInterface.getApp().getString(2131430781);
               continue;
             }
             if (paramMessage.msgtype == -1034)
@@ -1584,17 +1584,17 @@ public class MsgUtils
             }
             if (paramMessage.msgtype == -2019)
             {
-              paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131436902);
+              paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131436919);
               return;
             }
             if (paramMessage.msgtype == -1026)
             {
-              paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131437732);
+              paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131437749);
               return;
             }
             if (paramMessage.msgtype == -1027)
             {
-              paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131437734);
+              paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131437751);
               return;
             }
             if (paramMessage.msgtype == -2005)
@@ -1602,7 +1602,7 @@ public class MsgUtils
               paramString = FileManagerUtil.a(paramQQAppInterface, paramMessage);
               paramBoolean1 = b(paramQQAppInterface, paramMessage);
               paramBoolean2 = a(paramQQAppInterface, paramMessage);
-              a(str3, paramContext.getString(2131435555), null, paramBoolean1, paramBoolean2, paramMsgSummary);
+              a(str3, paramContext.getString(2131435572), null, paramBoolean1, paramBoolean2, paramMsgSummary);
               if (paramString == null) {
                 break;
               }
@@ -1700,7 +1700,7 @@ public class MsgUtils
                   if (((MessageForShortVideo)localObject).busiType != 2) {
                     continue;
                   }
-                  paramContext = paramContext.getString(2131435557);
+                  paramContext = paramContext.getString(2131435574);
                   paramString = paramContext;
                   if (GoldMsgChatHelper.c(paramMessage)) {
                     paramString = "[句有料]" + paramContext;
@@ -1725,7 +1725,7 @@ public class MsgUtils
                 paramQQAppInterface = null;
               }
               continue;
-              paramContext = paramContext.getString(2131435556);
+              paramContext = paramContext.getString(2131435573);
               continue;
               QLog.i("Q.recent", 2, "MSG_TYPE_MEDIA_SHORTVIDEO processor!=null");
               continue;
@@ -1806,8 +1806,8 @@ public class MsgUtils
             }
             if (paramMessage.msgtype == -2041)
             {
-              paramQQAppInterface = paramContext.getString(2131438313);
-              paramContext = paramContext.getString(2131438314);
+              paramQQAppInterface = paramContext.getString(2131438331);
+              paramContext = paramContext.getString(2131438332);
               paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = (paramQQAppInterface + " " + paramContext);
               return;
             }
@@ -1837,7 +1837,7 @@ public class MsgUtils
                 paramBoolean2 = false;
                 continue;
               }
-              a(str3, paramContext.getString(2131439041), null, paramBoolean2, paramBoolean1, paramMsgSummary);
+              a(str3, paramContext.getString(2131439069), null, paramBoolean2, paramBoolean1, paramMsgSummary);
               return;
               if (paramQQAppInterface.fileUploadStatus != 3) {
                 continue;
@@ -1970,7 +1970,7 @@ public class MsgUtils
               if (paramMessage.msgtype == -1012)
               {
                 paramQQAppInterface = MessageForGrayTips.getOrginMsg(paramMessage.getMessageText().toString());
-                paramMessage = paramContext.getString(2131433085);
+                paramMessage = paramContext.getString(2131433102);
                 paramInt = paramQQAppInterface.length() - paramMessage.length() - 1;
                 paramContext = paramQQAppInterface;
                 if (paramQQAppInterface.endsWith(paramMessage))
@@ -2055,18 +2055,18 @@ public class MsgUtils
               case 1: 
                 if (((paramMessage.istroop == 1001) || (paramMessage.istroop == 10002)) && (paramMessage.msgtype == -3001))
                 {
-                  paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131436262);
+                  paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131436279);
                   return;
                 }
-                a(str3, paramContext.getString(2131435550), null, paramBoolean1, paramBoolean2, paramMsgSummary);
+                a(str3, paramContext.getString(2131435567), null, paramBoolean1, paramBoolean2, paramMsgSummary);
                 return;
               case 65538: 
-                a(str3, paramContext.getString(2131435550), null, false, false, paramMsgSummary);
+                a(str3, paramContext.getString(2131435567), null, false, false, paramMsgSummary);
                 return;
               case 2: 
               case 8: 
                 DatingUtil.a("buildMsgSummaryForMsg", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-                paramString = paramContext.getString(2131435553);
+                paramString = paramContext.getString(2131435570);
                 paramContext = paramString;
                 if (GoldMsgChatHelper.c(paramMessage)) {
                   paramContext = "[句有料]" + paramString;
@@ -2119,7 +2119,7 @@ public class MsgUtils
                       if (paramMessage.msgtype != -5040) {
                         continue;
                       }
-                      paramQQAppInterface = " " + BaseApplicationImpl.getApplication().getString(2131438086);
+                      paramQQAppInterface = " " + BaseApplicationImpl.getApplication().getString(2131438103);
                       paramMessage = paramContext.toString();
                       if ((paramMessage == null) || (!paramMessage.contains(paramQQAppInterface))) {
                         continue;

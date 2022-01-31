@@ -1,20 +1,17 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.armap.ConversationActivePendantHolderBase;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.mobileqq.ark.ArkAppCGI.QueryAppInfoByAppNameBatchResult;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import java.util.HashMap;
 
-public class aavm
-  implements ValueAnimation.AnimationUpdateListener
+class aavm
+  extends ArkAppCGI.ArkAppCGICallback
 {
-  public aavm(ConversationActivePendantHolderBase paramConversationActivePendantHolderBase) {}
+  aavm(aavl paramaavl) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void a(ArkAppCGI.QueryAppInfoByAppNameBatchResult paramQueryAppInfoByAppNameBatchResult, Object paramObject)
   {
-    this.a.b = paramFloat1.floatValue();
-    this.a.jdField_a_of_type_Float = (1.1F - (paramFloat1.floatValue() - 1.0F));
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.b((int)(this.a.jdField_a_of_type_Int * paramFloat1.floatValue()));
-    }
+    paramObject = (HashMap)paramObject;
+    ArkLocalAppMgr.a(this.a.a, paramQueryAppInfoByAppNameBatchResult, paramObject);
   }
 }
 

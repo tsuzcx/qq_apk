@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.util;
 
-import amyj;
 import android.text.TextUtils;
+import anoo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 public class ConfigSimplifier
 {
-  public static ConfigSimplifier.ZipConfig a(String paramString)
+  public ConfigSimplifier.ZipConfig a(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
@@ -68,7 +68,7 @@ public class ConfigSimplifier
     }
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, ConfigSimplifier.ConfigDownloadCallback paramConfigDownloadCallback)
+  public void a(String paramString1, String paramString2, String paramString3, ConfigSimplifier.ConfigDownloadCallback paramConfigDownloadCallback)
   {
     paramString1 = a(paramString1);
     if (paramString1 == null) {}
@@ -99,7 +99,7 @@ public class ConfigSimplifier
           }
         }
         localObject = new HttpNetReq();
-        ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new amyj(paramString2, paramString3, paramString1, str1, str2, paramConfigDownloadCallback);
+        ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new anoo(this, paramString2, paramString3, paramString1, str1, str2, paramConfigDownloadCallback);
         ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = paramString1.b;
         ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
         ((HttpNetReq)localObject).jdField_c_of_type_JavaLangString = localFile.getPath();

@@ -1,14 +1,13 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class kql
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public kql(AccountDetailVideoManager paramAccountDetailVideoManager) {}
   
-  public kql(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 

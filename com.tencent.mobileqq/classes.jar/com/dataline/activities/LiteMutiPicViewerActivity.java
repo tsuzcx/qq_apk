@@ -70,19 +70,19 @@ public class LiteMutiPicViewerActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131364120));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368678));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368679));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368680));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494207));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131364110));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368681));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131364144));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368745));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368746));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368747));
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494214));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131364134));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368748));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView = new WaitTextView(this);
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setRefreshListener(this);
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setGravity(17);
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setTextColor(getResources().getColor(2131494262));
+    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setTextColor(getResources().getColor(2131494269));
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setTextSize(1, 16.0F);
     this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setPadding(0, 0, 0, AIOUtils.a(50.0F, getResources()));
     AbsListView.LayoutParams localLayoutParams = new AbsListView.LayoutParams(a(this), -2);
@@ -179,7 +179,7 @@ public class LiteMutiPicViewerActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130969990);
+    setContentView(2130970004);
     int i = getIntent().getIntExtra("dataline_group_id", -1);
     this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = this.app.a(0).a(i);
     if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet == null) {
@@ -219,10 +219,10 @@ public class LiteMutiPicViewerActivity
     Object localObject1;
     switch (paramView.getId())
     {
-    case 2131368680: 
+    case 2131368747: 
     default: 
       return;
-    case 2131368679: 
+    case 2131368746: 
       if (NetworkUtil.d(this))
       {
         FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSendFromLocal(), this, new ca(this, localDataLineHandler));
@@ -286,7 +286,7 @@ public class LiteMutiPicViewerActivity
         c();
         return;
       }
-      FMToastUtil.a(2131434596);
+      FMToastUtil.a(2131434613);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(true);

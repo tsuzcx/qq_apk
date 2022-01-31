@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
 
 public class nic
-  implements DialogInterface.OnCancelListener
+  implements LoadingMoreHelper.OnLoadMoreListener
 {
-  public nic(FeedsPlayModeBase paramFeedsPlayModeBase) {}
+  public nic(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    StoryReportor.a("story_grp", "clk_one", this.a.a(), 0, new String[] { "6", PlayModeUtils.a(this.a.a, this.a.b), "", "" });
+    this.a.a = 2;
+    return this.a.a(this.a.b);
   }
 }
 

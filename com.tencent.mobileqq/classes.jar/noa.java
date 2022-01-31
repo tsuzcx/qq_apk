@@ -1,17 +1,15 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class noa
-  implements TVK_IMediaPlayer.OnCompletionListener
+class noa
+  implements Runnable
 {
-  public noa(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  noa(nnz paramnnz) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void run()
   {
-    ThreadManager.getUIHandler().post(new nob(this));
+    QQToast.a(this.a.a, 1, "网络异常，请稍后重试", 0).a();
+    this.a.a.a(2);
   }
 }
 

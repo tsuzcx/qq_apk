@@ -26,9 +26,9 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import wjq;
-import wjr;
-import wjs;
+import wmv;
+import wmw;
+import wmx;
 
 public class ContactsViewController
   extends BaseViewController
@@ -52,7 +52,7 @@ public class ContactsViewController
   public ContactsViewController(Activity paramActivity)
   {
     super(paramActivity);
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), new wjq(this));
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), new wmv(this));
     if ((paramActivity instanceof SplashActivity)) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)paramActivity).app;
     }
@@ -169,14 +169,14 @@ public class ContactsViewController
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator = ((SimpleSlidingIndicator)paramView.findViewById(2131363813));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewHeaderScrollView = ((HeaderScrollView)paramView.findViewById(2131363811));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsViewPager = ((ContactsViewPager)paramView.findViewById(2131363814));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator = ((SimpleSlidingIndicator)paramView.findViewById(2131363836));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewHeaderScrollView = ((HeaderScrollView)paramView.findViewById(2131363834));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsViewPager = ((ContactsViewPager)paramView.findViewById(2131363837));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsViewPagerAdapter = new ContactsViewPagerAdapter(((SplashActivity)a()).getSupportFragmentManager(), ((SplashActivity)a()).app, (BaseActivity)a());
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsViewPagerAdapter.a(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsViewPagerAdapter);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsViewPager.setOffscreenPageLimit(5);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsViewPager.setOnPageChangeListener(new wjr(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewContactsViewPager.setOnPageChangeListener(new wmw(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.setTabData(ContactsConstant.jdField_a_of_type_ArrayOfJavaLangString, ContactsConstant.jdField_a_of_type_ArrayOfInt);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.setOnTabListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.setInterceptListener(this);
@@ -188,10 +188,10 @@ public class ContactsViewController
       localContactsBaseFragment.jdField_a_of_type_Boolean = true;
       localContactsBaseFragment.jdField_b_of_type_Boolean = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout = ((CommonRefreshLayout)paramView.findViewById(2131363809));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout = ((CommonRefreshLayout)paramView.findViewById(2131363832));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.setRefreshCompleteDelayDuration(0);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader = ((ContactRefreshHeader)this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.findViewById(2131362382));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader.setRefreshHeaderUpdateListener(new wjs(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshContactRefreshHeader.setRefreshHeaderUpdateListener(new wmx(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshCommonRefreshLayout.setOnRefreshListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(paramView);
   }
@@ -266,7 +266,7 @@ public class ContactsViewController
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewHeaderScrollView != null)
     {
-      View localView = this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewHeaderScrollView.findViewById(2131363897);
+      View localView = this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewHeaderScrollView.findViewById(2131363920);
       if ((localView != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewHeaderScrollView.getScrollY() > localView.getTop())) {
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewHeaderScrollView.scrollTo(0, localView.getTop());
       }
@@ -303,7 +303,7 @@ public class ContactsViewController
   
   public void h()
   {
-    int j = 2131494212;
+    int j = 2131494219;
     boolean bool = ThemeUtil.isNowThemeIsDefaultCache(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator != null) {
       if (!bool) {
@@ -311,12 +311,12 @@ public class ContactsViewController
       }
     }
     label72:
-    for (int i = 2131494213;; i = 2131494212)
+    for (int i = 2131494220;; i = 2131494219)
     {
       if (bool) {
-        j = 2131493365;
+        j = 2131493368;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(i, 2131493794, j);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(i, 2131493800, j);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsViewPagerAdapter != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsViewPagerAdapter.a(bool);
       }

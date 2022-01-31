@@ -1,20 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.File;
 
-public class adhs
-  implements DialogInterface.OnClickListener
+public final class adhs
+  implements Runnable
 {
-  public adhs(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.k();
+    Object localObject2 = FMSettings.a().b();
+    Object localObject1 = FMSettings.a().c();
+    File localFile = new File((String)localObject2);
+    if (!FileUtils.a((String)localObject2)) {
+      localFile.mkdirs();
+    }
+    localObject2 = new File((String)localObject1);
+    if (!FileUtils.a((String)localObject1)) {
+      ((File)localObject2).mkdirs();
+    }
+    localObject1 = new File(FMSettings.a().b() + ".nomedia");
+    if (((File)localObject1).exists()) {
+      ((File)localObject1).delete();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhs
  * JD-Core Version:    0.7.0.1
  */

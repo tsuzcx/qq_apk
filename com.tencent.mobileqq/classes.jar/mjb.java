@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 
 public class mjb
   implements Runnable
 {
-  public mjb(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public mjb(ReadInJoyNickNameTextView paramReadInJoyNickNameTextView, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
   public void run()
   {
-    ReadinjoyTabFrame.a(this.a);
+    ReadInJoyNickNameTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo, ReadInJoyNickNameTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView));
   }
 }
 

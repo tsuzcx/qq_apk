@@ -1,41 +1,13 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.image.ImageLoader.StreamDownloadListener;
-import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Looper;
 
-public class pgu
-  implements ImageLoader.StreamDownloadListener
+public final class pgu
+  extends Handler
 {
-  private WeakReference a;
-  
-  public pgu(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl)
+  public pgu(Looper paramLooper)
   {
-    this.a = new WeakReference(paramAsyncImageableImpl);
+    super(paramLooper);
   }
-  
-  private AsyncImageable.AsyncImageableImpl a()
-  {
-    return (AsyncImageable.AsyncImageableImpl)this.a.get();
-  }
-  
-  public void onApplyToImage(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
-  {
-    paramOptions = a();
-    if (paramOptions == null) {}
-    while (AsyncImageable.AsyncImageableImpl.a(paramOptions, paramString)) {
-      return;
-    }
-    AsyncImageable.AsyncImageableImpl.a(paramOptions, paramDrawable, true);
-  }
-  
-  public void onDownloadCanceled(String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDownloadFailed(String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDownloadProgress(String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte, int paramInt) {}
-  
-  public void onDownloadSucceed(String paramString1, String paramString2, String paramString3) {}
 }
 
 

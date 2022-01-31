@@ -1,15 +1,13 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
+import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
 
 public class joi
-  extends PhoneStateListener
+  implements Runnable
 {
-  public joi(BaseSmallScreenService paramBaseSmallScreenService) {}
+  public joi(SmallScreenMultiVideoControlUI paramSmallScreenMultiVideoControlUI) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void run()
   {
-    super.onCallStateChanged(paramInt, paramString);
-    this.a.a(paramInt, paramString);
+    this.a.p();
   }
 }
 

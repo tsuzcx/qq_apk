@@ -11,17 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.widget.OverScrollViewListener;
-import oyg;
-import oyh;
+import paa;
+import pab;
 
 public class RefreshView
   extends CustomScrollView
 {
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new oyg(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new paa(this);
   public IPullRefreshHeader a;
   private RefreshView.OnRefreshListener jdField_a_of_type_ComTencentBizUiRefreshView$OnRefreshListener;
-  private OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new oyh(this);
+  private OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new pab(this);
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
   private volatile boolean jdField_b_of_type_Boolean = true;
@@ -41,7 +41,7 @@ public class RefreshView
   @SuppressLint({"InflateParams"})
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(paramContext).inflate(2130969238, null));
+    this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(paramContext).inflate(2130969239, null));
     addView(this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a(), 0);
     d();
   }

@@ -1,173 +1,44 @@
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCallback;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothGattService;
-import com.tencent.device.qfind.BluetoothLeService;
-import com.tencent.device.qfind.GattInfo;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import android.text.TextUtils;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
+import com.tencent.device.msg.activities.DevLittleVideoItemBuilder;
+import com.tencent.device.msg.data.DeviceMsgHandle;
+import com.tencent.device.msg.data.MessageForDevLittleVideo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class qam
-  extends BluetoothGattCallback
+  implements Runnable
 {
-  public qam(BluetoothLeService paramBluetoothLeService) {}
+  public qam(DevLittleVideoItemBuilder paramDevLittleVideoItemBuilder, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
-  public void onCharacteristicChanged(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE_EX", 2, "onCharacteristicChanged uuid=" + paramBluetoothGattCharacteristic.getUuid());
-    }
-    GattInfo localGattInfo = BluetoothLeService.a(this.a, paramBluetoothGatt);
-    if ((localGattInfo != null) && (paramBluetoothGattCharacteristic == localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic))
-    {
-      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_DATA_AVAILABLE", 0, paramBluetoothGatt, localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic, false);
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE_EX", 2, "btvalue=" + HexUtil.a(paramBluetoothGattCharacteristic.getValue()));
-      }
-    }
-  }
-  
-  public void onCharacteristicWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE_EX", 2, "onCharacteristicWrite status=" + paramInt + ",uuid=" + paramBluetoothGattCharacteristic.getUuid());
-    }
-    GattInfo localGattInfo = BluetoothLeService.a(this.a, paramBluetoothGatt);
-    if (paramInt == 0)
-    {
-      if ((localGattInfo != null) && (paramBluetoothGattCharacteristic == localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic))
-      {
-        if (localGattInfo.jdField_a_of_type_ArrayOfByte != null) {
-          BluetoothLeService.a(this.a, localGattInfo);
-        }
-      }
-      else {
-        return;
-      }
-      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_DATA_WRITE_RST", paramInt, paramBluetoothGatt, null, true);
-      return;
-    }
-    BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_DATA_WRITE_RST", paramInt, paramBluetoothGatt, null, false);
-  }
-  
-  public void onConnectionStateChange(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2)
-  {
-    GattInfo localGattInfo = BluetoothLeService.a(this.a, paramBluetoothGatt);
-    if (localGattInfo == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE_EX", 2, "onConnectionStateChange but no gattInfo newState=" + paramInt2);
-      }
-    }
+    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a.a(51);
+    DeviceMsgHandle localDeviceMsgHandle = (DeviceMsgHandle)this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a.a(49);
     for (;;)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE_EX", 2, "onConnectionStateChange status=" + paramInt1 + " newState=" + paramInt2);
-      }
-      if ((paramInt1 != 0) || (paramInt2 == 0))
+      synchronized (localDeviceMsgHandle.a)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("DeviceBLE_EX", 2, "Disconnected from GATT server. status:" + paramInt1);
-        }
-        paramInt2 = localGattInfo.jdField_a_of_type_Int;
-        this.a.b(localGattInfo.jdField_a_of_type_Int);
-        BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_DISCONNECTED", paramInt1, paramInt2);
-        return;
-      }
-      if (paramInt2 != 2) {
-        continue;
-      }
-      localGattInfo.jdField_b_of_type_Int = 2;
-      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_CONNECTED", paramInt1, paramBluetoothGatt, null, false);
-      try
-      {
-        Thread.sleep(200L);
-        label186:
-        boolean bool = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt.discoverServices();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("DeviceBLE_EX", 2, "Connected to GATT server.");
-        QLog.i("DeviceBLE_EX", 2, "Attempting to start service discovery:" + bool);
-        return;
-      }
-      catch (Throwable paramBluetoothGatt)
-      {
-        break label186;
-      }
-    }
-  }
-  
-  public void onDescriptorWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattDescriptor paramBluetoothGattDescriptor, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE_EX", 2, "onDescriptorWrite uuid=" + paramBluetoothGattDescriptor.getUuid() + ",status=" + paramInt + ",value=" + paramBluetoothGattDescriptor.getValue());
-    }
-    BluetoothLeService.a(this.a, paramBluetoothGatt);
-    if (paramInt == 0)
-    {
-      BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_SERVICES_DISCOVERED", paramInt, paramBluetoothGatt, null, false);
-      return;
-    }
-    BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_SET_NOTIFICATION_FAILED", paramInt, paramBluetoothGatt, null, false);
-  }
-  
-  public void onServicesDiscovered(BluetoothGatt paramBluetoothGatt, int paramInt)
-  {
-    GattInfo localGattInfo;
-    if (paramInt == 0)
-    {
-      localGattInfo = BluetoothLeService.a(this.a, paramBluetoothGatt);
-      if (localGattInfo == null) {
-        if (QLog.isColorLevel()) {
-          QLog.w("DeviceBLE_EX", 2, "onServicesDiscovered gattInfo is null");
-        }
-      }
-    }
-    for (;;)
-    {
-      return;
-      localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGatt.getService(UUID.fromString(BluetoothLeService.a));
-      if (localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService != null)
-      {
-        localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService.getCharacteristic(UUID.fromString(BluetoothLeService.e));
-        if (localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic == null) {
-          localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService.getCharacteristic(UUID.fromString(BluetoothLeService.b));
-        }
-        localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService.getCharacteristic(UUID.fromString(BluetoothLeService.f));
-        if (localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic == null) {
-          localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService.getCharacteristic(UUID.fromString(BluetoothLeService.c));
-        }
-        localGattInfo.c = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService.getCharacteristic(UUID.fromString(BluetoothLeService.g));
-        if (localGattInfo.c == null) {
-          localGattInfo.c = localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattService.getCharacteristic(UUID.fromString(BluetoothLeService.d));
-        }
-        if ((localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic == null) || ((localGattInfo.jdField_a_of_type_AndroidBluetoothBluetoothGattCharacteristic.getProperties() & 0x8) == 0) || (localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic == null) || ((localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic.getProperties() & 0x20) == 0) || (localGattInfo.c == null) || ((localGattInfo.c.getProperties() & 0x2) == 0))
+        Iterator localIterator = localDeviceMsgHandle.a.entrySet().iterator();
+        if (localIterator.hasNext())
         {
-          BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_NOT_QQ", paramInt, paramBluetoothGatt, null, false);
+          if (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.uniseq) {
+            continue;
+          }
+          i = 1;
+          if ((i == 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.thumbFileKey)))
+          {
+            long l = localSmartDeviceProxyMgr.a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.thumbFileKey, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.coverkey2, 2154);
+            localDeviceMsgHandle.a.put(Long.valueOf(l), this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
+          }
           return;
         }
       }
-      try
-      {
-        Thread.sleep(1000L);
-        label258:
-        this.a.a(paramBluetoothGatt, localGattInfo.jdField_b_of_type_AndroidBluetoothBluetoothGattCharacteristic, true);
-        return;
-        BluetoothLeService.a(this.a, "com.tencent.device.ble.ACTION_GATT_NOT_QQ", paramInt, paramBluetoothGatt, null, false);
-        return;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("DeviceBLE_EX", 2, "onServicesDiscovered received: " + paramInt);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        break label258;
-      }
+      int i = 0;
     }
   }
 }

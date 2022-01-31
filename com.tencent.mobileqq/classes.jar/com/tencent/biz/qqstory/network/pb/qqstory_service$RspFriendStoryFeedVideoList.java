@@ -14,6 +14,7 @@ public final class qqstory_service$RspFriendStoryFeedVideoList
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatMessageField feed_video_info_list = PBField.initRepeatMessage(qqstory_struct.FeedVideoInfo.class);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
+  public final PBRepeatMessageField multi_rcmd_feed_info_list = PBField.initRepeatMessage(qqstory_struct.MultiRecommendItem.class);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
   public final PBRepeatMessageField share_group_video_info_list = PBField.initRepeatMessage(qqstory_struct.ShareGroupVideoInfo.class);
@@ -23,7 +24,7 @@ public final class qqstory_service$RspFriendStoryFeedVideoList
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 50 }, new String[] { "result", "is_end", "next_cookie", "feed_video_info_list", "union_id", "share_group_video_info_list" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro1, null, localByteStringMicro2, null }, RspFriendStoryFeedVideoList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 50, 58 }, new String[] { "result", "is_end", "next_cookie", "feed_video_info_list", "union_id", "share_group_video_info_list", "multi_rcmd_feed_info_list" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro1, null, localByteStringMicro2, null, null }, RspFriendStoryFeedVideoList.class);
   }
 }
 

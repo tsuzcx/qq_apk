@@ -1,26 +1,29 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.pb.extendfriend.ExtendFriendSquareInfo.RspBody;
 import com.tencent.qphone.base.util.QLog;
 
 public class acis
-  implements Runnable
+  extends ExtendFriendObserver
 {
-  public acis(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView, int paramInt) {}
+  public acis(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, ExtendFriendSquareInfo.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView);
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null) && (QfileBaseRecentFileTabView.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView)))
+    try
     {
-      QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 1, "setSelect[" + this.jdField_a_of_type_Int + "] success mFileListView");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.jdField_a_of_type_Int);
+      ExtendFriendSquareFragment.a(this.a, paramBoolean, paramRspBody);
+      return;
+    }
+    catch (Exception paramRspBody)
+    {
+      QLog.e("ExtendFriendSquareFragment", 1, "onGetSquareStrangerList exception", paramRspBody);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acis
  * JD-Core Version:    0.7.0.1
  */

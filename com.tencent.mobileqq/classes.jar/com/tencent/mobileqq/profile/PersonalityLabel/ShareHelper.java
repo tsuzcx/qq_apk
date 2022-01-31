@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agas;
-import agaz;
+import agou;
+import agpb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
@@ -63,28 +63,28 @@ public class ShareHelper
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430091);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838332;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430108);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.c = 2;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430097);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838333;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430114);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838337;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.c = 3;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430109);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430126);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838340;
     localActionSheetItem.c = 9;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430110);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838330;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430127);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838334;
     localActionSheetItem.c = 10;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
@@ -95,12 +95,12 @@ public class ShareHelper
   {
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
     {
-      agas localagas = new agas(this);
-      paramOnDismissListener = new agaz(this, paramOnDismissListener);
+      agou localagou = new agou(this);
+      paramOnDismissListener = new agpb(this, paramOnDismissListener);
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder((Activity)this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131433083));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131433100));
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(a(this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localagas);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localagou);
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(paramOnDismissListener);
     }
     try

@@ -1,53 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.PluginPreInstaller;
+import com.tencent.ims.SafeReport.ReqBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqprotect.common.QSecRptController;
 
-public class alwl
-  extends SosoInterface.OnLocationListener
+public final class alwl
+  implements Runnable
 {
-  public alwl(PluginPreInstaller paramPluginPreInstaller, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public alwl(QQAppInterface paramQQAppInterface, SafeReport.ReqBody paramReqBody) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    Object localObject;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      paramSosoLbsInfo = paramSosoLbsInfo.a.e;
-      if (!TextUtils.isEmpty(paramSosoLbsInfo))
-      {
-        localObject = PreferenceManager.getDefaultSharedPreferences(PluginPreInstaller.a(this.a)).edit();
-        ((SharedPreferences.Editor)localObject).putString("wlx_last_location_city", paramSosoLbsInfo);
-        ((SharedPreferences.Editor)localObject).commit();
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder().append("wlx isJtcodePluginPreInstall; start location locationCity=");
-          if (TextUtils.isEmpty(paramSosoLbsInfo)) {
-            break label100;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      QLog.d("PluginPreInstaller", 2, paramSosoLbsInfo);
-      return;
-      label100:
-      paramSosoLbsInfo = "null";
-    }
+    QSecRptController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentImsSafeReport$ReqBody);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alwl
  * JD-Core Version:    0.7.0.1
  */

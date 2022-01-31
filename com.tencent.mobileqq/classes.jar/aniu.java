@@ -1,14 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.data.CaptureComboManager;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.paster.PasterDataManager;
+import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 
-public class aniu
+public final class aniu
   implements Runnable
 {
-  public aniu(DoodleLayout paramDoodleLayout, TextLayer.TextItem paramTextItem) {}
-  
   public void run()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$TextItem);
+    ((QIMMusicConfigManager)QIMManager.a().c(2)).c();
+    ((PasterDataManager)QIMManager.a().c(4)).c();
+    ((QIMPtvTemplateManager)QIMManager.a().c(3)).d();
+    ((CaptureComboManager)QIMManager.a().c(5)).d();
   }
 }
 

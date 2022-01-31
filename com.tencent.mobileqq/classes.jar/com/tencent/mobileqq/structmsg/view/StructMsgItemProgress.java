@@ -42,7 +42,7 @@ public class StructMsgItemProgress
       paramView = new ProgressBar(paramContext, null, 16842872);
       paramView.setId(2131361937);
       paramView.setMax(100);
-      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130837584));
+      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130837587));
     }
   }
   
@@ -99,7 +99,7 @@ public class StructMsgItemProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemProgress
  * JD-Core Version:    0.7.0.1
  */

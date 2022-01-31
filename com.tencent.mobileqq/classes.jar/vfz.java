@@ -1,48 +1,24 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class vfz
-  extends DownloadListener
+  implements VideoDrawable.OnAudioPlayOnceListener
 {
-  public vfz(ThumbItemBuilder paramThumbItemBuilder, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public vfz(ShortVideoPTVItemBuilder paramShortVideoPTVItemBuilder) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public void onFinish()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onCancel| task:" + paramDownloadTask);
+      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
     }
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onDone| task:" + paramDownloadTask);
-    }
-    if (paramDownloadTask.b()) {}
-    do
+    if ((ShortVideoPTVItemBuilder.a() != null) && (ShortVideoPTVItemBuilder.a().get() != null))
     {
-      return;
-      paramDownloadTask.a().getInt("type");
-    } while (paramDownloadTask.a() == -1);
-    paramDownloadTask = new Message();
-    paramDownloadTask.what = ThumbItemBuilder.jdField_a_of_type_Int;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramDownloadTask);
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onStart| task:" + paramDownloadTask);
+      ShortVideoPTVItemBuilder.a(ShortVideoPTVItemBuilder.a(this.a), (ChatMessage)ShortVideoPTVItemBuilder.a().get());
+      ShortVideoPTVItemBuilder.a(null);
     }
-    return true;
   }
 }
 

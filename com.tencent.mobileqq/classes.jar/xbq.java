@@ -1,41 +1,21 @@
-import android.graphics.BitmapFactory;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.util.DisplayUtil;
-import mqq.app.AppRuntime;
+import Wallet.PfaFriendRsp;
+import com.tencent.mobileqq.activity.qwallet.TopayManager;
 
 class xbq
-  implements PreloadManager.OnGetPathListener
+  implements Runnable
 {
-  xbq(xbp paramxbp) {}
+  xbq(xbp paramxbp, PfaFriendRsp paramPfaFriendRsp) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void run()
   {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDialog.isShowing()) {}
-    for (;;)
+    if (this.jdField_a_of_type_WalletPfaFriendRsp != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      if (paramInt == 0) {
-        try
-        {
-          paramPathResult = GoldMsgDialog.a(BitmapFactory.decodeFile(paramPathResult.filePath), DisplayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDialog.getContext(), 5.0F), true);
-          if (paramPathResult != null)
-          {
-            this.a.jdField_a_of_type_MqqAppAppRuntime.runOnUiThread(new xbr(this, paramPathResult));
-            return;
-          }
-        }
-        catch (OutOfMemoryError paramPathResult)
-        {
-          paramPathResult.printStackTrace();
-          return;
-        }
-        catch (Exception paramPathResult)
-        {
-          paramPathResult.printStackTrace();
-        }
+      TopayManager.a(bool, this.jdField_a_of_type_WalletPfaFriendRsp, true);
+      if (this.jdField_a_of_type_Xbp.jdField_a_of_type_Boolean) {
+        TopayManager.a(this.jdField_a_of_type_Xbp.jdField_a_of_type_Int, this.jdField_a_of_type_Xbp.b);
       }
+      return;
     }
   }
 }

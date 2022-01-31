@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.arcard.ARCardHeadIconManager;
+import com.tencent.mobileqq.ar.ARLBSObserver;
+import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload;
+import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudLBSLocationCheckCallback;
+import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
 
 public class aaev
+  extends ARLBSObserver
 {
-  public long a;
-  public String a;
-  public boolean a;
+  public aaev(ARCloudFileUpload paramARCloudFileUpload) {}
   
-  public aaev(ARCardHeadIconManager paramARCardHeadIconManager)
+  public void a(ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = null;
+    if (ARCloudFileUpload.a(this.a) != null) {
+      ARCloudFileUpload.a(this.a).a(paramARCloudLBSLocationCheckResult);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaev
  * JD-Core Version:    0.7.0.1
  */

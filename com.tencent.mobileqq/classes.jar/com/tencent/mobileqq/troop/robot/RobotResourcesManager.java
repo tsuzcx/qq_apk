@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.robot;
 
-import aiyb;
-import aiyc;
+import ajmf;
+import ajmg;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
@@ -31,7 +31,7 @@ public class RobotResourcesManager
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   public BaseChatPie a;
   public RobotSpriteVideoView a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new aiyb(this);
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ajmf(this);
   public String a;
   public HashMap a;
   public HashMap b = new HashMap();
@@ -86,7 +86,7 @@ public class RobotResourcesManager
     Object localObject = null;
     try
     {
-      paramArrayOfBitmap = PuzzleAvatarUtil.a(paramInt, paramArrayOfBitmap, BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130842320), 1.0F);
+      paramArrayOfBitmap = PuzzleAvatarUtil.a(paramInt, paramArrayOfBitmap, BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130842367), 1.0F);
       return paramArrayOfBitmap;
     }
     catch (Throwable localThrowable)
@@ -204,7 +204,7 @@ public class RobotResourcesManager
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    new Handler(Looper.getMainLooper()).post(new aiyc(this, paramString2, paramString3, paramString1));
+    new Handler(Looper.getMainLooper()).post(new ajmg(this, paramString2, paramString3, paramString1));
   }
   
   public boolean a()
@@ -305,7 +305,7 @@ public class RobotResourcesManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.robot.RobotResourcesManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.qzone.remote.logic;
 
-import amih;
+import amym;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ public class RemoteHandleManager
 {
   private static RemoteHandleManager jdField_a_of_type_CooperationQzoneRemoteLogicRemoteHandleManager;
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  IActionListener jdField_a_of_type_CooperationQzoneRemoteIActionListener = new amih(this);
+  IActionListener jdField_a_of_type_CooperationQzoneRemoteIActionListener = new amym(this);
   private RemoteServiceProxy jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy = new RemoteServiceProxy("com.qzone.common.webplugin.WebPluginHandleService", QzoneWebPluginProxyService.class, BaseApplicationImpl.getApplication().getRuntime().getAccount());
   private RemoteRequestSender jdField_a_of_type_CooperationQzoneRemoteLogicRemoteRequestSender;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();

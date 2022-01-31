@@ -1,23 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.qzone.QZoneHelper.QZoneCoverConstants;
-import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
+import cooperation.qlink.QlinkBridgeActivity;
 
 public class amno
-  implements View.OnClickListener
+  implements Runnable
 {
-  public amno(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin) {}
+  public amno(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.mRuntime.a() != null) && (this.a.mRuntime.a() != null))
-    {
-      paramView = QZoneHelper.QZoneCoverConstants.a("qzone", String.valueOf(1), this.a.mRuntime.a().getAccount(), this.a.mRuntime.a().getAccount());
-      this.a.mRuntime.a().loadUrl(paramView);
-    }
+    this.a.a();
   }
 }
 

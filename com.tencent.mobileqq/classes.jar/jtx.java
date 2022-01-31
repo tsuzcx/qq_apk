@@ -1,28 +1,19 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.av.ui.EffectSettingBtn;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.qphone.base.util.QLog;
 
 public class jtx
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnTouchListener
 {
-  public jtx(EffectSettingBtn paramEffectSettingBtn) {}
+  public jtx(EffectSettingUi paramEffectSettingUi) {}
   
-  @TargetApi(16)
-  public void onGlobalLayout()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ViewTreeObserver localViewTreeObserver = this.a.a.getViewTreeObserver();
-    if (Build.VERSION.SDK_INT >= 16) {
-      localViewTreeObserver.removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
-    {
-      this.a.b = true;
-      return;
-      localViewTreeObserver.removeGlobalOnLayoutListener(this);
-    }
+    EffectSettingUi.a(this.a.a);
+    QLog.w("EffectSettingUi", 1, "m_qav_effect_bottom, onTouchEvent[" + paramMotionEvent.getAction() + "]");
+    return false;
   }
 }
 

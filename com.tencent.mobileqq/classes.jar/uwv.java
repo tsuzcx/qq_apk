@@ -1,86 +1,42 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class uwv
-  extends ClickableSpan
+  implements ActionSheet.OnButtonClickListener
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference b;
+  public uwv(FilePicItemBuilder paramFilePicItemBuilder, MessageForFile paramMessageForFile, ActionSheet paramActionSheet, BaseChatItemLayout paramBaseChatItemLayout, uxb paramuxb) {}
   
-  public uwv(GrayTipsItemBuilder paramGrayTipsItemBuilder, QQAppInterface paramQQAppInterface, Context paramContext)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = (Context)this.b.get();
-    if ((paramView == null) || (localObject == null)) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localObject instanceof Activity));
-      if (!NetworkUtil.d((Context)localObject))
-      {
-        QQToast.a((Context)localObject, 2131432992, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131558448));
-        return;
-      }
-      l = System.currentTimeMillis();
-      if ((GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) == 0L) || (l <= GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder)) || (l - GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) > 800L)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
-    return;
-    GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, l);
-    if (NetworkUtil.h((Context)localObject))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString(DownloadConstants.a, "100868074");
-      localBundle.putString(DownloadConstants.i, "http://shouji.sogou.com/proxy/linkto.php?site=20141110sogouinputapk");
-      localBundle.putString(DownloadConstants.e, "com.sohu.inputmethod.sogou");
-      localBundle.putInt(DownloadConstants.j, 2);
-      localBundle.putString(DownloadConstants.h, "ANDROIDQQ.MSG.SOUGOU");
-      localBundle.putString(DownloadConstants.k, "搜狗输入法");
-      localBundle.putBoolean(DownloadConstants.w, false);
-      DownloadApi.a((Activity)localObject, localBundle, 0, null, 0);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.b.post(new uww(this));
     }
     for (;;)
     {
-      ReportController.b(paramView, "CliOper", "", "", "0X80047CF", "0X80047CF", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
       return;
-      localObject = JumpParser.a(paramView, (Context)localObject, "qapp://detail?param=" + GrayTipsItemBuilder.a("id=100868074&channelId=2800&packageName=com.sohu.inputmethod.sogou&via=MSG.SOUGOU"));
-      if (localObject != null) {
-        ((JumpAction)localObject).b();
+      paramView = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+      if (paramView.status == 16)
+      {
+        FMToastUtil.a(2131428188);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+        return;
       }
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
+      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Uxb, paramView, false);
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

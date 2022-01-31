@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import aloi;
-import aloj;
+import amdy;
+import amdz;
 import android.graphics.drawable.Animatable;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -13,7 +13,7 @@ public class TipsPopupWindow
   extends PopupWindow
   implements TipsLinearLayout.TipsLayoutAnimListener
 {
-  private aloj jdField_a_of_type_Aloj;
+  private amdz jdField_a_of_type_Amdz;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TipsLinearLayout jdField_a_of_type_ComTencentWidgetTipsLinearLayout;
@@ -25,7 +25,7 @@ public class TipsPopupWindow
   private void c()
   {
     if (this.c) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Aloj, 1000L);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Amdz, 1000L);
     }
     while ((!this.jdField_a_of_type_Boolean) || (this.d)) {
       return;
@@ -43,7 +43,7 @@ public class TipsPopupWindow
       this.d = false;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Aloj);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Amdz);
   }
   
   private void e()
@@ -67,7 +67,7 @@ public class TipsPopupWindow
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.post(new aloi(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.post(new amdy(this));
   }
   
   public void dismiss()
@@ -75,8 +75,8 @@ public class TipsPopupWindow
     if (QLog.isColorLevel()) {
       QLog.d("TipsPopupWindow", 2, "dismiss");
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Aloj);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Aloj, 300L);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Amdz);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Amdz, 300L);
   }
   
   public void showAsDropDown(View paramView)
@@ -99,7 +99,7 @@ public class TipsPopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.TipsPopupWindow
  * JD-Core Version:    0.7.0.1
  */

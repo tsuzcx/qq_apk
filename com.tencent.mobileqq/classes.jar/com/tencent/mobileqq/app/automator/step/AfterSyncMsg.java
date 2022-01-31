@@ -12,9 +12,9 @@ import com.tencent.biz.pubaccount.Advertisement.util.PublicAccountAdUtil;
 import com.tencent.biz.pubaccount.PublicAccountSearchRecommendManager;
 import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkUtil;
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
 import com.tencent.biz.pubaccount.readinjoy.logic.SMRM;
 import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.OfflineUtils;
 import com.tencent.biz.pubaccount.util.PAReportManager;
 import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil;
 import com.tencent.biz.qqstory.base.QQStoryHandler;
@@ -70,6 +70,7 @@ import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
+import com.tencent.mobileqq.leba.LebaGridHandler;
 import com.tencent.mobileqq.managers.TimJumpLoginManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -96,8 +97,8 @@ import java.util.List;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import zmq;
-import zmr;
+import zpw;
+import zpx;
 
 public class AfterSyncMsg
   extends AsyncStep
@@ -213,7 +214,7 @@ public class AfterSyncMsg
     }
     e();
     ((EqqDetailDataManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(68)).a();
-    ThreadManager.getSubThreadHandler().post(new zmq(this));
+    ThreadManager.getSubThreadHandler().post(new zpw(this));
     ((PublicAccountDataManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55)).a();
     PublicAccountSearchRecommendManager.a().a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
     this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236);
@@ -288,6 +289,9 @@ public class AfterSyncMsg
     }
     ((FriendsManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).d();
     ((NewFriendManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33)).g();
+    if (this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.q) {
+      ((LebaGridHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(106)).b();
+    }
     ((ConfigHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(4)).f();
     localObject1 = ReadInJoyLogicEngine.a().a();
     if (localObject1 != null) {
@@ -312,8 +316,7 @@ public class AfterSyncMsg
       i += 1;
     }
     ((FlashChatManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(216)).d();
-    DeviceProfileManager.a(new zmr());
-    ReadinjoySPEventReport.i();
+    DeviceProfileManager.a(new zpx());
     localObject1 = (QWalletConfigManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(244);
     if (localObject1 != null) {
       ((QWalletConfigManager)localObject1).a(1);
@@ -324,6 +327,7 @@ public class AfterSyncMsg
     ((TimJumpLoginManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(241)).a();
     ((CardHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).t();
     ReadInJoyArkUtil.a();
+    OfflineUtils.c();
   }
   
   private void e()

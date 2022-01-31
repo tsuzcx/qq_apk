@@ -1,15 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qappcenter.remote.IServiceHandler.Stub;
+import cooperation.qappcenter.remote.RemoteServiceProxy;
+import cooperation.qappcenter.remote.SendMsg;
 
 public class ammw
-  implements DialogInterface.OnClickListener
+  implements ServiceConnection
 {
-  public ammw(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
+  public ammw(RemoteServiceProxy paramRemoteServiceProxy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.a(this.a));
+    }
+    this.a.a = IServiceHandler.Stub.a(paramIBinder);
+    if (RemoteServiceProxy.a(this.a) != null)
+    {
+      paramComponentName = new SendMsg("cmd.registerListener");
+      paramComponentName.a = RemoteServiceProxy.a(this.a);
+      this.a.b(paramComponentName);
+    }
+    this.a.a();
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.a(this.a));
+    }
+    this.a.a = null;
   }
 }
 

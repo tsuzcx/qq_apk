@@ -1,22 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
-import com.tencent.mobileqq.profile.like.PraiseInfo;
-import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseLoadListener;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aeoy
-  implements PraiseManager.OnPraiseLoadListener
+class aeoy
+  implements DialogInterface.OnClickListener
 {
-  public aeoy(NearbyCardVoteView paramNearbyCardVoteView, int paramInt1, int paramInt2, List paramList) {}
+  aeoy(aeow paramaeow) {}
   
-  public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.hasMessages(NearbyCardVoteView.d))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.removeMessages(NearbyCardVoteView.d);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.obtainMessage(NearbyCardVoteView.d, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilList).sendToTarget();
-    }
+    this.a.a.a.dismiss();
   }
 }
 

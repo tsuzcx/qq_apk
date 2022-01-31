@@ -1,26 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import java.util.HashMap;
 
-class anpr
-  implements DialogInterface.OnClickListener
+public class anpr
+  implements View.OnClickListener
 {
-  anpr(anpq paramanpq) {}
+  public anpr(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.a.a.getIntent();
-    paramDialogInterface.putExtra("flow_back", 0);
-    this.a.a.setResult(1001, paramDialogInterface);
-    paramDialogInterface = null;
-    if (this.a.a.g) {
-      paramDialogInterface = this.a.a.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoClipSpec;
+    if (paramView.getId() == 2131362497)
+    {
+      MusicProviderView localMusicProviderView = (MusicProviderView)QIMProviderContainerView.a(this.a).get(Integer.valueOf(104));
+      if ((localMusicProviderView != null) && (!localMusicProviderView.c())) {
+        QQToast.a(BaseApplicationImpl.getContext(), "分段视频拍摄过程中不支持选择音乐", 0).a();
+      }
     }
-    this.a.a.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a(this.a.a.d, this.a.a.e, this.a.a.n, this.a.a.g, paramDialogInterface);
-    this.a.a.finish();
+    do
+    {
+      return;
+      int i = ((Integer)paramView.getTag()).intValue();
+      QIMProviderContainerView.a(this.a, i, 0, null, false);
+    } while (QIMProviderContainerView.a(this.a) == null);
+    QIMProviderContainerView.a(this.a).e();
   }
 }
 

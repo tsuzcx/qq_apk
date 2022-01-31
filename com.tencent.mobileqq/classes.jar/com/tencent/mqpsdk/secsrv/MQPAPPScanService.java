@@ -1,6 +1,6 @@
 package com.tencent.mqpsdk.secsrv;
 
-import akjs;
+import akzi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -394,7 +394,7 @@ public class MQPAPPScanService
       }
     }
     finally {}
-    new akjs(this, paramArrayOfByte).start();
+    new akzi(this, paramArrayOfByte).start();
   }
   
   public boolean a(int paramInt)
@@ -552,22 +552,22 @@ public class MQPAPPScanService
     //   39: iconst_1
     //   40: invokevirtual 159	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
     //   43: astore 7
-    //   45: new 275	java/util/zip/ZipFile
+    //   45: new 275	com/tencent/commonsdk/zip/QZipFile
     //   48: dup
     //   49: aload 7
     //   51: getfield 206	android/content/pm/PackageInfo:applicationInfo	Landroid/content/pm/ApplicationInfo;
     //   54: getfield 211	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   57: invokespecial 277	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   57: invokespecial 277	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
     //   60: astore 5
     //   62: aload 5
     //   64: ldc_w 279
-    //   67: invokevirtual 283	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   67: invokevirtual 283	com/tencent/commonsdk/zip/QZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
     //   70: astore 4
     //   72: aload 4
     //   74: ifnull +199 -> 273
     //   77: aload 5
     //   79: aload 4
-    //   81: invokevirtual 287	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   81: invokevirtual 287	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   84: astore 4
     //   86: sipush 8192
     //   89: newarray byte
@@ -599,7 +599,7 @@ public class MQPAPPScanService
     //   141: aload 5
     //   143: ifnull -119 -> 24
     //   146: aload 5
-    //   148: invokevirtual 309	java/util/zip/ZipFile:close	()V
+    //   148: invokevirtual 309	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   151: return
     //   152: astore_1
     //   153: aload_1
@@ -848,7 +848,7 @@ public class MQPAPPScanService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mqpsdk.secsrv.MQPAPPScanService
  * JD-Core Version:    0.7.0.1
  */

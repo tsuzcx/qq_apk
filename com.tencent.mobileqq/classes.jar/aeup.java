@@ -1,21 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeup
-  implements TextWatcher
+  implements Runnable
 {
-  public aeup(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public aeup(SmallVideoSendFragment paramSmallVideoSendFragment, CharSequence paramCharSequence, boolean paramBoolean) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    NearbyUtils.a(this.a.e, 40);
+    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.getActivity() == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.getActivity().isFinishing()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("PublishActivity", 2, "Activity has been destroy.");
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a = new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.getActivity());
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a.a(this.jdField_a_of_type_JavaLangCharSequence + "");
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a.setCancelable(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a.show();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a.setOnDismissListener(new aeuq(this));
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

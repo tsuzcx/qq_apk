@@ -197,13 +197,13 @@ import tencent.im.oidb.cmd0x829.oidb_0x829.ReqBody;
 import tencent.im.oidb.cmd0x829.oidb_0x829.RspBody;
 import tencent.im.oidb.cmd0xaed.cmd0xaed.ReqBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import zao;
-import zap;
-import zaq;
-import zar;
-import zas;
-import zat;
-import zav;
+import zdu;
+import zdv;
+import zdw;
+import zdx;
+import zdy;
+import zdz;
+import zeb;
 
 public class FriendListHandler
   extends BusinessHandler
@@ -248,8 +248,8 @@ public class FriendListHandler
   public FriendListHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_MqqOsMqqHandler = new zao(this, paramQQAppInterface.getApp().getMainLooper());
-    ThreadManager.post(new zap(this), 2, null, false);
+    this.jdField_a_of_type_MqqOsMqqHandler = new zdu(this, paramQQAppInterface.getApp().getMainLooper());
+    ThreadManager.post(new zdv(this), 2, null, false);
   }
   
   private void A(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -350,7 +350,7 @@ public class FriendListHandler
     label471:
     if ((j != -1) && (localArrayList1 != null) && (localArrayList2 != null) && (m < localArrayList1.size()))
     {
-      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zar(this, localArrayList1, str, j, k, localArrayList2));
+      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zdx(this, localArrayList1, str, j, k, localArrayList2));
       return;
     }
     localPhoneContactManagerImp.a(localArrayList1, localArrayList2, k);
@@ -359,7 +359,7 @@ public class FriendListHandler
     label544:
     if ((j != -1) && (localArrayList1 != null) && (localArrayList2 != null) && (m < localArrayList1.size()))
     {
-      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zas(this, localArrayList1, str, j, k, localArrayList2));
+      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zdy(this, localArrayList1, str, j, k, localArrayList2));
       return;
     }
     if ((localArrayList2 != null) && (localArrayList2.size() > 0))
@@ -483,7 +483,7 @@ public class FriendListHandler
   {
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      ThreadManager.post(new zaq(this, paramInt1, paramString, paramInt2, paramByte1, paramByte2, paramBoolean), 8, null, false);
+      ThreadManager.post(new zdw(this, paramInt1, paramString, paramInt2, paramByte1, paramByte2, paramBoolean), 8, null, false);
       return;
     }
     b(paramInt1, paramString, paramInt2, paramByte1, paramByte2, paramBoolean);
@@ -6777,7 +6777,7 @@ public class FriendListHandler
       if (this.jdField_c_of_type_JavaUtilHashtable.containsKey(paramString1)) {
         this.jdField_c_of_type_JavaUtilHashtable.remove(paramString1);
       }
-      paramString2 = new zav(this);
+      paramString2 = new zeb(this);
       paramString2.jdField_a_of_type_Long = l1;
       paramString2.jdField_b_of_type_Int = paramInt2;
       this.jdField_c_of_type_JavaUtilHashtable.put(paramString1, paramString2);
@@ -6848,7 +6848,7 @@ public class FriendListHandler
           if (!this.jdField_c_of_type_JavaUtilHashtable.containsKey(paramString1)) {
             break label832;
           }
-          localObject = (zav)this.jdField_c_of_type_JavaUtilHashtable.get(paramString1);
+          localObject = (zeb)this.jdField_c_of_type_JavaUtilHashtable.get(paramString1);
         } while (localObject == null);
         switch (paramInt3)
         {
@@ -6857,20 +6857,20 @@ public class FriendListHandler
         {
           paramString2 = (String)localObject;
           break;
-          ((zav)localObject).jdField_b_of_type_Long = l1;
+          ((zeb)localObject).jdField_b_of_type_Long = l1;
           if (!bool) {
             this.jdField_c_of_type_JavaUtilHashtable.remove(paramString1);
           }
-          ((zav)localObject).jdField_e_of_type_Long = (((zav)localObject).jdField_b_of_type_Long - ((zav)localObject).jdField_a_of_type_Long);
+          ((zeb)localObject).jdField_e_of_type_Long = (((zeb)localObject).jdField_b_of_type_Long - ((zeb)localObject).jdField_a_of_type_Long);
           paramString2 = (String)localObject;
           break;
-          ((zav)localObject).jdField_c_of_type_Long = l1;
+          ((zeb)localObject).jdField_c_of_type_Long = l1;
           paramString2 = (String)localObject;
           break;
-          ((zav)localObject).jdField_d_of_type_Long = l1;
-          ((zav)localObject).jdField_a_of_type_Int = paramInt4;
-          ((zav)localObject).jdField_a_of_type_JavaLangString = paramString2;
-          ((zav)localObject).jdField_e_of_type_Long = (((zav)localObject).jdField_d_of_type_Long - ((zav)localObject).jdField_a_of_type_Long);
+          ((zeb)localObject).jdField_d_of_type_Long = l1;
+          ((zeb)localObject).jdField_a_of_type_Int = paramInt4;
+          ((zeb)localObject).jdField_a_of_type_JavaLangString = paramString2;
+          ((zeb)localObject).jdField_e_of_type_Long = (((zeb)localObject).jdField_d_of_type_Long - ((zeb)localObject).jdField_a_of_type_Long);
           this.jdField_c_of_type_JavaUtilHashtable.remove(paramString1);
         }
       }
@@ -9254,7 +9254,7 @@ public class FriendListHandler
       if (!this.jdField_d_of_type_JavaUtilHashtable.containsKey(paramString)) {
         break label181;
       }
-      paramString = (zat)this.jdField_d_of_type_JavaUtilHashtable.get(paramString);
+      paramString = (zdz)this.jdField_d_of_type_JavaUtilHashtable.get(paramString);
       l2 = Math.abs(l1 - paramString.jdField_a_of_type_Long);
       if (paramString.jdField_c_of_type_Long > 0L)
       {
@@ -9294,8 +9294,8 @@ public class FriendListHandler
       while (((Enumeration)localObject2).hasMoreElements())
       {
         String str = (String)((Enumeration)localObject2).nextElement();
-        zat localzat = (zat)this.jdField_d_of_type_JavaUtilHashtable.get(str);
-        if (((localzat.jdField_c_of_type_Long == 0L) && (l1 - localzat.jdField_a_of_type_Long > 60000L)) || ((localzat.jdField_c_of_type_Long > 0L) && (l1 > localzat.jdField_c_of_type_Long))) {
+        zdz localzdz = (zdz)this.jdField_d_of_type_JavaUtilHashtable.get(str);
+        if (((localzdz.jdField_c_of_type_Long == 0L) && (l1 - localzdz.jdField_a_of_type_Long > 60000L)) || ((localzdz.jdField_c_of_type_Long > 0L) && (l1 > localzdz.jdField_c_of_type_Long))) {
           ((ArrayList)localObject1).add(str);
         }
       }
@@ -9311,9 +9311,9 @@ public class FriendListHandler
       }
       else
       {
-        localObject1 = new zat();
-        ((zat)localObject1).jdField_a_of_type_Long = l1;
-        ((zat)localObject1).jdField_b_of_type_Long = 1L;
+        localObject1 = new zdz();
+        ((zdz)localObject1).jdField_a_of_type_Long = l1;
+        ((zdz)localObject1).jdField_b_of_type_Long = 1L;
         this.jdField_d_of_type_JavaUtilHashtable.put(paramString, localObject1);
         break;
         i = 0;

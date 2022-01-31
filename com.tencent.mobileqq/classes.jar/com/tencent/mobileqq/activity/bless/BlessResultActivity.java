@@ -46,11 +46,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
-import wbw;
-import wbz;
-import wca;
-import wcb;
-import wcc;
+import wfb;
+import wfe;
+import wff;
+import wfg;
+import wfh;
 
 public class BlessResultActivity
   extends BlessTypeActivity
@@ -60,10 +60,10 @@ public class BlessResultActivity
   ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
   public BlessResultActivity.VideoInfo a;
   private ShortVideoObserver jdField_a_of_type_ComTencentMobileqqAppShortVideoObserver;
-  TroopBarShortVideoUploadUtil.OnUploadVideoListener jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarShortVideoUploadUtil$OnUploadVideoListener = new wcb(this);
+  TroopBarShortVideoUploadUtil.OnUploadVideoListener jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarShortVideoUploadUtil$OnUploadVideoListener = new wfg(this);
   public MqqWeakReferenceHandler a;
   String jdField_a_of_type_JavaLangString;
-  wcc jdField_a_of_type_Wcc;
+  wfh jdField_a_of_type_Wfh;
   public boolean a;
   int jdField_b_of_type_Int = 0;
   public String b;
@@ -927,37 +927,37 @@ public class BlessResultActivity
     if (!this.jdField_c_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppShortVideoObserver = new wbw(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppShortVideoObserver = new wfb(this);
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppShortVideoObserver);
   }
   
   private void h()
   {
-    ((ImmersiveTitleBar2)findViewById(2131363361)).setVisibility(4);
-    findViewById(2131363410).setVisibility(8);
-    findViewById(2131363227).setOnClickListener(this);
-    TextView localTextView = (TextView)findViewById(2131363411);
+    ((ImmersiveTitleBar2)findViewById(2131363379)).setVisibility(4);
+    findViewById(2131363428).setVisibility(8);
+    findViewById(2131363245).setOnClickListener(this);
+    TextView localTextView = (TextView)findViewById(2131363429);
     String str = "";
     switch (this.jdField_d_of_type_Int)
     {
     }
     for (;;)
     {
-      localTextView.setText(String.format(getString(2131438250), new Object[] { Integer.valueOf(this.jdField_e_of_type_Int) }));
+      localTextView.setText(String.format(getString(2131438268), new Object[] { Integer.valueOf(this.jdField_e_of_type_Int) }));
       if (this.jdField_e_of_type_Int >= 10) {
-        ((TextView)findViewById(2131363412)).setText(String.format(getString(2131438276), new Object[] { Integer.valueOf(10) }));
+        ((TextView)findViewById(2131363430)).setText(String.format(getString(2131438294), new Object[] { Integer.valueOf(10) }));
       }
       if (this.jdField_d_of_type_Int == 2)
       {
-        findViewById(2131363414).setVisibility(0);
-        ((TextView)findViewById(2131363415)).setText(String.format(getString(2131438252), new Object[] { str }));
-        findViewById(2131363416).setOnClickListener(this);
-        findViewById(2131363417).setOnClickListener(this);
+        findViewById(2131363432).setVisibility(0);
+        ((TextView)findViewById(2131363433)).setText(String.format(getString(2131438270), new Object[] { str }));
+        findViewById(2131363434).setOnClickListener(this);
+        findViewById(2131363435).setOnClickListener(this);
       }
       return;
-      str = getString(2131438248);
+      str = getString(2131438266);
       continue;
-      str = getString(2131438249);
+      str = getString(2131438267);
     }
   }
   
@@ -969,12 +969,12 @@ public class BlessResultActivity
   
   void a()
   {
-    if ((this.jdField_a_of_type_Wcc == null) || ((!this.jdField_a_of_type_Wcc.b()) && (!this.jdField_a_of_type_Boolean)))
+    if ((this.jdField_a_of_type_Wfh == null) || ((!this.jdField_a_of_type_Wfh.b()) && (!this.jdField_a_of_type_Boolean)))
     {
       String str = this.app.c();
-      this.jdField_a_of_type_Wcc = new wcc(this, str, ((TicketManager)this.app.getManager(2)).getSkey(str), this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoInfo, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarShortVideoUploadUtil$OnUploadVideoListener);
+      this.jdField_a_of_type_Wfh = new wfh(this, str, ((TicketManager)this.app.getManager(2)).getSkey(str), this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoInfo, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarShortVideoUploadUtil$OnUploadVideoListener);
       this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1003, 120000L);
-      ThreadManager.post(this.jdField_a_of_type_Wcc, 8, null, false);
+      ThreadManager.post(this.jdField_a_of_type_Wfh, 8, null, false);
       return;
     }
     b();
@@ -986,7 +986,7 @@ public class BlessResultActivity
     this.jdField_b_of_type_Int = paramInt;
     if ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString == null) || (this.jdField_e_of_type_JavaLangString == null) || (this.f == null))
     {
-      QQToast.a(this, 2131435607, 0).a();
+      QQToast.a(this, 2131435624, 0).a();
       d();
       return;
     }
@@ -994,13 +994,13 @@ public class BlessResultActivity
     File localFile2 = new File(this.jdField_a_of_type_JavaLangString);
     if ((!localFile1.exists()) || (!localFile2.exists()))
     {
-      QQToast.a(this, 2131435607, 0).a();
+      QQToast.a(this, 2131435624, 0).a();
       d();
       return;
     }
     if ((!localFile1.isFile()) || (!localFile2.isFile()))
     {
-      QQToast.a(this, 2131435608, 0).a();
+      QQToast.a(this, 2131435625, 0).a();
       d();
       return;
     }
@@ -1016,7 +1016,7 @@ public class BlessResultActivity
       b();
       return;
     }
-    ThreadManager.post(new wca(this, this.jdField_b_of_type_JavaLangString), 8, null, false);
+    ThreadManager.post(new wff(this, this.jdField_b_of_type_JavaLangString), 8, null, false);
   }
   
   public void a(BaseResp paramBaseResp)
@@ -1029,10 +1029,10 @@ public class BlessResultActivity
     case -2: 
     case -1: 
     default: 
-      QQToast.a(this, 1, getString(2131435286), 0).a();
+      QQToast.a(this, 1, getString(2131435303), 0).a();
       return;
     }
-    QQToast.a(this, 2, getString(2131435285), 0).a();
+    QQToast.a(this, 2, getString(2131435302), 0).a();
   }
   
   public String b(String paramString)
@@ -1071,11 +1071,11 @@ public class BlessResultActivity
       {
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624515);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624516);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381)).setText(2131434297);
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399)).setText(2131434314);
       }
       return;
     }
@@ -1143,8 +1143,8 @@ public class BlessResultActivity
     if (this.jdField_d_of_type_Int == 2)
     {
       WXShareHelper.a().b(this);
-      if ((this.jdField_a_of_type_Wcc != null) && (this.jdField_a_of_type_Wcc.b())) {
-        this.jdField_a_of_type_Wcc.a();
+      if ((this.jdField_a_of_type_Wfh != null) && (this.jdField_a_of_type_Wfh.b())) {
+        this.jdField_a_of_type_Wfh.a();
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppShortVideoObserver != null) {
@@ -1158,7 +1158,7 @@ public class BlessResultActivity
     if ((this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
     {
       this.jdField_d_of_type_Boolean = true;
-      ThreadManager.post(new wbz(this), 8, null, false);
+      ThreadManager.post(new wfe(this), 8, null, false);
     }
   }
   
@@ -1176,10 +1176,10 @@ public class BlessResultActivity
       str = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.a(true);
       localObject = str;
       if (TextUtils.isEmpty(str)) {
-        localObject = getString(2131438272);
+        localObject = getString(2131438290);
       }
     }
-    str = String.format(getString(2131438273), new Object[] { this.app.getCurrentNickname() });
+    str = String.format(getString(2131438291), new Object[] { this.app.getCurrentNickname() });
     Bundle localBundle = new Bundle();
     localBundle.putString("title", (String)localObject);
     localBundle.putString("desc", str);
@@ -1199,7 +1199,7 @@ public class BlessResultActivity
   {
     int k;
     if (!WXShareHelper.a().a()) {
-      k = 2131435302;
+      k = 2131435319;
     }
     for (;;)
     {
@@ -1211,7 +1211,7 @@ public class BlessResultActivity
         return;
         if (!WXShareHelper.a().b())
         {
-          k = 2131435303;
+          k = 2131435320;
           break;
           this.h = String.valueOf(System.currentTimeMillis());
           Object localObject1 = null;
@@ -1225,10 +1225,10 @@ public class BlessResultActivity
               str = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.a(false);
               localObject1 = str;
               if (TextUtils.isEmpty(str)) {
-                localObject1 = getString(2131438272);
+                localObject1 = getString(2131438290);
               }
             }
-            str = String.format(getString(2131438273), new Object[] { this.app.getCurrentNickname() });
+            str = String.format(getString(2131438291), new Object[] { this.app.getCurrentNickname() });
             WXShareHelper.a().c(this.h, (String)localObject1, (Bitmap)localObject2, str, this.g);
             if (QLog.isColorLevel())
             {
@@ -1269,11 +1269,11 @@ public class BlessResultActivity
       return bool;
       a();
       return true;
-      if ((this.jdField_a_of_type_Wcc != null) && (this.jdField_a_of_type_Wcc.b())) {
-        this.jdField_a_of_type_Wcc.a();
+      if ((this.jdField_a_of_type_Wfh != null) && (this.jdField_a_of_type_Wfh.b())) {
+        this.jdField_a_of_type_Wfh.a();
       }
       d();
-      QQToast.a(this, 1, 2131435286, 0).a();
+      QQToast.a(this, 1, 2131435303, 0).a();
       return true;
       this.i = this.jdField_a_of_type_JavaLangString;
       this.j = this.jdField_d_of_type_JavaLangString;

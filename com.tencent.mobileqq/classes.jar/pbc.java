@@ -1,64 +1,90 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.webviewplugin.SSOWebviewPlugin;
-import com.tencent.mobileqq.WebSsoBody.WebSsoControlData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.webviewplugin.HbEventPlugin;
+import com.tencent.mobileqq.portal.PortalUtils;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class pbc
-  implements BusinessObserver
+  extends BroadcastReceiver
 {
-  public pbc(SSOWebviewPlugin paramSSOWebviewPlugin, String paramString) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private pbc(HbEventPlugin paramHbEventPlugin) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean) {}
-    try
-    {
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject == null) {
-        return;
+    int i = paramIntent.getIntExtra("bc_seq", -1);
+    if (i < 0) {
+      if (QLog.isColorLevel()) {
+        QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence = " + i + "| wrong seq");
       }
-      paramBundle = new WebSsoBody.WebSsoResponseBody();
-      paramBundle.mergeFrom((byte[])localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("data", paramBundle.data.get());
-      ((JSONObject)localObject).put("retcode", paramBundle.ret.get());
-      ((JSONObject)localObject).put("cret", 0);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
-      if (((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.has()) {
-        this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.a = ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.get();
-      }
-      if (!((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.has()) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.b = ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.get();
-      return;
     }
-    catch (Exception paramBundle)
+    byte[] arrayOfByte;
+    do
     {
-      paramBundle = new JSONObject();
+      do
+      {
+        return;
+        if (i == this.jdField_a_of_type_Int) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence != seq | miss hit");
+      return;
+      paramContext = paramIntent.getExtras();
+      arrayOfByte = paramContext.getByteArray("bc_data");
+      i = paramIntent.getIntExtra("portal_type_key", -1);
+      if (arrayOfByte != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive data = null");
+    return;
+    if (QLog.isColorLevel())
+    {
+      if (i != 1009) {
+        break label286;
+      }
+      paramContext = "REQ_TYPE_GET_HEAD returned";
+    }
+    for (;;)
+    {
+      QLog.d("PortalManager.HbEventPlugin", 2, "DataReceiver.onReceive | " + i + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + paramContext);
+      switch (i)
+      {
+      default: 
+        return;
+      }
+      this.jdField_a_of_type_ComTencentBizWebviewpluginHbEventPlugin.a(this.jdField_a_of_type_Int);
+      paramIntent = PortalUtils.b(arrayOfByte);
+      paramContext = paramIntent;
+      if (paramIntent == null) {
+        paramContext = new JSONObject();
+      }
       try
       {
-        paramBundle.put("cret", 2);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+        paramContext.put("errorCode", -1);
+        paramContext = paramContext.toString();
+        this.jdField_a_of_type_ComTencentBizWebviewpluginHbEventPlugin.a(this.jdField_a_of_type_JavaLangString, new String[] { paramContext });
         return;
+        label286:
+        paramContext = paramContext.toString();
       }
-      catch (JSONException localJSONException)
+      catch (JSONException paramContext)
       {
         for (;;)
         {
-          localJSONException.printStackTrace();
+          paramContext.printStackTrace();
+          paramContext = paramIntent;
         }
       }
     }
-    paramBundle = new JSONObject();
-    paramBundle.put("cret", 1);
-    this.jdField_a_of_type_ComTencentBizWebviewpluginSSOWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-    return;
   }
 }
 

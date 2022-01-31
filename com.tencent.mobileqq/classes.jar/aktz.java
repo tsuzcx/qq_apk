@@ -1,77 +1,89 @@
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.downloadnew.UpdateManager.OnCheckUpdateListener;
-import com.tencent.open.wadl.WLog;
-import com.tencent.open.wadl.WadlJsBridge;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.widget.BaseDraggableGridViewAdapter;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.mobileqq.widget.MeasureGridView;
 
 public class aktz
-  implements UpdateManager.OnCheckUpdateListener
+  extends BaseAdapter
 {
-  protected String a;
+  public aktz(DraggableGridView paramDraggableGridView) {}
   
-  public aktz(WadlJsBridge paramWadlJsBridge, String paramString)
+  public int getCount()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (DraggableGridView.a(this.a) != null) {
+      return DraggableGridView.a(this.a).a() * 2;
+    }
+    return 0;
   }
   
-  public void a(String paramString)
+  public Object getItem(int paramInt)
   {
-    if (!this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.hasRight()) {
-      return;
+    if ((DraggableGridView.a(this.a) != null) && (paramInt % 2 == 0)) {
+      return DraggableGridView.a(this.a).a(paramInt);
     }
-    WLog.a("WadlJsBridge", "##@!JsCheckUpdateCallback onException >>> " + paramString);
-    paramString = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
-    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.jsCallBack(paramString);
+    return null;
   }
   
-  public void a(ArrayList paramArrayList)
+  public long getItemId(int paramInt)
   {
-    WLog.b("WadlJsBridge", "##@checkUpdate(End) onResult()");
-    if (!this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.hasRight()) {
-      return;
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt % 2 == 0) {
+      return DraggableGridView.a(this.a).b(paramInt / 2) + 1;
     }
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    try
+    return DraggableGridView.a();
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (getItemViewType(paramInt) == DraggableGridView.a())
     {
-      while (i < paramArrayList.size())
+      if (paramView == null)
       {
-        ApkUpdateDetail localApkUpdateDetail = (ApkUpdateDetail)paramArrayList.get(i);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("packageName", localApkUpdateDetail.packageName);
-        localJSONObject2.put("newapksize", localApkUpdateDetail.newapksize);
-        localJSONObject2.put("patchsize", localApkUpdateDetail.patchsize);
-        localJSONObject2.put("updatemethod", localApkUpdateDetail.updatemethod);
-        localJSONObject2.put("versioncode", localApkUpdateDetail.versioncode);
-        localJSONObject2.put("versionname", localApkUpdateDetail.versionname);
-        localJSONObject2.put("fileMd5", localApkUpdateDetail.fileMd5);
-        localJSONObject2.put("sigMd5", localApkUpdateDetail.sigMd5);
-        localJSONObject2.put("url", localApkUpdateDetail.url);
-        localJSONArray.put(localJSONObject2);
-        i += 1;
+        paramViewGroup = (MeasureGridView)LayoutInflater.from(this.a.getContext()).inflate(2130969863, paramViewGroup, false);
+        paramViewGroup.setClickable(false);
+        paramViewGroup.setNumColumns(DraggableGridView.a(this.a));
+        paramViewGroup.setAdapter(new akua(this.a, paramInt / 2));
+        paramView = paramViewGroup;
       }
-      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject1.put("content", localJSONArray.toString());
-      localJSONObject1.put("resultCode", "0");
-      paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'" + this.jdField_a_of_type_JavaLangString + "','r':'0','data':'" + localJSONArray.toString() + "'});}void(0);";
-    }
-    catch (JSONException paramArrayList)
-    {
       for (;;)
       {
-        paramArrayList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"" + this.jdField_a_of_type_JavaLangString + "\",\"r\":\"-1\"});}void(0);";
+        paramViewGroup.setTag(Integer.valueOf(paramInt / 2));
+        localObject = paramView;
+        return localObject;
+        paramViewGroup = (MeasureGridView)paramView;
+        ((akua)paramViewGroup.getAdapter()).a(paramInt / 2);
       }
     }
-    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.jsCallBack(paramArrayList);
+    if (paramView == null) {
+      paramView = DraggableGridView.a(this.a).a(LayoutInflater.from(this.a.getContext()), paramInt / 2, paramViewGroup);
+    }
+    for (paramViewGroup = paramView;; paramViewGroup = paramView)
+    {
+      localObject = paramViewGroup;
+      if (DraggableGridView.a(this.a) == null) {
+        break;
+      }
+      DraggableGridView.a(this.a).a(paramView, paramInt / 2);
+      return paramViewGroup;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return DraggableGridView.a(this.a).b() + 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aktz
  * JD-Core Version:    0.7.0.1
  */

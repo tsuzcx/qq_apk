@@ -1,23 +1,41 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class rhd
   implements Runnable
 {
-  public rhd(AddRequestActivity paramAddRequestActivity) {}
+  public rhd(AccountManageActivity paramAccountManageActivity) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView == null) {
-      return;
-    }
-    if (!TextUtils.isEmpty(this.a.b))
+    int i;
+    if (this.a.app.a().a().b(AppConstants.w, 7000) != null)
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.b);
-      return;
+      i = DBUtils.a().a(this.a.app.getCurrentAccountUin());
+      if (i >= 3) {
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountManageActivity", 2, "refreshSubAccount() set stick2top fail." + this.a.app.getCurrentAccountUin() + " count=" + i + " >=max_stick2top_count , return.");
+        }
+      }
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_JavaLangString);
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountManageActivity", 2, "refreshSubAccount() RecentList has default subAccount RU. go 2 stick2Top, current count=" + i);
+      }
+      SubAccountControll.a(this.a.app, AppConstants.w, true);
+      DBUtils.a().a(this.a.app.getCurrentAccountUin(), i);
+      return;
+      DBUtils.a().a(this.a.app.getCurrentAccountUin(), 3);
+    } while (!QLog.isColorLevel());
+    QLog.d("SUB_ACCOUNT", 2, "recent list does not exist ruDefault.");
   }
 }
 

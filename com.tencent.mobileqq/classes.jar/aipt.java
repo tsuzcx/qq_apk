@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.data.TroopEntranceBar;
-import java.util.List;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import com.tencent.qphone.base.util.QLog;
 
-public class aipt
-  extends FriendListObserver
+class aipt
+  implements Runnable
 {
-  public aipt(TroopEntranceBar paramTroopEntranceBar) {}
+  aipt(aips paramaips) {}
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((paramBoolean) && (paramString != null) && (this.a.a != null) && (this.a.a.size() > 0) && (paramString.equals(((TroopInfo)this.a.a.get(0)).troopuin))) {
-      this.a.c();
-    }
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep|changeImgUrl,need rich since invalid url=" + ForwardSdkShareProcessor.a(this.a.a.b));
+    ForwardSdkShareProcessor.c(this.a.a.b, null);
+    ForwardSdkShareProcessor.a(this.a.a.b).g();
+    ForwardSdkShareProcessor.a(this.a.a.b).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipt
  * JD-Core Version:    0.7.0.1
  */

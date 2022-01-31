@@ -1,89 +1,98 @@
-import android.app.Activity;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.telephony.TelephonyManager;
-import com.tencent.biz.ProtoServlet;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.app.NewIntent;
-import tencent.im.nearbygroup.ext.NearbyGroupExt.ReqBody;
-import tencent.im.troop_search_userinfo.userinfo.AppInfo;
-import tencent.im.troop_search_userinfo.userinfo.DevAttr;
-import tencent.im.troop_search_userinfo.userinfo.GPS;
-import tencent.im.troop_search_userinfo.userinfo.UserInfo;
+import android.content.Intent;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer.OnTipClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import java.util.Iterator;
+import java.util.List;
 
 public class who
-  extends SosoInterface.OnLocationListener
+  implements ReadInJoySearchTipsContainer.OnTipClickListener
 {
-  public who(RecommendTroopView paramRecommendTroopView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public who(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(String paramString)
   {
-    Object localObject1;
-    Object localObject2;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    SearchProtocol.WordItem localWordItem;
+    if (paramString != null)
     {
-      this.a.b = Double.valueOf(paramSosoLbsInfo.a.a * 1000000.0D).intValue();
-      this.a.c = Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue();
-      paramSosoLbsInfo = new userinfo.UserInfo();
-      localObject1 = new userinfo.GPS();
-      if (this.a.b != 0)
+      Iterator localIterator = this.a.b.iterator();
+      do
       {
-        ((userinfo.GPS)localObject1).uint32_lat.set(this.a.b);
-        ((userinfo.GPS)localObject1).uint32_lon.set(this.a.c);
-        paramSosoLbsInfo.gps.set((MessageMicro)localObject1);
-        localObject1 = (TelephonyManager)this.a.a().getSystemService("phone");
-        if (localObject1 != null)
-        {
-          localObject2 = new userinfo.DevAttr();
-          if (((TelephonyManager)localObject1).getSimSerialNumber() != null) {
-            ((userinfo.DevAttr)localObject2).str_imei.set(((TelephonyManager)localObject1).getSimSerialNumber());
-          }
-          if (((TelephonyManager)localObject1).getSubscriberId() != null) {
-            ((userinfo.DevAttr)localObject2).str_imsi.set(((TelephonyManager)localObject1).getSubscriberId());
-          }
-          if (((TelephonyManager)localObject1).getLine1Number() != null) {
-            ((userinfo.DevAttr)localObject2).str_phonenum.set(((TelephonyManager)localObject1).getLine1Number());
-          }
-          paramSosoLbsInfo.attr.set((MessageMicro)localObject2);
+        if (!localIterator.hasNext()) {
+          break;
         }
-        localObject1 = new userinfo.AppInfo();
-        ((userinfo.AppInfo)localObject1).plat_type.set(2);
+        localWordItem = (SearchProtocol.WordItem)localIterator.next();
+      } while (!paramString.equals(localWordItem.word));
+    }
+    for (;;)
+    {
+      if ((localWordItem != null) && (localWordItem.type == 2))
+      {
+        paramString = new Intent(this.a, QQBrowserActivity.class);
+        paramString.putExtra("hide_operation_bar", true);
+        paramString.putExtra("url", localWordItem.jumpUrl);
+        paramString.putExtra("articalChannelId", 14);
+        this.a.startActivity(paramString);
+        if (localWordItem != null)
+        {
+          paramString = "";
+          if (this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) {
+            break label333;
+          }
+          paramString = "kan";
+        }
       }
-    }
-    try
-    {
-      localObject2 = this.a.a().getPackageManager().getPackageInfo(this.a.a().getPackageName(), 0);
-      ((userinfo.AppInfo)localObject1).str_app_version.set(((PackageInfo)localObject2).versionName);
-      paramSosoLbsInfo.app_info.set((MessageMicro)localObject1);
-      localObject1 = new NearbyGroupExt.ReqBody();
-      ((NearbyGroupExt.ReqBody)localObject1).user_info.set(paramSosoLbsInfo);
-      ((NearbyGroupExt.ReqBody)localObject1).uint32_type.set(2);
-      paramSosoLbsInfo = new NewIntent(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a().getApplicationContext(), ProtoServlet.class);
-      paramSosoLbsInfo.putExtra("cmd", "NearbyGroupExt.GetGroupList");
-      paramSosoLbsInfo.putExtra("data", ((NearbyGroupExt.ReqBody)localObject1).toByteArray());
-      paramSosoLbsInfo.setObserver(new whp(this));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramSosoLbsInfo);
-      return;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
       for (;;)
       {
-        localNameNotFoundException.printStackTrace();
+        if (localWordItem.type != 2) {
+          break label352;
+        }
+        PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, localWordItem.jumpUrl, paramString, "");
+        return;
+        if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+          if (!TextUtils.isEmpty(paramString.trim()))
+          {
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+            ClassificationSearchActivity.a(this.a, paramString);
+          }
+        }
+        for (;;)
+        {
+          if ((this.a.f == ClassificationSearchActivity.d) || (TextUtils.isEmpty(paramString.trim()))) {
+            break label331;
+          }
+          this.a.a(paramString);
+          break;
+          if (this.a.f == ClassificationSearchActivity.d)
+          {
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
+            ClassificationSearchActivity.a(this.a, paramString);
+          }
+          else
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramString, false);
+          }
+        }
+        label331:
+        break;
+        label333:
+        if (this.a.f == ClassificationSearchActivity.d) {
+          paramString = "quan";
+        }
       }
+      label352:
+      PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, "0", paramString, "");
+      return;
+      localWordItem = null;
     }
   }
 }

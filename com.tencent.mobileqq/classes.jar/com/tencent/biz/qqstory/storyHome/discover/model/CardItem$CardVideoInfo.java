@@ -14,12 +14,12 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nug;
+import nvu;
 
 public class CardItem$CardVideoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new nug();
+  public static final Parcelable.Creator CREATOR = new nvu();
   private qqstory_struct.CardVideoInfo a;
   
   public CardItem$CardVideoInfo(Parcel paramParcel)

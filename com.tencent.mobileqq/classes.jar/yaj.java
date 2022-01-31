@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class yaj
-  implements DialogInterface.OnClickListener
+  implements ChatActivityUtils.StartVideoListener
 {
-  public yaj(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public yaj(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c()
   {
-    this.a.s();
+    this.a.g = 2;
+    this.a.finish();
   }
 }
 

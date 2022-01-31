@@ -1,23 +1,21 @@
-import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
-import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.CreateFakeVideoEvent;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.StoryVideoPublishStatusEvent;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
-class nao
-  extends OnSimpleShareListener
+public class nao
+  implements Runnable
 {
-  nao(nam paramnam) {}
+  public nao(StoryVideoUploadManager paramStoryVideoUploadManager, StoryVideoTaskInfo paramStoryVideoTaskInfo, StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent) {}
   
-  public void a()
+  public void run()
   {
-    super.a();
-    FeedCommentLikeLego.a(this.a.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    StoryReportor.a("home_page", "suc_share", 1, paramInt, new String[] { StoryReportor.b(this.a.a.a) + "", StoryReportor.a(this.a.a.a) + "", this.a.a.a.feedId });
+    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo });
+    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager$StoryVideoPublishStatusEvent);
+    Dispatchers.get().dispatch(new StoryVideoUploadManager.CreateFakeVideoEvent());
   }
 }
 

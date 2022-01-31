@@ -16,7 +16,7 @@ import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHold
 import com.tencent.biz.qqstory.view.widget.InteractPasterWidget;
 import com.tencent.biz.qqstory.view.widget.RateWidget;
 import java.util.Locale;
-import nli;
+import nms;
 
 public class PlayModeInteractViewUtils
 {
@@ -80,7 +80,7 @@ public class PlayModeInteractViewUtils
           bool2 = false;
         }
       }
-    } while (i != ((Integer)paramRateWidget.a().getTag(2131362457)).intValue());
+    } while (i != ((Integer)paramRateWidget.a().getTag(2131362460)).intValue());
     Object localObject = paramVideoPlayModeBase.a(((VideoPlayerPagerAdapter.VideoViewHolder)localObject).c);
     if (localObject == null)
     {
@@ -143,7 +143,7 @@ public class PlayModeInteractViewUtils
       return;
       SLog.b("Q.qqstory.PlayModeInteractViewUtils", "initPollView %d", Integer.valueOf(n));
       localView = paramVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInteractPasterWidget.a();
-      localView.setTag(2131362457, Integer.valueOf(n));
+      localView.setTag(2131362460, Integer.valueOf(n));
       i = localInteractPasterLayout.b;
       j = localInteractPasterLayout.c;
       k = localInteractPasterLayout.d;
@@ -163,7 +163,7 @@ public class PlayModeInteractViewUtils
         break;
       }
     } while (!paramBoolean);
-    paramVideoViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.post(new nli(paramVideoPlayModeBase, paramVideoViewHolder, paramStoryVideoItem));
+    paramVideoViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.post(new nms(paramVideoPlayModeBase, paramVideoViewHolder, paramStoryVideoItem));
     return;
     n = paramVideoViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.getWidth();
     int i1 = paramVideoViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.getHeight();

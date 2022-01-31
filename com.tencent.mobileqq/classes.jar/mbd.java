@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
-public final class mbd
-  implements Animation.AnimationListener
+public class mbd
+  implements DialogInterface.OnShowListener
 {
-  public mbd(View paramView) {}
+  public mbd(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
-    {
-      this.a.clearAnimation();
-      this.a.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
     }
+    VideoFeedsAdapter.b(this.a).getWindow().clearFlags(8);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

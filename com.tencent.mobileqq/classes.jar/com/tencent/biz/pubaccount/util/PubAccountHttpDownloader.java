@@ -19,7 +19,7 @@ import java.nio.channels.FileChannel;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AccountNotMatchException;
-import mtr;
+import muy;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 
@@ -158,7 +158,7 @@ public class PubAccountHttpDownloader
       label533:
       for (localObject4 = localObject1;; localObject4 = null)
       {
-        mtr localmtr = new mtr(this, paramOutputStream);
+        muy localmuy = new muy(this, paramOutputStream);
         k = 3;
         j = 0;
         localObject1 = null;
@@ -174,7 +174,7 @@ public class PubAccountHttpDownloader
           try
           {
             localPubAccoutImageReporter.a();
-            localObject3 = super.a(localmtr, paramDownloadParams, localPubAccoutImageReporter.a(paramURLDrawableHandler));
+            localObject3 = super.a(localmuy, paramDownloadParams, localPubAccoutImageReporter.a(paramURLDrawableHandler));
             if (localObject3 != null) {
               break label570;
             }
@@ -260,7 +260,7 @@ public class PubAccountHttpDownloader
             }
           }
           if (localObject4 != null) {
-            a((String)localObject4, localmtr.a);
+            a((String)localObject4, localmuy.a);
           }
           return localObject2;
         }

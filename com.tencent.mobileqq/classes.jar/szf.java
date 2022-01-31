@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
 
 public class szf
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public szf(NotificationActivity paramNotificationActivity) {}
+  public szf(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new szg(this), 1000L);
+    this.a.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.a.b.setImageResource(2130843018);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     szf
  * JD-Core Version:    0.7.0.1
  */

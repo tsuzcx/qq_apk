@@ -22,11 +22,11 @@ public class PathTraceService$UpdateRunDataBroadCastReceiver
     long l = paramIntent.getLongExtra(PathTraceService.c, 0L);
     double d = paramIntent.getDoubleExtra(PathTraceService.d, 0.0D);
     if (i == 1) {
-      PathTraceService.a(this.a).setTextViewText(2131365311, "运动进行中");
+      PathTraceService.a(this.a).setTextViewText(2131365333, "运动进行中");
     }
-    PathTraceService.a(this.a).setChronometer(2131365313, SystemClock.elapsedRealtime() - l * 1000L, null, false);
+    PathTraceService.a(this.a).setChronometer(2131365335, SystemClock.elapsedRealtime() - l * 1000L, null, false);
     paramContext = new DecimalFormat("######0.00");
-    PathTraceService.a(this.a).setTextViewText(2131365312, paramContext.format(d / 1000.0D) + "km");
+    PathTraceService.a(this.a).setTextViewText(2131365334, paramContext.format(d / 1000.0D) + "km");
     try
     {
       PathTraceService.a(this.a, PathTraceService.a(this.a).build());
@@ -41,7 +41,7 @@ public class PathTraceService$UpdateRunDataBroadCastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceService.UpdateRunDataBroadCastReceiver
  * JD-Core Version:    0.7.0.1
  */

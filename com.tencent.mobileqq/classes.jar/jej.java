@@ -1,29 +1,50 @@
-import android.content.Context;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.utils.PopupDialog;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class jej
-  implements Runnable
 {
-  public jej(VideoController paramVideoController) {}
+  public static String a;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  jek jdField_a_of_type_Jek;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void run()
+  static
   {
-    try
+    jdField_a_of_type_JavaLangString = "AccountReceiver";
+  }
+  
+  public jej(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Jek = new jek(paramVideoAppInterface);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (!this.a.a().f())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(VideoController.a, 2, "AnyChatReqTimeoutRunnable show dialog!");
-        }
-        Context localContext = this.a.a();
-        PopupDialog.b(localContext, 230, null, localContext.getString(2131428681), 0, 2131428668, new jek(this), null);
-      }
-      return;
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Jek);
+      this.jdField_a_of_type_Boolean = false;
     }
-    catch (Exception localException) {}
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQ Account Receiver");
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    localIntentFilter.addAction("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
+    localIntentFilter.addAction("tencent.video.q2v.membersChange");
+    localIntentFilter.addAction("mqq.intent.action.LOGOUT");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Jek, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
 }
 

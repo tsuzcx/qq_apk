@@ -1,10 +1,10 @@
 package cooperation.qzone;
 
-import amcq;
-import amcr;
-import amcs;
-import amct;
-import amcw;
+import amsu;
+import amsv;
+import amsw;
+import amsx;
+import amta;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -139,8 +139,8 @@ public class QzonePluginProxyActivity
       paramInt = LocalMultiProcConfig.getInt("qzapp_vercode", 84);
       if (!LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false))
       {
-        paramActivity = DialogUtil.a(paramActivity, 230, 2130971292, "启用空间保护模式", "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", "取消", "确定", new amcq(paramActivity, paramInt, paramString, paramIntent), new amcr());
-        ((CheckBox)paramActivity.findViewById(2131374136)).setOnCheckedChangeListener(new amcs());
+        paramActivity = DialogUtil.a(paramActivity, 230, 2130971340, "启用空间保护模式", "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", "取消", "确定", new amsu(paramActivity, paramInt, paramString, paramIntent), new amsv());
+        ((CheckBox)paramActivity.findViewById(2131374317)).setOnCheckedChangeListener(new amsw());
         paramActivity.show();
       }
       while (QZoneHelper.a(paramActivity, paramInt, Long.valueOf(paramString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
@@ -155,7 +155,7 @@ public class QzonePluginProxyActivity
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "launchPluingActivityForResult.isPluginInstalled start， showProgressDialog：" + paramBoolean);
     }
-    QZoneHelper.a(paramBoolean, new amct(paramIntent, paramString, paramPreloadProcHitPluginSession, paramInt, paramActivity, paramOnDismissListener));
+    QZoneHelper.a(paramBoolean, new amsx(paramIntent, paramString, paramPreloadProcHitPluginSession, paramInt, paramActivity, paramOnDismissListener));
   }
   
   private static boolean b(String[] paramArrayOfString, String paramString)
@@ -226,7 +226,7 @@ public class QzonePluginProxyActivity
   
   protected Class getProxyActivity(String paramString)
   {
-    return amcw.a(paramString);
+    return amta.a(paramString);
   }
   
   protected int getThemeResId()

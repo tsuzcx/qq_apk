@@ -1,23 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
+import com.tencent.qphone.base.util.QLog;
 
-public class akxd
-  implements View.OnClickListener
+public final class akxd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akxd(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public float a;
+  private final TabDragAnimationView a;
+  public boolean a;
+  public boolean b = false;
   
-  public void onClick(View paramView)
+  public akxd(TabDragAnimationView paramTabDragAnimationView)
   {
-    ProfileCardUtil.a(this.a, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = paramTabDragAnimationView;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Float = 1.0F;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f - this.jdField_a_of_type_Float > 0.0F) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (f > 0.8F)) {
+      this.b = false;
+    }
+    this.jdField_a_of_type_Float = f;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("TabDragAnimationView", 2, "do mScale animation, percent=" + this.jdField_a_of_type_Float + ",reversed=" + this.jdField_a_of_type_Boolean + ",doAnim=" + this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxd
  * JD-Core Version:    0.7.0.1
  */

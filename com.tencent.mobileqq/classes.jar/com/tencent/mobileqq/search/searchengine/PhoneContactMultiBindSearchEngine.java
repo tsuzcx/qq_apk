@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ahij;
+import ahwl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Comparator;
 import java.util.Set;
@@ -8,12 +8,12 @@ import java.util.Set;
 public class PhoneContactMultiBindSearchEngine
   extends ContactSearchEngine
 {
-  public final ahij a;
+  public final ahwl a;
   
   public PhoneContactMultiBindSearchEngine(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set paramSet)
   {
     super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-    this.a = new ahij(paramQQAppInterface);
+    this.a = new ahwl(paramQQAppInterface);
   }
   
   public Comparator a()

@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
-import cooperation.groupvideo.GroupVideoWrapper;
-import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class zil
-  implements GroupVideoWrapper.OnGVideoReadyListener
+  implements Runnable
 {
-  public zil(QQGAudioMsgHandler paramQQGAudioMsgHandler, byte[] paramArrayOfByte) {}
+  public zil(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean, int paramInt) {}
   
-  public void a(GroupVideoWrapper paramGroupVideoWrapper)
+  public void run()
   {
-    paramGroupVideoWrapper.a(this.jdField_a_of_type_ArrayOfByte);
-    paramGroupVideoWrapper.a();
+    synchronized (PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp))
+    {
+      Iterator localIterator = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).iterator();
+      if (localIterator.hasNext()) {
+        ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+      }
+    }
   }
 }
 

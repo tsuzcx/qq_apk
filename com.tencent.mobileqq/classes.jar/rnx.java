@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
 public class rnx
-  implements Runnable
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public rnx(BaseChatPie paramBaseChatPie) {}
-  
-  public void run()
-  {
-    this.a.b(196614);
-  }
+  public rnx(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
 }
 
 

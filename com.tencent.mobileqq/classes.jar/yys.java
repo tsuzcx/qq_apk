@@ -1,30 +1,34 @@
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigHelper;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import protocol.KQQConfig.GetResourceRespInfo;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.ApolloPanelManager;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class yys
   implements Runnable
 {
-  public yys(ConfigHandler paramConfigHandler, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public yys(ApolloPanel paramApolloPanel) {}
   
   public void run()
   {
-    if (!ConfigHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.strPkgName, 10000L)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("eggs", 2, "handleUpdateEggsActions dpc aio_eggs is false");
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null)) {}
+    for (;;)
+    {
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (ApolloPanel.a(this.a) != null) {}
+      for (int i = ApolloPanel.a(this.a).a.get(); i > 0; i = 0)
+      {
+        this.a.b.setVisibility(0);
+        return;
       }
     }
-    while (AioAnimationConfigHelper.a().a() != null) {
-      return;
-    }
-    AioAnimationConfigHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yys
  * JD-Core Version:    0.7.0.1
  */

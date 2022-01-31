@@ -1,13 +1,17 @@
-import com.tencent.av.widget.stageview.StageEffectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.JoinGroupHandler;
+import com.tencent.biz.JoinGroupHandler.IJoinGroupCB;
 
 public class kiu
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public kiu(StageEffectView paramStageEffectView) {}
+  public kiu(JoinGroupHandler paramJoinGroupHandler) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a();
+    this.a.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.c();
+    this.a.jdField_a_of_type_Long = 0L;
   }
 }
 

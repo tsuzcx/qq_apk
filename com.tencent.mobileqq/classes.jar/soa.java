@@ -1,31 +1,35 @@
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.troop.widget.ProfileGuideHelper;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.open.agent.report.ReportCenter;
 
 public class soa
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  public soa(FriendProfileCardActivity paramFriendProfileCardActivity, View paramView, int paramInt1, int paramInt2) {}
+  public soa(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt);
-    int i = arrayOfInt[1];
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    if ((i + j <= this.jdField_a_of_type_Int - this.b) && (i != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.j))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a(i, j, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.j = i;
+    paramView = new Bundle();
+    paramView.putString("uin", String.valueOf(AppConstants.J));
+    paramView.putInt("uintype", -1);
+    paramView.putBoolean("forward_report_confirm", true);
+    paramView.putString("forward_report_confirm_action_name", "0X8005A13");
+    paramView.putString("forward_report_confirm_reverse2", "2");
+    this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(ForwardAbility.ForwardAbilityType.g.intValue(), paramView);
+    if (this.a.jdField_a_of_type_Boolean) {
+      ReportCenter.a().a(this.a.app.getAccount(), "", this.a.b, "1000", "35", "0", false);
     }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     soa
  * JD-Core Version:    0.7.0.1
  */

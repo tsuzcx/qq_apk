@@ -1,21 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
 
 public class nia
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public nia(FeedsPlayModeBase paramFeedsPlayModeBase, Boolean[] paramArrayOfBoolean) {}
+  public nia(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FeedsPlayModeBase", 2, "[az]isResumeVideoPlaySelf === >" + this.jdField_a_of_type_ArrayOfJavaLangBoolean);
-    }
-    if (!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue()) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.s();
-    }
+    this.a.a();
+    return false;
   }
 }
 

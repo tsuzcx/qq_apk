@@ -1,8 +1,10 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
+import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.persistence.uniqueConstraints;
 
+@uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="unionId,nodeType")
 public class MsgTabNodeRecommendActivityReadEntity
   extends Entity
 {
@@ -10,7 +12,6 @@ public class MsgTabNodeRecommendActivityReadEntity
   public static final String TABLE_NAME = MsgTabNodeRecommendActivityReadEntity.class.getSimpleName();
   public int hasRead;
   public int nodeType;
-  @unique
   public String unionId;
   
   public MsgTabNodeRecommendActivityReadEntity() {}

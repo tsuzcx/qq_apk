@@ -1,31 +1,33 @@
-import android.app.Activity;
-import com.tencent.biz.addContactTroopView.AddContactTroopHandler.IGetPopClassAndSearchCB;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class wgd
-  implements AddContactTroopHandler.IGetPopClassAndSearchCB
+  implements Runnable
 {
-  public wgd(TroopView paramTroopView) {}
+  public wgd(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
   
-  public void a()
+  public void run()
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+    MessageRecord localMessageRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.a.jdField_a_of_type_JavaLangString, 1, this.a.c);
+    if (localMessageRecord != null)
+    {
+      List localList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_a_of_type_JavaLangString, 1, localMessageRecord.shmsgseq, 20);
+      localList.add(0, localMessageRecord);
+      ThreadManager.getUIHandler().post(new wge(this, localList));
       return;
     }
-    TroopView.d(this.a, true);
-    TroopView.e(this.a, true);
-    TroopView.a(this.a).sendEmptyMessage(4);
-  }
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
+    TroopTechReportUtils.a("chat_history", "target_404", String.valueOf(this.a.c), String.valueOf(this.a.b), "", "");
+    if (QLog.isColorLevel()) {
+      QLog.e("chatHistory.troop.msgList", 2, "msg not found, fallback to loadData");
     }
-    TroopView.d(this.a, true);
-    TroopView.e(this.a, false);
-    TroopView.a(this.a).sendEmptyMessage(5);
+    this.a.c();
   }
 }
 

@@ -1,18 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
+import com.tencent.qphone.base.util.QLog;
 
 public class uxp
-  implements AnimationTextView.OnDoubleClick
+  implements Runnable
 {
-  public uxp(LongMsgItemBuilder paramLongMsgItemBuilder) {}
+  public uxp(FlashPicItemBuilder.FlashPicAIOThumbView paramFlashPicAIOThumbView) {}
   
-  public void a(View paramView)
+  public void run()
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    try
+    {
+      synchronized (BaseApplicationImpl.sImageCache) {}
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.hotchat", 2, "cache flashpic abumb exception:" + localException);
+      }
+    }
   }
 }
 

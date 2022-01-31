@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.qcall;
 
-import aghb;
-import aghc;
-import aghd;
-import aghe;
+import agvd;
+import agve;
+import agvf;
+import agvg;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -47,8 +47,8 @@ public class QCallFacade
   extends Observable
   implements Manager
 {
-  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new aghc(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new aghb(this);
+  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new agve(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new agvd(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public QCallFacade(QQAppInterface paramQQAppInterface)
@@ -644,7 +644,7 @@ public class QCallFacade
       if ((j == 1) || (i == 1)) {
         if (paramBoolean) {
           if (paramString != null) {
-            ((StringBuilder)localObject1).append(paramString).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428770));
+            ((StringBuilder)localObject1).append(paramString).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428776));
           }
         }
       }
@@ -653,13 +653,13 @@ public class QCallFacade
         return ((StringBuilder)localObject1).toString();
         if ((localQCallRecord1 != null) && (localQCallRecord1.isVideo()))
         {
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428757));
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428763));
         }
         else
         {
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428763));
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428769));
           continue;
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428773, new Object[] { "" + i, "" + j }));
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428779, new Object[] { "" + i, "" + j }));
         }
       }
       break label238;
@@ -719,7 +719,7 @@ public class QCallFacade
             break label291;
           }
           localObject = MessageRecordFactory.a(-2016);
-          ((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428867);
+          ((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428873);
           ((MessageRecord)localObject).frienduin = localQCallRecent.troopUin;
           ((MessageRecord)localObject).msgtype = -2016;
           ((MessageRecord)localObject).senderuin = "";
@@ -733,7 +733,7 @@ public class QCallFacade
       ((MessageRecord)localObject).frienduin = localQCallRecent.uin;
       ((MessageRecord)localObject).msgtype = -2009;
       if (localQCallRecord.isVideo()) {}
-      for (((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428865);; ((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428866))
+      for (((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428871);; ((MessageRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428872))
       {
         ((MessageRecord)localObject).senderuin = localQCallRecord.senderuin;
         break;
@@ -1160,7 +1160,7 @@ public class QCallFacade
     paramString2.isSystemCall = 0;
     a(paramString2, "when_addMissCallMsg");
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.C();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new aghd(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new agvf(this));
   }
   
   public void a(boolean paramBoolean)
@@ -1336,7 +1336,7 @@ public class QCallFacade
       a(localQCallRecent);
     }
     c(paramString, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new aghe(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new agvg(this));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.C();
   }
   

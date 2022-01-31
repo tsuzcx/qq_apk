@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
 
-public class aeml
-  implements DialogInterface.OnDismissListener
+public final class aeml
+  implements Runnable
 {
-  public aeml(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aeml(String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = false;
+    NearbyProcessMonitor.b(this.a);
+    NearbyProcessMonitor.a(this.a);
+    NearbyProcessMonitor.a += 1;
+    NearbySPUtil.a(this.a);
+    NearbyProcessMonitor.a();
   }
 }
 

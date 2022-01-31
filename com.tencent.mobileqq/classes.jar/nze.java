@@ -1,17 +1,24 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Filter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.app.AppConstants;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
 
 public class nze
-  implements LocalVideoPusher.Filter
+  extends ContentObserver
 {
-  public nze(LocalVideoPushSegment paramLocalVideoPushSegment) {}
-  
-  public boolean a(LocalMediaInfo paramLocalMediaInfo)
+  public nze(LocalVideoPusher paramLocalVideoPusher, Handler paramHandler)
   {
-    paramLocalMediaInfo = paramLocalMediaInfo.path;
-    return (paramLocalMediaInfo.startsWith(AppConstants.aV)) && (paramLocalMediaInfo.contains("QQStoryMoment"));
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    if (!this.a.a)
+    {
+      this.a.b();
+      return;
+    }
+    this.a.b = true;
   }
 }
 

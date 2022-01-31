@@ -1,29 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.open.base.LogUtility;
 
 public class akdd
-  implements WebSoService.CallBack
+  implements View.OnClickListener
 {
-  public akdd(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
+  public akdd(NewUpgradeDialog paramNewUpgradeDialog) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10004;
+    switch (NewUpgradeDialog.a(this.a))
+    {
+    default: 
+      return;
+    case 1: 
+      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
+      NewUpgradeDialog.a(this.a);
+      return;
+    case 4: 
+      NewUpgradeDialog.b(this.a);
+      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
+      return;
+    case 10: 
+      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
+      return;
+    case 3: 
+      NewUpgradeDialog.c(this.a);
+      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
+      return;
+    case 2: 
+      this.a.c();
+      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter$HybridWebReportInfo.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+    LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akdd
  * JD-Core Version:    0.7.0.1
  */

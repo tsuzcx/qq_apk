@@ -1,20 +1,28 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
 public class aemt
-  extends GestureDetector.SimpleOnGestureListener
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public aemt(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aemt(NearbyProxy paramNearbyProxy) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    return true;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    synchronized (this.a.a)
+    {
+      if (this.a.a.contains(paramString))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
+        }
+        this.a.a.remove(paramString);
+        NearbyProxy.a(this.a, 4154, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
+      }
+      return;
+    }
   }
 }
 

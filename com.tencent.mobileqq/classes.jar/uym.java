@@ -1,52 +1,32 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
+import com.tencent.device.utils.SmartDeviceReport;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.open.base.ToastUtil;
 
-public class uym
-  implements View.OnClickListener
+class uym
+  implements DialogInterface.OnClickListener
 {
-  public uym(MarketFaceItemBuilder paramMarketFaceItemBuilder, int paramInt, String paramString1, String paramString2, MarkFaceMessage paramMarkFaceMessage, MarketFaceItemBuilder.Holder paramHolder) {}
+  uym(uyk paramuyk) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarketFaceItemBuilder", 2, "rewordTxt has been clicked! type = " + this.jdField_a_of_type_Int + " content = " + this.jdField_a_of_type_JavaLangString + " jumpUrl = " + this.b);
+    if (!NetworkUtil.g(this.a.a.jdField_a_of_type_AndroidContentContext)) {
+      ToastUtil.a().a(2131427738);
     }
-    String str1;
-    String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.showIpProduct)
+    do
     {
-      paramView = "1";
-      if (!TextUtils.isEmpty(this.b))
-      {
-        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("hide_operation_bar", true);
-        VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, this.b, -1L, (Intent)localObject, false, -1);
-        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.c();
-        str2 = MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a != null) {
-          break label200;
-        }
-      }
-    }
-    label200:
-    for (Object localObject = "";; localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId)
-    {
-      VasWebviewUtil.reportCommercialDrainage(str1, "ep_mall", "yinliu_xiaoweiba_click", "AIO", 1, 0, 1, str2, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.copywritingContent, paramView, "", "", "", 0, 0, 0, 0);
       return;
-      paramView = "";
-      break;
-    }
+      paramDialogInterface = (SmartDeviceProxyMgr)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+      paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, 1, 0);
+      paramDialogInterface = paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+    } while (paramDialogInterface == null);
+    SmartDeviceReport.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
   }
 }
 

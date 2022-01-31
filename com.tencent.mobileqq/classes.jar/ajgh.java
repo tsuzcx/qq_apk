@@ -1,80 +1,52 @@
 import android.content.Context;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.util.GLUtil;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
-import java.io.File;
+import android.support.v4.view.PagerAdapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment.ContentViewHolder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajgh
-  extends VideoSprite
+  extends PagerAdapter
 {
-  private int k = GLES20.glGetUniformLocation(this.h, "v_isShowCover");
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public ajgh(TroopSignVideoView paramTroopSignVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
+  public ajgh(HomeworkGuideFragment paramHomeworkGuideFragment, Context paramContext)
   {
-    super(paramSpriteGLView, paramContext, paramBoolean);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView) == 0) {
-      TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView, paramInt2);
-    }
-    super.a(paramInt1, TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView));
+    paramViewGroup.removeView((View)paramObject);
   }
   
-  public String b()
+  public int getCount()
   {
-    return GLUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShaderVideoForTroopSign.glsl");
+    return HomeworkGuideFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment).size();
   }
   
-  protected void b(int paramInt1, int paramInt2)
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_e_of_type_JavaNioFloatBuffer == null) {
-      return;
-    }
-    a(paramInt1, paramInt2);
-    GLES20.glEnableVertexAttribArray(this.jdField_e_of_type_Int);
-    GLES20.glVertexAttribPointer(this.jdField_e_of_type_Int, 2, 5126, false, 0, this.jdField_e_of_type_JavaNioFloatBuffer);
-    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
-    GLES20.glUniform1i(this.jdField_a_of_type_Int, 0);
-    GLES20.glEnableVertexAttribArray(this.jdField_c_of_type_Int);
-    GLES20.glVertexAttribPointer(this.jdField_c_of_type_Int, 4, 5126, false, 0, this.jdField_c_of_type_JavaNioFloatBuffer);
-    if (this.jdField_f_of_type_Boolean)
-    {
-      GLES20.glUniform1i(this.g, 1);
-      GLES20.glEnableVertexAttribArray(this.jdField_d_of_type_Int);
-      GLES20.glVertexAttribPointer(this.jdField_d_of_type_Int, 4, 5126, false, 0, this.jdField_d_of_type_JavaNioFloatBuffer);
-      paramInt2 = this.k;
-      if (!TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView)) {
-        break label205;
-      }
-    }
-    label205:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      GLES20.glUniform1i(paramInt2, paramInt1);
-      GLES20.glUniformMatrix4fv(this.jdField_f_of_type_Int, 1, false, this.jdField_f_of_type_ArrayOfFloat, 0);
-      GLES20.glDrawElements(4, jdField_b_of_type_ArrayOfShort.length, 5123, this.jdField_b_of_type_JavaNioShortBuffer);
-      GLES20.glDisableVertexAttribArray(this.jdField_e_of_type_Int);
-      GLES20.glDisableVertexAttribArray(this.jdField_c_of_type_Int);
-      GLES20.glDisableVertexAttribArray(this.jdField_d_of_type_Int);
-      return;
-      GLES20.glUniform1i(this.g, 0);
-      break;
-    }
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969909, paramViewGroup, false);
+    HomeworkGuideFragment.ContentViewHolder localContentViewHolder = new HomeworkGuideFragment.ContentViewHolder(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment);
+    localContentViewHolder.a(paramInt, localView);
+    localView.setTag(localContentViewHolder);
+    HomeworkGuideFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment).add(localContentViewHolder);
+    paramViewGroup.addView(localView, 0);
+    return localView;
   }
   
-  protected void i()
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    super.i();
-    this.k = GLES20.glGetUniformLocation(this.h, "v_isShowCover");
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgh
  * JD-Core Version:    0.7.0.1
  */

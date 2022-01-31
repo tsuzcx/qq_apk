@@ -1,24 +1,37 @@
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
-import com.tencent.mobileqq.nearby.now.view.CustomViewPager;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
-public class aeer
+class aeer
   implements Runnable
 {
-  public aeer(SmallVideoFragment paramSmallVideoFragment) {}
+  aeer(aeeq paramaeeq, ActionGlobalData paramActionGlobalData) {}
   
   public void run()
   {
-    VideoPlayerPagerAdapter localVideoPlayerPagerAdapter = (VideoPlayerPagerAdapter)this.a.a.getAdapter();
-    if ((localVideoPlayerPagerAdapter.a(this.a.a.getCurrentItem()) instanceof ShortVideoCommentsView)) {
-      ((ShortVideoCommentsView)localVideoPlayerPagerAdapter.a(this.a.a.getCurrentItem())).m();
+    
+    if (this.jdField_a_of_type_Aeeq.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Aeeq.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.c();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aeeq.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      this.jdField_a_of_type_Aeeq.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_b_of_type_AndroidWidgetTextView.setText("");
+      if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.c))) {
+        this.jdField_a_of_type_Aeeq.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aA();
+      }
+      return;
+      ((View)this.jdField_a_of_type_Aeeq.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_b_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aeeq.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeer
  * JD-Core Version:    0.7.0.1
  */

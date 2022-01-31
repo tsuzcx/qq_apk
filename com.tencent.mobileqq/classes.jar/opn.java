@@ -1,16 +1,28 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.CustomViewPager;
+import com.tencent.biz.qqstory.utils.BetterGestureDetector;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer.GestureListener;
 
 public class opn
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public opn(SlideTabViewPager paramSlideTabViewPager) {}
+  public opn(StoryVideoPlayer paramStoryVideoPlayer) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = (Integer)paramView.getTag();
-    this.a.setTab(paramView.intValue());
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.a.a()) {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer$GestureListener.l();
+      }
+    }
   }
 }
 

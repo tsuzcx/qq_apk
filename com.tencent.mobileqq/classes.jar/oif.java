@@ -1,17 +1,17 @@
-import com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
 
 public class oif
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public oif(DoodleLayout paramDoodleLayout, LineLayer paramLineLayer, int paramInt, int[] paramArrayOfInt) {}
+  public oif(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ((PersonalityOperator)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerLineLayer.a.a(102)).b(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ArrayOfInt[0] = 1;
+    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.g();
   }
 }
 

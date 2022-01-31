@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import ytb;
+import ywh;
 
 public class ApolloGameRscVerify
 {
@@ -95,7 +95,7 @@ public class ApolloGameRscVerify
   
   public void a()
   {
-    ThreadManager.post(new ytb(this), 5, null, true);
+    ThreadManager.post(new ywh(this), 5, null, true);
   }
   
   /* Error */

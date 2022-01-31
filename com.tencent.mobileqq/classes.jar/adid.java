@@ -1,39 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetApkNameCallback;
 
-public class adid
-  implements TVK_SDKMgr.InstallListener
+public final class adid
+  implements UniformDownloadUtil.GetApkNameCallback
 {
-  public adid(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  public adid(String paramString) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void a(String paramString)
   {
-    PresenceInterfaceImpl.a = false;
-    this.a.a("腾讯视频插件加载失败");
-    if (QLog.isColorLevel()) {
-      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
+    if (paramString == null) {
+      return;
     }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    PresenceInterfaceImpl.a = false;
-    if (!this.a.c)
-    {
-      ThreadManager.getSubThreadHandler().post(new adie(this));
-      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
-    }
-    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
+    new Handler(Looper.getMainLooper()).post(new adie(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adid
  * JD-Core Version:    0.7.0.1
  */

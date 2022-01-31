@@ -1,34 +1,43 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
-import com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import java.util.Iterator;
+import java.util.List;
 
 public class opw
-  extends RecyclerView.OnScrollListener
+  implements ViewPager.OnPageChangeListener
 {
-  public opw(XRecyclerView paramXRecyclerView) {}
+  public opw(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    paramInt = paramRecyclerView.getChildCount();
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    if (this.a.a != null)
     {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      int i = paramRecyclerView.getItemCount();
-      int[] arrayOfInt = paramRecyclerView.findFirstVisibleItemPositions(null);
-      if (i - paramInt > paramRecyclerView.getSpanCount() * 3 + arrayOfInt[0]) {
-        break label76;
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
       }
     }
-    label76:
-    for (paramInt = 1;; paramInt = 0)
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (this.a.a != null)
     {
-      if (paramInt != 0) {
-        XRecyclerView.a(this.a).b(false);
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
       }
-      return;
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
     }
   }
 }

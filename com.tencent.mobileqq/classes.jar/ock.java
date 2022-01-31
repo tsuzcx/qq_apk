@@ -1,28 +1,29 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.Collections;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ock
-  implements DoodleEmojiManager.POIPostersRequestCallback
+  implements DialogInterface.OnKeyListener
 {
-  public ock(EditVideoDoodle paramEditVideoDoodle) {}
+  public ock(CommonPicUploadFragment paramCommonPicUploadFragment) {}
   
-  public void a(int paramInt, List paramList)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    List localList = paramList;
-    if (paramList == null) {
-      localList = Collections.EMPTY_LIST;
+    if (paramInt == 84) {
+      return true;
     }
-    Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent(paramInt, localList));
+    if (paramInt == 4)
+    {
+      this.a.b();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      return true;
+    }
+    return false;
   }
 }
 

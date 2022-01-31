@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajfa;
+import ajte;
 import android.content.Context;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -87,7 +87,7 @@ public class TroopAvatarWallGalleryAdapter
           if (((this.jdField_a_of_type_ComTencentMobileqqDataSetting != null) && (this.jdField_a_of_type_ComTencentMobileqqDataSetting.bHeadType != 0)) || (!((String)localObject).equals(AvatarWallAdapter.AvatarInfo.jdField_a_of_type_JavaLangString))) {
             break label210;
           }
-          localURLImageView.setImageResource(2130840537);
+          localURLImageView.setImageResource(2130840543);
           return;
         }
         catch (MalformedURLException paramViewHolder) {}
@@ -115,7 +115,7 @@ public class TroopAvatarWallGalleryAdapter
     }
     localURLImageView.setImageDrawable(URLDrawable.getDrawable(paramViewHolder, (URLDrawable.URLDrawableOptions)localObject));
     a(localImageProgressCircle);
-    localURLImageView.setURLDrawableDownListener(new ajfa(this, localImageProgressCircle, localURLImageView));
+    localURLImageView.setURLDrawableDownListener(new ajte(this, localImageProgressCircle, localURLImageView));
   }
   
   public void a(ImageProgressCircle paramImageProgressCircle)
@@ -192,7 +192,7 @@ public class TroopAvatarWallGalleryAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130971612, null);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130971660, null);
       paramView = new TroopAvatarWallGalleryAdapter.ViewHolder(this);
       paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131361846));
       paramView.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(new RelativeLayout.LayoutParams(this.jdField_b_of_type_Int, this.c));
@@ -213,7 +213,7 @@ public class TroopAvatarWallGalleryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter
  * JD-Core Version:    0.7.0.1
  */

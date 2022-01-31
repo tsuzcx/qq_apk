@@ -1,33 +1,45 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.redbag.AVRedBagMgr.Event;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class jts
-  implements QavInOutAnimation.QavOutAnimationListener
+  implements AVRedBagMgr.Event
 {
-  public jts(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
+  public jts(EffectSettingUi paramEffectSettingUi) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    this.a.l = true;
-    this.a.ah();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("EffectSettingUi", 4, "onGetConfig, enable[" + paramBoolean + "]");
+    }
+    if (paramBoolean)
+    {
+      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
+      {
+        localObject = (AVActivity)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((AVActivity)localObject).runOnUiThread(new jtt(this));
+        }
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event = null;
   }
   
-  public void b()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    TraeHelper.a().a("DoubleVideoMeetingCtrlUI.onOutAnimationEnd_1");
-    if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().Q) {
-      DoubleVideoMeetingCtrlUI.a(this.a);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("EffectSettingUi", 4, "onStatusChanged");
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_Long, true, 0);
-    DoubleVideoMeetingCtrlUI.b(this.a);
-    this.a.d(true);
-    ReportController.b(null, "CliOper", "", "", "0X8005206", "0X8005206", 0, 0, "", "", "", "");
-    this.a.l = false;
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new jtu(this, paramBoolean3, paramBoolean1, paramBoolean2));
   }
 }
 

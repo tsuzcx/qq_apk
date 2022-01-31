@@ -1,16 +1,21 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnCompletionListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public class non
-  implements IMediaPlayer.OnCompletionListener
+class non
+  implements Runnable
 {
-  public non(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnCompletionListener paramOnCompletionListener) {}
+  non(nol paramnol, TVKPreloader.PreloadItem paramPreloadItem, String paramString1, int paramInt, String paramString2) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnCompletionListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl);
+    Iterator localIterator = TVKPreloader.a().iterator();
+    while (localIterator.hasNext()) {
+      ((TVKPreloader.PreloadListener)localIterator.next()).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem, new Throwable(this.jdField_a_of_type_JavaLangString + "|" + String.valueOf(this.jdField_a_of_type_Int) + "|" + this.b));
+    }
+    TVKPreloader.a(true);
   }
 }
 

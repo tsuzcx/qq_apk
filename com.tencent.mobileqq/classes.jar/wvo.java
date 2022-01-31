@@ -1,22 +1,15 @@
-import android.os.Handler;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity.sendPhotoTask;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class wvo
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
-  public wvo(SendPhotoActivity paramSendPhotoActivity) {}
+  public wvo(SettingActivity2 paramSettingActivity2) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    Logger.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask = new SendPhotoActivity.sendPhotoTask(this.a, null);
-    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask, 8, null, false);
-    return false;
+    this.a.a.f = true;
+    this.a.a.g();
   }
 }
 

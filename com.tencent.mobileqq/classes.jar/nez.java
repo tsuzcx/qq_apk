@@ -1,16 +1,16 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
 
 public class nez
-  extends UploadImageJob
+  implements Runnable
 {
-  public nez(ShareModeBase paramShareModeBase, ShareQZoneData paramShareQZoneData) {}
+  public nez(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, boolean paramBoolean, int paramInt) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2)) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a.a())) {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", true, true);
+    }
   }
 }
 

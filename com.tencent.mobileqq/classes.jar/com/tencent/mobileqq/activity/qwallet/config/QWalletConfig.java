@@ -22,7 +22,7 @@ import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import wzk;
+import xcp;
 
 public class QWalletConfig
   implements Serializable
@@ -540,7 +540,7 @@ public class QWalletConfig
   
   public void saveConfig()
   {
-    ThreadManager.getFileThreadHandler().post(new wzk(this));
+    ThreadManager.getFileThreadHandler().post(new xcp(this));
   }
   
   public String toString()

@@ -1,42 +1,34 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import mqq.app.AppRuntime;
 
 public class zgb
-  extends ContentObserver
+  extends zeq
 {
-  WeakReference a;
-  
-  public zgb(Handler paramHandler)
+  protected void a(String paramString)
   {
-    super(paramHandler);
-  }
-  
-  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
-  {
-    if (this.a != null) {
-      this.a.clear();
-    }
-    if (paramPhoneContactManagerImp != null) {
-      this.a = new WeakReference(paramPhoneContactManagerImp);
-    }
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
-    }
-    if (this.a == null) {}
-    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
     {
-      if (localPhoneContactManagerImp != null) {
-        localPhoneContactManagerImp.h = true;
-      }
+      localGuardManager.a(i, paramString);
       return;
     }
+  }
+  
+  protected void b()
+  {
+    this.a.a(6, "fake_p_msg");
+  }
+  
+  public void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.c();
+    this.a.c(true);
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(4, zeo.a().a, 0L);
+    CoreService.stopCoreService();
   }
 }
 

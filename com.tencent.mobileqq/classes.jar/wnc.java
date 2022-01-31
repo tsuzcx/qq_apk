@@ -1,19 +1,43 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class wnc
-  extends GetRedPointExObserver
+  extends MessageObserver
 {
-  public wnc(MainAssistObserver paramMainAssistObserver) {}
+  public wnc(DeviceFragment paramDeviceFragment) {}
   
-  protected void a(Object paramObject)
+  protected void a(int paramInt1, int paramInt2)
   {
-    this.a.g();
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
-      this.a.a.app.a().e();
+    if (this.a.a == null) {
+      return;
+    }
+    DeviceFragment localDeviceFragment = this.a;
+    if (paramInt1 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localDeviceFragment.c = bool;
+      this.a.a.c();
+      this.a.a.notifyDataSetChanged();
+      return;
+    }
+  }
+  
+  protected void c(int paramInt1, int paramInt2)
+  {
+    if (this.a.a == null) {
+      return;
+    }
+    DeviceFragment localDeviceFragment = this.a;
+    if (paramInt1 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localDeviceFragment.d = bool;
+      this.a.a.d();
+      this.a.a.a(this.a.d, AppConstants.z);
+      this.a.a.notifyDataSetChanged();
+      return;
     }
   }
 }

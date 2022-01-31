@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.text;
 
-import amxn;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import anns;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -48,7 +48,7 @@ public class DynamicTextBuilder
     jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(17), Collections.singletonList("沉迷学习"));
     jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(18), Collections.singletonList("企鹅岛"));
     jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(19), Collections.singletonList("一起来斗图"));
-    ThreadManager.post(new amxn(localQQAppInterface), 5, null, false);
+    ThreadManager.post(new anns(localQQAppInterface), 5, null, false);
   }
   
   public static int a(int paramInt)
@@ -60,45 +60,45 @@ public class DynamicTextBuilder
     {
     case 0: 
     default: 
-      return 2130841765;
+      return 2130841802;
     case 1: 
-      return 2130841749;
+      return 2130841786;
     case 2: 
-      return 2130841756;
+      return 2130841793;
     case 3: 
-      return 2130841752;
+      return 2130841789;
     case 4: 
-      return 2130841755;
+      return 2130841792;
     case 5: 
-      return 2130841753;
+      return 2130841790;
     case 6: 
-      return 2130841750;
+      return 2130841787;
     case 7: 
-      return 2130841767;
+      return 2130841804;
     case 8: 
-      return 2130841751;
+      return 2130841788;
     case 9: 
-      return 2130841769;
+      return 2130841806;
     case 10: 
-      return 2130841760;
+      return 2130841797;
     case 11: 
-      return 2130841744;
+      return 2130841781;
     case 12: 
-      return 2130841764;
+      return 2130841801;
     case 13: 
-      return 2130841768;
+      return 2130841805;
     case 14: 
-      return 2130841770;
+      return 2130841807;
     case 15: 
-      return 2130841758;
+      return 2130841795;
     case 16: 
-      return 2130841762;
+      return 2130841799;
     case 17: 
-      return 2130841759;
+      return 2130841796;
     case 18: 
-      return 2130841754;
+      return 2130841791;
     }
-    return 2130841748;
+    return 2130841785;
   }
   
   public static String a(int paramInt1, int paramInt2)

@@ -1,32 +1,20 @@
-import com.tencent.component.media.image.ImageDefaultConfig;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import com.tencent.common.galleryactivity.GalleryManager;
 
 public class pfe
-  implements PoolParams
+  implements Runnable
 {
-  public pfe(ImageManager paramImageManager, boolean paramBoolean) {}
+  public pfe(GalleryManager paramGalleryManager) {}
   
-  public PoolParams.BucketParams getBucketParams(int paramInt)
+  public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return new PoolParams.BucketParams(ImageDefaultConfig.BYTE_ARRAY_LOCAL[paramInt][1], ImageDefaultConfig.BYTE_ARRAY_LOCAL[paramInt][0]);
-    }
-    return new PoolParams.BucketParams(ImageDefaultConfig.BYTE_ARRAY[paramInt][1], ImageDefaultConfig.BYTE_ARRAY[paramInt][0]);
-  }
-  
-  public int getBucketPoolSize()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return ImageDefaultConfig.BYTE_ARRAY_LOCAL.length;
-    }
-    return ImageDefaultConfig.BYTE_ARRAY.length;
+    this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = false;
+    GalleryManager.a(this.a, this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene);
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pfe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.app.NearbyGrayTipsManager;
-import com.tencent.mobileqq.app.NearbyGrayTipsManager.FaceScoreWording;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class zen
-  implements Runnable
+  extends MqqHandler
 {
-  public zen(NearbyGrayTipsManager.FaceScoreWording paramFaceScoreWording1, NearbyGrayTipsManager.FaceScoreWording paramFaceScoreWording2) {}
+  private WeakReference a;
   
-  public void run()
+  private zen(Looper paramLooper, Handler.Callback paramCallback)
   {
-    String str = NearbyGrayTipsManager.FaceScoreWording.getPath(this.a.id);
-    NearbyGrayTipsManager.a(this.a, str);
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
+    }
   }
 }
 

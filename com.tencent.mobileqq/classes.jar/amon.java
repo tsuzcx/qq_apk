@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import cooperation.thirdpay.NFCPayPluginProxyActivity;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
 
 public class amon
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public amon(NFCPayPluginProxyActivity paramNFCPayPluginProxyActivity) {}
+  public amon(DatalineRemoteManager paramDatalineRemoteManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.startActivity(new Intent("android.settings.NFC_SETTINGS"));
-    paramDialogInterface.dismiss();
+    DatalineRemoteManager.b(this.a);
   }
 }
 

@@ -1,30 +1,18 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.config.ARMapConfig.StarInfo;
 
-public class abew
-  implements Runnable
+public final class abew
+  implements Parcelable.Creator
 {
-  public abew(ChatXListView paramChatXListView, Context paramContext) {}
-  
-  public void run()
+  public ARMapConfig.StarInfo a(Parcel paramParcel)
   {
-    int i = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindowManager().getDefaultDisplay().getHeight();
-    if (i <= 0) {
-      i = ChatXListView.a();
-    }
-    for (;;)
-    {
-      ChatXListView.a(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatXListView", 2, "ChatXListView open_panel_threshold_value = " + ChatXListView.b());
-      }
-      return;
-      i >>= 2;
-    }
+    return new ARMapConfig.StarInfo(paramParcel);
+  }
+  
+  public ARMapConfig.StarInfo[] a(int paramInt)
+  {
+    return new ARMapConfig.StarInfo[paramInt];
   }
 }
 

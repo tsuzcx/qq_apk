@@ -1,32 +1,28 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
+import com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class ocz
-  implements Runnable
+  implements Callbacks.Callback
 {
-  public ocz(EditVideoFilterNeo paramEditVideoFilterNeo, AddressDataProvider.AddressInfo paramAddressInfo) {}
+  public ocz(EditLocalVideoPlayer paramEditLocalVideoPlayer) {}
   
-  public void run()
+  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilterNeo.a.a(Message.obtain(null, 5, 0, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo));
-    String str;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.c)) {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.b)) {
-        str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.a;
-      }
+    if (paramBoolean.booleanValue())
+    {
+      SLog.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramThumbnailResult.b.size(), paramThumbnailResult.jdField_a_of_type_JavaUtilList.size())));
+      this.a.a.setEnabled(true);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilterNeo.a.a.a.putString("extra_local_address_city_name", str);
-      return;
-      str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.b;
-      continue;
-      str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.c;
+      return null;
+      SLog.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramThumbnailResult.jdField_a_of_type_Int);
+      QQToast.a(this.a.a(), 1, "生成缩略图出错, 错误码:" + paramThumbnailResult.jdField_a_of_type_Int, 1);
     }
   }
 }

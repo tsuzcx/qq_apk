@@ -1,21 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
+import com.tencent.widget.MultiImageTextView;
 
-public final class amcr
-  implements DialogInterface.OnClickListener
+public class amcr
+  extends ImageSpan
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amcr(MultiImageTextView paramMultiImageTextView, Drawable paramDrawable, int paramInt)
   {
-    if (LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false)) {
-      LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
-    }
-    paramDialogInterface.dismiss();
+    super(paramDrawable, paramInt);
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    paramPaint = paramPaint.getFontMetricsInt();
+    paramInt1 = paramPaint.descent;
+    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt2 = paramCharSequence.getBounds().bottom / 2;
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amcr
  * JD-Core Version:    0.7.0.1
  */

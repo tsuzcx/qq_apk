@@ -1,36 +1,28 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class nvy
-  extends QQUIEventReceiver
+  implements LbsManager.LbsUpdateListener
 {
-  public nvy(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter)
-  {
-    super(paramQQStoryMemoriesPresenter);
-  }
+  public nvy(DiscoverPresenter paramDiscoverPresenter, LbsManager paramLbsManager) {}
   
-  public void a(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void a(boolean paramBoolean, @Nullable BasicLocation paramBasicLocation)
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramQQStoryMemoriesPresenter.jdField_a_of_type_JavaLangString)))
+    SLog.e("Q.qqstory.discover.DiscoverPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramBasicLocation });
+    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b(this);
+    if (DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).get())
     {
-      SLog.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramUpdateUserInfoEvent);
-      paramQQStoryMemoriesPresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).d();
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).b();
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).c();
+      SLog.d("Q.qqstory.discover.DiscoverPresenter", "is destroy");
+      return;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+    DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).a = paramBasicLocation;
+    DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).a(null, 0);
   }
 }
 

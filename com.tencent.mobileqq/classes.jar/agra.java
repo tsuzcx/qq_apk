@@ -1,120 +1,89 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.view.LayoutInflater;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class agra
-  extends RecyclerView.Adapter
-  implements FaceDecoder.DecodeTaskCompletionListener
+  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new agrb(this);
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
-  private List jdField_a_of_type_JavaUtilList;
-  private Map jdField_a_of_type_JavaUtilMap;
+  public agra(ProfileHeaderView paramProfileHeaderView) {}
   
-  private agra(Context paramContext, FaceDecoder paramFaceDecoder, RecyclerView paramRecyclerView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = paramFaceDecoder;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a();
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    paramRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
-  }
-  
-  private Bitmap a(String paramString)
-  {
-    return a(paramString, 1, (byte)0);
-  }
-  
-  private Bitmap a(String paramString, int paramInt, byte paramByte)
-  {
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(paramInt, paramString);
-    if (localBitmap != null) {
-      return localBitmap;
+    if (QLog.isDevelopLevel()) {
+      QLog.i(ProfileHeaderView.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "mUICallback [%d]", new Object[] { Integer.valueOf(paramMessage.what) }));
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(paramString, paramInt, true, paramByte);
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  private void a()
-  {
-    int j = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildCount();
-    int i = 0;
-    while (i < j)
+    if (ProfileHeaderView.d == paramMessage.what)
     {
-      Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(i);
-      localObject = (agrd)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
-      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get(agrd.a((agrd)localObject));
-      if (localBitmap != null) {
-        agrd.a((agrd)localObject).setImageBitmap(localBitmap);
+      if (QLog.isColorLevel()) {
+        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.a.c);
       }
-      i += 1;
+      if ((this.a.b.get()) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+        this.a.k(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+      }
     }
-  }
-  
-  public agrd a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new agrd(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971436, paramViewGroup, false), null);
-  }
-  
-  public void a(agrd paramagrd, int paramInt)
-  {
-    ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    agrd.a(paramagrd, localMemberInfo.a);
-    agrd.a(paramagrd).setText(localMemberInfo.b);
-    agrd.a(paramagrd).setImageBitmap(a(localMemberInfo.a));
-  }
-  
-  public void a(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramBitmap);
-    if (paramInt1 <= 0)
+    Object localObject;
+    do
     {
-      if (this.jdField_a_of_type_Int == 0) {
-        a();
-      }
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
+      do
+      {
+        do
+        {
+          return true;
+          if (ProfileHeaderView.f == paramMessage.what)
+          {
+            this.a.a(false);
+            return true;
+          }
+          if (ProfileHeaderView.g != paramMessage.what) {
+            break;
+          }
+          localObject = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
+        } while (!(localObject instanceof ImageView));
+        localObject = (ImageView)localObject;
+        paramMessage = (ExtensionInfo)paramMessage.obj;
+        if ((paramMessage != null) && (paramMessage.isPendantValid()))
+        {
+          this.a.jdField_a_of_type_Long = paramMessage.pendantId;
+          AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(45);
+          ((ImageView)localObject).setVisibility(0);
+          if (AvatarPendantUtil.a(this.a.jdField_a_of_type_Long))
+          {
+            localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+            return true;
+          }
+          localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
+          return true;
+        }
+        ((ImageView)localObject).setVisibility(4);
+        this.a.jdField_a_of_type_Long = 0L;
+        return true;
+        if (paramMessage.what == 1004)
+        {
+          this.a.d(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+          return true;
+        }
+      } while (paramMessage.what != 1005);
+      localObject = (TextView)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_medal_num");
+    } while (localObject == null);
+    ((TextView)localObject).setText((String)paramMessage.obj);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agra
  * JD-Core Version:    0.7.0.1
  */

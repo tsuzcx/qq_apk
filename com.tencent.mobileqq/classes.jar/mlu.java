@@ -1,81 +1,31 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BannerAdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.JumpAdUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebArticleRichReqCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class mlu
-  extends BaseItemViewHolder
-  implements View.OnClickListener
+  extends FastWebModule.FastWebArticleRichReqCallback
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private TextView b;
-  private TextView c;
+  public mlu(FastWebActivity paramFastWebActivity) {}
   
-  public mlu(View paramView, BaseData paramBaseData)
+  public void a(boolean paramBoolean, int paramInt, FastWebShareInfo paramFastWebShareInfo)
   {
-    super(paramView, paramBaseData);
-    paramView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367055));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361926));
-    this.b = ((TextView)paramView.findViewById(2131367058));
-    this.c = ((TextView)paramView.findViewById(2131367059));
-  }
-  
-  private void a()
-  {
-    BannerAdData localBannerAdData = (BannerAdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-    if (localBannerAdData.jdField_b_of_type_Int == 12)
+    super.a(paramBoolean, paramInt, paramFastWebShareInfo);
+    if ((paramBoolean) && (paramFastWebShareInfo != null) && (!TextUtils.isEmpty(paramFastWebShareInfo.a(paramInt)))) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      if (TextUtils.isEmpty(localBannerAdData.h)) {}
-      while (!NativeAdUtils.a(this.jdField_a_of_type_AndroidViewView.getContext(), localBannerAdData.h)) {
-        return;
-      }
-      this.c.setText("立即打开");
+      ThreadManager.getUIHandler().post(new mlv(this, paramBoolean, paramInt, paramFastWebShareInfo));
       return;
     }
-    this.c.setText("查看详情");
   }
   
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    switch (paramBaseData2.d)
-    {
-    default: 
-      throw new IllegalArgumentException();
-    }
-    paramBaseData1 = (BannerAdData)paramBaseData2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.jdField_b_of_type_JavaLangString);
-    this.b.setText(paramBaseData1.i);
-    paramBaseData2 = URLDrawable.URLDrawableOptions.obtain();
-    paramBaseData2.mLoadingDrawable = new ColorDrawable(-2565414);
-    paramBaseData2.mPlayGifImage = true;
-    paramBaseData2.mMemoryCacheKeySuffix = "fast_web";
-    paramBaseData1 = URLDrawable.getDrawable(ReadInJoyUtils.a(paramBaseData1.d), paramBaseData2);
-    if ((paramBaseData1 != null) && (paramBaseData1.getStatus() == 2)) {
-      paramBaseData1.restartDownload();
-    }
-    a();
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBaseData1);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(new mlv(this));
-  }
-  
-  public void onClick(View paramView)
-  {
-    JumpAdUtils.a((Activity)paramView.getContext(), (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    super.a(paramBoolean, paramString, paramFastWebArticleInfo);
+    this.a.runOnUiThread(new mlw(this, paramFastWebArticleInfo, paramString, paramBoolean));
   }
 }
 

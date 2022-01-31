@@ -1,23 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.LogTag;
-import dov.com.tencent.mobileqq.richmedia.CompoundProcessor;
-import dov.com.tencent.mobileqq.richmedia.RichmediaClient;
+import android.content.Intent;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.FileUtils;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class anum
+class anum
   implements Runnable
 {
-  public anum(CompoundProcessor paramCompoundProcessor) {}
+  anum(anul paramanul, GenerateContext paramGenerateContext) {}
   
   public void run()
   {
-    RichmediaClient localRichmediaClient = RichmediaClient.a();
-    String str = this.a.a(this.a.jdField_b_of_type_JavaLangString);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("vidoe_record_uniseq", this.a.a);
-    localBundle.putString("full_video_path", str);
-    localBundle.putInt("video_slices_total_time_length", this.a.jdField_b_of_type_Int);
-    localRichmediaClient.a(103, -1, localBundle);
-    LogTag.a(this.a.a, "clicompCompoundProcessor.compressSourceYUV", "path = " + str + ",totalTime = " + this.a.jdField_b_of_type_Int);
+    PublishParam localPublishParam = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGenerateContext.a;
+    SLog.b("Q.qqstory.publish.edit.EditVideoPartManager", "publishParam = " + localPublishParam);
+    if (this.jdField_a_of_type_Anul.a.jdField_a_of_type_AndroidContentIntent == null) {}
+    for (Intent localIntent = new Intent();; localIntent = this.jdField_a_of_type_Anul.a.jdField_a_of_type_AndroidContentIntent)
+    {
+      localIntent.putExtra(PublishParam.a, localPublishParam);
+      this.jdField_a_of_type_Anul.a.a(localIntent, this.jdField_a_of_type_Anul.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a(), localPublishParam);
+      FileUtils.g(this.jdField_a_of_type_Anul.a.a());
+      return;
+    }
   }
 }
 

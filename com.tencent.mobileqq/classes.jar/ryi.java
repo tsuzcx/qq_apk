@@ -1,48 +1,35 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 
-class ryi
-  implements Runnable
+public class ryi
+  implements View.OnClickListener
 {
-  ryi(ryh paramryh, int paramInt, DevlockInfo paramDevlockInfo) {}
+  public ryi(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    this.jdField_a_of_type_Ryh.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.d();
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null))
+    if (this.a.d < this.a.c)
     {
-      ChatHistoryForC2C localChatHistoryForC2C = this.jdField_a_of_type_Ryh.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C;
-      boolean bool1;
-      if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.DevSetup == 1)
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838347);
+      paramView = this.a;
+      paramView.d += 1;
+      if (this.a.d >= this.a.c)
       {
-        bool1 = true;
-        if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet != 1) {
-          break label77;
-        }
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845465);
       }
-      for (;;)
-      {
-        localChatHistoryForC2C.a(bool1, bool2, this.jdField_a_of_type_Ryh.jdField_a_of_type_Boolean);
-        return;
-        bool1 = false;
-        break;
-        label77:
-        bool2 = false;
-      }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
     }
-    if (1 == this.jdField_a_of_type_Ryh.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.b())
-    {
-      this.jdField_a_of_type_Ryh.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.g();
-      return;
-    }
-    if (!this.jdField_a_of_type_Ryh.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.f())
-    {
-      this.jdField_a_of_type_Ryh.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b();
-      return;
-    }
-    this.jdField_a_of_type_Ryh.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b(this.jdField_a_of_type_Ryh.jdField_a_of_type_Boolean);
   }
 }
 

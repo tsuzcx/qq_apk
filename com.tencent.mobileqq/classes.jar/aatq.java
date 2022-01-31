@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import com.tencent.ark.ark.Application;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppCenter.ApplicationInformation;
+import java.util.Map;
 
-public class aatq
+public final class aatq
   implements Runnable
 {
-  public aatq(ARMapActivity paramARMapActivity) {}
+  public aatq(String paramString) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine.updateLocationNative(this.a.jdField_a_of_type_Double, this.a.b, "", 0.0D, 1, "", 0, this.a.i);
+    ArkAppCenter.ApplicationInformation localApplicationInformation = new ArkAppCenter.ApplicationInformation();
+    ark.Application localApplication = ark.Application.Create(this.jdField_a_of_type_JavaLangString);
+    localApplicationInformation.jdField_a_of_type_JavaLangString = localApplication.GetActionSet();
+    localApplicationInformation.b = localApplication.GetDescription();
+    localApplicationInformation.c = localApplication.GetVersion();
+    localApplicationInformation.jdField_a_of_type_Int = localApplication.CheckVersion();
+    localApplicationInformation.d = localApplication.GetPermissions();
+    localApplicationInformation.e = localApplication.GetLauncher();
+    localApplication.Release();
+    ArkAppCenter.a.put(this.jdField_a_of_type_JavaLangString, localApplicationInformation);
   }
 }
 

@@ -1,43 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class abzy
-  implements Animator.AnimatorListener
+class abzy
+  implements Runnable
 {
-  private abzy(StickerGestureDetector paramStickerGestureDetector) {}
+  abzy(abzx paramabzx, List paramList) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new abzz(this));
-      this.a.c();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aN();
-      this.a.jdField_b_of_type_Double = 1.0D;
-      this.a.jdField_a_of_type_Double = 0.0D;
-      if (this.a.jdField_a_of_type_AndroidViewView != null)
-      {
-        this.a.a(this.a.jdField_a_of_type_AndroidViewView, false);
-        this.a.c = null;
-      }
-      if ((this.a.jdField_b_of_type_AndroidViewView != null) && ((this.a.jdField_b_of_type_AndroidViewView instanceof BaseChatItemLayout)))
-      {
-        ((BaseChatItemLayout)this.a.jdField_b_of_type_AndroidViewView).setStickerPressStatus(false);
-        this.a.jdField_b_of_type_AndroidViewView = null;
-      }
-      com.tencent.mobileqq.emoticon.EmojiStickerManager.b = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("FavEmoRoamingObserver", 2, "start upload and download fav");
     }
+    this.jdField_a_of_type_Abzx.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Abzx.a.c();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

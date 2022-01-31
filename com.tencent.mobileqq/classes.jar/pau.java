@@ -1,16 +1,28 @@
-import com.tencent.biz.webviewplugin.QzonePlugin;
-import com.tencent.smtt.sdk.WebView;
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class pau
-  implements Runnable
+  extends AudioManager
 {
-  public pau(QzonePlugin paramQzonePlugin, byte[] paramArrayOfByte) {}
-  
-  public void run()
+  public pau(Context paramContext)
   {
-    if (QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin) != null) {
-      QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin).postUrl(QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin), this.jdField_a_of_type_ArrayOfByte);
+    super(paramContext);
+  }
+  
+  public int requestAudioFocus(AudioManager.OnAudioFocusChangeListener paramOnAudioFocusChangeListener, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      paramInt1 = super.requestAudioFocus(paramOnAudioFocusChangeListener, paramInt1, paramInt2);
+      return paramInt1;
     }
+    catch (NullPointerException paramOnAudioFocusChangeListener)
+    {
+      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "audio_manager_npe", 0, 1, 0, "", "", "", "");
+    }
+    return 0;
   }
 }
 

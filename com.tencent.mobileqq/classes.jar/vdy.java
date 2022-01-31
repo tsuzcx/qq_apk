@@ -1,16 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQWalletMsgItemBuilder;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletRedPkgUtils;
 
 public class vdy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public vdy(SixCombolEffectView paramSixCombolEffectView) {}
+  public vdy(QQWalletMsgItemBuilder paramQQWalletMsgItemBuilder) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView)) {
+      QWalletRedPkgUtils.b(this.a.a, paramView);
+    }
   }
 }
 

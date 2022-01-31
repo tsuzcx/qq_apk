@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.graphics.RectF;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
+import java.util.Comparator;
 
-public final class aiam
-  implements WeakNetCallback
+public class aiam
+  implements Comparator
 {
-  private StatisticCollector a = StatisticCollector.a(BaseApplication.getContext());
+  public aiam(GLLittleBoyManager paramGLLittleBoyManager) {}
   
-  public void onResultOverflow(HashMap paramHashMap)
+  public int a(GLLittleBoy paramGLLittleBoy1, GLLittleBoy paramGLLittleBoy2)
   {
-    this.a.a(QQUtils.a(), "actWeaknetProbe", true, 0L, paramHashMap.size(), paramHashMap, "");
+    int i = (int)paramGLLittleBoy1.b().centerY();
+    paramGLLittleBoy1.c = i;
+    int j = (int)paramGLLittleBoy2.b().centerY();
+    paramGLLittleBoy2.c = j;
+    if (i < j) {
+      return -1;
+    }
+    if (i > j) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiam
  * JD-Core Version:    0.7.0.1
  */

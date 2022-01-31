@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
 
-class ahfn
+public class ahfn
   implements Runnable
 {
-  ahfn(ahfl paramahfl) {}
+  public ahfn(RedTouchManager paramRedTouchManager) {}
   
   public void run()
   {
-    this.a.a.c(true);
-    this.a.a.b(false);
+    RedTouchManager.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahfn
  * JD-Core Version:    0.7.0.1
  */

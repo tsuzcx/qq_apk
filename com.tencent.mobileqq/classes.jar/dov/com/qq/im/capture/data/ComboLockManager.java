@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.data;
 
-import amvh;
-import amvi;
-import amvj;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import anlm;
+import anln;
+import anlo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.AppConstants;
@@ -34,7 +34,7 @@ public class ComboLockManager
 {
   public static final String a;
   int jdField_a_of_type_Int = -1;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new amvj(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new anlo(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   ComboLockManager.StoryVideoPublishStatusReceiver jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver;
   public LockedCategory a;
@@ -248,8 +248,8 @@ public class ComboLockManager
     if (this.jdField_a_of_type_DovComQqImCaptureDataLockedCategory != null)
     {
       localObject = BaseApplicationImpl.getContext();
-      amvh localamvh = new amvh(this, (Context)localObject);
-      ThreadManager.getUIHandler().postDelayed(new amvi(this, (Context)localObject, localamvh), 1000L);
+      anlm localanlm = new anlm(this, (Context)localObject);
+      ThreadManager.getUIHandler().postDelayed(new anln(this, (Context)localObject, localanlm), 1000L);
     }
   }
   

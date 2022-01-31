@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hiboom;
 
-import adfd;
-import adfe;
+import adpc;
+import adpd;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.Drawable;
@@ -43,8 +43,8 @@ public class HiBoomManager
   static
   {
     jdField_a_of_type_JavaLangString = HiBoomFont.jdField_a_of_type_JavaLangString + "mine_list.json";
-    jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader = new adfd();
-    jdField_b_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader = new adfe();
+    jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader = new adpc();
+    jdField_b_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader = new adpd();
   }
   
   public HiBoomManager(QQAppInterface paramQQAppInterface)
@@ -242,7 +242,7 @@ public class HiBoomManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomManager
  * JD-Core Version:    0.7.0.1
  */

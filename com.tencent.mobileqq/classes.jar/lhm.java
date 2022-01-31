@@ -1,24 +1,18 @@
-import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraProgressView;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraStatusLayout;
 
 public class lhm
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public lhm(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity, ActionSheet paramActionSheet) {}
+  public lhm(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity.d();
-    }
+    ReadInJoyCameraCaptureActivity.b(this.a, 3);
+    ReadInJoyCameraCaptureActivity.a(this.a).a(ReadInJoyCameraCaptureActivity.a(this.a), ReadInJoyCameraCaptureActivity.b(this.a));
+    ReadInJoyCameraCaptureActivity.a(this.a).setStatus(3);
+    ReadInJoyCameraCaptureActivity.a(this.a);
   }
 }
 

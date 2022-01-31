@@ -24,11 +24,11 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import wxq;
-import wxr;
-import wxs;
-import wxt;
-import wxv;
+import xav;
+import xaw;
+import xax;
+import xay;
+import xba;
 
 public class QWalletSkinHandler
 {
@@ -441,7 +441,7 @@ public class QWalletSkinHandler
     if (paramSkinListener == null) {
       return;
     }
-    this.jdField_a_of_type_MqqAppAppRuntime.runOnUiThread(new wxv(this, paramSkinListener, paramBoolean));
+    this.jdField_a_of_type_MqqAppAppRuntime.runOnUiThread(new xba(this, paramSkinListener, paramBoolean));
   }
   
   private void a(String paramString, int paramInt)
@@ -606,12 +606,12 @@ public class QWalletSkinHandler
     localWalletSkinReq.uin = this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin();
     localWalletSkinReq.type = 1;
     localWalletSkinReq.skinID = paramInt;
-    QWalletCommonServlet.a(localWalletSkinReq, new wxr(this, paramSkinListener));
+    QWalletCommonServlet.a(localWalletSkinReq, new xaw(this, paramSkinListener));
   }
   
   public void a(WalletSkinRsp paramWalletSkinRsp, QWalletSkinHandler.SkinListener paramSkinListener)
   {
-    ThreadManager.post(new wxt(this, paramWalletSkinRsp, paramSkinListener), 5, null, true);
+    ThreadManager.post(new xay(this, paramWalletSkinRsp, paramSkinListener), 5, null, true);
   }
   
   public void a(QWalletSkinHandler.SkinListener paramSkinListener)
@@ -619,7 +619,7 @@ public class QWalletSkinHandler
     WalletSkinReq localWalletSkinReq = new WalletSkinReq();
     localWalletSkinReq.uin = this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin();
     localWalletSkinReq.type = 2;
-    QWalletCommonServlet.a(localWalletSkinReq, new wxq(this, paramSkinListener));
+    QWalletCommonServlet.a(localWalletSkinReq, new xav(this, paramSkinListener));
   }
   
   public void a(boolean paramBoolean)
@@ -662,7 +662,7 @@ public class QWalletSkinHandler
     WalletSkinReq localWalletSkinReq = new WalletSkinReq();
     localWalletSkinReq.uin = this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin();
     localWalletSkinReq.type = 0;
-    QWalletCommonServlet.a(localWalletSkinReq, new wxs(this, paramSkinListener));
+    QWalletCommonServlet.a(localWalletSkinReq, new xax(this, paramSkinListener));
   }
 }
 

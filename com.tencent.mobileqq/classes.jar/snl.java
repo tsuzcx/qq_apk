@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.vas.ClubContentJsonTask;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForceLogoutActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
 
 public class snl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public snl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public snl(ForceLogoutActivity paramForceLogoutActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ClubContentJsonTask.b(this.a.app);
+    this.a.finish();
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
   }
 }
 

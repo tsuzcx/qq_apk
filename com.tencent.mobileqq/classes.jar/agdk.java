@@ -1,44 +1,13 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView.UpdateProfileSetCardTask;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-public class agdk
+class agdk
   implements Runnable
 {
-  public agdk(ProfileHeaderView.UpdateProfileSetCardTask paramUpdateProfileSetCardTask, ProfileHeaderView paramProfileHeaderView) {}
+  agdk(agdj paramagdj, View paramView) {}
   
   public void run()
   {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap != null)
-      {
-        ReportController.b(null, "CliOper", "", "", "card_mall", "0X80066D3", 0, 0, "", "", "", "");
-        View localView = (View)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_JavaUtilHashMap.get("map_key_tips_set_card");
-        TextView localTextView = (TextView)localView.findViewById(2131362857);
-        ImageView localImageView = (ImageView)localView.findViewById(2131370853);
-        Resources localResources = localView.getResources();
-        localTextView.setText(localResources.getString(2131436923));
-        localImageView.setContentDescription(localResources.getString(2131436923));
-        localView.setTag(new DataTag(29, "CLICK_BANNER"));
-        localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a);
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.b.set(true);
-        ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

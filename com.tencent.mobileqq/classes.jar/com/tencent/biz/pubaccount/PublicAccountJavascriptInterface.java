@@ -81,15 +81,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import kyo;
-import kyp;
-import kyq;
-import kyr;
-import kys;
-import kyt;
-import kyu;
-import kyv;
-import kyx;
+import kxz;
+import kya;
+import kyb;
+import kyc;
+import kyd;
+import kye;
+import kyf;
+import kyg;
+import kyi;
 import mqq.app.NewIntent;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -102,7 +102,7 @@ public class PublicAccountJavascriptInterface
   public static final String a;
   protected static HashMap a;
   public Activity a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kyq(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kyb(this);
   private WebUiUtils.WebUiMethodInterface jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebUiMethodInterface;
   private WebUiUtils.WebviewReportSpeedInterface jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebviewReportSpeedInterface;
   protected List a;
@@ -608,13 +608,13 @@ public class PublicAccountJavascriptInterface
     //   101: ldc2_w 309
     //   104: lcmp
     //   105: ifle +63 -> 168
-    //   108: new 312	kyw
+    //   108: new 312	kyh
     //   111: dup
     //   112: aload_0
     //   113: aload_3
     //   114: aload 4
     //   116: aload_2
-    //   117: invokespecial 315	kyw:<init>	(Lcom/tencent/biz/pubaccount/PublicAccountJavascriptInterface;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)V
+    //   117: invokespecial 315	kyh:<init>	(Lcom/tencent/biz/pubaccount/PublicAccountJavascriptInterface;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)V
     //   120: invokestatic 321	com/tencent/mobileqq/app/ThreadManager:executeOnNetWorkThread	(Ljava/lang/Runnable;)V
     //   123: return
     //   124: astore_1
@@ -1140,7 +1140,7 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      ThreadManager.post(new kyv(this, new URL(localCustomWebView.getUrl()), paramString1, paramString2, paramJSONObject), 5, null, false);
+      ThreadManager.post(new kyg(this, new URL(localCustomWebView.getUrl()), paramString1, paramString2, paramJSONObject), 5, null, false);
       return;
     }
     catch (MalformedURLException paramString1) {}
@@ -1454,7 +1454,7 @@ public class PublicAccountJavascriptInterface
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new kyu(this, paramString1, paramString2, paramJSONObject));
+      new Handler(localLooper).post(new kyf(this, paramString1, paramString2, paramJSONObject));
       return;
     }
     b(paramString1, paramString2, paramJSONObject);
@@ -2417,7 +2417,7 @@ public class PublicAccountJavascriptInterface
     JSONObject localJSONObject = new JSONObject();
     if (!TextUtils.isEmpty(paramString1))
     {
-      new kys(this, paramString1, localJSONObject, paramString2).start();
+      new kyd(this, paramString1, localJSONObject, paramString2).start();
       return;
     }
     callJs(paramString2, new String[] { "{ret:-3, response:" + localJSONObject.toString() + "}" });
@@ -2454,7 +2454,7 @@ public class PublicAccountJavascriptInterface
           if (!TextUtils.isEmpty(paramString1)) {
             if (((localObject instanceof BrowserAppInterface)) || (localObject.getClass().getSimpleName().equalsIgnoreCase("ReadInJoyInterfaceProxy")))
             {
-              ThreadManager.executeOnSubThread(new kyp(this, (AppInterface)localObject, paramString1, localJSONObject, paramString2));
+              ThreadManager.executeOnSubThread(new kya(this, (AppInterface)localObject, paramString1, localJSONObject, paramString2));
               return;
             }
           }
@@ -2521,7 +2521,7 @@ public class PublicAccountJavascriptInterface
     this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     if (jdField_a_of_type_Long == 0L) {
-      ThreadManager.executeOnNetWorkThread(new kyo(this));
+      ThreadManager.executeOnNetWorkThread(new kxz(this));
     }
     WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
     if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface))) {
@@ -2686,7 +2686,7 @@ public class PublicAccountJavascriptInterface
       return;
       localCustomWebView = this.mRuntime.a();
     } while (localCustomWebView == null);
-    new Thread(new kyx(this, paramString1, paramString2, localJSONObject, localCustomWebView.getUrl())).start();
+    new Thread(new kyi(this, paramString1, paramString2, localJSONObject, localCustomWebView.getUrl())).start();
   }
   
   public void setNavigationBarStyle(String paramString)
@@ -2776,7 +2776,7 @@ public class PublicAccountJavascriptInterface
     paramString3 = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 0);
     paramString3.setTitle(paramString1);
     paramString3.setMessage(paramString2);
-    paramString1 = new kyr(this, paramString6, paramString5);
+    paramString1 = new kyc(this, paramString6, paramString5);
     if (bool2) {
       paramString3.setNegativeButton("取消", paramString1);
     }
@@ -3053,7 +3053,7 @@ public class PublicAccountJavascriptInterface
       callJs(paramString2, new String[] { "{ret:-3, response:" + localJSONObject.toString() + "}" });
       return;
     }
-    ThreadManager.post(new kyt(this, paramString1, paramString2, localJSONObject), 5, null, false);
+    ThreadManager.post(new kye(this, paramString1, paramString2, localJSONObject), 5, null, false);
   }
 }
 

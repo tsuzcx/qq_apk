@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import afxm;
+import aglo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ReportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new afxm();
+  public static final Parcelable.Creator CREATOR = new aglo();
   public int a;
   public long a;
   public int b;

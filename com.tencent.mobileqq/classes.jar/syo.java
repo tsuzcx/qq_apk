@@ -1,13 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import java.util.List;
 
-public class syo
-  implements View.OnClickListener
+class syo
+  implements Runnable
 {
-  public void onClick(View paramView)
+  syo(syn paramsyn, List paramList) {}
+  
+  public void run()
   {
-    ((ViewGroup)paramView.getParent()).performClick();
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Syn.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Syn.a).a(this.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

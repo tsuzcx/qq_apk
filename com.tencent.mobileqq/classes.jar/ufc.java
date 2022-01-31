@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
+import java.util.Comparator;
 
 public class ufc
-  implements Runnable
+  implements Comparator
 {
-  public ufc(VisitorsActivity paramVisitorsActivity, ScaleAnimation paramScaleAnimation, AlphaAnimation paramAlphaAnimation1, AlphaAnimation paramAlphaAnimation2, AnimationSet paramAnimationSet) {}
+  private ufc(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void run()
+  public int a(TroopTransferActivity.TroopMemberItem paramTroopMemberItem1, TroopTransferActivity.TroopMemberItem paramTroopMemberItem2)
   {
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.reset();
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.reset();
-    this.b.reset();
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.reset();
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.f.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
+    return paramTroopMemberItem1.f.compareToIgnoreCase(paramTroopMemberItem2.f);
   }
 }
 

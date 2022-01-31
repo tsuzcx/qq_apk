@@ -1,18 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class tqg
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public tqg(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public tqg(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8007547", "0X8007547", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
-    this.a.finish();
+    try
+    {
+      if ((RegisterQQNumberActivity.a(this.a) != null) && (RegisterQQNumberActivity.a(this.a).isShowing()))
+      {
+        RegisterQQNumberActivity.a(this.a).dismiss();
+        RegisterQQNumberActivity.a(this.a).cancel();
+      }
+      RegisterQQNumberActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

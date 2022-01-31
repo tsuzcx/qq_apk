@@ -11,17 +11,17 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import tan;
-import tao;
-import tap;
-import taq;
+import tdn;
+import tdo;
+import tdp;
+import tdq;
 
 public class NotifyPCActiveActivity
   extends BaseActivity
 {
   public static NotifyPCActiveActivity a;
   private int jdField_a_of_type_Int;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new taq(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new tdq(this);
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   
   private void a()
@@ -57,19 +57,19 @@ public class NotifyPCActiveActivity
       localObject3 = ((Bundle)localObject3).getString("rButton");
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2130968842);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null).setMessage((CharSequence)localObject2).setPositiveButton((String)localObject3, new tao(this, (CardHandler)localObject1)).setNegativeButton(str, new tan(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null).setMessage((CharSequence)localObject2).setPositiveButton((String)localObject3, new tdo(this, (CardHandler)localObject1)).setNegativeButton(str, new tdn(this));
       continue;
       localObject2 = getIntent().getExtras();
       localObject1 = ((Bundle)localObject2).getString("Message");
       localObject2 = ((Bundle)localObject2).getString("button");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setMessage((CharSequence)localObject1).setPositiveButton((String)localObject2, new tap(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setMessage((CharSequence)localObject1).setPositiveButton((String)localObject2, new tdp(this));
     }
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969140);
+    super.setContentView(2130969139);
     jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity = this;
     this.jdField_a_of_type_Int = getIntent().getIntExtra("type", 0);
     paramBundle = getIntent().getAction();

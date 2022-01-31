@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ArkPassiveSearchInfo;
-import com.tencent.mobileqq.ark.ArkRecommendLogic.SemanticAnalysisResult;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import java.util.ArrayList;
 
-class aaqz
-  implements Runnable
+public class aaqz
+  extends ArkAppCGI.ArkAppCGICallback
 {
-  aaqz(aaqy paramaaqy, ArkMessageServerLogic.ArkPassiveSearchInfo paramArkPassiveSearchInfo) {}
+  public aaqz(ArkActionAppMgr paramArkActionAppMgr) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Object paramObject, ArrayList paramArrayList1, ArrayList paramArrayList2)
   {
-    if (this.jdField_a_of_type_Aaqy.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      ArkAppCenter.b("ArkApp.ArkRecommendLogic", String.format("passiveSearchText, this is null, return", new Object[0]));
-    }
-    ArkRecommendLogic.SemanticAnalysisResult localSemanticAnalysisResult;
-    do
-    {
-      return;
-      localSemanticAnalysisResult = (ArkRecommendLogic.SemanticAnalysisResult)this.jdField_a_of_type_Aaqy.b.get();
-    } while (localSemanticAnalysisResult == null);
-    localSemanticAnalysisResult.a(this.jdField_a_of_type_Aaqy.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$ArkPassiveSearchInfo);
+    ThreadManager.post(new aara(this, paramObject, paramBoolean, paramArrayList1, paramArrayList2), 5, null, true);
   }
 }
 

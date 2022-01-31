@@ -1,25 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.view.Window;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
 public class kni
-  implements AsyncBack
+  implements View.OnLayoutChangeListener
 {
-  public kni(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public kni(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
+    paramInt1 = this.a.getWindow().getDecorView().getBottom() - this.a.getWindow().getDecorView().getTop();
+    if (paramInt1 != this.a.b) {
+      LebaSearchPluginManagerActivity.a(this.a, paramInt1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
-    }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
   }
 }
 

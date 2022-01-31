@@ -1,16 +1,15 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.AIOInputTypeHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-public final class ugj
-  implements Runnable
+public class ugj
+  implements DialogInterface.OnDismissListener
 {
-  public ugj(QQAppInterface paramQQAppInterface) {}
+  public ugj(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    AIOInputTypeHelper.a(this.a).edit().putBoolean("ptt_guide_have_show", false).commit();
+    this.a.finish();
   }
 }
 

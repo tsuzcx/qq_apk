@@ -1,31 +1,22 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
+import cooperation.dingdong.data.OfficeCenterSharedPref;
 
-class ahxn
+public class ahxn
   implements Runnable
 {
-  ahxn(ahxm paramahxm) {}
+  public ahxn(MessagePBElemDecoder paramMessagePBElemDecoder) {}
   
   public void run()
   {
-    try
-    {
-      if (this.a.a.a != null) {
-        this.a.a.a.start();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "onCompletion: " + QLog.getStackTraceString(localException));
+    if (!OfficeCenterSharedPref.a().a(MessagePBElemDecoder.a(this.a).getCurrentAccountUin() + "officecenter_receive_schedule_message", false)) {
+      OfficeCenterSharedPref.a().b(MessagePBElemDecoder.a(this.a).getCurrentAccountUin() + "officecenter_receive_schedule_message", true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxn
  * JD-Core Version:    0.7.0.1
  */

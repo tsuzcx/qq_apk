@@ -96,11 +96,11 @@ public class LBSHandler
   
   public static Dialog a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramString = DialogUtil.b(paramContext, 230, null, paramString, 2131432998, 2131433630, paramOnClickListener1, paramOnClickListener2);
+    paramString = DialogUtil.b(paramContext, 230, null, paramString, 2131433015, 2131433647, paramOnClickListener1, paramOnClickListener2);
     if (paramString != null)
     {
-      ((TextView)paramString.findViewById(2131364027)).setVisibility(8);
-      paramOnClickListener1 = (TextView)paramString.findViewById(2131362758);
+      ((TextView)paramString.findViewById(2131364051)).setVisibility(8);
+      paramOnClickListener1 = (TextView)paramString.findViewById(2131362776);
       paramOnClickListener2 = new LinearLayout.LayoutParams(-2, -2);
       paramOnClickListener2.gravity = 17;
       paramOnClickListener1.setLayoutParams(paramOnClickListener2);
@@ -748,7 +748,7 @@ public class LBSHandler
         localObject1 = new cmd0x7f5.GPS();
         ((cmd0x7f5.GPS)localObject1).uint32_latitude.set(paramInt1);
         ((cmd0x7f5.GPS)localObject1).uint32_longitude.set(paramInt2);
-        ((cmd0x7f5.GPS)localObject1).bytes_client_version.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+        ((cmd0x7f5.GPS)localObject1).bytes_client_version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
         ((cmd0x7f5.GPS)localObject1).uint32_client.set(2);
         ((cmd0x7f5.ReqBody)localObject2).msg_gps.set((MessageMicro)localObject1);
         localObject1 = new oidb_sso.OIDBSSOPkg();

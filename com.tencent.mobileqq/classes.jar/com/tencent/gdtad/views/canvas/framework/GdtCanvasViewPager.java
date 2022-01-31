@@ -8,41 +8,40 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
 import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.statistics.GdtTimeStatistics;
-import com.tencent.gdtad.views.GdtViewLoadListener;
 import com.tencent.gdtad.views.canvas.GdtCanvasData;
 import com.tencent.gdtad.views.viewpager.GdtVerticalViewPager;
 import com.tencent.gdtad.views.viewpager.GdtViewPagerAdapter;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import qjw;
-import qjx;
-import qjy;
-import qjz;
+import qmk;
+import qml;
+import qmm;
+import qmn;
 
 public class GdtCanvasViewPager
   extends GdtVerticalViewPager
-  implements GdtViewLoadListener, GdtCanvasScrollView.OnScrollEventListener
+  implements GdtCanvasScrollView.OnScrollEventListener
 {
-  protected GdtTimeStatistics a;
-  private GdtCanvasData jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private Set jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = true;
+  private WeakReference a;
   
   public GdtCanvasViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics = new GdtTimeStatistics();
-    h();
+    g();
+  }
+  
+  private GdtCanvasData a()
+  {
+    if ((this.a != null) && (this.a.get() != null) && (((GdtCanvasViewListener)this.a.get()).a() != null) && (((GdtCanvasViewListener)this.a.get()).a().isValid())) {
+      return ((GdtCanvasViewListener)this.a.get()).a();
+    }
+    return null;
   }
   
   private GdtCanvasPageView a(GdtCanvasPageData paramGdtCanvasPageData)
   {
-    paramGdtCanvasPageData = new GdtCanvasPageView(getContext(), new WeakReference(this), paramGdtCanvasPageData);
+    paramGdtCanvasPageData = new GdtCanvasPageView(getContext(), this.a, paramGdtCanvasPageData);
     paramGdtCanvasPageData.setListener(this);
     return paramGdtCanvasPageData;
   }
@@ -50,28 +49,36 @@ public class GdtCanvasViewPager
   private List a()
   {
     ArrayList localArrayList = new ArrayList();
-    if ((this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData != null) && (this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.pages != null))
+    if (a() != null)
     {
-      int j = this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.pages.size();
       int i = 0;
+      int j = a().getSize();
       while (i < j)
       {
-        localArrayList.add(a((GdtCanvasPageData)this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.pages.get(i)));
+        localArrayList.add(a(a().getPage(i)));
         i += 1;
       }
     }
     return localArrayList;
   }
   
+  private void f()
+  {
+    List localList = a();
+    GdtViewPagerAdapter localGdtViewPagerAdapter = new GdtViewPagerAdapter();
+    localGdtViewPagerAdapter.a(localList);
+    setAdapter(localGdtViewPagerAdapter);
+  }
+  
   @TargetApi(9)
-  private void h()
+  private void g()
   {
     if (Build.VERSION.SDK_INT >= 9) {
       setOverScrollMode(2);
     }
   }
   
-  private void i()
+  private void h()
   {
     int i = 0;
     while (i < a())
@@ -79,20 +86,6 @@ public class GdtCanvasViewPager
       a(i).d();
       i += 1;
     }
-  }
-  
-  private void j()
-  {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics == null)) {
-      GdtLog.d("GdtCanvasViewPager", "notifyLoaded error");
-    }
-    long l;
-    do
-    {
-      return;
-      l = this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a();
-    } while (l < 0L);
-    ((GdtViewLoadListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this, l, this.jdField_a_of_type_Boolean);
   }
   
   public int a()
@@ -118,7 +111,7 @@ public class GdtCanvasViewPager
       getCurrentItem();
       int i = getCurrentItem() + 1;
       a(i).scrollTo(0, 0);
-      postDelayed(new qjy(this, i), 100L);
+      postDelayed(new qmm(this, i), 100L);
     }
   }
   
@@ -129,41 +122,10 @@ public class GdtCanvasViewPager
     }
   }
   
-  public void a(GdtCanvasData paramGdtCanvasData)
-  {
-    if ((paramGdtCanvasData == null) || (!paramGdtCanvasData.isValid())) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData = paramGdtCanvasData;
-    f();
-    paramGdtCanvasData = a();
-    GdtViewPagerAdapter localGdtViewPagerAdapter = new GdtViewPagerAdapter();
-    localGdtViewPagerAdapter.a(paramGdtCanvasData);
-    setAdapter(localGdtViewPagerAdapter);
-  }
-  
-  public void a(GdtCanvasPageView paramGdtCanvasPageView, long paramLong, boolean paramBoolean)
-  {
-    if ((paramGdtCanvasPageView == null) || (paramGdtCanvasPageView.a() == null) || (!paramGdtCanvasPageView.a().isValid()) || (paramLong < 0L) || (this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData == null) || (!this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.isValid())) {
-      GdtLog.d("GdtCanvasViewPager", "onLoad error");
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_JavaUtilSet == null);
-      this.jdField_a_of_type_Boolean &= paramBoolean;
-      this.jdField_a_of_type_JavaUtilSet.add(paramGdtCanvasPageView.a().id);
-    } while (this.jdField_a_of_type_JavaUtilSet.size() != this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.pages.size());
-    g();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilSet = null;
-  }
-  
   public void a(WeakReference paramWeakReference)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.a = paramWeakReference;
+    f();
   }
   
   public boolean a()
@@ -193,7 +155,7 @@ public class GdtCanvasViewPager
       getCurrentItem();
       int i = getCurrentItem() - 1;
       a(i).fullScroll(130);
-      postDelayed(new qjz(this, i), 100L);
+      postDelayed(new qmn(this, i), 100L);
     }
   }
   
@@ -225,45 +187,40 @@ public class GdtCanvasViewPager
       a(i).c();
       i += 1;
     }
-    i();
-  }
-  
-  protected void f()
-  {
-    if (this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics != null) {
-      this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a();
-    }
-  }
-  
-  protected void g()
-  {
-    if (this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics != null) {
-      this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.b();
-    }
-    j();
-    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics = null;
+    h();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    return false;
+    try
+    {
+      super.onInterceptTouchEvent(paramMotionEvent);
+      return false;
+    }
+    catch (Throwable paramMotionEvent)
+    {
+      for (;;)
+      {
+        GdtLog.d("GdtCanvasViewPager", "onInterceptTouchEvent", paramMotionEvent);
+      }
+    }
   }
   
   public void setCurrentItem(int paramInt)
   {
     super.setCurrentItem(paramInt);
-    postDelayed(new qjw(this), 200L);
+    postDelayed(new qmk(this), 200L);
   }
   
   public void setCurrentItem(int paramInt, boolean paramBoolean)
   {
     super.setCurrentItem(paramInt, paramBoolean);
-    postDelayed(new qjx(this), 200L);
+    postDelayed(new qml(this), 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.framework.GdtCanvasViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,14 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class veg
-  implements View.OnClickListener
+class veg
+  implements Runnable
 {
-  public veg(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg) {}
+  veg(vee paramvee) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData;
-    int i = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uinType;
-    if (!TextUtils.isEmpty(paramView))
-    {
-      paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, paramView);
-      if (paramView != null)
-      {
-        paramView.a("webview");
-        paramView.a("uin_type", i + "");
-        paramView.b();
-      }
-    }
+    QQToast.a(this.a.a.a.a, "图片已过期或被删除", 0).a();
   }
 }
 

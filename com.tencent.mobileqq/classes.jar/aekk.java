@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
 
 public class aekk
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public aekk(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aekk(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void onClick(View paramView) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
+      MusicGeneWebViewPlugin.a(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aekk
  * JD-Core Version:    0.7.0.1
  */

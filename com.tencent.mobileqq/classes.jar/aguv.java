@@ -1,26 +1,61 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.gesture.GLGestureProxy;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
 public class aguv
   implements Runnable
 {
-  public aguv(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public aguv(QCallDetailActivity paramQCallDetailActivity) {}
   
   public void run()
   {
-    DanceLog.a("EffectsFragment", "readySceneBegin begin exe...");
-    this.a.a = false;
-    this.a.h();
-    EffectsCameraCaptureFragment.g(this.a, true);
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(0);
-    EffectsCameraCaptureFragment.a(this.a).setEnabled(true);
-    DanceLog.a("EffectsFragment", "readySceneBegin end exe...");
-    boolean bool = GLGestureProxy.a().a(EffectsCameraCaptureFragment.a(this.a));
-    DanceLog.a("EffectsFragment", "readySceneBegin end hasDanceListener=" + bool);
-    if (!bool) {
-      GLGestureProxy.a().a(EffectsCameraCaptureFragment.a(this.a));
+    int k = 0;
+    if (this.a.app == null) {
+      break label12;
+    }
+    label12:
+    label142:
+    label159:
+    for (;;)
+    {
+      return;
+      if (QCallDetailActivity.a(this.a, QCallDetailActivity.a(this.a)))
+      {
+        Object localObject = MsgProxyUtils.q;
+        int m = localObject.length;
+        int i = 0;
+        int j = k;
+        if (i < m)
+        {
+          j = localObject[i];
+          if (QCallDetailActivity.a(this.a) == j) {
+            j = 1;
+          }
+        }
+        else
+        {
+          if (j == 0) {
+            break;
+          }
+          localObject = (PhoneContactManager)this.a.app.getManager(10);
+          if (localObject != null) {
+            break label142;
+          }
+        }
+        for (localObject = null;; localObject = ((PhoneContactManager)localObject).c(QCallDetailActivity.a(this.a)))
+        {
+          if (localObject == null) {
+            break label159;
+          }
+          QCallDetailActivity.a(this.a).a(((PhoneContact)localObject).mobileCode, 1006, QCallDetailActivity.a(this.a), QCallDetailActivity.a(this.a));
+          return;
+          i += 1;
+          break;
+        }
+      }
     }
   }
 }

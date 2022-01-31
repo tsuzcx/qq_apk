@@ -1,21 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsScrollLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsScrollLayout.ContentLayoutListener;
 
 public class meo
-  implements DialogInterface.OnShowListener
+  implements Runnable
 {
-  public meo(VideoShareHelper paramVideoShareHelper) {}
+  public meo(VideoFeedsScrollLayout paramVideoFeedsScrollLayout) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
+    if (VideoFeedsScrollLayout.a(this.a) != null) {
+      VideoFeedsScrollLayout.a(this.a).a();
     }
-    VideoShareHelper.b(this.a).getWindow().clearFlags(8);
   }
 }
 

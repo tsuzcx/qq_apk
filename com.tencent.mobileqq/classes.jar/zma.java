@@ -1,89 +1,14 @@
-import com.tencent.mobileqq.app.UniteSearchHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.tencent.mobileqq.app.RecommendTroopManagerImp;
+import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.RspBody;
 
 public class zma
   implements Runnable
 {
-  public zma(UniteSearchHandler paramUniteSearchHandler, String paramString, Object paramObject) {}
+  public zma(RecommendTroopManagerImp paramRecommendTroopManagerImp, long paramLong, oidb_0x9fb.RspBody paramRspBody) {}
   
   public void run()
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    for (;;)
-    {
-      try
-      {
-        localFileOutputStream = BaseApplication.getContext().openFileOutput(this.jdField_a_of_type_JavaLangString, 0);
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        localFileOutputStream.write((byte[])this.jdField_a_of_type_JavaLangObject);
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        localFileOutputStream.flush();
-      }
-      catch (IOException localIOException4)
-      {
-        FileOutputStream localFileOutputStream;
-        localObject3 = localIOException1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject3 = localIOException1;
-        QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException4));
-        if (localIOException1 == null) {
-          continue;
-        }
-        try
-        {
-          localIOException1.close();
-          return;
-        }
-        catch (IOException localIOException2) {}
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException2));
-        return;
-      }
-      finally
-      {
-        if (localObject3 == null) {
-          break label126;
-        }
-      }
-      try
-      {
-        localFileOutputStream.close();
-        return;
-      }
-      catch (IOException localIOException1)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException1));
-          return;
-        }
-      }
-    }
-    try
-    {
-      localObject3.close();
-      label126:
-      throw localObject2;
-    }
-    catch (IOException localIOException3)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException3));
-        }
-      }
-    }
+    RecommendTroopManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppRecommendTroopManagerImp, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x9fbOidb_0x9fb$RspBody);
   }
 }
 

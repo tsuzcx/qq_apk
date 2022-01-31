@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.tips.MovieTicketTipsBar;
 
 public class wdc
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wdc(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment, int paramInt) {}
+  public wdc(MovieTicketTipsBar paramMovieTicketTipsBar) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_Long, 20);
-    if (localList != null) {
-      ThreadManager.getUIHandler().post(new wdd(this, localList));
-    }
+    paramView = new Intent(MovieTicketTipsBar.a(this.a), QQBrowserActivity.class);
+    paramView.putExtra("url", MovieTicketTipsBar.a(this.a));
+    MovieTicketTipsBar.a(this.a).startActivity(paramView);
   }
 }
 

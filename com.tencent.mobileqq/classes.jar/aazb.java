@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
-import com.tencent.mobileqq.armap.ipc.IAsyncObserver;
-import eipc.EIPCResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class aazb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aazb(ArMapIPCProxy paramArMapIPCProxy, IAsyncObserver paramIAsyncObserver, String paramString, EIPCResult paramEIPCResult) {}
+  public aazb(ARMapActivity paramARMapActivity) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArmapIpcIAsyncObserver.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

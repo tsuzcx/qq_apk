@@ -1,42 +1,34 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
+import com.tencent.mobileqq.leba.LebaFeedsVideoSdkInstaller;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class adzb
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public adzb(NearbyLikeLimitManager paramNearbyLikeLimitManager, boolean paramBoolean, String paramString1, NearbyLikeLimitManager.onDoVoteListener paramonDoVoteListener, QQAppInterface paramQQAppInterface, String paramString2, Activity paramActivity) {}
+  public adzb(LebaFeedsVideoSdkInstaller paramLebaFeedsVideoSdkInstaller) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.b();
-      if (!this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a()) {
-        break label104;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0, 1);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager$onDoVoteListener.a(this.jdField_a_of_type_JavaLangString, false);
-      NearbyLikeLimitManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "pay_like", this.jdField_a_of_type_JavaLangString, this.b, "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("LebaFeedsVideoSdkInstaller", 2, "start install video sdk in subThread");
     }
-    for (;;)
+    try
     {
-      NearbyLikeLimitManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_no_warm", this.b);
+      if (LebaFeedsVideoSdkInstaller.a(this.a) != null) {
+        TVK_SDKMgr.installPlugin(LebaFeedsVideoSdkInstaller.a(this.a), new adzd(LebaFeedsVideoSdkInstaller.a(this.a)));
+      }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.c();
-      break;
-      label104:
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a(this.jdField_a_of_type_AndroidAppActivity, this.b);
-      NearbyLikeLimitManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "exp_pay", this.b);
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("LebaFeedsVideoSdkInstaller", 2, "TVK_SDKMgr.installPlugin ERROR e=" + localException.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import java.util.Comparator;
 
-public class akbc
-  implements Runnable
+public final class akbc
+  implements Comparator
 {
-  public akbc(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
-  
-  public void run()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    this.a.c();
-    this.a.b(null);
+    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
+    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
+    if (l1 == l2) {
+      return 0;
+    }
+    if (l1 < l2) {
+      return 2;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akbc
  * JD-Core Version:    0.7.0.1
  */

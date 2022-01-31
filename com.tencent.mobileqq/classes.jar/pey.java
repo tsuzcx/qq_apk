@@ -1,41 +1,20 @@
-import com.tencent.component.media.image.ImageManager;
-import java.io.File;
-import java.util.Comparator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
 
-public final class pey
-  implements Comparator
+public class pey
+  implements View.OnClickListener
 {
-  public int a(File paramFile1, File paramFile2)
+  public pey(AbstractImageListScene paramAbstractImageListScene) {}
+  
+  public void onClick(View paramView)
   {
-    String str = paramFile1.getName();
-    Integer localInteger2 = (Integer)ImageManager.b().get(str);
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null)
-    {
-      localInteger1 = Integer.valueOf((int)(paramFile1.lastModified() / 1000L));
-      ImageManager.b().put(str, localInteger1);
-    }
-    str = paramFile2.getName();
-    localInteger2 = (Integer)ImageManager.b().get(str);
-    paramFile1 = localInteger2;
-    if (localInteger2 == null)
-    {
-      paramFile1 = Integer.valueOf((int)(paramFile2.lastModified() / 1000L));
-      ImageManager.b().put(str, paramFile1);
-    }
-    if (localInteger1.intValue() > paramFile1.intValue()) {
-      return -1;
-    }
-    if (localInteger1.intValue() < paramFile1.intValue()) {
-      return 1;
-    }
-    return 0;
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pey
  * JD-Core Version:    0.7.0.1
  */

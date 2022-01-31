@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.shortvideo.ml.decisiontree.ID3.ImpurityFunction;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class ahol
-  extends ID3.ImpurityFunction
+public class ahol
+  implements Handler.Callback
 {
-  public double a(int paramInt1, int paramInt2)
+  public ahol(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  
+  public boolean handleMessage(Message paramMessage)
   {
-    double d2 = paramInt1 / (paramInt1 + paramInt2);
-    double d3 = paramInt2 / (paramInt1 + paramInt2);
-    double d1 = 0.0D;
-    if (paramInt1 > 0)
+    switch (paramMessage.what)
     {
-      d1 = -d2;
-      d1 = 0.0D + Math.log(d2) * d1;
+    default: 
+      return false;
     }
-    d2 = d1;
-    if (paramInt2 > 0) {
-      d2 = d1 + -d3 * Math.log(d3);
+    if (!NeoVideoFilterPlayView.a(this.a))
+    {
+      this.a.requestRender();
+      return true;
     }
-    return d2 / Math.log(2.0D);
+    NeoVideoFilterPlayView.a(this.a).set(true);
+    SLog.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
+    return true;
   }
 }
 

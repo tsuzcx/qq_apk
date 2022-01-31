@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.widget.ImageView;
 
-public class snk
-  implements Runnable
+class snk
 {
-  public snk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  String jdField_a_of_type_JavaLangString;
+  sni jdField_a_of_type_Sni;
   
-  public void run()
-  {
-    this.a.H();
-    this.a.J();
-  }
+  snk(snj paramsnj) {}
 }
 
 

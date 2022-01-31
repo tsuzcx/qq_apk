@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
 
 class wby
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  wby(wbw paramwbw) {}
+  wby(wbx paramwbx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.a.a.a(StickerBubbleAnimationViewHolder.a(this.a.a));
   }
 }
 

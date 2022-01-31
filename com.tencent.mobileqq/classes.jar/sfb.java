@@ -1,49 +1,63 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RegisterProxySvcPackObserver;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.util.TroopReportor;
 
 public class sfb
-  extends RegisterProxySvcPackObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public sfb(Conversation paramConversation) {}
+  public sfb(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(int paramInt, long paramLong1, long paramLong2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onSelfPcOnlineStatusBanner int iState = " + paramInt + ", long clientType = " + paramLong1 + ", long appId" + paramLong2);
+    if (((Boolean)paramCompoundButton.getTag()).booleanValue()) {
+      paramCompoundButton.setTag(Boolean.FALSE);
     }
-    if (paramInt == 1)
+    label20:
+    int i;
+    do
     {
-      if (paramLong1 == 77313L)
+      do
       {
-        if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.c)
+        break label20;
+        do
         {
-          SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_pc_banner_shared_pre_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.d = localSharedPreferences.getBoolean("tim_pc_banner_switch", false);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.c = true;
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.d) {
-          break label165;
-        }
+          return;
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null);
+        i = this.a.app.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      } while (i == -1);
+      if (!paramBoolean) {
+        break;
       }
-      label165:
-      while (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Boolean) {
-        return;
+    } while (i != 1);
+    ChatSettingForTroop.a(this.a, 4);
+    label74:
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean)
+    {
+      paramCompoundButton = "msg_open";
+      label90:
+      ReportController.b(localQQAppInterface, "dc00899", "Grp_msg", "", "Grp_data", paramCompoundButton, 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
+      if (!paramBoolean) {
+        break label192;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(9, 2);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Long = paramLong1;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a = paramLong2;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800887F", "0X800887F", 0, 0, "", "", "", "");
-      return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.b();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Boolean = false;
+    label192:
+    for (paramCompoundButton = "msg_open";; paramCompoundButton = "msg_close")
+    {
+      TroopReportor.a("Grp_msg", "grpData_admin", paramCompoundButton, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, TroopReportor.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
+      return;
+      if (i == 1) {
+        break;
+      }
+      ChatSettingForTroop.a(this.a, 1);
+      break label74;
+      paramCompoundButton = "msg_close";
+      break label90;
+    }
   }
 }
 

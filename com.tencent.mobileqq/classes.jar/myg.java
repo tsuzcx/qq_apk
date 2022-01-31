@@ -1,13 +1,15 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 class myg
   implements Runnable
 {
-  myg(myf parammyf) {}
+  myg(mye parammye) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
+    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null)) {
+      PublicAccountImageCollectionMainActivity.a(this.a.a).b(true);
+    }
   }
 }
 

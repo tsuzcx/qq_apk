@@ -2,8 +2,8 @@ package dov.com.tencent.mobileqq.shortvideo.musicwavesupport;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import anzy;
-import anzz;
+import aoqd;
+import aoqe;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -12,9 +12,9 @@ public class MusicWaveformManager
 {
   private int jdField_a_of_type_Int;
   private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private MusicSoundFile.ProgressListener jdField_a_of_type_DovComTencentMobileqqShortvideoMusicwavesupportMusicSoundFile$ProgressListener = new anzy(this);
+  private MusicSoundFile.ProgressListener jdField_a_of_type_DovComTencentMobileqqShortvideoMusicwavesupportMusicSoundFile$ProgressListener = new aoqd(this);
   private MusicSoundFile jdField_a_of_type_DovComTencentMobileqqShortvideoMusicwavesupportMusicSoundFile;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new anzz(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aoqe(this);
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   private boolean c;

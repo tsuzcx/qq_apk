@@ -1,22 +1,36 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
+import com.tencent.mobileqq.activity.richmedia.QzoneSyncQQStoryTool;
 
 public class odh
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public odh(EditVideoGuide paramEditVideoGuide) {}
+  public odh(EditPicQzonePublishActivity paramEditPicQzonePublishActivity, long paramLong) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.h();
-    this.a.a.a(0);
+    boolean bool = true;
+    if (EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity))
+    {
+      EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity).setSelected(false);
+      paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity;
+      if (EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity)) {
+        break label73;
+      }
+    }
+    for (;;)
+    {
+      EditPicQzonePublishActivity.b(paramView, bool);
+      QzoneSyncQQStoryTool.a(this.jdField_a_of_type_Long, EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity));
+      return;
+      EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity).setSelected(true);
+      break;
+      label73:
+      bool = false;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

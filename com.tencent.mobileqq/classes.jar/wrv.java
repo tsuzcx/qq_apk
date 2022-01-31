@@ -1,53 +1,39 @@
+import android.content.Context;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.messagesearch.MessageItem;
+import com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.widget.XListView;
 
 public class wrv
-  implements BaseActivityView.IPhoneContext
+  implements AdapterView.OnItemLongClickListener
 {
-  public wrv(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public wrv(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public View a()
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return this.a.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ImageView a()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    return this.a.leftView;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public View b()
-  {
-    return this.a.b;
-  }
-  
-  public TextView b()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public TextView c()
-  {
-    return this.a.centerView;
-  }
-  
-  public TextView d()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetTextView;
+    if (QLog.isColorLevel()) {
+      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onLongClick, position = " + paramInt);
+    }
+    paramAdapterView = this.a.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
+    if (paramAdapterView == this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem = ((MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.getItem(paramInt));
+      paramView.setSelected(true);
+      paramAdapterView = new QQCustomMenu();
+      paramAdapterView.a(2131375573, "复制", 2130838305);
+      paramAdapterView.a(2131363517, this.a.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
+      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, paramAdapterView, MessageSearchDialog.a(this.a), new wrw(this, paramView));
+    }
+    while (paramAdapterView != this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {
+      return true;
+    }
+    return true;
   }
 }
 

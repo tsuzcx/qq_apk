@@ -1,60 +1,19 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.Calendar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
+import com.tencent.biz.ui.PopupMenu;
 
 public class ozx
-  implements IphonePickerView.PickerViewAdapter
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  public ozx(PopupMenu paramPopupMenu, String paramString, int paramInt) {}
   
-  public ozx(NewerGuidePlugin paramNewerGuidePlugin, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt < 1897)
-    {
-      paramNewerGuidePlugin = Calendar.getInstance();
-      paramNewerGuidePlugin.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-      this.jdField_a_of_type_Int = paramNewerGuidePlugin.get(1);
-      return;
+    if (this.jdField_a_of_type_ComTencentBizUiPopupMenu.a != null) {
+      this.jdField_a_of_type_ComTencentBizUiPopupMenu.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
     }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int getColumnCount()
-  {
-    return 3;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.jdField_a_of_type_Int - 1897 + 1;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897);
-    localCalendar.set(2, NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1897 + "年";
-    case 1: 
-      return paramInt2 + 1 + "月";
-    }
-    return paramInt2 + 1 + "日";
+    paramView.post(new ozy(this));
   }
 }
 

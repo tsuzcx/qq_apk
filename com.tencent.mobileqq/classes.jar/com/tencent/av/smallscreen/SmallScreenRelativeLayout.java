@@ -20,7 +20,7 @@ import android.widget.RelativeLayout;
 import com.tencent.av.AVLog;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import jpb;
+import jom;
 
 public class SmallScreenRelativeLayout
   extends RelativeLayout
@@ -30,7 +30,7 @@ public class SmallScreenRelativeLayout
   ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   Display jdField_a_of_type_AndroidViewDisplay;
   SmallScreenRelativeLayout.FloatListener jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener;
-  jpb jdField_a_of_type_Jpb = null;
+  jom jdField_a_of_type_Jom = null;
   boolean jdField_a_of_type_Boolean = false;
   final int jdField_b_of_type_Int;
   ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
@@ -72,11 +72,11 @@ public class SmallScreenRelativeLayout
       QLog.d("SmallScreenRelativeLayout", 2, "SmallScreenRelativeLayout");
     }
     this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.e = getResources().getDimensionPixelSize(2131559923);
-    this.f = getResources().getDimensionPixelSize(2131559924);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131559898);
+    this.e = getResources().getDimensionPixelSize(2131559941);
+    this.f = getResources().getDimensionPixelSize(2131559942);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131559916);
     this.g = getResources().getDimensionPixelSize(2131558448);
-    this.h = getResources().getDimensionPixelSize(2131559930);
+    this.h = getResources().getDimensionPixelSize(2131559948);
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
@@ -87,7 +87,7 @@ public class SmallScreenRelativeLayout
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
     this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     this.p = b();
-    this.jdField_a_of_type_Jpb = new jpb(this, getContext(), 2);
+    this.jdField_a_of_type_Jom = new jom(this, getContext(), 2);
   }
   
   private int b()
@@ -478,7 +478,7 @@ public class SmallScreenRelativeLayout
       QLog.d("SmallScreenRelativeLayout", 2, "onCreate");
     }
     this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Jpb.enable();
+    this.jdField_a_of_type_Jom.enable();
   }
   
   public void c()
@@ -487,7 +487,7 @@ public class SmallScreenRelativeLayout
       QLog.d("SmallScreenRelativeLayout", 2, "onDestroy");
     }
     this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener = null;
-    this.jdField_a_of_type_Jpb.disable();
+    this.jdField_a_of_type_Jom.disable();
   }
   
   public void d()

@@ -1,24 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
 
-public class anef
-  extends SimpleJob
+public final class anef
+  implements Parcelable.Creator
 {
-  public anef(EditVideoPartManager paramEditVideoPartManager) {}
-  
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public RedTouchExtendButton.RedInfo a(Parcel paramParcel)
   {
-    VideoEditReport.a("0X80076BC");
-    return null;
+    return new RedTouchExtendButton.RedInfo(paramParcel);
+  }
+  
+  public RedTouchExtendButton.RedInfo[] a(int paramInt)
+  {
+    return new RedTouchExtendButton.RedInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anef
  * JD-Core Version:    0.7.0.1
  */

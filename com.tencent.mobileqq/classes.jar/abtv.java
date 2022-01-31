@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerRecallListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
 
-public class abtv
-  implements EmojiStickerManager.StickerRecallListener
+public final class abtv
+  implements Parcelable.Creator
 {
-  public abtv(MessengerService paramMessengerService) {}
-  
-  public void a(boolean paramBoolean)
+  public IPSiteModel.Book a(Parcel paramParcel)
   {
-    if (this.a.a != null) {
-      EmojiStickerManager.a().a(this.a.a, paramBoolean);
-    }
+    IPSiteModel.Book localBook = new IPSiteModel.Book();
+    localBook.cover = paramParcel.readString();
+    localBook.desc = paramParcel.readString();
+    localBook.id = paramParcel.readString();
+    localBook.jumpUrl = paramParcel.readString();
+    localBook.name = paramParcel.readString();
+    localBook.recommDesc = paramParcel.readString();
+    localBook.authorName = paramParcel.readString();
+    return localBook;
+  }
+  
+  public IPSiteModel.Book[] a(int paramInt)
+  {
+    return new IPSiteModel.Book[paramInt];
   }
 }
 

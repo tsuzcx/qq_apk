@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
-import ajlh;
-import ajli;
+import ajzm;
+import ajzn;
 import android.graphics.Bitmap;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -24,7 +24,7 @@ public abstract class FaceDecodeTask
   protected static Object a;
   public static ArrayList a;
   protected static MqqHandler a;
-  protected static ajli[] a;
+  protected static ajzn[] a;
   protected static Thread[] a;
   protected static int b;
   public static ArrayList b;
@@ -123,18 +123,18 @@ public abstract class FaceDecodeTask
         if (jdField_a_of_type_MqqOsMqqHandler != null) {
           jdField_a_of_type_MqqOsMqqHandler.removeMessages(jdField_a_of_type_Int);
         }
-        if (jdField_a_of_type_ArrayOfAjli != null)
+        if (jdField_a_of_type_ArrayOfAjzn != null)
         {
           i = 0;
-          if (i < jdField_a_of_type_ArrayOfAjli.length)
+          if (i < jdField_a_of_type_ArrayOfAjzn.length)
           {
-            if (jdField_a_of_type_ArrayOfAjli[i] != null) {
-              jdField_a_of_type_ArrayOfAjli[i].a();
+            if (jdField_a_of_type_ArrayOfAjzn[i] != null) {
+              jdField_a_of_type_ArrayOfAjzn[i].a();
             }
           }
           else
           {
-            jdField_a_of_type_ArrayOfAjli = null;
+            jdField_a_of_type_ArrayOfAjzn = null;
             jdField_a_of_type_ArrayOfJavaLangThread = null;
           }
         }
@@ -167,7 +167,7 @@ public abstract class FaceDecodeTask
           if (jdField_a_of_type_ArrayOfJavaLangThread == null)
           {
             jdField_a_of_type_AndroidOsLooper = Looper.getMainLooper();
-            jdField_a_of_type_MqqOsMqqHandler = new ajlh(jdField_a_of_type_AndroidOsLooper);
+            jdField_a_of_type_MqqOsMqqHandler = new ajzm(jdField_a_of_type_AndroidOsLooper);
             String str = BaseApplicationImpl.processName;
             d();
             if (jdField_a_of_type_ComTencentMobileqqUtilFaceDecodeTask$FaceDecodeThreadInfo.jdField_a_of_type_Int != -2147483648) {
@@ -178,12 +178,12 @@ public abstract class FaceDecodeTask
             }
             jdField_a_of_type_JavaUtilArrayList = new ArrayList();
             jdField_a_of_type_ArrayOfJavaLangThread = new Thread[jdField_b_of_type_Int];
-            jdField_a_of_type_ArrayOfAjli = new ajli[jdField_b_of_type_Int];
+            jdField_a_of_type_ArrayOfAjzn = new ajzn[jdField_b_of_type_Int];
             i = 0;
             if (i < jdField_a_of_type_ArrayOfJavaLangThread.length)
             {
-              jdField_a_of_type_ArrayOfAjli[i] = new ajli(null);
-              jdField_a_of_type_ArrayOfJavaLangThread[i] = ThreadManager.newFreeThread(jdField_a_of_type_ArrayOfAjli[i], "FaceDecodeThread", 5);
+              jdField_a_of_type_ArrayOfAjzn[i] = new ajzn(null);
+              jdField_a_of_type_ArrayOfJavaLangThread[i] = ThreadManager.newFreeThread(jdField_a_of_type_ArrayOfAjzn[i], "FaceDecodeThread", 5);
               if (ThreadOptimizer.a().c()) {
                 jdField_a_of_type_ArrayOfJavaLangThread[i].setPriority(1);
               }
@@ -231,7 +231,7 @@ public abstract class FaceDecodeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.util.FaceDecodeTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.qim;
 
 import android.content.DialogInterface.OnDismissListener;
-import zsn;
+import zvt;
 
 public class QIMNewFriend
 {
-  private static DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new zsn();
+  private static DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new zvt();
   private static QIMUndecideNotifyDialog jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog;
   
   public static void a()

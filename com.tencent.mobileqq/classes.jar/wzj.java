@@ -1,37 +1,27 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import Wallet.GoldMsgGetReq;
+import Wallet.GoldMsgGetRsp;
+import Wallet.GoldMsgSetReq;
+import Wallet.GoldMsgSetRsp;
+import com.tencent.mobileqq.activity.qwallet.GoldConfigObserver;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
 
 public class wzj
-  extends RecyclerView.ItemDecoration
+  extends GoldConfigObserver
 {
-  private int a;
-  private int b;
+  public wzj(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
   
-  private wzj(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, GoldMsgGetReq paramGoldMsgGetReq, GoldMsgGetRsp paramGoldMsgGetRsp)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramGoldMsgGetReq, paramGoldMsgGetRsp);
+    }
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a(boolean paramBoolean, GoldMsgSetReq paramGoldMsgSetReq, GoldMsgSetRsp paramGoldMsgSetRsp)
   {
-    int i = paramRecyclerView.getChildPosition(paramView);
-    if (i == 0)
-    {
-      paramRect.left = this.a;
-      return;
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramGoldMsgSetReq, paramGoldMsgSetRsp);
     }
-    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
-    {
-      paramRect.left = this.b;
-      paramRect.right = this.a;
-      return;
-    }
-    paramRect.left = this.b;
   }
 }
 

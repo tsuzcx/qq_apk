@@ -1,13 +1,19 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.PostCommentCallback;
+import com.tencent.biz.qqstory.comment.FeedCommentLego;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
 public class nbu
-  implements Runnable
+  extends FeedCommentEventHandler.PostCommentCallback
 {
-  public nbu(TroopNickNameManager paramTroopNickNameManager) {}
+  public nbu(FeedCommentLego paramFeedCommentLego) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    this.a.c();
+    this.a.e();
+    if (paramBoolean) {
+      this.a.a(true, paramCommentEntry);
+    }
   }
 }
 

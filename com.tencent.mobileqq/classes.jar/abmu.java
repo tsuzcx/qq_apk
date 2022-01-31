@@ -1,26 +1,55 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class abmu
-  implements Parcelable.Creator
+public class abmu
+  implements ActionSheet.OnButtonClickListener
 {
-  public IPSiteModel.Book a(Parcel paramParcel)
-  {
-    IPSiteModel.Book localBook = new IPSiteModel.Book();
-    localBook.cover = paramParcel.readString();
-    localBook.desc = paramParcel.readString();
-    localBook.id = paramParcel.readString();
-    localBook.jumpUrl = paramParcel.readString();
-    localBook.name = paramParcel.readString();
-    localBook.recommDesc = paramParcel.readString();
-    localBook.authorName = paramParcel.readString();
-    return localBook;
-  }
+  public abmu(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString, ActionSheet paramActionSheet) {}
   
-  public IPSiteModel.Book[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new IPSiteModel.Book[paramInt];
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      return;
+      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+      {
+        paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+        if ((!MobileIssueSettings.a) && (KapalaiAdapterUtil.a().a())) {
+          KapalaiAdapterUtil.a().a(paramView);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app.a().b(this.jdField_a_of_type_JavaLangString);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131435765, 1);
+        continue;
+        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+        {
+          paramView = new Intent();
+          paramView.setAction("android.intent.action.SENDTO");
+          paramView.setData(Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131435765, 1);
+        }
+      }
+    }
   }
 }
 

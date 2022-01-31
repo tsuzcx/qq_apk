@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.pic;
 
-import afwj;
-import afwk;
-import afwo;
-import afwp;
-import afwq;
-import afwr;
-import afwv;
+import agkl;
+import agkm;
+import agkq;
+import agkr;
+import agks;
+import agkt;
+import agkx;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
@@ -44,7 +44,7 @@ import mqq.os.MqqHandler;
 import tencent.im.msg.im_msg_body.RichText;
 
 public abstract class BasePicOprerator
-  implements afwv, DownCallBack, InfoBuilder, UpCallBack
+  implements agkx, DownCallBack, InfoBuilder, UpCallBack
 {
   protected Handler a;
   public QQAppInterface a;
@@ -65,7 +65,7 @@ public abstract class BasePicOprerator
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new afwj(this, Looper.getMainLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new agkl(this, Looper.getMainLooper());
     }
   }
   
@@ -414,17 +414,17 @@ public abstract class BasePicOprerator
   
   private void e(PicReq paramPicReq)
   {
-    ThreadManager.post(new afwo(this, paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo, paramPicReq), 8, null, true);
+    ThreadManager.post(new agkq(this, paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo, paramPicReq), 8, null, true);
   }
   
   private void f(PicReq paramPicReq)
   {
-    ThreadManager.post(new afwp(this, paramPicReq), 8, null, true);
+    ThreadManager.post(new agkr(this, paramPicReq), 8, null, true);
   }
   
   private void g(PicReq paramPicReq)
   {
-    ThreadManager.post(new afwr(this, paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo, paramPicReq), 8, null, false);
+    ThreadManager.post(new agkt(this, paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo, paramPicReq), 8, null, false);
   }
   
   public MessageRecord a(im_msg_body.RichText paramRichText)
@@ -542,7 +542,7 @@ public abstract class BasePicOprerator
           }
         }
       }
-      ThreadManager.getFileThreadHandler().post(new afwq(this, paramDownResult));
+      ThreadManager.getFileThreadHandler().post(new agks(this, paramDownResult));
       if (paramDownResult != null) {
         break label381;
       }
@@ -637,7 +637,7 @@ public abstract class BasePicOprerator
     if (QLog.isColorLevel()) {
       QLog.d("MultiMsg", 2, "[uploadForwardMultiMsgPics] start");
     }
-    new afwk(this, paramArrayList).execute(new Void[0]);
+    new agkm(this, paramArrayList).execute(new Void[0]);
   }
   
   public void b(PicReq paramPicReq)

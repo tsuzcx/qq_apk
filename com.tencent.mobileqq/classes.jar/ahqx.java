@@ -1,32 +1,34 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.InitSkin;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.search.HistorySearchEntryModel;
+import com.tencent.mobileqq.search.IContactSearchable;
+import com.tencent.mobileqq.search.util.SearchUtils;
+import java.util.List;
 
 public class ahqx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahqx(InitSkin paramInitSkin) {}
+  public ahqx(HistorySearchEntryModel paramHistorySearchEntryModel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("InitSkin", 2, "start asynInitSkin");
-    }
-    InitSkin.initSkin(BaseApplicationImpl.sApplication);
-    InitSkin.c = true;
-    synchronized (InitSkin.a)
+    long l = ((Long)paramView.getTag(-1)).longValue();
+    int i = HistorySearchEntryModel.a(this.a, this.a.a, l);
+    if (i == -1) {}
+    do
     {
-      InitSkin.a.notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.i("InitSkin", 2, "end asynInitSkin");
-      }
       return;
-    }
+      paramView = (SearchHistory)((IContactSearchable)this.a.a.get(i)).a();
+    } while (paramView == null);
+    SearchUtils.a("home_page", "del_history", new String[] { "" + i });
+    ThreadManager.postImmediately(new ahqy(this, paramView, l), null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahqx
  * JD-Core Version:    0.7.0.1
  */

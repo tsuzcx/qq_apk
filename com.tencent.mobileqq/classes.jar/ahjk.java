@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.OnProviderContainerTriggerLisener;
 
 public class ahjk
-  implements Runnable
+  implements ProviderContainerView.OnProviderContainerTriggerLisener
 {
-  public ahjk(MessagePBElemDecoder paramMessagePBElemDecoder, msg_comm.Msg paramMsg) {}
+  public ahjk(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public void run()
+  public void a()
   {
-    ((PublicAccountHandler)MessagePBElemDecoder.a(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessagePBElemDecoder).b.a(11)).a(String.valueOf(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_head.from_uin.get()), 0L, 1);
+    this.a.b = true;
+    this.a.l();
+  }
+  
+  public void b()
+  {
+    this.a.b = false;
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjk
  * JD-Core Version:    0.7.0.1
  */

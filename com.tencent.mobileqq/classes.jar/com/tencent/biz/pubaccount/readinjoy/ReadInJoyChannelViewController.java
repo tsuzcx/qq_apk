@@ -28,7 +28,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import lbh;
+import las;
 
 public class ReadInJoyChannelViewController
   extends ReadInJoyBaseViewController
@@ -55,7 +55,7 @@ public class ReadInJoyChannelViewController
   {
     super(paramActivity);
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lbh(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new las(this);
   }
   
   private int a()
@@ -117,8 +117,8 @@ public class ReadInJoyChannelViewController
   
   public ReadInJoyBaseListView a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131367267) instanceof ReadInJoyBaseListView))) {
-      return (ReadInJoyBaseListView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131367267);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131367322) instanceof ReadInJoyBaseListView))) {
+      return (ReadInJoyBaseListView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131367322);
     }
     return null;
   }
@@ -157,7 +157,7 @@ public class ReadInJoyChannelViewController
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a(str);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoRecommendManager.a(str);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoUIManager = new VideoUIManager((FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131367093), (ReadInJoyBaseListView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131367267), this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoUIManager = new VideoUIManager((FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131367142), (ReadInJoyBaseListView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131367322), this.jdField_a_of_type_AndroidAppActivity);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoUIManager);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoUIManager.a(this);
       ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
@@ -227,8 +227,8 @@ public class ReadInJoyChannelViewController
     View localView5;
     if ((a() instanceof SplashActivity))
     {
-      localView1 = a().findViewById(2131364913);
-      localView2 = a().findViewById(2131363802);
+      localView1 = a().findViewById(2131364935);
+      localView2 = a().findViewById(2131363825);
       localView3 = a().findViewById(16908307);
       localView4 = a().findViewById(16908305);
       localView5 = a().findViewById(2131362327);
@@ -286,7 +286,7 @@ public class ReadInJoyChannelViewController
               if (!(a() instanceof ReadInJoyChannelActivity)) {
                 break label252;
               }
-              localView1 = a().findViewById(2131363226);
+              localView1 = a().findViewById(2131363244);
               if (!paramBoolean) {
                 break;
               }
@@ -297,11 +297,11 @@ public class ReadInJoyChannelViewController
           localView1.setVisibility(0);
           return;
         } while (!(a() instanceof ReadInJoyNewFeedsActivity));
-        localView1 = a().findViewById(2131367043);
-        localView2 = a().findViewById(2131363495);
-        localView3 = a().findViewById(2131366776);
-        localView4 = a().findViewById(2131366774);
-        localView5 = a().findViewById(2131366775);
+        localView1 = a().findViewById(2131367091);
+        localView2 = a().findViewById(2131363513);
+        localView3 = a().findViewById(2131366819);
+        localView4 = a().findViewById(2131366817);
+        localView5 = a().findViewById(2131366818);
         if (!paramBoolean) {
           break;
         }

@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public final class ahlt
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public ahlt(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
+  private ahlt(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_art_filter_");
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      CaptureVideoFilterManager.a().b();
+      CaptureVideoFilterManager.a().a(new ahlu(this));
+      this.a.c();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
+      }
+    }
   }
 }
 

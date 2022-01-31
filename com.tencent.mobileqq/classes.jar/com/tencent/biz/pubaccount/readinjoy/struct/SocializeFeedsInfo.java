@@ -100,7 +100,8 @@ public class SocializeFeedsInfo
     long l;
     label109:
     Object localObject3;
-    label319:
+    label149:
+    label359:
     Object localObject4;
     if (paramSocializeFeedsInfo.msg_master_uin.has())
     {
@@ -108,10 +109,16 @@ public class SocializeFeedsInfo
       ((SocializeFeedsInfo.FeedsInfoUser)localObject1).jdField_a_of_type_Long = l;
       localObject1 = localSocializeFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser;
       if (!paramSocializeFeedsInfo.msg_master_uin.has()) {
-        break label441;
+        break label481;
       }
       j = a(((oidb_cmd0x68b.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).enum_uin_type);
       ((SocializeFeedsInfo.FeedsInfoUser)localObject1).jdField_a_of_type_Int = j;
+      localObject1 = localSocializeFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser;
+      if (!paramSocializeFeedsInfo.msg_master_uin.has()) {
+        break label486;
+      }
+      j = a(((oidb_cmd0x68b.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).uint32_star_style);
+      ((SocializeFeedsInfo.FeedsInfoUser)localObject1).jdField_b_of_type_Int = j;
       localSocializeFeedsInfo.jdField_a_of_type_Int = a(paramSocializeFeedsInfo.uint32_feeds_style);
       localSocializeFeedsInfo.jdField_b_of_type_Int = a(paramSocializeFeedsInfo.uint32_like_count);
       localSocializeFeedsInfo.jdField_d_of_type_Int = a(paramSocializeFeedsInfo.uint32_comments_count);
@@ -121,41 +128,44 @@ public class SocializeFeedsInfo
       localSocializeFeedsInfo.h = a(paramSocializeFeedsInfo.uint32_follow_status);
       QLog.d("SocializeFeedsInfo", 2, "create SocialFeedsInfo, feedsID : " + localSocializeFeedsInfo.jdField_a_of_type_Long + ", followCnt : " + localSocializeFeedsInfo.i + ", followStatus : " + localSocializeFeedsInfo.h + ", masterUin : " + localSocializeFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long + ", followStatusHas : " + paramSocializeFeedsInfo.uint32_follow_status.has());
       if ((!paramSocializeFeedsInfo.rpt_recommend_list.has()) || (paramSocializeFeedsInfo.rpt_recommend_list.get() == null)) {
-        break label456;
+        break label501;
       }
       localObject1 = paramSocializeFeedsInfo.rpt_recommend_list.get().iterator();
       if (!((Iterator)localObject1).hasNext()) {
-        break label456;
+        break label501;
       }
       localObject3 = (oidb_cmd0x68b.SocializeFeedsInfoUser)((Iterator)localObject1).next();
       localSocializeFeedsInfo.getClass();
       localObject4 = new SocializeFeedsInfo.FeedsInfoUser(localSocializeFeedsInfo);
       if ((!((oidb_cmd0x68b.SocializeFeedsInfoUser)localObject3).has()) || (((oidb_cmd0x68b.SocializeFeedsInfoUser)localObject3).get() == null)) {
-        break label446;
+        break label491;
       }
       l = a(((oidb_cmd0x68b.SocializeFeedsInfoUser)localObject3).uint64_uin);
-      label383:
+      label423:
       ((SocializeFeedsInfo.FeedsInfoUser)localObject4).jdField_a_of_type_Long = l;
       if ((!((oidb_cmd0x68b.SocializeFeedsInfoUser)localObject3).has()) || (((oidb_cmd0x68b.SocializeFeedsInfoUser)localObject3).get() == null)) {
-        break label451;
+        break label496;
       }
     }
-    label441:
-    label446:
-    label451:
+    label481:
+    label486:
+    label491:
+    label496:
     for (int j = a(((oidb_cmd0x68b.SocializeFeedsInfoUser)localObject3).enum_uin_type);; j = 0)
     {
       ((SocializeFeedsInfo.FeedsInfoUser)localObject4).jdField_a_of_type_Int = j;
       localSocializeFeedsInfo.jdField_a_of_type_JavaUtilList.add(localObject4);
-      break label319;
+      break label359;
       l = 0L;
       break;
       j = 0;
       break label109;
+      j = 0;
+      break label149;
       l = 0L;
-      break label383;
+      break label423;
     }
-    label456:
+    label501:
     if ((paramSocializeFeedsInfo.bytes_comments.has()) && (paramSocializeFeedsInfo.bytes_comments.get() != null)) {}
     try
     {
@@ -561,6 +571,7 @@ public class SocializeFeedsInfo
     Object localObject1 = new oidb_cmd0x68b.SocializeFeedsInfoUser();
     ((oidb_cmd0x68b.SocializeFeedsInfoUser)localObject1).uint64_uin.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long);
     ((oidb_cmd0x68b.SocializeFeedsInfoUser)localObject1).enum_uin_type.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Int);
+    ((oidb_cmd0x68b.SocializeFeedsInfoUser)localObject1).uint32_star_style.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_b_of_type_Int);
     localSocializeFeedsInfo.msg_master_uin.set((MessageMicro)localObject1);
     localSocializeFeedsInfo.uint32_follow_counts.set(this.i);
     localSocializeFeedsInfo.uint32_follow_status.set(this.h);
@@ -603,7 +614,7 @@ public class SocializeFeedsInfo
       }
       localException.msg_ugc_pic_info_list.set((List)localObject2);
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_b_of_type_JavaUtilArrayList.size() <= 0)) {
-        break label1104;
+        break label1118;
       }
       localObject2 = new ArrayList();
       localObject3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_b_of_type_JavaUtilArrayList.iterator();
@@ -648,29 +659,29 @@ public class SocializeFeedsInfo
         ((List)localObject2).add(localObject5);
       }
       localException.msg_ugc_video_info_list.set((List)localObject2);
-      label1104:
+      label1118:
       localSocializeFeedsInfo.msg_ugc_topic_feeds_info.set(localException);
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo == null) {
-        break label2166;
+        break label2180;
       }
       oidb_cmd0x68b.PGCFeedsInfo localPGCFeedsInfo = new oidb_cmd0x68b.PGCFeedsInfo();
       if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_JavaLangString)) {
-        break label1157;
+        break label1171;
       }
       localPGCFeedsInfo.bytes_pgc_comments.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_JavaLangString));
-      label1157:
+      label1171:
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_b_of_type_Int == -1) {
-        break label1182;
+        break label1196;
       }
       localPGCFeedsInfo.uint32_myself_follow_status.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_b_of_type_Int);
-      label1182:
+      label1196:
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_Int == -1) {
-        break label1207;
+        break label1221;
       }
       localPGCFeedsInfo.uint32_follow_counts.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_Int);
-      label1207:
+      label1221:
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-        break label1473;
+        break label1487;
       }
       localObject2 = new ArrayList();
       localObject3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -699,9 +710,9 @@ public class SocializeFeedsInfo
         ((List)localObject2).add(localObject5);
       }
       localPGCFeedsInfo.msg_pgc_pic_info_list.set((List)localObject2);
-      label1473:
+      label1487:
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_b_of_type_JavaUtilArrayList.size() <= 0)) {
-        break label1675;
+        break label1689;
       }
       localObject2 = new ArrayList();
       localObject3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_b_of_type_JavaUtilArrayList.iterator();
@@ -724,34 +735,34 @@ public class SocializeFeedsInfo
         ((List)localObject2).add(localObject5);
       }
       localPGCFeedsInfo.msg_pgc_video_info_list.set((List)localObject2);
-      label1675:
+      label1689:
       localPGCFeedsInfo.enum_pgc_feeds_type.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_c_of_type_Int);
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo == null) {
-        break label2158;
+        break label2172;
       }
       localObject2 = new oidb_cmd0x68b.GalleryPGCFeedsInfo();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.jdField_a_of_type_Long == -1L) {
-        break label1741;
+        break label1755;
       }
       ((oidb_cmd0x68b.GalleryPGCFeedsInfo)localObject2).uint64_pic_count.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.jdField_a_of_type_Long);
-      label1741:
+      label1755:
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.jdField_b_of_type_Long == -1L) {
-        break label1775;
+        break label1789;
       }
       ((oidb_cmd0x68b.GalleryPGCFeedsInfo)localObject2).uint64_source.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.jdField_b_of_type_Long);
-      label1775:
+      label1789:
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.c == -1L) {
-        break label1809;
+        break label1823;
       }
       ((oidb_cmd0x68b.GalleryPGCFeedsInfo)localObject2).uint64_sub_source.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.c);
-      label1809:
+      label1823:
       if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.jdField_a_of_type_JavaLangString)) {
-        break label1845;
+        break label1859;
       }
       ((oidb_cmd0x68b.GalleryPGCFeedsInfo)localObject2).bytes_gallery_url.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.jdField_a_of_type_JavaLangString));
-      label1845:
+      label1859:
       if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-        break label2150;
+        break label2164;
       }
       localObject3 = new ArrayList();
       localObject4 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$GalleryPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -786,18 +797,18 @@ public class SocializeFeedsInfo
         ((List)localObject3).add(localPGCPicInfo);
       }
       ((oidb_cmd0x68b.GalleryPGCFeedsInfo)localObject2).msg_pgc_pic_info_list.set((List)localObject3);
-      label2150:
+      label2164:
       localPGCFeedsInfo.msg_gallery_feeds_info.set((MessageMicro)localObject2);
-      label2158:
+      label2172:
       localSocializeFeedsInfo.msg_pgc_topic_feeds_info.set(localPGCFeedsInfo);
-      label2166:
+      label2180:
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo == null) {
-        break label2187;
+        break label2201;
       }
       localSocializeFeedsInfo.msg_topic_recommend_feeds_info.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.a());
-      label2187:
+      label2201:
       if (this.jdField_d_of_type_JavaLangString == null) {
-        break label2208;
+        break label2222;
       }
       localSocializeFeedsInfo.bytes_recommend_account_reason.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
     }
@@ -837,13 +848,13 @@ public class SocializeFeedsInfo
         }
       }
     }
-    label2208:
+    label2222:
     return localSocializeFeedsInfo.toByteArray();
   }
   
   public String toString()
   {
-    return "SocializeFeedsInfo{mFeedStyle=" + this.jdField_a_of_type_Int + ", mRecommUinList=" + this.jdField_a_of_type_JavaUtilList + ", mLikeCount=" + this.jdField_b_of_type_Int + ", mLikeStatus=" + this.jdField_c_of_type_Int + ", mCommentCount=" + this.jdField_d_of_type_Int + ", mBiuTime=" + this.jdField_e_of_type_Int + ", mCommentWording='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mRecommReason='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mMasterUser.uin='" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long + '\'' + ", mMasterUser.type='" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Int + '\'' + ", mBiuCount='" + this.jdField_f_of_type_Int + '\'' + ", mBiuStatus='" + this.g + '\'' + ", mBiuInfo='" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo + '\'' + ", mFollowStatus='" + this.h + '\'' + ", mFollowCnt='" + this.i + '\'' + '}';
+    return "SocializeFeedsInfo{mFeedStyle=" + this.jdField_a_of_type_Int + ", mRecommUinList=" + this.jdField_a_of_type_JavaUtilList + ", mLikeCount=" + this.jdField_b_of_type_Int + ", mLikeStatus=" + this.jdField_c_of_type_Int + ", mCommentCount=" + this.jdField_d_of_type_Int + ", mBiuTime=" + this.jdField_e_of_type_Int + ", mCommentWording='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mRecommReason='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mMasterUser.uin='" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long + '\'' + ", mMasterUser.type='" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Int + '\'' + ", mMasterUser.starType='" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_b_of_type_Int + '\'' + ", mBiuCount='" + this.jdField_f_of_type_Int + '\'' + ", mBiuStatus='" + this.g + '\'' + ", mBiuInfo='" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo + '\'' + ", mFollowStatus='" + this.h + '\'' + ", mFollowCnt='" + this.i + '\'' + '}';
   }
 }
 

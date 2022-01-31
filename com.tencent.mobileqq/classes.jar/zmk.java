@@ -1,40 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.litetransfersdk.MsgCSBody;
+import com.tencent.litetransfersdk.ProtocolHelper;
+import com.tencent.mobileqq.app.RouterHandler;
+import java.util.List;
+import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
 
 public class zmk
   implements Runnable
 {
-  public zmk(RecentUserCache paramRecentUserCache, long paramLong) {}
+  public zmk(RouterHandler paramRouterHandler, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | start");
-    }
-    try
-    {
-      int i = RecentUserCache.a(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).a().a("recent", "_id=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | RecentUser delCount = " + i);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | delete recommend error~");
-      }
-      return;
-    }
-    finally
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.db.Cache.RecentUserCache", 2, "filterErrorData | end");
-      }
-    }
+    MsgCSBody localMsgCSBody = this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.MsgCSBodyFromFTNNotify(0, this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReceive(localMsgCSBody);
   }
 }
 

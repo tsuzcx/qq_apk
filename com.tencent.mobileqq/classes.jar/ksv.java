@@ -1,15 +1,11 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-
-public class ksv
+class ksv
   implements Runnable
 {
-  public ksv(AccountDetailActivity paramAccountDetailActivity, int paramInt) {}
+  ksv(ksu paramksu) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.c > 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.c(this.jdField_a_of_type_Int);
-    }
+    this.a.a.i = false;
   }
 }
 

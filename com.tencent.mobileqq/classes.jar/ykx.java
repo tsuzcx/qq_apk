@@ -1,15 +1,37 @@
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.HotChatHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloPushManager;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionPush;
 
 public class ykx
   implements Runnable
 {
-  public ykx(HotChatCenterFragment paramHotChatCenterFragment, String paramString, int paramInt) {}
+  public ykx(ApolloPushManager paramApolloPushManager, ApolloActionPush paramApolloActionPush, SpriteTaskParam paramSpriteTaskParam) {}
   
   public void run()
   {
-    ((HotChatHandler)HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment).a(35)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
+    QQAppInterface localQQAppInterface;
+    SpriteTaskParam localSpriteTaskParam;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam != null))
+    {
+      localQQAppInterface = ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager);
+      localSpriteTaskParam = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush.mContent)) {
+        break label99;
+      }
+    }
+    label99:
+    for (boolean bool = true;; bool = false)
+    {
+      ApolloActionHelper.a(localQQAppInterface, localSpriteTaskParam, bool, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.b);
+      if ((ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager) != null) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush != null)) {
+        ((ApolloDaoManager)ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager).getManager(154)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush.mId);
+      }
+      return;
+    }
   }
 }
 

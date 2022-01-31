@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.hotpic.HotPicManager;
-import com.tencent.mobileqq.hotpic.HotPicSendData;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
 
 public class adfx
   implements Runnable
 {
-  public adfx(HotPicManager paramHotPicManager, HotPicSendData paramHotPicSendData1, HotPicSendData paramHotPicSendData2) {}
+  public adfx(VideoFileViewer paramVideoFileViewer) {}
   
   public void run()
   {
-    HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).b(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicSendData);
-    if (this.b != null) {
-      HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).b(this.b);
+    if (VideoFileViewer.a(this.a).getVisibility() == 0)
+    {
+      Animation localAnimation = VideoFileViewer.a(this.a).getAnimation();
+      if (localAnimation != null) {
+        localAnimation.cancel();
+      }
+      VideoFileViewer.a(this.a).clearAnimation();
     }
+    VideoFileViewer.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfx
  * JD-Core Version:    0.7.0.1
  */

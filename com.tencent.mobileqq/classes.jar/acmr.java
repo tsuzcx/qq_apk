@@ -1,13 +1,31 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.data.FilePreviewDataReporter;
+import java.util.Random;
 
 public class acmr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acmr(FileVideoManager.VideoControl paramVideoControl) {}
+  public acmr(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FileVideoManager.VideoControl.d(this.a);
+    this.a.startTitleProgress();
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131436130);
+    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+    {
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter;
+      paramView.a += 1;
+    }
+    int i = new Random(System.currentTimeMillis()).nextInt(1500);
+    new Handler().postDelayed(new acms(this), i % 1001 + 500);
   }
 }
 

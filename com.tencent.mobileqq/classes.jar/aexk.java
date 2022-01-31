@@ -1,31 +1,16 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexk
-  implements URLDrawable.URLDrawableListener
+  implements View.OnTouchListener
 {
-  public aexk(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public aexk(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (NearbyMomentFragment.a(this.a) == 0) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 0)
-    {
-      NearbyMomentFragment.a(this.a).setVisibility(0);
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
-    }
+    return paramMotionEvent.getAction() == 2;
   }
 }
 

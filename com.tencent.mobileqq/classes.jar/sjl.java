@@ -1,41 +1,91 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class sjl
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public sjl(EmosmActivity paramEmosmActivity) {}
+  public sjl(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (!this.a.b)
+    if (QLog.isColorLevel())
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131436056);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(true);
-      this.a.b = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
-      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpsEdit", 0, 0, "", "", "", "");
+      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt + " time=" + paramLong);
+      if (paramArrayOfByte2 == null) {}
     }
-    while ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 1)) {
+    try
+    {
+      paramString = new String(paramArrayOfByte2, "utf-8");
+      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode errMsg=" + paramString);
+      this.a.c();
+      if (DevlockQuickLoginActivity.a(this.a)) {
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+      if (paramInt == 0)
+      {
+        QQToast.a(this.a.getApplicationContext(), 2, 2131436594, 0).b(DevlockQuickLoginActivity.a(this.a));
+        DevlockQuickLoginActivity.a(this.a);
+        DevlockQuickLoginActivity.a(this.a, 0, 2131034135);
+        return;
+      }
+      if (paramInt == 21)
+      {
+        paramString = this.a.getString(2131436599);
+        paramArrayOfByte1 = this.a.getString(2131436320);
+        this.a.a(null, paramString, paramArrayOfByte1, new sjm(this));
+        return;
+      }
+      paramString = DevlockQuickLoginActivity.a(this.a, 2131436595);
+      QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
+    }
+  }
+  
+  public void OnException(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnException e=" + paramString);
+    }
+    this.a.c();
+    QQToast.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131436598), 0).b(DevlockQuickLoginActivity.d(this.a));
+  }
+  
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DevlockQuickLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    }
+    if (DevlockQuickLoginActivity.b(this.a))
+    {
+      this.a.c();
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131436053);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(false);
-    this.a.e();
-    this.a.b = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a();
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    if (paramInt == 0)
+    {
+      this.a.b();
+      return;
+    }
+    this.a.c();
+    if (paramInt == 21)
+    {
+      paramString = this.a.getString(2131436599);
+      paramArrayOfByte1 = this.a.getString(2131436320);
+      this.a.a(null, paramString, paramArrayOfByte1, new sjn(this));
+      return;
+    }
+    paramString = this.a.getString(2131436595);
+    QQToast.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
   }
 }
 

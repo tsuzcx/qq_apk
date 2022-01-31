@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multimsg;
 
-import advz;
-import adwa;
+import aejf;
+import aejg;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -60,7 +60,7 @@ public class LongTextMsgManager
     if (QLog.isColorLevel()) {
       QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg begin! touin:" + paramString1 + ",touinType:" + paramInt + ",uniseq:" + paramLong + ",fileKey:" + paramString2);
     }
-    MultiMsgManager.a().a(paramQQAppInterface, paramString2, paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, paramInt, paramLong, 1035, new adwa(paramQQAppInterface, paramString1, paramInt, paramLong, l));
+    MultiMsgManager.a().a(paramQQAppInterface, paramString2, paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, paramInt, paramLong, 1035, new aejg(paramQQAppInterface, paramString1, paramInt, paramLong, l));
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
@@ -140,7 +140,7 @@ public class LongTextMsgManager
         return;
       }
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      paramBoolean = a(paramQQAppInterface, (byte[])localObject, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, 1035, new advz(this, paramQQAppInterface, paramMessageRecord, paramBoolean));
+      paramBoolean = a(paramQQAppInterface, (byte[])localObject, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, 1035, new aejf(this, paramQQAppInterface, paramMessageRecord, paramBoolean));
       if (!paramBoolean) {
         break;
       }
@@ -237,7 +237,7 @@ public class LongTextMsgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.LongTextMsgManager
  * JD-Core Version:    0.7.0.1
  */

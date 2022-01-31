@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import anku;
-import ankv;
-import ankx;
+import aoaz;
+import aoba;
+import aobc;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -106,7 +106,7 @@ public class NormalFaceAdapter
           {
             ((URLDrawable)localObject3).restartDownload();
             label309:
-            ((URLDrawable)localObject3).setURLDrawableListener(new ankv(this, (String)localObject1, localNormalFacePackage, localImageView, str));
+            ((URLDrawable)localObject3).setURLDrawableListener(new aoba(this, (String)localObject1, localNormalFacePackage, localImageView, str));
           }
         }
         for (;;)
@@ -167,7 +167,7 @@ public class NormalFaceAdapter
       return paramView;
     }
     if (paramView == null) {}
-    for (paramView = new ankx(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (ankx)paramView)
+    for (paramView = new aobc(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (aobc)paramView)
     {
       paramView.a((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount());
       return paramView;
@@ -176,7 +176,7 @@ public class NormalFaceAdapter
   
   public void onClick(View paramView)
   {
-    ThreadManager.postImmediately(new anku(this, paramView), null, true);
+    ThreadManager.postImmediately(new aoaz(this, paramView), null, true);
   }
 }
 

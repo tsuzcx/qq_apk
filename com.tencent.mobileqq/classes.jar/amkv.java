@@ -1,192 +1,94 @@
-import android.graphics.BitmapFactory.Options;
-import cooperation.qzone.util.ResDownloadManger;
-import cooperation.qzone.util.ResDownloadManger.ResLoadListener;
+import android.os.AsyncTask;
+import cooperation.dingdong.DingdongPluginManager;
 
 public class amkv
-  implements Runnable
+  extends AsyncTask
 {
-  public amkv(ResDownloadManger paramResDownloadManger, int paramInt, String paramString, ResDownloadManger.ResLoadListener paramResLoadListener, BitmapFactory.Options paramOptions) {}
+  public amkv(DingdongPluginManager paramDingdongPluginManager, int paramInt, amkw paramamkw) {}
   
   /* Error */
-  public void run()
+  protected java.lang.Void a(com.tencent.mobileqq.app.utils.DingdongPluginBizObserver.ScheduleMoreSummaryData... paramVarArgs)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore_2
-    //   4: invokestatic 38	cooperation/qzone/util/ResDownloadManger:a	()[Ljava/lang/String;
-    //   7: aload_0
-    //   8: getfield 18	amkv:jdField_a_of_type_Int	I
-    //   11: aaload
-    //   12: astore_1
-    //   13: aload_1
-    //   14: aload_0
-    //   15: getfield 20	amkv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   18: invokestatic 41	cooperation/qzone/util/ResDownloadManger:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
-    //   21: astore 4
-    //   23: aload 4
-    //   25: invokestatic 44	cooperation/qzone/util/ResDownloadManger:a	(Ljava/io/File;)Z
-    //   28: ifeq +207 -> 235
-    //   31: aload_0
-    //   32: monitorenter
+    //   0: aload_0
+    //   1: getfield 12	amkv:jdField_a_of_type_CooperationDingdongDingdongPluginManager	Lcooperation/dingdong/DingdongPluginManager;
+    //   4: invokestatic 26	cooperation/dingdong/DingdongPluginManager:a	(Lcooperation/dingdong/DingdongPluginManager;)Ljava/util/HashMap;
+    //   7: astore 4
+    //   9: aload 4
+    //   11: monitorenter
+    //   12: aload_1
+    //   13: iconst_0
+    //   14: aaload
+    //   15: astore_1
+    //   16: aload_0
+    //   17: getfield 12	amkv:jdField_a_of_type_CooperationDingdongDingdongPluginManager	Lcooperation/dingdong/DingdongPluginManager;
+    //   20: invokestatic 29	cooperation/dingdong/DingdongPluginManager:a	(Lcooperation/dingdong/DingdongPluginManager;)Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   23: invokevirtual 35	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   26: new 37	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 38	java/lang/StringBuilder:<init>	()V
     //   33: aload_0
-    //   34: getfield 16	amkv:jdField_a_of_type_CooperationQzoneUtilResDownloadManger	Lcooperation/qzone/util/ResDownloadManger;
-    //   37: invokestatic 47	cooperation/qzone/util/ResDownloadManger:a	(Lcooperation/qzone/util/ResDownloadManger;)Landroid/support/v4/util/LruCache;
-    //   40: new 49	java/lang/StringBuilder
-    //   43: dup
-    //   44: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   47: aload_0
-    //   48: getfield 18	amkv:jdField_a_of_type_Int	I
-    //   51: invokevirtual 54	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   54: ldc 56
-    //   56: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: aload_0
-    //   60: getfield 20	amkv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   63: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   69: invokevirtual 69	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   72: checkcast 71	android/graphics/Bitmap
-    //   75: astore_1
-    //   76: aload_1
-    //   77: ifnull +31 -> 108
-    //   80: aload_0
-    //   81: getfield 22	amkv:jdField_a_of_type_CooperationQzoneUtilResDownloadManger$ResLoadListener	Lcooperation/qzone/util/ResDownloadManger$ResLoadListener;
-    //   84: ifnull +21 -> 105
-    //   87: aload_0
-    //   88: getfield 22	amkv:jdField_a_of_type_CooperationQzoneUtilResDownloadManger$ResLoadListener	Lcooperation/qzone/util/ResDownloadManger$ResLoadListener;
-    //   91: aload_0
-    //   92: getfield 18	amkv:jdField_a_of_type_Int	I
-    //   95: aload_0
-    //   96: getfield 20	amkv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   99: aload_1
-    //   100: invokeinterface 76 4 0
-    //   105: aload_0
-    //   106: monitorexit
-    //   107: return
-    //   108: aload 4
-    //   110: invokevirtual 81	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   113: aload_0
-    //   114: getfield 24	amkv:jdField_a_of_type_AndroidGraphicsBitmapFactory$Options	Landroid/graphics/BitmapFactory$Options;
-    //   117: invokestatic 84	cooperation/qzone/util/ResDownloadManger:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   120: astore_2
-    //   121: aload_2
-    //   122: astore_1
-    //   123: aload_0
-    //   124: monitorexit
-    //   125: aload_1
-    //   126: ifnull -19 -> 107
-    //   129: aload_0
-    //   130: getfield 16	amkv:jdField_a_of_type_CooperationQzoneUtilResDownloadManger	Lcooperation/qzone/util/ResDownloadManger;
-    //   133: invokestatic 47	cooperation/qzone/util/ResDownloadManger:a	(Lcooperation/qzone/util/ResDownloadManger;)Landroid/support/v4/util/LruCache;
-    //   136: new 49	java/lang/StringBuilder
-    //   139: dup
-    //   140: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   143: aload_0
-    //   144: getfield 18	amkv:jdField_a_of_type_Int	I
-    //   147: invokevirtual 54	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   150: ldc 56
-    //   152: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   155: aload_0
-    //   156: getfield 20	amkv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   159: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   165: aload_1
-    //   166: invokevirtual 88	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   169: pop
-    //   170: aload_0
-    //   171: getfield 22	amkv:jdField_a_of_type_CooperationQzoneUtilResDownloadManger$ResLoadListener	Lcooperation/qzone/util/ResDownloadManger$ResLoadListener;
-    //   174: ifnull -67 -> 107
-    //   177: aload_0
-    //   178: getfield 22	amkv:jdField_a_of_type_CooperationQzoneUtilResDownloadManger$ResLoadListener	Lcooperation/qzone/util/ResDownloadManger$ResLoadListener;
-    //   181: aload_0
-    //   182: getfield 18	amkv:jdField_a_of_type_Int	I
-    //   185: aload_0
-    //   186: getfield 20	amkv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   189: aload_1
-    //   190: invokeinterface 76 4 0
-    //   195: return
-    //   196: astore_3
-    //   197: aload_2
-    //   198: astore_1
-    //   199: aload_3
-    //   200: astore_2
-    //   201: ldc 90
-    //   203: iconst_1
-    //   204: aload_2
-    //   205: invokevirtual 91	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   208: invokestatic 97	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   211: goto -88 -> 123
-    //   214: astore_1
-    //   215: aload_0
-    //   216: monitorexit
-    //   217: aload_1
-    //   218: athrow
-    //   219: astore_2
-    //   220: aload_3
-    //   221: astore_1
-    //   222: ldc 90
-    //   224: iconst_1
-    //   225: aload_2
-    //   226: invokevirtual 98	java/lang/Exception:toString	()Ljava/lang/String;
-    //   229: invokestatic 97	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   232: goto -109 -> 123
-    //   235: aload_0
-    //   236: getfield 16	amkv:jdField_a_of_type_CooperationQzoneUtilResDownloadManger	Lcooperation/qzone/util/ResDownloadManger;
-    //   239: aload_1
-    //   240: aload_0
-    //   241: getfield 18	amkv:jdField_a_of_type_Int	I
-    //   244: aload_0
-    //   245: getfield 20	amkv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   248: aload_0
-    //   249: getfield 22	amkv:jdField_a_of_type_CooperationQzoneUtilResDownloadManger$ResLoadListener	Lcooperation/qzone/util/ResDownloadManger$ResLoadListener;
-    //   252: invokestatic 101	cooperation/qzone/util/ResDownloadManger:a	(Lcooperation/qzone/util/ResDownloadManger;Ljava/lang/String;ILjava/lang/String;Lcooperation/qzone/util/ResDownloadManger$ResLoadListener;)Lcooperation/qzone/util/ResEntry;
-    //   255: astore_2
-    //   256: aload_0
-    //   257: getfield 16	amkv:jdField_a_of_type_CooperationQzoneUtilResDownloadManger	Lcooperation/qzone/util/ResDownloadManger;
-    //   260: aload_1
-    //   261: aload_2
-    //   262: invokestatic 104	cooperation/qzone/util/ResDownloadManger:a	(Lcooperation/qzone/util/ResDownloadManger;Ljava/lang/String;Lcooperation/qzone/util/ResEntry;)Z
-    //   265: ifeq -158 -> 107
-    //   268: aload_0
-    //   269: getfield 16	amkv:jdField_a_of_type_CooperationQzoneUtilResDownloadManger	Lcooperation/qzone/util/ResDownloadManger;
-    //   272: aload_2
-    //   273: invokestatic 107	cooperation/qzone/util/ResDownloadManger:a	(Lcooperation/qzone/util/ResDownloadManger;Lcooperation/qzone/util/ResEntry;)V
-    //   276: return
-    //   277: astore_2
-    //   278: goto -56 -> 222
-    //   281: astore_2
-    //   282: goto -81 -> 201
+    //   34: getfield 12	amkv:jdField_a_of_type_CooperationDingdongDingdongPluginManager	Lcooperation/dingdong/DingdongPluginManager;
+    //   37: invokestatic 29	cooperation/dingdong/DingdongPluginManager:a	(Lcooperation/dingdong/DingdongPluginManager;)Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   40: invokevirtual 42	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   43: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: ldc 48
+    //   48: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   54: iconst_0
+    //   55: invokevirtual 57	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   58: aload_1
+    //   59: getfield 62	com/tencent/mobileqq/app/utils/DingdongPluginBizObserver$ScheduleMoreSummaryData:a	Lcooperation/dingdong/DingdongPluginDataFactory$ScheduleSummaryData;
+    //   62: getfield 68	cooperation/dingdong/DingdongPluginDataFactory$ScheduleSummaryData:id	Ljava/lang/String;
+    //   65: lconst_0
+    //   66: invokeinterface 74 4 0
+    //   71: lstore_2
+    //   72: lload_2
+    //   73: lconst_0
+    //   74: lcmp
+    //   75: ifne +16 -> 91
+    //   78: aload_0
+    //   79: getfield 14	amkv:jdField_a_of_type_Int	I
+    //   82: aload_1
+    //   83: invokestatic 80	cooperation/dingdong/DingdongCalendarSyncUtil:b	(ILcom/tencent/mobileqq/app/utils/DingdongPluginBizObserver$ScheduleMoreSummaryData;)V
+    //   86: aload 4
+    //   88: monitorexit
+    //   89: aconst_null
+    //   90: areturn
+    //   91: lload_2
+    //   92: lconst_0
+    //   93: lcmp
+    //   94: ifle +15 -> 109
+    //   97: lload_2
+    //   98: aload_0
+    //   99: getfield 16	amkv:jdField_a_of_type_Amkw	Lamkw;
+    //   102: getfield 85	amkw:b	J
+    //   105: lcmp
+    //   106: ifgt -20 -> 86
+    //   109: aload_0
+    //   110: getfield 14	amkv:jdField_a_of_type_Int	I
+    //   113: aload_1
+    //   114: invokestatic 80	cooperation/dingdong/DingdongCalendarSyncUtil:b	(ILcom/tencent/mobileqq/app/utils/DingdongPluginBizObserver$ScheduleMoreSummaryData;)V
+    //   117: goto -31 -> 86
+    //   120: astore_1
+    //   121: aload 4
+    //   123: monitorexit
+    //   124: aload_1
+    //   125: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	285	0	this	amkv
-    //   12	187	1	localObject1	Object
-    //   214	4	1	localObject2	Object
-    //   221	40	1	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   3	202	2	localObject3	Object
-    //   219	7	2	localException1	java.lang.Exception
-    //   255	18	2	localResEntry	cooperation.qzone.util.ResEntry
-    //   277	1	2	localException2	java.lang.Exception
-    //   281	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   1	1	3	localObject4	Object
-    //   196	25	3	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   21	88	4	localFile	java.io.File
+    //   0	126	0	this	amkv
+    //   0	126	1	paramVarArgs	com.tencent.mobileqq.app.utils.DingdongPluginBizObserver.ScheduleMoreSummaryData[]
+    //   71	27	2	l	long
+    //   7	115	4	localHashMap	java.util.HashMap
     // Exception table:
     //   from	to	target	type
-    //   33	76	196	java/lang/OutOfMemoryError
-    //   33	76	214	finally
-    //   80	105	214	finally
-    //   105	107	214	finally
-    //   108	121	214	finally
-    //   123	125	214	finally
-    //   201	211	214	finally
-    //   215	217	214	finally
-    //   222	232	214	finally
-    //   33	76	219	java/lang/Exception
-    //   80	105	277	java/lang/Exception
-    //   108	121	277	java/lang/Exception
-    //   80	105	281	java/lang/OutOfMemoryError
-    //   108	121	281	java/lang/OutOfMemoryError
+    //   16	72	120	finally
+    //   78	86	120	finally
+    //   86	89	120	finally
+    //   97	109	120	finally
+    //   109	117	120	finally
+    //   121	124	120	finally
   }
 }
 

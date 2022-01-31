@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import agzw;
+import ahny;
 import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -11,7 +11,7 @@ public class DataCollector
 {
   private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public static String a;
-  Handler jdField_a_of_type_AndroidOsHandler = new agzw(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new ahny(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
   public boolean a;
   
   static

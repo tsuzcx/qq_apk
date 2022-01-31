@@ -1,24 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class jrn
-  extends Handler
+  implements ChatActivityUtils.StartVideoListener
 {
-  public jrn(CallbackWaitingActivityExt paramCallbackWaitingActivityExt, Looper paramLooper)
+  public jrn(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  
+  public void a()
   {
-    super(paramLooper);
+    CallbackWaitingActivityExt.a(this.a).a().a().b = -1;
+    CallbackWaitingActivityExt.c(this.a);
+    this.a.finish();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void b() {}
+  
+  public void c()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
+    CallbackWaitingActivityExt.a(this.a).a().a().b = -1;
+    CallbackWaitingActivityExt.c(this.a);
     this.a.finish();
   }
 }

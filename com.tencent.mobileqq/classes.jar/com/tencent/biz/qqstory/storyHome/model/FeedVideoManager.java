@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.OneObjectCacheList;
 import com.tencent.biz.qqstory.model.IManager;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
@@ -200,10 +201,13 @@ public class FeedVideoManager
   
   public void a(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    paramString = (FeedVideoInfo)this.a.a(a(paramString, paramInt));
-    if ((paramString != null) && (paramString.mVideoItemList != null)) {
-      paramString.mVideoItemList.remove(paramStoryVideoItem);
-    }
+    if ((TextUtils.isEmpty(paramString)) || (paramStoryVideoItem == null)) {}
+    do
+    {
+      return;
+      paramString = (FeedVideoInfo)this.a.a(a(paramString, paramInt));
+    } while ((paramString == null) || (paramString.mVideoItemList == null));
+    paramString.mVideoItemList.remove(paramStoryVideoItem);
   }
   
   public void b() {}

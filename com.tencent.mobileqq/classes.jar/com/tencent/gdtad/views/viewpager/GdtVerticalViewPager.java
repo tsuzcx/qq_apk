@@ -3,7 +3,7 @@ package com.tencent.gdtad.views.viewpager;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import qkv;
+import qnl;
 
 public class GdtVerticalViewPager
   extends ViewPager
@@ -22,12 +22,12 @@ public class GdtVerticalViewPager
   
   private void a()
   {
-    setPageTransformer(true, new qkv(null));
+    setPageTransformer(true, new qnl(null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.viewpager.GdtVerticalViewPager
  * JD-Core Version:    0.7.0.1
  */

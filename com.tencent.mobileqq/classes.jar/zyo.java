@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.ar.ObjectBaseData;
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
 
 public class zyo
   implements Runnable
 {
-  public zyo(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
+  public zyo(ARVideoRecordViewProxy paramARVideoRecordViewProxy) {}
   
   public void run()
   {
-    if (ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).size() > 0)
+    if (ARVideoRecordViewProxy.b(this.a) != null)
     {
-      ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
-      return;
+      ARVideoRecordViewProxy.b(this.a).setVisibility(0);
+      ARVideoRecordViewProxy.a(this.a);
     }
-    QLog.d("ObjectSurfaceView", 1, "the dataList is null, cancel the jump action.");
   }
 }
 

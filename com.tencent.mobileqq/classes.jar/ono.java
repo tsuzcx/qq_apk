@@ -1,116 +1,60 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.view.widget.StorySwipeTextViewMenuBuilder;
+import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
 
-@TargetApi(14)
 public class ono
+  extends StorySwipeTextViewMenuBuilder
 {
-  static String a(InputStream paramInputStream)
+  public View a(Context paramContext, View paramView, SwipRightMenuBuilder.SwipItemBaseHolder paramSwipItemBaseHolder, int paramInt)
   {
-    try
+    paramSwipItemBaseHolder.a = new SwipRightMenuBuilder.SwipRightMenuItem[this.b];
+    paramInt = 0;
+    while (paramInt < this.b)
     {
-      paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
-      StringBuilder localStringBuilder = new StringBuilder();
-      for (;;)
-      {
-        String str = paramInputStream.readLine();
-        if (str == null) {
-          break;
-        }
-        localStringBuilder.append(str);
-      }
-      paramInputStream = localStringBuilder.toString();
+      paramSwipItemBaseHolder.a[paramInt] = new SwipRightMenuBuilder.SwipRightMenuItem();
+      paramSwipItemBaseHolder.a[paramInt].jdField_a_of_type_Int = -1;
+      paramSwipItemBaseHolder.a[paramInt].c = 0;
+      paramSwipItemBaseHolder.a[paramInt].jdField_a_of_type_AndroidViewView = null;
+      paramInt += 1;
     }
-    catch (IOException paramInputStream)
-    {
-      SLog.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
-      return null;
-    }
-    return paramInputStream;
+    paramSwipItemBaseHolder.f = paramView.findViewById(2131363401);
+    return paramView;
   }
   
-  static void a(Process paramProcess)
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
   {
-    if (paramProcess != null) {
-      paramProcess.destroy();
-    }
-  }
-  
-  public static void a(onh paramonh)
-  {
-    if ((paramonh != null) && (!paramonh.a()))
+    paramArrayOfSwipRightMenuItem[0].jdField_a_of_type_Int = 0;
+    paramArrayOfSwipRightMenuItem[0].b = 0;
+    paramArrayOfSwipRightMenuItem[1].jdField_a_of_type_Int = -1;
+    paramArrayOfSwipRightMenuItem[1].b = -1;
+    String str = QQStoryContext.a().a();
+    if ((this.a.a) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
     {
-      if (paramonh.jdField_a_of_type_JavaLangProcess != null)
-      {
-        paramonh.jdField_a_of_type_JavaLangProcess.destroy();
-        paramonh.jdField_a_of_type_JavaLangProcess = null;
-      }
-      if (!paramonh.isCancelled()) {
-        paramonh.cancel(true);
-      }
-      SLog.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramonh.jdField_a_of_type_ArrayOfJavaLangString) });
+      paramArrayOfSwipRightMenuItem[1].jdField_a_of_type_Int = 1;
+      paramArrayOfSwipRightMenuItem[1].b = 1;
     }
   }
   
-  public static boolean a(File paramFile)
+  protected void a(ViewGroup paramViewGroup, View paramView, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, int paramInt)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramFile == null) || (!paramFile.exists())) {
-      bool1 = false;
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+    if (localLayoutParams == null) {
+      paramView.setLayoutParams(new LinearLayout.LayoutParams(paramSwipRightMenuItem.c, paramSwipRightMenuItem.d));
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramFile.canExecute());
-      bool1 = bool2;
-    } while (paramFile.setExecutable(true));
-    return false;
-  }
-  
-  static boolean a(Process paramProcess)
-  {
-    if (paramProcess == null) {}
     for (;;)
     {
-      return true;
-      try
-      {
-        paramProcess.exitValue();
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "isProcessCompleted: true  in  process.exitValue()");
-          return true;
-        }
-      }
-      catch (IllegalThreadStateException paramProcess)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "IllegalThreadStateException e, ", paramProcess);
-        }
-      }
+      paramViewGroup.addView(paramView, paramInt);
+      return;
+      localLayoutParams.width = paramSwipRightMenuItem.c;
+      localLayoutParams.height = paramSwipRightMenuItem.d;
     }
-    return false;
-  }
-  
-  public static Object[] a(Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
-  {
-    int i = paramArrayOfObject1.length;
-    int j = paramArrayOfObject2.length;
-    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfObject1.getClass().getComponentType(), i + j);
-    System.arraycopy(paramArrayOfObject1, 0, arrayOfObject, 0, i);
-    System.arraycopy(paramArrayOfObject2, 0, arrayOfObject, i, j);
-    return arrayOfObject;
   }
 }
 

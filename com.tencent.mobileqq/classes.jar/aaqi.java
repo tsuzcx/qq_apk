@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import java.lang.ref.WeakReference;
 
 public class aaqi
   implements Runnable
 {
-  public aaqi(ArkRecommendController paramArkRecommendController, RecommendCommonMessage paramRecommendCommonMessage) {}
+  public aaqi(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
   
   public void run()
   {
-    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) == null) {
-      return;
+    ArkAppContainer localArkAppContainer = (ArkAppContainer)ArkAppContainer.a(ark.arkGetContainer(this.jdField_a_of_type_Long)).get();
+    if (localArkAppContainer != null) {
+      localArkAppContainer.c();
     }
-    ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController);
   }
 }
 

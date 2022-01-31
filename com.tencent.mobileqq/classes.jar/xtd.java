@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IOnStopCompleteListener;
 
 public class xtd
-  implements Runnable
+  implements IOnStopCompleteListener
 {
-  public xtd(SubtitleDataManager paramSubtitleDataManager, String paramString) {}
+  public xtd(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
   
-  public void run()
+  public void onStopComplete()
   {
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
+    this.a.runOnUiThread(new xte(this));
   }
 }
 

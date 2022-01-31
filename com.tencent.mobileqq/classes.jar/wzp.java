@@ -1,15 +1,18 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
 
-public class wzp
-  implements View.OnClickListener
+class wzp
+  implements View.OnFocusChangeListener
 {
-  public wzp(CommonHbFragment paramCommonHbFragment) {}
+  wzp(wzo paramwzo) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    CommonHbFragment.a(this.a);
+    if (!paramBoolean) {
+      GoldMsgAioState.a(this.a.a.getWindow(), this.a.a, paramView);
+    }
   }
 }
 

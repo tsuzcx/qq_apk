@@ -1,32 +1,31 @@
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.FilterFactory;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUDrawPartFilter;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
 
 public class anxd
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public anxd(GpuImagePartsFilterGroup paramGpuImagePartsFilterGroup, int paramInt1, int paramInt2, int paramInt3) {}
+  public anxd(FaceLayer.FaceItem paramFaceItem) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    GPUDrawPartFilter localGPUDrawPartFilter1 = null;
-    GPUDrawPartFilter localGPUDrawPartFilter2 = GpuImagePartsFilterGroup.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup);
-    GpuImagePartsFilterGroup.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, null);
-    if ((GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup) == null) || (GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).b() != this.jdField_a_of_type_Int))
-    {
-      localGPUDrawPartFilter1 = GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup);
-      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, (GPUDrawPartFilter)FilterFactory.a(this.jdField_a_of_type_Int));
-      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a();
-      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(this.b, this.c);
-    }
-    GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(false, 0.0F);
-    GpuImagePartsFilterGroup.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, 0.0F);
-    if (localGPUDrawPartFilter2 != null) {
-      localGPUDrawPartFilter2.c();
-    }
-    if (localGPUDrawPartFilter1 != null) {
-      localGPUDrawPartFilter1.c();
-    }
+    SLog.b(FaceLayer.a, "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    SLog.b(FaceLayer.a, "scaleAnimator end!");
+    this.a.w = 1.0F;
+    this.a.i = false;
+    this.a.b.k();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SLog.b(FaceLayer.a, "scaleAnimator start!");
+    this.a.i = true;
   }
 }
 

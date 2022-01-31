@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog;
+import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog.OnPriceSelectedListener;
 
 public class xan
-  implements DialogInterface.OnClickListener
+  implements PriceSettingDialog.OnPriceSelectedListener
 {
-  public xan(QzoneHbFragment paramQzoneHbFragment) {}
+  public xan(PriceSettingDialog paramPriceSettingDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong)
   {
-    paramDialogInterface.dismiss();
+    PriceSettingDialog.a(this.a, paramLong);
   }
 }
 

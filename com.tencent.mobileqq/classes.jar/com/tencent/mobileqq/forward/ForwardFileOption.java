@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import adaw;
+import adkv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -267,7 +267,7 @@ public class ForwardFileOption
   {
     if ((this.jdField_h_of_type_Boolean) && (!this.g) && (-1L != FileManagerUtil.a(paramBundle.getInt("uintype"))))
     {
-      DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, this.jdField_a_of_type_AndroidAppActivity.getString(2131429719), this.jdField_a_of_type_AndroidAppActivity.getString(2131429720), null, this.jdField_a_of_type_AndroidAppActivity.getString(2131435179), new adaw(this), null).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, this.jdField_a_of_type_AndroidAppActivity.getString(2131429725), this.jdField_a_of_type_AndroidAppActivity.getString(2131429726), null, this.jdField_a_of_type_AndroidAppActivity.getString(2131435196), new adkv(this), null).show();
       return;
     }
     super.a(paramInt, paramBundle);
@@ -364,7 +364,7 @@ public class ForwardFileOption
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", this.jdField_a_of_type_AndroidAppActivity.getString(2131433280));
+      this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", this.jdField_a_of_type_AndroidAppActivity.getString(2131433297));
       return true;
       k = 0;
       break;
@@ -528,7 +528,7 @@ public class ForwardFileOption
   
   protected String d()
   {
-    return this.jdField_a_of_type_AndroidContentContext.getString(2131436269);
+    return this.jdField_a_of_type_AndroidContentContext.getString(2131436286);
   }
   
   protected void u()

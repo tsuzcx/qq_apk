@@ -25,26 +25,26 @@ public class BinHaiMsgDialog
   public BinHaiMsgDialog(Context paramContext)
   {
     super(paramContext, a());
-    setContentView(2130970180);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363614));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366745));
+    setContentView(2130970194);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363632));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366788));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    findViewById(2131369427).setOnClickListener(this);
+    findViewById(2131369493).setOnClickListener(this);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
-      findViewById(2131369425).setPadding(0, ImmersiveUtils.a(paramContext), 0, 0);
+      findViewById(2131369491).setPadding(0, ImmersiveUtils.a(paramContext), 0, 0);
     }
     if (a())
     {
-      findViewById(2131362822).setBackgroundColor(0);
-      findViewById(2131369425).setVisibility(8);
+      findViewById(2131362840).setBackgroundColor(0);
+      findViewById(2131369491).setVisibility(8);
     }
   }
   
   public static int a()
   {
-    int i = 2131624713;
+    int i = 2131624714;
     if (a()) {
-      i = 2131624515;
+      i = 2131624516;
     }
     return i;
   }
@@ -66,7 +66,7 @@ public class BinHaiMsgDialog
   
   public void a(String paramString, Bitmap paramBitmap)
   {
-    ((ImageView)findViewById(2131362727)).setImageBitmap(paramBitmap);
+    ((ImageView)findViewById(2131362745)).setImageBitmap(paramBitmap);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
@@ -82,7 +82,7 @@ public class BinHaiMsgDialog
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369427) {
+    if (paramView.getId() == 2131369493) {
       if (this.jdField_a_of_type_ComTencentMobileqqBinhaiBinHaiMsgDialog$Listener != null) {
         this.jdField_a_of_type_ComTencentMobileqqBinhaiBinHaiMsgDialog$Listener.c(this);
       }
@@ -100,7 +100,7 @@ public class BinHaiMsgDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.binhai.BinHaiMsgDialog
  * JD-Core Version:    0.7.0.1
  */

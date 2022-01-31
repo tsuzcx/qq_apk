@@ -1,20 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.av.ui.BaseToolbar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jra
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public jra(BaseToolbar paramBaseToolbar) {}
+  public jra(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    paramDialogInterface.dismiss();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063FA", "0X80063FA", 5, 0, "", "", "", "");
   }
 }
 

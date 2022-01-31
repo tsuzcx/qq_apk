@@ -1,33 +1,32 @@
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
-import dov.com.qq.im.capture.poi.FacePoiUI;
-import dov.com.qq.im.capture.poi.FacePoiUI.FacePoiUIListener;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.font.FontManager;
+import java.io.File;
 
 public class amue
-  implements FacePoiUI.FacePoiUIListener
+  implements Runnable
 {
-  public amue(QIMCaptureController paramQIMCaptureController) {}
+  public amue(FontManager paramFontManager, String paramString, int paramInt) {}
   
-  public void aA_()
+  public void run()
   {
-    QIMCaptureController.a(this.a).d();
-  }
-  
-  public void b()
-  {
-    QIMCaptureController.a(this.a).d();
-    QIMCaptureController.a(this.a).a();
-    QIMCaptureController.a(this.a).a(QIMCaptureController.a(this.a));
-  }
-  
-  public void c()
-  {
-    QIMCaptureController.a(this.a).d();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FontManager", 4, "begin to download font file from network, url =" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int)))) {
+      FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int);
+      return;
+      QLog.e("FontManager", 1, "Font Download Failed, font url = " + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amue
  * JD-Core Version:    0.7.0.1
  */

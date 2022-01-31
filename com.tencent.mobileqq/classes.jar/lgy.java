@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
 
 public class lgy
-  extends PublicAccountObserver
+  implements DialogInterface.OnClickListener
 {
-  public lgy(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public lgy(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      ReadInJoyDeliverBiuActivity.a(this.a, paramArrayList);
-    }
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

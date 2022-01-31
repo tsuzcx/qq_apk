@@ -32,8 +32,8 @@ public class NewFlowEditVideoActivity
       }
       ((QzEditVideoPartManager)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager).jdField_d_of_type_Int = paramIntent.getIntExtra("key_font_id", -1);
     }
-    paramIntent = (RelativeLayout)findViewById(2131364381);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2130971118, paramIntent, false));
+    paramIntent = (RelativeLayout)findViewById(2131364405);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2130971166, paramIntent, false));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)AIOUtils.a(2, 90, getResources()));
     Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
     if (bool) {}

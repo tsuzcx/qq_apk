@@ -21,17 +21,17 @@ import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.Manager;
-import ndd;
-import nde;
-import ndf;
+import nen;
+import neo;
+import nep;
 
 public class MsgTabStoryNodeConfigManager
   implements Manager
 {
   public byte a;
   public int a;
-  private final QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nde(this);
-  DeviceProfileManager.DPCObserver jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$DPCObserver = new ndf(this);
+  private final QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new neo(this);
+  DeviceProfileManager.DPCObserver jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$DPCObserver = new nep(this);
   public QQAppInterface a;
   public boolean a;
   public boolean b;
@@ -68,11 +68,11 @@ public class MsgTabStoryNodeConfigManager
     for (Object localObject = new MsgTabCheckActiveRequest(((SosoInterface.SosoLbsInfo)localObject).a.f);; localObject = new MsgTabCheckActiveRequest(null))
     {
       QQStoryManager localQQStoryManager = (QQStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(180);
-      ndd localndd = new ndd(this, (QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(98), localQQStoryManager);
+      nen localnen = new nen(this, (QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(98), localQQStoryManager);
       long l = localQQStoryManager.a();
       if (NetConnInfoCenter.getServerTime() > l)
       {
-        CmdTaskManger.a().a((NetworkRequest)localObject, localndd);
+        CmdTaskManger.a().a((NetworkRequest)localObject, localnen);
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active request sent");
         }

@@ -24,8 +24,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 import mqq.observer.WtloginObserver;
 import mqq.os.MqqHandler;
-import sxp;
-import sxq;
+import tao;
+import tap;
 
 public class LoginPhoneNumActivity2
   extends RegisterBaseActivity
@@ -36,8 +36,8 @@ public class LoginPhoneNumActivity2
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new sxq(this);
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new sxp(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new tap(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tao(this);
   
   private String a(String paramString)
   {
@@ -116,7 +116,7 @@ public class LoginPhoneNumActivity2
     this.jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString());
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      a(2131434232, 1);
+      a(2131434249, 1);
       bool = false;
     }
     return bool;
@@ -127,8 +127,8 @@ public class LoginPhoneNumActivity2
     paramString1 = paramString1 + " " + paramString2;
     Rect localRect = new Rect();
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().getTextBounds(paramString1, 0, paramString1.length(), localRect);
-    int i = getResources().getDimensionPixelSize(2131559651);
-    int j = getResources().getDimensionPixelSize(2131559652);
+    int i = getResources().getDimensionPixelSize(2131559665);
+    int j = getResources().getDimensionPixelSize(2131559666);
     if (localRect.right > i - j)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
@@ -139,12 +139,12 @@ public class LoginPhoneNumActivity2
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370266));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370407));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    b(getString(2131434300), "+" + this.b);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365409));
+    b(getString(2131434317), "+" + this.b);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365431));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370268));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370409));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -156,16 +156,16 @@ public class LoginPhoneNumActivity2
       return;
       if (!NetworkUtil.d(BaseApplication.getContext()))
       {
-        a(2131432992, 0);
+        a(2131433009, 0);
         return;
       }
-      a(2131434214);
+      a(2131434231);
       if (QLog.isColorLevel()) {
         QLog.d("LoginPhoneNumActivity", 2, "-->startQueryAccount--CheckSMSVerifyLoginAccount, countryCode = " + this.b + "phoneNum = " + this.jdField_a_of_type_JavaLangString);
       }
     } while (PhoneNumLoginImpl.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
     c();
-    a(getString(2131434198), 1);
+    a(getString(2131434215), 1);
   }
   
   public void a()
@@ -189,7 +189,7 @@ public class LoginPhoneNumActivity2
   
   public void b()
   {
-    a(2131434443, 1);
+    a(2131434460, 1);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -241,10 +241,10 @@ public class LoginPhoneNumActivity2
   {
     switch (paramView.getId())
     {
-    case 2131370267: 
+    case 2131370408: 
     default: 
       return;
-    case 2131370266: 
+    case 2131370407: 
       startActivityForResult(new Intent(this, CountryActivity.class), 1);
       return;
     }
@@ -254,8 +254,8 @@ public class LoginPhoneNumActivity2
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130970362));
-    setTitle(2131433190);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130970403));
+    setTitle(2131433207);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("key_req_src", -1);
     if (QLog.isColorLevel()) {
       QLog.d("LoginPhoneNumActivity", 2, "-->onCreate--mReqSrc = " + this.jdField_a_of_type_Int);

@@ -1,21 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.OldBigDataChannelManager;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.leba.header.LebaGridShowManager;
+import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeac
-  extends AccountObserver
+  extends GameCenterObserver
 {
-  public aeac(OldBigDataChannelManager paramOldBigDataChannelManager) {}
+  public aeac(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    ThreadManager.getFileThreadHandler().post(new aead(this));
+    if ((!paramBoolean1) || (paramInt == 2)) {}
+    for (;;)
+    {
+      return;
+      if (LebaWithFeeds.b(this.a))
+      {
+        LebaGridShowManager.a().b(this.a.a);
+        this.a.a(new aead(this));
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.lebatab.leba_with_feeds", 2, "onGameCenterMsgReceive, " + LebaWithFeeds.c(this.a));
+        return;
+        LebaShowListManager.a |= 0x2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeac
  * JD-Core Version:    0.7.0.1
  */

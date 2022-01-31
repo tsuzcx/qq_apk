@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.search.activity;
 
-import ahee;
-import ahef;
-import aheg;
-import aheh;
-import ahei;
-import ahej;
-import ahek;
-import ahel;
+import ahsg;
+import ahsh;
+import ahsi;
+import ahsj;
+import ahsk;
+import ahsl;
+import ahsm;
+import ahsn;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -97,7 +97,7 @@ public class VADActivity
   private ISearchEngine jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine;
   private VADHelper jdField_a_of_type_ComTencentMobileqqSearchUtilVADHelper;
   private SearchVoiceView jdField_a_of_type_ComTencentMobileqqSearchViewSearchVoiceView;
-  private final TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ahek(this, ThreadManager.getSubThreadLooper());
+  private final TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ahsm(this, ThreadManager.getSubThreadLooper());
   private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
   private String jdField_a_of_type_JavaLangString;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
@@ -132,7 +132,7 @@ public class VADActivity
     h = paramInt;
     ReportController.b(paramBaseActivity.app, "dc00898", "", "", "0X8007E2A", "0X8007E2A", paramInt, 1, "", "", "", "");
     if (!a()) {
-      ThreadManager.post(new ahef(new ahee(Looper.getMainLooper(), paramBaseActivity, paramInt)), 8, null, false);
+      ThreadManager.post(new ahsh(new ahsg(Looper.getMainLooper(), paramBaseActivity, paramInt)), 8, null, false);
     }
     while (!a(paramBaseActivity)) {
       return;
@@ -152,7 +152,7 @@ public class VADActivity
   {
     String str = null;
     if (!NetworkUtil.d(paramBaseActivity)) {
-      str = paramBaseActivity.getString(2131432992);
+      str = paramBaseActivity.getString(2131433009);
     }
     while (str != null)
     {
@@ -161,15 +161,15 @@ public class VADActivity
       if (!a()) {
         str = " 正在初始化，请稍候...";
       } else if (!FileUtils.a()) {
-        str = paramBaseActivity.getResources().getString(2131433420);
+        str = paramBaseActivity.getResources().getString(2131433437);
       } else if (!QQRecorder.d()) {
-        str = paramBaseActivity.getResources().getString(2131433421);
+        str = paramBaseActivity.getResources().getString(2131433438);
       } else if (!QQRecorder.a(1)) {
-        str = paramBaseActivity.getResources().getString(2131433424);
+        str = paramBaseActivity.getResources().getString(2131433441);
       } else if (paramBaseActivity.app.c()) {
-        str = paramBaseActivity.getResources().getString(2131433771);
+        str = paramBaseActivity.getResources().getString(2131433788);
       } else if (AudioHelper.b(1)) {
-        str = paramBaseActivity.getResources().getString(2131433392);
+        str = paramBaseActivity.getResources().getString(2131433409);
       } else if (paramBaseActivity.isInMultiWindow()) {
         str = "该功能无法在分屏模式下使用。";
       }
@@ -230,7 +230,7 @@ public class VADActivity
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(-1, -1, 640);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineApproximateSearchEngine == null) {
-      ThreadManager.post(new aheh(this), 8, null, true);
+      ThreadManager.post(new ahsj(this), 8, null, true);
     }
     Object localObject = BuddyTransfileProcessor.a(this.app.getCurrentAccountUin(), null, 53, null);
     if (QLog.isDevelopLevel()) {
@@ -510,7 +510,7 @@ public class VADActivity
           localObject2 = localObject1;
           break label164;
           localSearchRequest.jdField_a_of_type_JavaLangString = arrayOfString[0];
-          ThreadManager.post(new ahel(this, localApproximateSearchEngine, localSearchRequest), 8, null, true);
+          ThreadManager.post(new ahsn(this, localApproximateSearchEngine, localSearchRequest), 8, null, true);
           arrayOfString[1] = localObject2;
         }
         break label229;
@@ -565,7 +565,7 @@ public class VADActivity
     Object localObject = Build.MANUFACTURER;
     int i;
     if (((String)localObject).equalsIgnoreCase("meizu")) {
-      i = 2131433373;
+      i = 2131433390;
     }
     for (;;)
     {
@@ -575,8 +575,8 @@ public class VADActivity
         if (j == 0) {
           break label230;
         }
-        ((SpannableString)localObject).setSpan(new StatableSpanTextView.StatableForegroundColorSpan(getResources().getColor(2131493061), getResources().getColor(2131493062)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length() - 1, 33);
-        DialogUtil.a(this, "权限提示", (CharSequence)localObject, 0, 2131435179, null, new ahei(this), new ahej(this)).show();
+        ((SpannableString)localObject).setSpan(new StatableSpanTextView.StatableForegroundColorSpan(getResources().getColor(2131493062), getResources().getColor(2131493063)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length() - 1, 33);
+        DialogUtil.a(this, "权限提示", (CharSequence)localObject, 0, 2131435196, null, new ahsk(this), new ahsl(this)).show();
         return;
       }
       catch (Exception localException) {}
@@ -587,15 +587,15 @@ public class VADActivity
       return;
       if (localException.equalsIgnoreCase("xiaomi"))
       {
-        i = 2131433374;
+        i = 2131433391;
       }
       else if (localException.equalsIgnoreCase("vivo"))
       {
-        i = 2131433375;
+        i = 2131433392;
       }
       else
       {
-        i = 2131433372;
+        i = 2131433389;
         j = 1;
       }
     }
@@ -603,7 +603,7 @@ public class VADActivity
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     localQQCustomDialog.setTitle("权限提示");
     localQQCustomDialog.setMessage(i);
-    localQQCustomDialog.setPositiveButton(2131435179, new DialogUtil.DialogOnClickAdapter(), true);
+    localQQCustomDialog.setPositiveButton(2131435196, new DialogUtil.DialogOnClickAdapter(), true);
     localQQCustomDialog.show();
   }
   
@@ -616,15 +616,15 @@ public class VADActivity
       finish();
       return false;
     }
-    super.setContentView(2130970557);
+    super.setContentView(2130970601);
     this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.a(new Class[] { BDHCommonUploadProcessor.class });
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewSearchVoiceView = ((SearchVoiceView)findViewById(2131371111));
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewSearchVoiceView = ((SearchVoiceView)findViewById(2131371274));
     this.jdField_a_of_type_ComTencentMobileqqSearchViewSearchVoiceView.setOnStateEndListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371113));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371276));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("请问你要找谁？");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371112));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371275));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    findViewById(2131371114).setOnClickListener(this);
+    findViewById(2131371277).setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqSearchUtilVADHelper = new VADHelper(this.jdField_c_of_type_JavaLangString);
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
     this.app.a().a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
@@ -635,7 +635,7 @@ public class VADActivity
     this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
     this.jdField_a_of_type_ArrayOfFloat = new float[1];
     this.jdField_a_of_type_ArrayOfJavaLangString = new String[2];
-    this.jdField_a_of_type_ComTencentAvGaudioAVObserver = new aheg(this);
+    this.jdField_a_of_type_ComTencentAvGaudioAVObserver = new ahsi(this);
     this.app.a().addObserver(this.jdField_a_of_type_ComTencentAvGaudioAVObserver);
     float f1 = getResources().getDisplayMetrics().density;
     i = (int)(20.0F * f1 + 0.5D);
@@ -654,7 +654,7 @@ public class VADActivity
     this.jdField_c_of_type_AndroidViewAnimationAnimation.setDuration(500L);
     this.jdField_c_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
     this.jdField_c_of_type_AndroidViewAnimationAnimation.setInterpolator(new DecelerateInterpolator(2.0F));
-    findViewById(2131371114).startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+    findViewById(2131371277).startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
     return true;
   }
   
@@ -787,7 +787,7 @@ public class VADActivity
       return true;
     case 6: 
       if (!NetworkUtil.d(this)) {
-        QQToast.a(BaseApplicationImpl.getContext(), 2131432992, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(BaseApplicationImpl.getContext(), 2131433009, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
       }
       c();
       return true;
@@ -805,10 +805,10 @@ public class VADActivity
       {
         c();
         return true;
-        QQToast.a(this.app.getApp(), 2131433770, 1).b(getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(this.app.getApp(), 2131433787, 1).b(getResources().getDimensionPixelSize(2131558448));
       }
       if (!NetworkUtil.d(this)) {
-        QQToast.a(BaseApplicationImpl.getContext(), 2131432992, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(BaseApplicationImpl.getContext(), 2131433009, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
       }
       c();
       return true;
@@ -822,17 +822,17 @@ public class VADActivity
   {
     switch (paramView.getId())
     {
-    case 2131371113: 
+    case 2131371276: 
     default: 
       return;
-    case 2131371114: 
+    case 2131371277: 
       ReportController.b(this.app, "dc00898", "", "", "0X8007E2B", "0X8007E2B", 0, 1, "", "", "", "");
       finish();
       return;
     }
     if (!NetworkUtil.d(this))
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131432992, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplicationImpl.getContext(), 2131433009, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
       return;
     }
     this.jdField_b_of_type_JavaLangString = "";

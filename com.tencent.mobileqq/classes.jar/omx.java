@@ -1,25 +1,23 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
-import android.view.View;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
 
-public final class omx
-  implements Runnable
+class omx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public omx(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  omx(omw paramomw, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
-    }
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)StoryMultiFragmentPart.a(this.jdField_a_of_type_Omw.a).getLayoutParams();
+    paramValueAnimator.width = ((int)((this.jdField_a_of_type_Int - this.b) * f1 + this.b));
+    paramValueAnimator.height = ((int)((this.c - this.d) * f1 + this.d));
+    paramValueAnimator.leftMargin = ((int)((this.e + 0) * f1 + 0.0F));
+    paramValueAnimator.bottomMargin = ((int)(f1 * (this.f + 0) + 0.0F));
+    StoryMultiFragmentPart.a(this.jdField_a_of_type_Omw.a).setLayoutParams(paramValueAnimator);
   }
 }
 

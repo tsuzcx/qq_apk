@@ -1,22 +1,11 @@
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 
-class yuu
-  implements Runnable
+public class yuu
 {
-  yuu(yut paramyut) {}
-  
-  public void run()
-  {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setRepeatCount(1);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new yuv(this));
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(localTranslateAnimation);
-  }
+  public BufferedInputStream a;
+  public ByteArrayOutputStream a;
+  public boolean a;
 }
 
 

@@ -1,19 +1,23 @@
-import com.squareup.okhttp.Call;
-import com.tencent.plato.mqq.module.NetworkingModule;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.widget.GuideViewBuilder;
 
 public class akul
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akul(NetworkingModule paramNetworkingModule, Call paramCall) {}
+  public akul(GuideViewBuilder paramGuideViewBuilder, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComSquareupOkhttpCall.cancel();
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akul
  * JD-Core Version:    0.7.0.1
  */

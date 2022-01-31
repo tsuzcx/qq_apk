@@ -1,63 +1,87 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.medalwall.ShareHelper;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.widget.ActionSheet;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.hotpic.VideoItemEventManager;
+import com.tencent.mobileqq.hotpic.VideoItemEventManager.onVideoItemEventListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class adsr
-  implements AdapterView.OnItemClickListener
+  extends BroadcastReceiver
 {
-  public adsr(ShareHelper paramShareHelper) {}
+  private final String jdField_a_of_type_JavaLangString = "reason";
+  private final String b = "homekey";
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public adsr(VideoItemEventManager paramVideoItemEventManager) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a.a().isShowing()) {
-      this.a.a.a().dismiss();
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
     }
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131435302;
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+      while (paramContext.hasNext()) {
+        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).b(false);
+      }
+    }
+    if ("android.intent.action.SCREEN_ON".equals(paramContext))
+    {
+      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+      while (paramContext.hasNext()) {
+        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).b(true);
+      }
+    }
+    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    {
+      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+      while (paramContext.hasNext()) {
+        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).c(true);
+      }
+    }
+    if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
+    {
+      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+      while (paramContext.hasNext()) {
+        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).c(false);
+      }
+    }
+    if ("VolumeBtnDown".equals(paramIntent.getAction()))
+    {
+      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+      while (paramContext.hasNext()) {
+        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).b();
+      }
+    }
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if (paramContext != null) {
+        break label294;
       }
     }
     for (;;)
     {
-      if (paramInt != -1)
+      return;
+      label294:
+      if (paramContext.equals("homekey"))
       {
-        QRUtils.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435303;
-        }
-      }
-      else
-      {
-        switch ((int)paramLong)
+        paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
+        while (paramContext.hasNext())
         {
-        default: 
-          return;
-        case 0: 
-          ShareHelper.a(this.a);
-          return;
-        case 1: 
-          ShareHelper.b(this.a);
-          return;
-        case 2: 
-          ShareHelper.c(this.a);
-          return;
+          ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).a();
+          QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
         }
-        ShareHelper.d(this.a);
-        return;
       }
-      paramInt = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsr
  * JD-Core Version:    0.7.0.1
  */

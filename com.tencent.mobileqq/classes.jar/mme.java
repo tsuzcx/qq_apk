@@ -1,41 +1,13 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.TextData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.OnItemClickListener;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-public class mme
-  extends BaseItemViewHolder
-  implements View.OnLongClickListener
+class mme
+  implements Runnable
 {
-  private TextView a;
+  mme(mmc parammmc) {}
   
-  public mme(View paramView, BaseData paramBaseData)
+  public void run()
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367080));
-    paramView.setOnLongClickListener(this);
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    switch (paramBaseData2.d)
-    {
-    default: 
-      return;
-    }
-    paramBaseData1 = (TextData)paramBaseData2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.a);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    new QQCustomMenu().a(0, "复制");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemOnItemClickListener.a(this);
-    return true;
+    this.a.a.finish();
   }
 }
 

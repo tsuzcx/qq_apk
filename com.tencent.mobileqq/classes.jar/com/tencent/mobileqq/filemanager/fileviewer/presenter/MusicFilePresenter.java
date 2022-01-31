@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import acuh;
-import acui;
-import acuj;
-import acuk;
-import acul;
+import adee;
+import adef;
+import adeg;
+import adeh;
+import adei;
 import android.app.Activity;
 import android.content.res.Resources;
 import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
@@ -115,7 +115,7 @@ public class MusicFilePresenter
   {
     p();
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new acul(this), 0L, 1000L);
+    this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new adei(this), 0L, 1000L);
   }
   
   private void p()
@@ -127,13 +127,6 @@ public class MusicFilePresenter
     }
   }
   
-  public void Z_()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.c(QFileUtils.a(0L));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(0);
-    a(false);
-  }
-  
   public void a()
   {
     super.a();
@@ -141,8 +134,8 @@ public class MusicFilePresenter
       QLog.i("FileBrowserPresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = music");
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(0);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.a(new acuh(this));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(new acui(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.a(new adee(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(new adef(this));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this);
     l();
   }
@@ -155,7 +148,7 @@ public class MusicFilePresenter
   public void a(int paramInt)
   {
     String str = QFileUtils.a(paramInt);
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new acuj(this, str, paramInt));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adeg(this, str, paramInt));
   }
   
   public void a(String paramString)
@@ -169,6 +162,13 @@ public class MusicFilePresenter
   public boolean a()
   {
     return true;
+  }
+  
+  public void ab_()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.c(QFileUtils.a(0L));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(0);
+    a(false);
   }
   
   protected void b()
@@ -196,7 +196,7 @@ public class MusicFilePresenter
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService == null) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService = FileViewMusicService.a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.a(this.jdField_a_of_type_JavaLangString, new acuk(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.a(this.jdField_a_of_type_JavaLangString, new adeh(this));
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.b(this.jdField_a_of_type_JavaLangString)) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.a(this);
     }

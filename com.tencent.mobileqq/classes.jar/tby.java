@@ -1,25 +1,18 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.contacts.base.CardConfigManager.CardConfigs;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.NearbyHandler;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
-class tby
+public class tby
   implements Runnable
 {
-  tby(tbx paramtbx) {}
+  public tby(NearbyActivity paramNearbyActivity) {}
   
   public void run()
   {
-    FormSwitchItem localFormSwitchItem = this.a.a.d;
-    if (PermisionPrivacyActivity.a(this.a.a).a) {}
-    for (int i = 0;; i = 8)
-    {
-      localFormSwitchItem.setVisibility(i);
-      if (this.a.a.d.getVisibility() == 0) {
-        PermisionPrivacyActivity.a(this.a.a, this.a.a.d.a(), this.a.a.app.o());
-      }
-      return;
-    }
+    this.a.a.c();
+    NearbyHandler localNearbyHandler = (NearbyHandler)this.a.a.a(3);
+    localNearbyHandler.a(this.a.a.getCurrentAccountUin());
+    localNearbyHandler.a(2);
   }
 }
 

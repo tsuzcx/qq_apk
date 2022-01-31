@@ -1,23 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
+import java.io.File;
 
-public class xxd
-  implements ChatActivityUtils.StartVideoListener
+class xxd
+  implements Runnable
 {
-  public xxd(SelectMemberActivity paramSelectMemberActivity, Intent paramIntent) {}
+  xxd(xxc paramxxc, File paramFile) {}
   
-  public void a() {}
-  
-  public void b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.g = 2;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.finish();
+    ShortVideoCaptureController.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
   }
 }
 

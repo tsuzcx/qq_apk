@@ -72,8 +72,12 @@ public class HWEncodeGenerateDoodleImageSegment
       localObject = localEditDoodleExport.a().a(this.jdField_a_of_type_Int);
       if (localObject != null)
       {
-        paramJobContext = (JobContext)localObject;
-        if (paramGenerateContext.jdField_a_of_type_Int == 10)
+        if (paramGenerateContext.jdField_a_of_type_Int != 10)
+        {
+          paramJobContext = (JobContext)localObject;
+          if (paramGenerateContext.jdField_a_of_type_Int != 12) {}
+        }
+        else
         {
           j = paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishGenerateThumbArgs.c;
           paramJobContext = UIUtils.a((Bitmap)localObject, 360 - j);
@@ -82,9 +86,9 @@ public class HWEncodeGenerateDoodleImageSegment
         localObject = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.b, "mosaic.png");
       }
     }
-    label741:
-    label883:
-    label889:
+    label799:
+    label941:
+    label947:
     for (;;)
     {
       try
@@ -100,7 +104,7 @@ public class HWEncodeGenerateDoodleImageSegment
           paramJobContext = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.b, ".png");
         }
         if (localBitmap == null) {
-          break label815;
+          break label873;
         }
         if (localEditFilterExport != null) {}
         int k;
@@ -130,21 +134,31 @@ public class HWEncodeGenerateDoodleImageSegment
               i = k;
               if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int != 10)
               {
-                i = ((BitmapFactory.Options)localObject).outHeight;
-                j = ((BitmapFactory.Options)localObject).outWidth;
+                j = m;
+                i = k;
+                if (k > m)
+                {
+                  j = m;
+                  i = k;
+                  if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int != 12)
+                  {
+                    i = ((BitmapFactory.Options)localObject).outHeight;
+                    j = ((BitmapFactory.Options)localObject).outWidth;
+                  }
+                }
               }
             }
             localObject = BitmapUtils.b(localBitmap, i, j, true, false);
             i = paramGenerateContext.c;
-            if ((i == 0) || (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 10)) {
-              break label889;
+            if ((i == 0) || (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 10) || (i == 0) || (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 12)) {
+              break label947;
             }
             localObject = UIUtils.a((Bitmap)localObject, i);
             if (localObject == null) {
-              break label883;
+              break label941;
             }
             if (paramGenerateContext.jdField_a_of_type_Int != 1) {
-              break label741;
+              break label799;
             }
             str = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.b, ".png");
           }
@@ -172,7 +186,7 @@ public class HWEncodeGenerateDoodleImageSegment
             BitmapUtils.a((Bitmap)localObject);
           }
           if ((localObject == null) || (!bool)) {
-            break label769;
+            break label827;
           }
           SLog.b("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "resize and crop original doodle image success");
           l2 = SystemClock.uptimeMillis();
@@ -199,11 +213,13 @@ public class HWEncodeGenerateDoodleImageSegment
         return;
       }
       continue;
+      label827:
       SLog.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "resize and save doodle image failed");
       StoryReportor.b("take_video", "create_doodle_result", 0, -2, new String[0]);
       paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
       super.notifyError(new ErrorMessage(-1, "Resize or store doodle failed"));
       return;
+      label873:
       SLog.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "get doodle bitmap failed");
       StoryReportor.b("take_video", "create_doodle_result", 0, -2, new String[0]);
       paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;

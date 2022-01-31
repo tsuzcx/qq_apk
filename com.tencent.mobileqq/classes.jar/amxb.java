@@ -1,22 +1,23 @@
-import android.widget.EditText;
-import com.tencent.util.InputMethodUtil;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class amxb
-  implements Runnable
+public final class amxb
+  implements Parcelable.Creator
 {
-  public amxb(FacePoiSearchUI paramFacePoiSearchUI) {}
-  
-  public void run()
+  public PluginRecord a(Parcel paramParcel)
   {
-    this.a.a.setFocusableInTouchMode(true);
-    this.a.a.requestFocus();
-    InputMethodUtil.a(this.a.a);
+    return new PluginRecord(paramParcel);
+  }
+  
+  public PluginRecord[] a(int paramInt)
+  {
+    return new PluginRecord[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxb
  * JD-Core Version:    0.7.0.1
  */

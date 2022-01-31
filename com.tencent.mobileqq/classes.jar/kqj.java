@@ -1,17 +1,14 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.FullScreenTopContainerHolder;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
 
-public class kqj
+class kqj
   implements Runnable
 {
-  public kqj(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, AccountDetailBaseAdapter.FullScreenTopContainerHolder paramFullScreenTopContainerHolder, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2) {}
+  kqj(kqi paramkqi) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter$FullScreenTopContainerHolder.a.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter$FullScreenTopContainerHolder.b.setLayoutParams(this.b);
+    this.a.a.a.runOnUiThread(new kqk(this));
   }
 }
 

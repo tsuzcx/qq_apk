@@ -1,19 +1,19 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class zez
-  implements Runnable
+public final class zez
+  implements DialogInterface.OnClickListener
 {
-  public zez(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zez(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PhoneContactManagerImp.a(this.a, this.a.a());
-    PhoneContactManagerImp.a(this.a);
-    this.a.e = this.a.a.getLong("key_contacts_switches", 0L);
-    ContactSyncManager localContactSyncManager = (ContactSyncManager)PhoneContactManagerImp.a(this.a).getManager(40);
+    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
   }
 }
 

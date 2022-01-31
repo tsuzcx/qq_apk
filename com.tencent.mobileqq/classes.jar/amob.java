@@ -1,25 +1,19 @@
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginMangerHelper;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
-import cooperation.qzone.widgetai.QzoneWidgetAIInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qlink.QQProxyForQlink;
+import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-public final class amob
-  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
+public class amob
+  implements DialogInterface.OnClickListener
 {
-  public amob(String paramString) {}
+  public amob(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void a(IQZonePluginManager paramIQZonePluginManager)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIQZonePluginManager == null) {
-      QZonePluginMangerHelper.a(QzoneWidgetAIInterface.getContext(), this);
-    }
-    do
-    {
-      return;
-      paramIQZonePluginManager = paramIQZonePluginManager.a(this.a);
-    } while (paramIQZonePluginManager == null);
-    QzoneWidgetAIInterface.access$002(paramIQZonePluginManager.c);
+    this.a.app.a().a(new QlAndQQInterface.DailogClickInfo(4));
+    this.a.finish();
   }
 }
 

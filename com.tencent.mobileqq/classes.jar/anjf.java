@@ -1,17 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class anjf
-  implements anjl
+public class anjf
+  implements Runnable
 {
-  anjf(anje paramanje, boolean paramBoolean) {}
+  public anjf(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void a()
+  public void run()
   {
-    if (DoodleLayout.a(this.jdField_a_of_type_Anje.a) != null) {
-      DoodleLayout.a(this.jdField_a_of_type_Anje.a).c(true);
-    }
-    this.jdField_a_of_type_Anje.a.a().b(this.jdField_a_of_type_Boolean);
+    QIMEffectCameraCaptureUnit.b(this.a);
+    QIMEffectCameraCaptureUnit.c(this.a);
   }
 }
 

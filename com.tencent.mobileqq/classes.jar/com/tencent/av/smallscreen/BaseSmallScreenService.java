@@ -14,9 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import joi;
-import joj;
-import jok;
+import jnt;
+import jnu;
+import jnv;
 import mqq.app.AppService;
 
 public class BaseSmallScreenService
@@ -25,7 +25,7 @@ public class BaseSmallScreenService
 {
   int jdField_a_of_type_Int;
   Handler jdField_a_of_type_AndroidOsHandler;
-  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new joi(this);
+  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new jnt(this);
   TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager = null;
   View jdField_a_of_type_AndroidViewView = null;
   ImageView jdField_a_of_type_AndroidWidgetImageView = null;
@@ -195,25 +195,25 @@ public class BaseSmallScreenService
       }
       this.jdField_a_of_type_AndroidTelephonyTelephonyManager = ((TelephonyManager)getSystemService("phone"));
       this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_AndroidTelephonyPhoneStateListener, 32);
-      this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131559921);
-      this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131559922);
-      this.jdField_c_of_type_Int = getResources().getDimensionPixelSize(2131559931);
-      this.jdField_d_of_type_Int = getResources().getDimensionPixelSize(2131559932);
-      this.jdField_e_of_type_Int = getResources().getDimensionPixelSize(2131559933);
-      this.jdField_f_of_type_Int = getResources().getDimensionPixelSize(2131559934);
-      this.g = getResources().getDimensionPixelSize(2131559935);
-      this.h = getResources().getDimensionPixelSize(2131559936);
-      this.i = getResources().getDimensionPixelSize(2131559937);
-      this.j = getResources().getDimensionPixelSize(2131559938);
-      this.k = getResources().getDimensionPixelSize(2131559939);
-      this.l = getResources().getDimensionPixelSize(2131559940);
-      this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = ((SmallScreenRelativeLayout)((LayoutInflater)localObject2).inflate(2130969352, null));
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = ((SmallScreenRelativeLayout)((LayoutInflater)localObject2).inflate(2130969353, null));
+      this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131559939);
+      this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131559940);
+      this.jdField_c_of_type_Int = getResources().getDimensionPixelSize(2131559949);
+      this.jdField_d_of_type_Int = getResources().getDimensionPixelSize(2131559950);
+      this.jdField_e_of_type_Int = getResources().getDimensionPixelSize(2131559951);
+      this.jdField_f_of_type_Int = getResources().getDimensionPixelSize(2131559952);
+      this.g = getResources().getDimensionPixelSize(2131559953);
+      this.h = getResources().getDimensionPixelSize(2131559954);
+      this.i = getResources().getDimensionPixelSize(2131559955);
+      this.j = getResources().getDimensionPixelSize(2131559956);
+      this.k = getResources().getDimensionPixelSize(2131559957);
+      this.l = getResources().getDimensionPixelSize(2131559958);
+      this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = ((SmallScreenRelativeLayout)((LayoutInflater)localObject2).inflate(2130969353, null));
+      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = ((SmallScreenRelativeLayout)((LayoutInflater)localObject2).inflate(2130969354, null));
       this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.b();
       this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setFloatListener(this);
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setFloatListener(this);
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setTitleHeight(getResources().getDimensionPixelSize(2131558448) * 5 / 2);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131365357));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131365379));
       this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenToast = new SmallScreenToast(this, this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout);
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast = new SmallScreenToast(this, this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout);
       localObject2 = this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenToast.a();
@@ -233,10 +233,10 @@ public class BaseSmallScreenService
       }
       ((WindowManager.LayoutParams)localObject2).type = i1;
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131366234));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131366261));
       this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2131034265);
       ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131365361);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131365383);
       localObject2 = new IntentFilter();
       ((IntentFilter)localObject2).addAction("android.intent.action.NEW_OUTGOING_CALL");
       ((IntentFilter)localObject2).addAction("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED");
@@ -245,11 +245,11 @@ public class BaseSmallScreenService
       this.jdField_c_of_type_Boolean = SmallScreenUtils.b(((AppInterface)this.app).getApp());
       this.jdField_f_of_type_Boolean = SmallScreenUtils.f(((AppInterface)this.app).getApp());
       if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        this.jdField_a_of_type_JavaLangRunnable = new joj(this);
+        this.jdField_a_of_type_JavaLangRunnable = new jnu(this);
       }
       a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 400L);
       if (this.jdField_b_of_type_JavaLangRunnable == null) {
-        this.jdField_b_of_type_JavaLangRunnable = new jok(this);
+        this.jdField_b_of_type_JavaLangRunnable = new jnv(this);
       }
       a().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 1000L);
       if (!QLog.isColorLevel()) {

@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.JobContext;
 import com.tribe.async.async.JobSegment;
 import java.util.List;
-import ndc;
+import nem;
 
 public class MsgTabNodeVidListPullSegment
   extends JobSegment
@@ -55,7 +55,7 @@ public class MsgTabNodeVidListPullSegment
       QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "db not found, start to pull, info=" + paramMsgTabNodeInfo);
     }
     paramJobContext = new MsgTabNodeVidListRequest(paramMsgTabNodeInfo);
-    CmdTaskManger.a().a(paramJobContext, new ndc(this, paramMsgTabNodeInfo));
+    CmdTaskManger.a().a(paramJobContext, new nem(this, paramMsgTabNodeInfo));
   }
 }
 

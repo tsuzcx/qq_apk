@@ -1,50 +1,26 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopGift;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.DownloadGftData;
-import com.tencent.mobileqq.troop.utils.TroopGiftUtil;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.util.Observable;
-import java.util.Observer;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public abstract class vhf
-  extends BaseBubbleBuilder.ViewHolder
-  implements Observer
+public class vhf
+  implements Animator.AnimatorListener
 {
-  public ViewGroup a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  private QQAppInterface a;
-  public MessageForTroopGift a;
-  public BubbleImageView a;
-  public View b;
-  public ViewGroup b;
-  public Button b;
-  public TextView b;
-  public View c;
-  public Button c;
-  public Button d;
+  public vhf(SixCombolEffectView paramSixCombolEffectView, vhg paramvhg) {}
   
-  public vhf(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramObservable = (AIOAnimationControlManager.DownloadGftData)paramObject;
-    if ((paramObservable.a.equals(TroopGiftUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift))) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isLoading)) {
-      this.c.post(new vhg(this, paramObservable));
+    if (!SixCombolEffectView.a) {
+      return;
     }
+    this.jdField_a_of_type_Vhg.b.start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

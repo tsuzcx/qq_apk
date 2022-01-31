@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.selectmember.TroopListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
 
 public class ycg
-  implements Runnable
+  extends TroopObserver
 {
-  public ycg(QvipSpecialSoundManager paramQvipSpecialSoundManager, QvipSpecialSoundManager.CallBack paramCallBack, boolean paramBoolean) {}
+  public ycg(TroopListAdapter paramTroopListAdapter) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager$CallBack.a(this.jdField_a_of_type_Boolean);
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      TroopListAdapter.a(this.a, paramString, localBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ycg
  * JD-Core Version:    0.7.0.1
  */

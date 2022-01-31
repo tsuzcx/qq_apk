@@ -1,16 +1,24 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.util.AudioDataCache;
+import com.tencent.image.URLImageView;
+import cooperation.qzone.widget.FastAnimationDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-class anra
+public class anra
   implements Runnable
 {
-  anra(anqz paramanqz, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public anra(EditGifImage paramEditGifImage) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr);
-    }
+    FastAnimationDrawable localFastAnimationDrawable = this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable;
+    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
+    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = this.a.b;
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
+    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
+    this.a.d = false;
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true, false);
+    this.a.b = localFastAnimationDrawable;
   }
 }
 

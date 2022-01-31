@@ -1,17 +1,19 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class kwm
   implements Runnable
 {
-  public kwm(CustomWebView paramCustomWebView) {}
+  public kwm(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomWebView", 2, "webview real destroy now");
-    }
-    this.a.b();
+    ReadInJoyNativeAdFragment.a(this.a).setBackgroundResource(2130838508);
+    ReadInJoyNativeAdFragment.a(this.a).setText(this.a.getText(2131438693));
+    ReadInJoyNativeAdFragment.a(this.a).setTextColor(-1);
+    ReadInJoyNativeAdFragment.a(this.a).setProgress(0);
+    ReadInJoyNativeAdFragment.a(this.a).setClickable(true);
+    ReadInJoyNativeAdFragment.c(this.a, 0);
   }
 }
 

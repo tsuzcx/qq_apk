@@ -1,31 +1,37 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import com.tencent.mobileqq.utils.LogTag;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 import com.tencent.qphone.base.util.QLog;
 
-public class wst
+class wst
   implements Runnable
 {
-  public wst(AlbumListAdapter paramAlbumListAdapter) {}
+  wst(wss paramwss, Bitmap paramBitmap) {}
   
   public void run()
   {
-    
-    if (AlbumListAdapter.a(this.a)) {}
-    for (QQAlbumInfo localQQAlbumInfo = this.a.b(this.a.jdField_a_of_type_AndroidAppActivity, AlbumListAdapter.a(this.a), AlbumListAdapter.b(this.a), this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter, AlbumListAdapter.c(this.a), true, AlbumListAdapter.a(this.a));; localQQAlbumInfo = this.a.b(this.a.jdField_a_of_type_AndroidAppActivity, 210, 100, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter))
+    boolean bool = true;
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      this.a.b(localQQAlbumInfo);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter.b()))
+      this.jdField_a_of_type_Wss.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      if (QLog.isColorLevel())
       {
-        localQQAlbumInfo = this.a.a(this.a.jdField_a_of_type_AndroidAppActivity);
-        this.a.d(localQQAlbumInfo);
-        if (QLog.isColorLevel()) {
-          QLog.d("AlbumListAdapter", 2, "queryAlbumList() run postVideoAlbum()， videoAlbumInfo.count=" + localQQAlbumInfo.mMediaFileCount);
+        localStringBuilder = new StringBuilder().append("AvatarPendantActivity decode Avatar, bitmap is null:");
+        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+          break label116;
         }
       }
-      LogTag.a("PEAK", "queryRecentBucket");
+    }
+    for (;;)
+    {
+      QLog.d("Q.dynamicAvatar", 2, bool);
       return;
+      this.jdField_a_of_type_Wss.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setFaceDrawable(this.jdField_a_of_type_Wss.a.app, 1, this.jdField_a_of_type_Wss.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, 640, true, true, true, false, 7);
+      break;
+      label116:
+      bool = false;
     }
   }
 }

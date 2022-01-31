@@ -1,21 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ancn
-  implements View.OnClickListener
+  extends Handler
 {
-  public ancn(EditVideoButton paramEditVideoButton) {}
+  public ancn(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a(34);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String[])));
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString = (String[])paramMessage.obj;
+    localArrayList.add(QzoneDynamicAlbumPlugin.a(this.a, arrayOfString));
+    this.a.a(localArrayList, paramMessage.arg1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancn
  * JD-Core Version:    0.7.0.1
  */

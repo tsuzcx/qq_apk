@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementCoverPreloadManager;
+import java.util.ArrayList;
 
-public class kuv
+public final class kuv
   implements Runnable
 {
-  public kuv(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, String paramString) {}
+  public kuv(ArrayList paramArrayList) {}
   
   public void run()
   {
-    AdvertisementVideoPreloadManager.b(this.jdField_a_of_type_JavaLangString);
+    AdvertisementCoverPreloadManager.a().a(this.a);
   }
 }
 

@@ -1,26 +1,19 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.shortvideo.ptvfilter.FilterProcessRender;
-import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureMonitorManager;
-import com.tencent.mobileqq.shortvideo.ptvfilter.test.PtvFilterTimeStatistics;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.facedetect.FaceDetector;
-
 public class ahon
-  implements Runnable
 {
-  public ahon(FilterProcessRender paramFilterProcessRender, ahoo paramahoo) {}
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private final long b;
   
-  public void run()
+  private ahon(long paramLong1, long paramLong2, int paramInt)
   {
-    long l1 = SystemClock.elapsedRealtimeNanos();
-    GestureMonitorManager.a().c();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterFilterProcessRender.a.doFaceDetect(this.jdField_a_of_type_Ahoo.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Ahoo.jdField_a_of_type_Int, this.jdField_a_of_type_Ahoo.b);
-    GestureMonitorManager.a().d();
-    long l2 = SystemClock.elapsedRealtimeNanos();
-    PtvFilterTimeStatistics.a((l2 - l1) / 1000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[doFaceDetect=" + (l2 - l1) / 1000L + "us]");
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

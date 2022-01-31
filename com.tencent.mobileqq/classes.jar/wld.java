@@ -1,41 +1,41 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.app.BizTroopObserver;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
+import java.net.URLEncoder;
 
 public class wld
-  extends BizTroopObserver
+  implements View.OnClickListener
 {
-  public wld(TroopFragment paramTroopFragment) {}
+  public wld(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onClick(View paramView)
   {
-    if (paramInt2 == 0)
+    if (!NetworkUtil.g(this.a.jdField_a_of_type_AndroidAppActivity))
     {
-      this.a.h();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label44;
-        }
-      }
-    }
-    label44:
-    while (!this.a.isResumed())
-    {
-      QQToast.a(this.a.getActivity(), 2, "成功设为置顶群", 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      QQToast.a(this.a.getActivity(), 2, "成功取消置顶群", 0).a();
+      QQToast.a(this.a, 1, this.a.getString(2131430157), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131435563);
+    paramView = ((TextView)paramView).getText().toString();
+    Object localObject = new Intent(this.a.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", "http://qqweb.qq.com/m/relativegroup/index.html?_bid=165&_wv=4194304&source=qun_tag&keyword=" + URLEncoder.encode(paramView));
+    ((Intent)localObject).putExtra("hide_operation_bar", true);
+    ((Intent)localObject).putExtra("hide_more_button", true);
+    this.a.startActivity((Intent)localObject);
+    localObject = this.a.app;
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_Boolean) {}
+    for (paramView = "0";; paramView = "1")
+    {
+      ReportController.b((QQAppInterface)localObject, "P_CliOper", "Grp_join", "", "person_data", "Clk_quntag", 0, 0, str, paramView, "", "");
+      return;
     }
-    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

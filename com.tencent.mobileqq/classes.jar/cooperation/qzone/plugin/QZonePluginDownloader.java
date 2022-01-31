@@ -1,11 +1,11 @@
 package cooperation.qzone.plugin;
 
-import amhd;
-import amhe;
-import amhf;
-import amhg;
-import amhj;
-import amhk;
+import amxi;
+import amxj;
+import amxk;
+import amxl;
+import amxo;
+import amxp;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -43,11 +43,11 @@ public class QZonePluginDownloader
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     DownloaderFactory.getInstance(this.jdField_a_of_type_AndroidContentContext);
-    DownloaderFactory.init(new amhe(), new QZonePluginDownloaderLog());
+    DownloaderFactory.init(new amxj(), new QZonePluginDownloaderLog());
     this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.createDownloader("QZonePluginDownloader");
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.setPortConfigStrategy(new amhg());
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.setDirectIPConfigStrategy(new amhf());
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.setBackupIPConfigStrategy(new amhd());
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.setPortConfigStrategy(new amxl());
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.setDirectIPConfigStrategy(new amxk());
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.setBackupIPConfigStrategy(new amxi());
     this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.setKeepAliveStrategy(new QZonePluginDownloadConfigKeepAliveStrategy());
     this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.setDownloadMode(Downloader.DownloadMode.StrictMode);
     this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.enableResumeTransfer(true);
@@ -55,11 +55,11 @@ public class QZonePluginDownloader
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   }
   
-  private void a(amhk paramamhk)
+  private void a(amxp paramamxp)
   {
-    PluginRecord localPluginRecord = amhk.a(paramamhk);
-    Object localObject = amhk.a(paramamhk);
-    amhk.a(paramamhk).jdField_a_of_type_Int = 1;
+    PluginRecord localPluginRecord = amxp.a(paramamxp);
+    Object localObject = amxp.a(paramamxp);
+    amxp.a(paramamxp).jdField_a_of_type_Int = 1;
     ((QZonePluginDownloader.OnPluginDownloadListner)localObject).a(localPluginRecord);
     File localFile = QZonePluginUtils.e(this.jdField_a_of_type_AndroidContentContext, localPluginRecord.f);
     if (QLog.isColorLevel()) {
@@ -83,9 +83,9 @@ public class QZonePluginDownloader
         {
           QLog.w("QZonePluginManger", 1, "", localException);
         }
-      } while (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(localPluginRecord.jdField_a_of_type_JavaLangString, localFile.getAbsolutePath(), new amhj(this, paramamhk)));
+      } while (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(localPluginRecord.jdField_a_of_type_JavaLangString, localFile.getAbsolutePath(), new amxo(this, paramamxp)));
       localObject = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 3);
-      ((Message)localObject).obj = paramamhk;
+      ((Message)localObject).obj = paramamxp;
       ((Message)localObject).sendToTarget();
     }
     jdField_a_of_type_JavaLangString = jdField_a_of_type_Long + "_" + (String)localObject;
@@ -93,27 +93,27 @@ public class QZonePluginDownloader
     if (a(localFile.getParent()))
     {
       localObject = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 3);
-      ((Message)localObject).obj = paramamhk;
+      ((Message)localObject).obj = paramamxp;
       ((Message)localObject).arg1 = -9998;
       ((Message)localObject).sendToTarget();
       return;
     }
   }
   
-  private void a(amhk paramamhk, int paramInt, String paramString)
+  private void a(amxp paramamxp, int paramInt, String paramString)
   {
-    PluginRecord localPluginRecord = amhk.a(paramamhk);
+    PluginRecord localPluginRecord = amxp.a(paramamxp);
     long l1 = System.currentTimeMillis();
     long l2 = jdField_a_of_type_Long;
-    LpReportInfo_dc01500.reportDownload(localPluginRecord.f, localPluginRecord.d, localPluginRecord.c, jdField_a_of_type_JavaLangString, jdField_a_of_type_Int + "", amhk.a(paramamhk), (l1 - l2) / 1000.0D, paramInt, this.jdField_b_of_type_Int, paramString);
+    LpReportInfo_dc01500.reportDownload(localPluginRecord.f, localPluginRecord.d, localPluginRecord.c, jdField_a_of_type_JavaLangString, jdField_a_of_type_Int + "", amxp.a(paramamxp), (l1 - l2) / 1000.0D, paramInt, this.jdField_b_of_type_Int, paramString);
   }
   
-  private void a(amhk paramamhk, int paramInt, String paramString1, String paramString2)
+  private void a(amxp paramamxp, int paramInt, String paramString1, String paramString2)
   {
-    PluginRecord localPluginRecord = amhk.a(paramamhk);
+    PluginRecord localPluginRecord = amxp.a(paramamxp);
     long l1 = System.currentTimeMillis();
     long l2 = jdField_a_of_type_Long;
-    LpReportInfo_dc01500.reportDownload(localPluginRecord.f, localPluginRecord.d, localPluginRecord.c, jdField_a_of_type_JavaLangString, jdField_a_of_type_Int + "", amhk.a(paramamhk), (l1 - l2) / 1000.0D, paramInt, this.jdField_b_of_type_Int, paramString1, paramString2);
+    LpReportInfo_dc01500.reportDownload(localPluginRecord.f, localPluginRecord.d, localPluginRecord.c, jdField_a_of_type_JavaLangString, jdField_a_of_type_Int + "", amxp.a(paramamxp), (l1 - l2) / 1000.0D, paramInt, this.jdField_b_of_type_Int, paramString1, paramString2);
   }
   
   private boolean a(String paramString)
@@ -138,18 +138,18 @@ public class QZonePluginDownloader
     }
   }
   
-  private void b(amhk paramamhk)
+  private void b(amxp paramamxp)
   {
-    if ((paramamhk == null) || (amhk.a(paramamhk) == null))
+    if ((paramamxp == null) || (amxp.a(paramamxp) == null))
     {
-      QLog.w("QZonePluginManger", 1, "cancelDownLoadPlugin, downloadRecord or record is null, downloadRecord=" + paramamhk);
+      QLog.w("QZonePluginManger", 1, "cancelDownLoadPlugin, downloadRecord or record is null, downloadRecord=" + paramamxp);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "cancelDownLoadPlugin url:" + amhk.a(paramamhk).jdField_a_of_type_JavaLangString);
+      QLog.d("QZonePluginManger", 2, "cancelDownLoadPlugin url:" + amxp.a(paramamxp).jdField_a_of_type_JavaLangString);
     }
-    PluginRecord localPluginRecord = amhk.a(paramamhk);
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.abort(localPluginRecord.jdField_a_of_type_JavaLangString, new amhj(this, paramamhk));
+    PluginRecord localPluginRecord = amxp.a(paramamxp);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.abort(localPluginRecord.jdField_a_of_type_JavaLangString, new amxo(this, paramamxp));
   }
   
   public void a()
@@ -163,12 +163,12 @@ public class QZonePluginDownloader
   {
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    amhk localamhk = new amhk(null);
-    amhk.a(localamhk, paramPluginRecord.f);
-    amhk.a(localamhk, paramPluginRecord);
-    amhk.a(localamhk, -1);
-    amhk.a(localamhk, paramOnPluginDownloadListner);
-    localMessage.obj = localamhk;
+    amxp localamxp = new amxp(null);
+    amxp.a(localamxp, paramPluginRecord.f);
+    amxp.a(localamxp, paramPluginRecord);
+    amxp.a(localamxp, -1);
+    amxp.a(localamxp, paramOnPluginDownloadListner);
+    localMessage.obj = localamxp;
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
@@ -176,13 +176,13 @@ public class QZonePluginDownloader
   {
     Message localMessage = Message.obtain();
     localMessage.what = 0;
-    amhk localamhk = new amhk(null);
-    amhk.a(localamhk, paramPluginRecord.f);
+    amxp localamxp = new amxp(null);
+    amxp.a(localamxp, paramPluginRecord.f);
     paramPluginRecord.jdField_a_of_type_Int = 0;
-    amhk.a(localamhk, paramPluginRecord);
-    amhk.a(localamhk, paramOnPluginDownloadListner);
-    amhk.a(localamhk, paramInt);
-    localMessage.obj = localamhk;
+    amxp.a(localamxp, paramPluginRecord);
+    amxp.a(localamxp, paramOnPluginDownloadListner);
+    amxp.a(localamxp, paramInt);
+    localMessage.obj = localamxp;
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
@@ -194,61 +194,61 @@ public class QZonePluginDownloader
     for (;;)
     {
       return false;
-      paramMessage = (amhk)paramMessage.obj;
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(amhk.a(paramMessage))) {
+      paramMessage = (amxp)paramMessage.obj;
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(amxp.a(paramMessage))) {
         return false;
       }
-      this.jdField_a_of_type_JavaUtilMap.put(amhk.a(paramMessage), paramMessage);
+      this.jdField_a_of_type_JavaUtilMap.put(amxp.a(paramMessage), paramMessage);
       a(paramMessage);
       return true;
-      paramMessage = (amhk)paramMessage.obj;
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(amhk.a(paramMessage)))
+      paramMessage = (amxp)paramMessage.obj;
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(amxp.a(paramMessage)))
       {
         a(paramMessage, 3, "");
-        this.jdField_a_of_type_JavaUtilMap.remove(amhk.a(paramMessage));
+        this.jdField_a_of_type_JavaUtilMap.remove(amxp.a(paramMessage));
         b(paramMessage);
-        Object localObject = amhk.a(paramMessage);
+        Object localObject = amxp.a(paramMessage);
         if (localObject != null)
         {
-          ((QZonePluginDownloader.OnPluginDownloadListner)localObject).b(amhk.a(paramMessage));
+          ((QZonePluginDownloader.OnPluginDownloadListner)localObject).b(amxp.a(paramMessage));
           continue;
-          paramMessage = (amhk)paramMessage.obj;
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(amhk.a(paramMessage)))
+          paramMessage = (amxp)paramMessage.obj;
+          if (this.jdField_a_of_type_JavaUtilMap.containsKey(amxp.a(paramMessage)))
           {
             a(paramMessage, 1, "");
-            this.jdField_a_of_type_JavaUtilMap.remove(amhk.a(paramMessage));
-            localObject = amhk.a(paramMessage);
+            this.jdField_a_of_type_JavaUtilMap.remove(amxp.a(paramMessage));
+            localObject = amxp.a(paramMessage);
             if (localObject != null)
             {
-              ((QZonePluginDownloader.OnPluginDownloadListner)localObject).b(amhk.a(paramMessage));
+              ((QZonePluginDownloader.OnPluginDownloadListner)localObject).b(amxp.a(paramMessage));
               continue;
-              localObject = (amhk)paramMessage.obj;
-              if (this.jdField_a_of_type_JavaUtilMap.containsKey(amhk.a((amhk)localObject)))
+              localObject = (amxp)paramMessage.obj;
+              if (this.jdField_a_of_type_JavaUtilMap.containsKey(amxp.a((amxp)localObject)))
               {
-                a((amhk)localObject, 2, paramMessage.arg1 + "", paramMessage.arg2 + "");
-                this.jdField_a_of_type_JavaUtilMap.remove(amhk.a((amhk)localObject));
-                QZonePluginDownloader.OnPluginDownloadListner localOnPluginDownloadListner = amhk.a((amhk)localObject);
+                a((amxp)localObject, 2, paramMessage.arg1 + "", paramMessage.arg2 + "");
+                this.jdField_a_of_type_JavaUtilMap.remove(amxp.a((amxp)localObject));
+                QZonePluginDownloader.OnPluginDownloadListner localOnPluginDownloadListner = amxp.a((amxp)localObject);
                 if (localOnPluginDownloadListner != null)
                 {
-                  localOnPluginDownloadListner.a(amhk.a((amhk)localObject), paramMessage.arg1);
+                  localOnPluginDownloadListner.a(amxp.a((amxp)localObject), paramMessage.arg1);
                   continue;
-                  paramMessage = (amhk)paramMessage.obj;
-                  if (this.jdField_a_of_type_JavaUtilMap.containsKey(amhk.a(paramMessage)))
+                  paramMessage = (amxp)paramMessage.obj;
+                  if (this.jdField_a_of_type_JavaUtilMap.containsKey(amxp.a(paramMessage)))
                   {
                     a(paramMessage, 0, "");
-                    this.jdField_a_of_type_JavaUtilMap.remove(amhk.a(paramMessage));
-                    localObject = amhk.a(paramMessage);
+                    this.jdField_a_of_type_JavaUtilMap.remove(amxp.a(paramMessage));
+                    localObject = amxp.a(paramMessage);
                     if (localObject != null)
                     {
-                      amhk.a(paramMessage).jdField_a_of_type_Int = 2;
-                      ((QZonePluginDownloader.OnPluginDownloadListner)localObject).b(amhk.a(paramMessage), amhk.a(paramMessage));
+                      amxp.a(paramMessage).jdField_a_of_type_Int = 2;
+                      ((QZonePluginDownloader.OnPluginDownloadListner)localObject).b(amxp.a(paramMessage), amxp.a(paramMessage));
                       continue;
-                      paramMessage = (amhk)paramMessage.obj;
-                      if (this.jdField_a_of_type_JavaUtilMap.containsKey(amhk.a(paramMessage)))
+                      paramMessage = (amxp)paramMessage.obj;
+                      if (this.jdField_a_of_type_JavaUtilMap.containsKey(amxp.a(paramMessage)))
                       {
-                        localObject = amhk.a(paramMessage);
+                        localObject = amxp.a(paramMessage);
                         if (localObject != null) {
-                          ((QZonePluginDownloader.OnPluginDownloadListner)localObject).c(amhk.a(paramMessage));
+                          ((QZonePluginDownloader.OnPluginDownloadListner)localObject).c(amxp.a(paramMessage));
                         }
                       }
                     }

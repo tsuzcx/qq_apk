@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastAudio;
+import android.view.animation.Interpolator;
 
 public final class amez
-  implements Parcelable.Creator
+  implements Interpolator
 {
-  public BroadcastAudio a(Parcel paramParcel)
+  public float getInterpolation(float paramFloat)
   {
-    return new BroadcastAudio(paramParcel);
-  }
-  
-  public BroadcastAudio[] a(int paramInt)
-  {
-    return new BroadcastAudio[paramInt];
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amez
  * JD-Core Version:    0.7.0.1
  */

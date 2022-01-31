@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.app.PstnSessionInfo;
+import com.tencent.av.business.manager.EffectOperateManager;
+import java.lang.ref.WeakReference;
 
-public final class jfk
-  implements Parcelable.Creator
+public abstract class jfk
+  implements Runnable
 {
-  public PstnSessionInfo a(Parcel paramParcel)
-  {
-    return new PstnSessionInfo(paramParcel);
-  }
+  WeakReference a;
   
-  public PstnSessionInfo[] a(int paramInt)
+  public jfk(EffectOperateManager paramEffectOperateManager)
   {
-    return new PstnSessionInfo[paramInt];
+    this.a = new WeakReference(paramEffectOperateManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     jfk
  * JD-Core Version:    0.7.0.1
  */

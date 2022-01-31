@@ -1,14 +1,26 @@
-import android.app.Dialog;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
+import com.tencent.biz.qqstory.model.QQStoryActivityManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class nry
   implements Runnable
 {
-  public nry(QQStoryBaseFragment paramQQStoryBaseFragment) {}
+  public nry(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
   public void run()
   {
-    this.a.a.dismiss();
+    QQStoryActivityManager localQQStoryActivityManager = (QQStoryActivityManager)SuperManager.a(18);
+    ArrayList localArrayList = localQQStoryActivityManager.a(this.a);
+    int i = localArrayList.size();
+    if (i >= 4)
+    {
+      localQQStoryActivityManager.a(((Integer)localArrayList.get(0)).intValue() + 1, ((Integer)localArrayList.get(i - 1)).intValue());
+      if (QLog.isColorLevel()) {
+        QLog.d("zivonchen", 2, "QQStoryShareGroupProfileActivity activity stack full, size = " + i + ", start clear!");
+      }
+    }
   }
 }
 

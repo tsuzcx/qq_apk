@@ -1,20 +1,8 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.armap.FrameBmpCache;
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
 
-public class aawd
-  implements Runnable
+public abstract interface aawd
 {
-  public aawd(SdCardImageAnimView paramSdCardImageAnimView) {}
-  
-  public void run()
-  {
-    if (SdCardImageAnimView.a(this.a) != null)
-    {
-      Bitmap localBitmap = SdCardImageAnimView.a(this.a).a(0);
-      this.a.post(new aawe(this, localBitmap));
-    }
-  }
+  public abstract void a(ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, Object paramObject);
 }
 
 

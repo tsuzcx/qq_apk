@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import anrp;
+import aohu;
 import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
 import java.io.File;
 
 public class RMVideoSwitchCameraPicMgr
 {
-  private anrp jdField_a_of_type_Anrp = new anrp(this, null);
+  private aohu jdField_a_of_type_Aohu = new aohu(this, null);
   RMVideoSwitchCameraPicMgr.ViewBitmapSource jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr$ViewBitmapSource = null;
   
   private Bitmap a(int paramInt1, int paramInt2, RMVideoClipSpec paramRMVideoClipSpec)
@@ -75,7 +75,7 @@ public class RMVideoSwitchCameraPicMgr
   private String a()
   {
     String str = "shortvideo_cover_pic";
-    if (this.jdField_a_of_type_Anrp.jdField_b_of_type_Boolean) {
+    if (this.jdField_a_of_type_Aohu.jdField_b_of_type_Boolean) {
       str = "ptv_cover_pic";
     }
     return GloableValue.b + File.separator + str + ".jpg";
@@ -109,26 +109,26 @@ public class RMVideoSwitchCameraPicMgr
   
   public Bitmap a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, RMVideoClipSpec paramRMVideoClipSpec)
   {
-    this.jdField_a_of_type_Anrp.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Anrp.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Anrp.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Anrp.jdField_b_of_type_Boolean = paramBoolean2;
-    if ((this.jdField_a_of_type_Anrp.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Anrp.jdField_b_of_type_Int <= 0)) {
-      this.jdField_a_of_type_Anrp.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Aohu.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Aohu.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Aohu.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Aohu.jdField_b_of_type_Boolean = paramBoolean2;
+    if ((this.jdField_a_of_type_Aohu.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Aohu.jdField_b_of_type_Int <= 0)) {
+      this.jdField_a_of_type_Aohu.jdField_a_of_type_Boolean = true;
     }
     if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr$ViewBitmapSource == null) {
-      this.jdField_a_of_type_Anrp.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Aohu.jdField_a_of_type_Boolean = true;
     }
-    if (this.jdField_a_of_type_Anrp.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Aohu.jdField_a_of_type_Boolean) {
       return a(paramRMVideoClipSpec);
     }
-    return a(this.jdField_a_of_type_Anrp.jdField_b_of_type_Int, this.jdField_a_of_type_Anrp.jdField_a_of_type_Int, paramRMVideoClipSpec);
+    return a(this.jdField_a_of_type_Aohu.jdField_b_of_type_Int, this.jdField_a_of_type_Aohu.jdField_a_of_type_Int, paramRMVideoClipSpec);
   }
   
   public Bitmap a(boolean paramBoolean)
   {
     Object localObject = null;
-    this.jdField_a_of_type_Anrp.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Aohu.jdField_b_of_type_Boolean = paramBoolean;
     String str = a();
     if (new File(str).exists())
     {

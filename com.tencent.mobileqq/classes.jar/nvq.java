@@ -1,30 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler.GetSimpleInfoListEvent;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter.VideoCollectionPresenterEventListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
+import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailInteractSegment;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class nvq
-  extends QQUIEventReceiver
+  extends OnSimpleShareListener
 {
-  public nvq(@NonNull MemoriesVideoCollectionPresenter paramMemoriesVideoCollectionPresenter)
+  public nvq(DetailInteractSegment paramDetailInteractSegment, FeedItem paramFeedItem) {}
+  
+  public void a()
   {
-    super(paramMemoriesVideoCollectionPresenter);
+    super.a();
+    DetailInteractSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailInteractSegment, null);
   }
   
-  public void a(@NonNull MemoriesVideoCollectionPresenter paramMemoriesVideoCollectionPresenter, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
+  public void a(int paramInt)
   {
-    SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramGetSimpleInfoListEvent.toString());
-    if (paramGetSimpleInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      MemoriesVideoCollectionPresenter.a(paramMemoriesVideoCollectionPresenter).a(paramGetSimpleInfoListEvent.jdField_a_of_type_JavaLangString, paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return VidToSimpleInfoHandler.GetSimpleInfoListEvent.class;
+    super.a(paramInt);
+    StoryReportor.a("home_page", "suc_share", 2, paramInt, new String[] { StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
   }
 }
 

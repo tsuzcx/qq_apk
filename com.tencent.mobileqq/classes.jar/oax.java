@@ -1,40 +1,21 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class oax
   implements Runnable
 {
-  public oax(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
+  public oax(MessageNotifySegment paramMessageNotifySegment, ImageView paramImageView, Drawable paramDrawable) {}
   
   public void run()
   {
-    try
-    {
-      i = DanceMachineUploadVideoFragment.a(this.a, DanceMachineUploadVideoFragment.a(this.a));
-      if (i != 0)
-      {
-        DanceMachineUploadVideoFragment.a(this.a, -1L);
-        this.a.a.setResult(2);
-        this.a.a.finish();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-          int i = -1;
-        }
-        DanceMachineUploadVideoFragment.a(this.a, SystemClock.elapsedRealtime());
-      } while (DanceMachineUploadVideoFragment.a() == null);
-      DanceMachineUploadVideoFragment.a().sendEmptyMessage(-2);
-      DanceMachineUploadVideoFragment.a().sendEmptyMessageDelayed(-1, 120000L);
-    }
+    UserManager localUserManager = (UserManager)SuperManager.a(2);
+    String str = localUserManager.b(Long.toString(MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment)), true);
+    ThreadManager.getUIHandler().post(new oay(this, str, localUserManager));
   }
 }
 

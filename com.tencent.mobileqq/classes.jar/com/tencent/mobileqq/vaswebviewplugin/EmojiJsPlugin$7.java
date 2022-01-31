@@ -24,7 +24,7 @@ class EmojiJsPlugin$7
       try
       {
         paramDialogInterface.put("result", 2);
-        paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131436245));
+        paramDialogInterface.put("message", this.this$0.mRuntime.a().getString(2131436262));
         if (QLog.isColorLevel()) {
           QLog.i(EmojiJsPlugin.TAG, 2, "startDownloadEmoji resp to js:" + paramDialogInterface.toString());
         }
@@ -44,7 +44,7 @@ class EmojiJsPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

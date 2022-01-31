@@ -1,22 +1,68 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.model.QueryTask;
-import com.tencent.mobileqq.model.QueryTask.Query;
-import mqq.os.MqqHandler;
+import android.view.WindowManager.BadTokenException;
+import android.view.accessibility.AccessibilityManager;
+import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import java.lang.reflect.Field;
 
-public class advn
-  implements Runnable
+public final class advn
+  implements HookMethodCallback
 {
-  public advn(QueryTask paramQueryTask, Object paramObject) {}
+  public advn(Class paramClass) {}
   
-  public void run()
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqModelQueryTask.a.a(this.jdField_a_of_type_JavaLangObject);
-    ThreadManager.getUIHandler().post(new advo(this, localObject));
+    if (paramMethodHookParam.throwable == null) {
+      return;
+    }
+    Object localObject;
+    if (paramMethodHookParam.throwable.getCause() != null) {
+      localObject = paramMethodHookParam.throwable.getCause();
+    }
+    while ((localObject instanceof WindowManager.BadTokenException)) {
+      try
+      {
+        localObject = this.a.getDeclaredField("mAccessibilityInteractionConnectionManager");
+        ((Field)localObject).setAccessible(true);
+        localObject = ((Field)localObject).get(paramMethodHookParam.thisObject);
+        Field localField = this.a.getDeclaredField("mAccessibilityManager");
+        localField.setAccessible(true);
+        ((AccessibilityManager)localField.get(paramMethodHookParam.thisObject)).removeAccessibilityStateChangeListener((AccessibilityManager.AccessibilityStateChangeListener)localObject);
+        return;
+      }
+      catch (NoSuchFieldException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+        localObject = paramMethodHookParam.throwable;
+      }
+      catch (IllegalArgumentException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (IllegalAccessException paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (Exception paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+        return;
+      }
+      catch (Error paramMethodHookParam)
+      {
+        paramMethodHookParam.printStackTrace();
+      }
+    }
   }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advn
  * JD-Core Version:    0.7.0.1
  */

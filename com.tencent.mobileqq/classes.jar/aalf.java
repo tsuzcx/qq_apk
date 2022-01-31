@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
+import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
 
-class aalf
-  implements aalq
+public class aalf
+  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
 {
-  aalf(aalb paramaalb, aalo paramaalo, aalq paramaalq) {}
+  public aalf(ARBlessWordFragment paramARBlessWordFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Aalo.a }));
-    if (paramBoolean) {
-      ArkAppDataReport.a(this.jdField_a_of_type_Aalo.a, 2);
-    }
-    this.jdField_a_of_type_Aalq.a(paramBoolean);
+    this.a.a(paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    ARBlessWordFragment.a(this.a).post(new aalh(this));
+  }
+  
+  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp) {}
+  
+  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo)
+  {
+    ARBlessWordFragment.a(this.a).post(new aalg(this, paramUploadPicExtInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalf
  * JD-Core Version:    0.7.0.1
  */

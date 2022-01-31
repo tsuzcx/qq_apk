@@ -46,8 +46,8 @@ import msf.msgsvc.msg_svc.Trans0x211;
 import tencent.im.msg.im_msg_body.MsgBody;
 import tencent.im.msg.im_msg_body.RichText;
 import tencent.im.msg.im_msg_body.Trans211TmpMsg;
-import zqh;
-import zqi;
+import ztn;
+import zto;
 
 public class OfflineFileMessageProcessor
   extends BaseMessageProcessor
@@ -782,7 +782,7 @@ public class OfflineFileMessageProcessor
     MobileQQService.a = i + 1;
     long l = i;
     paramFMTransC2CMsgInfo.queueSeq = l;
-    a(true, true, true, l, new zqh(this, paramString, paramFMTransC2CMsgInfo, paramInt, paramArrayOfByte));
+    a(true, true, true, l, new ztn(this, paramString, paramFMTransC2CMsgInfo, paramInt, paramArrayOfByte));
     return true;
   }
   
@@ -791,7 +791,7 @@ public class OfflineFileMessageProcessor
     int i = MobileQQService.a;
     MobileQQService.a = i + 1;
     long l = i;
-    a(true, true, true, l, new zqi(this, paramString, paramLong, Math.abs(new Random().nextInt()), l, paramInt, paramArrayOfByte));
+    a(true, true, true, l, new zto(this, paramString, paramLong, Math.abs(new Random().nextInt()), l, paramInt, paramArrayOfByte));
     return true;
   }
   

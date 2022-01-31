@@ -27,7 +27,7 @@ public class TroopRankConfig
   private TroopRankConfig()
   {
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_Int = BaseApplication.getContext().getResources().getColor(2131493728);
+    this.jdField_a_of_type_Int = BaseApplication.getContext().getResources().getColor(2131493734);
   }
   
   public static TroopRankConfig a()
@@ -401,7 +401,7 @@ public class TroopRankConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopRankConfig
  * JD-Core Version:    0.7.0.1
  */

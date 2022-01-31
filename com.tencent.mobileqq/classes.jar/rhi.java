@@ -1,14 +1,41 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class rhi
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public rhi(AddRequestActivity paramAddRequestActivity) {}
+  int jdField_a_of_type_Int = -1;
   
-  public void run()
+  public rhi(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a(ContactUtils.f(this.a.app, this.a.a));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+      } while (this.jdField_a_of_type_Int < 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+    } while (this.jdField_a_of_type_Int < 0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

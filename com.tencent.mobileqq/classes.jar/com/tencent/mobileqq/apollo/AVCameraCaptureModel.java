@@ -10,13 +10,13 @@ import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVVideoCtrl;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
-import ygd;
+import yjk;
 
 public class AVCameraCaptureModel
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new ygd(this);
+  private SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new yjk(this);
   public SurfaceView a;
   
   public AVCameraCaptureModel(Context paramContext, int paramInt)

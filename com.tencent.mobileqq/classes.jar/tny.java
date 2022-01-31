@@ -1,29 +1,25 @@
 import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
 import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class tny
-  implements ScoreQAVFragment.OnItemClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public tny(ScoreQAVFragment paramScoreQAVFragment) {}
+  public tny(QuickLoginActivity paramQuickLoginActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = (Button)paramView.findViewById(2131366224);
-    if (paramView.isSelected())
-    {
-      paramView.setSelected(false);
-      this.a.a(paramInt);
-      if (this.a.a.size() != 0) {}
-    }
-    do
-    {
-      return;
-      paramView.setSelected(true);
-      this.a.a.add(Integer.valueOf(paramInt));
-    } while (this.a.a.size() <= 0);
+    paramAdapterView = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
+    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
+    paramView = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
+    this.a.getAppRuntime().login(paramAdapterView, paramView, QuickLoginActivity.a(this.a));
+    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
   }
 }
 

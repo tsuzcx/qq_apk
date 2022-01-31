@@ -1,37 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
 
 public class aepr
-  implements Runnable
 {
-  public aepr(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void run()
+  aepr(WerewolvesDataManager paramWerewolvesDataManager) {}
+  
+  public boolean equals(Object paramObject)
   {
-    if (!StringUtil.a(NearbyPeopleProfileActivity.a(this.a).uin)) {
-      this.a.app.a(NearbyPeopleProfileActivity.a(this.a).uin, 200, false);
-    }
-    if (this.a.a > 0L) {
-      this.a.app.a(String.valueOf(this.a.a), 202, false);
-    }
-    EntityManager localEntityManager;
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof aepr))
     {
-      do
+      paramObject = (aepr)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
       {
-        return;
-      } while (StringUtil.a(NearbyPeopleProfileActivity.a(this.a).uin));
-      localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
-    } while (localEntityManager == null);
-    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.a).uin });
-    if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
-      this.a.app.a(String.valueOf(localNearbyPeopleCard.tinyId), 202, false);
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
+          bool1 = true;
+        }
+      }
     }
-    localEntityManager.a();
+    return bool1;
   }
 }
 

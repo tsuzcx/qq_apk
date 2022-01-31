@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.apollo.ai.ApolloAILogicProcessor;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import com.tencent.ttpic.util.VideoGlobalContext;
+import com.tencent.ttpic.util.VideoPrefsUtil;
+import com.tencent.ttpic.util.youtu.VideoFaceDetector;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ylf
-  implements Runnable
+public final class ylf
+  implements EIPCResultCallback
 {
-  public ylf(ApolloAILogicProcessor paramApolloAILogicProcessor) {}
+  public ylf(ApolloRender paramApolloRender) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloAILogicProcessor", 2, "[run post]");
+    VideoPrefsUtil.init(BaseApplicationImpl.getContext());
+    VideoGlobalContext.setContext(BaseApplicationImpl.getContext());
+    if (PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), false))
+    {
+      this.a.mDetector = new VideoFaceDetector(PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), null));
+      this.a.mDetector.init();
     }
-    ApolloAILogicProcessor.a(this.a);
   }
 }
 

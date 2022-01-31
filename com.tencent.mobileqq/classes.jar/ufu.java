@@ -1,50 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendServlet;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class ufu
-  extends CardObserver
+  implements DialogInterface.OnClickListener
 {
-  public ufu(ActivateFriendActivity paramActivateFriendActivity) {}
+  public ufu(UpgradeActivity paramUpgradeActivity) {}
   
-  protected void k(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
-    {
-      ActivateFriendServlet.a(this.a.app, false, true, false, true);
-      this.a.a();
-    }
-    ActivateFriendActivity.a(this.a, paramBoolean2);
-  }
-  
-  protected void l(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
-    {
-      ActivateFriendServlet.a(this.a.app, false, true, false, true);
-      this.a.a();
-    }
-    if (!this.a.isFinishing())
-    {
-      if (!paramBoolean1) {
-        break label133;
-      }
-      ActivateFriendActivity.a(this.a, paramBoolean2);
-      if (!ActivateFriendActivity.a(this.a)) {
-        break label120;
-      }
-    }
-    label120:
-    for (String str = this.a.getString(2131437233);; str = this.a.getString(2131437234))
-    {
-      str = this.a.getString(2131437236, new Object[] { str });
-      QQToast.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    label133:
-    QQToast.a(this.a, 1, this.a.getResources().getString(2131436049), 0).b(this.a.getTitleBarHeight());
+    this.a.finish();
   }
 }
 

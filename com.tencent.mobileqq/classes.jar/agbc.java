@@ -1,32 +1,61 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.Tag;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
-import java.util.Random;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class agbc
-  implements Comparator
+  implements View.OnTouchListener
 {
-  int jdField_a_of_type_Int;
-  Random jdField_a_of_type_JavaUtilRandom;
-  int b;
+  public agbc(OCRRecognitionResultActivity paramOCRRecognitionResultActivity) {}
   
-  public agbc(TagCloudView paramTagCloudView, Random paramRandom, int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaUtilRandom = paramRandom;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt1;
-  }
-  
-  public int a(Tag paramTag1, Tag paramTag2)
-  {
-    if ((paramTag1.b.y > this.jdField_a_of_type_Int) || (paramTag2.b.y > this.jdField_a_of_type_Int)) {
-      return -(paramTag1.b.y - paramTag2.b.y);
+    int j;
+    if ((paramView == OCRRecognitionResultActivity.a(this.a)) || (paramView == OCRRecognitionResultActivity.b(this.a)))
+    {
+      paramView = (EditText)paramView;
+      j = paramMotionEvent.getAction();
+      if (j != 1) {
+        break label255;
+      }
+      Object localObject = paramView.getText();
+      int m = (int)paramMotionEvent.getX();
+      i = (int)paramMotionEvent.getY();
+      int n = paramView.getTotalPaddingLeft();
+      int k = paramView.getTotalPaddingTop();
+      m = m - n + paramView.getScrollX();
+      n = paramView.getScrollY();
+      Layout localLayout = paramView.getLayout();
+      i = localLayout.getLineForVertical(i - k + n);
+      float f = localLayout.getLineWidth(i);
+      if (m > f) {
+        break label255;
+      }
+      i = localLayout.getOffsetForHorizontal(i, m);
+      localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
+      if ((localObject.length == 0) || (j != 1)) {
+        break label255;
+      }
+      localObject[0].onClick(paramView);
+      ReportController.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
     }
-    if ((paramTag1.b.x > this.b) || (paramTag2.b.x > this.b)) {
-      return -(paramTag1.b.x - paramTag2.b.x);
+    label255:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        return true;
+      }
+      if ((j == 1) && (!paramView.isFocused())) {
+        ReportController.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
+      }
+      return paramView.onTouchEvent(paramMotionEvent);
+      return false;
     }
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(3) - 2;
   }
 }
 

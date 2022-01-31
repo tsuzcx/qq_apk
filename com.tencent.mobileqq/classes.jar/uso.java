@@ -1,9 +1,32 @@
+import com.tencent.mobileqq.activity.aio.doodle.DoodleParam;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+
 public class uso
+  implements Runnable
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  public uso(LoadDataJob paramLoadDataJob, DoodleParam paramDoodleParam, List paramList) {}
+  
+  public void run()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadDataJob", 2, "run write parcel begin:");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam, LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a, false));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a(this.jdField_a_of_type_JavaUtilList, LoadDataJob.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a, false)))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((PathDrawer)localIterator.next()).b();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadDataJob", 2, "run write parcel end:");
+    }
+  }
 }
 
 

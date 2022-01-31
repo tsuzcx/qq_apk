@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas;
 
-import ajtu;
-import ajtv;
+import akib;
+import akic;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -87,7 +87,7 @@ public class VasMonitorHandler
     paramArrayList1 = new VasReporter.ReqBody();
     paramArrayList1.cmd.set(1);
     paramArrayList1.plat.set(109);
-    paramArrayList1.qqversion.set("7.6.0.3525");
+    paramArrayList1.qqversion.set("7.6.3.3560");
     paramArrayList1.osversion.set(Build.VERSION.RELEASE);
     paramArrayList1.statis_list.set(a(new VasReporter.StatisInfo[] { localStatisInfo }));
     paramArrayList1.setHasFlag(true);
@@ -171,7 +171,7 @@ public class VasMonitorHandler
     if (paramString6 == null) {
       paramString5 = "";
     }
-    ThreadManager.post(new ajtu((QQAppInterface)localObject, paramString1, a(new String[] { "109", "7.6.0", paramString2, paramAppRuntime, paramString4, paramString5 }), a(new Float[] { Float.valueOf(1.0F), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) }), paramString3), 5, null, false);
+    ThreadManager.post(new akib((QQAppInterface)localObject, paramString1, a(new String[] { "109", "7.6.3", paramString2, paramAppRuntime, paramString4, paramString5 }), a(new Float[] { Float.valueOf(1.0F), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) }), paramString3), 5, null, false);
     QLog.e("VasMonitorHandler", 1, "report err appid=" + paramString1 + ", errCode=" + paramString2 + ", log=" + paramString3 + ", key4=" + paramAppRuntime + ", value2=" + paramFloat1);
   }
   
@@ -192,12 +192,12 @@ public class VasMonitorHandler
   public void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
     this.b.set(true);
-    ThreadManager.post(new ajtv(this, paramAppRuntime, paramBoolean), 8, null, true);
+    ThreadManager.post(new akic(this, paramAppRuntime, paramBoolean), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasMonitorHandler
  * JD-Core Version:    0.7.0.1
  */

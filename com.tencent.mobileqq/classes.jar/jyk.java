@@ -1,31 +1,19 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiMembersAudioUI;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.av.ui.MultiVideoEnterPageMembersControlUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jyk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public jyk(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public jyk(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null)
-    {
-      MultiVideoEnterPageMembersControlUI[] arrayOfMultiVideoEnterPageMembersControlUI = this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI;
-      int j = arrayOfMultiVideoEnterPageMembersControlUI.length;
-      int i = 0;
-      while (i < j)
-      {
-        arrayOfMultiVideoEnterPageMembersControlUI[i].c();
-        i += 1;
-      }
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a();
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 2000L);
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.a.app, this.a, 2, 12);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 5, 0, "", "", "", "");
   }
 }
 

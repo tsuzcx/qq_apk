@@ -1,17 +1,16 @@
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
+import com.tencent.biz.qqstory.takevideo.filter.WeatherFilterData;
 
-public class oep
+class oep
   implements Runnable
 {
-  public oep(EditVideoPoiSearch paramEditVideoPoiSearch) {}
+  oep(oeo paramoeo, int paramInt) {}
   
   public void run()
   {
-    this.a.a.setFocusableInTouchMode(true);
-    this.a.a.requestFocus();
-    InputMethodUtil.a(this.a.a);
+    if (EditVideoFilterNeo.a(this.jdField_a_of_type_Oeo.a) != null) {
+      EditVideoFilterNeo.a(this.jdField_a_of_type_Oeo.a).a(this.jdField_a_of_type_Int);
+    }
   }
 }
 

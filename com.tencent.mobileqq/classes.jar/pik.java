@@ -1,17 +1,13 @@
-import com.tencent.component.network.module.cache.file.FileCacheService;
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
 
 public class pik
-  implements ThreadPool.Job
+  implements Runnable
 {
-  public pik(FileCacheService paramFileCacheService) {}
+  public pik(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl, String paramString, String[] paramArrayOfString) {}
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public void run()
   {
-    FileCacheService.a(this.a, false);
-    FileCacheService.a(this.a, true);
-    return null;
+    AsyncImageable.AsyncImageableImpl.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageableImpl, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString);
   }
 }
 

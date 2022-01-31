@@ -1,14 +1,22 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class ovd
-  implements Runnable
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public ovd(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, long paramLong, String paramString) {}
+  public ovd(TribeVideoPlugin paramTribeVideoPlugin, ovo paramovo) {}
   
-  public void run()
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    new ovs(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, new ove(this), this.jdField_a_of_type_JavaLangString).a();
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
+    {
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, ovo.a(this.jdField_a_of_type_Ovo));
+      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramTVK_IMediaPlayer.obj = ovo.a(this.jdField_a_of_type_Ovo);
+      paramTVK_IMediaPlayer.what = 6;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
+    }
   }
 }
 

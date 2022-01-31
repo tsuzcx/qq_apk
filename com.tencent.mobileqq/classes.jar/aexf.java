@@ -1,26 +1,28 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyProfileCardMomentAdapter;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.widget.ListView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import mqq.os.MqqHandler;
 
-class aexf
-  implements NearbyMomentManager.GetLocalUnPiblishListCallback
+public class aexf
+  implements Runnable
 {
-  aexf(aexd paramaexd) {}
+  public aexf(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(List paramList)
+  public void run()
   {
-    NearbyMomentFragment.b(this.a.a).clear();
-    NearbyMomentFragment.b(this.a.a).addAll(paramList);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(NearbyMomentFragment.b(this.a.a));
-    localArrayList.addAll(NearbyMomentFragment.a(this.a.a));
-    NearbyMomentFragment.a(this.a.a).a(localArrayList);
-    localArrayList = new ArrayList();
-    localArrayList.addAll(paramList);
-    this.a.a.b();
-    NearbyMomentFragment.a(this.a.a, localArrayList);
+    if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0))
+    {
+      if (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() != 0)
+      {
+        ShortVideoCommentsView.a(this.a).setSelection(0);
+        ThreadManager.getUIHandler().postDelayed(this, 10L);
+      }
+    }
+    else {
+      return;
+    }
+    ThreadManager.getUIHandler().removeCallbacks(this);
   }
 }
 

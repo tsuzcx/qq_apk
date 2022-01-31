@@ -29,7 +29,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kmo;
+import klz;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import org.apache.http.HttpHost;
@@ -2062,7 +2062,7 @@ public class HttpUtil
         localObject = new AsyncHttpClient.CustomSSLSocketFactory((KeyStore)localObject);
         ((SSLSocketFactory)localObject).setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
         if (!TextUtils.isEmpty(paramString)) {
-          ((SSLSocketFactory)localObject).setHostnameVerifier(new kmo(paramString));
+          ((SSLSocketFactory)localObject).setHostnameVerifier(new klz(paramString));
         }
         paramString = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(paramString, paramInt1);

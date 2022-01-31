@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import com.tencent.mobileqq.app.FavEmoRoamingHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import java.util.List;
 
 public class abzt
   implements Runnable
 {
-  public abzt(StickerGestureDetector paramStickerGestureDetector) {}
+  public abzt(FavroamingManager paramFavroamingManager, FavEmoRoamingHandler paramFavEmoRoamingHandler) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout);
+    List localList = ((FavroamingDBManager)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.a.getManager(148)).a("needDel");
+    if (localList.size() > 0) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingHandler.a(localList, true);
+    }
+    while (localList.size() != 0) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.a();
   }
 }
 

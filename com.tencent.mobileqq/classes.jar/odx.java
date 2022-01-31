@@ -1,20 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import android.widget.ImageView;
 
-public class odx
-  extends SimpleJob
+class odx
 {
-  public odx(EditVideoPartManager paramEditVideoPartManager) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    VideoEditReport.a("0X80076BC");
-    return null;
-  }
+  odx(odw paramodw) {}
 }
 
 

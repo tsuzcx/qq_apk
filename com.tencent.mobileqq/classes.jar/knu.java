@@ -1,14 +1,16 @@
-import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 
-public class knu
-  implements Runnable
+public final class knu
+  implements DialogInterface.OnClickListener
 {
-  public knu(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
+  public knu(Handler paramHandler) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(this.a.jdField_a_of_type_AndroidWidgetFrameLayout).loadUrl(this.a.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.dismiss();
+    this.a.sendEmptyMessage(-1);
   }
 }
 

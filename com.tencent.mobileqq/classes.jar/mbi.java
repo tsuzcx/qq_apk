@@ -1,18 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureSoManager.Callback;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-class mbi
-  implements ReadInJoyCameraCaptureSoManager.Callback
+public class mbi
+  implements Runnable
 {
-  mbi(mbg parammbg) {}
+  public mbi(VideoFeedsAdapter paramVideoFeedsAdapter, boolean paramBoolean) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS", paramInt);
-    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_CAMERA_CAPTURE_SO_DOWNLOAD", localBundle, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter.a(Boolean.valueOf(this.jdField_a_of_type_Boolean));
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).c();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter.k();
+    }
+    while (VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).c()) {
+      return;
+    }
+    VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).a();
   }
 }
 

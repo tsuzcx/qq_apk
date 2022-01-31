@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.avatar.dynamicavatar.VasFaceManager;
+import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-class tkx
+public class tkx
   implements Runnable
 {
-  tkx(tkw paramtkw, String paramString) {}
+  public tkx(QQSettingMe paramQQSettingMe, String paramString) {}
   
   public void run()
   {
-    QQSettingSettingActivity.a(this.jdField_a_of_type_Tkw.a, this.jdField_a_of_type_JavaLangString);
+    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFaceDrawable, 1, this.jdField_a_of_type_JavaLangString, 100, true, true, 6);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.b.setVisibility(VasFaceManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.A();
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QQSettingRedesign", 4, "updateFace, " + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

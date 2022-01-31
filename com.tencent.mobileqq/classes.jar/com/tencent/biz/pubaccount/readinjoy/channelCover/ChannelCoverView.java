@@ -23,10 +23,10 @@ import com.tencent.widget.HorizontalListView;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.HashMap;
-import lip;
-import liq;
-import lir;
-import lis;
+import lik;
+import lil;
+import lim;
+import lin;
 
 public class ChannelCoverView
   implements AdapterView.OnItemClickListener
@@ -50,7 +50,7 @@ public class ChannelCoverView
   
   public ChannelCoverView(Context paramContext, int paramInt, ListView paramListView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lip(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lik(this);
     this.c = paramInt;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ReadInJoyUtils.a());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
@@ -72,12 +72,12 @@ public class ChannelCoverView
   
   public static void a(String paramString, ChannelCoverInfo paramChannelCoverInfo, int paramInt)
   {
-    ThreadManager.post(new lis(paramChannelCoverInfo, paramInt, paramString), 5, null, true);
+    ThreadManager.post(new lin(paramChannelCoverInfo, paramInt, paramString), 5, null, true);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, ChannelCoverInfo paramChannelCoverInfo)
   {
-    ThreadManager.executeOnSubThread(new lir(paramChannelCoverInfo, paramString1, paramString2, paramString3, paramString4));
+    ThreadManager.executeOnSubThread(new lim(paramChannelCoverInfo, paramString1, paramString2, paramString3, paramString4));
   }
   
   public LinearLayout a()
@@ -97,7 +97,7 @@ public class ChannelCoverView
   void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(paramContext).inflate(2130968737, null, false));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363472));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363490));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(AIOUtils.a(10.0F, paramContext.getResources()));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyChannelCoverChannelCoverSimpleAdapter = new ChannelCoverSimpleAdapter(paramContext, this.jdField_a_of_type_JavaUtilArrayList, this.c);
@@ -123,7 +123,7 @@ public class ChannelCoverView
         QLog.d("ChannelCoverView", 2, "launchChannelActivity info.mArticleId:" + paramAdapterView.mArticleId + " info.mChannelCoverStyle: " + paramAdapterView.mChannelCoverStyle + " info.mChannelCoverId:" + paramAdapterView.mChannelCoverId + " info.mChannelCoverName:" + paramAdapterView.mChannelCoverName + " info.mChannelType: " + paramAdapterView.mChannelType);
       }
       if (this.c == 56) {
-        ThreadManager.executeOnSubThread(new liq(this, paramAdapterView));
+        ThreadManager.executeOnSubThread(new lil(this, paramAdapterView));
       }
     }
     for (;;)

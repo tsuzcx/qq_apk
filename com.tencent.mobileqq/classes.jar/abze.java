@@ -1,22 +1,32 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.emoticonview.IPSiteListGoodsAdapter;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class abze
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public abze(IPSiteListGoodsAdapter paramIPSiteListGoodsAdapter, IPSiteModel.Goods paramGoods) {}
+  public abze(EmoticonFromGroupManager paramEmoticonFromGroupManager) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramView = new Intent(IPSiteListGoodsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPSiteListGoodsAdapter), QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(IPSiteListGoodsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPSiteListGoodsAdapter), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.moreUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(IPSiteListGoodsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPSiteListGoodsAdapter), "IP", "aio_productmore", "", 0, 0, 0, IPSiteListGoodsAdapter.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPSiteListGoodsAdapter), IPSiteListGoodsAdapter.c(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPSiteListGoodsAdapter), "", "", "", "", "", 0, 0, 0, 0);
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 1: 
+      QQToast.a(EmoticonFromGroupManager.a(this.a), 2131428195, 0).b(2131558448);
+      return true;
+    }
+    if (paramMessage.obj != null)
+    {
+      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
+      this.a.a(paramMessage);
+      return true;
+    }
+    QQToast.a(EmoticonFromGroupManager.a(this.a), 1, 2131434501, 0).b(2131558448);
+    return true;
   }
 }
 

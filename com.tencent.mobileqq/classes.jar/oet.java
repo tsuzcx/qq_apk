@@ -1,16 +1,25 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoSave;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoFragment;
 
 public class oet
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public oet(EditVideoSave paramEditVideoSave) {}
+  public oet(EditVideoFragment paramEditVideoFragment, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.h();
-    QQToast.a(this.a.a.a(), 2, "已保存到系统相册", 0).a();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
+    int j = this.b;
+    int k = (int)(f * (this.c - this.d));
+    int m = this.d;
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.leftMargin = (i + j);
+    paramValueAnimator.bottomMargin = (m + k);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }
 }
 

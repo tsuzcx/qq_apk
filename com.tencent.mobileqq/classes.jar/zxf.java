@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARScanAR;
+import com.tencent.mobileqq.ar.ARGlobalConfigManager;
 
-public final class zxf
-  implements Parcelable.Creator
+public class zxf
+  implements Runnable
 {
-  public ARScanAR a(Parcel paramParcel)
-  {
-    return new ARScanAR(paramParcel);
-  }
+  public zxf(ARGlobalConfigManager paramARGlobalConfigManager) {}
   
-  public ARScanAR[] a(int paramInt)
+  public void run()
   {
-    return new ARScanAR[paramInt];
+    this.a.a();
+    this.a.a();
   }
 }
 

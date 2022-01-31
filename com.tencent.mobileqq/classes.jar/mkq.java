@@ -1,35 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-public class mkq
-  implements AbsListView.OnScrollListener
+class mkq
+  implements View.OnClickListener
 {
-  public mkq(FastWebActivity paramFastWebActivity) {}
+  mkq(mkp parammkp, FrameLayout paramFrameLayout) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      int i = FastWebActivity.a(this.a).getFirstVisiblePosition();
-      FastWebActivity.c(this.a);
-      FastWebActivity.a(this.a, i);
-    }
-    for (;;)
-    {
-      if (FastWebActivity.a(this.a) != null) {
-        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
-      }
-      return;
-      AbstractGifImage.pauseAll();
+    ReadinjoyTabFrame.a(this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame).a();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(ReadinjoyTabFrame.a(this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame));
+    ReadinjoyTabFrame.a(this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, null);
+    if (260 == this.jdField_a_of_type_Mkp.jdField_a_of_type_Int) {
+      SharedPreUtils.u(this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getCurrentAccountUin(), null);
     }
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

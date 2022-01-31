@@ -1,75 +1,105 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.model.ChatBackgroundManager.BgThemeColorExtractListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.hydevteam.common.progress.ProgressFuture;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
+import com.tencent.mobileqq.intervideo.huayang.HuayangPluginNewDownloader;
+import com.tencent.mobileqq.intervideo.huayang.Monitor;
+import com.tencent.mobileqq.intervideo.huayang.MonitorConfig;
+import java.util.Map;
 
 public class aduj
-  implements Runnable
+  implements Handler.Callback
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ChatBackgroundManager.BgThemeColorExtractListener jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  public aduj(HuayangPluginNewDownloader paramHuayangPluginNewDownloader) {}
   
-  public aduj(ChatBackgroundManager paramChatBackgroundManager, String paramString, Bitmap paramBitmap, boolean paramBoolean, ChatBackgroundManager.BgThemeColorExtractListener paramBgThemeColorExtractListener)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener = paramBgThemeColorExtractListener;
-  }
-  
-  public void run()
-  {
-    Vector localVector;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    switch (paramMessage.what)
     {
-      localVector = this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      }
-      if ((localVector != null) && (!localVector.isEmpty())) {
-        if (this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString) != null)
+    default: 
+    case 0: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 5: 
+    case 6: 
+    case 4: 
+      label445:
+      do
+      {
+        do
         {
-          ((Vector)this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString)).addAll(localVector);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable success.");
-          }
-          label97:
-          if (this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener != null)
+          do
           {
-            localVector = (Vector)this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString);
-            if ((localVector == null) || (localVector.isEmpty())) {
-              break label225;
+            do
+            {
+              int i;
+              do
+              {
+                do
+                {
+                  return false;
+                } while (HuayangPluginNewDownloader.a(this.a) == null);
+                HuayangPluginNewDownloader.a(this.a).a(0, new Object[] { paramMessage.obj });
+                return false;
+                i = paramMessage.arg1;
+              } while ((i <= HuayangPluginNewDownloader.a(this.a)) || (HuayangPluginNewDownloader.a(this.a) == null));
+              HuayangPluginNewDownloader.a(this.a).a(1, new Object[] { Integer.valueOf(paramMessage.arg1), Long.valueOf(HuayangPluginNewDownloader.a(this.a)) });
+              HuayangPluginNewDownloader.a(this.a, i);
+              return false;
+              if (HuayangPluginNewDownloader.a(this.a) != null) {
+                HuayangPluginNewDownloader.a(this.a).a(2, new Object[] { paramMessage.obj });
+              }
+            } while (MonitorConfig.a.get(HuayangPluginNewDownloader.a(this.a)) == null);
+            Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginNewDownloader.a(this.a))).b));
+            return false;
+            if (HuayangPluginNewDownloader.a(this.a) != null) {
+              HuayangPluginNewDownloader.a(this.a).a(3, new Object[] { paramMessage.obj });
+            }
+          } while (MonitorConfig.a.get(HuayangPluginNewDownloader.a(this.a)) == null);
+          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginNewDownloader.a(this.a))).c));
+          return false;
+          InstalledPlugin localInstalledPlugin;
+          adul localadul;
+          if (HuayangPluginNewDownloader.a(this.a) != null)
+          {
+            localInstalledPlugin = (InstalledPlugin)paramMessage.obj;
+            localadul = HuayangPluginNewDownloader.a(this.a);
+            if (paramMessage.arg1 != 1) {
+              break label445;
             }
           }
-        }
-      }
+          for (boolean bool = true;; bool = false)
+          {
+            localadul.a(4, new Object[] { localInstalledPlugin, Boolean.valueOf(bool) });
+            HuayangPluginNewDownloader.a(this.a, "HuayangPluginNewDownloader", "下载页面停留时长：" + (System.currentTimeMillis() - HuayangPluginNewDownloader.b(this.a)));
+            HuayangPluginNewDownloader.a(this.a, false);
+            return false;
+          }
+        } while (HuayangPluginNewDownloader.a(this.a) == null);
+        HuayangPluginNewDownloader.a(this.a).a(5, new Object[] { paramMessage.obj });
+        return false;
+      } while (!(paramMessage.obj instanceof ProgressFuture));
+      double d = ((ProgressFuture)paramMessage.obj).getProgress();
+      HuayangPluginNewDownloader.a(this.a, "HuayangPluginNewDownloader", "收到读取进度的MSG, progress = " + d);
+      HuayangPluginNewDownloader.a(this.a).sendMessage(Message.obtain(HuayangPluginNewDownloader.a(this.a), 1, (int)(d * 100.0D), 0));
+      HuayangPluginNewDownloader.a(this.a).sendMessageDelayed(Message.obtain(HuayangPluginNewDownloader.a(this.a), 4, paramMessage.obj), 300L);
+      return false;
     }
-    label225:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new aduk(this, bool, localVector));
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.jdField_a_of_type_JavaLangString, localVector);
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(this.jdField_a_of_type_JavaLangString);
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(this.jdField_a_of_type_JavaLangString);
-      if (!QLog.isDevelopLevel()) {
-        break label97;
-      }
-      QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable failed.");
-      break label97;
-    }
+    paramMessage = new Intent(HuayangPluginNewDownloader.a(this.a), HuayangLoadbackgroudActivity.class);
+    paramMessage.putExtra("isPreload", true);
+    paramMessage.setFlags(268435456);
+    HuayangPluginNewDownloader.a(this.a).startActivity(paramMessage);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aduj
  * JD-Core Version:    0.7.0.1
  */

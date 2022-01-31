@@ -1,25 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadFlowControlConfig;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 
 public class xfm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xfm(BannerManager paramBannerManager) {}
+  public xfm(PreloadFlowControlConfig paramPreloadFlowControlConfig) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (BannerManager.a(this.a) != null) {}
-    for (paramView = BannerManager.a(this.a).app;; paramView = null)
-    {
-      if (paramView != null) {
-        ArkTipsManager.a().a(BannerManager.a(this.a), paramView);
-      }
-      ArkTipsManager.a().a();
-      return;
-    }
+    QWalletTools.a(this.a, PreloadFlowControlConfig.access$000(this.a));
   }
 }
 

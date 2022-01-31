@@ -307,23 +307,23 @@ public class NetSearchTemplateBaseItem
     default: 
       throw new RuntimeException(this.jdField_a_of_type_Int + "in NetSearchTemplateBaseItem.getLayoutId() is not supported!!!");
     case 1: 
-      return 2130969403;
-    case 2: 
-      return 2130969395;
-    case 3: 
-      return 2130969407;
-    case 4: 
-      return 2130969396;
-    case 5: 
-      return 2130969401;
-    case 6: 
-      return 2130969406;
-    case 7: 
-      return 2130969397;
-    case 8: 
       return 2130969404;
+    case 2: 
+      return 2130969396;
+    case 3: 
+      return 2130969408;
+    case 4: 
+      return 2130969397;
+    case 5: 
+      return 2130969402;
+    case 6: 
+      return 2130969407;
+    case 7: 
+      return 2130969398;
+    case 8: 
+      return 2130969405;
     }
-    return 2130969405;
+    return 2130969406;
   }
 }
 

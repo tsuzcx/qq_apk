@@ -1,6 +1,6 @@
 package com.tencent.open.business.base.appreport;
 
-import akqe;
+import alfu;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ public class AppReportReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ThreadManager.executeOnSubThread(new akqe(this, paramIntent, paramContext));
+    ThreadManager.executeOnSubThread(new alfu(this, paramIntent, paramContext));
   }
 }
 

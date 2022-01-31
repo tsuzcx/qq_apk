@@ -1,28 +1,15 @@
 import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
 
 public class obs
-  implements ThreadExcutor.IThreadListener
+  implements View.OnClickListener
 {
-  public obs(EditPicSave paramEditPicSave) {}
+  public obs(GuideInfoDialog paramGuideInfoDialog) {}
   
-  public void a() {}
-  
-  public void b()
+  public void onClick(View paramView)
   {
-    int i = 1;
-    this.a.a.a().postDelayed(new obt(this), 500L);
-    if (CameraControl.a().a == 1) {}
-    for (;;)
-    {
-      CaptureReportUtil.h(i);
-      return;
-      i = 2;
-    }
+    this.a.dismiss();
   }
 }
 

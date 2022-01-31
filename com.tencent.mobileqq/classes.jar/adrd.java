@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnHoverListener;
 
-public class adrd
-  implements Runnable
+class adrd
+  implements View.OnHoverListener
 {
-  public adrd(MagicfaceViewController paramMagicfaceViewController) {}
+  adrd(adrc paramadrc) {}
   
-  public void run()
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "func run, magicValue:" + this.a.a.magicValue);
-    }
-    this.a.a(this.a.a, 1, null);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrd
  * JD-Core Version:    0.7.0.1
  */

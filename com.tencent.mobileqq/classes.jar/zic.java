@@ -1,36 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.NewFriendManager;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class zic
   implements Runnable
 {
-  public zic(QQAppInterface paramQQAppInterface) {}
+  public zic(NewFriendManager paramNewFriendManager) {}
   
   public void run()
   {
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = NewFriendManager.a(this.a).iterator();
+    while (localIterator.hasNext())
     {
-      QNotificationManager localQNotificationManager = new QNotificationManager(QQAppInterface.e(this.a));
-      localQNotificationManager.cancel("QQAppInterface_removeNotification", 121);
-      localQNotificationManager.cancel("QQAppInterface_removeNotification", 122);
-      localQNotificationManager.cancel("QQAppInterface_removeNotification", 123);
-      localQNotificationManager.cancel("QQAppInterface_removeNotification", 129);
-      localQNotificationManager.cancel("QQAppInterface_removeNotification", 135);
-      localQNotificationManager.cancel("QQAppInterface_removeNotification", 140);
-      localQNotificationManager.cancel("QQAppInterface_removeNotification", 144);
-      localQNotificationManager.cancel("QQAppInterface_removeNotification", 193);
-      localQNotificationManager.cancel("QQAppInterface_removeNotification", 211);
-      if (QLog.isColorLevel()) {
-        QLog.d("notification", 2, "removeNotification");
-      }
-      return;
+      localStringBuilder.append((String)localIterator.next());
+      localStringBuilder.append("#");
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("notification", 2, "removeNotification", localException);
-    }
+    BaseApplicationImpl.getApplication().getSharedPreferences("new_friend", 0).edit().putString("new_friend_list", localStringBuilder.toString()).commit();
   }
 }
 

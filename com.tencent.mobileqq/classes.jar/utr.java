@@ -1,6 +1,5 @@
-import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.Holder;
 
 class utr
   implements Runnable
@@ -9,9 +8,8 @@ class utr
   
   public void run()
   {
-    if ((FileUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath)) || (FileUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strMiddleThumPath))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.b();
-    }
+    this.a.a.d.setVisibility(8);
+    this.a.a.c.setVisibility(8);
   }
 }
 

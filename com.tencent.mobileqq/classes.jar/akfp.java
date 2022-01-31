@@ -1,27 +1,37 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.widget.DraggableGridView;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.utils.QQLSSensor;
+import com.tencent.mobileqq.utils.QQLSSensor.ProximitySensorChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class akfp
   extends Handler
 {
-  public akfp(DraggableGridView paramDraggableGridView, Looper paramLooper)
+  public akfp(QQLSSensor paramQQLSSensor, Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    DraggableGridView.c(this.a, paramMessage.arg1);
-    DraggableGridView.a(this.a).smoothScrollBy(DraggableGridView.d(this.a), 0);
-    DraggableGridView.a(this.a, (int)DraggableGridView.a(this.a), (int)DraggableGridView.b(this.a));
+    synchronized (this.a)
+    {
+      if (QQLSSensor.a(this.a) != null) {
+        QQLSSensor.a(this.a).a(QQLSSensor.a(this.a));
+      }
+      while (!QLog.isDevelopLevel())
+      {
+        super.handleMessage(paramMessage);
+        return;
+      }
+      QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akfp
  * JD-Core Version:    0.7.0.1
  */

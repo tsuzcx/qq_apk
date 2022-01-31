@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
-import cooperation.weiyun.WeiyunRemoteCommand.OnStateChangeListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
 
 public class acgx
-  implements WeiyunRemoteCommand.OnStateChangeListener
+  implements Runnable
 {
-  public acgx(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
+  public acgx(StickerGestureDetector paramStickerGestureDetector) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.a.runOnUiThread(new acgy(this));
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout);
   }
 }
 

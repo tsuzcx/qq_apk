@@ -1,18 +1,18 @@
-import com.tencent.av.gaudio.VideoViewInfo;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.BeautySettingUi;
+import com.tencent.av.utils.UITools;
 
-class jqp
-  implements Comparator
+public class jqp
+  implements DialogInterface.OnClickListener
 {
-  jqp(jqo paramjqo) {}
+  public jqp(BeautySettingUi paramBeautySettingUi, AVActivity paramAVActivity) {}
   
-  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramVideoViewInfo1.a) {}
-    while (paramVideoViewInfo2.a) {
-      return 1;
-    }
-    return 0;
+    UITools.a(this.jdField_a_of_type_ComTencentAvUiAVActivity);
+    paramDialogInterface.dismiss();
   }
 }
 

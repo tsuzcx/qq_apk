@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14a8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:layout_width="200.0dip" android:layout_height="200.0dip" android:layout_marginTop="12.0dip">
-        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11cf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021adc" />
-        <LinearLayout android:gravity="center" android:layout_gravity="center|right|top" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a221b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02147b" android:paddingLeft="9.0dip" android:paddingTop="2.0dip" android:paddingRight="9.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip">
-            <TextView android:textSize="14.0dip" android:textColor="#ff0de08b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a221c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="直播" />
-            <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a221d" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" android:scaleType="centerCrop" android:visible="false" />
-        </LinearLayout>
-    </FrameLayout>
-</LinearLayout>
+<FrameLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:customFitMode="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.nearby.now.view.widget.FitXImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2212" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" customFitMode:useFitXFromStart="true" />
+</FrameLayout>
